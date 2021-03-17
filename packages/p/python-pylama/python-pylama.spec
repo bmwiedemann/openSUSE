@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylama
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://github.com/klen/pylama
 Source:         https://files.pythonhosted.org/packages/source/p/pylama/pylama-%{version}.tar.gz
 # https://github.com/klen/pylama/issues/147
 Source1:        https://raw.githubusercontent.com/klen/pylama/develop/dummy.py
+# PATCH-FIX-UPSTREAM support-pytest-6.patch gh#klen/pylama#189
+Patch0:         support-pytest-6.patch
 BuildRequires:  %{python_module eradicate >= 0.2}
 BuildRequires:  %{python_module mccabe >= 0.5.2}
 BuildRequires:  %{python_module pycodestyle >= 2.3.1}
@@ -42,7 +44,7 @@ BuildRequires:  mypy
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     mypy
 Recommends:     python-mccabe >= 0.5.2
 Recommends:     python-pycodestyle >= 2.3.1
@@ -63,6 +65,7 @@ Audit tool for Python and JavaScript. Pylama wraps these tools:
 %prep
 %setup -q -n pylama-%{version}
 cp %{SOURCE1} .
+%autopatch -p1
 
 %build
 export LANG=en_US.UTF-8

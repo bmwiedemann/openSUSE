@@ -1,0 +1,34 @@
+From 84cbc4cabd88f280eecbdaa51b692812be067417 Mon Sep 17 00:00:00 2001
+From: ubaumann <github@m.ubaumann.ch>
+Date: Sun, 2 Aug 2020 18:31:04 +0200
+Subject: [PATCH] Changed to use named constructor 'from_parent'
+
+Fix for pytest 6.0.0
+
+https://docs.pytest.org/en/stable/deprecations.html#node-construction-changed-to-node-from-parent
+---
+ pylama/pytest.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/pylama/pytest.py b/pylama/pytest.py
+index e6f6ec1..cb89a69 100644
+--- a/pylama/pytest.py
++++ b/pylama/pytest.py
+@@ -40,6 +40,8 @@ def pytest_sessionfinish(session):
+ def pytest_collect_file(path, parent):
+     config = parent.config
+     if config.option.pylama and path.ext == '.py':
++        if hasattr(PylamaItem, "from_parent"):
++            return PylamaItem.from_parent(parent=parent, path=path, fspath=path)
+         return PylamaItem(path, parent)
+ 
+ 
+@@ -49,7 +51,7 @@ class PylamaError(Exception):
+ 
+ class PylamaItem(pytest.Item, pytest.File):
+ 
+-    def __init__(self, path, parent):
++    def __init__(self, path, parent, fspath=None):
+         super(PylamaItem, self).__init__(path, parent)
+         self.add_marker("pycodestyle")
+         self.cache = None
