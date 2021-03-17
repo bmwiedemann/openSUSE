@@ -32,7 +32,13 @@ Patch5:         0001-HNV-fixes-for-qrydev-and-remove-lsdevinfo.patch
 Patch6:         0002-Disable-vnic-as-backup-vdevice-for-migratable-SR_IOV.patch
 Patch7:         0003-Clean-up-dead-network-config-interface-after-inactiv.patch
 Patch8:         powerpc-utils-sys_ident-Skip-length-field-from-search.patch
+Patch9:         0001-hcnmgr-Avoid-cleanup-of-bond-interface-at-boot-time-.patch
+Patch10:        0002-hcnmgr-Wait-for-sysfs-device-ready-when-looking-up-d.patch
+Patch11:        0003-hcnmgr-Avoid-using-ifcfg-file-for-checking-bonding-i.patch
+Patch12:        0004-hcnmgr-Avoid-using-xargs-to-process-NM-show-connecti.patch
 Patch14:        fix_kexec_service_name_for_suse.patch
+Patch15:        ofpathname-Use-NVMe-controller-physical-nsid.patch
+Patch16:        powerpc-utils-Fix-ofpathname-race-with-udev-rename.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  librtas-devel

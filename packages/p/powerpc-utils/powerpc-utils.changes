@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 15 11:46:44 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- ofpathname: Use NVMe controller physical nsid (bsc#1182020 ltc#191360).
+   + ofpathname-Use-NVMe-controller-physical-nsid.patch
+
+- HNV fixes (only NetworkManager supported) (jsc#SLE-13837 bsc#1181956 ltc#190722).
+   + 0001-hcnmgr-Avoid-cleanup-of-bond-interface-at-boot-time-.patch
+   + 0002-hcnmgr-Wait-for-sysfs-device-ready-when-looking-up-d.patch
+   + 0003-hcnmgr-Avoid-using-ifcfg-file-for-checking-bonding-i.patch
+   + 0004-hcnmgr-Avoid-using-xargs-to-process-NM-show-connecti.patch
+
+- Fix ofpathname race with udev rename (bsc#1183496 ltc#191534).
+   + powerpc-utils-Fix-ofpathname-race-with-udev-rename.patch
+
+-------------------------------------------------------------------
 Mon Jan  4 17:27:33 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - sys_ident: Skip length field from search (bsc#1180540 ltc#190620).
