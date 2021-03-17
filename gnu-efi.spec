@@ -17,7 +17,7 @@
 
 
 Name:           gnu-efi
-Version:        3.0.12
+Version:        3.0.13
 Release:        0
 Summary:        Library for EFI Applications
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -25,6 +25,7 @@ Group:          Development/Libraries/Other
 URL:            https://sourceforge.net/projects/gnu-efi
 Source:         https://download.sourceforge.net/project/gnu-efi/gnu-efi-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
+Patch1:         gnu-efi-bsc1182057-support-sbat-section.patch
 BuildRequires:  kernel-source
 ExclusiveArch:  ia64 %{ix86} x86_64 aarch64 %{arm}
 
@@ -35,6 +36,7 @@ environment.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 ##########################

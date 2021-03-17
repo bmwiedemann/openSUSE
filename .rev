@@ -256,4 +256,12 @@
     <comment>- switch to https:// urls (+ spec-cleaner)</comment>
     <requestid>861492</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b9d23cb5a4a4bd42d1804c6f1cacbabb</srcmd5>
+    <version>3.0.13</version>
+    <time>1616008398</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>878534</requestid>
+  </revision>
 </revisionlist>

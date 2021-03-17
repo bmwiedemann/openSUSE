@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 12 08:34:48 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to gnu-efi 3.0.13
+  + Define UnicodeSPrint/UnicodeVSPrint as our main SPrint/VSPrint
+    calls
+  + Use EFI_FILE_SYSTEM_VOLUME_LABEL rather than
+    EFI_FILE_SYSTEM_VOLUME_LABEL_INFO 
+  + Define BASE_CR as a duplicate of the _CR macro
+  + Fix CopyMem() not handling overlaps
+  + Add AsciiPrint and AsciiVSPrint
+  + Replace Pause() macro with new library function
+  + Add Simple Text Input Ex Protocol support
+- Add gnu-efi-bsc1182057-support-sbat-section.patch to support
+  .sbat section (bsc#1182057)
+
+-------------------------------------------------------------------
 Mon Jan  4 13:20:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - switch to https:// urls (+ spec-cleaner) 
