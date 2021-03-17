@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 15 17:32:52 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Update to 16991af20b (2021-03-15) (bsc#1183238):
+   * overlays: Add pcie-32bit-dma overlay
+
+-------------------------------------------------------------------
 Mon Mar  1 13:14:11 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Introduce enable-bt-overlay.dts (bsc#1182759)
