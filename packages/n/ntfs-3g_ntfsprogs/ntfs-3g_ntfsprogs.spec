@@ -1,7 +1,7 @@
 #
 # spec file for package ntfs-3g_ntfsprogs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,9 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?usrmerged}
+%define sbindir %_sbindir
+%else
+%define sbindir /sbin
+%endif
 
 %define sover 88
 
@@ -26,21 +32,14 @@ Version:        2017.3.23
 Release:        0
 Source:         http://tuxera.com/opensource/%{name}-%{version}.tgz
 Source2:        21-storage-ntfs-3g.fdi
-Url:            http://www.tuxera.com/community/ntfs-3g-download/
+URL:            http://www.tuxera.com/community/ntfs-3g-download/
 BuildRequires:  autoconf
-# SLES 11 is still supported
-%if 0%{?sles_version} && 0%{?suse_version} == 1110
-BuildRequires:  cpp48
-BuildRequires:  fuse-devel >= 2.6.0
-BuildRequires:  gcc48
-%else
-BuildRequires:  pkgconfig(fuse) >= 2.6.0
-%endif
 BuildRequires:  gnutls-devel
 BuildRequires:  hwinfo-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(fuse) >= 2.6.0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -56,8 +55,6 @@ Provides:       ntfsprogs-fuse = 1.13.1
 Obsoletes:      ntfsprogs-fuse < 1.13.1
 %if 0%{?suse_version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Requires(preun): update-alternatives
 Requires(postun): update-alternatives
 Supplements:    filesystem(ntfs-3g)
 %endif
@@ -120,10 +117,6 @@ They have been orphaned for ten years and are unlikely to be upgraded (except nt
 autoconf
 
 %build
-%if 0%{?sles_version} && 0%{?suse_version} == 1110
-export CC=gcc-4.8
-export CXX=cpp-4.8
-%endif
 #
 # regarding -Wno-sign-compare - checked with the Szaka: There is one variable
 # which is signed and would possibly ok to be unsigned. Any solution to this
@@ -140,19 +133,14 @@ make %{?_smp_mflags}
 
 %install
 make install DESTDIR="%buildroot"
+%if 0%{?usrmerged}
+mv %{buildroot}/sbin/* %{buildroot}%{_sbindir}
+%endif
 %{__rm} -v %{buildroot}%{_libdir}/libntfs-3g.la
-# Hal stuff for mounting on hotplug.
-%{__mkdir_p} %{buildroot}%{_datadir}/hal/fdi/policy/10osvendor/
-%{__install} -m 644 %{SOURCE2} %{buildroot}%{_datadir}/hal/fdi/policy/10osvendor/21-storage-ntfs-3g.fdi
-%if 0%{?sles_version} && 0%{?suse_version} == 1110
-# Touch ghost files
-touch %{buildroot}/sbin/mount.ntfs %{buildroot}%{_mandir}/man8/mount.ntfs.8
-%else
 # Alternatives for mount.ntfs (binary and manpage)
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -s -f %{_sysconfdir}/alternatives/mount.ntfs %{buildroot}/sbin/mount.ntfs
+ln -s -f %{_sysconfdir}/alternatives/mount.ntfs %{buildroot}%{sbindir}/mount.ntfs
 ln -s -f %{_sysconfdir}/alternatives/mount.ntfs.8%{ext_man} %{buildroot}%{_mandir}/man8/mount.ntfs.8%{?ext_man}
-%endif
 
 %check
 TESTFS=$(mktemp) || exit 1
@@ -161,24 +149,16 @@ src/ntfs-3g.probe --readonly  $TESTFS
 src/ntfs-3g.probe --readwrite $TESTFS
 rm -v $TESTFS
 
-# Workaround old bug in 11.1/11.2 packages that always removed the symlinks in
-# %postun.
-%if 0%{?sles_version} && 0%{?suse_version} == 1110
-%posttrans -n ntfs-3g
-if [ ! -f /sbin/mount.ntfs -a -f /sbin/mount.ntfs-3g ]; then
-  update-alternatives --install /sbin/mount.ntfs mount.ntfs /sbin/mount.ntfs-3g 10 --slave /usr/share/man/man8/mount.ntfs.8.gz mount.ntfs.8.gz /usr/share/man/man8/mount.ntfs-3g.8.gz
-fi
-%endif
-
 %post -n ntfs-3g
 # If the mount.ntfs group is in automatic mode, then this will also switch all
 # symlinks automatically
-update-alternatives --install /sbin/mount.ntfs mount.ntfs /sbin/mount.ntfs-3g 10 --slave %{_mandir}/man8/mount.ntfs.8%{?ext_man} mount.ntfs.8%{?ext_man} %{_mandir}/man8/mount.ntfs-3g.8%{?ext_man}
+update-alternatives --install %{sbindir}/mount.ntfs mount.ntfs %{sbindir}/mount.ntfs-3g 10 \
+  --slave %{_mandir}/man8/mount.ntfs.8%{?ext_man} mount.ntfs.8%{?ext_man} %{_mandir}/man8/mount.ntfs-3g.8%{?ext_man}
 
-%preun -n ntfs-3g
+%postun -n ntfs-3g
 # Note: we don't use "$1 -eq 0", to avoid issues if the package gets renamed
-if [ ! -f /sbin/mount.ntfs-3g ]; then
-  update-alternatives --remove mount.ntfs /sbin/mount.ntfs-3g
+if [ ! -f %{sbindir}/mount.ntfs-3g ]; then
+  update-alternatives --remove mount.ntfs %{sbindir}/mount.ntfs-3g
 fi
 
 %post -n libntfs-3g%sover -p /sbin/ldconfig
@@ -189,25 +169,18 @@ fi
 %defattr(-,root,root,-)
 %doc AUTHORS ChangeLog CREDITS NEWS README
 %license COPYING
-%dir %{_datadir}/hal
-%dir %{_datadir}/hal/fdi
-%dir %{_datadir}/hal/fdi/policy
-%dir %{_datadir}/hal/fdi/policy/10osvendor
-%{_datadir}/hal/fdi/policy/10osvendor/21-storage-ntfs-3g.fdi
 %{_bindir}/ntfs-3g
 %{_bindir}/ntfs-3g.probe
 %{_bindir}/ntfssecaudit
 %{_bindir}/ntfsusermap
 %{_bindir}/lowntfs-3g
-%ghost /sbin/mount.ntfs
-%if 0%{?suse_version} > 1110
+%{sbindir}/mount.ntfs
 %ghost %{_sysconfdir}/alternatives/mount.ntfs
 %ghost %{_sysconfdir}/alternatives/mount.ntfs.8%{?ext_man}
-%endif
-/sbin/mount.ntfs-3g
-/sbin/mount.lowntfs-3g
+%{sbindir}/mount.ntfs-3g
+%{sbindir}/mount.lowntfs-3g
 %{_mandir}/man8/mount.lowntfs-3g.8%{?ext_man}
-%ghost %{_mandir}/man8/mount.ntfs.8%{?ext_man}
+%{_mandir}/man8/mount.ntfs.8%{?ext_man}
 %{_mandir}/man8/mount.ntfs-3g.8%{?ext_man}
 %{_mandir}/man8/ntfs-3g.8%{?ext_man}
 %{_mandir}/man8/ntfs-3g.probe.8%{?ext_man}
@@ -231,7 +204,7 @@ fi
 %defattr(-, root, root)
 %doc AUTHORS ChangeLog CREDITS NEWS README
 %license COPYING
-/sbin/mkfs.ntfs
+%{sbindir}/mkfs.ntfs
 %{_sbindir}/mkntfs
 %{_sbindir}/ntfsclone
 %{_sbindir}/ntfscp
