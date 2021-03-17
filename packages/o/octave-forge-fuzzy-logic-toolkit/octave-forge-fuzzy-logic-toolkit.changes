@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 13 13:38:20 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.6
+  * Bug #53549 was fixed (parse error in function defuzz.m --
+    anonymous function body requires only a single expression).
+- Drop inst-defuz.m-update-anonymous-funtion.diff: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Mar  7 18:55:05 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.4.5
