@@ -31,4 +31,13 @@
     <comment>update haskell stack in openSUS</comment>
     <requestid>857687</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>12317c860523bc78a4eae614058c77b8</srcmd5>
+    <version>1.6.1</version>
+    <time>1616008558</time>
+    <user>dimstar_suse</user>
+    <comment>- Update hledger-interest to version 1.6.1.
+  Upstream does not provide a change log file.</comment>
+    <requestid>879194</requestid>
+  </revision>
 </revisionlist>
