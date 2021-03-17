@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 12 08:30:32 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fwupd-bsc1182057-fix-sbat-section-copy.patch to set the
+  proper section flags for .sbat section so that objcopy can
+  copy it into fwupd*.efi (bsc#1182057)
+
+-------------------------------------------------------------------
 Wed Feb 24 01:50:12 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to version 1.5.7:

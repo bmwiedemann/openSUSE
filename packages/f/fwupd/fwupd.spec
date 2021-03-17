@@ -44,6 +44,8 @@ Source:         %{name}-%{version}.tar.xz
 Patch1:         fwupd-bsc1130056-change-shim-path.patch
 # PATCH-FIX-OPENSUSE fwupd-jscSLE-11766-close-efidir-leap-gap.patch jsc#SLE-11766 qkzhu@suse.com -- Set SLE and openSUSE esp os dir at runtime
 Patch2:         fwupd-jscSLE-11766-close-efidir-leap-gap.patch
+# PATCH-FIX-UPSTRAEM fwupd-bsc1182057-fix-sbat-section-copy.patch bsc#1182057 glin@suse.com -- Set the proper section flags for .sbat
+Patch3:         fwupd-bsc1182057-fix-sbat-section-copy.patch
 
 BuildRequires:  dejavu-fonts
 %if %{with fish_support}
