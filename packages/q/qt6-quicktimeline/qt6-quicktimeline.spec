@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-quicktimeline
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.0.0
+%define real_version 6.0.2
 %define short_version 6.0
 %define tar_name qtquicktimeline-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quicktimeline%{?pkg_suffix}
-Version:        6.0.0
+Version:        6.0.2
 Release:        0
 Summary:        Qt6 QuickTimeline plugin
 License:        GPL-3.0-or-later
