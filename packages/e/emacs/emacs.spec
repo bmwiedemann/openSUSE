@@ -179,6 +179,7 @@ Patch25:        emacs-26.1-xft4x11.patch
 Patch26:        emacs-27.1-pdftex.patch
 Patch27:        emacs-27.1-home.patch
 Patch28:        emacs-27.1-gif.patch
+Patch29:        emacs-27.1-Xauthority4server.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
@@ -296,6 +297,7 @@ and most assembler-like syntaxes.
 %patch26 -p0 -b .fmt
 %patch27 -p0 -b .home
 %patch28 -p1 -b .crash
+%patch29 -p0 -b .xauth
 %patch   -p0 -b .0
 %if %{without tex4pdf}
 pushd etc/refcards/
@@ -586,6 +588,7 @@ rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/term.el.term
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/etc/ETAGS.EBNF
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/etc/ETAGS.README
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/etc/refcards/*.fmt
+rm -vf %{buildroot}%{_datadir}/emacs/%{version}/etc/emacs.service.xauth
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/elc.tar.gz
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/mail/sendmail.el.snd
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/ldefs-boot.el.psbdf
@@ -607,6 +610,7 @@ rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/textmodes/ispell.el.0
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/epg.el.gnupg
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/mouse.el.prime
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/dynamic-setting.el.custfnt
+rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/server.el.xauth
 unelc  %{buildroot}%{_datadir}/emacs/%{version}/lisp/bindings.elc
 unelc  %{buildroot}%{_datadir}/emacs/%{version}/lisp/cus-start.elc
 unelc  %{buildroot}%{_datadir}/emacs/%{version}/lisp/generic-x.elc

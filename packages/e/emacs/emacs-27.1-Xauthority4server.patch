@@ -1,0 +1,112 @@
+From werner@suse.de
+Date: Mon, 08 Mar 2021 13:35:41 +0000
+Subject: Allow GNU Emacs server to open X Display
+
+even if the Xauthority file is not the default expected by XCloseDisplay()
+
+---
+ etc/emacs.service |    1 +
+ lisp/server.el    |   40 ++++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 39 insertions(+), 2 deletions(-)
+
+--- etc/emacs.service
++++ etc/emacs.service	2021-03-08 13:24:42.504543632 +0000
+@@ -8,6 +8,7 @@ Documentation=info:emacs man:emacs(1) ht
+ 
+ [Service]
+ Type=notify
++Environment=XAUTHORITY=%t/emacs/xauth
+ ExecStart=emacs --fg-daemon
+ ExecStop=emacsclient --eval "(kill-emacs)"
+ # The location of the SSH auth socket varies by distribution, and some
+--- lisp/server.el
++++ lisp/server.el	2021-03-08 13:12:50.619365207 +0000
+@@ -281,6 +281,11 @@ the \"-f\" switch otherwise."
+   "The directory in which to place the server socket.
+ If local sockets are not supported, this is nil.")
+ 
++;; Hold the Xauthority if an X Display is used
++(defvar server-xauth-file nil
++  "The Xauthority file to hold the Xauthority cookies.
++If no Xauthority is used, this is nil.")
++
+ (defun server-clients-with (property value)
+   "Return a list of clients with PROPERTY set to VALUE."
+   (let (result)
+@@ -630,7 +635,8 @@ the `server-process' variable."
+ 	     (t (yes-or-no-p
+ 		 "The current server still has clients; delete them? "))))
+     (let* ((server-dir (if server-use-tcp server-auth-dir server-socket-dir))
+-	   (server-file (expand-file-name server-name server-dir)))
++	   (server-file (expand-file-name server-name server-dir))
++	   (xauth-file (concat server-dir "/xauth")))
+       (when server-process
+ 	;; kill it dead!
+ 	(ignore-errors (delete-process server-process)))
+@@ -704,6 +710,14 @@ server or call `\\[server-force-delete]'
+ 			       :plist '(:authenticated t)))))
+ 	  (unless server-process (error "Could not start server process"))
+ 	  (process-put server-process :server-file server-file)
++	  ;; File to hold Xauthority cookies
++	  (unless (file-exists-p xauth-file)
++	    (make-empty-file xauth-file))
++	  (when (file-exists-p xauth-file)
++	    (let ((var (concat "XAUTHORITY=" xauth-file)))
++		(dolist (proc (process-list))
++		  (process-put proc 'env (cons var (process-get proc 'env)))))
++	    (setq server-xauth-file xauth-file))
+ 	  (when server-use-tcp
+ 	    (let ((auth-key (server-get-auth-key)))
+ 	      (process-put server-process :auth-key auth-key)
+@@ -832,7 +846,7 @@ This handles splitting the command if it
+   (let ((frame
+          (server-with-environment
+              (process-get proc 'env)
+-             '("LANG" "LC_CTYPE" "LC_ALL"
++             '("LANG" "LC_CTYPE" "LC_ALL" "LC_PAPER" "LC_MEASUREMENT"
+                ;; For tgetent(3); list according to ncurses(3).
+                "BAUDRATE" "COLUMNS" "ESCDELAY" "HOME" "LINES"
+                "NCURSES_ASSUMED_COLORS" "NCURSES_NO_PADDING"
+@@ -1088,6 +1102,8 @@ The following commands are accepted by t
+ 		nowait     ; t if emacsclient does not want to wait for us.
+ 		frame      ; Frame opened for the client (if any).
+ 		display    ; Open frame on this display.
++		(xauth-file (expand-file-name "~/.Xauthority"))
++		xauth-cmd
+ 		parent-id  ; Window ID for XEmbed
+ 		dontkill   ; t if client should not be killed.
+ 		commands
+@@ -1228,6 +1244,16 @@ The following commands are accepted by t
+                 ;; -env NAME=VALUE:  An environment variable.
+                 ("-env"
+                  (let ((var (pop args-left)))
++		   (if (and (stringp var)
++		         (string-match "^\\([^=]+\\)=\\(.*\\)" var))
++			 (if (cond ((string-equal (match-string 1 var) "LANG") t)
++			       ((string-equal (match-string 1 var) "LC_CTYPE") t)
++			       ((string-equal (match-string 1 var) "LC_ALL") t)
++			       ((string-equal (match-string 1 var) "LC_PAPER") t)
++			       ((string-equal (match-string 1 var) "LC_MEASUREMENT") t)
++			       ((string-equal (match-string 1 var) "DISPLAY") t)
++			       ((string-equal (match-string 1 var) "XAUTHORITY") (setq xauth-file (match-string 2 var))))
++			     (setenv (match-string 1 var) (match-string 2 var) t)))
+                    ;; XXX Variables should be encoded as in getenv/setenv.
+                    (process-put proc 'env
+                                 (cons var (process-get proc 'env)))))
+@@ -1243,6 +1269,16 @@ The following commands are accepted by t
+                 ;; Unknown command.
+                 (arg (error "Unknown command: %s" arg))))
+ 
++	    (if (and display server-xauth-file)
++		(progn
++		    (if (not xauth-file)
++			(setq xauth-file (expand-file-name "~/.Xauthority")))
++		    (if (and (file-exists-p xauth-file) (not (file-equal-p xauth-file server-xauth-file)))
++			(progn
++			    (setq xauth-cmd (concat "xauth -f " xauth-file " extract - " display
++				"| xauth -f " server-xauth-file " merge -"))
++			    (shell-command xauth-cmd)))))
++
+ 	    ;; If both -no-wait and -tty are given with file or sexp
+ 	    ;; arguments, use an existing frame.
+ 	    (and nowait

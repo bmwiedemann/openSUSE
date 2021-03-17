@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar  8 13:40:06 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch emacs-27.1-Xauthority4server.patch
+  * Allow GNU Emacs server to open X Display even if the Xauthority
+    file is not the default expected by XCloseDisplay()
+  * Hopefully fix boo#1174534 and boo#1179854 
+
+-------------------------------------------------------------------
 Tue Jan 26 14:17:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace system-user-games with user(games): be resilient to
