@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 16 02:57:12 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix powerpc-ieee1275 lpar takes long time to boot with increasing number of
+  nvme namespace (bsc#1177751)
+  0001-ieee1275-Avoiding-many-unecessary-open-close.patch
+
+-------------------------------------------------------------------
 Thu Mar 11 02:00:15 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Fix chainloading windows on dual boot machine (bsc#1183073)
