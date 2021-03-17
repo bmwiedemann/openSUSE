@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Mar 17 08:55:58 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- Udpate to 20.11.5:
+- New features:
+ * New job_container/tmpfs plugin developed by NERSC that can be used to 
+   create per-job filesystem namespaces.  Documentaiion and configuration
+   can be found in the respecting man page.
+- Bug fixes:
+ * Fix main scheduler bug where bf_hetjob_prio truncates SchedulerParameters.
+ * Fix sacct not displaying UserCPU, SystemCPU and TotalCPU for large times.
+ * scrontab - fix to return the correct index for a bad #SCRON option.
+ * scrontab - fix memory leak when invalid option found in #SCRON line.
+ * Add errno for when a user requests multiple partitions and they are using
+   partition based associations.
+ * Fix issue where a job could run in a wrong partition when using
+   EnforcePartLimits=any and partition based associations.
+ * Remove possible deadlock when adding associations/wckeys in multiple
+   threads.
+ * When using PrologFlags=alloc make sure the correct Slurm version is set
+   in the credential.
+ * When sending a job a warning signal make sure we always send SIGCONT
+   beforehand.
+ * Fix issue where a batch job would continue running if a prolog failed on a
+   node that wasn't the batch host and requeuing was disabled.
+ * Fix issue where sometimes salloc/srun wouldn't get a message about a prolog
+   failure in the job's stdout.
+ * Requeue or kill job on a prolog failure when PrologFlags is not set.
+ * Fix race condition causing node reboots to get requeued before
+   ResumeTimeout expires.
+ * Preserve node boot_req_time on reconfigure.
+ * Preserve node power_save_req_time on reconfigure.
+ * Fix node reboots being queued and issued multiple times and preventing the
+   reboot to time out.
+ * Fix run_command to exit correctly if track_script kills the calling thread.
+ * Only requeue a job when the PrologSlurmctld returns nonzero.
+ * When a job is signaled with SIGKILL make sure we flush all
+   prologs/setup scripts.
+ * Handle burst buffer scripts if the job is canceled while stage_in is
+   happening.
+ * When shutting down the slurmctld make note to ignore error message when
+   we have to kill a prolog/setup script we are tracking.
+ * scrontab - add support for the --open-mode option.
+ * acct_gather_profile/influxdb - avoid segfault on plugin shutdown if setup
+   has not completed successfully.
+ * Reduce delay in starting salloc allocations when running with prologs.
+ * Alter AllocNodes check to work if the allocating node's domain doesn't
+   match the slurmctld's. This restores the pre*20.11 behavior.
+ * Fix slurmctld segfault if jobs from a prior version had the now-removed
+   INVALID_DEPEND state flag set and were allowed to run in 20.11.
+ * Add job_container/tmpfs plugin to give a method to provide a private /tmp
+   per job.
+ * Set the correct core affinity when using AutoDetect.
+ * slurmrestd - mark "environment" as required for job submissions in schema.
+
+-------------------------------------------------------------------
 Tue Feb 23 16:24:16 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - Udpate to 20.11.04

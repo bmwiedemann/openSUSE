@@ -18,7 +18,7 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 36
-%define ver 20.11.4
+%define ver 20.11.5
 %define _ver _20_11
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
@@ -104,7 +104,7 @@ ExclusiveArch:  do_not_build
 %ifarch x86_64
  %define have_libnuma 1
 %else
- %ifarch %{ix86} 
+ %ifarch %{ix86}
   %if 0%{?sle_version} >= 120200
    %define have_libnuma 1
   %endif
@@ -127,7 +127,7 @@ Version:        %{ver}
 Release:        0
 Summary:        Simple Linux Utility for Resource Management
 License:        SUSE-GPL-2.0-with-openssl-exception
-Group:          Productivity/Clustering/Computing 
+Group:          Productivity/Clustering/Computing
 URL:            https://www.schedmd.com
 Source:         https://download.schedmd.com/slurm/%{pname}-%{dl_ver}.tar.bz2
 Source1:        slurm-rpmlintrc
@@ -146,8 +146,8 @@ Recommends:     (%{name}-munge = %version if munge)
 Recommends:     %{name}-munge = %version
 %endif
 Requires(pre):  %{name}-node = %{version}
-Recommends:     %{name}-doc = %{version}
 Recommends:     %{name}-config-man = %{version}
+Recommends:     %{name}-doc = %{version}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  coreutils
@@ -197,11 +197,11 @@ BuildRequires:  rrdtool-devel
 BuildRequires:  dejagnu
 BuildRequires:  pkgconfig(systemd)
 %else
-Requires(post):         %insserv_prereq %fillup_prereq
+Requires(post): %insserv_prereq %fillup_prereq
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Obsoletes:      slurm-sched-wiki < %{version}
-Obsoletes:      slurmdb-direct < %{version} 
+Obsoletes:      slurmdb-direct < %{version}
 
 %description
 SLURM is a fault-tolerant scalable cluster management and job
@@ -264,7 +264,6 @@ Conflicts:      libslurm
 This package contains the library needed to run programs dynamically linked
 with SLURM.
 
-
 %package -n libpmi%{pmi_so}%{?upgrade:%{_ver}}
 Summary:        SLURM PMI Library
 Group:          System/Libraries
@@ -288,7 +287,7 @@ slurmstepd process.
 
 %package devel
 Summary:        Development package for SLURM
-Group:          Development/Libraries/C and C++ 
+Group:          Development/Libraries/C and C++
 Requires:       %{libslurm} = %{version}
 Requires:       %{name} = %{version}
 Requires:       libpmi%{pmi_so} = %{version}
@@ -307,7 +306,6 @@ Requires:       %{name} = %{version}
 
 %description auth-none
 This package cobtains the SLURM NULL authentication module.
-
 
 %package munge
 Summary:        SLURM authentication and crypto implementation using Munge
@@ -333,7 +331,6 @@ Group:          Productivity/Clustering/Computing
 sview is a graphical user interface to get and update state information for
 jobs, partitions, and nodes managed by SLURM.
 
-
 %package slurmdbd
 Summary:        SLURM database daemon
 Group:          Productivity/Clustering/Computing
@@ -351,16 +348,15 @@ Recommends:     %{name}-munge = %version
 %if 0%{?with_systemd}
 %{?systemd_ordering}
 %else
-Requires(post):         %insserv_prereq %fillup_prereq
+Requires(post): %insserv_prereq %fillup_prereq
 %endif
 Obsoletes:      slurm-sched-wiki < %{version}
-Obsoletes:      slurmdb-direct < %{version} 
+Obsoletes:      slurmdb-direct < %{version}
 %{?upgrade:Provides: %{pname}-slurmdbd = %{version}}
 %{?upgrade:Conflicts: %{pname}-slurmdb}
 
 %description slurmdbd
 The SLURM database daemon provides accounting of jobs in a database.
-
 
 %package sql
 Summary:        Slurm SQL support
@@ -370,7 +366,6 @@ Group:          Productivity/Clustering/Computing
 
 %description sql
 Contains interfaces to MySQL for use by SLURM.
-
 
 %package plugins
 Summary:        SLURM plugins (loadable shared objects)
@@ -419,7 +414,6 @@ Mail program used directly by the SLURM daemons. On completion of a job,
 it waits for accounting information to be available and includes that
 information in the email body.
 
-
 %package sjstat
 Summary:        Perl tool to print SLURM job state information
 Group:          Productivity/Clustering/Computing
@@ -463,7 +457,7 @@ through Lua.
 
 %package rest
 Summary:        Slurm REST API Interface
-Group:          Productivity/Clustering/Computing 
+Group:          Productivity/Clustering/Computing
 Requires:       %{name}-config = %{version}
 %if 0%{?have_http_parser}
 BuildRequires:  http-parser-devel
@@ -480,7 +474,7 @@ Recommends:     %{name}-munge = %version
 This package provides the interface to SLURM via REST API.
 
 %package node
-Summary:        Minimal slurm node 
+Summary:        Minimal slurm node
 Group:          Productivity/Clustering/Computing
 Requires:       %{name}-config = %{version}
 Requires:       %{name}-plugins = %{version}
@@ -492,7 +486,7 @@ Recommends:     %{name}-munge = %version
 %if 0%{?with_systemd}
 %{?systemd_ordering}
 %else
-Requires(post):         %insserv_prereq %fillup_prereq
+Requires(post): %insserv_prereq %fillup_prereq
 %endif
 %{?upgrade:Provides: %{pname}-node = %{version}}
 %{?upgrade:Conflicts: %{pname}-node}
@@ -533,8 +527,8 @@ Summary:        Store accounting data in hdf5
 Group:          Productivity/Clustering/Computing
 
 %description hdf5
-Plugin to store accounting in the hdf5 file format. This plugin has to be 
-activated in the slurm configuration. Includes also utility the program 
+Plugin to store accounting in the hdf5 file format. This plugin has to be
+activated in the slurm configuration. Includes also utility the program
 sh5utils to merge this hdf5 files or extract data from them.
 
 %package cray
@@ -544,7 +538,6 @@ Group:          Productivity/Clustering/Computing
 %description cray
 Plugins for specific cray hardware, includes power and knl node management.
 Contains also cray specific documentation.
-
 
 %prep
 %setup -q -n %{pname}-%{dl_ver}
@@ -629,7 +622,7 @@ sed -i -e '/^ControlMachine=/i# Ordered List of Control Nodes' \
     -e 's#BackupController=.*#SlurmctldHost=linux1(10.0.10.21)#' \
     -e '/.*ControlAddr=.*/d' \
     -e '/.*BackupAddr=.*/d'  %{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf
-cat >>%{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf <<EOF 
+cat >>%{buildroot}/%{_sysconfdir}/%{pname}/slurm.conf <<EOF
 # SUSE default configuration
 PropagateResourceLimitsExcept=MEMLOCK
 NodeName=linux State=UNKNOWN
@@ -686,8 +679,8 @@ libdir=%{_libdir}
 Cflags: -I\${includedir}
 Libs: -L\${libdir} -lslurm
 Description: Slurm API
-Name: %{pname}
-Version: %{version}
+Name:           %{pname}
+Version:        %{version}
 EOF
 
 # Enable rotation of log files
@@ -706,7 +699,7 @@ cat <<EOF > %{buildroot}/%{_sysconfdir}/logrotate.d/${service}.conf
     copytruncate
     postrotate
         pgrep ${service} && killall -SIGUSR2 ${service} || exit 0
-    endscript 
+    endscript
 }
 EOF
 done
@@ -728,7 +721,7 @@ Alias /slurm/ "/usr/share/doc/slurm-%{ver}/html/"
 EOF
 cat > %{buildroot}/%{_sysconfdir}/%{pname}/nss_slurm.conf <<EOF
 ## Optional config for libnss_slurm
-## Specify if different from default 
+## Specify if different from default
 # SlurmdSpoolDir /var/spool/slurmd
 ## Specify if does not match hostname
 # NodeName myname
@@ -826,7 +819,7 @@ rm -f %{buildroot}/%{_mandir}/man8/slurmrestd.*
 %else
 %restart_on_update slurmd
 %insserv_cleanup
-%endif 
+%endif
 
 %pre config
 %define slurmdir %{_sysconfdir}/slurm
@@ -870,7 +863,7 @@ exit 0
   str = string.gsub(str, '%%s+$', '')
   str = string.gsub(str, '[\\n\\r]+', ' ')
   if str == "active" then
-    local file = io.open("/run/%{1}.rst","w"); file:close() 
+    local file = io.open("/run/%{1}.rst","w"); file:close()
   end
  end
 }
@@ -880,7 +873,7 @@ exit 0
 # Do NOT delete the line breaks in the macro definition: they help
 # to cope with different versions of the %%_restart_on_update.
 }
-%define _res_update() %{?with_systemd: 
+%define _res_update() %{?with_systemd:
  %{expand:%%_restart_on_update %{?*}}
 }
 
@@ -906,9 +899,9 @@ exit 0
 %_rest slurmdbd
 
 %if 0%{?sle_version} > 120200 || 0%{?suse_version} > 1320
-%define my_license %license 
-%else 
-%define my_license %doc 
+%define my_license %license
+%else
+%define my_license %doc
 %endif
 
 %files
@@ -1093,6 +1086,7 @@ exit 0
 %{_libdir}/slurm/jobcomp_script.so
 %{_libdir}/slurm/job_container_cncu.so
 %{_libdir}/slurm/job_container_none.so
+%{_libdir}/slurm/job_container_tmpfs.so
 %{_libdir}/slurm/job_submit_all_partitions.so
 %{_libdir}/slurm/job_submit_defaults.so
 %{_libdir}/slurm/job_submit_logging.so
@@ -1236,6 +1230,7 @@ exit 0
 %{_mandir}/man5/nonstop.conf.5.*
 %{_mandir}/man5/topology.*
 %{_mandir}/man5/knl.conf.5.*
+%{_mandir}/man5/job_container.conf.5.*
 
 %if 0%{?have_hdf5}
 %files hdf5
