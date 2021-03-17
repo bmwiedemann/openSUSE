@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 12 20:37:21 UTC 2021 - psimons@suse.com
+
+- Update th-compat to version 0.1.2.
+  ### 0.1.2 [2021.03.12]
+  * Add `bindSplice`, `bindSplice_`, `examineSplice`, `joinSplice`,
+    `hoistSplice`, `liftSplice`, and `unTypeSplice` to
+    `Language.Haskell.TH.Syntax.Compat`.
+
+-------------------------------------------------------------------
 Mon Feb  8 05:05:09 UTC 2021 - psimons@suse.com
 
 - Update th-compat to version 0.1.1.
