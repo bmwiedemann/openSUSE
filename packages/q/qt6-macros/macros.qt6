@@ -252,6 +252,16 @@
 
 %qt6_install_docs \
   DESTDIR=%{buildroot} cmake --build \\%{__qt6_build_options} -t install_docs_qt%{__qt6_module_name} \
+  # in Qt 6.0.0, %%{_qt6_docdir}/*.qch are folders which contain \
+  # files with the same name. \
+  # Starting with 6.0.1, the file is installed in %%{_qt6_docdir} directly. \
+  # We need a %%pre scriptlet to remove the old folder before upgrading. \
+  _current_dir=`pwd` \
+  pushd %{buildroot}%{_qt6_docdir} \
+  for qch_file in *.qch ; do \
+    echo "if [ -d %{_qt6_docdir}/${qch_file} ] ; then rm -r %{_qt6_docdir}/${qch_file} ; fi" >> ${_current_dir}/qch.pre \
+  done \
+  popd \
 %{nil}
 
 #--------------------------------------------------------------
@@ -286,6 +296,8 @@ License:     GFDL-1.3-or-later \
 \
 %description -n %{__qt6_doc_package_name}-qch \
 This package contains documentation for %{name} in QCH format. \
+\
+%pre -n %{__qt6_doc_package_name}-qch -f qch.pre \
 \
 %files -n %{__qt6_doc_package_name}-html \
 %dir %{_qt6_docdir} \

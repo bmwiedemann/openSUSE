@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jan 11 15:06:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add a %pre scriplet for QCH doc packages.
+ Starting with 6.0.1, the qch files are installed directly into %_qt6_docdir
+ instead of %_qt6_docdir/<qch doc>.qch/.
+ RPM can't upgrade packages if a directory is replaced by something
+ else, we need a %pre scriptlet that will remove existing folders.
+
+-------------------------------------------------------------------
 Sat Dec 12 18:09:56 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Doc update.
