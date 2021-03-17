@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 17 15:11:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add missing BR python-fs
+
+-------------------------------------------------------------------
 Sat Feb 13 10:16:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 build (no scipy) 

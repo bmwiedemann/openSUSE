@@ -45,6 +45,7 @@ BuildRequires:  %{python_module defcon >= 0.6.0}
 BuildRequires:  %{python_module fontMath >= 0.4.9}
 BuildRequires:  %{python_module fontParts >= 0.8.2}
 BuildRequires:  %{python_module fontPens >= 0.1.0}
+BuildRequires:  %{python_module fs}
 BuildRequires:  %{python_module lxml >= 4.0}
 BuildRequires:  %{python_module mutatorMath >= 2.1.2}
 BuildRequires:  %{python_module unicodedata2 >= 13.0}
