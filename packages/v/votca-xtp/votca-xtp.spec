@@ -18,10 +18,10 @@
 
 
 Name:           votca-xtp
-Version:        1.6.4
+Version:        2021
 Release:        0
-%define         uversion %{version}
-%define         sover 6
+%define         uversion %version
+%define         sover 2021
 Summary:        VOTCA excitation and charge properties module
 License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
@@ -39,6 +39,7 @@ BuildRequires:  libboost_system-devel >= 1.48.0
 BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_timer-devel >= 1.48.0
 BuildRequires:  libxc-devel
+BuildRequires:  libint-devel
 BuildRequires:  pkg-config
 BuildRequires:  votca-csg-devel = %{version}
 # for hdf5
@@ -50,6 +51,11 @@ Requires:       libvotca_xtp%sover = %{version}
 
 Obsoletes:      votca-xtp-doc < %{version}
 Provides:       votca-xtp-doc < %{version}
+
+# libint2 is broken on 32-bit archs
+# https://github.com/evaleev/libint/issues/196
+# https://github.com/votca/xtp/issues/652
+ExcludeArch: %ix86 %arm
 
 %description
 Versatile Object-oriented Toolkit for Coarse-graining Applications (VOTCA) is
@@ -105,7 +111,9 @@ FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M:%%S
 sed -i -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -e "s/__TIME__/\"$FAKE_BUILDTIME\"/" src/libxtp/version.cc
 
 %build
-%{cmake} -DCMAKE_SKIP_RPATH:BOOL=OFF -DLIB=%{_lib} -DBUILD_MANPAGES=ON -DENABLE_TESTING=ON
+%{cmake} -DCMAKE_SKIP_RPATH=OFF -DBUILD_MANPAGES=ON -DENABLE_TESTING=ON
+# save some memory
+%define _smp_mflags -j1
 %cmake_build
 
 %install
@@ -115,18 +123,18 @@ sed -i -e '1s@env @@'  %{buildroot}/%{_bindir}/xtp_* %{buildroot}/%{_datadir}/vo
 %fdupes %{buildroot}%{_prefix}
 
 %check
-make -C build test CTEST_OUTPUT_ON_FAILURE=1
+%ctest
 
 %post -n libvotca_xtp%sover -p /sbin/ldconfig
 %postun -n libvotca_xtp%sover -p /sbin/ldconfig
 
 %files
-%doc CHANGELOG.md NOTICE README.md
+%doc CHANGELOG.rst NOTICE.rst README.rst
 %{_bindir}/xtp_*
 %{_mandir}/man1/xtp_*
 
 %files common
-%license LICENSE.md
+%license LICENSE.rst
 %{_datadir}/votca
 
 %files -n libvotca_xtp%sover
@@ -135,5 +143,6 @@ make -C build test CTEST_OUTPUT_ON_FAILURE=1
 %files devel
 %{_includedir}/votca/xtp/
 %{_libdir}/libvotca_xtp.so
+%{_libdir}/cmake/VOTCA_XTP
 
 %changelog

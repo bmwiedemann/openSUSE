@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Sun Mar 14 13:44:47 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- exclude 32-bit archs due to bug in libint2 see 
+  [gh#evaleev/libint#196], [gh#votca/xtp#652]
+
+-------------------------------------------------------------------
+Sat Mar 13 18:47:22 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 2021
+  - fix CI on rawhide ([gh#votca/xtp#663])
+  - add xtp_qmmm2qm to cmake install ([gh#votca/xtp#665])
+  - add auto-cancel workflow to GitHub Actions
+    ([gh#votca/xtp#674])
+
+-------------------------------------------------------------------
+Wed Jan 13 19:15:01 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 2021~rc1
+  - G0W0 rpa energies are fixed in BSE ([gh#votca/xtp#383])
+  - Hqp part of BSE can be separate from QP range
+    ([gh#votca/xtp#388])
+  - Fixed Cuda implementation ([gh#votca/xtp#391])
+  - Plain, linear, and Anderson mixing in evGW
+  - Use a general syntax to represent all QMPackages input
+    ([gh#votca/xtp#318])
+  - Remove support for both Gaussian and NWChem
+    ([gh#votca/xtp#318])
+  - Fixed executable path check ([gh#votca/xtp#400])
+  - Usage of offdiagonal elements of Hqp in BSE optional, default:
+    with offdiagonals ([gh#votca/xtp#402])
+  - refactored MO reordering of external QMPackages
+    ([gh#votca/xtp#406])
+  - Add defaults to XML ([gh#votca/xtp#319], [gh#votca/xtp#413])
+  - fix build with gcc-10 ([gh#votca/xtp#422], [gh#votca/xtp#424])
+  - Add name command line argument ([gh#votca/xtp#426])
+  - fix usage of PROJECT_SOURCE_DIR in cmake ([gh#votca/xtp#431])
+  - check that temperature is positive for KMC
+    ([gh#votca/xtp#432])
+  - document cmake options and packages ([gh#votca/xtp#434])
+  - remove long gone MKL option for gitlab-ci ([gh#votca/xtp#435])
+  - add documentation using Sphinx ([gh#votca/xtp#433],
+    [gh#votca/xtp#615])
+  - add kokkos-based Ewald solver ([gh#votca/xtp#444],
+    [gh#votca/xtp#446], [gh#votca/xtp#485])
+  - allow multiple choices for the calculator options
+    ([gh#votca/xtp#442], [gh#votca/xtp#445])
+  - move bsecoupling defaults to xml ([gh#votca/xtp#451])
+  - address missing includes ([gh#votca/xtp#452])
+  - fix readjobfiles path ([gh#votca/xtp#453])
+  - standardising include order and style in header files
+    ([gh#votca/xtp#448])
+  - changed to OpenMP reductions instead of hand crafted solutions
+    ([gh#votca/xtp#466], [gh#votca/xtp#471], [gh#votca/xtp#493])
+  - switch to GitHub Actions as CI ([gh#votca/xtp#467],
+    [gh#votca/xtp#474], [gh#votca/xtp#477], [gh#votca/xtp#482],
+    [gh#votca/xtp#500], [gh#votca/xtp#502], [gh#votca/xtp#518],
+    [gh#votca/xtp#549], [gh#votca/xtp#637])
+  - move tutorial to its own repo ([gh#votca/xtp#450])
+  - removed share/packages folder ([gh#votca/xtp#475])
+  - copy orca *.gbw files in eqm ([gh#votca/xtp#472])
+  - improve mkl support ([gh#votca/xtp#479])
+  - add def2-tzvp, def2-tzvpp, def2-qzvp, def2-qzvpp for
+    Rb,I,Ag,Xe ([gh#votca/xtp#480])
+  - create a map between orca and libxc functional names
+    ([gh#votca/xtp#461])
+  - fix path to share/data ([gh#votca/xtp#486],
+    [gh#votca/xtp#487])
+  - remove special XML symbols ([gh#votca/xtp#488])
+  - standardize includes in src files ([gh#votca/xtp#462])
+  - add cmake exported target ([gh#votca/xtp#489])
+  - update codacy badge ([gh#votca/xtp#490])
+  - add mkl builds to CI ([gh#votca/xtp#496])
+  - convert markdown to rst ([gh#votca/xtp#497])
+  - enable CXX only in CMake ([gh#votca/xtp#499])
+  - implement RPA correlation energy ([gh#votca/xtp#498])
+  - added verbose option for rootfinder ([gh#votca/xtp#503])
+  - fix orca pointcharges ([gh#votca/xtp#504])
+  - remove constant cutoff from neighborlist ([gh#votca/xtp#508],
+    [gh#votca/xtp#509])
+  - fix default and flags properties issue ([gh#votca/xtp#511])
+  - add more checks to the dft_parse_part ([gh#votca/xtp#510])
+  - add NOSCF option for iqm in internal and external DFT
+    ([gh#votca/xtp#483])
+  - added versions to output files ([gh#votca/xtp#523])
+  - write an empty state file if it does not exist yet
+    ([gh#votca/xtp#526])
+  - fix double unit conversion ([gh#votca/xtp#531])
+  - Unittests can read input and reference values from files
+    ([gh#votca/xtp#529])
+  - fix double SCF in ORCA keyword line ([gh#votca/xtp#533])
+  - xtp internally uses only single shells. ([gh#votca/xtp#539])
+  - Refactor orbital reordering ([gh#votca/xtp#537])
+  - fix build with clang-11 ([gh#votca/xtp#546])
+  - Add a molden parser to xtp ([gh#votca/xtp#547])
+  - Correct self-energy frequency derivative ([gh#votca/xtp#550])
+  - fix multiline orca keyword ([gh#votca/xtp#552])
+  - Contour Deformation Approach (CDA) for self-energy implemented
+    (#4, [gh#votca/xtp#548])
+  - BSE with perturbative dynamical screening (#3,
+    [gh#votca/xtp#560])
+  - Correction of full BSE energy contribution in analysis output
+    ([gh#votca/xtp#560])
+  - Bump required CMake version to 3.12 ([gh#votca/xtp#568])
+  - Refactored calculator interface ([gh#votca/xtp#570])
+  - Fixed boost test deprecation warnings ([gh#votca/xtp#569])
+  - Refactored CUDA-OpenMP integration ([gh#votca/xtp#571])
+  - replaced own integrals with the libint library
+    ([gh#votca/xtp#559])
+  - improved kmc output ([gh#votca/xtp#574])
+  - fix build on Ubuntu 16.04 ([gh#votca/xtp#577])
+  - use unique_ptr in factory ([gh#votca/xtp#581])
+  - fix QMMM with QP ([gh#votca/xtp#590], [gh#votca/xtp#591])
+  - fix bug in setCenter of AODipole ([gh#votca/xtp#593])
+  - extra check in orca unit test ([gh#votca/xtp#594])
+  - fixed atomid numbering while adding containers
+    ([gh#votca/xtp#599])
+  - added tool for automatic mapping file generation
+    ([gh#votca/xtp#595])
+  - Added GPU support for RPA ([gh#votca/xtp#601])
+  - fixed int64 interface to RDKIT ([gh#votca/xtp#602])
+  - remove kokkos dependent ewald ([gh#votca/xtp#612])
+  - fixed Sphinx warnings ([gh#votca/xtp#609])
+  - better error for exceeded angular momentum in libint
+    ([gh#votca/xtp#613])
+  - fixed wrong QP-QMMM energy with non-zero QPmin
+    ([gh#votca/xtp#620])
+  - fixed density analysis options ([gh#votca/xtp#627])
+  - Use libint transformation matrices ([gh#votca/xtp#630])
+  - Added script to extract orbitals from qmmm statefile
+    ([gh#votca/xtp#629])
+  - clean up XTP app message ([gh#votca/xtp#631])
+  - fixed EXX 3c mode ([gh#votca/xtp#640]) 
+
+-------------------------------------------------------------------
 Tue Jan 12 23:50:49 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Update to 1.6.4
