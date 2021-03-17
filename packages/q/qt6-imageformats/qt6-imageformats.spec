@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-imageformats
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.0.0
+%define real_version 6.0.2
 %define short_version 6.0
 %define short_name qtimageformats
 %define tar_name qtimageformats-everywhere-src
@@ -28,12 +28,12 @@
 %endif
 #
 Name:           qt6-imageformats%{?pkg_suffix}
-Version:        6.0.0
+Version:        6.0.2
 Release:        0
 Summary:        Qt 6 ImageFormat Plugins
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
-Source:         https://download.qt.io/official_releases/additional_libraries/%{short_name}/%{short_version}/%{real_version}%{tar_suffix}/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source:         https://download.qt.io/official_releases/additional_libraries/%{short_version}/%{real_version}/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-imageformats-rpmlintrc
 BuildRequires:  libtiff-devel
 BuildRequires:  pkgconfig
