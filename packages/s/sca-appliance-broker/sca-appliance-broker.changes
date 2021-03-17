@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 16 15:53:48 UTC 2021 - jason.record@gmail.com
+
+- Correctly check for the web and scripting module (bsc#1183601)
+
+-------------------------------------------------------------------
 Fri Mar 12 23:24:34 UTC 2021 - jason.record@suse.com
 
 - Removed Novell references (bsc#1183471)
