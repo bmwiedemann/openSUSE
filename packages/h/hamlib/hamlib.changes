@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 16 22:26:11 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.1
+  * rigctld and rigs should be more robust for disconnect problems
+  * Several fixes for Icom and Yaesu rigs
+  * Nobody should need to use rig->caps or rig->state anymore
+  * New rig_get_caps_int and rig_get_caps_cptr functions to replace
+    using caps-> values
+  * New rig_get_function to replace using caps-> function pointers
+  * Fix shared library problem with WSJTX, JTDX, and JS8Call
+  * New model Barrett 950
+
+-------------------------------------------------------------------
 Thu Jan 07 08:26:57 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to version 4.0

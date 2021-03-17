@@ -18,7 +18,7 @@
 
 %define sover   4
 Name:           hamlib
-Version:        4.0
+Version:        4.1
 Release:        0
 Summary:        Run-time library to control radio transcievers and receivers
 License:        LGPL-2.1-only
