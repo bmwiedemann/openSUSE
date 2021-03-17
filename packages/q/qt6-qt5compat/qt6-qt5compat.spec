@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-qt5compat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.0.0
+%define real_version 6.0.2
 %define short_version 6.0
 %define tar_name qt5compat-everywhere-src
 %define tar_suffix %{nil}
@@ -27,9 +27,9 @@
 %endif
 #
 Name:           qt6-qt5compat%{?pkg_suffix}
-Version:        6.0.0
+Version:        6.0.2
 Release:        0
-Summary:        Qt 6 Qt5 Compat
+Summary:        Unsupported Qt 5 APIs for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
@@ -46,7 +46,8 @@ BuildRequires:  qt6-tools
 %endif
 
 %description
-The Qt 6 Compat library to help porting Qt 5 code
+The Qt 6 Compat library provides unsupported Qt 5 APIs which can be useful
+while porting Qt 5 code.
 
 %if !%{qt6_docs_flavor}
 
