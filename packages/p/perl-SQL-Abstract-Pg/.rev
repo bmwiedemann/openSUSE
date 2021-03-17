@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6c985774d6cd4f69ee9b451ac2bbea14</srcmd5>
+    <version>1.0</version>
+    <time>1616008497</time>
+    <user>dimstar_suse</user>
+    <comment>New dependency for Mojo::Pg which is an openQA requirement</comment>
+    <requestid>876205</requestid>
+  </revision>
+</revisionlist>
