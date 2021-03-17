@@ -67,4 +67,12 @@
   * implemented a blacklist of USB device ids that should be ignored.</comment>
     <requestid>790486</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2168847ba59c7fc2af33f55fddededa3</srcmd5>
+    <version>0.8</version>
+    <time>1616008579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>879505</requestid>
+  </revision>
 </revisionlist>

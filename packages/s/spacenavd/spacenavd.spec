@@ -1,7 +1,7 @@
 #
 # spec file for package spacenavd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2009,2011,2013 Herbert Graeber
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           spacenavd
-Version:        0.7.1
+Version:        0.8
 Release:        0
 Summary:        Daemon for 3Dconnexion devices
 License:        GPL-3.0-or-later
 Group:          Hardware/Other
 URL:            http://spacenav.sourceforge.net
-Source:         https://github.com/FreeSpacenav/spacenavd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/FreeSpacenav/spacenavd/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        spacenavd.8.gz
 Source2:        spnavrc
 Source3:        xinitrc-%{name}
@@ -47,7 +47,13 @@ Supplements:    modalias(usb:v046DpC628d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v046DpC629d*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v046DpC62bd*dc*dsc*dp*ic*isc*ip*)
 Supplements:    modalias(usb:v046DpC640d*dc*dsc*dp*ic*isc*ip*)
-Supplements:    modalias(usb:v256Fp*d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v256FpC62Fd*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v256FpC631d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v256FpC632d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v256FpC633d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v256FpC634d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v256FpC635d*dc*dsc*dp*ic*isc*ip*)
+Supplements:    modalias(usb:v256FpC636d*dc*dsc*dp*ic*isc*ip*)
 
 %description
 Spacenavd is a free software replacement user-space driver (daemon)

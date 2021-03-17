@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 16 18:56:16 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update to version 0.8
+  * Rewrote the serial spaceball code from scratch, to support both spaceball
+    and magellan spacemice.
+  * Fixed non-X11 build which was broken in the previous version.
+  * Print usage information when encountering an invalid argument, instead of
+    just printing "invalid argument".
+  * Minor build improvements.
+- Log stderr to default logger
+- Update list of supported devices in spec file
+
+-------------------------------------------------------------------
 Tue Mar 31 15:36:18 UTC 2020 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Remove unnecessary  _service file

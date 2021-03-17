@@ -7,7 +7,7 @@ diff -up spacenavd-0.7.1/contrib/systemd/spacenavd.service.fix-pidfile spacenavd
  Type=forking
 -PIDFile=/var/run/spnavd.pid
 +PIDFile=/run/spnavd.pid
- ExecStart=/usr/bin/spacenavd
+ ExecStart=/usr/local/bin/spacenavd
  StandardError=syslog
  
 diff -up spacenavd-0.7.1/init_script.fix-pidfile spacenavd-0.7.1/init_script

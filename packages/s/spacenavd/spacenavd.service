@@ -5,7 +5,6 @@ Description=Userspace Daemon of the spacenav driver.
 Type=forking
 PIDFile=/run/spnavd.pid
 ExecStart=/usr/sbin/spacenavd
-StandardError=syslog
 
 [Install]
 WantedBy=multi-user.target
