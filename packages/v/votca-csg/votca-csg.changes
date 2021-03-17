@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sat Mar 13 18:32:49 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 2021
+  - fix CI on rawhide ([gh#votca/csg#642])
+  - add auto-cancel workflow to GitHub Actions
+    ([gh#votca/csg#645])
+  - namespace bind2nd to fix build on FreeBSD ([gh#votca/csg#668])
+  - replace std::bind2nd by a lambda ([gh#votca/csg#673])
+
+-------------------------------------------------------------------
+Wed Jan 13 16:15:26 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- votca-csgapps package is now part of votca-csg
+- votca-csg-doc is obsolete, no more pdf manual
+- Update to 2021~rc1
+  - remove topology item ([gh#votca/csg#486]) 
+  - switch to local includes ([gh#votca/csg#487])
+  - add default units to readers ([gh#votca/csg#483])
+  - update bead related classes ([gh#votca/csg#475],
+    [gh#votca/csg#474], [gh#votca/csg#469], [gh#votca/csg#468],
+    [gh#votca/csg#460])
+  - update boundary class ([gh#votca/csg#457])
+  - fix usage of PROJECT_SOURCE_DIR in cmake ([gh#votca/csg#517])
+  - document cmake options and packages ([gh#votca/csg#520])
+  - drop WITH_GMX in cmake in favor of auto-detect
+    ([gh#votca/csg#523])
+  - standardising include order and style in header files
+    ([gh#votca/csg#531])
+  - make scripts always executable in builddir
+    ([gh#votca/csg#533], [gh#votca/csg#550], [gh#votca/csg#556])
+  - rename REGRESSIONTEST_TOLERANCE to INTEGRATIONTEST_TOLERANCE
+    ([gh#votca/csg#534])
+  - standardising include order and style in library files
+    ([gh#votca/csg#542])
+  - move CI to GitHub Ations ([gh#votca/csg#551],
+    [gh#votca/csg#552], [gh#votca/csg#553], [gh#votca/csg#561],
+    [gh#votca/csg#562], [gh#votca/csg#593], [gh#votca/csg#617],
+    [gh#votca/csg#632])
+  - format CMake internal cpp code ([gh#votca/csg#557])
+  - update codacy badge ([gh#votca/csg#558])
+  - convert markdown to rst format ([gh#votca/csg#559])
+  - read units stored in H5MD file ([gh#votca/csg#549])
+  - enable CXX only in CMake ([gh#votca/csg#560])
+  - refactored tests to use files instead of data in source code
+    ([gh#votca/csg#572])
+  - corrected max index in csg_resample ([gh#votca/csg#575])
+  - add periodic extrapolation for dihedrals ([gh#votca/csg#576])
+  - bump required CMake version to 3.12 ([gh#votca/csg#599])
+  - Fixed boost test deprecation warnings ([gh#votca/csg#598])
+  - improve error message for broken binaries ([gh#votca/csg#601])
+  - Fixed memory leaks in tests and neighbourlist
+    ([gh#votca/csg#602])
+  - format with clang-11 ([gh#votca/csg#604])
+  - use unique_ptr in factory ([gh#votca/csg#603])
+  - Convert remaining md files to rst ([gh#votca/csg#616])
+  - merge csg-manual ([gh#votca/csg#621], [gh#votca/csg#622])
+  - merge in csgapps repo ([gh#votca/csg#623])
+  - Pdbs with more than 10000 resids can now be written
+    ([gh#votca/csg#627])
+
+-------------------------------------------------------------------
 Tue Jan 12 23:45:38 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Update to 1.6.4

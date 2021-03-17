@@ -18,17 +18,16 @@
 
 
 Name:           votca-csg
-Version:        1.6.4
+Version:        2021
 Release:        0
-%define         uversion %{version}
-%define         sover 6
+%define         uversion %version
+%define         sover 2021
 Summary:        VOTCA coarse-graining engine
 License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            http://www.votca.org
 Source0:        https://github.com/votca/csg/archive/v%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
 Source1:        https://github.com/votca/csg-tutorials/archive/v%{uversion}.tar.gz#/%{name}-tutorials-%{uversion}.tar.gz
-Source2:        https://github.com/votca/csg-manual/releases/download/v%{uversion}/votca-csg-manual-%{uversion}.pdf
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -40,11 +39,12 @@ BuildRequires:  hdf5-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  pkg-config
- #for hdf5
 BuildRequires:  python3-txt2tags
 BuildRequires:  votca-tools-devel = %{version}
+# for hdf5
 BuildRequires:  zlib-devel
 
 #exact same version is needed
@@ -52,6 +52,9 @@ Requires:       %{name}-common = %{version}
 Requires:       libvotca_csg%sover = %{version}
 # The developer man page was wrongly shipped in the library package until votca 1.6
 Conflicts:      libvotca_csg5
+# no more pdf manual
+Obsoletes:      votca-csg-doc < 2021
+Provides:       votca-csg-doc = %version-%release
 
 %description
 Versatile Object-oriented Toolkit for Coarse-graining Applications (VOTCA) is
@@ -110,17 +113,19 @@ coarse-graining of various systems. The core is written in C++.
 
 This package contains the tutorial documentation and sample data.
 
-%package doc
-Summary:        Manual for VOTCA Coarse Graining Engine
-Group:          Documentation/Other
-BuildArch:      noarch
+%package apps
+Summary:        VOTCA coarse-graining engine applications
+Group:          Productivity/Scientific/Chemistry
+Obsoletes:      votca-csgapps < 2021
+Provides:       votca-csgapps = %version-%release
 
-%description doc
+%description apps
 Versatile Object-oriented Toolkit for Coarse-graining Applications (VOTCA) is
 a package to reduce the amount of routine work when doing systematic
 coarse-graining of various systems. The core is written in C++.
 
-This package contains the PDF manual.
+This package contains sample applications of the VOTCA Coarse Graining Engine.
+Previously packages as votca-csgapps.
 
 %package bash
 Summary:        Bash completion for votca
@@ -146,7 +151,8 @@ sed -i -e "s/__DATE__/\"$FAKE_BUILDDATE\"/" -e "s/__TIME__/\"$FAKE_BUILDTIME\"/"
 tar -xzf %{S:1}
 
 %build
-%{cmake} -DWITH_RC_FILES=OFF -DCMAKE_SKIP_RPATH:BOOL=OFF -DWITH_H5MD=ON -DWITH_GMX=ON -DENABLE_TESTING=ON -DREGRESSIONTEST_TOLERANCE="2.1e-5"
+%{cmake} -DCMAKE_SKIP_RPATH=OFF -DBUILD_CSGAPPS=ON -DENABLE_TESTING=ON
+#-DINTEGRATIONTEST_TOLERANCE="2.1e-5"
 %cmake_build
 
 %install
@@ -158,9 +164,6 @@ mkdir -p %{buildroot}%{_datadir}/bash_completion.d
 cp %{buildroot}%{_datadir}/votca/rc/csg-completion.bash %{buildroot}%{_datadir}/bash_completion.d/votca
 
 %define pkgdocdir %{_docdir}/%{name}
-mkdir -p %{buildroot}%{pkgdocdir}
-cp %{S:2} %{buildroot}%{pkgdocdir}
-
 mkdir -p %{buildroot}%{pkgdocdir}/examples
 cp -r csg-tutorials-%{uversion}/* %{buildroot}%{pkgdocdir}/examples
 sed -i '1s@env @@' %{buildroot}%{pkgdocdir}/examples/LJ1-LJ2/imc/svd.py
@@ -168,21 +171,22 @@ sed -i '1s@env @@' %{buildroot}%{pkgdocdir}/examples/LJ1-LJ2/imc/svd.py
 %fdupes %{buildroot}%{_prefix}
 
 #check
-make -C build test CTEST_OUTPUT_ON_FAILURE=1 %{?testargs}
+%ctest
 
 %post -n libvotca_csg%sover -p /sbin/ldconfig
 %postun -n libvotca_csg%sover -p /sbin/ldconfig
 
 %files
-%doc CHANGELOG.md NOTICE README.md LICENSE
+%doc CHANGELOG.rst NOTICE.rst README.rst 
+%license LICENSE.rst
 %{_bindir}/csg_*
+%exclude %{_bindir}/csg_{fluctuations,orientcorr,part_dist,partial_rdf,radii,sphericalorder,traj_force}
 %{_mandir}/man1/*
 %{_mandir}/man7/*
 %exclude %{pkgdocdir}/examples
-%exclude %{pkgdocdir}/*.pdf
 
-%files doc
-%{pkgdocdir}/*.pdf
+%files apps
+%{_bindir}/csg_{fluctuations,orientcorr,part_dist,partial_rdf,radii,sphericalorder,traj_force}
 
 %files tutorials
 %{pkgdocdir}/examples
@@ -191,7 +195,7 @@ make -C build test CTEST_OUTPUT_ON_FAILURE=1 %{?testargs}
 %{_datadir}/votca
 
 %files -n libvotca_csg%sover
-%doc LICENSE
+%license LICENSE.rst
 %{_libdir}/libvotca_csg.so.%{sover}
 
 %files devel
