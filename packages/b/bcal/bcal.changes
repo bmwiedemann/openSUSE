@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 17 03:07:01 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 2.2
+  * Support [`calc`](http://www.isthe.com/chongo/tech/comp/calc/)
+    for multi-base expressions
+  * To use `calc`, `export BCAL_USE_CALC=1`
+  * Fix lint issues
+  * Fix issue #30
+  * Updated auto-generated packages
+  * More portable Makefile
+  * Delete bcal-2.1_gcc9.patch, it was merged into upsteam.
+
+-------------------------------------------------------------------
 Tue Jun  4 10:29:03 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Added bcal-2.1_gcc9.patch to fix Factory build
