@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-mqtt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.0.0
+%define real_version 6.0.2
 %define short_version 6.0
 %define tar_name qtmqtt
 %define tar_suffix %{nil}
@@ -27,9 +27,9 @@
 %endif
 #
 Name:           qt6-mqtt%{?pkg_suffix}
-Version:        6.0.0
+Version:        6.0.2
 Release:        0
-Summary:        Qt 6 MQTT library
+Summary:        Qt 6 Module to implement MQTT protocol version 3.1 and 3.1.1
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
 URL:            https://www.qt.io
 Source:         %{tar_name}-%{real_version}%{tar_suffix}.tar.xz
@@ -50,7 +50,7 @@ BuildRequires:  qt6-tools
 %endif
 
 %description
-Qt library to implement MQTT protocol version 3.1 and 3.1.1
+Qt 6 Module to implement MQTT protocol version 3.1 and 3.1.1
 
 %if !%{qt6_docs_flavor}
 
