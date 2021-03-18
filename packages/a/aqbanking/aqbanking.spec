@@ -28,14 +28,14 @@
 %define          qb_cfgmoddir   %{fronts_libdir}/qbanking/cfgmodules
 %define          q4b_cfgmoddir  %{fronts_libdir}/q4banking/cfgmodules
 Name:           aqbanking
-Version:        6.2.9
+Version:        6.2.10
 Release:        0
 Summary:        Library for Online Banking Functions and Financial Data Import and Export
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Office/Finance
 URL:            https://www.aquamaniac.de/aqbanking/
-Source:         %{name}-%{version}.tar.gz
-Source1:        %{name}-%{version}.tar.gz.asc
+Source:         https://www.aquamaniac.de/rdm/attachments/download/368/aqbanking-%{version}.tar.gz
+Source1:        https://www.aquamaniac.de/rdm/attachments/download/367/aqbanking-%{version}.tar.gz.asc
 Source2:        aqbanking6-handbook-20190221.pdf
 BuildRequires:  cmake
 BuildRequires:  doxygen
