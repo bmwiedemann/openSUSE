@@ -1,7 +1,7 @@
 #
 # spec file for package ckb-next
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           ckb-next
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        RGB driver for Corsair keyboard and mice
-License:        GPL-2.0-only AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://github.com/ckb-next/ckb-next
 Source:         https://github.com/ckb-next/ckb-next/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 18 15:53:16 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.4.4
+  Important bugfixes:
+  * Fixed a crash when creating a new profile
+  * Fixed lights turning off unexpectedly or not being restored
+    correctly
+  * Macros can now be repeated quickly by repeatedly pressing
+    the keys
+  * Fixed various deadlocks when resuming from suspend or during
+    device initialisation
+  * Fixed devices not functioning during system boot requiring a
+    daemon restart
+- Refreshed ckb-next-use-run.patch
+
+-------------------------------------------------------------------
 Fri Dec 18 07:44:11 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 * Update to version 0.4.3
