@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 18 07:24:38 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.0
+  * refactored svdrp socket handling.
+  * changed behaviour of get_channel_epg_info which now expects
+    the channel no as parameter instead of getting the channel
+    itself.
+
+-------------------------------------------------------------------
 Wed Jul 29 21:12:34 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.2.3
