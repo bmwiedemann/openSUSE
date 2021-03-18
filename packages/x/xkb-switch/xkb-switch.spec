@@ -1,7 +1,7 @@
 #
 # spec file for package xkb-switch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xkb-switch
-Version:        1.6.0
+Version:        1.8.5
 Release:        0
 Summary:        Switch X keyboard layouts from the command line
 License:        GPL-3.0-only
@@ -45,6 +45,7 @@ if [ ! -d %{buildroot}%{_libdir}/ ]; then
   mv %{buildroot}%{_prefix}/lib/ %{buildroot}%{_libdir}
 fi
 rm -f %{buildroot}%{_libdir}/libxkbswitch.so
+mv %{buildroot}%{_mandir}/man1/xkb-switch.1.gzip %{buildroot}%{_mandir}/man1/xkb-switch.1.gz
 
 %post -p /sbin/ldconfig
 
