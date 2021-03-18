@@ -67,7 +67,10 @@ Bison is a parser generator similar to yacc(1).
 %files lang -f %{name}.lang
 
 %files
-%{_docdir}/%{name}
+%license COPYING
+%doc AUTHORS NEWS README THANKS TODO
+%exclude %{_docdir}/%{name}/COPYING
+%doc %{_docdir}/%{name}/examples
 %dir %{_datadir}/aclocal
 %{_bindir}/bison
 %{_bindir}/yacc
