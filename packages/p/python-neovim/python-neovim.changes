@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 18 10:37:00 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.4.3:
+  - Detect encoding correctly on non-standard locales
+
+-------------------------------------------------------------------
 Thu Nov  5 15:04:51 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.4.2:

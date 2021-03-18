@@ -1,7 +1,7 @@
 #
 # spec file for package python-neovim
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define python_module() python34-%{**}
 %endif
 Name:           python-neovim
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        Python client to Neovim
 License:        Apache-2.0
@@ -33,6 +33,11 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION test requirements
+BuildRequires:  %{python_module msgpack}
+BuildRequires:  %{python_module greenlet}
+BuildRequires:  neovim
+# /SECTION
 Requires:       neovim >= 0.1.6
 Requires:       python-greenlet
 Requires:       python-msgpack-python
@@ -52,6 +57,9 @@ Library for scripting Nvim processes through its msgpack-rpc API.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %license LICENSE
