@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Mar 18 16:01:07 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1616080850.6ccbaedb8:
+  * dist: Exclude less relevant container tests from packaging tests
+  * CI: Add compose tests via GitHub workflow
+  * Improve logging of concluded upload further
+  * Prevent worker from getting stuck in final upload when no tests are scheduled
+  * Add a switch to decide if enable the CASEDIR symlink
+  * Set an absolute path as PRODUCTDIR
+  * Don't create symlink when CASEDIR is an url address
+  * Symlink CASEDIR and set values to relative path
+  * Dependency cron 2021-03-18
+  * Add test for failed status post during upload
+  * Add test for stopping a job due to obsoletion
+  * worker: Improve logging of upload and stopping
+  * Check whether worker proceeds only stopping job after upload concluded
+  * Mark uncoverable branches in Gru controller
+  * Avoid assigning a negative result_size to a job when cleaning up results
+  * Remove surplus `+` signs in documentation for importing production data
+  * Use bigint to store job's result size to increase the limit ~2 GiB to ~8 EiB
+  * docker: Allow docker-compose build images
+  * Dependency cron 2021-03-17
+  * Fix default cover db suffix/filename i.e. cover_db
+
+-------------------------------------------------------------------
 Sun Mar 14 00:03:09 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1615570408.acacd6dbc:
