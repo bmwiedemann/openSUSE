@@ -1,7 +1,7 @@
 #
 # spec file for package rox-filer
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,10 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-BuildRequires:  gtk2-devel
-BuildRequires:  libglade2-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  shared-mime-info
-%if 0%{suse_version} > 1210
-BuildRequires:  libSM-devel
-%endif
 Name:           rox-filer
 Version:        2.11
 Release:        0
@@ -33,11 +26,16 @@ Patch0:         rox-filer-2.10-dso.patch
 
 Requires:       shared-mime-info
 Summary:        Minimalist file manager
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
-Url:            http://rox.sourceforge.net/
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            http://rox.sourceforge.net/
+BuildRequires:  fdupes
+BuildRequires:  gtk2-devel
+BuildRequires:  libglade2-devel
+BuildRequires:  libxml2-devel
+BuildRequires:  shared-mime-info
+BuildRequires:  pkgconfig(libattr)
+BuildRequires:  pkgconfig(sm)
 
 %description
 ROX-Filer is a fast and powerful graphical file manager for the X Window System.
@@ -45,23 +43,30 @@ You can use it as a small and fast filer within your current desktop, or get it
 to manage your pinboard, panels and applications.
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 
 %build
-ROX-Filer/AppRun --compile
+mkdir ROX-Filer/src/build2
+pushd ROX-Filer/src/build2/
+%define _configure ../configure
+%configure CFLAGS="%{optflags} -fcommon"
+%make_build
+popd
 
 %install
-rm -rf ROX-Filer/{build,src}
-rm -rf ROX-Filer/ROX-Filer.dbg
-mkdir -p $RPM_BUILD_ROOT/%{_libdir}
-cp -r ROX-Filer $RPM_BUILD_ROOT/%{_libdir}
+# no make install provided
+mkdir -p %{buildroot}/%{_libdir}
+cp -r ROX-Filer %{buildroot}/%{_libdir}
+rm -rf %{buildroot}/%{_libdir}/ROX-Filer/build
+rm -rf %{buildroot}/%{_libdir}/ROX-Filer/src
+rm -rf %{buildroot}/%{_libdir}/ROX-Filer/ROX-Filer.dbg
 sed 's@##libdir##@%{_libdir}@' %{S:1} > rox
-install -D -m 0755 rox $RPM_BUILD_ROOT/%{_bindir}/rox
+install -D -m 0755 rox %{buildroot}/%{_bindir}/rox
+%fdupes %{buildroot}/%{_prefix}
 
 %files
-%defattr(-,root,root)
 %{_libdir}/ROX-Filer
-%attr(0755,root,root) %{_bindir}/rox
+%{_bindir}/rox
+%license ROX-Filer/Help/COPYING
 
 %changelog

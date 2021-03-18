@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 16 14:58:18 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add CFLAGS -fcommon to fix i586 build failure.
+- Run fdupes, install license file, specfile modernization.
+
+-------------------------------------------------------------------
 Mon Jul 30 16:04:30 UTC 2012 - jmatejek@suse.com
 
 - fixed license name, ran through speccleaner
