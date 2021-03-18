@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 17 15:52:33 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to new upstream release 8.0.0
+  * Always define `__USE_MINGW_ANSI_STDIO` to zero
+  * Remove unused dwFlags variable in sched.c
+  * Don't call SetThreadContext in winstore builds
+  * Do not call GetHandleInformation in winstore build
+  * Simplify the handle validity in pthread_check()
+  * Always return 0 in pthread_check() if the thread ended is 0
+  * Do not use the XXXExceptionHandler API in winstore builds
+  * Simplify the USE_VEH_FOR_MSC_SETTHREADNAME check
+
+-------------------------------------------------------------------
 Mon Nov 25 17:31:02 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Use macro _mingw64_ldflags_bootstrap from mingw64-filesystem package

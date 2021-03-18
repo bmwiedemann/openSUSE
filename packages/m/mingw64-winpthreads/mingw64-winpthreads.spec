@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-winpthreads
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           mingw64-winpthreads
-Version:        7.0.0
+Version:        8.0.0
 Release:        0
 Summary:        A pthreads implementation for Windows
-License:        MIT AND BSD-3-Clause
+License:        BSD-3-Clause AND MIT
 Group:          Development/Libraries/C and C++
 URL:            http://mingw-w64.sf.net/
 Source:         http://downloads.sf.net/mingw-w64/mingw-w64-v%{version}.tar.bz2
@@ -30,7 +30,6 @@ BuildRequires:  mingw64-cross-pkg-config
 BuildRequires:  mingw64-filesystem
 BuildRequires:  mingw64-runtime
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %_mingw64_package_header_debug
 BuildArch:      noarch
 #!BuildIgnore:  post-build-checks
@@ -52,7 +51,8 @@ Group:          Development/Libraries/C and C++
 Requires:       mingw64-libwinpthread1 = %version
 Provides:       mingw64-unistd-pthread-devel
 Obsoletes:      mingw64-headers-dummy-pthread
-Conflicts:      mingw64-headers-dummy-pthread, otherproviders(mingw64-unistd-pthread-devel)
+Conflicts:      mingw64-headers-dummy-pthread
+Conflicts:      otherproviders(mingw64-unistd-pthread-devel)
 
 %description devel
 mingw-w64's implementation of POSIX threads for Windows.
@@ -60,7 +60,7 @@ mingw-w64's implementation of POSIX threads for Windows.
 %_mingw64_debug_package
 
 %prep
-%setup -q -n mingw-w64-v%{version}/mingw-w64-libraries/winpthreads
+%autosetup -p1 -n mingw-w64-v%version/mingw-w64-libraries/winpthreads
 
 %build
 # The build is trying to link with libpthread.a but it has no need
@@ -78,17 +78,15 @@ popd
 	--enable-static \
 	--enable-shared \
     LDFLAGS="%{_mingw64_ldflags_bootstrap}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files -n mingw64-libwinpthread1
-%defattr(-,root,root)
 %_mingw64_bindir/libwinpthread-1.dll
 
 %files devel
-%defattr(-,root,root)
 %_mingw64_includedir/
 %_mingw64_libdir/
 
