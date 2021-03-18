@@ -18,17 +18,13 @@
 
 
 Name:           texworks
-Version:        0.6.5
+Version:        0.6.6
 Release:        0
 Summary:        TeXshop-like TeX Editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texworks/
 Source0:        https://github.com/TeXworks/texworks/archive/release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-QtPDF-Fix-compilation-with-Qt-5.15.patch
-# PATCH-FIX-UPSTREAM texworks-drop-FindLua-cmake-module.patch gh#TeXworks/texworks#924 badshah400@gmail.com -- Drop custom FindLua.cmake included in sources in favour of cmake's default module
-Patch1:         texworks-drop-FindLua-cmake-module.patch
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  desktop-file-utils
@@ -45,6 +41,7 @@ BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Script)
 BuildRequires:  pkgconfig(Qt5ScriptTools)
 BuildRequires:  pkgconfig(Qt5Test)

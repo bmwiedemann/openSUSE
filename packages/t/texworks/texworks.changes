@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Mar 13 14:12:33 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.6.6:
+  * Add support for macOS 11 Big Sur
+  * Add support for HiDPI screens (e.g., Retina screens)
+  * Make the text cursor width customizable
+  * Add support for environment variables in paths to typesetting
+    tools
+  * Add support for custom shortcuts for quickly changing
+    typesetting tools
+  * Pre-select *.pdf when the open dialog is called from the
+    preview
+  * Only reload a file if its content changed (this improves
+    support for network shares, cloud services, etc.)
+  * Add support for Qt's new Javascript engine
+  * Fix some crashes
+  * Fix some potential memory leaks
+  * Fix refreshing of the PDF preview on Windows
+  * Fix opening links to PDFs specified with relative paths
+  * Fix the context menu in the PDF preview
+  * Fix File > Close in the PDF preview
+  * Fix <Esc> switching the PDF to fullscreen mode on first press
+  * Fix resizing of the columns in the template dialog
+  * Fix the disappearance of several text encodings
+  * Move resources to (OS dependent) standard locations
+  * Update translations
+  * Update libraries for pre-built binaries
+  * Modernize and restructure the code to improve quality,
+    stability, maintainability, and the possibilities for future
+    enhancements
+  * Improve automatic building, testing, and packaging
+  * Initial support for Qt6
+- New BuildRequires: pkgconfig(Qt5Qml).
+- Drop upstreamed patches:
+  * 0001-QtPDF-Fix-compilation-with-Qt-5.15.patch.
+  * Drop texworks-drop-FindLua-cmake-module.patch.
+
+-------------------------------------------------------------------
 Sun Feb 14 00:02:53 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add texworks-drop-FindLua-cmake-module.patch: Drop custom
