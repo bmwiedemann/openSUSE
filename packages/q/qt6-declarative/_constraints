@@ -4,6 +4,7 @@
     <disk>
       <size unit="G">10</size>
     </disk>
+    <processors>4</processors>
   </hardware>
   <overwrite>
     <conditions>
