@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar  7 15:49:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.33:
+  * RTP bundling according to https://tools.ietf.org/html/draft-ietf-mmusic-sdp-bundle-negotiation-54
+  * RTP extension header support
+  * IP_PKTINFO for outgoing packets - useful for ICE. This let specify the source IP address to use while sending a packet.
+  * Random crash when network simulator is activated, while destroying an RtpSession.
+  * Fix issue where DTLS handshake cannot take place when the media path goes through a TURN server
+  * Fix a race condition around rtpsession's auxiliary destinations.
+
+-------------------------------------------------------------------
 Mon Feb 22 10:10:51 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.4.29 (no changelog) 

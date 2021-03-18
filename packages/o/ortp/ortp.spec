@@ -20,7 +20,7 @@
 %define soname  libortp
 %define sover   15
 Name:           ortp
-Version:        4.4.29
+Version:        4.4.33
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        GPL-2.0-or-later
@@ -81,7 +81,6 @@ mv %{buildroot}%{_datadir}/doc/%{name}-./README.md %{buildroot}%{_docdir}/%{name
 mv %{buildroot}%{_datadir}/doc/%{name}-./CHANGELOG.md %{buildroot}%{_docdir}/%{name}/
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig
-
 %postun -n %{soname}%{sover} -p /sbin/ldconfig
 
 %files
