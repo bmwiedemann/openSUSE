@@ -22,7 +22,8 @@
 %define _buildshell /bin/bash
 %define import_path github.com/lxc/lxd
 
-%define lxd_optdir /opt/lxd
+%define lxd_datadir %{_datadir}/lxd
+%define lxd_ovmfdir %{lxd_datadir}/ovmf
 
 Name:           lxd
 Version:        4.12
@@ -83,8 +84,8 @@ Requires:       qemu-x86
 # Storage backends -- we don't recommend ZFS since it's not *technically* a
 # blessed configuration.
 Recommends:     lvm2
-Recommends:     thin-provisioning-tools
 Recommends:     btrfsprogs
+Recommends:     thin-provisioning-tools
 Suggests:       zfs
 
 %description
@@ -305,11 +306,10 @@ install -d -m 0755 %{buildroot}%{_localstatedir}/log/%{name}
 # In order for VM support in LXD to function, you need to have OVMF configured
 # in the way it expects. In particular, LXD depends on specific filenames for
 # the firmware files so we create fake ones with symlinks.
-export OVMF_DIR="%{buildroot}%{lxd_optdir}/ovmf"
-mkdir -p "$OVMF_DIR"
-ln -s %{_datarootdir}/qemu/ovmf-x86_64-ms-code.bin "$OVMF_DIR/OVMF_CODE.fd"
-ln -s %{_datarootdir}/qemu/ovmf-x86_64-ms-vars.bin "$OVMF_DIR/OVMF_VARS.ms.fd"
-ln -s %{_datarootdir}/qemu/ovmf-x86_64-vars.bin "$OVMF_DIR/OVMF_VARS.fd"
+mkdir -p %{buildroot}%{lxd_ovmfdir}
+ln -s %{_datarootdir}/qemu/ovmf-x86_64-ms-code.bin %{buildroot}%{lxd_ovmfdir}/OVMF_CODE.fd
+ln -s %{_datarootdir}/qemu/ovmf-x86_64-ms-vars.bin %{buildroot}%{lxd_ovmfdir}/OVMF_VARS.ms.fd
+ln -s %{_datarootdir}/qemu/ovmf-x86_64-vars.bin %{buildroot}%{lxd_ovmfdir}/OVMF_VARS.fd
 
 %fdupes %{buildroot}
 
@@ -363,10 +363,10 @@ grep -q '^root:' /etc/subgid || \
 %{_mandir}/man*/*
 %{_libdir}/%{name}
 
+%{lxd_datadir}
+
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service
-
-%{lxd_optdir}
 
 %dir %{_localstatedir}/lib/%{name}
 %dir %{_localstatedir}/log/%{name}

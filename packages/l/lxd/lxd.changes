@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 15 16:49:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move OVMF symlinks to /usr/share, /opt is not allowed in SUSE
+  packages.
+
+-------------------------------------------------------------------
 Fri Mar  5 16:31:52 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.12. The full upstream changelog is available from:

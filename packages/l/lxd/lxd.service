@@ -5,7 +5,7 @@ Requires=network-online.target lxcfs.service
 Documentation=man:lxd(1)
 
 [Service]
-Environment=LXD_OVMF_PATH=/opt/lxd/ovmf
+Environment=LXD_OVMF_PATH=/usr/share/lxd/ovmf
 ExecStart=/usr/bin/lxd --group=lxd --logfile=/var/log/lxd/lxd.log
 ExecStartPost=/usr/bin/lxd waitready --timeout=600
 TimeoutStartSec=600s
