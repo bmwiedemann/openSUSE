@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 17 03:08:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.75
+   see /usr/share/doc/packages/perl-MooseX-Getopt/Changes
+
+  0.75      2021-03-16 19:25:29Z
+   - adjust tests to deal with formatting changes in Getopt::Long::Descriptive
+     0.106 (RT#134754)
+
+-------------------------------------------------------------------
 Mon Sep 24 05:36:46 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.74
