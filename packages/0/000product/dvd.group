@@ -1681,7 +1681,7 @@
     <package name="libavcodec58_91" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libavfilter7_85" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavformat58_45" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libavif9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libavif10" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libavresample4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavtp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavutil56_51" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
