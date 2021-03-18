@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 12 22:08:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- refresh spec files (move license to licensedir) 
+
+-------------------------------------------------------------------
 Mon Aug 31 14:25:09 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Use the new value of %_libexecdir macro (/usr/lib -> /usr/libexec)

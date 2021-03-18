@@ -1,7 +1,7 @@
 #
 # spec file for package cronie
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,11 @@
 #
 
 
+%define cron_configs %{_sysconfdir}/pam.d/crond %{_sysconfdir}/crontab %{_sysconfdir}/cron.deny
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
-%define cron_configs %{_sysconfdir}/pam.d/crond %{_sysconfdir}/crontab %{_sysconfdir}/cron.deny
 Name:           cronie
 Version:        1.5.5
 Release:        0
@@ -58,19 +57,18 @@ BuildRequires:  libselinux-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
+Requires:       mail
 Requires(post): %fillup_prereq
 Requires(post): permissions
 Requires(pre):  cron
-%if 0%{?suse_version} >= 1330
-Requires(pre):  group(trusted)
-%endif
-Requires:       mail
 Suggests:       mailx
 Conflicts:      cron <= 4.1
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 # This is needed as cron subpkg has its own version
 %{expand: %%define cronie_version %{version}}
+%if 0%{?suse_version} >= 1330
+Requires(pre):  group(trusted)
+%endif
 
 %description
 cron automatically starts programs at specific times. Add new entries
@@ -125,7 +123,7 @@ autoreconf -f -i
 	--with-inotify \
 	--enable-pie \
 	SPOOL_DIR="%{_localstatedir}/spool/cron/tabs"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -198,33 +196,33 @@ exit 0
 [ -e %{_localstatedir}/spool/anacron/cron.monthly ] || touch %{_localstatedir}/spool/anacron/cron.monthly
 
 %verifyscript -n cron
-%verify_permissions -e /etc/cron.d/
-%verify_permissions -e /etc/cron.daily/
-%verify_permissions -e /etc/cron.hourly/
-%verify_permissions -e /etc/cron.monthly/
-%verify_permissions -e /etc/cron.weekly/
+%verify_permissions -e %{_sysconfdir}/cron.d/
+%verify_permissions -e %{_sysconfdir}/cron.daily/
+%verify_permissions -e %{_sysconfdir}/cron.hourly/
+%verify_permissions -e %{_sysconfdir}/cron.monthly/
+%verify_permissions -e %{_sysconfdir}/cron.weekly/
 
 %post -n cron
-%set_permissions /etc/cron.d/
-%set_permissions /etc/cron.daily/
-%set_permissions /etc/cron.hourly/
-%set_permissions /etc/cron.monthly/
-%set_permissions /etc/cron.weekly/
+%set_permissions %{_sysconfdir}/cron.d/
+%set_permissions %{_sysconfdir}/cron.daily/
+%set_permissions %{_sysconfdir}/cron.hourly/
+%set_permissions %{_sysconfdir}/cron.monthly/
+%set_permissions %{_sysconfdir}/cron.weekly/
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING README ChangeLog
+%license COPYING
+%doc AUTHORS README ChangeLog
 %dir %attr(700,root,root) %{_localstatedir}/spool/cron
 %dir %attr(700,root,root) %{_localstatedir}/spool/cron/tabs
 %dir %{_localstatedir}/spool/cron/lastrun
 %config %{_sysconfdir}/pam.d/crond
 %verify(not mode) %config(noreplace) %{_sysconfdir}/crontab
 %config(noreplace) %{_sysconfdir}/cron.deny
-%{_mandir}/man1/crontab.1%{ext_man}
-%{_mandir}/man5/crontab.5%{ext_man}
-%{_mandir}/man8/cron.8%{ext_man}
-%{_mandir}/man8/crond.8%{ext_man}
-%{_mandir}/man1/cronnext.1%{ext_man}
+%{_mandir}/man1/crontab.1%{?ext_man}
+%{_mandir}/man5/crontab.5%{?ext_man}
+%{_mandir}/man8/cron.8%{?ext_man}
+%{_mandir}/man8/crond.8%{?ext_man}
+%{_mandir}/man1/cronnext.1%{?ext_man}
 %verify(not mode) %attr (4750,root,trusted) %{_bindir}/crontab
 %attr (755,root,root) %{_sbindir}/cron
 %attr (755,root,root) %{_bindir}/cronnext
@@ -234,7 +232,6 @@ exit 0
 %{_fillupdir}/sysconfig.cron
 
 %files anacron
-%defattr(-,root,root,-)
 %{_sbindir}/anacron
 %attr(0755,root,root) %{_sysconfdir}/cron.hourly/0anacron
 %config(noreplace) %{_sysconfdir}/anacrontab
@@ -242,11 +239,10 @@ exit 0
 %ghost %verify(not md5 size mtime) %{_localstatedir}/spool/anacron/cron.daily
 %ghost %verify(not md5 size mtime) %{_localstatedir}/spool/anacron/cron.weekly
 %ghost %verify(not md5 size mtime) %{_localstatedir}/spool/anacron/cron.monthly
-%{_mandir}/man5/anacrontab.5%{ext_man}
-%{_mandir}/man8/anacron.8%{ext_man}
+%{_mandir}/man5/anacrontab.5%{?ext_man}
+%{_mandir}/man8/anacron.8%{?ext_man}
 
 %files -n cron
-%defattr(-,root,root,-)
 %doc cron_to_cronie.README
 %dir %attr(755,root,root) %{_sysconfdir}/cron.d
 %dir %attr(755,root,root) %{_sysconfdir}/cron.hourly

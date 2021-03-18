@@ -677,4 +677,12 @@
     <comment></comment>
     <requestid>830856</requestid>
   </revision>
+  <revision rev="81" vrev="84">
+    <srcmd5>d216c660cf7650a3a3c0ffa1bd1af49e</srcmd5>
+    <version>unknown</version>
+    <time>1616104447</time>
+    <user>dimstar_suse</user>
+    <comment>- refresh spec files (move license to licensedir)</comment>
+    <requestid>878650</requestid>
+  </revision>
 </revisionlist>
