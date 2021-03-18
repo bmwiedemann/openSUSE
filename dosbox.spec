@@ -1,7 +1,7 @@
 #
 # spec file for package dosbox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(sdl)
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 BuildRequires:  libmt32emu-devel
 %endif
 
@@ -54,7 +54,7 @@ Linux file system and is therefore very easy to use.
 %prep
 %setup -q -n dosbox-0.74-3
 %patch0 -p1
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 %patch1 -p1
 %endif
 
@@ -73,14 +73,14 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 install -dpm0755 %{buildroot}%{_datadir}/pixmaps
 install -pm0644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/dosbox.png
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE1}
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 install -pm0644 %{SOURCE3} .
 %endif
 
 %files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README THANKS
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 %doc CONFIG-midi-mt32-gm
 %endif
 %{_bindir}/dosbox
