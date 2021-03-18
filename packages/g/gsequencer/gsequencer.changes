@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 17 16:15:35 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.7.50 fixed missing initial loop information after
+  AgsMachine::map-recall() signal callback to ags-fx-playback and
+  ags-fx-notation.
+
+-------------------------------------------------------------------
+Sat Mar 13 18:19:53 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.7.48 updated user's handbook chapter 2 Docbook
+  XML file.
+- new since v3.7.44 fixed potential SIGSEGV with AgsPluginBrowser
+  no plugin selected.
+- new since v3.7.43 Polish translation.
+
+-------------------------------------------------------------------
 Sun Feb 21 14:47:03 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.7.42 run tests with valgrind and fixed some bugs
