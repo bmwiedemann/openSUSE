@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Format-Pg
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-DateTime-Format-Pg
-Version:        0.16013
-Release:        0
 %define cpan_name DateTime-Format-Pg
+Name:           perl-DateTime-Format-Pg
+Version:        0.16014
+Release:        0
 Summary:        Parse and format PostgreSQL dates and times
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/DateTime-Format-Pg/
+License:        Artistic-1.0 OR GPL-1.0-or-later
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DM/DMAKI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(DateTime) >= 0.10
@@ -48,10 +46,10 @@ take a 'DateTime' or 'DateTime::Duration' object and produce a string
 representing it in a format accepted by PostgreSQL.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Build.PL --installdirs=vendor
+perl Build.PL --installdirs=vendor
 ./Build build --flags=%{?_smp_mflags}
 
 %check
@@ -62,8 +60,7 @@ representing it in a format accepted by PostgreSQL.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes Makefile README.md
+%doc Changes Makefile minil.toml README.md
 %license LICENSE
 
 %changelog
