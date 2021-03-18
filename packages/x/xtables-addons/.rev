@@ -604,4 +604,12 @@
     <comment>- Update to release 3.17</comment>
     <requestid>877365</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>ac7d9aebf4ed8a3136c4a51370e774d2</srcmd5>
+    <version>3.18</version>
+    <time>1616104561</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>879947</requestid>
+  </revision>
 </revisionlist>

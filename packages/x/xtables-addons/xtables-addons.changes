@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 11 16:14:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.18
+  * Fix ARM 32-bit build failure
+
+-------------------------------------------------------------------
 Sun Feb 28 16:58:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.17
