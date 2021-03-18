@@ -686,4 +686,21 @@
     <comment></comment>
     <requestid>875609</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>40e524d12c0a274ad00cfd7c0d1c9152</srcmd5>
+    <version>1.19.8</version>
+    <time>1616104468</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.19.8:
+  * Feature: flags in the &quot;proxy_cookie_flags&quot; directive can now contain
+    variables.
+  * Feature: the &quot;proxy_protocol&quot; parameter of the &quot;listen&quot; directive,
+    the &quot;proxy_protocol&quot; and &quot;set_real_ip_from&quot; directives in mail proxy.
+  * Bugfix: HTTP/2 connections were immediately closed when using
+    &quot;keepalive_timeout 0&quot;; the bug had appeared in 1.19.7.
+  * Bugfix: some errors were logged as unknown if nginx was built with
+    glibc 2.32.
+  * Bugfix: in the eventport method.</comment>
+    <requestid>879894</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 12 20:17:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.19.8:
+  * Feature: flags in the "proxy_cookie_flags" directive can now contain
+    variables.
+  * Feature: the "proxy_protocol" parameter of the "listen" directive,
+    the "proxy_protocol" and "set_real_ip_from" directives in mail proxy.
+  * Bugfix: HTTP/2 connections were immediately closed when using
+    "keepalive_timeout 0"; the bug had appeared in 1.19.7.
+  * Bugfix: some errors were logged as unknown if nginx was built with
+    glibc 2.32.
+  * Bugfix: in the eventport method.
+
+-------------------------------------------------------------------
 Sat Feb 27 12:04:02 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Refreshed spec-file via spec-cleaner and manual optimizations.
@@ -276,6 +290,8 @@ Sat Dec 28 11:03:16 UTC 2019 - Илья Индиго <ilya@ilya.pp.ua>
   * A timeout might occur while handling pipelined requests in an
     SSL connection; the bug had appeared in 1.17.5.
   * Bugfix in the ngx_http_dav_module.
+  * CVE-2019-20372: Fixed an HTTP request smuggling with certain error_page
+    configurations which could have allowed unauthorized web page reads (bsc#1160682).
 
 -------------------------------------------------------------------
 Sat Nov 23 20:12:57 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
