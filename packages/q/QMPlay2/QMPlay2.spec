@@ -15,70 +15,71 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %define __builder Ninja
 
-Name:           QMPlay2
-Version:        21.03.09
-Release:        0
-Summary:        A Qt based media player, streamer and downloader
-License:        LGPL-3.0-or-later
-Group:          Productivity/Multimedia/Video/Players
-URL:            https://github.com/zaps166/QMPlay2
-Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
+Name:             QMPlay2
+Version:          21.03.09
+Release:          0
+Summary:          A Qt based media player, streamer and downloader
+License:          LGPL-3.0-or-later
+Group:            Productivity/Multimedia/Video/Players
+URL:              https://github.com/zaps166/QMPlay2
+Source:           https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE
-Patch1:         0001-add-opensuse-customizations.patch
-BuildRequires:  cmake >= 3.16
-BuildRequires:  gcc-c++
-BuildRequires:  ninja
-BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5Qml) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.10.0
-BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.10.0
-BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(libass)
-BuildRequires:  pkgconfig(libavcodec) >= 58.18.100
-BuildRequires:  pkgconfig(libavdevice)
-BuildRequires:  pkgconfig(libavformat) >= 58.12.100
-BuildRequires:  pkgconfig(libavutil) >= 56.14.100
-BuildRequires:  pkgconfig(libcddb)
-BuildRequires:  pkgconfig(libcdio)
-BuildRequires:  pkgconfig(libgme)
+Patch1:           0001-add-opensuse-customizations.patch
+# PATCH-FIX-UPSTREAM
+Patch2:           0001-fix-kde-startup-warning.patch
+BuildRequires:    cmake >= 3.16
+BuildRequires:    gcc-c++
+BuildRequires:    ninja
+BuildRequires:    pkgconfig
+BuildRequires:    cmake(Qt5LinguistTools) >= 5.10.0
+BuildRequires:    pkgconfig(Qt5Concurrent) >= 5.10.0
+BuildRequires:    pkgconfig(Qt5DBus) >= 5.10.0
+BuildRequires:    pkgconfig(Qt5Qml) >= 5.10.0
+BuildRequires:    pkgconfig(Qt5Svg) >= 5.10.0
+BuildRequires:    pkgconfig(Qt5Widgets) >= 5.10.0
+BuildRequires:    pkgconfig(Qt5X11Extras) >= 5.10.0
+BuildRequires:    pkgconfig(alsa)
+BuildRequires:    pkgconfig(libass)
+BuildRequires:    pkgconfig(libavcodec) >= 58.18.100
+BuildRequires:    pkgconfig(libavdevice)
+BuildRequires:    pkgconfig(libavformat) >= 58.12.100
+BuildRequires:    pkgconfig(libavutil) >= 56.14.100
+BuildRequires:    pkgconfig(libcddb)
+BuildRequires:    pkgconfig(libcdio)
+BuildRequires:    pkgconfig(libgme)
 # Enable PipeWire support on openSUSE Tumbleweed
 %if 0%{?suse_version} >= 1550
-BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.22
+BuildRequires:    pkgconfig(libpipewire-0.3) >= 0.3.22
 %endif
-BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(libsidplayfp)
-BuildRequires:  pkgconfig(libswresample) >= 3.1.100
-BuildRequires:  pkgconfig(libswscale) >= 5.1.100
-BuildRequires:  pkgconfig(libva)
-BuildRequires:  pkgconfig(libva-glx)
-BuildRequires:  pkgconfig(taglib) >= 1.9
-BuildRequires:  pkgconfig(vdpau)
-BuildRequires:  pkgconfig(xv)
-Requires(post): hicolor-icon-theme
-Requires(post): shared-mime-info
-Requires(post): update-desktop-files
+BuildRequires:    pkgconfig(libpulse)
+BuildRequires:    pkgconfig(libsidplayfp)
+BuildRequires:    pkgconfig(libswresample) >= 3.1.100
+BuildRequires:    pkgconfig(libswscale) >= 5.1.100
+BuildRequires:    pkgconfig(libva)
+BuildRequires:    pkgconfig(libva-glx)
+BuildRequires:    pkgconfig(taglib) >= 1.9
+BuildRequires:    pkgconfig(vdpau)
+BuildRequires:    pkgconfig(xv)
+Requires(post):   hicolor-icon-theme
+Requires(post):   shared-mime-info
+Requires(post):   update-desktop-files
 Requires(postun): hicolor-icon-theme
 Requires(postun): shared-mime-info
 Requires(postun): update-desktop-files
-Recommends:     youtube-dl
-Requires:       python > 3.0.0
+Recommends:       youtube-dl
+Requires:         python > 3.0.0
 
 %description
 QMPlay2 is a video player, it can play and stream all formats supported by
 ffmpeg and libmodplug (including J2B). It has an integrated Youtube
 browser.
 
-%package        devel
-Summary:        %{name} development files
-Group:          Development/Libraries/Other
-Requires:       %{name} = %{version}
+%package          devel
+Summary:          %{name} development files
+Group:            Development/Libraries/Other
+Requires:         %{name} = %{version}
 
 %description    devel
 It's a development package for %{name}.
@@ -102,6 +103,11 @@ It's a development package for %{name}.
   -DUSE_LYRICS=ON \
   -DUSE_RADIO=ON \
   -DUSE_YOUTUBE=ON \
+%if 0%{?suse_version} >= 1550
+  -DUSE_PIPEWIRE=ON \
+%else
+  -DUSE_PIPEWIRE=OFF \
+%endif
   -DUSE_UPDATES=OFF \
   -DUSE_YOUTUBEDL=ON
 
