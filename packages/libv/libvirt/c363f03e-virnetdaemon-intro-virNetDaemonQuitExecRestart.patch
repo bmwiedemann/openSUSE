@@ -1,0 +1,85 @@
+commit c363f03e6d0298416179c7f7b24f00da9d85a14f
+Author: Peter Krempa <pkrempa@redhat.com>
+Date:   Wed Mar 10 17:01:23 2021 +0100
+
+    virnetdaemon: Introduce virNetDaemonQuitExecRestart
+    
+    Recent changes which meant to fix daemon shutdown broke the exec-restart
+    capability of virtlogd and virtlockd, since the code actually closed all
+    the sockets and shut down all the internals.
+    
+    Add virNetDaemonQuitExecRestart, which requests a shutdown of the
+    process, but keeps all the services open and registered since they are
+    preserved across the restart.
+    
+    Signed-off-by: Peter Krempa <pkrempa@redhat.com>
+    Reviewed-by: Michal Privoznik <mprivozn@redhat.com>
+
+Index: libvirt-7.1.0/src/libvirt_remote.syms
+===================================================================
+--- libvirt-7.1.0.orig/src/libvirt_remote.syms
++++ libvirt-7.1.0/src/libvirt_remote.syms
+@@ -85,6 +85,7 @@ virNetDaemonNew;
+ virNetDaemonNewPostExecRestart;
+ virNetDaemonPreExecRestart;
+ virNetDaemonQuit;
++virNetDaemonQuitExecRestart;
+ virNetDaemonRemoveShutdownInhibition;
+ virNetDaemonRun;
+ virNetDaemonSetShutdownCallbacks;
+Index: libvirt-7.1.0/src/rpc/virnetdaemon.c
+===================================================================
+--- libvirt-7.1.0.orig/src/rpc/virnetdaemon.c
++++ libvirt-7.1.0/src/rpc/virnetdaemon.c
+@@ -76,6 +76,7 @@ struct _virNetDaemon {
+     bool quit;
+     bool finished;
+     bool graceful;
++    bool execRestart;
+ 
+     unsigned int autoShutdownTimeout;
+     size_t autoShutdownInhibitions;
+@@ -857,6 +858,10 @@ virNetDaemonRun(virNetDaemonPtr dmn)
+ 
+         virHashForEach(dmn->servers, daemonServerProcessClients, NULL);
+ 
++        /* don't shutdown services when performing an exec-restart */
++        if (dmn->quit && dmn->execRestart)
++            goto cleanup;
++
+         if (dmn->quit && dmn->finishTimer == -1) {
+             virHashForEach(dmn->servers, daemonServerClose, NULL);
+             if (dmn->shutdownPrepareCb && dmn->shutdownPrepareCb() < 0)
+@@ -912,6 +917,20 @@ virNetDaemonQuit(virNetDaemonPtr dmn)
+     virObjectUnlock(dmn);
+ }
+ 
++
++void
++virNetDaemonQuitExecRestart(virNetDaemon *dmn)
++{
++    virObjectLock(dmn);
++
++    VIR_DEBUG("Exec-restart requested %p", dmn);
++    dmn->quit = true;
++    dmn->execRestart = true;
++
++    virObjectUnlock(dmn);
++}
++
++
+ static int
+ daemonServerClose(void *payload,
+                   const char *key G_GNUC_UNUSED,
+Index: libvirt-7.1.0/src/rpc/virnetdaemon.h
+===================================================================
+--- libvirt-7.1.0.orig/src/rpc/virnetdaemon.h
++++ libvirt-7.1.0/src/rpc/virnetdaemon.h
+@@ -75,6 +75,7 @@ void virNetDaemonSetStateStopWorkerThrea
+ void virNetDaemonRun(virNetDaemonPtr dmn);
+ 
+ void virNetDaemonQuit(virNetDaemonPtr dmn);
++void virNetDaemonQuitExecRestart(virNetDaemon *dmn);
+ 
+ bool virNetDaemonHasClients(virNetDaemonPtr dmn);
+ 

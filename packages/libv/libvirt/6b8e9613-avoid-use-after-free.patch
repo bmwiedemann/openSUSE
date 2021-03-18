@@ -1,0 +1,27 @@
+commit 6b8e961399549c5c8fdf06875e5981c564829ad6
+Author: Peter Krempa <pkrempa@redhat.com>
+Date:   Fri Mar 12 10:12:51 2021 +0100
+
+    virLockSpacePreExecRestart: Avoid use-after-free
+    
+    Recent refactor marked 'object' which is returned from the function as
+    autofree but forgot to use g_steal_pointer in the return statement to
+    prevent freeing it.
+    
+    Fixes: 9a1651f64d7
+    Signed-off-by: Peter Krempa <pkrempa@redhat.com>
+    Reviewed-by: Michal Privoznik <mprivozn@redhat.com>
+
+Index: libvirt-7.1.0/src/util/virlockspace.c
+===================================================================
+--- libvirt-7.1.0.orig/src/util/virlockspace.c
++++ libvirt-7.1.0/src/util/virlockspace.c
+@@ -472,7 +472,7 @@ virJSONValuePtr virLockSpacePreExecResta
+         goto error;
+ 
+     virMutexUnlock(&lockspace->lock);
+-    return object;
++    return g_steal_pointer(&object);
+ 
+  error:
+     virMutexUnlock(&lockspace->lock);

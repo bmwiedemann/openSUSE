@@ -291,10 +291,14 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
+Patch0:         ee3dc2c2-libxl-default-pcistub-name.patch
+Patch1:         6b8e9613-avoid-use-after-free.patch
+Patch2:         eab7ae6b-fix-array-access.patch
+Patch3:         c363f03e-virnetdaemon-intro-virNetDaemonQuitExecRestart.patch
+Patch4:         ccc6dd8f-fix-exec-restart.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
-Patch102:       libxl-default-pcistub-name.patch
 # Need to go upstream
 Patch150:       libvirt-power8-models.patch
 Patch151:       ppc64le-canonical-name.patch

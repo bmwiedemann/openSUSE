@@ -1,0 +1,41 @@
+commit ccc6dd8f11f32f9387fd05de4ad98d61d4e88b69
+Author: Peter Krempa <pkrempa@redhat.com>
+Date:   Wed Mar 10 17:14:18 2021 +0100
+
+    virtlo(g|ck)d: Fix exec-restart
+    
+    Commit 94e45d1042e broke exec-restart of virtlogd and virtlockd as the
+    code waiting for the daemon shutdown closed the daemons before
+    exec-restarting.
+    
+    Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=1912243
+    Fixes: 94e45d1042e
+    Signed-off-by: Peter Krempa <pkrempa@redhat.com>
+    Reviewed-by: Michal Privoznik <mprivozn@redhat.com>
+
+Index: libvirt-7.1.0/src/locking/lock_daemon.c
+===================================================================
+--- libvirt-7.1.0.orig/src/locking/lock_daemon.c
++++ libvirt-7.1.0/src/locking/lock_daemon.c
+@@ -336,7 +336,7 @@ virLockDaemonExecRestartHandler(virNetDa
+                                 void *opaque G_GNUC_UNUSED)
+ {
+     execRestart = true;
+-    virNetDaemonQuit(dmn);
++    virNetDaemonQuitExecRestart(dmn);
+ }
+ 
+ static int
+Index: libvirt-7.1.0/src/logging/log_daemon.c
+===================================================================
+--- libvirt-7.1.0.orig/src/logging/log_daemon.c
++++ libvirt-7.1.0/src/logging/log_daemon.c
+@@ -283,7 +283,7 @@ virLogDaemonExecRestartHandler(virNetDae
+                                void *opaque G_GNUC_UNUSED)
+ {
+     execRestart = true;
+-    virNetDaemonQuit(dmn);
++    virNetDaemonQuitExecRestart(dmn);
+ }
+ 
+ static int

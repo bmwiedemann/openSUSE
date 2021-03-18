@@ -120,7 +120,7 @@ Index: libvirt-7.1.0/src/libxl/libxl_driver.c
  static int
  libxlDomainGetJobInfo(virDomainPtr dom,
                        virDomainJobInfoPtr info)
-@@ -6607,6 +6697,7 @@ static virHypervisorDriver libxlHypervis
+@@ -6610,6 +6700,7 @@ static virHypervisorDriver libxlHypervis
  #endif
      .nodeGetFreeMemory = libxlNodeGetFreeMemory, /* 0.9.0 */
      .nodeGetCellsFreeMemory = libxlNodeGetCellsFreeMemory, /* 1.1.1 */

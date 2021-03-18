@@ -1,4 +1,4 @@
-commit 844c278ad2a957592ba9fbf93c6aa076a2b3d216
+commit ee3dc2c2c8e5b2d3976e43dde95bc0aeeafbef4f
 Author: Jim Fehlig <jfehlig@suse.com>
 Date:   Mon Mar 1 15:41:44 2021 -0700
 
@@ -7,6 +7,7 @@ Date:   Mon Mar 1 15:41:44 2021 -0700
     Commit 887dd0d331 caused a small regression in NodeDeviceDetach in the libxl
     driver when the 'driver' parameter is not specified. E.g.
     
+    # virsh nodedev-detach pci_0000_0a_10_0
     error: Failed to detach device pci_0000_0a_10_0
     error: An error occurred, but the cause is unknown
     
@@ -16,18 +17,21 @@ Date:   Mon Mar 1 15:41:44 2021 -0700
     "xen" if it is not specified when invoking NodeDeviceDetach.
     
     Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+    Reviewed-by: Pavel Hrdina <phrdina@redhat.com>
 
-diff --git a/src/libxl/libxl_driver.c b/src/libxl/libxl_driver.c
-index 75a8d46af0..348434ca72 100644
---- a/src/libxl/libxl_driver.c
-+++ b/src/libxl/libxl_driver.c
-@@ -5777,6 +5777,9 @@ libxlNodeDeviceDetachFlags(virNodeDevicePtr dev,
+Index: libvirt-7.1.0/src/libxl/libxl_driver.c
+===================================================================
+--- libvirt-7.1.0.orig/src/libxl/libxl_driver.c
++++ libvirt-7.1.0/src/libxl/libxl_driver.c
+@@ -5777,7 +5777,10 @@ libxlNodeDeviceDetachFlags(virNodeDevice
  
      virCheckFlags(0, -1);
  
+-    if (driverName && STRNEQ(driverName, "xen")) {
 +    if (!driverName)
 +        driverName = "xen";
 +
-     if (driverName && STRNEQ(driverName, "xen")) {
++    if (STRNEQ(driverName, "xen")) {
          virReportError(VIR_ERR_INVALID_ARG,
                         _("unsupported driver name '%s'"), driverName);
+         return -1;

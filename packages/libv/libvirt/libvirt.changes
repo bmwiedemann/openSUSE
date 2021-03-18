@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 12 21:11:17 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- virtlockd, virtlogd: Fix exec-restart
+  6b8e9613-avoid-use-after-free.patch,
+  eab7ae6b-fix-array-access.patch,
+  c363f03e-virnetdaemon-intro-virNetDaemonQuitExecRestart.patch,
+  ccc6dd8f-fix-exec-restart.patch
+  bsc#1183411
+
+-------------------------------------------------------------------
+Wed Mar 10 18:37:38 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Replace libxl-default-pcistub-name.patch with upstream variant
+  ee3dc2c2-libxl-default-pcistub-name.patch
+
+-------------------------------------------------------------------
 Mon Mar  1 23:06:57 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - libxl: Fix node device detach when driver unspecified
