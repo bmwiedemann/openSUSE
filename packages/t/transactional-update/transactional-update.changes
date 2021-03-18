@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar 12 13:08:04 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.2.2
+  - Don't skip patches with rebootSuggested flag [bsc#1183442]
+
+-------------------------------------------------------------------
+Wed Mar 10 15:14:03 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.2.1
+  - t-u: Forward --quiet option to tukit
+  - Regression: Add /opt as bind mount into update environment
+  - Remove output indicators of the called command to not tamper
+    the result line
+  - Fix /etc syncing with --drop-if-no-change
+
+-------------------------------------------------------------------
+Wed Mar 10 12:40:56 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Requires inotify-tool to have --drop-if-no-change available
+
+-------------------------------------------------------------------
 Tue Mar  2 23:58:27 UTC 2021 - Ignaz Forster <iforster@suse.com>
 
 - Version 3.2.0
