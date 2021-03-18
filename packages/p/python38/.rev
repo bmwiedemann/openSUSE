@@ -134,4 +134,12 @@
   into the upstream tarball.</comment>
     <requestid>874121</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>d24ca7b5a9ab37e15ac4008e46e84ecf</srcmd5>
+    <version>3.8.8</version>
+    <time>1616104501</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>879914</requestid>
+  </revision>
 </revisionlist>
