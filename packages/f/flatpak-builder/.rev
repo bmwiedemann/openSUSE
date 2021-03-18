@@ -179,4 +179,14 @@
     <comment>New stable release (forwarded request 828672 from iznogood)</comment>
     <requestid>828951</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>106a1c13b752bee3f2ad81068a6c867f</srcmd5>
+    <version>1.0.12</version>
+    <time>1616104565</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.12.
+  * Make --run work if manifest has --metadata in build-finish.
+  * Don't try to extract git submodules if they were disabled. (forwarded request 876586 from andythe_great)</comment>
+    <requestid>879955</requestid>
+  </revision>
 </revisionlist>
