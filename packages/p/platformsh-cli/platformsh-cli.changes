@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Mar 18 00:22:36 UTC 2021 - jimmy@boombatower.com
+
+- Update to version 3.65.4:
+  * Release v3.65.4
+  * Support indexed SSH URLs (for apps with multiple instances)
+  * Release v3.65.3
+  * Fix proxy settings in Api service (#1041)
+  * Make the OAuth2 client ID configurable by env var
+  * Improve worker not found error message when the app name is incorrect
+  * Fix --worker compatibility for various commands
+  * Only send the token to obtain the initial redirect
+  * Fix "Link not found: #manage-access" when checking environment roles
+  * Fix error "SSH service not available" with build --clone
+  * Also decode COMPOSER_AUTH
+  * installer: support using a GitHub token to download assets
+
+-------------------------------------------------------------------
 Wed Feb 17 03:42:25 UTC 2021 - jimmy@boombatower.com
 
 - Update to version 3.65.2:
