@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 14 03:08:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9718
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9718 2021-03-13
+  - remove doc of deleted average_degree method - thanks @lindleyw for report
+
+-------------------------------------------------------------------
 Thu Jan 28 03:06:32 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9717
