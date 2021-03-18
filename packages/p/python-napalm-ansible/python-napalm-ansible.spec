@@ -1,7 +1,7 @@
 #
 # spec file for package python-napalm-ansible
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+# No ansible for Python 3.6
+%define skip_python36 1
 Name:           python-napalm-ansible
 Version:        1.1.0
 Release:        0
 Summary:        Ansible module for device access using NAPALM
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/napalm-automation/napalm-ansible
 Source:         https://github.com/napalm-automation/napalm-ansible/archive/%{version}.tar.gz#/napalm-ansible-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
@@ -31,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-napalm
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module napalm}
