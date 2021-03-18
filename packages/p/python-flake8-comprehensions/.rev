@@ -41,4 +41,30 @@
     <comment></comment>
     <requestid>820509</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cc33cadec868bc107c91ffecb1c96091</srcmd5>
+    <version>3.4.0</version>
+    <time>1616104519</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.0:
+  - Remove rules C407 (Unnecessary &lt;dict/list&gt; comprehension
+    - &lt;builtin&gt; can take a generator) and C412 (Unnecessary
+    &lt;dict/list/set&gt; comprehension - 'in' can take a generator).
+    Both rules recommended increasing laziness, which is not
+    always desirable and can lead to subtle bugs. Also, a fully
+    exhausted generator is slower than an equivalent
+    comprehension, so the advice did not always improve
+    performance.
+  - Drop Python 3.5 support.
+  - Support Python 3.9.
+  - Move license from ISC to MIT License.
+  - Partially reverted the change to C408 to make it apply again
+    to when dict is called with keyword arguments, e.g. dict(a=1,
+    b=2) will be flagged to be rewritten in the literal form
+    {&quot;a&quot;: 1, &quot;b&quot;: 2}
+- Skip test test_C416_fail_1_list
+  (gh#adamchainz/flake8-comprehensions#313).
+</comment>
+    <requestid>879887</requestid>
+  </revision>
 </revisionlist>
