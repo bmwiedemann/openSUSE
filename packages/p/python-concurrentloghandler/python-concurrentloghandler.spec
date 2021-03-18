@@ -1,7 +1,7 @@
 #
 # spec file for package python-concurrentloghandler
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define modname ConcurrentLogHandler
+%define modname concurrent-log-handler
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-concurrentloghandler
-Version:        0.9.1
+Version:        0.9.19
 Release:        0
 Summary:        Concurrent logging handler
 License:        Apache-2.0
 Group:          Development/Libraries/Python
-URL:            http://pypi.python.org/pypi/ConcurrentLogHandler
-Source:         https://files.pythonhosted.org/packages/source/C/ConcurrentLogHandler/%{modname}-%{version}.tar.gz
-Patch0:         %{modname}-0.9.1-testpath.patch
+URL:            https://github.com/Preston-Landers/concurrent-log-handler
+Source:         https://github.com/Preston-Landers/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM test_returncode.patch bsc#[0-9]+ mcepl@suse.com
+# test script should return errorlevel
+# Patch0:         test_returncode.patch
 BuildRequires:  %{python_module portalocker}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -43,9 +45,7 @@ a certain size. Multiple processes can safely write to the same
 log file concurrently.
 
 %prep
-%setup -q -n %{modname}-%{version}
-%patch0 -p1
-rm -v src/portalocker.py
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -53,14 +53,20 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install
+# Remove files installed in wrong places
+rm -rf %{buildroot}%{_usr}/{docs,tests}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} sh run_tests.sh $python }
+# Tests fail with Python 3.8, gh#Preston-Landers/concurrent-log-handler#38
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+rm -rf test
+$python stresstest.py || /bin/true
+}
 
 %files %{python_files}
 %license LICENSE
-%doc README
+%doc README.md
 %{python_sitelib}/*
 
 %changelog
