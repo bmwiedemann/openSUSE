@@ -17,7 +17,7 @@
 
 
 Name:           jasper
-Version:        2.0.26
+Version:        2.0.27
 Release:        0
 Summary:        An Implementation of the JPEG-2000 Standard, Part 1
 License:        SUSE-Public-Domain

@@ -91,4 +91,20 @@
     for some invalid CDEF boxes. (#268)</comment>
     <requestid>877263</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>702b84d56b6241803d14affdb027883d</srcmd5>
+    <version>2.0.27</version>
+    <time>1616104516</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.27:
+  * Check for an image containing no samples in the PGX
+    decoder. (#271, #272, #273, #274, #275, #276, #281)
+  * Check for dimensions of zero in the JPC and JPEG decoders.
+  * Fix an arguably incorrect type for an integer literal
+    in the PGX decoder. (#270)
+  * Check for an invalid component reference in the
+    JP2 decoder. (#269)
+  * Check on integer size in JP2 decoder. (#278)</comment>
+    <requestid>879870</requestid>
+  </revision>
 </revisionlist>
