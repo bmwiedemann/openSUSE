@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        3.2.0
+Version:        3.2.2
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -64,13 +64,14 @@ BuildRequires:  w3m
 BuildRequires:  xsltproc
 Requires:       /usr/bin/bc
 Requires:       dracut-transactional-update = %{version}-%{release}
+# Parameter --drop-if-no-change requires it
+Requires:       inotify-tools
 Requires:       logrotate
 Requires:       lsof
 # psmisc is needed because of fuser
 Requires:       psmisc
 Requires:       tukit = %{version}-%{release}
 Requires:       zypper
-Recommends:     inotify-tools
 Recommends:     rebootmgr
 
 %description
