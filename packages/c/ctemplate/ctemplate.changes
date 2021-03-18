@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 17 09:12:01 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 2.4
+  * Switch to Python 3
+  * Add new buildrequests: autoconf, automake and libtool
+
+-------------------------------------------------------------------
 Sat Feb 11 14:10:02 UTC 2017 - jengelh@inai.de
 
 - Trim descriptions
