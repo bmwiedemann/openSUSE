@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 17 20:03:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.5.0:
+  * minor release, no recompile of programs required
+  * expanded community input and support
+  * 70 unique contributors as of this release
+  * port to Apple M1 hardware 
+
+-------------------------------------------------------------------
 Sat Jan  2 10:34:52 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Update to version 8.4.0 and remove obsolete patches:

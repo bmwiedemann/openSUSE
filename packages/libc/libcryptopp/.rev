@@ -291,4 +291,17 @@ Filter out -flto= flag for arm7 see cryptopp issue#865</comment>
     <comment></comment>
     <requestid>860703</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>28f5b56d5c2b6228a08904446273f074</srcmd5>
+    <version>8.5.0</version>
+    <time>1616104501</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.5.0:
+  * minor release, no recompile of programs required
+  * expanded community input and support
+  * 70 unique contributors as of this release
+  * port to Apple M1 hardware 
+</comment>
+    <requestid>879764</requestid>
+  </revision>
 </revisionlist>

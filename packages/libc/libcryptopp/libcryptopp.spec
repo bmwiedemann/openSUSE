@@ -17,21 +17,21 @@
 
 
 %define major 8
-%define minor 4
+%define minor 5
 %define patch 0
-%define pkg_version %{major}%{minor}%{patch}
+%define pkg_version %{major}%{minor}%patch
 # There is no upstream interface version information.
 # Therefore we need unique basenames (see boo#1027192):
-%define sover %{major}_%{minor}_%{patch}
+%define sover %{major}_%{minor}_%patch
 Name:           libcryptopp
 # WARNING: Execute "sh precheckin_baselibs.sh" to update baselibs.conf
 # WARNING: uses source tarball name to create lib name.
-Version:        %{major}.%{minor}.%{patch}
+Version:        %{major}.%{minor}.%patch
 Release:        0
 Summary:        Cryptographic library for C++
 License:        BSL-1.0
 URL:            https://www.cryptopp.com
-Source:         https://github.com/weidai11/cryptopp/archive/CRYPTOPP_%{major}_%{minor}_%{patch}.tar.gz
+Source:         https://github.com/weidai11/cryptopp/archive/CRYPTOPP_%{major}_%{minor}_%patch.tar.gz
 Source1:        precheckin_baselibs.sh
 Source2:        baselibs.conf
 # PATCH-FEATURE-OPENSUSE libcryptopp-shared.patch -- improve shared library creation
@@ -68,7 +68,7 @@ codes, hash functions, PKI crypto, key agreement schemes and elliptic
 curve crypto. This package is used for crypto++ development.
 
 %prep
-%setup -q -n "cryptopp-CRYPTOPP_%{major}_%{minor}_%{patch}"
+%setup -q -n "cryptopp-CRYPTOPP_%{major}_%{minor}_%patch"
 %autopatch -p1
 
 %build
@@ -107,10 +107,10 @@ exec_prefix=\${prefix}
 libdir=%{_libdir}
 includedir=%{_includedir}
 
-Name: libcrypto++
-Description: General purpose cryptographic shared library
-URL: https://www.cryptopp.com
-Version: %{version}
+Name:           libcrypto++
+Description:    General purpose cryptographic shared library
+URL:            https://www.cryptopp.com
+Version:        %{version}
 Libs: -lcryptopp
 Cflags:
 EOF
