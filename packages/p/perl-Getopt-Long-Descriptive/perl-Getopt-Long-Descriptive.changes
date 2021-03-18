@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Mar 17 03:06:34 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.109
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+
+  0.109     2021-03-16 19:55:45-04:00 America/New_York
+          - eliminate warnings-count failure by requiring an ExtUtils::MakeMaker
+            from late 2013 or later;  without this, very old EUMM could pass -w
+            to the tests, enabling more warnings than we wanted (thanks, Matthew
+            Horsfall and Graham Knop!)
+
+  0.108     2021-03-16 09:54:51-04:00 America/New_York
+          - provide diagnostics in tests when more warnings arrive than are
+            expected
+
+-------------------------------------------------------------------
+Mon Mar 15 03:08:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.107
+   see /usr/share/doc/packages/perl-Getopt-Long-Descriptive/Changes
+
+  0.107     2021-03-14 16:15:57-04:00 America/New_York
+          - Term::ReadKey has been dropped; caused too many problems
+          - minimum version is now v5.10.1, not v5.10.0
+
+  0.106     2021-03-12 21:29:54-05:00 America/New_York
+          - improved formatting of switches
+          - when available, use Term::ReadKey to get terminal width
+          - when an option name is defined twice, warn about it
+            THIS WILL BECOME FATAL IN A FUTURE VERSION
+
+-------------------------------------------------------------------
 Wed Feb 26 03:07:35 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.105
