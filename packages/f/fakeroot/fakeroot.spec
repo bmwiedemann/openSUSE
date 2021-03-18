@@ -1,7 +1,7 @@
 #
 # spec file for package fakeroot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,12 @@ URL:            http://fakeroot.alioth.debian.org/
 Source0:        http://ftp.debian.org/debian/pool/main/f/fakeroot/%{name}_%{version}.orig.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 Patch0:         %{name}-1.20-lib32.patch
-Patch2:         %{name}-1.20-eglibc-fts-without-LFS.patch
+Patch1:         %{name}-1.20-eglibc-fts-without-LFS.patch
 # PATCH-FIX-UPSTREAM fakeroot-1.21-fix-shell-in-fakeroot.patch (deb#828810)
-Patch4:         %{name}-1.21-fix-shell-in-fakeroot
-Patch5:         fakeroot-drop-tartest.patch
+Patch2:         %{name}-1.21-fix-shell-in-fakeroot
+Patch3:         fakeroot-drop-tartest.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-glibc-2.33-compatibility-fixes.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 # user(daemon)/group(sys) is required for t.tar testsuite
@@ -106,9 +108,9 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/{faked,fakeroot}{,.1%{ext_man}}
 
 %check
-%if %{suse_version} < 1315
+%if 0%{?suse_version} < 1315
 for type in sysv tcp; do
-  make %{?_smp_mflags} -C obj-$type check
+  %make_build -C obj-$type check
 done
 %endif
 

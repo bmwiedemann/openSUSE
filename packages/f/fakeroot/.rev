@@ -73,4 +73,13 @@
     <comment></comment>
     <requestid>845044</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>626856722b7af4f61d233abbf75bb3da</srcmd5>
+    <version>1.25.3</version>
+    <time>1616104505</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream changes to fix build with glibc 2.33:
+  * 0001-glibc-2.33-compatibility-fixes.patch (forwarded request 879703 from cgiboudeaux)</comment>
+    <requestid>879818</requestid>
+  </revision>
 </revisionlist>
