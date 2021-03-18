@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 11 07:19:10 UTC 2021 - Wang Jun <jgwang@suse.com> - 53
+￼
+- Update to version 53
+  * Add architecture ppc64le to travis build (#122)
+  * enable distro settings by default (#125)
+  * meson: optionally depend on c++ (#124)
+  * meson: add static compile args to inih_dep (#126)
+
+-------------------------------------------------------------------
 Thu Dec 24 09:40:03 UTC 2020 - Matthias Bach <marix@marix.org> - 52
 
 - Make package conform to spec-cleaner.
