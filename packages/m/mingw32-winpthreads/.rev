@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a70acdb40d3a40fe401e7014df5c9467</srcmd5>
+    <version>7.0.0</version>
+    <time>1578502456</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>754043</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9200a9d01cd6d0180802ac3dbad7d8e0</srcmd5>
+    <version>8.0.0</version>
+    <time>1616104525</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 8.0.0</comment>
+    <requestid>879903</requestid>
+  </revision>
+</revisionlist>
