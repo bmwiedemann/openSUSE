@@ -20,7 +20,7 @@
 %bcond_with    mutt_openssl
 %bcond_without mutt_gnutls
 Name:           mutt
-Version:        2.0.5
+Version:        2.0.6
 Release:        0
 Summary:        Mail Program
 # ftp://ftp.mutt.org/mutt/devel/
@@ -72,7 +72,7 @@ BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsasl2)
 Requires(post): %{_bindir}/cat
 Requires(post): %{_bindir}/mkdir
-Requires(postun): %{_bindir}/rm
+Requires(postun):%{_bindir}/rm
 Requires(pre):  %{_bindir}/grep
 Requires(pre):  %{_bindir}/zcat
 Recommends:     hunspell
@@ -81,8 +81,6 @@ Recommends:     mutt-lang
 Recommends:     urlscan
 Recommends:     urlview
 Recommends:     w3m
-Provides:       muttssl
-Obsoletes:      muttssl
 %if %{with mutt_openssl}
 BuildRequires:  pkgconfig(openssl)
 %endif
@@ -112,7 +110,7 @@ BuildRequires:  update-desktop-files
 %endif
 %if 0%{?suse_version} > 1130
 Requires(post): shared-mime-info
-Requires(postun): shared-mime-info
+Requires(postun):shared-mime-info
 %endif
 
 %description
@@ -126,7 +124,7 @@ Summary:        Additional Documentation about Mutt
 Group:          Documentation/Other
 Requires:       %{name} = %{version}
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 Recommends:     perl(Expect)
 Provides:       %{name}:%{_docdir}/%{name}/COPYRIGHT
 BuildArch:      noarch

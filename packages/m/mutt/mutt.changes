@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 18 05:08:57 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- mutt 2.0.6:
+  * Fix problems with hook processors
+  * Fix pattern compilation error for ~( !~>(~P) )
+  * Fix contrib/markdown2html crash
+  * Fix yesorno prompt for autocrypt account creation
+  * Correctly handle CTRL-G on remaining background_edit sessions
+    prompt
+- remove self-obsoletion on muttssl, last use in 2000.
+
+-------------------------------------------------------------------
 Fri Jan 22 16:52:40 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - mutt 2.0.5:

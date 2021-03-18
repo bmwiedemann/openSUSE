@@ -1193,4 +1193,12 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
     <comment></comment>
     <requestid>866158</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>10c370f2e5a3bed89034c370befd67a5</srcmd5>
+    <version>2.0.6</version>
+    <time>1616104542</time>
+    <user>dimstar_suse</user>
+    <comment>mutt 2.0.6 (forwarded request 879885 from AndreasStieger)</comment>
+    <requestid>879929</requestid>
+  </revision>
 </revisionlist>
