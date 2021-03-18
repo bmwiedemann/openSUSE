@@ -457,4 +457,13 @@
     <comment></comment>
     <requestid>867412</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>e6f0650b0d9ea0348f45c8c39b5e51d1</srcmd5>
+    <version>202102</version>
+    <time>1616104465</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to edk2-stable202102
+- Update tags for security fixes</comment>
+    <requestid>879840</requestid>
+  </revision>
 </revisionlist>

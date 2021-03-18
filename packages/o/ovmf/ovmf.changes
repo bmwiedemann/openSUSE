@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Mar 11 02:07:17 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to edk2-stable202102
+  * ArmVirtPkg: support extra pci root bridges (pxb)
+  * SEV Encrypted Boot for Ovmf (remote attestation)
+  * virtio-fs driver for OvmfPkg and ArmVirtPkg
+  * Apply SEV-ES mitigations for encryption bit position and MMIO
+  * Add Core CI support for StandaloneMmPkg
+  * Update LZMA module to LZMA SDK latest version 19.00
+  * Port open source JSON library (jansson)
+  * add file buffering to the UEFI shell's COMP command
+  * Shell: pathname / filename sorting
+  * Extend support of peripheral x64 MM_STANDALONE drivers
+  * BaseTools: Convert the Split tool from C language to Python
+  * ArmPkg: Add Universal/Smbios
+  * Move to Pip based Basetools python
+  * Add support for use of FF-A callsw
+- Drop upstreamed patches:
+  + ovmf-jscSLE-16075-SEV-ES-use-physical-address.patch
+  + ovmf-bsc1180079-amd-sev-es-mitigation.patch
+
+-------------------------------------------------------------------
 Thu Jan 28 07:56:37 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add ovmf-jscSLE-16075-SEV-ES-use-physical-address.patch as the
@@ -28,11 +50,11 @@ Fri Nov 27 09:24:04 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
     CryptPkcs7VerifyEku
   * Revert "SecurityPkg: Add RPMC Index to the RpmcLib"
   * MdeModulePkg/LzmaCustomDecompressLib: catch 4GB+ uncompressed
-    buffer sizes
+    buffer sizes (bsc#1183578, CVE-2021-28211)
   * MdeModulePkg/Core/Dxe: limit FwVol encapsulation section
-    recursion
+    recursion (bsc#1183579, CVE-2021-28210)
   * MdeModulePkg/Core/Dxe: assert SectionInstance invariant in
-    FindChildNode()
+    FindChildNode() (bsc#1183579, CVE-2021-28210)
   * SecurityPkg: Add RPMC Index to the RpmcLib
   * BaseTools: Resolve index out of range errors.
   * UefiCpuPkg/PiSmmCpuDxeSmm: Reflect page table depth with page
