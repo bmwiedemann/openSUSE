@@ -1,0 +1,10 @@
+[Unit]
+Description=Prometheus exporter for ICMP echo requests
+
+[Service]
+ExecStart=/usr/bin/ping_exporter --config.path=/etc/ping_exporter.yaml
+DynamicUser=Yes
+AmbientCapabilities=CAP_NET_RAW
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+targets:
+- opensuse.org
+
+ping:
+  interval: 5s
+  timeout: 4s
+  history-size: 10
