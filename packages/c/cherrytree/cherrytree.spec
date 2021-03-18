@@ -17,7 +17,7 @@
 
 
 Name:           cherrytree
-Version:        0.99.31+1
+Version:        0.99.32
 Release:        0
 Summary:        A hierarchical note taking application
 License:        GPL-3.0-or-later AND LGPL-2.1-only
@@ -28,6 +28,7 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         cherrytree-set-git-version.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  ninja
 BuildRequires:  python3-lxml
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fmt)

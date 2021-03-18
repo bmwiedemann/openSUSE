@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Mar 15 16:18:00 UTC 2021 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.32:
+  * Fix crash regression of latest changes to restor excat vertical
+    scrolling of text.
+  * Remember last inserted special character and focus it at next
+    special char insert time.
+  * Improved restoring of exact vertical scroll position,
+    (gh#giuspen/cherrytree#1151).
+  * Fix iterated find dialog position issue.
+  * Non rich text is to use the standard gtk undo/redo.
+  * Fix iterated find/replace dialog disappearing after first
+    button click.
+  * Improved dialog to select an item in the list focusing the item
+    that is currently in use.
+  * Fixed issue with tree on right side restore tree width;
+    splitted ct_main_win.cc, (gh#giuspen/cherrytree#1534).
+  * Updated ct_node_no_icon.svg.
+  * Close image resize dialog when pressing enter; dialog.cc split,
+    (gh#giuspen/cherrytree#1547).
+  * More node icons (gh#giuspen/cherrytree#1514).
+  * Fix copy as plain text not working in table cell,
+    (gh#giuspen/cherrytree#1528).
+  * Cycle cherries colors in nodes levels rather than use the
+    latest level for all exceeding number of colors,
+    (gh#giuspen/cherrytree#692).
+  * Added support for language 'elixir',
+    (gh#giuspen/cherrytree#1541).
+  * Update README.md, (gh#giuspen/cherrytree#1536).
+
+-------------------------------------------------------------------
 Fri Feb 26 22:53:30 UTC 2021 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.31+1:
