@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0ee3586821f3ff8800c5c01663620831</srcmd5>
+    <version>2.3.0</version>
+    <time>1575923729</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>755153</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e903c4a404f5dfcd8eaebe392c2dbb36</srcmd5>
+    <version>2.4.0</version>
+    <time>1582018556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>774696</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>dfc61a289030f81ccabdb6ceca8e5209</srcmd5>
+    <version>2.4.0</version>
+    <time>1616104487</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use setup.py from somewhere, but proper poetry toolchain
+  (yes, we need full poetry package for poetry.masonry).
+</comment>
+    <requestid>879722</requestid>
+  </revision>
+</revisionlist>
