@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 18 03:47:49 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 21.1.0. bsc#1183679
+  * Support for Python 3.9.
+  * Support for Twisted >= 20.9.0.
+  * Support for Python 2.7 and 3.5 (which are both EOL) is deprecated.
+  * The auth parameter now accepts arbitrary text and bytes for usernames and
+    passwords. Text is encoded as UTF-8, per RFC 7617. Previously only ASCII
+    was allowed.
+  * treq produces a more helpful exception when passed a tuple of the wrong
+    size in the files parameter.
+  * The url parameter of HTTPClient.request() (and shortcuts like get()) now
+    accept hyperlink.DecodedURL and hyperlink.URL in addition to str and bytes.
+
+-------------------------------------------------------------------
 Thu Jul 23 13:10:39 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 20.4.1
