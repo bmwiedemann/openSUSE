@@ -4579,6 +4579,8 @@ unsorted:
   - ghc-hslogger-devel: [x86_64] 
   - ghc-hslua: [x86_64] 
   - ghc-hslua-devel: [x86_64] 
+  - ghc-hslua-module-path: [x86_64] 
+  - ghc-hslua-module-path-devel: [x86_64] 
   - ghc-hslua-module-system: [x86_64] 
   - ghc-hslua-module-system-devel: [x86_64] 
   - ghc-hslua-module-text: [x86_64] 
@@ -9647,6 +9649,8 @@ unsorted:
   - libcblas3-32bit: [x86_64] 
   - libcbor-devel 
   - libccrtp3 
+  - libcdada-devel 
+  - libcdada0 
   - libcdata-devel 
   - libcdata1 
   - libcdatetime-devel 
@@ -11481,8 +11485,7 @@ unsorted:
   - liblockdev1-32bit: [x86_64] 
   - liblockfile-devel 
   - liblockfile1 
-  - liblodepng-r207: [x86_64] 
-  - liblodepng-r208: [i586] 
+  - liblodepng-r208 
   - liblog4c-devel 
   - liblog4c-doc 
   - liblog4c3 
@@ -13988,10 +13991,10 @@ unsorted:
   - libvorbis-doc 
   - libvorbisenc2-32bit: [x86_64] 
   - libvoro++0 
-  - libvotca_csg6 
+  - libvotca_csg2021 
   - libvotca_ctp5 
-  - libvotca_tools6 
-  - libvotca_xtp6 
+  - libvotca_tools2021 
+  - libvotca_xtp2021: [x86_64] 
   - libvotequorum8 
   - libvotequorum8-32bit: [x86_64] 
   - libvpd2 
@@ -19149,6 +19152,7 @@ unsorted:
   - perl-SOAP-Lite 
   - perl-SQL-Abstract 
   - perl-SQL-Abstract-Classic 
+  - perl-SQL-Abstract-Pg 
   - perl-SQL-ReservedWords 
   - perl-SQL-SplitStatement 
   - perl-SQL-Statement 
@@ -20772,7 +20776,6 @@ unsorted:
   - python3-gobject2-devel 
   - python3-gom 
   - python3-google-cloud-storage 
-  - python3-google-resumable-media 
   - python3-gpiod 
   - python3-gpsd 
   - python3-gr-iqbal 
@@ -20876,7 +20879,6 @@ unsorted:
   - python3-masakariclient 
   - python3-matrix-synapse-ldap3 
   - python3-mautrix-telegram 
-  - python3-minidb 
   - python3-mistralclient 
   - python3-mlt 
   - python3-monascaclient 
@@ -20978,7 +20980,6 @@ unsorted:
   - python3-renderspec 
   - python3-reno 
   - python3-rpmconf 
-  - python3-rpmdeplint 
   - python3-rpmfluff 
   - python3-rrdtool 
   - python3-rust2rpm 
@@ -21030,7 +21031,6 @@ unsorted:
   - python3-xcb-proto-devel 
   - python3-xrootd 
   - python3-yang 
-  - python3-yappi 
   - python3-yaql 
   - python3-z3 
   - python3-zbar 
@@ -22222,6 +22222,7 @@ unsorted:
   - python36-google-cloud-speech 
   - python36-google-cloud-translate 
   - python36-google-pasta 
+  - python36-google-resumable-media 
   - python36-googleapis-common-protos 
   - python36-googlemaps 
   - python36-gpg 
@@ -22554,6 +22555,7 @@ unsorted:
   - python36-metamagic.json 
   - python36-methodtools 
   - python36-mimesis 
+  - python36-minidb 
   - python36-minio 
   - python36-miniupnpc 
   - python36-misaka 
@@ -23802,7 +23804,6 @@ unsorted:
   - python36-xmlschema 
   - python36-xmlsec 
   - python36-xmltodict 
-  - python36-xonsh 
   - python36-xpybutil 
   - python36-xsge_gui 
   - python36-xsge_lighting 
@@ -25036,6 +25037,7 @@ unsorted:
   - python38-google-cloud-speech 
   - python38-google-cloud-translate 
   - python38-google-pasta 
+  - python38-google-resumable-media 
   - python38-googleapis-common-protos 
   - python38-googlemaps 
   - python38-gpgme 
@@ -25390,6 +25392,7 @@ unsorted:
   - python38-metamagic.json 
   - python38-methodtools 
   - python38-mimesis 
+  - python38-minidb 
   - python38-minio 
   - python38-miniupnpc 
   - python38-misaka 
@@ -26664,7 +26667,6 @@ unsorted:
   - python38-xmlschema 
   - python38-xmlsec 
   - python38-xmltodict 
-  - python38-xonsh 
   - python38-xpybutil 
   - python38-xsge_gui 
   - python38-xsge_lighting 
@@ -26681,6 +26683,7 @@ unsorted:
   - python38-yamllint 
   - python38-yamlloader 
   - python38-yapf 
+  - python38-yappi 
   - python38-yara 
   - python38-yarb 
   - python38-yarg 
@@ -37636,10 +37639,10 @@ unsorted:
   - voro++-devel 
   - vorta 
   - votca-csg 
+  - votca-csg-apps 
   - votca-csg-bash 
   - votca-csg-common 
   - votca-csg-devel 
-  - votca-csg-doc 
   - votca-csg-tutorials 
   - votca-csgapps 
   - votca-ctp 
@@ -37648,9 +37651,9 @@ unsorted:
   - votca-ctp-doc 
   - votca-tools 
   - votca-tools-devel 
-  - votca-xtp 
-  - votca-xtp-common 
-  - votca-xtp-devel 
+  - votca-xtp: [x86_64] 
+  - votca-xtp-common: [x86_64] 
+  - votca-xtp-devel: [x86_64] 
   - voxelands 
   - vpcs 
   - vpx-tools 
