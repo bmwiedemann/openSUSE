@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Tue Mar 16 12:20:59 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- New package ncurses-tests which includes examples and tests
+- Include bash script cursescheck for ASC and REP capabilities 
+
+-------------------------------------------------------------------
+Mon Mar 15 07:36:19 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210313
+  + improve configure CF_LD_SEARCHPATH macro used for ncurses*-config and
+    ".pc" files, from dialog changes.
+  + reduce dependency of math-library in test programs.
+  + minor fixes for test_tparm.c (cf: 20210306)
+  + mention "ncurses" prefix in curses_version() manpage (report by
+    Michal Bielinski).
+
+-------------------------------------------------------------------
+Tue Mar  9 11:16:31 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Only libpcre2 for ncurses ABI 6
+- Make linker script for ABI 6 check for needed libpcre2
+
+-------------------------------------------------------------------
+Tue Mar  9 09:02:47 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210306
+  + improved test/test_parm.c, by limiting the tests to capabilities
+    that might have parameters or padding, and combined with tputs test.
+  + improve discussion of padding versus tparm and tputs in
+    man/curs_terminfo.3x
+  + update portability note for FreeBSD in man/tput.1
+
+-------------------------------------------------------------------
+Mon Mar  1 07:15:42 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210227
+  + modify tic/infocmp to eliminate unnecessary "\" to escape ":" in
+    terminfo format.
+  + add check in tic for duplicate "use=" clauses.
+
+-------------------------------------------------------------------
+Mon Feb 22 08:41:45 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210220
+  + improve tic warning when oc/op do not mention SGR 39/49 for xterm
+    compatible XT flag.
+  + revert change to lib_addch.c in waddch_literal() from 20210130, since
+    the followup fix in PutCharLR() actually corrects the problem while
+    this change causes too-early filling/wrapping (report by Johannes
+    Altmanninger).
+  + add/use vt220+pcedit and vt220+vtedit  -TD
+  + add scrt/securecrt and absolute -TD
+  + add nel to xterm-new, though supported since X11R5 -TD
+  + add/use xterm+nofkeys -TD
+  + move use of ecma+italics from xterm-basic to xterm+nofkeys -TD
+- Port patch ncurses-6.2.dif mainly terminfo.src
+
+-------------------------------------------------------------------
+Mon Feb 15 11:15:34 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210213
+  + add test/back_ground.c, to exercise the wide-character background
+    functions.
+  + add a check in _nc_build_wch() in case the background character is a
+    wide-character, rather than a new part of a multibyte character.
+  + improve tracemunch's coverage of form/menu/panel libraries.
+  + improve tracemunch's checking/reporting the type for the first
+    parameter, e.g., "WINDOW*" rather than "#1".
+
+-------------------------------------------------------------------
+Tue Feb  9 09:33:11 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- For (lib)pcre2 support the devel package has to require this 
+
+-------------------------------------------------------------------
+Mon Feb  8 08:46:27 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210206
+  + provide for wide-characters as background character in wbkgrnd
+    (report/testcase by Anton Vidovic)
+  + add name for Fedora's pcre2 to configure check for "--with-pcre2"
+    option, from xterm #363 -TD
+  + modify adjustment in PutCharLR to restore the cursor position before
+    writing to the lower-right corner, rather than decrementing the
+    cursor column, in case it was a double-width character (cf: 20210130).
+
+-------------------------------------------------------------------
 Mon Feb  1 07:58:24 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20210130

@@ -1,0 +1,156 @@
+#!/bin/bash
+# Test ACS Line Graphics and REP capability of a terminal line
+# Author: Werner Fink <werner@suse.de>
+
+typeset -i rep=0 line=0
+for s in 0 1 2
+do
+    test -c /proc/$$/fd/$s || { echo "Missing /proc/$$/fd/$s" 1>&2; exit 1; }
+done
+for d in null tty
+do
+    test -c /dev/$d || { echo "Missing /dev/$d" 1>&2; exit 1; }
+done
+for d in pts fd
+do
+    test -d /dev/$d || { echo "Missing /dev/$d/" 1>&2; exit 1; }
+done
+for p in tput infocmp fold tty grep od
+do
+    type -p $p 1> /dev/null 2>&1 || { echo "Missing $p in path" 1>&2; exit 1; }
+done
+
+typeset -r tty=$(tty) || { echo "Not on a terminal line" 1>&2; exit 1; }
+typeset -i width=$(tput cols) || { echo "No terminal size" 1>&2; exit 1; }
+typeset -i height=$(tput lines) || { echo "No terminal size" 1>&2; exit 1; }
+
+#
+# There are terminal type which uses non printable characters for
+# Line Graphic. Therefore store them as numbers or sequences within
+# arrays used later on.
+#
+typeset -i c
+typeset -a tmp="($(tput acsc | od -A none -tx1))" acsc acsn
+for ((c=0;c<${#tmp[@]};c+=2))
+do
+    acsc[0x${tmp[c]}]="0x${tmp[c+1]}"
+    acsn[0x${tmp[c]}]=\\x${tmp[c+1]}
+done
+unset tmp c
+
+#
+# Init terminal
+#
+tput init || { echo "Not a terminal" 1>&2; exit 1; }
+
+#
+# Restore screen at exit
+#
+trap 'tput cvvis; tput rmcup' EXIT HUP INT TERM
+
+#
+# Save screen, make curse invisible, and goto upper left
+#
+tput smcup
+tput civis
+tput cup 0 0
+tput ed
+
+echo Checking for Line Graphics on $tty with TERM=$TERM
+let line++
+if ((${#acsc[@]} > 0))
+then
+    echo Terminal TERM=$TERM has ASC Line Graphics, check them.
+    let line++
+    tput cup $((height/2)) 0
+    tput -S <<-!
+	enacs
+	smacs
+	!
+    echo -ne ${acsn[0x6c]}
+    for ((c=0;c<20;c++)); do echo -ne ${acsn[0x71]}; done
+    echo -ne ${acsn[0x6b]}
+    tput cup $((height/2+1)) 0
+    echo -ne ${acsn[0x78]}
+    tput hpa 21
+    echo -ne ${acsn[0x78]}
+    tput cup $((height/2+2)) 0
+    echo -ne ${acsn[0x78]}
+    tput hpa 21
+    echo -ne ${acsn[0x78]}
+    tput cup $((height/2+3)) 0
+    echo -ne ${acsn[0x78]}
+    tput hpa 21
+    echo -ne ${acsn[0x78]}
+    tput cup $((height/2+4)) 0
+    echo -ne ${acsn[0x6d]}
+    for ((c=0;c<20;c++)); do echo -ne ${acsn[0x71]}; done
+    echo -ne ${acsn[0x6a]}
+    tput -S <<-!
+	rmacs
+	!
+    tput cup $line 0
+    tput cvvis
+    echo -n "OK> "
+    read -t 5 yesno
+else
+    echo Terminal TERM=$TERM has no ASC Line Graphics. Done
+    exit 0
+fi
+
+#
+# Could use clear
+#
+tput -S <<-!
+	cup 0 0
+	ed
+	!
+let line=0
+if test -n "$(infocmp -T $TERM -1 | grep rep=)"
+then
+    echo Found rep capability in terminfo database for TERM=$TERM
+    let rep++
+    let line++
+else
+    echo No rep capability given in terminfo database for TERM=$TERM
+    echo -n "OK> "
+    read -t 5 yesno
+    exit 0
+fi
+if ((rep > 0))
+then
+    echo Testing rep capability of TERM=$TERM 
+    let line++
+    tput -S <<-!
+	civis
+	enacs
+	smacs
+	bold
+	cup $((height/2)) 0
+	rep ${acsc[0x6c]} 0
+	rep ${acsc[0x71]} 20
+	rep ${acsc[0x6b]} 0
+	cup $((height/2+1)) 0
+	rep ${acsc[0x78]} 0
+	hpa 21
+	rep ${acsc[0x78]} 0
+	cup $((height/2+2)) 0
+	rep ${acsc[0x78]} 0
+	hpa 21
+	rep ${acsc[0x78]} 0
+	cup $((height/2+3)) 0
+	rep ${acsc[0x78]} 0
+	hpa 21
+	rep ${acsc[0x78]} 0
+	cup $((height/2+4)) 0
+	rep ${acsc[0x6d]} 0
+	rep ${acsc[0x71]} 20
+	rep ${acsc[0x6a]} 0
+	sgr0
+	rmacs
+	cvvis
+	!
+    tput cup $line 0
+    echo -n "OK> "
+    read -t 5 yesno
+fi

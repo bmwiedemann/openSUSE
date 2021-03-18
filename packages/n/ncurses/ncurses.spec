@@ -25,6 +25,7 @@
 %bcond_with     memleakck
 %bcond_without  onlytinfo
 %bcond_with     libbsd
+%bcond_without  usepcre2
 
 %if %{with onlytinfo}
 %global soname_tinfo tinfo
@@ -47,6 +48,9 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libbsd)
 %endif
 BuildRequires:  screen
+%if %{with usepcre2}
+BuildRequires:  pkgconfig(libpcre2-8)
+%endif
 %if 0%{?suse_version} > 1130
 BuildRequires:  gpm-devel
 %else
@@ -80,6 +84,7 @@ Source4:        ncurses-rpmlintrc
 Source5:        ftp://ftp.invisible-island.net/pub/ncurses/current/tack-1.09-20200220.tgz
 Source6:        edit.sed
 Source7:        baselibs.conf
+Source8:        cursescheck
 Patch0:         ncurses-6.2.dif
 Patch1:         ncurses-5.9-ibm327x.dif
 Patch2:         ncurses-5.7-tack.dif
@@ -115,6 +120,14 @@ tput  -- shell-script access to terminal capabilities.
 tset  -- terminal-initialization utility
 
 reset -- terminal initialization utility
+
+%package -n ncurses-tests
+Summary:        Tools using the new curses libraries
+License:        MIT
+Group:          System/Base
+
+%description -n ncurses-tests
+The ncurses based test programs
 
 %package -n terminfo-base
 Summary:        A terminal descriptions database
@@ -213,6 +226,9 @@ Provides:       ncurses:%{_incdir}/ncurses.h
 Requires:       %{_bindir}/tack
 Requires:       libncurses6 = %{version}-%{release}
 Requires:       ncurses = %{version}-%{release}
+%if %{with usepcre2}
+Requires:       pkgconfig(libpcre2-8)
+%endif
 # bug437293
 %ifarch ppc64
 Obsoletes:      ncurses-devel-64bit
@@ -494,6 +510,9 @@ mv tack-* tack
 	--with-default-terminfo-dir=%{_datadir}/terminfo \
 	--with-terminfo-dirs=%{_sysconfdir}/terminfo:%{_datadir}/terminfo \
 	--with-xterm-kbs=del	\
+%if %{with usepcre2}
+	--with-pcre2		\
+%endif
 	--disable-stripping	\
 	--disable-root-environ	\
 	--disable-termcap	\
@@ -661,11 +680,17 @@ mv tack-* tack
 	CFLAGS="$CFLAGS -I%{root}%{_incdir}/ncursesw/ -I%{root}%{_incdir}/" \
 	LDFLAGS="$LDFLAGS -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir}" \
 	LIBS="$LDFLAGS" \
-	./configure --with-ncursesw --enable-widec --prefix=$PWD
+	./configure --with-ncursesw --with-screen=ncursesw --enable-widec --prefix=%{_prefix} --bindir=%{_libexecdir}/ncurses --datadir=%{_datadir}/ncurses
+
 	LD_LIBRARY_PATH=%{root}%{_libdir} \
+%if %{with usepcre2}
+	make %{?_smp_mflags} TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread -lpcre2-posix -lpcre2-8'
+	make install DESTDIR=${PWD} TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread -lpcre2-posix -lpcre2-8'
+%else
 	make %{?_smp_mflags} TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
-	make install TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
-	mv bin binw
+	make install DESTDIR=${PWD} TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
+%endif
+	mv usr usr.back
 	make distclean
     popd
 %endif
@@ -690,6 +715,9 @@ mv tack-* tack
 				    --disable-opaque-panel	\
 				    --disable-ext-mouse		\
 				    --disable-widec		\
+%if %{with usepcre2}
+				    --without-pcre2		\
+%endif
 				    --with-termlib=tinfo	\
 				    --with-ticlib=tic		\
 %if %{with symversion}
@@ -796,10 +824,16 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	CFLAGS="$CFLAGS -I%{root}%{_incdir}ncurses/ -I%{root}%{_incdir}/" \
 	LDFLAGS="$LDFLAGS -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir}" \
 	LIBS="$LDFLAGS" \
-	./configure --with-ncurses --disable-widec --prefix=$PWD
+	./configure --with-ncurses --with-screen=ncurses --disable-widec --prefix=%{_prefix} --bindir=%{_libexecdir}/ncurses --datadir=%{_datadir}/ncurses
 	LD_LIBRARY_PATH=%{root}%{_libdir} \
+%if %{with usepcre2}
+	make %{?_smp_mflags} TEST_ARGS='-lform -lmenu -lpanel -lncurses -ltic -ltinfo -Wl,--as-needed' TEST_LIBS='-lutil -lpthread -lpcre2-posix -lpcre2-8'
+	make install DESTDIR=${PWD} TEST_ARGS='-lform -lmenu -lpanel -lncurses -ltic -ltinfo -Wl,--as-needed' TEST_LIBS='-lutil -lpthread -lpcre2-posix -lpcre2-8'
+%else
 	make %{?_smp_mflags} TEST_ARGS='-lform -lmenu -lpanel -lncurses -ltic -ltinfo -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
-	make install TEST_ARGS='-lform -lmenu -lpanel -lncurses -ltic -ltinfo -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
+	make install DESTDIR=${PWD} TEST_ARGS='-lform -lmenu -lpanel -lncurses -ltic -ltinfo -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
+%endif
+	rm -rf usr/
 	make distclean
     popd
 %endif
@@ -826,6 +860,9 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 				    --disable-opaque-panel	\
 				    --disable-ext-mouse		\
 				    --enable-widec		\
+%if %{with usepcre2}
+				    --without-pcre2		\
+%endif
 				    --with-termlib=%{soname_tinfo}	\
 				    --with-ticlib=ticw		\
 %if %{with symversion}
@@ -875,6 +912,11 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	%{root}%{_bindir}/ncursesw5-config
 
 %install
+%if %{with usepcre2}
+    pcre2="-lpcre2-posix -lpcre2-8"
+%else
+    pcre2=""
+%endif
     PATH=$PWD/gzip:$PATH
     (cd %{root}/; tar -cpSf - *)|tar -xpsSf - -C %{buildroot}/
     rm -rf %{root}
@@ -893,12 +935,12 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	    libncursesw*)
 		rm -f ${lnk}
 		echo '/* GNU ld script */'			>  ${lnk}
-		echo "INPUT(${lib} AS_NEEDED(-l%{soname_tinfo} -ldl))"	>> ${lnk}
+		echo "INPUT(${lib} AS_NEEDED(-l%{soname_tinfo} -ldl $pcre2))" >> ${lnk}
 		;;
 	    libncurses*)
 		rm -f ${lnk}
 		echo '/* GNU ld script */'			>  ${lnk}
-		echo "INPUT(${lib} AS_NEEDED(-ltinfo -ldl))"	>> ${lnk}
+		echo "INPUT(${lib} AS_NEEDED(-ltinfo -ldl $pcre2))" >> ${lnk}
 		;;
 	    *)	ln -sf ${lib} %{buildroot}%{_libdir}/${model}.so
 	    esac
@@ -1088,6 +1130,15 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 #
     cp -p pc/*.pc %{buildroot}%{_libdir}/pkgconfig/
 
+#
+# Install test binaries and, if exists, the manual pages
+#
+pushd test
+    mv usr.back usr 
+    (cd usr/; tar -cpSf - .) | tar -xpsSf - -C %{buildroot}%{_prefix}
+    install -m 0755 %{S:8} %{buildroot}%{_libexecdir}/ncurses/
+popd
+
 %if 0%{?_crossbuild}
 # No test here
 %else
@@ -1103,7 +1154,7 @@ pushd test
     expect -d <<-'EOF'
 	set env(TERM) xterm
 	set timeout 20
-	spawn -noecho "binw/newdemo"
+	spawn -noecho ".%{_libexecdir}/ncurses/newdemo"
 	send -- "x"
 	sleep 5
 	send -- "x"
@@ -1116,7 +1167,7 @@ pushd test
     expect -d <<-'EOF'
 	set env(TERM) xterm
 	set timeout 20
-	spawn -noecho "bin/newdemo"
+	spawn -noecho ".%{_libexecdir}/ncurses/newdemo"
 	send -- "x"
 	sleep 5
 	send -- "x"
@@ -1164,15 +1215,23 @@ popd
 %{_bindir}/toe
 %{_bindir}/tput
 %{_bindir}/tset
-%doc %{_mandir}/man1/clear.1.gz
-%doc %{_mandir}/man1/infocmp.1.gz
-%doc %{_mandir}/man1/reset.1.gz
-%doc %{_mandir}/man1/tabs.1.gz
-%doc %{_mandir}/man1/toe.1.gz
-%doc %{_mandir}/man1/tput.1.gz
-%doc %{_mandir}/man1/tset.1.gz
-%doc %{_mandir}/man5/*.gz
+%doc %{_mandir}/man1/clear.1%{ext_man}
+%doc %{_mandir}/man1/infocmp.1%{ext_man}
+%doc %{_mandir}/man1/reset.1%{ext_man}
+%doc %{_mandir}/man1/tabs.1%{ext_man}
+%doc %{_mandir}/man1/toe.1%{ext_man}
+%doc %{_mandir}/man1/tput.1%{ext_man}
+%doc %{_mandir}/man1/tset.1%{ext_man}
+%doc %{_mandir}/man5/*%{ext_man}
 %doc AUTHORS
+
+%files -n ncurses-tests
+%defattr(-,root,root)
+%dir %{_libexecdir}/ncurses/
+%{_libexecdir}/ncurses/*
+%dir %{_datadir}/ncurses/
+%{_datadir}/ncurses/*
+#%doc %{_mandir}/man6/*%{ext_man}
 
 %files -n libncurses5
 %defattr(-,root,root)
@@ -1197,12 +1256,12 @@ popd
 %{_incdir}/ncursesw/*.h
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*[clmosuw\+].pc
-%doc %{_mandir}/man1/ncurses*6-config.1.gz
-%doc %{_mandir}/man1/captoinfo.1.gz
-%doc %{_mandir}/man1/infotocap.1.gz
-%doc %{_mandir}/man1/tic.1.gz
-%doc %{_mandir}/man3/*.gz
-%doc %{_mandir}/man7/*.gz
+%doc %{_mandir}/man1/ncurses*6-config.1%{ext_man}
+%doc %{_mandir}/man1/captoinfo.1%{ext_man}
+%doc %{_mandir}/man1/infotocap.1%{ext_man}
+%doc %{_mandir}/man1/tic.1%{ext_man}
+%doc %{_mandir}/man3/*%{ext_man}
+%doc %{_mandir}/man7/*%{ext_man}
 
 %files -n ncurses-devel-static
 %{_libdir}/lib*.a
@@ -1219,7 +1278,7 @@ popd
 %dir %{_libdir}/ncurses5/
 %{_libdir}/ncurses5/lib*.so
 %{_libdir}/pkgconfig/*5.pc
-%doc %{_mandir}/man1/ncurses*5-config.1.gz
+%doc %{_mandir}/man1/ncurses*5-config.1%{ext_man}
 
 %files -n ncurses5-devel-static
 %{_libdir}/ncurses5/lib*.a
@@ -1227,7 +1286,7 @@ popd
 %files -n tack
 %defattr(-,root,root)
 %{_bindir}/tack
-%doc %{_mandir}/man1/tack.1.gz
+%doc %{_mandir}/man1/tack.1%{ext_man}
 
 %files -f extension.list -n terminfo
 %defattr(-,root,root)

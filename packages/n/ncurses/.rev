@@ -3090,4 +3090,41 @@
     quirks of pmake.</comment>
     <requestid>868392</requestid>
   </revision>
+  <revision rev="185" vrev="16">
+    <srcmd5>e445f62078c668a71e5cb20b29dcef0e</srcmd5>
+    <version>6.2.MACRO</version>
+    <time>1616104462</time>
+    <user>dimstar_suse</user>
+    <comment>- New package ncurses-tests which includes examples and tests
+- Include bash script cursescheck for ASC and REP capabilities 
+
+- Add ncurses patch 20210313
+  + improve configure CF_LD_SEARCHPATH macro used for ncurses*-config and
+    &quot;.pc&quot; files, from dialog changes.
+  + reduce dependency of math-library in test programs.
+  + minor fixes for test_tparm.c (cf: 20210306)
+  + mention &quot;ncurses&quot; prefix in curses_version() manpage (report by
+    Michal Bielinski).
+
+- Only libpcre2 for ncurses ABI 6
+- Make linker script for ABI 6 check for needed libpcre2
+
+- Add ncurses patch 20210306
+  + improved test/test_parm.c, by limiting the tests to capabilities
+    that might have parameters or padding, and combined with tputs test.
+  + improve discussion of padding versus tparm and tputs in
+    man/curs_terminfo.3x
+  + update portability note for FreeBSD in man/tput.1
+
+- Add ncurses patch 20210227
+  + modify tic/infocmp to eliminate unnecessary &quot;\&quot; to escape &quot;:&quot; in
+    terminfo format.
+  + add check in tic for duplicate &quot;use=&quot; clauses.
+
+- Add ncurses patch 20210220
+  + improve tic warning when oc/op do not mention SGR 39/49 for xterm
+    compatible XT flag.
+  + revert change to lib_addch.c in waddch_literal() from 20210130, since</comment>
+    <requestid>879423</requestid>
+  </revision>
 </revisionlist>
