@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 12 11:14:30 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Update patch remove_filter_signatures.diff
+
+-------------------------------------------------------------------
+Thu Mar 11 03:07:31 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.34
+   see /usr/share/doc/packages/perl-Spreadsheet-ReadSXC/Changes
+
+  0.34  2021-03-10
+      * Fix OrderBySheet option in Spreadsheet::ReadSXC, thanks to Kuerbis!
+
+-------------------------------------------------------------------
 Fri Jan  8 21:55:32 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated to 0.33

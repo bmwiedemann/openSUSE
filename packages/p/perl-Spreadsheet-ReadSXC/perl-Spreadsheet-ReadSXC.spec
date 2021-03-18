@@ -18,7 +18,7 @@
 
 %define cpan_name Spreadsheet-ReadSXC
 Name:           perl-Spreadsheet-ReadSXC
-Version:        0.33
+Version:        0.34
 Release:        0
 Summary:        Extract OpenOffice 1.x spreadsheet data
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -126,9 +126,8 @@ data referenced by the original return value, so you had to derefence it
 before making another call. Thanks to H. Merijn Brand for fixing this.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
-%patch0 -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
