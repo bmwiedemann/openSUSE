@@ -560,4 +560,16 @@ So preferably for 13.1 as well.</comment>
     <comment>New stable rel (forwarded request 851395 from iznogood)</comment>
     <requestid>851785</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>40ce7d4cacc42c0ac99d80f2a17e82d7</srcmd5>
+    <version>42.7</version>
+    <time>1616104562</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 42.7:
+  + Fix descending into a directory while searching in the
+    browse &amp; restore view
+  + Update Google Drive logo
+  + Update to libhandy-1 (forwarded request 879896 from polslinux)</comment>
+    <requestid>879961</requestid>
+  </revision>
 </revisionlist>

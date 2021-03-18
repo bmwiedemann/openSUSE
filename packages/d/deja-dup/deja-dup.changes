@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 18 13:41:35 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 42.7:
+  + Fix descending into a directory while searching in the
+    browse & restore view
+  + Update Google Drive logo
+  + Update to libhandy-1
+
+-------------------------------------------------------------------
 Fri Nov 27 22:41:06 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 42.6:

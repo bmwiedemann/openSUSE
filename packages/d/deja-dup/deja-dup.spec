@@ -1,7 +1,7 @@
 #
 # spec file for package deja-dup
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           deja-dup
-Version:        42.6
+Version:        42.7
 Release:        0
 Summary:        Simple backup tool and frontend for duplicity
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
 URL:            https://wiki.gnome.org/Apps/DejaDup
 Source0:        https://gitlab.gnome.org/World/deja-dup/-/archive/%{version}/%{name}-%{version}.tar.bz2
-
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  dbus-1
@@ -33,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
 BuildRequires:  glib2-tools
 BuildRequires:  libgpg-error-devel
-BuildRequires:  libhandy0-devel
+BuildRequires:  libhandy-devel
 BuildRequires:  meson >= 0.47
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.16.0
