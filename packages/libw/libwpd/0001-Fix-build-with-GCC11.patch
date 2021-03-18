@@ -1,0 +1,37 @@
+From c5f3105230b383ebf31237b11d28b67c7498e900 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Wed, 10 Mar 2021 23:37:49 +0100
+Subject: [PATCH] Fix build with GCC11
+
+---
+ src/lib/WPXContentListener.h | 1 +
+ src/lib/WPXTable.h           | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/lib/WPXContentListener.h b/src/lib/WPXContentListener.h
+index cf7a93e..376a98c 100644
+--- a/src/lib/WPXContentListener.h
++++ b/src/lib/WPXContentListener.h
+@@ -32,6 +32,7 @@
+ #include "WPXSubDocument.h"
+ #include "WPXPageSpan.h"
+ #include "WPXListener.h"
++#include <cstddef>
+ #include <memory>
+ #include <vector>
+ #include <list>
+diff --git a/src/lib/WPXTable.h b/src/lib/WPXTable.h
+index bdbaf79..b2975c4 100644
+--- a/src/lib/WPXTable.h
++++ b/src/lib/WPXTable.h
+@@ -36,6 +36,7 @@
+ #ifndef _WPXTABLE_H
+ #define _WPXTABLE_H
+ 
++#include <cstddef>
+ #include <vector>
+ 
+ struct WPXTableCell
+-- 
+2.30.1
+

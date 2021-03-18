@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 10 22:38:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with GCC11 (boo#1181873)
+  * 0001-Fix-build-with-GCC11.patch
+
+-------------------------------------------------------------------
 Sat Aug 15 22:00:33 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.10.3:
