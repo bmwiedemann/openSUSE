@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Sun Mar 14 15:56:31 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 1.7.6
+  + BGP daemon: added suppport for Accumulated IGP Metric Attribute
+    (AIGP) and Label-Index TLV of Prefix-SID Attribute.
+  + BGP daemon: added SO_KEEPALIVE TCP socket option (ie. to keep the
+    sessions alive via a firewall / NAT kind of device).
+  + BGP daemon: if comparing source TCP ports among BGP peers is
+    being enabled (config directive tmp_bgp_lookup_compare_ports),
+    print also BGP Router-ID as distinguisher as part of log/dump
+    output.
+  + BMP daemon: added support for HAProxy Proxy Protocol Header in
+    the first BMP message in order to determine the original sender
+    IP address and port. The new bmp_daemon_parse_proxy_header config
+    directive enables the feature.
+  + BMP daemon: improved support and brought implementation on par
+    with the latest drafting efforts at IETF wrt draft-cppy-grow-bmp-
+    path-marking-tlv, draft-xu-grow-bmp-route-policy-attr-trace,
+    draft-ietf-grow-bmp-tlv and draft-lucente-grow-bmp-tlv-ebit.
+  + BMP daemon: added 'bgp_agent_map' equivalent feature for BMP.
+  + nfacctd, nfprobe plugin: added support for collection and export
+    of NetFlow/IPFIX data over Datagram Transport Layer Security (in
+    short DTLS). The feature depends on the GnuTLS library.
+  + nfacctd: added support for deprecated NetFlow v9 IE #104
+    (layer2packetSectionData) as it is implemented for NetFlow-lite
+    on Cisco devices. Reused code from IPFIX IE #315.
+  + nfacctd: added support for MPLS VPN RD IE #90. This comes in two
+    flavours both found across vendor implementations: 1) IE present
+    in flow data and 2) IE present in Options data as a lookup from
+    IE #234 (ingressVRFID) and #235 (egressVRFID).
+  + nfacctd: added a new timestamp_export aggregation primitive to
+    record the timestamp being carried in the header of NetFlow/IPFIX
+    messates (that is, the time at which the export was performed).
+  + nfprobe plugin: added support for ICMP/ICMPv6 information as part
+    of the NetFlow/IPFIX export. The piece of info is encoded in the
+    destination port field as per the current common understandings
+    across vendors. As a result of that, the 'dst_port' primitive is
+    to be part of the aggregation method in order to leverage this
+    feature.
+  + MySQL plugin: introduced support to connect to a MySQL server
+    via UNIX sockets.
+  + tee plugin: added crc32 hash algorithm as a new balancing option
+    for nodes in the receiving pool. It hashes original exporter IP
+    address against a crc32 function. Thanks to @edge-intelligence
+    for the contribution.
+  ! fix, BGP daemon: re-worked internal structuring of 'modern' BGP
+    attributes: for the sake of large-scale space optimization
+    certain attributes are confined in a separate (less used)
+    bgp_info_extra structure.
+  ! fix, BGP daemon: improved support for BGP ADD-PATH, ie. made it
+    per Address-Family rather than global. Also comparisons upon
+    doing route looup were improved and normalized. 
+  ! fix, BGP daemon: use split buffers for recv and send functions
+    of the BGP x-connects feature. Also improved validation when
+    processing a bgp_daemon_xconnect_map.
+  ! fix, BGP daemon: when using BGP x-connects, close unused file
+    descriptors in bgp_peer_xconnect_init() in order to avoid
+    quickly reaching the maximum amount of allowed open descriptors
+    in case of BGP flaps.
+  ! fix, BGP daemon: trigger a log message for a missing entry while
+    processing bgp_daemon_xconnect_map in bgp_peer_xconnect_init().
+  ! fix, BGP daemon: enabled log notifications (that is, log anti-
+    spam measure) upon reaching limit of allowed BGP peers.
+  ! fix, BGP daemon: ecommunity_ecom2str(), first thing make sure
+    that the destination size is enough! Missing this did cause some
+    SEGVs due to heap corruption.
+  ! fix, BGP daemon: solved a memory leak in aspath_make_str_count()
+    by returning result from aspath_make_empty(), if any. Thanks very
+    much to Peter Pothier ( @pothier-peter ) for his contribution.
+  ! fix, BMP daemon: several encoding issues when using Apache Avro
+    ie. missing conditional branching, wrong field names, etc.
+  ! fix, BMP daemon: throw an error for any issues (error or zero
+    length) related to the BGP Update PDU parsing; also added marker
+    and length checks for BGP Open PDU in Peer Up messages.
+  ! fix, BMP daemon: both timestamp of the BMP event and its
+    arrival at the collector are now recorded and printed out
+    separately; before they were wrongly muxed on one single field
+    making it uncertain for the user what was the time reference.
+  ! fix, BMP daemon: correctly print Peer Distinguisher for Route
+    Monitoring messages. Also improved BMP lookup comparisons in
+    order to factor in Peer Distinguisher if any.
+  ! fix, BMP daemon: print 'is_in' boolean for Adj-Rib-In data
+    instead of having it implicit. Also print 'is_post' for Post-
+    Policy Adj-Rib-In data.
+  ! fix, BMP daemon: upon receipt of a Termination message, do
+    proactively close the TCP session.
+  ! fix, nDPI: newer versions of the library (ie. >= 3.2) require
+    calling ndpi_finalize_initialization() somewhere after the
+    detection module init finished.
+  ! fix, pmacctd: link checks were being mistakenly skipped when
+    reading from a pcap_savefile. Also now if a selected aggregation
+    primitive is unsuitable for a given Layer2, it is simply cleared
+    (with an info message issued) instead of making the daemon bail
+    out.
+  | fix, print plugin: bail the plugin out if its output was set to
+    stdout while the daemon was started as daemonized.
+  ! fix, PostgreSQL plugin: in PG_compose_conn_string() allow any
+    intersection of host, port and cafile options.
+  ! fix, nfprobe plugin: changed default export version from NetFlow
+    v5 to IPFIX.
+  ! fix, sfprobe plugin: FreeBSD was complaining of errno 22 (Invalid
+    argument) upon sendto().
+  ! fix, tee plugin: replication of IPv6 packets has been now tested
+    working. Previously the output message size was obviously encoded
+    wrongly and the checksum (mandatory piece of info to fill in IPv6,
+    contrary to IPv4 where it is optional) was not being computed.
+  ! fix, kafka_common.c: improved p_kafka_check_outq_len() error log
+    message to report the amount of elements have been successfully
+    processed in order to better assess impact and dynamics of the
+    problem when inspecting logs.
+  ! fix, net_aggr.c: if networks_file_filter is set to true, don't
+    add a default route to the table.
+  ! fix, cfg.c: throw error if config file is not a regular file.
+  ! fix, compiling against gcc10: renamed some variables and unified
+    declaration of others in order to be more friendly to the new
+    version of gcc. Also fixed several code warnings catched gcc8.
+  - Removed the IP prefix label feature that was enabled via the
+    --enable-plabel configure script switch.
+
+-------------------------------------------------------------------
 Sun Jun 28 15:16:43 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versino 1.7.5

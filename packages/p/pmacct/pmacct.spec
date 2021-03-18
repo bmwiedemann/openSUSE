@@ -1,7 +1,7 @@
 #
 # spec file for package pmacct
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %bcond_with ndpi
 
 Name:           pmacct
-Version:        1.7.5
+Version:        1.7.6
 Release:        0
 Summary:        Accounting and aggregation toolsuite for IPv4 and IPv6
 License:        GPL-2.0-only
@@ -43,6 +43,7 @@ Source12:       sfacctd.conf
 Source20:       pmacct.1
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gcc-c++
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libstdc++-devel
@@ -54,6 +55,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libzmq)
+BuildRequires:  pkgconfig(numa)
 %if %{with ndpi}
 BuildRequires:  pkgconfig(libndpi)
 %endif
