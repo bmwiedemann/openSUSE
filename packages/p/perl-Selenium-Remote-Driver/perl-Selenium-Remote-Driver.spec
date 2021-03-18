@@ -18,7 +18,7 @@
 
 %define cpan_name Selenium-Remote-Driver
 Name:           perl-Selenium-Remote-Driver
-Version:        1.40
+Version:        1.41
 Release:        0
 Summary:        Perl Client for Selenium Remote Driver
 License:        Apache-2.0
