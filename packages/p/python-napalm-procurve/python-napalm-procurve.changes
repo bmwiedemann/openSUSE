@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 16 04:29:48 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add setup-parse-requirements.patch to use the correct property for
+  recent pip versions. 
+
+-------------------------------------------------------------------
 Fri Jul 31 20:45:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 0.7.0

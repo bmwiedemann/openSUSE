@@ -1,7 +1,7 @@
 #
 # spec file for package python-napalm-procurve
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,9 +25,9 @@ Version:        0.7.0
 Release:        0
 Summary:        NAPALM - HP ProCurve network driver
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/ixs/napalm-procurve
 Source:         https://github.com/ixs/napalm-procurve/archive/%{version}.tar.gz#/napalm-procurve-%{version}.tar.gz
+Patch0:         setup-parse-requirements.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -49,6 +49,7 @@ ProCurve driver support for Napalm network automation.
 
 %prep
 %setup -q -n napalm-procurve-%{version}
+%autopatch -p1
 
 %build
 %python_build

@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>824187</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>fdb80e30e7f72daf50a95420e8089a47</srcmd5>
+    <version>0.7.0</version>
+    <time>1616104472</time>
+    <user>dimstar_suse</user>
+    <comment>- Add setup-parse-requirements.patch to use the correct property for
+  recent pip versions.</comment>
+    <requestid>879333</requestid>
+  </revision>
 </revisionlist>
