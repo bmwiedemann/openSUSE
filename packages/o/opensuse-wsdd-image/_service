@@ -1,0 +1,29 @@
+<services>
+    <service name="obs_scm" mode="disabled">
+        <param name="url">https://github.com/openSUSE/container-images.git</param>
+        <param name="scm">git</param>
+        <param name="extract">LICENSE</param>
+        <param name="extract">wsdd/README.md</param>
+        <param name="extract">wsdd/opensuse-wsdd-image.kiwi</param>
+        <param name="revision">main</param>
+        <param name="versionformat">%cd.%h</param>
+    </service>
+    <service name="obs_scm" mode="disabled">
+	<param name="scm">git</param>
+	<param name="revision">main</param>
+	<param name="filename">root</param>
+	<param name="version">_none_</param>
+	<param name="url">https://github.com/openSUSE/container-images.git</param>
+	<param name="subdir">wsdd</param>
+        <param name="include">root/entrypoint.sh</param>
+        <param name="changesgenerate">enable</param>
+    </service>
+    <service mode="buildtime" name="kiwi_metainfo_helper"/>
+    <service name="replace_using_package_version" mode="buildtime">
+        <param name="file">opensuse-wsdd-image.kiwi</param>
+        <param name="regex">%PKG_VERSION%</param>
+        <param name="parse-version">patch</param>
+        <param name="package">wsdd</param>
+    </service>
+    <service mode="buildtime" name="kiwi_label_helper"/>
+</services>
