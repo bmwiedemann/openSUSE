@@ -24,7 +24,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Script for kdump
 License:        GPL-2.0-or-later
@@ -33,40 +33,9 @@ URL:            https://github.com/openSUSE/kdump
 Source:         %{name}-%{version}.tar.bz2
 Source2:        %{name}-rpmlintrc
 Patch1:         %{name}-fillupdir-fixes.patch
-Patch2:         %{name}-block-initrd-parse-etc.service.patch
-Patch3:         %{name}-fadump-avoid-multipath-optimizations.patch
-Patch4:         %{name}-split-cmdline-purpose-wise.patch
-Patch5:         %{name}-fadump-fix-network-bring-up.patch
-Patch6:         %{name}-fadump-add-udev-support.patch
-Patch7:         %{name}-turn-off-NUMA-in-kdump-kernel.patch
-Patch8:         %{name}-remove-noefi-and-acpi_rsdp-for-efi-firmware.patch
 Patch9:         %{name}-use-pbl.patch
 Patch10:        %{name}-on-error-option-yesno.patch
-Patch11:        %{name}-Restore-only-static-routes-in-kdump-initrd.patch
-Patch12:        %{name}-fallback-re-register-fadump-from-userspace.patch
-Patch13:        %{name}-recover-from-missing-CRASHTIME.patch
-Patch14:        %{name}-fix-multipath-user_friendly_names.patch
-Patch15:        %{name}-Add-skip_balance-option-to-BTRFS-mounts.patch
-Patch16:        %{name}-kdumprd-Look-for-boot-image-and-boot-Image.patch
-Patch17:        %{name}-savedump-search-also-for-vmlinux.xz.patch
-Patch18:        %{name}-preserve-white-space.patch
-Patch19:        %{name}-Clean-up-the-use-of-current-vs-boot-network-iface.patch
-Patch20:        %{name}-Use-a-custom-namespace-for-physical-NICs.patch
-Patch21:        %{name}-clean-up-kdump-mount-points.patch
-Patch22:        %{name}-skip-mounts-if-no-proc-vmcore.patch
-Patch23:        %{name}-nss-modules.patch
-Patch24:        %{name}-Add-force-option-to-KDUMP_NETCONFIG.patch
-Patch25:        %{name}-Add-fence_kdump_send-when-fence-agents-installed.patch
-Patch26:        %{name}-FENCE_KDUMP_SEND-variable.patch
-Patch27:        %{name}-Document-fence_kdump_send.patch
-Patch28:        %{name}-powerpc-no-reload-on-CPU-removal.patch
-Patch29:        %{name}-prefer-by-path-and-device-mapper.patch
-Patch30:        %{name}-calibrate-Update-values.patch
-Patch31:        %{name}-activate-udev-rules-late-during-boot.patch
-Patch32:        %{name}-make-sure-that-the-udev-runtime-directory-exists.patch
-Patch33:        %{name}-make-sure-that-initrd.target.wants-directory-exists.patch
-Patch34:        %{name}-check-explicit-ip-options.patch
-Patch35:        %{name}-query-systemd-network.service.patch
+Patch11:        %{name}-mounts.cc-Include-sys-ioctl.h.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -74,7 +43,7 @@ BuildRequires:  libblkid-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libesmtp-devel
-BuildRequires:  libopenssl-devel
+BuildRequires:  libmount-devel
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -119,43 +88,12 @@ after a crash dump has occured.
 %if 0%{?suse_version} >= 1330
 %patch1 -p1
 %endif
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
-%patch26 -p1
-%patch27 -p1
-%patch28 -p1
-%patch29 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch34 -p1
-%patch35 -p1
 
 %build
-export CXXFLAGS="%{optflags} -std=gnu++98"
+export CXXFLAGS="%{optflags} -std=c++11"
 %cmake
 
 # for SLE_15

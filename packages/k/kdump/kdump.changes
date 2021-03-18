@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Mar  5 17:29:57 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
+
+- kdump-mounts.cc-Include-sys-ioctl.h.patch: mounts.cc: Include
+  <sys/ioctl.h>.
+
+-------------------------------------------------------------------
+Fri Mar  5 16:27:03 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
+
+- Update to 0.9.1
+  * Add build dependency on libmount
+  * Drop build dependency on OpenSSL
+  * Build with --stdc=c++11
+- Remove patches that have been upstreamed:
+  * kdump-block-initrd-parse-etc.service.patch
+  * kdump-fadump-avoid-multipath-optimizations.patch
+  * kdump-split-cmdline-purpose-wise.patch
+  * kdump-fadump-fix-network-bring-up.patch
+  * kdump-fadump-add-udev-support.patch
+  * kdump-turn-off-NUMA-in-kdump-kernel.patch
+  * kdump-remove-noefi-and-acpi_rsdp-for-efi-firmware.patch
+  * kdump-Restore-only-static-routes-in-kdump-initrd.patch
+  * kdump-fallback-re-register-fadump-from-userspace.patch
+  * kdump-recover-from-missing-CRASHTIME.patch
+  * kdump-fix-multipath-user_friendly_names.patch
+  * kdump-Add-skip_balance-option-to-BTRFS-mounts.patch
+  * kdump-kdumprd-Look-for-boot-image-and-boot-Image.patch
+  * kdump-savedump-search-also-for-vmlinux.xz.patch
+  * kdump-preserve-white-space.patch
+  * kdump-Clean-up-the-use-of-current-vs-boot-network-iface.patch
+  * kdump-Use-a-custom-namespace-for-physical-NICs.patch
+  * kdump-clean-up-kdump-mount-points.patch
+  * kdump-skip-mounts-if-no-proc-vmcore.patch
+  * kdump-nss-modules.patch
+  * kdump-Add-force-option-to-KDUMP_NETCONFIG.patch
+  * kdump-Add-fence_kdump_send-when-fence-agents-installed.patch
+  * kdump-FENCE_KDUMP_SEND-variable.patch
+  * kdump-Document-fence_kdump_send.patch
+  * kdump-powerpc-no-reload-on-CPU-removal.patch
+  * kdump-prefer-by-path-and-device-mapper.patch
+  * kdump-calibrate-Update-values.patch
+  * kdump-activate-udev-rules-late-during-boot.patch
+  * kdump-make-sure-that-the-udev-runtime-directory-exists.patch
+  * kdump-make-sure-that-initrd.target.wants-directory-exists.patch
+  * kdump-check-explicit-ip-options.patch
+  * kdump-query-systemd-network.service.patch
+
+-------------------------------------------------------------------
 Fri Mar  5 11:02:51 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
 
 - kdump-query-systemd-network.service.patch: Query systemd
