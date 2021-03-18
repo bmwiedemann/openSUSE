@@ -19,7 +19,7 @@
 %define soversion 0_6
 %bcond_with e2ee
 Name:           libQuotient
-Version:        0.6.5
+Version:        0.6.6
 Release:        0
 Summary:        Library for Qt Matrix Clients
 License:        LGPL-2.1-only

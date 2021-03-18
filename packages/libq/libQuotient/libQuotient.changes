@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 18 05:51:58 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.6:
+  * Another update on the stable branch, to address #456 
+    (possible crash on some malformed user ids). 
+
+-------------------------------------------------------------------
 Wed Feb 24 04:42:02 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.6.5:
