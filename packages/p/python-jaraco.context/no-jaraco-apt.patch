@@ -1,0 +1,38 @@
+Index: jaraco.context-3.0.0/setup.cfg
+===================================================================
+--- jaraco.context-3.0.0.orig/setup.cfg
++++ jaraco.context-3.0.0/setup.cfg
+@@ -20,7 +20,6 @@ packages = find:
+ include_package_data = true
+ python_requires = >=3.6
+ install_requires = 
+-	jaraco.apt
+ 	yg.lockfile
+ 	contextlib2; python_version=="2.7"
+ setup_requires = setuptools_scm >= 1.15.0
+Index: jaraco.context-3.0.0/jaraco/context.py
+===================================================================
+--- jaraco.context-3.0.0.orig/jaraco/context.py
++++ jaraco.context-3.0.0/jaraco/context.py
+@@ -13,7 +13,7 @@ try:
+ except Exception:
+     import contextlib as contextlib2
+ 
+-import jaraco.apt
++# import jaraco.apt
+ import yg.lockfile
+ 
+ 
+@@ -144,9 +144,9 @@ def dependency_context(package_names, ag
+                 stderr=subprocess.STDOUT,
+             )
+             log.debug('Aptitude output:\n%s', output)
+-            installed_packages = jaraco.apt.parse_new_packages(
+-                output, include_automatic=aggressively_remove
+-            )
++            # installed_packages = jaraco.apt.parse_new_packages(
++            #     output, include_automatic=aggressively_remove
++            # )
+             if not installed_packages:
+                 lock.release()
+             log.info('Installed ' + ', '.join(installed_packages))
