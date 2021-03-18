@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 15 03:07:00 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.333
+   see /usr/share/doc/packages/perl-App-Cmd/Changes
+
+  0.333     2021-03-14 15:45:02-04:00 America/New_York
+          - dial back required perl to v5.20.0
+
+  0.332     2021-03-12 21:25:38-05:00 America/New_York
+          - bump up minimum required perl to the one from 5yr ago
+          - make some tests laxer to prep for changes in Getopt::Long::Descriptive
+          - the App::Cmd object is constructed and blessed in new before _command
+            is called on it (thanks, Lucas Theisen)
+
+-------------------------------------------------------------------
 Mon Jul 18 05:01:20 UTC 2016 - coolo@suse.com
 
 - updated to 0.331
