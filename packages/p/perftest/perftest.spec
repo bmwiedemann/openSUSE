@@ -1,7 +1,7 @@
 #
 # spec file for package perftest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define extra_version -0.29
+%define extra_version 0.37
 Name:           perftest
 Version:        4.4
 Release:        0

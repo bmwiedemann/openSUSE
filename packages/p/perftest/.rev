@@ -100,4 +100,12 @@ This patch is applied during compilation as perftest-license.patch</comment>
     <comment></comment>
     <requestid>812234</requestid>
   </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>81d424f60bca64f8214671e2e8785403</srcmd5>
+    <version>4.4</version>
+    <time>1616104491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>879733</requestid>
+  </revision>
 </revisionlist>
