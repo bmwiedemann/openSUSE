@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-promu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,8 @@ Group:          System/Management
 URL:            https://github.com/prometheus/promu
 Source:         promu-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.11
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) = 1.15
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{go_provides}
 
