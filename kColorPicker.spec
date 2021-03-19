@@ -1,7 +1,7 @@
 #
 # spec file for package kColorPicker
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover   0_1_4
+%define sover   0
 %define libname libkColorPicker%{sover}
 Name:           kColorPicker
-Version:        0.1.4
+Version:        0.1.5
 Release:        0
 Summary:        Qt based Color Picker with popup menu
 License:        GPL-2.0-or-later

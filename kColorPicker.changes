@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 13 11:30:15 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.1.5
+  * Fix tests
+- Change sover from 0_1_4 to 0 because of rpmlint error.
+
+-------------------------------------------------------------------
 Fri Jun 19 07:35:16 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.1.4
