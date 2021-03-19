@@ -1,7 +1,7 @@
-From 29211c2f5e1ed47715789aa75d755002cddeba02 Mon Sep 17 00:00:00 2001
+From 7953e106d8afa5ba660396c1c59bcc674ef3a404 Mon Sep 17 00:00:00 2001
 From: Jan Fajerski <jfajerski@suse.com>
 Date: Fri, 8 Feb 2019 09:17:06 +0100
-Subject: [PATCH] Do not force the pure Go name resolver
+Subject: [PATCH 1/3] Do not force the pure Go name resolver
 
 Revert to Go's default mechanism that will decide between the `netgo`
 pure-Go implementation and the `netcgo` cgo-based implementation depending
@@ -15,16 +15,18 @@ Signed-off-by: Jan Fajerski <jfajerski@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/.promu.yml b/.promu.yml
-index 0541bec..ad6cc78 100644
+index caaa63a55..f75af963d 100644
 --- a/.promu.yml
 +++ b/.promu.yml
-@@ -12,7 +12,7 @@ build:
+@@ -10,7 +10,7 @@ build:
+           path: ./cmd/prometheus
+         - name: promtool
            path: ./cmd/promtool
-         - name: tsdb
-           path: ./tsdb/cmd/tsdb
 -    flags: -mod=vendor -a -tags netgo,builtinassets
 +    flags: -mod=vendor -a -tags builtinassets
      ldflags: |
          -X github.com/prometheus/common/version.Version={{.Version}}
          -X github.com/prometheus/common/version.Revision={{.Revision}}
+-- 
+2.29.2
 

@@ -1,81 +1,58 @@
+From e55a27d2102a77ce3f01f3f36060843bb2b46fd2 Mon Sep 17 00:00:00 2001
 From: Joao Cavalheiro <jcavalheiro@suse.de>
-Date: Mon Jul 27 17:42:33 2020 +0200
-Subject: A fork of Prometheus with Uyuni Service discovery
-References: https://github.com/uyuni-project/prometheus-uyuni-sd
+Date: Mon, 27 Jul 2020 17:42:33 +0200
+Subject: [PATCH 3/3] Add Uyuni service discovery
 
 ---
- discovery/config/config.go                        |    3 
- discovery/manager.go                              |    6 
- discovery/uyuni/uyuni.go                          |  384 +++++++++++++++++
- discovery/uyuni/uyuni_test.go                     |   33 +
- go.mod                                            |    1 
- go.sum                                            |    2 
- vendor/github.com/kolo/xmlrpc/LICENSE             |   19 
- vendor/github.com/kolo/xmlrpc/README.md           |   89 ++++
- vendor/github.com/kolo/xmlrpc/client.go           |  170 +++++++
- vendor/github.com/kolo/xmlrpc/client_test.go      |  141 ++++++
- vendor/github.com/kolo/xmlrpc/decoder.go          |  473 ++++++++++++++++++++++
- vendor/github.com/kolo/xmlrpc/decoder_test.go     |  234 ++++++++++
- vendor/github.com/kolo/xmlrpc/encoder.go          |  171 +++++++
- vendor/github.com/kolo/xmlrpc/encoder_test.go     |   58 ++
- vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml |    6 
- vendor/github.com/kolo/xmlrpc/request.go          |   57 ++
- vendor/github.com/kolo/xmlrpc/response.go         |   52 ++
- vendor/github.com/kolo/xmlrpc/response_test.go    |   84 +++
- vendor/github.com/kolo/xmlrpc/test_server.rb      |   25 +
- vendor/github.com/kolo/xmlrpc/xmlrpc.go           |   19 
- 20 files changed, 2027 insertions(+)
+ discovery/install/install.go                 |   1 +
+ discovery/uyuni/uyuni.go                     | 405 ++++++++++++++++
+ discovery/uyuni/uyuni_test.go                |  46 ++
+ go.mod                                       |   1 +
+ go.sum                                       |   2 +
+ vendor/github.com/kolo/xmlrpc/LICENSE        |  19 +
+ vendor/github.com/kolo/xmlrpc/README.md      |  90 ++++
+ vendor/github.com/kolo/xmlrpc/client.go      | 161 +++++++
+ vendor/github.com/kolo/xmlrpc/decoder.go     | 473 +++++++++++++++++++
+ vendor/github.com/kolo/xmlrpc/encoder.go     | 181 +++++++
+ vendor/github.com/kolo/xmlrpc/go.mod         |   5 +
+ vendor/github.com/kolo/xmlrpc/go.sum         |   3 +
+ vendor/github.com/kolo/xmlrpc/is_zero.go     |  44 ++
+ vendor/github.com/kolo/xmlrpc/request.go     |  57 +++
+ vendor/github.com/kolo/xmlrpc/response.go    |  42 ++
+ vendor/github.com/kolo/xmlrpc/test_server.rb |  25 +
+ vendor/modules.txt                           |   3 +
+ 17 files changed, 1558 insertions(+)
+ create mode 100644 discovery/uyuni/uyuni.go
+ create mode 100644 discovery/uyuni/uyuni_test.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/LICENSE
+ create mode 100644 vendor/github.com/kolo/xmlrpc/README.md
+ create mode 100644 vendor/github.com/kolo/xmlrpc/client.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/decoder.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/encoder.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/go.mod
+ create mode 100644 vendor/github.com/kolo/xmlrpc/go.sum
+ create mode 100644 vendor/github.com/kolo/xmlrpc/is_zero.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/request.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/response.go
+ create mode 100644 vendor/github.com/kolo/xmlrpc/test_server.rb
 
-Index: prometheus-2.18.0/discovery/config/config.go
-===================================================================
---- prometheus-2.18.0.orig/discovery/config/config.go
-+++ prometheus-2.18.0/discovery/config/config.go
-@@ -27,6 +27,7 @@ import (
- 	"github.com/prometheus/prometheus/discovery/openstack"
- 	"github.com/prometheus/prometheus/discovery/targetgroup"
- 	"github.com/prometheus/prometheus/discovery/triton"
-+	"github.com/prometheus/prometheus/discovery/uyuni"
- 	"github.com/prometheus/prometheus/discovery/zookeeper"
+diff --git a/discovery/install/install.go b/discovery/install/install.go
+index d9394f270..7af209cac 100644
+--- a/discovery/install/install.go
++++ b/discovery/install/install.go
+@@ -30,5 +30,6 @@ import (
+ 	_ "github.com/prometheus/prometheus/discovery/marathon"     // register marathon
+ 	_ "github.com/prometheus/prometheus/discovery/openstack"    // register openstack
+ 	_ "github.com/prometheus/prometheus/discovery/triton"       // register triton
++	_ "github.com/prometheus/prometheus/discovery/uyuni"        // register uyuni
+ 	_ "github.com/prometheus/prometheus/discovery/zookeeper"    // register zookeeper
  )
- 
-@@ -58,6 +59,8 @@ type ServiceDiscoveryConfig struct {
- 	AzureSDConfigs []*azure.SDConfig `yaml:"azure_sd_configs,omitempty"`
- 	// List of Triton service discovery configurations.
- 	TritonSDConfigs []*triton.SDConfig `yaml:"triton_sd_configs,omitempty"`
-+	// List of Uyuni service discovery configurations.
-+	UyuniSDConfigs []*uyuni.SDConfig `yaml:"uyuni_sd_configs,omitempty"`
- }
- 
- // Validate validates the ServiceDiscoveryConfig.
-Index: prometheus-2.18.0/discovery/manager.go
-===================================================================
---- prometheus-2.18.0.orig/discovery/manager.go
-+++ prometheus-2.18.0/discovery/manager.go
-@@ -37,6 +37,7 @@ import (
- 	"github.com/prometheus/prometheus/discovery/marathon"
- 	"github.com/prometheus/prometheus/discovery/openstack"
- 	"github.com/prometheus/prometheus/discovery/triton"
-+	"github.com/prometheus/prometheus/discovery/uyuni"
- 	"github.com/prometheus/prometheus/discovery/zookeeper"
- )
- 
-@@ -414,6 +415,11 @@ func (m *Manager) registerProviders(cfg
- 			return triton.New(log.With(m.logger, "discovery", "triton"), c)
- 		})
- 	}
-+	for _, c := range cfg.UyuniSDConfigs {
-+		add(c, func() (Discoverer, error) {
-+			return uyuni.NewDiscovery(c, log.With(m.logger, "discovery", "uyuni")), nil
-+		})
-+	}
- 	if len(cfg.StaticConfigs) > 0 {
- 		add(setName, func() (Discoverer, error) {
- 			return &StaticProvider{TargetGroups: cfg.StaticConfigs}, nil
-Index: prometheus-2.18.0/discovery/uyuni/uyuni.go
-===================================================================
+diff --git a/discovery/uyuni/uyuni.go b/discovery/uyuni/uyuni.go
+new file mode 100644
+index 000000000..2336d2746
 --- /dev/null
-+++ prometheus-2.18.0/discovery/uyuni/uyuni.go
-@@ -0,0 +1,384 @@
++++ b/discovery/uyuni/uyuni.go
+@@ -0,0 +1,405 @@
 +// Copyright 2019 The Prometheus Authors
 +// Licensed under the Apache License, Version 2.0 (the "License");
 +// you may not use this file except in compliance with the License.
@@ -106,6 +83,7 @@ Index: prometheus-2.18.0/discovery/uyuni/uyuni.go
 +	"github.com/pkg/errors"
 +	"github.com/prometheus/common/model"
 +
++	"github.com/prometheus/prometheus/discovery"
 +	"github.com/prometheus/prometheus/discovery/refresh"
 +	"github.com/prometheus/prometheus/discovery/targetgroup"
 +)
@@ -124,6 +102,10 @@ Index: prometheus-2.18.0/discovery/uyuni/uyuni.go
 +// Regular expression to extract port from formula data
 +var monFormulaRegex = regexp.MustCompile(`--(?:telemetry\.address|web\.listen-address)=\":([0-9]*)\"`)
 +
++func init() {
++	discovery.RegisterConfig(&SDConfig{})
++}
++
 +// SDConfig is the configuration for Uyuni based service discovery.
 +type SDConfig struct {
 +	Host            string         `yaml:"host"`
@@ -139,9 +121,10 @@ Index: prometheus-2.18.0/discovery/uyuni/uyuni.go
 +}
 +
 +type networkInfo struct {
-+	SystemID int    `xmlrpc:"system_id"`
-+	Hostname string `xmlrpc:"hostname"`
-+	IP       string `xmlrpc:"ip"`
++	SystemID    int    `xmlrpc:"system_id"`
++	Hostname    string `xmlrpc:"hostname"`
++	PrimaryFQDN string `xmlrpc:"primary_fqdn"`
++	IP          string `xmlrpc:"ip"`
 +}
 +
 +type exporterConfig struct {
@@ -164,6 +147,14 @@ Index: prometheus-2.18.0/discovery/uyuni/uyuni.go
 +	interval time.Duration
 +	sdConfig *SDConfig
 +	logger   log.Logger
++}
++
++// Name returns the name of the Config.
++func (*SDConfig) Name() string { return "uyuni" }
++
++// NewDiscoverer returns a Discoverer for the Config.
++func (c *SDConfig) NewDiscoverer(opts discovery.DiscovererOptions) (discovery.Discoverer, error) {
++	return NewDiscovery(c, opts.Logger), nil
 +}
 +
 +// UnmarshalYAML implements the yaml.Unmarshaler interface.
@@ -339,8 +330,14 @@ Index: prometheus-2.18.0/discovery/uyuni/uyuni.go
 +	var labelSets []model.LabelSet
 +	var errors []error
 +	var proxyPortNumber string
++	var hostname string
 +	if combinedFormulaData.ProxyIsEnabled {
 +		proxyPortNumber = fmt.Sprintf("%d", int(combinedFormulaData.ProxyPort))
++	}
++	if len(networkInfo.PrimaryFQDN) > 0 {
++		hostname = networkInfo.PrimaryFQDN
++	} else {
++		hostname = networkInfo.Hostname
 +	}
 +	initializeExporterTargets(&labelSets, "node", combinedFormulaData.NodeExporter, proxyPortNumber, &errors)
 +	initializeExporterTargets(&labelSets, "apache", combinedFormulaData.ApacheExporter, proxyPortNumber, &errors)
@@ -348,9 +345,9 @@ Index: prometheus-2.18.0/discovery/uyuni/uyuni.go
 +	managedGroupNames := getSystemGroupNames(systemGroupsIDs)
 +	for _, labels := range labelSets {
 +		// add hostname to the address label
-+		addr := fmt.Sprintf("%s:%s", networkInfo.IP, labels[model.AddressLabel])
++		addr := fmt.Sprintf("%s:%s", hostname, labels[model.AddressLabel])
 +		labels[model.AddressLabel] = model.LabelValue(addr)
-+		labels["hostname"] = model.LabelValue(networkInfo.Hostname)
++		labels["hostname"] = model.LabelValue(hostname)
 +		labels["groups"] = model.LabelValue(strings.Join(managedGroupNames, ","))
 +		if combinedFormulaData.ProxyIsEnabled {
 +			labels[model.MetricsPathLabel] = "/proxy"
@@ -409,7 +406,8 @@ Index: prometheus-2.18.0/discovery/uyuni/uyuni.go
 +		// Log debug information
 +		if networkInfoBySystemID[systemID].IP != "" {
 +			level.Debug(d.logger).Log("msg", "Found monitored system",
-+				"Host", networkInfoBySystemID[systemID].Hostname,
++				"PrimaryFQDN", networkInfoBySystemID[systemID].PrimaryFQDN,
++				"Hostname", networkInfoBySystemID[systemID].Hostname,
 +				"Network", fmt.Sprintf("%+v", networkInfoBySystemID[systemID]),
 +				"Groups", fmt.Sprintf("%+v", systemGroupIDsBySystemID[systemID]),
 +				"Formulas", fmt.Sprintf("%+v", combinedFormulaDataBySystemID[systemID]))
@@ -460,11 +458,25 @@ Index: prometheus-2.18.0/discovery/uyuni/uyuni.go
 +	rpcClient.Close()
 +	return []*targetgroup.Group{&targetgroup.Group{Targets: targets, Source: config.Host}}, nil
 +}
-Index: prometheus-2.18.0/discovery/uyuni/uyuni_test.go
-===================================================================
+diff --git a/discovery/uyuni/uyuni_test.go b/discovery/uyuni/uyuni_test.go
+new file mode 100644
+index 000000000..c5fa8cc9e
 --- /dev/null
-+++ prometheus-2.18.0/discovery/uyuni/uyuni_test.go
-@@ -0,0 +1,33 @@
++++ b/discovery/uyuni/uyuni_test.go
+@@ -0,0 +1,46 @@
++// Copyright 2019 The Prometheus Authors
++// Licensed under the Apache License, Version 2.0 (the "License");
++// you may not use this file except in compliance with the License.
++// You may obtain a copy of the License at
++//
++// http://www.apache.org/licenses/LICENSE-2.0
++//
++// Unless required by applicable law or agreed to in writing, software
++// distributed under the License is distributed on an "AS IS" BASIS,
++// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++// See the License for the specific language governing permissions and
++// limitations under the License.
++
 +package uyuni
 +
 +import "testing"
@@ -498,35 +510,36 @@ Index: prometheus-2.18.0/discovery/uyuni/uyuni_test.go
 +		})
 +	}
 +}
-Index: prometheus-2.18.0/go.mod
-===================================================================
---- prometheus-2.18.0.orig/go.mod
-+++ prometheus-2.18.0/go.mod
-@@ -41,6 +41,7 @@ require (
- 	github.com/jpillora/backoff v1.0.0 // indirect
- 	github.com/json-iterator/go v1.1.9
- 	github.com/julienschmidt/httprouter v1.3.0 // indirect
-+	github.com/kolo/xmlrpc v0.0.0-20200310150728-e0350524596b
- 	github.com/mattn/go-colorable v0.1.6 // indirect
- 	github.com/miekg/dns v1.1.29
+diff --git a/go.mod b/go.mod
+index 38982f449..9a261a5c9 100644
+--- a/go.mod
++++ b/go.mod
+@@ -38,6 +38,7 @@ require (
+ 	github.com/hetznercloud/hcloud-go v1.22.0
+ 	github.com/influxdata/influxdb v1.8.3
+ 	github.com/json-iterator/go v1.1.10
++	github.com/kolo/xmlrpc v0.0.0-20201022064351-38db28db192b
+ 	github.com/miekg/dns v1.1.31
  	github.com/mitchellh/mapstructure v1.2.2 // indirect
-Index: prometheus-2.18.0/go.sum
-===================================================================
---- prometheus-2.18.0.orig/go.sum
-+++ prometheus-2.18.0/go.sum
-@@ -505,6 +505,8 @@ github.com/klauspost/compress v1.9.5/go.
+ 	github.com/morikuni/aec v1.0.0 // indirect
+diff --git a/go.sum b/go.sum
+index 9a16a1838..be06c9453 100644
+--- a/go.sum
++++ b/go.sum
+@@ -524,6 +524,8 @@ github.com/klauspost/compress v1.9.5/go.mod h1:RyIbtBH6LamlWaDj8nUwkbUhJ87Yi3uG0
  github.com/klauspost/cpuid v0.0.0-20170728055534-ae7887de9fa5/go.mod h1:Pj4uuM528wm8OyEC2QMXAi2YiTZ96dNQPGgoMS4s3ek=
  github.com/klauspost/crc32 v0.0.0-20161016154125-cb6bfca970f6/go.mod h1:+ZoRqAPRLkC4NPOvfYeR5KNOrY6TD+/sAC3HXPZgDYg=
  github.com/klauspost/pgzip v1.0.2-0.20170402124221-0bf5dcad4ada/go.mod h1:Ch1tH69qFZu15pkjo5kYi6mth2Zzwzt50oCQKQE9RUs=
-+github.com/kolo/xmlrpc v0.0.0-20200310150728-e0350524596b h1:DzHy0GlWeF0KAglaTMY7Q+khIFoG8toHP+wLFBVBQJc=
-+github.com/kolo/xmlrpc v0.0.0-20200310150728-e0350524596b/go.mod h1:o03bZfuBwAXHetKXuInt4S7omeXUu62/A845kiycsSQ=
++github.com/kolo/xmlrpc v0.0.0-20201022064351-38db28db192b h1:iNjcivnc6lhbvJA3LD622NPrUponluJrBWPIwGG/3Bg=
++github.com/kolo/xmlrpc v0.0.0-20201022064351-38db28db192b/go.mod h1:pcaDhQK0/NJZEvtCO0qQPPropqV0sJOJ6YW7X+9kRwM=
  github.com/konsorten/go-windows-terminal-sequences v1.0.1/go.mod h1:T0+1ngSBFLxvqU3pZ+m/2kptfBszLMUkC4ZK/EgS/cQ=
+ github.com/konsorten/go-windows-terminal-sequences v1.0.2 h1:DB17ag19krx9CFsz4o3enTrPXyIXCl+2iCXH/aMAp9s=
  github.com/konsorten/go-windows-terminal-sequences v1.0.2/go.mod h1:T0+1ngSBFLxvqU3pZ+m/2kptfBszLMUkC4ZK/EgS/cQ=
- github.com/kr/logfmt v0.0.0-20140226030751-b84e30acd515 h1:T+h1c/A9Gawja4Y9mFVWj2vyii2bbUNDw3kt9VxK2EY=
-Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/LICENSE
-===================================================================
+diff --git a/vendor/github.com/kolo/xmlrpc/LICENSE b/vendor/github.com/kolo/xmlrpc/LICENSE
+new file mode 100644
+index 000000000..8103dd139
 --- /dev/null
-+++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/LICENSE
++++ b/vendor/github.com/kolo/xmlrpc/LICENSE
 @@ -0,0 +1,19 @@
 +Copyright (C) 2012 Dmitry Maksimov
 +
@@ -547,11 +560,12 @@ Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/LICENSE
 +LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 +OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 +THE SOFTWARE.
-Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/README.md
-===================================================================
+diff --git a/vendor/github.com/kolo/xmlrpc/README.md b/vendor/github.com/kolo/xmlrpc/README.md
+new file mode 100644
+index 000000000..fecfcd839
 --- /dev/null
-+++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/README.md
-@@ -0,0 +1,89 @@
++++ b/vendor/github.com/kolo/xmlrpc/README.md
+@@ -0,0 +1,90 @@
 +[![GoDoc](https://godoc.org/github.com/kolo/xmlrpc?status.svg)](https://godoc.org/github.com/kolo/xmlrpc)
 +
 +## Overview
@@ -598,11 +612,12 @@ Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/README.md
 +* xmlrpc.Base64 encoded to base64;
 +* slice encoded to array;
 +
-+Structs decoded to struct by following rules:
++Structs encoded to struct by following rules:
 +
 +* all public field become struct members;
 +* field name become member name;
 +* if field has xmlrpc tag, its value become member name.
++* for fields tagged with `",omitempty"`, empty values are omitted;
 +
 +Server method can accept few arguments, to handle this case there is
 +special approach to handle slice of empty interfaces (`[]interface{}`).
@@ -641,11 +656,12 @@ Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/README.md
 +## Authors
 +
 +Dmitry Maksimov (dmtmax@gmail.com)
-Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/client.go
-===================================================================
+diff --git a/vendor/github.com/kolo/xmlrpc/client.go b/vendor/github.com/kolo/xmlrpc/client.go
+new file mode 100644
+index 000000000..643dc1c10
 --- /dev/null
-+++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/client.go
-@@ -0,0 +1,170 @@
++++ b/vendor/github.com/kolo/xmlrpc/client.go
+@@ -0,0 +1,161 @@
 +package xmlrpc
 +
 +import (
@@ -679,7 +695,7 @@ Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/client.go
 +	responses map[uint64]*http.Response
 +	mutex     sync.Mutex
 +
-+	response *Response
++	response Response
 +
 +	// ready presents channel, that is used to link request and it`s response.
 +	ready chan uint64
@@ -691,14 +707,14 @@ Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/client.go
 +func (codec *clientCodec) WriteRequest(request *rpc.Request, args interface{}) (err error) {
 +	httpRequest, err := NewRequest(codec.url.String(), request.ServiceMethod, args)
 +
++	if err != nil {
++		return err
++	}
++
 +	if codec.cookies != nil {
 +		for _, cookie := range codec.cookies.Cookies(codec.url) {
 +			httpRequest.AddCookie(cookie)
 +		}
-+	}
-+
-+	if err != nil {
-+		return err
 +	}
 +
 +	var httpResponse *http.Response
@@ -723,42 +739,38 @@ Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/client.go
 +
 +func (codec *clientCodec) ReadResponseHeader(response *rpc.Response) (err error) {
 +	var seq uint64
-+
 +	select {
 +	case seq = <-codec.ready:
 +	case <-codec.close:
 +		return errors.New("codec is closed")
 +	}
-+
-+	codec.mutex.Lock()
-+	httpResponse := codec.responses[seq]
-+	codec.mutex.Unlock()
-+
-+	if httpResponse.StatusCode < 200 || httpResponse.StatusCode >= 300 {
-+		return fmt.Errorf("request error: bad status code - %d", httpResponse.StatusCode)
-+	}
-+
-+	respData, err := ioutil.ReadAll(httpResponse.Body)
-+
-+	if err != nil {
-+		return err
-+	}
-+
-+	httpResponse.Body.Close()
-+
-+	resp := NewResponse(respData)
-+
-+	if resp.Failed() {
-+		response.Error = fmt.Sprintf("%v", resp.Err())
-+	}
-+
-+	codec.response = resp
-+
 +	response.Seq = seq
 +
 +	codec.mutex.Lock()
++	httpResponse := codec.responses[seq]
 +	delete(codec.responses, seq)
 +	codec.mutex.Unlock()
++
++	defer httpResponse.Body.Close()
++
++	if httpResponse.StatusCode < 200 || httpResponse.StatusCode >= 300 {
++		response.Error = fmt.Sprintf("request error: bad status code - %d", httpResponse.StatusCode)
++		return nil
++	}
++
++	body, err := ioutil.ReadAll(httpResponse.Body)
++	if err != nil {
++		response.Error = err.Error()
++		return nil
++	}
++
++	resp := Response(body)
++	if err := resp.Err(); err != nil {
++		response.Error = err.Error()
++		return nil
++	}
++
++	codec.response = resp
 +
 +	return nil
 +}
@@ -767,12 +779,7 @@ Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/client.go
 +	if v == nil {
 +		return nil
 +	}
-+
-+	if err = codec.response.Unmarshal(v); err != nil {
-+		return err
-+	}
-+
-+	return nil
++	return codec.response.Unmarshal(v)
 +}
 +
 +func (codec *clientCodec) Close() error {
@@ -816,156 +823,11 @@ Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/client.go
 +
 +	return &Client{rpc.NewClientWithCodec(&codec)}, nil
 +}
-Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/client_test.go
-===================================================================
+diff --git a/vendor/github.com/kolo/xmlrpc/decoder.go b/vendor/github.com/kolo/xmlrpc/decoder.go
+new file mode 100644
+index 000000000..d4dcb19ad
 --- /dev/null
-+++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/client_test.go
-@@ -0,0 +1,141 @@
-+// +build integration
-+
-+package xmlrpc
-+
-+import (
-+	"context"
-+	"runtime"
-+	"sync"
-+	"testing"
-+	"time"
-+)
-+
-+func Test_CallWithoutArgs(t *testing.T) {
-+	client := newClient(t)
-+	defer client.Close()
-+
-+	var result time.Time
-+	if err := client.Call("service.time", nil, &result); err != nil {
-+		t.Fatalf("service.time call error: %v", err)
-+	}
-+}
-+
-+func Test_CallWithOneArg(t *testing.T) {
-+	client := newClient(t)
-+	defer client.Close()
-+
-+	var result string
-+	if err := client.Call("service.upcase", "xmlrpc", &result); err != nil {
-+		t.Fatalf("service.upcase call error: %v", err)
-+	}
-+
-+	if result != "XMLRPC" {
-+		t.Fatalf("Unexpected result of service.upcase: %s != %s", "XMLRPC", result)
-+	}
-+}
-+
-+func Test_CallWithTwoArgs(t *testing.T) {
-+	client := newClient(t)
-+	defer client.Close()
-+
-+	var sum int
-+	if err := client.Call("service.sum", []interface{}{2, 3}, &sum); err != nil {
-+		t.Fatalf("service.sum call error: %v", err)
-+	}
-+
-+	if sum != 5 {
-+		t.Fatalf("Unexpected result of service.sum: %d != %d", 5, sum)
-+	}
-+}
-+
-+func Test_TwoCalls(t *testing.T) {
-+	client := newClient(t)
-+	defer client.Close()
-+
-+	var upcase string
-+	if err := client.Call("service.upcase", "xmlrpc", &upcase); err != nil {
-+		t.Fatalf("service.upcase call error: %v", err)
-+	}
-+
-+	var sum int
-+	if err := client.Call("service.sum", []interface{}{2, 3}, &sum); err != nil {
-+		t.Fatalf("service.sum call error: %v", err)
-+	}
-+
-+}
-+
-+func Test_FailedCall(t *testing.T) {
-+	client := newClient(t)
-+	defer client.Close()
-+
-+	var result int
-+	if err := client.Call("service.error", nil, &result); err == nil {
-+		t.Fatal("expected service.error returns error, but it didn't")
-+	}
-+}
-+
-+func Test_ConcurrentCalls(t *testing.T) {
-+	client := newClient(t)
-+
-+	call := func() {
-+		var result time.Time
-+		client.Call("service.time", nil, &result)
-+	}
-+
-+	var wg sync.WaitGroup
-+	for i := 0; i < 100; i++ {
-+		wg.Add(1)
-+		go func() {
-+			call()
-+			wg.Done()
-+		}()
-+	}
-+
-+	wg.Wait()
-+	client.Close()
-+}
-+
-+func Test_CloseMemoryLeak(t *testing.T) {
-+	expected := runtime.NumGoroutine()
-+
-+	for i := 0; i < 3; i++ {
-+		client := newClient(t)
-+		client.Call("service.time", nil, nil)
-+		client.Close()
-+	}
-+
-+	var actual int
-+
-+	// It takes some time to stop running goroutinges. This function checks number of
-+	// running goroutines. It finishes execution if number is same as expected or timeout
-+	// has been reached.
-+	func() {
-+		ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-+		defer cancel()
-+
-+		for {
-+			select {
-+			case <-ctx.Done():
-+				return
-+			default:
-+				actual = runtime.NumGoroutine()
-+				if actual == expected {
-+					return
-+				}
-+			}
-+		}
-+	}()
-+
-+	if actual != expected {
-+		t.Errorf("expected number of running goroutines to be %d, but got %d", expected, actual)
-+	}
-+}
-+
-+func newClient(t *testing.T) *Client {
-+	client, err := NewClient("http://localhost:5001", nil)
-+	if err != nil {
-+		t.Fatalf("Can't create client: %v", err)
-+	}
-+
-+	return client
-+}
-Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/decoder.go
-===================================================================
---- /dev/null
-+++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/decoder.go
++++ b/vendor/github.com/kolo/xmlrpc/decoder.go
 @@ -0,0 +1,473 @@
 +package xmlrpc
 +
@@ -1440,250 +1302,12 @@ Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/decoder.go
 +
 +	return nil
 +}
-Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/decoder_test.go
-===================================================================
+diff --git a/vendor/github.com/kolo/xmlrpc/encoder.go b/vendor/github.com/kolo/xmlrpc/encoder.go
+new file mode 100644
+index 000000000..7ab271aa5
 --- /dev/null
-+++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/decoder_test.go
-@@ -0,0 +1,234 @@
-+package xmlrpc
-+
-+import (
-+	"fmt"
-+	"io"
-+	"io/ioutil"
-+	"reflect"
-+	"testing"
-+	"time"
-+
-+	"golang.org/x/text/encoding/charmap"
-+	"golang.org/x/text/transform"
-+)
-+
-+type book struct {
-+	Title  string
-+	Amount int
-+}
-+
-+type bookUnexported struct {
-+	title  string
-+	amount int
-+}
-+
-+var unmarshalTests = []struct {
-+	value interface{}
-+	ptr   interface{}
-+	xml   string
-+}{
-+	// int, i4, i8
-+	{0, new(*int), "<value><int></int></value>"},
-+	{100, new(*int), "<value><int>100</int></value>"},
-+	{389451, new(*int), "<value><i4>389451</i4></value>"},
-+	{int64(45659074), new(*int64), "<value><i8>45659074</i8></value>"},
-+
-+	// string
-+	{"Once upon a time", new(*string), "<value><string>Once upon a time</string></value>"},
-+	{"Mike & Mick <London, UK>", new(*string), "<value><string>Mike &amp; Mick &lt;London, UK&gt;</string></value>"},
-+	{"Once upon a time", new(*string), "<value>Once upon a time</value>"},
-+
-+	// base64
-+	{"T25jZSB1cG9uIGEgdGltZQ==", new(*string), "<value><base64>T25jZSB1cG9uIGEgdGltZQ==</base64></value>"},
-+
-+	// boolean
-+	{true, new(*bool), "<value><boolean>1</boolean></value>"},
-+	{false, new(*bool), "<value><boolean>0</boolean></value>"},
-+
-+	// double
-+	{12.134, new(*float32), "<value><double>12.134</double></value>"},
-+	{-12.134, new(*float32), "<value><double>-12.134</double></value>"},
-+
-+	// datetime.iso8601
-+	{_time("2013-12-09T21:00:12Z"), new(*time.Time), "<value><dateTime.iso8601>20131209T21:00:12</dateTime.iso8601></value>"},
-+	{_time("2013-12-09T21:00:12Z"), new(*time.Time), "<value><dateTime.iso8601>20131209T21:00:12Z</dateTime.iso8601></value>"},
-+	{_time("2013-12-09T21:00:12-01:00"), new(*time.Time), "<value><dateTime.iso8601>20131209T21:00:12-01:00</dateTime.iso8601></value>"},
-+	{_time("2013-12-09T21:00:12+01:00"), new(*time.Time), "<value><dateTime.iso8601>20131209T21:00:12+01:00</dateTime.iso8601></value>"},
-+	{_time("2013-12-09T21:00:12Z"), new(*time.Time), "<value><dateTime.iso8601>2013-12-09T21:00:12</dateTime.iso8601></value>"},
-+	{_time("2013-12-09T21:00:12Z"), new(*time.Time), "<value><dateTime.iso8601>2013-12-09T21:00:12Z</dateTime.iso8601></value>"},
-+	{_time("2013-12-09T21:00:12-01:00"), new(*time.Time), "<value><dateTime.iso8601>2013-12-09T21:00:12-01:00</dateTime.iso8601></value>"},
-+	{_time("2013-12-09T21:00:12+01:00"), new(*time.Time), "<value><dateTime.iso8601>2013-12-09T21:00:12+01:00</dateTime.iso8601></value>"},
-+
-+	// array
-+	{[]int{1, 5, 7}, new(*[]int), "<value><array><data><value><int>1</int></value><value><int>5</int></value><value><int>7</int></value></data></array></value>"},
-+	{[]interface{}{"A", "5"}, new(interface{}), "<value><array><data><value><string>A</string></value><value><string>5</string></value></data></array></value>"},
-+	{[]interface{}{"A", int64(5)}, new(interface{}), "<value><array><data><value><string>A</string></value><value><int>5</int></value></data></array></value>"},
-+
-+	// struct
-+	{book{"War and Piece", 20}, new(*book), "<value><struct><member><name>Title</name><value><string>War and Piece</string></value></member><member><name>Amount</name><value><int>20</int></value></member></struct></value>"},
-+	{bookUnexported{}, new(*bookUnexported), "<value><struct><member><name>title</name><value><string>War and Piece</string></value></member><member><name>amount</name><value><int>20</int></value></member></struct></value>"},
-+	{map[string]interface{}{"Name": "John Smith"}, new(interface{}), "<value><struct><member><name>Name</name><value><string>John Smith</string></value></member></struct></value>"},
-+	{map[string]interface{}{}, new(interface{}), "<value><struct></struct></value>"},
-+}
-+
-+func _time(s string) time.Time {
-+	t, err := time.Parse(time.RFC3339, s)
-+	if err != nil {
-+		panic(fmt.Sprintf("time parsing error: %v", err))
-+	}
-+	return t
-+}
-+
-+func Test_unmarshal(t *testing.T) {
-+	for _, tt := range unmarshalTests {
-+		v := reflect.New(reflect.TypeOf(tt.value))
-+		if err := unmarshal([]byte(tt.xml), v.Interface()); err != nil {
-+			t.Fatalf("unmarshal error: %v", err)
-+		}
-+
-+		v = v.Elem()
-+
-+		if v.Kind() == reflect.Slice {
-+			vv := reflect.ValueOf(tt.value)
-+			if vv.Len() != v.Len() {
-+				t.Fatalf("unmarshal error:\nexpected: %v\n     got: %v", tt.value, v.Interface())
-+			}
-+			for i := 0; i < v.Len(); i++ {
-+				if v.Index(i).Interface() != vv.Index(i).Interface() {
-+					t.Fatalf("unmarshal error:\nexpected: %v\n     got: %v", tt.value, v.Interface())
-+				}
-+			}
-+		} else {
-+			a1 := v.Interface()
-+			a2 := interface{}(tt.value)
-+
-+			if !reflect.DeepEqual(a1, a2) {
-+				t.Fatalf("unmarshal error:\nexpected: %v\n     got: %v", tt.value, v.Interface())
-+			}
-+		}
-+	}
-+}
-+
-+func Test_unmarshalToNil(t *testing.T) {
-+	for _, tt := range unmarshalTests {
-+		if err := unmarshal([]byte(tt.xml), tt.ptr); err != nil {
-+			t.Fatalf("unmarshal error: %v", err)
-+		}
-+	}
-+}
-+
-+func Test_typeMismatchError(t *testing.T) {
-+	var s string
-+
-+	encoded := "<value><int>100</int></value>"
-+	var err error
-+
-+	if err = unmarshal([]byte(encoded), &s); err == nil {
-+		t.Fatal("unmarshal error: expected error, but didn't get it")
-+	}
-+
-+	if _, ok := err.(TypeMismatchError); !ok {
-+		t.Fatal("unmarshal error: expected type mistmatch error, but didn't get it")
-+	}
-+}
-+
-+func Test_unmarshalEmptyValueTag(t *testing.T) {
-+	var v int
-+
-+	if err := unmarshal([]byte("<value/>"), &v); err != nil {
-+		t.Fatalf("unmarshal error: %v", err)
-+	}
-+}
-+
-+const structEmptyXML = `
-+<value>
-+  <struct>
-+  </struct>
-+</value>
-+`
-+
-+func Test_unmarshalEmptyStruct(t *testing.T) {
-+	var v interface{}
-+	if err := unmarshal([]byte(structEmptyXML), &v); err != nil {
-+		t.Fatal(err)
-+	}
-+	if v == nil {
-+		t.Fatalf("got nil map")
-+	}
-+}
-+
-+const arrayValueXML = `
-+<value>
-+  <array>
-+    <data>
-+      <value><int>234</int></value>
-+      <value><boolean>1</boolean></value>
-+      <value><string>Hello World</string></value>
-+      <value><string>Extra Value</string></value>
-+    </data>
-+  </array>
-+</value>
-+`
-+
-+func Test_unmarshalExistingArray(t *testing.T) {
-+
-+	var (
-+		v1 int
-+		v2 bool
-+		v3 string
-+
-+		v = []interface{}{&v1, &v2, &v3}
-+	)
-+	if err := unmarshal([]byte(arrayValueXML), &v); err != nil {
-+		t.Fatal(err)
-+	}
-+
-+	// check pre-existing values
-+	if want := 234; v1 != want {
-+		t.Fatalf("want %d, got %d", want, v1)
-+	}
-+	if want := true; v2 != want {
-+		t.Fatalf("want %t, got %t", want, v2)
-+	}
-+	if want := "Hello World"; v3 != want {
-+		t.Fatalf("want %s, got %s", want, v3)
-+	}
-+	// check the appended result
-+	if n := len(v); n != 4 {
-+		t.Fatalf("missing appended result")
-+	}
-+	if got, ok := v[3].(string); !ok || got != "Extra Value" {
-+		t.Fatalf("got %s, want %s", got, "Extra Value")
-+	}
-+}
-+
-+func Test_decodeNonUTF8Response(t *testing.T) {
-+	data, err := ioutil.ReadFile("fixtures/cp1251.xml")
-+	if err != nil {
-+		t.Fatal(err)
-+	}
-+
-+	CharsetReader = decode
-+
-+	var s string
-+	if err = unmarshal(data, &s); err != nil {
-+		fmt.Println(err)
-+		t.Fatal("unmarshal error: cannot decode non utf-8 response")
-+	}
-+
-+	expected := "Л.Н. Толстой - Война и Мир"
-+
-+	if s != expected {
-+		t.Fatalf("unmarshal error:\nexpected: %v\n     got: %v", expected, s)
-+	}
-+
-+	CharsetReader = nil
-+}
-+
-+func decode(charset string, input io.Reader) (io.Reader, error) {
-+	if charset != "cp1251" {
-+		return nil, fmt.Errorf("unsupported charset")
-+	}
-+
-+	return transform.NewReader(input, charmap.Windows1251.NewDecoder()), nil
-+}
-Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/encoder.go
-===================================================================
---- /dev/null
-+++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/encoder.go
-@@ -0,0 +1,171 @@
++++ b/vendor/github.com/kolo/xmlrpc/encoder.go
+@@ -0,0 +1,181 @@
 +package xmlrpc
 +
 +import (
@@ -1693,8 +1317,12 @@ Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/encoder.go
 +	"reflect"
 +	"sort"
 +	"strconv"
++	"strings"
 +	"time"
 +)
++
++// Base64 represents value in base64 encoding
++type Base64 string
 +
 +type encodeFunc func(reflect.Value) ([]byte, error)
 +
@@ -1766,28 +1394,34 @@ Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/encoder.go
 +	return []byte(fmt.Sprintf("<value>%s</value>", string(b))), nil
 +}
 +
-+func encodeStruct(val reflect.Value) ([]byte, error) {
++func encodeStruct(structVal reflect.Value) ([]byte, error) {
 +	var b bytes.Buffer
 +
 +	b.WriteString("<struct>")
 +
-+	t := val.Type()
-+	for i := 0; i < t.NumField(); i++ {
-+		b.WriteString("<member>")
-+		f := t.Field(i)
++	structType := structVal.Type()
++	for i := 0; i < structType.NumField(); i++ {
++		fieldVal := structVal.Field(i)
++		fieldType := structType.Field(i)
 +
-+		name := f.Tag.Get("xmlrpc")
-+		if name == "" {
-+			name = f.Name
++		name := fieldType.Tag.Get("xmlrpc")
++		// if the tag has the omitempty property, skip it
++		if strings.HasSuffix(name, ",omitempty") && isZero(fieldVal) {
++			continue
 +		}
-+		b.WriteString(fmt.Sprintf("<name>%s</name>", name))
++		name = strings.TrimSuffix(name, ",omitempty")
++		if name == "" {
++			name = fieldType.Name
++		}
 +
-+		p, err := encodeValue(val.FieldByName(f.Name))
++		p, err := encodeValue(fieldVal)
 +		if err != nil {
 +			return nil, err
 +		}
-+		b.Write(p)
 +
++		b.WriteString("<member>")
++		b.WriteString(fmt.Sprintf("<name>%s</name>", name))
++		b.Write(p)
 +		b.WriteString("</member>")
 +	}
 +
@@ -1855,85 +1489,81 @@ Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/encoder.go
 +
 +	return b.Bytes(), nil
 +}
-Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/encoder_test.go
-===================================================================
+diff --git a/vendor/github.com/kolo/xmlrpc/go.mod b/vendor/github.com/kolo/xmlrpc/go.mod
+new file mode 100644
+index 000000000..42e7acd80
 --- /dev/null
-+++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/encoder_test.go
-@@ -0,0 +1,58 @@
++++ b/vendor/github.com/kolo/xmlrpc/go.mod
+@@ -0,0 +1,5 @@
++module github.com/kolo/xmlrpc
++
++go 1.14
++
++require golang.org/x/text v0.3.3
+diff --git a/vendor/github.com/kolo/xmlrpc/go.sum b/vendor/github.com/kolo/xmlrpc/go.sum
+new file mode 100644
+index 000000000..fd5b10f79
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/go.sum
+@@ -0,0 +1,3 @@
++golang.org/x/text v0.3.3 h1:cokOdA+Jmi5PJGXLlLllQSgYigAEfHXJAERHVMaCc2k=
++golang.org/x/text v0.3.3/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
++golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
+diff --git a/vendor/github.com/kolo/xmlrpc/is_zero.go b/vendor/github.com/kolo/xmlrpc/is_zero.go
+new file mode 100644
+index 000000000..65276d04a
+--- /dev/null
++++ b/vendor/github.com/kolo/xmlrpc/is_zero.go
+@@ -0,0 +1,44 @@
 +package xmlrpc
 +
 +import (
-+	"testing"
-+	"time"
++	"math"
++	. "reflect"
 +)
 +
-+var marshalTests = []struct {
-+	value interface{}
-+	xml   string
-+}{
-+	{100, "<value><int>100</int></value>"},
-+	{"Once upon a time", "<value><string>Once upon a time</string></value>"},
-+	{"Mike & Mick <London, UK>", "<value><string>Mike &amp; Mick &lt;London, UK&gt;</string></value>"},
-+	{Base64("T25jZSB1cG9uIGEgdGltZQ=="), "<value><base64>T25jZSB1cG9uIGEgdGltZQ==</base64></value>"},
-+	{true, "<value><boolean>1</boolean></value>"},
-+	{false, "<value><boolean>0</boolean></value>"},
-+	{12.134, "<value><double>12.134</double></value>"},
-+	{-12.134, "<value><double>-12.134</double></value>"},
-+	{738777323.0, "<value><double>738777323</double></value>"},
-+	{time.Unix(1386622812, 0).UTC(), "<value><dateTime.iso8601>20131209T21:00:12</dateTime.iso8601></value>"},
-+	{[]interface{}{1, "one"}, "<value><array><data><value><int>1</int></value><value><string>one</string></value></data></array></value>"},
-+	{&struct {
-+		Title  string
-+		Amount int
-+	}{"War and Piece", 20}, "<value><struct><member><name>Title</name><value><string>War and Piece</string></value></member><member><name>Amount</name><value><int>20</int></value></member></struct></value>"},
-+	{&struct {
-+		Value interface{} `xmlrpc:"value"`
-+	}{}, "<value><struct><member><name>value</name><value/></member></struct></value>"},
-+	{
-+		map[string]interface{}{"title": "War and Piece", "amount": 20},
-+		"<value><struct><member><name>amount</name><value><int>20</int></value></member><member><name>title</name><value><string>War and Piece</string></value></member></struct></value>",
-+	},
-+	{
-+		map[string]interface{}{
-+			"Name":  "John Smith",
-+			"Age":   6,
-+			"Wight": []float32{66.67, 100.5},
-+			"Dates": map[string]interface{}{"Birth": time.Date(1829, time.November, 10, 23, 0, 0, 0, time.UTC), "Death": time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)}},
-+		"<value><struct><member><name>Age</name><value><int>6</int></value></member><member><name>Dates</name><value><struct><member><name>Birth</name><value><dateTime.iso8601>18291110T23:00:00</dateTime.iso8601></value></member><member><name>Death</name><value><dateTime.iso8601>20091110T23:00:00</dateTime.iso8601></value></member></struct></value></member><member><name>Name</name><value><string>John Smith</string></value></member><member><name>Wight</name><value><array><data><value><double>66.67</double></value><value><double>100.5</double></value></data></array></value></member></struct></value>",
-+	},
-+}
-+
-+func Test_marshal(t *testing.T) {
-+	sortMapKeys = true
-+
-+	for _, tt := range marshalTests {
-+		b, err := marshal(tt.value)
-+		if err != nil {
-+			t.Fatalf("unexpected marshal error: %v", err)
++func isZero(v Value) bool {
++	switch v.Kind() {
++	case Bool:
++		return !v.Bool()
++	case Int, Int8, Int16, Int32, Int64:
++		return v.Int() == 0
++	case Uint, Uint8, Uint16, Uint32, Uint64, Uintptr:
++		return v.Uint() == 0
++	case Float32, Float64:
++		return math.Float64bits(v.Float()) == 0
++	case Complex64, Complex128:
++		c := v.Complex()
++		return math.Float64bits(real(c)) == 0 && math.Float64bits(imag(c)) == 0
++	case Array:
++		for i := 0; i < v.Len(); i++ {
++			if !isZero(v.Index(i)) {
++				return false
++			}
 +		}
-+
-+		if string(b) != tt.xml {
-+			t.Fatalf("marshal error:\nexpected: %s\n     got: %s", tt.xml, string(b))
++		return true
++	case Chan, Func, Interface, Map, Ptr, Slice, UnsafePointer:
++		return v.IsNil()
++	case String:
++		return v.Len() == 0
++	case Struct:
++		for i := 0; i < v.NumField(); i++ {
++			if !isZero(v.Field(i)) {
++				return false
++			}
 +		}
-+
++		return true
++	default:
++		// This should never happens, but will act as a safeguard for
++		// later, as a default value doesn't makes sense here.
++		panic(&ValueError{"reflect.Value.IsZero", v.Kind()})
 +	}
 +}
-Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml
-===================================================================
+diff --git a/vendor/github.com/kolo/xmlrpc/request.go b/vendor/github.com/kolo/xmlrpc/request.go
+new file mode 100644
+index 000000000..acb8251b2
 --- /dev/null
-+++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/fixtures/cp1251.xml
-@@ -0,0 +1,6 @@
-+<?xml version="1.0" encoding="cp1251" ?>
-+<methodResponse>
-+	<params>
-+		<param><value><string>�.�. ������� - ����� � ���</string></value></param>
-+	</params>
-+</methodResponse>
-\ No newline at end of file
-Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/request.go
-===================================================================
---- /dev/null
-+++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/request.go
++++ b/vendor/github.com/kolo/xmlrpc/request.go
 @@ -0,0 +1,57 @@
 +package xmlrpc
 +
@@ -1992,14 +1622,16 @@ Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/request.go
 +
 +	return b.Bytes(), nil
 +}
-Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/response.go
-===================================================================
+diff --git a/vendor/github.com/kolo/xmlrpc/response.go b/vendor/github.com/kolo/xmlrpc/response.go
+new file mode 100644
+index 000000000..18e6d366c
 --- /dev/null
-+++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/response.go
-@@ -0,0 +1,52 @@
++++ b/vendor/github.com/kolo/xmlrpc/response.go
+@@ -0,0 +1,42 @@
 +package xmlrpc
 +
 +import (
++	"fmt"
 +	"regexp"
 +)
 +
@@ -2007,141 +1639,42 @@ Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/response.go
 +	faultRx = regexp.MustCompile(`<fault>(\s|\S)+</fault>`)
 +)
 +
-+type failedResponse struct {
-+	Code  int    `xmlrpc:"faultCode"`
-+	Error string `xmlrpc:"faultString"`
++// FaultError is returned from the server when an invalid call is made
++type FaultError struct {
++	Code   int    `xmlrpc:"faultCode"`
++	String string `xmlrpc:"faultString"`
 +}
 +
-+func (r *failedResponse) err() error {
-+	return &xmlrpcError{
-+		code: r.Code,
-+		err:  r.Error,
++// Error implements the error interface
++func (e FaultError) Error() string {
++	return fmt.Sprintf("Fault(%d): %s", e.Code, e.String)
++}
++
++type Response []byte
++
++func (r Response) Err() error {
++	if !faultRx.Match(r) {
++		return nil
 +	}
-+}
-+
-+type Response struct {
-+	data []byte
-+}
-+
-+func NewResponse(data []byte) *Response {
-+	return &Response{
-+		data: data,
-+	}
-+}
-+
-+func (r *Response) Failed() bool {
-+	return faultRx.Match(r.data)
-+}
-+
-+func (r *Response) Err() error {
-+	failedResp := new(failedResponse)
-+	if err := unmarshal(r.data, failedResp); err != nil {
++	var fault FaultError
++	if err := unmarshal(r, &fault); err != nil {
 +		return err
 +	}
-+
-+	return failedResp.err()
++	return fault
 +}
 +
-+func (r *Response) Unmarshal(v interface{}) error {
-+	if err := unmarshal(r.data, v); err != nil {
++func (r Response) Unmarshal(v interface{}) error {
++	if err := unmarshal(r, v); err != nil {
 +		return err
 +	}
 +
 +	return nil
 +}
-Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/response_test.go
-===================================================================
+diff --git a/vendor/github.com/kolo/xmlrpc/test_server.rb b/vendor/github.com/kolo/xmlrpc/test_server.rb
+new file mode 100644
+index 000000000..1ccfc9ac4
 --- /dev/null
-+++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/response_test.go
-@@ -0,0 +1,84 @@
-+package xmlrpc
-+
-+import (
-+	"testing"
-+)
-+
-+const faultRespXml = `
-+<?xml version="1.0" encoding="UTF-8"?>
-+<methodResponse>
-+  <fault>
-+    <value>
-+      <struct>
-+        <member>
-+          <name>faultString</name>
-+          <value>
-+            <string>You must log in before using this part of Bugzilla.</string>
-+          </value>
-+        </member>
-+        <member>
-+          <name>faultCode</name>
-+          <value>
-+            <int>410</int>
-+          </value>
-+        </member>
-+      </struct>
-+    </value>
-+  </fault>
-+</methodResponse>`
-+
-+func Test_failedResponse(t *testing.T) {
-+	resp := NewResponse([]byte(faultRespXml))
-+
-+	if !resp.Failed() {
-+		t.Fatal("Failed() error: expected true, got false")
-+	}
-+
-+	if resp.Err() == nil {
-+		t.Fatal("Err() error: expected error, got nil")
-+	}
-+
-+	err := resp.Err().(*xmlrpcError)
-+	if err.code != 410 && err.err != "You must log in before using this part of Bugzilla." {
-+		t.Fatal("Err() error: got wrong error")
-+	}
-+}
-+
-+const emptyValResp = `
-+<?xml version="1.0" encoding="UTF-8"?>
-+<methodResponse>
-+	<params>
-+		<param>
-+			<value>
-+				<struct>
-+					<member>
-+						<name>user</name>
-+						<value><string>Joe Smith</string></value>
-+					</member>
-+					<member>
-+						<name>token</name>
-+						<value/>
-+					</member>
-+				</struct>
-+			</value>
-+		</param>
-+	</params>
-+</methodResponse>`
-+
-+
-+func Test_responseWithEmptyValue(t *testing.T) {
-+	resp := NewResponse([]byte(emptyValResp))
-+
-+	result := struct{
-+		User string `xmlrpc:"user"`
-+		Token string `xmlrpc:"token"`
-+	}{}
-+
-+	if err := resp.Unmarshal(&result); err != nil {
-+		t.Fatalf("unmarshal error: %v", err)
-+	}
-+
-+	if result.User != "Joe Smith" || result.Token != "" {
-+		t.Fatalf("unexpected result: %v", result)
-+	}
-+}
-Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/test_server.rb
-===================================================================
---- /dev/null
-+++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/test_server.rb
++++ b/vendor/github.com/kolo/xmlrpc/test_server.rb
 @@ -0,0 +1,25 @@
 +# encoding: utf-8
 +
@@ -2160,35 +1693,28 @@ Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/test_server.rb
 +    x + y
 +  end
 +
-+	def error
-+		raise XMLRPC::FaultException.new(500, "Server error")
-+	end
++  def error
++    raise XMLRPC::FaultException.new(500, "Server error")
++  end
 +end
 +
 +server = XMLRPC::Server.new 5001, 'localhost'
 +server.add_handler "service", Service.new
 +server.serve
-Index: prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/xmlrpc.go
-===================================================================
---- /dev/null
-+++ prometheus-2.18.0/vendor/github.com/kolo/xmlrpc/xmlrpc.go
-@@ -0,0 +1,19 @@
-+package xmlrpc
-+
-+import (
-+	"fmt"
-+)
-+
-+// xmlrpcError represents errors returned on xmlrpc request.
-+type xmlrpcError struct {
-+	code int
-+	err  string
-+}
-+
-+// Error() method implements Error interface
-+func (e *xmlrpcError) Error() string {
-+	return fmt.Sprintf("error: \"%s\" code: %d", e.err, e.code)
-+}
-+
-+// Base64 represents value in base64 encoding
-+type Base64 string
+diff --git a/vendor/modules.txt b/vendor/modules.txt
+index a2365b4c8..7f30086c3 100644
+--- a/vendor/modules.txt
++++ b/vendor/modules.txt
+@@ -312,6 +312,9 @@ github.com/jpillora/backoff
+ github.com/json-iterator/go
+ # github.com/julienschmidt/httprouter v1.3.0
+ github.com/julienschmidt/httprouter
++# github.com/kolo/xmlrpc v0.0.0-20201022064351-38db28db192b
++## explicit
++github.com/kolo/xmlrpc
+ # github.com/konsorten/go-windows-terminal-sequences v1.0.3
+ github.com/konsorten/go-windows-terminal-sequences
+ # github.com/mailru/easyjson v0.7.1
+-- 
+2.26.2
+

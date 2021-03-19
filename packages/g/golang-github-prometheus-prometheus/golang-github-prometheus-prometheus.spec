@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-prometheus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,6 @@
 #
 
 
-%global prometheus_user prometheus
-%global prometheus_group %{prometheus_user}
-
 # Compatibility with systems older than Nov 2017
 # See https://en.opensuse.org/openSUSE:Packaging_Conventions_RPM_Macros
 %if ! %{defined _fillupdir}
@@ -29,14 +26,12 @@
 %define _sharedstatedir /var/lib
 %endif
 
-%{go_nostrip}
-
 Name:           golang-github-prometheus-prometheus
-Version:        2.18.0
+Version:        2.22.1
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0
-Group:          System/Management
+Group:          System/Monitoring
 URL:            https://prometheus.io/
 Source:         prometheus-%{version}.tar.xz
 Source1:        prometheus.service
@@ -54,12 +49,15 @@ BuildRequires:  glibc-devel-static
 BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRequires:  golang(API) = 1.14
+BuildRequires:  golang(API) >= 1.14
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{?systemd_requires}
-Requires(pre):  shadow
+Requires(pre):  user(prometheus)
+Requires(pre):  group(prometheus)
 Requires(post): %fillup_prereq
-%{go_provides}
+Provides:       prometheus = %{version}
+%systemd_ordering
+
+%go_nostrip
 
 %description
 Prometheus's main features are:
@@ -98,11 +96,10 @@ install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/data
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/metrics
 %gofilelist
+
 %fdupes %{buildroot}/%{_prefix}
 
 %pre
-getent group %{prometheus_group} >/dev/null || %{_sbindir}/groupadd -r %{prometheus_group}
-getent passwd %{prometheus_user} >/dev/null || %{_sbindir}/useradd -r -g %{prometheus_group} -d %{_localstatedir}/lib/prometheus -s /sbin/nologin %{prometheus_user}
 %service_add_pre prometheus.service
 
 %post
@@ -128,9 +125,9 @@ getent passwd %{prometheus_user} >/dev/null || %{_sbindir}/useradd -r -g %{prome
 %{_sbindir}/rcprometheus
 %{_datarootdir}/prometheus
 %{_fillupdir}/sysconfig.prometheus
-%dir %attr(0700,%{prometheus_user},%{prometheus_group}) %{_sharedstatedir}/prometheus
-%dir %attr(0700,%{prometheus_user},%{prometheus_group}) %{_sharedstatedir}/prometheus/data
-%dir %attr(0700,%{prometheus_user},%{prometheus_group}) %{_sharedstatedir}/prometheus/metrics
+%dir %attr(0700,prometheus,prometheus) %{_sharedstatedir}/prometheus
+%dir %attr(0700,prometheus,prometheus) %{_sharedstatedir}/prometheus/data
+%dir %attr(0700,prometheus,prometheus) %{_sharedstatedir}/prometheus/metrics
 %dir %{_sysconfdir}/prometheus
 %config(noreplace) %{_sysconfdir}/prometheus/prometheus.yml
 

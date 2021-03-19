@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar  9 13:28:50 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Uyuni: `hostname` label is now set to FQDN instead of IP
+
+-------------------------------------------------------------------
+Mon Nov  9 10:49:39 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
+
+- Update to upstream version 2.22.1
+- Update packaging
+  * Remove systemd and shadow hard requirements
+  * use systemd-sysusers to configure the user in a dedicated 'system-user-prometheus' subpackage
+  * add 'prometheus' package alias
+
+-------------------------------------------------------------------
 Fri Jul 31 14:50:21 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update 0003-Add-Uyuni-service-discovery.patch:
