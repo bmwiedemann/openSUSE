@@ -278,4 +278,12 @@
   (GNOME 40) the focus is much more active on it now. (forwarded request 864285 from dimstar)</comment>
     <requestid>865370</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2b119ebbf638fe7d85e29563aad7457a</srcmd5>
+    <version>4.1.2</version>
+    <time>1616168625</time>
+    <user>RBrownSUSE</user>
+    <comment>UPdate to 4.1.2 (forwarded request 879855 from dimstar)</comment>
+    <requestid>880098</requestid>
+  </revision>
 </revisionlist>

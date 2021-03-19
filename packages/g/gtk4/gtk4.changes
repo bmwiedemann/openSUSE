@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Thu Mar 18 09:26:38 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.1.2:
+  + Input:
+    - Ensure preedit-start and preedit-end are emitted properly
+    - Support the Wayland text protocol better
+    - Delete the selection when preedit starts
+  + Label: Fix a small issue with markup parsing and mnemonics
+  + Spinbutton: Interpret localized digits.
+  + Textview: Fix blinking block cursors.
+  + Tooltips: Don't pop up erroneous on popovers.
+  + Window: Add a way to disable F10 handling.
+  + Theme: Use a regular focus ring for sidebar rows.
+  + GSK:
+    - ngl: Performance improvements.
+    - vulkan: Add visible fallback rendering.
+    - vukan: Handle simple transforms when clipping.
+  + Wayland:
+    - Don't force a full redraw for every frame.
+    - Don't leak buffers when rendering with cairo.
+  + Demos: iconbrowser: Make search more useful.
+  + Documentation: Switch to building docs from gir files with
+    gi-docgen.
+  + build: Allow GTK to be used as meson subproject.
+  + Updated translations.
+- Drop gtk-doc BuildRequires: doc building was moved to gi-docgen,
+  but we are not just yet ready to consume this, and also have not
+  been bulding docs before.
+
+-------------------------------------------------------------------
+Fri Feb 26 13:22:36 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.1.1:
+  + Popover: Support shadows on popover > contents.
+  + Input:
+    - Show preedit for compose sequences.
+    - Support long compose sequences.
+    - Support compose sequences producing multiple characters.
+  + Themes:
+    - Allow suggested and destructive actions in lists.
+    - Disable shadows on maximized, fullscreen and tiled windows.
+    - Fine-tune scrollbar transitions and size.
+  + CSS:
+    - Support drop-shadow filters.
+    - Correct blur filter spread interpretation.
+  + Documentation: Improvements and updates for dialogs and native
+    dialog.
+  + Printing: Support Avahi-discovered printers better.
+  + GSK: Add another OpenGL render. It is not the default yet.
+  + Build:
+    - Lots of static analysis fixes found by pvs.
+    - Add a -Dprofile=devel option for devel styling and use it for
+      nightly flatpaks.
+  + X11: Fix DND of X11-specific types.
+  + Wayland: Fix lookup of font settings in flatpaks.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb  3 11:51:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.1.0:
+  + GtkCheckButton: Add back an activate signal.
+  + GtkSearchBar, GtkSearchEntry: Capture events in the bubble
+    phase.
+  + GtkEmojiChooser: Adapt to small screen sizes.
+  + GtkVideo: Fix issues with GL support.
+  + Themes:
+    - Set sort arrows in CSS.
+    - Set menu button arrows in CSS.
+    - Make scrollbars larger.
+    - Supprt circular menubuttons.
+  + CSS:
+    - Implement transform-origin.
+    - Support overlines on text.
+    - Support colors in cross-fade().
+    - More complete text-decoration-line support.
+  + Text layout: Use subpixel positioning with new enough cairo.
+  + Inspector:
+    - Fix slowness in navigation.
+    - Redo the controllers and shortcuts pages.
+  + Accessibility: Create AT context objects lazily.
+  + Wayland: Fix decoration negotiation under kwin.
+  + GSK:
+    - Optimize gradient shaders.
+    - Implement repeating gradients in shaders.
+  + Updated translations.
+- Add Mesa-libGLESv3-devel BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Sun Jan 31 05:18:31 UTC 2021 - Marguerite Su <i@marguerite.su>
+
+- Fix macros.gtk4:
+  + gtk4 has no gtk4-query-immodules
+    "GTK+ 4.0 will not support IM modules, and has moved to GIO
+     extension points"
+  + https://blog.gtk.org/2018/03/06/input-methods-in-gtk-4/
+
+-------------------------------------------------------------------
 Tue Jan 19 08:08:49 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.0.2:

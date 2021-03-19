@@ -22,14 +22,14 @@
 %define _name gtk
 
 Name:           gtk4
-Version:        4.0.2
+Version:        4.1.2
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.gtk.org/
 
-Source:         https://download.gnome.org/sources/gtk/4.0/%{_name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gtk/4.1/%{_name}-%{version}.tar.xz
 Source2:        settings.ini
 Source3:        macros.gtk4
 Source98:       gtk4-rpmlintrc
@@ -38,11 +38,11 @@ Source99:       baselibs.conf
 BuildRequires:  cups-devel >= 2.0
 # We do not support building against cups 2.3 betas
 BuildConflicts: (cups-devel > 2.3 with cups-devel < 2.3.0)
+BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools >= 0.19.7
-BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.50.1
 BuildRequires:  pkgconfig
