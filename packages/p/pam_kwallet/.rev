@@ -668,4 +668,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment>KDE Plasma 5.21.2</comment>
     <requestid>876483</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>71e828832edf19d9f8974b168e3abae6</srcmd5>
+    <version>5.21.3</version>
+    <time>1616168548</time>
+    <user>RBrownSUSE</user>
+    <comment>Plasma 5.21.3</comment>
+    <requestid>879621</requestid>
+  </revision>
 </revisionlist>
