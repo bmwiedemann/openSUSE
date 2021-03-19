@@ -1,7 +1,7 @@
 #
-# spec file for package eclipse
+# spec file for package eclipse-bootstrap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -115,6 +115,8 @@ Patch31:        eclipse-suse-batik.patch
 # Fix build on ppc64 big endian
 Patch33:        eclipse-ppc64.patch
 Patch34:        eclipse-libkeystorelinuxnative.patch
+# PATCH-FIX-UPSTREAM bsc#1183728 CVE-2020-27225 Help Subsystem does not authenticate active help requests
+Patch35:        eclipse-CVE-2020-27225.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  ant-antlr
 BuildRequires:  ant-apache-bcel
@@ -252,6 +254,7 @@ everything in between.
 %if %{with bootstrap}
 %package        -n eclipse-swt-bootstrap
 %else
+
 %package        swt
 Obsoletes:      eclipse-swt-bootstrap
 %endif
@@ -265,6 +268,7 @@ Requires:       libwebkit2gtk-4_0-37
 %if %{with bootstrap}
 %description -n eclipse-swt-bootstrap
 %else
+
 %description swt
 %endif
 SWT Library for GTK+.
@@ -272,6 +276,7 @@ SWT Library for GTK+.
 %if %{with bootstrap}
 %package        -n eclipse-equinox-osgi-bootstrap
 %else
+
 %package        equinox-osgi
 Obsoletes:      eclipse-equinox-osgi-bootstrap
 %endif
@@ -284,6 +289,7 @@ Provides:       osgi(system.bundle) = %{version}
 %if %{with bootstrap}
 %description  -n eclipse-equinox-osgi-bootstrap
 %else
+
 %description  equinox-osgi
 %endif
 Eclipse OSGi - Equinox
@@ -293,6 +299,7 @@ Eclipse OSGi - Equinox
 Requires:       eclipse-equinox-osgi-bootstrap = %{version}-%{release}
 Requires:       eclipse-swt-bootstrap = %{version}-%{release}
 %else
+
 %package        platform
 Requires:       %{name}-equinox-osgi = %{version}-%{release}
 Requires:       %{name}-swt = %{version}-%{release}
@@ -373,6 +380,7 @@ Requires:       eclipse-emf-core >= 2.14.0
 %if %{with bootstrap}
 %description    -n eclipse-platform-bootstrap
 %else
+
 %description    platform
 %endif
 The Eclipse Platform is the base of all IDE plugins.  This does not include the
@@ -382,6 +390,7 @@ Java Development Tools or the Plugin Development Environment.
 %package        -n eclipse-jdt-bootstrap
 Requires:       eclipse-platform-bootstrap = %{version}-%{release}
 %else
+
 %package        jdt
 Requires:       %{name}-platform = %{version}-%{release}
 Obsoletes:      eclipse-jdt-bootstrap
@@ -397,6 +406,7 @@ BuildArch:      noarch
 %if %{with bootstrap}
 %description    -n eclipse-jdt-bootstrap
 %else
+
 %description    jdt
 %endif
 Eclipse Java Development Tools.  This package is required to use Eclipse for
@@ -407,6 +417,7 @@ developing software written in the Java programming language.
 Requires:       eclipse-jdt-bootstrap = %{version}-%{release}
 Requires:       eclipse-platform-bootstrap = %{version}-%{release}
 %else
+
 %package        pde
 Requires:       %{name}-jdt = %{version}-%{release}
 Requires:       %{name}-platform = %{version}-%{release}
@@ -419,6 +430,7 @@ Requires:       objectweb-asm >= 7.0
 %if %{with bootstrap}
 %description    -n eclipse-pde-bootstrap
 %else
+
 %description    pde
 %endif
 Eclipse Plugin Development Environment.  This package is required for
@@ -428,6 +440,7 @@ developing Eclipse plugins.
 %package        -n eclipse-p2-discovery-bootstrap
 Requires:       eclipse-platform-bootstrap = %{version}-%{release}
 %else
+
 %package        p2-discovery
 Requires:       %{name}-platform = %{version}-%{release}
 Obsoletes:      eclipse-p2-discovery-bootstrap
@@ -439,6 +452,7 @@ BuildArch:      noarch
 %if %{with bootstrap}
 %description    -n eclipse-p2-discovery-bootstrap
 %else
+
 %description    p2-discovery
 %endif
 The p2 Discovery mechanism provides a simplified and branded front-end for the
@@ -451,6 +465,7 @@ installer UIs.
 %package        -n eclipse-contributor-tools-bootstrap
 Requires:       eclipse-platform-bootstrap = %{version}-%{release}
 %else
+
 %package        contributor-tools
 Requires:       %{name}-platform = %{version}-%{release}
 Obsoletes:      eclipse-contributor-tools-bootstrap
@@ -463,6 +478,7 @@ Obsoletes:      %{name}-tests < 4.14-2
 %if %{with bootstrap}
 %description    -n eclipse-contributor-tools-bootstrap
 %else
+
 %description    contributor-tools
 %endif
 This package contains tools specifically for Eclipse contributors. It includes
@@ -505,6 +521,7 @@ tar --strip-components=1 -xf %{SOURCE1}
 %patch31 -p1
 %patch33 -p1
 %patch34 -p1
+%patch35 -p1
 
 # Optional (unused) multipart support (see patch 25)
 rm rt.equinox.bundles/bundles/org.eclipse.equinox.http.servlet/src/org/eclipse/equinox/http/servlet/internal/multipart/MultipartSupport{Impl,FactoryImpl,Part}.java
@@ -959,6 +976,7 @@ echo "%{version}-%{release}" > %{buildroot}%{_eclipsedir}/.pkgs/Distro%{?dist}
 %if %{with bootstrap}
 %files -n eclipse-swt-bootstrap -f .mfiles-swt
 %else
+
 %files swt -f .mfiles-swt
 %endif
 %{_eclipsedir}/plugins/org.eclipse.swt_*
@@ -969,6 +987,7 @@ echo "%{version}-%{release}" > %{buildroot}%{_eclipsedir}/.pkgs/Distro%{?dist}
 %if %{with bootstrap}
 %files -n eclipse-platform-bootstrap
 %else
+
 %files platform
 %endif
 %{_bindir}/eclipse
@@ -1154,6 +1173,7 @@ echo "%{version}-%{release}" > %{buildroot}%{_eclipsedir}/.pkgs/Distro%{?dist}
 %if %{with bootstrap}
 %files -n eclipse-jdt-bootstrap -f .mfiles-jdt
 %else
+
 %files jdt -f .mfiles-jdt
 %endif
 %{_datadir}/appdata/eclipse-jdt.metainfo.xml
@@ -1161,6 +1181,7 @@ echo "%{version}-%{release}" > %{buildroot}%{_eclipsedir}/.pkgs/Distro%{?dist}
 %if %{with bootstrap}
 %files -n eclipse-pde-bootstrap -f .mfiles-pde -f .mfiles-cvs -f .mfiles-sdk
 %else
+
 %files pde -f .mfiles-pde -f .mfiles-cvs -f .mfiles-sdk
 %endif
 %{_datadir}/appdata/eclipse-pde.metainfo.xml
@@ -1168,6 +1189,7 @@ echo "%{version}-%{release}" > %{buildroot}%{_eclipsedir}/.pkgs/Distro%{?dist}
 %if %{with bootstrap}
 %files -n eclipse-p2-discovery-bootstrap -f .mfiles-p2-discovery
 %else
+
 %files p2-discovery -f .mfiles-p2-discovery
 %endif
 
@@ -1175,6 +1197,7 @@ echo "%{version}-%{release}" > %{buildroot}%{_eclipsedir}/.pkgs/Distro%{?dist}
 %if %{with bootstrap}
 %files -n eclipse-contributor-tools-bootstrap -f .mfiles-contributor-tools
 %else
+
 %files contributor-tools -f .mfiles-contributor-tools
 %endif
 %endif
@@ -1182,6 +1205,7 @@ echo "%{version}-%{release}" > %{buildroot}%{_eclipsedir}/.pkgs/Distro%{?dist}
 %if %{with bootstrap}
 %files -n eclipse-equinox-osgi-bootstrap -f .mfiles-equinox-osgi
 %else
+
 %files equinox-osgi -f .mfiles-equinox-osgi
 %endif
 %{_eclipsedir}/plugins/org.eclipse.osgi_*

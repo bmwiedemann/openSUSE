@@ -103,4 +103,12 @@
     <comment>Fix use of native keystore on platforms where it is supported</comment>
     <requestid>821377</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>498549cf61a63cd311d3eff6ae5054b1</srcmd5>
+    <version>4.15</version>
+    <time>1616168594</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>880010</requestid>
+  </revision>
 </revisionlist>
