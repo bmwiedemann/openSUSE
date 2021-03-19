@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 15 10:50:09 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- busybox-misc needs to conflict with lzop and sysstat as it
+  replaces files of those. Usrmerge reveals that conflict.
+
+-------------------------------------------------------------------
 Tue Mar  2 14:40:42 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)

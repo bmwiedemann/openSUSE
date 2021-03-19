@@ -134,7 +134,9 @@ Conflicts:      dosfstools
 Conflicts:      e2fsprogs
 Conflicts:      lsof
 Conflicts:      lsscsi
+Conflicts:      lzop
 Conflicts:      nbd
+Conflicts:      sysstat
 Conflicts:      usbutils
 Conflicts:      xterm-bin
 
