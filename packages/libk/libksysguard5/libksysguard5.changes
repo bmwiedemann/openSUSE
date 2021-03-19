@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 16 13:55:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.3.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.3
+- Changes since 5.21.2:
+  * SensorFaceController: Save on destruction if the face requests it (kde#433768,kde#433536,kde#434005)
+  * Avoid emitting configurationChanged during save (kde#422672)
+  * SensorDataModel: Do not insert columns that are out of range (kde#433064)
+  * Properly initialize the parent widget to nullptr in ProcessController (kde#434074)
+  * Also emit showTitleChanged when reloading the config (kde#433954)
+  * Fix build
+  * Move CGroup pid fetching callback to the controller (kde#430615)
+
+-------------------------------------------------------------------
 Tue Mar  2 15:01:37 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.2
