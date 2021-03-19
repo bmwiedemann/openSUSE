@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Mar 15 13:51:17 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to release 2.3.2
+  Noteworthy changes:
+  * Fixed autoreconnect printer backend loading
+  * Fixed compilation on older mac os versions < 10.14
+  * Fixed mouse pointer move with smart-sizing
+  * Added command line option to disable websocket gateway support
+  * Fixed drive hotplugging issues with windows
+  * Fixed smartcard issues on mac
+
+Fixed issues:
+  * #gh:FreeRDP/FreeRDP#6900: Transparency issues with aFreeRDP
+  * #gh:FreeRDP/FreeRDP#6848: Invalid format string in smartcard trace
+  * #gh:FreeRDP/FreeRDP#6846: Fixed static builds
+  * #gh:FreeRDP/FreeRDP#6888: Crash due to missing bounds checks
+  * #gh:FreeRDP/FreeRDP#6882: Use default sound device on mac
+
+
+-------------------------------------------------------------------
+Mon Mar  1 12:50:24 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to release 2.3.1
+  Noteworthy changes:
+  * This is a compatibility bugfix release readding some (deprecated)
+    symbols/defines
+  * Also add some more EXPERIMENTAL warnings to CMake flags as some were not
+    clear enough.
+  * Fixed a memory leak in xfreerdp (mouse pointer updates)
+  * No longer activating some compile time debug options with
+    -DWITH_DEBUG_ALL=ON which might leak sensitive information.
+  * Added -DDEFINE_NO_DEPRECATED for developers to detect use of
+    deprecated symbols
+
+-------------------------------------------------------------------
 Thu Feb 25 09:46:34 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to release 2.3.0
