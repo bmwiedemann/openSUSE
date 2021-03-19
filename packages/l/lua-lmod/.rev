@@ -306,4 +306,12 @@
     + Added lua module function requireFullName()</comment>
     <requestid>873195</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c75c607ac8b2481cdb814fe49a582f71</srcmd5>
+    <version>8.4.27</version>
+    <time>1616168421</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879669</requestid>
+  </revision>
 </revisionlist>

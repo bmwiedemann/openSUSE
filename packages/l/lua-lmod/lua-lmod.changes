@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Mar 17 10:37:10 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 8.4.27:
+  * (8.4.21) 
+    + Add findLuaProg() or die
+  * (8.4.22)
+    + Fix luaCmd -> luaprog.
+  * (8.4.23) 
+    + Fix goto in luaterm pkg.
+  * (8.4.24)  
+    + Need to quote '?' in csh.
+    + Make list of modules from spider skip .version* and .modulerc*
+    + analyzeLmodDB now takes a list of all modules so that zero module 
+      usage can be reported.
+  * (8.4.26)
+    + Fix bug with building on Suse linux
+    + Allow all paths (but MODULEPATH) to have trailing double slashes.
+  * (8.4.27) 
+    + Fix default for SHORT_TIME
+    + Adding isAvail() function for Lua modulefiles
+    + Now reporting that is-avail() is not working for TCL modulefiles
+
+-------------------------------------------------------------------
 Tue Feb  9 15:33:51 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - updated to version 8.4.20 which works with lua54
