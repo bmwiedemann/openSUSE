@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 16 13:55:23 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.3
+- Changes since 5.21.2:
+  * force-resize columns in the wayland module (kde#433327)
+
+-------------------------------------------------------------------
 Tue Mar  2 15:01:35 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.2
