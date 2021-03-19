@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-ati
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@ Release:        0
 Summary:        ATI video driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Url:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
-Source1:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
+URL:            https://xorg.freedesktop.org/
+Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
+Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Patch0:         u_fno-common.patch
 BuildRequires:  autoconf >= 2.60
@@ -73,14 +73,15 @@ driver as appropriate.
 autoreconf -fiv
 %configure \
   --enable-glamor
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
-%doc COPYING README.md
+%license COPYING
+%doc README.md
 %dir %{_libdir}/xorg/modules/drivers
 %{_datadir}/X11/xorg.conf.d/10-radeon.conf
 %{_libdir}/xorg/modules/drivers/ati_drv.so

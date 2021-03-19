@@ -532,4 +532,12 @@ Just leave it pending if you dont want it 'till 13.1 (forwarded request 150617 f
   * fix build with gcc's -fno-common option (boo#1160422)</comment>
     <requestid>762589</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>94b647be853b3312051eb254a8f40f72</srcmd5>
+    <version>19.1.0</version>
+    <time>1616168401</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879516</requestid>
+  </revision>
 </revisionlist>
