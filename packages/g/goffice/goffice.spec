@@ -1,7 +1,7 @@
 #
 # spec file for package goffice
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           goffice
-Version:        0.10.48
+Version:        0.10.49
 Release:        0
 Summary:        GLib/GTK+ Set of Document-Centric Objects and Utilities
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            http://www.gnumeric.org/
-Source:         http://download.gnome.org/sources/goffice/0.10/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/goffice/0.10/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  ghostscript-devel >= 9.06
 BuildRequires:  intltool

@@ -826,4 +826,12 @@ The canonical license of the spec file should be GPL-2.0 (forwarded request 1011
     <comment>New stable rel, not buildtested (forwarded request 828240 from iznogood)</comment>
     <requestid>828952</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>69af27919c3aba81fe241aba8a7e8d10</srcmd5>
+    <version>0.10.49</version>
+    <time>1616168621</time>
+    <user>RBrownSUSE</user>
+    <comment>Update to 0.10.49 (forwarded request 879912 from dimstar)</comment>
+    <requestid>880093</requestid>
+  </revision>
 </revisionlist>
