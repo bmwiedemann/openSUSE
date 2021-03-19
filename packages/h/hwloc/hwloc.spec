@@ -18,7 +18,7 @@
 
 %global lname libhwloc15
 Name:           hwloc
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Portable Hardware Locality
 License:        BSD-3-Clause
@@ -45,7 +45,7 @@ Requires:       %{lname} = %{version}-%{release}
 Requires:       perl-JSON
 Requires:       perl-base >= 5.18.2
 Requires(post): desktop-file-utils
-Requires(postun): desktop-file-utils
+Requires(postun):desktop-file-utils
 %{?systemd_ordering}
 
 %description
