@@ -1,7 +1,7 @@
 #
 # spec file for package python-convertdate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-convertdate
-Version:        2.2.0
+Version:        2.3.2
 Release:        0
 Summary:        Module for date conversions from and to Gregorian calendar
 License:        MIT
@@ -32,6 +32,7 @@ Requires:       python-pytz >= 2014.10
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyMeeus >= 0.3.6}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz >= 2014.10}
 # /SECTION
 %python_subpackages
@@ -56,7 +57,7 @@ export LC_ALL="en_US.UTF8"
 
 %check
 export LC_ALL="en_US.UTF8"
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.md

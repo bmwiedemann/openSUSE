@@ -44,4 +44,27 @@
     <comment>- Do not restrict upper version on pytz for no reason.</comment>
     <requestid>800019</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6424414cd9095ac0d12441a2c53597e9</srcmd5>
+    <version>2.3.2</version>
+    <time>1616168405</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.3.2:
+  * Switch Persian calendar to astronomical computation (was non-canonical algorithmic method)
+  * Fix inappropriate uses of trunc, which caused several errors before the Julian Day epoch (#39, #40, #42)
+  * Fix bug in julian.leap (#43)
+  * Add official suppport and tests for Python 3.9
+  * Raise ValueError for attempted conversion of dates before the Mayan epoch
+  * Fix bug in Bahai calculations during Ayyám-i-Há (#32). Thanks @chiuczek
+  * Regularize variable names:
+  * coptic: rename MONTH_NAMES to MONTHS, rename DAY_NAMES to WEEKDAYS
+  * french_republican: add MONTHS
+  * mayan: rename HAAB_MONTHS to HAAB, rename TZOLKIN_NAMES to TZOLKIN
+  * Add some Jewish and Islamic holidays to holidays: shemini_azeret, lag_baomer, tu_beshvat, tisha_bav, ramadan, ashura, eid_alfitr, eid_aladha
+  * Add docs. See https://convertdate.readthedocs.io/
+  * Fix December 31st bug in ordinal (#34)
+  * Add Indigenous Peoples' Day and Juneteenth to holidays, deprecate Columbus day
+- Switch to using pytest</comment>
+    <requestid>879557</requestid>
+  </revision>
 </revisionlist>
