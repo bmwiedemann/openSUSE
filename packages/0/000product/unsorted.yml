@@ -5500,8 +5500,6 @@ unsorted:
   - gnome-autoar-devel 
   - gnome-backgrounds 
   - gnome-bluetooth-devel 
-  - gnome-books 
-  - gnome-books-lang 
   - gnome-boxes 
   - gnome-boxes-lang 
   - gnome-calculator-devel 
@@ -5577,6 +5575,7 @@ unsorted:
   - gnome-shell-extension-gpaste 
   - gnome-shell-extension-hamster-time-tracker 
   - gnome-shell-extension-onboard 
+  - gnome-shell-extension-pop-shell 
   - gnome-shell-extension-terminus 
   - gnome-shell-extension-user-theme 
   - gnome-shell-extensions-common 
@@ -9183,7 +9182,7 @@ unsorted:
   - libantlr3c3 
   - libantlr3c3-32bit: [x86_64] 
   - libantlr4-runtime-devel 
-  - libantlr4-runtime4_8 
+  - libantlr4-runtime4_9_1 
   - libao-devel 
   - libao-plugins4-32bit: [x86_64] 
   - libao4-32bit: [x86_64] 
@@ -9943,6 +9942,9 @@ unsorted:
   - libdat2-2 
   - libdat2-2-32bit: [x86_64] 
   - libdataquay0 
+  - libdatovka 
+  - libdatovka-devel 
+  - libdatovka0 
   - libdatrie-devel 
   - libdav1d5-32bit: [x86_64] 
   - libdavix0 
@@ -13333,6 +13335,8 @@ unsorted:
   - libsoci_odbc4_0 
   - libsoci_postgresql4_0 
   - libsoci_sqlite3-4_0 
+  - libsocket_wrapper_noop-devel 
+  - libsocket_wrapper_noop0 
   - libsocketcan-devel 
   - libsocketcan2 
   - libsocketxx1_2 
@@ -20687,7 +20691,6 @@ unsorted:
   - python3-designateclient 
   - python3-dfVFS 
   - python3-django-attachments 
-  - python3-django-braces 
   - python3-django-q 
   - python3-django-storages 
   - python3-dnf 
@@ -20846,7 +20849,6 @@ unsorted:
   - python3-mox3 
   - python3-mraa 
   - python3-murano-pkg-check 
-  - python3-napalm-asa 
   - python3-napalm-exos 
   - python3-nemo 
   - python3-neutronclient 
@@ -21879,6 +21881,7 @@ unsorted:
   - python36-django-axes 
   - python36-django-bootstrap3 
   - python36-django-bootstrap4 
+  - python36-django-braces 
   - python36-django-cacheops 
   - python36-django-ckeditor 
   - python36-django-classy-tags 
@@ -22566,6 +22569,7 @@ unsorted:
   - python36-nagiosplugin 
   - python36-napalm 
   - python36-napalm-arubaos-switch 
+  - python36-napalm-asa 
   - python36-napalm-digineo-procurve 
   - python36-napalm-procurve 
   - python36-natsort 
@@ -24701,6 +24705,7 @@ unsorted:
   - python38-django-axes 
   - python38-django-bootstrap3 
   - python38-django-bootstrap4 
+  - python38-django-braces 
   - python38-django-cacheops 
   - python38-django-ckeditor 
   - python38-django-classy-tags 
@@ -25415,6 +25420,7 @@ unsorted:
   - python38-napalm 
   - python38-napalm-ansible 
   - python38-napalm-arubaos-switch 
+  - python38-napalm-asa 
   - python38-napalm-digineo-procurve 
   - python38-napalm-procurve 
   - python38-natsort 
