@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 19 02:17:56 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- let's enable only the arch-es for which we have libkrun 
+
+-------------------------------------------------------------------
+Fri Mar 19 00:29:19 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- there's no libkrun for i586 so let's exclude it here too
+
+-------------------------------------------------------------------
 Sat Feb 27 04:45:09 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 
 - Set all services to disabled

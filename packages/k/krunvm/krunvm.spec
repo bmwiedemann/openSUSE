@@ -26,6 +26,7 @@ URL:            https://github.com/containers/krunvm
 Source0:        krunvm-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
+ExclusiveArch:  x86_64 aarch64
 BuildRequires:  libkrun-devel >= 0.1.4
 BuildRequires:  rust-packaging
 Requires:       buildah
