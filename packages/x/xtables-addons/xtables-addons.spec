@@ -29,8 +29,11 @@ Source:         https://inai.de/files/%name/%name-%version.tar.xz
 Source2:        https://inai.de/files/%name/%name-%version.tar.asc
 Source3:        %name-preamble
 Source4:        %name.keyring
+Patch1:         sle-kernels.patch
 BuildRequires:  %kernel_module_package_buildreqs
+BuildRequires:  automake
 BuildRequires:  kernel-syms >= 4.15
+BuildRequires:  libtool
 BuildRequires:  pkg-config >= 0.21
 BuildRequires:  xz
 BuildRequires:  pkgconfig(xtables) >= 1.6.0
@@ -69,8 +72,13 @@ main kernel/iptables packages.
 
 %prep
 %autosetup -p1
+autoreconf -fiv
 
 %build
+%if 0%{?sle_version} == 150300
+export KCFLAGS="-DSLE_15_3"
+echo "$KCFLAGS" >kcflags
+%endif
 pushd ../
 for flavor in %flavors_to_build; do
 	cp -a "%name-%version" "%name-$flavor-%version"
@@ -82,10 +90,12 @@ done
 
 %install
 b="%buildroot"
+# kernel's make install is picky about flags changing between %%build and %%install
+export KCFLAGS="$(cat kcflags)"
 pushd ../
 for flavor in %flavors_to_build; do
 	pushd "%name-$flavor-%version/"
-	make %{?linux_make_arch} install DESTDIR="$b"
+	make %{?linux_make_arch} install DESTDIR="$b" V=1
 	popd
 done
 # There is no -devel package. So no need for these files.

@@ -612,4 +612,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>879947</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>35b3495d303b5e052281fd6340f2fa9c</srcmd5>
+    <version>3.18</version>
+    <time>1616168616</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add sle-kernels.patch [boo#1183753]</comment>
+    <requestid>880081</requestid>
+  </revision>
 </revisionlist>
