@@ -22,7 +22,7 @@
 %endif
 
 %define run_test_suite 0
-%define version_main 2.4.57
+%define version_main 2.4.58
 %define name_ppolicy_check_module ppolicy-check-password
 %define version_ppolicy_check_module 1.2
 %define ppolicy_docdir %{_docdir}/openldap-%{name_ppolicy_check_module}-%{version_ppolicy_check_module}
@@ -229,7 +229,8 @@ Group:          Productivity/Networking/LDAP/Servers
 URL:            https://github.com/onyxpoint/ppolicy-check-password
 BuildRequires:  cracklib-devel
 Requires:       openldap2 = %version_main
-Recommends:     cracklib cracklib-dict-full
+Recommends:     cracklib
+Recommends:     cracklib-dict-full
 
 %description ppolicy-check-password
 An implementation of password quality check module, based on the original

@@ -1400,4 +1400,12 @@ Removal of SuSEfirewall2 service.
     <comment></comment>
     <requestid>864146</requestid>
   </revision>
+  <revision rev="166" vrev="66">
+    <srcmd5>2408065f234aac49bb607a6f5e8709a9</srcmd5>
+    <version>unknown</version>
+    <time>1616168393</time>
+    <user>RBrownSUSE</user>
+    <comment>updated to 2.4.58</comment>
+    <requestid>879500</requestid>
+  </revision>
 </revisionlist>

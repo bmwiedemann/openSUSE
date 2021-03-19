@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 16 20:15:53 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- updated to 2.4.58
+
+OpenLDAP 2.4.58 Release (2021/03/16)
+    Fixed slapd validity checks for issuerAndThisUpdateCheck (ITS#9454)
+    Fixed slapd to alloc new conn struct after freeing old one (ITS#9458)
+    Fixed slapd syncrepl to check all contextCSNs (ITS#9282)
+    Fixed slapd-bdb lockdetect config (ITS#9449)
+
+-------------------------------------------------------------------
 Mon Jan 18 20:31:58 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - updated to 2.4.57
