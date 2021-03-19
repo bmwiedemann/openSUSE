@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Mar 16 15:21:00 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.3.7+git0.2d39ce334:
+  * [RELEASE] Released version 2.3.7
+  * BUG/MINOR: resolvers: Add missing case-insensitive comparisons of DNS hostnames
+  * MINOR: resolvers: Don't try to match immediatly renewed ADD items
+  * MINOR: resolvers: Use milliseconds for cached items in resolver responses
+  * BUG/MEDIUM: resolvers: Skip DNS resolution at startup if SRV resolution is set
+  * BUG/MEDIUM: resolvers: Don't release resolution from a requester callbacks
+  * MINOR: resolvers: Directly call srvrq_update_srv_state() when possible
+  * MINOR: resolvers: Add function to change the srv status based on SRV resolution
+  * MINOR: resolvers: Purge answer items when a SRV resolution triggers an error
+  * MINOR: resolvers: Use a function to remove answers attached to a resolution
+  * BUG/MEDIUM: resolvers: Trigger a DNS resolution if an ADD item is obsolete
+  * BUG/MINOR; resolvers: Ignore DNS resolution for expired SRV item
+  * MINOR: resolvers: new function find_srvrq_answer_record()
+  * BUG/MEDIUM: resolvers: Fix the loop looking for an existing ADD item
+  * BUG/MEDIUM: resolvers: Don't set an address-less server as UP
+  * BUG/MINOR: resolvers: Unlink DNS resolution to set RMAINT on SRV resolution
+  * BUG/MINOR: resolvers: Reset server address on DNS error only on status change
+  * BUG/MINOR: resolvers: Consider server to have no IP on DNS resolution error
+  * Revert "BUG/MINOR: resolvers: Only renew TTL for SRV records with an additional record"
+  * CLEANUP: tcp-rules: add missing actions in the tcp-request error message
+  * BUG/MINOR: tcpcheck: Fix double free on error path when parsing tcp/http-check
+  * BUG/MINOR: session: Add some forgotten tests on session's listener
+  * BUG/MINOR: proxy/session: Be sure to have a listener to increment its counters
+  * BUG/MINOR: tcpcheck: Update .health threshold of agent inside an agent-check
+  * BUG/MEDIUM: filters: Set CF_FL_ANALYZE on channels when filters are attached
+  * BUILD: atomic/arm64: force the register pairs to use in __ha_cas_dw()
+  * BUG/MEDIUM: stick-tables: fix ref counter in table entry using multiple http tracksc.
+  * OPTIM: task: automatically adjust the default runqueue-depth to the threads
+  * MINOR: task: give the scheduler a bit more flexibility in the runqueue size
+  * MEDIUM: task: remove the tasks_run_queue counter and have one per thread
+  * MEDIUM: ssl: implement xprt_set_used and xprt_set_idle to relax context checks
+  * MINOR: xprt: add new xprt_set_idle and xprt_set_used methods
+  * MEDIUM: muxes: mark idle conns tasklets with TASK_F_USR1
+  * MINOR: task: add an application specific flag to the state: TASK_F_USR1
+  * BUG/MEDIUM: ssl: properly remove the TASK_HEAVY flag at end of handshake
+  * MINOR: ssl: mark the SSL handshake tasklet as heavy
+  * MINOR: task: limit the number of subsequent heavy tasks with flag TASK_HEAVY
+  * MEDIUM: backend: use a trylock when trying to grab an idle connection
+  * MINOR: pools: double the local pool cache size to 1 MB
+  * MEDIUM: pools: add CONFIG_HAP_NO_GLOBAL_POOLS and CONFIG_HAP_GLOBAL_POOLS
+  * MEDIUM: streams: do not use the streams lock anymore
+  * MINOR: streams: use one list per stream instead of a global one
+  * MINOR: cli/streams: make "show sess" dump all streams till the new epoch
+  * MINOR: stream: add an "epoch" to figure which streams appeared when
+  * MINOR: dynbuf: pass offer_buffers() the number of buffers instead of a threshold
+  * MINOR: dynbuf: use regular lists instead of mt_lists for buffer_wait
+  * MINOR: dynbuf: make the buffer wait queue per thread
+  * OPTIM: lb-leastconn: do not unlink the server if it did not change
+  * OPTIM: lb-leastconn: do not take the server lock on take_conn/drop_conn
+  * OPTIM: lb-first: do not take the server lock on take_conn/drop_conn
+  * MINOR: lb/api: let callers of take_conn/drop_conn tell if they have the lock
+  * MINOR: server: move actconns to the per-thread structure
+  * OPTIM: server: switch the actconn list to an mt-list
+  * MINOR: listener: refine the default MAX_ACCEPT from 64 to 4
+  * MINOR: tasks: refine the default run queue depth
+  * BUG/MEDIUM: session: NULL dereference possible when accessing the listener
+  * MINOR: atomic: implement a more efficient arm64 __ha_cas_dw() using pairs
+  * MINOR: atomic: add armv8.1-a atomics variant for cas-dw
+  * BUG/MINOR: mt-list: always perform a cpu_relax call on failure
+  * REORG: atomic: reimplement pl_cpu_relax() from atomic-ops.h
+  * BUG/MINOR: ssl: don't truncate the file descriptor to 16 bits in debug mode
+  * BUG/MINOR: hlua: Don't strip last non-LWS char in hlua_pushstrippedstring()
+  * BUG/MINOR: backend: fix condition for reuse on mode HTTP
+
+-------------------------------------------------------------------
 Wed Mar 03 15:17:18 UTC 2021 - mrueckert@suse.de
 
 - Update to version 2.3.6+git0.7851701ed:

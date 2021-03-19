@@ -1042,4 +1042,12 @@
     <comment>- Update to version 2.3.6+git0.7851701ed:</comment>
     <requestid>876563</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>75a871dd0a9264cad500ce088db1e8d0</srcmd5>
+    <version>2.3.7+git0.2d39ce334</version>
+    <time>1616168384</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 2.3.7+git0.2d39ce334:</comment>
+    <requestid>879452</requestid>
+  </revision>
 </revisionlist>
