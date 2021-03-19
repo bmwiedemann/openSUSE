@@ -86,7 +86,11 @@ install -c -m 0644 %{SOURCE4561} %{buildroot}%{_firmwaredir}/brcm/
 install -c -m 0644 %{SOURCE4562} %{buildroot}%{_firmwaredir}/brcm/
 install -c -m 0644 %{SOURCE4563} %{buildroot}%{_firmwaredir}/brcm/
 ln -s brcmfmac43456-sdio.txt %{buildroot}%{_firmwaredir}/brcm/brcmfmac43456-sdio.raspberrypi,400.txt
+# We have conflicting versions of CM4's brcmfmac configuration, some
+# pre-release dev versions depend on 43456 whereas store bought ones depend on
+# 43455. Let's keep both for now.
 ln -s brcmfmac43456-sdio.txt %{buildroot}%{_firmwaredir}/brcm/brcmfmac43456-sdio.raspberrypi,4-compute-module.txt
+ln -s brcmfmac43455-sdio.raspberrypi,4-model-b.txt.xz  %{buildroot}%{_firmwaredir}/brcm/brcmfmac43455-sdio.raspberrypi,4-compute-module.txt.xz
 
 # serdev configured RPi Bluetooth driver expects the firmware files to be
 # stored in '/lib/firmware/brcm'
@@ -112,5 +116,6 @@ ln -s brcm/BCM43430A1.hcd %{buildroot}%{_firmwaredir}/BCM43430A1.hcd
 %{_firmwaredir}/brcm/brcmfmac43456-sdio.txt
 %{_firmwaredir}/brcm/brcmfmac43456-sdio.raspberrypi,400.txt
 %{_firmwaredir}/brcm/brcmfmac43456-sdio.raspberrypi,4-compute-module.txt
+%{_firmwaredir}/brcm/brcmfmac43455-sdio.raspberrypi,4-compute-module.txt.xz
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 16 16:53:24 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Introduce Raspberry Pi 4 Compute Module's brcmfmac43455 configuration file.
+  (bsc#1183524)
+
+-------------------------------------------------------------------
 Mon Mar  1 13:18:58 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Cater for old and new ways of configuring bluetooth on RPi. Users of
