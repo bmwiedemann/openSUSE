@@ -1,5 +1,5 @@
 <constraints>
-  <!-- All builds are fine with 9GB disk -->
+  <!-- All builds are fine with 10GB disk -->
   <overwrite>
     <conditions>
       <package>qemu</package>

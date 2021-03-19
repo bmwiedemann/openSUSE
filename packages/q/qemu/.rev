@@ -2375,4 +2375,44 @@ So VERY minor changes, but sounds like the gcc10 fix is wanted badly, so that's 
     <comment></comment>
     <requestid>876626</requestid>
   </revision>
+  <revision rev="199" vrev="19">
+    <srcmd5>9ed89da1d6559d4648074a9b79d9248a</srcmd5>
+    <version>unknown</version>
+    <time>1616168435</time>
+    <user>RBrownSUSE</user>
+    <comment>- Fix s390x &quot;mediated device is in use&quot; error condition
+  (bsc#1183634)
+  update-linux-headers-Include-const.h.patch
+  Update-linux-headers-to-5.11-rc2.patch
+  vfio-ccw-Connect-the-device-request-noti.patch
+- Fix DoS in e1000 emulated device (CVE-2021-20257 bsc#1182577)
+  e1000-fail-early-for-evil-descriptor.patch
+- Fix incorrect guest data in s390x PCI passthrough (bsc#1183372)
+  s390x-pci-restore-missing-Query-PCI-Func.patch
+- Include upstream patches designated as stable material and
+  reviewed for applicability to include here
+  lsilogic-Use-PCIDevice-exit-instead-of-D.patch
+  vhost-user-blk-fix-blkcfg-num_queues-end.patch
+- Fix potential privilege escalation in virtfs (CVE-2021-20181
+  bsc#1182137)
+  9pfs-Fully-restart-unreclaim-loop-CVE-20.patch
+- Fix OOB access in vmxnet3 emulation (CVE-2021-20203 bsc#1181639)
+  net-vmxnet3-validate-configuration-value.patch
+- Add #!ForceMultiversion to qemu.spec:
+  + As the spec file defines different Version: fiels for various
+    subpackages, we must instruct OBS to not ever reset the
+    checkin-counter, as it would by defalut on a version increase.
+    Resetting the version counter results in sub-packages reusing
+    their VERSION-RELEASE from the past (e.g. qemu-ipxe is version
+    1.0.0+, and upon checkin of a new qemu version, RELEASE is
+    reset to 1.1, thus again producing
+    qemu-ipxe-1.0.0+-1.1.noarch.rpm.
+- Fix GCC11 compiler issue in brotli (edk2) code (boo#1181922)
+  brotli-fix-actual-variable-array-paramet.patch
+- Tweak a few submodule descriptions and summaries
+- Fix a backward compatibility issue in ACPI data
+  i386-acpi-restore-device-paths-for-pre-5.patch
+</comment>
+    <requestid>879687</requestid>
+  </revision>
 </revisionlist>

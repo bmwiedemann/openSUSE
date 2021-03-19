@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # update_git.sh: script to manage package maintenance using a git-based
 # workflow. Commands are as follows:
 #   git2pkg (update package spec file and patches from git)
@@ -8,10 +10,22 @@
 #
 #   (default is git2pkg)
 
+# As an aid to bypassing issues with our multibuild package and obs (see code
+# below following the osc localrun of osc service localrun format_spec_file),
+# provide an automated way to checkin without needing to type so much
+if [ "$1" = "ci" ]; then
+    osc ci -f -n --noservice
+    exit
+fi
+
 #==============================================================================
 
 check_requirements() {
     RC=0
+    if [[ ! -e ./config.sh ]]; then
+        echo "ERROR: Missing config.sh configuration script"
+        RC=1
+    fi
     if [[ ! $(rpm -q git-core) ]]; then
         echo "ERROR: Missing dependency: git-core"
         RC=1
@@ -51,11 +65,9 @@ check_requirements
 
 #==============================================================================
 
-set -e
-
 source ./config.sh
 
-# If you're using LATEST, we assume you are an expert!
+# If you're using LATEST, we assume you are an expert so no basic help provided
 if [ "$GIT_UPSTREAM_COMMIT_ISH" != "LATEST" ]; then
     if [ "$1" = "" ]; then
         set -- git2pkg
@@ -91,7 +103,11 @@ check_requirements
 
 # Zero based numbering, so we subtract 1 here:
 if (( (REPO_COUNT * PATCH_RANGE) - 1 > 9999 )); then
-    FIVE_DIGIT_POTENTIAL=1
+    if [[ "$OVERRIDE_FIVE_DIGIT_NUMBERING" = "1" ]]; then
+        FIVE_DIGIT_POTENTIAL=0
+    else
+        FIVE_DIGIT_POTENTIAL=1
+    fi
 else
     FIVE_DIGIT_POTENTIAL=0
 fi
@@ -99,7 +115,7 @@ fi
 declare -A COMMIT_IDS_BY_SUBMODULE_PATH
 
 # Get version info from the packages' tarball - decode and do some checks
-BASE_RE="qemu-[[:digit:]]+(\.[[:digit:]]+){2}(-rc[[:digit:]])?"
+BASE_RE="qemu-[[:digit:]]+(\.[[:digit:]]+){2,3}(-rc[[:digit:]])?"
 EXTRA_RE="\+git\.[[:digit:]]+\.([[:xdigit:]]+)"
 SUFFIX_RE="\.tar\.xz"
 SIG_SUFFIX_RE="\.tar\.xz\.sig"
@@ -149,6 +165,10 @@ if [[ -e ${LOCAL_REPO_MAP[$i]}/.git/shallow ]]; then
         exit
     fi
 else
+#TODO: Is there a better way to do this (we don't want the old bundle commit id's relied on HERE for LATEST)
+    if [[ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]]; then
+        rm bundles.tar.xz
+     fi
     if [[ -e bundles.tar.xz ]]; then
         tar --extract --xz -f bundles.tar.xz -C $BUNDLE_DIR .
     else
@@ -234,7 +254,7 @@ for entry in ${ID_FILES[@]}; do
         fi
     done
     if [[ "$i" = "REPO_COUNT" ]]; then
-        echo "ERROR! BUNDLE SUBPROJECT NOT MENTIONED IN config.sh! Fix!"
+        echo "ERROR! BUNDLE SUBPROJECT $SUBDIR NOT MENTIONED IN config.sh! Fix!"
         exit
     fi
 
@@ -283,7 +303,7 @@ echo "Please wait..."
 (cd $GIT_DIR && git remote add upstream \
 $UPSTREAM_GIT_REPO &>/dev/null)
 (cd $GIT_DIR && git remote update upstream &>/dev/null)
-(cd $GIT_DIR && git reset --hard $NEW_COMMIT_ISH &>/dev/null)
+(cd $GIT_DIR && git reset --hard --recurse-submodules $NEW_COMMIT_ISH &>/dev/null)
 # As an alternative, we could add a --recurse-submodules to the checkout instead here as well, right?
 #UPSTREAM DOESNT DO THIS (time takes 17 minutes!):
 #        (cd $GIT_DIR && git submodule update --init --recursive &>/dev/null)
@@ -342,25 +362,18 @@ COMMIT_IDS_BY_SUBMODULE_PATH[SUPERPROJECT]=$NEW_COMMIT_ISH_FULL
 bundle2local 
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# REBASE frombundle patches USING COMMIT_IDS_BY_SUBMODULE, ALSO USING OLD ID'S STORED IN OLD BUNDLE 
+# REBASE $GIT_BRANCH's on latest COMMIT_IDS_FROM_SUBMODULE_PATH, after reseting branch to frombundle branch
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-mkdir -p $BUNDLE_DIR
-tar xJf bundles.tar.xz -C $BUNDLE_DIR
-# Now go through all the submodule local repos that are present and create a bundle file for the patches found there
 for (( i=0; i <$REPO_COUNT; i++ )); do
     if [[ -e $(readlink -f ${LOCAL_REPO_MAP[$i]}) ]]; then
         if $(git -C ${LOCAL_REPO_MAP[$i]} branch | grep -F "frombundle" >/dev/null); then
             SUBDIR=${PATCH_PATH_MAP[$i]}
-            GITREPO_COMMIT_ISH=($BUNDLE_DIR/$SUBDIR*.id)
-            if [[ $GITREPO_COMMIT_ISH  =~ .*(.{40})[.]id ]]; then
-                GITREPO_COMMIT_ISH=${BASH_REMATCH[1]}
-            fi
             git -C ${LOCAL_REPO_MAP[$i]} checkout -B $GIT_BRANCH frombundle
             if [[ "$SUBDIR" = "" ]]; then
                 SUBDIR=SUPERPROJECT
             fi
-            if ! $(git -C ${LOCAL_REPO_MAP[$i]} rebase $GITREPO_COMMIT_ISH  >/dev/null); then
+            if ! $(git -C ${LOCAL_REPO_MAP[$i]} rebase ${COMMIT_IDS_BY_SUBMODULE_PATH[$SUBDIR]} >/dev/null); then
                 echo "Rebase of ${LOCAL_REPO_MAP[$i]}, branch $GIT_BRANCH needs manual help"
                 REBASE_FAILS="${LOCAL_REPO_MAP[$i]} $REBASE_FAILS"
             fi
@@ -665,17 +678,22 @@ rm -rf $BUNDLE_DIR
                     fi
                 done
             elif [ "$line" = "PATCH_EXEC" ]; then
+                unset PREV_S
                 for i in [0-9][0-9][0-9][0-9]*-*.patch; do
                     S=$(grep "^Include-If: " $i) || true
                     NUM=${i%%-*}
-                    if [ "$S" != "" ]; then
-                        echo "${S:12}"
-                        echo "%patch$NUM -p1"
+                    if [ "$PREV_S" != "" -a "$PREV_S" != "$S" ]; then
                         echo "%endif"
-                    else
-                        echo "%patch$NUM -p1"
                     fi
+                    if [ "$S" != "" -a "$S" != "$PREV_S" ]; then
+                        echo "${S:12}"
+                    fi
+                    echo "%patch$NUM -p1"
+                    PREV_S=$S
                 done
+                if [ "$PREV_S" != "" ]; then
+                    echo "%endif"
+                fi
             elif [ "$line" = "INSERT_VERSIONING" ]; then
                 echo "%define qemuver $QEMU_VERSION$VERSION_EXTRA"
                 echo "%define srcver  $SOURCE_VERSION$VERSION_EXTRA"
@@ -733,12 +751,13 @@ rm -rf $BUNDLE_DIR
 rm -rf $CMP_DIR
 rm -rf checkdir
 
-osc service localrun format_spec_file
-# First, make the results of the older format_spec_file look like what I believe is the intended output
-# And then change THE POSSIBLY BROKEN OUTPUT from the new format_spec_file look like what I
-# believe is the intended output
-sed -i 's/^# spec file for package qemu$/# spec file for package qemu%{name_suffix}/g' qemu.spec
-sed -i 's/^# spec file for package qemu-linux-user$/# spec file for package qemu%{name_suffix}/g' qemu.spec
+osc service localrun format_spec_file || true
+# Repair what I feel is incorrect modification of the package name in the header.
+# Be aware that when checking into build service you should use --noservice, since we've
+# already run this and --noservice will prevent the modification from happening at checkin
+# time.
+sed -i 's/^# spec file for package qemu%{name_suffix}$/# spec file for package qemu/g' qemu.spec
+sed -i 's/^# spec file for package qemu-linux-user$/# spec file for package qemu/g' qemu.spec
 }
 
 #==============================================================================
@@ -796,14 +815,13 @@ if [[ ! -e $(readlink -f ${LOCAL_REPO_MAP[0]}) ]]; then
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         echo "Got an affirmative answer, proceeding..."
         setup_common_vars
-        # TODO: The following doesn't really do what we need (we adjust later) FIX!!!
-        # git clone --depth 1 -b $GIT_BRANCH --single-branch $PACKAGE_MAIN_GIT_REPO ${LOCAL_REPO_MAP[0]}
         git -c init.defaultBranch=$GIT_BRANCH init ${LOCAL_REPO_MAP[0]}
         git -C ${LOCAL_REPO_MAP[0]} remote add origin $PACKAGE_MAIN_GIT_REPO &>/dev/null
         git -C ${LOCAL_REPO_MAP[0]} fetch origin +refs/tags/initial:refs/tags/initial --no-tags
-        git -C ${LOCAL_REPO_MAP[0]} reset --hard initial
+        git -C ${LOCAL_REPO_MAP[0]} reset --hard --recurse-submodules initial
+#TODO: The next is not actually used - get rid of when we decide for sure it won't get used
         GIT_UPSTREAM_COMMIT=$(git -C ${LOCAL_REPO_MAP[0]} ls-remote origin |grep -F "$GIT_UPSTREAM_COMMIT_ISH^{}"|awk '{print $1}')
-        # Here we use *COMMIT_ISH, not *_COMMIT - is that an issue?
+# Here we've changed to use *COMMIT_ISH, not *_COMMIT - is that an issue?
         git -C ${LOCAL_REPO_MAP[0]} fetch --depth=1 origin +refs/tags/$GIT_UPSTREAM_COMMIT_ISH:refs/tags/$GIT_UPSTREAM_COMMIT_ISH --no-tags
         git -C ${LOCAL_REPO_MAP[0]} remote add upstream $UPSTREAM_GIT_REPO &>/dev/null
         bundle2local
@@ -826,10 +844,8 @@ if [[ ! -e $(readlink -f ${LOCAL_REPO_MAP[0]}) ]]; then
     fi
         exit
 fi
-# There are some req's on needing a recent git, and a recent osc (double chk the osc part - I guess it's related to the osc service )
-
-# get the current state of the git superproject
-# TODO: This sends output to stdout which we don't want to see
+# TODO: Perhaps useful: get the current state of the git superproject
+# The following sends output to stdout which we don't want to see
 #git -C ${LOCAL_REPO_MAP[0]} status --untracked-files=no --branch --porcelain=2 \
 #    | awk '{print "var"NR"="$3}'
 # $var1 is the current commit
@@ -837,11 +853,16 @@ fi
 # $var3 is the current upstream branch (if set), as in eg 'origin/opensuse-5.0'
 # $var4 is not of use to us
 
+if [ "$GIT_UPSTREAM_COMMIT_ISH" != "LATEST" ]; then
+    if [ ! "$GIT_UPSTREAM_COMMIT_ISH" = "v$OLD_SOURCE_VERSION_AND_EXTRA" ]; then
+        echo "Tarball name (which we decode) doesn't correspond to the \$GIT_UPSTREAM_COMMIT_ISH in config.sh"
+       exit
+    fi
+    setup_common_vars
+fi
 # TODO: What checks should be different between LATEST and non-LATEST?
-# If we don't actually patch from the submodule repo, we shouldn't care about what's in the local one
-# Does non-LATEST really require master? (indeed - get rid of use or need of master as much as possible)
-echo "WARNING: Script using local git repos. Some operations may be time consuming..."
-# TODO: Most of these checks are not necessary
+echo "ALERT: Script using local git repos. Some operations may be time consuming..."
+# TODO: Some of these checks are perhaps not necessary
 for (( i=0; i <$REPO_COUNT; i++ )); do
     if [[ -e $(readlink -f ${LOCAL_REPO_MAP[$i]}) ]]; then
         if [[ -e ${LOCAL_REPO_MAP[$i]}/.git/shallow ]]; then
@@ -853,7 +874,7 @@ for (( i=0; i <$REPO_COUNT; i++ )); do
             echo "ERROR! Rebase appears to be in progress in ${LOCAL_REPO_MAP[$i]}. Please resolve"
             exit
         fi
-        # !! Does this presume the branch as indicated in config is the current branch? (I believe that's been my modus operandi to date, so perhaps THAT should be enforced at this point?)
+        # TODO: We've not even verified what branch we're on here - so this is a bit misguided!
         if ! git -C ${LOCAL_REPO_MAP[$i]} submodule update --init --recursive &> /dev/null; then
             echo "Please clean up state of local repo ${LOCAL_REPO_MAP[$i]} before using script"
             echo "(ensure git submodule update --init --recursive is successful)"
@@ -864,15 +885,34 @@ for (( i=0; i <$REPO_COUNT; i++ )); do
             echo "(ensure git status --porcelain produces no output)"
             exit
         fi
-        if ! git -C ${LOCAL_REPO_MAP[$i]} checkout $GIT_BRANCH --recurse-submodules -f &> /dev/null; then
-            echo "Please clean up state of local repo ${LOCAL_REPO_MAP[$i]} before using script"
-            echo "(cannot check out $GIT_BRANCH, incl. it's submodules)"
-            exit
+	# TODO: See about doing the following better (also see what needs to happen for LATEST)
+        if [ "$GIT_UPSTREAM_COMMIT_ISH" != "LATEST" ]; then
+            if $(git -C ${LOCAL_REPO_MAP[$i]} branch --remote | grep -F "origin/$GIT_BRANCH" >/dev/null); then
+                if ! $(git -C ${LOCAL_REPO_MAP[$i]} branch | grep -F "$GIT_BRANCH" >/dev/null); then
+                    echo "Please clean up state of local repo ${LOCAL_REPO_MAP[$i]} before using script"
+                    echo "(cannot find branch $GIT_BRANCH, please create a tracking branch of remote origin/$GIT_BRANCH)"
+                    exit
+                fi
+                if ! git -C ${LOCAL_REPO_MAP[$i]} checkout $GIT_BRANCH --recurse-submodules -f &> /dev/null; then
+                    echo "Please clean up state of local repo ${LOCAL_REPO_MAP[$i]} before using script"
+                    echo "(cannot check out $GIT_BRANCH, incl. it's submodules)"
+                    exit
+                fi
+            fi
+        fi
+        # The following is unfortunately needed due to an improper removal of roms/openhackware
+        # in the qemu v5.0.0 timeframe. After checking out a new $GIT_BRANCH, check for
+        # whether commit b2ce76a0730e48e60633a698cd876d55917ac9bc is in ancestry and
+        # if so, make sure that roms/openhackware is gone, so we have a clean local repo dir
+        if [[ "$i" = "0" ]]; then
+            if $(git -C ${LOCAL_REPO_MAP[$i]} merge-base --is-ancestor b2ce76a0730e48e60633a698cd876d55917ac9bc HEAD); then
+               (cd ${LOCAL_REPO_MAP[$i]} && rm -rf roms/openhackware/ >/dev/null)
+            fi
         fi
         # This does additional setup now that we've possibly grabbed additional submodules
         if ! git -C ${LOCAL_REPO_MAP[$i]} submodule update --init --recursive &> /dev/null; then
             echo "Please clean up state of local repo ${LOCAL_REPO_MAP[$i]} before using script"
-            echo "(cannot init and update $GIT_BRANCH branch submodules)"
+            echo "(cannot init and update current branch submodules)"
             exit
         fi
         if [ "$(git -C ${LOCAL_REPO_MAP[$i]} status --porcelain)" ]; then
@@ -950,12 +990,7 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
     echo "SUCCESS"
     tail -9 /tmp/latest.log
 else # not LATEST
-    if [ ! "$GIT_UPSTREAM_COMMIT_ISH" = "v$OLD_SOURCE_VERSION_AND_EXTRA" ]; then
-        echo "Tarball name (which we decode) doesn't correspond to the \$GIT_UPSTREAM_COMMIT_ISH in config.sh"
-       exit
-    fi
-    git -C ${LOCAL_REPO_MAP[0]} checkout $GIT_UPSTREAM_COMMIT_ISH --recurse-submodules -f &> /dev/null
-    setup_common_vars
+#NOTNEEDED?    git -C ${LOCAL_REPO_MAP[0]} checkout $GIT_UPSTREAM_COMMIT_ISH --recurse-submodules -f &> /dev/null
     NEW_COMMIT_ISH=
     WRITE_LOG=1
     case  $1 in

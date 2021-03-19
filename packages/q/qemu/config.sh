@@ -37,6 +37,9 @@ NUMBERED_PATCHES=0
 
 PATCH_RANGE=1000
 
+# For compatibility with old packages, we include this option
+OVERRIDE_FIVE_DIGIT_NUMBERING=0
+
 # This array tracks all git submodule paths within the superproject (1st entry)
 PATCH_PATH_MAP=(
     ""

@@ -2,7 +2,7 @@ From: Halil Pasic <pasic@linux.ibm.com>
 Date: Thu, 18 Feb 2021 04:40:59 +0100
 Subject: hw/s390x: fix build for virtio-9p-ccw
 
-Git-commit: 0000000000000000000000000000000000000000
+Git-commit: 24056cbfd577fd219d55c03f69df66e6351456e7
 References: bsc#1182496
 
 Commit  2c44220d05 ("meson: convert hw/arch*"), which migrated the old

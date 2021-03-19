@@ -1,5 +1,5 @@
 #
-# spec file for package qemu%{name_suffix}
+# spec file for package qemu
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -17,6 +17,8 @@
 
 
 # !! IMPORTANT !! See README.PACKAGING before modifying package in any way
+
+#!ForceMultiversion
 
 %define _buildshell /bin/bash
 
@@ -543,7 +545,8 @@ Release:        0
 %{qemu_module_conflicts}
 
 %description block-nfs
-This package contains a module for directly accessing nfs based image files.
+This package contains a module for directly accessing nfs based image files
+for QEMU.
 
 %if 0%{?with_rbd}
 %package block-rbd
@@ -554,7 +557,8 @@ Release:        0
 %{qemu_module_conflicts}
 
 %description block-rbd
-This package contains a module for accessing ceph (rbd,rados) image files.
+This package contains a module for accessing ceph (rbd,rados) image files
+for QEMU.
 %endif
 
 %package block-ssh
@@ -577,7 +581,7 @@ Provides:       %name:%_datadir/%name/forsplits/00
 %{qemu_module_conflicts}
 
 %description chardev-baum
-This package contains a module for baum braille chardev support.
+This package contains a module for baum braille chardev support for QEMU.
 
 %package chardev-spice
 Summary:        Spice vmc and port chardev support for QEMU
@@ -589,7 +593,7 @@ Requires:       qemu-ui-spice-core
 %{qemu_module_conflicts}
 
 %description chardev-spice
-This package contains a module for Spice chardev support.
+This package contains a module for Spice chardev support for QEMU.
 
 %package hw-display-qxl
 Summary:        QXL display support for QEMU
@@ -601,7 +605,7 @@ Requires:       qemu-ui-spice-core
 %{qemu_module_conflicts}
 
 %description hw-display-qxl
-This package contains a module for QXL display support.
+This package contains a module for QXL display support for QEMU.
 
 %package hw-display-virtio-gpu
 Summary:        Virtio GPU display support for QEMU
@@ -612,10 +616,10 @@ Provides:       %name:%_datadir/%name/forsplits/04
 %{qemu_module_conflicts}
 
 %description hw-display-virtio-gpu
-This package contains a module for Virtio GPU display support.
+This package contains a module for Virtio GPU display support for QEMU.
 
 %package hw-display-virtio-gpu-pci
-Summary:        Virtio-gpu driver for QEMU
+Summary:        Virtio-gpu pci device for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
@@ -624,10 +628,10 @@ Provides:       %name:%_datadir/%name/forsplits/11
 %{qemu_module_conflicts}
 
 %description hw-display-virtio-gpu-pci
-This package contains a virtio gpu driver for QEMU
+This package contains a module providing the virtio gpu pci device for QEMU.
 
 %package hw-display-virtio-vga
-Summary:        Virtio vga driver for QEMU
+Summary:        Virtio vga device for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
@@ -635,10 +639,10 @@ Provides:       %name:%_datadir/%name/forsplits/12
 %{qemu_module_conflicts}
 
 %description hw-display-virtio-vga
-This package contains a virtio vga driver for QEMU
+This package contains a module providing the virtio vga device for QEMU.
 
 %package hw-s390x-virtio-gpu-ccw
-Summary:        S390x virtio-gpu driver for QEMU
+Summary:        S390x virtio-gpu ccw device for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
@@ -647,7 +651,8 @@ Provides:       %name:%_datadir/%name/forsplits/13
 %{qemu_module_conflicts}
 
 %description hw-s390x-virtio-gpu-ccw
-This package contains an s390x virtio gpu driver for QEMU
+This package contains a module providing the s390x virtio gpu ccw device for
+QEMU.
 
 %package hw-usb-redirect
 Summary:        USB redirection support for QEMU
@@ -658,7 +663,7 @@ Provides:       %name:%_datadir/%name/forsplits/02
 %{qemu_module_conflicts}
 
 %description hw-usb-redirect
-This package contains a module for USB redirection support.
+This package contains a module for USB redirection support for QEMU.
 
 %package hw-usb-smartcard
 Summary:        USB smartcard support for QEMU
@@ -669,7 +674,7 @@ Provides:       %name:%_datadir/%name/forsplits/03
 %{qemu_module_conflicts}
 
 %description hw-usb-smartcard
-This package contains a modules for USB smartcard support.
+This package contains a modules for USB smartcard support for QEMU.
 
 %package ui-curses
 Summary:        Curses based UI support for QEMU
@@ -737,7 +742,8 @@ Release:        0
 %{qemu_module_conflicts}
 
 %description vhost-user-gpu
-This package contains a vhost user mode virtio-gpu 2D/3D rendering backend for QEMU
+This package contains a vhost user mode virtio-gpu 2D/3D rendering backend for
+QEMU.
 
 %package tools
 Summary:        Tools for QEMU
@@ -794,8 +800,8 @@ Release:        0
 BuildArch:      noarch
 
 %description microvm
-This package provides minimal x86 firmware for booting certain guests.
-qboot provides the minimum resources needed to boot PVH and bzImages.
+This package provides minimal x86 firmware for booting certain guests under
+QEMU. qboot provides the minimum resources needed to boot PVH and bzImages.
 bios-microvm, created from a minimal seabios configuration, provides slightly
 wider support than qboot, but still focuses on quick boot up.
 
@@ -822,7 +828,7 @@ Conflicts:      %name < 1.6.0
 %description vgabios
 VGABIOS provides the video ROM BIOSes for the following variants of VGA
 emulated devices: Std VGA, QXL, Cirrus CLGD 5446 and VMware emulated
-video card.
+video card. For use with QEMU.
 
 %package sgabios
 Summary:        Serial Graphics Adapter BIOS for QEMU
@@ -835,7 +841,7 @@ Conflicts:      %name < 1.6.0
 %description sgabios
 The Google Serial Graphics Adapter BIOS or SGABIOS provides a means for legacy
 x86 software to communicate with an attached serial console as if a video card
-were attached.
+were attached. For use with QEMU.
 
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs

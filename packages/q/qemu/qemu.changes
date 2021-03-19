@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Mar 17 13:07:33 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Fix s390x "mediated device is in use" error condition
+  (bsc#1183634)
+  update-linux-headers-Include-const.h.patch
+  Update-linux-headers-to-5.11-rc2.patch
+  vfio-ccw-Connect-the-device-request-noti.patch
+
+-------------------------------------------------------------------
+Tue Mar 16 22:33:26 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Fix DoS in e1000 emulated device (CVE-2021-20257 bsc#1182577)
+  e1000-fail-early-for-evil-descriptor.patch
+
+-------------------------------------------------------------------
+Mon Mar 15 17:52:47 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Fix incorrect guest data in s390x PCI passthrough (bsc#1183372)
+  s390x-pci-restore-missing-Query-PCI-Func.patch
+
+-------------------------------------------------------------------
+Fri Mar 12 20:00:30 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Include upstream patches designated as stable material and
+  reviewed for applicability to include here
+  lsilogic-Use-PCIDevice-exit-instead-of-D.patch
+  vhost-user-blk-fix-blkcfg-num_queues-end.patch
+- Fix potential privilege escalation in virtfs (CVE-2021-20181
+  bsc#1182137)
+  9pfs-Fully-restart-unreclaim-loop-CVE-20.patch
+- Fix OOB access in vmxnet3 emulation (CVE-2021-20203 bsc#1181639)
+  net-vmxnet3-validate-configuration-value.patch
+
+-------------------------------------------------------------------
+Fri Mar 12 19:22:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add #!ForceMultiversion to qemu.spec:
+  + As the spec file defines different Version: fiels for various
+    subpackages, we must instruct OBS to not ever reset the
+    checkin-counter, as it would by defalut on a version increase.
+    Resetting the version counter results in sub-packages reusing
+    their VERSION-RELEASE from the past (e.g. qemu-ipxe is version
+    1.0.0+, and upon checkin of a new qemu version, RELEASE is
+    reset to 1.1, thus again producing
+    qemu-ipxe-1.0.0+-1.1.noarch.rpm.
+
+-------------------------------------------------------------------
+Fri Mar  5 21:35:22 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Fix GCC11 compiler issue in brotli (edk2) code (boo#1181922)
+  brotli-fix-actual-variable-array-paramet.patch
+- Tweak a few submodule descriptions and summaries
+- Fix a backward compatibility issue in ACPI data
+  i386-acpi-restore-device-paths-for-pre-5.patch
+
+-------------------------------------------------------------------
 Wed Mar  3 17:18:39 UTC 2021 - Bruce Rogers <brogers@suse.com>
 
 - Add patch from IBM to improve modularization situation on s390

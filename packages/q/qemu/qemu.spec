@@ -1,5 +1,5 @@
 #
-# spec file for package qemu-linux-user
+# spec file for package qemu
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -17,6 +17,8 @@
 
 
 # !! IMPORTANT !! See README.PACKAGING before modifying package in any way
+
+#!ForceMultiversion
 
 %define _buildshell /bin/bash
 
@@ -143,66 +145,76 @@ Patch00009:     hw-timer-slavio_timer-Allow-64-bit-acces.patch
 Patch00010:     target-arm-Fix-MTE0_ACTIVE.patch
 Patch00011:     target-arm-Don-t-decode-insns-in-the-XSc.patch
 Patch00012:     hw-net-lan9118-Fix-RX-Status-FIFO-PEEK-v.patch
-Patch00013:     target-arm-Introduce-PREDDESC-field-defi.patch
-Patch00014:     target-arm-Update-PFIRST-PNEXT-for-pred_.patch
-Patch00015:     target-arm-Update-ZIP-UZP-TRN-for-pred_d.patch
-Patch00016:     target-arm-Update-REV-PUNPK-for-pred_des.patch
-Patch00017:     net-Fix-handling-of-id-in-netdev_add-and.patch
-Patch00018:     block-Separate-blk_is_writable-and-blk_s.patch
-Patch00019:     hw-intc-arm_gic-Fix-interrupt-ID-in-GICD.patch
-Patch00020:     virtio-move-use-disabled-flag-property-t.patch
-Patch00021:     qemu-nbd-Use-SOMAXCONN-for-socket-listen.patch
-Patch00022:     qemu-storage-daemon-Enable-object-add.patch
-Patch00023:     blockjob-Fix-crash-with-IOthread-when-bl.patch
-Patch00024:     monitor-Fix-assertion-failure-on-shutdow.patch
-Patch00025:     spice-app-avoid-crash-when-core-spice-mo.patch
-Patch00026:     hw-s390x-fix-build-for-virtio-9p-ccw.patch
-Patch00027:     hw-s390x-modularize-virtio-gpu-ccw.patch
-Patch00028:     XXX-dont-dump-core-on-sigabort.patch
-Patch00029:     qemu-binfmt-conf-Modify-default-path.patch
-Patch00030:     qemu-cvs-gettimeofday.patch
-Patch00031:     qemu-cvs-ioctl_debug.patch
-Patch00032:     qemu-cvs-ioctl_nodirection.patch
-Patch00033:     linux-user-add-binfmt-wrapper-for-argv-0.patch
-Patch00034:     PPC-KVM-Disable-mmu-notifier-check.patch
-Patch00035:     linux-user-binfmt-support-host-binaries.patch
-Patch00036:     linux-user-Fake-proc-cpuinfo.patch
-Patch00037:     linux-user-use-target_ulong.patch
-Patch00038:     Make-char-muxer-more-robust-wrt-small-FI.patch
-Patch00039:     linux-user-lseek-explicitly-cast-non-set.patch
-Patch00040:     AIO-Reduce-number-of-threads-for-32bit-h.patch
-Patch00041:     xen_disk-Add-suse-specific-flush-disable.patch
-Patch00042:     qemu-bridge-helper-reduce-security-profi.patch
-Patch00043:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
-Patch00044:     roms-Makefile-pass-a-packaging-timestamp.patch
-Patch00045:     Raise-soft-address-space-limit-to-hard-l.patch
-Patch00046:     increase-x86_64-physical-bits-to-42.patch
-Patch00047:     i8254-Fix-migration-from-SLE11-SP2.patch
-Patch00048:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
-Patch00049:     Make-installed-scripts-explicitly-python.patch
-Patch00050:     hw-smbios-handle-both-file-formats-regar.patch
-Patch00051:     xen-add-block-resize-support-for-xen-dis.patch
-Patch00052:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
-Patch00053:     tests-Fix-block-tests-to-be-compatible-w.patch
-Patch00054:     xen-ignore-live-parameter-from-xen-save-.patch
-Patch00055:     tests-change-error-message-in-test-162.patch
-Patch00056:     hw-intc-exynos4210_gic-provide-more-room.patch
-Patch00057:     configure-only-populate-roms-if-softmmu.patch
-Patch00058:     pc-bios-s390-ccw-net-avoid-warning-about.patch
-Patch00059:     roms-change-cross-compiler-naming-to-be-.patch
-Patch00060:     test-add-mapping-from-arch-of-i686-to-qe.patch
-Patch00061:     configure-remove-pkgversion-from-CONFIG_.patch
-Patch00062:     docs-add-SUSE-support-statements-to-html.patch
-Patch00063:     s390x-Fix-stringop-truncation-issue-repo.patch
-Patch00064:     Revert-qht-constify-qht_statistics_init.patch
-Patch00065:     qht-Revert-some-constification-in-qht.c.patch
-Patch00066:     meson-install-ivshmem-client-and-ivshmem.patch
-Patch00067:     Revert-roms-efirom-tests-uefi-test-tools.patch
-Patch00068:     Makefile-Don-t-check-pc-bios-as-pre-requ.patch
-Patch00069:     roms-Makefile-add-cross-file-to-qboot-me.patch
-Patch00070:     usb-Help-compiler-out-to-avoid-a-warning.patch
-Patch00071:     module-for-virtio-gpu-pre-load-module-to.patch
-Patch00072:     qom-handle-case-of-chardev-spice-module-.patch
+Patch00013:     9pfs-Fully-restart-unreclaim-loop-CVE-20.patch
+Patch00014:     target-arm-Introduce-PREDDESC-field-defi.patch
+Patch00015:     target-arm-Update-PFIRST-PNEXT-for-pred_.patch
+Patch00016:     target-arm-Update-ZIP-UZP-TRN-for-pred_d.patch
+Patch00017:     target-arm-Update-REV-PUNPK-for-pred_des.patch
+Patch00018:     update-linux-headers-Include-const.h.patch
+Patch00019:     Update-linux-headers-to-5.11-rc2.patch
+Patch00020:     vfio-ccw-Connect-the-device-request-noti.patch
+Patch00021:     net-Fix-handling-of-id-in-netdev_add-and.patch
+Patch00022:     block-Separate-blk_is_writable-and-blk_s.patch
+Patch00023:     hw-intc-arm_gic-Fix-interrupt-ID-in-GICD.patch
+Patch00024:     virtio-move-use-disabled-flag-property-t.patch
+Patch00025:     qemu-nbd-Use-SOMAXCONN-for-socket-listen.patch
+Patch00026:     qemu-storage-daemon-Enable-object-add.patch
+Patch00027:     blockjob-Fix-crash-with-IOthread-when-bl.patch
+Patch00028:     monitor-Fix-assertion-failure-on-shutdow.patch
+Patch00029:     spice-app-avoid-crash-when-core-spice-mo.patch
+Patch00030:     i386-acpi-restore-device-paths-for-pre-5.patch
+Patch00031:     hw-s390x-fix-build-for-virtio-9p-ccw.patch
+Patch00032:     s390x-pci-restore-missing-Query-PCI-Func.patch
+Patch00033:     lsilogic-Use-PCIDevice-exit-instead-of-D.patch
+Patch00034:     vhost-user-blk-fix-blkcfg-num_queues-end.patch
+Patch00035:     e1000-fail-early-for-evil-descriptor.patch
+Patch00036:     hw-s390x-modularize-virtio-gpu-ccw.patch
+Patch00037:     net-vmxnet3-validate-configuration-value.patch
+Patch00038:     XXX-dont-dump-core-on-sigabort.patch
+Patch00039:     qemu-binfmt-conf-Modify-default-path.patch
+Patch00040:     qemu-cvs-gettimeofday.patch
+Patch00041:     qemu-cvs-ioctl_debug.patch
+Patch00042:     qemu-cvs-ioctl_nodirection.patch
+Patch00043:     linux-user-add-binfmt-wrapper-for-argv-0.patch
+Patch00044:     PPC-KVM-Disable-mmu-notifier-check.patch
+Patch00045:     linux-user-binfmt-support-host-binaries.patch
+Patch00046:     linux-user-Fake-proc-cpuinfo.patch
+Patch00047:     linux-user-use-target_ulong.patch
+Patch00048:     Make-char-muxer-more-robust-wrt-small-FI.patch
+Patch00049:     linux-user-lseek-explicitly-cast-non-set.patch
+Patch00050:     AIO-Reduce-number-of-threads-for-32bit-h.patch
+Patch00051:     xen_disk-Add-suse-specific-flush-disable.patch
+Patch00052:     qemu-bridge-helper-reduce-security-profi.patch
+Patch00053:     qemu-binfmt-conf-use-qemu-ARCH-binfmt.patch
+Patch00054:     roms-Makefile-pass-a-packaging-timestamp.patch
+Patch00055:     Raise-soft-address-space-limit-to-hard-l.patch
+Patch00056:     increase-x86_64-physical-bits-to-42.patch
+Patch00057:     i8254-Fix-migration-from-SLE11-SP2.patch
+Patch00058:     acpi_piix4-Fix-migration-from-SLE11-SP2.patch
+Patch00059:     Make-installed-scripts-explicitly-python.patch
+Patch00060:     hw-smbios-handle-both-file-formats-regar.patch
+Patch00061:     xen-add-block-resize-support-for-xen-dis.patch
+Patch00062:     tests-qemu-iotests-Triple-timeout-of-i-o.patch
+Patch00063:     tests-Fix-block-tests-to-be-compatible-w.patch
+Patch00064:     xen-ignore-live-parameter-from-xen-save-.patch
+Patch00065:     tests-change-error-message-in-test-162.patch
+Patch00066:     hw-intc-exynos4210_gic-provide-more-room.patch
+Patch00067:     configure-only-populate-roms-if-softmmu.patch
+Patch00068:     pc-bios-s390-ccw-net-avoid-warning-about.patch
+Patch00069:     roms-change-cross-compiler-naming-to-be-.patch
+Patch00070:     test-add-mapping-from-arch-of-i686-to-qe.patch
+Patch00071:     configure-remove-pkgversion-from-CONFIG_.patch
+Patch00072:     docs-add-SUSE-support-statements-to-html.patch
+Patch00073:     s390x-Fix-stringop-truncation-issue-repo.patch
+Patch00074:     Revert-qht-constify-qht_statistics_init.patch
+Patch00075:     qht-Revert-some-constification-in-qht.c.patch
+Patch00076:     meson-install-ivshmem-client-and-ivshmem.patch
+Patch00077:     Revert-roms-efirom-tests-uefi-test-tools.patch
+Patch00078:     Makefile-Don-t-check-pc-bios-as-pre-requ.patch
+Patch00079:     roms-Makefile-add-cross-file-to-qboot-me.patch
+Patch00080:     usb-Help-compiler-out-to-avoid-a-warning.patch
+Patch00081:     module-for-virtio-gpu-pre-load-module-to.patch
+Patch00082:     qom-handle-case-of-chardev-spice-module-.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -220,6 +232,8 @@ Patch03001:     roms-sgabios-Fix-csum8-to-be-built-by-ho.patch
 Patch08000:     Make-keycode-gen-output-reproducible-use.patch
 # Patches applied in roms/qboot/:
 Patch11000:     qboot-add-cross.ini-file-to-handle-aarch.patch
+# Patches applied in roms/edk2/BaseTools/Source/C/BrotliCompress/brotli/:
+Patch27000:     brotli-fix-actual-variable-array-paramet.patch
 
 # Please do not add patches manually here.
 
@@ -636,7 +650,8 @@ Release:        0
 %{qemu_module_conflicts}
 
 %description block-nfs
-This package contains a module for directly accessing nfs based image files.
+This package contains a module for directly accessing nfs based image files
+for QEMU.
 
 %if 0%{?with_rbd}
 %package block-rbd
@@ -647,7 +662,8 @@ Release:        0
 %{qemu_module_conflicts}
 
 %description block-rbd
-This package contains a module for accessing ceph (rbd,rados) image files.
+This package contains a module for accessing ceph (rbd,rados) image files
+for QEMU.
 %endif
 
 %package block-ssh
@@ -670,7 +686,7 @@ Provides:       %name:%_datadir/%name/forsplits/00
 %{qemu_module_conflicts}
 
 %description chardev-baum
-This package contains a module for baum braille chardev support.
+This package contains a module for baum braille chardev support for QEMU.
 
 %package chardev-spice
 Summary:        Spice vmc and port chardev support for QEMU
@@ -682,7 +698,7 @@ Requires:       qemu-ui-spice-core
 %{qemu_module_conflicts}
 
 %description chardev-spice
-This package contains a module for Spice chardev support.
+This package contains a module for Spice chardev support for QEMU.
 
 %package hw-display-qxl
 Summary:        QXL display support for QEMU
@@ -694,7 +710,7 @@ Requires:       qemu-ui-spice-core
 %{qemu_module_conflicts}
 
 %description hw-display-qxl
-This package contains a module for QXL display support.
+This package contains a module for QXL display support for QEMU.
 
 %package hw-display-virtio-gpu
 Summary:        Virtio GPU display support for QEMU
@@ -705,10 +721,10 @@ Provides:       %name:%_datadir/%name/forsplits/04
 %{qemu_module_conflicts}
 
 %description hw-display-virtio-gpu
-This package contains a module for Virtio GPU display support.
+This package contains a module for Virtio GPU display support for QEMU.
 
 %package hw-display-virtio-gpu-pci
-Summary:        Virtio-gpu driver for QEMU
+Summary:        Virtio-gpu pci device for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
@@ -717,10 +733,10 @@ Provides:       %name:%_datadir/%name/forsplits/11
 %{qemu_module_conflicts}
 
 %description hw-display-virtio-gpu-pci
-This package contains a virtio gpu driver for QEMU
+This package contains a module providing the virtio gpu pci device for QEMU.
 
 %package hw-display-virtio-vga
-Summary:        Virtio vga driver for QEMU
+Summary:        Virtio vga device for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
@@ -728,10 +744,10 @@ Provides:       %name:%_datadir/%name/forsplits/12
 %{qemu_module_conflicts}
 
 %description hw-display-virtio-vga
-This package contains a virtio vga driver for QEMU
+This package contains a module providing the virtio vga device for QEMU.
 
 %package hw-s390x-virtio-gpu-ccw
-Summary:        S390x virtio-gpu driver for QEMU
+Summary:        S390x virtio-gpu ccw device for QEMU
 Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
@@ -740,7 +756,8 @@ Provides:       %name:%_datadir/%name/forsplits/13
 %{qemu_module_conflicts}
 
 %description hw-s390x-virtio-gpu-ccw
-This package contains an s390x virtio gpu driver for QEMU
+This package contains a module providing the s390x virtio gpu ccw device for
+QEMU.
 
 %package hw-usb-redirect
 Summary:        USB redirection support for QEMU
@@ -751,7 +768,7 @@ Provides:       %name:%_datadir/%name/forsplits/02
 %{qemu_module_conflicts}
 
 %description hw-usb-redirect
-This package contains a module for USB redirection support.
+This package contains a module for USB redirection support for QEMU.
 
 %package hw-usb-smartcard
 Summary:        USB smartcard support for QEMU
@@ -762,7 +779,7 @@ Provides:       %name:%_datadir/%name/forsplits/03
 %{qemu_module_conflicts}
 
 %description hw-usb-smartcard
-This package contains a modules for USB smartcard support.
+This package contains a modules for USB smartcard support for QEMU.
 
 %package ui-curses
 Summary:        Curses based UI support for QEMU
@@ -830,7 +847,8 @@ Release:        0
 %{qemu_module_conflicts}
 
 %description vhost-user-gpu
-This package contains a vhost user mode virtio-gpu 2D/3D rendering backend for QEMU
+This package contains a vhost user mode virtio-gpu 2D/3D rendering backend for
+QEMU.
 
 %package tools
 Summary:        Tools for QEMU
@@ -887,8 +905,8 @@ Release:        0
 BuildArch:      noarch
 
 %description microvm
-This package provides minimal x86 firmware for booting certain guests.
-qboot provides the minimum resources needed to boot PVH and bzImages.
+This package provides minimal x86 firmware for booting certain guests under
+QEMU. qboot provides the minimum resources needed to boot PVH and bzImages.
 bios-microvm, created from a minimal seabios configuration, provides slightly
 wider support than qboot, but still focuses on quick boot up.
 
@@ -915,7 +933,7 @@ Conflicts:      %name < 1.6.0
 %description vgabios
 VGABIOS provides the video ROM BIOSes for the following variants of VGA
 emulated devices: Std VGA, QXL, Cirrus CLGD 5446 and VMware emulated
-video card.
+video card. For use with QEMU.
 
 %package sgabios
 Summary:        Serial Graphics Adapter BIOS for QEMU
@@ -928,7 +946,7 @@ Conflicts:      %name < 1.6.0
 %description sgabios
 The Google Serial Graphics Adapter BIOS or SGABIOS provides a means for legacy
 x86 software to communicate with an attached serial console as if a video card
-were attached.
+were attached. For use with QEMU.
 
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
@@ -1087,23 +1105,33 @@ This package records qemu testsuite results and represents successful testing.
 %patch00059 -p1
 %patch00060 -p1
 %patch00061 -p1
-%if %{legacy_qemu_kvm}
 %patch00062 -p1
-%endif
 %patch00063 -p1
 %patch00064 -p1
 %patch00065 -p1
 %patch00066 -p1
 %patch00067 -p1
 %patch00068 -p1
-%ifarch aarch64
 %patch00069 -p1
+%patch00070 -p1
+%patch00071 -p1
+%if %{legacy_qemu_kvm}
+%patch00072 -p1
+%endif
+%patch00073 -p1
+%patch00074 -p1
+%patch00075 -p1
+%patch00076 -p1
+%patch00077 -p1
+%patch00078 -p1
+%ifarch aarch64
+%patch00079 -p1
 %endif
 %ifarch %arm %ix86 ppc
-%patch00070 -p1
+%patch00080 -p1
 %endif
-%patch00071 -p1
-%patch00072 -p1
+%patch00081 -p1
+%patch00082 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1118,6 +1146,7 @@ This package records qemu testsuite results and represents successful testing.
 %patch03001 -p1
 %patch08000 -p1
 %patch11000 -p1
+%patch27000 -p1
 
 %if "%{name}" != "qemu-linux-user"
 # for the record, this set of firmware files is installed, but we don't
