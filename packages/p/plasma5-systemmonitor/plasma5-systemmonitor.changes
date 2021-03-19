@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 16 13:55:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.3
+- Changes since 5.21.2:
+  * The checkbox can be bigger than the text (kde#434009)
+  * Ensure correct paddings (kde#434007)
+  * Display existing search text in search field for application/process pages (kde#433324)
+  * Set "ForceSaveOnDestroy" to true for Applications and Processes faces
+  * Do not call a non-existing function (kde#433706)
+  * Avoid showing "Processes: 0" in applications sidebar whilst loading (kde#433326)
+  * Properly change colorSet (kde#434006)
+  * Fix some visual bugs of the KillDialog (kde#433751)
+  * Fix initial size of page download dialog (kde#433726)
+
+-------------------------------------------------------------------
 Tue Mar  2 15:01:38 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.2
