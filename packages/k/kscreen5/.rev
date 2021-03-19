@@ -875,4 +875,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>KDE Plasma 5.21.2</comment>
     <requestid>876470</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>b5180f5ee9e54679de665ea99391342c</srcmd5>
+    <version>5.21.3</version>
+    <time>1616168476</time>
+    <user>RBrownSUSE</user>
+    <comment>Plasma 5.21.3</comment>
+    <requestid>879609</requestid>
+  </revision>
 </revisionlist>
