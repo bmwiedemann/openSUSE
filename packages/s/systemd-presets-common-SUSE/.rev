@@ -124,4 +124,16 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
     <comment></comment>
     <requestid>838568</requestid>
   </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>98ed050f651c3f1f0a0b9ecaf143f2e6</srcmd5>
+    <version>15</version>
+    <time>1616168433</time>
+    <user>RBrownSUSE</user>
+    <comment>- Enable user service pipewire-media-session.service (used with
+  pipewire &gt;= 0.3.23).
+
+- Enable user services pipewire.socket and pipewire-pulse.socket
+  (boo#1183012).</comment>
+    <requestid>879681</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 10 12:39:54 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Enable user service pipewire-media-session.service (used with
+  pipewire >= 0.3.23).
+
+-------------------------------------------------------------------
+Thu Mar  4 17:33:05 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Enable user services pipewire.socket and pipewire-pulse.socket
+  (boo#1183012).
+
+-------------------------------------------------------------------
 Wed Aug 26 08:11:58 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 
 - Enable btrfsmaintenance-refresh.path and disable
