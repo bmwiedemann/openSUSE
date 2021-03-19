@@ -1,7 +1,7 @@
 #
 # spec file for package cilium-proxy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define _dwz_low_mem_die_limit  20000000
+%define _dwz_max_die_limit     100000000
 
 Name:           cilium-proxy
 Version:        20200813
