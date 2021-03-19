@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 17 10:33:45 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.4.5
+  * Remove trailing whitespaces
+  * gitlab CI: add basic build test
+  * Replace WARN[1-9], ERROR[1-9], etc. with their unnumbered version
+  * Downgrade the warning for missing symbols to info
+  * keycodes: downgrade the >255 keycode warning to an info
+  * keycodes: compress the high keycode warning
+
+-------------------------------------------------------------------
 Thu Nov  5 09:49:03 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.4.4

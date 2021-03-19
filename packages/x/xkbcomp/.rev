@@ -157,4 +157,18 @@
   * Don't pretend unresolved symbols are an error</comment>
     <requestid>846191</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9fe56de33163bfec4b85bf9c54ae3243</srcmd5>
+    <version>1.4.5</version>
+    <time>1616168419</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.4.5
+  * Remove trailing whitespaces
+  * gitlab CI: add basic build test
+  * Replace WARN[1-9], ERROR[1-9], etc. with their unnumbered version
+  * Downgrade the warning for missing symbols to info
+  * keycodes: downgrade the &gt;255 keycode warning to an info
+  * keycodes: compress the high keycode warning</comment>
+    <requestid>879661</requestid>
+  </revision>
 </revisionlist>
