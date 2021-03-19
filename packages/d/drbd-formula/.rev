@@ -71,4 +71,12 @@
     <comment>New version of drbd-formula released</comment>
     <requestid>875297</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3808deca12da6d47fc780bfabc676caa</srcmd5>
+    <version>0.4.2+git.1616116365.1e3ab34</version>
+    <time>1616168577</time>
+    <user>RBrownSUSE</user>
+    <comment>New version of drbd-formula released</comment>
+    <requestid>879996</requestid>
+  </revision>
 </revisionlist>

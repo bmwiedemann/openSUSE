@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 11 05:04:03 UTC 2021 - nick wang <nwang@suse.com>
+
+- Version bump 0.4.2
+  * Fix github issue#15
+  * Rename examples to templates
+
+-------------------------------------------------------------------
 Wed Feb 24 08:30:45 UTC 2021 - nick wang <nwang@suse.com>
 
 - Version bump 0.4.1

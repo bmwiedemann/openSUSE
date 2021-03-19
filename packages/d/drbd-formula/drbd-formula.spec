@@ -1,7 +1,7 @@
 #
 # spec file for package drbd-formula
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,11 @@
 #
 
 
+%define fname drbd
+%define fdir %{_datadir}/salt-formulas
 # See also https://en.opensuse.org/openSUSE:Specfile_guidelines
-
 Name:           drbd-formula
-Version:        0.4.1+git.1614327740.f74a33a
+Version:        0.4.2+git.1616116365.1e3ab34
 Release:        0
 Summary:        DRBD deployment salt formula
 License:        Apache-2.0
@@ -27,17 +28,12 @@ URL:            https://github.com/SUSE/%{name}
 Source0:        %{name}-%{version}.tar.gz
 Requires:       drbd-utils
 Requires:       salt-shaptools >= 0.2.9
+BuildArch:      noarch
 %if 0%{?suse_version} < 1500
 Recommends:     salt-formulas-configuration
 %else
 Requires:       salt-formulas-configuration
 %endif
-BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-%define fname drbd
-%define fdir %{_datadir}/salt-formulas
-%define ftemplates templates
 
 %description
 DRBD deployment salt formula
@@ -56,24 +52,19 @@ module, which can be added running the `SUSEConnect -p sle-module-adv-systems-ma
 mkdir -p %{buildroot}%{fdir}/states/%{fname}
 mkdir -p %{buildroot}%{fdir}/metadata/%{fname}
 cp -R %{fname} %{buildroot}%{fdir}/states
-cp -R examples %{buildroot}%{fdir}/states/%{fname}/%{ftemplates}/
+cp -R templates %{buildroot}%{fdir}/states/%{fname}
 cp -R form.yml metadata.yml pillar.example README.md %{buildroot}%{fdir}/metadata/%{fname}
 
 %files
-%defattr(-,root,root,-)
-%if 0%{?sle_version} < 120300
-%doc README.md LICENSE
-%else
 %doc README.md
 %license LICENSE
-%endif
 
 %dir %attr(0755, root, salt) %{fdir}
 %dir %attr(0755, root, salt) %{fdir}/states
 %dir %attr(0755, root, salt) %{fdir}/metadata
 
 %attr(0755, root, salt) %{fdir}/states/%{fname}
-%attr(0755, root, salt) %{fdir}/states/%{fname}/%{ftemplates}
+%attr(0755, root, salt) %{fdir}/states/%{fname}/templates
 %attr(0755, root, salt) %{fdir}/metadata/%{fname}
 
 %changelog
