@@ -18,7 +18,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           libkrun
-Version:        0.1.4
+Version:        0.1.7
 Release:        0
 Summary:        A dynamic library providing KVM-based process isolation capabilities
 License:        Apache-2.0
@@ -26,7 +26,8 @@ URL:            https://github.com/containers/libkrun
 Source0:        libkrun-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-BuildRequires:  cargo
+ExclusiveArch:  x86_64 aarch64
+BuildRequires:  cargo >= 1.43.0
 BuildRequires:  gcc
 BuildRequires:  glibc-static
 BuildRequires:  libkrunfw-devel >= 0.6
@@ -52,7 +53,8 @@ It integrates a VMM (Virtual Machine Monitor, the userspace side of an Hyperviso
 
 %package devel
 Summary:        Development files for libkrun
-Requires: libkrun0
+Requires:       libkrun0
+
 %description devel
 Development files for libkrun
 
