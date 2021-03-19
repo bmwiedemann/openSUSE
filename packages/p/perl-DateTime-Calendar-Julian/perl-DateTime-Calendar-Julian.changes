@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 16 03:07:09 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.104
+   see /usr/share/doc/packages/perl-DateTime-Calendar-Julian/Changes
+
+  0.104		2021-03-15	T. R. Wyant
+      Add rt.cpan.org back to bug reporting methods. Long live RT!
+
+      Correct GitHub ticket link.
+
+      Get prerequisites up to snuff and add xt/author/prereq.t to ensure
+      they stay that way.
+
+-------------------------------------------------------------------
 Mon Jan 11 03:07:23 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.103
