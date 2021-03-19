@@ -247,10 +247,13 @@ EOF\
 #
 %hpc_make_modules_dir mkdir -p %{buildroot}%{hpc_module_dep_base}
 
-#
+# Write modules files
+# %hpc_make_modules_extra can be defined by domain specific macros such as %hpc_python_master_package
+# or in the specfile in order to provide a hook for creating extra module files.
 %hpc_write_modules_files \
 %{?_hpc_build_mpi:mkdir -p %{buildroot}%{hpc_install_base}} \
 %hpc_make_modules_dir \
+%{?hpc_make_modules_extra} \
 %{?_hpc_build_xx:mkdir -p %{buildroot}%{hpc_module_dep_install}} \
 %hpc_write_modules_version_file \
 echo "Writing %{buildroot}%{hpc_module_dep_base}%{version}" \
@@ -260,11 +263,14 @@ cat << EOF > %{buildroot}%{hpc_module_dep_base}%{version}
 
 # For files section:
 ## Modules Files
+# %hpc_module_extra can be defined by domain specific macros such as %hpc_python_master_package or in
+# the specfile in order to provide a hook for registering extra files made by %hpc_make_modules_extra
 %hpc_modules_files \
 %{?_hpc_build_xx:%{hpc_module_dep_install}} \
 %dir %{hpc_module_dep_base} \
 %{hpc_module_dep_base}/.version.%{version} \
-%{hpc_module_dep_base}/%{version}
+%{hpc_module_dep_base}/%{version} \
+%{?hpc_module_extra}
 
 # Compilers - use in library package when building compilers
 %hpc_cf_dirs \
@@ -357,7 +363,7 @@ cat << EOF > %{buildroot}%{hpc_module_dep_base}%{version}
 # this package pulls in a new version of the dependent library, because
 # these libraries also carry the version number of their names and
 # don't conflict with an earlier version.
-# %hpc_master_package [-n <full_package_name>][-g <group>][-s# <.so-version>][-l][-L][-N <pname>][-q] <package_ext>
+# %hpc_master_package [-n <full_package_name>][-g <group>][-s# <.so-version>][-l][-L][-N <pname>][-O <fullname>][-P <prefix][-q] <package_ext>
 # -n <full_package_name>: specify the full package name. This may not be used in conjunction with
 #     the package name extension <package_ext>.
 # -g  <group>: Specify the group to use.
@@ -373,13 +379,23 @@ cat << EOF > %{buildroot}%{hpc_module_dep_base}%{version}
 # -N  <pname>: Specify if a sub-package has different basename (pname)
 # -q: For internal use only!
 # -M: use specified name in place of %%name
-# -O: Obsoleted package with version %version, multiple obsoletes may be
-#     separated by ":"
+# -O  <fullname>: Add Provides/Obsoletes for package <fullname> with
+#     version %version, multiple names may be separated by ":"
+# -P  <prefix>: Add Provides/Obsoletes with %version-%release for package
+#     names derived from the master package name, replacing <prefix> with
+#     the contents of %<prefix>_provides. Used for python packages in order
+#     to provide the extra python3 flavor by the package for the current
+#     primary interpreter. The argument can be used in general as well:
+#     If your package is called 'foo-bar' with version and release 0.1-2, you
+#     `%define foo_provides fooA abc123`, and call
+#     `%hpc_master_package -P foo`, then the package will have
+#     'Provides: fooA-bar = 0.1-2', 'Provides: abc123-bar = 0.1-2', and the
+#     respective 'Obsoletes:' tags.
 # -E: create an 'empty' master package with no requires. This allows to
 #     keep the macro package around for compatibility even if the underlying
 #     package has been removed.
 #
-%hpc_master_package(n:g:s:lLaqN:M:O:E) \
+%hpc_master_package(n:g:s:lLaqN:M:O:P:E) \
  %define _mylib %{-s:lib}%{!-s:%{-l:lib}} \
  %define _p_ext %(test -n "%{*}" && echo -%{*}) \
  %{-M: \ %define name %{-M*}} \
@@ -429,6 +445,15 @@ Obsoletes: %_lname < %version \
    for i in ${v//:/ }; \
      do echo "Obsoletes: $i < %version"; \
      echo "Provides: $i = %version"; \
+   done)\
+} \
+%{-P:%(\
+   prefix=%{-P*}; \
+   lname=%{_lname}; \
+   for extra in %{expand:%%{?%{-P*}_provides}}; do \
+     provided_extra=${lname/$prefix/$extra}; \
+     echo "Provides: ${provided_extra} = %{version}-%{release}"; \
+     echo "Obsoletes: ${provided_extra} < %{version}-%{release}"; \
    done)\
 } \
 %{!-E:Requires:  %{s_name} = %version} \
@@ -525,6 +550,7 @@ When this package gets updated it installs the latest version of %name. \
    add_args (L_arg) \
    add_args (a_arg) \
    add_args (other_arg) \
+   add_args (python_flavor, "-P") \
    -- io.stderr:write("pname "..rpm.expand("%pname").."\\n") \
    -- io.stderr:write(rpm.expand("%{hpc_master_package " .. arg_list .."}").."\\n") \
    -- io.stderr:write(rpm.expand("%{hpc_master_package " .. arg_list .." -q}"):gsub("%s","").."\\n") \
@@ -547,6 +573,33 @@ When this package gets updated it installs the latest version of %name. \
    rpm.define("pname " .. pname) \
    rpm.define("name " .. name) \
    -- io.stderr:write("pname "..rpm.expand("%pname").."\\n\\n") \
+   if rpm.expand("%{?hpc_make_modules_extra}") == "" then \
+     rpm.define("hpc_make_modules_extra %hpc_make_modules_extra_python") \
+   end \
+   if rpm.expand("%{?hpc_module_extra}") == "" then \
+     rpm.define("hpc_module_extra %hpc_module_extra_python") \
+   end \
+}
+
+# For python packages, %hpc_write_modules_files is called inside %python_expand.
+# https://github.com/openSUSE/python-rpm-macros#flavor-expansion
+# Provide modules for extra flavors if the expanded flavor has <flavor>_provides defined,
+# such as the primary python flavor providing "python3".
+%hpc_make_modules_extra_python \
+if [ -n "%%{?$python_provides}" ]; then \
+  targetdir=%{hpc_module_dep_base} \
+  targetdir=${targetdir%%%%/} \
+  for extra in %%{?$python_provides}; do \
+    ln -sf $targetdir %{buildroot}${targetdir/${python_flavor:-$(cat _current_flavor)}/$extra} \
+  done \
+fi
+
+%hpc_module_extra_python \
+%{lua: \
+local pyflavor = rpm.expand("%python_flavor") \
+for extra in rpm.expand("%{?" .. pyflavor .. "_provides}"):gmatch("%S+") do \
+  print(rpm.expand("%hpc_module_dep_base"):gsub(pyflavor, extra):sub(1,-2) .. "\\n") \
+end \
 }
 
 # %hpc_shebang_sanitize_scripts <dir>

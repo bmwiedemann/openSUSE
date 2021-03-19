@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 15 07:58:32 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Add hooks for extra module files and master packages to
+  accomodate support for multiple python3 flavors (thanks to
+  Ben Greiner).
+- Made sure, these macros are backward compatible to Leap 15.
+
+-------------------------------------------------------------------
 Mon Jan 18 17:20:57 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Expand python_flavor to python executable. Thanks to Ben Greiner.

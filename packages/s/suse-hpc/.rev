@@ -193,4 +193,15 @@
     <comment>- Expand python_flavor to python executable. Thanks to Ben Greiner. (forwarded request 864148 from eeich)</comment>
     <requestid>864149</requestid>
   </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>415597d832b22a5ec8d832def7d97f92</srcmd5>
+    <version>0.5</version>
+    <time>1616168407</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add hooks for extra module files and master packages to
+  accomodate support for multiple python3 flavors (thanks to
+  Ben Greiner).
+- Made sure, these macros are backward compatible to Leap 15. (forwarded request 879574 from eeich)</comment>
+    <requestid>879575</requestid>
+  </revision>
 </revisionlist>
