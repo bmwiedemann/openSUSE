@@ -1,11 +1,26 @@
 -------------------------------------------------------------------
+Tue Jan 26 07:20:29 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 11.0.10 with OpenJ9 0.24.0 virtual machine
+  * including Oracle January 2021 CPU changes (bsc#1181239)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.24
+- Modified patch:
+  * system-pcsclite.patch
+    + rediff to changed context
+- Modified template patch:
+  * openj9-nogit.patch.in
+    + replace git runs by pre-fetched git hashes in new places
+    + remove hunks that are irrelevant in new sources
+
+-------------------------------------------------------------------
 Mon Nov  2 14:04:42 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 11.0.9 with OpenJ9 0.23.0 virtual machine
   * Including Oracle Octobre 2020 CPU changes (bsc#1177943)
   * fixes CVE-2020-14779, CVE-2020-14781, CVE-2020-14782,
     CVE-2020-14792, CVE-2020-14796, CVE-2020-14797, CVE-2020-14798
-	and CVE-2020-14803
+    and CVE-2020-14803
   * OpenJ9 changes,
     see https://www.eclipse.org/openj9/docs/version0.23
 - Removed patches:

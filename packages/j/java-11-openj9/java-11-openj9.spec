@@ -1,7 +1,7 @@
 #
 # spec file for package java-11-openj9
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,20 +28,20 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       9
+%global updatever       10
 %global patchver        0
-%global datever         2020-10-20
-%global buildver        11
+%global datever         2021-01-19
+%global buildver        9
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk11/archive
-%global root_revision   3b09cfd7e972ed3f67e7c89d079d06bef1c81d04
-%global root_branch     openj9-0.23.0
+%global root_revision   0a86953833177e8104be499247f52d0d0d138647
+%global root_branch     openj9-0.24.0
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    582366ae54510a48f7815921091db00357c4338a
-%global omr_branch      v0.23.0-release
+%global omr_revision    741e94ea8673b021fc7edc59a2ec8bd203fa2b03
+%global omr_branch      v0.24.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 0394ef7545243942a4b27227a22174c1be67ed60
-%global openj9_branch   v0.23.0-release
-%global openj9_tag      openj9-0.23.0
+%global openj9_revision 345e1b09e2a1f2cf6323b25edc901cce197f4365
+%global openj9_branch   v0.24.0-release
+%global openj9_tag      openj9-0.24.0
 %global icedtea_sound_version 1.0.1
 %global freemarker_version 2.3.29
 # JavaEE modules
@@ -96,6 +96,7 @@
 %global bits 64
 # Turn on/off some features
 %global with_system_pcsc 1
+%global with_system_harfbuzz 1
 %global with_pulseaudio 1
 Name:           java-%{featurever}-openj9
 Version:        %{featurever}.%{interimver}.%{updatever}.%{patchver}
@@ -113,7 +114,7 @@ Source3:        https://repo1.maven.org/maven2/org/freemarker/freemarker/%{freem
 # Package also the sources
 Source4:        https://repo1.maven.org/maven2/org/freemarker/freemarker/%{freemarker_version}/freemarker-%{freemarker_version}-sources.jar
 # Accessibility support
-Source8:        ftp://ftp.gnome.org/pub/GNOME/sources/java-atk-wrapper/0.33/java-atk-wrapper-%{java_atk_wrapper_version}.tar.xz
+Source8:        https://download.gnome.org/sources/java-atk-wrapper/0.33/java-atk-wrapper-%{java_atk_wrapper_version}.tar.xz
 # Pulseaudio support
 Source9:        http://icedtea.classpath.org/download/source/icedtea-sound-%{icedtea_sound_version}.tar.xz
 # Desktop files. Adapted from IcedTea.
@@ -270,6 +271,9 @@ BuildRequires:  java-%{javaver}-devel
 %if %{with_pulseaudio}
 BuildRequires:  libpulse-devel >= 0.9.11
 BuildRequires:  pulseaudio >= 0.9.11
+%endif
+%if %{with_system_harfbuzz}
+BuildRequires:  harfbuzz-devel
 %endif
 %if %{with_system_pcsc}
 BuildRequires:  pcsc-lite-devel
@@ -508,6 +512,9 @@ bash configure \
 	--with-openssl=system \
 %if %{with_system_pcsc}
     --with-pcsclite=system \
+%endif
+%if %{with_system_harfbuzz}
+    --with-harfbuzz=system \
 %endif
     --with-stdc++lib=dynamic \
     --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
@@ -1105,6 +1112,9 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/libdt_socket.so
 %{_jvmdir}/%{sdkdir}/lib/libextnet.so
 %{_jvmdir}/%{sdkdir}/lib/libfontmanager.so
+%if ! %{with_system_harfbuzz}
+%{_jvmdir}/%{sdkdir}/lib/libharfbuzz.so
+%endif
 %{_jvmdir}/%{sdkdir}/lib/libinstrument.so
 %{_jvmdir}/%{sdkdir}/lib/libj2gss.so
 %{_jvmdir}/%{sdkdir}/lib/libj2pcsc.so

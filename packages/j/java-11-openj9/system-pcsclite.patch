@@ -1,16 +1,16 @@
---- jdk11/make/autoconf/lib-bundled.m4	2018-06-13 06:35:04.000000000 +0200
-+++ jdk11/make/autoconf/lib-bundled.m4	2018-06-14 15:06:38.825090243 +0200
-@@ -37,6 +37,7 @@
-   LIB_SETUP_LIBPNG
+--- jdk11/make/autoconf/lib-bundled.m4	2021-01-19 09:46:26.193562524 +0100
++++ jdk11/make/autoconf/lib-bundled.m4	2021-01-19 09:47:38.465983974 +0100
+@@ -38,6 +38,7 @@
    LIB_SETUP_ZLIB
    LIB_SETUP_LCMS
+   LIB_SETUP_HARFBUZZ
 +  LIB_SETUP_PCSCLITE
  ])
  
  ################################################################################
-@@ -260,3 +261,41 @@
-   AC_SUBST(LCMS_CFLAGS)
-   AC_SUBST(LCMS_LIBS)
+@@ -301,3 +302,41 @@
+   AC_SUBST(HARFBUZZ_CFLAGS)
+   AC_SUBST(HARFBUZZ_LIBS)
  ])
 +
 +################################################################################
@@ -50,9 +50,9 @@
 +
 +  AC_SUBST(USE_EXTERNAL_PCSCLITE)
 +])
---- jdk11/make/autoconf/spec.gmk.in	2018-06-13 06:35:04.000000000 +0200
-+++ jdk11/make/autoconf/spec.gmk.in	2018-06-14 15:06:38.873090499 +0200
-@@ -730,6 +730,7 @@
+--- jdk11/make/autoconf/spec.gmk.in	2021-01-19 09:46:26.193562524 +0100
++++ jdk11/make/autoconf/spec.gmk.in	2021-01-19 09:47:10.805822676 +0100
+@@ -763,6 +763,7 @@
  ENABLE_INTREE_EC:=@ENABLE_INTREE_EC@
  USE_EXTERNAL_LIBJPEG:=@USE_EXTERNAL_LIBJPEG@
  USE_EXTERNAL_LIBGIF:=@USE_EXTERNAL_LIBGIF@
@@ -60,8 +60,8 @@
  USE_EXTERNAL_LIBZ:=@USE_EXTERNAL_LIBZ@
  LIBZ_CFLAGS:=@LIBZ_CFLAGS@
  LIBZ_LIBS:=@LIBZ_LIBS@
---- jdk11/make/lib/Lib-java.smartcardio.gmk	2018-06-13 06:35:04.000000000 +0200
-+++ jdk11/make/lib/Lib-java.smartcardio.gmk	2018-06-14 15:09:10.281896734 +0200
+--- jdk11/make/lib/Lib-java.smartcardio.gmk	2021-01-19 09:46:26.245562827 +0100
++++ jdk11/make/lib/Lib-java.smartcardio.gmk	2021-01-19 09:47:10.805822676 +0100
 @@ -30,12 +30,12 @@
  $(eval $(call SetupJdkLibrary, BUILD_LIBJ2PCSC, \
      NAME := j2pcsc, \
@@ -78,8 +78,8 @@
      LIBS_windows := winscard.lib, \
  ))
  
---- jdk11/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c	2018-06-13 06:35:04.000000000 +0200
-+++ jdk11/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c	2018-06-14 15:06:38.877090521 +0200
+--- jdk11/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c	2021-01-19 09:46:26.681565369 +0100
++++ jdk11/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c	2021-01-19 09:47:10.809822699 +0100
 @@ -36,6 +36,7 @@
  
  #include "pcsc_md.h"
@@ -122,8 +122,8 @@
  #endif // __APPLE__
 +#endif
  }
---- jdk11/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h	2018-06-13 06:35:04.000000000 +0200
-+++ jdk11/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h	2018-06-14 15:06:38.877090521 +0200
+--- jdk11/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h	2021-01-19 09:46:26.681565369 +0100
++++ jdk11/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h	2021-01-19 09:47:10.809822699 +0100
 @@ -23,6 +23,8 @@
   * questions.
   */
@@ -133,7 +133,7 @@
  typedef LONG (*FPTR_SCardEstablishContext)(DWORD dwScope,
                  LPCVOID pvReserved1,
                  LPCVOID pvReserved2,
-@@ -110,3 +112,41 @@
+@@ -111,3 +113,41 @@
  extern FPTR_SCardBeginTransaction scardBeginTransaction;
  extern FPTR_SCardEndTransaction scardEndTransaction;
  extern FPTR_SCardControl scardControl;

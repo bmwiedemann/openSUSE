@@ -1,7 +1,15 @@
+diff --git a/closed/OpenJ9.gmk b/closed/OpenJ9.gmk
+index 65e002c738..3837214054 100644
 --- a/closed/OpenJ9.gmk
 +++ b/closed/OpenJ9.gmk
-@@ -32,15 +32,15 @@ ifeq (,$(BUILD_ID))
+@@ -32,20 +32,20 @@ ifeq (,$(BUILD_ID))
    BUILD_ID := 000000
+ endif
+ 
+-OPENJDK_SHA := $(shell git -C $(TOPDIR) rev-parse --short HEAD)
++OPENJDK_SHA := @OPENJDK_SHA@
+ ifeq (,$(OPENJDK_SHA))
+   $(error Could not determine OpenJDK SHA)
  endif
  
 -OPENJ9_SHA := $(shell git -C $(OPENJ9_TOPDIR) rev-parse --short HEAD)
@@ -19,7 +27,7 @@
    ifeq (,$(OPENJ9_BRANCH))
      $(error Could not determine OpenJ9 branch)
    endif
-@@ -49,7 +49,7 @@ else
+@@ -54,7 +54,7 @@ else
    OPENJ9_VERSION_STRING := $(OPENJ9_TAG)
  endif
  
@@ -28,14 +36,17 @@
  ifeq (,$(OPENJ9OMR_SHA))
    $(error Could not determine OMR SHA)
  endif
---- a/closed/autoconf/custom-hook.m4
-+++ b/closed/autoconf/custom-hook.m4
-@@ -436,7 +436,7 @@ AC_DEFUN_ONCE([OPENJ9_CHECK_NASM_VERSION],
+diff --git a/closed/custom/ReleaseFile.gmk b/closed/custom/ReleaseFile.gmk
+index 4a7267056d..4b4f1ca51c 100644
+--- a/closed/custom/ReleaseFile.gmk
++++ b/closed/custom/ReleaseFile.gmk
+@@ -18,6 +18,6 @@
+ # 2 along with this work; if not, see <http://www.gnu.org/licenses/>.
+ # ===========================================================================
  
- AC_DEFUN_ONCE([OPENJDK_VERSION_DETAILS],
- [
--  OPENJDK_SHA=`git -C $TOPDIR rev-parse --short HEAD`
-+  OPENJDK_SHA=@OPENJDK_SHA@
- 
-   AC_SUBST(OPENJDK_SHA)
- 
+-SOURCE_REVISION := OpenJDK:$(shell git -C $(TOPDIR) rev-parse --short HEAD)
+-SOURCE_REVISION += OpenJ9:$(shell git -C $(OPENJ9_TOPDIR) rev-parse --short HEAD)
+-SOURCE_REVISION += OMR:$(shell git -C $(OPENJ9OMR_TOPDIR) rev-parse --short HEAD)
++SOURCE_REVISION := OpenJDK:@OPENJ9_SHA@
++SOURCE_REVISION += OpenJ9:@OPENJ9_SHA@
++SOURCE_REVISION += OMR:@OPENJ9OMR_SHA@
