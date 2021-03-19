@@ -256,4 +256,12 @@ put together with abseil-cpp</comment>
     <comment>- Update to release 1.36.2</comment>
     <requestid>877364</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7a8967c0e0f4573623b024bf5cf1c445</srcmd5>
+    <version>1.36.4</version>
+    <time>1616168611</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to release 1.36.4</comment>
+    <requestid>880064</requestid>
+  </revision>
 </revisionlist>
