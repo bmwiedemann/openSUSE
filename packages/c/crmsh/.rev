@@ -2201,4 +2201,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>879018</requestid>
   </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>f258c0ba38aca14d8ff0c87b30446750</srcmd5>
+    <version>4.3.0+git.20210319.b0adc897</version>
+    <time>1616168605</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>880013</requestid>
+  </revision>
 </revisionlist>

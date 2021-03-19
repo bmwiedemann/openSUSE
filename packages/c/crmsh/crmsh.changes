@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Mar 19 04:26:16 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+git.20210319.b0adc897:
+  * Fix: update verion and author (bsc#1183689)
+
+-------------------------------------------------------------------
+Wed Mar 17 01:31:04 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+git.20210317.5ee12f25:
+  * Dev: behave: adjust functional test for configuring qdevice on interactive mode
+  * Dev: unittest: unit test codes for configuring qdevice on interactive mode
+  * Dev: bootstrap: enable configuring qdevice on interactive mode
+
+-------------------------------------------------------------------
+Mon Mar 15 09:59:59 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+git.20210315.5d07d43e:
+  * Dev: behave: change the test case for failcount behavior change
+  * Fix: ui_resource: change return code and error to warning for some unharmful actions(bsc#1180332)
+
+-------------------------------------------------------------------
+Mon Mar 15 09:32:43 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+git.20210315.fae29920:
+  * Dev: README: change the build status link in README
+
+-------------------------------------------------------------------
 Mon Mar 15 02:25:26 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.0+git.20210311.c2e8856c:
