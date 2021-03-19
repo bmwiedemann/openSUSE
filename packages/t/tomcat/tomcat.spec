@@ -1,7 +1,7 @@
 #
 # spec file for package tomcat
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -85,6 +85,7 @@ Patch5:         tomcat-9.0.31-java8compat.patch
 Patch6:         tomcat-9.0.31-secretRequired-default.patch
 Patch7:         tomcat-9.0-CVE-2020-13943.patch
 Patch8:         tomcat-9.0-CVE-2020-17527.patch
+Patch9:         tomcat-9.0-CVE-2021-24122.patch
 
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
@@ -162,7 +163,7 @@ The documentation of web application for Apache Tomcat.
 Summary:        Expression Language v3.0 API
 Group:          Development/Libraries/Java
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 Provides:       %{name}-el-%{elspec}-api = %{version}-%{release}
 Provides:       el_3_0_api = %{version}-%{release}
 Provides:       el_api = %{elspec}
@@ -186,7 +187,7 @@ Group:          Productivity/Networking/Web/Servers
 Requires:       mvn(org.apache.tomcat:tomcat-el-api)
 Requires:       mvn(org.apache.tomcat:tomcat-servlet-api)
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       %{name}-jsp-%{jspspec}-api
 Provides:       jsp = %{jspspec}
 Provides:       jsp23
@@ -214,7 +215,7 @@ Requires:       %{name}-el-%{elspec}-api = %{version}-%{release}
 Requires:       %{name}-jsp-%{jspspec}-api = %{version}-%{release}
 Requires:       %{name}-servlet-%{servletspec}-api = %{version}-%{release}
 Requires(post): ecj >= 4.4
-Requires(preun): coreutils
+Requires(preun):coreutils
 Provides:       jakarta-commons-dbcp-tomcat5 = 1.4
 Obsoletes:      jakarta-commons-dbcp-tomcat5 < 1.4
 
@@ -225,7 +226,7 @@ Libraries required to successfully run the Tomcat Web container
 Summary:        Apache Tomcat Servlet API implementation classes
 Group:          Productivity/Networking/Web/Servers
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       %{name}-servlet-%{servletspec}-api = %{version}-%{release}
 Provides:       servlet = %{servletspec}
 Provides:       servlet31
@@ -261,6 +262,7 @@ find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl
@@ -634,17 +636,17 @@ update-alternatives --install %{_javadir}/servlet.jar servlet \
     %{_javadir}/%{name}-servlet-%{servletspec}-api.jar 30000
 # Fix for bsc#1092163.
 # Keep the /usr/share/java/tomcat-servlet.jar symlink for compatibility.
-# In case of update from an older version where /usr/share/java/tomcat-servlet.jar is an alternatives symlink 
+# In case of update from an older version where /usr/share/java/tomcat-servlet.jar is an alternatives symlink
 # the update-alternatives in the new version will cause a rename tomcat-servlet.jar -> servlet.jar.
 # This makes sure the tomcat-servlet.jar is recreated if it's missing because of the rename.
-if [ ! -f %{_javadir}/%{name}-servlet.jar ]; then 
+if [ ! -f %{_javadir}/%{name}-servlet.jar ]; then
     echo "Recreating symlink %{_javadir}/%{name}-servlet.jar"
     ln -s %{_javadir}/%{name}-servlet-%{servletspec}-api.jar %{_javadir}/%{name}-servlet.jar
 fi
 
 %postun servlet-4_0-api
 if [ $1 -eq 0 ] ; then
-    if [ ! -f %{_sysconfdir}/alternatives/servlet ]; then 
+    if [ ! -f %{_sysconfdir}/alternatives/servlet ]; then
         # /etc/alternatives/servlet was removed on uninstall.
         # Create a broken symlink to make sure update-alternatives works correctly and falls back
         # to servletapi5 or servletapi4 if they're installed.

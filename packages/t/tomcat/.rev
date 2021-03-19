@@ -721,4 +721,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment></comment>
     <requestid>862598</requestid>
   </revision>
+  <revision rev="75" vrev="7">
+    <srcmd5>d200e755779108758e5ce1af0631bf12</srcmd5>
+    <version>9.0.36</version>
+    <time>1616168570</time>
+    <user>RBrownSUSE</user>
+    <comment>CVE-2021-24122</comment>
+    <requestid>880011</requestid>
+  </revision>
 </revisionlist>

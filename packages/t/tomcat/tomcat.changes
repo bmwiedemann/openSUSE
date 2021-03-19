@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 17 16:16:52 UTC 2021 - Abid Mehmood <amehmood@suse.com>
+
+- Log if file access is blocked due to symlinks: CVE-2021-24122 (bsc#1180947) 
+- Added patch:
+  * tomcat-9.0-CVE-2021-24122.patch
+
+-------------------------------------------------------------------
 Wed Dec 16 12:17:22 UTC 2020 - Abid Mehmood <amehmood@suse.com>
 
 - Fix HTTP/2 request header mix-up: CVE-2020-17527 (bsc#1179602)
