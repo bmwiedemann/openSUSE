@@ -20,4 +20,12 @@
 - Remove merged patch dj21.patch</comment>
     <requestid>761496</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>dcc221d545b3a1a221107aec4433e91a</srcmd5>
+    <version>1.14.0</version>
+    <time>1616168609</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>880063</requestid>
+  </revision>
 </revisionlist>

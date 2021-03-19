@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 19 09:30:32 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream remove-py2-add-django3.patch to make the package
+  compatible with Django 3.1 and testhack.patch to run tests
+  on Django 3.1 (upstream sleeps)
+
+-------------------------------------------------------------------
 Tue Jan  7 09:38:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.14.0:
