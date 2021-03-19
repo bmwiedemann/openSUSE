@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 16 13:55:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.3
+- Changes since 5.21.2:
+  * Only turn http[s] links into clickable links
+  * Do not fiddle with the search field when its not visible
+  * updates: wrap the text when it doesn't fit
+
+-------------------------------------------------------------------
 Tue Mar  2 15:01:35 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.2
