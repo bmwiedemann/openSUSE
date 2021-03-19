@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Feb  1 20:58:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4:
+  - The text report produced by ``coverage report`` now always outputs a TOTAL
+    line, even if only one Python file is reported.  This makes regex parsing
+    of the output easier.  Thanks, Judson Neer.  This had been requested a number
+    of times
+  - The ``skip_covered`` and ``skip_empty`` settings in the configuration file
+    can now be specified in the ``[html]`` section, so that text reports and HTML
+    reports can use separate settings.  The HTML report will still use the
+    ``[report]`` settings if there isn't a value in the ``[html]`` section.
+  - Combining files on Windows across drives how works properly
+  - Fix an obscure warning from deep in the _decimal module, as reported in
+    `issue 1084`_.
+  - Update to support Python 3.10 alphas in progress, including `PEP 626: Precise
+    line numbers for debugging and other tools <pep626_>`_.
+
+-------------------------------------------------------------------
 Sun Dec 20 09:24:09 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.1:

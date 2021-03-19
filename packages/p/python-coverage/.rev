@@ -404,4 +404,25 @@ __init__.py is the only file with a definitive license statement (BSD-2-Clause).
   - Wheels are now provided for manylinux2010, and for PyPy3 (pp36 and pp37).</comment>
     <requestid>857108</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>b8e5540492b598a0d8d50ada1a2fffc6</srcmd5>
+    <version>5.4</version>
+    <time>1616168371</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 5.4:
+  - The text report produced by ``coverage report`` now always outputs a TOTAL
+    line, even if only one Python file is reported.  This makes regex parsing
+    of the output easier.  Thanks, Judson Neer.  This had been requested a number
+    of times
+  - The ``skip_covered`` and ``skip_empty`` settings in the configuration file
+    can now be specified in the ``[html]`` section, so that text reports and HTML
+    reports can use separate settings.  The HTML report will still use the
+    ``[report]`` settings if there isn't a value in the ``[html]`` section.
+  - Combining files on Windows across drives how works properly
+  - Fix an obscure warning from deep in the _decimal module, as reported in
+    `issue 1084`_.
+  - Update to support Python 3.10 alphas in progress, including `PEP 626: Precise
+    line numbers for debugging and other tools &lt;pep626_&gt;`_.</comment>
+    <requestid>868480</requestid>
+  </revision>
 </revisionlist>
