@@ -26,8 +26,8 @@ diff -uNr antlr4-4.7.2.org/runtime/Cpp/runtime/CMakeLists.txt antlr4-4.7.2/runti
                                   COMPILE_FLAGS "${disabled_compile_warnings} ${extra_static_compile_flags}")
  
  install(TARGETS antlr4_shared
--        DESTINATION lib 
-+        DESTINATION ${LIB_INSTALL_DIR} 
+-        DESTINATION lib
++        DESTINATION ${LIB_INSTALL_DIR}
          EXPORT antlr4-targets)
  install(TARGETS antlr4_static
 -        DESTINATION lib

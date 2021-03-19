@@ -1,7 +1,7 @@
 #
 # spec file for package antlr4
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define libver 4_8
+%define libver 4_9_1
 %define runtime_cpp_lib libantlr4-runtime
 %define runtime_cpp_libver %{runtime_cpp_lib}%{libver}
 Name:           antlr4
-Version:        4.8
+Version:        4.9.1
 Release:        0
 Summary:        Java parser generator
 # C# runtime is MIT-licensed, but currently it is not used in this package
@@ -29,12 +29,14 @@ URL:            https://www.antlr.org/
 Source0:        https://github.com/antlr/antlr4/archive/%{version}.tar.gz#/antlr4-%{version}.tar.gz
 Source100:      antlr4-install-path.patch.in
 Patch0:         unicodedata.patch
+Patch1:         utf8cpp-from-system.patch
 BuildRequires:  cmake >= 3.3.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libstdc++-devel
 BuildRequires:  maven-local
 BuildRequires:  pkgconfig
+BuildRequires:  utfcpp-devel
 BuildRequires:  mvn(com.ibm.icu:icu4j)
 BuildRequires:  mvn(org.abego.treelayout:org.abego.treelayout.core)
 BuildRequires:  mvn(org.antlr:ST4)
@@ -117,6 +119,7 @@ binary files.
 %package -n %{runtime_cpp_lib}-devel
 Summary:        Development files for the ANTRL libraries
 Requires:       %{runtime_cpp_libver} = %{version}
+Requires:       utfcpp-devel
 
 %description -n %{runtime_cpp_lib}-devel
 ANTLR runtime libraries for C++.
@@ -126,6 +129,7 @@ binary files.
 
 %prep
 %setup -q
+%patch1 -p1
 cat %{SOURCE100} | sed 's#@LIBVER@#%{libver}#g' | patch -p1 -u
 
 find -name \*.jar -delete
