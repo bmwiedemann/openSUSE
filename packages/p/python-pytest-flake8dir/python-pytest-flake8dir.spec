@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-flake8dir
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pytest-flake8dir
-Version:        2.2.0
+Version:        2.3.1
 Release:        0
 Summary:        A pytest fixture for testing flake8 plugins
 License:        ISC
@@ -40,9 +40,7 @@ BuildArch:      noarch
 A pytest fixture for testing flake8 plugins.
 
 %prep
-%setup -q -n pytest-flake8dir-%{version}
-# fix gh#adamchainz/pytest-flake8dir#126
-sed -i '107 d' tests/test_pytest_flake8dir.py
+%autosetup -p1 -n pytest-flake8dir-%{version}
 
 %build
 %python_build

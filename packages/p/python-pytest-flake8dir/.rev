@@ -24,4 +24,19 @@
     <comment></comment>
     <requestid>806001</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>716c76a7d652e2333bc077b07a347c50</srcmd5>
+    <version>2.3.1</version>
+    <time>1616168573</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.3.1:
+  - Use sys.executable to invoke flake8. This ensures that we run the
+    flake8 installed to match the current interpreter, in
+    multi-interpreter environments.
+  - Drop Python 3.5 support.
+  - Support Python 3.9.
+  - Move license from ISC to MIT License.
+</comment>
+    <requestid>879985</requestid>
+  </revision>
 </revisionlist>
