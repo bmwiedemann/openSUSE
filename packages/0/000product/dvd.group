@@ -2414,6 +2414,7 @@
     <package name="libpcre1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpcre2-16-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libpcre2-posix2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libpcreposix0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="libpcsclite1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpeas-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

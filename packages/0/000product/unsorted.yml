@@ -5736,6 +5736,7 @@ unsorted:
   - golang-github-QubitProducts-exporter_exporter 
   - golang-github-boynux-squid_exporter 
   - golang-github-cpuguy83-go-md2man 
+  - golang-github-czerwonk-ping_exporter 
   - golang-github-exercism-cli 
   - golang-github-golang-glog 
   - golang-github-golang-protobuf 
@@ -9866,8 +9867,8 @@ unsorted:
   - libcryptmount-devel 
   - libcrypto46-32bit: [x86_64] 
   - libcryptopp-devel 
-  - libcryptopp8_4_0 
-  - libcryptopp8_4_0-32bit: [x86_64] 
+  - libcryptopp8_5_0 
+  - libcryptopp8_5_0-32bit: [x86_64] 
   - libcryptsetup-devel 
   - libcryptsetup12-hmac-32bit: [x86_64] 
   - libcryptui-devel 
@@ -12340,7 +12341,6 @@ unsorted:
   - libpcre2-16-0-32bit: [x86_64] 
   - libpcre2-32-0 
   - libpcre2-32-0-32bit: [x86_64] 
-  - libpcre2-posix2 
   - libpcre2-posix2-32bit: [x86_64] 
   - libpcrecpp0 
   - libpcrecpp0-32bit: [x86_64] 
@@ -16361,6 +16361,7 @@ unsorted:
   - ncurses-devel 
   - ncurses-devel-32bit: [x86_64] 
   - ncurses-devel-static 
+  - ncurses-tests 
   - ncurses5-devel 
   - ncurses5-devel-32bit: [x86_64] 
   - ncurses5-devel-static 
@@ -20679,7 +20680,6 @@ unsorted:
   - python3-clinkgrammar 
   - python3-clustershell 
   - python3-coconut 
-  - python3-concurrentloghandler 
   - python3-congressclient 
   - python3-dbus-presage 
   - python3-debtcollector 
@@ -20713,7 +20713,6 @@ unsorted:
   - python3-fastjet 
   - python3-fife 
   - python3-fityk 
-  - python3-flake8-comprehensions 
   - python3-flake8-future-import 
   - python3-framel 
   - python3-freezerclient 
@@ -20847,15 +20846,12 @@ unsorted:
   - python3-mox3 
   - python3-mraa 
   - python3-murano-pkg-check 
-  - python3-napalm-ansible 
   - python3-napalm-asa 
   - python3-napalm-exos 
-  - python3-napalm-procurve 
   - python3-nemo 
   - python3-neutronclient 
   - python3-newt 
   - python3-nghttp2 
-  - python3-nornir 
   - python3-nose2pytest 
   - python3-notcurses 
   - python3-notmuch 
@@ -21734,6 +21730,7 @@ unsorted:
   - python36-compat-patcher-core 
   - python36-compileall2 
   - python36-compizconfig 
+  - python36-concurrentloghandler 
   - python36-configargparse 
   - python36-configobj 
   - python36-configshell-fb 
@@ -22083,6 +22080,7 @@ unsorted:
   - python36-flake8-bugbear 
   - python36-flake8-builtins 
   - python36-flake8-class-newline 
+  - python36-flake8-comprehensions 
   - python36-flake8-debugger 
   - python36-flake8-deprecated 
   - python36-flake8-docstrings 
@@ -22326,6 +22324,7 @@ unsorted:
   - python36-jaraco.base 
   - python36-jaraco.classes 
   - python36-jaraco.collections 
+  - python36-jaraco.context 
   - python36-jaraco.envs 
   - python36-jaraco.functools 
   - python36-jaraco.itertools 
@@ -22568,6 +22567,7 @@ unsorted:
   - python36-napalm 
   - python36-napalm-arubaos-switch 
   - python36-napalm-digineo-procurve 
+  - python36-napalm-procurve 
   - python36-natsort 
   - python36-nautilus 
   - python36-nautilus-devel 
@@ -22600,6 +22600,7 @@ unsorted:
   - python36-nocaselist 
   - python36-node-semver 
   - python36-nodeenv 
+  - python36-nornir 
   - python36-nose 
   - python36-nose-cov 
   - python36-nose-cover3 
@@ -24553,6 +24554,7 @@ unsorted:
   - python38-compat-patcher-core 
   - python38-compileall2 
   - python38-compizconfig 
+  - python38-concurrentloghandler 
   - python38-configargparse 
   - python38-configshell-fb 
   - python38-confluent-kafka 
@@ -24901,6 +24903,7 @@ unsorted:
   - python38-flake8-bugbear 
   - python38-flake8-builtins 
   - python38-flake8-class-newline 
+  - python38-flake8-comprehensions 
   - python38-flake8-debugger 
   - python38-flake8-deprecated 
   - python38-flake8-docstrings 
@@ -25148,6 +25151,7 @@ unsorted:
   - python38-jaraco.base 
   - python38-jaraco.classes 
   - python38-jaraco.collections 
+  - python38-jaraco.context 
   - python38-jaraco.envs 
   - python38-jaraco.functools 
   - python38-jaraco.itertools 
@@ -25409,8 +25413,10 @@ unsorted:
   - python38-mysql-connector-python 
   - python38-nagiosplugin 
   - python38-napalm 
+  - python38-napalm-ansible 
   - python38-napalm-arubaos-switch 
   - python38-napalm-digineo-procurve 
+  - python38-napalm-procurve 
   - python38-natsort 
   - python38-nautilus 
   - python38-nautilus-devel 
@@ -25445,6 +25451,7 @@ unsorted:
   - python38-nocaselist 
   - python38-node-semver 
   - python38-nodeenv 
+  - python38-nornir 
   - python38-nose 
   - python38-nose-cov 
   - python38-nose-cover3 

@@ -286,6 +286,7 @@
       <repopackage name="hwdata" arch="x86_64"/>
       <repopackage name="hwinfo" arch="x86_64"/>
       <repopackage name="hyper-v" arch="x86_64"/>
+      <repopackage name="inotify-tools" arch="x86_64"/>
       <repopackage name="iproute2" arch="x86_64"/>
       <repopackage name="ipset" arch="x86_64"/>
       <repopackage name="iptables" arch="x86_64"/>
@@ -665,6 +666,7 @@
       <repopackage name="libimobiledevice-1_0-6" arch="x86_64"/>
       <repopackage name="libini_config5" arch="x86_64"/>
       <repopackage name="libinih0" arch="x86_64"/>
+      <repopackage name="libinotifytools0" arch="x86_64"/>
       <repopackage name="libinput10" arch="x86_64"/>
       <repopackage name="libip4tc2" arch="x86_64"/>
       <repopackage name="libip6tc2" arch="x86_64"/>
