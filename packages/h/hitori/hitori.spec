@@ -1,7 +1,7 @@
 #
 # spec file for package hitori
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hitori
-Version:        3.38.0
+Version:        3.38.1
 Release:        0
 Summary:        Original puzzle of Nikoli
 License:        GPL-3.0-or-later
