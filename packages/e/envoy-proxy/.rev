@@ -101,4 +101,12 @@ After accepting this SR, please create links:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>837198</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>05a70c82cf16fc2d4a21a0f9276b344c</srcmd5>
+    <version>1.14.4</version>
+    <time>1616168428</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879672</requestid>
+  </revision>
 </revisionlist>
