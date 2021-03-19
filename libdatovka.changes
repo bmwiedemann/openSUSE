@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Fri Mar 19 10:29:18 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- move .lang to the main rpm (to avoid conflicts of w/ multiple libs)
+
+-------------------------------------------------------------------
+Mon Mar  1 09:43:33 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- initial version (0.1.1)
