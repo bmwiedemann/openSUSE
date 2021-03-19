@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 16 07:34:25 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO on %arm as it consumes too much memory
+
+-------------------------------------------------------------------
+Mon Mar 15 19:04:22 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to avoid OOM
+
+-------------------------------------------------------------------
 Sun Mar  7 08:43:38 UTC 2021 - Christoph G <foss@grueninger.de>
 
 - Update to SuiteSparse 5.9.0

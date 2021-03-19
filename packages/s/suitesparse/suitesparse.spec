@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifarch %{arm}
+%define _lto_cflags %{nil}
+%endif
 
 %ifarch m68k riscv64
 %bcond_with openblas
