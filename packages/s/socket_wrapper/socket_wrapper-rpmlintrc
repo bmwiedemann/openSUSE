@@ -7,3 +7,4 @@
 addFilter("shlib-policy-name-error")
 addFilter("shared-lib-calls-exit")
 addFilter("devel-file-in-non-devel-package")
+addFilter("shared-lib-without-dependency-information")

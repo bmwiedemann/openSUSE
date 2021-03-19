@@ -24,7 +24,7 @@
 ############################# NOTE ##################################
 
 Name:           socket_wrapper
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        A library passing all socket communications through Unix sockets
 License:        BSD-3-Clause
@@ -50,6 +50,21 @@ To use it, set the following environment variables:
 LD_PRELOAD=libsocket_wrapper.so
 SOCKET_WRAPPER_DIR=/path/to/swrap_dir
 
+%package -n libsocket_wrapper_noop0
+Summary:        A library providing dummies for socket_wrapper
+
+%description -n libsocket_wrapper_noop0
+Applications with the need to call socket_wrapper_enabled() should link against
+-lsocket_wrapper_noop in order to resolve the symbol at link time.
+
+%package -n libsocket_wrapper_noop-devel
+Summary:        Development headers for libsocket_wrapper_noop
+Requires:       libsocket_wrapper_noop0 = %{version}
+
+%description -n libsocket_wrapper_noop-devel
+Development headers for applications with the need to call
+socket_wrapper_enabled().
+
 %prep
 %autosetup
 
@@ -69,6 +84,10 @@ SOCKET_WRAPPER_DIR=/path/to/swrap_dir
 
 %postun -p /sbin/ldconfig
 
+%post -n libsocket_wrapper_noop0 -p /sbin/ldconfig
+
+%postun -n libsocket_wrapper_noop0 -p /sbin/ldconfig
+
 %files
 %doc AUTHORS README.md CHANGELOG
 %license LICENSE
@@ -79,5 +98,14 @@ SOCKET_WRAPPER_DIR=/path/to/swrap_dir
 %{_libdir}/cmake/socket_wrapper/socket_wrapper-config-version.cmake
 %{_libdir}/cmake/socket_wrapper/socket_wrapper-config.cmake
 %{_libdir}/pkgconfig/socket_wrapper.pc
+
+%files -n libsocket_wrapper_noop0
+%{_libdir}/libsocket_wrapper_noop.so.*
+
+%files -n libsocket_wrapper_noop-devel
+%{_includedir}/socket_wrapper.h
+%{_libdir}/libsocket_wrapper_noop.so
+%{_libdir}/cmake/socket_wrapper/socket_wrapper_noop-config*.cmake
+%{_libdir}/pkgconfig/socket_wrapper_noop.pc
 
 %changelog
