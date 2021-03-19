@@ -20,12 +20,14 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-defcon
-Version:        0.7.2
+Version:        0.8.1
 Release:        0
 Summary:        A set of flexible objects for representing UFO data
 License:        MIT
 URL:            http://code.typesupply.com
 Source:         https://files.pythonhosted.org/packages/source/d/defcon/defcon-%{version}.zip
+BuildRequires:  %{python_module fs}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

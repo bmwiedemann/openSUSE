@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 19 01:52:35 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update 0.8.1:
+  * Fixes behavior with None in removeObserver (#349)
+  * Resets glyph set on save (#297)
+  * Gives Anchors and Guidelines a glyph attribute (#325)
+  * Dispatcher enhancements (#337)
+  * Adds __eq__ in BaseDict (#344) 
+
+-------------------------------------------------------------------
 Sat Feb 13 10:25:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 (needs FontTools which needs scipy) 

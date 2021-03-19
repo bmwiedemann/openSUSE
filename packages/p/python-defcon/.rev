@@ -38,4 +38,17 @@
     <comment>- skip python 3.6 (needs FontTools which needs scipy)</comment>
     <requestid>871634</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>74ab46194e65d641141bd8719309204d</srcmd5>
+    <version>0.8.1</version>
+    <time>1616168578</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update 0.8.1:
+  * Fixes behavior with None in removeObserver (#349)
+  * Resets glyph set on save (#297)
+  * Gives Anchors and Guidelines a glyph attribute (#325)
+  * Dispatcher enhancements (#337)
+  * Adds __eq__ in BaseDict (#344)</comment>
+    <requestid>879997</requestid>
+  </revision>
 </revisionlist>
