@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 16 13:55:27 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.3
+- Changes since 5.21.2:
+  * [applet] Remove broken call to closeSearch()
+  * [applet] Manually bind width of list item
+
+-------------------------------------------------------------------
 Tue Mar  2 15:01:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.2
