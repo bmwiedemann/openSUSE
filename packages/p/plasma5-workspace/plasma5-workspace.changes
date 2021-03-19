@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 16 13:55:27 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.3
+- Changes since 5.21.2:
+  * [Image wallpaper] Make the Positioning combobox as equally wide as the other comboboxes
+  * [Notifications] Emit dataChanged in setData call
+  * [applets/devicenotifier] Manually bind width of list item
+  * Re-add Force Font DPI spinbox on Wayland (kde#433115)
+  * proper form factor filtering (kde#433983)
+  * Pass Qt::MatchExactly when calling QAbstractItemModel::match for strings
+  * Adapt more KCMs to using Kirigami.ActionToolbar for their footer actions
+  * Fix query of StartPlasma::hasSystemdService (kde#433333)
+  * [lookandfeel/ActionButton] Fix broken focus effect (kde#433755)
+  * Use separate face controller for appearance config (kde#424458)
+
+-------------------------------------------------------------------
 Tue Mar  2 15:14:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.2
