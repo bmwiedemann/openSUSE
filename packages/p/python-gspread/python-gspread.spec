@@ -1,7 +1,7 @@
 #
 # spec file for package python-gspread
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-gspread
-Version:        3.3.1
+Version:        3.7.0
 Release:        0
 Summary:        Google Spreadsheets Python API
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/burnash/gspread
 Source:         https://github.com/burnash/gspread/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module betamax}
-BuildRequires:  %{python_module oauth2client}
-BuildRequires:  %{python_module requests >= 2.2.1}
+BuildRequires:  %{python_module google-auth-oauthlib >= 0.4.1}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-requests >= 2.2.1
+Requires:       python-google-auth >= 1.12.0
+Requires:       python-google-auth-oauthlib >= 0.4.1
 BuildArch:      noarch
 %python_subpackages
 

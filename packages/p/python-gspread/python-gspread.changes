@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Mar 19 05:26:12 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.7.0:
+  * Add `Worksheet.insert_note()`, `Worksheet.update_note()`, `Worksheet.clear_note()` (#818 by @lavigne958)
+  * Add `Worksheet.insert_cols()` (#802 by @AlexeyDmitriev)
+  * Add `value_render_option` parameter to `Worksheet.get_all_records()` (#776 by @damgad)
+  * Remove `requests` from `install_requires` (#801)
+  * Simplify implementation of `Worksheet.insert_rows()` (#799 by @AlexeyDmitriev)
+  * Add `auth.service_account_from_dict()` (#785 b7 @mahenzon)
+  * Fix `ValueRange.from_json()` (#791 by @erakli)
+  * Allow `auth` to be `None`. Fix #773 (#774 by @lepture)
+  * Add `Worksheet.insert_rows()` (#734 by @tr-fi)
+  * Add `Worksheet.copy_to()` (#758 by @JoachimKoenigslieb)
+  * Add ability to create a cell instance using A1 notation (#765 by @tivaliy)
+  * Add `auth.service_account()` (#768)
+  * Add Authlib usage (#552 by @lepture)
+  * Simplified OAuth2 flow (#762)
+  * Fix `Worksheet.delete_rows()` index error (#760 by @rafa-guillermo)
+  * Deprecate `Worksheet.delete_row()` (#766)
+  * Scope `Worksheet.find()` to a specific row or a column (#739 by @alfonsocv12)
+  * Add `Worksheet.add_protected_range()` #447 (#720 by @KesterChan01)
+  * Add ability to fetch cell address in A1 notation (#763 by @tivaliy)
+  * Add `Worksheet.delete_columns()` (#761 by @rafa-guillermo)
+  * Ignore numericising specific columns in `get_all_records` (#701 by @benjamindhimes)
+  * Add option ``folder_id`` when creating a spreadsheet (#754 by @Abdellam1994)
+  * Add `insertDataOption` to `Worksheet.append_row()` and `Worksheet.append_rows()` (#719 by @lobatt)
+  * Fix `TypeError` when using gspread in google colab (#750)
+  * Remove `oauth2client` in favor of `google-auth` #472, #529 (#637 by @BigHeadGeorge)
+  * Convert `oauth2client` credentials to `google-auth` (#711 by @aiguofer)
+  * Remove unnecessary `login()` from `gspread.authorize`
+  * Fix sheet name quoting issue (#554, #636, #716):
+    + Add quotes to worksheet title for get_all_values (#640 by @grlbrwrg, #717 by @zynaxsoft)
+    + Escaping title containing single quotes with double quotes (#730 by @vijay-shanker)
+    + Use `utils.absolute_range_name()` to handle range names (#748)
+  * Fix `numericise()`: add underscores test to work in python2 and <python3.6 (#622 by @epicfaace)
+  * Add `supportsAllDrives` to Drive API requests (#709 by @justinr1234)
+  * Add `Worksheet.merge_cells()` (#713 by @lavigne958)
+  * Improve `Worksheet.merge_cells()` and add `merge_type` parameter (#742 by @aiguofer)
+  * Add `Worksheet.sort()` (#639 by @kirillgashkov)
+  * Add ability to reorder worksheets #570 (#571 by @robin900)
+    + Add `Spreadsheet.reorder_worksheets()`
+    + Add `Worksheet.update_index()`
+  * Add `test_update_cell_objects` (#698 by @ogroleg)
+  * Add `Worksheet.append_rows()` (#556 by @martinwarby, #694 by @fabytm)
+  * Add `Worksheet.delete_rows()` (#615 by @deverlex)
+  * Speed up `Client.open()` by querying files by title in Google Drive (#684 by @aiguofer)
+  * Add `freeze`, `set_basic_filter` and `clear_basic_filter` methods to `Worksheet` (#574 by @aiguofer)
+  * Use Drive API v3 for creating and deleting spreadsheets (#573 by @aiguofer)
+  * Implement `value_render_option` in `get_all_values` (#648 by @mklaber)
+  * Set position of a newly added worksheet (#688 by @djmgit)
+  * Add url properties for `Spreadsheet` and `Worksheet` (#725 by @CrossNox)
+
+-------------------------------------------------------------------
 Wed Apr  8 13:27:48 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.3.1
