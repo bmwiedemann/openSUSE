@@ -58,7 +58,8 @@ Sun Sep  6 08:44:24 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU bison 3.7.2:
   * fix all known Bison CVEs relating to the bison-the-program
-    itself, not the generated code.
+    itself, not the generated code. Includes CVE-2020-24979: buffer
+    overflow in src/symtab.c (boo#1176227)
   * concurrent build issues
   * Push parsers always use YYMALLOC/YYFREE
   * Fix unlikely crashes found by fuzzing
