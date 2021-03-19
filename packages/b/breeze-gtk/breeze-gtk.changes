@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 16 13:55:22 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.3
+- Changes since 5.21.2:
+  * Adjust menu heights to properly match Breeze QStyle, second time (kde#433158)
+  * gtk3, gtk4: unscrew libhandy's height (kde#430081)
+
+-------------------------------------------------------------------
 Tue Mar  2 15:01:35 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.2
