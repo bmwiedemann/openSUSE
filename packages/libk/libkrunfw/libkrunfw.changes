@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 19 02:12:53 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- different approach: let's enable only the arch-es we know are supported
+  (x86_64 and Arm64)
+
+-------------------------------------------------------------------
+Fri Mar 19 00:12:16 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- doesn't build on i586 so disable it 
+
+-------------------------------------------------------------------
 Mon Mar  8 11:48:35 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - override build date (boo#1047218)

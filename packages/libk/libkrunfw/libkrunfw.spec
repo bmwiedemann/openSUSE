@@ -20,10 +20,11 @@ Name:           libkrunfw
 Version:        0.7
 Release:        0
 Summary:        A dynamic library bundling a Linux kernel in a convenient storage format
-License:        LGPL-2.1-only AND GPL-2.0-only
+License:        GPL-2.0-only AND LGPL-2.1-only
 URL:            https://github.com/containers/libkrunfw
 Source0:        https://github.com/containers/libkrunfw/archive/v%{version}.tar.gz#/libkrunfw-%{version}.tar.gz
 Source1:        https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.10.10.tar.xz
+ExclusiveArch:  x86_64 aarch64
 BuildRequires:  bc
 BuildRequires:  binutils
 BuildRequires:  bison
