@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 18 18:57:03 UTC 2021 - jason.record@gmail.com
+
+- Host information now persistent across reboots (bsc#1183732)
+- Fixed output strings
+
+-------------------------------------------------------------------
 Mon Nov 23 16:22:47 UTC 2020 - jason.record@suse.com
 
 - Additions to version 1.0.6
