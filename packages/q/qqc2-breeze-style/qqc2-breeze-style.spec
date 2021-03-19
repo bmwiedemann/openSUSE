@@ -18,19 +18,17 @@
 
 %bcond_without lang
 Name:           qqc2-breeze-style
-Version:        5.21.2
+Version:        5.21.3
 Release:        0
 Summary:        Breeze Style for Qt Quick Controls 2
 License:        LGPL-2.1-only OR LGPL-3.0-only
 Group:          System/Libraries
 URL:            https://www.kde.org
-Source:         qqc2-breeze-style-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/qqc2-breeze-style-%{version}.tar.xz
 %if %{with lang}
-Source1:        qqc2-breeze-style-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/qqc2-breeze-style-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-RangeSlider-Lower-Kirigami-version-to-2.14.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
