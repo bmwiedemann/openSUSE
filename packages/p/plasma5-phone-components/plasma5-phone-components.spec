@@ -23,7 +23,7 @@
 
 %bcond_without lang
 Name:           plasma5-phone-components
-Version:        5.21.2
+Version:        5.21.3
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -33,9 +33,9 @@ Summary:        Plasma Mobile
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         plasma-phone-components-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/plasma-phone-components-%{version}.tar.xz
 %if %{with lang}
-Source1:        plasma-phone-components-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-phone-components-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules
