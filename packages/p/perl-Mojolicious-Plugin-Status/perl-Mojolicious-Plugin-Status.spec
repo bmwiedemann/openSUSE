@@ -18,7 +18,7 @@
 
 %define cpan_name Mojolicious-Plugin-Status
 Name:           perl-Mojolicious-Plugin-Status
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        Mojolicious server status
 License:        Artistic-2.0

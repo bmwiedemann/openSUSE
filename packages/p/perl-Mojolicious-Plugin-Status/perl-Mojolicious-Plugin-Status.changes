@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 19 03:07:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-Status/Changes
+
+  1.16  2021-03-18
+    - Updated ui with more consistent Mojolicious design.
+
+-------------------------------------------------------------------
 Sun Feb 21 03:12:42 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.15
