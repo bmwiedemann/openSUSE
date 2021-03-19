@@ -16,23 +16,21 @@
 #
 
 
+%define _dminitdir %{_prefix}/lib/X11/displaymanagers
 %if 0%{?suse_version} >= 1550
 %define UsrEtcMove 1
 %endif
-
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
-%define _dminitdir /usr/lib/X11/displaymanagers
 Name:           xdm
 Version:        1.1.12
 Release:        0
 Summary:        X Display Manager
 License:        MIT
 Group:          System/X11/Utilities
-URL:            http://xorg.freedesktop.org/
+URL:            https://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
 Source1:        xdm.tar.bz2
 Source2:        HOWTO.xdm
@@ -46,6 +44,7 @@ BuildRequires:  firewall-macros
 BuildRequires:  libtool
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xaw7)
@@ -59,11 +58,6 @@ BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtrans)
 Requires:       %fillup_prereq
-%if 0%{?suse_version} >= 1550
-Requires:       %{_bindir}/pidof
-%else
-Requires:       /sbin/pidof
-%endif
 Requires:       /sbin/startproc
 Requires:       logrotate
 Requires:       sessreg
@@ -74,12 +68,16 @@ Requires:       xmessage
 Requires:       xrdb
 Requires:       xset
 Requires:       xsetroot
+Requires:       xterm-bin
 Recommends:     dbus-1-x11
 # This was part of the xorg-x11 package up to version 7.6
 Conflicts:      xorg-x11 <= 7.6
-BuildRequires:  systemd-rpm-macros
 %{?systemd_requires}
-Requires:       xterm-bin
+%if 0%{?suse_version} >= 1550
+Requires:       %{_bindir}/pidof
+%else
+Requires:       /sbin/pidof
+%endif
 
 %description
 Xdm manages a collection of X displays, which may be on the local host
@@ -114,7 +112,7 @@ autoreconf -fi
         --with-xdmconfigdir=%{_sysconfdir}/X11/xdm \
         --with-xdmscriptdir=%{_sysconfdir}/X11/xdm \
 	--with-systemdsystemunitdir=no
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -126,19 +124,19 @@ pushd %{buildroot}
 tar xf %{SOURCE1}
 %if 0%{?UsrEtcMove}
 patch -p0 < %{PATCH2}
-mkdir -p usr/etc/X11/xdm
-mv etc/X11/xdm/* usr/etc/X11/xdm
+mkdir -p usr%{_sysconfdir}/X11/xdm
+mv etc/X11/xdm/* usr%{_sysconfdir}/X11/xdm
 # Edited by SUSEConfig.xdm, package a copy
 for i in xdm-config Xservers; do
-	cp usr/etc/X11/xdm/$i etc/X11/xdm/$i
+	cp usr%{_sysconfdir}/X11/xdm/$i etc/X11/xdm/$i
 done
-mv etc/pam.d usr/etc/
+mv etc/pam.d usr%{_sysconfdir}/
 %else
 patch -p0 < %{PATCH4}
 %endif
-%if "%{_fillupdir}" != "/var/adm/fillup-templates"
+%if "%{_fillupdir}" != "%{_localstatedir}/adm/fillup-templates"
   mkdir -p %{buildroot}$(dirname %{_fillupdir})
-  mv %{buildroot}/var/adm/fillup-templates \
+  mv %{buildroot}%{_localstatedir}/adm/fillup-templates \
      %{buildroot}$(dirname %{_fillupdir})
 %endif
 
@@ -173,19 +171,19 @@ chmod 0755 %{buildroot}%{_sbindir}/rcxdm
 # prepare for defaul-dm to be chosen by means of update-alternatives
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-displaymanager
-ln -s %{_sysconfdir}/alternatives/default-displaymanager %{buildroot}/usr/lib/X11/displaymanagers/default-displaymanager
+ln -s %{_sysconfdir}/alternatives/default-displaymanager %{buildroot}%{_prefix}/lib/X11/displaymanagers/default-displaymanager
 # Inject a dummy 'console' selection - which used to be choice in /etc/sysconfig/displaymanager
-touch %{buildroot}/usr/lib/X11/displaymanagers/console
+touch %{buildroot}%{_prefix}/lib/X11/displaymanagers/console
 
 %post
 %service_add_post display-manager.service
 %{fillup_only -n displaymanager}
-%{_sbindir}/update-alternatives --install /usr/lib/X11/displaymanagers/default-displaymanager \
-  default-displaymanager /usr/lib/X11/displaymanagers/console 5
-%{_sbindir}/update-alternatives --install /usr/lib/X11/displaymanagers/default-displaymanager \
-  default-displaymanager /usr/lib/X11/displaymanagers/xdm 10
+%{_sbindir}/update-alternatives --install %{_prefix}/lib/X11/displaymanagers/default-displaymanager \
+  default-displaymanager %{_prefix}/lib/X11/displaymanagers/console 5
+%{_sbindir}/update-alternatives --install %{_prefix}/lib/X11/displaymanagers/default-displaymanager \
+  default-displaymanager %{_prefix}/lib/X11/displaymanagers/xdm 10
 # get rid of DISPLAYMANAGER in /etc/sysconfig/displaymanager (boo#1125040)
-sed -i 's/DISPLAYMANAGER=.*//g' /etc/sysconfig/displaymanager
+sed -i 's/DISPLAYMANAGER=.*//g' %{_sysconfdir}/sysconfig/displaymanager
 %firewalld_reload
 
 %pre
@@ -198,22 +196,22 @@ sed -i 's/DISPLAYMANAGER=.*//g' /etc/sysconfig/displaymanager
 %else
 %service_del_postun -n display-manager.service
 %endif
-[ -f /usr/lib/X11/displaymanagers/console ] || %{_sbindir}/update-alternatives \
-  --remove default-displaymanager /usr/lib/X11/displaymanagers/console
-[ -f /usr/lib/X11/displaymanagers/xdm ] || %{_sbindir}/update-alternatives \
-  --remove default-displaymanager /usr/lib/X11/displaymanagers/xdm
+[ -f %{_prefix}/lib/X11/displaymanagers/console ] || %{_sbindir}/update-alternatives \
+  --remove default-displaymanager %{_prefix}/lib/X11/displaymanagers/console
+[ -f %{_prefix}/lib/X11/displaymanagers/xdm ] || %{_sbindir}/update-alternatives \
+  --remove default-displaymanager %{_prefix}/lib/X11/displaymanagers/xdm
 
 %preun
 %service_del_preun display-manager.service
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README.md
+%license COPYING
+%doc AUTHORS ChangeLog README.md
 %doc HOWTO.xdm
 %dir %{_dminitdir}
 %{_dminitdir}/xdm
 %{_dminitdir}/console
-/usr/lib/X11/displaymanagers/default-displaymanager
+%{_prefix}/lib/X11/displaymanagers/default-displaymanager
 %ghost %{_sysconfdir}/alternatives/default-displaymanager
 %if 0%{?UsrEtcMove}
 %dir %{_distconfdir}/X11
@@ -225,11 +223,11 @@ sed -i 's/DISPLAYMANAGER=.*//g' /etc/sysconfig/displaymanager
 %else
 %dir %{_sysconfdir}/X11/xdm/scripts
 %endif
-%dir /usr/lib/firewalld
-%dir /usr/lib/firewalld/services
-/usr/lib/firewalld/services/x11.xml
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/x11.xml
 %{_unitdir}/display-manager.service
-/usr/lib/X11/display-manager
+%{_prefix}/lib/X11/display-manager
 %config %{_sysconfdir}/logrotate.d/xdm
 %if 0%{?UsrEtcMove}
 %{_distconfdir}/pam.d/xdm
@@ -251,7 +249,7 @@ sed -i 's/DISPLAYMANAGER=.*//g' /etc/sysconfig/displaymanager
 %{_datadir}/X11/app-defaults/Chooser
 %{_mandir}/man8/chooser.8%{?ext_man}
 %{_mandir}/man8/xdm.8%{?ext_man}
-%ifnarch %ix86
+%ifnarch %{ix86}
 %dir %{_libdir}/X11
 %endif
 
