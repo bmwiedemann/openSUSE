@@ -7,11 +7,11 @@ Date:   Fri Dec 21 19:14:04 2018 +0200
    atomic operations. Check first if support is available without
    linking, otherwise use the library.
 
-Index: mariadb-10.5.8/configure.cmake
+Index: mariadb-10.5.9/configure.cmake
 ===================================================================
---- mariadb-10.5.8.orig/configure.cmake
-+++ mariadb-10.5.8/configure.cmake
-@@ -861,7 +861,25 @@ int main()
+--- mariadb-10.5.9.orig/configure.cmake
++++ mariadb-10.5.9/configure.cmake
+@@ -862,7 +862,25 @@ int main()
    long long int *ptr= &var;
    return (int)__atomic_load_n(ptr, __ATOMIC_SEQ_CST);
  }"
@@ -38,11 +38,11 @@ Index: mariadb-10.5.8/configure.cmake
  
  IF(WITH_VALGRIND)
    SET(HAVE_valgrind 1)
-Index: mariadb-10.5.8/mysys/CMakeLists.txt
+Index: mariadb-10.5.9/mysys/CMakeLists.txt
 ===================================================================
---- mariadb-10.5.8.orig/mysys/CMakeLists.txt
-+++ mariadb-10.5.8/mysys/CMakeLists.txt
-@@ -140,6 +140,10 @@ TARGET_LINK_LIBRARIES(mysys dbug strings
+--- mariadb-10.5.9.orig/mysys/CMakeLists.txt
++++ mariadb-10.5.9/mysys/CMakeLists.txt
+@@ -154,6 +154,10 @@ TARGET_LINK_LIBRARIES(mysys dbug strings
   ${LIBNSL} ${LIBM} ${LIBRT} ${CMAKE_DL_LIBS} ${LIBSOCKET} ${LIBEXECINFO})
  DTRACE_INSTRUMENT(mysys)
  
@@ -53,11 +53,11 @@ Index: mariadb-10.5.8/mysys/CMakeLists.txt
  IF(HAVE_BFD_H)
    TARGET_LINK_LIBRARIES(mysys bfd)  
  ENDIF(HAVE_BFD_H)
-Index: mariadb-10.5.8/sql/CMakeLists.txt
+Index: mariadb-10.5.9/sql/CMakeLists.txt
 ===================================================================
---- mariadb-10.5.8.orig/sql/CMakeLists.txt
-+++ mariadb-10.5.8/sql/CMakeLists.txt
-@@ -215,6 +215,10 @@ ELSE()
+--- mariadb-10.5.9.orig/sql/CMakeLists.txt
++++ mariadb-10.5.9/sql/CMakeLists.txt
+@@ -222,6 +222,10 @@ ELSE()
    SET(MYSQLD_SOURCE main.cc ${DTRACE_PROBES_ALL})
  ENDIF()
  
@@ -65,6 +65,6 @@ Index: mariadb-10.5.8/sql/CMakeLists.txt
 +  TARGET_LINK_LIBRARIES(sql atomic)
 +ENDIF()
 +
- IF(MSVC)
+ IF(MSVC OR CMAKE_SYSTEM_NAME MATCHES AIX)
    SET(libs_to_export_symbols sql mysys dbug strings)
    # Create shared library of already compiled object

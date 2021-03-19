@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 12 22:07:53 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
+
+- Update to 10.5.9
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-1059-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1059-changelog
+  * fixes for the following security vulnerabilities:
+    10.5.9: none
+- Tracker bug: [bsc#1182739]
+- Update fixes [bsc#1182255] (MDL BF-BF Conflict caused by
+  TRUNCATE TABLE)
+- refresh mariadb-10.2.19-link-and-enable-c++11-atomics.patch
+- remove fix-lock-rollback-assert-abort.patch (applied upstream)
+
+-------------------------------------------------------------------
 Mon Feb 15 18:49:43 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
 
 - update the list of the skipped tests
