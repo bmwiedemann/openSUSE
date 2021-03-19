@@ -295,4 +295,12 @@
     <comment></comment>
     <requestid>870852</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5b3a5e669757dfe847101c5f46934439</srcmd5>
+    <version>3.38.6</version>
+    <time>1616168628</time>
+    <user>RBrownSUSE</user>
+    <comment>Update to 3.38.6 (forwarded request 880087 from dimstar)</comment>
+    <requestid>880103</requestid>
+  </revision>
 </revisionlist>
