@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 17 14:40:00 UTC 2021 - ro@suse.de
+
+- Update to version 84.87+git20210317.2c04190:
+  * Don't rely on external dirname utility, but use ${d:h} tcsh expression.
+  * Enable locking feature of tcsh history file handling
+  * Add tcsh xd alias as well.
+  * Add ash xd() function as well.
+  * Add new function xd() "jump to the directory of a file"
+
+-------------------------------------------------------------------
 Mon Mar 08 15:11:13 UTC 2021 - ro@suse.de
 
 - Update to version 84.87+git20210308.d7a7d3a:

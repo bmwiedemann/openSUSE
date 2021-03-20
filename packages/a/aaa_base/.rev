@@ -3881,4 +3881,17 @@
   * Fix keyseq specifications in /etc/inputrc{,.keys}</comment>
     <requestid>877770</requestid>
   </revision>
+  <revision rev="478" vrev="1">
+    <srcmd5>dc2031feb83853c7b4c535165884369a</srcmd5>
+    <version>84.87+git20210317.2c04190</version>
+    <time>1616271940</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20210317.2c04190:
+  * Don't rely on external dirname utility, but use ${d:h} tcsh expression.
+  * Enable locking feature of tcsh history file handling
+  * Add tcsh xd alias as well.
+  * Add ash xd() function as well.
+  * Add new function xd() &quot;jump to the directory of a file&quot;</comment>
+    <requestid>879700</requestid>
+  </revision>
 </revisionlist>
