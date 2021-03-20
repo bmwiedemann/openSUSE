@@ -1,7 +1,7 @@
 #
 # spec file for package openrct2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define title_version_url %{title_version}c
 %define objects_version 1.0.20
 Name:           openrct2
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        An open source re-implementation of Roller Coaster Tycoon 2
 License:        GPL-3.0-only

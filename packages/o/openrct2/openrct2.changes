@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 19 20:42:40 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.3
+  * An enhanced Track Designer with ability to add/remove
+    scenery and footpaths.
+  * The Track Designer has a pause button now.
+  * There's a new single-rail roller coaster.
+  * Terrain surfaces from RollerCoaster Tycoon 1 are now supported.
+  * Lots of plugin improvements and new API additions.
+  * Lots of bugfixes.
+
+-------------------------------------------------------------------
 Tue Dec 29 10:03:44 UTC 2020 - Matthias Mailänder <matthias@mailaender.name>
 
 - Update to version 0.3.2
