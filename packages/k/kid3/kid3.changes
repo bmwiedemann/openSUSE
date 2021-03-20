@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 19 12:33:09 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.8.6
+  * Improved:
+    + Support Qt 6.
+    + Windows: Provide nicer default style.
+  * Fixed:
+    + Windows 64-bit binary: Crash when using id3lib.
+    + Discogs import.
+    + Amazon import.
+    + Removed TrackType.org import.
+
+-------------------------------------------------------------------
 Mon Feb 01 08:50:22 UTC 2021 - enzokiel@kabelmail.de
 
 - Shared libs libkid3-core.so and libkid3-gui.so are no longer
