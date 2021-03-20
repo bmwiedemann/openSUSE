@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 20 10:27:40 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.27.1
+  * Bugfixes and minor changes:
+    - Fixed a socket event sequencing invariant violation in 
+      tls_layer
+    - Fixed query_string constructor leaving object in undefined
+      state if set fails
+    - Fixed arguments passed from the templated equal_constime
+      helper
+
+-------------------------------------------------------------------
 Thu Mar 11 17:20:01 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.27.0
