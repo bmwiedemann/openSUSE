@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Mar 20 12:24:03 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- update to 1.18.1
+  * Add arm64 support for PY3.6 (gh#googleapis/proto-plus-python#219)
+- from 1.18.0
+  * add copy_from method for field assignment
+    (gh#googleapis/proto-plus-python#512) 
+
+-------------------------------------------------------------------
+Mon Mar 15 17:22:01 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- update to 1.17.0
+  * add preserving_proto_field_name to to_json (gh#googleapis/proto-plus-python#213)
+- from 1.16.0
+  * add preserving_proto_field_name passthrough in MessageMeta.to_dict
+    (gh#googleapis/proto-plus-python#211)
+- from 1.15.0
+  * allow_alias fro enums (gh#googleapis/proto-plus-python#207)
+- from 1.14.3
+  * adding enums to a repeated field does not raise a TypeError
+    (gh#googleapis/proto-plus-python#202)
+- from 1.14.2
+  * use the correct environment for uploading to pypi
+- from 1.14.1
+  * install the wheel dependency
+- from 1.14.0
+  * Features
+    + Pypi publish ghub actions (gh#googleapis/proto-plus-python#189)
+  * Bug Fixes
+    * proper setitem and insert for RepeatedComposite
+      (gh#googleapis/proto-plus-python#178)
+    * proper native marshal for repeated enumeration fields
+      (gh#googleapis/proto-plus-python#180)
+- from 1.13.1
+  * update docstring to match type hint (gh#googleapis/proto-plus-python#172)
+
+-------------------------------------------------------------------
 Wed Jan  6 15:48:02 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
 
 - update to 1.13.0
