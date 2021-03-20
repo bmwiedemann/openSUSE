@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-bsnes
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-bsnes
-Version:        0~git20200403
+Version:        0~git20210308
 Release:        0
 Summary:        The bsnes libretro core for SNES emulation
 License:        GPL-3.0-only

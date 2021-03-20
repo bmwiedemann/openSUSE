@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Mar 13 03:04:43 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210308:
+  * Add missing "\"
+  * Add gb/Core/rumble.c
+  * Set correct flags to disable gb debugger for Android
+  * hiro: Remove gtksourceview dependency.
+  * ruby: Auto detect some dependencies with pkg-config.
+  * Update the FreeBSD image to fix a build failure.
+  * Remove flashing bottom line when playing SGB games
+  * Simplify SGB path code
+  * CI: Add settings.bml to Cirrus and Github Actions
+  * Fixed a small typo
+  * Allow Satellaview games smaller than 1024kb to work
+  * Backport https://github.com/bsnes-emu/bsnes/commit/d0efbfbcd937142969b47d65a04ffe4f5a77b50d
+  * Add files via upload
+  * Fix LIBNX build
+  * Fix gitlab builds
+  * Create .gitlab-ci.yml
+  * removed todo comment
+  * fix touchscreen sensitivity fix when retro_pointer_superscope_reverse_buttons enabled
+  * fix case condition for super scope to return 0 if not supported
+  * fixed building for iOS/tvOS
+  * support core option of reversing super scope trigger and cursor buttons for touchscreen lightgun
+  * support for core option for touchscreen lightgun
+  * fixed turbo and pause button handling; refactored to touchscreen input handling methods
+  * added config option for pointer relative mode (default is false for now)
+  * first cut at semi-working touchscreen superscope implementation
+  * Add Makefile and Makefile.common
+  * Corrected valid extensions to fix archive loading of GB/GBC
+  * Consider the overscan setting when getting the aspect ratio
+
+-------------------------------------------------------------------
 Sat May 30 17:27:08 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200403:
