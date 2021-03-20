@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 19 14:28:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add 166-add-xfail-test_add_or_replace_parameter_fail.patch,
+  which makes tests working with CVE-2021-23336 (bsc#1181270).
+
+-------------------------------------------------------------------
 Wed Jul 22 11:05:23 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.22.0

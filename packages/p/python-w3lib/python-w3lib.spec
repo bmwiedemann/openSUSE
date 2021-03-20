@@ -1,7 +1,7 @@
 #
 # spec file for package python-w3lib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,10 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/scrapy/w3lib
 Source:         https://files.pythonhosted.org/packages/source/w/w3lib/w3lib-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 166-add-xfail-test_add_or_replace_parameter_fail.patch mcepl@suse.com
+# Allow working with Python fixed CVE-2021-23336
+Patch0:         166-add-xfail-test_add_or_replace_parameter_fail.patch
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.4.1}
 BuildRequires:  fdupes
@@ -56,7 +60,7 @@ This is a Python library of web-related functions, such as:
 * extract arguments from urls
 
 %prep
-%setup -q -n w3lib-%{version}
+%autosetup -p1 -n w3lib-%{version}
 
 %build
 %python_build
@@ -66,7 +70,7 @@ This is a Python library of web-related functions, such as:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %doc README.rst
