@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-photutils
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
@@ -35,14 +35,14 @@ BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python >= 3.6
+Requires:       python >= 3.7
 Requires:       python-astropy >= 4.0
 Requires:       python-numpy >= 1.17
 Requires:       python-scipy >= 0.19
+Recommends:     python-gwcs >= 0.12
 Recommends:     python-matplotlib >= 2.2
 Recommends:     python-scikit-image >= 0.14.2
 Recommends:     python-scikit-learn >= 0.19
-Recommends:     python-gwcs >= 0.12
 # SECTION test requirements
 BuildRequires:  %{python_module astropy >= 4.0}
 BuildRequires:  %{python_module pytest-astropy >= 0.7}
