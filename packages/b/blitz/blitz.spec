@@ -18,14 +18,13 @@
 
 %define   sonum 0
 # Conditionals
+# PAPI >= 6.0 is unsupported [https://github.com/blitzpp/blitz/issues/162]
+%bcond_with papi
 # Issue with make doc causing failed builds for openSUSE Leap 15.2
-# openSUSE >= 1550 has PAPI >= 6.0 which is unsupported [https://github.com/blitzpp/blitz/issues/162]
 %if 0%{?suse_version} >= 1550
 %bcond_without doc
-%bcond_with papi
 %else
 %bcond_with doc
-%bcond_without papi
 %endif
 # /Conditionals
 Name:           blitz

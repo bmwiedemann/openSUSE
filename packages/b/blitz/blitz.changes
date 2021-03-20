@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 19 09:39:38 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build without PAPI support for all supported openSUSE versions
+  (boo#1183759).
+
+-------------------------------------------------------------------
 Wed Aug 19 17:11:18 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix building for openSUSE >= 1550 by building without papi
