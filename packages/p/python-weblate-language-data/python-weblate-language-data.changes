@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Thu Mar 11 09:35:51 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2021.3
+  * Fix missing plurals handling
+  * Remove location from the PO files
+  * Improve language names
+  * Prefer inverted name when adding language
+
+-------------------------------------------------------------------
+Thu Feb 11 14:22:49 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- update to version 2020.11
+  * no changelog available
+
+-------------------------------------------------------------------
+Thu Feb 11 13:39:56 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- initial package version 2020.10
+

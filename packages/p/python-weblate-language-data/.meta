@@ -1,0 +1,6 @@
+<package name="python-weblate-language-data" project="openSUSE:Factory">
+  <title>python-weblate-language-data</title>
+  <description>Contains several modules containing language definitions and Gettext translations for them (in a way that they would be discovered by Django when used as an Django application).</description>
+  <devel project="devel:languages:python" package="python-weblate-language-data"/>
+  <url>https://github.com/WeblateOrg/language-data</url>
+</package>
