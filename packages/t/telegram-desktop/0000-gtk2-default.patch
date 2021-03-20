@@ -1,0 +1,17 @@
+--- tdesktop-2.5.6-full/Telegram/SourceFiles/platform/linux/linux_gtk_integration.cpp.orig	2021-01-25 12:03:00.667137167 +0100
++++ tdesktop-2.5.6-full/Telegram/SourceFiles/platform/linux/linux_gtk_integration.cpp	2021-01-25 12:04:18.203759707 +0100
+@@ -317,12 +317,12 @@ void GtkIntegration::load() {
+ 	QLibrary lib_gtk;
+ 	lib_gtk.setLoadHints(QLibrary::DeepBindHint);
+ 
+-	if (LoadLibrary(lib_gtk, "gtk-3", 0)) {
++	if (LoadLibrary(lib_gtk, "gtk-x11-2.0", 0)) {
+ 		GtkLoaded = SetupGtkBase(lib_gtk);
+ 	}
+ 	if (!GtkLoaded
+ 		&& !GtkTriedToInit
+-		&& LoadLibrary(lib_gtk, "gtk-x11-2.0", 0)) {
++		&& LoadLibrary(lib_gtk, "gtk-3", 0)) {
+ 		GtkLoaded = SetupGtkBase(lib_gtk);
+ 	}
+ 
