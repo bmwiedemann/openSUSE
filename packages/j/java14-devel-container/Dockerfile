@@ -19,3 +19,4 @@ RUN zypper install -y openSUSE-release-appliance-docker
 # Development packages
 RUN zypper install -y --no-recommends java-14-openjdk-devel maven git-core
 
+ENTRYPOINT [ "/bin/bash" ]
