@@ -1,7 +1,7 @@
 #
 # spec file for package courier-unicode
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,24 @@
 
 
 %define libname   lib%{name}
-%define libsoname %{libname}4
+%define libsoname %{libname}7
 
 Name:           courier-unicode
-Version:        2.1.2
+Version:        2.2.2
 Release:        0
 Summary:        Courier Unicode Library
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Servers
 URL:            https://www.courier-mta.org/
-Source0:        https://downloads.sourceforge.net/project/courier/%{name}/%{version}/%{name}-%{version}.tar.bz2
-Source1:        https://downloads.sourceforge.net/project/courier/%{name}/%{version}/%{name}-%{version}.tar.bz2.sig
-# Keyring downloaded from https://www.courier-mta.org/KEYS.bin#/%{name}.keyring
+Source0:        https://download.sourceforge.net/courier/%{name}-%{version}.tar.bz2
+Source1:        https://download.sourceforge.net/courier/%{name}-%{version}.tar.bz2.sig
+# Keyring downloaded from https://www.courier-mta.org/KEYS.bin#/%%{name}.keyring
 Source2:        %{name}.keyring
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 
 %description
-The Courier Unicode Library based on the Unicode 6.3.0 standard.
+The Courier Unicode Library based on the Unicode 13.0.0 standard.
 This package holds all man pages.
 
 %package -n %{libsoname}

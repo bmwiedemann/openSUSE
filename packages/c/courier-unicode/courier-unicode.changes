@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Mar 20 09:37:46 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 2.2.2
+  * unicode_bidi.c: Implement unicode_bidi_combining(). Implement
+    canonical and compatibility decomposition and canonical composition.
+  * unicode_bidi.c (unicode_bidi_needs_embed): Make its return code
+    what its documentation says its return code is.
+  * Implement unicode_bidi_needs_embed(), unicode_bidi_cleaned_size(),
+    unicode::bidi_override,
+
+- update to 2.2.1
+  * unicode_bidi_calc and unicode_bidi_calc_levels return a
+    unicode_bidi_direction object, to indicate whether the
+    computer paragraph embedding level was explicitly computed or
+    defaulted.
+  * unicode::bidi_calc - an empty string with an explicit embedding
+    level should return the requested embedding level.
+
+- update to 2.2
+  * unicode::iconvert::convert, fix uninitialized variable.
+  * Implement bidirectional algorithm, canonical or equivalent character
+    mappings.
+  * Unicode 13 update. Adds lookup of EastAsianWidth property, emoji
+    property lookup, adds an alternative sequence-based grapheme API
+    that handles multi-character emoji rules.
+  * Add bidi property lookups.
+
+- update source download URL
+
+-------------------------------------------------------------------
 Wed Nov 25 13:13:57 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 2.1.2
