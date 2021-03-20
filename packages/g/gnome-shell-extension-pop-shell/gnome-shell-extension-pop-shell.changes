@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 19 19:05:26 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add allow-gnome-40.patch:
+  Allow Gnome 40 until upstream tags a new release.
+
+-------------------------------------------------------------------
 Mon Mar 15 09:44:31 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Run spec-cleaner.

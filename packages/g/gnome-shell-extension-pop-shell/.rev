@@ -7,4 +7,12 @@
     <comment>New gnome-shell extension, Pop_OS! shell</comment>
     <requestid>880104</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f24e06a5b4c95abbf2793f000fa7d8de</srcmd5>
+    <version>1.2.0</version>
+    <time>1616271966</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880165</requestid>
+  </revision>
 </revisionlist>

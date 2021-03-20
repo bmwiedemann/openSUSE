@@ -27,6 +27,8 @@ Summary:        Gnome Shell Extension to Auto Tiling
 License:        GPL-3.0-only
 URL:            https://github.com/pop-os/shell
 Source:         https://github.com/pop-os/shell/archive/%{version}.tar.gz#/%{upstream_name}-%{version}.tar.gz
+Source1:        series
+Patch:          allow-gnome-40.patch
 BuildRequires:  gnome-shell >= 3.36
 BuildRequires:  gobject-introspection
 BuildRequires:  typescript >= 3.8
