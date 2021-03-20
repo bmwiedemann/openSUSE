@@ -16,10 +16,10 @@
 #
 
 
-%define main_version 3.52.2
+%define main_version 3.53.0
 
 Name:           filezilla
-Version:        3.52.2
+Version:        3.53.0
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
@@ -41,7 +41,7 @@ BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libfilezilla) >= 0.26.0
+BuildRequires:  pkgconfig(libfilezilla) >= 0.27.0
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(nettle) >= 3.1
 # filezilla-team use BuildRequires:  pkgconfig(sqlite3) >= 3.11.1
@@ -163,6 +163,7 @@ autoreconf -fi
 %{_datadir}/pixmaps/%{name}.png
 %dir %{_datadir}/appdata/
 %{_datadir}/appdata/%{name}.appdata.xml
+%{_libdir}/libfzclient-commonui-private-%{main_version}.so
 %{_libdir}/libfzclient-private-%{main_version}.so
 %{_mandir}/man1/filezilla.1%{?ext_man}
 %{_mandir}/man1/fzputtygen.1%{?ext_man}
@@ -170,6 +171,8 @@ autoreconf -fi
 %{_mandir}/man5/fzdefaults.xml.5%{?ext_man}
 
 %files devel
+%{_libdir}/libfzclient-commonui-private.la
+%{_libdir}/libfzclient-commonui-private.so
 %{_libdir}/libfzclient-private.la
 %{_libdir}/libfzclient-private.so
 

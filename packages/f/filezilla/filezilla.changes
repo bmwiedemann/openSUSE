@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Mar 20 10:30:41 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.53.0
+  * Bugfixes and minor changes:
+    - HTTP: Handle servers sending early replies
+- Changes from 3.53.0-rc1:
+  * New features:
+    - Require explicit confirmation on FTP servers not supporting
+      TLS session esumption on the data connection
+    - Access Grant support for Tardigrade
+  * Bugfixes and minor changes:
+    - MSW: Fixed handle leak if using SFTP
+    - FTP: Fixed cancelling listings on very slow computers with
+      extremely fast network connection
+    - Fixed loading of custom FTP proxy setting when opening the
+      settings dialog
+    - Internal restructuring
+- Fix boo#1183820
+
+-------------------------------------------------------------------
 Wed Jan 20 07:55:54 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.52.2
