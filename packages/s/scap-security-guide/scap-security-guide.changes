@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 19 15:08:35 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.55 release (jsc#ECO-3319)
+  - big update of rules used in SLES-12 STIG profile
+  - Render policy to HTML (#6532)
+  - Add variable support to yamlfile_value template (#6563)
+  - Introduce new template for dconf configuration files (#6118)
+
+-------------------------------------------------------------------
 Fri Mar 12 14:14:10 UTC 2021 - Julio González Gil <jgonzalez@suse.com>
 
 - Add the redhat conflict for packages built on redhat clones

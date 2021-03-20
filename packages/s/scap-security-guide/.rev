@@ -26,4 +26,16 @@
   or Fedora (forwarded request 878585 from juliogonzalezgil)</comment>
     <requestid>878597</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>29896dab723abb80ea9b3b4eac02a3cd</srcmd5>
+    <version>0.1.55</version>
+    <time>1616271959</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.55 release (jsc#ECO-3319)
+  - big update of rules used in SLES-12 STIG profile
+  - Render policy to HTML (#6532)
+  - Add variable support to yamlfile_value template (#6563)
+  - Introduce new template for dconf configuration files (#6118) (forwarded request 880137 from msmeissn)</comment>
+    <requestid>880138</requestid>
+  </revision>
 </revisionlist>
