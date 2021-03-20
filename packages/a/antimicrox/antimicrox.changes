@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 14 18:22:03 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.1.5
+  - Migrate DEB packages to antimicrox #87
+  - Integrate builds marking with docs cmake and CI #143
+  - Allow cleaner marking package builds #143 (mirabilos)
+  - fix appdata formatting #142 (mirabilos)
+  - apply lintian-provided spelling fixes #141 (mirabilos)
+  - fix the manpage (hyphen as minus sign) #140 (mirabilos)
+  - fix: change deb arch prefix for building AppImage #135 (pktiuk)
+- Rebase remove_datetime_aboutdialog.patch
+- Drop devel package
+
+-------------------------------------------------------------------
 Fri Jan 15 18:44:56 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.1.4

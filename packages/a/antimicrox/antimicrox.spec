@@ -17,7 +17,7 @@
 
 
 Name:           antimicrox
-Version:        3.1.4
+Version:        3.1.5
 Release:        0
 Summary:        Graphical program used to map keyboard keys and mouse controls to a game-pad
 License:        GPL-3.0-or-later
@@ -59,13 +59,6 @@ X environment in order to run this program.
 This application is continuation of project called AntiMicro,
 which was later abandoned and revived by juliagoda.
 
-%package devel
-Summary:        Development files for %{name}
-Group:          Development/Tools/Building
-
-%description devel
-The %{name}-devel package contains header files for %{name}.
-
 %prep
 %setup -q
 %autopatch -p1
@@ -98,11 +91,6 @@ rm %{buildroot}%{_datadir}/doc/%{name}/CHANGELOG.md
 %{_datadir}/icons/breeze/
 %{_datadir}/icons/breeze/48x48/*
 %{_datadir}/icons/breeze/48x48/apps*
-
 %{_mandir}/man?/%{name}.?%{?ext_man}
-
-%files devel
-%dir %{_includedir}/%{name}
-%{_includedir}/%{name}/*
 
 %changelog
