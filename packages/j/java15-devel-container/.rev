@@ -7,4 +7,13 @@
     <comment>Even more containers</comment>
     <requestid>879680</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1bca36eb9bbcd40985d8866eb7a53284</srcmd5>
+    <version>unknown</version>
+    <time>1616271951</time>
+    <user>dimstar_suse</user>
+    <comment>- Added ENTRY_POINT
+</comment>
+    <requestid>880125</requestid>
+  </revision>
 </revisionlist>
