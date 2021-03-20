@@ -17,7 +17,7 @@
 
 
 Name:           elixir
-Version:        1.11.3
+Version:        1.11.4
 Release:        0
 Summary:        Functional meta-programming aware language built atop Erlang
 License:        Apache-2.0
@@ -75,7 +75,7 @@ make
 
 %install
 make install DESTDIR=%{buildroot} PREFIX=%{_prefix}
-# install -D -m 0644 
+# install -D -m 0644
 # Relink
 for I in iex elixir elixirc mix
 do

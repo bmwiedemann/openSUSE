@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 19 22:01:35 UTC 2021 - Sven Marquardt <dev@mail.smarquardt.space>
+
+- Elixir 1.11.4
+ * Enhancements
+   Elixir
+   [Kernel] Update formatting when printing warnings and errors from Erlang/OTP 24+
+   [Kernel] Support float-16 on bitstrings
+   
+   Mix
+   [mix local.rebar] This task will now install rebar3 version 3.14.4, compiled with Erlang/OTP 21 
+
+-------------------------------------------------------------------
 Mon Jan 11 19:13:39 UTC 2021 - Sven Marquardt <dev@mail.smarquardt.space>
 
 - Elixir 1.11.3
