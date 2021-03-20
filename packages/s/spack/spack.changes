@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 19 15:04:20 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- set the right MODULEPATH in /etc/profile.d/spack.[cs]h 
+
+-------------------------------------------------------------------
 Fri Feb 26 22:06:36 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Remove BuildRequires for patterns-base-basesystem and

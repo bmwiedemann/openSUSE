@@ -289,7 +289,7 @@ else
   SPACK_NAME="\${ID/-/_}\${VERSION_ID/.*/}"
 fi
 export SPACK_ROOT=%{spack_dir}
-export MODULEPATH=~/spack/lmod/linux-\${SPACK_NAME}-\${CPU}:%{_prefix}/share/spack/lmod/linux-\${SPACK_NAME}-\${CPU}:\${MODULEPATH}
+export MODULEPATH=~/spack/modules/linux-\${SPACK_NAME}-\${CPU}:%{_prefix}/share/spack/modules/linux-\${SPACK_NAME}-\${CPU}:\${MODULEPATH}
 # copy local configuration, if its not there
 if [ ! -e ~/.spack/config.yaml ] ; then
   # test if user is in spack group by touching database
@@ -313,7 +313,7 @@ else
   set SPACK_NAME="\${ID}\${VERSION_ID}"
 endif
 set SPACK_ROOT="%{spack_dir}"
-set MODULEPATH="~/spack/lmod/linux-\${SPACK_NAME}-\${CPU}:%{_prefix}/share/spack/lmod/linux-\${SPACK_NAME}-\${CPU}:\${MODULEPATH}"
+set MODULEPATH="~/spack/modules/linux-\${SPACK_NAME}-\${CPU}:%{_prefix}/share/spack/modules/linux-\${SPACK_NAME}-\${CPU}:\${MODULEPATH}"
 if ( ! -e ~/.spack/config.yaml )  then
   # test if user is in spack group by touching database
   touch %{spack_dir}/.spack-db  >& /dev/null
