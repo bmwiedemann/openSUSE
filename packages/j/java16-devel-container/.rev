@@ -7,4 +7,13 @@
     <comment>Java 16 development kit plus other supporting tools.</comment>
     <requestid>879243</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>948d5657ffaa13d1428d4598113aa5d5</srcmd5>
+    <version>unknown</version>
+    <time>1616271953</time>
+    <user>dimstar_suse</user>
+    <comment>- Added ENTRY_POINT
+</comment>
+    <requestid>880126</requestid>
+  </revision>
 </revisionlist>
