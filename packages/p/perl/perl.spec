@@ -1,7 +1,7 @@
 #
 # spec file for package perl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define pversion 5.32.0
-%global versionlist %nil
+%define pversion 5.32.1
+%global versionlist 5.32.0
 Name:           perl
-Version:        5.32.0
+Version:        5.32.1
 Release:        0
 Summary:        The Perl interpreter
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -60,6 +60,7 @@ Suggests:       perl-doc = %{version}
 Provides:       perl-500
 Provides:       perl-Filter-Simple = 0.96
 Provides:       perl(:MODULE_COMPAT_%{pversion})
+Provides:       perl(:MODULE_COMPAT_5.32.0)
 Obsoletes:      perl-Filter-Simple <= 0.96
 Provides:       perl-I18N-LangTags = 0.44
 Obsoletes:      perl-I18N-LangTags <= 0.44

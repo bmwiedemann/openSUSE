@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 14 20:57:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.32.1:
+    There are no changes intentionally incompatible with Perl 5.32.0.
+    * Data::Dumper has been upgraded from version 2.174 to 2.174_01.
+      A number of memory leaks have been fixed.
+    * DynaLoader has been upgraded from version 1.47 to 1.47_01.
+    * Module::CoreList has been upgraded from version 5.20200620 to
+      5.20210123.
+    * Opcode has been upgraded from version 1.47 to 1.48.
+      A warning has been added about evaluating untrusted code with the
+      perl interpreter.
+    * Safe has been upgraded from version 2.41 to 2.41_01.
+      A warning has been added about evaluating untrusted code with the
+      perl interpreter.
+
+-------------------------------------------------------------------
 Fri Nov 13 11:16:50 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Correct perl license
