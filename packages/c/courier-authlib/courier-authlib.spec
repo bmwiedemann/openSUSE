@@ -17,14 +17,14 @@
 
 
 Name:           courier-authlib
-Version:        0.71.1
+Version:        0.71.2
 Release:        0
 Summary:        Courier authentication library
 License:        SUSE-GPL-3.0-with-openssl-exception
 Group:          Productivity/Networking/Email/Servers
 URL:            https://www.courier-mta.org/imap/
-Source0:        https://downloads.sourceforge.net/project/courier/authlib/%{version}/%{name}-%{version}.tar.bz2
-Source1:        https://downloads.sourceforge.net/project/courier/authlib/%{version}/%{name}-%{version}.tar.bz2.sig
+Source0:        https://downloads.sourceforge.net/courier/%{name}-%{version}.tar.bz2
+Source1:        https://downloads.sourceforge.net/courier/%{name}-%{version}.tar.bz2.sig
 # Keyring downloaded from https://www.courier-mta.org/KEYS.bin#/%%{name}.keyring
 Source2:        %{name}.keyring
 Source3:        courier-authdaemon-rpmlintrc

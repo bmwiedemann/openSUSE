@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 20 09:23:10 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 0.71.2
+  * No relevant changes for (open)SUSE build
+- update source download URL
+- fix unsafe permissions for socket directory (boo#1183724)
+  % courier-authlib.tmpfile
+
+-------------------------------------------------------------------
 Wed Feb 10 08:49:15 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 0.71.1
