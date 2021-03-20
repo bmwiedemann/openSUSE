@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 19 08:36:26 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Don't skip test_C416_fail_1_list, because it has been fixed in
+  python-pytest-flake8dir.
+
+-------------------------------------------------------------------
 Thu Mar 18 12:59:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.4.0:

@@ -52,8 +52,7 @@ A flake8 plugin that helps you write better list/set/dict comprehensions.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# gh#adamchainz/flake8-comprehensions#313
-%pytest -k 'not test_C416_fail_1_list'
+%pytest
 
 %files %{python_files}
 %license LICENSE
