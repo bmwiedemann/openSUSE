@@ -996,7 +996,6 @@
     <package name="javapackages-filesystem" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="javapackages-tools" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="jfsutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="jhead" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="jmdict" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="joe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="jq" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
@@ -3435,7 +3434,6 @@
     <package name="perl-razor-agents" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="permissions" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="permissions-config" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="pfscalibration" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pfstmo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="pfstools" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="phalanx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

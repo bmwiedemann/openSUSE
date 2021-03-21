@@ -539,7 +539,6 @@ unsorted:
   - antijingoist-opendyslexic-fonts 
   - antimicro 
   - antimicrox 
-  - antimicrox-devel 
   - antlr 
   - antlr-bootstrap 
   - antlr-devel 
@@ -7236,6 +7235,7 @@ unsorted:
   - jhbuild: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - jhbuild-lang: [i586] 
   - jhbuild-recommended-deps 
+  - jhead 
   - jhighlight 
   - jhighlight-javadoc 
   - jigdo 
@@ -9836,7 +9836,7 @@ unsorted:
   - libcorrect0_0_0 
   - libcotp-devel 
   - libcotp12 
-  - libcourier-unicode4 
+  - libcourier-unicode7 
   - libcpath-devel 
   - libcpath1 
   - libcpg4-32bit: [x86_64] 
@@ -19538,6 +19538,7 @@ unsorted:
   - petsc_3_14_4-gnu-openmpi3-hpc-saws 
   - petsc_3_14_4-gnu-openmpi4-hpc-devel 
   - petsc_3_14_4-gnu-openmpi4-hpc-saws 
+  - pfscalibration 
   - pfsglview 
   - pfstools-devel 
   - pfstools-exr 
@@ -23724,6 +23725,7 @@ unsorted:
   - python36-webassets 
   - python36-webcolors 
   - python36-webencodings 
+  - python36-weblate-language-data 
   - python36-weblate-schemas 
   - python36-weblib 
   - python36-webruntime 
@@ -26593,6 +26595,7 @@ unsorted:
   - python38-webassets 
   - python38-webcolors 
   - python38-webencodings 
+  - python38-weblate-language-data 
   - python38-weblate-schemas 
   - python38-weblib 
   - python38-webruntime 
