@@ -154,4 +154,12 @@
     <user>dimstar_suse</user>
     <comment>Revert to rev 20, the wodim drop is too early</comment>
   </revision>
+  <revision rev="23" vrev="26">
+    <srcmd5>9eaa272089a21d1a36c8056e80799e5e</srcmd5>
+    <version>1.0.8</version>
+    <time>1616365213</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>880184</requestid>
+  </revision>
 </revisionlist>

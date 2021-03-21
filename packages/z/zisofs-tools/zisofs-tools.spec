@@ -1,7 +1,7 @@
 #
 # spec file for package zisofs-tools
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,15 +20,13 @@ Name:           zisofs-tools
 Version:        1.0.8
 Release:        0
 Summary:        User tools for zisofs
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Url:            http://www.kernel.org/pub/linux/utils/fs/zisofs/
-
+URL:            https://www.kernel.org/pub/linux/utils/fs/zisofs/
 #DL-URL:	http://mirror.linux.org.au/linux/utils/fs/zisofs/
-Source:         http://mirror.linux.org.au/linux/utils/fs/zisofs/%name-%version.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         http://ftp.be.debian.org/pub/linux/utils/fs/zisofs/%{name}-%{version}.tar.bz2
 BuildRequires:  zlib-devel
-Requires:       /usr/bin/mkisofs
+Requires:       mkisofs
 
 %description
 Zisofs-tools, in conjunction with a zisofs-enabled system, allows the
@@ -39,19 +37,19 @@ such a filesystem and read compressed files on a system without zisofs
 support.
 
 %prep
-%setup
+%setup -q
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr --mandir=%{_mandir}
-make %{?_smp_mflags}
+%configure
+%make_build
 
 %install
-make INSTALLROOT=$RPM_BUILD_ROOT install
+make INSTALLROOT=%{buildroot} install
 
 %files
-%defattr(-,root,root)
-%doc CHANGES COPYING INSTALL README
+%license COPYING
+%doc CHANGES README
 %{_bindir}/mkzftree
-%doc %{_mandir}/man1/mkzftree.1*
+%{_mandir}/man1/mkzftree.1%{?ext_man}
 
 %changelog
