@@ -1,7 +1,7 @@
 #
 # spec file for package scribus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) Peter Linnell and 2010 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,9 @@ URL:            https://www.scribus.net/
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-fix-build-of-pdf-import-plugin-with-poppler-21.03.0.patch
+Patch2:         0002-fix-build-of-pdf-import-plugin-with-poppler-21.03.0.patch
 BuildRequires:  cmake >= 3.12.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix

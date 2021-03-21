@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 19 15:59:13 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patches from upstream to fix build with popper 21.03.0:
+  * 0001-fix-build-of-pdf-import-plugin-with-poppler-21.03.0.patch
+  * 0002-fix-build-of-pdf-import-plugin-with-poppler-21.03.0.patch
+
+-------------------------------------------------------------------
 Sun Nov 15 15:36:44 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 1.5.6.1
