@@ -1712,4 +1712,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>871206</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>f08f5c512743052eb07fc05701af2a10</srcmd5>
+    <version>21.03.0</version>
+    <time>1616365176</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>879839</requestid>
+  </revision>
 </revisionlist>

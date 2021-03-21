@@ -22,23 +22,22 @@
 %else
 %global psuffix -%{flavor}
 %endif
-
-Name:           poppler%{?psuffix}
-Version:        21.02.0
-Release:        0
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.10
-%define poppler_sover 107
+%define poppler_sover 108
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
+Name:           poppler%{?psuffix}
+Version:        21.03.0
+Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://poppler.freedesktop.org/
-Source:         http://poppler.freedesktop.org/%{sname}-%{version}.tar.xz
+Source:         https://poppler.freedesktop.org/%{sname}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
@@ -49,13 +48,7 @@ BuildRequires:  libboost_headers-devel >= 1.58
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  openjpeg2
-%if "%{flavor}" == "qt5"
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
-%endif
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
@@ -72,6 +65,13 @@ BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(poppler-data)
+%if "%{flavor}" == "qt5"
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Test)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5Xml)
+%endif
 
 %description
 Poppler is a PDF rendering library, forked from the xpdf PDF viewer
@@ -200,29 +200,25 @@ export LD_LIBRARY_PATH=$(pwd)/build
 cd %{buildroot} && find . -type f -o -type l | grep -v qt | xargs rm -v
 %endif
 
-echo > %SOURCE99
+echo > %{SOURCE99}
 %if "%{flavor}" == "qt5"
-echo "libpoppler-qt5-%{poppler_qt5_sover}" >> %SOURCE99
+echo "libpoppler-qt5-%{poppler_qt5_sover}" >> %{SOURCE99}
 %else
-echo "libpoppler%{poppler_sover}" >> %SOURCE99
-echo "libpoppler-glib%{poppler_glib_sover}" >> %SOURCE99
-echo "libpoppler-cpp%{poppler_cpp_sover}" >> %SOURCE99
+echo "libpoppler%{poppler_sover}" >> %{SOURCE99}
+echo "libpoppler-glib%{poppler_glib_sover}" >> %{SOURCE99}
+echo "libpoppler-cpp%{poppler_cpp_sover}" >> %{SOURCE99}
 %endif
 
 %post -n libpoppler%{poppler_sover} -p /sbin/ldconfig
 %postun -n libpoppler%{poppler_sover} -p /sbin/ldconfig
-
 %post -n libpoppler-glib%{poppler_glib_sover} -p /sbin/ldconfig
 %postun -n libpoppler-glib%{poppler_glib_sover} -p /sbin/ldconfig
-
 %post -n libpoppler-cpp%{poppler_cpp_sover} -p /sbin/ldconfig
 %postun -n libpoppler-cpp%{poppler_cpp_sover} -p /sbin/ldconfig
-
 %post -n libpoppler-qt5-%{poppler_qt5_sover} -p /sbin/ldconfig
 %postun -n libpoppler-qt5-%{poppler_qt5_sover} -p /sbin/ldconfig
 
 %if "%{flavor}" == "qt5"
-
 %files -n libpoppler-qt5-%{poppler_qt5_sover}
 %{_libdir}/libpoppler-qt5.so.%{poppler_qt5_sover}*
 
@@ -233,7 +229,6 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %SOURCE99
 %{_libdir}/pkgconfig/poppler-qt5.pc
 
 %else
-
 %files -n libpoppler%{poppler_sover}
 %license COPYING COPYING3
 %doc NEWS README.md README-XPDF
@@ -248,7 +243,7 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %SOURCE99
 %files tools
 %license COPYING COPYING3
 %{_bindir}/*
-%doc %{_mandir}/man1/*.*
+%{_mandir}/man1/*.*
 
 %files -n libpoppler-cpp%{poppler_cpp_sover}
 %{_libdir}/libpoppler-cpp.so.%{poppler_cpp_sover}*
