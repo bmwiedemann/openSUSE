@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
 Name:           python-pyflakes
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Passive checker of Python programs
 License:        MIT
