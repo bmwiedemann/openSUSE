@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Mar 16 18:38:29 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 2.9
+  * Fixed discovery execution in standalone environments.
+- Update to 2.8
+  * Added detection of RC files.
+  * Added detection of TBX files.
+- Update to 2.7
+  * Fixed support for CSV files.
+  * Added eager detection mode.
+  * Added type hints.
+- Update to 2.6
+  * Added support for CSV files.
+  * Improved detection of PHP files.
+  * Removed filtering of test files.
+  * Finder now skips non accessible directories.
+
+-------------------------------------------------------------------
+Thu Feb 11 14:07:01 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 2.5:
+  * Improved POT detection in some cases.
+  * Tested with Python 3.9.
+- Update to 2.4:
+  * Fixed build of wheel packages.
+- Update to 2.3:
+  * New dependency on weblate-language-data module.
+  * Reduced amount of false positives on language codes inside a filename.
+  * Improved iOS strings encoding detection.
+  * Removed charamel dependency.
+- Update to 2.2:
+  * Added detection of Golang i18n json files.
+  * Added detection of TOML files.
+  * Improved charset detection by switching to charamel.
+  * Dropped support for Python 3.5.
+  * Added detection of ARB files.
+
+-------------------------------------------------------------------
 Tue Jun 16 12:13:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.1:

@@ -1,8 +1,8 @@
 #
 # spec file for package python-translation-finder
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019 Matthias Fehring <buschmann23@opensuse.org>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2019-2021 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,26 +21,25 @@
 %define modname translation-finder
 %define skip_python2 1
 Name:           python-translation-finder
-Version:        2.1
+Version:        2.9
 Release:        0
 Summary:        Translation Files Finder
 License:        GPL-3.0-or-later
 URL:            https://github.com/WeblateOrg/translation-finder
 # test_data/linked has to be symlink, hance using github tar ball
-Source:         https://github.com/WeblateOrg/translation-finder/archive/%{version}.tar.gz
-BuildRequires:  %{python_module chardet}
+Source:         https://github.com/WeblateOrg/translation-finder/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module twine}
+BuildRequires:  %{python_module weblate-language-data >= 2021.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-chardet
 Requires:       python-ruamel.yaml
 Requires:       python-setuptools
+Requires:       python-weblate-language-data >= 2021.2
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -58,6 +57,8 @@ sed -i -e '/pytest-runner/d' setup.py
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/weblate-discover
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+# remove test data
+%python_expand rm -r %{buildroot}%{$python_sitelib}/translation_finder/test_data
 
 %post
 %python_install_alternative weblate-discover
