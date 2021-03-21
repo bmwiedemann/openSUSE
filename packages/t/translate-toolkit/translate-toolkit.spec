@@ -1,7 +1,7 @@
 #
 # spec file for package translate-toolkit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,29 +30,26 @@
 %define binaries_and_manpages %{shrink:\
     poclean pocompile poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap poterminology \
     build_firefox.sh junitmsgfmt pretranslate \
-    csv2po csv2tbx flatxml2po html2po ical2po idml2po ini2po json2po \
-    moz2po mozlang2po odf2xliff oo2po oo2xliff php2po phppo2pypo \
-    po2csv po2flatxml po2html po2ical po2idml po2ini po2json po2moz po2mozlang po2oo \
+    csv2po csv2tbx dtd2po flatxml2po html2po ical2po idml2po ini2po json2po \
+    moz2po mozfunny2prop mozlang2po odf2xliff oo2po oo2xliff php2po phppo2pypo \
+    po2csv po2dtd po2flatxml po2html po2ical po2idml po2ini po2json po2moz po2mozlang po2oo \
     po2php po2prop po2rc po2resx po2sub po2symb po2tiki po2tmx po2ts po2txt po2web2py \
     po2wordfast po2xliff po2yaml pot2po prop2po pypo2phppo rc2po resx2po sub2po symb2po \
     tbx2po tiki2po ts2po txt2po web2py2po xliff2odf xliff2oo xliff2po yaml2po}
 %define binaries %{shrink: %binaries_and_manpages\
-    pocommentclean pocompendium pocount pomigrate2 popuretext poreencode posplit \
+    pocommentclean pocompendium pocount pomigrate2 popuretext poreencode posplit prop2mozfunny \
     build_tmdb buildxpi.py get_moz_enUS.py pydiff tmserver}
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.2.0
+Version:        3.3.3
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
 URL:            https://toolkit.translatehouse.org/
 Source:         https://github.com/translate/translate/releases/download/%{version}/%{modname}-%{version}.tar.gz
 Patch0:         xliff-xsd-no-network.patch
-# PATCH-FIX-UPSTREAM versioned_executables.patch mcepl@suse.com
-# Use versioned partially installed executables
-Patch1:         versioned_executables.patch
-Patch2:         sphinx-intersphinx.patch
+Patch1:         sphinx-intersphinx.patch
 BuildRequires:  %{python_module Levenshtein >= 0.12}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.3}
@@ -73,8 +70,6 @@ BuildRequires:  python-rpm-macros
 Requires:       gettext-runtime
 Requires:       python
 Requires:       python-lxml >= 4.0
-Requires:       python-pycountry >= 19.8.18
-Requires:       python-pyenchant >= 3.1.1
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -83,14 +78,16 @@ Recommends:     %{name}-doc
 Recommends:     gaupol
 Recommends:     iso-codes
 Recommends:     python-Levenshtein >= 0.12
-Recommends:     python-aeidon >= 1.7.0
+Recommends:     python-aeidon >= 1.9.0
 Recommends:     python-beautifulsoup4 >= 4.3
-Recommends:     python-chardet >= 3.0.4
+Recommends:     python-chardet >= 4.0.0
 Recommends:     python-cheroot >= 8.3.0
 Recommends:     python-iniparse >= 0.5
 Recommends:     python-phply >= 1.2.5
+Recommends:     python-pycountry >= 20.7.3
+Recommends:     python-pyenchant >= 3.2.0
 Recommends:     python-pyparsing >= 2.4.7
-Recommends:     python-ruamel.yaml >= 0.16.10
+Recommends:     python-ruamel.yaml >= 0.16.12
 Recommends:     python-vobject >= 0.9.6.1
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       translate-toolkit = %{version}-%{release}
@@ -107,6 +104,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module translate-toolkit >= %{version}}
 BuildRequires:  %{python_module xml}
 BuildRequires:  subversion
+BuildRequires:  gaupol
 %endif
 %python_subpackages
 

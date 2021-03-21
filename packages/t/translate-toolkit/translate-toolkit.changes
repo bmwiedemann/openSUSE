@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 17 14:14:14 UTC 2021 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
+
+- Add back python and python-setuptools Requires and update some recommended
+  dependecies versions
+
+-------------------------------------------------------------------
+Mon Mar 15 09:41:05 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.3.3
+  * add some new tools
+  * poterminology: Fix regex escaping
+  * wordfast: Fix header processing
+  * misc: Add support for Python 3.9
+- Drop merged versioned_executables.patch
+
+-------------------------------------------------------------------
 Tue Dec 15 10:11:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Only the primary Python 3 flavor shall provide unflavored
