@@ -1,6 +1,0 @@
-<package name="gnome-documents" project="openSUSE:Factory">
-  <title>A GNOME Calculator Application</title>
-  <description>A GNOME calculator package based on calctool and MP library.
-</description>
-  <devel project="GNOME:Factory" package="gnome-documents"/>
-</package>
