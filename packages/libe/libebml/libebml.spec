@@ -28,6 +28,8 @@ URL:            https://www.matroska.org/
 #Git-Web:       https://github.com/Matroska-Org/libebml
 Source:         https://dl.matroska.org/downloads/libebml/%{name}-%{version}.tar.xz
 Source100:      baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-include-appropriate-header-files-for-std-numeric_lim.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -56,7 +58,7 @@ libebml is a C++ library to parse EBML files. See the EBML RFC at
 http://www.matroska.org/technical/specs/rfc/index.html .
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %cmake

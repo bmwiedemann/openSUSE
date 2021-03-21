@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 19 14:10:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with GCC 11 (boo#1183715)
+  * 0001-include-appropriate-header-files-for-std-numeric_lim.patch
+
+-------------------------------------------------------------------
 Tue Feb 23 11:47:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.2:
