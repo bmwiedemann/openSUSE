@@ -1,7 +1,7 @@
 #
 # spec file for package libgee
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Luis Medinas, Portugal
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           libgee
-Version:        0.20.3
+Version:        0.20.4
 Release:        0
 Summary:        GObject-based library providing commonly used data structures
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Libgee
-Source0:        http://download.gnome.org/sources/libgee/0.20/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libgee/0.20/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig

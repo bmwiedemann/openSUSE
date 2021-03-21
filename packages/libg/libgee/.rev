@@ -316,4 +316,12 @@
     <comment></comment>
     <requestid>773506</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>91909b5a07d05958ce94674a5ada61a4</srcmd5>
+    <version>0.20.4</version>
+    <time>1616365198</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.20.4 (forwarded request 879948 from dimstar)</comment>
+    <requestid>880101</requestid>
+  </revision>
 </revisionlist>
