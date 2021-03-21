@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Mar 21 19:00:30 UTC 2021 - jkowalczyk@suse.com
+
+- Update to version 0.82.0:
+  * docs: Regenerate docs helper
+  * docs: Regen CLI docs
+  * Squashed 'docs/' changes from bb15e9804..9cece6640
+  * Simplify some config loading code
+  * deps: Update github.com/evanw/esbuild v0.9.0 => v0.9.6
+  * Apply OS env overrides twice
+  * Attributes for code fences should be placed after the lang indicator only
+  * deps: Bump github.com/tdewolff/minify/v2 v2.9.15
+  * Fix OS env override for nested config param only available in theme
+  * Fix `new theme` command description
+  * github: More explicit support link to discourse
+  * media: Make Type comparable
+  * deps: Update to esbuild v0.9.0
+  * exif: Fix handling of utf8 runes in nullString()
+  * exif: Allow more spacing characters in strings
+  * media: Add a basic benchmark
+  * Fix output format handling for render hooks
+  * Rename a test
+  * Add a debug helper
+  * Add support for Google Analytics v4
+  * Bump go.mod to Go 1.16
+  * #8210 Upgrade golang version for Dockerfile
+  * Update CONTRIBUTING.md
+  * markup: Handle attribute lists in code fences
+  * Allow markdown attribute lists to be used in title render hooks
+  * Squashed 'docs/' changes from d343ebf71..bb15e9804
+  * build(deps): bump github.com/kyokomi/emoji/v2 from 2.2.7 to 2.2.8
+  * tpl: Add method mappings for strings.Contains, strings.ContainsAny
+  * Fixes #7698.
+  * commands: Fix autocomplete docs
+
+-------------------------------------------------------------------
+Fri Mar 12 16:57:03 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Simplify packaging
+  * BuildRequires: golang(API) >= 1.16 as recommended expression
+  * Drop BuildRequires: fdupes no longer needed to check %goprep source moves
+  * Remove unused %define project github.com/gohugoio/hugo
+  * Fix syntax error extraneous trailing % on %endif
+
+-------------------------------------------------------------------
 Sat Feb 20 16:56:33 UTC 2021 - jkowalczyk@suse.com
 
 - Update to version 0.81.0:

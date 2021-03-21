@@ -17,12 +17,10 @@
 # nodebuginfo
 
 
-# Remove stripping of Go binaries.
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-# Project name when using go tooling.
-%define project github.com/gohugoio/hugo
+
 Name:           hugo
-Version:        0.81.0
+Version:        0.82.0
 Release:        0
 Summary:        Static website generator written in Go
 License:        Apache-2.0
@@ -30,8 +28,7 @@ Group:          System/Management
 URL:            https://github.com/gohugoio/hugo
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  fdupes
-BuildRequires:  go >= 1.16
+BuildRequires:  golang(API) >= 1.16
 
 %description
 Hugo is a static HTML and CSS website generator written in Go. It is optimized
@@ -83,8 +80,6 @@ install -D -m 0644 man/%{name}*.1 "%{buildroot}/%{_mandir}/man1"
 # Install the bash autocomplete file
 install -Dm 644 %{name}-autocomplete.sh %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 
-%fdupes %{buildroot}
-
 %files
 %defattr(-,root,root)
 %doc README.md
@@ -92,7 +87,7 @@ install -Dm 644 %{name}-autocomplete.sh %{buildroot}%{_datadir}/bash-completion/
 %doc LICENSE
 %else
 %license LICENSE
-%endif%
+%endif
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}*.1.gz
 

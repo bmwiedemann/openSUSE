@@ -51,4 +51,17 @@
   * Require go1.16 or newer (forwarded request 874064 from jfkw)</comment>
     <requestid>874066</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>92e9b611259e3f3afbe9cf1f5002f704</srcmd5>
+    <version>0.82.0</version>
+    <time>1616365245</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.82.0:
+- Simplify packaging
+  * BuildRequires: golang(API) &gt;= 1.16 as recommended expression
+  * Drop BuildRequires: fdupes no longer needed to check %goprep source moves
+  * Remove unused %define project github.com/gohugoio/hugo
+  * Fix syntax error extraneous trailing % on %endif (forwarded request 880407 from jfkw)</comment>
+    <requestid>880408</requestid>
+  </revision>
 </revisionlist>
