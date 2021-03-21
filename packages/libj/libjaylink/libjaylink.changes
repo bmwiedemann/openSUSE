@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Feb 26 17:02:27 UTC 2021 - Philipp Wagner <mail@philipp-wagner.com>
+
+- Update to upstream version 0.2.0
+  * Initial support for TCP/IP devices
+  * libusb is now optional
+  * configure: Add switch to build without libusb
+  * configure: Show enabled transports
+  * Support for various new USB product IDs
+  * Fix build issue with MSYS2
+  * Fix socket timeouts on Windows
+  * Make library C++ compatible
+  * New log level for I/O debug messages
+  * Add function to get USB bus and port numbers of a device
+  * Add function to retrieve counter values
+- Update repository URL
+- Switch from obs_scm to obs_tar for disabled service, as the additional
+  tar service seems unavailable these days.
+
+-------------------------------------------------------------------
+Thu Dec 28 20:41:04 UTC 2017 - afaerber@suse.de
+
+- Update to latest Git snapshot (8645845c1abebd004e991ba9a7f808f4fd0c608b)
+
+-------------------------------------------------------------------
 Thu Dec 28 19:42:45 UTC 2017 - afaerber@suse.de
 
 - Update to 0.1.0 tag
@@ -50,4 +74,3 @@ Sun Nov 29 16:03:33 UTC 2015 - afaerber@suse.de
 Sun Oct 25 02:02:04 UTC 2015 - afaerber@suse.de
 
 - Initial
-

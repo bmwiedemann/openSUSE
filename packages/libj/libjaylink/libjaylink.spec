@@ -1,7 +1,7 @@
 #
 # spec file for package libjaylink
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,16 +12,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libjaylink
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
-Url:            http://git.zapb.de/libjaylink.git
+URL:            https://gitlab.zapb.de/libjaylink/libjaylink.git
 Summary:        USB interface library for J-Link
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 Source:         libjaylink-%{version}.tar.xz
 BuildRequires:  autoconf >= 2.64
@@ -84,7 +84,7 @@ sed -e 's/GROUP="plugdev"/GROUP="users"/' <contrib/99-libjaylink.rules >%{buildr
 
 %files
 %defattr(-,root,root,-)
-%doc COPYING
+%license COPYING
 %{_udevdir}/rules.d/99-libjaylink.rules
 
 %files -n libjaylink0
