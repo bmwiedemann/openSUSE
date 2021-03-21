@@ -1,7 +1,7 @@
 #
 # spec file for package wildmidi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2007-2016 Hans de Goede <j.w.r.degoede@hhs.nl>
 # Copyright (c) 2016 Pauline Emily <vilene@posteo.net>
 #
@@ -20,7 +20,7 @@
 
 %define soname  libWildMidi2
 Name:           wildmidi
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        Softsynth midi player
 License:        GPL-3.0-or-later
@@ -28,7 +28,7 @@ Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://www.mindwerks.net/projects/wildmidi
 Source:         https://github.com/Mindwerks/wildmidi/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}.cfg
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.1
 BuildRequires:  dos2unix
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
@@ -87,6 +87,7 @@ install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/wildmidi
 %{_includedir}/%{name}_lib.h
 %{_libdir}/libWildMidi.so
 %{_libdir}/pkgconfig/wildmidi.pc
+%{_libdir}/cmake/WildMidi
 %{_mandir}/man3/WildMidi_*.3%{?ext_man}
 
 %files -n %{soname}

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 21 13:29:09 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 0.4.4
+  * Fixed integer overflow in midi parser sample count calculation.
+  * Fixed 8 bit ping pong GUS patch loaders.
+  * Fixed wrong variable use in reverb code.
+  * Reset block status of tty after playback.
+  * Fixed broken file name handling for 'save as midi' command
+    during playback.
+  * Clamp MUS volume commands.
+
+-------------------------------------------------------------------
 Sat Feb 15 21:01:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.4.3
