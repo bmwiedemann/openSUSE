@@ -505,4 +505,13 @@
   * Fix SimpleInliner pass for alias functions.</comment>
     <requestid>879705</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ae3b6fcf9c8a3ea67bca40e031b65183</srcmd5>
+    <version>2.3.0+git.20210320.0ff4a84</version>
+    <time>1616365226</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git.20210320.0ff4a84:
+  * Use colordiff if available.</comment>
+    <requestid>880299</requestid>
+  </revision>
 </revisionlist>
