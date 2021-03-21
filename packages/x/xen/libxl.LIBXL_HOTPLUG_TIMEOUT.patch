@@ -294,7 +294,7 @@ the execution time of each script.
      /* private */
      libxl__ev_time time;
      libxl__ev_child child;
-@@ -4845,6 +4848,9 @@ int libxl__is_domid_recent(libxl__gc *gc
+@@ -4847,6 +4850,9 @@ int libxl__is_domid_recent(libxl__gc *gc
  
  #endif
  

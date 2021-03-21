@@ -470,7 +470,7 @@ The existing code for x86_pv is moved unmodified into its own file.
  
      free(ctx->x86.restore.cpuid.ptr);
      free(ctx->x86.restore.msr.ptr);
-@@ -249,6 +277,368 @@ static int x86_hvm_cleanup(struct xc_sr_
+@@ -249,6 +277,380 @@ static int x86_hvm_cleanup(struct xc_sr_
      return 0;
  }
  
@@ -707,6 +707,18 @@ The existing code for x86_pv is moved unmodified into its own file.
 +        return -1;
 +    }
 +
++    pfn = gap_start >> SUPERPAGE_1GB_SHIFT;
++    do
++    {
++        xc_sr_set_bit(pfn, &ctx->x86.hvm.restore.attempted_1g);
++    } while (++pfn <= gap_end >> SUPERPAGE_1GB_SHIFT);
++
++    pfn = gap_start >> SUPERPAGE_2MB_SHIFT;
++    do
++    {
++        xc_sr_set_bit(pfn, &ctx->x86.hvm.restore.attempted_2m);
++    } while (++pfn <= gap_end >> SUPERPAGE_2MB_SHIFT);
++
 +    pfn = gap_start;
 +
 +    while ( pfn <= gap_end )
@@ -839,7 +851,7 @@ The existing code for x86_pv is moved unmodified into its own file.
  struct xc_sr_restore_ops restore_ops_x86_hvm =
  {
      .pfn_is_valid    = x86_hvm_pfn_is_valid,
-@@ -257,6 +647,7 @@ struct xc_sr_restore_ops restore_ops_x86
+@@ -257,6 +659,7 @@ struct xc_sr_restore_ops restore_ops_x86
      .set_page_type   = x86_hvm_set_page_type,
      .localise_page   = x86_hvm_localise_page,
      .setup           = x86_hvm_setup,

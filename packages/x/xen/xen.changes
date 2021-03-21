@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Mar 12 19:19:19 UTC 2021 - ohering@suse.de
+
+- bsc#1177112 - Fix libxc.sr.superpage.patch
+  The receiving side did detect holes in a to-be-allocated superpage,
+  but allocated a superpage anyway. This resulted to over-allocation.
+
+-------------------------------------------------------------------
+Mon Mar  8 16:16:16 UTC 2021 - ohering@suse.de
+
+- bsc#1167608 - adjust limit for max_event_channels
+  A previous change allowed an unbound number of event channels
+  to make sure even large domUs can start of of the box.
+  This may have a bad side effect in the light of XSA-344.
+  Adjust the built-in limit based on the number of vcpus.
+  In case this is not enough, max_event_channels=/maxEventChannels=
+  has to be used to set the limit as needed for large domUs
+  adjust libxl.max_event_channels.patch
+
+-------------------------------------------------------------------
+Fri Mar  5 08:49:56 MST 2021 - carnold@suse.com
+
+- bsc#1183072 - VUL-0: xen: HVM soft-reset crashes toolstack (XSA-368)
+  Also resolves,
+    bsc#1179148 - kdump of HVM fails, soft-reset not handled by libxl
+    bsc#1181989 - openQA job causes libvirtd to dump core when
+    running kdump inside domain
+  xsa368.patch
+
+-------------------------------------------------------------------
 Tue Feb 26 14:00:00 CET 2021 - jbeulich@suse.com
 
 - bsc#1177204 - L3-Question: conring size for XEN HV's with huge

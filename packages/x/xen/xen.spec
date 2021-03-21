@@ -130,7 +130,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.14.1_12
+Version:        4.14.1_14
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -186,6 +186,7 @@ Patch15:        602e5a8c-gnttab-never-permit-mapping-transitive-grants.patch
 Patch16:        602e5abb-gnttab-bypass-IOMMU-when-mapping-own-grant.patch
 Patch17:        602ffae9-tools-libs-light-fix-xl-save--c-handling.patch
 Patch18:        6037b02e-x86-EFI-suppress-ld-2-36-base-relocs.patch
+Patch200:       xsa368.patch
 # libxc
 Patch300:       libxc-sr-3cccdae45242dab27198b8e150be0c85acd5d3c9.patch
 Patch301:       libxc-sr-readv_exact.patch

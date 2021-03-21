@@ -2574,4 +2574,12 @@
     <comment>Fixes for bsc#1177204, bsc#1182576 and other upstream fixes</comment>
     <requestid>875549</requestid>
   </revision>
+  <revision rev="300" vrev="1">
+    <srcmd5>ce8cee62b362a78e788cd40d0b02910c</srcmd5>
+    <version>4.14.1_14</version>
+    <time>1616365164</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for Security bug bsc#1183072 - HVM soft-reset crashes toolstack XSA-368. Other fixes included.</comment>
+    <requestid>879873</requestid>
+  </revision>
 </revisionlist>
