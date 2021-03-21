@@ -20,14 +20,11 @@ Name:           lmdb
 Summary:        Lightning Memory-Mapped Database Manager
 License:        OLDAP-2.8
 Group:          Productivity/Databases/Tools
-%define lname liblmdb-0_9_28
-Version:        0.9.28
+%define lname liblmdb-0_9_29
+Version:        0.9.29
 Release:        0
 URL:            https://symas.com/mdb/
-
-#Git-Clone:	git://git.openldap.org/openldap mdb.master
-Source:         https://github.com/LMDB/lmdb/archive/LMDB_%version.tar.gz
-# from https://src.fedoraproject.org/rpms/lmdb/tree/master
+Source:         https://git.openldap.org/openldap/openldap/-/archive/LMDB_%{version}/openldap-LMDB_%{version}.tar.gz
 Source1:        lmdb.pc.in
 Source99:       baselibs.conf
 
@@ -85,7 +82,7 @@ This package contains the files needed to compile programs that use
 the liblmdb library.
 
 %prep
-%setup -qn lmdb-LMDB_%version
+%setup -qn openldap-LMDB_%version
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
