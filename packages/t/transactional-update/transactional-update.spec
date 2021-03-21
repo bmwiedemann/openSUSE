@@ -64,14 +64,14 @@ BuildRequires:  w3m
 BuildRequires:  xsltproc
 Requires:       /usr/bin/bc
 Requires:       dracut-transactional-update = %{version}-%{release}
-# Parameter --drop-if-no-change requires it
-Requires:       inotify-tools
 Requires:       logrotate
 Requires:       lsof
 # psmisc is needed because of fuser
 Requires:       psmisc
 Requires:       tukit = %{version}-%{release}
 Requires:       zypper
+# Parameter --drop-if-no-change requires it
+Recommends:     inotify-tools
 Recommends:     rebootmgr
 
 %description

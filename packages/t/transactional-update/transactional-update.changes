@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 12 13:45:09 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Revert inotify-tools dependency: The package is not available in
+  SLE. This will probably have to be implemented as a native C
+  version.
+
+-------------------------------------------------------------------
 Fri Mar 12 13:08:04 UTC 2021 - Ignaz Forster <iforster@suse.com>
 
 - Version 3.2.2
