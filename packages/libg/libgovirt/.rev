@@ -110,4 +110,17 @@
     <comment> (forwarded request 769116 from iznogood)</comment>
     <requestid>769938</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>253806f9b6f5f47fcd672cb4b21be82c</srcmd5>
+    <version>0.3.8</version>
+    <time>1616365182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.8:
+  + Various API additions.
+  + Initial support for Disks.
+  + Properly handle StorageDomains of DATA type.
+  + Fixed crash with error handling of GTask API.
+  + Updated translations. (forwarded request 875407 from dimstar)</comment>
+    <requestid>880094</requestid>
+  </revision>
 </revisionlist>

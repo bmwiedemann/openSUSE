@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Feb 26 13:26:30 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.3.8:
+  + Various API additions.
+  + Initial support for Disks.
+  + Properly handle StorageDomains of DATA type.
+  + Fixed crash with error handling of GTask API.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jan 31 18:55:42 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.3.7:
