@@ -62,17 +62,10 @@ out their IP addresses.
 %autosetup -p1
 
 %build
-# Export CFLAGS so we can also benefit from the ones the Makefile sets for us
-# Instead of overriding all of them.
-%ifarch s390 s390x
-  export CFLAGS="-fPIE"
-%else
-  export CFLAGS="-fpie"
-%endif
 # Pulled-in by the LINK.o variable.
-export LDFLAGS="-pie -Wl,-z,relro,-z,now"
+export LDFLAGS="-Wl,-z,relro,-z,now"
 
-%meson -DBUILD_NINFOD=false -DBUILD_TFTPD=false -DBUILD_RARPD=true -DNO_SETCAP_OR_SUID=true
+%meson -DBUILD_NINFOD=false -DBUILD_TFTPD=false -DBUILD_RARPD=true -DNO_SETCAP_OR_SUID=true -Db_pie=true -Dc_std=none
 %meson_build
 
 %install

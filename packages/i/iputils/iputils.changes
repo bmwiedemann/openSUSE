@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 16 22:21:46 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Binaries were found to be not optimized or built
+  with proper %optflags.
+
+-------------------------------------------------------------------
 Tue Feb  2 08:32:14 UTC 2021 - Petr Vorel <pvorel@suse.cz>
 
 - Update to version 20210202
