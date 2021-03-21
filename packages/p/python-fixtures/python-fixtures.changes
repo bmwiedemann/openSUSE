@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 19 21:29:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add fixtures-pr36-py39.patch -- gh#testing-cabal/fixtures#46
+  * Drops Python 2 compatibility in favor of Python 3.9
+  * Also removes six (but wants to keep mock)
+
+-------------------------------------------------------------------
 Mon Oct 14 13:38:30 UTC 2019 - Matej Cepl <mcepl@suse.com>
 
 - Replace %fdupes -s with plain %fdupes; hardlinks are better.

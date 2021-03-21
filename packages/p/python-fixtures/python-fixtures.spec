@@ -1,7 +1,7 @@
 #
 # spec file for package python-fixtures
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-fixtures
 Version:        3.0.0
 Release:        0
 Summary:        Fixtures, reusable state for writing clean tests and more
 License:        Apache-2.0 OR BSD-3-Clause
-URL:            https://launchpad.net/python-fixtures
+URL:            https://github.com/testing-cabal
 Source:         https://files.pythonhosted.org/packages/source/f/fixtures/fixtures-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fixtures-pr36-py39.patch -- gh#testing-cabal/fixtures#46
+Patch0:         fixtures-pr36-py39.patch
 BuildRequires:  %{python_module extras}
+# explicitly wants to test the backport mock
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pbr >= 0.11}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module testtools >= 0.9.22}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-extras
 Requires:       python-pbr >= 0.11
-Requires:       python-six
 Requires:       python-testtools >= 0.9.22
 BuildArch:      noarch
 %python_subpackages
@@ -46,7 +48,7 @@ provided that makes using fixtures that meet the Fixtures contract in unittest
 compatible test cases easy and straight forward.
 
 %prep
-%setup -q -n fixtures-%{version}
+%autosetup -p1 -n fixtures-%{version}
 
 %build
 %python_build
