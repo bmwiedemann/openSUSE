@@ -1,7 +1,7 @@
 #
 # spec file for package libsndfile
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,41 +18,30 @@
 
 %define lname	%{name}1
 Name:           libsndfile
-Version:        1.0.28
+Version:        1.0.31
 Release:        0
 Summary:        Development/Libraries/C and C++
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-URL:            http://www.mega-nerd.com/libsndfile
-Source0:        http://www.mega-nerd.com/%{name}/files/%{name}-%{version}.tar.gz
-Source1:        http://www.mega-nerd.com/%{name}/files/%{name}-%{version}.tar.gz.asc
+URL:            https://libsndfile.github.io/libsndfile/
+Source0:        https://github.com/libsndfile/libsndfile/releases/download/%{version}/libsndfile-%{version}.tar.bz2
+Source1:        https://github.com/libsndfile/libsndfile/releases/download/%{version}/libsndfile-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-FLAC-Fix-a-buffer-read-overrun.patch
-Patch2:         0002-src-flac.c-Fix-a-buffer-read-overflow.patch
-Patch10:        0010-src-aiff.c-Fix-a-buffer-read-overflow.patch
-Patch20:        0020-src-common.c-Fix-heap-buffer-overflows-when-writing-.patch
-Patch30:        0030-double64_init-Check-psf-sf.channels-against-upper-bo.patch
-# not yet upstreamed, https://github.com/erikd/libsndfile/issues/317
-Patch31:        0031-sfe_copy_data_fp-check-value-of-max-variable.patch
-# not yet upstreamed
-Patch32:        libsndfile-CVE-2017-17456-alaw-range-check.patch
-Patch33:        libsndfile-CVE-2017-17457-ulaw-range-check.patch
 Patch34:        sndfile-deinterlace-channels-check.patch
-# not yet upstreamed, CVE-2018-19758, bsc#1117954
-Patch40:        libsndfile-wav-loop-count-fix.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       sndfile-ocloexec.patch
+BuildRequires:  cmake
 BuildRequires:  flac-devel
 BuildRequires:  gcc-c++
+BuildRequires:  libopus-devel
 BuildRequires:  libtool
 BuildRequires:  libvorbis-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+BuildRequires:  python3-base
 BuildRequires:  speex-devel
 Obsoletes:      libsnd
 Provides:       libsnd
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Libsndfile is a C library for reading and writing sound files, such as
@@ -87,64 +76,38 @@ libsndfile library.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%patch10 -p1
-%patch20 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
-%patch34 -p1
-%patch40 -p1
-%patch100 -p1
+%autopatch -p1
 
 %build
-%define warn_flags -W -Wall -Wstrict-prototypes -Wpointer-arith -Wno-unused-parameter
-autoreconf --force --install
-CFLAGS="%{optflags} %{warn_flags}"
-export CFLAGS
-%configure \
-	--disable-silent-rules \
-	--disable-static \
-	--disable-full-suite \
-	--with-pic \
-	--enable-experimental
-make %{?_smp_mflags}
+%cmake -DENABLE_EXPERIMENTAL=ON -DBUILD_EXAMPLES=OFF -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/libsndfile
+%cmake_build
 
 %install
-%make_install
-# remove unnecessary files
-find %{buildroot} -type f -name "*.la" -delete -print
+%cmake_install
+
 # remove programs; built in another spec file
 rm -rf %{buildroot}%{_bindir}
 rm -rf %{buildroot}%{_mandir}/man1
-# remove binaries from examples directory
-make -C examples distclean
 rm -rf %{buildroot}%{_datadir}/doc/libsndfile
 
 %post -n %{lname} -p /sbin/ldconfig
-
 %postun -n %{lname} -p /sbin/ldconfig
 
 %check
-pushd src
-make %{?_smp_mflags} check
-popd
+# check requires -DBUILD_SHARED_LIBS=off
 
 %files -n %{lname}
-%defattr(-, root, root)
 %{_libdir}/libsndfile.so.1*
 
 %files devel
-%defattr(-, root, root)
 %doc AUTHORS ChangeLog NEWS README
-%doc doc/*.html doc/*.jpg doc/*.css doc/*.HOWTO
 %license COPYING
 %{_libdir}/libsndfile.so
 %{_includedir}/sndfile.h
 %{_includedir}/sndfile.hh
 %{_libdir}/pkgconfig/*.pc
+%{_libdir}/cmake/SndFile
 %doc examples
+%doc %{_defaultdocdir}/libsndfile
 
 %changelog

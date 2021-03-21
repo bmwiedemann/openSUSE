@@ -1,7 +1,7 @@
 #
 # spec file for package libsndfile-progs
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,68 +17,42 @@
 
 
 Name:           libsndfile-progs
-Version:        1.0.28
+Version:        1.0.31
 Release:        0
 Summary:        Example Programs for libsndfile
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-URL:            http://www.mega-nerd.com/libsndfile/
-Source0:        http://www.mega-nerd.com/libsndfile/files/libsndfile-%{version}.tar.gz
-Source1:        http://www.mega-nerd.com/libsndfile/files/libsndfile-%{version}.tar.gz.asc
+URL:            https://libsndfile.github.io/libsndfile/
+Source0:        https://github.com/libsndfile/libsndfile/releases/download/%{version}/libsndfile-%{version}.tar.bz2
+Source1:        https://github.com/libsndfile/libsndfile/releases/download/%{version}/libsndfile-%{version}.tar.bz2.sig
 Source2:        libsndfile.keyring
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-FLAC-Fix-a-buffer-read-overrun.patch
-Patch2:         0002-src-flac.c-Fix-a-buffer-read-overflow.patch
-Patch10:        0010-src-aiff.c-Fix-a-buffer-read-overflow.patch
-Patch20:        0020-src-common.c-Fix-heap-buffer-overflows-when-writing-.patch
-Patch30:        0030-double64_init-Check-psf-sf.channels-against-upper-bo.patch
-# not yet upstreamed, https://github.com/erikd/libsndfile/issues/317
-Patch31:        0031-sfe_copy_data_fp-check-value-of-max-variable.patch
-# not yet upstreamed
-Patch32:        libsndfile-CVE-2017-17456-alaw-range-check.patch
-Patch33:        libsndfile-CVE-2017-17457-ulaw-range-check.patch
 Patch34:        sndfile-deinterlace-channels-check.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       sndfile-ocloexec.patch
 BuildRequires:  alsa-devel
+BuildRequires:  cmake
 BuildRequires:  flac-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libjack-devel
 BuildRequires:  libtool
 BuildRequires:  libvorbis-devel
 BuildRequires:  pkgconfig
-BuildRequires:  sqlite-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  sqlite3-devel
 
 %description
 This package includes the example programs for libsndfile.
 
 %prep
 %setup -q -n libsndfile-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch10 -p1
-%patch20 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
 %patch34 -p1
 %patch100 -p1
 
 %build
-%define warn_flags -W -Wall -Wstrict-prototypes -Wpointer-arith -Wno-unused-parameter
-# autoreconf --force --install
-CFLAGS="%{optflags} %{warn_flags}"
-export CFLAGS
-%configure --disable-silent-rules \
-	--disable-static \
-        --enable-sqlite \
-	--with-pic
-make %{?_smp_mflags}
+%cmake -DENABLE_EXPERIMENTAL=ON -DBUILD_EXAMPLES=OFF
+%cmake_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%cmake_install
 
 # remove unnecessary files
 rm -rf %{buildroot}%{_datadir}/doc/libsndfile
@@ -87,8 +61,7 @@ rm -rf %{buildroot}%{_includedir}
 rm -rf %{buildroot}%{_datadir}/doc/libsndfile1-dev
 
 %files
-%defattr(-, root, root)
 %{_bindir}/*
-%doc %{_mandir}/man?/*
+%{_mandir}/man?/*
 
 %changelog

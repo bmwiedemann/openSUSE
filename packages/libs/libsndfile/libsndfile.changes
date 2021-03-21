@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Mar 17 08:09:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire python3-base instead of the full python3 package:
+  manages to break a build cycle, is cheaper, and still sufficient.
+
+-------------------------------------------------------------------
+Sun Mar 14 21:38:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.31:
+  * documentation fixes and updates
+  * Change CMake's project name from sndfile to libsndfile as it should be.
+  * Fix memory leak in wav_read_smpl_chunk() function, credit to OSS-Fuzz.
+  * Fix aiff_read_header() memory leak(), credit to OSS-Fuzz.
+  * Fix leak in wav_read_header(), credit to OSS-Fuzz.
+  * Fix leak in wavlike_read_cart_chunk(), credit to OSS-Fuzz.
+  * Fix memory leak in wav_read_acid_chunk(), credit to OSS-Fuzz.
+  * Fix memory leak in aiff_read_basc_chunk(), credit to OSS-Fuzz.
+  * Fix memory leak in wavlike_read_peak_chunk(), credit to OSS-Fuzz.
+  * Fix memory leak in aiff_read_header(), credit to OSS-Fuzz.
+  * Fix use of uninitialized value in exif_subchunk_parse(), credit to OSS-Fuzz.
+  * Fix use of uninitialized value in endswap_int64_t_array(), credit to
+  * OSS-Fuzz.
+  * Fix up the fuzzer so that it can't under or overseek,
+  * thanks to Max Dymond cmeister2@gmail.com.
+  * Fix Autotools configure on macOS, thanks to @tmcguire and @nwh.
+  * Exclude repository-configuration from git-archive, thanks to @umlaeute.
+  * Use version-script when compiling with clang on Unix with Autotools, thanks
+  * to @tstellar.
+  * Improve handling of SMPL chunks in WAV files, thanks to @zodf0055980. 
+- update to 1.0.30:
+  * Move sndfile.h.in from src/ to include/ directory.
+  * Huge documentation update.
+  * Fix opus test failures on BE platforms
+  * Fix bug when sf_open_fd() function sometimes leaves filehandle open, even if close_desc parameter is TRUE, thanks to @umläute.
+  * Fix infinite loops on some pathological SD2 files
+  * Switch to GitHub Actions for continuous integration.
+  * Add OSS-Fuzz tests to GitHub Actions workflow
+  * Fix memory leak in wavlike_read_bext_chunk() function, credit to OSS-Fuzz.
+  * Fix undefined behavior in avr-read_header() function, credit to OSS-Fuzz.
+- update to 1.0.29:
+  * Fixes for: CVE-2017-12562, CVE-2017-17456, CVE-2017-17457, CVE-2018-19661, CVE-2018-19662, CVE-2018-19758 and CVE-2019-3832.
+  * Add BWF v2 loudness parameters.
+  * Wave64: Permit and skip arbitrary chunks prior to the data chunk.
+  * Fix ASAN crash in wavlike_ima_seek().
+  * Fix IMA-ADPCM encoding for AIFF files.
+  * sndfile-convert: Handle gsm, vox and opus extensions the same way.
+  * Add SFC_SET_OGG_PAGE_LATENCY_MS command to get Ogg page latency for Ogg Opus files.
+  * Fix parsing of some SD2 files.
+  * Documentation updates.
+  * Minor bug fixes and improvements.
+- drop libsndfile-CVE-2017-17456-alaw-range-check.patch
+       libsndfile-CVE-2017-17457-ulaw-range-check.patch
+       libsndfile-wav-loop-count-fix.patch
+       0001-FLAC-Fix-a-buffer-read-overrun.patch
+       0002-src-flac.c-Fix-a-buffer-read-overflow.patch
+       0010-src-aiff.c-Fix-a-buffer-read-overflow.patch
+       0020-src-common.c-Fix-heap-buffer-overflows-when-writing-.patch
+       0030-double64_init-Check-psf-sf.channels-against-upper-bo.patch
+       0031-sfe_copy_data_fp-check-value-of-max-variable.patch: upstream
+
+-------------------------------------------------------------------
 Tue Dec  3 01:46:45 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove build dependencies for progs subpackage from library:
