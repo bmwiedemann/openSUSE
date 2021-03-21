@@ -1,0 +1,13 @@
+Index: icebreaker-2.2.0/Makefile
+===================================================================
+--- icebreaker-2.2.0.orig/Makefile
++++ icebreaker-2.2.0/Makefile
+@@ -20,7 +20,7 @@ ifndef bindir
+ endif
+ 
+ 
+-CFLAGS=-Wall -Werror $(OPTIMIZE) $(SDL_CFLAGS) -DDATAPREFIX=\"$(datadir)/icebreaker\"
++CFLAGS=$(OPTIMIZE) $(SDL_CFLAGS) -DDATAPREFIX=\"$(datadir)/icebreaker\"
+ 
+ SRC=icebreaker.c cursor.c grid.c laundry.c line.c penguin.c sound.c \
+     level.c intro.c text.c status.c transition.c hiscore.c dialog.c \
