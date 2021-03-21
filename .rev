@@ -701,4 +701,12 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
   - Fix /etc syncing with --drop-if-no-change</comment>
     <requestid>878553</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>c5519bf248b84891d886ce47aecb2a24</srcmd5>
+    <version>3.2.2</version>
+    <time>1616365202</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>880115</requestid>
+  </revision>
 </revisionlist>
