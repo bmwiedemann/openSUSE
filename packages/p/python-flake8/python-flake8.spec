@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-flake8
-Version:        3.8.4
+Version:        3.9.0
 Release:        0
 Summary:        Modular source code checker: pep8, pyflakes and co
 License:        MIT
@@ -31,8 +31,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata
 Requires:       python-mccabe >= 0.6.0
-Requires:       python-pycodestyle >= 2.6.0~a1
-Requires:       python-pyflakes >= 2.1.0
+Requires:       python-pycodestyle >= 2.7.0
+Requires:       python-pyflakes >= 2.3.0
 Requires:       python-typing
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -41,9 +41,8 @@ BuildArch:      noarch
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module mccabe >= 0.6.0}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pycodestyle >= 2.6.0~a1}
-BuildRequires:  %{python_module pyflakes >= 2.2.0}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pycodestyle >= 2.7.0}
+BuildRequires:  %{python_module pyflakes >= 2.3.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing}
 %if %{with python2}
