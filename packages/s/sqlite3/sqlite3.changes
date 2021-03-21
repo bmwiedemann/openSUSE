@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Mar 19 14:53:04 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Fix typo in macro definition.
+
+-------------------------------------------------------------------
+Wed Mar 17 21:39:16 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SQLite 3.35.2:
+  * Fix a problem in the appendvfs.c extension that was introduced
+    into version 3.35.0.
+  * Ensure that date/time functions with no arguments (which
+    generate responses that depend on the current time) are treated
+    as non-deterministic functions.
+  * Fix a problem in the sqldiff utility program having to do with
+    unusual whitespace characters in a virtual table definition.
+  * Limit the new UNION ALL optimization described by item 8c in
+    the 3.35.0 release so that it does not try to make too many
+    new subqueries.
+- include changes from 3.35.1:
+  * Fix a bug in the new DROP COLUMN feature when used on columns
+    that are indexed and that are quoted in the index definition.
+  * Improve the built-in documentation for the .dump command in the
+    CLI. 
+
+-------------------------------------------------------------------
 Mon Mar 15 07:59:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.35.0:

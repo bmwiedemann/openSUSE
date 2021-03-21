@@ -17,10 +17,10 @@
 
 
 %define oname sqlite
-%define tarversion 3350000
+%define tarversion 3350200
 %bcond_with icu
 Name:           sqlite3
-Version:        3.35.0
+Version:        3.35.2
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
@@ -133,6 +133,7 @@ export CFLAGS="%{optflags} \
 	-DSQLITE_SOUNDEX \
 	-DSQLITE_ENABLE_UNLOCK_NOTIFY \
 	-DSQLITE_SECURE_DELETE \
+	-DSQLITE_ENABLE_MATH_FUNCTIONS \
 	"
 %configure \
   --disable-static \

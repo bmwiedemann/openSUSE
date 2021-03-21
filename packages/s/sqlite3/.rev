@@ -1313,4 +1313,12 @@ CVE-2020-13871 boo#1172646</comment>
     <comment></comment>
     <requestid>879153</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>ed3403c2ef7ad7d32e1209406bfcbddd</srcmd5>
+    <version>3.35.2</version>
+    <time>1616365171</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix typo in macro definition. (forwarded request 880128 from marxin)</comment>
+    <requestid>880148</requestid>
+  </revision>
 </revisionlist>
