@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Mar 17 12:58:38 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.24.27:
+  + Input: Ensure preedit-start and preedit-end are emitted
+    properly.
+  + GtkScrolledWindow: Revert a change that broke touch scrolling.
+  + Theme:
+    - Fix a problem with size changes in SSD decorations that
+      caused mutter crashes
+    - Use transparent black for window border in the dark theme.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 26 13:14:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.24.26:
+  + Input:
+    - Fix a few oversights in Compose file parsing.
+    - Fine-tune Compose preedit display.
+  + Theme:
+    - Fine-tune scrollbar size and transitions.
+    - Reinstate invisible borders for tiled windows.
+  + Wayland: Fix a problem with font settings not being found.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Feb 12 18:38:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.24.25:
