@@ -19,7 +19,7 @@
 # Update baselibs.conf when changing this
 %define _sover 22
 Name:           libgdata
-Version:        0.18.0
+Version:        0.18.1
 Release:        0
 Summary:        GLib-based library for accessing online service APIs using the GData protocol
 License:        LGPL-2.1-or-later
