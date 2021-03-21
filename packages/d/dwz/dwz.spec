@@ -42,7 +42,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           dwz%{name_suffix}
-Version:        0.14~rc1
+Version:        0.14
 Release:        0
 %if %{build_main}
 Summary:        DWARF optimization and duplicate removal tool
@@ -80,15 +80,10 @@ NoSource:       0
 
 Source1:        dwz-rpmlintrc
 
-Patch1:         dwz-precompute-partitions.patch
-Patch2:         dwz-call-reorder_dups-asap.patch
-Patch3:         dwz-fix-reference-of-pu-to-cu-for-odr.patch
-Patch4:         dwz-add-assert-checking-that-cu-is-not-referenced-from-pu.patch
-Patch5:         dwz-enable-odr-by-default.patch
-Patch6:         dwz-document-experimental-status-of-odr.patch
-Patch7:         dwz-update-suse-copyright-years.patch
-Patch8:         dwz-update-version.patch
-Patch9:         dwz-testsuite-fix-pr25109.sh-on-riscv64.patch
+Patch1:         dwz-fix-another-reference-from-pu-to-cu-for-odr.patch
+Patch2:         dwz-handle-reordered-dup-chains-in-create-import-tree.patch
+Patch3:         dwz-enable-odr-by-default.patch
+Patch4:         dwz-testsuite-fix-pr27463.sh-on-riscv64.patch
 
 %if %{build_main}
 %description
@@ -121,11 +116,6 @@ This package contains the testsuite results from DWZ.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}"

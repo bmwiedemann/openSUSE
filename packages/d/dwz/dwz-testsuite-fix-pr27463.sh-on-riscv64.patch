@@ -1,0 +1,39 @@
+[testsuite] Fix pr27463.sh on riscv64
+
+On riscv64, I run into:
+...
+cc main.c unavailable-dwarf-piece-dw.S -o unavailable-dwarf-piece
+unavailable-dwarf-piece-dw.S: Assembler messages:
+unavailable-dwarf-piece-dw.S:24: Error: non-constant .uleb128 is not supported
+  ...
+make: *** [Makefile:100: unavailable-dwarf-piece] Error 1
+...
+
+Fix this similar to commit 53c0488 "[testsuite] Fix pr25109.sh on riscv64".
+
+2021-03-17  Tom de Vries  <tdevries@suse.de>
+
+	* Makefile (no-multifile-prop): Allow target rule to fail.
+
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 2f7c76a..2990567 100644
+--- a/Makefile
++++ b/Makefile
+@@ -96,11 +96,11 @@ $(TEMP_ASM_FILES): %-dw.S: $(TEST_SRC)/../lib/%.exp
+ 	  export DEJAGNU=$(DEJAGNU); \
+ 	  runtest --tool=dwz -srcdir $(srcdir)/testsuite/ lib/$*.exp
+ 
+-$(filter-out no-multifile-prop, $(TEST_EXECS_DWARF_ASM)): %: %-dw.S
++$(filter-out no-multifile-prop unavailable-dwarf-piece, $(TEST_EXECS_DWARF_ASM)): %: %-dw.S
+ 	$(CC) $(TEST_SRC)/main.c $< -o $@
+ 
+ # Fails to compile on riscv64: Error: non-constant .uleb128 is not supported.
+-no-multifile-prop: %: %-dw.S
++no-multifile-prop unavailable-dwarf-piece: %: %-dw.S
+ 	$(CC) $(TEST_SRC)/main.c $< -o $@ || true
+ 
+ odr-struct:

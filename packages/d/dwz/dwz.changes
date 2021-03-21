@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Mar 17 15:54:22 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- Backport fixes for odr PR [swo#27578]:
+  * dwz-fix-another-reference-from-pu-to-cu-for-odr.patch
+  * dwz-handle-reordered-dup-chains-in-create-import-tree.patch
+- Backport testsuite fix:
+  * dwz-testsuite-fix-pr27463.sh-on-riscv64.patch
+
+-------------------------------------------------------------------
+Wed Mar 17 15:38:20 UTC 2021 - Tom de Vries <tdevries@suse.com>
+
+- DWZ 0.14 update:
+  * Dropped patches:
+    - dwz-add-assert-checking-that-cu-is-not-referenced-from-pu.patch
+    - dwz-call-reorder_dups-asap.patch
+    - dwz-document-experimental-status-of-odr.patch
+    - dwz-fix-reference-of-pu-to-cu-for-odr.patch
+    - dwz-precompute-partitions.patch
+    - dwz-testsuite-fix-pr25109.sh-on-riscv64.patch
+    - dwz-update-suse-copyright-years.patch
+    - dwz-update-version.patch
+  * Updated patch:
+    - dwz-enable-odr-by-default.patch
+
+-------------------------------------------------------------------
 Fri Feb 26 12:07:30 UTC 2021 - Tom de Vries <tdevries@suse.com>
 
 - Change Version tag from 0.14rc1 to 0.14~rc1

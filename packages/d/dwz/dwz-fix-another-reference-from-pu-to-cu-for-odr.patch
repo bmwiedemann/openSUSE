@@ -1,0 +1,82 @@
+Fix another reference from PU to CU for odr
+
+[ Backport of master commit f765cd9. ]
+
+When using the test-case from PR27578 with --no-import-optimize, we run into:
+...
+$ dwz libvclplug_genlo.so.debug -o libvclplug_genlo.so.debug.z \
+    -lnone --odr --no-import-optimize
+dwz: dwz.c:12700: write_die: \
+  Assertion `IMPLIES (cu->cu_kind == CU_PU, \
+                      die_cu (refd)->cu_kind == CU_PU)' failed.
+Aborted (core dumped)
+...
+
+The assert is triggered when trying to write out the reference to the DIE at
+2f5e for DW_AT_type:
+...
+ <1><2e8c>: Abbrev Number: 76 (DW_TAG_structure_type)
+    <2e8d>   DW_AT_name        : (indirect string, offset: 0x5f592): SalXLib
+    <2e91>   DW_AT_byte_size   : 320
+ ...
+ <2><2ed9>: Abbrev Number: 22 (DW_TAG_member)
+    <2eda>   DW_AT_name        : (indirect string, offset: 0x56c9b): aReadFDS_
+    <2ede>   DW_AT_decl_file   : 33
+    <2edf>   DW_AT_decl_line   : 173
+    <2ee0>   DW_AT_decl_column : 21
+    <2ee1>   DW_AT_type        : <0x2f5e>
+    <2ee5>   DW_AT_data_member_location: 48
+    <2ee6>   DW_AT_accessibility: 2     (protected)
+...
+
+The corresponding duplicate chain (with some annotations manually added) is:
+...
+duplicate chain:
+Compilation Unit @ offset 0x44:
+ 2d01 O 9f6a4268(29178f4e) 9f6a4268 SalXLib structure_type DECL
+ 2e8c O 9f6a4268(87d059e8) 9f6a4268 SalXLib structure_type DEF
+ 40a6 O 9f6a4268(87d059e8) 9f6a4268 SalXLib structure_type DEF
+Compilation Unit @ offset 0xfaf6:
+ 419be O 9f6a4268(29178f4e) 9f6a4268 SalXLib structure_type DECL
+ 50e56 O 9f6a4268(29178f4e) 9f6a4268 SalXLib structure_type DECL
+ 6063a O 9f6a4268(29178f4e) 9f6a4268 SalXLib structure_type DECL
+Compilation Unit @ offset 0x1bb0f:
+...
+
+The duplicate chain is created by split_dups, which merged all the DECLs with
+one duplicate chain containing only DEFs.
+
+When doing the test for merged_singleton on this duplicate chain, it returns
+NULL, because there are two DEFs.  However, the DEFs are from the same CU, and
+the type for aReadFDS_ is 0x2f5e for both DEFs.  Consequently, there is no
+duplicate chain for 0x2f5e, and we need to force a singleton duplicate chain.
+
+Fix this by making merged_singleton return the first DEF.
+
+2021-03-16  Tom de Vries  <tdevries@suse.de>
+
+	PR dwz/27578
+	* dwz.c (merged_singleton): Handle DEFs in the same CU.
+
+---
+ dwz.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/dwz.c b/dwz.c
+index 5effbc1..fb7fbb1 100644
+--- a/dwz.c
++++ b/dwz.c
+@@ -8378,7 +8378,12 @@ merged_singleton (dw_die_ref die)
+       {
+       case ODR_DEF:
+ 	if (res)
+-	  return NULL;
++	  {
++	    if (die_cu (res) == die_cu (d))
++	      continue;
++	    else
++	      return NULL;
++	  }
+ 	else
+ 	  res = d;
+ 	break;

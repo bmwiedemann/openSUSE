@@ -1,0 +1,107 @@
+Handle reordered dup chains in create_import_tree
+
+[ Backport of master commit 4e7ce44. ]
+
+With the test-case from PR27578, we run into:
+...
+$ dwz libvclplug_genlo.so.debug -o libvclplug_genlo.so.debug.z \
+    -lnone --odr --devel-progress
+create_import_tree phase 2
+dwz: dwz.c:8833: remove_import_edges: Assertion `i == cucount' failed.
+Aborted (core dumped)
+...
+
+Using --devel-verify-edges, we can trigger an assert earlier:
+...
+create_import_tree phase 1
+dwz: dwz.c:8923: verify_edges_1: \
+  Assertion `count == 0 || e1->icu->idx > last_idx' failed.
+Aborted (core dumped)
+...
+where e1->icu->idx == 201 and last_idx == 201.
+
+The problem is (as we can see using --devel-dump-edges) that there's a
+duplicate edge from CU 201 to PU 48:
+...
+idx: 48
+cu: 0xbc
+incoming: 200
+incoming: 201
+incoming: 201
+incoming: 203
+incoming: 204
+incoming: 208
+...
+
+This can be traced back to this duplicate chain:
+...
+duplicate chain:
+ 7fe2 O 2de8b1f3(fc1aa040) 2de8b1f3 Visual structure_type DECL
+ 19d67 O 2de8b1f3(fc1aa040) 2de8b1f3 Visual structure_type DECL
+ 2a7aa O 2de8b1f3(fc1aa040) 2de8b1f3 Visual structure_type DECL
+ 41434 O 2de8b1f3(fc1aa040) 2de8b1f3 Visual structure_type DECL
+Compilation Unit @ offset 0x5bf84:
+ 5fd9d O 2de8b1f3(fc1aa040) 2de8b1f3 Visual structure_type DECL
+ 611f5 O 2de8b1f3(deb4b00f) 2de8b1f3 Visual structure_type DEF
+...
+
+Since it starts with a DECL, it will be reordered such that the DEF is at
+the start.  However, that breaks the code in create_import_tree that checks
+for duplicate chain members from the same CU, which assumes that those are
+adjacent.
+
+Fix this in create_import_tree.
+
+2021-03-16  Tom de Vries  <tdevries@suse.de>
+
+	PR dwz/27578
+	* dwz.c (create_import_tree): Handle reorder duplicate chain.
+
+---
+ dwz.c | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/dwz.c b/dwz.c
+index fb7fbb1..481674f 100644
+--- a/dwz.c
++++ b/dwz.c
+@@ -9080,11 +9080,18 @@ create_import_tree (void)
+       ipu->cu = pu;
+       pu->u1.cu_icu = ipu;
+       assert (rdie->die_toplevel);
++      dw_die_ref firstdie = NULL;
++      dw_cu_ref firstdiecu = NULL;
+       for (die = rdie->die_nextdup, prev_cu = NULL;
+ 	   die; die = die->die_nextdup)
+ 	{
+ 	  dw_cu_ref diecu = die_cu (die);
+-	  if (diecu == prev_cu)
++	  if (firstdie == NULL)
++	    {
++	      firstdie = die;
++	      firstdiecu = die_cu (firstdie);
++	    }
++	  if (diecu == prev_cu || (die != firstdie && diecu == firstdiecu))
+ 	    continue;
+ 	  ipu->incoming_count++;
+ 	  size += 1 + (diecu->cu_version == 2 ? ptr_size : 4);
+@@ -9094,11 +9101,18 @@ create_import_tree (void)
+ 		       obstack_alloc (&ob2,
+ 				      ipu->incoming_count
+ 				      * sizeof (*ipu->incoming));
++      firstdie = NULL;
++      firstdiecu = NULL;
+       for (die = rdie->die_nextdup, i = 0, prev_cu = NULL;
+ 	   die; die = die->die_nextdup)
+ 	{
+ 	  dw_cu_ref diecu = die_cu (die);
+-	  if (diecu == prev_cu)
++	  if (firstdie == NULL)
++	    {
++	      firstdie = die;
++	      firstdiecu = die_cu (firstdie);
++	    }
++	  if (diecu == prev_cu || (die != firstdie && diecu == firstdiecu))
+ 	    continue;
+ 	  icu = diecu->u1.cu_icu;
+ 	  if (icu == NULL)
