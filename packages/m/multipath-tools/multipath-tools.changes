@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 18 09:48:47 UTC 2021 - mwilck@suse.com
+
+- Update to version 0.8.5+29+suse.5dabcd2:
+  * 11-dm-mpath.rules: run "multipath -U" with -v1 (bsc#1182871)
+  * libmultipath: merge update_multipath_table() and update_multipath_status()
+  (bsc#1183666)
+
+-------------------------------------------------------------------
 Fri Mar 12 14:53:41 UTC 2021 - mwilck@suse.com
 
 - Update to version 0.8.5+26+suse.2cbedfd:

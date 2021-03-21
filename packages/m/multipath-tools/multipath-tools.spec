@@ -39,7 +39,7 @@
 %define _sysdir usr/lib
 
 Name:           multipath-tools
-Version:        0.8.5+26+suse.2cbedfd
+Version:        0.8.5+29+suse.5dabcd2
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only

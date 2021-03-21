@@ -1421,4 +1421,15 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
 - added one more bug ref (new bug fixed in already present patch)</comment>
     <requestid>878610</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>cba9d3dfc2372203e553db372527d484</srcmd5>
+    <version>0.8.5+29+suse.5dabcd2</version>
+    <time>1616365159</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.5+29+suse.5dabcd2:
+  * 11-dm-mpath.rules: run &quot;multipath -U&quot; with -v1 (bsc#1182871)
+  * libmultipath: merge update_multipath_table() and update_multipath_status()
+  (bsc#1183666)</comment>
+    <requestid>879857</requestid>
+  </revision>
 </revisionlist>
