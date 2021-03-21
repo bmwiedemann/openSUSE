@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 21 00:03:05 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1616233122.00db033:
+  * Dependency cron 2021-03-20
+  * Allow to override isotovideo executable with command line
+  * worker: Simplify use of job_settings hash lookup
+  * Mark unstable t/ui/13-admin.t as such
+  * Fix unhandled output in worker job test
+  * Dependency cron 2021-03-19
+  * Fix 414 failures when cloning jobs with too long settings
+  * Fix help popover in developer mode panel
+
+-------------------------------------------------------------------
 Thu Mar 18 16:01:07 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1616080850.6ccbaedb8:
