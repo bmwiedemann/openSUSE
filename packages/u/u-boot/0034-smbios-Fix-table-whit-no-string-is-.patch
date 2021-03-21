@@ -1,0 +1,28 @@
+From 62b45b6d77924c396a59caac252169ccf7ef525a Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <mbrugger@suse.com>
+Date: Wed, 17 Mar 2021 12:43:03 +0100
+Subject: [PATCH] smbios: Fix table whit no string is present
+
+When no string is present a table has to end with two \0 bytes.
+Take this into account. This is a downstream fix.
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ lib/smbios.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lib/smbios.c b/lib/smbios.c
+index 485a812c77..c68d19e12b 100644
+--- a/lib/smbios.c
++++ b/lib/smbios.c
+@@ -105,6 +105,10 @@ static int smbios_string_table_len(char *start)
+ 		len += i;
+ 	}
+ 
++	/* A table without a string has to end with \0\0 */
++	if (len == 0)
++		return 2;
++
+ 	return len + 1;
+ }
+ 

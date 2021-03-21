@@ -257,6 +257,7 @@ Patch0030:      0030-fs-btrfs-Select-SHA256-in-Kconfig.patch
 Patch0031:      0031-efi_loader-Avoid-emitting-efi_var_b.patch
 Patch0032:      0032-configs-BPI-R2-Disable-EFI-Grub-wor.patch
 Patch0033:      0033-configs-RPi2-Disable-EFI-Grub-worka.patch
+Patch0034:      0034-smbios-Fix-table-whit-no-string-is-.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison

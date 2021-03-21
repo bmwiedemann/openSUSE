@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 17 11:46:02 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+Fix SMBIOS tables without a string present (bsc#1183079)
+
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.01
+* Patches added:
+  0034-smbios-Fix-table-whit-no-string-is-.patch
+
+-------------------------------------------------------------------
 Thu Mar  4 14:59:52 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
 
 - Fix confname assignment for zynqmp and zynq case (bsc#1182962)
