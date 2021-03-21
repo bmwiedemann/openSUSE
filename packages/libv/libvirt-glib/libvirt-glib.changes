@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar 19 09:53:59 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.0.0:
+  + Replace autotools build system with meson.
+  + Mandate libvirt >= 1.2.8.
+  + Mandate libxml2 >= 2.9.1.
+  + Mandate glib >= 2.48.0.
+  + Mandate gobject-introspection >= 1.46.0.
+  + Fix docs incompatibility with gtk-doc >= 1.30.
+  + Misc API docs fixes.
+  + Add constants related to NVRAM during domain delete.
+  + Add domain config API for controller ports attribute.
+  + Fix compat with newer glib by avoid volatile for enum types.
+  + Updated translations.
+- Switch build system to meson:
+  + Drop libtool BuildRequires: no longer needed.
+  + Add meson BuildRequires.
+  + Add gtk-doc BuildRequires: new dependency.
+  + Replace configure/make/make_install macros with
+    meson/meson_build/meson_install variants.
+
+-------------------------------------------------------------------
 Tue Dec  3 22:00:32 UTC 2019 - James Fehlig <jfehlig@suse.com>
 
 - Update to version 3.0.0

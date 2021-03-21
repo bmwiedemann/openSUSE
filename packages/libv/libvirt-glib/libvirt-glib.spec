@@ -1,7 +1,7 @@
 #
 # spec file for package libvirt-glib
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,18 +18,19 @@
 
 
 Name:           libvirt-glib
-Version:        3.0.0
+Version:        4.0.0
 Release:        0
 Summary:        GLib and GObject mapping of libvirt
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            http://libvirt.org
-Source0:        http://libvirt.org/sources/glib/%{name}-%{version}.tar.gz
-Source1:        http://libvirt.org/sources/glib/%{name}-%{version}.tar.gz.asc
+Source0:        http://libvirt.org/sources/glib/%{name}-%{version}.tar.xz
+Source1:        http://libvirt.org/sources/glib/%{name}-%{version}.tar.xz.asc
 
 BuildRequires:  fdupes
 BuildRequires:  gettext
-BuildRequires:  libtool
+BuildRequires:  gtk-doc
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
@@ -127,14 +128,12 @@ should be able to integrate other virtualization mechanisms if needed
 %autosetup -p1
 
 %build
-%configure \
-	--disable-static \
-	%{nil}
-%make_build
+%meson \
+    -Dgit_werror=disabled
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %find_lang %{name}
 %fdupes %{buildroot}/%{_datadir}/gtk-doc/
 
@@ -143,7 +142,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libvirt-glib-1_0-0 -f %{name}.lang
 %license COPYING
-%doc README ChangeLog
+%doc README
 %{_libdir}/libvirt-gconfig-1.0.so.*
 %{_libdir}/libvirt-glib-1.0.so.*
 %{_libdir}/libvirt-gobject-1.0.so.*
@@ -175,9 +174,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/gtk-doc/html/Libvirt-gobject/
 %dir %{_datadir}/vala/
 %dir %{_datadir}/vala/vapi/
+%{_datadir}/vala/vapi/libvirt-gconfig-1.0.deps
 %{_datadir}/vala/vapi/libvirt-gconfig-1.0.vapi
+%{_datadir}/vala/vapi/libvirt-glib-1.0.deps
 %{_datadir}/vala/vapi/libvirt-glib-1.0.vapi
-%{_datadir}/vala/vapi/libvirt-gobject-1.0.vapi
 %{_datadir}/vala/vapi/libvirt-gobject-1.0.deps
+%{_datadir}/vala/vapi/libvirt-gobject-1.0.vapi
 
 %changelog
