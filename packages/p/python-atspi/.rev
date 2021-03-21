@@ -519,4 +519,12 @@
     armv7l and ppc64le. Skip there. (forwarded request 855753 from bnavigator)</comment>
     <requestid>857822</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>668debc07bf2c000588d218733d70dd7</srcmd5>
+    <version>2.38.1</version>
+    <time>1616365193</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.38.1 (forwarded request 879847 from dimstar)</comment>
+    <requestid>880097</requestid>
+  </revision>
 </revisionlist>

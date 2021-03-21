@@ -1,7 +1,7 @@
 #
 # spec file for package python-atspi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define psuffix -test
 %bcond_without test
 # the test suite builds platform specific libraries, failing on some
-ExcludeArch:  %arm ppc64le
+ExcludeArch:    %arm ppc64le
 %define configureargs --enable-tests
 %else
 %define psuffix %{nil}
@@ -30,11 +30,10 @@ ExcludeArch:  %arm ppc64le
 BuildArch:      noarch
 %endif
 
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define _name   pyatspi
 Name:           python-atspi%{psuffix}
-Version:        2.38.0
+Version:        2.38.1
 Release:        0
 Summary:        Python bindings for the Assistive Technology Service Provider Interface
 License:        LGPL-2.0-only
@@ -98,7 +97,6 @@ export PYTHON=%_bindir/$python
 make %{?_smp_mflags}
 popd
 }
-
 
 %install
 %if ! %{with test}
