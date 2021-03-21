@@ -130,7 +130,7 @@
   boo#1180317: '20210103'
   boo#1180358: '20210318'
   boo#1180740: '20210115'
-  boo#1180754: '20210319'
+  boo#1180754: '20210320'
   boo#1180853: '20210111'
   boo#1181038: '20210223'
   boo#1181497: '20210127'
@@ -511,6 +511,12 @@ products:
     - i586
     - x86_64
   containerfile:
+  - go1.15-devel-container:
+    - i586
+    - x86_64
+  - go1.16-devel-container:
+    - i586
+    - x86_64
   - java14-devel-container:
     - i586
     - x86_64
@@ -618,10 +624,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20210320'
 published: '20210319'
 publishing: '20210319'
-testing: '20210319'
+testing: '20210320'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
