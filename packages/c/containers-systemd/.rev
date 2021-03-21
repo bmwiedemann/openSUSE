@@ -249,4 +249,14 @@
   * Replace KillMode=none with TimeoutStopSec</comment>
     <requestid>874368</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>07317a611635adb0f7b1ae406f0f088e</srcmd5>
+    <version>0.0+git20210318.fea98a6</version>
+    <time>1616365169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20210318.fea98a6:
+  * Add lost podman pull back
+  * nginx: fix syntax error</comment>
+    <requestid>879890</requestid>
+  </revision>
 </revisionlist>
