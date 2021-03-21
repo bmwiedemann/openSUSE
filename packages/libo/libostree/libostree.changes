@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 15 11:05:25 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO (boo#1133120) as it works now.
+
+-------------------------------------------------------------------
 Thu Nov 19 15:17:22 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 2020.8:

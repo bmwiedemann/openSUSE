@@ -122,7 +122,6 @@ of both.
 %autosetup -p1
 
 %build
-%define _lto_cflags %{nil}
 NOCONFIGURE=1 ./autogen.sh
 %configure --with-dracut
 make %{?_smp_mflags}

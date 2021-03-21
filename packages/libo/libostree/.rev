@@ -256,4 +256,12 @@
     <comment>Update to version 2020.8 (forwarded request 849462 from dimstar)</comment>
     <requestid>851017</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>b2e3c7937744048d21792519ec7eb468</srcmd5>
+    <version>2020.8</version>
+    <time>1616365179</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Factory</comment>
+    <requestid>880090</requestid>
+  </revision>
 </revisionlist>
