@@ -636,7 +636,7 @@ exit 0
 %{_prefix}/lib/tmpfiles.d/pulseaudio-gdm-hooks.conf
 
 %files -n libpulse%{soname}
-%doc README LICENSE GPL LGPL
+%license LICENSE GPL LGPL
 %dir %{_sysconfdir}/pulse/
 %dir %{_sysconfdir}/pulse/client.conf.d
 %config(noreplace) %{_sysconfdir}/pulse/client.conf

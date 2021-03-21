@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 16 22:03:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- move license to licensedir 
+
+-------------------------------------------------------------------
 Mon Mar 15 12:31:20 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Fix "Failed to open audio file" for FLAC and OGG (bsc#1183546)
