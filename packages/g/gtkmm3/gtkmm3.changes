@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 18 15:17:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.24.4:
+  + The 'GTKMM_API' decoration was missed from the '_WRAP_COMPARE'
+    item, making the code fail to link for Inkscape on Windows.
+
+-------------------------------------------------------------------
 Sat Dec 19 10:44:50 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.24.3:
