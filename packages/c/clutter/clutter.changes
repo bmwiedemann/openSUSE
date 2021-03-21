@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Dec 15 11:02:17 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO (boo#1133118) as it works now.
+
+-------------------------------------------------------------------
 Fri Sep 18 18:16:33 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Make documentation build reproducible

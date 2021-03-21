@@ -702,4 +702,12 @@ our build-compare was already ignoring these variations for at least 3 years
 but bit-reproducible build results are always preferrable. (forwarded request 835467 from bmwiedemann)</comment>
     <requestid>836043</requestid>
   </revision>
+  <revision rev="90" vrev="3">
+    <srcmd5>d857eb419fb43b58d20291ffad911927</srcmd5>
+    <version>1.26.4</version>
+    <time>1616365177</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Factory</comment>
+    <requestid>880089</requestid>
+  </revision>
 </revisionlist>

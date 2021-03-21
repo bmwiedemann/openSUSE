@@ -105,7 +105,6 @@ This package contains the files for development.
 find doc/cookbook/html -name \*.html -type f -delete
 
 %build
-%define _lto_cflags %{nil}
 %configure \
         --disable-static \
         --enable-xinput \
