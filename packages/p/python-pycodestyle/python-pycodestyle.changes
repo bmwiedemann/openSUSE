@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 16 18:44:38 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.7.0
+  * Fix physical checks (such as W191) at end of file.
+  * Add ``--indent-size`` option (defaulting to ``4``).
+  * W605: fix escaped crlf false positive on windows.
+
+-------------------------------------------------------------------
 Thu May 14 10:03:10 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 2.6.0

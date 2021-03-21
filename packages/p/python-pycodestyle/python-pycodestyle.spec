@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-pycodestyle
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        Python style guide checker
 License:        MIT
