@@ -17,7 +17,7 @@
 
 
 Name:           pango
-Version:        1.48.2
+Version:        1.48.3
 Release:        0
 Summary:        Library for Layout and Rendering of Text
 License:        LGPL-2.1-or-later
@@ -28,7 +28,6 @@ Source2:        macros.pango
 Source99:       baselibs.conf
 
 BuildRequires:  gcc-c++
-BuildRequires:  gtk-doc
 BuildRequires:  help2man
 BuildRequires:  meson >= 0.55.3
 BuildRequires:  pkgconfig
@@ -122,7 +121,6 @@ to develop applications that require these.
 
 %build
 %meson \
-	-Dgtk_doc=true \
 	-Dintrospection=enabled \
 	-Dinstall-tests=false \
 	%{nil}
@@ -161,13 +159,12 @@ cp %{SOURCE2} %{buildroot}%_rpmmacrodir
 
 %files devel
 %doc CODING_STYLE.md THANKS
-%doc %{_datadir}/gtk-doc/html/pango/
 %_rpmmacrodir/macros.pango
 %{_includedir}/pango-1.0/
 %{_libdir}/libpango-1.0.so
 %{_libdir}/libpangocairo-1.0.so
 %{_libdir}/libpangoft2-1.0.so
-%{_libdir}/libpangoxft-1.0.so  
+%{_libdir}/libpangoxft-1.0.so
 %{_libdir}/pkgconfig/pango.pc
 %{_libdir}/pkgconfig/pangocairo.pc
 %{_libdir}/pkgconfig/pangoft2.pc

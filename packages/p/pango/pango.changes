@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 17 21:22:44 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 1.48.3:
+  + Miscellaneous introspection fixes
+  + Make pango_attr_list_splice clip inserted attrbiutes
+  + Do costly fontconfig calls in threads
+  + markup: Fix issues with accel handling
+  + docs: Convert docs to use gi-docgen
+  + Fix build against harfbuzz < 2.6
+- Disable gtk-doc for now since upstream have moved to gi-docgen and it is
+  not in Factory yet
+
+-------------------------------------------------------------------
 Thu Feb 11 10:57:51 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.48.2:
