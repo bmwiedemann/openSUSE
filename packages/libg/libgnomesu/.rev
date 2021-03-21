@@ -463,4 +463,12 @@
     (bsc#1176514). (forwarded request 836125 from sbrabec)</comment>
     <requestid>838193</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>fe9bbf0b91746384258975cf7444c4c3</srcmd5>
+    <version>2.0.6</version>
+    <time>1616365199</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.0.6 (forwarded request 880086 from dimstar)</comment>
+    <requestid>880102</requestid>
+  </revision>
 </revisionlist>

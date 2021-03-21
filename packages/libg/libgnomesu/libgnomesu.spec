@@ -1,7 +1,7 @@
 #
 # spec file for package libgnomesu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libgnomesu
-Version:        2.0.5
+Version:        2.0.6
 Release:        0
 Summary:        GNOME su Library
 License:        LGPL-2.1-or-later
