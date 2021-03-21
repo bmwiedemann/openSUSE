@@ -1,95 +1,200 @@
 -------------------------------------------------------------------
+Fri Mar 19 17:43:41 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Enable or disable the ldac codec depending if ldacBT is available
+  or not to fix build in s390x (where it's not available)
+- Add some more information and fix indentation on previous
+  changelog entries.
+
+-------------------------------------------------------------------
+Fri Mar 19 12:02:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.3.24:
+  + This is a bugfix release that is API and ABI compatible with
+    previous 0.3.x releases.
+  + Highlights
+    - Many JACK midi improvements and device support.
+    - Fixes in gnome-control-center default sink/source handling.
+    - Many small performance improvements in alsa device handling
+      and latency. There should also be less cracks/pops and xruns
+      now.
+    - More bluetooth compatibility improvements.
+  + PipeWire improvements
+    - Implement simple upmixing
+    - Disable the resampler when not used. This improves latency
+      and CPU usage.
+    - Handle max-quantum on devices and try to not make the quantum
+      larger than the device buffer size.
+    - improvements to how nodes and links are activated. It should
+      now result in less xruns and cracks/pops.
+    - meson uses the feature options everywhere now
+    - Handle volume remap in the channelmixer. This fixes the
+      channels on multichannel devices.
+    - Try to escape invalid JSON string characters
+    - Keep better track of changed parameters in audioconvert.
+    - Improve config files, make arrays where needed.
+    - Respect NO_COLOR where possible
+    - Support in-place config file parsing to avoid allocations and
+      improve startup performance.
+    - There is no a config option to enable non-power-of-two
+      quantums.
+    - Preliminary support for upmixing and generating LFE channels.
+  + Session-manager
+    - default nodes are not stored as JSON in the metadata. This
+      is more readable and introspectable.
+    - More default-nodes and default-routes improvements. port
+      switching should work better now.
+    - Wait until all devices are scanned before linking clients.
+    - Fixes some crashes
+    - Sinks (monitors) can now be set as default sources.
+  + Device support
+    - Fix startup timers for alsa devices.
+    - Improve timers in alsa when quantum changes. It should cause
+      less xruns and cracks.
+    - Fix UCM setup of capture devices.
+    - Only disable IRQ in alsa when not batch. For batch devices
+      the hw pointers are updated each IRQ so we need to keep them
+      enabled. This massively improves latency on USB batch devices
+      to the same level as JACK (with small enough period size).
+  + Bluetooth
+    - Improvements to profile switches.
+    - Improvements to volume handling.
+    - Fixes for A2DP sources
+    - Add support for battery status when available.
+    - Many other small improvements.
+  + PulseAudio server
+    - handle NULL in set_default_sink/source to clear the default
+    - Implement a workaround for gnome-control-center when setting
+      the default sink/source. It also sets the target in
+      stream-restore to the new default. This fixes moving streams
+      in gnome-control-center.
+    - Fix some races by replying to some requests after the
+      operation completed.
+    - Prefer formats of the extended format API.
+    - Create a pid file on startup to improve compatibility with
+      apps that look for it.
+    - Capture streams can now be moved to monitors with pavucontrol
+    - Fixes for crashes
+  + JACK
+    - jack clients can now connect to the 'default' server
+    - Move midi ports back to the midi client
+    - Only mark midi hardware ports as terminal/physical
+    - Use the same midi names as a2jmidid
+    - match system ports in get_ports.
+    - Improve compatibility with some apps that require a
+      fixed latency.
+    - Beginnings of the libjackserver implementation.
+- Switch off libopenaptx and fdk-aac (because they are
+  patent-encumbered) and libcamera (problems in building).
+
+-------------------------------------------------------------------
+Wed Mar 17 17:15:02 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- systemd-rpm-macros doesn't have a consistent versioning between
+  distributions, so better assume it's updated enough to support
+  %systemd_user_pre
+
+-------------------------------------------------------------------
+Tue Mar 16 11:21:02 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add systemd rpm macros for pipewire.service as well as
+  pipewire.socket .
+- Use the new %systemd_user_pre macro on %pre to be able to
+  recognize when a service was installed for the first time and
+  enable it on %systemd_user_post (boo#1183012)
+
+-------------------------------------------------------------------
 Tue Mar  9 16:46:52 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to version 0.3.23:
-  * Highlights
-    + Fixes for some critical bugs in last release.
-    + Fix bug where audio was not drained properly at the end of
+  + Highlights
+    - Fixes for some critical bugs in last release.
+    - Fix bug where audio was not drained properly at the end of
       playback, causing repeating sound.
-    + Profile and route switching was improved and should mimic
+    - Profile and route switching was improved and should mimic
       more what pulseaudio did.
-    + Various fixes for xruns in capture and playback.
-    + Bluetooth now supports delay adjustment and various other
+    - Various fixes for xruns in capture and playback.
+    - Bluetooth now supports delay adjustment and various other
       improvements.
-    + The pulseaudio server now correctly identifies AC3 and DTS
+    - The pulseaudio server now correctly identifies AC3 and DTS
       streams and returns a not supported error instead of playing
       static.
-    + Multichannel support was improved in the alsa plugin and
+    - Multichannel support was improved in the alsa plugin and
       the channel mixer. Channels should now play on the right
       speakers in all cases.
-  * PipeWire improvements
-  + Small fixes and improvements in JSON parsing and encoding.
-  + Improvements to param handling in audioconverter. It would
-    previously not always notify of changes.
-  + Avoid updating some properties that we use internally such
-    as the object id and the node.id.
-  + log.level in the config files is now actually used.
-  + the PIPEWIRE_LATENCY env variable should always override
-    any application settings in filter/stream/jack.
-  + The config file can now contain filer and stream properties
-    to, for example, control the resampler, mixer and latency.
-  + Add sandboxing to the systemd services
-  + Various FreeBSD fixes.
-  + Improve draining and a way to exit the drain state as well.
-  + Many multichannel fixes. Channel remapping should now be
-    correct.
-  + Fix bug with repeating audio at the end of playback because
-    the drain in the resampler was not draining all channels.
-  + RTKit default rt.prio has been increased to 88. This will
-    likely still be clamped to 20 until distros increase the
-    max priority.
-  * Session-manager
-    + Don't try to switch to Pro Audio profile, this should be
+  + PipeWire improvements
+    - Small fixes and improvements in JSON parsing and encoding.
+    - Improvements to param handling in audioconverter. It would
+      previously not always notify of changes.
+    - Avoid updating some properties that we use internally such
+      as the object id and the node.id.
+    - log.level in the config files is now actually used.
+    - the PIPEWIRE_LATENCY env variable should always override
+      any application settings in filter/stream/jack.
+    - The config file can now contain filer and stream properties
+      to, for example, control the resampler, mixer and latency.
+    - Add sandboxing to the systemd services
+    - Various FreeBSD fixes.
+    - Improve draining and a way to exit the drain state as well.
+    - Many multichannel fixes. Channel remapping should now be
+      correct.
+    - Fix bug with repeating audio at the end of playback because
+      the drain in the resampler was not draining all channels.
+    - RTKit default rt.prio has been increased to 88. This will
+      likely still be clamped to 20 until distros increase the
+      max priority.
+  + Session-manager
+    - Don't try to switch to Pro Audio profile, this should be
       a user choice only.
-    + Don't crash when metadata was disabled such as when not
+    - Don't crash when metadata was disabled such as when not
       using the audio features of pipewire.
-    + Rework the profile and route handling.
-    + Add systemd unit files for the media-session
-    + Device names should now also have sane names so that tab
+    - Rework the profile and route handling.
+    - Add systemd unit files for the media-session
+    - Device names should now also have sane names so that tab
       pactl completion works on them.
-  * Device support
-    + Fix ALSA format enumeration in more cases. Use the channels
+  + Device support
+    - Fix ALSA format enumeration in more cases. Use the channels
       and rate as a filter.
-    + Make sure the graph doesn't ever use buffers larger than
+    - Make sure the graph doesn't ever use buffers larger than
       the alsa device buffer size or we get xruns.
-    + Tuning of the alsa device timeout handling and dynamic
+    - Tuning of the alsa device timeout handling and dynamic
       resampler. There should now not be any xruns when streams
       appear and disappear or when the quantum changes.
-    + Fix bug in alsa device when reassigning to a new driver,
+    - Fix bug in alsa device when reassigning to a new driver,
       in some cases the dynamic resampler was not activated and
       things would drift out of sync and fail.
-    + Fixes in quantum changes for ALSA capture and how the
+    - Fixes in quantum changes for ALSA capture and how the
       resampler is drained and fed with the new samples.
-  * Bluetooth
-    + Delay adjustment has been implemented now. Bluetooth
+  + Bluetooth
+    - Delay adjustment has been implemented now. Bluetooth
       devices should now be more synchronized with video due
       to proper delay reporting. Because BT delays can be
       large, it can cause hickups in some players.
-    + Fix volume in bluetooth devices.
-    + Codec switch improvements.
-  * PulseAudio server
-    + Latency offset adjustment is now implemented and functional
+    - Fix volume in bluetooth devices.
+    - Codec switch improvements.
+  + PulseAudio server
+    - Latency offset adjustment is now implemented and functional
       for bluetooth devices. It is not working for alsa devices
       yet.
-    + Handle unsupported formats. Previously we would accept encoded
+    - Handle unsupported formats. Previously we would accept encoded
       formats and play noise. This fixes AC3 playback in vlc.
-    + Move some of the configurable parameters to the config file.
-    + Fix a fatal use after free when playing samples
-    + Improve module handling. loaded modules now show up in the
+    - Move some of the configurable parameters to the config file.
+    - Fix a fatal use after free when playing samples
+    - Improve module handling. loaded modules now show up in the
       list of modules and can be unloaded. This also prepares the
       core for more module implementations later.
-  * ALSA plugin
-    + Fix drain with very large buffers, we need to manually start
+  + ALSA plugin
+    - Fix drain with very large buffers, we need to manually start
       the stream before draining.
-    + Fix the channel layout handling.
-    + Improve compatibility with apps that expect the poll to only
+    - Fix the channel layout handling.
+    - Improve compatibility with apps that expect the poll to only
       return when there is activity.
-    + Fix drain for capture
-  * JACK
-    + Add a config option to shorten and filter client names
-    + Increase the length of the client name size and make sure
+    - Fix drain for capture
+  + JACK
+    - Add a config option to shorten and filter client names
+    - Increase the length of the client name size and make sure
       we don't exceed the allocated size.
-    + We now include our own jack header files so we can build
+    - We now include our own jack header files so we can build
       without depending on another jack-devel package. We don't
       yet install the headers or provide pkgconfig files.
 - Move alsa-card-profiles to modules subpackage, they are always
@@ -113,81 +218,81 @@ Thu Feb 25 11:10:46 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 Thu Feb 25 07:32:58 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.22:
-  * Highlights
-    + Per client config files replace the module-profiles. It's
+  + Highlights
+    - Per client config files replace the module-profiles. It's
       now possible to tweak settings and load custom modules.
-    + Pro Audio card profile support. You can now select the
+    - Pro Audio card profile support. You can now select the
       Pro Audio profile and have raw device access with the
       maximum number of channels and no mixer controls. This is
       the usual setup for managing high end Pro Audio cards.
-    + Many fixes and improvements in the JACK library to make
+    - Many fixes and improvements in the JACK library to make
       devices look and integrate better.
-    + Many bluetooth improvements. Playback should be more
+    - Many bluetooth improvements. Playback should be more
       reliable and better synchronized. Support for the HFP HF
       profile.
-    + Small fixes and improvements all over the map.
-  * PipeWire improvements
-    + Add support for restrictions requested by a client. This
+    - Small fixes and improvements all over the map.
+  + PipeWire improvements
+    - Add support for restrictions requested by a client. This
       makes it possible to implement Flatpak policy for emulated
       PulseAudio clients as well.
-    + Fix removal of params in objects. Previously they would not
+    - Fix removal of params in objects. Previously they would not
       be removed from the cache.
-    + Remove mlock warnings by default. There is an option to
+    - Remove mlock warnings by default. There is an option to
       enable them again if you want to check if your system is
       optimized.
-    + Remove LimitMEMLOCK lines from the service files. They can
+    - Remove LimitMEMLOCK lines from the service files. They can
       only lower the system settings and are thus not useful.
-    + Implement per-client config files. Each pipewire client will
+    - Implement per-client config files. Each pipewire client will
       now read a config file that you can use to configure the
       context of the client.
-    + Implement state and config load/save in pipewire. This is
+    - Implement state and config load/save in pipewire. This is
       used by the session manager or other apps.
-    + Make an option to disable dbus support.
-    + Add tool to convert pipewire config to JSON.
-  * Session-manager
-    + Give all permissions to Manager flatpak apps. In the future
+    - Make an option to disable dbus support.
+    - Add tool to convert pipewire config to JSON.
+  + Session-manager
+    - Give all permissions to Manager flatpak apps. In the future
       we will use the Permission store to remember user settings.
-    + Improvements to default audio/sink handling.
-    + Add option to configure device suspend time.
-    + Small fixes in route handling.
-  * Device support
-    + Complain when ACP profile files are not found and use
+    - Improvements to default audio/sink handling.
+    - Add option to configure device suspend time.
+    - Small fixes in route handling.
+  + Device support
+    - Complain when ACP profile files are not found and use
       a fallback in order to get something working.
-    + Add volume support to monitor ports.
-    + Fix resume from suspend for ALSA in more cases.
-    + ALSA ACP cards now have a Pro Audio profile that exposes
+    - Add volume support to monitor ports.
+    - Fix resume from suspend for ALSA in more cases.
+    - ALSA ACP cards now have a Pro Audio profile that exposes
       the raw card devices.
-  * Bluetooth
-    + Enable A2DP delay reporting. This improves audio/video sync
+  + Bluetooth
+    - Enable A2DP delay reporting. This improves audio/video sync
       when playing audio over bluetooth.
-    + Fix stuttering in A2DP source
-    + Tweak buffer size and latency settings to avoid stuttering
-    + More work on HSP and HFP support
-    + Fix initial profile configuration
-    + Add HFP HF support
-  * PulseAudio server
-    + Small tweaks in capture packet size to avoid crashes in some
+    - Fix stuttering in A2DP source
+    - Tweak buffer size and latency settings to avoid stuttering
+    - More work on HSP and HFP support
+    - Fix initial profile configuration
+    - Add HFP HF support
+  + PulseAudio server
+    - Small tweaks in capture packet size to avoid crashes in some
       apps.
-    + Detect Flatpak apps and requests the flatpak permissions from
+    - Detect Flatpak apps and requests the flatpak permissions from
       the session manager. This means that Flatpak pulseaudio apps
       will now run with reduced permissions.
-  * ALSA plugin
-    + Reduce min buffer size in the plugin for lower possible
+  + ALSA plugin
+    - Reduce min buffer size in the plugin for lower possible
       latency.
-  * JACK
-    + implement some missing methods to make qjackctl work again.
-    + Use the context data thread instead of making our own. This
+  + JACK
+    - implement some missing methods to make qjackctl work again.
+    - Use the context data thread instead of making our own. This
       fixes the issue where the data thread was not given RT
       priority correctly.
-    + Pass extra jack flags around in port properties. This makes
+    - Pass extra jack flags around in port properties. This makes
       CV ports in carla work.
-    + Many tweaks to the port names and aliases. Unwanted
+    - Many tweaks to the port names and aliases. Unwanted
       characters are filtered out, giving better names to jack
       apps. Default device names are now equal to those seen in
       pulseaudio apps.
-    + Add an option to make a separate client for the monitor
+    - Add an option to make a separate client for the monitor
       ports of a device. This makes it more usable in apps.
-    + add support for system:playback_N and system:capture_N port
+    - add support for system:playback_N and system:capture_N port
       names for apps that hardcode these port names.
 
 -------------------------------------------------------------------
@@ -215,73 +320,73 @@ Wed Feb 17 17:02:06 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
 Wed Feb  3 17:02:31 UTC 2021 - Dominik Schmidt <dev@dominik-schmidt.de>
 
 - Update to version 0.3.21:
-  * Highlights
-    + Many PulseAudio compatibility fixes. Handling of corked
+  + Highlights
+    - Many PulseAudio compatibility fixes. Handling of corked
       streams, the prebuf setting, seek modes and stream flags
       are now implemented correctly.
-    + Ports and Profiles are now managed by the session manager
+    - Ports and Profiles are now managed by the session manager
       and can save and restore previous settings.
       ALSA device handling has been tweaked for maximum
       compatibility at the expense of latency. There are tuning
       options in the config file.
-    + Improved Bluetooth support. HSP is disabled by default
+    - Improved Bluetooth support. HSP is disabled by default
       because it is old and deprecated and in some cases causes
       conflicts with the newer HFP profile. Codec switching is
       now implemented as well.
       PipeWire accepts donations with liberapay now.
-  * PipeWire improvements
-    + Improve draining in pw-stream.
+  + PipeWire improvements
+    - Improve draining in pw-stream.
       pw-stream now uses busy metadata by default. This makes sure
       that no writer can write to buffers when readers are still
       busy.
-    + Fix handling of empty array/choice instead of failing.
-    + Fix crashes when creating properties from empty strings.
-    + Make it possible to pass an array to module-access
+    - Fix handling of empty array/choice instead of failing.
+    - Fix crashes when creating properties from empty strings.
+    - Make it possible to pass an array to module-access
       access.allowed variables
-    + Fix small bug in argument parsing in pw-cat
-  * Session-manager
-    + Restore route volumes in all cases, also when switching
+    - Fix small bug in argument parsing in pw-cat
+  + Session-manager
+    - Restore route volumes in all cases, also when switching
       routes.
-    + Use a default route volume for unknown routes instead of
+    - Use a default route volume for unknown routes instead of
       letting the system decide on a default.
       Improve profile handling. Don't try to restore unavailable
       profiles. Implement the profile switching in the session
       manager now.
-    + Fix handling of Virtual sources as defaults.
-    + Handle port switching in the session manager. Implement
+    - Fix handling of Virtual sources as defaults.
+    - Handle port switching in the session manager. Implement
       save and restore of default ports per profile.
-  * GStreamer
-    + Fix a crash with zero SPA_PARAM_BUFFERS_size
-  * Device support
-    + v4l2-source will now respect the requested memory types.
-    + ALSA buffering has been tweaked. USB devices should have
+  + GStreamer
+    - Fix a crash with zero SPA_PARAM_BUFFERS_size
+  + Device support
+    - v4l2-source will now respect the requested memory types.
+    - ALSA buffering has been tweaked. USB devices should have
       less XRuns by default. Parameters can be tweaked to
       decrease the latency on capable devices. Also fix a case
       where a quantum change would cause an xrun.
-    + Fix mute in bluetooth devices
+    - Fix mute in bluetooth devices
       bluetooth devices are not paused in idle anymore for
       improved compatibility.
-    + Codec switching for bluetooth is implemented along with
+    - Codec switching for bluetooth is implemented along with
       config options to select the codecs manually.
-    + HSP for bluetooth is now disabled by default. Most devices
+    - HSP for bluetooth is now disabled by default. Most devices
       support the newer HFP profile and some devices fail when
       both are available.
-    + Reduce the amount of events the ALSA plugins emit by bundling
+    - Reduce the amount of events the ALSA plugins emit by bundling
       them.
-  * PulseAudio server
-    + Implement the suspend command
-    + Fixes volume in sample info
-    + Fix playback of samples, sometimes samples would be clipped
+  + PulseAudio server
+    - Implement the suspend command
+    - Fixes volume in sample info
+    - Fix playback of samples, sometimes samples would be clipped
       short. Also implement the target sink for the sample.
-    + Use rate match to feed samples. This way the latency can
+    - Use rate match to feed samples. This way the latency can
       be kept to a minimum.
-    + Latency has been tuned some more, more closely emulating
+    - Latency has been tuned some more, more closely emulating
       pulseaudio behaviour.
-    + Improve default sink/source handling. Make sure all events
+    - Improve default sink/source handling. Make sure all events
       are sent correctly when defaults change.
-    + Handle underrun better without causing sync issues. Make sure
+    - Handle underrun better without causing sync issues. Make sure
       to pause in corked state.
-    + Implement rewind due to seeks, fixes GStreamer seeking.
+    - Implement rewind due to seeks, fixes GStreamer seeking.
 - Do not remove alsa-card-profiles, they are required
 
 -------------------------------------------------------------------
@@ -303,70 +408,70 @@ Thu Jan 21 12:12:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 Wed Jan 20 15:50:31 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.20:
-  * Highlights
-    + Latency was reduced in ALSA and PulseAudio and time
+  + Highlights
+    - Latency was reduced in ALSA and PulseAudio and time
       reporting has improved a lot.
-    + Bluetooth now has a native HFP backed, SBC XQ and
+    - Bluetooth now has a native HFP backed, SBC XQ and
       mSBC support.
-    + Many bugfixes and improvements, improved device
+    - Many bugfixes and improvements, improved device
       support.
-  * PipeWire improvements
-    + pw-dump can now dump all objects such as Endpoints
-    + pw-dump has a -m option to monitor changes
-    + pw-dump can now dump metadata
-    + pw-stream can now use the rate-match io to exactly
+  + PipeWire improvements
+    - pw-dump can now dump all objects such as Endpoints
+    - pw-dump has a -m option to monitor changes
+    - pw-dump can now dump metadata
+    - pw-stream can now use the rate-match io to exactly
       produce the required number of samples for the
       current cycle. When using this feature, a stream can
       achieve the same low-latency as pw-filter.
-    + spa-acp-tool can now load a custom profile-set and
+    - spa-acp-tool can now load a custom profile-set and
       correctly parses the volume updates
-    + There is now a nofail option when loading modules
-    + The connection has been made reentrant to fix some
+    - There is now a nofail option when loading modules
+    - The connection has been made reentrant to fix some
       strange random problems with metadata.
-    + Turn some errors into warnings or simply info.
-    + Executables are now built with PIE
-    + S24OE formats should work now (MAudio FastTrack Pro)
-    + Remove mlock warnings. Add support for mlockall with
+    - Turn some errors into warnings or simply info.
+    - Executables are now built with PIE
+    - S24OE formats should work now (MAudio FastTrack Pro)
+    - Remove mlock warnings. Add support for mlockall with
       a config option.
-  * Session-manager
-    + There are now config files for bluez and v4l2 modules
-    + Improve ALSA device and node properties
-    + Bluetooth devices have better properties now.
-    + The default device routing has been improved.
-  * Device support
-    + Port priorities are updated for UCM devices
-    + ACP devices notify change in routes in all cases
-    + There is now RW support in ALSA devices to increase
+  + Session-manager
+    - There are now config files for bluez and v4l2 modules
+    - Improve ALSA device and node properties
+    - Bluetooth devices have better properties now.
+    - The default device routing has been improved.
+  + Device support
+    - Port priorities are updated for UCM devices
+    - ACP devices notify change in routes in all cases
+    - There is now RW support in ALSA devices to increase
       compatibility.
-    + Many improvements to Bluetooth. SBC XQ support can now
+    - Many improvements to Bluetooth. SBC XQ support can now
       be enabled with a config option. mSBC can be enabled
       with an option.
-    + Bluetooth devices not expose Routes so that they look
+    - Bluetooth devices not expose Routes so that they look
       more like how PulseAudio handles them
-    + Gracefully handle missing profile-sets
-    + There is now a native HFP backend
-    + Improve card names in some cases.
-    + pause-on-idle is now disabled for ALSA devices. This can
+    - Gracefully handle missing profile-sets
+    - There is now a native HFP backend
+    - Improve card names in some cases.
+    - pause-on-idle is now disabled for ALSA devices. This can
       reduce pops and clicks when the device is stopped.
-  * ALSA plugin
-    + Use rate-match to reduce the latency
-    + Implement a _delay() function to get smoother timestamps.
-    + Fix property parsing. Fixes volume changes in alsamixer.
-  * PulseAudio server
-    + Use rate-match to reduce the latency. This also reduces
+  + ALSA plugin
+    - Use rate-match to reduce the latency
+    - Implement a _delay() function to get smoother timestamps.
+    - Fix property parsing. Fixes volume changes in alsamixer.
+  + PulseAudio server
+    - Use rate-match to reduce the latency. This also reduces
       the buffering in audioconvert and improves timestamp
       reporting.
-    + Implement rate changes now that we have rate-match
+    - Implement rate changes now that we have rate-match
       support.
-    + pactl stats will now work
-    + Fix excessive memory usage when a capture client doesn't
+    - pactl stats will now work
+    - Fix excessive memory usage when a capture client doesn't
       read fast enough.
 
 -------------------------------------------------------------------
 Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to version 0.3.19:
-  * Highlights
+  + Highlights
     - Startup after login should be fixed now with inotify
       used to wait for permissions.
     - Channels should be mapped correctly now.
@@ -380,7 +485,7 @@ Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
     - The example session manager now has config files.
     - The config file format was changed to use the SPA JSON
       tokenizer. This makes it more flexible and extensible.
-  * PipeWire improvements
+  + PipeWire improvements
     - Fix debug of id in format channels
     - Audioconvert should now remap channels correctly in all
       cases.
@@ -391,7 +496,7 @@ Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
     - a new tool pw-top was added that prints real-time performance
       stats of the graph.
     - the rtkit module now sets the nice level to -11
-  * Session-manager
+  + Session-manager
     - The session manager would sometimes link dont-reconnect
       nodes to another node, which would leak monitor streams in
      pipewire-pulse.
@@ -400,7 +505,7 @@ Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
       configurations.
     - The session managers now creates unique device and node
       names for alsa and v4l2 devices.
-  * Device support
+  + Device support
     - Many improvements in Bluetooth codecs, LDAC stuttering,
       AptX-HD negotiation, LDAC ABR support
     - Bluetooth supports AAC audio now.
@@ -415,11 +520,11 @@ Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
       write too much to the ringbuffer
     - Fix some memory leaks in error cases.
     - Fix handling of NULL string to locate default sink/source
-  * JACK layer
+  + JACK layer
     - Ports can also be found with the aliases now, making
       qjackctl work in more cases.
 - Changes from PipeWire 0.3.18:
-  * Highlights
+  + Highlights
     - More work in the PulseAudio server. It should be compatible
       with more applications.
     - Bluetooth now support extra codecs such as AptX/HD and LDAC.
@@ -427,7 +532,7 @@ Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
     - Added a new pw-dump tool to dump the objects in JSON formats
       and for filtering them with tools like jq.
     - Many more stability fixes and improvements.
-  * PipeWire improvements
+  + PipeWire improvements
     - Silence some harmless warnings
     - pw-cli can now be used to set parameters.
     - Streams now perform the correct channel mapping when linked
@@ -445,10 +550,10 @@ Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
       could cause crashes, silent channels or other undefined
       behaviour.
     - There is now a simple JSON parser.
-  * Session-manager
+  + Session-manager
     - Settings files are now stored in JSON. With the json parser
       this is easier to parse and extend
-  * Device support
+  + Device support
     - Bluetooth now supports additional codecs: LDAC, AptX and
       AptX HD. LDAC is known to not work very well yet.
     - ALSA devices will now default to the max supported channels
@@ -463,7 +568,7 @@ Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
     - Fix a potential crash in bluetooth devices when
       disconnecting.
     - UCM cards now use HW volume when possible.
-  * PulseAudio server
+  + PulseAudio server
     - The id can now be used as the name to locate cards and
       devices
     - Report streams with planar formats as well
@@ -481,7 +586,7 @@ Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
     - Set properties more like pulseaudio so that some
       clients (Teamspeak) don't crash anymore
 - Changes from PipeWire 0.3.17:
-  * Highlights
+  + Highlights
     - Fix crasher bug for kwin when screensharing stopped.
     - Massive improvements and compatibility fixes in the
       PulseAudio server.
@@ -490,7 +595,7 @@ Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
       to activate session manager modules. Packagers can use
       this to only activate the audio modules when the PulseAudio
       server, libjack.so or the alsa modules are installed.
-  * PipeWire improvements
+  + PipeWire improvements
     - We now clear hooks before adding them. Some application
       did not clear them and had random data for the destroy
       callback.
@@ -507,10 +612,10 @@ Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
     - increase the maximum number of ports for a client-node.
     - adapter and node-factory now support the linger option to
       keep the objects alive after the creating client disconnected.
-  * Device support
+  + Device support
     - ALSA now handles error in close(), like when unplugging a
       USB device.
-  * Session-manager
+  + Session-manager
     - The session manager is now handling DONT_RECONNECT streams
       without a target node. They get connected to a default node
       once and then fail to reconnect.
@@ -520,7 +625,7 @@ Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
       as a json object for easier consumption.
     - The session manager now has a config directory in
       /etc/pipewire/media-session.d/ packagers can use this
-  * PulseAudio server
+  + PulseAudio server
     - Pulse server now acquire the dbus name.
     - Improvements in timing and compatibility with many apps.
     - The stream-restore extension is now implemented so that
@@ -528,14 +633,14 @@ Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
     - Many stability fixes and improvements.
     - Fix some issues with module-load/unload
 - Changes from PipeWire 0.3.16:
-  * Highlights
+  + Highlights
     - Fix screensharing for old 0.2 clients
     - Many pulse-server improvements. There is now a
       pipewire-pulse binary that is the prefered solution for
       PulseAudio compatibility. The replacement libpulse
       libraries are now deprecated. This also makes audio in
       Flatpak work.
-  * PipeWire improvements
+  + PipeWire improvements
     - Fix cleanup of listeners everywhere. Force remove of
       listeners in _destroy to avoid crashes.
     - Add support for a journald logger module.
@@ -545,18 +650,18 @@ Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
       switching streams in music players.
     - Various FreeBSD fixes and improvements.
     - Fix some crashes when destroying objects.
-  * Device support
+  + Device support
     - Reload the ALSA configuration when creating a node so that
       hotplugged devices work in all cases.
     - Fix memory leaks in ACP library. This also fixes issues
       where the mixer device was not closed.
     - Bluetooth now has support for the mSBC codec for SCO
       source and sink.
-  * pulse-server
+  + pulse-server
     - Many introspection and compatibility improvements. It should
       now be as good or better than the replacement library.
     - Implement sample cache to make notification events work.
-  * JACK layer
+  + JACK layer
     - handle errors when linking, fixes jack_connect hang when
       the ports were already linked.
 - Drop patches do-not-use-snd_pcm_ioplug_hw_avail.patch and
@@ -575,132 +680,132 @@ Wed Jan 13 09:07:19 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 Thu Nov  5 10:37:18 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.15:
-  * Highlights
-    + This is a quick update to fix critical issues with the
+  + Highlights
+    - This is a quick update to fix critical issues with the
       0.3.14 update, which broke screen sharing and accidentally
       enabled the experimental pulse-server.
-    + Fix some compatibility issues in pulse-server with
+    - Fix some compatibility issues in pulse-server with
       pavucontrol and fix an issue that would block the complete
       server.
-  * PipeWire improvements
-    + Permission checks for new clients are now done from a
+  + PipeWire improvements
+    - Permission checks for new clients are now done from a
       global context, which makes it possible to assign initial
       permissions to objects.
-    + Handle EINTR everywhere
-    + Fix an issue with the node state changes where a quick
+    - Handle EINTR everywhere
+    - Fix an issue with the node state changes where a quick
       pause/play would hang a client.
-  * Session manager improvements
-    + Disable the bluez5 and pulse-bridge modules by default
+  + Session manager improvements
+    - Disable the bluez5 and pulse-bridge modules by default
       because they interfere with pulseaudio. These options should
       only be enabled if pulseaudio is removed or disabled in the
       system.
-    + Fix an issue where the session manager could end up in
+    - Fix an issue where the session manager could end up in
       infinite recursion while scanning for things to do.
-    + The session manager will now always configure nodes to remix
+    - The session manager will now always configure nodes to remix
       to the channel configuration of the device. This fixes the
       case where mono streams would only end up on one channel of a
       stereo device.
-  * Device support
-    + Initial merge of A2DP extra codec support using the new
+  + Device support
+    - Initial merge of A2DP extra codec support using the new
       bluez5 API.
-  * pulse-server
-    + Create the runtime directory when it doesn't exist.
-    + Don't ever block the server, use non-blocking IO everywhere.
-    + Fill description of profiles with the name if not otherwise
+  + pulse-server
+    - Create the runtime directory when it doesn't exist.
+    - Don't ever block the server, use non-blocking IO everywhere.
+    - Fill description of profiles with the name if not otherwise
       set, this fixes a crash in pavucontrol.
-    + the connection debug catergory will now also debug pulse
+    - the connection debug catergory will now also debug pulse
       messages.
-    + Respect the no_remix flag to make the control panel channel
+    - Respect the no_remix flag to make the control panel channel
       check work.
-  * ALSA plugin
-    + implement pause
+  + ALSA plugin
+    - implement pause
 
 -------------------------------------------------------------------
 Tue Nov  3 08:11:46 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.14:
-  * Highlights
-    + This release focuses on bugfixes and stability
+  + Highlights
+    - This release focuses on bugfixes and stability
       improvements.
-    + A new experimental pulse-server module was added. This
+    - A new experimental pulse-server module was added. This
       module implements the pulseaudio protocol on top of
       PipeWire and can be used to make flatpaks work with
       PipeWire. It looks like this might be a better way
       forward compared to the libpulse.so replacement library.
-    + A2DP bluetooth was reworked. Playback should work a lot
+    - A2DP bluetooth was reworked. Playback should work a lot
       better now. Support was also added to automatically link
       an A2DP source to a playback device, which makes it possible
       to use PipeWire as a bluetooth receiver as well.
-    + Improvements to the routing and volume restore features
+    - Improvements to the routing and volume restore features
       of the session manager.
-  * PipeWire improvements
-    + The channelmixer does not normalize volumes anymore. Volumes
+  + PipeWire improvements
+    - The channelmixer does not normalize volumes anymore. Volumes
       are only normalized for monitoring streams now.
-    + Streams can actually start in the inactive state now.
-    + The channelmixer can now also convert volume updates from one
+    - Streams can actually start in the inactive state now.
+    - The channelmixer can now also convert volume updates from one
       channel layout to another. This makes saved volumes work
       even when streams have different channel layouts.
-    + Clients are only registered after the properties have been
+    - Clients are only registered after the properties have been
       updated.
-    + Links now have a new active state.
-    + Drivers can now also specify a minimum quantum. This makes it
+    - Links now have a new active state.
+    - Drivers can now also specify a minimum quantum. This makes it
       possible for bluetooth devices to specify an optimum quantum
       for the given codec settings and MTU.
-    + The amount of data sent over the socket was reduced by only
+    - The amount of data sent over the socket was reduced by only
       sending the data that changed.
-    + Client objects are now exposed after they uploaded their
+    - Client objects are now exposed after they uploaded their
       properties, which makes the new object more useful.
-  * Tools improvements
-    + pw-cat will now add metadata to the PipeWire streams.
-  * Session manager improvements
-    + Fix crashes when reading bad data in stored settings.
-    + volume and routing is improved. Settings are now remembered
+  + Tools improvements
+    - pw-cat will now add metadata to the PipeWire streams.
+  + Session manager improvements
+    - Fix crashes when reading bad data in stored settings.
+    - volume and routing is improved. Settings are now remembered
       per application or media-role.
-    + The session manager remembers the last device used per stream
-    + Fix a bug when moving streams where it could sometimes end
+    - The session manager remembers the last device used per stream
+    - Fix a bug when moving streams where it could sometimes end
       up with linking a stream to multiple devices.
-    + Use RTKit to set realtime priority on the data thread in the
+    - Use RTKit to set realtime priority on the data thread in the
       session manager. This improves performance of the pulse-server
       and bluetooth devices.
-    + Add a new property to mark streams that want to capture from
+    - Add a new property to mark streams that want to capture from
       the monitor of the default sink.
-    + NODE_TARGET can now also contain the node name. This avoids
+    - NODE_TARGET can now also contain the node name. This avoids
       some lookups in the pulseaudio layer when selecting target
       nodes by name.
-    + the -e and -d options are more usable now and can be used to
+    - the -e and -d options are more usable now and can be used to
       add and remove modules from the default list of modules.
-  * Device support
-    + v4l2: add some workarounds for buggy drivers. Add Limited
+  + Device support
+    - v4l2: add some workarounds for buggy drivers. Add Limited
       support for droidcam.
-    + ACP: improve selection of default port and profiles.
-    + ACP: add support for using the hardware mixer for more than
+    - ACP: improve selection of default port and profiles.
+    - ACP: add support for using the hardware mixer for more than
       8 channel streams.
-    + ACP: support the new port type and availability group found
+    - ACP: support the new port type and availability group found
       in PulseAudio.
-    + A2DP bluetooth timings were reworked. Automatic linking of
+    - A2DP bluetooth timings were reworked. Automatic linking of
       A2DP sources was added to make it possible for PipeWire to
       act as a bluetooth receiver. The code was reworked to allow
       other codecs such as APTX and LDAC in the future.
-    + Try harder to recover from ALSA errors.
-  * GStreamer improvements
-    + Fix some crashes in the monitor that cause
+    - Try harder to recover from ALSA errors.
+  + GStreamer improvements
+    - Fix some crashes in the monitor that cause
       gnome-initial-setup to crash.
-  * PulseAudio layer improvements
-    + Many compatibility improvements. Improved playback in
+  + PulseAudio layer improvements
+    - Many compatibility improvements. Improved playback in
       chrome. Fix a crash in firefox when the daemon is stopped.
-    + Fix a leak in the formats.
-    + Fix !ADJUST_LATENCY streams like paplay.
-    + Make the device option in paplay work.
-    + Fix volume/mute notifications, this makes plasma volume updates
+    - Fix a leak in the formats.
+    - Fix !ADJUST_LATENCY streams like paplay.
+    - Make the device option in paplay work.
+    - Fix volume/mute notifications, this makes plasma volume updates
       work again.
-    + Do the conversion between PulseAudio cubic volumes and PipeWire
+    - Do the conversion between PulseAudio cubic volumes and PipeWire
       linear volumes. Volume levels should behave now like they did
       with PulseAudio.
-  * JACK layer improvements
-    + Return an error when we run out of midi events. Some application
+  + JACK layer improvements
+    - Return an error when we run out of midi events. Some application
       rely on this behaviour.
-  * ALSA plugin improvements
-    + The ALSA plugin now also supports the node name in the
+  + ALSA plugin improvements
+    - The ALSA plugin now also supports the node name in the
       playback_node and capture_node properties.
 
 -------------------------------------------------------------------
@@ -718,222 +823,222 @@ Tue Oct 27 17:32:57 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 Thu Oct  8 08:29:36 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.13:
-  * PipeWire improvements
-    + Add pw-reserve tool to reserve or monitor a device on DBus.
-    + Install spa-resample, a tool to resample a file.
-    + Install spa-acp-tool, a tool to inspect the card profile.
-    + Various fixes and improvements
-    + Fix a bug in pw-stream where a capture stream could run out
+  + PipeWire improvements
+    - Add pw-reserve tool to reserve or monitor a device on DBus.
+    - Install spa-resample, a tool to resample a file.
+    - Install spa-acp-tool, a tool to inspect the card profile.
+    - Various fixes and improvements
+    - Fix a bug in pw-stream where a capture stream could run out
       of buffers and become silent.
-    + Rework the processing loops in the adapter and stream. There
+    - Rework the processing loops in the adapter and stream. There
       is now less latency in PulseAudio and ALSA layers.
-  * Session manager improvements
-    + Improve the device reservation code. We now try to acquire
+  + Session manager improvements
+    - Improve the device reservation code. We now try to acquire
       the device using the dbus device reservation API before we
       probe the device. This avoids conflicts with a running
       PulseAudio where devices would disappear (because they were
       locked by the other process).
-    + Don't fail on invalid input from the config files.
-    + Audio devices now have the same name as what PulseAudio
+    - Don't fail on invalid input from the config files.
+    - Audio devices now have the same name as what PulseAudio
       would assign.
-  * Device support
-    + v4l2: try to use the format before enumerating the size and
+  + Device support
+    - v4l2: try to use the format before enumerating the size and
       framerate. Some drivers don't check the format and might now
       work better.
-    + v4l2: Fall back to MMAP when EXPBUF fails. Fix MMAP access,
+    - v4l2: Fall back to MMAP when EXPBUF fails. Fix MMAP access,
       just export the fd and the mapoffset. This should make more
       devices work.
-    + Fix crash in ALSA Card Profile (ACP) code.
-    + ACP: fix selection of default profile. Prefer any possibly
+    - Fix crash in ALSA Card Profile (ACP) code.
+    - ACP: fix selection of default profile. Prefer any possibly
       available profile over 'Off'. This makes some card at least
       start with something.
-    + Fix soft volume. After setting the volume to 0, it would stay
+    - Fix soft volume. After setting the volume to 0, it would stay
       at 0 until pushed over the max volume. This should fix
       various volume related issues.
-  * PulseAudio layer improvements
-    + Rework the buffering and latency measurements and tweak the
+  + PulseAudio layer improvements
+    - Rework the buffering and latency measurements and tweak the
       buffer attributes. This should make browsers and media
       players work better. This should also improve speechd
       performance.
-  * JACK layer improvements
-    + Fix compilation against newer JACK.
+  + JACK layer improvements
+    - Fix compilation against newer JACK.
 
 - Rebase patch:
-  * do-not-install-alsa-config-files.patch
+  + do-not-install-alsa-config-files.patch
 
 -------------------------------------------------------------------
 Tue Sep 22 12:37:18 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.12:
-  * PipeWire improvements
-    + The channelmap converter now handles unknown and strange
+  + PipeWire improvements
+    - The channelmap converter now handles unknown and strange
       channel layouts much better.
-    + The resampler is now cleared correctly, avoiding clicks and
+    - The resampler is now cleared correctly, avoiding clicks and
       pops at the start of sound.
-    + Fixes for various crasher bugs. (paplay drain, vlc shutdown,
+    - Fixes for various crasher bugs. (paplay drain, vlc shutdown,
       pactl info, ...)
-    + Fix a race condition in the node state changes that caused
+    - Fix a race condition in the node state changes that caused
       all kinds of sync and other issues (vlc, mpv, ...)
-    + Improve the binary name property of applications
-    + Fix the scheduling again of nodes that always need a driver
+    - Improve the binary name property of applications
+    - Fix the scheduling again of nodes that always need a driver
       such as the jack clients.
-  * Session manager improvements
-    + Fix routing to default nodes. Sometimes nodes were not routed
+  + Session manager improvements
+    - Fix routing to default nodes. Sometimes nodes were not routed
       to the default node (bluetooth)
-  * Device support
-    + Disable channelmap from ALSA by default. This is what
+  + Device support
+    - Disable channelmap from ALSA by default. This is what
       PulseAudio does and thus provides better compatibility.
-    + Fix a bug in how the resampler was used in the ALSA source,
+    - Fix a bug in how the resampler was used in the ALSA source,
       causing distortion and errors when using low latency capture
       clients. (Discord, webrtc, ...)
-    + Small bluetooth improvements. More work is needed for
+    - Small bluetooth improvements. More work is needed for
       reliable bluetooth playback.
-  * GStreamer plugins
-    + The device provider now stops the processing loop before
+  + GStreamer plugins
+    - The device provider now stops the processing loop before
       shutting down, which avoids crashes (gnome-initial-setup).
-  * PulseAudio layer improvements
-    + The buffer attributes were reworked to ensure compatibility
+  + PulseAudio layer improvements
+    - The buffer attributes were reworked to ensure compatibility
       with many more applications such as mpv and audacious.
-    + The pulseaudio layer will now try hard to not hand out
+    - The pulseaudio layer will now try hard to not hand out
       invalid channel maps to the application. (avoids crashes in
       gnome-volume-control). The channel map will now also look
       more like what PulseAudio does.
-    + The @DEFAULT_SINK/SOURCE/MONITOR@ wildcards now work. This
+    - The @DEFAULT_SINK/SOURCE/MONITOR@ wildcards now work. This
       fixes the problem with volume keys when they are bound to
       scripts using pactl and the default sink/source wildcards.
-    + The PIPEWIRE_LATENCY environment variable now works again
-    + Fix some leaks of ports and port info. Also fix the leak of
+    - The PIPEWIRE_LATENCY environment variable now works again
+    - Fix some leaks of ports and port info. Also fix the leak of
       the context when the mainloop is stopped.
-    + The sink/source format_info array is now filled up
+    - The sink/source format_info array is now filled up
       completely, this is actually not implemented yet in the real
       PulseAudio.
-  * JACK layer improvements
-    + jack now returns version 3.0.0 and has PipeWire in the
+  + JACK layer improvements
+    - jack now returns version 3.0.0 and has PipeWire in the
       version string so that apps can report this.
 - Drop patch:
-  * 0001-alsa-dont-change-the-resampler-delay-value.patch
+  + 0001-alsa-dont-change-the-resampler-delay-value.patch
 
 -------------------------------------------------------------------
 Fri Sep 18 05:32:09 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.11:
-  * PipeWire improvements
-    + Properly cleanup the mixer structures when a port is removed,
+  + PipeWire improvements
+    - Properly cleanup the mixer structures when a port is removed,
       this should fix client crashes related to port config changes
       and other random crashes.
-    + Optimize the preferred formats in the audio converter. Higher
+    - Optimize the preferred formats in the audio converter. Higher
       quality formats with higher performance are chosen first.
-    + Make sure the time reported by pw_stream is always
+    - Make sure the time reported by pw_stream is always
       increasing, even when the driver and clock changes.
-    + There is now also a system service and socket that can be
+    - There is now also a system service and socket that can be
       used to enable PipeWire systemwide. This is however not
       recommended and disabled by default.
-    + Fix channelmixer 5.1 to stereo mix matrix. It was not reading
+    - Fix channelmixer 5.1 to stereo mix matrix. It was not reading
       the conversion matrix correctly and cause channels to be
       dropped. The channelmixer will now also normalize the volume,
       like what pulseaudio does.
-    + The channelmixer will now just copy channels when no layout
+    - The channelmixer will now just copy channels when no layout
       has been given. It has also optimized paths for this. This
       makes it possible for apps to request > 8 channels from the
       alsa plugin (ardour).
-    + Port, Node and Link will now also emit an error on the
+    - Port, Node and Link will now also emit an error on the
       resources in addition to updating the error in the info. This
       would make it easier to track negotiation errors in the
       session manager later.
-    + many small fixes and cleanups.
-    + Fix compatibility:
+    - many small fixes and cleanups.
+    - Fix compatibility:
       - DOSBox: fix crash because of double free in pw_stream
-  * Session manager improvements
-    + The session manager will now try to configure the client to
+  + Session manager improvements
+    - The session manager will now try to configure the client to
       the channel configuration of the sink/source. It will only
       do this for downmixing, never for upmixing and also never
       when the client has the dont-remix property set. It will
       also renegotiate the channel layout when moving a stream to
       a new sink/source.
-    + Configuration state is now saved in XDG_CONFIG_HOME.
+    - Configuration state is now saved in XDG_CONFIG_HOME.
       Previously it was saved in $HOME/.pipewire-media-session/
       You can migrate the state by moving the files to
       $XDG_CONFIG_HOME/pipewire-media-session (or
       $HOME/.config/pipewire-media-session as a fallback when
       XDG_CONFIG_HOME is not set).
-  * Device support
-    + Bluetooth sources and sinks should work better now.
-    + There is now also a new bluetooth backend using hsphfpd.
-    + fix the ALSA UCM Off profile for alsa pcm devices
-    + improve ALSA port and profile switching. The ACP device will
+  + Device support
+    - Bluetooth sources and sinks should work better now.
+    - There is now also a new bluetooth backend using hsphfpd.
+    - fix the ALSA UCM Off profile for alsa pcm devices
+    - improve ALSA port and profile switching. The ACP device will
       now switch to the best port and profile when availability
       changes.
-  * PulseAudio layer improvements
-    + Implement some more callbacks. The pulse layer will now also
+  + PulseAudio layer improvements
+    - Implement some more callbacks. The pulse layer will now also
       notify applications of stream moved, started and latency
       changes.
-    + Fix error code when an object was not found. We now return
+    - Fix error code when an object was not found. We now return
       PA_ERR_NOENTITY instead of PA_ERR_INVALID.
-    + Add some support for loading new null sinks. Applications
+    - Add some support for loading new null sinks. Applications
       such as pulseeffects use this. Note that pulseeffects does
       not yet work reliably but can start now.
-    + Improve handling of profile and port updates, it should work
+    - Improve handling of profile and port updates, it should work
       much more reliable now. Apps should now also again receive
       volume updates from sinks/sources.
-    + Fix compatibility:
+    - Fix compatibility:
   	- openal-soft 1.20
   	- pavucontrol (checks PA_ERR_NOENTITY)
-  * JACK layer improvements
-    + improve default source and sink handling. It was not updated
+  + JACK layer improvements
+    - improve default source and sink handling. It was not updated
       correctly in all cases.
-    + add samplerate and period to the pw-jack wrapper to easily
+    - add samplerate and period to the pw-jack wrapper to easily
       configure the desired samplerate and perdiod for the app.
-  * ALSA plugin improvements
-    + Add a mixer entry in the alsa config file.
-    + Implement support for planar types, rework the processing
+  + ALSA plugin improvements
+    - Add a mixer entry in the alsa config file.
+    - Implement support for planar types, rework the processing
       function to make it more robust.
-    + refuse to load the alsa plugin when linked against 0.2. This
+    - refuse to load the alsa plugin when linked against 0.2. This
       catches some old apps linked against 0.2 that want to use the
       alsa plugin.
-    + Fix compatibility:
+    - Fix compatibility:
       - linphone (ALSA SIGFPE when _status() is called
         before _prepare()).
 - Includes fix for a division by 0 error (boo#1176515):
-  * 0021-alsa-protect-against-SIGPFE.patch
+  + 0021-alsa-protect-against-SIGPFE.patch
 - Add patch from upstream to fix audio stutters in discord and probably
   other applications when using alsa directly.
-  * 0001-alsa-dont-change-the-resampler-delay-value.patch
+  + 0001-alsa-dont-change-the-resampler-delay-value.patch
 
 -------------------------------------------------------------------
 Thu Aug 27 06:00:06 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.10:
-  * Many improvements to the pulse layer.
-    + GStreamer pulsesink element now works.
-    + Fixes some segfaults.
-    + Enable rtkit for client threads.
-    + fixes capture of monitor stream by name
-    + implement some more extensions, this makes paman
+  + Many improvements to the pulse layer.
+    - GStreamer pulsesink element now works.
+    - Fixes some segfaults.
+    - Enable rtkit for client threads.
+    - fixes capture of monitor stream by name
+    - implement some more extensions, this makes paman
       work and removes some warnings.
-  * Many improvements to the GStreamer elements
-    + negotiation rework, avoid calling GStreamer methods from
+  + Many improvements to the GStreamer elements
+    - negotiation rework, avoid calling GStreamer methods from
       the PipeWire callbacks because they might block and cause
       deadlocks.
-    + Add support for non-string property values.
-    + improve stability after buffer and format
+    - Add support for non-string property values.
+    - improve stability after buffer and format
       renegotiation.
-    + Rework the device provider.
-    + pipewiresink can now provide a stream that can
+    - Rework the device provider.
+    - pipewiresink can now provide a stream that can
       be consumed by apps like cheese.
-  * Many improvements to the JACK layer:
-    + Rework the buffer_size callbacks. Make sure we call
+  + Many improvements to the JACK layer:
+    - Rework the buffer_size callbacks. Make sure we call
       the callback from a 'safe' thread and that we don't
       call the process callback while the application is
       handling the callback. This improves stability in
       apps like Carla when PipeWire dynamically changes
       the buffer size.
-    + Improve compatibility with apps that call
+    - Improve compatibility with apps that call
       get_buffer_frames() with a 0 size (calfjackrack)
-    + JACK can now create nodes that can be set as a
+    - JACK can now create nodes that can be set as a
       sink/source in PulseAudio/ALSA apps (you can make an
       effects rack and set that as default sink for
       apps).
-  * Added a group id property for nodes. This makes it
+  + Added a group id property for nodes. This makes it
     possible to schedule nodes with the same driver even
     when they are otherwise not linked together. To make
     this work well a new flag needed to be added to nodes
@@ -946,13 +1051,13 @@ Thu Aug 27 06:00:06 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
     to keep the clocks of the devices in sync.
     This can later also be used to force devices to be grouped
     together to create a JACK-like scheduling group.
-  * Streams and filter now use PIPEWIRE_NODE and
+  + Streams and filter now use PIPEWIRE_NODE and
     PIPEWIRE_LATENCY env variables as fallback.
-  * ACP add per device port list. This makes UCM devices
+  + ACP add per device port list. This makes UCM devices
     expose the right ports.
-  * Fix some segfaults in ACP and UCM.
-  * make pw-cat use the metadata to find default devices.
-  * The media session can now save and load audio device
+  + Fix some segfaults in ACP and UCM.
+  + make pw-cat use the metadata to find default devices.
+  + The media session can now save and load audio device
     Profiles and Routes (volumes), stream volumes and
     the default sink and sources.
 
@@ -960,58 +1065,58 @@ Thu Aug 27 06:00:06 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 Thu Aug 13 11:28:16 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.9:
-  * Fix bad audio in chrome
-  * Remove some errors that are not real errors.
-  * Fix 100% cpu when disconnecting devices.
-  * Improve pulseaudio introspection of formats
-  * Fix JACK metadata handling, carla can now monitor the
+  + Fix bad audio in chrome
+  + Remove some errors that are not real errors.
+  + Fix 100% cpu when disconnecting devices.
+  + Improve pulseaudio introspection of formats
+  + Fix JACK metadata handling, carla can now monitor the
     port it creates and insert midi.
-  * Add a new permission bit (M) that is needed to be able
+  + Add a new permission bit (M) that is needed to be able
     to configure metadata on an object. Improve security of
     metadata some more, only allow metadata on objects that
     are visible to the client setting the metadata.
-  * Add support for videocrop in the GStreamer elements.
-  * Improve handling of the runtime directory for the
+  + Add support for videocrop in the GStreamer elements.
+  + Improve handling of the runtime directory for the
     server sockets. Add some reasonable fallback when
     XDG_RUNTIME_DIR is not set, as suggested in the spec.
-  * Improve ALSA device names from ACP.
-  * Fix various crasher bugs. One in the pulse layer, one in
+  + Improve ALSA device names from ACP.
+  + Fix various crasher bugs. One in the pulse layer, one in
     the session manager.
-  * Make alsa plugin respect the PIPEWIRE_REMOTE env variable.
-  * Various compile fixes.
+  + Make alsa plugin respect the PIPEWIRE_REMOTE env variable.
+  + Various compile fixes.
 
 -------------------------------------------------------------------
 Fri Jul 31 07:50:45 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.8:
-  * Fix an embarrassing crasher in the JACK layer when metadata
+  + Fix an embarrassing crasher in the JACK layer when metadata
     keys were removed.
-  * Make it possible to add properties to jack clients with a
+  + Make it possible to add properties to jack clients with a
     PIPEWIRE_PROPS env variable. This can be used to make JACK
     nodes look like a device (like an effects rack).
-  * Improvements in the session manager in how it links ports.
+  + Improvements in the session manager in how it links ports.
     Now it will try to link matching channels first and be more
     intelligent otherwise. The session manager will also configure
     the stream to the device port configuration when needed.
-  * Add ofono backend for Bluetooth HeadSet support.
-  * Improve default source and sink handling. They are now stored
+  + Add ofono backend for Bluetooth HeadSet support.
+  + Improve default source and sink handling. They are now stored
     with their id, instead of name, in the metadata. This makes it
     work better with JACK because of JACK's limited name length.
-  * Improve environment variables to make it possible to create
+  + Improve environment variables to make it possible to create
     and connect to servers other than "pipewire-0". Implement
     this in pulseaudio, JACK and alsa layers.
-  * Add an alsa mixer plugin so that alsamixer works with PipeWire.
+  + Add an alsa mixer plugin so that alsamixer works with PipeWire.
     It will configure the default source/sink volumes.
-  * Fix capture devices. There was something wrong with how the
+  + Fix capture devices. There was something wrong with how the
     resampler was used that caused corruption in the signal when
     the resampler was active.
-  * We now ship alsa card paths, profile-sets configuration files
+  + We now ship alsa card paths, profile-sets configuration files
     and udev rules so that we don't have to rely on the pulseaudio
     ones.
-  * Many build and stability fixes.
+  + Many build and stability fixes.
 
 - Update to version 0.3.7:
-  * Improved PulseAudio compatibility. The alsa card profile
+  + Improved PulseAudio compatibility. The alsa card profile
     code was reused from PulseAudio. Devices now support
     all profiles, ports, jack detection, UCM and hardware
     mixers that PulseAudio implements. There should not
@@ -1021,83 +1126,83 @@ Fri Jul 31 07:50:45 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
     and move_stream are implemented now.  At this point
     it should be possible to replace PulseAudio with the
     compatibility layer for those who want to try.
-  * Many fixes and improvements to the GStreamer elements.
+  + Many fixes and improvements to the GStreamer elements.
     pipewiresrc now has the ability to periodically resend
     the last frame. This makes it possible for use-cases like
     screensharing to only update the screen on changes while
     still keeping the client side encoder busy. PipeWire
     elements can now also share a connection between them.
-  * Improvements to the bluetooth nodes. Dynamically adding
+  + Improvements to the bluetooth nodes. Dynamically adding
     and removing devices should work much smoother now. Many
     fixes and improvements to a2dp and sco nodes.
-  * Reduced memory usage by using less pre-allocated memory
+  + Reduced memory usage by using less pre-allocated memory
     where possible. JACK clients are especially using less
     memory.
-  * Support for passive links is added again. These are links
+  + Support for passive links is added again. These are links
     that don't cause the associated driver to become active.
     This makes it possible to have blocks of effects+sinks go
     to suspend as a group when not in use.
-  * Both consumers and producers can now ask to renegotiate
+  + Both consumers and producers can now ask to renegotiate
     the format. This required some cleanups and improvements
     to how links and node states were handled. More work is
     needed to implement more use cases.
-  * Important fixes to how memory is shared with clients. Memory
+  + Important fixes to how memory is shared with clients. Memory
     was not correctly freed in all cases, which would result
     in reuse of the wrong memory.
-  * Support for planar formats for audio and video was added.
-  * Improved error handling in the session manager.
-  * Metadata is now used to manage default audio source and
+  + Support for planar formats for audio and video was added.
+  + Improved error handling in the session manager.
+  + Metadata is now used to manage default audio source and
     sink devices. The session manager will try to link streams
     to the default device. Changing the default device will
     move streams to the new device. PulseAudio and JACK layers
     respect the default source/sinks.
-  * Metadata is used to tag the desired output device for
+  + Metadata is used to tag the desired output device for
     a stream and the session manager will move streams when
     the metadata changes. The PulseAudio layer uses this to
     implement the move_stream feature.
-  * Many fixes to the security modules. The session manager now
+  + Many fixes to the security modules. The session manager now
     has a flatpak module that grants permissions to flatpak
     apps. The PulseAudio layer now respects the permissions of
     objects. Security related properties are made read-only
     now. Different access modules can now coexist.
-  * The portal module has been split up in 2 parts:
-    + a part living in the daemon that monitors the portal
+  + The portal module has been split up in 2 parts:
+    - a part living in the daemon that monitors the portal
       dbus owner and tags all clients from this PID. This
       part has to run in the daemon in order to securely
       tag the clients.
-    + a part in the session manager that uses the permission
+    - a part in the session manager that uses the permission
       store to manage the permissions of portal managed
       clients.
 
 - Drop patches already included in 0.3.7:
-  * 0001-client-node-fix-buffer-size-calculation.patch
-  * 0002-gst-fix-proxy-leaks.patch
-  * 0003-pulse-fix-pa_card_info-profiles2-array-to-be-NULL-terminated.patch
-  * 0004-pulse-fix-size-calculation.patch
-  * 0005-jack-fix-crash-on-close-when-metadata-are-not-available.patch
-  * 0006-a2dpsink-only-request-new-data-when-buffer-is-done.patch
-  * 0007-pulse-fix-counter-while-populating-car_info-profiles.patch
-  * 0008-impl-link-reset-state-before-starting-allocation.patch
-  * 0009-impl-core-clear-the-mempool.patch
-  * 0010-mem-reset-the-map-in-clear.patch
-  * 0011-avoid-uninitialized-variables.patch
-  * 0012-dlclose-on-errors.patch
-  * 0013-stream-handle-NULL-context.patch
-  * 0014-state-always-update-state-variables.patch
-  * 0015-spa-device-fix-leak-of-properties-in-error-case.patch
-  * 0016-alsa-dont-leak-structure-on-error.patch
-  * 0017-alsa-dont-leak-properties-on-error.patch
-  * 0018-stream-fix-some-more-leaks-in-error-paths.patch
-  * 0019-buffers-increase-max-datas-and-metadata-in-buffers.patch
-  * 0020-gst-return-NULL-for-unknown-format.patch
+  + 0001-client-node-fix-buffer-size-calculation.patch
+  + 0002-gst-fix-proxy-leaks.patch
+  + 0003-pulse-fix-pa_card_info-profiles2-array-to-be-NULL-terminated.patch
+  + 0004-pulse-fix-size-calculation.patch
+  + 0005-jack-fix-crash-on-close-when-metadata-are-not-available.patch
+  + 0006-a2dpsink-only-request-new-data-when-buffer-is-done.patch
+  + 0007-pulse-fix-counter-while-populating-car_info-profiles.patch
+  + 0008-impl-link-reset-state-before-starting-allocation.patch
+  + 0009-impl-core-clear-the-mempool.patch
+  + 0010-mem-reset-the-map-in-clear.patch
+  + 0011-avoid-uninitialized-variables.patch
+  + 0012-dlclose-on-errors.patch
+  + 0013-stream-handle-NULL-context.patch
+  + 0014-state-always-update-state-variables.patch
+  + 0015-spa-device-fix-leak-of-properties-in-error-case.patch
+  + 0016-alsa-dont-leak-structure-on-error.patch
+  + 0017-alsa-dont-leak-properties-on-error.patch
+  + 0018-stream-fix-some-more-leaks-in-error-paths.patch
+  + 0019-buffers-increase-max-datas-and-metadata-in-buffers.patch
+  + 0020-gst-return-NULL-for-unknown-format.patch
 - Drop patch and replace it with a sed substitution since the patch
   context includes the package version and would have to be
   modified in every package update:
-  * fix-meson-required-version.patch
+  + fix-meson-required-version.patch
 - Add patch to not install alsa card paths, profile-sets
   configuration files and udev rules which upstream installs
   "so that we don't have to rely on the pulseaudio ones".
-  * do-not-install-alsa-config-files.patch
+  + do-not-install-alsa-config-files.patch
 
 -------------------------------------------------------------------
 Wed Jul 15 07:26:01 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
@@ -1119,53 +1224,53 @@ Tue Jul 14 08:25:49 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patches from upstream to fix many issues mainly related to
   memory leaks, crashes and wrong behaviour:
-  * 0001-client-node-fix-buffer-size-calculation.patch
-  * 0002-gst-fix-proxy-leaks.patch
-  * 0003-pulse-fix-pa_card_info-profiles2-array-to-be-NULL-terminated.patch
-  * 0004-pulse-fix-size-calculation.patch
-  * 0005-jack-fix-crash-on-close-when-metadata-are-not-available.patch
-  * 0006-a2dpsink-only-request-new-data-when-buffer-is-done.patch
-  * 0007-pulse-fix-counter-while-populating-car_info-profiles.patch
-  * 0008-impl-link-reset-state-before-starting-allocation.patch
-  * 0009-impl-core-clear-the-mempool.patch
-  * 0010-mem-reset-the-map-in-clear.patch
-  * 0011-avoid-uninitialized-variables.patch
-  * 0012-dlclose-on-errors.patch
-  * 0013-stream-handle-NULL-context.patch
-  * 0014-state-always-update-state-variables.patch
-  * 0015-spa-device-fix-leak-of-properties-in-error-case.patch
-  * 0016-alsa-dont-leak-structure-on-error.patch
-  * 0017-alsa-dont-leak-properties-on-error.patch
-  * 0018-stream-fix-some-more-leaks-in-error-paths.patch
-  * 0019-buffers-increase-max-datas-and-metadata-in-buffers.patch
-  * 0020-gst-return-NULL-for-unknown-format.patch
+  + 0001-client-node-fix-buffer-size-calculation.patch
+  + 0002-gst-fix-proxy-leaks.patch
+  + 0003-pulse-fix-pa_card_info-profiles2-array-to-be-NULL-terminated.patch
+  + 0004-pulse-fix-size-calculation.patch
+  + 0005-jack-fix-crash-on-close-when-metadata-are-not-available.patch
+  + 0006-a2dpsink-only-request-new-data-when-buffer-is-done.patch
+  + 0007-pulse-fix-counter-while-populating-car_info-profiles.patch
+  + 0008-impl-link-reset-state-before-starting-allocation.patch
+  + 0009-impl-core-clear-the-mempool.patch
+  + 0010-mem-reset-the-map-in-clear.patch
+  + 0011-avoid-uninitialized-variables.patch
+  + 0012-dlclose-on-errors.patch
+  + 0013-stream-handle-NULL-context.patch
+  + 0014-state-always-update-state-variables.patch
+  + 0015-spa-device-fix-leak-of-properties-in-error-case.patch
+  + 0016-alsa-dont-leak-structure-on-error.patch
+  + 0017-alsa-dont-leak-properties-on-error.patch
+  + 0018-stream-fix-some-more-leaks-in-error-paths.patch
+  + 0019-buffers-increase-max-datas-and-metadata-in-buffers.patch
+  + 0020-gst-return-NULL-for-unknown-format.patch
 
 -------------------------------------------------------------------
 Fri Jul  3 08:29:04 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Rebase patches used in SLE/Leap:
-  * do-not-use-snd_pcm_ioplug_hw_avail.patch
-  * fix-memfd_create-call.patch
+  + do-not-use-snd_pcm_ioplug_hw_avail.patch
+  + fix-memfd_create-call.patch
 
 -------------------------------------------------------------------
 Tue Jun 16 09:04:18 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.6 (boo#1171433, jsc#ECO-2308):
-  * Extensive memory leak fixing and stress testing was done.
+  + Extensive memory leak fixing and stress testing was done.
     A big leak in screen sharing with DMA-BUF was fixed.
-  * Compile fixes
-  * Stability improvements in jack and pulseaudio layers.
-  * Added the old portal module to make the Camera portal
+  + Compile fixes
+  + Stability improvements in jack and pulseaudio layers.
+  + Added the old portal module to make the Camera portal
     work again. This will be moved to the session manager in
     future versions.
-  * Improvements to the GStreamer source and sink shutdown.
-  * Fix compatibility with v2 clients again when negotiating
+  + Improvements to the GStreamer source and sink shutdown.
+  + Fix compatibility with v2 clients again when negotiating
     buffers.
 - Disable vulkan if the vulkan package is too old (as in
   SLE 15 SP0 and SP1)
 - Add patch to build with meson >= 0.46.0 since 0.50.0 is not
   really needed:
-  * fix-meson-required-version.patch
+  + fix-meson-required-version.patch
 
 -------------------------------------------------------------------
 Thu May 21 08:50:18 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
@@ -1179,63 +1284,63 @@ Thu May 21 07:51:29 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to fix build in SLE/Leap where alsa doesn't have a
   snd_pcm_ioplug_hw_avail function:
-  * do-not-use-snd_pcm_ioplug_hw_avail.patch
+  + do-not-use-snd_pcm_ioplug_hw_avail.patch
 
 -------------------------------------------------------------------
 Tue May 19 07:54:52 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.5:
-  * Compiler fixes
-  * Add pw-midiplay and pw-midirecord aliases
-  * Add pw-mididump tool
-  * Add pw-metadata tool to inspect, add and remove metadata
+  + Compiler fixes
+  + Add pw-midiplay and pw-midirecord aliases
+  + Add pw-mididump tool
+  + Add pw-metadata tool to inspect, add and remove metadata
     for objects.
-  * Docs updates, man pages
-  * install alsa config files
-  * Fix linked sink/source in pulseaudio
-  * ratelimit graph processing warnings
-  * improve buffer handling in GStreamer elements
-  * Fix power usage by removing the queue for the alsa
+  + Docs updates, man pages
+  + install alsa config files
+  + Fix linked sink/source in pulseaudio
+  + ratelimit graph processing warnings
+  + improve buffer handling in GStreamer elements
+  + Fix power usage by removing the queue for the alsa
     sequencer system announce messages.
-  * Fix metadata clear() method dispatch.
-  * Improve parameter enumeration, make it possible to detect
+  + Fix metadata clear() method dispatch.
+  + Improve parameter enumeration, make it possible to detect
     missing parameters vs no-compatible parameters so that we
     can use defaults in the first case and error in the second
     case.
-  * Fix cleanup of proxy objects. Stability improvements on
+  + Fix cleanup of proxy objects. Stability improvements on
     plug/unplug in session manager.
-  * Make it possible to set log level from config file
-  * improve debug of param negotiation errors. Log the
+  + Make it possible to set log level from config file
+  + improve debug of param negotiation errors. Log the
     parameters to stderr/journal.
-  * Make it possible to configure global logger
+  + Make it possible to configure global logger
     implementation.
-  * Fix NEON detection
-  * JACK and PulseAudio compatibility improvements
+  + Fix NEON detection
+  + JACK and PulseAudio compatibility improvements
 
 - Update to version 0.3.4:
-  * A quick update with some important stability fixes.
+  + A quick update with some important stability fixes.
 
 - Update to version 0.3.3:
-  * NEON optimizations for audio conversion (32 and 64 bits)
-  * rework of session manager implementation
-  * Add option to disable modules in the session manager
-  * Release midi hardware devices when suspended
-  * various build fixes
-  * Clean up options of various utils
-  * Stability improvements
-  * Mayor improvements in pulseaudio emulation. Improved
+  + NEON optimizations for audio conversion (32 and 64 bits)
+  + rework of session manager implementation
+  + Add option to disable modules in the session manager
+  + Release midi hardware devices when suspended
+  + various build fixes
+  + Clean up options of various utils
+  + Stability improvements
+  + Mayor improvements in pulseaudio emulation. Improved
     timings and compatibility.
-  * Implementation of drain and flush in pulse and alsa
+  + Implementation of drain and flush in pulse and alsa
     emulation.
-  * Implement poll on file descriptors.
-  * Improvement of metadata for jack emulation.
-  * Fix memory and thread problems in jack emulation.
-  * Simplification of state changes. Should make more use
+  + Implement poll on file descriptors.
+  + Improvement of metadata for jack emulation.
+  + Fix memory and thread problems in jack emulation.
+  + Simplification of state changes. Should make more use
     cases work in the jack emulation.
-  * Improvements in the gstreamer elements. Removal of
+  + Improvements in the gstreamer elements. Removal of
     extra internal queue. pipewiresink can now be used to
     play audio.
-  * Add pw-jack and pw-pulse scripts to run pulseaudio and
+  + Add pw-jack and pw-pulse scripts to run pulseaudio and
     jack applications with the right library path.
 
 - Replace libpulse* replacement packages with a single
@@ -1364,7 +1469,7 @@ Mon Mar  9 16:11:08 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 Fri Feb 21 15:13:15 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to build correctly with glibc < 2.27 (like in SLE/Leap):
-  * fix-memfd_create-call.patch
+  + fix-memfd_create-call.patch
 
 -------------------------------------------------------------------
 Fri Feb 21 12:32:01 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
@@ -1460,7 +1565,7 @@ Wed May 22 16:33:08 UTC 2019 - Markus S <kamikazow@opensuse.org>
 Fri Apr 19 14:27:04 UTC 2019 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix use of headers from C++:
-  * avoid-invalid-conversion-error-with-C++.patch
+  + avoid-invalid-conversion-error-with-C++.patch
 
 -------------------------------------------------------------------
 Thu Feb 21 13:06:16 UTC 2019 - bjorn.lie@gmail.com
@@ -1501,7 +1606,7 @@ Mon Jul 23 19:38:08 UTC 2018 - bjorn.lie@gmail.com
 Tue Jul 17 15:31:07 UTC 2018 - alarrosa@suse.com
 
 - Update to version 0.2.0
-  * No changelog provided by upstream. To see the changes in this
+  + No changelog provided by upstream. To see the changes in this
     version, please browse the commit logs at
     https://github.com/PipeWire/pipewire/commits/0.2.0 .
 

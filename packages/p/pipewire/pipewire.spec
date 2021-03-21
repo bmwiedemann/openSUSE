@@ -34,8 +34,14 @@
 %define with_vulkan 0
 %endif
 
+%ifnarch s390 s390x ppc64
+%define with_ldacBT 1
+%else
+%define with_ldacBT 0
+%endif
+
 Name:           pipewire
-Version:        0.3.23
+Version:        0.3.24
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -53,6 +59,7 @@ BuildRequires:  gcc9
 BuildRequires:  graphviz
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmltoman
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(bluez)
@@ -68,7 +75,7 @@ BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(jack) >= 1.9.10
-%ifnarch s390 s390x ppc64
+%if %{with_ldacBT}
 BuildRequires:  pkgconfig(ldacBT-abr)
 BuildRequires:  pkgconfig(ldacBT-enc)
 %endif
@@ -125,7 +132,7 @@ This package provides the PipeWire shared library.
 Summary:        PipeWire libjack replacement libraries
 Group:          Development/Libraries/C and C++
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description libjack-%{apiver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -139,7 +146,6 @@ Some of its features include:
  * Sandboxed applications support.
 
 This package provides the PipeWire replacement libraries for libjack.
-
 
 %package -n gstreamer-plugin-pipewire
 Summary:        Gstreamer Plugin for PipeWire
@@ -258,18 +264,26 @@ This package provides a PulseAudio implementation based on PipeWire
 export CC=gcc-9
 %endif
 %meson \
-	-Ddocs=true \
-	-Dman=true \
-	-Dgstreamer=true \
-	-Dffmpeg=true \
-	-Dsystemd=true \
+	-Ddocs=enabled \
+	-Dman=enabled \
+	-Dgstreamer=enabled \
+	-Dffmpeg=enabled \
+	-Dsystemd=enabled \
 %if %{with_vulkan}
-	-Dvulkan=true \
+	-Dvulkan=enabled \
 %else
-	-Dvulkan=false \
+	-Dvulkan=disabled \
 %endif
-	-Dtest=true \
-	-Daudiotestsrc=true \
+	-Dtest=enabled \
+	-Daudiotestsrc=enabled \
+        -Dbluez5-codec-aac=disabled \
+        -Dbluez5-codec-aptx=disabled \
+        -Dlibcamera=disabled \
+%if %{with_ldacBT}
+        -Dbluez5-codec-ldac=enabled \
+%else
+        -Dbluez5-codec-ldac=disabled \
+%endif
 	%{nil}
 %meson_build
 
@@ -302,31 +316,32 @@ done
 %check
 %meson_test
 
+%pre
+%systemd_user_pre pipewire.service pipewire.socket pipewire-media-session.service
+
 %post
-if [ ! -f /etc/systemd/user/sockets.target.wants/%{name}.socket ]; then
+# Check if the systemd_user_pre macro generated the file
+# for systemd_user_post to enable the user socket.
+if [ -f /run/systemd/rpm/needs-user-preset/pipewire.socket ]; then
   echo "Switching Pipewire activation using systemd user socket."
   echo "Please log out from all sessions once to make it effective."
 fi
-%systemd_user_post pipewire.socket pipewire-media-session.service
-# FIXME: workaround to make sure the user socket symlink creation (related to bsc#1083473)
-if [ ! -f /etc/systemd/user/sockets.target.wants/%{name}.socket ]; then
-  # below should work once when preset is defined properly:
-  #  /usr/bin/systemctl --no-reload --global preset pipewire.socket
-  mkdir -p /etc/systemd/user/sockets.target.wants
-  ln -s %{_userunitdir}/%{name}.socket /etc/systemd/user/sockets.target.wants/%{name}.socket
-fi
+%systemd_user_post pipewire.service pipewire.socket pipewire-media-session.service
 
 %preun
-%systemd_user_preun pipewire.socket pipewire-media-session.service
+%systemd_user_preun pipewire.service pipewire.socket pipewire-media-session.service
 
 %postun
-%systemd_user_postun pipewire.socket pipewire-media-session.service
+%systemd_user_postun pipewire.service pipewire.socket pipewire-media-session.service
 
-%preun pulseaudio
-%systemd_user_preun pipewire-pulse.service pipewire-pulse.socket
+%pre pulseaudio
+%systemd_user_pre pipewire-pulse.service pipewire-pulse.socket
 
 %post pulseaudio
 %systemd_user_post pipewire-pulse.service pipewire-pulse.socket
+
+%preun pulseaudio
+%systemd_user_preun pipewire-pulse.service pipewire-pulse.socket
 
 %postun pulseaudio
 %systemd_user_postun pipewire-pulse.service pipewire-pulse.socket
@@ -455,6 +470,8 @@ fi
 %endif
 %{_libdir}/spa-%{spa_ver}/audiotestsrc/libspa-audiotestsrc.so
 %{_libdir}/spa-%{spa_ver}/test/libspa-test.so
+%{_libdir}/spa-%{spa_ver}/videotestsrc/libspa-videotestsrc.so
+%{_libdir}/spa-%{spa_ver}/volume/libspa-volume.so
 
 %dir %{_libdir}/spa-%{spa_ver}
 %dir %{_libdir}/spa-%{spa_ver}/alsa
@@ -462,6 +479,7 @@ fi
 %dir %{_libdir}/spa-%{spa_ver}/audiomixer
 %dir %{_libdir}/spa-%{spa_ver}/bluez5
 %dir %{_libdir}/spa-%{spa_ver}/control
+%dir %{_libdir}/spa-%{spa_ver}/volume
 %dir %{_libdir}/spa-%{spa_ver}/ffmpeg
 %dir %{_libdir}/spa-%{spa_ver}/jack
 %dir %{_libdir}/spa-%{spa_ver}/support
@@ -471,6 +489,7 @@ fi
 %dir %{_libdir}/spa-%{spa_ver}/vulkan
 %endif
 %dir %{_libdir}/spa-%{spa_ver}/audiotestsrc
+%dir %{_libdir}/spa-%{spa_ver}/videotestsrc
 %dir %{_libdir}/spa-%{spa_ver}/test
 
 %files devel
