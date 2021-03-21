@@ -166,4 +166,12 @@
     <comment>- Do not pull in python2 packages when installing docs</comment>
     <requestid>792426</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d293f37e57b90f8af9f8386f338957ca</srcmd5>
+    <version>0.7.5</version>
+    <time>1616365214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880262</requestid>
+  </revision>
 </revisionlist>

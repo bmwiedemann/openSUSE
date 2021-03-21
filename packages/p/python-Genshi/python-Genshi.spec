@@ -1,7 +1,7 @@
 #
 # spec file for package python-Genshi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-Genshi
-Version:        0.7.3
+Version:        0.7.5
 Release:        0
 Summary:        A toolkit for generation of output for the web
 License:        BSD-3-Clause
@@ -29,11 +29,13 @@ Source:         https://files.pythonhosted.org/packages/source/G/Genshi/Genshi-%
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  python-rpm-macros
 Requires:       python-Babel
+Requires:       python-six
 Requires:       python-xml
 %ifpython2
 Obsoletes:      %{oldpython}-genshi < %{version}
@@ -68,12 +70,24 @@ This package contains documentation and examples.
 %python_build
 
 %install
-# python3 is noarch but to keep it sane
-%python_expand %{$python_install} --install-lib=%{$python_sitearch}
+%python_install
+# remove accidentally installed source files
+%python_expand find %{buildroot}%{$python_sitearch}/genshi -name '*.c' -delete
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
+# install (flavor-agnostic) examples
+mkdir -p %{buildroot}%{_docdir}/%{name}-doc/
+cp -r examples %{buildroot}%{_docdir}/%{name}-doc/
+sed -i '1{s/env python.*/python3/}' %{buildroot}%{_docdir}/%{name}-doc/examples/tutorial/geddit/controller.py
+%fdupes %{buildroot}%{_docdir}/%{name}-doc/
+
 %check
+%if %{suse_version} < 1550
+# calling unittest directly fails on Leap
 %python_exec setup.py test
+%else
+%pyunittest_arch -v genshi.tests.suite
+%endif
 
 %files %{python_files}
 %license COPYING
@@ -82,6 +96,7 @@ This package contains documentation and examples.
 %{python_sitearch}/Genshi-%{version}-py%{python_version}.egg-info
 
 %files -n %{name}-doc
-%doc doc examples
+%doc doc
+%doc %{_docdir}/%{name}-doc/examples
 
 %changelog
