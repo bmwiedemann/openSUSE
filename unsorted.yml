@@ -5556,6 +5556,7 @@ unsorted:
   - gnome-nibbles 
   - gnome-nibbles-lang 
   - gnome-online-accounts-devel 
+  - gnome-online-miners 
   - gnome-packagekit-extras 
   - gnome-passwordsafe 
   - gnome-passwordsafe-lang 
@@ -6640,6 +6641,7 @@ unsorted:
   - icc-profiles-oyranos-extra 
   - icc-targets-fogra 
   - icc-targets-npes 
+  - icebreaker 
   - icecast 
   - icecast-doc 
   - icecream 
@@ -11471,7 +11473,7 @@ unsorted:
   - liblldb9: [x86_64] 
   - liblldp_clif1: [i586] 
   - liblldpctl4 
-  - liblmdb-0_9_28-32bit: [x86_64] 
+  - liblmdb-0_9_29-32bit: [x86_64] 
   - liblms7002m-devel 
   - liblms7compact0 
   - liblnk-devel 
@@ -12484,7 +12486,7 @@ unsorted:
   - libpoppler-glib8-32bit: [x86_64] 
   - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
-  - libpoppler107-32bit: [x86_64] 
+  - libpoppler108-32bit: [x86_64] 
   - libportal-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
@@ -12524,13 +12526,13 @@ unsorted:
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
-  - libprotobuf-lite25-32bit: [x86_64] 
+  - libprotobuf-lite26-32bit: [x86_64] 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
-  - libprotobuf25-32bit: [x86_64] 
-  - libprotoc25 
-  - libprotoc25-32bit: [x86_64] 
+  - libprotobuf26-32bit: [x86_64] 
+  - libprotoc26 
+  - libprotoc26-32bit: [x86_64] 
   - libproxy-devel 
   - libproxy-sharp 
   - libproxy-tools 
@@ -14433,6 +14435,7 @@ unsorted:
   - libyui-qt-rest-api15 
   - libyui-rest-api-devel 
   - libyui-rest-api15 
+  - libzapojit-0_0-0 
   - libzapojit-devel 
   - libzbar-devel 
   - libzbar0-32bit: [x86_64] 
@@ -37062,6 +37065,7 @@ unsorted:
   - typelib-1_0-FolksTelepathy-0_6 
   - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
+  - typelib-1_0-GData-0_0 
   - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
@@ -37182,6 +37186,8 @@ unsorted:
   - typelib-1_0-Tepl-5 
   - typelib-1_0-Thunarx-3_0 
   - typelib-1_0-TimezoneMap-1_0 
+  - typelib-1_0-Tracker-2_0 
+  - typelib-1_0-TrackerControl-2_0 
   - typelib-1_0-TrackerMiner-2_0 
   - typelib-1_0-UDisks-2_0 
   - typelib-1_0-UMockdev-1_0 
@@ -37197,6 +37203,7 @@ unsorted:
   - typelib-1_0-XplayerPlParser-1_0 
   - typelib-1_0-XreaderDocument-1_5 
   - typelib-1_0-XreaderView-1_5 
+  - typelib-1_0-Zpj-0_0 
   - typelib-1_0-kkc-1_0 
   - typelib-1_0-libmirage-3_2 
   - typesafe-config 

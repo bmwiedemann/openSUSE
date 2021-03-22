@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20210320" schemaversion="4.1">
+<image name="OBS__openSUSE___20210321" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210320</productvar>
+      <productvar name="VERSION">20210321</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210320,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210321,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210320/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210321/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -694,8 +694,6 @@
       <repopackage name="gnome-dictionary-lang"/>
       <repopackage name="gnome-disk-utility"/>
       <repopackage name="gnome-disk-utility-lang"/>
-      <repopackage name="gnome-documents"/>
-      <repopackage name="gnome-documents-lang"/>
       <repopackage name="gnome-icon-theme"/>
       <repopackage name="gnome-icon-theme-extras"/>
       <repopackage name="gnome-icon-theme-symbolic"/>
@@ -719,7 +717,6 @@
       <repopackage name="gnome-music-lang"/>
       <repopackage name="gnome-online-accounts"/>
       <repopackage name="gnome-online-accounts-lang"/>
-      <repopackage name="gnome-online-miners"/>
       <repopackage name="gnome-packagekit"/>
       <repopackage name="gnome-packagekit-lang"/>
       <repopackage name="gnome-photos"/>
@@ -744,7 +741,6 @@
       <repopackage name="gnome-shell-lang"/>
       <repopackage name="gnome-shell-search-provider-bijiben"/>
       <repopackage name="gnome-shell-search-provider-contacts"/>
-      <repopackage name="gnome-shell-search-provider-documents"/>
       <repopackage name="gnome-shell-search-provider-epiphany"/>
       <repopackage name="gnome-shell-search-provider-gnome-calculator"/>
       <repopackage name="gnome-shell-search-provider-gnome-characters"/>
@@ -2307,7 +2303,7 @@
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia81"/>
       <repopackage name="libLLVM11"/>
-      <repopackage name="liblmdb-0_9_28"/>
+      <repopackage name="liblmdb-0_9_29"/>
       <repopackage name="libloader"/>
       <repopackage name="liblockdev1"/>
       <repopackage name="liblogging0"/>
@@ -2544,7 +2540,7 @@
       <repopackage name="libpoppler-cpp0"/>
       <repopackage name="libpoppler-glib8"/>
       <repopackage name="libpoppler-qt5-1"/>
-      <repopackage name="libpoppler107"/>
+      <repopackage name="libpoppler108"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libpopt0-32bit" arch="x86_64"/>
       <repopackage name="libportal0"/>
@@ -2556,8 +2552,8 @@
       <repopackage name="libprocps8"/>
       <repopackage name="libprojectM3"/>
       <repopackage name="libprotobuf-c1"/>
-      <repopackage name="libprotobuf-lite25"/>
-      <repopackage name="libprotobuf25"/>
+      <repopackage name="libprotobuf-lite26"/>
+      <repopackage name="libprotobuf26"/>
       <repopackage name="libproxy1"/>
       <repopackage name="libproxy1-config-gnome3"/>
       <repopackage name="libproxy1-config-kde"/>
@@ -3189,7 +3185,6 @@
       <repopackage name="libz1"/>
       <repopackage name="libz1-32bit" arch="x86_64"/>
       <repopackage name="libz3-4_8"/>
-      <repopackage name="libzapojit-0_0-0"/>
       <repopackage name="libzbar0"/>
       <repopackage name="libzck1"/>
       <repopackage name="libzebra1"/>
@@ -5008,7 +5003,6 @@
       <repopackage name="typelib-1_0-Fwupd-2_0"/>
       <repopackage name="typelib-1_0-Gck-1"/>
       <repopackage name="typelib-1_0-Gcr-3"/>
-      <repopackage name="typelib-1_0-GData-0_0"/>
       <repopackage name="typelib-1_0-GdkPixbuf-2_0"/>
       <repopackage name="typelib-1_0-Gdm-1_0"/>
       <repopackage name="typelib-1_0-Geoclue-2_0"/>
@@ -5067,16 +5061,13 @@
       <repopackage name="typelib-1_0-TelepathyLogger-0_2"/>
       <repopackage name="typelib-1_0-Template-1_0"/>
       <repopackage name="typelib-1_0-TotemPlParser-1_0"/>
-      <repopackage name="typelib-1_0-Tracker-2_0"/>
       <repopackage name="typelib-1_0-Tracker-3_0"/>
-      <repopackage name="typelib-1_0-TrackerControl-2_0"/>
       <repopackage name="typelib-1_0-UpowerGlib-1_0"/>
       <repopackage name="typelib-1_0-Vte-2.91"/>
       <repopackage name="typelib-1_0-WebKit2-4_0"/>
       <repopackage name="typelib-1_0-Wnck-3_0"/>
       <repopackage name="typelib-1_0-XApp-1_0"/>
       <repopackage name="typelib-1_0-Xfconf-0"/>
-      <repopackage name="typelib-1_0-Zpj-0_0"/>
       <repopackage name="ucode-amd"/>
       <repopackage name="ucode-intel"/>
       <repopackage name="udev"/>
