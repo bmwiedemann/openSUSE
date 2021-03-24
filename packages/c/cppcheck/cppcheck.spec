@@ -1,7 +1,7 @@
 #
 # spec file for package cppcheck
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           cppcheck
-Version:        2.3
+Version:        2.4.1
 Release:        0
 Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
-URL:            http://cppcheck.sourceforge.net/
-Source:         https://downloads.sourceforge.net/cppcheck/cppcheck-%{version}.tar.bz2
+URL:            https://github.com/danmar/cppcheck
+Source:         https://github.com/danmar/cppcheck/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc-c++

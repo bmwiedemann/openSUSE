@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 24 08:12:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.1:
+  * fix for windows installer, no other changes 
+
+-------------------------------------------------------------------
+Mon Mar 22 21:23:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4:
+  * Detect one definition rule violations
+  * MISRA improvements
+  * ImportProject fixes
+  * Various bug hunting improvements
+  * Fixes when importing AST from clang 
+
+-------------------------------------------------------------------
 Sat Dec 12 15:28:36 UTC 2020 - Milan Savić <milsav92@outlook.com>
 
 - Update to version 2.3
