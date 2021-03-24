@@ -18,7 +18,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           krunvm
-Version:        0.1.4
+Version:        0.1.4+git5add8c5
 Release:        0
 Summary:        Manage lightweight VMs created from OCI images
 License:        Apache-2.0
