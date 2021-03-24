@@ -923,4 +923,13 @@
     <comment></comment>
     <requestid>872503</requestid>
   </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>109f344038647e5b10034b0b2c25ef04</srcmd5>
+    <version>3.38.4</version>
+    <time>1616598578</time>
+    <user>dimstar_suse</user>
+    <comment>- Add evolution-ews-boo1182882.patch: fix buffer overrun when
+  parsing base64 data (boo#1182882). (forwarded request 876819 from mgorse)</comment>
+    <requestid>879957</requestid>
+  </revision>
 </revisionlist>

@@ -27,6 +27,8 @@ License:        LGPL-2.1-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Evolution
 Source0:        https://download.gnome.org/sources/evolution-ews/3.38/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM evolution-ews-boo1182882.patch boo#1182882 mgorse@suse.com -- fix buffer overrun when decoding base64 data.
+Patch0:         evolution-ews-boo1182882.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  cmake

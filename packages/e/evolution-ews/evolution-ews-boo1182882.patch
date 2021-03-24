@@ -1,0 +1,25 @@
+From 5eba0627725352ef9978d9c0a91e5d0bd13a3789 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Tue, 2 Mar 2021 12:28:09 +0100
+Subject: [PATCH] Allocate large-enough buffer for g_base64_decode_step()
+
+---
+ src/EWS/common/e-soap-message.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/EWS/common/e-soap-message.c b/src/EWS/common/e-soap-message.c
+index e559f851..434c19af 100644
+--- a/src/EWS/common/e-soap-message.c
++++ b/src/EWS/common/e-soap-message.c
+@@ -248,7 +248,7 @@ soap_sax_characters (gpointer _ctxt,
+ 			g_warning ("Failed to write streaming data to file");
+ 		}
+ 	} else {
+-		guchar *bdata = g_malloc (len);
++		guchar *bdata = g_malloc ((len * 3 / 4) + 3);
+ 		gsize blen;
+ 
+ 		blen = g_base64_decode_step (
+-- 
+2.30.1
+
