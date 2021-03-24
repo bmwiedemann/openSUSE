@@ -19,7 +19,7 @@
 Name:           icebreaker
 Version:        2.2.0
 Release:        0
-Summary:        An addictive action-puzzle game involving bouncing penguins
+Summary:        An action-puzzle game involving bouncing penguins
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            http://www.mattdm.org/icebreaker/
@@ -33,12 +33,11 @@ BuildRequires:  pkgconfig(SDL_mixer)
 BuildRequires:  pkgconfig(sdl)
 
 %description
-IceBreaker is an action-puzzle game in which you must capture penguins from
-an Antarctic iceberg so they can be shipped to Finland, where they are
-essential to a secret plot for world domination. To earn the highest Geek
-Cred, trap them in the smallest space in the shortest time while losing the
-fewest lives. IceBreaker was inspired by (but is far from an exact clone of)
-Jezzball by Dima Pavlovsky.
+IceBreaker is an action-puzzle game in which the player must section
+off level space, preferably in the least amount of time with the
+least amount of mistakes. IceBreaker was inspired by (but is far from
+an exact clone of) the 1992 game Jezzball by Dima Pavlovsky, itself
+having similarities to the 1981 game of Qix.
 
 %prep
 %autosetup -p1

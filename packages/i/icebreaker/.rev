@@ -7,4 +7,12 @@
     <comment>changed the source URL to match upstream</comment>
     <requestid>880314</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6ca8fe35de356c6572b7716787b55603</srcmd5>
+    <version>2.2.0</version>
+    <time>1616598987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880887</requestid>
+  </revision>
 </revisionlist>
