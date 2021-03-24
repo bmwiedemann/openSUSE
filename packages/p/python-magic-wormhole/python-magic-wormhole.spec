@@ -1,7 +1,7 @@
 #
 # spec file for package python-magic-wormhole
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module spake2 >= 0.8}
 BuildRequires:  %{python_module tqdm >= 4.13.0}
 BuildRequires:  %{python_module txtorcon >= 0.19.3}
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 Requires:       python-Automat
 Requires:       python-PyNaCl
@@ -51,7 +52,7 @@ Requires:       python-spake2 >= 0.8
 Requires:       python-tqdm >= 4.13.0
 Requires:       python-txtorcon >= 0.19.3
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 Suggests:       python-magic-wormhole-transit-relay
 BuildArch:      noarch
 %python_subpackages
