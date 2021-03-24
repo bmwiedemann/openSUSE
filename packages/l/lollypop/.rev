@@ -1625,4 +1625,17 @@
 - Move _service from tar_scm to obs_scm and obscpio format.</comment>
     <requestid>876801</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>ace2d0379efe45258e67aa6fec561ba7</srcmd5>
+    <version>1.4.18</version>
+    <time>1616598948</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.18:
+  * Fix album restarting when manually playing one of its tracks
+    (glgo#World/lollypop#2758).
+  * Fix fading (glgo#World/lollypop#2755).
+  * Fix exception when clicking on decade in &quot;Years&quot;
+    (glgo#World/lollypop#2747, glgo#World/lollypop#2751).</comment>
+    <requestid>880779</requestid>
+  </revision>
 </revisionlist>
