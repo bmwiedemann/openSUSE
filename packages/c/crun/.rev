@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>10da564c0fbc942b45935923975ab0db</srcmd5>
+    <version>0.18</version>
+    <time>1616598946</time>
+    <user>dimstar_suse</user>
+    <comment>crun is a simple and fast OCI runtime, written in C. It is build (in this package) with libkrun support so that we can run OCI container images as lightweight VMs, directly via podman</comment>
+    <requestid>880784</requestid>
+  </revision>
+</revisionlist>

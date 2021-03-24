@@ -1,0 +1,2 @@
+# the warning is a false positive, as the call to chdir is actually there
+addFilter (".*missing-call-to-chdir-with-chroot.*")

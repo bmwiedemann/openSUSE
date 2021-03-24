@@ -1,0 +1,5 @@
+<package name="crun" project="openSUSE:Factory">
+  <title></title>
+  <description>crun is a runtime for running OCI containers</description>
+  <devel project="Virtualization:containers" package="crun"/>
+</package>
