@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 19 03:06:17 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.032
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+  0.032   2021-03-18
+          - fix #30 use lower uid/gid in release tarball
+
+-------------------------------------------------------------------
 Mon Jan 11 03:06:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.031
