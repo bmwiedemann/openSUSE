@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 23 13:11:23 UTC 2021 - idonmez@suse.com
+
+- Update to version 0.33.0+git.20210321T171820.6265724f33:
+  * vo_gpu: placebo: keep track of texture sample mode
+  * stats.lua: include a filter's @label when displaying filters on page 1
+  * ao_oss: add this audio output again
+  * audio: prevent uninit_audio_out during encoding
+  * stream_lavf: add support for Gopher over TLS.
+  * ao/pulse: signal the mainloop when ops are done
+  * player/command: add albumart argument to video-add
+  * player/{core,loadfile}: make cover art loading more explicit
+  * ao/pulse: wait for command completion when setting volume or mute
+  * ytdl_hook: fix crash on missing track bitrate
+  * umpv: Use generator expression for files
+  * wayland: no mouse dragging in fullscreen/maximized
+  * manpage: mention rotate limitations with hwdec
+  * vd_lavc: wrap use of deprecated AVCodecContext.thread_safe_callbacks in #if
+  * manpage: video-rotate supports arbitrary steps
+  * mac: fix traditional fullscreen on macOS 11
+  * mac: remove an unused variable
+
+-------------------------------------------------------------------
 Fri Mar 12 13:20:10 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Added JS scripting support (mujs) for Tumbleweed and Leap > 15.3.

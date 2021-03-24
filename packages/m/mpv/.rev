@@ -1287,4 +1287,29 @@
     <comment></comment>
     <requestid>878951</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>17421dbd875e7671f948b8db7f2320a5</srcmd5>
+    <version>0.33.0+git.20210321T171820.6265724f33</version>
+    <time>1616598919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33.0+git.20210321T171820.6265724f33:
+  * vo_gpu: placebo: keep track of texture sample mode
+  * stats.lua: include a filter's @label when displaying filters on page 1
+  * ao_oss: add this audio output again
+  * audio: prevent uninit_audio_out during encoding
+  * stream_lavf: add support for Gopher over TLS.
+  * ao/pulse: signal the mainloop when ops are done
+  * player/command: add albumart argument to video-add
+  * player/{core,loadfile}: make cover art loading more explicit
+  * ao/pulse: wait for command completion when setting volume or mute
+  * ytdl_hook: fix crash on missing track bitrate
+  * umpv: Use generator expression for files
+  * wayland: no mouse dragging in fullscreen/maximized
+  * manpage: mention rotate limitations with hwdec
+  * vd_lavc: wrap use of deprecated AVCodecContext.thread_safe_callbacks in #if
+  * manpage: video-rotate supports arbitrary steps
+  * mac: fix traditional fullscreen on macOS 11
+  * mac: remove an unused variable</comment>
+    <requestid>880726</requestid>
+  </revision>
 </revisionlist>

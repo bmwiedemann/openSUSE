@@ -22,7 +22,7 @@
 %define _waf_ver 2.0.20
 %define lname   libmpv1
 Name:           mpv
-Version:        0.33.0+git.20210223T124404.09d7c75bfe
+Version:        0.33.0+git.20210321T171820.6265724f33
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -93,8 +93,8 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       hicolor-icon-theme
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
+Requires(postun):hicolor-icon-theme
+Requires(postun):update-desktop-files
 # Used via LUA scripts
 Recommends:     youtube-dl
 Conflicts:      mpv-plugin-mpris < 0.4
