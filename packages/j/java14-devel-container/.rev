@@ -16,4 +16,15 @@
 </comment>
     <requestid>880124</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>61fe45d614bba8c108cfc53a93da3120</srcmd5>
+    <version>unknown</version>
+    <time>1616598937</time>
+    <user>dimstar_suse</user>
+    <comment>- Renamed tag to follow upstream
+- Not having &quot;opensuse&quot; as prefix does not conform to specification as per conversation with fvogt
+- Fixed paths
+</comment>
+    <requestid>881039</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 24 12:19:09 UTC 2021 - Marco Varlese <marco.varlese@suse.com>
+
+- Renamed tag to follow upstream
+
+-------------------------------------------------------------------
+Tue Mar 23 19:26:44 UTC 2021 - Marco Varlese <marco.varlese@suse.com>
+
+- Not having "opensuse" as prefix does not conform to specification as per conversation with fvogt
+
+-------------------------------------------------------------------
+Tue Mar 23 16:39:04 UTC 2021 - Marco Varlese <marco.varlese@suse.com>
+
+- Fixed paths
+
+-------------------------------------------------------------------
 Fri Mar 19 14:40:06 UTC 2021 - Marco Varlese <marco.varlese@suse.com>
 
 - Added ENTRY_POINT
