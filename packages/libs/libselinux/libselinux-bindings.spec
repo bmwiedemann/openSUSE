@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define libsepol_ver 3.1
+%define libsepol_ver 3.2
 Name:           libselinux-bindings
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        SELinux runtime library and simple utilities
 License:        SUSE-Public-Domain
@@ -36,11 +36,11 @@ Patch4:         readv-proto.patch
 Patch5:         python3.8-compat.patch
 Patch6:         swig4_moduleimport.patch
 BuildRequires:  libsepol-devel-static >= %{libsepol_ver}
-BuildRequires:  pcre-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  ruby-devel
 BuildRequires:  swig
+BuildRequires:  pkgconfig(libpcre2-8)
 
 %description
 libselinux provides an interface to get and set process and file
@@ -83,15 +83,13 @@ language.
 
 %build
 %define _lto_cflags %{nil}
-make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" -C src V=1
-make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" -C src swigify V=1
-make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" -C src pywrap V=1
-make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" -C src rubywrap V=1
+make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" swigify V=1 USE_PCRE2=y
+make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" pywrap V=1 USE_PCRE2=y
+make %{?_smp_mflags} LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fno-semantic-interposition" rubywrap V=1 USE_PCRE2=y
 
 %install
-make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_libdir}/libsepol.a -C src install V=1
-make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_libdir}/libsepol.a -C src install-pywrap V=1
-make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_libdir}/libsepol.a -C src install-rubywrap V=1
+make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_libdir}/libsepol.a install-pywrap V=1
+make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_libdir}/libsepol.a install-rubywrap V=1
 rm -rf %{buildroot}/%{_lib} %{buildroot}%{_libdir}/libselinux.* %{buildroot}%{_libdir}/pkgconfig
 
 %files -n python3-selinux

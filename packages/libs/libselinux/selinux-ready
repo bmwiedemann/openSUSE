@@ -206,7 +206,7 @@ check_runlevel()
 
 check_packages()
 {
-	PKGLST="checkpolicy policycoreutils selinux-tools libselinux1 libsepol1 libsemanage1 restorecond"
+	PKGLST="checkpolicy policycoreutils selinux-tools libselinux1 libsepol2 libsemanage2 restorecond"
 	FAIL=0
 
 	for i in $PKGLST

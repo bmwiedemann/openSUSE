@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar 17 15:13:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Switch to pcre2:
+  + Replace pcre-devel BuildRequires with pkgconfig(libpcre2-8)
+  + Pass USE_PCRE2=y to make.
+  + Replace pkgconfig(libpcre) Requires in -devel static with
+    pkgconfig(libpcre2-8).
+
+-------------------------------------------------------------------
+Tue Mar  9 09:01:15 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.2:
+  * Use mmap()'ed kernel status page instead of netlink by default.
+    See "KERNEL STATUS PAGE" section in avc_init(3) for more details.
+  * New log callback levels for enforcing and policy load notices -
+    SELINUX_POLICYLOAD, SELINUX_SETENFORCE
+  * Changed userspace AVC setenforce and policy load messages to audit
+    format.
+
+-------------------------------------------------------------------
 Sat Feb  6 13:54:41 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add Recommends: selinux-autorelabel, which is very important

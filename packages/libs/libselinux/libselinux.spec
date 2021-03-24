@@ -16,15 +16,15 @@
 #
 
 
-%define libsepol_ver 3.1
+%define libsepol_ver 3.2
 Name:           libselinux
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        SELinux runtime library and utilities
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
-Source:         https://github.com/SELinuxProject/selinux/releases/download/20200710/%{name}-%{version}.tar.gz
+Source:         https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        selinux-ready
 Source2:        baselibs.conf
 # PATCH-FIX-UPSTREAM Include <sys/uio.h> for readv prototype
@@ -32,8 +32,8 @@ Patch4:         readv-proto.patch
 Patch5:         skip_cycles.patch
 BuildRequires:  fdupes
 BuildRequires:  libsepol-devel >= %{libsepol_ver}
-BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libpcre2-8)
 
 %description
 libselinux provides an interface to get and set process and file
@@ -84,7 +84,7 @@ necessary to develop your own software using libselinux.
 Summary:        Static archives for the SELinux runtime
 Group:          Development/Libraries/C and C++
 Requires:       libselinux-devel = %{version}
-Requires:       pkgconfig(libpcre)
+Requires:       pkgconfig(libpcre2-8)
 Requires:       pkgconfig(libsepol)
 
 %description devel-static
@@ -101,7 +101,7 @@ necessary to develop your own software using libselinux.
 
 %build
 %define _lto_cflags %{nil}
-make %{?_smp_mflags} LIBDIR="%{_libdir}" CC="gcc" CFLAGS="%{optflags} -fno-semantic-interposition"
+make %{?_smp_mflags} LIBDIR="%{_libdir}" CC="gcc" CFLAGS="%{optflags} -fno-semantic-interposition" USE_PCRE2=y
 
 %install
 mkdir -p %{buildroot}/%{_lib}
