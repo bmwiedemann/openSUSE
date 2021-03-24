@@ -17,7 +17,7 @@
 
 
 Name:           libdnf-plugin-txnupd
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        Plugin for libdnf to implement transactional updates
 License:        LGPL-2.1-or-later
