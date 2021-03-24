@@ -1,7 +1,7 @@
 #
 # spec file for package soapy-remote
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC.
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define soapy_modname soapysdr%{soapy_modver}-module-remote
 
 Name:           soapy-remote
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Remote device support for Soapy SDR
 License:        BSL-1.0
