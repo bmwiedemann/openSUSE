@@ -1,0 +1,7 @@
+<aggregatelist>
+  <aggregate project="openSUSE:Factory">
+    <package>libsemanage</package>
+    <package>libsepol</package>
+    <nosources />
+  </aggregate>
+</aggregatelist>
