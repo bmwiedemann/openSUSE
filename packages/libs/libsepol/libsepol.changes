@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar  9 09:11:42 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.2
+  * more space-efficient form of storing filename transitions in the binary
+    policy and reduced the size of the binary policy
+  * dropped old and deprecated symbols and functions. Version was bumped to
+    libsepol.so.2
+
+-------------------------------------------------------------------
 Thu Oct 29 10:40:16 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - install to /usr (boo#1029961)

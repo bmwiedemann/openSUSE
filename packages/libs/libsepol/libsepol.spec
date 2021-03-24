@@ -1,7 +1,7 @@
 #
 # spec file for package libsepol
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,16 @@
 #
 
 
+%define libname libsepol2
+
 Name:           libsepol
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        SELinux binary policy manipulation library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
-Source:         https://github.com/SELinuxProject/selinux/releases/download/20200710/%{name}-%{version}.tar.gz
+Source:         https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
 BuildRequires:  flex
 BuildRequires:  pkgconfig
@@ -47,11 +49,11 @@ tools, as well as by programs like load_policy that need to perform
 specific transformations on binary policies such as customizing
 policy boolean settings.
 
-%package -n libsepol1
+%package -n %{libname}
 Summary:        SELinux binary policy manipulation library
 Group:          System/Libraries
 
-%description -n libsepol1
+%description -n %{libname}
 libsepol provides an API for the manipulation of SELinux binary
 policies. It is used by checkpolicy (the policy compiler) and similar
 tools, as well as by programs like load_policy that need to perform
@@ -66,8 +68,8 @@ Security.)
 %package devel
 Summary:        Development files for SELinux's binary policy manipulation library
 Group:          Development/Libraries/C and C++
+Requires:       %{libname} = %{version}
 Requires:       glibc-devel
-Requires:       libsepol1 = %{version}
 
 %description devel
 The libsepol-devel package contains the libraries and header files
@@ -95,8 +97,8 @@ make %{?_smp_mflags}
 %install
 %make_install LIBDIR="%{_libdir}" SHLIBDIR="%{_libdir}"
 
-%post -n libsepol1 -p /sbin/ldconfig
-%postun -n libsepol1 -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
 %files utils
 %defattr(-,root,root)
@@ -104,7 +106,7 @@ make %{?_smp_mflags}
 %{_mandir}/man8/*.8%{ext_man}
 %{_mandir}/ru/man8/*.8%{ext_man}
 
-%files -n libsepol1
+%files -n %{libname}
 %defattr(-,root,root)
 %{_libdir}/libsepol.so.*
 
