@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 14 21:08:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.2:
+  * lots of oss-fuzz reported overflow fixes, see included ChangeLog 
+- drop 
+      ffmpeg.git-ba3e771a42c29ee02c34e7769cfc1b2dbc5c760a.patch
+      0001-lavf-srt-fix-build-fail-when-used-the-libsrt-1.4.1.patch
+      0001-avformat-vividas-improve-extradata-packing-checks-in.patch: upstream
+
+-------------------------------------------------------------------
 Fri Feb  5 21:10:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-avformat-vividas-improve-extradata-packing-checks-in.patch

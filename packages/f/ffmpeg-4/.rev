@@ -375,4 +375,12 @@
   [boo#1180519] [CVE-2020-35964]</comment>
     <requestid>870496</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8a1b971dc1825b32f4cc3c02d44c12fc</srcmd5>
+    <version>4.3.2</version>
+    <time>1616598594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880065</requestid>
+  </revision>
 </revisionlist>
