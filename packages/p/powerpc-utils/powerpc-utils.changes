@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 18 10:21:42 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Add --version option to the ppc64_cpu usage (bsc#1183695 ltc#189235).
+   + powerpc-utils-Update-ppc64-cpu-usage.patch
+
+-------------------------------------------------------------------
 Mon Mar 15 11:46:44 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - ofpathname: Use NVMe controller physical nsid (bsc#1182020 ltc#191360).

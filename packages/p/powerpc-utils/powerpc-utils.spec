@@ -39,6 +39,7 @@ Patch12:        0004-hcnmgr-Avoid-using-xargs-to-process-NM-show-connecti.patch
 Patch14:        fix_kexec_service_name_for_suse.patch
 Patch15:        ofpathname-Use-NVMe-controller-physical-nsid.patch
 Patch16:        powerpc-utils-Fix-ofpathname-race-with-udev-rename.patch
+Patch17:        powerpc-utils-Update-ppc64-cpu-usage.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  librtas-devel
