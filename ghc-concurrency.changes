@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 14 22:46:38 UTC 2021 - psimons@suse.com
+
+- Update concurrency to version 1.11.0.1.
+  1.11.0.1 (2021-03-14)
+  ---------------------
+
+  * Git: :tag:`concurrency-1.11.0.1`
+  * Hackage: :hackage:`concurrency-1.11.0.1`
+
+  Fixed
+  ~~~~~
+
+  * (:issue:`334`) Compilation error under GHC 9 due to use of
+    ``const``.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
