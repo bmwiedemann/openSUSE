@@ -48,6 +48,8 @@ set (cld2_dynamic_SOURCE_FILES
     internal/cld2_dynamic_data_loader.cc
     )
 
+include(GNUInstallDirs)
+
 add_library(cld2 SHARED ${common_SOURCE_FILES} ${cld2_SOURCE_FILES})
 set_target_properties(cld2 PROPERTIES
   ENABLE_EXPORTS On

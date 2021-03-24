@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 23 15:08:29 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- include GNUInstallDirs into CMakeLists.txt and use CMAKE_INSTALL_FULL_LIBDIR
+  variable in pkgconfig file to set corret library path also on Tumbleweed
+
+-------------------------------------------------------------------
 Wed Dec 16 09:47:52 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
 
 - fix generating cld2_full library by adding common source files
