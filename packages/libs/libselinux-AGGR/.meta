@@ -14,4 +14,10 @@ libsemanage provides an API for the manipulation of SELinux binary policies.
 It is used by checkpolicy (the policy compiler) and similar tools, as well
 as by programs like load_policy that need to perform specific transformations
 	  on binary policies such as customizing policy boolean settings.</description>
+  <build>
+    <disable/>
+  </build>
+  <useforbuild>
+    <disable/>
+  </useforbuild>
 </package>
