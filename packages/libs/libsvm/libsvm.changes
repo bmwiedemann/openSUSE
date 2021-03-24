@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 16 23:03:23 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net> 
+
+- Fix build by adding missing python-rpm-macros dependency.
+- Build Python bindings for current Python version.
+- Make sure we're actually using the compiler flags.
+- Fix shebangs.
+
+-------------------------------------------------------------------
 Wed Sep 11 11:54:50 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to version 3.24

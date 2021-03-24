@@ -8,4 +8,16 @@
 </comment>
     <requestid>730232</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a937df66bd984f267d5a094cc4b192fe</srcmd5>
+    <version>3.24</version>
+    <time>1616598700</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build by adding missing python-rpm-macros dependency.
+- Build Python bindings for current Python version.
+- Make sure we're actually using the compiler flags.
+- Fix shebangs.
+</comment>
+    <requestid>880642</requestid>
+  </revision>
 </revisionlist>
