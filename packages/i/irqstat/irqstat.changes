@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Tue Mar 23 17:08:16 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Added fix-python3-and-unbuffered-io.patch
+  This makes irqstat work with python3. It has been submitted
+  upstream already, so we will only carry it like this until it
+  is accepted there
+- Added python-to-python3.patch
+  So that we can drop python related 'Requires:', which will be
+  automatically figured out
+
+-------------------------------------------------------------------
+Tue Mar 23 10:31:53 UTC 2021 - dfaggioli@suse.com
+
+- Refactor and improve _service and spec file
+- Remove unnecessary files (_servicedata) from the repository
+- Update to version 1.0.0+git4cd6854:
+  * Fix python 3 compatibility
+  * Fix pylint warnings
+
+-------------------------------------------------------------------
+Fri Sep 25 17:51:19 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+-  Update to upstream version 1.0.0+git20200924.3d731a2
+   * Includes off-line analysis of /proc/interrupts
+   * Code refactoring and style cleanups
+
+-------------------------------------------------------------------
+Thu Sep 24 13:30:17 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Switch to tar_scm and to locally run services
+  * for avoiding all plafroms having to have the obs-service-*
+
+-------------------------------------------------------------------
+Wed Sep 23 06:54:27 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Switch to upstream version 1.0.0+git20150530.902c7b5
+  * fix version and upstream URL accordingly
+
+-------------------------------------------------------------------
+Tue Sep 22 15:30:08 UTC 2020 - Dario Faggioli <dfaggioli@suse.com>
+
+- Initial import
+  * v1.0.0
+  * offline-analysis branch
