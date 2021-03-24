@@ -1885,4 +1885,15 @@
   - man-pages-openat2.h-location.patch (upstreamed)</comment>
     <requestid>858974</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>2f1c5509a33c9b6e48fb5826559e0fdc</srcmd5>
+    <version>5.11</version>
+    <time>1616598642</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.11
+  http://linux-man-pages.blogspot.com/2021/03/man-pages-511-is-released.html
+- modified patches
+  % man-pages-tty_ioctl.patch (refreshed)</comment>
+    <requestid>880505</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 22 11:06:52 UTC 2021 - pgajdos@suse.com
+
+- version update to 5.11
+  http://linux-man-pages.blogspot.com/2021/03/man-pages-511-is-released.html
+- modified patches
+  % man-pages-tty_ioctl.patch (refreshed)
+
+-------------------------------------------------------------------
 Mon Dec 28 09:11:48 UTC 2020 - pgajdos@suse.com
 
 - version update to 5.10
