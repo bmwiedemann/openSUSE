@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 14 22:18:56 UTC 2021 - psimons@suse.com
+
+- Update Decimal to version 0.5.2.
+  Upstream has not updated the file "changelog.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
