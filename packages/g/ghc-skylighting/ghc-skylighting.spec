@@ -18,7 +18,7 @@
 
 %global pkg_name skylighting
 Name:           ghc-%{pkg_name}
-Version:        0.10.4
+Version:        0.10.4.1
 Release:        0
 Summary:        Syntax highlighting library
 License:        GPL-2.0-or-later
@@ -30,8 +30,6 @@ BuildRequires:  ghc-binary-devel
 BuildRequires:  ghc-blaze-html-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-pretty-show-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-skylighting-core-devel
