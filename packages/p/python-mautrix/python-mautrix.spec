@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-mautrix
-Version:        0.8.6
+Version:        0.8.15
 Release:        0
 Summary:        A Python 3 asyncio Matrix framework
 License:        MPL-2.0

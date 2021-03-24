@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Mar 16 17:58:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 0.8.15:
+  - Add option to not use transaction for db upgrades
+  - Return None instead of attr.NOTHING for fields without value
+  - Crash if server doesn't advertise appservice login
+  - Switch BaseFileConfig to use pkgutil instead of pkg_resources
+  - Catch MNotFound when updating m.direct
+  - Log data when deserialization fails
+  - Expose ExtensibleEnum in mautrix.types
+  - Allow postgresql:// scheme in encryption database URL
+  - Add better error message if deserialization fails
+  - Log full data instead of only known fields when failing to
+    deserialize
+  - Automatically retry login if custom puppet start fails
+  - Fix ExtensibleEnum leaking keys between different types
+  - Allow changing bot used in ensure_joined
+  - Add custom puppet relogin when sync fails
+  - Handle MNotFound when getting pinned events
+  - Use same txn_id when retrying sends in bridges
+  - Update client state store with events from sync
+  - Don't check message in whoami forbidden error
+  - Fix fault for rooms without power_levels state event.
+  - Graceful handling of missing or empty event.unsigned object.
+  - Send warning when receiving encrypted messages with e2be
+    disabled
+  - Add utility for async getter locking
+  - Allow overriding asyncpg pool in async_db Database wrapper
+  - Only update state if state_store is set
+
+-------------------------------------------------------------------
 Mon Jan  4 11:41:20 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.8.6:
