@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 20 16:50:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix python39 test suite failures
+  * wrapt-pr161-py39tests.patch
+  * gh#GrahamDumpleton/wrapt#161
+
+-------------------------------------------------------------------
 Fri Dec  4 00:37:53 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix python3.6 build with pytest 6

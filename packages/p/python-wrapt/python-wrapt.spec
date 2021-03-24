@@ -1,7 +1,7 @@
 #
 # spec file for package python-wrapt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,8 @@ URL:            https://github.com/GrahamDumpleton/wrapt
 Source:         https://github.com/GrahamDumpleton/wrapt/archive/%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#GrahamDumpleton/wrapt#168 -- fix pytest 6 dummy collection
 Patch0:         https://github.com/GrahamDumpleton/wrapt/pull/168.patch#/fix-dummy-collector-pytest6.patch
+# PATCH-FIX-UPSTREAM gh#GrahamDumpleton/wrapt#161 -- fix test for Python 3.9
+Patch1:         https://github.com/GrahamDumpleton/wrapt/pull/161.patch#/wrapt-pr161-py39tests.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -60,8 +62,7 @@ For further information on the **wrapt** module see:
 * http://wrapt.readthedocs.org/
 
 %prep
-%setup -q -n wrapt-%{version}
-%patch0 -p1
+%autosetup -p1 -n wrapt-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -77,6 +78,7 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %license LICENSE
 %doc README.rst docs/changes.rst
-%{python_sitearch}/*
+%{python_sitearch}/wrapt
+%{python_sitearch}/wrapt-%{version}*-info
 
 %changelog
