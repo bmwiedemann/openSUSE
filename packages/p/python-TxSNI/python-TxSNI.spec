@@ -25,8 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/glyph/txsni
 Source0:        https://github.com/glyph/txsni/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module Twisted} >= 14.0.0
-BuildRequires:  %{python_module pyOpenSSL} >= 0.14
+BuildRequires:  %{python_module Twisted >= 14.0.0}
+BuildRequires:  %{python_module pyOpenSSL >= 0.14}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Twisted >= 14.0.0
@@ -48,7 +48,7 @@ This package brings support for running a TLS server with Twisted.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand $python setup.py test
+%pyunittest -v
 
 %files %{python_files}
 %license LICENSE
