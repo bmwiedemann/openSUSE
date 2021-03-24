@@ -651,4 +651,41 @@
     <comment></comment>
     <requestid>850955</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>58f8cbc4a9addd5aab2049b66fda9b3e</srcmd5>
+    <version>3.4</version>
+    <time>1616598821</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4
+  New Features:
+  * New data sources for UPCitemdb, TVmaze, and Numista were added.
+  * Colnect can now be searched for stamp results.
+  * Batch searching was added for ISBNdb.
+  * Barcode searching and updating was added to DVDfr, Discogs and
+    MusicBrainz.
+  * The Group View can now be sorted by fields other than the
+    title.
+  * The MultiFetcher data source was improved to &quot;daisy-chain&quot;
+    results from multiple sources, merging them together. For
+    example, a UPC search with UPCitemdb could be connected such
+    that the result has additional information from TMDb.
+  * Entries can now be filtered using minimum or maximum image
+    size.
+  * Importing from the Collectorz software family was added.
+  * Graphical chart reports were added (requires compiling with
+    QtCharts).
+  Fixes:
+  * The default toolbar layout for adding new entries to the
+    collection was tweaked.
+  * Data sources for Douban, Discogs, MusicBrainz, IGDB, OMDb,
+    TheGamesDB, and TMDb were updated.
+  * Overall, the entry updating and merging was also improved to
+    both make a better search request as well as match existing
+    results more efficiently.
+  * The AnimeNFO data source was removed.
+  * PlayStation5 and Xbox Series X were added to the list of
+    default game platforms.
+  * The entry and report templates were improved for mobile</comment>
+    <requestid>880673</requestid>
+  </revision>
 </revisionlist>

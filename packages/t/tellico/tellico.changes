@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Mar 20 08:27:43 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 3.4
+  New Features:
+  * New data sources for UPCitemdb, TVmaze, and Numista were added.
+  * Colnect can now be searched for stamp results.
+  * Batch searching was added for ISBNdb.
+  * Barcode searching and updating was added to DVDfr, Discogs and
+    MusicBrainz.
+  * The Group View can now be sorted by fields other than the
+    title.
+  * The MultiFetcher data source was improved to "daisy-chain"
+    results from multiple sources, merging them together. For
+    example, a UPC search with UPCitemdb could be connected such
+    that the result has additional information from TMDb.
+  * Entries can now be filtered using minimum or maximum image
+    size.
+  * Importing from the Collectorz software family was added.
+  * Graphical chart reports were added (requires compiling with
+    QtCharts).
+  Fixes:
+  * The default toolbar layout for adding new entries to the
+    collection was tweaked.
+  * Data sources for Douban, Discogs, MusicBrainz, IGDB, OMDb,
+    TheGamesDB, and TMDb were updated.
+  * Overall, the entry updating and merging was also improved to
+    both make a better search request as well as match existing
+    results more efficiently.
+  * The AnimeNFO data source was removed.
+  * PlayStation5 and Xbox Series X were added to the list of
+    default game platforms.
+  * The entry and report templates were improved for mobile
+    layouts.
+  * A crashing bug on Windows was fixed (kde#422468).
+  * The "Filter by Group" command was again improved to better
+    match table fields.
+  * Tellico will now build against QtWebEngine instead of KHTML,
+    if available, since KHTML is deprecated.
+  * Bibtex parsing with the included btparse library is now a
+    compile-time option, which allows Tellico to build with MSVC.
+- Build with QtWebEngine instead of KHTML where possible
+- Add Qt5Charts BuildRequires to enable new graphical chart reports
+
+-------------------------------------------------------------------
 Thu Nov 26 09:11:18 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 3.3.4:

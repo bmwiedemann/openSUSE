@@ -1,7 +1,7 @@
 #
 # spec file for package tellico
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tellico
-Version:        3.3.4
+Version:        3.4
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later
@@ -50,24 +50,32 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5JobWidgets)
-BuildRequires:  cmake(KF5KHtml)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Sane)
 BuildRequires:  cmake(KF5Solid)
+BuildRequires:  cmake(KF5Sonnet)
+BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Charts)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(libxml-2.0)
 Recommends:     %{name}-lang = %{version}
+# QWebEngine is not available on ppc
+%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+BuildRequires:  cmake(Qt5WebEngineWidgets)
+%else
+BuildRequires:  cmake(KF5KHtml)
+%endif
 
 %description
 Tellico is an application for organizing your collections. It provides
@@ -97,7 +105,7 @@ stamps, trading cards, comic books, and wines.
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog README.md
 %{_kf5_applicationsdir}/org.kde.tellico.desktop
 %dir %{_kf5_appsdir}/kconf_update
 %{_kf5_appsdir}/kconf_update/tellico*
@@ -111,6 +119,7 @@ stamps, trading cards, comic books, and wines.
 %doc %{_kf5_htmldir}/en/tellico/
 %{_kf5_iconsdir}/hicolor/*/apps/tellico.png
 %{_kf5_iconsdir}/hicolor/*/mimetypes/application-x-tellico.png
+%{_kf5_knsrcfilesdir}/tellico*
 %{_kf5_kxmlguidir}/tellico/
 %{_datadir}/mime/packages/tellico.xml
 
