@@ -200,7 +200,7 @@ Ignore: libsemanage2:libsemanage-conf
 #Runscripts: aaa_base
 
 Prefer: libdb-4_8-devel
-VMinstall: util-linux libmount1 perl-base libdb-4_8 libsepol1 libblkid1 libuuid1 libsmartcols1 libcrypt1
+VMinstall: util-linux libmount1 perl-base libdb-4_8 libblkid1 libuuid1 libsmartcols1 libcrypt1
 VMinstall: kernel-obs-build
 VMInstall: iproute2 libmnl0
 
