@@ -18,10 +18,10 @@
 
 %define boost_min_version 1.56
 Name:           wesnoth
-Version:        1.15.10
+Version:        1.15.11
 Release:        0
 Summary:        Fantasy Turn-Based Strategy Game
-License:        GPL-2.0-or-later AND EPL-1.0
+License:        EPL-1.0 AND GPL-2.0-or-later
 Group:          Amusements/Games/Strategy/Turn Based
 URL:            https://www.wesnoth.org/
 Source:         https://github.com/wesnoth/wesnoth/archive/%{version}.tar.gz

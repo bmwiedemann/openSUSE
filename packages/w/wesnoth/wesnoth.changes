@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Mar 22 21:35:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.11:
+  * AI improvements, 
+    see https://github.com/wesnoth/wesnoth/blob/1.15.11/changelog.md
+
+  * Fixed color fringing issues with ClearType on Windows.
+  * Improved the Load dialog when there are no saved games for the current
+    version, and also when there are corrupted files.
+  * Re-added the pop-up when there are no saved games at all
+  * Fixed resource leak in the Pango text rendering pipeline when using the
+    characters_per_line constraint.
+  * Make the warning about loading saves from old versions much clearer.
+  * Made legacy GUI1 scrollbars match regular GUI2 scrollbars.
+  * Reduced font sizes for the unit HP/XP/MP/Vision/Defense displays on the
+   sidebar at small resolutions to avoid overlaps (issue #5575).
+  * Rearranged the unit XP and vision displays on the sidebar to avoid running
+    out of room for the XP display (issue #5575).
+  * Reduced font size for the ToD counter on the sidebar to avoid it being
+    ellipsized too often.
+  * Gave the turn timer display the same icon as the system clock display.
+  * Anchored the Observers icon to the sidebar again in a way that does not
+    allow it to overlap into it (issue #5575).
+  * Fixed the turn timer/system clock display on the top bar incorrectly using
+    a larger font size at small resolutions.
+  * Made the Defense display label on the sidebar visible (a side-effect of
+    replacing SDL_ttf) and rearranged it slightly.
+  * Set the correct default text color for in-game UI elements instead of
+    #ffffff white for consistency with other UI elements.
+  * Increased font sizes in Help and some legacy UI elements.
+  * Minor clean-up of game menus display.
+  * Restyled dropdown menu buttons to look like buttons rather than textboxes.
+  * Fixed missing display resolution ratios in Preferences -> Display
+    (regression introduced in 1.15.10).
+
+-------------------------------------------------------------------
 Sun Feb 28 20:07:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.15.10:
