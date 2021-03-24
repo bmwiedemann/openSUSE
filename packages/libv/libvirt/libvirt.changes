@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 18 21:29:19 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- spec: Fix exec-restart of virtlockd and virtlogd on package upgrade
+  bsc#1183411
+
+-------------------------------------------------------------------
+Wed Mar 17 22:06:57 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- spec: Move netcat-openbsd requirement from the libs to the daemon
+  subpackage. It is only needed by the daemon and introduces an
+  unneeded dependency for users of libvirt-libs.
+
+-------------------------------------------------------------------
 Fri Mar 12 21:11:17 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - virtlockd, virtlogd: Fix exec-restart

@@ -352,6 +352,9 @@ Group:          System/Management
 
 Requires:       %{name}-libs = %{version}-%{release}
 
+# So remote clients can access libvirt over SSH tunnel
+# (client invokes 'nc' against the UNIX socket on the server)
+Requires:       netcat-openbsd
 # for modprobe of pci devices
 Requires:       modutils
 # for /sbin/ip & /sbin/tc
@@ -762,12 +765,9 @@ capabilities of recent versions of Linux (and other OSes).
 
 %package libs
 Summary:        Client side libraries for libvirt
-# So remote clients can access libvirt over SSH tunnel
-# (client invokes 'nc' against the UNIX socket on the server)
-Group:          System/Libraries
-Requires:       netcat-openbsd
 # Not technically required, but makes 'out-of-box' config
 # work correctly & doesn't have onerous dependencies
+Group:          System/Libraries
 Requires:       cyrus-sasl-digestmd5
 
 %description libs
@@ -1174,32 +1174,28 @@ fi
 
 %postun daemon
 /sbin/ldconfig
-# On upgrade, defer restarting daemons until posttrans
-if test $1 -eq 0 ; then
-    for service in libvirtd virtlockd virtlogd ; do
-        rm -f "/var/lib/systemd/migrated/$service" 2> /dev/null || :
-    done
-    /usr/bin/systemctl daemon-reload >/dev/null 2>&1 || :
-fi
-%service_del_postun libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
+# Handle restart/reload in posttrans
+%service_del_postun_without_restart libvirtd.service libvirtd.socket libvirtd-ro.socket libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
 
 %posttrans daemon
+# virtlockd and virtlogd must not be restarted, particularly virtlockd since the
+# locks it uses to protect VM resources would be lost. Both are safe to re-exec.
+/usr/bin/systemctl reload-or-try-restart virtlockd.service >/dev/null 2>&1 || :
+/usr/bin/systemctl reload-or-try-restart virtlogd.service >/dev/null 2>&1 || :
 # All connection drivers should be installed post transaction.
 # Time to restart libvirtd. With new socket activation we need to be a bit
 # smarter on update. Old libvirtd owns the sockets and will delete them on
 # shutdown. We can't use try-restart as libvirtd will own the sockets again
 # after restart. So we must instead shutdown libvirtd, start the sockets,
 # then start libvirtd.
-if test "$YAST_IS_RUNNING" != "instsys"; then
-    /usr/bin/systemctl is-active libvirtd.service >/dev/null 2>&1
-    if test $? = 0 ; then
-        /usr/bin/systemctl stop libvirtd.service >/dev/null 2>&1 || :
+/usr/bin/systemctl is-active libvirtd.service >/dev/null 2>&1
+if test $? = 0 ; then
+    /usr/bin/systemctl stop libvirtd.service >/dev/null 2>&1 || :
 
-        /usr/bin/systemctl try-restart libvirtd.socket >/dev/null 2>&1 || :
-        /usr/bin/systemctl try-restart libvirtd-ro.socket >/dev/null 2>&1 || :
+    /usr/bin/systemctl try-restart libvirtd.socket >/dev/null 2>&1 || :
+    /usr/bin/systemctl try-restart libvirtd-ro.socket >/dev/null 2>&1 || :
 
-        /usr/bin/systemctl start libvirtd.service >/dev/null 2>&1 || :
-    fi
+    /usr/bin/systemctl start libvirtd.service >/dev/null 2>&1 || :
 fi
 
 %pre daemon-driver-network
