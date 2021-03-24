@@ -89,4 +89,12 @@
     <comment>- use one python, not singlespec</comment>
     <requestid>866468</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d4cbe70fa8d688e761cc8ba23a70582d</srcmd5>
+    <version>4.5.1</version>
+    <time>1616598733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880488</requestid>
+  </revision>
 </revisionlist>

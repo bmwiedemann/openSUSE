@@ -17,16 +17,16 @@
 
 
 Name:           2ping
-Version:        4.5
+Version:        4.5.1
 Release:        0
 Summary:        Bi-directional ping utility
 License:        GPL-2.0-or-later
 URL:            https://www.finnie.org/software/2ping/
-Source0:        http://www.finnie.org/software/2ping/%{name}-%{version}.tar.gz
-Source1:        http://www.finnie.org/software/2ping/%{name}-%{version}.tar.gz.asc
+Source0:        https://www.finnie.org/software/2ping/%{name}-%{version}.tar.gz
+Source1:        https://www.finnie.org/software/2ping/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 BuildRequires:  fdupes
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel >= 3.6
 BuildRequires:  python3-distro
 BuildRequires:  python3-dnspython
 BuildRequires:  python3-netifaces
@@ -34,7 +34,7 @@ BuildRequires:  python3-pycryptodomex
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  systemd-rpm-macros
-Requires:       python >= 3.5
+Requires:       python >= 3.6
 Recommends:     python3-distro
 Recommends:     python3-dnspython
 Recommends:     python3-netifaces
@@ -68,7 +68,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc2ping
 %fdupes %{buildroot}%{_prefix}
 
 %check
-py.test-%{python_bin_suffix} -v
+py.test -v
 
 %pre
 %service_add_pre 2ping.service
@@ -83,8 +83,8 @@ py.test-%{python_bin_suffix} -v
 %service_del_postun 2ping.service
 
 %files
-%license COPYING
-%doc ChangeLog README.md
+%license COPYING.md
+%doc ChangeLog.md README.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}6
 %{_mandir}/man1/%{name}.1%{?ext_man}

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 22 08:04:21 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.5.1
+  * 2ping.bash_completion: Make more resilient to failure / missing
+    features.
+  * Minimum Python version changed from 3.5 to 3.6.
+  * Minor no-op code and distribution updates.
+
+-------------------------------------------------------------------
 Mon Jan 25 06:01:09 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - use one python, not singlespec
