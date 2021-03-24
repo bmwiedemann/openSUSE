@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 21 18:54:48 UTC 2021 - schwab@linux-m68k.org
+
+- Update to version 1.4.632+396+g051dba16:
+  * Don't show a backstage while performing `text-scale-adjust'
+  * Make text-scale-adjust work
+  * Fix it again
+  * shimbun.el (shimbun-xml-parse-buffer): Fix typo
+  * ChangeLog: fix date entries
+  * * shimbun.el (shimbun-xml-parse-buffer): Work around malformed xml
+  * Update copyright years
+  * Docfix so not to be wider than 80 chars
+  * Bugfix 'w3m-previous-image doesn't work' ([emacs-w3m:13747])
+  * Fix typo in ChangeLog
+
+-------------------------------------------------------------------
 Tue Feb 25 20:20:26 UTC 2020 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to current GIT HEAD (6eda3828)

@@ -24,4 +24,22 @@
     <comment>- Update to current GIT HEAD (6eda3828)</comment>
     <requestid>779228</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cc5b097d90c323d5a87a301d0311c73e</srcmd5>
+    <version>1.4.632+396+g051dba16</version>
+    <time>1616598702</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.632+396+g051dba16:
+  * Don't show a backstage while performing `text-scale-adjust'
+  * Make text-scale-adjust work
+  * Fix it again
+  * shimbun.el (shimbun-xml-parse-buffer): Fix typo
+  * ChangeLog: fix date entries
+  * * shimbun.el (shimbun-xml-parse-buffer): Work around malformed xml
+  * Update copyright years
+  * Docfix so not to be wider than 80 chars
+  * Bugfix 'w3m-previous-image doesn't work' ([emacs-w3m:13747])
+  * Fix typo in ChangeLog</comment>
+    <requestid>880413</requestid>
+  </revision>
 </revisionlist>
