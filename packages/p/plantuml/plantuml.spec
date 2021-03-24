@@ -17,7 +17,7 @@
 
 
 Name:           plantuml
-Version:        1.2021.1
+Version:        1.2021.3
 Release:        0
 Summary:        Java UML Tool
 License:        GPL-3.0-or-later
@@ -26,7 +26,6 @@ URL:            http://plantuml.com/
 Source0:        http://downloads.sourceforge.net/plantuml/%{name}-lgpl-%{version}.tar.gz
 Source1:        %{name}.script
 Source10:       http://pdf.plantuml.net/PlantUML_Language_Reference_Guide_en.pdf
-Patch0:         remove-non-ascii-char.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -56,10 +55,8 @@ Group:          Productivity/Publishing/Other
 %description javadoc
 This package contains the API documentation for %{name}.
 
-
 %prep
 %setup -q -c -n plantuml
-%patch0 -p1
 cp %{SOURCE1} %{name}
 cp %{SOURCE10} .
 # only contains a single line pointing to website
