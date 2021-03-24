@@ -1,7 +1,7 @@
 #
 # spec file for package testdisk
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,17 +20,16 @@ Name:           testdisk
 Version:        7.1
 Release:        0
 Summary:        Tool to Recover and Fix Partitions
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/Filesystems
-Url:            https://www.cgsecurity.org/wiki/TestDisk
+URL:            https://www.cgsecurity.org/wiki/TestDisk
 Source0:        https://www.cgsecurity.org/%{name}-%{version}.tar.bz2
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libewf-devel
 BuildRequires:  libext2fs-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libqt5-linguist
-BuildRequires:  libreiserfs-devel
+BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
