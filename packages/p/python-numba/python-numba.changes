@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Wed Mar 17 16:51:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.53.0
+  * Support for Python 3.9
+  * Function sub-typing
+  * Initial support for dynamic gufuncs (i.e. from @guvectorize)
+  * Parallel Accelerator (@njit(parallel=True) now supports
+    Fortran ordered arrays
+  * Full release notes at
+    https://numba.readthedocs.io/en/0.53.0/release-notes.html
+- Don't unpin-llvmlite.patch. It really need to be the correct
+  version.
+- Refresh skip-failing-tests.patch
+- Add packaging-ignore-setuptools-deprecation.patch
+  gh#numba/numba#6837
+- Add numba-pr6851-llvm-timings.patch gh#numba/numba#6851 in order
+  to fix 32-bit issues gh#numba/numba#6832
+
+-------------------------------------------------------------------
+Wed Feb 17 09:49:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.52.0
+  https://numba.readthedocs.io/en/stable/release-notes.html
+  This release focuses on performance improvements, but also adds 
+  some new features and contains numerous bug fixes and stability 
+  improvements.
+  Highlights of core performance improvements include:
+  * Intel kindly sponsored research and development into producing 
+    a new reference count pruning pass. This pass operates at the 
+    LLVM level and can prune a number of common reference counting 
+    patterns. This will improve performance for two primary 
+    reasons:
+    - There will be less pressure on the atomic locks used to do 
+      the reference counting.
+    - Removal of reference counting operations permits more 
+      inlining and the optimisation passes can in general do more 
+      with what is present.
+    (Siu Kwan Lam).
+  * Intel also sponsored work to improve the performance of the 
+    numba.typed.List container, particularly in the case of 
+    __getitem__ and iteration (Stuart Archibald).
+  * Superword-level parallelism vectorization is now switched on 
+    and the optimisation pipeline has been lightly analysed and 
+    tuned so as to be able to vectorize more and more often 
+    (Stuart Archibald).
+  Highlights of core feature changes include:
+  * The inspect_cfg method on the JIT dispatcher object has been 
+    significantly enhanced and now includes highlighted output and 
+    interleaved line markers and Python source (Stuart Archibald).
+  * The BSD operating system is now unofficially supported (Stuart 
+    Archibald).
+  * Numerous features/functionality improvements to NumPy support, 
+    including support for:
+    - np.asfarray (Guilherme Leobas)
+    - “subtyping” in record arrays (Lucio Fernandez-Arjona)
+    - np.split and np.array_split (Isaac Virshup)
+    - operator.contains with ndarray (@mugoh).
+    - np.asarray_chkfinite (Rishabh Varshney).
+    - NumPy 1.19 (Stuart Archibald).
+    - the ndarray allocators, empty, ones and zeros, accepting a 
+      dtype specified as a string literal (Stuart Archibald).
+  * Booleans are now supported as literal types (Alexey Kozlov).
+  * On the CUDA target:
+  * CUDA 9.0 is now the minimum supported version (Graham Markall).
+  * Support for Unified Memory has been added (Max Katz).
+  * Kernel launch overhead is reduced (Graham Markall).
+  * Cudasim support for mapped array, memcopies and memset has 
+    been   * added (Mike Williams).
+  * Access has been wired in to all libdevice functions (Graham
+    Markall).
+  * Additional CUDA atomic operations have been added (Michae 
+    Collison).
+  * Additional math library functions (frexp, ldexp, isfinite) 
+    (Zhihao   * Yuan).
+  * Support for power on complex numbers (Graham Markall).
+  Deprecations to note:
+  * There are no new deprecations. However, note that 
+    “compatibility” mode, which was added some 40 releases ago to 
+    help transition from 0.11 to 0.12+, has been removed! Also, 
+    the shim to permit the import of jitclass from Numba’s top 
+    level namespace has now been removed as per the deprecation 
+    schedule.
+- NEP 29: Skip python36 build. Python 3.6 is dropped by NumPy 1.20
+
+-------------------------------------------------------------------
 Mon Nov  2 16:34:48 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.51.2

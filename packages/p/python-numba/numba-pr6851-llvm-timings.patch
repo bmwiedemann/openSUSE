@@ -1,0 +1,72 @@
+diff --git a/numba/misc/llvm_pass_timings.py b/numba/misc/llvm_pass_timings.py
+index 205bb3396..b3263dd45 100644
+--- a/numba/misc/llvm_pass_timings.py
++++ b/numba/misc/llvm_pass_timings.py
+@@ -239,12 +239,14 @@ class ProcessedPassTimings:
+                     missing[k] = 0.0
+             # parse timings
+             n = r"\s*((?:[0-9]+\.)?[0-9]+)"
+-            pat = f"\\s+{n}\\s*\\({n}%\\)" * (len(headers) - 1) + r"\s*(.*)"
++            pat = f"\\s+(?:{n}\\s*\\({n}%\\)|-+)" * (len(headers) - 1)
++            pat += r"\s*(.*)"
+             for ln in line_iter:
+                 m = re.match(pat, ln)
+                 if m is not None:
+                     raw_data = list(m.groups())
+-                    data = {k: float(v) for k, v in zip(attrs, raw_data)}
++                    data = {k: float(v) if v is not None else 0.0
++                            for k, v in zip(attrs, raw_data)}
+                     data.update(missing)
+                     pass_name = raw_data[-1]
+                     rec = PassTimingRecord(
+diff --git a/numba/tests/test_llvm_pass_timings.py b/numba/tests/test_llvm_pass_timings.py
+index a7e9135cd..25b77e2c5 100644
+--- a/numba/tests/test_llvm_pass_timings.py
++++ b/numba/tests/test_llvm_pass_timings.py
+@@ -5,6 +5,30 @@ from numba.tests.support import TestCase, override_config
+ from numba.misc import llvm_pass_timings as lpt
+ 
+ 
++timings_raw1 = """
++===-------------------------------------------------------------------------===
++                      ... Pass execution timing report ...
++===-------------------------------------------------------------------------===
++  Total Execution Time: 0.0001 seconds (0.0001 wall clock)
++
++   ---User Time---   --System Time--   --User+System--   ---Wall Time---  --- Name ---
++   0.0001 ( 90.1%)   0.0001 ( 90.1%)   0.0001 ( 90.1%)   0.0001 ( 90.1%)  A1
++   0.0000 (  9.9%)   0.0000 (  9.9%)   0.0000 (  9.9%)   0.0000 (  9.9%)  A2
++   0.0001 (100.0%)   0.0001 (100.0%)   0.0001 (100.0%)   0.0001 (100.0%)  Total
++
++"""    # noqa: E501
++
++timings_raw2 = """
++  Total Execution Time: 0.0001 seconds (0.0001 wall clock)
++
++   ---User Time---   --System Time--   --User+System--   ---Wall Time---  --- Name ---
++   0.0001 ( 90.1%)        -----        0.0001 ( 90.1%)   0.0001 ( 90.1%)  A1
++   0.0000 (  9.9%)        -----        0.0000 (  9.9%)   0.0000 (  9.9%)  A2
++   0.0001 (100.0%)        -----        0.0001 (100.0%)   0.0001 (100.0%)  Total
++
++"""    # noqa: E501
++
++
+ class TestLLVMPassTimings(TestCase):
+ 
+     def test_usage(self):
+@@ -61,6 +85,15 @@ class TestLLVMPassTimings(TestCase):
+             self.assertGreaterEqual(last, cur)
+             cur = last
+ 
++    def test_parse_raw(self):
++        timings1 = lpt.ProcessedPassTimings(timings_raw1)
++        self.assertAlmostEqual(timings1.get_total_time(), 0.0001)
++        self.assertIsInstance(timings1.summary(), str)
++
++        timings2 = lpt.ProcessedPassTimings(timings_raw2)
++        self.assertAlmostEqual(timings2.get_total_time(), 0.0001)
++        self.assertIsInstance(timings2.summary(), str)
++
+ 
+ class TestLLVMPassTimingsDisabled(TestCase):
+     def test_disabled_behavior(self):

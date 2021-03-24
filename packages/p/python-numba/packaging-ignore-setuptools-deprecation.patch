@@ -1,0 +1,52 @@
+From 4811aeceb2dde05124697909b87cf4ad2ae07c65 Mon Sep 17 00:00:00 2001
+From: Stuart Archibald <stuartarchibald@users.noreply.github.com>
+Date: Wed, 17 Mar 2021 12:29:16 +0000
+Subject: [PATCH 1/2] Ignore warnings from packaging module when testing import
+ behaviour.
+
+As title.
+
+Fixes #6831
+---
+ numba/tests/test_import.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/numba/tests/test_import.py b/numba/tests/test_import.py
+index 7cc9082046..a46ad2df6c 100644
+--- a/numba/tests/test_import.py
++++ b/numba/tests/test_import.py
+@@ -58,7 +58,9 @@ def test_no_accidental_warnings(self):
+         # checks that importing Numba isn't accidentally triggering warnings due
+         # to e.g. deprecated use of import locations from Python's stdlib
+         code = "import numba"
+-        flags = ["-Werror",]
++        # See: https://github.com/numba/numba/issues/6831
++        # bug in setuptools/packaging causing a deprecation warning
++        flags = ["-Werror", "-Wignore::DeprecationWarning:packaging:"]
+         self.run_in_subproc(code, flags)
+ 
+     def test_import_star(self):
+
+From 94fc06e77b648b1cb5021cd6d460aa42808a0393 Mon Sep 17 00:00:00 2001
+From: Stuart Archibald <stuartarchibald@users.noreply.github.com>
+Date: Wed, 17 Mar 2021 16:42:14 +0000
+Subject: [PATCH 2/2] Respond to feedback
+
+As title]
+---
+ numba/tests/test_import.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/numba/tests/test_import.py b/numba/tests/test_import.py
+index a46ad2df6c..a0ca5725eb 100644
+--- a/numba/tests/test_import.py
++++ b/numba/tests/test_import.py
+@@ -60,7 +60,7 @@ def test_no_accidental_warnings(self):
+         code = "import numba"
+         # See: https://github.com/numba/numba/issues/6831
+         # bug in setuptools/packaging causing a deprecation warning
+-        flags = ["-Werror", "-Wignore::DeprecationWarning:packaging:"]
++        flags = ["-Werror", "-Wignore::DeprecationWarning:packaging.version:"]
+         self.run_in_subproc(code, flags)
+ 
+     def test_import_star(self):
