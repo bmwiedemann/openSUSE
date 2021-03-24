@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 19 02:03:20 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.7.7
+  * CryptSym: fix AES output IV (bsc#1183729, CVE-2021-3446)
+  * tpm2: Fix public key context save due to ANY_OBJECT_Marshal usage
+  * tpm2: Address some Coverity issues (false positives)
+  * tpm1.2: Backported ASAN/UBSAN related fixes
+  * tpm2: Return properly sized array for b parameter for NIST P521
+    (HLK)
+  * tpm2: Addressed issues detected by UBSAN
+  * tpm2: Addressed issues detected by cppcheck (false positives)
+
+-------------------------------------------------------------------
 Mon Nov 23 03:31:28 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to version 0.7.4

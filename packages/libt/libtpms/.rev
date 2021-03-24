@@ -71,4 +71,20 @@
   * Fixed some compilation issues (forwarded request 850056 from gary_lin)</comment>
     <requestid>850101</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>65425b4a6c4c181d8587432f3dc1a3f5</srcmd5>
+    <version>0.7.7</version>
+    <time>1616598589</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.7
+  * CryptSym: fix AES output IV (bsc#1183729, CVE-2021-3446)
+  * tpm2: Fix public key context save due to ANY_OBJECT_Marshal usage
+  * tpm2: Address some Coverity issues (false positives)
+  * tpm1.2: Backported ASAN/UBSAN related fixes
+  * tpm2: Return properly sized array for b parameter for NIST P521
+    (HLK)
+  * tpm2: Addressed issues detected by UBSAN
+  * tpm2: Addressed issues detected by cppcheck (false positives) (forwarded request 880005 from gary_lin)</comment>
+    <requestid>880046</requestid>
+  </revision>
 </revisionlist>
