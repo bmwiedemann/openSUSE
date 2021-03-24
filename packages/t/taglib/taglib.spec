@@ -1,7 +1,7 @@
 #
 # spec file for package taglib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,18 +27,15 @@
 %bcond_with tests
 %endif
 Name:           taglib%{psuffix}
-Version:        1.11.2~git20190725.79bc9ccf
+Version:        1.12
 Release:        0
 Summary:        Audio Meta-Data Library
 License:        LGPL-2.1-or-later AND MPL-1.1
 Group:          Productivity/Multimedia/Other
-URL:            http://taglib.github.io/
-Source0:        %{sname}-%{version}.tar.xz
+URL:            https://taglib.github.io/
+Source0:        https://taglib.github.io/releases/taglib-%{version}.tar.gz
 Source1:        %{sname}.desktop
 Source100:      baselibs.conf
-Patch0:         taglib-versionbump.patch
-# PATCH-FIX-UPSTREAM https://github.com/taglib/taglib/pull/935
-Patch1:         0001-Changed-libdir-includedir-variables-to-change-based-.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -96,6 +93,7 @@ Group:          Development/Libraries/C and C++
 Requires:       libstdc++-devel
 Requires:       libtag1 >= %{version}-%{release}
 Requires:       libtag_c0 >= %{version}-%{release}
+Requires:       zlib-devel
 # taglib-devel was last used in openSUSE 11.4 (taglib-devel-1.6.2)
 # The last taglib-devel used was version 1.6.3 from multimedia:libs.
 Provides:       taglib-devel = %{version}
@@ -115,8 +113,6 @@ This package contains the taglib API Documentation in HTML format.
 
 %prep
 %setup -q -n %{sname}-%{version}
-%patch0
-%patch1 -p1
 
 %build
 # The testing needs static libs too
