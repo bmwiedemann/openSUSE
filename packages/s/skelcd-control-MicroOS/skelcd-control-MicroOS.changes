@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Mar 23 11:11:40 EDT 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Replace installing AppArmor patterns with SELinux ones to
+  work around broken yast-security behavior (boo#1183804)
+- Enable SELinux again (jsc#SMO-20)
+- 20210323.2
+
+-------------------------------------------------------------------
+Tue Mar 23 09:48:31 EDT 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Install AppArmor patterns again and temporarily revert enabling
+  SELinux by default to unblock other MicroOS stuff (boo#1183804)
+- 20210323.1
+
+-------------------------------------------------------------------
+Tue Mar 23 07:28:11 EDT 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Stop force-installing AppArmor (boo#1183894)
+- 20210323
+
+-------------------------------------------------------------------
+Mon Mar 22 23:28:11 CEST 2021 - Dario Faggioli <dfaggioli@suse.com>
+
+- Enable COW for /home on GNOME and KDE Desktop
+- 20210322
+
+-------------------------------------------------------------------
+Mon Mar  1 21:13:55 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Set SELinux enforcing mode by default (jsc#SMO-20) .
+- Use the new security proposal client (jsc#SLE-15840,
+  jsc#SLE-17307).
+- 20210303
+
+-------------------------------------------------------------------
+Mon Feb 22 21:45:19 EST 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Declare package manager patterns for each MicroOS role (boo#1182803)
+- 20210222
+
+-------------------------------------------------------------------
 Thu Nov 26 13:21:56 CEST 2020 - Richard Brown <rbrown@suse.de>
 
 - Correct MicroOS Desktop Polkit rules (boo#1163453)
