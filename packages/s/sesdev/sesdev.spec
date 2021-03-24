@@ -16,7 +16,7 @@
 #
 
 Name:           sesdev
-Version:        1.11.0+1607012263.g73dea97
+Version:        1.12.0+1616368506.g9bba186
 Release:        1%{?dist}
 Summary:        CLI tool to deploy and manage SES clusters
 License:        MIT
@@ -92,6 +92,7 @@ install -m 0755 qa/health-ok.sh %{buildroot}/%{_datadir}/%{name}/qa/health-ok.sh
 install -m 0644 qa/common/common.sh %{buildroot}/%{_datadir}/%{name}/qa/common/common.sh
 install -m 0644 qa/common/helper.sh %{buildroot}/%{_datadir}/%{name}/qa/common/helper.sh
 install -m 0644 qa/common/json.sh %{buildroot}/%{_datadir}/%{name}/qa/common/json.sh
+install -m 0644 qa/common/rgw.sh %{buildroot}/%{_datadir}/%{name}/qa/common/rgw.sh
 install -m 0644 qa/common/zypper.sh %{buildroot}/%{_datadir}/%{name}/qa/common/zypper.sh
 
 %files
