@@ -19,7 +19,7 @@
 %define libname libthunarx-3-0
 %bcond_with git
 Name:           thunar
-Version:        4.16.5
+Version:        4.16.6
 Release:        0
 Summary:        File Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -62,10 +62,10 @@ BuildRequires:  xfce4-dev-tools
 # uses exo-desktop-item-edit, exo-open
 Requires:       exo-tools
 Recommends:     %{name}-lang = %{version}
+Recommends:     catfish
 Recommends:     gvfs
 Recommends:     thunar-volman
 Recommends:     tumbler
-Recommends:     catfish
 Provides:       thunar-doc = %{version}
 Obsoletes:      thunar-doc <= 1.2.3
 
