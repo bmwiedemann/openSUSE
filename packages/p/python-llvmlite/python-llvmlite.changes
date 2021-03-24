@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Mar 16 19:59:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to 0.36.0
+  * The main feature in this release is Python 3.9 support.
+    Also, some changes to the build scripts were included:
+    the llvmdev recipe now supports compilation on Windows 10
+    and llvmlite may now be compiled with cmake on POSIX
+    systems. Additionally, both the timings from the LLVM
+    passes themselves and the time spent within the LLVM
+    thread-safe access lock are now available for diagnostic
+    purposes. Lastly, several minor cosmetic changes to the
+    documentation and project files are included.
+
+-------------------------------------------------------------------
+Wed Feb 17 10:37:10 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to 0.35.0
+  * The main feature in this release is a Numba specific
+    LLVM pass for pruning reference-count operations. We
+    plan to generalize this custom LLVM pass once it is
+    proven stable so that it can be configured for other
+    uses. In addition, this release contains an updated SVML
+    patch that fixes an issue for AVX512, and a patch that
+    fixes build issues on Linux and BSD.
+- Drop the condtional for older llvm versions on older distros.
+  This release as well as previous ones only supports llvm10.
+
+-------------------------------------------------------------------
 Mon Nov  2 14:56:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.34.0
