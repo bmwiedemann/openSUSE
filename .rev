@@ -40,4 +40,13 @@ versioned alongside the program.
     <comment>- Update to version 0.180.</comment>
     <requestid>759050</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>f30cd5d023a572330a05e8a62348d75a</srcmd5>
+    <version>unknown</version>
+    <time>1616598691</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.196.
+- Relax dependencies.</comment>
+    <requestid>876628</requestid>
+  </revision>
 </revisionlist>

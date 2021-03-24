@@ -1,8 +1,8 @@
 #
 # spec file for package metamath
 #
-# Copyright (c) 2019 SUSE LLC
-# Copyright (c) 2016-2019 by Aaron Puchert
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2021 Aaron Puchert
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 
 # Global definitions
 Name:           metamath
-Version:        0.180
+Version:        0.196
 Release:        0
 Summary:        Formal proof verifier and proof assistant
 License:        GPL-2.0-or-later
@@ -54,9 +54,9 @@ BuildRequires:  texlive-makeindex-bin
 BuildRequires:  texlive-microtype
 BuildRequires:  texlive-needspace
 BuildRequires:  texlive-tabu
-Recommends:     %{name}-book = %{book_version}-%{release}
+Recommends:     %{name}-book = %{book_version}
 %endif
-Recommends:     %{name}-data = %{version}-%{release}
+Recommends:     %{name}-data = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -71,7 +71,7 @@ License:        CC0-1.0
 Group:          Productivity/Scientific/Math
 Version:        %{book_version}
 Release:        0
-Requires:       %{name} = %{VERSION}-%{release}
+Recommends:     %{name} = %{VERSION}
 BuildArch:      noarch
 
 %description book
@@ -85,7 +85,7 @@ proof verifiers and automated theorem provers.
 Summary:        Data base files for %{name}
 License:        CC0-1.0 AND GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-Requires:       %{name} = %{VERSION}-%{release}
+Requires:       %{name} = %{VERSION}
 BuildArch:      noarch
 
 %description data

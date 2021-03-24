@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Mar  3 22:52:42 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.196.
+  * Fix bug causing new axioms to be used by MINIMIZE_WITH.
+  * Add "Claim" to bib ref types.
+  * Remove error check for $e <- $f assignments.
+  * Check for discouragement tags in *ALT, *OLD labels in
+    VERIFY MARKUP.
+  * Add underscore checking in VERIFY MARKUP and add /UNDERSCORE-
+    _SKIP qualifier; also check for trailing space on lines.
+  * Refine prevention of WRITE SOURCE.../REWRAP from modifying
+    comments containing "<HTML>".
+  * Allow space in TOOLS> BREAK.
+  * Add checking for mathbox independence to VERIFY MARKUP;
+    add /MATHBOX_SKIP.
+  * "PROVE =" will now resume the previous MM-PA session if there
+    was one; allow "~" to start/end with blank (meaning first/last
+    statement); add "@1234".
+  * Add /INCLUDE_MATHBOXES to to IMPROVE; notify user upon ASSIGN
+    from another mathbox.
+  * Print message when IMPROVE or MINIMIZE_WITH uses another mathbox.
+  * Add CONJECTURE, RESULT to [bib] keywords.
+  * Add HELP BIBLIOGRAPHY.
+  * Added CONCLUSION FACT INTRODUCTION PARAGRAPH SCOLIA SCOLION
+    SUBSECTION TABLE to [bib] keywords.
+  * Added WRITE SOURCE ... /EXTRACT ....
+  * Make the output of /EXTRACT stable in the sense that, with the
+    same <label-list> parameter, extract(extract(file)) =
+    extract(file) except that the date stamp at the top will be
+    updated. (The first extraction even if "*" will usually be
+    different because it discards non-relevant content. Note that
+    the include file directives "$( $[ Begin..." etc. and comments
+    with "$j" are currently discarded.)
+  * Add keyword "htmlexturl" to $t statement in .mm file.
+  * Prevent "htmlexturl" links from wrapping.
+  * Temporarily disable /REWRAP until bug fixed.
+  * Fix bug that deleted comments that were followed by ${, $}, $c,
+    $v, $d on the same line.
+- Relax dependencies.
+
+-------------------------------------------------------------------
 Fri Dec 20 22:31:33 UTC 2019 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.180.
