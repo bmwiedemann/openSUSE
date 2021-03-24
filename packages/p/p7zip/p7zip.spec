@@ -1,7 +1,7 @@
 #
 # spec file for package p7zip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,11 +41,13 @@ Source:         p7zip_%{version}_src_all-norar.tar.bz2
 # Debian gzip-like CLI wrapper for p7zip (the version shipped within the p7zip tarball is too old)
 Source1:        https://salsa.debian.org/debian/p7zip/raw/master/debian/scripts/p7zip
 Source2:        https://salsa.debian.org/debian/p7zip/raw/master/debian/p7zip.1
-Patch1:         CVE-2016-9296.patch
+Patch0:         CVE-2016-9296.patch
 # PATCH-FIX-SUSE bnc#1077978 kstreitova@suse.com -- adjust makefile not to use CPP/7zip/Compress/Rar* files
-Patch2:         p7zip_16.02_norar.patch
+Patch1:         p7zip_16.02_norar.patch
 # PATCH-FIX-UPSTREAM bnc#1077725 kstreitova@suse.com -- fix heap-based buffer overflow in a shrink decoder
-Patch3:         p7zip-16.02-CVE-2017-17969.patch
+Patch2:         p7zip-16.02-CVE-2017-17969.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Fix-g-warning.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 Suggests:       p7zip-full
@@ -118,10 +120,7 @@ BuildArch:      noarch
 This package contains the HTML documentation for 7-Zip.
 
 %prep
-%setup -q -n %{name}_%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n %{name}_%{version}
 
 %ifarch x86_64
 cp makefile.linux_amd64_asm makefile.machine
