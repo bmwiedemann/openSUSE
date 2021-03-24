@@ -1,7 +1,7 @@
 #
 # spec file for package python-billiard
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/celery/billiard
 Source:         https://files.pythonhosted.org/packages/source/b/billiard/billiard-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM billiard-pr310-py39-fork_exec.patch -- gh#celery/billiard#310
+Patch0:         billiard-pr310-py39-fork_exec.patch
 BuildRequires:  %{python_module case >= 1.3.1}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
@@ -55,7 +57,7 @@ fixes/improvements from python-trunk.
 Documentation and help files for %{name}.
 
 %prep
-%setup -q -n billiard-%{version}
+%autosetup -p1 -n billiard-%{version}
 
 %build
 %python_build

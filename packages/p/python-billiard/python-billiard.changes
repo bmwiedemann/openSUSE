@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 19 19:42:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add billiard-pr310-py39-fork_exec.patch -- gh#celery/billiard#310
+
+-------------------------------------------------------------------
 Mon Apr  6 12:24:22 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Stop building Python 2 packages (we avoid also weird constructs

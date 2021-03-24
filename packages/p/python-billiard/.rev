@@ -184,4 +184,12 @@
   * Test against the latest Python 3.8 and PyPy3 release</comment>
     <requestid>791763</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7cee520296110c8ae673a44b54baa1d7</srcmd5>
+    <version>3.6.3.0</version>
+    <time>1616598632</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880496</requestid>
+  </revision>
 </revisionlist>
