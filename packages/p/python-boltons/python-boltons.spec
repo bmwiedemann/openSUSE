@@ -25,6 +25,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mahmoud/boltons
 Source:         https://github.com/mahmoud/boltons/archive/%{version}.tar.gz#/boltons-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM boltons-pr271-py39-frozendict.patch -- gh#mahmoud/boltons#271, gh#mahmoud/boltons#283
+Patch0:         boltons-pr271-py39-frozendict.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -38,7 +40,7 @@ that can be used as a package or independently. Documentation is on
 http://boltons.readthedocs.org.
 
 %prep
-%setup -q -n boltons-%{version}
+%autosetup -p1 -n boltons-%{version}
 
 %build
 %python_build
@@ -53,6 +55,7 @@ http://boltons.readthedocs.org.
 %files %{python_files}
 %license LICENSE
 %doc README.md CHANGELOG.md docs/*.rst
-%{python_sitelib}/*
+%{python_sitelib}/boltons
+%{python_sitelib}/boltons-%{version}*-info
 
 %changelog

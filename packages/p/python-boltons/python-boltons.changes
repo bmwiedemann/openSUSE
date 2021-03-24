@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 19 19:53:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add boltons-pr271-py39-frozendict.patch
+  * gh#mahmoud/boltons#271
+  * gh#mahmoud/boltons#283
+
+-------------------------------------------------------------------
 Sat Jan 30 07:06:02 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Include CHANGELOG.md & docs/*.rst
