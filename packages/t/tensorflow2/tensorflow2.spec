@@ -231,6 +231,7 @@ Provides:       python3-tensorflow
 %endif
 Provides:       tensorflow
 %endif
+%if !%{is_lite}
 BuildRequires:  bazel == 3.4.1
 #BuildRequires:  bazel-rules-cc-source
 #BuildRequires:  bazel-apple-support-source
@@ -244,6 +245,7 @@ BuildRequires:  bazel-toolchains-source
 BuildRequires:  bazel-workspaces
 #BuildRequires:  bazel-rules-foreign-cc-source
 #BuildRequires:  bazel-rules-python-source
+%endif
 BuildRequires:  curl
 %if %{with cuda}
 BuildRequires:  cuda-compiler-10-1
@@ -715,6 +717,20 @@ for file in `find tensorflow/lite -name \*.h`; do
   # Disable spurious-executable-perm
   chmod -x %{buildroot}%{_includedir}/$file
 done
+# Install tensorflow-lite.pc
+mkdir -p %{buildroot}%{_libdir}/pkgconfig
+cat <<EOF > %{buildroot}%{_libdir}/pkgconfig/tensorflow-lite.pc
+Name: tensorflow lite
+Description: tensorflow lite static library
+Version: %{vers}
+Requires:
+Libs: -L%{_libdir} -ltensorflow-lite -lflatbuffers
+Cflags: -I%{_includedir}
+EOF
+# Some tools expect tensorflow2-lite.pc
+pushd %{buildroot}%{_libdir}/pkgconfig
+ln -s tensorflow-lite.pc tensorflow2-lite.pc
+popd
 %else
 
 pip install %{_topdir}/%{name}-%{version}/*whl --root=%{buildroot}%{?hpc_prefix} \
@@ -736,6 +752,11 @@ rmdir usr
 #mv lib/%{python_ver_hack}/site-packages/tensorflow_core/include/* lib64/%{python_ver_hack}/site-packages/tensorflow_core/include/
 rm -r lib
 cd -
+%else
+# Generate and install pkgconfig files for non-hpc - tensorflow.pc and tensorflow_cc.pc
+sh tensorflow/c/generate-pc.sh --prefix=/usr --libdir %{_lib} --version %{vers}
+mkdir -p %{buildroot}%{package_libdir}/pkgconfig
+cp *.pc %{buildroot}%{package_libdir}/pkgconfig
 %endif
 # install libtensorflow*.so
 #install -D bazel-bin/tensorflow/libtensorflow.so %{buildroot}%{package_libdir}/libtensorflow.so
@@ -828,7 +849,9 @@ cp -r $OUTPUT_DIR/tensorflow/* %{buildroot}/%{package_python_sitelib}/tensorflow
 %{package_libdir}/libtensorflow-lite.a
 %dir %{_includedir}/tensorflow/lite/
 %{_includedir}/tensorflow/lite/*
+%{package_libdir}/pkgconfig/*.pc
 %else # not lite build
+
 %files
 %defattr(-,root,root,-)
 %{package_bindir}/estimator_ckpt_converter
@@ -855,6 +878,9 @@ cp -r $OUTPUT_DIR/tensorflow/* %{buildroot}/%{package_python_sitelib}/tensorflow
 %{package_libdir}/libtensorflow.so
 %{package_libdir}/libtensorflow_cc.so
 %{package_libdir}/libtensorflow_framework.so
+%if %{without hpc}
+%{package_libdir}/pkgconfig/*.pc
+%endif
 %files -n libtensorflow_framework%{libmaj}%{?hpc_package_name_tail}
 %{package_libdir}/libtensorflow_framework.so.%{libmaj}*
 %files -n libtensorflow_cc%{libmaj}%{?hpc_package_name_tail}

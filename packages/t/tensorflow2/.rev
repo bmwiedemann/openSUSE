@@ -136,4 +136,16 @@
     <comment></comment>
     <requestid>864033</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>bc3b7d4bd6dc6b5321aac6f324672d4b</srcmd5>
+    <version>2.4.0</version>
+    <time>1616598675</time>
+    <user>dimstar_suse</user>
+    <comment>- Generate and install pkgconfig files for tensorflow-lite and
+  tensorflow (non-hpc)
+- Do not install bazel tools to build Lite version. This will allow
+  to build for armv7 where bazel 3.x is not available - boo#1178564
+</comment>
+    <requestid>873517</requestid>
+  </revision>
 </revisionlist>

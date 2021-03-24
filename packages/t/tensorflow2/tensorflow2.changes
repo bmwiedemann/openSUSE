@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 18 14:26:20 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Generate and install pkgconfig files for tensorflow-lite and
+  tensorflow (non-hpc)
+
+-------------------------------------------------------------------
+Wed Jan 27 10:54:57 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not install bazel tools to build Lite version. This will allow
+  to build for armv7 where bazel 3.x is not available - boo#1178564
+
+-------------------------------------------------------------------
 Fri Jan 15 08:05:09 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix packaging for libiomp5
