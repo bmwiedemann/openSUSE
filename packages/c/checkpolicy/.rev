@@ -242,4 +242,12 @@
     <comment>please stage with updated gcc to prevent build failures</comment>
     <requestid>832089</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>26ee7a533226e25ffddd2432a8a1f66c</srcmd5>
+    <version>3.2</version>
+    <time>1616598535</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>879083</requestid>
+  </revision>
 </revisionlist>

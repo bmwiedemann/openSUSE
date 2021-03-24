@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar  9 08:59:58 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.2
+  * Fix a memleak and an integer overflow
+
+-------------------------------------------------------------------
 Tue Jul 14 08:31:15 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.1
