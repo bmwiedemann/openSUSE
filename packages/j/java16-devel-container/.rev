@@ -16,4 +16,16 @@
 </comment>
     <requestid>880126</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>79cf621dad186c000f9b8c4b04ff46d0</srcmd5>
+    <version>unknown</version>
+    <time>1616598738</time>
+    <user>dimstar_suse</user>
+    <comment>- Renamed tag to follow upstream
+- Not having &quot;opensuse&quot; as prefix does not conform to specification as per conversation with fvogt
+- Allow to override base container and release package using
+  Docker arguments.
+</comment>
+    <requestid>881041</requestid>
+  </revision>
 </revisionlist>
