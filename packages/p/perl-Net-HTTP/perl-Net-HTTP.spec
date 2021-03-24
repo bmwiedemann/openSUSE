@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-Net-HTTP
-Version:        6.20
-Release:        0
 %define cpan_name Net-HTTP
+Name:           perl-Net-HTTP
+Version:        6.21
+Release:        0
 Summary:        Low-level HTTP connection (client)
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Compress::Raw::Zlib)
@@ -51,11 +49,11 @@ directly. This is not necessary a good idea, unless you know what you are
 doing.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -66,7 +64,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTORS README.md
 %license LICENSE
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 19 03:08:03 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.21
+   see /usr/share/doc/packages/perl-Net-HTTP/Changes
+
+  6.21      2021-03-18 21:56:42Z
+      - Accept PeerAddr of 0. (GH#72) (trwyant)
+
+-------------------------------------------------------------------
 Mon Jan 11 21:59:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.20:
