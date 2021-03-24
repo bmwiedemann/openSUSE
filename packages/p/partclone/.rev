@@ -131,4 +131,12 @@
     <comment>- Resolve build failure on Tumleweed</comment>
     <requestid>878117</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>9c8711d20186d655ef3f9a48828d84be</srcmd5>
+    <version>0.3.17</version>
+    <time>1616598727</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop dependency on libreiserfs</comment>
+    <requestid>880476</requestid>
+  </revision>
 </revisionlist>

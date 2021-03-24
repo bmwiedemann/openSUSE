@@ -30,7 +30,6 @@ BuildRequires:  automake
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
 BuildRequires:  libbtrfs-devel
-BuildRequires:  libreiserfs-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  nilfs-utils-devel
 BuildRequires:  pkgconfig
@@ -65,7 +64,6 @@ autoreconf -fiv
   --enable-f2fs \
   --enable-nilfs2 \
   --enable-minix \
-  --enable-reiserfs \
   --enable-exfat
 # During build following occurs, but it seems harmless
 # files fail-mbr.bin and fail-mbr.bin.orig differ significantly:
@@ -105,7 +103,6 @@ autoreconf -fiv
 %{_sbindir}/partclone.ntfs
 %{_sbindir}/partclone.ntfsfixboot
 %{_sbindir}/partclone.ntfsreloc
-%{_sbindir}/partclone.reiserfs
 %{_sbindir}/partclone.restore
 %{_sbindir}/partclone.vfat
 %{_sbindir}/partclone.xfs
@@ -134,7 +131,6 @@ autoreconf -fiv
 %{_mandir}/man8/partclone.ntfs.8%{?ext_man}
 %{_mandir}/man8/partclone.ntfsfixboot.8%{?ext_man}
 %{_mandir}/man8/partclone.ntfsreloc.8%{?ext_man}
-%{_mandir}/man8/partclone.reiserfs.8%{?ext_man}
 %{_mandir}/man8/partclone.restore.8%{?ext_man}
 %{_mandir}/man8/partclone.vfat.8%{?ext_man}
 %{_mandir}/man8/partclone.xfs.8%{?ext_man}
