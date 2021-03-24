@@ -276,6 +276,7 @@
       <repopackage name="cervisia"/>
       <repopackage name="cervisia-lang"/>
       <repopackage name="checkmedia"/>
+      <repopackage name="checkpolicy"/>
       <repopackage name="cheese"/>
       <repopackage name="cheese-lang"/>
       <repopackage name="chewing-data"/>
@@ -302,6 +303,7 @@
       <repopackage name="colord-gtk-lang"/>
       <repopackage name="colord-lang"/>
       <repopackage name="command-not-found"/>
+      <repopackage name="container-selinux"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-doc"/>
       <repopackage name="coreutils-lang"/>
@@ -2573,10 +2575,11 @@
       <repopackage name="libsecret-1-0"/>
       <repopackage name="libsecret-lang"/>
       <repopackage name="libselinux1"/>
+      <repopackage name="libsemanage-conf"/>
       <repopackage name="libsemanage-migrate-store"/>
-      <repopackage name="libsemanage1"/>
+      <repopackage name="libsemanage2"/>
       <repopackage name="libsensors4"/>
-      <repopackage name="libsepol1"/>
+      <repopackage name="libsepol2"/>
       <repopackage name="libserd-0-0"/>
       <repopackage name="libserf-1-1"/>
       <repopackage name="libserializer"/>
@@ -3297,6 +3300,7 @@
       <repopackage name="patterns-base-documentation"/>
       <repopackage name="patterns-base-enhanced_base"/>
       <repopackage name="patterns-base-minimal_base"/>
+      <repopackage name="patterns-base-selinux"/>
       <repopackage name="patterns-base-sw_management"/>
       <repopackage name="patterns-base-transactional_base"/>
       <repopackage name="patterns-base-x11"/>
@@ -3902,6 +3906,7 @@
       <repopackage name="remmina-plugin-secret"/>
       <repopackage name="remmina-plugin-vnc"/>
       <repopackage name="remmina-plugin-xdmcp"/>
+      <repopackage name="restorecond"/>
       <repopackage name="rgb"/>
       <repopackage name="ripit"/>
       <repopackage name="ristretto"/>
@@ -4397,6 +4402,8 @@
       <repopackage name="sed"/>
       <repopackage name="sed-lang"/>
       <repopackage name="selinux-autorelabel"/>
+      <repopackage name="selinux-policy"/>
+      <repopackage name="selinux-policy-targeted"/>
       <repopackage name="selinux-tools"/>
       <repopackage name="sendmail"/>
       <repopackage name="sensors"/>
