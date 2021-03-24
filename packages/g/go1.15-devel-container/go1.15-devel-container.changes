@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 24 12:16:39 UTC 2021 - Marco Varlese <marco.varlese@suse.com>
+
+- Renamed tag to align with upstream
+
+-------------------------------------------------------------------
+Tue Mar 23 19:29:22 UTC 2021 - Marco Varlese <marco.varlese@suse.com>
+
+- Added full-path to reference value
+
+-------------------------------------------------------------------
+Tue Mar 23 15:55:45 UTC 2021 - Marco Varlese <marco.varlese@suse.com>
+
+- Fix to version which missed the 1. in front of it
+
+-------------------------------------------------------------------
 Fri Dec 11 14:10:47 UTC 2020 - Marco Varlese <marco.varlese@suse.com>
 
 - First submission for the GO1.15 development environment
