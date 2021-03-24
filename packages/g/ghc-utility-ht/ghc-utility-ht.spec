@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-utility-ht
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name utility-ht
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.0.15
+Version:        0.0.16
 Release:        0
 Summary:        Various small helper functions for Lists, Maybes, Tuples, Functions
 License:        BSD-3-Clause
@@ -30,6 +30,8 @@ BuildRequires:  ghc-rpm-macros
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-doctest-exitcode-stdio-devel
+BuildRequires:  ghc-doctest-lib-devel
 %endif
 
 %description
