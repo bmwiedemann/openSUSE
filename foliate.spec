@@ -1,7 +1,7 @@
 #
 # spec file for package foliate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        GPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://johnfactotum.github.io/foliate/
 Source:         %{name}-%{version}.tar.gz
+Patch:          https://github.com/johnfactotum/foliate/commit/2c28932c6266cbeddbe49d7aa6ca8d70d125e96f.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 21 15:03:26 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added https://github.com/johnfactotum/foliate/commit/2c28932c6266cbeddbe49d7aa6ca8d70d125e96f.patch
+  Make foliate work with GNOME 40 (gh:johnfactotum/foliate#689)
+
+-------------------------------------------------------------------
 Fri Nov 27 23:28:16 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Change filter typelib(Handy) = 1 to exclude now obsolete version

@@ -224,4 +224,12 @@
     <comment>Filter out obsolete typelib instead of current upstream version (forwarded request 851405 from iznogood)</comment>
     <requestid>851786</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>0a94f613b6aacc4572a09bc90ebd22f1</srcmd5>
+    <version>2.5.0</version>
+    <time>1616599003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880975</requestid>
+  </revision>
 </revisionlist>
