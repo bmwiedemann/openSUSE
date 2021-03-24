@@ -1,7 +1,7 @@
 #
 # spec file for package python-HTTPolice
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ Requires:       python-defusedxml >= 0.5.0
 Requires:       python-dominate >= 2.2.0
 Requires:       python-lxml >= 4.1.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -66,7 +66,8 @@ export LANG=en_US.UTF-8
 
 %check
 export LANG=en_US.UTF-8
-%pytest
+# gh#vfaronov/httpolice#10
+%pytest -k 'not test_from_file'
 
 %post
 %python_install_alternative httpolice
