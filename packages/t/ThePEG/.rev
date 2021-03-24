@@ -124,4 +124,12 @@ Depends on
     <comment></comment>
     <requestid>821513</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4a8a760d21fccdec5fa086872fdd7855</srcmd5>
+    <version>2.2.2</version>
+    <time>1616598751</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880525</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package ThePEG
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with java
 
 Name:           ThePEG
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        Toolkit providing a common platform for event generators in C++
 License:        GPL-2.0-only
@@ -49,7 +49,6 @@ ExcludeArch:    i586
 %description
 ThePEG project is a toolkit for providing a common platform for using and
 building event generators in C++.
-
 
 %package -n ThePEG-libs
 Summary:        Toolkit providing a common platform for event generators in C++
