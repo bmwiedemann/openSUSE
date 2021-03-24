@@ -60,6 +60,8 @@ Patch6:         PackageKit-zypp-reset-update-mode-after-get-updates.patch
 Patch7:         PackageKit-dnf-Add-support-for-coercing-upgrade-to-distupgrade.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-initialize-pool.patch gh#hughsie/PackageKit/commit#3efa0c524, bsc#1180597 -- zypp: Make sure pool is initialized at the beginning of some methods
 Patch8:         PackageKit-zypp-initialize-pool.patch
+# PATCH-FIX-UPSTREAM PackageKit-remove-transaction-size-limit.patch gh#hughsie/PackageKit/commit#ff01813 gh#hughsie/PackageKit/commit#ff01813 -- Fix a "too many packages to process" error against full rebuilds
+Patch9:         PackageKit-remove-transaction-size-limit.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -172,7 +174,7 @@ Summary:        Install GStreamer codecs using PackageKit
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     %{name} = %{version}
 Supplements:    (%{name} and gstreamer-plugins-base)
 
