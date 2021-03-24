@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Mar 16 09:55:00 UTC 2021 - psimons@suse.com
+
+- Update doclayout to version 0.3.0.2.
+  ## 0.3.0.2
+
+   * NOINLINE `literal` instead of `fromString` (#2, sjakobi).
+     This produces a further reduction in allocations and
+     pandoc compile time.
+
+-------------------------------------------------------------------
+Sun Mar 14 23:18:20 UTC 2021 - psimons@suse.com
+
+- Update doclayout to version 0.3.0.1.
+  ## 0.3.0.1
+
+   * NOINLINE `fromString` (#1).
+     @sjakobi reports that this change reduced total allocations
+     for building pandoc-2.12 with GHC 8.10.4 by 8.5% and reduced
+     peak allocations are reduced from 3854MB to 3389MB.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
