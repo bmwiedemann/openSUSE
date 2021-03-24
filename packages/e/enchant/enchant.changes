@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 16 20:59:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 2.2.15:
+  + Specify that nuspell >= 4.1.0 is required.
+  + Fix some space leaks in the tests.
+  + The nuspell backend is updated for newer versions.
+  + Make the enchant program output its version to standard output,
+    not standard error. This may help some programs that use this
+    output.
+  + Fix a bug in the Voikko and Zemberek back-ends that could cause
+    spell checking and suggestion to fail.
+  + Make enchant silently ignore -B flag, for better Emacs
+    compatibility.
+  + Make enchant_broker_list_dicts sort the tags, so that
+    enchant-lsmod’s output is sorted.
+  + Minor build system improvement: don’t use -D_FORTIFY_SOURCE,
+    which can cause problems on Windows, and should be configured
+    by the compiler vendor if desired.
+  + Fix Hunspell backend to treat apostrophes as Hunspell does: if
+    either straight or curly apostrophe is a word character, allow
+    both.
+  + Fix a couple of space leaks in the Nuspell back end.
+- Drop Fix_back-ends_that_want_a_NUL-terminated_string.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Thu Nov  5 17:11:26 UTC 2020 - Timo Jyrinki <tjyrinki@suse.com>
 
 - Backport from upstream git a Voikko backend fix (bsc#1178489)

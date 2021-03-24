@@ -1,7 +1,7 @@
 #
 # spec file for package enchant
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,13 @@
 %bcond_with nuspell
 %endif
 Name:           enchant
-Version:        2.2.8
+Version:        2.2.15
 Release:        0
 Summary:        Generic Spell Checking Library
 License:        LGPL-2.1-or-later
 URL:            https://abiword.github.io/enchant/
 Source:         https://github.com/AbiWord/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM Fix_back-ends_that_want_a_NUL-terminated_string.patch bsc#1178489 -- fix voikko backend in eg gspell
-Patch0:         Fix_back-ends_that_want_a_NUL-terminated_string.patch
 BuildRequires:  aspell-devel
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gcc-c++
@@ -39,7 +37,7 @@ BuildRequires:  hunspell-devel
 BuildRequires:  libvoikko-devel
 %if %{with nuspell}
 BuildRequires:  libboost_headers-devel
-BuildRequires:  nuspell-devel
+BuildRequires:  nuspell-devel >= 4.1.0
 %endif
 
 %description
@@ -129,7 +127,6 @@ to develop applications that require these.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure \
