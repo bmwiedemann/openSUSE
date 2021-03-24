@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 23 10:35:33 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.3.1
+  * Update README.md
+  * Update and sort the list of authors
+  * Add a simple network bandwidth monitor (uses libgtop as a fallback)
+  * Remove 4-valued history
+  * Fix initial progress bar value
+  * Fix system-monitor-command setting
+    (gxo#panel-plugins/xfce4-systemload-plugin#15)
+  * Distinguish uptime from the appearance of a digital real-time clock
+  * Replace "Options" with "Label" in the properties dialog
+  * Finish porting to xfconf
+  * Update docs URL
+  * Code cleanups
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Mar 11 15:20:07 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.3.0

@@ -20,7 +20,7 @@
 %define plugin systemload
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        System Load Monitoring Plugin for the Xfce Panel
 License:        BSD-2-Clause
