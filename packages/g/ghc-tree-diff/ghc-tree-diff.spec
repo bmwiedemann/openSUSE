@@ -19,13 +19,12 @@
 %global pkg_name tree-diff
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1
+Version:        0.2
 Release:        0
 Summary:        Diffing of (expression) trees
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/6.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-aeson-devel
@@ -35,14 +34,19 @@ BuildRequires:  ghc-base-compat-devel
 BuildRequires:  ghc-bytestring-builder-devel
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-parsers-devel
 BuildRequires:  ghc-pretty-devel
+BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-scientific-devel
+BuildRequires:  ghc-semialign-devel
+BuildRequires:  ghc-strict-devel
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-these-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-uuid-types-devel
@@ -87,7 +91,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

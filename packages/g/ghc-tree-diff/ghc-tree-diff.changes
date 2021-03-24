@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 17 09:45:13 UTC 2021 - psimons@suse.com
+
+- Update tree-diff to version 0.2.
+  ## 0.2
+
+  - Change the pretty printing to use less horizontal space.
+    `Pretty` datastructure is changed.
+  - Change `Expr` to use `OMap`; pretty-printing preserves field order.
+  - Add `strict` and `these` instances
+  - Add `Eq` and `NFData (Edit a)` instances.
+  - Bump lower bounds
+
+-------------------------------------------------------------------
 Sun Feb 21 12:50:08 UTC 2021 - psimons@suse.com
 
 - Update tree-diff to version 0.1 revision 6.
