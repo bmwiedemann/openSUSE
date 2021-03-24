@@ -1,7 +1,7 @@
 #
 # spec file for package mcstrans
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           mcstrans
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        SELinux Translation Daemon
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/SELinuxProject/selinux/wiki
-Source:         https://github.com/SELinuxProject/selinux/releases/download/20200710/%{name}-%{version}.tar.gz
+Source:         https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
 Patch0:         %{name}-writepid.patch
 Patch1:         add_includes.patch
 BuildRequires:  aaa_base
