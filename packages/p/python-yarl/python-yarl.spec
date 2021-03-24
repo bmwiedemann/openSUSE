@@ -33,6 +33,7 @@ Patch0:         tests_overcome_bpo42967.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module idna >= 2.0}
+BuildRequires:  %{python_module typing_extensions >= 3.7.4 if %python-base < 3.8}
 # test requirements
 BuildRequires:  %{python_module multidict >= 4.0}
 BuildRequires:  %{python_module pytest-cov}
@@ -43,7 +44,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-idna >= 2.0
 Requires:       python-multidict >= 4.0
+%if 0%{?python_version_nodots} < 38
 Requires:       python-typing_extensions >= 3.7.4
+%endif
 %python_subpackages
 
 %description
@@ -53,7 +56,7 @@ The module provides a URL class for url parsing and changing.
 %autosetup -p1 -n yarl-%{version}
 
 %build
-export CFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -Wno-return-type"
 %python_build
 
 %install

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 20 19:40:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Unset -Werror=return-type for python39
+- Only install typing_extensions for Python < 3.8
+
+-------------------------------------------------------------------
 Tue Feb 23 17:02:42 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add tests_overcome_bpo42967.patch to over effects of bpo#42967,
