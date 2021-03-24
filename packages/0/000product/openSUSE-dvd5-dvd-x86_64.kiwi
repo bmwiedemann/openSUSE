@@ -294,7 +294,7 @@
       <repopackage name="cervisia"/>
       <repopackage name="cervisia-lang"/>
       <repopackage name="checkmedia"/>
-      <repopackage name="checkpolicy" arch="x86_64"/>
+      <repopackage name="checkpolicy"/>
       <repopackage name="cheese"/>
       <repopackage name="cheese-lang"/>
       <repopackage name="chewing-data"/>
@@ -321,6 +321,7 @@
       <repopackage name="colord-gtk-lang"/>
       <repopackage name="colord-lang"/>
       <repopackage name="command-not-found"/>
+      <repopackage name="container-selinux"/>
       <repopackage name="CoreFreq-kmp-default" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-doc"/>
@@ -2769,10 +2770,11 @@
       <repopackage name="libsecret-lang"/>
       <repopackage name="libselinux1"/>
       <repopackage name="libselinux1-32bit" arch="x86_64"/>
+      <repopackage name="libsemanage-conf"/>
       <repopackage name="libsemanage-migrate-store"/>
-      <repopackage name="libsemanage1"/>
+      <repopackage name="libsemanage2"/>
       <repopackage name="libsensors4"/>
-      <repopackage name="libsepol1"/>
+      <repopackage name="libsepol2"/>
       <repopackage name="libserd-0-0"/>
       <repopackage name="libserf-1-1"/>
       <repopackage name="libserializer"/>
@@ -3597,6 +3599,7 @@
       <repopackage name="patterns-base-documentation"/>
       <repopackage name="patterns-base-enhanced_base"/>
       <repopackage name="patterns-base-minimal_base"/>
+      <repopackage name="patterns-base-selinux"/>
       <repopackage name="patterns-base-sw_management"/>
       <repopackage name="patterns-base-transactional_base"/>
       <repopackage name="patterns-base-x11"/>
@@ -3961,7 +3964,6 @@
       <repopackage name="python-xml"/>
       <repopackage name="python2-pycairo"/>
       <repopackage name="python3-apparmor"/>
-      <repopackage name="python3-audit" arch="x86_64"/>
       <repopackage name="python3-bind"/>
       <repopackage name="python3-brlapi"/>
       <repopackage name="python3-createrepo_c"/>
@@ -3972,7 +3974,6 @@
       <repopackage name="python3-libguestfs" arch="x86_64"/>
       <repopackage name="python3-louis"/>
       <repopackage name="python3-nftables"/>
-      <repopackage name="python3-policycoreutils" arch="x86_64"/>
       <repopackage name="python3-salt"/>
       <repopackage name="python3-selinux" arch="x86_64"/>
       <repopackage name="python3-smbios"/>
@@ -4003,7 +4004,6 @@
       <repopackage name="python38-base"/>
       <repopackage name="python38-bcrypt"/>
       <repopackage name="python38-Beaker"/>
-      <repopackage name="python38-Bottleneck" arch="x86_64"/>
       <repopackage name="python38-brotlipy"/>
       <repopackage name="python38-cached-property"/>
       <repopackage name="python38-certifi"/>
@@ -4079,15 +4079,12 @@
       <repopackage name="python38-mysqlclient"/>
       <repopackage name="python38-netaddr"/>
       <repopackage name="python38-netifaces"/>
-      <repopackage name="python38-networkx" arch="x86_64"/>
       <repopackage name="python38-notify2"/>
-      <repopackage name="python38-numexpr" arch="x86_64"/>
       <repopackage name="python38-numpy"/>
       <repopackage name="python38-olefile"/>
       <repopackage name="python38-ordered-set"/>
       <repopackage name="python38-outcome"/>
       <repopackage name="python38-packaging"/>
-      <repopackage name="python38-pandas" arch="x86_64"/>
       <repopackage name="python38-parso"/>
       <repopackage name="python38-passlib"/>
       <repopackage name="python38-patiencediff"/>
@@ -4102,17 +4099,14 @@
       <repopackage name="python38-py"/>
       <repopackage name="python38-pyasn1"/>
       <repopackage name="python38-pyasn1-modules"/>
-      <repopackage name="python38-pybind11" arch="x86_64"/>
       <repopackage name="python38-pycairo"/>
       <repopackage name="python38-pycares"/>
       <repopackage name="python38-pycparser"/>
       <repopackage name="python38-pycryptodome"/>
       <repopackage name="python38-pycups"/>
       <repopackage name="python38-pycurl"/>
-      <repopackage name="python38-pydot" arch="x86_64"/>
       <repopackage name="python38-pygit2"/>
       <repopackage name="python38-Pygments"/>
-      <repopackage name="python38-pygraphviz" arch="x86_64"/>
       <repopackage name="python38-PyHamcrest"/>
       <repopackage name="python38-pylibmc"/>
       <repopackage name="python38-pymongo"/>
@@ -4139,12 +4133,9 @@
       <repopackage name="python38-requests"/>
       <repopackage name="python38-requests-toolbelt"/>
       <repopackage name="python38-rpm"/>
-      <repopackage name="python38-scipy" arch="x86_64"/>
       <repopackage name="python38-scour"/>
       <repopackage name="python38-scrypt"/>
-      <repopackage name="python38-semanage" arch="x86_64"/>
       <repopackage name="python38-service_identity"/>
-      <repopackage name="python38-setools" arch="x86_64"/>
       <repopackage name="python38-setproctitle"/>
       <repopackage name="python38-setuptools"/>
       <repopackage name="python38-simplejson"/>
@@ -4239,6 +4230,7 @@
       <repopackage name="remmina-plugin-secret"/>
       <repopackage name="remmina-plugin-vnc"/>
       <repopackage name="remmina-plugin-xdmcp"/>
+      <repopackage name="restorecond"/>
       <repopackage name="rgb"/>
       <repopackage name="ripit"/>
       <repopackage name="ristretto"/>
@@ -4739,6 +4731,8 @@
       <repopackage name="sed"/>
       <repopackage name="sed-lang"/>
       <repopackage name="selinux-autorelabel"/>
+      <repopackage name="selinux-policy"/>
+      <repopackage name="selinux-policy-targeted"/>
       <repopackage name="selinux-tools"/>
       <repopackage name="sendmail"/>
       <repopackage name="sensors"/>

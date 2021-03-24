@@ -277,6 +277,7 @@
     <package name="cervisia" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="cervisia-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="checkmedia" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="cheese" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cheese-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="chewing-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -303,6 +304,7 @@
     <package name="colord-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="colord-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="command-not-found" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="container-selinux" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="coreutils" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="coreutils-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="coreutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2607,10 +2609,11 @@
     <package name="libsecret-1-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsecret-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libselinux1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libsemanage-conf" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsemanage-migrate-store" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libsemanage1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libsemanage2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsensors4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libsepol1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libsepol2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libserd-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libserf-1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libserializer" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3244,6 +3247,7 @@
     <package name="patterns-base-documentation" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="patterns-base-enhanced_base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="patterns-base-minimal_base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="patterns-base-selinux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="patterns-base-sw_management" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="patterns-base-transactional_base" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
     <package name="patterns-base-x11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3627,7 +3631,7 @@
     <package name="python38-PyHamcrest" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-PyNaCl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-PySocks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python38-PyYAML" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="python38-PyYAML" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-Pygments" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="python38-SQLAlchemy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-Twisted" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -3850,6 +3854,7 @@
     <package name="remmina-plugin-secret" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="remmina-plugin-vnc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="remmina-plugin-xdmcp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="restorecond" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="rgb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ripit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ristretto" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -4345,6 +4350,8 @@
     <package name="sed" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="sed-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="selinux-autorelabel" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="selinux-policy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
+    <package name="selinux-policy-targeted" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="selinux-tools" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="sendmail" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
     <package name="sensors" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5087,7 +5094,6 @@
     <package name="bbswitch-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bison" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bison-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="checkpolicy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="crash-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="dhcp-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="drbd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5280,7 +5286,7 @@
     <package name="libp11-kit0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libpango-1_0-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpciaccess-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libpcre1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libpcre1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpcre2-8-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libpixman-1-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpixman-1-0-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5388,27 +5394,15 @@
     <package name="powertop" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="powertop-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="printproto-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python3-audit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-libguestfs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python3-policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-selinux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python3-virt-bootstrap" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python38-Bottleneck" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-argcomplete" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-argparse-manpage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-evtx" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-hexdump" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python38-networkx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python38-numexpr" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python38-pandas" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python38-pybind11" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python38-pydot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python38-pygraphviz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python38-scipy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python38-semanage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python38-setools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="qemu-block-rbd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ovmf-x86_64" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-uefi-aarch64" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

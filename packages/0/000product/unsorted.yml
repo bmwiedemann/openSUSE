@@ -175,7 +175,7 @@ unsorted:
   - OpenShadingLanguage-example-shaders-source 
   - OpenSubdiv-devel 
   - PackageKit-Qt-devel 
-  - PackageKit-backend-dnf 
+  - PackageKit-backend-dnf: [i586] 
   - PackageKit-branding-upstream 
   - PackageKit-devel 
   - PgTcl 
@@ -1145,7 +1145,7 @@ unsorted:
   - bbswitch 
   - bbswitch-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - bbswitch-kmp-pae: [i586] 
-  - bcache-tools: [i586] 
+  - bcache-tools 
   - bcal: [x86_64] 
   - bcc-devel 
   - bcc-docs 
@@ -1514,7 +1514,7 @@ unsorted:
   - busybox-diffutils 
   - busybox-dos2unix 
   - busybox-ed 
-  - busybox-hostname 
+  - busybox-hostname: [i586] 
   - busybox-iproute2 
   - busybox-iputils 
   - busybox-k8s-yaml: [i586] 
@@ -1831,7 +1831,6 @@ unsorted:
   - check-devel 
   - check_postgres 
   - checkbashisms 
-  - checkpolicy: [i586] 
   - checkstyle 
   - checkstyle-javadoc 
   - cheese-devel 
@@ -2161,7 +2160,6 @@ unsorted:
   - console-setup 
   - container-diff 
   - container-registry-systemd 
-  - container-selinux: [i586] 
   - container-support-utils 
   - containerd 
   - containerd-ctr 
@@ -2446,6 +2444,7 @@ unsorted:
   - crosstool-ng 
   - crow-translate 
   - crudini 
+  - crun: [x86_64] 
   - cryfs 
   - cryptctl: [x86_64] 
   - crystalhd-firmware 
@@ -2773,7 +2772,7 @@ unsorted:
   - dmz-icon-theme-cursors 
   - dnf 
   - dnf-automatic 
-  - dnf-data 
+  - dnf-data: [i586] 
   - dnf-lang 
   - dnf-plugins-core 
   - dnf-plugins-core-lang 
@@ -5501,6 +5500,7 @@ unsorted:
   - gnome-bluetooth-devel 
   - gnome-boxes 
   - gnome-boxes-lang 
+  - gnome-branding-MicroOS: [i586] 
   - gnome-calculator-devel 
   - gnome-calendar 
   - gnome-calendar-lang 
@@ -6862,6 +6862,7 @@ unsorted:
   - ipxrip 
   - irman-common 
   - irman-utils 
+  - irqstat 
   - irrlicht-data 
   - irrlicht-devel 
   - irssi-devel 
@@ -10043,9 +10044,9 @@ unsorted:
   - libdnet-devel 
   - libdnet1 
   - libdnf-devel 
-  - libdnf-plugin-txnupd 
-  - libdnf-repo-config-zypp 
-  - libdnf2 
+  - libdnf-plugin-txnupd: [i586] 
+  - libdnf-repo-config-zypp: [i586] 
+  - libdnf2: [i586] 
   - libdnnl1: [x86_64] 
   - libdns1611-32bit: [x86_64] 
   - libdns_sd 
@@ -12091,10 +12092,10 @@ unsorted:
   - libopenblas-gnu-hpc-devel 
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_13-gnu-hpc 
-  - libopenblas-pthreads_0_3_13-gnu-hpc-devel 
-  - libopenblas_0_3_13-gnu-hpc 
-  - libopenblas_0_3_13-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_14-gnu-hpc 
+  - libopenblas-pthreads_0_3_14-gnu-hpc-devel 
+  - libopenblas_0_3_14-gnu-hpc 
+  - libopenblas_0_3_14-gnu-hpc-devel 
   - libopenblas_openmp-devel 
   - libopenblas_openmp0 
   - libopenblas_pthreads-devel 
@@ -13027,7 +13028,7 @@ unsorted:
   - libreplaygain-devel 
   - libreplaygain1 
   - librepo-devel 
-  - librepo0 
+  - librepo0: [i586] 
   - librepository-javadoc 
   - librepute1 
   - libressl-devel 
@@ -13230,7 +13231,7 @@ unsorted:
   - libselinux-devel-static 
   - libsemanage-devel 
   - libsemanage-devel-static 
-  - libsemanage1-32bit: [x86_64] 
+  - libsemanage2-32bit: [x86_64] 
   - libsemigroups-devel 
   - libsemigroups1 
   - libsensors4-32bit: [x86_64] 
@@ -13238,7 +13239,7 @@ unsorted:
   - libsepol-devel 
   - libsepol-devel-static 
   - libsepol-utils 
-  - libsepol1-32bit: [x86_64] 
+  - libsepol2-32bit: [x86_64] 
   - libserd-0-0-32bit: [x86_64] 
   - libserf-devel 
   - libserialdv1 
@@ -13711,10 +13712,10 @@ unsorted:
   - libtrilinos13: [x86_64] 
   - libtrilinos13-openmpi2: [x86_64] 
   - libtrilinos_13_0_0-gnu-mpich-hpc: [x86_64] 
-  - libtrilinos_13_0_0-gnu-mvapich2-hpc: [x86_64] 
-  - libtrilinos_13_0_0-gnu-openmpi2-hpc: [x86_64] 
   - libtrilinos_13_0_0-gnu-openmpi3-hpc: [x86_64] 
   - libtrilinos_13_0_0-gnu-openmpi4-hpc: [x86_64] 
+  - libtrilinos_13_0_1-gnu-mvapich2-hpc: [x86_64] 
+  - libtrilinos_13_0_1-gnu-openmpi2-hpc: [x86_64] 
   - libtrng4-22 
   - libts0-32bit: [x86_64] 
   - libtsan0-gcc10: [x86_64] 
@@ -15558,7 +15559,7 @@ unsorted:
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
   - microcom 
-  - microdnf 
+  - microdnf: [i586] 
   - microos-tools: [i586] 
   - midori 
   - midori-devel 
@@ -16538,6 +16539,8 @@ unsorted:
   - netease-cloud-music-gtk 
   - netgen 
   - netgen-devel 
+  - netgen-examples: [x86_64] 
+  - netgen-libs: [x86_64] 
   - nethogs 
   - netlabel-tools 
   - netperfmeter 
@@ -17253,7 +17256,6 @@ unsorted:
   - octave-forge-tisean 
   - octave-forge-tsa 
   - octave-forge-vrml 
-  - octave-mathgl 
   - octave-nlopt_optimize 
   - octave-openEMS 
   - oddjob 
@@ -17402,8 +17404,8 @@ unsorted:
   - openbabel-devel 
   - openblas-devel 
   - openblas-devel-headers 
-  - openblas-pthreads_0_3_13-gnu-hpc-devel-static 
-  - openblas_0_3_13-gnu-hpc-devel-static 
+  - openblas-pthreads_0_3_14-gnu-hpc-devel-static 
+  - openblas_0_3_14-gnu-hpc-devel-static 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
@@ -17965,7 +17967,6 @@ unsorted:
   - patterns-base-bootloader: [i586] 
   - patterns-base-enhanced_base-32bit 
   - patterns-base-minimal_base-32bit 
-  - patterns-base-selinux 
   - patterns-base-sw_management-32bit 
   - patterns-base-update_test 
   - patterns-base-x11-32bit 
@@ -18020,6 +18021,7 @@ unsorted:
   - patterns-media-rest_cd_kde 
   - patterns-media-rest_cd_x11 
   - patterns-media-rest_core_dvd 
+  - patterns-microos-onlyDVD: [x86_64] 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
   - patterns-server-dhcp_dns_server-32bit 
@@ -20012,7 +20014,7 @@ unsorted:
   - poezio-doc 
   - policycoreutils-devel 
   - policycoreutils-newrole 
-  - policycoreutils-python-utils: [i586] 
+  - policycoreutils-python-utils 
   - polkit-devel 
   - polkit-doc 
   - polkit-whitelisting 
@@ -20610,7 +20612,6 @@ unsorted:
   - python-sqlalchemy-migrate-doc 
   - python-stevedore-doc 
   - python-sushy-doc 
-  - python-svm 
   - python-swiftclient-doc 
   - python-tables-doc 
   - python-tk 
@@ -20648,7 +20649,7 @@ unsorted:
   - python3-aexpect 
   - python3-ara 
   - python3-arpack-ng: [x86_64] 
-  - python3-audit: [i586] 
+  - python3-audit 
   - python3-automaton 
   - python3-avahi-gtk 
   - python3-avocado 
@@ -20836,7 +20837,7 @@ unsorted:
   - python3-lldb9: [x86_64] 
   - python3-logreduce 
   - python3-lttngust 
-  - python3-magic-wormhole 
+  - python3-magic-wormhole: [x86_64] 
   - python3-magnumclient 
   - python3-mailman-hyperkitty 
   - python3-mailman-web 
@@ -20849,12 +20850,13 @@ unsorted:
   - python3-mlt 
   - python3-monascaclient 
   - python3-morecvutils 
-  - python3-moretools 
+  - python3-moretools: [x86_64] 
   - python3-mox3 
   - python3-mraa 
   - python3-murano-pkg-check 
   - python3-napalm-exos 
   - python3-nemo 
+  - python3-netgen: [x86_64] 
   - python3-neutronclient 
   - python3-newt 
   - python3-nghttp2 
@@ -20911,7 +20913,7 @@ unsorted:
   - python3-plplot 
   - python3-pocketsphinx 
   - python3-pocketsphinx5 
-  - python3-policycoreutils: [i586] 
+  - python3-policycoreutils 
   - python3-prelude-correlator 
   - python3-presage 
   - python3-presagemate 
@@ -22492,6 +22494,7 @@ unsorted:
   - python36-m2r 
   - python36-macholib 
   - python36-magic 
+  - python36-magic-wormhole: [i586] 
   - python36-magic-wormhole-mailbox-server 
   - python36-magic-wormhole-transit-relay 
   - python36-magicalimport 
@@ -22542,6 +22545,7 @@ unsorted:
   - python36-monotonic 
   - python36-more-itertools 
   - python36-moreorless 
+  - python36-moretools: [i586] 
   - python36-moto 
   - python36-mplcursors 
   - python36-mpmath 
@@ -22629,8 +22633,6 @@ unsorted:
   - python36-ntlm-auth 
   - python36-ntplib 
   - python36-num2words 
-  - python36-numba 
-  - python36-numba-devel 
   - python36-numcodecs 
   - python36-numericalunits 
   - python36-numpydoc 
@@ -23081,7 +23083,6 @@ unsorted:
   - python36-pytest-localserver 
   - python36-pytest-metadata 
   - python36-pytest-mock 
-  - python36-pytest-mpi 
   - python36-pytest-mypy 
   - python36-pytest-openfiles 
   - python36-pytest-ordering 
@@ -23843,7 +23844,7 @@ unsorted:
   - python38-BTrees 
   - python38-BTrees-devel 
   - python38-BitVector 
-  - python38-Bottleneck: [i586] 
+  - python38-Bottleneck 
   - python38-Brotli 
   - python38-CCColUtils 
   - python38-CacheControl 
@@ -25331,6 +25332,7 @@ unsorted:
   - python38-m2r 
   - python38-macholib 
   - python38-magic 
+  - python38-magic-wormhole: [i586] 
   - python38-magic-wormhole-mailbox-server 
   - python38-magic-wormhole-transit-relay 
   - python38-magicalimport 
@@ -25390,6 +25392,7 @@ unsorted:
   - python38-monitoring-plugins-http_json 
   - python38-monotonic 
   - python38-moreorless 
+  - python38-moretools: [i586] 
   - python38-moto 
   - python38-mpi4py 
   - python38-mpi4py-devel 
@@ -25453,7 +25456,7 @@ unsorted:
   - python38-netCDF4 
   - python38-netmiko 
   - python38-netpbmfile 
-  - python38-networkx: [i586] 
+  - python38-networkx 
   - python38-nibabel 
   - python38-nilearn 
   - python38-nine 
@@ -25486,7 +25489,7 @@ unsorted:
   - python38-numba-devel 
   - python38-numcodecs 
   - python38-numericalunits 
-  - python38-numexpr: [i586] 
+  - python38-numexpr 
   - python38-numpy-devel 
   - python38-numpy-gnu-hpc 
   - python38-numpy-gnu-hpc-devel 
@@ -25553,7 +25556,7 @@ unsorted:
   - python38-pampy 
   - python38-pamqp 
   - python38-pan-python 
-  - python38-pandas: [i586] # suggested by dvd:suggested:patterns-server-directory_server 
+  - python38-pandas 
   - python38-pandas-datareader 
   - python38-pandas-ext 
   - python38-pandocfilters 
@@ -25736,7 +25739,7 @@ unsorted:
   - python38-pyannotate 
   - python38-pybars3 
   - python38-pybeam 
-  - python38-pybind11: [i586] 
+  - python38-pybind11 
   - python38-pybind11-devel 
   - python38-pyblake2 
   - python38-pybluez 
@@ -25764,7 +25767,7 @@ unsorted:
   - python38-pydle 
   - python38-pydocstyle 
   - python38-pydocumentdb 
-  - python38-pydot: [i586] 
+  - python38-pydot 
   - python38-pydot3 
   - python38-pydotplus 
   - python38-pydub 
@@ -25791,7 +25794,7 @@ unsorted:
   - python38-pygments-pytest 
   - python38-pygments-style-railscasts 
   - python38-pygn 
-  - python38-pygraphviz: [i586] 
+  - python38-pygraphviz 
   - python38-pyhcl 
   - python38-pyhibp 
   - python38-pyinotify 
@@ -26233,7 +26236,7 @@ unsorted:
   - python38-scikit-sound 
   - python38-scikit-sparse: [x86_64] 
   - python38-scikit-umfpack: [x86_64] 
-  - python38-scipy: [i586] # suggested by dvd:suggested:patterns-server-directory_server 
+  - python38-scipy 
   - python38-scipy-gnu-hpc: [x86_64] 
   - python38-scipy_1_6_0-gnu-hpc: [x86_64] 
   - python38-scp 
@@ -26246,7 +26249,7 @@ unsorted:
   - python38-selection 
   - python38-selectors2 
   - python38-selenium 
-  - python38-semanage: [i586] 
+  - python38-semanage 
   - python38-semantic_version 
   - python38-semver 
   - python38-sentry-sdk 
@@ -26254,7 +26257,7 @@ unsorted:
   - python38-serpent 
   - python38-serpy 
   - python38-serverfiles 
-  - python38-setools: [i586] 
+  - python38-setools 
   - python38-setupmeta 
   - python38-setuptools-git 
   - python38-setuptools-test 
@@ -26390,6 +26393,7 @@ unsorted:
   - python38-sure 
   - python38-svgpathtools: [x86_64] 
   - python38-svgwrite 
+  - python38-svm 
   - python38-svneverever 
   - python38-swapper 
   - python38-swifter 
@@ -27243,7 +27247,6 @@ unsorted:
   - restic 
   - restic-bash-completion 
   - restic-zsh-completion 
-  - restorecond 
   - restund 
   - retext 
   - retro-gtk 
@@ -28057,13 +28060,11 @@ unsorted:
   - sedutil: [x86_64] 
   - segment 
   - segment-javadoc 
-  - selinux-policy: [i586] 
   - selinux-policy-devel 
   - selinux-policy-doc 
   - selinux-policy-minimum 
   - selinux-policy-mls 
   - selinux-policy-sandbox 
-  - selinux-policy-targeted: [i586] 
   - selinux-targeted-setup 
   - semantik 
   - sendfax 
@@ -28623,7 +28624,7 @@ unsorted:
   - supertuxkart 
   - supertuxkart-data 
   - supervisor 
-  - supportutils: [i586] 
+  - supportutils 
   - surf 
   - surfraw 
   - surfraw-woffle 
@@ -36689,6 +36690,7 @@ unsorted:
   - texworks-plugin-python 
   - tftpboot-installation-common 
   - tftpboot-installation-openSUSE-Kubic-x86_64: [x86_64] 
+  - tftpboot-installation-openSUSE-MicroOS-x86_64: [x86_64] 
   - tftpboot-installation-openSUSE-Tumbleweed-i586: [i586] 
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64: [x86_64] 
   - the_silver_searcher 
@@ -36904,11 +36906,11 @@ unsorted:
   - trilinos-hpc-doc: [x86_64] 
   - trilinos-openmpi2-devel: [x86_64] 
   - trilinos_13_0_0-gnu-mpich-hpc-devel: [x86_64] 
-  - trilinos_13_0_0-gnu-mvapich2-hpc-devel: [x86_64] 
-  - trilinos_13_0_0-gnu-openmpi2-hpc-devel: [x86_64] 
   - trilinos_13_0_0-gnu-openmpi3-hpc-devel: [x86_64] 
   - trilinos_13_0_0-gnu-openmpi4-hpc-devel: [x86_64] 
-  - trilinos_13_0_0-hpc-doc: [x86_64] 
+  - trilinos_13_0_1-gnu-mvapich2-hpc-devel: [x86_64] 
+  - trilinos_13_0_1-gnu-openmpi2-hpc-devel: [x86_64] 
+  - trilinos_13_0_1-hpc-doc: [x86_64] 
   - trinity 
   - tripwire 
   - trivy 
@@ -37168,6 +37170,7 @@ unsorted:
   - typelib-1_0-MyPaintGegl-1_6 
   - typelib-1_0-Nautilus-3_0 
   - typelib-1_0-Nemo-3_0 
+  - typelib-1_0-Nice-0_1 
   - typelib-1_0-OSTree-1_0 
   - typelib-1_0-OsmGpsMap-1_0 
   - typelib-1_0-Playerctl-2_0 
