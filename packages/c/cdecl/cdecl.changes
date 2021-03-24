@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 22 15:25:09 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.9
+  * Added more predefined types: iconv_t, locale_t,
+    posix_spawnattr_t, posix_spawn_file_actions_t, regex_t,
+    regmatch_t, and regoff_t.
+  * A pointer to function with qualifiers is now caught for C.
+  * Nested types are now correctly caught as an error in C.
+  * A scoped name having a bit-field width is now caught as
+    an error.
+  * A declaration having a storage class and a bit-field width is
+    now correctly caught as an error.
+
+-------------------------------------------------------------------
 Sat Mar  6 17:19:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.8
