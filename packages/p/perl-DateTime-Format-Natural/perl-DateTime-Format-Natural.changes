@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 20 03:07:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.12
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.12  2021-03-19  <schubiger@cpan.org>
+   - Merged development version to stable.
+  1.11_03  2021-03-13  <schubiger@cpan.org>
+   - Refactor extracting duration.
+   - Don't try to trim the extract string twice.
+   - Amend documentation of ::Utils.
+  1.11_02  2020-10-16  <schubiger@cpan.org>
+   - Introduce utility function trim().
+  1.11_01  2020-10-03  <schubiger@cpan.org>
+   - Assert that error() returns '' on success.
+
+-------------------------------------------------------------------
 Thu Sep 24 03:07:25 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.11
