@@ -108,6 +108,7 @@ rtl8188eu:	realtek		rtl8188eu r8188eu
 rtl8821ae:	realtek
 rtl8822be:	realtek		rtl8822be r8822be
 rtw88:		realtek
+rtw89:		realtek
 rtl8192ee:	realtek
 rtl8723bs:	realtek
 rtl8xxxu:	realtek
@@ -170,7 +171,7 @@ mt7615e:	mediatek
 mt7622:		mediatek	mt7615e
 mt7663:		mediatek	mt7615e
 mt7915e:	mediatek	mt7915
-mt7921:		mediatek
+mt7921:		mediatek	mt7921e
 nfp:		nfp
 wil6210:	atheros
 venus:		media
@@ -188,3 +189,4 @@ qcom_q6v5_pas:	platform
 qcom_q6v5_mss:	platform
 prestera:	prestera
 lt9611uxc:	platform	lontium-lt9611uxc
+wfx:		platform

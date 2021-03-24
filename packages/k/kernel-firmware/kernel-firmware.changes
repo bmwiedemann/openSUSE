@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 18 14:01:03 UTC 2021 - tiwai@suse.com
+
+- Update to version 20210315 (git commit 3568f962908c):
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * rtw88: 8822c: Update normal firmware to v9.9.6
+  * iwlwifi: add new FWs from core59-66 release
+  * iwlwifi: update 9000-family firmwares
+  * iwlwifi: update 7265D firmware
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2008.2406
+  * linux-firmware: add frimware for mediatek bluetooth chip (MT7921)
+  * rtw89: 8852a: add firmware v0.9.12.2
+  * WHENCE: add missing symlink for BananaPi M3
+  * Add symlink for BananaPi M2 to brcmfmac43430-sdio config
+  * brcm: Fix Raspberry Pi 4B NVRAM file
+  * silabs: add new firmware for WF200
+  * amdgpu: add initial firmware for green sardine
+  * rtw88: RTL8822C: Update normal firmware to v9.9.5
+- Drop obsoleted patch:
+  Revert-brcm-rpi4-boardflags3-bit.patch
+- Update topics and aliases
+
+-------------------------------------------------------------------
 Tue Feb 16 16:59:47 CET 2021 - tiwai@suse.de
 
 - Correct the RPi4 brcm config to recover the WiFi breakage

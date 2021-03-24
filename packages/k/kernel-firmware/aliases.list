@@ -242,6 +242,7 @@ amdgpu: pci:v00001002d0000738Csv*sd*bc*sc*i*
 amdgpu: pci:v00001002d0000738Esv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00007390sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073A0sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d000073A1sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073A2sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073A3sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073ABsv*sd*bc*sc*i*
@@ -778,6 +779,7 @@ csiostor: pci:v00001425d00006688sv*sd*bc*sc*i*
 csiostor: pci:v00001425d00006689sv*sd*bc*sc*i*
 csiostor: pci:v00001425d0000668Asv*sd*bc*sc*i*
 csiostor: pci:v00001425d0000668Bsv*sd*bc*sc*i*
+csiostor: pci:v00001425d00006692sv*sd*bc*sc*i*
 cx18: pci:v000014F1d00005B7Asv*sd*bc*sc*i*
 cx231xx: usb:v0572p589Ed*dc*dsc*dp*ic*isc*ip*in*
 cx231xx: usb:v0572p58A0d*dc*dsc*dp*ic*isc*ip*in*
@@ -1043,6 +1045,7 @@ cxgb4: pci:v00001425d00006088sv*sd*bc*sc*i*
 cxgb4: pci:v00001425d00006089sv*sd*bc*sc*i*
 cxgb4: pci:v00001425d0000608Asv*sd*bc*sc*i*
 cxgb4: pci:v00001425d0000608Bsv*sd*bc*sc*i*
+cxgb4: pci:v00001425d00006092sv*sd*bc*sc*i*
 cxgb4: pci:v00001425d00006401sv*sd*bc*sc*i*
 cxgb4: pci:v00001425d00006402sv*sd*bc*sc*i*
 cxgb4: pci:v00001425d00006403sv*sd*bc*sc*i*
@@ -1068,6 +1071,7 @@ cxgb4: pci:v00001425d00006488sv*sd*bc*sc*i*
 cxgb4: pci:v00001425d00006489sv*sd*bc*sc*i*
 cxgb4: pci:v00001425d0000648Asv*sd*bc*sc*i*
 cxgb4: pci:v00001425d0000648Bsv*sd*bc*sc*i*
+cxgb4: pci:v00001425d00006492sv*sd*bc*sc*i*
 dvb_ttpci: pci:v00001131d00007146sv0000110Asd00000000bc*sc*i*
 dvb_ttpci: pci:v00001131d00007146sv000013C2sd00000000bc*sc*i*
 dvb_ttpci: pci:v00001131d00007146sv000013C2sd00000001bc*sc*i*
@@ -2201,6 +2205,7 @@ iwlwifi: pci:v00008086d00002723sv*sd00001654bc*sc*i*
 iwlwifi: pci:v00008086d00002723sv*sd00002080bc*sc*i*
 iwlwifi: pci:v00008086d00002723sv*sd00004080bc*sc*i*
 iwlwifi: pci:v00008086d00002723sv*sd00004088bc*sc*i*
+iwlwifi: pci:v00008086d00002725sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d00002725sv*sd00000020bc*sc*i*
 iwlwifi: pci:v00008086d00002725sv*sd00000024bc*sc*i*
 iwlwifi: pci:v00008086d00002725sv*sd00000090bc*sc*i*
@@ -2213,6 +2218,7 @@ iwlwifi: pci:v00008086d00002725sv*sd00006020bc*sc*i*
 iwlwifi: pci:v00008086d00002725sv*sd00006024bc*sc*i*
 iwlwifi: pci:v00008086d00002725sv*sd0000E020bc*sc*i*
 iwlwifi: pci:v00008086d00002725sv*sd0000E024bc*sc*i*
+iwlwifi: pci:v00008086d00002726sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d00002726sv*sd00000070bc*sc*i*
 iwlwifi: pci:v00008086d00002726sv*sd00000074bc*sc*i*
 iwlwifi: pci:v00008086d00002726sv*sd00000078bc*sc*i*
@@ -2465,18 +2471,23 @@ iwlwifi: pci:v00008086d000043F0sv*sd00004234bc*sc*i*
 iwlwifi: pci:v00008086d000043F0sv*sd00004244bc*sc*i*
 iwlwifi: pci:v00008086d000043F0sv*sd000042A4bc*sc*i*
 iwlwifi: pci:v00008086d00004DF0sv*sd*bc*sc*i*
+iwlwifi: pci:v00008086d000051F0sv*sd*bc*sc*i*
+iwlwifi: pci:v00008086d000054F0sv*sd*bc*sc*i*
+iwlwifi: pci:v00008086d00007A70sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d00007A70sv*sd00000090bc*sc*i*
 iwlwifi: pci:v00008086d00007A70sv*sd00000098bc*sc*i*
 iwlwifi: pci:v00008086d00007A70sv*sd000000B0bc*sc*i*
 iwlwifi: pci:v00008086d00007A70sv*sd00000310bc*sc*i*
 iwlwifi: pci:v00008086d00007A70sv*sd00000510bc*sc*i*
 iwlwifi: pci:v00008086d00007A70sv*sd00000A10bc*sc*i*
+iwlwifi: pci:v00008086d00007AF0sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d00007AF0sv*sd00000090bc*sc*i*
 iwlwifi: pci:v00008086d00007AF0sv*sd00000098bc*sc*i*
 iwlwifi: pci:v00008086d00007AF0sv*sd000000B0bc*sc*i*
 iwlwifi: pci:v00008086d00007AF0sv*sd00000310bc*sc*i*
 iwlwifi: pci:v00008086d00007AF0sv*sd00000510bc*sc*i*
 iwlwifi: pci:v00008086d00007AF0sv*sd00000A10bc*sc*i*
+iwlwifi: pci:v00008086d00007E40sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d00007E80sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d00009DF0sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d00009DF0sv*sd00000000bc*sc*i*
@@ -2758,6 +2769,7 @@ mt76x2u: usb:v0E8Dp7612d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v0E8Dp7632d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v2C4Ep0103d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v7392pB711d*dc*dsc*dp*ic*isc*ip*in*
+mt7921e: pci:v000014C3d00007961sv*sd*bc*sc*i*
 mtk_scp: of:N*T*Cmediatek,mt8183-scp
 mtk_scp: of:N*T*Cmediatek,mt8183-scpC*
 mtk_scp: of:N*T*Cmediatek,mt8192-scp
@@ -3199,6 +3211,7 @@ r8188eu: usb:v2001p331Bd*dc*dsc*dp*ic*isc*ip*in*
 r8188eu: usb:v2357p010Cd*dc*dsc*dp*ic*isc*ip*in*
 r8188eu: usb:v2357p0111d*dc*dsc*dp*ic*isc*ip*in*
 r8188eu: usb:v2C4Ep0102d*dc*dsc*dp*ic*isc*ip*in*
+r8188eu: usb:v7392pB811d*dc*dsc*dp*ic*isc*ip*in*
 r8192e_pci: pci:v000007AAd00000044sv*sd*bc*sc*i*
 r8192e_pci: pci:v000007AAd00000047sv*sd*bc*sc*i*
 r8192e_pci: pci:v000010ECd00008192sv*sd*bc*sc*i*
@@ -4313,6 +4326,7 @@ rt2800usb: usb:v177Fp0302d*dc*dsc*dp*ic*isc*ip*in*
 rt2800usb: usb:v177Fp0313d*dc*dsc*dp*ic*isc*ip*in*
 rt2800usb: usb:v177Fp0323d*dc*dsc*dp*ic*isc*ip*in*
 rt2800usb: usb:v177Fp0324d*dc*dsc*dp*ic*isc*ip*in*
+rt2800usb: usb:v177Fp1163d*dc*dsc*dp*ic*isc*ip*in*
 rt2800usb: usb:v18C5p0008d*dc*dsc*dp*ic*isc*ip*in*
 rt2800usb: usb:v18C5p0012d*dc*dsc*dp*ic*isc*ip*in*
 rt2800usb: usb:v18E8p6259d*dc*dsc*dp*ic*isc*ip*in*
@@ -5114,6 +5128,15 @@ usbduxsigma: usb:v13D8p0022d*dc*dsc*dp*ic*isc*ip*in*
 vt6656_stage: usb:v160Ap3184d*dc*dsc*dp*ic*isc*ip*in*
 vxge: pci:v000017D5d00005733sv*sd*bc*sc*i*
 vxge: pci:v000017D5d00005833sv*sd*bc*sc*i*
+wfx: of:N*T*Csilabs,wf200
+wfx: of:N*T*Csilabs,wf200C*
+wfx: of:N*T*Csilabs,wfx-sdio
+wfx: of:N*T*Csilabs,wfx-sdioC*
+wfx: of:N*T*Csilabs,wfx-spi
+wfx: of:N*T*Csilabs,wfx-spiC*
+wfx: sdio:c*v0000d1000*
+wfx: spi:wf200
+wfx: spi:wfx-spi
 whiteheat: usb:v0710p0001d*dc*dsc*dp*ic*isc*ip*in*
 whiteheat: usb:v0710p8001d*dc*dsc*dp*ic*isc*ip*in*
 wil6210: pci:v000017CBd00001201sv*sd*bc*sc*i*

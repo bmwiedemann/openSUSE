@@ -1416,4 +1416,12 @@ SR 184278 -- creates ucode-intel, which contains the ucode from microcode_ctl fo
   Revert-brcm-rpi4-boardflags3-bit.patch (forwarded request 872902 from tiwai)</comment>
     <requestid>872903</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>6bfc43296dd32986dd68c4de3cf11d27</srcmd5>
+    <version>20210315</version>
+    <time>1616598563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>879936</requestid>
+  </revision>
 </revisionlist>

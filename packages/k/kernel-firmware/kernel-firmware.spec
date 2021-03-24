@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20210208
+%define version_unconverted 20210315
 
 Name:           kernel-firmware
-Version:        20210208
+Version:        20210315
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -59,7 +59,6 @@ Source1011:     fwtopics.py
 Source1012:     check-topic.py
 Source1013:     update-aliases.py
 Source1014:     README.build
-Patch1:         Revert-brcm-rpi4-boardflags3-bit.patch
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): /usr/bin/mkdir /usr/bin/touch
@@ -388,6 +387,7 @@ Supplements:    modalias(pci:v00001002d0000738Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000738Esv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00007390sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073A0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073A1sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073A2sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073A3sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073ABsv*sd*bc*sc*i*)
@@ -1175,6 +1175,7 @@ Supplements:    modalias(pci:v00001425d00006088sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d00006089sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d0000608Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d0000608Bsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001425d00006092sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d00006401sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d00006402sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d00006403sv*sd*bc*sc*i*)
@@ -1200,6 +1201,7 @@ Supplements:    modalias(pci:v00001425d00006488sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d00006489sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d0000648Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d0000648Bsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001425d00006492sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d00006601sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d00006602sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d00006603sv*sd*bc*sc*i*)
@@ -1225,6 +1227,7 @@ Supplements:    modalias(pci:v00001425d00006688sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d00006689sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d0000668Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001425d0000668Bsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001425d00006692sv*sd*bc*sc*i*)
 
 %description chelsio
 This package contains compressed kernel firmware files for
@@ -2126,6 +2129,7 @@ Supplements:    modalias(pci:v00008086d00002725sv*sd00006020bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd00006024bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd0000E020bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002725sv*sd0000E024bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002725sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002726sv*sd00000070bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002726sv*sd00000074bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002726sv*sd00000078bc*sc*i*)
@@ -2136,6 +2140,7 @@ Supplements:    modalias(pci:v00008086d00002726sv*sd000000B0bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002726sv*sd00000510bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002726sv*sd00002074bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002726sv*sd00004070bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00002726sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00002729sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000030DCsv*sd00000030bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000030DCsv*sd00000034bc*sc*i*)
@@ -2386,18 +2391,23 @@ Supplements:    modalias(pci:v00008086d000043F0sv*sd00004244bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000043F0sv*sd000042A4bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000043F0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00004DF0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000051F0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000054F0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd00000090bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd00000098bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd000000B0bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd00000310bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd00000510bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007A70sv*sd00000A10bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007A70sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd00000090bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd00000098bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd000000B0bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd00000310bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd00000510bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007AF0sv*sd00000A10bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007AF0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00007E40sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007E80sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00009DF0sv*sd00000000bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00009DF0sv*sd00000010bc*sc*i*)
@@ -2783,6 +2793,7 @@ Supplements:    modalias(pci:v000014C3d00007630sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007650sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007662sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007663sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014C3d00007961sv*sd*bc*sc*i*)
 Supplements:    modalias(sdio:c*v037Ad7663*)
 Supplements:    modalias(sdio:c*v037Ad7668*)
 Supplements:    modalias(usb:v045Ep02E6d*dc*dsc*dp*ic*isc*ip*in*)
@@ -3332,6 +3343,12 @@ Supplements:    modalias(of:N*T*Cqcom,sm8250-cdsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8250-cdsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8250-slpi-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8250-slpi-pasC*)
+Supplements:    modalias(of:N*T*Csilabs,wf200)
+Supplements:    modalias(of:N*T*Csilabs,wf200C*)
+Supplements:    modalias(of:N*T*Csilabs,wfx-sdio)
+Supplements:    modalias(of:N*T*Csilabs,wfx-sdioC*)
+Supplements:    modalias(of:N*T*Csilabs,wfx-spi)
+Supplements:    modalias(of:N*T*Csilabs,wfx-spiC*)
 Supplements:    modalias(pci:v0000100Bd00000035sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001022d00001456sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001022d00001468sv*sd*bc*sc*i*)
@@ -3744,6 +3761,9 @@ Supplements:    modalias(platform:imx53-sdma)
 Supplements:    modalias(platform:imx6q-sdma)
 Supplements:    modalias(platform:imx7d-sdma)
 Supplements:    modalias(platform:imx8mq-sdma)
+Supplements:    modalias(sdio:c*v0000d1000*)
+Supplements:    modalias(spi:wf200)
+Supplements:    modalias(spi:wfx-spi)
 Supplements:    modalias(usb:v093BpA002d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v093BpA004d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0CF2p6250d*dc*dsc*dp*ic*isc*ip*in*)
@@ -4407,6 +4427,7 @@ Supplements:    modalias(pci:v00001002d0000738Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000738Esv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00007390sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073A0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073A1sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073A2sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073A3sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073ABsv*sd*bc*sc*i*)
@@ -5210,6 +5231,7 @@ Supplements:    modalias(usb:v177Fp0302d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v177Fp0313d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v177Fp0323d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v177Fp0324d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v177Fp1163d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v17EFp304Fd*dc*dsc*dp*ic02isc06ip00in*)
 Supplements:    modalias(usb:v17EFp304Fd*dc*dsc*dp*icFFisc*ip*in*)
 Supplements:    modalias(usb:v17EFp3062d*dc*dsc*dp*ic02isc06ip00in*)
@@ -5347,6 +5369,7 @@ Supplements:    modalias(usb:v7392p7811d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v7392p7822d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v7392p7822d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v7392pA611d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v7392pB811d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v8516p2070d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v8516p2770d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v8516p2870d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5771,7 +5794,6 @@ various USB WiFi / Ethernet drivers.
 
 %prep
 %setup -q
-%patch1 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
