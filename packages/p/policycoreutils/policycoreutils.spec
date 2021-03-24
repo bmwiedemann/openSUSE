@@ -1,7 +1,7 @@
 #
 # spec file for package policycoreutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,26 @@
 
 
 %define libaudit_ver     2.2
-%define libsepol_ver     3.1
-%define libsemanage_ver  3.1
-%define libselinux_ver   3.1
+%define libsepol_ver     3.2
+%define libsemanage_ver  3.2
+%define libselinux_ver   3.2
 %define setools_ver      4.1.1
-%define tstamp           20200710
 Name:           policycoreutils
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        SELinux policy core utilities
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 URL:            https://github.com/SELinuxProject/selinux
-Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{tstamp}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{tstamp}/selinux-python-%{version}.tar.gz
+Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-python-%{version}.tar.gz
 Source2:        system-config-selinux.png
 Source3:        system-config-selinux.desktop
 Source4:        system-config-selinux.pam
 Source5:        system-config-selinux.console
 Source6:        selinux-polgengui.desktop
 Source7:        selinux-polgengui.console
-Source8:        https://github.com/SELinuxProject/selinux/releases/download/%{tstamp}/semodule-utils-%{version}.tar.gz
+Source8:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/semodule-utils-%{version}.tar.gz
 Source9:        newrole.pam
 Patch0:         make_targets.patch
 Patch1:         run_init_use_pam_keyinit.patch
@@ -64,7 +63,7 @@ BuildRequires:  python3-setools >= %{setools_ver}
 BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
 Requires:       gawk
-Requires:       libsepol1 >= %{libsepol_ver}
+Requires:       libsepol2 >= %{libsepol_ver}
 Requires:       rpm
 Requires:       selinux-tools
 Requires:       util-linux
@@ -90,7 +89,7 @@ Requires:       %{name} = %{version}-%{release}
 Requires:       checkpolicy
 Requires:       python3-audit >= %{libaudit_ver}
 Requires:       python3-selinux
-Requires:       python3-semanage
+Requires:       python3-semanage >= %{libsepol_ver}
 Requires:       python3-setools >= %{setools_ver}
 Requires:       python3-setuptools
 Provides:       policycoreutils-python = %{version}-%{release}
@@ -236,6 +235,7 @@ cp -f %{SOURCE9} %{buildroot}%{_sysconfdir}/pam.d/newrole
 %{_sbindir}/setsebool
 %{_sbindir}/semodule
 %{_sbindir}/sestatus
+%{_bindir}/sestatus
 %{_sbindir}/run_init
 %{_sbindir}/open_init_pty
 %{_bindir}/secon

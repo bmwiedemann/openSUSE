@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar  9 09:18:36 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.2
+  * Tools using sepolgen, e.g. audit2allow, print extended permissions in
+    hexadecimal
+  * sepolgen sorts extended rules like normal ones
+  * `setfiles` doesn't abort on labeling errors
+- Refreshed get_os_version.patch
+
+-------------------------------------------------------------------
 Thu Sep 10 09:00:45 UTC 2020 - Johannes Segitz <jsegitz@suse.com>
 
 - Add get_os_version.patch

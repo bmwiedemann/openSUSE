@@ -1,8 +1,8 @@
-Index: policycoreutils-3.1/selinux-python-3.1/sepolicy/sepolicy/__init__.py
+Index: policycoreutils-3.2/selinux-python-3.2/sepolicy/sepolicy/__init__.py
 ===================================================================
---- policycoreutils-3.1.orig/selinux-python-3.1/sepolicy/sepolicy/__init__.py
-+++ policycoreutils-3.1/selinux-python-3.1/sepolicy/sepolicy/__init__.py
-@@ -1226,7 +1226,8 @@ def get_os_version():
+--- policycoreutils-3.2.orig/selinux-python-3.2/sepolicy/sepolicy/__init__.py
++++ policycoreutils-3.2/selinux-python-3.2/sepolicy/sepolicy/__init__.py
+@@ -1233,7 +1233,8 @@ def get_os_version():
      elif os_version[0:2] == "el":
          os_version = "RHEL" + os_version[2:]
      else:
@@ -12,11 +12,11 @@ Index: policycoreutils-3.1/selinux-python-3.1/sepolicy/sepolicy/__init__.py
  
      return os_version
  
-Index: policycoreutils-3.1/selinux-python-3.1/sepolicy/sepolicy/manpage.py
+Index: policycoreutils-3.2/selinux-python-3.2/sepolicy/sepolicy/manpage.py
 ===================================================================
---- policycoreutils-3.1.orig/selinux-python-3.1/sepolicy/sepolicy/manpage.py
-+++ policycoreutils-3.1/selinux-python-3.1/sepolicy/sepolicy/manpage.py
-@@ -192,11 +192,7 @@ class HTMLManPages:
+--- policycoreutils-3.2.orig/selinux-python-3.2/sepolicy/sepolicy/manpage.py
++++ policycoreutils-3.2/selinux-python-3.2/sepolicy/sepolicy/manpage.py
+@@ -194,11 +194,7 @@ class HTMLManPages:
          self.old_path = path + "/"
          self.new_path = self.old_path + self.os_version + "/"
  
