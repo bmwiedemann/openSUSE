@@ -1,6 +1,8 @@
---- fedora-policy/policy/modules/system/init.if	2021-02-23 14:51:08.683163653 +0100
-+++ fedora-policy/policy/modules/system/init.if	2021-02-23 15:04:46.397087937 +0100
-@@ -3242,6 +3242,7 @@
+Index: fedora-policy-20210309/policy/modules/system/init.if
+===================================================================
+--- fedora-policy-20210309.orig/policy/modules/system/init.if
++++ fedora-policy-20210309/policy/modules/system/init.if
+@@ -3242,6 +3242,7 @@ interface(`init_filetrans_named_content'
  	files_etc_filetrans($1, machineid_t, file, "machine-id" )
  	files_pid_filetrans($1, initctl_t, fifo_file, "fifo" )
  	init_pid_filetrans($1, systemd_unit_file_t, dir, "generator")
@@ -8,17 +10,20 @@
  	init_pid_filetrans($1, systemd_unit_file_t, dir, "system")
  ')
  
---- fedora-policy/policy/modules/system/init.te	2021-02-23 14:51:08.683163653 +0100
-+++ fedora-policy/policy/modules/system/init.te	2021-02-23 15:06:10.293290652 +0100
-@@ -262,6 +262,7 @@
+Index: fedora-policy-20210309/policy/modules/system/init.te
+===================================================================
+--- fedora-policy-20210309.orig/policy/modules/system/init.te
++++ fedora-policy-20210309/policy/modules/system/init.te
+@@ -262,6 +262,8 @@ corecmd_exec_bin(init_t)
  corenet_all_recvfrom_netlabel(init_t)
  corenet_tcp_bind_all_ports(init_t)
  corenet_udp_bind_all_ports(init_t)
 +corenet_udp_bind_generic_node(init_t)
++corenet_tcp_bind_generic_node(init_t)
  
  dev_create_all_files(init_t)
  dev_create_all_chr_files(init_t)
-@@ -388,6 +389,7 @@
+@@ -390,6 +391,7 @@ logging_manage_audit_config(init_t)
  logging_create_syslog_netlink_audit_socket(init_t)
  logging_write_var_log_dirs(init_t)
  logging_manage_var_log_symlinks(init_t)
@@ -26,7 +31,7 @@
  
  seutil_read_config(init_t)
  seutil_read_login_config(init_t)
-@@ -437,11 +439,16 @@
+@@ -439,11 +441,16 @@ ifdef(`distro_redhat',`
  corecmd_shell_domtrans(init_t, initrc_t)
  
  storage_raw_rw_fixed_disk(init_t)
@@ -43,7 +48,7 @@
      bootloader_domtrans(init_t)
  ')
  
-@@ -555,10 +562,10 @@
+@@ -557,10 +564,10 @@ tunable_policy(`init_create_dirs',`
  allow init_t self:system all_system_perms;
  allow init_t self:system module_load;
  allow init_t self:unix_dgram_socket { create_socket_perms sendto };
@@ -56,7 +61,7 @@
  allow init_t self:netlink_selinux_socket create_socket_perms;
  allow init_t self:unix_dgram_socket lock;
  # Until systemd is fixed
-@@ -616,6 +623,7 @@
+@@ -618,6 +625,7 @@ files_delete_all_spool_sockets(init_t)
  files_create_var_lib_dirs(init_t)
  files_create_var_lib_symlinks(init_t)
  files_read_var_lib_symlinks(init_t)
@@ -64,7 +69,7 @@
  files_manage_urandom_seed(init_t)
  files_list_locks(init_t)
  files_list_spool(init_t)
-@@ -652,7 +660,7 @@
+@@ -654,7 +662,7 @@ fs_list_all(init_t)
  fs_list_auto_mountpoints(init_t)
  fs_register_binary_executable_type(init_t)
  fs_relabel_tmpfs_sock_file(init_t)
@@ -73,7 +78,7 @@
  fs_relabel_cgroup_dirs(init_t)
  fs_search_cgroup_dirs(init_t)
  # for network namespaces
-@@ -708,6 +716,7 @@
+@@ -710,6 +718,7 @@ systemd_write_inherited_logind_sessions_
  create_sock_files_pattern(init_t, init_sock_file_type, init_sock_file_type)
  
  create_dirs_pattern(init_t, var_log_t, var_log_t)
@@ -81,7 +86,7 @@
  
  auth_use_nsswitch(init_t)
  auth_rw_login_records(init_t)
-@@ -1561,6 +1570,8 @@
+@@ -1563,6 +1572,8 @@ optional_policy(`
  
  optional_policy(`
  	postfix_list_spool(initrc_t)

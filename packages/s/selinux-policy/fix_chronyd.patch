@@ -1,8 +1,8 @@
-Index: fedora-policy/policy/modules/contrib/chronyd.te
+Index: fedora-policy-20210309/policy/modules/contrib/chronyd.te
 ===================================================================
---- fedora-policy.orig/policy/modules/contrib/chronyd.te
-+++ fedora-policy/policy/modules/contrib/chronyd.te
-@@ -136,6 +136,14 @@ systemd_exec_systemctl(chronyd_t)
+--- fedora-policy-20210309.orig/policy/modules/contrib/chronyd.te
++++ fedora-policy-20210309/policy/modules/contrib/chronyd.te
+@@ -140,6 +140,14 @@ systemd_exec_systemctl(chronyd_t)
  userdom_dgram_send(chronyd_t)
  
  optional_policy(`
@@ -17,10 +17,10 @@ Index: fedora-policy/policy/modules/contrib/chronyd.te
      cron_dgram_send(chronyd_t)
  ')
  
-Index: fedora-policy/policy/modules/contrib/chronyd.fc
+Index: fedora-policy-20210309/policy/modules/contrib/chronyd.fc
 ===================================================================
---- fedora-policy.orig/policy/modules/contrib/chronyd.fc
-+++ fedora-policy/policy/modules/contrib/chronyd.fc
+--- fedora-policy-20210309.orig/policy/modules/contrib/chronyd.fc
++++ fedora-policy-20210309/policy/modules/contrib/chronyd.fc
 @@ -6,6 +6,7 @@
  
  /usr/sbin/chronyd	--	gen_context(system_u:object_r:chronyd_exec_t,s0)

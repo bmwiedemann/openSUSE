@@ -1,8 +1,8 @@
-Index: fedora-policy/policy/modules/contrib/networkmanager.te
+Index: fedora-policy-20210309/policy/modules/contrib/networkmanager.te
 ===================================================================
---- fedora-policy.orig/policy/modules/contrib/networkmanager.te
-+++ fedora-policy/policy/modules/contrib/networkmanager.te
-@@ -236,6 +236,9 @@ userdom_read_home_certs(NetworkManager_t
+--- fedora-policy-20210309.orig/policy/modules/contrib/networkmanager.te
++++ fedora-policy-20210309/policy/modules/contrib/networkmanager.te
+@@ -241,6 +241,9 @@ userdom_read_home_certs(NetworkManager_t
  userdom_read_user_home_content_files(NetworkManager_t)
  userdom_dgram_send(NetworkManager_t)
  
@@ -12,7 +12,7 @@ Index: fedora-policy/policy/modules/contrib/networkmanager.te
  tunable_policy(`use_nfs_home_dirs',`
      fs_read_nfs_files(NetworkManager_t)
  ')
-@@ -253,6 +256,14 @@ optional_policy(`
+@@ -258,6 +261,14 @@ optional_policy(`
  ')
  
  optional_policy(`
@@ -27,10 +27,10 @@ Index: fedora-policy/policy/modules/contrib/networkmanager.te
  	bind_domtrans(NetworkManager_t)
  	bind_manage_cache(NetworkManager_t)
  	bind_kill(NetworkManager_t)
-Index: fedora-policy/policy/modules/contrib/networkmanager.if
+Index: fedora-policy-20210309/policy/modules/contrib/networkmanager.if
 ===================================================================
---- fedora-policy.orig/policy/modules/contrib/networkmanager.if
-+++ fedora-policy/policy/modules/contrib/networkmanager.if
+--- fedora-policy-20210309.orig/policy/modules/contrib/networkmanager.if
++++ fedora-policy-20210309/policy/modules/contrib/networkmanager.if
 @@ -114,6 +114,24 @@ interface(`networkmanager_initrc_domtran
          init_labeled_script_domtrans($1, NetworkManager_initrc_exec_t)
  ')

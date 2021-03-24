@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>874853</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>51651f0ab95bab443e41ec865ee1a5f8</srcmd5>
+    <version>20210309</version>
+    <time>1616598531</time>
+    <user>dimstar_suse</user>
+    <comment>big toolchain update, please stage together. so versions change, so this has high potential to break stuff. Probably best to stage it isolated</comment>
+    <requestid>878582</requestid>
+  </revision>
 </revisionlist>

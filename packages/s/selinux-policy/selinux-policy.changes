@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Mar 12 10:36:06 UTC 2021 - Ales Kedroutek <ales.kedroutek@suse.com>
+
+- Adjust fix_init.patch to allow systemd to do sd-listen on 
+  tcp socket [bsc#1183177]
+
+-------------------------------------------------------------------
+Tue Mar  9 13:39:11 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20210309
+- Refreshed
+  * fix_systemd.patch
+  * fix_selinuxutil.patch
+  * fix_iptables.patch
+  * fix_init.patch
+  * fix_logging.patch
+  * fix_nscd.patch
+  * fix_hadoop.patch
+  * fix_unconfineduser.patch
+  * fix_chronyd.patch
+  * fix_networkmanager.patch
+  * fix_cron.patch
+  * fix_usermanage.patch
+  * fix_unprivuser.patch
+  * fix_rpm.patch
+- Ensure that /usr/etc is labeled according to /etc rules
+
+-------------------------------------------------------------------
 Tue Feb 23 13:53:40 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 20210223
