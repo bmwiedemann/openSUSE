@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Mon Mar 22 16:42:00 UTC 2021 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-6.4.
+- Fixed an integer overflow in the B formula.
+- Reduced memory usage of SegmentedPiTable by 1.5x.
+
+-------------------------------------------------------------------
+Fri Jan  8 15:14:06 UTC 2021 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-6.2
+
+-------------------------------------------------------------------
+Wed Sep 16 12:18:26 UTC 2020 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-6.1
+
+-------------------------------------------------------------------
+Fri Aug 21 14:49:36 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- address review feedback
+
+-------------------------------------------------------------------
+Wed Aug 19 11:04:00 UTC 2020 - Kim Walisch <kim.walisch@gmail.com>
+
+- Add libprimecount documentation
+
+-------------------------------------------------------------------
+Fri Aug  7 10:44:04 UTC 2020 - Kim Walisch <kim.walisch@gmail.com>
+
+- Initial package version
