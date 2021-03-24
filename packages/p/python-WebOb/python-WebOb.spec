@@ -60,6 +60,8 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n WebOb-%{version}
+# gh#Pylons/webob#390 -- Thread.is_alive is present since Python 2.6, Thread.isAlive was removed in 3.9.
+sed -i 's/worker.isAlive/worker.is_alive/' tests/conftest.py
 
 %build
 %python_build
@@ -70,12 +72,13 @@ PYTHONPATH=./src python3 setup.py build_sphinx && rm build/sphinx/html/.buildinf
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_version}
+%pytest
 
 %files %{python_files}
 %license docs/license.txt
 %doc CHANGES.txt README.rst
-%{python_sitelib}/*
+%{python_sitelib}/webob
+%{python_sitelib}/WebOb-%{version}*-info
 
 %files -n python-WebOb-doc
 %doc build/sphinx/html
