@@ -17,10 +17,11 @@
 
 
 %define modname pytest_mpi
-# Module supports only python3
 %define skip_python2 1
+# mpi4py depends on numpy, which is not available for python36
+%define skip_python36 1
 Name:           python-pytest-mpi
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        MPI plugin for pytest
 License:        BSD-3-Clause
@@ -30,7 +31,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest
-Requires:       python-sybil
+Recommends:     python-mpi4py
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mpi4py}
@@ -56,10 +57,7 @@ mpi plugin for pytest to collect information from openmpi-based tests.
 %check
 export PATH=${PATH}:%{_libdir}/mpi/gcc/openmpi2/bin
 source %{_libdir}/mpi/gcc/openmpi2/bin/mpivars.sh
-# include `-p pytester` as pytester needs to be manually activated (see https://pytest-mpi.readthedocs.io/en/latest/contributing.html)
-# our pytest version does not like the subclassing of _pytest.Testdir. This disables almost the entire test suite
-# gh#aragilar/pytest-mpi#17
-%pytest -v -p pytester -k "not (test_fixtures or (test_markers and (with_mpi or only_mpi or under_mpi)))"
+%pytest -v -p pytester
 
 %files %{python_files}
 %doc README.md

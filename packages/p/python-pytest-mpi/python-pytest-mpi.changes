@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 15 10:19:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.5
+  * fixes the test suite for pytest 6.2
+- Skip python36 build: With NumPy 1.20, python36-numpy is no
+  longer available in Tumbleweed (NEP 29). Mpi4py depends on NumPy,
+  pytest-mpi us almost useless (and not testable) without mpi4py.
+
+-------------------------------------------------------------------
 Tue Feb 23 22:07:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Disable most of the test suite. The offending code not working
