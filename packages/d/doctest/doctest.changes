@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 22 15:28:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.6
+  Fixed bugs:
+  * REQUIRE does not compile when operator== in different
+    namespace #443
+  * Using templated operator== inside TEST_CASE changes deduced
+    types of forwarding references #399
+  Closed issues:
+  * CMake doesn't link package #483
+  * Get list of registered test-case names #479
+  * Can't compile with glibc master (future 2.34): SIGSTKSZ is
+    no longer a constant #473
+  * INFO does not compile when used like a function call #469
+
+-------------------------------------------------------------------
 Sun Feb 28 18:42:28 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.5

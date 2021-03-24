@@ -17,7 +17,7 @@
 
 
 Name:           doctest
-Version:        2.4.5
+Version:        2.4.6
 Release:        0
 Summary:        Single-header testing framework
 License:        MIT
@@ -56,9 +56,9 @@ exec_prefix=${prefix}
 libdir=${exec_prefix}/%{_lib}
 includedir=${prefix}/include
 
-Name: doctest
+Name:           doctest
 Description: Single-header testing framework
-Version: %{version}
+Version:        %{version}
 Libs:
 Cflags: -I${includedir}/doctest
 EOF
