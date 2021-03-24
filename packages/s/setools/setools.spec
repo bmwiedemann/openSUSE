@@ -1,7 +1,7 @@
 #
 # spec file for package setools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # As soon as python38 is introduced as flavor, we need this:
 %{?!python3_primary_provider:%define python3_primary_provider %{lua: \
 l,c = posix.readlink("/usr/bin/python3") \
 flavor = l:gsub("%.", ""):sub(0,-1) \
 print(rpm.expand("%{?" .. flavor .. "_prefix}%{!?" .. flavor .. "_prefix:python3}")) \
 }}
-
-# doesn't work for python 2
-%define skip_python2 1
+# Skip every flavor except for the primary_provider
+%define pythons %python3_primary_provider
 
 Name:           setools
-Version:        4.3.0
+Version:        4.4.0
 Release:        0
 URL:            https://github.com/SELinuxProject/setools
 Summary:        Policy analysis tools for SELinux
 License:        GPL-2.0-only
 Group:          System/Management
-Source:         https://github.com/SELinuxProject/setools/releases/download/%{version}/setools-%{version}.tar.bz2
+Source:         https://github.com/SELinuxProject/setools/releases/download/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
@@ -107,16 +105,16 @@ This package includes the following graphical tools:
 %setup -q -n %{name}
 
 %build
-%{expand:%%%{python3_primary_provider}_build}
+%python_build
 
 %install
-%{expand:%%%{python3_primary_provider}_install}
-%fdupes -s %{buildroot}%{expand:%%%{python3_primary_provider}_sitearch}
+%python_install
+%fdupes -s %{buildroot}%{python3_sitearch}
 
 %files -n %{python3_primary_provider}-setools
 %defattr(-,root,root,-)
-%{expand:%%%{python3_primary_provider}_sitearch}/setools
-%{expand:%%%{python3_primary_provider}_sitearch}/setools-%{version}*-info
+%{python3_sitearch}/setools
+%{python3_sitearch}/setools-%{version}*-info
 
 %files console
 %defattr(-,root,root,-)
@@ -125,6 +123,8 @@ This package includes the following graphical tools:
 %{_bindir}/sedta
 %{_bindir}/seinfoflow
 %{_bindir}/sediff
+%{_bindir}/sechecker
+%{_mandir}/man1/sechecker.1.gz
 %{_mandir}/man1/sedta.1.gz
 %{_mandir}/man1/seinfoflow.1.gz
 %{_mandir}/man1/sediff.1.gz
@@ -139,7 +139,7 @@ This package includes the following graphical tools:
 
 %files gui
 %defattr(-,root,root,-)
-%{expand:%%%{python3_primary_provider}_sitearch}/setoolsgui
+%{python3_sitearch}/setoolsgui
 %{_bindir}/apol
 %{_mandir}/man1/apol.1.gz
 

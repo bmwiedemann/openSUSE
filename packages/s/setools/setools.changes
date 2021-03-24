@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  9 09:24:10 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to the version 4.4.0:
+  * Added support for old Boolean name substitution in seinfo and sesearch.
+  * Added sechecker tool which is a configuration file driven analysis tool.
+
+-------------------------------------------------------------------
 Tue Nov  3 17:56:44 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Stay on a single python3 flavor even if there are more than one
