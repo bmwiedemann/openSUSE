@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 11 13:49:05 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.1+git20210311.15cb3ad:
+  * Don't check for subuid if root calls toolbox [bsc#1183375]
+
+-------------------------------------------------------------------
 Fri Mar 05 16:52:01 UTC 2021 - kukuk@suse.com
 
 - Update to version 2.1+git20210305.ca2bc53:
