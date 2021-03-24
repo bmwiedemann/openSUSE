@@ -1,5 +1,5 @@
 #
-# spec file for package python-isort
+# spec file for package python-isort-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-isort%{psuffix}
-Version:        5.7.0
+Version:        5.8.0
 Release:        0
 Summary:        A Python utility / library to sort Python imports
 License:        MIT
@@ -40,7 +40,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210127.3a18043
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-colorama >= 0.4.3
 Recommends:     python-pip-api
 Recommends:     python-pipreqs
@@ -49,17 +49,18 @@ Suggests:       git
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module black}
+BuildRequires:  %{python_module colorama >= 0.4.3}
 BuildRequires:  %{python_module hypothesis-auto}
 BuildRequires:  %{python_module hypothesmith}
 BuildRequires:  %{python_module libcst}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pip-api}
 BuildRequires:  %{python_module pipreqs}
 BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pylama}
+BuildRequires:  %{python_module pytest > 6.0}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requirementslib >= 1.5}
+# requirementslib not ready for python 3.9 yet -- gh#sarugaku/requirementslib#288
+BuildRequires:  %{python_module requirementslib >= 1.5 if %python-base < 3.9}
 BuildRequires:  git
 %endif
 %python_subpackages
@@ -90,6 +91,15 @@ chmod -x LICENSE
 
 %if %{with test}
 %check
+# test_projects_using_isort.py: these tests try to clone from online git repositories.
+ignoretests="--ignore tests/integration/test_projects_using_isort.py"
+# test_setting_combinations.py::test_isort_is_idempotent
+# is flaky https://github.com/PyCQA/isort/issues/1466
+donttest="(test_setting_combinations and test_isort_is_idempotent)"
+# requirementslib is not available yet for python39
+# https://github.com/sarugaku/requirementslib/issues/288
+python39_donttest=" or (test_deprecated_finders and test_pipfile_finder)"
+
 ORIGPATH=$PATH
 %{python_expand # install isort and required example projects into custom root
 mkdir isort-test-%{$python_bin_suffix}
@@ -110,15 +120,11 @@ for proj in build/isort-%{version}-py3-none-any.whl ./example_shared_isort_profi
                          ${proj}
 done
 
-# test_projects_using_isort.py: these tests try to clone from
-# online git repositories.
-# test_setting_combinations.py::test_isort_is_idempotent
-# is flaky https://github.com/PyCQA/isort/issues/1466
 pytest-%{$python_bin_suffix} -v \
          -W "ignore::UserWarning" \
          -W "ignore::DeprecationWarning" \
-         --ignore tests/integration/test_projects_using_isort.py \
-         -k "not (test_setting_combinations and test_isort_is_idempotent)"
+         ${ignoretests} \
+         -k "not (${donttest} ${$python_donttest})"
 }
 
 %endif
