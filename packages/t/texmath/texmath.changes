@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Mar 16 09:55:34 UTC 2021 - psimons@suse.com
+
+- Update texmath to version 0.12.2.
+  texmath (0.12.2)
+
+    * MathML input: support mmultiscripts element (#158, #100).
+
+    * Make MathML tag/attr recognition case-insensitive (#158).
+
+    * Pandoc writer: better handling of styling such as `\mathrm` (#145).
+      Previously identifiers were always italic, no matter what
+      styling was applied.
+
+    * Ignore `\tag` in TeX input (#162).
+
+    * TeX writer: avoid unneeded `\left` and `\right` for delimited.
+      We don't need `\left` and `\right` when the contents are
+      "standard height."
+
+    * TeX reader: parse implicit EDelimited sections (#172).
+      We now parse `(x)` as EDelimited, even though `\right` and `\left`
+      are not used.
+
+-------------------------------------------------------------------
 Mon Feb  8 05:04:15 UTC 2021 - psimons@suse.com
 
 - Update texmath to version 0.12.1.1.
