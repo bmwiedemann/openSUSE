@@ -17,4 +17,12 @@ This package contains the user-space tools for zonefs.</comment>
     <comment></comment>
     <requestid>868003</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>06a6210a7b316d368f9b0600649c289d</srcmd5>
+    <version>1.5.0</version>
+    <time>1616598969</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880870</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 
 Name:           zonefs-tools
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Utilities for the Zonefs filesystem
 License:        GPL-2.0-or-later
