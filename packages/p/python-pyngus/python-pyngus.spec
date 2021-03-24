@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyngus
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
+%bcond_with test
 Name:           python-pyngus
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Callback API implemented over Proton
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/kgiusti/pyngus
-Source:         https://github.com/kgiusti/pyngus/archive/v%{version}.tar.gz#/pyngus-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pyngus/pyngus-%{version}.tar.gz
+BuildRequires:  %{python_module python-qpid-proton}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 Requires:       python-python-qpid-proton >= 0.9
@@ -37,7 +38,7 @@ BuildRequires:  %{python_module python-qpid-proton >= 0.9}
 %python_subpackages
 
 %description
-A messaging framework built on the QPID Proton engine. It 
+A messaging framework built on the QPID Proton engine. It
 provides a callback-based API for message passing
 
 %prep
@@ -54,6 +55,8 @@ provides a callback-based API for message passing
 %if %{with test}
 # SSL Failure: error:1417C086:SSL routines:tls_process_client_certificate:certificate verify failed
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python tests/test-runner -i '*test_ssl_minimal'
+%else
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -c "import pyngus"
 %endif
 
 %files %{python_files}
