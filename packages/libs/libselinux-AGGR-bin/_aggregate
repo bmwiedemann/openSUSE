@@ -1,8 +1,0 @@
-<aggregatelist>
-  <aggregate project="openSUSE:Factory">
-    <package>libselinux-AGGR</package>
-    <binary>libsepol1</binary>
-    <binary>libsemanage1</binary>
-    <nosources />
-  </aggregate>
-</aggregatelist>
