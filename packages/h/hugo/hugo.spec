@@ -53,8 +53,7 @@ BuildArch:      noarch
 The official bash completion script for %{name}, generated during the build.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -a 1
 
 %build
 
@@ -81,13 +80,8 @@ install -D -m 0644 man/%{name}*.1 "%{buildroot}/%{_mandir}/man1"
 install -Dm 644 %{name}-autocomplete.sh %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 
 %files
-%defattr(-,root,root)
 %doc README.md
-%if 0%{?suse_version} < 1500
-%doc LICENSE
-%else
 %license LICENSE
-%endif
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}*.1.gz
 

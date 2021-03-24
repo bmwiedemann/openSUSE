@@ -64,4 +64,17 @@
   * Fix syntax error extraneous trailing % on %endif (forwarded request 880407 from jfkw)</comment>
     <requestid>880408</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2a991c994fb463af95f948eb9904257c</srcmd5>
+    <version>0.82.0</version>
+    <time>1616598958</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve packaging using macros available in rpm-4.11+, SLE-12:SP3+:
+  * Replace two %setup calls with %autosetup -a 1 (rpm-4.11+, SLE-12:SP3+)
+  * Remove %defattr(-,root,root) not needed
+  * Remove %if before %license macro (rpm-4.11+, SLE-12:SP3+)
+
+- Improve packaging: (forwarded request 880832 from jfkw)</comment>
+    <requestid>880834</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 24 00:01:02 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Improve packaging using macros available in rpm-4.11+, SLE-12:SP3+:
+  * Replace two %setup calls with %autosetup -a 1 (rpm-4.11+, SLE-12:SP3+)
+  * Remove %defattr(-,root,root) not needed
+  * Remove %if before %license macro (rpm-4.11+, SLE-12:SP3+)
+
+-------------------------------------------------------------------
 Sun Mar 21 19:00:30 UTC 2021 - jkowalczyk@suse.com
 
 - Update to version 0.82.0:
@@ -36,7 +44,7 @@ Sun Mar 21 19:00:30 UTC 2021 - jkowalczyk@suse.com
 -------------------------------------------------------------------
 Fri Mar 12 16:57:03 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
-- Simplify packaging
+- Improve packaging:
   * BuildRequires: golang(API) >= 1.16 as recommended expression
   * Drop BuildRequires: fdupes no longer needed to check %goprep source moves
   * Remove unused %define project github.com/gohugoio/hugo
