@@ -15,13 +15,13 @@ chmod u=rw,g=r,o= /etc/redis/instancename.conf
 2. change at least pidfile, logfile and dir setting
 # the pid file *has* to match your config filename without the ".conf"
 
-pidfile /var/run/redis/instancename.pid
+pidfile /run/redis/instancename.pid
 logfile /var/log/redis/instancename.log
 dir /var/lib/redis/instancename/
 
 If you want to run more than one instance you also have to change the
 socket path and/or the ip:port combination.
- e.g. /var/run/redis/instancename.sock
+ e.g. /run/redis/instancename.sock
 
 Also make sure if you copy configurations from somewhere, that "daemonize"
 should be set to "no".
@@ -54,12 +54,12 @@ The chmod line differs from the line for the normal redis server.
 2. change at least pidfile, logfile setting
 # the pid file *has* to match your config filename without the ".conf"
 
-pidfile /var/run/redis/instancename.pid
+pidfile /run/redis/instancename.pid
 logfile /var/log/redis/instancename.log
 
 If you want to run more than one instance you also have to change the
 socket path and/or the ip:port combination.
- e.g. /var/run/redis/instancename.sock
+ e.g. /run/redis/instancename.sock
 
 Also make sure if you copy configurations from somewhere, that "daemonize"
 should be set to "no".

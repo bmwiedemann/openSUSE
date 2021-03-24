@@ -25,7 +25,7 @@ Index: redis.conf
  # Note that on modern Linux systems "/run/redis.pid" is more conforming
  # and should be used instead.
 -pidfile /var/run/redis_6379.pid
-+pidfile /var/run/redis/default.pid
++pidfile /run/redis/default.pid
  
  # Specify the server verbosity level.
  # This can be one of:
@@ -62,7 +62,7 @@ Index: sentinel.conf
  # /var/run/redis-sentinel.pid by default. You can specify a custom pid file
  # location here.
 -pidfile /var/run/redis-sentinel.pid
-+pidfile /var/run/redis/sentinel-default.pid
++pidfile /run/redis/sentinel-default.pid
  
  # Specify the log file name. Also the empty string can be used to force
  # Sentinel to log on the standard output. Note that if you use standard

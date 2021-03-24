@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 13 14:28:47 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- replaced /var/run with /run for all PID file paths
+
+-------------------------------------------------------------------
 Thu Mar  4 13:21:32 UTC 2021 - Gareth McCarter <garethmccarter@gmail.com>
 
 - redis 6.2.1
