@@ -1,7 +1,7 @@
 #
 # spec file for package mathgl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_with zypper_posttrans
 %define octave_args --no-window-system --norc
 %define libname libmgl
 %if 0%{?suse_version} >= 1550
@@ -34,12 +35,8 @@
 %define somajor 7.5.0
 %define libversion 7_5_0
 
-# NOT COMPATIBLE WITH OCTAVE IN LEAP 15.1, 15.2
-%if 0%{?suse_version} <= 1500
+# NOT COMPATIBLE WITH OCTAVE >= 6
 %bcond_with octave
-%else
-%bcond_without octave
-%endif
 
 %if 0%{?fedora_version}
 %define _defaultdocdir %{_docdir}
@@ -297,9 +294,9 @@ This package provides the python bindings for MathGL.
 Summary:        MathGL scripts for LaTeX documents
 Requires:       mathgl-tools >= %{version}
 Requires(post): coreutils
-Requires(posttrans): texlive
-Requires(postun): coreutils
-Requires(postun): texlive
+Requires(posttrans):texlive
+Requires(postun):coreutils
+Requires(postun):texlive
 Requires(pre):  texlive
 Recommends:     mathgl-tex-doc = %{version}
 Provides:       tex(mgltex.sty)
@@ -426,9 +423,11 @@ install -d %{buildroot}/srv/www/cgi-bin/
 mv %{buildroot}%{_prefix}/lib/cgi-bin/mgl.cgi %{buildroot}/srv/www/cgi-bin/mgl.cgi
 
 # LaTeX package (based on TeXLive spec files)
+%if %{with zypper_posttrans}
 mkdir -p %{buildroot}%{_localstatedir}/adm/update-scripts
 ln -sf %{_datadir}/texmf/texconfig/zypper.py \
     %{buildroot}%{_localstatedir}/adm/update-scripts/texlive-mgltex-%{version}-%{release}-zypper
+%endif
 
 %find_lang %{name}
 
@@ -566,7 +565,9 @@ rm -f %{_localstatedir}/run/texlive/run-update
 
 %files tex
 %{_datadir}/texmf/tex/latex/mgltex/
+%if %{with zypper_posttrans}
 %{_localstatedir}/adm/update-scripts/texlive-mgltex-%{version}-%{release}-zypper
+%endif
 
 %files tex-doc
 %{_datadir}/texmf/doc/latex/mgltex/
