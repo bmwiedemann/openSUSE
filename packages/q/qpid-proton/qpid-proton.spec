@@ -1,7 +1,7 @@
 #
 # spec file for package qpid-proton
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,13 @@
 %define _unpackaged_files_terminate_build 0
 %endif
 Name:           qpid-proton
-Version:        0.31.0
+Version:        0.33.0
 Release:        0
 Summary:        A messaging library
 License:        Apache-2.0
 Group:          Productivity/Networking/Other
 URL:            https://qpid.apache.org/proton/
-Source0:        http://www.apache.org/dist/qpid/proton/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://www.apache.org/dist/qpid/proton/%{version}/%{name}-%{version}.tar.gz
 # devel files in test package
 Source99:       qpid-proton-rpmlintrc
 Patch0:         qpid-proton-openssl-3.0.0.patch

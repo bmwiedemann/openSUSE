@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Mar 16 11:18:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.33:
+  * improved timers implementation with single timerfd kernel resource
+  * Option to skip building examples
+  * Tidy up and finalise the SASL plugin API
+  * [c] Epoll proactor debug assistance
+  * [c] Proactor: psocket has an unnecessary back pointer to the proactor
+  * cmake -DBUILD_TESTING=OFF does not disable building all tests
+  * pn_data_t initialization lead to low performance
+  * Problem building c examples with qpid-proton 0.31.0
+  * [c] Need ability to add an authorization id in the SASL exchange
+  * Threadercizer causes warnings on BSD based platforms
+  * Threaderciser test does not honor ctest '--timeout' switch
+  * [c] Threadercizer build causes warnings and hence build failures on 32 bit builds
+  * [c] Raw connection API trying to give back buffers after emitting the PN_RAW_CONNECTION_DISCONNECTED event
+  * [cpp][tests] cpp_connect_config_test fails on Fedora 32 with 'tls_post_process_client_hello:no shared cipher'
+  * [c] Proactor: pn_raw_connection_close() doesn't drain already written buffers
+  * [c] Proactor: TSAN failure in pni_timer_manager
+  * [c] Proactor: Raw connection wakes can crash the application
+  * [go] Go 1.15.3 failure in macOS CI; panic: can't call pointer on a non-pointer Value
+  * Need a means of specifying and reading link properties
+  * Change Minimum supported Visual Studio compiler to 2015
+  * Change base C language/compiler requirements to C99 or equivalent
+  * Restructure pn_netaddr_* implementation
+  * [c] Proactor API to support 'raw' TCP connections using the proactor event loop
+  * Simplify the locking inside the proactor epoll implementation
+  * Mark the Proton work list as deprecated
+  * cc1plus: warning: -Wformat-security ignored without -Wformat [-Wformat-security]
+  * memory leak in c++ object inspect
+  * Windows build fails if CMAKE_MODULE_PATH is not empty
+  * Undefined variable x in scripts/env.py
+  * [proton-c] Assert in pni_add_work during pn_proactor_done
+  * Epoll proactor listener leaks file descriptors on close
+  * [Proton-c] Encoder error for array of lists where first list in array is empty
+  * Coverity warning of buffer overrun in pn_proactor_addr
+  * Build fails with older CMake version 2.8.12
+
+-------------------------------------------------------------------
 Wed Jan 13 18:52:43 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Remove explicit python runtime requirements on full standard lib
