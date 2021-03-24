@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 22 13:11:34 UTC 2021 - Abid Mehmood <amehmood@suse.com>
+
+- Fixed CVEs:
+  * CVE-2021-25122: Apache Tomcat h2c request mix-up (bsc#1182912)
+  * CVE-2021-25329: Complete fix for CVE-2020-9484 (bsc#1182909)
+- Added patches:
+  * tomcat-9.0-CVE-2021-25122.patch 
+  * tomcat-9.0-CVE-2021-25329.patch  
+
+-------------------------------------------------------------------
 Wed Mar 17 16:16:52 UTC 2021 - Abid Mehmood <amehmood@suse.com>
 
 - Log if file access is blocked due to symlinks: CVE-2021-24122 (bsc#1180947) 
