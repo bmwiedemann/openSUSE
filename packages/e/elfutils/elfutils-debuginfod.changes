@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 16 15:40:31 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Enable https://debuginfod.opensuse.org/ debuginfod server
+  by default now.
+- Add disable-run-readelf-self-test.patch in order to disable
+  a failing test-case with GCC 11 (PR27367).
+
+-------------------------------------------------------------------
 Mon Feb  8 10:59:08 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Update to version 0.183:

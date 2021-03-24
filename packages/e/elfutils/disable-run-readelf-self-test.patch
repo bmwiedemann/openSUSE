@@ -1,0 +1,58 @@
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index c145720..7a1e05a 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -115,7 +115,7 @@ TESTS = run-arextract.sh run-arsymtest.sh run-ar.sh newfile test-nlist \
+ 	run-addrscopes.sh run-strings-test.sh run-funcscopes.sh \
+ 	run-find-prologues.sh run-allregs.sh run-addrcfi.sh \
+ 	run-dwarfcfi.sh run-nm-syms.sh \
+-	run-nm-self.sh run-readelf-self.sh run-readelf-info-plus.sh \
++	run-nm-self.sh run-readelf-info-plus.sh \
+ 	run-readelf-compressed.sh \
+ 	run-readelf-const-values.sh \
+ 	run-varlocs-self.sh run-exprlocs-self.sh \
+@@ -250,7 +250,7 @@ EXTRA_DIST = run-arextract.sh run-arsymtest.sh run-ar.sh \
+ 	     run-ranlib-test3.sh run-ranlib-test4.sh \
+ 	     run-addrscopes.sh run-strings-test.sh run-funcscopes.sh \
+ 	     run-nm-syms.sh testfilesyms32.bz2 testfilesyms64.bz2 \
+-	     run-nm-self.sh run-readelf-self.sh run-readelf-info-plus.sh \
++	     run-nm-self.sh run-readelf-info-plus.sh \
+ 	     run-readelf-compressed.sh \
+ 	     run-readelf-compressed-zstd.sh \
+ 	     run-readelf-const-values.sh testfile-const-values.debug.bz2 \
+diff --git a/tests/Makefile.in b/tests/Makefile.in
+index 7fc04cc..2ade94f 100644
+--- a/tests/Makefile.in
++++ b/tests/Makefile.in
+@@ -154,7 +154,7 @@ TESTS = run-arextract.sh run-arsymtest.sh run-ar.sh newfile$(EXEEXT) \
+ 	run-addrscopes.sh run-strings-test.sh run-funcscopes.sh \
+ 	run-find-prologues.sh run-allregs.sh run-addrcfi.sh \
+ 	run-dwarfcfi.sh run-nm-syms.sh run-nm-self.sh \
+-	run-readelf-self.sh run-readelf-info-plus.sh \
++	run-readelf-info-plus.sh \
+ 	run-readelf-compressed.sh run-readelf-const-values.sh \
+ 	run-varlocs-self.sh run-exprlocs-self.sh run-readelf-test1.sh \
+ 	run-readelf-test2.sh run-readelf-test3.sh run-readelf-test4.sh \
+@@ -1295,7 +1295,7 @@ EXTRA_DIST = run-arextract.sh run-arsymtest.sh run-ar.sh \
+ 	     run-ranlib-test3.sh run-ranlib-test4.sh \
+ 	     run-addrscopes.sh run-strings-test.sh run-funcscopes.sh \
+ 	     run-nm-syms.sh testfilesyms32.bz2 testfilesyms64.bz2 \
+-	     run-nm-self.sh run-readelf-self.sh run-readelf-info-plus.sh \
++	     run-nm-self.sh run-readelf-info-plus.sh \
+ 	     run-readelf-compressed.sh \
+ 	     run-readelf-compressed-zstd.sh \
+ 	     run-readelf-const-values.sh testfile-const-values.debug.bz2 \
+@@ -3061,13 +3061,6 @@ run-nm-self.sh.log: run-nm-self.sh
+ 	--log-file $$b.log --trs-file $$b.trs \
+ 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+ 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+-run-readelf-self.sh.log: run-readelf-self.sh
+-	@p='run-readelf-self.sh'; \
+-	b='run-readelf-self.sh'; \
+-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+-	--log-file $$b.log --trs-file $$b.trs \
+-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+ run-readelf-info-plus.sh.log: run-readelf-info-plus.sh
+ 	@p='run-readelf-info-plus.sh'; \
+ 	b='run-readelf-info-plus.sh'; \

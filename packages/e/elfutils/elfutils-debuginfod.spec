@@ -28,6 +28,7 @@ Source:         https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfuti
 Source1:        https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfutils-%{version}.tar.bz2.sig
 Source2:        elfutils.changes
 Source3:        elfutils.keyring
+Patch0:         disable-run-readelf-self-test.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -113,7 +114,8 @@ CFLAGS+=" -fPIC"
 autoreconf -fi
 # some patches create new test scripts, which are created 644 by default
 chmod a+x tests/run*.sh
-%configure --program-prefix=eu-
+%configure --enable-debuginfod-urls=https://debuginfod.opensuse.org/ \
+  --program-prefix=eu-
 %make_build
 
 %install

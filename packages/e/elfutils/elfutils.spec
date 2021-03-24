@@ -31,6 +31,7 @@ Source3:        %{name}.changes
 Source4:        https://fedorahosted.org/releases/e/l/%{name}/%{version}/%{name}-%{version}.tar.bz2.sig
 Source5:        %{name}.keyring
 Source6:        elfutils-rpmlintrc
+Patch0:         disable-run-readelf-self-test.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

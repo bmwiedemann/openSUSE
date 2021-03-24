@@ -848,4 +848,15 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
 - Remove config-do-not-define-DEBUGINFOD_URLS-environment-var.patch patch. (forwarded request 870255 from marxin)</comment>
     <requestid>870809</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>b9d731ba9482a1e226fff3929b7ed48b</srcmd5>
+    <version>0.183</version>
+    <time>1616598560</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable https://debuginfod.opensuse.org/ debuginfod server
+  by default now.
+- Add disable-run-readelf-self-test.patch in order to disable
+  a failing test-case with GCC 11 (PR27367). (forwarded request 879585 from marxin)</comment>
+    <requestid>879926</requestid>
+  </revision>
 </revisionlist>
