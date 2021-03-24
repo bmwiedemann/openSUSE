@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 19 11:55:12 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patches:
+  * system-crypto-policy.patch
+    + Let OpenJDK use system crypto policies unless explicitely told
+      not to
+  * nss-security-provider.patch
+    + Add the NSS security provider with configuration in generated
+      nss.cfg file
+  * keytool-default-rsa.patch
+    + Make keytool generate RSA keys by default, since only the
+      LEGACY system crypto policy allows DSA
+
+-------------------------------------------------------------------
 Thu Jan 21 13:30:29 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-11.0.10-9 (January 2021 CPU,

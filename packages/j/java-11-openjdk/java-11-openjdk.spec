@@ -134,6 +134,7 @@
 %global tapsetroot      %{_datadir}/systemtap
 %global tapsetdir %{tapsetroot}/tapset/%{_build_cpu}
 %endif
+%global NSS_LIBDIR %(pkg-config --variable=libdir nss)
 %if %{with_systemtap}
 # Where to install systemtap tapset (links)
 # We would like these to be in a package specific subdir,
@@ -164,7 +165,7 @@ Source10:       systemtap-tapset.tar.xz
 # Desktop files. Adapted from IcedTea.
 Source11:       jconsole.desktop.in
 # nss configuration file
-Source13:       nss.cfg
+Source13:       nss.cfg.in
 # Ensure we aren't using the limited crypto policy
 Source14:       TestCryptoLevel.java
 # Ensure ECDSA is working
@@ -210,8 +211,11 @@ Patch12:        adlc-parser.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
 #
+Patch14:        system-crypto-policy.patch
 Patch15:        system-pcsclite.patch
 Patch16:        missing-return.patch
+Patch17:        nss-security-provider.patch
+Patch18:        keytool-default-rsa.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
@@ -260,6 +264,7 @@ BuildRequires:  liblcms2-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt
+BuildRequires:  mozilla-nss-devel
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -350,7 +355,7 @@ Requires(post): java-ca-certificates
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     tzdata-java8
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
@@ -385,7 +390,7 @@ Requires:       %{name} = %{version}-%{release}
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
 Provides:       java-10-openjdk-devel = %{version}-%{release}
@@ -437,7 +442,7 @@ Requires:       jpackage-utils
 # Post requires update-alternatives to install javadoc alternative.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall javadoc alternative.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
 Provides:       java-10-openjdk-javadoc = %{version}-%{release}
@@ -504,12 +509,15 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch10 -p1
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
 
 %if %{with_system_pcsc}
 %patch15 -p1
 %endif
 
 %patch16 -p1
+%patch17 -p1
+%patch18 -p1
 
 %patch20 -p1
 
@@ -567,6 +575,9 @@ for file in %{SOURCE11} ; do
     sed -e s:@JAVA_HOME@:%{_jvmdir}/%{sdkdir}:g $file > $OUTPUT_FILE
     sed -i -e s:@VERSION@:%{javaver}:g $OUTPUT_FILE
 done
+
+# Setup nss.cfg
+sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE13} > nss.cfg
 
 %build
 
@@ -665,7 +676,10 @@ popd >& /dev/null
 
 export JAVA_HOME=$(pwd)/%{buildoutputdir}/%{imagesdir}/jdk
 
-# Copy tz.properties
+# Install nss.cfg right away as we will be using the JRE above
+install -m 644 nss.cfg $JAVA_HOME/conf/security/
+
+ # Copy tz.properties
 echo "sun.zoneinfo.dir=%{_datadir}/javazi" >> $JAVA_HOME/conf/tz.properties
 
 %if %{with_pulseaudio}
@@ -675,7 +689,7 @@ autoreconf --force --install
 %configure \
     --with-jdk-home=$JAVA_HOME \
     --disable-docs
-make %{?_smp_mflags} 
+make %{?_smp_mflags}
 cp icedtea-sound.jar $JAVA_HOME/../jmods/
 cp build/native/libicedtea-sound.so $JAVA_HOME/lib/
 popd
@@ -941,9 +955,6 @@ pushd %{buildoutputdir}/%{imagesdir}
   cp -a jmods %{buildroot}%{_jvmdir}/%{sdkdir}
 
 popd
-
-# Install nss.cfg
-install -m 644 %{SOURCE13} %{buildroot}%{_jvmdir}/%{sdkdir}/lib/security/
 
 # Install Javadoc documentation.
 install -d -m 755 %{buildroot}%{_javadocdir}
@@ -1302,7 +1313,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/*/Xusage.txt
 
 %config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/blacklisted.certs
-%config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/nss.cfg
+%config(noreplace) %{_jvmdir}/%{sdkdir}/conf/security/nss.cfg
 %{_jvmdir}/%{sdkdir}/lib/security/default.policy
 %{_jvmdir}/%{sdkdir}/lib/security/public_suffix_list.dat
 
