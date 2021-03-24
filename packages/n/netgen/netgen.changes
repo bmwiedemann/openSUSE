@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Mar  1 21:49:34 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to version 6.2.2101
+  * no changelog provided
+- Properly split package: libraries (as required by e.g FreeCAD),
+  python-bindings, examples and standalone GUI.
+- Drop upstream fix_build.patch
+- Replace 0001-Allow-compilation-on-archs-beyond-x86.patch
+  with -DUSE_NATIVE_ARCH=OFF
+- Fix build:
+  * Add 0001-Disable-backtrace-generation.patch, do not call "nm"
+    or "addr2line" from library.
+  * Add 0001-Set-explicit-OBJECT-library-type-for-internal-togl.patch
+  * Add 0001-Throw-in-case-enum-value-is-unhandled.patch
+  * Disable -Wl,--no-undefined, libs have circular dependencies
+  * Add 0001-Fix-GetTimeCounter-for-Aarch64-variants.patch
+- Enable Catch2 unittests, add
+  0001-Optionally-use-system-provided-Catch2.patch
+
+-------------------------------------------------------------------
 Thu Mar 21 22:10:42 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build on ARM and PPC, only include immintrin.h when SSE is available

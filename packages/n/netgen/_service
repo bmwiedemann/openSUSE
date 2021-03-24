@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/NGSolve/netgen.git</param>
     <param name="scm">git</param>
-    <param name="revision">v6.2.1810</param>
-    <param name="version">6.2.1810</param>
+    <param name="revision">v6.2.2101</param>
+    <param name="version">6.2.2101</param>
   </service>
   <service name="set_version" mode="disabled" />
 

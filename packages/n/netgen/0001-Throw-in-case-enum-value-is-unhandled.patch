@@ -1,0 +1,43 @@
+From bf412edff1dccb3a79de2cb6ab31b7861743a101 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 1 Mar 2021 22:32:20 +0100
+Subject: [PATCH] Throw in case enum value is unhandled
+
+---
+ libsrc/csg/solid.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/libsrc/csg/solid.cpp b/libsrc/csg/solid.cpp
+index 52bd6321..035e654c 100644
+--- a/libsrc/csg/solid.cpp
++++ b/libsrc/csg/solid.cpp
+@@ -193,6 +193,8 @@ namespace netgen
+         return Complement (s1->PointInSolid (p, eps));
+       case ROOT:
+ 	return s1->PointInSolid (p, eps);
++      default:
++	throw Exception("PointInSolid: invalid op");
+       }
+   }
+ 
+@@ -212,6 +214,8 @@ namespace netgen
+         return Complement (s1->VecInSolid (p, v, eps));
+       case ROOT:
+ 	return s1->VecInSolid (p, v, eps);
++      default:
++	throw Exception("VecInSolid: invalid op");
+       }
+   }
+   
+@@ -232,6 +236,8 @@ namespace netgen
+         return Complement (s1->VecInSolid2 (p, v1, v2, eps));
+       case ROOT:
+ 	return s1->VecInSolid2 (p, v1, v2, eps);
++      default:
++	throw Exception("VecInSolid2: invalid op");
+       }
+   }
+ 
+-- 
+2.30.1
+

@@ -1,0 +1,25 @@
+From 2439f9b6f261aab36a7b2459b7b1fe9db691f7ce Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 28 Feb 2021 23:57:18 +0100
+Subject: [PATCH] Set explicit OBJECT library type for internal togl
+
+---
+ ng/Togl2.1/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ng/Togl2.1/CMakeLists.txt b/ng/Togl2.1/CMakeLists.txt
+index bcade1f7..876b4f01 100644
+--- a/ng/Togl2.1/CMakeLists.txt
++++ b/ng/Togl2.1/CMakeLists.txt
+@@ -20,7 +20,7 @@ else(WIN32)
+   include_directories(BEFORE "${TCL_INCLUDE_PATH}") 
+   include_directories(BEFORE "${TK_INCLUDE_PATH}") 
+ 
+-  add_library(togl togl.c toglProcAddr.c toglStubInit.c)
++  add_library(togl OBJECT togl.c toglProcAddr.c toglStubInit.c)
+   target_link_libraries(togl -ldl)
+ endif(WIN32)
+ 
+-- 
+2.30.1
+
