@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 14 17:21:31 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Midnight Commander 4.8.26:
+  * Support file names of any length
+  * Implement persistent command line buffer for subshell
+    (bash >= 4, zsh and fish are supported)
+  * Implement shadows of dialog windows and menus
+  * Allow running clipboard commands if DISPLAY is not set
+  * Add support of "alacritty", "tmux", and "tmux-256color" terminals
+  * VFS: Support wim archive format (using wimtools)
+  * VFS: Support pak archive format (using unar)
+  * Editor: Add Swift syntax highlighting
+  * Various bug fixes
+
+-------------------------------------------------------------------
 Mon Jul 27 15:00:00 UTC 2020 - Andre C. Barros <andre.cbarros@yahoo.com>
 
 - Update to 4.8.25

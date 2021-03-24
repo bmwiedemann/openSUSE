@@ -25,10 +25,10 @@ Index: misc/ext.d/video.sh
  
      case "${filetype}" in
      *)
--        if mplayer >/dev/null 2>&1; then
+-        if which mplayer >/dev/null 2>&1; then
 +        if type -p mediainfo >/dev/null 2>&1 ; then
 +           mediainfo "${MC_EXT_FILENAME}"
-+        elif mplayer >/dev/null 2>&1; then
++        elif which mplayer >/dev/null 2>&1; then
              mplayer -identify -vo null -ao null -frames 0 "${MC_EXT_FILENAME}" 2>&1 | \
                  sed -n 's/^ID_//p'
          elif which mpv_identify.sh >/dev/null 2>&1; then

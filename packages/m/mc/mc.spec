@@ -1,7 +1,7 @@
 #
 # spec file for package mc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mc
-Version:        4.8.25
+Version:        4.8.26
 Release:        0
 Summary:        Midnight Commander
 License:        GPL-3.0-or-later
@@ -126,7 +126,7 @@ export PYTHON=%{_bindir}/python3
     --enable-vfs-smb --with-smb-configdir=%{_sysconfdir}/samba \
     --disable-vfs-fish
 
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install

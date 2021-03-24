@@ -1,8 +1,8 @@
-Index: mc-4.8.22/src/filemanager/file.c
+Index: mc-4.8.26/src/filemanager/file.c
 ===================================================================
---- mc-4.8.22.orig/src/filemanager/file.c
-+++ mc-4.8.22/src/filemanager/file.c
-@@ -2662,6 +2662,8 @@ copy_file_file (file_op_total_context_t
+--- mc-4.8.26.orig/src/filemanager/file.c
++++ mc-4.8.26/src/filemanager/file.c
+@@ -2653,6 +2653,8 @@ copy_file_file (file_op_total_context_t
              continue;
          if (temp_status == FILE_ABORT)
              return_status = temp_status;
@@ -11,7 +11,7 @@ Index: mc-4.8.22/src/filemanager/file.c
          if (temp_status == FILE_SKIPALL)
              ctx->skip_all = TRUE;
          break;
-@@ -2672,6 +2674,8 @@ copy_file_file (file_op_total_context_t
+@@ -2663,6 +2665,8 @@ copy_file_file (file_op_total_context_t
          temp_status = file_error (TRUE, _("Cannot close target file \"%s\"\n%s"), dst_path);
          if (temp_status == FILE_RETRY)
              continue;
@@ -20,36 +20,36 @@ Index: mc-4.8.22/src/filemanager/file.c
          if (temp_status == FILE_SKIPALL)
              ctx->skip_all = TRUE;
          return_status = temp_status;
-@@ -2698,10 +2702,10 @@ copy_file_file (file_op_total_context_t
-                 if (temp_status == FILE_SKIPALL)
-                 {
-                     ctx->skip_all = TRUE;
--                    return_status = FILE_CONT;
-+                    return_status = FILE_SKIPALL;
-                 }
-                 if (temp_status == FILE_SKIP)
--                    return_status = FILE_CONT;
-+                    return_status = FILE_SKIP;
-                 break;
+@@ -2689,10 +2693,10 @@ copy_file_file (file_op_total_context_t
+             if (temp_status == FILE_SKIPALL)
+             {
+                 ctx->skip_all = TRUE;
+-                return_status = FILE_CONT;
++                return_status = FILE_SKIPALL;
              }
+             if (temp_status == FILE_SKIP)
+-                return_status = FILE_CONT;
++                return_status = FILE_SKIP;
+             break;
          }
-@@ -2719,10 +2723,10 @@ copy_file_file (file_op_total_context_t
-                     if (temp_status == FILE_SKIPALL)
-                     {
-                         ctx->skip_all = TRUE;
--                        return_status = FILE_CONT;
-+                        return_status = FILE_SKIPALL;
-                     }
-                     if (temp_status == FILE_SKIP)
--                        return_status = FILE_CONT;
-+                        return_status = FILE_SKIP;
-                     break;
-                 }
+ 
+@@ -2705,10 +2709,10 @@ copy_file_file (file_op_total_context_t
+             if (temp_status == FILE_SKIPALL)
+             {
+                 ctx->skip_all = TRUE;
+-                return_status = FILE_CONT;
++                return_status = FILE_SKIPALL;
              }
-Index: mc-4.8.22/src/vfs/fish/fishdef.h
+             if (temp_status == FILE_SKIP)
+-                return_status = FILE_CONT;
++                return_status = FILE_SKIP;
+             break;
+         }
+ 
+Index: mc-4.8.26/src/vfs/fish/fishdef.h
 ===================================================================
---- mc-4.8.22.orig/src/vfs/fish/fishdef.h
-+++ mc-4.8.22/src/vfs/fish/fishdef.h
+--- mc-4.8.26.orig/src/vfs/fish/fishdef.h
++++ mc-4.8.26/src/vfs/fish/fishdef.h
 @@ -149,13 +149,19 @@
  "FILESIZE=${FISH_FILESIZE}\n"                                             \
  "#STOR $FILESIZE $FILENAME\n"                                             \
@@ -71,10 +71,10 @@ Index: mc-4.8.22/src/vfs/fish/fishdef.h
  
  /* default 'appe'  script */
  #define FISH_APPEND_DEF_CONTENT ""                                        \
-Index: mc-4.8.22/src/vfs/fish/helpers/chmod
+Index: mc-4.8.26/src/vfs/fish/helpers/chmod
 ===================================================================
---- mc-4.8.22.orig/src/vfs/fish/helpers/chmod
-+++ mc-4.8.22/src/vfs/fish/helpers/chmod
+--- mc-4.8.26.orig/src/vfs/fish/helpers/chmod
++++ mc-4.8.26/src/vfs/fish/helpers/chmod
 @@ -1,6 +1,7 @@
  #CHMOD $FISH_FILEMODE $FISH_FILENAME
 -if chmod ${FISH_FILEMODE} "/${FISH_FILENAME}" 2>/dev/null; then
@@ -86,10 +86,10 @@ Index: mc-4.8.22/src/vfs/fish/helpers/chmod
 +else
 +    echo "### 000"
  fi
-Index: mc-4.8.22/src/vfs/fish/helpers/chown
+Index: mc-4.8.26/src/vfs/fish/helpers/chown
 ===================================================================
---- mc-4.8.22.orig/src/vfs/fish/helpers/chown
-+++ mc-4.8.22/src/vfs/fish/helpers/chown
+--- mc-4.8.26.orig/src/vfs/fish/helpers/chown
++++ mc-4.8.26/src/vfs/fish/helpers/chown
 @@ -1,6 +1,7 @@
  #CHOWN $FISH_FILEOWNER:$FISH_FILEGROUP $FISH_FILENAME
 -if chown ${FISH_FILEOWNER}:${FISH_FILEGROUP} "/${FISH_FILENAME}" ; then
@@ -101,10 +101,10 @@ Index: mc-4.8.22/src/vfs/fish/helpers/chown
 +else
 +    echo "### 000"
  fi
-Index: mc-4.8.22/src/vfs/fish/helpers/send
+Index: mc-4.8.26/src/vfs/fish/helpers/send
 ===================================================================
---- mc-4.8.22.orig/src/vfs/fish/helpers/send
-+++ mc-4.8.22/src/vfs/fish/helpers/send
+--- mc-4.8.26.orig/src/vfs/fish/helpers/send
++++ mc-4.8.26/src/vfs/fish/helpers/send
 @@ -1,6 +1,9 @@
  #STOR $FISH_FILESIZE $FISH_FILENAME
  FILENAME="/${FISH_FILENAME}"
