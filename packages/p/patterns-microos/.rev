@@ -280,4 +280,28 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
 - remove kdeconnect-kde from kde desktop pattern as not necessary for every install</comment>
     <requestid>866840</requestid>
   </revision>
+  <revision rev="30" vrev="30">
+    <srcmd5>ee3d0a14a87e27cdcc442455eb95d5bc</srcmd5>
+    <version>5.0</version>
+    <time>1616598666</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove gnome-calculator and add gnome-branding-MicroOS to MicroOS
+  GNOME Desktop 
+
+- Add gnome-shell-search-provider-nautilus and gnome-color-manager
+  to MicroOS GNOME Desktop
+- gnome-color-manager needed for Night Light
+
+- Use busybox hostname and gzip for MicroOS except for the Desktop
+- Require util-linux instead of &quot;login&quot; alias
+- Remove supportutils, we didn't use it and it pulls in more than
+  we want
+
+- Ensure that a repository configuration package is installed
+  for Micro DNF or PackageKit patterns
+
+- Split base pattern into separate patterns for Zypper, Micro DNF, and PackageKit
+- Make GNOME and KDE Plasma patterns require PackageKit pattern</comment>
+    <requestid>880548</requestid>
+  </revision>
 </revisionlist>

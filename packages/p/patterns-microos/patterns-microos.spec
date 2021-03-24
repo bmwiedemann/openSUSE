@@ -59,6 +59,7 @@ Requires:       pattern() = minimal_base
 Requires:       pattern() = update_test
 %endif
 ### openSUSE base system
+Requires:       /usr/bin/hostname
 Requires:       aaa_base
 Requires:       bash
 Requires:       branding-openSUSE
@@ -67,10 +68,9 @@ Requires:       ca-certificates
 Requires:       ca-certificates-mozilla
 Requires:       coreutils
 Requires:       glibc
-Requires:       hostname
+Suggests:       busybox-hostname
 Requires:       iproute2
 Requires:       libnss_usrfiles2
-Requires:       login
 Requires:       openSUSE-build-key
 Requires:       pam
 Requires:       pam-config
@@ -79,8 +79,8 @@ Requires:       rebootmgr
 Requires:       rpm
 Requires:       shadow
 Requires:       systemd
+Requires:       util-linux
 Requires:       wicked
-Requires:       zypper
 Requires:       group(nobody)
 Requires:       user(nobody)
 ####
@@ -90,9 +90,11 @@ Requires:       chrony
 # curl indirectly needed by ignition via dracut's url-lib
 Requires:       curl
 # probably needed for fsck.fat on efi partitions
+Requires:       /usr/bin/gzip
 Requires:       MicroOS-release
 Requires:       dosfstools
 Requires:       glibc-locale-base
+Suggests:       busybox-gzip
 Requires:       haveged
 Requires:       health-checker
 Requires:       health-checker-plugins-MicroOS
@@ -106,16 +108,10 @@ Requires:       snapper
 Requires:       vim-small
 # people are addicted to sudo
 Requires:       sudo
-Requires:       supportutils
 Requires:       systemd-presets-branding-MicroOS
 Requires:       tallow
 Requires:       terminfo-base
 Requires:       timezone
-Requires:       transactional-update
-Requires:       transactional-update-zypp-config
-# zypper ps is useless in transactional mode. It also checks for
-# /run/reboot-needed though which is created by transactional-update
-Requires:       zypper-needs-restarting
 Conflicts:      gettext-runtime-mini
 Conflicts:      krb5-mini
 Obsoletes:      suse-build-key < 12.1
@@ -125,13 +121,72 @@ Requires:       yast2-logs
 This is the openSUSE MicroOS runtime system. It contains only a minimal multiuser
 booting system.
 
+%package base-zypper
+Summary:        openSUSE MicroOS using Zypper
+Group:          Metapackages
+Provides:       pattern() = microos_base_zypper
+Provides:       pattern-category() = MicroOS
+Provides:       pattern-icon() = pattern-kubic
+Provides:       pattern-order() = 9011
+Provides:       pattern-visible()
+Requires:       transactional-update
+Requires:       transactional-update-zypp-config
+Requires:       zypper
+Requires:       pattern() = microos_base
+# zypper ps is useless in transactional mode. It also checks for
+# /run/reboot-needed though which is created by transactional-update
+Requires:       zypper-needs-restarting
+
+%description base-zypper
+This is the openSUSE MicroOS runtime system using the Zypper package manager.
+It contains only a minimal multiuser booting system.
+
+%package base-microdnf
+Summary:        openSUSE MicroOS using Micro DNF
+Group:          Metapackages
+Provides:       pattern() = microos_base_microdnf
+Provides:       pattern-category() = MicroOS
+Provides:       pattern-icon() = pattern-kubic
+Provides:       pattern-order() = 9012
+Provides:       pattern-visible()
+Requires:       libdnf-plugin-txnupd
+Requires:       microdnf
+Requires:       pattern() = microos_base
+# We need repository configuration from somewhere, so
+# make sure one gets installed
+Requires:       (libdnf-repo-config-zypp or rpm-repos-openSUSE)
+
+%description base-microdnf
+This is the openSUSE MicroOS runtime system using the Micro DNF package manager.
+It contains only a minimal multiuser booting system.
+
+%package base-packagekit
+Summary:        openSUSE MicroOS using PackageKit
+Group:          Metapackages
+Provides:       pattern() = microos_base_packagekit
+Provides:       pattern-category() = MicroOS
+Provides:       pattern-icon() = pattern-kubic
+Provides:       pattern-order() = 9013
+Provides:       pattern-visible()
+Requires:       PackageKit
+Requires:       PackageKit-branding-openSUSE
+Requires:       libdnf-plugin-txnupd
+Requires:       pattern() = microos_base
+# We need repository configuration from somewhere, so
+# make sure one gets installed
+Requires:       (libdnf-repo-config-zypp or rpm-repos-openSUSE)
+
+%description base-packagekit
+This is the openSUSE MicroOS runtime system using the PackageKit service.
+It contains only a minimal multiuser booting system.
+
 %package defaults
 Summary:        openSUSE MicroOS defaults
 Group:          Metapackages
 Provides:       pattern() = microos_defaults
 Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-kubic
-Provides:       pattern-order() = 9011
+Provides:       pattern-order() = 9020
 Requires:       audit
 Requires:       systemd-logger
 Requires:       pattern() = microos_base
@@ -201,7 +256,6 @@ Requires:       cockpit-system
 %description cockpit
 Packages required to run the Cockpit system management service.
 For the web service the cockpit-ws container is required.
-
 
 %package sssd_ldap
 Summary:        LDAP client
@@ -280,6 +334,10 @@ Requires:       unzip
 Requires:       upower
 Requires:       wget
 
+# More "comfortable" base package versions
+Requires:       gzip
+Requires:       hostname
+
 %if 0%{is_opensuse}
 Requires:       avahi
 %endif
@@ -298,6 +356,8 @@ Provides:       pattern-visible()
 Requires:       gdm-branding-MicroOS
 Requires:       pattern() = gnome_basic
 Requires:       pattern() = microos_desktop_common
+# Pull in PackageKit
+Requires:       pattern() = microos_base_packagekit
 # from data/COMMON-DESKTOP
 Requires:       desktop-data
 Requires:       desktop-file-utils
@@ -325,7 +385,8 @@ Requires:       gnome-session-default-session
 Requires:       gnome-session-wayland
 # boo#1090117
 Requires:       flatpak
-Requires:       gnome-calculator
+Requires:       gnome-branding-MicroOS
+Requires:       gnome-color-manager
 Requires:       gnome-packagekit
 Requires:       gnome-shell-classic
 Requires:       gnome-software
@@ -349,6 +410,7 @@ Requires:       rsvg-thumbnailer
 Requires:       chrome-gnome-shell
 # we need something for xdg-su
 Requires:       libgnomesu
+Requires:       gnome-shell-search-provider-nautilus
 Requires:       nautilus
 Requires:       nautilus-extension-terminal
 Requires:       nautilus-share
@@ -392,13 +454,8 @@ Requires:       canberra-gtk-play
 # Branding
 #
 # #591535
-Requires:       gio-branding-openSUSE
 Requires:       gtk2-branding-openSUSE
 Requires:       gtk3-branding-openSUSE
-
-#PackageKit
-Requires:       PackageKit
-Requires:       PackageKit-branding-openSUSE
 %endif
 
 %description desktop-gnome
@@ -414,6 +471,8 @@ Provides:       pattern-order() = 9101
 Provides:       pattern-visible()
 Requires:       pattern() = kde_plasma
 Requires:       pattern() = microos_desktop_common
+# Pull in PackageKit
+Requires:       pattern() = microos_base_packagekit
 
 # Some basic system tools
 Requires:       kate
@@ -442,6 +501,7 @@ Requires:       pinentry-qt5
 
 # Recommends and Supplements won't work, so pull in manually
 Requires:       discover-backend-flatpak
+Requires:       discover-backend-packagekit
 Requires:       pipewire
 Requires:       plasma-browser-integration
 Requires:       plasma5-defaults-openSUSE
@@ -521,7 +581,8 @@ Alternative additional packages on a openSUSE MicroOS DVD.
 
 %install
 mkdir -p %buildroot/usr/share/doc/packages/patterns-microos/
-for i in basesystem base defaults hardware ima_evm apparmor selinux cockpit \
+for i in basesystem base base_zypper base_microdnf base_packagekit \
+    defaults hardware ima_evm apparmor selinux cockpit \
     sssd_ldap cloud desktop-common desktop-gnome desktop-kde onlyDVD alt_onlyDVD; do
 	echo "This file marks the pattern $i to be installed." >%buildroot/usr/share/doc/packages/patterns-microos/$i.txt
 done
@@ -534,6 +595,21 @@ done
 %defattr(-,root,root)
 %dir %{_docdir}/patterns-microos
 %{_docdir}/patterns-microos/base.txt
+
+%files base-zypper
+%defattr(-,root,root)
+%dir %{_docdir}/patterns-microos
+%{_docdir}/patterns-microos/base_zypper.txt
+
+%files base-microdnf
+%defattr(-,root,root)
+%dir %{_docdir}/patterns-microos
+%{_docdir}/patterns-microos/base_microdnf.txt
+
+%files base-packagekit
+%defattr(-,root,root)
+%dir %{_docdir}/patterns-microos
+%{_docdir}/patterns-microos/base_packagekit.txt
 
 %files defaults
 %defattr(-,root,root)

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Mar 22 16:05:37 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Remove gnome-calculator and add gnome-branding-MicroOS to MicroOS
+  GNOME Desktop 
+
+-------------------------------------------------------------------
+Mon Mar 22 09:52:25 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Add gnome-shell-search-provider-nautilus and gnome-color-manager
+  to MicroOS GNOME Desktop
+- gnome-color-manager needed for Night Light
+
+-------------------------------------------------------------------
+Wed Mar  3 15:35:43 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use busybox hostname and gzip for MicroOS except for the Desktop
+- Require util-linux instead of "login" alias
+- Remove supportutils, we didn't use it and it pulls in more than
+  we want
+
+-------------------------------------------------------------------
+Thu Feb 25 18:12:11 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Ensure that a repository configuration package is installed
+  for Micro DNF or PackageKit patterns
+
+-------------------------------------------------------------------
+Sun Feb 21 23:53:24 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Split base pattern into separate patterns for Zypper, Micro DNF, and PackageKit
+- Make GNOME and KDE Plasma patterns require PackageKit pattern
+
+-------------------------------------------------------------------
 Tue Jan 26 13:28:35 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use user(nobody) and group(nobody)
