@@ -162,4 +162,22 @@
     <comment></comment>
     <requestid>851828</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c70e3c104286689d1a1bea9d669bb0e7</srcmd5>
+    <version>5.10.2</version>
+    <time>1616598730</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.10.2
+  Fix:
+  * Restore mlr manpage to distro file
+- Update to version 5.10.1
+  Fix:
+  * NR is stale after apply remove-empty-columns
+  * Segfault with --tsv --implicit-csv-header
+  * Default value of uninitialized variables for multiplication:
+    docs vs awk
+  * Bug with uniq + sort
+</comment>
+    <requestid>881025</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package miller
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           miller
-Version:        5.10.0
+Version:        5.10.2
 Release:        0
 Summary:        Name-indexed data processing tool
 # c/lib/netbsd_strptime.c is BSD-4-Clause
@@ -48,7 +48,6 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-install -Dm0644 docs/mlr.1 %{buildroot}/%{_mandir}/man1/mlr.1
 
 %files
 %license LICENSE.txt
