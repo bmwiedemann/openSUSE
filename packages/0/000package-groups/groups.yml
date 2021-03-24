@@ -91,6 +91,7 @@ dvd:
   - patterns-base-sw_management: [required,suggested]
   - patterns-gnome-sw_management_gnome: [required,suggested]
   - patterns-base-basic_desktop: [required,suggested]
+  - patterns-base-selinux: [required,suggested]
   - patterns-base-transactional_base: [required,suggested]
   - patterns-base-x11: [required,suggested]
   - patterns-xfce-xfce: [suggested]
@@ -375,6 +376,9 @@ opensuse_microos:
   - MicroOS-release: [aarch64,ppc64le,s390x,x86_64]
   - kernel-default
   - patterns-microos-base: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-base-microdnf: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-base-packagekit: [aarch64,ppc64le,s390x,x86_64]
+  - patterns-microos-base-zypper: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-defaults: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-hardware: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-apparmor: [aarch64,ppc64le,s390x,x86_64]
