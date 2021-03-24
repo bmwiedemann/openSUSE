@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 22 17:24:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Work around boo#1179155 and explicitly require clang11
+  for Leap 15.3.
+
+-------------------------------------------------------------------
+Mon Mar 22 11:32:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.14.2
+  * Fixed installation location of desktop and appstream files
+  * Fixed crash with `Previous/Next Open Document in History`
+  * Re-added generic highlighting for Autoconf files
+  * LLDB:  Fixed performance issue
+- Drop 0001-Fix-a-link-error-when-building-the-qmldesigner-plugi.patch
+  Merged upstream.
+
+-------------------------------------------------------------------
 Fri Feb 26 09:22:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.14.1

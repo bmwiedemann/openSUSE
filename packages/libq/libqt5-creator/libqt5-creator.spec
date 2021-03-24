@@ -33,9 +33,9 @@
 
 %define major_ver 4.14
 %define qt5_version 5.14.0
-%define tar_version 4.14.1
+%define tar_version 4.14.2
 Name:           libqt5-creator
-Version:        4.14.1
+Version:        4.14.2
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -51,7 +51,6 @@ URL:            https://www.qt.io/ide/
 Source:         https://download.qt.io/official_releases/qtcreator/%{major_ver}/%{tar_version}/qt-creator-opensource-src-%{tar_version}.tar.xz
 Source1:        %{name}-rpmlintrc
 # Patches 0-10 are upstream changes
-Patch0:         0001-Fix-a-link-error-when-building-the-qmldesigner-plugi.patch
 # Patches 10-20 are openSUSE changes
 Patch10:        fix-application-output.patch
 Patch11:        0001-Disable-some-plugins.patch
@@ -105,10 +104,16 @@ Recommends:     libqt5-qttranslations
 Provides:       qt-creator = %{version}
 Obsoletes:      qt-creator < %{version}
 %if 0%{?build_clang_backend}
+# clang-devel in Leap 15.3 points to clang7...
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150300
+BuildRequires:  clang11-devel
+BuildRequires:  llvm11-devel
+%else
 BuildRequires:  clang-devel >= 10.0
 BuildRequires:  llvm-devel
+%endif
 # clangcodemodel hardcodes clang include paths: QTCREATORBUG-21972
-%requires_eq    libclang%(rpm -q --qf '%''{version}' clang-devel | cut -d. -f1)
+%requires_eq    libclang%{_llvm_sonum}
 %endif
 %ifnarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  cmake(Qt5WebEngine) >= %{qt5_version}
