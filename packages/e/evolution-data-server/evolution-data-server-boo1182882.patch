@@ -1,0 +1,52 @@
+From b0731961dca6ca2ee4a11b708545d58ff4948093 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Tue, 2 Mar 2021 12:26:09 +0100
+Subject: [PATCH] Allocate large-enough buffer for g_base64_decode_step()
+
+---
+ src/camel/camel-mime-filter-basic.c | 8 ++------
+ src/camel/camel-mime-utils.c        | 2 +-
+ 2 files changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/src/camel/camel-mime-filter-basic.c b/src/camel/camel-mime-filter-basic.c
+index b13276264..8187fabd4 100644
+--- a/src/camel/camel-mime-filter-basic.c
++++ b/src/camel/camel-mime-filter-basic.c
+@@ -83,8 +83,7 @@ mime_filter_basic_filter (CamelMimeFilter *mime_filter,
+ 		g_return_if_fail (newlen <= (len + 2) * 2 + 62);
+ 		break;
+ 	case CAMEL_MIME_FILTER_BASIC_BASE64_DEC:
+-		/* output can't possibly exceed the input size */
+-		camel_mime_filter_set_size (mime_filter, len + 3, FALSE);
++		camel_mime_filter_set_size (mime_filter, (len * 3 / 4) + 3, FALSE);
+ 		newlen = g_base64_decode_step (
+ 			in, len,
+ 			(guchar *) mime_filter->outbuf,
+@@ -225,10 +224,7 @@ mime_filter_basic_complete (CamelMimeFilter *mime_filter,
+ 		g_return_if_fail (newlen <= (len + 2) * 2 + 62);
+ 		break;
+ 	case CAMEL_MIME_FILTER_BASIC_BASE64_DEC:
+-		/* Output can't possibly exceed the input size, but add 1,
+-		   to make sure the mime_filter->outbuf will not be NULL,
+-		   in case the input stream is empty. */
+-		camel_mime_filter_set_size (mime_filter, len + 1, FALSE);
++		camel_mime_filter_set_size (mime_filter, (len * 3 / 4) + 3, FALSE);
+ 		newlen = g_base64_decode_step (
+ 			in, len,
+ 			(guchar *) mime_filter->outbuf,
+diff --git a/src/camel/camel-mime-utils.c b/src/camel/camel-mime-utils.c
+index 3394707e2..31024f5d4 100644
+--- a/src/camel/camel-mime-utils.c
++++ b/src/camel/camel-mime-utils.c
+@@ -1186,7 +1186,7 @@ rfc2047_decode_word (const gchar *in,
+ 	case 'B':
+ 	case 'b':
+ 		inptr += 2;
+-		decoded = g_alloca (inend - inptr);
++		decoded = g_alloca (((inend - inptr) * 3 / 4) + 3);
+ 		declen = g_base64_decode_step ((gchar *) inptr, inend - inptr, decoded, &state, &save);
+ 		break;
+ 	case 'Q':
+-- 
+2.30.1
+

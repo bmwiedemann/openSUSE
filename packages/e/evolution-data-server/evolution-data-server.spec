@@ -40,6 +40,8 @@ Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Apps/Evolution
 Source0:        https://download.gnome.org/sources/evolution-data-server/3.38/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM evolution-data-server-boo1182882.patch boo#1182882 mgorse@suse.com -- fix buffer overrun when decoding base64 data.
+Patch0:         evolution-data-server-boo1182882.patch
 
 BuildRequires:  cmake
 BuildRequires:  db-devel

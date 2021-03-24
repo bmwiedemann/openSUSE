@@ -1883,4 +1883,13 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment></comment>
     <requestid>872499</requestid>
   </revision>
+  <revision rev="220" vrev="2">
+    <srcmd5>29eb96bb9237a54f4e52188e177a74ef</srcmd5>
+    <version>3.38.4</version>
+    <time>1616598576</time>
+    <user>dimstar_suse</user>
+    <comment>- Add evolution-data-server-boo1182882.patch: fix buffer overrun
+  when parsing base64 data (boo#1182882). (forwarded request 876818 from mgorse)</comment>
+    <requestid>879956</requestid>
+  </revision>
 </revisionlist>
