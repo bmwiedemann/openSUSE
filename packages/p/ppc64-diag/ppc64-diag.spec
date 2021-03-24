@@ -1,7 +1,7 @@
 #
 # spec file for package ppc64-diag
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,12 @@ Release:        0
 Summary:        Linux for Power Platform Diagnostics
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            http://sourceforge.net/projects/linux-diag/files/ppc64-diag
+URL:            http://sourceforge.net/projects/linux-diag/files/ppc64-diag
 Source0:        http://downloads.sourceforge.net/project/linux-diag/ppc64-diag/v%{version}/%{name}-%{version}.tar.gz
 #PATCH-FIX-OPENSUSE - ppc64-diag.varunused.patch - fix unused variables
 Patch1:         ppc64-diag.varunused.patch
+#PATCH-FIX-UPSTREAM - ppc64-diag-Drop-obsolete-logging-options-from-systemd-service-f.patch - fix systemd warning
+Patch2:         ppc64-diag-Drop-obsolete-logging-options-from-systemd-service-f.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -65,7 +67,7 @@ administrators or connected service frameworks.
 
 %prep
 %setup -q
-%patch1 -p1
+%autopatch -p1
 
 %build
 sed -i 's@%{_prefix}/libexec/ppc64-diag@%{_libexecdir}@g' scripts/opal_errd.service
