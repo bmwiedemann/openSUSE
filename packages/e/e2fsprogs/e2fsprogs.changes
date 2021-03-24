@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Mar 14 15:25:20 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- e2fsprogs 1.46.2:
+  * tune2fs -c now takes "random" argument
+  * Add support for the FS_NOCOMP_FL flag to chattr and lsattr
+  * Fix warnings when resizing small file systems to a super-large
+  * Fix the debugfs rdump and ls commands so they will work correctly
+    for uid's and gid's => 65536
+  * Fix the debugfs write and symlink commands so they support
+    targets which contain a pathname
+  * Fix Direct I/O support on block devices where the logical block
+    size is greater 1k
+  * Fix debugfs's logdump so it works on file systems whose block
+    size is greater than 8k
+  * Fix a crash when there is error while e2fsck is trying to open
+    the file system, and e2fsck calls ext2fs_mmp_stop() before MMP
+    has been initialized
+  * Improved error checking in the fast commit replay code in e2fsck
+  * Fix various compiler and Coverity warnings
+  * Update the Spanish translation from the translation project
+
+-------------------------------------------------------------------
 Thu Feb 18 14:44:00 UTC 2021 - Jan Kara <jack@suse.cz>
 
 - Remove autoreconf (and resulting dependencies) from the spec file. The
