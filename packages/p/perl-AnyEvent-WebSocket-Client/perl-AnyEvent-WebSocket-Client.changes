@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 20 03:06:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.54
+   see /usr/share/doc/packages/perl-AnyEvent-WebSocket-Client/Changes
+
+  0.54      2021-03-19 06:13:48 -0600
+    - Delay loading AnyEvent::Connector until needed.
+    - Moved git repository to new github org.
+
+-------------------------------------------------------------------
 Mon May 11 10:04:39 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
 
 - initial version of package (0.53) 
