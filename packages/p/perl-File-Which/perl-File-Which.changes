@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 20 03:07:43 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.24
+   see /usr/share/doc/packages/perl-File-Which/Changes
+
+  1.24      2021-03-19 05:50:14 -0600
+    - Documentation improvements
+    - Moved repository to new github org
+
+-------------------------------------------------------------------
 Tue Jan  1 06:23:46 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.23
