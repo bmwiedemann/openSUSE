@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 15 13:51:52 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Add info about bundled dependencies in spec
+- Fix required go version
+- Handle go 1.16 or later by switching GO111MODULE to previous default
+
+-------------------------------------------------------------------
 Fri Feb 26 14:52:15 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
 
 - Only build for x86_64 and aarch64
