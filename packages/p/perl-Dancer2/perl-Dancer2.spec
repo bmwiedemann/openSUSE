@@ -18,7 +18,7 @@
 
 %define cpan_name Dancer2
 Name:           perl-Dancer2
-Version:        0.300005
+Version:        0.301001
 Release:        0
 Summary:        Lightweight yet powerful web application framework
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -28,7 +28,6 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(App::Cmd::Setup)
 BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.120620
 BuildRequires:  perl(Capture::Tiny) >= 0.12
 BuildRequires:  perl(Clone)
@@ -57,12 +56,11 @@ BuildRequires:  perl(Plack::Middleware::FixMissingBodyInRedirect)
 BuildRequires:  perl(Plack::Middleware::RemoveRedundantBody)
 BuildRequires:  perl(Ref::Util)
 BuildRequires:  perl(parent)
-#BuildRequires:  perl(Role::Tiny) >= >= 2.000000, != 2.000007
+#BuildRequires:  perl(Role::Tiny) >= 2.000000
 BuildRequires:  perl(Safe::Isa)
 BuildRequires:  perl(Sub::Quote)
 BuildRequires:  perl(Template)
 BuildRequires:  perl(Template::Tiny)
-BuildRequires:  perl(Test::CPAN::Meta)
 BuildRequires:  perl(Test::EOL)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.92
@@ -70,7 +68,6 @@ BuildRequires:  perl(Type::Tiny) >= 1.000006
 BuildRequires:  perl(Types::Standard)
 BuildRequires:  perl(URI::Escape)
 BuildRequires:  perl(YAML) >= 0.86
-Requires:       perl(App::Cmd::Setup)
 Requires:       perl(Clone)
 Requires:       perl(Config::Any)
 Requires:       perl(Digest::SHA)
@@ -93,7 +90,7 @@ Requires:       perl(Plack::Middleware::FixMissingBodyInRedirect)
 Requires:       perl(Plack::Middleware::RemoveRedundantBody)
 Requires:       perl(Ref::Util)
 Requires:       perl(parent)
-#Requires:       perl(Role::Tiny) >= >= 2.000000, != 2.000007
+#Requires:       perl(Role::Tiny) >= 2.000000
 Requires:       perl(Safe::Isa)
 Requires:       perl(Sub::Quote)
 Requires:       perl(Template)
@@ -118,11 +115,6 @@ Recommends:     perl(Type::Tiny::XS)
 Recommends:     perl(URL::Encode::XS)
 Recommends:     perl(YAML::XS)
 %{perl_requires}
-# MANUAL BEGIN
-BuildRequires:  perl(Role::Tiny) >= 2.000008
-BuildRequires:  perl(Test::Deep)
-Requires:       perl(Role::Tiny) >= 2.000008
-# MANUAL END
 
 %description
 Dancer2 is the new generation of Dancer, the lightweight web-framework for

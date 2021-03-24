@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Mar 18 09:52:40 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Remove manual dependencies in cpanspec.yml (fixed upstream)
+
+-------------------------------------------------------------------
+Thu Mar 18 03:06:30 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.301001
+   see /usr/share/doc/packages/perl-Dancer2/Changes
+
+  0.301001  2021-03-17 08:52:34-04:00 America/New_York
+      [ BUG FIXES ]
+      * PR #1607: Fix broken tests following App::Cmd removal (Jason Crome)
+      [ ENHANCEMENTS ]
+      * PR #1606: Clean up various build prereqs (Graham Knop)
+      [ DOCUMENTATION ]
+      * None
+  0.301000  2021-03-15 18:58:17-04:00 America/New_York
+      [ BUG FIXES ]
+      * PR #1586: Run version checks against MetaCPAN (Jason A. Crome)
+      * PR #1604: Remove App::Cmd dependency; have script/dancer2 bail if
+        it's not installed (David Precious)
+      [ ENHANCEMENTS ]
+      * GH #1064: Add DSL keyword request_data (Mickey Nasriachi)
+      * PR #1581: Disable scheduled GitHub action on Forks (Gabor Szabo)
+      * PR #1590: Improve install/documentation of XS modules (Jason A. Crome)
+      * PR #1591: Add more plugins to GitHub Actions CI (Gabor Szabo)
+      [ DOCUMENTATION ]
+      * GH #1582: Small fixes in Migration POD (Sergiy Borodych)
+      * PR #1595: Add cookbook recipe for enabling/disabling routes at
+        runtime (Nick Tonkin)
+      * PR #1599: Punctuation correction in docs (Nick Tonkin)
+
+-------------------------------------------------------------------
 Wed Jan 27 11:12:37 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Explicitly specify perl(Role::Tiny) >= 2.000008
