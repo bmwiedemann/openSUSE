@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 18 14:20:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add -Wno-error
+
+-------------------------------------------------------------------
 Thu Mar 11 14:00:16 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Bump SONAME because of ABI change underneath [boo#1183350].

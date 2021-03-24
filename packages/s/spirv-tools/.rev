@@ -194,4 +194,12 @@
 join Staging:E</comment>
     <requestid>878324</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>2df55097852198888e79f3ad5205b102</srcmd5>
+    <version>2020.7</version>
+    <time>1616598550</time>
+    <user>dimstar_suse</user>
+    <comment>- Add -Wno-error [boo#1181882]</comment>
+    <requestid>879908</requestid>
+  </revision>
 </revisionlist>

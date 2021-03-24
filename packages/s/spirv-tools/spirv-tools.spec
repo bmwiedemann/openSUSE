@@ -68,6 +68,7 @@ integration into other code bases directly.
 %autosetup -p1 -n SPIRV-Tools-%version
 
 %build
+export CXXFLAGS="%optflags -Wno-error=stringop-truncation"
 %cmake -DSPIRV-Headers_SOURCE_DIR="%_prefix" \
 	-DSPIRV_TOOLS_BUILD_STATIC:BOOL=OFF -DBUILD_SHARED_LIBS:BOOL=ON
 %cmake_build
