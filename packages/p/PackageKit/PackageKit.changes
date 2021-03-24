@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 15 21:24:53 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
+
+- Add PackageKit-remove-transaction-size-limit.patch: Remove large transaction 
+  size sanity check (gh#hughsie/PackageKit/commit#ac5c8660)
+
+-------------------------------------------------------------------
 Mon Mar  1 08:05:23 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-zypp-initialize-pool.patch: zypp: Make sure pool
