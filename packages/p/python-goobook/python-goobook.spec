@@ -25,11 +25,13 @@ Summary:        Search your google contacts from the command-line or mutt
 License:        GPL-3.0-only
 URL:            https://gitlab.com/goobook/goobook
 Source:         https://files.pythonhosted.org/packages/source/g/goobook/goobook-%{version}.tar.gz
+Patch0:         0001-Switch-from-xdg-to-pyxdg.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-api-python-client >= 1.6.4
 Requires:       python-oauth2client >= 1.5.0
+Requires:       python-pyxdg >= 0.26
 Requires:       python-simplejson >= 2.1.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -45,6 +47,7 @@ way as abook.
 
 %prep
 %setup -q -n goobook-%{version}
+%patch0
 sed -i '/^#!\/usr\/bin\/env python/d' goobook/application.py
 
 %build
