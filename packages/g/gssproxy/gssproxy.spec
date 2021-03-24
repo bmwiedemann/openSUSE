@@ -17,7 +17,7 @@
 
 
 Name:           gssproxy
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Daemon for managing gss-api requests
 License:        MIT
