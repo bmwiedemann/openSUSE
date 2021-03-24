@@ -133,4 +133,12 @@ Changes from 0.16.0 to 0.17.0:
   * Made uuid validator accept UUID objects</comment>
     <requestid>841079</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c1287e38b70cce94f6658ef8d861cbc2</srcmd5>
+    <version>0.18.1</version>
+    <time>1616598705</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>880414</requestid>
+  </revision>
 </revisionlist>
