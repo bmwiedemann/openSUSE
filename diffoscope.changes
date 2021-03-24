@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 16 09:20:53 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- add fix-tests-libmix_differences-2.patch to fix a newline in the other upstream patch
+
+-------------------------------------------------------------------
+Mon Mar 15 21:08:35 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- activate test_differences test, as it is fixed in openSUSE TW.
+- use fix-tests-libmix_differences.patch based on upstream patch and activate test_limix_differences tests.
+
+-------------------------------------------------------------------
+Fri Mar 12 08:03:39 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Disable failing tests explicitly instead of ignoring the exit code.
+
+-------------------------------------------------------------------
 Sat Feb 27 15:00:17 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update dependencies

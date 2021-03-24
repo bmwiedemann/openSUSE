@@ -26,6 +26,10 @@ URL:            https://diffoscope.org/
 Source0:        https://diffoscope.org/archive/diffoscope-%{version}.tar.bz2
 Source1:        https://diffoscope.org/archive/diffoscope-%{version}.tar.bz2.asc
 Source2:        diffoscope.keyring
+# PATCH-FIX-UPSTREAM fix-tests-libmix_differences.patch -- fixes test_libmix_differences https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/244
+Patch0:         https://salsa.debian.org/reproducible-builds/diffoscope/-/commit/fda75c731cd20383b15bcfc3326100b5ecd0787f.diff#/fix-tests-libmix_differences.patch
+# PATCH-FIX-UPSTREAM fix-tests-libmix_differences-2.patch -- fixes test_libmix_differences https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/244
+Patch1:         https://salsa.debian.org/reproducible-builds/diffoscope/-/commit/27e27436ffad4ef35c2bde751001bef647c12caf.diff#/fix-tests-libmix_differences-2.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.7
@@ -112,6 +116,8 @@ debbindiff.
 %prep
 %setup -q
 sed -i '0,/#!\/usr\/bin\/env/ d' diffoscope/main.py
+%patch0 -p1
+%patch1 -p1
 
 %build
 %python3_build
@@ -134,8 +140,8 @@ if [ "$1" = 0 ] ; then
 fi
 
 %check
-# 3 tests fail 177 skipped due to missing tools, needs more investigation
-py.test-%{python3_bin_suffix} -v || :
+# test_identification https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/98
+py.test-%{python3_bin_suffix} -k 'not test_identification'
 
 %files
 %doc README.rst
