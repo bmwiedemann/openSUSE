@@ -18,7 +18,7 @@
 
 %define cpan_name Minion
 Name:           perl-Minion
-Version:        10.20
+Version:        10.21
 Release:        0
 Summary:        Job queue
 License:        Artistic-2.0
@@ -29,9 +29,9 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Mojolicious) >= 9.0
-BuildRequires:  perl(YAML::XS)
+BuildRequires:  perl(YAML::XS) >= 0.67
 Requires:       perl(Mojolicious) >= 9.0
-Requires:       perl(YAML::XS)
+Requires:       perl(YAML::XS) >= 0.67
 %{perl_requires}
 
 %description
