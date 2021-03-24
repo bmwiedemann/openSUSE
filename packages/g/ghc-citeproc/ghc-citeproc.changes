@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 14 22:18:46 UTC 2021 - psimons@suse.com
+
+- Update citeproc to version 0.3.0.9.
+  ## 0.3.0.9
+
+   * Implement `et-al-subsequent-min` and `et-al-subsequent-use-first` (#60).
+
+-------------------------------------------------------------------
 Wed Mar  3 16:35:42 UTC 2021 - psimons@suse.com
 
 - Update citeproc to version 0.3.0.8.
