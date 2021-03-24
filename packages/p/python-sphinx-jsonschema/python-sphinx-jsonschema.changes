@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Mar 16 21:13:34 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to 1.16.7:
+  * Fixed: Renders "null" default value as "None"
+- Changes from 1.16.6:
+  * Bug fixes
+- Changes from 1.16.5:
+  * Fixes auto reference without title
+- Changes from 1.16.4:
+  * Introduces the :lift_title: directive option suggested by ankostis.
+  * Fixed a bug in rendering the items attribute of the array type
+- Changes from 1.16.3:
+  * Fixed bugs rendering the default and examples keywords.
+- Changes from 1.16.2:
+  * Introduced the configuration entry jsonschema_options setting
+    default values for the directive options introduced in 1.16.
+    The options now can accept a parameter to explicitly turn the
+    option on or off.
+- Changes from 1.16.1:
+  * Bug fixes
+- Changes from 1.16:
+  * WouterTuinstra reimplemented support for dependencies and properly
+    this time. He also improved error handling and reporting and added
+    a couple of options improving the handling of references. The most
+    important additions are the directive options :lift_description:,
+    :lift_definitions:, :auto_target: and :auto_reference:. In addition
+    to all that he also implemented support for the if, then and else
+    keywords.
+
+-------------------------------------------------------------------
 Tue Jun 16 11:45:10 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.15:
