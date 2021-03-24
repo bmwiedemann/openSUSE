@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Mar 22 03:08:19 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.005003
+   see /usr/share/doc/packages/perl-Moo/Changes
+
+  2.005003 - 2021-03-21
+    - silence 'once' warnings from Moo::_Utils
+  2.005_002 - 2021-01-22
+    - fix C3 test skipping properly when MRO::Compat not available on perl < 5.10
+  2.005_001 - 2021-01-20
+    - fix perl version check in global destruction code
+  2.005_000 - 2021-01-20
+    - remove MooseX::Types from developer prereqs
+    - recommend Sub::Util rather than Sub::Name, since Sub::Util is in core
+    - fix line numbers when using oo module (perl -Moo)
+    - adjust some author tests to rely less on external modules
+    - lower Exporter prereq to any version
+    - bump Role::Tiny prereq to 2.003004
+    - refactor and simplify role application code, as allowed by new Role::Tiny
+      version
+    - switch to using normal strict+warnings rather than strictures for authors
+    - remove strictures from recommends, as Moo does not use it anywhere
+    - remove Task::Weaken prereq, as it served no purpose
+    - remove MRO::Compat prereq, using it only when user code does
+    - remove use of Devel::GlobalDestruction in code, only using
+      Devel::GlobalDestruction::XS when it is available. Devel::GlobalDestruction
+      is still a dependency on perl < 5.14 to facilitate the installation of the
+      ::XS module.
+    - Moo now has no mandatory perl version specific dependencies. The version
+      specific modules are now optional or not used. This means code using Moo can
+      be fatpacked on a new perl version without special cases, and it will work
+      on older perl versions.
+
+-------------------------------------------------------------------
 Wed Nov 25 03:07:22 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.004004

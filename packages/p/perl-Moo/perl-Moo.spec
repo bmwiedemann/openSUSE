@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Moo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,30 @@
 #
 
 
-Name:           perl-Moo
-Version:        2.004004
-Release:        0
 %define cpan_name Moo
+Name:           perl-Moo
+Version:        2.005003
+Release:        0
 Summary:        Minimalist Object Orientation (with Moose compatibility)
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Method::Modifiers) >= 1.10
-BuildRequires:  perl(Role::Tiny) >= 2.001004
+BuildRequires:  perl(Role::Tiny) >= 2.002003
 BuildRequires:  perl(Sub::Defer) >= 2.006006
 BuildRequires:  perl(Sub::Quote) >= 2.006006
 BuildRequires:  perl(Test::Fatal) >= 0.003
 BuildRequires:  perl(Test::More) >= 0.94
 Requires:       perl(Class::Method::Modifiers) >= 1.10
-Requires:       perl(Role::Tiny) >= 2.001004
+Requires:       perl(Role::Tiny) >= 2.002003
 Requires:       perl(Sub::Defer) >= 2.006006
 Requires:       perl(Sub::Quote) >= 2.006006
 Recommends:     perl(Class::XSAccessor) >= 1.18
-Recommends:     perl(strictures) >= 2
-Recommends:     perl(Sub::Name) >= 0.08
+Recommends:     perl(Sub::Util)
 %{perl_requires}
 
 %description
@@ -64,11 +61,11 @@ For a full list of the minor differences between Moose and Moo's surface
 syntax, see INCOMPATIBILITIES WITH MOOSE.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -79,7 +76,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 
