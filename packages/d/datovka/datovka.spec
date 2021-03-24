@@ -17,7 +17,7 @@
 
 
 Name:           datovka
-Version:        4.15.0
+Version:        4.16.0
 Release:        0
 Summary:        Library to access Czech eGov system "Datove schranky"
 License:        GPL-3.0-or-later
@@ -27,9 +27,6 @@ Source0:        https://secure.nic.cz/files/datove_schranky/%{version}/%{name}-%
 Source1:        https://secure.nic.cz/files/datove_schranky/%{version}/%{name}-%{version}.tar.xz.sha256
 # PATCH-FIX-UPSTREAM: remove some issues with current .pro file
 Patch0:         datovka-fix-pro.patch
-Patch1:         0001-Fixed-compilation-using-Qt-5.15.0.patch
-Patch2:         0001-avoid-using-deprecated-qs-rand.patch
-Patch3:         0001-gui-datovka-annotate-fall-through-cases.patch
 BuildRequires:  libqt5-linguist
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
@@ -40,7 +37,7 @@ BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Sql) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Svg) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
-BuildRequires:  pkgconfig(libisds) >= 0.10.8
+BuildRequires:  pkgconfig(libdatovka) >= 0.1.1
 Requires:       libqt5_sql_backend
 Recommends:     %{name}-lang
 # Included inside with different approach
@@ -96,8 +93,8 @@ rm -rf %{buildroot}%{_datadir}/datovka/doc
 %doc AUTHORS ChangeLog
 %{_bindir}/datovka
 %{_datadir}/applications/datovka.desktop
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/datovka.appdata.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/datovka.metainfo.xml
 %dir %{_datadir}/datovka
 %dir %{_datadir}/datovka/localisations/
 %{_datadir}/datovka/localisations/datovka_cs.qm

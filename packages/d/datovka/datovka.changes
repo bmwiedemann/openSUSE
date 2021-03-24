@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Mar  1 10:25:01 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 4.16.0
+ * Using libdatovka instead of libisds. Libdatovka is a fork of libisds and
+   contains functionality which libisds still does not implement and which is
+   needed by the application.
+ * Added the possibility to manage data-box users which is similar to the
+   functionality offered by the ISDS web interface.
+ * Fixed sorting of Czech strings in table views when using Czech
+   localisation.
+ * Fixed application crashes on repeated full-text data-box searches.
+ * Fixed navigation in table views in backup and restoration dialogue.
+ * Added support for the EV6 event.
+ * Improved tab order in send message window.
+ * Added PostSignum Qualified CA 4 certificate.
+ * Fixed a problem with shadow synchronisation after which a blank account name
+   was sent in the records management report.
+ * The notification dialogue informing the user about sending a postal data
+   message can be disabled.
+ * Added a short timeout before the immediate download of a freshly sent
+   message.
+ * Fixed error in ISDS type conversion code - invalid type string values have
+   been fixed. Database-related incompatible code has been removed from code
+   shared with mobile application.
+ * Able to add contacts without name or address into recipient list when
+   creating a message.
+ * Fixed an error in remembering directory path when opening and viewing ZFO
+   files from file system immediately after application start.
+ * Replaced the 'Mark All as Read' action with 'Mark All Received as' sub-menu
+   in the 'Data Box' menu of the top menu bar.
+ * Renamed 'Authenticate Message' to 'Verify Message' in the 'Message' menu
+   because it reflects better the performed operation.
+ * Account and message selection status is kept in a separate structure. It is
+   used to simplify the code for various actions in the main window.
+ * Code responsible for enabling actions in the main window has been gathered
+   into one method.
+ * Improved GUI responsiveness when downloading message lists with complete
+   new messages.
+ * Suspending the worker pool does not affect tasks run via runSingle().
+ * Added user_account_name field into upload_account_status structure. Sending
+   account name in order to make account identification in the records
+   management service a bit easier.
+ * Fixed compilation with Qt-5.15.0. Replaced most of deprecated code with
+   available modern alternatives.
+ * Replaced datovka.appdata.xml with datovka.metainfo.xml.
+- remove (fixed upstream)
+  0001-Fixed-compilation-using-Qt-5.15.0.patch
+  0001-avoid-using-deprecated-qs-rand.patch
+  0001-gui-datovka-annotate-fall-through-cases.patch
+
+-------------------------------------------------------------------
 Fri Jun  5 07:25:55 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - add

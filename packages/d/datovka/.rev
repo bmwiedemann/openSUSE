@@ -365,4 +365,41 @@
     <comment></comment>
     <requestid>812025</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9554a0d1a93ff4dd098dfc05a44c770c</srcmd5>
+    <version>4.16.0</version>
+    <time>1616598698</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.16.0
+ * Using libdatovka instead of libisds. Libdatovka is a fork of libisds and
+   contains functionality which libisds still does not implement and which is
+   needed by the application.
+ * Added the possibility to manage data-box users which is similar to the
+   functionality offered by the ISDS web interface.
+ * Fixed sorting of Czech strings in table views when using Czech
+   localisation.
+ * Fixed application crashes on repeated full-text data-box searches.
+ * Fixed navigation in table views in backup and restoration dialogue.
+ * Added support for the EV6 event.
+ * Improved tab order in send message window.
+ * Added PostSignum Qualified CA 4 certificate.
+ * Fixed a problem with shadow synchronisation after which a blank account name
+   was sent in the records management report.
+ * The notification dialogue informing the user about sending a postal data
+   message can be disabled.
+ * Added a short timeout before the immediate download of a freshly sent
+   message.
+ * Fixed error in ISDS type conversion code - invalid type string values have
+   been fixed. Database-related incompatible code has been removed from code
+   shared with mobile application.
+ * Able to add contacts without name or address into recipient list when
+   creating a message.
+ * Fixed an error in remembering directory path when opening and viewing ZFO
+   files from file system immediately after application start.
+ * Replaced the 'Mark All as Read' action with 'Mark All Received as' sub-menu
+   in the 'Data Box' menu of the top menu bar.
+ * Renamed 'Authenticate Message' to 'Verify Message' in the 'Message' menu
+   because it reflects better the performed operation.</comment>
+    <requestid>880436</requestid>
+  </revision>
 </revisionlist>
