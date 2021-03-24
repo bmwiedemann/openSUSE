@@ -1698,4 +1698,18 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment></comment>
     <requestid>863172</requestid>
   </revision>
+  <revision rev="195" vrev="2">
+    <srcmd5>ab1f09bc16d06e4e8c0e57a524686c95</srcmd5>
+    <version>3.38.3</version>
+    <time>1616598612</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable
+  gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch:
+  Clears existing keyboard on gnome-shell restart (boo#1183823).
+
+- Update gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch:
+  Modify the Japanese input engine load order which will more fit
+  for our community(bnc#1183475);</comment>
+    <requestid>880179</requestid>
+  </revision>
 </revisionlist>

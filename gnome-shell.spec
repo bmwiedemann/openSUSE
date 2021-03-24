@@ -183,7 +183,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch4 -p1
 #patch5 -p1
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
-%patch6 -p1
+#patch6 -p1
 %endif
 
 translation-update-upstream

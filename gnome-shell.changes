@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 19 21:27:12 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable
+  gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch:
+  Clears existing keyboard on gnome-shell restart (boo#1183823).
+
+-------------------------------------------------------------------
+Wed Mar 17 11:16:17 UTC 2021 - Cliff Zhao <qzhao@suse.com>
+
+- Update gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch:
+  Modify the Japanese input engine load order which will more fit
+  for our community(bnc#1183475);
+
+-------------------------------------------------------------------
 Thu Jan 14 18:22:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.38.3:
@@ -13,7 +27,7 @@ Thu Jan 14 18:22:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 -------------------------------------------------------------------
 Mon Jan 11 03:23:44 UTC 2021 - Cliff Zhao <qzhao@suse.com>
-           
+
 - Add gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch:
   launch recommended input engines when Gnome-shell init in CJK
   regions (jsc#SLE-16051, glgo#GNOME/gnome-shell!1563).
