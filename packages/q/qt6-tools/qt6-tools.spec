@@ -45,7 +45,12 @@ Source11:       org.qt.linguist6.desktop
 Source12:       org.qt.qdbusviewer6.desktop
 Source13:       org.qt.assistant6.desktop
 Source99:       qt6-tools-rpmlintrc
-BuildRequires:  clang-devel
+# clang-devel in Leap 15.3 points to clang7...
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150300
+BuildRequires:  clang11-devel
+%else
+BuildRequires:  clang-devel >= 8
+%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-dbus-private-devel
@@ -228,8 +233,7 @@ Command line client for communication over D-Bus.
 Summary:        Qt 6 Tool used by Qt to generate documentation
 License:        GPL-3.0-only
 # qdoc hardcodes clang include paths: boo#1109367, QTBUG-70687
-%global _clang_major_version %(printf %{pkg_version clang-devel} | cut -d. -f1)
-%requires_eq    libclang%{_clang_major_version}
+%requires_eq    libclang%{_llvm_sonum}
 
 %description qdoc
 Qt 6 Tool used by Qt to generate documentation.

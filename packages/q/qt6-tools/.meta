@@ -5,6 +5,6 @@
 Included are Qt Designer (GUI design), QDbusViewer and more.
 
 </description>
-  <devel project="KDE:Qt:6.0" package="qt6-tools"/>
+  <devel project="KDE:Qt6" package="qt6-tools"/>
   <url>https://www.qt.io</url>
 </package>
