@@ -11,36 +11,14 @@ because:
 
 Signed-off-by: Michel Normand <normand@linux.vnet.ibm.com>
 ---
- Makefile.system               |    4 ++++
+ Makefile.system               |   10 +++++++---
  driver/others/dynamic_power.c |   11 +++++++++++
- 2 files changed, 15 insertions(+)
+ 2 files changed, 18 insertions(+), 3 deletions(-)
 
-Index: OpenBLAS-0.3.13/Makefile.system
+Index: OpenBLAS-0.3.14/driver/others/dynamic_power.c
 ===================================================================
---- OpenBLAS-0.3.13.orig/Makefile.system
-+++ OpenBLAS-0.3.13/Makefile.system
-@@ -665,6 +665,9 @@ endif # ARCH zarch
- ifeq ($(ARCH), power)
- DYNAMIC_CORE = POWER6
- DYNAMIC_CORE += POWER8
-+ifeq ($(__BYTE_ORDER__),__ORDER_BIG_ENDIAN__)
-+$(info, OpenBLAS: for big endian limit to POWER8 kernels.)
-+else
- ifneq ($(C_COMPILER), GCC)
- DYNAMIC_CORE += POWER9
- DYNAMIC_CORE += POWER10
-@@ -690,6 +693,7 @@ $(info, OpenBLAS: Your gcc version is to
- endif
- endif
- endif
-+endif
- 
- # If DYNAMIC_CORE is not set, DYNAMIC_ARCH cannot do anything, so force it to empty
- ifndef DYNAMIC_CORE
-Index: OpenBLAS-0.3.13/driver/others/dynamic_power.c
-===================================================================
---- OpenBLAS-0.3.13.orig/driver/others/dynamic_power.c
-+++ OpenBLAS-0.3.13/driver/others/dynamic_power.c
+--- OpenBLAS-0.3.14.orig/driver/others/dynamic_power.c
++++ OpenBLAS-0.3.14/driver/others/dynamic_power.c
 @@ -3,6 +3,7 @@
  
  extern gotoblas_t gotoblas_POWER6;
@@ -57,9 +35,9 @@ Index: OpenBLAS-0.3.13/driver/others/dynamic_power.c
  
  extern void openblas_warning(int verbose, const char *msg);
  
-@@ -29,12 +31,14 @@ static char *corename[] = {
- char *gotoblas_corename(void) {
+@@ -31,12 +33,14 @@ char *gotoblas_corename(void) {
  	if (gotoblas == &gotoblas_POWER6)	return corename[1];
+ #endif
  	if (gotoblas == &gotoblas_POWER8)	return corename[2];
 +#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
  #if (!defined __GNUC__) || ( __GNUC__ >= 6)
@@ -72,8 +50,8 @@ Index: OpenBLAS-0.3.13/driver/others/dynamic_power.c
  	return corename[0];
  }
  
-@@ -44,6 +48,10 @@ static gotoblas_t *get_coretype(void) {
- 		return &gotoblas_POWER6;
+@@ -200,6 +204,10 @@ static gotoblas_t *get_coretype(void) {
+ #endif
  	if (__builtin_cpu_is("power8"))
  		return &gotoblas_POWER8;
 +	/* Fall back to the POWER8 implementation for big endian */
@@ -83,7 +61,7 @@ Index: OpenBLAS-0.3.13/driver/others/dynamic_power.c
  #if (!defined __GNUC__) || ( __GNUC__ >= 6)
  	if (__builtin_cpu_is("power9"))
  		return &gotoblas_POWER9;
-@@ -57,6 +65,7 @@ static gotoblas_t *get_coretype(void) {
+@@ -213,6 +221,7 @@ static gotoblas_t *get_coretype(void) {
  	if (__builtin_cpu_is("power10"))
  		return &gotoblas_POWER9;
  #endif	
@@ -91,9 +69,9 @@ Index: OpenBLAS-0.3.13/driver/others/dynamic_power.c
  	return NULL;
  }
  
-@@ -79,12 +88,14 @@ static gotoblas_t *force_coretype(char *
- 	{
+@@ -237,12 +246,14 @@ static gotoblas_t *force_coretype(char *
  	case  1: return (&gotoblas_POWER6);
+ #endif
  	case  2: return (&gotoblas_POWER8);
 +#if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
  #if (!defined __GNUC__) || ( __GNUC__ >= 6)
@@ -106,3 +84,33 @@ Index: OpenBLAS-0.3.13/driver/others/dynamic_power.c
  	default: return NULL;
  	}
  	snprintf(message, 128, "Core not found: %s\n", coretype);
+Index: OpenBLAS-0.3.14/Makefile.system
+===================================================================
+--- OpenBLAS-0.3.14.orig/Makefile.system
++++ OpenBLAS-0.3.14/Makefile.system
+@@ -673,6 +673,9 @@ ifeq ($(ARCH), power)
+ ifneq ($(C_COMPILER), PGI)
+ DYNAMIC_CORE = POWER6
+ DYNAMIC_CORE += POWER8
++ifeq ($(__BYTE_ORDER__),__ORDER_BIG_ENDIAN__)
++$(info, OpenBLAS: for big endian limit to POWER8 kernels.)
++else
+ ifneq ($(C_COMPILER), GCC)
+ DYNAMIC_CORE += POWER9
+ DYNAMIC_CORE += POWER10
+@@ -697,11 +700,12 @@ else
+ $(info, OpenBLAS: Your gcc version is too old to build the POWER10 kernels.)
+ endif
+ endif
+-else
++endif # __ORDER_BIG_ENDIAN__
++else # C_COMPILER PGI
+ DYNAMIC_CORE = POWER8
+ DYNAMIC_CORE += POWER9
+-endif
+-endif
++endif # C_COMPILER PGI
++endif # ARCH power
+ 
+ # If DYNAMIC_CORE is not set, DYNAMIC_ARCH cannot do anything, so force it to empty
+ ifndef DYNAMIC_CORE

@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Mar 18 12:22:57 UTC 2021 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Update openblas-ppc64be_up2_p8.patch trimed by previous sr
+  (still need changes in Makefile.system)
+
+-------------------------------------------------------------------
+Thu Mar 18 08:05:58 UTC 2021 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to version 0.3.14
+  common:
+  * Fixed a race condition on thread shutdown in non-OpenMP builds
+  * Fixed custom BUFFERSIZE option getting ignored in gmake builds
+  * Fixed CMAKE compilation of the TRMM kernels for GENERIC platforms
+  * Added CBLAS interfaces for CROTG, ZROTG, CSROT and ZDROT
+  * Improved performance of OMATCOPY_RT across all platforms
+  * Changed perl scripts to use env instead of a hardcoded /usr/bin/perl
+  * Fixed potential misreading of the GCC compiler version in the build scripts
+  * Fixed convergence problems in LAPACK complex GGEV/GGES (Reference-LAPACK #477)
+  * Reduced the stacksize requirements for running the LAPACK testsuite (Reference-LAPACK #335)
+
+  RISC V:
+  * Fixed compilation on RISCV (missing entry in getarch)
+
+  POWER:
+  * Fixed compilation for DYNAMIC_ARCH with clang and with older gcc versions
+  * Added support for compilation on FreeBSD/ppc64le
+  * Added optimized POWER10 kernels for SSCAL, DSCAL, CSCAL, ZSCAL
+  * Added optimized POWER10 kernels for SROT, DROT, CDOT, SASUM, DASUM
+  * Improved SSWAP, DSWAP, CSWAP, ZSWAP performance on POWER10
+  * Improved SCOPY and CCOPY performance on POWER10
+  * Improved SGEMM and DGEMM performance on POWER10
+  * Added support for compilation with the NVIDIA HPC compiler
+
+  x86_64:
+  * Added an optimized bfloat16 GEMM kernel for Cooperlake
+  * Added CPUID autodetection for Intel Rocket Lake and Tiger Lake cpus
+  * Improved the performance of SASUM,DASUM,SROT,DROT on AMD Ryzen cpus
+  * Added support for compilation with the NAG Fortran compiler
+  * Fixed recognition of the AMD AOCC compiler
+  * Fixed compilation for DYNAMIC_ARCH with clang on Windows
+  * Added support for running the BLAS/CBLAS tests on Windows
+  * Fixed signatures of the tls callback functions for Windows x64
+  * Fixed various issues with fma intrinsics support handling
+
+  ARM:
+  * Support compilation for embedded Cortex M4 targets via a new option EMBEDDED
+
+  ARM64:
+  * Fixed the THUNDERX2T99 and NEOVERSEN1 DNRM2/ZNRM2 kernels for inputs with Inf
+  * Added support for the DYNAMIC_LIST option
+  * Added support for compilation with the NVIDIA HPC compiler
+  * Added support for compiling with the NAG Fortran compiler
+
+- Remove 0001-Require-gcc-11-for-builtin_cpu_is-power10.patch
+  0002-patch-to-support-power10-in-builtin_cpu_is-was-backp.patch
+  Upstream fixed in a different way.
+
+-------------------------------------------------------------------
 Thu Feb  4 11:49:11 UTC 2021 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Disable lto for ppc64le to avoid build failure (bsc#1181733)

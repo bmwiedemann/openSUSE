@@ -18,8 +18,8 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _vers 0_3_13
-%define vers 0.3.13
+%define _vers 0_3_14
+%define vers 0.3.14
 %define pname openblas
 
 %bcond_with ringdisabled
@@ -37,10 +37,10 @@ ExclusiveArch:  do_not_build
 # we build devel packages only from one flavor
 %define build_devel 1
 %{bcond_with hpc}
-%endif 
+%endif
 
 %if "%flavor" == "pthreads"
-%define build_flags USE_THREAD=1 USE_OPENMP=0 
+%define build_flags USE_THREAD=1 USE_OPENMP=0
  %ifarch %ix86 x86_64
  %define openblas_so_prio 50
  %else
@@ -56,7 +56,7 @@ ExclusiveArch:  do_not_build
  %define openblas_so_prio 50
  %endif
 %{bcond_with hpc}
-%endif 
+%endif
 
 %if "%flavor" == "gnu-hpc"
 %define compiler_family gnu
@@ -167,9 +167,6 @@ URL:            http://www.openblas.net
 Source0:        https://github.com/xianyi/OpenBLAS/archive/v%{version}.tar.gz#/OpenBLAS-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        README.HPC.SUSE
-# Temporarily - delete with next version update
-Patch1:         0001-Require-gcc-11-for-builtin_cpu_is-power10.patch
-Patch2:         0002-patch-to-support-power10-in-builtin_cpu_is-was-backp.patch
 # PATCH-FIX-UPSTREAM openblas-noexecstack.patch
 Patch101:       openblas-noexecstack.patch
 # PATCH port
@@ -182,7 +179,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-fortran
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  lua-lmod
@@ -198,7 +195,7 @@ Summary:        An optimized BLAS library based on GotoBLAS2, %{flavor} version
 Group:          System/Libraries
 %if %{without hpc}
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
  %if "%flavor" == "serial"
 Obsoletes:      lib%{pname}%{so_v} < %{version}
 Provides:       lib%{pname}%{so_v} = %{version}
@@ -284,8 +281,6 @@ This package contains headers for OpenBLAS.
 %prep
 
 %setup -q -n OpenBLAS-%{version}
-%patch1 -p1
-%patch2 -p1
 %patch101 -p1
 %patch102 -p1
 %patch103 -p1
@@ -319,9 +314,9 @@ cp %{SOURCE2} .
 %define openblas_opt BUILD_BFLOAT16=1
 %endif
 %ifarch aarch64
-%global openblas_target %openblas_target TARGET=ARMV8 
+%global openblas_target %openblas_target TARGET=ARMV8
 %define openblas_opt BUILD_BFLOAT16=1
-%endif  
+%endif
 %ifarch s390 s390x
 %global openblas_target %openblas_target TARGET=ZARCH_GENERIC
 %endif
