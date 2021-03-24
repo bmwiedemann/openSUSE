@@ -20,7 +20,7 @@
 %bcond_without  ext_deps
 %global skip_python36 1
 Name:           python-vispy
-Version:        0.6.4
+Version:        0.6.6
 Release:        0
 Summary:        Interactive visualization in Python
 License:        BSD-3-Clause

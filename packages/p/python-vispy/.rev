@@ -68,4 +68,12 @@
     <comment>- skip python 3.6 from build</comment>
     <requestid>871471</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>afc207da7d666a5112f25cabd4907280</srcmd5>
+    <version>0.6.6</version>
+    <time>1616598735</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880494</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 20 12:41:30 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.6.6
+  * 0.6.6:
+    Patch release to create Python 3.8 wheels and future proof pyproject.toml
+  * 0.6.5:
+    Patch release with small styling fixes and other build related
+    fixes to work with Python 3.8 and future versions of Python.
+
+-------------------------------------------------------------------
 Fri Feb 12 15:01:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 from build 
