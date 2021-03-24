@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hspec-golden-aeson
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %global pkg_name hspec-golden-aeson
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.0.0
+Version:        0.9.0.0
 Release:        0
 Summary:        Use tests to monitor changes in Aeson serialization
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-pretty-devel
@@ -79,5 +80,6 @@ files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc ChangeLog.md README.md
 
 %changelog
