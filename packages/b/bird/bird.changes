@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Mar 22 09:12:19 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.8
+  Changes/Fixes:
+  * Automatic channel reloads based on RPKI changes
+  * Multiple static routes with the same network
+  * Use bitmaps to keep track of exported routes
+  * Per-channel debug flags
+  * CLI commands show info from multiple protocols
+  * Linux: IPv4 routes with IPv6 nexthops
+  * Filter: Optimized redesign of prefix sets
+  * Filter: Improved type checking of user filters
+  * Filter: New src/dst accessors for Flowspec and SADR
+  * Filter: New 'weight' route attribute
+  * Filter: BGP path mask loop operator
+  * Filter: Remove quitbird command
+  * RIP: Demand circuit support (RFC 2091)
+  * BGP: New 'allow as sets' and 'enforce first as' options
+  * BGP: Support for BGP hostname capability
+  * BGP: Support for MD5SIG with dynamic BGP
+  * BFD: Optional separation of IPv4 / IPv6 BFD instances
+  * BFD: Per-peer session options
+  * RPKI: Allow build without libSSH
+  * RPKI: New 'ignore max length' option
+  * OSPF: Redesign of handling of unnumbered PtPs
+  * OSPF: Allow key id 0 in authentication
+  * Babel: Use onlink flag for routes with unreachable next hop
+  * Many bugfixes
+  Notes:
+  * Automatic channel reloads based on RPKI changes are enabled
+    by default, but require import table enabled when used in
+    BGP import filter.
+  * BIRD now uses bitmaps to keep track of exported routes
+    instead of re-evaluation of export filters. That should
+    improve speed and accuracy in route export handling during
+    reconfiguration, but takes some more memory.
+  * Per-channel debug logging and some CLI commands (like 'show
+    ospf neighbors') defaulting to all protocol instances lead to
+    some minor changes in log and CLI output. Caution is
+    recommended when logs or CLI output are monitored by scripts.
+- Drop not longer needed patches:
+  * gcc10.patch
+  * fix_test_for_bigendian_arch.patch
+
+-------------------------------------------------------------------
 Mon Nov 16 12:45:29 UTC 2020 - Mark Stopka <mstopka@opensuse.org>
 
 - Add patch to fix test on Big Endian architectures

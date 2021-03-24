@@ -1,7 +1,7 @@
 #
 # spec file for package bird
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define bird_home %{_localstatedir}/lib/bird
 %define bird_runtimedir %{_rundir}/%{name}
 Name:           bird
-Version:        2.0.7
+Version:        2.0.8
 Release:        0
 Summary:        The BIRD Internet Routing Daemon
 License:        GPL-2.0-or-later
@@ -30,8 +30,6 @@ URL:            https://bird.network.cz/
 Source:         ftp://bird.network.cz/pub/bird/bird-%{version}.tar.gz
 Source1:        bird.service
 Source3:        bird.tmpfiles.d
-Patch0:         gcc10.patch
-Patch1:         fix_test_for_bigendian_arch.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  ncurses-devel
@@ -66,8 +64,6 @@ This package holds the HTML documentation.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 export CFLAGS="${RPM_OPT_FLAGS} -fpic -DPIC -fno-strict-aliasing -Wno-parentheses -Wno-pointer-sign"
