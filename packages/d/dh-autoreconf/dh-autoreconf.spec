@@ -1,7 +1,7 @@
 #
 # spec file for package dh-autoreconf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          System/Packages
 URL:            http://www.debian.org
 Source0:        http://ftp.de.debian.org/debian/pool/main/d/dh-autoreconf/%{name}_%{version}.tar.xz
 BuildRequires:  debhelper
+#!BuildIgnore:  dh-autoreconf
 BuildRequires:  xz
 Requires:       debhelper
 %if 0%{?suse_version}
@@ -40,7 +41,7 @@ two commands, dh_autoreconf and dh_autoreconf_clean.
 
 The dh_autoreconf command creates a list of the files and their checksums,
 calls autoreconf and then creates a second list for the new files.
- 
+
 The dh_autoreconf_clean command compares these two lists and removes all
 files which have been added or changed (files may be excluded if needed).
 
