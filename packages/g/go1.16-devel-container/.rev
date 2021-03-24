@@ -7,4 +7,15 @@
     <comment>Go 1.16 development container</comment>
     <requestid>880122</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>33a7d691b7a90f4173f92e0244318fd5</srcmd5>
+    <version>unknown</version>
+    <time>1616598952</time>
+    <user>dimstar_suse</user>
+    <comment>- Renamed tag to align with upstream
+- Added full path to reference value
+- Fix to version which missed the 1. in front of it
+</comment>
+    <requestid>881043</requestid>
+  </revision>
 </revisionlist>
