@@ -1155,4 +1155,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>CUPS security fix CVE-2020-10001 (bsc#1180520) (forwarded request 868665 from jsmeix)</comment>
     <requestid>868667</requestid>
   </revision>
+  <revision rev="153" vrev="3">
+    <srcmd5>d5fa0d13f4640cb3ad3d67fedd3ee01b</srcmd5>
+    <version>2.3.3</version>
+    <time>1616598607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880107</requestid>
+  </revision>
 </revisionlist>

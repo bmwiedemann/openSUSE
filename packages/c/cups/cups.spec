@@ -78,6 +78,8 @@ Patch104:       cups-config-libs.patch
 # Patch105 CVE-2020-10001.patch fixes CVE-2020-10001 (bsc#1180520)
 # access to uninitialized buffer in ipp.c
 Patch105:       CVE-2020-10001.patch
+# Patch106 Fixes web UI Kerberos authentication (bsc#1175960)
+Patch106:       fix-negotiate-authentication-between-CGIs-and-scheduler.patch
 # Build Requirements:
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
@@ -189,8 +191,8 @@ printers drivers.
 Summary:        CUPS library configuration files
 Group:          Hardware/Printing
 %if 0%{?suse_version} >= 1330
-Requires(pre):	user(lp)
-Requires(pre):	group(lp)
+Requires(pre):  user(lp)
+Requires(pre):  group(lp)
 %endif
 
 %description config
@@ -302,6 +304,8 @@ printer drivers for CUPS.
 # Patch105 CVE-2020-10001.patch fixes CVE-2020-10001 (bsc#1180520)
 # access to uninitialized buffer in ipp.c
 %patch105 -b CVE-2020-10001.orig
+# Patch106 Fixes web UI Kerberos authentication (bsc#1175960)
+%patch106 -p1
 
 %build
 # Remove ".SILENT" rule for verbose build output
@@ -437,9 +441,11 @@ getent group ntadmin >/dev/null || %{_sbindir}/groupadd -g 71 -o -r ntadmin
 %service_add_pre cups.service cups-lpd.socket cups.socket
 
 %post -p /bin/bash
-%service_add_post cups.service cups-lpd.socket cups.socket
+%if 0
 # Use %%tmpfiles_create when 13.2 is oldest in support scope
+%endif
 /usr/bin/systemd-tmpfiles --create %{_tmpfilesdir}/cups.conf || :
+%service_add_post cups.service cups-lpd.socket cups.socket
 
 %preun -p /bin/bash
 %service_del_preun cups.service cups-lpd.socket cups.socket
@@ -448,6 +454,7 @@ getent group ntadmin >/dev/null || %{_sbindir}/groupadd -g 71 -o -r ntadmin
 %service_del_postun cups.service cups-lpd.socket cups.socket
 
 %posttrans -p /bin/bash
+%if 0
 # Use a real bash script with an explicit "exit 0" at the end to be by default fail safe
 # an explicit "exit 1" must be use to enforce package install/upgrade/erase failure where needed
 # see the "Shared_libraries" section in http://en.opensuse.org/openSUSE:Packaging_scriptlet_snippets
@@ -466,17 +473,23 @@ getent group ntadmin >/dev/null || %{_sbindir}/groupadd -g 71 -o -r ntadmin
 # and http://fedoraproject.org/wiki/Packaging:ScriptletSnippets#Scriptlet_Ordering
 # from the new package only "posttrans of new package" is run after "removal of old package"
 # so that the new package must do the clean up as RPM posttrans scriptlet.
+%endif
 for u in cups.service cups.socket cups.path; do
    if systemctl --quiet is-enabled $u 2>/dev/null
-   then # Refresh still valid enabled systemd units and clean up possibly obsoleted systemd units:
+   then
+%if 0
+        # Refresh still valid enabled systemd units and clean up possibly obsoleted systemd units:
         # Enforce systemd to use the current unit file which is usually the unit file of the new package
         # but also in case of custom units (that use other unit files) a "reenable" won't hurt because
         # "reenable" does not implicitly stop a running service which is "the right thing" because
         # a RPM package installation must not automatically disrupt (restart) a running service.
         # Using "--force reenable" is essential to clean up possibly conflicting/broken symlinks.
         # (without "|| :" build fails with "Failed to get D-Bus connection: No connection to service manager. posttrans script ... failed"):
+%endif
         systemctl --quiet --force reenable $u 2>/dev/null || :
-   else # Refresh still valid disabled systemd units and clean up possibly obsoleted systemd units:
+   else
+%if 0
+        # Refresh still valid disabled systemd units and clean up possibly obsoleted systemd units:
         # First using "--force reenable" is essential to clean up possibly conflicting/broken symlinks
         # because there is no "--force disable" that would clean up possibly conflicting/broken symlinks
         # see https://bugzilla.opensuse.org/show_bug.cgi?id=904215#c34
@@ -484,6 +497,7 @@ for u in cups.service cups.socket cups.path; do
         # If a disabled systemd unit has become obsoleted, "systemctl --force reenable" will clean it up
         # which means the unit gets removed and the subsequent "systemctl disable" will do nothing.
         # (without "|| :" build fails with "Failed to get D-Bus connection: No connection to service manager. posttrans script ... failed"):
+%endif
         systemctl --quiet --force reenable $u 2>/dev/null || :
         systemctl --quiet disable $u 2>/dev/null || :
    fi

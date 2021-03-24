@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 19 12:02:38 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- fix-negotiate-authentication-between-CGIs-and-scheduler.patch
+  fixes web UI Kerberos authentication (bsc#1175960)
+
+-------------------------------------------------------------------
+Thu Mar 18 18:18:18 UTC 2021 - olaf@aepfle.de
+
+- Remove code comments from expanded scriptlets to reduce size
+
+-------------------------------------------------------------------
 Tue Feb  2 14:22:38 CET 2021 - jsmeix@suse.de
 
 - CVE-2020-10001.patch fixes CVE-2020-10001 (bsc#1180520)
