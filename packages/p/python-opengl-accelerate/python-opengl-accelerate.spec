@@ -1,7 +1,7 @@
 #
 # spec file for package python-opengl-accelerate
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,14 +27,19 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            http://pyopengl.sourceforge.net
 Source0:        https://files.pythonhosted.org/packages/source/P/%{tarname}/%{tarname}-%{_version}.tar.gz
+# test files: GitHub repo has no tags, use commit hash
+Source1:        https://github.com/mcfletch/pyopengl/raw/6ec398da44/accelerate/tests/test_arraydatatypeaccel.py
+Source2:        https://github.com/mcfletch/pyopengl/raw/6ec398da44/accelerate/tests/test_numpyaccel.py
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module opengl >= %{version}}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy
+BuildRequires:  %{python_module numpy-devel if (%python-base without python36-base)}
+Recommends:     python-numpy
 Requires:       python-opengl >= %{version}
+Provides:       python-PyOpenGL_accelerate = %{version}-%{release}
 %python_subpackages
 
 %description
@@ -56,6 +61,9 @@ export CFLAGS="%{optflags} -DGLX_GLXEXT_LEGACY"
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+
+%check
+%pytest_arch %{SOURCE1} %{SOURCE2}
 
 %files %{python_files}
 %license license.txt

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 23 20:48:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't build the numpy formathandler for python36.
+  NumPy is optional and not available for python36 on Tumbleweed.
+- Add test files test_arraydatatypeaccel.py and test_numpyaccel.py
+
+-------------------------------------------------------------------
 Fri Jul 17 21:57:47 UTC 2020 - Markus Ebner <info@ebner-markus.de>
 
 - Update to 3.1.5
