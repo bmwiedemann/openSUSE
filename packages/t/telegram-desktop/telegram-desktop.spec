@@ -34,7 +34,7 @@
 %define _dwz_max_die_limit     200000000
 
 Name:           telegram-desktop
-Version:        2.5.8
+Version:        2.7.1
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -44,11 +44,16 @@ Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%
 # git clone --recurse-submodules https://github.com/desktop-app/tg_owt.git tg_owt-master
 Source1:        tg_owt-master.zip
 # PATCH-FIX-OPENSUSE
-Patch0:         0000-gtk2-default.patch
-# PATCH-FIX-OPENSUSE
 Patch1:         0001-use-bundled-ranged-exptected-gsl.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0002-tg_owt-fix-name-confliction.patch
+# PATCH-FIX-UPSTREAM telegram-desktop-cinttypes-header.patch badshah400@gmail.com -- Include cinttypes to allow uint32_t usage
+Patch3:         telegram-desktop-cinttypes-header.patch
+# There is an (incomplete) patch available for part of the source:
+# https://github.com/desktop-app/lib_base.git 3582bca53a1e195a31760978dc41f67ce44fc7e4
+# but tdesktop itself still falls short, and it looks to be something
+# that would affect all ILP32 platforms.
+ExcludeArch:    %ix86 %arm aarch64_ilp32 ppc riscv32
 BuildRequires:  appstream-glib
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.16
@@ -62,13 +67,13 @@ BuildRequires:  gcc9-c++
 BuildRequires:  gcc-c++
 %endif
 BuildRequires:  glibc-devel
-BuildRequires:  libQt5Core-private-headers-devel
-BuildRequires:  libQt5Gui-private-headers-devel
+BuildRequires:  libQt5Core-private-headers-devel >= 5.15
+BuildRequires:  libQt5Gui-private-headers-devel >= 5.15
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblz4-devel
-BuildRequires:  libqt5-qtbase-common-devel
-BuildRequires:  libqt5-qtimageformats-devel
-BuildRequires:  libqt5-qtwayland-private-headers-devel
+BuildRequires:  libqt5-qtbase-common-devel >= 5.15
+BuildRequires:  libqt5-qtimageformats-devel >= 5.15
+BuildRequires:  libqt5-qtwayland-private-headers-devel >= 5.15
 BuildRequires:  libwebrtc_audio_processing-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -78,16 +83,17 @@ BuildRequires:  xxhash-devel
 BuildRequires:  xz
 BuildRequires:  yasm
 BuildRequires:  cmake(KF5Wayland)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5WaylandClient)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5DBus) >= 5.15
+BuildRequires:  pkgconfig(Qt5Network) >= 5.15
+BuildRequires:  pkgconfig(Qt5WaylandClient) >= 5.15
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbusmenu-qt5)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(glibmm-2.4)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(harfbuzz)
@@ -152,11 +158,11 @@ The service also provides APIs to independent developers.
 
 %prep
 %setup -q -n tdesktop-%{version}-full
-%patch0 -p1
 %patch1 -p2
+%patch3 -p1
 
 cd ../
-unzip %{S:1}
+unzip -q %{S:1}
 mkdir Libraries
 mv tg_owt-master Libraries/tg_owt
 %patch2 -p2 -d Libraries/tg_owt
@@ -166,6 +172,9 @@ mv tg_owt-master Libraries/tg_owt
 export CC=/usr/bin/gcc-9
 export CXX=/usr/bin/g++-9
 %endif
+
+# Fix build failures due to not finding installed headers for xkbcommon and wayland-client
+export CXXFLAGS+="`pkg-config --cflags xkbcommon wayland-client`"
 
 cd %{_builddir}/Libraries/tg_owt
 mkdir -p out/Release
@@ -196,7 +205,8 @@ cd %{_builddir}/tdesktop-%{version}-full
       -DDESKTOP_APP_USE_PACKAGED_FONTS=ON \
       -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
       -DTDESKTOP_LAUNCHER_BASENAME=%{name} \
-      -DDESKTOP_APP_SPECIAL_TARGET=""
+      -DDESKTOP_APP_SPECIAL_TARGET="" \
+      -DDESKTOP_APP_DISABLE_GTK_INTEGRATION=ON
 
 %cmake_build
 

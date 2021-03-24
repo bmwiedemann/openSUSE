@@ -1,7 +1,103 @@
 -------------------------------------------------------------------
+Tue Mar 23 13:14:33 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Expand the ExcludeArch.
+
+-------------------------------------------------------------------
+Mon Mar 22 16:07:33 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Exclude i586, support was dropped upstream
+  (gh#telegramdesktop/tdesktop#10037)
+
+-------------------------------------------------------------------
+Mon Mar 22 12:50:48 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add telegram-desktop-cinttypes-header.patch: Include cinttypes
+  header to use uint32_t.
+- Add xkbcommon and wayland header dirs to CXXFLAGS to fix build
+  failures.
+- Require Qt >= 5.15: Required since version 2.5.9
+  (gh#telegramdesktop/tdesktop#10398).
+- Pass -q to unzip to avoid echoing long file list while
+  unzipping.
+
+-------------------------------------------------------------------
+Mon Mar 22 10:23:27 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.7.1
+  * Fix editing 'Manage Voice Chats' rights for channel admins.
+  * Fix verification check display in voice chat participants list.
+  * Allow removing and blocking channels from voice chats.
+- Update tg_owt
+
+-------------------------------------------------------------------
+Sat Mar 20 16:16:34 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.7.0
+  * Start limitless Voice Chats in Groups and Channels.
+  * Host discussions that can be listened to by millions of people
+    simultaneously.
+  * Record voice chats to share or publish in Channels later.
+  * See that a chat is being recorded from the red dot next to
+    its title.
+  * See user bio texts right from the list of participants.
+  * Raise your hand to show admins you want to speak.
+  * Create separate Voice Chat Invite Links for listeners or speakers.
+  * Change the title of your Voice Chat to give people an idea
+    of the current topic.
+  * Join Voice Chats as one of your Channels to hide your
+    personal account.
+
+-------------------------------------------------------------------
 Thu Mar 18 12:46:03 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Use higher dwz memory limits for the package.
+
+-------------------------------------------------------------------
+Sat Mar 13 19:10:27 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.6.2
+  * Fix text disappearing because of cloud drafts sync.
+
+-------------------------------------------------------------------
+Wed Feb 24 20:00:09 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.6.1
+  * Fix time formatting in links.
+  * Fix copy QR code in night mode.
+  * Fix invite link sharing without a comment.
+  * Fix crash in link editing on Linux.
+
+-------------------------------------------------------------------
+Wed Feb 23 22:42:33 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.6.0
+  * Set messages to auto-delete for everyone 24 hours or 7 days
+    after sending.
+  * Control auto-delete settings in any of your chats, as well as
+    in groups and channels where you are an admin.
+  * To enable auto-delete, right click on the chat in the
+    chat list > Clear History > Enable Auto-Delete.
+  * Create invite links that work for a limited time or a limited
+    number of uses.
+  * See which users joined using your, or your admins', invite links.
+  * Turn any invite link into a QR code users can scan with their
+    phone cameras.
+  * To manage invite links, click ... > Manage Group/Channel
+    > Invite Links.
+  * Convert groups that have reached 200,000 members into unlimited
+    Broadcast Groups.
+- Remove 0000-gtk2-default.patch, the code was removed upstream,
+  meaning GTK integration is again broken, see boo#1149986
+
+-------------------------------------------------------------------
+Wed Feb 17 19:52:07 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.5.9
+  * Add 'Invite via Link' button to Add Members box.
+  * Fix window size in Windows 10 Tablet Mode.
+  * Fix layout of round video messages in channels.
+- Update tg_owt
 
 -------------------------------------------------------------------
 Sun Jan 31 14:57:11 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
@@ -30,7 +126,7 @@ Mon Jan 25 11:06:07 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
   * Add more information to date tooltips in Recent Actions and
     channel comments.
   * Bug andicrash fixes.
-- Updatet tg_owt
+- Update tg_owt
 - Rebase 0000-gtk2-default.patch
 
 -------------------------------------------------------------------

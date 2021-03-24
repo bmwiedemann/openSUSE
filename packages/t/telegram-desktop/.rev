@@ -563,4 +563,41 @@
     <comment></comment>
     <requestid>880261</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>b3fd6e5a3c063327c9eec6d49205c058</srcmd5>
+    <version>2.7.1</version>
+    <time>1616598893</time>
+    <user>dimstar_suse</user>
+    <comment>- Expand the ExcludeArch.
+
+- Exclude i586, support was dropped upstream
+  (gh#telegramdesktop/tdesktop#10037)
+
+- Add telegram-desktop-cinttypes-header.patch: Include cinttypes
+  header to use uint32_t.
+- Add xkbcommon and wayland header dirs to CXXFLAGS to fix build
+  failures.
+- Require Qt &gt;= 5.15: Required since version 2.5.9
+  (gh#telegramdesktop/tdesktop#10398).
+- Pass -q to unzip to avoid echoing long file list while
+  unzipping.
+
+- Update to 2.7.1
+  * Fix editing 'Manage Voice Chats' rights for channel admins.
+  * Fix verification check display in voice chat participants list.
+  * Allow removing and blocking channels from voice chats.
+- Update tg_owt
+
+- Update to 2.7.0
+  * Start limitless Voice Chats in Groups and Channels.
+  * Host discussions that can be listened to by millions of people
+    simultaneously.
+  * Record voice chats to share or publish in Channels later.
+  * See that a chat is being recorded from the red dot next to
+    its title.
+  * See user bio texts right from the list of participants.
+  * Raise your hand to show admins you want to speak.
+  * Create separate Voice Chat Invite Links for listeners or speakers.</comment>
+    <requestid>880737</requestid>
+  </revision>
 </revisionlist>
