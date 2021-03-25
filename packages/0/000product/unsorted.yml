@@ -13711,11 +13711,11 @@ unsorted:
   - libtrilinos-gnu-openmpi4-hpc: [x86_64] 
   - libtrilinos13: [x86_64] 
   - libtrilinos13-openmpi2: [x86_64] 
-  - libtrilinos_13_0_0-gnu-mpich-hpc: [x86_64] 
-  - libtrilinos_13_0_0-gnu-openmpi3-hpc: [x86_64] 
-  - libtrilinos_13_0_0-gnu-openmpi4-hpc: [x86_64] 
+  - libtrilinos_13_0_1-gnu-mpich-hpc: [x86_64] 
   - libtrilinos_13_0_1-gnu-mvapich2-hpc: [x86_64] 
   - libtrilinos_13_0_1-gnu-openmpi2-hpc: [x86_64] 
+  - libtrilinos_13_0_1-gnu-openmpi3-hpc: [x86_64] 
+  - libtrilinos_13_0_1-gnu-openmpi4-hpc: [x86_64] 
   - libtrng4-22 
   - libts0-32bit: [x86_64] 
   - libtsan0-gcc10: [x86_64] 
@@ -20837,7 +20837,6 @@ unsorted:
   - python3-lldb9: [x86_64] 
   - python3-logreduce 
   - python3-lttngust 
-  - python3-magic-wormhole: [x86_64] 
   - python3-magnumclient 
   - python3-mailman-hyperkitty 
   - python3-mailman-web 
@@ -20850,7 +20849,6 @@ unsorted:
   - python3-mlt 
   - python3-monascaclient 
   - python3-morecvutils 
-  - python3-moretools: [x86_64] 
   - python3-mox3 
   - python3-mraa 
   - python3-murano-pkg-check 
@@ -22494,7 +22492,7 @@ unsorted:
   - python36-m2r 
   - python36-macholib 
   - python36-magic 
-  - python36-magic-wormhole: [i586] 
+  - python36-magic-wormhole 
   - python36-magic-wormhole-mailbox-server 
   - python36-magic-wormhole-transit-relay 
   - python36-magicalimport 
@@ -22545,7 +22543,7 @@ unsorted:
   - python36-monotonic 
   - python36-more-itertools 
   - python36-moreorless 
-  - python36-moretools: [i586] 
+  - python36-moretools 
   - python36-moto 
   - python36-mplcursors 
   - python36-mpmath 
@@ -25332,7 +25330,7 @@ unsorted:
   - python38-m2r 
   - python38-macholib 
   - python38-magic 
-  - python38-magic-wormhole: [i586] 
+  - python38-magic-wormhole 
   - python38-magic-wormhole-mailbox-server 
   - python38-magic-wormhole-transit-relay 
   - python38-magicalimport 
@@ -25392,7 +25390,7 @@ unsorted:
   - python38-monitoring-plugins-http_json 
   - python38-monotonic 
   - python38-moreorless 
-  - python38-moretools: [i586] 
+  - python38-moretools 
   - python38-moto 
   - python38-mpi4py 
   - python38-mpi4py-devel 
@@ -36905,11 +36903,11 @@ unsorted:
   - trilinos-gnu-openmpi4-hpc-devel: [x86_64] 
   - trilinos-hpc-doc: [x86_64] 
   - trilinos-openmpi2-devel: [x86_64] 
-  - trilinos_13_0_0-gnu-mpich-hpc-devel: [x86_64] 
-  - trilinos_13_0_0-gnu-openmpi3-hpc-devel: [x86_64] 
-  - trilinos_13_0_0-gnu-openmpi4-hpc-devel: [x86_64] 
+  - trilinos_13_0_1-gnu-mpich-hpc-devel: [x86_64] 
   - trilinos_13_0_1-gnu-mvapich2-hpc-devel: [x86_64] 
   - trilinos_13_0_1-gnu-openmpi2-hpc-devel: [x86_64] 
+  - trilinos_13_0_1-gnu-openmpi3-hpc-devel: [x86_64] 
+  - trilinos_13_0_1-gnu-openmpi4-hpc-devel: [x86_64] 
   - trilinos_13_0_1-hpc-doc: [x86_64] 
   - trinity 
   - tripwire 
