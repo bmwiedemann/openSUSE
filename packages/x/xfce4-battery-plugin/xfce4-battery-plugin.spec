@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-battery-plugin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define plugin battery
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Battery Monitoring Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
-Url:            https://goodies.xfce.org/projects/panel-plugins/xfce4-%{plugin}-plugin
+URL:            https://docs.xfce.org/panel-plugins/xfce4-battery-plugin
 Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/1.1/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -90,7 +90,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %fdupes %{buildroot}%{_datadir}
 
 %files
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %license COPYING COPYING.LIB
 %{_libdir}/xfce4/panel/plugins/libbattery.so
 %{_datadir}/icons/hicolor/*/apps/xfce4-battery-*.*
