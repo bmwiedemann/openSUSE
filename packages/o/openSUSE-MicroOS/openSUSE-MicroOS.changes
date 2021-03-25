@@ -1,8 +1,25 @@
 -------------------------------------------------------------------
+Fri Mar  5 10:58:15 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add hostname explicitly to avoid busybox-hostname
+
+-------------------------------------------------------------------
+Fri Mar  5 10:09:01 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Use new kiwi feature to have arch specific preferences and 
+  therefore reduce the number of profiles / preferences.
+- Enable openstack images for aarch64.
+
+-------------------------------------------------------------------
 Mon Feb 22 14:12:23 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add an onie flavor including various scripts for installing it.
   See README.onie for details
+
+-------------------------------------------------------------------
+Mon Feb 22 00:53:54 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Use patterns-microos-base-zypper to pull Zypper in
 
 -------------------------------------------------------------------
 Wed Jan 20 14:34:15 UTC 2021 - Fabian Vogt <fvogt@suse.com>
