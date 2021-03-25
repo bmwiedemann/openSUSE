@@ -1,5 +1,5 @@
 #
-# spec file for package qgis-ltr
+# spec file for package qgis
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -24,7 +24,7 @@ Name:           qgis-ltr
 %else
 Name:           qgis
 %endif
-Version:        3.18.0
+Version:        3.18.1
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
