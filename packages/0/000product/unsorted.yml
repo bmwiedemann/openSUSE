@@ -1145,7 +1145,7 @@ unsorted:
   - bbswitch 
   - bbswitch-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - bbswitch-kmp-pae: [i586] 
-  - bcache-tools 
+  - bcache-tools: [i586] 
   - bcal: [x86_64] 
   - bcc-devel 
   - bcc-docs 
@@ -7624,7 +7624,7 @@ unsorted:
   - kernel-default-devel 
   - kernel-devel 
   - kernel-docs-html 
-  - kernel-firmware 
+  - kernel-firmware: [i586] 
   - kernel-kvmsmall: [x86_64] 
   - kernel-kvmsmall-devel: [x86_64] 
   - kernel-macros 
@@ -18021,7 +18021,6 @@ unsorted:
   - patterns-media-rest_cd_kde 
   - patterns-media-rest_cd_x11 
   - patterns-media-rest_core_dvd 
-  - patterns-microos-onlyDVD: [x86_64] 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
   - patterns-server-dhcp_dns_server-32bit 
@@ -20014,7 +20013,6 @@ unsorted:
   - poezio-doc 
   - policycoreutils-devel 
   - policycoreutils-newrole 
-  - policycoreutils-python-utils 
   - polkit-devel 
   - polkit-doc 
   - polkit-whitelisting 
@@ -20649,7 +20647,6 @@ unsorted:
   - python3-aexpect 
   - python3-ara 
   - python3-arpack-ng: [x86_64] 
-  - python3-audit 
   - python3-automaton 
   - python3-avahi-gtk 
   - python3-avocado 
@@ -20911,7 +20908,6 @@ unsorted:
   - python3-plplot 
   - python3-pocketsphinx 
   - python3-pocketsphinx5 
-  - python3-policycoreutils 
   - python3-prelude-correlator 
   - python3-presage 
   - python3-presagemate 
@@ -20947,7 +20943,6 @@ unsorted:
   - python3-rust2rpm 
   - python3-saharaclient 
   - python3-scikit-umfpack: [i586] 
-  - python3-selinux: [i586] 
   - python3-senlinclient 
   - python3-smbus 
   - python3-spglib 
@@ -23842,7 +23837,6 @@ unsorted:
   - python38-BTrees 
   - python38-BTrees-devel 
   - python38-BitVector 
-  - python38-Bottleneck 
   - python38-Brotli 
   - python38-CCColUtils 
   - python38-CacheControl 
@@ -25454,7 +25448,6 @@ unsorted:
   - python38-netCDF4 
   - python38-netmiko 
   - python38-netpbmfile 
-  - python38-networkx 
   - python38-nibabel 
   - python38-nilearn 
   - python38-nine 
@@ -25487,7 +25480,6 @@ unsorted:
   - python38-numba-devel 
   - python38-numcodecs 
   - python38-numericalunits 
-  - python38-numexpr 
   - python38-numpy-devel 
   - python38-numpy-gnu-hpc 
   - python38-numpy-gnu-hpc-devel 
@@ -25554,7 +25546,6 @@ unsorted:
   - python38-pampy 
   - python38-pamqp 
   - python38-pan-python 
-  - python38-pandas 
   - python38-pandas-datareader 
   - python38-pandas-ext 
   - python38-pandocfilters 
@@ -25737,7 +25728,6 @@ unsorted:
   - python38-pyannotate 
   - python38-pybars3 
   - python38-pybeam 
-  - python38-pybind11 
   - python38-pybind11-devel 
   - python38-pyblake2 
   - python38-pybluez 
@@ -25765,7 +25755,6 @@ unsorted:
   - python38-pydle 
   - python38-pydocstyle 
   - python38-pydocumentdb 
-  - python38-pydot 
   - python38-pydot3 
   - python38-pydotplus 
   - python38-pydub 
@@ -25792,7 +25781,6 @@ unsorted:
   - python38-pygments-pytest 
   - python38-pygments-style-railscasts 
   - python38-pygn 
-  - python38-pygraphviz 
   - python38-pyhcl 
   - python38-pyhibp 
   - python38-pyinotify 
@@ -26234,7 +26222,6 @@ unsorted:
   - python38-scikit-sound 
   - python38-scikit-sparse: [x86_64] 
   - python38-scikit-umfpack: [x86_64] 
-  - python38-scipy 
   - python38-scipy-gnu-hpc: [x86_64] 
   - python38-scipy_1_6_0-gnu-hpc: [x86_64] 
   - python38-scp 
@@ -26247,7 +26234,6 @@ unsorted:
   - python38-selection 
   - python38-selectors2 
   - python38-selenium 
-  - python38-semanage 
   - python38-semantic_version 
   - python38-semver 
   - python38-sentry-sdk 
@@ -26255,7 +26241,6 @@ unsorted:
   - python38-serpent 
   - python38-serpy 
   - python38-serverfiles 
-  - python38-setools 
   - python38-setupmeta 
   - python38-setuptools-git 
   - python38-setuptools-test 
@@ -36688,7 +36673,6 @@ unsorted:
   - texworks-plugin-python 
   - tftpboot-installation-common 
   - tftpboot-installation-openSUSE-Kubic-x86_64: [x86_64] 
-  - tftpboot-installation-openSUSE-MicroOS-x86_64: [x86_64] 
   - tftpboot-installation-openSUSE-Tumbleweed-i586: [i586] 
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64: [x86_64] 
   - the_silver_searcher 
