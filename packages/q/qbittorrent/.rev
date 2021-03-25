@@ -1112,4 +1112,63 @@
     <comment></comment>
     <requestid>864380</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>0683c0bae4d2abe86c2dfff915d8d889</srcmd5>
+    <version>4.3.4.1</version>
+    <time>1616680347</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 4.3.4.1
+  Bug fixes:
+  * Correctly draw progress bar
+  Web UI:
+  * Fix javascript code which broke the UI
+- Update to version 4.3.4
+  New features:
+  * Add ability to prioritize selected items by shown file order
+  * Allow tab to escape the text box in &quot;Edit trackers&quot; dialog
+  * Support sub-sorting in Transferlist
+  * Expose ToS setting from libtorrent
+  * Improve tracker entries handling
+  Bug fixes:
+  * Drop extension from generated content folder name
+  * Change qBittorrent Updater window title
+  * Validate HTTPS Tracker Certificate by default
+  * Don't let &quot;program update&quot; dialog steal focus
+  * Disable expand on double click in TorrentContentTreeView
+  * Add hyperlink to Transifex on translator list
+  * Enlarge &quot;speed limit&quot; icon slightly
+  * Don't prevent system sleep due to errored torrents
+  * Use stable sorting in transfer list
+  * Allow &quot;missing files&quot; torrents to save more resume data
+  * Restart &quot;missing files&quot; torrents after changing location
+  * Show proper string when torrent availability is not
+    available
+  * Apply &quot;Hide zero/infinity values&quot; to &quot;Time Active&quot;, &quot;Down/Up
+    Limit&quot; and ETA columns
+  * Fix potential out-of-bounds access
+  * Make SpeedPlotView averager time aware
+  * Add a 3-Hour graph
+  * Add an option to disable icons in menus
+  * Improve detection of filename extension of audio/video files
+  * Various drawing improvements of progress bar
+  * Properly stop torrent creation if aborted
+  * Replace external program parameters in one step
+  * Improve &quot;save resume data&quot; handling
+  * Fix bad IPv6 address format for outgoingInterfaces
+  WebUI:
+  * Properly decode strings
+  * Accept &quot;share limits&quot; when adding torrent using WebAPI
+  * Add seeding time to the active time column
+  * Fix incorrect seeding time string in General tab
+  * Allow &gt;100 days in WebUI function &quot;friendlyDuration&quot;
+  * Avoid decoding strings repeatedly
+  RSS:
+  * Add category button on AutomatedRSSDownloader on GUI
+  Other:
+  * Systemd: wait for mounting of local filesystems
+  * Raise minimum libtorrent version to 1.2.12
+  * Raise minimum Qt version to 5.12
+</comment>
+    <requestid>881220</requestid>
+  </revision>
 </revisionlist>

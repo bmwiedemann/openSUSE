@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Mar 24 21:23:00 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.3.4.1
+  Bug fixes:
+  * Correctly draw progress bar
+  Web UI:
+  * Fix javascript code which broke the UI
+
+-------------------------------------------------------------------
+Wed Mar 24 18:06:36 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.3.4
+  New features:
+  * Add ability to prioritize selected items by shown file order
+  * Allow tab to escape the text box in "Edit trackers" dialog
+  * Support sub-sorting in Transferlist
+  * Expose ToS setting from libtorrent
+  * Improve tracker entries handling
+  Bug fixes:
+  * Drop extension from generated content folder name
+  * Change qBittorrent Updater window title
+  * Validate HTTPS Tracker Certificate by default
+  * Don't let "program update" dialog steal focus
+  * Disable expand on double click in TorrentContentTreeView
+  * Add hyperlink to Transifex on translator list
+  * Enlarge "speed limit" icon slightly
+  * Don't prevent system sleep due to errored torrents
+  * Use stable sorting in transfer list
+  * Allow "missing files" torrents to save more resume data
+  * Restart "missing files" torrents after changing location
+  * Show proper string when torrent availability is not
+    available
+  * Apply "Hide zero/infinity values" to "Time Active", "Down/Up
+    Limit" and ETA columns
+  * Fix potential out-of-bounds access
+  * Make SpeedPlotView averager time aware
+  * Add a 3-Hour graph
+  * Add an option to disable icons in menus
+  * Improve detection of filename extension of audio/video files
+  * Various drawing improvements of progress bar
+  * Properly stop torrent creation if aborted
+  * Replace external program parameters in one step
+  * Improve "save resume data" handling
+  * Fix bad IPv6 address format for outgoingInterfaces
+  WebUI:
+  * Properly decode strings
+  * Accept "share limits" when adding torrent using WebAPI
+  * Add seeding time to the active time column
+  * Fix incorrect seeding time string in General tab
+  * Allow >100 days in WebUI function "friendlyDuration"
+  * Avoid decoding strings repeatedly
+  RSS:
+  * Add category button on AutomatedRSSDownloader on GUI
+  Other:
+  * Systemd: wait for mounting of local filesystems
+  * Raise minimum libtorrent version to 1.2.12
+  * Raise minimum Qt version to 5.12
+
+-------------------------------------------------------------------
 Tue Jan 19 18:11:52 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.3.3
