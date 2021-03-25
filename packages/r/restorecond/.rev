@@ -55,4 +55,12 @@
     <comment>please stage with updated gcc to prevent build failures</comment>
     <requestid>832096</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9d071e494802ca6e566576e316a02453</srcmd5>
+    <version>3.2</version>
+    <time>1616680318</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>879085</requestid>
+  </revision>
 </revisionlist>
