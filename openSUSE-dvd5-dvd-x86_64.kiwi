@@ -3897,6 +3897,7 @@
       <repopackage name="polari-lang"/>
       <repopackage name="policycoreutils"/>
       <repopackage name="policycoreutils-lang"/>
+      <repopackage name="policycoreutils-python-utils"/>
       <repopackage name="polkit"/>
       <repopackage name="polkit-default-privs"/>
       <repopackage name="polkit-gnome"/>
@@ -3964,6 +3965,7 @@
       <repopackage name="python-xml"/>
       <repopackage name="python2-pycairo"/>
       <repopackage name="python3-apparmor"/>
+      <repopackage name="python3-audit"/>
       <repopackage name="python3-bind"/>
       <repopackage name="python3-brlapi"/>
       <repopackage name="python3-createrepo_c"/>
@@ -3974,8 +3976,9 @@
       <repopackage name="python3-libguestfs" arch="x86_64"/>
       <repopackage name="python3-louis"/>
       <repopackage name="python3-nftables"/>
+      <repopackage name="python3-policycoreutils"/>
       <repopackage name="python3-salt"/>
-      <repopackage name="python3-selinux" arch="x86_64"/>
+      <repopackage name="python3-selinux"/>
       <repopackage name="python3-smbios"/>
       <repopackage name="python3-smbios-utils"/>
       <repopackage name="python3-solv"/>
@@ -4004,6 +4007,7 @@
       <repopackage name="python38-base"/>
       <repopackage name="python38-bcrypt"/>
       <repopackage name="python38-Beaker"/>
+      <repopackage name="python38-Bottleneck"/>
       <repopackage name="python38-brotlipy"/>
       <repopackage name="python38-cached-property"/>
       <repopackage name="python38-certifi"/>
@@ -4079,12 +4083,15 @@
       <repopackage name="python38-mysqlclient"/>
       <repopackage name="python38-netaddr"/>
       <repopackage name="python38-netifaces"/>
+      <repopackage name="python38-networkx"/>
       <repopackage name="python38-notify2"/>
+      <repopackage name="python38-numexpr"/>
       <repopackage name="python38-numpy"/>
       <repopackage name="python38-olefile"/>
       <repopackage name="python38-ordered-set"/>
       <repopackage name="python38-outcome"/>
       <repopackage name="python38-packaging"/>
+      <repopackage name="python38-pandas"/>
       <repopackage name="python38-parso"/>
       <repopackage name="python38-passlib"/>
       <repopackage name="python38-patiencediff"/>
@@ -4099,14 +4106,17 @@
       <repopackage name="python38-py"/>
       <repopackage name="python38-pyasn1"/>
       <repopackage name="python38-pyasn1-modules"/>
+      <repopackage name="python38-pybind11"/>
       <repopackage name="python38-pycairo"/>
       <repopackage name="python38-pycares"/>
       <repopackage name="python38-pycparser"/>
       <repopackage name="python38-pycryptodome"/>
       <repopackage name="python38-pycups"/>
       <repopackage name="python38-pycurl"/>
+      <repopackage name="python38-pydot"/>
       <repopackage name="python38-pygit2"/>
       <repopackage name="python38-Pygments"/>
+      <repopackage name="python38-pygraphviz"/>
       <repopackage name="python38-PyHamcrest"/>
       <repopackage name="python38-pylibmc"/>
       <repopackage name="python38-pymongo"/>
@@ -4133,9 +4143,12 @@
       <repopackage name="python38-requests"/>
       <repopackage name="python38-requests-toolbelt"/>
       <repopackage name="python38-rpm"/>
+      <repopackage name="python38-scipy"/>
       <repopackage name="python38-scour"/>
       <repopackage name="python38-scrypt"/>
+      <repopackage name="python38-semanage"/>
       <repopackage name="python38-service_identity"/>
+      <repopackage name="python38-setools"/>
       <repopackage name="python38-setproctitle"/>
       <repopackage name="python38-setuptools"/>
       <repopackage name="python38-simplejson"/>

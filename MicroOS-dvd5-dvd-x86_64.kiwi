@@ -54,7 +54,6 @@
       <repopackage name="skelcd-openSUSE" medium="0" removearch="src,nosrc" onlyarch="x86_64"/>
     </metadata>
     <repopackages>
-      <repopackage name=" patterns-microos-onlyDVD uninstallable: nothing provides libsepol.so.1()(64bit) needed by python38-setools-4.3.0-4.3.x86_64" arch="x86_64"/>
       <repopackage name="aaa_base"/>
       <repopackage name="accountsservice" arch="x86_64"/>
       <repopackage name="adobe-sourcecodepro-fonts" arch="x86_64"/>
@@ -65,6 +64,7 @@
       <repopackage name="apparmor-abstractions" arch="x86_64"/>
       <repopackage name="apparmor-parser" arch="x86_64"/>
       <repopackage name="apparmor-profiles" arch="x86_64"/>
+      <repopackage name="apparmor-utils" arch="x86_64"/>
       <repopackage name="AppStream" arch="x86_64"/>
       <repopackage name="appstream-glib" arch="x86_64"/>
       <repopackage name="argyllcms" arch="x86_64"/>
@@ -79,6 +79,7 @@
       <repopackage name="bash"/>
       <repopackage name="bash-completion" arch="x86_64"/>
       <repopackage name="bc" arch="x86_64"/>
+      <repopackage name="bcache-tools" arch="x86_64"/>
       <repopackage name="biosdevname" arch="x86_64"/>
       <repopackage name="blog" arch="x86_64"/>
       <repopackage name="bluedevil5" arch="x86_64"/>
@@ -112,6 +113,7 @@
       <repopackage name="canberra-gtk-play" arch="x86_64"/>
       <repopackage name="cantarell-fonts" arch="x86_64"/>
       <repopackage name="catatonit" arch="x86_64"/>
+      <repopackage name="checkpolicy" arch="x86_64"/>
       <repopackage name="chkstat"/>
       <repopackage name="chrome-gnome-shell" arch="x86_64"/>
       <repopackage name="chrony" arch="x86_64"/>
@@ -213,6 +215,7 @@
       <repopackage name="glib-networking" arch="x86_64"/>
       <repopackage name="glib2-tools" arch="x86_64"/>
       <repopackage name="glibc"/>
+      <repopackage name="glibc-locale" arch="x86_64"/>
       <repopackage name="glibc-locale-base" arch="x86_64"/>
       <repopackage name="gmenudbusmenuproxy" arch="x86_64"/>
       <repopackage name="gnome-bluetooth" arch="x86_64"/>
@@ -292,11 +295,13 @@
       <repopackage name="hplip-hpijs" arch="x86_64"/>
       <repopackage name="hwdata" arch="x86_64"/>
       <repopackage name="hwinfo" arch="x86_64"/>
+      <repopackage name="hyper-v" arch="x86_64"/>
       <repopackage name="iproute2" arch="x86_64"/>
       <repopackage name="ipset" arch="x86_64"/>
       <repopackage name="iptables" arch="x86_64"/>
       <repopackage name="iputils" arch="x86_64"/>
       <repopackage name="irqbalance" arch="x86_64"/>
+      <repopackage name="iscsiuio" arch="x86_64"/>
       <repopackage name="iso-codes" arch="x86_64"/>
       <repopackage name="iso_ent" arch="x86_64"/>
       <repopackage name="issue-generator" arch="x86_64"/>
@@ -317,6 +322,7 @@
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
       <repopackage name="kernel-default-base" arch="x86_64"/>
+      <repopackage name="kernel-firmware" arch="x86_64"/>
       <repopackage name="kexec-tools"/>
       <repopackage name="keyutils" arch="x86_64"/>
       <repopackage name="kfilemetadata5" arch="x86_64"/>
@@ -622,6 +628,7 @@
       <repopackage name="libharfbuzz0" arch="x86_64"/>
       <repopackage name="libhavege2" arch="x86_64"/>
       <repopackage name="libhogweed6" arch="x86_64"/>
+      <repopackage name="libhugetlbfs" arch="x86_64"/>
       <repopackage name="libhunspell-1_7-0" arch="x86_64"/>
       <repopackage name="libhyphen0" arch="x86_64"/>
       <repopackage name="libibus-1_0-5" arch="x86_64"/>
@@ -747,6 +754,7 @@
       <repopackage name="liblrdf2" arch="x86_64"/>
       <repopackage name="libltdl7" arch="x86_64"/>
       <repopackage name="liblua5_4-5"/>
+      <repopackage name="liblvm2cmd2_03" arch="x86_64"/>
       <repopackage name="liblz4-1"/>
       <repopackage name="liblzma5"/>
       <repopackage name="liblzo2-2"/>
@@ -770,6 +778,7 @@
       <repopackage name="libmpfr6" arch="x86_64"/>
       <repopackage name="libmpg123-0" arch="x86_64"/>
       <repopackage name="libmplex2-2_0-0" arch="x86_64"/>
+      <repopackage name="libmspack0" arch="x86_64"/>
       <repopackage name="libmtdev1" arch="x86_64"/>
       <repopackage name="libmtp-udev" arch="x86_64"/>
       <repopackage name="libmtp9" arch="x86_64"/>
@@ -805,6 +814,7 @@
       <repopackage name="libofa0" arch="x86_64"/>
       <repopackage name="libogg0" arch="x86_64"/>
       <repopackage name="libopenal1" arch="x86_64"/>
+      <repopackage name="libopeniscsiusr0_2_0" arch="x86_64"/>
       <repopackage name="libopenjp2-7" arch="x86_64"/>
       <repopackage name="libopenmpt0" arch="x86_64"/>
       <repopackage name="libopenssl1_1"/>
@@ -1013,6 +1023,7 @@
       <repopackage name="libvdpau1" arch="x86_64"/>
       <repopackage name="libverto1"/>
       <repopackage name="libvisual" arch="x86_64"/>
+      <repopackage name="libvmtools0" arch="x86_64"/>
       <repopackage name="libvorbis0" arch="x86_64"/>
       <repopackage name="libvorbisenc2" arch="x86_64"/>
       <repopackage name="libvorbisfile3" arch="x86_64"/>
@@ -1086,6 +1097,8 @@
       <repopackage name="libxml2-2" arch="x86_64"/>
       <repopackage name="libxml2-tools" arch="x86_64"/>
       <repopackage name="libxmlb2" arch="x86_64"/>
+      <repopackage name="libxmlsec1-1" arch="x86_64"/>
+      <repopackage name="libxmlsec1-openssl1" arch="x86_64"/>
       <repopackage name="libXmu6" arch="x86_64"/>
       <repopackage name="libXmuu1" arch="x86_64"/>
       <repopackage name="libXpm4" arch="x86_64"/>
@@ -1121,6 +1134,7 @@
       <repopackage name="lsof" arch="x86_64"/>
       <repopackage name="lua54" arch="x86_64"/>
       <repopackage name="lua54-luasocket" arch="x86_64"/>
+      <repopackage name="lvm2" arch="x86_64"/>
       <repopackage name="makedumpfile"/>
       <repopackage name="malcontent" arch="x86_64"/>
       <repopackage name="mdadm" arch="x86_64"/>
@@ -1156,7 +1170,10 @@
       <repopackage name="noto-coloremoji-fonts" arch="x86_64"/>
       <repopackage name="noto-sans-fonts" arch="x86_64"/>
       <repopackage name="nss-mdns" arch="x86_64"/>
+      <repopackage name="nvme-cli" arch="x86_64"/>
+      <repopackage name="open-iscsi" arch="x86_64"/>
       <repopackage name="open-lldp" arch="x86_64"/>
+      <repopackage name="open-vm-tools" arch="x86_64"/>
       <repopackage name="OpenPrintingPPDs" arch="x86_64"/>
       <repopackage name="openssh"/>
       <repopackage name="openssh-clients"/>
@@ -1173,6 +1190,7 @@
       <repopackage name="PackageKit-branding-openSUSE" arch="x86_64"/>
       <repopackage name="pam"/>
       <repopackage name="pam-config"/>
+      <repopackage name="pam_pwquality" arch="x86_64"/>
       <repopackage name="pam_unix"/>
       <repopackage name="patterns-base-base" arch="x86_64"/>
       <repopackage name="patterns-base-bootloader" arch="x86_64"/>
@@ -1197,6 +1215,7 @@
       <repopackage name="patterns-microos-desktop-kde" arch="x86_64"/>
       <repopackage name="patterns-microos-hardware" arch="x86_64"/>
       <repopackage name="patterns-microos-ima_evm" arch="x86_64"/>
+      <repopackage name="patterns-microos-onlyDVD" arch="x86_64"/>
       <repopackage name="patterns-microos-selinux" arch="x86_64"/>
       <repopackage name="patterns-microos-sssd_ldap" arch="x86_64"/>
       <repopackage name="perl" arch="x86_64"/>
@@ -1234,6 +1253,7 @@
       <repopackage name="podman" arch="x86_64"/>
       <repopackage name="podman-cni-config" arch="x86_64"/>
       <repopackage name="policycoreutils" arch="x86_64"/>
+      <repopackage name="policycoreutils-python-utils" arch="x86_64"/>
       <repopackage name="polkit" arch="x86_64"/>
       <repopackage name="polkit-default-privs" arch="x86_64"/>
       <repopackage name="polkit-kde-agent-5" arch="x86_64"/>
@@ -1250,8 +1270,12 @@
       <repopackage name="pulseaudio-utils" arch="x86_64"/>
       <repopackage name="purge-kernels-service" arch="x86_64"/>
       <repopackage name="purpose" arch="x86_64"/>
+      <repopackage name="python3-apparmor" arch="x86_64"/>
+      <repopackage name="python3-audit" arch="x86_64"/>
       <repopackage name="python3-createrepo_c" arch="x86_64"/>
       <repopackage name="python3-ldb" arch="x86_64"/>
+      <repopackage name="python3-policycoreutils" arch="x86_64"/>
+      <repopackage name="python3-selinux" arch="x86_64"/>
       <repopackage name="python3-talloc" arch="x86_64"/>
       <repopackage name="python38" arch="x86_64"/>
       <repopackage name="python38-apipkg" arch="x86_64"/>
@@ -1267,6 +1291,8 @@
       <repopackage name="python38-cmdln" arch="x86_64"/>
       <repopackage name="python38-configobj" arch="x86_64"/>
       <repopackage name="python38-cryptography" arch="x86_64"/>
+      <repopackage name="python38-dbus-python" arch="x86_64"/>
+      <repopackage name="python38-decorator" arch="x86_64"/>
       <repopackage name="python38-gobject" arch="x86_64"/>
       <repopackage name="python38-gobject-cairo" arch="x86_64"/>
       <repopackage name="python38-gobject-Gdk" arch="x86_64"/>
@@ -1279,9 +1305,12 @@
       <repopackage name="python38-jsonschema" arch="x86_64"/>
       <repopackage name="python38-MarkupSafe" arch="x86_64"/>
       <repopackage name="python38-more-itertools" arch="x86_64"/>
+      <repopackage name="python38-networkx" arch="x86_64"/>
+      <repopackage name="python38-notify2" arch="x86_64"/>
       <repopackage name="python38-oauthlib" arch="x86_64"/>
       <repopackage name="python38-ordered-set" arch="x86_64"/>
       <repopackage name="python38-packaging" arch="x86_64"/>
+      <repopackage name="python38-psutil" arch="x86_64"/>
       <repopackage name="python38-py" arch="x86_64"/>
       <repopackage name="python38-pyasn1" arch="x86_64"/>
       <repopackage name="python38-pycparser" arch="x86_64"/>
@@ -1293,6 +1322,8 @@
       <repopackage name="python38-pytz" arch="x86_64"/>
       <repopackage name="python38-PyYAML" arch="x86_64"/>
       <repopackage name="python38-requests" arch="x86_64"/>
+      <repopackage name="python38-semanage" arch="x86_64"/>
+      <repopackage name="python38-setools" arch="x86_64"/>
       <repopackage name="python38-setuptools" arch="x86_64"/>
       <repopackage name="python38-six" arch="x86_64"/>
       <repopackage name="python38-urllib3" arch="x86_64"/>
@@ -1367,6 +1398,7 @@
       <repopackage name="tallow" arch="x86_64"/>
       <repopackage name="tar" arch="x86_64"/>
       <repopackage name="terminfo-base"/>
+      <repopackage name="tftpboot-installation-openSUSE-MicroOS-x86_64" arch="x86_64"/>
       <repopackage name="thin-provisioning-tools" arch="x86_64"/>
       <repopackage name="timezone" arch="x86_64"/>
       <repopackage name="toolbox" arch="x86_64"/>
@@ -1410,6 +1442,8 @@
       <repopackage name="typelib-1_0-TelepathyGlib-0_12" arch="x86_64"/>
       <repopackage name="typelib-1_0-TelepathyLogger-0_2" arch="x86_64"/>
       <repopackage name="typelib-1_0-UpowerGlib-1_0" arch="x86_64"/>
+      <repopackage name="ucode-amd" arch="x86_64"/>
+      <repopackage name="ucode-intel" arch="x86_64"/>
       <repopackage name="udev"/>
       <repopackage name="udisks2" arch="x86_64"/>
       <repopackage name="unzip" arch="x86_64"/>
@@ -1422,6 +1456,7 @@
       <repopackage name="wallpaper-branding-openSUSE" arch="x86_64"/>
       <repopackage name="webkit2gtk-4_0-injected-bundles" arch="x86_64"/>
       <repopackage name="wget" arch="x86_64"/>
+      <repopackage name="which" arch="x86_64"/>
       <repopackage name="wicked" arch="x86_64"/>
       <repopackage name="wicked-service" arch="x86_64"/>
       <repopackage name="wpa_supplicant" arch="x86_64"/>
