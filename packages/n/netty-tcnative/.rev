@@ -15,4 +15,12 @@
     <comment>depend on libtcnative-1-0 and don't get locked into openssl 1.0</comment>
     <requestid>762263</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1ad2f5ec53451f55ba586ddcbc0a0d36</srcmd5>
+    <version>2.0.36</version>
+    <time>1616680339</time>
+    <user>RBrownSUSE</user>
+    <comment>Fix build in factory</comment>
+    <requestid>881100</requestid>
+  </revision>
 </revisionlist>

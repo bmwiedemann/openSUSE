@@ -1,21 +1,23 @@
---- netty-tcnative-netty-tcnative-parent-1.1.33.Fork26/openssl-dynamic/src/main/java/org/apache/tomcat/jni/Library.java.orig	2020-01-09 11:01:40.309218963 +0100
-+++ netty-tcnative-netty-tcnative-parent-1.1.33.Fork26/openssl-dynamic/src/main/java/org/apache/tomcat/jni/Library.java	2020-01-09 11:04:45.202196578 +0100
-@@ -26,7 +26,7 @@
- public final class Library {
- 
+--- netty-tcnative-netty-tcnative-parent-2.0.37.Final.orig/openssl-dynamic/src/main/java/io/netty/internal/tcnative/Library.java	2021-02-11 18:31:40.893244271 +0100
++++ netty-tcnative-netty-tcnative-parent-2.0.37.Final/openssl-dynamic/src/main/java/io/netty/internal/tcnative/Library.java	2021-02-11 18:42:25.537083503 +0100
+@@ -39,7 +39,9 @@
      /* Default library names */
--    private static final String [] NAMES = {"netty-tcnative", "libnetty-tcnative", "netty-tcnative-1", "libnetty-tcnative-1"};
-+    private static final String [] NAMES = {"netty-tcnative", "libnetty-tcnative", "netty-tcnative-1", "libnetty-tcnative-1", "tcnative-1", "libtcnative-1"};
-     /*
-      * A handle to the unique Library singleton instance.
-      */
-@@ -38,22 +38,20 @@
+     private static final String [] NAMES = {
+         "netty_tcnative",
+-        "libnetty_tcnative"
++        "libnetty_tcnative",
++        "tcnative-1",
++        "libtcnative-1"
+     };
+ 
+     private static final String PROVIDED = "provided";
+@@ -55,22 +57,20 @@
          String [] paths = path.split(File.pathSeparator);
          StringBuilder err = new StringBuilder();
          for (int i = 0; i < NAMES.length; i++) {
 +            String name = "@PATH@/" + NAMES[i] + ".so";
              try {
--                System.loadLibrary(NAMES[i]);
+-                loadLibrary(NAMES[i]);
 +                System.load(name);
                  loaded = true;
              } catch (ThreadDeath t) {
@@ -25,8 +27,8 @@
              } catch (Throwable t) {
 -                String name = System.mapLibraryName(NAMES[i]);
 -                for (int j = 0; j < paths.length; j++) {
--                    java.io.File fd = new java.io.File(paths[j] , name);
-+                java.io.File fd = new java.io.File(name);
+-                    File fd = new File(paths[j] , name);
++                File fd = new java.io.File(name);
                      if (fd.exists()) {
                          // File exists but failed to load
                          throw new RuntimeException(t);

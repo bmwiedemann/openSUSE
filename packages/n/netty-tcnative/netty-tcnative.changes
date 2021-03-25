@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 24 05:24:03 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to the 2.0.36 Final
+  * fix build in factory
+  * new dependency on netty-jni-util-sources
+
+-------------------------------------------------------------------
 Thu Jan  9 14:50:34 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to the 1.1.33 Final26, the last version of 1.1 series

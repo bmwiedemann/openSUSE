@@ -1,7 +1,7 @@
 #
 # spec file for package netty-tcnative
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%global namedreltag .Fork26
+%global namedreltag .Final
 %global namedversion %{version}%{?namedreltag}
 Name:           netty-tcnative
-Version:        1.1.33
+Version:        2.0.36
 Release:        0
 Summary:        Fork of Tomcat Native with improved OpenSSL and mavenized build
 License:        Apache-2.0
@@ -27,12 +27,15 @@ URL:            https://github.com/netty/netty/wiki/Forked-Tomcat-Native
 Source0:        https://github.com/netty/netty-tcnative/archive/%{name}-parent-%{namedversion}.tar.gz
 Source1:        fixLibNames.patch.in
 BuildRequires:  fdupes
+BuildRequires:  gcc
 BuildRequires:  libtcnative-1-0
 BuildRequires:  maven-local
-BuildRequires:  mvn(io.netty:netty-parent:pom:)
+BuildRequires:  mvn(io.netty:netty-jni-util::sources:)
 BuildRequires:  mvn(kr.motd.maven:os-maven-plugin)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-remote-resources-plugin)
+BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 Requires:       libtcnative-1-0
 
 %description
@@ -63,6 +66,7 @@ patch -p1 < $patch
 %pom_disable_module boringssl-static
 %pom_disable_module libressl-static
 
+%pom_remove_plugin :japicmp-maven-plugin .
 %pom_remove_plugin :maven-enforcer-plugin .
 %pom_remove_plugin :maven-antrun-plugin . openssl-dynamic
 %pom_remove_plugin :maven-hawtjni-plugin openssl-dynamic
