@@ -130,7 +130,7 @@
   boo#1180317: '20210103'
   boo#1180358: '20210320'
   boo#1180740: '20210115'
-  boo#1180754: '20210321'
+  boo#1180754: '20210324'
   boo#1180853: '20210111'
   boo#1181038: '20210223'
   boo#1181497: '20210127'
@@ -628,7 +628,7 @@ set_snapshot_number: True</value>
     <value>failed: ''
 published: '20210321'
 publishing: '20210321'
-testing: '20210321'
+testing: '20210324'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">

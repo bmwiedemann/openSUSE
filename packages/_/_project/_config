@@ -195,8 +195,6 @@ Preinstall: libpopt0 libelf1
 Preinstall: libpcre1 libzstd1 libpcre2-8-0
 Preinstall: libreadline8
 
-# Workaround libsemanage1 packaging bug - remove once semanage1 is history:
-Ignore: libsemanage2:libsemanage-conf
 #Runscripts: aaa_base
 
 Prefer: libdb-4_8-devel
