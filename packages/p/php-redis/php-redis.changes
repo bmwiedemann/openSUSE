@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 24 18:09:20 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 5.3.4
+  * Fix multi/pipeline segfault on Apple silicon
+  * Pass compression flag on HMGET in RedisCluster
+  * Abide by ZSTD error return constants
+  * Fix timing related CI session tests
+
+-------------------------------------------------------------------
 Wed Feb 17 10:51:41 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Refresh spec-file via spec-cleaner.

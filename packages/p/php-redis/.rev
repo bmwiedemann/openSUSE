@@ -7,4 +7,12 @@
     <comment>Rename php7-redis to php-redis</comment>
     <requestid>873888</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c608c50bd27d152299f66b732943a399</srcmd5>
+    <version>5.3.4</version>
+    <time>1616680349</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881193</requestid>
+  </revision>
 </revisionlist>

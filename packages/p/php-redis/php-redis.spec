@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 %define php_cfgdir  %{_sysconfdir}/%{php_name}/conf.d
 %endif
 Name:           %{php_name}-%{pkg_name}
-Version:        5.3.3
+Version:        5.3.4
 Release:        0
 Summary:        API for communicating with Redis servers
 License:        PHP-3.01
