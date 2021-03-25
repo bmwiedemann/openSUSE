@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 24 13:25:26 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to a intermediate GIT snapshot of 20210323 (jsc#ECO-3319)
+  - initial SLES15 STIG added
+  - more SLES 12 STIG work
+  - correct tables and cross references for SLES 12 and 15 STIG
+
+-------------------------------------------------------------------
 Fri Mar 19 15:08:35 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.1.55 release (jsc#ECO-3319)
@@ -6,6 +14,7 @@ Fri Mar 19 15:08:35 UTC 2021 - Marcus Meissner <meissner@suse.com>
   - Render policy to HTML (#6532)
   - Add variable support to yamlfile_value template (#6563)
   - Introduce new template for dconf configuration files (#6118)
+- avoid some non sles12 sp2 available macros.
 
 -------------------------------------------------------------------
 Fri Mar 12 14:14:10 UTC 2021 - Julio González Gil <jgonzalez@suse.com>

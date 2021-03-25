@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.55
+Version:        0.1.55git20210323
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -51,7 +51,8 @@ URL:            https://github.com/ComplianceAsCode/content
 %if "%{_vendor}" == "debbuild"
 %else
 %endif
-Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
+#Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
+Source:         v%{version}.tar.gz
 BuildRequires:  cmake
 
 %if "%{_vendor}" == "debbuild"
@@ -162,6 +163,7 @@ files to run a compliance test on Ubuntu.
 %autosetup -n content-%version
 
 %build
+mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DCMAKE_INSTALL_MANDIR=%{_mandir} \
@@ -169,7 +171,6 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	 -DSSG_PRODUCT_DEBIAN9=ON \
 	 -DSSG_PRODUCT_DEBIAN10=ON \
 	 -DSSG_PRODUCT_DEFAULT=ON \
-	 -DSSG_PRODUCT_EAP6=OFF \
 	 -DSSG_PRODUCT_EXAMPLE=OFF \
 	 -DSSG_PRODUCT_FEDORA=ON \
 	 -DSSG_PRODUCT_FIREFOX=OFF \
@@ -181,7 +182,6 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	 -DSSG_PRODUCT_OL8=ON \
 	 -DSSG_PRODUCT_OPENSUSE=ON \
 	 -DSSG_PRODUCT_RHCOS4=ON \
-	 -DSSG_PRODUCT_RHEL6=ON \
 	 -DSSG_PRODUCT_RHEL7=ON \
 	 -DSSG_PRODUCT_RHEL8=ON \
 	 -DSSG_PRODUCT_RHOSP10=ON \
@@ -196,11 +196,11 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
          -DSSG_PRODUCT_WRLINUX8=OFF \
          -DSSG_PRODUCT_WRLINUX1019=OFF \
          ../
-%make_build
+make
 
 %install
 cd build/
-%make_install
+make install DESTDIR=%buildroot
 
 %files
 %if "%{_vendor}" != "debbuild"

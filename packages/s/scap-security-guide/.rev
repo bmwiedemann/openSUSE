@@ -38,4 +38,17 @@
   - Introduce new template for dconf configuration files (#6118) (forwarded request 880137 from msmeissn)</comment>
     <requestid>880138</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>78af04fd80b742b42d47ce4c20327897</srcmd5>
+    <version>0.1.55git20210323</version>
+    <time>1616680341</time>
+    <user>RBrownSUSE</user>
+    <comment>- updated to a intermediate GIT snapshot of 20210323 (jsc#ECO-3319)
+  - initial SLES15 STIG added
+  - more SLES 12 STIG work
+  - correct tables and cross references for SLES 12 and 15 STIG
+
+- avoid some non sles12 sp2 available macros. (forwarded request 881076 from msmeissn)</comment>
+    <requestid>881077</requestid>
+  </revision>
 </revisionlist>
