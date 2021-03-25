@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Mar 24 20:03:46 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.5.2
+  * Refresh Glade file, drop unused tab labels (gxo#apps/gigolo#13)
+  * move the logic setting GtkSpin port value to setup_for_type()
+    (gxo#apps/gigolo#11)
+  * Use new icon in window titlebar
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * Only show an error dialog if the host field is visible/required
+  * Remove capitalization from icon name
+  * Update GenericName (gxo#apps/gigolo#2)
+  * Fix comment style.
+  * Remove GSourceFunc casts
+  * Update Makefile.am
+  * Add gigolo.ui to POTFILES.in (gxo#apps/gigolo#6)
+  * Added new icons following new style and reverse DNS format.
+  * Add new README.md and update AM_INIT_AUTOMAKE
+  * Add basic GitLab pipeline
+  * bxo#16717: Move from exo-csource to xdt-csource
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Mar 14 12:13:33 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.5.1
