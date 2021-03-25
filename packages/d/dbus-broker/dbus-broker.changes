@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 17 15:10:16 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 28
+  * Further improvements to the service activation tracking. This
+    better tracks units in systemd and closes some races where a
+    repeated activation would incorrectly fail.
+  * Fix a crash where duplicate monitor matches would be
+    incorrectly installed in the broker.
+
+-------------------------------------------------------------------
 Mon Feb 15 10:47:52 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 27

@@ -79,4 +79,12 @@
     <comment>- Update to release 27</comment>
     <requestid>872356</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>94833c4802d6eeb04e4500220ba5d00a</srcmd5>
+    <version>28</version>
+    <time>1616680336</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>881075</requestid>
+  </revision>
 </revisionlist>
