@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 21 14:37:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.0.1:
+  * Changes to a directory while iterating it (opendir/readdir) don't break the
+    iteration anymore
+  * Some ioslaves with incompatible behaviour (they claim "/" is a regular file)
+    are rejected now. Previously, mounting those succeeded, but accessing files
+    failed. Now mounting fails immediately and the fallback code is triggered.
+  * Mixup of UDS_URL/UDS_TARGET_URL got fixed. Now the baloosearch:/ protocol
+    works and doesn't cause a crash anymore. Additionally, the relevant code got
+    hardened.
+- Install by default: supplement dolphin
+
+-------------------------------------------------------------------
 Sat Dec 26 20:39:54 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.0.0:

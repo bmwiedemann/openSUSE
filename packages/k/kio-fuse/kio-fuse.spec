@@ -1,7 +1,7 @@
 #
 # spec file for package kio-fuse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kio-fuse
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Access KIO over the regular filesystem
 License:        GPL-3.0-or-later
@@ -38,6 +38,8 @@ BuildRequires:  pkgconfig(fuse3)
 Requires:       fuse3
 # For %%check
 BuildRequires:  kio-extras5
+# While kio itself can make use of this, it's most likely used through dolphin
+Supplements:    dolphin
 
 %description
 kio-fuse is a daemon which makes KIO URLs accessible to KIO unaware
