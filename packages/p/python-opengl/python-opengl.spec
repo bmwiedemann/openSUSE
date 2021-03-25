@@ -1,7 +1,7 @@
 #
 # spec file for package python-opengl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,12 +42,12 @@ Recommends:     python-numpy
 Recommends:     python-opengl-accelerate
 Recommends:     python-tk
 Recommends:     tk >= 8.1
+Provides:       python-PyOpenGL = %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module opengl-accelerate}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pygame}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  Mesa-dri
@@ -57,6 +57,7 @@ BuildRequires:  libgle-devel
 BuildRequires:  python3-numpy
 BuildRequires:  swig
 BuildRequires:  tk-devel
+BuildRequires:  %{python_module pygame if (%python-base without python36-base)}
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(x11)
@@ -87,9 +88,9 @@ find . -name '*.py' -exec touch -mat $FAKE_TIMESTAMP {} \;
 
 %if %{with test}
 %check
-# test_buffer_api_basic is a test specific to opengl-accelerate, failing on i586 and armv7l
-# https://github.com/mcfletch/pyopengl/issues/29
-%pytest -v -k "not test_buffer_api_basic" tests
+# don't test anything on python36: all tests need pygame, which is not available
+python36_flags="--version"
+%pytest ${$python_flags} tests
 %endif
 
 %if !%{with test}

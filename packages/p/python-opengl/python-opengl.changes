@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 23 21:49:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't test with pygame for python36. Pygame requires NumPy which
+  is not available for python36 on TW.
+
+-------------------------------------------------------------------
 Thu Apr 30 18:15:00 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 3.1.5
