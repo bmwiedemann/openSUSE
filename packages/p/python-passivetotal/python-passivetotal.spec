@@ -1,7 +1,7 @@
 #
 # spec file for package python-passivetotal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-passivetotal
-Version:        1.0.31
+Version:        2.1.0
 Release:        0
 Summary:        Client for the PassiveTotal REST API
 License:        GPL-2.0-only
@@ -35,7 +35,7 @@ Requires:       python-future
 Requires:       python-python-dateutil
 Requires:       python-requests
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module ez_setup}
@@ -65,6 +65,7 @@ cp %{SOURCE1} .
 
 %install
 %python_install
+%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_clone -a %{buildroot}%{_bindir}/pt-client
 %python_clone -a %{buildroot}%{_bindir}/pt-config
 %python_clone -a %{buildroot}%{_bindir}/pt-info
@@ -86,6 +87,7 @@ cp %{SOURCE1} .
 %python_alternative %{_bindir}/pt-info
 %python_alternative %{_bindir}/pt-config
 %python_alternative %{_bindir}/pt-client
-%{python_sitelib}/*
+%{python_sitelib}/passivetotal-*.egg-info
+%{python_sitelib}/passivetotal/
 
 %changelog
