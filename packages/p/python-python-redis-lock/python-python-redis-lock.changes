@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 24 21:03:34 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Skip test test_no_overlap2 (gh#ionelmc/python-redis-lock#86)
+
+-------------------------------------------------------------------
 Wed Aug 19 09:45:36 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix leap build by disabling py2 as the django-redis version

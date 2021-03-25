@@ -24,4 +24,13 @@
   requirement is without py2 support</comment>
     <requestid>827814</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>ce3b188119f66ddb9d7e667ad82b9a6d</srcmd5>
+    <version>3.6.0</version>
+    <time>1616680354</time>
+    <user>RBrownSUSE</user>
+    <comment>- Skip test test_no_overlap2 (gh#ionelmc/python-redis-lock#86)
+</comment>
+    <requestid>881211</requestid>
+  </revision>
 </revisionlist>
