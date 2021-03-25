@@ -2,6 +2,8 @@
 Tue Mar  9 13:28:50 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Uyuni: `hostname` label is now set to FQDN instead of IP
+  + Changed:
+    * 0003-Add-Uyuni-service-discovery.patch
 
 -------------------------------------------------------------------
 Mon Nov  9 10:49:39 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
