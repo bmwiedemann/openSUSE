@@ -1,7 +1,7 @@
 #
 # spec file for package exa
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,21 +22,54 @@ Release:        0
 Summary:        Replacement for ls written in Rust
 License:        MIT
 Group:          System/Base
-Url:            https://the.exa.website/
+URL:            https://the.exa.website/
 Source0:        https://github.com/ogham/exa/archive/v%{version}.tar.gz
 Source1:        vendor.tar.xz
+BuildRequires:  bash-completion
 BuildRequires:  cargo
 BuildRequires:  cmake
+BuildRequires:  fish
 BuildRequires:  git
 BuildRequires:  pkgconfig
 BuildRequires:  rust
 BuildRequires:  rust-std
+BuildRequires:  zsh
 BuildRequires:  pkgconfig(zlib)
-ExcludeArch:    %ix86 ppc
+ExcludeArch:    %{ix86} ppc
 
 %description
 exa is a replacement for ls written in Rust.
 With similar but not identical options.
+
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command line completion support for %{name}.
+
+%package zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+Zsh command line completion support for %{name}.
+
+%package fish-completion
+Summary:        Fish completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description fish-completion
+Fish command line completion support for %{name}.
 
 %prep
 %setup -q
@@ -56,12 +89,31 @@ cargo build --release %{?_smp_mflags}
 %install
 mkdir build
 cargo install --path . --root=build
-mkdir -p %{buildroot}%{_bindir}
+mkdir -p %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man1
 install -Dm0755 build/bin/exa %{buildroot}%{_bindir}/exa
+
+# Manpage
+install --preserve-timestamps -m0644 contrib/man/%{name}.1 %{buildroot}%{_mandir}/man1/
+
+# Completion files
+install -Dm0644 contrib/completions.bash \
+         %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+install -Dm0644 contrib/completions.zsh "%{buildroot}%{_sysconfdir}/zsh_completion.d/%{name}"
+install -Dm0644 contrib/completions.fish "%{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish"
 
 %files
 %license LICENCE
 %doc README.md
 %{_bindir}/exa
+%{_mandir}/man1/%{name}*%{ext_man}
+
+%files bash-completion
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files zsh-completion
+%{_sysconfdir}/zsh_completion.d/%{name}
+
+%files fish-completion
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
 
 %changelog
