@@ -61,6 +61,7 @@ Requires:       kactivities5-imports
 Requires:       kdeclarative-components
 Requires:       kirigami2
 Requires:       kwin5
+Requires:       libqt5-qtwayland
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols
 Requires:       libqt5-qtquickcontrols2

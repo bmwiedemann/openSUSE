@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 24 17:47:21 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- Add missing Wayland runtime dependency
+  * QT_QPA_PLATFORM is forced from kwinwrapper
+
+-------------------------------------------------------------------
 Tue Mar 16 13:55:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.3
