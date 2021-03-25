@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar 24 09:50:05 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Update to version 3.14.5.
+  * Documentation & man page fixes, removal of non-existing functions.
+  * CPARDISO: stick to OpenMPI BLACS when needed
+  * bugfix for MatMatMultSymbolic_MPIAIJ_MPIDense() when Bbn1 = 0.
+    Bb (column block size) zero lead to infinite loop in
+    MatMatMultNumeric_MPIAIJ_MPIDense() with n=0.
+  * petscviewer: fix the fortran bindings of XXXViewFromOptions
+    when called with obj=PETSC_NULL_XXX.
+  * PetscOptionsPrefixPush: Accept numbers if the stack is not
+    empty.
+  * PetscOptionsClearValue: Also clear 'help_intro' slot.
+  * PetscOptionsDestroyDefault: Fix possible NULL-dereference.
+  * PetscOptionsUsed: Fix for case-insensitive string comparison.
+  * Do not use MPI_Bcast() on a single rank - This allows direct
+    reading  of much larger files, in, for example, MatLoad_SeqAIJ_Binary.
+  * PCHPDDM: fix for KSPLSQR.
+  * DMPlexVTKWriteAll_VTU: numerous bugfixes.
+  * MatBAIJ: FIx specialization for size 9.
+  
+-------------------------------------------------------------------
 Wed Feb 24 16:27:54 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - Updated to version 3.14.4 (jsc#SLE-14959)

@@ -1,5 +1,5 @@
 #
-# spec file for package %{package_name}
+# spec file for package petsc
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname petsc
-%define vers 3.14.4
-%define _vers 3_14_4
+%define vers 3.14.5
+%define _vers 3_14_5
 %define so_ver 3
 %define openblas_vers 0.3.6
 

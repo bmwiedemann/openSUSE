@@ -281,4 +281,29 @@
     <comment></comment>
     <requestid>875061</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>82ffb915216b2dd62d8063e04032d939</srcmd5>
+    <version>3.14.5</version>
+    <time>1616680327</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 3.14.5.
+  * Documentation &amp;amp; man page fixes, removal of non-existing functions.
+  * CPARDISO: stick to OpenMPI BLACS when needed
+  * bugfix for MatMatMultSymbolic_MPIAIJ_MPIDense() when Bbn1 = 0.
+    Bb (column block size) zero lead to infinite loop in
+    MatMatMultNumeric_MPIAIJ_MPIDense() with n=0.
+  * petscviewer: fix the fortran bindings of XXXViewFromOptions
+    when called with obj=PETSC_NULL_XXX.
+  * PetscOptionsPrefixPush: Accept numbers if the stack is not
+    empty.
+  * PetscOptionsClearValue: Also clear 'help_intro' slot.
+  * PetscOptionsDestroyDefault: Fix possible NULL-dereference.
+  * PetscOptionsUsed: Fix for case-insensitive string comparison.
+  * Do not use MPI_Bcast() on a single rank - This allows direct
+    reading  of much larger files, in, for example, MatLoad_SeqAIJ_Binary.
+  * PCHPDDM: fix for KSPLSQR.
+  * DMPlexVTKWriteAll_VTU: numerous bugfixes.
+  * MatBAIJ: FIx specialization for size 9. (forwarded request 881044 from eeich)</comment>
+    <requestid>881052</requestid>
+  </revision>
 </revisionlist>
