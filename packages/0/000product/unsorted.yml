@@ -1,7 +1,7 @@
 unsorted:
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -3216,6 +3216,9 @@ unsorted:
   - evolution-devel 
   - evtest 
   - exa: [x86_64] 
+  - exa-bash-completion: [x86_64] 
+  - exa-fish-completion: [x86_64] 
+  - exa-zsh-completion: [x86_64] 
   - exaile 
   - exaile-lang 
   - exec-maven-plugin 
@@ -7754,7 +7757,6 @@ unsorted:
   - kio-core-32bit: [x86_64] 
   - kio-devel 
   - kio-devel-32bit: [x86_64] 
-  - kio-fuse 
   - kio-gdrive 
   - kio-gdrive-lang 
   - kio-stash 
@@ -9686,7 +9688,7 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -12344,7 +12346,6 @@ unsorted:
   - libpcre16-0 
   - libpcre16-0-32bit: [x86_64] 
   - libpcre2-16-0-32bit: [x86_64] 
-  - libpcre2-32-0 
   - libpcre2-32-0-32bit: [x86_64] 
   - libpcre2-posix2-32bit: [x86_64] 
   - libpcrecpp0 
@@ -12374,12 +12375,12 @@ unsorted:
   - libpetsc3-openmpi2 
   - libpetsc3-openmpi3 
   - libpetsc3-openmpi4 
-  - libpetsc_3_14_4-gnu-mpich-hpc 
-  - libpetsc_3_14_4-gnu-mvapich2-hpc 
-  - libpetsc_3_14_4-gnu-openmpi1-hpc 
-  - libpetsc_3_14_4-gnu-openmpi2-hpc 
-  - libpetsc_3_14_4-gnu-openmpi3-hpc 
-  - libpetsc_3_14_4-gnu-openmpi4-hpc 
+  - libpetsc_3_14_5-gnu-mpich-hpc 
+  - libpetsc_3_14_5-gnu-mvapich2-hpc 
+  - libpetsc_3_14_5-gnu-openmpi1-hpc 
+  - libpetsc_3_14_5-gnu-openmpi2-hpc 
+  - libpetsc_3_14_5-gnu-openmpi3-hpc 
+  - libpetsc_3_14_5-gnu-openmpi4-hpc 
   - libpff-devel 
   - libpff-tools 
   - libpff1 
@@ -12829,8 +12830,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librados2 
-  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
+  - librados-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libraft0 
   - libragel0 
   - libraptor-devel 
@@ -12854,7 +12855,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librados2 
+  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13087,7 +13088,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librados2 
+  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -19530,18 +19531,18 @@ unsorted:
   - petsc-openmpi2-devel 
   - petsc-openmpi3-devel 
   - petsc-openmpi4-devel 
-  - petsc_3_14_4-gnu-mpich-hpc-devel 
-  - petsc_3_14_4-gnu-mpich-hpc-saws 
-  - petsc_3_14_4-gnu-mvapich2-hpc-devel 
-  - petsc_3_14_4-gnu-mvapich2-hpc-saws 
-  - petsc_3_14_4-gnu-openmpi1-hpc-devel 
-  - petsc_3_14_4-gnu-openmpi1-hpc-saws 
-  - petsc_3_14_4-gnu-openmpi2-hpc-devel 
-  - petsc_3_14_4-gnu-openmpi2-hpc-saws 
-  - petsc_3_14_4-gnu-openmpi3-hpc-devel 
-  - petsc_3_14_4-gnu-openmpi3-hpc-saws 
-  - petsc_3_14_4-gnu-openmpi4-hpc-devel 
-  - petsc_3_14_4-gnu-openmpi4-hpc-saws 
+  - petsc_3_14_5-gnu-mpich-hpc-devel 
+  - petsc_3_14_5-gnu-mpich-hpc-saws 
+  - petsc_3_14_5-gnu-mvapich2-hpc-devel 
+  - petsc_3_14_5-gnu-mvapich2-hpc-saws 
+  - petsc_3_14_5-gnu-openmpi1-hpc-devel 
+  - petsc_3_14_5-gnu-openmpi1-hpc-saws 
+  - petsc_3_14_5-gnu-openmpi2-hpc-devel 
+  - petsc_3_14_5-gnu-openmpi2-hpc-saws 
+  - petsc_3_14_5-gnu-openmpi3-hpc-devel 
+  - petsc_3_14_5-gnu-openmpi3-hpc-saws 
+  - petsc_3_14_5-gnu-openmpi4-hpc-devel 
+  - petsc_3_14_5-gnu-openmpi4-hpc-saws 
   - pfscalibration 
   - pfsglview 
   - pfstools-devel 
@@ -20934,7 +20935,6 @@ unsorted:
   - python3-pytest-server-fixtures 
   - python3-python-pseudorandom: [i586] 
   - python3-python-qnotifications 
-  - python3-python-redis-lock 
   - python3-renderspec 
   - python3-reno 
   - python3-rpmconf 
@@ -23173,6 +23173,7 @@ unsorted:
   - python36-python-qpid-proton 
   - python36-python-qprogedit 
   - python36-python-rapidjson 
+  - python36-python-redis-lock 
   - python36-python-redmine 
   - python36-python-rpm-spec 
   - python36-python-rtmidi 
@@ -26024,6 +26025,7 @@ unsorted:
   - python38-python-qpid-proton 
   - python38-python-qprogedit 
   - python38-python-rapidjson 
+  - python38-python-redis-lock 
   - python38-python-redmine 
   - python38-python-rpm-spec 
   - python38-python-rtmidi 
@@ -27091,7 +27093,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
   - raft-devel 
   - rage 
   - ragel 
