@@ -1172,6 +1172,7 @@
     <package name="kio-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kio-extras5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kio-extras5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kio-fuse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kio-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kio_audiocd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kio_audiocd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2410,6 +2411,7 @@
     <package name="libpciaccess0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpcre1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpcre2-16-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libpcre2-32-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpcre2-posix2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpcreposix0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
