@@ -827,4 +827,12 @@ nicer version with try-reload-or-restart</comment>
   * Ship geoip files based on the IPFire Location Database</comment>
     <requestid>879675</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>0031d24b36bffe82a33be56667ab7a7e</srcmd5>
+    <version>0.4.5.7</version>
+    <time>1616925333</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>881346</requestid>
+  </revision>
 </revisionlist>

@@ -3,7 +3,7 @@ Tue Mar 16 23:38:53 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - tor 0.4.5.7
   * https://lists.torproject.org/pipermail/tor-announce/2021-March/000216.html
-  * Fix 2 denial of service security issues
+  * Fix 2 denial of service security issues (boo#1183726)
     + Disable the dump_desc() function that we used to dump unparseable
       information to disk (CVE-2021-28089)
     + Fix a bug in appending detached signatures to a pending consensus
