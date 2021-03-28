@@ -1,7 +1,7 @@
 #
 # spec file for package openocd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           openocd
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Debugging, in-system programming and boundary-scan testing for embedded devices
 License:        GPL-2.0-only
@@ -36,7 +36,6 @@ Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.
 Source1:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2.sig
 Source2:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2.sha1
 Source3:        %name.keyring
-Patch0:         0001-bitbang-Fix-FTBFS-with-GCC-10.patch
 BuildRequires:  autoconf >= 2.64
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -46,7 +45,7 @@ BuildRequires:  jimtcl-devel
 BuildRequires:  libftdi1-devel
 BuildRequires:  libhidapi-devel
 %if %{external_libjaylink}
-BuildRequires:  libjaylink-devel
+BuildRequires:  libjaylink-devel >= 0.2.0
 %endif
 BuildRequires:  libtool
 BuildRequires:  libusb-compat-devel
@@ -58,8 +57,8 @@ BuildRequires:  pkgconfig(udev)
 Requires:       %{name}-data = %{version}
 Requires(post): udev
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
-Requires(postun): udev
+Requires(preun):%{install_info_prereq}
+Requires(postun):udev
 
 %description
 The Open On-Chip Debugger (OpenOCD) provides debugging, in-system programming
@@ -82,7 +81,6 @@ This package provides hardware description files and documentation.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %if !%{external_jimtcl}

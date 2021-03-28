@@ -70,4 +70,19 @@
     <comment></comment>
     <requestid>813243</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>35f931300eb5d14a40b4b6152ac2a801</srcmd5>
+    <version>0.11.0</version>
+    <time>1616925321</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to upstream version 0.11.0.
+  The list of changes is massive, see 
+  https://sourceforge.net/p/openocd/code/ci/master/tree/NEWS-0.11.0 
+  for details. 
+- libjaylink 0.2.0 is now required.
+- Removed 0001-bitbang-Fix-FTBFS-with-GCC-10.patch patch.
+- Use a source service to download sources.
+</comment>
+    <requestid>881469</requestid>
+  </revision>
 </revisionlist>

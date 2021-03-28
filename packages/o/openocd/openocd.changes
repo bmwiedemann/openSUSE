@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 23 10:49:12 UTC 2021 - Philipp Wagner <mail@philipp-wagner.com>
+
+- Update to upstream version 0.11.0.
+  The list of changes is massive, see 
+  https://sourceforge.net/p/openocd/code/ci/master/tree/NEWS-0.11.0 
+  for details. 
+- libjaylink 0.2.0 is now required.
+- Removed 0001-bitbang-Fix-FTBFS-with-GCC-10.patch patch.
+- Use a source service to download sources.
+
+-------------------------------------------------------------------
 Sun Jun  7 08:31:54 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Add 0001-bitbang-Fix-FTBFS-with-GCC-10.patch: fix building for gcc 10
