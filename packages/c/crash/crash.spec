@@ -372,6 +372,8 @@ install -m 0644 defs.h $RPM_BUILD_ROOT/%{_includedir}/crash
 chmod 644 COPYING3
 # extensions
 mkdir -p $RPM_BUILD_ROOT/%{_libdir}/crash/extensions
+install -m 0644 extensions/dminfo.so extensions/snap.so extensions/trace.so \
+    $RPM_BUILD_ROOT/%{_libdir}/crash/extensions
 %if %build_gcore
 install -m 0644 extensions/gcore.so $RPM_BUILD_ROOT/%{_libdir}/crash/extensions
 %endif
@@ -406,6 +408,9 @@ rm -rf %{buildroot}
 %doc README README.SUSE
 %dir %{_libdir}/crash
 %dir %{_libdir}/crash/extensions
+%{_libdir}/crash/extensions/dminfo.so
+%{_libdir}/crash/extensions/snap.so
+%{_libdir}/crash/extensions/trace.so
 
 %files devel
 %defattr(-,root,root)

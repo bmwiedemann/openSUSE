@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 10 07:54:46 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Install and ship the small built-in extensions snap.so, trace.so,
+  and dminfo.so. "trace.so" is particularly useful.
+  Ship them in the main "crash" package, as they are small.
+
+-------------------------------------------------------------------
 Thu Jan 28 11:49:06 UTC 2021 - Jiri Bohac <jbohac@suse.com>
 
 - Added crash-xen-increase-__physical_mask_shift_xen-to-52.patch
