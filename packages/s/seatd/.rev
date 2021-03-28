@@ -25,4 +25,12 @@
   * client: Remove link if seat_add_client succeeds</comment>
     <requestid>879386</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8bfe03579ba1b9a805ad34e57c376c16</srcmd5>
+    <version>0.5.0</version>
+    <time>1616925318</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881462</requestid>
+  </revision>
 </revisionlist>

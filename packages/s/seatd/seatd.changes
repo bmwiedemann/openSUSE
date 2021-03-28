@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 25 19:29:37 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
+
+- enable logind for the libseat (disabled by default)
+  * fixes errors during login, see:
+    https://github.com/openSUSE/openSUSEway/issues/37
+  * this works with libsystemd >= 237 with new API:
+    sd_bus_match_signal
+
+-------------------------------------------------------------------
 Tue Mar 16 08:58:30 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.0:

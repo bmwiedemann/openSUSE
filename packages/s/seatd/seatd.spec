@@ -28,6 +28,13 @@ BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
+
+%if 0%{?suse_version} > 1520
+#15.2 don't have needed API
+#https://github.com/systemd/systemd/commit/b423e4fb73866e529869b348efb7169ee91f00c9
+BuildRequires:  pkgconfig(libsystemd) >= 237
+%endif
+
 BuildRequires:  pkgconfig(systemd)
 Requires:       libseat1 = %{version}
 
@@ -54,7 +61,13 @@ Development files for %{name}.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} > 1520
+#15.2 don't have needed API
+%meson -Dlogind=enabled
+%else
 %meson
+%endif
+
 %meson_build
 
 %install
