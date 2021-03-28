@@ -366,4 +366,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>877612</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>2508e1ab279763a05e0aa6dacf92bcc6</srcmd5>
+    <version>1.5.6.0</version>
+    <time>1616925336</time>
+    <user>RBrownSUSE</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>881528</requestid>
+  </revision>
 </revisionlist>
