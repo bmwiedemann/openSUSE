@@ -1,7 +1,7 @@
 #
 # spec file for package hibiscus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,12 +37,16 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  jpackage-utils
 BuildRequires:  xml-commons-apis
 Requires:       jameica >= 2.10.0
-#BuildRequires:  swtchart = 0.10.0
-#Requires:       swtchart = 0.10.0
+BuildRequires:  eclipse-swtchart >= 0.13.0
+Requires:       eclipse-swtchart
+BuildRequires:  itextpdf >= 5.5.2
+Requires:       itextpdf
+BuildRequires:  hbci4java >= 3.1.49
+Requires:       hbci4java
 BuildRequires:  pcsc-towitoko-devel
 Requires:       pcsc-towitoko-devel
-#BuildRequires:  obantoo = 2.1.12
-#Requires:       obantoo = 2.1.12
+BuildRequires:  super-csv >= 2.4.0
+Requires:       super-csv
 BuildRequires:  fdupes
 
 # Don't offer libraries linked in here to other packages:
@@ -81,9 +85,25 @@ ant -f build/build.xml init compile jar zip src
 mkdir -p %{buildroot}%{_prefix}/lib/jameica/plugins
 cp -r releases/%{version}-%{_build}/%{name} %{buildroot}%{_prefix}/lib/jameica/plugins
 
+# unbundle HBCI4Java
+rm  %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.49.jar
+ln -sf %{_jnidir}/hbci4java/hbci4j-core.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/hbci4j-core-3.1.49.jar
+rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libhbci4java-card-*.so
+%ifarch x86_64
+ln -sf %{_jnidir}/hbci4java/libhbci4java-card-linux.so %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libhbci4java-card-linux-64.so
+%else
+ln -sf  %{_jnidir}/hbci4java/libhbci4java-card-linux.so %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libhbci4java-card-linux-32.so
+%endif
+
 # unbundle SWT Chart
-##rm %%{buildroot}%%{_prefix}/lib/jameica/plugins/%%{name}/lib/swtchart/org.swtchart_0.10.0.v20160212.jar
-##ln -sf %%{_javadir}/org.swtchart.jar %%{buildroot}%%{_prefix}/lib/jameica/plugins/%%{name}/lib/swtchart/org.swtchart_0.10.0.v20160212.jar
+rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/swtchart/*.jar
+ln -sf %{_datadir}/eclipse/droplets/swtchart/plugins/org.eclipse.swtchart_0.13.0.*.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/swtchart/org.eclipse.swtchart_0.13.0.202009151159.jar
+ln -sf %{_datadir}/eclipse/droplets/swtchart/plugins/org.eclipse.swtchart.extensions_0.13.0.*.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/swtchart/org.eclipse.swtchart.extensions_0.13.0.202009151159.jar
+
+# unbundle iText PDF
+rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/itext-*.jar
+ln -sf %{_javadir}/itextpdf/itext-pdfa.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/itext-pdfa-5.5.2.jar
+ln -sf %{_javadir}/itextpdf/itextpdf.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/itextpdf-5.5.2.jar
 
 # unbundle libtowitoko
 rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libtowitoko*
@@ -93,9 +113,9 @@ ln -sf  %{_libdir}/libtowitoko.so %{buildroot}%{_prefix}/lib/jameica/plugins/%{n
 ln -sf  %{_libdir}/libtowitoko.so %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/libtowitoko-2.0.7.so
 %endif
 
-# unbundle OBanToo
-##rm %%{buildroot}%%{_prefix}/lib/jameica/plugins/%%{name}/lib/obantoo-bin-2.1.12.jar
-##ln -sf  %%{_javadir}/obantoo-bin-2.1.12.jar %%{buildroot}%%{_prefix}/lib/jameica/plugins/%%{name}/lib/obantoo-bin-2.1.12.jar
+# unbundle Super CSV
+rm %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/super-csv-2.4.0.jar
+ln -sf %{_javadir}/super-csv/super-csv.jar %{buildroot}%{_prefix}/lib/jameica/plugins/%{name}/lib/super-csv-2.4.0.jar
 
 # icons
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/16x16/apps/
@@ -111,14 +131,6 @@ install -D -m 0644 %{name}.appdata.xml %{buildroot}%{_datadir}/appdata/%{name}.a
 
 %fdupes %{buildroot}
 
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-
 %files
 %defattr(-,root,root)
 %doc build/ChangeLog
@@ -126,7 +138,6 @@ install -D -m 0644 %{name}.appdata.xml %{buildroot}%{_datadir}/appdata/%{name}.a
 %{_prefix}/lib/jameica/plugins/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
-%dir %{_datadir}/appdata/
 %{_datadir}/appdata/%{name}.appdata.xml
 
 %changelog

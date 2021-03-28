@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 17 14:08:02 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- unbundle HBCI4Java, iTextPDF, Eclipse SWT Chart, Super CSV
+- Removed attempts to unbundle Obantoo as there seems to be no active upstream
+
+-------------------------------------------------------------------
 Sun Nov 29 12:22:14 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.10.0
