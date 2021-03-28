@@ -1,6 +1,6 @@
 name:                serialise
 version:             0.2.3.0
-x-revision: 1
+x-revision: 2
 synopsis:            A binary serialisation library for Haskell values.
 description:
   This package (formerly @binary-serialise-cbor@) provides pure, efficient
@@ -31,7 +31,7 @@ cabal-version:       >=1.10
 category:            Codec
 build-type:          Simple
 tested-with:
-  GHC == 7.8.4, GHC == 7.10.3, GHC == 8.0.2, GHC == 8.2.2, GHC == 8.4.4, GHC == 8.6.5, GHC == 8.8.3, GHC == 8.10.1
+  GHC == 7.10.3, GHC == 8.0.2, GHC == 8.2.2, GHC == 8.4.4, GHC == 8.6.5, GHC == 8.8.3, GHC == 8.10.1, GHC == 9.0.1
 
 extra-source-files:
   ChangeLog.md
@@ -65,11 +65,11 @@ library
 
   build-depends:
     array                   >= 0.4     && < 0.6,
-    base                    >= 4.7     && < 4.15,
-    bytestring              >= 0.10.4  && < 0.11,
+    base                    >= 4.7     && < 4.16,
+    bytestring              >= 0.10.4  && < 0.12,
     cborg                   == 0.2.*,
     containers              >= 0.5     && < 0.7,
-    ghc-prim                >= 0.3.1.0 && < 0.7,
+    ghc-prim                >= 0.3.1.0 && < 0.8,
     half                    >= 0.2.2.3 && < 0.4,
     hashable                >= 1.2     && < 2.0,
     primitive               >= 0.5     && < 0.8,
@@ -79,7 +79,7 @@ library
 
   if flag(newtime15)
     build-depends:
-      time                  >= 1.5     && < 1.11
+      time                  >= 1.5     && < 1.12
   else
     build-depends:
       time                  >= 1.4     && < 1.5,
@@ -117,19 +117,19 @@ test-suite tests
     Tests.GeneralisedUTF8
 
   build-depends:
-    base                    >= 4.7     && < 4.15,
-    bytestring              >= 0.10.4  && < 0.11,
+    base                    >= 4.7     && < 4.16,
+    bytestring              >= 0.10.4  && < 0.12,
     directory               >= 1.0     && < 1.4,
     filepath                >= 1.0     && < 1.5,
     text                    >= 1.1     && < 1.3,
-    time                    >= 1.4     && < 1.11,
+    time                    >= 1.4     && < 1.12,
     containers              >= 0.5     && < 0.7,
     unordered-containers    >= 0.2     && < 0.3,
     primitive               >= 0.5     && < 0.8,
     cborg,
     serialise,
     QuickCheck              >= 2.9     && < 2.15,
-    tasty                   >= 0.11    && < 1.4,
+    tasty                   >= 0.11    && < 1.5,
     tasty-hunit             >= 0.9     && < 0.11,
     tasty-quickcheck        >= 0.8     && < 0.11,
     quickcheck-instances    >= 0.3.12  && < 0.4,
@@ -154,9 +154,9 @@ benchmark instances
     Instances.Time
 
   build-depends:
-    base                    >= 4.7     && < 4.15,
+    base                    >= 4.7     && < 4.16,
     binary                  >= 0.7     && < 0.11,
-    bytestring              >= 0.10.4  && < 0.11,
+    bytestring              >= 0.10.4  && < 0.12,
     vector                  >= 0.10    && < 0.13,
     cborg,
     serialise,
@@ -166,7 +166,7 @@ benchmark instances
 
   if flag(newtime15)
     build-depends:
-      time                  >= 1.5     && < 1.11
+      time                  >= 1.5     && < 1.12
   else
     build-depends:
       time                  >= 1.4     && < 1.5,
@@ -198,10 +198,10 @@ benchmark micro
     SimpleVersus
 
   build-depends:
-    base                    >= 4.7     && < 4.15,
+    base                    >= 4.7     && < 4.16,
     binary                  >= 0.7     && < 0.11,
-    bytestring              >= 0.10.4  && < 0.11,
-    ghc-prim                >= 0.3.1.0 && < 0.7,
+    bytestring              >= 0.10.4  && < 0.12,
+    ghc-prim                >= 0.3.1.0 && < 0.8,
     vector                  >= 0.10    && < 0.13,
     cborg,
     serialise,
@@ -245,11 +245,11 @@ benchmark versus
 
   build-depends:
     array                   >= 0.4     && < 0.6,
-    base                    >= 4.7     && < 4.15,
+    base                    >= 4.7     && < 4.16,
     binary                  >= 0.7     && < 0.11,
-    bytestring              >= 0.10.4  && < 0.11,
+    bytestring              >= 0.10.4  && < 0.12,
     directory               >= 1.0     && < 1.4,
-    ghc-prim                >= 0.3.1.0 && < 0.7,
+    ghc-prim                >= 0.3.1.0 && < 0.8,
     fail                    >= 4.9.0.0 && < 4.10,
     text                    >= 1.1     && < 1.3,
     vector                  >= 0.10    && < 0.13,
@@ -271,7 +271,7 @@ benchmark versus
 
   if flag(newtime15)
     build-depends:
-      time                  >= 1.5     && < 1.11
+      time                  >= 1.5     && < 1.12
   else
     build-depends:
       time                  >= 1.4     && < 1.5,
