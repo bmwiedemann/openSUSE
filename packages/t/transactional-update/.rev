@@ -709,4 +709,16 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>880115</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>59458ef1f4a5151bbe0d65059b364756</srcmd5>
+    <version>3.3.0</version>
+    <time>1616925245</time>
+    <user>RBrownSUSE</user>
+    <comment>- Version 3.3.0
+  - Add support for more package managers by bind mounting their directories
+  - Support snapshots without dedicated overlay [boo#1183539], [bsc#1183539]
+  - Link RPM database correctly with older zypper versions [boo#1183521]
+  - Don't discard manual changes in fstab [boo#1183856]</comment>
+    <requestid>881412</requestid>
+  </revision>
 </revisionlist>
