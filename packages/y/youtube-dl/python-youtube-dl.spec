@@ -19,10 +19,10 @@
 %define modname youtube-dl
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-youtube-dl
-Version:        2021.03.03
+Version:        2021.03.25
 Release:        0
 Summary:        A Python module for downloading from video sites for offline watching
-License:        SUSE-Public-Domain AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
 Group:          Development/Languages/Python
 URL:            https://yt-dl.org/
 #Git-Clone:     https://github.com/ytdl-org/youtube-dl

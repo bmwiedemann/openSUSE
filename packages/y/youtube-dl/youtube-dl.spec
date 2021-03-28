@@ -17,10 +17,10 @@
 
 
 Name:           youtube-dl
-Version:        2021.03.03
+Version:        2021.03.25
 Release:        0
 Summary:        A tool for downloading from video sites for offline watching
-License:        SUSE-Public-Domain AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://yt-dl.org/
 #Git-Clone:     https://github.com/ytdl-org/youtube-dl

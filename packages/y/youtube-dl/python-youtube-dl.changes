@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 27 09:06:30 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.03.25
+  * Improve extraction for RTVE, Applepodcasts, SVTPlay
+
+-------------------------------------------------------------------
+Sun Mar 14 10:55:52 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.03.14
+  * voxmedia: fix volume embed extraction
+  * cbs: add support for Paramount+
+  * southpark: Fix extraction and add support for
+    southparkstudios.com
+
+-------------------------------------------------------------------
 Wed Mar  3 08:48:39 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2021.03.03
