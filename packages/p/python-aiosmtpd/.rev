@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>809818</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4ade82e3a4e044a685c3ecda098f4ed2</srcmd5>
+    <version>1.4.2</version>
+    <time>1616925280</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 1.4.2
+- dropped obsolete f414dcdc.patch</comment>
+    <requestid>881335</requestid>
+  </revision>
 </revisionlist>
