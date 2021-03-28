@@ -1,0 +1,6 @@
+---
+preamble: |-
+ Provides: perl-mousex-getopt = %{version}
+ Obsoletes: perl-mousex-getopt <= 0.37
+patches:
+  pr-15.patch: -p1
