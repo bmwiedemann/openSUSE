@@ -778,4 +778,18 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>878772</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0d51366648a6da6d031152761e049cad</srcmd5>
+    <version>0.9.2</version>
+    <time>1616925308</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.9.2:
+ +  Fix marking songs available.
+ +  Fix crash when transcoding music, or copying music to devices with transcoding.
+ +  Fix copying album covers to iPod.
+ +  Fix playlist tabbar close and save right click actions.
+ +  Fix slow opening of cover manager. 
+</comment>
+    <requestid>881418</requestid>
+  </revision>
 </revisionlist>
