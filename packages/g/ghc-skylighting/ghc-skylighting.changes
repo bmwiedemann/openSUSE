@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Mar 23 08:30:51 UTC 2021 - psimons@suse.com
+
+- Update skylighting to version 0.10.5.1.
+  ## 0.10.5.1
+
+    * Regex: Allow lookaheads to capture groups.  Previously
+      captures in lookaheads, like `(?=(a*))`, were ignored.  This
+      led to errors highlighting xml and probably other formats (#121).
+
+    * Throw an exception if a capture group isn't defined (with 'dynamic')
+      rather than simply having getCapture fail so that the rule fails.
+      This will make it easier to debug issues like #121.
+
+-------------------------------------------------------------------
+Mon Mar 22 08:39:34 UTC 2021 - psimons@suse.com
+
+- Update skylighting to version 0.10.5.
+  ## 0.10.5
+
+    * Fix regression from 0.10.3 with Haskell highlighting of Char (#120).
+
+    * Update xml syntax definitions from upstream.  Updated
+      syntaxes: abc apache asp bash bibtex boo c changelog clojure
+      cmake commonlisp cs curry d diff djangotemplate doxygen
+      elixir elm email erlang fortran-fixed fortran-free fsharp
+      hamlet haskell haxe html idris ini javascript-react
+      javascript json julia kotlin latex lex lilypond
+      literate-curry literate-haskell makefile markdown
+      mathematica maxima mediawiki metafont modula-2 mustache nasm
+      nim noweb ocaml octave opencl perl powershell prolog pure
+      python r roff ruby rust sed spdx-comments sql-mysql
+      sql-postgresql tcl tcsh toml typescript verilog xml xslt xul
+      yacc yaml.  Not updated: rhtml (causes an error on our test
+      suite), zsh (has a regex we can't parse).
+
+-------------------------------------------------------------------
 Sun Mar 14 22:46:52 UTC 2021 - psimons@suse.com
 
 - Update skylighting to version 0.10.4.1.
