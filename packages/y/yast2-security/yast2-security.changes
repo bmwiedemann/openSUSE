@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 18 11:43:42 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Do not set SELinux mode when it is not configurable (bsc#1182940)
+- 4.3.16
+
+-------------------------------------------------------------------
 Wed Mar  3 16:09:26 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Make SELinux not configurable when running on WSL (bsc#1182940)
