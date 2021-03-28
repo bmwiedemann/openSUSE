@@ -23,6 +23,7 @@ Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://github.com/peti/git-annex/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         atto.patch
 BuildRequires:  bash-completion
 BuildRequires:  chrpath
 BuildRequires:  curl
@@ -167,7 +168,7 @@ Supplements:    (%{name} and bash-completion)
 Optional dependency offering bash completion for git-annex
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %define cabal_configure_options -ftestsuite

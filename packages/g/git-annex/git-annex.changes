@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 25 09:47:23 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add atto.patch fixing build with attoparsec-0.14+ 
+
+-------------------------------------------------------------------
 Thu Mar 11 08:23:16 UTC 2021 - psimons@suse.com
 
 - Update git-annex to version 8.20210310.
