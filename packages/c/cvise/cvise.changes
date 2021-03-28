@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 25 12:26:03 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210325.1a5f305:
+  * Add new clang pass: class-to-struct (#50).
+
+-------------------------------------------------------------------
 Sat Mar 20 19:50:11 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.3.0+git.20210320.0ff4a84:

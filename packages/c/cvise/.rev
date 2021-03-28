@@ -514,4 +514,13 @@
   * Use colordiff if available.</comment>
     <requestid>880299</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>775bcc2f214be7b8fcd9b04aa3428063</srcmd5>
+    <version>2.3.0+git.20210325.1a5f305</version>
+    <time>1616925264</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 2.3.0+git.20210325.1a5f305:
+  * Add new clang pass: class-to-struct (#50).</comment>
+    <requestid>881309</requestid>
+  </revision>
 </revisionlist>
