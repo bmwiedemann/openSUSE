@@ -19,7 +19,7 @@
 %global pkg_name recursion-schemes
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        5.2.2
+Version:        5.2.2.1
 Release:        0
 Summary:        Representing common recursion patterns as higher-order functions
 License:        BSD-2-Clause
@@ -84,6 +84,6 @@ files.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc CHANGELOG.markdown README.markdown
+%doc CHANGELOG.markdown README.markdown docs
 
 %changelog

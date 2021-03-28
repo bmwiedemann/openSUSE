@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 22 08:41:40 UTC 2021 - psimons@suse.com
+
+- Update recursion-schemes to version 5.2.2.1.
+  ## 5.2.2.1
+
+  * Fix build issue regarding `Setup.hs`. See #120.
+
+-------------------------------------------------------------------
 Sun Feb 21 12:48:08 UTC 2021 - psimons@suse.com
 
 - Update recursion-schemes to version 5.2.2.
