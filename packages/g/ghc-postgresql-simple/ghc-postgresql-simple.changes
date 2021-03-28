@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 23 15:12:00 UTC 2021 - psimons@suse.com
+
+- Update postgresql-simple to version 0.6.4 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Feb 21 12:47:43 UTC 2021 - psimons@suse.com
 
 - Update postgresql-simple to version 0.6.4 revision 1.
