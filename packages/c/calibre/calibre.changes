@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Mar 26 06:42:35 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.14.0
+  * New Features
+    - Edit book: When right clicking on a class in a HTML file, add
+      an option to rename the class throughout the book
+    - Adding from ISBN: Add an option to check if there are
+      existing books with the specified ISBNs already in the
+      library
+    - Template tester: Instead of next/last, the template tester
+      now shows the template values for selected books
+    - Content server: Allow swiping left and right to show
+      next/previous book on the book details page
+    - E-book viewer: Make the commonly used shift+arrow key
+      shortcuts for modifying selections using the keyboard work.
+      Also add shorcuts for selecting by character, line and
+      paragraph.
+  * Bug Fixes
+    - MOBI Output: Fix latest kindle firmware not displaying select
+      publisher font option for calibre produced azw3 files
+    - E-book viewer: Fix errors when viewing books with mathematics
+      that are split over multiple internal files
+    - Content server viewer: Fix highlights not sorted correctly in
+      the highlights panel
+    - Get books: Fix smashwords plugin not working because of
+      website changes
+    - Improve the performance of QuickView especially when using
+      composite columns
+    - Improve performance of the virtual_libraries() template
+      function
+    - Browser viewer: Fix Go to Location not working for positions
+    - E-book viewer: Fix searching in the Table of Contents not
+      working
+    - E-book viewer: In paged mode, fix scrolling not working
+      correctly when margins are set to zero
+    - E-book viewer: Fix incorrect ToC navigation in books that
+      link the entries to inline tags that wrap block tags that
+      span multiple pages
+    - Category editor: Searching in library shouldn't automatically
+      opens Quickview
+    - Conversion: Fix a hang caused by long sequences of non-word
+      characters when heuristics are enabled, either explicitly or
+      for some input formats such as TXT
+    - Fix a regression in calibre 5 that broke --explode-book and
+      --implode-book actions for calibre-debug.exe
+    - Fix a regression in calibre 5 that broke setting metadata in
+      RTF files
+
+-------------------------------------------------------------------
 Wed Mar 10 09:20:28 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.13.0
