@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Mar 17 16:53:42 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Expert console: use "dash" if available instead of "bash" shell
+  to avoid job control error messages (bsc#1183648)
+- 4.3.35
+
+-------------------------------------------------------------------
+Thu Mar 11 15:13:16 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Remove the libzypp cache symlink (related to bsc#1182928)
+- Improved "memsample" script handling
+   - Do not start it again if it is already running
+     (might happen if YaST is started again after crash)
+   - Stop it when YaST finishes
+- 4.3.34
+
+-------------------------------------------------------------------
+Wed Mar 10 17:25:29 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not trigger any kernel event with udevadm from the
+  kernel_finish client (bsc#1180535)
+- 4.3.33
+
+-------------------------------------------------------------------
+Wed Mar 10 10:06:00 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Reduce self-update mechanism memory consumption (bsc#1182928):
+  - Make sure to download the package only once.
+  - Use a single squash file system for each update repository.
+  - Ignore unchanged files and directories like /usr/share/man,
+    /usr/share/info, etc.
+- 4.3.32
+
+-------------------------------------------------------------------
 Thu Mar  4 13:49:52 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Added special installer configuration dialog
