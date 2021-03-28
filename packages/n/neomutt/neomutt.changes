@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 25 12:53:16 UTC 2021 - lmb <lmb@suse.com>
+
+- build: Enable pcre2 for regex matching (bsc#1183989)
+- Add libprce2-devel as build dependency
+
+-------------------------------------------------------------------
 Mon Mar  8 09:16:00 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 20210205:

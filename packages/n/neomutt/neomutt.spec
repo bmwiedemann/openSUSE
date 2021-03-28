@@ -45,6 +45,7 @@ BuildRequires:  lua-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  notmuch-devel
 BuildRequires:  openssl-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  w3m
 BuildRequires:  xsltproc
@@ -87,6 +88,7 @@ export CFLAGS="%{optflags}"
 		--gss				\
 		--idn				\
 		--mixmaster			\
+		--pcre2         		\
 		--zlib
 
 make %{?_smp_mflags}
