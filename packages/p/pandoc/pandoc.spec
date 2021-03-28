@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.12
+Version:        2.13
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -98,7 +98,6 @@ ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-Diff-devel
 BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-executable-path-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-golden-devel
 BuildRequires:  ghc-tasty-hunit-devel
@@ -145,6 +144,7 @@ This package provides the Haskell %{name} library development files.
 
 %prep
 %autosetup
+cabal-tweak-dep-ver 'attoparsec' '< 0.14' '< 0.15'
 
 %build
 %ghc_lib_build

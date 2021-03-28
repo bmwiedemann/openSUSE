@@ -533,4 +533,12 @@
     <comment>Automatic update of haskell stack</comment>
     <requestid>879171</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>ddd05b0025046b7e0e15467931087f68</srcmd5>
+    <version>2.13</version>
+    <time>1616925390</time>
+    <user>RBrownSUSE</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>881560</requestid>
+  </revision>
 </revisionlist>
