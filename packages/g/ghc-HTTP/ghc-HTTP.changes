@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 22 08:39:23 UTC 2021 - psimons@suse.com
+
+- Update HTTP to version 4000.3.16.
+  Version 4000.3.16: release 2021-03-20
+   * Support GHC-9.0 (Oleg Genrus)
+   * Various dependency bumps (multiple people)
+   * Try all addresses returned by getAddrInfo (Fraser Tweedale)
+
+  Version ?
+
+-------------------------------------------------------------------
 Tue Dec 22 12:58:15 UTC 2020 - psimons@suse.com
 
 - Update HTTP to version 4000.3.15 revision 2.
