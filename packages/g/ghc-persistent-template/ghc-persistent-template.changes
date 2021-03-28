@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 23 08:32:38 UTC 2021 - psimons@suse.com
+
+- Update persistent-template to version 2.9.1.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
