@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-resolv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Summary:        Domain Name Service (DNS) lookup via the libresolv standard libr
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Patch0:         new_bytestring.patch
+Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base16-bytestring-devel
 BuildRequires:  ghc-binary-devel
@@ -84,8 +84,8 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development files.
 
 %prep
-%autosetup -p1 -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver base '<4.15' '< 5'
+%autosetup -n %{pkg_name}-%{version}
+cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

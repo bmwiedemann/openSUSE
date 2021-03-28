@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jan 27 19:36:57 UTC 2021 - psimons@suse.com
+
+- Update resolv to version 0.1.2.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+- drop new_bytestring.patch
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
