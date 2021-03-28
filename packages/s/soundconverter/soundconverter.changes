@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 20 15:52:38 UTC 2021 - antoine.belvire@opensuse.org
+
+- Reduce build set to default python3 flavour: Fix build on
+  Tumbleweed.
+
+-------------------------------------------------------------------
 Thu Jan  7 10:34:26 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.0.0

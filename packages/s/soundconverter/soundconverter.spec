@@ -17,7 +17,7 @@
 
 
 %global __requires_exclude typelib\\(GConf\\)|typelib\\(Unity\\)
-%define skip_python2 1
+%define pythons python3
 Name:           soundconverter
 Version:        4.0.0
 Release:        0
