@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-filepath-bytestring
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name filepath-bytestring
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.2.1.6
+Version:        1.4.2.1.7
 Release:        0
 Summary:        Library for manipulating RawFilePaths in a cross platform way
 License:        BSD-3-Clause

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 18 10:48:54 UTC 2021 - psimons@suse.com
+
+- Update filepath-bytestring to version 1.4.2.1.7.
+  filepath-bytestring (1.4.2.1.7) unstable; urgency=medium
+
+    * Relax QuickCheck bounds to allow 2.14.
+    * Relax base bounds so it will build with ghc 9.0.1.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 17 Mar 2021 08:11:27 -0400
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
