@@ -92,8 +92,8 @@ GNU Health is the Hospital Information System adopted by the United
 Nations University, International Institute for Global Health, for
 the implementations and trainings.
 
-This is the server component of GNU Health. 
-You would need the GNU Health Client as well, on the same or a different machine. 
+This is the server component of GNU Health.
+You would need the GNU Health Client as well, on the same or a different machine.
 You may use the Tryton Client either
 See https://en.opensuse.org/GNUHealth_on_openSUSE for instructions
 
@@ -123,7 +123,7 @@ done
 %install
 for i in h*; do
   cd $i
-  %python3_install --prefix=%_prefix --root=%buildroot 
+  %python3_install --prefix=%_prefix --root=%buildroot
   cd ..
 done
 
@@ -161,9 +161,10 @@ alias cdconf='cd /etc/tryton'
 alias cdmods='cd $(ls -d /usr/lib/python3.* )/site-packages/trytond/modules'
 alias editconf='${EDITOR} /etc/tryton/trytond.conf'
 alias cdutil='cd /usr/bin'
+export EDITOR=nano
 EOF
 
-#Write GH Variable /etc/tryton/gnuhealthrc 
+#Write GH Variable /etc/tryton/gnuhealthrc
 cat > /etc/tryton/gnuhealthrc << "EOF"
 GNUHEALTH_VERSION=%{version}
 TRYTON_VERSION=%{t_version}
@@ -188,7 +189,7 @@ EOF
 %{python3_sitelib}/%{name}_orthanc*
 %{python3_sitelib}/trytond/modules/health_orthanc*
 
-%files 
+%files
 %defattr(-,root,root)
 %{_bindir}/gnuhealth
 %{_bindir}/gnuhealth-control
@@ -198,7 +199,7 @@ EOF
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}-webdav@.service
 %doc README Changelog gnuhealth-setup version gnuhealthrc GNUHealth.README.openSUSE scripts/* config/* doc/*
-%{_docdir}/%{name}/examples* 
+%{_docdir}/%{name}/examples*
 %dir %{_sysconfdir}/tryton
 %license COPYING
 %exclude %{python3_sitelib}/%{name}_orthanc*
