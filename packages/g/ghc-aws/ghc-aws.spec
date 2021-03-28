@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-aws
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,6 +96,7 @@ This package provides the Haskell %{pkg_name} library development files.
 %autosetup -n %{pkg_name}-%{version}
 cabal-tweak-dep-ver base64-bytestring '== 1.0.*' '< 2'
 cabal-tweak-dep-ver base16-bytestring '== 0.1.*' '< 2'
+cabal-tweak-dep-ver attoparsec '< 0.14' '< 0.15'
 
 %build
 %ghc_lib_build
