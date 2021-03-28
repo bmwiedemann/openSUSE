@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 25 15:46:03 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- relax dep on attoparsec 
+
+-------------------------------------------------------------------
 Tue Jan 19 20:10:01 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - relax dep on http-api-data 
