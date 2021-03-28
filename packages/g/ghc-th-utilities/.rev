@@ -88,4 +88,12 @@
     <comment>update haskell stack in openSUSE</comment>
     <requestid>857704</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fc9949a3f6bc3b1f1021e0430057aa5b</srcmd5>
+    <version>0.2.4.2</version>
+    <time>1616925379</time>
+    <user>RBrownSUSE</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>881554</requestid>
+  </revision>
 </revisionlist>
