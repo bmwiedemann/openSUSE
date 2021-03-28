@@ -1,3 +1,49 @@
+-------------------------------------------------------------------
+Thu Mar 18 16:33:19 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Do not create zypp cache symlink when running in installed
+  system, it would create /var/cache/zypp -> /var/cache/zypp
+  loop (bsc#1183683)
+- Remove the "Software Repositories" button from the YaST console,
+  users can easily break the installer with it. Added
+  "configure_repositories" command to the command line interface
+  for experts (bsc#1183687)
+- 4.3.20
+
+-------------------------------------------------------------------
+Thu Mar 11 15:01:58 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Move the libzypp cache to the installed system to save some
+  memory and avoid crashing because out of memory (bsc#1182928)
+- 4.3.19
+
+-------------------------------------------------------------------
+Tue Mar  9 09:15:41 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added IBM tools product rename to the list (part of bsc#1182837)
+- 4.3.18
+
+-------------------------------------------------------------------
+Mon Mar  8 15:44:31 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- During installation, explain what "online repositories" are
+  (bsc#1180707).
+- 4.3.17
+
+-------------------------------------------------------------------
+Mon Mar  8 14:31:30 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Extend the special installer configuration dialog with
+  repository options (jsc#PM-1895, jsc#SLE-16263)
+- 4.3.16
+
+-------------------------------------------------------------------
+Fri Mar  5 10:41:42 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Support for configuring minimalistic DNF (bsc#1182849)
+  contributed by Sasi Olin (hel@lcp.world).
+- 4.3.15
+
 Fri Feb 19 14:07:15 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 -------------------------------------------------------------------
 
