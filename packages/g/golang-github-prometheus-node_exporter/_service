@@ -1,16 +1,21 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="obs_scm" mode="disabled">
     <param name="url">https://github.com/prometheus/node_exporter.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="versionformat">1.0.1</param>
-    <param name="revision">v1.0.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">v1.1.2</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
   </service>
-  <service name="recompress" mode="disabled">
-    <param name="file">node_exporter-*.tar</param>
-    <param name="compression">xz</param>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
   </service>
   <service name="set_version" mode="disabled">
     <param name="basename">node_exporter</param>
+  </service>
+  <service name="go_modules" mode="disabled">
+    <param name="archive">node_exporter-1.1.2.tar.gz</param>
   </service>
 </services>

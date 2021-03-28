@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Mar  9 14:02:29 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to 1.1.2
+  * Bug fixes
+    + Handle errors from disabled PSI subsystem #1983
+    + Sanitize strings from /sys/class/power_supply #1984
+    + Silence missing netclass errors #1986
+
+-------------------------------------------------------------------
+Fri Feb 26 14:51:28 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Trim old specfile constructs
+
+-------------------------------------------------------------------
+Thu Feb 25 12:50:00 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Migrate to obs_scm
+- Migrate to go_modules
+
+- Update to 1.1.1
+  * Bug fixes
+    + Fix ineffassign issue #1957
+    + Fix some noisy log lines #1962
+
+- Update to 1.1.0
+  * Changes
+    + Improve filter flag names #1743
+    + Add btrfs and powersupplyclass to list of exporters enabled by default #1897
+  * Features
+    + Add fibre channel collector #1786
+    + Expose cpu bugs and flags as info metrics. #1788
+    + Add network_route collector #1811
+    + Add zoneinfo collector #1922
+  * Enhancements
+    + Add more InfiniBand counters #1694
+    + Add flag to aggr ipvs metrics to avoid high cardinality metrics #1709    
+    + Adding backlog/current queue length to qdisc collector #1732    
+    + Include TCP OutRsts in netstat metrics #1733    
+    + Add pool size to entropy collector #1753    
+    + Remove CGO dependencies for OpenBSD amd64 #1774    
+    + bcache: add writeback_rate_debug stats #1658    
+    + Add check state for mdadm arrays via node_md_state metric #1810    
+    + Expose XFS inode statistics #1870    
+    + Expose zfs zpool state #1878    
+    + Added an ability to pass collector.supervisord.url via SUPERVISORD_URL environment variable #1947
+  * Bug fixes
+    + filesystem_freebsd: Fix label values #1728
+    + Fix various procfs parsing errors #1735
+    + Handle no data from powersupplyclass #1747
+    + udp_queues_linux.go: change upd to udp in two error strings #1769
+    + Fix node_scrape_collector_success behaviour #1816
+    + Fix NodeRAIDDegraded to not use a string rule expressions #1827
+    + Fix node_md_disks state label from fail to failed #1862
+    + Handle EPERM for syscall in timex collector #1938
+    + bcache: fix typo in a metric name #1943
+    + Fix XFS read/write stats (https://github.com/prometheus/procfs/pull/343)
+
+-------------------------------------------------------------------
+Wed Feb 24 14:59:27 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Do not include sources (bsc#1151558)
+- Remove rc symlink
+
+-------------------------------------------------------------------
 Fri Aug 21 11:53:46 UTC 2020 - Joao Cavalheiro <jcavalheiro@suse.com>
 
 - Update to 1.0.1

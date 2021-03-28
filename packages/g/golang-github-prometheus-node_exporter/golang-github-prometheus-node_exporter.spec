@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-prometheus-node_exporter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017 Silvio Moioli <moio@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,22 +20,20 @@
 %{go_nostrip}
 
 Name:           golang-github-prometheus-node_exporter
-Version:        1.0.1
+Version:        1.1.2
 Release:        0
 Summary:        Prometheus exporter for machine metrics
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://prometheus.io/
-Source:         node_exporter-%{version}.tar.xz
-Source1:        prometheus-node_exporter.service
-Source2:        README
+Source:         node_exporter-%{version}.tar.gz
+Source1:        vendor.tar.gz
+Source2:        prometheus-node_exporter.service
 Source4:        prometheus-node_exporter.sysconfig
 BuildRequires:  fdupes
-BuildRequires:  go1.14
 BuildRequires:  golang-packaging
-BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{?systemd_requires}
+BuildRequires:  golang(API) = 1.14
+%{?systemd_ordering}
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
 %{go_provides}
@@ -50,21 +48,16 @@ Provides:       prometheus(node_exporter)
 Prometheus exporter for hardware and OS metrics exposed by *NIX kernels, written in Go with pluggable metric collectors.
 
 %prep
-%setup -q -n node_exporter-%{version}
+%autosetup -a1 -p1 -n node_exporter-%{version}
 
 %build
-make collector/fixtures/sys/.unpacked  # unpacks text fixtures required by gotest
 %goprep github.com/prometheus/node_exporter
-%gobuild -mod=vendor ""
+%gobuild -mod=vendor "" ...
 
 %install
 %goinstall
-%gosrc
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/prometheus-node_exporter.service
-install -Dd -m 0755 %{buildroot}%{_sbindir}
-ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcprometheus-node_exporter
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/prometheus-node_exporter.service
 install -D -m 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.prometheus-node_exporter
-%gofilelist
 %fdupes %{buildroot}
 
 %check
@@ -84,13 +77,11 @@ getent passwd prometheus >/dev/null || %{_sbindir}/useradd -r -g prometheus -d %
 %postun
 %service_del_postun prometheus-node_exporter.service
 
-%files -f file.lst
-%defattr(-,root,root,-)
+%files
 %doc README.md
 %license LICENSE
 %{_bindir}/node_exporter
 %{_unitdir}/prometheus-node_exporter.service
-%{_sbindir}/rcprometheus-node_exporter
 %{_fillupdir}/sysconfig.prometheus-node_exporter
 
 %changelog
