@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Mar 27 11:42:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrasing in descriptions. Trim redundant metadata
+  and tone down program claims.
+
+-------------------------------------------------------------------
+Wed Mar 24 20:20:18 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 2.1.2:
+  * Fix missing icons (gh#slgobinath/SafeEyes#420,
+    gh#slgobinath/SafeEyes#406).
+  * Fix breaks getting postponed forever
+    (gh#slgobinath/SafeEyes#410).
+  * Fix unable to disable auto-start (gh#slgobinath/SafeEyes#409).
+  * Random break order (gh#slgobinath/SafeEyes#418).
+- Changes from version 2.1.1:
+  * Fix desktop entry creation.
+- Changes from version 2.1.0:
+  * Option to disable RPC server.
+  * Add scroll bar to Settings dialog.
+  * Fix idle start time calculation.
+  * Add cron expression to Health Stats plugin.
+  * Fix Gnome restarting in Ubuntu 20.10.
+  * Drop support to Python 3.4 and add support to 3.8 and 3.9.
+- Remove SafeEyes-fix-install-path.patch: Fixed upstream.
+- Add new runtime dependency on python3-cronie.
+- Remove unused build dependency on fdupes.
+- Clean spec file.
+
+-------------------------------------------------------------------
 Thu Oct 22 15:16:21 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
 
 - SmartPause plugin: Increase default idle time to pause SafeEyes.

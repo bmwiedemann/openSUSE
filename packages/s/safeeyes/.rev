@@ -35,4 +35,13 @@
     <comment></comment>
     <requestid>843508</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f5bcf3f5e841b35471e584089c9deb3f</srcmd5>
+    <version>2.1.2</version>
+    <time>1616925394</time>
+    <user>RBrownSUSE</user>
+    <comment>- Use noun phrasing in descriptions. Trim redundant metadata
+  and tone down program claims. (forwarded request 881653 from jengelh)</comment>
+    <requestid>881656</requestid>
+  </revision>
 </revisionlist>

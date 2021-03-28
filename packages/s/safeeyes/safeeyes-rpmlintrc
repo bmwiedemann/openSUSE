@@ -1,4 +1,3 @@
 addFilter("explicit-lib-dependency")
-#addFilter("file-not-in-%lang")
 addFilter("non-executable-script")
 addFilter("desktopfile-without-binary")
