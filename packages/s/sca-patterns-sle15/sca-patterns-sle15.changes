@@ -1,5 +1,26 @@
 -------------------------------------------------------------------
-Thu Mar  4 03:25:51 UTC 2021 - jason.record@gmail.com
+Thu Mar 25 21:05:17 UTC 2021 - jason.record@suse.com
+
+- New regular patterns (5) for version 1.0.1
+  + sle15sp2/kernel-000019739.py: BIOS update failure when an update is performed using the Linux .bin files
+  + sle15sp2/bleedingtooth_152-000019735.py: BleedingTooth aka CVE-2020-12351, CVE-2020-12352, and CVE-2020-24490
+  + sle15sp1/bleedingtooth_151-000019735.py: BleedingTooth aka CVE-2020-12351, CVE-2020-12352, and CVE-2020-24490
+  + sle15sp0/bleedingtooth_150-000019735.py: BleedingTooth aka CVE-2020-12351, CVE-2020-12352, and CVE-2020-24490
+  + sle15all/amavis-000019709.py: amavis.service failed to start after upgrade
+
+-------------------------------------------------------------------
+Wed Mar 24 22:39:50 UTC 2021 - jason.record@suse.com
+
+- New regular patterns (6) for version 1.0.1
+  + sle15sp2/openwsman-000019729.py: owsmangencert.sh generates error
+  + sle15sp2/lscpu-000019784-15.py: lscpu segfaults on IBM Power8 - Assertion failed
+  + sle15sp1/x710-000019639.py: Intel X710 based NIC is not detected
+  + sle15sp1/plymouth-000019595.py: plymouth hang - login to console not possible
+  + sle15sp1/lscpu-000019784-15.py: lscpu segfaults on IBM Power8 - Assertion failed
+  + sle15sp0/plymouth-000019595.py: plymouth hang - login to console not possible
+
+-------------------------------------------------------------------
+Thu Mar  4 03:25:51 UTC 2021 - jason.record@suse.com
 
 - Changes to version 1.0.1
   + Feb 2021 New Security Announcement Patterns (15) for SUSE-SU-2021:0536-1 SUSE-SU-2021:0630-1 SUSE-SU-2021:0521-1 SUSE-SU-2021:0529-1 SUSE-SU-2021:0594-1 SUSE-SU-2021:0543-1 SUSE-SU-2021:0544-1 SUSE-SU-2021:0354-1 SUSE-SU-2021:0285-1 SUSE-SU-2021:0551-1 SUSE-SU-2021:0628-1 SUSE-SU-2021:0341-1 SUSE-SU-2021:0440-1 SUSE-SU-2021:0277-1 SUSE-SU-2021:0438-1
@@ -9,13 +30,13 @@ Thu Mar  4 03:25:51 UTC 2021 - jason.record@gmail.com
 
 
 -------------------------------------------------------------------
-Mon Mar  1 21:37:07 UTC 2021 - jason.record@gmail.com
+Mon Mar  1 21:37:07 UTC 2021 - jason.record@suse.com
 
 - Pattern for TID000019883 - iscsiadm crashing when updating target parameter
 - Pattern for TID000019637 - cpupower tool unable to read boost states for AMD Rome CPUs
 
 -------------------------------------------------------------------
-Tue Jan 26 18:47:03 UTC 2021 - jason.record@gmail.com
+Tue Jan 26 18:47:03 UTC 2021 - jason.record@suse.com
 
 - Pattern for TID000019825 - Graphic interface no longer working after patches
 

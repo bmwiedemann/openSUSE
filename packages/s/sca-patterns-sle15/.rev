@@ -39,4 +39,12 @@
     <comment>New security and TID patterns (forwarded request 876726 from jrecord)</comment>
     <requestid>876727</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>f55eda351fbef2784837ad2aebb4028c</srcmd5>
+    <version>1.0.1</version>
+    <time>1616925306</time>
+    <user>RBrownSUSE</user>
+    <comment>Factory Ready (forwarded request 881401 from jrecord)</comment>
+    <requestid>881402</requestid>
+  </revision>
 </revisionlist>
