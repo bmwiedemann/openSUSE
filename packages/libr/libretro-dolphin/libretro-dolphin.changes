@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Mar 13 04:19:05 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210209:
+  * (.gitlab-ci.yml) Fix windows-x64 target (use 'move-Item' instead of 'mv.exe')
+  * (.gitlab-ci.yml) Add windows-x64 target
+  * Update .gitlab-ci.yml
+  * Restore unused but unnecessarily removed code from Dolphin piece.
+  * Further cleanup. * Move m3u processing to core instead of letting it hit Dolphin. * Move custom code out of Dolphin. * Simplify disc control logic more rather than relying on Dolphin internals.
+  * Fix build on non-Windows.
+  * Attempt to fix up Disc Control interface.
+  * Add m3u to supported file extensions list.
+  * Fix absolutely path building for files listed in m3u on Windows.
+  * Update .gitlab-ci.yml
+  * Update Valid File Extensions
+  * libretro: Fix Android build
+  * Add gitlab ci script
+  * (Libretro/Android) Get rid of jni/ButtonManager.h
+  * Libretro: better handling of AsyncRequests.
+  * handle deterministic gpu thread correctly. fixes #167.
+  * sanitize gl context requests
+
+-------------------------------------------------------------------
 Thu Feb 11 16:56:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not lock to GCC9: use whatever gcc version the distro

@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-dolphin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-dolphin
-Version:        0~git20200831
+Version:        0~git20210209
 Release:        0
 Summary:        Dolphin libretro core for Nintendo GameCube and Wii emulation
 License:        GPL-3.0-only
