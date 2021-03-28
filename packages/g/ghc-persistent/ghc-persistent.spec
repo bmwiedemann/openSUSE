@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-persistent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name persistent
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.11.0.2
+Version:        2.11.0.4
 Release:        0
 Summary:        Type-safe, multi-backend data serialization
 License:        MIT

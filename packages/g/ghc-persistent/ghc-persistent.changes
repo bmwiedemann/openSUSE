@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 19 09:15:33 UTC 2021 - psimons@suse.com
+
+- Update persistent to version 2.11.0.4.
+  ## 2.11.0.4
+
+  * Fix a compile error [#1213](https://github.com/yesodweb/persistent/pull/1213)
+      * That's what I get for running this stuff with flakey CI!
+
+-------------------------------------------------------------------
+Thu Mar 18 12:01:41 UTC 2021 - psimons@suse.com
+
+- Update persistent to version 2.11.0.3.
+  ## 2.11.0.3
+
+  * Backported the fix from [#1207](https://github.com/yesodweb/persistent/pull/1207) for asynchronous exceptions.
+      * Deprecated the `Acquire` family of functions.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
