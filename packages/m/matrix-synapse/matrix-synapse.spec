@@ -45,7 +45,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.28.0
+Version:        1.30.1
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -61,6 +61,7 @@ Source51:       matrix-synapse-generate-config.sh
 # to clean up your working copy afterwards: git reset --hard ; rm -rv .pc patches
 Source99:       series
 Patch:          matrix-synapse-1.4.1-paths.patch
+Patch1:         dont-bump-cryptography-with-system-openssl.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
@@ -83,7 +84,7 @@ BuildRequires:  python3-Twisted >= 20.3.0
 %requires_eq    python3-Twisted
 BuildRequires:  python3-attrs >= 17.4.0
 %requires_eq    python3-attrs
-BuildRequires:  python3-bcrypt >= 3.1.0
+BuildRequires:  python3-bcrypt >= 3.2.0
 %requires_eq    python3-bcrypt
 BuildRequires:  python3-bleach >= 1.4.3
 %requires_eq    python3-bleach

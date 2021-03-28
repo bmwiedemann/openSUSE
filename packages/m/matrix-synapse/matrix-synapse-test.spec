@@ -19,7 +19,7 @@
 # synapse only supports python >= 3.5, which is not available on pre-15 Leap.
 # However, future versions of matrix-synapse will no longer support python2 and
 # continued use of python2 is not recommended, so we only use the primary
-# python3 flavor. As a result, at no point do we have two versions of the 
+# python3 flavor. As a result, at no point do we have two versions of the
 # matrix-synapse package.
 
 # Disable debug packages since we're not installing anything.
@@ -27,7 +27,7 @@
 
 %define         pkgname matrix-synapse
 Name:           %{pkgname}-test
-Version:        1.28.0
+Version:        1.30.1
 Release:        0
 Summary:        Test package for %{pkgname}
 License:        Apache-2.0
@@ -40,6 +40,7 @@ BuildRequires:  %{pkgname} == %{version}
 touch %{_sourcedir}/%{pkgname}
 
 %build
+
 %install
 
 %check
