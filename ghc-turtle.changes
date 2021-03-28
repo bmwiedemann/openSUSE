@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 22 08:40:00 UTC 2021 - psimons@suse.com
+
+- Update turtle to version 1.5.21 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
