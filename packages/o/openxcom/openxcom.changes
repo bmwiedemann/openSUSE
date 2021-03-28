@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 25 14:18:37 UTC 2021 - tomas.chvatal@gmail.com
+
+- Update to version 1.0.0.1615230250.adb97235b:
+  * Fix Elerium crafts potentially wasting one item of fuel during maintenance.
+  * Fix Broken Korean Letters
+  * Compatibility with OXCE saves
+  * More precise distance calculation for 2x2 units
+  * More generous detection
+  * Don't bother with brew update, it often fails
+  * Remove Travis builds
+  * fix drag scrolling with black borders, part 2
+  * Fix inventory sprite checks
+
+-------------------------------------------------------------------
 Fri Nov  6 13:02:20 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to cmake build system as upstream deprecates the

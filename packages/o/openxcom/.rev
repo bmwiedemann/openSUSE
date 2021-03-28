@@ -117,4 +117,21 @@
   * Fixed average monthly rating calculation in StatisticsState</comment>
     <requestid>846462</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0ffd024d294084c90fa3d4c78ae39bfc</srcmd5>
+    <version>1.0.0.1615230250.adb97235b</version>
+    <time>1616925284</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.0.0.1615230250.adb97235b:
+  * Fix Elerium crafts potentially wasting one item of fuel during maintenance.
+  * Fix Broken Korean Letters
+  * Compatibility with OXCE saves
+  * More precise distance calculation for 2x2 units
+  * More generous detection
+  * Don't bother with brew update, it often fails
+  * Remove Travis builds
+  * fix drag scrolling with black borders, part 2
+  * Fix inventory sprite checks</comment>
+    <requestid>881328</requestid>
+  </revision>
 </revisionlist>
