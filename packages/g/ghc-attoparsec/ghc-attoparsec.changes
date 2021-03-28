@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 23 08:31:04 UTC 2021 - psimons@suse.com
+
+- Update attoparsec to version 0.14.1.
+  0.14.1
+
+  * Added `Data.Attoparsec.ByteString.getChunk`.
+
+  0.14.0
+
+  * Added `Data.Attoparsec.ByteString.takeWhileIncluding`.
+  * Make `Data.Attoparsec.{Text,ByteString}.Lazy.parseOnly` accept lazy input.
+
+-------------------------------------------------------------------
 Wed Mar  3 16:37:14 UTC 2021 - psimons@suse.com
 
 - Update attoparsec to version 0.13.2.5 revision 1.

@@ -195,4 +195,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-07/msg00409.html</comment>
     <comment>automated update for haskell stack</comment>
     <requestid>877975</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9eb11bb599d2f4a4ba62055e3fbe957b</srcmd5>
+    <version>0.14.1</version>
+    <time>1616925339</time>
+    <user>RBrownSUSE</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>881529</requestid>
+  </revision>
 </revisionlist>
