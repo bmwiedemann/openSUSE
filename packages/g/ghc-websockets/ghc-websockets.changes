@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 26 15:05:56 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- relax overconstrained deps on attoparsec 
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
