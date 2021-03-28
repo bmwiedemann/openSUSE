@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 26 09:39:50 EDT 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Mark GNOME Desktop variant as beta-quality (boo#1184037)
+- 20210326
+
+-------------------------------------------------------------------
 Tue Mar 23 11:11:40 EDT 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Replace installing AppArmor patterns with SELinux ones to
