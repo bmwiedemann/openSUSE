@@ -72,4 +72,12 @@
     <comment>update haskell stack in openSUS</comment>
     <requestid>857648</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f8f4b05a81929603b644a23081375eea</srcmd5>
+    <version>0.3.8.1</version>
+    <time>1616925382</time>
+    <user>RBrownSUSE</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>881556</requestid>
+  </revision>
 </revisionlist>
