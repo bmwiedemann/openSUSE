@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 25 22:13:59 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.3.0
+  - Add support for more package managers by bind mounting their directories
+  - Support snapshots without dedicated overlay [boo#1183539], [bsc#1183539]
+  - Link RPM database correctly with older zypper versions [boo#1183521]
+  - Don't discard manual changes in fstab [boo#1183856]
+
+-------------------------------------------------------------------
 Fri Mar 12 13:45:09 UTC 2021 - Ignaz Forster <iforster@suse.com>
 
 - Revert inotify-tools dependency: The package is not available in
