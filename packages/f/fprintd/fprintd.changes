@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 20 11:19:56 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix pyton dbus-python build dependency for Leap 15.3 boo#1183818
+
+-------------------------------------------------------------------
 Fri Jan 15 19:42:37 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.90.9

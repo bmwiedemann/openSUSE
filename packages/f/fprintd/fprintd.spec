@@ -36,6 +36,7 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-cairo
 BuildRequires:  python3-dbusmock
+BuildRequires:  python3-dbus-python
 BuildRequires:  python3-libpamtest
 BuildRequires:  python3-pydbus
 BuildRequires:  typelib-1_0-FPrint-2_0
