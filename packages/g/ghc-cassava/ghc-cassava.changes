@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 23 15:12:11 UTC 2021 - psimons@suse.com
+
+- Update cassava to version 0.5.2.0 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Mar  2 09:34:41 UTC 2021 - psimons@suse.com
 
 - Update cassava to version 0.5.2.0 revision 3.
