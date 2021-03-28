@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 25 15:11:20 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4.3
+  * remove hard-coded paths (#203 )
+  * fix wrong icon in taskbar (#204)
+  * fix an error in andOTP export
+
+-------------------------------------------------------------------
 Fri Feb 12 07:31:08 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.4.2
