@@ -11493,7 +11493,6 @@ unsorted:
   - liblockdev1-32bit: [x86_64] 
   - liblockfile-devel 
   - liblockfile1 
-  - liblodepng-r208 
   - liblog4c-devel 
   - liblog4c-doc 
   - liblog4c3 
@@ -14690,7 +14689,6 @@ unsorted:
   - local-npm-registry 
   - lockdev-devel 
   - lockfile 
-  - lodepng-devel 
   - log4cplus-devel 
   - log4cpp-devel 
   - log4cpp-doc 
@@ -17240,14 +17238,11 @@ unsorted:
   - octave-forge-optics 
   - octave-forge-optim 
   - octave-forge-parallel 
-  - octave-forge-quaternion 
   - octave-forge-queueing 
   - octave-forge-secs1d 
-  - octave-forge-secs2d 
   - octave-forge-secs3d 
   - octave-forge-signal 
   - octave-forge-sockets 
-  - octave-forge-specfun 
   - octave-forge-splines 
   - octave-forge-statistics 
   - octave-forge-stk 
@@ -17305,6 +17300,7 @@ unsorted:
   - ongres-scram-javadoc 
   - ongres-scram-parent 
   - oniguruma-devel 
+  - onioncat 
   - onnx-backend-test 
   - onnx-devel 
   - ooRexx 
@@ -18955,6 +18951,7 @@ unsorted:
   - perl-MooseX-Workers 
   - perl-Mouse 
   - perl-MouseX-ConfigFromFile 
+  - perl-MouseX-Getopt 
   - perl-MouseX-SimpleConfig 
   - perl-MouseX-Types 
   - perl-MouseX-Types-Path-Class 
@@ -19494,7 +19491,6 @@ unsorted:
   - perl-libxml-perl 
   - perl-local-lib 
   - perl-marisa 
-  - perl-mousex-getopt 
   - perl-multidimensional 
   - perl-namespace-autoclean 
   - perl-namespace-clean 
@@ -28596,6 +28592,8 @@ unsorted:
   - sunpinyin-tools 
   - sunwait 
   - sunxi-tools 
+  - super-csv 
+  - super-csv-javadoc 
   - superlu-devel 
   - superlu-doc 
   - superlu-examples 
