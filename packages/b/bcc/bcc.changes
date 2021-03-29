@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 29 03:36:43 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.19.0
+  + Support for kernel up to 5.11
+  + allow BCC as a cmake subproject
+  + add LPORT support in tcpconnlat and tcpconnect
+  + added bpf_map_lookup_and_delete_batch support
+  + new tools: virtiostat
+  + new libbpf-tools: cpufreq, funclatency, cachestat
+  + add install target to libbpf-tools
+  + a few lua fixes
+  + doc update and bug fixes
+- Set ENABLE_NO_PIE to "OFF" to enable PIE for bcc-lua (bsc#1183399)
+
+-------------------------------------------------------------------
 Wed Jan  6 01:47:45 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.18.0

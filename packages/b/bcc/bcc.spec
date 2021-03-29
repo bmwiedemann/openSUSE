@@ -29,7 +29,7 @@
 %define libbpf_version 0.3
 
 Name:           bcc
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
@@ -164,6 +164,7 @@ CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" cmake \
 %if %{with_lua}
 	-DLUAJIT_INCLUDE_DIR=`pkg-config --variable=includedir luajit` \
 	-DLUAJIT_LIBRARY=%{_libdir}/lib`pkg-config --variable=libname luajit`.so \
+	-DENABLE_NO_PIE=OFF \
 %endif
 %ifarch %arm || %ix86
 	-DENABLE_USDT=OFF \
