@@ -43,9 +43,11 @@ BuildRequires:  libxslt-devel
 BuildRequires:  libyaml-devel
 BuildRequires:  llvm-devel
 BuildRequires:  python-rpm-macros
+%if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 # The hotdoc cli files were provided as separate package between Aug and Nov 2020
 Obsoletes:      hotdoc < %{version}-%{release}
 Provides:       hotdoc = %{version}-%{release}
+%endif
 # The c extension needs libclang.so and llvm-config
 Requires:       clang-devel
 Requires:       llvm-devel

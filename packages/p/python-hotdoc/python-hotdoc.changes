@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 20 00:13:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Avoid have-choice with upcoming python39 flavor: Only provide the
+  hotdoc capability without python prefix by primary python3
+  package.
+
+-------------------------------------------------------------------
 Wed Feb 10 09:55:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix typo in previous commit (defnie -> define).
