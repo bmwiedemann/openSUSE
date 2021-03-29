@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 27 14:48:41 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 2.2.3
+  * Fix compilation error on CentOS 7
+
+-------------------------------------------------------------------
 Sat Mar 20 09:37:46 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 2.2.2

@@ -20,7 +20,7 @@
 %define libsoname %{libname}7
 
 Name:           courier-unicode
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        Courier Unicode Library
 License:        GPL-3.0-or-later
