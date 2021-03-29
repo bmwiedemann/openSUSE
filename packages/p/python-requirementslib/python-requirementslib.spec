@@ -1,7 +1,7 @@
 #
 # spec file for package python-requirementslib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# gh#sarugaku/requirementslib#288
+%define skip_python39 1
 %bcond_without python2
 Name:           python-requirementslib
 Version:        1.5.16
@@ -90,9 +92,9 @@ BuildRequires:  git-core
 %python_subpackages
 
 %description
-RequirementsLib provides a simple layer for building and 
-interacting with requirements in both the Pipfile format and 
-the requirements.txt format. This library was originally built 
+RequirementsLib provides a simple layer for building and
+interacting with requirements in both the Pipfile format and
+the requirements.txt format. This library was originally built
 for converting between these formats in Pipenv.
 
 %prep
