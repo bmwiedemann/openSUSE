@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 27 00:31:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add BuildIgnores to break a cycle between gmp, mpfr, mpc, gcc
+
+-------------------------------------------------------------------
 Thu Mar 11 14:01:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add some -Wno-error because gcc appears to fall over MSVCRT

@@ -60,11 +60,13 @@ Requires:       mingw32-winpthreads-devel
 BuildRequires:  gcc-ada
 BuildRequires:  mingw32-cross-gcc-ada >= %{version}
 %endif
+# bugzilla.opensuse.org/1184052
+#!BuildIgnore:  mingw32(libstdc++-6.dll)
+#!BuildIgnore:  mingw32(libgcc_s_sjlj-1.dll)
 
 %description
 MinGW Windows compiler (GCC) for C
 
-%if "%{_mingw32_cpu}" == "x86_64"
 %package -n mingw32-libgcc_s_seh1
 Summary:        MinGW Windows compiler for C shared libraries
 Group:          System/Libraries
@@ -78,7 +80,7 @@ This libgcc build supports Structured Exception Handling (SEH), which
 is the native exception handling mechanism for Windows.
 [SEH support is currently only implemented for the x86_64 target,
 which is why the 32bit mingw package set does not contain it.]
-%else
+
 %package -n mingw32-libgcc_s_sjlj1
 Summary:        MinGW Windows compiler for C shared libraries
 Group:          System/Libraries
@@ -102,7 +104,6 @@ frame" code will fail, including Windows system DLLs and DLLs built
 with Visual Studio. DWARF-2 unwinding code in GCC inspects the x86
 unwinding assembly and is unable to proceed without other DWARF-2
 unwind information.]
-%endif
 
 %package -n mingw32-libssp0
 Summary:        MinGW Windows compiler for C shared libraries
@@ -333,6 +334,7 @@ perl -pi -e 's#include_next\ \<math\.h\>#include\ \<math\.h\>#g' \
 %files -n mingw32-libgcc_s_seh1
 %{_mingw32_bindir}/libgcc_s_seh-1.dll
 %else
+
 %files -n mingw32-libgcc_s_sjlj1
 %{_mingw32_bindir}/libgcc_s_sjlj-1.dll
 %endif
