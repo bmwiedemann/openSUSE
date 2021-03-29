@@ -1,5 +1,5 @@
 #
-# spec file for package python-libcst
+# spec file for package python-libcst-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-libcst%{psuffix}
-Version:        0.3.16
+Version:        0.3.17
 Release:        0
 Summary:        Python 3.5+ concrete syntax tree with AST-like properties
 License:        MIT
@@ -36,8 +36,6 @@ Source:         https://files.pythonhosted.org/packages/source/l/libcst/libcst-%
 # PATCH-FIX-UPSTREAM skip_failing_test.patch gh#Instagram/LibCST#442 mcepl@suse.com
 # test fails on i586 with Python 3.6
 Patch0:         skip_failing_test.patch
-# isort needed for the code regeneration, code mod also on non test flavor
-BuildRequires:  %{python_module isort >= 5.5.3}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,15 +47,15 @@ BuildArch:      noarch
 Requires:       python-dataclasses
 %endif
 %if %{with test}
+# black and isort needed for tests and the code regeneration
 BuildRequires:  %{python_module PyYAML >= 5.2}
-# black needed for tests and the code regeneration
 BuildRequires:  %{python_module black}
+BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module hypothesis >= 4.36.0}
 BuildRequires:  %{python_module hypothesmith >= 0.0.4}
+BuildRequires:  %{python_module isort >= 5.5.3}
 BuildRequires:  %{python_module typing-inspect >= 0.4.0}
 BuildRequires:  %{python_module typing_extensions >= 3.7.4.2}
-BuildRequires:  (python3-dataclasses if python3-base < 3.7)
-BuildRequires:  (python36-dataclasses if python36-base)
 %endif
 %python_subpackages
 
@@ -68,14 +66,17 @@ A concrete syntax tree with AST-like properties for Python 3.5+ programs.
 %setup -q -n libcst-%{version}
 %autopatch -p1
 
-# fix executable
-sed -i 's/"python"/sys.executable/' libcst/codemod/tests/test_codemod_cli.py
+# wrong executable call, when fixed, fails to detect syntax error  gh#Instagram/LibCST#468
+rm libcst/codemod/tests/test_codemod_cli.py
 
 # Depends on optional pyre
 rm \
   libcst/metadata/tests/test_type_inference_provider.py \
   libcst/metadata/tests/test_full_repo_manager.py \
   libcst/tests/test_pyre_integration.py
+
+# gh#Instagram/LibCST#467
+sed -i 's/import AbstractBaseMatcherNodeMeta/import Optional, AbstractBaseMatcherNodeMeta/' libcst/codegen/gen_matcher_classes.py
 
 %if !%{with test}
 %build
@@ -86,11 +87,20 @@ rm \
 %if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+# fix mtimes
+%{python_compileall}
+# need a double treatment here
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}
 %check
-%pyunittest -v
+%{python_exec # https://github.com/Instagram/LibCST/issues/331 + 467
+$python -m libcst.codegen.generate matchers
+$python -m libcst.codegen.generate return_types
+$python -m libcst.codegen.generate visitors
+$python -m unittest -v
+}
 %endif
 
 %if !%{with test}

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 21 15:05:59 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update ot 0.3.17
+  Updated
+  * Optimization: reduce the number of unused parallel processes 
+    #440
+  Fixed
+  * Walrus operator's left hand side now has STORE expression
+    context #443
+  * ApplyTypeAnnotationsVisitor applies parameter annotations even
+    if no return type is declared #445
+  * Work around Windows problem by using dummy pool for jobs=1 #436
+  * Remove extra unused imports added in other files #453
+
+-------------------------------------------------------------------
 Sun Jan  3 21:02:37 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 0.3.16
