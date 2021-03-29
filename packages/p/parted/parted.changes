@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 19 13:51:01 UTC 2021 - jeffm@suse.com
+
+- Direct file system manipulation support was removed in 2011.
+  - Removed build dependencies on libreiserfs-devel and
+    e2fsprogs-devel.
+
+-------------------------------------------------------------------
 Tue Aug 25 18:24:26 CEST 2020 - ro@suse.de
 
 - re-add missing hunk to fix bsc#1164907

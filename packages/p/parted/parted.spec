@@ -1,7 +1,7 @@
 #
 # spec file for package parted
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,9 +82,7 @@ Patch157:       tests-add-dev-md-check-to-t6100.patch
 Patch200:       tests-adapt-to-SUSE.patch
 BuildRequires:  check-devel
 BuildRequires:  device-mapper-devel >= 1.02.33
-BuildRequires:  e2fsprogs-devel
 BuildRequires:  libblkid-devel >= 2.17
-BuildRequires:  libreiserfs-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libsepol-devel
 BuildRequires:  libtool
@@ -115,9 +113,7 @@ and copying partitions and the file systems on them.
 Summary:        Parted Include Files and Libraries necessary for Development
 Group:          Development/Libraries/C and C++
 Requires:       device-mapper-devel >= 1.02.33
-Requires:       e2fsprogs-devel
 Requires:       libparted0 = %version
-Requires:       libreiserfs-devel
 # bug437293
 %ifarch ppc64
 Obsoletes:      parted-devel-64bit
