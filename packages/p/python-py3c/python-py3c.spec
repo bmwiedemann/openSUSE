@@ -1,7 +1,7 @@
 #
 # spec file for package python-py3c
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-py3c
-Version:        1.1
+Version:        1.3.1
 Release:        0
 Summary:        Python compatibility headers
 License:        MIT
 URL:            http://py3c.readthedocs.io/
 Source:         https://github.com/encukou/py3c/archive/v%{version}.tar.gz#/py3c-%{version}.tar.gz
 Source99:       python-py3c-rpmlintrc
-Patch0:         destdir.patch
 # Needed for test build
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -49,7 +48,6 @@ py3c helps porting C extensions to Python 3.
 
 %prep
 %setup -q -n py3c-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -57,7 +55,7 @@ py3c helps porting C extensions to Python 3.
 %install
 %python_install
 # we will use the make install to deploy includes
-rm -r %{buildroot}%{_includedir}
+rm -r %{buildroot}%{_includedir}/*
 %make_install prefix=%{_prefix}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
