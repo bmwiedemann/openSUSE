@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 21 10:42:29 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix build on Leap which does not have %_firmwaredir
+
+-------------------------------------------------------------------
 Sat Feb 27 13:21:06 UTC 2021 - Javier S. Pedro <dev.rpm@javispedro.com>
 
 - fix boo#1175038 - remove unnecessary %postun scriptlet that is 

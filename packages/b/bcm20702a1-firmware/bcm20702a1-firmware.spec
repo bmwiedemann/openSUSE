@@ -16,6 +16,8 @@
 #
 
 
+%{?!_firmwaredir:%define _firmwaredir /lib/firmware}
+
 Name:           bcm20702a1-firmware
 Version:        1201650
 Release:        0
