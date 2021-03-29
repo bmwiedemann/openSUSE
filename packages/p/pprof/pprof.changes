@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Mar 23 18:13:51 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use single %doc
+- Don't use if for %license
+- Don't %check there are no tests
+
+-------------------------------------------------------------------
+Tue Mar 23 13:23:54 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Fix double %setup.
+
+-------------------------------------------------------------------
+Thu Mar 18 18:15:25 UTC 2021 - gmbr3@opensuse.org
+
+- Initial packaging 0.0.20210226
