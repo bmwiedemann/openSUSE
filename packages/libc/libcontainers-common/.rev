@@ -276,4 +276,12 @@
     <comment>- Require util-linux-systemd for %post scripts (findmnt) (boo#1182998)</comment>
     <requestid>876808</requestid>
   </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>5f676048dc4d7c360b96399c88c1693f</srcmd5>
+    <version>20210112</version>
+    <time>1617034879</time>
+    <user>RBrownSUSE</user>
+    <comment>- Reintroduce SLE specific mounts config, to avoid errors on non-SLE systems</comment>
+    <requestid>880685</requestid>
+  </revision>
 </revisionlist>
