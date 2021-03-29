@@ -43,8 +43,8 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.23.20
-Provides:       kiwi-schema = 7.3
+Version:        9.23.22
+Provides:       kiwi-schema = 7.4
 Release:        0
 Url:            https://github.com/OSInside/kiwi
 Summary:        KIWI - Appliance Builder Next Generation
@@ -156,15 +156,6 @@ Requires:       xorriso
 %ifarch %{ix86} x86_64
 Requires:       syslinux
 %endif
-%if "%{_vendor}" == "debbuild"
-Requires:       qemu-utils
-%else
-%if 0%{?suse_version}
-Requires:       qemu-tools
-%else
-Requires:       qemu-img
-%endif
-%endif
 Requires:       kiwi-systemdeps-core = %{version}-%{release}
 Requires:       kiwi-systemdeps-filesystems = %{version}-%{release}
 Requires:       kiwi-systemdeps-bootloaders = %{version}-%{release}
@@ -246,6 +237,15 @@ Requires:       lvm2
 Requires:       parted
 Requires:       kpartx
 Requires:       cryptsetup
+%if "%{_vendor}" == "debbuild"
+Requires:       qemu-utils
+%else
+%if 0%{?suse_version}
+Requires:       qemu-tools
+%else
+Requires:       qemu-img
+%endif
+%endif
 Requires:       kiwi-systemdeps-core = %{version}-%{release}
 
 %description -n kiwi-systemdeps-filesystems
@@ -263,17 +263,9 @@ Obsoletes:      kiwi-image-vmx-requires < %{version}-%{release}
 Provides:       kiwi-image:oem
 Provides:       kiwi-image:vmx
 %endif
-%if "%{_vendor}" == "debbuild"
-Requires:       qemu-utils
-%else
-%if 0%{?suse_version}
-Requires:       qemu-tools
-%else
-Requires:       qemu-img
-%endif
-%endif
 Requires:       kiwi-systemdeps-filesystems = %{version}-%{release}
 Requires:       kiwi-systemdeps-bootloaders = %{version}-%{release}
+Requires:       kiwi-systemdeps-iso-media = %{version}-%{release}
 
 %description -n kiwi-systemdeps-disk-images
 Host setup helper to pull in all packages required/useful on

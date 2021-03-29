@@ -1,4 +1,159 @@
 -------------------------------------------------------------------
+Mon Mar 22 14:19:29 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.21 → 9.23.22
+
+-------------------------------------------------------------------
+Mon Mar 22 11:06:49 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Refactor building of root cmdline setting
+
+  Creating the root= cmdline parameter was based on methods
+  that deals with the uuid. However, it's also possible to
+  use a label information for the root= cmdline. To support
+  this kiwi issued a 'blkid --uuid' command but that requires
+  udev device names to be present on the host. The open
+  buildservice workers do not run udev and fails apart the
+  standard. This commit refactors the root cmdline setup
+  to work with the device node as it exists during build
+  time such that the blkid call runs against that device
+  node.
+
+-------------------------------------------------------------------
+Mon Mar 22 09:19:11 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.20 → 9.23.21
+
+-------------------------------------------------------------------
+Fri Mar 19 15:45:11 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Delete yum from packagemanager in schema
+
+  Auto convert yum to dnf if set as packagemanager. This allows
+  to delete the yum handling from code parts in kiwi where this
+  was still present. In addition this fixes the inclusion of yum
+  into the packagelist. This Fixes #1768
+
+-------------------------------------------------------------------
+Tue Mar 16 19:48:37 CET 2021 - KeithMnemonic <kberger@suse.com>
+
+- Add Strong Typing to builder APIs
+
+-------------------------------------------------------------------
+Tue Mar 16 15:09:34 CET 2021 - KeithMnemonic <kberger@suse.com>
+
+- This PR add APIs Strong Typing to the repository APIs
+
+  Strong Typing has been added to the following files:
+
+  repository/base.py
+  repository/pacman.py
+  repository/apt.py
+  repository/dnf.py
+  repository/template/apt.py
+  repository/zypper.py
+
+-------------------------------------------------------------------
+Tue Mar 16 14:23:30 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Drop by-path devicepersistency setting
+
+  The dev/disk/by-path device representation is a host specific
+  PCI location. For image building which happens disconnected from
+  the later target device this setting is useless.
+  This Fixes #1747
+
+-------------------------------------------------------------------
+Tue Mar 16 14:15:51 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed LVM root volume inclusion in fstab
+
+  The root(/) volume in a LVM setup was included as UUID device
+  path. This is inconsistent compared to the non root volumes
+  which are included by their LVM representation:
+
+  /dev/VGROUP_NAME/VOLUME_NAME
+
+  This commit makes sure the root volume is included by its
+  persistent LVM device representation too. This is related
+  to Issue #1747
+
+-------------------------------------------------------------------
+Mon Mar 15 16:00:56 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update unit- integration tests to schema v74
+
+-------------------------------------------------------------------
+Mon Mar 15 15:47:04 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added XSLT transformation schema v73 -> v74
+
+  Update schema version and change to package manager 'apt'
+  if 'apt-get' was set
+
+-------------------------------------------------------------------
+Mon Mar 15 15:02:25 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Change packagemanager setting from apt-get to apt
+
+  In kiwi we use the name of the section as package name to install this
+  package manager capability. However on Debian based distros there is
+  no package named apt-get. There is only a package named apt which
+  provides a tool named apt-get. To avoid inconsistencies like we had it
+  in Issue #1735 and to bring this setting in line with all other
+  packagemanager settings the setting was moved to just apt.
+  This Fixes #1738
+
+-------------------------------------------------------------------
+Thu Mar 11 19:11:39 CET 2021 - KeithMnemonic <kberger@suse.com>
+
+- Public API Strong Typing for kiwi package_manager
+
+-------------------------------------------------------------------
+Thu Mar 11 14:42:30 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Require qemu-img in any filesystem based image
+
+  This commit moves the qemu-img requirement into the
+  `kiwi-systemdeps-filesystems` to ensure ISO, OEM and PXE images include
+  it in the build service. Also this is required for images that are
+  simple root-trees in a filesystem (image=ext4).
+
+-------------------------------------------------------------------
+Thu Mar 11 14:25:55 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Add a requirement for kiwi-systemdeps-iso-media on disk images
+
+  This commit adds a requirement for `kiwi-systemdeps-iso-media` in
+  `kiwi-systemdeps-disk-images`. This is to ensure that installing
+  `kiwi-systemdeps-disk-images` is enough to build OEM images including
+  install media.
+
+-------------------------------------------------------------------
+Tue Mar 09 18:08:16 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Exclude /run and /tmp to be synched into the image
+
+  This commit makes sure the contents of /run and /tmp are ignored when
+  synchronizing the generated root tree into the image.
+
+  Fixes #1744
+
+-------------------------------------------------------------------
+Tue Mar 09 12:14:41 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fix use of by-label device persistency in grub
+
+  If devicepersistency="by-label" is set in the KIWI description
+  it will correctly operate on the fstab values but still uses
+  the UUID based setting for root= in the grub config. This commit
+  allows to set root=LABEL=... in the grub config in case the
+  devicepersistency requested it. In order for this to work this
+  commit also had to increase the scope of the grub helper
+  method _fix_grub_root_device_reference which is now called in
+  any case. This Fixes #1757
+
+-------------------------------------------------------------------
 Mon Mar 08 12:58:27 CET 2021 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.23.19 → 9.23.20
@@ -19,6 +174,11 @@ Sat Mar 06 17:47:06 CET 2021 - Marcus Schäfer <ms@suse.de>
   exists in kiwi's cli.py. This commit fixes the inconsistency
   and allows people to use the kiwi API independent of any
   command line interface. Fixes #1755
+
+-------------------------------------------------------------------
+Fri Mar 05 15:43:26 CET 2021 - David Cassany <dcassany@suse.com>
+
+- Add Rawhide and Tumbleweed tests for secure boot on aarch64
 
 -------------------------------------------------------------------
 Fri Mar 05 11:47:12 CET 2021 - Marcus Schäfer <ms@suse.de>

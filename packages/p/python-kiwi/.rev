@@ -1722,4 +1722,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>879187</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>db2a7fbbdedc09684bbb56fe7d9bcbfc</srcmd5>
+    <version>9.23.22</version>
+    <time>1617034876</time>
+    <user>RBrownSUSE</user>
+    <comment>- Bump version: 9.23.21 → 9.23.22
+
+- Refactor building of root cmdline setting
+  Creating the root= cmdline parameter was based on methods
+  that deals with the uuid. However, it's also possible to
+  use a label information for the root= cmdline. To support
+  this kiwi issued a 'blkid --uuid' command but that requires
+  udev device names to be present on the host. The open
+  buildservice workers do not run udev and fails apart the
+  standard. This commit refactors the root cmdline setup
+  to work with the device node as it exists during build
+  time such that the blkid call runs against that device
+  node.
+
+- Bump version: 9.23.20 → 9.23.21
+
+- Delete yum from packagemanager in schema
+  Auto convert yum to dnf if set as packagemanager. This allows
+  to delete the yum handling from code parts in kiwi where this
+  was still present. In addition this fixes the inclusion of yum
+  into the packagelist. This Fixes #1768
+
+- Add Strong Typing to builder APIs
+
+- This PR add APIs Strong Typing to the repository APIs
+  Strong Typing has been added to the following files:
+  repository/base.py
+  repository/pacman.py
+  repository/apt.py
+  repository/dnf.py</comment>
+    <requestid>880676</requestid>
+  </revision>
 </revisionlist>
