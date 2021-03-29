@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 22 20:00:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Updater to 1.0.5
+  * Bugfix: Support socket.socketpair() . #402
+  * Bugfix: Prevent exceptions from re-applying monkey patches.
+    #406
+- Release 1.0.4
+  * Python 3.8 and 3.9 support. #407
+
+-------------------------------------------------------------------
 Mon Dec 14 15:44:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 1.0.3

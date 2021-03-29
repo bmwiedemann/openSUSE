@@ -1,7 +1,7 @@
 #
 # spec file for package python-httpretty
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-httpretty
-Version:        1.0.3
+Version:        1.0.5
 Release:        0
 Summary:        HTTP client mocking tool for Python
 License:        MIT
@@ -35,7 +35,6 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sure}
 BuildRequires:  %{python_module tornado}
-BuildRequires:  %{python_module twine >= 1.15.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -76,6 +75,6 @@ sed -Ei 's/(test_fakesock_socket_sendall_with_body_data_with_chunked_entry)/_\1/
 %license COPYING
 %doc README.rst
 %{python_sitelib}/httpretty
-%{python_sitelib}/httpretty*egg-info
+%{python_sitelib}/httpretty-%{version}*-info
 
 %changelog
