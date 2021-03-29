@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 17 02:35:00 UTC 2021 - Heming Zhao <heming.zhao@suse.com>
+
+- cluster-md/mdadm : avoid useless re-sync (bsc#1181341)
+  0114-super1-fix-Floating-point-exception.patch
+  0115-super1.c-avoid-useless-sync-when-bitmap-switches-fro.patch
+
+-------------------------------------------------------------------
 Tue Jan  5 12:02:12 UTC 2021 - Coly Li <colyli@suse.com>
 
 - Incremental: Remove redundant spare movement logic

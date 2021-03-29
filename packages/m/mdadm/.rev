@@ -1337,4 +1337,14 @@ which haven't landed upstream yet
   0113-Dump-get-stat-from-a-wrong-metadata-file-when-restor.patch (forwarded request 860474 from colyli)</comment>
     <requestid>860545</requestid>
   </revision>
+  <revision rev="127" vrev="12">
+    <srcmd5>2c53f42bfee08de4de12e7c7c6e52d68</srcmd5>
+    <version>4.1</version>
+    <time>1617034863</time>
+    <user>RBrownSUSE</user>
+    <comment>- cluster-md/mdadm : avoid useless re-sync (bsc#1181341)
+  0114-super1-fix-Floating-point-exception.patch
+  0115-super1.c-avoid-useless-sync-when-bitmap-switches-fro.patch (forwarded request 879542 from hmzhao)</comment>
+    <requestid>880599</requestid>
+  </revision>
 </revisionlist>

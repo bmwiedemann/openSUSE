@@ -1,0 +1,41 @@
+From e6561c4defe853eaa6be27da0bb6bbd36e197b1f Mon Sep 17 00:00:00 2001
+From: Zhao Heming <heming.zhao@suse.com>
+Date: Sat, 30 Jan 2021 17:49:54 +0800
+Subject: [PATCH 1/2] super1: fix Floating point exception
+
+write_bitmap1 didn't check return value of locate_bitmap1, which will
+operate bitmap area under invalid bitmap info.
+
+mdadm core dumped when doing below steps:
+```
+node1 # mdadm -C /dev/md0 -b none -e 1.2 -n 2 -l mirror /dev/sda /dev/sdb
+node1 # mdadm -Ss
+node1 # mdadm -A -U home-cluster --home-cluster=abc /dev/md0 /dev/sda /dev/sdb
+Floating point exception (core dumped)
+```
+
+Signed-off-by: Zhao Heming <heming.zhao@suse.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+---
+ super1.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/super1.c b/super1.c
+index 7bee02659b18..70aa1d3d0219 100644
+--- a/super1.c
++++ b/super1.c
+@@ -2717,7 +2717,10 @@ static int write_bitmap1(struct supertype *st, int fd, enum bitmap_update update
+ 
+ 	init_afd(&afd, fd);
+ 
+-	locate_bitmap1(st, fd, 0);
++	if (locate_bitmap1(st, fd, 0) < 0) {
++		pr_err("Error: Invalid bitmap\n");
++		return -EINVAL;
++	}
+ 
+ 	if (posix_memalign(&buf, 4096, 4096))
+ 		return -ENOMEM;
+-- 
+1.8.3.1
+

@@ -1,0 +1,57 @@
+From f7a6246bab1541d7208a5f0f9f0c6cac114e38da Mon Sep 17 00:00:00 2001
+From: Zhao Heming <heming.zhao@suse.com>
+Date: Wed, 3 Feb 2021 08:22:51 +0800
+Subject: [PATCH 2/2] super1.c: avoid useless sync when bitmap switches from
+ clustered to none
+
+With kernel commit 480523feae58 ("md: only call set_in_sync() when it
+is expected to succeed."), mddev->in_sync in clustered array is always
+zero. It makes metadata resync_offset to always zero.
+When assembling a clusterd array with "-U no-bitmap" option, kernel
+md layer "mddev->resync_offset == 0" and "mddev->bitmap == NULL" will
+trigger raid1 do sync on every bitmap chunk. the sync action is useless,
+we should avoid it.
+
+Related kernel flow:
+```
+md_do_sync
+ mddev->pers->sync_request
+  raid1_sync_request
+   md_bitmap_start_sync(mddev->bitmap, sector_nr, &sync_blocks, 1)
+    __bitmap_start_sync(bitmap, offset,&blocks1, degraded)
+      if (bitmap == NULL) {/* FIXME or bitmap set as 'failed' */
+        *blocks = 1024;
+        return 1; /* always resync if no bitmap */
+      }
+```
+
+Reprodusible steps:
+```
+node1 # mdadm -C /dev/md0 -b clustered -e 1.2 -n 2 -l mirror /dev/sd{a,b}
+node1 # mdadm -Ss
+(in another shell, executing & watching: watch -n 1 'cat /proc/mdstat')
+node1 # mdadm -A -U no-bitmap /dev/md0 /dev/sd{a,b}
+```
+
+Signed-off-by: Zhao Heming <heming.zhao@suse.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+---
+ super1.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/super1.c b/super1.c
+index 70aa1d3d0219..7b03329dac91 100644
+--- a/super1.c
++++ b/super1.c
+@@ -1346,6 +1346,8 @@ static int update_super1(struct supertype *st, struct mdinfo *info,
+ 			memcpy(bms->uuid, sb->set_uuid, 16);
+ 	} else if (strcmp(update, "no-bitmap") == 0) {
+ 		sb->feature_map &= ~__cpu_to_le32(MD_FEATURE_BITMAP_OFFSET);
++		if (bms->version == BITMAP_MAJOR_CLUSTERED && !IsBitmapDirty(devname))
++			sb->resync_offset = MaxSector;
+ 	} else if (strcmp(update, "bbl") == 0) {
+ 		/* only possible if there is room after the bitmap, or if
+ 		 * there is no bitmap
+-- 
+1.8.3.1
+
