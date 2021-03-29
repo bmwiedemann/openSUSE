@@ -26,4 +26,14 @@ A Finite Element Differential Equations Analysis Library used by the advanced sc
     <comment></comment>
     <requestid>859417</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ad77c422c49f85dc1342d0bb52ec86d7</srcmd5>
+    <version>9.2.0</version>
+    <time>1617034910</time>
+    <user>RBrownSUSE</user>
+    <comment>- _constraints: Increase physical memory to 8 GB to fix slow
+  builds causing workers to time out.
+</comment>
+    <requestid>881682</requestid>
+  </revision>
 </revisionlist>
