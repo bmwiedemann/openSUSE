@@ -1,7 +1,7 @@
 #
 # spec file for package gtk-sharp3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define vsuffix git.2020.01.10.9dc89137b
+%define vsuffix git.2021.03.09.dadc19cf1
 Name:           gtk-sharp3
 # package "libmono-profiler-gui-thread-check0-devel" does not allow us to add even a single symbol to version string without invoking rpmlint warning "W: filename-too-long-for-joliet"
 Version:        2.99.4

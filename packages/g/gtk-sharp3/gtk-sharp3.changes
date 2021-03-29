@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 25 15:44:48 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to latest git revision.
+  + Fix atk_value_get_value_and_text.
+- Update create-source-archive.sh: the development branch has been
+  renamed to main.
+
+-------------------------------------------------------------------
 Tue Oct 20 18:34:17 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix URL in .spec file

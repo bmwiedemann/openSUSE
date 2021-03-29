@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 
-git_commit_fallback="master"
+git_commit_fallback="main"
 git_commit="$1"
 name="gtk-sharp3"
 git_remote="https://github.com/mono/gtk-sharp.git"
