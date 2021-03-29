@@ -17,13 +17,13 @@
 
 
 Name:           gperftools
-Version:        2.8.1
+Version:        2.9.1
 Release:        0
 Summary:        Performance Tools for C++
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/gperftools/gperftools
-Source0:        https://github.com/gperftools/gperftools/releases/download/gperftools-%{version}/gperftools-%{version}.tar.gz
+Source0:        %{url}/releases/download/gperftools-%{version}/gperftools-%{version}.tar.gz
 Patch1:         %{name}_fix_unassigned_malloc_in_unittest.patch
 Patch2:         %{name}_gcc46.patch
 BuildRequires:  autoconf >= 2.59
@@ -33,6 +33,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 Provides:       google-perftools
 Obsoletes:      google-perftools
+Requires:       pprof
 # based on basictypes.h in the source tree
 ExclusiveArch:  %{ix86} x86_64 ppc ppc64 ppc64le %{arm} aarch64 mips s390x riscv64
 %ifnarch s390x s390 riscv64
@@ -91,6 +92,16 @@ Requires:       %{name}-devel = %{version}
 The gperftools-devel-static package contains static libraries for developing
 applications that use the gperftools package.
 
+%package doc
+Summary:        Documentation for performance tools for C++
+Group:          Documentation/HTML
+BuildArch:      noarch
+
+%description doc
+Documentation for gperftools package which contains some utilities to improve and analyze the
+performance of C++ programs
+
+
 %prep
 %autosetup -p1
 
@@ -106,6 +117,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing $VALGRIND_FL"
 %configure \
   --with-gnu-ld \
   --with-pic \
+  --disable-deprecated-pprof \
   --docdir=%{_defaultdocdir}/%{name}
 %make_build
 
@@ -119,10 +131,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libtcmalloc4 -p /sbin/ldconfig
 
 %files
-%{_bindir}/pprof
 %{_bindir}/pprof-symbolize
-%{_mandir}/man1/pprof.1%{?ext_man}
-%{_docdir}/%{name}
 
 %files -n libprofiler0
 %{_libdir}/libprofiler.so.0*
@@ -152,5 +161,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libtcmalloc_minimal.a
 %{_libdir}/libtcmalloc_minimal_debug.a
 %{_libdir}/libtcmalloc_and_profiler.a
+
+%files doc
+%{_docdir}/%{name}
 
 %changelog
