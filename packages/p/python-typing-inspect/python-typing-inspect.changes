@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 21 13:52:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add typing_inspect-pr69-py39-GenericAlias.patch to support
+  Python 3.9 -- gh#ilevkivskyi/typing_inspect#69 
+
+-------------------------------------------------------------------
 Sat Jul  4 03:54:20 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v0.6.0
