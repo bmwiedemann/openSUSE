@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 22 15:54:07 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.26.0:
+  * * This release of Mbed TLS provides bug fixes, minor enhancements and new
+  features. This release includes fixes for security issues.
+  * see https://github.com/ARMmbed/mbedtls/releases/tag/v2.26.0
+- Fix build with patch from https://github.com/ARMmbed/mbedtls/pull/4237
+  mbedtls-4237.patch
+
+-------------------------------------------------------------------
 Tue Jan 19 20:25:34 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Fix build for Leap targets

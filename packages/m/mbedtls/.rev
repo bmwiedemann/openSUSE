@@ -305,4 +305,17 @@
     <comment></comment>
     <requestid>864545</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ed41d07149c6f3d2f523bcb4228e9bb5</srcmd5>
+    <version>2.26.0</version>
+    <time>1617034889</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.26.0:
+  * * This release of Mbed TLS provides bug fixes, minor enhancements and new
+  features. This release includes fixes for security issues.
+  * see https://github.com/ARMmbed/mbedtls/releases/tag/v2.26.0
+- Fix build with patch from https://github.com/ARMmbed/mbedtls/pull/4237
+  mbedtls-4237.patch</comment>
+    <requestid>880715</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define lib_crypto libmbedcrypto6
 %define lib_x509   libmbedx509-1
 Name:           mbedtls
-Version:        2.25.0
+Version:        2.26.0
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0
@@ -28,6 +28,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://tls.mbed.org
 Source:         https://github.com/ARMmbed/mbedtls/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM - https://github.com/ARMmbed/mbedtls/issues/4233
+Patch1:         mbedtls-4237.patch
 BuildRequires:  cmake
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -87,7 +89,7 @@ a suite of libraries for cryptographic functions and the
 SSL/TLS protocol suite.
 
 %prep
-%autosetup
+%autosetup -p1
 sed -i 's|//\(#define MBEDTLS_ZLIB_SUPPORT\)|\1|' include/mbedtls/config.h
 sed -i 's|//\(#define MBEDTLS_HAVEGE_C\)|\1|' include/mbedtls/config.h
 sed -i 's|//\(#define MBEDTLS_THREADING_C\)|\1|' include/mbedtls/config.h
