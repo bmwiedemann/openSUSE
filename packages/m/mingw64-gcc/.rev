@@ -32,4 +32,12 @@
   printf specifiers</comment>
     <requestid>879114</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a22f7182cf3304fdf63d2b091556f84a</srcmd5>
+    <version>9.2.0</version>
+    <time>1617034905</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add BuildIgnores to break a cycle between gmp, mpfr, mpc, gcc</comment>
+    <requestid>881630</requestid>
+  </revision>
 </revisionlist>
