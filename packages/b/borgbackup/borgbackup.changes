@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Mar 28 08:29:53 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.1.16:
+  Fixes:
+    * setup.py: add special openssl prefix for Apple M1 compatibility
+    * do not recurse into duplicate roots, #5603
+    * remove empty shadowed_segments lists, #5275, #5614
+    * fix libpython load error when borg fat binary / dir-based binary is invoked via a symlink by upgrading pyinstaller to v4.2, #5688
+    * config: accept non-int value (like 500M or 100G) for max_segment_size or storage_quota, #5639. please note: when setting a non-int value for this in a repo config, using the repo will require borg >= 1.1.16.
+  New features:
+    * bundled msgpack: drop support for old buffer protocol to support Python 3.10
+    * verbose files cache logging via --debug-topic=files_cache, #5659. Use this if you suspect that borg does not detect unmodified files as expected.
+    * create/extract: add --noxattrs and --noacls option, #3955. when given with borg create, borg will not get xattrs / ACLs from input files (and thus, it will not archive xattrs / ACLs). when given with borg extract, borg will not read xattrs / ACLs from archive and will not set xattrs / ACLs on extracted files.
+    * diff: add --json-lines option, #3765
+  Other changes:
+    * Tab completion support for additional archives for 'borg delete'
+    * repository: deduplicate code of put and delete, no functional change
+  Docs updates
+
+-------------------------------------------------------------------
 Tue Feb  9 15:05:39 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.1.15:
