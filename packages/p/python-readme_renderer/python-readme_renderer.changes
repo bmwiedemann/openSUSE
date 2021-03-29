@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 22 10:45:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 29.0
+  * Support cmarkgfm>=0.5.0 (#180)
+  * Drop support for Python 2 and 3.5 (#188)
+- Release 28.0
+  * Support Python 3.9 (#176)
+- Release 27.0
+  * Add support for align attribute rendering Markdown headers
+    (#173)
+- Add remove-mock.patch and remove-six.patch to reduce outdated
+  dependecies -- gh#pypa/readme_renderer#192
+
+--------------------------------------------------------------------
 Mon Aug  3 11:54:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 26.0
