@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Mar 22 08:09:48 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- dropped obsolete gl823_exclude_failing_tests.patch
+- Update to 3.3.4
+  * Bugs
+    * Require aiosmtpd >= 1.4.1 to allow address local parts longer than 64 bytes
+      in the lmtp runner.  (Closes #836)
+    * The email join command now honors the digest=<no|mime|plain> option.
+      (Closes #19)
+    * Folded ``Message-ID`` headers no longer cause folded smtp.log messages.
+      (Closes #844)
+    * Removal of headers from posts to anonymous lists that can reveal the poster
+      or the poster's domain has been improved.  (Closes #848)
+  * Command line
+    * The ``notify`` subcommand will now decode an RFC 2047 encoded Subject: for
+      the report of held messages.  (Closes #831)
+    * The deprecated options ``--add``, ``--del`` and ``--sync`` are now disabled
+      on the ``mailman members`` command.
+  * REST
+    * Improve the speed of Members lookup via REST API. (Related to #700)
+    * Allow specifying ``delivery_mode`` and ``delivery_status`` when creating a
+      new Member. (Closes #828)
+    * Allow filtering members in ``/members/find`` API using ``delivery_status``,
+      ``delivery_mode`` and ``moderation_action``. (See #827)
+  * New Features
+    * There is a new setting ``filter_report`` in the ``[mailman]`` section of
+      mailman.cfg.  If this is set to ``yes``, a report of changes by content
+      filtering will be added to the outgoing message.  (Closes #833)
+    * There is a new setting ``check_max_size_on_filtered_message`` in the
+      ``[mailman]`` section of mailman.cfg.  If this is set to ``yes`` and the
+      list does content filtering, the ``max_message_size`` hold will be based
+      on the size of the content filtered message.  (Closes #377)
+    * There is a new setting ``anonymous_list_keep_headers`` in the ``[mailman]``
+      section of mailman.cfg.  This is part of improved removal of headers from
+      posts to anonymous lists.  This setting is a space separated list of regexp
+      patterns.  After anonomyzing removes the headers which are known to reveal
+      the poster or poster's domain, it then removes all headers whose names do
+      not match (case-insensitively) one of these patterns.  The default setting
+      keeps non X- headers, those X- headers added by Mailman and any X-Spam-
+      headers.
+
+-------------------------------------------------------------------
 Thu Feb  4 22:20:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add gl823_exclude_failing_tests.patch to skip two failing tests

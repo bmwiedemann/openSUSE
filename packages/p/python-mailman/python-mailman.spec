@@ -40,7 +40,7 @@
 %define skip_python36 1
 %endif
 Name:           python-mailman%{psuffix}
-Version:        3.3.3
+Version:        3.3.4
 Release:        0
 Summary:        A mailing list manager
 License:        GPL-3.0-only
@@ -64,14 +64,12 @@ Source101:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/test
 # whitespace fix
 Patch0:         python-mailman-test_interact_default_banner.patch
 # PATCH-FIX-UPSTREAM gl823_exclude_failing_tests.patch gl#mailman/mailman#823 mcepl@suse.com
-# Skip two failing tests.
-Patch1:         gl823_exclude_failing_tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       logrotate
 Requires:       python-SQLAlchemy >= 1.2.3
-Requires:       python-aiosmtpd >= 1.1
+Requires:       python-aiosmtpd >= 1.4.1
 Requires:       python-alembic
 Requires:       python-atpublic
 Requires:       python-authheaders >= 0.9.2
