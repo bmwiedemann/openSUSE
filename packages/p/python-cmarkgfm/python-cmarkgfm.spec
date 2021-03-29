@@ -1,7 +1,7 @@
 #
 # spec file for package python-cmarkgfm
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cmarkgfm
-Version:        0.4.2
+Version:        0.5.3
 Release:        0
 Summary:        Minimal bindings to GitHub's fork of cmark
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/jonparrott/cmarkgfm
+URL:            https://github.com/jonparrott/cmarkgfm
 Source:         https://files.pythonhosted.org/packages/source/c/cmarkgfm/cmarkgfm-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module cffi >= 1.0.0}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-cffi >= 1.0.0
@@ -54,12 +54,12 @@ find %{buildroot} -type f -name "*.h" -delete -print
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+%pytest_arch
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%attr(0644,root,root) %{python_sitearch}/cmarkgfm-%{version}-py*.egg-info/*
-%{python_sitearch}/*
+%{python_sitearch}/cmarkgfm
+%{python_sitearch}/cmarkgfm-%{version}*-info
 
 %changelog
