@@ -19,7 +19,7 @@
 Name:           super-csv
 Version:        2.4.0
 Release:        0
-Summary:        A fast, programmer-friendly, free CSV library for Java
+Summary:        A CSV library for Java
 License:        Apache-2.0
 URL:            https://super-csv.github.io/super-csv/
 Source:         https://github.com/super-csv/super-csv/archive/v%{version}.tar.gz
@@ -37,9 +37,10 @@ BuildRequires:  fdupes
 BuildArch:      noarch
 
 %description
-The main motivation for Super CSV is to be the foremost,
-fastest, and most programmer-friendly, free CSV package
-for Java.
+A library for reading and writing CSV files with Java.
+
+It supports reading and writing with POJOs, Maps and Lists. It also
+has support for deep-mapping and index-based mapping with POJOs.
 
 %package javadoc
 Summary:        Javadoc for %{name}
