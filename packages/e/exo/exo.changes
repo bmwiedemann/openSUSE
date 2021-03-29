@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 23 08:59:21 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 4.16.1
+  * Revamp the documentation to modernize and uniformize accross 
+    components
+  * Fix keyboard navigation when only one item is present
+    (gxo#xfce/exo#53) 
+
+-------------------------------------------------------------------
 Fri Jan  8 09:04:42 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - To prevent dependency cycle we need #!BuildIgnore:  exo-tools

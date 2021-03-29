@@ -638,4 +638,16 @@
   commit. </comment>
     <requestid>861625</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>0da30eea4870ff45b416618dc2a4311e</srcmd5>
+    <version>4.16.1</version>
+    <time>1617034882</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 4.16.1
+  * Revamp the documentation to modernize and uniformize accross 
+    components
+  * Fix keyboard navigation when only one item is present
+    (gxo#xfce/exo#53) (forwarded request 880689 from mauriziogalli)</comment>
+    <requestid>880693</requestid>
+  </revision>
 </revisionlist>

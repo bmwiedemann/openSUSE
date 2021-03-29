@@ -20,7 +20,7 @@
 %define libname_gtk3 libexo-2-0
 %bcond_with git
 Name:           exo
-Version:        4.16.0
+Version:        4.16.1
 Release:        0
 Summary:        Application Development Library for Xfce
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -78,7 +78,7 @@ Requires:       %{name}-data >= %{version}
 Requires:       perl-URI
 Recommends:     %{name}-lang = %{version}
 Recommends:     %{name}-tools
-Obsoletes:      %{libname_gtk2} < %{version}    
+Obsoletes:      %{libname_gtk2} < %{version}
 
 %description -n %{libname_gtk3}
 Exo is an extension library to Xfce which is targeted at application
