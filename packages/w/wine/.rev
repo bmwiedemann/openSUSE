@@ -3896,4 +3896,18 @@
 - removed 6.3_fix.patch: upstream</comment>
     <requestid>879104</requestid>
   </revision>
+  <revision rev="334" vrev="1">
+    <srcmd5>f2572d792a133d59f589524c875a847d</srcmd5>
+    <version>6.5</version>
+    <time>1617034933</time>
+    <user>RBrownSUSE</user>
+    <comment>- updated to 6.5 development release
+  - OpenCL support updated to version 1.2.
+  - More support for IE compatibility modes in MSHTML.
+  - More windowless RichEdit work.
+  - A few more WinRT library stubs.
+  - Various bug fixes.
+- update staging to 6.5 release</comment>
+    <requestid>881746</requestid>
+  </revision>
 </revisionlist>
