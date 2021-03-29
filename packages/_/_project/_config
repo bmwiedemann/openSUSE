@@ -388,8 +388,8 @@ Prefer: spamassassin:curl
 
 # Python3 exists in multiple versions - we currently favor 3.8 (our default):
 Prefer: -python36 -python39
-Prefer: -python36-hotdoc
-Prefer: -python36-txt2tags
+Prefer: -python36-hotdoc -python39-hotdoc
+Prefer: -python36-txt2tags -python39-txt2tags
 Prefer: -python3-ipython715 -python38-ipython715
 
 # man and mandoc provide man; mandoc claims to be lightweight, but it was never discussed to be the new default
