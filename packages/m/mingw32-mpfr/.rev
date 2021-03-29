@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>754477</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0415883d1baaf1d8f539d0d97cfafa0b</srcmd5>
+    <version>3.1.2</version>
+    <time>1617034895</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add BuildIgnores to break a cycle between gmp, mpfr, mpc, gcc</comment>
+    <requestid>881625</requestid>
+  </revision>
 </revisionlist>
