@@ -1,7 +1,7 @@
 #
 # spec file for package flamerobin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,26 +20,24 @@ Name:           flamerobin
 Version:        0.9.3.1
 Release:        0
 Summary:        Graphical client for Firebird
-License:        MIT AND LGPL-2.1-or-later
+License:        LGPL-2.1-or-later AND MIT
 Group:          Productivity/Databases/Tools
 URL:            http://www.flamerobin.org/
 Source0:        https://github.com/mariuz/flamerobin/archive/%{version}.tar.gz
 # PATCH-FIX-UPSTREAM flamerobin-desktop-file.patch gh#mariuz/flamerobin#5 badshah400@gmail.com -- Unhardcode icon path in GNU/Linux laucher; patch taken from upstream git
 Patch0:         flamerobin-desktop-file.patch
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel
-%endif
+# PATCH-FIX-UPSTREAM flamerobin-wx31.patch gh#mariuz/flamerobin#3 mgorse@suse.com -- Fix deprecated methods in wx 3.1; patch taken from upstream git
+Patch1:         flamerobin-wx31.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  icns-utils
+BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_thread-devel
 BuildRequires:  libfbclient2-devel >= 2.0.0.12748
 BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-devel >= 3.0
 Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
+Requires(postun):update-desktop-files
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -47,8 +45,7 @@ FlameRobin is a database administration tool for Firebird DBMS based on wxgtk
 toolkit.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # FIX A TRAILING SEMICOLON ISSUE FOR KEYWORDS TAG IN .desktop FILE
@@ -84,7 +81,6 @@ rm %{buildroot}%{_datadir}/pixmaps/*.png
 %desktop_database_postun
 
 %files
-%defattr(-,root,root)
 %doc docs/*
 %{_mandir}/man1/flamerobin.1*
 %{_bindir}/%{name}
