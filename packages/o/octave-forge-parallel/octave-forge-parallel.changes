@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 22 16:44:59 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.1:
+  * The current search path is now set in the Octave sessions used
+    by parcellfun and pararrayfun.
+  * In starting parallel Octave sessions by parcellfun,
+    pararrayfun, or the remote server, the executable
+    'octave-cli-<current_version>' is prefered over 'octave-cli'.
+  * Fixed bug that produced an error for not enough output
+    arguments.
+  * Fixed handling of execution errors by parcellfun and
+    pararrayfun.
+  * The documentation now mentions the limitation that
+    command-line functions can't be used by parcellfun or
+    pararrayfun.
+
+-------------------------------------------------------------------
 Thu May  7 17:52:56 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.0.0:
