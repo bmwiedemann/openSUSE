@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 22 20:45:47 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version  1.26.5
+  * Add ./configure --enable-xdebug (for the resampler issue).
+  * Avoid denormals in the resampler by adding an alternating
+    offset (helps performance without -ffast-math, depending on
+    platform).
+  libmpg123:
+  * Fix ID3v2 APIC parsing when frame length bit is set (bug
+    306).
+  * Also handle the group flag (skip the group byte).
+  * Also fix up frame flag handling for ID3v2.3. Did not crop up
+    yet, but it was just wrong. Impact was not detecting and
+    bailing out on compressed or encrypted frames properly.
+
+-------------------------------------------------------------------
 Wed Feb 17 16:05:44 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Avoid unconditional Supplements

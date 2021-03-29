@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           mpg123
-Version:        1.26.4
+Version:        1.26.5
 Release:        0
 Summary:        Console MPEG audio player and decoder library
 License:        LGPL-2.1-only
@@ -71,8 +71,8 @@ and output libraries.
 
 %package -n libsyn123-%{sover}
 Summary:        MPEG audio decoder library
-Recommends:     (%{name}-pulse if pulseaudio)
 Recommends:     (%{name}-jack if jack)
+Recommends:     (%{name}-pulse if pulseaudio)
 
 %description -n libsyn123-%{sover}
 The mpg123 distribution contains a real time MPEG 1.0/2.0/2.5 audio player/decoder for
