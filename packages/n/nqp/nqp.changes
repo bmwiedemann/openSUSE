@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 21 21:47:04 CET 2021 - nine@detonation.org
+
+- update to version 2021.03
+  * Support some missing Rakudo command line flags
+  * Comment out two lines only needed during debugging
+  * Eliminate the ops sec_n, asec_n and sech_h, which are no longer used.
+
+-------------------------------------------------------------------
 Sun Feb 21 15:50:44 CET 2021 - nine@detonation.org
 
 - update to version 2021.02
