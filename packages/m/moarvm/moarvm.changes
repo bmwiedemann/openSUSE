@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 21 21:43:23 CET 2021 - nine@detonation.org
+
+- update to version 2021.03
+
++ Improve serialization of C types
++ Introduce `platform/socket.h`
++ Fix confused profiler output in multi-threaded apps
+
+-------------------------------------------------------------------
 Sun Feb 21 13:26:03 CET 2021 - nine@detonation.org
 
 - update to version 2021.02

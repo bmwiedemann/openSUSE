@@ -216,4 +216,12 @@ Added information about the removal to the corresponding changelog entry.</comme
     <comment></comment>
     <requestid>874252</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>41721c1274041a977322862283d694f3</srcmd5>
+    <version>2021.03</version>
+    <time>1617034915</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881720</requestid>
+  </revision>
 </revisionlist>
