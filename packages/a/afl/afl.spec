@@ -71,11 +71,11 @@ make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_doc
 %dir %{_libexecdir}/%{name}
 %{_libexecdir}/%{name}/%{name}-as
 %{_libexecdir}/%{name}/as
-%ifarch x86_64 ppc64 ppc64le s390x
+%ifarch x86_64 aarch64 ppc64 ppc64le s390x
 %{_libexecdir}/%{name}/afl-compiler-rt-64.o
 %{_libexecdir}/%{name}/afl-llvm-rt-64.o
 %endif
-%ifarch %ix86
+%ifarch %ix86 %{arm}
 %{_libexecdir}/%{name}/afl-compiler-rt-32.o
 %{_libexecdir}/%{name}/afl-llvm-rt-32.o
 %endif

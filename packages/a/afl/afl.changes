@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 29 12:29:54 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix packaging on aarch64 and %{arm}
+
+-------------------------------------------------------------------
 Wed Mar 24 16:30:39 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 3.12c

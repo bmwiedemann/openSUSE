@@ -893,4 +893,12 @@
     to 0600 (forwarded request 881188 from msmeissn)</comment>
     <requestid>881268</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>adf61607e46eb48a424e9f50d01c5058</srcmd5>
+    <version>3.12c</version>
+    <time>1617034952</time>
+    <user>RBrownSUSE</user>
+    <comment>- Fix packaging on aarch64 and %{arm} (forwarded request 881925 from Guillaume_G)</comment>
+    <requestid>881926</requestid>
+  </revision>
 </revisionlist>
