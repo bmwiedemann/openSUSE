@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Mar  4 19:55:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-fixed-zipdir-inability-to-update-empty-zip-file.patch
+- Update to release 4.5.0
+  * For all of Doom's fullscreen images, there's now widescreen
+    versions provided.
+  * A simplified options menu is now available for quick setup of
+    the important settings.
+  * New keybindings presets. Users can now choose between the
+    classic layout and a WASD-based one.
+  * Menu and intermission screen now scale to the original
+    Doom.exe's layout by default.
+  * Major additions to the menu system - animated menu
+    transitions, image slideshows and fixed size menus can now be
+    created.
+  * The console now uses the border flat as default background
+    instead of the titlepic.
+  * It is now possible to fully quit the fullscreen console and
+    get back to the title loop.
+  * Interpolate positions and angles in the automap for smoother
+    appearance.
+  * Added $PitchSet for SNDINFO.
+  * Allow indirections in the string table by prefixing the
+    language string with '$$' the remaining text is interpreted
+    as another string label to resolve.
+  * Optimization of the patch texture checker - do not read in
+    the entire file if checking the initial header is sufficient
+    for rejecting it. This can speed up loading of large mods
+    quite significantly.
+  * OPUS support (via libsndfile)
+- Drop gzdoom-spirv.patch (merged)
+
+-------------------------------------------------------------------
 Tue Sep 15 23:25:49 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop Recommends for music backends 

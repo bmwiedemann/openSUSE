@@ -116,4 +116,12 @@ and that one is GPL3.</comment>
     <comment>- Drop Recommends for music backends</comment>
     <requestid>834761</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a8cde7becff291fa616f4d83e40e1353</srcmd5>
+    <version>4.5.0</version>
+    <time>1617131494</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to release 4.5.0</comment>
+    <requestid>876936</requestid>
+  </revision>
 </revisionlist>

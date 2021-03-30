@@ -1,7 +1,7 @@
 #
 # spec file for package gzdoom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gzdoom
-Version:        4.4.2
+Version:        4.5.0
 Release:        0
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPL-3.0-only
@@ -29,9 +29,9 @@ Source:         https://github.com/coelckers/gzdoom/archive/g%version.tar.gz
 Patch1:         gzdoom-waddir.patch
 Patch2:         gzdoom-lzma.patch
 Patch3:         gzdoom-asmjit.patch
-Patch4:         gzdoom-spirv.patch
-Patch5:         gzdoom-sdlbug.patch
-Patch6:         gzdoom-vulkan.patch
+Patch4:         gzdoom-sdlbug.patch
+Patch5:         gzdoom-vulkan.patch
+Patch6:         0001-fixed-zipdir-inability-to-update-empty-zip-file.patch
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
@@ -76,12 +76,13 @@ GZDoom is a port (a modification) of the original Doom source code, featuring:
 
 %prep
 %setup -qn %name-g%version
-%patch -P 1 -P 2 -P 3 -P 4 -P 5 -p1
+%patch -P 1 -P 2 -P 3 -P 4 -p1
 %if 0%{?sle_version} >= 150200
-%patch -P 6 -p1
+%patch -P 5 -p1
 rm -Rf glslang src/common/rendering/vulkan/thirdparty/vulkan
 %endif
-perl -i -pe 's{__DATE__}{""}g' src/posix/sdl/i_main.cpp
+%patch -P 6 -p1
+perl -i -pe 's{__DATE__}{""}g' src/common/platform/posix/sdl/i_main.cpp
 
 %build
 # There is handcrafted assembler, which LTO does not play nice with.
@@ -98,8 +99,9 @@ export CXXFLAGS="%optflags -msse -msse2"
 	-DCMAKE_EXE_LINKER_FLAGS="" -DCMAKE_MODULE_LINKER_FLAGS="" \
 	-DINSTALL_DOCS_PATH="%_defaultdocdir/%name" \
 	-DINSTALL_PK3_PATH="%_datadir/doom" \
+	-DINSTALL_SOUNDFONT_PATH="%_datadir/doom" \
 	-DDYN_OPENAL=OFF
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
