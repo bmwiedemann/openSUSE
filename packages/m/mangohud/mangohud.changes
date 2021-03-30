@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Mon Nov 30 06:15:25 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.1:
+  * Fix cpu power related crash 
+
+-------------------------------------------------------------------
+Sun Nov 29 04:01:30 UTC 2020 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 0.6.0:
+  * Fixed MangoHud OpenGL not showing in Black Ice
+  * Fixed MangoHud OpenGL being a black box in Total War: MEDIEVAL II
+  * Fixed MangoHud OpenGL not working in Divinity Original Sin 
+    Enhanced Edition
+  * Fixed MangoHud OpenGL not working in Mount & Blade: Warband
+  * Attempted fix for fps limit sometimes breaking
+  * Fixed colors not updating
+  * Moved frame_timing ms to above the graph instead of beside
+  * Allow graphs to take up the entire region
+  * Permitting more delimiters, , : and + are now acceptable
+
+-------------------------------------------------------------------
+Sun Oct 18 14:17:05 UTC 2020 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Fix shebang 
+
+-------------------------------------------------------------------
+Mon Aug 17 03:02:49 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.5.1:
+  * Fixed a memory leak in Source Engine 1 games (CSGO, TF2 etc)
+  * You can use mangohud --dlsym as an alternative to 
+    MANGOHUD_DLSYM=1
+  * MangoHud now comes with a man page man mangohud
+  * output_file is now replaced by output_folder, 
+    the files are automatically named after the programs executable
+  * By pressing Shift_L+F3 you will automatically upload the latest
+    log file to Flightlessmango.com and open up said benchmark. 
+    To upload all logs for this session, the default keybind is 
+    Control_L=F3. Both of these require that you set the 
+    permit_upload param to 1 and output_folder
+  * Added supported for more glyph ranges
+
+-------------------------------------------------------------------
+Fri Jun 12 10:35:06 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package 
