@@ -16,7 +16,7 @@
 #
 
 
-%define gridver 1.8
+%define data_version 1.4
 %define sover   19
 %define libname lib%{name}%{sover}
 Name:           proj
@@ -27,11 +27,10 @@ License:        MIT
 Group:          Productivity/Scientific/Other
 URL:            https://proj.org/
 Source0:        http://download.osgeo.org/proj/%{name}-%{version}.tar.gz
-Source1:        http://download.osgeo.org/proj/%{name}-datumgrid-%{gridver}.zip
+Source1:        https://download.osgeo.org/%{name}/%{name}-data-%{data_version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  sqlite3
-BuildRequires:  unzip
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libtiff-4)
@@ -62,10 +61,53 @@ Obsoletes:      libproj-devel < %{version}
 %description devel
 This package contains libproj and the appropriate header files and man pages.
 
+%define data_subpkg(c:n:e:s:) \
+%define countrycode %{-c:%{-c*}}%{!-c:%{error:Country code not defined}} \
+%define countryname %{-n:%{-n*}}%{!-n:%{error:Country name not defined}} \
+%define extrafile %{-e:%{_datadir}/%{name}/%{-e*}} \
+%define wildcard %{!-s:%{_datadir}/%{name}/%{countrycode}_*} \
+\
+%package data-%{countrycode}\
+Summary:      %{countryname} datum grids for Proj\
+BuildArch:    noarch\
+# See README.DATA \
+License:      BSD-2-Clause and CC0-1.0 and CC-BY-4.0 and CC-BY-SA-4.0 and SUSE-Public-Domain \
+Supplements:  proj\
+\
+%description data-%{countrycode}\
+%{countryname} datum grids for Proj.\
+\
+%files data-%{countrycode}\
+%{wildcard}\
+%{extrafile}
+ 
+%data_subpkg -c at -n Austria
+%data_subpkg -c au -n Australia
+%data_subpkg -c be -n Belgium
+%data_subpkg -c br -n Brasil
+%data_subpkg -c ca -n Canada
+%data_subpkg -c ch -n Switzerland
+%data_subpkg -c de -n Germany
+%data_subpkg -c dk -n Denmark -e DK
+%data_subpkg -c es -n Spain
+%data_subpkg -c eur -n %{quote:Nordic + Baltic} -e NKG
+%data_subpkg -c fi -n Finland
+%data_subpkg -c fo -n %{quote:Faroe Island} -e FO -s 1
+%data_subpkg -c fr -n France
+%data_subpkg -c is -n Island -e ISL
+%data_subpkg -c jp -n Japan
+%data_subpkg -c nc -n %{quote:New Caledonia}
+%data_subpkg -c nl -n Netherlands
+%data_subpkg -c nz -n %{quote:New Zealand}
+%data_subpkg -c pt -n Portugal
+%data_subpkg -c se -n Sweden
+%data_subpkg -c sk -n Slovakia
+%data_subpkg -c uk -n %{quote:United Kingdom}
+%data_subpkg -c us -n %{quote:United States}
+
+
 %prep
 %setup -q
-cd data
-unzip -o %{SOURCE1}
 
 %build
 %configure \
@@ -76,6 +118,7 @@ unzip -o %{SOURCE1}
 
 %install
 %make_install
+tar -C %{buildroot}%{_datadir}/%{name} -xf %{SOURCE1}
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
@@ -107,7 +150,24 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/gie.1%{?ext_man}
 %{_mandir}/man1/projinfo.1%{?ext_man}
 %{_mandir}/man1/projsync.1%{?ext_man}
-%{_datadir}/proj/
+%dir %{_datadir}/%{name}/
+%{_datadir}/%{name}/proj.ini
+%{_datadir}/%{name}/copyright_and_licenses.csv
+%{_datadir}/%{name}/CH
+%{_datadir}/%{name}/GL27
+%{_datadir}/%{name}/ITRF2000
+%{_datadir}/%{name}/ITRF2008
+%{_datadir}/%{name}/ITRF2014
+%{_datadir}/%{name}/README.DATA
+%{_datadir}/%{name}/deformation_model.schema.json
+%{_datadir}/%{name}/nad.lst
+%{_datadir}/%{name}/nad27
+%{_datadir}/%{name}/nad83
+%{_datadir}/%{name}/other.extra
+%{_datadir}/%{name}/proj.db
+%{_datadir}/%{name}/projjson.schema.json
+%{_datadir}/%{name}/triangulation.schema.json
+%{_datadir}/%{name}/world
 
 %files -n %{libname}
 %license COPYING

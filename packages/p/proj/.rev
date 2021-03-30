@@ -291,4 +291,12 @@ This package is included in Debian.
   * And several bugfixes - see provided NEWS for details</comment>
     <requestid>860976</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>d0952cf893deb126138b0e9ecc31d603</srcmd5>
+    <version>7.2.1</version>
+    <time>1617130474</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>866790</requestid>
+  </revision>
 </revisionlist>

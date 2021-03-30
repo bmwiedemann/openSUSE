@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jan 23 15:06:32 UTC 2021 - Libor Pechacek <lpechacek@suse.com>
+
+- Replace proj-datumgridwith proj-data. Proj-datumgrid is no 
+  longer maintained and the stale data make pyproj self-tests fail
+  https://github.com/pyproj4/pyproj/issues/769. Proj-data is 
+  distributed in per-location subpackages.
+
+-------------------------------------------------------------------
 Thu Jan  7 08:23:17 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 7.2.1
