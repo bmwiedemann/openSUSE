@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sun Mar 14 18:03:50 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop ExclusiveArch. This builds on i586 just fine.
+- Trim bias and redundant information from descriptions,
+  and adjust descriptions for grammar.
+
+-------------------------------------------------------------------
+Fri Feb 26 00:19:44 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- spec: Fix license
+
+-------------------------------------------------------------------
+Wed Jan 27 03:57:21 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Initial packaging of nbdkit 1.25.1

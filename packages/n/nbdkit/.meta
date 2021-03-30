@@ -1,0 +1,5 @@
+<package name="nbdkit" project="openSUSE:Factory">
+  <title>nbdkit</title>
+  <description>A toolkit for creating NBD servers</description>
+  <devel project="Virtualization" package="nbdkit"/>
+</package>

@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f7bf71c25fb57ffc22705e64dd0dcd4e</srcmd5>
+    <version>1.25.1</version>
+    <time>1617131748</time>
+    <user>RBrownSUSE</user>
+    <comment>New package nbdkit for Factory. This package is required for the
+Containerized Data Importer (CDI), which will be submitted in the
+near future.</comment>
+    <requestid>879261</requestid>
+  </revision>
+</revisionlist>
