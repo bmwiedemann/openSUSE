@@ -1,7 +1,7 @@
 #
 # spec file for package flameshot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           flameshot
-Version:        0.8.5
+Version:        0.9.0
 Release:        0
 Summary:        Screenshot software
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Other
-URL:            https://github.com/lupoDharkael/flameshot#flameshot
-#Git-Clone:     https://github.com/flameshot-org/flameshot.git
-Source0:        https://github.com/lupoDharkael/flameshot/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/flameshot-org/flameshot#flameshot
+Source0:        https://github.com/flameshot-org/flameshot/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -41,7 +40,13 @@ BuildRequires:  pkgconfig(Qt5Widgets) >= 5
 
 %description
 A program to capture screenshots.
-It includes CLI options as well as a UI for capturing and annotating screenshots.
+
+Features:
+
+ * Customizable appearance
+ * Annotation and drawing tools
+ * DBus interface
+ * Export to file, web
 
 %package bash-completion
 Summary:        Bash Completion for %{name}

@@ -123,4 +123,46 @@
     <comment></comment>
     <requestid>842206</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>37f3b0325ee2f3be732cff7b21b290a6</srcmd5>
+    <version>0.9.0</version>
+    <time>1617131339</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update description with features and flameshot-org
+- Update to version 0.9.0
+  Known Issues
+  * Fractional scaling issues are not resolved. We are working with
+    Qt upstream on this issue.
+  * KDE Wayland requires modification to the Desktop file.
+  New Features
+  * Improved Wayland support on Gnome
+    + Behind the scenes we configure flameshot to automatically run
+      on xcb. This significantly improves the wayland experience.
+      This resolves issues with multimonitor setups and copying to
+      the clipboard
+  * Ability to run flameshot on Sway
+  * New option to allow the the clipboard image to be a jpeg
+    instead of a png. This may reduce bandwidth when pasting the
+    image into chat or email clients.
+  * New global shortcut menu. All actions hotkeys are fully
+    customizable.
+  * Ability to take &quot;symmetric&quot; selections by holding down the
+    Shift key while resizing the selection.
+  * The rectangle tool will now round the corners of the rectangles
+    based on the current thickness.
+  * All imgur uploads are now tracked in the &quot;Upload History&quot; menu.
+    This makes it much easier to delete of images off imgur or find
+    the upload link later.
+  * New option for setting a &quot;fixed save path&quot;. When this is
+    enabled a user will no longer need to set the path for images
+    that are saved.
+  Fixes
+  * Under certain circumstance the circle count could get set to
+    the wrong number with large numbers of undo / redo. This has
+    been fixed.
+  * Close after capture has been removed. This feature was not well
+    implemented and lead to numerous bugs.
+</comment>
+    <requestid>879359</requestid>
+  </revision>
 </revisionlist>
