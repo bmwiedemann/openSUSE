@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyface
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         oldpython python
-%define         X_display         ":98"
+%define skip_python2 1
 Name:           python-pyface
-Version:        7.0.0
+Version:        7.3.0
 Release:        0
 Summary:        Traits-capable windowing framework
 # Source code is under BSD but images are under different licenses
@@ -30,17 +29,21 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/enthought/pyface
 Source:         https://files.pythonhosted.org/packages/source/p/pyface/pyface-%{version}.tar.gz
 BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module importlib-resources >= 1.1.0}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module traits >= 6}
+BuildRequires:  %{python_module traits >= 6.2}
 BuildRequires:  %{python_module wxWidgets}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  xorg-x11-server
-Requires:       python-traits >= 6
+BuildRequires:  xvfb-run
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
+Requires:       python-importlib-metadata
+Requires:       python-importlib-resources >= 1.1.0
+Requires:       python-traits >= 6.2
 Recommends:     python-Pygments
+Recommends:     python-numpy
 Recommends:     python-qt5
 Recommends:     python-traitsui
 Recommends:     python-wxWidgets
@@ -73,22 +76,19 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/py
 
 %check
 export ETS_TOOLKIT=qt4
-export DISPLAY=%{X_display}
-Xvfb %{X_display} >& Xvfb.log &
-trap "kill $! || true" EXIT
-sleep 10
-
 %{python_expand mkdir tester_%{$python_bin_suffix}
 pushd tester_%{$python_bin_suffix}
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python -m unittest discover -v pyface
+xvfb-run $python -m unittest discover -v pyface
 popd
+# wait 10 seconds before the next xvfb-run
+sleep 10
 }
 
 %files %{python_files}
-%doc CHANGES.txt README.rst TODO.txt
+%doc README.rst
 %license LICENSE.txt image_LICENSE*.txt
 %{python_sitelib}/pyface/
-%{python_sitelib}/pyface-%{version}-py*.egg-info
+%{python_sitelib}/pyface-%{version}*-info
 
 %changelog

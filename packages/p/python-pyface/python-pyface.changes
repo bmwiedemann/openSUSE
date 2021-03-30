@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Feb 23 19:25:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.3.0
+  * Replace use of Traits on_trait_change with observe. 
+- Release 7.2.0
+  * New <pyface.undo> subpackage that has been copied over from
+    apptools (soon to be deprecated in apptools)
+- Release 7.1.0
+  * A new pyface.data_view subpackage has been introduced
+    to support visualization of hierarchical and
+    non-hierarchical tabular data. See Pyface DataViews
+    section of the user manual for an introduction.
+    Additional examples are also added to the source
+    distribution. Please note that as of this release the
+    API is provisional.
+  * A new pyface.color.Color class and a corresponding 
+    pyface.ui_traits.PyfaceColor trait type have been
+    introduced to support representing colors via a toolkit 
+    independent API. See Trait Types section of the user manual 
+    for further details.
+- Add explicit skip_python2
+- Don't test numpy in python36 (NEP 29, not available in TW)
+
+-------------------------------------------------------------------
 Mon Jul 13 10:42:34 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 7.0.0
