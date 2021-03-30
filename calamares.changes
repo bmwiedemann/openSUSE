@@ -1,9 +1,74 @@
 -------------------------------------------------------------------
+<<<<<<< Updated upstream
+=======
+Mon Feb  8 11:17:52 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 3.2.36.
+  * It is now possible to hide the *next* and *back* buttons during
+    the "exec" phase of installation. Thanks Anubhav.
+  * The Calamares CI has migrated to GitHub actions. Thanks Jonas.
+  * *bootloader* now uses the current file names for the UEFI Secure
+    Boot shim instead of obsolete ones.
+  * The *mount* module creates swap in its own subvolume, if btrfs
+    is used.
+  * *partition* includes more information about what it will do, 
+    including GPT partition types (in human-readable format, if 
+    possible).
+  * Some edge-cases with overlay filesystems have been resolved in 
+    the *partition* module.
+  * During the creation of filesystems and partitions, automounting
+    is turned off (if DBus is available, and the host system supports
+    KDE Solid automount control). This should reduce the number of 
+    failed installations if automount grabs partitions while they 
+    are being created. The code is prepared to handle other ways 
+    to control automount-behavior as well.
+
+-------------------------------------------------------------------
+Sun Jan 31 18:07:15 UTC 2021 - <opensuse.lietuviu.kalba@gmail.com>
+
+- Update to version 3.2.35.1:
+  * The partition module now supports a not-full-disk-encryption setup, 
+    where /boot is not encrypted, but the rest of the system is.
+  * Fixed issue then the initcpiocfg module would sometimes configure 
+    the system to ask for a passphrase, when none is needed.
+  * The plasmalnf module has been substantially rewritten, so that 
+    it can support a QML version of the module in future. The UI has
+    changed a little, and now displays more themes than before.
+- Add patch 3.2-networkcfg.patch to prevent writing 
+    /etc/resolv.conf as a regular file – let openSUSE to create it as 
+    a symlink automatically.
+- Set default source directory to "/run/overlay/rootfsbase" as
+    it is with Kiwi from 9.21.18 (in older Kiwi was "/run/rootfsbase").
+    See https://github.com/OSInside/kiwi/issues/1558
+
+-------------------------------------------------------------------
+>>>>>>> Stashed changes
 Fri Jan 15 17:29:04 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add compatibility with qml-autoreqprov
 
 -------------------------------------------------------------------
+<<<<<<< Updated upstream
+=======
+Fri Nov 20 10:50:18 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 3.2.34.
+  * Modules
+    * The *keyboard* module had a regression in which it no-longer 
+      painted the keycaps in the keyboard preview. 
+    * The *plasmalnf* module did not set all of the look-and-feel 
+      values in the target system. (reported by Bluestar Linux)
+    * In the *users* module, warnings about the strength of the 
+      password are now correctly pluralized when possible.
+    * In the *users* module, if ICU is installed, the user's full 
+      name is automatically transliterated to US-ASCII 
+      (for some locales; this will need tweaking) so that the login
+      name is acceptable.
+- Rebase 3.2.15-unpackfs.conf_Leap15.patch
+- Fix spec file, license file move to LICENSES/GPL-3.0-or-later.txt
+
+-------------------------------------------------------------------
+>>>>>>> Stashed changes
 Mon Aug 24 11:43:12 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
 
 - Split -lang package

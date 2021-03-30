@@ -21,7 +21,7 @@
 
 %define _sover  3
 Name:           calamares
-Version:        3.2.27
+Version:        3.2.36
 Release:        0
 Summary:        Installer from a live CD/DVD/USB to disk
 License:        GPL-3.0-or-later
@@ -44,6 +44,7 @@ Patch5:         3.2.15-unpackfs.conf_Leap15.patch
 Patch6:         3.2.15-configuring_autologin_in_sysconfig.patch
 Patch7:         3.2-removeuser.conf.patch
 Patch8:         3.2-welcome.conf.patch
+Patch9:         3.2-networkcfg.patch
 Provides:       %{name}-libs%{_sover} = %{version}
 Obsoletes:      %{name}-libs%{_sover} < %{version}
 BuildRequires:  cmake >= 3.2
@@ -131,9 +132,9 @@ Optional webview module for the Calamares installer.
 
 %package branding-upstream
 Summary:        Branding for %{name}
-Group:          System/Management
 # This theme is nor pure upstream, nor specific to openSUSE,
 # but is close to upstream
+Group:          System/Management
 Supplements:    packageand(%name:branding-upstream)
 %if 0%{?sle_version} == 150000
 Conflicts:      otherproviders(%{name}-branding)
@@ -202,7 +203,7 @@ chmod +x %{buildroot}%{_libdir}/%{name}/modules/unpackfs/runtests.sh
 # https://github.com/calamares/calamares/issues/729
 
 %files
-%license LICENSE
+%license LICENSES/GPL-3.0-or-later.txt
 %doc AUTHORS
 %{_mandir}/*/*
 %{_bindir}/%{name}
@@ -226,12 +227,12 @@ chmod +x %{buildroot}%{_libdir}/%{name}/modules/unpackfs/runtests.sh
 #%%files -f %%{name}-dummypythonqt.lang
 
 %files webview
-%license LICENSE
+%license LICENSES/GPL-3.0-or-later.txt
 %{_datadir}/%{name}/modules/webview.conf
 %{_libdir}/%{name}/modules/webview/
 
 %files branding-upstream
-%license LICENSE
+%license LICENSES/GPL-3.0-or-later.txt
 %{_datadir}/%{name}/settings.conf
 %dir %{_datadir}/%{name}/branding/
 %{_datadir}/%{name}/branding/default/
