@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymol
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,12 @@
 #
 
 
+%bcond_with test
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 %define oldpython python
 %define modname pymol-open-source
+%define test_version 0.0+git.1613482680.a99b9c6
 Name:           python-pymol
 Version:        2.4.0
 Release:        0
@@ -26,26 +29,33 @@ Summary:        A Molecular Viewer
 License:        Python-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            https://pymol.org/2/
-Source:         https://github.com/schrodinger/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
-# Source:         %%{modname}-%%{version}.tar.xz
+Source0:        https://github.com/schrodinger/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
+Source1:        pymol-testing-%{test_version}.tar.xz
 # PATCH-FIX-OPENSUSE no-build-date.patch dhall@wustl.edu -- patch eliminates build date
 Patch0:         no-build-date.patch
 # PATCH-FIX-OPENSUSE no-o3.patch tchvatal@suse.com -- do not add O3 to the code
 Patch1:         no-o3.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5-devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  Catch2-devel
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glew-devel
 BuildRequires:  glm-devel
-BuildRequires:  netcdf-devel
-# BuildRequires:  libmsgpack-devel
+BuildRequires:  libmsgpack-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libxml2-devel
+BuildRequires:  mmtf-cpp-devel
+BuildRequires:  netcdf-devel
 BuildRequires:  python-rpm-macros
+# It needed itself for testing.
+%if %{with test}
+BuildRequires:  %{python_module pymol}
+%endif
 Requires:       python-numpy
 Requires:       python-qt5
 Requires(post): update-alternatives
@@ -74,12 +84,17 @@ ChemDraw, CCP4 maps, XPLOR maps and Gaussian cube maps.
 %setup -q -n %{modname}-%{version}
 %autopatch -p1
 sed -i "1d" modules/pmg_tk/startup/apbs_tools.py # Remove she-bang line
+%if %{with test}
+# Unpack data for pymol-testing
+tar -xvf %{SOURCE1} -C %{_builddir}/%{modname}-%{version}
+# Use this to enable testing.
+sed -i 's/testing = False/testing = True/g' setup.py
+%endif
 
 %build
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
-# We cannot use msgpackc as we don't have mmtf-cpp packaged,
-# gh#schrodinger/pymol-open-source#17
-%python_build --use-msgpackc=no
+# Use --testing to enable testing.
+%python_build %{?with_test:--testing}%{!?with_test:}
 
 %install
 %python_install
@@ -91,6 +106,13 @@ export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 
 %postun
 %python_uninstall_alternative pymol
+
+%check
+# Use this to enable testing.
+# I think it use pymol itself to run test, I could not get pymol to run.
+%if %{with test}
+pymol -ckqy pymol-testing-%{test_version}/testing.py --run all
+%endif
 
 %files %{python_files}
 %doc README ChangeLog

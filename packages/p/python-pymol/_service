@@ -1,0 +1,16 @@
+<services>
+  <service mode="localonly" name="obs_scm">
+    <param name="url">git://github.com/schrodinger/pymol-testing.git</param>
+    <param name="scm">git</param>
+    <param name="revision">a99b9c6</param>
+    <param name="versionprefix">0.0+git</param>
+    <param name="versionformat">%ct.%h</param>
+  </service>
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
+
+
