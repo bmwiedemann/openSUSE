@@ -1,7 +1,7 @@
 #
 # spec file for package molsketch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,15 @@
 %define soname -qt5-%{sover}
 %define binname %{name}-qt5
 Name:           molsketch
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        2D molecular structures editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            https://molsketch.sourceforge.net
 Source0:        https://downloads.sourceforge.net/molsketch/Molsketch-%{version}-src.tar.gz
+# PATCH-FIX-UPSTREAM https://sourceforge.net/p/molsketch/bugs/40/
+Patch0:         fix-compilation.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -79,7 +81,7 @@ BuildArch:      noarch
 Help documentation for %{name}.
 
 %prep
-%setup -q -n %{srcname}-%{version}
+%autosetup -n %{srcname}-%{version} -p1
 dos2unix -k -c ascii doc/cs/%{name}.adp
 
 %build
@@ -90,6 +92,10 @@ dos2unix -k -c ascii doc/cs/%{name}.adp
 
 %install
 %cmake_install
+
+# Fix program not finding its shared libraries.
+mv %{buildroot}%{_libdir}/%{name}/libmolsketch-qt5.so %{buildroot}%{_libdir}/libmolsketch-qt5.so
+mv %{buildroot}%{_libdir}/%{name}/libobabeliface-qt5.so %{buildroot}%{_libdir}/libobabeliface-qt5.so
 
 for sz in 24 32 48 64 128 256 512
 do
@@ -106,6 +112,7 @@ done
 %license COPYING
 %doc CHANGELOG
 %{_bindir}/%{binname}
+%{_libdir}/*.so
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/molsketch.*
 %{_datadir}/pixmaps/molsketch.xpm
@@ -115,7 +122,6 @@ done
 %{_datadir}/mime/packages/molsketch.xml
 
 %files devel
-%{_libdir}/%{name}/
 %{_includedir}/lib%{name}/
 
 %files doc
