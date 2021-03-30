@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://git.kernel.org/pub/scm/fs/xfs/xfstests-dev.git</param>
+              <param name="changesrevision">011bfb01f7f9f8f37c01d0a1ae0b0ca28e96a4f5</param></service></servicedata>
