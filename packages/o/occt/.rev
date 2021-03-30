@@ -33,4 +33,52 @@ includes also opencascade</comment>
 - avoid remote mathjax resource (use-local-mathjax.patch)</comment>
     <requestid>672432</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>26cc139002d8d23d5869894f6f5e935c</srcmd5>
+    <version>7.5.1</version>
+    <time>1617131291</time>
+    <user>RBrownSUSE</user>
+    <comment>- enable glTF support, depends on RapidJSON.
+- Fix FreeCad crash with some fillets and chamfers
+  (https://tracker.freecadweb.org/view.php?id=4543), add
+  0001-Add-error-checking-to-chamfer-and-fillet-code.patch
+- update to version 7.5.1, for details see
+  https://www.opencascade.com/open-cascade-starts-supporting-maintenance-releases-of-open-cascade-technology/
+- update to version 7.5.0, for details see
+  https://old.opencascade.com/sites/default/files/documents/release_notes_7.5.0.pdf
+- update to version 7.4.0, for details see
+  https://old.opencascade.com/sites/default/files/documents/release_notes_7.4.0.pdf
+- Packaging changes:
+  * Move resources referenced by the libraries to separate package
+  * Move drawexe resources to matching package
+  * Remove the mostly empty occt package
+- Drop use-local-mathjax.patch, use mathjax gendoc option
+- Drop enable-exceptions.patch,
+  use BUILD_RELEASE_DISABLE_EXCEPTIONS=false
+- update to version 7.3.0p4
+  * bugfixes:
+    0030760: Modeling Algorithms - Intersection fails in Occt 7.3.0
+    0029711: General Fuse operation produces invalid result
+    0030915: Visualization - AIS_ColorScale::FindColor() returns Wrong color for maximal value
+    0030897: Modeling Algorithms - Crash in UnifySameDomain [Regression]
+    0030534: Regression in the tool UnifySameDomain - the shape looses faces
+- adapt license tag to current definition (no license change)
+- update to version 7.3.0p3
+  * needs to be fetch from git due to lack of tar ball
+  * bugfixes:
+    - 0030510: Application Framework - add missing NULL check within TDataStd_RealArray::ChangeArray()
+    - 0030363: BRepLib::SameParameter with option &quot;forced&quot; corrupts valid shape
+    - 0030174: ShapeUpgrade_UnifySameDomain does not unify cylindrical faces
+    - 0030186: BRepOffsetAPI_MakePipe Generated() method produces no results for the spine edges
+    - 0030204: BRepOffsetAPI_MakePipeShell crash
+    - 0030354: BOP Cut doesn't modify the attached face
+    - 0030143: Foundation Classes - provide operator[] alias for NCollection_Array1, NCollection_Vector
+    - 0029807: [Regression to 7.0.0] Impossible to cut cone from prism
+    - 0028949: BRepOffsetAPI_MakePipe Generated() method produces no result for spine edges
+    - 0029573: ConcatenateWireC0 crashes on two edges wire
+    - 0028085: Incorrect result of CUT operation
+    - 0027928: BOP common produces empty compound
+</comment>
+    <requestid>876031</requestid>
+  </revision>
 </revisionlist>
