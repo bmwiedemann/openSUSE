@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema
-Version:        4.3.20
+Version:        4.3.21
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -34,8 +34,8 @@ BuildRequires:  yast2-devtools
 # All packages providing RNG files for AutoYaST
 # in /usr/share/YaST2/schema/autoyast/rng/*.rng
 
-# 'quotas' and 'referenced_limit' elements (jsc#SLE-7742)
-BuildRequires:  autoyast2 >= 4.3.64
+# remove the 'haspcmica' element
+BuildRequires:  autoyast2 >= 4.3.71
 BuildRequires:  yast2
 # add_on_products and add_on_others types
 BuildRequires:  yast2-add-on >= 4.3.3
@@ -60,8 +60,8 @@ BuildRequires:  yast2-tftp-server >= 4.1.7
 BuildRequires:  yast2-iscsi-client >= 4.3.3
 BuildRequires:  yast2-kdump
 BuildRequires:  yast2-mail >= 4.3.3
-# add 'bridge_forward_delay' element
-BuildRequires:  yast2-network >= 4.3.51
+# allow interfaces list to be empty
+BuildRequires:  yast2-network >= 4.3.56
 BuildRequires:  yast2-nfs-client
 BuildRequires:  yast2-nfs-server
 BuildRequires:  yast2-nis-client

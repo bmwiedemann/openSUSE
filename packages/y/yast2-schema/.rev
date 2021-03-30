@@ -503,4 +503,12 @@
     <comment>submit new version 4.3.20</comment>
     <requestid>876576</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>4298ac6117bf74d6dd1197af9b128875</srcmd5>
+    <version>4.3.21</version>
+    <time>1617130251</time>
+    <user>RBrownSUSE</user>
+    <comment>submit new version 4.3.21</comment>
+    <requestid>878606</requestid>
+  </revision>
 </revisionlist>
