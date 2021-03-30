@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Feb 18 07:43:54 UTC 2021 - pgajdos@suse.com
+
+- re-download tarball
+
+-------------------------------------------------------------------
+Wed Feb 17 18:34:10 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.4.6
+  * Bugfixes
+    - don't set SameSite=None on cookies when on plain http
+    - fix semaphore cleanup on graceful restarts; see #522
+    - fix inconsistent public/private keys loading order; closes #515
+    - return HTTP 400 Bad Request instead of 500 Internal Server Error when state cookie matching fails
+    - optimize Redis AUTH execution once per connection
+    - avoid segmentation fault when hitting an endpoint configured with
+      AuthType openid-connect in an OAuth 2.0 only setup; see #529
+    - make sure the module compiles with Apache 2.2 for passphrase exec:
+  * Features
+    - add Redis database selection option with OIDCRedisCacheDatabase; closes #423
+    - add base64url option to OIDCPassClaimsAs primitive; closes #417
+    - add environment variable to control libcURL CURLOPT_SSL_OPTIONS behaviors e.g.:
+    - SetEnvIfExpr true CURLOPT_SSL_OPTIONS=CURLSSLOPT_NO_REVOKE
+    - removed support for https://tools.ietf.org/html/draft-bradley-oauth-jwt-encoded-state
+  * Security
+    - avoid displaying the client_secret in debug logs
+  * Dependencies
+    - libcjose >= 0.5.1
+
+-------------------------------------------------------------------
 Mon Nov 23 19:50:22 UTC 2020 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 2.4.5
