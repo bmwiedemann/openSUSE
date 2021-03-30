@@ -1,0 +1,52 @@
+Index: mosquitto-2.0.8/plugins/auth-by-ip/CMakeLists.txt
+===================================================================
+--- mosquitto-2.0.8.orig/plugins/auth-by-ip/CMakeLists.txt
++++ mosquitto-2.0.8/plugins/auth-by-ip/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ include_directories(${mosquitto_SOURCE_DIR} ${mosquitto_SOURCE_DIR}/include
+ 			${STDBOOL_H_PATH} ${STDINT_H_PATH})
+ 
+-add_library(mosquitto_auth_by_ip SHARED mosquitto_auth_by_ip.c)
++add_library(mosquitto_auth_by_ip MODULE mosquitto_auth_by_ip.c)
+ set_target_properties(mosquitto_auth_by_ip PROPERTIES
+ 	POSITION_INDEPENDENT_CODE 1
+ )
+Index: mosquitto-2.0.8/plugins/dynamic-security/CMakeLists.txt
+===================================================================
+--- mosquitto-2.0.8.orig/plugins/dynamic-security/CMakeLists.txt
++++ mosquitto-2.0.8/plugins/dynamic-security/CMakeLists.txt
+@@ -12,7 +12,7 @@ if (CJSON_FOUND AND WITH_TLS)
+ 	include_directories(${CLIENT_INC})
+ 	link_directories(${CLIENT_DIR} ${mosquitto_SOURCE_DIR})
+ 
+-	add_library(mosquitto_dynamic_security SHARED
++	add_library(mosquitto_dynamic_security MODULE
+ 		acl.c
+ 		auth.c
+ 		clients.c
+Index: mosquitto-2.0.8/plugins/message-timestamp/CMakeLists.txt
+===================================================================
+--- mosquitto-2.0.8.orig/plugins/message-timestamp/CMakeLists.txt
++++ mosquitto-2.0.8/plugins/message-timestamp/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ include_directories(${mosquitto_SOURCE_DIR} ${mosquitto_SOURCE_DIR}/include
+ 			${STDBOOL_H_PATH} ${STDINT_H_PATH})
+ 
+-add_library(mosquitto_message_timestamp SHARED mosquitto_message_timestamp.c)
++add_library(mosquitto_message_timestamp MODULE mosquitto_message_timestamp.c)
+ set_target_properties(mosquitto_message_timestamp PROPERTIES
+ 	POSITION_INDEPENDENT_CODE 1
+ )
+Index: mosquitto-2.0.8/plugins/payload-modification/CMakeLists.txt
+===================================================================
+--- mosquitto-2.0.8.orig/plugins/payload-modification/CMakeLists.txt
++++ mosquitto-2.0.8/plugins/payload-modification/CMakeLists.txt
+@@ -2,7 +2,7 @@ include_directories(${mosquitto_SOURCE_D
+ 			${STDBOOL_H_PATH} ${STDINT_H_PATH})
+ link_directories(${mosquitto_SOURCE_DIR})
+ 
+-add_library(mosquitto_payload_modification SHARED mosquitto_payload_modification.c)
++add_library(mosquitto_payload_modification MODULE mosquitto_payload_modification.c)
+ set_target_properties(mosquitto_payload_modification PROPERTIES
+ 	POSITION_INDEPENDENT_CODE 1
+ )
