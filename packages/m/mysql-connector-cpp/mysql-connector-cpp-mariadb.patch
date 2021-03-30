@@ -11,35 +11,89 @@ diff -uNr mysql-connector-c++-8.0.15-org/jdbc/cppconn/version_info.h.cmake mysql
 diff -uNr mysql-connector-c++-8.0.15-org/jdbc/driver/mysql_connection.cpp mysql-connector-c++-8.0.15-src/jdbc/driver/mysql_connection.cpp
 --- mysql-connector-c++-8.0.15-org/jdbc/driver/mysql_connection.cpp	2018-10-11 17:09:50.000000000 +0300
 +++ mysql-connector-c++-8.0.15-src/jdbc/driver/mysql_connection.cpp	2019-02-16 12:27:46.395921145 +0200
-@@ -240,7 +240,7 @@
-     {"OPT_CAN_HANDLE_EXPIRED_PASSWORDS", MYSQL_OPT_CAN_HANDLE_EXPIRED_PASSWORDS, true},
-     {"OPT_CONNECT_ATTR_RESET",      MYSQL_OPT_CONNECT_ATTR_RESET, true},
-     {"OPT_RECONNECT",               MYSQL_OPT_RECONNECT, true},
+@@ -254,7 +254,7 @@
+     {OPT_CAN_HANDLE_EXPIRED_PASSWORDS, MYSQL_OPT_CAN_HANDLE_EXPIRED_PASSWORDS, true},
+     {OPT_CONNECT_ATTR_RESET,      MYSQL_OPT_CONNECT_ATTR_RESET, true},
+     {OPT_RECONNECT,               MYSQL_OPT_RECONNECT, true},
 -#if MYCPPCONN_STATIC_MYSQL_VERSION_ID < 80000
 +#if MYCPPCONN_STATIC_MYSQL_VERSION_ID < 80000 || defined(MYCPPCONN_MARIADB_BUILD)
      {"sslVerify",                   MYSQL_OPT_SSL_VERIFY_SERVER_CERT, false}, // Deprecated
      {"sslEnforce",                  MYSQL_OPT_SSL_ENFORCE, false} // Deprecated
  #else
-@@ -262,8 +262,8 @@
-     {"OPT_MAX_ALLOWED_PACKET",  MYSQL_OPT_MAX_ALLOWED_PACKET, false},
-     {"OPT_NET_BUFFER_LENGTH",   MYSQL_OPT_NET_BUFFER_LENGTH, false},
+@@ -276,8 +276,8 @@
+     {OPT_MAX_ALLOWED_PACKET,  MYSQL_OPT_MAX_ALLOWED_PACKET, false},
+     {OPT_NET_BUFFER_LENGTH,   MYSQL_OPT_NET_BUFFER_LENGTH, false},
  #endif
--    {"OPT_SSL_MODE",            MYSQL_OPT_SSL_MODE    , false},
+-    {OPT_SSL_MODE,            MYSQL_OPT_SSL_MODE    , false},
 -#if MYCPPCONN_STATIC_MYSQL_VERSION_ID >= 80000
-+    //{"OPT_SSL_MODE",            MYSQL_OPT_SSL_MODE    , false},
++    //{OPT_SSL_MODE,            MYSQL_OPT_SSL_MODE    , false},
 +#if MYCPPCONN_STATIC_MYSQL_VERSION_ID >= 80000 && !defined(MYCPPCONN_MARIADB_BUILD)
-     {"OPT_RETRY_COUNT",         MYSQL_OPT_RETRY_COUNT, false},
+     {OPT_RETRY_COUNT,         MYSQL_OPT_RETRY_COUNT, false},
  #endif
    };
-@@ -769,7 +769,7 @@
-     } else if (!it->first.compare("OPT_CONNECT_ATTR_RESET")) {
+@@ -303,7 +303,7 @@
+ #if MYCPPCONN_STATIC_MYSQL_VERSION_ID >= 50700
+     {OPT_TLS_VERSION,          MYSQL_OPT_TLS_VERSION, false},
+ #endif
+-    {OPT_LOAD_DATA_LOCAL_DIR, MYSQL_OPT_LOAD_DATA_LOCAL_DIR, false}
++    //{OPT_LOAD_DATA_LOCAL_DIR, MYSQL_OPT_LOAD_DATA_LOCAL_DIR, false}
+   };
+ 
+ 
+@@ -311,7 +311,7 @@
+ inline
+ ::sql::mysql::MySQL_Connection_Options option_conversion(unsigned long client_version, int option)
+ {
+-  #if MYCPPCONN_STATIC_MYSQL_VERSION_ID >= 80000
++  #if MYCPPCONN_STATIC_MYSQL_VERSION_ID >= 80000 && !defined(MYCPPCONN_MARIADB_BUILD)
+   if(client_version <80011)
+   {
+     switch (option) {
+@@ -593,7 +593,7 @@
+   int  client_exp_pwd = false;
+   bool opt_dns_srv = false;
+   bool opt_multi_host = false;
+-#if MYCPPCONN_STATIC_MYSQL_VERSION_ID < 80000
++#if MYCPPCONN_STATIC_MYSQL_VERSION_ID < 80000 || defined(MYCPPCONN_MARIADB_BUILD)
+   bool secure_auth= true;
+ #endif
+ 
+@@ -902,7 +902,7 @@
+       } catch (sql::InvalidArgumentException&) {
+         throw sql::InvalidArgumentException("Wrong type passed for useLegacyAuth expected sql::SQLString");
+       }
+-#if MYCPPCONN_STATIC_MYSQL_VERSION_ID < 80000
++#if MYCPPCONN_STATIC_MYSQL_VERSION_ID < 80000 || defined(MYCPPCONN_MARIADB_BUILD)
+       if (p_b) {
+         secure_auth= !*p_b;
+       } else {
+@@ -944,7 +944,7 @@
+     } else if (!it->first.compare(OPT_CONNECT_ATTR_RESET)) {
        proxy->options(MYSQL_OPT_CONNECT_ATTR_RESET, 0);
  
 -#if MYCPPCONN_STATIC_MYSQL_VERSION_ID > 80000
 +#if MYCPPCONN_STATIC_MYSQL_VERSION_ID > 80000 && !defined(MYCPPCONN_MARIADB_BUILD)
  
+     //Deprecated
      } else if (!it->first.compare("sslVerify")) {
+@@ -1000,7 +1000,7 @@
  
+   }
+ 
+-#if MYCPPCONN_STATIC_MYSQL_VERSION_ID < 80000
++#if MYCPPCONN_STATIC_MYSQL_VERSION_ID < 80000 || defined(MYCPPCONN_MARIADB_BUILD)
+   try {
+     proxy->options(MYSQL_SECURE_AUTH, &secure_auth);
+   } catch (sql::InvalidArgumentException& e) {
+@@ -1772,7 +1772,7 @@
+ #endif
+   } else if (!optionName.compare(OPT_LOAD_DATA_LOCAL_DIR))
+   {
+-    proxy->options(MYSQL_OPT_LOAD_DATA_LOCAL_DIR, optionValue);
++    //proxy->options(MYSQL_OPT_LOAD_DATA_LOCAL_DIR, optionValue);
+   }
+   return this;
+ }
 diff -uNr mysql-connector-c++-8.0.15-org/jdbc/driver/mysql_connection_options.h mysql-connector-c++-8.0.15-src/jdbc/driver/mysql_connection_options.h
 --- mysql-connector-c++-8.0.15-org/jdbc/driver/mysql_connection_options.h	2018-10-11 17:09:50.000000000 +0300
 +++ mysql-connector-c++-8.0.15-src/jdbc/driver/mysql_connection_options.h	2019-02-16 12:26:42.476429900 +0200
@@ -157,7 +211,7 @@ diff -uNr mysql-connector-c++-8.0.15-org/jdbc/driver/nativeapi/native_statement_
 +++ mysql-connector-c++-8.0.15-src/jdbc/driver/nativeapi/native_statement_wrapper.h	2019-02-16 12:26:42.480429868 +0200
 @@ -42,7 +42,7 @@
  #include "../mysql_statement_options.h"
- #include "../cppconn/version_info.h"
+ #include <cppconn/version_info.h>
  
 -#if (MYCPPCONN_STATIC_MYSQL_VERSION_ID > 80004)
 +#if (MYCPPCONN_STATIC_MYSQL_VERSION_ID > 80004 && !defined(MYCPPCONN_MARIADB_BUILD))

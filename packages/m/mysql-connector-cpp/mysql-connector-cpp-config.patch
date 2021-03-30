@@ -1,14 +1,15 @@
-diff -uNr mysql-connector-c++-8.0.16-src/jdbc/cmake/DepFindMySQL.cmake mysql-connector-c++-8.0.16-src/jdbc/cmake/DepFindMySQL.cmake
---- mysql-connector-c++-8.0.16-src/jdbc/cmake/DepFindMySQL.cmake	2019-03-04 19:29:41.000000000 +0200
-+++ mysql-connector-c++-8.0.16-src/jdbc/cmake/DepFindMySQL.cmake	2019-06-17 14:27:06.114392842 +0300
-@@ -453,8 +453,8 @@
+--- mysql-connector-c++-8.0.22-new/jdbc/cmake/DepFindMySQL.cmake.pre	2020-09-02 19:04:07.000000000 +0300
++++ mysql-connector-c++-8.0.22-new/jdbc/cmake/DepFindMySQL.cmake	2020-12-08 01:28:25.680029053 +0200
+@@ -469,9 +469,9 @@
  
    # Install location
  
 -  _mysql_conf(MYSQL_INCLUDE_DIR --variable=pkgincludedir)
 -  _mysql_conf(MYSQL_LIB_DIR     --variable=pkglibdir)
+-  _mysql_conf(MYSQL_PLUGIN_DIR     --variable=plugindir)
 +  set(MYSQL_INCLUDE_DIR "/usr/include/mysql")
 +  set(MYSQL_LIB_DIR     "/usr/lib64")
++  set(MYSQL_PLUGIN_DIR  "/usr/lib64/mysql/plugin")
  
    file(TO_CMAKE_PATH "${MYSQL_INCLUDE_DIR}" MYSQL_INCLUDE_DIR)
    file(TO_CMAKE_PATH "${MYSQL_LIB_DIR}" MYSQL_LIB_DIR)

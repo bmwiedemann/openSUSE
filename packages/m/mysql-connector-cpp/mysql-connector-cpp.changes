@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jan 23 12:15:38 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to version 8.0.23
+  * release notes:
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-8-0-23.html
+- Changed library version
+
+-------------------------------------------------------------------
+Sat Jan  2 11:27:25 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to version 8.0.22
+  * release notes:
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-8-0-20.html
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-8-0-21.html
+    https://dev.mysql.com/doc/relnotes/connector-cpp/en/news-8-0-22.html
+- Replaced make with cmake_build macro
+- Fixed patches for new version changes
+  * updated mysql-connector-cpp-config.patch
+  * updated mysql-connector-cpp-mariadb.patch
+  * updated mysql-connector-cpp-use-system-protobuf.patch
+
+-------------------------------------------------------------------
 Thu Apr  2 21:07:48 UTC 2020 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Updated to version 8.0.19

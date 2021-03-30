@@ -1,6 +1,6 @@
-diff -uNr mysql-connector-c++-8.0.19-org/cdk/CMakeLists.txt mysql-connector-c++-8.0.19-src/cdk/CMakeLists.txt
---- mysql-connector-c++-8.0.19-org/cdk/CMakeLists.txt	2019-12-12 08:48:20.000000000 +0200
-+++ mysql-connector-c++-8.0.19-src/cdk/CMakeLists.txt	2020-04-03 01:37:18.880097316 +0300
+diff -uNr mysql-connector-c++-8.0.20-org/cdk/CMakeLists.txt mysql-connector-c++-8.0.20-src/cdk/CMakeLists.txt
+--- mysql-connector-c++-8.0.20-org/cdk/CMakeLists.txt	2020-03-13 22:10:58.000000000 +0200
++++ mysql-connector-c++-8.0.20-src/cdk/CMakeLists.txt	2020-05-13 18:37:49.147107797 +0300
 @@ -94,9 +94,9 @@
  #
  
@@ -12,10 +12,10 @@ diff -uNr mysql-connector-c++-8.0.19-org/cdk/CMakeLists.txt mysql-connector-c++-
  
  
  # TODO: These macros should not be used in public headers because they are
-diff -uNr mysql-connector-c++-8.0.19-org/cdk/core/CMakeLists.txt mysql-connector-c++-8.0.19-src/cdk/core/CMakeLists.txt
---- mysql-connector-c++-8.0.19-org/cdk/core/CMakeLists.txt	2019-12-12 08:48:20.000000000 +0200
-+++ mysql-connector-c++-8.0.19-src/cdk/core/CMakeLists.txt	2020-04-03 01:41:40.221696783 +0300
-@@ -44,7 +44,7 @@
+diff -uNr mysql-connector-c++-8.0.20-org/cdk/core/CMakeLists.txt mysql-connector-c++-8.0.20-src/cdk/core/CMakeLists.txt
+--- mysql-connector-c++-8.0.20-org/cdk/core/CMakeLists.txt	2020-03-13 22:10:58.000000000 +0200
++++ mysql-connector-c++-8.0.20-src/cdk/core/CMakeLists.txt	2020-05-13 18:37:49.147107797 +0300
+@@ -45,7 +45,7 @@
  
  target_link_libraries(cdk
    PUBLIC  cdk_mysqlx cdk_parser
@@ -24,9 +24,9 @@ diff -uNr mysql-connector-c++-8.0.19-org/cdk/core/CMakeLists.txt mysql-connector
  )
  
  add_coverage(cdk)
-diff -uNr mysql-connector-c++-8.0.19-org/cdk/protocol/mysqlx/CMakeLists.txt mysql-connector-c++-8.0.19-src/cdk/protocol/mysqlx/CMakeLists.txt
---- mysql-connector-c++-8.0.19-org/cdk/protocol/mysqlx/CMakeLists.txt	2019-12-12 08:48:20.000000000 +0200
-+++ mysql-connector-c++-8.0.19-src/cdk/protocol/mysqlx/CMakeLists.txt	2020-04-03 01:45:21.531663970 +0300
+diff -uNr mysql-connector-c++-8.0.20-org/cdk/protocol/mysqlx/CMakeLists.txt mysql-connector-c++-8.0.20-src/cdk/protocol/mysqlx/CMakeLists.txt
+--- mysql-connector-c++-8.0.20-org/cdk/protocol/mysqlx/CMakeLists.txt	2020-03-13 22:10:58.000000000 +0200
++++ mysql-connector-c++-8.0.20-src/cdk/protocol/mysqlx/CMakeLists.txt	2020-05-13 18:37:49.151107769 +0300
 @@ -109,6 +109,65 @@
  
  endif(NOT use_full_protobuf)
@@ -93,7 +93,7 @@ diff -uNr mysql-connector-c++-8.0.19-org/cdk/protocol/mysqlx/CMakeLists.txt mysq
  
  mysqlx_protobuf_generate_cpp(PB_SRCS PB_HDRS ${proto_mysqlx_defs})
  
-@@ -127,9 +187,9 @@
+@@ -128,9 +187,9 @@
  )
  
  if(use_full_protobuf)
@@ -104,4 +104,4 @@ diff -uNr mysql-connector-c++-8.0.19-org/cdk/protocol/mysqlx/CMakeLists.txt mysq
 +  target_link_libraries(cdk_proto_mysqlx PRIVATE protobuf::libprotobuf-lite)
  endif()
  
- target_link_libraries(cdk_proto_mysqlx PRIVATE cdk_foundation)
+ target_link_libraries(cdk_proto_mysqlx PRIVATE cdk_foundation zlib lz4 zstd)
