@@ -1,7 +1,7 @@
 #
 # spec file for package terraform-provider-helm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global provider        github
 %global provider_tld    com
@@ -49,7 +50,7 @@
 %endif
 
 Name:           terraform-provider-helm
-Version:        1.3.2
+Version:        2.0.0
 Release:        0
 Summary:        Terraform Helm provider
 License:        MPL-2.0
@@ -70,9 +71,9 @@ Requires:       terraform >= 0.13.0
 BuildRequires:  golang
 %endif
 %if 0%{?suse_version}
-BuildRequires:  golang(API) >= 1.13
 BuildRequires:  golang-packaging
 BuildRequires:  xz
+BuildRequires:  golang(API) >= 1.13
 %endif
 %endif
 %if 0%{?suse_version}
