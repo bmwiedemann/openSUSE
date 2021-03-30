@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan 28 23:09:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Disable python36 build because SciPy 1.6.0 dropped support for
+  Python 3.6. Other packages from the NumPy family do the same
+  (NEP29)
+- Update requirements
+- Enable tests. Use librosa-create-pooch-cache.py to provide the
+  test data in librosa-pooch-cache.tar.gz. These files are under
+  CC-BY-3.0 license.
+
+-------------------------------------------------------------------
 Fri Jan  8 14:29:45 UTC 2021 - Dilawar Singh <dilawar.s.rajput@gmail.com>
 
 - Update to version 0.8.0
