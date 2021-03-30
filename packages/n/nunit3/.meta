@@ -1,0 +1,5 @@
+<package name="nunit3" project="openSUSE:Factory">
+  <title>NUnit 3</title>
+  <description>rewritten with many new features and support for a wide range of .NET platforms.</description>
+  <devel project="Mono:Factory" package="nunit3"/>
+</package>
