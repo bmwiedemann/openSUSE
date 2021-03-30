@@ -1,7 +1,7 @@
 #
 # spec file for package spirv-cross
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,22 @@
 #
 
 
-%define _ver 2020-06-29
-%define _libver 0.35.0
+%define _ver 2021-01-15
+%define _libver 0.44.0
 %define _sover 0
 %define _libname libspirv-cross-c-shared
 %define _libpkg %{_libname}%{_sover}
 %define __builder ninja
 Name:           spirv-cross
-Version:        20200629
+Version:        20210115
 Release:        0
 Summary:        Tool and library for SPIR-V reflection and disassembly
-License:        Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Cross
 Source0:        https://github.com/KhronosGroup/SPIRV-Cross/archive/%{_ver}.tar.gz#/%{name}-%{_ver}.tar.gz
 BuildRequires:  c++_compiler
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 
@@ -70,7 +70,7 @@ SPIRV-Cross is a tool and library designed for parsing and
 converting SPIR-V to other shader languages.
 
 %prep
-%setup -q -n SPIRV-Cross-%{_ver}
+%autosetup -p1 -n SPIRV-Cross-%{_ver}
 sed -i 's,${CMAKE_INSTALL_PREFIX}/lib,%{_libdir},;s,/share/pkgconfig,/%{_lib}/pkgconfig,;s,DESTINATION lib,DESTINATION %{_lib},g' CMakeLists.txt
 
 %build

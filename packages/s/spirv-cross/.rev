@@ -47,4 +47,12 @@
     <comment>- Update to 2020-06-29 (no changelog)</comment>
     <requestid>819297</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>864b1241e1722fa9abf120cca6e8fdfc</srcmd5>
+    <version>unknown</version>
+    <time>1617130992</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to release 2020-01-25 (forwarded request 863363 from jengelh)</comment>
+    <requestid>870910</requestid>
+  </revision>
 </revisionlist>
