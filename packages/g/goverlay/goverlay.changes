@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Thu Feb  4 09:53:56 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.4.4.
+  * Support for ReplaySorcery 0.5.0.
+- Updates for 0.4.3.
+  * New functions introduced in mangohud 0.6.1 and some fixes to 
+    vkbasalt implementation and Replaysorcery
+  * New - Added option to change CPU and GPU colors based on Load 
+    introduced in MangoHUD 0.6.1
+  * New - Added option to autostart logging after specific seconds
+    introduced in MangoHUD 0.6.1
+  * New - Added option to display CPU Power introduced in MangoHUD
+    0.6.1
+  * New - Added option to display CPU Frequency introduced in 
+    MangoHUD 0.6.1
+  * Fix - Interface overhaul in replaysorcery
+  * Fix - Mangohud lost configuration after saving a config for 
+    replaysorcery
+  * Fix - CAS doesn't work in VKbasalt if other effects weren't in
+    use
+  * Fix - Comboboxes with wrong font sizes
+  * Fix - Hudversion remove from compact and complete hud profile
+  * Fix - Time removed from complete hud profile
+  * Fix - trackbars of CAS in vkbasalt and Compress quality in 
+    replaySorcery do not display values on QT5
+  * Fix - Small interface changes
+
+-------------------------------------------------------------------
+Wed Jan  6 18:28:13 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Add replay-sorcery as dependency.
+
+-------------------------------------------------------------------
+Sun Nov 29 20:15:04 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 0.4.2.
+  * Fix - Application building now defaults to QT5
+  * Fix - ReplaySorcery consistent naming
+  * Fix - Use cmdline arg instead of env var for qt style in 
+    .desktop file
+  * Fix - removes the local session files from git
+  * Fix - Update metainfo screenshots
+- Updates for 0.4.1.
+  * New - Migration from GTK2 to QT5 toolkit with Fusion QT Style
+  * New - Added precustom compact Hud option in mangohud
+  * New - Added option to customize colors of Engine, Wine and 
+    Media in mangohud
+  * Fix - Theme ajustments for QT5 integration
+  * Fix - Some items weren't correctly colored on the preview 
+    interface in mangohud
+  * Fix - Minor typos in ReplaySorcery
+  * Fix - HIDPI displays works correctly with goverlay in QT5
+- Fix spec file to use Makefile.
+
+-------------------------------------------------------------------
+Wed Nov  4 18:31:34 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 0.4.
+  * New - Added full replay-sourcery implementation
+  * New - created hint messages for each application
+  * New - Toggle keys refactored to F1 - F4 
+    (stock values mantained)
+  * Fix - vkbasalt wasn't correctly activated when running the 
+    test button
+  * Fix - vkbasalt doesn't save toggle button option
+  * Fix - vkbasalt doesn't save CAS option when in false state
+  * Fix - Dependency error message doesn't fit screen space
+  * Fix - font colors doesn't fit light themes in some ocasions
+
+
+-------------------------------------------------------------------
+Mon Sep 14 21:04:08 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Add patch to enable debuginfo from Fedora.
+  * https://src.fedoraproject.org/rpms/goverlay/tree/master
+
+-------------------------------------------------------------------
+Mon Sep 14 20:53:57 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release.

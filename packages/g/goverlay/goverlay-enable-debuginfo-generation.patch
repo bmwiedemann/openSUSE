@@ -1,0 +1,12 @@
+diff -ruN a/goverlay.lpi b/goverlay.lpi
+--- a/goverlay.lpi	2020-11-03 08:43:38.000000000 +0700
++++ b/goverlay.lpi	2020-11-05 01:55:58.058216827 +0700
+@@ -35,7 +35,7 @@
+           </CodeGeneration>
+           <Linking>
+             <Debugging>
+-              <GenerateDebugInfo Value="False"/>
++              <GenerateDebugInfo Value="True"/>
+               <StripSymbols Value="True"/>
+             </Debugging>
+             <LinkSmart Value="True"/>
