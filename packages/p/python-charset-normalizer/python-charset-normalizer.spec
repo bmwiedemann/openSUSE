@@ -1,7 +1,7 @@
 #
 # spec file for package python-charset-normalizer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,32 +19,33 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-charset-normalizer
-Version:        1.3.4
+Version:        1.3.6
 Release:        0
 Summary:        Python Universal Charset detector
 License:        MIT
 URL:            https://github.com/ousret/charset_normalizer
-Source:         https://github.com/Ousret/charset_normalizer/archive/%{version}.tar.gz#/charset_normalizer-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/c/charset_normalizer/charset_normalizer-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PrettyTable
-Requires:       python-cached-property
-Requires:       python-dragonmapper
-Requires:       python-loguru
+Requires:       python-cached-property >= 1.5
+Requires:       python-dragonmapper >= 0.2
+Requires:       python-loguru >= 0.5
 Requires:       python-zhon
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Suggests:       python-requests
 Suggests:       python-requests-html
+Suggests:       python-unicodedata2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PrettyTable}
-BuildRequires:  %{python_module cached-property}
-BuildRequires:  %{python_module dragonmapper}
-BuildRequires:  %{python_module loguru}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module cached-property >= 1.5}
+BuildRequires:  %{python_module dragonmapper >= 0.2}
+BuildRequires:  %{python_module loguru >= 0.5}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module zhon}
 # /SECTION
 %python_subpackages
@@ -55,6 +56,7 @@ Python Universal Charset detector.
 %prep
 %setup -q -n charset_normalizer-%{version}
 dos2unix README.md
+chmod a-x charset_normalizer/assets/frequencies.json
 
 %build
 %python_build
@@ -65,7 +67,7 @@ dos2unix README.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py pytest
+%pytest
 
 %post
 %python_install_alternative normalizer

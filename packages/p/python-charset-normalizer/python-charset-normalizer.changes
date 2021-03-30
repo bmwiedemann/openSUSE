@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Feb  9 00:47:34 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Switch to PyPI source
+- Add Suggests: python-unicodedata2
+- Remove executable bit from charset_normalizer/assets/frequencies.json
+- Update to v1.3.6
+  * Allow prettytable 2.0
+- from v1.3.5
+  * Dependencies refactor and add support for py 3.9 and 3.10
+  * Fix version parsing
+
+-------------------------------------------------------------------
 Mon May 25 10:59:12 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
