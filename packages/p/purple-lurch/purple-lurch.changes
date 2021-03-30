@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Feb 13 12:42:04 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.7.0:
+  * An API reachable through libpurple signals.
+    See lurch_api.h for details and usage.
+  * Testing setup using cmocka and tests for new modules.
+  * The possibility to dynamically link against the submodule
+    libaries.
+  * Change the /command handler using the API.
+    The commands are a bit different and some are new.
+  * Warnings are no longer displayed at level "error".
+  * Report skipped messages in conversation window and not just in
+    the debug log.
+  * Some memory handling improvements.
+  * Update the libomemo submodule to version 0.7.1.
+  * Update the axc submodule to version 0.3.4.
+- Remove purple-lurch-libomemo-fix-dino-compat.patch,
+  libomemo-27.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Sun Nov 29 18:57:41 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add libomemo-27.patch to fix encryption
