@@ -1,0 +1,207 @@
+-------------------------------------------------------------------
+Tue Feb  2 13:37:38 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop python singlespec since thonny is an app, not a lib.
+- Add desktopfiles support
+
+-------------------------------------------------------------------
+Tue Feb  2 12:46:39 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix required python module
+
+-------------------------------------------------------------------
+Mon Jan 25 16:29:17 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Updated to version 3.3.3:
+  * Add MicroPython support for Raspberry Pi Pico 
+    (https://www.raspberrypi.org/blog/raspberry-pi-silicon-pico-now-on-sale/)
+  * Better support for MicroPython daily builds, #1545, #1553
+  * Automatically prepend relevant Anaconda directories to PATH. 
+    Fixes problem with importing Anaconda's numpy, #1522
+  * Make custom Python chooser see more interpreters, #1522
+  * Fix several spelling mistakes, by freddii, #1534
+  * Update toolbar buttons, when another editor gets selected, 
+    fixes wrong button states, #1536
+  * Catch errors when opening file in system app, #1526
+  * Fix internal error while using Outline View, #1543
+  * Fix truncated System Shell environment on macOS, #1529
+  * Add /usr/local/bin to the PATH of the back-end process if missing, #1131
+  * Fix error while parsing Pygame Zero error, #1535
+  * Fix MicroPython completion errors with jedi 0.18, #1560
+  * Add incomplete Korean language by Augene J. Pak, Fabianus.c, 
+    Suk-Hyung Hwang, YEON, $1531
+  * Add incomplete Albanian translation by Algent Albrahimi
+  * [Technical] Allow older Send2Trash (Fedora doesn't have version 1.5 of this)
+  * [Technical] Remove erroneous executable flags from some files
+- Changelog from skipped version 3.3.2:
+  * Fix the problem of missing docstrings, #1481
+  * Fix MicroPython management error after executing machine.reset(), #1492
+  * Add support for MicroPython raw paste mode (usable in MicroPython 1.14+), #1498
+  * Restore MicroPython raw mode as fallback, should fix problems with
+    M5Stick and W600, #1516
+  * Add syntax highlighting for non-decimal number literals and support
+    underscores, #1482 by Stefan Rothe
+  * Make sure all output from the program gets presented, #1504
+  * Interrupt current program when running a MicroPython script, #1512
+  * Add support for Jedi 0.18, #1497
+  * Fix arguments completions for jedi 0.16+, #1511
+  * Make micro:bit support a bit more robust, #1515
+  * Add Persian (Farsi) translation by Farshid Meidani
+  * Add Slovak translation by jose1711
+  * Add Armenian translation by Avag. sayan
+  * Update Italian and Chinese (TW) translations
+
+-------------------------------------------------------------------
+Thu Dec 24 18:05:49 UTC 2020 - malcolmlewis@opensuse.org
+
+- Updated to version 3.3.1:
+  * Allow installing MicroPython to micro:bit v2.
+  * Fix problem with MicroPython programs creating lot of output
+    very quickly, (gh#thonny/thonny#1419).
+  * Fix wrong message when saving to MP and device is busy,
+    (gh#thonny/thonny#1437).
+  * Bump Pyserial version from 3.5b1 to 3.5, fix problem with some
+    ESP devices, (gh#thonny/thonny#1443).
+  * Fix error when trying to download file from microbit,
+    (gh#thonny/thonny#1440).
+  * Don't assume anything about conf files in Pi theme,
+    (gh#thonny/thonny#1436).
+  * Fix error on reseting MicroPython device,
+    (gh#thonny/thonny#1442).
+  * Fix unwanted output from expession statements in MicroPython,
+    (gh#thonny/thonny#1441).
+  * Treat double-click in the remote file dialog differently from
+    double-click in the Files view, (gh#thonny/thonny#1432).
+  * Fix error when closing MP file dialog without name,
+    (gh#thonny/thonny#1431).
+  * Refactor "File => Rename" command (new label "Move / rename"
+    and you can't "rename" a file on MP device to a file on local
+    disc and vice versa), (gh#thonny/thonny#1446).
+  * Fix broken links in help pages, (gh#thonny/thonny#1447).
+  * Use THONNY_USER_DIR/temp for temp files. Fixes printing when
+    default browser is Snap Chrome, (gh#thonny/thonny#1435).
+  * Fix error when clicking on "Attributes" tab on Object Inspector
+    when no object is selected (MP) (gh#thonny/thonny#1450).
+  * Allow specifying DTR/RTS for serial connection (to avoid
+    restarting ESP on connect), (gh#thonny/thonny#1462).
+  * Open log window automatically if work dialog encounters error,
+    (gh#thonny/thonny#1466).
+  * Don't close work dialog automatically if log window is opened,
+    (gh#thonny/thonny#1465).
+  * Fix dummy MicroPython packages giving ugly errors,
+    (gh#thonny/thonny#1464).
+  * Fix crashes in Assistant view with Dracula theme,
+    (gh#thonny/thonny#1463).
+  * Work around Caps lock problem when binding command shortcuts,
+    (gh#thonny/thonny#1347).
+  * Translation updates.
+
+-------------------------------------------------------------------
+Thu Nov 19 22:47:54 UTC 2020 - malcolmlewis@opensuse.org
+
+- Updated to version 3.3.0:
+  * Removed automatic tabs => spaces conversion and its
+    confirmation dialog, (gh#thonny/thonny#599).
+  * Added command for replacing tabs with spaces,
+    (gh#thonny/thonny#1411).
+  * Added option for highlighting tabs (Tools => Options =>
+    Editor), (gh#thonny/thonny#1409).
+  * Added option for indenting with tabs (Tools => Options =>
+    Editor), (gh#thonny/thonny#599).
+  * Add an option to use Tk file dialogs instead of Zenity in
+    Linux, (gh#thonny/thonny#1404).
+  * Reduce max repr length for MicroPython (1000 instead of 5000).
+  * Forward https_proxy or http_proxy variable to pip,
+    (gh#thonny/thonny#535).
+  * Allow specifying environment variables for the UI process,
+    (gh#thonny/thonny#1421).
+  * Remove special support for Friendly-traceback,
+    (gh#thonny/thonny#1416).
+  * Use exclusive access when connecting to a MP device over a
+    serial port, (gh#thonny/thonny#1418).
+  * Make sure expression box for while/for test is located
+    properly, (gh#thonny/thonny#1134).
+  * In MicroPython backends only warn about failed epoch dectection
+    if sync or validation is required.
+  * Don't show ugly traceback in debug mode.
+  * Internal error while debugging exceptions,
+    (gh#thonny/thonny#1403).
+  * Automatically create Thonny user dir in remote machine,
+    (gh#thonny/thonny#1365).
+  * Fix MicroPython uploading/downloading when started from an
+    expanded dir, (gh#thonny/thonny#1398).
+  * Fix unrensponsive UI when MicroPython is printing in infinite
+    loop, (gh#thonny/thonny#1419).
+  * Fix ugly stacktrace, when MicroPython device is disconnected
+    during processing a command, (gh#thonny/thonny#1420).
+  * Translation updates and additions.
+
+-------------------------------------------------------------------
+Fri Apr  3 01:07:46 UTC 2020 - malcolmlewis@opensuse.org
+
+- Updated to version 3.2.7:
+  * TECHNICAL: Skip name hilighter tests for recent Jedi versions.
+
+-------------------------------------------------------------------
+Thu Feb  6 01:52:57 UTC 2020 - malcolmlewis@opensuse.org
+
+- Update to version 3.2.6:
+  * Make highlight names work with recent Jedi versions,
+    (gh#thonny/thonny#1035).
+  * Can't load files from MicroPython device (regression introduced
+    in 3.2.5), (gh#thonny/thonny#1043).
+  * Missing "Local files" label on save target selection dialog.
+- Changes from version 3.2.5:
+  * Python version in binary bundles upgraded from 3.7.5 to 3.7.6.
+  * MyPy checks are now enabled by default (Tools => Options =>
+    Assistant).
+  * New Pylint checks are enabled.
+  * Thonny can now display/copy/paste Unicode emojis with Python
+    3.7.6+ / 3.8.1+. Selection can be still wonky, Fixed by
+    (gh#python/cpython#16545), (gh#thonny/thonny#32).
+  * "Open System Shell" fails when no script is open,
+    (gh#thonny/thonny#815.
+  * Scrollbar in Help and Assistant acts funny,
+    (gh#thonny/thonny#973).
+  * Crash on startup when Shell gets text inserted too soon,
+    (gh#thonny/thonny#1019).
+  * Accept code completions without parent and full_name,
+    (gh#thonny/thonny#1023).
+  * Extra imports by Thonny's back-end make stdlib name shadowing
+    more troublesome, (gh#thonny/thonny#1025).
+  * Allow '+' in image data URI chars in Shell,
+    (gh#thonny/thonny#1026).
+  * Thonny now has preliminary support for Friendly Traceback,
+    (gh#thonny/thonny#1028).
+  * Allow larger images in shell (don't squeeze image URI-s),
+    (gh#thonny/thonny#401).
+  * Fallback to English, when configured language can't be loaded.
+  * Problem using esptool on PATH.
+- Changes from version 3.2.4:
+  * XXL bundle now includes also pandas.
+  * Make faster tracer show exceptions only with step_over and
+    step_into.
+  * Use traditional stack view by default in Simple mode,
+    (gh#thonny/thonny#1018).
+  * Improved performance for Faster debugger (proposed and
+    supported by Raspberry Pi).
+  * Fix stepping through lambdas with faster debugger,
+    (gh#thonny/thonny#975).
+  * Don't report certain exceptions in faster debugger,
+    (gh#thonny/thonny#977).
+  * Propose replacing tabs with spaces only in the editor (not in
+    debugger frames), (gh#thonny/thonny#983).
+  * Nicer debugger fails when run with breakpoints only in
+    secondary files, (gh#thonny/thonny#986).
+  * MicroPython autocomplete problems by adzierzanowski,
+    (gh#thonny/thonny#987).
+  * Wrong interpretation of MicroPython file timestamps,
+    (gh#thonny/thonny#1003).
+  * Avoid testing included MicroPython stubs,
+    (gh#thonny/thonny#1005).
+  * Translation updates and additions.
+
+-------------------------------------------------------------------
+Tue Nov 19 17:27:52 UTC 2019 - malcolmlewis@opensuse.org
+
+- Initial build at version 3.2.3.
