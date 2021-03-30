@@ -1,7 +1,7 @@
-Index: peazip-7.4.1.src/FreeDesktop_integration/peazip.desktop
+Index: peazip-7.7.1.src/FreeDesktop_integration/peazip.desktop
 ===================================================================
---- peazip-7.4.1.src.orig/FreeDesktop_integration/peazip.desktop
-+++ peazip-7.4.1.src/FreeDesktop_integration/peazip.desktop
+--- peazip-7.7.1.src.orig/FreeDesktop_integration/peazip.desktop
++++ peazip-7.7.1.src/FreeDesktop_integration/peazip.desktop
 @@ -1,13 +1,16 @@
  [Desktop Entry]
 -Version=1.0
@@ -26,10 +26,10 @@ Index: peazip-7.4.1.src/FreeDesktop_integration/peazip.desktop
 +Categories=Qt;KDE;Utility;System;Archiving;
 +X-KDE-StartupNotify=true
 +X-SuSE-translate=true
-Index: peazip-7.4.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipadd.desktop
+Index: peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipadd.desktop
 ===================================================================
---- peazip-7.4.1.src.orig/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipadd.desktop
-+++ peazip-7.4.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipadd.desktop
+--- peazip-7.7.1.src.orig/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipadd.desktop
++++ peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipadd.desktop
 @@ -2,6 +2,8 @@
  Exec=peazip -add2archive %F
  Icon=peazip
@@ -44,10 +44,10 @@ Index: peazip-7.4.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/serv
  Icon=peazip
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-7.4.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipext.desktop
+Index: peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipext.desktop
 ===================================================================
---- peazip-7.4.1.src.orig/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipext.desktop
-+++ peazip-7.4.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipext.desktop
+--- peazip-7.7.1.src.orig/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipext.desktop
++++ peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipext.desktop
 @@ -1,7 +1,9 @@
  [Desktop Action peazipext]
  Exec=peazip -ext2full %F
@@ -64,10 +64,10 @@ Index: peazip-7.4.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/serv
  Name[en_US]=peazipext
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-7.4.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipextfolder.desktop
+Index: peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipextfolder.desktop
 ===================================================================
---- peazip-7.4.1.src.orig/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipextfolder.desktop
-+++ peazip-7.4.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipextfolder.desktop
+--- peazip-7.7.1.src.orig/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipextfolder.desktop
++++ peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipextfolder.desktop
 @@ -1,7 +1,9 @@
  [Desktop Action peazipextfolder]
  Exec=peazip -ext2folder %F
@@ -84,10 +84,10 @@ Index: peazip-7.4.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/serv
  Name[en_US]=peazipextfolder
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-7.4.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipexthere.desktop
+Index: peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipexthere.desktop
 ===================================================================
---- peazip-7.4.1.src.orig/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipexthere.desktop
-+++ peazip-7.4.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipexthere.desktop
+--- peazip-7.7.1.src.orig/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipexthere.desktop
++++ peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipexthere.desktop
 @@ -1,7 +1,9 @@
  [Desktop Action peazipexthere]
  Exec=peazip -ext2here %F
@@ -104,10 +104,10 @@ Index: peazip-7.4.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/serv
  Name[en_US]=peazipexthere
  ServiceTypes=KonqPopupMenu/Plugin,all/all
 +X-SuSE-translate=true
-Index: peazip-7.4.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipopen.desktop
+Index: peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipopen.desktop
 ===================================================================
---- peazip-7.4.1.src.orig/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipopen.desktop
-+++ peazip-7.4.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipopen.desktop
+--- peazip-7.7.1.src.orig/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipopen.desktop
++++ peazip-7.7.1.src/FreeDesktop_integration/kde4-dolphin/usr/share/kde4/services/ServiceMenus/peazipopen.desktop
 @@ -2,6 +2,8 @@
  Exec=peazip -ext2browse %F
  Icon=peazip

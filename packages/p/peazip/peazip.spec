@@ -17,9 +17,9 @@
 
 
 %define         _peazipinstalldir %{_libdir}/peazip
-%define         _helpver 7.6.0
+%define         _helpver 7.8.0
 Name:           peazip
-Version:        7.6.0
+Version:        7.8.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -29,8 +29,6 @@ Source0:        https://sourceforge.net/projects/peazip/files/%{version}/peazip-
 Source1:        altconf.txt
 Source2:        https://sourceforge.net/projects/peazip/files/%{_helpver}/peazip_help.pdf#/peazip_help-%{_helpver}.pdf
 Patch0:         peazip-desktop.patch
-# PATCH-FIX-UPSTREAM: https://sourceforge.net/p/peazip/tickets/492/
-Patch1:         peazip-fix_aarch64.patch
 # PATCH-FIX-OPENSUSE peazip-build_PIE.patch -- aloisio@gmx.com
 Patch2:         peazip-build_PIE.patch
 # PATCH-FIX-OPENSUSE peazip-help_path.patch set correct path for the pdf guide -- aloisio@gmx.com

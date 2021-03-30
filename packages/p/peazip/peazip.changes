@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Wed Mar 24 13:46:55 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.8.0
+  * BACKEND
+    - PEA 0.77
+  * CODE
+    - (Linux) Alternative Qt5 build is now available as portable
+      package
+    - If a setting requires to restart PeaZip (localization, system
+      integration, change work folder) it is told in the hint text
+      for the item
+    - Various fixes and improvements
+  * FILE MANAGER
+    - (Windows) Drag&drop now allows to drag-extract files directly
+      to other applications, previoulsy it was possible to 
+      drag-extract to the system only - 2021 03 22 fix for Windows
+      32 bit version, sources and legacy Windows 32 bit packages
+      were republished and online hash values were updated
+    - Righclicking an element on the breadcrumb it is now possible
+      to use context menu functions on it - e.g. display properties,
+      open the path in system's file explorer, open command prompt
+      here, etc
+  * EXTRACTION and ARCHIVING
+    - Interactive extraction option (checked by default on Windows)
+      enables two-step extraction for all archive types supported
+      through 7z/p7zip: content is extracted to a fresh folder and
+      then moved to actual output destination with standard
+      system's calls.
+      - When interactive extraction is used, all unneeded levels of
+        directory nesting are removed, and conflicts with existing
+        files are prompted interactively to user.
+      - Unchecking the option, it is possible to perform 
+        single-step extraction as in previous versions, with policy
+        based directives to resolve naming conflicts without
+        needing user interaction (recommended when creating 
+        scripts).
+    - It is now possible to set custom extensions for "Extract 
+      everything for" in Options > Settings > Archive manager,
+      Extract group
+    - It is now possible to replace archive extension with a custom
+      extension from archiving screen, Advanced tab
+      - In res/presets/custom directory are provided some pre built
+        compression settings for comic book archive formats which
+        uses the new custom extension feature
+    - Priority for archiving and extraction tasks can now be
+      permanently set from Options > Settings > General, Tasks
+      priority
+    - (Windows 7+) Global progress is shown in application's icon
+      in taskbar
+
+-------------------------------------------------------------------
+Mon Mar 15 15:09:55 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.7.1
+  * BACKEND 
+    - Pea 0.76
+    - UPX was removed from Windows packages due the amount of false
+      positives triggered in (low quality) security software; it is
+      possible to add UPX support installing Additional Formats
+      Plugin, or downloading and copying the most up to date UPX 
+      executable in res\upx subfolder in PeaZip's directory
+  * CODE
+    - Command line -ext2simple and -ext2simplefolder can now accept
+      also empthy output path (extract to archive's path)
+      - ext2simplefolder as -ext2folder (switch -*folder) apply 
+        smart folder policy, while -ext2simple and -ext2here
+        ignores it
+    - Updated web search (Ctrl+Alt+F3)
+    - Updated Windows installers to work with recent versions of 
+      InnoSetup (.exe) and MSIWrapper (.msi)
+    - Various fixes
+      - CPUAARCH64 now disable Intel ASM to allow build on ARM64 
+        architectures
+      - fixed adding multiple .enc suffix
+      - fixed various issues with non-English localizations
+      - fixed issue with preview for special file types (bat, exe,
+        html) resulting in extraction instead of preview
+      - improved handling special characters in password for arc, 
+        rar, and pea formats
+      - (Linux) improved handling of special characters in
+        filenames
+      - (Linux) fixed issues with smart folder option
+  * EXTRACTION and ARCHIVING
+    - PEA compression and decompression can now be cancelled from
+      the GUI 
+- Drop peazip-fix_aarch64.patch because now in upstream.
+
+-------------------------------------------------------------------
+Sat Feb  6 14:01:57 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.7.0
+  * BACKEND
+    - (Linux) Can now optionally use system p7zip, if installed,
+      from Options > Settings, General tab requires p7zip-full 
+      (or equivalent package) to be installed in order to have a 7z
+      binary compatible with PeaZip's requirements in terms of 
+      syntax and features
+  * CODE
+    - Various fixes
+  * FILE MANAGER
+    - Added shortcut Ctrl+W to close window, consistently with 
+      conventional use in WinRar and Windows file explorer
+    - Improved control over temporary work directory, used when the
+      archive is created or edited, during drag and drop extraction
+      (Windows), and content preview
+      - Output: faster as no copy to destination is needed, more 
+        secure as no content is unpacked/decrypted outside of the 
+        intended destination path
+      - Output, preview in user's temp
+      - User's temp (as conventionally used by most applications):
+        in case of failure for any reason, user's temp folder is 
+        the single place to look for orphaned data and can be 
+        safely cleaned
+      - None, user's temp if needed: allows exceptions to perform
+        drag and drop extraction and preview using user's temp
+      - None: no exceptions allowed, no temporary work data is saved,
+        this does not allow to perform neither drag and drop 
+        extraction nor preview, as archive content can't be
+        transparently unpacked and passed to system's drag & drop 
+        handler, nor to the associated application
+  * EXTRACTION and ARCHIVING
+    - Added read support to .appxbundle format
+
+-------------------------------------------------------------------
 Fri Jan 15 09:10:07 UTC 2021 - Max Lin <mlin@suse.com>
 
 - BuildReqruies p7zip-full on Leap version greater than 15.1
