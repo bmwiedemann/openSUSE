@@ -1,0 +1,8 @@
+<package name="python-kiss-headers" project="openSUSE:Factory">
+  <title></title>
+  <description>Python package for object oriented headers, HTTP/1.1 style. Parser and
+serializer for http headers.
+  </description>
+  <devel project="devel:languages:python" package="python-kiss-headers"/>
+  <url>https://www.kiss-headers.tech</url>
+</package>
