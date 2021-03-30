@@ -23,4 +23,22 @@
     <comment>- NO reason to restrict to pytest4, tests pass with pytest5</comment>
     <requestid>812789</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>66eeef0dace5a555dbe7ce67dd191730</srcmd5>
+    <version>0.10.0</version>
+    <time>1617130578</time>
+    <user>RBrownSUSE</user>
+    <comment>- Skip python36 because python-numpy does not support it.
+- Remove h5netcdf-pr82-h5py-strings.patch, fixed.
+- Update to version 0.10.0.
+  * Replaced ``decode_strings`` with ``decode_vlen_strings``.
+- Update to version 0.9.0.
+  * Support for ``decode_strings``, to restore old behavior with h5py 3.
+- Add h5netcdf-pr82-h5py-strings.patch for compatibility with
+  h5py &gt;= 3.0 gh#h5netcdf/h5netcdf#82
+- Update to 0.8.1
+  * Fix h5py deprecation warning in test suite.
+</comment>
+    <requestid>873743</requestid>
+  </revision>
 </revisionlist>

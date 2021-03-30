@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Feb 19 08:41:54 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Skip python36 because python-numpy does not support it.
+- Remove h5netcdf-pr82-h5py-strings.patch, fixed.
+- Update to version 0.10.0.
+  * Replaced ``decode_strings`` with ``decode_vlen_strings``.
+- Update to version 0.9.0.
+  * Support for ``decode_strings``, to restore old behavior with h5py 3.
+
+-------------------------------------------------------------------
+Fri Jan 29 19:09:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add h5netcdf-pr82-h5py-strings.patch for compatibility with
+  h5py >= 3.0 gh#h5netcdf/h5netcdf#82
+
+-------------------------------------------------------------------
+Sun Jan  3 22:43:58 UTC 2021 - Jason Craig <os-dev@jacraig.com>
+
+- Update to 0.8.1
+  * Fix h5py deprecation warning in test suite.
+
+-------------------------------------------------------------------
 Tue Jun  9 07:20:01 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - NO reason to restrict to pytest4, tests pass with pytest5
