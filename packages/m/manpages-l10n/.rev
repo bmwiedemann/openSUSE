@@ -20,4 +20,31 @@ This will obsolete current packages man-pages-fr &amp; man-pages-fr-extra (to be
     or any future release.</comment>
     <requestid>842000</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f00ee8cf4c318026fcfa0ebc2e8eeca2</srcmd5>
+    <version>4.9.3</version>
+    <time>1617130847</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 4.9.3:
+  * Final release for Debian Bullseye.
+  * Updated many translations.
+
+- Update to version 4.9.2:
+  * Remove man pages of procps/procps-ng, now maintained upstream;
+    only Debian Buster keeps the files for possible backports
+    (boo#1182517).
+  * Updated and added many translations.
+
+- Update to version 4.9.1:
+  * Updated and added many translations.
+
+- Simplify macro definitions.
+
+- Update to version 4.9.0~pre1:
+  * Updated and added many translations.
+  * Enable Italian, Spanish and Macedonian.
+  * Still skip Czech, it's in a very early state.
+- Cosmetic changes in comments and in the distribution_id macro.</comment>
+    <requestid>878082</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package manpages-l10n
 #
-# Copyright (c) 2020 Antoine Belvire <antoine.belvire@opensuse.org>
+# Copyright (c) 2021 Antoine Belvire <antoine.belvire@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           manpages-l10n
-Version:        4.2.0
+Version:        4.9.3
 Release:        0
 Summary:        Translation of man pages
 License:        GPL-3.0-only
@@ -31,13 +32,16 @@ BuildArch:      noarch
 This package provides translations of man pages in multiple languages.
 
 %man_lang_package de German
+%man_lang_package es Spanish
+%man_lang_package it Italian
+%man_lang_package mk Macedonian
 %man_lang_package nl Dutch
 %man_lang_package pl Polish
 %man_lang_package pt_BR %{quote:Brazilian Portuguese}
 %man_lang_package ro Romanian
 
-# French translations used to be splitted into a main and an extra package.
-# Let's obsolete the extra package.
+# French translations used to be splitted into a main and an extra package on openSUSE.
+# Let's obsolete the extra package until openSUSE Leap 15.2 EOL (Dec. 2021).
 %man_lang_package fr French -o %{quote:man-pages-fr-extra <= 20151231}
 
 %prep
