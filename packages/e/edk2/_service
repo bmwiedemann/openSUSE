@@ -1,0 +1,28 @@
+<services>
+  <service name="set_version" mode="disabled" />
+
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/tianocore/edk2-platforms</param>
+    <param name="scm">git</param>
+    <param name="filename">edk2-platforms</param>
+    <param name="versionformat">0.0~%ci~%h</param>
+    <param name="revision">8f088a1224ede7f3d1dd97d79399eac3fc40af8b</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*edk2-platforms*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/tianocore/edk2-non-osi</param>
+    <param name="scm">git</param>
+    <param name="filename">edk2-non-osi</param>
+    <param name="versionformat">0.0~%ci~%h</param>
+    <param name="revision">659382a8038dccb802e642800b5efa2ac24c67ed</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*edk2-non-osi*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
+
