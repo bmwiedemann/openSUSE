@@ -1,7 +1,7 @@
 #
 # spec file for package python-traitsui
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         X_display         ":98"
 %define skip_python2 1
 Name:           python-traitsui
-Version:        7.0.1
+Version:        7.1.1
 Release:        0
 Summary:        Traits-capable windowing framework
 # Source code is under BSD but images are under different licenses
@@ -30,13 +29,12 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/enthought/traitsui
 Source:         https://files.pythonhosted.org/packages/source/t/traitsui/traitsui-%{version}.tar.gz
 BuildRequires:  %{python_module configobj}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pyface >= 6.0.0}
+BuildRequires:  %{python_module pyface >= 7.1.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traits >= 6}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pyface >= 6.0.0
+Requires:       python-pyface >= 7.1.0
 Requires:       python-traits >= 6
 Recommends:     python-configobj
 Recommends:     python-qt5
@@ -44,11 +42,12 @@ Recommends:     python-wxWidgets
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module wxPython >= 4}
 BuildRequires:  Mesa-dri
-BuildRequires:  xorg-x11-server
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 # /SECTION
 %python_subpackages
 
@@ -69,31 +68,20 @@ Part of the Enthought Tool Suite (ETS).
 
 %install
 %python_install
-%{python_expand %fdupes %{buildroot}%{$python_sitelib}
-$python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/traitsui/wx/extra/
-$python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/traitsui/wx/extra/
-$python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/traitsui/wx/extra/windows/
-$python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/traitsui/wx/extra/windows/
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+ln -sf examples/tutorials/doc_exmaples/default.css examples/tutorials/traitsui_4.0/default.css
 
 %check
 export LANG=en_US.UTF-8
-export DISPLAY=%{X_display}
-Xvfb %{X_display} >& Xvfb.log &
-trap "kill $! || true" EXIT
-sleep 10
-
-%{python_expand mkdir tester_%{$python_bin_suffix}
-pushd tester_%{$python_bin_suffix}
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
-pytest-%{$python_bin_suffix} -v ../traitsui/tests -k 'not (wx or test_splitter_prefs_are_restored)'
-popd
-}
+# different splitters?
+donttest="test_splitter_prefs_are_restored"
+# segfault
+donttest+=" or test_html_editor"
+%pytest traitsui/tests -k "not ($donttest)"
 
 %files %{python_files}
-%doc CHANGES.txt README.rst TODO.txt
-%doc docs/README.rst docs/traits*.*
+%doc README.rst
+%doc docs/traits*.*
 %doc examples/
 %license LICENSE.txt image_LICENSE*.txt
 %{python_sitelib}/traitsui/
