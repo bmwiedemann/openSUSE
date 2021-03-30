@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Sun Mar 07 00:11:54 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version nightly1696:
+  * bootmanager: fix memory leaks when loading save states
+
+-------------------------------------------------------------------
+Fri Feb 26 10:08:58 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version nightly1695:
+  * Fix destructor order in rasterizer cache (#5725)
+
+-------------------------------------------------------------------
+Fri Feb 12 15:07:41 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version nightly1692:
+  * fix recycling custom textures
+  * remove semicolon
+  * gl_rasterizer_cache: don't place null textures in the recycler
+  * gl_rasterizer_cache: Recycle host textures Allocating new textures has fairly high driver overhead. We can avoid some of this by reusing the textures from destroyed surfaces since the game will probably create more textures with the same dimensions and format.
+  * gl_rasterizer_cache: Remove all fully invalid surfaces from the cache Some games (e.g. Pilotwings Resort) create many surfaces that are invalidated quickly but were never removed. This occasionally lead to large lag spikes due to high lookup times and other data structure management overhead.
+
+-------------------------------------------------------------------
+Thu Feb 11 22:04:14 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version nightly1691:
+  * string_util: Remove MSVC workaround for converting between UTF8/UTF16
+  * Avoid leaking fences during re-presentation (#5713)
+  * configure_input: set modifier_scale undonditionally when restoring default
+  * configure_input: fix modifier scale saving
+  * externals: Update Xbyak to 5.96
+  * xbyak_abi: Prefer returning a struct to using out parameters in ABI_CalculateFrameSize
+  * xbyak_abi: Register indexes should be unsigned
+
+-------------------------------------------------------------------
+Mon Feb 08 00:57:04 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version nightly1687:
+  * Fix macos build (#5703)
+
+-------------------------------------------------------------------
+Sun Feb 07 00:34:11 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version nightly1686:
+  * core: Make use of [[nodiscard]] with the System class
+  * citra_qt: Migrate off of setMargin() to setContentsMargins()
+  * citra_qt/main: Save settings when starting guest
+  * Update translations (2021-01-01)
+  * core: Remove unnecessary enum casts in log calls
+  * video_core: Remove unnecessary enum class casting in logging messages
+
+-------------------------------------------------------------------
+Sun Jan 31 00:09:17 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version nightly1680:
+  * Implement APT command 0x0103 (#5478)
+
+-------------------------------------------------------------------
+Sun Jan 10 00:30:30 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version nightly1679:
+  * Add 3D slider value to the HID shared page (#5676)
+  * CMakeFiles: Update json to 3.9.0
+  * Delete the old log file before rotating (#5675)
+  * Look at direction of analog axis travel instead of instantaneous sample (#5509)
+  * general: Fix various spelling errors
+
+-------------------------------------------------------------------
+Sun Jan 03 00:28:00 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version nightly1674:
+  * Fix the old log file to work with the log parser.
+  * zstd: define include_directories for build interface only
+  * Automatic Controller Binding (#5100)
+  * zstd: set include directory directly
+  * Rotate previous log file to '.old' if it exists
+  * Update zstd to v1.4.8
+  * citra_qt/cheats: Make window resizable and remove help hint
+
+-------------------------------------------------------------------
+Thu Dec 31 20:20:52 UTC 2020 - pousaduarte@gmail.com
+
+- Update to version nightly1669:
+  * Merge generic part of Android microphone changes (#5624)
+  * Update deps.sh (#5665)
+  * Revert #5530 "Port yuzu-emu/yuzu#4539"
+  * Update Gradle
+  * Update Bitrise build stages
+  * Merge ARM64 Dynarmic (#5620)
+  * Use alternate-form formatting for floats after `fmt` 7.1.2 update (#5654)
+  * game_list_p: Resolve deprecated usage of QVariant operator<
+  *  udp/client: Take std::function by const reference with TestCommunication()
+  * Revert ENABLE_FDK to dependent option
+  * Remove pessimistic sanity check
+  * Enable fdk decoder in flatpak version
+  * change ENABLE_FDK to option
+  * common: Silence two discarded result warnings
+
+-------------------------------------------------------------------
 Tue Dec 08 13:15:44 UTC 2020 - pousaduarte@gmail.com
 
 - Update to version nightly1659:
