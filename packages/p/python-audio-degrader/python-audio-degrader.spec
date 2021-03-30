@@ -1,7 +1,7 @@
 #
 # spec file for package python-audio-degrader
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,27 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-audio-degrader
-Version:        1.2.3
+Version:        1.3.1
 Release:        0
 Summary:        Tool to introduce controlled degradations to audio
 License:        GPL-3.0-only
-URL:            https://github.com/EliosMolina/audio_degrader
-Source:         https://files.pythonhosted.org/packages/source/a/audio_degrader/audio_degrader-%{version}.tar.gz
+URL:            https://github.com/emilio-molina/audio_degrader
+Source:         https://files.pythonhosted.org/packages/source/a/audio-degrader/audio_degrader-%{version}.tar.gz
+BuildRequires:  %{python_module SoundFile >= 0.10.3.post1}
+BuildRequires:  %{python_module scipy >= 1.4.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sox}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-librosa >= 0.6.0
+Requires:       python-SoundFile >= 0.10.3.post1
+Requires:       python-scipy
+Requires:       python-sox
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module librosa >= 0.6.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -43,7 +48,7 @@ Audio degradation toolbox in python. It is used to apply controlled
 degradations to audio.
 
 %prep
-%setup -q -n audio_degrader-%{version}
+%autosetup -p1 -n audio_degrader-%{version}
 
 %build
 %python_build
@@ -53,11 +58,8 @@ degradations to audio.
 %python_clone -a %{buildroot}%{_bindir}/audio_degrader
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# Tests are not in sdist and there is no github tag for the latest release
-# See https://github.com/emilio-molina/audio_degrader/pull/32
-# and https://github.com/emilio-molina/audio_degrader/issues/33
-# %%check
-# %%pytest
+%check
+%pytest
 
 %post
 %python_install_alternative audio_degrader
@@ -69,6 +71,7 @@ degradations to audio.
 %license LICENSE.txt
 %doc README.md
 %python_alternative %{_bindir}/audio_degrader
-%{python_sitelib}/*
+%{python_sitelib}/audio_degrader
+%{python_sitelib}/audio_degrader-%{version}*-info
 
 %changelog
