@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  9 16:02:00 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.2
+  * Perform a font id validation
+  * Add entries to the mdi charmap to be supported by Spyder
+    <= 4.1.5 (1.0.1)
+  * Update Material design icons to 5.4.55 (1.0.0)
+  * Drop Python 2 support (1.0.0)
+  * Fix deprecation warnings  due to invalid escape sequences
+    (0.7.3)
+- Use pytest-xvfb -- much more stable than the xvfb-run in sequence
+  for each python flavor
+
+-------------------------------------------------------------------
 Tue Jul 28 05:48:08 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.7.2:

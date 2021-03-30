@@ -1,7 +1,7 @@
 #
 # spec file for package python-QtAwesome
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-QtAwesome
-Version:        0.7.2
+Version:        1.0.2
 Release:        0
 Summary:        FontAwesome icons in PyQt and PySide applications
 License:        MIT
@@ -26,14 +27,14 @@ URL:            https://github.com/spyder-ide/qtawesome
 Source:         https://files.pythonhosted.org/packages/source/Q/QtAwesome/QtAwesome-%{version}.tar.gz
 BuildRequires:  %{python_module QtPy}
 BuildRequires:  %{python_module pytest-qt}
+BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
 Requires:       python-QtPy
-Requires:       python-six
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -48,6 +49,7 @@ library by Rick Blommers.
 
 %prep
 %setup -q -n QtAwesome-%{version}
+dos2unix CHANGELOG.md
 
 %build
 %python_build
@@ -58,7 +60,7 @@ library by Rick Blommers.
 %python_clone -a %{buildroot}%{_bindir}/qta-browser
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} xvfb-run py.test-%{$python_bin_suffix} -v qtawesome/tests
+%pytest -v qtawesome/tests
 
 %post
 %python_install_alternative qta-browser

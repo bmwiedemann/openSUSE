@@ -86,4 +86,12 @@
 - Add update-alternatives for new qta-browser binary</comment>
     <requestid>823051</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bb6601ae8b699e9c06ef5d7baa808ca1</srcmd5>
+    <version>1.0.2</version>
+    <time>1617130969</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>870784</requestid>
+  </revision>
 </revisionlist>
