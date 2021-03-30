@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/terraform-providers/terraform-provider-aws</param>
+              <param name="changesrevision">5bb0ab125c011351ed2ff7b3475b974e157943a2</param></service></servicedata>
