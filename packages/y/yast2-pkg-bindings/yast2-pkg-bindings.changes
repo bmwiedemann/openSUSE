@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 12 09:39:15 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added missing runtime dependencies ("ip" from iproute2
+  is used for network status detection) (bsc#1183439)
+- 4.3.10
+
+-------------------------------------------------------------------
+Thu Mar 11 09:47:26 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Handle properly expansion of invalid url (bsc#1183195)
+- 4.3.9
+
+-------------------------------------------------------------------
 Thu Jan 28 12:50:29 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Log more details about the newly added repositories
