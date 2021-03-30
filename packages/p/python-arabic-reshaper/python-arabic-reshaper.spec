@@ -1,7 +1,7 @@
 #
 # spec file for package python-arabic-reshaper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-arabic-reshaper
-Version:        2.0.15
+Version:        2.1.1
 Release:        0
 Summary:        Python module for formatting Arabic sentences
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/mpcabd/python-arabic-reshaper/
-Source:         https://github.com/mpcabd/python-arabic-reshaper/archive/v%{version}.tar.gz
+Source:         https://github.com/mpcabd/python-arabic-reshaper/archive/v%{version}.tar.gz#/arabic_reshaper-%{version}.tar.gz
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
