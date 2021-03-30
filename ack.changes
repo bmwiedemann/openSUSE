@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 17 19:01:46 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix doc symlink issue
+- ack 3.5.0:
+  * Reworked the option parsing to run correctly with Getopt::Long
+    2.38.
+  * Added support for the Elm language. (GH#316)
+  * Added support for the Purescript language. (GH#317)
+  * Added support for the Bazel build tool. (GH#327)
+
+-------------------------------------------------------------------
 Mon Jul  6 19:39:51 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ack 3.4.0:

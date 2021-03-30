@@ -24,7 +24,7 @@
 %endif
 %{!?perl_make_install:  %global perl_make_install make DESTDIR=%{buildroot} install_vendor}
 Name:           ack
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        Grep-Like Text Finder
 License:        Artistic-2.0
@@ -84,18 +84,12 @@ rm -rf "%{buildroot}%{perl_vendorarch}/auto/ack"
 
 rm -f "%{buildroot}%{_localstatedir}/adm/perl-modules/ack"
 
-install -d rpmdoc_ack
-for f in Changes README.md LICENSE.md; do
-    ln -s ../ack/"$f" rpmdoc_ack/"$f"
-done
-
 %check
 %if %{run_tests}
 make test %{?_smp_mflags}
 %endif
 
 %files
-%doc rpmdoc_ack/*
 %{_bindir}/ack
 %{_mandir}/man1/ack.1%{?ext_man}
 
