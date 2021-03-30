@@ -1,7 +1,7 @@
 #
 # spec file for package mysql-workbench
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define edition community
 Name:           mysql-workbench
-Version:        8.0.19
+Version:        8.0.23
 Release:        0
 Summary:        A MySQL visual database modeling, administration and querying tool
 License:        GPL-2.0-only AND GPL-2.0-or-later
@@ -54,6 +54,8 @@ Patch22:        mysql-workbench-proj-ldconfig.patch
 Patch23:        mysql-workbench-antlr4.patch
 # PATCH-FIX-OPENSUSE drop unused glXQueryVersion call
 Patch24:        mysql-workbench-unused-glx-call.patch
+# PATCH-FIX-UPSTREAM change libssh header to find version
+Patch26:        mysql-workbench-ssh.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  ant
 BuildRequires:  antlr4-tool
@@ -74,7 +76,6 @@ BuildRequires:  libsigc++2-devel
 BuildRequires:  libtool
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
 BuildRequires:  rapidjson-devel
 BuildRequires:  swig
 BuildRequires:  tinyxml-devel
@@ -94,7 +95,7 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(proj)
-BuildRequires:  pkgconfig(python)
+BuildRequires:  pkgconfig(python3) >= 3.7
 BuildRequires:  pkgconfig(sigc++-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(uuid)
@@ -140,6 +141,7 @@ This is the %{edition} build.
 %build
 export CFLAGS="%{optflags}"
 %define __builder ninja
+%define __builddir obs-build
 # build will fail if -Werror is used on recent complires
 sed -i "s|-Werror||g" CMakeLists.txt
 # fix building on Leap

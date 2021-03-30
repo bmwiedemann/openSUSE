@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Jan 23 13:29:31 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to 8.0.23
+  * release notes:
+    https://dev.mysql.com/doc/relnotes/workbench/en/news-8-0-23.html#workbench-8-0-23-feature
+- Changed python to 3.7+
+- Fixed upstream
+  * removed mysql-workbench-placeholders.patch
+
+-------------------------------------------------------------------
+Sat Jan  2 11:31:52 UTC 2021 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to 8.0.22
+  * release notes (no notes for 8.0.20)
+    https://dev.mysql.com/doc/relnotes/workbench/en/news-8-0-21.html
+    https://dev.mysql.com/doc/relnotes/workbench/en/news-8-0-22.html
+- Moved build to other directory (conflict with existing cmake,
+  but existing build directory has modules)
+- Updated patch due to code changes
+  * updated mysql-workbench-mariadb.patch
+- Fixed boost placeholders namespace
+  * added mysql-workbench-placeholders.patch
+- Fixed change in libshh version header
+  * added mysql-workbench-ssh.patch
+
+-------------------------------------------------------------------
 Fri May  1 08:31:21 UTC 2020 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - Updated to 8.0.19

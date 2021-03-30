@@ -63,10 +63,20 @@ diff -uNr mysql-workbench-community-8.0.19-org/plugins/migration/copytable/copyt
        case MYSQL_TYPE_TYPED_ARRAY: /* Used only for replication. */
  #endif
          // TODO: implement handling
-@@ -2270,6 +2270,8 @@
+@@ -2290,7 +2290,7 @@
                                                       *(*_row_buffer)[col_index].length);
          _bulk_insert_record.append("')");
          break;
+-#if MYSQL_VERSION_ID > 80021
++#if MYSQL_VERSION_ID > 80021 && !defined(MARIADB_BASE_VERSION)
+       case MYSQL_TYPE_INVALID:
+         // TODO: added to fix the build. Need to check how to handle this.
+         break;
+@@ -2298,7 +2298,8 @@
+         // TODO: added to fix the build. Need to check how to handle this. In the current version this is just a placeholder.
+         break;
+ #endif
+-      
 +      case MAX_NO_FIELD_TYPES:
 +        break;
      }
