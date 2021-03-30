@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Fri Jan 29 19:18:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- initial specfile for version 0.5.1
+- replaces python-fastTSNE
+- The pytest_arch macro needs the "Cepl-Strangelove-Parameter"
+  (= specify --import-mode)
