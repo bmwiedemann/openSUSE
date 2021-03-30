@@ -1,7 +1,7 @@
 #
 # spec file for package python-sunpy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,59 +18,79 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+# Astropy, SciPy, NumPy require python >= 3.7
+%define         skip_python36 1
 Name:           python-sunpy
-Version:        1.1.0
+Version:        2.0.7
 Release:        0
 Summary:        SunPy: Python for Solar Physics
 License:        BSD-2-Clause AND BSD-3-Clause AND Apache-2.0 AND MIT
 URL:            https://github.com/sunpy/sunpy
 Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{version}.tar.gz
 Source100:      python-sunpy-rpmlintrc
-# PATCH-FIX-UPSTREAM fix_importlib_py_ver.patch -- https://github.com/sunpy/sunpy/pull/3683
-Patch0:         fix_importlib_py_ver.patch
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module asdf}
-BuildRequires:  %{python_module astropy >= 1.0.0}
-BuildRequires:  %{python_module astropy-helpers >= 1.0.0}
+BuildRequires:  %{python_module astropy >= 3.2}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module drms}
-BuildRequires:  %{python_module importlib_resources}
-BuildRequires:  %{python_module matplotlib >= 1.1}
-BuildRequires:  %{python_module numpy-devel > 1.7.1}
-BuildRequires:  %{python_module pandas >= 0.12.0}
-BuildRequires:  %{python_module parfive}
+BuildRequires:  %{python_module extension-helpers}
+BuildRequires:  %{python_module importlib_metadata}
+BuildRequires:  %{python_module matplotlib >= 2.2.2}
+BuildRequires:  %{python_module numpy-devel > 1.15.0}
+BuildRequires:  %{python_module pandas >= 0.23.0}
+BuildRequires:  %{python_module parfive >= 1.1.0}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scikit-image}
-BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module scipy >= 1.0.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module suds-jurko}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aioftp
-Requires:       python-astropy >= 1.0.0
-Requires:       python-importlib_resources
-Requires:       python-matplotlib >= 1.1
-Requires:       python-numpy > 1.7.1
+Requires:       python-astropy >= 3.2
+Requires:       python-matplotlib >= 2.2.2
+Requires:       python-numpy > 1.15.0
 Requires:       python-pandas >= 0.12.0
-Requires:       python-parfive
-Requires:       python-scipy
+Requires:       python-scipy > 1.0.0
+%if 0%{?python_version_nodots} < 38
+Requires:       python-importlib_metadata
+%endif
+%if 0%{?python_version_nodots} >= 37
+Requires:       python-parfive >= 1.1.0
+%else
+Requires:       python-parfive >= 1.0.2
+%endif
+# SECTION extras_require:database
 Recommends:     python-SQLAlchemy
-Recommends:     python-asdf
+# /SECTION
+# SECTION extras_require:image
+Recommends:     python-scikit-image
+# /SECTION
+# SECTION extras_require:jpeg2000
+Recommends:     python-Glymur
+# /SECTION
+# SECTION extras_require:net
 Recommends:     python-beautifulsoup4
 Recommends:     python-drms
-Recommends:     python-glymur
-Recommends:     python-requests
-Recommends:     python-scikit-image
-Recommends:     python-suds-jurko
-Recommends:     python-wcsaxes >= 0.8
+Recommends:     python-python-dateutil
 Recommends:     python-zeep
+# /SECTION
+# SECTION extras_require:asdf
+Recommends:     python-asdf
+# /SECTION
+# SECTION extras_require:dask[array]
+Suggests:       python-dask-array
+# /SECTION
 # SECTION test requirements
+BuildRequires:  %{python_module Glymur}
 BuildRequires:  %{python_module aioftp}
+BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module pytest-astropy}
+BuildRequires:  %{python_module pytest-astropy >= 0.8}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-mpl}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module zeep}
 # /SECTION
@@ -86,14 +106,20 @@ chmod -x sunpy/data/test/cor1_20090615_000500_s4c1A.fts
 
 %build
 export CFLAGS="%{optflags}"
-%python_exec setup.py build --offline
+%python_build
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%{python_expand #
+find  %{buildroot}%{$python_sitearch} -name '*.h' -delete -print
+%fdupes %{buildroot}%{$python_sitearch}
+}
 
 %check
-%pytest
+mkdir testdir
+pushd testdir
+%pytest_arch --pyargs sunpy -ra -n auto
+popd
 
 %files %{python_files}
 %doc README.rst CHANGELOG.rst

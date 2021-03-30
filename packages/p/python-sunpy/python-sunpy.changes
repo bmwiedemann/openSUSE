@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Jan 23 10:38:14 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+- Update to 2.0.7
+  + Big changlog since 1.1.0. 
+    See https://docs.sunpy.org/en/stable/whatsnew/2.0.html
+    https://github.com/sunpy/sunpy/blob/master/CHANGELOG.rst
+    and https://github.com/sunpy/sunpy/releases
+  + Highlights from the 2.0 update:
+    * sunpy.net.Fido now supports tab completion of search 
+      attributes. This allows you to do a.Instrument.AIA, and 
+      print a.Instrument to see the list of known supported 
+      instruments.  
+    * sunpy.instr.aia.aiaprep has been deprecated in favor 
+      of the functionality in the aiapy 
+      <https://aiapy.readthedocs.io/>__ package.
+    * Various fixes and clarifications to pixel indexing in 
+      the sunpy.map subpackage.
+    * Standardization of specifying rectangles in coordinate 
+      space in the :meth:~sunpy.map.GenericMap.submap and 
+      :meth:~sunpy.map.GenericMap.draw_rectangle methods of 
+      ~sunpy.map.GenericMap.
+    * HTML quicklook previews of ~sunpy.map.GenericMap and 
+      ~sunpy.map.MapSequence instances are available with 
+      the new :meth:~sunpy.map.GenericMap.quicklook and 
+      :meth:~sunpy.map.MapSequence.quicklook methods, 
+      respectively. This is also the default display in 
+      Jupyter <https://jupyter.org/>__ notebooks.
+    * Integration of differential rotation into the 
+      sunpy.coordinates framework. This enables, amongst 
+      other things, the warping of images with the reproject 
+      <https://reproject.readthedocs.io/>__ package and the 
+      plotting of rotated grid lines with :ref:WCSAxes 
+      <astropy:wcsaxes>.
+- Drop fix_importlib_py_ver.patch merged upstream
+
+-------------------------------------------------------------------
 Mon Apr 20 09:09:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove python2 dependencies
