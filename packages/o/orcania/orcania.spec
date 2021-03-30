@@ -1,8 +1,8 @@
 #
 # spec file for package orcania
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 #
 
 
-%define sover 2_1
+%define sover 2_2
 Name:           orcania
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        MISC function Library
 License:        LGPL-2.1-or-later
@@ -69,6 +69,8 @@ make %{?_smp_mflags}
 %{_libdir}/liborcania.so.*
 
 %files devel
+%{_bindir}/base64url
+%{_mandir}/man1/base64url.1.gz
 %{_includedir}/orcania.h
 %{_includedir}/orcania-cfg.h
 %{_libdir}/liborcania.so

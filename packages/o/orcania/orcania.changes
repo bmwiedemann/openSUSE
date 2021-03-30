@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Feb 28 12:12:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.0
+  * Add command-line tool `base64url` which is similar to
+    GNU `base64` tool but for `base64url` format.
+
+-------------------------------------------------------------------
 Tue Jun 30 12:22:54 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.1
