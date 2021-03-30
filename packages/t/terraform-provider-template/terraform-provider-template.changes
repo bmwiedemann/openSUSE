@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jan 18 15:35:00 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.2.0:
+  * Update CHANGELOG.md
+  * link to archive issue
+  * archive provider
+  * restore hashibot behaviors after org transfer
+  * enable go modules and vendoring in travis
+  * website: update syntax as "vars" is not a block
+  * Cleanup after v2.1.2 release
+
+-------------------------------------------------------------------
 Wed Nov 11 12:02:57 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add symbolic link to comply with new filesystem layout for local provider copies

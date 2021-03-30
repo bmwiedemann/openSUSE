@@ -1,0 +1,20 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/terraform-providers/terraform-provider-template</param>
+    <param name="scm">git</param>
+    <param name="filename">terraform-provider-template</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">v2.2.0</param>
+    <param name="exclude">.git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">adrian.glaubitz@suse.com</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">terraform-provider-template</param>
+  </service>
+</services>
