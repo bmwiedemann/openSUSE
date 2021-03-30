@@ -17,6 +17,9 @@
 #
 
 
+%define _dwz_low_mem_die_limit  40000000
+%define _dwz_max_die_limit     200000000
+
 %bcond_without alembic
 %bcond_without collada
 %ifarch x86_64
@@ -65,7 +68,7 @@
 %define _suffix %(echo %{_version} | tr -d '.')
 
 Name:           blender
-Version:        2.91.0
+Version:        2.92.0
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -76,7 +79,9 @@ Source0:        https://download.blender.org/source/%{name}-%{version}.tar.xz
 Source1:        https://download.blender.org/source/%{name}-%{version}.tar.xz.md5sum
 Source2:        geeko.blend
 Source3:        geeko.README
-Source4:        %{name}-sample
+Source4:        geeko_example_scene.blend
+Source5:        geeko_example_scene.README
+Source6:        %{name}-sample
 Source8:        %{name}.appdata.xml
 Source9:        SUSE-NVIDIA-GPU-rendering.txt
 Source10:       SUSE-NVIDIA-OptiX-rendering.txt
@@ -85,8 +90,6 @@ Source99:       series
 Patch0:         make_python_3.6_compatible.patch
 # PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
 Patch1:         reproducible.patch
-# PATCH-FIX-OPENSUSE -- 32bit arch compatibility
-Patch2:         0001-Dont-hide-required-uint64-atomic-ops-when-available.patch
 #!BuildIgnore:  libGLwM1
 BuildRequires:  OpenColorIO-devel
 BuildRequires:  OpenEXR-devel
@@ -101,7 +104,7 @@ BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 %if %{with clang}
 BuildRequires:  clang
-%if 0%{?sle_version} == 150200 && 0%{?is_opensuse} 
+%if 0%{?sle_version} == 150200 && 0%{?is_opensuse}
 BuildRequires:  libomp9-devel
 %else
 BuildRequires:  libomp-devel
@@ -226,11 +229,12 @@ Requires:       python3-base >= %{py3version}
 Requires:       python3-numpy
 Requires:       python3-requests
 Requires:       python3-xml
-Requires(post):    hicolor-icon-theme
-Requires(postun):  hicolor-icon-theme
+Requires(post): hicolor-icon-theme
+Requires(postun):hicolor-icon-theme
 Provides:       %{name}-%{_suffix} = %{version}
 # current locale handling doesn't create locale(..) provides correctly
 Recommends:     %name-lang = %version
+Recommends:     %name-demo = %version
 
 %description
 Blender is a 3D modelling and rendering package. It is the in-house
@@ -264,6 +268,18 @@ These are the cycles headers that blender uses for rendering with
 specific gpus
 %endif
 
+%package demo
+Summary:        Some Blender demo files
+License:        CC-BY-4.0
+Group:          Productivity/Graphics/3D Editors
+BuildArch:      noarch
+
+%description demo
+Some Blender demo scenes
+
+geeko_example_scene: showing raytracing, rigging, animation, curves,
+                     shading, texturing, vertex groups and rendering.
+
 %lang_package
 
 %prep
@@ -276,10 +292,11 @@ popd
 %patch0 -p1
 %endif
 %patch1 -p1
-%patch2 -p1
 
 rm -rf extern/glew
 rm -rf extern/libopenjpeg
+# silence warning about missing includedir
+mkdir -p extern/glew/include
 for i in `grep -rl "/usr/bin/env python3"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
 
 %build
@@ -408,6 +425,7 @@ cmake ../ \
       -DPYTHON_INCLUDE_DIRS=%{_includedir}/python$pver \
       -DWITH_PYTHON_INSTALL_NUMPY=OFF \
       -DPYTHON_NUMPY_PATH:PATH=%{python3_sitearch} \
+      -DPYTHON_NUMPY_INCLUDE_DIRS:PATH=%{python3_sitearch}/numpy/core/include \
       -DWITH_QUADRIFLOW:BOOL=ON \
       -DWITH_SDL:BOOL=ON \
       -DWITH_TBB:BOOL=ON \
@@ -453,7 +471,9 @@ rmdir %{buildroot}%{_datadir}/doc/blender
 # install blender sample.
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_docdir}/%{name}/
-install -D -m 0755 %{SOURCE4} %{buildroot}%{_bindir}/
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/
+install -D -m 0644 %{SOURCE5} %{buildroot}%{_docdir}/%{name}/
+install -D -m 0755 %{SOURCE6} %{buildroot}%{_bindir}/
 # install appdata file
 mkdir -p %{buildroot}%{_datadir}/appdata/
 install -D -m 0644 %{SOURCE8} %{buildroot}%{_datadir}/appdata/
@@ -498,6 +518,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %ifarch x86_64
 %exclude %{_datadir}/%{name}/%{_version}/scripts/addons/cycles
 %endif
+%exclude %{_docdir}/%{name}/geeko_example_scene.*
 %{_datadir}/%{name}/%{_version}/scripts/
 %{_datadir}/%{name}/%{_version}/datafiles/
 %{_datadir}/applications/%{name}.desktop
@@ -510,5 +531,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %files cycles-devel
 %{_datadir}/%{name}/%{_version}/scripts/addons/cycles
 %endif
+
+%files demo
+%doc %{_docdir}/%{name}/geeko_example_scene.*
 
 %changelog

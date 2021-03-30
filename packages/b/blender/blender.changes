@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Mar 18 13:01:16 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Enlarge dwz memory limits.
+
+-------------------------------------------------------------------
+Fri Feb 26 00:15:02 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.92.0
+  https://www.blender.org/download/releases/2-92/
+- drop 0001-Dont-hide-required-uint64-atomic-ops-when-available.patch
+  included in update
+- pass the path for the numpy includes to cmake as the autodetect
+  does not work right now.
+
+-------------------------------------------------------------------
+Tue Feb  9 08:32:46 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Exclude separately packaged demo files from main package
+
+-------------------------------------------------------------------
+Sat Feb  6 17:26:44 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Relocate new demo files into -demo package, and recommend it
+- /usr/bin/blender-sample gained logic to deal with both geeko 
+  demos intelligently.
+
+-------------------------------------------------------------------
+Fri Jan 22 14:32:25 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 2.91.2
+  Checked items at: https://developer.blender.org/T83216
+- Add geeko_example_scene.{blend,README} and load it from 
+  /usr/bin/blender-sample
+
+-------------------------------------------------------------------
 Sat Jan  9 15:00:21 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Require libomp9 devel dependency for Leap 15.2 explicitly
