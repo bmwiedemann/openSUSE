@@ -1,7 +1,7 @@
 #
 # spec file for package nvidia-texture-tools
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           nvidia-texture-tools
-Version:        2.0.8
+Version:        2.1.2
 Release:        0
 Summary:        NVIDIA Texture Tools
+# BuildRequires:  cg-devel
 License:        MIT
 Group:          Development/Tools/Other
-# BuildRequires:  cg-devel
-Url:            https://github.com/castano/nvidia-texture-tools
+URL:            https://github.com/castano/nvidia-texture-tools
 Source0:        https://github.com/castano/nvidia-texture-tools/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         nvidia-texture-tools-gcc47.patch
-# patch libpng15 is upstreamed yet (http://code.google.com/p/nvidia-texture-tools/source/detail)
-Patch1:         nvidia-texture-tools-libpng15.patch
-Patch2:         nvidia-texture-tools-gcc6.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  dos2unix
@@ -60,17 +56,12 @@ the MIT license.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
-export CFLAGS="%{optflags} -fPIC"
-export CXXFLAGS="%{optflags} -fPIC"
 %cmake \
   -DNVTT_SHARED=1 \
   -DCMAKE_BUILD_TYPE=RelWithDebInfo
-make %{?_smp_mflags} VERBOSE=1
+%cmake_build
 
 %install
 %cmake_install
@@ -78,21 +69,30 @@ if [ "%{_lib}" != "lib" ];
 then
        mv %{buildroot}%{_prefix}/lib %{buildroot}%{_prefix}/%{_lib}
 fi
-dos2unix *.txt
+# remove installed doc-folder, let rpm decide on the correct paths
+rm -r %{buildroot}%{_datadir}/doc/nvtt
 
 %files
 %defattr(-, root, root)
-%doc NVIDIA_Texture_Tools_LICENSE.txt NVIDIA_Texture_Tools_README.txt ChangeLog
+%license LICENSE
+%doc ChangeLog README.md
 %{_bindir}/nvassemble
 %{_bindir}/nvcompress
 %{_bindir}/nvddsinfo
 %{_bindir}/nvdecompress
 %{_bindir}/nvimgdiff
 %{_bindir}/nvzoom
+%{_bindir}/nv-gnome-thumbnailer
+%{_bindir}/nvhdrtest
+%{_bindir}/nvtestsuite
 %{_includedir}/nvtt
+%{_includedir}/squish.h
 %{_libdir}/libnvcore.so
 %{_libdir}/libnvimage.so
 %{_libdir}/libnvmath.so
 %{_libdir}/libnvtt.so
+%{_libdir}/libnvthread.so
+%{_libdir}/libsquish.so
+%{_libdir}/libsquish.so.0.0
 
 %changelog

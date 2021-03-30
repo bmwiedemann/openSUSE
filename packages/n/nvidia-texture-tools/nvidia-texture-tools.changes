@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 22 19:47:09 UTC 2021 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 2.1.2
+- Remove nvidia-texture-tools-gcc47.patch
+  integrated upstream
+- Remove nvidia-texture-tools-gcc6.patch
+  integrated upstream
+- Remove nvidia-texture-tools-libpng15.patch
+  integrated upstream
+
+-------------------------------------------------------------------
 Sun Jul 10 19:20:02 UTC 2016 - mpluskal@suse.com
 
 - Update project and download url
