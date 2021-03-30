@@ -1,7 +1,7 @@
 #
 # spec file for package terraform-provider-vsphere
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,7 @@
 %endif
 
 Name:           terraform-provider-vsphere
-Version:        1.24.1
+Version:        1.24.3
 Release:        0
 Summary:        Terraform vSphere provider
 License:        MPL-2.0

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jan 18 15:38:38 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.24.3:
+  * Pre-release changelog update
+  * Make API timeout configurable when building VMs
+  * Use Dockerhub Mirror. (#1253)
+  * Suspend stale issue pruning (#1250)
+  * Support for no disks in config (#1241)
+- from version 1.24.2
+  * Update CHANGELOG.md
+  * Avoid nil condition for guestID (#1234)
+
+-------------------------------------------------------------------
 Wed Nov 11 12:04:10 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add symbolic link to comply with new filesystem layout for local provider copies
