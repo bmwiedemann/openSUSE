@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 11 17:00:14 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Fix the down-arrow color for disabled dropdowns (bsc#1183090).
+- Avoid labels being vertically cut (bsc#1183086, bsc#1183306).
+- Do not show a white frame around software selection (bsc#1183356).
+- Other minor style adjustments and improvements.
+- 4.3.8
+
+-------------------------------------------------------------------
 Mon Mar  8 14:13:19 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Improve styles for firstboot steps (related to bsc#1183162).

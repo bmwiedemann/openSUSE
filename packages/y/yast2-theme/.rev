@@ -1270,4 +1270,12 @@ Version:	3.1.0</comment>
     <comment>submit new version 4.3.7</comment>
     <requestid>877839</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>b2fc460f493b00023746c11a3943507d</srcmd5>
+    <version>4.3.8</version>
+    <time>1617130246</time>
+    <user>RBrownSUSE</user>
+    <comment>submit new version 4.3.8</comment>
+    <requestid>878556</requestid>
+  </revision>
 </revisionlist>
