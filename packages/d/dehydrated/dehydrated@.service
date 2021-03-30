@@ -1,0 +1,12 @@
+[Unit]
+Description=Certificate Update Runner for Dehydrated
+ConditionPathExists=/etc/dehydrated/config
+After=network-online.target
+Wants=acmeresponder.socket
+PartOf=dehydrated.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/dehydrated --cron --config /etc/dehydrated-%i/config
+User=dehydrated
+Group=dehydrated

@@ -1,0 +1,14 @@
+[Unit]
+Description=Certificate Update Runner for Dehydrated
+ConditionPathExists=/etc/dehydrated/config
+After=network-online.target
+Wants=acmeresponder.socket
+PartOf=dehydrated.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/dehydrated --cron
+
+# dehydrated --cron will drop permissions and run critical code as dehydrated user.
+User=dehydrated
+Group=dehydrated

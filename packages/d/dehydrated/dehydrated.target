@@ -1,0 +1,4 @@
+[Unit]
+Description=Target to allow restarting and stopping of all parts of dehydrated
+PartOf=dehydrated.target
+
