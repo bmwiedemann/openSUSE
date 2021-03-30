@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Wed Mar 24 10:00:59 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to 5.0.9
+
+-------------------------------------------------------------------
+Mon Mar  8 09:53:12 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to 5.0.5
+
+-------------------------------------------------------------------
+Mon Feb 15 13:02:27 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to 5.0.1
+
+-------------------------------------------------------------------
+Mon Feb  8 10:30:42 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to 5.0.0-rc.1
+
+-------------------------------------------------------------------
+Thu Jan 28 12:42:48 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim marketing and redundancies from
+  descriptions. Updates to summaries.
+
+-------------------------------------------------------------------
+Wed Jan 27 10:15:49 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Add the source files
+
+-------------------------------------------------------------------
+Wed Jan 27 10:14:21 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Properly fix the package
+- Set the _service file mode to manual
+
+-------------------------------------------------------------------
+Tue Jan 26 10:46:16 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Work around the version string not being able to contain dashes
+
+-------------------------------------------------------------------
+Mon Jan 25 12:01:42 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to v5.0.0-beta.2
+
+-------------------------------------------------------------------
+Mon Jan 18 10:39:39 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to v4.5.0
+
+-------------------------------------------------------------------
+Mon Jan 11 09:26:05 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to v4.4.0
+
+-------------------------------------------------------------------
+Mon Jan  4 09:42:39 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to v4.3.0
+
+-------------------------------------------------------------------
+Wed Dec 30 19:18:32 UTC 2020 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Add Aile, Etoile, and Sparkle font families
+- Separate families into subpackages
+
+-------------------------------------------------------------------
+Tue Dec 29 20:19:47 UTC 2020 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to v4.2.0
+- Use TTC instead of TTF
+
+-------------------------------------------------------------------
+Mon Dec 14 07:00:05 UTC 2020 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to v4.0.3
+
+-------------------------------------------------------------------
+Mon Dec  7 09:22:57 UTC 2020 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to v4.0.2
+
+-------------------------------------------------------------------
+Thu Nov 26 17:00:59 UTC 2020 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to v4.0.0
+
+-------------------------------------------------------------------
+Sun Nov 22 21:20:14 UTC 2020 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Remove/replace obsolete macros
+
+-------------------------------------------------------------------
+Sun Nov 22 20:28:41 UTC 2020 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to v4.0.0-beta.3
+
+-------------------------------------------------------------------
+Thu Nov 19 09:45:00 UTC 2020 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to v4.0.0-beta.2
+
+-------------------------------------------------------------------
+Thu Apr  2 01:27:36 UTC 2020 - Anton Shvetz <tz@sectorb.msk.ru>
+
+- Update to v3.0.0-rc.5
+
+-------------------------------------------------------------------
+Mon Mar 23 14:57:49 UTC 2020 - Anton Shvetz <tz@sectorb.msk.ru>
+
+- Update to v3.0.0-rc.4
+
+-------------------------------------------------------------------
+Thu Mar 19 11:17:35 UTC 2020 - Anton Shvetz <tz@sectorb.msk.ru>
+
+- Update to v3.0.0-rc.3
+
+-------------------------------------------------------------------
+Fri Mar 13 06:48:22 UTC 2020 - Anton Shvetz <tz@sectorb.msk.ru>
+
+- Update to v3.0.0-rc.1
+
+-------------------------------------------------------------------
+Tue May 16 04:04:10 UTC 2017 - Anton Shvetz <tz@sectorb.msk.ru>
+
+- Update to v1.12.5
+
