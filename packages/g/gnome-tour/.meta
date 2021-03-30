@@ -1,0 +1,5 @@
+<package name="gnome-tour" project="openSUSE:Factory">
+  <title>GNOME Tour &amp; Greeter</title>
+  <description>A guided tour and greeter for GNOME.</description>
+  <devel project="GNOME:Factory" package="gnome-tour"/>
+</package>
