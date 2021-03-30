@@ -1,0 +1,9 @@
+diff -ruN a/LanguageServer/codelite-lsp/codelite-lsp-helper c/LanguageServer/codelite-lsp/codelite-lsp-helper
+--- a/LanguageServer/codelite-lsp/codelite-lsp-helper	2020-07-12 10:19:14.000000000 +0700
++++ c/LanguageServer/codelite-lsp/codelite-lsp-helper	2021-02-02 00:27:36.129821472 +0700
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env node
++#!/usr/bin/node
+ 
+ //===--------------------------------------------------------------------------------
+ // Copyright: Eran Ifrah
