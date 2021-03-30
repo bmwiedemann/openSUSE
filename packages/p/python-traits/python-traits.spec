@@ -1,7 +1,7 @@
 #
 # spec file for package python-traits
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-traits%{psuffix}
-Version:        6.1.0
+Version:        6.2.0
 Release:        0
 Summary:        Explicitly typed attributes for Python
 # Images have different licenses. For image license breakdown check
@@ -38,13 +38,12 @@ Summary:        Explicitly typed attributes for Python
 License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.1-only
 Group:          Development/Libraries/Python
 URL:            https://github.com/enthought/traits
-Source:         https://files.pythonhosted.org/packages/source/t/traits/traits-%{version}.tar.gz
+Source:         https://github.com/enthought/traits/archive/%{version}.tar.gz#/traits-%{version}.tar.gz
 # Import of pyface.toolkit mysteriously fails. But it is needed by only one test, which needs traitsui,
 # but we cannot have traitsui, because the tests invocation segfaults with traitsui installed (why?!).
 # So the test would be skipped anyway, so let us just skip the import as if pyface was not there.
 Patch0:         fix-test.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,9 +52,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pyface}
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 %endif
 # /SECTION
-Requires:       python-numpy
 Recommends:     python-traitsui >= 7.0.0
 
 %python_subpackages
@@ -80,10 +79,7 @@ Part of the Enthought Tool Suite (ETS).
 %prep
 %setup -q -n traits-%{version}
 %fdupes examples/
-# file not utf-8
-iconv -f iso8859-1 -t utf-8 image_LICENSE_Eclipse.txt > image_LICENSE_Eclipse.txt.conv
-mv -f image_LICENSE_Eclipse.txt.conv image_LICENSE_Eclipse.txt
-%patch0 -p1
+# %%patch0 -p1
 
 %build
 %if %{without test}

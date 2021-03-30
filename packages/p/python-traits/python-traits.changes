@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Feb 23 19:17:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- unskip python36. NumPy is actually optional.
+
+-------------------------------------------------------------------
+Sun Feb 21 18:29:21 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Skip python 3.6.
+- Change source URL to Github.
+- Update to version 6.2.0.
+  * The Traits examples are now distributed as part of the Traits 
+    egg, and are contributed to the etsdemo application.
+  * Performance of the observe framework has been significantly 
+    improved.
+  * It's no longer necessary to specify a trait comparison mode of
+    ComparisonMode.identity when using observe to observe items
+    in a List, Dict or Set.
+  * When importing from Traits, you should always import from one 
+    of the api modules (for example, traits.api, 
+    traits.adaptation.api, etc.) This recommendation has now been 
+    made explicit in the documentation. If you find something you 
+    need that's not available from one of the api modules, please 
+    let the Traits developers know.
+
+-------------------------------------------------------------------
 Mon Jul 13 10:56:08 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 6.1.0
