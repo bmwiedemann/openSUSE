@@ -1,0 +1,170 @@
+From b37307248abfba6215677b662fe7abc39ec73ec8 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <callumjfarmer13@gmail.com>
+Date: Sat, 24 Oct 2020 11:57:03 +0100
+Subject: [PATCH] Make xdg directory configurable
+
+---
+ budgie-extras-daemon/src/meson.build    |  2 +-
+ budgie-visualspace/data/meson.build     |  3 +--
+ budgie-wallstreet/data/meson.build      |  2 +-
+ budgie-window-shuffler/data/meson.build |  4 ++--
+ budgie-wpreviews/data/meson.build       |  5 ++---
+ meson.build                             | 14 ++++++++++++++
+ meson_options.txt                       |  2 ++
+ 7 files changed, 23 insertions(+), 9 deletions(-)
+
+diff --git a/budgie-extras-daemon/src/meson.build b/budgie-extras-daemon/src/meson.build
+index f176202..8592222 100644
+--- a/budgie-extras-daemon/src/meson.build
++++ b/budgie-extras-daemon/src/meson.build
+@@ -6,7 +6,8 @@
+     output : 'budgie-extras-daemon.desktop',
+     command : [intltool, '--desktop-style', podir, '@INPUT@', '@OUTPUT@'],
+     install : true,
+-    install_dir : join_paths(get_option('sysconfdir'), 'xdg', 'autostart'))
++    install_dir : xdg_appdir
++)
+
+ subdir('config')
+
+
+diff --git a/budgie-visualspace/data/meson.build b/budgie-visualspace/data/meson.build
+index bc3734a..2eb22f9 100644
+--- a/budgie-visualspace/data/meson.build
++++ b/budgie-visualspace/data/meson.build
+@@ -4,7 +4,6 @@ install_data(
+     install_dir: PIXMAPS_DIR
+ )
+ 
+-AUTOSTART_LOC=join_paths(sysconfdir, 'xdg', 'autostart')
+ substprog = find_program('subst.py')
+ 
+ mytarget = custom_target('autoworkspace',
+@@ -12,5 +11,5 @@ mytarget = custom_target('autoworkspace',
+   input : 'visualspace-autostart.desktop.in',
+   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
+   install : true,
+-  install_dir : AUTOSTART_LOC
++  install_dir : xdg_appdir
+ )
+diff --git a/budgie-wallstreet/data/meson.build b/budgie-wallstreet/data/meson.build
+index 213823a..63478b2 100644
+--- a/budgie-wallstreet/data/meson.build
++++ b/budgie-wallstreet/data/meson.build
+@@ -9,7 +9,7 @@ mytargeta = custom_target('wallstreetautostart',
+   input : 'wallstreet-autostart.desktop.in',
+   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@', podir],
+   install : true,
+-  install_dir : join_paths(sysconfdir, 'xdg', 'autostart')
++  install_dir : xdg_appdir
+ )
+ 
+ mytargetw = custom_target('wallstreetcontrols',
+diff --git a/budgie-window-shuffler/data/meson.build b/budgie-window-shuffler/data/meson.build
+index efe9476..7ca7961 100644
+--- a/budgie-window-shuffler/data/meson.build
++++ b/budgie-window-shuffler/data/meson.build
+@@ -13,7 +13,7 @@ shufflertargetauto = custom_target('shufflerautostart',
+   input : 'shufflerdaemon-autostart.desktop.in',
+   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@', podir],
+   install : true,
+-  install_dir : join_paths(sysconfdir, 'xdg', 'autostart')
++  install_dir : xdg_appdir
+ )
+ 
+ shufflerguitargetauto = custom_target('shufflerguiautostart',
+@@ -21,7 +21,7 @@ shufflerguitargetauto = custom_target('shufflerguiautostart',
+   input : 'shufflergui-autostart.desktop.in',
+   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@', podir],
+   install : true,
+-  install_dir : join_paths(sysconfdir, 'xdg', 'autostart')
++  install_dir : xdg_appdir
+ )
+ 
+ shufflertargetw = custom_target('shufflercontrols',
+diff --git a/budgie-wpreviews/data/meson.build b/budgie-wpreviews/data/meson.build
+index c2ac8f8..9571b84 100644
+--- a/budgie-wpreviews/data/meson.build
++++ b/budgie-wpreviews/data/meson.build
+@@ -49,14 +49,13 @@ mytarget4a = custom_target('preview_currentforward_grave',
+   install_dir : BDE_LOC
+ )
+ 
+-AUTOSTART_LOC=join_paths(sysconfdir, 'xdg', 'autostart')
+ 
+ mytarget5 = custom_target('preview_creator',
+   output : 'previews-creator-autostart.desktop',
+   input : 'previews-creator-autostart.desktop.in',
+   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
+   install : true,
+-  install_dir : AUTOSTART_LOC
++  install_dir : xdg_appdir
+ )
+ 
+ mytarget6 = custom_target('previews_daemon',
+@@ -64,7 +63,7 @@ mytarget6 = custom_target('previews_daemon',
+   input : 'previews-daemon-autostart.desktop.in',
+   command : [substprog, '@INPUT@', LIB_INSTALL_DIR, '@OUTPUT@'],
+   install : true,
+-  install_dir : AUTOSTART_LOC
++  install_dir : xdg_appdir
+ )
+ 
+ APP_LOC=join_paths(datadir, 'applications')
+diff --git a/meson.build b/meson.build
+index 5b2d958..ca50d90 100644
+--- a/meson.build
++++ b/meson.build
+@@ -69,6 +69,20 @@ conf.set_quoted('PREVIEWS_DIR', join_paths(libdir, PREVIEWS))
+ WSWITCHER = 'budgie-wswitcher'
+ conf.set_quoted('WSWITCHER_DIR', join_paths(PLUGINS_INSTALL_DIR, WSWITCHER))
+ 
++with_stateless = get_option('with-stateless')
++if with_stateless == true
++    warning('Only use stateless option with a supported OS like Solus')
++endif
++
++xdg_appdir = get_option('xdg-appdir')
++if xdg_appdir == ''
++    if with_stateless == true
++        xdg_appdir = join_paths(datadir, 'xdg', 'autostart')
++    else
++        xdg_appdir = join_paths(get_option('sysconfdir'), 'xdg', 'autostart')
++    endif
++endif
++
+ 
+ config_h = configure_file(
+ 	output: 'config.h',
+diff --git a/meson_options.txt b/meson_options.txt
+index 6820986..0fe925d 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -28,3 +28,5 @@ option('build-applications-menu', type: 'boolean', value: false, description: 'B
+ option('build-network-manager', type: 'boolean', value: false, description: 'Build network-manager applet')
+ option('build-window-shuffler', type: 'boolean', value: false, description: 'Build window shuffler')
+ option('with-zeitgeist', type : 'boolean', value : 'true', description : 'Add Zeitgeist support')
++option('with-stateless', type: 'boolean', value: false, description: 'Enable stateless XDG paths')
++option('xdg-appdir', type: 'string', description: 'XDG autostart path')
+From 53a059ba556fc6fc6a6d46eab0cd22e289879d98 Mon Sep 17 00:00:00 2001
+From: Callum Farmer <gmbr3@opensuse.org>
+Date: Wed, 17 Feb 2021 10:43:37 +0000
+Subject: [PATCH] Make xdg directory configurable
+
+---
+ budgie-quickchar/quickchar/data/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/budgie-quickchar/quickchar/data/meson.build b/budgie-quickchar/quickchar/data/meson.build
+index 5aabd3d..2023529 100644
+--- a/budgie-quickchar/quickchar/data/meson.build
++++ b/budgie-quickchar/quickchar/data/meson.build
+@@ -6,7 +6,7 @@ install_data(
+ 
+ install_data(
+     'quickchar-autostart.desktop',
+-    install_dir: join_paths(sysconfdir, 'xdg', 'autostart')
++    install_dir: xdg_appdir
+ )
+ 
+ substprog = find_program('subst.py')
