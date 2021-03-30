@@ -1,4 +1,243 @@
 -------------------------------------------------------------------
+Fri Mar 12 14:13:54 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Build with support for tcp-wrapper (-DUSE_LIBWRAP=ON)
+- Update to version 2.0.9
+  Security:
+  * If an empty or invalid CA file was provided to the client
+    library for verifying the remote broker, then the initialx
+    connection would fail but subsequent connections would succeed
+     without verifying the remote broker certificate.
+  * If an empty or invalid CA file was provided to the broker for
+    verifying the remote broker for an outgoing bridge connection
+    then the initial connection would fail but subsequent
+    connections would succeed without verifying the
+    remote broker certificate.
+  Broker:
+  * Fix encrypted bridge connections incorrectly connecting when
+    `bridge_cafile` is empty or invalid.
+  * Fix `tls_version` behaviour not matching documentation. It was
+    setting the exact TLS version to use, not the minimium TLS
+    version to use.
+  * Fix messages to `$` prefixed topics being rejected.
+  * Fix QoS 0 messages not being delivered when max_queued_bytes
+    was configured.
+  * Fix bridge increasing backoff calculation.
+  * Improve handling of invalid combinations of listener address
+    and bind interface configurations.
+  * Fix `max_keepalive` option not applying to clients connecting
+    with keepalive set to 0.
+  Client library:
+  * Fix encrypted connections incorrectly connecting when the CA
+    file passed to `mosquitto_tls_set()` is empty or invalid.
+  * Fix connections retrying very rapidly in some situations.
+  Build:
+  * Fix cmake epoll detection.
+
+-------------------------------------------------------------------
+Thu Mar 11 12:27:06 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Convert some of the BuildRequires from package names to
+  pkgconfig(): libcares, libcjson, libwebsockets
+
+-------------------------------------------------------------------
+Thu Mar 11 12:25:55 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix linking of modules:
+  - Add fix-undefined-symbols-in-plugins.patch
+  - revert old workaround of settings -DCMAKE_SHARED_LINKER_FLAGS=
+
+-------------------------------------------------------------------
+Thu Mar 11 12:22:47 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update mosquitto-1.6.8-config.patch:
+  Set a short profilename for a cleaner ps aufxZ output
+- Refreshed mosquitto-1.6.8-config.patch to apply cleanly again
+
+-------------------------------------------------------------------
+Sun Feb 28 12:56:09 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.8
+  Broker:
+  * Fix incorrect datatypes in `struct mosquitto_evt_tick`. This
+    changes the size and offset of two of the members of this
+    struct, and changes the size of the struct. This is an ABI
+    break, but is considered to be acceptable because plugins
+    should never be allocating their own instance of this struct,
+    and currently none of the struct members are used for anything,
+    so a plugin should not be accessing them. It would also be
+    safe to read/write from the existing struct parameters.
+  * Give compile time warning if libwebsockets compiled without
+    external poll support.
+  Client library:
+  * Fix mosquitto_{pub|sub}_topic_check() functions not returning
+    MOSQ_ERR_INVAL on topic == NULL.
+  Clients:
+  * Fix possible loss of data in `mosquitto_pub -l` when sending
+    multiple long lines.
+
+-------------------------------------------------------------------
+Sat Feb  6 21:36:22 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.7
+  Broker:
+  * Fix some minor memory leaks on exit only.
+  * Fix possible memory leak on connect.
+  * Fix openssl engine not being able to load private key.
+  Clients:
+  * Fix config files truncating options after the first space.
+  Build:
+  - Fix man page building to not absolutely require xsltproc when
+    using CMake.
+- Update to version 2.0.6
+  Broker:
+  * Fix calculation of remaining length parameter for websockets
+    clients that send fragmented packets.
+  Broker:
+  * Fix potential duplicate Will messages being sent when a will
+    delay interval has been set.
+  * Fix message expiry interval property not being honoured in
+    `mosquitto_broker_publish` and `mosquitto_broker_publish_copy`.
+  * Fix websockets listeners with TLS not responding.
+  * Improve logging in obscure cases when a client disconnects.
+  * Fix reloading of listeners where multiple listeners have been
+    defined with the same port but different bind addresses.
+  * Fix `message_size_limit` not applying to the Will payload.
+  * The error topic-alias-invalid was being sent if an MQTT v5
+    client published a message with empty topic and topic alias
+    set, but the topic alias hadn't already been configured on
+    the broker. This has been fixed to send a protocol error, as
+    per section 3.3.4 of the specification.
+  * Note in the man pages that SIGHUP reloads TLS certificates.
+  Apps:
+  * Allow command line arguments to override config file options in
+    mosquitto_ctrl.
+  * mosquitto_ctrl: produce an error when requesting a new password
+    if both attempts do not match.
+
+-------------------------------------------------------------------
+Tue Jan 12 07:45:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.5
+  Broker:
+  * Fix "auth_method" not being provided to the extended auth
+    plugin event.
+  * Fix large packets not being completely published to slow
+    clients.
+  * Fix bridge connection not relinquishing POLLOUT after messages
+    are sent.
+  * Fix apparmor incorrectly denying access to
+    /var/lib/mosquitto/mosquitto.db.new.
+  * Fix potential intermittent initial bridge connections when
+    using poll().
+  * Fix "bind_interface" option.
+  * Fix invalid behaviour in dynsec plugin if a group or client is
+    deleted before a role that was attached to the group or client
+    is deleted.
+  * Improve logging in dynsec addGroupRole/addGroupClient commands.
+  Client library:
+  * Improve documentation around the "_v5()" and non-v5 functions,
+    e.g.  `mosquitto_publish()` and `mosquitto_publish_v5().
+  Build:
+  * "install" Makefile target should depend on "all", not
+    "mosquitto", to ensure that man pages are always built.
+  Apps:
+  * Disallow control characters in mosquitto_passwd usernames.
+  * Fix incorrect description in mosquitto_ctrl man page.
+  * Fix `mosquitto_ctrl dynsec getGroup` not showing roles.
+
+-------------------------------------------------------------------
+Wed Dec 23 17:12:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.4
+  Broker:
+  * Fix $SYS/broker/publish/messages/+ counters not being updated
+    for QoS 1, 2 messages.
+  * mosquitto_connect_bind_async() and mosquitto_connect_bind_v5()
+    should not reset the bind address option if called with
+    bind_address == NULL.
+  * Add more log messages for dynsec load/save error conditions.
+  Build:
+  * Fix man pages not being built when using CMake.
+- Update to version 2.0.3
+  Security:
+  * Running mosquitto_passwd with the following arguments only
+    `mosquitto_passwd -b password_file username password` would
+    cause the username to be used as the password.
+  Broker:
+  * Fix LWT not being sent on client takeover when the existing
+    session wasn't being continued.
+  * Fix bridges possibly not completing connections when WITH_ADNS
+    is in use.
+  * Fix QoS 0 messages not being delivered if max_queued_messages
+    was set to 0.
+  * Fix local bridges being disconnected on SIGHUP.
+  * Fix slow initial bridge connections for WITH_ADNS=no.
+  * Fix persistence_location not appending a '/'.
+  Clients:
+  * Fix mosquitto_sub being unable to terminate with Ctrl-C if a
+    successful connection is not made.
+  Apps:
+  * Fix `mosquitto_passwd -b` using username as password (not if
+    `-c` is also used).
+  Build:
+  * Fix `install` target when using WITH_CJSON=no.
+
+-------------------------------------------------------------------
+Sat Dec 12 22:03:09 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.2
+  Broker:
+  * Fix DH group not being set for TLS connections, which meant
+    ciphers using DHE couldn't be used.
+  * Fix websockets listeners not causing the main loop not to
+    wake up.
+  Client library:
+  * Fix DH group not being set for TLS connections, which meant
+    ciphers using DHE couldn't be used.
+  Apps:
+  * Fix "mosquitto_passwd -U"
+  Build:
+  - Fix cjson include paths.
+  - Fix build using WITH_TLS=no when the openssl headers aren't
+    available.
+  - Distribute cmake/ and snap/ directories in tar.
+- Drop patch:
+  * mosquitto-fix-cmake-cjson-detection.patch
+
+-------------------------------------------------------------------
+Sat Dec  5 17:02:00 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.0
+  !!! Mosquitto 2.0 introduces a number of changes to the
+  behaviour of the broker. See the following document for details
+  https://mosquitto.org/documentation/migrating-to-2-0/
+  Noteworthy changes
+  * Mosquitto is now more secure by default and requires users to
+    take an active decision in how they configure security on
+    their broker, instead of possibly relying on the older very
+    permissive behaviour, as well as dropping privileged access
+    more quickly
+  * A new plugin interface has been introduced which goes beyond
+    the existing authentication and access control plugin
+    interface to offer more plugin capabilities
+  * A new plugin has been introduced to provide client, group,
+    and role based authentication and access control.
+  * The broker performance has been improved, particularly for
+    higher numbers of clients
+  * A new utility, mosquitto_ctrl has been added for controlling
+    aspects of a running broker.
+  * Bridges now support MQTT v5.
+  * The mosquitto command line clients have received a variety
+    of small improvements. mosquitto_sub can now format its
+    output in fixed column widths, for example, and filter its
+    output randomly so you can keep an eye on the overall
+    behaviour of a topic without having to see every message,
+    for example.
+- Add patch:
+  * mosquitto-fix-cmake-cjson-detection.patch
+
+-------------------------------------------------------------------
 Wed Aug 19 19:29:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.12
