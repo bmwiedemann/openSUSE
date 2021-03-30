@@ -1,7 +1,7 @@
 #
 # spec file for package msitools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           msitools
-Version:        0.100
+Version:        0.101
 Release:        0
 Summary:        Tools to inspect and build Windows Installer (.MSI) files
 License:        GPL-2.0-or-later
@@ -25,6 +25,7 @@ URL:            https://wiki.gnome.org/msitools
 Source:         https://download.gnome.org/sources/msitools/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  bison
 BuildRequires:  intltool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.14
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -32,7 +33,6 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.4
 BuildRequires:  pkgconfig(libgcab-1.0) >= 0.1.10
 BuildRequires:  pkgconfig(libgsf-1)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7
-BuildRequires:  pkgconfig(uuid) >= 1.41.3
 BuildRequires:  pkgconfig(vapigen) >= 0.16
 
 %description
@@ -81,21 +81,19 @@ cross-compiled Windows applications.
 %autosetup
 
 %build
-%configure \
-  --disable-static
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name} %{?no_lang_C}
-find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libmsi0 -p /sbin/ldconfig
 %postun -n libmsi0 -p /sbin/ldconfig
 
 %files
-%license COPYING COPYING.LIB
-%doc AUTHORS NEWS
+%license copyright
+%doc AUTHORS NEWS README.md
 %{_bindir}/msibuild
 %{_bindir}/msidiff
 %{_bindir}/msidump

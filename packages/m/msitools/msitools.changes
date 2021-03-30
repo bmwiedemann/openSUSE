@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Feb  2 23:25:47 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 101:
+  * convert the build system to Meson
+  * remove uuid dependency
+  * wixl: Make the ServiceControl attributes Remove/Start/Stop
+    optional.
+  * wixl: Implement SET_PROPERTY custom action
+  * wixl: Properly handle empty GUID in Component nodes
+  * wixl: Support ASYNC for CustomAction.Return
+  * msiinfo: fix buffer overflow
+  * translation updates, various misc fixes
+
+-------------------------------------------------------------------
 Tue Feb 18 11:41:50 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file
