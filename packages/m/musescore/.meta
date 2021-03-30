@@ -1,0 +1,11 @@
+<package name="musescore" project="openSUSE:Factory">
+  <title>MuseScore</title>
+  <description>A free WYSIWYG music score typesetter
+
+ MuseScore is a graphical music typesetter. It allows for fast
+ and easy note entry on a virtual note sheet. It has an
+ integrated sequencer to allow for immediate play of the score.
+ MuseScore can import and export MusicXml and standard Midi files.</description>
+  <devel project="multimedia:apps" package="musescore"/>
+  <url>http://musescore.org/</url>
+</package>
