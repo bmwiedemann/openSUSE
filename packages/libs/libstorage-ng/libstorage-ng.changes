@@ -1,4 +1,117 @@
 --------------------------------------------------------------------
+Mon Mar 29 10:32:24 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#801
+- allow diagnostics partition id for GPT (bsc#1184073)
+- 4.3.104
+
+--------------------------------------------------------------------
+Thu Mar 25 11:46:25 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (French) (bsc#1149754)
+- 4.3.103
+
+--------------------------------------------------------------------
+Wed Mar 24 14:27:39 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (German) (bsc#1149754)
+- 4.3.102
+
+--------------------------------------------------------------------
+Wed Mar 24 10:53:46 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Italian) (bsc#1149754)
+- 4.3.101
+
+--------------------------------------------------------------------
+Tue Mar 23 13:52:02 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Italian) (bsc#1149754)
+- 4.3.100
+
+--------------------------------------------------------------------
+Tue Mar 23 04:05:28 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Indonesian) (bsc#1149754)
+- 4.3.99
+
+--------------------------------------------------------------------
+Mon Mar 22 23:27:07 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Spanish) (bsc#1149754)
+- 4.3.98
+
+--------------------------------------------------------------------
+Sat Mar 20 08:16:58 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Chinese (Taiwan)) (bsc#1149754)
+- 4.3.97
+
+--------------------------------------------------------------------
+Fri Mar 19 07:08:19 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Chinese (China)) (bsc#1149754)
+- 4.3.96
+
+--------------------------------------------------------------------
+Tue Mar 16 10:29:48 UTC 2021 - freek@opensuse.org
+
+- Translated using Weblate (Dutch) (bsc#1149754)
+- 4.3.95
+
+--------------------------------------------------------------------
+Mon Mar 15 17:48:39 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Slovak) (bsc#1149754)
+- 4.3.94
+
+--------------------------------------------------------------------
+Mon Mar 15 10:24:27 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Japanese) (bsc#1149754)
+- 4.3.93
+
+--------------------------------------------------------------------
+Mon Mar 15 09:38:02 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Finnish) (bsc#1149754)
+
+--------------------------------------------------------------------
+Mon Mar 15 07:51:19 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Czech) (bsc#1149754)
+
+--------------------------------------------------------------------
+Sun Mar 14 19:29:23 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Portuguese (Brazil)) (bsc#1149754)
+- 4.3.92
+
+--------------------------------------------------------------------
+Sun Mar 14 16:57:12 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Catalan) (bsc#1149754)
+
+--------------------------------------------------------------------
+Wed Mar 10 02:57:37 UTC 2021 - sbrabec@suse.cz
+
+- Translated using Weblate (Italian) (bsc#1149754)
+- Translated using Weblate (Chinese (Taiwan)) (bsc#1149754)
+- Translated using Weblate (German) (bsc#1149754)
+- Translated using Weblate (French) (bsc#1149754)
+- Translated using Weblate (Spanish) (bsc#1149754)
+- Translated using Weblate (Chinese (China)) (bsc#1149754)
+- 4.3.91
+
+--------------------------------------------------------------------
+Tue Mar 9 16:20:04 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#800
+- correctly handle backreferences in restore_devicegraph()
+- generate pool for NVMes
+- 4.3.90
+
+--------------------------------------------------------------------
 Fri Feb 26 12:26:46 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#799
