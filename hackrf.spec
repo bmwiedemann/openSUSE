@@ -1,7 +1,7 @@
 #
 # spec file for package hackrf
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,12 +20,12 @@
 %define libname lib%{name}%{sover}
 %define hackrf_group  hackrf
 Name:           hackrf
-Version:        2018.01.1
+Version:        2021.03.1
 Release:        0
 Summary:        Support programs for the open source SDR hardware
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Hamradio/Other
-Url:            http://greatscottgadgets.com/hackrf/
+URL:            https://greatscottgadgets.com/hackrf/
 #Git-Clone:     https://github.com/mossmann/hackrf.git
 Source:         https://github.com/mossmann/hackrf/releases/download/v%{version}/hackrf-%{version}.tar.xz
 BuildRequires:  cmake
@@ -51,7 +51,7 @@ Defined Radio (SDR) peripheral.
 %package udev
 Summary:        Udev rules for HackRF
 Group:          Hardware/Other
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 
 %description udev
 Udev rules for HackRF.
@@ -81,7 +81,7 @@ Firmare files for the hackRF board.
   -DINSTALL_UDEV_RULES=ON \
   -DUDEV_RULES_PATH=%{_udevrulesdir} \
   -DUDEV_RULES_GROUP=%{hackrf_group}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -105,10 +105,13 @@ getent group %{hackrf_group} >/dev/null || groupadd -r %{hackrf_group}
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%doc ../COPYING ../RELEASENOTES ../Readme.md ../TRADEMARK
+%license ../COPYING
+%doc ../RELEASENOTES ../Readme.md ../TRADEMARK
+%{_bindir}/hackrf_clock
 %{_bindir}/hackrf_cpldjtag
 %{_bindir}/hackrf_debug
 %{_bindir}/hackrf_info
+%{_bindir}/hackrf_operacake
 %{_bindir}/hackrf_spiflash
 %{_bindir}/hackrf_sweep
 %{_bindir}/hackrf_transfer

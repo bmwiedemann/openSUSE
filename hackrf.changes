@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Mar 20 11:48:32 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2021.03.01
+  Note: You must also update firmware on your HackRF !
+  * CPLD bitstreams are now included in and loaded automatically
+    by the firmware. There is no longer a need to update the CPLD
+    separately.
+  * The clock output (CLKOUT) is now turned off by default.
+  * A new utility, hackrf_clock, provides a way to inspect and
+    modify configuration of hardware clocks, including turning on
+    and off CLKOUT.
+  * The rad1o badge is now supported by firmware in this release.
+    Firmware from the HackRF release/repository is different than
+    the original CCCamp firmware and only supports operation as a
+    USB SDR peripheral.
+  * When using a HackRF One with a PortaPack in "HackRF Mode"
+    (operating as a USB peripheral), the PortaPack display now
+    indicates operational status and settings.
+  * There have been many more enhancements and bug fixes.
+
+-------------------------------------------------------------------
 Mon Jan 29 13:22:57 UTC 2018 - mardnh@gmx.de
 
 - Update to version 2018.01.01
