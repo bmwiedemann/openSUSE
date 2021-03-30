@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Feb  7 14:49:02 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add missing runtime dependency on setuptools
+- Remove hashbang from library modules
+- Activate test suite
+- Update to v0.2.5
+  * Added Asian fonts support (Simplified Chinese,
+    Traditional Chinese, Japanese & Korean)
+  * Added support for right-to-left writings like Arabic, Hebrew,
+    Persian, Pashto, Urdu and Sindhi. Simply include for example
+    <pdf:language name="arabic"/>
+  * CSS property letter-spacing now supports float values and
+    relative & absolute units like cm, in, em, % etc
+  * Added unit tests for Asian and right-to-left fonts
+  * @frame properties like width, right, bottom etc. are now
+    correctly calculated depending on the page orientation and size
+  * Fixed support for multiple fonts and unicode
+  * Fixed an encoding issue with html5lib
+  * Fixed a problem with the border property in h1 to h6 heading tags
+  * Fixed compability with ReportLab 3.5.X
+  * Removed default background-image when no background-image is defined
+  * Fixed an issue with different font type that have the same name
+  * Fixed a bug that prevented support for Python 3.X
+  * testrender test: fixed transparences and included new reference
+    files. now all tests pass in Travis CI without --failed
+  * 0.0 as value for a CSS property now acts the same way as 0 and None
+  * Removed i and inch as unofficial synonyms for the in unit
+
+-------------------------------------------------------------------
 Fri May 15 12:56:36 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

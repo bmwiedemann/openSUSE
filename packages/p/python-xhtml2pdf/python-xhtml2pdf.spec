@@ -1,7 +1,7 @@
 #
 # spec file for package python-xhtml2pdf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,33 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xhtml2pdf
-Version:        0.2.4
+Version:        0.2.5
 Release:        0
 Summary:        PDF Generator Using HTML and CSS
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/xhtml2pdf/xhtml2pdf
-Source:         https://files.pythonhosted.org/packages/source/x/xhtml2pdf/xhtml2pdf-%{version}.tar.gz
-# leaving the requirements here as the tests will start working one day
-BuildRequires:  %{python_module Pillow >= 2.0}
-BuildRequires:  %{python_module PyPDF2 >= 1.26}
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module html5lib >= 1.0}
-BuildRequires:  %{python_module nose >= 1.3.3}
-BuildRequires:  %{python_module reportlab >= 3.0}
+Source:         https://github.com/xhtml2pdf/xhtml2pdf/archive/%{version}.tar.gz#/xhtml2pdf-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+# SECTION test requirements
+BuildRequires:  %{python_module Pillow >= 7.0.2}
+BuildRequires:  %{python_module PyPDF2 >= 1.26}
+BuildRequires:  %{python_module arabic-reshaper >= 2.1.0}
+BuildRequires:  %{python_module html5lib >= 1.0}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-bidi >= 0.4.2}
+BuildRequires:  %{python_module reportlab >= 3.0}
 BuildRequires:  %{python_module six}
+# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Pillow >= 2.0.0
+Requires:       python-Pillow >= 7.0.2
 Requires:       python-PyPDF2 >= 1.26
+Requires:       python-arabic-reshaper >= 2.1.0
 Requires:       python-html5lib >= 1.0
+Requires:       python-python-bidi >= 0.4.2
 Requires:       python-reportlab >= 3.0
+Requires:       python-setuptools
 Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -57,6 +62,7 @@ able to generate PDF templates very quickly without learning new technologies.
 
 %prep
 %setup -q -n xhtml2pdf-%{version}
+sed -i '1{/^#!/d}' xhtml2pdf/paragraph.py xhtml2pdf/w3c/*.py
 
 %build
 %python_build
@@ -68,7 +74,7 @@ able to generate PDF templates very quickly without learning new technologies.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# as in setup.py: test_suite = "tests", They're not even working yet
+%pytest
 
 %post
 %python_install_alternative xhtml2pdf
