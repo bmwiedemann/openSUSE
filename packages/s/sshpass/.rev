@@ -22,4 +22,20 @@
     <comment>1</comment>
     <requestid>444114</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>63693b7aebaea69784609cce6be96f91</srcmd5>
+    <version>1.09</version>
+    <time>1617130815</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 1.0.9:
+  * Explicitly set the controlling TTY (SF patch #7)
+  * Report when IP key has changed (Closes Debian bug #730101)
+  * Scrub the environment variable for -e (Closes Ubuntu bug #1649374)
+  * Pass signals that should terminate to ssh
+  * Fix race around signal handling
+  * Report IPC errors to stderr
+  * Report if can't open -f password file (closes #3)
+- remove sshpass-1.05-f_option_check.patch (upstream)</comment>
+    <requestid>869793</requestid>
+  </revision>
 </revisionlist>

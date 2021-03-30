@@ -1,7 +1,7 @@
 #
 # spec file for package sshpass
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sshpass
-Version:        1.06
+Version:        1.09
 Release:        0
 Summary:        Non-interactive SSH authentication utility
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Management
-Url:            http://sshpass.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/sshpass/sshpass-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- http://sourceforge.net/p/sshpass/patches/5/
-Patch0:         sshpass-1.05-f_option_check.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            http://sshpass.sourceforge.net/
+Source0:        https://downloads.sourceforge.net/sshpass/sshpass-%{version}.tar.gz
 
 %description
 Tool for non-interactively performing password authentication with so called
@@ -35,7 +32,6 @@ more secure public key authentication of SSH instead.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure
@@ -45,9 +41,9 @@ make %{?_smp_mflags}
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
 
 %files
-%defattr(-,root,root)
+%license COPYING
+%doc AUTHORS ChangeLog NEWS
 %{_bindir}/sshpass
 %{_mandir}/man1/sshpass.1%{ext_man}
-%doc AUTHORS COPYING ChangeLog NEWS
 
 %changelog
