@@ -1,8 +1,25 @@
 -------------------------------------------------------------------
+Mon Feb  1 12:26:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim metadata redundancies from descriptions. Fix grammar issues.
+
+-------------------------------------------------------------------
+Mon Feb  1 00:21:02 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- The correct license is GPL-3.0-or-later.
+- Update to 2.4.1.
+  * https://github.com/eiskaltdcpp/eiskaltdcpp/blob/v2.4.1/ChangeLog.txt
+  * Fixed sending of hub commands containing %[mySID] parameter.
+  * Fix text in tooltip for system tray icon in KDE Plasma 5.
+  * Added new widget "Secretary" for searching magnet links and keywords.
+  * Fixed context menu for messages in private chats.
+- Refresh ru.ts.patch.
+
+-------------------------------------------------------------------
 Thu Dec 17 15:27:07 UTC 2020 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Add subpackages: common, libeiskaltdcpp2_4, daemon, cli.
-- Add separete lang subpackeges: common-lang, qt-lang.
+- Add separate lang subpackages: common-lang, qt-lang.
 - Change all descriptions.
 
 -------------------------------------------------------------------

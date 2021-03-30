@@ -1,7 +1,7 @@
 #
 # spec file for package eiskaltdcpp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define sover   2_4
 Name:           eiskaltdcpp
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
-Summary:        Cross-platform program that uses the Direct Connect and ADC protocol
-License:        GPL-3.0-only
+Summary:        Program that uses the Direct Connect and ADC protocols
+License:        GPL-3.0-or-later
 URL:            https://github.com/%{name}/%{name}
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.firewalld
@@ -54,11 +54,11 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
 
 %description
-This package contains EiskaltDC++ program with GUI based on Qt. This is the most stable,
-flexible and convenient GUI for EiskaltDC++.
-EiskaltDC++ is a cross-platform program that uses the Direct Connect and
-Advanced Direct Connect protocols. It is compatible with DC++, AirDC++, FlylinkDC++
-and other DC clients. EiskaltDC++ also interoperates with all common DC hub software.
+This package contains the EiskaltDC++ program with a GUI based on Qt.
+EiskaltDC++ is a program that uses the Direct Connect and Advanced
+Direct Connect protocols. It is compatible with DC++, AirDC++,
+FlylinkDC++ and other DC clients. EiskaltDC++ also interoperates with
+all common DC hub software.
 
 %package common
 Summary:        Shared data for %{name}
@@ -81,11 +81,11 @@ Requires:       aspell
 Recommends:     %{name}-qt-lang
 
 %description qt
-This package contains EiskaltDC++ program with GUI based on Qt. This is the most stable,
-flexible and convenient GUI for EiskaltDC++.
-EiskaltDC++ is a cross-platform program that uses the Direct Connect and
-Advanced Direct Connect protocols. It is compatible with DC++, AirDC++, FlylinkDC++
-and other DC clients. EiskaltDC++ also interoperates with all common DC hub software.
+This package contains the EiskaltDC++ program with GUI based on Qt.
+EiskaltDC++ is a program that uses the Direct Connect and Advanced
+Direct Connect protocols. It is compatible with DC++, AirDC++,
+FlylinkDC++ and other DC clients. EiskaltDC++ also interoperates with
+all common DC hub software.
 
 %package daemon
 Summary:        Daemon for %{name}
@@ -93,13 +93,16 @@ Requires:       %{name}-common = %{version}
 Suggests:       %{name}-cli = %{version}
 
 %description daemon
-This package installs only EiskaltDC++ daemon (without any GUI).
-Support of control via JSON-RPC is enabled. Look at EiskaltDC++ CLI and Web UI programs for controlling it.
-EiskaltDC++ Qt and GTK+ UI may be used for configuring of EiskaltDC++ daemon
-(they use the same settings from core library), but they should not be launched simultaneously.
-EiskaltDC++ is a cross-platform program that uses the Direct Connect and Advanced Direct Connect protocols.
-It is compatible with DC++, AirDC++, FlylinkDC++ and other DC clients.
-EiskaltDC++ also interoperates with all common DC hub software.
+This package contains only the EiskaltDC++ daemon, without any GUI.
+Support for control via JSON-RPC is enabled. The EiskaltDC++ CLI and
+Web UI programs can be used to control it.
+EiskaltDC++ Qt and GTK+ UI may be used for configuring the
+EiskaltDC++ daemon (they use the same settings from core library),
+but they should not be launched simultaneously.
+EiskaltDC++ is a program that uses the Direct Connect and Advanced
+Direct Connect protocols. It is compatible with DC++, AirDC++,
+FlylinkDC++ and other DC clients. EiskaltDC++ also interoperates with
+all common DC hub software.
 
 %package cli
 Summary:        CLI frontend for %{name}
@@ -108,11 +111,12 @@ Requires:       perl(JSON::RPC)
 Suggests:       %{name}-daemon = %{version}
 
 %description cli
-This package installs EiskaltDC++ CLI (command-line interface) written in perl.
-This program is used to control EiskaltDC++ daemon via JSON-RPC protocol.
-EiskaltDC++ is a cross-platform program that uses the Direct Connect and Advanced Direct Connect protocols.
-It is compatible with DC++, AirDC++, FlylinkDC++ and other DC clients.
-EiskaltDC++ also interoperates with all common DC hub software.
+This package contains the EiskaltDC++ CLI (command-line interface) written in Perl.
+This program is used to control the EiskaltDC++ daemon via the JSON-RPC protocol.
+EiskaltDC++ is a program that uses the Direct Connect and Advanced
+Direct Connect protocols. It is compatible with DC++, AirDC++,
+FlylinkDC++ and other DC clients. EiskaltDC++ also interoperates with
+all common DC hub software.
 
 %lang_package -n %{name}-common
 %lang_package -n %{name}-qt
