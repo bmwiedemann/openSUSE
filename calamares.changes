@@ -1,6 +1,4 @@
 -------------------------------------------------------------------
-<<<<<<< Updated upstream
-=======
 Mon Feb  8 11:17:52 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 3.2.36.
@@ -42,14 +40,11 @@ Sun Jan 31 18:07:15 UTC 2021 - <opensuse.lietuviu.kalba@gmail.com>
     See https://github.com/OSInside/kiwi/issues/1558
 
 -------------------------------------------------------------------
->>>>>>> Stashed changes
 Fri Jan 15 17:29:04 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add compatibility with qml-autoreqprov
 
 -------------------------------------------------------------------
-<<<<<<< Updated upstream
-=======
 Fri Nov 20 10:50:18 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 3.2.34.
@@ -68,7 +63,6 @@ Fri Nov 20 10:50:18 UTC 2020 - andy great <andythe_great@pm.me>
 - Fix spec file, license file move to LICENSES/GPL-3.0-or-later.txt
 
 -------------------------------------------------------------------
->>>>>>> Stashed changes
 Mon Aug 24 11:43:12 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
 
 - Split -lang package
