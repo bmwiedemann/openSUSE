@@ -1,0 +1,90 @@
+From 485df21d0225df72b50db062b6ca97d53fa6ce7c Mon Sep 17 00:00:00 2001
+From: Callum Farmer <callumjfarmer13@gmail.com>
+Date: Sat, 26 Sep 2020 14:15:39 +0100
+Subject: [PATCH] Don't hardcode the path to the QuickChar install
+
+---
+ budgie-quickchar/quickchar/data/meson.build                              |  9 +++--
+ ...quickchar.desktop => quickchar.desktop.in} |  2 +-
+ budgie-quickchar/quickchar/data/subst.py                                 | 34 +++++++++++++++++++
+ 3 files changed, 41 insertions(+), 4 deletions(-)
+ rename budgie-quickchar/quickchar/data/{quickchar.desktop => quickchar.desktop.in} (78%)
+ create mode 100644 budgie-quickchar/quickchar/data/subst.py
+
+diff --git a/budgie-quickchar/quickchar/data/meson.build b/budgie-quickchar/quickchar/data/meson.build
+index 76cada6..8bfd416 100644
+--- a/budgie-quickchar/quickchar/data/meson.build
++++ b/budgie-quickchar/quickchar/data/meson.build
+@@ -9,9 +9,13 @@ install_data(
+     install_dir: join_paths(sysconfdir, 'xdg', 'autostart')
+ )
+ 
+-install_data(
+-    'quickchar.desktop',
+-    install_dir: join_paths(datadir, 'applications')
++substprog = find_program('subst.py')
++desktopfile = custom_target('desktopfile',
++  output : 'quickchar.desktop',
++  input : 'quickchar.desktop.in',
++  command : [substprog, '@INPUT@', pkgdatadir, '@OUTPUT@'],
++  install : true,
++  install_dir : join_paths(datadir, 'applications')
+ )
+ 
+ install_data(
+diff --git a/budgie-quickchar/quickchar/data/quickchar.desktop b/budgie-quickchar/quickchar/data/quickchar.desktop.in
+similarity index 78%
+rename from budgie-quickchar/quickchar/data/quickchar.desktop
+rename to budgie-quickchar/quickchar/data/quickchar.desktop.in
+index 04ed7cd..d3e80b9 100644
+--- a/budgie-quickchar/quickchar/data/quickchar.desktop
++++ b/budgie-quickchar/quickchar/data/quickchar.desktop.in
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Type=Application
+ Name=QuickChar Control
+-Exec=/usr/lib/quickchar/quickchar control
++Exec=PATH_LOC/quickchar control
+ Icon=gnome-characters
+ Categories=GNOME;GTK;Utility;
+ Keywords=characters;unicode;punctuation;letters;
+diff --git a/budgie-quickchar/quickchar/data/subst.py b/budgie-quickchar/quickchar/data/subst.py
+new file mode 100644
+index 0000000..1f159c4
+--- /dev/null
++++ b/budgie-quickchar/quickchar/data/subst.py
+@@ -0,0 +1,34 @@
++#!/usr/bin/python3
++
++import os
++import subprocess
++import sys
++
++inputfile = sys.argv[1]
++replacetext = sys.argv[2]
++outputfile = sys.argv[3]
++args = len(sys.argv)
++if args == 5:
++    podir = sys.argv[4]
++
++# Read in the file
++with open(inputfile, 'r') as file:
++    filedata = file.read()
++
++# Replace the target string
++filedata = filedata.replace('PATH_LOC', replacetext)
++
++# Write the file out again
++if args == 5:
++    staging = "staging"
++else:
++    staging = ""
++with open(outputfile + staging, 'w') as file:
++    file.write(filedata)
++
++if args == 5:
++    subprocess.run(['intltool-merge',
++                    '--desktop-style',
++                    podir,
++                    outputfile + staging,
++                    outputfile])
