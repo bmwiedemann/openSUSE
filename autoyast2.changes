@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Mar 18 09:25:15 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
+
+- fix handling of empty signature-handling element in autoyast
+  profile (bsc#1180968)
+- 4.3.75
+
+-------------------------------------------------------------------
+Wed Mar 17 11:50:06 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Export properly "ask" section "selection"  (bsc#1183624)
+- 4.3.74
+
+-------------------------------------------------------------------
+Mon Mar 15 20:20:41 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Move default networking section values to the network repository
+  in order to reduce the redundancy and to avoid an unexpected
+  behavior (bsc#1180535).
+- 4.3.73
+
+-------------------------------------------------------------------
+Mon Mar 15 13:13:20 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Autoyast schema: allow semi-automatic_entry alias for module in
+  semi-automatic entry as it was already documented in autoyast
+  documentation (bsc#1183512)
+- 4.3.72
+
+-------------------------------------------------------------------
+Thu Mar 11 15:49:36 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Remove the 'haspcmica' element from the schema (related to
+  bsc#1183352).
+- 4.3.71
+
+-------------------------------------------------------------------
 Thu Mar  4 14:15:24 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Import the security settings after importing the bootloader
