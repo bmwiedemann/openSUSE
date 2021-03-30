@@ -79,4 +79,35 @@
     <comment></comment>
     <requestid>848510</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>848c2baeebaebff43e88ed48da988e56</srcmd5>
+    <version>1.2.11</version>
+    <time>1617131073</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.2.11
+  * Bindings to take screenshots (default F5).
+  * Option to control weapon bobbing (actual for Planet Strike
+    only).
+  * PC Speaker SFX.
+  * Option snd_sfx_type to switch between AdLib and PC Speaker
+    audio.
+  * Option snd_is_sfx_digitized to toggle SFX digitization.
+  * Extracting unprocessed audio (*.data).
+  * Extracting PC Speaker audio.
+- Update to version 1.2.10
+  Added
+  * Support for external textures (bmp, png).
+  * Configuration for external textures (vid_external_textures).
+  * OpenAL 3D audio driver.
+  * Configuration for OpenAL driver (snd_driver, snd_oal_library,
+    snd_oal_device_name).
+  Fixed
+  * Search path with provided data_dir.
+  * Double fading on new game or load game when using hw renderer.
+  * Fade whole screen when in widescreen and 3D view is showing.
+  * Next map number for level transition.
+  * Support for lowercase resource file names.
+</comment>
+    <requestid>880434</requestid>
+  </revision>
 </revisionlist>

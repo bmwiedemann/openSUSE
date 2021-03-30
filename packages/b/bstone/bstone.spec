@@ -1,8 +1,8 @@
 #
 # spec file for package bstone
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019-2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           bstone
-Version:        1.2.9
+Version:        1.2.11
 Release:        0
 Summary:        A source port of Blake Stone
 License:        GPL-2.0-or-later
@@ -50,12 +50,11 @@ You need to start the game from within the folder with these files.
 %setup -q
 
 %build
-cd src/
 %cmake
 %cmake_build
 
 %install
-install -Dm0755 src/build/bstone %{buildroot}%{_bindir}/bstone
+install -Dm0755 build/src/bstone %{buildroot}%{_bindir}/bstone
 
 %files
 %license LICENSE "Blake Stone source code license.doc"
