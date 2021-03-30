@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b1f4f483b46f207843d7b875bd991d87</srcmd5>
+    <version>1.43.3</version>
+    <time>1617130930</time>
+    <user>RBrownSUSE</user>
+    <comment>Upstream has split virt-v2v from the libguestfs package to become a standalone package.</comment>
+    <requestid>871027</requestid>
+  </revision>
+</revisionlist>
