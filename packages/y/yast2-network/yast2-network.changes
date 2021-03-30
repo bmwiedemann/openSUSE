@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Mar 29 11:52:08 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use the ESSID to name the NetworkManager configuration files
+  for wireless networks (bsc#1183733).
+- 4.3.63
+
+-------------------------------------------------------------------
+Thu Mar 18 12:59:31 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- AutoYaST: Write NetworkManager configuration according to the
+  profile (bsc#1181701)
+- 4.3.62
+
+-------------------------------------------------------------------
+Wed Mar 17 18:26:34 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Always provide the layer2 argument when activating a qeth device
+  (bsc#1183639).
+- 4.3.61
+
+-------------------------------------------------------------------
+Wed Mar 17 09:52:08 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- NetworkManager: Added support to write bridge and bonding
+  configurations (bsc#1181701)
+- 4.3.60
+
+-------------------------------------------------------------------
+Mon Mar 15 08:18:11 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- AutoYaST: configure but not apply the network configuration at
+  the end of the 1st stage (bsc#1180535).
+- 4.3.59
+
+-------------------------------------------------------------------
+Fri Mar 12 11:35:19 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Add more space before the "Name Servers and Domain Search List"
+  frame (related to bsc#1183306).
+- 4.3.58
+
+-------------------------------------------------------------------
+Fri Mar 12 09:23:04 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix the VLAN interface renaming when suggested by a VLAN ID
+  change (bsc#1183357)
+- 4.3.57
+
+-------------------------------------------------------------------
+Thu Mar 11 15:52:10 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- AutoYaST: allow the interfaces list in the profile to be
+  empty (bsc#1183257).
+- 4.3.56
+
+-------------------------------------------------------------------
+Thu Mar 11 09:33:05 UTC 2021 - Michal Filka <mfilka@suse.com>
+
+- bnc#1180085
+  - fixed proposing wpa_supplicant - adapted to use new network-ng
+    backend.
+- dropped some old pieces of code
+- 4.3.55
+
+-------------------------------------------------------------------
 Fri Mar  5 15:46:19 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Define the network configuration buttons for the installer
