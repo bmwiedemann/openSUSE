@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 10 12:47:05 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Add validation to device map dialog to prevent exceeding BIOS
+  limit of device map (bsc#1183218)
+- 4.3.25
+
+-------------------------------------------------------------------
 Thu Mar  4 09:09:20 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Fix boot summary on s390 (bsc#1181801 and bsc#1179168)
