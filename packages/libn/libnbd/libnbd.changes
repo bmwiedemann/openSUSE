@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Sun Mar 14 18:31:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Specfile modernization
+
+-------------------------------------------------------------------
+Thu Feb 25 23:25:24 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- spec: Only enable system nbd interop tests if
+  suse_version >= 1550
+
+-------------------------------------------------------------------
+Tue Jan 26 23:36:04 UTC 2021 - jfehlig@suse.com
+
+- Initial packaging of libnbd:
+  * Version 1.7.1.
+  * sh: Add NOTES section.
+  * copy: Update multi-conn documentation.
+  * sh: Arrange --opt-mode documentation in alphabetical order.
+  * python: Add example.
+  * copy: Fix initialization complaint with ancient GCC on RHEL 7.
+  * python: Fix Python style error.
+  * copy/file-ops.c: Small whitespace fix.
+  * copy/copy-nbd-to-sparse-file.sh: Skip test unless nbdkit available.
+
