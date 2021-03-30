@@ -1,7 +1,7 @@
 #
 # spec file for package libpgf
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define so_ver 7
 Name:           libpgf
-Version:        7.19.3
+Version:        7.21.7
 Release:        0
 Summary:        Progressive Graphics File Library
 License:        LGPL-2.1-or-later
 Group:          Productivity/Graphics/Other
-URL:            http://www.libpgf.org/
-Source0:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}-latest/libPGF-codec-and-console-src.zip
+URL:            https://www.libpgf.org/
+Source0:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/libpgf.zip
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
@@ -52,26 +52,32 @@ Group:          System/Libraries
 libpgf is a library for working with PGF (Progresive Graphics File) images.
 
 %prep
-%setup -q -n libPGF-codec-and-console-src
+%setup -q -n %{name}
 
-cd PGF/Codec/
+# Fix autogen.sh failure "wrong-file-end-of-line-encoding"
+find . -name Makefile.am | xargs sed -i 's/\r$//'
+sed -i 's/\r$//' config.h.in
+sed -i 's/\r$//' configure.ac
+sed -i 's/\r$//' autogen.sh
+
+# Fix autogen.sh failure
+touch README
+
 # Add "libpgf-" prefix to all man pages to prevent conflicts with other packages
 sed -i 's/\$(mandir)\/man3\/\$\$f/\$(mandir)\/man3\/libpgf-\$\$f/' doc/Makefile.am
 
 # Fix rpmlint warning "wrong-file-end-of-line-encoding"
-sed -i 's/\r$//' README
+sed -i 's/\r$//' README.txt
 
 # Remove build time references so build-compare can do its work
 echo "HTML_TIMESTAMP = NO" >> doc/Doxyfile.in
 
 %build
-cd PGF/Codec/
 sh autogen.sh
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-cd PGF/Codec/
 %make_install DOC_DIR=%{buildroot}%{_docdir}/%{name}-devel/
 
 # Remove libtool config files
@@ -81,8 +87,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libpgf%{so_ver} -p /sbin/ldconfig
 
 %files devel
-%license PGF/Codec/COPYING
-%doc PGF/Codec/README
+%license COPYING
+%doc README.txt
 %doc %{_docdir}/%{name}-devel/
 %{_includedir}/libpgf/
 %{_libdir}/pkgconfig/libpgf.pc

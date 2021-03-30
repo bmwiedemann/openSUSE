@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Feb 27 23:18:17 UTC 2021 - Asterios Dramis <asterios.dramis@gmail.com>
+
+- Update to version 7.21.7:
+  * This bug fix is for ROI decoding only. This bug fix is
+    necessary if several Read() and ResetStreamPos() operations are
+    called with the same PGFimage object after a single Open()
+    call.
+  From version 7.21.2:
+  * Documentation and build tool update.
+
+-------------------------------------------------------------------
 Sat Apr 20 20:35:30 UTC 2019 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Update to version 7.19.3:
