@@ -1,7 +1,7 @@
 #
 # spec file for package verilator
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,20 @@
 
 
 Name:           verilator
-Version:        4.010
+Version:        4.108
 Release:        0
 Summary:        Compiling Verilog HDL simulator
 License:        Artistic-2.0 OR LGPL-3.0-only
 Group:          Productivity/Scientific/Electronics
-Url:            https://www.veripool.org/projects/verilator/wiki/Intro
+URL:            https://www.veripool.org/projects/verilator/wiki/Intro
 Source0:        https://www.veripool.org/ftp/%{name}-%{version}.tgz
 Source1:        verilator-rpmlintrc
-Patch0:         add-shebangs.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gdb
 BuildRequires:  perl
 BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Verilator compiles synthesizable Verilog (not test-bench code), plus
@@ -85,12 +83,12 @@ This package contains examples of using verilator.
 
 %prep
 %setup -q
-# Put real perl binary location into the patch
-sed -e 's:%%__perl:%__perl:' %{PATCH0} | patch -p1
+# Use real path in she-bangs
+sed -i -e '1 s@bin/env perl@bin/perl@' bin/*
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -111,8 +109,8 @@ mv %{buildroot}%{_datadir}/verilator/include/ %{buildroot}%{_includedir}/verilat
 make test
 
 %files
-%license Artistic COPYING.LESSER
-%doc Changes README
+%license Artistic LICENSE
+%doc Changes README.adoc
 %exclude %{_docdir}/%{name}/*.html
 %exclude %{_docdir}/%{name}/*.pdf
 %exclude %{_docdir}/%{name}/examples/
