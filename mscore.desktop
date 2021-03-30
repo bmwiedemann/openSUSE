@@ -1,0 +1,10 @@
+[Desktop Entry]
+Comment=WYSIWYG Music score typesetter
+Comment[de]=WYSIWYG Noteneditor
+Exec=mscore
+GenericName=mscore
+Icon=mscore
+Name=MuseScore
+StartupNotify=true
+Terminal=false
+Type=Application
