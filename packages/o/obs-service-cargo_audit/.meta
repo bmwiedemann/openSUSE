@@ -1,0 +1,5 @@
+<package name="obs-service-cargo_audit" project="openSUSE:Factory">
+  <title>An OBS service to audit rust sources for security issues.</title>
+  <description>This OBS service allows automatic scanning of rust vendored sources to detect security issues.</description>
+  <devel project="devel:languages:rust" package="obs-service-cargo_audit"/>
+</package>
