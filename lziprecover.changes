@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 12 21:55:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.22
+  * New options: -e/--reproduce, --lzip-level, --lzip-name,
+    --reference-file and -E/--debug-reproduce.
+  * Remove --dump-tdata, --remove-tdata and --strip-tdata.
+  * New debug options -M/--md5sum and -U/--unzcrash.
+
+-------------------------------------------------------------------
 Mon Jan  7 19:21:15 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.21

@@ -55,4 +55,12 @@
     <comment>- Update to new upstream release 1.21</comment>
     <requestid>663432</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2eb7133f9f642323f7245fc9169aaf9a</srcmd5>
+    <version>1.22</version>
+    <time>1617131799</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to release 1.22</comment>
+    <requestid>878668</requestid>
+  </revision>
 </revisionlist>

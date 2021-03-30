@@ -1,7 +1,7 @@
 #
 # spec file for package lziprecover
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           lziprecover
-Version:        1.21
+Version:        1.22
 Release:        0
 Summary:        Utility to repair broken lzip files
 License:        GPL-2.0-or-later
@@ -27,7 +27,6 @@ URL:            http://www.nongnu.org/lzip/lunzip.html
 Source:         http://download.savannah.gnu.org/releases/lzip/lziprecover/%name-%version.tar.gz
 Source2:        http://download.savannah.gnu.org/releases/lzip/lziprecover/%name-%version.tar.gz.sig
 Source3:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
 Requires(post):     info
 Requires(preun):    info
@@ -60,8 +59,8 @@ mkdir build
 pushd build/
 ../configure --prefix="%_prefix" --bindir="%_bindir" --datadir="%_datadir" \
 	--infodir="%_infodir" --mandir="%_mandir" --sysconfdir="%_sysconfdir" \
-	CC="%__cc" CFLAGS="%optflags"
-make %{?_smp_mflags}
+	CFLAGS="%optflags"
+%make_build
 popd
 
 %install
@@ -81,7 +80,6 @@ popd
 %install_info_delete --info-dir="%_infodir" "%_infodir/%name".info*
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog NEWS README
 %_bindir/lziprecover
 %_mandir/man1/lziprecover.1*
