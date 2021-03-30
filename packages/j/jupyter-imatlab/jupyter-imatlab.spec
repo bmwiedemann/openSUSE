@@ -1,7 +1,7 @@
 #
 # spec file for package jupyter-imatlab
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,8 @@
 
 
 %define pythons python3
-%bcond_without  test
+# We can only test if the commercial MATLAB Engine API for Python is installed
+%bcond_with  test
 Name:           jupyter-imatlab
 Version:        0.4
 Release:        0
@@ -26,6 +27,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/imatlab/imatlab
 Source0:        https://files.pythonhosted.org/packages/py3/i/imatlab/imatlab-%{version}-py3-none-any.whl
+Source1:        https://raw.githubusercontent.com/imatlab/imatlab/master/test_imatlab.py
 BuildRequires:  fdupes
 BuildRequires:  jupyter-ipykernel >= 4.1
 BuildRequires:  jupyter-ipython >= 6
@@ -34,6 +36,10 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pip
 BuildRequires:  python3-plotly
 BuildRequires:  unzip
+%if %{with test}
+BuildRequires:  python3-curses
+BuildRequires:  python3-jupyter-kernel-test
+%endif
 Requires:       jupyter-ipykernel >= 4.1
 Requires:       jupyter-ipython >= 6
 Requires:       jupyter-widgetsnbextension >= 1.0
@@ -53,6 +59,7 @@ needs to be installed first.
 
 %prep
 %setup -q -T -c
+cp %{SOURCE1} .
 
 %build
 # Make mock MATLAB engine to allow kernel installation.
@@ -61,16 +68,21 @@ mkdir matlab
 echo 'EngineError = MatlabExecutionError = Exception' > matlab/engine.py
 
 %install
-cp -a %{SOURCE0} .
+%{python_expand mkdir build; cp -a %{SOURCE0} build/}
 %pyproject_install
-# avoid time-based .pyc files for reproducibility:
-%py3_compile %{buildroot}%{python3_sitelib}
-
 PYTHONPATH=%{buildroot}%{python3_sitelib} python3 -m imatlab install --prefix %{buildroot}%{_prefix}
+cp %{buildroot}%{python3_sitelib}/imatlab-%{version}.dist-info/LICENSE.txt .
+%fdupes %{buildroot}%{python3_sitelib}
+
+%check
+%if %{with test}
+export JUPYTER_PATH=%{buildroot}%{_jupyter_prefix}
+%pyunittest -v test_imatlab.py
+%endif
 
 %files
+%license LICENSE.txt
 %{python3_sitelib}/imatlab-%{version}.dist-info
-%license %{python3_sitelib}/imatlab-%{version}.dist-info/LICENSE.txt
 %{python3_sitelib}/imatlab/
 %{_jupyter_kernel_dir}/imatlab/
 

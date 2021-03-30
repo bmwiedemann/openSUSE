@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Feb  3 23:26:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix wheel install path for new python-rpm-macros
+- pyproject_install already recompiles, no need for second time
+- Support testing (if you have MATLAB) 
+
+-------------------------------------------------------------------
 Sat Dec 21 19:07:20 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use pyproject_install macro (boo#1094323)
