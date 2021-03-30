@@ -1,0 +1,11 @@
+<package name="python-PyMuPDF" project="openSUSE:Factory">
+  <title>PyMuPDF: Python bindings for the MuPDF library</title>
+  <description>This is PyMuPDF (formerly python-fitz), a Python binding with support for MuPDF 1.14.x - &quot;a lightweight PDF, XPS, and E-book viewer&quot;.
+
+MuPDF can access files in PDF, XPS, OpenXPS, CBZ, EPUB and FB2 (e-books) formats, and it is known for its top performance and high rendering quality.
+
+With PyMuPDF you therefore can access files with extensions like &quot;.pdf&quot;, &quot;.xps&quot;, &quot;.oxps&quot;, &quot;.cbz&quot;, &quot;.fb2&quot; or &quot;.epub&quot; from your Python scripts.
+
+See the Wiki for more information, news, release notes and usage recipes.</description>
+  <devel project="devel:languages:python" package="python-PyMuPDF"/>
+</package>
