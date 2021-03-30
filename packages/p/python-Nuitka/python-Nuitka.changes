@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Feb 20 21:46:12 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Use python-sip4 for build dependency to re-enable Leap builds
+
+-------------------------------------------------------------------
+Sat Feb 20 01:27:35 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Do not build for Python 3.6 on Tumbleweed
+- Add testing using gcc, in addition to clang
+- Remove merged i811.patch
+- De-vendor ordered set using boltons
+- Add workaround for issue 995
+- Update to v0.6.12.2
+  * See https://github.com/Nuitka/Nuitka/blob/develop/Changelog.rst
+
+-------------------------------------------------------------------
 Mon Jan 25 10:53:01 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix multi Python builds
