@@ -25,10 +25,10 @@
 %bcond_with fgdb_support
 %bcond_without python2
 Name:           gdal
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
-License:        MIT AND BSD-3-Clause AND SUSE-Public-Domain
+License:        BSD-3-Clause AND MIT AND SUSE-Public-Domain
 URL:            https://www.gdal.org/
 Source0:        http://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz
 Source1:        http://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz.md5
@@ -312,6 +312,7 @@ rm -f %{buildroot}%{_datadir}/gdal/LICENSE.TXT
 sed -i 's,\(#define PACKAGE_.*\),/* \1 */,' %{buildroot}%{_includedir}/gdal/cpl_config.h
 
 %post -n lib%{name}%{soversion} -p /sbin/ldconfig
+
 %postun	-n lib%{name}%{soversion} -p /sbin/ldconfig
 
 %files -n lib%{name}%{soversion}

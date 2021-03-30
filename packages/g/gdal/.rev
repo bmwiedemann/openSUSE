@@ -501,4 +501,12 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment></comment>
     <requestid>860598</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>fd587641edc6129622964a065ac1d86d</srcmd5>
+    <version>3.2.2</version>
+    <time>1617131765</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>878485</requestid>
+  </revision>
 </revisionlist>

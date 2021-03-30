@@ -1,7 +1,7 @@
 #
 # spec file for package mosquitto
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,28 +20,32 @@
 %define c_lib   libmosquitto1
 %define cpp_lib libmosquittopp1
 Name:           mosquitto
-Version:        1.6.12
+Version:        2.0.9
 Release:        0
 Summary:        A MQTT v3.1/v3.1.1 Broker
 License:        EPL-1.0
 Group:          Productivity/Networking/Other
 URL:            https://mosquitto.org/
 Source:         https://mosquitto.org/files/source/mosquitto-%{version}.tar.gz
-Source98:       https://mosquitto.org/files/source/mosquitto-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.sig
-Source99:       %{name}.keyring
 Source1:        mosquitto.service
 Source4:        README-conf-d
 Source5:        README-ca_certificates
 Source6:        README-certs
+Source98:       https://mosquitto.org/files/source/mosquitto-%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.sig
+Source99:       %{name}.keyring
 Patch0:         mosquitto-1.4.1_apparmor.patch
 Patch1:         mosquitto-1.6.8-config.patch
+Patch2:         fix-undefined-symbols-in-plugins.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libcares-devel
-BuildRequires:  libwebsockets-devel
+BuildRequires:  libxslt-tools
 BuildRequires:  openssl-devel >= 1.0.0
+BuildRequires:  pkgconfig
 BuildRequires:  tcpd-devel
 BuildRequires:  uthash-devel
+BuildRequires:  pkgconfig(libcares)
+BuildRequires:  pkgconfig(libcjson)
+BuildRequires:  pkgconfig(libwebsockets)
 Requires(pre):  shadow
 %{?systemd_ordering}
 
@@ -112,13 +116,14 @@ Client for Mosquitto.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 find misc -type f -exec chmod a-x "{}" "+"
 
 %build
 %cmake \
   -DCMAKE_INSTALL_SYSCONFDIR=%{_sysconfdir} \
   -DWITH_WEBSOCKETS=ON \
-  -DUSE_LIBWRAP=OFF
+  -DUSE_LIBWRAP=ON
 %make_build
 
 %install
@@ -155,13 +160,16 @@ getent passwd %{name} || %{_sbindir}/useradd -g %{name} -s /bin/false -r -c "%{n
 %postun -n %{cpp_lib} -p /sbin/ldconfig
 
 %files
-%license LICENSE.txt
-%doc edl-v10 epl-v10
-%doc CONTRIBUTING.md ChangeLog.txt readme.md *.html *.example
+%license edl-v10 epl-v20 LICENSE.txt
+%doc CONTRIBUTING.md ChangeLog.txt *.html *.example
 %doc examples/ logo/ security/ misc/
 %config(noreplace) %attr(-,root,%{name}) %{_sysconfdir}/mosquitto/
 %{_bindir}/mosquitto_passwd
+%{_bindir}/mosquitto_ctrl
+#%%{_bindir}/mosquitto_ctrl_dynsec
 %{_sbindir}/mosquitto
+%{_mandir}/man1/mosquitto_ctrl.1%{?ext_man}
+%{_mandir}/man1/mosquitto_ctrl_dynsec.1%{?ext_man}
 %{_mandir}/man1/mosquitto_passwd.1%{?ext_man}
 %{_mandir}/man5/mosquitto.conf.5%{?ext_man}
 %{_mandir}/man7/mosquitto-tls.7%{?ext_man}
@@ -169,6 +177,7 @@ getent passwd %{name} || %{_sbindir}/useradd -g %{name} -s /bin/false -r -c "%{n
 %{_mandir}/man8/mosquitto.8%{?ext_man}
 %{_unitdir}/%{name}.service
 %{_sbindir}/rc%{name}
+%{_libdir}/mosquitto_dynamic_security.so
 %dir %attr(-,%{name},%{name}) %{home}
 %dir %{_sysconfdir}/apparmor.d/
 %dir %{_sysconfdir}/apparmor.d/local/
@@ -176,8 +185,7 @@ getent passwd %{name} || %{_sbindir}/useradd -g %{name} -s /bin/false -r -c "%{n
 %config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.sbin.mosquitto
 
 %files clients
-%license LICENSE.txt
-%doc edl-v10 epl-v10
+%license edl-v10 epl-v20 LICENSE.txt
 %{_bindir}/mosquitto_pub
 %{_bindir}/mosquitto_sub
 %{_bindir}/mosquitto_rr
@@ -186,22 +194,20 @@ getent passwd %{name} || %{_sbindir}/useradd -g %{name} -s /bin/false -r -c "%{n
 %{_mandir}/man1/mosquitto_rr.1%{?ext_man}
 
 %files -n %{c_lib}
-%license LICENSE.txt
-%doc edl-v10 epl-v10
+%license edl-v10 epl-v20 LICENSE.txt
 %{_libdir}/libmosquitto.so.*
 
 %files -n %{cpp_lib}
-%license LICENSE.txt
-%doc edl-v10 epl-v10
+%license edl-v10 epl-v20 LICENSE.txt
 %{_libdir}/libmosquittopp.so.*
 
 %files devel
 %{_libdir}/libmosquitto.so
 %{_libdir}/libmosquittopp.so
 %{_includedir}/mosquitto.h
-%{_includedir}/mosquitto_broker.h
-%{_includedir}/mosquitto_plugin.h
+%{_includedir}/mosquitto_*.h
 %{_includedir}/mosquittopp.h
+%{_includedir}/mqtt_protocol.h
 %{_mandir}/man3/libmosquitto.3%{?ext_man}
 %{_libdir}/pkgconfig/libmosquitto.pc
 %{_libdir}/pkgconfig/libmosquittopp.pc

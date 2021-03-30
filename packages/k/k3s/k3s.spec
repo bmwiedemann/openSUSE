@@ -1,7 +1,7 @@
 #
 # spec file for package k3s
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,16 +20,16 @@
 %define build_kubectl 1
 
 # baseversion - version of kubernetes for this package
-%define baseversion 1.14
+%define baseversion 1.20
 
 Name:           k3s
-Version:        0.4.0
+Version:        1.20.4+k3s1
 Release:        0
 Summary:        A container orchestration system based on a reduced Kubernetes feature set
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://k3s.io
-Source0:        https://github.com/rancher/k3s/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/k3s-io/k3s/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        k3s-server.service
 Source2:        k3s-agent.service
 Source3:        server.conf
@@ -68,18 +68,8 @@ distribution that differs from the original Kubernetes (colloquially
   * There is a new launcher that handles a lot of the complexity of
     TLS and options.
 
-%package hyperkube
-Summary:        The Kubernetes server components from k3s
-Group:          System/Management
-Requires:       %{name} = %{version}
-Conflicts:      kubernetes-common
-
-%description hyperkube
-hyperkube from k3s. hyperkube is an all-in-one binary for the
-Kubernetes server components.
-
 %prep
-%setup -q
+%setup -q -n %{name}-%(echo %{version} | tr '+' '-')
 sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{PATCH0}
 %patch0 -p1
 
@@ -89,7 +79,6 @@ sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{PATCH0}
 %if %{build_kubectl}
 %{gobuild} ./cmd/kubectl
 %endif
-%{gobuild} ./vendor/k8s.io/kubernetes/cmd/hyperkube
 
 %install
 %{goinstall}
@@ -97,7 +86,6 @@ sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{PATCH0}
 %{goinstall} ./cmd/kubectl
 mv -v %{buildroot}%{_bindir}/kubectl %{buildroot}%{_bindir}/kubectl%{baseversion}
 %endif
-%{goinstall} ./vendor/k8s.io/kubernetes/cmd/hyperkube
 
 # Install symlinks
 pushd %{buildroot}%{_bindir}
@@ -160,8 +148,5 @@ fi
 %{_sbindir}/rck3s-agent
 %{_sbindir}/rck3s-server
 %ghost %_sysconfdir/alternatives/kubectl
-
-%files hyperkube
-%{_bindir}/hyperkube
 
 %changelog

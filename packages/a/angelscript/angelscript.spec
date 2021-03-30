@@ -1,7 +1,7 @@
 #
 # spec file for package angelscript
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,21 @@
 #
 
 
-%define sover 2_34_0
+%define sover 2_35_0
 Name:           angelscript
-Version:        2.34.0
+Version:        2.35.0
 Release:        0
 Summary:        Scripting library
 License:        Zlib
 Group:          Development/Libraries/C and C++
 URL:            https://www.angelcode.com/angelscript/
-Source:         http://www.angelcode.com/angelscript/sdk/files/%{name}_%{version}.zip
+Source:         https://www.angelcode.com/angelscript/sdk/files/%{name}_%{version}.zip
+# PATCH-FEATURE-OPENSUSE angelscript-addons_lib.patch aloisio@gmx.com -- build and install addons library
+Patch0:         angelscript-addons_lib.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  meson >= 0.49.0
+BuildRequires:  pkgconfig
 BuildRequires:  unzip
 
 %description
@@ -49,10 +53,23 @@ functionality through external scripts.
 It supports Unix sockets and TCP/IP sockets with optional
 SSL/TLS support.
 
+%package -n lib%{name}_addons%{sover}
+Summary:        Scripting library
+Group:          System/Libraries
+
+%description -n lib%{name}_addons%{sover}
+The AngelCode Scripting Library, or AngelScript as it is also known,
+is a scripting library designed to allow applications to extend their
+functionality through external scripts.
+
+It supports Unix sockets and TCP/IP sockets with optional
+SSL/TLS support.
+
 %package devel
 Summary:        Development files for AngelScript
 Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{sover} = %{version}
+Requires:       lib%{name}_addons%{sover} = %{version}
 
 %description devel
 The AngelCode Scripting Library, or AngelScript as it is also known,
@@ -63,28 +80,75 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of the AngelScript library.
 
 %prep
-%setup -q -n sdk/%{name}/projects/gnuc
+%autosetup -p1 -n sdk
 
 %build
-export CXXFLAGS="%{optflags}"
-%make_build shared
+pushd %{name}/projects/meson
+%meson
+%meson_build
+popd
 
 %install
-make install_shared install_header install_docs PREFIX=%{_prefix} DESTDIR=%{buildroot} LIBDIR_DEST=%{_libdir} DOCDIR_BASEDIR=%{_defaultdocdir}/%{name}
-%fdupes %{buildroot} %{_defaultdocdir}/%{name}
+pushd %{name}/projects/meson
+%meson_install
+popd
+
+mv docs html
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
 
-%files
-# manual also contains the license
-%{_defaultdocdir}/%{name}
+%post -n lib%{name}_addons%{sover} -p /sbin/ldconfig
+%postun -n lib%{name}_addons%{sover} -p /sbin/ldconfig
 
 %files -n lib%{name}%{sover}
 %{_libdir}/libangelscript.so.*
 
+%files -n lib%{name}_addons%{sover}
+%{_libdir}/libangelscript_addons.so.*
+
 %files devel
-%attr(0644,root,root) %{_includedir}/*.h
+# manual also contains the license
+%doc html
+%dir %{_includedir}/AngelScript
+%dir %{_includedir}/AngelScript/autowrapper
+%dir %{_includedir}/AngelScript/contextmgr
+%dir %{_includedir}/AngelScript/datetime
+%dir %{_includedir}/AngelScript/debugger
+%dir %{_includedir}/AngelScript/scriptany
+%dir %{_includedir}/AngelScript/scriptarray
+%dir %{_includedir}/AngelScript/scriptbuilder
+%dir %{_includedir}/AngelScript/scriptdictionary
+%dir %{_includedir}/AngelScript/scriptfile
+%dir %{_includedir}/AngelScript/scriptgrid
+%dir %{_includedir}/AngelScript/scripthandle
+%dir %{_includedir}/AngelScript/scripthelper
+%dir %{_includedir}/AngelScript/scriptmath
+%dir %{_includedir}/AngelScript/scriptstdstring
+%dir %{_includedir}/AngelScript/serializer
+%dir %{_includedir}/AngelScript/weakref
+%{_includedir}/AngelScript/angelscript.h
+%{_includedir}/AngelScript/autowrapper/aswrappedcall.h
+%{_includedir}/AngelScript/contextmgr/contextmgr.h
+%{_includedir}/AngelScript/datetime/datetime.h
+%{_includedir}/AngelScript/debugger/debugger.h
+%{_includedir}/AngelScript/scriptany/scriptany.h
+%{_includedir}/AngelScript/scriptarray/scriptarray.h
+%{_includedir}/AngelScript/scriptbuilder/scriptbuilder.h
+%{_includedir}/AngelScript/scriptdictionary/scriptdictionary.h
+%{_includedir}/AngelScript/scriptfile/scriptfile.h
+%{_includedir}/AngelScript/scriptfile/scriptfilesystem.h
+%{_includedir}/AngelScript/scriptgrid/scriptgrid.h
+%{_includedir}/AngelScript/scripthandle/scripthandle.h
+%{_includedir}/AngelScript/scripthelper/scripthelper.h
+%{_includedir}/AngelScript/scriptmath/scriptmath.h
+%{_includedir}/AngelScript/scriptmath/scriptmathcomplex.h
+%{_includedir}/AngelScript/scriptstdstring/scriptstdstring.h
+%{_includedir}/AngelScript/serializer/serializer.h
+%{_includedir}/AngelScript/weakref/weakref.h
 %{_libdir}/libangelscript.so
+%{_libdir}/libangelscript_addons.so
+%{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/pkgconfig/%{name}_addons.pc
 
 %changelog

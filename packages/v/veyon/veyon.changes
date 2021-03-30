@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Mar 23 13:17:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim metadata redundancies from descriptions. Fixup grammar.
+
+-------------------------------------------------------------------
+Sat Mar 13 19:19:57 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 4.5.4.
+  * Core: fix potential crash due to race condition on shutdown
+  * Demo: refactor server shutdown for better reliability
+  * Demo: refactor demo server control for better reliability
+    (demo server is now restarted automatically when crashed)
+  * Linux: ignore missing DPMS for xrdp sessions
+  * Linux: make key sequence for user login via display manager 
+    fully configurable
+  * Linux: use session path as session ID to avoid missing updates
+    on closed sessions
+  * Linux: x11vnc: disable SHM for xrdp sessions
+  * Master: improve save/restore of checked locations/computers to
+    better handle dynamic changes when using the NetworkDiscovery 
+    add-on
+  * Service: always close sessions internally properly so session 
+    IDs are reused correctly
+  * Service: Linux: prevent service from killing itself in some 
+    cases
+  * Service: Linux: send SIGINT/SIGTERM/SIGKILL recursively to 
+    terminate server instances and child processes more reliably
+  * Service: Linux: decrease grace period for server processes
+  * Service: Linux: actively stop server for closing sessions
+  * Various PCH-related build system improvements
+  * Update translations
+
+-------------------------------------------------------------------
 Sat Feb 27 10:27:39 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 4.5.3.

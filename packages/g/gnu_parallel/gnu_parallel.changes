@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 23 15:02:34 UTC 2021 - Anton Smorodskyi <asmorodskyi@suse.com>
+
+- Update to release 20210322
+  * parallel: Partial Reuse licensing support.
+  * parallel: Bugfix {0%}/{0#}. Added warning_once(). 
+
+-------------------------------------------------------------------
 Sun Feb 21 23:22:18 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20210222

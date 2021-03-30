@@ -227,4 +227,12 @@
     <comment>- Drop recommendation for timidity</comment>
     <requestid>834759</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>27290bc9244212db5c4dba0d55905b70</srcmd5>
+    <version>2.3.1</version>
+    <time>1617131939</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>879932</requestid>
+  </revision>
 </revisionlist>

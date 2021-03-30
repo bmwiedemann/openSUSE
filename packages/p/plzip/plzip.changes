@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Mar 12 20:51:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9:
+  * main.cc (main): Report an error if a file name is empty.
+    Make '-o' behave like '-c', but writing to file instead of stdout.
+    Make '-c' and '-o' check whether the output is a terminal only once.
+    Do not open output if input is a terminal.
+  * main.cc: New option '--check-lib'.
+  * Replace 'decompressed', 'compressed' with 'out', 'in' in output.
+  * decompress.cc, dec_stream.cc, dec_stdout.cc:
+    Continue testing if any input file fails the test.
+    Show the largest dictionary size in a multimember file.
+  * main.cc: Show final diagnostic when testing multiple files.
+  * decompress.cc, dec_stream.cc [LZ_API_VERSION >= 1012]: Avoid
+    copying decompressed data when testing with lzlib 1.12 or newer.
+  * compress.cc, dec_stream.cc: Start only the worker threads required.
+  * dec_stream.cc: Splitter stops reading when trailing data is found.
+    Don't include trailing data in the compressed size shown.
+    Use plain comparison instead of Boyer-Moore to search for headers.
+  * lzip_index.cc: Improve messages for corruption in last header.
+  * decompress.cc: Shorten messages 'Data error' and 'Unexpected EOF'.
+  * main.cc: Set a valid invocation_name even if argc == 0.
+  * Document extraction from tar.lz in manual, '--help', and man page.
+  * plzip.texi (Introduction): Mention tarlz as an alternative.
+  * plzip.texi: Several fixes and improvements.
+  * testsuite: Add 8 new test files.
+
+-------------------------------------------------------------------
 Mon Jan  7 21:18:14 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.8

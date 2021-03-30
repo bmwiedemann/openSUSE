@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Mar 30 14:20:42 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Enable instantiated services (boo#1184165)
+
+-------------------------------------------------------------------
+Mon Mar 29 16:18:57 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Prepare instantiated service/timer support but not enable it:
+  This seems to fail due to missing systemd support right now.
+  So the only option at the moment is to copy the timer and unit
+  file for a 2nd instance. Mark all files as part of dehydrated.target
+
+-------------------------------------------------------------------
+Mon Mar 29 16:18:27 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Rework support for /etc/dehydrated/postrun-hooks.d/:
+  dehydrated.service nolonger starts them directly, the support was
+  moved to a separate unit file. Please run:
+
+  systemctl enable dehydrated-postrun-hooks.service
+
+  to restore this functionality
+- Run dehydrated as dehydrated user again
+
+-------------------------------------------------------------------
+Mon Mar 29 16:08:09 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Do not use the full path for config.d in the config files, which
+  will simplify implementing multi instance support.
+
+-------------------------------------------------------------------
+Mon Mar 29 16:07:44 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added more-examples.patch:
+  Explain how we can have per certificate key algorithms
+
+-------------------------------------------------------------------
+Sun Mar 14 22:29:06 UTC 2021 - Olav Reinert <seroton10@gmail.com>
+
+- Add directory where cleanup can archive unused certificates
+
+-------------------------------------------------------------------
 Wed Mar  3 15:42:18 UTC 2021 - Daniel Molkentin <daniel.molkentin@suse.com>
 
 - Clarified new default settings. KEY_ALGO=secp384r1. Please consult

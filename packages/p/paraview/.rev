@@ -378,4 +378,12 @@ Please consider for 13.2, which already has 4.2.0-RC1 and the only change is the
     <comment></comment>
     <requestid>853419</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>ee418dab2e9bcc3754e0de4f9a82f593</srcmd5>
+    <version>5.9.0</version>
+    <time>1617131546</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>877406</requestid>
+  </revision>
 </revisionlist>

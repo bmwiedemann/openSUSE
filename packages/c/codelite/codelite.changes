@@ -1,4 +1,432 @@
 -------------------------------------------------------------------
+Sat Mar  6 18:31:35 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 15.0.0.
+  * bug fixes
+    * Fixed: hiding line number margin is no longer possible
+    * Find In Files: should now load faster on Windows
+    * Fixed: File System Workspace: keep the last 'File mask' 
+      value used
+    * Language Server Protocol: Initialized notification to the 
+      server
+    * Prevent hangs under Wayland when changing Workspace View 
+      tabs
+    * Properly save/load workspace breakpoints and avoid mixing 
+      between two different workspaces breakpoints
+    * File System Workspace: when 'remote development' is enabled,
+      do not attempt to remote save a file that is not part of our
+      source tree or was opened by the SFTP plugin
+    * Fixed: crash when switching between themes
+    * gdb does not display local variables properly
+    * Creating a new file from the context menu in the File System
+      Workspace - does not add it to git or svn
+    * Outline: honour the general background theme colour
+    * Bootstrap wizard: if the user select Default profile, load 
+      all plugins
+    * Fixed crash in codelite-terminal when executed with 
+      --command
+    * Fixed: SFTP overrides file attributes if these were modified
+      after the file was loaded into CodeLite
+    * LLDB settings: keep the full path for debugserver
+    * Fixed: cppcheck is now working from the context menu again
+    * File System Workspace: set the default working directory to
+      the workspace folder
+    * PHPdoc return value is not handled correctly 
+  * Changes
+    * Displaying the parent folder in the tab label is now optional
+    * Git push: just execute git push without prompting the user to
+      select remote 
+    * By default, show minimal list of buttons in the toolbar when
+      first time installing CodeLite
+    * By default, enable minimal list of plugins (by profile type)
+    * File System Workspace: split the settings into 2 different 
+      files: a local and shared file. The content in the "local" 
+      files is kept under .codelite/ directory in the workspace 
+      folder and is not to be saved into git or any source control
+      the * default .workspace file contains properties that should
+      be shared
+    * File System Workspace: added 'working directory' field
+    * Language Server Protocol: optimized the traffic between 
+      LSP <-> CodeLite by adding checksum checks before calling LSP
+      to re-parse a file
+    * Language Server Protocol: added support for implemented 
+      'extDocument/documentSymbol' protocol message
+    * PHP: update PHP xdebug UI view to fit the IDE look
+    * Language Server Protocol: added an option to pass environment
+      variables + initialization options directly from the UI
+    * GDB: Honor user's ~/.gdbinit file
+    * File System Workspace: added an option to use remote build
+    * Internal changes to how GDB communicate changes to CodeLite
+    * Appearance: honor *system* dark themes
+    * Language Server Protocol: install the user code completion 
+      provided by clangd automatically
+    * Creating or deleting a folder via the 'Explorer' view, will 
+      automatically sync PHP workspace
+    * file system workspace: extend the default file extensions to
+      show with *.py, *.rb, *.php and *.php
+    * python support: adjust method document style to match the 
+      NumPy method as described here: 
+      https://docs.python-guide.org/writing/documentation/
+    * [PHP] Find functions in context when inserting PHPDoc
+    * [PHP] Add return type to signature
+    * [PHP] Add nullable type to signature in auto-complete
+    * [PHP] Hint nullable and default values
+    * [PHP] Handel parsing of by reference values in PHPDoc
+    * [PHP] Allow parsing of nullable types from PHPDoc
+    * [PHP] Handle parsing PHP 7.1 nullable types
+    * [PHP] Handle common mistakes when parsing PHPDoc
+    * [PHP] Add missing native types
+    * [PHP] Group tags in generated PHPDoc
+    * [PHP] Set return type to mixed when unspecified
+    * Callgraph is no longer included in the default installer of
+      CodeLite
+    * File System Workspace: added the ability to exclude folders
+      from the workspace. The folders are still visible, but they 
+      will be excluded in * various operations, like Find In Files,
+      Parsing etc
+    * Full parsing of workspace is roughly 30% faster now
+    * Renamed default build system from "CodeLite Make 
+      Generator" -> "CodeLite Makefile Generator"
+    * Added new Build System: CodeLite Makefile 
+      Generator - UNIX - which generates UNIX compatible Makefiles, 
+      even when on Windows (useful for cygwin / MSYS environments)
+    * contextual highlight is no longer done using the SQLite 
+      symbol database, as a result it should feel much more faster
+    * Git reset: added a WARNING icon to the dialog + Cancel 
+      button (which is now the new default)
+    * Navigation bar now also displays "git blame" info 
+      (author + commit hash + date) for the current line
+    * UI updated to the Preferfences and Colour and fonts dialog
+    * Refined dark theme support by removing various border which
+      might look bright on dark theme
+    * Language Server Plugin: you can now mark an LSP as SSH. This 
+      will execute it on a remote machine instead (you still need 
+      to make sure that it is installed on the remote machine)
+    * Quick Debug: it is now possible to debug over SSH from. Just 
+      state the account + binary to debug and CodeLite will do the 
+      rest
+    * Language Server Plugin: opening a header file will now 
+      automatically send the implementation file (cpp) to the active
+      LSP for parsing. This way we make sure that goto-definition 
+      will work immediately
+    * Implemented a proper "switch to workspace" functionality. 
+      It is now possible to call Open Workspace without the need 
+      to the currently opened one. In addition, CodeLite will now 
+      display a dialog that will list the last opened workspaces
+    * PHP Find In Files: 1. Starting find-in-files from the context
+      menu will force the find-in-files dialog to use the selected 
+      dialogs from the tree view *this are transient paths and will 
+      not be remembered* 2. Starting find-in-files from any other 
+      way, will use the last used settings
+    * Fixed: find in files offset is broken when non ASCII text is 
+      presented in the editor 
+- Rebase fix_compilation_JSON_wxWidgets.patch.
+
+-------------------------------------------------------------------
+Wed Nov 25 19:22:34 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 14.0.2.
+  * Increased the external tools limit from 10 -> 20
+  * wxCrfater: Wrap the include statements part of the generated 
+    code with // clang-format {on|off} block this will disable any
+    include sorting done by clang-format which might break 
+    compilation
+  * New project dialog re-written and simplified
+  * Diff View : added "find" command
+  * Added menu option: Help -> Report an issue
+  * Various font fixes in the code completion windows
+  * Diff frames now start maximized
+  * Diff View: all the toolbar commands can now be executed from 
+    the keyboard
+  * New build system. the old Default was renamed and now is called
+    Default (DEPRECATED). The new build system performs a full out
+    of the source tree build. The entire build artifacts are placed
+    in a single folder under the workspace path, this is similar to
+    CMake
+  * New workspace type introduced: The File System Workspace 
+    see: https://wiki.codelite.org/pmwiki.php/Main/FileSystemWorkspace
+  * Improved startup time by reducing the number of syscalls 
+    significantly
+  * Language Server Protocol: discard code-completion responses if
+    a new request was already sent to the server
+  * Use PATH to search binaries instead of hard coded /usr/bin/ 
+    path
+  * UI: Updated the tabs drawing (mainly the "DEFAULT" and the 
+    "MINIMAL" styles)
+  * wxCrafter: UI update: the right side view no longer has a 
+    splitter, instead it only uses tabs
+  * Debugger->Attach to process dialog: the process ID is now also
+    used for filtering
+  * File System Workspace: save all modified files before the build
+    starts
+  * Increase the code completion box width
+  * Restart all LSP once a build process is completed
+  * SFTP: once we open the SFTP browser to view a remote server, 
+    keep the session
+  * Simplify the LSP configuration dialog
+  * UI updates to the tab drawings
+  * Language Server Plugin: support for auto inclusion of missing 
+    headers
+  * Language Server Plugin: auto detect ( by clicking the Scan 
+    button ) installed LSPs currently supported: 
+    `python-language-server` and `clangd`
+  * VIM plugin imporvements
+  * New Class dialog simplification
+  * Outline tab: remove the search text control, you can now use 
+    Ctrl-F search a symbol
+  * Fixed clang compiler detection. On OSX, also search for clang 
+    compiler installed by brew
+  * Bash editor: make $ a valid word character
+  * More DPI aware changes
+  * File System Workspace: dont use the 'Quick Debug' for starting
+    debug session
+  * File System Workspace: store the breakpoints when the 
+   workspace is closed
+  * File System Workspace: add an option to choose debugger in
+    the settings dialog
+  * Code completion: don't add extra > or " when choosing an entry
+    from the #include completion list
+  * Code completion: constructor items are marked with the proper 
+    icon in the completion list
+  * Code completion: template items are now completed in the 
+    editor in the form of: vector<|> where "|" marks the caret
+  * Quick Find All / Add Next (Ctrl-K) -> honour the find bar 
+    options (wholeword, match case etc)
+  * LSP: added an option to restart the LSPs
+  * Performance improvements
+  * Auto search and detect LSP (clangd, python)
+  * C++ parser thread will now parse also files without standard 
+    C++ extension which defined as such under 
+    'Settings->Code Completion->General'
+  * Visual updates to the 'Replace In Files' view
+  * GDB: limit the number of displayed elements of arrays / object
+    with a configurable value. The default is set to 100
+  * File system workspace: added an option to hide specific file 
+    types from the view, with reasonable defaults: 
+    "*.o;*.pyc;*.obj;*.workspace;*.o.d;*.exe;*.dll;*.project"
+  * Python: typing """ followed by an ENTER, generates and insert 
+    a block comment
+  * Python: support Ctrl-/ and Ctrl-Shift-/ for inserting block /
+    line comments
+  * Docker: auto detect docker binaries
+  * Docker: make the 'build' Dockerfile command work out of the 
+    box without setting anything in the 'Build' tab
+  * LSP plugin: added 'Find Symbol' to the editor's context menu
+  * Fullscreen is now persistent between restarts
+  * SFTP plugin: support ssh-agent
+  * Language Server Plugins: support connecting an already running
+    LSP server (can be on a remote machine)
+  * Reload File: keep the folding + bookmarks set on the file
+  * Separated between the 'smart paren/bracket' and 'auto add 
+    closing paren/bracket' functionalities in the UI. i.e. these 
+    2 now have 2 different checkboxes in the UI
+  * C++ class generator: use .hpp file by default instead of .h
+  * When loading wxCrafter view, expand the top level node item
+  * C++ class wizard: support file system workspace
+  * Give the git log dialog a Close button
+  * Make the dialog Close when ESC is pressed
+  * When offering a list of possible terminals in 
+    Settings > Preferences >Terminal, don't include ones that are 
+    not currently available on the user's system
+  * wxCrafter: should now also be working with File System
+    Workspace
+  * CodeLite's SFTP plugin now uses ssh-agent
+  * The stop build button in the c++ workspace's mini toolbar was 
+    removed. The build button now changes its icon to 'stop' while 
+    a build is in progress
+  * C++ workspace: added the option to stop an executed program 
+    from the mini workspace toolbar
+  * Debugger: use better default values
+  * Auto prompt for LSPs when first time installing CodeLite 
+  * codelite-make keeps coredumping when using a project with a 
+    custom makefile
+  * View Navigation Bar hotkey does not toggle check mark
+  * Regression: C++ open resource allows multiple selection
+  * How to make Navigation Bar appear by default ?
+  * Subversion plugin : path information missing
+  * Fixed: codelite crash when deleting the last panel in main box
+    sizer, or delete the main box sizer
+  * Fixed: GDB shows a message box when SIGPIPE is captured
+  * Debugger doesn't work on Mac with codelite
+  * Debugger doesn't show backtrace when program receives SIGPIPE
+  * Fixed: Language Server plugin can now handle binary output 
+    returns from the various servers (e.g. clangd in some cases 
+    returns binary data integrated into the completion results)
+  * Fixed: find in files output is now sorted by A-Z
+  * Changing font for build ouptut window does not work
+  * Fixed: failed to start LSP server when the command contains 
+    spaces with backslashes in it (e.g. "C:\Program Files\..."
+  * Fixed: project settings (C++): hitting ENTER in the environment
+    page, dismisses the dialog
+  * Unable to create new project
+  * Fixed: find in files hangs when Enable pipe filter is checked 
+    and the content before the first pipe is empty
+  * Fixed: Pressing keyboard LEFT arrow in tree views does not jump
+    to parent node
+  * Fixed: delay on tab switching on GTK3 with slow machines
+  * Implemented handling for SQLite error: disk I/O error
+  * https://github.com/eranif/codelite/issues/2408
+  * Fixed: delay on tab switching on GTK3 with slow machines
+  * Implemented handling for SQLite error: disk I/O error
+  * wxCrafter Panel Cannot be resized correctly
+  * Gnome terminal does not work casued by 
+    4e270fb42bd8b1a8f5fc72817cda9005e8ea44e4. Change it back.
+  * Fixed: when choosing a template function from the code 
+    completion, the inserted code block is shuffled
+  * File System workspace: update the files cache when a new file 
+    is created
+  * Fixed possible buffer overflow
+  * Fixed: SFTP bookmarks does not work
+  * clDiffFrame, used e.g. by git Diff View, can now be closed with
+    the ESC key
+  * Make Ctrl-C in the Output tab of the Debugger Panework work 
+    again 
+    
+- Updates since 12.0.0.
+  * Make alphabetical sorting of the Notebook tabs' dropdown menu 
+    optional from settings->preferences->windows & tabs
+  * Remove the Trace output tab. Instead of the Trace tab, all the
+    log messages are now redirected to CodeLite log file 
+    ~/.codelite/codelite.log
+  * Spell checker plugin "Continuous" mode is now persistent 
+    between runs
+  * Make Ctrl-C over an empty line copying the entire line optional
+  * spellcheck: a bit more false positive reduction in continuous 
+    mode
+  * Navigation bar: allow the user to place it below or above the
+    editor control
+  * (feature request) Show number of chars and/or bytes in text 
+    selection in the footer
+  * (feature request) Add possibility for renaming folders
+  * lldb: added run-to-caret and jump-to-caret.
+  * lldb: added option to dislay thread name to threads pane
+  * lldb: added add watch context menu in editor and remove watch 
+    context menu in locals view
+  * lldb: expanded locals recursively and don't re-expand 
+    previously collapsed items
+  * lldb: added a thread context menu with suspend/resume.
+  * lldb: quickly add inner class members into the watch view
+  * lldb: support changing the display format (similar to gdb)
+  * Make the Ctrl-TAB and Ctrl-Shift-TAB configurable
+  * Feature Request: move editor tab left/right functionality
+  * subversion plugin : cannot handle unversioned files
+  * Feature request: Find In Files: all files relative from 
+    workspace (and down)
+  * wxCrafter: added support for subclassing wxToolBar and 
+    wxAuiToolBar
+  * New Notebook style was added
+  * Detach Editor now allows to DnD editors from the main notebook 
+    to the detached frame
+  * Database explorer UI revamped
+  * Support customizing the captions colours
+  * Added syntax highlight for Dockerfile
+  * New plugin: Docker, now edit build and execute Docker 
+    containers from CodeLite
+  * ToolBar: support customisation 
+    (choose which tools are displayed)
+  * CodeLite is now more friendly with the dark themes
+  * Use new controls for trees and table based views
+  * Allow building a header file (by compiling its CXX counterpart)
+  * Don't execute post build commands when compiling a single file
+  * Adjust doxygen settings when using /*!
+  * Make CodeLite compile and run against GTK3
+  * All bitmaps were replaced with a consistent clear bitmaps 
+    (two sets created: for dark and normal themes)
+  * Terminal support in CodeLite simplified. There is a single 
+    location where you can choose which terminal 
+    (from a predefined list of terminals) to use, this selection 
+    now affects all terminals launched by CodeLite
+  * wxCrafter: support wxMiniFrame
+  * WebTools plugin: Node.js debugger re-written to support newer 
+    versions of Node.js 
+    (The Node.js project changed the debugger protocol)
+  * The debugger toolbar is now a floating toolbar that shows when 
+    debug session starts
+  * No more splash screen
+  * Find in Files dialog feature req
+  * It is now possible to perform find in files in the SFTP tree 
+    view
+  * CppCheck updated to version 1.85
+  * CodeLite now accepts folder path as a command line argument and
+    opens it in the "Explorer" view. If a workspace file exists in 
+    the path given, the workspace is loaded instead of opening the 
+    folder
+  * Support document code completion (i.e. hitting Ctrl-Space in a
+    block comment will suggest the various document keywords 
+    (e.g. @param @brief etc.)
+  * NodeJS debugger: added the ability to copy the backtrace into 
+    the clipboard
+  * Implement PHP comments fold
+  * Added support to Language Servers
+  * Find In Files: the Look In and File mask fields are now kept 
+    and loaded per workspace type. Sensible defaults are used per 
+    workspace
+  * Find In Files: the Look In field is now a free text field
+  * Language Server plugin: auto restart the LSP once new 
+    compile_commands.json is generated
+  * New plugin: EOSWiki - support blockchain development using 
+    EOSIO
+  * Find In Files: allow to exclude folder from the search by using
+    wild card syntax. For example, to exclude all content from 
+    node_modules folder, you can add to the Look In field this 
+    line: -*node_modules*
+  * Better dark theme support for OS with no dark theme 
+  * CodeLite diff plugin: support folders diff Ctrl-Alt-F by 
+    default. 
+  * Added support for pinned projects view. A pinned projects gives
+    a quick access to the project context menu without the need to 
+    search for the project item in the C++ workspace view 
+  * Files opened via the SFTP no longer displays the "cloud" icon
+  * Allow spell checker plugin to work with multiple CodeLite 
+    instances
+  * Fixed: Ctrl-Shift-P -> Svn Commit does not work
+  * Fixed: Checking "Use Codelite's built-in terminal emulator" 
+    requires uninstall/reinstall
+  * Fixed: crash when editing keyboard shortcut
+  * Fixed: Doxygen tweaks use wrong line ending
+  * Fixed: OSX: at times, the nodejs debugger did not start
+  * Copy & paste functions in SVN Commit dialog are not available
+  * Right clicking on vdir with physical one does not default new 
+    template wizard to that directory
+  * New Class and New Template Wizard do not enforce same filename
+    case
+  * wxCrafter: Fixed: when using in frame mode, make sure that all 
+    dialogs shown from wxC, are parented to this main frame and not
+    CodeLite's one
+  * wxCrafter: Fixed: Top level windows (Frame, Dialog and Top 
+    level Panel) did not honor the common properties (bg colour, 
+    fg coluor, hidden, focused and disabled state)
+  * wxCrafter: Fixed: When in frame mode, use CodeLite' wxAUI 
+    docking art for UI persistency
+  * wxCrafter: Fixed: All generated files are now formatted 
+    according to CodeLite's formatter settings
+  * wxCrafter: Fixed: Honor the "Format Inherited Classes" setting
+    property
+  * Fixed: debugger arrays are displayed incorrectly in the Locals
+    & Watches view
+  * Fixed: code completion window is not positioned correctly on 
+    multiple screens with different resolutions
+  * Fixed: unable to select virtual directory in various wxCrafter
+    dialogs
+  * When starting CodeLite from the command line with a file name 
+    as input, don't show the welcome page
+  * Fixed: creating a C++ workspace by dragging a folder from the 
+    file manager does not work if the folder has special chars in 
+    it's name
+  * Fixed: Memcheck generates malformed XML file path, cannot 
+    create file and fails to start
+  * Fixed: codelite-make broken
+  * Fixed: CMake plugin regression (missing double quotes in the 
+    generated link_directory entries)
+- Add fix_compilation_JSON_wxWidgets.patch to work around wxWidgets
+  builds on openSUSE cause Codelite to fail to compile. 
+  gh#eranif/codelite#2649
+- Add fix_node_env-script-interpreter.patch, Fix RPMLINT warning
+  env-script-interpreter.
+- Remove codelite-disable-new-version-check.patch, not applicable.
+- Fix position-independent-executable-suggested by adding -pie flag.
+
+-------------------------------------------------------------------
 Mon Mar 18 22:45:56 UTC 2019 - Mariusz Fik <fisiu@opensuse.org>
 
 - Fix again rpath for plugins.

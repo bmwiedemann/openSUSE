@@ -240,4 +240,32 @@
   See README.maintainer for details.</comment>
     <requestid>876590</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>1584fb26f3119b42b99d729a5d67d55e</srcmd5>
+    <version>0.7.0</version>
+    <time>1617132227</time>
+    <user>RBrownSUSE</user>
+    <comment>- Enable instantiated services (boo#1184165)
+
+- Prepare instantiated service/timer support but not enable it:
+  This seems to fail due to missing systemd support right now.
+  So the only option at the moment is to copy the timer and unit
+  file for a 2nd instance. Mark all files as part of dehydrated.target
+
+- Rework support for /etc/dehydrated/postrun-hooks.d/:
+  dehydrated.service nolonger starts them directly, the support was
+  moved to a separate unit file. Please run:
+  systemctl enable dehydrated-postrun-hooks.service
+  to restore this functionality
+- Run dehydrated as dehydrated user again
+
+- Do not use the full path for config.d in the config files, which
+  will simplify implementing multi instance support.
+
+- Added more-examples.patch:
+  Explain how we can have per certificate key algorithms
+
+- Add directory where cleanup can archive unused certificates</comment>
+    <requestid>882190</requestid>
+  </revision>
 </revisionlist>

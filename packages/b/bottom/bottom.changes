@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Mar  6 12:33:10 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.7
+  * Fixes incorrect colours being used the CPU widget in basic
+    mode.
+  * Fixes hide_table_gap not working in the battery widget.
+  * Fixes the sorting arrow disappearing in proc widget under
+    some cases.
+  * Fixes basic mode failing to report CPUs if there are less than
+    4 entries to report.
+- Update to version 0.5.6
+  * Fixed temperature sensors not working at all on non-Linux
+    platforms.
+- Update to version 0.5.5
+  * Fixed CPU graph colours not matching the legend in the "all"
+    state.
+- Update to version 0.5.4
+  Changes
+  * Removed the --debug option for now.
+  Bug Fixes
+  * Fixes a performance regression causing high memory and CPU
+    usage over time.
+  * Fixes process states not showing.
+
+-------------------------------------------------------------------
 Sat Nov 28 16:27:52 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.3

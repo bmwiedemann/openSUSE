@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pyphen
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pyphen
-Version:        0.9.5
+Version:        0.10.0
 Release:        0
 Summary:        Pure Python module to hyphenate text
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MPL-1.1
-Group:          Development/Languages/Python
-Url:            https://github.com/Kozea/Pyphen
+URL:            https://github.com/Kozea/Pyphen
 Source:         https://github.com/Kozea/Pyphen/archive/%{version}.tar.gz
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -53,7 +52,7 @@ This module is a fork of python-hyphenator, written by Wilbert Berendsen.
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v test.py
 
 %files %{python_files}
-%doc README
+%doc README.rst
 %license COPYING COPYING.GPL COPYING.LGPL COPYING.MPL
 %{python_sitelib}/*
 

@@ -25,6 +25,7 @@ License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/fedora-infra/fedora-messaging
 Source:         https://files.pythonhosted.org/packages/source/f/fedora_messaging/fedora_messaging-%{version}.tar.gz
+Patch0:         https://github.com/fedora-infra/fedora-messaging/pull/232.patch#/pr_232.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -67,6 +68,7 @@ A set of Python tools for using Fedora's messaging infrastructure.
 
 %prep
 %setup -q -n fedora_messaging-%{version}
+%patch0 -p1
 
 %build
 %python_build

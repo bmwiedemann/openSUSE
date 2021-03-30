@@ -1,7 +1,7 @@
 #
 # spec file for package plzip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,20 +18,19 @@
 
 
 Name:           plzip
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Parallel LZMA Data Compressor
 License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
-URL:            http://www.nongnu.org/lzip/plzip.html
-Source:         http://download.savannah.gnu.org/releases/lzip/plzip/%name-%version.tar.gz
-Source2:        http://download.savannah.gnu.org/releases/lzip/plzip/%name-%version.tar.gz.sig
+URL:            https://www.nongnu.org/lzip/plzip.html
+Source:         https://download.savannah.gnu.org/releases/lzip/plzip/%name-%version.tar.gz
+Source2:        https://download.savannah.gnu.org/releases/lzip/plzip/%name-%version.tar.gz.sig
 Source3:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  c++_compiler
 BuildRequires:  lzlib-devel
 Requires(post):  %install_info_prereq
-Requires(preun):  %install_info_prereq
+Requires(preun): %install_info_prereq
 
 %description
 Plzip is a parallel version of the lzip data compressor. The files
@@ -55,8 +54,8 @@ pushd build/
 ../configure --prefix="%_prefix" --bindir="%_bindir" --datadir="%_datadir" \
 	--includedir="%_includedir" --infodir="%_infodir" --libdir="%_libdir" \
 	--mandir="%_mandir" --sysconfdir="%_sysconfdir" --enable-shared \
-	CC="%__cc" CFLAGS="%optflags" CXX="%__cxx" CXXFLAGS="%optflags"
-make %{?_smp_flags}
+	CFLAGS="%optflags" CXXFLAGS="%optflags"
+%make_build
 popd
 
 %install
@@ -66,7 +65,7 @@ popd
 
 %check
 pushd build/
-make %{?_smp_mflags} check
+%make_build check
 popd
 
 %post
@@ -76,8 +75,8 @@ popd
 %install_info_delete --info-dir="%_infodir" "%_infodir/%name.info%ext_info"
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
 %_bindir/plzip
 %_infodir/plzip.info*
 %_mandir/man1/plzip.1*

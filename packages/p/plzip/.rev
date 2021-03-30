@@ -86,4 +86,12 @@
     <comment>- Update to new upstream release 1.8</comment>
     <requestid>663443</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8c30f87e34f6f6724b9fe4710e8c9f2d</srcmd5>
+    <version>1.9</version>
+    <time>1617131780</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 1.9:</comment>
+    <requestid>878667</requestid>
+  </revision>
 </revisionlist>

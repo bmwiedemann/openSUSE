@@ -46,4 +46,12 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     satisfied by either go metapackage or go1.1x packages. (forwarded request 834020 from jfkw)</comment>
     <requestid>834021</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ea6a5fbd7de74763128ab99ca5048bad</srcmd5>
+    <version>1.18.0</version>
+    <time>1617131530</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.18.0: (forwarded request 879749 from jfkw)</comment>
+    <requestid>879750</requestid>
+  </revision>
 </revisionlist>

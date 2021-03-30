@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Mar 25 14:25:49 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to upstream version 1.20.4+k3s1
+  * Known Issues
+    - K3s servers should always be upgraded before agents. Agents upgraded to
+      this release before all servers have been upgraded will fail to start due to
+      the issue described at #2996
+  * Changes since v1.20.2+k3s2:
+    + Upgrade Kubernetes to v1.20.4 (#2960)
+    + K3s servers now use appropriate HTTP response codes to node join failures
+      caused by incorrect credentials (#2915)
+    + ServiceLB now adds IP addresses for all nodes running LB pods to the
+      Service ingress IP list (#2909)
+    + K3s will now reliably enable CFS quotas when the cpu and cpuacct cgroup
+      controllers are comounted (#2911)
+    + K3s nodes can now successfully join clusters when the cluster CA
+      certificate is trusted by the OS CA bundle (#2743)
+    + K3s binary size has been reduced; time to first launch a new version of
+      K3s should be reduced as well (#2905)
+    + K3s is now compiled with golang 1.15.8, resolving a common source of
+      crashes on 32bit arm systems (#2896)
+    + Crictl will more reliably locate its config file when run by non-root users (#2894)
+    + The K3s systemd unit will successfully start with a missing
+      EnvironmentFile (#2886 @AkihiroSuda)
+    + The K3s Network Policy Controller has been updated, offering improved
+      performance and reliability of network policy enforcement (#2867)
+    + K3s containerd now supports AppArmor signal mediation (#2877)
+    + The K3s embedded userspace (k3s-root) has been updated to fix several
+      BusyBox CVEs and allow use of the fuse-overlayfs snapshotter (#2862 #2847)
+    + K3s now supports cgroupv2 (#2844)
+    + Several regressions in rootless support have been resolved (#2846)
+    + Cadvisor statistics are no longer missing pod labels (#2836)
+    + Embedded etcd's Prometheus metrics can now be exposed beyond localhost (#2750 @yuriydzobak)
+    + The node.cloudprovider.kubernetes.io/uninitialized taint on new nodes is
+      now cleared more reliably (#2843)
+    + Embedded etc snapshots can now be performed on-demand (#2819)
+    + K3s no longer validates containerd snapshotter functionality when not
+      using the embedded containerd (#2800 @sonicaj)
+  * Embedded Component Versions
+    * Kubernetes	v1.20.4
+    * Kine	v0.6.0
+    * SQLite	3.33.0
+    * Etcd	v3.4.13-k3s1
+    * Containerd	v1.4.3-k3s3
+    * Flannel	v0.12.0-k3s1
+    * Metrics-server	v0.3.6
+    * Traefik	v1.7.19
+    * CoreDNS	v1.8.0
+    * Helm-controller	v0.8.3
+    * Local-path-provisioner	v0.0.19
+- Refresh cni-bin-dir.patch
+- hyperkube no longer available
+
+-------------------------------------------------------------------
 Tue Aug  4 11:41:14 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add conflicts and minimal update-alternatives for new kubectl implementation 

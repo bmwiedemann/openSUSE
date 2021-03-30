@@ -1,7 +1,7 @@
 #
 # spec file for package doomsday
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           doomsday
-Version:        2.2.2
+Version:        2.3.1
 Release:        0
 Summary:        The Doomsday Engine: DOOM/Hertic/Hexen port with pretty graphics
 License:        GPL-2.0-or-later AND GPL-2.0-only AND SUSE-GPL-2.0-with-linking-exception AND BSD-3-Clause AND LGPL-3.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            http://dengine.net/
-Source:         http://downloads.sf.net/deng/doomsday-%version.tar.gz
+Source:         Doomsday-Engine-%version.tar.xz
 Source2:        %name-rpmlintrc
 Patch1:         doomsday-no-abs-icon.patch
 Patch2:         doomsday-libs.diff
@@ -35,6 +35,7 @@ BuildRequires:  libcurl4
 BuildRequires:  libpng-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  zlib-devel
+BuildRequires:  zziplib-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
@@ -52,7 +53,6 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xxf86vm)
-BuildRequires:  pkgconfig(zzip-zlib-config)
 # Mesa 9.2 has OpenGL 3.1, and doomsday 2.0 needs that.
 Requires:       Mesa-libGL1 >= 9.2
 # Doomsday uses a modified version of assimp, so no pkgconfig(assimp) here :-(
@@ -82,7 +82,7 @@ various types of games supported by Doomsday. It offers to save your
 settings for launching a particular game (e.g., Doom).
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n Doomsday-Engine-%version
 
 %build
 pushd doomsday

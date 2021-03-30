@@ -29,4 +29,15 @@
 - Add test.py from GH, missing in tarball, enable checks</comment>
     <requestid>678218</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>095aeb8af4d11eaa08872b39bce53b76</srcmd5>
+    <version>0.10.0</version>
+    <time>1617131675</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 0.10.0:
+  * Ignore *HYPHENMIN options in dictionaries
+  * Improve dictionaries update script 
+  * Drop Python 3.5 and add Python 3.9 support</comment>
+    <requestid>878252</requestid>
+  </revision>
 </revisionlist>

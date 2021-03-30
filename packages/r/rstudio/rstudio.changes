@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jan 18 12:48:44 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.4.1103
+
+Renamed / rebased patches:
+* 0005-Use-system-hunspell.patch
+* 0004-Add-additional-includes-for-aarch64.patch
+* 0006-Fix-libclang-usage.patch
+* 0007-use-system-node.patch
+
+-------------------------------------------------------------------
+Wed Oct 21 15:43:10 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+New upstream release 1.3.1093
+
+Rebase patches:
+* 0001-Unbundle-mathjax-and-pandoc.patch
+* 0002-Don-t-install-pandoc-and-mathjax.patch
+* 0003-Fix-rstudio-exec-path.patch
+* 0004-add-support-for-boost-1.73.patch
+* 0005-Add-additional-includes-for-aarch64.patch
+* 0006-Use-system-hunspell.patch
+* 0007-Fix-libclang-usage.patch
+* 0008-Add-support-for-RapidJSON-1.1.0-in-Leap-15.2.patch
+
+-------------------------------------------------------------------
 Thu Sep 10 13:09:02 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - Allow to build on Leap 15.2

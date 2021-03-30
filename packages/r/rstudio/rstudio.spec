@@ -1,7 +1,7 @@
 #
 # spec file for package rstudio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@
 %global bundled_datatables_version    1.10.4
 # - jQuery                                   => bundled in ./src/cpp/session/resources/grid/datatables/js/jquery.js, version 3.4.0, license is MIT
 %global bundled_jquery_version        3.4.0
-# - Catch                                    => used for testing only (which we don't run currently)
+# - Catch2                                   => used for testing only (which we don't run currently)
 # - QUnit                                    => bundled in ./src/gwt/test/acesupport/qunit/, version 1.18.0, license is MIT
 %global bundled_quinitjs_version      1.18.0
 # - xterm.js                                 => bundled in ./src/gwt/src/org/rstudio/studio/client/workbench/views/terminal/xterm/xterm.js, version 3.14.5, license is MIT
@@ -90,10 +90,10 @@
 %define boost_version %{?rstudio_boost_requested_version}%{?!rstudio_boost_requested_version:1.69}
 
 %global rstudio_version_major 1
-%global rstudio_version_minor 3
-%global rstudio_version_patch 1073
+%global rstudio_version_minor 4
+%global rstudio_version_patch 1103
 # commit of the tag belonging to %%{version}
-%global rstudio_git_revision_hash 718e6d75b094658d999495534badf55fb2ce0047
+%global rstudio_git_revision_hash 458706c38764ec79d06ef1214acf07af87ef5795
 Name:           rstudio
 Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}
 Release:        0
@@ -125,13 +125,14 @@ Patch0:         0001-Unbundle-mathjax-and-pandoc.patch
 # shorten the installation time a bit by not installing mathjax
 Patch1:         0002-Don-t-install-pandoc-and-mathjax.patch
 Patch2:         0003-Fix-rstudio-exec-path.patch
-# https://github.com/rstudio/rstudio/pull/7011
-Patch3:         0004-add-support-for-boost-1.73.patch
-Patch4:         0005-Add-additional-includes-for-aarch64.patch
+Patch3:         0004-Add-additional-includes-for-aarch64.patch
 # Make compatible with hunspell 1.4.0 or later, use system hunspell.
-Patch5:         0006-Use-system-hunspell.patch
+Patch4:         0005-Use-system-hunspell.patch
 # Make sure we find the right libclang.so and builtin headers, make compatible with newer versions.
-Patch6:         0007-Fix-libclang-usage.patch
+Patch5:         0006-Fix-libclang-usage.patch
+# taken from:
+# https://src.fedoraproject.org/rpms/rstudio/raw/d6d10b5bfade9014c156761a38b1d7a2db5f28f8/f/0004-use-system-node.patch
+Patch6:         0007-use-system-node.patch
 # Leap 15.2 only patch
 Patch7:         0008-Add-support-for-RapidJSON-1.1.0-in-Leap-15.2.patch
 
@@ -144,7 +145,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRequires:  ghc-pandoc-citeproc
+BuildRequires:  ghc-citeproc
 BuildRequires:  glibc-devel
 # for dir ownership of /usr/share/icons/hicolor/*
 BuildRequires:  hicolor-icon-theme
@@ -163,9 +164,12 @@ BuildRequires:  libboost_thread-devel          >= %{boost_version}
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  make
 BuildRequires:  mathjax
+BuildRequires:  nodejs-common
 BuildRequires:  pam-devel
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
+BuildRequires:  soci-postgresql-devel
+BuildRequires:  soci-sqlite3-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  unzip
@@ -194,6 +198,7 @@ BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(websocketpp)
 BuildRequires:  pkgconfig(zlib)
@@ -307,6 +312,7 @@ export GIT_COMMIT=%{rstudio_git_revision_hash}
 %cmake -DRSTUDIO_TARGET=Desktop -DRSTUDIO_SERVER=TRUE -DCMAKE_BUILD_TYPE=Release    \
     -DCMAKE_INSTALL_PREFIX=%{_libexecdir}/%{name}                                   \
     -DRSTUDIO_USE_SYSTEM_BOOST=TRUE                                                 \
+    -DRSTUDIO_USE_SYSTEM_SOCI=TRUE                                                  \
     -DRSTUDIO_BOOST_SIGNALS_VERSION=2                                               \
     -DBOOST_ROOT=%{_prefix} -DBOOST_LIBRARYDIR=%{_lib}                              \
     %{?rstudio_boost_requested_version:-DRSTUDIO_BOOST_REQUESTED_VERSION=%{rstudio_boost_requested_version}} \

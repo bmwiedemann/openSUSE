@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Mar 10 14:50:22 UTC 2021 - Yevgeny Sliosarenko <musicsuse@gmx.com>
+
+- Updated to release 2.3.1
+- What's new in 2.3.1:
+  * This version improves support for vanilla DOOM render hacks and adds more script bindings to manipulate things in the map.
+    DOOM render hacks. TNT: Evilution and The Plutonia Experiment use several render/map hacks to take advantage of quirks in the original DOOM renderer. 
+    Many of these effects are now supported (or fixed) in Doomsday. 
+    Examples: TNT MAP02 deep water, TNT MAP02 windows overlooking the deep water, TNT MAP09 transparent window, TNT MAP31 Arachnotrons inside pillars.
+    Scripting. Several new Doomsday Script bindings were added, allowing access to game, player, and thing properties. 
+    In addition to spawning things, one can now list things by type, check their state and flags, and perform state changes on them. 
+    Things can also have an “On death” script that gets run when the thing dies. Bitwise operators are now available in scripts.
+    Modding. Sprite renaming is supported via DeHackEd. 
+    In Heretic, ambient sound sequences can be redefined and new ones can be added via the Audio module. 
+    Changing the sequences is also possible during gameplay. The earthquake effect from Hexen is now also available in Heretic. 
+    It can be controlled via scripts.
+    Renderer. Player HUD weapon models may specify a custom FOV value for rendering so that model authors have more control over the appearance, for instance to replicate a 2D sprite appearance more faithfully.
+  *  Patch release for 2.3 that fixes some incorrect behavior:
+    Heretic: Sky textures are only partially visible.
+    Hexen: Sky textures are sized incorrectly.
+    Alignment of floor/ceiling textures whose size is not 64×64.
+
+
+-------------------------------------------------------------------
 Tue Sep 15 23:17:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop recommendation for timidity, this backend is not selectable

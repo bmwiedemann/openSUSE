@@ -17,15 +17,20 @@
 #
 
 
+%define xpra_ver 4.1.1
+%define html5_ver 4.0.6
+%define uglifyjs_ver 3.13.1
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        4.0.6
+Version:        %{xpra_ver}
 Release:        0
 Summary:        Remote display server for applications and desktops
-License:        GPL-2.0-or-later AND BSD-3-Clause AND LGPL-3.0-or-later AND MIT
+License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
 URL:            https://www.xpra.org/
 Source0:        https://xpra.org/src/%{name}-%{version}.tar.xz
 Source1:        xpra-icon.png
+Source2:        https://xpra.org/src/%{name}-html5-%{html5_ver}.tar.xz
+Source3:        https://registry.npmjs.org/uglify-js/-/uglify-js-%{uglifyjs_ver}.tgz
 # PATCH-FIX-OPENSUSE xpra-paths.patch -- use suse-specific paths
 Patch0:         %{name}-paths.patch
 BuildRequires:  ImageMagick
@@ -35,7 +40,10 @@ BuildRequires:  cups-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+# Needed by uglify-js
+BuildRequires:  nodejs-common
 BuildRequires:  pam-devel
+BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Cython >= 0.20.0
 BuildRequires:  python3-devel
@@ -81,9 +89,9 @@ Requires:       xorg-x11-xauth
 Requires(post): %fillup_prereq
 Recommends:     python3-dnspython
 Recommends:     python3-opencv
-Recommends:     python3-paramiko
 Recommends:     python3-opengl
 Recommends:     python3-opengl-accelerate
+Recommends:     python3-paramiko
 %{?systemd_ordering}
 
 %description
@@ -99,8 +107,9 @@ Xpra is usable over reasonably slow links and does its best to adapt to changing
 network bandwidth constraints.
 
 %package        html5
+Version:        %{html5_ver}
 Summary:        HTML5 server and client support for xpra
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{xpra_ver}
 # websockify is required to allow xpra to listen for an html5 client
 Requires:       python3-websockify
 Provides:       bundled(js-aurora)
@@ -118,19 +127,22 @@ This package adds websockify support to allow xpra to listen for http
 connections, and also the xpra html5 client.
 
 %prep
-%autosetup -p1
-
-%build
+%setup -q -a 2 -a 3
+%autopatch -p1
 # fix shebangs
 find -name '*.py' \
      -exec sed -i '1{\@^#!/usr/bin/env python@d}' {} +
-sed -i "1 s|^#!/usr/bin/env python\b|#!%__python3|" cups/xpraforwarder
-sed -i "1 s|^#!/usr/bin/bash|#!/bin/bash|" scripts/xpra_udev_product_version
-install -m0644 %{SOURCE1} -t xdg
+install -m0644 %{SOURCE1} -T fs/share/icons/xpra.png
 # set fillup dir
 sed -e 's|__FILLUPDIR__|%{_fillupdir}|' \
     -e 's|__UNITDIR__|%{_unitdir}|' \
+    -e 's|share/doc/xpra|share/doc/packages/xpra|' \
     -i setup.py
+
+sed -i '/install_html5/s/verbose=False/verbose=True/' %{name}-html5-%{html5_ver}/setup_html5.py
+
+%build
+python3 setup.py clean
 
 python3 setup.py build \
     --verbose \
@@ -142,7 +154,10 @@ python3 setup.py build \
     --with-Xdummy \
     --with-Xdummy_wrapper \
     --with-opengl \
-    --with-service
+    --with-service \
+    --without-cuda_kernels \
+    --without-nvenc \
+    --without-nvfbc
 
 %install
 python3 setup.py install \
@@ -154,9 +169,11 @@ python3 setup.py install \
     --with-Xdummy_wrapper \
     --verbose
 
-#Install nvenc.keys file
-mkdir -p %{buildroot}%{_sysconfdir}/xpra
-install -pm 644 etc/xpra/nvenc.keys %{buildroot}%{_sysconfdir}/xpra
+pushd %{name}-html5-%{html5_ver}
+PATH=$PATH:../package/bin python3 setup_html5.py %{buildroot}%{_datadir}/%{name}/www
+popd
+
+rm -rf %{buildroot}%{_datadir}/xpra/cuda
 
 %suse_update_desktop_file -r xpra Network RemoteAccess
 %suse_update_desktop_file -r xpra-gui Network RemoteAccess
@@ -184,23 +201,27 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %service_del_postun %{name}.service
 
 %files
-%doc README NEWS
+%doc docs/README.md docs/CHANGELOG.md
+%doc %{_defaultdocdir}/xpra
 %license COPYING
 %dir %{_datadir}/xpra
-%dir %{_datadir}/xpra/content-categories
-%dir %{_datadir}/xpra/content-type
-%dir %{_datadir}/xpra/http-headers
 %dir %{_prefix}/lib/xpra
 %dir %{_sysconfdir}/pam.d
 %dir %{_sysconfdir}/xpra
 %dir %{_sysconfdir}/xpra/conf.d
+%dir %{_sysconfdir}/xpra/content-categories
+%dir %{_sysconfdir}/xpra/content-type
+%dir %{_sysconfdir}/xpra/http-headers
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/xpra.conf
 %config(noreplace) %{_sysconfdir}/pam.d/xpra
 %config(noreplace) %{_sysconfdir}/xpra/*.conf
-%config(noreplace) %{_sysconfdir}/xpra/nvenc.keys
 %config(noreplace) %{_sysconfdir}/xpra/conf.d/*.conf
+%config(noreplace) %{_sysconfdir}/xpra/content-categories/*.conf
+%config(noreplace) %{_sysconfdir}/xpra/content-type/*.conf
+%config(noreplace) %{_sysconfdir}/xpra/http-headers/*.txt
 %config(noreplace) %{_sysconfdir}/X11/xorg.conf.d/90-xpra-virtual.conf
 %{_fillupdir}/sysconfig.%{name}
+%{_bindir}/run_scaled
 %{_bindir}/xpra
 %{_bindir}/xpra_Xdummy
 %{_bindir}/xpra_launcher
@@ -213,7 +234,7 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %{_prefix}/lib/xpra/xdg-open
 %{_sbindir}/rc%{name}
 %{python3_sitearch}/xpra
-%{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitearch}/%{name}-%{xpra_ver}-py%{python3_version}.egg-info
 %{_datadir}/applications/xpra-gui.desktop
 %{_datadir}/applications/xpra-launcher.desktop
 %{_datadir}/applications/xpra-shadow.desktop
@@ -224,15 +245,10 @@ mkdir -p %{_rundir}/%{name} || exit 1
 %{_datadir}/pixmaps/xpra.png
 %{_datadir}/mime/packages/application-x-xpraconfig.xml
 %{_datadir}/xpra/bell.wav
-%{_datadir}/xpra/content-categories/10_default.conf
-%{_datadir}/xpra/content-type/10_role.conf
-%{_datadir}/xpra/content-type/30_title.conf
-%{_datadir}/xpra/content-type/50_class.conf
-%{_datadir}/xpra/content-type/70_commands.conf
-%{_datadir}/xpra/http-headers/00_nocache.txt
-%{_datadir}/xpra/http-headers/10_content_security_policy.txt
+%{_datadir}/xpra/css
 %{_datadir}/xpra/icons
 %{_prefix}/lib/cups/backend/xpraforwarder
+%{_mandir}/man1/run_scaled.1%{?ext_man}
 %{_mandir}/man1/xpra.1%{?ext_man}
 %{_mandir}/man1/xpra_launcher.1%{?ext_man}
 %{_sysusersdir}/xpra.conf

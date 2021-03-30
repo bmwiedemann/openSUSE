@@ -1,19 +1,19 @@
-Index: xpra-4.0.6/setup.py
+Index: xpra-4.1/setup.py
 ===================================================================
---- xpra-4.0.6.orig/setup.py
-+++ xpra-4.0.6/setup.py
-@@ -1485,7 +1485,7 @@ else:
-         add_data_files("%s/man1" % man_path,  ["man/xpra.1", "man/xpra_launcher.1"])
-         add_data_files("share/applications",  glob.glob("xdg/*.desktop"))
-         add_data_files("share/mime/packages", ["xdg/application-x-xpraconfig.xml"])
--        add_data_files("share/icons",         ["xdg/xpra.png", "xdg/xpra-mdns.png", "xdg/xpra-shadow.png"])
-+        add_data_files("share/pixmaps",         ["xdg/xpra.png", "xdg/xpra-mdns.png", "xdg/xpra-shadow.png"])
-         add_data_files("share/metainfo",      ["xdg/xpra.appdata.xml"])
+--- xpra-4.1.orig/setup.py
++++ xpra-4.1/setup.py
+@@ -1531,7 +1531,7 @@ else:
+         add_data_files("%s/man1" % man_path,  man_pages)
+         add_data_files("share/applications",  glob.glob("fs/share/applications/*.desktop"))
+         add_data_files("share/mime/packages", ["fs/share/mime/packages/application-x-xpraconfig.xml"])
+-        add_data_files("share/icons",         glob.glob("fs/share/icons/*.png"))
++        add_data_files("share/pixmaps",         glob.glob("fs/share/icons/*.png"))
+         add_data_files("share/metainfo",      ["fs/share/metainfo/xpra.appdata.xml"])
  
      #here, we override build and install so we can
-@@ -1566,16 +1566,18 @@ else:
+@@ -1617,16 +1617,18 @@ else:
              if pam_ENABLED:
-                 copytodir("etc/pam.d/xpra", "/etc/pam.d")
+                 copytodir("fs/etc/pam.d/xpra", "/etc/pam.d")
  
 -            systemd_dir = "/lib/systemd/system"
 +            systemd_dir = "__UNITDIR__"
@@ -21,23 +21,23 @@ Index: xpra-4.0.6/setup.py
                  #Linux init service:
                  subs = {}
                  if os.path.exists("/etc/sysconfig"):
--                    copytodir("etc/sysconfig/xpra", "/etc/sysconfig")
-+                    shutil.copy("etc/sysconfig/xpra", "etc/sysconfig/sysconfig.xpra")
-+                    os.chmod("etc/sysconfig/sysconfig.xpra", 0o644)
-+                    copytodir("etc/sysconfig/sysconfig.xpra", "__FILLUPDIR__")
+-                    copytodir("fs/etc/sysconfig/xpra", "/etc/sysconfig")
++                    shutil.copy("fs/etc/sysconfig/xpra", "fs/etc/sysconfig/sysconfig.xpra")
++                    os.chmod("fs/etc/sysconfig/sysconfig.xpra", 0o644)
++                    copytodir("fs/etc/sysconfig/sysconfig.xpra", "__FILLUPDIR__")
                  elif os.path.exists("/etc/default"):
-                     copytodir("etc/sysconfig/xpra", "/etc/default")
+                     copytodir("fs/etc/sysconfig/xpra", "/etc/default")
                      subs[b"/etc/sysconfig"] = b"/etc/default"
 -                if os.path.exists("/bin/systemctl"):
 +                if os.path.exists("/usr/bin/systemctl"):
                      if sd_listen_ENABLED:
-                         copytodir("service/xpra.service", systemd_dir,
+                         copytodir("fs/lib/systemd/system/xpra.service", systemd_dir,
                                    subs=subs)
-@@ -1695,7 +1697,6 @@ if scripts_ENABLED:
+@@ -1754,7 +1756,6 @@ if scripts_ENABLED:
  toggle_modules(WIN32, "xpra/scripts/win32_service")
  
  if data_ENABLED:
--    add_data_files(share_xpra,                      ["README", "COPYING"])
-     add_data_files(share_xpra,                      ["bell.wav"])
-     add_data_files("%s/http-headers" % share_xpra,   glob.glob("http-headers/*"))
-     add_data_files("%s/icons" % share_xpra,          glob.glob("icons/*png"))
+-    add_data_files(share_xpra,                      ["README.md", "COPYING"])
+     add_data_files(share_xpra,                      ["fs/share/xpra/bell.wav"])
+     ICONS = glob.glob("fs/share/xpra/icons/*.png")
+     if OSX:

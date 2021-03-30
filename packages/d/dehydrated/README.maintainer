@@ -165,6 +165,19 @@ Upgrade Notes
 v0.7.0
 ------
 
+Postrun Hooks
+~~~~~~~~~~~~~
+
+dehydrated.service no longer starts scripts in /etc/dehydrated/postrun-hooks.d/
+directly, the support was moved to a separate unit file. Please run
+
+  systemctl enable dehydrated-postrun-hooks.service
+
+to restore this functionality.
+
+This change was required to ensure that the output of the dehydrated script stays
+attached to the dehydrated unit in the journal.
+
 Key Algorithm
 ~~~~~~~~~~~~~
 

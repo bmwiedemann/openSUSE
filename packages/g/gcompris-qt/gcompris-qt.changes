@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 22 13:43:04 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to maintenance bugfix release 1.1
+  + Graphics have been updated for 21 activities.
+  + A build for Ubuntu Touch has been added.
+  + The spelling of the Turkish districts has been fixed.
+  + We added a minimal .msi alternative package for Windows.
+  + The GCompris executable has been relicenced to AGPLv3 due to 
+    a dependency of analog electricity.
+  + On the translation side:
+    - Albanian, Belarusian, Brazilian Portuguese and Russian have 
+      been completed.
+    - Irish Gaelic and Macedonian have returned 
+      (partial translation above 80% for now).
+    - Wordset for vocabulary activities has been added for Albanian 
+      and Macedonian.
+    - All the voices have been added for Lithuanian.
+  + 27 languages fully supported
+  + 4 languages partially supported: German (91%), Irish Gaelic (87%)
+    Lithuanian (96%) and Norwegian Nynorsk (85%). 
+- Packaging
+  + Adapt license to AGPLv3 to conform new upstream state
+
+-------------------------------------------------------------------
 Mon Mar  1 08:26:23 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Remove unused libbox2d-devel buildrequires deps. libbox2d is 

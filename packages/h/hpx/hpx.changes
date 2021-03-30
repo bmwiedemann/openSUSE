@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:41:39 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.5.0
+  - Continued modularization. Deprecation of several headers moved to a different location
+  - Several algorithms adapted to be C++20 conformant and added hpx::stable_sort.
+  - Refactored the CMake target, it is now possible to link directly to HPX::hpx
+  - Now requires a C++14 compatible compiler and the standard is set by default to C++14.
+
+-------------------------------------------------------------------
 Wed Jun 10 08:55:21 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 1.4.1

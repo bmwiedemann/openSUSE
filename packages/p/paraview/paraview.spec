@@ -1,7 +1,7 @@
 #
 # spec file for package paraview
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define major_ver 5.8
-%define shlib libparaview5_8
+%define major_ver 5.9
+%define shlib libparaview5_9
 
 %if 0%{?suse_version} <= 1500
 %bcond_with    pugixml
@@ -31,7 +31,7 @@
 
 %define __builder ninja
 Name:           paraview
-Version:        5.8.1
+Version:        5.9.0
 Release:        0
 Summary:        Data analysis and visualization application
 License:        BSD-3-Clause
@@ -41,17 +41,15 @@ Source0:        https://www.paraview.org/files/v%{major_ver}/ParaView-v%{version
 Source1:        %{name}-rpmlintrc
 # CAUTION: GettingStarted may or may not be updated with each minor version
 Source2:        https://www.paraview.org/files/v%{major_ver}/ParaViewGettingStarted-%{version}.pdf
-Source3:        https://www.paraview.org/files/v%{major_ver}/ParaViewGuide-%{version}.pdf
+Source3:        https://www.paraview.org/files/v%{major_ver}/ParaViewTutorial-%{version}.pdf
 # PATCH-FIX-UPSTREAM paraview-desktop-entry-fix.patch badshah400@gmail.com -- Fix desktop menu entry by inserting proper required categories
-Patch1:         paraview-desktop-entry-fix.patch
-# PATCH-FIX-UPSTREAM fix-3d48a287-support-new-api-cgio_read_data_type.patch -- Add support for new API cgio_read_***data***_type
-Patch2:         fix-3d48a287-support-new-api-cgio_read_data_type.patch
+Patch0:         paraview-desktop-entry-fix.patch
 # PATCH-FIX-OPENSUSE fix-libharu-missing-m.patch -- missing libraries for linking (gh#libharu/libharu#213)
-Patch8:         fix-libharu-missing-m.patch
-# PATCH-FIX-OPENSUSE bundled_exodusii_add_missing_libpthread.patch stefan.bruens@rwth-aachen.de -- Add missing libm for linking (updated to upstream patch, see https://gitlab.kitware.com/vtk/vtk/-/merge_requests/6865)
-Patch10:        bundled_exodusii_add_missing_libpthread.patch
-# PATCH-FIX-UPSTREAM paraview-vtkFreeTypeTools-internal-macro.patch badshah400@gmail.com -- vtkFreeTypeTools: avoid using an internal macro; patch taken from upstream vtk git and rebased to apply with -p1
-Patch11:        paraview-vtkFreeTypeTools-internal-macro.patch
+Patch2:         fix-libharu-missing-m.patch
+# PATCH-FIX-UPSTREAM paraview-vtkioss-link-pthread.patch badshah400@gmail.com -- Link against pthread when building vtkioss [https://gitlab.kitware.com/paraview/paraview/-/issues/20495]
+Patch3:         paraview-vtkioss-link-pthread.patch
+# PATCH-FIX-UPSTREAM paraview-Adaptors-include-txx-file.patch badshah400@gmail.com -- Fix Cam adaptor template instantiation [https://gitlab.kitware.com/paraview/paraview/-/merge_requests/4729]
+Patch4:         paraview-Adaptors-include-txx-file.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cgns-devel
 BuildRequires:  cmake >= 3.13
@@ -184,7 +182,7 @@ This package provides the paraview plugins bundled with the upstream release.
 %autosetup -p1 -n ParaView-v%{version}
 
 # FIX env BASED HASHBANG
-sed -Ei "1{s|#!/usr/bin/env python3|#!/usr/bin/python3|}" Clients/CommandLineExecutables/paraview-config
+sed -Ei "1{s|#!/usr/bin/env python3|#!/usr/bin/python3|}" Clients/CommandLineExecutables/paraview-config.in
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

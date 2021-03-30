@@ -17,7 +17,7 @@
 
 
 Name:           gnu_parallel
-Version:        20210222
+Version:        20210322
 Release:        0
 Summary:        Shell tool for executing jobs in parallel
 License:        GPL-3.0-or-later
@@ -42,7 +42,7 @@ commands in parallel.
 
 %package doc
 Summary:        Documentation for GNU parallel
-License:        GFDL-1.3-only AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND GFDL-1.3-only
 Group:          Documentation/HTML
 
 %description doc
@@ -59,7 +59,7 @@ This subpackage contains the documentation for Parallel.
 
 %install
 %make_install
-cp -a CITATION NEWS README cc-by-sa.txt fdl.txt "%buildroot/%_docdir/%name/"
+cp -a CITATION NEWS README "%buildroot/%_docdir/%name/"
 
 # fix shebang to to not use env & preserve the time stamps
 sed -i.orig "s:^#\!/usr/bin/env\s\+perl\s\?$:#!%__perl:" "%buildroot/%_bindir/parallel"
@@ -67,7 +67,7 @@ touch -r "%buildroot/%_bindir/parallel.orig" "%buildroot/%_bindir/parallel"
 rm "%buildroot/%_bindir/parallel.orig"
 
 %files
-%license COPYING
+%license LICENSES/GPL-3.0-or-later.txt LICENSES/CC-BY-SA-4.0.txt LICENSES/GFDL-1.3-or-later.txt
 %_bindir/env_parallel*
 %_bindir/niceload
 %_bindir/par*

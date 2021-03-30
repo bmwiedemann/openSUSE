@@ -1,7 +1,7 @@
 #
 # spec file for package hpx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           hpx
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        General Purpose C++ Runtime System
 License:        BSL-1.0
@@ -32,6 +32,7 @@ BuildRequires:  gperftools-devel
 BuildRequires:  hwloc-devel
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libboost_system-devel

@@ -18,10 +18,10 @@
 
 
 Name:           gcompris-qt
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        Multiactivity educational software for children aged 2–10 (Qt version)
-License:        GPL-3.0-or-later
+License:        AGPL-3.0-or-later
 Group:          Amusements/Teaching/Other
 URL:            https://gcompris.net
 Source0:        https://gcompris.net/download/qt/src/%{name}-%{version}.tar.xz
@@ -116,7 +116,7 @@ install -d %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/
 install -m 644 images/sc-apps-gcompris-qt.svg %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/gcompris-qt.svg
 
 %files
-%license COPYING
+%license COPYING.txt COPYING-GPLv3
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/icons/hicolor/256x256/
@@ -127,7 +127,7 @@ install -m 644 images/sc-apps-gcompris-qt.svg %{buildroot}/%{_datadir}/icons/hic
 %{_datadir}/metainfo/org.kde.gcompris.appdata.xml
 
 %files activities
-%license COPYING
+%license COPYING.txt COPYING-GPLv3
 %doc README.md
 #Activities
 %dir %{_datadir}/%{name}
@@ -135,7 +135,7 @@ install -m 644 images/sc-apps-gcompris-qt.svg %{buildroot}/%{_datadir}/icons/hic
 %{_datadir}/%{name}/rcc/*.rcc
 
 %files lang
-%license COPYING
+%license COPYING.txt COPYING-GPLv3
 %doc README.md
 %dir %{_datadir}/%{name}/translations
 %{_datadir}/%{name}/translations/*.qm

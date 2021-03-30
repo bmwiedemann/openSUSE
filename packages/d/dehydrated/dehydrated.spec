@@ -16,6 +16,14 @@
 #
 
 
+%bcond_without instantiated_service
+%define base_services dehydrated.timer dehydrated.service dehydrated-postrun-hooks.service
+%if %{with instantiated_service}
+%define services      dehydrated.target %{base_services} dehydrated@.timer dehydrated@.service dehydrated-postrun-hooks@.service
+%else
+%define services      %{base_services}
+%endif
+
 %define _challengedir %{_localstatedir}/lib/acme-challenge
 %define _user         dehydrated
 %define _home         %{_sysconfdir}/dehydrated
@@ -55,7 +63,7 @@ Source1:        acme-challenge.conf.apache.in
 Source2:        acme-challenge.conf.nginx.in
 Source4:        dehydrated.cron.in
 Source5:        dehydrated.tmpfiles.d
-Source6:        dehydrated.service.in
+Source6:        dehydrated.service
 Source7:        dehydrated.timer
 Source9:        README.maintainer
 Source10:       README.Fedora
@@ -63,6 +71,12 @@ Source11:       README.hooks
 Source12:       %{name}-%{version}.tar.gz.asc
 Source13:       %{name}.keyring
 Source14:       %{name}-rpmlintrc
+Source15:       dehydrated@.service
+Source16:       dehydrated@.timer
+Source17:       dehydrated.target
+Source18:       dehydrated-postrun-hooks.service
+Source19:       dehydrated-postrun-hooks@.service
+Patch:          more-examples.patch
 BuildRequires:  %{_apache}
 Requires:       coreutils
 Requires:       curl
@@ -142,21 +156,22 @@ getent passwd %{_user} >/dev/null || %{_sbindir}/useradd -g %{_user} \
 if [ -e %{_sysconfdir}/dehydrated/config.sh ]; then mv %{_sysconfdir}/dehydrated/config.sh %{_sysconfdir}/dehydrated/config; fi
 
 %if %{with systemd}
-%service_add_pre dehydrated.service dehydrated.timer
+%service_add_pre %{services}
 
 %post
-systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf ||:
-%service_add_post dehydrated.service dehydrated.timer
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf ||:
+%service_add_post %{services}
 
 %preun
-%service_del_preun dehydrated.service dehydrated.timer
+%service_del_preun %{services}
 
 %postun
-%service_del_postun dehydrated.service dehydrated.timer
+%service_del_postun %{services}
 %endif
 
 %prep
 %setup -q
+%patch -p1
 cp %{SOURCE9} .
 cp %{SOURCE10} .
 
@@ -164,7 +179,7 @@ cp %{SOURCE10} .
 
 %install
 # sensitive keys
-mkdir -p %{buildroot}%{_home}/{accounts,certs,chains}
+mkdir -p %{buildroot}%{_home}/{accounts,archive,certs,chains}
 mkdir -p %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_home}/config.d
@@ -195,12 +210,23 @@ install -m 0644 acme-challenge %{buildroot}%{_sysconfdir}/nginx
 %if %{with systemd}
 install -D    -m 0644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 # Use timer
-sed "s,@POSTRUNHOOKS_DIR@,%{_postrunhooks},g" %{SOURCE6} > dehydrated.service
-install -D -m 644 dehydrated.service  %{buildroot}%{_unitdir}/dehydrated.service
-install -D -m 644 %{SOURCE7}          %{buildroot}%{_unitdir}/dehydrated.timer
+install -D -m 644 %{SOURCE6}                        %{buildroot}%{_unitdir}/dehydrated.service
+install -D -m 644 %{SOURCE7}                        %{buildroot}%{_unitdir}/dehydrated.timer
+install -D -m 644 %{SOURCE18}                       %{buildroot}%{_unitdir}/dehydrated-postrun-hooks.service
+
+%if %{with instantiated_service}
+install -D -m 644 %{SOURCE15}                       %{buildroot}%{_unitdir}/dehydrated@.service
+install -D -m 644 %{SOURCE16}                       %{buildroot}%{_unitdir}/dehydrated@.timer
+install -D -m 644 %{SOURCE19}                       %{buildroot}%{_unitdir}/dehydrated-postrun-hooks@.service
+install -D -m 644 %{SOURCE17}                       %{buildroot}%{_unitdir}/dehydrated.target
+%else
+perl -p -i -e 's|PartOf=dehydrated.target\n||g' %{buildroot}%{_unitdir}/*
+
+%endif
+
 if [ $(rpm -q --queryformat='%{VERSION}' systemd) -lt 229 ]; then
 # No support for this attribute in systemd < v229
-sed -i 's/^RandomizedDelaySec/#&/' %{buildroot}%{_unitdir}/dehydrated.timer 
+sed -i 's/^RandomizedDelaySec/#&/' %{buildroot}%{_unitdir}/dehydrated.timer
 fi
 %if 0%{?suse_version}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcdehydrated
@@ -215,7 +241,7 @@ install -m 0644 dehydrated.cron %{buildroot}%{_sysconfdir}/cron.d/dehydrated
 
 # Adjust config file
 perl -p -i -e 's|#LOCKFILE="\$\{BASEDIR\}/lock"|LOCKFILE="%{_lock_dir}/lock"|' %{buildroot}%{_home}/config
-perl -p -i -e 's|#CONFIG_D=|CONFIG_D="%{_home}/config.d"|' %{buildroot}%{_home}/config
+perl -p -i -e 's|#CONFIG_D=|CONFIG_D="\${BASEDIR}/config.d"|' %{buildroot}%{_home}/config
 perl -p -i -e 's|#DEHYDRATED_USER=|DEHYDRATED_USER="%{_user}"|' %{buildroot}%{_home}/config
 perl -p -i -e 's|#DEHYDRATED_GROUP=|DEHYDRATED_GROUP="%{_user}"|' %{buildroot}%{_home}/config
 
@@ -223,7 +249,7 @@ diff -urN docs/examples/config %{buildroot}%{_home}/config ||:
 
 # Rename existing config file config files fror nginx
 %if %{with nginx}
-%pre nginx 
+%pre nginx
 [ -f %{_sysconfdir}/nginx/conf.d/acme-challenge ] && \
   mv %{_sysconfdir}/nginx/conf.d/acme-challenge %{_sysconfdir}/nginx/conf.d/acme-challenge.conf || :
 %endif
@@ -232,6 +258,7 @@ diff -urN docs/examples/config %{buildroot}%{_home}/config ||:
 %defattr(-,root,root)
 %attr(750,root,%{_user}) %dir %{_sysconfdir}/dehydrated
 %attr(700,%{_user},%{_user}) %dir %{_sysconfdir}/dehydrated/accounts
+%attr(700,%{_user},%{_user}) %dir %{_sysconfdir}/dehydrated/archive
 %attr(700,%{_user},%{_user}) %dir %{_sysconfdir}/dehydrated/certs
 %attr(700,%{_user},%{_user}) %dir %{_sysconfdir}/dehydrated/chains
 %config(noreplace) %attr(640,root,%{_user}) %{_sysconfdir}/dehydrated/config
@@ -250,8 +277,11 @@ diff -urN docs/examples/config %{buildroot}%{_home}/config ||:
 %endif
 %if %{with systemd}
 %{_tmpfilesdir}/%{name}.conf
-%{_unitdir}/dehydrated.service
-%{_unitdir}/dehydrated.timer
+%{_unitdir}/dehydrated*.service
+%{_unitdir}/dehydrated*.timer
+%if %{with instantiated_service}
+%{_unitdir}/dehydrated.target
+%endif
 %if 0%{?suse_version}
 %{_sbindir}/rcdehydrated
 %endif

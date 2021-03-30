@@ -121,4 +121,28 @@
 </comment>
     <requestid>835196</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1ce8ce6b246833f00782178eb5043290</srcmd5>
+    <version>1.4.1103</version>
+    <time>1617131656</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release 1.4.1103
+Renamed / rebased patches:
+* 0005-Use-system-hunspell.patch
+* 0004-Add-additional-includes-for-aarch64.patch
+* 0006-Fix-libclang-usage.patch
+* 0007-use-system-node.patch
+
+New upstream release 1.3.1093
+Rebase patches:
+* 0001-Unbundle-mathjax-and-pandoc.patch
+* 0002-Don-t-install-pandoc-and-mathjax.patch
+* 0003-Fix-rstudio-exec-path.patch
+* 0004-add-support-for-boost-1.73.patch
+* 0005-Add-additional-includes-for-aarch64.patch
+* 0006-Use-system-hunspell.patch
+* 0007-Fix-libclang-usage.patch
+* 0008-Add-support-for-RapidJSON-1.1.0-in-Leap-15.2.patch</comment>
+    <requestid>877961</requestid>
+  </revision>
 </revisionlist>

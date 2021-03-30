@@ -1,7 +1,7 @@
 #
 # spec file for package wine-nine-standalone
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           wine-nine-standalone
-Version:        0.7
+Version:        0.7+git20210330
 Release:        0
 Summary:        Wine Gallium Nine Standalone version
 License:        LGPL-2.1-or-later
 Group:          System/Emulators/PC
 URL:            https://github.com/iXit/wine-nine-standalone
-Source0:        https://github.com/iXit/wine-nine-standalone/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#Source0:        https://github.com/iXit/wine-nine-standalone/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# git snapshot to make it build
+Source0:        wine-nine-standalone.tar.bz2
 Source2:        baselibs.conf
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -53,7 +55,7 @@ Gallium Nine Standalone consists of two parts:
 * ninewinecfg.exe: GUI to enable/disable Gallium Nine with some additional info about the current state
 
 %prep
-%setup -q
+%setup -q -n %name
 
 %build
 

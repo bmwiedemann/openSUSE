@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Sat Mar 13 13:14:00 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.35.0
+  Bug fixes:
+  * asIScriptModule::GetGlobalVar was returning asSUCCESS when
+    the given index was out of range
+  * Compiler would give an error when compiling functions
+    returning a reference to a type that cannot be instantiated
+  * Fixed problem with LoadByteCode and shared classes
+  * Fixed crash when using copy constructor declared as taking
+    the object by value
+  * Fixed memory invasion in compiler when compiling
+    initialization lists with expressions using default arguments
+  * Fixed memory invasion in compiler when compiling default
+    arguments
+  * Fixed an issue in compiler with auto type and constness
+  * Fixed symbol lookup of child type from within class method
+    while compiling a construct call
+  * Fixed crash after a discarding a module that compiled a
+    shared object type that continues to be used by other modules
+  * Funcdefs are marked with asOBJ_GC as they can form circular
+    references when used with delegates
+  * Fixed memory leak when using CompileGlobalVar to add a
+    variable to a module with an object type
+  * Fixed error when loading bytecode that is using a list
+    constructor for a value type
+  * Fixed memory invasion in compiler when compiling default
+    argument after an argument with index operator 
+  Library:
+  * asIScriptModule::GetFunctionByName now supports informing
+    the scope in the name
+  * asIScriptModule::GetGlobalVarByName and GetTypeInfoByName
+    also support informing the scope in the name
+  * asIScriptEngine::GetTypeInfoByName and
+    GetGlobalPropertyIndexByName also support informing the scope in
+    the name
+  * The default opAssign implementation for script classes will
+    use the base class' opAssign method to copy inherited properties
+  * Added config for 64bit x86 CPU on Haiku OS
+  * Added flag asOBJ_APP_CLASS_MORE_CONSTRUCTORS to inform when
+    a class with defaulted constructors has additional non-trivial
+    constructors
+  * Added support for native calling conventions on Linux with
+    ARM64
+  * Improved time for compilation and loading pre-compiled
+    bytecode for scripts with lots of type definitions
+  * Added config to make the library buildable for Linux with
+    Elbrus 2000 CPU 
+  Library interface:
+  * asIScriptObject::CopyFrom now takes a const pointer
+  * RegisterGlobalProperty and RegisterObjectProperty now return
+    the index of the property upon success 
+  Virtual machine:
+  * asBC_Thiscall1 bytecode instruction is now capable of
+    catching and translating C++ exceptions to script exceptions 
+  Add-ons & Samples:
+  * Implemented to-string debug callback for datetime in asrun
+  * Fixed a problem due to daylight time when initializing a
+    datetime object with specific date
+  * debugger add-on handles incorrect user commands better
+  * Implemented a version of exec for asrun sample that captures
+    the standard output from the system command into a string
+  * Implemented getCreateDateTime and getModifyDateTime on the
+    filesystem add-on
+  * Improved performance on array sort for arrays holding object
+    types
+  * Fixed registration of the virtual property accessors in the
+    game sample
+  * Fixed compilation error in scriptstdstring.cpp with
+    AS_USE_NAMESPACE
+  * Registered the script array add-on in the console sample
+  * Added generic calling convention bindings for datetime and
+    filesystem add-ons 
+  Project:
+  * Fixed gnuc makefile to detect arm target and add a compiler
+    flag to accept implicit IT constructs in thumb mode 
+- Use https for source URL 
+- Switch build to meson
+- Add angelscript-addons_lib.patch
+- Add pkgconfig support file
+- Build addons library and install related headers
+- Add angelscript_addons library subpackage
+- Move docs to -devel and drop main package
+
+-------------------------------------------------------------------
 Fri Mar 27 13:18:01 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.34.0:

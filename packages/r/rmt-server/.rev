@@ -580,4 +580,12 @@
 - Resubmit version 2.6.6</comment>
     <requestid>873453</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>286d18d64c7353d2af93339a3d0a6ed4</srcmd5>
+    <version>2.6.7</version>
+    <time>1617132193</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>881839</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package nmap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,12 +27,12 @@
 %define with_python2 1
 %endif
 Name:           nmap
-Version:        7.80
+Version:        7.91
 Release:        0
 Summary:        Network exploration tool and security scanner
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Diagnostic
-Url:            https://nmap.org/
+URL:            https://nmap.org/
 Source:         https://nmap.org/dist/nmap-%{version}.tar.bz2
 Source1:        https://svn.nmap.org/nmap/docs/nmap_gpgkeys.txt#/%{name}.keyring
 Source2:        http://nmap.org/dist/sigs/%{name}-%{version}.tar.bz2.asc
@@ -40,7 +40,6 @@ Patch1:         nmap-7.40-desktop_files.patch
 Patch2:         nmap-4.75-nostrip.patch
 Patch3:         su-to-zenmap.patch
 Patch4:         nmap-ncat-skip-network-tests.patch
-Patch5:         netmask_negativ_bitshift.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -122,7 +121,6 @@ Service attacks, route tracing, etc.
 %patch3
 %endif
 %patch4 -p1
-%patch5 -p1
 
 # use system provided libraries
 rm -rf libpcap libpcre macosx mswin32
@@ -159,7 +157,7 @@ export CXXFLAGS="%{optflags} -DOPENSSL_LOAD_CONF"
 %endif
            STRIP=/bin/true
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 make DESTDIR=%{buildroot} deskdir="%{_datadir}/gnome/apps/Utilities/" install
@@ -181,11 +179,11 @@ dos2unix %{buildroot}%{_datadir}/%{name}/nselib/data/oracle-sids
 %check
 
 pushd ncat
-make %{?_smp_mflags} check
+%make_build check
 popd
 
 pushd libdnet-stripped
-make %{?_smp_mflags} check
+%make_build check
 popd
 
 # retrieve list of compiled in modules
@@ -207,7 +205,7 @@ compiled_with=$("%{buildroot}%{_bindir}/nmap" -V | grep "Compiled with:" )
 #
 
 %files
-%license COPYING*
+%license LICENSE
 %doc CHANGELOG HACKING
 %doc docs/README
 %doc docs/nmap.usage.txt

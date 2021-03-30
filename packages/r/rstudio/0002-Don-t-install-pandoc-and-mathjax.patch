@@ -1,4 +1,4 @@
-From df0ce1039f881c35bdc78ce91d1944be5384b593 Mon Sep 17 00:00:00 2001
+From b96c1517d5c36e75a871cebd048dfc80f441e45b Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Tue, 14 Jan 2020 14:20:40 +0100
 Subject: [PATCH 2/8] Don't install pandoc and mathjax
@@ -6,14 +6,14 @@ Subject: [PATCH 2/8] Don't install pandoc and mathjax
 Because we use the system wide version, there's no need to waste time installing
 the files.
 ---
- src/cpp/session/CMakeLists.txt | 22 ----------------------
- 1 file changed, 22 deletions(-)
+ src/cpp/session/CMakeLists.txt | 12 ------------
+ 1 file changed, 12 deletions(-)
 
 diff --git a/src/cpp/session/CMakeLists.txt b/src/cpp/session/CMakeLists.txt
-index 31d0ee2227..4739b4068a 100644
+index d0b41b13d2..69d6cb2b2b 100644
 --- a/src/cpp/session/CMakeLists.txt
 +++ b/src/cpp/session/CMakeLists.txt
-@@ -515,10 +515,6 @@ if (NOT RSTUDIO_SESSION_WIN32)
+@@ -534,10 +534,6 @@ if (NOT RSTUDIO_SESSION_WIN32)
     install(DIRECTORY "${RSTUDIO_DEPENDENCIES_DIR}/common/dictionaries"
             DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/resources")
  
@@ -24,13 +24,11 @@ index 31d0ee2227..4739b4068a 100644
     # icons for database connections
     install(DIRECTORY "resources/connections"
             DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/resources)
-@@ -531,24 +527,6 @@ if (NOT RSTUDIO_SESSION_WIN32)
+@@ -550,14 +546,6 @@ if (NOT RSTUDIO_SESSION_WIN32)
     install(DIRECTORY "resources/dependencies"
             DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/resources)
  
 -   # install pandoc
--   set(PANDOC_VERSION "2.7.3" CACHE INTERNAL "Pandoc version")
--
 -   set(PANDOC_BIN "${RSTUDIO_DEPENDENCIES_DIR}/common/pandoc/${PANDOC_VERSION}")
 -   file(GLOB PANDOC_FILES "${PANDOC_BIN}/pandoc*")
 -   set(PANDOC_FILES ${PANDOC_CITEPROC_BIN_LOCATION} ${PANDOC_BIN_LOCATION})
@@ -38,17 +36,9 @@ index 31d0ee2227..4739b4068a 100644
 -           PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
 -           DESTINATION  ${RSTUDIO_INSTALL_BIN}/pandoc)
 -
--   # install embedded packages
--   foreach(PKG ${RSTUDIO_EMBEDDED_PACKAGES})
--      file(GLOB PKG_FILES "${RSTUDIO_DEPENDENCIES_DIR}/common/${PKG}*.tar.gz")
--      install(
--         FILES "${PKG_FILES}"
--         DESTINATION "${RSTUDIO_INSTALL_SUPPORTING}/R/packages")
--   endforeach()
--
-    # install PDF.js
-    install(DIRECTORY "resources/pdfjs"
-            DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/resources)
+    # install embedded packages
+    foreach(PKG ${RSTUDIO_EMBEDDED_PACKAGES})
+       file(GLOB PKG_FILES "${RSTUDIO_DEPENDENCIES_DIR}/common/${PKG}*.tar.gz")
 -- 
-2.28.0
+2.29.2
 
