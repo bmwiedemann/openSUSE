@@ -1,7 +1,7 @@
 #
 # spec file for package rakudo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,21 @@
 
 
 Name:           rakudo
-Version:        2020.05.1
+Version:        2021.03
 Release:        2.1
 Summary:        Raku (formerly Perl 6) implemenation that runs on MoarVM
 License:        Artistic-2.0
 Group:          Development/Languages/Other
 URL:            http://rakudo.org/
 Source0:        rakudo-%{version}.tar.gz
+Patch0:         rakudo-test-log.diff
 BuildRequires:  fdupes
-BuildRequires:  moarvm-devel >= 2020.05
-BuildRequires:  nqp >= 2020.05
+BuildRequires:  moarvm-devel >= 2021.03
+BuildRequires:  nqp >= 2021.03
+BuildRequires:  perl(YAML::Tiny)
 Provides:       perl6 = %{version}-%{release}
-Requires:       moarvm >= 2020.05
-Requires:       nqp >= 2020.05
+Requires:       moarvm >= 2021.03
+Requires:       nqp >= 2021.03
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -38,10 +40,11 @@ specification that runs on the Moar virtual machine.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 perl Configure.pl --prefix="%{_prefix}"
-make
+VERBOSE_BUILD=1 make
 
 %check
 rm t/08-performance/99-misc.t

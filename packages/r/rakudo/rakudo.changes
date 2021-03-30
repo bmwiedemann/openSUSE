@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Sun Mar 21 21:49:09 CET 2021 - nine@detonation.org
+
+- update to version 2021.03
+  + Implement space-delimited command line interface arguments
+  + Add a predicated wait for Lock::ConditionVariable
+  + The Pod::To::Text module's output supports rendering of multi-level lists now
+  + Remove utf32 from encodings lists for MoarVM, it was never supported before
+  + Make printf directive error more descriptive
+  + Make sorting and related infix operators about 2x as fast
+  + Optimize coercive parameter typechecking
+  + Make >>. construct faster
+  + Make BagHash.add a few percent faster
+  + Make xx on a constant value about 5% faster
+  + Fix single item assignment at List creation (my @l is List = 'foo' now produces a correct result)
+  + Kernel.signals no longer returns unwanted extraneous data
+  + Fixed .of method on type objects
+  + Set up proper precedence info for a number of infix operators
+  + Fix hypering on Map and when using next
+  + Fix containerization on hypering
+
+-------------------------------------------------------------------
+Thu Feb 25 08:55:13 CET 2021 - nine@detonation.org
+
+- update to version 2021.02.1
+  + Fix a regression of the 2021.02 release where a lazy iterable usage could suddenly
+    lead to a hang
+  + Fix calling list and iterator methods on Map and Array type objects
+  + Fix a minor memory leak in Rakudo runner
+- Remove fix-flapping-tests.diff fixed upstream
+
+-------------------------------------------------------------------
+Sun Feb 21 16:27:19 CET 2021 - nine@detonation.org
+
+- update to version 2021.02
+  + Introduce new coertion semantics.
+  + Add new method deterministic to Iterator role
+  + Introduce %*SUB-MAIN-OPTS<coerce-allomorphs-to> setting
+  + Implement MAIN parameter bundling via the %*SUB-MAIN-OPTS<bundling> option
+  + Add a new candidate to spurt routine and method.
+  + Add :emit-on-empty, :emit-timed and :emit-once-on-empty methods to Supply.batch method
+  + Make is DEPRECATED trait introspectable on Routine instances
+  + Implement the prefix:<||> operator in postcircumfixes for 6.e and later
+  + Add a flag to symlink allowing creation of relative symlinks
+  + Implement binding of array- and hash-slices
+  + Give raku -v a pure ASCII version
+  + Introduce is test-assertion trait for routines
+  + Make Whatever slice work on 1-dim native shaped arrays
+  + Handle :exists and :delete on 1-dim native shaped arrays with int index
+  + Introducing the Allomorph class
+  + Add cmp candidates for Code
+  + Add parameterizer methods for Metamodel::Primitives
+  + Set equality operators: (==) Unicode ≡ and ≢
+  + Add support for Supply.tail(*), Supply.tail(*-3) and .tail(Inf)
+  + Make Supply.head(*-3) consistent with List.head(*-3)
+  + Add IO::Path::Parts class
+  + Add support for printf($format, Junction)
+  + Add IO::Handle.do-not-close-automatically, Supply.rotate and Capture.EXISTS-POS methods
+  + Add RAKU_REPL_OUTPUT_METHOD environment variable
+  + Add :chomp named argument to Str.lines similar to the same named argument of IO::Handle.new
+  + Lots and lots of bug fixes and speedups
+- Backport fix-flapping-tests.diff
+- Get output of failing tests via rakudo-test-log.diff
+
+-------------------------------------------------------------------
 Fri Oct 23 11:30:12 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable tests on armv6
