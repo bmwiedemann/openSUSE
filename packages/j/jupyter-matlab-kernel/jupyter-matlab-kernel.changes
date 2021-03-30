@@ -1,9 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb  3 23:36:49 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.16.11
+  (No upstream changelog, but from the commit history:)
+  * Fix autocompletion
+  * Fix MATLAB R2020b support 
+  * Fix async compatibility for MATLAB R2017a
+  * Figure order fix
+- BuildRequires jupyter-jupyter_core-filesystem for the macro
+
+-------------------------------------------------------------------
 Wed Nov 13 19:27:03 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Fix provides/obsoletes
 - Fix suggests
-
 
 -------------------------------------------------------------------
 Mon Jul 29 15:42:38 UTC 2019 - Todd R <toddrme2178@gmail.com>

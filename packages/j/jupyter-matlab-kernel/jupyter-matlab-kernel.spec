@@ -1,7 +1,7 @@
 #
 # spec file for package jupyter-matlab-kernel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           jupyter-matlab-kernel
-Version:        0.16.7
+Version:        0.16.11
 Release:        0
 Summary:        Matlab kernel for Jupyter
 License:        BSD-3-Clause AND MIT
@@ -27,6 +27,7 @@ URL:            https://github.com/Calysto/matlab_kernel
 Source:         https://files.pythonhosted.org/packages/source/m/matlab-kernel/matlab_kernel-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyter_client >= 4.4.0
+BuildRequires:  jupyter-jupyter_core-filesystem
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-certifi
 BuildRequires:  python3-setuptools
