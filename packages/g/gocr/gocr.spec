@@ -57,9 +57,13 @@ This package contains a basic graphical interface for GOCR.
 # Fix rpmlint warning "hidden-file-or-dir"
 rm -f examples/.#Makefile.1.22
 
-# Remove build time references so build-compare can do its work (fix rpmlint warning "file-contains-current-date")
-FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
-sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/gocr.c
+# Do not use urandom for examples to make package build reproducible (boo#1062303)
+cat > examples/rnd80.png.txt <<EOF
+/yErGfRT8Wwbrmrs4EGybmpgVy5au84ELYsFXxMnHCuKTnkRWKI6qGTjCXwCE/ixGYfMyw8Rki4u
+J0IBpx2IQZG1bKy7HG+6XlD+3lnU3+NYiSfdAxK9p3yEpCXa2VEakQXPkuVWQ1b010TonIAtAS23
+TQgnj2Gq+C9is6KQkK9kMcS3UDoWHYaJDzukARATW3XFcd9WvXzuCl6Cb5KTo/ed2ZbEdLA/rJbu
+LBso89YtC4nv+Ltxmb/AB0E4wtQZWeYISVNB3oBqiQZIPEHuAW/vvS664zrge3MS08E1jn8HzBPe
+EOF
 
 %build
 # configure does not check if netpbm headers are installed in /usr/include/netpbm
