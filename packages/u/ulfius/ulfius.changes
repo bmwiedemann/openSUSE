@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 11 17:03:17 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Adjust BR: liborcania >= 2.1.1 is needed.
+
+-------------------------------------------------------------------
+Sat Mar  6 11:49:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.2
+  * Fix post processor on multiple values with the same key.
+  * Add missing check includes if tests are built.
+  * Add option U_OPT_HTTP_URL_APPEND to
+    ulfius_set_request_properties
+  * Use ulfius_set_request_properties in example programs
+
+-------------------------------------------------------------------
 Sun Jan  3 23:00:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.7.1
