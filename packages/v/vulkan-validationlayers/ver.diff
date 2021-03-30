@@ -7,11 +7,11 @@ As a result, a version needs to be added.
  CMakeLists.txt |    3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: Vulkan-ValidationLayers-1.2.148/CMakeLists.txt
+Index: Vulkan-ValidationLayers-1.2.169/CMakeLists.txt
 ===================================================================
---- Vulkan-ValidationLayers-1.2.148.orig/CMakeLists.txt
-+++ Vulkan-ValidationLayers-1.2.148/CMakeLists.txt
-@@ -320,11 +320,12 @@ set(SCRIPTS_DIR "${PROJECT_SOURCE_DIR}/s
+--- Vulkan-ValidationLayers-1.2.169.orig/CMakeLists.txt
++++ Vulkan-ValidationLayers-1.2.169/CMakeLists.txt
+@@ -284,11 +284,12 @@ set(SCRIPTS_DIR "${PROJECT_SOURCE_DIR}/s
  # files directly in layers.
  
  add_library(VkLayer_utils
@@ -23,5 +23,5 @@ Index: Vulkan-ValidationLayers-1.2.148/CMakeLists.txt
              layers/vk_format_utils.cpp)
 +set_target_properties(VkLayer_utils PROPERTIES OUTPUT_NAME "VkLayer_utils-@PACKAGE_VERSION@")
  target_link_libraries(VkLayer_utils PUBLIC Vulkan::Headers)
+ set_target_properties(VkLayer_utils PROPERTIES CXX_STANDARD ${VVL_CPP_STANDARD})
  if(WIN32)
-     target_compile_definitions(VkLayer_utils PUBLIC _CRT_SECURE_NO_WARNINGS)

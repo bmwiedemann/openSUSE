@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Feb 28 17:03:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.170.0
+  * layers: Fix allowed stages for ACCELERATION_STRUCTURE_READ_BIT
+  * corechecks: Validate memory barriers attached to a subpass dep
+  * layers: Update ValidationStateTracker for synchronization2
+
+-------------------------------------------------------------------
+Wed Feb 10 14:05:39 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.169
+  * layers: Add VK_EXT_depth_range_unrestricted
+  * layers: Fix crash with null pWaitDstStageMask
+  * layers: Fix segfault when querying DRM format modifiers
+
+-------------------------------------------------------------------
 Wed Jan 27 21:20:27 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.166
