@@ -215,4 +215,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>867836</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>20abe65cf5915feb54fc6e9985fe2669</srcmd5>
+    <version>1.2.170.0</version>
+    <time>1617131008</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to release SDK-1.2.170.0</comment>
+    <requestid>875920</requestid>
+  </revision>
 </revisionlist>

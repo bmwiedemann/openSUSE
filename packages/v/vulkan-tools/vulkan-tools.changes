@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb 28 16:59:50 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.170.0
+  * No user-visible changes.
+
+-------------------------------------------------------------------
+Wed Feb 10 14:03:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.169
+  * vkcube: Add options --width and --height
+
+-------------------------------------------------------------------
 Sat Jan 23 00:48:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.166:
