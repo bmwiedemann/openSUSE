@@ -1,7 +1,7 @@
 #
 # spec file for package siril
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           siril
-Version:        0.99.6
+Version:        0.99.8.1
 Release:        0
 Summary:        An astronomical image processing software for Linux. (IRIS clone)
 License:        GPL-3.0-only
@@ -28,15 +28,14 @@ BuildRequires:  gcc-c++
 # Remove git build dep when fixed upstream: https://gitlab.com/free-astro/siril/-/issues/583
 BuildRequires:  git
 BuildRequires:  meson
-BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
-BuildRequires:  shared-mime-info
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(ffms2)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.17.0
+BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil) >= 55.20
@@ -48,7 +47,9 @@ BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(opencv)
 BuildRequires:  pkgconfig(rtprocess)
+BuildRequires:  pkgconfig(shared-mime-info)
 
 %description
 Siril is meant to be Iris for Linux (sirI-L). It is an astronomical image
@@ -72,8 +73,8 @@ rm %{buildroot}/%{_datadir}/doc/siril/*
 %find_lang %{name}
 install -m 0644 -D platform-specific/linux/org.free_astro.siril.desktop %{buildroot}%{_datadir}/applications/org.free_astro.siril.desktop
 install -m 0644 -D platform-specific/linux/siril.xml                    %{buildroot}%{_datadir}/mime/packages/siril.xml
-install -m 0755 -D -d                                                   %{buildroot}%{_datadir}/pixmaps/
-ln -sf /usr/share/siril/pixmaps/siril.svg                               %{buildroot}%{_datadir}/pixmaps/siril.svg
+# remove duplicate file
+rm -f %{buildroot}%{_datadir}/siril/pixmaps/siril.svg
 
 %files -f %{name}.lang
 %doc ChangeLog NEWS README.md AUTHORS
@@ -82,13 +83,12 @@ ln -sf /usr/share/siril/pixmaps/siril.svg                               %{buildr
 %{_bindir}/siril-cli
 %{_mandir}/man1/siril.1%{?ext_man}
 %{_mandir}/man1/siril-cli.1%{?ext_man}
-%{_datadir}/siril/ 
+%{_datadir}/siril/
 %{_datadir}/metainfo/org.free_astro.siril.appdata.xml
 %{_datadir}/applications/org.free_astro.siril.desktop
 %{_datadir}/mime/packages/siril.xml
-%{_datadir}/icons/hicolor/*/apps/siril.png
 %{_datadir}/icons/hicolor/scalable/mimetypes/text-x-seq.svg
-%{_datadir}/icons/hicolor/symbolic/apps/siril-symbolic.svg
-%{_datadir}/pixmaps/siril.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.free_astro.siril.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.free_astro.siril-symbolic.svg
 
 %changelog
