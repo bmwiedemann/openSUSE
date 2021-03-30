@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 17 13:55:01 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed password encrypting functions to work correctly also
+  in older products (SLE15-SP2/Leap 15.2 and older)
+  (related to bsc#1176924)
+- 4.3.14
+
+-------------------------------------------------------------------
 Thu Mar  4 14:44:36 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Change the special keybard shortcut to start a graphical

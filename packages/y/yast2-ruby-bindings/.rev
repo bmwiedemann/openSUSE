@@ -889,4 +889,12 @@
     <comment>submit new version 4.3.13</comment>
     <requestid>876912</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>39efa78c3b908570f1722a14c02c2dcc</srcmd5>
+    <version>4.3.14</version>
+    <time>1617130253</time>
+    <user>RBrownSUSE</user>
+    <comment>submit new version 4.3.14</comment>
+    <requestid>879843</requestid>
+  </revision>
 </revisionlist>
