@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 30 13:29:14 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- fix build by taking current git temporary
+
+-------------------------------------------------------------------
 Thu Sep 10 12:05:34 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build only on x86

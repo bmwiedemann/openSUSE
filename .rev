@@ -44,4 +44,12 @@
     <comment>- Build only on x86 (forwarded request 833452 from Guillaume_G)</comment>
     <requestid>833456</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dd3b1b31c41af65c26b5bbe590d2bba7</srcmd5>
+    <version>0.7+git20210330</version>
+    <time>1617132242</time>
+    <user>RBrownSUSE</user>
+    <comment>- fix build by taking current git temporary</comment>
+    <requestid>882176</requestid>
+  </revision>
 </revisionlist>
