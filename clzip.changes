@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 12 22:15:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.12
+  * Make -o behave like -c, but writing to file instead of stdout.
+  * Make -c and -o check whether the output is a terminal
+    only once.
+
+-------------------------------------------------------------------
 Thu Mar 14 20:48:48 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.11

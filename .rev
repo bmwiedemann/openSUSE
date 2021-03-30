@@ -94,4 +94,12 @@
     <comment>- Update to new upstream release 1.11</comment>
     <requestid>685155</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>28d51d3410f9ce46c924d2b520292344</srcmd5>
+    <version>1.12</version>
+    <time>1617131813</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to release 1.12</comment>
+    <requestid>878669</requestid>
+  </revision>
 </revisionlist>

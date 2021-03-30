@@ -1,7 +1,7 @@
 #
 # spec file for package clzip
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,9 +18,9 @@
 
 
 Name:           clzip
-Version:        1.11
+Version:        1.12
 Release:        0
-%define xversion	1.11
+%define xversion	1.12
 Summary:        Lossless Data Compressor based on LZMA
 License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
@@ -28,7 +28,6 @@ URL:            http://www.nongnu.org/lzip/clzip.html
 Source:         http://download.savannah.gnu.org/releases/lzip/clzip/%name-%xversion.tar.gz
 Source2:        http://download.savannah.gnu.org/releases/lzip/clzip/%name-%version.tar.gz.sig
 Source3:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): info
 Requires(preun):info
 
@@ -51,8 +50,8 @@ mkdir build
 pushd build/
 ../configure --prefix="%_prefix" --bindir="%_bindir" --datadir="%_datadir" \
 	--infodir="%_infodir" --mandir="%_mandir" --sysconfdir="%_sysconfdir" \
-	CC="%__cc" CFLAGS="%optflags"
-make %{?_smp_flags}
+	CFLAGS="%optflags"
+%make_build
 popd
 
 %install
@@ -72,7 +71,6 @@ popd
 %install_info_delete --info-dir="%_infodir" "%_infodir/clzip.info%ext_info"
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog NEWS README
 %_bindir/clzip
 %_mandir/man1/clzip.1%ext_man
