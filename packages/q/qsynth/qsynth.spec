@@ -1,7 +1,7 @@
 #
 # spec file for package qsynth
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           qsynth
-Version:        0.9.0
+Version:        0.9.2
 Release:        0
 Summary:        Graphical User Interface for fluidsynth
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://qsynth.sourceforge.net/qsynth-index.html
 Source:         https://sourceforge.net/projects/qsynth/files/qsynth/%{version}/qsynth-%{version}.tar.gz
 Patch1:         qsynth-fix_desktop_file.patch
-# PATCH-FIX-OPENSUSE qsynth-0.9.0_Qt512.patch # use qt5 macros when generic not available -- aloisio@gmx.com
-Patch2:         qsynth-0.9.0_Qt512.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
