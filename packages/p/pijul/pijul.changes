@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Feb 16 14:00:48 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to upstream version 1.0.0-alpha.38.
+
+-------------------------------------------------------------------
+Thu Jan 21 17:19:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Avoid bashisms in build recipe.
+
+-------------------------------------------------------------------
+Wed Jan 20 15:35:05 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to upstream version 1.0.0-alpha.36. 
+
+-------------------------------------------------------------------
+Tue Dec 22 11:36:50 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to upstream version 1.0.0-alpha.24. 
+
+-------------------------------------------------------------------
+Tue Dec  8 22:31:43 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to upstream version 1.0.0-alpha.21.
+- Enable 'Git' support (allow to import a Git repository into
+  a Pijul one).
+
+-------------------------------------------------------------------
+Sun Dec  6 21:16:36 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to upstream version 1.0.0-alpha.17. 
+
+-------------------------------------------------------------------
+Fri Dec  4 23:15:29 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to upstream version 1.0.0-alpha.15. 
+
+-------------------------------------------------------------------
 Thu Aug 20 15:52:03 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Avoid build error for ppc64le as reported by boo#1175502
