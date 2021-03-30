@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f1d42fd1c6913c361e41b0d81c33f85a</srcmd5>
+    <version>unknown</version>
+    <time>1558516381</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.5
+- Rename to to match jupyter package naming guidelines.
+- Specify which version number is being used to avoid conflicts.
+- Add conflicts to jupyter subpackage to more explicitly handle file overlaps with old naming scheme.
+</comment>
+    <requestid>703527</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>57b80eb3f42b5f90924298d568b9e7cc</srcmd5>
+    <version>unknown</version>
+    <time>1569523022</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>726526</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>74e349bf7b5002738134fc757f653e83</srcmd5>
+    <version>unknown</version>
+    <time>1575039377</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>747938</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>fefaf8a62cff6e79bf0d319ae9448138</srcmd5>
+    <version>unknown</version>
+    <time>1579195226</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764704</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7648195bbf1c3898e45e181801450711</srcmd5>
+    <version>unknown</version>
+    <time>1587659859</time>
+    <user>dimstar_suse</user>
+    <comment>- As py2 support is dropped remove py2 dependencies</comment>
+    <requestid>796487</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>0112d48bcb9bd3ac82e88b800694f349</srcmd5>
+    <version>unknown</version>
+    <time>1617130770</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>869699</requestid>
+  </revision>
+</revisionlist>
