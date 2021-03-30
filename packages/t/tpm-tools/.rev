@@ -243,4 +243,15 @@
   For comparison see: https://sourceforge.net/p/trousers/tpm-tools/merge-requests/2/</comment>
     <requestid>540420</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>af66e731389ebebc3eba771346b7cc63</srcmd5>
+    <version>1.3.9.2</version>
+    <time>1617131452</time>
+    <user>RBrownSUSE</user>
+    <comment>- upgrade to minor version 1.3.9.2:
+  - upstream now provide openssl 1.1 compatibility on their own
+- dropped 0001-Fix-build-against-OpenSSL-1.1.0.patch since the tarbal is now
+  compatible.</comment>
+    <requestid>876508</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar  3 11:29:22 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- upgrade to minor version 1.3.9.2:
+  - upstream now provide openssl 1.1 compatibility on their own
+- dropped 0001-Fix-build-against-OpenSSL-1.1.0.patch since the tarbal is now
+  compatible.
+
+-------------------------------------------------------------------
 Thu Nov  9 17:14:32 UTC 2017 - matthias.gerstner@suse.com
 
 - 0001-Fix-build-against-OpenSSL-1.1.0.patch: fix openssl 1.1.0 build in the

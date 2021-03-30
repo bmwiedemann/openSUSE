@@ -1,7 +1,7 @@
 #
 # spec file for package tpm-tools
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define lib_name libtpm_unseal1
 Name:           tpm-tools
-Version:        1.3.9.1
+Version:        1.3.9.2
 Release:        0
 Summary:        Trusted Platform Module (TPM) administration tools
 License:        IPL-1.0
 Group:          Productivity/Security
-Url:            http://trousers.sourceforge.net/
+URL:            http://trousers.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/trousers/tpm-tools/%{version}/tpm-tools-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -32,9 +32,6 @@ BuildRequires:  openCryptoki-devel
 BuildRequires:  openssl-devel
 BuildRequires:  trousers-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# upstream has already got a pull request for this problem but didn't react
-# for some months... so this is my own patch to tackle the problem
-Patch0:         0001-Fix-build-against-OpenSSL-1.1.0.patch
 
 %description
 Trusted Computing is a set of specifications published by the Trusted
@@ -88,15 +85,14 @@ provides tools for enablement and configuration of the TPM and
 associated interfaces. Also look inside the trousers package for more
 software for TC.
 
-This package contains the libraries and headers necessary for developing 
+This package contains the libraries and headers necessary for developing
 tpm-tools applications.
 
 %prep
-%setup -q -c %{name}-%{version}
-%patch0 -p1
+%setup -q -n %{name}-%{version}
 
 %build
-autoreconf -fiv
+sh bootstrap.sh
 # Disable unused-but-set warnings with gcc >= 4.6
 %configure \
 	--disable-static
