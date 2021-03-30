@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Tue Feb 23 23:47:17 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.29.3
+Release v1.29.3 is a patch release to improve the stability of the
+Netdata Agent.
+
+We discovered a bug that when proc.plugin attempts to collect the
+operstate parameter for a virtual network interface. If the chart
+is obsoleted, the Netdata Agent crashes.
+
+This release also contains additional bug fixes and improvements.
+
+Bug fixes
+  * Fix proc.plugin to invalidate RRDSETVAR pointers on obsoletion.
+
+-------------------------------------------------------------------
+Thu Feb 18 16:15:44 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.29.2
+Release v1.29.2 is a patch release to improve the stability of the
+Netdata Agent.
+
+We discovered that an improvement introduced in v1.29.0 could
+inadvertently set all os_* host labels to unknown, which could
+affect users who leverage these host labels to organize their
+nodes, deploy health entities, or export metrics to external
+time-series databases. This bug has been fixed.
+
+This release also contains additional bug fixes and improvements.
+
+Improvements
+  * Make the Opsgenie API URL configurable.
+  * Add k8s_cluster_id host label.
+  * Enable apps.plugin aggregation debug messages.
+  * Add configuration parameter to disable stock alarms.
+  * Add ACLK proxy setting as host label.
+  * Add freeswitch to apps_groups.conf.
+  * Simplify thread creation and remove unnecessary variables in
+    the eBPF plugin.
+
+Bug fixes
+  * Fix the context filtering on the data query endpoint.
+  * Fix container/host detection in the system-info.sh script.
+  * Add a small delay to the ipv4_tcp_resets alarms.
+  * Fix collecting operstate for virtual network interfaces.
+  * Fix sendmail unrecognized option F error.
+  * Fix so that raw binary data should never be printed.
+  * Change KSM memory chart type to stacked.
+  * Allow the REMOVED alarm status via ACLK if the previous status
+    was WARN/CRIT.
+  * Reduce excessive logging in the ACLK.
+
+- Changes in 1.29.1
+Release v1.29.1 is a hotfix release to address a crash in the
+Netdata Agent.
+
+A locking bug in one of the internal collectors in Netdata could
+cause it to crash during shutdown in a way that would result in the
+Netdata Agent taking an excessively long time to exit.
+
+Bug fixes
+  * Fix crash during shutdown of cgroups internal plugin.
+
+-------------------------------------------------------------------
+Wed Feb  3 14:12:09 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.29.0 (go.d.plugin 0.27.0)
+The v1.29.0 release of the Netdata Agent is a maintenance release
+that brings incremental but necessary improvements that make your
+monitoring experience more robust. We've pushed improvements and
+bug fixes to the installation and update scripts, enriched our
+library of collectors, and focused on fixing bugs reported by the
+community.
+
+
+At a glance
+
+Netdata now collects and meaningfully organizes metrics from both
+the Couchbase JSON document database and the nginx-module-vts
+module for exposing metrics about NGINX virtual hosts.
+
+We've also migrated more collectors from Python to Go in our
+continued efforts to make data collection faster and more robust.
+The newest effort includes our Redis, Pika, and Energi Core Wallet
+collectors.
+
+On the dashboard, we improved the responsiveness of panning forward
+and backward through historical metrics data by preventing
+unnecessary updates and reducing the number of calls. The charts
+should also now immediately update when you stop panning.
+
+
+Improvements
+  * Reduce the number of alarm updates on ACLK.
+  * Remove unused entries from structures.
+  * Improve the retry/backoff during claiming.
+  * Support multiple chart label keys in data queries.
+  * Truncate excessive information from titles for apps and
+    cgroups collectors.
+  * Use mguid instead of hostname in the ACLK collector list.
+  * Cleanup and minor fixes to eBPF collector.
+  * Add _is_k8s_node label to the host labels.
+  * Move ACLK into a legacy subfolder.
+  * Exclude autofs by default in the diskspace plugin.
+  * Mark internal functions as static in health code.
+  * Remove unused struct in health code.
+  * Add support for per series styling for dygraphs.
+
+Dashboard
+  * Fix minor vulnerability alert by updating socket-io dependency.
+  * Fix dygraph panning responsiveness, chart heights and
+    performance improvements.
+  * Make legend position configurable.
+
+Collectors
+  * Add Go version of the redis collector.
+  * Add Go version of the pika collector.
+  * Add Go version of the energis collector.
+  * Add a new nginxvts collector.
+  * Add a new couchbase collector.
+  * Add Traefik v2 to the prometheus collector default
+    configuration.
+  * Add an expected_prefix configuration option to the prometheus
+    collector.
+  * Add patterns support to the filecheck collector.
+
+Bug fixes
+  * Fix container detection from systemd-detect-virt.
+  * Fix handling of TLS config so that cURL works in all cases.
+  * Fix disconnect message sent via ACLK on agent shutdown
+  * Fix prometheus remote write header
+  * Fix values in Prometheus export for metrics, collected by the
+    Prometheus collector
+  * Fix handling spaces in labels values in the Prometheus
+    collector
+  * Fix mysql.slave_status alarm for go mysql collector
+  * Make mdstat_mismatch_cnt alarm less strict
+  * Dispatch cgroup discovery into another thread
+  * Fix data source option for Prometheus web API in exporting
+    configuration
+  * Fix anomalies collector custom model bug
+  * Fix broken dbengine stress tests.
+  * Fix segmentation fault in the agent
+  * Fix memory allocation when computing standard deviation
+  * Fix temperature parsing in the hddtemp collector
+  * Fix postgres password bug and change default config
+  * Add handling "yes" and "no" and flexible space match in the
+    python.d/fail2ban plugin
+  * Fix spelling mistakes in the Python plugin and documentation.
+
+-------------------------------------------------------------------
 Mon Dec 28 11:06:36 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to v1.28
@@ -1350,12 +1501,13 @@ Fri Feb 22 06:31:15 UTC 2019 - Martin Herkt <9+suse@cirno.systems>
   Fixed security issues:
   * CVE-2018-18836 Fixed JSON Header Injection (an attacker could
     send \n encoded in the request to inject a JSON fragment into
-    the response).
+    the response). boo#1139094
   * CVE-2018-18837 Fixed HTTP Header Injection (an attacker could
     send \n encoded in the request to inject an HTTP header into
-    the response).
+    the response). boo#1139095
   * CVE-2018-18838 Fixed LOG Injection (an attacker could send \n
     encoded in the request to inject a log line at access.log).
+    boo#1139098
   * CVE-2018-18839 Not fixed Full Path Disclosure, since these are
     intended (netdata reports the absolute filename of web files,
     alarm config files and alarm handlers).
