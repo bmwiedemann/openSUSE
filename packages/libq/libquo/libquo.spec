@@ -1,7 +1,7 @@
 #
 # spec file for package libquo
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014-2016 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +15,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 # Build with OpenMPI
 %if 0%{?sle_version} == 0
@@ -32,19 +33,17 @@
 %endif
 
 Name:           libquo
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        A library for run-time tuning of process binding policies
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://lanl.github.io/libquo/
-Source:         http://lanl.github.io/libquo/dists/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - 29.patch - comp_dgemv: fix return value
-Patch0:         https://patch-diff.githubusercontent.com/raw/lanl/libquo/pull/29.patch
-BuildRequires:  hwloc
-BuildRequires:  numactl
+Source:         https://lanl.github.io/libquo/dists/%{name}-%{version}.tar.gz
 BuildRequires:  %{mpiver}
 BuildRequires:  %{mpiver}-devel
+BuildRequires:  hwloc
+BuildRequires:  numactl
 BuildRequires:  pkgconfig
 
 %description
@@ -54,11 +53,11 @@ for arbitrary process binding policies to be enacted and reverted
 during the execution as different computational phases are entered
 and exited, respectively.
 
-%package -n libquo6
+%package -n libquo7
 Summary:        A library for run-time tuning of process binding policies
 Group:          System/Libraries
 
-%description -n libquo6
+%description -n libquo7
 QUO is an API tailored for MPI/MPI+X codes that may benefit from
 evolving process binding policies during their execution. QUO allows
 for arbitrary process binding policies to be enacted and reverted
@@ -68,7 +67,7 @@ and exited, respectively.
 %package devel
 Summary:        Development headers and libraries for libquo
 Group:          Development/Libraries/C and C++
-Requires:       libquo6 = %{version}-%{release}
+Requires:       libquo7 = %{version}-%{release}
 
 %description devel
 QUO is an API tailored for MPI/MPI+X codes that may benefit from
@@ -81,7 +80,6 @@ This package contains development headers and libraries for libquo.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -95,10 +93,10 @@ make %{?_smp_mflags}
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libquo6 -p /sbin/ldconfig
-%postun -n libquo6 -p /sbin/ldconfig
+%post -n libquo7 -p /sbin/ldconfig
+%postun -n libquo7 -p /sbin/ldconfig
 
-%files -n libquo6
+%files -n libquo7
 %defattr(-,root,root,0755)
 %{_libdir}/libquo.so.*
 
