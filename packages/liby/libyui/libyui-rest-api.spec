@@ -1,5 +1,5 @@
 #
-# spec file for package libyui
+# spec file for package libyui-rest-api
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,7 +16,7 @@
 #
 
 
-Name:           libyui
+Name:           libyui-rest-api
 
 # DO NOT manually bump the version here; instead, use rake version:bump
 Version:        4.1.2
@@ -26,61 +26,56 @@ Release:        0
 %define         bin_name %{name}%{so_version}
 
 BuildRequires:  boost-devel
-BuildRequires:  cmake >= 3.17
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_test-devel
-BuildRequires:  pkg-config
+BuildRequires:  jsoncpp-devel
+BuildRequires:  libmicrohttpd-devel
+BuildRequires:  libyui-devel >= %{version}
 
-Summary:        GUI abstraction library
+Summary:        Libyui - REST API plugin, the shared part
 License:        LGPL-2.1-only OR LGPL-3.0-only
-URL:            http://github.com/libyui/
-Source:         %{name}-%{version}.tar.bz2
+URL:            http://github.com/libyui
+Source:         libyui-%{version}.tar.bz2
 
 %description
-This is the user interface engine that provides the abstraction from
-graphical user interfaces (Qt, Gtk) and text based user interfaces
-(ncurses).
+This package provides a libyui REST API plugin.
 
-Originally developed for YaST, it can also be used independently of
-YaST for generic (C++) applications. This package has very few
-dependencies.
+It allows inspecting and controlling the UI remotely via
+an HTTP REST API, it is designed for automated tests.
 
 
 %package -n %{bin_name}
-Summary:        Libyui - GUI abstraction library
-
-Provides:       yast2-libyui = 2.42.0
-Obsoletes:      yast2-libyui < 2.42.0
+Summary:        Libyui - REST API plugin, the shared part
+Requires:       libyui%{so_version}
 Requires:       yui_backend = %{so_version}
+Provides:       %{name} = %{version}
 
 %description -n %{bin_name}
-This is the user interface engine that provides the abstraction from
-graphical user interfaces (Qt, Gtk) and text based user interfaces
-(ncurses).
+This package provides a libyui REST API plugin.
 
-Originally developed for YaST, it can also be used independently of
-YaST for generic (C++) applications. This package has very few
-dependencies.
+It allows inspecting and controlling the UI remotely via
+an HTTP REST API, it is designed for automated tests.
 
 
 %package devel
-Summary:        Libyui header files and examples
+Summary:        Libyui - REST API header files
 
 Requires:       %{bin_name} = %{version}
 Requires:       boost-devel
 Requires:       glibc-devel
+Requires:       jsoncpp-devel
+Requires:       libmicrohttpd-devel
 Requires:       libstdc++-devel
+Requires:       libyui-devel >= %{version}
 
 %description devel
+This package provides a libyui REST API plugin.
 
-This package contains header files and examples for developing C++
-applications based on libyui, the user interface engine that provides
-the abstraction from graphical user interfaces (Qt, Gtk) and text
-based user interfaces (ncurses).
+This is a development subpackage.
 
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n libyui-%{version}
 
 %build
 pushd %{name}
@@ -108,29 +103,23 @@ popd
 pushd %{name}
 cd build
 make install DESTDIR="$RPM_BUILD_ROOT"
-install -m0755 -d $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
-install -m0755 -d $RPM_BUILD_ROOT/%{_libdir}/yui
-install -m0644 ../../COPYING* $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
+install -m0755 -d %{buildroot}/%{_libdir}/yui
+install -m0755 -d %{buildroot}/%{_docdir}/%{bin_name}/
+install -m0644 ../../COPYING* %{buildroot}/%{_docdir}/%{bin_name}/
 popd
 
 %post -n %{bin_name} -p /sbin/ldconfig
 %postun -n %{bin_name} -p /sbin/ldconfig
 
 %files -n %{bin_name}
-%defattr(-,root,root)
-%{_libdir}/lib*.so.*
+%dir %{_libdir}/yui
+%{_libdir}/yui/lib*.so.*
 %doc %dir %{_docdir}/%{bin_name}
 %license %{_docdir}/%{bin_name}/COPYING*
 
 %files devel
-%defattr(-,root,root)
 %dir %{_docdir}/%{bin_name}
-%{_libdir}/lib*.so
+%{_libdir}/yui/lib*.so
 %{_includedir}/yui
-%dir %{_datadir}/libyui
-%{_datadir}/libyui/buildtools
-%doc %{_docdir}/%{bin_name}/examples
-%{_libdir}/pkgconfig/%{name}.pc
-# %{_libdir}/cmake/%{name}
 
 %changelog

@@ -485,4 +485,12 @@ build/package/libyui.spec:Version:        3.0.13</comment>
     <comment>submit new version 4.0.1</comment>
     <requestid>871415</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>c18405ec534b8ab17abc2d76f4583c4f</srcmd5>
+    <version>4.1.2</version>
+    <time>1617130261</time>
+    <user>RBrownSUSE</user>
+    <comment>submit new version 4.1.2</comment>
+    <requestid>880680</requestid>
+  </revision>
 </revisionlist>

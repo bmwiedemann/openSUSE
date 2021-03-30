@@ -1,5 +1,5 @@
 #
-# spec file for package libyui
+# spec file for package libyui-qt-graph
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,79 +16,77 @@
 #
 
 
-Name:           libyui
+Name:           libyui-qt-graph
 
-# DO NOT manually bump the version here; instead, use rake version:bump
+# DO NOT manually bump the version here; instead, use   rake version:bump
 Version:        4.1.2
 Release:        0
 
 %define         so_version 15
 %define         bin_name %{name}%{so_version}
 
-BuildRequires:  boost-devel
-BuildRequires:  cmake >= 3.17
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_test-devel
-BuildRequires:  pkg-config
+BuildRequires:  graphviz-devel >= 2.26.0
 
-Summary:        GUI abstraction library
+# Used here and in src/CMakeLists.txt
+BuildRequires:  libyui-devel >= %{version}
+BuildRequires:  libyui-qt-devel >= %{version}
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5X11Extras)
+
+Summary:        Libyui - Qt Graph Widget
 License:        LGPL-2.1-only OR LGPL-3.0-only
 URL:            http://github.com/libyui/
-Source:         %{name}-%{version}.tar.bz2
+Source:         libyui-%{version}.tar.bz2
 
 %description
-This is the user interface engine that provides the abstraction from
-graphical user interfaces (Qt, Gtk) and text based user interfaces
-(ncurses).
-
-Originally developed for YaST, it can also be used independently of
-YaST for generic (C++) applications. This package has very few
-dependencies.
+This package contains the Qt graph component for libyui.
 
 
 %package -n %{bin_name}
-Summary:        Libyui - GUI abstraction library
+Summary:        Libyui - Qt graph widget
+Requires:       libyui%{so_version}
+Requires:       libyui-qt%{so_version}
+Supplements:    libyui-qt%{so_version}
+Provides:       %{name} = %{version}
 
-Provides:       yast2-libyui = 2.42.0
-Obsoletes:      yast2-libyui < 2.42.0
-Requires:       yui_backend = %{so_version}
+Provides:       yast2-qt-graph = 2.46.0
+Obsoletes:      yast2-qt-graph < 2.46.0
 
 %description -n %{bin_name}
-This is the user interface engine that provides the abstraction from
-graphical user interfaces (Qt, Gtk) and text based user interfaces
-(ncurses).
+This package contains the Qt graph component for libyui.
 
-Originally developed for YaST, it can also be used independently of
-YaST for generic (C++) applications. This package has very few
-dependencies.
+This is a special widget to visualize graphs such as the
+storage device hierarchy (disks, partitions, subvolumes
+etc.).  and similar graphviz-generated graphs.
 
 
 %package devel
-Summary:        Libyui header files and examples
-
+Summary:        Libyui - Header files for the Qt graph widget
 Requires:       %{bin_name} = %{version}
-Requires:       boost-devel
-Requires:       glibc-devel
-Requires:       libstdc++-devel
+Requires:       libyui-qt-devel >= %{version}
 
 %description devel
-
-This package contains header files and examples for developing C++
-applications based on libyui, the user interface engine that provides
-the abstraction from graphical user interfaces (Qt, Gtk) and text
-based user interfaces (ncurses).
+This package contains the header files for the Qt graph component
+for libyui.
 
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n libyui-%{version}
 
 %build
+export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
+export CXXFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
+
 pushd %{name}
 mkdir build
 cd build
-
-export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG $(getconf LFS_CFLAGS)"
-export CXXFLAGS="$RPM_OPT_FLAGS -DNDEBUG $(getconf LFS_CFLAGS)"
 
 %if %{?_with_debug:1}%{!?_with_debug:0}
 CMAKE_OPTS="-DCMAKE_BUILD_TYPE=RELWITHDEBINFO"
@@ -99,6 +97,7 @@ CMAKE_OPTS="-DCMAKE_BUILD_TYPE=RELEASE"
 cmake .. \
  -DDOC_DIR=%{_docdir} \
  -DLIB_DIR=%{_lib} \
+ -DBUILD_EXAMPLES=on \
  $CMAKE_OPTS
 
 make %{?jobs:-j%jobs}
@@ -108,8 +107,8 @@ popd
 pushd %{name}
 cd build
 make install DESTDIR="$RPM_BUILD_ROOT"
-install -m0755 -d $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
 install -m0755 -d $RPM_BUILD_ROOT/%{_libdir}/yui
+install -m0755 -d $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
 install -m0644 ../../COPYING* $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
 popd
 
@@ -118,19 +117,16 @@ popd
 
 %files -n %{bin_name}
 %defattr(-,root,root)
-%{_libdir}/lib*.so.*
+%dir %{_libdir}/yui
+%{_libdir}/yui/lib*.so.*
 %doc %dir %{_docdir}/%{bin_name}
 %license %{_docdir}/%{bin_name}/COPYING*
 
 %files devel
 %defattr(-,root,root)
+%{_libdir}/yui/lib*.so
+%{_includedir}/yui/qt-graph
 %dir %{_docdir}/%{bin_name}
-%{_libdir}/lib*.so
-%{_includedir}/yui
-%dir %{_datadir}/libyui
-%{_datadir}/libyui/buildtools
 %doc %{_docdir}/%{bin_name}/examples
-%{_libdir}/pkgconfig/%{name}.pc
-# %{_libdir}/cmake/%{name}
 
 %changelog

@@ -1,5 +1,5 @@
 #
-# spec file for package libyui
+# spec file for package libyui-ncurses
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,7 +16,7 @@
 #
 
 
-Name:           libyui
+Name:           libyui-ncurses
 
 # DO NOT manually bump the version here; instead, use rake version:bump
 Version:        4.1.2
@@ -26,69 +26,78 @@ Release:        0
 %define         bin_name %{name}%{so_version}
 
 BuildRequires:  boost-devel
-BuildRequires:  cmake >= 3.17
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_test-devel
-BuildRequires:  pkg-config
+BuildRequires:  libyui-devel >= %{version}
+BuildRequires:  ncurses-devel
 
-Summary:        GUI abstraction library
-License:        LGPL-2.1-only OR LGPL-3.0-only
 URL:            http://github.com/libyui/
-Source:         %{name}-%{version}.tar.bz2
+Summary:        Libyui - NCurses (text based) user interface
+License:        LGPL-2.1-only OR LGPL-3.0-only
+Source:         libyui-%{version}.tar.bz2
 
 %description
-This is the user interface engine that provides the abstraction from
-graphical user interfaces (Qt, Gtk) and text based user interfaces
-(ncurses).
-
-Originally developed for YaST, it can also be used independently of
-YaST for generic (C++) applications. This package has very few
-dependencies.
+This package contains the NCurses (text based) user interface
+component for libyui.
 
 
 %package -n %{bin_name}
-Summary:        Libyui - GUI abstraction library
+Summary:        Libyui - NCurses (text based) user interface
 
-Provides:       yast2-libyui = 2.42.0
-Obsoletes:      yast2-libyui < 2.42.0
-Requires:       yui_backend = %{so_version}
+Requires:       glibc-locale
+Requires:       libyui%{so_version}
+Provides:       %{name} = %{version}
+Provides:       yast2-ncurses = 2.42.0
+Obsoletes:      yast2-ncurses < 2.42.0
+Provides:       yui_backend = %{so_version}
 
 %description -n %{bin_name}
-This is the user interface engine that provides the abstraction from
-graphical user interfaces (Qt, Gtk) and text based user interfaces
-(ncurses).
-
-Originally developed for YaST, it can also be used independently of
-YaST for generic (C++) applications. This package has very few
-dependencies.
+This package contains the NCurses (text based) user interface
+component for libyui.
 
 
 %package devel
-Summary:        Libyui header files and examples
+Summary:        Libyui - Header fles for the NCurses (text based) user interface
 
 Requires:       %{bin_name} = %{version}
 Requires:       boost-devel
 Requires:       glibc-devel
 Requires:       libstdc++-devel
+Requires:       libyui-devel >= %{version}
+Requires:       ncurses-devel
 
 %description devel
+This package contains the header files for the NCurses
+(text based) user interface component for libyui.
 
-This package contains header files and examples for developing C++
-applications based on libyui, the user interface engine that provides
-the abstraction from graphical user interfaces (Qt, Gtk) and text
-based user interfaces (ncurses).
+This package is not needed to develop libyui-based applications,
+only to develop extensions for libyui-ncurses.
+
+
+%package tools
+
+Summary:        Libyui - tools for the NCurses (text based) user interface
+Requires:       screen
+# conflict with libyui-ncurses8, /usr/bin/libyui-terminal was originally there
+Conflicts:      %{name}8
+
+%description tools
+This package contains tools for the NCurses (text based)
+user interface component for libyui:
+
+libyui-terminal - useful for testing on headless machines
 
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n libyui-%{version}
 
 %build
+export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
+export CXXFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
+
 pushd %{name}
 mkdir build
 cd build
-
-export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG $(getconf LFS_CFLAGS)"
-export CXXFLAGS="$RPM_OPT_FLAGS -DNDEBUG $(getconf LFS_CFLAGS)"
 
 %if %{?_with_debug:1}%{!?_with_debug:0}
 CMAKE_OPTS="-DCMAKE_BUILD_TYPE=RELWITHDEBINFO"
@@ -108,8 +117,8 @@ popd
 pushd %{name}
 cd build
 make install DESTDIR="$RPM_BUILD_ROOT"
-install -m0755 -d $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
 install -m0755 -d $RPM_BUILD_ROOT/%{_libdir}/yui
+install -m0755 -d $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
 install -m0644 ../../COPYING* $RPM_BUILD_ROOT/%{_docdir}/%{bin_name}/
 popd
 
@@ -118,19 +127,19 @@ popd
 
 %files -n %{bin_name}
 %defattr(-,root,root)
-%{_libdir}/lib*.so.*
+%dir %{_libdir}/yui
+%{_libdir}/yui/lib*.so.*
 %doc %dir %{_docdir}/%{bin_name}
 %license %{_docdir}/%{bin_name}/COPYING*
 
 %files devel
 %defattr(-,root,root)
 %dir %{_docdir}/%{bin_name}
-%{_libdir}/lib*.so
-%{_includedir}/yui
-%dir %{_datadir}/libyui
-%{_datadir}/libyui/buildtools
-%doc %{_docdir}/%{bin_name}/examples
-%{_libdir}/pkgconfig/%{name}.pc
-# %{_libdir}/cmake/%{name}
+%{_libdir}/yui/lib*.so
+%{_prefix}/include/yui
+
+%files tools
+%defattr(-,root,root)
+%{_bindir}/libyui-terminal
 
 %changelog
