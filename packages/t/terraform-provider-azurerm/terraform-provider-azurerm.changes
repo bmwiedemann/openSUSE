@@ -1,4 +1,1840 @@
 -------------------------------------------------------------------
+Fri Jan 15 12:14:41 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.43.0:
+  * Update CHANGELOG.md for #10055
+  * azurerm_cosmosdb_account: enable_analytical_storage (#10055)
+  * Update CHANGELOG.md for #10190
+  * r/advanced_threat_protection: adding a state migration to ensure
+    the ID has a `/` prefix (#10190)
+  * update error message && construct id regardless response (reduce a GET call)
+  * sentinel opt-in resourceid
+  * update CHANGELOG>md for #-7020
+  * new data source: azurerm_sentinel_alert_rule_template (#7020)
+  * update CHANGELOG.md for #10159
+  * `azurerm_cosmosdb_gremlin_graph`: Expose `default_ttl` (#10159)
+  * update CHANGELOG.md for #10125
+  * azurerm_mssql_virtual_machine: fix tests and persistent diff, use relative
+    expiry for service principal password (#10125)
+  * update changelog.md for #10170
+  * `azurerm_role_definition` - address eventual consistency issues in update and delete (#10170)
+  * update CHANGELOG.md for #10169
+  * azurerm_eventhub_namespace: Expose trusted_service_access_enabled in … (#10169)
+  * refactor apimanagement: generators (part 1) (#9929)
+  * Test Shim: Network A->E (#10184)
+  * Refactor: Move Compute tests into main compute package (#10180)
+  * Test Shim: Compute (#10161)
+  * update CHANGELOG.md for #10070
+  * azurerm_data_factory_dataset_delimited_text: Add `compression_type` (#10070)
+  * updating to include #10126
+  * updating to include #10105
+  * updating to include #1016210162
+  * firewall service tests - refactor to CheckWithClient / DisappearsStep (#10127)
+  * update CHANGELOG.md for #10033
+  * azurerm_synapse_workspace: Adding sql_identity_control_enabled (#10033)
+  * update CHANGELOG.md for #10032
+  * data_factory_linked_service_sql_server: support `key_vault_password` (#10032)
+  * update CHANGELOG.md for #9541
+  * azurerm_databricks_workspace - changing the sku no longer forces a new resource unless it is required (#9541)
+  * Make  data source return parsed ID
+  * Test Shim: Compute Linux Virtual Machine (#10142)
+  * Update CHANGELOG.md for #10134
+  * `azurerm_role_assignment` - fix race condition in read after create (#10134)
+  * sorting alphabetically
+  * update doc
+  * updating to include #10104
+  * Update network_service_tags.html.markdown
+  * Document how to use the locally compiled Azure provider (#10119)
+  * Fix import ordering
+  * Fix formatting
+  * Remove validation from field that is only used as output
+  * Move imports in attempt to beat the linter to the check.
+  * Fix bug where I returned nil instead of err.
+  * Add parsing and validation of user assigned identity for kusto_cluster
+  * Add parsing and validation of user assigned identity for kubernetes_cluster
+  * Add parsing and validation of user assigned identity for container_group
+  * Add parsing and validation of user assigned identity for virtual_machine
+  * Add parsing and validation of user assigned identity for virtual_machine_scale_set
+  * Add parsing and validation of user assigned identity for blueprint_assignment
+  * Add parsing and validation of user assigned identity for api_management
+  * loadbalancer: removing unused methods
+  * fix import generator
+  * r/hdinsight_kafka_cluster: switching the AAD Client to come from Authorization
+  * stop gen
+  * updating to include #10031
+  * tests: threading through the err to the message
+  * r/loadbalancer_backend_address_pool: switching to use a Disappears/Destroy step
+  * r/loadbalancer_nat_pool: updating to use a Disappears/Destroy func
+  * r/loadbalancer_nat_rule: switching to use a Disappears/Destroy func
+  * r/loadbalancer_outbound_rule: switching to use a Disappears/Destroy step
+  * r/load_balancer_probe: switching to use a Disappears/Destroy func
+  * r/loadbalancer_rule: refactoring to use a Destroy func
+  * generate parsers
+  * Update azurerm/internal/services/monitor/monitor_diagnostic_setting_resource.go
+  * update doc
+  * r/stream_analytics_function_javascript_udf: refactoring to use the ID Parser/Validator
+  * streamanalytics: generating the Function ID Parser/Validator
+  * r/stream_analytics_job: switching to use the ID Parser/validator
+  * streamanalytics: generating the Streaming Job ID parser
+  * r/stream_analytics_output_mssql: refactoring to use the ID parser
+  * r/stream_analytics_output_servicebus_queue: refactoring to use the ID parser
+  * r/stream_analytics_output_eventhub: refactoring to use the ID Parser
+  * r/stream_analytics_output_blob: refactoring to use the ID parser
+  * r/stream_analytics_output_servicebus_topic: refactoring to use the Resource ID parser
+  * streamanalytics: generating the Output ID parser
+  * fix test case, examples and support more event source
+  * Firewall Service - add missing generated parsers (#10103)
+  * Test Shim: DataFactory (#10114)
+  * Add os_disk_type to AKS cluster docs (#10113)
+  * remove comment
+  * fix application_gateway_resource identity_ids case-sensistivity
+  * Merging #10115
+  * Update changelog for #9605
+  * `azurerm_data_factory` - Add support for `public_network_enabled` for Data Factories #9605
+  * r/key_vault_certificate_issuer: removing the disappearsWhenParentKeyVaultDeleted test (#10092)
+  * r/security_center_automation: switching to check the state which is sufficient (#10106)
+  * mysql: removing direct usages on `acceptance.AzureProvider` from `mysql` (#10109)
+  * refactor: removing direct usages on `acceptance.AzureProvider` from `postgres` (#10108)
+  * kusto: removing the dependency on `acceptance.AzureProvider` by using a Check func (#10111)
+  * Fix linting error
+  * Add parsing and validation of user assigned identity for virtual machines
+  * Add validation of user assigned identities
+  * Parse user assigned identity when reading
+  * handle legacy metadata
+  * r/function_app: removing some unnecessary checks
+  * `azurerm_log_analytics_cluster_customer_managed_key` disable
+    test until referenced go-autorest PR is resolved (#10094)
+  * r/function_app: refactoring to use a check func
+  * r/storage_account_customer_managed_key: refactoring to remove usage on acceptance.AzureProvider
+  * r/storage_blob: refactoring to remove usage on acceptance.AzureProvider
+  * r/storage_sync_cloud_endpoint: switching to use the updated test pattern
+  * r/monitor_log_profile: switching to use a DisappearsStep
+  * update CHANGELOG.md for #9922
+  * Event Grid support for inbound ip filter (#9922)
+- from version 2.42.0
+  * update CHANGELOG.md for #9957
+  * "azurerm_spring_cloud_app" - supports property `https_only`, `is_public`, `persistent_disk` (#9957)
+  * refactor: removing some direct usages on `acceptance.AzureProvider` (#10089)
+  * Test Shim Image
+  * Replaced deprecated resource with new resource (#10085)
+  * update CHANGELOG.md for #10088
+  * r/key_vault: defaulting `soft_delete_enabled` on to match the updated API behaviour (#10088)
+  * Update CHANGELOG.md for #9609
+  * Add support for service tags to ip_restriction for function_app and app_service (#9609)
+  * Update CHANGELOG.md for #9162
+  * Add fields for App Service and App Service Slot (#9162)
+  * Update CHANGELOG.md for #8828
+  * azurerm_kubernetes_cluster - add support for network_mode (#8828)
+  * Lint: Fixing linting issues around a variety of tests (#10076)
+  * update CHANGELOG.md for #9047
+  * `azurerm_subscription(s)` - support for `tags` (#9047)
+  * update CHANGELOG.md for #9842
+  * New resource/Data Source: azurerm_ssh_public_key (#9842)
+  * update CHANGELOG.md for #10062
+  * Fixed resource provider names for Blueprint and FHIR (#10062)
+  * test shim: compute a -> d
+  * updating to include the batch api version from 10036
+  * gofumpt: re-enabling now the upstream cert's been fixed
+  * updating to include #10042
+  * r/security_center_setting: working around a breaking change in the response
+  * compute: adding the missing arg to the tests
+  * vendoring the updated batch changes
+  * r/linux|windows_virtual_machine: opting-out of the force-delete for now
+  * synapse: working around breaking type changes
+  * securitycenter: updating the generated constant names
+  * eventhub: updating the constant names
+  * r/(linux_|windows)virtual_machine: conditionally opting into Force Deletion
+  * attestation: updating the API reference to use the stable api version
+  * dependencies: upgrading github.com/Azure/azure-sdk-for-go to v49.2.0
+  * tooling: disabling gofumpt temporarily
+  * key vault related test fix-ups - part 1 (#10060)
+  * update CHANGELOG.md for #9889
+  * New resource - `azurerm_disk_access` (#9889)
+  * update CHANGELOG.md for 10050
+  * New data source: `azurerm_eventgrid_domain_topic` (#10050)
+  * r/postgresql_firewall_rule: Add name validaton (#10047)
+  * azurerm_web_application_firewall_policy: add REQUEST-944-APPLICATION-… (#10046)
+  * update CHANGELOG.md for #9976
+  * azurerm_kubernetes_cluster - parse oms log_analytics_workspace_id to ensure correct casing (#9976)
+  * update CHANGELOG.md for #8064
+  * Retrieve Subscription Tags via data source (#9456)
+  * udpate CHANGELOG.md for #8064
+  * azurerm_hdinsight_kafka_cluster: support rest proxy (#8064)
+  * Test Shim: Cosmos #10045
+  * batch: removing the unused error from expandPoolNetworkSecurityGroupRule
+  * r/analysisservices_server: fixing the broken Suspend test
+  * Update CHANGELOG.md for #10051
+  * `azurerm_role_assignment` fix crash in retry logic (#10051)
+  * updating to include #10049
+  * devspace: assigning a usage so the resource struct is still valid
+  * batch: conditionally setting the `PublicIPAddressConfiguration` if unspecified
+  * batch: un-exporting the flatten function
+  * batch: fixing a couple of tests
+  * updating to include #10035
+  * teamcity: removing `devspaces` from the list
+  * r/devspace: deprecating `azurerm_devspace_controller`
+  * devspace: these tests can no longer be run
+  * azurerm_availability_set: Update docs to reflect ForceNew
+  * update CHANGELOG.md for #10036
+  * azurerm_batch_pool: add support for public_address_provisioning_type (#10036)
+  * false positive linting issue in `azurerm_resource_group` data source (#10037)
+  * dependencies: upgrading to v0.15.1 of github.com/tombuildsstuff/giovanni
+  * update CHANGELOG.md for #9490
+  * Raise limit of destination_ports of network_rule_collection for azurerm_firewall_policy_rule_collection_group (#9490)
+  * fix gofmt issue
+  * update CHANGELOG.md for #9928
+  * New Resource: `azurerm_data_factory_linked_service_synapse` (#9928)
+  * update CHANGELOG.md for #8564
+  * azurerm_sentinel_alert_rule_scheduled: support incident configuration (#8564)
+  * Make AppGw identity_ids case-insensitive
+  * Adding description to ADF managed IR docs (#10028)
+  * update CHANGELOG.md for #8850
+  * `azurerm_cdn_endpoint` - `delivery_rule` condition optional `match_values` (#8850)
+  * update CHANGELOG.md for #9548
+  * azurerm_storage_account  - allow hns when `account_tier` is `Premium` (#9548)
+  * update CHANGELOG.md for #10017
+  * `azurerm_synapse_workspace` - Add support for `managed_resource_group_name` (#10017)
+  * update CHANGELOG.md for #8690
+  * `azurerm_cosmosdb_mongo_collection` - correctly read the `_id` index back when mongo 3.6 (#8690)
+  * update CHANGELOG>md for #9829
+  * New resource: azurerm_sentinel_alert_rule_fusion (#9829)
+  * update CHANGELOG.md for #9069
+  * azurerm_function_app - make `pre_warmed_instance_count` computed to use azure's default (#9069)
+  * update CHANGELOG.md for #9836
+  * azurerm_container_group - support `volume.empty_dir` (#9836)
+  * azurerm_monitor_diagnostic_setting name validation (#10014)
+  * test shim: web (#9995)
+  * azurerm_key_vault - Correct 'managecontacts' casing and permissions usage (#10006)
+  * update CHANGELOG.md for #9902
+  * CDN endpoint: Test for Premium_Verizon, optional values fix (#9902)
+  * update CHANGELOG.md for #9992
+  * New resource: `azurerm_media_streaming_locator` (#9992)
+  * update CHANGELOG.md for #9797
+  * Support new properties `alert_rule_template_guid` and `display_name_exclude_filter`
+    for azurerm_sentinel_alert_rule_ms_security_incident (#9797)
+  * update CHANGELOG.md for #9749
+  * `azurerm_cosmosdb_table` doesn't call get throughput api when cosmos account is serverless (#9749)
+  * update CHANGELOG.md for #9934
+  * `azurerm_data_factory_linked_service_azure_file_storage` - Add support for `file_share` (#9934)
+  * update CHANGELOG.md for #10005
+  * `azurerm_traffic_manager_profile` - add traffic view support (#10005)
+  * Fix App Service documentation for Linux plans (#9024)
+  * update CHANGELOG.md for #9712
+  * azurerm_sentinel_alert_rule_scheduled - support alert_rule_template_guid (#9712)
+  * update CHANGEL:OG.md for #8753
+  * `azurerm_application_gateway` - set correct WAF_v2 `file_upload_limit_mb` (#8753)
+  * Documentation update for VM Boot Diagnostics using Managed Storage Account (#9817)
+  * Fix LAW capitalization in security_center_workspace (again) (#9931)
+  * Function app example: Replace storage account connection string with name/access key (#9997)
+  * update CHANGELOG.md for #10000
+  * Add Standard_D4a_V4 VM type for HDInsight clusters (#10000)
+  * Test Shim: API Management (#9999)
+  * Test Shim: Hadoop (#9998)
+  * test shim: firewall (#9994)
+  * move eventgrid tests (#9993)
+  * Refactor: Migrate storage tests (#9864)
+  * update CHANGELOG.md for #9966
+  * azurerm_cosmosdb_account: include key vault id in update requests to work with azure policies (#9966)
+  * Test Shim: IotHub (#9991)
+  * Test Shim: KeyVault (#9986)
+  * Minor change in servicebus_subscription.html.markdown (#9985)
+  * Test Shim: Monitor (#9973)
+  * Test Shim: Log Analytics (#9974)
+  * Test shim: media & lighthouse (#9952)
+  * Test Shim: Recovery Services  (#9969)
+  * test shim: event hub (#9968)
+  * Update CHANGELOG.md
+  * update CHANGELOG.md for #9884
+  * Increase limit from 1 to 10 for `application_security_group` in `network_security_rule` (#9884)
+  * Updating to include #6868
+  * Fix for #6730
+  * TestShim: MySQL (#9948)
+  * mssql: acceptance test shims and fixes (#9938)
+  * Updating to include #9951
+  * Adding #9951
+  * Updating to include #9950
+  * Adding #9950
+  * Test Shim: Netapp (#9926)
+  * Updating azurerm_storage_share_file documentation (#9940)
+  * mssql: fix import for mssql_server_security_alert_policy
+  * re-enable nightly testing
+  * disable overnight testing
+  * updating to include #9914
+  * Update code
+  * update code
+  * Updating to include #9932
+  * Merging #9932
+  * update CHANGELOG.md for #9933
+  * Data Source: azurerm_databricks_workspace: support for `tags` (#9933)
+  * Test Shim: Postgres #9924
+- from version 2.41.0
+  * web/app-service: fixing the Exists function
+  * updating to include #9911
+  * mssql: add missing resource ID parsers and tidy up function naming
+  * r/key_vault_secret: adding purge protection
+  * Update CHANGELOG.md for #9897
+  * `azurerm_linux_virtual_machine` - Normalise SSH keys (#9897)
+  * r/monitor_diagnostic_setting: adding validation/rewriting the
+    StorageAccountID/EventHubAuthorizationRuleID fields too
+  * r/monitor_diagnostic_setting: validating the Log Analytics Workspace ID is a LAW ID
+  * r/monitor_diagnostic_setting: normalising the field `log_analytics_workspace_id`
+  * r/key_vault_certificate: adding import/recover permissions for the tests
+  * r/hdinsight: removing a stray } from the docs
+  * r/key_vault: enabling soft delete by default
+  * r/key_vault_key & secret: updating the tests to use templates & enable soft-delete
+  * keyvault/key & secret: updating the examples
+  * r/key_vault_certificate: adding soft delete to the example
+  * r/key_vault_certificate: enabling soft-delete for the tests by default
+  * Update CHANGELOG.md for #9859
+  * New resource: `azurerm_media_job` (#9859)
+  * r/key_vault_certificate: and to the docs
+  * r/key_vault_certificate: adding the purge permission to the tests
+  * r/key_vault_certificate: refactoring the tests to use a template where possible
+  * keyvault: quoting the ID to handle escape on shells
+  * github: adding links to the Discuss forum rather than a question template
+  * r/key_vault_certificate: adding a ForceNew
+  * website: updating the features block
+  * keyvault/nested-item: updating the docs
+  * key-vault/nested-item: moving the wayward func
+  * keyvault/nested-items: reusing the `purge_soft_delete_on_destroy` feature flag
+  * keyvault/nested-resources: purging during deletion
+  * Rename HDInsightCluster to Cluster
+  * Update azurerm/internal/services/hdinsight/resourceids.go
+  * Updating to include #9410
+  * Merge #9410
+  * Add TC to support recreating vhub connection with same name
+  * Move private dns over to the new test shim
+  * minor update docs
+  * add link to lighthouse documentation
+  * Generators
+  * Update changelog for #9852
+  * New Resource: `azurerm_eventgrid_system_topic_event_subscription` (#9852)
+  * eventgrid_system_topic: supplement docs (#9888)
+  * r/keyvault: fixing a bug where application id couldn't be an empty string
+  * updating to include #8631
+  * Also set "upns" part of "subject_alternative_names"
+  * Read DNS names and Emails from certificate data if not found in SDK object
+  * Acceptance tests: fix CheckDestroyedFunc
+  * updating to include #9853
+  * Update azurerm/internal/services/loganalytics/migration/workspace_v1_to_v2.go
+  * Update changelog for #9871
+  * `azurerm_app_service` - Add support for `outbound_ip_address_list`
+    and `possible_outbound_ip_address_list` (#9871)
+  * Doc Fix: app_service_managed_certificate.html.markdown #9881
+  * loadbalancer service tests shim (#9879)
+  * tooling: updating to Go 1.15.5
+  * update CHANGELOG.md for #9487
+  * `azurerm_traffic_manager_profile` - support for new field `max_return` and
+    support for `traffic_routing_method` to be `MultiValue` (#9487)
+  * load balancer tests - refactor out implementation code (#9856)
+  * move tests: storage (#9837)
+  * fix a number of acc tests
+  * test shim: kusto (#9841)
+  * r/private_dns_txt_record: fixing the test data
+  * updating to include #9848
+  * privatedns: removing the unused subscription id argument
+  * tooling: adding a gradually deprecated check for relying on the Azure Resource ID's
+  * r/private_dns_aaaa: fixing a typo
+  * r/storage_management_policy: removing the test dependency on ParseAzureResourceId
+  * r/private_dns_a_record: actually saving the changes this time
+  * d/private_dns_zone: removing a direct usage on ParseAzureResourceId
+  * r/private_dns_a_record: switching to use the Resource ID Formatter/Parser
+  * r/private_dns_aaaa_record: switching to use the Resource ID Formatter/Parser
+  * r/private_dns_cname_record: switching to use the Resource ID Formatter/Parser
+  * r/private_dns_mx_record: switching to use the Resource ID Formatter/Parser
+  * r/private_dns_ptr_record: switching to use the Resource ID Formatter/Parser
+  * r/private_dns_srv_record: switching to use the ID Formatter
+  * r/private_dns_txt_record: switching to use the id formatter/parser
+  * r/private_dns_zone_virtual_network_link: switching to use the Resource ID Formatter/Parser
+  * d/private_dns_zone: switching to use a Resource ID Formatter
+  * privatelink: support for enhanced import validation for all resources
+  * privatedns: generating the Resource ID Formatters/Parsers
+  * r/private_dns_zone: switching to use the ID Formatter/Parser & enhanced import validation
+  * r/log_analytics_workspace: force-upgrading the resource id's
+  * r/iot_time_series_insights_gen2_environment: exposing `data_access_fqdn`
+  * docs(virtual-machines): fix link vm sizing doc
+  * move tests: firewall and loadbalancer
+  * removing the unused `subscriptionId` argument placeholder/some todo's
+  * resource-ids: updating the method signature for the hand-rolled ones
+  * regenerating
+  * resourceid: removing the subscriptionId argument from the interface
+  * generator: removing the subscription id argument from the generator
+  * Fix typo
+  * security center: refactoring from the pr comments
+  * splitting out the 2.40 - 2.31 changes to the other file
+  * copying over 2.31 - 2.40
+  * updating to include #7913
+  * Update loadbalancer resources to generated IDs (#9805)
+  * shim tests
+  * media: switch a typeset to a typelist (#9828)
+  * test shim: relay (#9825)
+  * run go generate to fix synapse (#9827)
+  * test shim: redis
+  * make fmt
+  * shim tests
+  * rename functions
+  * add checkAdvancedThreatProtectionIsFalse
+  * fix tests
+  * shim testS
+  * update CHANGELOG.md for #9260
+  * new resource - "azurerm_synapse_managed_private_endpoint" (#9260)
+  * update CHANGELOG.md for #9537
+  * New resource: `azurerm_media_streaming_endpoint` (#9537)
+  * rename functions
+  * shim tests
+  * rename functions
+  * Broken link in AzureAD migration guide (#9813)
+  * Test Shim: Service Bus (#9792)
+  * Updating CHANGELOG.md for #8966
+  * azurerm_subnet - support for `service_endpoint_policy` (#8966)
+- from version 2.40.0
+  * r/media_asset: switching to use a Resource ID Formatter
+  * r/sentinel_alert_rule_ms_security_incident: normalizing the log analytics workspace id
+  * r/managed_application_definition: fixing the test exists func
+  * r/relay_hybrid_connection: fixing an incorrect `name` set
+  * r/sentinel_alert_rule_scheduled: using the Log Analytics Workspace ID from the Formatter
+  * clarifying the sdk upgrade from #9764
+  * r/servicebus_subscription_rule: fixing argument ordering
+  * r/servicebus_topic_authorization_rule: fixing the resource id
+  * batch: fixing the exists function
+  * removing #8966 since this hasn't been merged yet
+  * kusto: switching the delete function to use the same Resource ID Parser
+  * updating to include #9802
+  * updating the resource name to account for #9134
+  * Update website/docs/r/stack_hci_cluster.html.markdown
+  * r/media_services_account: fixing the `TestAccMediaServicesAccount_multiplePrimaries` test
+  * r/media_services_account: fixing the requires import test
+  * resource-id: adding a formatter implementation check into the hand-maintained implementations
+  * loganalytics: removing the superflurous `subscriptionId` argument from the ID func
+  * r/media_transform: making the fields case-sensitive since this is a new resource
+  * r/media_services_account: adding tests for requires import
+  * r/media_transform: adding tests for requires import
+  * r/media_transform: switching to use a Resource ID Formatter in the Create & Requires Import
+  * media: regenerating the updated ID Formatter
+  * updating to include #9663
+  * frontdoor: fixing the resource id casing to match the behaviour
+  * re-generating with the loganalytics PR changes
+  * Update CHANGELOG.md for #9701
+  * regenerating the ID Parsers to include the updated description
+  * generator: outputting the type name and sorting the segments to match the ID
+  * `azurerm_app_service_managed_certificate` - create certificate in service plan resource group (#9701)
+  * remove vendor path from linter
+  * update code
+  * Switch loganalytics to generated resourceids (#9764)
+  * Allow allow_blob_public_access and min_tls_version on azurerm_storage_account in USGovernmentCloud (#9540)
+  * update CHANGELOG.md for #9540
+  * update CHANGELOG.md for #8966
+  * update CHANGELOG.md for #8540
+  * New resource `azurerm_storage_sync_cloud_endpoint` (#8540)
+  * Test Shim: Spring Cloud (#9787)
+  * Updating Types
+  * Apply suggestions from code review
+  * updating to include #9783
+  * client: opting-out of the Azure SDK for Go's validation
+  * dependencies: upgrading to v0.3.1 of github.com/Azure/go-autorest
+  * updating to include #9771
+  * firewall: fixing the import
+  * missing changes from 9415 (#9780)
+  * Update CHANGELOG.md for #9415
+  * New Resource: azurerm_app_service_certificate_binding (#9415)
+  * update code
+  * Refactor: Azure Stack HCI Cluster
+  * regenerating
+  * teamcity: generating the build configuration for the new service package
+  * firewall: splitting the validate funcs out
+  * network: moving the firewall validate/parse functions
+  * firewall: lifting & shifting out to it's own package
+  * update CHANGELOG.md for #9134
+  * New resource: `azurerm_hci_cluster` (#9134)
+  * d/user_assigned_identity: switching to use the ID Formatter
+  * r/user_assigned_identity: switching to use the Resource ID Formatter/Parser
+  * teamcity: generating the new package
+  * network: removing the now unnecessary loadbalancers section
+  * loadbalancers: ditching the `lb` prefix since this is superflurous
+  * network => loadbalancer
+  * loadbalancer: moving the validate function out
+  * loadbalancers: switching over to use the loadbalancers client
+  * network: removing the lifted&shifted resources
+  * loadbalancers: lifting & shifting the resource ids
+  * loadbalancers: moving the existing data sources/resources over
+  * loadbalancers: scaffolding a new package
+  * adjusting the message for #9750
+  * servicebus: fixing code review comments
+  * redis: fixing unit/linting failures
+  * refactor: using a non-not found non-error to signify it's present
+  * r/redis_linked_server: validation that the `linked_redis_cache_id` is a redis cache id
+  * r/redis_cache: validating the subnet id and parsing using the networking parser
+  * r/redis_linked_server: switching to use a Resource ID Formatter/Parser
+  * r/redis_firewall_rule: support for enhanced import validation
+  * r/redis_firewall_rule: switching to use an ID Formatter/Parser
+  * address linting issues
+  * fix typo
+  * shim tests
+  * rename functions
+  * shim tests
+  * rename functions
+  * shim tests
+  * rename functions
+  * Example sku fails in with terraform cli version 14 (#9763)
+  * Update changelog for #9406
+  * New Resource: `azurerm_storage_share_file`  (#9406)
+  * updating to include #9750
+  * fixes #8208
+  * r/redis_cache: enhanced import validation
+  * r/redis_cache: switching to use the Resource ID Formatter/Parser
+  * Move test file to main directory
+  * Apply suggestions from code review
+  * d/redis_cache: switching to use a Resource ID Formatter
+  * redis: splitting the validation functions out
+  * redis: moving max_memory_policy out
+  * redis: moving the firewall rule name into the validate package
+  * r/relay_hybrid_connection: refactoring to use the Resource ID Parser
+  * r/relay_namespace: switching to use the ID Parser
+  * updating to include #9735
+  * Apply suggestions from code review
+  * r/stream_analytics_stream_input_iothub: fixing the delete
+  * refactor: moving the parser into the parse folder
+  * r/advanced_threat_protection: switching to use an ID Formatter
+  * tools: updating the Resource ID Generator to parse the multiple segments
+  * r/servicebus_namespace_network_rule_set: switching to use a resource id formatter
+  * d/servicebus_namespace: switching to use the ID formatter
+  * d/namespace_authorization_rule: switching to use the id formatter
+  * r/servicebus_namespace_authorization_rule: switching to use the ID
+    Formatter/Parser and Enhanced Import Validation
+  * r/servicebus_namespace: switching to use the resource id parser/formatter
+  * d/servicebus_queue: switching to use the Resource ID Formatter
+  * r/servicebus_queue_authorization_rule: using the ID Formatter/Parser and enhanced import validation
+  * r/servicebus_queue: switching to use a Resource ID Formatter, Parser and adding Enhanced Import Validation
+  * servicebus: splitting out the migration code
+  * r/servicebus_subscription: switching to use the id formatter/parser & enhanced import validation
+  * d/servicebus_subscription: switching to use the ID Formatter
+  * d/servicebus_topic_authorization_rule: switching to use the id formatter
+  * r/servicebus_subscription_rule: switching to use the resource id parser/enhanced validation
+  * tooling: handling resource id's containing multiple subscription segments
+  * r/servicebus_topic_authorization_rule: using the ID Parser & enhanced import validation
+  * r/servicebus_topic: switching to use the ID Parser & enhanced import validation
+  * servicebus: generating the Resource ID Parser for ServiceBus Topic
+  * helpers: renaming the file so we have a place for deprecated logic
+  * servicebus: making the internal methods internal-only
+  * servicebus: moving most of the servicebus helpers into the internal helper file
+  * servicebus: moving the Topic Name validate func
+  * servicebus: moving the Authorization Rule validation logic
+  * servicebus: moving the validation rule for Subscription Name
+  * servicebus: moving the validate name method
+  * r/stream_analytics_stream_input_iothub: fixing a typo
+  * streamanalytics: re-generating with the new generator
+  * r/stream_analytics_stream_input_eventhub: refactoring to use a Resource ID Formatter/Parser
+  * r/stream_analytics_stream_input_blob: refactoring to use a Resource ID Parser
+  * r/stream_analytics_reference_input_blob: switching to use an ID Parser
+  * r/stream_analytics_stream_input_iothub: updating to use an ID Parser
+  * r/stream_analytics_stream_input_iothub: switching to use the ID Parser
+  * streamanaltyics: generating the Resource ID Formatter/Parser for Stream Input
+  * r/recovery_services_vault: fixing the test name to make the linter happy
+  * removing the todo
+  * generator-resource-id: filename support cascaded uppercase runes
+  * make fmt yet again
+  * address linting issues
+  * fix tests
+  * generated code updated
+  * shim tests
+  * rename functions
+  * fix function names
+  * fix tests
+  * Refactor: Migrate servicefabric tests (#9743)
+  * Refactor: Migrate servicefabricmesh test (#9742)
+  * move tests: servicebus
+  * move tests: sentinel
+  * move tests: security centre
+  * move tests: resource
+  * move tests: search test
+  * move tests: relay test
+  * move tests: redis test
+  * move tests: recovery test
+  * move tests: package test
+  * move tests: package eventhub
+  * move app platform -> springcloud
+  * move tests: package apimanagement
+  * update CHANGELOG.md for #9676
+  * azurerm_security_center_automation - support "description", "tags" (#9676)
+  * Update changelog for #9739
+  * `azurerm_postgresql_server` - Fix issue when specifying empty threat detection list attributes (#9739)
+  * Update changelog for #9702
+  * New resource `azurerm_digital_twins_endpoint_servicebus`  (#9702)
+  * update CHANGELOG.md for #9387
+  * New Resource: azurerm_media_asset (#9387)
+  * network: removing a superflurous call with subscriptionId
+  * storage: removing the dependency on subscriptionId
+  * desktopvirtualization: removing the superflurous subscriptionId call
+  * cdn: removing the superflurous subscriptionId call
+  * resource-ids: generating error message helper functions
+  * generator/resource-id: using slashes to better match the existing convention
+  * generator/resource-id: outputting human-readable segments
+  * updating to include #9690
+  * trafficmanager: removing the 'Endpoints' suffix during parsing
+  * updating to include #9692
+  * bot: removing the split-out test
+  * Update changelog for #9727
+  * `azurerm_app_service`: Support PHP version 7.4 #9727
+  * d/traffic_manager_profile: switching to use a Resource ID Formatter/Parser
+  * r/traffic_manager_endpoint: switching to use a combination Resource ID parser for the moment
+  * r/traffic_manager_profile: switching to use an ID Parser/Formatter
+  * trafficmanager/endpoint: generating the Resource ID's
+  * r/traffic_manager_endpoint: adding a todo this needs splitting
+  * trafficmanager: generating the Resource ID Parser/Validator for Profile
+  * updating to include #7951
+  * loganalytics: moving to the validate function directly
+  * loganalytics/workspace: moving the name validation into the validate package
+  * r/log_analytics_workspace: fixing the test reference
+  * loganalytics/workspace: fixing the package name
+  * make fmt
+  * fix tests
+  * move hdinsight tests
+  * move hpc cache tests
+  * move package iothub tests
+  * move package iottimeseriesinsights tests
+  * move keyvault tests
+  * move kusto tests
+  * move lighthouse tests
+  * move log analytics tests
+  * docs: describing how to generate Resource ID Formatters, Parsers and Validators
+  * docs: updating the versions
+  * gha: removing the unneeded failfast
+  * r/bot_channel_directline: handling this being created by default behind the scenes
+  * bugfix -> enhancement
+  * sorting alphabetically
+  * r/bot_channel_directline: switching to use a Resource ID Parser
+  * r/bot_channel_email: refactoring to use a Resource ID Parser
+  * r/bot_channel_ms_teams: switching to use a Resource ID Parser
+  * r/bot_channel_slack: switching to use a Resource ID Parser
+  * r/bot_connection: `bot_name` is now ForceNew
+  * bot: generating the Resource ID Formatter / Parser for Bot Channel
+  * r/bot_channels_registration: switching to use the ID Parser
+  * r/bot_channels_registration: validating the bot type during import
+  * r/bot_web_app: validating the Kind during import
+  * r/bot_connection: switching to use a Resource ID parser
+  * r/bot_web_app: support for Enhanced Import Validation
+  * r/bot_web_app: threading the ID Parser through the Delete
+  * r/bot_web_app: threading the ID Parser through the Update
+  * r/bot_web_app: threading the Parse function through the Read
+  * r/bot_web_app: threading the Bot Service ID through the Create
+  * bot: generating the Resource ID Formatter/Parser for Bot Service
+  * gha/gencheck: updating the trigger path
+  * teamcity: re-generating using the updates sort order
+  * generator: sorting based on the Service Display Name
+  * github: adding a check to ensure the generation is consistent
+  * generator: re-generating the TC services
+  * generator/services: updating the generator to handle conflicting packages
+  * updating to include #9689
+  * move privatedns tests
+  * move powerbi hub tests
+  * move postgres hub tests
+  * move notification hub tests
+  * Move netapp tests
+  * Move mysql tests
+  * Move mssql tests
+  * Move monitor tests
+  * fix test package name
+  * update CHANGELOG.md for #9496
+  * add partition_key_version attribute to resource azurerm_cosmosdb_sql_container (#9496)
+  * migrate signalr tests
+  * rename files
+  * Update changelog for #9696
+  * `azurerm_kusto_cluster` - Add support for `engine` (#9696)
+  * Update changelog for #9694
+  * `azurerm_postgresql_server` - Add ForceNew to `geo_redundant_backup_enabled` (#9694)
+  * Update changelog for #9670
+  * `azurerm_iothub` - Add support for `min_tls_version` #9670
+  * Add default value for compression of 'None'
+  * r/app_service_hybrid_connection: updating to use a resource id parser
+  * Copypaste typo
+  * azurerm_recovery_services_vault: Support for `identity` block
+  * azurerm_kusto_eventhub_data_connection: Support for `compression` property
+  * validators: re-generating based on the latest generator
+  * rename resource functions
+  * Added Attribute details for key_vault_certificate.html.markdown
+  * migrate test cases
+  * rename functions
+  * migrate test cases
+  * r/provider_registration: highlighting the recommendation to auto-register RP's
+  * r/provider_registration: renaming to match the convention
+  * r/provider_registration: fixing the import error
+  * r/provider_registration: switching to be a typed resource
+  * sdk: support for custom importers
+  * resource: hooking up the Typed Service Registration
+  * r/resource_provider_registration: updating the docs
+  * r/provider_registration: updating the tests
+  * r/provider_registration: updating the tests
+  * r/provider_registration: refactoring and support for enhanced validation
+  * resource: noting the RP ID Parser isn't generated for now
+  * client/builder: enhanced validation for Resource Providers
+  * resourceproviders: support for enhanced validation
+  * resource: adding a Resource ID Parser for Resource Providers
+  * New Resource: `azurerm_resource_provider_registration`
+  * managementgroups: fixing comments from code review
+  * updating to include #9671
+  * rename files
+  * Updating to include #9673
+  * rename the resource functions
+  * Partial fix: #9211
+  * migrate test cases
+  * migrate the left two files
+  * rename the last two files
+  * migrate spark pool
+  * rename spark pool
+  * migrate sql pool
+  * rename sql pool
+  * migrate test for workspaces
+  * rename worspace
+  * fix resource id generator on windows
+- from version 2.39.0
+  * update CHANGELOG.md for #9649
+  * Allow for evenhub dedicated clusters with bigger than 1 capacity (#9649)
+  * Documents default value for `ftps_state` argument.
+  * Fix crash in signalar
+  * Update changelog for #9616
+  * New Resource: `azurerm_iot_time_series_insights_gen2_environment` (#9616)
+  * rebase and update docs
+  * wrong checkExists
+  * tweaked final segment name
+  * removed setting location, since it's not in schema anyway
+  * advisor: tests need to start TestAcc to be picked up
+  * web: moving the tests up a level
+  * fixing the build
+  * relay: generating the Resource ID's
+  * relay: refactoring
+  * use func for nilable location
+  * fix panic in traffic_manager_profile datasource
+  * `azurerm_api_management_custom_domain` fix docs for import of resource (#9657)
+  * remove unnecessary line
+  * including acceptance tests
+  * analysisservices: fixing the broken assertion error
+  * validate: generating to fix the application insights web test id stutter
+  * generator: not suffixing validate id functions with `_id` since this is superflurous
+  * validators: fixing conflicts with hand written code
+  * validate: generating the new validate funcs
+  * validators: generating the existing validation functions
+  * generator/resource-id: enabling the generation of ID Validate functions
+  * sdk: documenting the update method a little better
+  * sdk: support for Deprecated resources
+  * web: splitting the validate funcs to enable generation
+  * updating to include #9651
+  * Update azurerm/internal/services/securitycenter/resource_arm_security_center_workspace.go
+  * Fix LAW capitalization
+  * Fix go.sum
+  * Add ResourceWithUpdate to consumer group
+  * eventhub: hooking up the typed registration
+  * fixing the test
+  * eventhub: converting Consumer Group to q Typed Resource
+  * utils: adding the normalize nilable string func
+  * example: removing the package
+  * start of encode/decode
+  * Split out validation in eventhub_resource
+  * fix test package names
+  * update CHANGELOG.md for #9457
+  * azurerm_media_services_account - support for 'identity', 'tags' and 'storage_authentication' (#9457)
+  * Updating to include #9489
+  * Partial fix for #9211
+  * Start of resource wrapper
+  * updating documentation
+  * revert deleted file
+  * include some validations
+  * r/app_service_managed_certificate: updating the name of the requires import test
+  * migrate app service plan tests
+  * rename app service plan files
+  * migrate tests in function app and related data source
+  * rename another impacted data source file
+  * rename function app files
+  * migrate app service and app service slot and function slot tests
+  * rename app service and related files
+  * migrate test for hybrid connection resource
+  * rename hybrid connection file
+  * migrate managed certificate test
+  * rename managed certificate file
+  * migrate certificate order resource and data source tests
+  * rename certificate order files
+  * migrate certificate resource and data source tests
+  * rename files for app service certificate
+  * migrate test for environment resource and data source
+  * rename files for app_service_environment resource and data source
+  * provider: removing `Supported` from the front of the TypedServiceRegistration
+  * include support for differents presets
+  * synapse: splitting the workspace validators
+  * synapse: splitting SqlPool
+  * synapse: Big Data Pool -> Spark Pool to match the validator
+  * synapse: renaming Firewall to match the generated code
+  * synapse: renaming to match the convention
+  * storage: prefixing with Storage to match the other validators
+  * storage: renaming the ShareName validator to match the convention
+  * storage: renaming the queue file to match the convention
+  * storage: renaming encryption scope
+  * storage/keyvault: moving the key vault child id parser into the keyvault package
+  * storage: renaming account id
+  * storage: updating account ip rule to match the convention
+  * servicebus: removing the `Servicebus` prefix from the validate func to match the convention
+  * servicebus: removing the unused namespace id validation func
+  * servicebus: splitting the validate funcs
+  * resource: renaming the files to match the convention
+  * privatedns: splitting the validate funcs to enable generation
+  * powerbi: ditching the PowerBI prefix
+  * powerbi: splitting the validate files
+  * postgresql: ditching the `Postgresql` prefix
+  * postgresql: splitting the validate funcs
+  * policy: renaming to match the convention
+  * network: splitting the vpn site validators
+  * network: renaming vpn gateway
+  * network: renaming virtualwan
+  * network: splitting and renaming the virtual network validators
+  * network: matching the generated names
+  * network: renaming the ValidateVirtualHubValidate func
+  * network: renaming the subnet id validator
+  * network: renaming PublicIpAddressID to match the convention
+  * network: renaming to match the convention
+  * network: splitting the network connection monitor validate funcs
+  * network: renaming the nat gateway id validator
+  * network: renaming load balancer file
+  * network: splitting the firewall policy validate functions to enable generation
+  * r/private_link_service: retrieving the private link service once it's finished
+  * r/private_endpoint: updating the timeout
+  * frontdoor_firewall_policy: removing dead code
+  * fix error messages
+  * fix linting
+  * shim tests
+  * rename functions
+  * move tests
+  * hsm: updating the test package name
+  * iotcentral: fixing the package name
+  * fix pacakge name
+  * rename file
+  * test shim: hsm
+  * r/private_endpoint: ensuring we remove the old private dns zone group if it's no longer specified
+  * r/private_endpoint: adding enhanced import validation
+  * r/private_endpoint: pulling the list of Private DNS Zone Groups from Azure during update
+  * r/private_endpoint: fixing a typo
+  * r/private_endpoint: refactoring the Create now Update is split out
+  * r/private_endpoint: splitting the Create and Update
+  * r/private_endpoint: passing in the private ip address rather than mutating the flattened block
+  * r/private_endpoint: switching to look up the Private DNS Zone Groups
+  * r/private_endpoint: switching to use the ID Parser during the read
+  * r/private_endpoint: refactoring to lookup the Private DNS Zone Group which is created
+  * network: moving the Private DNS Zone Group parser
+  * r/private_endpoint: refactoring
+  * r/function_app_slot: fixing the importer parser name
+  * app_service_virtual_network_swift_connection: updating to match the API response
+  * app_service_slot_virtual_network_swift_connection: updating to match the response
+  * dns/ptr_record: fixing the build
+  * tests: fixing the code review comments
+  * rename resource files
+  * correctly name data source fileS
+  * rename data source files
+  * rename datasource tests
+  * rename functions
+  * move tests
+  * updating api version
+  * Update cosmosdb_sql_database.html.markdown
+  * include transform support
+  * mysql: splitting the validate funcs
+  * mssql: ditching the 'mssql' prefix
+  * mssql: splitting to match the convention
+  * msi: renaming to match the convention
+  * monitor: renaming to match the convention
+  * mariadb: updating to match the convention
+  * maps: renaming to match the convention
+  * managementgroup: splitting the validate funcs
+  * managedapplications: splitting the validate functions
+  * maintainence: renaming to match the convention
+  * machinelearning: renaming
+  * logic: splitting the validate funcs to match the convention
+  * logic: switching to use the Subnet ID validator directly
+  * loganalytics: splitting to support generating these
+  * keyvault: renaming to match the convention
+  * iottimeseriesinsights: renaming to match the convention
+  * iothub: splitting the files to match the convention
+  * iothub: removing an unused func
+  * iotcentral: splitting out the validate funcs
+  * apimanagement: fixing the build after the generation/refactor
+  * apimanagement: generating the Policy ID
+  * apimanagement: renaming the Policv ID funcs to match the generated names
+  * apimanagement: generating the Logger Resource ID
+  * apimanagement: renaming logger to match the upcoming generated id
+  * apimanagement: generating the Diagnostic Resource ID
+  * apimanagement: renaming to match the generated name
+  * apimanagement: generating the Custom Domain ID
+  * apimanagement: renaming Custom Domain to match the upcoming generated version
+  * apimanagement: generating the ApiVersionSet ID
+  * apimanagement: renaming the ApiVersionSetId to match the generated name
+  * apimanagement: generating the ApiManagement Service ID
+  * apimanagement: renaming to match the upcoming generated name
+  * apimanagement: regenerating ApiDiagnostic
+  * apimanagement: updating ApiDiagnostic to match the upcoming generated resource id
+  * Update changelog for #9215
+  * New resource: `azurerm_api_management_policy` (#9215)
+  * test shim: dev test labs (#9581)
+  * test shim: virtual desktops (#9579)
+  * test shim: healthcare (#9587)
+  * test shim: eventgrid (#9585)
+  * test shim: digital twins (#9582)
+  * test shim: dev space (#9580)
+  * applicationinsights: fixing a broken refactor
+  * hsm: renaming to match the convention
+  * hpccache: splitting and renaming the files
+  * frontdoor: renaming and splitting the files
+  * eventhub: renaming & removing deadcode
+  * dns: renaming to match the convention
+  * digitaltwins: renaming to match the convention
+  * devtestlabs: renaming to match the convention
+  * desktopvirtualization: ditching the prefix
+  * desktopvirtualization: renaming the files
+  * datashare: removing the Datashare prefix
+  * datashare: splitting the validation funcs
+  * datalake: updating to match the convention & ditching the DataLake prefix
+  * customproviders: renaming to match the convention
+  * containers: renaming to match the convention
+  * containers: adding a check if the duration isn't a string
+  * compute: renaming the validate files to match the convention
+  * blueprints: removing the `Blueprints` prefix
+  * blueprints: removing the unused func
+  * automation: refactoring/splitting and renaming the validate funcs
+  * attestation: refactoring/renaming
+  * appplatform: splitting and renaming the spring cloud service
+  * appplatform: updating the spring cloud validator
+  * applicationinsights: renaming webtestid
+  * applicationinsights: splitting and renaming Component ID
+  * appconfiguration: renaming the validate func
+  * apimanagement: renaming the LoggerID validate func
+  * updated description and note about certificate rotation
+  * migrate test for data source geographical location
+  * test shim: iot central
+  * rename geographical location data source test file
+  * migrate test for profile resource and data source
+  * rename profile resource and data source test files
+  * migrate test for endpoint resource
+  * rename traffic manager endpoint resource test filename
+  * rename resource and data source files
+  * test shim: add RunTestsInSequence and shim role assignment tests (#9570)
+  * Update doc for fallback_route of azurerm_iothub (#9550)
+  * Update data source doc for sku of azurerm_public_ip (#9549)
+  * azurerm_storage_data_lake_gen2_path: Fix error message (#9561)
+  * skip vhub tests for IP Configurations and BGP (#9571)
+  * golangci-lint: bumping the timeout to 30m
+  * generator/resource-id: support for generating ID Validate functions
+  * generator/resource-id: handling when a folder does not exist
+  * refactor: moving the validate functions into the validate package
+  * web: generating the Hybrid Connection ID Parser
+  * web: moving the source control token validate func
+  * web: moving Hybrid Connection into parsers
+  * web: updating hybrid connection to match the generated names
+  * web: removing an unused validate func
+  * web: generating the Certificate ID
+  * web: moving Certificate into parsers
+  * web: removing the unused validate func
+  * web: generating the ID Formatters/Parsers for Certificate Order
+  * web: updating Certificate Order to match the pattern
+  * web: fixing a broken refactor
+  * web: generating the App Service Slot ID Formatter/Parser
+  * web: moving App Service Slot into the parser
+  * web: generating the ID for App Service Plan
+  * web: generating an ID Parser for Function App
+  * web: generating the App Service Environment parser
+  * web: generating the ID parser for App Service
+  * web: generating the function app slot parser
+  * web: generating the ID parser for slot_virtual_network_swift_connection
+  * web: generating virtual_network_swift_connection
+  * web: updating to use the generated names
+  * web: updating to use the generated names
+  * servicebus: regenerating using the latest generator
+  * servicebus: generating the Resource ID Formatters/Parsers
+  * servicebus: ditching the ServiceBus prefix
+  * servicefabricmesh: regenerating using the latest generator
+  * servicefabric: regenerating using the latest generator
+  * servicefabricmesh: switching to generating the resource id formatters/parsers
+  * servicefabricmesh: updating to use the generated resource names
+  * servicefabric: generating the resource id formatters/parsers
+  * servicefabric: renaming `ServiceFabricCluster` to `Cluster`
+  * signalr: regenerating with the latest generator
+  * signalr: switching to use a generated resource id formatter/parser
+  * signalr: updating to use the generated names
+  * sql: regenerating using the latest generator
+  * validate: removing the unused DatabaseID function
+  * r/sql_administrator: switching to use the generated Parse function
+  * sql: generating the Resource ID Formatter/Parser for AD Administrator
+  * r/sql_elasticpool: refactoring to remove the crashes
+  * r/sql_elasticpool: switching to use the ID Parser
+  * sql: generating an ID Parser for ElasticPool
+  * r/sql_failover_group: switching to use the ID Parser
+  * sql: generating the ID Formatter/Parser for Failover Group
+  * sql: switching to use the ID Parser for VirtualNetworkRule
+  * sql: generating the VirtualNetworkRule Resource ID formatter/parser
+  * r/sql_firewall_rule: switching to use the formatter/parser func
+  * sql: generating a Resource ID Formatter/Parser for FirewallRules
+  * r/sql_server: refactoring to use the ID Formatter/Parser
+  * sql: generating the Resource ID for SQL
+  * sql: generating the Resource ID Formatter/Parser for Database
+  * sql: updating to use the generated resource id names
+  * storage: regenerating
+  * storage: fixing the build errors from signature changes
+  * storage: generating the Resource ID Formatters/Parsers
+  * storage: updating to use the generated names
+  * synapse: updating with the latest generator changes
+  * synapse: fixing the build
+  * synapse: generating the remaining Resource ID formatters/parsers
+  * synapse: removing the `Synapse` prefix
+  * synapse: removing the nested workspace object
+  * synapse: renaming Workspace
+  * synapse: renaming the Sql Pool parser
+  * synapse: renaming the Spark Pool parser
+  * synapse: fixing the build
+  * synapse_role_assignment: updating to match the pattern
+  * synapse: generating the Firewall Rule ID Formatter/Parser
+  * synapse: refactoring Firewall Rule to match the generated pattern
+  * resource-ids: regenerating to include the updated ResourceID/Subscription logic
+  * generator/resource-id: validating the Subscription ID and Resource ID aren't empty if required
+  * resources: generating the Resource ID Formatters/Parsers
+  * resources: updating the types to match the upcoming generated names
+  * tools: adding goimports to `make tools`
+  * generator/resource-id: refactor to use ioutil.TempFile instead of custom file name generation
+  * fix acctest errors introduced by test shimming
+  * updating to include #9532
+  * postgresql: bug fixing from acctests
+  * postgresql/database: updating to use the ID Parser
+  * postgres: switching to use a generated Resource ID Parser
+  * postgresql: switching to generate the Configuration ID & adding enhanced import validation
+  * postgresql: adding enhanced import validation to `azurerm_postgresql_firewall_rule`
+  * postgres: generating a Resource ID Parser for Firewall Rule
+  * postgresql_virtual_network_rule: support for enhanced import validation
+  * postgresql_virtual_network_rule: switching to use the ID Parser
+  * postgres: generating a resource id parser for virtual network rule
+  * postgresql_server_key: switching to use a generated Resource ID Func
+  * postgresql_server: switching to use a generated resource id func
+  * postgres: renaming to match the generated type names
+  * updating to include #9530
+  * updating to include #9529
+  * Update CHANGELOG.md for #9524
+  * `azurerm_keyvault_certificate` - add `3072` to allowed values (#9524)
+  * r/databricks_workspace: switching to use the RG Parser directly
+  * r/cosmosdb_account: switching to use the ID Parser
+  * r/application_insights_web_test: switching to use the Component ID directly
+  * update CHANGELOG.md for #9522
+  * r/cdn_profile: using the parse method during the delete
+  * azurerm_traffic_manager_profile - allow upto `2147483647`for the `ttl` property (#9522)
+  * search: generating the Service Resource ID Formatter/Parser funcs
+  * test shim: automation service (#9511)
+  * test shim: blueprints (#9514)
+  * test shim - databricks (#9521)
+  * cdn: update test names (#9515)
+  * test shim: cognitive (#9517)
+  * rename custom provider functions (#9519)
+  * powerbi_embedded: switching to use a generated Resource ID func
+  * powerbi: refactoring
+  * r/dashboard: support for enhanced import validation
+  * portal: refactoring dashboard to use the id parser
+  * portal: generating the Dashboard ID Parser
+  * r/notification_hub_namespace: enhanced import validation
+  * r/notification_hub_authorization_rule: enhanced import validation
+  * r/notification_hub_authorization_rule: switching to use the ID Parser
+  * notificationhubs: adding a ID Parser for Notification Hub Authorization Rule
+  * r/notification_hub_namespace: switching to use the ID Parser
+  * notificationhubs: generating a parser for Namespace
+  * notificationhub: generating the resource id parser
+  * removing the unused subscriptionId param
+  * normalize function names in some A services (#9512)
+  * privatedns: generating the resource id funcs
+  * network: fixing the build
+  * network: VPN -> Vpn for consistency
+  * network: generating the VPN Site & VPN Site Link ID parsers
+  * network: generating the VPN Connection/Gateway ID Parsers
+  * network: splitting VPN Site & VPN Site link
+  * network: splitting VPN Gateway/VPN Connection & renaming to match the generated type name
+  * network: generating the Virtual WAN ID Parser
+  * network: generating the Security Partner Provider ID parser
+  * network: ditching the Virtual Hub prefix from Security Partner Provider
+  * network: generating the Virtual Hub Route Table ID Parser
+  * network: virtual hub route table -> hub route table to match the generated name
+  * network: generating the Virtual Hub IP Configuration parser
+  * network: updating the virutal hub id parser to match the generated name
+  * network: generating the Hub Virtual Network Connection ID Parser
+  * network: fixing the build and/or adding placeholders to do so
+  * network: updating virtual hub connection to match the upcoming generated parser name
+  * network: generating the BGP Connection ID Parser
+  * network: generating the Virtual Hub ID parser
+  * network: generating the Virtual Network Resource ID Parser
+  * network: generating the Subnet ID
+  * netowrk: generating the route filter id parser
+  * route filter: updating the struct name to match the upcoming generated type
+  * network: generating the Public IP Address parser
+  * PublicIPAddress -> PublicIpAddress to match the generated type name
+  * generator/resource-ids: handling `sses` as a suffix
+  * network: generating the private endpoint parser
+  * network: splitting the Private DNS package out from the Network Parser
+  * network: generating the ID Parser/Formatter for NICs
+  * network: generating the ID Group parsers
+  * network: moving the Route Filter parser into the parse package
+  * network: moving the IP Group parser up
+  * network: generating the Packet Capture parser
+  * network: renaming the Packet Capture parser to match the generated name
+  * network: switching to generate the Connection Monitor/Network Watcher parsers
+  * network: renaming the Connection Monitor struct to match the generated name
+  * network: generating the NAT Gateway Resource ID Formatter/Parser
+  * network: fixing the load balancer resources
+  * network: generating the Load Balancer ID Formatters & Parsers
+  * network: renaming the Load Balancer parsers to match the generated names
+  * network: generating the Resource ID Funcs for Firewall Policy
+  * network/firewall_policy_rule_collection: updating to match the generated names
+  * network: splitting firewall policy into two files
+  * netapp: fixing the refactor
+  * netapp: switching to use a generated ID Formatter/Parser func
+  * netapp: updating to use the generated names
+  * synapse: linting
+  * Update document for azurerm_monitor_diagnostic_setting (#9516)
+  * update resource/datasource function names
+  * fix rg name
+  * test shim: batch service
+  * fix CHANGELOG.md typo
+- from version 2.38.0
+  * cleanup CHANGELOG.md for release
+  * update CHANGELOG.md for #9308
+  * support multiple Radius Server for vpn_server_configuration_resource (#9308)
+  * mysql: switching to use generated resource ids
+  * mysql: ditching the `MySql` prefix
+  * mssql: fixing up the refactoring misses
+  * mssql: generating the resource ids
+  * mssql: updating the other resource id parsers to match the upcoming generated names
+  * mssql/recoverable_database: renaming to match the generated names
+  * mssql/elastic_pool: ditching the prefix/updating the field names
+  * mssql/database_extended_auditing_policy: switching to use the upcoming generated names
+  * mssql/database: renaming to match the upcoming generated fields
+  * mssql: splitting out the ID Parsers to one file per type
+  * msi: switching to use a generated resource id
+  * msi: renaming the id parser
+  * monitor: switching to use a generated resource id func
+  * monitor: ditching the `monitor` prefix from the files
+  * mixedreality: generating the resource ids funcs for Spatial Anchors Account
+  * media: generating the resource ids
+  * media: media service account -> media service
+  * mariadb/server: switching to use the generated resource id func
+  * mariadb: updating to use the generated name
+  * maps: switching to use a generated resource id func
+  * maps: moving validation into a validate package
+  * maps/account: ditching the Maps prefix
+  * managedapplications: switching to use a generated resource id func
+  * managedapplications: ditching the prefix
+  * logic: generating the Resource ID Formatter/Parser funcs
+  * logic: renaming to integration account
+  * kusto: switching to use generated resource ids
+  * kusto/data_connection: making the resource id more generic since this isn't limited to EventHub
+  * kusto_database_principal_assignment: ditching the Kusto prefix & updating the field names
+  * kusto/database_principal: ditching the Kusto prefix & updating to use the generated field names
+  * kusto/database: updating to use the generated field names
+  * kusto_attached_database_configuration: renaming since this is a resource
+  * kusto_attached_database_configuration: switching to use the generated field names
+  * kusto_cluster_principal_assignment: updating to use the generated field names
+  * kusto/clusterPrincipalAssignment: ditching the Kusto prefix
+  * kusto/AttachedDatabaseConfiguration: removing the Kusto prefix
+  * kusto/database: ditching the Kusto prefix
+  * kusto/cluster: ditching the `Kusto` prefix on the Cluster ID
+  * iottimeseriesinsights: fixing the refactor
+  * keyvault: generating the `vault` id parser
+  * keyvault: renaming `KeyVaultId` to `VaultId` since we're in this package
+  * keyvault/certificate_issuer: renaming the resource id structs
+  * iottimeseriesinsights: switching to use a generated resource id
+  * iottimeseriesinsights/reference data set: ditching the `timeseriesinsights` prefix
+  * timeseriesinsights/environment: ditching the 'timeseriesinsights' prefix
+  * time_series_insights_access_policy: ditching the `timeSeriesInsights` prefix
+  * iothub: switching to use a generated resource id
+  * iothub: renaming to match the upcoming generated output
+  * iotcentral/application: switching to use a generated resource id
+  * iotcentral: updating to match the generated names
+  * dependencies: updating to v0.15.0 of github.com/tombuildsstuff/giovanni
+  * Update CHANGELOG.md for #9378
+  * roleassignment: moving the tests up a level
+  * New Resource: azurerm_app_service_managed_certificate (#9378)
+  * Refactor role definition tests
+  * refactor client config test
+  * updating to include #9495
+  * updating to include #9493
+  * parsers: regenerating to add documentation
+  * desktopvirtualization: switching to use the Insensitive option where appropriate
+  * desktopvirtualization: removing the dependency on SubscriptionId
+  * desktopvirtualization: generating the insensitive resource id funcs
+  * generator/resource-id: support for conditionally generating insensitive parsing functions
+  * desktopvirtualization: patching the Resource ID's
+  * updating to include #9261
+  * Update CHANGELOG.md for #9485
+  * cosmosdb: DatabaseAccounts -> databaseAccounts
+  * Fix Cosmos zone redundant update (#9485)
+  * New Data Source azurerm_virtual_wan (#9382)
+  * teamcity: limiting the appplatform concurrent runs to 5
+  * Refactor: Migrate cdn tests (#9433)
+  * spring_cloud: exposing the IP's at the top level `outbound_public_ip_addresses`
+  * check all fields nil and return `[]interface{}{}` in flatten func
+  * move "outbound_ip" to the top level
+  * azurerm_spring_cloud_service - support computed `outbound_ips` block
+  * Update validation rule for allowed_ips of azurerm_search_service
+  * update CHANGELGO.md for #9432
+  * Update `azurerm_windows_virtual_machine` - Default value of `patch_mode` no longer requires feature enabling (#9432)
+  * update CHANGELOG.md for #9382
+  * update CHANGELOG.md for #9330
+  * add field for virtual network gateway and virtual network gateway connection (#9330)
+  * Updates Zone redundancy default value (#9486)
+  * hsm: switching to use a generated id formatter
+  * hpccache: switching to use a generated resource id func
+  * hpccache: updating to match the generated names
+  * healthcare: generating the resource id funcs
+  * healthcare: ditching the healthcare prefix
+  * eventhub: switching to use generated resource id funcs
+  * eventgrid: switching to use the generated resource id funcs
+  * eventgrid: ditching the EventGrid prefix
+  * dns/ns: fixing a missing refactor
+  * dns/a: switching to use a generated resource id func
+  * dns/a: updating to use the generated property names
+  * dns/aaaa: switching to use the generated resource id funcs
+  * dns/aaaa: updating to use the generated names
+  * dns/caa: switching to use the generated id funcs
+  * dns/caa: updating to use the generated property names
+  * dns/cname: switching to use a generated id func
+  * dns/cname_record: switching to use the generated property name
+  * dns/mx_record: switching to use the generated id funcs
+  * dns/mx_record: switching to use the generated property names
+  * dns/ns_record: generating the resource id functions
+  * dns/ns_record: updating to use the generated property names
+  * dns/ptr_record: switching to use a generated id func
+  * dns/ptr_record: updating to use the generated property names
+  * dns/srv_record: switching to use a generated id formatter/parser
+  * dns/srvRecord: renaming to match the upcoming generated approach
+  * dns/txt: switching to use a generated resource id
+  * dns/txt_record: refactoring to use the new names
+  * dns/zone: switching to use a generated resource id formatter/parser
+  * digitaltwins: switching to use a generated ID Formatter/Parser
+  * desktopvirtualization: fixing the build
+  * devtestlabs/schedule: switching to use the generated resource id formatter/parser
+  * devtestlabs: global schedule -> schedule
+  * devtestlabs: consolidating to a single Virtual Machine ID parser
+  * devspace: switching to use the generated Controller Resource ID formatter/parser
+  * devspace: ditching the `DevSpace` prefix
+  * desktopvirtualization: generating the Resource ID's
+  * desktopvirtualization: ditching the `Desktop Virtualization` prefix
+  * datashare: fixing the build
+  * datashare/shares: generating the Resource ID Funcs
+  * datashare/data_set: switching to use a generated ID Format
+  * datashare/account: switching to use the generated ID Func
+  * datashare: ditching the `DataShare` prefix on Resource ID's
+  * datalake_account: switching to use a generated resource id
+  * datalake: renaming to be `Account` since that's what it is
+  * datafactory/integrationRuntime: updating to use a generated id
+  * datafactory/integration_runtime: updating to use the generated field names
+  * datafactory/linked_service: generating the resource id functions
+  * datafactory/linkedservice: updating to use the generated terminology
+  * compute: updating `GalleriesName` to `GalleryName`
+  * generator/resource-id: fixing the `ies` -> `y` problem
+  * databricks/workspace: switching to use a generated resource id formatter/parser
+  * databricks: renaming the workspace struct/file
+  * databasemigration: switching to use a generated Resource ID Formatter/Parser
+  * databasemigration: ditching the `DatabaseMigration` prefix, since we're in that package
+  * customproviders/resource-provider: switching to use a generated resource id formatter/parser
+  * customproviders/resource-provider: renaming the id struct to match the type
+  * cosmosdb: fixing the method name, apparently refactor missed it
+  * cosmosdb/table: switching to use a generated resource id formatter/parser
+  * cosmosdb/table: updating to use the upcoming generated field names
+  * cosmos/sql_stored_procedure: switching to use a generated resource id formatter/parse function
+  * cosmos/sql_stored_procedure: updating to use the upcoming generated field names
+  * cosmos/sql_container|database: switching to use a generated Resource ID Formatter/Parser
+  * cosmosdb: updating the property names for cosmosdb_sql_database & container
+  * cosmos/mongodb_database: switching to use a generated Resource ID Formatter/Parser
+  * cosmos/mongodb_database: updating to use the upcoming generated field names
+  * cosmos/mongodb_collection: generating the MongoDB Collection ID Formatter/Parser
+  * Update changelog for #7603
+  * cosmos/mongodb_collection: switching to use the upcoming generated field names
+  * `azurerm_api_management` fix to pass all acctests (#7603)
+  * cosmosdb/gremlin_graph: switching to use a generated resource id formatter/parser
+  * cosmosdb/gremlin_graph: renaming the fields to match the upcoming generated version
+  * cosmosdb/gremlin_database: switching to use a generated id formatter/parser
+  * cosmosdb/cassandra_keyspace: switching to use a generated id formater/parser
+  * cosmos: generating the ID Format/Parse functions for Database Account
+  * cosmos: renaming `databaseAccount` to match the filename
+  * maintainence: fixing the test case
+  * missed a couple of indirect references
+  * virtualMachineScaleSetExtension: switching to use a generated resource id formatter/parser
+  * virtualMachineScaleSet: switching to use a generated resource id formatter/parser
+  * virtual_machine_extension: switching to use a generated resource id formatter/parser
+  * virtual-machine: switching to use a generated id formatter/parser
+  * shared_images: switching to use generated resource id formatters/parsers
+  * proximity_placement_group: switching to use a generated resource formatter/parser
+  * managed_disk: switching to use a generated id formatter/parser
+  * images: switching to use a generated id formatter/parser
+  * disk_encryption_sets: switching to use a generated id formatter/parser
+  * dedicated_host_group: switching to use the generated ID Formatters/parsers
+  * dedicated_host: switching to use a generated resource id formatter/parser
+  * availability_set: generating the id formatter/parser
+  * sdk/console: prefixing the debug lines with info/warn
+  * Update azurerm/internal/sdk/resource_encode.go
+  * Update to include #9430
+  * build: missed a reference in batch application
+  * Fix for #9212
+  * cognitive: regenerating & updating
+  * cdn: regenerating & updating
+  * batch: regenerating & fixing up
+  * automation: regenerating & updating to match
+  * applicationinsights: regenerating & updating
+  * appconfiguration: regenrating & updating
+  * analysisservices: regenerating & updating
+  * generator/resource-id: using `Name` when the type name matches the key name
+  * updating to include #9446
+  * removing an unused param
+  * containers: switching to use the generated ID Formatter/Parser
+  * r/kubernetes_cluster: renaming the cluster id validate helper too
+  * r/kubernetes_node_pool: switching to use the terms used by the generated id
+  * r/kubernetes_cluster: switching to use the terms used by the Generated Resource ID Formatter/Parser
+  * cognitive: switching to use a generated Resource ID Formatter/Parser
+  * cognitive: switching to use the upcoming generated terminology
+  * refactor missed a couple of constructors
+  * cdn: generating the resource id formatters/parsers
+  * endpoint: refactoring to use the upcoming generated terms
+  * cdn_profile: renaming to match the upcoming generated terms
+  * batch: generating the resource id formatters/parsers
+  * r/batch_pool: switching to use the generated terms
+  * r/batch_certificate: switching to use the generated terms
+  * r/batch_application: updating the id formatter/parser to use the generated terms
+  * r/batch_account: updating the formatter to matching the generated terms
+  * r/automation_connection: generating the resource id formatter/parser
+  * r/application_insights_web_test: fixing the build now the generator is fixed
+  * generator/resource-id: fixing an issue when a type name ends in '_test'
+  * automation_connection: updating to use the generated field names
+  * r/application_insights_web_test: generating the resource id formatter/parser function
+  * applicationinsights: generating the web test id parser/formatter
+  * attestation: switching to use generated Resource ID Formatters/Parsers
+  * d/application_insights: switching to use the id formatter
+  * r/application_insight: adding enhanced import validation
+  * r/application_insights: generating the ID formatter and parser
+  * appconfiguration: switching to use the generated ResourceID formatters/parsers
+  * springcloud: switching to use the id formatters directly
+  * r/spring_cloud_service: switching to use the generated ID formatters/parsers
+  * r/spring_cloud_certificate: switching to use a generated resourceId formatter/parser
+  * r/spring_cloud_app: generating the resource id formatters/parsers
+  * generator/resource-id: ensuring the argument is always snakeCased
+  * tooling: adding a 'this is generated' notice and changing 'expect' to 'expected'
+  * analysisservices: generating the resource id parsing funcs
+  * toolins: adding a generator for Resource ID Formatters and Parsers
+  * Update CHANGELOG.md for #9409
+  * Update to API version `2020-06-01` for App Service (#9409)
+  * Update app_service.html.markdown
+  * refactor custom provider tests
+  * rename hcl tag to tfschema tag
+  * Update cosmosdb_account.html.markdown
+  * update CHANGELOG.md for #9235
+  * Add support ipv6 configuration in azurerm_express_route_circuit_peering (#9235)
+  * dependencies: adding go-cmp since it's used in the test framework
+  * tags: adding support for parsing to/from a typed object
+  * provider: hooking up the Typed and Untyped resources
+  * SDK: introducing support for Types Data Sources and Resources
+  * refactor: moving service registration into the sdk package
+  * refactor: moving the Resource Group ID parser/validator into their own package
+  * refactor: moving locations out of the SDK package
+  * Update to include #9212
+  * fix for #9211
+- from version 2.37.0
+  * update CHANGELOG.md for #9160
+  * New resource: azurerm_vpn_gateway_connection (#9160)
+  * update CHANGELOG.md for #9236
+  * azurerm_cosmosdb_account - support for `public_network_access_enabled` (#9236)
+  * updating to include #8894
+  * tests: requiresimport doesn't need a provider block
+  * storage_encryption_scope: fixing the tests
+  * fixing the build
+  * tests: refactoring top use types
+  * refactor: splitting the tests
+  * d/storage_encryption_scope: refactoring from PR review
+  * r/storage_encryption_scope: refactoring from PR review
+  * storage: switching AccountID to AccountID and ParseAccountID to ParseAccountId to match other resources
+  * Update changelog for #9117
+  * azurerm_container_group: support for secret volumes (#9117)
+  * updating to include #9227
+  * r/kubernetes_cluster|node_pool: fixing the tests
+  * updating to include #9296
+  * updating to include #9272
+  * Docs: Change wrong resource name in import section
+  * including azurerm_cosmosdb_sql_container for #9050
+  * d/servicebus_subscription: fixing a couple of typos in the docs
+  * Docs: Use proper resource names in import section
+  * d/attestation_provider: fixing the tests
+  * updating to include #7521
+  * detailing the specific changes
+  * updating to include #7786
+  * updating to include #8470
+  * fixup permissions for individual tests
+  * r/storage_blob: force-enabling allow_blob_public_access for now
+  * r/storage_blob: changes from code review
+  * removed dead code
+  * Update website/docs/index.html.markdown
+  * Support graceful Linux/Windows VM shutdown
+  * Use Rawxml format for global API policies string
+  * Update changelog for #9388
+  * `azurerm_mssql_virtual_machine` - Fix crash when setting `auto_patching` #9388
+  * Add validation for virtual_hub_id/remote_virtual_network_id of azurerm_virtual_hub_connection (#9256)
+  * update CHANGELOG.md for #9332
+  * azurerm_firewall_policy - deprecate `dns.network_rule_fqdn_enabled` (#9332)
+  * Migrate set definition tests
+  * update CHANGELOG.md for #9319
+  * azurerm_dns_zone & azurerm_private_dns_zone - support for the `soa_record` block (#9319)
+  * update CHANGELOG.md for #9259
+  * Update `azurerm_policy_set_definition` - Support `policy_definition_group` (#9259)
+  * update CHANGELOG.md for #9262
+  * Update `azurerm_linux|windows_virtual_machine_scale_set` - Support `platform_fault_domain_count`, `disk_iops_read_write` and `disk_mbps_read_write` (#9262)
+  * fixed format issue
+  * changes incorporated based on feedback
+  * Kt/test shim appinsight (#9303)
+  * attestation: test shim
+  * Fix heading formatting in service principal with secret documentation (#9384)
+  * updating to include #9358
+  * Test data for azurerm_api_management_policy resource`
+  * Update CHANGELOG.md for #9373
+  * `azurerm_postgresql_server` increase max storage to 16TiB (#9373)
+  * updating to include #9166
+  * updating to include #9364
+  * doc/r/vd-hostpool: fix typo in BreadthFirst and DepthFirst
+  * fix accp test lint
+  * Added accp test
+  * updating to include #9355
+  * apimanagement: fixing the lintignore for now
+  * kubernetes: running tests individually by default
+  * Update CHANGELOG.md for # 9311
+  * `azurerm_cosmosdb_sql_container` doesn't call get throughput api when cosmos account is serverless (#9311)
+  * Migrate msi test
+  * Resolve comments
+  * Update changelog for #9370
+  * `azurerm_mssql_database` - `sku_name` supports more `DWxxxc` options #9370
+  * Fix of acctest
+  * update CHANGELOG.md for #8879
+  * azurerm_firewall: support for firewall manager (firewall policy) (#8879)
+  * try to retrieve apiVersion for all sub-resources
+  * Update CHANGELOG.md for #9257
+  * Update `azurerm_linux|windows_virtual_machine` - Support `extensions_time_budget` (#9257)
+  * http_application_routing ForceNew removed
+  * whitespace commit to check mvn caching works
+  * Update CHANGELOG.md for #8946
+  * New resources: `azurerm_log_analytics_cluster` and `azurerm_log_analytics_cluster_customer_managed_key` (#8946)
+  * fix workflow yaml
+  * r/key_vault_certificate: fixing a crash when the certificate policy block is nil
+  * d/key_vault_certificate: fixing a crash when the certificate policy block is nil
+  * Update CHANGELOG.md for #8781
+  * Adds new resource azurerm_security_center_automation for automation and data export (#8781)
+  * add cache for mvn
+  * fix path filtering
+  * add target and workflow to check tc
+  * Some fix for data source
+  * update CHANGELOG.md for #9258
+  * Update `azurerm_windows_virtual_machine` - Support `patch_mode` (#9258)
+  * Migrate acceptance tests of ML
+  * Update of exists and migrate remediation tests
+  * Resolve cyclic reference issue
+  * Migrate policy definition resource and data source test
+  * A try on migrating to new style of acceptance tests
+  * Migrate test of policy assignment
+  * updating to include #9050
+  * adding #9050
+  * update CHANGELOG.md for #9264
+  * Update `azurerm_linux|windows_virtual_machine` - make `dedicated_host_id` updatable (#9264)
+  * storage: fixing changes since the shim layer was merged
+  * Fixup references
+  * rebase, storage SDK bump and remove unused function
+  * Initial PR feedback
+  * Run  for new dependencies
+  * Update docs for ACLs
+  * Fixup test destroy check
+  * make terrafmt
+  * Initial Update implementation
+  * Add more ACL tests
+  * Add owner,group,ace properties
+  * Add docs
+  * Add import
+  * Add delete
+  * Add skeleton
+  * updating to include #9314
+  * This line can be removed now that the service is GA as of 14/02/20
+  * run code through gofumpt and add makefile step (#9275)
+  * Typo fix #9172
+  * Tidy changelog entry for #9172
+  * Update changelog for #9172
+  * Support for additional arguments on azurerm_api_management_api_diagnostic (#9172)
+  * Updates time zone description (#9324)
+  * updated with possible values for time zone (#9325)
+  * Update thirty-two-bit.yaml
+  * `azurerm_api_management_custom_domain` - Add exception for R001 lint rule (#9298)
+  * Fix typo in azurerm_redis_linked_server docs (#9299)
+  * make fmt
+  * fix tests
+  * minor titdying
+  * datasource
+  * resource
+  * move tests
+- from version 2.36.0
+  * build: fixing the build on 32 bit systems (#9293)
+  * fixing a missing _azurerm
+  * Rebase, resolve conflicts
+  * Really set default now
+  * Add os_disk_type to main nodepool resource
+  * rename for consistency
+  * Update website/docs/r/kubernetes_cluster_node_pool.html.markdown
+  * Update azurerm/internal/services/containers/kubernetes_nodepool.go
+  * Update azurerm/internal/services/containers/kubernetes_nodepool.go
+  * Update azurerm/internal/services/containers/kubernetes_cluster_node_pool_data_source.go
+  * Rebase, resolve conflicts
+  * storage: removing the resourcemanager shim for now, until the API is compatible
+  * r/storage_table: fixing a crash
+  * updating to include #9195
+  * updating to include #9281
+  * updating to include #9279
+  * Update CHANGELOG.md for #9233
+  * Add health_check_path to function_app site_config (#9233)
+  * Fix formatting (add missing backtick)
+  * Fix documentation: link to App Service Certificate examples
+  * r/storage_table: introducing a shim layer
+  * Update CHANGELOG.md for #9282
+  * `azurerm_logic_app_workflow` added logicapp name validation (#9282)
+  * r/storage: adding a shim for Shares
+  * Update index.html.markdown
+  * r/storage_share: adding a shim layer
+  * refactor: removing duplicated code
+  * r/storage_share: moving the validate function to the validate package
+  * r/storage_queue: adding a shim layer
+  * r/storage_container: switching to use the new parse function everywhere
+  * r/storage_queue: moving the validation function out
+  * renaming the package
+  * added validation for eventgrid resources
+  * added vvset name validation
+  * testshim: analysisservices (#9274)
+  * renaming the parsers package to parse to match the other services
+  * storage/containers: adding a shim covering resource manager and data plane
+  * storage: renaming the parsers
+  * Update CHANGELOG.md
+  * linting: remove old travis config & make steps (#9273)
+  * fixed format issues
+  * fix format issue
+  * rebase and small tweaks from manual testing
+  * fixed format issues
+  * string termination fixed
+  * modified azurerm.erb file
+  * added data source azurerm_servicebus_subscription
+  * Updated the storage container access from private to blob
+  * Added test
+  * Removed Computed from the content_md5 field
+  * Updated doc and added validation for blob type page and append
+  * Adds functionality to update blob based on content_md5 property
+  * Update CHANGELOG.md for #8919
+  * Adds CMK for CosmosDB Account (#8919)
+  * Update changelog for #8228
+  * New resource: `azurerm_api_management_custom_domain` (#8228)
+  * Update the example of azurerm_powerbi_embedded
+  * update CHANGELOG.md for #9033
+  * add fields to loganalytics workspaces (#9033)
+  * update CHANGELOG.md for #9229
+  * New datasource `azurerm_traffic_manager_profile` (#9229)
+  * update CHANGELOG.md for #9251
+  * Add v5.0 dotnet_framework_version to app_service validation (#9251)
+  * Remove the preview information for managed property of azurerm_kubernetes_cluster
+  * spelling (#9250)
+  * Docs overview grammatical changes (#9242)
+  * update CHANGELOG.md for #8640
+  * Guides-2.0-upgrade-guide grammatical changes (#9249)
+  * Guides-migrating-between-renamed-resources grammatical changes (#9248)
+  * Guides-Azure CLI grammatical changes (#9247)
+  * Guides-service_principal_client_secret grammatical changes (#9246)
+  * Guides-service_principal_client_certificate grammatical changes (#9244)
+  * Guides-Azure Active Directory-Migrating to the AzureAD Provider grammatical changes (#9243)
+  * Upgrade network connection monitor from v1 to v2 (#8640)
+  * update CHANGELOG.md for #9158
+  * azurerm_point_to_site_vpn_gateway - support `route` block (#9158)
+  * update CHANGELOG.md for #9035
+  * azurerm_vpn_gateway - support block "bgp_peering_addresses" (#9035)
+  * update CHANGELOG.md for #9228
+  * `log_analytics_workspace` - exclude `Free` from `daily_quota_gb` settings (#9228)
+  * update CHANGELOG.md for #9032
+  * new resource "azurerm_monitor_smart_detector_alert_rule" (#9032)
+  * Update CHANGELOG.md for #9014
+  * New Resource: `azurerm_log_analytics_storage_insights` (#9014)
+  * Update CHANGELOG.md for #9187
+  * `azurerm_cosmosdb_sql_database` doesn't call get throughput api when cosmos account is serverless (#9187)
+  * Raise limits for max_count/min_count/node_count of azurerm_kubernetes_cluster_node_pool/azurerm_kubernetes_cluster
+  * Add proximity_placement_group_id to main resource as well
+  * update CHANGELOG.md for #9210
+  * Update `azurerm_policy_remediation` - support `resource_discovery_mode` (#9210)
+  * update CHANGELOG.md for #8959
+  * New resource: `azurerm_virtual_hub_bgp_connection` (#8959)
+  * update CHANGELOG.md for #8544
+  * New resource/data source `azurerm_data_share_dataset_kusto_database` (#8544)
+  * updating to include #9213
+  * dependencies: upgrading to v48.1.0 of github.com/Azure/azure-sdk-for-go
+  * updating to include #9182 & formatting
+  * updating to include #9202
+  * docs: add ip_address property to azurerm_public_ips
+  * Allow OS disks up to 4095GB
+  * updating to include #8814
+  * allow azurerm_linux_virtual_machine_scale_set computer_name_prefix to end with dashes
+  * update CHANGELOG.md for #8979
+  * azurerm_virtual_network: support for `bgp_community` and `vnet_protection_enabled` (#8979)
+  * updating to include #9192
+  * Fix acceptance test
+  * r/storage_share: updating to use the new input struct
+  * dependencies: vendoring API version 2019-12-12 of github.com/tombuildsstuff/giovanni
+  * storage: bumping the tombuildsstuff/giovanni api version to 2019-12-12
+  * Update website/docs/d/kubernetes_cluster_node_pool.html.markdown
+  * Update website/docs/r/kubernetes_cluster_node_pool.html.markdown
+  * Update azurerm/internal/services/containers/kubernetes_nodepool.go
+  * Update azurerm/internal/services/containers/kubernetes_cluster_node_pool_data_source.go
+  * Update azurerm/internal/services/containers/kubernetes_nodepool.go
+  * updating to include #9191
+  * Add `proximity_placement_group_id` to AKS node pools
+  * build: missed the test path
+  * provider: code changes needed for the go-azure-helpers upgrade
+  * dependencies: upgrading github.com/hashicorp/go-azure-helpers to v0.13.0
+  * updating to include #9189
+  * dependencies: vendoring v0.14.0 of github.com/tombuildsstuff/giovanni
+  * updating to include #9168
+  * updating to include #9167
+  * dependencies: upgrading github.com/Azure/go-autorest/autorest/azure/cli to v0.4.2
+  * dependencies: upgrading to v48.0.0 of github.com/Azure/azure-sdk-for-go
+  * updating to include #9165
+  * update CHANGELOG.md for #8978
+  * New resource: `azurerm_virtual_hub_security_partner_provider` (#8978)
+  * update CHANGELOG.md for #8917
+  * Update `azurerm_linux|windows_virtual_machine` and `azurerm_linux|windows_virtual_machine_scale_set`
+    - Support managed boot diagnostics (#8917)
+  * dependencies: upgrading to v47.1.0 of github.com/Azure/azure-sdk-for-go
+  * updating to include #9163
+  * Update validation rule for route_table_ids of azurerm_virtual_hub_connection (#9159)
+- from version 2.35.0
+  * dependencies: vendoring the remaining changes from v47.0.0 of github.com/Azure/azure-sdk-for-go
+  * servicefabric: vendoring the rename
+  * policyinsights: vendoring the rename
+  * hdinsight: vendoring the rename
+  * cosmosdb: vendoring the rename for v47.0
+  * hdinsight: handling the breaking change in v47.0 of the Azure SDK
+  * policyinsights: handling the breaking change in v47.0 of the Azure SDK
+  * servicefabric: handling the breaking change in v47.0 of the Azure SDK
+  * cosmosdb: updating the import path to match the breaking change in v47.0 of the Azure SDK
+  * dependencies: upgrading to v47.0.0 of github.com/Azure/azure-sdk-for-go
+  * updating to include #8982
+  * Update CHANGELOG.md for #9100
+  * fix synapse endpoint not available issue in other cloud (#9100)
+  * update CHANGELOG.md for #8963
+  * `azurerm_postgresql_firewall_rule` - add validation for `start_ip_address` and `end_ip_address` (#8963)
+  * Update changelog for #8878
+  * Update CHANGELOG.md for #8673
+  * `azurerm_cosmosdb_mongo_database` doesn't call get throughput
+    api when cosmos account is serverless (#8673)
+  * add default value for node_taints back
+  * updating to include #9129
+  * updating to include #9057
+  * r/iot_time_series_insights_access_policy: adding missing schema version
+  * iottimeseriesinsights: adding a state migration
+  * timeseriesinsights: fixing the build
+  * dependencies: upgrading timeseriesinsights to 2020-05-15 GA
+  * d|r/data_share: fixing a stackoverflow issue
+  * Revert Computed for availability_zones for now
+  * d/data_share: handling a crash when item is nil
+  * r/data_share: handling a crash when the item is nil
+  * update CHANGELOG.md for #8939
+  * Add new resource azurerm_virtual_hub_route_table (#8939)
+  * Update CHANGELOG.md for #9125
+  * `azurerm_key_vault_access_policy` - check access policy consistency
+    before committing to state (#9125)
+  * Remove obsolete property from a test
+  * d/data_share: fixing tests:
+  * linting: updating the todo
+  * r/resource_group: updating the existing syntax
+  * d/advisor_recommendations: updating the existing syntax
+  * test-framework: introducing a shim layer for Binary Testing
+  * r/virtual_desktop_workspace_application_group_association: case insensitivity bug
+  * r/data_share: exporting all of the schedules
+  * d/data_share: removing the limitation that a schedule has to exist
+  * desktopvirtualization: fixing the host pool id/adding validation
+  * r/storage_sync_group: fixing the data source to error when missing
+  * d/data_share: fixing the data source
+  * r/virtual_desktop_workspace_application_group_association: fixing the format string
+  * r/virtual_desktop_workspace: refactoring to use the correct timeouts and locking to match the association resource
+  * r/virtual_desktop_workspace_application_group_association: refactoring and adding an ID parser
+  * r/virtual_desktop_host_pool: refactoring
+  * r/virtual_desktop_application_group: switching to use the ID formatter
+  * update CHANGELOG.md for #8912
+  * New resource:  `azurerm_virtual_hub_ip_configuration` (#8912)
+  * `azurerm_devspace_controller` - Adding note that Microsoft is retiring the Dev Space resource (#9148)
+  * update CHANGELOG.md for #8950
+  * azurerm_virtual_hub_connection - support the `routing` block (#8950)
+  * Address feedback part 1
+  * Update role definition docs to include `role_definition_resource_id` (#9131)
+  * Update changelog for #8938
+  * `azurerm_data_factory_linked_service_data_lake_storage_gen2` - Supports managed identity auth through `use_managed_identity ` (#8938)
+  * remove throttling from go linting (#9109)
+  * Update changelog for #8629
+  * New data source `azurerm_images` (#8629)
+  * Update azurerm/internal/services/containers/kubernetes_addons.go
+  * Update azurerm/internal/services/containers/kubernetes_addons.go
+  * remove last use of NoEmptyStrings (#9089)
+  * Update changelog for #8603
+  * new resource: azurerm_firewall_policy_rule_collection_group (#8603)
+  * reduce triggers to open and change to PR source branch (#9108)
+  * resolving linting issues (#9106)
+  * better explaination on auto_provision setting
+  * adds docs for security_center_auto_provisioning
+  * Update CHANGELOG.md
+- from version 2.34.0
+  * r/vpn_site: fixing the build on 32 bit platforms
+  * update CHANGELOG.md for #8773
+  * New data source: azurerm_cognitive_account (#8773)
+  * update CHANGELOG.md for #9077
+  * Update CHANGELOG.md for #9078
+  * `azurerm_policy_definition` resource and datasource can now look up builtin policy by name (#9078)
+  * Update CHANGELOG.md for #8617
+  * Update private_dns_zone_virtual_network_link_resource.go (#8617)
+  * Add tflint ignores (#9081)
+  * Update CHANGELOG.md for #8829
+  * Add timezone logic app recurrence (#8829)
+  * Update CHANGELOG.md for #8822
+  * `azurerm_backup_policy_vm` support `instant_restore_retention_days` property (#8822)
+  * Fixed bug when deleting a policy
+  * Update CHANGELOG.md for #9068
+  * `azurerm_private_endpoint` - fix crash when deleting private endpoint (#9068)
+  * update CHANGELOG.md for #9048
+  * `azurerm_log_analytics_solution` - add support of `tags` (#9048)
+  * simplify the `dns_settings` to `dns_servers`
+  * update CHANGELOG.md for #9030
+  * ISSUE Fixed: azurerm_virtual_desktop_application_group name allowed length is 3-31, should be 1-260 #8980 (#9030)
+  * Validate source_image_reference values (#9055)
+  * remove travis
+  * update CHANGELOG.md for #9034
+  * Update website/docs/r/log_analytics_saved_search.html.markdown
+  * Update azurerm/internal/services/loganalytics/tests/log_analytics_saved_search_resource_test.go
+  * Update azurerm/internal/services/loganalytics/tests/log_analytics_saved_search_resource_test.go
+  * update CHANGELOG.md for #8998
+  * Update website/docs/r/local_network_gateway.html.markdown
+  * Update website/docs/r/local_network_gateway.html.markdown
+  * Update azurerm/internal/services/network/tests/local_network_gateway_resource_test.go
+  * backfilling the changelog content from 0.1 - 1.6
+  * Update log_analytics_saved_search_resource.go
+  * change tag to use tags.ForceNewSchema()
+  * change the test to verify updatability
+  * Remove outboundUDR test, since UDR is not allowed on MIS-enabled clusters
+  * Do not add route_table to a cluster with managed identity as it's no longer supported
+  * Disable check for azure_policy.version as it seems to not be returned anymore
+  * Remove docs about enable_pod_security_policy as it has been deprecated on Oct 15, 2020
+  * Make a few fields computed
+  * Fixing some of the tests, removed node_taints from default node pool
+  * go mod tidy
+  * Upgrade containerservice API to 2020-09-01
+  * update CHANGELOG.md for #9002
+  * New Resource: `azurerm_log_analytics_linked_storage_account` (#9002)
+  * update CHANGELOG.md for #8896
+  * new resource: azurerm_vpn_site (#8896)
+  * fixed Destop Virtualization refs (#9041)
+  * Add GH Actions for linting and unit testing (#9036)
+  * update CHANGELOG.md for #8863
+  * new resource for `azurerm_synapse_role_assignment` (#8863)
+  * update CHANGELOG.md for #8498
+  * azurerm_automation_module - expose error message (#8498)
+  * update CHANGELOG.md for #8937
+  * azurerm_key_vault - supports "contact" block (#8937)
+  * updating to include #8993
+  * Update CHANGELOG.md for #8595
+  * Adds new resource for azurerm_security_center_auto_provisioning (#8595)
+  * add fields to loganalytics saved search
+  * Bump junit from 4.13 to 4.13.1 in /.teamcity
+  * Update changelog for #7924
+  * `azurerm_container_group` - add support for `volume.x.git_repo`  (#7924)
+  * update CHANGELOG.md for #8032
+  * azurerm_iothub - support for the `endpoint.resource_group` property (#8032)
+  * Update api_management_authorization_server.html.markdown
+  * r/virtual_desktop_host_pool: `validation_environment`-> `validate_environment`
+  * Doc Fix: Front Door names must be globally unique and hostname reqs are accurately defined (#9017)
+  * Updating to include #8610
+  * fixes #1109
+  * updating to include #8995
+  * adding support for log analytics data export #8995
+  * `azurerm_cosmosdb_account` support `EnableAnalyticalStorage` for the `capabilities` property (#9010)
+  * update CHANGElog.md for #8997
+  * Fix azurerm_databricks_workspace.name validation (#8997)
+  * Update changelog for #8983
+  * r/key_vault: ensuring the casing on the sku is consistent (#8983)
+  * Fix subcategories in docs
+  * Update role_definition.html.markdown
+  * azurerm_local_network_gateway: support for `gateway_fqdn`
+  * Update data_factory_integration_runtime_managed.html.markdown
+  * Update changelog for #8619
+  * `azurerm_kubernetes_cluster` - `min_count` can be updated when `enable_auto_scaling` is set to true (#8619)
+  * update CHANGELOG.md for #7963
+  * `azurerm_api_management_api`  `subscription_required` default to `true` (#7963)
+  * update CHANGELOG.md for #8861
+  * log_analytics_workspace: support for the `daily_quota_gb` property (#8861)
+  * update CHANGELOG.md for #8815
+  * Update the value property in features block as TypeSet for SignalR Service (#8815)
+  * Update changelog for #8957
+  * `azurerm_kubernetes_cluster` - Fix issue where `min_count` and `max_count` couldn't be the same (#8957)
+  * r/app_service: fixing a crash when provisioning an app service inside an ASE which doesn't exist yet
+- from version 2.33.0
+  * generator: running make generate
+  * updating to include #8975
+  * refactor: cleaning up an overzealous aliasing
+  * mssql_(database|server): sending the workaround during delete too
+  * r/mssql_database_extended_auditing_policy: working around an API regression
+  * r/sql_database: working around a broken API
+  * r/mssql_database: working around a broken API
+  * r/mssql_server_extended_auditing_policy: working around the broken api
+  * hpc-cache: splitting out into their own service package
+  * r/sql_server: working around a broken api
+  * r/mssql_server: working around a broken API
+  * Update dns_cname_record FQDN - note: trailing dot
+  * Update changelog for #8933
+  * New resource: `azurerm_service_fabric_mesh_secret` `azurerm_service_fabric_mesh_secret_value` (#8933)
+  * updating to include #8904
+  * Now working in dash shell
+  * https://github.com/terraform-providers/terraform-provider-azurerm/issues/8942
+  * updating to include #8875
+  * Simplify identity handling
+  * updating to include #8948
+  * added mysql firewall start and end IP address validation
+  * Added IP address validations for both start and end addresses
+  * Send identity type None when clearing it, since API wants it that way
+  * update flatten logic in network_rule_collection
+  * Remove unused code from flatten
+  * Update CHANGELOG.md for #8882
+  * Update `azurerm_policy_set_definition` - Fix updates for `parameters` and `parameter_values` (#8882)
+  * updating to include #8935
+  * Update CHANGELOG.md for #8792
+  * Add composite indexes support to CosmosDB SQL container (#8792)
+  * Update CHANGELOG.md for #8761
+  * Fix ignore_changes behavior for AGW (#8761)
+  * DesktopVirtualization replaced with DesktDesktop Virtualization
+  * removed extended auditing policy configuration from sql mssql firewall test file
+  * Update azurerm/internal/services/appconfiguration/app_configuration_resource.go
+  * replacing os_disk_image_size with os_disk_image_size_gb as per Hashicorp's suggestion... Defaulting osDiskImageSize to 0
+  * added validation to SQL firewall start and end IP address
+  * Adds docs ref for azurerm_eventgrid_system_topic
+  * Update changelog for #8838
+  * New Resource: `azurerm_service_fabric_mesh_local_network` (#8838)
+  * Fix the fixes. Eeturn empty identity block?
+  * Update azurerm/internal/services/appconfiguration/app_configuration_resource.go
+  * Update azurerm/internal/services/appconfiguration/app_configuration_resource.go
+  * Update azurerm/internal/services/appconfiguration/app_configuration_resource.go
+  * Update azurerm/internal/services/appconfiguration/app_configuration_resource.go
+  * Update azurerm/internal/services/appconfiguration/app_configuration_resource.go
+  * fix `container_registry` policy docs
+  * Update changelog for #8907
+  *  `azurerm_search_service` - add support for `identity` #8907
+  * update CHANGELOG.md for #8899
+  * azurerm_mssql_database - do not set longterm and shortterm retention policies when using the `DW` SKUs (#8899)
+  * Example: `azurerm_virtual_desktop_*` (#8844)
+  * Fixing the formatting with make fmt now
+  * Fixing the formatting...
+  * Adding support for os_disk_image_size to get the disk size of the image
+  * Actually check for identity present
+  * Add more tests
+  * azurerm_firewall: supports `dns_setting`
+  * Switch identity test to standard sku
+  *  - add support for identity
+  * azurerm_kubernetes_cluster, azurerm_kubernetes_cluster_node_pool
+    - make "availability_zones" force new
+  * Fix CI
+  * Fix typo
+  * Enable key rotation for des
+
+-------------------------------------------------------------------
 Wed Nov 11 11:08:00 UTC 2020 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add symbolic link to comply with new filesystem layout for local provider copies

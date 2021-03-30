@@ -1,7 +1,7 @@
 #
 # spec file for package terraform-provider-azurerm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %global provider        github
 %global provider_tld    com
@@ -49,7 +50,7 @@
 %endif
 
 Name:           terraform-provider-azurerm
-Version:        2.32.0
+Version:        2.43.0
 Release:        0
 Summary:        Terraform provider for Azure Resource Manager (AzureRM)
 License:        MPL-2.0
@@ -70,9 +71,9 @@ Requires:       terraform >= 0.12.0
 BuildRequires:  golang
 %endif
 %if 0%{?suse_version}
-BuildRequires:  golang(API) >= 1.12
 BuildRequires:  golang-packaging
 BuildRequires:  xz
+BuildRequires:  golang(API) >= 1.12
 %endif
 %endif
 %if 0%{?suse_version}
