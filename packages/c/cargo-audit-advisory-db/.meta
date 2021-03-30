@@ -1,0 +1,5 @@
+<package name="cargo-audit-advisory-db" project="openSUSE:Factory">
+  <title>Cargo Audit Advisory DB</title>
+  <description>The RustSec Advisory Database is a repository of security advisories filed against Rust crates published via https://crates.io. A human-readable version of the advisory database can be found at https://rustsec.org/advisories/.</description>
+  <devel project="devel:languages:rust" package="cargo-audit-advisory-db"/>
+</package>

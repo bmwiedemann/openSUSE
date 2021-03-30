@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Wed Mar 17 00:54:18 UTC 2021 - wbrown@suse.de
+
+- Update to version 20210317:
+  * Have master-to-main mirror force push (#822)
+  * Fix `main` -> `master` mirroring (#821)
+  * Rename `master` branch to `main` (#820)
+  * Mirror 'main' branch to 'master' (#819)
+  * README.md: fix "Report Vulnerability" button (#818)
+  * Assigned RUSTSEC-2021-0040 to arenavec
+  * Assigned RUSTSEC-2021-0039 to endian_trait
+  * arenavec: update advisory title to clarify issue
+  * Report 0109-arenavec to RustSec
+
+-------------------------------------------------------------------
+Tue Mar 02 23:56:22 UTC 2021 - wbrown@suse.de
+
+- Update to version 20210223:
+  * Assigned RUSTSEC-2021-0032 to byte_struct
+  * Assigned RUSTSEC-2021-0031 to nano_arena
+  * Add advisory for aliasing violation in nano_arena
+  * Add advisory for uninitialized memory drop in byte_struct
+  * Assigned RUSTSEC-2021-0030 to scratchpad
+  * Add advisory for double-free in scratchpad
+  * Revert "Mark RUSTSEC-2020-0146 as unsound (#788)"
+  * Mark RUSTSEC-2020-0146 as unsound (#788)
+  * Heapless soundness fix since 0.6.1 (#791)
+  * Update RUSTSEC-2020-0146.md with list of patched versions (#789)
+  * Assigned RUSTSEC-2021-0029 to truetype
+  * Report uninitialized memory exposure in truetype
+  * Assigned RUSTSEC-2021-0028 to toodee
+  * Add advisory for memory safety issue in toodee's insert_row
+  * Assigned RUSTSEC-2021-0027 to bam
+  * Add advisory for out-of-bounds write in bam
+  * Assigned RUSTSEC-2020-0146 to generic-array
+  * Add an advisory on lifetime extension in generic-array
+  * Assigned RUSTSEC-2020-0145 to heapless
+  * heapless: fix year: 2020, not 2010
+  * heapless: use-after-free when cloning partially consumed Iterator
+  * Update CVE numbers (#777)
+
+-------------------------------------------------------------------
+Tue Feb 23 04:40:05 UTC 2021 - William Brown <william.brown@suse.com>
+
+-  Initial commit of 20210223
