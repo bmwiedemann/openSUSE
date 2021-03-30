@@ -3562,4 +3562,12 @@
     <comment>submit new version 4.3.35</comment>
     <requestid>879817</requestid>
   </revision>
+  <revision rev="465" vrev="1">
+    <srcmd5>49398408ecaaa734d7451e1cc69fe642</srcmd5>
+    <version>4.3.36</version>
+    <time>1617130286</time>
+    <user>RBrownSUSE</user>
+    <comment>submit new version 4.3.36</comment>
+    <requestid>882110</requestid>
+  </revision>
 </revisionlist>
