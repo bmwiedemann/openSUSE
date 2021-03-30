@@ -1,7 +1,7 @@
 #
 # spec file for package VFlib3
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define libname libVFlib3-5
+%define libname libVFlib3-10
 Name:           VFlib3
-Version:        3.6.14
+Version:        3.7.2
 Release:        0
 Summary:        Versatile Font Library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Summary(ja):    "Versatile" フォントライブラリ
-Url:            http://www-masu.ist.osaka-u.ac.jp/~kakugawa/VFlib/
-Source0:        http://www-masu.ist.osaka-u.ac.jp/~kakugawa/download/TypeHack/VFlib3-%{version}.tar.bz2
+URL:            http://www-masu.ist.osaka-u.ac.jp/~kakugawa/VFlib/
+Source0:        http://www-masu.ist.osaka-u.ac.jp/~kakugawa/download/TypeHack/VFlib3-%{version}.tar.gz
+Patch1:         VFlib3-add-external.patch
 Source1:        vflibcap-tex
-Patch0:         VFlib3-compare-always-false.patch
-Patch1:         VFlib3-freetype2.patch
-Patch2:         VFlib3-gnu_source-declaration.patch
-Patch3:         VFlib3-include.patch
-Patch4:         VFlib3-info-dir.patch
-BuildRequires:  autoconf213
 BuildRequires:  fdupes
 BuildRequires:  imake
 BuildRequires:  libtool
@@ -93,19 +88,12 @@ Development headers and libraries for VFlib3
 
 %prep
 %setup -q
-%autopatch -p1
-
-# libtool files must be having proper content
-rm -f config.{cache,sub,guess}
-ln -s %{_datadir}/libtool/build-aux/config.guess ./
-ln -s %{_datadir}/libtool/build-aux/config.sub ./
+%patch1 -p1
 
 %build
-autoconf-2.13
 %configure \
             --with-kpathsea \
-            --with-freetype2 \
-            --with-freetype2-includedir=%{_includedir}/freetype2 \
+            --with-opentype \
             --with-texmf-root=%{_datadir}/texmf \
             --with-gettext
 make %{?_smp_mflags}
@@ -124,6 +112,7 @@ install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/VFlib/%{version}/
 # remove duped docs
 rm -rf %{buildroot}%{_datadir}/VFlib/%{version}/doc/
 find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot} -type f -name "*.a" -delete -print
 
 %fdupes %{buildroot}
 
@@ -137,7 +126,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%doc ANNOUNCE* CHANGES COPYING* DISTRIB*
+%doc ANNOUNCE* CHANGES DISTRIB*
+%license LICENSE-FTL.TXT LICENSE-GPLV3.TXT
 %{_infodir}/VFlib*info*
 %dir %{_datadir}/VFlib
 %dir %{_datadir}/VFlib/%{version}

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Feb  4 13:46:14 CET 2021 - tiwai@suse.de
+
+- Update to version 3.7.2:
+   * Relased under dual-license (GPL v3 and FreeType).
+- Dropped obsoleted patches:
+  VFlib3-compare-always-false.patch
+  VFlib3-freetype2.patch
+  VFlib3-gnu_source-declaration.patch
+  VFlib3-include.patch
+  VFlib3-info-dir.patch
+- Fix the build with the recent gcc due to the duplicated symbols:
+  VFlib3-add-external.patch
+
+-------------------------------------------------------------------
 Mon Jul 24 23:39:11 UTC 2017 - jengelh@inai.de
 
 - Rectify RPM groups and description typography.
