@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Tue Jan 19 11:18:48 UTC 2021 - mcepl@suse.com
+
+- Update to version 0.7+git20191225.108970c:
+  * Add test case for CDATA serialization
+  * Fix superfluous '[' when serializing CDATA
+  * Update README
+  * Add serialization via SLAXML:xml()
+  * Added basic rockspec
+  * Fix mistakenly added global key
+  * Fix a few README grammar mistakes
+  * Simplify UTF-8 entity decoding slightly
+  * Fix code formatting (messed up whitespace)
+
+-------------------------------------------------------------------
+Tue Jan 19 11:17:20 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort for the latest commit on master of SLAXML.
