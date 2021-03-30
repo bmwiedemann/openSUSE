@@ -1,7 +1,7 @@
 #
 # spec file for package python-pdfkit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/JazzCore/python-pdfkit
 Source:         https://files.pythonhosted.org/packages/source/p/pdfkit/pdfkit-%{version}.tar.gz
+Source1:        https://raw.githubusercontent.com/JazzCore/python-pdfkit/master/tests/pdfkit-tests.py
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,6 +42,13 @@ Python wrapper for wkhtmltopdf utility to convert HTML to PDF using Webkit.
 
 %prep
 %setup -q -n pdfkit-%{version}
+cp %{SOURCE1} .
+
+# Replicate https://github.com/JazzCore/python-pdfkit/tree/master/tests/fixtures
+mkdir fixtures
+echo 'body { font-size: 80px; }' > fixtures/example.css
+echo 'a { color: blue; }' > fixtures/example2.css
+echo '<html><head></head><body><h1>Oh Hai!</h1></body></html>' > fixtures/example.html 
 
 %build
 %python_build
@@ -48,6 +56,9 @@ Python wrapper for wkhtmltopdf utility to convert HTML to PDF using Webkit.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest pdfkit-tests.py -k 'not (test_pdf_generation_from_file_like or test_pdf_generation)'
 
 %files %{python_files}
 %license LICENSE
