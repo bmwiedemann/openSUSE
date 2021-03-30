@@ -59,3 +59,7 @@ For cron you must uncomment the line in /etc/cron.d/matomo-archive
 For systemd.timer you must start and enable matomo-archive.timer:
 ~# /usr/bin/systemctl enable --now matomo-archive.timer
 
+g) Enable infile
+   - GRANT FILE ON *.* TO '<your_matomo_user>'@'localhost'
+   - usermod -a -G www mysql
+   - systemctl restart mysql apache2

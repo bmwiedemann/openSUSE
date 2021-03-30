@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Mon Mar  1 08:24:34 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.2.1
+  To many changes, so look at:
+  https://github.com/matomo-org/matomo/releases/tag/4.2.1
+
+-------------------------------------------------------------------
+Mon Feb 22 10:22:36 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.2.0
+  To many changes, so look at:
+  https://github.com/matomo-org/matomo/releases/tag/4.2.0
+
+-------------------------------------------------------------------
+Fri Jan 15 06:42:06 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.1.1
+  To many changes, so look at:
+  https://github.com/matomo-org/matomo/releases/tag/4.1.1
+
+-------------------------------------------------------------------
+Tue Dec 22 08:24:09 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.1.0
+  - No changelog from upstream at this time.
+
+-------------------------------------------------------------------
+Mon Dec 14 10:02:54 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Put apache configuration files in separate subpackages.
+- Update cron, service, lograte files with apache macros.
+
+-------------------------------------------------------------------
+Wed Dec  9 06:34:40 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.0.5
+  - Avoid inserting duplicates in invalidation table to reduce IO.
+  - Limit to given sites to not select too much.
+  - fix build
+  - tweaks to duplicate checking query
+  - more pr feedback
+  - fix cron archive test
+
+-------------------------------------------------------------------
+Fri Dec  4 06:54:37 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.0.4
+  - No changelog from upstream.
+
+-------------------------------------------------------------------
+Wed Dec  2 10:46:45 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Use apache-rpm-macros.
+
+-------------------------------------------------------------------
+Sat Nov 28 09:15:51 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.0.2
+  No changelog from upstream but you can see changes since 4.0.1
+  here: https://github.com/matomo-org/matomo/compare/4.0.1...4.0.2
+
+-------------------------------------------------------------------
+Fri Nov 27 06:35:41 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.0.1
+  * matomo-org/matomo
+    - #16778 SEO Plugin broken
+    - #16788 CLI Archive might not stop
+    - #16786 No custom dimensions in Matomo 4.0.0
+    - #16798 Error upgrading db while upgrading to 4.0.0-b1
+      (session update fails)
+    - #16804 Matomo 4.0.0 warns about “ExampleTheme requires 
+      Piwik <4.0.0-b1”
+  * matomo-org/device-detector
+    - #6443 Detect browsers: Slimjet, 7Star, MxNitro
+    - #6444 Detect new brands: Starlight, GEOFOX, Verico, Tinmo, 
+      Matrix and Detect devices for existing brands: Asus, Sharp,
+      Coolpad, Sony, OPPO, Lenovo, Philips, Vivo, Xiaomi,
+      Manta Multimedia, NEC, Vernee, Karbonn, Krüger&Matz, RugGear,
+      DEXP, Digma, MiXzo, Atom, Yu, Acer, Irbis, teXet, Telefunken,
+      Onda, IconBIT, Polaroid, Doogee, Allview, BB Mobile,
+      Touchmate, ArmPhone, Memup, Kazam, ZTE, Odys, Jinga, Ginzzu,
+      iLife, Mobicel, Blu, Blaupunkt
+    #6448 Detect Crazy Browser
+
+-------------------------------------------------------------------
+Tue Nov 24 11:58:12 UTC 2020 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.0.0
+  Too many changes to list here. See instead:
+  https://github.com/matomo-org/matomo/releases/tag/4.0.0
+
+- Fix boo#1162178:
+  Add matomo-package_update.patch to not show warning message when
+  auto_update_enable es disable through package installation.
+
+-------------------------------------------------------------------
 Mon Oct  5 05:56:59 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.14.1
