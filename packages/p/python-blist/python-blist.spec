@@ -1,7 +1,7 @@
 #
 # spec file for package python-blist
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,6 +26,8 @@ Group:          Development/Languages/Python
 URL:            http://stutzbachenterprises.com/blist/
 Source:         https://files.pythonhosted.org/packages/source/b/blist/blist-%{version}.tar.gz
 Patch0:         0001-Fix-compatibility-for-Python-3.7.patch
+# PATCH-FIX-UPSTREAM blist-pr91-py39.patch -- gh#DanielStutzbach/blist/pull/91.patch
+Patch1:         https://github.com/DanielStutzbach/blist/pull/91.patch#/blist-pr91-py39.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -39,8 +41,7 @@ provides sortedlist, sortedset, weaksortedlist,
 weaksortedset, sorteddict, and btuple types.
 
 %prep
-%setup -q -n blist-%{version}
-%patch0 -p1
+%autosetup -p1 -n blist-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -51,7 +52,15 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+%{python_expand # arcane test suite setup: needs the built module in the same tree as the test files
+mkdir blist-test-%{$python_bin_suffix}
+pushd blist-test-%{$python_bin_suffix}
+cp -r %{buildroot}%{$python_sitearch}/blist ./
+cp -r ../blist/test blist/
+cp ../test_blist.py ./
+$python -m unittest -v test_blist.test_suite
+popd
+}
 
 %files %{python_files}
 %license LICENSE

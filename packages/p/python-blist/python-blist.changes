@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 31 10:32:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add blist-pr91-py39.patch for compatibility with Python 3.9
+  gh#DanielStutzbach/blist#91
+- Replace obsoleted setup.py test call
+
+-------------------------------------------------------------------
 Tue Aug  7 07:54:37 UTC 2018 - tchvatal@suse.com
 
 - Add patch to build with python3.7
