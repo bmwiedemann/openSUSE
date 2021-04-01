@@ -1,5 +1,5 @@
 #
-# spec file for package %{package_name}
+# spec file for package mvapich2
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -19,8 +19,8 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname mvapich2
-%define vers  2.3.4
-%define _vers 2_3_4
+%define vers  2.3.5
+%define _vers 2_3_5
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
@@ -253,9 +253,8 @@ Patch2:         mvapich2-arm-support.patch
 Patch3:         0001-Drop-GCC-check.patch
 Patch4:         reproducible.patch
 Patch5:         fix-missing-return-code.patch
-Patch6:         wrapper-revert-ldflag-order-change.patch
-Patch7:         mvapich2-fix-double-free.patch
-Patch8:         mvapich2-remove-deprecated-sys_siglist.patch
+Patch6:         mvapich2-remove-deprecated-sys_siglist.patch
+Patch7:         rdma_find_network_type-return-MV2_NETWORK_CLASS_UNKNOWN-when-dev_list-is-freed.patch
 
 ## Armv7 specific patches
 # PATCH-FIX-UPSTREAM 0001-Drop-real128.patch (https://github.com/pmodels/mpich/issues/4005)
@@ -396,8 +395,7 @@ is based on MPICH2 and MVICH. This package contains the static libraries
 %patch4 -p1
 %patch5
 %patch6
-%patch7
-%patch8
+%patch7 -p1
 
 # Only apply these patches on Armv7
 %ifarch armv7hl

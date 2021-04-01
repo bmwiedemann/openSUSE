@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Mar 24 10:06:26 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Update mvapich2 to 2.3.5.
+    * Enhanced performance for MPI_Allreduce and MPI_Barrier
+    * Support collective offload using Mellanox's SHARP for Barrier
+        - Enhanced tuning framework for Barrier using SHARP
+    * Remove dependency on underlying libibverbs, libibmad, libibumad, and
+      librdmacm libraries using dlopen
+    * Add support for Broadcom NetXtreme RoCE HCA
+        - Enhanced inter-node point-to-point support
+    * Support architecture detection for Fujitsu A64fx processor
+    * Enhanced point-to-point and collective tuning for Fujitsu A64fx processor
+    * Enhanced point-to-point and collective tuning for AMD ROME processor
+    * Add support for process placement aware HCA selection
+        - Add "MV2_PROCESS_PLACEMENT_AWARE_HCA_MAPPING" environment variable to
+          enable process placement aware HCA mapping
+    * Add support to auto-detect RoCE HCAs and auto-detect GID index
+    * Add support to use RoCE/Ethernet and InfiniBand HCAs at the same time
+    * Add architecture-specific flags to improve performance of certain CUDA
+      operations
+        - Thanks to Chris Chambreau @LLNL for the report
+    * Read MTU and maximum outstanding RDMA operations from the device
+    * Improved performance and scalability for UD-based communication
+    * Update maximum HCAs supported by default from 4 to 10
+    * Enhanced collective tuning for Frontera@TACC, Expanse@SDSC,
+      Ookami@StonyBrook, and bb5@EPFL
+    * Enhanced support for SHARP v2.1.0
+    * Generalize code for GPU support
+- Obsolete: wrapper-revert-ldflag-order-change.patch.
+- Replace: mvapich2-fix-double-free.patch by
+  rdma_find_network_type-return-MV2_NETWORK_CLASS_UNKNOWN-when-dev_list-is-freed.patch
+  
+-------------------------------------------------------------------
 Thu Feb 18 04:46:04 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Re-add mvapich2-fix-double-free.patch as the bug was
