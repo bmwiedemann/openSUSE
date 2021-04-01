@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 29 10:14:23 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not display "No widget..." error messages when opening
+  a firewall zone widget (bsc#1184115).
+- 4.3.11
+
+-------------------------------------------------------------------
 Fri Feb 12 14:31:50 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Adapted unit test to recent changes in Yast::Report (related to
