@@ -64,4 +64,12 @@ Add missing BuildRequires</comment>
     <comment></comment>
     <requestid>864168</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ee172e24e80559541e0a5dbe9541ffa0</srcmd5>
+    <version>8.1.0</version>
+    <time>1617279496</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882538</requestid>
+  </revision>
 </revisionlist>

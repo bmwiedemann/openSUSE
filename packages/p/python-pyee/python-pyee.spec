@@ -35,8 +35,8 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  (python38-pytest-trio if python38-base else (python3-pytest-trio if python3-base >= 3.7))
-BuildRequires:  (python38-trio if python38-base else (python3-trio if python3-base >= 3.7))
+BuildRequires:  %{python_module pytest-trio if %python-base >= 3.7}
+BuildRequires:  %{python_module trio if %python-base >= 3.7}
 # /SECTION
 %python_subpackages
 
