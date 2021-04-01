@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Mar 22 11:57:09 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.19.1:
+  * Lots of new features, bug fixes and improvements, see
+    https://wiki.freecadweb.org/Release_notes_0.19
+- Drop upstream patches:
+  * 0001-Fix-build-with-pyside2-shiboken2-5.12.1.patch
+  * 0003-qt-5.14.patch
+  * update-swigpyrunin-for-python-3.8.patch
+  * 0001-fem-use-time.process_time-instead-of-removed-time.cl.patch
+  * fix_qt_5.15_build.patch
+  * 0001-boost-1.73.0-The-practice-of-declaring-the-Bind-plac.patch
+  * 0001-Fix-ODR-violation-correct-Ui_TaskSketcherGeneral-nam.patch
+  * 0001-Gui-skip-ci-fix-Wodr.patch
+  * 0001-Part-Import-skip-ci-disable-use-of-Message_ProgressI.patch
+  * 0001-import-Hotfix-for-build-failure-from-bad-debug-code.patch
+  * 0001-partdesign-fix-failing-tapered-hole-test.patch
+  * 0001-add-missing-std-namespace-to-build-on-Debian-10.patch
+- Rebase fix-smesh-vtk9.patch
+
+-------------------------------------------------------------------
 Tue Feb 23 19:05:09 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build and tests with OCCT 7.5, add
