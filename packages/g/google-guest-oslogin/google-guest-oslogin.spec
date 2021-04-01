@@ -17,7 +17,7 @@
 
 
 Name:           google-guest-oslogin
-Version:        20210108.00
+Version:        20210316.00
 Release:        0
 Summary:        Google Cloud Guest OS Login
 License:        Apache-2.0

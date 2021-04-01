@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 31 12:57:04 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210316.00 (bsc#1183414, bsc#1183415)
+  * call correct function in pwenthelper (#53)
+
+-------------------------------------------------------------------
 Tue Jan 12 10:43:53 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20210108.00

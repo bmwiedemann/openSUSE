@@ -41,4 +41,13 @@
   * remove old unused workflow files (#49) (forwarded request 862594 from glaubitz)</comment>
     <requestid>862627</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>72d3a15b91a7826a54dfa6fbb7b06f88</srcmd5>
+    <version>20210316.00</version>
+    <time>1617279475</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 20210316.00 (bsc#1183414, bsc#1183415)
+  * call correct function in pwenthelper (#53) (forwarded request 882389 from glaubitz)</comment>
+    <requestid>882394</requestid>
+  </revision>
 </revisionlist>
