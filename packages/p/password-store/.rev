@@ -135,4 +135,12 @@
   * preserve timestamps of fish completion files during installation</comment>
     <requestid>693156</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c931172fa27e3eac6fcd690c4c86009c</srcmd5>
+    <version>1.7.3+git20210216.918992c</version>
+    <time>1617279456</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882205</requestid>
+  </revision>
 </revisionlist>
