@@ -354,4 +354,14 @@ various additional features.</comment>
   * Union</comment>
     <requestid>877725</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c78fef0fcf30ad786ae518d90f573e96</srcmd5>
+    <version>1.55.0</version>
+    <time>1617279485</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.55.0
+  * See https://rclone.org/changelog/#v1-55-0-2021-03-31 for the
+    complete changelog.</comment>
+    <requestid>882505</requestid>
+  </revision>
 </revisionlist>
