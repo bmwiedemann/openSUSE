@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Mar 30 09:52:07 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.26.6
+  * Improved: translations
+  * Changed: touch screen input now handled explicitly, not as
+    simulated mouse
+    Initial set of support:
+    + pinch gesture for zooming
+    + tap gesture for setting cursor
+    + tap & hold gesture for context menu
+    + flick gesture for scrolling
+  * Fixed: cursor after replacing inserts always positioned after
+    new content
+  * Fixed: cursor no longer displays value for 0x20 byte in some
+    non-positions
+  * Fixed: "Cut" menu entry now disabled in overwrite mode, being
+    ignored action
+  * Fixed: modification status icons update on app color theme
+    change
+  * Fixed: current cursor colors updated right after app color
+    theme change
+
+-------------------------------------------------------------------
 Wed Feb  3 10:19:47 UTC 2021 - wbauer@tmo.at
 
 - Update to 0.26.5

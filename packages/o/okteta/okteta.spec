@@ -22,7 +22,7 @@
 %define Okteta_sover 3
 %bcond_without lang
 Name:           okteta
-Version:        0.26.5
+Version:        0.26.6
 Release:        0
 Summary:        Hex Editor
 License:        GPL-2.0-only AND GFDL-1.2-only
