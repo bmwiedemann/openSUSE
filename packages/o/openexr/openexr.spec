@@ -28,7 +28,7 @@
 %define sonum 25
 %global so_suffix -2_5
 Name:           %{flavor}
-Version:        2.5.4
+Version:        2.5.5
 Release:        0
 %if "%{flavor}" == "openexr"
 Summary:        Utilities for working with HDR images in OpenEXR format

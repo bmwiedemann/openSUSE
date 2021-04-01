@@ -579,4 +579,16 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <user>dimstar_suse</user>
     <comment>Emergency fix for RPM 4.16 compatibility; no changelog entry</comment>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>c3065f7d83211e2258b10c5b6760c4a5</srcmd5>
+    <version>2.5.5</version>
+    <time>1617279389</time>
+    <user>RBrownSUSE</user>
+    <comment>- version update to 2.5.5
+  Patch release with various bug/sanitizer/security fixes, primarily
+  related to reading corrupted input files, but also a fix for universal
+  build support on macOS.
+- see CHANGES.md for details</comment>
+    <requestid>882342</requestid>
+  </revision>
 </revisionlist>

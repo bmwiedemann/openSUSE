@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 31 12:04:02 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.5.5
+  Patch release with various bug/sanitizer/security fixes, primarily
+  related to reading corrupted input files, but also a fix for universal
+  build support on macOS.
+- see CHANGES.md for details
+
+-------------------------------------------------------------------
 Thu Jan  7 11:00:00 UTC 2021 - pgajdos@suse.com
 
 - merge also baselibs.conf
