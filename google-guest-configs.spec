@@ -1,7 +1,7 @@
 #
 # spec file for package google-guest-configs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           google-guest-configs
-Version:        20200731.00
+Version:        20210317.00
 Release:        0
 Summary:        Google Cloud Guest Configs
 License:        Apache-2.0
 Group:          System/Daemons
 URL:            https://github.com/GoogleCloudPlatform/guest-configs
 Source0:        %{name}-%{version}.tar.gz
-Source1:        google-optimize-local-ssd.service
-Source2:        google-set-multiqueue.service
 BuildRequires:  systemd-rpm-macros
 %if 0%{?suse_version} && 0%{?suse_version} <= 1315
 BuildRequires:  pkgconfig(udev)
@@ -50,27 +48,10 @@ mkdir -p %{buildroot}%{_sysconfdir}/rsyslog.d
 cp -av src/etc/rsyslog.d/* %{buildroot}%{_sysconfdir}/rsyslog.d/
 mkdir -p %{buildroot}%{_sysconfdir}/sysctl.d
 cp -av src/etc/sysctl.d/* %{buildroot}%{_sysconfdir}/sysctl.d/
-mkdir -p %{buildroot}%{_unitdir}
-cp -av %{SOURCE1} %{buildroot}%{_unitdir}/
-cp -av %{SOURCE2} %{buildroot}%{_unitdir}/
 mkdir -p %{buildroot}%{_udevrulesdir}
 cp -av src/lib/udev/rules.d/* %{buildroot}%{_udevrulesdir}/
 mkdir -p %{buildroot}%{_bindir}
 cp -av src/usr/bin/* %{buildroot}%{_bindir}/
-mkdir -p %{buildroot}%{_sbindir}
-for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.service' $srv_name); ln -s service %{buildroot}%{_sbindir}/rc$rc_name; done
-
-%pre
-%service_add_pre google-optimize-local-ssd.service google-set-multiqueue.service
-
-%preun
-%service_del_preun google-optimize-local-ssd.service google-set-multiqueue.service
-
-%post
-%service_add_post google-optimize-local-ssd.service google-set-multiqueue.service
-
-%postun
-%service_del_postun google-optimize-local-ssd.service google-set-multiqueue.service
 
 %files
 %defattr(0644,root,root,0755)
@@ -85,8 +66,7 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 %config %{_sysconfdir}/modprobe.d/gce-blacklist.conf
 %config %{_sysconfdir}/rsyslog.d/*
 %config %{_sysconfdir}/sysctl.d/*
-%{_sbindir}/*
+%{_bindir}/*
 %{_udevrulesdir}/*
-%{_unitdir}/*
 
 %changelog
