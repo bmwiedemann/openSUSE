@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 29 22:17:28 UTC 2021 - Mike Latimer <mlatimer@suse.com>
+
+- Update to 3.2.1
+  * Deployment: Fix snapshot controller deployment (#1823)
+  * RBD: Fix namespace json parser (#1822)
+
+-------------------------------------------------------------------
 Thu Mar  4 11:06:45 UTC 2021 - Stefan Haas <stefan.haas@suse.com>
 
 - Removed Patch use_attacher_v2.1.0.patch as we use upstream
@@ -21,16 +28,30 @@ Thu Mar  4 11:06:45 UTC 2021 - Stefan Haas <stefan.haas@suse.com>
   * Make CSI log level configurable for the helm charts 
 
 -------------------------------------------------------------------
+Tue Dec  1 01:11:32 UTC 2020 - Mike Latimer <mlatimer@suse.com>
+
+- Update to 3.1.2
+  * CephFS: Fix wrong error check in CreateVolume rollback action
+  * CephFS: Fix issues in cephfs clone
+  * CephFS: Check only the stderror message for umount
+  * RBD: Add minsnapshotsonimage flag to have a soft limit for flattening
+    to create clones faster on a single rbd image.
+  * Journal: Fix reading omaps from objects with large key
+  * CI: Fix shellcheck in test-go
+
+-------------------------------------------------------------------
 Tue Nov 24 14:14:16 UTC 2020 - Mike Latimer <mlatimer@suse.com>
 
 - Use csi-attacher sidecar version v2.1.0 in helm charts due to
   build challenges with v2.1.1. (No loss of functionality with this
   change.) 
+  + Add use_attacher_v2.1.0.patch
 
 -------------------------------------------------------------------
 Wed Nov 18 02:53:20 UTC 2020 - Mike Latimer <mlatimer@suse.com>
 
 - Use upstream default CSI and sidecar versions in the helm charts
+  - Drop csi-images-SUSE.patch
 - Add examples directory into cephfs and rbd helm charts
 
 -------------------------------------------------------------------
