@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 31 16:04:19 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.3.0:
+  * changelog from 0.2 to 0.3: 
+    https://github.com/parallaxsecond/parsec-tool/compare/0.2.0...0.3.0
+  * changelog from skipped 0.1 to 0.2: 
+    https://github.com/parallaxsecond/parsec-tool/compare/0.1.0...0.2.0
+
+-------------------------------------------------------------------
 Thu Nov 26 16:39:03 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - BuildRequire protobuf-devel for protoc
