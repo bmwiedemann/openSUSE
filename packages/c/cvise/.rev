@@ -523,4 +523,13 @@
   * Add new clang pass: class-to-struct (#50).</comment>
     <requestid>881309</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>005c1480cbcf18a62a2cc9f6866fb130</srcmd5>
+    <version>2.3.0+git.20210331.352e93f</version>
+    <time>1617279467</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 2.3.0+git.20210331.352e93f:
+  * Repeat clang_delta_std detection for each test-case.</comment>
+    <requestid>882326</requestid>
+  </revision>
 </revisionlist>
