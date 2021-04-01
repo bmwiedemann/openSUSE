@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 26 20:24:52 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Fix name of compat library package (bsc#1184057).
+- Remove a non-existent Recommends: in non-HPC package.
+
+-------------------------------------------------------------------
 Thu Feb 25 09:48:50 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - updated to version 5.3.5, changes are

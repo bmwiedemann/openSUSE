@@ -183,4 +183,13 @@
     <comment></comment>
     <requestid>875418</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>6d44ecc20fd3f06afc59f50fbb322293</srcmd5>
+    <version>5.3.5</version>
+    <time>1617279423</time>
+    <user>RBrownSUSE</user>
+    <comment>- Fix name of compat library package (bsc#1184057).
+- Remove a non-existent Recommends: in non-HPC package. (forwarded request 881593 from eeich)</comment>
+    <requestid>881878</requestid>
+  </revision>
 </revisionlist>

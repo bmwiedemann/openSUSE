@@ -503,7 +503,7 @@ C interfaces, and can interface with ordering tools such as Scotch.
 Summary:        A MUltifrontal Massively Parallel Sparse direct Solver
 Group:          System/Libraries
  %if %{without hpc}
-%{?with_mpi:Recommends:       %{name}-%{so_ver}-compat = %{version}}
+%{?with_mpi:Recommends:       %{libname}-compat = %{version}}
 # Explicitly include this library here:
 # the solver doesn't have enough information to pick the correct MPI flavor
 %{?with_mpi:Requires:         libblacs2-%{mpi_family}%{?mpi_ext}}
@@ -525,7 +525,7 @@ This package contains the sequential library%{?scotch: with Scotch support enabl
 This package contains the parallel library%{?with_mpi: with %{mpi_family}%{?mpi_ver}}%{?scotch: with Scotch support enabled}.
 %endif
 
-%package %{so_ver}-compat
+%package -n %{libname}-compat
 Summary:        A MUltifrontal Massively Parallel Sparse direct Solver
 Group:          System/Libraries
 Requires:       lib%{pname}%{?scotch:-scotch}%{so_ver} = %{version}
@@ -535,7 +535,7 @@ BuildRequires:  %{pname}%{?scotch:-scotch}-devel-static = %version
 BuildRequires:  lib%{pname}%{?scotch:-scotch}%{so_ver} = %{version}
 %endif
 
-%description %{so_ver}-compat
+%description -n %{libname}-compat
 MUMPS implements a direct solver for large sparse linear systems, with a
 particular focus on symmetric positive definite matrices.  It can
 operate on distributed matrices e.g. over a cluster.  It has Fortran and
@@ -604,7 +604,6 @@ Headers and development files for %{package_name}.
 Summary:        Files needed for developing mumps based applications
 Group:          Development/Libraries/Parallel
 Requires:       %{package_name}-devel
-%{?with_mpi:Recommends:       %{name}-%{so_ver}-compat-static = %{version}}
 
 %description devel-static
 MUMPS implements a direct solver for large sparse linear systems, with a
@@ -875,7 +874,7 @@ rm -rf examples/*.o examples/*simpletest examples/*_save_restore examples/c_exam
 %endif
 
 %if %{with mpi} && %{without hpc}
-%files  %{so_ver}-compat
+%files -n %{libname}-compat
  %if %{without scotch}
 %{my_libdir}/lib*_seq.so.*
  %else # scotch
