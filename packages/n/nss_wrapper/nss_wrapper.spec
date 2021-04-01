@@ -1,7 +1,7 @@
 #
 # spec file for package nss_wrapper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 ############################# NOTE ##################################
 
 Name:           nss_wrapper
-Version:        1.1.10
+Version:        1.1.11
 Release:        0
 
 Summary:        A wrapper for the user, group and hosts NSS API

@@ -109,4 +109,14 @@
 </comment>
     <requestid>786394</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>77046535a05586f85716287afce34648</srcmd5>
+    <version>1.1.11</version>
+    <time>1617279399</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.1.11
+  * https://gitlab.com/cwrap/nss_wrapper/-/blob/nss_wrapper-1.1.11/CHANGELOG
+</comment>
+    <requestid>882380</requestid>
+  </revision>
 </revisionlist>
