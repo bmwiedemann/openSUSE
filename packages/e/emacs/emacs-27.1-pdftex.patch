@@ -2,16 +2,16 @@
  etc/refcards/Makefile         |    4 ++--
  etc/refcards/cs-dired-ref.tex |    3 ++-
  etc/refcards/cs-survival.tex  |    3 ++-
- etc/refcards/fr-survival.tex  |    1 -
- etc/refcards/pl-refcard.tex   |    1 -
+ etc/refcards/fr-survival.tex  |    2 +-
+ etc/refcards/pl-refcard.tex   |    2 +-
  etc/refcards/ru-refcard.tex   |    1 +
  etc/refcards/sk-dired-ref.tex |    3 ++-
  etc/refcards/sk-survival.tex  |    3 ++-
- etc/refcards/survival.tex     |    1 -
- 9 files changed, 11 insertions(+), 9 deletions(-)
+ etc/refcards/survival.tex     |    2 +-
+ 9 files changed, 14 insertions(+), 9 deletions(-)
 
 --- etc/refcards/Makefile
-+++ etc/refcards/Makefile	2020-08-12 06:51:26.826803167 +0000
++++ etc/refcards/Makefile	2021-03-25 15:07:14.519265674 +0000
 @@ -231,12 +231,12 @@ pl-refcard.pdf: $(pl_refcard_deps)
  	  ! pdfmex --version > /dev/null 2> /dev/null; then \
  	  echo "No mex format found."; false; \
@@ -28,7 +28,7 @@
  	dvips -t a4 -o $@ pl-refcard.dvi
  
 --- etc/refcards/cs-dired-ref.tex
-+++ etc/refcards/cs-dired-ref.tex	2020-08-11 13:31:00.597050301 +0000
++++ etc/refcards/cs-dired-ref.tex	2021-03-25 15:07:14.519265674 +0000
 @@ -108,7 +108,8 @@ see the Emacs distribution, or {\tt http
    \font\eightbf=csbx8
    \font\eightit=csti8
@@ -40,7 +40,7 @@
    \textfont0=\eightrm
    \textfont1=\eightmi
 --- etc/refcards/cs-survival.tex
-+++ etc/refcards/cs-survival.tex	2020-08-11 13:31:36.644404071 +0000
++++ etc/refcards/cs-survival.tex	2021-03-25 15:07:14.519265674 +0000
 @@ -84,7 +84,8 @@
  \font\eightbf=csbx8
  \font\eightit=csti8
@@ -52,21 +52,23 @@
  \font\eightss=cmss8
  \textfont0=\eightrm
 --- etc/refcards/fr-survival.tex
-+++ etc/refcards/fr-survival.tex	2020-08-11 12:38:55.765034599 +0000
-@@ -1,4 +1,3 @@
++++ etc/refcards/fr-survival.tex	2021-03-25 15:08:33.797766981 +0000
+@@ -1,4 +1,4 @@
 -%&tex
++%
  % Title:  GNU Emacs Survival Card
  
- % Copyright (C) 2000--2020 Free Software Foundation, Inc.
+ % Copyright (C) 2000--2021 Free Software Foundation, Inc.
 --- etc/refcards/pl-refcard.tex
-+++ etc/refcards/pl-refcard.tex	2020-08-11 12:46:13.525205665 +0000
-@@ -1,4 +1,3 @@
++++ etc/refcards/pl-refcard.tex	2021-03-25 15:08:53.917386707 +0000
+@@ -1,4 +1,4 @@
 -%&mex
++%
  % Reference Card for GNU Emacs
  
- % Copyright (C) 1999, 2001--2020 Free Software Foundation, Inc.
+ % Copyright (C) 1999, 2001--2021 Free Software Foundation, Inc.
 --- etc/refcards/ru-refcard.tex
-+++ etc/refcards/ru-refcard.tex	2020-08-12 07:46:56.239620140 +0000
++++ etc/refcards/ru-refcard.tex	2021-03-25 15:07:14.519265674 +0000
 @@ -25,6 +25,7 @@
  \documentclass[10pt]{article}
  \usepackage{multicol,tabularx}
@@ -76,7 +78,7 @@
  \usepackage[utf8]{inputenc}
  \usepackage[english,russian]{babel}
 --- etc/refcards/sk-dired-ref.tex
-+++ etc/refcards/sk-dired-ref.tex	2020-08-11 13:31:20.796688178 +0000
++++ etc/refcards/sk-dired-ref.tex	2021-03-25 15:07:14.519265674 +0000
 @@ -109,7 +109,8 @@ see the Emacs distribution, or {\tt http
    \font\eightbf=csbx8
    \font\eightit=csti8
@@ -88,7 +90,7 @@
    \textfont0=\eightrm
    \textfont1=\eightmi
 --- etc/refcards/sk-survival.tex
-+++ etc/refcards/sk-survival.tex	2020-08-11 13:31:53.896093577 +0000
++++ etc/refcards/sk-survival.tex	2021-03-25 15:07:14.519265674 +0000
 @@ -86,7 +86,8 @@
  \font\eightbf=csbx8
  \font\eightit=csti8
@@ -100,9 +102,10 @@
  \font\eightss=cmss8
  \textfont0=\eightrm
 --- etc/refcards/survival.tex
-+++ etc/refcards/survival.tex	2020-08-11 12:38:52.405094664 +0000
-@@ -1,4 +1,3 @@
++++ etc/refcards/survival.tex	2021-03-25 15:07:57.346455997 +0000
+@@ -1,4 +1,4 @@
 -%&tex
++%
  % Title:  GNU Emacs Survival Card
  
- % Copyright (C) 2000--2020 Free Software Foundation, Inc.
+ % Copyright (C) 2000--2021 Free Software Foundation, Inc.

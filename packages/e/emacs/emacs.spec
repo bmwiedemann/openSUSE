@@ -128,7 +128,7 @@ BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xxf86vm)
 URL:            http://www.gnu.org/software/emacs/
-Version:        27.1
+Version:        27.2
 Release:        0
 Summary:        GNU Emacs Base Package
 License:        GPL-3.0-or-later
@@ -177,8 +177,6 @@ Patch23:        emacs-25.1-custom-fonts.patch
 Patch24:        emacs-25.2-ImageMagick7.patch
 Patch25:        emacs-26.1-xft4x11.patch
 Patch26:        emacs-27.1-pdftex.patch
-Patch27:        emacs-27.1-home.patch
-Patch28:        emacs-27.1-gif.patch
 Patch29:        emacs-27.1-Xauthority4server.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -258,7 +256,7 @@ Summary:        Info files for GNU Emacs
 Group:          Documentation/Other
 %if 0%{?suse_version} <= 1500
 Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
+Requires(preun):%install_info_prereq
 %endif
 BuildArch:      noarch
 
@@ -271,7 +269,7 @@ modes.
 Summary:        Generate Tag Files for Use with Emacs
 Group:          Development/Tools/Navigators
 Requires(post): coreutils update-alternatives
-Requires(preun): coreutils update-alternatives
+Requires(preun):coreutils update-alternatives
 Provides:       ctags:/usr/bin/etags
 
 %description -n etags
@@ -295,8 +293,6 @@ and most assembler-like syntaxes.
 %patch24 -p1 -b .imag
 %patch25 -p0 -b .xft
 %patch26 -p0 -b .fmt
-%patch27 -p0 -b .home
-%patch28 -p1 -b .crash
 %patch29 -p0 -b .xauth
 %patch   -p0 -b .0
 %if %{without tex4pdf}
@@ -630,7 +626,7 @@ find %{buildroot}%{_datadir}/emacs/%{version}/etc/ -name '*[a-z].[16]' | \
 rm -vf %{buildroot}%{_datadir}/emacs/%{version}/lisp/COPYING
 ln -sf ../etc/COPYING \
        %{buildroot}%{_datadir}/emacs/%{version}/lisp/COPYING
-# 
+#
 fdupes -q -r -1 %{buildroot}%{_datadir}/emacs/%{version}/etc/images/icons/ %{buildroot}%{_datadir}/icons/ |\
 xargs -n 2 | while read first second; do
     case "${first}" in
@@ -662,7 +658,7 @@ test -L usr/bin/emacs && rm -f usr/bin/emacs || true
 if test -e usr/share/emacs/site-lisp/auctex/font-latex.elc ; then
   owd=$(pwd)
   cd usr/share/emacs/site-lisp/auctex || exit 1
-  emacs -batch -no-site-file -no-init-file --eval '(setq load-path (cons "." load-path) 
+  emacs -batch -no-site-file -no-init-file --eval '(setq load-path (cons "." load-path)
     byte-compile-warnings nil
     TeX-lisp-directory "<none>"
     TeX-auto-global "<none>")' -f batch-byte-compile font-latex.el > /dev/null 2>&1
@@ -673,7 +669,7 @@ fi
 if test -e usr/share/emacs/site-lisp/auctex/font-latex.elc ; then
   owd=$(pwd)
   cd usr/share/emacs/site-lisp/auctex || exit 1
-  emacs -batch -no-site-file -no-init-file --eval '(setq load-path (cons "." load-path) 
+  emacs -batch -no-site-file -no-init-file --eval '(setq load-path (cons "." load-path)
     byte-compile-warnings nil
     TeX-lisp-directory "<none>"
     TeX-auto-global "<none>")' -f batch-byte-compile font-latex.el > /dev/null 2>&1
@@ -1680,6 +1676,7 @@ fi
 %{_datadir}/emacs/%{version}/etc/tutorials/TUTORIAL.th
 %{_datadir}/emacs/%{version}/etc/tutorials/TUTORIAL.translators
 %{_datadir}/emacs/%{version}/etc/tutorials/TUTORIAL.zh
+%{_datadir}/emacs/%{version}/etc/w32-feature.el
 %{_datadir}/emacs/%{version}/etc/yow.lines
 %dir %{_datadir}/emacs/%{version}/lisp/
 %{_datadir}/emacs/%{version}/lisp/COPYING
@@ -2880,6 +2877,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/org/org-pcomplete.elc
 %{_datadir}/emacs/%{version}/lisp/org/org-plot.elc
 %{_datadir}/emacs/%{version}/lisp/org/org-protocol.elc
+%{_datadir}/emacs/%{version}/lisp/org/org-refile.elc
 %{_datadir}/emacs/%{version}/lisp/org/org-src.elc
 %{_datadir}/emacs/%{version}/lisp/org/org-table.elc
 %{_datadir}/emacs/%{version}/lisp/org/org-tempo.elc
@@ -4430,6 +4428,7 @@ fi
 %{_datadir}/emacs/%{version}/lisp/org/org-pcomplete.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/org-plot.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/org-protocol.el%{ext_el}
+%{_datadir}/emacs/%{version}/lisp/org/org-refile.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/org-src.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/org-table.el%{ext_el}
 %{_datadir}/emacs/%{version}/lisp/org/org-tempo.el%{ext_el}
