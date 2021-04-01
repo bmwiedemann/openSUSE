@@ -1,7 +1,7 @@
 #
 # spec file for package bat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           bat
-Version:        0.17.1
+Version:        0.18.0
 Release:        0
 Summary:        A cat(1) clone with syntax highlighting and Git integration
-License:        MIT OR Apache-2.0
+License:        Apache-2.0 OR MIT
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/sharkdp/bat
 Source0:        https://github.com/sharkdp/bat/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
