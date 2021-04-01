@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 29 11:08:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.1:
+  * [sway] Added the "Use generic display names" preferences
+    switch (#143).
+
+-------------------------------------------------------------------
 Mon Mar 15 09:29:07 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.0:

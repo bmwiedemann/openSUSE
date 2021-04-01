@@ -99,4 +99,14 @@
     outputs only.</comment>
     <requestid>879122</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b9d08258e7efdec163a280bc3ae6afcf</srcmd5>
+    <version>1.9.1</version>
+    <time>1617279422</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.9.1:
+  * [sway] Added the &quot;Use generic display names&quot; preferences
+    switch (#143).</comment>
+    <requestid>881838</requestid>
+  </revision>
 </revisionlist>
