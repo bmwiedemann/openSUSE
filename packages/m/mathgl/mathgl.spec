@@ -69,8 +69,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
 BuildRequires:  gsl-devel
 BuildRequires:  hdf5-devel
-BuildRequires:  libQt5WebKit5-devel
-BuildRequires:  libQt5WebKitWidgets-devel
 BuildRequires:  libharu-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel

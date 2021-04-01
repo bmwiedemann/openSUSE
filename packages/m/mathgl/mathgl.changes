@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 28 18:35:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the unneeded WebKit build requirements.
+  '-Denable-json-sample=off' disables the WebKit dependency.
+
+-------------------------------------------------------------------
 Mon Mar 22 23:53:58 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable octave bindings: no longer compatible with any
