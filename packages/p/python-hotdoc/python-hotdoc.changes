@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Mar 30 09:40:25 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.13.3:
+  + No changelog
+  + gi_extension: don't ignore callbacks in structs
+  + gi: Add class structure fields as children of the
+    GIInterfaceSymbol
+  + symbols: Do not override field symbol comment with None
+  + gi: Add class structure fields as children of the GIClassSymbol
+  + aliases: fix link resolution
+
+- 0.13.2 release
+  + Update theme submodule
+  + ProxySymbol: do not override the title of the proxied symbol
+  + symbols: not all children symbols need formatting
+  + templates: check-in forgotten action prototypes
+
+- 0.13.1 release
+  + setup.py: distribute comment_on_github assets
+
+- 0.13.0 release
+  + Update theme submodule
+  + Implement a separate symbol type for action signals
+  + gst: make use of gi-extension languages
+  + add frozen list of used packages via pip-compile
+  + setup.py: remove check on __name__ == '__main__'
+  + drop dependency on xdg
+  + future-proof networkx dependency by dropping explicit pinning
+  + fix DeprecationWarnings for collections.abc
+  + unpin wheezy.template dependency
+  + remove unneeded pin on python-pkgconfig version
+  + CI: replace travis with github workflow
+  + gi: remove FundamentalSymbol
+  + Fix GitHub capitalization on "Edit on GitHub button"
+  + Update networkx to 2.5
+  + gi_extension: fix page gi-languages
+  + search_module: don't consider '-' a word separator
+  + Add comment on github extension
+  + Update theme submodule ￼…
+  + Update theme submodule
+  + license_extension: allow theme and extension to advertise
+    licensing
+  + search_module: fix context id identification
+  + gtk_doc: Support annotation lines ended with colons
+  + database: Allow aliases to have the same name as a real symbol
+  + gst: Use plugin name to reference plugins
+  + gst: Move other class types to their own pages
+  + gst: Fix previous commit that shadow 'prop' variable by mistake
+  + gst: Associate objects with their children and plugins with
+    other types
+  + check_since_markers: remove stray print
+  + gi: associate klass with its chilren symbols
+
+- Remove patch which is no longer needed:
+  * remove-dependency-on-python-xdg.patch
+
+-------------------------------------------------------------------
 Sat Mar 20 00:13:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Avoid have-choice with upcoming python39 flavor: Only provide the

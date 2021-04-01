@@ -20,14 +20,13 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-hotdoc
-Version:        0.12.2
+Version:        0.13.3
 Release:        0
 Summary:        A documentation tool micro-framework
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Doc Generators
 URL:            https://github.com/hotdoc/hotdoc
 Source:         https://files.pythonhosted.org/packages/source/h/hotdoc/hotdoc-%{version}.tar.gz
-Patch0:         remove-dependency-on-python-xdg.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lxml}
@@ -56,9 +55,8 @@ Requires:       python-appdirs
 Requires:       python-cchardet
 Requires:       python-dbus-deviation >= 0.4.0
 Requires:       python-lxml
-Requires:       python-networkx >= 1.11
+Requires:       python-networkx >= 2.5
 Requires:       python-pkgconfig >= 1.1.0
-Requires:       python-pyxdg
 Requires:       python-schema
 Requires:       python-setuptools
 Requires:       python-toposort >= 1.4
@@ -76,7 +74,6 @@ with prism, etc.
 
 %prep
 %setup -q -n hotdoc-%{version}
-%patch0 -p1
 sed -i -e "s/wheezy.template==/wheezy.template>=/" setup.py
 sed -i -e "s/pkgconfig==/pkgconfig>=/" setup.py
 sed -i -e "s/networkx==/networkx>=/" setup.py
