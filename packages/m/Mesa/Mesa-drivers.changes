@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 30 19:00:03 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 20.3.5
+  * fith bugfix release for the 20.3 branch
+  * This is a quite large release with a huge number of fixes in it,
+    and is the last planned release for the 20.3.x series. Radv and
+    ACO dominate the changes for this release, but there are some
+    other things mixed in there.
+
+-------------------------------------------------------------------
 Mon Feb  1 10:50:16 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 20.3.4

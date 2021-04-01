@@ -4382,4 +4382,17 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   ppc64 due to this patch (bsc#1181439)</comment>
     <requestid>868345</requestid>
   </revision>
+  <revision rev="401" vrev="273">
+    <srcmd5>702c9ce9fea0e1f6bdedfa37d3790f72</srcmd5>
+    <version>unknown</version>
+    <time>1617279375</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 20.3.5
+  * fith bugfix release for the 20.3 branch
+  * This is a quite large release with a huge number of fixes in it,
+    and is the last planned release for the 20.3.x series. Radv and
+    ACO dominate the changes for this release, but there are some
+    other things mixed in there.</comment>
+    <requestid>882223</requestid>
+  </revision>
 </revisionlist>
