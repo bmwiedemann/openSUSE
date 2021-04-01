@@ -23,7 +23,7 @@
 %bcond_with     examples
 %bcond_with     tests
 Name:           %{_oname}-%{_legacy}
-Version:        1.2.12
+Version:        1.2.13
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause
@@ -110,7 +110,6 @@ Documentation for the libtorrent-rasterbar package.
 %autosetup -p1 -n %{_oname}-%{version}
 
 %build
-export CXXFLAGS="-std=c++14"
 %cmake \
    -DCMAKE_INSTALL_LIBDIR=%{_lib} \
 %if %{with tests}
