@@ -1,7 +1,7 @@
 #
 # spec file for package python-eventlet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-eventlet
-Version:        0.29.1
+Version:        0.30.2
 Release:        0
 Summary:        Concurrent networking library for Python
 License:        MIT
@@ -28,32 +28,30 @@ Source:         https://files.pythonhosted.org/packages/source/e/eventlet/eventl
 # PATCH-FEATURE-UPSTREAM remove_nose.patch gh#eventlet/eventlet#638 mcepl@suse.com
 # Removes dependency on nose
 Patch0:         remove_nose.patch
-# PATCH-FIX-UPSTREAM newdnspython.patch gh#eventlet/eventlet#638 mcepl@suse.com
-# patch is from gh#rthalley/dnspython#519
+# PATCH-FIX-UPSTREAM newdnspython.patch mcepl@suse.com -- patch is from gh#rthalley/dnspython#519, discussion in gh#eventlet/eventlet#638
 Patch1:         newdnspython.patch
 # PATCH-FEATURE-UPSTREAM pr_639.patch gh#eventlet/eventlet#639 jayvdb@gmail.com
 Patch2:         pr_639.patch
 # Really remove the dependency on nose
 Patch3:         remove_nose_part_2.patch
-# PATCH-FIX-UPSTREAM -- gh#eventlet/eventlet#672 remove OpenSSL.tsafe
-Patch4:         pr_672-remove-OpenSSL-tsafe.patch
-BuildRequires:  %{python_module dnspython >= 1.15.0}
-BuildRequires:  %{python_module greenlet >= 0.3}
-BuildRequires:  %{python_module pyOpenSSL}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pyzmq}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.10.0}
-BuildRequires:  %{python_module testsuite}
 %if 0%{?suse_version} < 1550
 BuildRequires:  python2-monotonic >= 1.4
 %endif
 BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
+# SECTION TEST requirements
 # eventlet parses /etc/protocols which is not available in normal build envs
-# Tests
 BuildRequires:  sysconfig-netconfig
+BuildRequires:  %{python_module dnspython >= 1.15.0}
+BuildRequires:  %{python_module greenlet >= 0.3}
+BuildRequires:  %{python_module pyOpenSSL}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pyzmq}
+BuildRequires:  %{python_module six >= 1.10.0}
+BuildRequires:  %{python_module testsuite}
+# /SECTION
 Requires:       netcfg
 Requires:       python-dnspython >= 1.15.0
 Requires:       python-greenlet >= 0.3
@@ -78,9 +76,8 @@ interpreter, or as part of a larger application.
 %setup -q -n eventlet-%{version}
 %autopatch -p1
 
-sed -i "s|^#!.*||" eventlet/support/greendns.py # Fix non-executable script
-# https://github.com/eventlet/eventlet/issues/638
-sed -i "/assert num_readers/ i \    return" tests/__init__.py
+# Fix non-executable script
+sed -i '1{/^#!/ d}' eventlet/support/greendns.py
 
 %build
 %python_build
