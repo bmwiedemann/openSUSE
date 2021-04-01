@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>852140</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>267f2dd905846a054e153df93207b85e</srcmd5>
+    <version>0.9.0</version>
+    <time>1617279444</time>
+    <user>RBrownSUSE</user>
+    <comment>- Make it build again</comment>
+    <requestid>882123</requestid>
+  </revision>
 </revisionlist>
