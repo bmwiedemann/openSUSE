@@ -1,7 +1,7 @@
 #
 # spec file for package OpenShadingLanguage
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,13 @@
 %define oiio_major_minor_ver %(rpm -q --queryformat='%%{version}' OpenImageIO-devel | cut -d . -f 1-2)
 
 Name:           OpenShadingLanguage
-Version:        1.11.9.0
+Version:        1.11.12.0
 Release:        0
 Summary:        A language for programmable shading
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/imageworks/OpenShadingLanguage
-Source0:        https://github.com/imageworks/OpenShadingLanguage/archive/Release-%{version}.tar.gz#/%{name}-Release-%{version}.tar.gz
+Source0:        https://github.com/imageworks/OpenShadingLanguage/archive/Release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY-3.0.txt
 BuildRequires:  OpenEXR-devel
 BuildRequires:  bison
@@ -194,6 +194,7 @@ developing applications that use %{name}.
 find . -iname CMakeLists.txt -exec sed "-i" "-e s/COMMAND python/COMMAND python3/" "{}" \;
 
 %build
+%define _lto_cflags %{nil}
 %cmake \
       -DCMAKE_SKIP_RPATH:BOOL=TRUE \
       -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
