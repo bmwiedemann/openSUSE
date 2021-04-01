@@ -1,0 +1,45 @@
+diff --git a/hypothesis-python/tests/conjecture/test_utils.py b/hypothesis-python/tests/conjecture/test_utils.py
+index fbb837d69..e31868140 100644
+--- a/hypothesis-python/tests/conjecture/test_utils.py
++++ b/hypothesis-python/tests/conjecture/test_utils.py
+@@ -16,7 +16,6 @@
+ from collections import Counter
+ from fractions import Fraction
+ 
+-import numpy as np
+ import pytest
+ 
+ from hypothesis import (
+@@ -218,11 +217,13 @@ def test_combine_labels_is_distinct():
+ 
+ 
+ def test_invalid_numpy_sample():
++    np = pytest.importorskip("numpy")
+     with pytest.raises(InvalidArgument):
+         cu.check_sample(np.array([[1, 1], [1, 1]]), "array")
+ 
+ 
+ def test_valid_numpy_sample():
++    np = pytest.importorskip("numpy")
+     cu.check_sample(np.array([1, 2, 3]), "array")
+ 
+ 
+diff --git a/hypothesis-python/tests/ghostwriter/test_expected_output.py b/hypothesis-python/tests/ghostwriter/test_expected_output.py
+index 6cc9294e3..1e77c539a 100644
+--- a/hypothesis-python/tests/ghostwriter/test_expected_output.py
++++ b/hypothesis-python/tests/ghostwriter/test_expected_output.py
+@@ -27,13 +27,13 @@ import re
+ import sys
+ from typing import Sequence
+ 
+-import numpy
+ import pytest
+ 
+ import hypothesis
+ from hypothesis.extra import ghostwriter
+ from hypothesis.utils.conventions import not_set
+ 
++numpy = pytest.importorskip("numpy")
+ 
+ @pytest.fixture
+ def update_recorded_outputs(request):
