@@ -1,18 +1,36 @@
 -------------------------------------------------------------------
-Thu Mar 25 21:08:06 UTC 2021 - jason.record@suse.com
+Wed Mar 31 22:46:50 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes to version 1.0.2
+  + Mar 2021 New Security Announcement Patterns (79) for SUSE-SU-2021:0990-1 SUSE-SU-2021:0720-1 SUSE-SU-2021:0929-1 SUSE-SU-2021:0988-1 SUSE-SU-2021:0975-1 SUSE-SU-2021:0776-1 SUSE-SU-2021:0794-1 SUSE-SU-2021:0886-1 SUSE-SU-2021:0887-1 SUSE-SU-2021:0675-1 SUSE-SU-2021:0987-1 SUSE-SU-2021:0954-1 SUSE-SU-2021:0752-1 SUSE-SU-2021:0725-1 SUSE-SU-2021:0998-1 SUSE-SU-2021:0693-1 SUSE-SU-2021:0663-1 SUSE-SU-2021:0932-1 SUSE-SU-2021:0999-1 SUSE-SU-2021:0667-1 SUSE-SU-2021:0742-1 SUSE-SU-2021:0739-1 SUSE-SU-2021:0681-1 SUSE-SU-2021:0801-1 SUSE-SU-2021:0756-1 SUSE-SU-2021:0713-1 SUSE-SU-2021:0779-1 SUSE-SU-2021:0745-1 SUSE-SU-2021:0929-1 SUSE-SU-2021:0988-1 SUSE-SU-2021:0794-1 SUSE-SU-2021:0675-1 SUSE-SU-2020:2173-2 SUSE-SU-2021:0954-1 SUSE-SU-2021:0752-1 SUSE-SU-2021:0725-1 SUSE-SU-2021:0693-1 SUSE-SU-2021:0663-1 SUSE-SU-2021:0932-1 SUSE-SU-2021:0999-1 SUSE-SU-2021:0667-1 SUSE-SU-2021:0736-1 SUSE-SU-2021:0681-1 SUSE-SU-2021:0801-1 SUSE-SU-2021:0756-1 SUSE-SU-2021:0745-1 SUSE-SU-2021:0929-1 SUSE-SU-2021:0794-1 SUSE-SU-2021:0675-1 SUSE-SU-2020:2173-2 SUSE-SU-2021:0939-1 SUSE-SU-2021:0693-1 SUSE-SU-2021:0932-1 SUSE-SU-2021:0999-1 SUSE-SU-2021:0667-1 SUSE-SU-2021:0870-1 SUSE-SU-2021:0835-1 SUSE-SU-2021:0743-1 SUSE-SU-2021:0682-1 SUSE-SU-2021:0801-1 SUSE-SU-2021:0756-1 SUSE-SU-2021:0745-1 SUSE-SU-2021:0929-1 SUSE-SU-2021:0928-1 SUSE-SU-2021:0794-1 SUSE-SU-2021:0675-1 SUSE-SU-2020:2173-2 SUSE-SU-2021:0939-1 SUSE-SU-2021:0693-1 SUSE-SU-2021:0932-1 SUSE-SU-2021:0999-1 SUSE-SU-2021:0999-1 SUSE-SU-2021:0667-1 SUSE-SU-2021:0870-1 SUSE-SU-2021:0835-1 SUSE-SU-2021:0744-1 SUSE-SU-2021:0679-1 SUSE-SU-2021:0801-1 SUSE-SU-2021:0756-1
+- New regular patterns (4) for version 1.0.2
+  + sle12all/zerologon-000019713.py: Zerologon aka CVE-2020-1472 (bsc#1176579)
+  + sle12sp4/btrfscrash-124-000019638.py: System crash during a BTRFS maintenance task (bsc#1163508)
+  + sle12sp4/tcpdumpcore-000019666.py: Running tcpdump on a SLES12 SP4 System with Kernel 4.12.14-95.48-default may crash the system (bsc#1176579)
+  + sle12sp5/btrfscrash-125-000019638.py: System crash during a BTRFS maintenance task (bsc#1163508)
+
+-------------------------------------------------------------------
+Fri Mar 26 17:15:43 UTC 2021 - jason.record@suse.com
+
+- New regular patterns (2) for version 1.0.2
+  + sle12sp5/btrfscrash-125-000019638.py: System crash during a BTRFS maintenance task (bsc#1163508)
+  + sle12sp4/btrfscrash-124-000019638.py: System crash during a BTRFS maintenance task (bsc#1163508)
+
+-------------------------------------------------------------------
+Fri Mar 26 13:34:42 UTC 2021 - jason.record@suse.com
 
 - New regular patterns (5) for version 1.0.2
   + sle12sp5/bleedingtooth_125-000019735.py: BleedingTooth aka CVE-2020-12351, CVE-2020-12352, and CVE-2020-24490
   + sle12sp4/bleedingtooth_124-000019735.py: BleedingTooth aka CVE-2020-12351, CVE-2020-12352, and CVE-2020-24490
   + sle12sp3/bleedingtooth_123-000019735.py: BleedingTooth aka CVE-2020-12351, CVE-2020-12352, and CVE-2020-24490
   + sle12sp2/bleedingtooth_122-000019735.py: BleedingTooth aka CVE-2020-12351, CVE-2020-12352, and CVE-2020-24490
-  + sle12all/btrfscron-000019583.py: After upgrading to SLES 12 SP5 BTRFS cron jobs are not working anymore.
+  + sle12all/btrfscron-000019583.py: After upgrading to SLES 12 SP5 BTRFS cron jobs are not working anymore (bsc#1159891)
 
 -------------------------------------------------------------------
 Wed Mar 24 22:40:44 UTC 2021 - jason.record@suse.com
 
 - New regular patterns (2) for version 1.0.2
-  + sle12sp5/lscpu-000019784-12.py: lscpu segfaults on IBM Power8 - Assertion failed
+  + sle12sp5/lscpu-000019784-12.py: lscpu segfaults on IBM Power8 - Assertion failed (bsc#1175623)
   + sle12sp4/plymouth-000019595.py: plymouth hang - login to console not possible
 
 -------------------------------------------------------------------
