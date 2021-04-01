@@ -1,7 +1,7 @@
 #
 # spec file for package exempi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,42 +12,41 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define debug_package_requires libexempi3 = %{version}
+%define sonum 8
 Name:           exempi
-Version:        2.4.5
+Version:        2.5.2
 Release:        0
 Summary:        XMP support library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            http://libopenraw.freedesktop.org/wiki/Exempi
+URL:            https://libopenraw.freedesktop.org/wiki/Exempi
 Source0:        http://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.bz2
 Source1:        http://libopenraw.freedesktop.org/download/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+BuildRequires:  gcc-c++
+BuildRequires:  libexpat-devel
+BuildRequires:  pkg-config
+BuildRequires:  zlib-devel
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_test-devel
 %else
 BuildRequires:  boost-devel >= 1.33.0
 %endif
-BuildRequires:  gcc-c++
-BuildRequires:  libexpat-devel
-BuildRequires:  pkg-config
-BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Exempi is a library for XMP parsing and I/O. XMP is a kind of
 metadata for images and PDF.
 
-%package -n libexempi3
+%package -n libexempi%{sonum}
 Summary:        XMP support library
 Group:          System/Libraries
 
-%description -n libexempi3
+%description -n libexempi%{sonum}
 Exempi is a library for XMP parsing and I/O. XMP (Extensible Metadata
 Platform) facilitates embedding metadata in files using a subset of
 RDF. Most notably, XMP supports embedding metadata in PDF and many
@@ -67,7 +66,7 @@ This subpackage contains utilities from the Exempi project.
 Summary:        Development files for the Exempi XMP support library
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libexempi3 = %{version}
+Requires:       libexempi%{sonum} = %{version}
 
 %description -n libexempi-devel
 Exempi is a library for XMP metadata parsing and doing I/O with it.
@@ -80,37 +79,36 @@ with Exempi.
 
 %build
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
-%configure \
-  --disable-static
-make %{?_smp_mflags} V=1
+%configure
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot} -type f -name "*.a" -delete -print
 
 %check
 %if ! 0%{?qemu_user_space_build}
-make %{?_smp_mflags} check
+%make_build check
 %endif
 
-%post -n libexempi3 -p /sbin/ldconfig
+%post -n libexempi%{sonum} -p /sbin/ldconfig
+%postun -n libexempi%{sonum} -p /sbin/ldconfig
 
-%postun -n libexempi3 -p /sbin/ldconfig
-
-%files -n libexempi3
-%defattr(-,root,root)
-%doc README COPYING ChangeLog
+%files -n libexempi%{sonum}
+%license COPYING
+%doc README ChangeLog
 %{_libdir}/lib*.so.*
 
 %files tools
-%defattr(-,root,root)
-%doc README COPYING ChangeLog
+%license COPYING
+%doc README ChangeLog
 %{_bindir}/exempi
 %{_mandir}/man1/exempi.1%{?ext_man}
 
 %files -n libexempi-devel
-%defattr(-,root,root)
-%doc README COPYING ChangeLog
+%license COPYING
+%doc README ChangeLog
 %{_libdir}/lib*.so
 %{_includedir}/exempi-2.0
 %{_libdir}/pkgconfig/*.pc

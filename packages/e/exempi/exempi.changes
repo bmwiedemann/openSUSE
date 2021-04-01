@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Mar 19 15:29:58 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update baselibs.conf to reflect new sonum.
+
+-------------------------------------------------------------------
+Thu Jan 14 16:53:59 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Remove --disable-static because it cause build to fail.
+- Update to version 2.5.2.
+  * Bug #18: Remove an unnecessary message to stdout in the exempi tool.
+    https://gitlab.freedesktop.org/libopenraw/exempi/-/issues/18
+  * Bug #20: Test file formats. This also change the GIF sample to GIF89a.
+    https://gitlab.freedesktop.org/libopenraw/exempi/-/issues/20
+  * Bug #17: `make check` should build more reliably now.
+    https://gitlab.freedesktop.org/libopenraw/exempi/issues/17
+  * MR !1: Remove deprecated C++ to compile with C++17.
+    https://gitlab.freedesktop.org/libopenraw/exempi/merge_requests/1
+  * MR !2: Fix a build failure with C++17.
+    https://gitlab.freedesktop.org/libopenraw/exempi/merge_requests/2
+- Updates for version 2.5.1.
+  * Bug #9: [CVE-2018-12648] Fix null-pointer-dereference in WEBP.
+    https://gitlab.freedesktop.org/libopenraw/exempi/issues/9
+  * Bug #12: Invalid WEBP cause a memory overflow.
+    https://gitlab.freedesktop.org/libopenraw/exempi/issues/12
+  * Bug #13: Fix a buffer a overflow in ID3 support on invalid MP3.
+    https://gitlab.freedesktop.org/libopenraw/exempi/issues/13
+  * Bug #14: Invalid MP3 cause a memory overflow.
+    https://gitlab.freedesktop.org/libopenraw/exempi/issues/14
+- Updates for version 2.5.0.
+  * Upgrade XMPCore to Adobe XMP SDK CC 2016.07
+  * Support for iOS in XMPFiles
+  * New DOM based API’s are added in XMP Core to access metadata tree
+    hierarchy. (not exposed yet in Exempi)
+  * Added support XMP/metadata in utf-8 encoded uncompressed SVG 
+    files in XMPFiles.
+  * Added support of GIF handler in XMPFiles.
+  * Added support for reconciliation of iXML’s TRACK_LIST and its 
+    components to get microphone data.
+  * Added support for IFDs of type 13 in TIFF.
+  * Added support for MPEG4 videos shot from Google Nexus 5 camera.
+  * Restructured the implementation of XDCAM Handler to support 
+    File Access Mode (FAM) and Simple Access Mode (SAM)
+  * Added built-in support for iXML namespace in XMPCore.
+  * Modified the alias tiff:ImageDescription for dc:description as 
+    language alternative array instead of simple property.
+  * Lot of bug fixes in XMPFiles and XMPCore.
+  * Removed Exempi provided support for GIF in favour of Adobe's. 
+    Only GIF89a is supported.
+  * New: API NS_XML constant
+  * Bug #5: Restrict the exported symbols. Only the symbols marked 
+    with API_EXPORT are exported by the shared library as to not 
+    allow another library to import the XMP SDK symbols.
+    https://gitlab.freedesktop.org/libopenraw/exempi/issues/5
+  * Bug #105580: Access memory aligned on ARM.
+    https://bugs.freedesktop.org/show_bug.cgi?id=105580
+  * Added tests for Adobe SDK.
+  * Fixed warnings and other issues and Adobe SDK.
+  * Compile with much more warnings enabled.
+
+-------------------------------------------------------------------
 Wed Mar 14 14:56:58 UTC 2018 - jengelh@inai.de
 
 - Extend descriptions.
