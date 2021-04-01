@@ -19,7 +19,7 @@
 %define sobase  libmediastreamer
 %define sover   11
 Name:           mediastreamer2
-Version:        4.4.33
+Version:        4.5.0
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        GPL-2.0-or-later
@@ -48,7 +48,7 @@ BuildRequires:  spandsp-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  vim
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(bctoolbox) >= 0.6.0
+BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
 BuildRequires:  pkgconfig(libbcg729)
 BuildRequires:  pkgconfig(libbzrtp) >= 1.0.6
 BuildRequires:  pkgconfig(libpulse)
@@ -125,7 +125,7 @@ export CXXFLAGS="$CFLAGS"
 %cmake_install
 
 mkdir -p %{buildroot}%{_docdir}/%{name}/
-mv -T %{buildroot}%{_datadir}/doc/%{name}-4.4.0/ \
+mv -T %{buildroot}%{_datadir}/doc/%{name}-4.5.0/ \
   %{buildroot}%{_docdir}/%{name}/
 
 %post -n %{sobase}%{sover} -p /sbin/ldconfig
@@ -133,7 +133,7 @@ mv -T %{buildroot}%{_datadir}/doc/%{name}-4.4.0/ \
 %postun -n %{sobase}%{sover} -p /sbin/ldconfig
 
 %files
-%license LICENSE.txt 
+%license LICENSE.txt
 %{_bindir}/mediastream
 %{_bindir}/mkvstream
 

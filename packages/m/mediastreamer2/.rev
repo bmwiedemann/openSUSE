@@ -287,4 +287,29 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>879483</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2d680f20574488bb1d3ca90f4cd88f9d</srcmd5>
+    <version>4.5.0</version>
+    <time>1617279397</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 4.5.0:
+  + Added
+    * New camera capture backend based on Windows MediaFoundation
+    * MSMediaPlayer enhancements.
+    * VideoConference API and engine prototype (active speaker switching only)
+  + Changed
+    * audio flow control algorithm improved, silent portions are dropped first.
+    * MKVPlayer supports seek in files without cue table.
+    'packetlosspercentage' is now configurable in opus encoder.
+  + Fixed
+    * misfunction in DTLS handshake over TURN
+    * fix arythmetic issue in clock skew computation, causing bad audio when the sound device outputs
+    * audio fragments not multiple of 10ms.
+    * wrong selection of ICE TURN candidates when the TURN server is behind a firewall
+    * unsent TURN SenderIndication packets on iOS
+    * fix video freeze in VP8, due to lack of retransmission of SLIs.
+    * All these fix were backported to 4.4 branch.
+</comment>
+    <requestid>882348</requestid>
+  </revision>
 </revisionlist>

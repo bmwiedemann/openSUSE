@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar 31 12:12:17 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.5.0:
+  + Added
+    * New camera capture backend based on Windows MediaFoundation
+    * MSMediaPlayer enhancements.
+    * VideoConference API and engine prototype (active speaker switching only)
+  + Changed
+    * audio flow control algorithm improved, silent portions are dropped first.
+    * MKVPlayer supports seek in files without cue table.
+    'packetlosspercentage' is now configurable in opus encoder.
+  + Fixed
+    * misfunction in DTLS handshake over TURN
+    * fix arythmetic issue in clock skew computation, causing bad audio when the sound device outputs
+    * audio fragments not multiple of 10ms.
+    * wrong selection of ICE TURN candidates when the TURN server is behind a firewall
+    * unsent TURN SenderIndication packets on iOS
+    * fix video freeze in VP8, due to lack of retransmission of SLIs.
+    * All these fix were backported to 4.4 branch.
+
+-------------------------------------------------------------------
 Tue Mar  9 17:00:24 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.4.33 (no changelog) 
