@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Fri Mar 19 14:13:46 UTC 2021 - Sayali Lunkad <sayali.lunkad@suse.com>
+
+- Set rust version to minimum required by upstream 
+
+-------------------------------------------------------------------
+Tue Mar 16 12:30:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce boilerplate emission from %service_*. Add a bit of build
+  recipe modernization and safeguarding.
+
+-------------------------------------------------------------------
+Tue Mar 16 11:18:33 UTC 2021 - Sayali Lunkad <sayali.lunkad@suse.com>
+
+- Initial commit
