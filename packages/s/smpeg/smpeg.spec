@@ -1,7 +1,7 @@
 #
-# spec file for package libsmpeg
+# spec file for package smpeg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           smpeg
 Version:        0.4.5
 Release:        0
 Summary:        SDL MPEG Player Library
-License:        LGPL-2.0-only 
-Group:          System/Libraries
-Url:            https://icculus.org/smpeg
+License:        LGPL-2.0-only
+Group:          Development/Libraries/C and C++
+URL:            https://icculus.org/smpeg
 Source:         %{name}-%{version}.tar.bz2
 #PATCH-FIX-UPSTREAM export mpegaudio class
 Patch5:         200_export_mpegaudio_class.diff
@@ -31,24 +31,26 @@ Patch7:         320_gnu_stack.diff
 #PATCH-FIX-UPSTREAM fix ftbfs with gcc 6
 Patch9:         340_gcc6.diff
 BuildRequires:  gcc-c++
-BuildRequires:  libtool
 BuildRequires:  libSDL-devel
+BuildRequires:  libtool
 
 %description
-SMPEG is a free MPEG1 video player library with sound support. Video playback
-is based on the ubiquitous Berkeley MPEG player, mpeg_play v2.2. Audio is
-played through a slightly modified mpegsound library, part of Splay v0.8.2.
-SMPEG supports MPEG audio (MP3), MPEG-1 video, and MPEG system streams.
+SMPEG is a MPEG-1 video player library with sound support. Video
+playback is based on the Berkeley MPEG player, mpeg_play v2.2. Audio
+is played through a modified mpegsound library, part of Splay v0.8.2.
+SMPEG supports MPEG-1 Layer 3 audio, MPEG-1 video, and MPEG system
+streams.
 
 %package -n libsmpeg-0_4-0
 Summary:        SDL MPEG Player Library
 Group:          System/Libraries
 
 %description -n libsmpeg-0_4-0
-SMPEG is a free MPEG1 video player library with sound support. Video playback
-is based on the ubiquitous Berkeley MPEG player, mpeg_play v2.2. Audio is
-played through a slightly modified mpegsound library, part of Splay v0.8.2.
-SMPEG supports MPEG audio (MP3), MPEG-1 video, and MPEG system streams.
+SMPEG is a MPEG-1 video player library with sound support. Video
+playback is based on the Berkeley MPEG player, mpeg_play v2.2. Audio
+is played through a modified mpegsound library, part of Splay v0.8.2.
+SMPEG supports MPEG-1 Layer 3 audio, MPEG-1 video, and MPEG system
+streams.
 
 %package devel
 Summary:        Development files for libsmpeg
@@ -56,21 +58,19 @@ Group:          Development/Libraries/C and C++
 Requires:       libsmpeg-0_4-0 = %{version}
 
 %description devel
-SMPEG is a free MPEG1 video player library with sound support. Video playback
-is based on the ubiquitous Berkeley MPEG player, mpeg_play v2.2. Audio is
-played through a slightly modified mpegsound library, part of Splay v0.8.2.
-SMPEG supports MPEG audio (MP3), MPEG-1 video, and MPEG system streams.
+SMPEG is a MPEG-1 video player library with sound support. Video
+playback is based on the Berkeley MPEG player, mpeg_play v2.2. Audio
+is played through a modified mpegsound library, part of Splay v0.8.2.
+SMPEG supports MPEG-1 Layer 3 audio, MPEG-1 video, and MPEG system
+streams.
 
 %prep
-%setup -q
-%patch5 -p1
-%patch7 -p1
-%patch9 -p1
+%autosetup -p1
 NO_CONFIGURE=1 ./autogen.sh
 
 %build
-%configure
-make
+%configure --disable-static
+%make_build
 
 %install
 %make_install
@@ -78,7 +78,6 @@ rm -rf %{buildroot}%{_bindir}/glmovie
 rm -rf %{buildroot}%{_bindir}/plaympeg
 rm -rf %{buildroot}%{_mandir}/man1/plaympeg.1
 rm -rf %{buildroot}%{_mandir}/man1/gtv.1
-find %{buildroot} -name "*.a" -delete -print
 find %{buildroot} -name "*.la" -delete -print
 
 %post -n libsmpeg-0_4-0 -p /sbin/ldconfig
@@ -96,4 +95,3 @@ find %{buildroot} -name "*.la" -delete -print
 %{_includedir}/smpeg
 
 %changelog
-
