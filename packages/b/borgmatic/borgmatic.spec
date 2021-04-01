@@ -17,7 +17,7 @@
 
 
 Name:           borgmatic
-Version:        1.5.12
+Version:        1.5.13
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only
@@ -25,13 +25,11 @@ Group:          Productivity/Archiving/Backup
 URL:            https://torsion.org/borgmatic/
 Source:         https://github.com/witten/borgmatic/archive/%{version}.tar.gz#/borgmatic-%{version}.tar.gz
 Patch1:         skip-tests.patch
-# PATCH-FIX-UPSTREAM 0001-Update-versions-of-test-dependencies.patch -- alarrosa@suse.com
-Patch2:         0001-Update-versions-of-test-dependencies.patch
 # testing requirements
 BuildRequires:  borgbackup
 # To create the manpage
 BuildRequires:  pandoc
-BuildRequires:  python3 >= 3.4
+BuildRequires:  python3 >= 3.6
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-appdirs
 BuildRequires:  python3-atomicwrites
@@ -77,7 +75,6 @@ common errors.
 %prep
 %setup -q
 %patch1 -p1
-%patch2 -p1
 
 sed -i -e "s/colorama>=0.4.1,<0.5/colorama>=0.3.9/" setup.py
 %if 0%{?suse_version} <= 1500

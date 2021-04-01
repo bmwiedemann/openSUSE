@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 31 10:08:00 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.13:
+  * #373: Document that passphrase is used for Borg keyfile encryption,
+    not just repokey encryption.
+  * #404: Add support for ruamel.yaml 0.17.x YAML parsing library.
+  * Update systemd service example to return a permission error when
+    a system call isn't permitted
+    (instead of terminating borgmatic outright).
+  * Drop support for Python 3.5, which has been end-of-lifed.
+  * Add support for Python 3.9.
+  * Only support black code formatter on Python 3.8+.
+- Drop 0001-Update-versions-of-test-dependencies.patch
+- Rebase skip-tests.patch
+
+-------------------------------------------------------------------
 Tue Feb  9 15:20:37 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.5.12
