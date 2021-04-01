@@ -2,7 +2,7 @@ From: Kevin Wolf <kwolf@redhat.com>
 Date: Thu, 3 Dec 2020 18:23:10 +0100
 Subject: block: Fix locking in qmp_block_resize()
 
-Git-commit 8089eab2bd5fb160b038e64e14cf7ffb3f37091e
+Git-commit: 8089eab2bd5fb160b038e64e14cf7ffb3f37091e
 
 The drain functions assume that we hold the AioContext lock of the
 drained block node. Make sure to actually take the lock.

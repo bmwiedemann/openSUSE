@@ -2,7 +2,7 @@ From: Max Reitz <mreitz@redhat.com>
 Date: Thu, 17 Dec 2020 16:38:03 +0100
 Subject: iotests: Fix _send_qemu_cmd with bash 5.1
 
-Git-commit 0e72078128229bf9efb542e396ab44bf91b91340
+Git-commit: 0e72078128229bf9efb542e396ab44bf91b91340
 References: boo#1181054
 
 With bash 5.1, the output of the following script changes:

@@ -4,6 +4,9 @@
 
 # The next few VARIABLES are to be edited as required:
 
+# Package name. (In multibuild, it's the base package). Used to ref spec file.
+PKG=qemu
+
 # Here is the git repo which tracks a separate upstream git based project
 # We take this approach so we can have our own tags and branches, and store
 # the patches in git for others to access outside of the bundle.
@@ -26,11 +29,6 @@ NEXT_RELEASE_IS_MAJOR=1
 # model, so there may be times we should overide the automated version setting.
 # We can do so by specifing the value here:
 #SEABIOS_VERSION=1.13.0
-
-# Temporary directories used by this script
-GIT_DIR=/dev/shm/qemu-factory-git-dir
-CMP_DIR=/dev/shm/qemu-factory-cmp-dir
-BUNDLE_DIR=/dev/shm/qemu-factory-bundle-dir
 
 # In following, use 1 or 0 as needed (representing true or false respectively)
 NUMBERED_PATCHES=0

@@ -151,12 +151,11 @@ initbundle() {
 # "{path/}{git_sha}.{bundle}", where {path/} isn't present for
 # the top (qemu) bundle (ie it's for submodules).
 
-rm -rf $GIT_DIR
-rm -rf $BUNDLE_DIR
-mkdir -p $BUNDLE_DIR
+find $GIT_DIR -mindepth 1 -delete
+find $BUN_DIR -mindepth 1 -delete
 if [[ -e ${LOCAL_REPO_MAP[$i]}/.git/shallow ]]; then
     if [[ -e bundles.tar.xz ]]; then
-        tar --extract --xz -f bundles.tar.xz -C $BUNDLE_DIR .
+        tar --extract --xz -f bundles.tar.xz -C $BUN_DIR .
     else
         echo "ERROR: Superproject at ${LOCAL_REPO_MAP[$i]} is shallow (so we assume submodules aren't"
         echo "recursively checked out), and there is not an existing bundle-of-bundles file, so we cannot"
@@ -170,7 +169,7 @@ else
         rm bundles.tar.xz
      fi
     if [[ -e bundles.tar.xz ]]; then
-        tar --extract --xz -f bundles.tar.xz -C $BUNDLE_DIR .
+        tar --extract --xz -f bundles.tar.xz -C $BUN_DIR .
     else
         SUBMODULE_COMMIT_IDS=($(git -C ${LOCAL_REPO_MAP[0]} submodule status --recursive| cut -c 2- | awk '{print $1}'))
         SUBMODULE_DIRS=($(git -C ${LOCAL_REPO_MAP[0]} submodule status --recursive| cut -c 2- |awk '{print $2}'))
@@ -181,16 +180,23 @@ else
             exit
         fi
         for (( i=0; i <$SUBMODULE_COUNT; i++ )); do
-            mkdir -p $BUNDLE_DIR/${SUBMODULE_DIRS[$i]}
-            touch $BUNDLE_DIR/${SUBMODULE_DIRS[$i]}/${SUBMODULE_COMMIT_IDS[$i]}.id
+            mkdir -p $BUN_DIR/${SUBMODULE_DIRS[$i]}
+            touch $BUN_DIR/${SUBMODULE_DIRS[$i]}/${SUBMODULE_COMMIT_IDS[$i]}.id
         done
         if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
             GIT_UPSTREAM_COMMIT=$NEW_COMMIT_ISH_FULL
         else
         # TODO: make this smarter, or change something - works for tag, but not normal commit?
             GIT_UPSTREAM_COMMIT=$(git -C ${LOCAL_REPO_MAP[0]} show-ref -d $GIT_UPSTREAM_COMMIT_ISH|grep -F "^{}"|awk '{print $1}')
+	    if [[ "$GIT_UPSTREAM_COMMIT" = "" ]]; then
+               GIT_UPSTREAM_COMMIT=$(git -C ${LOCAL_REPO_MAP[0]} show-ref -d $GIT_UPSTREAM_COMMIT_ISH||awk '{print $1}')
+            fi
+	    if [[ "$GIT_UPSTREAM_COMMIT" = "" ]]; then
+                echo "ERROR: Failed to get commit id for $GIT_UPSTREAM_COMMIT_ISH"
+		exit
+            fi
         fi
-        touch $BUNDLE_DIR/$GIT_UPSTREAM_COMMIT.id
+        touch $BUN_DIR/$GIT_UPSTREAM_COMMIT.id
     fi
 fi
 
@@ -198,7 +204,7 @@ fi
 for (( i=0; i <$REPO_COUNT; i++ )); do
     if [[ -e $(readlink -f ${LOCAL_REPO_MAP[$i]}) ]]; then
         SUBDIR=${PATCH_PATH_MAP[$i]}
-        GITREPO_COMMIT_ISH=($BUNDLE_DIR/$SUBDIR*.id)
+        GITREPO_COMMIT_ISH=($BUN_DIR/$SUBDIR*.id)
         if [[ $GITREPO_COMMIT_ISH  =~ .*(.{40})[.]id ]]; then
             GITREPO_COMMIT_ISH=${BASH_REMATCH[1]}
             echo "Using $GITREPO_COMMIT_ISH"
@@ -210,9 +216,9 @@ for (( i=0; i <$REPO_COUNT; i++ )); do
             if [[ $(git -C $GIT_DIR/$SUBDIR ls-remote --heads origin $GIT_BRANCH) ]]; then
                 git -C $GIT_DIR/$SUBDIR fetch --update-shallow origin $GIT_BRANCH
                 if [[ $(git -C $GIT_DIR/$SUBDIR rev-list $GITREPO_COMMIT_ISH..FETCH_HEAD) ]]; then
-                    git -C $GIT_DIR/$SUBDIR bundle create $BUNDLE_DIR/$SUBDIR$GITREPO_COMMIT_ISH.bundle $GITREPO_COMMIT_ISH..FETCH_HEAD
+                    git -C $GIT_DIR/$SUBDIR bundle create $BUN_DIR/$SUBDIR$GITREPO_COMMIT_ISH.bundle $GITREPO_COMMIT_ISH..FETCH_HEAD
 #TODO: post-process repo info to avoid un-needed diffs (eg git vs https)
-                    git -C $(readlink -f ${LOCAL_REPO_MAP[$PATCH_RANGE_INDEX]}) remote get-url origin >$BUNDLE_DIR/$SUBDIR/repo
+                    git -C $(readlink -f ${LOCAL_REPO_MAP[$PATCH_RANGE_INDEX]}) remote get-url origin >$BUN_DIR/$SUBDIR/repo
                 fi
             fi
         fi
@@ -226,18 +232,17 @@ tar --format gnu --xz \
     --group=0 \
     --mtime="@$(date -r qemu-$SOURCE_VERSION$VERSION_EXTRA.tar.xz +%s)" \
     --create \
-    -f bundles.tar.xz -C $BUNDLE_DIR .
-rm -rf $BUNDLE_DIR
-rm -rf $GIT_DIR
+    -f bundles.tar.xz -C $BUN_DIR .
+    find $BUN_DIR -mindepth 1 -delete
+    find $GIT_DIR -mindepth 1 -delete
 }
 
 #==============================================================================
 
 bundle2local() {
-rm -rf $BUNDLE_DIR
-mkdir -p $BUNDLE_DIR
-tar xJf bundles.tar.xz -C $BUNDLE_DIR
-ID_FILES=$(find $BUNDLE_DIR -printf "%P\n"|grep "id$")
+	find $BUN_DIR -mindepth 1 -delete
+tar xJf bundles.tar.xz -C $BUN_DIR
+ID_FILES=$(find $BUN_DIR -printf "%P\n"|grep "id$")
 
 for entry in ${ID_FILES[@]}; do
     if [[ $entry =~ ^(.*)[/]*([a-f0-9]{40})[.]id$ ]]; then
@@ -261,8 +266,8 @@ for entry in ${ID_FILES[@]}; do
     LOCAL_REPO=$(readlink -f ${LOCAL_REPO_MAP[$PATCH_RANGE_INDEX]})
     if [ -e $LOCAL_REPO ]; then
         git -C $LOCAL_REPO remote remove bundlerepo || true
-        if [ -e $BUNDLE_DIR/$SUBDIR/$GITREPO_COMMIT_ISH.bundle ]; then
-            git -C $LOCAL_REPO remote add bundlerepo $BUNDLE_DIR/$SUBDIR/$GITREPO_COMMIT_ISH.bundle
+        if [ -e $BUN_DIR/$SUBDIR/$GITREPO_COMMIT_ISH.bundle ]; then
+            git -C $LOCAL_REPO remote add bundlerepo $BUN_DIR/$SUBDIR/$GITREPO_COMMIT_ISH.bundle
             git -C $LOCAL_REPO fetch bundlerepo FETCH_HEAD
             git -C $LOCAL_REPO branch -f frombundle FETCH_HEAD
             git -C $LOCAL_REPO remote remove bundlerepo
@@ -271,7 +276,7 @@ for entry in ${ID_FILES[@]}; do
             git -C $LOCAL_REPO branch -D frombundle || true
         fi
     else
-        if [ -e $BUNDLE_DIR/$SUBDIR/$GITREPO_COMMIT_ISH.bundle ]; then
+        if [ -e $BUN_DIR/$SUBDIR/$GITREPO_COMMIT_ISH.bundle ]; then
             # TODO: We should be able to handle this case with some more coding, but for now...
             echo "No local repo $LOCAL_REPO available to process git bundle!"
             if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
@@ -283,13 +288,13 @@ for entry in ${ID_FILES[@]}; do
         fi
     fi
 done
-rm -rf $BUNDLE_DIR
+find $BUN_DIR -mindepth 1 -delete
 }
 
 #==============================================================================
 
 redo_tarball_and_rebase_patches() {
-rm -rf $GIT_DIR
+	find $GIT_DIR -mindepth 1 -delete
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # CREATE TARBALL, USING FRESH REPO - WE COULD RELY MORE ON LOCAL IF WE WERE MORE CAREFUL
@@ -298,7 +303,7 @@ rm -rf $GIT_DIR
 # TODO: WHAT IS THIS NEXT LINE EVEN DOING FOR US?? (OK, it's initing a repo, what do we rely on there?)
 # Here, the branch doesn't really matter, and we're not relying on a master branch - we're just making sure we are grabbing latest from upstream
 # (while using a clone of "something close" as a way to quickly get most objects available as quickly as possible)
-git clone -ls ${LOCAL_REPO_MAP[0]} $GIT_DIR -b $GIT_BRANCH --single-branch &>/dev/null
+git clone -ls ${LOCAL_REPO_MAP[0]} -b $GIT_BRANCH --single-branch $GIT_DIR &>/dev/null
 echo "Please wait..."
 (cd $GIT_DIR && git remote add upstream \
 $UPSTREAM_GIT_REPO &>/dev/null)
@@ -389,10 +394,9 @@ rm -f checkpatch.log
 rm -f checkthese
 rm -rf checkdir
 rm -rf savedir
-rm -rf $GIT_DIR
-rm -rf $CMP_DIR
-rm -rf $BUNDLE_DIR
-mkdir -p $BUNDLE_DIR
+find $GIT_DIR -mindepth 1 -delete
+find $CMP_DIR -mindepth 1 -delete
+find $BUN_DIR -mindepth 1 -delete
 mkdir savedir
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -450,14 +454,14 @@ while IFS= read -r line; do
     fi
     echo "ERROR: Failure groking spec file for patches!"
     exit
-done < qemu.spec
+done < $PKG.spec
 
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # CONVERT BUNDLES INTO COMMITS AND FILL SPEC FILE
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-tar xJf bundles.tar.xz -C $BUNDLE_DIR
-BUNDLE_FILES=$(find $BUNDLE_DIR -printf "%P\n"|grep "bundle$")
+tar xJf bundles.tar.xz -C $BUN_DIR
+BUNDLE_FILES=$(find $BUN_DIR -printf "%P\n"|grep "bundle$")
 
 for entry in ${BUNDLE_FILES[@]}; do
     if [[ $entry =~ ^(.*)[/]*([a-f0-9]{40})[.]bundle$ ]]; then
@@ -482,7 +486,7 @@ for entry in ${BUNDLE_FILES[@]}; do
         # This tag reference, was added to resolve $GITREPO_COMMIT_ISH, which is tag as commit-id
         # Since origin may be shallow, we need to use the --update-shallow option
         git -C $GIT_DIR/$SUBDIR fetch --update-shallow origin $GIT_BRANCH
-        git -C $GIT_DIR/$SUBDIR remote add bundle $BUNDLE_DIR/$entry 
+        git -C $GIT_DIR/$SUBDIR remote add bundle $BUN_DIR/$entry 
         git -C $GIT_DIR/$SUBDIR fetch bundle FETCH_HEAD
         git -C $GIT_DIR/$SUBDIR format-patch -N --suffix= --no-renames -o $CMP_DIR -k --stat=72 \
             --indent-heuristic --zero-commit --no-signature --full-index \
@@ -506,8 +510,8 @@ for entry in ${BUNDLE_FILES[@]}; do
     fi
 done
 
-rm -rf $GIT_DIR
-rm -rf $BUNDLE_DIR
+find $GIT_DIR -mindepth 1 -delete
+find $BUN_DIR -mindepth 1 -delete
 
 (
     CHANGED_COUNT=0
@@ -645,7 +649,7 @@ rm -rf $BUNDLE_DIR
     SEABIOS_VERSION=${SEABIOS_VERSION:-$(tar JxfO qemu-$SOURCE_VERSION$VERSION_EXTRA.tar.xz \
         qemu-$SOURCE_VERSION/roms/seabios/.version | cut -c5- | tr '-' '_')}
 
-    for package in qemu; do
+    for package in $PKG; do
         while IFS= read -r line; do
             if [ "$line" = "PATCH_FILES" ]; then
 # Here (and other places below) we try to get ONLY the numbered patches, but it's possible some ACTUAL patch name actually starts with multiple digits, but EXTREMELY unlikely
@@ -697,7 +701,10 @@ rm -rf $BUNDLE_DIR
             elif [ "$line" = "INSERT_VERSIONING" ]; then
                 echo "%define qemuver $QEMU_VERSION$VERSION_EXTRA"
                 echo "%define srcver  $SOURCE_VERSION$VERSION_EXTRA"
-                echo "%define sbver   $SEABIOS_VERSION"
+                # For SLE11, where seabios isn't in the qemu tarball:
+                if [[ "$SEABIOS_VERSION" != "" ]]; then
+                    echo "%define sbver   $SEABIOS_VERSION"
+                fi
             elif [[ "$line" =~ ^Source: ]]; then
                 echo "$line"
                 if [ ${#QEMU_TARBALL_SIG[@]} -eq 1 ]; then
@@ -748,7 +755,7 @@ rm -rf $BUNDLE_DIR
     echo "      added: $ADDED_COUNT"
 )
 
-rm -rf $CMP_DIR
+find $CMP_DIR -mindepth 1 -delete
 rm -rf checkdir
 
 osc service localrun format_spec_file || true
@@ -756,8 +763,8 @@ osc service localrun format_spec_file || true
 # Be aware that when checking into build service you should use --noservice, since we've
 # already run this and --noservice will prevent the modification from happening at checkin
 # time.
-sed -i 's/^# spec file for package qemu%{name_suffix}$/# spec file for package qemu/g' qemu.spec
-sed -i 's/^# spec file for package qemu-linux-user$/# spec file for package qemu/g' qemu.spec
+sed -i 's/^# spec file for package '$PKG'%{name_suffix}$/# spec file for package '$PKG'/g' $PKG.spec
+sed -i 's/^# spec file for package '$PKG'-linux-user$/# spec file for package '$PKG'/g' $PKG.spec
 }
 
 #==============================================================================
@@ -800,6 +807,15 @@ else
     MINOR_VERSION=$(echo $QEMU_VERSION|awk -F. '{print $2}')
     GIT_BRANCH=opensuse-$MAJOR_VERSION.$MINOR_VERSION
 fi
+}
+
+#==============================================================================
+
+clean_up_temp_dirs()
+{
+rm -rf $GIT_DIR
+rm -rf $CMP_DIR
+rm -rf $BUN_DIR
 }
 
 #==============================================================================
@@ -900,15 +916,6 @@ for (( i=0; i <$REPO_COUNT; i++ )); do
                 fi
             fi
         fi
-        # The following is unfortunately needed due to an improper removal of roms/openhackware
-        # in the qemu v5.0.0 timeframe. After checking out a new $GIT_BRANCH, check for
-        # whether commit b2ce76a0730e48e60633a698cd876d55917ac9bc is in ancestry and
-        # if so, make sure that roms/openhackware is gone, so we have a clean local repo dir
-        if [[ "$i" = "0" ]]; then
-            if $(git -C ${LOCAL_REPO_MAP[$i]} merge-base --is-ancestor b2ce76a0730e48e60633a698cd876d55917ac9bc HEAD); then
-               (cd ${LOCAL_REPO_MAP[$i]} && rm -rf roms/openhackware/ >/dev/null)
-            fi
-        fi
         # This does additional setup now that we've possibly grabbed additional submodules
         if ! git -C ${LOCAL_REPO_MAP[$i]} submodule update --init --recursive &> /dev/null; then
             echo "Please clean up state of local repo ${LOCAL_REPO_MAP[$i]} before using script"
@@ -922,6 +929,16 @@ for (( i=0; i <$REPO_COUNT; i++ )); do
         fi
     fi
 done
+
+# cleanup directories from any previous failed run:
+rm -rf /dev/shm/qemu-???????-git-dir
+rm -rf /dev/shm/qemu-???????-cmp-dir
+rm -rf /dev/shm/qemu-???????-bun-dir
+# Temporary directories used in this script
+GIT_DIR=$(mktemp -d /dev/shm/qemu-XXXXXXX-git-dir)
+CMP_DIR=$(mktemp -d /dev/shm/qemu-XXXXXXX-cmp-dir)
+BUN_DIR=$(mktemp -d /dev/shm/qemu-XXXXXXX-bun-dir)
+
 if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
     if [ "$1" = "continue" ]; then
         CONTINUE_AFTER_REBASE=1
@@ -931,7 +948,8 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
         else
            if [ "$1" ]; then
                echo "ERROR: unrecognized option '$1'. Script in LATEST mode only recognizes 'pause' and 'continue' options"
-        exit
+               clean_up_temp_dirs
+               exit
            fi
         fi
     fi
@@ -945,7 +963,7 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
     setup_common_vars
     WRITE_LOG=0
     echo "Processing LATEST upstream changes"
-    echo "(If SUCCESS is not printed upon completion, see /tmp/latest.log for issues)"
+    echo "(If SUCCESS is not printed upon completion, see ~/latest.log for issues)"
     if [[ $QEMU_TARBALL =~ $BASE_RE$EXTRA_RE$SUFFIX_RE ]]; then
         OLD_COMMIT_ISH=${BASH_REMATCH[3]}
     else
@@ -963,9 +981,10 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
             echo "continue after rebase selected but tarball is out of date. Continuing not possible."
             echo "If desired, save your rebase work (eg, branch $GIT_BRANCH), because otherwise it will"
             echo "be lost. Then run script again without the continue option"
+            clean_up_temp_dirs
             exit
         fi
-        redo_tarball_and_rebase_patches &> /tmp/latest.log # This includes a bundle2local
+        redo_tarball_and_rebase_patches &> ~/latest.log # This includes a bundle2local
         if [[ "$REBASE_FAILS" ]]; then
             echo "ERROR! Rebase of the $GIT_BRANCH branch failed in the following local git repos:"
             echo $REBASE_FAILS
@@ -973,6 +992,7 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
             if [[ "$PAUSE_BEFORE_BUNDLE_CREATION" = "1" ]]; then
                 echo "Feel free to also do the work now occasioned by the selected 'pause' option"
             fi
+            clean_up_temp_dirs
             exit
         fi
         CONTINUE_AFTER_REBASE=1
@@ -981,14 +1001,15 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
         echo "As requested, pausing before re-creating bundle of bundles for additional patch or specfile work"
         echo "(using current 'ready to go' $GIT_BRANCH branch of local repos to produce patches.)"
         echo "When changes are complete, finish the workflow by passing 'continue' to script"
+        clean_up_temp_dirs
         exit
     fi
     if [ "$CONTINUE_AFTER_REBASE" = "1" ]; then
-        initbundle &>> /tmp/latest.log
+        initbundle &>> ~/latest.log
     fi
-    bundle2spec &>> /tmp/latest.log
+    bundle2spec &>> ~/latest.log
     echo "SUCCESS"
-    tail -9 /tmp/latest.log
+    tail -9 ~/latest.log
 else # not LATEST
 #NOTNEEDED?    git -C ${LOCAL_REPO_MAP[0]} checkout $GIT_UPSTREAM_COMMIT_ISH --recurse-submodules -f &> /dev/null
     NEW_COMMIT_ISH=
@@ -996,22 +1017,22 @@ else # not LATEST
     case  $1 in
         initbundle )
             echo "Updating the bundle using the $GIT_BRANCH branch of the local repos."
-            echo "(If SUCCESS is not printed upon completion, see /tmp/initbundle.log for issues)"
-            initbundle &> /tmp/initbundle.log
+            echo "(If SUCCESS is not printed upon completion, see ~/initbundle.log for issues)"
+            initbundle &> ~/initbundle.log
             echo "SUCCESS"
             ;;
         git2pkg )
             echo "Updating the package using the $GIT_BRANCH branch of the local repos."
-            echo "(If SUCCESS is not printed upon completion, see /tmp/git2pkg.log for issues)"
-            initbundle &> /tmp/git2pkg.log
-            bundle2spec &>> /tmp/git2pkg.log
+            echo "(If SUCCESS is not printed upon completion, see ~/git2pkg.log for issues)"
+            initbundle &> ~/git2pkg.log
+            bundle2spec &>> ~/git2pkg.log
             echo "SUCCESS"
-            tail -9 /tmp/git2pkg.log
+            tail -9 ~/git2pkg.log
             ;;
         pkg2git )
             echo "Exporting the package's git bundles to the local repo's frombundle branches..." 
-            echo "(If SUCCESS is not printed upon completion, see /tmp/pkg2git.log for issues)"
-            bundle2local &> /tmp/pkg2git.log
+            echo "(If SUCCESS is not printed upon completion, see ~/pkg2git.log for issues)"
+            bundle2local &> ~/pkg2git.log
             echo "SUCCESS"
             echo "To modify package patches, use the frombundle branch as the basis for updating"
             echo "the $GIT_BRANCH branch with the new patch queue."
@@ -1020,12 +1041,12 @@ else # not LATEST
         refresh )
             echo "Updating the spec file and patches from the spec file template and the bundle"
             echo "of bundles (bundles.tar.xz)"
-            echo "(If SUCCESS is not printed upon completion, see /tmp/refresh.log for issues)"
-            bundle2spec &> /tmp/refresh.log
+            echo "(If SUCCESS is not printed upon completion, see ~/refresh.log for issues)"
+            bundle2spec &> ~/refresh.log
             echo "SUCCESS"
-            tail -9 /tmp/refresh.log
+            tail -9 ~/refresh.log
             ;;
     esac
 fi
+clean_up_temp_dirs
 exit
-

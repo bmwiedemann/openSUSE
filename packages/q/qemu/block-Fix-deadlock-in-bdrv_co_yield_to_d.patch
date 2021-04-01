@@ -2,7 +2,7 @@ From: Kevin Wolf <kwolf@redhat.com>
 Date: Thu, 3 Dec 2020 18:23:11 +0100
 Subject: block: Fix deadlock in bdrv_co_yield_to_drain()
 
-Git-commit 960d5fb3e8ee09bc5f1a5c84f66dce42a6cef920
+Git-commit: 960d5fb3e8ee09bc5f1a5c84f66dce42a6cef920
 
 If bdrv_co_yield_to_drain() is called for draining a block node that
 runs in a different AioContext, it keeps that AioContext locked while it

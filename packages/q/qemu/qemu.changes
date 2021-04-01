@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue Mar 30 17:30:11 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Switch method of splitting off hw-s390x-virtio-gpu-ccw.so as a
+  module to what was accepted upstream (bsc#1181103)
+* Patches dropped:
+  hw-s390x-modularize-virtio-gpu-ccw.patch
+* Patches added:
+  s390x-add-have_virtio_ccw.patch
+  s390x-modularize-virtio-gpu-ccw.patch
+  s390x-move-S390_ADAPTER_SUPPRESSIBLE.patch
+
+-------------------------------------------------------------------
+Tue Mar 23 21:52:41 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Fix OOB access in sdhci interface (CVE-2020-17380, bsc#1175144,
+  CVE-2020-25085, bsc#1176681, CVE-2021-3409, bsc#1182282)
+  hw-sd-sd-Actually-perform-the-erase-oper.patch
+  hw-sd-sd-Fix-build-error-when-DEBUG_SD-i.patch
+  hw-sd-sdhci-Correctly-set-the-controller.patch
+  hw-sd-sdhci-Don-t-transfer-any-data-when.patch
+  hw-sd-sdhci-Don-t-write-to-SDHC_SYSAD-re.patch
+  hw-sd-sdhci-Limit-block-size-only-when-S.patch
+  hw-sd-sdhci-Reset-the-data-pointer-of-s-.patch
+  hw-sd-sd-Move-the-sd_block_-read-write-a.patch
+  hw-sd-sd-Skip-write-protect-groups-check.patch
+- Fix potential privilege escalation in virtiofsd tool
+  (CVE-2021-20263, bsc#1183373)
+  tools-virtiofsd-Replace-the-word-whiteli.patch
+  viriofsd-Add-support-for-FUSE_HANDLE_KIL.patch
+  virtiofsd-extract-lo_do_open-from-lo_ope.patch
+  virtiofsd-optionally-return-inode-pointe.patch
+  virtiofsd-prevent-opening-of-special-fil.patch
+  virtiofs-drop-remapped-security.capabili.patch
+  virtiofsd-Save-error-code-early-at-the-f.patch
+- Fix OOB access (stack overflow) in rtl8139 NIC emulation
+  (CVE-2021-3416, bsc#1182968)
+  net-introduce-qemu_receive_packet.patch
+  rtl8139-switch-to-use-qemu_receive_packe.patch
+- Fix OOB access (stack overflow) in other NIC emulations
+  (CVE-2021-3416)
+  cadence_gem-switch-to-use-qemu_receive_p.patch
+  dp8393x-switch-to-use-qemu_receive_packe.patch
+  e1000-switch-to-use-qemu_receive_packet-.patch
+  lan9118-switch-to-use-qemu_receive_packe.patch
+  msf2-mac-switch-to-use-qemu_receive_pack.patch
+  pcnet-switch-to-use-qemu_receive_packet-.patch
+  sungem-switch-to-use-qemu_receive_packet.patch
+  tx_pkt-switch-to-use-qemu_receive_packet.patch
+- Fix heap overflow in MSIx emulation (CVE-2020-27821, bsc#1179686)
+  memory-clamp-cached-translation-in-case-.patch
+- Include upstream patches designated as stable material and
+  reviewed for applicability to include here
+  hw-arm-virt-Disable-pl011-clock-migratio.patch
+  xen-block-Fix-removal-of-backend-instanc.patch
+- Fix package scripts to not use hard coded paths for temporary
+  working directories and log files (bsc#1182425)
+
+-------------------------------------------------------------------
 Wed Mar 17 13:07:33 UTC 2021 - Bruce Rogers <brogers@suse.com>
 
 - Fix s390x "mediated device is in use" error condition
