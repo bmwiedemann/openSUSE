@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 26 09:50:24 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1616752214.24ec8f98:
+  * t: Fix deprecation warning about 'ide-drive'
+  * Also accept test modules with file extension in SCHEDULE
+  * Use proper logging calls instead of bare print
+
+-------------------------------------------------------------------
 Mon Mar 15 09:17:14 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1615799823.a1b2e4ba:
