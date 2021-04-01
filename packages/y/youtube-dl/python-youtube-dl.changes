@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 31 22:09:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.04.01
+  * youtube: fix playlist/comunity continuation items extraction
+  * vimeo: fix unlisted video extraction
+  * youtube: fix video's channel extraction
+  * youtube: imporve age-restricted video extraction
+  * youtube: setup CONSENT cookie when needed
+
+-------------------------------------------------------------------
 Sat Mar 27 09:06:30 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2021.03.25
