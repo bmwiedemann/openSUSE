@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 26 10:26:57 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add ovmf-bsc1183713-fix-gcc10-brotli-errors.patch to fix the
+  gcc10 error from brotli (bsc#1183713)
+
+-------------------------------------------------------------------
 Thu Mar 11 02:07:17 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to edk2-stable202102

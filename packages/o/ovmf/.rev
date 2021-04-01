@@ -466,4 +466,12 @@
 - Update tags for security fixes</comment>
     <requestid>879840</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>5ba387b369b6a1255329577208303d13</srcmd5>
+    <version>202102</version>
+    <time>1617279367</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881515</requestid>
+  </revision>
 </revisionlist>

@@ -52,6 +52,7 @@ Patch2:         %{name}-gdb-symbols.patch
 Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
+Patch6:         %{name}-bsc1183713-fix-gcc10-brotli-errors.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -187,11 +188,13 @@ pushd BaseTools/Source/C/BrotliCompress/brotli
 tar -xf %{SOURCE8} --strip 1
 #  remove the executable bit from files
 find . -type f -exec chmod 0644 {} \;
+%patch6 -p1
 popd
 pushd MdeModulePkg/Library/BrotliCustomDecompressLib/brotli
 tar -xf %{SOURCE8} --strip 1
 #  remove the executable bit from files
 find . -type f -exec chmod 0644 {} \;
+%patch6 -p1
 popd
 
 # add oniguruma
