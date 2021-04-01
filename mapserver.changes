@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Feb  1 13:20:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.6.2
+  * Contour layer: take into account nodata value from GDAL raster
+  * WCS 1.1 and 2.0: fix support of netCDF output
+
+-------------------------------------------------------------------
 Wed Jan 20 01:15:24 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop BuildRequires on binary library packages; this is wrong.

@@ -1,7 +1,7 @@
 #
 # spec file for package mapserver
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Ioda-Net Sàrl, Charmoille, Switzerland. Bruno Friedmann (tigerfoot)
 # Copyright (c) 2015 Angelos Tzotsos (kalxas)
 #
@@ -32,7 +32,7 @@
 %endif
 
 Name:           mapserver
-Version:        7.6.1
+Version:        7.6.2
 Release:        0
 Summary:        Environment for building spatially-enabled internet applications
 License:        MIT
