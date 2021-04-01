@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 23 23:24:21 CET 2021 - tumic@cbox.cz
+
+- Update to version 8.9
+  * Preserve the directory structure when loading maps/POIs.
+  * Improved areas rendering performance.
+  * Added workaround for broken CRS urns used by Swisstopo.
+  * Fixed possible crash on JNX maps.
+
+-------------------------------------------------------------------
 Mon Mar  1 00:37:43 CET 2021 - tumic@cbox.cz
 
 - Update to version 8.8

@@ -1,3 +1,12 @@
+gpxsee (8.9) stable; urgency=low
+
+  * Preserve the directory structure when loading maps/POIs.
+  * Improved areas rendering performance.
+  * Added workaround for broken CRS urns used by Swisstopo.
+  * Fixed possible crash on JNX maps.
+
+ -- Martin Tuma <tumic@cbox.cz>  Tue, 23 Mar 2021 23:31:35 +0100
+
 gpxsee (8.8) stable; urgency=low
 
   * Fixed disappearing marker with some graphs combinations.
