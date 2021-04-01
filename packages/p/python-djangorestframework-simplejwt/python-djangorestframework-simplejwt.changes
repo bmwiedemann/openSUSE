@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 31 14:25:07 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.6.0
+  * Restored Python 3.7 support
+  * Added Indonesian translations
+  * Fixed Django 4.0 re_path deprecation
+- Add patch jwt2.patch for PyJWT>=2.0.0 support
+
+-------------------------------------------------------------------
 Fri Jul 24 07:55:24 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v4.4.0
