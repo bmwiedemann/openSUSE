@@ -82,4 +82,42 @@
     <comment></comment>
     <requestid>859298</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3f175d94a4cecbf13cd936f8506483db</srcmd5>
+    <version>1.3.4</version>
+    <time>1617279477</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.3.4
+  * Sync owners and moderators from Mailman Core for MailingList. (Fixes #302)
+  * Implemented a new HYPERKITTY_JOBS_UPDATE_INDEX_LOCK_LIFE setting to set the
+    lock lifetime for the update_and_clean_index job. (Closes #300)
+  * Implemented a new HYPERKITTY_ALLOW_WEB_POSTING that allows disabling the
+    web posting feature. (Closes #264)
+  * Add the ability to disable Gravatar using HYPERKITTY_ENABLE_GRAVATAR
+    settings. (Closes #303)
+  * Replaced deprecated ugettext functions with gettext. (Closes #310)
+  * Fix export of Email message where the In-Reply-To header doesn’t include
+    the &lt;&gt; brackets. (Closes #331)
+  * We now catch a few more exceptions in hyperkitty_import when getting
+    messages from a mbox. (Closes #313 and #314)
+  * Added a new contrib/check_hk_import script to check mboxes before running
+    hyperkitty_import.
+  * We now ignore a ValueError in hyperkitty_import when trying to replace a
+    Subject: header. (Closes #317)
+  * hyperkitty_import now includes the mbox name in error messages when
+    importing multiple mboxes. (Closes #318)
+  * `` at `` is now only replaced with @ in From: header values when necessary
+    and not unconditionally. (Closes #320)
+  * The wildcard notation for any host '*' is now supported into
+    MAILMAN_ARCHVER_FROM to disable Hyperkitty clients IP checking.
+  * Join the searchbar and search button like it was before bootstrap 4
+    migration. (See !301)
+  * Use the umd builds for popper.js instead of the regular ones. (See !309)
+  * Exceptions thrown by smtplib in sending replies are now caught and give an
+    appropriate error message. (Closes #309)
+- Removed hyperkitty-fix-tests.patch
+- Fixed build on tumbleweed
+</comment>
+    <requestid>882392</requestid>
+  </revision>
 </revisionlist>

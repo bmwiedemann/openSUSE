@@ -1,7 +1,7 @@
 #
 # spec file for package python-HyperKitty
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%if 0%{?suse_version} >= 1550
+%define skip_python36 1
+%endif
 Name:           python-HyperKitty
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        A web interface to access GNU Mailman v3 archives
 License:        GPL-3.0-only
@@ -54,9 +57,6 @@ Source22:       hyperkitty-runjob.timer
 Source30:       README.SUSE.md
 #
 Patch0:         hyperkitty-settings.patch
-# Make migration compatible with django >= 3.1
-# https://gitlab.com/mailman/hyperkitty/-/commit/0e46371f0f2aab8618aa2852ea6f63c245e16927.patch
-Patch1:         hyperkitty-fix-tests.patch
 #
 BuildRequires:  %{python_module django-debug-toolbar >= 2.2}
 BuildRequires:  %{python_module isort}
