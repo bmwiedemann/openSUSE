@@ -15,4 +15,14 @@
     <comment>- Trim story-telling from description. (forwarded request 692528 from jengelh)</comment>
     <requestid>692568</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>022beb8108a1952921374a964f86d6eb</srcmd5>
+    <version>0.7+git114432435e4eadd54334df6b37fcae505079b49f</version>
+    <time>1617279438</time>
+    <user>RBrownSUSE</user>
+    <comment>- Make it build again 
+
+- prepare usrmerge (boo#1029961)</comment>
+    <requestid>882117</requestid>
+  </revision>
 </revisionlist>

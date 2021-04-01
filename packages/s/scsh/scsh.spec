@@ -1,7 +1,7 @@
 #
-# spec file for package scsh
+# spec file for package scsh%{base}
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,9 +38,9 @@ Release:        0
 Summary:        A Unix shell embedded within Scheme
 License:        BSD-3-Clause
 Group:          System/Shells
-Url:            https://scsh.net
-Source0:        https://github.com/scheme/scsh/archive/%{scshcommit}/scsh-%{scshshort}.tar.gz 
-Source1:        https://github.com/scheme/rx/archive/%{rxcommit}/rx-%{rxshort}.tar.gz 
+URL:            https://scsh.net
+Source0:        https://github.com/scheme/scsh/archive/%{scshcommit}/scsh-%{scshshort}.tar.gz
+Source1:        https://github.com/scheme/rx/archive/%{rxcommit}/rx-%{rxshort}.tar.gz
 Source2:        scsh-install-lib-1.3.0.tar.gz
 Patch0:         declaration.patch
 BuildRequires:  autoconf
@@ -66,6 +66,7 @@ BuildRequires:  tex(relsize.sty)
 BuildRequires:  tex(t1ptm.fd)
 BuildRequires:  tex(textcomp.sty)
 BuildRequires:  tex(tocstyle.sty)
+BuildRequires:  tex(txfonts.sty)
 BuildRequires:  tex(wasyb10.tfm)
 BuildRequires:  tex(wasysym.sty)
 Requires:       scsh-base = %version
@@ -121,8 +122,10 @@ make DESTDIR=%{buildroot} SCHEME48VM=%{_libdir}/scheme48-%{scheme}/scheme48vm en
 rm -rf %{buildroot}%{_bindir}
 %else
 make DESTDIR=%{buildroot} SCHEME48VM=%{_libdir}/scheme48-%{scheme}/scheme48vm install
+%if !0%{?usrmerged}
 mkdir -p %{buildroot}/bin
 ln -sf %{_bindir}/scsh %{buildroot}/bin/scsh
+%endif
 rm -rf %{buildroot}%{_libdir}/scsh-%{scshver}/*.so
 rm -rf %{buildroot}%{_datadir}/scsh-%{scshver}
 %endif
@@ -137,7 +140,9 @@ rm -rf %{buildroot}%{_datadir}/scsh-%{scshver}
 %else
 %license COPYING
 %doc README README.rx doc/scsh.pdf
+%if !0%{?usrmerged}
 /bin/scsh
+%endif
 %{_bindir}/scsh
 %{_libdir}/scsh-%{scshver}/*.image
 %endif
