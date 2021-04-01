@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 29 07:57:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 4.4.3
+  * See https://krita.org/en/item/krita-4-4-3-released/
+  * Fix crash in halftone filter due to an access to an invalid pointer
+  * Fix crash when reapplying a filter with reprompting
+  * Fix crash when painting on a filter mask created from a vector
+    selection (kde#432329)
+  * Fix handling the channel flags (kde#432226)
+  * Fix synchronization of zoom level between canvas and the scratchpad
+  * Fix normalization in Smart Patch Tool (kde#430953)
+  * Fix performance issues in the foreground/background color
+    button (kde#432936)
+  * Fix saving incremental backups (kde#432701)
+  * Fix a problem where the scratchpad could be unresponsive (kde#431708)
+  * Fix Color as Alpha and Preserve Alpha in Custom and Clipboard
+    brushes (kde#432274)
+  * Fix the RGBA_brushes bundle so Krita doesn't try to recreate it
+    on startup (kde#431832)
+  * Fix handling of style in KisAngleSelector when the spin box must be
+    shown flat and use the new angle selector everywhere
+- Drop 0001-Use-opengl-es-on-Arm-Linux.patch. Merged upstream.
+
+-------------------------------------------------------------------
 Wed Mar 10 12:11:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build on ARM:
