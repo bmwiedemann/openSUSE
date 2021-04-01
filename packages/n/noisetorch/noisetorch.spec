@@ -17,17 +17,18 @@
 
 
 Name:           noisetorch
-Version:        0.9.0
+Version:        0.10.1
 Release:        0
 Summary:        Real-time microphone noise suppression on Linux
 License:        GPL-3.0-or-later
 URL:            https://github.com/lawl/NoiseTorch
-Source:         NoiseTorch-%{version}.tar.xz
+Source0:        NoiseTorch-%{version}.tar.gz
+Source1:        vendor.tar.gz
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  git-core
-BuildRequires:  go
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  golang(API) = 1.16
 
 %description
 NoiseTorch is an easy to use open source application for Linux with PulseAudio.
@@ -37,16 +38,12 @@ NoiseTorch Virtual Microphone as input to torch the sound of your mechanical
 keyboard, computer fans, trains and the likes.
 
 %prep
-%setup -q -n NoiseTorch-%{version}
+%setup -q -n NoiseTorch-%{version} -a1
 
 %build
-pushd librnnoise_ladspa
-%cmake . -DBUILD_VST_PLUGIN=OFF -DBUILD_LV2_PLUGIN=OFF -DBUILD_LADSPA_PLUGIN=ON
+pushd c/ladspa
 %make_build
 popd
-rm -rf librnnoise_ladspa/build/src
-mv -v librnnoise_ladspa/build/* librnnoise_ladspa
-
 go generate
 CGO_ENABLED=0 GOOS=linux go build -tags release -a -ldflags '-s -w -extldflags "-static"' .
 
