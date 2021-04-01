@@ -139,4 +139,12 @@
     <comment></comment>
     <requestid>731049</requestid>
   </revision>
+  <revision rev="21" vrev="152">
+    <srcmd5>dfa262b854499820915c1cb47a4ba2bf</srcmd5>
+    <version>2.6</version>
+    <time>1617279444</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add patch pixmap2.6-syserr.patch to make it build again</comment>
+    <requestid>882124</requestid>
+  </revision>
 </revisionlist>

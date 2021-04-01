@@ -1,7 +1,7 @@
 #
 # spec file for package pixmap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Patch4:         pixmap2.6.patch
 Patch5:         pixmap2.6-ia64.patch
 Patch6:         pixmap-nonvoid.patch
 Patch7:         pixmap-xorg7.patch
+Patch8:         pixmap2.6-syserr.patch
 BuildRequires:  imake
 BuildRequires:  pkgconfig
 BuildRequires:  rgb
@@ -76,6 +77,7 @@ even incorporate them in your own desktop environment.
 %patch6
 # use this patch only if new X.org 7.x or higher is present
 %patch7
+%patch8
 # contains data used for earlier versions of X.
 rm -rf X11
 
