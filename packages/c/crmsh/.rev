@@ -2209,4 +2209,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>880013</requestid>
   </revision>
+  <revision rev="205" vrev="1">
+    <srcmd5>290cff42446177cde7c1eb01c18cd1cc</srcmd5>
+    <version>4.3.0+20210323.086cc4a3</version>
+    <time>1617279414</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881778</requestid>
+  </revision>
 </revisionlist>

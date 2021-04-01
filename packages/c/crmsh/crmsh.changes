@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 29 02:23:00 UTC 2021 - XinLiang <XLiang@suse.com>
+
+- Update to version crmsh-4.3.0+20210323.086cc4a3
+  * Change the package format 
+
+-------------------------------------------------------------------
+Tue Mar 23 03:29:34 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+git.20210323.086cc4a3:
+  * Dev: behave: add functional test for changing /etc/hosts
+  * Dev: unittest: adjust unit test for get_cluster_node_hostname change
+  * Fix: bootstrap: get the peer node name correctly (bsc#1183654)
+
+-------------------------------------------------------------------
 Fri Mar 19 04:26:16 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.0+git.20210319.b0adc897:
