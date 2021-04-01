@@ -1,7 +1,7 @@
 #
 # spec file for package mate-menu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %define _name   mate_menu
+
 Name:           mate-menu
-Version:        20.04.1
+Version:        20.04.3
 Release:        0
 Summary:        Advanced MATE menu
 License:        GPL-2.0-or-later
 URL:            https://github.com/ubuntu-mate/mate-menu
-Source:         https://github.com/ubuntu-mate/mate-menu/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/ubuntu-mate/mate-menu/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE mate-menu-yast2-software.patch sor.alexei@meowr.ru -- Use YaST2 and GNOME PackageKit package managers.
 Patch0:         mate-menu-yast2-software.patch
 BuildRequires:  gobject-introspection-devel

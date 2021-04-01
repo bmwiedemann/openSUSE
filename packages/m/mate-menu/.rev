@@ -176,4 +176,14 @@
     <comment></comment>
     <requestid>830054</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cfebabf4523ce23c74e7242d4ccbb6f8</srcmd5>
+    <version>20.04.3</version>
+    <time>1617279469</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to version 20.04.3
+  * Use GAppInfo to launch applications
+  * Fix opening Desktop entries with Path (forwarded request 882355 from hillwood)</comment>
+    <requestid>882356</requestid>
+  </revision>
 </revisionlist>
