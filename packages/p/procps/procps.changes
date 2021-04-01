@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 31 10:18:10 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patch procps-3.3.17-bsc1181976.patch based on
+  commit 3dd1661a to fix bsc#1181976 that is change descripton
+  of psr, which is for 39th field of /proc/[pid]/stat
+
+-------------------------------------------------------------------
 Wed Mar 10 21:34:06 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Don't install translated man pages for non-installed binaries

@@ -1231,4 +1231,14 @@ There are also man pages translations but they doesn't get installed automatical
   (uptime, kill). (forwarded request 878235 from 1Antoine1)</comment>
     <requestid>878279</requestid>
   </revision>
+  <revision rev="122" vrev="4">
+    <srcmd5>5514f3a58f162e08f53288a0445566dc</srcmd5>
+    <version>3.3.17</version>
+    <time>1617279387</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add upstream patch procps-3.3.17-bsc1181976.patch based on
+  commit 3dd1661a to fix bsc#1181976 that is change descripton
+  of psr, which is for 39th field of /proc/[pid]/stat</comment>
+    <requestid>882327</requestid>
+  </revision>
 </revisionlist>
