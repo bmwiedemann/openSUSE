@@ -21,10 +21,10 @@
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        Steel Bank Common Lisp
-License:        SUSE-Public-Domain AND BSD-3-Clause
+License:        BSD-3-Clause AND SUSE-Public-Domain
 Group:          Development/Languages/Other
 URL:            http://www.sbcl.org/
 Source:         http://downloads.sourceforge.net/project/sbcl/sbcl/%version/%{name}-%{version}-source.tar.bz2
@@ -133,7 +133,7 @@ CFLAGS="%optflags"
 %if %{with bootstrap}
 %{?sbcl_arch:export SBCL_ARCH=%{sbcl_arch}}
 %if 0%{?with_clisp}
- %_buildshell make.sh --xc-host='env LC_ALL=C.utf8 clisp -q -norc' --prefix=%{_prefix} 
+ %_buildshell make.sh --xc-host='env LC_ALL=C.utf8 clisp -q -norc' --prefix=%{_prefix}
 %else
  %_buildshell ./make.sh \
   --prefix=%{_prefix} \
