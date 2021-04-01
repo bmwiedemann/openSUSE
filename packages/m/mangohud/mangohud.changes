@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Feb 10 04:41:36 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Add baselibs.conf for 32bit package. 
+
+-------------------------------------------------------------------
+Mon Feb  1 13:51:37 UTC 2021 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Fix LD_LIBRARY_PATH for 32bit apps (boo#1180826)  
+
+-------------------------------------------------------------------
 Mon Nov 30 06:15:25 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.6.1:

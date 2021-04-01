@@ -22,7 +22,8 @@ Release:        0
 Summary:        A Vulkan and OpenGL overlay for monitoring
 License:        MIT
 URL:            https://github.com/flightlessmango/MangoHud
-Source:         %{url}/archive/v%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz
+Source1:        baselibs.conf
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  glslang-devel
@@ -41,6 +42,7 @@ A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and m
 %prep
 %autosetup -n MangoHud-%{version}
 sed -i -e '1d;2i#!/usr/bin/bash' bin/mangohud.in
+sed -i 's,^@ld_libdir_mangohud@ ,/usr/\$LIB/mangohud/,' bin/mangohud.in
 
 %build
 %meson \
