@@ -54,4 +54,15 @@
   - Python 2 is deprecate. Support for Python 2 will be removed in 0.8.0.</comment>
     <requestid>877571</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0bb6f2c99e9d371cc4ff06e349348a4d</srcmd5>
+    <version>0.7.1</version>
+    <time>1617279351</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 0.7.1:
+  - Fix regression ``defusedxml.ElementTree.ParseError`` (#63)
+    The ``ParseError`` exception is now the same class object as
+    ``xml.etree.ElementTree.ParseError`` again.</comment>
+    <requestid>880820</requestid>
+  </revision>
 </revisionlist>

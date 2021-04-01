@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without tests
 Name:           python-defusedxml
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        XML bomb protection for Python stdlib modules
 License:        Python-2.0
