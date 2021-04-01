@@ -25,7 +25,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.0.4
+Version:        4.0.5
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.bz2
@@ -79,7 +79,8 @@ BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} > 1320
 BuildRequires:  texinfo >= 5.1
 BuildRequires:  tex(inconsolata.sty)
-%endif # > 1320
+%endif
+## > 1320
 BuildRequires:  tk-devel
 Requires:       R-base-devel = %{version}
 Requires:       R-core = %{version}
@@ -105,7 +106,6 @@ Provides:       R = %{version}
 R is a language which is not entirely unlike the S language developed at
 AT&T Bell Laboratories by Rick Becker, John Chambers and Allan Wilks.
 
-
 %prep
 %setup -n R-%{version}
 #%%patch0 -p1
@@ -127,7 +127,7 @@ for i in doc/manual/R-intro.info doc/manual/R-FAQ.info doc/FAQ doc/manual/R-admi
 done
 %endif
 
-%install 
+%install
 make DESTDIR=%{buildroot} install
 make DESTDIR=%{buildroot} install-pdf
 
@@ -143,7 +143,7 @@ chmod +x %{buildroot}%{_libdir}/R/share/sh/echo.sh
 
 chmod -x %{buildroot}%{_libdir}/R/library/mgcv/CITATION
 
-%fdupes -s $RPM_BUILD_ROOT  
+%fdupes -s $RPM_BUILD_ROOT
 
 # Install ld.so.conf.d file to ensure other applications access the shared lib
 mkdir -p %{buildroot}/etc/ld.so.conf.d
@@ -411,9 +411,9 @@ possible without installing a complete R. (I.e. VTK uses this)
 #ld.so.conf
 %config /etc/ld.so.conf.d/R.conf
 
-%post -n R-core-libs -p /sbin/ldconfig 
+%post -n R-core-libs -p /sbin/ldconfig
 
-%postun -n R-core-libs -p /sbin/ldconfig 
+%postun -n R-core-libs -p /sbin/ldconfig
 
 %package -n R-core-doc
 Summary:        Package provides all documentation of R base. PDFs, man pages, info pages
@@ -840,7 +840,6 @@ Requires:       R-base = %{version}
 %description -n R-stats
 This package provides R-stats, one of R-core packages.
 
-
 %files -n R-stats
 %defattr(-, root, root)
 
@@ -1078,7 +1077,7 @@ Metapackage, Requires: all recommended Packages
 
 %package -n R-boot
 Summary:        Package provides recommended R-boot
-Version:        1.3.25
+Version:        1.3.27
 Release:        %release
 Requires:       R-base
 
@@ -1110,7 +1109,7 @@ This packages provides R-boot, one of the recommended packages.
 
 %package -n R-class
 Summary:        Package provides recommended R-class
-Version:        7.3.17
+Version:        7.3.18
 Release:        %release
 Requires:       R-base
 
@@ -1142,7 +1141,7 @@ This packages provides R-class, one of the recommended packages.
 
 %package -n R-cluster
 Summary:        Package provides recommended R-cluster
-Version:        2.1.0
+Version:        2.1.1
 Release:        %release
 Requires:       R-base
 
@@ -1169,12 +1168,13 @@ This packages provides R-cluster, one of the recommended packages.
 %lang(de) %{_libdir}/R/library/cluster/po/de/
 %lang(en) %{_libdir}/R/library/cluster/po/en*/
 %lang(fr) %{_libdir}/R/library/cluster/po/fr/
+%lang(ko) %{_libdir}/R/library/cluster/po/it/
 %lang(ko) %{_libdir}/R/library/cluster/po/ko/
 %lang(pl) %{_libdir}/R/library/cluster/po/pl/
 
 %package -n R-codetools
 Summary:        Package provides recommended R-codetools
-Version:        0.2.16
+Version:        0.2.18
 Release:        %release
 Requires:       R-base
 
@@ -1195,7 +1195,7 @@ This packages provides R-codetools, one of the recommended packages.
 
 %package -n R-foreign
 Summary:        Package provides recommended R-foreign
-Version:        0.8.80
+Version:        0.8.81
 Release:        %release
 Requires:       R-base
 
@@ -1225,7 +1225,7 @@ This packages provides R-foreign, one of the recommended packages.
 
 %package -n R-KernSmooth
 Summary:        Package provides recommended R-KernSmooth
-Version:        2.23.17
+Version:        2.23.18
 Release:        %release
 Requires:       R-base
 
@@ -1286,7 +1286,7 @@ This packages provides R-lattice, one of the recommended packages.
 
 %package -n R-MASS
 Summary:        Package provides recommended R-MASS
-Version:        7.3.51.6
+Version:        7.3.53.1
 Release:        %release
 Requires:       R-base
 
@@ -1319,7 +1319,7 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Version:        1.2.18
+Version:        1.3.2
 Release:        %release
 Requires:       R-base
 
@@ -1357,7 +1357,7 @@ This packages provides R-Matrix, one of the recommended packages.
 
 %package -n R-Matrix-devel
 Summary:        Package provides header files for recommended R-Matrix
-Version:        1.2.18
+Version:        1.3.2
 Release:        %release
 Requires:       R-Matrix
 Requires:       R-base
@@ -1375,7 +1375,7 @@ Package provides header files for recommended R-Matrix
 
 %package -n R-mgcv
 Summary:        Package provides recommended R-mgcv
-Version:        1.8.31
+Version:        1.8.34
 Release:        %release
 Requires:       R-base
 
@@ -1405,7 +1405,7 @@ This packages provides R-mgcv, one of the recommended packages.
 
 %package -n R-nlme
 Summary:        Package provides recommended R-nlme
-Version:        3.1.148
+Version:        3.1.152
 Release:        %release
 Requires:       R-base
 
@@ -1438,7 +1438,7 @@ This packages provides R-nlme, one of the recommended packages.
 
 %package -n R-nnet
 Summary:        Package provides recommended R-nnet
-Version:        7.3.14
+Version:        7.3.15
 Release:        %release
 Requires:       R-base
 
@@ -1501,7 +1501,7 @@ This packages provides R-rpart, one of the recommended packages.
 
 %package -n R-spatial
 Summary:        Package provides recommended R-spatial
-Version:        7.3.12
+Version:        7.3.13
 Release:        %release
 Requires:       R-base
 
@@ -1534,7 +1534,7 @@ This packages provides R-spatial, one of the recommended packages.
 
 %package -n R-survival
 Summary:        Package provides recommended R-survival
-Version:        3.1.12
+Version:        3.2.10
 Release:        %release
 Requires:       R-base
 

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 31 18:41:20 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- CHANGES IN R 4.0.5:
+
+  BUG FIXES:
+
+    * The change to the internal table in R 4.0.4 for iswprint has been
+          reverted: it contained some errors in printability of 'East
+	        Asian' characters.
+
+    * For packages using LazyData, R CMD build ignored the
+          --resave-data option and the BuildResaveData field of the
+	        DESCRIPTION file (in R versions 4.0.0 to 4.0.4).
+		
+-------------------------------------------------------------------
 Mon Feb 15 10:07:41 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - CHANGES IN R 4.0.4:
