@@ -7,4 +7,12 @@
     <comment>Initial packaging effort.</comment>
     <requestid>864333</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7239e1f3ee11e98ca9cb415097176676</srcmd5>
+    <version>0.7+git20191225.108970c</version>
+    <time>1617279458</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>882231</requestid>
+  </revision>
 </revisionlist>
