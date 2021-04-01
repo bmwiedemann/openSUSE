@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 31 18:19:17 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1617146416.3db1f06ed:
+  * Add script for package installation rollback on demand
+  * Treat result uploads for non-existant modules as error
+  * container: Fix missing shared directories and its permissions
+  * Add param-file option to client
+  * Dependency cron 2021-03-25
+  * t: use JSON::PP when using Devel::Cover
+
+-------------------------------------------------------------------
 Sun Mar 21 00:03:05 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1616233122.00db033:
