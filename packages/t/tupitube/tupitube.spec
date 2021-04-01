@@ -1,7 +1,7 @@
 #
 # spec file for package tupitube
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define	_tupilib  %{_libdir}/%{name}
 %define	_tupidata %{_datadir}/%{name}
 Name:           tupitube
-Version:        0.2.16
+Version:        0.2.17
 Release:        0
 Summary:        2D vectorial/animation tool
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
