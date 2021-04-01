@@ -96,4 +96,17 @@
 - Update Requires from setup.py (forwarded request 861077 from glaubitz)</comment>
     <requestid>861084</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>3f6bd8d197eb3b13a9a8a44a47a2e88f</srcmd5>
+    <version>2.0.0</version>
+    <time>1617279429</time>
+    <user>RBrownSUSE</user>
+    <comment>- Downgrade to previous upstream release
+  + Version 2.0.0
+  + Required to unbreak Azure CLI packages (bsc#1183865)
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 882011 from glaubitz)</comment>
+    <requestid>882013</requestid>
+  </revision>
 </revisionlist>
