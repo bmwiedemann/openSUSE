@@ -4,9 +4,8 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
-#  bar.patch:
+patches:
+  perl-SOAP-Lite-1.27-usr-bin-env.patch: -p1
 #preamble: |-
 # BuildRequires:  gcc-c++
 post_prep: |-

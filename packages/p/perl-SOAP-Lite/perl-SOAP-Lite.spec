@@ -1,7 +1,7 @@
 #
 # spec file for package perl-SOAP-Lite
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Perl's Web Services Toolkit
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND CC-BY-ND-2.0
 Group:          Development/Libraries/Perl
-URL:            http://search.cpan.org/dist/SOAP-Lite/
+URL:            https://metacpan.org/release/SOAP-Lite
 Source0:        https://cpan.metacpan.org/authors/id/P/PH/PHRED/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         perl-SOAP-Lite-1.27-usr-bin-env.patch
@@ -33,6 +33,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Inspector)
 BuildRequires:  perl(Compress::Zlib)
 BuildRequires:  perl(ExtUtils::MakeMaker)
+BuildRequires:  perl(HTTP::Daemon)
 BuildRequires:  perl(IO::File)
 BuildRequires:  perl(IO::SessionData) >= 1.03
 BuildRequires:  perl(IO::Socket::SSL)
@@ -82,7 +83,7 @@ client and server side.
 %prep
 %setup -q -n %{cpan_name}-%{version}
 %patch0 -p1
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

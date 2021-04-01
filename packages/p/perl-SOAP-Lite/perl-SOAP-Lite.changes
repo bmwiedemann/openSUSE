@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 26 11:16:18 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Add build requirement perl(HTTP::Daemon)
+- Update URL to metacpan
+
+-------------------------------------------------------------------
 Fri Jan 25 11:01:07 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Conditionally require optional build test Test::MockObject
