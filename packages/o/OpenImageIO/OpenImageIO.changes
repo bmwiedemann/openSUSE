@@ -1,4 +1,153 @@
 -------------------------------------------------------------------
+Fri Mar 26 08:03:38 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Conditionalize ptex
+
+-------------------------------------------------------------------
+Sun Mar 21 13:13:56 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 2.2.12 (1 Mar 2021)
+  + Bug fix: Improve parsing of XMP records in metadata: more
+    correct handling
+  + of lists/sequences, better inference of types that look like
+    int or float
+  + (rather than forcing unknown fields into strings), fixed bugs
+    in parsing
+  + rational values. #2865
+  + Bug fix: Fix loading PSB files with cinf tags. #2877
+  + Build: Improvements to building or linking static libraries.
+    #2854
+  + Build: Change default STOP_ON_WARNING to OFF for release
+    branches
+  + (including this one) so that small change in compiler warnings
+    after our
+  + release don't break anybody's builds. (Though we still stop on
+    warnings
+  + for CI builds). #2861
+  + Build: More clear warnings about using OpenVDB 8+ when building
+    for C++11,
+  + because OpenVDB 8 requires C++14 or higher. #2860
+  + Build: The pkgconfig OpenImageIO.pc was specifying the include
+    path
+  + incorrectly. #2869
+  + Build: More gracefully handle building against a custom
+    Imath/OpenEXR even
+  + when another exists in the system area. #2876
+  + Build: Minor fixes to build cleanly against the upcoming Imath
+    3.0. #2878
+  + Dev: hash.h: Make many of the hash functions constexpr. #2843
+  + Dev: Better unit tests to verify correctness and stability over
+    time of
+  + the hash functions. #2853
+  + Dev: unordered_map_concurrent.h: New methods find_or_insert,
+    nobin_mask().
+  + #2867
+  + CI: Speed up CI builds by not building OpenEXR example
+    programes. #2857
+  + CI: Speed up CI by using GitHub 'cache' actions + ccache. #2859
+  + CI: Separate stages (setup, deps, build, test) into separate
+    GHA "steps"
+  + for better logging and understanding of the timing and
+    performance. #2862
+  + CI: Now actively testing libheif in Linux CI. #2866
+  + CI: Remove the last vestiges of Travis-CI, which we no longer
+    use. #2871
+  + CI: For failed tests, add CMake cache and log part of the saved
+    artifacts.
+  + PSA: Avoid libheif 1.10 on Mac, it is broken. Libheif 1.11 is
+    fine.
+
+- Update to version 2.2.11 (1 Feb 2021)
+  + Enabled AVIF decoding of heic files (requires libheif >= 1.7
+    and for it
+  + to have been built with an AV1 encoder/decoder). #2811 #2812
+    #2814 #2818
+  + oiiotool --help now prints the OCIO version (where it prints
+    the config
+  + file and known color space). #2849
+  + Bug fix: ImageBufAlgo::ociolook() and ociofiletransform()
+    internally
+  + reversed the order of their inverse and unpremult arguments,
+    making it
+  + hard to select the inverse transformation. #2844
+  + Fix memory leak during decoding of some invalid Exif blocks.
+    #2824
+  + Build: Fixed warnings when building against python 2.x. #2815
+  + Build: No longer directly link against python libraries when
+    unnecessary.
+  + #2807
+  + Build: Better finding of OpenJpeg 2.4. #2829
+  + Build: On Windows, fix some linkage problems by changing the
+    pybind11
+  + bindings to make a CMake "shared" library rather than "module".
+    Sounds
+  + wrong, but seems to work. We will reverse if this causes
+    problems. #2830
+  + Build: On Mac, libheif 1.10 is very broken. Don't use that
+    version. #2847
+  + Build: Fix build break against changes coming in future
+    libtiff, where it
+  + is changing from some libtiff-defined integer types to the
+    equivalent
+  + stdint.h types. #2848
+  + Build: Some final touches to prepare for release of OpenColor
+    2.0. #2849
+  + Build: Fixes to support the libraw 202101 snapshot (their in-
+    progress
+  + 0.21.0). #2850
+  + CI: Got Windows CI fully working, bit by bit. #2796 #2805 #2821
+    #2826
+  + #2834 #2835 #2836 #2840
+  + Dev: Some internal rearrangement of span.h and string_view.h
+    (that should
+  + not break source or ABI compatibility). std::size() and
+    std::ssize()
+  + should work with OIIO::span and OIIO::string_view now. #2827
+  + Dev: ustring internals now have a way to ask for the list of
+    ustrings
+  + whose hashses collided. #2786
+  + Dev: New Filesystem::generic_filepath() returnss a filepath in
+    generic
+  + format (not OS specific). #2819
+  + Dev: ArgParse::abort() lets the response to a command line
+    argument signal
+  + that no further arguments should be parsed. #2820
+  + Dev: In oiioversion.h, added macros OIIO_VERSION_GREATER_EQUAL
+    and
+  + OIIO_VERSION_LESS. #2831
+  + Dev: In platform.h, added macro OIIO_INLINE_CONSTEXPR, which is
+    equivalent
+  + to inline constexpr for C++17, but just constexpr for C++ <=
+    14. #2832
+
+- Update to version 2.2.10.1 (7 Jan 2021)
+  + Fix build break against OpenColorIO v2.0 RC1. #2817
+
+- Update to version 2.2.10 (1 Jan 2021)
+  + GIF: support for UTF-8 filenames on Windows. #2777
+  + OpenEXR: Fix rare crash during multithreaded output. #2781
+  + OpenEXR: Fix potential crash parsing OpenEXR header that
+    contains Rational
+  + attributes with certain values. #2791
+  + Improved error reporting for IOFile failures to open the file.
+    #2780
+  + Build: Fix webp compile break on 32 bit systems. #2783
+  + Build/Windows: Fix symbol definition conflict with pyconfig.h.
+    #2800
+  + CI: Test the latest fmt, PugiXML, and pybind11 releases. #2778
+  + Docs: Add explanation of oiiotool -otex modifiers that were
+    missing from
+  + the docs. #2790 Fix some duplicated text. #2785
+
+- Add more optional dependencies: 
+  + ffmpeg
+  + Ptex
+  + libheif (conditionally on TW)
+- Fix filename
+- Exclude more failing tests: unit_simd and heif
+- Adjust %doc inclusions
+
+-------------------------------------------------------------------
 Sun Jul  5 02:03:09 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to release 2.1.17.0

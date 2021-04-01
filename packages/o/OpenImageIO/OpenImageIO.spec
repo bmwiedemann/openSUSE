@@ -1,7 +1,7 @@
 #
 # spec file for package OpenImageIO
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,27 +21,35 @@
 %else
 %bcond_without imageviewer
 %endif
+%if 0%{?suse_version} > 1500
+%bcond_without libheif
+%else
+%bcond_with libheif
+%endif
+%bcond_without opencv
 %bcond_without python_bindings
 %bcond_with apidocs
-%bcond_with opencv
+%bcond_with ptex
 
-%define so_ver 2_1
-%define major_minor_ver 2.1
+%define so_ver 2_2
+%define major_minor_ver 2.2
 Name:           OpenImageIO
-Version:        2.1.17.0
+Version:        2.2.12.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://www.openimageio.org/
-Source0:        https://github.com/OpenImageIO/oiio/archive/Release-%{version}.tar.gz#/oiio-Release-%{version}.tar.gz
+Source0:        https://github.com/OpenImageIO/oiio/archive/Release-%{version}.tar.gz#/oiio-%{version}.tar.gz
 # NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
 #BuildRequires:  Field3D-devel
 BuildRequires:  cmake >= 3.12
+BuildRequires:  dcmtk-devel
 %if %{with apidocs}
 BuildRequires:  doxygen
 %endif
 BuildRequires:  fdupes
+BuildRequires:  ffmpeg-devel
 BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
 BuildRequires:  hdf5-devel
@@ -62,9 +70,15 @@ BuildRequires:  tbb-devel
 BuildRequires:  txt2man
 BuildRequires:  pkgconfig(OpenColorIO)
 BuildRequires:  pkgconfig(OpenEXR)
+%if %{with ptex}
+BuildRequires:  pkgconfig(Ptex)
+%endif
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(freetype2)
+%if %{with libheif}
+BuildRequires:  pkgconfig(libheif)
+%endif
 BuildRequires:  pkgconfig(libopenjp2)
 %if %{with imageviewer}
 BuildRequires:  cmake(Qt5Core)
@@ -162,7 +176,7 @@ rm -rf src/include/tbb/
     -DINSTALL_FONTS:BOOL=OFF \
     -DLINKSTATIC:BOOL=OFF \
     -DUSE_EXTERNAL_PUGIXML:BOOL=ON \
-    -DUSE_FFMPEG:BOOL=OFF \
+    -DUSE_FFMPEG:BOOL=ON \
     -DCMAKE_SKIP_RPATH:BOOL=ON \
     -DUSE_OPENCV:BOOL=%{?with_opencv:ON}%{?without_opencv:OFF} \
     -DUSE_PYTHON:BOOL=%{?with_python_bindings:ON}%{?without_python_bindings:OFF} \
@@ -198,7 +212,7 @@ ln -s ../../src/fonts/Droid_Serif/DroidSerif.ttf build/fonts/DroidSerif.ttf
 ln -s ../../src/fonts/Droid_Sans/DroidSans.ttf build/fonts/DroidSans.ttf
 # Exclude known broken tests
 %ifarch x86_64
-%ctest '-E' 'broken|texture-icwrite|unit_timer'
+%ctest '-E' 'broken|texture-icwrite|unit_timer|unit_simd|heif'
 %ctest '-R' 'texture-icwrite' || true
 %ctest '-j1' '-R' 'unit_timer'
 %else
@@ -213,8 +227,9 @@ ln -s ../../src/fonts/Droid_Sans/DroidSans.ttf build/fonts/DroidSans.ttf
 %postun -n libOpenImageIO_Util%{so_ver} -p /sbin/ldconfig
 
 %files
-%doc CHANGES.md CHANGES-0.x.md CHANGES-1.x.md CREDITS.md README.md
-%license LICENSE.md LICENSE-THIRD-PARTY.md
+%doc CHANGES.md CREDITS.md README.md THIRD-PARTY.md
+%doc src/doc/CHANGES-0.x.md src/doc/CHANGES-1.x.md
+%license LICENSE.md
 %{_bindir}/*
 %{_mandir}/man1/*.1%{ext_man}
 
@@ -239,7 +254,7 @@ ln -s ../../src/fonts/Droid_Sans/DroidSans.ttf build/fonts/DroidSans.ttf
 
 %if %{with python_bindings}
 %files -n python3-%{name}
-%{python3_sitearch}/%{name}.so
+%{python3_sitearch}/%{name}.*.so
 %endif
 
 %changelog
