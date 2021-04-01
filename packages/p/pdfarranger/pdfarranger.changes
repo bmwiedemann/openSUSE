@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Mon Feb  1 09:10:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.7.0
+  * Allow to edit Keywords, Subjects and dates in document info
+  * Ctrl+click now remove a single page from the selection
+  * Allow selection of odd or even pages
+  * Add option to crop white borders
+  * Allow export to individual files
+  * Enable autoscroll when rubberband selecting
+  * Display the current selection in the status bar
+  * Fix import of images with alpha channel
+  * Allow to scroll the view with up/down & page up/down keys
+  * Allow to zoom to full page
+  * Add option to select all pages from same file
+  * Fix visual issue in dialogs
+  * Improve responsiveness when scrolling zoom levels
+  * Change behavior when selecting with shift + click
+  * Select a continuous range when drag-selecting
+  * Add page scaling
+  * Allow to customize keyboard shortcut from the configuration file
+  * Add option to select all pages with the same page format
+  * Add 'new' button to open new document
+  * Support import of encrypted PDF file
+  * Allow to insert blank pages
+  * Split Page now support n x m split instead of just 1 x 2
+  * Reduce memory usage
+  * Fix the shortcut created by the Windows MSI installer
+  * Problems with editing if not saving after each operation
+  * Fix slow paste-interleave-odd/even
+
+-------------------------------------------------------------------
+Fri Aug 28 07:12:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.6.2. Changes since version 1.5.3:
+  * Remove an invalid key from the .desktop file
+  * Fix empty string support in the property editor
+  * Grey out paste actions if nothing is in the clipboard
+  * Improve iconview look and feel
+  * Support image file import
+  * Ask user confirmation before quit
+  * New application icon
+  * Insert pages of a PDF at drop location
+  * Support page drag and drop on Windows
+  * Support Copy/Paste from a file explorer
+  * Recommend pikepdf >= 1.15.1
+  * Update some translations
+- Update description
+
+-------------------------------------------------------------------
+Sun Apr 19 14:32:48 UTC 2020 - Karl Cheng <qantas94heavy@gmail.com>
+
+- Initial build of version 1.5.3
