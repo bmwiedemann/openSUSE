@@ -972,4 +972,12 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
 - Add qtool perl script from contrib as this is very handy</comment>
     <requestid>870505</requestid>
   </revision>
+  <revision rev="103" vrev="7">
+    <srcmd5>004ee4994d7ad00fafbc839ed9dc002f</srcmd5>
+    <version>8.16.1</version>
+    <time>1617279373</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>882201</requestid>
+  </revision>
 </revisionlist>

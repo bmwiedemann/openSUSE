@@ -69,7 +69,7 @@ Requires(pre):  sysvinit(network)
 %else
 Requires(pre):  %insserv_prereq
 Requires(post): %insserv_prereq
-Requires(postun): %insserv_prereq
+Requires(postun):%insserv_prereq
 %endif
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(daemon)
@@ -81,12 +81,14 @@ Requires(post): %fillup_prereq
 Requires(post): coreutils
 Requires(post): permissions
 Requires(post): sed
-Requires(posttrans): coreutils
-Requires(posttrans): findutils
-Requires(posttrans): m4
-Requires(verify): permissions
+Requires(posttrans):coreutils
+Requires(posttrans):findutils
+Requires(posttrans):m4
+Requires(verify):permissions
 %{?systemd_ordering}
-Conflicts:      smail postfix postfix-tls
+Conflicts:      postfix
+Conflicts:      postfix-tls
+Conflicts:      smail
 Obsoletes:      sendmail-tls
 Version:        8.16.1
 Release:        0
@@ -209,7 +211,7 @@ processed mail on to the MTA (e.g. sendmail).
 %patch5 -p1 -b .fdmilt
 %patch0 -p0 -b .p0
 %patch8 -p1 -b .reproducible
-    tar --strip-components=1 -xf %{S:1} 
+    tar --strip-components=1 -xf %{S:1}
     set -f
     cat <<-EOF > file-list
 	%%defattr(-,root,root)
