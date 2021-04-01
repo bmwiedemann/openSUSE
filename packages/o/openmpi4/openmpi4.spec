@@ -1,7 +1,7 @@
 #
-# spec file for package openmpi4
+# spec file for package %{package_name}%{?testsuite:-testsuite}
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
 #                         University Research and Technology
 #                         Corporation.  All rights reserved.
@@ -42,8 +42,8 @@
 # % define build_static_devel 1
 
 %define pname openmpi
-%define vers 4.0.5
-%define _vers 4_0_5
+%define vers 4.1.0
+%define _vers 4_1_0
 %define m_f_ver 4
 %bcond_with ringdisabled
 
@@ -115,7 +115,7 @@ ExclusiveArch:  do_not_build
 %global hpc_openmpi_pack_version %{hpc_openmpi_dep_version}
 %endif
 
-%define git_ver .0.88d8972a4085
+%define git_ver .0.9ac5471035
 
 #############################################################################
 #
@@ -135,7 +135,6 @@ Source2:        openmpi4-rpmlintrc
 Source3:        macros.hpc-openmpi
 Source4:        mpivars.sh
 Source5:        mpivars.csh
-Patch0:         reproducible.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -163,7 +162,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  mpi-selector
 Requires:       mpi-selector
-Requires(preun): mpi-selector
+Requires(preun):mpi-selector
 Requires:       %{package_name}-libs = %{version}
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
@@ -210,7 +209,7 @@ Requires:       openssh
 %define mpi_bindir %hpc_bindir
 %define mpi_libdir %hpc_libdir
 %define mpi_datadir %hpc_datadir
-%define mpi_helpdir %{mpi_datadir}/openmpi 
+%define mpi_helpdir %{mpi_datadir}/openmpi
 %define mpi_includedir %hpc_includedir
 %define mpi_mandir %hpc_mandir
 
@@ -289,7 +288,7 @@ programming API, which is a Partitioned Global Address Space (PGAS)
 abstraction layer providing inter-process communication using
 one-sided communication techniques.
 
-This package provides the development files for Open MPI/OpenSHMEM 
+This package provides the development files for Open MPI/OpenSHMEM
 version %{m_f_ver}, such as wrapper compilers and header files for
 MPI/OpenSHMEM development.
 
@@ -401,8 +400,6 @@ openmpi%{m_f_ver}-libs
 EOF
 %endif
 
-%patch0 -p1
-
 # Live patch the VERSION file
 sed -i -e 's/^greek=.*$/greek=%{git_ver}/' -e 's/^repo_rev=.*$/repo_rev=%{version}%{git_ver}/' \
        -e 's/^date=.*$/date="OpenMPI %{version} Distribution for SUSE"/' VERSION
@@ -414,8 +411,10 @@ sed -i -e 's/^greek=.*$/greek=%{git_ver}/' -e 's/^repo_rev=.*$/repo_rev=%{versio
 #############################################################################
 
 %build
+# make build reproducible
 export USER=OBS
 export HOSTNAME=OBS
+# OBS sets SOURCE_DATE_EPOCH
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %{?with_hpc:%hpc_debug}
 ./autogen.pl --force
