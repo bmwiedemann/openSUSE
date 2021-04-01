@@ -17,14 +17,12 @@
 
 
 Name:           haruna
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
 URL:            https://github.com/g-fb/haruna
 Source0:        https://github.com/g-fb/haruna/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM haruna-0.5.0-Qt512_fix.patch
-Patch0:         haruna-0.5.0-Qt512_fix.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  cmake >= 3.15
 BuildRequires:  extra-cmake-modules >= 1.0.0
