@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSEway
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,29 +32,29 @@ BuildRequires:  aaa_base
 BuildRequires:  systemd
 Requires:       NetworkManager
 Requires:       aaa_base
-Requires:       adwaita-qt5
+Recommends:     adwaita-qt5
 Requires:       bzip2
 Requires:       command-not-found
 Requires:       curl
-Requires:       firefox
+Recommends:     firefox
 Requires:       gfxboot-branding-openSUSE
 Requires:       git
 Requires:       greetd
 Requires:       grep
-Requires:       gtkgreet
 Requires:       gzip
-Requires:       imv
+Requires:       (gtkgreet or wlgreet)
+Suggests:       imv
 Requires:       jq
 Requires:       less
-Requires:       libqt5-qtwayland
-Requires:       mpv
+Recommends:     libqt5-qtwayland
+Suggests:       mpv
 Requires:       pipewire
-Requires:       qt5ct
+Recommends:     qt5ct
 Requires:       sudo
 Requires:       sway-branding-openSUSE
 Requires:       tar
-Requires:       vifm
-Requires:       vim
+Suggests:       vifm
+Suggests:       vim
 Requires:       waybar-branding-openSUSE
 Requires:       wget
 Requires:       xdg-desktop-portal
@@ -87,13 +87,13 @@ Requires:       bc
 Requires:       brightnessctl
 Requires:       fontawesome-fonts
 Requires:       jq
+Requires:       pamixer
 Requires:       patterns-sway-sway
 Requires:       pavucontrol
-Requires:       pamixer
-Requires:       wob
+Requires:       polkit-gnome
 Requires:       sway
 Requires:       wallpaper-branding-openSUSE
-Requires:       polkit-gnome
+Requires:       wob
 Provides:       sway-branding = %{version}
 Conflicts:      otherproviders(sway-branding)
 Supplements:    packageand(sway:branding-openSUSE)
