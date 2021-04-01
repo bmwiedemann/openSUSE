@@ -683,4 +683,41 @@
   - mlterm-cast.patch (upstreamed)</comment>
     <requestid>831439</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>f1c1227dd15bc08b6d7d9b384b989dc4</srcmd5>
+    <version>3.9.1</version>
+    <time>1617279440</time>
+    <user>RBrownSUSE</user>
+    <comment>- version update to 3.9.1
+  * Support copy mode which starts by Control+Shift+Return.
+  * Support OSC 1337;Setmark ST.
+  * Support CSI 3 J (ED) which clears backlog.
+  * Support gradle to build mlterm for Android. (See doc/en/README.android)
+  * Add --enable-utmp-suid option to ./configure script.
+    (The default value is disabled.)
+  * Add --with-utmp option which specifies the way of accessing to utmp database
+    to ./configure script.
+  * Add SCROLL_UP_TO_MARK, SCROLL_DOWN_TO_MARK and SET_MARK shortcut keys.
+  * Add resize_mode / --rz option, and drop scroll_on_resize / --sr option.
+    (If you want to revert to the old behavior, specify --rz=none option.)
+  * Add emoji_file_format / --emojifmt option.
+  * Add libvterm 0.1 API symbols to libvterm compatible library.
+  * Add vte 0.62 API symbols to libvte compatible library.
+  * Drop SCROLL_DOWN and PAGE_DOWN shortcut keys.
+  * Drop use_extended_scroll_shortcut option and SCROLL_UP shortcut key is enabled
+    by default. (If you want to disable it, add UNUSED=SCROLL_UP to ~/.mlterm/key.)
+  * Update unicode property table (generated from UnicodeData.txt and
+    EastAsianWidth.txt) to version 13.0.0.
+  * letter_space / --csp option accepts negative value.
+  * libvte compatible library supports XInput2.
+  * Bug fixes:
+    Fix a bug which caused a 'mlimgloader' process not to exit after loading a wall picture.
+    (Enbugged at 3.8.8)
+    Fix a bug which disabled keyboard and mouse on Haiku R1/beta2.
+    Mlconfig starts correctly by Ctrl + RightClick on cygwin 3.1.4.
+    Fix https://sourceforge.net/p/mlterm/mailman/message/37033060/
+    Fix segfault of mlcc in exiting after changing configurations.
+    Fix segfault in double click at RTL characters. (Enbugged at 3.6.2)</comment>
+    <requestid>882137</requestid>
+  </revision>
 </revisionlist>
