@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Mar 27 14:02:07 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 2.8.3:
+  * Fixed excessive read-ahead with incremental inputs.
+  * Added state manipulators remove_first_state,
+    remove_last_states, rotate_states_right, rotate_states_left
+    and reverse_states to contrib.
+  * Reduced the number of intermediate parse tree nodes.
+- Changes from version 2.8.2:
+  * Fixed parse tree node generation to correctly remove
+    intermediate nodes.
+- Add -Wno-error=type-limits to optflags to fix build with GCC 10
+  (gh#taocpp/PEGTL#217).
+- Use ctest macro to run test suite.
+
+-------------------------------------------------------------------
 Thu Jan 30 18:18:26 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.8.1:

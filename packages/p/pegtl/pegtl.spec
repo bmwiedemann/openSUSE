@@ -1,7 +1,7 @@
 #
 # spec file for package pegtl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Summary:        Parsing Expression Grammar (PEG) Template Library
 License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/taocpp/PEGTL
-Version:        2.8.1
+Version:        2.8.3
 Release:        0
 BuildRequires:  cmake >= 3.8.0
 BuildRequires:  gcc-c++
@@ -59,6 +59,8 @@ PEGTL (Parsing Expression Grammar Template Library).
 %setup -q -n PEGTL-%version
 
 %build
+# Fix build with GCC 10; To be removed upon upgrade to 3.x (https://github.com/taocpp/PEGTL/issues/217)
+export CXXFLAGS="%{optflags} -Wno-error=type-limits"
 %cmake \
   -DPEGTL_INSTALL_DOC_DIR:PATH=%{_defaultdocdir}/pegtl \
   -DPEGTL_INSTALL_CMAKE_DIR:PATH=%{_datadir}/cmake/Modules \
@@ -72,7 +74,7 @@ PEGTL (Parsing Expression Grammar Template Library).
 rm %{buildroot}%{_defaultdocdir}/pegtl/LICENSE
 
 %check
-make %{?_smp_mflags}
+%ctest
 
 %files devel
 %{_includedir}/*
