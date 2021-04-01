@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-qtconsole
-Version:        5.0.2
+Version:        5.0.3
 Release:        0
 Summary:        Jupyter Qt console
 License:        BSD-3-Clause
@@ -44,6 +44,8 @@ Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 4.1
 Requires:       python-jupyter-core
 Requires:       python-traitlets
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Provides:       python-jupyter_qtconsole = %{version}
 Obsoletes:      python-jupyter_qtconsole < %{version}
 BuildArch:      noarch
@@ -115,12 +117,13 @@ popd
 %check
 export QT_QPA_PLATFORM="offscreen"
 # test skips: https://github.com/jupyter/qtconsole/issues/443
-%pytest -k "not (test_00 and (test_scroll or test_debug))"
+# now with test_input too. But does not seem to happen on the build server, only locally.
+%pytest -k "not (test_00 and (test_scroll or test_debug or test_input))"
 
-%post -n jupyter-qtconsole
+%post
 %python_install_alternative jupyter-qtconsole
 
-%postun -n jupyter-qtconsole
+%postun
 %python_uninstall_alternative jupyter-qtconsole
 
 %files %{python_files}
