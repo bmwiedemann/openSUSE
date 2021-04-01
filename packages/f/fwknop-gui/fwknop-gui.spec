@@ -1,6 +1,7 @@
 #
 # spec file for package fwknop-gui
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +21,7 @@ Name:           fwknop-gui
 Version:        1.3
 Release:        0
 Summary:        FireWall KNock OPerator Graphical User Interface
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://incomsystems.biz/fwknop-gui/
 #Git-Clone:     https://github.com/jp-bennett/fwknop-gui.git
