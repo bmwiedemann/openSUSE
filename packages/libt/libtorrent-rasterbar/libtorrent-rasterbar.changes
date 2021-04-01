@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 29 06:06:49 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.3
+  * add new torrent_file_with_hashes() which includes piece
+    layers for creating .torrent files
+  * add file_prio_alert, posted when file priorities are updated
+  * fix issue where set_piece_hashes() would not propagate file
+    errors
+  * add missing python binding for event_t
+  * add convenience header libtorrent/libtorrent.hpp
+  * increase default max_allowed_in_request_queue
+  * fix loading non-ascii filenames on windows with torrent_info
+    constructor (2.0 regression)
+  * add std::hash<> specialization for info_hash_t
+  * fix integer overflow in hash_picker and properly restrict
+    max file sizes in torrents
+  * strengthen SSRF mitigation for web seeds
+
+-------------------------------------------------------------------
 Fri Jan  8 11:42:20 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.2
