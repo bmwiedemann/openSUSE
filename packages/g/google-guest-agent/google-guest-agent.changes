@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 31 12:53:34 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210223.01 (bsc#1183414, bsc#1183415)
+  * add a match block to sshd_config for SAs (#99)
+  * add ipv6 forwarded ip support (#101)
+  * call restorecon on ssh host keys (#98)
+  * Include startup and shutdown in preset (#96)
+  * set metadata URL earlier (#94)
+- Fix activation logic of systemd services (bsc#1182793)
+
+-------------------------------------------------------------------
 Tue Jan 12 01:16:48 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20201211.00

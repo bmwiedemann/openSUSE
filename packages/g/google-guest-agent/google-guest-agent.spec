@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-guest-agent
-Version:        20201211.00
+Version:        20210223.01
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -91,24 +91,32 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
     %service_del_preun google-guest-agent.service google-shutdown-scripts.service google-startup-scripts.service
 
 %post
-    %service_add_post google-guest-agent.service google-shutdown-scripts.service google-startup-scripts.service
-
     # Handle enabling of services during an upgrade from the old google-compute-engine-init package
-    if [ "$1" == "1" ] && ! [ -e /.buildenv ] || systemctl is-enabled -q google-accounts-daemon.service 2>/dev/null ; then
-        systemctl enable google-guest-agent.service
+    if [ "$1" == "1" ] && ! [ -e /.buildenv ] && systemctl is-enabled -q google-accounts-daemon.service 2>/dev/null ; then
+	mktemp --suffix ".google-accounts-daemon-enabled"
 	if systemctl is-active --quiet google-accounts-daemon.service ; then
-	    systemctl stop google-accounts-daemon.service
-            systemctl start google-guest-agent.service
+	    mktemp --suffix ".google-accounts-daemon-active"
 	fi
     fi
-    if [ "$1" == "1" ] && ! [ -e /.buildenv ] || systemctl is-enabled -q google-startup-scripts 2>/dev/null ; then
+    if [ "$1" == "1" ] && ! [ -e /.buildenv ] && systemctl is-enabled -q google-startup-scripts.service 2>/dev/null ; then
 	mktemp --suffix ".google-startup-scripts"
     fi
-    if [ "$1" == "1" ] && ! [ -e /.buildenv ] || systemctl is-enabled -q google-shutdown-scripts 2>/dev/null ; then
+    if [ "$1" == "1" ] && ! [ -e /.buildenv ] && systemctl is-enabled -q google-shutdown-scripts.service 2>/dev/null ; then
 	mktemp --suffix ".google-shutdown-scripts"
     fi
 
+    %service_add_post google-guest-agent.service google-shutdown-scripts.service google-startup-scripts.service
+
 %posttrans
+    if ! [ -e /.buildenv ] && [ -f /tmp/tmp\.[A-Z,a-z,0-9]*\.google-accounts-daemon-enabled ] ; then
+        systemctl enable google-guest-agent.service
+	rm -f /tmp/tmp\.[A-Z,a-z,0-9]*\.google-accounts-daemon-enabled
+	if [ -f /tmp/tmp\.[A-Z,a-z,0-9]*\.google-accounts-daemon-enabled ] ; then
+	    systemctl stop google-accounts-daemon.service
+	    systemctl start google-guest-agent.service
+	    rm -f /tmp/tmp\.[A-Z,a-z,0-9]*\.google-accounts-daemon-active
+	fi
+    fi
     if ! [ -e /.buildenv ] && [ -f /tmp/tmp\.[A-Z,a-z,0-9]*\.google-startup-scripts ] ; then
         rm -f /tmp/tmp\.[A-Z,a-z,0-9]*\.google-startup-scripts
         systemctl enable google-startup-scripts.service
