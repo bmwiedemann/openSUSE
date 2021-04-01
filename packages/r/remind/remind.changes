@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 30 21:48:24 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- CHANGES TO REMIND
+
+* VERSION 3.3 Patch 6 - 2021-03-30
+
+- test/test.rem: Change local to en_US.utf-8 only if current locale
+  is not a UTF-8 locale.
+
+- MINOR CHANGE: Remind's arithemtic operators (+, -, *, /) give errors
+  on overflow rather than silently giving the wrong answer.
+
+- MINOR CHANGE: Add $IntMin and $IntMax system variables.
+
+- DOCUMENTATION FIX: Document that TkRemind now requires Tcl/Tk version
+  8.5 or newer.
+
+-------------------------------------------------------------------
 Fri Jan 22 08:16:00 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - update to remind 3.3.5
