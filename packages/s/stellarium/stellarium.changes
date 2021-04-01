@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Wed Mar 31 10:19:05 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.21.0:
+  * Added accurate planet axis orientation and rotation
+  * Added lunar libration (GH: #877)
+  * Added lines for the Invariable Plane and Projected Solar Equator
+  * Added solar altitude to planetary feature nomenclature
+  * Added describe planetary coordinates and changes in the nomenclature
+    display into Stellarium User Guide
+  * Added new language: Spanish (Latin America)
+  * Added ability to scaling of Sun and planets (GH: #1263)
+  * Added new magnitude algorithms for planets from Mallama&Hilton 2018 
+  * Added Earth shadow circles for topocentric observer (GH: #430)
+  * Added new 4k texture for the Moon
+  * Added lower limit for aFOV parameter of ocular in the GUI to avoid
+    input wrong data
+  * Added visibility of an antisolar point for other planets 
+  * Added ability to get all designations of DSO in scripts 
+  * Added ability to show hourly motion in decimal degrees 
+  * Added more cardinal points (GH: #1522, #1529)
+  * Added ability to switching off drawing of Solar glare
+  * Added a new sky culture based on Al-Sufi
+    "Book of Fixed Stars" written ~ 964 AD 
+  * Added Old Hindu calendars
+  * Added Islamic (algorithmic) and Hebrew calendar.
+  * Added French Revolution calendar (arithmetic version)
+  * Added Persian (arithmetic) calendar
+  * Added button to set standard atmosphere
+  * Added ability to translation/transliteration of Roman (latin) terms
+  * Added ability to use UTC time when navigational stars are displayed
+  * Added acknowledgment section into Help/About window (GH: #1568)
+  * Added cosmetic fix for radio communication data: no need extra
+    precision to show data in Satellites plugin
+  * Fixed compatibility of ToneReproducer shader with GLES
+  * Fixed retranslation of calendars (GH: #1545)
+  * Fixed vertical position of calendar info panel
+  * Fixed height-dependent twinkle for star-like objects 
+  * Fixed capturing a screenshots under macOS High Sierra and later
+  * Fixed documentation for API
+  * Fixed display the extincted magnitudes for all objects
+  * Fixed reading textures (GH: #1547)
+  * Fixed alignment of an intercardinal direction markers
+  * Fixed work of multisampling mode when in Spout isn’t used
+  * Fixed visualization zodiacal light at low Bortle values
+  * Fixed the drawing a degrees on compass on HiDPI devices
+  * Fixed search short phrases (GH: #1528)
+  * Fixed orientation of Jupiter, Uranus and Venus (GH: #357)
+  * Fixed inexact rotation of Moon (GH: #347)
+  * Fixed wrong rendering of Jupiter (GH: #1261)
+  * Fixed incorrect moon terminator (GH: #973)
+  * Fixed a skybox.ssc script (GH: #1461)
+  * Fixed crash when trails are enabled (GH: #1471)
+  * Fixed crash when choosing Zero Horizon landscape (GH: #1466)
+  * Fixed displaying labels of coordinate grids on HiDPI devices
+  * Fixed a labeling hour angles (GH: #1457)
+  * Fixed API docs
+  * Fixed styles of QMessageBox and QColorDialog (GH: #1451)
+  * Fixed WUI of Remote Control plugin
+  * Fixed HiDPI issue for Observability plugin
+  * Fixed the placement of cardinal marks when compass mark
+    is enabled on the HiDPI devices
+  * Fixed placement of the value of equation of time for HiDPI devices
+  * Fixed crash at exit (GH: #1479)
+  * Fixed work of Spout mode: inhibit multisampling when in Spout mode 
+  * Fixed DOI link for “Calendrical Calculations” (GH: #1562, #1566)
+  * Fixed missing strings for translation (GH: #1562, #1566)
+  * Fixed tooltips and placeholders (GH: #1562, #1566)
+  * Fixed comments for translators (GH: #1562, #1566)
+  * Fixed artifacts in the GUI when language is changed
+  * Fixed images and typos in Stellarium User Guide
+  * Fixed bibliography in Stellarium User Guide
+  * Fixed the figure of Virgo constellation (GH: #1570)
+  * Fixed stupid typos in satellites.json file
+  * Fixed illumination during Lunar eclipse in Scenery 3D plugin 
+  * Fixed behavior “Clear” button in Script Console (GH: #1499)
+  * Fixed lunar magnitude: try an accurate Lunar magnitude formula
+  * Fixed lunar eclipses: redo the eclipse push effect for lunar eclipses
+  * Fixed Mesa mode for Windows (GH: #1551)
+  * Fixed multisampling on non-Windows systems (GH: #1553)
+  * Fixed typos in Al-Sufi skyculture
+  * Updated AstroCalc/Phenomena tool (GH: #1520)
+  * Updated planetary features data
+  * Updated core: slight restructuring of Planets, Comets,
+    MinorPlanets, SolarSystem loader
+  * Updated core: using data from WGCCRE reports 2009, 2015 and Explanatory
+    Supplement to the AA 2013 (with error fixed by the 1992 ed.)
+    for rotation elements
+  * Updated core: keeps original Stellarium planet rotation model
+    (undocumented) where new rotation elements are unavailable
+  * Updated code of INDI client to version 1.8.5
+  * Updated code for building Stellarium without NLS and Scripting support
+  * Updated GUI (GH: #1204)
+  * Updated Satellites plugin
+  * Updated default satellites database
+  * Updated GUI of Navigational stars plugin
+  * Updated default pulsars catalog
+  * Updated description of supernovae plugin (GH: #500)
+  * Updated description of calendars plugin in Stellarium User Guide
+  * Removed proper name for NGC 2194 (GH: #1530)
+  * Removed Arabic skyculture: Arabic SC was replaced by more accurate
+    "al-Sufi" skyculture
+
+-------------------------------------------------------------------
 Mon Feb 15 13:05:41 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Remove duplicated desktop file
