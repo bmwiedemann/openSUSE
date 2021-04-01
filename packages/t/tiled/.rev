@@ -499,4 +499,41 @@
   * qmake: Support linking to system Zstd on all UNIX-like systems</comment>
     <requestid>849037</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d0d41678c6bcd45d2f5f7e113f4fff24</srcmd5>
+    <version>1.5.0</version>
+    <time>1617279423</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.5.0:
+  * Unified Wang and Terrain tools (backwards incompatible change!)
+  * Added support for a per-layer parallax scrolling factor (#2951[1])
+  * Added export to GameMaker Studio 2.3 (#1642[2])
+  * Added option to change object selection behavior (#2865[3])
+  * Added Monospace option to the multi-line text editor
+  * Added option to auto-scroll on middle click
+  * Added smooth scrolling option for arrow keys
+  * Added a 'Convert to Polygon' action for rectangle objects
+  * Added support for drawing with a blob tileset
+  * Added 'Duplicate Terrain Set' action
+  * Added Terrain Set type (Corner, Edge or Mixed)
+  * Added support for rotating and flipping Terrain tiles (by Christof Petig, #2912[4])
+  * Added support for exporting to RPTools MapTool[5] RpMap files (by Christof Petig, #2926[6])
+  * Added Ctrl+Shift to toggle Snap to Fine Grid (by sverx, #2895[7])
+  * Eraser: Added Shift to erase on all layers (by Michael Aganier, #2897[8])
+  * Automatically add .world extension to new World files
+  * Shape Fill Tool now displays the size of the current shape (#2808[9])
+  * Tile Collision Editor: Added action to add an auto-detected bounding box collision rectangle (by Robin Macharg, #1960[10])
+  * Tile Collision Editor: Added context menu action to copy selected collision objects to all other selected tiles (by Robin Macharg, #1960[10])
+  * Tilesets view: Added &quot;Edit Tileset&quot; action to tab context menu
+  * Tilesets view: Added &quot;Add External Tileset&quot; action to tilesets menu
+  * Scripting: Added initial API for creating and modifying Terrain Sets
+  * Scripting: Added API for working with images (#2787[11])
+  * Scripting: Added API for launching other processes (#2783[12])
+  * Scripting: Added MapView.center property
+  * Scripting: Added missing Layer.id and Layer.parentLayer properties
+  * Scripting: Enable extending most context menus
+  * Scripting: Fixed reset of file formats on script reload (#2911[13])
+  * Scripting: Fixed missing GroupLayer and ImageLayer constructors</comment>
+    <requestid>881837</requestid>
+  </revision>
 </revisionlist>
