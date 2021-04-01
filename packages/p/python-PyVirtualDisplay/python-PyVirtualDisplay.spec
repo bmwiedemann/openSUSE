@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyVirtualDisplay
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyVirtualDisplay
-Version:        1.3.2
+Version:        2.1
 Release:        0
 Summary:        Python wrapper for Xvfb, Xephyr and Xvnc
 License:        BSD-2-Clause
@@ -36,8 +36,7 @@ BuildRequires:  %{python_module EasyProcess}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module entrypoint2}
-BuildRequires:  %{python_module path.py}
-BuildRequires:  %{python_module pyscreenshot}
+BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module vncdotool >= 0.13.0}
@@ -53,7 +52,6 @@ PyVirtualDisplay is a python wrapper for Xvfb, Xephyr and Xvnc.
 
 %prep
 %setup -q -n PyVirtualDisplay-%{version}
-sed -i 's/from backports import tempfile/import tempfile/' tests/test_xvnc.py
 
 %build
 %python_build
@@ -69,6 +67,7 @@ sed -i 's/from backports import tempfile/import tempfile/' tests/test_xvnc.py
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pyvirtualdisplay
+%{python_sitelib}/PyVirtualDisplay-%{version}-*info
 
 %changelog
