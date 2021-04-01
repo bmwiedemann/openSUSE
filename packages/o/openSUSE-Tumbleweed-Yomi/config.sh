@@ -53,7 +53,7 @@ passwd -d root
 pam-config -a --nullok
 
 # Support SSH into the root user
-echo 'PermitEmptyPasswords yes' >> /etc/ssh/sshd_config
+# echo 'PermitEmptyPasswords yes' >> /etc/ssh/sshd_config
 
 #======================================
 # Specify default runlevel

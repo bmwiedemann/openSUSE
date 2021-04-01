@@ -153,4 +153,12 @@ different profiles.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>841592</requestid>
   </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>fb842b0bcf3ab7ec51b8cf110393e48b</srcmd5>
+    <version>1.0.0</version>
+    <time>1617279501</time>
+    <user>RBrownSUSE</user>
+    <comment>- Remove PermitEmptyPasswords from SSH config (Fix bsc#1182744)</comment>
+    <requestid>882547</requestid>
+  </revision>
 </revisionlist>
