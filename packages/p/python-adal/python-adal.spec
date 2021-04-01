@@ -1,7 +1,7 @@
 #
 # spec file for package python-adal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-adal
-Version:        1.2.5
+Version:        1.2.6
 Release:        0
 Summary:        Azure Active Directory library
 License:        MIT
