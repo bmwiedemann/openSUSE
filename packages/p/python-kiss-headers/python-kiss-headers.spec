@@ -21,7 +21,7 @@
 Name:           python-kiss-headers
 Version:        2.3.0
 Release:        0
-Summary:        Python package for HTTP/1.1 style headers. Parse headers to objects
+Summary:        Python package for parsing HTTP/1.1 style headers to objects
 License:        MIT
 URL:            https://www.kiss-headers.tech/
 Source0:        https://pypi.io/packages/source/k/kiss-headers/kiss-headers-%{version}.tar.gz
@@ -31,8 +31,8 @@ BuildRequires:  python-rpm-macros
 %python_subpackages
 
 %description
-Python package for object oriented headers, HTTP/1.1 style. Parser and
-serializer for http headers.
+A Python package for object-oriented HTTP/1.1 style headers. It includes
+a parser and serializer for HTTP headers.
 
 %prep
 %autosetup -n kiss-headers-%{version}
