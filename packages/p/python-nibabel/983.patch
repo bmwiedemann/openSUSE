@@ -1,0 +1,39 @@
+From 84c7cf444e0c14fb6706af92e5f96f85c8aadf3d Mon Sep 17 00:00:00 2001
+From: "Christopher J. Markiewicz" <markiewicz@stanford.edu>
+Date: Sun, 20 Dec 2020 12:12:12 -0500
+Subject: [PATCH] TEST: Use more constrained mock when testing optpkg
+
+The existing mock raised errors on any import except a whitelisted
+unittest. Because pytest monkeypatches the Python interpreter and then
+performs imports within the patched functions, this breaks in Pytest
+3.10. Move to an import that blacklists the specific module we're
+testing.
+---
+ nibabel/tests/test_optpkg.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/nibabel/tests/test_optpkg.py b/nibabel/tests/test_optpkg.py
+index 925180ce6..2bc702210 100644
+--- a/nibabel/tests/test_optpkg.py
++++ b/nibabel/tests/test_optpkg.py
+@@ -39,14 +39,14 @@ def test_basic():
+     # We never have package _not_a_package
+     assert_bad('_not_a_package')
+ 
+-    # setup_module imports unittest, so make sure we don't disrupt that
++    # Only disrupt imports for "nottriedbefore" package
+     orig_import = builtins.__import__
+     def raise_Exception(*args, **kwargs):
+-        if args[0] == 'unittest':
+-            return orig_import(*args, **kwargs)
+-        raise Exception(
+-            "non ImportError could be thrown by some malfunctioning module "
+-            "upon import, and optional_package should catch it too")
++        if args[0] == 'nottriedbefore':
++            raise Exception(
++                "non ImportError could be thrown by some malfunctioning module "
++                "upon import, and optional_package should catch it too")
++        return orig_import(*args, **kwargs)
+     with mock.patch.object(builtins, '__import__', side_effect=raise_Exception):
+         assert_bad('nottriedbefore')
+ 

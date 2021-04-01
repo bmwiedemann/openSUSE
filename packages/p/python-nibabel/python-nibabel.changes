@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 31 09:09:56 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix test on Backports:SLE-15-SP3:
+  * 983.patch
+
+-------------------------------------------------------------------
 Fri Feb 12 14:37:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 36 

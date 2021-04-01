@@ -28,6 +28,8 @@ License:        MIT
 URL:            https://nipy.org/nibabel
 Source:         https://files.pythonhosted.org/packages/source/n/nibabel/nibabel-%{version}.tar.gz
 Patch0:         purge-nose.patch
+# PATCH-FIX-UPSTREAM - https://github.com/nipy/nibabel/pull/983
+Patch1:         983.patch
 BuildRequires:  %{python_module setuptools >= 30.3.0}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
@@ -60,6 +62,7 @@ very limited support for DICOM.
 %prep
 %setup -q -n nibabel-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %python_build
