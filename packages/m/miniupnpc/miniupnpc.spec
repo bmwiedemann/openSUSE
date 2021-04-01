@@ -36,8 +36,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       libminiupnpc%{soname} = %{version}-%{release}
 
-%if 0%{?python38_version_nodots}
-# if python multiflavor is in place yet, use it to generate subpackages
+%if 0%{?suse_version} >= 1550
+# TW: generate subpackages for every python3 flavor
 %define python_subpackage_only 1
 %python_subpackages
 %else
