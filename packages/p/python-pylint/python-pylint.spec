@@ -20,7 +20,7 @@
 %bcond_without tests
 %define skip_python2 1
 Name:           python-pylint
-Version:        2.6.2
+Version:        2.7.2
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
@@ -30,14 +30,12 @@ Source:         https://files.pythonhosted.org/packages/source/p/pylint/pylint-%
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astroid >= 2.4.0
-Requires:       python-editdistance
+Requires:       python-astroid >= 2.5.1
 Requires:       python-isort >= 4.2.5
 Requires:       python-mccabe >= 0.6
 Requires:       python-toml >= 0.7.1
 %if %{with tests}
-BuildRequires:  %{python_module astroid >= 2.4.0}
-BuildRequires:  %{python_module editdistance}
+BuildRequires:  %{python_module astroid >= 2.5.1}
 BuildRequires:  %{python_module isort >= 4.2.5}
 BuildRequires:  %{python_module mccabe >= 0.6}
 BuildRequires:  %{python_module pytest-benchmark}
@@ -47,7 +45,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module toml >= 0.7.1}
 %endif
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -69,9 +67,7 @@ feature.
 
 %prep
 %setup -q -n pylint-%{version}
-
-# fix test: ignore unexpected message gh#PyCQA/pylint#3635
-sed -i 's/import matplotlib.pyplot as plt/&  # pylint: disable=no-name-in-module/' tests/functional/u/undefined_variable.py
+sed -i '1{/^#!/ d}' pylint/__main__.py
 
 %build
 export LC_ALL="en_US.UTF-8"
@@ -83,29 +79,24 @@ export LC_ALL="en_US.UTF-8"
 for p in pylint epylint pyreverse symilar ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
-
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%if %{with tests}
+%check
+export LC_ALL="en_US.UTF-8"
+# need the local dir for imports from tests ...
+export PYTHONPATH=$(pwd)
+# ... but make sure that we import from installed package
+mv pylint pylint.tmp
+%pytest --benchmark-disable
+mv pylint.tmp pylint
+%endif
 
 %post
 %python_install_alternative pylint epylint pyreverse symilar
 
 %postun
 %python_uninstall_alternative pylint
-
-%if %{with tests}
-%check
-export LC_ALL="en_US.UTF-8"
-# this tests needs the local source dir for imports,
-# gh#openSUSE/python-rpm-macros#48
-export PYTHONPATH=$(pwd)
-%pytest -k test_version
-# others must not import from local source dir
-# gh#PyCQA/pylint#3636
-export PYTHONPATH=""
-# test_functional[unused_typing_imports] fails in the python36 flavor for TW
-python36_skiptest=" or (test_functional and unused_typing_imports)"
-%pytest -k "not (test_version ${$python_skiptest})" --benchmark-disable
-%endif
 
 %files %{python_files}
 %license COPYING
