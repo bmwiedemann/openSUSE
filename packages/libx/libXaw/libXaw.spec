@@ -1,7 +1,7 @@
 #
 # spec file for package libXaw
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libXaw
-Version:        1.0.13
+Version:        1.0.14
 Release:        0
 Summary:        The X Athena Widget Set
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXaw
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXaw/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
-Patch0:         U_NULL-pointer-dereference-in-XawAsciiSinkInitialize.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  pkgconfig
@@ -103,7 +102,6 @@ in libXaw6/libXaw7/libXaw8.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %configure --docdir=%_docdir/%name --disable-static

@@ -105,4 +105,14 @@
     <comment></comment>
     <requestid>618283</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4f057efde0915553d6482456c74f5ec1</srcmd5>
+    <version>1.0.14</version>
+    <time>1617279371</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.0.14
+  * bugfix release 
+- supersedes U_NULL-pointer-dereference-in-XawAsciiSinkInitialize.patch</comment>
+    <requestid>882194</requestid>
+  </revision>
 </revisionlist>
