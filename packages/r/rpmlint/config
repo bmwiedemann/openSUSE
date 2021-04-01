@@ -799,7 +799,12 @@ setOption("DBUSServices.WhiteList", (
     "org.kde.powerdevil.chargethresholdhelper.conf",
     # plasma5-disks smartmon helper
     "org.kde.kded.smart.service",
-    "org.kde.kded.smart.conf"
+    "org.kde.kded.smart.conf",
+    # kdenetwork-filesharing, Samba configuration (bsc#1175633)
+    "org.kde.filesharing.samba.service",
+    "org.kde.filesharing.samba.conf",
+    # KDiskMark, HDD/SSD benchmark GUI (bsc#1182521)
+    "org.jonmagon.kdiskmark.service"
 ))
 
 setOption("PAMModules.WhiteList", (

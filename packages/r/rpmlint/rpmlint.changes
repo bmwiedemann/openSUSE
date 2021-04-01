@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 31 11:37:22 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- whitelist D-Bus Service org.kde.filesharing.samba.service (bsc#1175633)
+
+-------------------------------------------------------------------
+Tue Mar 30 15:00:44 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- whitelist D-Bus Service org.jonmagon.kdiskmark.service (bsc#1182521)
+
+-------------------------------------------------------------------
 Fri Feb 26 10:49:52 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - Add accept-licenses-with-plus.patch to accept any license ending

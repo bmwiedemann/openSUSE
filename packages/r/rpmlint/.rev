@@ -3123,4 +3123,12 @@ will self heal once rpmlint-mini is rebuild
     <comment></comment>
     <requestid>876046</requestid>
   </revision>
+  <revision rev="351" vrev="40">
+    <srcmd5>0b1660db54a31d6721b2cdf392d7fc96</srcmd5>
+    <version>1.11</version>
+    <time>1617279400</time>
+    <user>RBrownSUSE</user>
+    <comment>- whitelist D-Bus Service org.kde.filesharing.samba.service (bsc#1175633) (forwarded request 882335 from wfrisch)</comment>
+    <requestid>882506</requestid>
+  </revision>
 </revisionlist>
