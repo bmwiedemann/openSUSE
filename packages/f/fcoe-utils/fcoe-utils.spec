@@ -1,7 +1,7 @@
 #
 # spec file for package fcoe-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,15 +31,12 @@ Requires:       iproute
 Requires:       open-lldp
 Requires:       pkgconfig(systemd)
 %systemd_ordering
-Version:        1.0.33
+Version:        1.0.34
 Release:        0
 Summary:        FCoE userspace management tools
 License:        GPL-2.0-only
 Group:          System/Daemons
 Source:         %{name}-%{version}.tar.xz
-Patch1:         Handle-NIC-names-longer-than-7-characters.patch
-# PATCH-FIX-UPSTREAM - https://github.com/openSUSE/fcoe-utils/pull/14
-Patch2:         fcoe-utils-fix-arm.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
@@ -50,8 +47,6 @@ connections.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
 
 %build
 autoreconf -vi

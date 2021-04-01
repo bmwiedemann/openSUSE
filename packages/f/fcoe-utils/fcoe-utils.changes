@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Mar 25 17:09:14 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Update to version 1.0.34 (fixing bsc#1182804), which replaces the
+  source tarball, and removes these two patches, which are fixed
+  upstream:
+  * Handle-NIC-names-longer-than-7-characters.patch
+  * fcoe-utils-fix-arm.patch
+
+  Change summary:
+    Chris Leech (6):
+	  21 string-op truncation, format truncation, and format overflow errors
+	  use of uninitialized values detected during LTO
+	  Revert "Make gcc compiler happy about ifname string truncation."
+	  fix VLAN device name overflow check
+	  fix regressions caused by safe_makepath change in libopenfcoe.c
+	  minor fcoeadm output issues
+
+    Guillaume Gardet (1):
+	  char can be unsigned on arm, so set signed explicitly as the check expects it can be negative
+
+    Lee Duncan (6):
+	  Handle NIC names longer than 7 characters.
+	  Change debug->log message if daemon running
+	  Remove references to open-fcoe.org
+	  Fix two gcc-11 compiler warnings.
+	  Remove comment that doesn't match code.
+	  Preparing for version v1.0.34
+
+    Lily Nie (1):
+	  fix one bug introduced by commit b06c3df
+
+    Nitin U. Yewale (1):
+	  Exit fcoemon command if fcoemon daemon is already running.
+
+
+-------------------------------------------------------------------
 Thu Aug 20 09:49:22 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build on architectures where char is 
