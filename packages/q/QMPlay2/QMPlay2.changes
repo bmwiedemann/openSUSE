@@ -1,9 +1,14 @@
 -------------------------------------------------------------------
+Tue Mar 29 22:34:12 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-driver-crash.patch to fix possible AMD/mesa driver crash
+
+-------------------------------------------------------------------
 Wed Mar 17 16:38:27 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
 
 - Added 0001-fix-kde-startup-warning.patch to fix SVG warning with Plasma >= 5.21.3
 - Disabled PipeWire support on openSUSE Leap 15.X and SLE15SPX as they don't provide a recent enough version of PipeWire
-- Increase _constrains requirements to fix rare compilation issues
+- Increase _constraints requirements to fix rare compilation issues
 
 -------------------------------------------------------------------
 Tue Mar  9 18:21:12 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>

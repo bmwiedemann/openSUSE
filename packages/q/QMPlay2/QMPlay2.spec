@@ -29,6 +29,8 @@ Source:           https://github.com/zaps166/QMPlay2/releases/download/%{version
 Patch1:           0001-add-opensuse-customizations.patch
 # PATCH-FIX-UPSTREAM
 Patch2:           0001-fix-kde-startup-warning.patch
+# PATCH-FIX-UPSTREAM
+Patch3:           0001-fix-driver-crash.patch
 BuildRequires:    cmake >= 3.16
 BuildRequires:    gcc-c++
 BuildRequires:    ninja
