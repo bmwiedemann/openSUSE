@@ -1628,4 +1628,12 @@ ImageEditor : Add HTMLGallery, Calendar, ExpoBlending, VideSlideshow,</comment>
 - Bump disk constraints, TW needs 9.3 GB currently.</comment>
     <requestid>845791</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>7e7c1c2f4fe702bcacd3dcb0b7afa068</srcmd5>
+    <version>7.2.0</version>
+    <time>1617279469</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882344</requestid>
+  </revision>
 </revisionlist>

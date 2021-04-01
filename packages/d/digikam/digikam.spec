@@ -1,7 +1,7 @@
 #
 # spec file for package digikam
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_without lang
 %bcond_with    apidocs
 Name:           digikam
-Version:        7.1.0
+Version:        7.2.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
@@ -47,7 +47,12 @@ BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
-BuildRequires:  opencv-devel
+%ifarch ppc64
+# opencv-devel is currently not available on ppc64, but opencv3-devel is... (and the version is high enough)
+BuildRequires:  opencv3-devel
+%else
+BuildRequires:  opencv-devel >= 3.4.0
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 %if %{with apidocs}
@@ -168,12 +173,6 @@ The main digikam libraries that are being shared between showfoto and digikam
 %if 0%{?suse_version} <= 1500
 # Leap 15 only has exiv2 0.26
 %patch0 -p1
-%endif
-%if %pkg_vcmp opencv-devel < 3.4.0
-# Option to switch between DNN or HAAR face detection.
-# DNN is the default one, Haar is the legacy deprecated method.
-# DNN fails to build with openCV 3.3 though (needs 3.4 at least), so disable it...
-sed -i 's/set(DNN_DETECTION TRUE)/set(DNN_DETECTION FALSE)/' core/libs/facesengine/CMakeLists.txt
 %endif
 
 %build
