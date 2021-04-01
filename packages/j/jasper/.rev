@@ -107,4 +107,17 @@
   * Check on integer size in JP2 decoder. (#278)</comment>
     <requestid>879870</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>735916f96477bd3070fd82c3a029226d</srcmd5>
+    <version>2.0.28</version>
+    <time>1617279436</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.0.28:
+  * Fix potential null pointer dereference in the JP2/JPC decoder.
+    (#269)
+  * Fix ignoring of JAS_STREAM_FILEOBJ_NOCLOSE at stream close time.
+    (#286)
+  * Fix integral type sizing problem in JP2 codec. (#284)</comment>
+    <requestid>882023</requestid>
+  </revision>
 </revisionlist>
