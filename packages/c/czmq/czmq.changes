@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Mar  5 12:55:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.1:
+  * New DRAFT zsock API to match libzmq's 4.3.4 socket options:
+    - zsock_set_xpub_manual_last_value
+    - zsock_socks_username, zsock_set_socks_username
+    - zsock_socks_password, zsock_set_socks_password
+    - zsock_in_batch_size, zsock_set_in_batch_size
+    - zsock_out_batch_size, zsock_set_out_batch_size
+    - zsock_set_wss_key_pem, zsock_set_wss_cert_pem, zsock_set_wss_trust_pem,
+      zsock_set_wss_hostname, zsock_set_wss_trust_system
+    - zsock_set_only_first_subscribe
+    - zsock_hello_msg, zsock_set_hello_msg
+    - zsock_disconnect_msg, zsock_set_disconnect_msg
+    - zsock_priority, zsock_set_priority
+    - zsock_reconnect_stop, zsock_set_reconnect_stop
+    See zsock manpage for more details.
+  * New DRAFT zframe and zmsg API to print arbitrary length messages:
+    - zframe_print_n
+    - zmsg_print_n
+    See zframe and zmsg manpages for more details.
+  * New DRAFT zosc* APIs to support the OSC (Open Sound Control) protocol.
+    See zosc_* manpages for more details.
+  * New DRAFT zcertstore_get_state API to get the state stored in the certstore.
+    See the zcertstore manpage for more details.
+  * Support for new libzmq DRAFT socket type ZMQ_DGRAM was added to zsock.
+  * Fixed #1972 - Findlibzmq.cmake out of date, Windows build fails
+  * Fixed #1998 - zproxy uses fixed ipc endpoint, causing race condition
+  * Fixed #2002 - fix socket leak in zbeacon
+  * Fixed #2020 - use libnss in zdigest if available for SHA functions.
+  * Fixed #2028 - zpoller docs isn't mentioning file handles
+  * Fixed #2043 - zhttp_response_recv leaks memory when result is non-zero
+  * Fixed #2045 - Problem: zframe_print output is truncated
+  * Fixed #2048 - no logging if zsys is not initialized
+  * Fixed #2057 - zchunk_slurp() causes assert if file can't be opened
+  * Fixed #2062 - allow zbeacon to resolve ip address to interface or interface
+  * Fixed #2064 - Enable ipv4 multicast packet types when using zbeacon
+  * Fixed #2072 - fix build on Android NDK >= 24
+  * Fixed #2086 - zsys is re-initialized when logging an error in zsys_shutdown
+  * Fixed #2090 - "quit" variable in zproc_wait() can overflow
+  * Fixed #2087 - logsender destroyed before last log message
+  * Fixed #2103 - if gossip server disconnects and reconnects, persisting gossip
+  * Fixed #2113 - zcertstore has no API to get the disk state from a custom loader
+  * Fixed #2115 - various issues around zcertstore API string ownership
+  * Fixed #2038 - zsock_t sockets do not work in child process after fork
+  * Fixed #2144 - zhashx_dup() does not copy callbacks
+- build against systemd, uuid, nss and related
+
+-------------------------------------------------------------------
 Wed Sep  9 17:47:10 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - Move the manpage for the tool to the package with the tool

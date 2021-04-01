@@ -1,7 +1,7 @@
 #
 # spec file for package czmq
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lib_name libczmq4
 Name:           czmq
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        High-level C binding for ZeroMQ
 License:        MPL-2.0
@@ -27,10 +27,16 @@ URL:            https://github.com/zeromq/czmq
 Source0:        https://github.com/zeromq/czmq/releases/download/v%{version}/czmq-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  libcurl-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(libmicrohttpd)
 BuildRequires:  pkgconfig(libsodium)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libzmq) > 4.1
+BuildRequires:  pkgconfig(nss)
+BuildRequires:  pkgconfig(uuid)
 # documentation
 BuildRequires:  asciidoc
 BuildRequires:  xmlto
@@ -61,6 +67,9 @@ CZMQ is a higher-level binding for the ZeroMQ core API.
 Summary:        Devel files for %{name}
 Group:          Development/Languages/C and C++
 Requires:       %{lib_name} = %{version}
+Requires:       systemd-devel
+Requires:       pkgconfig(liblz4)
+Requires:       pkgconfig(uuid)
 
 %description devel
 CZMQ is a higher-level binding for the ZeroMQ core API.
