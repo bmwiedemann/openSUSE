@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Mar 26 11:08:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Guard post scriptlets to only run %{_libdir}/vlc/vlc-cache-gen if
+  it already (or still, in case of uninstall) exists.
+
+-------------------------------------------------------------------
+Fri Mar 26 10:12:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add vlc-gcc11.patch: Fix build using gcc11 (boo#1181918).
+
+-------------------------------------------------------------------
+Thu Mar 18 16:57:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libpcre-devel BuildRequires: not been used in a while.
+
+-------------------------------------------------------------------
+Thu Mar 18 12:48:15 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Limit libplacebo to is_openssue: vlc does not exist in SLE, which
+  makes the usage of is_opensuse valid; backports has is_opensuse
+  set to 1. This is mostly interesting for 3rd party build service
+  instances.
+
+-------------------------------------------------------------------
 Wed Mar  3 09:58:28 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Enable libplacebo support (the core rendering algorithms and
