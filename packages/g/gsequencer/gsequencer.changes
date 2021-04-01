@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 31 06:09:18 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.8.3 fixed missing XML IO of new available
+  controls.
+- new since v3.8.2 fixed gtk-doc missing sections.
+- new since v3.8.1 additional volume controls to AgsSyncsynth,
+  AgsFMSyncsynth and AgsMatrix.
+- new since v3.8.0 fixed many deprecated Gtk+-3.0 symbols.
+  Additional volume controls to AgsFFPlayer and AgsPitchSampler.
+- minor improvements
+
+-------------------------------------------------------------------
 Wed Mar 17 16:15:35 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.7.50 fixed missing initial loop information after
