@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 26 13:58:39 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Version update to 0.1.7
+  * Extend support to the newest CDR format versions
+    + Supports currently CDR1 to 23, which is all released versions
+      to date.
+  * Improve conversion of paragraph text in versions 5 to 23
+  * Improve conversion of text on path for versions 6 to 15
+- Removed patches:
+  * icu-68.patch
+    + Integrated upstream
+  * libcdr-0.1.1-pkgconfig.patch
+    + This was a workaround for SLE11 build failures, not needed
+      any more
+
+-------------------------------------------------------------------
 Mon Dec 14 16:15:35 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add icu-68.patch: fix build with ICU 68

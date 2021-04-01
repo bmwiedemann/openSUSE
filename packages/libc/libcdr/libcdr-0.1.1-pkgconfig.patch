@@ -1,8 +1,0 @@
---- libcdr-0.1.1/libcdr.pc.in	2014-04-16 19:06:20.000000000 +0200
-+++ libcdr-0.1.1/libcdr.pc.in	2014-07-25 09:14:23.096910474 +0200
-@@ -9,5 +9,3 @@
- Requires: librevenge-0.0
- Libs: -L${libdir} -lcdr-@CDR_MAJOR_VERSION@.@CDR_MINOR_VERSION@
- Cflags: -I${includedir}/libcdr-@CDR_MAJOR_VERSION@.@CDR_MINOR_VERSION@
--
--Requires.private: icu-i18n lcms2 zlib

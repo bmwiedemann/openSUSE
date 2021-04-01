@@ -1,7 +1,7 @@
 #
 # spec file for package libcdr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define libname libcdr-0_1-1
 Name:           libcdr
-Version:        0.1.6
+Version:        0.1.7
 Release:        0
 Summary:        Library for parsing the Corel Draw file format structure
 License:        MPL-2.0
 Group:          Productivity/Publishing/Word
 URL:            http://www.freedesktop.org/wiki/Software/libcdr
 Source0:        http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
-Patch0:         libcdr-0.1.1-pkgconfig.patch
-Patch1:         icu-68.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -82,8 +80,6 @@ Tools to work with documents in Corel Draw file format.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
