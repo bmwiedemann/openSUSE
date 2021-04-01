@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Mar 30 20:04:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.0.1
+  * Fixed race condition that duplicated lines in progress.
+- Update to version 10.0.0
+  Changed
+  * Made pydoc import lazy as at least one use found it slow to
+    import.
+  * Modified string highlighting to not match in the middle of a
+    word, so that apostrophes are not considered strings.
+  * New way of encoding control codes in Segment.
+  * New signature for Control class.
+  * Changed Layout.split to use new Splitter class.
+  * Improved layout.tree.
+  * Changed default theme color for repr.number to cyan.
+  * __rich_measure__ signature changed to accept ConsoleOptions
+    rather than max_width.
+  Added
+  * Added __rich_repr__ protocol method to Pretty.
+  * Added rich.region.Region.
+  * Added ConsoleOptions.update_dimensions.
+  * Added rich.console.ScreenUpdate.
+  * Added Console.is_alt_screen.
+  * Added Control.segment, Control.bell, Control.home,
+    Control.move_to, Control.clear, Control.show_cursor,
+    Control.alt_screen.
+  * Added Console.update_screen and Console.update_screen_lines.
+  * Added Layout.add_split, Layout.split_column, Layout.split_row,
+    layout.refresh.
+  * Added new Rich repr protocol __rich_repr__.
+  Fixed
+  * Fixed table style taking precedence over row style.
+  * Fixed incorrect measurement of Text with new lines and
+    whitespace.
+  * Made type annotations consistent for various total keyword
+    arguments in rich.progress and rich.progress_bar.
+  * Disabled Progress no longer displays itself when starting.
+
+-------------------------------------------------------------------
 Sat Mar  6 16:35:37 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 9.13.0
