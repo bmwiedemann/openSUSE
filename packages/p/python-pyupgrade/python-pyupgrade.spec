@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyupgrade
-Version:        2.10.0
+Version:        2.11.0
 Release:        0
 Summary:        A tool to automatically upgrade syntax for newer versions
 License:        MIT
@@ -36,8 +36,8 @@ BuildRequires:  %{python_module tokenize-rt >= 3.2.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-tokenize-rt >= 3.2.0
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 
 %python_subpackages

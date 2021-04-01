@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 22 21:04:52 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.10.1
+ - fix nested union replaces
+- Update to version 2.11.0
+ - dequote annotations: quoted annotations + `from __future__ import annotations`
+ - rewrite open even with mode=: Rewrite open_mode even if mode is passed by name
+
+-------------------------------------------------------------------
 Sat Feb 13 18:15:11 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Disable build on Python 2 as the build fails with the latest version.
