@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Mon Mar 29 17:49:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update BuildRequirements for testing:
+  * only remove coverage options from pytest.ini
+  * don't skip tests which had failed 2 years ago
+    (gh#cherrypy/cheroot#200) -- except for two subtests still
+    failing on some platforms presumably because of OBS specific 
+    network setups
+  * skip the one test requiring python-jaraco.context in Factory
+    staging so that we do not need that package in Ring1.
+
+-------------------------------------------------------------------
+Fri Mar 19 05:46:04 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.5.2:
+  * :issue:`358` via :pr:`359`: Fixed a regression from
+    :pr:`199` that made the worker threads exit on invalid
+    connection attempts and could make the whole server
+    unresponsive once there was no workers left.
+    *- by :user:`cameronbrunner`.
+  * :cp-issue:`1873` via :pr:`340`: Resurrected an
+    unintentionally removed feature of interrupting a server
+    main thread by externally assigning an exception to the
+    :py:meth:`HTTPServer.interrupt <cheroot.server.\
+    HTTPServer.interrupt>` property *- by :user:`liamstask`.
+  * :pr:`350`: Fixed the incarnation of an earlier regression
+    of not resetting the serving state
+    on :py:data:``SIGINT`` originally fixed by :pr:`322` and
+    :pr:`331` but reintroduced by the changes in :pr:`311`
+    *- by :user:`liamstask`.
+  * :issue:`305` via :pr:`311`: In
+    :py:class:`~cheroot.connections.ConnectionManager`,
+    process connections as they become active rather than
+    waiting for a ``tick`` event, addressing performance
+    degradation introduced in v8.1.0 *- by :user:`liamstask`.
+  * :issue:`341` via :pr:`342`: Suppress legitimate OS errors
+    expected on shutdown *- by :user:`webknjaz`.
+  * :issue:`317` via :pr:`337`: Fixed a regression in
+    8.4.5 where the connections dictionary would change
+    size during iteration, leading to a :py:exc:`RuntimeError`
+    raised in the logs *- by :user:`liamstask`.
+  * :issue:`328` via :pr:`322` and :pr:`331`: Fixed a
+    regression introduced in the earlier refactoring in v8.4.4
+    via :pr:`309` that caused the :py:meth:`~cheroot.server.\
+    HTTPServer.serve` method to skip setting
+    ``serving=False`` on :py:data:``SIGINT`` and
+    :py:data:``SIGTERM`` *- by :user:`marc1n` and
+    :user:`cristicbz`.
+  * :issue:`312` via :pr:`313`: Fixed a regression introduced
+    in the earlier refactoring in v8.4.4 via :pr:`309` that
+    caused the connection manager to modify the selector map
+    while looping over it *- by :user:`liamstask`.
+  * :issue:`312` via :pr:`316`: Added a regression test for
+    the error handling in :py:meth:`~cheroot.connections.\
+    ConnectionManager.get_conn` to ensure more stability
+    *- by :user:`cyraxjoe`.
+  * :issue:`304` via :pr:`309`: Refactored :py:class:`~\
+    cheroot.connections.ConnectionManager` to use :py:meth:`~\
+    selectors.BaseSelector.get_map` and reorganized the
+    readable connection tracking *- by :user:`liamstask`.
+  * :issue:`304` via :pr:`309`: Fixed the server shutdown
+    sequence to avoid race condition resulting in accepting
+    new connections while it is being terminated
+    *- by :user:`liamstask`.
+  * :pr:`282`: Fixed a race condition happening when an HTTP
+    client attempts to reuse a persistent HTTP connection after
+    it's been discarded on the server in :py:class:`~cheroot.\
+    server.HTTPRequest` but no TCP FIN packet has been received
+    yet over the wire *- by :user:`meaksh`.
+  * Fixed a significant performance regression introduced in
+    v8.1.0 (:issue:`305` via :pr:`308`) * by :user:`mar10`.
+  * Fixed TLS socket related unclosed resource warnings
+    (:pr:`291` and :pr:`298`).
+  * Made terminating keep-alive connections more graceful
+    (:issue:`263` via :pr:`277`).
+- Dropped patches 0001-Avoid-race-condition-on-persistent-HTTP-connections.patch
+  and python383.patch, they are included upstream.
+
+-------------------------------------------------------------------
 Mon May 25 10:59:14 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
