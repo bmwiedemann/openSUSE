@@ -1,7 +1,7 @@
 #
 # spec file for package python-h2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,10 @@ Summary:        HTTP/2 State-Machine based protocol implementation
 License:        MIT
 URL:            https://github.com/python-hyper/hyper-h2
 Source0:        https://files.pythonhosted.org/packages/source/h/h2/h2-%{version}.tar.gz
+Patch0:         https://github.com/python-hyper/h2/pull/1248.patch#/h2-pr1248-disable-hypothesis-healthcheck.patch
 BuildRequires:  %{python_module hpack >= 2.3}
 BuildRequires:  %{python_module hyperframe >= 6.0}
-BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module hypothesis >= 5.49}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,7 +44,7 @@ you choose to use, ensuring that you can speak HTTP/2 regardless of
 your programming paradigm.
 
 %prep
-%setup -q -n h2-%{version}
+%autosetup -p1 -n h2-%{version}
 
 %build
 %python_build

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 29 19:50:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add h2-pr1248-disable-hypothesis-healthcheck.patch to disable
+  hypthesis health check failures. Thanks to the Fedora maintainer.
+  gh#python-hyper/h2#1248
+
+-------------------------------------------------------------------
 Sat Nov 21 17:07:56 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Drop hyperframe.patch no longer needed
