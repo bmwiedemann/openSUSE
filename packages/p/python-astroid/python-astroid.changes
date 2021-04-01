@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Sun Mar 21 23:20:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.5.1
+  * The context.path is reverted to a set because otherwise it
+    leads to false positives for non `numpy` functions.
+  * Don't transform dataclass ClassVars
+  * Improve typing.TypedDict inference
+  * Fix the `Duplicates found in MROs` false positive.
+- Release 2.5.0
+  * Adds `attr_fset` in the `PropertyModel` class.
+  * Remove support for Python 3.5.
+  * Remove the runtime dependency on six. The six brain
+    remains in astroid.
+  * Enrich the brain_collection module so that __class_getitem__
+    method is added to `deque` for
+    python version above 3.9.
+  * The context.path is now a dict and the context.push method
+    returns True if the node has been visited a certain amount of
+    times.
+  * Adds a brain for type object so that it is possible to write
+    `type[int]` in annotation.
+  * Add __class_getitem__ method to subprocess.Popen brain under
+    Python 3.9 so that it is seen as subscriptable by pylint.
+  * Adds `degrees`, `radians`, which are `numpy ufunc` functions,
+    in the `numpy` brain. Adds `random` function in the `numpy.
+    random` brain.
+  * Fix deprecated importlib methods
+  * Fix a crash in inference caused by `Uninferable` container
+    elements
+  * Add `python 3.9` support.
+  * The flat attribute of numpy.ndarray is now inferred as an
+    numpy.ndarray itself. It should be a numpy.flatiter instance,
+    but this class is not yet available in the numpy brain.
+  * Fix a bug for dunder methods inference of function objects
+  * Fixes a bug in the signature of the ndarray.__or__ method,
+    in the brain_numpy_ndarray.py module.
+  * Fixes a to-list cast bug in starred_assigned_stmts method,
+    in the protocols.py` module.
+  * Added a brain for hypothesis.strategies.composite
+  * The transpose of a numpy.ndarray is also a numpy.ndarray
+  * Added a brain for sqlalchemy.orm.session
+  * Separate string and bytes classes patching
+  * Prevent recursion error for self referential length calls
+  * Added missing methods to the brain for mechanize, to fix
+    pylint false positives
+  * Added more supported parameters to subprocess.check_output
+  * Fix recursion errors with pandas
+  * Added exception inference for `UnicodeDecodeError`
+  * `FunctionDef.is_generator` properly handles `yield` nodes in
+    `If` tests
+  * Fixed exception-chaining error messages.
+  * Fix failure to infer base class type with multiple inheritance
+    and qualified names
+  * Fix interpretation of six.with_metaclass class definitions.
+  * Reduce memory usage of astroid's module cache.
+  * Remove dependency on `imp`.
+  * Do not crash when encountering starred assignments in enums.
+  * Fix a crash in functools.partial inference when the arguments
+    cannot be determined
+  * Fix a crash caused by a lookup of a monkey-patched method
+  * is_generator correctly considers `Yield` nodes in `AugAssign`
+    nodes
+    This fixes a false positive with the
+    `assignment-from-no-return` pylint check.
+  * Corrected the parent of function type comment nodes.
+    These nodes used to be parented to their original ast.
+    FunctionDef parent but are now correctly parented to their 
+    astroid.FunctionDef parent.
+- Drop part_rm_dep_imp.patch fixed upstream 
+- Drop unpin-deps.patch unpinned upstream
+
+-------------------------------------------------------------------
 Sat Dec  5 22:49:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix python_sitelib usage for possibly multiple python3 flavors

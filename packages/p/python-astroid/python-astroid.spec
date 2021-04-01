@@ -1,7 +1,7 @@
 #
 # spec file for package python-astroid
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,30 +19,25 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-astroid
-Version:        2.4.2
+Version:        2.5.1
 Release:        0
 Summary:        Representation of Python source as an AST for pylint
 License:        LGPL-2.1-or-later
 URL:            https://github.com/pycqa/astroid
 Source:         https://files.pythonhosted.org/packages/source/a/astroid/astroid-%{version}.tar.gz
-Patch0:         unpin-deps.patch
-# PATCH-FIX-UPSTREAM part_rm_dep_imp.patch gh#PyCQA/astroid#686 mcepl@suse.com
-Patch1:         part_rm_dep_imp.patch
 BuildRequires:  %{python_module lazy-object-proxy >= 1.4}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.12}
+BuildRequires:  %{python_module typed-ast >= 1.4 if %python-base < 3.8}
 BuildRequires:  %{python_module wrapt >= 1.11}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lazy-object-proxy >= 1.4
-Requires:       python-six >= 1.12
 Requires:       python-wrapt >= 1.11
 BuildArch:      noarch
-%if 0%{?suse_version} <= 1500
-BuildRequires:  %{python_module typed-ast}
-Requires:       python-typed-ast
+%if 0%{?python_version_nodots} < 38
+Requires:       python-typed-ast >= 1.4
 %endif
 %python_subpackages
 
@@ -77,6 +72,6 @@ objects.
 %license COPYING COPYING.LESSER
 %doc ChangeLog README.rst
 %{python_sitelib}/astroid/
-%{python_sitelib}/astroid-*.egg-info
+%{python_sitelib}/astroid-%{version}*-info
 
 %changelog

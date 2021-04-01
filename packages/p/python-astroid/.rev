@@ -249,4 +249,12 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     <comment></comment>
     <requestid>853413</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6d0737893080a1a10af6119087d6196b</srcmd5>
+    <version>2.5.1</version>
+    <time>1617279349</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>880615</requestid>
+  </revision>
 </revisionlist>
