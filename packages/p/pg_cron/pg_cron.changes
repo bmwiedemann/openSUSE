@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 29 19:16:20 UTC 2021 - Andrey Karepin <egdfree@opensuse.org>
+
+- update to 1.3.1
+  * Fixes a memory leak
+
+-------------------------------------------------------------------
 Wed Oct  7 19:11:36 UTC 2020 - Andrey Karepin <egdfree@opensuse.org>
 
 - update to 1.3.0
