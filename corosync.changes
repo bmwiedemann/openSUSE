@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar  9 13:47:45 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop the script-dependencies on /sbin/chkconfig: deprecated
+- Drop the main package's dependency on /usr/sbin/adduser: the main
+  package does not call this in the pre scripts.
+- Change Requires(pre): shadow in corosync-qdevice to
+  Requires(pre): /usr/sbin/adduser (support alternartive
+  implementations).
+- Use %systemd_ordering for the various, too strict, systemd script
+  dependencies.
+
+-------------------------------------------------------------------
 Tue Oct 27 14:25:29 UTC 2020 - Aleksei Burlakov <aburlakov@suse.com>
 
 - (Again) Fix bsc#1163460 Corosync does not support link-local IPv6 addresses

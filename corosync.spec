@@ -1,7 +1,7 @@
 #
 # spec file for package corosync
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,9 +80,6 @@ Requires:       libquorum5 = %{version}-%{release}
 Requires:       libsam4 = %{version}-%{release}
 Requires:       libtotem_pg5 = %{version}-%{release}
 Requires:       libvotequorum8 = %{version}-%{release}
-Requires(pre): /usr/sbin/useradd
-Requires(post): /sbin/chkconfig
-Requires(preun): /sbin/chkconfig
 Conflicts:      openais <= 0.89, openais-devel <= 0.89
 
 # Build bits
@@ -111,9 +108,7 @@ BuildRequires:  dbus-1-devel
 %endif
 %if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
-Requires(post): systemd
-Requires(preun): systemd
-Requires(postun): systemd
+%{systemd_ordering}
 %endif
 %if %{with xmlconf}
 Requires:       libxslt
@@ -571,9 +566,7 @@ Requires:       corosync
 Requires:       mozilla-nss-tools
 
 %if %{with systemd}
-Requires(post): systemd
-Requires(preun): systemd
-Requires(postun): systemd
+%{systemd_ordering}
 %endif
 
 %description -n corosync-qdevice
@@ -641,12 +634,10 @@ fi
 Summary:        The Corosync Cluster Engine Qdevice Network Daemon
 Group:          System/Base
 Requires:       mozilla-nss-tools
-Requires(pre): shadow
+Requires(pre): /usr/sbin/useradd
 
 %if %{with systemd}
-Requires(post): systemd
-Requires(preun): systemd
-Requires(postun): systemd
+%{systemd_ordering}
 %endif
 
 %description -n corosync-qnetd
