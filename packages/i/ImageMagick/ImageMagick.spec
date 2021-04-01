@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.0.11
-%define mfr_revision   3
+%define mfr_revision   5
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        9
@@ -207,14 +207,14 @@ Summary:        Upstream Configuration Files
 Group:          Development/Libraries/C and C++
 Provides:       imagick-%{config_spec}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %package %{config_spec}-SUSE
 Summary:        Upstream Configuration Files
 Group:          Development/Libraries/C and C++
 Provides:       imagick-%{config_spec}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description
 ImageMagick is a robust collection of tools and libraries to read,
@@ -323,12 +323,11 @@ will not overwrite user changes in system configuration.
 
 %description %{config_spec}-SUSE
 ImageMagick configuration as provide by SUSE. It is more security
-aware than config-upstream variant. It does disable some coders, 
+aware than config-upstream variant. It does disable some coders,
 that are insecure by design to prevent user to use them
 inadvertently. Configuration can be subject of change by future
 version and maintenance updates and system changes will not be
 preserved.
-
 
 %prep
 %setup -q -n ImageMagick-%{source_version}

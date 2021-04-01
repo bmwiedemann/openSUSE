@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Mar 31 08:44:15 UTC 2021 - pgajdos@suse.com
+
+- version update to 7.0.11.5
+  * OpenCL will be disable by default, use the environment variable
+    MAGICK_OCL_DEVICE to turn it on or select the device to use.
+- modified patches
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)
+
+-------------------------------------------------------------------
+Sat Mar 27 00:52:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.0.11.4:
+  * support caption:split define (reference
+  * avoid an omp deadlock with policy string
+
+-------------------------------------------------------------------
 Sun Mar 14 20:49:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.11.3:

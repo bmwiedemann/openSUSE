@@ -3001,4 +3001,20 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * Set overall image depth statistic in Composite channel. (forwarded request 878998 from dirkmueller)</comment>
     <requestid>879088</requestid>
   </revision>
+  <revision rev="228" vrev="1">
+    <srcmd5>886ddd90b9d56bce88a35985e1bc2b11</srcmd5>
+    <version>7.0.11.5</version>
+    <time>1617279386</time>
+    <user>RBrownSUSE</user>
+    <comment>- version update to 7.0.11.5
+  * OpenCL will be disable by default, use the environment variable
+    MAGICK_OCL_DEVICE to turn it on or select the device to use.
+- modified patches
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)
+
+- update to 7.0.11.4:
+  * support caption:split define (reference
+  * avoid an omp deadlock with policy string</comment>
+    <requestid>882313</requestid>
+  </revision>
 </revisionlist>
