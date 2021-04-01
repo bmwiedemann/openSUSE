@@ -18,12 +18,12 @@
 
 %define sover   1
 Name:           bctoolbox
-Version:        4.4.33
+Version:        4.5.0
 Release:        0
 Summary:        Utility library for software from Belledonne Communications
 License:        GPL-2.0-or-later
 URL:            https://linphone.org/
-Source:         https://github.com/BelledonneCommunications/bctoolbox/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz 
+Source:         https://github.com/BelledonneCommunications/bctoolbox/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE bctoolbox-fix-pkgconfig.patch
 Patch0:         bctoolbox-fix-pkgconfig.patch

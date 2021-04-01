@@ -144,4 +144,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>879481</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d0a07f11fbb6879090c79df9face96b4</srcmd5>
+    <version>4.5.0</version>
+    <time>1617279394</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 4.5.0:
+  * Encrypted VFS API.
+  * Callback for client certificate query is now passed with the full list of subjects.
+  * miscellaneous small things
+</comment>
+    <requestid>882345</requestid>
+  </revision>
 </revisionlist>
