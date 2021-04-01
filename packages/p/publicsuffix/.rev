@@ -803,4 +803,39 @@ Now with build cycle removed.</comment>
   * Added eurodir.ru (#1207)</comment>
     <requestid>874527</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>75d7e74cb0b0f867c45b60596be604f7</srcmd5>
+    <version>20210330</version>
+    <time>1617279385</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 20210330:
+  * Fix-up ordering of entries (#1255)
+  * Adding mazeplay.com (#1253)
+  * Adding Tradable Bits (#1240)
+  * Update forgeblocks, add subdomain to psl (#1252)
+  * Additional suffix `id.repl.co` for Repl.it (#1239)
+  * Add ravpage.co.il (#1250)
+  * accesso - Adding devcdnaccesso (#1248)
+  * util: gTLD data autopull updates for 2021-03-27T15:15:49 UTC (#1249)
+  * Added forgeblocks.com to psl (#1238)
+  * Update atl/njs/ric.jelastic.vps host.net (#1242)
+  * util: gTLD data autopull updates for 2021-03-24T15:07:34 UTC (#1243)
+  * add paywhirl.com for site users (#1237)
+  * Add shiftcrypto.dev and shiftcrypto.io (#1236)
+  * Add hra.health to PSL (#1234)
+  * Add multibaas.app and multibaas.com (#1233)
+  * added service magnet to PSL (#1232)
+  * Add subdomains of pythonanywhere.com and eu.pythonanywhere.com (#1229)
+  * Add cafjs.com (#1228)
+  * Update public_suffix_list.dat (#1225)
+  * Switch the TLD update workflow to daily (#1226)
+  * util: gTLD data autopull updates for 2021-03-04T15:37:37 UTC (#1224)
+  * Update Email address for GOV.UK PaaS (#1220)
+  * Add Clerk staging domains, change email to systems@ (#1222)
+  * sourcehut: add srht.site (#1218)
+  * Add cloudsite.builders (#1219)
+  * Add service.gov.scot (#1221)
+  * Add framer.app and framercanvas.com to PSL (#1217)</comment>
+    <requestid>882295</requestid>
+  </revision>
 </revisionlist>
