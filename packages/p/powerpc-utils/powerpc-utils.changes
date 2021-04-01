@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 30 09:29:58 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Require vim when NetworkManager is installed (bsc#1184136 ltc#192155).
+
+- Start hcn-init with NetworkManager (bsc#1184136 ltc#192155).
+   + powerpc-utils-hcn-init-NM.patch
+
+-------------------------------------------------------------------
 Thu Mar 18 10:21:42 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Add --version option to the ppc64_cpu usage (bsc#1183695 ltc#189235).

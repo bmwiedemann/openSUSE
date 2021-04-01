@@ -36,6 +36,7 @@ Patch9:         0001-hcnmgr-Avoid-cleanup-of-bond-interface-at-boot-time-.patch
 Patch10:        0002-hcnmgr-Wait-for-sysfs-device-ready-when-looking-up-d.patch
 Patch11:        0003-hcnmgr-Avoid-using-ifcfg-file-for-checking-bonding-i.patch
 Patch12:        0004-hcnmgr-Avoid-using-xargs-to-process-NM-show-connecti.patch
+Patch13:        powerpc-utils-hcn-init-NM.patch
 Patch14:        fix_kexec_service_name_for_suse.patch
 Patch15:        ofpathname-Use-NVMe-controller-physical-nsid.patch
 Patch16:        powerpc-utils-Fix-ofpathname-race-with-udev-rename.patch
@@ -55,6 +56,10 @@ Requires:       kmod-compat
 Requires:       systemd-sysvinit
 Requires:       udev
 Requires:       util-linux
+%if !0%{?sle_version} ||  0%{?sle_version} >= 150000
+# hcnmgr uses xxd from vim
+Requires:       (vim if NetworkManager)
+%endif
 Recommends:     powerpc-utils-python
 ExclusiveArch:  ppc ppc64 ppc64le
 %{?systemd_requires}

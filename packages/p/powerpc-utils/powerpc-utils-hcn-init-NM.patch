@@ -1,0 +1,16 @@
+Make hcn-init start with NetworkManager.
+
+diff -u powerpc-utils-1.3.8.orig/systemd/hcn-init.service.in powerpc-utils-1.3.8/systemd/hcn-init.service.in
+--- powerpc-utils-1.3.8.orig/systemd/hcn-init.service.in	2020-08-31 18:53:55.000000000 +0200
++++ powerpc-utils-1.3.8/systemd/hcn-init.service.in	2021-03-30 11:45:35.121304822 +0200
+@@ -1,7 +1,8 @@
+ [Unit]
+ Description=hybrid virtual network scan and config
+-After=network-online.target
+-Wants=network-online.target
++After=NetworkManager.service
++Requisite=NetworkManager.service
++PartOf=NetworkManager.service
+ 
+ [Service]
+ Type=oneshot
