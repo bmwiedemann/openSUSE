@@ -1,7 +1,7 @@
 #
 # spec file for package labplot-kf5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _kf5_appstreamdir %{_kf5_sharedir}/appdata
 %endif
 Name:           labplot-kf5
-Version:        2.8.1
+Version:        2.8.2
 Release:        0
 Summary:        KDE Framework 5 data analysis and visualization application
 License:        GPL-2.0-or-later
