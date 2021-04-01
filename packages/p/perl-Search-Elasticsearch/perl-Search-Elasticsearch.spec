@@ -18,7 +18,7 @@
 
 %define cpan_name Search-Elasticsearch
 Name:           perl-Search-Elasticsearch
-Version:        7.711001
+Version:        7.712
 Release:        0
 #Upstream:  This is free software, licensed under: The Apache License, Version 2.0, January 2004
 Summary:        The official client for Elasticsearch
@@ -36,6 +36,7 @@ BuildRequires:  perl(HTTP::Request)
 BuildRequires:  perl(HTTP::Tiny) >= 0.076
 BuildRequires:  perl(IO::Compress::Deflate)
 BuildRequires:  perl(IO::Compress::Gzip)
+BuildRequires:  perl(IO::Socket::SSL)
 BuildRequires:  perl(IO::Uncompress::Gunzip)
 BuildRequires:  perl(IO::Uncompress::Inflate)
 BuildRequires:  perl(JSON::MaybeXS) >= 1.002002
@@ -43,12 +44,18 @@ BuildRequires:  perl(JSON::PP)
 BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Log::Any) >= 1.02
 BuildRequires:  perl(Log::Any::Adapter)
+BuildRequires:  perl(Log::Any::Adapter::Callback) >= 0.09
 BuildRequires:  perl(Module::Runtime)
 BuildRequires:  perl(Moo) >= 2.001000
 BuildRequires:  perl(Moo::Role)
 BuildRequires:  perl(Net::IP)
 BuildRequires:  perl(Package::Stash) >= 0.34
 BuildRequires:  perl(Sub::Exporter)
+BuildRequires:  perl(Test::Deep)
+BuildRequires:  perl(Test::Exception)
+BuildRequires:  perl(Test::More) >= 0.98
+BuildRequires:  perl(Test::Pod)
+BuildRequires:  perl(Test::SharedFork)
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(URI)
 BuildRequires:  perl(namespace::clean)
@@ -76,13 +83,6 @@ Requires:       perl(Try::Tiny)
 Requires:       perl(URI)
 Requires:       perl(namespace::clean)
 %{perl_requires}
-# MANUAL BEGIN
-BuildRequires:  perl(IO::Socket::SSL)
-BuildRequires:  perl(Log::Any::Adapter::Callback)
-BuildRequires:  perl(Test::Deep)
-BuildRequires:  perl(Test::Exception)
-BuildRequires:  perl(Test::SharedFork)
-# MANUAL END
 
 %description
 Search::Elasticsearch is the official Perl client for Elasticsearch,
