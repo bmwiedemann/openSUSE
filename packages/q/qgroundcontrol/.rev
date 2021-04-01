@@ -267,4 +267,18 @@
   * Fly: Rearchitect view and controls within for much better customization support in custom builds</comment>
     <requestid>863813</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>00d4d0ad17fa6e0435e30c5900794ece</srcmd5>
+    <version>4.1.2</version>
+    <time>1617279496</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to version 4.1.2
+  * Bug: Radio setup - Fix double send of `MAV_CMD_PREFLIGHT_CALIBRATION` causing
+         &quot;Unable to send command&quot; error.
+  * Bug: Fly View - Pause - Fix &quot;Unable to send command&quot; error.
+  * Fix TCP link comms
+
+- Remove the unneeded QtWebKitWidgets dependency.</comment>
+    <requestid>882548</requestid>
+  </revision>
 </revisionlist>

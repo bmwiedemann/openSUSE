@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr  1 10:36:54 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to version 4.1.2
+  * Bug: Radio setup - Fix double send of `MAV_CMD_PREFLIGHT_CALIBRATION` causing
+         "Unable to send command" error.
+  * Bug: Fly View - Pause - Fix "Unable to send command" error.
+  * Fix TCP link comms
+
+-------------------------------------------------------------------
+Mon Mar 29 15:14:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the unneeded QtWebKitWidgets dependency.
+
+-------------------------------------------------------------------
 Sun Jan 17 07:19:09 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - update to version 4.1.0

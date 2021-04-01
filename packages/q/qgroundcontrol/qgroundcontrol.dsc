@@ -1,6 +1,6 @@
 Format: 1.0
 Source: qgroundcontrol
-Version: 4.1.0-0
+Version: 4.1.2-0
 Binary: qgroundcontrol
 Maintainer: Adrian Schroeter <adrian@suse.de>
 Architecture: all
