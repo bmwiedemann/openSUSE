@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Mar 31 12:57:28 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210316.00 (bsc#1183414, bsc#1183415)
+  * ExecResource: fix bug in return code handling (#295)
+  * Fix ExecResource permissions, add logs to fetcher (#294)
+  * e2e_tests: Fix ubuntu proposed family (#293)
+  * e2e_tests: add proposed debian images to head tests (#292)
+  * Fix exec_resource for config task, add minimal unit test (#291)
+  * Change util.WriteFile to AtomicWriteFileStream (#289)
+  * Merge development branch into master (#288)
+  * Create util.TempFile to work nicely with Windows (#287)
+  * Fix copy step write (#286)
+  * Fix error on linux lock (#285)
+  * Ensure we cleanup on error in AtomicWrite (#284)
+  * Make writes atomic, add unused "allowDowngrades" option
+    to apt, fix a few recipe issues (#283)
+  * update reviewers (#282)
+  * update apt package lists before running installs (#281)
+  * Simplify build tags for COS package (#280)
+
+-------------------------------------------------------------------
 Tue Jan 12 01:04:39 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20210112.00

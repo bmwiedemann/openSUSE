@@ -22,4 +22,28 @@
   * support cos (#266) (forwarded request 862461 from glaubitz)</comment>
     <requestid>862629</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bc71a7ce1789794ff5b011af05952b88</srcmd5>
+    <version>20210316.00</version>
+    <time>1617279475</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 20210316.00 (bsc#1183414, bsc#1183415)
+  * ExecResource: fix bug in return code handling (#295)
+  * Fix ExecResource permissions, add logs to fetcher (#294)
+  * e2e_tests: Fix ubuntu proposed family (#293)
+  * e2e_tests: add proposed debian images to head tests (#292)
+  * Fix exec_resource for config task, add minimal unit test (#291)
+  * Change util.WriteFile to AtomicWriteFileStream (#289)
+  * Merge development branch into master (#288)
+  * Create util.TempFile to work nicely with Windows (#287)
+  * Fix copy step write (#286)
+  * Fix error on linux lock (#285)
+  * Ensure we cleanup on error in AtomicWrite (#284)
+  * Make writes atomic, add unused &quot;allowDowngrades&quot; option
+    to apt, fix a few recipe issues (#283)
+  * update reviewers (#282)
+  * update apt package lists before running installs (#281)
+  * Simplify build tags for COS package (#280) (forwarded request 882390 from glaubitz)</comment>
+    <requestid>882395</requestid>
+  </revision>
 </revisionlist>
