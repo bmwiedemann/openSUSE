@@ -51,6 +51,8 @@ Patch1:         vlc-allow-deprecated-fribidi.patch
 Patch2:         vlc-lua-5.3.patch
 # PATCH-FIX-UPSTREAM fix-build-with-fdk-2.0.patch -- Fix building vlc with libfdk-aac v2
 Patch3:         fix-build-with-fdk-2.0.patch
+# PATCH-FIX-UPSTREAM vlc-gcc11.patch dimstar@opensuse.org -- Fix build using gcc11
+Patch4:         vlc-gcc11.patch
 # PATCH-FEATURE-OPENSUSE vlc-projectM-qt5.patch -- Build against projectM-qt5; openSUSE provides projectM as -qt and -qt5 variant
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
@@ -103,12 +105,13 @@ BuildRequires:  lirc-devel
 BuildRequires:  live555-devel >= 2015.01.27
 BuildRequires:  lua-devel >= 5.1
 BuildRequires:  mpg123-devel
-BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  posix_cc
 BuildRequires:  schroedinger-devel >= 1.0.10
 BuildRequires:  pkgconfig(libudev) >= 142
+%if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(libplacebo)
+%endif
 #BuildRequires:  slang-devel
 BuildRequires:  speex-devel >= 1.0.5
 BuildRequires:  update-desktop-files
@@ -294,11 +297,15 @@ suitable for server installations, for example, to run a streaming server.
 Should you decide to install the GUI modules, %{name}-noX will stay
 installed as a dependency.
 
+
+
+
 # we can't use %%lang_package, as we need a different dependency
 # boo#1012556
 # but the package name has to stay vlc-lang, as otherise the software centers
 # (AppStream based) can't see vlc being translated (vlc is the one listed in SC
 # not vlc-noX)
+
 %package lang
 # FIXME: consider using %%lang_package macro
 Summary:        Translations for package %{name}
@@ -399,6 +406,7 @@ OpenCV based video filters and a face detection example.
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
+%patch4 -p1
 %if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %patch100 -p1
 %endif
@@ -547,42 +555,65 @@ dd if=/dev/zero bs=1M count=1 of=%{buildroot}/%{_libdir}/vlc/plugins/plugins.dat
 %postun -n libvlc%{libvlc} -p /sbin/ldconfig
 %post -n libvlccore%{libvlccore} -p /sbin/ldconfig
 %postun -n libvlccore%{libvlccore} -p /sbin/ldconfig
+
 %post -n %{name}-qt
-%{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
+  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+fi
 
 %if %{with gstreamer}
 %post -n %{name}-codec-gstreamer
-%{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
+  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+fi
 
 %postun -n %{name}-codec-gstreamer
-%{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
+  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+fi
 %endif
 
 %post -n %{name}-jack
-%{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
+  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+fi
 
 %postun -n %{name}-jack
-%{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
+  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+fi
 
 %if 0%{?BUILD_ORIG}
 %post -n %{name}-codecs
-%{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
+  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+fi
 
 %postun -n %{name}-codecs
-%{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
+  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+fi
 %endif
 
 %post -n %{name}-vdpau
-%{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
+  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+fi
 
 %postun -n %{name}-vdpau
-%{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
+  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+fi
 
 %post -n %{name}-opencv
-%{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
+  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+fi
 
 %postun -n %{name}-opencv
-%{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
+  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+fi
 
 %files
 %exclude %{_libdir}/vlc/libcompat.a
