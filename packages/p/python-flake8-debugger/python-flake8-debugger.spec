@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-debugger
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,18 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-flake8-debugger
-Version:        3.2.1
+Version:        4.0.0
 Release:        0
 Summary:        ipdb/pdb statement checker plugin for flake8
 License:        MIT
 URL:            https://github.com/jbkahn/flake8-debugger
-Source:         https://github.com/JBKahn/flake8-debugger/archive/%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/f/flake8-debugger/flake8-debugger-%{version}.tar.gz
 Source1:        LICENSE
-BuildRequires:  %{python_module setuptools}
+Source2:        https://raw.githubusercontent.com/JBKahn/flake8-debugger/4.0.0/test_linter.py
+# https://github.com/JBKahn/flake8-debugger/issues/28
+Patch1:         pycodestyle-indent-size.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,7 +45,8 @@ ipdb/pdb statement checker plugin for flake8
 %prep
 %setup -q -n flake8-debugger-%{version}
 cp %{SOURCE1} .
-sed -i -e '/pytest-runner/d' setup.py
+cp %{SOURCE2} .
+%patch1 -p1
 
 %build
 %python_build
