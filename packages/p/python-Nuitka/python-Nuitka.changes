@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 30 01:58:42 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Clear ccache between test runs
+- Skip some standalone tests which often fail
+
+-------------------------------------------------------------------
+Sun Mar 28 12:51:53 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Re-enable python3.6 builds on Tumbleweed
+- Update to v0.6.13.2
+  * See https://github.com/Nuitka/Nuitka/blob/develop/Changelog.rst
+
+-------------------------------------------------------------------
 Sat Feb 20 21:46:12 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Use python-sip4 for build dependency to re-enable Leap builds

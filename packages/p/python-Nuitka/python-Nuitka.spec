@@ -17,9 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python36 1
+%bcond_without  test_clang
+%bcond_without  test_gcc
 Name:           python-Nuitka
-Version:        0.6.12.2
+Version:        0.6.13.2
 Release:        0
 Summary:        Python compiler with full language support and CPython compatibility
 License:        Apache-2.0
@@ -43,6 +44,7 @@ Requires(postun): update-alternatives
 Recommends:     ccache
 Recommends:     chrpath
 Recommends:     clang
+Recommends:     python-tqdm
 Recommends:     strace
 Suggests:       execstack
 Suggests:       gdb
@@ -54,15 +56,14 @@ BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module atomicwrites}
 BuildRequires:  %{python_module boltons}
+BuildRequires:  %{python_module glfw}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module opengl-accelerate}
 BuildRequires:  %{python_module opengl}
-BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module passlib}
-BuildRequires:  %{python_module pendulum}
+#BuildRequires: %%{python_module pendulum}
 BuildRequires:  %{python_module pycairo}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pmw}
@@ -70,6 +71,7 @@ BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module rsa}
 BuildRequires:  %{python_module sip4}
 BuildRequires:  %{python_module tk}
+BuildRequires:  %{python_module tqdm}
 BuildRequires:  %{python_module urllib3}
 BuildRequires:  %{python_module xml}
 BuildRequires:  ccache
@@ -79,6 +81,10 @@ BuildRequires:  gdb
 BuildRequires:  strace
 BuildRequires:  tk
 BuildRequires:  (python2-gtk if python2-base)
+BuildRequires:  (python2-numpy if python2-base)
+BuildRequires:  (python2-pandas if python2-base)
+BuildRequires:  python3-numpy
+BuildRequires:  python3-pandas
 # pyside2 has working tests, however it exists on few arch
 #BuildRequires:  python3-pyside2
 # AppImageKit not available in Factory yet
@@ -101,14 +107,18 @@ used in the same way as pure Python objects.
 # De-vendor
 rm -r nuitka/build/inline_copy/appdirs/
 rm -r nuitka/build/inline_copy/atomicwrites/
-rm -r nuitka/build/inline_copy/clcache/
-rm -r nuitka/build/inline_copy/pefile/
+rm -r nuitka/build/inline_copy/tqdm/
 # SCons has copies here that are automatically excluded, but remove them to be sure
 rm -r nuitka/build/inline_copy/lib/scons*/
 rm nuitka/build/inline_copy/bin/scons.py
+
+# Ensure there are no other inline copies
+rm -r nuitka/build/inline_copy/clcache/  # Only needed for Windows
+rm -r nuitka/build/inline_copy/colorama/  # Only needed for Windows
+
 rmdir nuitka/build/inline_copy/bin/
 rmdir nuitka/build/inline_copy/lib/
-rmdir nuitka/build/inline_copy/
+rmdir nuitka/build/inline_copy/ || (ls nuitka/build/inline_copy/ && exit 1)
 
 # De-vendor https://github.com/Nuitka/Nuitka/issues/967
 echo 'from collections import OrderedDict' > nuitka/containers/odict.py
@@ -116,16 +126,22 @@ echo 'from boltons.setutils import IndexedSet as OrderedSet' > nuitka/containers
 
 sed -i '1{/^#!/d}' nuitka/tools/testing/*/__main__.py nuitka/tools/general/dll_report/__main__.py
 
+# Allow these tests to run
 # https://github.com/Nuitka/Nuitka/issues/965
+sed -Ei 's/(Boto3Using|NumpyUsing|PySideUsing)/IgnoreThisConditional/' tests/standalone/run_all.py
+
 # - Boto3Using needs BR boto3, and moto which
-#   is not available on many arch
-# - NumpyUsing fails
-sed -Ei 's/(PySideUsing)/IgnoreThisConditional/' tests/standalone/run_all.py
+#   is not available on many arch, and test fails with
+# ModuleNotFoundError: No module named 'moto.s3'
 rm tests/standalone/Boto3Using.py
+
+# - NumpyUsing fails
 rm tests/standalone/NumpyUsing.py
 
-# https://github.com/Nuitka/Nuitka/issues/995
-sed -i 's/assert python_version <= 390/pass/' nuitka/tree/TreeHelpers.py
+# Pendulum fails with OOM in pyparsing on most arch, except for s390x,
+# with clang, and a new error in 0.6.13:
+# https://github.com/Nuitka/Nuitka/issues/1037
+rm tests/standalone/PendulumUsing.py
 
 %build
 %python_build
@@ -164,15 +180,14 @@ export TK_LIBRARY=%{_libdir}/tcl/tk8.6
 
 %{python_expand #
 
+%if %{with test_clang}
+
 # FlaskUsing OOM in LLVM on Python 3.6 and 3.8 with clang
 # https://github.com/Nuitka/Nuitka/issues/960
 # Also numpy causes the opengl tests to OOM
 mv tests/standalone/FlaskUsing.py /tmp
 mv tests/standalone/OpenGLUsing.py /tmp
 mv tests/standalone/PandasUsing.py /tmp
-mv tests/standalone/PyQt5SSLSupport.py /tmp
-# Pendulum fails only on most arch, except for s390x
-mv tests/standalone/PendulumUsing.py /tmp
 
 # clang with debug
 
@@ -180,25 +195,54 @@ export NUITKA_EXTRA_OPTIONS="--debug"
 
 CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --skip-reflection-test --no-other-python
 
-mv /tmp/*Using.py /tmp/*Support.py tests/standalone/
+mv /tmp/*Using.py tests/standalone/ ||:
+ccache --show-stats
+ccache --clear
+
+# VM disk is being exceeded by PandasUsing.
+# Trying to find where, if any, disk space is being consumed by each test run
+# https://github.com/Nuitka/Nuitka/issues/1053
+find tests -name '*.log' -print -delete
+rm -r /tmp/* ||:
 
 # clang without debug
-mv tests/standalone/PandasUsing.py /tmp
+
+# On Leap python2.7 and python3, OpenGL tests fail OOM
+if [[ "$python" == "python2" || "$python" == "python3" ]]; then
+  mv tests/standalone/OpenGLUsing.py /tmp
+fi
 
 export NUITKA_EXTRA_OPTIONS=""
 
 CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --skip-reflection-test --no-other-python
 
-mv /tmp/*Using.py tests/standalone/
+mv /tmp/*Using.py tests/standalone/ ||:
+ccache --show-stats
+ccache --clear
 
+find tests -name '*.log' -print -delete
+rm -r /tmp/* ||:
+
+%endif
+%if %{with test_gcc}
 # gcc with debug
+
+# PandasUsing on ppc64 regularly fails in various modules like
+# `scons: *** [module.pandas.io.formats.style.o] Error 1`
 mv tests/standalone/PandasUsing.py /tmp
 
 export NUITKA_EXTRA_OPTIONS="--debug"
 
 CC=gcc $python ./tests/run-tests --skip-reflection-test --no-other-python
 
-mv /tmp/*Using.py tests/standalone/
+mv /tmp/*Using.py tests/standalone/ ||:
+ccache --show-stats
+ccache --clear
+
+find tests -name '*.log' -print -delete
+rm -r /tmp/* ||:
+
+%endif
 }
 
 %post
