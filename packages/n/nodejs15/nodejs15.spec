@@ -26,8 +26,12 @@
 ###########################################################
 
 Name:           nodejs15
-Version:        15.11.0
+Version:        15.12.0
 Release:        0
+
+# Double DWZ memory limits
+%define _dwz_low_mem_die_limit  20000000
+%define _dwz_max_die_limit     100000000
 
 %define node_version_number 15
 
@@ -319,7 +323,7 @@ Provides:       bundled(node-acorn-private-class-elements) = 0.2.0
 Provides:       bundled(node-acorn-private-methods) = 0.3.0
 Provides:       bundled(node-acorn-static-class-features) = 0.2.0
 Provides:       bundled(node-acorn-walk) = 8.0.0
-Provides:       bundled(node-cjs-module-lexer) = 1.0.0
+Provides:       bundled(node-cjs-module-lexer) = 1.1.0
 Provides:       bundled(node-node-inspect) = 2.0.0
 
 %description
@@ -346,14 +350,14 @@ Requires:       nodejs15 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 7.6.0
+Provides:       npm(npm) = 7.6.3
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
 Requires:       user(nobody)
 %endif
 %endif
-Provides:       bundled(node-@npmcli/arborist) = 2.2.5
+Provides:       bundled(node-@npmcli/arborist) = 2.2.8
 Provides:       bundled(node-@npmcli/ci-detect) = 1.3.0
 Provides:       bundled(node-@npmcli/config) = 1.2.9
 Provides:       bundled(node-@npmcli/disparity-colors) = 1.0.1
@@ -394,7 +398,7 @@ Provides:       bundled(node-bin-links) = 2.2.1
 Provides:       bundled(node-binary-extensions) = 2.2.0
 Provides:       bundled(node-brace-expansion) = 1.1.11
 Provides:       bundled(node-builtins) = 1.0.3
-Provides:       bundled(node-byte-size) = 7.0.0
+Provides:       bundled(node-byte-size) = 7.0.1
 Provides:       bundled(node-cacache) = 15.0.5
 Provides:       bundled(node-caseless) = 0.12.0
 Provides:       bundled(node-chalk) = 4.1.0
@@ -486,7 +490,7 @@ Provides:       bundled(node-just-diff) = 3.0.2
 Provides:       bundled(node-just-diff-apply) = 3.0.0
 Provides:       bundled(node-leven) = 3.1.0
 Provides:       bundled(node-libnpmaccess) = 4.0.1
-Provides:       bundled(node-libnpmdiff) = 2.0.3
+Provides:       bundled(node-libnpmdiff) = 2.0.4
 Provides:       bundled(node-libnpmfund) = 1.0.2
 Provides:       bundled(node-libnpmhook) = 6.0.1
 Provides:       bundled(node-libnpmorg) = 2.0.1
@@ -534,7 +538,7 @@ Provides:       bundled(node-object-assign) = 4.1.1
 Provides:       bundled(node-once) = 1.4.0
 Provides:       bundled(node-opener) = 1.5.2
 Provides:       bundled(node-p-map) = 4.0.0
-Provides:       bundled(node-pacote) = 11.2.7
+Provides:       bundled(node-pacote) = 11.3.0
 Provides:       bundled(node-parse-conflict-json) = 1.1.1
 Provides:       bundled(node-path-is-absolute) = 1.0.1
 Provides:       bundled(node-path-parse) = 1.0.6

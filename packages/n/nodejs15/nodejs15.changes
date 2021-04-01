@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 30 11:07:07 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- New upstream version 15.12.0:
+  * crypto:
+    + add optional callback to crypto.sign and crypto.verify
+    + support JWK objects in create*Key
+  * deps: 
+    + update to cjs-module-lexer@1.1.0
+  * fs: improve fsPromises writeFile and writeFile performance
+  * lib: implement AbortSignal.abort()
+  * node-api: define version 8 
+  * worker: add setEnvironmentData/getEnvironmentData
+
+- fix_ci_tests.patch npm_search_paths.patch: refreshed
+
+-------------------------------------------------------------------
 Wed Mar  3 12:30:43 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - New upstream version 15.11.0:

@@ -88,4 +88,22 @@
 - nodejs-libpath.patch, versioned.patch: refreshed</comment>
     <requestid>876698</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>03857e6c9ddd5578db1f7ba716913009</srcmd5>
+    <version>15.12.0</version>
+    <time>1617279388</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream version 15.12.0:
+  * crypto:
+    + add optional callback to crypto.sign and crypto.verify
+    + support JWK objects in create*Key
+  * deps: 
+    + update to cjs-module-lexer@1.1.0
+  * fs: improve fsPromises writeFile and writeFile performance
+  * lib: implement AbortSignal.abort()
+  * node-api: define version 8 
+  * worker: add setEnvironmentData/getEnvironmentData
+- fix_ci_tests.patch npm_search_paths.patch: refreshed</comment>
+    <requestid>882330</requestid>
+  </revision>
 </revisionlist>

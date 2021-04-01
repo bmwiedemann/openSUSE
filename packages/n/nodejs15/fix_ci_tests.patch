@@ -2,10 +2,10 @@ Author: Adam Majer <amajer@suse.de>
 Date: Dec 20 09:18:49 UTC 2017
 Summary: Fix CI unit tests framework for OBS building
 
-Index: node-git.ee749ba2c6/test/parallel/test-module-loading-globalpaths.js
+Index: node-v15.12.0/test/parallel/test-module-loading-globalpaths.js
 ===================================================================
---- node-git.ee749ba2c6.orig/test/parallel/test-module-loading-globalpaths.js
-+++ node-git.ee749ba2c6/test/parallel/test-module-loading-globalpaths.js
+--- node-v15.12.0.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-v15.12.0/test/parallel/test-module-loading-globalpaths.js
 @@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
  
  addLibraryPath(process.env);
@@ -16,10 +16,10 @@ Index: node-git.ee749ba2c6/test/parallel/test-module-loading-globalpaths.js
  if (process.argv[2] === 'child') {
    console.log(require(pkgName).string);
  } else {
-Index: node-git.ee749ba2c6/test/parallel/test-tls-env-bad-extra-ca.js
+Index: node-v15.12.0/test/parallel/test-tls-env-bad-extra-ca.js
 ===================================================================
---- node-git.ee749ba2c6.orig/test/parallel/test-tls-env-bad-extra-ca.js
-+++ node-git.ee749ba2c6/test/parallel/test-tls-env-bad-extra-ca.js
+--- node-v15.12.0.orig/test/parallel/test-tls-env-bad-extra-ca.js
++++ node-v15.12.0/test/parallel/test-tls-env-bad-extra-ca.js
 @@ -37,7 +37,7 @@ fork(__filename, opts)
      // TODO(addaleax): Make `SafeGetenv` work like `process.env`
      // encoding-wise
@@ -29,20 +29,20 @@ Index: node-git.ee749ba2c6/test/parallel/test-tls-env-bad-extra-ca.js
        assert(re.test(stderr), stderr);
      }
    }))
-Index: node-git.ee749ba2c6/test/parallel/test-tls-passphrase.js
+Index: node-v15.12.0/test/parallel/test-tls-passphrase.js
 ===================================================================
---- node-git.ee749ba2c6.orig/test/parallel/test-tls-passphrase.js
-+++ node-git.ee749ba2c6/test/parallel/test-tls-passphrase.js
-@@ -223,7 +223,7 @@ server.listen(0, common.mustCall(functio
-   }, onSecureConnect());
+--- node-v15.12.0.orig/test/parallel/test-tls-passphrase.js
++++ node-v15.12.0/test/parallel/test-tls-passphrase.js
+@@ -224,7 +224,7 @@ server.listen(0, common.mustCall(functio
  })).unref();
  
--const errMessagePassword = /bad decrypt/;
-+const errMessagePassword = /bad (decrypt|password read)/;
+ const errMessagePassword = common.hasOpenSSL3 ?
+-  /processing error/ : /bad decrypt/;
++  /processing error/ : /bad (decrypt|password read)/;
  
  // Missing passphrase
  assert.throws(function() {
-@@ -253,7 +253,7 @@ assert.throws(function() {
+@@ -254,7 +254,7 @@ assert.throws(function() {
    });
  }, errMessagePassword);
  
@@ -51,10 +51,10 @@ Index: node-git.ee749ba2c6/test/parallel/test-tls-passphrase.js
  
  // Invalid passphrase
  assert.throws(function() {
-Index: node-git.ee749ba2c6/test/parallel/test-repl-envvars.js
+Index: node-v15.12.0/test/parallel/test-repl-envvars.js
 ===================================================================
---- node-git.ee749ba2c6.orig/test/parallel/test-repl-envvars.js
-+++ node-git.ee749ba2c6/test/parallel/test-repl-envvars.js
+--- node-v15.12.0.orig/test/parallel/test-repl-envvars.js
++++ node-v15.12.0/test/parallel/test-repl-envvars.js
 @@ -2,12 +2,14 @@
  
  // Flags: --expose-internals
@@ -71,10 +71,10 @@ Index: node-git.ee749ba2c6/test/parallel/test-repl-envvars.js
  const tests = [
    {
      env: {},
-Index: node-git.ee749ba2c6/test/common/index.mjs
+Index: node-v15.12.0/test/common/index.mjs
 ===================================================================
---- node-git.ee749ba2c6.orig/test/common/index.mjs
-+++ node-git.ee749ba2c6/test/common/index.mjs
+--- node-v15.12.0.orig/test/common/index.mjs
++++ node-v15.12.0/test/common/index.mjs
 @@ -44,6 +44,7 @@ const {
    expectsError,
    skipIfInspectorDisabled,
@@ -91,10 +91,10 @@ Index: node-git.ee749ba2c6/test/common/index.mjs
    getArrayBufferViews,
    getBufferSources,
    disableCrashOnUnhandledRejection,
-Index: node-git.ee749ba2c6/Makefile
+Index: node-v15.12.0/Makefile
 ===================================================================
---- node-git.ee749ba2c6.orig/Makefile
-+++ node-git.ee749ba2c6/Makefile
+--- node-v15.12.0.orig/Makefile
++++ node-v15.12.0/Makefile
 @@ -510,7 +510,8 @@ test-ci-js: | clear-stalled
  .PHONY: test-ci
  # Related CI jobs: most CI tests, excluding node-test-commit-arm-fanned
@@ -105,7 +105,7 @@ Index: node-git.ee749ba2c6/Makefile
  	out/Release/cctest --gtest_output=xml:out/junit/cctest.xml
  	$(PYTHON) tools/test.py $(PARALLEL_ARGS) -p tap --logfile test.tap \
  		--mode=$(BUILDTYPE_LOWER) --flaky-tests=$(FLAKY_TESTS) \
-@@ -684,7 +685,8 @@ apidocs_json = $(addprefix out/,$(apidoc
+@@ -689,7 +690,8 @@ apidocs_json = $(addprefix out/,$(apidoc
  apiassets = $(subst api_assets,api/assets,$(addprefix out/,$(wildcard doc/api_assets/*)))
  
  tools/doc/node_modules: tools/doc/package.json
@@ -115,16 +115,16 @@ Index: node-git.ee749ba2c6/Makefile
  		echo "Skipping tools/doc/node_modules (no crypto)"; \
  	else \
  		cd tools/doc && $(call available-node,$(run-npm-ci)) \
-Index: node-git.ee749ba2c6/test/parallel/test-crypto-dh.js
+Index: node-v15.12.0/test/parallel/test-crypto-dh.js
 ===================================================================
---- node-git.ee749ba2c6.orig/test/parallel/test-crypto-dh.js
-+++ node-git.ee749ba2c6/test/parallel/test-crypto-dh.js
-@@ -168,7 +168,7 @@ const wrongBlockLength = {
- 
- assert.throws(() => {
+--- node-v15.12.0.orig/test/parallel/test-crypto-dh.js
++++ node-v15.12.0/test/parallel/test-crypto-dh.js
+@@ -189,7 +189,7 @@ assert.throws(() => {
    dh3.computeSecret('');
--}, { message: 'Supplied key is too small' });
-+}, { message: /Supplied key is too small|error:05066066:Diffie-Hellman routines:compute_key:invalid public key/ });
+ }, { message: common.hasOpenSSL3 ?
+   'error:02800066:Diffie-Hellman routines::invalid public key' :
+-  'Supplied key is too small' });
++  /Supplied key is too small|error:05066066:Diffie-Hellman routines:compute_key:invalid public key/ });
  
  // Create a shared using a DH group.
  const alice = crypto.createDiffieHellmanGroup('modp5');

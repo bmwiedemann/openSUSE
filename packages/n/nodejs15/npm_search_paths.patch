@@ -1,21 +1,21 @@
-Index: node-git.2070d5b524/deps/npm/lib/help-search.js
+Index: node-git.3bba40abc6/deps/npm/lib/help-search.js
 ===================================================================
---- node-git.2070d5b524.orig/deps/npm/lib/help-search.js
-+++ node-git.2070d5b524/deps/npm/lib/help-search.js
-@@ -21,7 +21,7 @@ const helpSearch = async args => {
-   if (!args.length)
-     throw usage
+--- node-git.3bba40abc6.orig/deps/npm/lib/help-search.js
++++ node-git.3bba40abc6/deps/npm/lib/help-search.js
+@@ -28,7 +28,7 @@ class HelpSearch extends BaseCommand {
+     if (!args.length)
+       throw this.usage
  
--  const docPath = path.resolve(__dirname, '..', 'docs/content')
-+  const docPath = '/usr/share/doc/packages/nodejs';
+-    const docPath = path.resolve(__dirname, '..', 'docs/content')
++    const docPath = '/usr/share/doc/packages/nodejs';
  
-   const files = await glob(`${docPath}/*/*.md`)
-   const data = await readFiles(files)
-Index: node-git.2070d5b524/deps/npm/lib/npm.js
+     const files = await glob(`${docPath}/*/*.md`)
+     const data = await this.readFiles(files)
+Index: node-git.3bba40abc6/deps/npm/lib/npm.js
 ===================================================================
---- node-git.2070d5b524.orig/deps/npm/lib/npm.js
-+++ node-git.2070d5b524/deps/npm/lib/npm.js
-@@ -231,7 +231,13 @@ const npm = module.exports = new class e
+--- node-git.3bba40abc6.orig/deps/npm/lib/npm.js
++++ node-git.3bba40abc6/deps/npm/lib/npm.js
+@@ -223,7 +223,13 @@ const npm = module.exports = new class e
    }
  
    get globalPrefix () {
