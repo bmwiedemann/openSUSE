@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruamel.yaml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ruamel.yaml
-Version:        0.16.12
+Version:        0.17.2
 Release:        0
 Summary:        Python YAML parser
 License:        MIT
@@ -30,9 +30,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ruamel.yaml.clib >= 0.1.2
 BuildArch:      noarch
-%ifpython2
-Requires:       python-ruamel.ordereddict
-%endif
 %python_subpackages
 
 %description

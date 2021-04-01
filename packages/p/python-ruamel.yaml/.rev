@@ -244,4 +244,17 @@
     <comment></comment>
     <requestid>842098</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>8eb119255f0168f66e84a9a6feb0113d</srcmd5>
+    <version>0.17.2</version>
+    <time>1617279369</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 0.17.2
+ * fix upstream packaging problems
+
+- update to 0.17.0
+ * drop python2 support
+ * preparation for f-strings</comment>
+    <requestid>882138</requestid>
+  </revision>
 </revisionlist>

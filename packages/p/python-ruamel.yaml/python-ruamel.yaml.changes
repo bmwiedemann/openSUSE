@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 30 09:28:23 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.17.2
+ * fix upstream packaging problems
+
+-------------------------------------------------------------------
+Fri Mar 26 15:28:05 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.17.0
+ * drop python2 support
+ * preparation for f-strings
+
+-------------------------------------------------------------------
 Fri Oct 16 08:47:42 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
 
 - update to 0.16.12
