@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 31 09:43:09 UTC 2021 - abriel@suse.com
+
+- prevent sapping.service from running a second time after a
+  corosync start/restart
+  (bsc#1183969)
+
+-------------------------------------------------------------------
 Fri Mar  5 08:54:12 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
 - Fix the spec file to follow properly the SLE submission policies 

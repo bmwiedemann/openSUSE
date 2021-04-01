@@ -17,4 +17,12 @@ Set this package as the &quot;devel&quot; package please</comment>
     <comment>New version of sapstartsrv-resource-agents released</comment>
     <requestid>877570</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cb3ad9e466f88dd27e41fde2be9d4dc7</srcmd5>
+    <version>0.9.0+git.1617199081.815e7ba</version>
+    <time>1617279473</time>
+    <user>RBrownSUSE</user>
+    <comment>New version of sapstartsrv-resource-agents released</comment>
+    <requestid>882370</requestid>
+  </revision>
 </revisionlist>
