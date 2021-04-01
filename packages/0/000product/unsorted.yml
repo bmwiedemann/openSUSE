@@ -392,6 +392,7 @@ unsorted:
   - aer-inject 
   - aespipe 
   - afl 
+  - afterburn: [x86_64] 
   - agenda 
   - agenda-lang 
   - aha 
@@ -3091,6 +3092,8 @@ unsorted:
   - emacs-color-theme 
   - emacs-completion-golang 
   - emacs-el 
+  - emacs-gnuplot-mode 
+  - emacs-gnuplot-mode-doc 
   - emacs-plugin-devhelp: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - emacs-scheme48 
   - emacs-semi 
@@ -3329,6 +3332,7 @@ unsorted:
   - fatrace 
   - fatsort 
   - fb-util-for-appx 
+  - fbcat 
   - fbi 
   - fbpdf 
   - fbreader 
@@ -8674,8 +8678,10 @@ unsorted:
   - libOpenColorIO1 
   - libOpenIPMI0 
   - libOpenImageDenoise0: [x86_64] 
-  - libOpenImageIO2_1 
-  - libOpenImageIO_Util2_1 
+  - libOpenImageIO2_1: [i586] 
+  - libOpenImageIO2_2: [x86_64] 
+  - libOpenImageIO_Util2_1: [i586] 
+  - libOpenImageIO_Util2_2: [x86_64] 
   - libOpenSceneGraph-devel 
   - libOpenSceneGraph131 
   - libOpenSceneGraph131-devel 
@@ -10261,7 +10267,7 @@ unsorted:
   - libexe-tools 
   - libexe1 
   - libexempi-devel 
-  - libexempi3-32bit: [x86_64] 
+  - libexempi8-32bit: [x86_64] 
   - libexif-devel 
   - libexif-devel-32bit: [x86_64] 
   - libexif-gtk 
@@ -11836,14 +11842,21 @@ unsorted:
   - libmumps-gnu-openmpi3-hpc: [x86_64] 
   - libmumps-gnu-openmpi4-hpc: [x86_64] 
   - libmumps-ptscotch5-openmpi1: [x86_64] 
+  - libmumps-ptscotch5-openmpi1-compat: [x86_64] 
   - libmumps-ptscotch5-openmpi2: [x86_64] 
+  - libmumps-ptscotch5-openmpi2-compat: [x86_64] 
   - libmumps-scotch5: [x86_64] 
   - libmumps5: [x86_64] 
   - libmumps5-mvapich2: [x86_64] 
+  - libmumps5-mvapich2-compat: [x86_64] 
   - libmumps5-openmpi1: [x86_64] 
+  - libmumps5-openmpi1-compat: [x86_64] 
   - libmumps5-openmpi2: [x86_64] 
+  - libmumps5-openmpi2-compat: [x86_64] 
   - libmumps5-openmpi3: [x86_64] 
+  - libmumps5-openmpi3-compat: [x86_64] 
   - libmumps5-openmpi4: [x86_64] 
+  - libmumps5-openmpi4-compat: [x86_64] 
   - libmumps_5_3_5-gnu-mpich-hpc: [x86_64] 
   - libmumps_5_3_5-gnu-mvapich2-hpc: [x86_64] 
   - libmumps_5_3_5-gnu-openmpi1-hpc: [x86_64] 
@@ -12181,7 +12194,7 @@ unsorted:
   - libopenmpi_1_10_7-gnu-hpc 
   - libopenmpi_2_1_6-gnu-hpc 
   - libopenmpi_3_1_6-gnu-hpc 
-  - libopenmpi_4_0_5-gnu-hpc 
+  - libopenmpi_4_1_0-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
   - libopenmpt0-32bit: [x86_64] 
@@ -12952,11 +12965,6 @@ unsorted:
   - libregina3 
   - libreiser4-2_0-4 
   - libreiser4-minimal-2_0-4 
-  - libreiserfs-0_3-0 
-  - libreiserfs-0_3-0-32bit: [x86_64] 
-  - libreiserfs-devel 
-  - libreiserfs-devel-32bit: [x86_64] 
-  - libreiserfs-progs 
   - libreiserfscore-devel 
   - librelp-devel 
   - librelp0 
@@ -15131,6 +15139,7 @@ unsorted:
   - mandoc 
   - mangler 
   - mangohud 
+  - mangohud-32bit: [x86_64] 
   - manpageeditor 
   - mapserver 
   - mapserver-devel 
@@ -16139,37 +16148,30 @@ unsorted:
   - mumps-gnu-openmpi4-hpc-devel: [x86_64] 
   - mumps-gnu-openmpi4-hpc-doc: [x86_64] 
   - mumps-gnu-openmpi4-hpc-examples: [x86_64] 
-  - mumps-mvapich2-5-compat: [x86_64] 
   - mumps-mvapich2-devel: [x86_64] 
   - mumps-mvapich2-devel-static: [x86_64] 
   - mumps-mvapich2-devel-static-compat: [x86_64] 
   - mumps-mvapich2-examples: [x86_64] 
-  - mumps-openmpi1-5-compat: [x86_64] 
   - mumps-openmpi1-devel: [x86_64] 
   - mumps-openmpi1-devel-static: [x86_64] 
   - mumps-openmpi1-devel-static-compat: [x86_64] 
   - mumps-openmpi1-examples: [x86_64] 
-  - mumps-openmpi2-5-compat: [x86_64] 
   - mumps-openmpi2-devel: [x86_64] 
   - mumps-openmpi2-devel-static: [x86_64] 
   - mumps-openmpi2-devel-static-compat: [x86_64] 
   - mumps-openmpi2-examples: [x86_64] 
-  - mumps-openmpi3-5-compat: [x86_64] 
   - mumps-openmpi3-devel: [x86_64] 
   - mumps-openmpi3-devel-static: [x86_64] 
   - mumps-openmpi3-devel-static-compat: [x86_64] 
   - mumps-openmpi3-examples: [x86_64] 
-  - mumps-openmpi4-5-compat: [x86_64] 
   - mumps-openmpi4-devel: [x86_64] 
   - mumps-openmpi4-devel-static: [x86_64] 
   - mumps-openmpi4-devel-static-compat: [x86_64] 
   - mumps-openmpi4-examples: [x86_64] 
-  - mumps-ptscotch-openmpi1-5-compat: [x86_64] 
   - mumps-ptscotch-openmpi1-devel: [x86_64] 
   - mumps-ptscotch-openmpi1-devel-static: [x86_64] 
   - mumps-ptscotch-openmpi1-devel-static-compat: [x86_64] 
   - mumps-ptscotch-openmpi1-examples: [x86_64] 
-  - mumps-ptscotch-openmpi2-5-compat: [x86_64] 
   - mumps-ptscotch-openmpi2-devel: [x86_64] 
   - mumps-ptscotch-openmpi2-devel-static: [x86_64] 
   - mumps-ptscotch-openmpi2-devel-static-compat: [x86_64] 
@@ -16246,21 +16248,21 @@ unsorted:
   - mvapich2-psm2-gnu-hpc-devel: [x86_64] 
   - mvapich2-psm2-gnu-hpc-doc: [x86_64] 
   - mvapich2-psm2-gnu-hpc-macros-devel: [x86_64] 
-  - mvapich2-psm2_2_3_4-gnu-hpc: [x86_64] 
-  - mvapich2-psm2_2_3_4-gnu-hpc-devel: [x86_64] 
-  - mvapich2-psm2_2_3_4-gnu-hpc-devel-static: [x86_64] 
-  - mvapich2-psm2_2_3_4-gnu-hpc-doc: [x86_64] 
-  - mvapich2-psm2_2_3_4-gnu-hpc-macros-devel: [x86_64] 
-  - mvapich2-psm_2_3_4-gnu-hpc 
-  - mvapich2-psm_2_3_4-gnu-hpc-devel 
-  - mvapich2-psm_2_3_4-gnu-hpc-devel-static 
-  - mvapich2-psm_2_3_4-gnu-hpc-doc 
-  - mvapich2-psm_2_3_4-gnu-hpc-macros-devel 
-  - mvapich2_2_3_4-gnu-hpc 
-  - mvapich2_2_3_4-gnu-hpc-devel 
-  - mvapich2_2_3_4-gnu-hpc-devel-static 
-  - mvapich2_2_3_4-gnu-hpc-doc 
-  - mvapich2_2_3_4-gnu-hpc-macros-devel 
+  - mvapich2-psm2_2_3_5-gnu-hpc: [x86_64] 
+  - mvapich2-psm2_2_3_5-gnu-hpc-devel: [x86_64] 
+  - mvapich2-psm2_2_3_5-gnu-hpc-devel-static: [x86_64] 
+  - mvapich2-psm2_2_3_5-gnu-hpc-doc: [x86_64] 
+  - mvapich2-psm2_2_3_5-gnu-hpc-macros-devel: [x86_64] 
+  - mvapich2-psm_2_3_5-gnu-hpc 
+  - mvapich2-psm_2_3_5-gnu-hpc-devel 
+  - mvapich2-psm_2_3_5-gnu-hpc-devel-static 
+  - mvapich2-psm_2_3_5-gnu-hpc-doc 
+  - mvapich2-psm_2_3_5-gnu-hpc-macros-devel 
+  - mvapich2_2_3_5-gnu-hpc 
+  - mvapich2_2_3_5-gnu-hpc-devel 
+  - mvapich2_2_3_5-gnu-hpc-devel-static 
+  - mvapich2_2_3_5-gnu-hpc-doc 
+  - mvapich2_2_3_5-gnu-hpc-macros-devel 
   - mwic 
   - mx4j 
   - mxml-devel 
@@ -17672,12 +17674,12 @@ unsorted:
   - openmpi_3_1_6-gnu-hpc-docs 
   - openmpi_3_1_6-gnu-hpc-macros-devel 
   - openmpi_3_1_6-gnu-hpc-testsuite 
-  - openmpi_4_0_5-gnu-hpc 
-  - openmpi_4_0_5-gnu-hpc-devel 
-  - openmpi_4_0_5-gnu-hpc-devel-static 
-  - openmpi_4_0_5-gnu-hpc-docs 
-  - openmpi_4_0_5-gnu-hpc-macros-devel 
-  - openmpi_4_0_5-gnu-hpc-testsuite 
+  - openmpi_4_1_0-gnu-hpc 
+  - openmpi_4_1_0-gnu-hpc-devel 
+  - openmpi_4_1_0-gnu-hpc-devel-static 
+  - openmpi_4_1_0-gnu-hpc-docs 
+  - openmpi_4_1_0-gnu-hpc-macros-devel 
+  - openmpi_4_1_0-gnu-hpc-testsuite 
   - openmpt123 
   - openmw 
   - opennlp 
@@ -18307,6 +18309,8 @@ unsorted:
   - pdf2djvu 
   - pdf2djvu-lang 
   - pdf2svg 
+  - pdfarranger 
+  - pdfarranger-lang 
   - pdfgrep 
   - pdfgrep-bash-completion 
   - pdfgrep-zsh-completion 
@@ -20780,7 +20784,6 @@ unsorted:
   - python3-GitgExt 
   - python3-Hamlib 
   - python3-HepMC 
-  - python3-HyperKitty 
   - python3-Keras: [x86_64] 
   - python3-Keras-examples: [x86_64] 
   - python3-MapProxy 
@@ -21231,6 +21234,7 @@ unsorted:
   - python36-MiniMock 
   - python36-Morfessor 
   - python36-MouseInfo 
+  - python36-Nuitka 
   - python36-OWSLib 
   - python36-PGet 
   - python36-PTable 
@@ -23219,6 +23223,7 @@ unsorted:
   - python36-pytest-mock 
   - python36-pytest-mypy 
   - python36-pytest-openfiles 
+  - python36-pytest-order 
   - python36-pytest-ordering 
   - python36-pytest-parallel 
   - python36-pytest-percent 
@@ -24039,6 +24044,7 @@ unsorted:
   - python38-GridDataFormats 
   - python38-HTTPolice 
   - python38-HeapDict 
+  - python38-HyperKitty 
   - python38-IMAPClient 
   - python38-IMDbPY 
   - python38-JPype1 
@@ -26082,6 +26088,7 @@ unsorted:
   - python38-pytest-mpl 
   - python38-pytest-mypy 
   - python38-pytest-openfiles 
+  - python38-pytest-order 
   - python38-pytest-ordering 
   - python38-pytest-parallel 
   - python38-pytest-percent 
@@ -26922,6 +26929,7 @@ unsorted:
   - qmodbus 
   - qnapi 
   - qoauth-qt5-devel 
+  - qolibri 
   - qore 
   - qore-devel 
   - qore-devel-doc 
