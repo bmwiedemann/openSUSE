@@ -17,11 +17,11 @@ if systemctl -q is-active packagekit.service; then
 	systemctl stop packagekit.service
 fi
 
-#The URL placeholder gets filled by live-net-installer.spec
+# The URL placeholder gets filled by live-net-installer.spec
+# Disable self-update, it expects inst-sys environment and doesn't work from Live CD
 cat >/etc/install.inf <<EOF
 ZyppRepoURL: @URL@
 InstMode: net
-# disable self-update, it expects inst-sys environment and doesn't work from Live CD
 SelfUpdate: 0
 EOF
 
@@ -45,4 +45,11 @@ done
 # gnomesu does not add sbin to $PATH, so do it manually.
 export PATH=/sbin:/usr/sbin:$PATH
 
-/usr/lib/YaST2/startup/YaST2.call installation initial
+# Run YaST in a separate mount namespace to avoid that it messes with the
+# running system, for instance by altering /run
+unshare -m /usr/lib/YaST2/startup/YaST2.call installation initial
+
+# YaST replaces this with a symlink into the destination, fix it up manually
+if [ -L /var/cache/zypp ]; then
+	rm /var/cache/zypp
+fi

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 31 08:45:51 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Fixup /var/cache/zypp after the installation
+- Comments aren't allowed in install.inf, move it outside
+- Run YaST in a mount namespace
+
+-------------------------------------------------------------------
 Mon Mar  8 09:24:31 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add some more runtime dependencies which yast2-storage is missing

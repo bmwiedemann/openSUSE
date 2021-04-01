@@ -120,4 +120,14 @@
     <comment>- Add some more runtime dependencies which yast2-storage is missing</comment>
     <requestid>877649</requestid>
   </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>4539d57f973e526ef75eee272acc2421</srcmd5>
+    <version>1.0</version>
+    <time>1617279467</time>
+    <user>RBrownSUSE</user>
+    <comment>- Fixup /var/cache/zypp after the installation
+- Comments aren't allowed in install.inf, move it outside
+- Run YaST in a mount namespace</comment>
+    <requestid>882331</requestid>
+  </revision>
 </revisionlist>
