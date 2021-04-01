@@ -19,14 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-ddt
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Data-Driven/Decorated Tests
 License:        MIT
 URL:            https://github.com/txels/ddt
 Source:         https://files.pythonhosted.org/packages/source/d/ddt/ddt-%{version}.tar.gz
-# https://github.com/datadriventests/ddt/pull/96
-Patch1:         0001-Use-Yaml-s-UnsafeLoader-for-Python-embedding-tests.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

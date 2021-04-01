@@ -105,4 +105,15 @@
     <comment>- add 0001-Use-Yaml-s-UnsafeLoader-for-Python-embedding-tests.patch</comment>
     <requestid>866682</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>13a6de1a617774b1c9b63042160dba7d</srcmd5>
+    <version>1.4.2</version>
+    <time>1617279351</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 1.4.2:
+  * Fix test failure with PyYAML 5.4.1
+- rm 0001-Use-Yaml-s-UnsafeLoader-for-Python-embedding-tests.patch:
+  merged upstream</comment>
+    <requestid>880822</requestid>
+  </revision>
 </revisionlist>
