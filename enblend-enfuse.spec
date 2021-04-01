@@ -1,7 +1,7 @@
 #
 # spec file for package enblend-enfuse
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@
 #%%define __builder ninja
 
 Name:           enblend-enfuse
-Url:            http://enblend.sourceforge.net/
+URL:            http://enblend.sourceforge.net/
 Summary:        Tool for Composing Images
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
@@ -40,6 +40,8 @@ Patch0:         enblend-enfuse-4.2-add-missing-cmakelists.patch
 Patch1:         reproducibledate.patch
 # PATCH-FIX-OPENSUSE by bmwiedemann
 Patch2:         reproducible.patch
+# PATCH-FIX-UPSTREAM enblend-enfuse-4.2-gcc-10.patch
+Patch3:         enblend-enfuse-4.2-gcc-10.patch
 
 BuildRequires:  OpenEXR-devel
 BuildRequires:  cmake
@@ -103,10 +105,7 @@ Group:          Documentation/PDF
 PDF usage documentation for the enblend and enfuse command line tools.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 
 %if ! %{_build_doc}
 cp %{SOURCE10} doc/
