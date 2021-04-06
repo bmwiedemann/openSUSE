@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Sun Apr  4 16:38:31 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+-  update to version 2021.4.0:
+  * Adding support for multidimensional histograms with
+    dask.array.histogramdd (:pr:`7387`) Doug Davis
+  * Update docs on number of threads and workers in default
+    LocalCluster (:pr:`7497`) cameron16
+  * Add labels automatically when certain files are touched in a PR
+    (:pr:`7506`) Julia Signell
+  * Extract ignore_order from kwargs (:pr:`7500`) GALI PREM SAGAR
+  * Only provide installation instructions when distributed is missing
+    (:pr:`7498`) Matthew Rocklin
+  * Start adding isort (:pr:`7370`) Julia Signell
+  * Add ignore_order parameter in dd.concat (:pr:`7473`) Daniel
+    Mesejo-León
+  * Use powers-of-two when displaying RAM (:pr:`7484`) Guido Imperiale
+  * Added License Classifier (:pr:`7485`) Tom Augspurger
+  * Replace conda with mamba (:pr:`7227`) Guido Imperiale
+  * Fix typo in array docs (:pr:`7478`) James Lamb
+  * Use concurrent.futures in local scheduler (:pr:`6322`) John A
+    Kirkham
+
+-------------------------------------------------------------------
+Tue Mar 30 21:47:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.3.1
+  * Add a dispatch for is_categorical_dtype to handle non-pandas 
+    objects (GH#7469) brandon-b-miller
+  * Use multiprocessing.Pool in test_read_text (GH#7472) John A 
+    Kirkham
+  * Add missing meta kwarg to gufunc class (GH#7423) Peter Andreas 
+    Entschev
+  * Example for memory-mapped Dask array (GH#7380) Dieter Weber
+  * Fix NumPy upstream failures xfail pandas and fastparquet 
+    failures (GH#7441) Julia Signell
+  * Fix bug in repartition with freq (GH#7357) Ruben van de Geer
+  * Fix __array_function__ dispatching for tril/triu (GH#7457) 
+    Peter Andreas Entschev
+  * Use concurrent.futures.Executors in a few tests (GH#7429) John 
+    A Kirkham
+  * Require NumPy >=1.16 (GH#7383) Guido Imperiale
+  * Minor sort_values housekeeping (GH#7462) Ryan Williams
+  * Ensure natural sort order in parquet part paths (GH#7249) Ryan 
+    Williams
+  * Remove global env mutation upon running test_config.py 
+    (GH#7464) Hristo
+  * Update NumPy intersphinx URL (GH#7460) Gabe Joseph
+  * Add rot90 (GH#7440) Trevor Manz
+  * Update docs for required package for endpoint (GH#7454) Nick 
+    Vazquez
+  * Master -> main in slice_array docstring (GH#7453) Gabe Joseph
+  * Expand dask.utils.is_arraylike docstring (GH#7445) Doug Davis
+  * Simplify BlockwiseIODeps importing (GH#7420) Richard (Rick) 
+    Zamora
+  * Update layer annotation packing method (GH#7430) James Bourbeau
+  * Drop duplicate test in test_describe_empty (GH#7431) John A 
+    Kirkham
+  * Add Series.dot method to dataframe module (GH#7236) Madhu94
+  * Added df kurtosis-method and testing (GH#7273) Jan Borchmann
+  * Avoid quadratic-time performance for HLG culling (GH#7403) 
+    Bruce Merry
+  * Temporarily skip problematic sparse test (GH#7421) James 
+    Bourbeau
+  * Update some CI workflow names (GH#7422) James Bourbeau
+  * Fix HDFS test (GH#7418) Julia Signell
+  * Make changelog subtitles match the hierarchy (GH#7419) Julia 
+    Signell
+  * Add support for normalize in value_counts (GH#7342) Julia 
+    Signell
+  * Avoid unnecessary imports for HLG Layer unpacking and 
+    materialization (GH#7381) Richard (Rick) Zamora
+  * Bincount fix slicing (GH#7391) Genevieve Buckley
+  * Add sliding_window_view (GH#7234) Deepak Cherian
+  * Fix typo in docs/source/develop.rst (GH#7414) Hristo
+  * Switch documentation builds for PRs to readthedocs (GH#7397) 
+    James Bourbeau
+  * Adds sort_values to dask.DataFrame (GH#7286) gerrymanoim
+  * Pin sqlalchemy<1.4.0 in CI (GH#7405) James Bourbeau
+  * Comment fixes (GH#7215) Ryan Williams
+  * Dead code removal / fixes (GH#7388) Ryan Williams
+  * Use single thread for pa.Table.from_pandas calls (GH#7347) 
+    Richard (Rick) Zamora
+  * Replace 'container' with 'image' (GH#7389) James Lamb
+  * DOC hyperlink repartition (GH#7394) Ray Bell
+  * Pass delimiter to fsspec in bag.read_text (GH#7349) Martin 
+    Durant
+  * Update read_hdf default mode to "r" (GH#7039) rs9w33
+  * Embed literals in SubgraphCallable when packing Blockwise 
+    (GH#7353) Mads R. B. Kristensen
+  * Update test_hdf.py to not reuse file handlers (GH#7044) rs9w33
+  * Require additional dependencies: cloudpickle, partd, fsspec, 
+    toolz (GH#7345) Julia Signell
+  * Prepare Blockwise + IO infrastructure (GH#7281) Richard (Rick) 
+    Zamora
+  * Remove duplicated imports from test_slicing.py (GH#7365) Hristo
+  * Add test deps for pip development (GH#7360) Julia Signell
+  * Support int slicing for non-NumPy arrays (GH#7364) Peter 
+    Andreas Entschev
+  * Automatically cancel previous CI builds (GH#7348) James 
+    Bourbeau
+  * dask.array.asarray should handle case where xarray class is in 
+    top-level namespace (GH#7335) Tom White
+  * HighLevelGraph length without materializing layers (GH#7274) 
+    Gabe Joseph
+  * Drop support for Python 3.6 (GH#7006) James Bourbeau
+  * Fix fsspec usage in create_metadata_file (GH#7295) Richard 
+    (Rick) Zamora
+  * Change default branch from master to main (GH#7198) Julia 
+    Signell
+  * Add Xarray to CI software environment (GH#7338) James Bourbeau
+  * Update repartition argument name in error text (GH#7336) Eoin 
+    Shanaghy
+  * Run upstream tests based on commit message (GH#7329) James 
+    Bourbeau
+  * Use pytest.register_assert_rewrite on util modules (GH#7278) 
+    Bruce Merry
+  * Add example on using specific chunk sizes in from_array() 
+    (GH#7330) James Lamb
+  * Move NumPy skip into test (GH#7247) Julia Signell
+- Update package descriptions
+- Add dask-delayed and dask-diagnostics packages 
+- Drop dask-multiprocessing package merged into main
+- Skip python36: upstream dropped support for Python < 3.7
+- Drop dask-pr7247-numpyskip.patch merged upstream
+- Test more optional requirements for better compatibility
+  assurance.
+
+-------------------------------------------------------------------
 Sun Mar  7 16:40:26 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2021.3.0

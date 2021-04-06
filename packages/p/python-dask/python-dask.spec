@@ -1,5 +1,5 @@
 #
-# spec file for package python-dask
+# spec file for package python-dask-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -26,120 +26,133 @@
 %bcond_with test
 %endif
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-dask%{psuffix}
-Version:        2021.3.0
+Version:        2021.4.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
 URL:            https://dask.org
 Source:         https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM dask-pr7247-numpyskip.patch -- gh#dask/dask#7247
-Patch0:         dask-pr7247-numpyskip.patch
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
+Requires:       python-cloudpickle >= 1.1.1
+Requires:       python-fsspec >= 0.6.0
+Requires:       python-partd >= 0.3.10
+Requires:       python-toolz >= 0.8.2
 Recommends:     %{name}-array = %{version}
 Recommends:     %{name}-bag = %{version}
 Recommends:     %{name}-dataframe = %{version}
+Recommends:     %{name}-delayed = %{version}
 Recommends:     %{name}-distributed = %{version}
 Recommends:     %{name}-dot = %{version}
-Recommends:     %{name}-multiprocessing = %{version}
-Recommends:     python-bokeh >= 1.0.0
-Recommends:     python-cloudpickle >= 0.2.2
+Recommends:     python-SQLAlchemy
 Recommends:     python-cityhash
 Recommends:     python-distributed >= %{version}
 Recommends:     python-fastparquet
-Recommends:     python-fsspec >= 0.6.0
 Recommends:     python-gcsfs >= 0.4.0
 Recommends:     python-murmurhash
-Recommends:     python-partd >= 0.3.10
 Recommends:     python-psutil
 Recommends:     python-pyarrow >= 0.14.0
 Recommends:     python-s3fs >= 0.4.0
-Recommends:     python-SQLAlchemy
-Recommends:     python-toolz >= 0.8.2
 Recommends:     python-xxhash
+Suggests:       %{name}-all = %{version}
+Suggests:       %{name}-diagnostics = %{version}
+Provides:       %{name}-multiprocessing = %{version}-%{release}
+Obsoletes:      %{name}-multiprocessing < %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
+# test that we specified all requirements correctly in the core
+# and subpackages by only requiring dask-all and optional extras
+BuildRequires:  %{python_module dask-all = %{version}}
+BuildRequires:  %{python_module pytest-rerunfailures}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+# SECTION additional optionally tested (importorskip) packages
+BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module cachey}
-BuildRequires:  %{python_module cloudpickle >= 0.2.2}
-BuildRequires:  %{python_module distributed >= %{version}}
-# optional zarr needs fsspec >= 0.8.4 if present
+BuildRequires:  %{python_module fastparquet}
+# optional zarr increases fsspec miminum to 0.8.4 if present
 BuildRequires:  %{python_module fsspec >= 0.8.4}
-BuildRequires:  %{python_module graphviz}
+BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module mimesis}
 BuildRequires:  %{python_module multipledispatch}
-BuildRequires:  %{python_module partd >= 0.3.10}
-BuildRequires:  %{python_module pytest-rerunfailures}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module toolz >= 0.8.2}
-BuildRequires:  graphviz
-BuildRequires:  graphviz-gd
-BuildRequires:  graphviz-gnome
-BuildRequires:  %{python_module numpy >= 1.15.1 if (%python-base without python36-base)}
-BuildRequires:  %{python_module pandas >= 0.25.0 if (%python-base without python36-base)}
-BuildRequires:  %{python_module tables if (%python-base without python36-base)}
-BuildRequires:  %{python_module zarr if (%python-base without python36-base)}
-# pytest-xdist is not a hard requirement for testing, but this avoids a hang of
-# pytest on i586 after successfully passing the test suite
-BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module numba}
+# snappy required for using fastparquet
+BuildRequires:  %{python_module python-snappy}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module scikit-image}
+BuildRequires:  %{python_module scipy}
+BuildRequires:  %{python_module sparse}
+BuildRequires:  %{python_module tables}
+BuildRequires:  %{python_module xarray}
+BuildRequires:  %{python_module zarr}
+# /SECTION
 %endif
 %python_subpackages
 
 %description
-A minimal task scheduling abstraction and parallel arrays.
-* dask is a specification to describe task dependency graphs.
-* dask.array is a drop-in NumPy replacement (for a subset of NumPy) that
-  encodes blocked algorithms in dask dependency graphs.
-* dask.async is a shared-memory asynchronous scheduler that efficiently
-  executes dask dependency graphs on multiple cores.
+A flexible library for parallel computing in Python.
 
-# This must have a Requires for dask and all the dask subpackages
+Dask is composed of two parts:
+- Dynamic task scheduling optimized for computation. This is similar to
+  Airflow, Luigi, Celery, or Make, but optimized for interactive
+  computational workloads.
+- “Big Data” collections like parallel arrays, dataframes, and lists that
+  extend common interfaces like NumPy, Pandas, or Python iterators to
+  larger-than-memory or distributed environments. These parallel collections
+  run on top of dynamic task schedulers.
+
 %package all
+# This must have a Requires for dask and all the dask subpackages
 Summary:        All dask components
 Requires:       %{name} = %{version}
+Requires:       %{name}-array = %{version}
 Requires:       %{name}-bag = %{version}
+Requires:       %{name}-dataframe = %{version}
+Requires:       %{name}-delayed = %{version}
+Requires:       %{name}-diagnostics = %{version}
 Requires:       %{name}-distributed = %{version}
 Requires:       %{name}-dot = %{version}
-Requires:       %{name}-multiprocessing = %{version}
-%if "%python_flavor" != "python36"
-Requires:       %{name}-array = %{version}
-Requires:       %{name}-dataframe = %{version}
-%endif
 
 %description all
-A minimal task scheduling abstraction and parallel arrays.
-* dask is a specification to describe task dependency graphs.
-* dask.array is a drop-in NumPy replacement (for a subset of NumPy) that
-  encodes blocked algorithms in dask dependency graphs.
-* dask.async is a shared-memory asynchronous scheduler that efficiently
-  executes dask dependency graphs on multiple cores.
+A flexible library for parallel computing in Python.
 
-%if "%python_flavor" == "python36"
-This package pulls in all the optional dask components, except for dataframe
-and array, because NumPy does not support Python 3.6 anymore.
-%else
+Dask is composed of two parts:
+- Dynamic task scheduling optimized for computation. This is similar to
+  Airflow, Luigi, Celery, or Make, but optimized for interactive
+  computational workloads.
+- “Big Data” collections like parallel arrays, dataframes, and lists that
+  extend common interfaces like NumPy, Pandas, or Python iterators to
+  larger-than-memory or distributed environments. These parallel collections
+  run on top of dynamic task schedulers.
+
 This package pulls in all the optional dask components.
-%endif
 
 %package array
 Summary:        Numpy-like array data structure for dask
 Requires:       %{name} = %{version}
-Requires:       python-numpy >= 1.15.1
-Requires:       python-toolz >= 0.8.2
+Requires:       %{name}-delayed = %{version}
+Requires:       python-numpy >= 1.16
+Recommends:     python-scipy
 
 %description array
-A minimal task scheduling abstraction and parallel arrays.
-* dask is a specification to describe task dependency graphs.
-* dask.array is a drop-in NumPy replacement (for a subset of NumPy) that
-  encodes blocked algorithms in dask dependency graphs.
-* dask.async is a shared-memory asynchronous scheduler that efficiently
-  executes dask dependency graphs on multiple cores.
+A flexible library for parallel computing in Python.
+
+Dask is composed of two parts:
+- Dynamic task scheduling optimized for computation. This is similar to
+  Airflow, Luigi, Celery, or Make, but optimized for interactive
+  computational workloads.
+- “Big Data” collections like parallel arrays, dataframes, and lists that
+  extend common interfaces like NumPy, Pandas, or Python iterators to
+  larger-than-memory or distributed environments. These parallel collections
+  run on top of dynamic task schedulers.
 
 This package contains the dask array class.
 
@@ -149,19 +162,18 @@ arrays using blocked algorithms and task scheduling.
 %package bag
 Summary:        Data structure generic python objects in dask
 Requires:       %{name} = %{version}
-Requires:       %{name}-multiprocessing = %{version}
-Requires:       python-cloudpickle >= 0.2.2
-Requires:       python-fsspec >= 0.6.0
-Requires:       python-partd >= 0.3.10
-Requires:       python-toolz >= 0.8.2
 
 %description bag
-A minimal task scheduling abstraction and parallel arrays.
-* dask is a specification to describe task dependency graphs.
-* dask.array is a drop-in NumPy replacement (for a subset of NumPy) that
-  encodes blocked algorithms in dask dependency graphs.
-* dask.async is a shared-memory asynchronous scheduler that efficiently
-  executes dask dependency graphs on multiple cores.
+A flexible library for parallel computing in Python.
+
+Dask is composed of two parts:
+- Dynamic task scheduling optimized for computation. This is similar to
+  Airflow, Luigi, Celery, or Make, but optimized for interactive
+  computational workloads.
+- “Big Data” collections like parallel arrays, dataframes, and lists that
+  extend common interfaces like NumPy, Pandas, or Python iterators to
+  larger-than-memory or distributed environments. These parallel collections
+  run on top of dynamic task schedulers.
 
 This package contains the dask bag class.
 
@@ -174,21 +186,20 @@ or log files.
 Summary:        Pandas-like DataFrame data structure for dask
 Requires:       %{name} = %{version}
 Requires:       %{name}-array = %{version}
-Requires:       %{name}-multiprocessing = %{version}
-Requires:       python-fsspec >= 0.6.0
-Requires:       python-numpy >= 1.15.1
+Requires:       python-numpy >= 1.16
 Requires:       python-pandas >= 0.25.0
-Requires:       python-partd >= 0.3.10
-Requires:       python-toolz >= 0.8.2
-Recommends:     %{name}-bag = %{version}
 
 %description dataframe
-A minimal task scheduling abstraction and parallel arrays.
-* dask is a specification to describe task dependency graphs.
-* dask.array is a drop-in NumPy replacement (for a subset of NumPy) that
-  encodes blocked algorithms in dask dependency graphs.
-* dask.async is a shared-memory asynchronous scheduler that efficiently
-  executes dask dependency graphs on multiple cores.
+A flexible library for parallel computing in Python.
+
+Dask is composed of two parts:
+- Dynamic task scheduling optimized for computation. This is similar to
+  Airflow, Luigi, Celery, or Make, but optimized for interactive
+  computational workloads.
+- “Big Data” collections like parallel arrays, dataframes, and lists that
+  extend common interfaces like NumPy, Pandas, or Python iterators to
+  larger-than-memory or distributed environments. These parallel collections
+  run on top of dynamic task schedulers.
 
 This package contains the dask DataFrame class.
 
@@ -200,21 +211,58 @@ on a single machine, or on many different machines in a cluster.
 %package distributed
 Summary:        Interface with the distributed task scheduler in dask
 Requires:       %{name} = %{version}
-Requires:       python-distributed >= 2.0
+Requires:       python-distributed >= %{version}
 
 %description distributed
-A minimal task scheduling abstraction and parallel arrays.
-* dask is a specification to describe task dependency graphs.
-* dask.array is a drop-in NumPy replacement (for a subset of NumPy) that
-  encodes blocked algorithms in dask dependency graphs.
-* dask.async is a shared-memory asynchronous scheduler that efficiently
-  executes dask dependency graphs on multiple cores.
+A flexible library for parallel computing in Python.
 
-This package contains the dask distributed interface.
+Dask is composed of two parts:
+- Dynamic task scheduling optimized for computation. This is similar to
+  Airflow, Luigi, Celery, or Make, but optimized for interactive
+  computational workloads.
+- “Big Data” collections like parallel arrays, dataframes, and lists that
+  extend common interfaces like NumPy, Pandas, or Python iterators to
+  larger-than-memory or distributed environments. These parallel collections
+  run on top of dynamic task schedulers.
 
-Dask.distributed is a lightweight library for distributed computing in
-Python. It extends both the concurrent.futures and dask APIs to
-moderate sized clusters.
+This meta package pulls in the distributed module into the dask namespace.
+
+%package diagnostics
+Summary:        Diagnostics for dask
+Requires:       %{name} = %{version}
+Requires:       python-bokeh >= 1.0.0
+
+%description diagnostics
+A flexible library for parallel computing in Python.
+
+Dask is composed of two parts:
+- Dynamic task scheduling optimized for computation. This is similar to
+  Airflow, Luigi, Celery, or Make, but optimized for interactive
+  computational workloads.
+- “Big Data” collections like parallel arrays, dataframes, and lists that
+  extend common interfaces like NumPy, Pandas, or Python iterators to
+  larger-than-memory or distributed environments. These parallel collections
+  run on top of dynamic task schedulers.
+
+This package contains the dask.diagnostics module
+
+%package delayed
+Summary:        Delayed module for dask
+Requires:       %{name} = %{version}
+
+%description delayed
+A flexible library for parallel computing in Python.
+
+Dask is composed of two parts:
+- Dynamic task scheduling optimized for computation. This is similar to
+  Airflow, Luigi, Celery, or Make, but optimized for interactive
+  computational workloads.
+- “Big Data” collections like parallel arrays, dataframes, and lists that
+  extend common interfaces like NumPy, Pandas, or Python iterators to
+  larger-than-memory or distributed environments. These parallel collections
+  run on top of dynamic task schedulers.
+
+This package contains the dask.delayed module
 
 %package dot
 Summary:        Display dask graphs using graphviz
@@ -225,30 +273,18 @@ Requires:       graphviz-gnome
 Requires:       python-graphviz
 
 %description dot
-A minimal task scheduling abstraction and parallel arrays.
-* dask is a specification to describe task dependency graphs.
-* dask.array is a drop-in NumPy replacement (for a subset of NumPy) that
-  encodes blocked algorithms in dask dependency graphs.
-* dask.async is a shared-memory asynchronous scheduler that efficiently
-  executes dask dependency graphs on multiple cores.
+A flexible library for parallel computing in Python.
+
+Dask is composed of two parts:
+- Dynamic task scheduling optimized for computation. This is similar to
+  Airflow, Luigi, Celery, or Make, but optimized for interactive
+  computational workloads.
+- “Big Data” collections like parallel arrays, dataframes, and lists that
+  extend common interfaces like NumPy, Pandas, or Python iterators to
+  larger-than-memory or distributed environments. These parallel collections
+  run on top of dynamic task schedulers.
 
 This package contains the graphviz dot rendering interface.
-
-%package multiprocessing
-Summary:        Display dask graphs using graphviz
-Requires:       %{name} = %{version}
-Requires:       python-cloudpickle >= 0.2.2
-Requires:       python-partd >= 0.3.10
-
-%description multiprocessing
-A minimal task scheduling abstraction and parallel arrays.
-* dask is a specification to describe task dependency graphs.
-* dask.array is a drop-in NumPy replacement (for a subset of NumPy) that
-  encodes blocked algorithms in dask dependency graphs.
-* dask.async is a shared-memory asynchronous scheduler that efficiently
-  executes dask dependency graphs on multiple cores.
-
-This package contains the multiprocessing interface.
 
 %prep
 %autosetup -p1 -n dask-%{version}
@@ -259,11 +295,28 @@ This package contains the multiprocessing interface.
 %install
 %if !%{with test}
 %python_install
+%{python_expand # give SUSE specific install instructions
+sed -E -i '/Please either conda or pip install/,/python -m pip install/ {
+  s/either conda or pip//;
+  /conda install/ d;
+  s/python -m pip install "dask\[(.*)\]".*pip install/zypper in $python-dask-\1/
+  }' \
+  %{buildroot}%{$python_sitelib}/dask/distributed.py
+sed -E -i '/Please either conda or pip install/,/python -m pip install/ c \
+        "Please file a bug report https://bugzilla.opensuse.org and\\n"\
+        "report the missing requirements."' \
+  %{buildroot}%{$python_sitelib}/dask/array/__init__.py \
+  %{buildroot}%{$python_sitelib}/dask/bag/__init__.py \
+  %{buildroot}%{$python_sitelib}/dask/dataframe/__init__.py
+}
+%{python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}
 %check
+# move away from importpath
+mv dask dask.moved
 # different seed or mimesis version
 donttest="(test_datasets and test_deterministic)"
 # distributed/pytest-asyncio cancer is spreading
@@ -273,14 +326,14 @@ donttest+="or (test_distributed and test_persist)"
 donttest+="or (test_distributed and test_local_get_with_distributed_active)"
 donttest+="or (test_distributed and test_serializable_groupby_agg)"
 donttest+="or (test_distributed and test_await)"
-# NEP 29: There is no python36-dask-dataframe or -array because Tumbleweed dropped python36-numpy with 1.20
-python36_ignore="--ignore dask/dataframe --ignore dask/array"
 if [ $(getconf LONG_BIT) -eq 32 ]; then
   # Fails to convert datatype in obs constrained memory for 32-bit platforms
   donttest+="or (test_distributed and test_combo_of_layer_types)"
   donttest+="or (test_distributed and test_annotation_pack_unpack)"
+  # https://github.com/dask/dask/issues/7489
+  donttest+="or (test_distributed and test_blockwise_numpy_)"
 fi
-%pytest -ra -m "not network" -k "not ($donttest ${$python_donttest})" -n auto ${$python_ignore}
+%pytest --pyargs dask -ra -m "not network" -k "not ($donttest)" -n auto
 %endif
 
 %if !%{with test}
@@ -288,50 +341,47 @@ fi
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/dask/
-%{python_sitelib}/dask-%{version}-py*.egg-info
+%{python_sitelib}/dask-%{version}*-info
 %exclude %{python_sitelib}/dask/array/
 %exclude %{python_sitelib}/dask/bag/
 %exclude %{python_sitelib}/dask/dataframe/
-%exclude %{python_sitelib}/dask/distributed.py*
+%exclude %{python_sitelib}/dask/diagnostics
+%exclude %{python_sitelib}/dask/delayed.py*
 %exclude %{python_sitelib}/dask/dot.py*
-%exclude %{python_sitelib}/dask/multiprocessing.py*
-%pycache_only %exclude %{python_sitelib}/dask/__pycache__/distributed.*
+%pycache_only %exclude %{python_sitelib}/dask/__pycache__/delayed*.pyc
 %pycache_only %exclude %{python_sitelib}/dask/__pycache__/dot.*
-%pycache_only %exclude %{python_sitelib}/dask/__pycache__/multiprocessing.*
 
 %files %{python_files all}
 %license LICENSE.txt
 
-%if "%python_flavor" != "python36"
 %files %{python_files array}
 %license LICENSE.txt
 %{python_sitelib}/dask/array/
-%endif
 
 %files %{python_files bag}
 %license LICENSE.txt
 %{python_sitelib}/dask/bag/
 
-%if "%python_flavor" != "python36"
 %files %{python_files dataframe}
 %license LICENSE.txt
 %{python_sitelib}/dask/dataframe/
-%endif
 
 %files %{python_files distributed}
 %license LICENSE.txt
-%{python_sitelib}/dask/distributed.py*
-%pycache_only %{python_sitelib}/dask/__pycache__/distributed.*
 
 %files %{python_files dot}
 %license LICENSE.txt
 %{python_sitelib}/dask/dot.py*
 %pycache_only %{python_sitelib}/dask/__pycache__/dot.*
 
-%files %{python_files multiprocessing}
+%files %{python_files diagnostics}
 %license LICENSE.txt
-%{python_sitelib}/dask/multiprocessing.py*
-%pycache_only %{python_sitelib}/dask/__pycache__/multiprocessing.*
+%{python_sitelib}/dask/diagnostics/
+
+%files %{python_files delayed}
+%license LICENSE.txt
+%{python_sitelib}/dask/delayed.py*
+%pycache_only %{python_sitelib}/dask/__pycache__/delayed*.pyc
 %endif
 
 %changelog
