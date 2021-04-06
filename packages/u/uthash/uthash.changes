@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 02 11:20:21 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- udpate to 2.3.0:
+  * remove HASH_FCN; the HASH_FUNCTION and HASH_KEYCMP macros
+    now behave similarly
+  * remove uthash_memcmp (deprecated in v2.1.0) in favor of
+    HASH_KEYCMP
+  * silence -Wswitch-default warnings (thanks, Olaf Bergmann!)
+
+-------------------------------------------------------------------
 Wed Jan  6 14:01:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - udpate to 2.2.0:

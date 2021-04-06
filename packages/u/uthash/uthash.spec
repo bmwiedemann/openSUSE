@@ -18,7 +18,7 @@
 
 
 Name:           uthash
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Inline hash table for C structures
 License:        BSD-3-Clause
