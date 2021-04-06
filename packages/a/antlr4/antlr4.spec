@@ -16,11 +16,11 @@
 #
 
 
-%define libver 4_9_1
+%define libver 4_9_2
 %define runtime_cpp_lib libantlr4-runtime
 %define runtime_cpp_libver %{runtime_cpp_lib}%{libver}
 Name:           antlr4
-Version:        4.9.1
+Version:        4.9.2
 Release:        0
 Summary:        Java parser generator
 # C# runtime is MIT-licensed, but currently it is not used in this package
