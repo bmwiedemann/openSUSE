@@ -1,7 +1,7 @@
 #
 # spec file for package YODA
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define so_name lib%{name}-1_8_5
+%define so_name lib%{name}-1_9_0
 
 Name:           YODA
-Version:        1.8.5
+Version:        1.9.0
 Release:        0
 Summary:        A small set of data analysis classes for MC event generator validation analyses
 License:        GPL-2.0-only
@@ -44,7 +44,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %description
 YODA is a small set of data analysis (specifically histogramming)
 classes being developed by MCnet members as a lightweight common
-system for MC event generator validation analyses. 
+system for MC event generator validation analyses.
 
 A few key features of YODA are as follows:
 * Storage of all information needed for statistically correct run
@@ -75,10 +75,9 @@ Group:          System/Libraries
 %description -n %{so_name}
 YODA is a small set of data analysis (specifically histogramming)
 classes being developed by MCnet members as a lightweight common
-system for MC event generator validation analyses. 
+system for MC event generator validation analyses.
 
 This package provides the source files for development with %{name}.
-
 
 %package devel
 Summary:        A small set of data analysis classes for MC event generator validation analyses
@@ -88,7 +87,7 @@ Requires:       %{so_name} = %{version}
 %description devel
 YODA is a small set of data analysis (specifically histogramming)
 classes being developed by MCnet members as a lightweight common
-system for MC event generator validation analyses. 
+system for MC event generator validation analyses.
 
 This package provides the source files for development with %{name}.
 
@@ -101,7 +100,7 @@ Provides:       python-%{name} = %{version}
 %description -n python3-%{name}
 YODA is a small set of data analysis (specifically histogramming)
 classes being developed by MCnet members as a lightweight common
-system for MC event generator validation analyses. 
+system for MC event generator validation analyses.
 
 This package provides the python binidings for %{name}.
 
@@ -130,7 +129,7 @@ make %{?_smp_mflags}
 %make_install
 
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions
-mv %{buildroot}%{_prefix}/etc/bash_completion.d/* %{buildroot}%{_datadir}/bash-completion/completions/
+mv %{buildroot}/etc/bash_completion.d/* %{buildroot}%{_datadir}/bash-completion/completions/
 find %{buildroot}%{_libdir}/ -name "*.la" -delete
 
 %check
@@ -151,7 +150,6 @@ make %{?_smp_mflags} check
 %{_libdir}/libYODA.so
 %{_libdir}/pkgconfig/yoda.pc
 %{_includedir}/%{name}/
-%{_datadir}/%{name}/
 
 %files -n python3-%{name}
 %defattr(-,root,root)
@@ -173,5 +171,6 @@ make %{?_smp_mflags} check
 %{_bindir}/yodals
 %{_bindir}/yodaplot
 %{_bindir}/yodascale
+%{_bindir}/yodastack
 
 %changelog

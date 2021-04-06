@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Apr  1 00:22:09 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.9.0:
+  * Add missing inline declarations to free IO functions.
+  * Add fillDim() methods to the Bin, Bin1D and Bin2D classes.
+  * Rename the Point getParentAO etc. to getParent, using the new
+    Scatter base, and improve the accessor methods.
+  * Add Scatter base class to the Scatter classes, with rmPoints()
+    implemented there.
+  * Add Binned and Fillable base classes, the former introducing
+    the fillDim() method and rmBin(), and use them as ABCs for the
+    counter, histo and profile types.
+  * Allow YODA's Python interface to read from StringIO and FileIO
+    objects.
+  * Add rmPoint() and rmPoints() methods on all Scatter types.
+  * Change scaleDim() to scale() for points and scatters
+  * Remove ROOT5 compatibility, and handle 6.22 change in PyROOT.
+  * Fix out-of-source builds re. bash completions.
+  * Fixes to the Profile1D Python interface.
+  * Add <limits> header include to AnalysisObject.h to support
+    GCC11 (cf. http://gcc.gnu.org/gcc-11/porting_to.html)
+  * Restructure yodamerge to use pairwise merges, avoiding
+    simultaneous loading of all the input files and greatly
+    speeding up processing. Simultaneous simplification by
+    replacement of yodamerge stacking functionality with
+    yodastack.
+
+-------------------------------------------------------------------
 Sat Nov 28 15:33:02 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.8.5:
