@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 30 04:28:36 UTC 2021 - jslaby@suse.cz
+
+- Update to version 0.6.2+5:
+  * Loosen compatible release identifiers for install_requires
+- remove 0001-lift-requests-version-requirements.patch
+
+-------------------------------------------------------------------
 Sat Feb  6 07:10:19 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - fix for newer dnspython

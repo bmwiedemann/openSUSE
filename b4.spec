@@ -16,16 +16,15 @@
 #
 
 
-%define version_unconverted 0.6.2+4
+%define version_unconverted 0.6.2+5
 Name:           b4
-Version:        0.6.2+4
+Version:        0.6.2+5
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://git.kernel.org/pub/scm/utils/b4/b4.git
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         0001-lift-requests-version-requirements.patch
 BuildArch:      noarch
 # for checks
 BuildRequires:  git-core

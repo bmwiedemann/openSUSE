@@ -156,4 +156,12 @@
   * remove 0001-lift-requests-version-requirement.patch</comment>
     <requestid>869913</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d88ac8bbe7cb79d91bf0f5248129aa26</srcmd5>
+    <version>0.6.2+5</version>
+    <time>1617723055</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>883127</requestid>
+  </revision>
 </revisionlist>
