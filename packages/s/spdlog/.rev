@@ -224,4 +224,44 @@
     <comment></comment>
     <requestid>854942</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4a47a70f3d2f4db2bb6ff98f8cd91d9f</srcmd5>
+    <version>1.8.5</version>
+    <time>1617722958</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.8.5
+  * Fix compiling with C++17: remove constexpr on
+    level_string_views.
+- Update to version 1.8.4
+  * Remove version requirement from find_package when searching
+    external fmt.
+- Update to version 1.8.3
+  * New hourly file sink . Creates new file every hour. Can be
+    limited to retain only the last N files.
+  * New daily sink filename custom formatting. Users now can
+    pass custom strftime pattern to the log filename. For
+     example: daily_logger_format_mt.
+  * Add SPDLOG_DISABLE_DEFAULT_LOGGER as a CMake option.
+  * Improve color terminal detection.
+  * Ensure SPDLOG_FMT_EXTERNAL is honored in the bench program.
+  * Skip CMake module mode when finding fmt.
+  * Open files with &quot;ab&quot; mode even if truncating to better
+    support logrotate.
+  * Fix compiling error and typo in hourly file sink.
+  * Add constexpr to SPDLOG_LEVEL_NAMES declaration.
+  * Initializer list style consistency.
+  * Fix call to non-constexpr function.
+  * Better numeric_limits&lt;&gt;::max/min fix when
+    SPDLOG_WCHAR_TO_UTF8_SUPPORT is defined.
+  * Simplified wincolor sink code and intensify the red and
+    yellow colors.
+  * Set default value to registry::err_handler_ to resolve
+    Klocwork warning.
+  * Formatter bench: Fix compilation by avoiding function name
+    decay mechanics.
+  * Fix warning whe the compilation flag -Wswitch-default is
+    present.
+</comment>
+    <requestid>881381</requestid>
+  </revision>
 </revisionlist>
