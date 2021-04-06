@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 23 03:07:55 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.010
+   see /usr/share/doc/packages/perl-Net-Server/Changes
+
+  2.010  Mar 22 2021
+          - Add SSL_verify_callback
+          - Fix SSLEAY connect spinloop
+          - Various pod typos
+          - Allow for logging to STDOUT for HTTP
+          - Add PATCH verb to HTTP
+
+-------------------------------------------------------------------
 Fri Aug 11 06:02:10 UTC 2017 - coolo@suse.com
 
 - updated to 2.009
