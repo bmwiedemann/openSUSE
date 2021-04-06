@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.0.2
+%define real_version 6.0.3
 %define short_version 6.0
 %define tar_name qtcoap
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-coap%{?pkg_suffix}
-Version:        6.0.2
+Version:        6.0.3
 Release:        0
 Summary:        Qt 6 CoAP client module 
 License:        GPL-3.0-or-later
@@ -48,7 +48,7 @@ BuildRequires:  qt6-tools
 %endif
 
 %description
-Qt 6 library to implement a CoAP client.
+Qt 6 library to implement a CoAP (Constrained Application Protocol) client.
 
 %if !%{qt6_docs_flavor}
 
