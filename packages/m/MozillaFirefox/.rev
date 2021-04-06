@@ -4881,4 +4881,41 @@
     <comment></comment>
     <requestid>878728</requestid>
   </revision>
+  <revision rev="332" vrev="1">
+    <srcmd5>7755bb1e0a0f1ac1c6cfe182fcacefe6</srcmd5>
+    <version>87.0</version>
+    <time>1617722963</time>
+    <user>RBrownSUSE</user>
+    <comment>- Switch to clang_build globally; just on TW/x86_64 it does not work
+  due to unreolved externals `__rust_probestack' - disable clang_build
+  then.
+- useccache: Add conditionals to enable/disable ccache.
+
+- Mozilla Firefox 87.0
+  * requires NSS 3.62
+  * removed obsolete BigEndian ICU build workaround
+  * rebased patches
+  MFSA 2021-10 (bsc#1183942)
+  * CVE-2021-23981 (bmo#1692832)
+    Texture upload into an unbound backing buffer resulted in an
+    out-of-bound read
+  * CVE-2021-23982 (bmo#1677046)
+    Internal network hosts could have been probed by a malicious
+    webpage
+  * CVE-2021-23983 (bmo#1692684)
+    Transitions for invalid ::marker properties resulted in memory
+    corruption
+  * CVE-2021-23984 (bmo#1693664)
+    Malicious extensions could have spoofed popup information
+  * CVE-2021-23985 (bmo#1659129)
+    Devtools remote debugging feature could have been enabled
+    without indication to the user
+  * CVE-2021-23986 (bmo#1692623)
+    A malicious extension could have performed credential-less
+    same origin policy violations
+  * CVE-2021-23987 (bmo#1513519, bmo#1683439, bmo#1690169,
+    bmo#1690718)
+    Memory safety bugs fixed in Firefox 87 and Firefox ESR 78.9</comment>
+    <requestid>881766</requestid>
+  </revision>
 </revisionlist>
