@@ -1,7 +1,7 @@
 #
 # spec file for package csi-external-provisioner
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define source external-provisioner
 
 Name:           csi-%{source}
-Version:        1.6.0
+Version:        2.0.4
 Release:        0
 Summary:        Dynamically provisions volumes of CSI drivers
 License:        Apache-2.0
@@ -31,9 +31,9 @@ Group:          System/Management
 URL:            https://%{project}
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.12 >= 1.12.0
+BuildRequires:  go1.13 >= 1.13.0
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) >= 1.13
 
 %description
 Kubernetes external controller that monitors PersistentVolumeClaim objects created by user and creates/deletes volumes for them.
