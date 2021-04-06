@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 24 06:05:03 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Update to version 8.4.28:
+  For details check: https://github.com/TACC/Lmod/issues/<issueID>
+  * Use now converts relative paths to abspath (Issue #505).
+  * Allow print statement in modulefiles (Issue #507).
+  
+-------------------------------------------------------------------
 Wed Mar 17 10:37:10 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 8.4.27:

@@ -314,4 +314,15 @@
     <comment></comment>
     <requestid>879669</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>7d887225fa2970df89e1526db55b07ee</srcmd5>
+    <version>8.4.28</version>
+    <time>1617722943</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 8.4.28:
+  For details check: https://github.com/TACC/Lmod/issues/&amp;lt;issueID&amp;gt;
+  * Use now converts relative paths to abspath (Issue #505).
+  * Allow print statement in modulefiles (Issue #507). (forwarded request 880860 from eeich)</comment>
+    <requestid>880864</requestid>
+  </revision>
 </revisionlist>

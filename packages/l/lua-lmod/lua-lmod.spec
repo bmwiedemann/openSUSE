@@ -36,7 +36,7 @@ Name:           lua-lmod
 Summary:        Lua-based Environment Modules
 License:        MIT
 Group:          Development/Libraries/Other
-Version:        8.4.27
+Version:        8.4.28
 Release:        0
 URL:            https://github.com/TACC/Lmod
 Source0:        https://github.com/TACC/Lmod/archive/%{version}.tar.gz#$/%{name}-%{version}.tar.gz
