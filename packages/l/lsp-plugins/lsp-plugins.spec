@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           lsp-plugins
-Version:        1.1.29
+Version:        1.1.30
 Release:        0
 Summary:        Linux Studio Plugins Project (Stand-alone)
 License:        LGPL-3.0-or-later AND Zlib
@@ -116,6 +116,7 @@ export CFLAGS="%{optflags}" CXXFLAGS="%{optflags}"
 %install
 export PREFIX="%{_prefix}" DOC_PATH="%{_docdir}" LIB_PATH="%{_libdir}"
 %make_install
+%make_install install_xdg
 
 for desktop in %{buildroot}%{_datadir}/applications/*.desktop; do
 %suse_update_desktop_file ${desktop} Mixer
