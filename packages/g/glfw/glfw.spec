@@ -16,12 +16,13 @@
 #
 
 
-%define sover  3
-%if 0%{?is_opensuse}
-%bcond_without geany
+%define flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "-wayland"
+%bcond_without wayland
 %else
-%bcond_with geany
+%bcond_with wayland
 %endif
+%define sover  3
 Name:           glfw
 Version:        3.3.3
 Release:        0
@@ -30,6 +31,7 @@ License:        Zlib
 Group:          Development/Libraries/C and C++
 URL:            https://www.glfw.org/
 Source:         https://github.com/glfw/glfw/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source99:       %{name}-rpmlintrc
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -37,12 +39,16 @@ BuildRequires:  pkgconfig
 BuildRequires:  vulkan-devel
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
+%if %{with wayland}
+BuildRequires:  extra-cmake-modules
+BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(xkbcommon)
+%else
+BuildRequires:  geany
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xrandr)
-%if %{with geany}
-BuildRequires:  geany
 %endif
 
 %description
@@ -51,28 +57,36 @@ single library providing a powerful, portable API for otherwise
 operating system specific tasks such as opening an OpenGL window, and
 reading keyboard, time, mouse and joystick input.
 
-%package -n libglfw%{sover}
+%package -n libglfw%{sover}%{flavor}
 Summary:        Framework for OpenGL application development
 Group:          System/Libraries
+%if %{with wayland}
+Provides:       libglfw%{sover} = %{version}
+Conflicts:      libglfw%{sover}
+%else
+Conflicts:      libglfw%{sover}-wayland = %{version}
+%endif
 
-%description -n libglfw%{sover}
+%description -n libglfw%{sover}%{flavor}
 GLFW is a framework for OpenGL application development. It is a
 single library providing a powerful, portable API for otherwise
 operating system specific tasks such as opening an OpenGL window, and
 reading keyboard, time, mouse and joystick input.
 
-%package -n libglfw-devel
+%if %{without wayland}
+%package -n libglfw%{flavor}-devel
 Summary:        Development files for GLFW, an OpenGL application framework
 Group:          Development/Libraries/C and C++
 Requires:       cmake
 Requires:       libglfw%{sover} = %{version}
 Requires:       pkgconfig(gl)
 
-%description -n libglfw-devel
+%description -n libglfw%{flavor}-devel
 GLFW is a framework for OpenGL application development. It is a
 single library providing a powerful, portable API for otherwise
 operating system specific tasks such as opening an OpenGL window, and
 reading keyboard, time, mouse and joystick input.
+%endif
 
 %prep
 %setup -q
@@ -82,40 +96,47 @@ find . -type f | xargs sed -i 's/\r//'
 mkdir -p geany_config
 
 %build
+%if %{without wayland}
 # generate geany tags
-%if %{with geany}
 geany -c geany_config -g glfw.c.tags $(find src \( ! -name CMakeFiles \) -type f \( -iname "*.c" -o -iname "*.h" \) \( ! -iname "win32*" \) \( ! -iname "cocoa*" \) | sort
 ) include/GLFW/glfw3.h
 %endif
 
-%cmake
-make %{?_smp_mflags} all
+%cmake \
+%if %{with wayland}
+  -DGLFW_USE_WAYLAND=ON
+%endif
+
+%make_build
 
 %install
 %cmake_install
 
+%if %{with wayland}
+# Only in main package
+rm -rfv %{buildroot}%{_includedir} %{buildroot}%{_libdir}/{cmake,libglfw.so,pkgconfig}
+%else
 # install geany tags
-%if %{with geany}
 install -d %{buildroot}/%{_datadir}/geany/tags/
 install -m0644 glfw.c.tags %{buildroot}/%{_datadir}/geany/tags/
 %endif
 
-%post   -n libglfw%{sover} -p /sbin/ldconfig
-%postun -n libglfw%{sover} -p /sbin/ldconfig
+%post   -n libglfw%{sover}%{flavor} -p /sbin/ldconfig
+%postun -n libglfw%{sover}%{flavor} -p /sbin/ldconfig
 
-%files -n libglfw%{sover}
+%files -n libglfw%{sover}%{flavor}
 %license LICENSE.md
 %doc README.md
 %{_libdir}/libglfw.so.%{sover}*
 
+%if %{without wayland}
 %files -n libglfw-devel
 %doc examples/*.c
 %{_includedir}/GLFW/
 %{_libdir}/cmake/glfw3
 %{_libdir}/libglfw.so
 %{_libdir}/pkgconfig/glfw3.pc
-%if %{with geany}
-%{_datadir}/geany/
+%{_datadir}/geany/*
 %endif
 
 %changelog
