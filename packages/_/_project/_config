@@ -194,6 +194,7 @@ Preinstall: liblzma5 libcap2 libacl1 libattr1
 Preinstall: libpopt0 libelf1
 Preinstall: libpcre1 libzstd1 libpcre2-8-0
 Preinstall: libreadline8
+Preinstall: libpcre2-8-0
 
 #Runscripts: aaa_base
 
@@ -1035,6 +1036,10 @@ Prefer: gettext-its-gtk3 gtk3-schema
 Prefer: ghostscript-devel
 # for pkgconfig(libotf) libotf-devel and libotf-devel-32bit both provides it
 Prefer: libotf-devel
+# Prefer libsane1 over utsushi
+Prefer: libsane1
+# libglfw3 over libglfw3-wayland
+Prefer: libglfw3
 
 Ignore: installation-images-openSUSE:cracklib-dict-full
 Ignore: systemd-sysvinit:systemd
