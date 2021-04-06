@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 05 17:59:23 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1617645556.ee8c16dbd:
+  * Dependency cron 2021-04-05
+  * Fix openqa-rollback for non-dry-run
+  * Set using relative path as the default operation
+  * Mark t/ui/27-plugin_obs_rsync_status_details.t as unstable again
+  * Fix broken HTML in OBS plugin
+  * Move containers documentation to regular documentation
+  * Fix Mojolicious 9.11 compatibility
+
+-------------------------------------------------------------------
 Wed Mar 31 18:19:17 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1617146416.3db1f06ed:
