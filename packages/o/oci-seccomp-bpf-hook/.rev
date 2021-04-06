@@ -7,4 +7,15 @@
     <comment>kernel-devel as buildrequires</comment>
     <requestid>825980</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>80da09e5c633f1af2f03a56925e387d4</srcmd5>
+    <version>1.2.1</version>
+    <time>1617723001</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.2.1:
+  * Defer event processing.
+  * Vendor gobpf (fix build on newer libbpf versions).
+  * Make annotation pattern match more strictly.</comment>
+    <requestid>882664</requestid>
+  </revision>
 </revisionlist>

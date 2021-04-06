@@ -1,7 +1,7 @@
 #
 # spec file for package oci-seccomp-bpf-hook
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define project github.com/containers/oci-seccomp-bpf-hook
 
 # Define macros for further referenced sources
 Name:           oci-seccomp-bpf-hook
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        OCI hook to trace syscalls and generate a seccomp profile
 License:        Apache-2.0
-Url:            https://github.com/containers/oci-seccomp-bpf-hook
+URL:            https://github.com/containers/oci-seccomp-bpf-hook
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  bcc-devel
 BuildRequires:  glib2-devel-static
 BuildRequires:  glibc-devel-static
 BuildRequires:  go-go-md2man
-BuildRequires:  golang(API) = 1.13
 BuildRequires:  golang-packaging
 BuildRequires:  kernel-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
+BuildRequires:  golang(API) = 1.15
 
 # disable stripping of binaries
 %{go_nostrip}

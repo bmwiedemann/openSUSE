@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 02 03:01:09 UTC 2021 - asarai@suse.com
+
+- Update to version 1.2.1:
+  * Defer event processing.
+  * Vendor gobpf (fix build on newer libbpf versions).
+  * Make annotation pattern match more strictly.
+
+-------------------------------------------------------------------
 Wed Aug 12 10:01:45 UTC 2020 - Sascha Grunert <sgrunert@suse.com>
 
 - Update to version 1.2.0:
