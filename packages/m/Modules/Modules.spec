@@ -1,7 +1,7 @@
 #
 # spec file for package Modules
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@ BuildRequires:  fdupes
 BuildRequires:  less
 BuildRequires:  procps
 BuildRequires:  tcl-devel
-# xorg-x11-devel
 URL:            http://modules.sourceforge.net/
-Version:        4.5.0
+Version:        4.7.0
 Release:        0
 Summary:        Change environment at runtime
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Management
+Requires:       python3
 Requires:       tcl
 Source:         https://download.sourceforge.net/project/modules/Modules/modules-%{version}/modules-%{version}.tar.gz
 Patch1:         Remove-empty-unused-static-function.patch
@@ -44,33 +44,51 @@ BuildRequires:  perl(Exporter)
 %endif
 
 %description
-The Modules package provides for dynamic modification of a user's
-environment with module files.	Each module file contains the
-information needed to configure the shell for an application. Once the
-package is initialized, the environment can be modified dynamically on
-a per-module basis using the module command that interprets module
-files. Typically, module files instruct the module command to alter or
-set shell environment variables, such as PATH or MANPATH. Module files
-may be shared by many users on a system and users may have their own
-collection to supplement or replace the shared module files.  The
-modules environment is common on SGI/Crays and many workstation farms.
+The Modules package is a tool that simplify shell initialization and lets
+users easily modify their environment during the session with modulefiles.
+
+Each modulefile contains the information needed to configure the shell for an
+application. Once the Modules package is initialized, the environment can be
+modified on a per-module basis using the module command which interprets
+modulefiles. Typically modulefiles instruct the module command to alter or set
+shell environment variables such as PATH, MANPATH, etc. modulefiles may be
+shared by many users on a system and users may have their own collection to
+supplement or replace the shared modulefiles.
+
+Modules can be loaded and unloaded dynamically and atomically, in an clean
+fashion. All popular shells are supported, including bash, ksh, zsh, sh, csh,
+tcsh, fish, as well as some scripting languages such as tcl, perl, python,
+ruby, cmake and r.
+
+Modules are useful in managing different versions of applications. Modules can
+also be bundled into metamodules that will load an entire suite of different
+applications.
 
 %package doc
-Summary:        Documentation for Change environment at runtime
+Summary:        Documentation for Environment Modules
 Group:          Documentation/Other
 BuildArch:      noarch
 
 %description doc
-The Modules package provides for dynamic modification of a user's
-environment with module files.	Each module file contains the
-information needed to configure the shell for an application. Once the
-package is initialized, the environment can be modified dynamically on
-a per-module basis using the module command that interprets module
-files. Typically, module files instruct the module command to alter or
-set shell environment variables, such as PATH or MANPATH. Module files
-may be shared by many users on a system and users may have their own
-collection to supplement or replace the shared module files.  The
-modules environment is common on SGI/Crays and many workstation farms.
+The Modules package is a tool that simplify shell initialization and lets
+users easily modify their environment during the session with modulefiles.
+
+Each modulefile contains the information needed to configure the shell for an
+application. Once the Modules package is initialized, the environment can be
+modified on a per-module basis using the module command which interprets
+modulefiles. Typically modulefiles instruct the module command to alter or set
+shell environment variables such as PATH, MANPATH, etc. modulefiles may be
+shared by many users on a system and users may have their own collection to
+supplement or replace the shared modulefiles.
+
+Modules can be loaded and unloaded dynamically and atomically, in an clean
+fashion. All popular shells are supported, including bash, ksh, zsh, sh, csh,
+tcsh, fish, as well as some scripting languages such as tcl, perl, python,
+ruby, cmake and r.
+
+Modules are useful in managing different versions of applications. Modules can
+also be bundled into metamodules that will load an entire suite of different
+applications.
 
 %define vimdatadir %{_datadir}/vim/site
 
@@ -83,22 +101,22 @@ modules environment is common on SGI/Crays and many workstation farms.
 sed -i 's@/usr/bin/env bash@/bin/bash@' script/envml
 
 %build
-CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -DUSE_INTERP_RESULT -DUSE_INTERP_ERRORLINE" \
 ./configure \
-                --initdir="%{_datadir}/%name/init" \
-                --libexecdir="%{_prefix}/%_lib/%{name}/" \
-                --prefix="%_prefix" \
-                --with-version-path="%_datadir/%{name}" \
-                --modulefilesdir="%{_datadir}/modules" \
-		--mandir=%{_mandir} \
-                --with-etc-path="%_sysconfdir" \
-                --with-skel-path="%_sysconfdir/skel" \
-		--with-tcl=%{_libdir} \
-		--without-x \
-		%{?!vimdatadir: --disable-vim-addons} \
-		%{?vimdatadir: --vimdatadir=%{vimdatadir}} \
-                --etcdir=%{_sysconfdir}/%{name} \
-                --libdir=%{_libdir}/%{name}
+    --initdir="%{_datadir}/%name/init" \
+    --libexecdir="%{_prefix}/%_lib/%{name}/" \
+    --prefix="%_prefix" \
+    --with-version-path="%_datadir/%{name}" \
+    --modulefilesdir="%{_datadir}/modules" \
+    --mandir=%{_mandir} \
+    --with-etc-path="%_sysconfdir" \
+    --with-skel-path="%_sysconfdir/skel" \
+    --with-tcl=%{_libdir} \
+    %{?!vimdatadir: --disable-vim-addons} \
+    %{?vimdatadir: --vimdatadir=%{vimdatadir}} \
+    --etcdir=%{_sysconfdir}/%{name} \
+    --libdir=%{_libdir}/%{name} \
+    --enable-compat-version \
+    --with-python=/usr/bin/python3
 make %{?_smp_mflags}
 
 %install
@@ -109,17 +127,12 @@ install -d %{buildroot}/usr/bin
 mv %{buildroot}/usr/share/doc doc_dir
 %fdupes -s %{buildroot}%{_datadir}
 
-%post
-[ -e %{_sysconfdir}/profiles.d/modules.sh ] || \
-    ln -sf %{_datadir}/Modules/init/profile.sh %{_sysconfdir}/profile.d/modules.sh
-[ -e %{_sysconfdir}/profiles.d/modules.sh ] || \
-    ln -sf %{_datadir}/Modules/init/profile.csh %{_sysconfdir}/profile.d/modules.csh 
+ln -sf %{_datadir}/Modules/init/profile.sh %{buildroot}%{_sysconfdir}/profile.d/modules.sh
+ln -sf %{_datadir}/Modules/init/profile.csh %{buildroot}%{_sysconfdir}/profile.d/modules.csh
 
-%postun
-[ -e %{_sysconfdir}/profiles.d/modules.sh ] || \
-      rm -f %{_sysconfdir}/profile.d/modules.sh
-[ -e %{_sysconfdir}/profiles.d/modules.csh ] || \
-      rm -f %{_sysconfdir}/profile.d/modules.csh
+mkdir -p %{buildroot}%{_datadir}/fish/{vendor_completions.d,vendor_functions.d}
+ln -sf %{_datadir}/Modules/init/fish_completion %{buildroot}%{_datadir}/fish/vendor_completions.d/module.fish
+ln -sf %{_datadir}/Modules/init/fish %{buildroot}%{_datadir}/fish/vendor_functions.d/module.fish
 
 %files
 %defattr(-,root,root)
@@ -145,6 +158,13 @@ mv %{buildroot}/usr/share/doc doc_dir
 %{_mandir}/man1/module.1*
 %{_mandir}/man4/modulefile-compat.4*
 %{_mandir}/man4/modulefile.4*
+%{_sysconfdir}/profile.d/modules.sh
+%{_sysconfdir}/profile.d/modules.csh
+%dir %{_datadir}/fish/
+%dir %{_datadir}/fish/vendor_completions.d/
+%{_datadir}/fish/vendor_completions.d/module.fish
+%dir %{_datadir}/fish/vendor_functions.d/
+%{_datadir}/fish/vendor_functions.d/module.fish
 
 %files doc
 %defattr(-,root,root)

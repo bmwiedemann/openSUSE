@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar 22 18:48:48 UTC 2021 - Philipp Wagner <mail@philipp-wagner.com>
+
+- Mark the download service as disabled to meet factory submission
+  guidelines.
+- Add a runtime dependency on Python for createmodule.py script.
+- Set /usr/bin/python3 as interpreter for all Python scripts (instead
+  of relying on /usr/bin/env, which is used by default).
+- Add fdupes back to solve rpmlint warning.
+
+-------------------------------------------------------------------
+Sat Feb 20 23:27:43 UTC 2021 - Philipp Wagner <mail@philipp-wagner.com>
+
+- Update to version 4.7.0
+  Check https://github.com/cea-hpc/modules/releases/tag/v4.7.0
+  for details.
+- Mark sh and csh module initialization scripts installed into
+  /etc/profile.d as managed by this package by moving the symlinking
+  to the %install section.
+- Support fish (shell completion and functionality).
+- Use a source service instead of manually adding the source tarball.
+- Clean up spec file to remove unused code (e.g. CFLAGS which aren't
+  used in the source code any more, since it's all TCL now).
+- Update description to match the current description on the homepage.
+
+-------------------------------------------------------------------
 Fri May 15 05:39:32 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Update to version 4.5.0
@@ -14,9 +39,9 @@ Fri May 15 05:39:32 UTC 2020 - Egbert Eich <eich@suse.com>
 -------------------------------------------------------------------
 Tue Apr 17 11:13:53 UTC 2018 - boris@steki.net
 
-- rolled back change from /usr/share/Modules (package name) to old 
+- rolled back change from /usr/share/Modules (package name) to old
   expected behavior /usr/share/modules
-- fixed redhat/fedora builds 
+- fixed redhat/fedora builds
 
 -------------------------------------------------------------------
 Mon Apr 16 19:24:51 UTC 2018 - boris@steki.net
@@ -87,7 +112,7 @@ Mon Sep 10 08:30:51 UTC 2012 - kkaempf@suse.com
 -------------------------------------------------------------------
 Wed Aug 29 20:11:14 UTC 2012 - alinm.elena@gmail.com
 
-- update to 3.2.9c 
+- update to 3.2.9c
   * Fix the coexistence of load/remove flags (Martin Siegert)
   * Fixed an overlapping string copy (Wilson Snyder & Orion Poplawski)
   * Isolated calls to the new interpreter and get & set env.vars.
@@ -96,7 +121,7 @@ Wed Aug 29 20:11:14 UTC 2012 - alinm.elena@gmail.com
   * Fixed the "module purge" memory corruption (Poor Yorick)
   * Added support for Ruby (Tammo Tjarks)
 - replace defaut in the profile files with the proper version
-- make module files from /etc %config 
+- make module files from /etc %config
 
 -------------------------------------------------------------------
 Thu Dec  1 11:19:55 UTC 2011 - coolo@suse.com
@@ -182,4 +207,3 @@ Wed Jun  6 19:07:27 CEST 2001 - nashif@suse.de
 Mon Feb 19 07:25:27 MET 2001 - nashif@suse.de
 
 - Initial Release (Version 3.1.1)
-
