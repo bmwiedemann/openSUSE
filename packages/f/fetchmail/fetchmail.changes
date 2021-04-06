@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr  6 02:13:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4.18:
+  * fetchmailconf: fetchmail 6.4.16 added --sslcertfile to the configuration dump,
+    but fetchmailconf support was incomplete in Git 7349f124 and it could not
+    parse sslcertfile, thus the user settings editor came up empty with console
+    errors printed.  Fix configuration parser in fetchmailconf.
+  * fetchmailconf: do not require fetchmail for -V. do not require Tk (Tkinter)
+    for -d option. This is to fail more gracefully on incomplete installs.
+  * TLS code: remove OPENSSL_NO_DEPRECATED macros to avoid portability issues
+    with OpenSSL v3 - these are for development purposes, not production.
+  * TLS futureproofing: use SSL_use_PrivateKey_file instead of 
+    SSL_use_RSAPrivateKey_file, the latter will be deprecated with OpenSSL v3,
+    and the user's key file might be something else than RSA.
+  * IMAP client: it used to leak memory for username and password when trying
+    the LOGIN (password-based) authentication and encountered a timeout situation.
+  * dist-tools/getstats.py: also counts lines in *.py files, shown above.
+  * fetchmail.man: now mentions that you may need to add --ssl when specifying
+    a TLS-wrapped port.
+  * fetchmailconf: --version (-V) now prints the Python version in use.
+
+-------------------------------------------------------------------
 Mon Mar  1 07:51:03 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - update to 6.4.16:
