@@ -79,4 +79,12 @@
     <comment>Trivial update to add bug numbers to changelog comment.</comment>
     <requestid>872981</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>e0232eade34c2134f700d56be9506ef2</srcmd5>
+    <version>5.2.0</version>
+    <time>1617722996</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882595</requestid>
+  </revision>
 </revisionlist>

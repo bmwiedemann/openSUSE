@@ -58,7 +58,7 @@ Requires:       zypper
 Provides:       febootstrap
 %{?ocaml_preserve_bytecode}
 %if "%{?_ignore_exclusive_arch}" == ""
-ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 risc64
+ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
 %endif
 
 %description

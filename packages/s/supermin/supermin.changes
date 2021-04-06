@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  1 13:56:13 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Fix typo risc64 -> riscv64
+
+-------------------------------------------------------------------
 Fri Feb  5 16:59:34 CET 2021 - ro@suse.de
 
 - add patch supermin-kernel_version_compressed.patch
