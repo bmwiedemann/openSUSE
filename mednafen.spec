@@ -1,7 +1,7 @@
 #
 # spec file for package mednafen
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           mednafen
-Version:        1.26.1
+Version:        1.27.0
 Release:        0
 Summary:        Multiple video game console emulator
 License:        GPL-2.0-only
 URL:            https://mednafen.github.io
-Source0:        https://mednafen.github.io/releases/files/%{name}-%{version}.tar.xz
-BuildRequires:  Mesa-libGL-devel
-BuildRequires:  alsa-devel
+Source0:        https://mednafen.github.io/releases/files/%{name}-%{version}-UNSTABLE.tar.xz
 BuildRequires:  gcc-c++
-BuildRequires:  libSDL2-devel
-BuildRequires:  libcdio-devel
-BuildRequires:  libjack-devel
-BuildRequires:  libsndfile-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(flac)
+BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(libcdio)
+BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Mednafen is a command-line-driven multi-system emulator utilizing
