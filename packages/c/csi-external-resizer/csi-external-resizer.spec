@@ -1,7 +1,7 @@
 #
 # spec file for package csi-external-resizer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define source external-resizer
 
 Name:           csi-%{source}
-Version:        0.5.0
+Version:        1.0.1
 Release:        0
 Summary:        Allows volume expansion after creation
 License:        Apache-2.0
