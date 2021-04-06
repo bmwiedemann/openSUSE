@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Mon Apr  5 12:31:25 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 56.0.0
+  New features and enhancements:
+  * mkvmerge, mkvpropedit: tags: the programs will no longer
+    write tag elements that are mandatory and set to their
+    default value (e.g. "tag language" set to `und` =
+    undetermined).
+  * mkvmerge, mkvpropedit, MKVToolNix GUI chapter editor:
+    chapters: the programs will no longer write chapter elements
+    that are mandatory and set to their default value (e.g.
+    "chapter language" set to `eng` = English or "Chapter flag
+    enabled" = 1).
+  * mkvextract: chapters: mkvextract will no longer add a
+    `ChapterLanguage` element set to `eng` to the generated XML
+    content if the source file doesn't contain such an element.
+  * MKVToolNix GUI: multiplexer: when using the "tab widget
+    below the files & tracks" layout option for the track
+    properties the elements in the "general options" tab will
+    use six rows à four columns instead of twelve rows à two
+    columns, greatly reducing the required height.
+  Bug fixes:
+  * mkvmerge: AAC reader: fixed mkvmerge aborting to read AAC
+    files bigger than 2 GB with a message about not being able
+    to allocate memory.
+  * mkvmerge: chapters: `ChapLanguageIETF` elements were still
+    created when the option `--disable-language-ietf` was given
+    after an option leading to the creation of chapters. Now the
+    position doesn't matter anymore.
+  * mkvmerge: chapters: when the option
+    `--disable-language-ietf` is used, `ChapLanguageIETF`
+    elements won't be written even when sources are read
+    (Matroska files or XML chapters files) that do contain those
+    elements.
+  * mkvmerge: tags: when the option `--disable-language-ietf` is
+    used, `TagLanguageIETF` elements won't be written.
+  * mkvmerge: tags: mkvmerge will no longer write language
+    elements for the track statistics tags it creates, making
+    the effective language "undetermined" due to `und` being the
+    default value for the legacy tag language element.
+  * mkvmerge: tags: the XML tag parser will now validate all
+    `<Simple>` children of `<Tag>` elements, not just the first
+    for each `<Tag>`.
+  * mkvmerge: tags: the XML tag parser now uses the
+    spec-compliant `und` ("undetermined") as the default
+    language for `<Simple>` tags instead of `eng`.
+  * mkvmerge, mkvpropedit: tags: mkvmerge will no longer set the
+    "target type" for track statistics tags (earlier it used
+    `MOVIE`). The "target type value" will still be set to `50`.
+  * mkvmerge, mkvextract: HEVC/H.265: both programs will now
+    normalize the placement of VPS, SPS and PPS NALUs. Each key
+    frame is prefixed with exactly one copy of the currently
+    active parameter sets. This fixes certain classes of bugs
+    related to splitting/appending.
+  * mkvinfo: when compiled with newer versions of the `fmt`
+    library, certain numbers were not output correctly (e.g. a
+    track's audio sampling frequency of 48000 might be output as
+    48).
+  * MKVToolNix GUI: multiplexer: deriving the track language
+    from the file name will match languages case insensitively
+    again (like versions prior to v55).
+  * MKVToolNix GUI: multiplexer: under certain circumstances
+    keyboard shortcuts such as `Ctrl+W` for closing the active
+    tab or `Ctrl+R` for starting to multiplex ceased to work
+    until the user did certain other things (such as switching
+    to a different tool & back to the multiplexer or opening the
+    multiplexer menu). This started with v54.
+  * MKVToolNix GUI: chapter editor: the editor will no longer
+    create empty `ChapterCountry` elements when adding a chapter
+    name with no default country selected in the preferences.
+  Build system changes:
+  * The bundled `fmt` library was updated to v7.1.3.
+
+-------------------------------------------------------------------
 Sat Mar  6 19:21:47 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 55.0.0

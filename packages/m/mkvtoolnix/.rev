@@ -1114,4 +1114,12 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>877437</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>8953f53e87ed11a386b28522346be6b2</srcmd5>
+    <version>56.0.0</version>
+    <time>1617723050</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883039</requestid>
+  </revision>
 </revisionlist>
