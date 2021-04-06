@@ -1,11 +1,11 @@
 #
-# spec file for package gcc (Version 4.0.1)
+# spec file template for cross packages of gcc${version}
 #
-# Copyright (c) 2005 SUSE Linux AG, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # This file and all modifications and additions to the pristine
 # package are under the same license as the package itself.
 #
-# Please submit bugfixes or comments via http://www.suse.de/feedback/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 # nospeccleaner

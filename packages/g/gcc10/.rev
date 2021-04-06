@@ -200,4 +200,13 @@
   to package it.</comment>
     <requestid>876513</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3806faadf0da8ba5bb2eebd9789fc20f</srcmd5>
+    <version>10.2.1+git1574</version>
+    <time>1617722935</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to gcc-10 branch head (892024d4af83b258801ff7484), git1574
+  * Includes GCC 10.3 RC1</comment>
+    <requestid>882562</requestid>
+  </revision>
 </revisionlist>

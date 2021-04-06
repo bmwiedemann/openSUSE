@@ -21,12 +21,12 @@
 %define gcc_target_arch sparc64-suse-linux
 %define gcc_icecream 1
 #
-# spec file for package gcc (Version 4.0.1)
+# spec file template for cross packages of gcc${version}
 #
 # This file and all modifications and additions to the pristine
 # package are under the same license as the package itself.
 #
-# Please submit bugfixes or comments via http://www.suse.de/feedback/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 # nospeccleaner
@@ -113,7 +113,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        10.2.1+git1331
+Version:        10.2.1+git1574
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')

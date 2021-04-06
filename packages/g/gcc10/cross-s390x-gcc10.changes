@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  1 11:40:36 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-10 branch head (892024d4af83b258801ff7484), git1574
+  * Includes GCC 10.3 RC1
+
+-------------------------------------------------------------------
+Wed Mar 24 14:30:15 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-10 branch head (592388d4f6e8a6adb470428fe), git1450
+
+-------------------------------------------------------------------
 Wed Mar  3 11:03:16 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-10 branch head (85977f624a34eac309f9d77a5), git1331

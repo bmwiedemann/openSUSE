@@ -19,7 +19,7 @@
 %define building_testsuite 1
 %define run_tests 1
 #
-# spec file for package gcc9
+# spec file for package gcc${version}
 #
 #
 # All modifications and additions to the file contributed by third parties
@@ -295,7 +295,7 @@ BuildRequires:  cross-amdgcn-newlib10-devel
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        10.2.1+git1331
+Version:        10.2.1+git1574
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
