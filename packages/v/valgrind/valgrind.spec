@@ -1,5 +1,5 @@
 #
-# spec file for package valgrind
+# spec file for package valgrind%{?psuffix}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -29,10 +29,10 @@
 %bcond_without docs
 
 Name:           valgrind%{?psuffix}
-Version:        3.16.1
+Version:        3.17.0
 Release:        0
 Summary:        Memory Management Debugger
-License:        GPL-2.0-or-later AND GFDL-1.2-only
+License:        GFDL-1.2-only AND GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            http://valgrind.org/
 Source0:        ftp://sourceware.org/pub/valgrind/valgrind-%{version}.tar.bz2
@@ -40,10 +40,6 @@ Source0:        ftp://sourceware.org/pub/valgrind/valgrind-%{version}.tar.bz2
 # https://github.com/olafhering/valgrind/compare/olh-base-master...olh-fixes-master
 Patch0:         valgrind.xen.patch
 Patch2:         armv6-support.diff
-# PATCH-FIX-UPSTREAM: https://sourceware.org/git/?p=valgrind.git;a=patch;h=159f132289160ab1a5a5cf4da14fb57ecdb248ca
-Patch3:         s390x-z14-vector-support.patch
-# PATCH-FIX-UPSTREAM: https://sourceware.org/git/?p=valgrind.git;a=commit;h=74b74174d572fee4015b8f4e326db3cd949bcdc3
-Patch4:         0001-lmw-lswi-and-related-PowerPC-insns-aren-t-allowed-on.patch
 Patch9:         parallel-lto.patch
 Patch10:        dhat-use-datadir.patch
 %if "%{flavor}" == ""
@@ -110,7 +106,7 @@ Summary:        Header files for for Valgrind
 # The client headers are permissively licensed under a BSD-style
 # license. SPDX License Request filed.
 # License:      BSD-3-Clause
-License:        GPL-2.0-or-later AND GFDL-1.2-only
+License:        GFDL-1.2-only AND GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
 Provides:       valgrind-devel:%{_includedir}/valgrind/valgrind.h
 BuildArch:      noarch
@@ -212,13 +208,14 @@ if test -d %{buildroot}%{_datadir}/doc/valgrind; then
 fi
 mkdir -p %{buildroot}%{_docdir}/%{name}
 
-rm %{buildroot}/%{_includedir}/valgrind/{valgrind,callgrind,drd,helgrind,memcheck}.h
+rm %{buildroot}/%{_includedir}/valgrind/{valgrind,callgrind,dhat,drd,helgrind,memcheck}.h
 
 %else
 install -m 755 -d %{buildroot}/%{_includedir}/valgrind
 install -m 644 -t %{buildroot}/%{_includedir}/valgrind \
     include/valgrind.h \
     callgrind/callgrind.h \
+    dhat/dhat.h \
     drd/drd.h \
     helgrind/helgrind.h \
     memcheck/memcheck.h
@@ -250,129 +247,131 @@ VALGRIND_LIB=$PWD/.in_place VALGRIND_LIB_INNER=$PWD/.in_place ./coregrind/valgri
 %doc README* NEWS AUTHORS
 %doc %{_defaultdocdir}/%{name}/*
 %doc %{_mandir}/*/*
-%dir %{_libdir}/valgrind
+%dir %{_libexecdir}/valgrind
 %ifarch aarch64
-%{_libdir}/valgrind/*-arm64-linux
+%{_libexecdir}/valgrind/*-arm64-linux
 %endif
 %ifarch x86_64
-%{_libdir}/valgrind/*-amd64-linux
+%{_libexecdir}/valgrind/*-amd64-linux
 %endif
 %ifarch %ix86
-%{_libdir}/valgrind/*-x86-linux
+%{_libexecdir}/valgrind/*-x86-linux
 %endif
 %ifarch ppc
-%{_libdir}/valgrind/*-ppc32-linux
+%{_libexecdir}/valgrind/*-ppc32-linux
 %endif
 %ifarch ppc64
-%{_libdir}/valgrind/*-ppc64be-linux
+%{_libexecdir}/valgrind/*-ppc64be-linux
 %endif
 %ifarch ppc64le
-%{_libdir}/valgrind/*-ppc64le-linux
+%{_libexecdir}/valgrind/*-ppc64le-linux
 %endif
 %ifarch s390x
-%{_libdir}/valgrind/*-s390x-linux
+%{_libexecdir}/valgrind/*-s390x-linux
 %endif
 %ifarch %arm
-%{_libdir}/valgrind/*-arm-linux
+%{_libexecdir}/valgrind/*-arm-linux
 %endif
 %dir %{_datadir}/valgrind
 %{_datadir}/valgrind/dh_view*
-%{_libdir}/valgrind/*-linux.so
-%{_libdir}/valgrind/*.supp
-%{_libdir}/valgrind/64bit-core.xml
-%{_libdir}/valgrind/64bit-linux.xml
-%{_libdir}/valgrind/64bit-sse.xml
-%{_libdir}/valgrind/64bit-core-valgrind-s*.xml
-%{_libdir}/valgrind/64bit-linux-valgrind-s*.xml
-%{_libdir}/valgrind/64bit-sse-valgrind-s*.xml
-%{_libdir}/valgrind/amd64-coresse-valgrind.xml
-%{_libdir}/valgrind/amd64-linux-valgrind.xml
-%{_libdir}/valgrind/power64-core-valgrind-s*.xml
-%{_libdir}/valgrind/power64-core.xml
-%{_libdir}/valgrind/power64-core2-valgrind-s*.xml
-%{_libdir}/valgrind/power64-linux-valgrind-s*.xml
-%{_libdir}/valgrind/power64-linux.xml
-%{_libdir}/valgrind/64bit-avx-valgrind-s*.xml
-%{_libdir}/valgrind/64bit-avx.xml
-%{_libdir}/valgrind/amd64-avx-coresse-valgrind.xml
-%{_libdir}/valgrind/amd64-avx-coresse.xml
-%{_libdir}/valgrind/amd64-avx-linux-valgrind.xml
-%{_libdir}/valgrind/amd64-avx-linux.xml
-%{_libdir}/valgrind/mips64-cp0-valgrind-s*.xml
-%{_libdir}/valgrind/mips64-cp0.xml
-%{_libdir}/valgrind/mips64-cpu-valgrind-s*.xml
-%{_libdir}/valgrind/mips64-cpu.xml
-%{_libdir}/valgrind/mips64-fpu-valgrind-s*.xml
-%{_libdir}/valgrind/mips64-fpu.xml
-%{_libdir}/valgrind/mips64-linux-valgrind.xml
-%{_libdir}/valgrind/mips64-linux.xml
-%{_libdir}/valgrind/power-core-valgrind-s*.xml
-%{_libdir}/valgrind/s390x-core64-valgrind-s*.xml
-%{_libdir}/valgrind/s390x-core64.xml
-%{_libdir}/valgrind/s390x-generic-valgrind.xml
-%{_libdir}/valgrind/s390x-generic.xml
-%{_libdir}/valgrind/s390x-linux64-valgrind-s*.xml
-%{_libdir}/valgrind/s390x-linux64.xml
-%{_libdir}/valgrind/s390x-vx-linux-valgrind.xml
-%{_libdir}/valgrind/s390x-vx-linux.xml
+%{_libexecdir}/valgrind/*-linux.so
+%{_libexecdir}/valgrind/*.supp
+%{_libexecdir}/valgrind/64bit-core.xml
+%{_libexecdir}/valgrind/64bit-linux.xml
+%{_libexecdir}/valgrind/64bit-sse.xml
+%{_libexecdir}/valgrind/64bit-core-valgrind-s*.xml
+%{_libexecdir}/valgrind/64bit-linux-valgrind-s*.xml
+%{_libexecdir}/valgrind/64bit-sse-valgrind-s*.xml
+%{_libexecdir}/valgrind/amd64-coresse-valgrind.xml
+%{_libexecdir}/valgrind/amd64-linux-valgrind.xml
+%{_libexecdir}/valgrind/power64-core-valgrind-s*.xml
+%{_libexecdir}/valgrind/power64-core.xml
+%{_libexecdir}/valgrind/power64-core2-valgrind-s*.xml
+%{_libexecdir}/valgrind/power64-linux-valgrind-s*.xml
+%{_libexecdir}/valgrind/power64-linux.xml
+%{_libexecdir}/valgrind/64bit-avx-valgrind-s*.xml
+%{_libexecdir}/valgrind/64bit-avx.xml
+%{_libexecdir}/valgrind/amd64-avx-coresse-valgrind.xml
+%{_libexecdir}/valgrind/amd64-avx-coresse.xml
+%{_libexecdir}/valgrind/amd64-avx-linux-valgrind.xml
+%{_libexecdir}/valgrind/amd64-avx-linux.xml
+%{_libexecdir}/valgrind/mips64-cp0-valgrind-s*.xml
+%{_libexecdir}/valgrind/mips64-cp0.xml
+%{_libexecdir}/valgrind/mips64-cpu-valgrind-s*.xml
+%{_libexecdir}/valgrind/mips64-cpu.xml
+%{_libexecdir}/valgrind/mips64-fpu-valgrind-s*.xml
+%{_libexecdir}/valgrind/mips64-fpu.xml
+%{_libexecdir}/valgrind/mips64-linux-valgrind.xml
+%{_libexecdir}/valgrind/mips64-linux.xml
+%{_libexecdir}/valgrind/power-core-valgrind-s*.xml
+%{_libexecdir}/valgrind/s390x-core64-valgrind-s*.xml
+%{_libexecdir}/valgrind/s390x-core64.xml
+%{_libexecdir}/valgrind/s390x-generic-valgrind.xml
+%{_libexecdir}/valgrind/s390x-generic.xml
+%{_libexecdir}/valgrind/s390x-linux64-valgrind-s*.xml
+%{_libexecdir}/valgrind/s390x-linux64.xml
+%{_libexecdir}/valgrind/s390x-vx-linux-valgrind.xml
+%{_libexecdir}/valgrind/s390x-vx-linux.xml
 # See https://bugzilla.suse.com/show_bug.cgi?id=1147071#c0
-%{_libdir}/valgrind/s390-acr-valgrind-s*.xml
-%{_libdir}/valgrind/s390-acr.xml
-%{_libdir}/valgrind/s390-fpr-valgrind-s*.xml
-%{_libdir}/valgrind/s390-fpr.xml
-%{_libdir}/valgrind/s390-vx-valgrind-s*.xml
-%{_libdir}/valgrind/s390-vx.xml
+%{_libexecdir}/valgrind/s390-acr-valgrind-s*.xml
+%{_libexecdir}/valgrind/s390-acr.xml
+%{_libexecdir}/valgrind/s390-fpr-valgrind-s*.xml
+%{_libexecdir}/valgrind/s390-fpr.xml
+%{_libexecdir}/valgrind/s390-vx-valgrind-s*.xml
+%{_libexecdir}/valgrind/s390-vx.xml
 
 %ifarch x86_64 ppc64 s390x
 %files 32bit
 %endif
 %ifarch %ix86 x86_64
-%{_libdir}/valgrind/*-x86-linux
+%{_libexecdir}/valgrind/*-x86-linux
 %endif
 %ifarch ppc ppc64
-%{_libdir}/valgrind/*-ppc32-linux
+%{_libexecdir}/valgrind/*-ppc32-linux
 %endif
-%{_libdir}/valgrind/mips-cp0-valgrind-s*.xml
-%{_libdir}/valgrind/mips-cp0.xml
-%{_libdir}/valgrind/mips-cpu-valgrind-s*.xml
-%{_libdir}/valgrind/mips-cpu.xml
-%{_libdir}/valgrind/mips-fpu-valgrind-s*.xml
-%{_libdir}/valgrind/mips-fpu.xml
-%{_libdir}/valgrind/mips-linux-valgrind.xml
-%{_libdir}/valgrind/mips-linux.xml
-%{_libdir}/valgrind/32bit-core.xml
-%{_libdir}/valgrind/32bit-linux.xml
-%{_libdir}/valgrind/32bit-sse.xml
-%{_libdir}/valgrind/arm-core-valgrind-s*.xml
-%{_libdir}/valgrind/arm-core.xml
-%{_libdir}/valgrind/arm-vfpv3-valgrind-s*.xml
-%{_libdir}/valgrind/arm-vfpv3.xml
-%{_libdir}/valgrind/arm-with-vfpv3-valgrind.xml
-%{_libdir}/valgrind/arm-with-vfpv3.xml
-%{_libdir}/valgrind/32bit-core-valgrind-s*.xml
-%{_libdir}/valgrind/32bit-linux-valgrind-s*.xml
-%{_libdir}/valgrind/32bit-sse-valgrind-s*.xml
-%{_libdir}/valgrind/i386-coresse-valgrind.xml
-%{_libdir}/valgrind/i386-linux-valgrind.xml
-%{_libdir}/valgrind/power-altivec-valgrind-s*.xml
-%{_libdir}/valgrind/power-altivec.xml
-%{_libdir}/valgrind/power-core.xml
-%{_libdir}/valgrind/power-fpu-valgrind-s*.xml
-%{_libdir}/valgrind/power-fpu.xml
-%{_libdir}/valgrind/power-linux-valgrind-s*.xml
-%{_libdir}/valgrind/power-linux.xml
-%{_libdir}/valgrind/power-vsx-valgrind-s1.xml
-%{_libdir}/valgrind/power-vsx-valgrind-s2.xml
-%{_libdir}/valgrind/power-vsx.xml
-%{_libdir}/valgrind/powerpc-altivec32l-valgrind.xml
-%{_libdir}/valgrind/powerpc-altivec32l.xml
-%{_libdir}/valgrind/powerpc-altivec64l-valgrind.xml
-%{_libdir}/valgrind/powerpc-altivec64l.xml
+%{_libexecdir}/valgrind/mips-cp0-valgrind-s*.xml
+%{_libexecdir}/valgrind/mips-cp0.xml
+%{_libexecdir}/valgrind/mips-cpu-valgrind-s*.xml
+%{_libexecdir}/valgrind/mips-cpu.xml
+%{_libexecdir}/valgrind/mips-fpu-valgrind-s*.xml
+%{_libexecdir}/valgrind/mips-fpu.xml
+%{_libexecdir}/valgrind/mips-linux-valgrind.xml
+%{_libexecdir}/valgrind/mips-linux.xml
+%{_libexecdir}/valgrind/32bit-core.xml
+%{_libexecdir}/valgrind/32bit-linux.xml
+%{_libexecdir}/valgrind/32bit-sse.xml
+%{_libexecdir}/valgrind/arm-core-valgrind-s*.xml
+%{_libexecdir}/valgrind/arm-core.xml
+%{_libexecdir}/valgrind/arm-vfpv3-valgrind-s*.xml
+%{_libexecdir}/valgrind/arm-vfpv3.xml
+%{_libexecdir}/valgrind/arm-with-vfpv3-valgrind.xml
+%{_libexecdir}/valgrind/arm-with-vfpv3.xml
+%{_libexecdir}/valgrind/32bit-core-valgrind-s*.xml
+%{_libexecdir}/valgrind/32bit-linux-valgrind-s*.xml
+%{_libexecdir}/valgrind/32bit-sse-valgrind-s*.xml
+%{_libexecdir}/valgrind/i386-coresse-valgrind.xml
+%{_libexecdir}/valgrind/i386-linux-valgrind.xml
+%{_libexecdir}/valgrind/power-altivec-valgrind-s*.xml
+%{_libexecdir}/valgrind/power-altivec.xml
+%{_libexecdir}/valgrind/power-core.xml
+%{_libexecdir}/valgrind/power-fpu-valgrind-s*.xml
+%{_libexecdir}/valgrind/power-fpu.xml
+%{_libexecdir}/valgrind/power-linux-valgrind-s*.xml
+%{_libexecdir}/valgrind/power-linux.xml
+%{_libexecdir}/valgrind/power-vsx-valgrind-s1.xml
+%{_libexecdir}/valgrind/power-vsx-valgrind-s2.xml
+%{_libexecdir}/valgrind/power-vsx.xml
+%{_libexecdir}/valgrind/powerpc-altivec32l-valgrind.xml
+%{_libexecdir}/valgrind/powerpc-altivec32l.xml
+%{_libexecdir}/valgrind/powerpc-altivec64l-valgrind.xml
+%{_libexecdir}/valgrind/powerpc-altivec64l.xml
 
 %else
+
 %files -n valgrind-client-headers
 %dir %{_includedir}/valgrind
 %{_includedir}/valgrind/callgrind.h
+%{_includedir}/valgrind/dhat.h
 %{_includedir}/valgrind/drd.h
 %{_includedir}/valgrind/helgrind.h
 %{_includedir}/valgrind/memcheck.h

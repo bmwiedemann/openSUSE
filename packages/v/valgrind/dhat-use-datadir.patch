@@ -1,9 +1,9 @@
-diff --git a/dhat/Makefile.am b/dhat/Makefile.am
-index 2aa4ac99e..4a571cb77 100644
---- a/dhat/Makefile.am
-+++ b/dhat/Makefile.am
-@@ -9,7 +9,7 @@ EXTRA_DIST = docs/dh-manual.xml dh_view.html dh_view.css dh_view.js
- #----------------------------------------------------------------------------
+Index: valgrind-3.17.0/dhat/Makefile.am
+===================================================================
+--- valgrind-3.17.0.orig/dhat/Makefile.am
++++ valgrind-3.17.0/dhat/Makefile.am
+@@ -10,7 +10,7 @@ pkginclude_HEADERS = \
+ 	dhat.h
  
  # Ensure the viewer components get copied into the install tree.
 -dhatdir = $(pkglibexecdir)

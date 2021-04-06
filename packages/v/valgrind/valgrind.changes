@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 20 17:27:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.17.0:
+  * 3.17.0 fixes a number of bugs and adds some functional changes: support for GCC
+    11, Clang 11, DWARF5 debuginfo, the 'debuginfod' debuginfo server, and
+    some new instructions for Arm64, S390 and POWER.  There are also some tool
+    updates.
+- drop s390x-z14-vector-support.patch
+    0001-lmw-lswi-and-related-PowerPC-insns-aren-t-allowed-on.patch: upstream
+
+-------------------------------------------------------------------
 Mon Jan 11 14:20:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add 0001-lmw-lswi-and-related-PowerPC-insns-aren-t-allowed-on.patch (bsc#1180412)
