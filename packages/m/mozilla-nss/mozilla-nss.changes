@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 16 14:10:43 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.62
+  * bmo#1688374 - Fix parallel build NSS-3.61 with make
+  * bmo#1682044 - pkix_Build_GatherCerts() + pkix_CacheCert_Add()
+                  can corrupt "cachedCertTable"
+  * bmo#1690583 - Fix CH padding extension size calculation
+  * bmo#1690421 - Adjust 3.62 ABI report formatting for new libabigail
+  * bmo#1690421 - Install packaged libabigail in docker-builds image
+  * bmo#1689228 - Minor ECH -09 fixes for interop testing, fuzzing
+  * bmo#1674819 - Fixup a51fae403328, enum type may be signed
+  * bmo#1681585 - Add ECH support to selfserv
+  * bmo#1681585 - Update ECH to Draft-09
+  * bmo#1678398 - Add Export/Import functions for HPKE context
+  * bmo#1678398 - Update HPKE to draft-07
+- required for Firefox 87
+
+-------------------------------------------------------------------
 Sun Feb 28 12:01:32 UTC 2021 - Sasi Olin <hel@lcp.world>
 
 - Add nss-btrfs-sqlite.patch to address bmo#1690232
