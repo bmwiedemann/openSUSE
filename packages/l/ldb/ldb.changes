@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 24 09:53:56 UTC 2021 - Noel Power <nopower@suse.com>
+
+- Release ldb 2.2.1
+  + CVE-2020-27840: samba: Unauthenticated remote heap corruption
+    via bad DNs; (bso#14595); (bsc#1183572).
+  + CVE-2021-20277: samba: out of bounds read in ldb_handler_fold;
+    (bso#14655); (bsc#1183574).
+
+-------------------------------------------------------------------
 Mon Oct 12 15:28:18 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Remove old if suse_version != 1110 || arch != i386 construct:
