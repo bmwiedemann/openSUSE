@@ -226,10 +226,7 @@ install device-mapper
 install dmraid
 install dosfstools
 install e2fsprogs
-# Not in Leap
-if [ "$distro" != "leap" ]; then
-	install exfat-utils
-fi
+install exfatprogs
 install fcoe-utils
 install jfsutils
 install mdadm

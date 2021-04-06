@@ -1159,4 +1159,12 @@
     <comment></comment>
     <requestid>878490</requestid>
   </revision>
+  <revision rev="144" vrev="144">
+    <srcmd5>8a28d2e74b8a0948e563c440ab5ccee3</srcmd5>
+    <version>unknown</version>
+    <time>1617723083</time>
+    <user>RBrownSUSE</user>
+    <comment>- Switch from exfat-utils to exfatprogs, see also gh#yast/yast-storage-ng#1214 (forwarded request 883332 from favogt)</comment>
+    <requestid>883333</requestid>
+  </revision>
 </revisionlist>
