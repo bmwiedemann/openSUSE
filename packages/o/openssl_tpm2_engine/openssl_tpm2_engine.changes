@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr  4 21:35:39 UTC 2021 - James.Bottomley@HansenPartnership.com
+
+- Update to version 3.0.1
+  * fix various memory leaks
+  * add fix for applications which reduce privilege and can't write to tss dir
+  * add support for Intel TSS
+
+-------------------------------------------------------------------
 Fri Jul  3 09:35:56 UTC 2020 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Update tarball due to download_files error

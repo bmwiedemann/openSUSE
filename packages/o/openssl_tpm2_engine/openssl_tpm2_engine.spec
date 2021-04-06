@@ -1,7 +1,7 @@
 #
 # spec file for package openssl_tpm2_engine
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017 James.Bottomley@HansenPartnership.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           openssl_tpm2_engine
-Version:        2.4.2
+Version:        3.0.1
 Release:        0
 Summary:        OpenSSL TPM 2.0 interface engine plugin
 License:        LGPL-2.1-only
@@ -27,6 +27,7 @@ URL:            https://git.kernel.org/pub/scm/linux/kernel/git/jejb/openssl_tpm
 Source0:        https://git.kernel.org/pub/scm/linux/kernel/git/jejb/openssl_tpm2_engine.git/snapshot/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  fakeroot
 BuildRequires:  help2man
 BuildRequires:  ibmswtpm2
 BuildRequires:  ibmtss-devel
