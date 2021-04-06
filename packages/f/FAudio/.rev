@@ -108,4 +108,19 @@
   * Fixes a regression that caused SoundBanks to no longer parse correctly (forwarded request 878747 from ukbeast89)</comment>
     <requestid>878766</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>81615e9d8be1eaa566f347248e81f01a</srcmd5>
+    <version>21.04</version>
+    <time>1617723052</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 21.04:
+  * Added support for SDL_GetAudioDeviceSpec, coming in a future SDL release
+  * FACT: Implemented accurate Fast/Slow/SinCos RPC curve types
+  * Added support for XMA2 audio, for Xbox 360 data
+  * Voice filters/effects should be processed even when SendCount is 0
+  * FACT: Fix parsing/calculation of filter Q factors
+  * FACT: Enforce STOPPING flag for fade-outs or RPC releases
+  * FACT: Various fixes for parsing big-endian SoundBanks (forwarded request 883069 from ukbeast89)</comment>
+    <requestid>883070</requestid>
+  </revision>
 </revisionlist>

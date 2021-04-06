@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr  5 15:25:24 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 21.04:
+  * Added support for SDL_GetAudioDeviceSpec, coming in a future SDL release
+  * FACT: Implemented accurate Fast/Slow/SinCos RPC curve types
+  * Added support for XMA2 audio, for Xbox 360 data
+  * Voice filters/effects should be processed even when SendCount is 0
+  * FACT: Fix parsing/calculation of filter Q factors
+  * FACT: Enforce STOPPING flag for fade-outs or RPC releases
+  * FACT: Various fixes for parsing big-endian SoundBanks
+  
+-------------------------------------------------------------------
 Sat Mar 13 12:58:56 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update to 21.03.5:
