@@ -3,6 +3,6 @@
   <description>The Qt 6 Compat library to help porting Qt 5 code
 
 </description>
-  <devel project="KDE:Qt:6.0" package="qt6-qt5compat"/>
+  <devel project="KDE:Qt6" package="qt6-qt5compat"/>
   <url>https://www.qt.io</url>
 </package>
