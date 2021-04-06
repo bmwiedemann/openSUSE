@@ -37,6 +37,7 @@ BuildRequires:  flex
 BuildRequires:  libacl-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libselinux-devel
+BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 

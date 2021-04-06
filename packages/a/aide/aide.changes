@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  2 07:03:22 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- added missing pcre-devel buildrequires.
+
+-------------------------------------------------------------------
 Wed Feb 24 13:45:59 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update default config file to match v0.17 

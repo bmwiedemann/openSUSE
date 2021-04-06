@@ -258,4 +258,12 @@
     <comment>- Update default config file to match v0.17 (forwarded request 874872 from polslinux)</comment>
     <requestid>874874</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>e0156e8c4e282dd508ace29f2be6ded4</srcmd5>
+    <version>0.17.3</version>
+    <time>1617723002</time>
+    <user>RBrownSUSE</user>
+    <comment>- added missing pcre-devel buildrequires. (forwarded request 882697 from msmeissn)</comment>
+    <requestid>882699</requestid>
+  </revision>
 </revisionlist>
