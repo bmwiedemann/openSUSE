@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr  5 17:44:44 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Removed unnecessary dependencies from the devel package.
+- Replaced Qt-frontend application to mt32emu-qt subpackage.
+- Renamed source1 file from mt32emu.desktop to mt32emu-qt.desktop.
+- Updated to 2.5.0.
+  * Added support for partial ROM images.
+  * Added a few API extensions to better handle ROM images.
+  * Added generation of pkg-config file.
+  * Fixed undefined behaviour that the TVP emulation code may exhibit.
+
+-------------------------------------------------------------------
 Wed Mar  3 02:42:55 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Updated to 2.4.2.

@@ -27,4 +27,19 @@ Need for dosbox and aplaymidi for play MT-32 sound.</comment>
   * Improved the MIDI recording function.</comment>
     <requestid>876339</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>27881c36b7dc1d38045e775cb5c17826</srcmd5>
+    <version>2.5.0</version>
+    <time>1617723049</time>
+    <user>RBrownSUSE</user>
+    <comment>- Removed unnecessary dependencies from the devel package.
+- Replaced Qt-frontend application to mt32emu-qt subpackage.
+- Renamed source1 file from mt32emu.desktop to mt32emu-qt.desktop.
+- Updated to 2.5.0.
+  * Added support for partial ROM images.
+  * Added a few API extensions to better handle ROM images.
+  * Added generation of pkg-config file.
+  * Fixed undefined behaviour that the TVP emulation code may exhibit.</comment>
+    <requestid>883084</requestid>
+  </revision>
 </revisionlist>

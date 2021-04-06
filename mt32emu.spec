@@ -17,16 +17,16 @@
 
 
 %define s_name  munt-lib%{name}_%{s_ver}
-%define s_ver   2_4_2
+%define s_ver   2_5_0
 %define sover   2
 Name:           mt32emu
-Version:        2.4.2
+Version:        2.5.0
 Release:        0
 Summary:        An emulator of the Roland MT-32, CM-32L and LAPC-I synthesiser modules
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 URL:            https://github.com/munt/munt
 Source0:        https://github.com/munt/munt/archive/lib%{name}_%{s_ver}.tar.gz#/%{s_name}.tar.gz
-Source1:        %{name}.desktop
+Source1:        %{name}-qt.desktop
 Source2:        %{name}.png
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -40,10 +40,18 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(portaudio-2.0)
-Requires:       lib%{name}%{sover} = %{version}
 
 %description
 A multi-platform software synthesiser emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I.
+
+%package qt
+Summary:        The main Qt-frontend synthesiser application
+Requires:       lib%{name}%{sover} = %{version}
+Provides:       %{name} = %{version}
+Obsoletes:      %{name} < %{version}
+
+%description qt
+It facilitates both realtime synthesis and conversion of pre-recorded SMF files to WAVE making use of the mt32emu library.
 
 %package -n lib%{name}%{sover}
 Summary:        Shared library for %{name}
@@ -54,15 +62,7 @@ This package provides the %{name} library.
 
 %package -n lib%{name}-devel
 Summary:        Development files for lib%{name}
-Requires:       libmt32emu%{sover} = %{version}
-Requires:       pkgconfig(Qt5Core)
-Requires:       pkgconfig(Qt5Gui)
-Requires:       pkgconfig(Qt5Widgets)
-Requires:       pkgconfig(alsa)
-Requires:       pkgconfig(glib-2.0)
-Requires:       pkgconfig(jack)
-Requires:       pkgconfig(libpulse)
-Requires:       pkgconfig(portaudio-2.0)
+Requires:       lib%{name}%{sover} = %{version}
 
 %description -n lib%{name}-devel
 A multi-platform software synthesiser emulating pre-GM MIDI devices such as the Roland MT-32, CM-32L, CM-64 and LAPC-I.
@@ -73,24 +73,28 @@ Development files for lib%{name}.
 
 %build
 %cmake -LA \
-       -DCMAKE_SHARED_LINKER_FLAGS="-lm"
+       -DCMAKE_SHARED_LINKER_FLAGS="-lm" \
+       -DLIB_INSTALL_DIR:PATH="%{_lib}" \
+       -Dlibmt32emu_PKGCONFIG_INSTALL_PREFIX="%{_libdir}"
 %make_build
 
 %install
 %cmake_install
-install -Dpm0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
+rm %{buildroot}%{_datadir}/applications/%{name}-qt.desktop
+install -Dpm0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}-qt.desktop
+rm %{buildroot}%{_datadir}/pixmaps/munt.png
 install -Dpm0644 %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/%{name}.png
 rm -r %{buildroot}%{_datadir}/doc
 
 %post   -n lib%{name}%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
 
-%files
+%files qt
 %license %{name}_qt/COPYING.txt
 %doc %{name}_qt/AUTHORS.txt %{name}_qt/NEWS.txt %{name}_qt/README.md %{name}_qt/TODO.txt
 %{_bindir}/%{name}-qt
 %{_bindir}/%{name}-smf2wav
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{name}-qt.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %files -n lib%{name}%{sover}
@@ -101,8 +105,10 @@ rm -r %{buildroot}%{_datadir}/doc
 %files -n lib%{name}-devel
 %{_libdir}/lib%{name}.so
 %dir %{_includedir}/%{name}
+%{_includedir}/%{name}.h
 %{_includedir}/%{name}/*.h
 %dir %{_includedir}/%{name}/c_interface
 %{_includedir}/%{name}/c_interface/*.h
+%{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
