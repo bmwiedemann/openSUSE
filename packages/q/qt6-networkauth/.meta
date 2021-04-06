@@ -5,6 +5,6 @@ applications to obtain limited access to online accounts and HTTP
 services without exposing users' passwords.
 
 </description>
-  <devel project="KDE:Qt:6.0" package="qt6-networkauth"/>
+  <devel project="KDE:Qt6" package="qt6-networkauth"/>
   <url>https://www.qt.io</url>
 </package>
