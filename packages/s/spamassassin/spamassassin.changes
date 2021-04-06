@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 24 17:58:15 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- update spamassassin to 3.4.5
+  * In this release, there are bug fixes for one CVE:
+    CVE-2020-1946 for Malicious rule configuration (.cf) files can
+      be configured to run system commands (boo#1184221)
+  * Improvements to OLEVBMacro and AskDNS plugins
+  * Received and EnvelopeFrom headers matching improvements
+  * userpref SQL schema fixes
+  * rbl and hashbl evaluation improvements
+  * fix for non working TxRep tag names
+  * man page fixes
+- Update download links
+
+-------------------------------------------------------------------
 Fri Feb 12 11:25:16 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Relax the crypto policies for the test-suite. This will allow the
@@ -32,8 +47,10 @@ Wed Jan 29 19:26:21 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
   * In this release, there are bug fixes for two CVEs:
     CVE-2020-1931 for Nefarious rule configuration (.cf) files can
       be configured to run system commands with warnings.
+      (boo#1162200)
     CVE-2020-1930 for Nefarious rule configuration (.cf) files can
       be configured to run system commands with sa-compile.
+      (boo#1162197)
   * Improvements to OLEVBMacro
   * Fix for CRLF handling with SpamAssMilter & DKIM
   * Small fix for a regexp to provide Perl 5.8.x compatability again
@@ -58,8 +75,10 @@ Thu Dec 12 11:55:55 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
       documents
   * Two CVE security bug fixes are included in this release
     CVE-2019-12420 for Multipart Denial of Service Vulnerability
+    (boo#1159133)
     CVE-2018-11805 for nefarious CF files can be configured to
       run system commands without any output or errors
+    (boo#1118987)
   * Safer and faster scanning of large emails using
       body_part_scan_size and rawbody_part_scan_size settings.
   * New tflag "nosubject" for 'body' rules, to stop matching the
@@ -108,7 +127,7 @@ Sun Oct 27 12:36:31 UTC 2019 - Arjen de Korte <suse+build@de-korte.org>
 - Fix "PIDFile= references a path below legacy directory /var/run/"
   (change /var/run/ -> /run/)
 - Don't package README.SuSE which documents an init script that
-  was never bundled
+  was never bundled boo#1068469
 
 -------------------------------------------------------------------
 Tue Jun 11 12:33:05 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>

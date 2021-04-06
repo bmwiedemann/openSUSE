@@ -20,10 +20,10 @@
 
 %define ix_version 2.05
 %define spd_version 2.53
-%define sa_version 3.4.4
+%define sa_version 3.4.5
 %define sa_float %(echo %{sa_version} | awk -F. '{ printf "%d.%03d%03d", $1, $2, $3 }')
 %define perl_float %(echo %{perl_version} | awk -F. '{ printf "%d.%03d", $1, $2 }')
-%define rules_revision 1873061
+%define rules_revision 1887800
 
 %define IXHASH iXhash2-%{ix_version}
 %define SPAMPD spampd-%{spd_version}
@@ -35,8 +35,8 @@ Summary:        Extensible email filter which is used to identify spam
 License:        Apache-2.0
 Group:          Productivity/Networking/Email/Utilities
 URL:            https://spamassassin.apache.org/
-Source:         https://archive.apache.org/dist/spamassassin/source/Mail-SpamAssassin-%{sa_version}.tar.bz2
-Source1:        https://archive.apache.org/dist/spamassassin/source/Mail-SpamAssassin-rules-%{sa_version}.r%{rules_revision}.tgz
+Source0:        https://downloads.apache.org/spamassassin/source/Mail-SpamAssassin-%{sa_version}.tar.bz2
+Source1:        https://downloads.apache.org/spamassassin/source/Mail-SpamAssassin-rules-%{sa_version}.r%{rules_revision}.tgz
 Source2:        https://mailfud.org/iXhash2/%{IXHASH}.tar.gz
 Source3:        https://github.com/mpaperno/spampd/archive/%{spd_version}.tar.gz#/%{SPAMPD}.tar.gz
 Source10:       local.cf
@@ -47,8 +47,8 @@ Source16:       spamd.service
 Source17:       spampd.service
 Source18:       sa-update.service
 Source19:       sa-update.timer
-Source100:      https://archive.apache.org/dist/spamassassin/source/Mail-SpamAssassin-%{sa_version}.tar.bz2.asc
-Source101:      https://archive.apache.org/dist/spamassassin/source/Mail-SpamAssassin-rules-%{sa_version}.r%{rules_revision}.tgz.asc
+Source100:      https://downloads.apache.org/spamassassin/source/Mail-SpamAssassin-%{sa_version}.tar.bz2.asc
+Source101:      https://downloads.apache.org/spamassassin/source/Mail-SpamAssassin-rules-%{sa_version}.r%{rules_revision}.tgz.asc
 # Keyring downloaded from https://www.apache.org/dist/spamassassin/KEYS
 Source102:      spamassassin.keyring
 Source103:      %{name}-rpmlintrc
@@ -174,8 +174,8 @@ Recommends:     perl(Net::DNS) >= 0.58
 Recommends:     perl(Net::Ident)
 Recommends:     perl(Net::Patricia) >= 1.16
 Recommends:     perl(Net::SMTP)
-Recommends:     perl(Test::More)
 Recommends:     perl(Razor2::Client::Agent) >= 2.61
+Recommends:     perl(Test::More)
 Suggests:       perl(DBD::mysql)
 Suggests:       perl(DBI)
 Suggests:       perl(Geo::IP)
