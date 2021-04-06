@@ -499,10 +499,12 @@ Subsection `variants` is used to configure character variants in the font. Prope
     - `digit-form = 'lining'`: Lining (default).
     - `digit-form = 'old-style'`: Old-style.
   - Styles for `A`:
-    + `capital-a = 'straight'`, `cv01 = 1`: Standard, straight `A` (default).
-    + `capital-a = 'curly'`, `cv01 = 2`: Slightly curly `A`, like Iosevka 2.x.
-    + `capital-a = 'straight-motion-serifed'`, `cv01 = 3`: Standard, straight `A`.
-    + `capital-a = 'curly-motion-serifed'`, `cv01 = 4`: Slightly curly `A`, like Iosevka 2.x.
+    + `capital-a = 'straight'`, `cv01 = 1`: Standard, straight `A`, with bottom serifs visible in Slab families (default).
+    + `capital-a = 'curly'`, `cv01 = 2`: Slightly curly `A`, like Iosevka 2.x, with bottom serifs visible in Slab families.
+    + `capital-a = 'straight-motion-serifed'`, `cv01 = 3`: Straight `A` with motion serif at top.
+    + `capital-a = 'curly-motion-serifed'`, `cv01 = 4`: Slightly curly `A`, like Iosevka 2.x, with motion serif at top.
+    + `capital-a = 'straight-tri-serifed'`, `cv01 = 5`: Straight `A` with serif at both top and bottom.
+    + `capital-a = 'curly-tri-serifed'`, `cv01 = 6`: Slightly curly `A`, like Iosevka 2.x, with serif at both top and bottom.
   - Styles for `B`:
     + `capital-b = 'standard'`, `cv02 = 1`: `B` in near-symmetric proportion (default).
     + `capital-b = 'more-asymmetric'`, `cv02 = 2`: `B` in more asymmetric proportion to differentiate with `8`.
@@ -762,8 +764,8 @@ Subsection `variants` is used to configure character variants in the font. Prope
     + `g = 'single-storey-earless-rounded-flat-hook'`, `cv32 = 9`: Earless (rounded top-right) single-storey `g` with flat terminal hook.
     + `g = 'single-storey-motion-serifed-flat-hook'`, `cv32 = 10`: Single-storey `g` with motion serifs and flat terminal hook.
   - Styles for `h`:
-    + `h = 'straight'`, `cv33 = 1`: `h` with straight ending (default for Sans Upright, Sans Italic, Slab Upright).
-    + `h = 'tailed'`, `cv33 = 2`: `h` with curly tailed ending (default for Slab Italic).
+    + `h = 'straight'`, `cv33 = 1`: `h` with straight ending (default).
+    + `h = 'tailed'`, `cv33 = 2`: `h` with curly tailed ending.
     + `h = 'straight-motion-serifed'`, `cv33 = 3`: `h` with straight ending.
     + `h = 'motion-serifed-tailed'`, `cv33 = 4`: `h` with curly tailed ending.
   - Styles for `i`:
@@ -815,9 +817,9 @@ Subsection `variants` is used to configure character variants in the font. Prope
     + `l = 'diagonal-tailed'`, `cv37 = 11`: `l` with diagonal tail.
     + `l = 'serifed-diagonal-tailed'`, `cv37 = 12`: `l` with top serif and diagonal tail.
   - Styles for `m`:
-    + `m = 'normal'`, `cv38 = 1`: `m` with normal middle leg, touching the baseline (default for Sans Upright, Sans Italic, Slab Upright).
+    + `m = 'normal'`, `cv38 = 1`: `m` with normal middle leg, touching the baseline (default).
     + `m = 'short-leg'`, `cv38 = 2`: `m` with shorter middle leg, like Ubuntu Mono.
-    + `m = 'tailed'`, `cv38 = 3`: `m` with normal middle leg, touching the baseline, and a curly tail (default for Slab Italic).
+    + `m = 'tailed'`, `cv38 = 3`: `m` with normal middle leg, touching the baseline, and a curly tail.
     + `m = 'short-leg-tailed'`, `cv38 = 4`: `m` with shorter middle leg, like Ubuntu Mono, and a curly tail.
     + `m = 'earless-corner-double-arch'`, `cv38 = 5`: Earless (corner top-left) `m` with normal middle leg touching baseline.
     + `m = 'earless-corner-double-arch-short-leg'`, `cv38 = 6`: Earless (corner top-left) `m` with a shorter middle leg like Ubuntu Mono.
@@ -836,8 +838,8 @@ Subsection `variants` is used to configure character variants in the font. Prope
     + `m = 'motion-serifed-tailed'`, `cv38 = 19`: `m` with motion serifs, normal middle leg touching baseline, and a curly tail.
     + `m = 'short-leg-motion-serifed-tailed'`, `cv38 = 20`: `m` with motion serifs, a shorter middle leg like Ubuntu Mono, and a curly tail.
   - Styles for `n`:
-    + `n = 'straight'`, `cv39 = 1`: `n` with straight ending (default for Sans Upright, Sans Italic, Slab Upright).
-    + `n = 'tailed'`, `cv39 = 2`: `n` with a curly tail (default for Slab Italic).
+    + `n = 'straight'`, `cv39 = 1`: `n` with straight ending (default).
+    + `n = 'tailed'`, `cv39 = 2`: `n` with a curly tail.
     + `n = 'earless-corner-straight'`, `cv39 = 3`: Earless (corner top-left) `n` with straight ending.
     + `n = 'earless-corner-tailed'`, `cv39 = 4`: Earless (corner top-left) `n` with a curly tail.
     + `n = 'earless-rounded-straight'`, `cv39 = 5`: Earless (rounded top-left) `n` with straight ending.
@@ -872,9 +874,13 @@ Subsection `variants` is used to configure character variants in the font. Prope
     + `r = 'earless-rounded'`, `cv42 = 7`: Earless (rounded top-left), serif-less `r`.
     + `r = 'earless-rounded-serifed'`, `cv42 = 8`: Earless (rounded top-left), serifed `r`.
     + `r = 'compact'`, `cv42 = 9`: Compact, serifless `r`.
-    + `r = 'compact-serifed'`, `cv42 = 10`: Compact, serifless `r`.
-    + `r = 'compact-top-serifed'`, `cv42 = 11`: Compact, serifless `r`.
-    + `r = 'compact-base-serifed'`, `cv42 = 12`: Compact, serifless `r`.
+    + `r = 'compact-serifed'`, `cv42 = 10`: Compact `r` with top and bottom serifs.
+    + `r = 'compact-top-serifed'`, `cv42 = 11`: Compact `r` with top serif.
+    + `r = 'compact-base-serifed'`, `cv42 = 12`: Compact `r` with bottom serif.
+    + `r = 'corner-hooked'`, `cv42 = 13`: `r` with vertical corner hook downwards.
+    + `r = 'corner-hooked-serifed'`, `cv42 = 14`: `r` with vertical corner hook downwards, top and bottom serifs.
+    + `r = 'corner-hooked-top-serifed'`, `cv42 = 15`: `r` with vertical corner hook downwards and top serif.
+    + `r = 'corner-hooked-base-serifed'`, `cv42 = 16`: `r` with vertical corner hook downwards and bottom serif.
   - Styles for `s`:
     + `s = 'serifless'`, `cv43 = 1`: Serifless `s` (default for Sans).
     + `s = 'unilateral-serifed'`, `cv43 = 2`: `s` with single serif at top.
@@ -885,10 +891,18 @@ Subsection `variants` is used to configure character variants in the font. Prope
     + `t = 'standard'`, `cv44 = 1`: Standard `t` shape (default).
     + `t = 'cross'`, `cv44 = 2`: Futura-like `t` shape.
     + `t = 'flat-hook'`, `cv44 = 3`: `t` with flat hook.
-    + `t = 'hookless-asymmetric'`, `cv44 = 4`: `t` without hook and ony half the cross bar.
+    + `t = 'hookless-asymmetric'`, `cv44 = 4`: `t` without hook and with ony half the cross bar.
     + `t = 'flat-hook-short-neck'`, `cv44 = 5`: `t` with flat hook and a slightly shorter neck.
     + `t = 'flat-hook-short-neck2'`, `cv44 = 6`: `t` with flat hook and a more shorter neck.
     + `t = 'diagonal-tailed'`, `cv44 = 7`: `t` with diagonal tail.
+    + `t = 'standard-short-neck'`, `cv44 = 8`: Standard `t` shape with a shorter neck.
+    + `t = 'cross-short-neck'`, `cv44 = 9`: Futura-like `t` shape with a shorter neck.
+    + `t = 'hookless-asymmetric-short-neck'`, `cv44 = 10`: `t` without hook, with ony half the cross bar and a shorter neck.
+    + `t = 'diagonal-tailed-short-neck'`, `cv44 = 11`: `t` with diagonal tail and a shorter neck.
+    + `t = 'standard-short-neck2'`, `cv44 = 12`: Standard `t` shape with a more shorter neck.
+    + `t = 'cross-short-neck2'`, `cv44 = 13`: Futura-like `t` shape with a more shorter neck.
+    + `t = 'hookless-asymmetric-short-neck2'`, `cv44 = 14`: `t` without hook, with ony half the cross bar and a more shorter neck.
+    + `t = 'diagonal-tailed-short-neck2'`, `cv44 = 15`: `t` with diagonal tail and a more shorter neck.
   - Styles for `u`:
     + `u = 'toothed'`, `cv45 = 1`: Normal `u` with bottom-right tooth (default for Upright).
     + `u = 'toothless-corner'`, `cv45 = 2`: Toothless (corner bottom-right) `u`.
@@ -1058,6 +1072,7 @@ Subsection `variants` is used to configure character variants in the font. Prope
   - Styles for `8`:
     + `eight = 'crossing'`, `cv69 = 1`: `8` with crossing middle part (default).
     + `eight = 'two-circles'`, `cv69 = 2`: `8` looks like two circles joined together.
+    + `eight = 'crossing-asymmetric'`, `cv69 = 3`: `8` looks asymmetric crossing middle part.
   - Styles for `9`:
     + `nine = 'closed-contour'`, `cv70 = 1`: `9` with a more closed contour.
     + `nine = 'open-contour'`, `cv70 = 2`: `9` with a more open contour.
