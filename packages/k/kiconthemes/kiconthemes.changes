@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 31 12:35:07 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add 3262669e.patch
+  Fix icons can not be shown on some applications (rh#1943807)
+
+-------------------------------------------------------------------
+Thu Mar 25 07:45:21 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix icon loading in some applications (kde#434451):
+  * 0001-ensure-qrc-QDir-searchPaths-work-for-icons.patch
+
+-------------------------------------------------------------------
 Sun Mar  7 09:26:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.80.0

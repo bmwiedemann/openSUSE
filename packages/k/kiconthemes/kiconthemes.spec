@@ -36,6 +36,10 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:        baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-ensure-qrc-QDir-searchPaths-work-for-icons.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         3262669e.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5Archive) >= %{_kf5_bugfix_version}

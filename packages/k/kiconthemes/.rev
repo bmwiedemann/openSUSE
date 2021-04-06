@@ -776,4 +776,13 @@
     <comment>KDE Frameworks 5.80 (forwarded request 878671 from cgiboudeaux)</comment>
     <requestid>878812</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>07080fa14bb4b0fa7271b3d1863a837f</srcmd5>
+    <version>5.80.0</version>
+    <time>1617722930</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add 3262669e.patch
+  Fix icons can not be shown on some applications (rh#1943807) (forwarded request 882361 from hillwood)</comment>
+    <requestid>882362</requestid>
+  </revision>
 </revisionlist>
