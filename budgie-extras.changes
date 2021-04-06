@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Apr  4 10:38:16 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.2.0 "Magic Windows"
+  * QuickChar installation is now easier on other than Debian
+  * Bug fix for the applications menu so that rollover menus 
+    settings is remembered on logon.
+  * The number of cities that our weather applet can now 
+    search has increased from 22.6k to 185k
+  * Applets now support stateless based distros and 
+    the XDG autostart path can both be defined 
+    at compilation time
+  * Bug fix for the brightness applet to not change 
+    the popup width when percentage changes between 100% and 0%
+  * Translations have been updated from all our 
+    Transifex translators
+  * Take-a-break applet now depends on libnotify-dev
+- Remove executable-location.patch: upstreamed
+
+-------------------------------------------------------------------
 Wed Feb 17 11:13:22 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Initial packaging version 1.1.0
