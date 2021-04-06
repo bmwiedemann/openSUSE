@@ -1,8 +1,8 @@
 #
 # spec file for package dnsdiag
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %bcond_without test
 Name:           dnsdiag
-Version:        1.7.0
+Version:        2.0.0
 Release:        0
 Summary:        DNS request auditing toolset
 License:        BSD-3-Clause
