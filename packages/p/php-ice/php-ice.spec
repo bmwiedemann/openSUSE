@@ -1,7 +1,7 @@
 #
 # spec file for package php-ice
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -32,7 +32,7 @@ ExclusiveArch:  do-not-build
 
 Name:           %{php_name}-%{pkg_name}
 %if "%{php_name}" == "php8"
-Version:        1.8.0alpha3
+Version:        1.8.0
 %else
 Version:        1.7.0
 %endif
@@ -40,9 +40,9 @@ Release:        0
 Summary:        PHP framework delivered as C extension
 License:        BSD-3-Clause
 Group:          Development/Libraries/PHP
-Url:            http://www.iceframework.org/
+URL:            http://www.iceframework.org/
 Source0:        https://pecl.php.net/get/%{pkg_name}-1.7.0.tgz
-Source1:        https://pecl.php.net/get/%{pkg_name}-1.8.0alpha3.tgz
+Source1:        https://pecl.php.net/get/%{pkg_name}-1.8.0.tgz
 Source2:        php-%{pkg_name}-rpmlintrc
 BuildRequires:  %{php_name}-ctype
 BuildRequires:  %{php_name}-devel

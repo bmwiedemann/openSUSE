@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 26 08:12:08 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Ice 1.8.0 (php8 only)
+  * Build, add support for php 8.0
+  * Composer, update zephir to 0.13.0
+  * Travis, no mongodb extension on nightly build
+  * Tests, fix get related
+  * Validation, fix type error in options
+  * Model, fix type errors
+
+-------------------------------------------------------------------
 Wed Feb 17 20:21:37 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Use _multibuild to also build for php8
