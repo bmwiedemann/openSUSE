@@ -1083,4 +1083,12 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
 - Add pattern for SELinux support</comment>
     <requestid>876746</requestid>
   </revision>
+  <revision rev="150" vrev="148">
+    <srcmd5>8ca5792971ccc3cbcdc82ed5bd8ef87a</srcmd5>
+    <version>unknown</version>
+    <time>1617722938</time>
+    <user>RBrownSUSE</user>
+    <comment>Fixes for armv7</comment>
+    <requestid>880129</requestid>
+  </revision>
 </revisionlist>
