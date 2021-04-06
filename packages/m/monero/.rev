@@ -23,4 +23,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>867349</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ab1e43043ab8fef15dab1d62e8aef39e</srcmd5>
+    <version>0.17.1.9</version>
+    <time>1617723064</time>
+    <user>RBrownSUSE</user>
+    <comment>- Cleanup spec file with spec-cleaner
+- Drop static libraries and html documentation 
+- Adjust _constraints</comment>
+    <requestid>883312</requestid>
+  </revision>
 </revisionlist>

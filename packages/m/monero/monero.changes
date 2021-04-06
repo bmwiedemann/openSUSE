@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  6 08:42:10 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup spec file with spec-cleaner
+- Drop static libraries and html documentation 
+- Adjust _constraints
+
+-------------------------------------------------------------------
 Thu Jan 21 01:53:51 UTC 2021 - nopeinomicon@posteo.net
 
 - Update to version 0.17.1.9:
