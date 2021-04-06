@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  6 09:20:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.1.0
+  * Fixed support for jupyter qtconsole and similar Jupyter
+    environments.
+
+-------------------------------------------------------------------
 Tue Mar 30 20:04:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 10.0.1
