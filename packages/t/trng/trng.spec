@@ -16,9 +16,9 @@
 #
 
 
-%global shlib libtrng4-22
+%global shlib libtrng4-24
 Name:           trng
-Version:        4.23.1
+Version:        4.24
 Release:        0
 Summary:        A Random Number Generator Library
 License:        BSD-3-Clause
@@ -84,7 +84,7 @@ export LD_LIBRARY_PATH="%{buildroot}%{_libdir}"
 
 %files devel
 %license COPYING
-%doc AUTHORS NEWS README doc/trng.pdf examples/
+%doc AUTHORS NEWS README.md doc/trng.pdf examples/
 %{_libdir}/libtrng4.so
 %{_includedir}/trng/
 

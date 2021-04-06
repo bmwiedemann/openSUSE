@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr  1 00:13:59 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.24:
+  * The  two  new  random  number  engines,  called xoshiro256plus
+    and lcg64_count_shift, have been implemented.
+  * New unit tests have been intoduced to extend test coverage.
+  * Special-functions unit tests use reference values with
+    improved numerical accuracy now.
+  * The numerical accuracy of various special functions has been
+    improved to reach machine precision also in 128-bit floating
+    point number arithmetic, e. g., the inverse cumulative
+    probability distribution of the normal distribution,
+    incomplete gamma functions and the Beta function.
+  * An uninitialized memory read access has been fixed.
+  * Documentation updates.
+
+-------------------------------------------------------------------
 Sat Feb 13 14:21:34 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.23.1:
