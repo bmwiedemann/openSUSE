@@ -286,8 +286,10 @@ desc=`get_package_description $SPEC_FILE $PACKAGE`
 reqs=`get_package_requires $SPEC_FILE $PACKAGE`
 sed -i -e 's/%bcond_without ceph_test_package/%bcond_with ceph_test_package/' $SPEC_FILE
 transform_spec_file $SPEC_FILE $PACKAGE "$rm_files" "$summ" "$desc" "$reqs" > $PACKAGE.spec
-insert_line_before "${PACKAGE}.spec" "Source99: ceph-rpmlintrc" "_insert_obs_source_lines_here"
-insert_line_before "${PACKAGE}.spec" "Source98: README-ceph-test.txt" "^Source99:"
-insert_line_before "${PACKAGE}.spec" "Source97: README-checkin.txt" "^Source98:"
-insert_line_before "${PACKAGE}.spec" "Source96: checkin.sh" "^Source97:"
+insert_line_before "$PACKAGE.spec" "Source99: README-packaging.txt" "_insert_obs_source_lines_here"
+insert_line_before "$PACKAGE.spec" "Source98: README-checkin.txt" "^Source99:"
+insert_line_before "$PACKAGE.spec" "Source97: README-ceph-test.txt" "^Source98:"
+insert_line_before "$PACKAGE.spec" "Source96: pre_checkin.sh" "^Source97:"
+insert_line_before "$PACKAGE.spec" "Source95: checkin.sh" "^Source96:"
+insert_line_before "$PACKAGE.spec" "Source94: ceph-rpmlintrc" "^Source95:"
 copy_changes_file $PACKAGE
