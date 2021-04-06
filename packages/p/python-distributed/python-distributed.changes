@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Sun Apr  4 16:37:00 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 2021.4.0:
+  * Fix un-merged frames (GH#4666) Matthew Rocklin
+  * Add informative error message to install uvloop (GH#4664) Matthew
+    Rocklin
+  * Remove incorrect comment regarding default LocalCluster creation
+    (GH#4660) cameron16
+  * Treat empty/missing writeable as a no-op (GH#4659) jakirkham
+  * Avoid list mutation in pickle_loads (GH#4653) Matthew Rocklin
+  * Ignore OSError exception when scaling down (GH#4633) Gerald
+  * Add isort to pre-commit hooks, package resorting (GH#4647) Charles
+    Blackmon-Luca
+  * Use powers-of-two when displaying RAM (GH#4649) crusaderky
+  * Support Websocket communication protocols (GH#4396) Marcos Moyano
+  * scheduler.py / worker.py code cleanup (GH#4626) crusaderky
+  * Update out-of-date references to config.yaml (GH#4643) Hristo
+    Georgiev
+  * Suppress OSError on SpecCluster shutdown (GH#4567) Jacob Tomlinson
+  * Replace conda with mamba (GH#4585) crusaderky
+  * Expand documentation on pure functions (GH#4644) James Lamb
+
+-------------------------------------------------------------------
+Fri Apr  2 10:06:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Disable Cythonization for 32-bit gh#dask/dask#7489
+
+-------------------------------------------------------------------
+Tue Mar 30 20:57:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.3.1
+  * Add standalone dashboard page for GPU usage (GH#4556) Jacob 
+    Tomlinson
+  * Handle stream is None case in TCP comm finalizer (GH#4631) 
+    James Bourbeau
+  * Include LIST_PICKLE in NumPy array serialization (GH#4632)  
+    James Bourbeau
+  * Rename annotation plugin in test_highlevelgraph.py (GH#4618) 
+    James Bourbeau
+  * UCX use nbytes instead of len (GH#4621) Mads R. B. Kristensen
+  * Skip NumPy and pandas tests if not importable (GH#4563) Ben 
+    Greiner
+  * Remove utils.shutting_down in favor of sys.is_finalizing 
+    (GH#4624) James Bourbeau
+  * Handle async clients when closing (GH#4623) Matthew Rocklin
+  * Drop log from remove_key_from_stealable (GH#4609) jakirkham
+  * Introduce events log length config option (GH#4615) Fabian 
+    Gebhart
+  * Upstream config serialization and inheritance (GH#4372) Jacob 
+    Tomlinson
+  * Add check to scheduler creation in SpecCluster (GH#4605) Jacob 
+    Tomlinson
+  * Make length of events deque configurable (GH#4604) Fabian 
+    Gebhart
+  * Add explicit fetch state to worker TaskState (GH#4470) Gil 
+    Forsyth
+  * Update develop.rst (GH#4603) Florian Jetter
+  * pickle_loads(): Handle empty memoryview (GH#4595) Mads R. B. 
+    Kristensen
+  * Switch documentation builds for PRs to readthedocs (GH#4599) 
+    James Bourbeau
+  * Track frame sizes along with frames (GH#4593) jakirkham
+  * Add support for a list of keys when using batch_size in client.
+    map (GH#4592) Sultan Orazbayev
+  * If SpecCluster fails to start attempt to gracefully close out 
+    again (GH#4590) Jacob Tomlinson
+  * Multi-lock extension (GH#4503) Mads R. B. Kristensen
+  * Update PipInstall plugin command (GH#4584) James Bourbeau
+  * IPython magics: remove deprecated ioloop workarounds (GH#4530) 
+    Min RK
+  * Add GitHub actions workflow to cancel duplicate builds 
+    (GH#4581) James Bourbeau
+  * Remove outdated macOS build badge from README (GH#4576) James 
+    Bourbeau
+  * Dask master -> main (GH#4569) Julia Signell
+  * Drop support for Python 3.6 (GH#4390) James Bourbeau
+  * Add docstring for dashboard_link property (GH#4572) Doug Davis
+  * Change default branch from master to main (GH#4495) Julia 
+    Signell
+  * Msgpack handles extract serialize (GH#4531) Mads R. B. 
+    Kristensen
+- Drop importorskip-numpy-tests.patch merged upstream
+- Skip python36 build. Upstream dropped support for Python < 3.7
+
+-------------------------------------------------------------------
 Sun Mar  7 16:46:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2021.3.0
