@@ -1,5 +1,5 @@
 #
-# spec file for package python-datashader
+# spec file for package python-datashader-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -30,14 +30,17 @@ BuildArch:      noarch
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-datashader%{psuffix}
-Version:        0.11.1
+Version:        0.12.1
 Release:        0
 Summary:        Data visualization toolchain based on aggregating into a grid
 License:        BSD-3-Clause
-URL:            https://github.com/holoviz/datashader
+URL:            https://datashader.org
 Source0:        https://files.pythonhosted.org/packages/source/d/datashader/datashader-%{version}.tar.gz
 Source100:      python-datashader-rpmlintrc
+# PATCH-FIX-UPSTREAM datashader-pr996-numpy-ragged.patch -- gh#holoviz/datashader#996
+Patch0:         https://github.com/holoviz/datashader/pull/996.patch#/datashader-pr996-numpy-ragged.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module param >= 1.6.0}
 BuildRequires:  %{python_module pyct}
 BuildRequires:  %{python_module setuptools}
@@ -61,7 +64,7 @@ Requires:       python-scipy
 Requires:       python-toolz >= 0.7.4
 Requires:       python-xarray >= 0.9.6
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %if %{with test}
 BuildRequires:  %{python_module DataShape >= 0.5.1}
 BuildRequires:  %{python_module Pillow >= 3.1.1}
@@ -74,6 +77,7 @@ BuildRequires:  %{python_module dask-dataframe}
 BuildRequires:  %{python_module fastparquet >= 0.1.6}
 BuildRequires:  %{python_module holoviews >= 1.10.0}
 BuildRequires:  %{python_module nbsmoke >= 0.4.0}
+BuildRequires:  %{python_module netCDF4}
 BuildRequires:  %{python_module numba >= 0.37.0}
 BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module pandas >= 0.24.1}
@@ -109,7 +113,7 @@ representation to accurately convey the data at every location, with no
 saturation, overplotting, or underplotting issues.
 
 %prep
-%setup -q -n datashader-%{version}
+%autosetup -p1 -n datashader-%{version}
 sed -i -e '/^#!\//, 1d' examples/*.py
 
 %build
