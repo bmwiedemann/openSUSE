@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           spyder
-Version:        4.2.3
+Version:        4.2.5
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -57,7 +57,7 @@ Requires:       python3-python-language-server >= 0.36.2
 Requires:       python3-pyxdg >= 0.26
 Requires:       python3-pyzmq >= 17
 Requires:       python3-qt5 >= 5.5
-Requires:       python3-qtconsole >= 5.0.1
+Requires:       python3-qtconsole >= 5.0.3
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-setuptools >= 39.0.0
 Requires:       python3-spyder-kernels >= 1.10.2
@@ -128,14 +128,14 @@ BuildRequires:  python3-pyls-spyder >= 0.3.0
 BuildRequires:  python3-pytest >= 5.0
 BuildRequires:  python3-pytest-lazy-fixture
 BuildRequires:  python3-pytest-mock
+BuildRequires:  python3-pytest-order
 BuildRequires:  python3-pytest-qt
 BuildRequires:  python3-pytest-timeout
-BuildRequires:  python3-pytest-xvfb
 BuildRequires:  python3-python-language-server >= 0.36.2
 BuildRequires:  python3-pyxdg >= 0.26
 BuildRequires:  python3-pyzmq >= 17
 BuildRequires:  python3-qt5 >= 5.5
-BuildRequires:  python3-qtconsole >= 5.0.1
+BuildRequires:  python3-qtconsole >= 5.0.3
 BuildRequires:  python3-qtwebengine-qt5
 BuildRequires:  python3-scipy
 BuildRequires:  python3-spyder-kernels >= 1.10.1
@@ -144,6 +144,7 @@ BuildRequires:  python3-textdistance >= 4.2.0
 BuildRequires:  python3-three-merge >= 0.1.1
 BuildRequires:  python3-watchdog
 BuildRequires:  xdpyinfo
+BuildRequires:  xvfb-run
 BuildRequires:  (python3-jedi >= 0.17.2 with python3-jedi < 0.18)
 BuildRequires:  (python3-parso >= 0.7.0 with python3-parso < 0.8)
 %endif
@@ -203,8 +204,8 @@ IDE for researchers, engineers and data analysts.
 
 Documentation and help files for Spyder and its plugins.
 
-# expansion of lang_package because the macro does not handle the rename
 %package lang
+# expansion of lang_package because the macro does not handle the rename
 Summary:        Translations for package %{name}
 Group:          System/Localization
 Requires:       %{name} = %{version}
@@ -238,9 +239,13 @@ sed -i "s|JEDI_REQVER = '=|JEDI_REQVER = '>=|" spyder/dependencies.py
 # parso was pinned because of JEDI (PR#11476 and PR#11809)
 sed -i "s|PARSO_REQVER = '=|PARSO_REQVER = '>=|" spyder/dependencies.py
 
-# importing qtpy early causes trap/breakpoint fails with ipythonconsole
-# and mainwindow tests; removing despite warning comment not to do it (!?)
-sed -i "/from qtpy import QtWebEngineWidgets/ d" runtests.py
+# replace pytest-ordering with pytest-order
+# gh#spyder-ide/spyder#14935
+find spyder -name 'test*.py' -print0 | xargs -0 sed -i \
+   -e 's/pytest.mark.first/pytest.mark.order(1)/' \
+   -e 's/pytest.mark.second/pytest.mark.order(2)/' \
+   -e 's/pytest.mark.third/pytest.mark.order(3)/'
+sed -i -e '/first/d' -e '/second/d' -e '/third/d' pytest.ini
 
 # Upstream brings its fixed version pyls and spyder-kernels for its
 # test environment, but we want to test against installed packages.
@@ -297,6 +302,10 @@ donttest+=" or test_dependencies_for_spyder_dialog_in_sync"
 # (* no CI) fails on last assert
 donttest+=" or test_connection_dialog_remembers_input_with_ssh_passphrase"
 donttest+=" or test_connection_dialog_remembers_input_with_password"
+%if 0%{?suse_version} == 1500
+# fails on Leap
+donttest+=" or (test_objectexplorer_collection_types and params0)"
+%endif
 # different PyQT version?
 donttest+=" or (test_objectexplorer_collection_types and params5)"
 # qtbot timeouts or too slow in OBS
@@ -311,10 +320,6 @@ donttest+=" or test_update_decorations_when_scrolling"
 donttest+=" or test_bracket_closing_new_line"
 # combobox not populated inside our test environment
 donttest+=" or test_maininterpreter_page"
-%if 0%{?suse_version} == 1500
-# fails on Leap
-donttest+=" or (test_objectexplorer_collection_types and params0)"
-%endif
 # flaky
 donttest+=" or (test_ipythonconsole and test_pdb_multiline)"
 # These tests are testing against buggy behavior in Qt 5.12. We have newer Qt in Tumbleweed.
@@ -340,11 +345,11 @@ donttest+=" or test_console_working_directory"
 donttest+=" or test_kite_install"
 # no warnings returned here. PyLS/LSP problem? It works in the installed application, though.
 donttest+=" or test_ignore_warnings or  test_move_warnings or  test_get_warnings or  test_update_warnings"
-# new fail: qtbot timeout
+# qtbot timeout
 donttest+=" or test_get_hints"
 # package conflict -- can't install yapf or autopep8 with pyls-black installed
 donttest+=" or (formatting and (yapf or autopep8))"
-# occasional segfault
+# occasional segfaults. fails to get the root tree otherwise (LSP problem?)
 donttest+=" or test_editor_outlineexplorer"
 # too flaky on some platforms
 donttest+=" or test_hide_widget_completion"
@@ -353,8 +358,14 @@ donttest+=" or test_hide_widget_completion"
 donttest+=" or test_mainwindow"
 
 export PYTHONPATH=%{buildroot}%{python3_sitelib}
-python3 runtests.py -k "not (${donttest:4})" --timeout 1800 -ra
-python3 runtests.py --run-slow -k "not (${donttest:4})" --timeout 1800 -ra
+# Can't use pytest-xvfb because the tests leave widgets open and trigger https://github.com/The-Compiler/pytest-xvfb/issues/11
+function testspyder() {
+   xvfb-run --server-args "-screen 0 1920x1080x24" python3 runtests.py -m "not no_xvfb" --timeout 1800 -ra -k "not (${donttest:4})" $@
+   # wait a bit until we can start the next xvfb
+   sleep 5
+}
+testspyder
+testspyder --run-slow
 %endif
 
 %files

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Mar 28 12:09:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Remove removal of early QtWebEngine import before tests. It
+   triggered a fallback to testing with qtwebkit which is being
+   removed from Tumbleweed
+- Switch to xvfb-run instead of pytest-xvfb to avoid
+  gh#The-Compiler/pytest-xvfb#11
+- Replace pytest-ordering marks with pytest-order
+  gh#spyder-ide/spyder#14935
+
+-------------------------------------------------------------------
+Thu Mar 25 22:43:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 4.2.5
+  * Fix restoring window properties at startup.
+  * Fix a segfault when restarting kernels.
+  * Fix a segfault when processing linting results.
+
+-------------------------------------------------------------------
+Fri Mar 19 17:34:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 4.2.4
+  * Fix an important error when restarting kernels.
+  * Add compatibility with the future Spyder
+
+-------------------------------------------------------------------
 Mon Mar 15 11:08:27 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - remove pytest-ordering -- gh#spyder-ide/spyder#14935
