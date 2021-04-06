@@ -3,6 +3,6 @@
   <description>Plugins for additional image formats: TIFF, MNG, TGA, WEBP, WBMP
 
 </description>
-  <devel project="KDE:Qt:6.0" package="qt6-imageformats"/>
+  <devel project="KDE:Qt6" package="qt6-imageformats"/>
   <url>https://www.qt.io</url>
 </package>
