@@ -1,8 +1,19 @@
 -------------------------------------------------------------------
-Thu Mar 25 21:05:17 UTC 2021 - jason.record@suse.com
+Wed Mar 31 22:44:30 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes to version 1.0.1
+  + Mar 2021 New Security Announcement Patterns (19) for SUSE-SU-2021:0955-1 SUSE-SU-2021:0778-1 SUSE-SU-2021:0948-1 SUSE-SU-2021:0974-1 SUSE-SU-2021:0777-1 SUSE-SU-2021:0947-1 SUSE-SU-2021:0955-1 SUSE-SU-2021:0754-1 SUSE-SU-2021:0930-1 SUSE-SU-2021:0945-1 SUSE-SU-2021:0741-1 SUSE-SU-2021:0683-1 SUSE-SU-2021:0935-1 SUSE-SU-2021:0778-1 SUSE-SU-2021:0770-1 SUSE-SU-2021:0989-1 SUSE-SU-2021:0755-1 SUSE-SU-2021:0740-1 SUSE-SU-2021:0685-1
+- New regular patterns (4) for version 1.0.1
+  + sle15all/gpgpubkey-000019712.py: zypper or rpm warns about unsupported V3 key after upgrade (bsc#1158913)
+  + sle15all/rsyslog-000019710.py: no syslog service after upgrade (bsc#1158912)
+  + sle15all/tmpfiles-000019707.py: systemd-tmpfiles-setup.service failed after upgrade (bsc#1158911)
+  + sle15all/zerologon-000019713.py: Zerologon aka CVE-2020-1472 (bsc#1176579)
+
+-------------------------------------------------------------------
+Fri Mar 26 13:31:07 UTC 2021 - jason.record@suse.com
 
 - New regular patterns (5) for version 1.0.1
-  + sle15sp2/kernel-000019739.py: BIOS update failure when an update is performed using the Linux .bin files
+  + sle15sp2/kernel-000019739.py: BIOS update failure when an update is performed using the Linux .bin files (bsc#1175952)
   + sle15sp2/bleedingtooth_152-000019735.py: BleedingTooth aka CVE-2020-12351, CVE-2020-12352, and CVE-2020-24490
   + sle15sp1/bleedingtooth_151-000019735.py: BleedingTooth aka CVE-2020-12351, CVE-2020-12352, and CVE-2020-24490
   + sle15sp0/bleedingtooth_150-000019735.py: BleedingTooth aka CVE-2020-12351, CVE-2020-12352, and CVE-2020-24490
@@ -12,11 +23,11 @@ Thu Mar 25 21:05:17 UTC 2021 - jason.record@suse.com
 Wed Mar 24 22:39:50 UTC 2021 - jason.record@suse.com
 
 - New regular patterns (6) for version 1.0.1
-  + sle15sp2/openwsman-000019729.py: owsmangencert.sh generates error
-  + sle15sp2/lscpu-000019784-15.py: lscpu segfaults on IBM Power8 - Assertion failed
-  + sle15sp1/x710-000019639.py: Intel X710 based NIC is not detected
+  + sle15sp2/openwsman-000019729.py: owsmangencert.sh generates error (bsc#1174541)
+  + sle15sp2/lscpu-000019784-15.py: lscpu segfaults on IBM Power8 - Assertion failed (bsc#1175623)
+  + sle15sp1/x710-000019639.py: Intel X710 based NIC is not detected (bsc#1151067)
   + sle15sp1/plymouth-000019595.py: plymouth hang - login to console not possible
-  + sle15sp1/lscpu-000019784-15.py: lscpu segfaults on IBM Power8 - Assertion failed
+  + sle15sp1/lscpu-000019784-15.py: lscpu segfaults on IBM Power8 - Assertion failed (bsc#1175623)
   + sle15sp0/plymouth-000019595.py: plymouth hang - login to console not possible
 
 -------------------------------------------------------------------
