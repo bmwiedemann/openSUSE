@@ -17,7 +17,7 @@
 
 
 Name:           libcap
-Version:        2.48
+Version:        2.49
 Release:        0
 Summary:        Library for Capabilities (linux-privs) Support
 License:        BSD-3-Clause AND GPL-2.0-only
@@ -60,8 +60,6 @@ anything. Capabilities (Linux-Privs) provide a more fine-grained access
 control. Without kernel patches, you can use this library to drop
 capabilities within setuid binaries. If you use patches, this can be
 done automatically by the kernel.
-
-
 
 %package devel
 Summary:        Development files for libcap

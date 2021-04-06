@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 22 15:38:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.49:
+  * Implement cap_func_launcher() and cap.FuncLauncher().
+  * More robust "psx" redirection for nocgo compilation - the documentation for
+    the cgo implementation is now included in the nocgo one because the go.dev
+    automated documentation builds the docs from the nocgo version.
+  * Lots of documentation cleanups and added a few man pages: for IAB and
+    Launching.
+  * Some general no-op License changes that might cause folk to notice but only
+    for formatting reasons. These were initially inspired by some lawyerly
+    interactions, but I ended up rolling back half of them because they
+    confused automated software infrastructure.
+
+-------------------------------------------------------------------
 Tue Feb  9 23:16:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.48:

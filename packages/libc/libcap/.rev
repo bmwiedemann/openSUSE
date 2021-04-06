@@ -338,4 +338,22 @@
   * Last use of GO major version 0</comment>
     <requestid>870717</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>faf3a5c82b56cb500e95b152dcb6579b</srcmd5>
+    <version>2.49</version>
+    <time>1617722920</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 2.49:
+  * Implement cap_func_launcher() and cap.FuncLauncher().
+  * More robust &quot;psx&quot; redirection for nocgo compilation - the documentation for
+    the cgo implementation is now included in the nocgo one because the go.dev
+    automated documentation builds the docs from the nocgo version.
+  * Lots of documentation cleanups and added a few man pages: for IAB and
+    Launching.
+  * Some general no-op License changes that might cause folk to notice but only
+    for formatting reasons. These were initially inspired by some lawyerly
+    interactions, but I ended up rolling back half of them because they
+    confused automated software infrastructure.</comment>
+    <requestid>880541</requestid>
+  </revision>
 </revisionlist>
