@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Mar 26 09:34:52 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.1+git.1616323866:
+  * Doxygen: remove deprecated option
+  * Release version 0.5.1 (#151)
+  * Tests: fix truncation warnings in convert_instlatx64
+  * Fix warning with a comment
+  * DB: add Rocket Lake
+  * DB: add Milan
+  * Tests: fix --create argument in convert_instlatx64 tool
+  * DB: add Cezanne
+  * DB: add Xeon E3 1275
+  * CI: use microsoft/setup-msbuild@v1.0.2
+  * CI: fix deprecated commands
+  * Tests: add Core i5 8265U (Whiskey Lake-U)
+  * DB: add Whiskey Lake-U
+
+-------------------------------------------------------------------
 Tue Nov 24 09:45:35 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.5.0+git.20201114:

@@ -1,7 +1,7 @@
 #
 # spec file for package libcpuid
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver  15
 Name:           libcpuid
-Version:        0.5.0+git.20201114
+Version:        0.5.1+git.1616323866
 Release:        0
 Summary:        Library providing x86 CPU identification
 License:        BSD-2-Clause

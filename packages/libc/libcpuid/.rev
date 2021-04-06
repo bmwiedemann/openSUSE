@@ -113,4 +113,12 @@
   * DB: add Kaby Lake Refresh https://en.wikichip.org/wiki/intel/cores/kaby_lake_r Core i5 8250U was detected as Coffee Lake wrongly. Reported in X0rg/CPU-X#161</comment>
     <requestid>850394</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b25d8e8c05ac8714c5b1d331d4b054bb</srcmd5>
+    <version>0.5.1+git.1616323866</version>
+    <time>1617723004</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>882705</requestid>
+  </revision>
 </revisionlist>
