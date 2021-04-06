@@ -45,14 +45,14 @@ A budgie-desktop applet to show hours and when click show a calendar in a popove
 %install
 export LANG=en_US.UTF-8
 %meson_install
-
+mv %{buildroot}%{_datadir}/appdata %{buildroot}%{_datadir}/metainfo
 %find_lang %{appid}
 
 %files
 %license LICENSE
 %doc README.md
 %{_libdir}/budgie-desktop/plugins/%{appid}/
-%{_datadir}/appdata/%{appid}.appdata.xml
+%{_datadir}/metainfo/%{appid}.appdata.xml
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 
 %files lang -f %{appid}.lang
