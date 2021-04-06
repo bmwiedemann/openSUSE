@@ -31,6 +31,8 @@ Patch1:           0001-add-opensuse-customizations.patch
 Patch2:           0001-fix-kde-startup-warning.patch
 # PATCH-FIX-UPSTREAM
 Patch3:           0001-fix-driver-crash.patch
+# PATCH-FIX-UPSTREAM
+Patch4:           0001-fix-youtube-search.patch
 BuildRequires:    cmake >= 3.16
 BuildRequires:    gcc-c++
 BuildRequires:    ninja

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  1 21:56:04 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Added 0001-fix-youtube-search.patch to fix YouTube Search not working
+
+-------------------------------------------------------------------
 Tue Mar 29 22:34:12 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
 
 - Added 0001-fix-driver-crash.patch to fix possible AMD/mesa driver crash
