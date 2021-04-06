@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 01 01:11:04 UTC 2021 - wbrown@suse.de
+
+- Update to version 1.1.0~alpha4~git0.0ac5da8:
+  * Performance Improvements
+  * TOTP CLI enrollment
+  * Jemalloc in main server instead of system allocator
+  * Command line completion
+  * TLS file handling improvements
+  * Webauthn authentication and enrollment on CLI
+  * Add db vacuum task
+  * Unix tasks daemon that automatically creates home directories
+  * Support for sk-ecdsa public ssh keys
+  * Badlist checked at login to determine account compromise
+  * Minor Fixes for attribute display
+
+-------------------------------------------------------------------
 Mon Dec 28 00:15:25 UTC 2020 - wbrown@suse.de
 
 - Update to version v1.1.0alpha.3~git0.b34c893:
