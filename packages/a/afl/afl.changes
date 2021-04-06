@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr  3 23:31:18 UTC 2021 - Niklas Haas <obs@haasn.xyz>
+
+- install `afl-clang-lto`, recommended by upstream as the best variant
+  - add dependency on `lld`
+  - bump llvm-devel up to >= 11.0.0
+- fix /usr/bin/env path in afl.cmin scripts
+- prevent stripping of runtime objects (fix bug 1184324)
+
+-------------------------------------------------------------------
 Mon Mar 29 12:29:54 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix packaging on aarch64 and %{arm}

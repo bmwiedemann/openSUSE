@@ -27,8 +27,10 @@ Source1:        afl-rpmlintrc
 Patch1:         afl-3.0c-fix-paths.patch
 BuildRequires:  clang
 BuildRequires:  gcc-c++
-BuildRequires:  llvm-devel
+BuildRequires:  lld
+BuildRequires:  llvm-devel >= 11.0.0
 BuildRequires:  python3-devel
+Requires:       lld
 
 %description
 American fuzzy lop is a security-oriented fuzzer that employs a novel type
@@ -48,14 +50,15 @@ use cases - say, common image parsing or file compression libraries.
 %prep
 %setup -q -n AFLplusplus-%version
 %patch1 -p1
-sed -i 's|#!/usr/bin/env bash|#!/bin/bash|g' afl-cmin
+sed -i 's|#!/usr/bin/env sh|#!/bin/sh|g' afl-cmin
+sed -i 's|#!/usr/bin/env bash|#!/bin/bash|g' afl-cmin.bash
 
 %build
 export CFLAGS="$CFLAGS %{optflags} -fno-lto"
 %ifnarch %{ix86} x86_64
 export AFL_NO_X86=1
 %endif
-make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_docdir} 
+make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_docdir}
 # make radamsa
 
 %install
@@ -63,6 +66,7 @@ make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_doc
 export AFL_NO_X86=1
 %endif
 make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_docdir} MAN_PATH=%{_mandir}/man8 DESTDIR=%{buildroot} install
+chmod -x %{buildroot}/%{_libexecdir}/%{name}/*.o
 
 %files
 %license docs/COPYING LICENSE
@@ -74,13 +78,16 @@ make %{?_smp_mflags} PREFIX=%{_prefix} LIBEXEC_DIR=%{_libexecdir} DOC_DIR=%{_doc
 %ifarch x86_64 aarch64 ppc64 ppc64le s390x
 %{_libexecdir}/%{name}/afl-compiler-rt-64.o
 %{_libexecdir}/%{name}/afl-llvm-rt-64.o
+%{_libexecdir}/%{name}/afl-llvm-rt-lto-64.o
 %endif
 %ifarch %ix86 %{arm}
 %{_libexecdir}/%{name}/afl-compiler-rt-32.o
 %{_libexecdir}/%{name}/afl-llvm-rt-32.o
+%{_libexecdir}/%{name}/afl-llvm-rt-lto-32.o
 %endif
 %{_libexecdir}/%{name}/afl-compiler-rt.o
 %{_libexecdir}/%{name}/afl-llvm-rt.o
+%{_libexecdir}/%{name}/afl-llvm-rt-lto.o
 %{_libexecdir}/%{name}/dynamic_list.txt
 %{_libexecdir}/%{name}/*.so
 %dir %{_datadir}/%{name}

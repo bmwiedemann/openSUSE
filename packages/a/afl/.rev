@@ -901,4 +901,16 @@
     <comment>- Fix packaging on aarch64 and %{arm} (forwarded request 881925 from Guillaume_G)</comment>
     <requestid>881926</requestid>
   </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>77811a2fda1763331dccd4d94c11b47a</srcmd5>
+    <version>3.12c</version>
+    <time>1617723026</time>
+    <user>RBrownSUSE</user>
+    <comment>- install `afl-clang-lto`, recommended by upstream as the best variant
+  - add dependency on `lld`
+  - bump llvm-devel up to &gt;= 11.0.0
+- fix /usr/bin/env path in afl.cmin scripts
+- prevent stripping of runtime objects (fix bug 1184324) (forwarded request 882850 from haasn)</comment>
+    <requestid>882886</requestid>
+  </revision>
 </revisionlist>
