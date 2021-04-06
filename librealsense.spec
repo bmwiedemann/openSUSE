@@ -18,7 +18,7 @@
 
 %define libver 2
 Name:           librealsense
-Version:        2.42.0
+Version:        2.43.0
 Release:        0
 Summary:        Library for Intel RealSense depth cameras
 License:        Apache-2.0
