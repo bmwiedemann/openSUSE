@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 31 18:57:29 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.22.2
+    * CyberJack RFID basis reader is working again on Windows.
+    * Automatic start of the setup wizard when running AusweisApp2
+      for the first time on desktop systems is working again now.
+    * Fixed a bug in the self-idenfication dialog.
+    * Fixed some crashes.
+    * The Android SDK is now also made available on Maven Central
+      as JCenter has been discontinued.
+    * Support for authorization certificates with PIN management.
+    * Update of OpenSSL to version 1.1.1k.
+
+-------------------------------------------------------------------
 Tue Mar 16 12:18:46 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
