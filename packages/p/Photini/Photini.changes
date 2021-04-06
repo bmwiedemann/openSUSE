@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr  3 11:20:38 UTC 2021 - aloisio@gmx.com
+
+- Update to version 2021.4.0
+  * Remove Python 2 and PyQt4 compatibility.
+  * Cache map search and elevation results for improved speed.
+  * Other minor improvements and bug fixes.
+
+-------------------------------------------------------------------
 Thu Jan 21 16:57:37 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2021.1.0

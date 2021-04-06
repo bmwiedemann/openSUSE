@@ -163,4 +163,12 @@ Also see sr#741039 for missing runtime dependency.</comment>
     <comment></comment>
     <requestid>865483</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>418d8e90e6fdb7e0f9987131b10f8e29</srcmd5>
+    <version>2021.4.0</version>
+    <time>1617723015</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882796</requestid>
+  </revision>
 </revisionlist>
