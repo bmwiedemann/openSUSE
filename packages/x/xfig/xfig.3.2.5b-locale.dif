@@ -16,7 +16,7 @@ Index: src/main.c
  #endif
  #ifdef USE_TAB		/* input extensions for an input tablet */
  #include <X11/extensions/XInput.h>
-@@ -831,11 +833,6 @@ main(int argc, char **argv)
+@@ -818,11 +820,6 @@ main(int argc, char **argv)
  	}
      }
  
@@ -28,7 +28,7 @@ Index: src/main.c
      /*
       * save the command line arguments
       */
-@@ -937,6 +934,10 @@ main(int argc, char **argv)
+@@ -924,6 +921,10 @@ main(int argc, char **argv)
  		setup_icons_big();
  
  #ifdef I18N
@@ -39,7 +39,7 @@ Index: src/main.c
      /************************************************************/
      /* if the international option has been set, set the locale */
      /************************************************************/
-@@ -1657,6 +1658,11 @@ setup_visual(int *argc_p, char **argv, A
+@@ -1644,6 +1645,11 @@ setup_visual(int *argc_p, char **argv, A
  	 */
  	tool = XtAppInitialize (&tool_app, "Fig", options, XtNumber (options), argc_p, argv,
  			       (String *) NULL, args, 0);

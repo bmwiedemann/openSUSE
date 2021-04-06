@@ -489,4 +489,18 @@ SPDX compliant license short name. MIT chosen as majority of files are under thi
 - remove X11R6 ifdefs from spec file, this is obsolete (forwarded request 870850 from dirkmueller)</comment>
     <requestid>871142</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>fe1c262b0bbb22e94b3e2eee5e408805</srcmd5>
+    <version>3.2.8a</version>
+    <time>1617722988</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to xfig 3.2.8 Patchlevel 8a (Mar 2021)
+  o Distribute a current pdf documentation.
+    Thanks to Roland Rosenfeld for the script and pointing out the issue.
+- Correct hunk offsets of the patches
+  o xfig.3.2.3d-international-std-fonts.dif
+  o xfig.3.2.5b-locale.dif
+  o xfig.spec</comment>
+    <requestid>882561</requestid>
+  </revision>
 </revisionlist>

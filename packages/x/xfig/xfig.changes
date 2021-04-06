@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  1 11:47:00 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to xfig 3.2.8 Patchlevel 8a (Mar 2021)
+  o Distribute a current pdf documentation.
+    Thanks to Roland Rosenfeld for the script and pointing out the issue.
+- Correct hunk offsets of the patches
+  o xfig.3.2.3d-international-std-fonts.dif
+  o xfig.3.2.5b-locale.dif
+  o xfig.spec
+
+-------------------------------------------------------------------
 Wed Feb 10 12:37:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.8:

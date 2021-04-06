@@ -17,7 +17,7 @@
 
 
 Name:           xfig
-Version:        3.2.8
+Version:        3.2.8a
 Release:        0
 Summary:        Facility for Interactive Generation of Figures under the X Window System
 License:        MIT
@@ -25,9 +25,9 @@ Group:          Productivity/Graphics/Vector Editors
 URL:            https://sourceforge.net/projects/mcj/
 #
 # Remove forbidden files: aircraft.fig
-# <uncompess> xfig-3.2.8.tar
-# tar -f xfig-3.2.8.tar --delete xfig-3.2.8/Libraries/Examples/aircraft.fig
-# <compress> xfig-3.2.8.tar
+# <uncompess> xfig-3.2.8a.tar
+# tar -f xfig-3.2.8a.tar --delete xfig-3.2.8a/Libraries/Examples/aircraft.fig
+# <compress> xfig-3.2.8a.tar
 #
 #Source:        http://sourceforge.net/projects/mcj/files/xfig-%{version}.tar.xz/download#/xfig-%{version}.tar.xz
 Source:         xfig-%{version}.tar.xz
@@ -104,10 +104,12 @@ cat > xaw3d.pc <<-'EOF'
 	exec_prefix=%{_prefix}
 	libdir=%{_prefix}/lib
 	includedir=%{_includedir}
-	Name: Xaw3d
+Name:           Xaw3d
 	Description: X 3D Athena Widgets Library
-	Version: 1.5E
-	Requires: xproto xmu xt
+Version:        1.5E
+Requires:       xmu
+Requires:       xproto
+Requires:       xt
 	Requires.private: x11 xext
 	Cflags: -I${includedir}  -DXAW_INTERNATIONALIZATION -DXAW_MULTIPLANE_PIXMAPS -DXAW_GRAY_BLKWHT_STIPPLES -DXAW_ARROW_SCROLLBARS
 	Libs: -L${libdir} -lXaw3d
