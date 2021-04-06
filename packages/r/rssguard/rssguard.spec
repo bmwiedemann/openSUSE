@@ -16,12 +16,12 @@
 #
 
 
-%define libver  3_9_0
+%define libver  3_9_1
 Name:           rssguard
-Version:        3.9.0
+Version:        3.9.1
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
-License:        GPL-3.0-only AND AGPL-3.0-or-later
+License:        AGPL-3.0-or-later AND GPL-3.0-only
 URL:            https://github.com/martinrotter/rssguard
 Source0:        https://github.com/martinrotter/rssguard/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr  6 09:04:07 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.9.1
+  Fixed/changed:
+  * Properly accept all HTTP redirections, this was regression
+    and is now fixed.
+  * Fix repeated overwriting of messages due to bad
+    UTC/localtime article timezone handling.
+  * Alternating list background colors are now better suited for
+    foreground text visibility.
+  * Re-gaining focus after external browser was opened is now
+    optional.
+  * Small fixes for  "Message filters" dialog.
+  * Fixed windows hiding problem when tray icon is enabled.
+  * Better favicon downloading strategy which works much much
+    better than previous one.
+
+-------------------------------------------------------------------
 Wed Feb 24 12:37:35 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.9.0

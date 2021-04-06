@@ -269,4 +269,26 @@
     <comment></comment>
     <requestid>874912</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>491b3445c1918438983bec6a0650f41e</srcmd5>
+    <version>3.9.1</version>
+    <time>1617723074</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 3.9.1
+  Fixed/changed:
+  * Properly accept all HTTP redirections, this was regression
+    and is now fixed.
+  * Fix repeated overwriting of messages due to bad
+    UTC/localtime article timezone handling.
+  * Alternating list background colors are now better suited for
+    foreground text visibility.
+  * Re-gaining focus after external browser was opened is now
+    optional.
+  * Small fixes for  &quot;Message filters&quot; dialog.
+  * Fixed windows hiding problem when tray icon is enabled.
+  * Better favicon downloading strategy which works much much
+    better than previous one.
+</comment>
+    <requestid>883278</requestid>
+  </revision>
 </revisionlist>
