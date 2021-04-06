@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr  1 10:19:21 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Make 'parsec' user part of 'tss' group to access /dev/tpm* devices
+
+-------------------------------------------------------------------
+Wed Mar 31 16:02:31 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.7.2:
+  * Changelog: https://github.com/parallaxsecond/parsec/compare/0.6.0...0.7.2
+
+-------------------------------------------------------------------
+Tue Mar 30 13:20:44 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Recommends 'opensc' as it is used to initialize HSM keys (PKCS#11 backend)
+- Add PKCS#11 template (disabled) in config.toml
+- Disable Tpm backend by default in config.toml
+
+-------------------------------------------------------------------
 Fri Nov 13 14:19:05 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable 'all-providers' which adds 'pkcs11-provider' compared to 

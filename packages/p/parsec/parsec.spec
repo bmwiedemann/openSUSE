@@ -1,7 +1,7 @@
 #
 # spec file for package parsec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 # Features available: mbed-crypto-provider, pkcs11-provider, tpm-provider, all-providers
 %define features "all-providers"
 %{?systemd_ordering}
 Name:           parsec
-Version:        0.6.0
+Version:        0.7.2
 Release:        0
 Summary:        Platform AbstRaction for SECurity
 License:        Apache-2.0
@@ -36,28 +37,32 @@ BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  llvm-devel
-BuildRequires:  protobuf-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(tss2-esys) >= 2.3.3
+BuildRequires:  protobuf-devel
 BuildRequires:  python3
 BuildRequires:  rust-packaging
 BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(tss2-esys) >= 2.3.3
+# opensc is used to initialize HSM keys (PKCS#11 backend)
+Recommends:     opensc
 %sysusers_requires
+# /dev/tpm* are owned by tss user
+Requires(pre):  system-user-tss
 ExcludeArch:    armv6l armv6hl
 
 %description
 PARSEC is the Platform AbstRaction for SECurity, an open-source initiative to provide
 a common API to hardware security and cryptographic services in a platform-agnostic way.
-This abstraction layer keeps workloads decoupled from physical platform details, 
+This abstraction layer keeps workloads decoupled from physical platform details,
 enabling cloud-native delivery flows within the data center and at the edge.
-
 
 %prep
 %setup -qa1
-mkdir .cargo
+rm -rf .cargo && mkdir .cargo
 cp %{SOURCE2} .cargo/config
-sed -i -e 's#default = \[\]##' Cargo.toml
-echo 'default = ["all-providers"]' >> Cargo.toml
+# Enable all providers
+sed -i -e 's#default = \["unix-peer-credentials-authenticator"\]##' Cargo.toml
+echo 'default = ["unix-peer-credentials-authenticator", "all-providers"]' >> Cargo.toml
 
 %build
 export PROTOC=%{_bindir}/protoc
