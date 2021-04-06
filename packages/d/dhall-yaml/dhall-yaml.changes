@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 29 11:11:01 UTC 2021 - psimons@suse.com
+
+- Update dhall-yaml to version 1.2.6.
+  1.2.6
+
+  * [Allow bytestring-0.11](https://github.com/dhall-lang/dhall-haskell/pull/2144)
+
+-------------------------------------------------------------------
 Sat Feb 13 11:44:35 UTC 2021 - psimons@suse.com
 
 - Update dhall-yaml to version 1.2.5 revision 1.
