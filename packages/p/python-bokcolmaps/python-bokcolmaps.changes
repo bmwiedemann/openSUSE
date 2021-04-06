@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  2 10:50:10 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build: NumPy not available (NEP 29)
+
+-------------------------------------------------------------------
 Tue Nov 10 14:41:50 UTC 2020 - Marketa Machova <mmachova@suse.com>
 
 - Update to 2.0.1
