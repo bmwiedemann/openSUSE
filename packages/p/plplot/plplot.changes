@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr  4 13:56:35 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Reenable qhull support, link against reentrant libqhull_r:
+  0001-Use-reentrant-libqhull_r-instead-of-deprecated-libqh.patch
+- Some minor specfile cleanups
+
+-------------------------------------------------------------------
 Sat Feb 13 12:24:34 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add plplot-drop-FindLua-cmake-module.patch to drop in-house
