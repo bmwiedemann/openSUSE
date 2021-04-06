@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.0.2
+%define real_version 6.0.3
 %define short_version 6.0
 %define tar_name qtquicktimeline-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quicktimeline%{?pkg_suffix}
-Version:        6.0.2
+Version:        6.0.3
 Release:        0
 Summary:        Qt6 QuickTimeline plugin
 License:        GPL-3.0-or-later
