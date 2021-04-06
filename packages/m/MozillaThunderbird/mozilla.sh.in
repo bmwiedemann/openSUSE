@@ -70,15 +70,6 @@ else
   export MOZ_APP_LAUNCHER="/usr/bin/$MOZ_APPNAME"
 fi
 
-mozilla_lib=`file $MOZ_PROGRAM`
-LIB=lib
-echo $mozilla_lib | grep -q -E 'ELF.64-bit.*(x86-64|S/390|PowerPC)' && LIB=lib64
-
-BROWSER_PLUGIN_DIR=/usr/$LIB/browser-plugins
-if [ ! -d $BROWSER_PLUGIN_DIR ]; then
-  BROWSER_PLUGIN_DIR=/opt/netscape/plugins
-fi
-
 MOZILLA_FIVE_HOME="$MOZ_DIST_LIB"
 export MOZILLA_FIVE_HOME
 LD_LIBRARY_PATH=$MOZ_DIST_LIB${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
@@ -90,26 +81,12 @@ export LIBXCB_ALLOW_SLOPPY_LOCK=1
 # disable Gnome crash dialog (doesn't make sense anyway)
 export GNOME_DISABLE_CRASH_DIALOG=1
 
-# Wayland
-# Only supported on newer systems
-WAYLAND_SUPPORTED=%WAYLAND_SUPPORTED
-
 # $XDG_SESSION_TYPE should contain either x11 or wayland
-if [ $WAYLAND_SUPPORTED -eq 1 ] && [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
   export MOZ_ENABLE_WAYLAND=1
 fi
 
 ##
-if [ -z "$MOZ_PLUGIN_PATH" ]; then
-  export MOZ_PLUGIN_PATH=$BROWSER_PLUGIN_DIR
-else
-  # make sure that BROWSER_PLUGIN_DIR is in MOZ_PLUGIN_PATH
-  echo "$MOZ_PLUGIN_PATH" | grep "$BROWSER_PLUGIN_DIR" 2>&1 >/dev/null
-  _retval=$?
-  if [ ${_retval} -ne 0 ]; then
-    export MOZ_PLUGIN_PATH=$MOZ_PLUGIN_PATH:$BROWSER_PLUGIN_DIR
-  fi
-fi
 
 moz_debug=0
 script_args=""

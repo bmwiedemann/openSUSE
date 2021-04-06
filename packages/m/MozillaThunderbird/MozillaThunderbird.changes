@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Mar 20 09:20:00 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.9.0
+  * bugfixes:
+    https://www.thunderbird.net/en-US/thunderbird/78.9.0/releasenotes
+  MFSA 2021-12 (boo#1183942)
+  * CVE-2021-23981 (bmo#1692832)
+    Texture upload into an unbound backing buffer resulted in an
+    out-of-bound read
+  * MOZ-2021-0002 (bmo#1691547)
+    Angle graphics library out of date
+  * CVE-2021-23982 (bmo#1677046)
+    Internal network hosts could have been probed by a malicious
+    webpage
+  * CVE-2021-23984 (bmo#1693664)
+    Malicious extensions could have spoofed popup information
+  * CVE-2021-23987 (bmo#1513519, bmo#1683439, bmo#1690169, bmo#1690718)
+    Memory safety bugs fixed in Firefox 87 and Firefox ESR 78.9
+- cleaned up and fixed mozilla.sh.in for wayland (boo#1177542)
+
+-------------------------------------------------------------------
 Sun Mar  7 09:27:49 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 78.8.1

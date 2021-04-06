@@ -3544,4 +3544,28 @@ I cannot test locally unfortunately.
 - updated create-tar.sh (bsc#1182357)</comment>
     <requestid>878160</requestid>
   </revision>
+  <revision rev="251" vrev="1">
+    <srcmd5>350e2e1347b816d48ce7256174447f19</srcmd5>
+    <version>78.9.0</version>
+    <time>1617722946</time>
+    <user>RBrownSUSE</user>
+    <comment>- Mozilla Thunderbird 78.9.0
+  * bugfixes:
+    https://www.thunderbird.net/en-US/thunderbird/78.9.0/releasenotes
+  MFSA 2021-12 (boo#1183942)
+  * CVE-2021-23981 (bmo#1692832)
+    Texture upload into an unbound backing buffer resulted in an
+    out-of-bound read
+  * MOZ-2021-0002 (bmo#1691547)
+    Angle graphics library out of date
+  * CVE-2021-23982 (bmo#1677046)
+    Internal network hosts could have been probed by a malicious
+    webpage
+  * CVE-2021-23984 (bmo#1693664)
+    Malicious extensions could have spoofed popup information
+  * CVE-2021-23987 (bmo#1513519, bmo#1683439, bmo#1690169, bmo#1690718)
+    Memory safety bugs fixed in Firefox 87 and Firefox ESR 78.9
+- cleaned up and fixed mozilla.sh.in for wayland (boo#1177542)</comment>
+    <requestid>881213</requestid>
+  </revision>
 </revisionlist>
