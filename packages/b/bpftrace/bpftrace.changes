@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Apr  3 04:19:14 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to bpftrace 0.12.0.
+  + add path, macaddr, strftime builtin
+  + allow wildcards for tracepoint categories
+  + add wildcard support for kfunc probe types
+  + support scientific notation for integer literals
+  + list retprobes
+  + resolve unknown typedefs using BTF and give a hint when a type cannot be found
+  + support multi-matched globbed targets for uprobe and ustd probes
+  + positional parameters: support numbers as strings and params as string literals
+  + support for tracepoint __data_loc fields
+  + set addrspace info for various builtins
+  + support watchpoint for kernel space address
+  + support for pointer to pointer
+  + support for uprobe refcounts
+  + support for usdt arguments utilising the index register and scale
+  + printing structures
+  - disable str($# + 1)
+  * array improvements (support assignment to variables and usage as a map key)
+- Remove upstreamed patches:
+  - bpftrace-bsc1180670-sync-man-page-and-help.patch
+
+-------------------------------------------------------------------
 Fri Jan  8 02:54:33 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add bpftrace-bsc1180670-sync-man-page-and-help.patch to sync
