@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Mar 30 17:35:22 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.3.9+git1.afb63bc04:
+  * BUILD: backend: fix build breakage in idle conn locking fix
+  * [RELEASE] Released version 2.3.9
+  * BUG/MEDIUM: time: make sure to always initialize the global tick
+  * BUG/MINOR: stats: Apply proper styles in HTML status page.
+  * BUG/MINOR: payload: Wait for more data if buffer is empty in payload/payload_lv
+  * MEDIUM: backend: use a trylock to grab a connection on high FD counts as well
+  * BUG/MEDIUM: mux-h1: make h1_shutw_conn() idempotent
+
+-------------------------------------------------------------------
+Thu Mar 25 15:51:22 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.3.8+git0.e572195c7:
+  * [RELEASE] Released version 2.3.8
+  * BUG/MINOR: http_fetch: make hdr_ip() reject trailing characters
+  * MINOR: tools: make url2ipv4 return the exact number of bytes parsed
+  * BUG/MEDIUM: thread: Fix a deadlock if an isolated thread is marked as harmless
+  * BUG/MEDIUM: fd: Take the fd_mig_lock when closing if no DWCAS is available.
+  * CLEANUP: fd: remove unused fd_set_running_excl()
+  * BUG/MEDIUM: fd: do not wait on FD removal in fd_delete()
+  * MINOR: fd: remove the unneeded running bit from fd_insert()
+  * MINOR: fd: make fd_clr_running() return the remaining running mask
+  * BUG/MEDIUM: lua: Always init the lua stack before referencing the context
+  * BUG/MEDIUM: debug/lua: Use internal hlua function to dump the lua traceback
+  * MINOR: lua: Slightly improve function dumping the lua traceback
+  * BUILD: ssl: guard ecdh functions with SSL_CTX_set_tmp_ecdh macro
+  * BUG/MINOR: ssl: Prevent disk access when using "add ssl crt-list"
+  * BUG/MEDIUM: debug/lua: Don't dump the lua stack if not dumpable
+  * MEDIUM: lua: Use a per-thread counter to track some non-reentrant parts of lua
+  * MINOR/BUG: mworker/cli: do not use the unix_bind prefix for the master CLI socket
+  * BUG/MINOR: protocol: add missing support of dgram unix socket.
+  * BUG/MEDIUM: freq_ctr/threads: use the global_now_ms variable
+  * MINOR: time: also provide a global, monotonic global_now_ms timer
+  * BUG/MEDIUM: mux-fcgi: Fix locking of idle_conns lock in the FCGI I/O callback
+  * BUG/MINOR: freq_ctr/threads: make use of the last updated global time
+  * MINOR: time: export the global_now variable
+
+-------------------------------------------------------------------
 Tue Mar 16 15:21:00 UTC 2021 - mrueckert@suse.de
 
 - Update to version 2.3.7+git0.2d39ce334:

@@ -1050,4 +1050,12 @@
     <comment>- Update to version 2.3.7+git0.2d39ce334:</comment>
     <requestid>879452</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>170b0dadc4561e2ce47c41453e8fbf85</srcmd5>
+    <version>2.3.9+git1.afb63bc04</version>
+    <time>1617722974</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 2.3.9+git1.afb63bc04:</comment>
+    <requestid>882208</requestid>
+  </revision>
 </revisionlist>
