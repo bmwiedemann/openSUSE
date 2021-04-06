@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  1 12:16:40 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- Just recommend libddcutil its not strictly needed and the feature
+  wasn't in older versions of Leap.
+
+-------------------------------------------------------------------
+Thu Nov 12 04:42:35 UTC 2020 - Simon Lees <sflees@suse.de>
+
+- BuildRequire hicolor-icon-theme to fix directory not owned.
+
+-------------------------------------------------------------------
 Tue Aug 18 08:08:12 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - libddcutil.patch: acutally load libddcutil.so.3 instead of
@@ -10,7 +21,7 @@ Mon Aug 17 14:21:50 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 - libddcutil3 replaces libddcutil2 in Tumbleweed
 
 -------------------------------------------------------------------
-Thu Aug  6 01:09:06 UTC 2020 - Simon Lees <simonf.lees@suse.com>
+Thu Aug  6 01:09:06 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - 0.24.2
   * Fixed null exec command running

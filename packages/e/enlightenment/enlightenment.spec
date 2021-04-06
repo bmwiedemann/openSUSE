@@ -52,6 +52,7 @@ BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  efl >= %{efl_version}
 BuildRequires:  gettext-devel
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
@@ -89,10 +90,10 @@ Requires:       enlightenment-branding = 0.1
 Requires:       evas-generic-loaders
 %if 0%{?suse_version} > 1500
 # dlopened at runtime
-Requires:       libddcutil3
+Recommends:       libddcutil3
 %else
 # dlopened at runtime
-Requires:       libddcutil2
+Recommends:       libddcutil2
 %endif
 # Require a Icon theme that will be detected by enlghtenment
 Requires:       oxygen-icon-theme
