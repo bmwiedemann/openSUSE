@@ -26,8 +26,6 @@ URL:            https://qbittorrent.org
 Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz.asc
 Source2:        https://raw.githubusercontent.com/qbittorrent/qBittorrent/release-%{version}/5B7CC9A2.asc#/%{name}.keyring
-# PATCH-FIX-UPSTREAM qbittorrent-libtorrent_pthread.patch
-Patch1:         qbittorrent-libtorrent_pthread.patch
 BuildRequires:  cmake >= 3.9
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -70,9 +68,6 @@ version.
 
 %prep
 %setup -q
-%if 0%{?suse_version} <= 1500
-%patch1 -p1
-%endif
 
 %build
 for ui in nox gui; do

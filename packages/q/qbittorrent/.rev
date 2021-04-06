@@ -1171,4 +1171,13 @@
 </comment>
     <requestid>881220</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>70a16e68f4531a80681576107c814d89</srcmd5>
+    <version>4.3.4.1</version>
+    <time>1617723047</time>
+    <user>RBrownSUSE</user>
+    <comment>- Drop qbittorrent-libtorrent_pthread.patch (no longer necessary)
+</comment>
+    <requestid>883005</requestid>
+  </revision>
 </revisionlist>

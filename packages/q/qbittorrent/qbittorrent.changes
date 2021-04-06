@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  5 07:22:29 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Drop qbittorrent-libtorrent_pthread.patch (no longer necessary)
+
+-------------------------------------------------------------------
 Wed Mar 24 21:23:00 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.3.4.1
