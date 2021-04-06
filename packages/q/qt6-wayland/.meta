@@ -3,6 +3,6 @@
   <description>The Qt6 Wayland libraries and tools.
 
 </description>
-  <devel project="KDE:Qt:6.0" package="qt6-wayland"/>
+  <devel project="KDE:Qt6" package="qt6-wayland"/>
   <url>https://www.qt.io</url>
 </package>
