@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>872026</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ea7468a64fcf15a18d924561197b3e37</srcmd5>
+    <version>20210405</version>
+    <time>1617723048</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 20210405:
+  * Fixed Gnome Shell 40 issues
+- Removed %fdupes because it leads to theme glitches in 
+  light theme variants
+</comment>
+    <requestid>883012</requestid>
+  </revision>
 </revisionlist>

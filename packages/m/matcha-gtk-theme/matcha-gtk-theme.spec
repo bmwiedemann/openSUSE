@@ -20,9 +20,9 @@
 %define         _theme              Matcha
 %define         gtk3_min_version    3.20.0
 %define         gtk2_min_version    2.24.30
-%define         _version            2021-02-04
+%define         _version            2021-04-05
 Name:           matcha-gtk-theme
-Version:        20210204
+Version:        20210405
 Release:        0
 Summary:        Matcha is a flat Design theme for GTK 3, GTK 2 and Gnome-Shell
 License:        GPL-3.0-only
@@ -173,8 +173,6 @@ for variant in aliz azul sea; do
   rm -f %{buildroot}%{_datadir}/themes/%{_theme}-dark-$variant/index.theme
   rm -f %{buildroot}%{_datadir}/themes/%{_theme}-light-$variant/index.theme
 done
-
-%fdupes %{buildroot}%{_datadir}/themes/
 
 %files -n metatheme-%{_name}-common
 %license LICENSE

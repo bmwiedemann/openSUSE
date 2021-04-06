@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  5 09:07:12 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 20210405:
+  * Fixed Gnome Shell 40 issues
+- Removed %fdupes because it leads to theme glitches in 
+  light theme variants
+
+-------------------------------------------------------------------
 Sat Feb 13 19:43:02 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Change source to upstream tarball 
