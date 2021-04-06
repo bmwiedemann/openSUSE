@@ -3,6 +3,6 @@
   <description>Translations for Qt6 libraries and tools.
 
 </description>
-  <devel project="KDE:Qt:6.0" package="qt6-translations"/>
+  <devel project="KDE:Qt6" package="qt6-translations"/>
   <url>https://www.qt.io</url>
 </package>
