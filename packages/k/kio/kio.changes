@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 23 12:30:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to prevent file.so from remaining loaded (kde#434455, boo#1183880)
+  * 0001-MimeTypeFinderJob-don-t-put-job-on-hold-for-local-fi.patch
+
+-------------------------------------------------------------------
 Mon Mar 15 16:01:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.80.1

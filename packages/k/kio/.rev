@@ -920,4 +920,13 @@ I'd vote for Leap 15.0 as well... (forwarded request 604374 from wolfi323)</comm
   * RenameDialog: fix a potential buffer overflow (kde#432610)</comment>
     <requestid>879256</requestid>
   </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>b49a923fdfffebcbb9ecd763d41da89c</srcmd5>
+    <version>5.80.1</version>
+    <time>1617722942</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add patch to prevent file.so from remaining loaded (kde#434455, boo#1183880)
+  * 0001-MimeTypeFinderJob-don-t-put-job-on-hold-for-local-fi.patch</comment>
+    <requestid>880771</requestid>
+  </revision>
 </revisionlist>
