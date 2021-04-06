@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr  1 13:58:57 UTC 2021 - wbauer@tmo.at
+
+- Update to 0.11.3
+  * Further extended the PulseSupport shutdown introduced in 0.11.2
+    to now also apply when MediaObject reset. This additionally
+    ought to prevent crashes inside libpulse when playing multiple
+    files on the same MediaObject.
+  * Fixed a wayland crash when using surface painting (e.g. used in
+    Dolphin sidebar previews).
+  * Frame pitch and line calculation for surface painting has been
+    made much cheaper.
+  * The memory footprint of surface painting has been cut in half.
+
+-------------------------------------------------------------------
 Tue Feb 16 10:10:32 UTC 2021 - wbauer@tmo.at
 
 - Update to 0.11.2

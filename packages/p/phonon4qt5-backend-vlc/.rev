@@ -171,4 +171,12 @@ This is mainly needed to fix the build on Packman for openSUSE 13.x and Leap 42.
     <comment></comment>
     <requestid>873146</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>67a868f6161df4a341970212c20f695a</srcmd5>
+    <version>0.11.3</version>
+    <time>1617723025</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882844</requestid>
+  </revision>
 </revisionlist>
