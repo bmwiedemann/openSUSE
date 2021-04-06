@@ -1,7 +1,7 @@
 #
 # spec file for package onednn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,15 @@
 %bcond_with opencl
 %endif
 
-%define libname libdnnl1
+%ifarch aarch64
+%bcond_without acl
+%else
+%bcond_with acl
+%endif
+
+%define libname libdnnl2
 Name:           onednn
-Version:        1.6.3
+Version:        2.1
 Release:        0
 Summary:        Intel(R) Math Kernel Library for Deep Neural Networks
 License:        Apache-2.0
@@ -37,6 +43,9 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  texlive-dvips-bin
+%if %{with acl}
+BuildRequires:  ComputeLibrary-devel
+%endif
 %if %{with opencl}
 BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
@@ -111,6 +120,11 @@ to implement deep neural networks (DNN) with C and C++ interfaces.
   -DCMAKE_INSTALL_LIBDIR=%{_lib} \
   -DMKLDNN_ARCH_OPT_FLAGS="" \
   -DDNNL_CPU_RUNTIME=OMP \
+%if %{with acl}
+  -DDNNL_AARCH64_USE_ACL=ON \
+  -DACL_INCLUDE_DIR=%{_includedir} \
+  -DACL_LIBRARY=%{_libdir}/libarm_compute.so  \
+%endif
 %if %{with opencl}
   -DDNNL_GPU_RUNTIME=OCL \
 %endif
@@ -156,6 +170,9 @@ popd
 %{_includedir}/mkl-dnn
 %{_includedir}/mkldnn*.h*
 %{_includedir}/dnnl*.h*
+%dir %{_includedir}/oneapi
+%dir %{_includedir}/oneapi/dnnl
+%{_includedir}/oneapi/dnnl/dnnl*.h*
 %{_libdir}/libdnnl.so
 %{_libdir}/libmkldnn.so
 %dir %{_libdir}/cmake/dnnl

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Feb 17 14:17:47 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.1
+- Add Arm ComputeLibrary support on aarch64
+
+-------------------------------------------------------------------
 Mon Oct  5 06:16:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Obsoletes mkl-dnn* <= %{version}
