@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.11
-%define patchversion 5.11.6
+%define patchversion 5.11.11
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -68,9 +68,9 @@ Name:           kernel-debug
 Summary:        A Debug Version of the Kernel
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.11.6
+Version:        5.11.11
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g7358b30
+Release:        <RELEASE>.gdbc4a02
 %else
 Release:        0
 %endif
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-7358b30598bf26791ff12120bcff0238a711631a
-Provides:       kernel-srchash-7358b30598bf26791ff12120bcff0238a711631a
+Provides:       kernel-%build_flavor-base-srchash-dbc4a02972b5d36d666df3c1b25f429cc24db598
+Provides:       kernel-srchash-dbc4a02972b5d36d666df3c1b25f429cc24db598
 # END COMMON DEPS
-Provides:       %name-srchash-7358b30598bf26791ff12120bcff0238a711631a
+Provides:       %name-srchash-dbc4a02972b5d36d666df3c1b25f429cc24db598
 %ifarch ppc64
 Provides:       kernel-kdump = 2.6.28
 Obsoletes:      kernel-kdump <= 2.6.28
@@ -266,7 +266,7 @@ Source113:      patches.kabi.tar.bz2
 Source120:      kabi.tar.bz2
 Source121:      sysctl.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  %ix86 ppc64 ppc64le x86_64
+ExclusiveArch:  aarch64 %ix86 ppc64 ppc64le x86_64
 %define kmp_target_cpu %_target_cpu
 %ifarch %ix86
 # Only i386/default supports i586, mark other flavors' packages as i686
