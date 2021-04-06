@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>879933</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>10acd8cce16e97ef2d022b7777015ff3</srcmd5>
+    <version>6.0.3</version>
+    <time>1617723038</time>
+    <user>RBrownSUSE</user>
+    <comment>Forward to devel project (forwarded request 882974 from cgiboudeaux)</comment>
+    <requestid>882990</requestid>
+  </revision>
 </revisionlist>

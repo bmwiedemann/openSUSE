@@ -3,6 +3,6 @@
   <description>Qt 6 Declarative Libraries and tools
 
 </description>
-  <devel project="KDE:Qt:6.0" package="qt6-declarative"/>
+  <devel project="KDE:Qt6" package="qt6-declarative"/>
   <url>https://www.qt.io</url>
 </package>

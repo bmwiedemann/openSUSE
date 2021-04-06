@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.0.2
+%define real_version 6.0.3
 %define short_version 6.0
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.0.2
+Version:        6.0.3
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
