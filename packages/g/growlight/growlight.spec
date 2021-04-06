@@ -30,6 +30,7 @@ License:        GPL-3.0-or-later
 Group:          System/Monitoring
 URL:            https://nick-black.com/dankwiki/index.php/Growlight
 Source:         https://github.com/dankamongmen/growlight/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         0001-tests-fix-alignment-of-packed-fields-141.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 %if %{with pandoc}
@@ -70,6 +71,7 @@ are available.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake -DUSE_LIBZFS=OFF -DUSE_PANDOC=%{with pandoc}
