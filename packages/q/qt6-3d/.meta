@@ -4,6 +4,6 @@
 systems with support for 2D and 3D rendering in both Qt C++ and Qt Quick applications.
 
 </description>
-  <devel project="KDE:Qt:6.0" package="qt6-3d"/>
+  <devel project="KDE:Qt6" package="qt6-3d"/>
   <url>https://www.qt.io</url>
 </package>
