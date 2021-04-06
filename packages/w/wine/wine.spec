@@ -142,8 +142,8 @@ Source8:        wine-rpmlintrc
 #Patch0:         susefixes.patch
 Recommends:     wine-gecko >= 2.47.2
 Conflicts:      wine-gecko < 2.47.2
-Recommends:     wine-mono >= 5.1.1
-Conflicts:      wine-mono < 5.1.1
+Recommends:     wine-mono >= 6.0.0
+Conflicts:      wine-mono < 6.0.0
 # not packaged in distro...
 Recommends:     wine-mono
 Recommends:     dosbox

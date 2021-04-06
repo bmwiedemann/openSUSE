@@ -3910,4 +3910,12 @@
 - update staging to 6.5 release</comment>
     <requestid>881746</requestid>
   </revision>
+  <revision rev="335" vrev="2">
+    <srcmd5>a979b420b5936fbefd06a840a2a9f4a5</srcmd5>
+    <version>6.5</version>
+    <time>1617723029</time>
+    <user>RBrownSUSE</user>
+    <comment>- adjust wine-mono conflicts / recommends.</comment>
+    <requestid>882903</requestid>
+  </revision>
 </revisionlist>
