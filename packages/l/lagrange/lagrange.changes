@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr  5 17:43:32 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.3.1
+  - Added UI languages: Serbian, Interlingue.
+  - Added option to disable bold links for light/dark backgrounds.
+  - Updated the Nunito font to the latest version.
+  - Fixed crash during word wrapping.
+  - Fixed keybindings overriding the home row key navigation mode.
+  - Fixed kerning in the text renderer.
+  - Fixed issue with overlapped drawing of list bullets vs. list items.
+  - Fixed cropped list bullets when using Literata.
+  - Fixed whitespace normalization in plain text files (tab characters).
+  - Fixed issues buffering window contents, possibly causing missing font glyphs.
+
+-------------------------------------------------------------------
 Wed Mar 31 18:01:32 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.3.0
