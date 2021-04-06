@@ -17,7 +17,7 @@
 
 
 Name:           fish
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        The "friendly interactive shell"
 License:        GPL-2.0-only
@@ -91,7 +91,9 @@ fi
 %files -f %{name}.lang
 %dir %{_sysconfdir}/fish
 %config(noreplace) %{_sysconfdir}/%{name}/*
-%{_bindir}/*
+%{_bindir}/fish
+%{_bindir}/fish_indent
+%{_bindir}/fish_key_reader
 %{_datadir}/doc/%{name}
 %{_datadir}/%{name}
 %{_mandir}/man1/*.1%{?ext_man}
