@@ -47,6 +47,7 @@ BuildRequires:  postgresql-server-devel
 %endif
 BuildRequires:  procps
 BuildRequires:  sqlite3-devel
+Requires(pre):  group(mail)
 %{?systemd_requires}
 
 %description
