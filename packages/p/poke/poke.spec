@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           poke
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        An interactive, extensible editor for binary data
 License:        GPL-3.0-only
@@ -36,6 +36,7 @@ BuildRequires:  bison >= 3.6
 BuildRequires:  flex >= 2.5.37
 BuildRequires:  gettext >= 0.18.2
 BuildRequires:  makeinfo >= 6.0
+BuildRequires:  lua53
 # /SECTION
 %if 0%{?suse_version} > 1500
 BuildRequires:  libtextstyle-devel
@@ -82,7 +83,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc README AUTHORS
 %{_bindir}/%{name}
 %{_bindir}/pk-elfextractor
+%{_bindir}/pk-strings
 %{_datadir}/%{name}
+%{_datadir}/emacs/site-lisp/*
 %{_infodir}/%{name}.info%{?ext_info}
 %{_infodir}/%{name}.info-1%{?ext_info}
 %{_infodir}/%{name}.info-2%{?ext_info}
