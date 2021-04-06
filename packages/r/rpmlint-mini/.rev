@@ -857,4 +857,12 @@ undo bootstrap workaround</comment>
   * device-files-whitelist: fix mode of named: urandom dev file</comment>
     <requestid>833416</requestid>
   </revision>
+  <revision rev="106" vrev="23">
+    <srcmd5>1bc5d6e56d8bd0a8202a52087799e87f</srcmd5>
+    <version>1.10</version>
+    <time>1617722924</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881322</requestid>
+  </revision>
 </revisionlist>

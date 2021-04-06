@@ -1,7 +1,7 @@
 #
 # spec file for package rpmlint-mini
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,10 @@ source packages can be checked.
 %setup -q -n desktop-file-utils-0.24
 [ -r COPYING ]
 tar xf %{S:2}
+# workaround rpmlintrc not being effective, because regular rpmlint is invoked
+# instead of rpmlint-mini, see suse-build change here:
+# https://github.com/openSUSE/obs-build/commit/1139134127373b058d3622bafb989c51e2ecc7b8
+cp %{SOURCE1000} $HOME/.rpmlintrc
 
 %build
 %configure

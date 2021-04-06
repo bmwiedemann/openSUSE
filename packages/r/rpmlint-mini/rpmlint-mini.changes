@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 25 09:24:35 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- apply workaround for situations in which regular rpmlint is invoked when
+  building rpmlint-mini. Regular rpmlint does not implicitly add rpmlintrc
+  files, causing fatal badness to occur when building rpmlint-mini. Therefore
+  explicitly copy our rpmlintrc to a location that is processed by regular
+  rpmlint, too.
+
+-------------------------------------------------------------------
 Thu Sep 10 09:23:46 UTC 2020 - matthias.gerstner@suse.com
 
 - Update of rpmlint-security-whitelistings:
