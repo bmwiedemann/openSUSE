@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Mar 30 13:16:18 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to mpich 3.4.1
+  - ch4 replaces ch3 as the default device configuration. If no network
+    module is specified at configuration-time, MPICH will search the
+    user environment in order to select one to build. The user will be
+    prompted to choose if no preferred network library is dectected.
+  - Add support for XPMEM.
+  - Add support for multiple virtual communication interfaces for more
+    efficient MPI_THREAD_MULTIPLE (experimental).
+  - Add support for Arm compiler toolchain
+  - Add support for flang/f18 Fortran compiler
+  - See CHANGES for the complete list of CHANGES
+- Changed MPI interface in mpich package
+  - 64bit archs use ch4:ucx
+  - 32bit archs use ch3:nemesis (verbs)
+- Drop patches merged upstream:
+  - ch3-fix-improper-error-handling-from-MPL_get_sockaddr.patch
+  - opmi-fix-a-wrong-condition-checking-return-of-MPL_get_sockaddr.patch
+- Add patches to make sure built is used with the proper system libraries
+  and not the embedded ones:
+  - autogen-only-deal-with-json-yaksa-if-enabled.patch
+  - autoconf-pull-dynamic-and-not-static-libs-from-pkg-config.patch
+- Refresh 0001-Drop-real128.patch against latest sources
+
+-------------------------------------------------------------------
 Sun Nov 29 11:46:23 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - HPC: Fix environment module settings for MANPATH.

@@ -173,4 +173,12 @@
     <comment>- HPC: Fix environment module settings for MANPATH.</comment>
     <requestid>851676</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5ceeab05a05bb4748aad65f67c11aeb9</srcmd5>
+    <version>3.4.1</version>
+    <time>1617723006</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882725</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,73 @@
+commit 031bb25502d5ad35cf50419f153cd976fff82b5a
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Thu Apr 1 09:06:56 2021 +0200
+
+    autogen: only deal with json/yaksa if enabled
+    
+    --without-(json|yaksa) is partially ignored as submodule is not
+    checked but still configured
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git autogen.sh autogen.sh
+index ed20d4b90187..f096c14ef5fb 100755
+--- autogen.sh
++++ autogen.sh
+@@ -603,7 +603,7 @@ echo
+ check_submodule_presence modules/hwloc
+ 
+ # external packages that require autogen.sh to be run for each of them
+-externals="src/pm/hydra src/pm/hydra2 src/mpi/romio modules/hwloc test/mpi modules/json-c modules/yaksa"
++externals="src/pm/hydra src/pm/hydra2 src/mpi/romio modules/hwloc test/mpi"
+ 
+ if [ "yes" = "$do_izem" ] ; then
+     check_submodule_presence modules/izem
+@@ -622,10 +622,12 @@ fi
+ 
+ if [ "yes" = "$do_json" ] ; then
+     check_submodule_presence "modules/json-c"
++    externals="${externals} modules/json-c"
+ fi
+ 
+ if [ "yes" = "$do_yaksa" ] ; then
+     check_submodule_presence "modules/yaksa"
++    externals="${externals} modules/yaksa"
+ fi
+ 
+ ########################################################################
+diff --git configure.ac configure.ac
+index dd7b4d7c6425..fa8c8b16c81a 100644
+--- configure.ac
++++ configure.ac
+@@ -1189,14 +1189,23 @@ AC_SUBST([jsonsrcdir])
+ jsonlib=""
+ AC_SUBST([jsonlib])
+ 
+-PAC_PUSH_ALL_FLAGS()
+-PAC_RESET_ALL_FLAGS()
+-PAC_CONFIG_SUBDIR_ARGS([modules/json-c],[--enable-embedded --disable-werror],[],[AC_MSG_ERROR(json-c configure failed)])
+-PAC_POP_ALL_FLAGS()
+-jsonsrcdir="${main_top_builddir}/modules/json-c"
+-jsonlib="${main_top_builddir}/modules/json-c/libjson-c.la"
+-PAC_APPEND_FLAG([-I${use_top_srcdir}/modules/json-c],[CPPFLAGS])
+-PAC_APPEND_FLAG([-I${main_top_builddir}/modules/json-c],[CPPFLAGS])
++PAC_CHECK_HEADER_LIB([json-c/json.h], [json-c], [json_object_get], [have_json=yes], [have_json=no])
++
++if test "${have_json}" = "no" ; then
++	AC_MSG_NOTICE([Using an embedded libjson-c])
++   PAC_PUSH_ALL_FLAGS()
++   PAC_RESET_ALL_FLAGS()
++   PAC_CONFIG_SUBDIR_ARGS([modules/json-c],[--enable-embedded --disable-werror],[],[AC_MSG_ERROR(json-c configure failed)])
++   PAC_POP_ALL_FLAGS()
++   jsonsrcdir="${main_top_builddir}/modules/json-c"
++   jsonlib="${main_top_builddir}/modules/json-c/libjson-c.la"
++   PAC_APPEND_FLAG([-I${use_top_srcdir}/modules/json-c],[CPPFLAGS])
++   PAC_APPEND_FLAG([-I${main_top_builddir}/modules/json-c],[CPPFLAGS])
++else
++	AC_MSG_NOTICE([Using an external libjson-c])
++	PAC_APPEND_FLAG([-I/usr/include/json-c],[CPPFLAGS])
++	PAC_APPEND_FLAG([-ljson-c],[WRAPPER_LIBS])
++fi
+ 
+ # ----------------------------------------------------------------------------
+ # HWLOC

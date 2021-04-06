@@ -1,18 +1,18 @@
-From 8f0c71281b5dccd70a3f1d4204e3cc6bc7201ceb Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?=
- <zbyszek@arm03-packager01.cloud.fedoraproject.org>
-Date: Wed, 28 Aug 2019 10:57:55 +0000
-Subject: [PATCH] Drop real128
+commit 7a6039f46cf1d5c26484757f48ef7b38a098ba39
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Tue Apr 14 09:21:03 2020 +0200
 
-https://github.com/pmodels/mpich/issues/4005
----
- .../fortran/use_mpi_f08/mpi_f08_types.f90     | 24 -------------------
- 1 file changed, 24 deletions(-)
+    Drop real128
+    
+    Fixe a fortran compilation failure on ARM
+    https://github.com/pmodels/mpich/issues/4005
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
-diff --git a/src/binding/fortran/use_mpi_f08/mpi_f08_types.f90 b/src/binding/fortran/use_mpi_f08/mpi_f08_types.f90
-index f8b0fa811..46bdf6972 100644
---- a/src/binding/fortran/use_mpi_f08/mpi_f08_types.f90
-+++ b/src/binding/fortran/use_mpi_f08/mpi_f08_types.f90
+diff --git src/binding/fortran/use_mpi_f08/mpi_f08_types.f90 src/binding/fortran/use_mpi_f08/mpi_f08_types.f90
+index 60811d723d82..e611e6370017 100644
+--- src/binding/fortran/use_mpi_f08/mpi_f08_types.f90
++++ src/binding/fortran/use_mpi_f08/mpi_f08_types.f90
 @@ -248,10 +248,8 @@ interface MPI_Sizeof
      module procedure MPI_Sizeof_xint64
      module procedure MPI_Sizeof_xreal32
@@ -69,6 +69,3 @@ index f8b0fa811..46bdf6972 100644
  subroutine MPI_Status_f2f08(f_status, f08_status, ierror)
      integer, intent(in) :: f_status(MPI_STATUS_SIZE)
      type(MPI_Status), intent(out) :: f08_status
--- 
-2.21.0
-

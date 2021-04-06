@@ -1,7 +1,7 @@
 #
-# spec file for package mpich
+# spec file for package %{package_name}%{?testsuite:-testsuite}
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,8 @@
 # % define build_static_devel 1
 
 %define pname mpich
-%define vers  3.3.2
-%define _vers 3_3_2
+%define vers  3.4.1
+%define _vers 3_4_1
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
@@ -33,11 +33,11 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%{flavor}" == "standard"
-%define build_flavor verbs
+%define build_flavor ucx
 %{bcond_with hpc}
 %endif
 %if "%{flavor}" == "testsuite"
-%define build_flavor verbs
+%define build_flavor ucx
 %define testsuite 1
 %{bcond_with hpc}
 %endif
@@ -55,7 +55,7 @@ ExclusiveArch:  do_not_build
 %if "%flavor" == "gnu-hpc"
 %define compiler_family gnu
 %undefine c_f_ver
-%define build_flavor verbs
+%define build_flavor ucx
 %define build_static_devel 1
 %{bcond_without hpc}
 %endif
@@ -63,7 +63,7 @@ ExclusiveArch:  do_not_build
 %define compiler_family gnu
 %undefine c_f_ver
 %define testsuite 1
-%define build_flavor verbs
+%define build_flavor ucx
 %{bcond_without hpc}
 %endif
 
@@ -85,7 +85,7 @@ ExclusiveArch:  do_not_build
 %if "%flavor" == "gnu7-hpc"
 %define compiler_family gnu
 %define c_f_ver 7
-%define build_flavor verbs
+%define build_flavor ucx
 %define build_static_devel 1
 %{bcond_without hpc}
 %endif
@@ -94,7 +94,7 @@ ExclusiveArch:  do_not_build
 %define compiler_family gnu
 %define c_f_ver 7
 %define testsuite 1
-%define build_flavor verbs
+%define build_flavor ucx
 %{bcond_without hpc}
 %endif
 
@@ -116,7 +116,7 @@ ExclusiveArch:  do_not_build
 %if "%flavor" == "gnu8-hpc"
 %define compiler_family gnu
 %define c_f_ver 8
-%define build_flavor verbs
+%define build_flavor ucx
 %define build_static_devel 1
 %{bcond_without hpc}
 %endif
@@ -124,7 +124,7 @@ ExclusiveArch:  do_not_build
 %define compiler_family gnu
 %define c_f_ver 8
 %define testsuite 1
-%define build_flavor verbs
+%define build_flavor ucx
 %{bcond_without hpc}
 %endif
 
@@ -147,7 +147,7 @@ ExclusiveArch:  do_not_build
 %if "%flavor" == "gnu9-hpc"
 %define compiler_family gnu
 %define c_f_ver 9
-%define build_flavor verbs
+%define build_flavor ucx
 %define build_static_devel 1
 %{bcond_without hpc}
 %endif
@@ -155,7 +155,7 @@ ExclusiveArch:  do_not_build
 %define compiler_family gnu
 %define c_f_ver 9
 %define testsuite 1
-%define build_flavor verbs
+%define build_flavor ucx
 %{bcond_without hpc}
 %endif
 
@@ -177,7 +177,7 @@ ExclusiveArch:  do_not_build
 %if "%flavor" == "gnu10-hpc"
 %define compiler_family gnu
 %define c_f_ver 10
-%define build_flavor verbs
+%define build_flavor ucx
 %define build_static_devel 1
 %{bcond_without hpc}
 %endif
@@ -186,7 +186,7 @@ ExclusiveArch:  do_not_build
 %define compiler_family gnu
 %define c_f_ver 10
 %define testsuite 1
-%define build_flavor verbs
+%define build_flavor ucx
 %{bcond_without hpc}
 %endif
 
@@ -205,8 +205,16 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%if "%{build_flavor}" != "verbs"
+%if "%{build_flavor}" != "ucx"
 %define pack_suff %{?build_flavor:-%{build_flavor}}
+%endif
+
+%if "%{build_flavor}" == "ucx"
+%ifarch %ix86 %arm
+# UCX is not available on 32b system so silently fallback
+# on ch3:nemesis which works with verbs
+%define build_flavor verbs
+%endif
 %endif
 
 %if %{without hpc}
@@ -250,32 +258,41 @@ Source3:        macros.hpc-mpich
 Source100:      _multibuild
 # PATCH-FIX-UPSTREAM 0001-Drop-real128.patch (https://github.com/pmodels/mpich/issues/4005)
 Patch0:         0001-Drop-real128.patch
-Patch1:         ch3-fix-improper-error-handling-from-MPL_get_sockaddr.patch
-Patch2:         pmi-fix-a-wrong-condition-checking-return-of-MPL_get_sockaddr.patch
+Patch1:         autogen-only-deal-with-json-yaksa-if-enabled.patch
+Patch2:         autoconf-pull-dynamic-and-not-static-libs-from-pkg-config.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  fdupes
 BuildRequires:  hwloc-devel >= 1.6
+BuildRequires:  libjson-c-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  python-devel
+
 %ifnarch s390 s390x %{arm}
 BuildRequires:  valgrind-devel
 %endif
-BuildRequires:  infiniband-diags-devel
-BuildRequires:  libibumad-devel
-BuildRequires:  libibverbs-devel
-BuildRequires:  librdmacm-devel
 %ifnarch s390 s390x armv7hl
 BuildRequires:  libnuma-devel
 %endif
 BuildRequires:  libtool
 BuildRequires:  libtool
 BuildRequires:  mpi-selector
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 BuildRequires:  sysfsutils
-%if "%{flavor}" == "ofi"
+
+%if "%{build_flavor}" == "ofi"
 BuildRequires:  libfabric-devel
+%endif
+
+%if "%{build_flavor}" == "ucx"
+BuildRequires:  libucp-devel
+BuildRequires:  libucs-devel
+# UCX is only available for 64b archs
+ExcludeArch:    %ix86 %arm
+%endif
+%if "%{build_flavor}" == "verbs"
+BuildRequires:  libibverbs-devel
+BuildRequires:  librdmacm-devel
 %endif
 
 Provides:       mpi
@@ -285,7 +302,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  mpi-selector
 Requires:       mpi-selector
-Requires(preun): mpi-selector
+Requires(preun):mpi-selector
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
 BuildRequires:  lua-lmod
@@ -379,10 +396,12 @@ echo without HPC
 %setup -q -n mpich-%{version}%{?rc_ver}
 # Only apply this patch on Armv7
 %ifarch armv7hl
-%patch0 -p1
+%patch0
+%endif
 %patch1
 %patch2
-%endif
+# Make sure prebuilt dependencies are used and not mpich submodules
+rm -R modules/{ucx,libfabric,json-c}
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -392,7 +411,7 @@ echo without HPC
 export FFLAGS="-fallow-argument-mismatch $FFLAGS"
 %endif
 
-./autogen.sh
+./autogen.sh --without-ucx --without-ofi --without-json
 %{?with_hpc:%hpc_debug}
 %if %{with hpc}
 %{hpc_setup}
@@ -411,8 +430,14 @@ export FFLAGS="-fallow-argument-mismatch $FFLAGS"
     --docdir=%{_datadir}/doc/%{name} \
     --disable-rpath      \
     --disable-wrapper-rpath      \
-%if "%{flavor}" == "ofi"
-   --with-device=ch3:nemesis:ofi \
+%if "%{build_flavor}" == "ofi"
+   --with-device=ch4:ofi \
+%endif
+%if "%{build_flavor}" == "ucx"
+   --with-device=ch4:ucx \
+%endif
+%if "%{build_flavor}" == "verbs"
+   --with-device=ch3:nemesis \
 %endif
 	CFLAGS="%optflags -fPIC"			\
 	CXXLAGS="%optflags -fPIC"			\
@@ -597,7 +622,7 @@ fi
 %{p_includedir}
 %{p_libdir}/*.so
 %{p_libdir}/pkgconfig/mpich.pc
-%{p_libdir}/pkgconfig/openpa.pc
+%{p_libdir}/pkgconfig/yaksa.pc
 
 %if 0%{?build_static_devel}
 %files devel-static
