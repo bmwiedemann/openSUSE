@@ -1,4 +1,235 @@
 -------------------------------------------------------------------
+Tue Apr  6 08:14:21 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.4.1
+
+  Removed patches
+  * 0001-Add-a-simple-Proc-extension-to-support-bindings.patch
+  * 0002-Remove-simplecov-from-tests.patch
+    (rebased as 0001-Remove-simplecov-from-tests.patch)
+
+  Added patch:
+  * 0001-Remove-simplecov-from-tests.patch
+
+# Changelog
+
+## [0.4.1](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.4.1) (2021-04-03)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.4.0...0.4.1)
+
+**Closed issues:**
+
+- Got IP address, even though it's empty [\#1239](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1239)
+- Please consider removing the contextual\_proc gem
+[\#1238](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1238)
+- \[Request\]: Easy way to add plugin to docker image
+[\#1212](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1212)
+- Allow declaring no inputs [\#1092](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1092)
+
+**Merged pull requests:**
+
+- Raise expected Timeout to ensure retryable retries
+[\#1241](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1241)
+([electrofelix](https://github.com/electrofelix))
+- Add a simple Proc extension to support bindings
+[\#1240](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1240) ([dcermak](https://github.com/dcermak))
+- Ensure provisioner cleanup run early in destroy
+[\#1235](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1235)
+([electrofelix](https://github.com/electrofelix))
+- Replace obsolete usage of Vagrant.require\_plugin
+[\#1234](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1234)
+([electrofelix](https://github.com/electrofelix))
+
+-------------------------------------------------------------------
+Mon Mar 29 05:44:47 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.4.0
+
+  Added patches:
+  * 0001-Add-a-simple-Proc-extension-to-support-bindings.patch
+  * 0002-Remove-simplecov-from-tests.patch
+
+# Changelog
+
+## [0.4.0](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.4.0) (2021-03-21)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.3.0...0.4.0)
+
+**Closed issues:**
+
+- Fix usage/warning of not set identity file
+[\#1228](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1228)
+- Vagrant stucks on "Waiting for SSH to become available" when using remote libvirt with LIBVIRT\_DEFAULT\_URI
+[\#1217](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1217)
+- Windows 10 install problem : could not write value VagrantFeature to key
+[\#1215](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1215)
+- vagrant plugin install vagrant-libvirt produces error: conflicting dependencies net-ssh \(\>= 2.6.5\) and
+net-ssh \(= 6.2.0.rc1\) [\#1210](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1210)
+- Error while creating domain: Error saving the server: Call to virDomainDefineXML failed: invalid argument:
+could not find capabilities for domaintype=kvm
+[\#1208](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1208)
+- libk5crypto.so.3: undefined symbol: EVP\_KDF\_ctrl, version OPENSSL\_1\_1\_1b 
+[\#1203](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1203)
+- Vagrant not sharing project directory to /vagrant in case of certain boxes
+[\#1201](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1201)
+- Vagrant up not working on Fedora 33 [\#1185](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1185)
+- vagrant-libvirt is missing rsync in the image
+[\#1183](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1183)
+- Version tagging not working when using the release zip
+[\#1181](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1181)
+- Network Interface Order? [\#1180](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1180)
+- Error when updating domain settings: undefined method `strip' for nil:NilClass
+[\#1176](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1176)
+- Support OpenRC [\#1175](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1175)
+- What is the default host IP? [\#1174](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1174)
+- ability to choose default boot interface when multiple interfaces
+[\#1173](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1173)
+- NIC duplicates created when using vagrant-libvirt
+[\#1165](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1165)
+- Remote libvirt host. Waiting for domain to get an IP address
+[\#1160](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1160)
+- Cannot reate  [\#1147](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1147)
+- vagrant cannot create vm [\#1133](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1133)
+- Installation inside Docker [\#1128](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1128)
+- Centos 8 /lib64/libk5crypto.so.3: undefined symbol: EVP\_KDF\_ctrl, version OPENSSL\_1\_1\_1b 
+[\#1127](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1127)
+- New box created using create\_box.sh - gets stuck at "Waiting for SSH to become available..."
+[\#1116](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1116)
+- Does not install on Fedora 32 [\#1105](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1105)
+-  default: Waiting for domain to get an IP address
+[\#1084](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1084)
+- Plugin does not install on Fedora 31 [\#1082](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1082)
+- Add support for virt-sysprep options [\#1077](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1077)
+- add support for disk I/O options [\#998](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/998)
+- storage :file fail with QEMU session [\#986](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/986)
+- Install vargant-libvirt plugin issue [\#982](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/982)
+- Installation on OpenSUSE Leap 15.0 fails [\#968](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/968)
+- Add support for tpm\_version [\#965](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/965)
+
+**Merged pull requests:**
+
+- Ensure multi machine IP retrieval works [\#1232](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1232)
+([electrofelix](https://github.com/electrofelix))
+- Extract finalizing from the uri to a separate method
+[\#1231](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1231)
+([electrofelix](https://github.com/electrofelix))
+- Improve id\_ssh\_key\_file finalizing [\#1230](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1230)
+([electrofelix](https://github.com/electrofelix))
+- Bugfix some stray machine args after tidy up
+[\#1227](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1227)
+([electrofelix](https://github.com/electrofelix))
+- Move proxy\_command to config and support templating
+[\#1226](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1226)
+([electrofelix](https://github.com/electrofelix))
+- auto enable ssh connection [\#1225](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1225)
+([electrofelix](https://github.com/electrofelix))
+- Only set ssh connection params if transport is ssh
+[\#1224](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1224)
+([electrofelix](https://github.com/electrofelix))
+- Make LIBVIRT\_DEFAULT\_URI a fackball mechanism
+[\#1223](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1223)
+([electrofelix](https://github.com/electrofelix))
+- Use OpenSSH functionality instead of netcat for proxy\_command
+[\#1222](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1222)
+([electrofelix](https://github.com/electrofelix))
+- Remove flag-name due to behaviour mismatch
+[\#1220](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1220)
+([electrofelix](https://github.com/electrofelix))
+- Refactor uri config tests [\#1219](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1219)
+([electrofelix](https://github.com/electrofelix))
+- Fix remote libvirt functionality through LIBVIRT\_DEFAULT\_URI
+[\#1218](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1218)
+([ElArtista](https://github.com/ElArtista))
+- Added notes on how to download source RPMS for CentOS 8 stream
+[\#1213](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1213) ([nmaludy](https://github.com/nmaludy))
+- Ensure github actions run on merge to main branch
+[\#1207](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1207)
+([electrofelix](https://github.com/electrofelix))
+- Switch from travis to github actions for unit tests
+[\#1206](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1206)
+([electrofelix](https://github.com/electrofelix))
+- Consolidate ip address retreival to single method
+[\#1199](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1199)
+([electrofelix](https://github.com/electrofelix))
+- Use correct shell variable for options pass-thru
+[\#1197](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1197)
+([electrofelix](https://github.com/electrofelix))
+- Make a virtual machine disk sparse with `virt-sparsify`
+[\#1195](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1195) ([hswong3i](https://github.com/hswong3i))
+- Improving Docker based Installation [\#1194](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1194)
+([pgillich](https://github.com/pgillich))
+- Update TOC with recent additions [\#1189](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1189)
+([electrofelix](https://github.com/electrofelix))
+- Include recent vagrant release in tests [\#1188](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1188)
+([electrofelix](https://github.com/electrofelix))
+- Support building from git-archive tarballs
+[\#1187](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1187)
+([electrofelix](https://github.com/electrofelix))
+- Include rsync to support syncing folders [\#1186](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1186)
+([electrofelix](https://github.com/electrofelix))
+- Fix Broken `/etc/machine-id` by `vagrant package` due to virt-sysprep's `customize` operation
+[\#1184](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1184) ([hswong3i](https://github.com/hswong3i))
+- Exclude spec helpers from coverage [\#1179](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1179)
+([electrofelix](https://github.com/electrofelix))
+- Reduce start domain unnecessary domain redefines
+[\#1178](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1178)
+([electrofelix](https://github.com/electrofelix))
+- Provide uid/gid for additional volumes qemu:///session
+[\#1170](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1170)
+([electrofelix](https://github.com/electrofelix))
+- Add doc on ssh key replacement if repackaging
+[\#1169](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1169)
+([electrofelix](https://github.com/electrofelix))
+- Add ability to use emulated tpm [\#1166](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1166)
+([JTarasovic](https://github.com/JTarasovic))
+- Use Github actions for integration tests against Vagrant-libvirt
+[\#1091](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1091) ([abbbi](https://github.com/abbbi))
+- Add support for configuring memballoon-related settings
+[\#1083](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1083) ([erhudy](https://github.com/erhudy))
+- Add support for clock setup [\#1047](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1047)
+([zzambers](https://github.com/zzambers))
+- Add disk driver options with minor refactor
+[\#1000](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1000)
+([davidscaife](https://github.com/davidscaife))
+
+-------------------------------------------------------------------
+Fri Nov 20 16:57:11 UTC 2020 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.3.0
+
+# Changelog
+
+## [0.3.0](https://github.com/vagrant-libvirt/vagrant-libvirt/tree/0.3.0) (2020-11-16)
+
+[Full Changelog](https://github.com/vagrant-libvirt/vagrant-libvirt/compare/0.2.1...0.3.0)
+
+**Closed issues:**
+
+- Support parameters for openvswitch network configuration [\#1155](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1155)
+- Correctly support the new --no-tty option [\#1106](https://github.com/vagrant-libvirt/vagrant-libvirt/issues/1106)
+
+**Merged pull requests:**
+
+- Update issue template to request log be attached [\#1168](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1168) ([electrofelix](https://github.com/electrofelix))
+- Rudimentary start domain action spec [\#1167](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1167) ([electrofelix](https://github.com/electrofelix))
+- Use github cache for docker layers [\#1164](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1164) ([electrofelix](https://github.com/electrofelix))
+- Gemfile: update branch-name of 'vagrant-spec' [\#1163](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1163) ([kfix](https://github.com/kfix))
+- Ensure docker image build has history for version resolving [\#1162](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1162) ([electrofelix](https://github.com/electrofelix))
+- Tag version from git tag [\#1161](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1161) ([electrofelix](https://github.com/electrofelix))
+- Try using bundler cache for faster CI [\#1159](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1159) ([electrofelix](https://github.com/electrofelix))
+- Add rudimentary create domain spec test [\#1158](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1158) ([electrofelix](https://github.com/electrofelix))
+- Fix release workflow [\#1157](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1157) ([electrofelix](https://github.com/electrofelix))
+- \#1155 support setting ovs interface id [\#1156](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1156) ([abbbi](https://github.com/abbbi))
+- fix typo [\#1154](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1154) ([rwrr](https://github.com/rwrr))
+- Limit docker image push [\#1152](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1152) ([electrofelix](https://github.com/electrofelix))
+- Support separate storage pools for additional disks [\#1130](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1130) ([abbbi](https://github.com/abbbi))
+- Support the newly-introduced --no-tty Vagrant's option [\#1120](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1120) ([mrc0mmand](https://github.com/mrc0mmand))
+- Add forward mode 'open' to README [\#1118](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1118) ([IPv4v6](https://github.com/IPv4v6))
+- With additional notes for Fedora [\#1107](https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1107) ([buckaroogeek](https://github.com/buckaroogeek))
+
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*
+
+-------------------------------------------------------------------
 Thu Oct 22 15:45:01 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 New upstream release 0.2.1
