@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5xdg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://lxqt.org
 Source:         https://github.com/lxqt/libqtxdg/releases/download/%{version}/%{_name}-%{version}.tar.xz
 Source1:        https://github.com/lxqt/libqtxdg/releases/download/%{version}/%{_name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+Patch0:         libqt5xdg-svg-render.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -88,6 +89,7 @@ Tools for QtXdg.
 
 %prep
 %setup -q -n %{_name}-%{version}
+%patch0 -p1
 
 %build
 %cmake

@@ -367,4 +367,13 @@
   *￼Fixed unneeded URL encoding for %U/%u in &quot;xdgdesktopfile.cpp&quot;.</comment>
     <requestid>845994</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>2c09656a80e235b1d5e5aedff494c2d3</srcmd5>
+    <version>3.6.0</version>
+    <time>1617723032</time>
+    <user>RBrownSUSE</user>
+    <comment>- bsc#1183834: Fix displaying of icons by using QSvgRenderer
+  * Add libqt5xdg-svg-render.patch</comment>
+    <requestid>882920</requestid>
+  </revision>
 </revisionlist>
