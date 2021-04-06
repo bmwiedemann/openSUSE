@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           buildah
-Version:        1.19.6
+Version:        1.20.0
 Release:        0
 Summary:        Tool for building OCI containers
 License:        Apache-2.0
@@ -81,7 +81,7 @@ cp -avr * $HOME/go/src/%{project}
 cd $HOME/go/src/%{project}
 
 # Build buildah
-make %{?_smp_mflags} GIT_COMMIT=unknown EXTRALDFLAGS=-buildmode=pie
+make %{?_smp_mflags} GIT_COMMIT=unknown EXTRA_LDFLAGS=-buildmode=pie
 
 %check
 # Too many tests fail due to the restricted permissions in the build enviroment.
