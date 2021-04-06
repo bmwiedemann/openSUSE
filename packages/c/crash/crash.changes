@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Mar 25 13:03:13 UTC 2021 - Petr Mladek <pmladek@suse.com>
+
+- Upgrade to version 7.2.9:
+  * x86_64: Add support for new divide_error name
+  * calc_kaslr_offset: 5-level paging support
+  * Append time zone to output of date and time
+  * s390dbf: support s390 debug feature version 3
+  * x86_64: Add support for 1GB huge pages to "vtop" command
+  * Implement support for user-space zram reads on x86_64
+  * Prepare for the introduction of ARM64 8.3 Pointer Authentication
+  * New "log -T" option
+  * New ARM64 "--machdep vabits_actual=<value>" command line option
+  * Enhancement of the "struct -r" option
+  * Enhancement of the "bpf -p|-P" options
+  * New "extend -s" option
+- Dropped the following patches obsoleted by the version upgrade:
+  * crash-Fix-for-reading-compressed-kdump-dumpfiles-from-syst.patch
+  * crash-Fix-kmem-i-option-on-Linux-5.9-rc1-and-later-kernels.patch
+  * crash-Fix-to-allow-the-translation-of-ARM64-FIXMAP-address.patch
+  * crash-Introduce-a-new-ARM64-machdep-vabits_actual-value-co.patch
+  * crash-Prepare-for-the-introduction-of-ARM64-8.3-Pointer-Au.patch
+  * crash-Several-fixes-for-ARM64-kernels.patch
+  * crash-arm64-Change-tcr_el1_t1sz-variable-name-to-TCR_EL1_T.patch
+  * crash-fix-kmem-sS-for-caches-created-during-SLUB-bootstrap.patch
+  * crash-fix-memory_driver-build-kernel-5.8.patch
+  * crash-gdb-fix-aarch64.patch
+  * crash-task.c-avoid-unnecessary-cpu-cycles-in-stkptr_to_tas.patch
+  * crash-update-whitepaper-URL.patch
+  * crash-verify-exception-frame-accessible-for-all-verify-requests.patch
+  * crash-xendump-fix-failure-to-match-arm-aarch64-elf-format-.patch
+- Support the lockless printk ringbuffer added into kernel-5.10 (bsc#1183965)
+  * crash-printk-add-support-for-lockless-ringbuffer.patch
+  * crash-printk-use-committed-finalized-state-values.patch
+
+-------------------------------------------------------------------
 Wed Mar 10 07:54:46 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Install and ship the small built-in extensions snap.so, trace.so,

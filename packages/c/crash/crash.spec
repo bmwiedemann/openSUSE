@@ -46,7 +46,7 @@ URL:            https://crash-utility.github.io/
 Summary:        Crash utility for live systems; netdump, diskdump, LKCD or mcore dumpfiles
 License:        GPL-3.0-or-later AND GFDL-1.2-only
 Group:          Development/Tools/Debuggers
-Version:        7.2.8
+Version:        7.2.9
 Release:        0
 Source:         %{name}-%{version}.tar.gz
 Source2:        crash_whitepaper-%{whitepaper_version}.tar.bz2
@@ -76,38 +76,19 @@ Patch18:        %{name}-stop_read_error_when_intent_is_retry.patch
 Patch21:        %{name}-allow-use-of-sadump-captured-KASLR-kernel.patch
 Patch23:        %{name}-SLE15-SP1-With-Linux-4.19-rc1-up-MAX_PHYSMEM_BITS-to-128TB.patch
 Patch24:        %{name}-SLE15-SP1-Fix-for-PPC64-kernel-virtual-address-translation-in.patch
-Patch25:        %{name}-Fix-for-reading-compressed-kdump-dumpfiles-from-syst.patch
-Patch26:        %{name}-fix-kmem-sS-for-caches-created-during-SLUB-bootstrap.patch
 Patch27:        %{name}-Define-fallback-PN_XNUM.patch
-Patch28:        %{name}-fix-memory_driver-build-kernel-5.8.patch
 Patch29:        eppic-remove-duplicate-symbols.patch
-Patch30:        %{name}-verify-exception-frame-accessible-for-all-verify-requests.patch
-Patch31:        %{name}-update-whitepaper-URL.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/37d9a33dbc3cfd68265fccea551ed5be53da1acd.patch
-Patch32:        %{name}-Fix-kmem-i-option-on-Linux-5.9-rc1-and-later-kernels.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/46cfe1f5aed3b1950df505d71553c13abab060a6.patch
-Patch33:        %{name}-task.c-avoid-unnecessary-cpu-cycles-in-stkptr_to_tas.patch
 # PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/fdb41f0b6fa42a692e5fa39da3801f6ca18e8a6b.patch
 Patch34:        %{name}-xen-increase-__physical_mask_shift_xen-to-52.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/49ed67d2c72e3f1a18ca5ce2166c6f5091ed61b0.patch
-Patch35:        %{name}-Fix-to-allow-the-translation-of-ARM64-FIXMAP-address.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/d379b47f04dc77ea1989609aca9bfd8d37b7b639.patch
-Patch36:        %{name}-Introduce-a-new-ARM64-machdep-vabits_actual-value-co.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/41d61189d60e0fdd6509b96dc8160795263f3229.patch
-Patch37:        %{name}-Prepare-for-the-introduction-of-ARM64-8.3-Pointer-Au.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/339ddcd6f26fbd3519f50e96689645da867f6e0f.patch
-Patch38:        %{name}-Several-fixes-for-ARM64-kernels.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/1c45cea02df7f947b4296c1dcaefa1024235ef10.patch
-Patch39:        %{name}-arm64-Change-tcr_el1_t1sz-variable-name-to-TCR_EL1_T.patch
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/4d2e607af5d758f9ae42864cb6b26af49e9f5b1d.patch
-Patch40:        %{name}-xendump-fix-failure-to-match-arm-aarch64-elf-format-.patch
 # PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/9080711bd1c0645c272e74c25724ad2969d64674.patch
 Patch41:        %{name}-arm64-update-mapping-symbol-filter-in-arm64_verify_s.patch
 # PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/5a0488049917ba2790d59108f3def16825528974.patch
 Patch42:        %{name}-Fix-segmentation-fault-when-ikconfig-passed-nonstand.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/a5531b24750e7949c35640d996ea14c0587938bc.patch
+Patch43:        %{name}-printk-add-support-for-lockless-ringbuffer.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/71e159c64000467e94e08aefc144f5e1cdaa4aa0.patch
+Patch44:        %{name}-printk-use-committed-finalized-state-values.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
-# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/e770735200c02ac2414c394ea6ec5f7f033efe64.patch
-Patch91:        %{name}-gdb-fix-aarch64.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libeppic-devel
@@ -299,23 +280,12 @@ Authors:
 %patch23 -p1
 %patch24 -p1
 %endif
-%patch25 -p1
-%patch26 -p1
 %patch27 -p1
-%patch28 -p1
-%patch30 -p1
-%patch31 -p1
-%patch32 -p1
-%patch33 -p1
 %patch34 -p1
-%patch35 -p1
-%patch36 -p1
-%patch37 -p1
-%patch38 -p1
-%patch39 -p1
-%patch40 -p1
 %patch41 -p1
 %patch42 -p1
+%patch43 -p1
+%patch44 -p1
 %if %{have_snappy}
 %patch15 -p1
 %endif
@@ -336,7 +306,6 @@ cd -
 %patch12 -p1
 %patch16 -p1
 %patch29 -p1
-%patch91 -p1
 cp %{S:3} .
 mkdir kbuild
 cp %{S:6} memory_driver
