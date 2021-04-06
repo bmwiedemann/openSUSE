@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Mar 30 08:42:31 UTC 2021 - psimons@suse.com
+
+- Update setlocale to version 1.0.0.10.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Mon Mar 29 12:08:56 UTC 2021 - psimons@suse.com
+
+- Update setlocale to version 1.0.0.9 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
