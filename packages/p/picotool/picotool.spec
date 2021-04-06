@@ -12,13 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define sdk_version 1.1.0
+
+%define sdk_version 1.1.1
 
 Name:           picotool
-Url:            https://github.com/raspberrypi/picotool
+URL:            https://github.com/raspberrypi/picotool
 Version:        0.0~git20210305.21d5eb9
 Release:        0
 Summary:        Tool to inspect RP2040 binaries
@@ -49,5 +50,5 @@ install -D -m 0755 build/picotool %{buildroot}%{_bindir}/picotool
 %doc README.md
 %license LICENSE.TXT
 %{_bindir}/picotool
-%changelog
 
+%changelog
