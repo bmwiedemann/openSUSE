@@ -63,6 +63,8 @@ Source3:        octave.macros
 Patch0:         octave_tools_pie.patch
 # PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?54607
 Patch1:         0001-Disable-signal-handler-thread-avoid-duplicate-signal.patch
+# PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?60016
+Patch2:         0001-Use-reentrant-libqhull_r.patch
 BuildRequires:  arpack-ng-devel
 # Required for Patch0
 BuildRequires:  autoconf
@@ -217,6 +219,7 @@ This package contains documentation for Octave.
 %setup -q -n %{name}-%{src_ver}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 # define octave_blas macros
 sed -i 's/OCTAVE_BLAS_LIBRARY_NAME/%{blas_library}/g' %{SOURCE3}
