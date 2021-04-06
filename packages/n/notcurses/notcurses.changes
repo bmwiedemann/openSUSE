@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Apr  4 20:27:10 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.5
+  * Bugfix release, no user-visible changes.
+
+-------------------------------------------------------------------
+Fri Apr  2 12:01:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.4
+  * introduces notcurses_debug_caps() and the caps-rendered PoC.
+    The new option NCOPTION_NO_CLEAR_BITMAPS for notcurses_init()
+    will inhibit the latter's attempts to clear the screen of
+    existing bitmaps on start. You probably don't want to use it.
+  * ncplane_halign() and ncplane_valign() have been introduced;
+    ncplane_align() is now a passthrough to ncplane_halign(), and
+    deprecated. It will be removed in ABI3.
+  * The NCPLANE_OPTION_VERALIGNED option has been added for
+    ncplane_create(). The NCVISUAL_OPTION_HORALIGNED and
+    NCVISUAL_OPTION_VERALIGNED flags have been added for
+    ncvisual_render() and ncvisual_stream().
+  * @MasFlam contributed the nctabbed widget
+  * The redundant notcurses_canpixel() function has been removed
+    (use notcurses_check_pixel_support()). The
+    NCPLANE_OPTION_MARGINALIZED flag has been added for
+    ncplane_create(), allowing planes to be created with margins
+    relative to their parent plane.
+  * The ncplane_resize_aligned() resize callback now takes care
+    of vertical alignment if NCPLANE_OPTION_VERALIGNED was used.
+  * New resize callback ncplane_resize_marginalized() has been
+    added, intended for use with NCPLANE_OPTION_MARGINALIZED; it
+    will recompute margins and move/shrink/grow a plane as
+    necessary on a parent plane resize.
+
+-------------------------------------------------------------------
 Wed Mar 10 19:52:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.3

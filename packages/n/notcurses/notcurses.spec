@@ -24,7 +24,7 @@
 %bcond_without  pandoc
 %endif
 Name:           notcurses
-Version:        2.2.3
+Version:        2.2.5
 Release:        0
 Summary:        Character graphics and TUI library
 License:        Apache-2.0
@@ -128,7 +128,6 @@ fades, resize awareness, and multithreading support.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libnotcurses-core.
-
 
 %package -n notcurses++-devel
 Summary:        Development files for notcurses++
