@@ -36,7 +36,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.30.2
+Version:        2.31.1
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -118,9 +118,12 @@ CVS, and GNU arch.
 Summary:        Core git tools
 Group:          Development/Tools/Version Control
 Requires:       less
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
+Requires:       openssh-clients
+%else
 Requires:       openssh
+%endif
 Requires:       perl-Error
-Requires:       rsync
 Obsoletes:      git-remote-helpers < %{version}
 %{perl_requires}
 

@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Sat Mar 27 09:10:32 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.31.1:
+  * fsmonitor bug fixes
+  * fix git bisect to take an annotated tag as a good/bad endpoint
+  * Fix a corner case in "git mv" on case insensitive systems
+
+-------------------------------------------------------------------
+Tue Mar 16 15:33:29 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Require only openssh-clients where possible (TW, SLE >= 15 SP3)
+  (boo#1183580)
+- Drop rsync requirement, not necessary anymore
+
+-------------------------------------------------------------------
+Mon Mar 15 20:30:29 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.31.0:
+  * Use of "pack-redundant" command is discouraged and will trigger
+    a warning. The replacement is "repack -d".
+  * The "--format=%(trailers)" mechanism gets enhanced to make it
+    easier to design output for machine consumption.
+  * No longer give message to choose between rebase or merge upon
+    pull if the history fast-forwards
+  * The configuration variable 'core.abbrev' can be set to 'no' to
+    force no abbreviation regardless of the hash algorithm.
+  * "git rev-parse" can be explicitly told to give output as absolute
+    or relative path with the `--path-format=(absolute|relative)` option.
+  * Bash completion (in contrib/) update to make it easier for
+    end-users to add completion for their custom "git" subcommands.
+  * "git maintenance" learned to drive scheduled maintenance on
+    platforms whose native scheduling methods are not 'cron'.
+  * After expiring a reflog and making a single commit, the reflog for
+    the branch would record a single entry that knows both @{0} and
+    @{1}, but we failed to answer "what commit were we on?", i.e. @{1}
+  * "git bundle" learns "--stdin" option to read its refs from the
+    standard input.  Also, it now does not lose refs whey they point
+    at the same object.
+  * "git log" learned a new "--diff-merges=<how>" option.
+  * "git ls-files" can and does show multiple entries when the index is
+    unmerged, which is a source for confusion unless -s/-u option is in
+    use.  A new option --deduplicate has been introduced.
+  * `git worktree list` now annotates worktrees as prunable, shows
+    locked and prunable attributes in --porcelain mode, and gained
+    a --verbose option.
+  * "git clone" tries to locally check out the branch pointed at by
+    HEAD of the remote repository after it is done, but the protocol
+    did not convey the information necessary to do so when copying an
+    empty repository.  The protocol v2 learned how to do so.
+  * There are other ways than ".." for a single token to denote a
+    "commit range", namely "<rev>^!" and "<rev>^-<n>", but "git
+    range-diff" did not understand them.
+  * The "git range-diff" command learned "--(left|right)-only" option
+    to show only one side of the compared range.
+  * "git mergetool" feeds three versions (base, local and remote) of
+    a conflicted path unmodified.  The command learned to optionally
+    prepare these files with unconflicted parts already resolved.
+  * The .mailmap is documented to be read only from the root level of a
+    working tree, but a stray file in a bare repository also was read
+    by accident, which has been corrected.
+  * "git maintenance" tool learned a new "pack-refs" maintenance task.
+  * The error message given when a configuration variable that is
+    expected to have a boolean value has been improved.
+  * Signed commits and tags now allow verification of objects, whose
+    two object names (one in SHA-1, the other in SHA-256) are both
+    signed.
+  * "git rev-list" command learned "--disk-usage" option.
+  * "git {diff,log} --{skip,rotate}-to=<path>" allows the user to
+    discard diff output for early paths or move them to the end of the
+    output.
+  * "git difftool" learned "--skip-to=<path>" option to restart an
+    interrupted session from an arbitrary path.
+  * "git grep" has been tweaked to be limited to the sparse checkout
+    paths.
+  * "git rebase --[no-]fork-point" gained a configuration variable
+    rebase.forkPoint so that users do not have to keep specifying a
+    non-default setting.
+  * many bug fixes
+
+-------------------------------------------------------------------
 Tue Mar  9 18:55:54 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.30.2:
