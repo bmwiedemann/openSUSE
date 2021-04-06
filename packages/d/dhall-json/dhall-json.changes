@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 29 11:00:15 UTC 2021 - psimons@suse.com
+
+- Update dhall-json to version 1.7.6.
+  1.7.6
+
+  * [Fix `hashable`-related test failures](https://github.com/dhall-lang/dhall-haskell/pull/2152)
+  * [Fix lower bound on `dhall`](https://github.com/dhall-lang/dhall-haskell/pull/2147)
+  * [Allow bytestring-0.11](https://github.com/dhall-lang/dhall-haskell/pull/2144)
+  * [Fix typos in `json-to-dhall --help` output](https://github.com/dhall-lang/dhall-haskell/pull/2160)
+
+-------------------------------------------------------------------
 Sat Feb 13 11:43:03 UTC 2021 - psimons@suse.com
 
 - Update dhall-json to version 1.7.5 revision 2.
