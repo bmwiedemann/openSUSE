@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 24 12:02:40 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Some rake tasks improvements (bsc#1183957):
+  - Added "rake osc:config" task
+  - Allow skipping part of the Git commit check with
+    CHECK_MODIFIED=0 option
+- 1.5.0
+
+-------------------------------------------------------------------
 Fri Feb 26 09:38:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Allow package downgrade in "build_dependencies:install" task
