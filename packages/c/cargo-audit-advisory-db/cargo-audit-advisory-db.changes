@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 31 23:17:44 UTC 2021 - wbrown@suse.de
+
+- Update to version 20210401:
+  * Assigned RUSTSEC-2021-0050 to reorder
+  * Add advisory for out-of-bounds write and uninitialized memory exposure in reorder
+  * max7301: Mark RUSTSEC-2020-0152 as patched. (#859)
+  * Assigned RUSTSEC-2020-0152 to max7301
+  * Add advisory for data race in max7301
+  * Assigned RUSTSEC-2020-0151 to generator
+  * Add advisory for data race in generator (#855)
+  * Assigned RUSTSEC-2020-0150 to disrustor
+
+-------------------------------------------------------------------
 Wed Mar 17 00:54:18 UTC 2021 - wbrown@suse.de
 
 - Update to version 20210317:

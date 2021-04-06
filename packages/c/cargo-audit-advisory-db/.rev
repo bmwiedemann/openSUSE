@@ -7,4 +7,12 @@
     <comment>New package cargo-audit-advisory-db (depends on 879549)</comment>
     <requestid>879553</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>06f825258bc31bb0e23dcae910c91c3c</srcmd5>
+    <version>20210401</version>
+    <time>1617723010</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882781</requestid>
+  </revision>
 </revisionlist>
