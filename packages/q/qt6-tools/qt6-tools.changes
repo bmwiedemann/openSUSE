@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 31 13:43:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.3
+  * https://www.qt.io/blog/qt-6.0.3-released
+
+-------------------------------------------------------------------
 Mon Mar 22 17:21:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Work around boo#1179155 and explicitly require clang11
