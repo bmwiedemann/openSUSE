@@ -1,7 +1,7 @@
 #
 # spec file for package attr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libattr1
 Name:           attr
-Version:        2.4.48
+Version:        2.5.1
 Release:        0
 Summary:        Commands for Manipulating Extended Attributes
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,7 +28,6 @@ Source:         https://download-mirror.savannah.gnu.org/releases/attr/attr-%{ve
 Source2:        https://download-mirror.savannah.gnu.org/releases/attr/attr-%{version}.tar.gz.sig
 Source3:        %{name}.keyring
 Source99:       baselibs.conf
-Patch0:         0001-attr-2.4.48-test-suite-perl.patch
 BuildRequires:  pkgconfig
 Conflicts:      xfsdump < 2.0.0
 
@@ -74,7 +73,6 @@ staticallly linking to programs that make use of extended attributes.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

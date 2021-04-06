@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 22 15:19:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.1:
+  * Fix libtool library versioning regression 
+  * Update po files and German translation
+  * getfattr: Add --one-file-system option
+  * Move struct stat into struct walk_tree_args
+  * Move list of open directories into struct walk_tree_args
+  * Move walk_tree_rec arguments into a separate struct
+  * xattr.conf: Indicate afs metadata xattrs should be skipped when copying
+  * Fix typos in manual pages
+  * getfattr.1: by default only user namespace attributes are dumped
+  * Enable large-file support on systems that do not enable it by default
+  * test: escape left brace in a regex in test/run
+- drop 0001-attr-2.4.48-test-suite-perl.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Aug  2 06:57:09 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library.
