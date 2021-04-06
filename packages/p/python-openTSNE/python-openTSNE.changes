@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  1 07:36:31 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add python-openTSNE-disable-CPU-autodetection.patch (boo#1100677)
+
+-------------------------------------------------------------------
 Fri Jan 29 19:18:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - initial specfile for version 0.5.1

@@ -28,6 +28,7 @@ License:        BSD-3-Clause
 URL:            https://github.com/pavlin-policar/openTSNE
 # tests are not packaged in the PyPI sdist, use GitHub instead
 Source:         %{url}/archive/v%{version}.tar.gz#/openTSNE-%{version}-gh.tar.gz
+Patch0:         python-openTSNE-disable-CPU-autodetection.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module devel}
@@ -52,7 +53,7 @@ Obsoletes:      python-fastTSNE < %{version}
 Extensible, parallel implementations of t-SNE
 
 %prep
-%setup -q -n openTSNE-%{version}
+%autosetup -p1 -n openTSNE-%{version}
 
 %build
 export CFLAGS="%{optflags}"
