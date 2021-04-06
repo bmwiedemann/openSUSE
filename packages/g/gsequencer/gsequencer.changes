@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr  2 16:05:26 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.8.5 fixed ags_lfo_synth_util.c offset and
+  iteration.
+- fixed potential SIGSEGV while clicking AgsPiano of
+  AgsNotationEditor.
+
+-------------------------------------------------------------------
+Thu Apr  1 14:09:56 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.8.4 fixed empty keys while using no tuning in
+  ags_hq_pitch_util.c
+- improved iteration of AgsChannel in ags_fx_factory.c
+
+-------------------------------------------------------------------
 Wed Mar 31 06:09:18 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.8.3 fixed missing XML IO of new available
