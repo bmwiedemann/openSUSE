@@ -26,4 +26,12 @@
 - Use xdist for test execution as otherwise it takes ages</comment>
     <requestid>786082</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>516bff16d2a06dc34775e4678a7ae8c9</srcmd5>
+    <version>3.6</version>
+    <time>1617722998</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882590</requestid>
+  </revision>
 </revisionlist>

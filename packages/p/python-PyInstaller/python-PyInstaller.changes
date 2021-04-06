@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  1 13:27:23 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Automagically skip matplotlib tests because matplotlib dropped python36
+- Add glibc233.patch to fix recent test failure
+
+-------------------------------------------------------------------
 Wed Mar 18 07:22:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable functional tests as it takes ages and basic checks

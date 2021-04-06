@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyInstaller
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Summary:        Bundle a Python application and all its dependencies into a sing
 License:        GPL-2.0-only
 URL:            https://www.pyinstaller.org
 Source:         https://files.pythonhosted.org/packages/source/P/PyInstaller/PyInstaller-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pyinstaller/pyinstaller/pull/5547/commits/589819183afc18f2d5b51dbbce68b7aca020c5e8 Bindepend: Skip/warn unrecognised output from ldconfig
+Patch0:         glibc233.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -47,7 +49,6 @@ BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module macholib >= 1.8}
-BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module opengl}
 BuildRequires:  %{python_module pefile >= 2017.8.1}
 BuildRequires:  %{python_module psutil}
@@ -73,6 +74,7 @@ interpreter or any modules.
 
 %prep
 %setup -q -n PyInstaller-%{version}
+%autopatch -p1
 chmod a-x PyInstaller/utils/hooks/__init__.py
 
 # Force build of bootloader
