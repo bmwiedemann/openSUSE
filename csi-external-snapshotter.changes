@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 31 14:25:16 UTC 2021 - Stefan Haas <stefan.haas@suse.com>
+
+- Update version to v3.0.2 
+
+-------------------------------------------------------------------
+Mon Mar  8 14:27:20 UTC 2021 - Stefan Haas <stefan.haas@suse.com>
+
+- v3.0.0 relies on golang 1.13
+
+-------------------------------------------------------------------
+Thu Mar  4 13:09:45 UTC 2021 - Stefan Haas <stefan.haas@suse.com>
+
+- Update version to 3.0.0 
+
+-------------------------------------------------------------------
 Tue Nov 24 03:08:46 UTC 2020 - Tim Serong <tserong@suse.com>
 
 - Remove duplicate version information from _service file 

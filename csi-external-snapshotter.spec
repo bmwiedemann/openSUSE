@@ -1,7 +1,7 @@
 #
 # spec file for package csi-external-snapshotter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{go_nostrip}
 
-%define project github.com/kubernetes-csi/external-snapshotter/v2
+%define project github.com/kubernetes-csi/external-snapshotter/v3
 %define package csi-snapshotter
 %define source external-snapshotter
 
 Name:           csi-%{source}
-Version:        2.1.1
+Version:        3.0.2
 Release:        0
 Summary:        Triggers CreateSnapshot/DeleteSnapshot against a CSI endpoint
 License:        Apache-2.0
@@ -32,7 +32,7 @@ URL:            https://%{project}
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) >= 1.13
 
 %description
 Kubernetes CSI external-snapshotter sidecar watches Kubernetes VolumeSnapshotContent CRD objects and triggers CreateSnapshot/DeleteSnapshot against a CSI endpoint.

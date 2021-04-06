@@ -4,9 +4,8 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="filename">csi-external-snapshotter</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v2.1.1</param>
+    <param name="versionformat">3.0.2</param>
+    <param name="revision">v3.0.2</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
