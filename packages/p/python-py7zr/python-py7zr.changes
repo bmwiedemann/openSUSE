@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Sat Apr  3 12:20:11 UTC 2021 - Ismail Dönmez <idonmez@suse.com>
+
+- Fix sed line to use python3 and add a replacement for /usr/bin/python
+  as well.
+
+-------------------------------------------------------------------
+Fri Jan 22 11:45:55 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Initial version 0.11.3
