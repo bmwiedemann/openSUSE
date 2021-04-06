@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-attachments
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,9 @@ sed -i '/mock/d;/-cov/d;/flakes/d' setup.cfg
 }
 
 %check
-%python_expand $python -m pytest -v --ds=attachments.tests.testapp.settings
+export DJANGO_SETTINGS_MODULE=attachments.tests.testapp.settings
+PYTHONPATH=.
+%pytest
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
