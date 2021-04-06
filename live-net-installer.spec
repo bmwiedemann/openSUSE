@@ -49,7 +49,7 @@ Requires:       cryptsetup
 Requires:       device-mapper
 Requires:       dmraid
 Requires:       e2fsprogs
-Requires:       exfat-utils
+Requires:       exfatprogs
 Requires:       fcoe-utils
 Requires:       mdadm
 Requires:       multipath-tools

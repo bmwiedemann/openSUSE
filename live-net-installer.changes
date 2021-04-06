@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  6 13:48:58 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Switch from exfat-utils to exfatprogs, see also gh#yast/yast-storage-ng#1214
+
+-------------------------------------------------------------------
 Wed Mar 31 08:45:51 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Fixup /var/cache/zypp after the installation

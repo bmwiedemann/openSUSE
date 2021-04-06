@@ -130,4 +130,12 @@
 - Run YaST in a mount namespace</comment>
     <requestid>882331</requestid>
   </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>8912cca2829c051e3bf955aefb73fd20</srcmd5>
+    <version>1.0</version>
+    <time>1617723083</time>
+    <user>RBrownSUSE</user>
+    <comment>- Switch from exfat-utils to exfatprogs, see also gh#yast/yast-storage-ng#1214</comment>
+    <requestid>883327</requestid>
+  </revision>
 </revisionlist>
