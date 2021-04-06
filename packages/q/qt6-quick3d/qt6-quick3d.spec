@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.0.2
+%define real_version 6.0.3
 %define short_version 6.0
 %define tar_name qtquick3d
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quick3d%{?pkg_suffix}
-Version:        6.0.2
+Version:        6.0.3
 Release:        0
 Summary:        API for creating 3D content and 3D user interfaces based on Qt Quick
 License:        GPL-3.0-or-later
