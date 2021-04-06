@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-math-functions
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name math-functions
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.4.1
+Version:        0.3.4.2
 Release:        0
 Summary:        Collection of tools for numeric computations
 License:        BSD-2-Clause
