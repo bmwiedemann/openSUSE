@@ -19,7 +19,7 @@
 %define apxs %{_sbindir}/apxs2
 %define apache_libexecdir %(%{apxs} -q LIBEXECDIR)
 Name:           apache2-mod_auth_openidc
-Version:        2.4.6
+Version:        2.4.7
 Release:        0
 Summary:        Apache2.x module for an OpenID Connect enabled Identity Provider
 License:        Apache-2.0
@@ -30,7 +30,7 @@ BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
-%if 0%{?is_opensuse} > 0
+%if 0%{?suse_version} >= 1550
 BuildRequires:  hiredis-devel
 %endif
 BuildRequires:  libtool

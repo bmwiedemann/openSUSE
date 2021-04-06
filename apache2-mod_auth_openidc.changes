@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr  5 22:41:02 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.4.7
+  * Bugfixes
+    - avoid logged-out sessions remaining (valid) in the session cache:
+      remove session from cache before clearing it; see #542
+  * Features
+    - add maximum session lifetime (exp), inactivity timeout (timeout)
+      and remote_user to OIDCInfoHook; closes #541
+  * Security
+    - add opt-out on sub check in userinfo endpoint response using the
+      (undocumented) OIDC_NO_USERINFO_SUB environment variable,
+      for backwards (but insecure) compatibility, see #544
+  * Dependencies
+    - libcjose >= 0.5.1
+    - if your distribution does not provide libcjose in its package repository,
+      recent packages for a number of platforms are available from the "Assets"
+      section in release 2.4.0
+
+-------------------------------------------------------------------
+Thu Apr  1 12:13:33 UTC 2021 - pgajdos@suse.com
+
+- require hiredis only for newer distros than SLE-15 [jsc#SLE-11726]
+
+-------------------------------------------------------------------
 Thu Feb 18 07:43:54 UTC 2021 - pgajdos@suse.com
 
 - re-download tarball

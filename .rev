@@ -204,4 +204,12 @@ Bugfixes
     - libcjose &gt;= 0.5.1</comment>
     <requestid>873294</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>39ea8567d418f0771050614d0fe27347</srcmd5>
+    <version>2.4.7</version>
+    <time>1617722994</time>
+    <user>RBrownSUSE</user>
+    <comment>Update to version 2.4.7 (forwarded request 883107 from stroeder)</comment>
+    <requestid>883176</requestid>
+  </revision>
 </revisionlist>
