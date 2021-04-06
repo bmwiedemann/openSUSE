@@ -16,6 +16,7 @@
 #
 
 
+%define _lto_cflags %{nil}
 %define sover   5
 Name:           dav1d
 Version:        0.8.2

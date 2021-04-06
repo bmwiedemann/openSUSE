@@ -156,4 +156,13 @@
     <comment></comment>
     <requestid>874256</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>1b37403163cf132029968a247c1bca3a</srcmd5>
+    <version>0.8.2</version>
+    <time>1617722946</time>
+    <user>RBrownSUSE</user>
+    <comment>- Disable LTO (fix boo#1183956)
+</comment>
+    <requestid>881203</requestid>
+  </revision>
 </revisionlist>

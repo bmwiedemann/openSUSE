@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 24 18:36:28 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Disable LTO (fix boo#1183956)
+
+-------------------------------------------------------------------
 Mon Feb 22 08:06:22 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.8.2
