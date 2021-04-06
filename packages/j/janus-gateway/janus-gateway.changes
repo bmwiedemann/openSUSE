@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 06 10:49:55 UTC 2021 - michael@stroeder.com
+
+- Update to version 0.11.1:
+  * Add new option to configure ICE nomination mode, if libnice is recent enough (#2541)
+  * Added support for per-session timeout values (thanks @alg!) (#2577)
+  * Added support for compilation on FreeBSD (thanks @jsm222!) (#2508)
+  * Fixed occasional auth errors when using both API secret and stored tokens (#2581)
+  * Added support for stdout logging to daemon-mode as well (#2591)
+  * Fixed odr-violation issue between Lua and Duktape plugins (#2540)
+  * Fixed missing simulcast stats in Admin API and Event Handlers when using rid (#2610)
+  * Fixed VideoRoom recording not stopped for participants entering after global recording was started (#2550)
+  * Fixed 'audiocodec'/'videocodec' being ignored when joining a VideoRoom via 'joinandconfigure'
+  * Added content type support to MESSAGE in SIP plugin (#2567)
+  * Made RTSP timeouts configurable in Streaming plugin (#2598)
+  * Fixed incorrect parsing of backend URL in WebSockets event handler (#2603)
+  * Added support for secure connections and lws debugging to WebSockets event handler
+  * Fixed occasionally broken AV1 recordings post-processing
+  * Other smaller fixes and improvements (thanks to all who contributed pull requests and reported issues!)
+
+-------------------------------------------------------------------
 Mon Feb 08 10:27:21 UTC 2021 - michael@stroeder.com
 
 - Update to version 0.10.10:

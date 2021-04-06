@@ -1,7 +1,7 @@
 #
-# spec file for janus-gateway
+# spec file for package janus-gateway
 #
-# Copyright (c) 2020 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if 0%{?suse_version} > 1230
 %bcond_without systemd
@@ -26,9 +27,9 @@
 %endif
 
 Name:           janus-gateway
-Version:        0.10.10
+Version:        0.11.1
 Release:        0
-License:        GPL-3.0
+License:        GPL-3.0-only
 Summary:        Janus WebRTC Gateway
 URL:            https://github.com/meetecho/janus-gateway
 Group:          Productivity/Networking/Other
@@ -40,22 +41,22 @@ BuildRequires:  automake
 BuildRequires:  libtool
 # basic dependencies
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libmicrohttpd)
+BuildRequires:  curl-devel
+BuildRequires:  gengetopt
+BuildRequires:  libconfig-devel
+BuildRequires:  sofia-sip-devel
 BuildRequires:  pkgconfig(ini_config)
 BuildRequires:  pkgconfig(jansson)
-BuildRequires:  pkgconfig(nice)
+BuildRequires:  pkgconfig(libmicrohttpd)
 BuildRequires:  pkgconfig(libsrtp) >= 1.4.5
-BuildRequires:  pkgconfig(openssl) >= 1.0.1e
 BuildRequires:  pkgconfig(lua)
-BuildRequires:  sofia-sip-devel
-BuildRequires:  gengetopt
+BuildRequires:  pkgconfig(nice)
 BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(openssl) >= 1.0.1e
 BuildRequires:  pkgconfig(opus)
-BuildRequires:  curl-devel
-BuildRequires:  libconfig-devel
 %if %{with janus_postprocessing}
-BuildRequires:  libavformat-devel
 BuildRequires:  libavcodec-devel
+BuildRequires:  libavformat-devel
 BuildRequires:  libavutil-devel
 %endif
 # data channel support
@@ -69,11 +70,12 @@ Requires(pre):  shadow
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 %else
-PreReq:        %{insserv_prereq} %{fillup_prereq}
+PreReq:         %{insserv_prereq} %{fillup_prereq}
 %endif
 
 %define user_name janus
 %define home      %{_sharedstatedir}/janus/
+
 %description
 Janus is a general-purpose WebRTC gateway designed and developed
 by Meetecho.
