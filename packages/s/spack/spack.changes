@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Mar 30 14:31:26 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- added run-find-external.sh which calls the command in post
+  `spack external find` as nobody and not as root
+
+-------------------------------------------------------------------
+Tue Mar 23 08:32:49 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- added libbz2-devel as dependency as spack requires this, as soon
+  as the bzip2 binary is found and removed warning for this 
+  corner case in rpmlinrc
+
+-------------------------------------------------------------------
 Fri Mar 19 15:04:20 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - set the right MODULEPATH in /etc/profile.d/spack.[cs]h 

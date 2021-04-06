@@ -32,7 +32,7 @@ ExclusiveArch:  do_not_build
 # Distinguish between packages we recommend and packages which
 %define spack_trigger_recommended autoconf bash bison bzip2 cmake-full ccache cpio diffutils findutils flex gcc gcc-fortran git-lfs make m4 ncurses-devel libtool openssl perl-base pkgconf pkgconf-pkg-config python3-basetar info xz
 # packages recognized by spack, but not recommended
-%define spack_trigger_packages ghostscript go fish fzf hugo java-11-openjdk-devel java-14-openjdk-devel java-15-openjdk-devel java-16-openjdk-devel java-1_8_0-openjdk-devel ruby
+%define spack_trigger_packages ghostscript go fish fzf hugo java-11-openjdk-devel java-14-openjdk-devel java-15-openjdk-devel java-16-openjdk-devel java-1_8_0-openjdk-devel ruby openmpi1-devel openmpi2-devel openmpi3-devel openmpi4-devel openmpi1-gnu-hpc-devel openmpi2-gnu-hpc-devel openmpi3-gnu-hpc-devel openmpi4-gnu-hpc-devel mvapich2-devel mpich-devel gcc7 gcc8 gcc10 gcc11
 # non oss packages
 %define spack_trigger_external cuda-nvcc
 Name:           spack
@@ -44,6 +44,7 @@ URL:            https://spack.io
 Source0:        https://github.com/spack/spack/archive/v%{version}.tar.gz#/spack-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        spack-rpmlintrc
+Source3:        run-find-external.sh
 Patch0:         Make-spack-paths-compliant-to-distro-installation.patch
 Patch1:         fix-tumbleweed-naming.patch
 Patch2:         Adapt-shell-scripts-that-set-up-the-environment-for-different-shells.patch
@@ -60,14 +61,18 @@ BuildRequires:  lua-lmod
 BuildRequires:  polkit
 BuildRequires:  python-base
 BuildRequires:  python3-urllib3
+BuildRequires:  sudo
 Requires:       %{name}-recipes = %{version}
 Requires:       bzip2
 Requires:       curl
 Requires:       gcc-fortran
 Requires:       gpg2
+Requires:       libbz2-devel
 Requires:       lua-lmod
+Requires:       patch
 Requires:       polkit
 Requires:       spack-recipes
+Requires:       sudo
 Requires:       xz
 Recommends:     %spack_trigger_recommended
 Recommends:     spack-recipes = %version
@@ -238,6 +243,7 @@ cp -r var/spack/* %{buildroot}%{_localstatedir}/lib/spack
 cp -r bin/sbang %{buildroot}/%{_bindir}
 cp -r bin/spack* %{buildroot}%{_bindir}/
 cp etc/spack/defaults/config.yaml %{buildroot}%{_sysconfdir}/skel/.spack/
+install -m 755 %{S:3} %{buildroot}/%{spack_dir}/run-find-external.sh
 
 # Fix more paths
 sed -i 's@\(\sroot:\) $spack/opt/spack@\1 ~/spack/packages@' %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml
@@ -380,16 +386,13 @@ if [ -e /etc/os-release ] ;  then
 fi
 sed -i "s@HOSTTYPE@$HOSTTYPE@" %{spack_dir}/etc/spack/compilers.yaml
 # find installed programms
-test -e %{_sysconfdir}/spack/no_rpm_trigger || spack external find --scope system --exclude 'installdbgsymbols'
+/usr/lib/spack/run-find-external.sh
 
 %triggerin -- %{?spack_trigger_recommended} %{?spack_trigger_packages} %{?spack_trigger_external}
-test -e %{_sysconfdir}/spack/no_rpm_trigger || spack external find --scope system --exclude 'installdbgsymbols'
-test -e %{_sysconfdir}/spack/no_rpm_trigger || echo "Create %{_sysconfdir}/spack/no_rpm_trigger to stop spack to search for new packages after a rpm install"
+/usr/lib/spack/run-find-external.sh
 
 %triggerpostun -- %{?spack_trigger_recommended} %{?spack_trigger_packages} %{?spack_trigger_external}
-test -e %{_sysconfdir}/spack/no_rpm_trigger || rm /etc/spack/packages.yaml
-test -e %{_sysconfdir}/spack/no_rpm_trigger || spack external find --scope system --exclude 'installdbgsymbols'
-test -e %{_sysconfdir}/spack/no_rpm_trigger || echo "Create %{_sysconfdir}/spack/no_rpm_trigger to stop spack to search for new packages after a rpm install"
+/usr/lib/spack/run-find-external.sh
 
 %if %{without doc}
 %files
@@ -410,6 +413,7 @@ test -e %{_sysconfdir}/spack/no_rpm_trigger || echo "Create %{_sysconfdir}/spack
 %{_localstatedir}/lib/spack
 %{_datarootdir}/spack
 %config %{_sysconfdir}/profile.d/spack.sh
+%ghost %config %{_sysconfdir}/spack/packages.yaml
 %config %{_sysconfdir}/profile.d/spack.csh
 %dir %{_sysconfdir}/skel/.spack
 %config %{_sysconfdir}/skel/.spack/config.yaml

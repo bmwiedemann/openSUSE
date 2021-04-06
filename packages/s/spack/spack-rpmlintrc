@@ -11,3 +11,8 @@ addFilter("non-standard-gid .* spack")
 # Spurious self-applying patches from an upstream source.
 # These are part of recipes and not intended to run as scripts.
 addFilter("non-executable-script /var/lib/spack/repos.*")
+# Spack is used for building other software, so when it finds e.g 
+# the bzip binary it assumes that the devel libraries are also installed.
+# So ignore the warnings:
+addFilter("devel-dependency libbz2-devel")
+addFilter("explicit-lib-dependency libbz2-devel")
