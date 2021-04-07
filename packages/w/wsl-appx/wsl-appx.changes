@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar  5 05:09:21 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Fix bsc#1179874 Error in parsing the WSL appx package
+  * Add SHORT_NAME as truncated PRETTY_NAME to comply with AppManifest.xml schema
+
+-------------------------------------------------------------------
 Wed Jul  1 21:23:35 UTC 2020 - Scott Reeves <sreeves@suse.com>
 
 - Change APPID parsing to pass MS store tests. Dont strip
