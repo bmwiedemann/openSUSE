@@ -18,6 +18,9 @@
         <conditional name="only_aarch64">
                 <platform arch="aarch64" />
         </conditional>
+        <conditional name="only_armv7l">
+                <platform arch="armv7l" />
+        </conditional>
         <conditional name="only_ppc64">
                 <platform arch="ppc64" />
         </conditional>

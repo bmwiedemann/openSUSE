@@ -1540,7 +1540,6 @@ unsorted:
   - busybox-attr 
   - busybox-bc 
   - busybox-bind-utils 
-  - busybox-bzip2 
   - busybox-cpio 
   - busybox-diffutils 
   - busybox-dos2unix 
@@ -1571,7 +1570,6 @@ unsorted:
   - busybox-time 
   - busybox-traceroute 
   - busybox-tunctl 
-  - busybox-unzip 
   - busybox-util-linux 
   - busybox-vi 
   - busybox-vlan 
@@ -7541,6 +7539,7 @@ unsorted:
   - kamoso-lang 
   - kanidm: [x86_64] 
   - kanidm-clients: [x86_64] 
+  - kanidm-docs: [x86_64] 
   - kanidm-server: [x86_64] 
   - kanidm-unixd-clients: [x86_64] 
   - kanjipad 
@@ -8678,10 +8677,8 @@ unsorted:
   - libOpenColorIO1 
   - libOpenIPMI0 
   - libOpenImageDenoise0: [x86_64] 
-  - libOpenImageIO2_1: [i586] 
-  - libOpenImageIO2_2: [x86_64] 
-  - libOpenImageIO_Util2_1: [i586] 
-  - libOpenImageIO_Util2_2: [x86_64] 
+  - libOpenImageIO2_2 
+  - libOpenImageIO_Util2_2 
   - libOpenSceneGraph-devel 
   - libOpenSceneGraph131 
   - libOpenSceneGraph131-devel 
@@ -9124,7 +9121,7 @@ unsorted:
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit: [x86_64] 
   - libXxf86vm1-32bit: [x86_64] 
-  - libYODA-1_8_5 
+  - libYODA-1_9_0 
   - libZXing1-32bit: [x86_64] 
   - liba2ps1 
   - liba52-0-32bit: [x86_64] 
@@ -9237,7 +9234,7 @@ unsorted:
   - libantlr3c3 
   - libantlr3c3-32bit: [x86_64] 
   - libantlr4-runtime-devel 
-  - libantlr4-runtime4_9_1 
+  - libantlr4-runtime4_9_2 
   - libao-devel 
   - libao-plugins4-32bit: [x86_64] 
   - libao4-32bit: [x86_64] 
@@ -9740,7 +9737,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephsqlite: [x86_64] 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -9933,6 +9932,7 @@ unsorted:
   - libcrystalhd3 
   - libcrystalhd3-32bit: [x86_64] 
   - libcsirocsa0 
+  - libcsironn0 
   - libcsnd6-6_0 
   - libcsound64-6_0 
   - libcsparse3 
@@ -10101,7 +10101,7 @@ unsorted:
   - libdnf-plugin-txnupd: [i586] 
   - libdnf-repo-config-zypp: [i586] 
   - libdnf2: [i586] 
-  - libdnnl1: [x86_64] 
+  - libdnnl2: [x86_64] 
   - libdns1611-32bit: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
@@ -10644,6 +10644,7 @@ unsorted:
   - libglfw-devel 
   - libglfw2 
   - libglfw3 
+  - libglfw3-wayland 
   - libglib-testing-0-0 
   - libglib-testing-devel 
   - libglibmm-2_4-1-32bit: [x86_64] 
@@ -12494,18 +12495,17 @@ unsorted:
   - libplplotfortran0 
   - libplplotqt2 
   - libplplotwxwidgets1 
-  - libpmem-devel: [x86_64] # devel package of dvd:pmdk 
-  - libpmemblk-devel: [x86_64] # devel package of dvd:pmdk 
+  - libpmem-devel: [x86_64] # devel package of dvd:libpmemobj1 
+  - libpmemblk-devel: [x86_64] # devel package of dvd:libpmemobj1 
   - libpmemblk1: [x86_64] 
   - libpmemkv1: [x86_64] 
   - libpmemkv_json_config1: [x86_64] 
-  - libpmemlog-devel: [x86_64] # devel package of dvd:pmdk 
+  - libpmemlog-devel: [x86_64] # devel package of dvd:libpmemobj1 
   - libpmemlog1: [x86_64] 
   - libpmemobj-cpp-devel: [x86_64] 
   - libpmemobj-cpp-devel-doc: [x86_64] 
-  - libpmemobj-devel: [x86_64] # devel package of dvd:pmdk 
-  - libpmemobj1: [x86_64] 
-  - libpmempool-devel: [x86_64] # devel package of dvd:pmdk 
+  - libpmemobj-devel: [x86_64] # devel package of dvd:libpmemobj1 
+  - libpmempool-devel: [x86_64] # devel package of dvd:libpmemobj1 
   - libpmempool1: [x86_64] 
   - libpmi0: [x86_64] 
   - libpmix2: [x86_64] 
@@ -12896,8 +12896,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
   - libraft0 
   - libragel0 
   - libraptor-devel 
@@ -12921,7 +12921,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13149,7 +13149,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -13162,12 +13162,12 @@ unsorted:
   - librnp-0-0 
   - librocsgraphtheory0 
   - librpma0: [x86_64] 
-  - librpmem-devel: [x86_64] # devel package of dvd:pmdk 
+  - librpmem-devel: [x86_64] # devel package of dvd:libpmemobj1 
   - librpmem1: [x86_64] 
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-3_9_0 
+  - librssguard-3_9_1 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -13780,7 +13780,7 @@ unsorted:
   - libtrilinos_13_0_1-gnu-openmpi2-hpc: [x86_64] 
   - libtrilinos_13_0_1-gnu-openmpi3-hpc: [x86_64] 
   - libtrilinos_13_0_1-gnu-openmpi4-hpc: [x86_64] 
-  - libtrng4-22 
+  - libtrng4-24 
   - libts0-32bit: [x86_64] 
   - libtsan0-gcc10: [x86_64] 
   - libtsan0-gcc7: [x86_64] 
@@ -15541,6 +15541,8 @@ unsorted:
   - megaglest 
   - megaglest-data 
   - megatools 
+  - meld 
+  - meld-lang 
   - melody 
   - melody-lang 
   - melt 
@@ -15828,8 +15830,8 @@ unsorted:
   - molsketch-devel 
   - molsketch-doc 
   - monero-devel 
-  - monero-devel-static 
-  - monero-doc 
+  - monero-devel-static: [i586] 
+  - monero-doc: [i586] 
   - monero-utils 
   - monerod 
   - mongolian-fonts 
@@ -16033,14 +16035,14 @@ unsorted:
   - mpich-ofi-gnu-hpc-devel 
   - mpich-ofi-gnu-hpc-devel-static 
   - mpich-ofi-gnu-hpc-macros-devel 
-  - mpich-ofi_3_3_2-gnu-hpc 
-  - mpich-ofi_3_3_2-gnu-hpc-devel 
-  - mpich-ofi_3_3_2-gnu-hpc-devel-static 
-  - mpich-ofi_3_3_2-gnu-hpc-macros-devel 
-  - mpich_3_3_2-gnu-hpc 
-  - mpich_3_3_2-gnu-hpc-devel 
-  - mpich_3_3_2-gnu-hpc-devel-static 
-  - mpich_3_3_2-gnu-hpc-macros-devel 
+  - mpich-ofi_3_4_1-gnu-hpc 
+  - mpich-ofi_3_4_1-gnu-hpc-devel 
+  - mpich-ofi_3_4_1-gnu-hpc-devel-static 
+  - mpich-ofi_3_4_1-gnu-hpc-macros-devel 
+  - mpich_3_4_1-gnu-hpc 
+  - mpich_3_4_1-gnu-hpc-devel 
+  - mpich_3_4_1-gnu-hpc-devel-static 
+  - mpich_3_4_1-gnu-hpc-macros-devel 
   - mpitests 
   - mpitests-mpich 
   - mpitests-mpich-gnu-hpc 
@@ -16101,7 +16103,7 @@ unsorted:
   - msv-xmlgen 
   - msv-xsdlib 
   - mt-st 
-  - mt32emu 
+  - mt32emu-qt 
   - mtd-utils 
   - mtdev 
   - mtdev-devel: [i586] # devel package of dvd:libmtdev1 
@@ -18076,6 +18078,7 @@ unsorted:
   - password-store 
   - password-store-dmenu 
   - pasystray 
+  - patch: [i586] 
   - patch2mail 
   - patchelf 
   - patchutils 
@@ -20841,7 +20844,6 @@ unsorted:
   - python3-deltarpm 
   - python3-designateclient 
   - python3-dfVFS 
-  - python3-django-attachments 
   - python3-django-storages 
   - python3-dnf 
   - python3-dnf-plugin-kickstart 
@@ -21161,7 +21163,6 @@ unsorted:
   - python36-Cycler 
   - python36-Cython 
   - python36-DataProperty 
-  - python36-DataShape 
   - python36-DateTime 
   - python36-Delorean 
   - python36-Deprecated 
@@ -21748,7 +21749,6 @@ unsorted:
   - python36-blurb 
   - python36-bobo 
   - python36-bobodoctestumentation 
-  - python36-bokcolmaps 
   - python36-boltons 
   - python36-boolean.py 
   - python36-booleanOperations 
@@ -21943,12 +21943,6 @@ unsorted:
   - python36-dash-html-components 
   - python36-dash-renderer 
   - python36-dash-table 
-  - python36-dask 
-  - python36-dask-all 
-  - python36-dask-bag 
-  - python36-dask-distributed 
-  - python36-dask-dot 
-  - python36-dask-multiprocessing 
   - python36-databases 
   - python36-dataclasses 
   - python36-datadiff 
@@ -21966,7 +21960,6 @@ unsorted:
   - python36-deap 
   - python36-debian 
   - python36-decorator 
-  - python36-deepdiff 
   - python36-deepmerge 
   - python36-defusedxml 
   - python36-delegator 
@@ -22010,7 +22003,6 @@ unsorted:
   - python36-distlib 
   - python36-distob 
   - python36-distorm3 
-  - python36-distributed 
   - python36-distro 
   - python36-distroinfo 
   - python36-distutils-extra 
@@ -22020,6 +22012,7 @@ unsorted:
   - python36-django-appconf 
   - python36-django-args 
   - python36-django-assets 
+  - python36-django-attachments 
   - python36-django-auth-ldap 
   - python36-django-avatar 
   - python36-django-axes 
@@ -23026,6 +23019,7 @@ unsorted:
   - python36-pybugz 
   - python36-pycairo 
   - python36-pycairo-devel 
+  - python36-pycapnp 
   - python36-pycares 
   - python36-pycdio 
   - python36-pycha 
@@ -24777,9 +24771,10 @@ unsorted:
   - python38-dask-array 
   - python38-dask-bag 
   - python38-dask-dataframe 
+  - python38-dask-delayed 
+  - python38-dask-diagnostics 
   - python38-dask-distributed 
   - python38-dask-dot 
-  - python38-dask-multiprocessing 
   - python38-databases 
   - python38-datadiff 
   - python38-datashader 
@@ -24848,6 +24843,7 @@ unsorted:
   - python38-django-appconf 
   - python38-django-args 
   - python38-django-assets 
+  - python38-django-attachments 
   - python38-django-auth-ldap 
   - python38-django-avatar 
   - python38-django-axes 
@@ -25889,6 +25885,7 @@ unsorted:
   - python38-pybtex 
   - python38-pybugz 
   - python38-pycairo-devel 
+  - python38-pycapnp 
   - python38-pycdio 
   - python38-pycha 
   - python38-pychm 
@@ -27252,7 +27249,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - ragel 
@@ -27449,6 +27446,7 @@ unsorted:
   - ripgrep-fish-completion 
   - ripgrep-zsh-completion 
   - rk-devel 
+  - rke 
   - rkhunter 
   - rkward 
   - rls 
@@ -27582,6 +27580,7 @@ unsorted:
   - ruby2.7-doc 
   - ruby2.7-doc-ri 
   - ruby2.7-rubygem-gettext-setup 
+  - ruby2.7-rubygem-libyui-rake 
   - ruby2.7-rubygem-listen-doc-3_1 
   - ruby2.7-rubygem-rspec-rails-3.9 
   - ruby2.7-rubygem-ruby_dep-doc 
@@ -36976,7 +36975,6 @@ unsorted:
   - totem-pl-parser-devel 
   - totem-plugin-gnome-dvb-daemon 
   - touchegg 
-  - touchegg-gui 
   - tpm-quote-tools 
   - tpm-tools 
   - tpm-tools-devel 
@@ -37287,6 +37285,7 @@ unsorted:
   - typelib-1_0-Gtk-4_0 
   - typelib-1_0-GtkFrdp-0_1 
   - typelib-1_0-GtkLayerShell-0_1 
+  - typelib-1_0-GtkSource-3_0 
   - typelib-1_0-GtkSpell-3_0 
   - typelib-1_0-GtkVnc-2_0 
   - typelib-1_0-Gucharmap-2_90 
