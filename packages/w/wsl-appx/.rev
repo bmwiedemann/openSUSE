@@ -50,4 +50,11 @@
     <comment></comment>
     <requestid>878210</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>42ceb3caf17eed92421ffb278976df4d</srcmd5>
+    <version>1</version>
+    <time>1617797767</time>
+    <user>RBrownSUSE</user>
+    <comment>hard revert, invalid checkin</comment>
+  </revision>
 </revisionlist>
