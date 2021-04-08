@@ -1389,4 +1389,12 @@ If we cannot get this in, we need to push an security update for the current blu
     <comment>update to 5.56 (forwarded request 874930 from seife)</comment>
     <requestid>874931</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>77ec596b4d938a388a9b9e0adbea843a</srcmd5>
+    <version>5.58</version>
+    <time>1617912782</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883537</requestid>
+  </revision>
 </revisionlist>

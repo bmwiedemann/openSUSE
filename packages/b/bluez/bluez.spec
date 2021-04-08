@@ -27,7 +27,7 @@
 # contributions via pull requests are welcome!
 #
 Name:           bluez
-Version:        5.56
+Version:        5.58
 Release:        0
 Summary:        Bluetooth Stack for Linux
 License:        GPL-2.0-or-later
@@ -84,7 +84,7 @@ Obsoletes:      obexd-client < 5.0
 Provides:       obexd-client = %{version}
 %{?systemd_requires}
 %if 0%{?suse_version} >= 1550
-BuildRequires:  pkgconfig(ell) >= 0.28
+BuildRequires:  pkgconfig(ell) >= 0.39
 %endif
 %if %{with mesh}
 # json-c is needed for --enable-mesh

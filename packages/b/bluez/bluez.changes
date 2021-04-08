@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr  7 07:49:44 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to 5.58:
+  * Fix issue with usage of deprecated GLib functions.
+- version 5.57:
+  * Fix issue with handling GATT notification PDU parsing.
+  * Fix issue with registering DIS without a valid source.
+  * Fix issue with removing remote SEPs when loading from cache.
+- remove upstreamed
+  bluez-avdtp-Fix-removing-all-remote-SEPs-when-loading-from.patch
+
+-------------------------------------------------------------------
+Thu Apr  1 04:27:37 UTC 2021 - Al Cho <acho@suse.com>
+
+- add bluez-avdtp-Fix-removing-all-remote-SEPs-when-loading-from.patch
+  Fix Bluetooth headphones disconnect periodically(bsc#1183821)
+
+-------------------------------------------------------------------
 Wed Feb 24 20:25:23 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update to 5.56:
