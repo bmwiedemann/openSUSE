@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Apr  7 16:32:09 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.8
+  Bugfix
+  * AsyncMachine does not remove models when remove_models is
+    called.
+  Feature
+  * Introduce try/except for finalize callbacks in Machine and
+    HierachicalMachine. Thus, errors occurring in finalize
+    callbacks will be suppressed and only the original error will
+    be raised.
+  * Show references in graphs and markup. Introduce
+    MarkupMachine.format_references to tweak reference formatting.
+  * Introduce Machine.on_exception to handle raised exceptions in
+    callbacks.
+  * Machine.get_triggers now supports State and Enum as arguments.
+  * NestedState and HierachicalMachine.add_states now accept
+    (lists of) states and enums as initial parameter.
+- Update to version 0.8.7
+  * State configuration dictionaries passed to HierarchicalMachine
+    can also use states as a keyword to define substates. If
+    children and states are present, only children will be
+    considered.
+  * HierarchicalMachine with custom separator now adds
+    is_state partials for nested states (e.g. is_C.s3.a()) to
+    models.
+  * Use model_attribute consistently in AsyncMachine.
+  * HierarchicalMachine now checks whether state_cls, event_cls
+    and transition_cls have been subclassed from nested base
+    classes (e.g. NestedState) to prevent hard to debug
+    inheritance errors
+- Update to version 0.8.6
+  * HierarchicalMachine.add_states will raise a ValueError when
+    an Enum name contains the currently used NestedState.separator.
+  Bugfix
+  * Reset NestedState._scope when enter/exit callbacks raise an
+    exception.
+  * Let HierarchicalMachine._get_trigger which is bound to
+    model.trigger raise a MachineError for invalid events and
+    AttributeError for unknown events.
+  Features
+  * Introduced HierarchicalMachine.has_trigger to determine
+    whether an event is valid for an HSM.
+  * AsyncMachine features an event queue dictionary for individual
+    models when queued='model'.
+  * Machine.remove_model will now also remove model events from
+    the event queue when queued=True.
+  * Machine.get_transitions and its HSM counterpart now accept
+    Enum and State for source and dest.
+- Update to version 0.8.5
+  * AsyncMachine.switch_model_context is expected to be async now
+    for easier integration of async code during model switch.
+  * Bugfix #478: Initializing a machine with GraphSupport threw an
+    exception when initial was set to a nested or parallel state.
+- Update to version 0.8.4
+  * Bugfix #477: Model callbacks were not added to a
+    LockedHierarchicalMachine when the machine itself served as
+    a model.
+  * Bugfix #475: Clear collection of tasks to prevent memory leak
+    when initializing many models.
+  * Feature #474: Added static AsyncMachine.protected_tasks list
+    which can be used to prevent transitions to cancel certain
+    tasks.
+  * Feature: Constructor of HierarchicalMachine now accepts
+    substates ('A_1_c') and parallel states (['A', 'B']) as
+    initial parameter.
+- Update to version 0.8.3
+  * Minor release and contains several bugfixes mostly related
+    to HierarchicalStateMachine.
+
+-------------------------------------------------------------------
 Mon Aug 24 12:06:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Use recent pytest
