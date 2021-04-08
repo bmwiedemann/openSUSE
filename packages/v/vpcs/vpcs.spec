@@ -1,7 +1,7 @@
 #
 # spec file for package vpcs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           vpcs
-Version:        0.8
+Version:        0.8.1
 Release:        0
 Summary:        Virtual PC Simulator
 License:        BSD-2-Clause
 Group:          System/Emulators/Other
-URL:            https://sourceforge.net/projects/vpcs/
-Source0:        %{name}-%{version}-src.tbz
-Patch0:         %{name}-0.8-no-static.patch
-Patch1:         0001-revert-from-r124.patch
+URL:            https://github.com/GNS3/vpcs
+Source0:        https://github.com/GNS3/vpcs/archive/v%{version}.tar.gz
 
 %description
 The VPCS can simulate up to 9 PCs. You can ping/traceroute them, or ping/traceroute

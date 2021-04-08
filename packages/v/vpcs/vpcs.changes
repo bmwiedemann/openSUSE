@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Feb 28 20:31:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.1:
+  * switch to fork of vpcs which includes patches wrote by various people from
+    the community
+- remove 0001-revert-from-r124.patch (upstream)
+- drop vpcs-0.8-no-static.patch (obsolete)
+
+-------------------------------------------------------------------
 Mon Jun  8 21:28:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Set CFLAGS+=-fcommon to workaround gcc10 errors (boo#1160244)
