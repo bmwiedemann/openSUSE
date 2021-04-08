@@ -17,7 +17,7 @@
 
 
 Name:           ccache
-Version:        4.2
+Version:        4.2.1
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
@@ -64,11 +64,11 @@ ln -sf ../../bin/%{name} c++
 # and for nvidia cuda
 ln -sf ../../bin/%{name} nvcc
 
+%check
 # Following failure needs to be adressed:
 # The following tests FAILED:
 #        29 - test.upgrade (Failed)
-#%%check
-#ctest
+%ctest ||:
 
 %files
 %license LICENSE.* GPL-3.0.txt
