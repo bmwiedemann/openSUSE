@@ -21,7 +21,7 @@
 
 %define modname thalamus
 Name:           gnuhealth-%{modname}
-Version:        0.9.13
+Version:        0.9.14
 Release:        0
 Summary:        The GNU Health Federation Message and Authentication Server
 License:        GPL-3.0-or-later
@@ -54,12 +54,12 @@ BuildArch:      noarch
 Thalamus: The GNU Health Federation Message and Authentication Server
 =====================================================================
 
-The Thalamus project provides a RESTful API hub to all the GNU Health 
+The Thalamus project provides a RESTful API hub to all the GNU Health
 Federation nodes. The main functions are:
 
-#. **Message server**: A concentrator and message relay from and to  
+#. **Message server**: A concentrator and message relay from and to
    the participating nodes in the GNU Health Federation and the GNU Health
-   Information System (MongoDB). Some of the participating nodes include 
+   Information System (MongoDB). Some of the participating nodes include
    the GNU Health HMIS, MyGNUHealth mobile PHR application,
    laboratories, research institutions and civil offices.
 
@@ -67,7 +67,7 @@ Federation nodes. The main functions are:
    authorization server to interact with the GNUHealth Information System
 
 
-Thalamus is part of the GNU Health project, but it is a self contained, 
+Thalamus is part of the GNU Health project, but it is a self contained,
 independent server that can be used in different health related scenarios.
 
 %prep
