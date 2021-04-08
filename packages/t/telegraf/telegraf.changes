@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Apr 07 21:36:28 UTC 2021 - jkowalczyk@suse.com
+
+- Update to version 1.18.1:
+  * Add ability to handle 'binary logs' mySQL query with 3 columns, in case 3 columns are sent (MySQL 8 and greater) (#9082)
+  * Add configurable option for the 'path' tag override in the Tail plugin. (#9069)
+  * fix nfsclient merge to release-1.18 branch
+  * inputs.nfsclient: use uint64, also update error handling (#9067)
+  * Fix inputs.snmp init when no mibs installed (#9050)
+  * inputs.ping: Always SetPrivileged(true) in native mode (#9072)
+  * Don't walk the entire interface table to just retrieve one field (#9043)
+  * readme fix (#9064)
+  * use correct compute metadata url to get folder-id (#9056)
+  * Handle error when initializing the auth object in Azure Monitor output plugin. (#9048)
+  * update: inputs.sqlserver support version in readme (#9040)
+  * SQLServer - Fixes sqlserver_process_cpu calculation (#8549)
+  * Fix ipmi panic (#9035)
+  * check for length of perusage for stat gathering and removed not used function (#9009)
+  * update new plugins in changelog (#8991)
+  * exec plugins should not truncate messages in debug mode (#8333)
+  * Close running outputs when reloading (#8769)
+
+-------------------------------------------------------------------
 Wed Mar 17 22:04:14 UTC 2021 - jkowalczyk@suse.com
 
 - Update to version 1.18.0:
