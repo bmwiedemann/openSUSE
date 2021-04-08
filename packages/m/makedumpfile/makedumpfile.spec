@@ -1,7 +1,7 @@
 #
 # spec file for package makedumpfile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,20 +32,20 @@
 # End of compatibility cruft
 
 Name:           makedumpfile
-Version:        1.6.7
+Version:        1.6.8
 Release:        0
 Summary:        Partial kernel dump
 License:        GPL-2.0-only
 Group:          System/Kernel
-URL:            https://sourceforge.net/projects/makedumpfile/
-Source:         https://sourceforge.net/projects/makedumpfile/files/makedumpfile/%{version}/%{name}-%{version}.tar.gz
+URL:            https://github.com/makedumpfile/makedumpfile
+Source:         https://github.com/makedumpfile/makedumpfile/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 Patch1:         %{name}-override-libtinfo.patch
 Patch2:         %{name}-ppc64-VA-range-SUSE.patch
 Patch3:         %{name}-PN_XNUM.patch
-Patch4:         %{name}-arm64-Align-PMD_SECTION_MASK-with-PHYS_MASK.patch
-Patch5:         %{name}-Fix-cd_header-offset-overflow-with-large-pfn.patch
-Patch6:         %{name}-sadump-Fix-failure-of-reading.patch
+Patch4:         %{name}-printk-add-support-for-lockless-ringbuffer.patch
+Patch5:         %{name}-printk-use-committed-finalized-state-value.patch
+Patch6:         %{name}-use-uts_namespace.name-offset-VMCOREINFO.patch
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libeppic-devel

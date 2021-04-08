@@ -1034,4 +1034,30 @@ See README.static for an explanation why static linking is preferred for some li
 </comment>
     <requestid>811495</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>4c9ae934c09c3844695dd5016efb76fd</srcmd5>
+    <version>1.6.8</version>
+    <time>1617908599</time>
+    <user>RBrownSUSE</user>
+    <comment>- Support kernel 5.11:
+  * makedumpfile-use-uts_namespace.name-offset-VMCOREINFO.patch:
+    make use of 'uts_namespace.name' offset in VMCOREINFO.
+- Update upstream project location (URL and Source).
+- Update to version 1.6.8:
+  * Support newer kernels up to v5.9
+  * arm64: Add support for ARMv8.2-LPA (52-bit PA support)
+  * Retrieve MAX_PHYSMEM_BITS from vmcoreinfo
+  * sadump, kaslr: fix failure of calculating kaslr_offset
+  * Introduce --check-params option
+  * cope with not-present mem section
+- Drop upstreamed patches:
+  * makedumpfile-Fix-cd_header-offset-overflow-with-large-pfn.patch
+  * makedumpfile-arm64-Align-PMD_SECTION_MASK-with-PHYS_MASK.patch
+  * makedumpfile-sadump-Fix-failure-of-reading.patch
+- Allow to read kernel log from the lockless ringbuffer (bsc#1183965):
+  * makedumpfile-printk-add-support-for-lockless-ringbuffer.patch
+  * makedumpfile-printk-use-committed-finalized-state-value.patch
+</comment>
+    <requestid>883570</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Apr  7 09:52:16 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
+
+- Support kernel 5.11:
+  * makedumpfile-use-uts_namespace.name-offset-VMCOREINFO.patch:
+    make use of 'uts_namespace.name' offset in VMCOREINFO.
+
+-------------------------------------------------------------------
+Sun Apr  4 13:13:31 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
+
+- Update upstream project location (URL and Source).
+
+-------------------------------------------------------------------
+Wed Mar 24 16:05:04 UTC 2021 - Petr Mladek <pmladek@suse.com>
+
+- Update to version 1.6.8:
+  * Support newer kernels up to v5.9
+  * arm64: Add support for ARMv8.2-LPA (52-bit PA support)
+  * Retrieve MAX_PHYSMEM_BITS from vmcoreinfo
+  * sadump, kaslr: fix failure of calculating kaslr_offset
+  * Introduce --check-params option
+  * cope with not-present mem section
+- Drop upstreamed patches:
+  * makedumpfile-Fix-cd_header-offset-overflow-with-large-pfn.patch
+  * makedumpfile-arm64-Align-PMD_SECTION_MASK-with-PHYS_MASK.patch
+  * makedumpfile-sadump-Fix-failure-of-reading.patch
+- Allow to read kernel log from the lockless ringbuffer (bsc#1183965):
+  * makedumpfile-printk-add-support-for-lockless-ringbuffer.patch
+  * makedumpfile-printk-use-committed-finalized-state-value.patch
+
+-------------------------------------------------------------------
 Thu Jun  4 09:57:15 UTC 2020 - Petr Tesařík <ptesarik@suse.com>
 
 - makedumpfile-sadump-Fix-failure-of-reading.patch: sadump: Fix
