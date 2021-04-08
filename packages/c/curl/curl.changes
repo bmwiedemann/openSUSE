@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Mar 31 08:40:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 7.76.0
+  * Security fixes:
+    - [bsc#1183933, CVE-2021-22876]: strip credentials from the
+	    auto-referer header field
+    - [bsc#1183934, CVE-2021-22890]: add 'isproxy' argument to
+	    Curl_ssl_get/addsessionid()
+  * Changes:
+    - cookies: Support multiple -b parameters
+    - curl: add --fail-with-body
+    - doh: add options to disable ssl verification
+    - http: add support to read and store the referrer header
+    - sasl: support SCRAM-SHA-1 and SCRAM-SHA-256 via libgsasl
+    - vtls: initial implementation of rustls backend
+  * Bugfixes:
+    - CVE-2021-22876: strip credentials from the auto-referer header field
+    - CVE-2021-22890: add 'isproxy' argument to Curl_ssl_get/addsessionid()
+    - c-hyper: support automatic content-encoding
+    - configure: only add OpenSSL paths if they are defined
+    - configure: provide Largefile feature for curl-config
+    - curl: set CURLOPT_NEW_FILE_PERMS if requested
+    - doh: Fix sharing user's resolve list with DOH handles
+    - doh: Inherit CURLOPT_STDERR from user's easy handle
+    - dynbuf: bump the max HTTP request to 1MB
+    - ftp: add 'list_only' to the transfer state struct
+    - ftp: add 'prefer_ascii' to the transfer state struct
+    - ftp: allow SIZE to fail when doing (resumed) upload
+    - ftp: avoid SIZE when asking for a TYPE A file
+    - ftp: fix memory leak in ftp_done
+    - ftp: never set data->set.ftp_append outside setopt
+    - gnutls: assume nettle crypto support
+    - http2: don't set KEEP_SEND when there's no more data to be sent
+    - http2: fail if connection terminated without END_STREAM
+    - http: do not add a referrer header with empty value
+    - http: strip default port from URL sent to proxy
+    - http: use credentials from transfer, not connection
+    - lib: remove 'conn->data' completely
+    - multi: close the connection when h2=>h1 downgrading
+    - multi: do once-per-transfer inits in before_perform in DID state
+    - multi: rename the multi transfer states
+    - multi: update pending list when removing handle
+    - ngtcp2: adapt to the new recv_datagram callback
+    - ngtcp2: clarify calculation precedence
+    - ngtcp2: sync with recent API updates
+    - openssl: adapt to v3's new const for a few API calls
+    - openssl: ensure to check SSL_CTX_set_alpn_protos return values
+    - openssl: remove get_ssl_version_txt in favor of SSL_get_version
+    - parse_proxy: fix a memory leak in the OOM path
+    - url: fix memory leak if OOM in the HSTS handling
+    - url: fix possible use-after-free in default protocol
+    - urldata: don't touch data->set.httpversion at run-time
+    - urldata: merge "struct DynamicStatic" into "struct UrlState"
+    - urldata: remove the 'rtspversion' field
+    - urldata: remove the _ORIG suffix from string names
+    - wolfssl: don't store a NULL sessionid
+
+-------------------------------------------------------------------
 Thu Mar  4 17:46:40 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Harden build, enable full RELRO
