@@ -17,13 +17,15 @@
 
 
 Name:           solarus
-Version:        1.6.4
+Version:        1.6.5
 Release:        0
 Summary:        Game engine for action RPGs
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/RPG
 URL:            https://www.solarus-games.org/
 Source0:        %{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM gl#solarus-games/solarus#1539
+Patch0:         solarus-1.6.5-ldl.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -115,21 +117,22 @@ export LD_LIBRARY_PATH="$PWD/build:$PWD/build/tests"
 %postun -n libsolarus-gui1 -p /sbin/ldconfig
 
 %files
-%doc changelog.txt readme.md
+%doc changelog.md readme.md
 %license license.txt license_gpl.txt
 %{_bindir}/solarus-run
 %{_mandir}/man6/solarus-run.6%{?ext_man}
 
 %files gui
 %license license.txt license_gpl.txt
-%dir %{_datadir}/appdata/
 %dir %{_datadir}/icons/hicolor/20x20
 %dir %{_datadir}/icons/hicolor/20x20/apps
+%dir %{_datadir}/icons/hicolor/40x40
+%dir %{_datadir}/icons/hicolor/40x40/apps
 %{_bindir}/solarus-launcher
-%{_datadir}/appdata/solarus-launcher.appdata.xml
-%{_datadir}/applications/solarus-launcher.desktop
-%{_datadir}/icons/hicolor/*/apps/solarus-launcher*
-%{_datadir}/pixmaps/solarus-launcher.png
+%{_datadir}/applications/org.solarus_games.solarus.Launcher.desktop
+%{_datadir}/icons/hicolor/*/apps/org.solarus_games.solarus.*
+%{_datadir}/metainfo/org.solarus_games.solarus.appdata.xml
+%{_datadir}/pixmaps/org.solarus_games.solarus.*.png
 %{_mandir}/man6/solarus-launcher.6%{?ext_man}
 
 %files gui-lang -f %{name}.lang

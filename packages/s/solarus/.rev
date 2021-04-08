@@ -112,4 +112,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>862729</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>90713d611bde4b5ed6512aead501bc8e</srcmd5>
+    <version>1.6.5</version>
+    <time>1617910307</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.6.5:
+  * Engine changes:
+    + Add support for suspending the simulation on Window Focus
+      events (gl#solarus-games/solarus#1536).
+    + Reconnect to another audio device after a device
+      disconnection (gl#solarus-games/solarus#1499).
+    + Fix joystick hot-plug/unplug (gl#solarus-games/solarus#1501,
+      gl#solarus-games/solarus#1387).
+    + Fix crash when calling command functions before the game is
+      started (gl#solarus-games/solarus#1476).
+    + Fix shader compilation on OpenGL ES 3.10 and 3.20
+      (gl#solarus-games/solarus#1537).
+    + Fix TTF fonts using wrong color for antialiasing
+      (gl#solarus-games/solarus#1390).
+    + Fix TTF Fonts not rendering correctly
+      (gl#solarus-games/solarus#1389).
+    + Fix a possible crash when starting a timer on a removed
+      entity (gl#solarus-games/solarus#1469).
+    + Fix pickables not falling on negative layers.
+    + Fix string literals in savegames not being properly escaped
+      (gl#solarus-games/solarus#1533).
+    + Fix Unicode filename support on Windows.
+  * Lua API changes:
+    + This release adds new features but does not introduce any
+      incompatibility.
+    + Add methods `destructible:get/set_cut_method()`
+      (gl#solarus-games/solarus#1526).
+  * Solarus launcher GUI changes:
+    + Add option to control suspension on Window Focus events.
+    + Rename &quot;Force Software&quot; to &quot;Force software rendering&quot;.</comment>
+    <requestid>883456</requestid>
+  </revision>
 </revisionlist>
