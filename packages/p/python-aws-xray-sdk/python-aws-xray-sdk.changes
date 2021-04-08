@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  8 09:35:29 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.7.0
+  * many bugfixes and small improvements
+- Do not care about SLE-12, it does not build anyway
+
+-------------------------------------------------------------------
 Thu Nov 26 11:07:08 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Only build Python3 flavors for distributions 15 and greater

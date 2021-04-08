@@ -1,7 +1,7 @@
 #
 # spec file for package python-aws-xray-sdk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
 %define skip_python2 1
-%endif
 Name:           python-aws-xray-sdk
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        The AWS X-Ray SDK for Python
 License:        Apache-2.0
@@ -34,13 +32,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-botocore >= 1.11.3
 Requires:       python-future
-Requires:       python-jsonpickle
 Requires:       python-wrapt
-%ifpython2
-Requires:       python-enum34
-%endif
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -53,7 +46,7 @@ following backends are included in the main package:
   * botocore
   * httplib
   * sqlite3
-  
+
 Additional backends can be installed by installing %{name}-backend
 packages.  The %{name}-all package installs all backends.
 
@@ -64,15 +57,13 @@ Requires:       %{name} = %{version}
 Recommends:     %{name}-Django = %{version}
 Recommends:     %{name}-Flask-SQLAlchemy = %{version}
 Recommends:     %{name}-SQLAlchemy = %{version}
-Recommends:     %{name}-mysql-connector-python = %{version}
-Recommends:     %{name}-pymongo = %{version}
-Recommends:     %{name}-pynamodb = %{version}
-Recommends:     %{name}-psycopg2 = %{version}
-Recommends:     %{name}-requests = %{version}
-%ifpython3
 Recommends:     %{name}-aiobotocore = %{version}
 Recommends:     %{name}-aiohttp = %{version}
-%endif
+Recommends:     %{name}-mysql-connector-python = %{version}
+Recommends:     %{name}-psycopg2 = %{version}
+Recommends:     %{name}-pymongo = %{version}
+Recommends:     %{name}-pynamodb = %{version}
+Recommends:     %{name}-requests = %{version}
 
 %description    all
 The AWS X-Ray SDK for Python enables Python developers to record and
@@ -215,10 +206,6 @@ This package provides the aiohttp backend for %{name}.
 %python_expand $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/aws_xray_sdk/ext/psycopg2/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# python3 only
-rm -rf %{buildroot}%{python2_sitelib}/aws_xray_sdk/ext/aiobotocore/
-rm -rf %{buildroot}%{python2_sitelib}/aws_xray_sdk/ext/aiohttp/
-
 %files %{python_files}
 %license LICENSE
 %doc README.md
@@ -231,8 +218,8 @@ rm -rf %{buildroot}%{python2_sitelib}/aws_xray_sdk/ext/aiohttp/
 %exclude %{python_sitelib}/aws_xray_sdk/ext/pynamodb/
 %exclude %{python_sitelib}/aws_xray_sdk/ext/psycopg2/
 %exclude %{python_sitelib}/aws_xray_sdk/ext/requests/
-%python3_only %exclude %{python_sitelib}/aws_xray_sdk/ext/aiohttp/
-%python3_only %exclude %{python_sitelib}/aws_xray_sdk/ext/aiobotocore/
+%exclude %{python_sitelib}/aws_xray_sdk/ext/aiohttp/
+%exclude %{python_sitelib}/aws_xray_sdk/ext/aiobotocore/
 
 %files %{python_files all}
 %license LICENSE
@@ -269,16 +256,12 @@ rm -rf %{buildroot}%{python2_sitelib}/aws_xray_sdk/ext/aiohttp/
 %license LICENSE
 %{python_sitelib}/aws_xray_sdk/ext/requests/
 
-%ifpython3
-
 %files %{python_files aiobotocore}
 %license LICENSE
-%{python3_sitelib}/aws_xray_sdk/ext/aiobotocore/
+%{python_sitelib}/aws_xray_sdk/ext/aiobotocore/
 
 %files %{python_files aiohttp}
 %license LICENSE
-%{python3_sitelib}/aws_xray_sdk/ext/aiohttp/
-
-%endif
+%{python_sitelib}/aws_xray_sdk/ext/aiohttp/
 
 %changelog
