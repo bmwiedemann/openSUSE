@@ -218,4 +218,41 @@
     will result in a call to a non-existent function (link error).</comment>
     <requestid>878494</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d4d3be9773c9d13f92e9f30c11f827d2</srcmd5>
+    <version>2.13.0.0</version>
+    <time>1617910321</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.13.0.0:
+  * Fixed typo (missing quotes) in the env rule.
+  * Fixed intendation problem in CHANGES.
+  * Combined 2.12.9.1 changes into the 2.12.8.2 to 2.12.9.0
+    range, and thus renamed the range to 2.12.8.2 to 2.12.9.1.
+  * Fixed issues related to building Makefile.simple.
+  * Fixed how the Makefile variable MANPATH is set for macOS.
+  * Added a bunch of information to the near bottom of HOWTO.INSTALL
+    on calc Makefiles.  This information discusses the various
+    Makefiles found in the calc source.
+  * Added comments in various calc Makefiles about their origin.
+    In particular, for Makefiles that are constructed such as
+    Makefile.simple, custom/Makefile and custom/Makefile.simple
+    there are comments about how they were made.
+  * For all calc Makefiles, including those in sub-directories,
+    near the top there is now a line of the form:
+    # SRC: ... some message about the origin ...
+  * Fixed how the calc(1) man page is installed under macOS.
+  * Fixed how calc man page in ${CATDIR} is formed.
+  * Fixed how Makefile.simple is formed.
+  * Fixed the #! calc script argument processing.  The initial #!
+    line must end in a -f.  For example, if calc is in /usr/local/bin/calc,
+    then the following would be the first line of a calc script:
+  * It is common that -q be usde with a calc script, so assuming the
+    same /usr/local/bin/calc path
+  * Use of -s in the #! first line of a calc script is not needed
+    since -f implies -f.
+  * The argv() will now return values more typical of C's main().
+    Before it returned one less than the number of arguments.  Now,
+    for example, when calc is given 2 args, argv() will return 3.</comment>
+    <requestid>883534</requestid>
+  </revision>
 </revisionlist>

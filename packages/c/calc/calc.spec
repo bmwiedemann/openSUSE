@@ -19,16 +19,15 @@
 %define soname 2
 %define libname libcalc%{soname}
 Name:           calc
-Version:        2.12.9.0
+Version:        2.13.0.0
 Release:        0
 Summary:        C-style arbitrary precision calculator
 License:        LGPL-2.1-only
 Group:          Productivity/Scientific/Math
 URL:            http://www.isthe.com/chongo/tech/comp/calc/index.html
 Source0:        http://www.isthe.com/chongo/src/calc/%{name}-%{version}.tar.bz2
-Source1:        http://www.isthe.com/chongo/src/calc/checksum.sha-256
-Source2:        README.openSUSE
-Source3:        calc-rpmlintrc
+Source1:        README.openSUSE
+Source2:        calc-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel >= 5.5
 BuildRequires:  readline-devel >= 5.1
@@ -67,13 +66,9 @@ This package contains the files needed for building programs that use
 this library.
 
 %prep
-( cd ${RPM_SOURCE_DIR};
-  sed -n "/$(basename %{SOURCE0})/s/[[:space:]]\+/  /p" %{SOURCE1} | \
-    sha256sum -c - || exit 23;
-)
 %setup -q
 
-cp "%{SOURCE2}" .
+cp "%{SOURCE1}" .
 
 sed -i '/${CC} ${LIBCUSTCALC_SHLIB} ${CUSTCALC_OBJ}/a\
 \tln -s $@ libcustcalc.so
