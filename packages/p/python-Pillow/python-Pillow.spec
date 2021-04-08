@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pillow
-Version:        8.1.2
+Version:        8.2.0
 Release:        0
 Summary:        Python Imaging Library (Fork)
 License:        HPND
@@ -46,6 +46,8 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(tk)
 BuildRequires:  pkgconfig(zlib)
 Requires:       python-olefile
+Obsoletes:      python-imaging < %{version}
+Provides:       python-imaging = %{version}
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libopenjp2)
 %endif
@@ -57,8 +59,6 @@ Provides:       %{oldpython}-imaging = %{version}
 Obsoletes:      %{oldpython}-imaging-sane < %{version}
 Provides:       %{oldpython}-imaging-sane = %{version}
 %endif
-Obsoletes:      python-imaging < %{version}
-Provides:       python-imaging = %{version}
 %python_subpackages
 
 %description

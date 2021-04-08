@@ -454,4 +454,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
   A crash with the feature flags for LibJpeg and Webp on unreleased Python 3.10 has been fixed</comment>
     <requestid>877608</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>5732296f1ef96d7c577432f541949a53</srcmd5>
+    <version>8.2.0</version>
+    <time>1617908522</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883028</requestid>
+  </revision>
 </revisionlist>
