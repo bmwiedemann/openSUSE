@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Mar 20 20:15:48 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.5.7:
+  * [Sec] Possible null-pointer dereference read caused by a
+    sequence of openmpt::module::read,
+    openmpt::module::set_position_seconds with a position past the
+    song end, and another openmpt::module::read call.
+
+  * IT: Instrument / sample panning was reset on note-off / fade
+    commands.
+  * IMF: Set Finetune is now implemented correctly.
+  * Fixed excessive memory consumption with malformed files in
+    various formats.
+
+-------------------------------------------------------------------
+Sun Mar 14 18:40:46 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.5.6:
+  * AMS: Avoid allocating excessive amount of memory for compressed
+    song message in malformed files.
+  * S3M: Some samples or OPL patches were imported with a too high
+    sample rate if module was saved with Scream Tracker 3.
+
+-------------------------------------------------------------------
 Tue Feb  2 23:22:53 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.5.5:
