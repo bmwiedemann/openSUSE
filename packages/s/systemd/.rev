@@ -5319,4 +5319,31 @@ handle manual pages that consist only of a .so directive such as
 - fix-machines-btrfs-subvol.sh is only shipped when machined is built</comment>
     <requestid>879358</requestid>
   </revision>
+  <revision rev="328" vrev="1">
+    <srcmd5>e9a9806a28f1b8de3d7ee86a672c74da</srcmd5>
+    <version>246.13</version>
+    <time>1617912774</time>
+    <user>RBrownSUSE</user>
+    <comment>- Import commit 14581e01203df7aa63c7c8383a12e6ebe258476f (merge of v246.13)
+  423b1e759c Revert &quot;resolved: gracefully handle with packets with too large RR count&quot; (bsc#1183745)
+  4723778738 meson.build: make xinitrcdir configurable (bsc#1183408)
+  [...]
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/9753d1c17545a5d46530696cb14254f5f12024f1...14581e01203df7aa63c7c8383a12e6ebe258476f
+- Drop 0001-Revert-resolved-gracefully-handle-with-packets-with-.patch
+  as it's part of v246.13.
+- Make use of the new build option to ship xinitrc in
+  /usr/etc/X11/xinit/xinitrc.d (bsc#1183408)
+
+- Add 0001-Revert-resolved-gracefully-handle-with-packets-with-.patch
+  Temporary workaround for bsc#1183745 (upstream issue 18917) until an
+  actual fix is found.
+
+- Default to the &quot;unified&quot; cgroup hierarchy. At this point, most
+  users of cgroup (such as docker, libvirt, kubernetes) should be 
+  ready for this change. It's still possible to switch back to the
+  old &quot;hybrid&quot; hierarchy by passing &quot;systemd.unified_cgroup_hierarchy=0&quot;
+  option to the kernel command line.</comment>
+    <requestid>882182</requestid>
+  </revision>
 </revisionlist>

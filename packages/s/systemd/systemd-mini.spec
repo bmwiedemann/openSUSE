@@ -26,7 +26,7 @@
 ##### WARNING: please do not edit this auto generated spec file. Use the systemd.spec! #####
 %define mini -mini
 %define min_kernel_version 4.5
-%define suse_version +suse.102.g9753d1c175
+%define suse_version +suse.105.g14581e0120
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -55,7 +55,7 @@
 
 Name:           systemd-mini
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        246.11
+Version:        246.13
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -512,9 +512,10 @@ systemd-journal-remote, and systemd-journal-upload.
         -Dsystem-uid-max=499 \
         -Dsystem-gid-max=499 \
         -Dpamlibdir=%{_pamdir} \
+        -Dxinitrcdir=%{_distconfdir}/X11/xinit/xinitrc.d \
         -Drpmmacrosdir=no \
         -Dcertificate-root=%{_sysconfdir}/pki/systemd \
-        -Ddefault-hierarchy=hybrid \
+        -Ddefault-hierarchy=unified \
         -Ddefault-kill-user-processes=false \
         -Drc-local=/etc/init.d/boot.local \
         -Dbump-proc-sys-fs-nr-open=false \
@@ -1205,8 +1206,6 @@ fi
 %dir %{_sysconfdir}/sysctl.d
 %{_sysctldir}/99-sysctl.conf
 
-%dir %{_sysconfdir}/X11/xinit
-%dir %{_sysconfdir}/X11/xinit/xinitrc.d
 %dir %{_sysconfdir}/X11/xorg.conf.d
 %dir %{_sysconfdir}/systemd
 %dir %{_sysconfdir}/systemd/network
@@ -1214,7 +1213,10 @@ fi
 %dir %{_sysconfdir}/systemd/user
 %dir %{_sysconfdir}/xdg/systemd
 %{_sysconfdir}/xdg/systemd/user
-%{_sysconfdir}/X11/xinit/xinitrc.d/50-systemd-user.sh
+
+%dir %{_distconfdir}/X11/xinit
+%dir %{_distconfdir}/X11/xinit/xinitrc.d
+%{_distconfdir}/X11/xinit/xinitrc.d/50-systemd-user.sh
 
 %config(noreplace) %{_sysconfdir}/pam.d/systemd-user
 

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Mar 30 13:35:38 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit 14581e01203df7aa63c7c8383a12e6ebe258476f (merge of v246.13)
+
+  423b1e759c Revert "resolved: gracefully handle with packets with too large RR count" (bsc#1183745)
+  4723778738 meson.build: make xinitrcdir configurable (bsc#1183408)
+  [...]
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/9753d1c17545a5d46530696cb14254f5f12024f1...14581e01203df7aa63c7c8383a12e6ebe258476f
+
+- Drop 0001-Revert-resolved-gracefully-handle-with-packets-with-.patch
+  as it's part of v246.13.
+
+- Make use of the new build option to ship xinitrc in
+  /usr/etc/X11/xinit/xinitrc.d (bsc#1183408)
+
+-------------------------------------------------------------------
+Wed Mar 24 07:05:22 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Add 0001-Revert-resolved-gracefully-handle-with-packets-with-.patch
+
+  Temporary workaround for bsc#1183745 (upstream issue 18917) until an
+  actual fix is found.
+
+-------------------------------------------------------------------
+Mon Mar 22 21:12:40 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Default to the "unified" cgroup hierarchy. At this point, most
+  users of cgroup (such as docker, libvirt, kubernetes) should be 
+  ready for this change. It's still possible to switch back to the
+  old "hybrid" hierarchy by passing "systemd.unified_cgroup_hierarchy=0"
+  option to the kernel command line.
+
+-------------------------------------------------------------------
 Mon Mar 15 15:56:45 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Import commit 9753d1c17545a5d46530696cb14254f5f12024f1 (merge of v246.11)
