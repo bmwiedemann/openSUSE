@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  6 07:04:42 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add ovmf-disable-brotli.patch to remove brotli since there is no
+  real user and it requires extra effort to maintain the brotli
+  submodule tarball
+  + Drop ovmf-bsc1183713-fix-gcc10-brotli-errors.patch and
+    brotli-v1.0.7-17-g666c328-c.tar.xz
+
+-------------------------------------------------------------------
 Fri Mar 26 10:26:57 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add ovmf-bsc1183713-fix-gcc10-brotli-errors.patch to fix the

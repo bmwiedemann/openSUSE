@@ -39,10 +39,8 @@ Source5:        openSUSE-UEFI-SIGN-Certificate-2048.crt
 # berkeley-softfloat-3: https://github.com/ucb-bar/berkeley-softfloat-3
 Source6:        berkeley-softfloat-3-%{softfloat_version}.tar.xz
 Source7:        descriptors.tar.xz
-# brotli: https://github.com/google/brotli, "c" directory only
-Source8:        brotli-v1.0.7-17-g666c328-c.tar.xz
 # oniguruma: https://github.com/kkos/oniguruma,  "src" directory only
-Source9:        oniguruma-v6.9.4_mark1-src.tar.xz
+Source8:        oniguruma-v6.9.4_mark1-src.tar.xz
 Source100:      %{name}-rpmlintrc
 Source101:      gdb_uefi.py.in
 Source102:      gen-key-enrollment-iso.sh
@@ -52,7 +50,7 @@ Patch2:         %{name}-gdb-symbols.patch
 Patch3:         %{name}-pie.patch
 Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
-Patch6:         %{name}-bsc1183713-fix-gcc10-brotli-errors.patch
+Patch6:         %{name}-disable-brotli.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -169,6 +167,7 @@ rm -rf $PKG_TO_REMOVE
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
@@ -183,23 +182,9 @@ popd
 # prepare the firmware descriptors for qemu
 tar -xf %{SOURCE7}
 
-# add brotli
-pushd BaseTools/Source/C/BrotliCompress/brotli
-tar -xf %{SOURCE8} --strip 1
-#  remove the executable bit from files
-find . -type f -exec chmod 0644 {} \;
-%patch6 -p1
-popd
-pushd MdeModulePkg/Library/BrotliCustomDecompressLib/brotli
-tar -xf %{SOURCE8} --strip 1
-#  remove the executable bit from files
-find . -type f -exec chmod 0644 {} \;
-%patch6 -p1
-popd
-
 # add oniguruma
 pushd MdeModulePkg/Universal/RegularExpressionDxe/oniguruma
-tar -xf %{SOURCE9} --strip 1
+tar -xf %{SOURCE8} --strip 1
 popd
 
 chmod +x %{SOURCE102}
