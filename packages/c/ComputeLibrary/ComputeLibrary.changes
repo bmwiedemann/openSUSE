@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr  7 16:40:47 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix build of ArmNN with openCL:
+  * acl-fix-packaging-issue.patch
+
+-------------------------------------------------------------------
+Wed Apr  7 11:12:51 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Package separately libarm_compute_core and libarm_compute_graph
+
+-------------------------------------------------------------------
+Mon Mar 29 12:14:30 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 21.02:
+  * Public major release
+  * Documentation (API, changelogs, build guide, 
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v21.02/
+
+-------------------------------------------------------------------
 Wed Dec  9 14:30:01 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 20.11:
