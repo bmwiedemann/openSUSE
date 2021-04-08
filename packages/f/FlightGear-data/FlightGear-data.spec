@@ -18,13 +18,13 @@
 
 %define main_version 2020.3
 Name:           FlightGear-data
-Version:        %{main_version}.6
+Version:        %{main_version}.8
 Release:        0
 Summary:        FlightGear base scenery and data files
 License:        GPL-2.0-only
 Group:          Amusements/Games/3D/Simulation
 URL:            https://www.flightgear.org/
-Source0:        https://downloads.sourceforge.net/project/flightgear/release-%{main_version}/FlightGear-%{version}-data.tar.bz2
+Source0:        https://downloads.sourceforge.net/project/flightgear/release-%{main_version}/FlightGear-%{version}-data.txz
 # Remove warnings about hidden files to make other rpmlint warnings readable.
 Source1:        FlightGear-data-rpmlintrc
 NoSource:       0
