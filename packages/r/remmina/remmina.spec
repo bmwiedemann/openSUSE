@@ -18,15 +18,13 @@
 
 %bcond_with nx
 Name:           remmina
-Version:        1.4.12
+Version:        1.4.13
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://www.remmina.org/
 Source0:        https://gitlab.com/Remmina/Remmina/-/archive/v%{version}/Remmina-v%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM upstream_build_fixes.patch
-Patch0:         upstream_build_fixes.patch
 BuildRequires:  cmake
 BuildRequires:  cups-devel
 BuildRequires:  ed
