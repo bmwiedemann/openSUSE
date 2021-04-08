@@ -1,7 +1,7 @@
 #
 # spec file for package csync2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,16 @@
 
 
 Name:           csync2
-Version:        2.0+git.1542296533.b974921
+Version:        2.0+git.1600444747.83b3644
 Release:        0
 Summary:        Cluster synchronization tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/HA
-Url:            http://oss.linbit.com/csync2/
+URL:            http://oss.linbit.com/csync2/
 #Source0:       http://oss.linbit.com/csync2/%{name}-%{version}.tar.gz
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        csync2-README.quickstart
 Source2:        csync2-rm-ssl-cert
-Source3:        csync2.socket
-Source4:        csync2@.service
-# PATCH-FIX-UPSTREAM -- tserong@suse.com -- fix ugly ./configure warnings about missing headers
-Patch10:        0003-Set-AC_PROG_CPP-in-configure.ac.patch
-# PATCH-FIX-UPSTREAM -- tserong@suse.com -- use properly versioned sonames in dlopen()
-Patch12:        0002-Patch-sonames.patch
-# PATCH-FIX-UPSTREAM -- tserong@suse.com -- ensure COPYING is present in docfiles and thus %doc
-Patch13:        0001-Add-COPYING-as-docfile.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -59,14 +51,12 @@ It is expedient for HA-clusters, HPC-clusters, COWs and server farms.
 
 %prep
 %setup -q
-%patch10 -p1
-%patch12 -p1
-%patch13 -p1
 
 %build
 autoreconf -fvi
 %configure \
     --enable-sqlite3 \
+    --enable-systemd \
     --sysconfdir=%{_sysconfdir}/csync2 \
     --docdir=%{_docdir}/%{name}
 make %{?_smp_mflags}
@@ -77,41 +67,44 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/csync2
 install -p -m 644 %{SOURCE1} %{buildroot}%{_docdir}/%{name}/README.quickstart
 install -p -m 755 %{SOURCE2} %{buildroot}%{_sbindir}/csync2-rm-ssl-cert
 mkdir -p %{buildroot}%{_unitdir}
-install -p -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/
-install -p -m 644 %{SOURCE4} %{buildroot}%{_unitdir}/
 # We need these empty files to be able to %%ghost them
 touch %{buildroot}%{_sysconfdir}/csync2/csync2_ssl_key.pem
 touch %{buildroot}%{_sysconfdir}/csync2/csync2_ssl_cert.pem
 
 %pre
-%service_add_pre csync2.socket
+%service_add_pre csync2.socket csync2@.service
 
 %post
-%service_add_post csync2.socket
+%service_add_post csync2.socket csync2@.service
 umask 077
 if [ ! -f %{_sysconfdir}/csync2/csync2_ssl_key.pem ]; then
-  %{_bindir}/openssl genrsa -out %{_sysconfdir}/csync2/csync2_ssl_key.pem 1024
+    %{_bindir}/openssl ecparam -genkey -name secp384r1 -out %{_sysconfdir}/csync2/csync2_ssl_key.pem
 fi
 FQDN=`hostname`
 if [ "x${FQDN}" = "x" ]; then
    FQDN=localhost.localdomain
 fi
 if [ ! -f %{_sysconfdir}/csync2/csync2_ssl_cert.pem ]; then
-  yes '' | %{_bindir}/openssl req -new -key %{_sysconfdir}/csync2/csync2_ssl_key.pem -out %{_sysconfdir}/csync2/csync2_ssl_cert.csr
-  %{_bindir}/openssl x509 -req -days 3000 -in %{_sysconfdir}/csync2/csync2_ssl_cert.csr -signkey %{_sysconfdir}/csync2/csync2_ssl_key.pem \
-    -out %{_sysconfdir}/csync2/csync2_ssl_cert.pem
-  rm %{_sysconfdir}/csync2/csync2_ssl_cert.csr
+cat << EOF | %{_bindir}/openssl req -new -key %{_sysconfdir}/csync2/csync2_ssl_key.pem -x509 -days 3000 -out %{_sysconfdir}/csync2/csync2_ssl_cert.pem
+--
+SomeState
+SomeCity
+SomeOrganization
+SomeOrganization
+SomeName
+name@example.com
+EOF
 fi
 
 %preun
-%service_del_preun csync2.socket
+%service_del_preun csync2.socket csync2@.service
 # Cleanup all databases upon last removal
 if [ $1 -eq 0 ]; then
   rm -f %{_localstatedir}/lib/csync2/*
 fi
 
 %postun
-%service_del_postun csync2.socket
+%service_del_postun csync2.socket csync2@.service
 
 %files
 %{_sbindir}/csync2
