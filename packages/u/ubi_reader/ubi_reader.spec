@@ -1,7 +1,8 @@
 #
-# spec file for package python-ubi_reader
+# spec file for package ubi_reader
 #
-# Copyright (c) 2018-2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +13,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 Name:           ubi_reader
@@ -28,7 +30,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python3-python-lzo
 BuildArch:      noarch
-%python_subpackages
 
 %description
 Collection of Python scripts for reading information about and extracting

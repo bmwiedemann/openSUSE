@@ -7,4 +7,12 @@
     <comment>I want to maintain ubi_reader in Factory</comment>
     <requestid>826648</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8cc45340744dc358b93cf94ffaa82197</srcmd5>
+    <version>0.6.3</version>
+    <time>1617912783</time>
+    <user>RBrownSUSE</user>
+    <comment>Forward the current version of ubi_reader to Factory</comment>
+    <requestid>883345</requestid>
+  </revision>
 </revisionlist>
