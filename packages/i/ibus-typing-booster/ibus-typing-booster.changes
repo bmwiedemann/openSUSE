@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 05 11:38:20 UTC 2021 - maiku.fabian@gmail.com
+
+- Update to 2.11.2
+- Improve the handling of typing digits into the preedit
+  Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/164
+- Make the keybindings treeview also sortable by clicking the column headers
+- Make custom shortcut treeview sortable by clicking on the column headers
+- Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/163
+- Don’t use surrounding text if InputPurpose.TERMINAL is set
+
+-------------------------------------------------------------------
 Thu Mar 11 15:35:41 UTC 2021 - maiku.fabian@gmail.com
 
 - Update to 2.11.0
