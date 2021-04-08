@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Apr  7 05:16:16 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.5.8:
+  * Fixed regression caused by SQLAlchemy 1.4 where the "alembic current"
+    command would fail due to changes in the ``URL`` object.
+  * Add async template to Alembic to bootstrap environments that use
+    async DBAPI. Updated the cookbook to include a migration guide
+    on how to adapt an existing enviroment for use with DBAPI drivers.
+  * Fixed bug in versioning model where a downgrade across a revision with a
+    dependency on another branch, yet an ancestor is also dependent on that
+    branch, would produce an erroneous state in the alembic_version table,
+    making upgrades impossible without manually repairing the table.
+  * Changed the default ordering of "CREATE" and "DROP" statements indexes and
+    unique constraints within the autogenerate process, so that for example in
+    an upgrade() operation, a particular index or constraint that is to be
+    replaced such as for a casing convention change will not produce any naming
+    conflicts.
+  * Fixed issue where autogenerate rendering of ``op.alter_column()`` would
+    fail to include MySQL ``existing_nullable=False`` if the column were part
+    of a primary key constraint within the table metadata.
+  * Added support for rendering of "identity" elements on
+    :class:`.Column` objects, supported in SQLAlchemy via
+    the :class:`.Identity` element introduced in version 1.4.
+  * Adding columns with identity is supported on PostgreSQL,
+    MSSQL and Oracle. Changing the identity options or removing
+    it is supported only on PostgreSQL and Oracle.
+  * To accommodate SQLAlchemy 1.4 and 2.0, the migration model now no longer
+    assumes that the SQLAlchemy Connection will autocommit an individual
+    operation.
+  * Modified the ``add_column()`` operation such that the ``Column`` object in
+    use is shallow copied to a new instance if that ``Column`` is already
+    attached to a ``table()`` or ``Table``.
+  * Added rendering for the ``Table.prefixes`` element to autogenerate so that
+    the rendered Python code includes these directives.
+  * Alembic 1.5.0 now supports **Python 2.7 and Python 3.6 and above**, as well
+    as **SQLAlchemy 1.3.0 and above**.
+  * Add ``__main__.py`` file to alembic package to support invocation
+    with ``python -m alembic``.
+  * Removed deprecated ``--head_only`` option to the ``alembic current``
+    command
+- Drop pytest_depr_from_parent.patch, pytest plugin no longer used.
+
+-------------------------------------------------------------------
 Thu Oct  8 16:07:43 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add pytest_depr_from_parent.patch to fix FTBGS with pytest 6.*

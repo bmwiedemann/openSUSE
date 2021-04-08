@@ -1,7 +1,7 @@
 #
 # spec file for package python-alembic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-alembic
-Version:        1.4.3
+Version:        1.5.8
 Release:        0
 Summary:        A database migration tool for SQLAlchemy
 License:        MIT
 URL:            https://github.com/sqlalchemy/alembic
 Source0:        https://files.pythonhosted.org/packages/source/a/alembic/alembic-%{version}.tar.gz
 Source1:        python-alembic-rpmlintrc
-# PATCH-FIX-UPSTREAM pytest_depr_from_parent.patch gh#sqlalchemy/sqlalchemy#5635 mcepl@suse.com
-# pytest >= 3.4.0 requires Class.from_parent call
-Patch0:         pytest_depr_from_parent.patch
 BuildRequires:  %{python_module Mako}
-BuildRequires:  %{python_module SQLAlchemy >= 1.1.0}
+BuildRequires:  %{python_module SQLAlchemy >= 1.3.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
@@ -39,11 +36,11 @@ BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Mako
-Requires:       python-SQLAlchemy >= 1.1.0
+Requires:       python-SQLAlchemy >= 1.3.0
 Requires:       python-python-dateutil
 Requires:       python-python-editor >= 0.3
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
