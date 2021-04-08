@@ -186,4 +186,12 @@ SLE identical and thus derived from a common source. Thanks!
   * func tests, multus: getting the kubevirtClient must be done first</comment>
     <requestid>876823</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>1ac9bf222df340b8a526ea621426b7aa</srcmd5>
+    <version>0.38.1</version>
+    <time>1617910333</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883625</requestid>
+  </revision>
 </revisionlist>
