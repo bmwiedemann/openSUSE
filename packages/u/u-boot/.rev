@@ -1666,4 +1666,15 @@ boundary checks.
     <comment></comment>
     <requestid>879864</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>26fbc0c4a42c0b94ddd6856308379784</srcmd5>
+    <version>2021.04</version>
+    <time>1617908596</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add u-boot-zturnv5 flavour instead of u-boot-zturn.
+  I've failed to find anybody who has v4 zturn board.
+- mx53loco now uses u-boot-dtb.imx instead of u-boot.imx
+- Update to 2021.04</comment>
+    <requestid>883295</requestid>
+  </revision>
 </revisionlist>

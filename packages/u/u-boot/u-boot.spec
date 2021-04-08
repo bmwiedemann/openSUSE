@@ -118,11 +118,7 @@
 %define is_armv7 1
 %define binext .img
 %endif
-%if "%target" == "mx53loco"
-%define is_armv7 1
-%define binext .imx
-%endif
-%if "%target" == "mx6qsabrelite"
+%if "%target" == "mx53loco" || "%target" == "mx6qsabrelite"
 %define is_armv7 1
 %define binext -dtb.imx
 %endif
@@ -161,7 +157,7 @@
 %define is_armv7 1
 %define binext .img
 %endif
-%if "%target" == "zynqzturn" || "%target" == "xilinxzynqvirt"
+%if "%target" == "zynqzturnv5" || "%target" == "xilinxzynqvirt"
 %define is_zynq 1
 %define is_armv7 1
 %define binext .img
@@ -176,7 +172,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2021.01
+%define archive_version 2021.04
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -212,7 +208,7 @@ ExclusiveArch:  do_not_build
 %else
 %bcond_with uboot_atf
 %endif
-Version:        2021.01
+Version:        2021.04
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -229,35 +225,13 @@ Patch0002:      0002-Revert-Revert-omap3-Use-raw-SPL-by-.patch
 Patch0003:      0003-rpi-Use-firmware-provided-device-tr.patch
 Patch0004:      0004-Temp-workaround-for-Chromebook-snow.patch
 Patch0005:      0005-tools-zynqmpbif-Add-support-for-loa.patch
-Patch0006:      0006-boo-1123170-Remove-ubifs-support-fr.patch
-Patch0007:      0007-boo-1144161-Remove-nand-mtd-spi-dfu.patch
-Patch0008:      0008-Kconfig-add-btrfs-to-distro-boot.patch
-Patch0009:      0009-configs-Re-sync-with-CONFIG_DISTRO_.patch
-Patch0010:      0010-configs-am335x_evm-disable-BTRFS.patch
-Patch0011:      0011-sunxi-dts-OrangePi-Zero-Add-SPI-ali.patch
-Patch0012:      0012-sunxi-dts-OrangePi-Zero-Enable-SPI-.patch
-Patch0013:      0013-sunxi-Enable-SPI-support-on-Orange-.patch
-Patch0014:      0014-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch
-Patch0015:      0015-rpi-Add-identifier-for-the-new-RPi4.patch
-Patch0016:      0016-rpi-Add-identifier-for-the-new-CM4.patch
-Patch0017:      0017-pci-pcie-brcmstb-Fix-inbound-window.patch
-Patch0018:      0018-dm-Introduce-xxx_get_dma_range.patch
-Patch0019:      0019-dm-test-Add-test-case-for-dev_get_d.patch
-Patch0020:      0020-dm-Introduce-DMA-constraints-into-t.patch
-Patch0021:      0021-dm-test-Add-test-case-for-dev-dma_o.patch
-Patch0022:      0022-dm-Introduce-dev_phys_to_bus-dev_bu.patch
-Patch0023:      0023-dm-test-Add-test-case-for-dev_phys_.patch
-Patch0024:      0024-xhci-translate-virtual-addresses-in.patch
-Patch0025:      0025-mmc-Introduce-mmc_phys_to_bus-mmc_b.patch
-Patch0026:      0026-configs-rpi4-Enable-DM_DMA-across-a.patch
-Patch0027:      0027-video-arm-rpi-Add-brcm-bcm2711-hdmi.patch
-Patch0028:      0028-usb-xhci-pci-Add-DM_FLAG_OS_PREPARE.patch
-Patch0029:      0029-pci-brcmstb-Cleanup-controller-stat.patch
-Patch0030:      0030-fs-btrfs-Select-SHA256-in-Kconfig.patch
-Patch0031:      0031-efi_loader-Avoid-emitting-efi_var_b.patch
-Patch0032:      0032-configs-BPI-R2-Disable-EFI-Grub-wor.patch
-Patch0033:      0033-configs-RPi2-Disable-EFI-Grub-worka.patch
-Patch0034:      0034-smbios-Fix-table-whit-no-string-is-.patch
+Patch0006:      0006-Kconfig-add-btrfs-to-distro-boot.patch
+Patch0007:      0007-configs-Re-sync-with-CONFIG_DISTRO_.patch
+Patch0008:      0008-sunxi-dts-OrangePi-Zero-Add-SPI-ali.patch
+Patch0009:      0009-sunxi-dts-OrangePi-Zero-Enable-SPI-.patch
+Patch0010:      0010-sunxi-Enable-SPI-support-on-Orange-.patch
+Patch0011:      0011-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch
+Patch0012:      0012-smbios-Fix-table-when-no-string-is-.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
@@ -452,8 +426,8 @@ export DEVICE_TREE=avnet-ultra96-rev1
 %if "%target" == "xilinxzynqmpzcu102rev10"
 export DEVICE_TREE=zynqmp-zcu102-rev1.0
 %endif
-%if "%target" == "zynqzturn"
-export DEVICE_TREE=zynq-zturn
+%if "%target" == "zynqzturnv5"
+export DEVICE_TREE=zynq-zturn-v5
 %endif
 
 make %{?_smp_mflags} CROSS_COMPILE= HOSTCFLAGS="%{optflags}" $confname
@@ -572,7 +546,7 @@ install -D -m 0644 SPL %{buildroot}%{uboot_dir}/imx6-spl.bin
 %if %socfpga_spl == 1
 install -D -m 0644 u-boot-with-spl.sfp %{buildroot}%{uboot_dir}/u-boot-with-spl.sfp
 %endif
-%if "%{name}" == "u-boot-zynqzturn"
+%if "%{name}" == "u-boot-zynqzturnv5"
 install -D -m 0644 spl/boot.bin %{buildroot}%{uboot_dir}/boot.bin
 %endif
 %if "%{name}" == "u-boot-rpi3"

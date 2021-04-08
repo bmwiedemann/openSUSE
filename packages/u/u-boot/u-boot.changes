@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Apr  6 11:25:03 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Add u-boot-zturnv5 flavour instead of u-boot-zturn.
+  I've failed to find anybody who has v4 zturn board.
+
+-------------------------------------------------------------------
+Tue Apr  6 08:00:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- mx53loco now uses u-boot-dtb.imx instead of u-boot.imx
+
+-------------------------------------------------------------------
+Tue Apr  6 07:22:01 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2021.04
+- Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.04
+* Patches dropped:
+  0006-boo-1123170-Remove-ubifs-support-fr.patch
+  0007-boo-1144161-Remove-nand-mtd-spi-dfu.patch
+  0008-Kconfig-add-btrfs-to-distro-boot.patch
+  0009-configs-Re-sync-with-CONFIG_DISTRO_.patch
+  0010-configs-am335x_evm-disable-BTRFS.patch
+  0011-sunxi-dts-OrangePi-Zero-Add-SPI-ali.patch
+  0012-sunxi-dts-OrangePi-Zero-Enable-SPI-.patch
+  0013-sunxi-Enable-SPI-support-on-Orange-.patch
+  0014-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch
+  0015-rpi-Add-identifier-for-the-new-RPi4.patch
+  0016-rpi-Add-identifier-for-the-new-CM4.patch
+  0017-pci-pcie-brcmstb-Fix-inbound-window.patch
+  0018-dm-Introduce-xxx_get_dma_range.patch
+  0019-dm-test-Add-test-case-for-dev_get_d.patch
+  0020-dm-Introduce-DMA-constraints-into-t.patch
+  0021-dm-test-Add-test-case-for-dev-dma_o.patch
+  0022-dm-Introduce-dev_phys_to_bus-dev_bu.patch
+  0023-dm-test-Add-test-case-for-dev_phys_.patch
+  0024-xhci-translate-virtual-addresses-in.patch
+  0025-mmc-Introduce-mmc_phys_to_bus-mmc_b.patch
+  0026-configs-rpi4-Enable-DM_DMA-across-a.patch
+  0027-video-arm-rpi-Add-brcm-bcm2711-hdmi.patch
+  0028-usb-xhci-pci-Add-DM_FLAG_OS_PREPARE.patch
+  0029-pci-brcmstb-Cleanup-controller-stat.patch
+  0030-fs-btrfs-Select-SHA256-in-Kconfig.patch
+  0031-efi_loader-Avoid-emitting-efi_var_b.patch
+  0032-configs-BPI-R2-Disable-EFI-Grub-wor.patch
+  0033-configs-RPi2-Disable-EFI-Grub-worka.patch
+  0034-smbios-Fix-table-whit-no-string-is-.patch
+* Patches added:
+  0006-Kconfig-add-btrfs-to-distro-boot.patch
+  0007-configs-Re-sync-with-CONFIG_DISTRO_.patch
+  0008-sunxi-dts-OrangePi-Zero-Add-SPI-ali.patch
+  0009-sunxi-dts-OrangePi-Zero-Enable-SPI-.patch
+  0010-sunxi-Enable-SPI-support-on-Orange-.patch
+  0011-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch
+  0012-smbios-Fix-table-when-no-string-is-.patch
+
+-------------------------------------------------------------------
 Wed Mar 17 11:46:02 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
 
 Fix SMBIOS tables without a string present (bsc#1183079)

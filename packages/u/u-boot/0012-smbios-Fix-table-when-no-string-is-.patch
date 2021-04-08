@@ -1,0 +1,33 @@
+From c6623753e7523061f0301ccce32785020a02832e Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <mbrugger@suse.com>
+Date: Wed, 17 Mar 2021 12:20:32 +0100
+Subject: [PATCH] smbios: Fix table when no string is present
+
+When no string is present in a table, next_ptr points to the same
+location as eos. When calculating the string table length, we would only
+reserve one \0. By spec a SMBIOS table has to end with two \0\0 when no
+strings a present.
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+
+Series-to: sjg@chromium.org
+Series-cc: bmeng.cn@gmail.com
+Series-cc: xypron.glpk@gmx.de
+Series-cc: u-boot@lists.denx.de
+---
+ lib/smbios.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/smbios.c b/lib/smbios.c
+index 7d463c84a9..d21d37cdac 100644
+--- a/lib/smbios.c
++++ b/lib/smbios.c
+@@ -153,7 +153,7 @@ static int smbios_add_prop(struct smbios_ctx *ctx, const char *prop)
+ static void smbios_set_eos(struct smbios_ctx *ctx, char *eos)
+ {
+ 	ctx->eos = eos;
+-	ctx->next_ptr = eos;
++	ctx->next_ptr = eos + 1;
+ 	ctx->last_str = NULL;
+ }
+ 

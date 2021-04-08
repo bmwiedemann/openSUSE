@@ -1,4 +1,4 @@
-From 96d142c3738348da1ea98e39a8bbaf5c4a640692 Mon Sep 17 00:00:00 2001
+From 650c3bf0b238e402efbb462ee284a3413028a82d Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Tue, 29 Sep 2020 10:13:33 +0200
 Subject: [PATCH] sunxi: dts: OrangePi Zero: Add SPI aliases to make bus usable
