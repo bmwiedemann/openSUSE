@@ -465,4 +465,15 @@ fix a jira reference in the changelog.
     <comment>Updated python bindings for libvirt 7.1.0.</comment>
     <requestid>876097</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>464463a4d6f41afcb88b12fa57f95998</srcmd5>
+    <version>7.2.0</version>
+    <time>1617908508</time>
+    <user>RBrownSUSE</user>
+    <comment>Updated python bindings for libvirt 7.2.0.
+
+- Update to 7.2.0
+  - Add all new APIs and constants in libvirt 7.2.0</comment>
+    <requestid>882669</requestid>
+  </revision>
 </revisionlist>
