@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr  7 07:49:42 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 21.03.21:
+  * Fixed <tractor> and blank considered missing and blocking export (broke in v21.01).
+  * Added an Ignore button to the missing files error dialog in Export.
+  * Fixed black frames appearing in Slideshow Generator (broke in v20.02).
+  * Fixed being able to use mouse wheel over Timeline and Keyframes zoom sliders (broke in v20.01).
+  * Improved sound quality with small changes in Speed with Pitch Compensation or Pitch audio filter (broke in v20.11).
+  * Fixed the Timeline clip audio waveform incorrect after adding transition by dragging the clip left.
+  * Fixed repairing a project file opened using a network path on Windows.
+  * Fixed writing a raw FLAC file does not set its duration.
+  * Fixed an elided file name in clip Properties can become the clip name.
+
+-------------------------------------------------------------------
 Mon Mar  1 08:30:07 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Updaet to 21.02.27:
