@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr  3 10:29:25 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 1.19.9
+  * https://nginx.org/en/CHANGES
+  * Fixed nginx could not be built with the mail proxy module, but
+    without the ngx_mail_ssl_module; the bug had appeared in 1.19.8.
+  * Fixed "upstream sent response body larger than indicated content
+    length" errors might occur when working with gRPC backends;
+    the bug had appeared in 1.19.1.
+  * Fixed nginx might not close a connection till keepalive timeout
+    expiration if the connection was closed by the client while
+    discarding the request body.
+  * Fixed nginx might not detect that a connection was already closed
+    by the client when waiting for auth_delay or limit_req delay,
+    or when working with backends.
+  * Fixed in the eventport method.
+
+-------------------------------------------------------------------
 Fri Mar 12 20:17:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.19.8:
