@@ -20,14 +20,14 @@
 # in our requirements, i.e. the same version we have built against
 %define openscenegraph_version %(rpm -qa --nosignature --nodigest libOpenSceneGraph\*-devel | sed 's/.*-devel-\\(.*\\)-.*/\\1/')
 
-%define libname libSimGearCore-2020_3_6
+%define libname libSimGearCore-2020_3_8
 %define main_version 2020.3
 Name:           SimGear
-Version:        %{main_version}.6
+Version:        %{main_version}.8
 Release:        0
 Summary:        Simulator Construction Gear
 # https://sourceforge.net/p/flightgear/codetickets/1940/
-License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND MIT
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND MIT
 Group:          Amusements/Games/3D/Simulation
 URL:            https://www.flightgear.org/
 Source0:        https://sourceforge.net/projects/flightgear/files/release-%{main_version}/simgear-%{version}.tar.bz2
@@ -41,6 +41,7 @@ BuildRequires:  udns-devel
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(zlib)
 
@@ -71,10 +72,10 @@ Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 BuildRequires:  libboost_headers-devel
 Requires:       libOpenSceneGraph-devel = %{openscenegraph_version}
-Requires:       libjpeg-devel
-Requires:       openal-soft-devel
 Requires:       udns-devel
-Requires:       zlib-devel
+Requires:       pkgconfig(liblzma)
+Requires:       pkgconfig(openal)
+Requires:       pkgconfig(zlib)
 
 %description devel
 Development headers and libraries for building applications against
