@@ -19,34 +19,32 @@
 Name:           ksh
 %global		date		2012-08-01
 %global         use_suid_exe	0
-%if %suse_version > 1210
 %global         use_opt_bins	1
-%else
-%global         use_opt_bins	0
-%endif
 %if !0%{?qemu_user_space_build:1}
 %global         do_tests	1
 %else
 %global         do_tests	0
 %endif
 %global         use_locale	0
+%if 0%{?usrmerged}
+%define libdir %{_libdir}
+%define bindir %{_bindir}
+%else
+%define libdir /%{_lib}
+%define bindir /bin
+%endif
 BuildRequires:  bind-utils
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gdbm-devel
 BuildRequires:  glibc-devel
 BuildRequires:  groff
+BuildRequires:  libbz2-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  procps
 BuildRequires:  psmisc
-BuildRequires:  zlib-devel
-%if %suse_version > 1020
-BuildRequires:  bind-libs
-BuildRequires:  libbz2-devel
-%endif
-%if %suse_version > 1120
 BuildRequires:  update-alternatives
-%endif
+BuildRequires:  zlib-devel
 # /bin/ex and /bin/ed required for build
 BuildRequires:  awk
 BuildRequires:  ed
@@ -55,10 +53,8 @@ BuildRequires:  vim
 URL:            http://www.research.att.com/~gsf/download/
 Requires(post): /bin/ln /bin/rm /etc/bash.bashrc /bin/true
 Requires(postun): /bin/ln /bin/rm /etc/bash.bashrc /bin/true
-%if %suse_version > 1120
 Requires(post):  update-alternatives
 Requires(preun): update-alternatives
-%endif
 %if %use_suid_exe
 PreReq:         permissions
 %endif
@@ -394,9 +390,9 @@ fi
 	#define SHOPT_REMOTE	    1
 	#define SHOPT_CMDLIB_BLTIN  1
 	#define SHOPT_CMDLIB_HDR    <cmdlist.h>
-	#define SHOPT_CMDLIB_DIR    "/%{_lib}/ast/bin"
-	#define SH_CMDLIB_DIR	    "/%{_lib}/ast/bin"
-	#define THISPROG	    "/%{_lib}/ast/bin/suid_exec"
+	#define SHOPT_CMDLIB_DIR    "%{libdir}/ast/bin"
+	#define SH_CMDLIB_DIR	    "%{libdir}/ast/bin"
+	#define THISPROG	    "%{libdir}/ast/bin/suid_exec"
 	#define _AST_std_malloc	    0
 	#define _map_malloc	    1
 	EOF
@@ -491,7 +487,7 @@ fi
   cflags -Wl,--as-needed			LDSOFLG
   cflags -Wl,--hash-size=8599			LDSOFLG
   cflags -Wl,-Bsymbolic-functions		LDSOFLG
-  cflags -Wl,-rpath,/%{_lib}/ast		LDSOFLG
+  cflags -Wl,-rpath,%{libdir}/ast		LDSOFLG
   RPM_OPT_FLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE $LARGEFILE"
   RPM_OPT_FLAGS="$RPM_OPT_FLAGS $IGNORE $FEATURE"
   mam_cc_L=use
@@ -519,7 +515,7 @@ fi
       libast)
 	  base=src/lib/$lib
 	  vers=$(grep :LIBRARY: ${base}/Makefile | sed "s@.*\([0-9]\+\.[0-9]\+\).*@\1@")
-	  link="-L${root}/lib/ -Wl,-rpath-link,${root}/lib -Wl,-rpath,/%{_lib}/ast $LDSOFLG"
+	  link="-L${root}/lib/ -Wl,-rpath-link,${root}/lib -Wl,-rpath,%{libdir}/ast $LDSOFLG"
 	  ;;
       esac
       soname="-Wl,-soname,${lib}.so.${vers%.*},-stats"
@@ -560,22 +556,22 @@ fi
       libshell)
 	  base=src/cmd/ksh93
 	  vers=$(grep ^VERSION  ${base}/Makefile | sed "s@.*\([0-9]\+\.[0-9]\+\).*@\1@")
-	  link="-L${root}/lib/ -Wl,-rpath-link,${root}/lib -Wl,-rpath,/%{_lib}/ast $LDSOFLG $LDFLAGS -ldll -lcmd -last -lm -ldl"
+	  link="-L${root}/lib/ -Wl,-rpath-link,${root}/lib -Wl,-rpath,%{libdir}/ast $LDSOFLG $LDFLAGS -ldll -lcmd -last -lm -ldl"
 	  ;;
       libdll)
 	  base=src/lib/$lib
 	  vers=$(grep :LIBRARY: ${base}/Makefile | sed "s@.*\([0-9]\+\.[0-9]\+\).*@\1@")
-	  link="-L${root}/lib/ -Wl,-rpath-link,${root}/lib -Wl,-rpath,/%{_lib}/ast $LDSOFLG -ldl -last"
+	  link="-L${root}/lib/ -Wl,-rpath-link,${root}/lib -Wl,-rpath,%{libdir}/ast $LDSOFLG -ldl -last"
 	  ;;
       libcmd)
 	  base=src/lib/$lib
 	  vers=$(grep :LIBRARY: ${base}/Makefile | sed "s@.*\([0-9]\+\.[0-9]\+\).*@\1@")
-	  link="-L${root}/lib/ -Wl,-rpath-link,${root}/lib -Wl,-rpath,/%{_lib}/ast $LDSOFLG -last"
+	  link="-L${root}/lib/ -Wl,-rpath-link,${root}/lib -Wl,-rpath,%{libdir}/ast $LDSOFLG -last"
 	  ;;
       libast)
 	  base=src/lib/$lib
 	  vers=$(grep :LIBRARY: ${base}/Makefile | sed "s@.*\([0-9]\+\.[0-9]\+\).*@\1@")
-	  link="-L${root}/lib/ -Wl,-rpath-link,${root}/lib -Wl,-rpath,/%{_lib}/ast $LDSOFLG"
+	  link="-L${root}/lib/ -Wl,-rpath-link,${root}/lib -Wl,-rpath,%{libdir}/ast $LDSOFLG"
 	  ;;
       esac
       soname="-Wl,-soname,${lib}.so.${vers%.*},-stats"
@@ -652,7 +648,7 @@ fi
       rm -f ${root}/bin/ksh
       rm -f ${root}/bin/shcomp
       for bin in ksh shcomp pty what mime asa dlls suid_exec ; do
-	  relink $bin /bin/$bin -Wl,-rpath-link,${root}/lib -Wl,-rpath,/%{_lib}/ast
+	  relink $bin /bin/$bin -Wl,-rpath-link,${root}/lib -Wl,-rpath,%{libdir}/ast
       done
   popd
   LD_LIBRARY_PATH=${root}/lib
@@ -689,9 +685,9 @@ fi
   root=$(echo ${PWD}/arch/linux*)
   test -d $root || exit 1
   pushd $root   || exit 1
-  mkdir -p %{buildroot}/bin
+  mkdir -p %{buildroot}%{bindir}
   mkdir -p %{buildroot}%{_bindir}
-  mkdir -p %{buildroot}/%{_lib}/ast/bin
+  mkdir -p %{buildroot}%{libdir}/ast/bin
   mkdir -p %{buildroot}%{_includedir}/ast
   mkdir -p %{buildroot}%{_libdir}/ast
   mkdir -p %{buildroot}%{_mandir}
@@ -702,7 +698,7 @@ fi
 %endif
   mkdir -p %{buildroot}%{_datadir}/ksh/fun
   mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
-  install bin/ksh       %{buildroot}/bin/ksh93
+  install bin/ksh       %{buildroot}%{bindir}/ksh93
   install bin/shcomp    %{buildroot}%{_bindir}/shcomp
 %if %use_opt_bins
   for bin in pty what mime asa dlls ; do
@@ -710,37 +706,35 @@ fi
   done
 %endif
 %if %use_suid_exe
-  install bin/suid_exec %{buildroot}/%{_lib}/ast/bin/
+  install bin/suid_exec %{buildroot}%{libdir}/ast/bin/
 %endif
-%if %suse_version > 1120
   # create update-alternatives symlinks
   mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
   touch %{buildroot}/%{_sysconfdir}/alternatives/ksh
+%if !0%{?usrmerged}
   touch %{buildroot}/%{_sysconfdir}/alternatives/usr-bin-ksh
+  ln -sf %{_sysconfdir}/alternatives/usr-bin-ksh        %{buildroot}%{_bindir}/ksh
+%endif
   touch %{buildroot}/%{_sysconfdir}/alternatives/ksh.1.gz
   touch %{buildroot}/%{_sysconfdir}/alternatives/rksh.1.gz
-  ln -sf %{_sysconfdir}/alternatives/ksh                %{buildroot}/bin/ksh
-  ln -sf %{_sysconfdir}/alternatives/usr-bin-ksh        %{buildroot}%{_bindir}/ksh
+  ln -sf %{_sysconfdir}/alternatives/ksh                %{buildroot}%{bindir}/ksh
   ln -sf %{_sysconfdir}/alternatives/ksh.1.gz   %{buildroot}/%{_mandir}/man1/ksh.1.gz
   ln -sf %{_sysconfdir}/alternatives/rksh.1.gz  %{buildroot}/%{_mandir}/man1/rksh.1.gz
-%else
-  # create ghost files
-  ln -sf /bin/true		%{buildroot}/bin/ksh
-  ln -sf /bin/true		%{buildroot}%{_bindir}/ksh
-%endif
-  ln -sf /bin/ksh93		%{buildroot}%{_bindir}/rksh
-  ln -sf /bin/ksh93		%{buildroot}/%{_lib}/ast/ksh
-  ln -sf ast			%{buildroot}/%{_lib}/ksh
-  cp -a lib/*.so*		%{buildroot}/%{_lib}/ast/
+  ln -sf %{bindir}/ksh93	%{buildroot}%{_bindir}/rksh
+  ln -sf ../../bin/ksh93	%{buildroot}%{libdir}/ast/ksh
+  ln -sf ast			%{buildroot}%{libdir}/ksh
+  cp -a lib/*.so*		%{buildroot}%{libdir}/ast/
   cp -a fun/*			%{buildroot}%{_datadir}/ksh/fun/
   if cmp -s %{buildroot}%{_datadir}/ksh/fun/pushd %{buildroot}%{_datadir}/ksh/fun/popd ; then
       ln -sf pushd %{buildroot}%{_datadir}/ksh/fun/popd
   fi
-  for so in %{buildroot}/%{_lib}/ast/*.so.*.* ; do
+%if !0%{?usrmerged}
+  for so in %{buildroot}%{libdir}/ast/*.so.*.* ; do
       so=${so##*/}
-      ln -sf /%{_lib}/ast/$so %{buildroot}%{_libdir}/ast/${so%%%%.*}.so
+      ln -sf %{libdir}/ast/$so %{buildroot}%{_libdir}/ast/${so%%%%.*}.so
   done
   rm -f %{buildroot}%{_libdir}/ast/*.so.*
+%endif
   sed -rn '/^\.de Af/,/^\.\./p;/^\.de aF/,/^\.\./p' man/man3/int.3 > af.man
   for man in $(grep -l '\.}S' man/man[138]/*.[138]); do
       sed -ri '1r af.man' $man
@@ -749,12 +743,7 @@ fi
       sed -ri 's/\\f5/\\fB/g;s/^\.H/\.P\n\.H/g;s/\.}S/\.aF/;s/^\.LI/\.LR/;s/\\\(le/\\\(<=/' $man
   done
   install -m 0644 lib/*.a		%{buildroot}%{_libdir}/ast/
-%if %suse_version > 1120
   install -m 0644 man/man1/sh.1		%{buildroot}%{_mandir}/man1/ksh93.1
-%else
-  install -m 0644 man/man1/sh.1		%{buildroot}%{_mandir}/man1/ksh.1
-  ln -sf ../man1/ksh.1.gz		%{buildroot}/%{_mandir}/man1/rksh.1.gz
-%endif
   install -m 0644 man/man1/shcomp.1ast	%{buildroot}%{_mandir}/man1/shcomp.1ast
 %if %use_opt_bins
   for bin in pty what mime asa dlls ; do
@@ -807,10 +796,10 @@ fi
 %if %use_suid_exe
   set -C
   (cat > %{buildroot}%{_sysconfdir}/permissions.d/ksh) <<-EOF
-	/%{_lib}/ast/bin/suid_exec		root:root	4755
+	%{libdir}/ast/bin/suid_exec		root:root	4755
 	EOF
   (cat > %{buildroot}%{_sysconfdir}/permissions.d/ksh.paranoid) <<-EOF
-	/%{_lib}/ast/bin/suid_exec		root:root	0755
+	%{libdir}/ast/bin/suid_exec		root:root	0755
 	EOF
   set +C
 %endif
@@ -818,7 +807,7 @@ fi
 %if %use_suid_exe
 %if %{defined verify_permissions}
 %verifyscript
-%verify_permissions -e /%{_lib}/ast/bin/suid_exec
+%verify_permissions -e %{libdir}/ast/bin/suid_exec
 %endif
 %endif
 
@@ -826,58 +815,33 @@ fi
 test -e etc/bash.bashrc && ln -sf bash.bashrc etc/ksh.kshrc || true
 %if %use_suid_exe
 %if %{defined set_permissions}
-%set_permissions /%{_lib}/ast/bin/suid_exec
+%set_permissions %{libdir}/ast/bin/suid_exec
 %endif
 %endif
-%if %suse_version > 1120
-if test -x /%{_lib}/ast/bin/ksh ; then
+if test -x %{libdir}/ast/bin/ksh ; then
     %{_sbindir}/update-alternatives \
 	--quiet \
-%if %suse_version > 1210
 	--force \
-%endif
-	--remove ksh /%{_lib}/ast/bin/ksh
-    rm -f /%{_lib}/ast/bin/ksh
-    rm -f /%{_lib}/ast/bin/shcomp
+	--remove ksh %{libdir}/ast/bin/ksh
+    rm -f %{libdir}/ast/bin/ksh
+    rm -f %{libdir}/ast/bin/shcomp
 fi
 %{_sbindir}/update-alternatives \
-    --quiet \
-%if %suse_version > 1210
-    --force \
-%endif
-    --install /bin/ksh ksh /bin/ksh93 20 \
+    --install %{bindir}/ksh ksh %{bindir}/ksh93 20 \
+%if !0%{?usrmerged}
     --slave %{_bindir}/ksh usr-bin-ksh /bin/ksh93 \
+%endif
     --slave %{_mandir}/man1/ksh.1.gz ksh.1.gz %{_mandir}/man1/ksh93.1.gz \
     --slave %{_mandir}/man1/rksh.1.gz rksh.1.gz %{_mandir}/man1/ksh93.1.gz
-%else
-if test -x /%{_lib}/ast/bin/ksh ; then
-    rm -f /%{_lib}/ast/bin/ksh
-    rm -f /%{_lib}/ast/bin/shcomp
-fi
-if test -x /bin/ksh93 ; then
-    rm -f bin/ksh
-    ln -sf /bin/ksh93 bin/ksh
-    rm -f %{_exec_prefix}/bin/ksh
-    ln -sf /bin/ksh93 %{_exec_prefix}/bin/ksh
-fi
-%endif
-
-%if %suse_version > 1120
-
-%preun
-if test $1 -eq 0 ; then
-    %{_sbindir}/update-alternatives --quiet --remove ksh /bin/ksh93
-fi
-%endif
 
 %postun
 if test $1 -eq 0 -a ! -x bin/ksh ; then
     if test ! -x bin/pdksh ; then
 	rm -f etc/ksh.kshrc
     fi
-%if %suse_version <= 1120
-    rm -f bin/ksh %{_exec_prefix}/bin/ksh
-%endif
+fi
+if [ ! -f %{bindir}/ksh93 ] ; then
+    %{_sbindir}/update-alternatives --quiet --remove ksh %{bindir}/ksh93
 fi
 
 %posttrans
@@ -893,23 +857,18 @@ fi
 %endif
 %doc LICENSE EPL-1.0 CPL-1.0 src/cmd/ksh93/COMPATIBILITY src/cmd/ksh93/RELEASE*
 %doc Builtins PROMO OBSOLETE MEMORANDUM
-/bin/ksh93
-%if %suse_version > 1120
-/bin/ksh
 %{_bindir}/ksh
 %doc %{_mandir}/man1/ksh.1.gz
 %doc %{_mandir}/man1/rksh.1.gz
 %doc %{_mandir}/man1/ksh93.1.gz
 %ghost %{_sysconfdir}/alternatives/ksh
+%if !0%{?usrmerged}
+/bin/ksh93
+/bin/ksh
 %ghost %{_sysconfdir}/alternatives/usr-bin-ksh
+%endif
 %ghost %{_sysconfdir}/alternatives/ksh.1.gz
 %ghost %{_sysconfdir}/alternatives/rksh.1.gz
-%else
-%ghost %verify(not link) /bin/ksh
-%ghost %verify(not link) %{_bindir}/ksh
-%doc %{_mandir}/man1/ksh.1.gz
-%doc %{_mandir}/man1/rksh.1.gz
-%endif
 %doc %{_mandir}/man1/shcomp.1ast.gz
 %if %use_opt_bins
 %doc %{_mandir}/man1/pty.1ast.gz
@@ -919,14 +878,14 @@ fi
 %doc %{_mandir}/man1/dlls.1ast.gz
 %endif
 %{_bindir}/*
-%dir /%{_lib}/ast
-%dir /%{_lib}/ast/bin
+%dir %{libdir}/ast
+%dir %{libdir}/ast/bin
 %if %use_suid_exe
-%attr(4755,root,root) /%{_lib}/ast/bin/suid_exec
+%attr(4755,root,root) %{libdir}/ast/bin/suid_exec
 %endif
-/%{_lib}/ast/*.so*
-/%{_lib}/ast/ksh
-/%{_lib}/ksh
+%{libdir}/ast/*.so*
+%{libdir}/ast/ksh
+%{libdir}/ksh
 %dir %{_datadir}/ksh
 %dir %{_datadir}/ksh/fun
 %{_datadir}/ksh/fun/*

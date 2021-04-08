@@ -1084,4 +1084,14 @@
   dropped many years ago (forwarded request 865455 from kukuk)</comment>
     <requestid>865466</requestid>
   </revision>
+  <revision rev="112" vrev="5">
+    <srcmd5>faef14a57db118b61c17ff569e465336</srcmd5>
+    <version>93vu</version>
+    <time>1617908593</time>
+    <user>RBrownSUSE</user>
+    <comment>- Remove BuildRequires: bind-libs
+- prepare usrmerge (boo#1029961)
+- clean up SLE11 compat sections</comment>
+    <requestid>883212</requestid>
+  </revision>
 </revisionlist>
