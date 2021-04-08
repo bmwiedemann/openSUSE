@@ -57,4 +57,18 @@ Used by https://build.opensuse.org/package/show/home:gladiac/rav1e (AV1 encoder)
     <comment></comment>
     <requestid>863001</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0847c09db41af34500cf0be5e5a3c737</srcmd5>
+    <version>0.8.0</version>
+    <time>1617908526</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add README.suse-maint to fix OBS warning.
+
+- Update to version 0.8.0
+  * cbindgen 0.18
+  * provide a cli option to have fully static builds.
+  * cargo cinstall and cargo capi install now imply --release
+    to match the behavior of cargo install.</comment>
+    <requestid>883123</requestid>
+  </revision>
 </revisionlist>

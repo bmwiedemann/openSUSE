@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  6 02:21:28 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add README.suse-maint to fix OBS warning.
+
+-------------------------------------------------------------------
+Mon Apr  5 07:52:23 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.8.0
+  * cbindgen 0.18
+  * provide a cli option to have fully static builds.
+  * cargo cinstall and cargo capi install now imply --release
+    to match the behavior of cargo install.
+
+-------------------------------------------------------------------
 Wed Jan 13 16:32:44 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.7.0
