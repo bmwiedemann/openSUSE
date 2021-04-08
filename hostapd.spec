@@ -17,7 +17,6 @@
 
 
 %bcond_without  apparmor
-
 Name:           hostapd
 Version:        2.9
 Release:        0
@@ -34,6 +33,7 @@ Source4:        hostapd.service
 Source5:        apparmor-usr.sbin.hostapd
 Patch1:         CVE-2019-16275.patch
 Patch2:         CVE-2020-12695.patch
+Patch3:         CVE-2021-30004.patch
 BuildRequires:  libnl3-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
