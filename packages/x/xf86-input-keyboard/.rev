@@ -109,4 +109,12 @@ Wed Apr 18 11:22:34 UTC 2012 - vuntz@opensuse.org
 - Remove upstream patch U_Use-xf86AddEnabledDevice-with-threaded-input.patch</comment>
     <requestid>441181</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>807d1d728eb916dc3e855172b9a05e00</srcmd5>
+    <version>1.9.0</version>
+    <time>1617908583</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883188</requestid>
+  </revision>
 </revisionlist>
