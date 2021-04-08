@@ -686,4 +686,41 @@ run -osc service localrun format_spec_file to fix copyright
     -Werror turns into an error</comment>
     <requestid>862228</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ab01c8961fb208f704612eb360d78d96</srcmd5>
+    <version>2.23</version>
+    <time>1617910318</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.23:
+  Added:
+  * open-in-browser-noninteractively operation which is similar to
+    open-in-browser, but doesn't relinquish the terminal to the browser. It
+    still waits for the browser to finish executing, though (Dennis van der
+    Schagt)
+  * Confirmation for delete-all-articles (#1490)
+  * %U specifier for feedlist-title-format which shows the total number of
+    unread articles in all feeds (#1495)
+  * Display images' alternate text in the article view (#1512)
+  * List iframe URLs in the article view (#1153)
+  Changed:
+  * Newsboat now refuses to enqueue a podcast if its filename is already present
+    in the queue. If that happens, you'll have to adjust
+    download-filename-format to make the filenames more distinguishable
+    (#1411)
+  * Reduced message flickering when reloading feeds (Dennis van der Schagt)
+  * Updated translations: Dutch (Dennis van der Schagt), German (Lysander
+    Trischler), Italian (Mauro Scomparin), Polish (Carno), Russian (Alexander
+    Batischev), Turkish (Emir Sari), and Ukrainian (Alexander Batischev)
+  * Bumped minimum supported Rust version to 1.46.0
+  * Updated vendored library Catch2 to 2.13.4
+  Removed:
+  * dumpform command-line command which was only intended for debugging
+    (Dennis van der Schagt)
+  Fixed:
+  * Missing empty lines inside pre tags (#1429)
+  * open-all-unread-in-browser-and-mark-read not synchronizing the &quot;read&quot; status
+    to the remote API (#1449)
+  * Newsboat redrawing the screen once a minute even if idle (#563)</comment>
+    <requestid>883531</requestid>
+  </revision>
 </revisionlist>

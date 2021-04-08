@@ -17,7 +17,7 @@
 
 
 Name:           newsboat
-Version:        2.22.1
+Version:        2.23
 Release:        0
 Summary:        RSS/Atom Feed Reader for Text Terminals
 License:        MIT
@@ -70,6 +70,9 @@ directory = './vendor'
 EOF
 sed -i 's/#!\/usr\/bin\/env perl/#!\/usr\/bin\/perl/' ./contrib/pinboard.pl
 sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' ./doc/examples/example-exec-script.py
+sed -i 's/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/' ./contrib/exportOPMLWithTags.py
+sed -i 's/#!\/usr\/bin\/env bash/#!\/usr\/bin\/bash/' ./contrib/image-preview/nbrun
+sed -i 's/#!\/usr\/bin\/env bash/#!\/usr\/bin\/bash/' ./contrib/image-preview/vifmimg
 
 %build
 export CARGO_HOME=`pwd`/cargo-home/
