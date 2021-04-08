@@ -381,4 +381,22 @@ In short, do not use this driver for tablets on production workstations yet.</co
     <comment></comment>
     <requestid>878736</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e6505cdea2e97f9b5d39efdd0aa727dd</srcmd5>
+    <version>1.0.0</version>
+    <time>1617908588</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.0.0
+  * The biggest change here is the license change to MIT. Due to an unfortunate
+    copy/paste error, the actual license text used was the Historical Permission
+    Notice and Disclaimer license. With the ack of the various contributors, the
+    driver is now using the MIT license text as intended. The actual impact is
+    low, the HPND is virtually identical to the MIT license anyway (ianal,
+    consult your legal dept if you have one).
+  * The only other notable change: cancelled touch points are now lifted
+    correctly. Where libinput cancels a touch, e.g. in response to a palm being
+    detected, the touch point previously got stuck in the down state. This is
+    fixed now.</comment>
+    <requestid>883203</requestid>
+  </revision>
 </revisionlist>
