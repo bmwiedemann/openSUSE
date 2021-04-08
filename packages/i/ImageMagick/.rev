@@ -3017,4 +3017,13 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * avoid an omp deadlock with policy string</comment>
     <requestid>882313</requestid>
   </revision>
+  <revision rev="229" vrev="1">
+    <srcmd5>8365c5bc56da91231d7d703a9c4055ba</srcmd5>
+    <version>7.0.11.6</version>
+    <time>1617908580</time>
+    <user>RBrownSUSE</user>
+    <comment>- udpate to 7.0.11.6:
+  * fix portable Windows build. (forwarded request 883111 from dirkmueller)</comment>
+    <requestid>883177</requestid>
+  </revision>
 </revisionlist>

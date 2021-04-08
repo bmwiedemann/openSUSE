@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  6 01:21:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- udpate to 7.0.11.6:
+  * fix portable Windows build. 
+
+-------------------------------------------------------------------
 Wed Mar 31 08:44:15 UTC 2021 - pgajdos@suse.com
 
 - version update to 7.0.11.5
