@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr  8 08:34:23 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9+git.20210330:
+  * Update mremap flags for 5.12-rc5
+  * Update madvise flags
+  * Update socketopts to 5.12rc5
+  * syscall update for 5.12-rc5
+  * Yet more new io_uring flags
+
+-------------------------------------------------------------------
 Mon Dec 28 08:53:52 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update project url
