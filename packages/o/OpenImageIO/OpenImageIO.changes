@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  7 21:26:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- explicitly list pkgconfig and shared libs to avoid filesystem rpm
+  conflicts 
+
+-------------------------------------------------------------------
 Fri Mar 26 08:03:38 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Conditionalize ptex

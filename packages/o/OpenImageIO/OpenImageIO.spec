@@ -239,11 +239,12 @@ ln -s ../../src/fonts/Droid_Sans/DroidSans.ttf build/fonts/DroidSans.ttf
 %endif
 
 %files devel
-%{_includedir}/%{name}/
-%{_libdir}/pkgconfig
+%{_includedir}/%{name}
+%{_libdir}/pkgconfig/OpenImageIO.pc
 %{_libdir}/cmake
 %{_datadir}/cmake
-%{_libdir}/*.so
+%{_libdir}/libOpenImageIO.so
+%{_libdir}/libOpenImageIO_Util.so
 
 %files -n lib%{name}%{so_ver}
 %{_libdir}/lib%{name}.so.*
