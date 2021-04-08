@@ -17,13 +17,13 @@
 
 
 Name:           julius
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        An open source re-implementation of Caesar III
 License:        GPL-3.0-only
 Group:          Amusements/Games/Strategy/Other
 URL:            https://github.com/bvschaik/julius
-Source:         https://github.com/bvschaik/julius/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/bvschaik/julius/releases/download/v%{version}/julius-%{version}-source.tar.gz
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig

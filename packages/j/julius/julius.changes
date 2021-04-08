@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Mar 22 10:45:37 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.6.0
+  * Minimap of the scenario can be displayed when selecting a map
+    to play
+  * Bridge cost is shown before building the bridge
+  * Roads lead into the access ramps to indicate that access ramps
+    are part of the road network
+  * Undo is disabled after certain houses upgrade to prevent visual
+    corruption
+  * Granary info window shows cart status when it's getting food from
+    another granary
+  * Construction: plaza shows as green when over a road with people
+    on it. Previously it was red but the player could still place it
+  * Construction: fountain shows as red when over a building or other
+    non-clear tile. It still indicates whether that tile has reservoir
+    access
+  * Removed config option: "Fix Emperor change and survival time"
+  * Fix entertainer corrupting building memory in certain cases
+  * Fix people on bridges not having a portrait on right-click
+  * Fix being able to place disabled buildings in tutorial missions
+    using their hotkey
+  * Fix small bug with visual feedback on delete
+  * Fix intro video playback causing skipped videos and unexpected
+    audio on slow devices
+  * Fix top menu items overlapping with the city funds for more
+    verbose languages
+  * Fix press effect not showing for image buttons
+  * Fix 'right-click to close window' not working when mouse cursor
+    was over a button
+  * Fix visual bug when undoing deleted houses
+  * Fix incorrect scaling mode applied when using a custom display
+    scale, which resulted in pixelated graphics
+
+-------------------------------------------------------------------
 Sat Dec 26 14:48:12 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Add missing dependencies: zlib and libpng
