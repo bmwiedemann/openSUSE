@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  5 17:37:10 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 5.7.1
+  
+  * No upstream release notes, see 
+    https://www.mercurial-scm.org/repo/hg/log?rev=tag%28%225.7%22%29%3A%3Atag%28%225.7.1%22%29
+
+-------------------------------------------------------------------
 Mon Feb  8 21:53:59 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
 
 - added the _service file for updating sources with single command
