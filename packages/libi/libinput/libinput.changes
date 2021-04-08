@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 24 08:54:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.17.1
+  * quirks: add quirks for Apple SPI input devices
+  * Add Lenovo Legion 5 keyboard to 50-system-lenovo.quirks
+
+-------------------------------------------------------------------
 Tue Feb 23 09:44:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.17

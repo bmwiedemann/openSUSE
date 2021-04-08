@@ -1,5 +1,5 @@
 #
-# spec file for package libinput
+# spec file for package libinput%{?xsuffix}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -37,7 +37,7 @@
 %define lname	libinput10
 %define pname	libinput
 Name:           libinput%{?xsuffix}
-Version:        1.17.0
+Version:        1.17.1
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT
