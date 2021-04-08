@@ -1,4 +1,17 @@
 --------------------------------------------------------------------
+Thu Apr 1 08:48:43 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#252
+- default to using zram
+- 7.0.31
+
+--------------------------------------------------------------------
+Thu Apr 1 08:44:09 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#251
+- fix rescue image in usrmerge case (boo#1029961)
+
+--------------------------------------------------------------------
 Thu Mar 11 11:13:15 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#250
