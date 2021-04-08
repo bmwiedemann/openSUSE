@@ -17,7 +17,7 @@
 
 
 Name:           picard
-Version:        2.5.6
+Version:        2.6
 Release:        0
 Summary:        The Next Generation MusicBrainz Tagger
 License:        GPL-2.0-or-later
@@ -29,15 +29,17 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libofa-devel
 BuildRequires:  python3-devel
-BuildRequires:  python3-mutagen >= 1.43
-BuildRequires:  python3-qt5
+BuildRequires:  python3-fasteners
+BuildRequires:  python3-mutagen >= 1.37
+BuildRequires:  python3-qt5 >= 5.10
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-sip
 BuildRequires:  update-desktop-files
 Requires:       python3-Markdown
 Requires:       python3-dateutil >= 2.7.3
+Requires:       python3-fasteners
 Requires:       python3-mutagen >= 1.37
-Requires:       python3-qt5
+Requires:       python3-qt5 >= 5.10
 Recommends:     chromaprint-fpcalc
 Recommends:     python3-discid
 

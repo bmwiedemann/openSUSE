@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Tue Apr  6 08:17:54 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 2.6:
+  * Bugfixes
+    - PICARD-2156 - macOS: Use Cmd+Shift+H instead of Cmd+H for
+      opening history view to avoid conflicts with system keyboard
+      shortcut to hide window
+    - PICARD-2159 - macOS: Scripting Documentation dialog opens
+      behind options dialog
+  * Improvements
+    - PICARD-2158 - Make Scripting Documentation dialog available
+      in renaming script
+    - PICARD-2164 - Add shortcut Ctrl+T for "Search for similar
+      tracks"
+- Version 2.6.0b3
+  * Bugfixes
+    - PICARD-2135 - Tags license and website cannot be deleted and
+      get duplicated on update for ID3
+    - PICARD-2136 - macOS: File browser does not use user's home
+      folder by default
+    - PICARD-2138 - macOS: After saving options the toolbar style
+      changes
+  * Improvements
+    - PICARD-1357 - Support dark mode on macOS Mojave 10.14 and
+      later
+    - PICARD-2095 - Allow the user to choose between light or
+      dark theme on Windows and macOS
+- Version 2.6.0b2
+  * Bugfixes
+    - PICARD-2131 - Tagger button reacts slow in Firefox
+  * Improvements
+    - PICARD-2130 - Restructure cover art options to make them
+      easier to understand
+- Version 2.6.0b1
+  * Bugfixes
+    - PICARD-1528 - "Search for similar albums" causes crashes if
+      the selection includes clusters and files
+    - PICARD-1689 - Freezes when adding tags to large album
+    - PICARD-1747 - macOS: Tearing when scrolling list of plugins
+    - PICARD-1926 - "Show changes first" in tag preview window
+      leads to freeze
+    - PICARD-2088 - Picard hangs when adding new tag to multiple
+      tracks in an album
+    - PICARD-2091 - Loading images from cover art via drag and
+      drop from browser only loads PNG and JPEG images
+    - PICARD-2097 - Crash with zh_CN locale
+    - PICARD-2113 - Script can change title of "Unclustered files"
+      special cluster
+    - PICARD-2127 - "Lookup in browser" in metadata box does not
+      pass tagger port
+  * New Features
+    - PICARD-204 - Support for track-level original release date
+    - PICARD-1998 - Add "director" (for videos) tag
+    - PICARD-2089 - Support WebP images for cover art
+    - PICARD-2124 - Add MB release annotation field as
+      %_releaseannotation% variable
+  * Tasks
+    - PICARD-715 - Chrome to block browser access to localhost
+    - PICARD-1950 - Fix macOS builds with PyQt > 5.13.2
+  * Improvements
+    - PICARD-2084 - Use TLS for AcoustID web service requests
+    - PICARD-2090 - Reenable TIFF support for cover art images
+    - PICARD-2092 - Improve script editor function/variable auto
+      completion
+    - PICARD-2105 - Improve script function popup descriptions
+    - PICARD-2110 - Add %originaldate% and %originalyear% to file
+      naming examples
+    - PICARD-2114 - Show disambiguation comment in CD Lookup
+      popup window
+    - PICARD-2125 - Enable CAA Release Group cover art provider
+      by default
+    - PICARD-2126 - Allow cross origin access to browser
+      integration
+
+-------------------------------------------------------------------
 Wed Jan  6 16:43:45 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.5.6:
