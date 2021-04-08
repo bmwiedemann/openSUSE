@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Apr  7 07:37:08 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.1.7:
+  * Fix race condition in connection test
+  * Reduce debug object size
+  * Move deployment scripts to deployment branch
+  * Do not install files from PlatformFolders project
+
+-------------------------------------------------------------------
+Wed Apr  7 07:36:41 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.1.6:
+  * Fix crash on exit.
+  * Fix ARM build.
+
+-------------------------------------------------------------------
+Wed Apr  7 07:36:16 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.1.5:
+  * Fixes for various OSes
+  * Update sentry version
+
+-------------------------------------------------------------------
+Sun Mar 14 14:43:18 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.1.4:
+  * Add stack trace on unhandled exception
+
+-------------------------------------------------------------------
+Mon Mar  8 08:11:15 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.1.3:
+  * Fixes for various OSes and build systems
+  * Allow older cmake versions on non-windows platforms
+  * Fix for older cmake versions
+
+-------------------------------------------------------------------
+Fri Mar  5 09:27:20 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.1.0:
+  * Build using vcpkg
+  * Monitor crashes
+  * Fix some race conditions
+  * Add --ssh-option argument for passing arguments to ssh
+  * Android support
+
+-------------------------------------------------------------------
 Thu Nov 19 08:56:19 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 6.0.13:

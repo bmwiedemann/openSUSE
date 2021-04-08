@@ -1,7 +1,7 @@
 #
 # spec file for package EternalTerminal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global _firewalld_dir %{_prefix}/lib/firewalld
 Name:           EternalTerminal
-Version:        6.0.13
+Version:        6.1.7
 Release:        0
 Summary:        Remote shell that survives IP roaming and disconnect
 License:        Apache-2.0
@@ -27,12 +27,16 @@ Source0:        https://github.com/MisterTea/EternalTerminal/archive/et-v%{versi
 Source1:        et.xml
 BuildRequires:  boost-devel
 BuildRequires:  cmake
+BuildRequires:  curl-devel
 BuildRequires:  firewall-macros
 BuildRequires:  firewalld
 BuildRequires:  gcc-c++
 BuildRequires:  gflags-devel
+BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  libsodium-devel
 BuildRequires:  ncurses-devel
+BuildRequires:  ninja
+BuildRequires:  pkgconfig
 BuildRequires:  protobuf-devel
 BuildRequires:  utempter-devel
 BuildRequires:  pkgconfig(systemd)
@@ -46,7 +50,9 @@ interrupting the session.
 %autosetup -n EternalTerminal-et-v%{version}
 
 %build
-%cmake
+# see https://github.com/MisterTea/EternalTerminal/issues/403
+%cmake -DDISABLE_VCPKG:BOOL=ON -DProtobuf_LITE_LIBRARY=%{_libdir}/libprotobuf-lite.so
+make %{?_smp_mflags}
 
 %install
 %cmake_install
