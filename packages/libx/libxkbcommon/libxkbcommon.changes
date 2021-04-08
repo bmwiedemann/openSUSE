@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr  3 12:58:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0
+  * `xkb_x11_keymap_new_from_device()` is much faster. It now
+    performs only 2 roundtrips to the X server, instead of dozens
+    (in first-time calls).
+  * Case-sensitive `xkb_keysym_from_name()` is much faster.
+  * Keysym names of the form `0x12AB` and `U12AB` are parsed more
+    strictly.
+  * Compose files now have a size limit (65535 internal nodes).
+  * Compose table loading (`xkb_compose_table_new_from_locale()`
+    and similar) is much faster.
+
+-------------------------------------------------------------------
 Thu Mar  4 21:47:33 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.0

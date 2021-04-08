@@ -23,15 +23,15 @@
 %endif
 
 Name:           libxkbcommon
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Library for handling xkb descriptions
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://xkbcommon.org/
 
-#Git-Clone:	git://github.com/xkbcommon/libxkbcommon
-Source:         https://github.com/xkbcommon/libxkbcommon/releases/download/xkbcommon-%version/%name-%version.tar.xz
+#Git-Clone:	https://github.com/xkbcommon/libxkbcommon
+Source:         https://xkbcommon.org/download/libxkbcommon-%version.tar.xz
 Source2:        baselibs.conf
 BuildRequires:  bison
 BuildRequires:  flex
@@ -146,7 +146,7 @@ ef=-Denable-x11=true
 %else
 ef=-Denable-x11=false
 %endif
-# bugzilla.opensuse.org/795968 for rationale
+# includedir intentional, cf. bugzilla.opensuse.org/795968
 %meson -Denable-docs=false --includedir="%_includedir/%name" $ef
 %meson_build
 
