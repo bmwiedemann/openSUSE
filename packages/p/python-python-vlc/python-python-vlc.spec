@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-vlc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-python-vlc
-Version:        3.0.11115
+Version:        3.0.12117
 Release:        0
 Summary:        VLC bindings for python
 License:        LGPL-2.0-or-later
