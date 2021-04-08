@@ -18,13 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pynetbox
-Version:        5.3.0
+Version:        6.0.1
 Release:        0
 Summary:        NetBox API client library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/digitalocean/pynetbox
 Source:         https://files.pythonhosted.org/packages/source/p/pynetbox/pynetbox-%{version}.tar.gz
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module netaddr}
 BuildRequires:  %{python_module pytest}
@@ -55,7 +56,7 @@ Python API client library for NetBox.
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
 
 %check
-%pytest
+%pytest tests/unit
 
 %files %{python_files}
 %doc README.md CHANGELOG.md

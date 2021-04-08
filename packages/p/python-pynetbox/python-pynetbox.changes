@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr  7 15:27:32 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.0.1
+  * Fixes broken DetailEndpoint.list().
+- Update to version 6.0.0
+  * BREAKING CHANGE Endpoint.all() and .filter() no longer return
+    lists, instead they return a ReturnSet object now. Iterating
+    over this object calls a generator which steps through
+    paginated results now as-needed.
+  * Endpoint.all() and .filter() now accept a limit kwarg that
+    controls the page size of paginated results.
+  * Fixes issue pickling responses from Endpoint.all() and
+    `.filter().
+  * Implemented integration tests against four previous major
+    NetBox releases.
+  * Ends python 2 support.
+
+-------------------------------------------------------------------
 Mon Jan  4 21:48:00 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.3.0
