@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  1 16:25:59 UTC 2021 - Yaroslav Kurlaev <yaroslav.kurlaev@gmail.com>
+
+- Remove deprecated "StandardOutput=syslog" option from the systemd 
+  unit file to remove a warning from systemd.
+
+-------------------------------------------------------------------
 Tue Jan 26 17:43:06 UTC 2021 - trenn@suse.de
 
 - Update to version 175 (jsc#SLE-14450):
