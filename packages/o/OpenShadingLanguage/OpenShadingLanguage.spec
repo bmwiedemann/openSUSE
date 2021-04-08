@@ -280,7 +280,7 @@ find %{buildroot}%{python3_sitearch} -name oslquery.so -print -delete
 %license LICENSE.md
 %{_includedir}/*
 %{_libdir}/lib*.so
-%{_libdir}/cmake/
-%{_libdir}/pkgconfig/
+%{_libdir}/cmake/OSL
+%{_libdir}/pkgconfig/osl*.pc
 
 %changelog
