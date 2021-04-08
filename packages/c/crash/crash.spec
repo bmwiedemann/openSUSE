@@ -42,9 +42,16 @@ Name:           crash
 %else
 %define build_gcore 0
 %endif
+%define build_kmp 1
+%if 0%{?suse_version} <= 1500 && 0%{?suse_version} >= 1315
+# kernel is missing on 32bit SLE - cannot build a KMP
+%ifarch %ix86 s390
+%define build_kmp 0
+%endif
+%endif
 URL:            https://crash-utility.github.io/
 Summary:        Crash utility for live systems; netdump, diskdump, LKCD or mcore dumpfiles
-License:        GPL-3.0-or-later AND GFDL-1.2-only
+License:        GFDL-1.2-only AND GPL-3.0-or-later
 Group:          Development/Tools/Debuggers
 Version:        7.2.9
 Release:        0
@@ -103,8 +110,9 @@ Requires:       /usr/bin/nm
 ExclusiveArch:  %ix86 x86_64 ia64 s390 s390x ppc64 ppc64le alpha aarch64
 # Source code says it can do ppc32. Excluded here?
 ExcludeArch:    ppc
-# crash driver KMP
+%if 0%{?build_kmp}
 BuildRequires:  kernel-syms
+%endif
 %ifarch x86_64
 %if 0%{?suse_version} >= 1520 && 0%{?suse_version} < 1550
 BuildRequires:  kernel-syms-rt
@@ -115,9 +123,11 @@ BuildRequires:  kernel-devel
 %endif
 BuildRequires:  module-init-tools
 
+%if 0%{?build_kmp}
 %suse_kernel_module_package -n crash -p %_sourcedir/%{name}-kmp-preamble um
 %define arch %_target_cpu
 %define kmp_pkg KMP
+%endif
 
 %description
 The core analysis suite is a self-contained tool that can be used to
@@ -226,7 +236,7 @@ Group:          Development/Tools/Debuggers
 
 %description gcore
 Create a core dump file of a user-space task that was running in a
-kernel dumpfile. 
+kernel dumpfile.
 
 
 
@@ -276,7 +286,7 @@ Authors:
 %patch21 -p1
 # Patches for SLE 15 SP1 potentially break support for SLE15 and SLE 12 SP4
 # Don't apply on these (and earlier) versions - see bsc#1148197
-%if 0%{?sle_version} > 120400 && 0%{?sle_version} != 150000 
+%if 0%{?sle_version} > 120400 && 0%{?sle_version} != 150000
 %patch23 -p1
 %patch24 -p1
 %endif

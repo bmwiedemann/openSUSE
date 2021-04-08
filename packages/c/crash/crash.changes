@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  6 15:49:26 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Crash KMPs cannot be always built.
+
+-------------------------------------------------------------------
 Thu Mar 25 13:03:13 UTC 2021 - Petr Mladek <pmladek@suse.com>
 
 - Upgrade to version 7.2.9:
