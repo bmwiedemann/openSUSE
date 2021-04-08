@@ -16,7 +16,6 @@
 #
 
 
-%define rname chromium
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
 %if 0%{?suse_version} > 1500
@@ -49,12 +48,12 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        89.0.4389.90
+Version:        89.0.4389.114
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 URL:            https://www.chromium.org/
-Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{rname}-%{version}.tar.xz
+Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{name}-%{version}.tar.xz
 # Toolchain definitions
 Source30:       master_preferences
 Source100:      chromium-browser.sh
@@ -73,45 +72,46 @@ Patch4:         chromium-buildname.patch
 Patch5:         chromium-system-libusb.patch
 Patch6:         gcc-enable-lto.patch
 # Do not use unrar code, it is non-free
-Patch10:        chromium-norar.patch
+Patch7:         chromium-norar.patch
 # revert location on old GCC on 15.1, 15.2 gets it right tho
-Patch11:        no-location-leap151.patch
-Patch12:        system-libdrm.patch
-Patch13:        chromium-disable-parallel-gold.patch
-Patch14:        chromium-lp151-old-drm.patch
+Patch8:         no-location-leap151.patch
+Patch9:         system-libdrm.patch
+Patch10:        chromium-disable-parallel-gold.patch
+Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
-Patch50:        chromium-78-protobuf-RepeatedPtrField-export.patch
-Patch52:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
-Patch53:        chromium-84-blink-disable-clang-format.patch
-Patch54:        chromium-88-compiler.patch
-Patch55:        chromium-86-ConsumeDurationNumber-constexpr.patch
-Patch56:        chromium-86-ImageMemoryBarrierData-init.patch
-Patch57:        chromium-86-nearby-explicit.patch
-Patch58:        chromium-86-nearby-include.patch
-Patch60:        chromium-86-f_seal.patch
-Patch61:        chromium-gcc11.patch
-Patch68:        chromium-lp152-missing-includes.patch
-Patch79:        chromium-glibc-2.33.patch
-Patch80:        chromium-89-quiche-private.patch
-Patch81:        chromium-89-quiche-dcheck.patch
-Patch82:        chromium-89-skia-CropRect.patch
-Patch83:        chromium-89-dawn-include.patch
-Patch84:        chromium-89-webcodecs-deps.patch
-Patch85:        chromium-89-EnumTable-crash.patch
-Patch86:        chromium-shim_headers.patch
-Patch87:        chromium-89-missing-cstring-header.patch
-Patch88:        chromium-89-AXTreeSerializer-include.patch
-Patch89:        chromium-88-gcc-fix-swiftshader-libEGL-visibility.patch
-Patch90:        x11-ozone-fix-two-edge-cases.patch
+Patch12:        chromium-78-protobuf-RepeatedPtrField-export.patch
+Patch13:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
+Patch14:        chromium-84-blink-disable-clang-format.patch
+Patch15:        chromium-88-compiler.patch
+Patch16:        chromium-86-ConsumeDurationNumber-constexpr.patch
+Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
+Patch18:        chromium-86-nearby-explicit.patch
+Patch19:        chromium-86-nearby-include.patch
+Patch20:        chromium-86-f_seal.patch
+Patch21:        chromium-gcc11.patch
+Patch22:        chromium-lp152-missing-includes.patch
+Patch23:        chromium-glibc-2.33.patch
+Patch24:        chromium-89-quiche-private.patch
+Patch25:        chromium-89-quiche-dcheck.patch
+Patch26:        chromium-89-skia-CropRect.patch
+Patch27:        chromium-89-dawn-include.patch
+Patch28:        chromium-89-webcodecs-deps.patch
+Patch29:        chromium-89-EnumTable-crash.patch
+Patch30:        chromium-shim_headers.patch
+Patch31:        chromium-89-missing-cstring-header.patch
+Patch32:        chromium-89-AXTreeSerializer-include.patch
+Patch33:        chromium-88-gcc-fix-swiftshader-libEGL-visibility.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
 #  Recreated from scratch to be smaller and use system the orginal switches
 #  (default on) compared to the PR
-Patch100:       chromium-vaapi.patch
-Patch102:       chromium-86-fix-vaapi-on-intel.patch
+Patch34:        chromium-vaapi.patch
+Patch35:        chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
-Patch200:       chromium-prop-codecs.patch
+Patch36:        chromium-prop-codecs.patch
+Patch37:        libva-2.11.patch
+Patch38:        libva-2.11-nolegacy.patch
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison
@@ -178,6 +178,7 @@ BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(libtcmalloc)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libva)
@@ -198,6 +199,10 @@ BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(theora) >= 1.1
 BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(vorbis)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-cursor)
+BuildRequires:  pkgconfig(wayland-scanner)
+BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb-dri3)
 BuildRequires:  pkgconfig(xcb-proto)
@@ -207,6 +212,7 @@ BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xi)
+BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xscrnsaver)
@@ -242,15 +248,6 @@ BuildRequires:  pkgconfig(glproto)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libspa-0.2)
 %endif
-BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-cursor)
-BuildRequires:  pkgconfig(wayland-scanner)
-BuildRequires:  pkgconfig(wayland-server)
-BuildRequires:  pkgconfig(xkbcommon)
-%ifnarch aarch64
-# Current tcmalloc does not support AArch64
-BuildRequires:  pkgconfig(libtcmalloc)
-%endif
 %if %{with system_harfbuzz}
 BuildRequires:  pkgconfig(harfbuzz) > 2.3.0
 %endif
@@ -284,8 +281,12 @@ Requires:       %{name} = %{version}
 WebDriver is an open source tool for automated testing of webapps across many browsers. It provides capabilities for navigating to web pages, user input, JavaScript execution, and more. ChromeDriver is a standalone server which implements WebDriver's wire protocol for Chromium. It is being developed by members of the Chromium and WebDriver teams.
 
 %prep
-%setup -q -n %{rname}-%{version}
+%autosetup -N
+%if 0%{?suse_version} < 1550
+%{lua:for i=0,37 do print(string.format("%%patch%u -p1 \n", i, i)) end}
+%else
 %autopatch -p1
+%endif
 
 %build
 # Fix the path to nodejs binary
@@ -626,10 +627,8 @@ myconf_gn+=" use_pulseaudio=true link_pulseaudio=true"
 myconf_gn+=" is_component_build=false"
 myconf_gn+=" use_sysroot=false"
 myconf_gn+=" fatal_linker_warnings=false"
-%ifnarch aarch64
 # Current tcmalloc does not support AArch64
 myconf_gn+=" use_allocator=\"tcmalloc\""
-%endif
 myconf_gn+=" fieldtrial_testing_like_official_build=true"
 myconf_gn+=" use_gold=true"
 myconf_gn+=" use_gnome_keyring=false"

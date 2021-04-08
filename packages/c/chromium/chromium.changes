@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr  3 17:41:28 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 89.0.4389.114 bsc#1184256
+  - CVE-2021-21194: Use after free in screen capture
+  - CVE-2021-21195: Use after free in V8
+  - CVE-2021-21196: Heap buffer overflow in TabStrip
+  - CVE-2021-21197: Heap buffer overflow in TabStrip
+  - CVE-2021-21198: Out of bounds read in IPC
+  - CVE-2021-21199: Use Use after free in Aura
+- Add libva-2.11.patch to fix build with libva <2.11
+- Add libva-2.11-nolegacy.patch to fix build with libva 2.11
+- Remove x11-ozone-fix-two-edge-cases.patch
+
+-------------------------------------------------------------------
 Mon Mar 15 10:55:23 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to 89.0.4389.90 bsc#1183515

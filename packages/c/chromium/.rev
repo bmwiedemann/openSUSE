@@ -3501,4 +3501,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 - Add x11-ozone-fix-two-edge-cases.patch to fix tab drag errors</comment>
     <requestid>879173</requestid>
   </revision>
+  <revision rev="287" vrev="1">
+    <srcmd5>d110c095fda9052aaefa9dfae3fa5d6b</srcmd5>
+    <version>89.0.4389.114</version>
+    <time>1617908484</time>
+    <user>RBrownSUSE</user>
+    <comment>bsc#1184256</comment>
+    <requestid>882838</requestid>
+  </revision>
 </revisionlist>
