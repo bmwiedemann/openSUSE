@@ -1,7 +1,7 @@
 #
 # spec file for package audacity
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           audacity
-Version:        2.4.2
+Version:        3.0.0
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        GPL-2.0-or-later
@@ -32,17 +32,14 @@ Patch0:         audacity-no_buildstamp.patch
 Patch2:         audacity-misc-errors.patch
 # PATCH-FIX-UPSTREAM audacity-no_return_in_nonvoid.patch - Fix false positive errors Two new gcc10 ones ignoring assert
 Patch3:         audacity-no_return_in_nonvoid.patch
+Patch4:         audacity-remove-wx-test.patch
 BuildRequires:  cmake >= 3.15
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 #!BuildIgnore:  gstreamer-0_10-plugins-base
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libmp3lame-devel
-%if 0%{?suse_version} && 0%{?suse_version} > 1520
 BuildRequires:  wxWidgets-3_2-nostl-devel
-%else
-BuildRequires:  wxWidgets-3_0-nostl-devel
-%endif
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac) >= 1.3.1
@@ -145,6 +142,14 @@ mv -f %{buildroot}%{_datadir}/pixmaps/gnome-mime-application-x-audacity-project.
 rm -rf %{buildroot}%{_datadir}/pixmaps/
 rm -rf %{buildroot}%{_datadir}/doc
 cp -v lib-src/portmixer/LICENSE.txt portmixer.LICENSE.txt
+
+# Why make install installs these is a mystery
+rm -f %{buildroot}%{_libdir}/audacity/libwx_baseu-suse-nostl.so.4.0.0
+rm -f %{buildroot}%{_libdir}/audacity/libwx_baseu_net-suse-nostl.so.4.0.0
+rm -f %{buildroot}%{_libdir}/audacity/libwx_baseu_xml-suse-nostl.so.4.0.0
+rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_core-suse-nostl.so.4.0.0
+rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_html-suse-nostl.so.4.0.0
+rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_qa-suse-nostl.so.4.0.0
 
 %find_lang %{name}
 

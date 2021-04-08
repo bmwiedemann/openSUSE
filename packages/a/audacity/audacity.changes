@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Apr  8 08:39:08 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Update to release 3.0.0 and add patch for wxWidgets test:
+  audacity-remove-wx-test.patch
+- Add another useless return after assert to:
+  audacity-no_return_in_nonvoid.patch
+- Upstream changes:
+ *Audacity 3.0.0 is a major update on our previous release
+  We’ve changed the format in which we save Audacity projects! 
+  Previously we saved projects as a sometimes large number of small
+  files, with an ‘.aup’ file to coordinate the lot. This way of
+  doing things is sometimes called ‘pile of files’ storage.
+ *We did have time to improve our ‘Noise Gate’ effect and add a
+  new analyzer, ‘Label Sounds’, that can label sounds and silences
+  We also made a few small tweaks elsewhere. You can now import
+  and export macros, and there are a couple of new commands for
+  using the last used tool or last used analyzer that you can give
+  shortcuts to.
+ *We also fixed over 160 bugs that had been accumulating over the
+  years. This is quite a staggering amount of work. The majority
+  of these bugs were minor problems, easily worked around.
+  Some though were really juicy high priority bugs that would have
+  mattered a lot to the people affected by them. We’re really glad
+  to have these bugs fixed now.
+
+-------------------------------------------------------------------
 Thu Oct  1 09:05:10 UTC 2020 - Dave Plater <davejplater@gmail.com>
 
 - Remove build requirement for libwx_gtk3u_core-suse-nostl3_1_3 as

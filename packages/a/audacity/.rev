@@ -865,4 +865,15 @@ Added audacity-misc-errors.patch to fix various errors picked up by rpmlint.
     <comment></comment>
     <requestid>838940</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>813a3202c950ec1ab91703c57b1c7660</srcmd5>
+    <version>3.0.0</version>
+    <time>1617910360</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to release 3.0.0 and add patch for wxWidgets test:
+  audacity-remove-wx-test.patch
+- Add another useless return after assert to:
+  audacity-no_return_in_nonvoid.patch</comment>
+    <requestid>883844</requestid>
+  </revision>
 </revisionlist>
