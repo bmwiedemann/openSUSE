@@ -16,15 +16,16 @@
 #
 
 
-%define sover 104
+%define sover 120
 Name:           libplacebo
-Version:        3.104.0
+Version:        3.120.1
 Release:        0
 Summary:        Library for GPU-accelerated video/image rendering primitives
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://code.videolan.org/videolan/libplacebo
 Source0:        https://code.videolan.org/videolan/libplacebo/-/archive/v%{version}/libplacebo-v%{version}.tar.bz2
+Source1:        https://github.com/Immediate-Mode-UI/Nuklear/raw/6e80e2a646f35be4afc157a932f2936392ec8f74/nuklear.h
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.47.0
@@ -32,7 +33,12 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-mako
 BuildRequires:  shaderc-devel
 BuildRequires:  pkgconfig(epoxy)
+BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vulkan)
 
 %description
@@ -60,11 +66,21 @@ primitives, as well as a standalone vulkan-based image/video
 renderer. It is based on the core rendering algorithms and ideas
 of mpv.
 
+%package     -n plplay
+Summary:        Example video player based on %{name}
+Group:          Productivity/Multimedia/Video/Players
+
+%description -n plplay
+A small example video player based on %{name} and FFmpeg. This provides little
+more than the ability to display video files, and rather serves as a tool to
+help understand and demonstrate the various options provided by %{name}.
+
 %prep
 %setup -q -n %{name}-v%{version}
+cp %{SOURCE1} ./demos/3rdparty/nuklear/
 
 %build
-%meson -Dglslang=disabled -Dtests=true
+%meson -Dglslang=disabled -Dtests=true -Ddemos=true
 %meson_build
 
 %install
@@ -87,5 +103,8 @@ of mpv.
 %{_includedir}/%{name}
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
+
+%files -n plplay
+%{_bindir}/plplay
 
 %changelog

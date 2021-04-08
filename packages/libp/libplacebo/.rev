@@ -766,4 +766,137 @@ Fixes and performance improvements:
 </comment>
     <requestid>859747</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7f2c499f1f1a635503651c647144640c</srcmd5>
+    <version>3.120.1</version>
+    <time>1617908574</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update libplacebo to version 3.120.1:
+This hotfix release fixes a number of minor issues with the v3.120.0
+release, and also modularizes the included demo programs to cut down on
+the number of compiled binaries.
+Changes:
+- hexadecimal strings in custom shaders may now include whitespace
+- added 16-bit half float formats to the dummy pl_gpu
+- significantly reduced verbosity of the included demo programs
+- merged all of the demo program variants into a single binary that
+  picks the best windowing system / graphical API at runtime
+- install `plplay` when demos are enabled
+Fixes and performance improvements:
+- fixed an integer overflow in a texture bounds check
+- fixed a false positive error in the test framework on 32-bit platforms
+- fixed some minor issues with various outdated comments
+- fixed a potential use-after-free in the `plplay` demo program when
+  playing files containing embedded ICC profiles
+- Update libplacebo to version 3.120.0. (Upstream changelog appended)
+- Create a new package `plplay` for the included demo program. This requires
+  bundling a copy of `nuklear.h`, which is single-header library not included
+  as part of the libplacebo source distribution.
+This is a feature release, introducing frame mixing, DRM format
+modifiers, and support for custom LUTs -, while also greatly expanding
+the available demo programs, in particular the `plplay` video player.
+The main highlight is the new `pl_queue` abstraction living in
+&lt;libplacebo/utils/frame_queue.h&gt;. This greatly simplifies the core of a
+libplacebo-based video renderer by translating a stream of input frames
+into an array of GPU-mapped textures suitable for frame mixing, given a
+corresponding vsync timestamp. New frames can be delivered to this API
+using a push or pull model, and they are lazily uploaded on an as-needed
+basis as well as internally garbage collected when no longer needed.
+This abstraction also contains all needed machinery for estimating
+source/display framerates by comparing and averaging timestamps, freeing
+users from the burden of having to accurately determine this information
+a priori.
+Also worth mentioning is the addition of support for custom LUTs,
+currently only in Adobe's .cube format. They can be applied flexibly at
+a number of locations in the video processing pipeline, including as a
+replacement for YUV&lt;-&gt;RGB conversion or tone/gamut mapping, and fed with
+either normalized linear light or native-gamma values.
+Among the included demo programs, the `plplay` example video player has
+been greatly expanded - adding support for a settings GUI (based on
+nuklear), frame timing and mixing, custom shaders, and more. This
+example video player now serves as a convenient platform to demonstrate
+all of libplacebo's advanced rendering features.
+Finally, all of libplacebo now contains only code written entirely from
+scratch (rather than deriving from mpv), opening up the possibility to
+explore different licenses besides the current LGPLv2.1+. In particular,
+permissive (MIT/BSD-style) licenses are being considered.
+Additions:
+- add asynchronous GPU callbacks, specifically to `pl_tex_transfer`,
+  allowing for non-blocking host memory transfer operations
+- add `pl_shared_mem.stride_w/h` to control dmabuf pitch
+- add `pl_render_image_mix` to blend multiple frames into a single
+  output image, given relative timestamp information
+- add the `pl_filter_mitchell_clamp` filter preset
+- add `pl_render_params.preserve_mixing_cache` to speed up redraws after
+  renderer size changes when frame mixing is active
+- add &lt;libplacebo/utils/dav1d.h&gt; to help with Dav1dPicture mapping
+- implement `PL_HANDLE_HOST_PTR` for the OpenGL backend
+- implement drm format modifiers for vulkan
+- add a new field `pl_fmt.modifiers` for DRM format modifier negotiation
+- add new header &lt;libplacebo/shaders/lut.h&gt; to load custom LUTs
+  (currently only supporting the .cube format)
+- add `index_data/buf` to `pl_pass_run_params`, adding support for
+  indexed vertex data when dispatching shader passes
+- add `pl_dispatch_vertex` to allow dispatching fragment shaders using
+  a list of custom vertices with custom vertex attributes
+- add `pl_frame_recreate_from_avframe` and `pl_download_avframe` to help
+  downloading GPU textures back into AVFrame form
+- add a new header &lt;libplacebo/utils/frame_queue.h&gt; to assist in taking
+  a stream of (Frame, PTS) pairs as well as a list of VSync times and
+  turning them into a stream of `pl_frame_mix` structs
+- add `pl_white_from_temp` and `pl_color_adjustment.temperature` to
+  apply white point adjustments between correlated color temperatures (K)
+- add `pl_filter_preset.description` containing a longer, human-readable
+  name for a given filter preset
+Changes:
+- `pl_3dlut_params` has been renamed `pl_icc_params`
+- `pl_render_params.force_3dlut` has been renamed `force_icc_lut`
+- `pl_3dlut_update/apply` have been renamed to `pl_icc_update/apply` and
+  moved to a (conditionally installed) new header &lt;libplacebo/shaders/icc.h&gt;
+- `pl_upload_plane` no longer initializes `out_plane-&gt;shift_x/y` to 0,
+  instead leaving them unmodified (to avoid clobbering existing shift data)
+- `pl_filter_box` has been renamed to `pl_filter_nearest`
+- `pl_filter_triangle` has been renamed to `pl_filter_bilinear`
+- `pl_render_params.frame_mixer = NULL` now disables frame mixing - to
+  get back the old behaviour, set this to `&amp;pl_oversample_frame_mixer`.
+- `pl_color_map_params.gamut_warning` now highlights out-of-gamut colors
+  in bright pink, rather than the old (ill-defined) inversion behaviour
+- `pl_named_filter_config` has been renamed to `pl_filter_preset`
+- `pl_find_named_filter` has been renamed to `pl_find_filter_preset`
+- ditto for `pl_named_filter_function` and `pl_filter_function_preset`
+Fixes and performance improvements:
+- fix buffer overflow in custom shader STORAGE blocks
+- fix include path for glslang &gt;= 11.0.0
+- actually enable shader subgroup operations for HDR peak detection
+- fix locale dependence of shader parsing primitives
+- fix AVCOL_SPC_SMPTE170M mapping
+- fix wrong color space selection in `pl_vulkan_create_swapchain`
+- work-around low UBO size limits on some platforms
+- fix compilation issues on C++ due to the use of reserved identifiers
+- fix `pl_get_detected_peak` on platforms without host-visible SSBOs
+- fix edge case in vulkan texture handle capabilities check
+- fix suboptimal mutex destruction code
+- skip peak detection when outputting to HDR displays
+- fix edge cases in shader LUT type selection logic
+- avoid redundant scaling passes when scaling anamorphic content
+- merge similar planes before dispatching heavy shaders (e.g.
+  debanding, hooks)
+- avoid scaling passes for certain small fractional scaling steps
+- entirely avoid processing unneeded components when dispatching scalers
+- avoid using more components than necessary for intermediate FBOs
+- fix out-of-bounds read for small non-cropped emulated textures
+- avoid thrashing the shader cache when reinitializing OpenGL FBOs
+- fix incorrect include in &lt;libplacebo/opengl.h&gt;
+- fix vk.xml priority issue on windows
+- fix undefined behaviour / GPU hangs in HDR peak detection shader
+- fix incorrect forwarding of DRM modifiers to the OpenGL backend
+- fix crash on AV_PIX_FMT_FLAG_BAYER
+- fix various compilation issues on certain platforms
+- fix obscure edge-case in floating point printing routine
+- `pl_render_params.force_icc_lut` now excludes no-op cases
+- fix handling of custom shader COMPUTE blocks
+- correctly apply hue and saturation controls for non-YCbCr color spaces
+</comment>
+    <requestid>883169</requestid>
+  </revision>
 </revisionlist>
