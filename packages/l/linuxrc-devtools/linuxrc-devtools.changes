@@ -1,4 +1,17 @@
 --------------------------------------------------------------------
+Thu Apr 8 11:25:31 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#28
+- improved git2log parser
+- 0.20
+
+--------------------------------------------------------------------
+Thu Apr 8 11:25:20 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#27
+- rebuild changelog file if needed
+
+--------------------------------------------------------------------
 Thu Jul 16 11:03:11 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc-devtools#25

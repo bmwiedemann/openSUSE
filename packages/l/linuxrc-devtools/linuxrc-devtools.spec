@@ -1,7 +1,7 @@
 #
 # spec file for package linuxrc-devtools
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           linuxrc-devtools
-Version:        0.19
+Version:        0.20
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 
