@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Apr  1 01:54:42 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Remove valgrind from BuildRequires since it's not a hard
+  requirement anymore. (bsc#1184248)
+
+-------------------------------------------------------------------
+Tue Mar 30 03:20:46 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 1.5.8:
+  New features:
+    * Add a new internal flag to opt-in to GUID matching
+    * Add D501 Baklava device support
+    * Add fu_device_set_battery_level()
+    * Add missing uint64 read and write helpers
+    * Add Qubes wrapper source and create packages
+    * Allow enabling plugins only matching a specific HwId
+    * Prompt for unlock keypress if reset command is blocked
+    * Remove obsolete dell-dock non-passive update flow support
+    * Remove the Hughski public key
+    * Show a warning when parsing invalid quirk files
+    * Support for GATT characteristic signals/notifications
+    * Support more than one protocol for a given device
+  Fixes:
+    * Align the CCGX DMC firmware to 64 byte chunks
+    * Be more strict for custom quirk keys
+    * Check pixart firmware compatibility with hardware before
+      flashing
+    * Correct a thunderbolt assertion if kernel failed FW read
+    * Correctly erase STM32 devices when transfer size is less
+      than sector size
+    * Detect SREC overflow to avoid adding ~4GB of 0xFF padding
+    * Do not show a critical error when flashing footer-less
+      binary files
+    * Don't allow device updates while needing activation
+    * Fix a regression in the elantp defined IAP start address
+    * Fix a regression where activate stopped working
+    * Fix firmware update of pointing device on Lenovo ThinkPad
+      Nano
+    * Fix the HSI plugin 'Disabled' state
+    * Fix the quirk key name for the Lenovo HDMI with power
+    * Fix writing to the GD32VF103 bootloader
+    * Only call elantp->detach() when writing a firmware blob
+    * Updated StarLabs GUIDs
+    * Wait a few ms for the Logitech hardware to settle after
+      detach
+- Remove GPG-KEY-Hughski-Limited from the filelist
+- Drop upstreamed patch
+  + fwupd-bsc1182057-fix-sbat-section-copy.patch
+
+-------------------------------------------------------------------
 Fri Mar 12 08:30:32 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fwupd-bsc1182057-fix-sbat-section-copy.patch to set the

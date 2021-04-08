@@ -359,4 +359,13 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>879207</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>9998ab5e58694888e9a4d6dd71fede64</srcmd5>
+    <version>1.5.8</version>
+    <time>1617908483</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.5.8:
+- Remove valgrind from BuildRequires since it's not a hard requirement anymore. (bsc#1184248)</comment>
+    <requestid>882467</requestid>
+  </revision>
 </revisionlist>
