@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  8 07:29:38 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Update to git snapshot 1.3.99.20210304 to fix build against the
+  new taglib.
+- For upstream changes go to:
+  https://github.com/clementine-player/Clementine/compare/1.4.0rc1-343-gb49afcc5b...1.4.0rc1-548-g354f6a23e
+
+-------------------------------------------------------------------
 Mon Dec 14 10:49:45 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Clementine only needs taglib newer than 1.11.1 so it contains

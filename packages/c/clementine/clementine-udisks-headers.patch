@@ -1,8 +1,8 @@
-Index: Clementine-1.3.92/src/CMakeLists.txt
+Index: b/src/CMakeLists.txt
 ===================================================================
---- Clementine-1.3.92.orig/src/CMakeLists.txt	2019-12-30 22:30:22.000000000 +0200
-+++ Clementine-1.3.92/src/CMakeLists.txt	2020-06-02 11:29:58.834577729 +0200
-@@ -976,6 +976,8 @@ if(UNIX AND HAVE_DBUS)
+--- a/src/CMakeLists.txt	2021-04-07 15:22:15.000000000 +0200
++++ b/src/CMakeLists.txt	2021-04-07 16:15:20.232103946 +0200
+@@ -1013,6 +1013,8 @@ if(UNIX AND HAVE_DBUS)
    list(APPEND HEADERS ${CMAKE_CURRENT_BINARY_DIR}/dbus/avahientrygroup.h)
    list(APPEND SOURCES ${CMAKE_CURRENT_BINARY_DIR}/dbus/avahientrygroup.cpp)
  

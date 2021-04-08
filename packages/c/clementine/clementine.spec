@@ -1,7 +1,7 @@
 #
 # spec file for package clementine
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define rev b49afcc5b73162fba903095c5d85046804c9a283
+%define rev 354f6a23e0ceb03593cf1e6cadf88da5fc4f5361
 
 %bcond_without git
 
@@ -29,7 +29,7 @@
 %define gname Clementine
 
 Name:           clementine
-Version:        1.3.99
+Version:        1.3.99.20210304
 Release:        0
 Summary:        A music player inspired by Amarok 1.4
 License:        GPL-3.0-or-later

@@ -1,14 +1,20 @@
-Index: Clementine-75f18dab23f0842713a4200a7e362efd51b12e31/gst/moodbar/CMakeLists.txt
+Index: b/src/ui/mainwindow.cpp
 ===================================================================
---- Clementine-75f18dab23f0842713a4200a7e362efd51b12e31.orig/gst/moodbar/CMakeLists.txt	2019-07-24 12:51:48.000000000 +0200
-+++ Clementine-75f18dab23f0842713a4200a7e362efd51b12e31/gst/moodbar/CMakeLists.txt	2019-07-26 11:40:41.784156710 +0200
-@@ -1,7 +1,7 @@
- cmake_minimum_required(VERSION 2.8.11)
+--- a/src/ui/mainwindow.cpp	2021-04-07 16:18:29.019328415 +0200
++++ b/src/ui/mainwindow.cpp	2021-04-07 16:27:42.804556644 +0200
+@@ -1062,6 +1062,7 @@ MainWindow::MainWindow(Application* app,
+   // to hide
+   if (hidden && (!QSystemTrayIcon::isSystemTrayAvailable() || !tray_icon_ ||
+                  !tray_icon_->IsVisible()))
++    setVisible(TRUE);
+     show();
+ #endif
  
--set(CMAKE_C_FLAGS "-Wall")
--set(CMAKE_CXX_FLAGS "-Woverloaded-virtual -Wall --std=c++0x")
-+set(CMAKE_C_FLAGS "-Wall -fPIC")
-+set(CMAKE_CXX_FLAGS "-Woverloaded-virtual -Wall -fPIC --std=c++0x")
+@@ -1105,6 +1106,7 @@ void MainWindow::ReloadSettings() {
  
- include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+   if (tray_icon_) tray_icon_->SetVisible(show_tray);
+   if ((!show_tray || !QSystemTrayIcon::isSystemTrayAvailable()) && !isVisible())
++    setVisible(TRUE);
+     show();
+ #endif
  
