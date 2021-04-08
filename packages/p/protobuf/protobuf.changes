@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  6 01:47:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.15.7:
+  C++
+  * Remove the ::pb namespace (alias) (#8423)
+  Ruby
+  * Fix unbounded memory growth for Ruby <2.7 (#8429)
+  * Fixed message equality in cases where the message type is different (#8434)
+
+-------------------------------------------------------------------
 Thu Mar 25 16:27:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Can't assume non-existence of python38 macros in Leap.
