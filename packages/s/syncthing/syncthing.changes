@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr  7 10:43:16 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.15.0/1.15.1
+  * This release fixes a vulnerability where Syncthing and the relay server
+    can crash due to malformed relay protocol messages (CVE-2021-21404); see
+    GHSA-x462-89pf-6r5h. (boo#1184428)
+
+  * This release updates the CLI to use subcommands and adds the subcommands
+    cli (previously standalone stcli utility) and decrypt (for offline
+    verifying and decrypting encrypted folders).
+
+  * With this release we invite everyone to test the "untrusted (encrypted)
+    devices" feature. You should not use it yet on important production
+    data. Thus UI controls are hidden behind a feature flag. For more
+    information, visit:
+    https://forum.syncthing.net/t/testing-untrusted-encrypted-devices/16470 
+
+-------------------------------------------------------------------
 Wed Mar  3 09:45:30 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.14.0

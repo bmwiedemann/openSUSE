@@ -17,7 +17,7 @@
 
 
 Name:           syncthing
-Version:        1.14.0
+Version:        1.15.1
 Release:        0
 Summary:        Continuous File Synchronisation
 License:        MPL-2.0
@@ -63,8 +63,6 @@ export BUILD_USER=abuild BUILD_HOST=openSUSE
 export CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAGS}" CGO_LDFLAGS="${LDFLAGS}"
 export GOFLAGS="-trimpath -mod=vendor"
 
-# build and install stcli which has no dedicated target and can not be built with -no-upgrade
-go run build.go -version v%{version} install all
 # build and install syncthing without automatic updates
 go run build.go -no-upgrade -version v%{version} install
 # build and install strelaysrv without automatic updates
@@ -75,7 +73,6 @@ st_dir=$PWD
 cd ../src/github.com/syncthing/%{name}
 mv LICENSE AUTHORS CONDUCT.md CONTRIBUTING.md README.md "$st_dir"
 install -Dpm 0755 bin/%{name} %{buildroot}%{_bindir}/%{name}
-install -Dpm 0755 bin/stcli %{buildroot}%{_bindir}/stcli
 install -Dpm 0755 bin/strelaysrv %{buildroot}%{_bindir}/strelaysrv
 install -dm 0750 %{buildroot}/%{_localstatedir}/lib/strelaysrv
 install -Dpm 0644 cmd/strelaysrv/etc/linux-systemd/strelaysrv.service \
@@ -134,7 +131,6 @@ getent passwd strelaysrv >/dev/null || \
 %license LICENSE
 %doc AUTHORS CONDUCT.md CONTRIBUTING.md README.md
 %{_bindir}/%{name}
-%{_bindir}/stcli
 %{_unitdir}/%{name}@.service
 %{_unitdir}/%{name}-resume.service
 %if 0%{?suse_version} >= 1500 || 0%{?sle_version} > 120300
