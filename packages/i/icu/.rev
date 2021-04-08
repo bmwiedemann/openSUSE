@@ -629,4 +629,13 @@ Jan added the patch name of all changed patches.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>879226</requestid>
   </revision>
+  <revision rev="79" vrev="4">
+    <srcmd5>c9e1468adae8cd79c813b67d506bf8d1</srcmd5>
+    <version>68.2</version>
+    <time>1617908509</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add icu-drop-testTemperature.patch to fix boo#1182645
+  The test has been dropped in master branch</comment>
+    <requestid>882713</requestid>
+  </revision>
 </revisionlist>

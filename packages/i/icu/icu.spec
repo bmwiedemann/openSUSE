@@ -45,6 +45,8 @@ Patch6:         icu-error-reporting.diff
 Patch7:         icu-avoid-x87-excess-precision.diff
 Patch8:         locale.diff
 Patch9:         icu-1618.patch
+# boo#1182645
+Patch10:        icu-drop-testTemperature.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
@@ -132,8 +134,11 @@ and locale support.
 This package contains the HTML documentation.
 
 %prep
-%setup -qn icu
-%autopatch -p1
+%autosetup -p1 -n icu
+%ifnarch aarch64 ppc64 ppc64le
+%patch -P 10 -R -p1
+%endif
+
 # docs are special
 mkdir html
 pushd html/
