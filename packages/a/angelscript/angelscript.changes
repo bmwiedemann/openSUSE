@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  2 07:48:45 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64:
+  * angelscript-fix-aarch64.patch
+
+-------------------------------------------------------------------
 Sat Mar 13 13:14:00 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.35.0

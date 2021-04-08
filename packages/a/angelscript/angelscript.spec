@@ -27,6 +27,7 @@ URL:            https://www.angelcode.com/angelscript/
 Source:         https://www.angelcode.com/angelscript/sdk/files/%{name}_%{version}.zip
 # PATCH-FEATURE-OPENSUSE angelscript-addons_lib.patch aloisio@gmx.com -- build and install addons library
 Patch0:         angelscript-addons_lib.patch
+Patch1:         angelscript-fix-aarch64.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.49.0
