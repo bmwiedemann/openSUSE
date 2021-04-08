@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 07 09:28:20 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1617787694.965960f5:
+  * autotest: Improve test module loading error handling
+  * README: Add section to describe test modules with python support
+  * t: Fix flaky coverage with deterministic code
+  * backend: Use named variable in place of magic number
+  * Fix lookup of perl module from python
+  * t: Slightly extend 04-testapi-python.t
+  * autotest: Use more prominent output format for errors in test modules
+  * Fix lookup of os-autoinst modules from Python context
+  * Add python binding/import/wrapping code for testapi
+  * external: Move hadolint commands into config file
+  * Optimize hadolint call with passing project dir
+
+-------------------------------------------------------------------
 Fri Mar 26 09:50:24 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1616752214.24ec8f98:

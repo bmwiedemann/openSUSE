@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1616752214.24ec8f98
+Version:        4.6.1617787694.965960f5
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -67,7 +67,7 @@ Source0:        %{name}-%{version}.tar.xz
 # The following line is generated from dependencies.yaml
 %define test_version_only_requires perl(Mojo::IOLoop::ReadWriteProcess) >= 0.28
 # The following line is generated from dependencies.yaml
-%define test_requires %build_requires %spellcheck_requires %test_base_requires %yamllint_requires perl(YAML::PP)
+%define test_requires %build_requires %spellcheck_requires %test_base_requires %yamllint_requires perl(Inline::Python) perl(YAML::PP)
 # The following line is generated from dependencies.yaml
 %define devel_requires %test_requires perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
 BuildRequires:  %test_requires
@@ -79,6 +79,8 @@ Recommends:     /usr/bin/xkbcomp
 Recommends:     dumponlyconsole
 Recommends:     qemu >= 2.0.0
 Recommends:     tesseract-ocr
+# Optional dependency for Python test API support
+Recommends:     perl(Inline::Python)
 Requires(pre):  %{_bindir}/getent
 Requires(pre):  %{_sbindir}/useradd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
