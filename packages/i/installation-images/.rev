@@ -1042,4 +1042,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>878361</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>efdb0759c1c511b6ef218170afc0959c</srcmd5>
+    <version>16.62</version>
+    <time>1617908605</time>
+    <user>RBrownSUSE</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>883855</requestid>
+  </revision>
 </revisionlist>

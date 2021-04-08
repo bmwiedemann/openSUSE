@@ -54,6 +54,9 @@ ExclusiveArch:  do_not_build
 %ifarch ppc64 ppc64le
 %define the_arch ppc
 %endif
+%ifarch riscv64
+%define the_arch riscv
+%endif
 
 # ===  sort out which flavor to build  ===
 
@@ -69,7 +72,7 @@ ExclusiveArch:  do_not_build
 %define net_repo https://download.opensuse.org/distribution/leap/%{the_version}/repo/oss
 %else
 %define with_exfat 1
-%ifarch %arm aarch64 ppc64 ppc64le
+%ifarch %arm aarch64 ppc64 ppc64le riscv64
 %define net_repo https://download.opensuse.org/ports/%{the_arch}/tumbleweed/repo/oss/
 %else
 %define net_repo https://download.opensuse.org/tumbleweed/repo/oss
@@ -282,7 +285,7 @@ BuildRequires:  plymouth-branding-%branding_plymouth
 %ifarch %ix86 x86_64
 BuildRequires:  gfxboot-branding-%branding_gfxboot
 %endif
-%ifarch %ix86 x86_64 aarch64
+%ifarch %ix86 x86_64 aarch64 riscv64
 BuildRequires:  grub2-branding-%branding_grub2
 %endif
 
@@ -317,7 +320,6 @@ BuildRequires:  audit-libs
 BuildRequires:  bc
 BuildRequires:  bcache-tools
 BuildRequires:  bcm43xx-firmware
-BuildRequires:  bind-libs
 BuildRequires:  bind-utils
 BuildRequires:  blueprint-cursor-theme
 BuildRequires:  btrfsprogs
@@ -463,7 +465,9 @@ BuildRequires:  plymouth-scripts
 BuildRequires:  plymouth-theme-tribar
 %endif
 BuildRequires:  klogd
+%ifnarch riscv64
 BuildRequires:  ltrace
+%endif
 BuildRequires:  nscd
 BuildRequires:  polkit
 BuildRequires:  popt-devel
@@ -618,7 +622,7 @@ BuildRequires:  s390-tools-hmcdrvfs
 %ifarch %ix86 x86_64
 BuildRequires:  gfxboot-branding
 %endif
-%ifarch %ix86 x86_64 aarch64
+%ifarch %ix86 x86_64 aarch64 riscv64
 BuildRequires:  grub2-branding
 %endif
 %ifnarch s390 s390x
@@ -637,6 +641,9 @@ BuildRequires:  shim
 %endif
 %ifarch %arm
 BuildRequires:  grub2-arm-efi
+%endif
+%ifarch riscv64
+BuildRequires:  grub2-riscv64-efi
 %endif
 # inst-sys module for libstoragemgmt
 BuildRequires:  libstoragemgmt-netapp-plugin
@@ -662,7 +669,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        16.56
+Version:        16.62
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

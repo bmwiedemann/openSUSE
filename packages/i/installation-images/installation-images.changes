@@ -1,4 +1,51 @@
 --------------------------------------------------------------------
+Thu Apr 8 14:08:59 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#473
+- adjust NVME config initialisation (bsc#1183230)
+- 16.62
+
+--------------------------------------------------------------------
+Thu Apr 8 12:06:17 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#470
+- Fix firmware dir for usrmerge (boo#1029961)
+- remote_log_setup: support loghost with port
+- 16.61
+
+--------------------------------------------------------------------
+Thu Apr 8 11:58:15 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#450
+- Add support for riscv64
+- 16.60
+
+--------------------------------------------------------------------
+Wed Apr 7 12:11:40 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#475
+- remove bind-libs BuildRequires
+- 16.59
+
+--------------------------------------------------------------------
+Wed Apr 7 10:18:59 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#474
+- remove changelog file
+- update git2log script to latest version
+- clean up VERSION
+- remove .gitignore
+- 16.58
+
+--------------------------------------------------------------------
+Thu Apr 1 08:39:28 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#472
+- handle update-alternative symlinks automatically
+- remove update-alternative hacks
+- 16.57
+
+--------------------------------------------------------------------
 Thu Mar 11 15:25:29 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#471
