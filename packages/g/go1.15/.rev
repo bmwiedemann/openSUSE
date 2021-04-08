@@ -189,4 +189,24 @@
   * go#42930 cmd/compile: miscompilation of some arithmetic and conditionals on arm (forwarded request 878435 from jfkw)</comment>
     <requestid>878438</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>31c1ec7d241fc3e9db07e4810ff7116f</srcmd5>
+    <version>1.15.11</version>
+    <time>1617908513</time>
+    <user>RBrownSUSE</user>
+    <comment>- go1.15.11 (released 2021-04-01) includes fixes to cgo, the
+  compiler, linker, runtime, the go command, and the database/sql
+  and net/http packages.
+  Refs boo#1175132 go1.15 release tracking
+  * go#45302 runtime: &quot;invalid pc-encoded table&quot; throw caused by bad cgo traceback
+  * go#45239 all: run.{bash,bat,rc} sets GOPATH inconsistently
+  * go#45187 Strange behaviour with loops
+  * go#45076 net/http: transport caches permanently broken persistent connections if write error happens during h2 handshake
+  * go#44872 cmd/go: 'go get' does not add missing hash to go.sum when ziphash file missing from cache
+  * go#44748 cmd/link: fail to build when using time/tzdata on ARM
+  * go#43592 cmd/link: &quot;x86_64-w64-mingw32/bin/ld.exe: Error: export ordinal too large&quot; after upgrading to Go 1.15
+  * go#43591 cmd/link: -buildmode=c-shared exports many functions, not just //export functions
+  * go#42884 database/sql: deadlock on transaction stmt context cancel (forwarded request 882730 from jfkw)</comment>
+    <requestid>882732</requestid>
+  </revision>
 </revisionlist>
