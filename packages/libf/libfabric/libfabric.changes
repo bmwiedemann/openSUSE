@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  2 07:30:34 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.12.1
+  - Fix initialization checks for CUDA HMEM support
+  - Fail if a memory monitor is requested but not available
+  - Adjust priority of psm3 provider to prefer HW specific providers,
+    such as efa and psm2
+  - EFA and PSM3 fixes
+  - See NEWS.md for changelog
+
+-------------------------------------------------------------------
 Tue Mar  9 08:43:43 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 1.12.0
