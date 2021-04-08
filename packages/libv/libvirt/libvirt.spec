@@ -141,7 +141,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        7.1.0
+Version:        7.2.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -189,7 +189,6 @@ BuildRequires:  libacl-devel
 BuildRequires:  qemu-tools
 %endif
 BuildRequires:  bash-completion-devel >= 2.0
-BuildRequires:  fdupes
 BuildRequires:  glib2-devel >= 2.56
 BuildRequires:  libattr-devel
 BuildRequires:  libgcrypt-devel
@@ -291,11 +290,6 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         ee3dc2c2-libxl-default-pcistub-name.patch
-Patch1:         6b8e9613-avoid-use-after-free.patch
-Patch2:         eab7ae6b-fix-array-access.patch
-Patch3:         c363f03e-virnetdaemon-intro-virNetDaemonQuitExecRestart.patch
-Patch4:         ccc6dd8f-fix-exec-restart.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -1142,7 +1136,6 @@ mv %{buildroot}/%{_datadir}/systemtap/tapset/libvirt_qemu_probes.stp \
    %{buildroot}/%{_datadir}/systemtap/tapset/libvirt_qemu_probes-64.stp
 %endif
 %endif
-%fdupes -s %{buildroot}
 
 %check
 VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check

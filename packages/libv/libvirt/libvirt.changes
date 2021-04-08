@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Apr  1 23:42:46 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- spec: Remove use of %fdupes since it was only acting on files
+  that should be excluded
+  bsc#1184293
+- Remove bogus comment from /etc/sysconfig/libvirtd
+  bsc#1184253
+
+-------------------------------------------------------------------
+Thu Apr  1 17:26:46 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 7.2.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    ee3dc2c2-libxl-default-pcistub-name.patch,
+    6b8e9613-avoid-use-after-free.patch,
+    eab7ae6b-fix-array-access.patch,
+    c363f03e-virnetdaemon-intro-virNetDaemonQuitExecRestart.patch,
+    ccc6dd8f-fix-exec-restart.patch
+
+-------------------------------------------------------------------
 Thu Mar 18 21:29:19 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - spec: Fix exec-restart of virtlockd and virtlogd on package upgrade
