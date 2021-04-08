@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 27 19:13:53 UTC 2021 - bwiedemann@suse.com
+
+- Update to version 0.2.4+20210325.6c2d9f3:
+  * Fix output of cnf ambiguous install (boo#1183980)
+  * Translated using Weblate (Indonesian, Catalan)
+  * Stop ignoring exceptions
+
+-------------------------------------------------------------------
 Wed Jan 15 07:57:56 UTC 2020 - bwiedemann@suse.com
 
 - Update to version 0.2.3+20200115.5b1005a:
