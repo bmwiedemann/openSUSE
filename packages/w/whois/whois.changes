@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 02 06:36:03 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- update to 5.5.9:
+  * Updated the .ga TLD server.
+  * Removed the .cd and cf TLD servers.
+  * Removed 72 new gTLDs which are no longer active.
+
+-------------------------------------------------------------------
 Fri Feb 19 23:44:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.5.8:
