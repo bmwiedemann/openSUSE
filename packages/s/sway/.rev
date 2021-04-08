@@ -422,4 +422,22 @@ changes since last time:
     <comment></comment>
     <requestid>879224</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e5adb39f1b250638f8042eb9653ea25d</srcmd5>
+    <version>1.6</version>
+    <time>1617910351</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.6:
+  New features:
+  * Input method editor (IME) improvements: better support for CJK IMEs,
+    allow IMEs to work on desktop UIs (such as panels and lockscreens)
+  * Smoother interactive move/resize operations
+  * Allow Flatpak and snap applications to better integrate with the
+    system via the xdg-foreign protocol
+  * Improved i3 compatibility for commands changing the window layout
+  * Add an option to hide the cursor when typing
+  * Add tray icon support to systems without systemd/elogind
+  * X11 clipboard reliability improvements</comment>
+    <requestid>883814</requestid>
+  </revision>
 </revisionlist>

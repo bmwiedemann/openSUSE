@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr  8 08:25:34 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6:
+  New features:
+  * Input method editor (IME) improvements: better support for CJK IMEs,
+    allow IMEs to work on desktop UIs (such as panels and lockscreens)
+  * Smoother interactive move/resize operations
+  * Allow Flatpak and snap applications to better integrate with the
+    system via the xdg-foreign protocol
+  * Improved i3 compatibility for commands changing the window layout
+  * Add an option to hide the cursor when typing
+  * Add tray icon support to systems without systemd/elogind
+  * X11 clipboard reliability improvements
+
+-------------------------------------------------------------------
 Mon Mar 15 12:26:37 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add subpackage contrib with all files from the contrib/ subdirectory.

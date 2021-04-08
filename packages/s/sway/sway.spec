@@ -17,7 +17,7 @@
 
 
 Name:           sway
-Version:        1.5.1
+Version:        1.6
 Release:        0
 Summary:        Window manager for Wayland compatible with i3
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  meson >= 0.48.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.2
-BuildRequires:  wlroots-devel >= 0.12.0
+BuildRequires:  wlroots-devel >= 0.13.0
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1) >= 1.10
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
@@ -77,6 +77,7 @@ This package provides the upstream look and feel for sway.
 
 %package contrib
 Summary:        Contributed scripts for %{name}
+Group:          System/GUI/Other
 BuildRequires:  python3-i3ipc
 
 %description contrib
@@ -89,8 +90,9 @@ Contributed scripts from %{name} package.
 export CFLAGS="%{optflags}"
 %meson \
 %if 0%{?suse_version} < 1550
-  -Dtray=disabled
+  -Dtray=disabled \
 %endif
+  -Dsd-bus-provider=libsystemd
 
 %meson_build
 

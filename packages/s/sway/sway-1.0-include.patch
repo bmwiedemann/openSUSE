@@ -1,6 +1,6 @@
-diff -urEbw sway-1.5/common/util.c sway-1.5.new/common/util.c
---- sway-1.5/common/util.c	2020-07-16 01:04:23.000000000 +0200
-+++ sway-1.5.new/common/util.c	2020-07-16 10:33:51.931400571 +0200
+diff -urEbw sway-1.6/common/util.c sway-1.6.new/common/util.c
+--- sway-1.6/common/util.c	2021-04-07 21:44:21.000000000 +0200
++++ sway-1.6.new/common/util.c	2021-04-08 10:38:43.904321614 +0200
 @@ -6,7 +6,7 @@
  #include <stdlib.h>
  #include <string.h>
@@ -10,9 +10,9 @@ diff -urEbw sway-1.5/common/util.c sway-1.5.new/common/util.c
  #include "log.h"
  #include "util.h"
  
-diff -urEbw sway-1.5/include/cairo.h sway-1.5.new/include/cairo.h
---- sway-1.5/include/cairo.h	2020-07-16 01:04:23.000000000 +0200
-+++ sway-1.5.new/include/cairo.h	2020-07-16 10:34:11.895528595 +0200
+diff -urEbw sway-1.6/include/cairo.h sway-1.6.new/include/cairo.h
+--- sway-1.6/include/cairo.h	2021-04-07 21:44:21.000000000 +0200
++++ sway-1.6.new/include/cairo.h	2021-04-08 10:39:26.336461949 +0200
 @@ -3,7 +3,7 @@
  #include "config.h"
  #include <stdint.h>
@@ -22,9 +22,9 @@ diff -urEbw sway-1.5/include/cairo.h sway-1.5.new/include/cairo.h
  
  void cairo_set_source_u32(cairo_t *cairo, uint32_t color);
  cairo_subpixel_order_t to_cairo_subpixel_order(enum wl_output_subpixel subpixel);
-diff -urEbw sway-1.5/include/util.h sway-1.5.new/include/util.h
---- sway-1.5/include/util.h	2020-07-16 01:04:23.000000000 +0200
-+++ sway-1.5.new/include/util.h	2020-07-16 10:34:33.707668480 +0200
+diff -urEbw sway-1.6/include/util.h sway-1.6.new/include/util.h
+--- sway-1.6/include/util.h	2021-04-07 21:44:21.000000000 +0200
++++ sway-1.6.new/include/util.h	2021-04-08 10:39:00.424376248 +0200
 @@ -3,7 +3,7 @@
  
  #include <stdint.h>
@@ -32,5 +32,5 @@ diff -urEbw sway-1.5/include/util.h sway-1.5.new/include/util.h
 -#include <wayland-server-protocol.h>
 +#include <wayland/wayland-server-protocol.h>
  
- /**
-  * Get the current time, in milliseconds.
+ enum movement_unit {
+ 	MOVEMENT_UNIT_PX,
