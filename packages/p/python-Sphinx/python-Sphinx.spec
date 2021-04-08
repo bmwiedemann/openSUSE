@@ -1,5 +1,5 @@
 #
-# spec file for package python-Sphinx
+# spec file for package python-Sphinx-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,7 +28,7 @@
 %endif
 %define skip_python2 1
 Name:           python-Sphinx%{psuffix}
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -64,7 +64,7 @@ Requires:       python-sphinxcontrib-qthelp
 Requires:       python-sphinxcontrib-serializinghtml
 Requires:       python-sphinxcontrib-websupport
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-SQLAlchemy >= 0.9
 Recommends:     python-Sphinx-doc-man
 Recommends:     python-Whoosh >= 2.0
@@ -198,7 +198,7 @@ Summary:        Man files for python-Sphinx
 Group:          Documentation/Man
 Requires:       python3-Sphinx = %{version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Supplements:    python3-Sphinx
 Obsoletes:      %{python_module Sphinx-doc-man-common <= %{version}}
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  6 01:32:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.3:
+  * #8959: using UNIX path separator in image directive confuses Sphinx on Windows 
+
+-------------------------------------------------------------------
 Tue Mar 16 10:32:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.2:

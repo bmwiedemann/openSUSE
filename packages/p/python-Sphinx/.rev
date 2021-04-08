@@ -728,4 +728,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>880708</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>a2773b4b4ea64fe3e777e3c912784f6b</srcmd5>
+    <version>3.5.3</version>
+    <time>1617908524</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 3.5.3:
+  * #8959: using UNIX path separator in image directive confuses Sphinx on Windows</comment>
+    <requestid>883114</requestid>
+  </revision>
 </revisionlist>
