@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 29 12:17:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 21.02:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v21.02
+- Drop upstream patch:
+  * c5c40fe.diff
+
+-------------------------------------------------------------------
 Mon Feb 15 09:48:06 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix instalaltion of cmake files with an upstream patch:

@@ -74,9 +74,9 @@
 %else
 %bcond_with armnn_onnx
 %endif
-%define version_major 20
-%define version_minor 11
-%define version_lib 23
+%define version_major 21
+%define version_minor 02
+%define version_lib 24
 # Do not package ArmnnConverter and ArmnnQuantizer, by default
 %bcond_with armnn_tools
 # Enable CAFFE
@@ -92,8 +92,6 @@ Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz
 Source1:        armnn-rpmlintrc
 # PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/499
 Patch1:         96beb97.diff
-# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/481
-Patch2:         c5c40fe.diff
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -429,7 +427,6 @@ This package contains the libarmnnOnnxParser library from armnn.
 %prep
 %setup -q -n armnn-%{version}
 %patch1 -p1
-%patch2 -p1
 %if %{with armnn_extra_tests}
 %patch200 -p1
 %patch201 -p1
@@ -575,7 +572,7 @@ cp $CP_ARGS ./build/ArmnnConverter %{buildroot}%{_bindir}
 cp $CP_ARGS ./build/ArmnnQuantizer %{buildroot}%{_bindir}
 %endif
 %endif
-# Dropped static libs
+# Drop static libs - https://github.com/ARM-software/armnn/issues/514
 rm -f  %{buildroot}%{_libdir}/*.a
 
 # openCL UnitTests are failing in OBS due to the lack of openCL device
@@ -595,6 +592,9 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 
 %post -n libarmnnBasePipeServer%{version_lib}%{?package_suffix} -p /sbin/ldconfig
 %postun -n libarmnnBasePipeServer%{version_lib}%{?package_suffix} -p /sbin/ldconfig
+
+%post -n libtimelineDecoderJson%{version_lib}%{?package_suffix} -p /sbin/ldconfig
+%postun -n libtimelineDecoderJson%{version_lib}%{?package_suffix} -p /sbin/ldconfig
 
 %post -n libtimelineDecoder%{version_lib}%{?package_suffix} -p /sbin/ldconfig
 %postun -n libtimelineDecoder%{version_lib}%{?package_suffix} -p /sbin/ldconfig
@@ -707,13 +707,13 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %dir %{_includedir}/armnnUtils
 %{_includedir}/armnnUtils/*.hpp
 %dir %{_includedir}/armnnCaffeParser/
-%{_includedir}/armnnCaffeParser/ICaffeParser.hpp
+%{_includedir}/armnnCaffeParser/*.hpp
 %dir %{_includedir}/armnnOnnxParser/
-%{_includedir}/armnnOnnxParser/IOnnxParser.hpp
+%{_includedir}/armnnOnnxParser/*.hpp
 %dir %{_includedir}/armnnTfLiteParser/
-%{_includedir}/armnnTfLiteParser/ITfLiteParser.hpp
+%{_includedir}/armnnTfLiteParser/*.hpp
 %dir %{_includedir}/armnnTfParser/
-%{_includedir}/armnnTfParser/ITfParser.hpp
+%{_includedir}/armnnTfParser/*.hpp
 %dir %{_includedir}/armnnDeserializer/
 %{_includedir}/armnnDeserializer/IDeserializer.hpp
 %dir %{_includedir}/armnnQuantizer
