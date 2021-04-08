@@ -57,7 +57,6 @@ BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-devel < 3.1
 BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gstreamer-1.0)

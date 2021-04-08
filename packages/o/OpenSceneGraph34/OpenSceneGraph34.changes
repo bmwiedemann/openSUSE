@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 28 16:04:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the unneeded WebKitWidgets dependency.
+
+-------------------------------------------------------------------
 Mon Oct  5 21:45:38 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Explicitly request wxWidgets <= 3.0 when building the examples,
