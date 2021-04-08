@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 26 10:06:58 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update 2.36 branch diff which fixes PR27587.
+
+-------------------------------------------------------------------
+Wed Mar  3 12:53:27 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Do not run make TARGET-bfd=headers separately.
+
+-------------------------------------------------------------------
 Mon Mar  1 09:01:59 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Bump 2.36 branch diff (includes fix for PR27441 aka bsc#1182252).

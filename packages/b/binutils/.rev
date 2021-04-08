@@ -1928,4 +1928,12 @@ contain it.
     <comment>- Bump 2.36 branch diff (includes fix for PR27441 aka bsc#1182252). (forwarded request 875982 from marxin)</comment>
     <requestid>875983</requestid>
   </revision>
+  <revision rev="148" vrev="3">
+    <srcmd5>80d39fdc034c8606276613fe8892bd27</srcmd5>
+    <version>2.36</version>
+    <time>1617908479</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>881490</requestid>
+  </revision>
 </revisionlist>

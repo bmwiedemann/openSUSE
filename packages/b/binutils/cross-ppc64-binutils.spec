@@ -116,7 +116,6 @@ C compiler utilities: ar, as, gprof, ld, nm, objcopy, objdump, ranlib,
 size, strings, and strip. These utilities are needed whenever you want
 to compile a program or kernel.
 
-
 %package gold
 Summary:        The gold linker
 License:        GPL-3.0-or-later
@@ -284,9 +283,6 @@ cd build-dir
 %endif
 	--enable-shared \
 	--enable-obsolete
-make %{?_smp_mflags} all-bfd TARGET-bfd=headers
-# force reconfiguring (???)
-rm bfd/Makefile
 make %{?_smp_mflags}
 
 %else
