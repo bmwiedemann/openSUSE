@@ -17,7 +17,7 @@
 
 
 Name:           exa
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Replacement for ls written in Rust
 License:        MIT
@@ -93,13 +93,13 @@ mkdir -p %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man1
 install -Dm0755 build/bin/exa %{buildroot}%{_bindir}/exa
 
 # Manpage
-install --preserve-timestamps -m0644 contrib/man/%{name}.1 %{buildroot}%{_mandir}/man1/
+install --preserve-timestamps -m0644 man/%{name}.1.md %{buildroot}%{_mandir}/man1/%{name}.1
 
 # Completion files
-install -Dm0644 contrib/completions.bash \
+install -Dm0644 completions/completions.bash \
          %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
-install -Dm0644 contrib/completions.zsh "%{buildroot}%{_sysconfdir}/zsh_completion.d/%{name}"
-install -Dm0644 contrib/completions.fish "%{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish"
+install -Dm0644 completions/completions.zsh "%{buildroot}%{_sysconfdir}/zsh_completion.d/%{name}"
+install -Dm0644 completions/completions.fish "%{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish"
 
 %files
 %license LICENCE

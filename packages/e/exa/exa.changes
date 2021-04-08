@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr  6 12:47:59 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.10.0: 
+  Additions
+  * The --time flag now defaults to modified without an argument (36cf5df)
+  * Add options to hide table columns (925f517)
+  * Add customisation settings to change the size colour scale (3ef6195)
+  * Add flag for octal permissions (16046d5)
+  * Add environment variable for icon spacing (51be9f4)
+  * Add --numeric flag to display UIDs and GIDs (4ea79ee)
+  Changes
+  * Make single-digit hour times zero-padded (1bf9e39)
+  * Include symlinks to directories when grouping directories first (69a7e53)
+  * Do not sort command-line arguments when --sort=none (bbd6db3)
+  * Warn when trying to use the Git feature when it’s disabled (a740512)
+  * Sort the command-line arguments (a740512)
+  * Allow absolute paths in $TZ environment variable (57cf0f1)
+  * Escape the delete character in filenames (b5b7310)
+  * Symlinks to directory now use the ‘directory’ icon (0a7ffcd)
+  Various fixes
+
+-------------------------------------------------------------------
 Wed Mar 24 08:30:27 UTC 2021 - Thomas Schraitle <thomas.schraitle@suse.com>
 
 - Integrate missing man pages and completion for Bash, Fish, and
