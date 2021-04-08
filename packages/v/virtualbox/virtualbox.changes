@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  1 09:43:50 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Own %{_sysconfdir}/X11/xinit/xinitrc.d as default packages (eg 
+  systemd) no longer do so, breaking package build.
+ 
+-------------------------------------------------------------------
 Mon Mar  1 14:01:26 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - update-extpack.sh: explicitly use https:// protocol for authenticity. The

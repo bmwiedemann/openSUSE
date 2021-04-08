@@ -1,5 +1,5 @@
 #
-# spec file for package virtualbox
+# spec file for package virtualbox%{?dash}%{?name_suffix}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -73,7 +73,7 @@ python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile
 
 %define _vbox_instdir  %{_prefix}/lib/virtualbox
 %define _udevrulesdir /usr/lib/udev/rules.d
-%endif 
+%endif
 
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
@@ -90,7 +90,7 @@ URL:            http://www.virtualbox.org/
 #%%(bash %%{_sourcedir}/virtualbox-patch-source.sh VirtualBox-%%{version}.tar.bz2)
 Source0:        VirtualBox-%{version}-patched.tar.bz2
 Source1:        UserManual.pdf
-%if 0%{?sle_version} != 120300 
+%if 0%{?sle_version} != 120300
 Source2:        VirtualBox.appdata.xml
 %endif
 Source3:        virtualbox-60-vboxguest.rules
@@ -325,8 +325,8 @@ and derivations of Windows, Linux, BSD, OS/2, Solaris, Haiku, OSx86
 and others, and limited virtualization of macOS guests on Apple
 hardware. VirtualBox is freely available as Open Source Software under
 the terms of the GNU Public License (GPL).
-##########################################
 
+##########################################
 %package qt
 Summary:        Qt GUI part for %{name}
 Group:          System/Emulators/PC
@@ -342,8 +342,8 @@ Obsoletes:      %{name}-ose-qt < %{version}
 
 %description qt
 This package contains the code for the GUI used to control VMs.
-#########################################
 
+#########################################
 %package websrv
 Summary:        WebService GUI part for %{name}
 Group:          System/Emulators/PC
@@ -353,8 +353,8 @@ Obsoletes:      %{name}-vboxwebsrv
 
 %description websrv
 The VirtualBox web server is used to control headless VMs using a browser.
-#########################################
 
+#########################################
 %package guest-x11
 Summary:        VirtualBox X11 drivers for mouse and video
 Group:          System/X11/Servers/XF86_4
@@ -366,8 +366,8 @@ Obsoletes:      xorg-x11-driver-virtualbox-ose < %{version}
 
 %description guest-x11
 This package contains X11 guest utilities and X11 guest mouse and video drivers
-###########################################
 
+###########################################
 %package guest-tools
 Summary:        VirtualBox guest tools
 Group:          System/Emulators/PC
@@ -382,8 +382,8 @@ Requires(pre):  net-tools-deprecated
 
 %description guest-tools
 VirtualBox guest addition tools.
-###########################################
 
+###########################################
 %package -n python3-%{name}
 Summary:        Python bindings for %{name}
 Group:          Development/Libraries/Python
@@ -400,8 +400,8 @@ Obsoletes:      python3-%{name}-ose < %{version}
 
 %description -n python3-%{name}
 Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
-###########################################
 
+###########################################
 %package devel
 Summary:        Devel files for %{name}
 Group:          Development/Libraries/Other
@@ -413,8 +413,8 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
-###########################################
 
+###########################################
 %package host-source
 Summary:        Source files for %{name} host kernel modules
 Group:          Development/Sources
@@ -445,6 +445,7 @@ Source files for %{name} guest kernel modules
 These can be built for custom kernels using
 sudo /sbin/vboxguestconfig
 %endif
+
 ###########################################
 %package guest-desktop-icons
 Summary:        Icons for guest desktop files
@@ -455,8 +456,8 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
-###########################################
 
+###########################################
 %package vnc
 Summary:        VNC desktop sharing
 Group:          System/Emulators/PC
@@ -509,7 +510,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch125 -p1
 %patch128 -p1
 # Adjustments that are version dependent
-%if 0%{?sle_version} == 120300 && 0%{?is_opensuse} 
+%if 0%{?sle_version} == 120300 && 0%{?is_opensuse}
 # Patch for Leap 42.3
 %patch130 -p1
 %endif
@@ -524,7 +525,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch136 -p1
 %patch137 -p1
 %patch138 -p1
-%if 0%{?sle_version} == 150300 && 0%{?is_opensuse} 
+%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
 # Patch for Leap 15.3
 %patch139 -p1
 %endif
@@ -727,7 +728,7 @@ popd
 install -m 644 out/linux.*/release/bin/virtualbox.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 %suse_update_desktop_file			%{buildroot}%{_datadir}/applications/%{name}.desktop 'System Emulator'
 
-%if 0%{?sle_version} != 120300 
+%if 0%{?sle_version} != 120300
 # install appstream file
 mkdir -p %{buildroot}%{_datadir}/metainfo
 install -m 644 %{SOURCE2}			%{buildroot}%{_datadir}/metainfo/%{name}.appdata.xml
@@ -1049,7 +1050,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxSharedClipboard.so
 %{_datadir}/pixmaps/virtualbox.png
 %{_datadir}/applications/%{name}.desktop
-%if 0%{?sle_version} != 120300 
+%if 0%{?sle_version} != 120300
 %{_datadir}/metainfo/%{name}.appdata.xml
 %endif
 %{_udevrulesdir}/60-vboxdrv.rules
@@ -1060,6 +1061,8 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %dir %{_libdir}/xorg/modules/input
 %dir %{_libdir}/dri/
 %{_bindir}/VBoxClient
+%dir %{_sysconfdir}/X11/xinit
+%dir %{_sysconfdir}/X11/xinit/xinitrc.d
 %{_sysconfdir}/X11/xinit/xinitrc.d/vboxadd-xclient.sh
 
 %files guest-tools
@@ -1134,7 +1137,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 # main_package
 %endif
 
-### %%build and %%install sections of virtualbox-kmp ### 
+### %%build and %%install sections of virtualbox-kmp ###
 %if %{kmp_package}
 %build
 # Disable LTO - Link Time Optimization
@@ -1145,7 +1148,7 @@ rm -rf src/libs/{libpng-*,libxml2-*,libxslt-*,zlib-*,boost-*}
 # Craft LocalConfig.kmk
 echo "
 VBOX_GCC_OPT                   := %{optflags}
-VBOX_GCC_WERR                  := 
+VBOX_GCC_WERR                  :=
 VBOX_BUILD_PUBLISHER           := _SUSE
 
 VBOX_OSE                       := 1
