@@ -5072,4 +5072,41 @@ always built-in because vim has direct perl dependencies anyway.
   * Vim9: default argument value may cause internal error.</comment>
     <requestid>879130</requestid>
   </revision>
+  <revision rev="283" vrev="1">
+    <srcmd5>3bce9da15fdc30ce061800c9597095bf</srcmd5>
+    <version>8.2.2725</version>
+    <time>1617908505</time>
+    <user>RBrownSUSE</user>
+    <comment>- Updated to version 8.2.2725, fixes the following problems
+  * strcharpart() cannot include composing characters.
+  * Character input not fully tested.
+  * Test disabled on MS-Windows even though it should work.
+  * Mouse click test fails when using remote connection.
+  * Conditions for startup tests are not exactly right.
+  * col('.') may get outdated column value.
+  * New test throws exception.
+  * Vim9: function is deleted while executing.
+  * Test is sourcing the wrong file.
+  * Vim9: if 'cpo' is changed in Vim9 script it may be restored.
+  * Vim9: script variable in a block scope not found by a nested function.
+  * Vim9: cannot use a normal list name to store function refs.
+  * Vim9: no test for return type of lambda.
+  * Vim9: Using #{ for a dictionary gives strange errors.
+  * typval2type() cannot handle recursive structures.
+  * GTK: error when starting up and -geometry is given. (Dominique Pellé)
+  * Some tests fail when run as root.
+  * Atom files not recognized.
+  * Rss files not recognized.
+  * GTK3: error when starting up and -geometry is given. (Dominique Pellé)
+  * No need to check for BSD after checking for not root.
+  * Vim9: #{ can still be used at the script level.
+  * Vim9: error for #{{ is not desired.
+  * Hard to see where a test gets stuck.
+  * Commands from winrestcmd() do not always work properly. (Leonid
+  V. Fedorenchik)
+  * Not all command line arguments are tested.
+  * Multi-byte 'fillchars' for folding do not show properly.
+  * 'tagfunc' does not indicate using a pattern.</comment>
+    <requestid>883190</requestid>
+  </revision>
 </revisionlist>

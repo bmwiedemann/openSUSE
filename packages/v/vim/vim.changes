@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Tue Apr  6 08:22:49 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.2725, fixes the following problems
+  * strcharpart() cannot include composing characters.
+  * Character input not fully tested.
+  * Test disabled on MS-Windows even though it should work.
+  * Mouse click test fails when using remote connection.
+  * Conditions for startup tests are not exactly right.
+  * col('.') may get outdated column value.
+  * New test throws exception.
+  * Vim9: function is deleted while executing.
+  * Test is sourcing the wrong file.
+  * Vim9: if 'cpo' is changed in Vim9 script it may be restored.
+  * Vim9: script variable in a block scope not found by a nested function.
+  * Vim9: cannot use a normal list name to store function refs.
+  * Vim9: no test for return type of lambda.
+  * Vim9: Using #{ for a dictionary gives strange errors.
+  * typval2type() cannot handle recursive structures.
+  * GTK: error when starting up and -geometry is given. (Dominique Pellé)
+  * Some tests fail when run as root.
+  * Atom files not recognized.
+  * Rss files not recognized.
+  * GTK3: error when starting up and -geometry is given. (Dominique Pellé)
+  * No need to check for BSD after checking for not root.
+  * Vim9: #{ can still be used at the script level.
+  * Vim9: error for #{{ is not desired.
+  * Hard to see where a test gets stuck.
+  * Commands from winrestcmd() do not always work properly. (Leonid
+  V. Fedorenchik)
+  * Not all command line arguments are tested.
+  * Multi-byte 'fillchars' for folding do not show properly.
+  * 'tagfunc' does not indicate using a pattern.
+  * Vim9: cannot define an inline function.
+  * Memory leak when compiling inline function.
+  * prop_remove() causes a redraw even when nothing changed.
+  * Cannot write a message to the terminal from the GUI.
+  * Build failure when fsync() is not available.
+  * screenstring() returns non-existing composing characters.
+  * Display test fails because of lacking redraw.
+  * Vim9: no clear error for wrong inline function.
+  * Various code not covered by tests.
+  * prop_clear() causes a screen update even when nothing changed.
+  * Using inline function is not properly tested.
+  * Vim9: error for not using string doesn't mention argument.
+  * Terminal test sometimes hangs.
+  * Terminal resize test sometimes hangs.
+  * Vim9: some wincmd arguments cause a white space error.
+  * Vim9: command modifiers not handled in nested function.
+  * Vim9: restoring command modifiers happens after jump.
+  * Vim9: can use command modifier without an effect.
+  * Build failure.
+  * Vim9: getting a character from a string can be slow.
+  * The -w command line argument doesn't work.
+  * Some command line arguments and regexp errors not tested.
+  * Vim9: error message for declaring variable in for loop.
+  * :for cannot loop over a string.
+  * Eval test fails because for loop on string works.
+  * Vim9: no error for declaration with trailing text.
+  * Leaking memory when looping over a string.
+  * There is no way to avoid some escape sequences.
+  * Vim9: leaking memory when inline function has an error.
+  * Vim9: not enough function arguments checked for string.
+  * Test failures.
+  * Vim9: not enough function arguments checked for string.
+  * prop_find() cannot find item matching both id and type.
+  * Vim9: omitting "call" for "confirm()" does not give an error.
+  * Command line completion does not work after "vim9".
+  * Vim9: error for append(0, text).
+  * Error for line number in legacy script.
+  * Vim9: cannot use :lockvar and :unlockvar in compiled script.
+  * Vim9: script-local funcref can have lower case name.
+  * Directory change in a terminal window shell is not followed.
+  * Missing error message.
+  * Vim9: cannot use only some of the default arguments.
+  * Test for 'autoshelldir' does not reset the option.
+  * Winbar drawn over status line for non-current window with winbar if
+  frame is zero height. (Leonid V. Fedorenchik)
+  * Vim9: problem defining a script variable from legacy function.
+  * Vim9: test fails for redeclaring script variable.
+  * Vim9: cannot find Name.Func from "import * as Name". (Alexander Goussas)
+  * Build failure without the +eval feature.
+  * Not enough folding code is tested.
+  * Custom statusline not drawn correctly with WinBar.
+  * Status line is not updated when going to cmdline mode.
+  * Vim9: cannot use "const" for global variable in :def function.
+  * Vim9: crash when using s: for script variable.
+  * Tiny build fails.
+  * PowerShell files are not recognized.
+  * Autoconf may mess up compiler flags.
+  * Vim9: locked script variable can be changed.
+  * Vim9: locked script variable can be changed.
+  * When 'matchpairs' is empty every character beeps. (Marco Hinz)
+  * Cursor position reset with nested autocommands.
+  * Lua test fails with Lua 5.4.3 and later.
+  * Function list test fails.
+  * Lua test fails on MS-Windows.
+  * Lua test fails.
+  * Nested autocmd test fails sometimes.
+  * Order of removing FORTIFY_SOURCE is wrong.
+  * Compiler completion test fails when more scripts are added.
+  * Vim9: memory leak when failing on locked variable.
+  * Adding a lot of completions can be a bit slow.
+  * Vim9: misleading reported line number for wrong type.
+  * Vim9: wrong line number reported for boolean operator.
+  * Adding a lot of completions can still be a bit slow.
+  * Test sometimes fails waiting for shell in terminal.
+  * The GTK GUI has a gap next to the scrollbar.
+  * Vim9: not all tests cover script and :def function.
+  * "gj" in a closed fold does not move out of the fold. (Marco Hinz)
+  * Memory leak when adding to a blob fails.
+  * Folding code not sufficiently tested.
+  * Filetype pattern ending in star is too far up.
+  * Vim9: tests fail without the channel feature. (Dominique Pellé)
+  * The equivalent class regexp is missing some characters.
+  * GTK menu items don't show a tooltip.
+  * Vim9: no explicit test for using a global function without the g: prefix.
+  * Vim9: appending to dict item doesn't work in a :def function.
+  * GTK menu tooltip moves the cursor.
+  * Vim9: cannot have a linebreak inside a lambda.
+  * Vim9: crash when using LHS with double index.
+  * Assignment test fails.
+  * Vim9: concatenating to list in dict not tested.
+  * Vim9: message about compiling is wrong when using try/catch.
+
+-------------------------------------------------------------------
 Mon Mar 15 10:01:53 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.2607, fixes the following problems
