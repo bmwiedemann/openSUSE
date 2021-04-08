@@ -1,7 +1,7 @@
 #
 # spec file for package pybugz
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           pybugz
 Version:        0.13
 Release:        0
 Summary:        Python Bugzilla Interface
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Networking/Web/Utilities
-Url:            http://www.liquidx.net/pybugz
+URL:            http://www.liquidx.net/pybugz
 Source0:        https://github.com/williamh/pybugz/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module devel}
@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-%ifpython3
+%if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       pybugz = %{version}
 Obsoletes:      pybugz < %{version}
 %endif
@@ -88,14 +88,15 @@ install -d -m 0755  %{buildroot}%{_sysconfdir}/pybugz.d
 %{python_uninstall_alternative bugz bugz.1}
 
 %files %{python_files}
-%doc LICENSE README
+%license LICENSE
+%doc README
 %python_alternative %{_bindir}/bugz
 %python_alternative %{_mandir}/man1/bugz.1%{ext_man}
 %{python_sitelib}/*
 
 %files -n %{name}-common
 %dir %{_sysconfdir}/pybugz.d
-%{_mandir}/man5/pybugz.d.5%{ext_man}
+%{_mandir}/man5/pybugz.d.5%{?ext_man}
 %dir %{_datadir}/pybugz.d
 %{_datadir}/pybugz.d/busybox.conf
 %{_datadir}/pybugz.d/default.conf
