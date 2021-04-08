@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  8 07:12:54 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Small packaging cleanup
+- Drop doc subpackage 
+
+-------------------------------------------------------------------
+Thu Apr  8 07:01:50 UTC 2021 - Anton Smorodskyi <anton.smorodskyi@suse.com>
+
+- Update to version 2.6.1:
+  * The program has been completely rewritten in Vala. 
+
+-------------------------------------------------------------------
 Wed Feb 10 12:04:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.15:

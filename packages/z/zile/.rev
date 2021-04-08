@@ -39,4 +39,16 @@
     <comment></comment>
     <requestid>872787</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>586d6ef894b0ee33f75c15d00cb868be</srcmd5>
+    <version>2.6.1</version>
+    <time>1617910348</time>
+    <user>RBrownSUSE</user>
+    <comment>- Small packaging cleanup
+- Drop doc subpackage 
+
+- Update to version 2.6.1:
+  * The program has been completely rewritten in Vala.</comment>
+    <requestid>883765</requestid>
+  </revision>
 </revisionlist>
