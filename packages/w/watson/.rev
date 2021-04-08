@@ -64,4 +64,24 @@
   This release depends on python-arrow 0.15.6 anyways</comment>
     <requestid>818831</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bd07eccbcddfce1e0ab99f5483f075b4</srcmd5>
+    <version>2.0.0</version>
+    <time>1617910320</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.0.0:
+  Added:
+  * The log command output can now be filtered to exclude projects and tags via --ignore-project and --ignore-tag (#395)
+  * Python 3.8 support (#402)
+  * Python 3.9 support (#402)
+  * Support for the TZ environment variable to specify the local time zone (#391)
+  Changed:
+  * Upgrade to major arrow release 1.0.0 (#407)
+  Fixed:
+  * Zsh completion (#379)
+  Removed
+  * Python 2.7 support (#305).
+  * Python 3.5 support (#407).</comment>
+    <requestid>883532</requestid>
+  </revision>
 </revisionlist>

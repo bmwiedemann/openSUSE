@@ -1,7 +1,7 @@
 #
 # spec file for package watson
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 Name:           watson
-Version:        1.10.0
+Version:        2.0.0
 Release:        0
 Summary:        CLI time tracker
 License:        MIT
@@ -26,7 +26,7 @@ Group:          Productivity/Office/Organizers
 URL:            https://github.com/TailorDev/Watson
 Source:         https://github.com/TailorDev/Watson/archive/%{version}.tar.gz
 BuildRequires:  python3-setuptools
-Requires:       python3-arrow >= 0.15.6
+Requires:       python3-arrow >= 1.0.0
 Requires:       python3-click
 Requires:       python3-click-didyoumean
 Requires:       python3-requests
