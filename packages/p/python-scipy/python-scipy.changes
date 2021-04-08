@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr  4 16:40:00 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.6.2:
+  * Issues closed for 1.6.2
+    + #13512: `stats.gaussian_kde.evaluate` broken on S390X
+    + #13584: rotation._compute_euler_from_matrix() creates an array
+       with negative...
+    + #13585: Behavior change in coo_matrix when dtype=None
+    + #13686: delta0 argument of scipy.odr.ODR() ignored
+  * Pull requests for 1.6.2
+    + #12862: REL: put upper bounds on versions of dependencies
+    + #13575: BUG: fix `gaussian_kernel_estimate` on S390X
+    + #13586: BUG: sparse: Create a utility function `getdata`
+    + #13598: MAINT, BUG: enforce contiguous layout for output array
+       in Rotation.as_euler
+    + #13687: BUG: fix scipy.odr to consider given delta0 argument
+
+-------------------------------------------------------------------
 Wed Mar  3 19:09:30 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.6.1:
