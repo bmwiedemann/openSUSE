@@ -135,7 +135,7 @@
 %endif
 
 Name:           go1.16
-Version:        1.16.2
+Version:        1.16.3
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -174,8 +174,8 @@ BuildRequires:  rpm >= 4.11.1
 %ifarch %arm aarch64
 BuildRequires:  binutils-gold
 %endif
-Requires(post):	update-alternatives
-Requires(postun):	update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 # Needed on arm aarch64 to avoid
 # collect2: fatal error: cannot find 'ld'-
 %ifarch %arm aarch64

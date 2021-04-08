@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr  2 12:26:15 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.16.3 (released 2021-04-01) includes fixes to the compiler,
+  linker, runtime, the go command, and the testing and time
+  packages.
+  Refs boo#1182345 go1.16 release tracking
+  * go#45303 runtime: "invalid pc-encoded table" throw caused by bad cgo traceback
+  * go#45253 cmd/compile: fix long RMW bit operations on AMD64
+  * go#45240 all: run.{bash,bat,rc} sets GOPATH inconsistently
+  * go#45192 Strange behaviour with loops
+  * go#45030 cmd/link: go 1.16 plugin does not initialize global variables correctly when not used directly
+  * go#44888 testing: Helper line number has changed in 1.16
+  * go#44885 cmd/go: import paths ending with '+' are rejected (affects executable like g++ or clang++)
+  * go#44869 time, runtime: zero duration timer takes 2 minutes to fire
+  * go#44860 cmd/go: documentation at golang.org for cmd/go has confusing formatting
+  * go#44812 cmd/go: 'go get' does not add missing hash to go.sum when ziphash file missing from cache
+  * go#44640 cmd/link: fail to build when using time/tzdata on ARM
+
+-------------------------------------------------------------------
 Fri Mar 12 01:27:53 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.16.2 (released 2021-03-11) includes fixes to cgo, the
