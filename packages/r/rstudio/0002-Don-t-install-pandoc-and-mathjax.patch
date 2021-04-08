@@ -1,4 +1,4 @@
-From b96c1517d5c36e75a871cebd048dfc80f441e45b Mon Sep 17 00:00:00 2001
+From 4a54997e63577ce3161b8f86f729fe3951d730be Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Tue, 14 Jan 2020 14:20:40 +0100
 Subject: [PATCH 2/8] Don't install pandoc and mathjax
@@ -40,5 +40,5 @@ index d0b41b13d2..69d6cb2b2b 100644
     foreach(PKG ${RSTUDIO_EMBEDDED_PACKAGES})
        file(GLOB PKG_FILES "${RSTUDIO_DEPENDENCIES_DIR}/common/${PKG}*.tar.gz")
 -- 
-2.29.2
+2.30.2
 

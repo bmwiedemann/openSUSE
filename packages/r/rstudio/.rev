@@ -145,4 +145,12 @@ Rebase patches:
 * 0008-Add-support-for-RapidJSON-1.1.0-in-Leap-15.2.patch</comment>
     <requestid>877961</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8e0e1e41781af17636323c3c8f500879</srcmd5>
+    <version>1.4.1106</version>
+    <time>1617910322</time>
+    <user>RBrownSUSE</user>
+    <comment>New upstream release v1.4.1106</comment>
+    <requestid>883540</requestid>
+  </revision>
 </revisionlist>

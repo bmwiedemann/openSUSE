@@ -21,7 +21,7 @@
 # - QtSingleApplication                      => bundled at some version, using BSD-3-Clause
 # - Ace (LGPL v2.1)                          => bundled at version 1.4.5 (see ./src/gwt/src/org/rstudio/studio/client/workbench/views/source/editors/text/ace/ace-uncompressed.js), license is BSD-3-Clause
 %global bundled_ace_version           1.4.5
-# - Stan Ace Mode (LGPL 2.1)                 => does not appear to exist?
+# - Stan Ace Mode (LGPL 2.1)                 => bundled in ./src/gwt/acesupport/acemode/stan.js
 # - Boost                                    => unbundled
 # - RapidXml                                 => bundled in ./src/cpp/core/include/core/rapidxml/rapidxml.hpp at version 1.13, license is (BSL-1.0 OR MIT)
 %global bundled_rapidxml_version      1.13
@@ -55,8 +55,8 @@
 # - JSCustomBadge                            => used as inspiration for ./src/cpp/desktop/DockTileView.mm
 # - DataTables                               => bundled in ./src/cpp/session/resources/grid/datatables/js, license is MIT
 %global bundled_datatables_version    1.10.4
-# - jQuery                                   => bundled in ./src/cpp/session/resources/grid/datatables/js/jquery.js, version 3.4.0, license is MIT
-%global bundled_jquery_version        3.4.0
+# - jQuery                                   => bundled in ./src/cpp/session/resources/grid/datatables/js/jquery.js, version 3.5.1, license is MIT
+%global bundled_jquery_version        3.5.1
 # - Catch2                                   => used for testing only (which we don't run currently)
 # - QUnit                                    => bundled in ./src/gwt/test/acesupport/qunit/, version 1.18.0, license is MIT
 %global bundled_quinitjs_version      1.18.0
@@ -78,37 +78,46 @@
 %global bundled_focus_visible_js_version 5.0.2
 # - fast-text-encoding                       => bundled in ./src/gwt/www/js/text.min.js, version 1.0.2, license is Apache-2.0
 %global bundled_fast_text_encoding_version 1.0.2
+# - elemental2                               => bundled in ./src/gwt/lib/elemental2, version v1.0, license is Apache-2.0
+%global bundled_elemental2_version    1.0.0
+# - core.js                                  => bundled in ./src/gwt/www/js/core-js/, version 3.6.4, license is MIT
+%global bundled_core_js_version       3.6.4
+# - junit                                    => bundled in ./src/gwt/lib/junit-4.9b3.jar, version 3.9b3, license is Eclipse Public License 1.0 (EPL-1.0), but used for testing only
+
+# the new (with 1.4) bundled markdown editor
+%global rstudio_visual_editor       panmirror-0.1.0
 
 # missing from NOTICE:
-# - Google Closure Compiler                  => bundled in ./src/gwt/tools/compiler/ but AFAIK only used for building, version is "compiler-latest.zip as of July 9, 2019", license is Apache-2.0 with bundled dependencies under (NPL-1.1 AND (MPL-1.1 OR GPL-2.0-or-later)) AND MIT AND CPL-1.0 AND BSD-3-Clause AND Apache-2.0:
+# - Google Closure Compiler                  => bundled in ./src/gwt/tools/compiler/ but AFAIK only used for building, version is "compiler-latest.zip as of July 9, 2019", license is Apache-2.0 with bundled dependencies under (NPL-1.1 AND (MPL-1.1 OR GPL-2.0-or-later)) AND MIT AND CPL-1.0 AND BSD-3-Clause AND Apache-2.0
 
-# override upstream's choice for the boost version on Leap 15.2,
+# override upstream's choice for the boost version on Leap,
 # but not on Tumbleweed
-%if 0%{?sle_version} == 150200
+%if 0%{?sle_version}
 %global rstudio_boost_requested_version 1.66
 %endif
 %define boost_version %{?rstudio_boost_requested_version}%{?!rstudio_boost_requested_version:1.69}
 
 %global rstudio_version_major 1
 %global rstudio_version_minor 4
-%global rstudio_version_patch 1103
+%global rstudio_version_patch 1106
 # commit of the tag belonging to %%{version}
-%global rstudio_git_revision_hash 458706c38764ec79d06ef1214acf07af87ef5795
+%global rstudio_git_revision_hash 2389bc246c7946a8eb2f1a14e5a822bd5f6e1159
 Name:           rstudio
 Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}
 Release:        0
 Summary:        RStudio base package
 # AGPLv3:             RStudio, icomoon glyphs
-# Apache-2.0:         gwt, gwt-websockets, gin, guice, pdf.js, fast-text-encoding, inert-polyfill.js
-# MIT:                rsa.js/jsbn, synctex, datatables, jquery, reveal.js, jsbn, qunit.js, xterm.js, guidelines-support-library-lite, rapidjson
+# Apache-2.0:         gwt, gwt-websockets, gin, guice, pdf.js, fast-text-encoding, inert-polyfill.js, elemental2
+# MIT:                rsa.js/jsbn, synctex, datatables, jquery, reveal.js, qunit.js, xterm.js, guidelines-support-library-lite, rapidjson, core.js
 # BSD-3-Clause        qtsingleapplication, ace, highlight.js, msinttypes
 # W3C (2015):         focus-visible.js
 # BSL or MIT:         rapidxml
 # Public Domain:      AOP Alliance
 # GPL-3.0-only:       tree.hh
 # ISC:                sundown
+# EPL-1.0:            junit
 # dictionaries: see below
-License:        AGPL-3.0-only AND Apache-2.0 AND MPL-1.1 AND LGPL-2.1-or-later AND GPL-2.0-only AND MIT AND W3C-20150513 AND BSD-3-Clause AND (BSL-1.0 OR MIT) AND GPL-3.0-only AND ISC AND OFL-1.1 AND Zlib AND NPL-1.1 AND CC-BY-4.0
+License:        AGPL-3.0-only AND Apache-2.0 AND MPL-1.1 AND LGPL-2.1-or-later AND GPL-2.0-only AND MIT AND W3C-20150513 AND BSD-3-Clause AND (BSL-1.0 OR MIT) AND GPL-3.0-only AND ISC AND OFL-1.1 AND Zlib AND NPL-1.1 AND CC-BY-4.0 AND EPL-1.0
 URL:            https://github.com/%{name}/
 Source0:        %{URL}/%{name}/archive/v%{version}.tar.gz
 # these appear to have been taken from Chromium's source code, see:
@@ -119,8 +128,12 @@ Source0:        %{URL}/%{name}/archive/v%{version}.tar.gz
 # Upstream claims that the only licenses are:
 # GPL 2.0, LGPL 2.1 (or later), MPL 1.1 and Apache 2.0
 Source1:        https://s3.amazonaws.com/%{name}-dictionaries/core-dictionaries.zip
+# Node dependencies to build visual editor (use ./nodejs-bundler.sh rstudio-%%{version}/src/gwt/panmirror/src/editor/)
+Source2:        %{rstudio_visual_editor}-nm.tgz
+Source3:        %{rstudio_visual_editor}-bundled-licenses.txt
 Source4:        %{name}-server-user.conf
 Source99:       %{name}-rpmlintrc
+Source100:      nodejs-bundler.sh
 Patch0:         0001-Unbundle-mathjax-and-pandoc.patch
 # shorten the installation time a bit by not installing mathjax
 Patch1:         0002-Don-t-install-pandoc-and-mathjax.patch
@@ -204,18 +217,19 @@ BuildRequires:  pkgconfig(websocketpp)
 BuildRequires:  pkgconfig(zlib)
 Requires:       R-base
 Requires:       R-core-libs
+Recommends:     gcc
+Recommends:     gcc-c++
 Recommends:     ghc-pandoc-citeproc
+Recommends:     git
 Recommends:     libclang%{_llvm_sonum}
 Recommends:     mathjax
 Recommends:     pandoc
-Recommends:     git
-Recommends:     gcc
-Recommends:     gcc-c++
 Suggests:       rstudio-desktop
 Suggests:       rstudio-server
 Provides:       bundled(ace.js) = %{bundled_ace_version}
 Provides:       bundled(aopalliance) = %{bundled_aopalliance_version}
 Provides:       bundled(datatables) = %{bundled_datatables_version}
+Provides:       bundled(elemental2) = %{bundled_elemental2_version}
 Provides:       bundled(fast-text-encoding) = %{bundled_fast_text_encoding_version}
 Provides:       bundled(focus-visible.js) = %{bundled_focus_visible_js_version}
 Provides:       bundled(fontawesome)
@@ -278,6 +292,12 @@ on a server has a number of benefits, including:
 %autosetup -N
 %autopatch -p1 -M 6
 %endif
+
+tar -xf %{SOURCE2}
+mkdir src/gwt/panmirror/src/editor/node_modules
+cp -r node_modules_prod/* src/gwt/panmirror/src/editor/node_modules
+cp -r node_modules_dev/* src/gwt/panmirror/src/editor/node_modules
+cp %{SOURCE3} .
 
 # use system libraries when available
 rm -r \
@@ -396,7 +416,7 @@ done
 %service_del_postun %{rserver_service}
 
 %files
-%license COPYING NOTICE
+%license COPYING NOTICE %{rstudio_visual_editor}-bundled-licenses.txt
 %doc README.md
 %{_libexecdir}/rstudio
 %exclude %{_libexecdir}/rstudio/bin/rserver

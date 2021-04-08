@@ -1,4 +1,4 @@
-From 866b9b941197c842cec59fd1b7a0e5145919ea2f Mon Sep 17 00:00:00 2001
+From 9d38291824497beb433020bd3b58855816936024 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Wed, 2 Sep 2020 13:47:59 +0200
 Subject: [PATCH 4/8] Add additional includes for aarch64
@@ -46,5 +46,5 @@ index 214349b0c6..a4e174f1f1 100644
  #include <boost/regex.hpp>
  
 -- 
-2.29.2
+2.30.2
 

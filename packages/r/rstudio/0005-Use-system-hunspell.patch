@@ -1,4 +1,4 @@
-From e0ac60fad5ded87d3145fd887e328775ff5869e9 Mon Sep 17 00:00:00 2001
+From 548e39fa5b7b117b20d4283d49f0be523c94b378 Mon Sep 17 00:00:00 2001
 From: Aaron Puchert <aaronpuchert@alice-dsl.net>
 Date: Mon, 7 Sep 2020 11:09:01 +0200
 Subject: [PATCH 5/8] Use system hunspell
@@ -45,5 +45,5 @@ index 861417db6e..60763c5fc1 100644
        return Success();
     }
 -- 
-2.29.2
+2.30.2
 

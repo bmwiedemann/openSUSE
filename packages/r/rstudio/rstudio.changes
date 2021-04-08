@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Apr  6 10:09:27 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+New upstream release v1.4.1106
+
+Add nodejs dependency bundle for the new visual markdown editor:
+https://rstudio.github.io/visual-markdown-editing/
+
+Rebase patches:
+* 0001-Unbundle-mathjax-and-pandoc.patch
+* 0002-Don-t-install-pandoc-and-mathjax.patch
+* 0003-Fix-rstudio-exec-path.patch
+* 0004-add-support-for-boost-1.73.patch
+* 0005-Add-additional-includes-for-aarch64.patch
+* 0006-Use-system-hunspell.patch
+* 0007-Fix-libclang-usage.patch
+* 0008-Add-support-for-RapidJSON-1.1.0-in-Leap-15.2.patch
+
+RStudio 1.4 "Tiger Daylily"
+Bugfixes
+
+    Fixed issue where R code input could be executed in the wrong order in some cases (#8837)
+    Fixed issue where default initial working directory was incorrectly set to a project directory (#8683)
+    Fixed issue causing the second inline equation in a paragraph to fail to render in visual editing mode (#8810)
+    Fixed issue where session source database sentinel file was not being written correctly when the session is suspended (#8903)
+
+Misc
+
+    Update Pandoc to 2.11.4 (#8848)
+    Update jQuery to 3.5.1 (Pro #2314)
+
+-------------------------------------------------------------------
 Mon Jan 18 12:48:44 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 1.4.1103

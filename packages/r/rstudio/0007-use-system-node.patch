@@ -1,4 +1,4 @@
-From fd74c87287fbedf70479d7b68f95987ab5fb1e34 Mon Sep 17 00:00:00 2001
+From 05f77b171f06b8a66619f4c00b12f521e87e5d1c Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?I=C3=B1aki=20=C3=9Acar?= <iucar@fedoraproject.org>
 Date: Sat, 16 Jan 2021 19:11:23 +0100
 Subject: [PATCH 7/8] use system node
@@ -33,5 +33,5 @@ index 899ae7fecd..ac90566667 100644
     <property name="panmirror.dir" value="./panmirror/src/editor"/>
     <property name="panmirror.build.dir" value="./www/js/panmirror"/>
 -- 
-2.29.2
+2.30.2
 
