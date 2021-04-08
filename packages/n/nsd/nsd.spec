@@ -1,7 +1,7 @@
 #
 # spec file for package nsd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,15 +23,15 @@
 %define zonesdir   %{configdir}/zones
 %define pidfile    %{_rundir}/nsd/nsd.pid
 Name:           nsd
-Version:        4.3.5
+Version:        4.3.6
 Release:        0
 #
 Summary:        An authoritative-only domain name server
 #
 License:        BSD-3-Clause
 Group:          Productivity/Networking/DNS/Servers
-URL:            http://open.nlnetlabs.nl/nsd/
-Source:         http://open.nlnetlabs.nl/downloads/nsd/nsd-%{version}.tar.gz
+URL:            https://open.nlnetlabs.nl/nsd/
+Source:         https://open.nlnetlabs.nl/downloads/nsd/nsd-%{version}.tar.gz
 Source1:        nsd.service
 Source2:        tmpfiles-nsd.conf
 # Generated with from https://nlnetlabs.nl/people/
@@ -41,7 +41,7 @@ Source2:        tmpfiles-nsd.conf
 #   sed 's,.*PGP Key ID: \([A-Z0-9 ]\+\).*,\1,' | \
 #   perl -e 'while($_=<>){chop; s, ,,g;print; print(" ");}' | \
 #   xargs gpg --export-options export-minimal --export > nsd.keyring
-# 
+#
 Source4:        nsd.keyring
 Source5:        https://www.nlnetlabs.nl/downloads/nsd/nsd-%{version}.tar.gz.asc
 Source10:       nsd-rpmlintrc
