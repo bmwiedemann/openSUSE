@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 08 06:39:36 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1617809893.cee5e7331:
+  * containers: fix github test webui-docker-compose timeout
+  * Add test for overall cloning behavior with dependencies
+  * Improve error handling in clone-job script
+  * Print more useful error message when API key/secret is missing
+  * Document client config file in cli/clone-job help
+  * containers: Fix worker container entrypoint script
+  * Fix several more API routes for Mojolicious 9.11 routing change
+
+-------------------------------------------------------------------
 Mon Apr 05 17:59:23 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1617645556.ee8c16dbd:
