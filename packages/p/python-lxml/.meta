@@ -1,0 +1,8 @@
+<package name="python-lxml" project="openSUSE:Factory">
+  <title>Powerful and Pythonic XML processing library</title>
+  <description>lxml is a Pythonic, mature binding for the libxml2 and libxslt libraries. It
+provides safe and convenient access to these libraries using the ElementTree
+API. It extends the ElementTree API significantly to offer support for XPath,
+RelaxNG, XML Schema, XSLT, C14N and much more.</description>
+  <devel project="devel:languages:python" package="python-lxml"/>
+</package>
