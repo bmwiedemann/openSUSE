@@ -1,27 +1,28 @@
 ---
- aclocal.m4                   |   40 ++++++------
- configure                    |   40 ++++++------
- include/curses.h.in          |    3 
+ aclocal.m4                   |   40 ++++++++--------
+ configure                    |   42 +++++++++-------
+ include/curses.h.in          |    5 +-
  include/termcap.h.in         |    2 
  include/tic.h                |    4 -
  man/man_db.renames           |    2 
  man/ncurses.3x               |    4 +
- misc/gen-pkgconfig.in        |    8 ++
+ misc/gen-pkgconfig.in        |    8 +++
  misc/terminfo.src            |  107 ++++++++++++++++++++++++++++++++++++-------
  ncurses/Makefile.in          |    2 
  ncurses/curses.priv.h        |    2 
- ncurses/run_cmd.sh           |   11 +++
- ncurses/tinfo/MKfallback.sh  |   10 ++-
- ncurses/tinfo/access.c       |   28 ++++++++
- ncurses/tinfo/lib_setup.c    |    3 
+ ncurses/run_cmd.sh           |   11 ++++
+ ncurses/tinfo/MKfallback.sh  |   10 +++-
+ ncurses/tinfo/access.c       |   28 +++++++++++
+ ncurses/tinfo/lib_setup.c    |    3 +
  ncurses/tinfo/read_entry.c   |    2 
- ncurses/tinfo/read_termcap.c |   21 ++++--
+ ncurses/tinfo/read_termcap.c |   21 +++++---
  progs/Makefile.in            |    4 -
  test/test.priv.h             |    4 -
- 19 files changed, 231 insertions(+), 68 deletions(-)
+ test/tracemunch              |    2 
+ 20 files changed, 233 insertions(+), 70 deletions(-)
 
 --- aclocal.m4
-+++ aclocal.m4	2021-01-11 07:35:24.208330490 +0000
++++ aclocal.m4	2021-03-25 07:31:47.855523893 +0000
 @@ -639,7 +639,7 @@ AC_CHECK_SIZEOF(bool,,[
  AC_CACHE_CHECK(for type of bool, cf_cv_type_of_bool,[
  	rm -f cf_test.out
@@ -31,7 +32,7 @@
  #include <stdio.h>
  
  #if defined(__cplusplus)
-@@ -5562,12 +5562,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5625,12 +5625,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -49,7 +50,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -5577,7 +5580,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5640,7 +5643,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -58,7 +59,7 @@
  CF_EOF
  fi
  
-@@ -5617,7 +5620,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5680,7 +5683,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -67,7 +68,7 @@
  CF_EOF
  fi
  
-@@ -5626,23 +5629,23 @@ case "$MANPAGE_FORMAT" in
+@@ -5689,23 +5692,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -97,7 +98,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -5651,7 +5654,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5714,7 +5717,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -106,7 +107,7 @@
  							then
  								continue
  							fi
-@@ -5661,18 +5664,18 @@ CF_EOF
+@@ -5724,18 +5727,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -128,7 +129,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -5692,9 +5695,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5755,9 +5758,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -141,7 +142,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -5714,6 +5717,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -5777,6 +5780,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -150,8 +151,8 @@
  esac
  done
 --- configure
-+++ configure	2021-01-11 07:39:08.776005262 +0000
-@@ -5836,7 +5836,7 @@ echo $ECHO_N "checking for an rpath opti
++++ configure	2021-03-25 07:31:47.859523818 +0000
+@@ -5837,7 +5837,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
  	(linux*|gnu*|k*bsd*-gnu|freebsd*)
@@ -160,7 +161,7 @@
  		;;
  	(openbsd[2-9].*|mirbsd*)
  		LD_RPATH_OPT="-Wl,-rpath,"
-@@ -7438,7 +7438,7 @@ echo "${ECHO_T}$with_pcre2" >&6
+@@ -7439,7 +7439,7 @@ echo "${ECHO_T}$with_pcre2" >&6
  
  if test "x$with_pcre2" != xno ; then
  	cf_with_pcre2_ok=no
@@ -169,7 +170,7 @@
  	do
  
  if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -14472,12 +14472,15 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14473,12 +14473,15 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -187,7 +188,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -14487,7 +14490,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14488,7 +14491,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -196,7 +197,7 @@
  CF_EOF
  fi
  
-@@ -14527,7 +14530,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14528,7 +14531,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_so_strip \$TMP
  	fi
  	fi
@@ -205,7 +206,7 @@
  CF_EOF
  fi
  
-@@ -14536,23 +14539,23 @@ case "$MANPAGE_FORMAT" in
+@@ -14537,23 +14540,23 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -235,7 +236,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -14561,7 +14564,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14562,7 +14565,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -244,7 +245,7 @@
  							then
  								continue
  							fi
-@@ -14571,18 +14574,18 @@ CF_EOF
+@@ -14572,18 +14575,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -266,7 +267,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_compress" ; then
-@@ -14602,9 +14605,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14603,9 +14606,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -279,7 +280,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -14624,6 +14627,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -14625,6 +14628,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -288,8 +289,17 @@
  esac
  done
 --- include/curses.h.in
-+++ include/curses.h.in	2021-01-11 07:27:32.117420019 +0000
-@@ -186,6 +186,9 @@ typedef @cf_cv_typeof_chtype@ chtype;
++++ include/curses.h.in	2021-03-25 07:31:47.871523593 +0000
+@@ -69,7 +69,7 @@
+ 
+ #ifdef __cplusplus
+ #else
+-#if @HAVE_STDNORETURN_H@
++#if 0
+ #include <stdnoreturn.h>
+ #undef GCC_NORETURN
+ #define GCC_NORETURN _Noreturn
+@@ -198,6 +198,9 @@ typedef @cf_cv_typeof_chtype@ chtype;
  typedef @cf_cv_typeof_mmask_t@ mmask_t;
  #endif
  
@@ -300,7 +310,7 @@
   * We need FILE, etc.  Include this before checking any feature symbols.
   */
 --- include/termcap.h.in
-+++ include/termcap.h.in	2021-01-11 07:27:32.117420019 +0000
++++ include/termcap.h.in	2021-03-25 07:31:47.863523743 +0000
 @@ -47,6 +47,8 @@ extern "C"
  {
  #endif /* __cplusplus */
@@ -311,7 +321,7 @@
  
  #undef  NCURSES_OSPEED 
 --- include/tic.h
-+++ include/tic.h	2021-01-11 07:27:32.117420019 +0000
++++ include/tic.h	2021-03-25 07:31:47.863523743 +0000
 @@ -237,12 +237,12 @@ struct user_table_entry
   */
  
@@ -328,7 +338,7 @@
  #define CANCELLED_STRING	(char *)(-1)
  
 --- man/man_db.renames
-+++ man/man_db.renames	2021-01-11 07:27:32.117420019 +0000
++++ man/man_db.renames	2021-03-25 07:31:47.863523743 +0000
 @@ -164,6 +164,7 @@ term.7				term.7
  term_variables.3x		terminfo_variables.3ncurses
  terminfo.5			terminfo.5
@@ -346,7 +356,7 @@
  #
  getty.1				getty.8
 --- man/ncurses.3x
-+++ man/ncurses.3x	2021-01-11 07:27:32.117420019 +0000
++++ man/ncurses.3x	2021-03-25 07:31:47.863523743 +0000
 @@ -139,6 +139,10 @@ after the shell environment variable \fB
  [See \fBterminfo\fR(\*n) for further details.]
  .SS Datatypes
@@ -359,7 +369,7 @@
  called \fIwindows\fR, which can be thought of as two-dimensional
  arrays of characters representing all or part of a CRT screen.
 --- misc/gen-pkgconfig.in
-+++ misc/gen-pkgconfig.in	2021-01-11 07:27:32.117420019 +0000
++++ misc/gen-pkgconfig.in	2021-03-25 07:31:47.863523743 +0000
 @@ -92,6 +92,9 @@ do
  	-specs*) # ignore linker specs-files which were used to build library
  		continue
@@ -400,7 +410,7 @@
  
  	if [ $name = $MAIN_LIBRARY ]
 --- misc/terminfo.src
-+++ misc/terminfo.src	2021-01-11 07:27:32.121419944 +0000
++++ misc/terminfo.src	2021-03-25 07:31:47.867523668 +0000
 @@ -305,7 +305,9 @@ dumb|80-column dumb tty,
  	am,
  	cols#80,
@@ -473,7 +483,7 @@
  	bce,
  	kdch1=^?, kf1=\EOP, kf2=\EOQ, kf3=\EOR, kf4=\EOS,
  	use=xterm-color,
-@@ -5944,10 +5971,14 @@ mgt|Multi GNOME Terminal,
+@@ -5965,10 +5992,14 @@ mgt|Multi GNOME Terminal,
  #### KDE
  # This is kvt 0-18.7, shipped with Redhat 6.0 (though whether it supports bce
  # or not is debatable).
@@ -489,7 +499,7 @@
  # Konsole 1.0.1 (2001/11/25)
  # (formerly known as kvt)
  #
-@@ -6199,7 +6230,7 @@ mlterm3|multi lingual terminal emulator,
+@@ -6220,7 +6251,7 @@ mlterm3|multi lingual terminal emulator,
  mlterm2|multi lingual terminal emulator,
  	am, eslok, km, mc5i, mir, msgr, npc, xenl, XT,
  	colors#8, cols#80, it#8, lines#24, pairs#64,
@@ -498,7 +508,7 @@
  	bel=^G, bold=\E[1m, cbt=\E[Z, clear=\E[H\E[2J, cr=\r,
  	csr=\E[%i%p1%d;%p2%dr, cub=\E[%p1%dD, cub1=^H,
  	cud=\E[%p1%dB, cud1=\n, cuf=\E[%p1%dC, cuf1=\E[C,
-@@ -6276,7 +6307,7 @@ rxvt-basic|rxvt terminal base (X Window
+@@ -6297,7 +6328,7 @@ rxvt-basic|rxvt terminal base (X Window
  	enacs=\E(B\E)0, flash=\E[?5h$<100/>\E[?5l, home=\E[H,
  	ht=^I, hts=\EH, ich=\E[%p1%d@, il=\E[%p1%dL, il1=\E[L,
  	ind=\n, is1=\E[?47l\E=\E[?1l,
@@ -507,7 +517,7 @@
  	kcbt=\E[Z, kmous=\E[M, rc=\E8, rev=\E[7m, ri=\EM, rmacs=^O,
  	rmcup=\E[2J\E[?47l\E8, rmir=\E[4l, rmkx=\E>, rmso=\E[27m,
  	rmul=\E[24m,
-@@ -6371,8 +6402,8 @@ rxvt-basic|rxvt terminal base (X Window
+@@ -6392,8 +6423,8 @@ rxvt-basic|rxvt terminal base (X Window
  # Removed kDN6, etc (control+shift) since rxvt does not implement this -TD
  rxvt+pcfkeys|fragment for PC-style fkeys,
  	kDC=\E[3$, kEND=\E[8$, kHOM=\E[7$, kIC=\E[2$, kLFT=\E[d,
@@ -518,7 +528,7 @@
  	kf10=\E[21~, kf11=\E[23~, kf12=\E[24~, kf13=\E[25~,
  	kf14=\E[26~, kf15=\E[28~, kf16=\E[29~, kf17=\E[31~,
  	kf18=\E[32~, kf19=\E[33~, kf2=\E[12~, kf20=\E[34~,
-@@ -6462,6 +6493,38 @@ rxvt-cygwin-native|rxvt terminal emulato
+@@ -6483,6 +6514,38 @@ rxvt-cygwin-native|rxvt terminal emulato
  	     \302x\263y\363z\362{\343|\330~\376,
  	use=rxvt-cygwin,
  
@@ -557,7 +567,7 @@
  # This variant is supposed to work with rxvt 2.7.7 when compiled with
  # NO_BRIGHTCOLOR defined.  rxvt needs more work...
  rxvt-16color|rxvt with 16 colors like aixterm,
-@@ -6526,7 +6589,7 @@ Eterm|Eterm-color|Eterm with xterm-style
+@@ -6547,7 +6610,7 @@ Eterm|Eterm-color|Eterm with xterm-style
  	home=\E[H, hpa=\E[%i%p1%dG, ht=^I, hts=\EH, ich=\E[%p1%d@,
  	il=\E[%p1%dL, il1=\E[L, ind=\n, is1=\E[?47l\E>\E[?1l,
  	is2=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;3;4;6l\E[4l, kNXT@,
@@ -566,7 +576,7 @@
  	kc1=\E[8~, kc3=\E[6~, kent=\EOM, khlp=\E[28~, kmous=\E[M,
  	mc4=\E[4i, mc5=\E[5i, rc=\E8, rev=\E[7m, ri=\EM, rmacs=^O,
  	rmam=\E[?7l, rmcup=\E[2J\E[?47l\E8, rmir=\E[4l, rmkx=,
-@@ -7514,7 +7577,7 @@ pty|4bsd pseudo teletype,
+@@ -7535,7 +7598,7 @@ pty|4bsd pseudo teletype,
  # https://github.com/emacs-mirror/emacs/blob/master/lisp/term.el
  #
  # The codes supported by the term.el terminal emulation in GNU Emacs 19.30
@@ -575,7 +585,7 @@
  	am, mir, xenl,
  	cols#80, lines#24,
  	bel=^G, bold=\E[1m, clear=\E[H\E[J, cr=\r,
-@@ -7527,6 +7590,13 @@ eterm|gnu emacs term.el terminal emulati
+@@ -7548,6 +7611,13 @@ eterm|gnu emacs term.el terminal emulati
  	rmcup=\E[2J\E[?47l\E8, rmir=\E[4l, rmso=\E[m, rmul=\E[m,
  	sgr0=\E[m, smcup=\E7\E[?47h, smir=\E[4h, smso=\E[7m,
  	smul=\E[4m,
@@ -589,7 +599,7 @@
  
  # The codes supported by the term.el terminal emulation in GNU Emacs 22.2
  eterm-color|Emacs term.el terminal emulator term-protocol-version 0.96,
-@@ -7654,7 +7724,7 @@ screen|VT 100/ANSI X3.64 virtual termina
+@@ -7675,7 +7745,7 @@ screen|VT 100/ANSI X3.64 virtual termina
  	dl=\E[%p1%dM, dl1=\E[M, ed=\E[J, el=\E[K, el1=\E[1K,
  	enacs=\E(B\E)0, flash=\Eg, home=\E[H, hpa=\E[%i%p1%dG,
  	ht=^I, hts=\EH, ich=\E[%p1%d@, il=\E[%p1%dL, il1=\E[L,
@@ -598,7 +608,7 @@
  	kcub1=\EOD, kcud1=\EOB, kcuf1=\EOC, kcuu1=\EOA, kf1=\EOP,
  	kf10=\E[21~, kf11=\E[23~, kf12=\E[24~, kf2=\EOQ, kf3=\EOR,
  	kf4=\EOS, kf5=\E[15~, kf6=\E[17~, kf7=\E[18~, kf8=\E[19~,
-@@ -7774,6 +7844,13 @@ screen.xterm-xfree86|screen.xterm-new|sc
+@@ -7795,6 +7865,13 @@ screen.xterm-xfree86|screen.xterm-new|sc
  	use=xterm+x11mouse, use=xterm-new,
  #:screen.xterm|screen for modern xterm,
  #:	use=screen.xterm-new,
@@ -612,7 +622,7 @@
  # xterm-r6 does not really support khome/kend unless it is propped up by
  # the translations resource.
  screen.xterm-r6|screen customized for X11R6 xterm,
-@@ -7861,7 +7938,7 @@ screen2|old VT 100/ANSI X3.64 virtual te
+@@ -7882,7 +7959,7 @@ screen2|old VT 100/ANSI X3.64 virtual te
  	cup=\E[%i%p1%d;%p2%dH, cuu=\E[%p1%dA, cuu1=\E[A,
  	dch=\E[%p1%dP, dch1=\E[P, dl=\E[%p1%dM, dl1=\E[M, ed=\E[J,
  	el=\E[K, ht=^I, hts=\EH, ich=\E[%p1%d@, ich1=, il=\E[%p1%dL,
@@ -621,7 +631,7 @@
  	kcuu1=\EA, kf0=\E~, kf1=\ES, kf2=\ET, kf3=\EU, kf4=\EV,
  	kf5=\EW, kf6=\EP, kf7=\EQ, kf8=\ER, kf9=\E0I, khome=\EH,
  	nel=\r\n, rc=\E8, ri=\EM, rmir=\E[4l, rmso=\E[23m,
-@@ -9759,7 +9836,7 @@ hp700-wy|HP700/41 emulating wyse30,
+@@ -9780,7 +9857,7 @@ hp700-wy|HP700/41 emulating wyse30,
  	ri=\Ej, rmir=\Er, rmso=\EG0$<10/>, rmul=\EG0$<10/>,
  	sgr0=\EG0$<10/>, smir=\Eq, smso=\EG4$<10/>,
  	smul=\EG8$<10/>, tbc=\E0, vpa=\E[%p1%{32}%+%c,
@@ -630,7 +640,7 @@
  	am, da, db, xhp,
  	cols#80, lh#2, lines#24, lm#0, lw#8, nlab#8,
  	acsc=0cjgktlrmfn/q\,t5u6v8w7x., bel=^G, blink=\E&dA,
-@@ -17406,7 +17483,7 @@ ibm3101|i3101|IBM 3101-10,
+@@ -17427,7 +17504,7 @@ ibm3101|i3101|IBM 3101-10,
  	cup=\EY%p1%{32}%+%c%p2%{32}%+%c, cuu1=\EA, ed=\EJ,
  	el=\EI, home=\EH, hts=\E0, ind=\n, kcub1=\ED, kcud1=\EB,
  	kcuf1=\EC, kcuu1=\EA, nel=\r\n, tbc=\EH,
@@ -639,7 +649,7 @@
  	is2=\E S, rmacs=\E>B, rmcup=\E>B, rs2=\E S, s0ds=\E>B,
  	sgr=\E4%{64}%?%p1%t%{65}%|%;%?%p2%t%{66}%|%;%?%p3%t%{65}%|%;
  	    %?%p4%t%{68}%|%;%?%p5%t%{64}%|%;%?%p6%t%{72}%|%;%?%p7%t
-@@ -17664,7 +17741,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
+@@ -17685,7 +17762,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
  	tbc=\E[3g, use=ecma+index,
  # "Megapel" refers to the display adapter, which was used with the IBM RT
  # aka IBM 6150.
@@ -649,7 +659,7 @@
  	s1ds=\E(0, sgr0=\E[0m\E(B, use=ibm5154,
  ibm5081-c|ibmmpel-c|IBM 5081 1024x1024 256/4096 Megapel enhanced color display,
 --- ncurses/Makefile.in
-+++ ncurses/Makefile.in	2021-01-11 07:27:32.121419944 +0000
++++ ncurses/Makefile.in	2021-03-25 07:31:47.867523668 +0000
 @@ -230,7 +230,7 @@ $(DESTDIR)$(libdir) :
  ../lib : ; mkdir $@
  
@@ -660,7 +670,7 @@
  ./lib_gen.c : $(base)/MKlib_gen.sh ../include/curses.h
  	$(SHELL) -e $(base)/MKlib_gen.sh "$(CPP) $(CPPFLAGS)" "$(AWK)" generated <../include/curses.h >$@
 --- ncurses/curses.priv.h
-+++ ncurses/curses.priv.h	2021-01-11 07:27:32.121419944 +0000
++++ ncurses/curses.priv.h	2021-03-25 07:31:47.867523668 +0000
 @@ -2277,6 +2277,8 @@ extern NCURSES_EXPORT(char *) _nc_tracec
  extern NCURSES_EXPORT(char *) _nc_tracemouse (SCREEN *, MEVENT const *);
  extern NCURSES_EXPORT(char *) _nc_trace_mmask_t (SCREEN *, mmask_t);
@@ -671,7 +681,7 @@
  extern NCURSES_EXPORT(int) _nc_freewin (WINDOW *);
  extern NCURSES_EXPORT(int) _nc_getenv_num (const char *);
 --- ncurses/run_cmd.sh
-+++ ncurses/run_cmd.sh	2021-01-11 07:27:32.121419944 +0000
++++ ncurses/run_cmd.sh	2021-03-25 07:31:47.867523668 +0000
 @@ -0,0 +1,11 @@
 +#!/bin/sh
 +
@@ -685,7 +695,7 @@
 +
 +exec ${1+"$@"}
 --- ncurses/tinfo/MKfallback.sh
-+++ ncurses/tinfo/MKfallback.sh	2021-01-11 07:27:32.121419944 +0000
++++ ncurses/tinfo/MKfallback.sh	2021-03-25 07:31:47.867523668 +0000
 @@ -74,6 +74,12 @@ else
  	tmp_info=
  fi
@@ -718,7 +728,7 @@
  	done
  
 --- ncurses/tinfo/access.c
-+++ ncurses/tinfo/access.c	2021-01-11 07:27:32.121419944 +0000
++++ ncurses/tinfo/access.c	2021-03-25 07:31:47.867523668 +0000
 @@ -31,6 +31,10 @@
   *  Author: Thomas E. Dickey                                                *
   ****************************************************************************/
@@ -762,7 +772,7 @@
  _nc_access(const char *path, int mode)
  {
 --- ncurses/tinfo/lib_setup.c
-+++ ncurses/tinfo/lib_setup.c	2021-01-11 07:27:32.121419944 +0000
++++ ncurses/tinfo/lib_setup.c	2021-03-25 07:31:47.867523668 +0000
 @@ -613,6 +613,9 @@ _nc_locale_breaks_acs(TERMINAL *termp)
      } else if ((value = tigetnum("U8")) >= 0) {
  	result = value;		/* use extension feature */
@@ -774,7 +784,7 @@
  	    result = 1;		/* always broken */
  	} else if (strstr(env, "screen") != 0
 --- ncurses/tinfo/read_entry.c
-+++ ncurses/tinfo/read_entry.c	2021-01-11 07:27:32.121419944 +0000
++++ ncurses/tinfo/read_entry.c	2021-03-25 07:31:47.867523668 +0000
 @@ -551,6 +551,7 @@ _nc_read_file_entry(const char *const fi
      FILE *fp = 0;
      int code;
@@ -792,7 +802,7 @@
      return (code);
  }
 --- ncurses/tinfo/read_termcap.c
-+++ ncurses/tinfo/read_termcap.c	2021-01-11 07:27:32.121419944 +0000
++++ ncurses/tinfo/read_termcap.c	2021-03-25 07:31:47.867523668 +0000
 @@ -323,14 +323,18 @@ _nc_getent(
  	     */
  	    if (fd >= 0) {
@@ -839,7 +849,7 @@
      }
      if (copied != 0)
 --- progs/Makefile.in
-+++ progs/Makefile.in	2021-01-11 07:27:32.121419944 +0000
++++ progs/Makefile.in	2021-03-25 07:31:47.867523668 +0000
 @@ -101,7 +101,7 @@ CFLAGS_LIBTOOL	= $(CCFLAGS)
  CFLAGS_NORMAL	= $(CCFLAGS) -DNCURSES_STATIC
  CFLAGS_DEBUG	= $(CCFLAGS) -DNCURSES_STATIC @CC_G_OPT@ -DTRACE
@@ -859,8 +869,8 @@
  LDFLAGS_DEFAULT	= $(LDFLAGS_@DFT_UPR_MODEL@)
  
 --- test/test.priv.h
-+++ test/test.priv.h	2021-01-11 07:27:32.121419944 +0000
-@@ -1027,12 +1027,12 @@ extern char *_nc_strstr(const char *, co
++++ test/test.priv.h	2021-03-25 07:31:47.867523668 +0000
+@@ -1037,12 +1037,12 @@ extern char *_nc_strstr(const char *, co
  #endif
  
  /* out-of-band values for representing absent capabilities */
@@ -875,3 +885,11 @@
  #define CANCELLED_NUMERIC	(-2)
  #define CANCELLED_STRING	(char *)(-1)
  
+--- test/tracemunch
++++ test/tracemunch	2021-03-25 07:31:47.867523668 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl
++#!/usr/bin/perl
+ # $Id: tracemunch,v 1.40 2021/02/13 19:29:12 tom Exp $
+ ##############################################################################
+ # Copyright 2018-2020,2021 Thomas E. Dickey                                  #

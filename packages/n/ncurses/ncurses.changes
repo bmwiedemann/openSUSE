@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Mar 29 07:37:33 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Disable pcre support for now (boo#1183960, boo#1184083) 
+
+-------------------------------------------------------------------
+Mon Mar 29 06:33:05 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210327
+  + build-fixes for Solaris10 /bin/sh
+  + fix some cppcheck warnings, mostly style, in ncurses test-programs,
+    form and menu libraries.
+
+-------------------------------------------------------------------
+Thu Mar 25 07:31:16 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210323
+  + add configure option --enable-stdnoreturn, making the _Noreturn
+    keyword optional to ease transition (prompted by report by
+    Rajeev V Pillai).
+
+-------------------------------------------------------------------
+Tue Mar 23 10:07:04 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Enhence cursescheck script 
+
+-------------------------------------------------------------------
+Mon Mar 22 15:39:19 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Disable _Noreturn usage as it breaks build of e.g. dialog 
+
+-------------------------------------------------------------------
+Mon Mar 22 08:37:32 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210320
+  + improve parameter-checking in tput by forcing it to analyze any
+    extended string capability, e.g., as used in the Cs and Ms
+    capabilities of the tmux description (report by Brad Town,
+    cf: 20200531).
+  + remove an incorrect free in the fallback (non-checking) version of
+    _nc_free_and_exit (report by Miroslav Lichvar).
+  + correct use-ordering in some xterm-direct flavors -TD
+  + add hterm, hterm-256color (Mike Frysinger)
+  + if the build-time compiler accepts c11's _Noreturn keyword, use that
+    rather than gcc's attribute.
+  + change configure-check for gcc's noreturn attribute to assume it is
+    a prefix rather than suffix, matching c11's _Noreturn convention.
+  + add "lint" rule to c++/Makefile, e.g., with cppcheck.
+- Port patch ncurses-6.2.dif by correcting offsets
+
+-------------------------------------------------------------------
 Tue Mar 16 12:20:59 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - New package ncurses-tests which includes examples and tests

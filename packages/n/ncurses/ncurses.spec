@@ -25,7 +25,7 @@
 %bcond_with     memleakck
 %bcond_without  onlytinfo
 %bcond_with     libbsd
-%bcond_without  usepcre2
+%bcond_with     usepcre2
 
 %if %{with onlytinfo}
 %global soname_tinfo tinfo
@@ -125,6 +125,7 @@ reset -- terminal initialization utility
 Summary:        Tools using the new curses libraries
 License:        MIT
 Group:          System/Base
+Requires:       ncurses-utils >= %{version}
 
 %description -n ncurses-tests
 The ncurses based test programs
@@ -196,7 +197,7 @@ Requires:       terminfo-base
 Provides:       ncurses = %{version}
 Recommends:     ncurses-utils = %{version}
 
-%description -n libncurses6 
+%description -n libncurses6
 The ncurses library is used by many terminal applications for
 controlling output to the screen and input from the user.
 
@@ -340,14 +341,14 @@ mv tack-* tack
 %build
 #
 # Do not run auto(re)conf here as this will fail later on ncurses
-# is build with special autoconf based on autoconf-2.13 at upstream 
+# is build with special autoconf based on autoconf-2.13 at upstream
 #
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 #
 # Note that there is a test if the system call poll(2) really works
 # on terminal or files.  To make sure that even in OBS the configure
 # script has its own terminal we use screen here (could be also tmux).
-# 
+#
 # Remark: A better solution would be that in OBS a real pty/tty pair
 # would be used instead of redirecting stdout/stderr to a log file.
 #
@@ -965,12 +966,12 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	    libncursesw*)
 		rm -f "${lnk}"
 		echo '/* GNU ld script */'		>  ${lnk}
-		echo "INPUT(${lib} AS_NEEDED(-l%{soname_tinfo}))">> ${lnk} 
+		echo "INPUT(${lib} AS_NEEDED(-l%{soname_tinfo}))">> ${lnk}
 		;;
 	    libncurses*)
 		rm -f "${lnk}"
 		echo '/* GNU ld script */'		>  ${lnk}
-		echo "INPUT(${lib} AS_NEEDED(-ltinfo))"	>> ${lnk} 
+		echo "INPUT(${lib} AS_NEEDED(-ltinfo))"	>> ${lnk}
 		;;
 	    libtinfo*)
 		test -L "${lnk}" || continue
@@ -1134,7 +1135,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 # Install test binaries and, if exists, the manual pages
 #
 pushd test
-    mv usr.back usr 
+    mv usr.back usr
     (cd usr/; tar -cpSf - .) | tar -xpsSf - -C %{buildroot}%{_prefix}
     install -m 0755 %{S:8} %{buildroot}%{_libexecdir}/ncurses/
 popd
@@ -1142,6 +1143,7 @@ popd
 %if 0%{?_crossbuild}
 # No test here
 %else
+
 %check
 LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 export LD_LIBRARY_PATH
