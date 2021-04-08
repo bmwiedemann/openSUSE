@@ -32,19 +32,23 @@
 # remote host is: name/ip:port, e.g. 192.168.0.1:514, port optional
 #*.* @remote-host
 
-
 # ######### Receiving Messages from Remote Hosts ########## 
 # TCP Syslog Server:
 # provides TCP syslog reception and GSS-API (if compiled to support it)
 #$ModLoad imtcp.so         # load module
+#$Address 10.10.0.1        # force to listen on this IP only
+#$Port <port>              # Starts a TCP server on selected port
+# Legacy configuration parameters that should not be used when crafting new configuration files.
 ##$UDPServerAddress 10.10.0.1 # force to listen on this IP only
 #$InputTCPServerRun <port> # Starts a TCP server on selected port
 
 # UDP Syslog Server:
 #$ModLoad imudp.so         # provides UDP syslog reception
-##$UDPServerAddress 10.10.0.1 # force to listen on this IP only
+#$Adress 10.10.0.1         # force to listen on this IP only
+#$Port 514                 # start a UDP syslog server at standard port 514
+# Legacy configuration parameters that should not be used when crafting new configuration files.
+#$UDPServerAddress 10.10.0.1 # force to listen on this IP only
 #$UDPServerRun 514         # start a UDP syslog server at standard port 514
-
 
 ########### Encrypting Syslog Traffic with TLS ##########
 # -- TLS Syslog Server: 

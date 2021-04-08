@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Feb 26 07:19:06 UTC 2021 - Thomas Blume <thomas.blume@suse.com>
+
+- update remote.conf example file to new 'Address' and 'Port' notation
+  (bsc#1182653)
+
+-------------------------------------------------------------------
 Tue Feb 16 19:52:34 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - HTTPS URLs used for source
