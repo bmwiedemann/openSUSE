@@ -235,4 +235,41 @@
   * For details see: https://github.com/swaywm/wlroots/releases/tag/0.12.0</comment>
     <requestid>847692</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>49f26ad2b40b9eac3d7a0b9c0303588c</srcmd5>
+    <version>0.13.0</version>
+    <time>1617910350</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 0.13.0:
+  * Replace wlr_key_state with wl_keyboard_key_state (#2446[1]):
+    enum wlr_key_state has been replaced with enum wl_keyboard_key_state
+  * Use uint32_t in wlr_renderer_begin signature (#2433[2])
+  * Remove unneeded includes from wlr_input_device.h (#2470[3])
+  * Renderer v6, incremental version (#2240[4]): some implicit assumptions about
+    wlr_renderer's EGL context no longer hold true. Compositors not using EGL
+    directly shouldn't be affected.
+    + wlroots' framebuffer no longer is the EGL default framebuffer
+    + wlroots' framebuffer no longer has a depth attachment
+  * Remove wlr_create_renderer_func_t (#2561[5])
+    + wlr_backend_autocreate, wlr_drm_backend_create, wlr_headless_backend_create,
+      wlr_wl_backend_create, wlr_x11_backend_create no longer take a
+      wlr_renderer_create_func_t parameter
+    +The wlr_renderer_create_func_t type has been removed
+  * backend/noop: listen to display destroy and destroy the backend (#2583[6]):
+    the noop backend should no longer be manually destroyed after the wl_display
+  * xdg shell: remove wlr_xdg_surface_for_each_popup (#2610[7])
+    wlr_xdg_surface_for_each_popup has been removed, use
+    wlr_xdg_surface_for_each_popup_surface instead.
+  * layer shell: rename popup iterator for consistency (#2617[8]):
+    wlr_layer_surface_v1_for_each_popup has been renamed to
+    wlr_layer_surface_v1_for_each_popup_surface.
+  * Keyboard interactivity options (#2555[9]):
+    wlr_layer_surface_v1_state.keyboard_interactivity has now the type
+    enum zwlr_layer_surface_v1_keyboard_interactivity to reflect protocol changes.
+  * output: remove scale/transform events (#2631[10]): the scale and transform
+    output events have been removed, compositors should use the commit event instead.
+  * output: send commit event after pending state is cleared (#2630[11]):
+    compositors can no longer read the to-be-committed state from wlr_output.pending in</comment>
+    <requestid>883781</requestid>
+  </revision>
 </revisionlist>

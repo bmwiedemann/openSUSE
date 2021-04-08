@@ -1,7 +1,7 @@
 #
 # spec file for package wlroots
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define libname libwlroots7
+%define libname libwlroots8
 %bcond_without  libcap
 %bcond_without  systemd
 %bcond_with     elogind
@@ -24,7 +24,7 @@
 %bcond_without  xwayland
 %bcond_without  xcb_errors
 Name:           wlroots
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Modular Wayland compositor library
 License:        MIT
@@ -46,6 +46,7 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libseat)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(pixman-1)
+BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.16
@@ -61,12 +62,14 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libelogind)
 %endif
 %if %{with x11_backend} || %{with xwayland}
+BuildRequires:  xorg-x11-server-wayland
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-composite)
 BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-image)
 BuildRequires:  pkgconfig(xcb-render)
+BuildRequires:  pkgconfig(xcb-renderutil)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xcb-xkb)
 %if %{with xcb_errors}

@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Apr  8 08:26:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.13.0:
+  * Replace wlr_key_state with wl_keyboard_key_state (#2446[1]):
+    enum wlr_key_state has been replaced with enum wl_keyboard_key_state
+  * Use uint32_t in wlr_renderer_begin signature (#2433[2])
+  * Remove unneeded includes from wlr_input_device.h (#2470[3])
+  * Renderer v6, incremental version (#2240[4]): some implicit assumptions about
+    wlr_renderer's EGL context no longer hold true. Compositors not using EGL
+    directly shouldn't be affected.
+    + wlroots' framebuffer no longer is the EGL default framebuffer
+    + wlroots' framebuffer no longer has a depth attachment
+  * Remove wlr_create_renderer_func_t (#2561[5])
+    + wlr_backend_autocreate, wlr_drm_backend_create, wlr_headless_backend_create,
+      wlr_wl_backend_create, wlr_x11_backend_create no longer take a
+      wlr_renderer_create_func_t parameter
+    +The wlr_renderer_create_func_t type has been removed
+  * backend/noop: listen to display destroy and destroy the backend (#2583[6]):
+    the noop backend should no longer be manually destroyed after the wl_display
+  * xdg shell: remove wlr_xdg_surface_for_each_popup (#2610[7])
+    wlr_xdg_surface_for_each_popup has been removed, use
+    wlr_xdg_surface_for_each_popup_surface instead.
+  * layer shell: rename popup iterator for consistency (#2617[8]):
+    wlr_layer_surface_v1_for_each_popup has been renamed to
+    wlr_layer_surface_v1_for_each_popup_surface.
+  * Keyboard interactivity options (#2555[9]):
+    wlr_layer_surface_v1_state.keyboard_interactivity has now the type
+    enum zwlr_layer_surface_v1_keyboard_interactivity to reflect protocol changes.
+  * output: remove scale/transform events (#2631[10]): the scale and transform
+    output events have been removed, compositors should use the commit event instead.
+  * output: send commit event after pending state is cleared (#2630[11]):
+    compositors can no longer read the to-be-committed state from wlr_output.pending in
+    an output commit event handler. Instead, use the current state and
+    wlr_output_event_commit.
+  * render/wlr_texture: clamp texture coordinates to edge by default (#2476[12]):
+    the GLES2 renderer no longer wraps textures with GL_REPEAT. If you want to repeat a
+    texture, manually change wlroots' default via glTexParameteri.
+  * text_input_v3: correct typo in enum field (#2735[13]):
+     WLR_TEXT_INPUT_v3_FEATURE_CONTENT_TYPE has been renamed to
+     WLR_TEXT_INPUT_V3_FEATURE_CONTENT_TYPE.
+  * Stop using wl_shm_format (#2744[14]): the renderer functions take DRM_FORMAT_* values
+    instead of WL_SHM_FORMAT_*. Make sure you don't have any remaining WL_SHM_FORMAT_*
+    enum values in your compositor.
+    + wlr_renderer_read_pixels now takes a DRM format code instead of an enum
+      wl_shm_format
+    + wlr_renderer_get_shm_texture_formats now returns DRM format codes instead of an
+      enum wl_shm_format
+    + wlr_renderer_read_pixels now takes a DRM format code instead of an enum
+      wl_shm_format
+    + wlr_output_preferred_read_format now returns a DRM format code instead of an enum
+      wl_shm_format
+
+-------------------------------------------------------------------
 Mon Nov  9 07:44:22 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.12.0:
