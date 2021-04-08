@@ -1,7 +1,7 @@
 #
 # spec file for package snallygaster
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,9 @@ License:        CC0-1.0
 Group:          Development/Languages/Python
 URL:            https://github.com/hannob/snallygaster
 Source:         https://files.pythonhosted.org/packages/source/s/snallygaster/snallygaster-%{version}.tar.gz
+Source1:        https://github.com/hannob/snallygaster-testdata/archive/refs/heads/master.tar.gz#/testdata.tar.gz
+# PATCH-FIX-UPSTREAM fix-codestyle.patch -- fixes codestyle to pass pylint testcase
+Patch0:         https://github.com/hannob/snallygaster/pull/58.patch#/fix-codestyle.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 # SECTION test requirements
@@ -52,6 +55,11 @@ a few checks for other security vulnerabilities.
 
 %prep
 %setup -q -n snallygaster-%{version}
+%setup -T -D -a 1
+# -n snallygaster-testdata-master
+mkdir snallygaster-testdata-master/.git/
+echo '[core]' > snallygaster-testdata-master/.git/config
+%patch0 -p1
 
 %build
 %python3_build
@@ -61,12 +69,7 @@ a few checks for other security vulnerabilities.
 fdupes %{buildroot}%{python_sitelib}
 
 %check
-%if 0%{?sle_version} == 150100 && 0%{?is_opensuse}
-# on Leap 15.1 the pycodestyle test fails, we don't care
-python3 setup.py test ||:
-%else
-python3 setup.py test
-%endif
+TESTDATA_REPOSITORY=$(pwd)/snallygaster-testdata-master/ RUN_ONLINETESTS=1 python3 setup.py test
 
 %files
 %doc README.md

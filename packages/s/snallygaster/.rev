@@ -15,4 +15,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>841819</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b80085b453450ff3ac6c497753873788</srcmd5>
+    <version>0.0.9</version>
+    <time>1617910317</time>
+    <user>RBrownSUSE</user>
+    <comment>- add fix-codestyle.patch from https://github.com/hannob/snallygaster/pull/58 to replace a deprecated function.
+  the deprecated function caused pylint to fail which is part of the unittests.
+- add testdata and run full tests.
+</comment>
+    <requestid>883509</requestid>
+  </revision>
 </revisionlist>
