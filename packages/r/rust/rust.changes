@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Tue Apr  6 01:52:35 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Update to version 1.51:
+  + Language
+    - [You can now parameterize items such as functions, traits, and `struct`s by constant
+      values in addition to by types and lifetimes.][79135] Also known as "const generics"
+      E.g. you can now write the following. Note: Only values of primitive integers, 
+      `bool`, or `char` types are currently permitted.
+  + Compiler
+    - [Added the `-Csplit-debuginfo` codegen option for macOS platforms.][79570]
+      This option controls whether debug information is split across multiple files
+      or packed into a single file. **Note** This option is unstable on other platforms.
+    - [Added tier 3\* support for `aarch64_be-unknown-linux-gnu`,
+      `aarch64-unknown-linux-gnu_ilp32`, and `aarch64_be-unknown-linux-gnu_ilp32` targets.][81455]
+    - [Added tier 3 support for `i386-unknown-linux-gnu` and `i486-unknown-linux-gnu` targets.][80662]
+    - [The `target-cpu=native` option will now detect individual features of CPUs.][80749]
+      \* Refer to Rust's [platform support page][platform-support-doc] for more
+      information on Rust's tiered platform support.
+  + Libraries
+    - [`Box::downcast` is now also implemented for any `dyn Any + Send + Sync` object.][80945]
+    - [`str` now implements `AsMut<str>`.][80279]
+    - [`u64` and `u128` now implement `From<char>`.][79502]
+    - [`Error` is now implemented for `&T` where `T` implements `Error`.][75180]
+    - [`Poll::{map_ok, map_err}` are now implemented for `Poll<Option<Result<T, E>>>`.][80968]
+    - [`unsigned_abs` is now implemented for all signed integer types.][80959]
+    - [`io::Empty` now implements `io::Seek`.][78044]
+    - [`rc::Weak<T>` and `sync::Weak<T>`'s methods such as `as_ptr` are now implemented for
+      `T: ?Sized` types.][80764]
+  + Stabilized APIs
+    - [`Arc::decrement_strong_count`]
+    - [`Arc::increment_strong_count`]
+    - [`Once::call_once_force`]
+    - [`Peekable::next_if_eq`]
+    - [`Peekable::next_if`]
+    - [`Seek::stream_position`]
+    - [`array::IntoIter`]
+    - [`panic::panic_any`]
+    - [`ptr::addr_of!`]
+    - [`ptr::addr_of_mut!`]
+    - [`slice::fill_with`]
+    - [`slice::split_inclusive_mut`]
+    - [`slice::split_inclusive`]
+    - [`slice::strip_prefix`]
+    - [`slice::strip_suffix`]
+    - [`str::split_inclusive`]
+    - [`sync::OnceState`]
+    - [`task::Wake`]
+  + Cargo
+    - [Added the `split-debuginfo` profile option to control the -Csplit-debuginfo
+      codegen option.][cargo/9112]
+    - [Added the `resolver` field to `Cargo.toml` to enable the new feature resolver
+      and CLI option behavior.][cargo/8997] Version 2 of the feature resolver will try
+      to avoid unifying features of dependencies where that unification could be unwanted.
+      Such as using the same dependency with a `std` feature in a build scripts and
+      proc-macros, while using the `no-std` feature in the final binary. See the
+      [Cargo book documentation][feature-resolver@2.0] for more information on the feature.
+  + Rustdoc
+    - [Rustdoc will now include documentation for methods available from _nested_ `Deref` traits.][80653]
+    - [You can now provide a `--default-theme` flag which sets the default theme to use for
+      documentation.][79642]
+    Various improvements to intra-doc links:
+    - [You can link to non-path primitives such as `slice`.][80181]
+    - [You can link to associated items.][74489]
+    - [You can now include generic parameters when linking to items, like `Vec<T>`.][76934]
+  + Misc
+    - [You can now pass `--include-ignored` to tests (e.g. with
+      `cargo test -- --include-ignored`) to include testing tests marked `#[ignore]`.][80053]
+  + Compatibility Notes
+    - [WASI platforms no longer use the `wasm-bindgen` ABI, and instead use the wasm32 ABI.][79998]
+    - [`rustc` no longer promotes division, modulo and indexing operations to `const` that
+      could fail.][80579]
+    - [The minimum version of glibc for the following platforms has been bumped to version 2.31
+      for the distributed artifacts.][81521]
+        - `armv5te-unknown-linux-gnueabi`
+        - `sparc64-unknown-linux-gnu`
+        - `thumbv7neon-unknown-linux-gnueabihf`
+        - `armv7-unknown-linux-gnueabi`
+        - `x86_64-unknown-linux-gnux32`
+
+-------------------------------------------------------------------
+Mon Mar 29 02:35:45 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Rebased patches:
+  + ignore-Wstring-conversion.patch (offset / fuzz)
+
+-------------------------------------------------------------------
+Sun Mar 28 07:56:31 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+ 
+- rust.spec: Fix typo.
+  Add work-around for cargo not respecting _libexecdir on Leap.
+
+-------------------------------------------------------------------
 Thu Mar 11 16:21:34 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add bootstrap for armv6

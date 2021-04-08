@@ -17,8 +17,8 @@
 #
 
 
-%global version_current 1.50.0
-%global version_previous 1.49.0
+%global version_current 1.51.0
+%global version_previous 1.50.0
 %global version_bootstrap 1.50.0
 
 # some sub-packages are versioned independently
@@ -565,10 +565,16 @@ mkdir -p %{buildroot}%{_datadir}/cargo/registry
 mkdir -p %{buildroot}%{_docdir}/cargo
 ln -sT ../rust/html/cargo/ %{buildroot}%{_docdir}/cargo/html
 
-# Move the bash-completition to correct directory for openSUSE
+# Move the bash-completion to correct directory for openSUSE
 install -D %{buildroot}%{_sysconfdir}/bash_completion.d/cargo %{buildroot}%{_datadir}/bash-completion/completions/cargo
 # There should be nothing here at all
 rm -rf %{buildroot}%{_sysconfdir}
+# cargo does not respect our _libexec setting on Leap:
+if [ ! -f %{buildroot}%{_libexecdir}/cargo-credential-1password ] &&
+   [ -f %{buildroot}%{_exec_prefix}/libexec/cargo-credential-1password ]; then
+	mv %{buildroot}%{_exec_prefix}/libexec/cargo-credential-1password	\
+	   %{buildroot}%{_libexecdir}/cargo-credential-1password
+fi
 
 # Remove llvm installation
 rm -rf %{buildroot}/home
