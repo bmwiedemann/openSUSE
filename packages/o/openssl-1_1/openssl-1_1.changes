@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar 25 23:51:47 UTC 2021 - Jason Sikes <jsikes@suse.com>
+
+- Update to 1.1.1k
+  * Fixed a problem with verifying a certificate chain when using
+    the X509_V_FLAG_X509_STRICT flag. This flag enables additional
+    security checks of the certificates present in a certificate
+    chain. It is not set by default. ([CVE-2021-3450])
+
+  * Fixed an issue where an OpenSSL TLS server may crash if sent a
+    maliciously crafted renegotiation ClientHello message from a
+    client. If a TLSv1.2 renegotiation ClientHello omits the
+    signature_algorithms extension (where it was present in the
+    initial ClientHello), but includes a signature_algorithms_cert
+    extension then a NULL pointer dereference will result, leading
+    to a crash and a denial of service attack.
+
+    A server is only vulnerable if it has TLSv1.2 and renegotiation
+    enabled (which is the default configuration). OpenSSL TLS
+    clients are not impacted by this issue. ([CVE-2021-3449])
+
+-------------------------------------------------------------------
 Tue Mar  2 19:40:25 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix unresolved error codes [bsc#1182959]

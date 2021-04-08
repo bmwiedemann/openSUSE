@@ -21,7 +21,7 @@
 %define _rname  openssl
 Name:           openssl-1_1
 # Don't forget to update the version in the "openssl" package!
-Version:        1.1.1j
+Version:        1.1.1k
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
