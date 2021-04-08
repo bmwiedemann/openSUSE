@@ -16,23 +16,6 @@
 #
 
 
-# Don't forget to update the package names also in baselibs.conf
-# Note that the sonums are LIBINTERFACE - LIBAGE
-%define bind9_sonum 1600
-%define libbind9 libbind9-%{bind9_sonum}
-%define dns_sonum 1611
-%define libdns libdns%{dns_sonum}
-%define irs_sonum 1601
-%define libirs libirs%{irs_sonum}
-%define isc_sonum 1609
-%define libisc libisc%{isc_sonum}
-%define isccc_sonum 1600
-%define libisccc libisccc%{isccc_sonum}
-%define isccfg_sonum 1603
-%define libisccfg libisccfg%{isccfg_sonum}
-%define ns_sonum 1607
-%define libns libns%{ns_sonum}
-
 %define	VENDOR SUSE
 %if 0%{?suse_version} >= 1500
 %define with_systemd 1
@@ -61,7 +44,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bind
-Version:        9.16.11
+Version:        9.16.12
 Release:        0
 Summary:        Domain Name System (DNS) Server (named)
 License:        MPL-2.0
@@ -69,7 +52,6 @@ Group:          Productivity/Networking/DNS/Servers
 URL:            http://isc.org/sw/bind/
 Source:         ftp://ftp.isc.org/isc/bind9/%{version}/bind-%{version}.tar.xz
 Source1:        vendor-files.tar.bz2
-Source2:        baselibs.conf
 Source3:        ftp://ftp.isc.org/isc/bind9/%{version}/bind-%{version}.tar.xz.sha512.asc
 # from http://www.isc.org/about/openpgp/ ... changes yearly apparently.
 Source4:        %{name}.keyring
@@ -79,7 +61,6 @@ Source60:       dlz-schema.txt
 # configuation files for systemd-tmpfiles
 Source70:       bind.conf
 Source72:       named.conf
-Patch51:        pie_compile.diff
 Patch52:        named-bootconf.diff
 Patch56:        bind-ldapdump-use-valid-host.patch
 BuildRequires:  libcap-devel
@@ -127,113 +108,6 @@ Name System (DNS) protocols and provides an openly redistributable
 reference implementation of the major components of the Domain Name
 System.  This package includes the components to operate a DNS server.
 
-%package -n %{libbind9}
-Summary:        BIND9 shared library used by BIND
-Group:          System/Libraries
-
-%description -n %{libbind9}
-This library contains a few utility functions used by the BIND
-server and utilities.
-
-%package -n %{libdns}
-Summary:        DNS library used by BIND
-Group:          System/Libraries
-
-%description -n %{libdns}
-This subpackage contains the "DNS client" module. This is a higher
-level API that provides an interface to name resolution, single DNS
-transaction with a particular server, and dynamic update. Regarding
-name resolution, it supports advanced features such as DNSSEC
-validation and caching. This module supports both synchronous and
-asynchronous mode.
-
-It also contains the Advanced Database (ADB) and Simple Database
-(SDB) APIs. ADB allows user-written routines to replace BIND’s
-internal database function for both nominated and all zones. SDB
-allows a user-written driver to supply zone data either from
-alternate data sources (for instance, a relational database) or using
-specialized algorithms (for instance, for load-balancing).
-[Book links for SDB: "Pro DNS and BIND 10", R. Aitchison, Apress]
-
-%package -n %{libirs}
-Summary:        The BIND Information Retrieval System library
-Group:          System/Libraries
-
-%description -n %{libirs}
-libirs provides an interface to parse the traditional resolv.conf file and an
-"advanced" configuration file related to the DNS library for configuration
-parameters that would be beyond the capability of the resolv.conf file.
-Specifically, it is intended to provide DNSSEC related configuration
-parameters. By default, the path to this configuration file is %{_sysconfdir}/dns.conf.
-
-%package -n libirs-devel
-Summary:        Development files for IRS
-Group:          Development/Libraries/C and C++
-Requires:       %{libirs} = %{version}
-
-%description -n libirs-devel
-libirs provides an interface to parse the traditional resolv.conf file and an
-"advanced" configuration file related to the DNS library for configuration
-parameters that would be beyond the capability of the resolv.conf file.  This
-subpackage contains the header files needed for building programs with it.
-
-%package -n %{libisc}
-Summary:        ISC shared library used by BIND
-Group:          System/Libraries
-Provides:       bind-libs = %{version}-%{release}
-Obsoletes:      bind-libs < %{version}-%{release}
-
-%description -n %{libisc}
-This library contains miscellaneous utility function used by the BIND
-server and utilities. It includes functions for assertion handling,
-balanced binary (AVL) trees, bit masks comparison, event based
-programs, heap-based priority queues, memory handling, and program
-logging.
-
-%package -n %{libns}
-Summary:        NS shared library used by BIND
-Group:          System/Libraries
-
-%description -n %{libns}
-This library contains miscellaneous utility function used by the BIND
-server and utilities.
-
-%package -n %{libisccc}
-Summary:        Command Channel Library used by BIND
-Group:          System/Libraries
-
-%description -n %{libisccc}
-This library is used for communicating with BIND servers'
-administrative command channel (port 953 by default).
-
-%package -n %{libisccfg}
-Summary:        Exported ISC configuration shared library
-Group:          System/Libraries
-
-%description -n %{libisccfg}
-This BIND library contains the configuration file parser.
-
-%package devel
-Summary:        Development Libraries and Header Files of BIND
-Group:          Development/Libraries/C and C++
-Requires:       %{libbind9} = %{version}
-Requires:       %{libdns} = %{version}
-Requires:       %{libirs} = %{version}
-Requires:       %{libisccc} = %{version}
-Requires:       %{libisccfg} = %{version}
-Requires:       %{libisc} = %{version}
-Requires:       %{libns} = %{version}
-Provides:       bind8-devel
-Provides:       bind9-devel
-Obsoletes:      bind8-devel < %{version}
-Obsoletes:      bind9-devel < %{version}
-
-%description devel
-This package contains the header files, libraries, and documentation
-for building programs using the libraries of the Berkeley Internet Name
-Domain (BIND) Domain Name System implementation of the Domain Name
-System (DNS) protocols.
-
 %package doc
 Summary:        BIND documentation
 Group:          Documentation/Other
@@ -272,7 +146,6 @@ This package provides a module which allows commands to be sent to rndc directly
 
 %prep
 %setup -q -a1
-%patch51 -p1
 %patch52 -p1
 %patch56 -p1
 
@@ -298,7 +171,8 @@ popd
 
 %build
 autoreconf -fvi
-export CFLAGS="%{optflags} -DNO_VERSION_DATE"
+export CFLAGS="%{optflags} -fPIE -DNO_VERSION_DATE"
+export LDFLAGS="-pie"
 %configure \
 	--with-python=%{_bindir}/python3 \
 	--includedir=%{_includedir}/bind \
@@ -360,10 +234,9 @@ mkdir -p \
 mkdir -p %{buildroot}/%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 %endif
 %make_install
-# install errno2result.h, some dynamic DB plugins could use it.
-install -m 0755 -d %{buildroot}%{_includedir}/isc/
-install -m 0644 lib/isc/unix/errno2result.h %{buildroot}%{_includedir}/isc/
 install -m 0644 .clang-format.headers %{buildroot}/%{_defaultdocdir}/bind
+# remove useless .h files
+rm -rf %{buildroot}%{_includedir}
 
 # remove useless .la files
 rm -f %{buildroot}/%{_libdir}/lib*.{la,a}
@@ -478,20 +351,8 @@ chown named: /etc/rndc.key /etc/named.conf.include*
 %insserv_cleanup
 %endif
 
-%post   -n %{libbind9} -p /sbin/ldconfig
-%postun -n %{libbind9} -p /sbin/ldconfig
-%post   -n %{libdns} -p /sbin/ldconfig
-%postun -n %{libdns} -p /sbin/ldconfig
-%post   -n %{libirs} -p /sbin/ldconfig
-%postun -n %{libirs} -p /sbin/ldconfig
-%post   -n %{libisc} -p /sbin/ldconfig
-%postun -n %{libisc} -p /sbin/ldconfig
-%post   -n %{libns} -p /sbin/ldconfig
-%postun -n %{libns} -p /sbin/ldconfig
-%post   -n %{libisccc} -p /sbin/ldconfig
-%postun -n %{libisccc} -p /sbin/ldconfig
-%post   -n %{libisccfg} -p /sbin/ldconfig
-%postun -n %{libisccfg} -p /sbin/ldconfig
+%post   -n bind-utils -p /sbin/ldconfig
+%postun -n bind-utils -p /sbin/ldconfig
 
 %files
 %license LICENSE
@@ -539,39 +400,6 @@ chown named: /etc/rndc.key /etc/named.conf.include*
 %config %{_var}/lib/named/named.root.key
 %dir %{_libexecdir}/bind
 
-%files -n %{libbind9}
-%{_libdir}/libbind9.so.%{bind9_sonum}*
-
-%files -n %{libdns}
-%{_libdir}/libdns.so.%{dns_sonum}*
-
-%files -n %{libirs}
-%{_libdir}/libirs.so.%{irs_sonum}*
-
-%files -n libirs-devel
-%{_libdir}/libirs.so
-
-%files -n %{libisc}
-%{_libdir}/libisc.so.%{isc_sonum}*
-
-%files -n %{libns}
-%{_libdir}/libns.so.%{ns_sonum}*
-
-%files -n %{libisccc}
-%{_libdir}/libisccc.so.%{isccc_sonum}*
-
-%files -n %{libisccfg}
-%{_libdir}/libisccfg.so.%{isccfg_sonum}*
-
-%files devel
-%dir %{_includedir}/isc
-%{_includedir}/isc/errno2result.h
-%{_libdir}/libbind9.so
-%{_libdir}/libdns.so
-%{_libdir}/libisc*.so
-%{_libdir}/libns.so
-%{_includedir}/bind
-
 %files doc -f filelist-bind-doc
 %dir %doc %{_defaultdocdir}/bind
 %doc %{_datadir}/susehelp
@@ -612,6 +440,21 @@ chown named: /etc/rndc.key /etc/named.conf.include*
 %{_sbindir}/rndc
 %{_sbindir}/rndc-confgen
 %{_sbindir}/tsig-keygen
+# Library files, formerly in their own, separate packages:
+%{_libdir}/libbind9-%{version}.so
+%{_libdir}/libdns-%{version}.so
+%{_libdir}/libirs-%{version}.so
+%{_libdir}/libisc-%{version}.so
+%{_libdir}/libisccc-%{version}.so
+%{_libdir}/libisccfg-%{version}.so
+%{_libdir}/libns-%{version}.so
+%{_libdir}/libbind9.so
+%{_libdir}/libdns.so
+%{_libdir}/libirs.so
+%{_libdir}/libisc.so
+%{_libdir}/libisccc.so
+%{_libdir}/libisccfg.so
+%{_libdir}/libns.so
 %dir %doc %{_defaultdocdir}/bind
 %{_defaultdocdir}/bind/README*.%{VENDOR}
 %{_defaultdocdir}/bind/.clang-format.headers

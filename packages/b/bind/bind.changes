@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Mar 12 15:03:21 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- pass PIE compiler and linker flags via environment variables to make
+  /usr/bin/delv in bind-tools also position independent (bsc#1183453).
+- drop pie_compile.diff: no longer needed, this patch is difficult to
+  maintain, the environment variable approach is less error prone.
+
+-------------------------------------------------------------------
+Thu Feb 18 08:44:47 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- *** MAJOR CHANGES ***
+  * The libraries shipped with bind are now named after the bind
+    version (eg libisc-9.16.10.so), not some kind of artificial
+    number (eg libisc.so.1608)!
+  * For the time being (ie until the next upgrade),
+    new BIND option "stale-answer-client-timeout"
+    will be disabled (in /etc/named.conf): "stale-answer-enable no;"
+  * All libraries are now in bind-utils as they are used by bind
+    and bind-utils only and bind requires bind-utils.
+    This affects libdns, libirs, libisc, libisccc, libisccfg,
+    libns
+  * Dropped the devel packages as the libraries are used
+    internally only.
+
+  * Update to 9.16.12
+    Bugs fixed:
+    - KASP incorrectly set signature validity to the value of
+      the DNSKEY signature validity.
+    - Fix off-by-one bug in ISC SPNEGO implementation.
+      (CVE-2020-8625)
+    - Dig now reports unknown dash options while pre-parsing
+      the options. This prevents "-multi" instead of "+multi"
+      from reporting memory usage before ending option parsing
+      with "Invalid option: -lti".
+    - Fixed a crash in "dnssec-keyfromlabel" when using ECDSA
+      keys.
+    - Emit useful error message when "rndc retransfer" is
+      applied to a zone of inappropriate type.
+    - Improve performance of the DNSSEC verification code by
+      reducing the number of repeated calls to
+      dns_dnssec_keyfromrdata().
+    - named failed to start when its configuration included a
+      zone with a non-builtin "allow-update" ACL attached.
+    - Address potential double free in generatexml().
+    - When migrating to KASP, BIND 9 considered keys with the
+      "Inactive" and/or "Delete" timing metadata to be 
+      possible active keys.
+    - Fix the "three is a crowd" key rollover bug in KASP by
+      correctly implementing Equation (2) of the "Flexible and
+      Robust Key Rollover" paper.
+
+  * dnssec-keygen can no longer generate HMAC keys.
+    Use tsig-keygen instead.
+    genDDNSkey script was modified to reflect this.
+  [vendor-files/tools/bind.genDDNSkey, bsc#1180933, CVE-2020-8625,
+   bsc#1182246, bsc#1182483]
+
+-------------------------------------------------------------------
 Thu Jan 21 08:00:03 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgrade to version 9.16.11
