@@ -67,4 +67,16 @@ Note: I've updated the source tarball as upstream updated the tag.</comment>
 </comment>
     <requestid>862970</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8b8952e69bac58e79be580a78546ba3d</srcmd5>
+    <version>0.4.1</version>
+    <time>1617908600</time>
+    <user>RBrownSUSE</user>
+    <comment>- avoid packaging the pkgconfig dir - it comes from filesystem
+- spec-cleaner run 
+- Update to version 0.4.1
+  * https://github.com/xiph/rav1e/releases/tag/v0.4.1
+</comment>
+    <requestid>883753</requestid>
+  </revision>
 </revisionlist>

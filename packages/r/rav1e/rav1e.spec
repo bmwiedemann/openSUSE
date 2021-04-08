@@ -17,13 +17,13 @@
 #
 
 
+%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           rav1e
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Fastest and safest AV1 encoder
 License:        BSD-2-Clause
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-
 URL:            https://github.com/xiph/rav1e
 #
 Source0:        https://github.com/xiph/rav1e/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -94,20 +94,22 @@ root = '%{buildroot}%{_prefix}'
 [term]
 verbose = true
 EOF
-%{__rm} -f Cargo.lock
+rm -f Cargo.lock
 
 # Disable rav1e_js
 sed -i 's/"rav1e_js", //' Cargo.toml
 
 %build
-%cargo_build
-CFLAGS="%{optflags}" %__cargo cbuild
+export RUSTFLAGS=%{rustflags}
+%{cargo_build}
+CFLAGS="%{optflags}" %{__cargo} cbuild
 
 %install
-%cargo_install
+export RUSTFLAGS=%{rustflags}
+%{cargo_install}
 rm -rf %{buildroot}%{_datadir}/cargo
 
-%__cargo cinstall \
+%{__cargo} cinstall \
     --destdir=%{buildroot} \
     --prefix=%{_prefix} \
     --libdir=%{_libdir} \
@@ -131,7 +133,6 @@ rm -f %{buildroot}%{_libdir}/librav1e.a
 %dir %{_includedir}/rav1e
 %{_includedir}/rav1e/rav1e.h
 %{_libdir}/librav1e.so
-%dir %{_libdir}/pkgconfig
 %{_libdir}/pkgconfig/rav1e.pc
 
 %changelog
