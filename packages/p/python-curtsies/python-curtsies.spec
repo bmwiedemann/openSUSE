@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define         skip_python2 1
 Name:           python-curtsies
-Version:        0.3.1
+Version:        0.3.5
 Release:        0
 Summary:        Curses-like terminal wrapper, with colored strings!
 License:        MIT
@@ -27,27 +27,17 @@ Group:          Development/Languages/Python
 URL:            https://github.com/bpython/curtsies
 Source:         https://files.pythonhosted.org/packages/source/c/curtsies/curtsies-%{version}.tar.gz
 # https://github.com/bpython/curtsies/pull/127
-Patch0:         remove-nose.patch
 BuildRequires:  %{python_module blessings}
+BuildRequires:  %{python_module cwcwidth}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyte}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wcwidth}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-blessings
-Requires:       python-wcwidth
+Requires:       python-cwcwidth
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python2-typing
-%endif
-%if %{python_version_nodots} < 35
-BuildRequires:  python3-typing
-Requires:       python-typing
-%endif
-%ifpython2
-Requires:       python-typing
-%endif
 %python_subpackages
 
 %description
@@ -56,7 +46,6 @@ arrays of text.
 
 %prep
 %setup -q -n curtsies-%{version}
-%patch0 -p1
 
 %build
 %python_build
@@ -66,11 +55,12 @@ arrays of text.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest discover -s tests -v
+%pytest
 
 %files %{python_files}
 %license LICENSE
-%doc readme.md
-%{python_sitelib}/*
+%doc README.md
+%{python_sitelib}/curtsies
+%{python_sitelib}/curtsies-%{version}-py*.egg-info
 
 %changelog
