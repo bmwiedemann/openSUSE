@@ -1638,4 +1638,15 @@
     (glgo#World/lollypop#2747, glgo#World/lollypop#2751).</comment>
     <requestid>880779</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>ea8ee3acebf1f07588ba350d835132b7</srcmd5>
+    <version>1.4.19</version>
+    <time>1617909281</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.4.19:
+  * Fix an issue with library indexing (glgo#World/lollypop#2759).
+  * Add compilation tag for FLAC, OggVorbis and other Xiph-Formats
+    (glgo#World/lollypop#2756).</comment>
+    <requestid>883378</requestid>
+  </revision>
 </revisionlist>

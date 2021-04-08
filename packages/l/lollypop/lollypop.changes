@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 06 16:31:37 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.19:
+  * Fix an issue with library indexing (glgo#World/lollypop#2759).
+  * Add compilation tag for FLAC, OggVorbis and other Xiph-Formats
+    (glgo#World/lollypop#2756).
+
+-------------------------------------------------------------------
 Tue Mar 23 17:46:14 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.18:
