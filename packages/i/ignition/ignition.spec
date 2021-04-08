@@ -1,7 +1,7 @@
 #
 # spec file for package ignition
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.7.0
+Version:        2.9.0
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
@@ -143,7 +143,7 @@ fi
 if [ "$1" = 0 ] ; then
     sed -i -E '/^GRUB_CMDLINE_LINUX_DEFAULT="/s/(\\\$)?ignition[._][^[:space:]"]+ ?//g' %{_sysconfdir}/default/grub
 fi
-%service_del_postun -n ignition-firstboot-complete.service
+%service_del_postun_without_restart ignition-firstboot-complete.service
 
 %files
 %license LICENSE

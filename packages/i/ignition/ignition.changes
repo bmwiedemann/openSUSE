@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Mar 31 16:03:16 UTC 2021 - hello@anthonyrabbito.com
+
+- Update to version 2.9.0:
+  * news: add notes for 2.9.0
+  * internal/providers: Run platform Init function before fetching config
+  * internal/providers/aws: fix panic when an IMDSv2 token is present
+  * internal/resource/http: re-order initial backoff ramping
+  * internal/providers/util: drop dead code
+  * ci: move Travis jobs to GitHub actions
+  * *: fix errcheck warnings
+  * internal/log: drop the error return to appease golanci-lint
+  * internal/providers/packet: fix ineffassign warning
+  * internal/exec/stages/files: fix the EntrySort test
+  * internal: support IMDSv2 for AWS metadata service
+  * config/*: require filesystems.format with wipeFilesystem or mountOptions
+  * docs: make storage.filesystems.path field optional
+  * aws: Log if we fail to determine the EC2 region
+  * docs: move systemd.units.name uniqueness constraint to units
+  * *: fix gosimple warnings
+  * *: fix deadcode warnings
+  * *: fix staticcheck warnings
+  * config/*: fix nil deref on partitions with no number or label
+  * config: add specs newer than 3.0 to TestConfigStructure
+  * news: add notes for 2.8.1
+  * config/merge: support struct pointers
+  * test: drop stale comment
+  * tests: Remove unused checkOnStrings
+  * news: add notes for 2.8.0
+  * config: deprecate MergeStruct()
+  * config/merge: allow obtaining a transcript of merge operations
+  * config/merge: access field name as fieldMeta.Name
+  * config/merge: test primitive list items in slice case 1
+  * config/merge: fix typo
+  * config/merge: fix comments and add a couple more
+  * config/util: remove stray print when parsing invalid JSON
+  * vendor: update vcontext
+  * docs/development: update dep list for blackbox tests
+  * tests/positive: Add tests for masking and unmasking units
+  * units: add support for unmasking systemd units
+  * release-checklist: minor updates to the release instructions
+  * tests/positive/general: add test for merging multiple base configs
+  * tests/positive/general: update base config reference
+  * docs/development: update spec stabilization to avoid CI breakage
+  * release-checklist: drop download_ignition.sh
+  * providers/system: support .d directory for base config fragments
+  * docs/migrating-configs: spell out Google Cloud Storage
+  * release-checklist: update packaging section
+
+-------------------------------------------------------------------
+Tue Nov  3 14:40:58 UTC 2020 - Franck Bui <fbui@suse.com>
+
+- Replace  '%service_del_postun -n' with '%service_del_postun_without_restart'
+
+  '-n' is deprecated and will be removed in the future.
+
+-------------------------------------------------------------------
 Mon Oct 19 15:39:37 UTC 2020 - iforster@suse.de
 
 - Update to version 2.7.0:
