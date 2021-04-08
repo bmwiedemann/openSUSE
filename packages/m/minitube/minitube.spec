@@ -17,7 +17,7 @@
 
 
 Name:           minitube
-Version:        3.8.1
+Version:        3.8.2
 Release:        0
 Summary:        Native YouTube Client
 License:        GPL-3.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtdeclarative-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core) >= 5.10
+BuildRequires:  pkgconfig(Qt5Core) >= 5.12
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Script)
