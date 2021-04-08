@@ -588,4 +588,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>881839</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e198adb54683d51cecc6d0063933267b</srcmd5>
+    <version>2.6.8</version>
+    <time>1617910355</time>
+    <user>RBrownSUSE</user>
+    <comment>- Version 2.6.8
+- Fixing wrong handling of ids starting with numeric characters (bsc#1182736)
+</comment>
+    <requestid>883813</requestid>
+  </revision>
 </revisionlist>
