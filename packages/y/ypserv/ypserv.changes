@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr  7 09:52:09 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't build maps beside passwd and group so that people notice
+  they have to configure it first.
+
+-------------------------------------------------------------------
+Tue Apr  6 15:47:17 UTC 2021 - Jeff Mahoney <jeffm@suse.com>
+
+- Fix tmpfiles.d rule for /etc/ypserv.conf symlink (bsc#1184402).
+
+-------------------------------------------------------------------
 Sat Aug 29 11:02:35 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Do /usr/etc split

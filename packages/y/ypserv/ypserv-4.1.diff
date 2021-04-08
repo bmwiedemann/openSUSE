@@ -17,7 +17,7 @@
  
 -all:  passwd group hosts rpc services netid protocols netgrp mail \
 -	shadow publickey # networks ethers bootparams printcap \
-+all: passwd group rpc services netid
++all: passwd group
 +#all:  passwd group hosts rpc services netid protocols netgrp mail \
 +#	shadow publickey # networks ethers bootparams printcap \
  	# amd.home autofs passwd.adjunct \

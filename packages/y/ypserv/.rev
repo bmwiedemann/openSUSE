@@ -350,4 +350,15 @@
 - Adjust yppasswdd.service to use /usr/libexec/yp</comment>
     <requestid>830476</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>94eda6653429394828b106356a57c98f</srcmd5>
+    <version>4.1</version>
+    <time>1617910332</time>
+    <user>RBrownSUSE</user>
+    <comment>- Don't build maps beside passwd and group so that people notice
+  they have to configure it first.
+
+- Fix tmpfiles.d rule for /etc/ypserv.conf symlink (bsc#1184402).</comment>
+    <requestid>883589</requestid>
+  </revision>
 </revisionlist>
