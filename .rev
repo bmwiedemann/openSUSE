@@ -397,4 +397,14 @@
   + Resolves boo#1182482 jsc#SLE-13791 bnc#1170160</comment>
     <requestid>876694</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>e9b3b4392e69dd6631030c467675a20b</srcmd5>
+    <version>0.346</version>
+    <time>1617908572</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.346:
+  + Updated pci, usb and vendor ids.
+  + Resolves boo#1182482 jsc#SLE-13791 bnc#1170160</comment>
+    <requestid>883162</requestid>
+  </revision>
 </revisionlist>
