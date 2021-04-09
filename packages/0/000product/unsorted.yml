@@ -1205,8 +1205,6 @@ unsorted:
   - bibtool 
   - bibview 
   - bin86 
-  - bind-devel 
-  - bind-devel-32bit: [x86_64] 
   - bindfs 
   - bing 
   - binutils-devel 
@@ -1758,6 +1756,7 @@ unsorted:
   - cblas-devel 
   - cblas-devel-32bit: [x86_64] 
   - cblas-devel-static 
+  - cbonsai 
   - cc-tool 
   - ccache 
   - ccd2cue 
@@ -2685,7 +2684,6 @@ unsorted:
   - deepin-editor 
   - deepin-editor-lang 
   - deepin-gettext-tools 
-  - deepin-menu 
   - deepin-movie 
   - deepin-movie-devel 
   - deepin-movie-lang 
@@ -8986,7 +8984,7 @@ unsorted:
   - libSampleICC1 
   - libSavitar-devel 
   - libSavitar0 
-  - libSimGearCore-2020_3_6 
+  - libSimGearCore-2020_3_8 
   - libSoQt20 
   - libSoapyOsmoSDR0 
   - libSoundTouch1-32bit: [x86_64] 
@@ -9258,21 +9256,23 @@ unsorted:
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute21: [x86_64] 
+  - libarm_compute22: [x86_64] 
+  - libarm_compute_core22: [x86_64] 
+  - libarm_compute_graph22: [x86_64] 
   - libarmadillo10 
   - libarmadillo10-32bit: [x86_64] 
-  - libarmnn23: [x86_64] 
-  - libarmnn23-opencl: [x86_64] 
-  - libarmnnBasePipeServer23: [x86_64] 
-  - libarmnnBasePipeServer23-opencl: [x86_64] 
-  - libarmnnCaffeParser23: [x86_64] 
-  - libarmnnCaffeParser23-opencl: [x86_64] 
-  - libarmnnSerializer23: [x86_64] 
-  - libarmnnSerializer23-opencl: [x86_64] 
-  - libarmnnTfLiteParser23: [x86_64] 
-  - libarmnnTfLiteParser23-opencl: [x86_64] 
-  - libarmnnTfParser23: [x86_64] 
-  - libarmnnTfParser23-opencl: [x86_64] 
+  - libarmnn24: [x86_64] 
+  - libarmnn24-opencl: [x86_64] 
+  - libarmnnBasePipeServer24: [x86_64] 
+  - libarmnnBasePipeServer24-opencl: [x86_64] 
+  - libarmnnCaffeParser24: [x86_64] 
+  - libarmnnCaffeParser24-opencl: [x86_64] 
+  - libarmnnSerializer24: [x86_64] 
+  - libarmnnSerializer24-opencl: [x86_64] 
+  - libarmnnTfLiteParser24: [x86_64] 
+  - libarmnnTfLiteParser24-opencl: [x86_64] 
+  - libarmnnTfParser24: [x86_64] 
+  - libarmnnTfParser24-opencl: [x86_64] 
   - libarpack2 
   - libarpack2-32bit: [x86_64] 
   - libarprec0 
@@ -9440,7 +9440,6 @@ unsorted:
   - libbfio-devel 
   - libbfio1 
   - libbiblesync2_0 
-  - libbind9-1600-32bit: [x86_64] 
   - libbitcoinconsensus-devel 
   - libbitcoinconsensus0 
   - libbitmask-devel 
@@ -10102,7 +10101,6 @@ unsorted:
   - libdnf-repo-config-zypp: [i586] 
   - libdnf2: [i586] 
   - libdnnl2: [x86_64] 
-  - libdns1611-32bit: [x86_64] 
   - libdns_sd 
   - libdns_sd-32bit: [x86_64] 
   - libdnssec8 
@@ -11237,11 +11235,6 @@ unsorted:
   - libirman-devel 
   - libirman0 
   - libirrecord0 
-  - libirs-devel 
-  - libirs1601-32bit: [x86_64] 
-  - libisc1609-32bit: [x86_64] 
-  - libisccc1600-32bit: [x86_64] 
-  - libisccfg1603-32bit: [x86_64] 
   - libiscsi-devel 
   - libiscsi-test 
   - libiscsi-utils 
@@ -12050,7 +12043,6 @@ unsorted:
   - libnova-devel 
   - libnpupnp-devel 
   - libnpupnp4 
-  - libns1607-32bit: [x86_64] 
   - libnscd-devel 
   - libnsl-devel 
   - libnss_slurm2: [x86_64] 
@@ -13716,10 +13708,10 @@ unsorted:
   - libtiff-devel 
   - libtiff-devel-32bit: [x86_64] 
   - libtiled1 
-  - libtimelineDecoder23: [x86_64] 
-  - libtimelineDecoder23-opencl: [x86_64] 
-  - libtimelineDecoderJson23: [x86_64] 
-  - libtimelineDecoderJson23-opencl: [x86_64] 
+  - libtimelineDecoder24: [x86_64] 
+  - libtimelineDecoder24-opencl: [x86_64] 
+  - libtimelineDecoderJson24: [x86_64] 
+  - libtimelineDecoderJson24-opencl: [x86_64] 
   - libtimezonemap1 
   - libtimidity-devel 
   - libtimidity2 
@@ -14133,7 +14125,7 @@ unsorted:
   - libwiiuse0 
   - libwim15 
   - libwkhtmltox0 
-  - libwlroots7 
+  - libwlroots8 
   - libwmf-0_2-7-32bit: [x86_64] 
   - libwmf-devel 
   - libwmf-gnome 
@@ -14521,7 +14513,6 @@ unsorted:
   - libzip-devel 
   - libzip-tools 
   - libzip5-32bit: [x86_64] 
-  - libzipkin-cpp-opentracing0 
   - libzita-convolver4 
   - libzita-convolver4-32bit: [x86_64] 
   - libzita-resampler1 
@@ -20017,6 +20008,7 @@ unsorted:
   - plotutils 
   - plotutils-devel 
   - plowshare 
+  - plplay 
   - plplot-common 
   - plplot-devel 
   - plplot-doc 
@@ -21487,6 +21479,8 @@ unsorted:
   - python36-aws-xray-sdk-Django 
   - python36-aws-xray-sdk-Flask-SQLAlchemy 
   - python36-aws-xray-sdk-SQLAlchemy 
+  - python36-aws-xray-sdk-aiobotocore 
+  - python36-aws-xray-sdk-aiohttp 
   - python36-aws-xray-sdk-all 
   - python36-aws-xray-sdk-mysql-connector 
   - python36-aws-xray-sdk-psycopg2 
@@ -21932,6 +21926,7 @@ unsorted:
   - python36-curio 
   - python36-curses 
   - python36-curtsies 
+  - python36-cwcwidth 
   - python36-cx_Freeze 
   - python36-cymruwhois 
   - python36-cytoolz 
@@ -24309,6 +24304,8 @@ unsorted:
   - python38-aws-xray-sdk-Django 
   - python38-aws-xray-sdk-Flask-SQLAlchemy 
   - python38-aws-xray-sdk-SQLAlchemy 
+  - python38-aws-xray-sdk-aiobotocore 
+  - python38-aws-xray-sdk-aiohttp 
   - python38-aws-xray-sdk-all 
   - python38-aws-xray-sdk-mysql-connector 
   - python38-aws-xray-sdk-psycopg2 
@@ -24754,6 +24751,7 @@ unsorted:
   - python38-cufflinks 
   - python38-curio 
   - python38-curtsies 
+  - python38-cwcwidth 
   - python38-cx_Freeze 
   - python38-cymruwhois 
   - python38-cytoolz 
@@ -38667,7 +38665,6 @@ unsorted:
   - zfp-devel: [x86_64] 
   - zhu3d 
   - zile 
-  - zile-doc 
   - zim 
   - zim-lang 
   - zimg-devel 
@@ -38676,8 +38673,6 @@ unsorted:
   - zinnia-devel 
   - zinnia-tomoe 
   - zipkin-api-source 
-  - zipkin-cpp-opentracing-devel 
-  - zipkin-cpp-opentracing-devel-static 
   - zita-convolver-devel 
   - zita-resampler-devel 
   - zita-resampler-tools 
@@ -38701,7 +38696,6 @@ unsorted:
   - zopfli 
   - zp 
   - zpaq 
-  - zramcfg 
   - zsh-htmldoc 
   - zstd 
   - zsync 

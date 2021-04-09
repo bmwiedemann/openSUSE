@@ -1697,7 +1697,6 @@
     <package name="libbd_part2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbd_swap2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbd_utils2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libbind9-1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libblack_hole_solver1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libblas3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libblkid1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1836,7 +1835,6 @@
     <package name="libdmapsharing-4_0-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdmtx0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdmx1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libdns1611" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdolphinvcs5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdotconf0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libdouble-conversion3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2149,10 +2147,6 @@
     <package name="libiptcdata" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiptcdata-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiptcdata0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libirs1601" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libisc1609" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libisccc1600" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libisccfg1603" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiscsi9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
     <package name="libisl23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libiso9660-11" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2354,7 +2348,6 @@
     <package name="libnotify-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libnotify4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnpth0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libns1607" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnscd1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnsl2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnss_nis2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -2434,7 +2427,7 @@
     <package name="libpixman-1-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpkcs11-helper1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpkgconf3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libplacebo104" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libplacebo120" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libplist-2_0-3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libply-boot-client5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libply-splash-core5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
