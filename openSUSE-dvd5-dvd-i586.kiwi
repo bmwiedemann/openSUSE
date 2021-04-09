@@ -1426,7 +1426,6 @@
       <repopackage name="libbd_part2"/>
       <repopackage name="libbd_swap2"/>
       <repopackage name="libbd_utils2"/>
-      <repopackage name="libbind9-1600"/>
       <repopackage name="libblack_hole_solver1"/>
       <repopackage name="libblas3"/>
       <repopackage name="libblkid1"/>
@@ -1565,7 +1564,6 @@
       <repopackage name="libdmapsharing-4_0-3"/>
       <repopackage name="libdmtx0"/>
       <repopackage name="libdmx1"/>
-      <repopackage name="libdns1611"/>
       <repopackage name="libdolphinvcs5"/>
       <repopackage name="libdotconf0"/>
       <repopackage name="libdouble-conversion3"/>
@@ -1889,10 +1887,6 @@
       <repopackage name="libiptcdata"/>
       <repopackage name="libiptcdata-lang"/>
       <repopackage name="libiptcdata0"/>
-      <repopackage name="libirs1601"/>
-      <repopackage name="libisc1609"/>
-      <repopackage name="libisccc1600"/>
-      <repopackage name="libisccfg1603"/>
       <repopackage name="libiscsi9"/>
       <repopackage name="libisl23"/>
       <repopackage name="libiso9660-11"/>
@@ -2267,7 +2261,6 @@
       <repopackage name="libnotify-tools"/>
       <repopackage name="libnotify4"/>
       <repopackage name="libnpth0"/>
-      <repopackage name="libns1607"/>
       <repopackage name="libnscd1"/>
       <repopackage name="libnsl2"/>
       <repopackage name="libnss_nis2"/>
@@ -2348,7 +2341,7 @@
       <repopackage name="libpixman-1-0"/>
       <repopackage name="libpkcs11-helper1"/>
       <repopackage name="libpkgconf3"/>
-      <repopackage name="libplacebo104"/>
+      <repopackage name="libplacebo120"/>
       <repopackage name="libplist-2_0-3"/>
       <repopackage name="libply-boot-client5"/>
       <repopackage name="libply-splash-core5"/>
