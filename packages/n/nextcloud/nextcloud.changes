@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  8 18:01:21 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 21.0.1
+  - No changelog from upstream at this time.
+  - Switch requires from mysql to mariadb.
+  - Now minimum require php is 7.3 and recommend 7.4.
+
+-------------------------------------------------------------------
 Fri Feb 19 15:00:15 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 21.0.0

@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        21.0.0
+Version:        21.0.1
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -73,7 +73,7 @@ BuildRequires:  unzip
 Requires:       cron
 Requires:       curl
 Requires:       libxml2-2
-Requires:       mysql
+Requires:       mariadb >= 10.2
 Requires:       php-bz2
 Requires:       php-dom
 Requires:       php-gd
@@ -139,7 +139,7 @@ BuildRequires:  apache2 >= 2.4
 Requires:       %{name} = %{version}
 Requires:       apache2
 Requires:       mod_php_any < 7.5.0
-Requires:       mod_php_any >= 7.2.0
+Requires:       mod_php_any >= 7.3.0
 Supplements:    packageand(apache2:%name)
 
 %description apache
