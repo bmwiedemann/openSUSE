@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-robots
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,25 @@
 
 
 Name:           gnome-robots
-Version:        3.38.0
+Version:        40.0
 Release:        0
 Summary:        Robots Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://live.gnome.org/Robots
-Source0:        https://download.gnome.org/sources/gnome-robots/3.38/%{name}-%{version}.tar.xz
-
+Source0:        https://download.gnome.org/sources/gnome-robots/40/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gnome-games-scripts
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.32
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gsound) >= 1.0.2
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libgnome-games-support-1) >= 1.7.1
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.36.2
-Requires(pre):  pwdutils
 
 %description
 Robots is a graphical version of the original text based robots game,

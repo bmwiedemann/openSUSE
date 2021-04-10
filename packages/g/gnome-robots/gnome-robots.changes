@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Mar 21 08:03:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 15 11:03:00 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 40.beta:
+  + Fix a lookup of a game config.
+  + Updated translations.
+- Remove 15.patch: contained in upstream.
+
+-------------------------------------------------------------------
+Fri Jan 15 07:34:12 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + Rewrite in Vala.
+  + Updated translations.
+- Add vala BuildRequires: new dependency.
+- Drop "Requires(pre): pwdutils": it's been a while that we did not
+  create a user for gnome-games.
+- Add 15.patch: Fix crash on startup.
+
+-------------------------------------------------------------------
 Mon Sep 14 12:43:11 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.0:
@@ -377,7 +402,7 @@ Mon Sep 23 21:11:24 UTC 2013 - dimstar@opensuse.org
 Mon Sep 23 11:13:11 UTC 2013 - idonmez@suse.com
 
 - Create games user/group on demand (fate#314560)
-  + Depend on pwdutils for that to work. 
+  + Depend on pwdutils for that to work.
 
 -------------------------------------------------------------------
 Mon Sep 16 20:29:48 UTC 2013 - dimstar@opensuse.org
