@@ -8,11 +8,11 @@ Return -ENOSYS instead to trigger the fallback in glibc.
 futex_time64 is also used internally in glibc, so handle that as well.
 The signature is identical where it matters.
 
-Index: qtwebengine-everywhere-src-5.15.2/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
-===================================================================
---- qtwebengine-everywhere-src-5.15.2.orig/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
-+++ qtwebengine-everywhere-src-5.15.2/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
-@@ -190,6 +190,11 @@ ResultExpr EvaluateSyscallImpl(int fs_de
+diff --git a/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc b/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+index 3c67b124786..4772dc096f5 100644
+--- a/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
++++ b/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+@@ -194,6 +194,11 @@ ResultExpr EvaluateSyscallImpl(int fs_denied_errno,
    if (sysno == __NR_futex)
      return RestrictFutex();
  
@@ -24,9 +24,9 @@ Index: qtwebengine-everywhere-src-5.15.2/src/3rdparty/chromium/sandbox/linux/sec
    if (sysno == __NR_set_robust_list)
      return Error(EPERM);
  
-@@ -265,6 +270,12 @@ ResultExpr EvaluateSyscallImpl(int fs_de
+@@ -257,6 +262,12 @@ ResultExpr EvaluateSyscallImpl(int fs_denied_errno,
+     return RestrictKillTarget(current_pid, sysno);
    }
- #endif
  
 +#if defined(__NR_statx)
 +  if (sysno == __NR_statx) {

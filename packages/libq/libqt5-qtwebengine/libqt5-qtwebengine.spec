@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtwebengine
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright © 2017 Kevin Kofler <Kevin@tigcc.ticalc.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +17,7 @@
 #
 
 
-%define qt5_snapshot 0
-
-%if %{?suse_version} > 1500 || 0%{?sle_version} > 150100
-%bcond_without system_harfbuzz
-%bcond_without system_icu
-%else
-%bcond_with system_harfbuzz
-%bcond_with system_icu
-%endif
-%if %{?suse_version} > 1500 || 0%{?sle_version} > 150200
+%if %{?suse_version} > 1500 || 0%{?sle_version} > 150300
 %bcond_without system_vpx
 %else
 %bcond_with system_vpx
@@ -38,29 +29,31 @@
 %global _qtwebengine_dictionaries_dir %{_libqt5_datadir}/qtwebengine_dictionaries
 
 Name:           libqt5-qtwebengine
-Version:        5.15.2
+Version:        5.15.3
 Release:        0
 Summary:        Qt 5 WebEngine Library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.2
-%define so_version 5.15.2
-%define tar_version qtwebengine-everywhere-src-5.15.2
-Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
+%define real_version 5.15.3
+%define so_version 5.15.3
+%define tar_version qtwebengine-everywhere-src-%{version}
+Source:         %{tar_version}.tar.xz
+# Generated from a local build
+Source1:        sync.profile
 # PATCH-FIX-UPSTREAM armv6-ffmpeg-no-thumb.patch - Fix ffmpeg configuration for armv6
-Patch1:         armv6-ffmpeg-no-thumb.patch
+Patch0:         armv6-ffmpeg-no-thumb.patch
 # PATCH-FIX-OPENSUSE disable-gpu-when-using-nouveau-boo-1005323.diff
-Patch2:         disable-gpu-when-using-nouveau-boo-1005323.diff
-Patch3:         fix1163766.patch
-Patch4:         chromium-glibc-2.33.patch
-Patch5:         sandbox-statx-futex_time64.patch
+Patch1:         disable-gpu-when-using-nouveau-boo-1005323.diff
+Patch2:         fix1163766.patch
+Patch3:         sandbox-statx-futex_time64.patch
 # PATCH-FIX-OPENSUSE
-Patch9:         rtc-dont-use-h264.patch
+Patch4:         rtc-dont-use-h264.patch
 # PATCH-FIX-UPSTREAM
-Patch10:        icu-68.patch
-Patch11:        icu-68-2.patch
+Patch5:         0001-Fix-normalization-of-app-locales.patch
+# PATCH-FIX-UPSTREAM
+Patch6:         chromium-glibc-2.33.patch
 # http://www.chromium.org/blink not ported to PowerPC
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint
@@ -80,29 +73,33 @@ BuildRequires:  libQt5QuickControls2-devel
 BuildRequires:  libqt5-qtsvg-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libgcrypt-devel
-BuildRequires:  libicu-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  libqt5-qtbase-private-headers-devel >= 5.9
-BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= 5.9
-BuildRequires:  libqt5-qtlocation-private-headers-devel >= 5.9
-BuildRequires:  libqt5-qttools-private-headers-devel >= 5.9
-BuildRequires:  libqt5-qtwebchannel-private-headers-devel >= 5.9
-BuildRequires:  libqt5-qtxmlpatterns-private-headers-devel >= 5.9
+BuildRequires:  libqt5-qtbase-private-headers-devel >= 5.12
+BuildRequires:  libqt5-qtdeclarative-private-headers-devel >= 5.12
+BuildRequires:  libqt5-qtlocation-private-headers-devel >= 5.12
+BuildRequires:  libqt5-qttools-private-headers-devel >= 5.12
+BuildRequires:  libqt5-qtwebchannel-private-headers-devel >= 5.12
+BuildRequires:  libqt5-qtxmlpatterns-private-headers-devel >= 5.12
 BuildRequires:  memory-constraints
 BuildRequires:  ninja
+# nodejs-default doesn't exist on Leap 15.2 and nodejs/nodejs-common is confused on TW/i586
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150200
+BuildRequires:  nodejs-common
+%else
+BuildRequires:  nodejs-default
+%endif
 BuildRequires:  pam-devel
 BuildRequires:  pciutils-devel
+BuildRequires:  perl
 BuildRequires:  perl-JSON
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  python
 BuildRequires:  python-devel
 BuildRequires:  python-xml
-BuildRequires:  re2-devel
 BuildRequires:  re2c
 BuildRequires:  sed
 BuildRequires:  snappy-devel
-BuildRequires:  sqlite3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  usbutils
 BuildRequires:  util-linux
@@ -119,13 +116,23 @@ BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(freetype2) >= 2.4.2
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.32
+BuildRequires:  pkgconfig(glproto)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  pkgconfig(harfbuzz) >= 2.4.0
+BuildRequires:  pkgconfig(icu-uc) >= 65.0
+BuildRequires:  pkgconfig(icu-i18n) >= 65.0
 BuildRequires:  pkgconfig(jsoncpp)
+BuildRequires:  pkgconfig(lcms2)
+%if %{with system_ffmpeg}
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
+%endif
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libevent)
@@ -140,13 +147,22 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
+%if %{with system_minizip}
+BuildRequires:  pkgconfig(minizip)
+%endif
 BuildRequires:  pkgconfig(nspr)
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pangoft2)
+BuildRequires:  pkgconfig(poppler-cpp)
 BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(speex)
+BuildRequires:  pkgconfig(sqlite3)
+%if %{with system_vpx}
+BuildRequires:  pkgconfig(vpx) >= 1.8.0
+%endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xcursor)
@@ -161,28 +177,6 @@ BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  yasm-devel
-%if %{with system_minizip}
-BuildRequires:  pkgconfig(minizip)
-%endif
-%if %{with system_harfbuzz}
-BuildRequires:  pkgconfig(harfbuzz) >= 2.2.0
-%endif
-%if %{with system_icu}
-BuildRequires:  pkgconfig(icu-uc) >= 64.0
-BuildRequires:  pkgconfig(icu-i18n) >= 64.0
-%endif
-%if %{with system_vpx}
-BuildRequires:  pkgconfig(vpx) >= 1.8.0
-%endif
-%if %{with system_ffmpeg}
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
-%endif
-%if %qt5_snapshot
-#to create the forwarding headers
-BuildRequires:  perl
-%endif
 %requires_ge libQt5Network5
 %requires_ge libQtQuick5
 %requires_ge libQt5Widgets5
@@ -212,10 +206,10 @@ You need this package if you want to compile programs with Qt WebEngine.
 %package private-headers-devel
 Summary:        Non-ABI stable experimental API for the Qt5 WebEngine library
 Group:          Development/Libraries/C and C++
-BuildArch:      noarch
 Requires:       %{name}-devel = %{version}
 %requires_ge    libqt5-qtbase-private-headers-devel
 %requires_ge    libqt5-qtdeclarative-private-headers-devel
+BuildArch:      noarch
 
 %description private-headers-devel
 This package provides private headers of libqt5-qtwebengine that are normally
@@ -265,9 +259,9 @@ You need this package if you want to compile programs with Qt PDF.
 %package -n libqt5-qtpdf-private-headers-devel
 Summary:        Non-ABI stable experimental API for the Qt5 PDF library
 Group:          Development/Libraries/C and C++
-BuildArch:      noarch
 Requires:       libqt5-qtpdf-devel = %{version}
 %requires_ge    libqt5-qtbase-private-headers-devel
+BuildArch:      noarch
 
 %description -n libqt5-qtpdf-private-headers-devel
 This package provides private headers of libqt5-qtpdf that are normally
@@ -293,11 +287,6 @@ sed -i -e '/toolprefix = /d' -e 's/\${toolprefix}//g' \
   src/3rdparty/chromium/build/toolchain/linux/BUILD.gn
 
 %build
-%if %qt5_snapshot
-#force the configure script to generate the forwarding headers (it checks whether .git directory exists)
-mkdir .git
-%endif
-
 # TODO: Get the manual unbundling from chromium.spec working here as well
 rm -r src/3rdparty/chromium/third_party/openh264/src
 
@@ -313,47 +302,63 @@ export RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -Wno-return-type"
         QMAKE_CXXFLAGS="$RPM_OPT_FLAGS" \
         QMAKE_LFLAGS+="-Wl,--no-keep-memory -Wl,--hash-size=31 -Wl,--reduce-memory-overheads" \
         gn_args+="link_pulseaudio=true" \
+        gn_args+="media_use_openh264=false" \
+        gn_args+="use_system_libxml=true use_system_libxslt=true" \
         qtwebengine.pro -- \
-        -webengine-alsa -webengine-kerberos -no-webengine-embedded-build \
-%if %{with system_icu}
+        -webengine-alsa \
+        -no-webengine-embedded-build \
+        -webengine-kerberos \
         -system-webengine-icu \
-%endif
+        -system-webengine-opus \
+        -system-webengine-webp \
+        -webengine-pepper-plugins \
+        -webengine-printing-and-pdf \
 %if %{with system_ffmpeg}
         -system-webengine-ffmpeg \
         -webengine-proprietary-codecs \
 %endif
-        -system-webengine-opus -system-webengine-webp -webengine-pepper-plugins -webengine-printing-and-pdf
+
+# For an unknown reason, syncqt isn't executed when building the package on the build service
+cp %{SOURCE1} .
+for i in QtWebEngine QtWebEngineCore QtWebEngineWidgets QtPdf QtPdfWidgets ; do
+  perl -w %{_libqt5_bindir}/syncqt.pl -module $i -version %{version} -outdir $PWD -builddir $PWD $PWD
+done
 
 # Determine the right number of parallel processes based on the available memory
 %limit_build -m 2750
 
 # Ensure that also the internal chromium build follows the right number of parallel
 # processes instead of its defaults.
-export NINJAFLAGS="%{_smp_mflags}"
+export NINJAFLAGS="%{?_smp_mflags}"
 
 make %{_smp_mflags} VERBOSE=1
 
 %install
 %qmake5_install
-#cat %{buildroot}/%{_libdir}/pkgconfig/Qt*Web*.pc
-find %{buildroot}/%{_libdir} -type f -name '*la' -print -exec perl -pi -e 's, -L%{_builddir}/\S+,,g' {} +
-find %{buildroot}/%{_libdir} -type f -name '*pc' -print -exec perl -pi -e "s, -L$RPM_BUILD_DIR/?\S+,,g" {} + -exec sed -i -e "s,^moc_location=.*,moc_location=%libqt5_bindir/moc," -e "s,uic_location=.*,uic_location=%libqt5_bindir/uic," {} +
-find %{buildroot}/%{_libdir} -type f -name '*pc' -exec sed -i -e "/^RPM_BUILD_DIR/d" {} +
+
+find %{buildroot}%{_libdir} -type f -name '*la' -print -exec perl -pi -e 's, -L%{_builddir}/\S+,,g' {} +
+find %{buildroot}%{_libdir} -type f -name '*pc' -print -exec perl -pi -e "s, -L$RPM_BUILD_DIR/?\S+,,g" {} + -exec sed -i -e "s,^moc_location=.*,moc_location=%libqt5_bindir/moc," -e "s,uic_location=.*,uic_location=%libqt5_bindir/uic," {} +
+find %{buildroot}%{_libdir} -type f -name '*pc' -exec sed -i -e "/^RPM_BUILD_DIR/d" {} +
 sed -i '/^Libs.private/d' %{buildroot}%{_libdir}/pkgconfig/Qt*Web*.pc
+
 # kill .la files
 rm -f %{buildroot}%{_libqt5_libdir}/*.la
+
 # webenginecore expects icudatl.dat at this location
 # ln -sf %{_datadir}/icu/*/icudt*l.dat %{buildroot}%{_datadir}/qt5/icudtl.dat
 
 # Workaround to allow using QtWE with older Qt versions
-sed -i -r '/ EXACT\)/d' \
-  %{buildroot}%{_libqt5_libdir}/cmake/Qt5WebEngine*/Qt5WebEngine*Config.cmake
-
-sed -i '/find_package/!b;n;s/'%{so_version}/$(rpm -q --qf %%{version} libQt5Core5 | sed 's/~.*$//')/ \
-  %{buildroot}%{_libqt5_libdir}/cmake/Qt5WebEngine*/Qt5WebEngine*Config.cmake
+%global qtcore_version %(printf %{pkg_version libQt5Core5})
+# NOTE the space after '%%{version}' is important to only match '5.15.X ${_Qt5XXX_FIND_VERSION_EXACT}'
+sed -i 's#%{version} #%{qtcore_version} #' %{buildroot}%{_libqt5_libdir}/cmake/*/*Config.cmake
 
 # Hunspell dictionaries will be converted and put here on package installation
 mkdir -p %{buildroot}%{_qtwebengine_dictionaries_dir}
+
+%if %{pkg_vcmp libQt5Core5 >= 5.15}
+# CMake files for plugins are only useful for static builds
+rm -r %{buildroot}%{_libqt5_libdir}/cmake/Qt5Gui
+%endif
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -362,7 +367,6 @@ mkdir -p %{buildroot}%{_qtwebengine_dictionaries_dir}
 %post -n libQt5PdfWidgets5 -p /sbin/ldconfig
 %postun -n libQt5PdfWidgets5 -p /sbin/ldconfig
 
-%if 0%{?suse_version} >= 1500
 %filetriggerin -- %{_datadir}/hunspell
 # Convert Hunspell dictionaries on package installation
 while read filename ; do
@@ -373,26 +377,22 @@ while read filename ; do
       ;;
   esac
 done
-%endif
 
 %files
 %license LICENSE.*
+%dir %{_datadir}/qt5/
+%dir %{_qtwebengine_dictionaries_dir}
+%dir %{_datadir}/qt5/resources/
+%{_datadir}/qt5/resources/qtwebengine_*
+%dir %{_datadir}/qt5/translations/
+%{_datadir}/qt5/translations/qtwebengine_locales/
+%{_libqt5_archdatadir}/qml/QtWebEngine/
+%{_libqt5_bindir}/qwebengine_convert_dict
 %{_libqt5_libdir}/libQt5WebEngine.so.*
 %{_libqt5_libdir}/libQt5WebEngineCore.so.*
 %{_libqt5_libdir}/libQt5WebEngineWidgets.so.*
-%dir %{_datadir}/qt5/
-%dir %{_datadir}/qt5/translations/
-%{_datadir}/qt5/translations/qtwebengine_locales/
-%dir %{_datadir}/qt5/resources/
-%{_datadir}/qt5/resources/qtwebengine_*
-%if %{without system_icu}
-%{_datadir}/qt5/resources/icudtl.dat
-%endif
-%dir %{_qtwebengine_dictionaries_dir}
 %dir %{_libqt5_libexecdir}
 %{_libqt5_libexecdir}/QtWebEngineProcess
-%{_libqt5_archdatadir}/qml/QtWebEngine/
-%{_libqt5_bindir}/qwebengine_convert_dict
 
 %files private-headers-devel
 %license LICENSE.*
@@ -401,15 +401,15 @@ done
 %files devel
 %exclude %{_libqt5_includedir}/QtWebEngine*/%{so_version}
 %{_libqt5_includedir}/QtWebEngine*/
-%{_libqt5_libdir}/libQt5WebEngine*.so
-%{_libqt5_libdir}/libQt5WebEngine*.prl
-%{_libqt5_libdir}/pkgconfig/Qt5WebEngine*.pc
-%{_libqt5_libdir}/qt5/mkspecs/modules/qt_lib_webengine*.pri
 %dir %{_libqt5_libdir}/cmake/Qt5Designer/
 %{_libqt5_libdir}/cmake/Qt5Designer/Qt5Designer_QWebEngineViewPlugin.cmake
+%{_libqt5_libdir}/cmake/Qt5WebEngine*/
+%{_libqt5_libdir}/libQt5WebEngine*.prl
+%{_libqt5_libdir}/libQt5WebEngine*.so
+%{_libqt5_libdir}/pkgconfig/Qt5WebEngine*.pc
+%{_libqt5_libdir}/qt5/mkspecs/modules/qt_lib_webengine*.pri
 %dir %{_libqt5_plugindir}/designer/
 %{_libqt5_plugindir}/designer/libqwebengineview.so
-%{_libqt5_libdir}/cmake/Qt5WebEngine*/
 
 %files examples
 %license LICENSE.*
@@ -418,12 +418,8 @@ done
 
 %files -n libQt5Pdf5
 %license LICENSE.*
-%{_libqt5_libdir}/libQt5Pdf.so.*
 %{_libqt5_archdatadir}/plugins/imageformats/libqpdf.so
-# Not quite sure what this would be used by
-%dir %{_libqt5_libdir}/cmake/
-%dir %{_libqt5_libdir}/cmake/Qt5Gui/
-%{_libqt5_libdir}/cmake/Qt5Gui/Qt5Gui_QPdfPlugin.cmake
+%{_libqt5_libdir}/libQt5Pdf.so.*
 
 %files -n libQt5PdfWidgets5
 %license LICENSE.*
@@ -445,13 +441,13 @@ done
 %{_libqt5_includedir}/QtPdfWidgets/
 %{_libqt5_libdir}/cmake/Qt5Pdf/
 %{_libqt5_libdir}/cmake/Qt5PdfWidgets/
-%{_libqt5_libdir}/libQt5Pdf.so
-%{_libqt5_libdir}/libQt5PdfWidgets.so
 %{_libqt5_libdir}/libQt5Pdf.prl
+%{_libqt5_libdir}/libQt5Pdf.so
 %{_libqt5_libdir}/libQt5PdfWidgets.prl
-%{_libqt5_libdir}/qt5/mkspecs/modules/qt_lib_pdf*.pri
+%{_libqt5_libdir}/libQt5PdfWidgets.so
 %{_libqt5_libdir}/pkgconfig/Qt5Pdf.pc
 %{_libqt5_libdir}/pkgconfig/Qt5PdfWidgets.pc
+%{_libqt5_libdir}/qt5/mkspecs/modules/qt_lib_pdf*.pri
 
 %files -n libqt5-qtpdf-examples
 %license LICENSE.*

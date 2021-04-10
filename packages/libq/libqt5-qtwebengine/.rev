@@ -660,4 +660,41 @@
 - Relax constraints for armv6 and armv7</comment>
     <requestid>873181</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>b6b92a71dce6080f491fa9cc00352fb0</srcmd5>
+    <version>5.15.3</version>
+    <time>1618061184</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 5.15.3:
+  * Fix spelling and coding style
+  * Fix new view request handling (QTBUG-87378)
+  * Fix getDefaultScreenId on X11
+  * Fix flaky tst_QWebEngineView::textSelectionOutOfInputField test
+  * Move touch input tests to separate testcase
+  * Add touch input tests for scrolling and pinch zooming
+  * Fix rare duplicate ids forming in touch point id's mapping
+  * Use the module's version number for QtWebEngineProcess
+  * Touch handling: provide id mapping without modifying TouchPoint instance
+    (QTBUG-88001)
+  * Touch handling: fix mapped ids cleanup for TouchCancel event
+  * et custom headers from QWebEngineUrlRequestInfo before triggering redirect
+    (QTBUG-88861)
+  * Forward modifier flags for lock keys (QTBUG-89001)
+  * Fix handling of more than one finger for touch event (QTBUG-86389)
+  * Stabilize load signals emitting (QTBUG-65223, QTBUG-87089)
+  * Fix building against 5.12 on most CIs
+  * Update minimum HarfBuzz version to 2.4.0 (QTBUG-88976)
+  * Fix building against Qt 5.14
+  * Migrate user script IPC to mojo
+  * Fix crashes in user resource controller when single process
+  * Minor. Fix namespace for user resource controller
+  * Minor. RenderThreadObserverQt is really a RenderConfiguration
+  * Remove RenderViewObserverHelper from UserResourceController
+  * Cache mojo interface bindings to UserResourceControllerRenderFrame
+  * Cache mojo interface bindings for WebChannelIPCTransport
+  * Migrate render_view_observer_qt to mojo
+  * Fix crash on linkedin.com (QTBUG-89740)
+  * Suppress error pages also for http errors if they are disabled</comment>
+    <requestid>881936</requestid>
+  </revision>
 </revisionlist>

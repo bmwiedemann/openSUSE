@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Wed Mar 24 12:45:13 UTC 2021 - christophe@krop.fr
+
+- Update to version 5.15.3:
+  * Fix spelling and coding style
+  * Fix new view request handling (QTBUG-87378)
+  * Fix getDefaultScreenId on X11
+  * Fix flaky tst_QWebEngineView::textSelectionOutOfInputField test
+  * Move touch input tests to separate testcase
+  * Add touch input tests for scrolling and pinch zooming
+  * Fix rare duplicate ids forming in touch point id's mapping
+  * Use the module's version number for QtWebEngineProcess
+  * Touch handling: provide id mapping without modifying TouchPoint instance
+    (QTBUG-88001)
+  * Touch handling: fix mapped ids cleanup for TouchCancel event
+  * et custom headers from QWebEngineUrlRequestInfo before triggering redirect
+    (QTBUG-88861)
+  * Forward modifier flags for lock keys (QTBUG-89001)
+  * Fix handling of more than one finger for touch event (QTBUG-86389)
+  * Stabilize load signals emitting (QTBUG-65223, QTBUG-87089)
+  * Fix building against 5.12 on most CIs
+  * Update minimum HarfBuzz version to 2.4.0 (QTBUG-88976)
+  * Fix building against Qt 5.14
+  * Migrate user script IPC to mojo
+  * Fix crashes in user resource controller when single process
+  * Minor. Fix namespace for user resource controller
+  * Minor. RenderThreadObserverQt is really a RenderConfiguration
+  * Remove RenderViewObserverHelper from UserResourceController
+  * Cache mojo interface bindings to UserResourceControllerRenderFrame
+  * Cache mojo interface bindings for WebChannelIPCTransport
+  * Migrate render_view_observer_qt to mojo
+  * Fix crash on linkedin.com (QTBUG-89740)
+  * Suppress error pages also for http errors if they are disabled
+  * Fix leak in QQuickWebEngineViewPrivate::contextMenuRequested
+  * Register PerformanceNode early enough
+  * Quiet log on webrtc usage
+  * Remove configure option that doesn't work
+  * Remove Java build dependency
+  * Fix blank popups in qml (QTBUG-86034)
+  * Fix position of popup on qml (QTBUG-86034, QTBUG-89358)
+  * Enable hangout services extension (QTBUG-85731)
+  * Allow to fallback to default locale for non existent data packs (QTBUG-90490)
+  * Support devtools close button
+  * Do not extract download file names from certain url schemes (QTBUG-90355)
+  * Leave room for the null-termination byte when checking remote drive path
+    (QTBUG-90347)
+  * Do not set open files limit for linking if not necessary
+  * Remove even more remains of non network service code
+  * Add back prefers-color-scheme support (QTBUG-89753)
+  * Start supporting chrome.resourcesPrivate API (QTBUG-90035)
+  * Enable chrome://user-actions WebUI
+  * Remove remains of chrome://flash
+  * Fix loadFinished signal if page has content but server sends HTTP error
+    (QTBUG-90517)
+  * Fix devtools page resource loading as raw data instead of html string
+  * Remove frame metadata observer (RenderWidgetHostViewQt) on destroy
+  * Resolve installed interceptors right before interception point (QTBUG-86286)
+  * Update searches faster
+  * Remove more leftovers of the old compositor
+  * Enable webrtc logging and the corresponding WebUI
+  * Support mips64el platform CPU(loongson 3A4000)
+  * Add tracing UI resources
+  * Fix crash on meet.google.com
+  * Fix mad popup qquickwindows on wayland
+  * Fix crashes on BrowserContext destruction
+  * Fix crash on exit in quicknanobrowser when popup
+  * Remove QtPdf dependency on nss at build-time
+  * Avoid accessing profileAdapter when profile is shutting down (QTBUG-91187)
+  * Do not flush messages form profile destructor
+  * Ignore QQuickWebEngineNewViewRequest if it is unhandled
+  * Fix ScopedGLContextChecker with QTWEBENGINE_DISABLE_GPU_THREAD=1
+  * Don't send duplicate load progress values
+  * Fix neon support in libpng
+  * Do not call deprecated profile interceptor on ui thread (QTBUG-86267)
+  * Add certificate error message for ERR_SSL_OBSOLETE_VERSION
+  * Fix assert in WebContentsAdapter::devToolsFrontendDestroyed
+  * Avoid to reject a certificate error twice in Quick
+  * Fix PDF viewer plugin
+  * FIXUP: Fix swap condition in DisplayGLOutputSurface::updatePaintNode
+    (QTBUG-86599)
+  * Fix favicon engine under device pixel scaling
+  * Do not pass a native keycode matching the menu key when it is remapped
+    (QTBUG-86672)
+  * Optimize WebEngineSettings::testAttribute
+  * Warn about QtWebengineProcess launching from network share (QTBUG-84632)
+  * Handle non-ascii names for pulseaudio (QTBUG-85363)
+  * Do not set audio device for desktop capture if audio loopback is unsupported
+  * Fix new view request handling (QTBUG-87378)
+  * Fix getDefaultScreenId on X11
+  * Touch handling: provide id mapping without modifying TouchPoint instance
+    (QTBUG-88001)
+  * Set custom headers from QWebEngineUrlRequestInfo before triggering redirect
+    (QTBUG-88861)
+  * Stabilize load signals emitting (QTBUG-65223)
+
+- CVE fixes backported in chromium updates:
+  * CVE-2020-16044: Use after free in WebRTC
+  * CVE-2021-21118: Heap buffer overflow in Blink
+  * CVE-2021-21119: Use after free in Media
+  * CVE-2021-21120: Use after free in WebSQL
+  * CVE-2021-21121: Use after free in Omnibox
+  * CVE-2021-21122: Use after free in Blink
+  * CVE-2021-21123: Insufficient data validation in File System API
+  * CVE-2021-21125: Insufficient policy enforcement in File System API
+  * CVE-2021-21126: Insufficient policy enforcement in extensions
+  * CVE-2021-21127: Insufficient policy enforcement in extensions
+  * CVE-2021-21128: Heap buffer overflow in Blink
+  * CVE-2021-21129: Insufficient policy enforcement in File System API
+  * CVE-2021-21130: Insufficient policy enforcement in File System API
+  * CVE-2021-21131: Insufficient policy enforcement in File System API
+  * CVE-2021-21132: Inappropriate implementation in DevTools
+  * CVE-2021-21135: Inappropriate implementation in Performance API
+  * CVE-2021-21137: Inappropriate implementation in DevTools
+  * CVE-2021-21140: Uninitialized Use in USB
+  * CVE-2021-21141: Insufficient policy enforcement in File System API
+  * CVE-2021-21145: Use after free in Fonts
+  * CVE-2021-21146: Use after free in Navigation
+  * CVE-2021-21147: Inappropriate implementation in Skia
+  * CVE-2021-21148: Heap buffer overflow in V8
+  * CVE-2021-21149: Stack overflow in Data Transfer
+  * CVE-2021-21150: Use after free in Downloads
+  * CVE-2021-21152: Heap buffer overflow in Media
+  * CVE-2021-21153: Stack overflow in GPU Process
+  * CVE-2021-21156: Heap buffer overflow in V8
+  * CVE-2021-21157: Use after free in Web Sockets
+- Drop obsolete patches:
+  * icu-68.patch
+  * icu-68-2.patch
+- Rebase patches:
+  * fix1163766.patch
+  * sandbox-statx-futex_time64.patch
+  * rtc-dont-use-h264.patch
+  * chromium-glibc-2.33.patch
+- Add patch to fix crash with certain locales:
+  * 0001-Fix-normalization-of-app-locales.patch
+- Clean the spec file a bit
+
+-------------------------------------------------------------------
+Wed Mar 10 16:52:28 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Can't use system_vpx on Leap 15.3
+
+-------------------------------------------------------------------
 Wed Feb 17 13:19:20 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix sandbox with glibc 2.33 on 32bit:

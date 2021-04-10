@@ -1,11 +1,11 @@
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Subject: Don't require open264 when proprietary_codecs are supported
 
-Index: qtwebengine-everywhere-src-5.15.1/src/3rdparty/chromium/third_party/webrtc/webrtc.gni
-===================================================================
---- qtwebengine-everywhere-src-5.15.1.orig/src/3rdparty/chromium/third_party/webrtc/webrtc.gni
-+++ qtwebengine-everywhere-src-5.15.1/src/3rdparty/chromium/third_party/webrtc/webrtc.gni
-@@ -149,8 +149,7 @@ declare_args() {
+diff --git a/src/3rdparty/chromium/third_party/webrtc/webrtc.gni b/chromium/third_party/webrtc/webrtc.gni
+index ca8acdbf259..36897a72aa8 100644
+--- a/src/3rdparty/chromium/third_party/webrtc/webrtc.gni
++++ b/src/3rdparty/chromium/third_party/webrtc/webrtc.gni
+@@ -151,8 +151,7 @@ declare_args() {
    #
    # Enabling H264 when building with MSVC is currently not supported, see
    # bugs.webrtc.org/9213#c13 for more info.
@@ -13,13 +13,14 @@ Index: qtwebengine-everywhere-src-5.15.1/src/3rdparty/chromium/third_party/webrt
 -      proprietary_codecs && !is_android && !is_ios && !(is_win && !is_clang)
 +  rtc_use_h264 = false
  
-   # By default, use normal platform audio support or dummy audio, but don't
-   # use file-based audio playout and record.
-Index: qtwebengine-everywhere-src-5.15.1/src/core/config/common.pri
-===================================================================
---- qtwebengine-everywhere-src-5.15.1.orig/src/core/config/common.pri
-+++ qtwebengine-everywhere-src-5.15.1/src/core/config/common.pri
-@@ -27,9 +27,6 @@ qtConfig(webengine-webrtc) {
+   # Enable this flag to make webrtc::Mutex be implemented by absl::Mutex.
+   rtc_use_absl_mutex = false
+
+diff --git a/src/core/config/common.pri b/src/core/config/common.pri
+index d9d64e76..cd0fd120 100644
+--- a/src/core/config/common.pri
++++ b/src/core/config/common.pri
+@@ -26,9 +26,6 @@ qtConfig(webengine-webrtc) {
  
  qtConfig(webengine-proprietary-codecs) {
      gn_args += proprietary_codecs=true ffmpeg_branding=\"Chrome\"
