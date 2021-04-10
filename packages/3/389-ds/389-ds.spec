@@ -37,13 +37,13 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.0.2~git0.6d17ca7df
+Version:        2.0.4~git0.7f6ba5a37
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
 Group:          Productivity/Networking/LDAP/Servers
 URL:            https://pagure.io/389-ds-base
-Source:         389-ds-base-%{version}.tar.bz2
+Source:         389-ds-base-%{version}.tar.xz
 Source1:        extra-schema.tgz
 Source2:        LICENSE.openldap
 Source3:        vendor.tar.xz
@@ -52,7 +52,6 @@ Source9:        %{name}-rpmlintrc
 Source10:       %{user_group}-user.conf
 # 389-ds does not support i686
 ExcludeArch:    %ix86
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cracklib-devel
@@ -123,7 +122,7 @@ Recommends:     cyrus-sasl-digestmd5
 
 Requires(post): fillup
 Requires(pre):  shadow
-PreReq:         permissions
+Requires(post): permissions
 Obsoletes:      389-ds-base < %{version}-%{release}
 Provides:       389-ds-base = %{version}-%{release}
 %{?systemd_ordering}
@@ -161,7 +160,7 @@ features.
 
 This package contains the development files for 389DS.
 
-%package          snmp
+%package        snmp
 Summary:        SNMP Agent for 389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
 Group:          System/Daemons
@@ -169,7 +168,7 @@ Requires:       %{name} = %{version}
 
 Obsoletes:      %{name} <= 1.3.6.2
 
-%description      snmp
+%description    snmp
 SNMP Agent for the 389 Directory Server base package.
 
 %package -n lib389
@@ -333,7 +332,6 @@ exit 0
 %postun -n %{svrcorelib} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc README*
 %license LICENSE LICENSE.openldap
 %{_sysusersdir}/%{user_group}-user.conf
@@ -374,7 +372,6 @@ exit 0
 %{_datadir}/gdb/auto-load/usr/sbin/ns-slapd-gdb.py
 
 %files devel
-%defattr(-,root,root)
 %doc README*
 %doc src/svrcore/README.svrcore
 %license LICENSE
@@ -390,12 +387,10 @@ exit 0
 %{_libdir}/pkgconfig/svrcore.pc
 
 %files -n %{svrcorelib}
-%defattr(-,root,root,-)
 %license src/svrcore/LICENSE*
 %{_libdir}/libsvrcore.so.*
 
 %files snmp
-%defattr(-,root,root,-)
 %license LICENSE LICENSE.GPLv3+ LICENSE.openssl
 # TODO: README.devel
 %config(noreplace)%{_sysconfdir}/%{pkgname}/config/ldap-agent.conf
@@ -404,7 +399,6 @@ exit 0
 %{_unitdir}/%{pkgname}-snmp.service
 
 %files -n lib389
-%defattr(-,root,root,-)
 %license src/lib389/LICENSE
 %doc src/lib389/README*
 %{_sbindir}/dsconf

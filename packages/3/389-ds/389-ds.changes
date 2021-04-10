@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Thu Apr 08 00:22:28 UTC 2021 - wbrown@suse.de
+
+- Update to version 389-ds-base-2.0.4~git0.7f6ba5a37:
+  * Bump version to 2.0.4
+  * Issue 4680 - 389ds coredump (@389ds/389-ds-base-nightly) in replica install with CA (#4715)
+  * Issue 3965 - RFE - Implement the Password Policy attribute "pwdReset" (#4713)
+  * Issue 4700 - Regression in winsync replication agreement (#4712)
+  * Issue 3965 - RFE - Implement the Password Policy attribute "pwdReset" (#4710)
+  * Issue 4169 - UI - migrate monitor tables to PF4
+  * issue 4585 - backend redesign phase 3c - dbregion test removal (#4665)
+  * Issue 2736 - remove remaining perl references
+  * Issue 2736 - https://github.com/389ds/389-ds-base/issues/2736
+  * Issue 4706 - negative wtime in access log for CMP operations
+  * Issue 3585 - LDAP server returning controltype in different sequence
+  * Issue 4127 - With Accounts/Account module delete fuction is not working (#4697)
+  * Issue 4666 - BUG - cb_ping_farm can fail with anonymous binds disabled (#4669)
+  * Issue 4671 - UI - Fix browser crashes
+  * Issue 4169 - UI - Add PF4 charts for server stats
+  * Issue 4648 - Fix some issues and improvement around CI tests (#4651)
+  * Issue  4654  Updates to tickets/ticket48234_test.py  (#4654)
+  * Issue 4229 - Fix Rust linking
+  * Issue 4673 - Update Rust crates
+  * Issue 4658 - monitor - connection start date is incorrect
+  * Issue 4169 - UI - migrate modals to PF4
+  * Issue 4656 - remove problematic language from ds-replcheck
+  * Issue 4459 - lib389 - Default paths should use dse.ldif if the server is down
+  * Issue 4656 - Remove problematic language from UI/CLI/lib389
+  * Issue 4661 - RFE - allow importing openldap schemas (#4662)
+  * Issue 4659 - restart after openldap migration to enable plugins (#4660)
+  * Merge pull request #4664 from mreynolds389/issue4663
+  * issue 4552 - Backup Redesign phase 3b - use dbimpl in replicatin plugin (#4622)
+  * Issue 4643 - Add a tool that generates Rust dependencies for a specfile (#4645)
+  * Issue 4646 - CLI/UI - revise DNA plugin management
+  * Issue 4644 - Large updates can reset the CLcache to the beginning of the changelog (#4647)
+  * Issue 4649 - crash in sync_repl when a MODRDN create a cenotaph (#4652)
+  * Issue 4169 - UI - Migrate alerts to PF4
+  * Issue 4169 - UI - Migrate Accordians to PF4 ExpandableSection
+  * Issue 4595 - Paged search lookthroughlimit bug (#4602)
+  * Issue 4169 - UI - port charts to PF4
+  * Issue 2820 - Fix CI test suite issues
+  * Issue 4513 - CI - make acl ip address tests more robust
+  * Bump version to 2.0.3
+  * Issue 4619 - remove pytest requirement from lib389
+  * Issue 4615 - log message when psearch first exceeds max threads per conn
+  * Issue 4469 - Backend redesing phase 3a - implement dbimpl API and use it in back-ldbm (#4618)
+  * Issue 4324 - Some architectures the cache line size file does not exist
+  * Issue 4593 - RFE - Print help when nsSSLPersonalitySSL is not found (#4614)
+  * Issue 4469 - Backend redesign phase 3a - bdb dependency removal from back-ldbm
+  * Update dscontainer (#4564)
+  * Issue 4149 - UI - port TreeView and opther components to PF4
+  * Issue 4577 - Add GitHub actions
+  * Issue 4591 - RFE - improve openldap_to_ds help and features (#4607)
+  * issue 4612 - Fix pytest fourwaymmr_test for non root user (#4613)
+  * Issue 4609 - CVE - info disclosure when authenticating
+  * Issue 4348 - Add tests for dsidm
+  * Issue 4571 - Stale libdb-utils dependency
+  * Issue 4600 - performance modify rate: reduce lock contention on the object extension factory (#4601)
+  * Issue 4577 - Add GitHub actions
+  * Issue 4588 - BUG - unable to compile without xcrypt (#4589)
+  * Issue 4579 - libasan detects heap-use-after-free in URP test (#4584)
+  * Issue 4581 - A failed re-indexing leaves the database in broken state (#4582)
+  * Issue 4348 - Add tests for dsidm
+  * Issue 4577 - Add GitHub actions
+  * Issue 4563 - Failure on s390x: 'Fails to split RDN "o=pki-tomcat-CA" into components' (#4573)
+  * Issue 4093 - fix compiler warnings and update doxygen
+  * Issue 4575 - Update test docstrings metadata
+  * Issue 4526 - sync_repl: when completing an operation in the pending list, it can select the wrong operation (#4553)
+  * Issue 4324 - Performance search rate: change entry cache monitor to recursive pthread mutex (#4569)
+  * Issue 4513 - Add DS version check to SSL version test (#4570)
+  * Issue 5442 - Search results are different between RHDS10 and RHDS11
+  * Issue 4396 - Minor memory leak in backend (#4558)
+  * Revert "Update metadata for customerscenario in test docstring"
+  * Update metadata for customerscenario in test docstring
+  * Issue 4513 - Fix replication CI test failures (#4557)
+  * Issue 4513 - Fix replication CI test failures (#4557)
+  * Issue 4153 - Added a CI test (#4556)
+  * Issue 4506 - BUG - fix oob alloc for fds (#4555)
+  * Issue 4548 - CLI - dsconf needs better root DN access control plugin validation
+  * Issue 4506 - Temporary fix for io issues (#4516)
+  * Issue 4535 - lib389 - Fix log function in backends.py
+  * Issue 4534 - libasan read buffer overflow in filtercmp (#4541)
+  * Issue 4544 - Compiler warnings on krb5 functions (#4545)
+  * Update rpm.mk for RUST tarballs
+
+-------------------------------------------------------------------
+Wed Apr  7 16:07:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- small spec cleanup 
+
+-------------------------------------------------------------------
 Fri Jan 29 19:06:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - As there is no python-* package, the direct use of singlespec

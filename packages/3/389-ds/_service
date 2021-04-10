@@ -3,9 +3,9 @@
     <param name="url">https://github.com/389ds/389-ds-base.git</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
     <param name="scm">git</param>
-    <param name="revision">389-ds-base-2.0.2</param>
-    <param name="match-tag">389-ds-base-2.0.2</param>
-    <param name="versionrewrite-pattern">389dsbase(.*)</param>
+    <param name="revision">389-ds-base-2.0.4</param>
+    <param name="match-tag">389-ds-base-2.0.4</param>
+    <param name="versionrewrite-pattern">389-ds-base-(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">wbrown@suse.de</param>
@@ -13,7 +13,7 @@
   <service mode="disabled" name="tar" />
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>
-    <param name="compression">bz2</param>
+    <param name="compression">xz</param>
   </service>
   <service mode="disabled" name="set_version" />
   <service name="cargo_vendor" mode="disabled">
