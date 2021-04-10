@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 26 14:56:15 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.5.5:
+  * Fix a crash in the logging code
+  * Upgrade autoconf
+
+-------------------------------------------------------------------
 Sat Oct 24 10:10:17 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.5.4:
