@@ -36,7 +36,7 @@
 %endif
 
 Name:           shim
-Version:        15+git47
+Version:        15.4
 Release:        0
 Summary:        UEFI shim loader
 License:        BSD-2-Clause
@@ -67,43 +67,15 @@ Source99:       SIGNATURE_UPDATE.txt
 Patch1:         shim-arch-independent-names.patch
 # PATCH-FIX-OPENSUSE shim-change-debug-file-path.patch glin@suse.com -- Change the default debug file path
 Patch2:         shim-change-debug-file-path.patch
-# PATCH-FIX-UPSTREAM shim-bsc1092000-fallback-menu.patch bsc#1092000 glin@suse.com -- Show a menu before reset
-Patch3:         shim-bsc1092000-fallback-menu.patch
-# PATCH-FIX-UPSTREAM shim-always-mirror-mok-variables.patch glin@suse.com -- Mirror MOK variables correctly
-Patch4:         shim-always-mirror-mok-variables.patch
-# PATCH-FIX-UPSTREAM shim-bsc1174512-correct-license-in-headers.patch glin@suse.com -- Fix the license header in errlog.c and mok.c
-Patch5:         shim-bsc1174512-correct-license-in-headers.patch
-# PATCH-FIX-SUSE shim-correct-license-in-headers.patch glin@suse.com -- Another fix for the license header in errlog.c and mok.c
-Patch51:        shim-correct-license-in-headers.patch
-# PATCH-FIX-UPSTREAM gcc9-fix-warnings.patch mliska@suse.cz -- MokManager: Use CompareMem on MokListNode.Type instead of CompareGuid 
-Patch6:         gcc9-fix-warnings.patch
-# PATCH-FIX-OPENSUSE shim-fix-gnu-efi-3.0.11.patch glin@suse.com -- Fix the build error caused by the typo fix in gnu-efi 3.0.11
-Patch7:         shim-fix-gnu-efi-3.0.11.patch
-# PATCH-FIX-UPSTREAM shim-bsc1173411-only-check-efi-var-on-sb.patch bsc#1173411 glin@suse.com -- Make EFI variable copying check only fatal on SB systems
-Patch8:         shim-bsc1173411-only-check-efi-var-on-sb.patch
-# PATCH-FIX-UPSTREAM shim-bsc1175509-tpm2-fixes.patch bsc#1175509 glin@suse.com -- Upstream fixes for the TPM2 measurement
-Patch9:         shim-bsc1175509-tpm2-fixes.patch
-# PATCH-FIX-UPSTREAM shim-VLogError-Avoid-Null-pointer-dereferences.patch glin@suse.com -- Fix VlogError crash in AArch64
-Patch10:        shim-VLogError-Avoid-Null-pointer-dereferences.patch
-# PATCH-FIX-UPSTREAM shim-fix-verify-eku.patch glin@suse.com -- Fix the potential crash at verify_eku()
-Patch11:        shim-fix-verify-eku.patch
-# PATCH-FIX-UPSTREAM shim-do-not-write-string-literals.patch -- Fix the potential crash when accessing the DEFAULT_LOADER string
-Patch12:        shim-do-not-write-string-literals.patch
-# PATCH-FIX-UPSTREAM shim-bsc1177404-fix-a-use-of-strlen.patch bsc#1177404 glin@suse.com -- Fix the length of the option data string to launch the program correctly
-Patch13:        shim-bsc1177404-fix-a-use-of-strlen.patch
-# PATCH-FIX-UPSTREAM shim-bsc1175509-more-tpm-fixes.patch bsc#1175509 glin@suse.com -- Fix the file path in tpm event log
-Patch14:        shim-bsc1175509-more-tpm-fixes.patch
 # PATCH-FIX-SUSE shim-bsc1177315-verify-eku-codesign.patch bsc#1177315 glin@suse.com -- Verify CodeSign in the signer's EKU
-Patch15:        shim-bsc1177315-verify-eku-codesign.patch
+Patch3:         shim-bsc1177315-verify-eku-codesign.patch
 # PATCH-FIX-UPSTREAM shim-bsc1177789-fix-null-pointer-deref-AuthenticodeVerify.patch bsc#1177789 glin@suse.com -- Fix the NULL pointer dereference in AuthenticodeVerify()
-Patch16:        shim-bsc1177789-fix-null-pointer-deref-AuthenticodeVerify.patch
-# PATCH-FIX-SUSE shim-bsc1177315-fix-buffer-use-after-free.patch bsc#1177315 glin@suse.com -- Fix buffer use-after-free at the end of the EKU verification
-Patch17:        shim-bsc1177315-fix-buffer-use-after-free.patch
-# PATCH-FIX-UPSTREAM shim-bsc1182776-fix-crash-at-exit.patch bsc#1182776 glin@suse.com -- Fix the potential crash at Exit()
-Patch18:        shim-bsc1182776-fix-crash-at-exit.patch
-# PATCH-FIX-OPENSUSE shim-opensuse-cert-prompt.patch glin@suse.com -- Show the prompt to ask whether the user trusts openSUSE certificate or not
-Patch100:       shim-opensuse-cert-prompt.patch
-BuildRequires:  gnu-efi >= 3.0.3
+Patch4:         shim-bsc1177789-fix-null-pointer-deref-AuthenticodeVerify.patch
+# PATCH-FIX-SUSE remove_build_id.patch -- Remove the build ID to make the binary reproducible when building with AArch64 container
+Patch5:         remove_build_id.patch
+# PATCH-FIX-UPSTREAM shim-bsc1184454-allocate-mok-config-table-BS.patch bsc#1184454 glin@suse.com -- Allocate MOK config table as BootServicesData to avoid the error message from linux kernel
+Patch6:         shim-bsc1184454-allocate-mok-config-table-BS.patch
+BuildRequires:  dos2unix
 BuildRequires:  mozilla-nss-tools
 BuildRequires:  openssl >= 0.9.8
 BuildRequires:  pesign
@@ -146,34 +118,25 @@ The source code of UEFI shim loader
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%ifarch x86_64
-%patch51 -p1
-%else
 %patch5 -p1
-%endif
 %patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%ifarch aarch64
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%endif
-%if 0%{?is_opensuse} == 1
-%patch100 -p1
-%endif
 
 %build
+# generate the vendor SBAT metadata
+%if 0%{?is_opensuse} == 1 || 0%{?sle_version} == 0
+distro_id="opensuse"
+distro_name="The openSUSE project"
+%else
+distro_id="sle"
+distro_name="SUSE Linux Enterprise"
+%endif
+distro_sbat=1
+sbat="shim.${distro_id},${distro_sbat},${distro_name},%{name},%{version},mail:security-team@suse.de"
+echo "${sbat}" > data/sbat.vendor.csv
+
 # first, build MokManager and fallback as they don't depend on a
 # specific certificate
-make EFI_PATH=/usr/lib64 RELEASE=0 \
+make RELEASE=0 \
      MMSTEM=MokManager FBSTEM=fallback \
      MokManager.efi.debug fallback.efi.debug \
      MokManager.efi fallback.efi
@@ -232,7 +195,7 @@ for suffix in "${suffixes[@]}"; do
     fi
 
     openssl x509 -in $cert -outform DER -out shim-$suffix.der
-    make EFI_PATH=/usr/lib64 RELEASE=0 SHIMSTEM=shim \
+    make RELEASE=0 SHIMSTEM=shim \
          VENDOR_CERT_FILE=shim-$suffix.der ENABLE_HTTPBOOT=1 \
          DEFAULT_LOADER="\\\\\\\\grub.efi" \
          VENDOR_DBX_FILE=%{SOURCE51} \

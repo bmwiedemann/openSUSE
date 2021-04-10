@@ -1,4 +1,4 @@
-From b27f96477647c0a055e97f1f9a9cffba354dad6f Mon Sep 17 00:00:00 2001
+From 6ff890bf0af9d37acc6ea8ad64f597060e8bb143 Mon Sep 17 00:00:00 2001
 From: Gary Lin <glin@suse.com>
 Date: Wed, 14 Oct 2020 14:31:12 +0800
 Subject: [PATCH] Enforce EKU CodeSign extension check
@@ -8,22 +8,25 @@ Per NIAP OS_PP, the signer certificate of the UEFI image has to contain
 
 This commit borrows VerifyEKUsInPkcs7Signature() from edk2 and enforces
 the CodeSign check in Pkcs7Verify().
++ Also merged the buffer use-after-free fix (*)
+
+(*) https://bugzilla.tianocore.org/show_bug.cgi?id=2459
 
 Signed-off-by: Gary Lin <glin@suse.com>
 ---
  Cryptlib/InternalCryptLib.h       |  32 ++
  Cryptlib/Library/BaseCryptLib.h   |  40 +++
  Cryptlib/Makefile                 |   1 +
- Cryptlib/Pk/CryptPkcs7Verify.c    |  11 +
- Cryptlib/Pk/CryptPkcs7VerifyEku.c | 520 ++++++++++++++++++++++++++++++
- 5 files changed, 604 insertions(+)
+ Cryptlib/Pk/CryptPkcs7Verify.c    |  10 +
+ Cryptlib/Pk/CryptPkcs7VerifyEku.c | 516 ++++++++++++++++++++++++++++++
+ 5 files changed, 599 insertions(+)
  create mode 100644 Cryptlib/Pk/CryptPkcs7VerifyEku.c
 
 diff --git a/Cryptlib/InternalCryptLib.h b/Cryptlib/InternalCryptLib.h
-index 8cccf72..026793f 100644
+index e9a4c20..8c9a2a4 100644
 --- a/Cryptlib/InternalCryptLib.h
 +++ b/Cryptlib/InternalCryptLib.h
-@@ -33,4 +33,36 @@ WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+@@ -30,5 +30,37 @@ WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
  #define OBJ_length(o) ((o)->length)
  #endif
  
@@ -60,6 +63,7 @@ index 8cccf72..026793f 100644
 +  );
 +
  #endif
+ 
 diff --git a/Cryptlib/Library/BaseCryptLib.h b/Cryptlib/Library/BaseCryptLib.h
 index 2df8bd2..ed482d3 100644
 --- a/Cryptlib/Library/BaseCryptLib.h
@@ -112,10 +116,10 @@ index 2df8bd2..ed482d3 100644
    Extracts the attached content from a PKCS#7 signed data if existed. The input signed
    data could be wrapped in a ContentInfo structure.
 diff --git a/Cryptlib/Makefile b/Cryptlib/Makefile
-index 2aa5695..0147587 100644
+index 18a33b1..a1d8b02 100644
 --- a/Cryptlib/Makefile
 +++ b/Cryptlib/Makefile
-@@ -38,6 +38,7 @@ OBJS		=   Hash/CryptMd4Null.o \
+@@ -41,6 +41,7 @@ OBJS		=   Hash/CryptMd4Null.o \
  		    Pk/CryptRsaExtNull.o \
  		    Pk/CryptPkcs7SignNull.o \
  		    Pk/CryptPkcs7Verify.o \
@@ -124,20 +128,19 @@ index 2aa5695..0147587 100644
  		    Pk/CryptTs.o \
  		    Pk/CryptX509.o \
 diff --git a/Cryptlib/Pk/CryptPkcs7Verify.c b/Cryptlib/Pk/CryptPkcs7Verify.c
-index cbd9669..b3ef356 100644
+index 09895d8..da15be2 100644
 --- a/Cryptlib/Pk/CryptPkcs7Verify.c
 +++ b/Cryptlib/Pk/CryptPkcs7Verify.c
-@@ -30,6 +30,9 @@ WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+@@ -29,6 +29,8 @@ WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+ #include <openssl/pkcs7.h>
  
  UINT8 mOidValue[9] = { 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x07, 0x02 };
- 
 +/* EKU CodeSign */
 +CHAR8 mOidCodeSign[] = "1.3.6.1.5.5.7.3.3";
-+
- BOOLEAN ca_warning;
  
- void
-@@ -812,6 +815,8 @@ Pkcs7Verify (
+ #if 1
+ #if OPENSSL_VERSION_NUMBER < 0x10100000L
+@@ -846,6 +848,8 @@ Pkcs7Verify (
    CONST UINT8 *Temp;
    UINTN       SignedDataSize;
    BOOLEAN     Wrapped;
@@ -146,7 +149,7 @@ index cbd9669..b3ef356 100644
  
    //
    // Check input parameters.
-@@ -825,6 +830,7 @@ Pkcs7Verify (
+@@ -859,6 +863,7 @@ Pkcs7Verify (
    DataBio   = NULL;
    Cert      = NULL;
    CertStore = NULL;
@@ -154,7 +157,7 @@ index cbd9669..b3ef356 100644
  
    //
    // Register & Initialize necessary digest algorithms for PKCS#7 Handling
-@@ -924,6 +930,11 @@ Pkcs7Verify (
+@@ -958,6 +963,11 @@ Pkcs7Verify (
    //
    X509_STORE_set_purpose (CertStore, X509_PURPOSE_ANY);
  
@@ -168,10 +171,10 @@ index cbd9669..b3ef356 100644
    //
 diff --git a/Cryptlib/Pk/CryptPkcs7VerifyEku.c b/Cryptlib/Pk/CryptPkcs7VerifyEku.c
 new file mode 100644
-index 0000000..d086886
+index 0000000..2c172e2
 --- /dev/null
 +++ b/Cryptlib/Pk/CryptPkcs7VerifyEku.c
-@@ -0,0 +1,520 @@
+@@ -0,0 +1,516 @@
 +/** @file
 +  This module verifies that Enhanced Key Usages (EKU's) are present within
 +  a PKCS7 signature blob using OpenSSL.
@@ -681,10 +684,6 @@ index 0000000..d086886
 +    free (SignedData);
 +  }
 +
-+  if (SignerCert != NULL) {
-+    X509_free (SignerCert);
-+  }
-+
 +  if (Pkcs7 != NULL) {
 +    PKCS7_free (Pkcs7);
 +  }
@@ -693,5 +692,5 @@ index 0000000..d086886
 +}
 +
 -- 
-2.28.0
+2.29.2
 

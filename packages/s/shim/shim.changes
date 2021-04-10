@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Apr  8 08:44:27 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-bsc1184454-allocate-mok-config-table-BS.patch to avoid
+  the error message during linux system boot (bsc#1184454)
+
+-------------------------------------------------------------------
+Wed Apr  7 12:25:02 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Add remove_build_id.patch to prevent the build id being added to 
+  the binary. That can cause issues with the signature
+
+-------------------------------------------------------------------
+Wed Mar 31 08:40:49 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 15.4 (bsc#1182057)
+  + Rename the SBAT variable and fix the self-check of SBAT
+  + sbat: add more dprint()
+  + arm/aa64: Swizzle some sections to make old sbsign happier
+  + arm/aa64 targets: put .rel* and .dyn* in .rodata
+- Drop upstreamed patch:
+  + shim-bsc1182057-sbat-variable-enhancement.patch
+
+-------------------------------------------------------------------
+Mon Mar 29 07:18:20 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add shim-bsc1182057-sbat-variable-enhancement.patch to change
+  the SBAT variable name and enhance the handling of SBAT
+  (bsc#1182057)
+
+-------------------------------------------------------------------
+Wed Mar 24 01:29:17 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 15.3 for SBAT support (bsc#1182057)
+  + Drop gnu-efi from BuildRequires since upstream pull it into the
+    tar ball.
+- Generate vender-specific SBAT metadata
+  + Add dos2unix to BuildRequires since Makefile requires it for
+    vendor SBAT
+- Update dbx-cert.tar.xz and vendor-dbx.bin to block the following
+  sign keys:
+  + SLES-UEFI-SIGN-Certificate-2020-07.crt
+  + openSUSE-UEFI-SIGN-Certificate-2020-07.crt
+- Refresh patches
+  + shim-arch-independent-names.patch
+  + shim-change-debug-file-path.patch
+  + shim-bsc1177315-verify-eku-codesign.patch
+    - Unified with shim-bsc1177315-fix-buffer-use-after-free.patch
+- Drop upstreamed fixes
+  + shim-correct-license-in-headers.patch
+  + shim-always-mirror-mok-variables.patch
+  + shim-bsc1175509-more-tpm-fixes.patch
+  + shim-bsc1173411-only-check-efi-var-on-sb.patch
+  + shim-fix-verify-eku.patch
+  + gcc9-fix-warnings.patch
+  + shim-fix-gnu-efi-3.0.11.patch
+  + shim-bsc1177404-fix-a-use-of-strlen.patch
+  + shim-do-not-write-string-literals.patch
+  + shim-VLogError-Avoid-Null-pointer-dereferences.patch
+  + shim-bsc1092000-fallback-menu.patch
+  + shim-bsc1175509-tpm2-fixes.patch
+  + shim-bsc1174512-correct-license-in-headers.patch
+  + shim-bsc1182776-fix-crash-at-exit.patch
+- Drop shim-opensuse-cert-prompt.patch
+  + All newly released openSUSE kernels enable kernel lockdown
+    and signature verification, so there is no need to add the
+    prompt anymore.
+
+-------------------------------------------------------------------
 Thu Mar 11 03:15:03 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Refresh shim-bsc1182776-fix-crash-at-exit.patch to do the cleanup

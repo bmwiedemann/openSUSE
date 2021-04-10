@@ -1235,4 +1235,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment></comment>
     <requestid>878251</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>e6394aadef864e34b1947aa536848dd2</srcmd5>
+    <version>15.4</version>
+    <time>1618061172</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883801</requestid>
+  </revision>
 </revisionlist>

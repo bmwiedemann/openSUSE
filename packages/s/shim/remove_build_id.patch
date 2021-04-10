@@ -1,0 +1,27 @@
+Index: shim/shim-15.4/gnu-efi/Make.defaults
+===================================================================
+--- shim-15.4.orgi/gnu-efi/Make.defaults
++++ shim-15.4/gnu-efi/Make.defaults
+@@ -205,8 +205,7 @@ ARFLAGS := rDv
+ endif
+ 
+ ASFLAGS += $(ARCH3264)
+-LDFLAGS	+= -nostdlib --warn-common --no-undefined --fatal-warnings \
+-	   --build-id=sha1
++LDFLAGS	+= -nostdlib --warn-common --no-undefined --fatal-warnings
+ 
+ ifneq ($(ARCH),arm)
+ export LIBGCC=$(shell $(CC) $(CFLAGS) $(ARCH3264) -print-libgcc-file-name)
+Index: shim/shim-15.4/Make.defaults
+===================================================================
+--- shim-15.4.orig/Make.defaults
++++ shim-15.4/Make.defaults
+@@ -184,7 +184,7 @@ ifneq ($(origin VENDOR_DBX_FILE), undefi
+ DEFINES		+= -DVENDOR_DBX_FILE=\"$(VENDOR_DBX_FILE)\"
+ endif
+ 
+-LDFLAGS		= --hash-style=sysv -nostdlib -znocombreloc -T $(EFI_LDS) -shared -Bsymbolic -L$(LOCAL_EFI_PATH) -L$(LIBDIR) -LCryptlib -LCryptlib/OpenSSL $(EFI_CRT_OBJS) --build-id=sha1 $(ARCH_LDFLAGS) --no-undefined
++LDFLAGS		= --hash-style=sysv -nostdlib -znocombreloc -T $(EFI_LDS) -shared -Bsymbolic -L$(LOCAL_EFI_PATH) -L$(LIBDIR) -LCryptlib -LCryptlib/OpenSSL $(EFI_CRT_OBJS) $(ARCH_LDFLAGS) --no-undefined
+ 
+ ifneq ($(DEBUG),)
+ export DEBUG
