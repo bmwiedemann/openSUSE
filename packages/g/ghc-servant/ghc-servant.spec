@@ -77,6 +77,7 @@ This package provides the Haskell %{pkg_name} library development files.
 %autosetup -n %{pkg_name}-%{version}
 cabal-tweak-dep-ver http-api-data "< 0.4.3" "< 0.5"
 cabal-tweak-dep-ver attoparsec '< 0.14' '< 0.15'
+cabal-tweak-dep-ver singleton-bool '< 0.1.6' '< 0.1.7'
 
 %build
 %ghc_lib_build
