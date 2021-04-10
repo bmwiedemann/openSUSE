@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-characters
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-characters
-Version:        3.34.0
+Version:        40.0
 Release:        0
 Summary:        Character Map
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/CharacterMap
-Source0:        https://download.gnome.org/sources/gnome-characters/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-characters/40/%{name}-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel >= 1.35.9
 BuildRequires:  intltool >= 0.50.1
@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig(gjs-1.0) >= 1.43.3
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(pango)
 # Ensure default sections are filled with content
 Recommends:     noto-coloremoji-fonts
