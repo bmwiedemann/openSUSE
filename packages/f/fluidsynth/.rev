@@ -449,4 +449,21 @@
     <comment></comment>
     <requestid>879830</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>57bbc638aa437d9727a901b8dbd0bbe4</srcmd5>
+    <version>2.2.0</version>
+    <time>1618061196</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update baselibs.conf for the soversion 3
+
+- Update to 2.2.0
+   * for a full changelog, see https://github.com/FluidSynth/fluidsynth/wiki/ChangeLog#fluidsynth-220
+   * for API/ABI breaking changes, see https://www.fluidsynth.org/api/RecentChanges.html#NewIn2_2_0
+- bump soversion to 3
+- require a C++ compiler
+- add RPM groups
+- demote fluid-soundfont-gm to &quot;Recommends&quot; (previously, the user was forced
+  to install this package, even if he used a custom soundfont in the .conf file)</comment>
+    <requestid>883612</requestid>
+  </revision>
 </revisionlist>

@@ -16,18 +16,20 @@
 #
 
 
-%define sover   2
+%define sover   3
 Name:           fluidsynth
-Version:        2.1.8
+Version:        2.2.0
 Release:        0
 Summary:        A Real-Time Software Synthesizer That Uses Soundfont(tm)
 License:        LGPL-2.1-or-later
+Group:          Productivity/Multimedia/Sound/Midi
 URL:            http://www.fluidsynth.org
 Source0:        https://github.com/FluidSynth/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.conf
 Source2:        %{name}.service
 Source1000:     baselibs.conf
 BuildRequires:  cmake >= 3.1.0
+BuildRequires:  gcc-c++
 BuildRequires:  ladspa-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
@@ -38,7 +40,7 @@ BuildRequires:  pkgconfig(libinstpatch-1.0)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
-Requires:       fluid-soundfont-gm
+Recommends:     fluid-soundfont-gm
 Requires(pre):  %fillup_prereq
 Requires(pre):  group(audio)
 Requires(pre):  shadow
@@ -52,6 +54,7 @@ can also play MIDI files.
 
 %package devel
 Summary:        Development package for the fluidsynth library
+Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libfluidsynth%{sover} = %{version}
 Provides:       libfluidsynth-devel = %{version}
@@ -62,6 +65,7 @@ fluidsynth library.
 
 %package -n libfluidsynth%{sover}
 Summary:        Library for Fluidsynth
+Group:          System/Libraries
 
 %description -n libfluidsynth%{sover}
 This package contains the shared library for Fluidsynth.

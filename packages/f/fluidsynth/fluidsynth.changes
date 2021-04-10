@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr  7 15:03:44 CEST 2021 - tiwai@suse.de
+
+- Update baselibs.conf for the soversion 3
+
+-------------------------------------------------------------------
+Fri Apr  2 19:04:59 UTC 2021 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 2.2.0
+   * for a full changelog, see https://github.com/FluidSynth/fluidsynth/wiki/ChangeLog#fluidsynth-220
+   * for API/ABI breaking changes, see https://www.fluidsynth.org/api/RecentChanges.html#NewIn2_2_0
+- bump soversion to 3
+- require a C++ compiler
+- add RPM groups
+- demote fluid-soundfont-gm to "Recommends" (previously, the user was forced
+  to install this package, even if he used a custom soundfont in the .conf file)
+
+-------------------------------------------------------------------
 Tue Mar 16 21:30:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.8:
