@@ -1,5 +1,5 @@
 #
-# spec file for package python-ipython
+# spec file for package python-ipython-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -24,15 +24,13 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 # Python 3.6 was officiallay supported with IPython up to 7.15
 %define         skip_python36 1
-
 %bcond_without  iptest
 Name:           python-ipython%{psuffix}
-Version:        7.21.0
+Version:        7.22.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -85,7 +83,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %if %{with ico}
 BuildRequires:  icoutils
 %endif

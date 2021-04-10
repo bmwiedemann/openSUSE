@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 28 16:53:58 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 7.22.0:
+  * Fix some sys.excepthook shenanigan when embedding with qt,
+    recommended if you – for example – use napari. :ghpull:`12842`.
+  * Fix bug when using the new ipdb %context magic :ghpull:`12844`
+  * Couples of deprecation cleanup :ghpull:`12868`
+  * Update for new dpast.com api if you use the %pastbin
+    magic. :ghpull:`12712`
+  * Remove support for numpy before 1.16. :ghpull:`12836`
+
+-------------------------------------------------------------------
 Sat Mar 13 13:06:24 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - As of now, iptest still needs nose until the removal is complete
