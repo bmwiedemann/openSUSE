@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Mar 23 09:34:10 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Update icon in user help.
+  + Updated translations
+
+-------------------------------------------------------------------
+Mon Jan 11 13:58:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + Port to GTK 4.
+  + Major refactoring of portions of the UI layer. Split engine
+    code into separate layer.
+  + Rework promotion type selector to avoid GTK warnings.
+  + Hide timers in untimed games.
+  + Custom PGN tags are now prefixed with X-GNOME.
+  + Promotion type selector now fits screen in narrow mode.
+  + Use info bar, not header bar subtitle, to display extra status
+    messages.
+  + Reduce length of Oops! message in header bar on engine error.
+  + Improve message when game ends in stalemate.
+  + Move New Game from header bar to primary menu to save space.
+  + Rename Save to Save As, and display a separate Save action.
+- Replace pkgconfig(gtk+-3.0) BuildRequires with pkgconfig(gtk4):
+  Follow upstreams port to GTK 4.
+
+-------------------------------------------------------------------
 Mon Dec  7 20:49:38 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.1:
