@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  9 10:13:14 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix build with Lua 5.4.3
+
+-------------------------------------------------------------------
 Thu Jul 13 19:28:04 UTC 2017 - tchvatal@suse.com
 
 - Fix building with namespaced lua, adapt patches:
