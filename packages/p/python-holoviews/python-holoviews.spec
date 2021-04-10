@@ -21,15 +21,13 @@
 # NEP 29: NumPy dropped Python 3.6
 %define         skip_python36 1
 Name:           python-holoviews
-Version:        1.14.1
+Version:        1.14.3
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/holoviz/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#holoviz/holoviews#4803 support dask 2021.1
-Patch0:         https://github.com/holoviz/holoviews/pull/4803.patch#/holoviews-pr4803-dask2021.patch
 # PATCH-FEATURE-UPSTREAM remove_nose.patch gh#holoviz/holoviews#4621 mcepl@suse.com
 Patch1:         remove_nose.patch
 BuildRequires:  %{python_module colorcet}
@@ -38,7 +36,7 @@ BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module panel >= 0.8.0}
 BuildRequires:  %{python_module param >= 1.9.3}
 BuildRequires:  %{python_module pyct >= 0.4.4}
-BuildRequires:  %{python_module pyviz-comms >= 0.7.3}
+BuildRequires:  %{python_module pyviz-comms >= 0.7.4}
 BuildRequires:  %{python_module setuptools >= 30.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,13 +45,13 @@ Requires:       python-numpy >= 1.0
 Requires:       python-pandas
 Requires:       python-panel >= 0.8.0
 Requires:       python-param >= 1.9.3
-Requires:       python-pyviz-comms >= 0.7.3
+Requires:       python-pyviz-comms >= 0.7.4
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Recommends:     python-ipython >= 5.4.0
-Recommends:     python-notebook
-Recommends:     python-matplotlib >= 2.2
+Requires(postun):update-alternatives
 Recommends:     python-bokeh >= 1.1.0
+Recommends:     python-ipython >= 5.4.0
+Recommends:     python-matplotlib >= 2.2
+Recommends:     python-notebook
 Recommends:     python-pscript >= 0.7.1
 Suggests:       python-networkx
 Suggests:       python-Pillow
@@ -234,6 +232,11 @@ donttest+=" or (TestSpikesPlot and test_spikes_padding_datetime_square_heights)"
 donttest+=" or (TestSpikesPlot and test_spikes_padding_datetime_square)"
 donttest+=" or (TestVectorFieldPlot and test_vectorfield_line_width_op_update)"
 donttest+=" or (TestVectorFieldPlot and test_vectorfield_line_width_op)"
+# These fail with matplotlib 3.4.1 because they check for the wrong exceptions -- gh#holoviz/holoviews#4886
+donttest+=" or (TestErrorBarPlot and test_errorbars_color_op)"
+donttest+=" or (TestErrorBarPlot and test_errorbars_color_op_update)"
+donttest+=" or (TestMplGraphPlot  and test_graph_op_node_alpha)"
+donttest+=" or (TestMplTriMeshPlot and test_trimesh_op_node_alpha)"
 
 # These fail on 32-bit -- gh#holoviz/holoviews#4778
 if [[ $(getconf LONG_BIT) == 32 ]]; then

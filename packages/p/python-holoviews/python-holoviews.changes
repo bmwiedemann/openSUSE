@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri Apr  9 09:43:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.14.3
+  Enhancements:
+  * Allow applying linked selections to chained DynamicMap (#4870)
+  * Issuing improved error message when __radd__ called with an
+    integer (#4868)
+  * Implement MultiInterface.assign (#4880)
+  * Handle tuple unit on xarray attribute (#4881)
+  * Support selection masks and expressions on gridded data (#4882)
+  Bug fixes:
+  * Handle empty renderers when merging HoverTool.renderers (#4856)
+  Compatibility:
+  * Support matplotlib versions >=3.4 (#4878)
+- Skip tests not taking into account new functionality with 
+  matplotlib 3.4.1 -- gh#holoviz/holoviews#4886
+
+-------------------------------------------------------------------
+Thu Mar  4 23:52:33 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.14.2:
+  * Enhancements:
+    - Bokeh 2.3 compatibility (gh#holoviz/holoviews#4805,
+      gh#holoviz/holoviews#4809).
+    - Supporting dictionary streams parameter in DynamicMaps and
+      operations (gh#holoviz/holoviews#4787,
+      gh#holoviz/holoviews#4818, gh#holoviz/holoviews#4822).
+    - Support spatialpandas DaskGeoDataFrame
+      (gh#holoviz/holoviews#4792).
+    - Disable zoom on axis for geographic plots
+      (gh#holoviz/holoviews#4812
+    - Add support for non-aligned data in Area stack classmethod
+      (gh#holoviz/holoviews#4836).
+    - Handle arrays and datetime ticks
+      (gh#holoviz/holoviews#4831).
+    - Support single-value numpy array as input to HLine and VLine
+      (gh#holoviz/holoviews#4798).
+  * Bug fixes:
+    - Ensure link_inputs parameter on operations is passed to
+      apply (gh#holoviz/holoviews#4795).
+    - Fix for muted option on overlaid Bokeh plots
+      (gh#holoviz/holoviews#4830).
+    - Check for nested dim dependencies
+      (gh#holoviz/holoviews#4785).
+    - Fixed np.nanmax call when computing ranges
+      (gh#holoviz/holoviews#4847).
+    - Fix for Dimension pickling (gh#holoviz/holoviews#4843).
+    - Fixes for dask backed elements in plotting
+      (gh#holoviz/holoviews#4813).
+    - Handle isfinite for NumPy and Pandas masked arrays
+      (gh#holoviz/holoviews#4817).
+    - Fix plotting Graph on top of Tiles/Annotation
+      (gh#holoviz/holoviews#4828).
+    - Miscellaneous fixes for the Bokeh plotting extension
+      (gh#holoviz/holoviews#4814, gh#holoviz/holoviews#4839).
+    - Miscellaneous fixes for index based linked selections
+      (gh#holoviz/holoviews#4776).
+  * Documentation:
+    - Expanded on Tap Stream example in Reference Gallery
+      (gh#holoviz/holoviews#4782).
+    - Miscellaneous typo and broken link fixes
+      (gh#holoviz/holoviews#4783, gh#holoviz/holoviews#4827,
+      gh#holoviz/holoviews#4844, gh#holoviz/holoviews#4811).
+- Drop holoviews-pr4803-dask2021.patch: upstreamed.
+
+-------------------------------------------------------------------
 Thu Feb 11 00:14:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - NEP 29: NumPy dropped Python 3.6 -- skip python36 build for TW
