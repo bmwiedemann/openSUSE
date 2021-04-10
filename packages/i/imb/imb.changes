@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr  9 09:07:20 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- Update to 2021.2:
+  * New IMB-MPI1-GPU benchmarks (Technical Preview). 
+    The benchmarks implement the GPU version of the IMB-MPI1
+  * Added -msg_pause option.
+  * Changed default window_size 64 -> 256
+  * Added -window_size option for IMB-MPI1
+  * Bug fixes
+
+
+-------------------------------------------------------------------
 Fri Jan 22 15:31:49 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Fix openmpi HPC builds.

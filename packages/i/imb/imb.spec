@@ -21,8 +21,8 @@
 # Base package name
 %define pname imb
 %define PNAME IMB
-%define ver 2019.6
-%define _ver 2019_6
+%define ver 2021.2
+%define _ver 2021_2
 
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
@@ -443,7 +443,7 @@ a range of message sizes.
 %{hpc_setup}
 %define makeargs CC=mpicc CXX=mpic++
 %endif
-for target in $(echo %{?buildtarget}) ; do 
+for target in $(echo %{?buildtarget}) ; do
 echo "building $target"
 make $target %{?makeargs} %{?_smp_mflags}
 done
