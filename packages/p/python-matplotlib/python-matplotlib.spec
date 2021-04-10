@@ -1,5 +1,5 @@
 #
-# spec file for package python-matplotlib
+# spec file for package python-matplotlib-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -31,21 +31,21 @@ ExclusiveArch:  x86_64 aarch64
 %bcond_with test
 %endif
 Name:           python-matplotlib%{psuffix}
-Version:        3.3.4
+Version:        3.4.1
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
 URL:            https://matplotlib.org
 Source:         https://files.pythonhosted.org/packages/source/m/matplotlib/matplotlib-%{version}.tar.gz
 Source1:        matplotlib-setup.cfg
-# Bundled version of freetype for testing purposes only
+# Bundled version of freetype and qhull for testing purposes only
+Source98:       http://www.qhull.org/download/qhull-2020-src-8.0.2.tgz
 Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.gz
-Patch0:         no-builddir-freetype.patch
 BuildRequires:  %{python_module Cycler >= 0.10}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module kiwisolver >= 1.0.1}
-BuildRequires:  %{python_module numpy >= 1.15}
-BuildRequires:  %{python_module numpy-devel >= 1.15}
+BuildRequires:  %{python_module numpy >= 1.16}
+BuildRequires:  %{python_module numpy-devel >= 1.16}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyparsing > 2.2.1}
 BuildRequires:  %{python_module pytz}
@@ -58,15 +58,15 @@ BuildRequires:  qhull-devel >= 2003.1
 Requires:       python-Cycler >= 0.10
 Requires:       python-Pillow >= 6.2
 Requires:       python-kiwisolver >= 1.0.1
-Requires:       python-numpy >= 1.15
+Requires:       python-numpy >= 1.16
 Requires:       python-pyparsing > 2.2.1
 Requires:       python-python-dateutil >= 2.7
 Requires:       python-pytz
-Recommends:     (%{python_flavor}-matplotlib-tk if tk)
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools
 Recommends:     python-certifi
+Recommends:     (%{python_flavor}-matplotlib-tk if tk)
 Provides:       python-matplotlib-gtk = %{version}
 Obsoletes:      python-matplotlib-gtk < %{version}
 # SECTION WebAgg dependencies
@@ -209,14 +209,20 @@ This package includes the wxWidgets-based wxagg backend
 for %{name} plotting package
 
 %prep
-%setup -q -n matplotlib-%{version} -a99
+%setup -q -n matplotlib-%{version}
+#copy freetype to the right location, so that matplotlib will not try to download it
+mkdir -p ~/.cache/matplotlib/
+SHA=($(sha256sum %{SOURCE98}))
+cp %{SOURCE98} ~/.cache/matplotlib/${SHA}
+SHA=($(sha256sum %{SOURCE99}))
+cp %{SOURCE99} ~/.cache/matplotlib/${SHA}
+
 chmod -x lib/matplotlib/mpl-data/images/*.svg
 find examples lib/matplotlib lib/mpl_toolkits/mplot3d -type f -name "*.py" -exec sed -i "s|#!\/usr\/bin\/env python||" {} \;
 find examples lib/matplotlib lib/mpl_toolkits/mplot3d -type f -name "*.py" -exec sed -i "s|#!\/usr\/bin\/python||" {} \;
 cp %{SOURCE1} setup.cfg
 # The setup procedure wants certifi to download packages over https. Not applicable here.
 sed -i '/"certifi>=.*"/ d' setup.py
-%patch0 -p1
 
 %build
 %if !%{with test}

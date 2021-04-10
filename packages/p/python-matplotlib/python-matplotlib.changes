@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Sun Apr  4 16:41:18 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update numpy requirement
+  * removed patch no-builddir-freetype.patch and instead put the source files directly into a
+    directory that works with the current build system
+  * also added qhull source code (which otherwise the build process tries to download)
+
+- update to version 3.4.1:
+  * fix errorbar when specifying fillstyle
+  * fix Inkscape cleanup at exit on Windows for tests
+  * fix legends of colour-mapped scatter plots
+  * fix positioning of annotation fancy arrows
+  * fix size and color rendering for 3D scatter plots
+  * fix suptitle manual positioning when using constrained layout
+  * respect antialiasing settings in cairo backends as well
+
+- changes from version 3.4.0:
+  * Figure and Axes creation / management
+    + New subfigure functionality
+    + Single-line string notation for subplot_mosaic
+    + Changes to behavior of Axes creation methods (gca, add_axes,
+      add_subplot)
+    + add_subplot/add_axes gained an axes_class parameter
+    + Subplot and subplot2grid can now work with constrained layout
+  * Plotting methods
+    + axline supports transform parameter
+    + New automatic labeling for bar charts
+    + A list of hatches can be specified to bar and barh
+    + Setting BarContainer orientation
+    + Contour plots now default to using ScalarFormatter
+    + Axes.errorbar cycles non-color properties correctly
+    + errorbar errorevery parameter matches markevery
+    + hexbin supports data reference for C parameter
+    + Support callable for formatting of Sankey labels
+    + Axes.spines access shortcuts
+    + New stairs method and StepPatch artist
+    + Added orientation parameter for stem plots
+    + Angles on Bracket arrow styles
+    + TickedStroke patheffect
+  * Colors and colormaps
+    + Collection color specification and mapping
+    + Transparency (alpha) can be set as an array in collections
+    + pcolormesh has improved transparency handling by enabling
+      snapping
+    + IPython representations for Colormap objects
+    + Colormap.set_extremes and Colormap.with_extremes
+    + Get under/over/bad colors of Colormap objects
+    + New cm.unregister_cmap function
+    + New CenteredNorm for symmetrical data around a center
+    + New FuncNorm for arbitrary normalizations
+    + GridSpec-based colorbars can now be positioned above or to the
+      left of the main axes
+  * Titles, ticks, and labels
+    + supxlabel and supylabel
+    + Shared-axes subplots tick label visibility is now correct for
+      top or left labels
+    + An iterable object with labels can be passed to Axes.plot
+  * Fonts and Text
+    + Text transform can rotate text direction
+    + matplotlib.mathtext now supports overset and underset LaTeX
+      symbols
+    + math_fontfamily parameter to change Text font family
+    + TextArea/AnchoredText support horizontalalignment
+    + PDF supports URLs on Text artists
+  * rcParams improvements
+    + New rcParams for dates: set converter and whether to use
+      interval_multiples
+    + Date formatters now respect usetex rcParam
+    + Setting image.cmap to a Colormap
+    + Tick and tick label colors can be set independently using
+      rcParams
+  * 3D Axes improvements
+    + Errorbar method in 3D Axes
+    + Stem plots in 3D Axes
+    + 3D Collection properties are now modifiable
+    + Panning in 3D Axes
+  * Interactive tool improvements
+    + New RangeSlider widget
+    + Sliders can now snap to arbitrary values
+    + Pausing and Resuming Animations
+  * Sphinx extensions
+    + plot_directive caption option
+  * Backend-specific improvements
+    + Consecutive rasterized draws now merged
+    + Support raw/rgba frame format in FFMpegFileWriter
+    + nbAgg/WebAgg support middle-click and double-click
+    + nbAgg support binary communication
+    + Indexed color for PNG images in PDF files when possible
+    + Improved font subsettings in PDF/PS
+    + Kerning added to strings in PDFs
+    + Fully-fractional HiDPI in QtAgg
+    + wxAgg supports fullscreen toggle
+
+-------------------------------------------------------------------
 Sat Feb 13 23:43:09 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip python36 build. Due to NEP 29 there is no python36-numpy in
