@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 31 14:28:43 UTC 2021 - psimons@suse.com
+
+- Update yesod-persistent to version 1.6.0.6.
+  ## 1.6.0.6
+
+  * Add support for persistent 2.12
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
