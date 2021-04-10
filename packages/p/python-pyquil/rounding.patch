@@ -1,0 +1,13 @@
+Index: pyquil-2.28.0/pyquil/tests/test_wavefunction.py
+===================================================================
+--- pyquil-2.28.0.orig/pyquil/tests/test_wavefunction.py
++++ pyquil-2.28.0/pyquil/tests/test_wavefunction.py
+@@ -64,7 +64,7 @@ def test_probabilities(wvf):
+     probs2 = wvf.probabilities()
+     np.testing.assert_array_equal(probs1, probs2)
+ 
+-    assert np.sum(probs2) == 1.0
++    assert np.isclose(np.sum(probs2), 1.0)
+ 
+ 
+ def test_sample(wvf):

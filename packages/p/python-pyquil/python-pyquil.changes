@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  9 13:52:38 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add patch rounding.patch to fix tests on 32-bit
+
+-------------------------------------------------------------------
 Wed Jan 27 10:03:31 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 2.28.0.

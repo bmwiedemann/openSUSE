@@ -27,6 +27,8 @@ Summary:        A Python library to generate Quantum Instruction Language (Quil)
 License:        Apache-2.0
 URL:            https://github.com/rigetti/pyquil
 Source:         https://github.com/rigetti/pyquil/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
+# get rid of rounding glitch on 32 bit
+Patch0:         rounding.patch
 BuildRequires:  %{python_module antlr4-python3-runtime >= 4.7.2}
 BuildRequires:  %{python_module immutables}
 BuildRequires:  %{python_module ipython}
@@ -63,6 +65,7 @@ A Python library to generate Quantum Instruction Language (Quil) Programs.
 
 %prep
 %setup -q -n %{packagename}-%{version}
+%autopatch -p1
 
 %build
 %python_build
