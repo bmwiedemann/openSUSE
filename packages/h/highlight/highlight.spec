@@ -18,15 +18,13 @@
 
 %bcond_without gui
 Name:           highlight
-Version:        3.62
+Version:        4.0
 Release:        0
 Summary:        Universal Source Code to Formatted Text Converter
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            http://www.andre-simon.de/
-Source0:        http://www.andre-simon.de/zip/%{name}-%{version}.tar.bz2
-Source1:        http://www.andre-simon.de/zip/%{name}-%{version}.tar.bz2.asc
-Source99:       highlight.keyring
+Source0:        https://gitlab.com/saalen/highlight/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
@@ -57,7 +55,7 @@ This package provides graphical interface for %{name}.
 %endif
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-v%{version}
 dos2unix extras/pandoc/* extras/themes-resources/base16/*
 
 %build
@@ -87,6 +85,7 @@ rm %{buildroot}%{_docdir}/%{name}/INSTALL
 %{_docdir}/%{name}
 %dir %{_sysconfdir}/%{name}
 %config %{_sysconfdir}/%{name}/filetypes.conf
+%config %{_sysconfdir}/%{name}/lsp.conf
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/langDefs
 %{_datadir}/%{name}/plugins

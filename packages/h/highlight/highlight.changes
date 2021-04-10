@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Mar 27 19:11:47 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 4.0.
+  * Renamed `std` style name to `def`.
+  * Version and README updates.
+- Changes from version 4.0.beta7:
+  * Removed `extras/web_plugins`.
+- Changes from version 4.0.beta6:
+  * Added user-select default property to HTML line number style.
+
+-------------------------------------------------------------------
+Sat Feb 20 19:07:29 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 4.0.beta5:
+  * Revised color themes
+
+-------------------------------------------------------------------
+Sat Feb 20 17:42:43 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 4.0.beta4:
+  * Added two more keyword styles for default themes
+  * Added Custom theme attributes for Plain TeX, LaTeX, SVG and
+    Pango
+  * Enabled syntax message output with `--ls-syntax-error`
+  * GUI: enabled syntax error checkbox
+- Changes from version 4.0.beta3:
+  * Added Custom theme attribute
+  * Enabled inline stylesheets with `--ls-hover`
+  * Added Error and Hover theme properties
+  * Enabled syntax error highlighting with `ls-semantic`
+- Changes from version 4.0.beta2:
+  * Improved LSP message handling
+  * Added delay LSP parameter
+  * Added LSP semantic token styles to base16 themes
+  * CLI: Enabled `--ls-semantic` option
+- Changes from version 4.0.beta1:
+  * Added support for the language server protocol
+  * Added new configuration file lsp.conf
+  * CLI: Added `ls-profile`, `--ls-workspace`,`--ls-hover`
+  * CLI: Deprecated `--start-nested`, `--reformat=user`,
+    `--reformat-option`, `--base16`, `--delim-cr`, `--plug-in-read`
+  * GUI: Added LSP configuration tab
+
+-------------------------------------------------------------------
 Fri Feb 19 21:27:57 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 3.62:
