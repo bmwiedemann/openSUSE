@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 30 08:47:10 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 2.0.27:
+  * bump to v2.0.27
+  * Add CRI-O integration test GitHub action
+  * exec: don't fail on EBADFD
+  * close_fds: fix close of external fds
+  * Add arm64 static build binary
+  * bump to v2.0.27-dev
+
+-------------------------------------------------------------------
 Thu Feb 25 15:41:49 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Update to version 2.0.26:
