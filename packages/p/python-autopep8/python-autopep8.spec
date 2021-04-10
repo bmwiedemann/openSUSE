@@ -1,7 +1,7 @@
 #
 # spec file for package python-autopep8
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-autopep8
-Version:        1.5.4
+Version:        1.5.6
 Release:        0
 Summary:        Automatic generated to pep8 checked code
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hhatto/autopep8
 Source:         https://files.pythonhosted.org/packages/source/a/autopep8/autopep8-%{version}.tar.gz
-BuildRequires:  %{python_module pycodestyle >= 2.6}
+BuildRequires:  %{python_module pycodestyle >= 2.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
 BuildRequires:  python-rpm-macros
-Requires:       python-pycodestyle >= 2.6
+Requires:       python-pycodestyle >= 2.7
 Requires:       python-setuptools
 Requires:       python-toml
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

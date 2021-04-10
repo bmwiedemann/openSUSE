@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr  5 00:52:52 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 1.5.6:
+  * Update pycodestyle 2.7.0
+  * Update test_autopep8.py after continued_indentation fix
+  * continued_indentation: Make the E128 check similar to pycodestyle
+  * Restore the original pep8 copyright notice
+  * change: use build and twine tools for pypi upload
+
+- changes from version 1.5.5:
+  * drop py35
+  * change test python version
+  * (origin/v1) add unit test that multilines w605
+  * remove unnecessary function
+  * change: not convert raw string for w605 fixed method
+  * docs: fix simple typo, requred -> required
+  * change: toml package not to import until it is needed (for #566)
+
+-------------------------------------------------------------------
 Sat Aug 15 16:46:41 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.5.4:
