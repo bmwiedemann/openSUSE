@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  7 10:54:58 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Hide the abort button when the network client is called
+  (bsc#1183586).
+- 4.4.0
+
+-------------------------------------------------------------------
 Mon Mar 29 16:25:00 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Expert console: fixed "shell" command
