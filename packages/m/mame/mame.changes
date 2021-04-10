@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 26 17:33:11 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 0.229
+  * see https://mametesters.org/changelog_page.php for notes
+- Specifically require lua 5.3 as lua 5.4+ is not yet supported
+- Drop add_tms57002_hxx_dependecy.patch as it is merged upstream
+- Disable the 64bit executable suffix for all architectures
+- Disable lto on i586
+- Further reduce number of parallel build threads to avoid oom
+
+-------------------------------------------------------------------
 Wed Jan  6 10:25:02 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Relax constraints for aarch64

@@ -1,7 +1,7 @@
 #
 # spec file for package mame
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 # disable lto for some archs
-%ifarch aarch64 %arm ppc64 ppc64le
+%ifarch aarch64 %arm ppc64 ppc64le %ix86
 %define _lto_cflags %{nil}
 %endif
 
@@ -39,7 +39,7 @@ ExclusiveArch:  do_not_build
 %define pkgsuffix -%{flavor}
 %endif
 
-%define fver    226
+%define fver    229
 
 # Build mame-mess by default, and use system libraries
 %bcond_without  systemlibs
@@ -49,11 +49,11 @@ Version:        0.%fver
 Release:        0
 %if "%{flavor}" != "mess"
 Summary:        Multiple Arcade Machine Emulator
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Emulators/Other
 %else
 Summary:        Multi Emulator Super System
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Emulators/Other
 %endif
 URL:            https://mamedev.org/
@@ -65,8 +65,6 @@ Source100:      mame-rpmlintrc
 Source101:      mame.ini.in
 Source102:      mame.appdata.xml
 Source104:      mame-mess.appdata.xml
-# PATCH-FIX-UPSTREAM stefan.bruens@rwth-aachen.de gh#mamedev/mame#4771 -- Add a missing dependency on generated file
-Patch0:         add_tms57002_hxx_dependecy.patch
 # PATCH-FIX-OPENSUSE -- use thin archives for static libraries
 Patch2:         use_thin_archives.patch
 # details: https://github.com/mamedev/mame/issues/3157
@@ -94,12 +92,12 @@ BuildRequires:  gcc-c++
 BuildRequires:  asio-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg8-devel
+BuildRequires:  lua53-devel
 BuildRequires:  portmidi-devel
 BuildRequires:  utf8proc-devel
 BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(glm)
-BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(pugixml)
 BuildRequires:  pkgconfig(sqlite3)
@@ -167,7 +165,6 @@ This package contains all data files needed by the MAME binaries:
 
 %prep
 %setup -q -n mame-mame0%{fver}
-%patch0
 %patch2
 %patch3 -p1
 
@@ -191,10 +188,11 @@ sed -i "s@-Wall -Wextra -Os@%{myoptflags}@" 3rdparty/genie/build/gmake.linux/gen
 sed -i "s@\. -s@\. %{myoptflags}@" 3rdparty/genie/build/gmake.linux/genie.make
 
 %build
+# Limit build to avoid oom
 %ifarch ppc64 ppc64le
-%define limitbuild 3000
+%define limitbuild 5000
 %else
-%define limitbuild 1800
+%define limitbuild 4200
 %endif
 %limit_build -m %{limitbuild}
 
@@ -251,7 +249,7 @@ COMMON_FLAGS="\
 %install
 %if "%{flavor}" == "mame"
 # Install emulator binaries and manpages
-install -Dpm 0755 mamearcade%{?is_64bit:64} %{buildroot}%{_bindir}/mame
+install -Dpm 0755 mamearcade %{buildroot}%{_bindir}/mame
 install -Dpm 0644 docs/man/mame.6 %{buildroot}%{_mandir}/man6/mame.6
 install -Dpm 0644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/mame.png
 
@@ -265,7 +263,7 @@ install -Dpm 0644 %{SOURCE102}  %{buildroot}%{_datadir}/metainfo/mame.appdata.xm
 
 %if "%{flavor}" == "mess"
 # Install emulator binaries and manpages
-install -Dpm 0755 mess%{?is_64bit:64} %{buildroot}%{_bindir}/mame-mess
+install -Dpm 0755 mess %{buildroot}%{_bindir}/mame-mess
 install -Dpm 0644 docs/man/mess.6 %{buildroot}%{_mandir}/man6/mame-mess.6
 install -Dpm 0644 %{SOURCE3}  %{buildroot}%{_datadir}/pixmaps/mame-mess.png
 
