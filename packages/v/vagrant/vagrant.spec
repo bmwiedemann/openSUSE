@@ -26,7 +26,7 @@
 
 
 Name:           vagrant
-Version:        2.2.14
+Version:        2.2.15
 Release:        0
 Summary:        Tool for building and distributing virtualized development environments
 License:        MIT
@@ -57,12 +57,6 @@ Patch6:         0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
 Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
 Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
-# https://github.com/hashicorp/vagrant/pull/12097
-Patch10:        0010-Update-rake-to-13.0.patch
-# https://github.com/hashicorp/vagrant/pull/12148
-Patch11:        0011-Bump-listen-gem-version-and-remove-ruby_dep.patch
-# https://github.com/hashicorp/vagrant/pull/12216
-Patch12:        0012-Bump-bcrypt_pbkdf-version.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -91,7 +85,6 @@ BuildRequires:  %{ruby:2 >= 2.5}
 #
 #
 BuildRequires:  %{rubygem bundler}
-# PATCHED
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.1"
 BuildRequires:  %{rubygem bcrypt_pbkdf:1 >= 1.1 }
 #  s.add_dependency "childprocess", "~> 4.0.0"
@@ -102,7 +95,6 @@ BuildRequires:  %{rubygem ed25519:1.2 >= 1.2.4 }
 BuildRequires:  %{rubygem erubi }
 #  s.add_dependency "i18n", "~> 1.8"
 BuildRequires:  %{rubygem i18n:1 >= 1.8 }
-# PATCHED
 #  s.add_dependency "listen", "~> 3.4"
 BuildRequires:  %{rubygem listen:3 >= 3.4 }
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
@@ -112,8 +104,8 @@ BuildRequires:  %{rubygem log4r:1.1 >= 1.1.9 }
 BuildConflicts:  %{rubygem log4r:1.1 >= 1.1.11 }
 #  s.add_dependency "mime-types", "~> 3.3"
 BuildRequires:  %{rubygem mime-types:3 >= 3.3 }
-#  s.add_dependency "net-ssh", ">= 6.2.0.rc1", "< 7"
-BuildRequires:  %{rubygem net-ssh:6 >= 6.2.0 }
+#  s.add_dependency "net-ssh", ">= 6.1.0", "< 7"
+BuildRequires:  %{rubygem net-ssh:6 >= 6.1.0 }
 #  s.add_dependency "net-sftp", "~> 3.0"
 BuildRequires:  %{rubygem net-sftp:3 }
 #  s.add_dependency "net-scp", "~> 1.2.0"
@@ -130,11 +122,10 @@ BuildRequires:  %{rubygem winrm:2 >= 2.3.4 }
 BuildRequires:  %{rubygem winrm-fs:1 >= 1.3.4 }
 #  s.add_dependency "winrm-elevated", ">= 1.2.1", "< 2.0"
 BuildRequires:  %{rubygem winrm-elevated:1 >= 1.2.1 }
-#  s.add_dependency "vagrant_cloud", "~> 3.0.2"
-BuildRequires:  %{rubygem vagrant_cloud:3.0 >= 3.0.2 }
+#  s.add_dependency "vagrant_cloud", "~> 3.0.4"
+BuildRequires:  %{rubygem vagrant_cloud:3.0 >= 3.0.4 }
 
 # devel dependencies:
-# PATCHED
 #  s.add_development_dependency "rake", "~> 13.0"
 BuildRequires:  %{rubygem rake:13 }
 #  s.add_development_dependency "rspec", "~> 3.5.0"
@@ -180,7 +171,6 @@ BuildRequires:  fdupes
 # Runtime dependencies
 #===============================================================================
 
-# PATCHED
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.1"
 Requires:       %{rubygem bcrypt_pbkdf:1 >= 1.1 }
 #    s.add_dependency "childprocess", "~> 4.0.0"
@@ -191,7 +181,6 @@ Requires:       %{rubygem ed25519:1.2 >= 1.2.4}
 Requires:       %{rubygem erubi}
 #  s.add_dependency "i18n", "~> 1.8"
 Requires:       %{rubygem i18n:1 >= 1.8}
-# PATCHED
 #  s.add_dependency "listen", "~> 3.4"
 Requires:       %{rubygem listen:3 >= 3.4}
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
@@ -201,8 +190,8 @@ Requires:       %{rubygem log4r:1.1 >= 1.1.9 }
 Requires:       %{rubygem log4r:1.1 < 1.1.11 }
 #  s.add_dependency "mime-types", "~> 3.3"
 Requires:       %{rubygem mime-types:3 >= 3.3}
-#  s.add_dependency "net-ssh", ">= 6.2.0.rc1", "< 7"
-Requires:       %{rubygem net-ssh:6 >= 6.2.0 }
+#  s.add_dependency "net-ssh", ">= 6.1.0", "< 7"
+Requires:       %{rubygem net-ssh:6 >= 6.1.0 }
 #  s.add_dependency "net-sftp", "~> 3.0"
 Requires:       %{rubygem net-sftp:3 }
 #  s.add_dependency "net-scp", "~> 1.2.0"
@@ -219,8 +208,8 @@ Requires:       %{rubygem winrm:2 >= 2.3.4}
 Requires:       %{rubygem winrm-fs:1 >= 1.3.4}
 #  s.add_dependency "winrm-elevated", ">= 1.2.1", "< 2.0"
 Requires:       %{rubygem winrm-elevated:1 >= 1.2.1}
-#  s.add_dependency "vagrant_cloud", "~> 3.0.2"
-Requires:       %{rubygem vagrant_cloud:3.0 >= 3.0.2}
+#  s.add_dependency "vagrant_cloud", "~> 3.0.4"
+Requires:       %{rubygem vagrant_cloud:3.0 >= 3.0.4}
 
 
 Requires:       bsdtar
