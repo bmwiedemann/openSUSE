@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr  6 23:38:27 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.5
+  * Non-recursive version of ixmlNode_free() avoids stack overflow
+    attack (Fixes CVE-2021-28302).
+
+-------------------------------------------------------------------
+Tue Mar 30 06:28:49 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.4
+  * Fix for gena leak.
+
+-------------------------------------------------------------------
 Mon Mar  1 06:47:53 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.14.2

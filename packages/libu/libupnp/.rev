@@ -208,4 +208,12 @@
     <comment>- Update to release 1.14.2</comment>
     <requestid>875886</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4107842ef9cc39550d0114af0f000be4</srcmd5>
+    <version>1.14.5</version>
+    <time>1618061168</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to release 1.14.5</comment>
+    <requestid>883462</requestid>
+  </revision>
 </revisionlist>
