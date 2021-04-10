@@ -1,7 +1,7 @@
 #
 # spec file for package retro-gtk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define namever 1-0
 %define libver  1
 Name:           retro-gtk
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Toolkit to write Gtk+3-based frontends to libretro
 License:        GPL-3.0-only

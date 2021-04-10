@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 22 07:52:15 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.0.2:
+  + RetroCoreDescriptor: Propagate an accidentally unhandled error.
+  + Implement mouse buttons 4 and 5.
+  + Fix the GLES context initialization.
+  + Drop the code making temporary copies of the core to avoid
+    static variable collisions, this isn't needed anymore as such
+    collisions can't happen since a single instance of a core is
+    used per subprocess.
+  + Many code style cleanups.
+
+-------------------------------------------------------------------
 Sun Nov 29 13:34:52 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.0.1:

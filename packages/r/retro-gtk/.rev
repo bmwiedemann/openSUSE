@@ -213,4 +213,12 @@
     <comment>New stable rel (forwarded request 857760 from iznogood)</comment>
     <requestid>857829</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2bc484e8d627b7023d826a6dffa09715</srcmd5>
+    <version>1.0.2</version>
+    <time>1618061216</time>
+    <user>RBrownSUSE</user>
+    <comment>GNOME 40 - here we come (forwarded request 880994 from dimstar)</comment>
+    <requestid>881162</requestid>
+  </revision>
 </revisionlist>
