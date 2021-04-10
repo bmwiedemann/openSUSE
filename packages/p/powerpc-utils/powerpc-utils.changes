@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr  8 16:48:27 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Take into account NUMA topology when removing memory (bsc#1183958 ltc#192149).
+   + 0001-drmgr-don-t-open-sysfs-file-for-each-command.patch
+   + 0002-drmgr-read-the-CPU-NUMA-topology.patch
+   + 0003-drmgr-introduce-NUMA-based-LMB-removal.patch
+
+-------------------------------------------------------------------
+Tue Apr  6 14:54:35 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- The Install section of hcn-init should also refer to NetworkManager
+  (bsc#1184136 ltc#192155).
+   * Refresh powerpc-utils-hcn-init-NM.patch
+
+-------------------------------------------------------------------
 Tue Mar 30 09:29:58 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Require vim when NetworkManager is installed (bsc#1184136 ltc#192155).

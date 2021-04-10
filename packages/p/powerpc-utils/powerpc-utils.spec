@@ -41,8 +41,12 @@ Patch14:        fix_kexec_service_name_for_suse.patch
 Patch15:        ofpathname-Use-NVMe-controller-physical-nsid.patch
 Patch16:        powerpc-utils-Fix-ofpathname-race-with-udev-rename.patch
 Patch17:        powerpc-utils-Update-ppc64-cpu-usage.patch
+Patch18:        0001-drmgr-don-t-open-sysfs-file-for-each-command.patch
+Patch19:        0002-drmgr-read-the-CPU-NUMA-topology.patch
+Patch20:        0003-drmgr-introduce-NUMA-based-LMB-removal.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  libnuma-devel
 BuildRequires:  librtas-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros

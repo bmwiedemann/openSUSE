@@ -1,9 +1,22 @@
-Make hcn-init start with NetworkManager.
+From 3bf554da8ca6edab25a8662acb8be0bf96e93871 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Tue, 30 Mar 2021 21:06:10 +0200
+Subject: [PATCH] hcn-init.service: Start together with NetworkManager.
 
-diff -u powerpc-utils-1.3.8.orig/systemd/hcn-init.service.in powerpc-utils-1.3.8/systemd/hcn-init.service.in
---- powerpc-utils-1.3.8.orig/systemd/hcn-init.service.in	2020-08-31 18:53:55.000000000 +0200
-+++ powerpc-utils-1.3.8/systemd/hcn-init.service.in	2021-03-30 11:45:35.121304822 +0200
-@@ -1,7 +1,8 @@
+hcn-init uses NetworkManager so it does not make sense to run it when
+different connection manager is in use. Also when NetworkManager is in
+use it should be started automatically.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ systemd/hcn-init.service.in | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/systemd/hcn-init.service.in b/systemd/hcn-init.service.in
+index d0aa2adf7522..768a69e0084b 100644
+--- a/systemd/hcn-init.service.in
++++ b/systemd/hcn-init.service.in
+@@ -1,11 +1,12 @@
  [Unit]
  Description=hybrid virtual network scan and config
 -After=network-online.target
@@ -14,3 +27,11 @@ diff -u powerpc-utils-1.3.8.orig/systemd/hcn-init.service.in powerpc-utils-1.3.8
  
  [Service]
  Type=oneshot
+ ExecStart=@sbindir@/hcnmgr -s
+ 
+ [Install]
+-WantedBy=multi-user.target
++WantedBy=NetworkManager.service
+-- 
+2.26.2
+
