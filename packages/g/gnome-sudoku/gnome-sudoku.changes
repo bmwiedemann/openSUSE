@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 23 09:36:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Vala warning fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jan 14 17:26:28 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + Choose how many puzzles to print per page.
+  + Move game controls to header bar and window menu and improve
+    mobile layout.
+  + Make game win message dialog modal.
+
+-------------------------------------------------------------------
 Mon Sep 14 12:44:09 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.0:
