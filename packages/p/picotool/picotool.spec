@@ -16,7 +16,7 @@
 #
 
 
-%define sdk_version 1.1.1
+%define sdk_version 1.1.2
 
 Name:           picotool
 URL:            https://github.com/raspberrypi/picotool
