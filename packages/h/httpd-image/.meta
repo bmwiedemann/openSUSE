@@ -1,0 +1,5 @@
+<package name="httpd-image" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:kubic:containers" package="httpd-image"/>
+</package>
