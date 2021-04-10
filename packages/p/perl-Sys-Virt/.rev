@@ -802,4 +802,15 @@ in req#860506.
     <comment>Updated perl bindings for libvirt 7.1.0.</comment>
     <requestid>876098</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>f6e247f1c2a0d3c445f5cdaa915d4509</srcmd5>
+    <version>7.2.0</version>
+    <time>1618061221</time>
+    <user>RBrownSUSE</user>
+    <comment>Updated perl bindings for libvirt 7.2.0.
+
+- Update to 7.2.0
+  - Add all new APIs and constants in libvirt 7.2.0</comment>
+    <requestid>882670</requestid>
+  </revision>
 </revisionlist>
