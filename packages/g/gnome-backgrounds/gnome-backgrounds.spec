@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-backgrounds
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-backgrounds
-Version:        3.38.0
+Version:        40.rc
 Release:        0
 Summary:        GNOME Backgrounds
 License:        GPL-2.0-or-later AND CC-BY-2.0 AND CC-BY-SA-2.0 AND CC-BY-SA-3.0
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-backgrounds
-Source0:        https://download.gnome.org/sources/gnome-backgrounds/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-backgrounds/40/%{name}-%{version}.tar.xz
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig
