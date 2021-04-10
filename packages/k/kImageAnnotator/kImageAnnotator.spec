@@ -1,7 +1,7 @@
 #
 # spec file for package kImageAnnotator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,19 @@
 #
 
 
-%define sover   0_4_0
+%define sover   0
 %define libname libkImageAnnotator%{sover}
 Name:           kImageAnnotator
-Version:        0.4.0
+Version:        0.4.2
 Release:        0
 Summary:        Tool for annotating images
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/ksnip/kImageAnnotator
 Source:         https://github.com/ksnip/kImageAnnotator/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-Fix-compiler-warning.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  kColorPicker-devel >= 0.1.4
+BuildRequires:  kColorPicker-devel >= 0.1.5
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -58,7 +57,6 @@ Development files for %{name} including headers and libraries
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake \
@@ -79,6 +77,7 @@ Development files for %{name} including headers and libraries
 %doc CHANGELOG.md README.md
 
 %files -n %{libname}
+%{_libdir}/lib%{name}.so.%{sover}
 %{_libdir}/lib%{name}.so.%{version}
 
 %files devel

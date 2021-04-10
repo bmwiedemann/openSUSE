@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Mar 24 07:31:17 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.4.2
+  * Fixed: Fetching image from annotator with HiDPI enabled
+    pixelates image. (#218)
+  * Fixed: Keep aspect ratio only work when pressing CTRL before 
+    moving resize handle. (#219)
+
+-------------------------------------------------------------------
+Sat Mar 13 11:21:13 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.4.1
+  * Changed: Horizontally align text inside spin box. (#203)
+  * Changed: Change zoom with mouse wheel to CTRL+Wheel. (#210)
+  * Fixed: Brazilian Portuguese translation not loaded. (#176)
+  * Fixed: error: control reaches end of non-void function. (#177)
+  * Fixed: Cursor in Text tool have too bad visibility. (#184)
+  * Fixed: bumped SONAME without name change. (#185)
+  * Fixed: Entering multiple characters at once moves the text
+    cursor only for one character. (#186)
+  * Fixed: Activating context menu while drawing item leaves item
+    in error state. (#196)
+  * Fixed: Icons not scaled on gnome with hdpi enabled. (#201)
+  * Fixed: Text/Number Pointer and Text/Number Arrow don't inherit
+    Text/Number Font in Settings. (#208)
+- Drop 0001-Fix-compiler-warning.patch because no more need.
+- Change sover from 0_4_0 to 0 because of rpmlint error.
+
+-------------------------------------------------------------------
 Mon Dec  7 15:55:50 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.4.0
