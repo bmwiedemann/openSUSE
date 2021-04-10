@@ -18,7 +18,7 @@
 
 
 Name:           procenv
-Version:        0.54
+Version:        0.55
 Release:        0
 Summary:        Process Environment Dump Tool
 License:        GPL-3.0-or-later
@@ -52,7 +52,7 @@ comparison.
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README TODO
+%doc AUTHORS NEWS README.md TODO
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 

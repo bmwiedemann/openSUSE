@@ -28,4 +28,16 @@
   * Fix compiler flag checking in the configure script.</comment>
     <requestid>879593</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1e6903e8b0d6a5c3c1b638e54e5da537</srcmd5>
+    <version>0.55</version>
+    <time>1618061267</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 0.55:
+  * Documentation improvements.
+  * Hurd build fixes:
+    - Disable detailed memory reporting as sysinfo() not available).
+    - Fixed detection for modern versions of Hurd.</comment>
+    <requestid>883980</requestid>
+  </revision>
 </revisionlist>
