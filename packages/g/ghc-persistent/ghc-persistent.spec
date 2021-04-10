@@ -19,7 +19,7 @@
 %global pkg_name persistent
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.11.0.4
+Version:        2.12.0.2
 Release:        0
 Summary:        Type-safe, multi-backend data serialization
 License:        MIT
@@ -43,7 +43,9 @@ BuildRequires:  ghc-resourcet-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-scientific-devel
 BuildRequires:  ghc-silently-devel
+BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-th-lift-instances-devel
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unliftio-core-devel
@@ -52,6 +54,7 @@ BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
+BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-shakespeare-devel
 %endif
