@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Thu Apr  8 17:24:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for version 0.1.10
+- Required by spyder 5.0.0
+- replace tinycss with tinycss2
+  * qstylizer-tinycss2.patch
+  * gh#blambright/qstylizer#10
