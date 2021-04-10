@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri Mar 19 20:51:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.18.4:
+  important security fixes for ID3 tag reading, matroska and realmedia
+   parsing, and gst-libav audio decoding
+
+  Details:
+  * audiomixer, audioaggregator: input buffer handling fixes
+  * decodebin3: improve stream-selection message handling
+  * uridecodebin3: make “caps” property work
+  * wavenc: fix writing of INFO chunks in some cases
+  * v4l2: bt601 colorimetry, allow encoder resolution changes, fix
+    decoder frame rate negotiation
+  * decklinkvideosink: fix auto format detection, and fixes for 29.97fps
+    framerate output
+  * mpeg-2 video handling fixes when seeking
+  * avviddec: fix bufferpool negotiation and possible memory corruption
+    when changing resolution
+  * various stability, performance and reliability improvements
+  * memory leak fixes
+  * build fixes: rpicamsrc, qt overlay example, d3d11videosink on UWP
+  * info: Don’t leak log function user_data if the debug system is
+    compiled out
+  * task: Use SetThreadDescription() Win32 API for setting thread names,
+    which preserves thread names in dump files.
+  * buffer, memory: Mark info in map functions as caller-allocates and
+    pass allocation params as const pointers where possible
+  * clock: define AUTO_CLEANUP_FREE_FUNC for GstClockID
+  * tag: id3v2: fix frame size check and potential invalid reads
+  * audio: Fix gst_audio_buffer_truncate() meta handling for
+    non-interleaved audio
+  * audioresample: respect buffer layout when draining
+  * audioaggregator: fix input_buffer ownership
+  * decodebin3: change stream selection message owner, so that the app
+    sends the stream-selection event to the right element
+  * rtspconnection: correct data_size when tunneled mode
+  * uridecodebin3: make caps property work
+  * video-converter: Don’t upsample invalid lines
+  * videodecoder: Fix racy critical when pool negotiation occurs during
+    flush
+  * video: Convert gst_video_info_to_caps() to take self as const ptr
+  * examples: added qt core dependency for qt overlay example
+  * matroskademux: header parsing fixes
+  * rpicamsrc: depend on posix threads and vchiq_arm to fix build on
+    raspios again
+  * wavenc: Fixed INFO chunk corruption, caused by odd sized data not
+    being padded
+  * wavpackdec: Add floating point format support to fix distortions in
+    some cases
+  * v4l2: recognize V4L2 bt601 colorimetry again
+  * v4l2videoenc: support resolution change stream encode
+  * v4l2h265codec: fix HEVC profile string issue
+  * v4l2object: Need keep same transfer as input caps
+  * v4l2videodec: Fix vp8 and vp9 streams can’t play on board with
+    vendor bsp
+  * v4l2videodec: fix src side frame rate negotiation
+  * avwait: Don’t post messages with the mutex locked
+  * d3d11h264dec: Reconfigure decoder object on DPB size change and keep
+    track of actually configured DPB size
+  * dashsink: fix double unref of sinkpad caps
+  * decklinkvideosink: Use correct numerator for 29.97fps
+  * decklinkvideosink: fix auto format detection
+  * decklinksrc: Use a more accurate capture time
+  * d3d11videosink: Fix build error on UWP
+  * interlace: negotiation and buffer leak fixes
+  * mpegvideoparse: do not clip, so decoder receives data from keyframe
+    even if it’s before the segment start
+  * mpegtsparse: Fix switched DTS/PTS when set-timestamps=false
+  * nvh264sldec: Reopen decoder object if larger DPB size is required
+  * sdpsrc: fix double free if sdp is provided as string via the
+    property
+  * vulkan: Fix elements long name.
+
+-------------------------------------------------------------------
 Sat Jan 16 19:01:46 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.3:

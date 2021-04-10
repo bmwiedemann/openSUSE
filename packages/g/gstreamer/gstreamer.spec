@@ -19,15 +19,13 @@
 %define gst_branch 1.0
 
 Name:           gstreamer
-Version:        1.18.3
+Version:        1.18.4
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-# Disable tarball source url, use _service
-#Source0:        %%{url}/src/gstreamer/%%{name}-%%{version}.tar.xz
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-%{version}.tar.xz
 Source1:        gstreamer.macros
 Source2:        gstreamer.prov
 Source99:       baselibs.conf
