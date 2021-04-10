@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr  8 12:20:29 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.27.0:
+  - More border options for `--preview-window`
+    ```sh
+    fzf --preview 'cat {}' --preview-window border-left
+    fzf --preview 'cat {}' --preview-window border-left --border horizontal
+    fzf --preview 'cat {}' --preview-window top:border-bottom
+    fzf --preview 'cat {}' --preview-window top:border-horizontal
+    ```
+  - Automatically set `/dev/tty` as STDIN on execute action
+    ```sh
+    # Redirect /dev/tty to suppress "Vim: Warning: Input is not from a terminal"
+    # ls | fzf --bind "enter:execute(vim {} < /dev/tty)"
+
+    # "< /dev/tty" part is no longer needed
+    ls | fzf --bind "enter:execute(vim {})"
+    ```
+  - Bug fixes and improvements
+  
+-------------------------------------------------------------------
 Sat Mar 13 11:18:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.26.0:
