@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Apr  8 16:46:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 4.2.1
+  astropy.cosmology
+  * Fixed an issue where specializations of the comoving distance
+    calculation for certain cosmologies could not handle redshift
+    arrays. [#10980]
+  astropy.io.fits
+  * Fix bug where manual fixes to invalid header cards were not
+    preserved when saving a FITS file. [#11108]
+  astropy.io.votable
+  * NumericArray converter now properly broadcasts scalar mask to
+    array. [#11157]
+  astropy.table
+  * Fix bug when initializing a Table subclass that uses
+    TableAttribute's. If the data were an instance of the table
+    then attributes provided in the table initialization call
+    could be ignored. [#11217]
+  astropy.time
+  * Change epoch of TimeUnixTAI ("unix_tai") from
+    1970-01-01T00:00:00 UTC to 1970-01-01T00:00:00 TAI to match
+    the intended and documented behaviour. This essentially
+    changes the resulting times by 8.000082 seconds, the initial
+    offset between TAI and UTC. [#11249]
+  astropy.units
+  * Fixed a bug with the quantity_input decorator where allowing
+    dimensionless inputs for an argument inadvertently disabled
+    any checking of compatible units for that argument. [#11283]
+  astropy.utils
+  * Fix a bug so that np.shape, np.ndim and np.size again work on
+    classes that use ShapedLikeNDArray, like representations,
+    frames, sky coordinates, and times. [#11133]
+  astropy.wcs
+  * Fix error when a user defined proj_point parameter is passed
+    to fit_wcs_from_points. [#11139]
+
+-------------------------------------------------------------------
 Mon Mar  8 12:07:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix test failures with updated wcslib -- gh#astropy/astropy#11260

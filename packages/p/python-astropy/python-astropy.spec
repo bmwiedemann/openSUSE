@@ -1,5 +1,5 @@
 #
-# spec file for package python-astropy
+# spec file for package python-astropy-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -44,7 +44,7 @@
 # upcoming python3 multiflavor: minimum supported python is 3.7
 %define         skip_python36 1
 Name:           python-astropy%{psuffix}
-Version:        4.2
+Version:        4.2.1
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -74,7 +74,7 @@ Requires:       python-dbm
 Requires:       python-numpy >= 1.17
 Requires:       python-pyerfa
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     libxml2-tools
 Recommends:     python-Bottleneck
 Recommends:     python-PyYAML >= 3.13
