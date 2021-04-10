@@ -1,7 +1,7 @@
 #
 # spec file for package umoci
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define project github.com/opencontainers/umoci
 
 Name:           umoci
-Version:        0.4.6
+Version:        0.4.7
 Release:        0
 Summary:        Open Container Image manipulation tool
 License:        Apache-2.0
@@ -29,11 +29,14 @@ URL:            https://umo.ci
 Source0:        https://github.com/opencontainers/umoci/releases/download/v%{version}/umoci.tar.xz#/%{name}-%{version}.tar.xz
 Source1:        https://github.com/opencontainers/umoci/releases/download/v%{version}/umoci.tar.xz.asc#/%{name}-%{version}.tar.xz.asc
 Source2:        https://umo.ci/%{name}.keyring
+# OPENSUSE-FIX-UPSTREAM: Backport of <https://github.com/opencontainers/umoci/pull/369>.
+Patch1:         0001-makefile-fix-bad-build-flags.patch
 BuildRequires:  fdupes
+BuildRequires:  go-go-md2man
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
 # for 'golang(API) >= 1.13' here, so just require 1.13 exactly. bsc#1172608
-BuildRequires:  go-go-md2man
 BuildRequires:  go1.14
+ExcludeArch:    s390
 
 %description
 umoci modifies Open Container images. umoci is a manipulation tool for OCI
@@ -42,6 +45,8 @@ provided by the OCI.
 
 %prep
 %setup -q
+# <https://github.com/opencontainers/umoci/pull/369>
+%patch1 -p1
 
 %build
 export VERSION="$(cat ./VERSION)"
