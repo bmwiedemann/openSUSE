@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-double-conversion
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Summary:        Fast conversion between double precision floating point and text
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Patch0:         riscv.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-bytestring-devel
@@ -63,14 +64,14 @@ Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires:       libstdc++-devel
 Requires(post): ghc-compiler = %{ghc_version}
-Requires(postun): ghc-compiler = %{ghc_version}
+Requires(postun):ghc-compiler = %{ghc_version}
 
 %description devel
 This package provides the Haskell %{pkg_name} library development
 files.
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version} -p1
 
 %build
 %ghc_lib_build
