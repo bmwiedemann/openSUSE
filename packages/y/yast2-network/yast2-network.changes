@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Apr  9 11:22:42 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- bsc#1181956
+  - Omit empty values or the '0.0.0.0' IPADDR when writing ifcfg
+    files.
+  - Do not write empty ifroute files.
+- 4.4.2
+
+-------------------------------------------------------------------
+Thu Apr  8 09:27:47 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Display the network configuration in the installation summary
+  screen even if NetworkManager is the selected backend
+  (bsc#1181354).
+- 4.4.1
+
+-------------------------------------------------------------------
+Wed Apr  7 11:27:26 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Write DNS servers to NetworkManager connection files when using
+  a static configuration (bsc#1181701).
+- 4.4.0
+
+-------------------------------------------------------------------
+Tue Apr  6 08:54:07 UTC 2021 - Michal Filka <mfilka@suse.com>
+
+- Drop isCurrentDHCP and isCurrentHotplug methods from LanItems.
+
+-------------------------------------------------------------------
+Mon Apr  5 15:21:47 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Do not show the "Abort" button when the inst_lan client is called
+  from another installation step (bsc#1183586).
+
+-------------------------------------------------------------------
 Mon Mar 29 11:52:08 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Use the ESSID to name the NetworkManager configuration files

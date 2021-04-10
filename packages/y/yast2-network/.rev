@@ -3373,4 +3373,12 @@ qeth attributes used to be lost once qeth device was configured)
     <comment>submit new version 4.3.63</comment>
     <requestid>882159</requestid>
   </revision>
+  <revision rev="448" vrev="1">
+    <srcmd5>7fb08b180c4a552754d86c320466b5a6</srcmd5>
+    <version>4.4.2</version>
+    <time>1618061168</time>
+    <user>RBrownSUSE</user>
+    <comment>submit new version 4.4.2</comment>
+    <requestid>884190</requestid>
+  </revision>
 </revisionlist>
