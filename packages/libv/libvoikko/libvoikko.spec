@@ -1,7 +1,7 @@
 #
 # spec file for package libvoikko
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libvoikko
-Version:        4.3
+Version:        4.3.1
 Release:        0
 Summary:        Library of free natural language processing tools
 License:        GPL-2.0-or-later
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(hfstospell) >= 0.5
 %description
 Libvoikko is a library of free natural language processing tools. It
 aims to provide support for languages that are not well served by
-other existing free linguistic tools. 
+other existing free linguistic tools.
 
 The library supports multiple backends, of which VFST and HFST are
 enabled in the default build:
@@ -59,7 +59,7 @@ Requires:       malaga-suomi
 %description -n libvoikko1
 Libvoikko is a library of free natural language processing tools. It
 aims to provide support for languages that are not well served by
-other existing free linguistic tools. 
+other existing free linguistic tools.
 
 The library supports multiple backends, of which VFST and HFST are
 enabled in the default build:
@@ -83,7 +83,7 @@ Requires:       libvoikko1 = %{version}
 %description devel
 Libvoikko is a library of free natural language processing tools. It
 aims to provide support for languages that are not well served by
-other existing free linguistic tools. 
+other existing free linguistic tools.
 
 This package contains the files needed to build or develop applications
 that use Voikko.
@@ -96,7 +96,7 @@ Requires:       libvoikko1 = %{version}
 %description -n voikkospell
 Libvoikko is a library of free natural language processing tools. It
 aims to provide support for languages that are not well served by
-other existing free linguistic tools. 
+other existing free linguistic tools.
 
 This package contains a test program for using Voikko spell checker.
 
@@ -109,9 +109,9 @@ BuildArch:      noarch
 %description -n python3-libvoikko
 Libvoikko is a library of free natural language processing tools. It
 aims to provide support for languages that are not well served by
-other existing free linguistic tools. 
+other existing free linguistic tools.
 
-This package contains a Python interface to libvoikko. This module 
+This package contains a Python interface to libvoikko. This module
 can be used to perform various natural language analysis tasks on text.
 
 %prep

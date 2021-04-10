@@ -263,4 +263,19 @@
     <comment></comment>
     <requestid>761354</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>88a8980159e6d15b76ee8c88008afaaf</srcmd5>
+    <version>4.3.1</version>
+    <time>1618061189</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 4.3.1
+  * Improve performance of Finnish VFST backend by about 4 %. Thanks to Juha Komulainen 
+    / Evident Solutions Oy for the optimization idea.
+  * Add TypeScript typings, thanks to Niilo Ursin.
+  * Python wrapper:
+    * Allow native library to be found on Windows with Python 3.8 and later.
+    * Add official pip packaging.
+  * Various build fixes related to for example new Autoconf and Emscripten versions.</comment>
+    <requestid>883514</requestid>
+  </revision>
 </revisionlist>

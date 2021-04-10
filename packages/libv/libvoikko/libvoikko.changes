@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr  6 11:20:51 UTC 2021 - Timo Jyrinki <tjyrinki@suse.com>
+
+- Update to version 4.3.1
+  * Improve performance of Finnish VFST backend by about 4 %. Thanks to Juha Komulainen 
+    / Evident Solutions Oy for the optimization idea.
+  * Add TypeScript typings, thanks to Niilo Ursin.
+  * Python wrapper:
+    * Allow native library to be found on Windows with Python 3.8 and later.
+    * Add official pip packaging.
+  * Various build fixes related to for example new Autoconf and Emscripten versions.
+
+-------------------------------------------------------------------
 Sat Jan  4 18:40:34 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Drop explicit requires for full python3 package, python3-base
