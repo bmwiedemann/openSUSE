@@ -1,14 +1,12 @@
 [Unit]
-Description=Freshclam virus definitions downloader
-After=network-online.target
+Description=Clam AntiVirus database updater
+Documentation=man:freshclam(1) man:freshclam.conf(5) https://www.clamav.net/documents/
+After=network-online.target nss-lookup.target
 Wants=network-online.target
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/freshclam -d
+Type=oneshot
+ExecStart=/usr/bin/freshclam
 ;User=vscan
 ;Group=vscan
 ;PrivateTmp=yes
-
-[Install]
-WantedBy=multi-user.target

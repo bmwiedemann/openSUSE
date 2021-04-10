@@ -1106,4 +1106,19 @@
     <comment></comment>
     <requestid>870558</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>e84212cda121c0b4488b42e22d9333a3</srcmd5>
+    <version>0.103.2</version>
+    <time>1618061271</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 0.103.2
+  * CVE-2021-1252, bsc#1184532: Fix for Excel XLM parser infinite
+    loop. Affects 0.103.0 and 0.103.1 only.
+  * CVE-2021-1404, bsc#1184533: Fix for PDF parser buffer over-read;
+    possible crash. Affects 0.103.0 and 0.103.1 only.
+  * CVE-2021-1405, bsc#1184534: Fix for mail parser
+    NULL-dereference crash. Affects 0.103.1 and prior.
+  * bsc#1181256: Fix errors when scanning files &gt; 4G</comment>
+    <requestid>884035</requestid>
+  </revision>
 </revisionlist>

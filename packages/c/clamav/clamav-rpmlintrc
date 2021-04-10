@@ -1,3 +1,4 @@
 addFilter("non-standard-uid.*")
 addFilter("devel-file-in-non-devel-package.*")
 addFilter("obsolete-not-provided")
+addFilter("systemd-service-without-service_.* freshclam.service")
