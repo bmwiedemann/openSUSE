@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  5 08:49:43 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add the 'mkfs_options' element to the 'partition' section
+  (bsc#1184268).
+- 4.4.0
+
+-------------------------------------------------------------------
 Thu Mar 11 15:53:02 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Allow the interfaces list in the profile to be  empty
