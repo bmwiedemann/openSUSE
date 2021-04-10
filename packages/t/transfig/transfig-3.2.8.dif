@@ -9,15 +9,15 @@
 
 --- configure
 +++ configure	2021-02-12 08:54:37.958704809 +0000
-@@ -4015,7 +4015,7 @@ main ()
- 
+@@ -2341,7 +2341,7 @@ ac_c_conftest_c99_main='
    int dynamic_array[ni.number];
+   dynamic_array[0] = argv[0][0];
    dynamic_array[ni.number - 1] = 543;
 -
 +  free(ia);
    // work around unused variable warnings
-   return (!success || bignum == 0LL || ubignum == 0uLL || newvar[0] == 'x'
- 	  || dynamic_array[ni.number - 1] != 543);
+   ok |= (!success || bignum == 0LL || ubignum == 0uLL || newvar[0] == '\''x'\''
+ 	 || dynamic_array[ni.number - 1] != 543);
 --- fig2dev/dev/genps.c
 +++ fig2dev/dev/genps.c	2021-02-12 09:13:56.896176342 +0000
 @@ -56,6 +56,7 @@

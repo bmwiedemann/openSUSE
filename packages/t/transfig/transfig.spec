@@ -45,7 +45,7 @@ Requires:       ghostscript-fonts-std
 Requires:       ghostscript-library
 Requires:       netpbm
 Requires:       texlive-epstopdf
-Version:        3.2.8
+Version:        3.2.8a
 Release:        0
 Summary:        Graphic Converter
 #Source:        http://sourceforge.net/projects/mcj/files/fig2dev-%{version}.tar.xz/download#/fig2dev-%{version}.tar.xz
@@ -165,7 +165,7 @@ install -m 0644 [CLNR]* %{buildroot}%{_defaultdocdir}/%{name}
 pushd fig2mpdf/doc
     make
     mkdir %{buildroot}%{_defaultdocdir}/%{name}/fig2mpdf
-    rm -f overlay-sample-?.pdf 
+    rm -f overlay-sample-?.pdf
     rm -f *.aux *.log *.nav *.out *.snm *.toc
     install -m 0644 * %{buildroot}%{_defaultdocdir}/%{name}/fig2mpdf/
 popd

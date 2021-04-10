@@ -480,4 +480,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>873730</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>756df354d12ab62c78cfcd44fbcc65b7</srcmd5>
+    <version>3.2.8a</version>
+    <time>1618061155</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to fig2dev version 3.2.8 Patchlevel 8a (Mar 2021)
+  o Allow closed splines with three points.
+  o Fix build under Darwin.
+- Correct hunk offsets of the patch
+  o transfig-3.2.8.dif</comment>
+    <requestid>882560</requestid>
+  </revision>
 </revisionlist>

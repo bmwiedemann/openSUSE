@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr  1 11:58:30 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to fig2dev version 3.2.8 Patchlevel 8a (Mar 2021)
+  o Allow closed splines with three points.
+  o Fix build under Darwin.
+- Correct hunk offsets of the patch
+  o transfig-3.2.8.dif
+
+-------------------------------------------------------------------
 Fri Feb 12 09:50:30 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Update to fig2dev version 3.2.8 (Patchlevel 8 (Dec 2020)
