@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-games
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           gnome-games
-Version:        3.38.0
+Version:        40.0
 Release:        0
 Summary:        Browse and play your games - all of them
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Games
-Source0:        https://download.gnome.org/sources/gnome-games/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-games/40/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
-BuildRequires:  meson >= 0.46.1
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala
@@ -35,12 +35,12 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(grilo-0.3)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libarchive)
-BuildRequires:  pkgconfig(libhandy-1) >= 0.90
+BuildRequires:  pkgconfig(libhandy-1) >= 1.1.90
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(manette-0.2) >= 0.2.0
-BuildRequires:  pkgconfig(retro-gtk-1) >= 0.18.0
+BuildRequires:  pkgconfig(retro-gtk-1) >= 1.0.0
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tracker-sparql-2.0)
 

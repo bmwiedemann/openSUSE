@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Mar 20 18:14:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + No changes since 40.rc.
+
+-------------------------------------------------------------------
+Wed Mar 17 12:45:23 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Fix a critical when trying to run a game that's missing a core.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  8 14:44:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.beta:
+  + Support running Nintendo 3DS games: Show the same screen layout
+    switcher as for DS.
+  + Support running Sega Dreamcast games (gdi and cdi).
+  + UI:
+    - Use HdyStatusPage for empty states and errors
+    - Use nearest scaling for low-resolution icons
+    - Polish the screen layout switcher
+  + Fixes:
+    - Support saves when the core doesn't support savestates
+    - Don't save a corrupted snapshot if failed mid-save
+    - Correctly remove screen layout switcher on error pages
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 14 12:54:27 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.0:
