@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Wed Mar 31 16:18:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.3
+  * https://www.qt.io/blog/qt-6.0.3-released
+
+-------------------------------------------------------------------
+Fri Mar  5 09:31:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.2:
+  https://www.qt.io/blog/qt-6.0.2-released
+
+-------------------------------------------------------------------
+Thu Feb  4 08:01:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.0.1
+  https://code.qt.io/cgit/qt/qtreleasenotes.git/tree/qt/6.0.1/release-note.txt
+- Add upstream patch:
+  * 0001-Fix-openssl_symbols-error.patch
+
+-------------------------------------------------------------------
+Tue Jan 12 16:03:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Initial version
