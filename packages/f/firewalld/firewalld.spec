@@ -81,7 +81,6 @@ The python3 bindings for firewalld.
 %package -n firewall-macros
 Summary:        FirewallD RPM macros
 Group:          Productivity/Networking/Security
-Requires:       %{name} = %{version}-%{release}
 
 %description -n firewall-macros
 This package provides the firewalld RPM macros file needed by packages

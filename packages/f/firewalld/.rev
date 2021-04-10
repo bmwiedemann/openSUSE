@@ -1071,4 +1071,12 @@ This is a bug fix only release.
     <comment>Preserve the reference to jsc#SLE-12281 in the old update to 0.7.5 (forwarded request 873148 from mrostecki)</comment>
     <requestid>873150</requestid>
   </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>74d6c26697b42466f0c2d0ee3b3afe58</srcmd5>
+    <version>0.9.3</version>
+    <time>1618061190</time>
+    <user>RBrownSUSE</user>
+    <comment>- Remove dependency on firewalld from firewall-macros (bsc#1183404) (forwarded request 883554 from mrostecki)</comment>
+    <requestid>883555</requestid>
+  </revision>
 </revisionlist>
