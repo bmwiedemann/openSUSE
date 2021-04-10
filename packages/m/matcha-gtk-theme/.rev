@@ -19,4 +19,17 @@
 </comment>
     <requestid>883012</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2b968fcd040949a5dd2dabcbe38e815a</srcmd5>
+    <version>20210409</version>
+    <time>1618061266</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 20210409:
+  * Add support for GTK+4
+  * Many fixes
+- Create subpackage for gtk4-metatheme-matcha
+- Re-add %fdupes
+</comment>
+    <requestid>883969</requestid>
+  </revision>
 </revisionlist>

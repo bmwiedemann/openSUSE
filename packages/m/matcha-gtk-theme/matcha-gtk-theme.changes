@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  9 05:46:52 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 20210409:
+  * Add support for GTK+4
+  * Many fixes
+- Create subpackage for gtk4-metatheme-matcha
+- Re-add %fdupes
+
+-------------------------------------------------------------------
 Mon Apr  5 09:07:12 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Update to version 20210405:

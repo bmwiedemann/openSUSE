@@ -20,11 +20,11 @@
 %define         _theme              Matcha
 %define         gtk3_min_version    3.20.0
 %define         gtk2_min_version    2.24.30
-%define         _version            2021-04-05
+%define         _version            2021-04-09
 Name:           matcha-gtk-theme
-Version:        20210405
+Version:        20210409
 Release:        0
-Summary:        Matcha is a flat Design theme for GTK 3, GTK 2 and Gnome-Shell
+Summary:        Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell
 License:        GPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/vinceliuice/Matcha-gtk-theme/
@@ -32,7 +32,7 @@ Source:         https://github.com/vinceliuice/Matcha-gtk-theme/archive/%{_versi
 BuildRequires:  fdupes
 
 %description
-Matcha is a flat Design theme for GTK 3, GTK 2 and Gnome-Shell.
+Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell.
 
 %package -n metatheme-%{_name}-common
 Summary:        Matcha common theme files
@@ -45,7 +45,7 @@ Provides:       matcha-gtk-theme
 BuildArch:      noarch
 
 %description -n metatheme-%{_name}-common
-Matcha is a flat Design theme for GTK 3, GTK 2 and Gnome-Shell.
+Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell.
 
 This package contains common files for all Matcha themes.
 
@@ -59,7 +59,7 @@ Supplements:    packageand(metatheme-%{_name}-common:gtk2)
 BuildArch:      noarch
 
 %description -n gtk2-metatheme-%{_name}
-Matcha is a flat Design theme for GTK 3, GTK 2 and Gnome-Shell.
+Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell.
 
 This package contains the GTK2+ themes.
 
@@ -72,9 +72,24 @@ Supplements:    packageand(metatheme-%{_name}-common:gtk3)
 BuildArch:      noarch
 
 %description -n gtk3-metatheme-%{_name}
-Matcha is a flat Design theme for GTK 3, GTK 2 and Gnome-Shell.
+Matcha is a flat Design theme for GTK4, GTK 3, GTK 2 and Gnome-Shell.
 
 This package contains the GTK3+ themes.
+
+
+%if 0%{?suse_version} > 1500
+%package -n gtk4-metatheme-%{_name}
+Summary:        Matcha GTK+4 themes
+Requires:       gtk4
+Requires:       metatheme-%{_name}-common = %{version}
+Supplements:    packageand(metatheme-%{_name}-common:gtk4)
+BuildArch:      noarch
+
+%description -n gtk4-metatheme-%{_name}
+Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell.
+
+This package contains the GTK+4 themes.
+%endif
 
 %package -n metacity-theme-%{_name}
 Summary:        Matcha Metacity themes
@@ -85,7 +100,7 @@ Supplements:    packageand(metatheme-%{_name}-common:metacity)
 BuildArch:      noarch
 
 %description -n metacity-theme-%{_name}
-Matcha is a flat Design theme for GTK 3, GTK 2 and Gnome-Shell.
+Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell.
 
 This package contains the metacity themes.
 
@@ -98,7 +113,7 @@ Supplements:    packageand(metatheme-%{_name}-common:cinnamon)
 BuildArch:      noarch
 
 %description -n cinnamon-theme-%{_name}
-Matcha is a flat Design theme for GTK 3, GTK 2 and Gnome-Shell.
+Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell.
 
 This package contains the cinnamon themes.
 
@@ -111,7 +126,7 @@ Supplements:    packageand(metatheme-%{_name}-common:gnome-shell)
 BuildArch:      noarch
 
 %description -n gnome-shell-theme-%{_name}
-Matcha is a flat Design theme for GTK 3, GTK 2 and Gnome-Shell.
+Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell.
 
 This package contains the GNOME Shell themes.
 
@@ -124,7 +139,7 @@ Supplements:    packageand(metatheme-%{_name}-common:xfwm4)
 BuildArch:      noarch
 
 %description -n xfwm4-theme-%{_name}
-Matcha is a flat Design theme for GTK 3, GTK 2 and Gnome-Shell.
+Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell.
 
 This package contains the Xfwm4 themes.
 
@@ -137,7 +152,7 @@ Supplements:    packageand(metatheme-%{_name}-common:plank)
 BuildArch:      noarch
 
 %description -n plank-theme-%{_name}
-Matcha is a flat Design theme for GTK 3, GTK 2 and Gnome-Shell.
+Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell.
 
 This package contains the Plank themes.
 
@@ -150,7 +165,7 @@ Supplements:    packageand(metatheme-%{_name}-common:openbox)
 BuildArch:      noarch
 
 %description -n openbox-theme-%{_name}
-Matcha is a flat Design theme for GTK 3, GTK 2 and Gnome-Shell.
+Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell.
 
 This package contains the openbox themes.
 
@@ -165,14 +180,14 @@ mkdir -p %{buildroot}%{_datadir}/themes
 ./install.sh -d "%{buildroot}%{_datadir}/themes"
 
 # Remove unity and index.theme files
-for variant in aliz azul sea; do
-  rm -rf %{buildroot}%{_datadir}/themes/%{_theme}-$variant/unity
-  rm -rf %{buildroot}%{_datadir}/themes/%{_theme}-dark-$variant/unity
-  rm -rf %{buildroot}%{_datadir}/themes/%{_theme}-light-$variant/unity
-  rm -f %{buildroot}%{_datadir}/themes/%{_theme}-$variant/index.theme
-  rm -f %{buildroot}%{_datadir}/themes/%{_theme}-dark-$variant/index.theme
-  rm -f %{buildroot}%{_datadir}/themes/%{_theme}-light-$variant/index.theme
-done
+rm -rf  %{buildroot}%{_datadir}/themes/*/unity
+rm -f   %{buildroot}%{_datadir}/themes/*/index.theme
+
+%if 0%{?suse_version} <= 1500
+rm -rf %{buildroot}%{_datadir}/themes/*/gtk-4.0
+%endif
+
+%fdupes %{buildroot}/%{_datadir}/themes
 
 %files -n metatheme-%{_name}-common
 %license LICENSE
@@ -208,6 +223,19 @@ done
 %{_datadir}/themes/%{_theme}-dark-aliz/gtk-3.0/
 %{_datadir}/themes/%{_theme}-dark-azul/gtk-3.0/
 %{_datadir}/themes/%{_theme}-dark-sea/gtk-3.0/
+
+%if 0%{?suse_version} > 1500
+%files -n gtk4-metatheme-%{_name}
+%{_datadir}/themes/%{_theme}-aliz/gtk-4.0/
+%{_datadir}/themes/%{_theme}-azul/gtk-4.0/
+%{_datadir}/themes/%{_theme}-sea/gtk-4.0/
+%{_datadir}/themes/%{_theme}-light-aliz/gtk-4.0/
+%{_datadir}/themes/%{_theme}-light-azul/gtk-4.0/
+%{_datadir}/themes/%{_theme}-light-sea/gtk-4.0/
+%{_datadir}/themes/%{_theme}-dark-aliz/gtk-4.0/
+%{_datadir}/themes/%{_theme}-dark-azul/gtk-4.0/
+%{_datadir}/themes/%{_theme}-dark-sea/gtk-4.0/
+%endif
 
 %files -n gnome-shell-theme-%{_name}
 %{_datadir}/themes/%{_theme}-aliz/gnome-shell/
