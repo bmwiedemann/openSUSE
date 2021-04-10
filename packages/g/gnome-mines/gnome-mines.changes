@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Mar 20 09:25:29 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 40.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 18 13:17:48 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 12 10:27:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + Updated help.
+  + Code cleanup and modernization.
+  + Keyboard shortcuts window improvements.
+  + Only allow long-press gesture on touchscreen.
+  + Fixed icon in scores dialog.
+  + Fixed incorrectly accepting game as won.
+  + Fixed spacebar not working until other key is pressed.
+  + Fixed timer not stopping when game ends with multi-release.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Aug  9 10:21:58 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.1:

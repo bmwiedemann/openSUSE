@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-mines
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-mines
-Version:        3.36.1
+Version:        40.0
 Release:        0
 Summary:        Minesweeper Game for GNOME
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Mines
-Source0:        https://download.gnome.org/sources/gnome-mines/3.36/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-mines/40/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.37.1
