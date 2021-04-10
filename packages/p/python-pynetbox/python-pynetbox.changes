@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr  9 09:36:47 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.1.1
+  * Fixes issue with duplicate returns when threading is enabled.
+  * Fixes updates to config_context data.
+  * Re-implements ValueError from Endpoint.get() when used with
+    kwargs and more than one result is found.
+- Update to version 6.1.0
+  * Adds a __next__ method to RecordSet objects.
+- Update to version 6.0.2
+  * Fix len() calls for empty RecordSet.
+
+-------------------------------------------------------------------
 Wed Apr  7 15:27:32 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 6.0.1
