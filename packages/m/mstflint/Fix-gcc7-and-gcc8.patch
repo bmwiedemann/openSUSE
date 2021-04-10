@@ -1,4 +1,4 @@
-commit e325ecf9ecfabdb5ad5ad96f0ac025a2828b2dd3
+commit 7d87bd0f4679e7547678e2d26fca1277d2b8cbbd
 Author: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
 Date:   Wed Aug 9 17:31:57 2017 +0200
 
@@ -9,10 +9,10 @@ Date:   Wed Aug 9 17:31:57 2017 +0200
     Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
 
 diff --git configure.ac configure.ac
-index 8840a41d8169..62aa0a738c2d 100644
+index 3a9246b87e89..7422cbc2103d 100644
 --- configure.ac
 +++ configure.ac
-@@ -246,6 +246,7 @@ AC_SEARCH_LIBS([sqlite3_initialize], [sqlite3], [SQLITE_SYSTEM_AVAILABLE="yes"],
+@@ -296,6 +296,7 @@ AC_SEARCH_LIBS([sqlite3_initialize], [sqlite3], [SQLITE_SYSTEM_AVAILABLE="yes"],
  AM_CONDITIONAL([USE_LOCAL_SQLITE], [test "$SQLITE_SYSTEM_AVAILABLE" = no])
  
  CFLAGS="$CFLAGS -DMST_UL"
@@ -20,3 +20,18 @@ index 8840a41d8169..62aa0a738c2d 100644
  CXXFLAGS="$CXXFLAGS -DMST_UL"
  
  AM_CFLAGS="-Wall"
+@@ -314,6 +315,14 @@ AX_CHECK_COMPILE_FLAG([-Wno-implicit-fallthrough], [CFLAGS="$CFLAGS -Wno-implici
+ AX_CHECK_COMPILE_FLAG([-Wno-cast-function-type], [CFLAGS="$CFLAGS -Wno-cast-function-type"], [], [])
+ CFLAGS="$OLD_CFLAGS"
+ 
++# C GCC [78] related ignores
++OLD_CPPFLAGS="$CPPFLAGS"
++CPPFLAGS="$CPPFLAGS -Wall -Werror"
++AX_CHECK_COMPILE_FLAG([-Wno-format-overflow], [CPPFLAGS="$CPPFLAGS -Wno-format-overflow"], [], [])
++AX_CHECK_COMPILE_FLAG([-Wno-implicit-fallthrough], [CPPFLAGS="$CPPFLAGS -Wno-implicit-fallthrough"], [], [])
++AX_CHECK_COMPILE_FLAG([-Wno-cast-function-type], [CPPFLAGS="$CPPFLAGS -Wno-cast-function-type"], [], [])
++CPPFLAGS="$OLD_CPPFLAGS"
++
+ # C++ related ignores
+ OLD_CXXFLAGS="$CXXFLAGS"
+ CXXFLAGS="$CXXFLAGS -Wall -Werror"

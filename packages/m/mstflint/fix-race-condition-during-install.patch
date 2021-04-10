@@ -1,4 +1,4 @@
-commit 3f96689198c891694184f8f7d2570b1fcb8df438
+commit 77d8c2e2d7de83dc8202d99bb995c423299229fb
 Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 Date:   Mon Oct 15 09:33:09 2018 +0200
 
@@ -7,7 +7,7 @@ Date:   Mon Oct 15 09:33:09 2018 +0200
     Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 diff --git dev_mgt/Makefile.am dev_mgt/Makefile.am
-index 907e5ce38a0b..28d506d095fb 100644
+index 3118b85f97a4..193abaf79e11 100644
 --- dev_mgt/Makefile.am
 +++ dev_mgt/Makefile.am
 @@ -46,7 +46,7 @@ libdev_mgt_a_SOURCES = \

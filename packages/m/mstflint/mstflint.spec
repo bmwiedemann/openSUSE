@@ -1,7 +1,7 @@
 #
 # spec file for package mstflint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define extra_version -1
+%define extra_version -2
 
 Name:           mstflint
-Version:        4.15.0
+Version:        4.16.0
 Release:        0
 Summary:        Mellanox Firmware Burning and Diagnostics Tools
-License:        GPL-2.0-only OR BSD-2-Clause
+License:        BSD-2-Clause OR GPL-2.0-only
 Group:          System/Console
 URL:            http://www.openfabrics.org
 Obsoletes:      mstflint-devel < %{version}

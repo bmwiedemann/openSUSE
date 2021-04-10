@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr  7 11:52:58 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v4.16.0-2
+  - mstlink tool
+      - Added support for PCIe eye grade scan
+      - Enabled margin scan on Network links
+      - Enabled querying the current host configuration using the "q | query" flag
+  - mstconfig tool
+      - fixed database
+  - fixed several bugs
+- Refresh patches against latest sources:
+  - Remove-date-time-info-from-build.patch
+  - Fix-gcc7-and-gcc8.patch
+  - fix-race-condition-during-install.patch
+
+-------------------------------------------------------------------
 Wed Sep 23 07:55:04 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v4.15.0-1 (jsc#SLE-15968)
