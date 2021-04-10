@@ -1,7 +1,7 @@
 #
 # spec file for package python-dateparser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-dateparser
-Version:        0.7.6
+Version:        1.0.0
 Release:        0
 Summary:        Date parsing library designed to parse dates from HTML pages
 License:        BSD-3-Clause
@@ -82,7 +83,6 @@ rm tests/test_dateparser_data_integrity.py
 %{python_sitelib}/dateparser_data/*
 %dir %{python_sitelib}/dateparser_scripts
 %{python_sitelib}/dateparser_scripts/*
-%dir %{python_sitelib}/dateparser-%{version}-py*.egg-info
 %{python_sitelib}/dateparser-%{version}-py*.egg-info
 
 %changelog
