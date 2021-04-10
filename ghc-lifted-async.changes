@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr  5 14:15:03 UTC 2021 - psimons@suse.com
+
+- Update lifted-async to version 0.10.2.
+  ## v0.10.2 - 20201-04-02
+
+  * Define withAsync in terms of corresponding function from async ([#36](https://github.com/maoe/lifted-async/pull/36))
+    * Fixes [#34](https://github.com/maoe/lifted-async/issues/34)
+
+-------------------------------------------------------------------
 Sat Feb 27 13:14:16 UTC 2021 - psimons@suse.com
 
 - Update lifted-async to version 0.10.1.3.
