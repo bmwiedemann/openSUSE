@@ -1,7 +1,7 @@
 #
 # spec file for package python-bpython
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 %bcond_with     test
 Name:           python-bpython
-Version:        0.20
+Version:        0.21
 Release:        0
 Summary:        Fancy Interface to the Python Interpreter
 License:        MIT
@@ -33,23 +34,24 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  update-desktop-files
 Requires:       %{name}-common = %{version}
-Requires:       python-curtsies >= 0.1.18
+Requires:       python-curtsies >= 0.3.5
 Requires:       python-greenlet
 Requires:       python-pygments
+Requires:       python-pyxdg
 Requires:       python-requests
 Requires:       python-six >= 1.5
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
+Recommends:     python-cwcwidth
 Recommends:     python-jedi
 Recommends:     python-ndg-httpsclient
 Recommends:     python-pyOpenSSL
 Recommends:     python-pyasn1
 Recommends:     python-urwid
 Recommends:     python-watchdog
-Recommends:     python-wcwidth
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module curtsies >= 0.1.18}
+BuildRequires:  %{python_module curtsies >= 0.3.5}
 BuildRequires:  %{python_module greenlet}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module requests}
@@ -143,7 +145,7 @@ rm %{buildroot}%{_datadir}/applications/org.bpython-interpreter.bpython.desktop
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS CHANGELOG README.rst
+%doc AUTHORS.rst CHANGELOG.rst README.rst
 %dir %{python_sitelib}/bpython
 %{python_sitelib}/bpython/*
 %dir %{python_sitelib}/bpdb
