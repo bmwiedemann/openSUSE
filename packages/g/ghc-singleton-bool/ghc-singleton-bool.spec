@@ -18,16 +18,18 @@
 
 %global pkg_name singleton-bool
 Name:           ghc-%{pkg_name}
-Version:        0.1.5
+Version:        0.1.6
 Release:        0
 Summary:        Type level booleans
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-boring-devel
 BuildRequires:  ghc-dec-devel
+BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-some-devel
 ExcludeArch:    %{ix86}
 
 %description
@@ -48,7 +50,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
@@ -66,6 +67,6 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc CHANGELOG.md README.md
+%doc CHANGELOG.md
 
 %changelog
