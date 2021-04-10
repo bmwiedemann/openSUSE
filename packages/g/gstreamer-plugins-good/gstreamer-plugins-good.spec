@@ -29,7 +29,7 @@
 %define ENABLE_EXPERIMENTAL 1
 
 Name:           gstreamer-plugins-good
-Version:        1.18.3
+Version:        1.18.4
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later

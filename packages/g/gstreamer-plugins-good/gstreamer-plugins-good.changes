@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Mar 30 08:55:20 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.18.4:
+  + matroskademux: header parsing fixes
+  + rpicamsrc: depend on posix threads and vchiq_arm to fix build
+    on raspios again
+  + wavenc: Fixed INFO chunk corruption, caused by odd sized data
+    not being padded
+  + wavpackdec: Add floating point format support to fix
+    distortions in some cases
+  + v4l2: recognize V4L2 bt601 colorimetry again
+  + v4l2videoenc: support resolution change stream encode
+  + v4l2h265codec: fix HEVC profile string issue
+  + v4l2object: Need keep same transfer as input caps
+  + v4l2videodec: Fix vp8 and vp9 streams can't play on board
+    with vendor bsp
+  + v4l2videodec: fix src side frame rate negotiation
+
+-------------------------------------------------------------------
 Sat Jan 16 19:24:21 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.3:
