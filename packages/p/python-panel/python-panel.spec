@@ -1,5 +1,5 @@
 #
-# spec file for package python-panel
+# spec file for package python-panel-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -26,10 +26,10 @@
 %bcond_with test
 %endif
 %define skip_python2 1
-%define skip_python36 1 
+%define skip_python36 1
 %define modname panel
 Name:           python-panel%{psuffix}
-Version:        0.10.2
+Version:        0.11.1
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -46,6 +46,7 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tqdm}
 BuildRequires:  fdupes
+BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  nodejs
 BuildRequires:  python-rpm-macros
 %if %{with test}
@@ -65,6 +66,7 @@ BuildRequires:  %{python_module twine}
 # Tests segfault
 # BuildRequires:  %%{python_module vtk}
 %endif
+Requires:       jupyter-panel
 Requires:       python-Markdown
 Requires:       python-bokeh >= 2.2.2
 Requires:       python-param >= 1.9.3
@@ -72,13 +74,13 @@ Requires:       python-pyct >= 0.4.4
 Requires:       python-pyviz-comms >= 0.7.4
 Requires:       python-requests
 Requires:       python-tqdm
-Requires(post):   update-alternatives
-Requires(postun): update-alternatives
-Recommends:     python-plotly
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-Pillow
+Recommends:     python-holoviews >= 1.13.2
 Recommends:     python-matplotlib
 Recommends:     python-notebook >= 5.4
-Recommends:     python-holoviews >= 1.13.2
+Recommends:     python-plotly
 BuildArch:      noarch
 %python_subpackages
 
@@ -86,6 +88,18 @@ BuildArch:      noarch
 Panel is a Python library that lets you create custom interactive web apps and
 dashboards by connecting user-defined widgets to plots, images, tables, or
 text.
+
+%package -n jupyter-panel
+Summary:        Jupyter notebook and server cofiguration for python-panel
+Group:          Development/Languages/Python
+
+%description -n jupyter-panel
+Panel is a Python library that lets you create custom interactive web apps and
+dashboards by connecting user-defined widgets to plots, images, tables, or
+text.
+
+This package contains the notebook and server extension configuration common
+to all Python flavors.
 
 %prep
 %setup -q -n panel-%{version}
@@ -98,6 +112,7 @@ sed -i '/def _build_paneljs/ a \    return' setup.py
 %if ! %{with test}
 %install
 %python_install
+%jupyter_move_config
 
 %{python_expand  # FIX HASHBANG AND LINK EXAMPLES INTO PACKAGE DOCS
 mkdir examples-%{$python_bin_suffix}
@@ -115,7 +130,12 @@ sed -i "1{s|#!/usr/bin/env python|#!%{__$python}|}" \
 %if %{with test}
 %check
 # DISABLE TESTS REQUIRING NETWORK ACCESS
-%pytest -rs -k 'not (test_loading_a_image_from_url or test_image_alt_text or test_image_link_url or test_vtk_pane_from_url or test_vtkjs_pane)'
+donttest="test_loading_a_image_from_url or test_image_alt_text or test_image_link_url or test_vtk_pane_from_url or test_vtkjs_pane"
+# https://github.com/holoviz/panel/issues/2101
+donttest+=" or test_record_modules_not_stdlib"
+# flaky async test
+donttest+=" or test_server_async_callbacks"
+%pytest -ra -k "not ($donttest)"
 %endif
 
 %post
@@ -133,6 +153,11 @@ sed -i "1{s|#!/usr/bin/env python|#!%{__$python}|}" \
 %python_alternative %{_bindir}/panel
 %{python_sitelib}/%{modname}/
 %{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+
+%files -n jupyter-panel
+%license LICENSE.txt
+%config %{_jupyter_servextension_confdir}/panel-client-jupyter.json
+
 %endif
 
 %changelog

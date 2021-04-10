@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Thu Apr  1 13:47:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Move configuration file to new jupyter-panel package in order to
+  avoid conflicts for multiple python flavors
+- Skip failing test gh#holoviz/panel#2101
+
+-------------------------------------------------------------------
+Thu Mar 18 20:42:57 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.11.1:
+  * Enhancements:
+    - Allow setting horizontal and vertical alignment separately
+      (gh#holoviz/panel#2072).
+    - Expose widgets visible property (gh#holoviz/panel#2065).
+    - Allow bind to extract dependencies and evaluate other
+      dynamic functions (gh#holoviz/panel#2056).
+    - Allow setting root_directory on FileSelector widget
+      (gh#holoviz/panel#2086).
+  * Bug fixes:
+    - Fixed loading of jQuery in BootstrapTemplate
+      (gh#holoviz/panel#2057).
+    - Fix VTK imports to ensure VTKVolume pane renders grids
+      (gh#holoviz/panel#2071).
+    - Fix loading of template resources from relative paths
+      (gh#holoviz/panel#2067).
+    - Fix Spinner component overflow (gh#holoviz/panel#2070).
+    - Handle integer column names on Perspective widget
+      (gh#holoviz/panel#2069).
+    - Fix bundling of template resources (gh#holoviz/panel#2076).
+    - Fix value_throttled in pn.depends decorator
+      (gh#holoviz/panel#2085).
+  * Compatibility: Switch GitHub OAuth to use header authorization
+    token (gh#holoviz/panel#2073).
+
+-------------------------------------------------------------------
+Thu Mar  4 23:08:08 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.11.0:
+  * Major features:
+    - A Perspective pane based on the FINOS Perspective library
+      (gh#holoviz/panel#2034).
+    - Implement --autoreload functionality for the Panel server
+      (gh#holoviz/panel#1983).
+    - Add --warm option to panel serve, useful for pre-loading
+      items into the state cache (gh#holoviz/panel#1971).
+    - Add ability to define JS modules and Template specific
+      resources (gh#holoviz/panel#1967).
+    - panel.serve now supports serving static files and Bokeh
+      apps, not just Panel apps (gh#holoviz/panel#1939).
+    - Add a TrendIndicator for conveniently showing history and
+      value of a numeric quantity (gh#holoviz/panel#1895).
+    - Add TextToSpeech widget (gh#holoviz/panel#1878).
+    - Add SpeechToText widget (gh#holoviz/panel#1880).
+    - Add loading parameter and spinners to all components
+      (gh#holoviz/panel#1730, gh#holoviz/panel#2026).
+    - Add IDOM pane to develop interactive HTML components in
+      Python (gh#holoviz/panel#2004).
+    - Add powerful new Tabulator widget for flexible and
+      configurable display of tabular data (gh#holoviz/panel#1531,
+      gh#holoviz/panel#1887).
+  * Enhancements:
+    - Add watch argument to bind function so that covers all the
+      features of pn.depends (gh#holoviz/panel#2000).
+    - Add format parameter to DatetimeRangeInput widget
+      (gh#holoviz/panel#2043).
+    - Allow ParamMethod and ParamFunction to evaluate lazily
+      (gh#holoviz/panel#1966).
+    - Add value_input parameter to TextInput widgets
+      (gh#holoviz/panel#2007).
+    - Implement Glyph3dMapper support for VTK panes
+      (gh#holoviz/panel#2002, gh#holoviz/panel#2003).
+    - Add Jupyter server extension to serve resources
+      (gh#holoviz/panel#1982).
+    - Enhancements for DarkTheme (gh#holoviz/panel#1964).
+    - Add refresh functionality to FileSelector
+      (gh#holoviz/panel#1962).
+    - Add support for Auth0 authentication
+      (gh#holoviz/panel#1934).
+    - Avoid recursive preprocessing slowing down rendering
+      (gh#holoviz/panel#1852).
+    - Add support for per-layer tooltips on DeckGL pane
+      (gh#holoviz/panel#1846).
+    - Add Viewer baseclass for custom user components
+      (gh#holoviz/panel#2045).
+  * Bug fixes:
+    - Fixed FileSelector file icon on selected files
+      (gh#holoviz/panel#2046).
+    - Drop query args when checking URLs (gh#holoviz/panel#2037).
+    - Fix Card.header_background propagation
+      (gh#holoviz/panel#2035).
+    - Disable GoldenTemplate sidebar when empty
+      (gh#holoviz/panel#2017).
+    - Ensure Card.collapsed and Accordion.active parameters are
+      synced (gh#holoviz/panel#2009).
+    - Fix inline resources when saving (gh#holoviz/panel#1956).
+    - Switch Param pane widget type when bounds (un)defined
+      (gh#holoviz/panel#1953).
+  * Compatibility:
+    - Compatibility with Bokeh>=2.3 (gh#holoviz/panel#1948,
+      gh#holoviz/panel#1988, gh#holoviz/panel#1991).
+    - Updated ECharts pane to 5.0.2 of JS library
+      (gh#holoviz/panel#2016).
+  * Documentation: Document pn.bind in API user guide
+    (gh#holoviz/panel#1973).
+- Add BuildRequires: jupyter-notebook-filesystem and install
+  jupyter notebook configuration file.
+
+-------------------------------------------------------------------
 Sun Feb 14 19:58:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 build (no scipy) 
