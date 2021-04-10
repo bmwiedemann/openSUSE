@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 29 07:08:10 EDT 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Evaluate security module before software module and
+  stop force-installing SELinux (boo#1183804)
+- 20210329
+
+-------------------------------------------------------------------
 Fri Mar 26 09:39:50 EDT 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Mark GNOME Desktop variant as beta-quality (boo#1184037)
