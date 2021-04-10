@@ -1228,4 +1228,12 @@
 - 4.5.74</comment>
     <requestid>868395</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>27a67c2e7d9fcc3417955be9ecb40d24</srcmd5>
+    <version>4.5.75</version>
+    <time>1618061173</time>
+    <user>RBrownSUSE</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>883831</requestid>
+  </revision>
 </revisionlist>

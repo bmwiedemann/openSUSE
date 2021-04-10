@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Thu Apr 8 11:47:18 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/gfxboot#51
+- remove changelog file
+- update git2log to latest version
+- remove .gitignore
+- 4.5.75
+
+--------------------------------------------------------------------
 Mon Feb 1 11:15:04 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/gfxboot#50
