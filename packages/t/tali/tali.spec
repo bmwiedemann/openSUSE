@@ -17,13 +17,13 @@
 
 
 Name:           tali
-Version:        3.38.3
+Version:        40.0
 Release:        0
 Summary:        Yahtzee Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://live.gnome.org/Tali
-Source0:        https://download.gnome.org/sources/tali/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/tali/40/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
