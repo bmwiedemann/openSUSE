@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           spyder
-Version:        4.2.5
+Version:        5.0.0
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -31,8 +31,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools >= 39.0.0
 BuildRequires:  update-desktop-files
 Requires:       %{name}-lang
+Requires:       cookiecutter >= 1.6.0
 Requires:       python3-Pygments >= 2.0
-Requires:       python3-QDarkStyle >= 2.8
+Requires:       python3-QDarkStyle >= 3.0.2
 Requires:       python3-QtAwesome >= 0.5.7
 Requires:       python3-QtPy >= 1.5.0
 Requires:       python3-Sphinx >= 0.6.6
@@ -56,11 +57,12 @@ Requires:       python3-pyls-spyder >= 0.3.2
 Requires:       python3-python-language-server >= 0.36.2
 Requires:       python3-pyxdg >= 0.26
 Requires:       python3-pyzmq >= 17
+Requires:       python3-qstylizer >= 0.1.10
 Requires:       python3-qt5 >= 5.5
 Requires:       python3-qtconsole >= 5.0.3
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-setuptools >= 39.0.0
-Requires:       python3-spyder-kernels >= 1.10.2
+Requires:       python3-spyder-kernels >= 2.0.1
 Requires:       python3-textdistance >= 4.2.0
 Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
@@ -93,11 +95,12 @@ Obsoletes:      spyder3-profiler < %{version}
 Obsoletes:      spyder3-pylint < %{version}
 BuildArch:      noarch
 %if %{with test}
+BuildRequires:  cookiecutter >= 1.6.0
 BuildRequires:  git-core
 BuildRequires:  python3-Cython >= 0.21
 BuildRequires:  python3-Pillow
 BuildRequires:  python3-Pygments >= 2.0
-BuildRequires:  python3-QDarkStyle >= 2.8
+BuildRequires:  python3-QDarkStyle >= 3.0.2
 BuildRequires:  python3-QtAwesome >= 0.5.7
 BuildRequires:  python3-QtPy >= 1.5.0
 BuildRequires:  python3-Sphinx >= 0.6.6
@@ -134,11 +137,12 @@ BuildRequires:  python3-pytest-timeout
 BuildRequires:  python3-python-language-server >= 0.36.2
 BuildRequires:  python3-pyxdg >= 0.26
 BuildRequires:  python3-pyzmq >= 17
+BuildRequires:  python3-qstylizer >= 0.1.10
 BuildRequires:  python3-qt5 >= 5.5
 BuildRequires:  python3-qtconsole >= 5.0.3
 BuildRequires:  python3-qtwebengine-qt5
 BuildRequires:  python3-scipy
-BuildRequires:  python3-spyder-kernels >= 1.10.1
+BuildRequires:  python3-spyder-kernels >= 2.0.1
 BuildRequires:  python3-sympy >= 0.7.3
 BuildRequires:  python3-textdistance >= 4.2.0
 BuildRequires:  python3-three-merge >= 0.1.1
@@ -227,7 +231,9 @@ sed -i 's/\r$//' LICENSE.txt CHANGELOG.md
 # Remove shebang for non-executable-script RPMLint warning
 sed -i -e '/^#!\//, 1d' spyder/app/restart.py
 sed -i -e '/^#!\//, 1d' spyder/utils/external/github.py
-sed -i -e '/^#!\//, 1d' spyder/plugins/ipythonconsole/scripts/conda-activate.sh
+#sed -i -e '/^#!\//, 1d' spyder/plugins/ipythonconsole/scripts/conda-activate.sh
+
+chmod -x spyder/images/*/*.svg
 
 # macOS specific script
 rm spyder/utils/check-git.sh
@@ -247,7 +253,7 @@ find spyder -name 'test*.py' -print0 | xargs -0 sed -i \
    -e 's/pytest.mark.third/pytest.mark.order(3)/'
 sed -i -e '/first/d' -e '/second/d' -e '/third/d' pytest.ini
 
-# Upstream brings its fixed version pyls and spyder-kernels for its
+# Upstream brings its fixed versions for pyls, qdarksstyle and spyder-kernels for its
 # test environment, but we want to test against installed packages.
 rm -r external-deps/*
 # disable pyls local install from bundled directory
@@ -258,9 +264,6 @@ sed -i '/Install PyLS locally/,/^if os.name/ c if False:' conftest.py
 
 %install
 %python3_install
-
-# remove windows stuff
-rm %{buildroot}%{_bindir}/spyder_win_post_install.py
 
 # install the icon
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/
@@ -331,6 +334,10 @@ donttest+=" or (test_codeeditor and test_qtbug35861)"
 donttest+=" or (test_shortcuts and test_select_all_shortcut)"
 # (* tested live) segfault (QtAwesome?)
 donttest+=" or test_apps_dialog"
+# no venvs to load in our test environment
+donttest+=" or test_load_time"
+# no online help within qtbot timeout
+donttest+=" or test_get_pydoc"
 
 # tests marked slow:
 # completes to math.hypot(cooordinates) instead of expected math.hypot(*coordinates)

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr  8 16:57:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.0.0
+  * Improved dark theme based on QDarkstyle 3.0.
+  * New light theme based on QDarkstyle 3.0.
+  * New look and feel for toolbars.
+  * New icon set based on Material Design.
+  * New API to extend core plugins, with the exception of the
+    Editor, IPython console and Projects.
+  * New plugins to manage menus, toolbars, layouts, shortcuts,
+    preferences and status bar.
+  * New architecture to access and write configuration options.
+  * New API to declare code completion providers.
+  * New registries to access actions, tool buttons, toolbars and
+    menus by their identifiers.
+ 
+
+-------------------------------------------------------------------
 Sun Mar 28 12:09:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Remove removal of early QtWebEngine import before tests. It
