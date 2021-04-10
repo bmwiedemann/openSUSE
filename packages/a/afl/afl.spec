@@ -83,11 +83,15 @@ chmod -x %{buildroot}/%{_libexecdir}/%{name}/*.o
 %ifarch %ix86 %{arm}
 %{_libexecdir}/%{name}/afl-compiler-rt-32.o
 %{_libexecdir}/%{name}/afl-llvm-rt-32.o
+%endif
+%ifarch %ix86 aarch64
 %{_libexecdir}/%{name}/afl-llvm-rt-lto-32.o
 %endif
 %{_libexecdir}/%{name}/afl-compiler-rt.o
 %{_libexecdir}/%{name}/afl-llvm-rt.o
+%ifnarch %{arm}
 %{_libexecdir}/%{name}/afl-llvm-rt-lto.o
+%endif
 %{_libexecdir}/%{name}/dynamic_list.txt
 %{_libexecdir}/%{name}/*.so
 %dir %{_datadir}/%{name}

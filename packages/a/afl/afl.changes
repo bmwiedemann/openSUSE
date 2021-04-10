@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  9 12:25:49 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix packaging for aarch64 and %arm
+
+-------------------------------------------------------------------
 Sat Apr  3 23:31:18 UTC 2021 - Niklas Haas <obs@haasn.xyz>
 
 - install `afl-clang-lto`, recommended by upstream as the best variant
