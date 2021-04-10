@@ -284,4 +284,12 @@
     <comment>- Reintroduce SLE specific mounts config, to avoid errors on non-SLE systems</comment>
     <requestid>880685</requestid>
   </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>e67fe86d3610241ab6581e743e74b8dd</srcmd5>
+    <version>20210112</version>
+    <time>1618061154</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>882551</requestid>
+  </revision>
 </revisionlist>

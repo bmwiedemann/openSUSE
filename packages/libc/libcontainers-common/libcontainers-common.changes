@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 30 08:37:09 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update common to 0.35.3
+- Update podman to 3.1.0
+- Update storage to 1.28.1
+- Update image to 5.10.5
+
+-------------------------------------------------------------------
 Tue Mar 23 09:39:45 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Reintroduce SLE specific mounts config, to avoid errors on non-SLE systems 
