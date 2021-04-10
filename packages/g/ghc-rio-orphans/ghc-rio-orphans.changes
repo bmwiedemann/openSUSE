@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  5 14:46:20 UTC 2021 - psimons@suse.com
+
+- Update rio-orphans to version 0.1.2.0.
+  ## 0.1.2.0
+
+  * Add an instance for `MonadLoggerIO` typeclass, from the `monad-logger` library
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-rio-orphans
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name rio-orphans
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1.0
+Version:        0.1.2.0
 Release:        0
 Summary:        Orphan instances for the RIO type in the rio package
 License:        MIT
@@ -34,6 +34,7 @@ BuildRequires:  ghc-resourcet-devel
 BuildRequires:  ghc-rio-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-transformers-base-devel
+BuildRequires:  ghc-unliftio-core-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
