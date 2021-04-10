@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr  5 14:46:17 UTC 2021 - psimons@suse.com
+
+- Update formatting to version 7.1.2.
+  7.1.2
+
+  * Removed direct dependency on integer-gmp, instead using very similar code from the `text` package. This changed the implementation of `build` for `Integer`, which results in better performance in some cases, and no performance degradation. See the benchmarking reports in bench/reports for more details.
+  * formatting now compiles on GHCJS (due to the change above).
+  * Added some benchmarking, starting based on code from the `string-interpolate` package.
+  * Added INLINE pragmas to many very short functions. Results in better performance in the benchmarks.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

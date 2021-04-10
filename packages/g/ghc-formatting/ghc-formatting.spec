@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-formatting
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name formatting
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        7.1.1
+Version:        7.1.2
 Release:        0
 Summary:        Combinator-based type-safe formatting (like printf() or FORMAT)
 License:        BSD-3-Clause
@@ -43,8 +43,8 @@ BuildRequires:  ghc-hspec-devel
 Combinator-based type-safe formatting (like printf() or FORMAT), modelled from
 the HoleyMonoids package.
 
-See the README at
-<https://github.com/AJChapman/formatting/blob/master/README.md> for more info.
+See the README at <https://github.com/AJChapman/formatting#readme> for more
+info.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
