@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Mar 30 08:59:41 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.18.4:
+  + tag: id3v2: fix frame size check and potential invalid reads
+  + audio: Fix gst_audio_buffer_truncate() meta handling for non-interleaved audio
+  + audioresample: respect buffer layout when draining
+  + audioaggregator: fix input_buffer ownership
+  + decodebin3: change stream selection message owner, so that the app sends the stream-selection event to the right element
+  + rtspconnection: correct data_size when tunneled mode
+  + uridecodebin3: make caps property work
+  + video-converter: Don't upsample invalid lines
+  + videodecoder: Fix racy critical when pool negotiation occurs during flush
+  + video: Convert gst_video_info_to_caps() to take self as const ptr
+  + examples: added qt core dependency for qt overlay example
+
+-------------------------------------------------------------------
 Sat Jan 16 19:08:07 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.3:

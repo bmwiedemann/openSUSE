@@ -20,10 +20,10 @@
 %define gst_branch 1.0
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 Name:           gstreamer-plugins-base
-Version:        1.18.3
+Version:        1.18.4
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 # Disable tarball source url, use _service
