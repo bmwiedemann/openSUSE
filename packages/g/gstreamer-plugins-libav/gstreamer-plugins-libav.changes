@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 30 09:07:45 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.18.4:
+  + h264 encoder: append encoder exposure to aud
+  + postproc: Fix a problem of propose_allocation when passthrough
+  + glx: Iterate over FBConfig and select 8 bit color size
+
+-------------------------------------------------------------------
 Sat Jan 16 19:40:06 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.3:
