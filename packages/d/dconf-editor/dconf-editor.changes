@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 24 09:40:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.38.3:
+  + Fix build with newer vala.
+- Drop 9272e9fb6867e71426bfd0aa5edce5ec39cf0ad4.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Thu Feb 18 16:08:38 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build with Vala 0.51.x:
+  + Add 9272e9fb6867e71426bfd0aa5edce5ec39cf0ad4.patch: Don't alter
+    or try to write GtkChild fields.
+
+-------------------------------------------------------------------
 Mon Nov 23 12:55:46 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.2:
