@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr  8 19:27:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.0.1
+  * Color handling in namespace view was moved to Spyder.
+  * PR 279 - PR: Add Python types to namespace view
+  * PR 285 - PR: Add a new dependency on decorator to fix the
+    Cython magic
+- Skip python36 flavor entirely
+
+-------------------------------------------------------------------
 Mon Feb 22 17:55:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.10.2

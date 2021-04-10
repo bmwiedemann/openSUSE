@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-spyder-kernels
-Version:        1.10.2
+Version:        2.0.1
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT
@@ -31,25 +32,26 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-# despite listed upstream (introduced by us in gh#spyder-ide/spyder-kernels#119) mock is not used anymore
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module dask-distributed}
+BuildRequires:  %{python_module decorator < 5}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel >= 5.3.0}
 BuildRequires:  %{python_module ipython >= 7.6.0}
 BuildRequires:  %{python_module jupyter_client >= 5.3.4}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq >= 17}
+BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module wurlitzer >= 1.0.3}
-BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
-BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
-BuildRequires:  %{python_module scipy if (%python-base without python36-base)}
-BuildRequires:  %{python_module xarray if (%python-base without python36-base)}
+BuildRequires:  %{python_module xarray}
 # /SECTION
 Requires:       python-cloudpickle
+Requires:       python-decorator < 5
 Requires:       python-ipykernel >= 5.3.0
 Requires:       python-ipython >= 7.6.0
 Requires:       python-jupyter_client >= 5.3.4
@@ -82,13 +84,8 @@ all inside the IDE.
 %check
 # flaky for obs
 donttest="test_dask_multiprocessing"
-# no python36-numpy and related packages in Tumbleweed
-python36_donttest=" or test_matplotlib_inline or test_umr_reload_modules"
-python36_ignorefiles=" --ignore spyder_kernels/console/tests/test_console_kernel.py \
-                       --ignore spyder_kernels/utils/tests/test_iofuncs.py \
-                       --ignore spyder_kernels/utils/tests/test_nsview.py"
 
-%pytest -k "not (${donttest} ${$python_donttest})" ${$python_ignorefiles} -ra
+%pytest -k "not (${donttest})" -ra
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
