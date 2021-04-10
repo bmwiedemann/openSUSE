@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 24 10:53:05 UTC 2020 - Noel Power <nopower@suse.com>
+
+- Fix cli 'help' handling for auth-client & ldapkrb;
+  (bsc#1172340).
+- 4.3.2
+
+-------------------------------------------------------------------
 Mon Aug 10 17:01:10 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(auth-client) into the spec file
