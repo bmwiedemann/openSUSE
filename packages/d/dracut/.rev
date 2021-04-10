@@ -1915,4 +1915,16 @@ and stuff that has no relevance to the end user (i.e CI related commits) (forwar
   * fix: shellcheck across multiple modules</comment>
     <requestid>874632</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>b5428a14997290c607d1253809bbb1d8</srcmd5>
+    <version>053+suse.93.g039ac07d</version>
+    <time>1618061198</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 053+suse.93.g039ac07d:
+  * fix(kernel-modules): optionally add /usr/lib/modules.d to initramfs
+
+- Update to version 053+suse.91.g4a0bdda1:
+  * fix(kernel-modules): optionally add /usr/lib/modules.d to initramfs (bsc#1180822)</comment>
+    <requestid>883626</requestid>
+  </revision>
 </revisionlist>
