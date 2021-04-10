@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Apr  4 23:28:01 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+
+- update to version 4.4.0:
+  * Feature: Add operation for searching for all documents that match
+    a dict fragment (see issue 300)
+  * Fix: Correctly handle queries that use fields that are also Query
+    methods, e.g. Query()['test'] for searching for documents with a
+    test field (see issue 373)
+
+- changes from version 4.3.0:
+  * Feature: Add operation for updating multiple documents:
+    update_multiple (see issue 346)
+  * Improvement: Expose type information for MyPy typechecking (PEP
+    561) (see pull request 352)
+
+-------------------------------------------------------------------
 Sat Oct 10 18:44:41 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.2.0:
