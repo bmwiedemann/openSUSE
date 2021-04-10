@@ -16,9 +16,18 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-Name:           python-nbclient
+Name:           python-nbclient%{psuffix}
 Version:        0.5.3
 Release:        0
 Summary:        A client library for executing notebooks
@@ -34,7 +43,7 @@ Requires:       python-nbformat >= 5.0
 Requires:       python-nest-asyncio
 Requires:       python-traitlets >= 4.2
 BuildArch:      noarch
-# SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets}
@@ -46,7 +55,7 @@ BuildRequires:  %{python_module pytest >= 4.1}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module traitlets >= 4.2}
 BuildRequires:  %{python_module xmltodict}
-# /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -57,22 +66,29 @@ NBClient is a tool for parameterizing andexecuting Jupyter Notebooks.
 
 %prep
 %setup -q -n nbclient-%{version}
+rm -r nbclient/tests/files/.ipynb_checkpoints
 
 %build
 %python_build
 
+%if ! %{with test}
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 # test_many_parallel_notebooks randomly fails - https://github.com/jupyter/nbclient/pull/74#issuecomment-635929953
 %pytest -k 'not test_many_parallel_notebooks'
+%endif
 
+%if ! %{with test}
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
 %{python_sitelib}/nbclient
 %{python_sitelib}/nbclient-%{version}-py*.egg-info/
+%endif
 
 %changelog
