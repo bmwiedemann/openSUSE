@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  8 17:05:58 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to Xdebug 3.0.4
+  * Fixed issue #1802: Improve xdebug.org home page
+  * Fixed issue #1944: tracing is started without trigger, when profiler
+    is also enabled
+  * Fixed issue #1947: xdebug_info() settings section does not show the
+    modes that are overridden by XDEBUG_MODE
+  * Fixed issue #1950: Assignment trace with ASSIGN_OBJ_REF crashes
+  * Fixed issue #1954: Calling xdebug_start_trace without mode including
+    tracing results in a fatal error
+
+-------------------------------------------------------------------
 Mon Feb 22 13:20:29 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to Xdebug 3.0.3

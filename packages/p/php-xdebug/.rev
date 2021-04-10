@@ -22,4 +22,12 @@
 - Xdebug can not be tested with 'make test'</comment>
     <requestid>874332</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>47396c7ba4815523239f09687926dd87</srcmd5>
+    <version>3.0.4</version>
+    <time>1618061267</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883973</requestid>
+  </revision>
 </revisionlist>
