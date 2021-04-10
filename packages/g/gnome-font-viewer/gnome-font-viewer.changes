@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 21 08:03:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 15 10:59:35 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 40.beta:
+  + Fonts 40 comes with a slight visual refresh, sporting rounded
+    bottom window corners. In addition there have been general bug
+    fixes and improvements.
+  + The About dialog now provides a link to the repository.
+  + Startup should be faster now that we use font-config's APIs
+    directly.
+  + Updated translations.
+- New build requirement: pkgconfig(libhandy-1).
+
+-------------------------------------------------------------------
 Sat Jan 25 14:09:54 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

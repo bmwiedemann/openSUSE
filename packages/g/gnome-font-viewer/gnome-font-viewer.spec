@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-font-viewer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-font-viewer
-Version:        3.34.0
+Version:        40.0
 Release:        0
 Summary:        A font viewer utility for GNOME
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-font-viewer
-Source0:        https://download.gnome.org/sources/gnome-font-viewer/3.34/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-font-viewer/40/%{name}-%{version}.tar.xz
 
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.35.1
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.9
+BuildRequires:  pkgconfig(libhandy-1)
 Conflicts:      gnome-utils < 3.3.1
 
 %description

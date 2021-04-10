@@ -262,4 +262,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767132 from dimstar)</comment>
     <requestid>767400</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>01a074aaf4236dc97daf3701bf00cb26</srcmd5>
+    <version>40.0</version>
+    <time>1618061210</time>
+    <user>RBrownSUSE</user>
+    <comment>GNOME 40 - here we come (forwarded request 880952 from dimstar)</comment>
+    <requestid>881124</requestid>
+  </revision>
 </revisionlist>
