@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  6 02:03:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- modernize spec file (move license to licensedir) 
+
+-------------------------------------------------------------------
+Wed Mar 31 20:44:50 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.1
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Note ABI of XResQueryClientIds
+  * XRes: Use _XRead instead of _XRead32 for reading pid
+
+-------------------------------------------------------------------
 Thu Oct 12 17:39:36 UTC 2017 - sndirsch@suse.com
 
 - added COPYING to %doc

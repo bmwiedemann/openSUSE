@@ -1,7 +1,7 @@
 #
 # spec file for package libXres
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           libXres
 %define lname	libXRes1
-Version:        1.2.0
+Name:           libXres
+Version:        1.2.1
 Release:        0
 Summary:        X Resource extension client library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/
-
+URL:            https://xorg.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXRes
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXRes/
-Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.bz2
+Source:         https://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(resourceproto) >= 1.0
 BuildRequires:  pkgconfig(x11)
@@ -44,11 +41,11 @@ extension to the X protocol. The Resource extension allows for X
 clients to see and monitor the X resource usage of various clients
 (pixmaps, et al).
 
-%package -n %lname
+%package -n %{lname}
 Summary:        X Resource extension client library
 Group:          System/Libraries
 
-%description -n %lname
+%description -n %{lname}
 libXRes provides an X Window System client interface to the Resource
 extension to the X protocol. The Resource extension allows for X
 clients to see and monitor the X resource usage of various clients
@@ -57,7 +54,7 @@ clients to see and monitor the X resource usage of various clients
 %package devel
 Summary:        Development files for the X Resource extension library
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
+Requires:       %{lname} = %{version}
 
 %description devel
 libXRes provides an X Window System client interface to the Resource
@@ -66,33 +63,30 @@ clients to see and monitor the X resource usage of various clients
 (pixmaps, et al).
 
 This package contains the development headers for the library found
-in %lname.
+in %{lname}.
 
 %prep
 %setup -q
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %lname -p /sbin/ldconfig
+%post -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
-%postun -n %lname -p /sbin/ldconfig
-
-%files -n %lname
-%defattr(-,root,root)
-%doc COPYING
-%_libdir/libXRes.so.1*
+%files -n %{lname}
+%license COPYING
+%{_libdir}/libXRes.so.1*
 
 %files devel
-%defattr(-,root,root)
-%_includedir/X11/*
-%_libdir/libXRes.so
-%_libdir/pkgconfig/xres.pc
-%_mandir/man3/*
+%{_includedir}/X11/*
+%{_libdir}/libXRes.so
+%{_libdir}/pkgconfig/xres.pc
+%{_mandir}/man3/*
 
 %changelog
