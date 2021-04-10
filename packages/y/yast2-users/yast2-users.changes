@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr  1 09:10:11 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Copy files from /usr/etc/skel when creating the home directory.
+- bsc#1183136 and related to bsc#1179261.
+- 4.4.0
+
+-------------------------------------------------------------------
+Thu Apr  1 08:22:28 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix missing Reset handling in auto client leading to crash in
+  autoyast UI (bsc#1184216)
+- 4.3.11
+
+-------------------------------------------------------------------
 Wed Dec  2 10:41:55 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - In the public key selector, allow to choose any device that
