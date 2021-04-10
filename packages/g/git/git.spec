@@ -52,6 +52,8 @@ Source7:        https://www.kernel.org/pub/software/scm/git/%{name}-%{version}.t
 Source8:        %{name}.keyring
 Source9:        %{name}-gui.desktop
 Source10:       %{name}-gui.png
+# PATCH-FIX-SUSE: Default to builtin add -i mode to avoid perl dependency
+Patch2:         suse-use-builtin-add-interactive.patch
 Patch3:         completion-wordbreaks.diff
 # CVE-2011-2186, bnc#698456
 Patch4:         git-prevent_xss-default.diff
@@ -76,6 +78,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  zlib-devel
 Requires:       git-core = %{version}
+Requires:       perl-Git = %{version}
 Recommends:     git-cvs
 Recommends:     git-email
 Recommends:     git-gui
@@ -123,9 +126,7 @@ Requires:       openssh-clients
 %else
 Requires:       openssh
 %endif
-Requires:       perl-Error
 Obsoletes:      git-remote-helpers < %{version}
-%{perl_requires}
 
 %description core
 Git is a fast, scalable, distributed revision control system with an
@@ -133,6 +134,20 @@ unusually rich command set that provides both high-level operations and
 full access to internals.
 
 These are the core tools with minimal dependencies.
+
+%package -n perl-Git
+Summary:        perl Bindings for Git
+Group:          Development/Libraries/Perl
+Provides:       git-core:%{perl_vendorlib}/Git
+Requires:       perl-Error
+%{perl_requires}
+
+%description -n perl-Git
+Git is a fast, scalable, distributed revision control system with an
+unusually rich command set that provides both high-level operations and
+full access to internals.
+
+This package provides the Perl interface to the Git version control system.
 
 %package doc
 Summary:        Documentation for the Git version control system
@@ -151,6 +166,7 @@ text/html formats. (The manpages are in the main package.)
 Summary:        Git tools for importing Subversion repositories
 Group:          Development/Tools/Version Control
 Requires:       git-core = %{version}
+Requires:       perl-Git = %{version}
 Requires:       perl-Term-ReadKey
 Requires:       subversion
 Requires:       subversion-perl
@@ -166,6 +182,7 @@ Requires:       cvs
 Requires:       cvsps
 Requires:       git-core = %{version}
 Requires:       perl-DBD-SQLite
+Requires:       perl-Git = %{version}
 
 %description cvs
 Tools for importing CVS repositories to the Git version control system.
@@ -214,6 +231,7 @@ Group:          Development/Tools/Version Control
 Requires:       git-core = %{version}
 # For sending mails over secure SMTP:
 Requires:       perl-Authen-SASL
+Requires:       perl-Git = %{version}
 Requires:       perl-MailTools
 Requires:       perl-Net-SMTP-SSL
 
@@ -274,6 +292,7 @@ Summary:        Git Web Interface
 Group:          Development/Tools/Version Control
 Requires:       git-core = %{version}
 Requires:       perl-CGI
+Requires:       perl-Git = %{version}
 Supplements:    packageand(git-core:apache2)
 
 %description web
@@ -284,12 +303,7 @@ directory /git/ that calls the cgi script.
 
 %prep
 %setup -q
-%patch3 -p1
-%patch4 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch10 -p1
+%autopatch -p1
 
 %build
 cat > .make <<'EOF'
@@ -355,9 +369,11 @@ install -m 644 %{SOURCE6} %{buildroot}/%{_fwdefdir}/git-daemon
 ###
 ./.make -C contrib/subtree install
 %{!?_without_docs: ./.make -C contrib/subtree install-doc}
-(find %{buildroot}%{_bindir} -type f -o -type l | grep -vE "archimport|p4|svn|cvs|email|gitk|git-daemon|gui" | sed -e s@^%{buildroot}@@)                   > bin-man-doc-files
-(find %{buildroot}%{gitexecdir} ! -type d | grep -vE "archimport|p4|svn|cvs|email|gitk|git-daemon|gui" | sed -e s@^%{buildroot}@@)               >> bin-man-doc-files
-(find %{buildroot}%{_mandir} -type f | grep -vE "archimport|p4|svn|git-cvs|email|gitk|git-daemon|gui" | sed -e s@^%{buildroot}@@ -e 's/$/*/' ) >> bin-man-doc-files
+(find %{buildroot}%{_bindir} -type f -o -type l | grep -vE "archimport|p4|svn|cvs|email|gitk|git-daemon|gui|web" | sed -e s@^%{buildroot}@@)                   > bin-man-doc-files
+(find %{buildroot}%{gitexecdir} ! -type d | grep -vE "archimport|p4|svn|cvs|email|gitk|git-daemon|gui|web" | sed -e s@^%{buildroot}@@)               >> bin-man-doc-files
+(find %{buildroot}%{_mandir} -type f | grep -vE "archimport|p4|svn|git-cvs|email|gitk|git-daemon|gui|web" | sed -e s@^%{buildroot}@@ -e 's/$/*/' ) >> bin-man-doc-files
+# Don't pick up dependencies from sample files
+find %{buildroot}/%{_datadir}/git-core/templates -type f -name "*.sample" -exec chmod a-x "{}" "+"
 %perl_process_packlist
 %if %{with docs}
 find %{buildroot}/%{_mandir} -type f -exec chmod 644 "{}" "+"
@@ -437,6 +453,7 @@ fi
 
 %files
 %dir %{_docdir}/%{name}
+%{gitexecdir}/git-add--interactive
 %{_docdir}/%{name}/README.md
 
 %files doc
@@ -505,18 +522,28 @@ fi
 %config(noreplace) %{_sysconfdir}/apache2/conf.d/gitweb.conf
 %{_datadir}/gitweb
 %{_sysconfdir}/apparmor.d
+%{gitexecdir}//git-instaweb
+%{gitexecdir}//git-web--browse
+%{_mandir}/man1/*web*1*
+%{_mandir}/man5/*web*5*
 
 %files core -f bin-man-doc-files
+%license COPYING
 %{_datadir}/git-core/
 %dir %{gitexecdir}
 %dir %{gitexecdir}/mergetools
 %{gitexecdir}/mergetools/guiffy
+# We want to prefer the builtin
+%exclude %{gitexecdir}/git-add--interactive
 %{_bindir}/git-new-workdir
-%attr(-,root,root) %{perl_vendorlib}/*
 %{_sysconfdir}/bash_completion.d/*.sh
 %{_datadir}/tcsh
 %{_sysconfdir}/profile.d/*.csh
 %{_sysconfdir}/zsh_completion.d
+
+%files -n perl-Git
 %license COPYING
+%attr(-,root,root) %{perl_vendorlib}/Git
+%attr(-,root,root) %{perl_vendorlib}/Git.pm
 
 %changelog

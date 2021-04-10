@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  8 11:29:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add suse-use-builtin-add-interactive.patch
+- split git-core perl module into git-core, move instaweb
+  to git-web, and the single remaining perl builtin to git, so
+  that git-core is perl free 
+
+-------------------------------------------------------------------
 Sat Mar 27 09:10:32 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.31.1:
