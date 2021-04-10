@@ -294,6 +294,8 @@ Patch1511:      gdb-testsuite-gdb-tui-new-layout-exp-partly-require-tcl86.patch
 Patch1512:      gdb-tui-enable-work-around-libncurses-segfault.patch
 Patch1513:      gdb-testsuite-fix-control-flow-in-gdb-reverse-insn-reverse-exp.patch
 Patch1514:      gdb-fix-use-of-invalid-pointer-in-remote-async-inferior-event-handler.patch
+Patch1515:      gdb-try-to-load-libthread_db-only-after-reading-all-shared-libraries-when-attaching.patch
+Patch1516:      gdb-build-workaround-pcre2_posix-linking-problem.patch
 
 # Backports from master
 
@@ -309,6 +311,11 @@ Patch2009:      gdb-testsuite-fix-failure-in-gdb-base-step-over-no-symbols-exp.p
 Patch2010:      gdb-powerpc-remove-512-bytes-region-limit-if-2nd-dawr-is-avaliable.patch
 Patch2011:      gdb-fix-internal-error-in-process_event_stop_test.patch
 Patch2012:      gdb-breakpoints-handle-glibc-with-debuginfo-in-create_exception_master_breakpoint.patch
+Patch2013:      gdb-testsuite-fix-gdb.arch-amd64-stap-three-arg-disp.s.patch
+Patch2014:      gdb-testsuite-fix-xfail-handling-in-gdb.threads-gcore-thread.exp.patch
+Patch2015:      gdb-threads-fix-lin_thread_get_thread_signals-for-glibc-2.28.patch
+Patch2016:      gdb-testsuite-ignore-debuginfod_urls.patch
+Patch2017:      gdb-testsuite-fix-unset-of-debuginfod_urls-in-default_gdb_init.patch
 
 # Testsuite patches
 
@@ -705,6 +712,8 @@ find -name "*.info*"|xargs rm -f
 %patch1512 -p1
 %patch1513 -p1
 %patch1514 -p1
+%patch1515 -p1
+%patch1516 -p1
 
 %patch2000 -p1
 %patch2002 -p1
@@ -718,6 +727,11 @@ find -name "*.info*"|xargs rm -f
 %patch2010 -p1
 %patch2011 -p1
 %patch2012 -p1
+%patch2013 -p1
+%patch2014 -p1
+%patch2015 -p1
+%patch2016 -p1
+%patch2017 -p1
 
 %patch2500 -p1
 %if 0%{?suse_version} > 1500

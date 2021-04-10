@@ -1752,4 +1752,23 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 - Fix license [bsc#1180786]. (forwarded request 872638 from tomdevries)</comment>
     <requestid>872715</requestid>
   </revision>
+  <revision rev="147" vrev="4">
+    <srcmd5>b54f5ead6c32c355d8a5bfe95a1afd04</srcmd5>
+    <version>10.1</version>
+    <time>1618061199</time>
+    <user>RBrownSUSE</user>
+    <comment>- Backport fixes that ignore DEBUGINFOD_URLS during testing:
+  * gdb-testsuite-ignore-debuginfod_urls.patch
+  * gdb-testsuite-fix-unset-of-debuginfod_urls-in-default_gdb_init.patch
+- Fix various testsuite fails on Factory using backports: 
+  * gdb-testsuite-fix-gdb.arch-amd64-stap-three-arg-disp.s.patch
+  * gdb-testsuite-fix-xfail-handling-in-gdb.threads-gcore-thread.exp.patch
+  * gdb-threads-fix-lin_thread_get_thread_signals-for-glibc-2.28.patch
+- Fix libthread_db problem on Factory [swo#27526, boo#1184214]:
+  * gdb-try-to-load-libthread_db-only-after-reading-all-shared-libraries-when-attaching.patch
+- Workaround libncurses pulling in libpcre2_posix:
+  * gdb-build-workaround-pcre2_posix-linking-problem.patch
+</comment>
+    <requestid>883627</requestid>
+  </revision>
 </revisionlist>

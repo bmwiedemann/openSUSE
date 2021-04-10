@@ -1,0 +1,71 @@
+[gdb/testsuite] Fix gdb.arch/amd64-stap-three-arg-disp.S
+
+On SLE-11 I ran into:
+...
+(gdb) print $_probe_arg0^M
+Cannot access memory at address 0x8000003fe05c^M
+(gdb) FAIL: gdb.arch/amd64-stap-special-operands.exp: probe: three_arg: \
+  print $_probe_arg0
+...
+
+The memory cannot be accessed because the address used to evaluate
+$_probe_arg0 at the probe point is incorrect.
+
+The address is calculated using this expression:
+...
+.asciz "-4@-4(%rbp,%ebx,0)"
+...
+which uses $ebx, but $ebx is uninitialized at the probe point.
+
+The test-case does contain a "movl $0, %ebx" insn to set $ebx to 0, but that
+insn is placed after the probe point.  We could fix this by moving the insn
+to before the probe point.  But, $ebx is also a callee-save register, so
+normally, if we modify it, we also need to save and restore it, which is
+currently not done.  This is currently not harmful, because we don't run the
+test-case further than the probe point, but it's bound to cause confusion.
+
+So, fix this instead by using $eax instead in the expression, and moving the
+insn setting $eax to 0 to before the probe point.
+
+gdb/testsuite/ChangeLog:
+
+2021-01-11  Tom de Vries  <tdevries@suse.de>
+
+	PR testsuite/26968
+	* gdb.arch/amd64-stap-three-arg-disp.S: Remove insn modifying $ebx.
+	Move insn setting $eax to before probe point.
+
+---
+ gdb/testsuite/gdb.arch/amd64-stap-three-arg-disp.S | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.arch/amd64-stap-three-arg-disp.S b/gdb/testsuite/gdb.arch/amd64-stap-three-arg-disp.S
+index cf3856f41e9..17b64048082 100644
+--- a/gdb/testsuite/gdb.arch/amd64-stap-three-arg-disp.S
++++ b/gdb/testsuite/gdb.arch/amd64-stap-three-arg-disp.S
+@@ -15,6 +15,7 @@ main:
+ 	movl	%edi, -20(%rbp)
+ 	movq	%rsi, -32(%rbp)
+ 	movl	$10, -4(%rbp)
++	movl	$0, %eax
+ #APP
+ # 8 "amd64-stap-three-arg-disp.c" 1
+ 	990: nop
+@@ -28,7 +29,7 @@ main:
+ .8byte 0
+ .asciz "test"
+ .asciz "three_arg"
+-.asciz "-4@-4(%rbp,%ebx,0)"
++.asciz "-4@-4(%rbp,%eax,0)"
+ 994: .balign 4
+ .popsection
+ 
+@@ -45,8 +46,6 @@ _.stapsdt.base: .space 1
+ 
+ # 0 "" 2
+ #NO_APP
+-	movl	$0, %eax
+-	movl	$0, %ebx
+ 	popq	%rbp
+ 	.cfi_def_cfa 7, 8
+ # SUCC: EXIT [100.0%] 
