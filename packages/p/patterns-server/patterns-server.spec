@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-server
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with betatest
 Name:           patterns-server
-Version:        20200325
+Version:        20210330
 Release:        0
 Summary:        Patterns for Installation (server patterns)
 License:        MIT
@@ -54,7 +54,6 @@ Recommends:     bind-chrootenv
 Recommends:     bind-doc
 Recommends:     dhcp
 Recommends:     dhcp-relay
-Recommends:     dhcp-tools
 Recommends:     yast2-dhcp-server
 Recommends:     yast2-dns-server
 %if 0%{?is_opensuse}

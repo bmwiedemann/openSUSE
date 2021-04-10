@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 30 11:49:30 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Remove dhcp-tools from recommended - filed a delete request for
+  that package (17 years no maintenance and relying on tcpdump
+  output)
+
+-------------------------------------------------------------------
 Wed Dec  9 18:03:04 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - kvm-server for s390x: beginning with the v5.2.0 qemu package,the
