@@ -18,13 +18,13 @@
 
 
 Name:           gnome-sound-recorder
-Version:        3.38.1
+Version:        40.0
 Release:        0
 Summary:        Sound Recorder
 License:        BSD-3-Clause AND LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://wiki.gnome.org/Design/Apps/SoundRecorder
-Source0:        https://download.gnome.org/sources/gnome-sound-recorder/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-sound-recorder/40/%{name}-%{version}.tar.xz
 Source99:       gnome-sound-recorder-rpmlintrc
 
 BuildRequires:  appstream-glib
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.39.3
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.31.6
 BuildRequires:  pkgconfig(gstreamer-player-1.0) >= 1.12
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.2
-BuildRequires:  pkgconfig(libhandy-1) >= 0.80.0
+BuildRequires:  pkgconfig(libhandy-1) >= 1.1.90
 Requires:       gjs
 Requires:       gstreamer-plugins-bad
 Requires:       gstreamer-plugins-base
