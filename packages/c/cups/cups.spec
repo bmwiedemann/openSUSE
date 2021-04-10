@@ -16,6 +16,12 @@
 #
 
 
+# Cf. https://rpm.org/user_doc/conditional_builds.html
+# by default enable testsuite (i.e. in the 'check' section run make check and make test)
+#bcond_without testsuite
+# disable testsuite for now until https://github.com/OpenPrinting/cups/issues/155 is fixed
+%bcond_with testsuite
+
 # _tmpfilesdir is not defined in systemd macros up to openSUSE 13.2
 %{!?_tmpfilesdir: %global _tmpfilesdir /usr/lib/tmpfiles.d }
 Name:           cups
@@ -23,24 +29,25 @@ Name:           cups
 # "zypper vcmp 2.3.b99 2.3.0" shows "2.3.b99 is older than 2.3.0" and
 # "zypper vcmp 2.2.99 2.3b6" show "2.2.99 is older than 2.3b6" so that
 # version upgrades from 2.2.x via 2.3.b* to 2.3.0 work:
-Version:        2.3.3
+Version:        2.3.3op2
 Release:        0
 Summary:        The Common UNIX Printing System
 License:        Apache-2.0
 Group:          Hardware/Printing
 URL:            http://www.cups.org/
-# To get Source0 go to https://www.cups.org/software.html or https://github.com/apple/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.3.3-source.tar.gz https://github.com/apple/cups/releases/download/v2.3.3/cups-2.3.3-source.tar.gz
-Source0:        https://github.com/apple/cups/releases/download/v2.3.3/cups-2.3.3-source.tar.gz
-# To get Source1 go to https://www.cups.org/software.html or https://github.com/apple/cups/releases or use e.g.
-# wget --no-check-certificate -O cups-2.3.3-source.tar.gz.sig https://github.com/apple/cups/releases/download/v2.3.3/cups-2.3.3-source.tar.gz.sig
-Source1:        https://github.com/apple/cups/releases/download/v2.3.3/cups-2.3.3-source.tar.gz.sig
-# To get Source2 go to https://www.cups.org/pgp.html
+# To get Source0 go to https://github.com/OpenPrinting/cups/releases or use e.g.
+# wget --no-check-certificate -O cups-2.3.3op2-source.tar.gz https://github.com/OpenPrinting/cups/releases/download/v2.3.3op2/cups-2.3.3op2-source.tar.gz
+Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.3.3op2/cups-2.3.3op2-source.tar.gz
+# To get Source1 go to https://github.com/OpenPrinting/cups/releases or use e.g.
+# wget --no-check-certificate -O cups-2.3.3op2-source.tar.gz.sig https://github.com/OpenPrinting/cups/releases/download/v2.3.3op2/cups-2.3.3op2-source.tar.gz.sig
+Source1:        https://github.com/OpenPrinting/cups/releases/download/v2.3.3op2/cups-2.3.3op2-source.tar.gz.sig
+# To get Source2 go to https://www.msweet.org/pgp.html
+# PGP Fingerprint: 845464660B686AAB36540B6F999559A027815955
 Source2:        cups.keyring
 # To manually verify Source0 with Source1 and Source2 do e.g.
 #   gpg --import cups.keyring
-#   gpg --list-keys | grep -1 'CUPS.org' | grep -v 'expired'
-#   gpg --verify cups-2.3.3-source.tar.gz.sig cups-2.3.3-source.tar.gz
+#   gpg --list-keys | grep -1 'Michael R Sweet' | grep -v 'expired'
+#   gpg --verify cups-2.3.3op2-source.tar.gz.sig cups-2.3.3op2-source.tar.gz
 Source102:      Postscript.ppd.gz
 Source105:      Postscript-level1.ppd.gz
 Source106:      Postscript-level2.ppd.gz
@@ -58,8 +65,6 @@ Patch10:        cups-2.1.0-choose-uri-template.patch
 Patch11:        cups-2.1.0-default-webcontent-path.patch
 # Patch12 cups-2.1.0-cups-systemd-socket.patch Use systemd socket activation properly:
 Patch12:        cups-2.1.0-cups-systemd-socket.patch
-# Patch42 Let cupsd start after possible network connection (boo#1111351)
-Patch42:        let-cupsd-start-after-network.patch
 # Patch100...Patch999 is for private patches from SUSE which are not intended for upstream:
 # Patch100 cups-pam.diff adds conf/pam.suse regarding support for PAM for SUSE:
 Patch100:       cups-pam.diff
@@ -75,9 +80,6 @@ Patch101:       cups-2.0.3-additional_policies.patch
 Patch103:       cups-1.4-do_not_strip_recommended_from_PPDs.patch
 # Patch104 cups-config-libs.patch fixes option --libs in cups-config script:
 Patch104:       cups-config-libs.patch
-# Patch105 CVE-2020-10001.patch fixes CVE-2020-10001 (bsc#1180520)
-# access to uninitialized buffer in ipp.c
-Patch105:       CVE-2020-10001.patch
 # Patch106 Fixes web UI Kerberos authentication (bsc#1175960)
 Patch106:       fix-negotiate-authentication-between-CGIs-and-scheduler.patch
 # Build Requirements:
@@ -284,8 +286,6 @@ printer drivers for CUPS.
 %patch11 -b default-webcontent-path.orig
 # Patch12 cups-2.1.0-cups-systemd-socket.patch Use systemd socket activation properly:
 #patch12 -b cups-systemd-socket.orig
-# Patch42 Let cupsd start after possible network connection (boo#1111351)
-%patch42 -p0
 # Patch100...Patch999 is for private patches from SUSE which are not intended for upstream:
 # Patch100 cups-pam.diff adds conf/pam.suse regarding support for PAM for SUSE:
 %patch100 -b cups-pam.orig
@@ -301,9 +301,6 @@ printer drivers for CUPS.
 %patch103 -b do_not_strip_recommended_from_PPDs.orig
 # Patch104 cups-config-libs.patch fixes option --libs in cups-config script:
 %patch104 -b cups-config-libs.orig
-# Patch105 CVE-2020-10001.patch fixes CVE-2020-10001 (bsc#1180520)
-# access to uninitialized buffer in ipp.c
-%patch105 -b CVE-2020-10001.orig
 # Patch106 Fixes web UI Kerberos authentication (bsc#1175960)
 %patch106 -p1
 
@@ -401,13 +398,6 @@ rm -rf %{buildroot}%{_datadir}/icons
 # because if upstream changed it 'sed' would silently no longer change the files:
 grep -q '^# Configuration ' %{buildroot}/%{_sysconfdir}/cups/cupsd.conf.default
 sed -i -e 's/^# Configuration /# Default configuration /' %{buildroot}/%{_sysconfdir}/cups/cupsd.conf.default
-# Install the systemd control files:
-mv %{buildroot}%{_unitdir}/org.cups.cupsd.path %{buildroot}%{_unitdir}/cups.path
-mv %{buildroot}%{_unitdir}/org.cups.cupsd.service %{buildroot}%{_unitdir}/cups.service
-mv %{buildroot}%{_unitdir}/org.cups.cupsd.socket %{buildroot}%{_unitdir}/cups.socket
-mv %{buildroot}%{_unitdir}/org.cups.cups-lpd.socket %{buildroot}%{_unitdir}/cups-lpd.socket
-mv %{buildroot}%{_unitdir}/org.cups.cups-lpd@.service %{buildroot}%{_unitdir}/cups-lpd@.service
-sed -i -e "s,org.cups.cupsd,cups,g" %{buildroot}%{_unitdir}/cups.service
 # rcbla aliases:
 ln -s service %{buildroot}%{_sbindir}/rccups
 ln -s service %{buildroot}%{_sbindir}/rccups-lpd
@@ -436,6 +426,19 @@ EOF
 # boundaries, compare https://bugzilla.novell.com/show_bug.cgi?id=784869
 %fdupes -s %{buildroot}/%{_datadir}/cups/templates
 
+%check
+%if %{with testsuite}
+# There appears to be some kind of race condition when running make check and make test
+# cf. https://github.com/OpenPrinting/cups/issues/155
+# We print all logs for debugging purposes if either testsuite fails
+echo "DEBUG: running make check"
+bash -c 'make %{?_smp_mflags} check; EXIT=$?; if [ $EXIT -ne 0 ]; then cat test/*_log*-$(whoami); fi; exit $EXIT'
+echo "DEBUG: running make test"
+bash -c 'make %{?_smp_mflags} test; EXIT=$?; if [ $EXIT -ne 0 ]; then cat test/*_log*-$(whoami); fi; exit $EXIT'
+%else
+echo "DEBUG: skipped running make check and make test, cf. https://github.com/OpenPrinting/cups/issues/155"
+%endif
+
 %pre -p /bin/bash
 getent group ntadmin >/dev/null || %{_sbindir}/groupadd -g 71 -o -r ntadmin
 %service_add_pre cups.service cups-lpd.socket cups.socket
@@ -453,6 +456,9 @@ getent group ntadmin >/dev/null || %{_sbindir}/groupadd -g 71 -o -r ntadmin
 %postun -p /bin/bash
 %service_del_postun cups.service cups-lpd.socket cups.socket
 
+# Removed code comments from expanded scriptlets to reduce scriptlet size in binary RPMs
+# but then users could no longer see the comments via "rpm -q --scripts cups"
+# cf. https://build.opensuse.org/request/show/879976
 %posttrans -p /bin/bash
 %if 0
 # Use a real bash script with an explicit "exit 0" at the end to be by default fail safe
