@@ -1414,4 +1414,12 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
     <comment> (forwarded request 852599 from iznogood)</comment>
     <requestid>852651</requestid>
   </revision>
+  <revision rev="180" vrev="1">
+    <srcmd5>0f684d523a65ee5263e7ebe261420dfa</srcmd5>
+    <version>40.0</version>
+    <time>1618061204</time>
+    <user>RBrownSUSE</user>
+    <comment>GNOME 40 - here we come (forwarded request 880924 from dimstar)</comment>
+    <requestid>881096</requestid>
+  </revision>
 </revisionlist>

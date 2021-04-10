@@ -1,7 +1,7 @@
 #
 # spec file for package epiphany
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           epiphany
-Version:        3.38.2
+Version:        40.0
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
-Source0:        https://download.gnome.org/sources/epiphany/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/epiphany/40/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
 BuildRequires:  fdupes
-BuildRequires:  meson >= 0.42.0
+BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
@@ -45,6 +45,7 @@ BuildRequires:  pkgconfig(hogweed) >= 3.2
 BuildRequires:  pkgconfig(icu-uc) >= 4.6
 BuildRequires:  pkgconfig(iso-codes) >= 0.35
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.4
+BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.37.1
 BuildRequires:  pkgconfig(libhandy-1) >= 0.90.0
 BuildRequires:  pkgconfig(libportal) >= 0.0.2

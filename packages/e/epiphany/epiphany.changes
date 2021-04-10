@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Sat Mar 20 08:42:51 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 40.0:
+  + Updated icon in user help.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 18 14:36:07 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Close history when Escape is pressed.
+  + Fix potential loss of session state when web process is
+    unresponsive.
+  + Icons in page popover have a wrong scale after changing scale
+    factor.
+  + Crash switching to the second page of keyboard shortcuts.
+  + Fix language preferences.
+  + Dismiss search bar when Escape is pressed.
+  + Fix overaggressive adblocker.
+  + Avoid adding ephy-pdf: URIs to history.
+  + Fix clicking links beneath floating status bar.
+
+-------------------------------------------------------------------
+Mon Feb 15 10:38:10 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 40.beta:
+  + Remember previous settings in Clear Personal Data dialog.
+  + Allow exporting bookmarks as HTML.
+  + Remove smooth scrolling preference. Smooth scrolling is now
+    always enabled.
+  + Update user help for new preferences dialog navigation.
+  + Rename mobile-capable setting to show-navigation-buttons.
+  + Update gvdb.
+  + Fix crash when Firefox Sync token is invalid.
+  + Fix floating bar blocking links on bottom of page.
+  + Disable application manager in app mode.
+  + Fix certain searches being converted into invalid addresses.
+  + Add experimental support for a few WebExtensions APIs.
+  + Several improvements to search engine configuration.
+  + Fix state issues with the back/forward buttons.
+  + Add preference to enable Google search suggestions.
+  + Select pre-filled search text in search entry.
+  + Improve construction of web app titles.
+  + Use eslint and run it on CI.
+  + Fancy new tabs bar.
+  + Several UI improvements for the tabs list popover.
+  + Remove preference to adjust position of tabs bar.
+  + Stop spinners when not visible.
+  + Update to highlights.js 10.6.0.
+  + Improve empty states of various widgets.
+- New build requirement: pkgconfig(libarchive).
+
+-------------------------------------------------------------------
+Fri Jan 22 18:53:27 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.alpha:
+  + The Safe Browsing phishing protection feature is now disabled
+    by default to comply with changes to Google's terms of service,
+    which now prohibit inclusion of API keys in open source
+    projects. You may provide your own Google API key to enable
+    this feature using the -Dgsb_api_key build option at your own
+    risk. Most Linux distributions will be unable to do this
+    without similarly violating Google's terms of service, since it
+    would require some way to inject a secret into the build. Most
+    distributions include a Google API key in Firefox or Chromium
+    packaging in apparant violation of the new terms of service;
+    such distros may consider using the same key for Epiphany as
+    well. Epiphany Technology Preview is built using a secret API
+    key. Flathub builds will likely have Safe Browsing disabled.
+  + Replace seach engine dialog with a listbox
+  + Firefox Sync dialog is no longer modal
+  + Fix primary menu popover changing size
+  + Visit most recently-viewed tab with Alt+0
+  + Fix hidpi favicons
+  + Allow history dialog to grow wider
+  + Remove Reopen Closed Tab from tab context menu
+  + Fix mnemonic conflict between Import Passwords and Import
+    Bookmarks
+  + Fix Remove button sensitivity in history dialog
+  + Remove Firefox Sync from Preferences and add it to
+    Import/Export menu
+  + Improve language selection widget
+  + Refine tab context menu
+  + Improve tab muting icons
+  + Update to highlight.js 10.5.0
+  + Update to PDF.js 2.5.207
+  + Make bookmarks properties dialog resizable
+  + Additional bookmarks popover fixes for mobile
+  + Improve web app preferences
+  + Various fixes for system web apps
+  + libportal may not be disabled using -Dlibportal=disabled
+  + Move destructive buttons in clear data and history dialogs
+  + New Epiphany app icon
+  + Add X-Purism-FormFactor to appdata and desktop file
+  + Also add X-Purism-FormFactor to web app desktop files
+  + Improve support for dark header bars in otherwise light themes
+  + Improve flatpak support for elementary OS
+  + Remove compulsory_for_desktop.
+
+-------------------------------------------------------------------
 Wed Dec  2 11:53:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.2:
