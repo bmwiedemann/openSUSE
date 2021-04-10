@@ -52,7 +52,7 @@ runlevels, each one associated with a specific set of utilities. For
 example, the normal system runlevel is 3, which starts a getty on
 virtual consoles tty1-tty6. Runlevel 5 starts xdm. Runlevel 0 shuts
 down the system. See the individual man pages for inittab, initscript,
-halt, init, powerd, reboot, runlevel, shutdown, and telinit for 
+halt, init, powerd, reboot, runlevel, shutdown, and telinit for
 more information.
 
 %package tools
@@ -62,7 +62,7 @@ Requires:       blog
 
 %description tools
 Helper tools from sysvinit that support booting, including but not exclusive
-to startpar and killproc. System V init specific programs are in the 
+to startpar and killproc. System V init specific programs are in the
 sysvinit package.
 
 %prep
@@ -111,8 +111,10 @@ popd
 # Remove files not packed:
 #
   rm -vf %{buildroot}/usr/include/initreq.h
+%if 0%{?suse_version} && %suse_version > 1500
 # pidof is part of procps-ng; let's remove the symlinks to killproc5 here
 rm -f %{buildroot}{/sbin,/bin,%{_mandir}/man8}/pidof{,.8}
+%endif
 %if 0%{?usrmerged}
 # it's all hardcoded in Makefiles so move here
 mkdir -p %{buildroot}%{_bindir}
@@ -138,18 +140,23 @@ mv %{buildroot}/sbin/* %{buildroot}%{_sbindir}
 %{sbindir}/mkill
 %{sbindir}/start_daemon
 %{_bindir}/startpar
-%doc %{_mandir}/man1/usleep.1.gz
-%doc %{_mandir}/man1/fsync.1.gz
-%doc %{_mandir}/man1/startpar.1.gz
-%doc %{_mandir}/man8/fstab-decode.8.gz
-%doc %{_mandir}/man8/checkproc.8.gz
-%doc %{_mandir}/man8/pidofproc.8.gz
-%doc %{_mandir}/man8/killall5.8.gz
-%doc %{_mandir}/man8/killproc.8.gz
-%doc %{_mandir}/man8/startproc.8.gz
-%doc %{_mandir}/man8/start_daemon.8.gz
-%doc %{_mandir}/man8/rvmtab.8.gz
-%doc %{_mandir}/man8/vhangup.8.gz
-%doc %{_mandir}/man8/mkill.8.gz
+%doc %{_mandir}/man1/usleep.1%{?ext_man}
+%doc %{_mandir}/man1/fsync.1%{?ext_man}
+%doc %{_mandir}/man1/startpar.1%{?ext_man}
+%doc %{_mandir}/man8/fstab-decode.8%{?ext_man}
+%doc %{_mandir}/man8/checkproc.8%{?ext_man}
+%doc %{_mandir}/man8/pidofproc.8%{?ext_man}
+%doc %{_mandir}/man8/killall5.8%{?ext_man}
+%doc %{_mandir}/man8/killproc.8%{?ext_man}
+%doc %{_mandir}/man8/startproc.8%{?ext_man}
+%doc %{_mandir}/man8/start_daemon.8%{?ext_man}
+%doc %{_mandir}/man8/rvmtab.8%{?ext_man}
+%doc %{_mandir}/man8/vhangup.8%{?ext_man}
+%doc %{_mandir}/man8/mkill.8%{?ext_man}
+%if 0%{?suse_version} && %suse_version <= 1500
+%{bindir}/pidof
+%{sbindir}/pidof
+%doc %{_mandir}/man8/pidof.8%{?ext_man}
+%endif
 
 %changelog

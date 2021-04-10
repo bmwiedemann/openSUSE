@@ -1428,4 +1428,12 @@ This is not strictly mandatory at this point as there are no compat symlinks.
 So just for consistency. (forwarded request 875922 from lnussel)</comment>
     <requestid>875937</requestid>
   </revision>
+  <revision rev="175" vrev="2">
+    <srcmd5>74c140d89586a8d17af58501bf44673a</srcmd5>
+    <version>2.99</version>
+    <time>1618061189</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>883548</requestid>
+  </revision>
 </revisionlist>
