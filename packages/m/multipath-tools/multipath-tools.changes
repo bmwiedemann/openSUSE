@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 01 11:01:34 UTC 2021 - mwilck@suse.com
+
+- Update to version 0.8.5+30+suse.633836e:
+  * multipathd: give up "add missing path" after multiple failures
+  (bsc#1183963)
+
+-------------------------------------------------------------------
 Thu Mar 18 09:48:47 UTC 2021 - mwilck@suse.com
 
 - Update to version 0.8.5+29+suse.5dabcd2:

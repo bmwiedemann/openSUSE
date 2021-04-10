@@ -1432,4 +1432,14 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
   (bsc#1183666)</comment>
     <requestid>879857</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>c27a39ac3f0a012de1eda1b4ae771b8b</srcmd5>
+    <version>0.8.5+30+suse.633836e</version>
+    <time>1618061153</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.8.5+30+suse.633836e:
+  * multipathd: give up &quot;add missing path&quot; after multiple failures
+  (bsc#1183963)</comment>
+    <requestid>882546</requestid>
+  </revision>
 </revisionlist>
