@@ -1479,4 +1479,12 @@ Man pages are disabled for this build, upstream disabled them for this release. 
   * testsuite fixes</comment>
     <requestid>866361</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>b6b83c9f3316c24f338f769a700be906</srcmd5>
+    <version>2.4.105</version>
+    <time>1618061172</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883802</requestid>
+  </revision>
 </revisionlist>

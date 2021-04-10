@@ -17,7 +17,7 @@
 
 
 Name:           libdrm
-Version:        2.4.104
+Version:        2.4.105
 Release:        0
 Summary:        Userspace Interface for Kernel DRM Services
 License:        MIT
@@ -28,21 +28,19 @@ URL:            https://dri.freedesktop.org/
 # Source URL:   https://dri.freedesktop.org/libdrm/
 Source:         https://dri.freedesktop.org/libdrm/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
-
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.43
 BuildRequires:  pkgconfig
 # needed for rst2man to create manual pages
 BuildRequires:  python3-docutils
 BuildRequires:  pkgconfig(pciaccess) >= 0.10
+Provides:       libdrm23 = %{version}
+Obsoletes:      libdrm23 < %{version}
 %if 0%{?with_valgrind_support:1}
 %ifarch %{ix86} x86_64 ppc ppc64 ppc64le s390x %{arm}
 BuildRequires:  pkgconfig(valgrind)
 %endif
 %endif
-
-Provides:       libdrm23 = %{version}
-Obsoletes:      libdrm23 < %{version}
 # bug437293
 %ifarch ppc64
 Obsoletes:      libdrm-64bit < %{version}
@@ -302,7 +300,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %files tools
 %{_bindir}/drmdevice
-%ifarch %arm aarch64
+%ifarch %{arm} aarch64
 %{_bindir}/etnaviv_2d_test
 %{_bindir}/etnaviv_bo_cache_test
 %{_bindir}/etnaviv_cmd_stream_test
@@ -368,10 +366,10 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %ifarch %{arm} aarch64
 %files -n libdrm_etnaviv1
-%_libdir/libdrm_etnaviv.so.1*
+%{_libdir}/libdrm_etnaviv.so.1*
 
 %files -n libdrm_exynos1
-%_libdir/libdrm_exynos.so.1*
+%{_libdir}/libdrm_exynos.so.1*
 
 %files -n libdrm_freedreno1
 %{_libdir}/libdrm_freedreno.so.1*

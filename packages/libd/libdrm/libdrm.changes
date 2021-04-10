@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr  7 23:25:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.105:
+  * amdgpu: add function of INFO ioctl for querying video caps 
+  * amdgpu: sync up amdgpu_drm.h with latest from kernel 
+  * xf86drmMode: set FB_MODIFIERS flag when modifiers are supplied 
+  * xf86drmMode: introduce drmModeGetPropertyType
+  * intel: Keep libdrm working without pread/pwrite ioctls 
+  * xf86drm: fix null pointer deref in drmGetBufInfo 
+  * intel: Add support for JSL
+  * xf86drm: warn about GEM handle reference counting 
+  * xf86drmMode: add drmIsKMS
+  * intel: add INTEL_ADLS_IDS to the pciids list 
+  * intel: sync i915_pciids.h with kernel 
+  * amdgpu: update marketing names 
+  * tests and build system fixes
+
+-------------------------------------------------------------------
 Sun Jan 24 11:45:41 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - reenabled build of manual pages (switch from xsltproc to rst2man) 
