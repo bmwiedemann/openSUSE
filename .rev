@@ -1,0 +1,84 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c63ddf9603aa108ee5d445fd84f1dd64</srcmd5>
+    <version>0.5.2</version>
+    <time>1564414120</time>
+    <user>dimstar_suse</user>
+    <comment>Statistical learning tool for neuroimaging</comment>
+    <requestid>718990</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5cc79990506c78cbf2511df977a9d154</srcmd5>
+    <version>0.6.0</version>
+    <time>1578606625</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>761939</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f2bdb7e5244cd6856b7821c864a1416d</srcmd5>
+    <version>0.6.1</version>
+    <time>1580511408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>768834</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>774d221d48daa4b08fac07f32ff45b02</srcmd5>
+    <version>0.6.2</version>
+    <time>1588186420</time>
+    <user>dimstar_suse</user>
+    <comment>- Use xdist to speedup the tests to take less than 30 mins</comment>
+    <requestid>798921</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d5c7d5cd5f9af4e7fa46d2de51f97646</srcmd5>
+    <version>0.6.2</version>
+    <time>1602762645</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>841775</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d15688abf5edb6ba5e4b7ba378213f5e</srcmd5>
+    <version>0.7.0</version>
+    <time>1605800857</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0
+- Add patch to fix aarch64 test:
+  * nilearn-fix-aarch64.patch
+- Drop upstreamed patches:
+  * fix-test_save_cmap.patch
+  * update-numpy-warning.patch
+- Disable 'test_clean_confounds' and 'test_reorder_img_mirror ' 
+  until we have a fix. See: 
+    https://github.com/nilearn/nilearn/issues/2608
+    https://github.com/nilearn/nilearn/issues/2610
+</comment>
+    <requestid>849415</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>a3fc19c0472d68b0823972c8db1b7a44</srcmd5>
+    <version>0.7.0</version>
+    <time>1605958993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849637</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e9a69594eeff45f6f221de351bdddda0</srcmd5>
+    <version>0.7.0</version>
+    <time>1612108329</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867993</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>27527a9367e91136790c9c51e3dbeab5</srcmd5>
+    <version>0.7.1</version>
+    <time>1618061273</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>884053</requestid>
+  </revision>
+</revisionlist>
