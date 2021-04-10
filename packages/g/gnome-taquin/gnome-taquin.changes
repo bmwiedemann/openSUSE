@@ -1,10 +1,16 @@
 -------------------------------------------------------------------
+Thu Feb 18 16:33:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 99dea5e7863e112f33f16e59898c56a4f1a547b3.patch: Fix build
+  with vala 0.51.x.
+
+-------------------------------------------------------------------
 Thu Oct  8 03:38:01 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.1:
   + Updated translations.
 
--------------------2------------------------------------------------
+-------------------------------------------------------------------
 Thu Oct  8 03:38:00 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.0:

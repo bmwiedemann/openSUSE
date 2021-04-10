@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-taquin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://wiki.gnome.org/Apps/Taquin
 Source0:        https://download.gnome.org/sources/gnome-taquin/3.38/%{name}-%{version}.tar.xz
-
+# PATCH-FIX-UPSTREAM 99dea5e7863e112f33f16e59898c56a4f1a547b3.patch dimstar@opensuse.org -- Fix build with vala 0.51.x
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-taquin/-/commit/99dea5e7863e112f33f16e59898c56a4f1a547b3.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
