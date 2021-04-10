@@ -1,7 +1,7 @@
 #
 # spec file for package gnuchess
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,12 +32,17 @@ Source3:        genbook.sh
 Source5:        xgnuchess
 Source6:        http://ftp.gnu.org/gnu/chess/%{name}-%{version}.tar.gz.sig
 Source7:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=chess&download=1#/gnuchess.keyring
+# PATCH-FIX-UPSTREAM txtJ07eHdR0m6.patch CVE-2021-30184 mcepl@suse.com
+# https://lists.gnu.org/archive/html/bug-gnu-chess/2021-04/msg00000.html
+# Patch from https://src.fedoraproject.org/rpms/gnuchess/c/bb2dd55d0daf.patch
+Patch0:         txtJ07eHdR0m6.patch
 BuildRequires:  expect
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
+BuildRequires:  help2man
 BuildRequires:  readline-devel
 Requires(post): info
-Requires(preun): info
+Requires(preun):info
 Suggests:       xboard
 Provides:       chess_backend
 Provides:       gchess
@@ -47,7 +52,7 @@ A worthy chess opponent that runs in text mode. Find an X11 interface
 in the xboard package.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
