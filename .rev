@@ -449,4 +449,12 @@
     <comment>Update to 3.38.2 (forwarded request 850196 from dimstar)</comment>
     <requestid>851046</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>8989bef91448d66f8494bbc7f6882216</srcmd5>
+    <version>40.0</version>
+    <time>1618061209</time>
+    <user>RBrownSUSE</user>
+    <comment>GNOME 40 - here we come (forwarded request 880949 from dimstar)</comment>
+    <requestid>881121</requestid>
+  </revision>
 </revisionlist>
