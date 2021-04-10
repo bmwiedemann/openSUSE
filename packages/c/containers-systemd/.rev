@@ -259,4 +259,13 @@
   * nginx: fix syntax error</comment>
     <requestid>879890</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>98a6cb844ec44e818c2c44abec65a0d1</srcmd5>
+    <version>0.0+git20210407.9384691</version>
+    <time>1618061200</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.0+git20210407.9384691:
+  * Add service for wsdd</comment>
+    <requestid>883629</requestid>
+  </revision>
 </revisionlist>

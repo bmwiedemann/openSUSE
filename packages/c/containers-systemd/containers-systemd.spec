@@ -16,8 +16,8 @@
 #
 
 
-%define containers bind dhcp-server dovecot fetchmail haproxy mariadb minidlna nfs-server nginx openldap postfix spamassassin squid
-%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-dovecot.service container-fetchmail.service container-haproxy.service container-mariadb.service container-minidlna.service container-nfs-server.service container-nginx.service container-openldap.service container-postfix.service container-spamassassin.service container-squid.service container-image-prune.service container-image-prune.timer
+%define containers bind dhcp-server dovecot fetchmail haproxy mariadb minidlna nfs-server nginx openldap postfix spamassassin squid wsdd
+%define container_services container-bind.service container-dhcp-server.service container-dhcp6-server.service container-dovecot.service container-fetchmail.service container-haproxy.service container-mariadb.service container-minidlna.service container-nfs-server.service container-nginx.service container-openldap.service container-postfix.service container-spamassassin.service container-squid.service container-wsdd.service container-image-prune.service container-image-prune.timer
 
 %if %{undefined service_del_postun_without_restart}
 %define service_del_postun_without_restart() \
@@ -26,7 +26,7 @@ DISABLE_RESTART_ON_UPDATE=1 \
 %endif
 
 Name:           containers-systemd
-Version:        0.0+git20210318.fea98a6
+Version:        0.0+git20210407.9384691
 Release:        0
 Summary:        Systemd service files and config files for openSUSE container
 License:        MIT
@@ -39,7 +39,7 @@ BuildArch:      noarch
 This package contains the configuration files and systemd units
 to run the openSUSE containers via podman managed by systemd.
 Currently supported are bind, dhcp-server, dovecot, fetchmail, haproxy,
-mariadb, minidlna, nginx, openldap, postfix, spamassassin and squid.
+mariadb, minidlna, nginx, openldap, postfix, spamassassin, squid and wsdd.
 Additional, there is a timer to cleanup dangling container images.
 
 %prep
@@ -153,6 +153,9 @@ done
 %{_distconfdir}/default/container-squid
 %{_sbindir}/rccontainer-squid
 %ghost %dir /srv/squid
+%{_unitdir}/container-wsdd.service
+%{_distconfdir}/default/container-wsdd
+%{_sbindir}/rccontainer-wsdd
 %{_unitdir}/container-image-prune.service
 %{_unitdir}/container-image-prune.timer
 
