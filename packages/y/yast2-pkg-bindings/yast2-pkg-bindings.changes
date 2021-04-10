@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  7 15:32:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Removed not working PkgFunctions::AddAuthData(), it is not needed
+  anymore (gh#yast/yast-pkg-bindings#107)
+- Do not try to modify the repository URL, return the libzypp
+  value directly
+- 4.4.0
+
+-------------------------------------------------------------------
 Fri Mar 12 09:39:15 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Added missing runtime dependencies ("ip" from iproute2
