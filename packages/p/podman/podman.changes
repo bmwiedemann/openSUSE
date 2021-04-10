@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 29 16:29:46 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Create docker subpackage to allow replacing docker with
+  corresponding aliases to podman.
+
+-------------------------------------------------------------------
 Wed Feb 24 13:46:35 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Drop obsolete varlink.patch 

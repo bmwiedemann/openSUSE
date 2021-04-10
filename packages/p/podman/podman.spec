@@ -54,8 +54,8 @@ BuildRequires:  pkgconfig(libsystemd)
 %ifarch ppc64le
 #!BuildIgnore: gcc-PIE
 %endif
-Recommends:     apparmor-parser
 Recommends:     apparmor-abstractions
+Recommends:     apparmor-parser
 Requires:       catatonit
 Requires:       cni
 Requires:       cni-plugins
@@ -97,6 +97,21 @@ A "basic" CNI configuration for podman that makes networking usable for basic
 setups. In more complicated setups, users are recommended to write their own
 CNI configurations.
 
+%package docker
+Summary:        Emulate Docker CLI using podman
+BuildArch:      noarch
+Requires:       %{name} = %{version}
+Conflicts:      docker
+Conflicts:      docker-ce
+Conflicts:      docker-ee
+Conflicts:      docker-latest
+Conflicts:      moby-engine
+
+%description docker
+This package installs a script named docker that emulates the Docker CLI by
+executes podman commands, it also creates links between all Docker CLI man
+pages and %{name}.
+
 %build
 # Build podman
 BUILDFLAGS="-buildmode=pie" make
@@ -109,8 +124,7 @@ make %{?_smp_mflags} docs
 # Updates must be tested manually.
 
 %install
-make DESTDIR=%{buildroot} PREFIX=/usr install
-make DESTDIR=%{buildroot} PREFIX=/usr install.completions
+make DESTDIR=%{buildroot} PREFIX=/usr install install.completions install.docker
 
 # packaged in libcontainers-common
 rm %{buildroot}/usr/share/man/man5/containers-mounts.conf.* %{buildroot}/usr/share/man/man5/oci-hooks.*
@@ -162,6 +176,14 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %files cni-config
 %config %{_sysconfdir}/cni/net.d/87-podman-bridge.conflist
 %license LICENSE
+
+%files docker
+%{_bindir}/docker
+%{_mandir}/man1/docker*.1*
+%{_tmpfilesdir}/podman-docker.conf
+
+%post docker
+%tmpfiles_create %{_tmpfilesdir}/podman-docker.conf
 
 %pre
 %service_add_pre podman.service podman.socket
