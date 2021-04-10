@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-calendar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-calendar
-Version:        3.38.2
+Version:        40.0
 Release:        0
 Summary:        A calendar application for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://wiki.gnome.org/Design/Apps/Calendar
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-calendar/40/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.2
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.17.1
 BuildRequires:  pkgconfig(libedataserverui-1.2) >= 3.17.1
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.4
-BuildRequires:  pkgconfig(libhandy-0.0) >= 0.0.9
+BuildRequires:  pkgconfig(libhandy-1) >= 0.0.9
 BuildRequires:  pkgconfig(libical) >= 3.0.5
 BuildRequires:  pkgconfig(libsoup-2.4)
 

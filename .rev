@@ -283,4 +283,12 @@
     <comment></comment>
     <requestid>856942</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3e7158b2221d0147daed0594caf263b6</srcmd5>
+    <version>40.0</version>
+    <time>1618061208</time>
+    <user>RBrownSUSE</user>
+    <comment>GNOME 40 - here we come (forwarded request 880942 from dimstar)</comment>
+    <requestid>881115</requestid>
+  </revision>
 </revisionlist>
