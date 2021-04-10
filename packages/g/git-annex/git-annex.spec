@@ -17,13 +17,13 @@
 
 
 Name:           git-annex
-Version:        8.20210310
+Version:        8.20210330
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://github.com/peti/git-annex/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         atto.patch
+Patch0:         persistent.patch
 BuildRequires:  bash-completion
 BuildRequires:  chrpath
 BuildRequires:  curl

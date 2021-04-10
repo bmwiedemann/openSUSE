@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Apr  6 08:36:35 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add persistent.patch - support new persistent library
+
+-------------------------------------------------------------------
+Wed Mar 31 14:32:42 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- drop atto.patch 
+
+-------------------------------------------------------------------
+Wed Mar 31 14:28:17 UTC 2021 - psimons@suse.com
+
+- Update git-annex to version 8.20210330.
+  git-annex (8.20210330) upstream; urgency=medium
+
+    * Behavior change: When autoenabling special remotes of type S3, weddav,
+      or glacier, do not take login credentials from environment variables,
+      as the user may not be expecting the autoenable to happen, or may
+      have those set for other purposes and not intend git-annex to use them.
+    * New annex.supportunlocked config that can be set to false to avoid
+      some expensive things needed to support unlocked files, if you do not
+      use them.
+    * Fix bug importing from a special remote into a subdirectory more than
+      one level deep, which generated unusual git trees that could confuse
+      git merge.
+    * borg: Fix a bug that prevented importing keys of type URL and WORM.
+    * borg: Support importing files that are hard linked in the borg backup.
+    * export: When a submodule is in the tree to be exported, skip it.
+    * import: When the previously exported tree contained a submodule,
+      preserve it in the imported tree so it does not get deleted.
+    * export --json: Fill in the file field.
+    * rmurl: When youtube-dl was used for an url, it no longer needs to be
+      prefixed with "yt:" in order to be removed.
+    * rmurl: If an url is both used by the web and also claimed by another
+      special remote, fix a bug that caused the url to to not be removed.
+    * unregisterurl: Fix a bug that caused an url to not be unregistered
+      when it is claimed by a special remote other than the web.
+    * whereis: Don't include yt: prefix when showing url to content
+      retrieved with youtube-dl.
+    * webdav: Work around some buggy webdav server behavior involving
+      renaming files.
+    * Make --debug also enable debugging in child git-annex processes.
+    * fsck: When --from is used in combination with --all or similar options,
+      do not verify required content, which can't be checked properly when
+      operating on keys.
+    * Sped up git-annex init in a clone of an existing repository.
+    * Improved display of errors when accessing a git http remote fails.
+    * Fix build with attoparsec-0.14.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 30 Mar 2021 13:01:17 -0400
+
+-------------------------------------------------------------------
 Thu Mar 25 09:47:23 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add atto.patch fixing build with attoparsec-0.14+ 
