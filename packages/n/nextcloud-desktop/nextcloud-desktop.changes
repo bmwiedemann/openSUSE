@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Thu Apr  8 18:18:51 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.2.0
+  - No changelog from upstream at this time.
+- Drop nextcloud-desktop-fix-rpath.patch because RPATH no more in 
+  CMakeLists.
+- Changes from 3.2.0-rc3
+  - desktop#3015 Update documentation for the account wizard
+  - desktop#3040 Don't deploy bearer plugin on MacOS
+  - desktop#3042 Temp fix for vfs failure.
+  - desktop#3043 Fix VFS CfAPI Syncroot Register Error.
+  - desktop#3049 Bump version to 3.1.83.
+- Changes from 3.2.0-rc2
+  - desktop#2505 Status feature
+  - desktop#2967 Add missing error handling for downloads of client side encryption
+  - desktop#2976 Split content of User::isValueableActivity()
+  - desktop#2981 Refresh Windows download dialog progress when hydrating a placeholder
+  - desktop#2989 Display the content of the login dialog correct
+  - desktop#2990 Fix crash when trying to open the folder creation dialog
+  - desktop#2995 Repair basic auth support
+  - desktop#2998 Fix incorrect type when reading the 'logExpire' property from config.
+  - desktop#2999 Don't customize settings dialog palette
+  - desktop#3009 Don't check against product name if checking server version
+  - desktop#3010 CFAPI: Handle cancelation of hydration requests
+  - desktop#3016 Fix for Windows CreateFile long path
+  - desktop#3020 Increase logging around file removal events
+  - desktop#3025 Enable high dpi scaling on all platforms
+  - desktop#3028 Check reading from journal was successful before remove placeholder
+  - desktop#3029 L10n: Change sync message
+- Changes from 3.2.0-rc1
+  - desktop#2700 Major engine update
+  - desktop#2725 Make monochrome icons the default on Linux and Mac OS.
+  - desktop#2726 UI improvements: Settings dialog
+  - desktop#2732 Replace dots with ellipses and add spaces.
+  - desktop#2733 Move space in "owncloudadvancedsetuppage.cpp"
+  - desktop#2734 Move space in "folderwizard.cpp"
+  - desktop#2735 Change the quotation marks
+  - desktop#2739 Fixed the autostart for AppImages. See #2504.
+  - desktop#2748 Removed translation for "etag" and changed spelling
+  - desktop#2749 Changed triple dot to ellipsis
+  - desktop#2759 Add support for Hirsute
+  - desktop#2778 Windows cfapi backend for vfs
+  - desktop#2781 Cherry pick 2020 w53
+  - desktop#2793 XAttr backend for VFS
+  - desktop#2794 Remove NO_SHIBBOLETH flag and dead code
+  - desktop#2799 E2ee root folder remove issue
+  - desktop#2800 Fix CfAPI wrapper build in Win32 mode
+  - desktop#2801 Fix CfAPI Win32 build
+  - desktop#2814 Add push notifications for file changes
+  - desktop#2815 Update Github issue template and documentation with the new 3.1 option to "Create Debug Archive".
+  - desktop#2821 E2EE fix upload parallelism issue.
+  - desktop#2823 Repair chunked uploads
+  - desktop#2824 Fix e2ee folder move issue
+  - desktop#2826 Reference coding style wiki page from CONTRIBIUTING.md
+  - desktop#2827 Integrate the version suffix to the MSI filename
+  - desktop#2834 Compile nextcoud gui as separate library
+  - desktop#2840 Avoid keeping Account alive via a shared ptr in ClientSideEncryption
+  - desktop#2844 Handle SVG branded clients
+  - desktop#2845 Default to colored systray on linux
+  - desktop#2853 E2ee fix rename root folder issue & Fix upload stuck issue due to incorrect Lock/Unlock sequence
+  - desktop#2859 Fix build against Qt 5.15.3
+  - desktop#2860 Removed blank before colon
+  - desktop#2864 Fixes for wizard advanced setup
+  - desktop#2865 VFS CfAPI implementation shouldn't get stuck
+  - desktop#2867 Start file conflict resolve dialog asynchronous
+  - desktop#2868 Don't treat new folders in unpinned folders as files to dehydrate
+  - desktop#2872 Use push notifications for Tray activities/notifications fetch trigger.
+  - desktop#2874 Reduce exempt labels list to give a chance to stale bot to do something
+  - desktop#2875 Specify PUBLIC for the link targets to make them visible to windeployqt
+  - desktop#2877 Revert "Specify PUBLIC for the link targets to make them visible to w…
+  - desktop#2892 Repair E2EE on sync folders which don't point to the root of the server on the remote end
+  - desktop#2894 Documentation: break line in config example.
+  - desktop#2895 Improve wizard ui
+  - desktop#2897 Allow creation of new folders from the Settings Dialog.
+  - desktop#2900 Load the theme resource explictly
+  - desktop#2901 Win tests compilation fix.
+  - desktop#2904 Move FolderCreationDialog into the OCC namespace
+  - desktop#2906 Validate sensitive URLs to onle allow http(s) schemes.
+  - desktop#2914 Configuration Options for Windows Registry
+  - desktop#2919 Validate the providers ssl certificate
+  - desktop#2925 Fix incorrect logger output for non-Latin strings.
+  - desktop#2928 Add missing override specifier
+  - desktop#2931 WIP: Build Instructions
+  - desktop#2935 Do not add debug build to startup programs.
+  - desktop#2937 Stale: issue must have bug and must not have approved label
+  - desktop#2948 Fix crash when opening conflict dialog
+  - desktop#2949 Move from stale bot to stale action
+  - desktop#2951 Log error message from CFAPI
+  - desktop#2958 VFS Windows: Fix download of large files
+  - desktop#2972 Do no include glib.h with extern C
+  - desktop#2979 Do not include glib.h with extern C (2)
+  - desktop#2986 Bump version to 3.1.81
+
+-------------------------------------------------------------------
 Sat Feb 20 10:24:03 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.3:

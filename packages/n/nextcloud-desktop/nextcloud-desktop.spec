@@ -19,7 +19,7 @@
 %define soname  libnextcloudsync
 %define sover   0
 Name:           nextcloud-desktop
-Version:        3.1.3
+Version:        3.2.0
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -27,8 +27,6 @@ Group:          Productivity/Networking/File-Sharing
 URL:            https://nextcloud.com/
 Source:         https://github.com/nextcloud/desktop/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        sysctl-sync-inotify.conf
-# PATCH-FIX-OPENSUSE nextcloud-desktop-fix-rpath.patch sor.alexei@meowr.ru -- Fix RPATH.
-Patch0:         nextcloud-desktop-fix-rpath.patch
 # PATCH-FIX-OPENSUSE nextcloud-desktop-remove-datetime.patch sor.alexei@meowr.ru -- Remove __TIME__ and __DATE__.
 Patch1:         nextcloud-desktop-remove-datetime.patch
 BuildRequires:  AppStream
@@ -45,7 +43,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  qtkeychain-qt5-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5KIO) >= 5.16
 BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.12
@@ -175,17 +173,15 @@ Dolphin filemanager to display overlay icons.
 
 %prep
 %setup -q -n desktop-%{version}
-%patch0 -p1
 %patch1 -p1
 cp -a %{SOURCE1} sysctl-sync-inotify.conf
 
 %build
 %cmake \
 %if 0%{?is_opensuse}
-  -DWITH_DOC=ON          \
-  -DNO_SHIBBOLETH=1 \
+  -DWITH_DOC=ON \
+  -DNO_SHIBBOLETH=1
 %endif
-  -DCMAKE_SKIP_RPATH=OFF
 %cmake_build
 
 %install
@@ -234,6 +230,7 @@ done
 %dir %{_datadir}/cloud-providers/
 %{_datadir}/cloud-providers/com.nextcloudgmbh.Nextcloud.ini
 %{_datadir}/dbus-1/services/com.nextcloudgmbh.Nextcloud.service
+%{_datadir}/mime/packages/nextcloud.xml
 
 %files lang
 %{_datadir}/nextcloud/i18n/
@@ -246,13 +243,12 @@ done
 %files -n %{soname}%{sover}
 %license COPYING*
 %{_libdir}/%{soname}.so.*
-%dir %{_libdir}/nextcloud/
-%{_libdir}/nextcloud/libocsync.so.*
+%{_libdir}/libnextcloud_csync.so.*
 
 %files -n %{soname}-devel
 %{_includedir}/nextcloudsync/
 %{_libdir}/%{soname}.so
-%{_libdir}/nextcloud/libocsync.so
+%{_libdir}/libnextcloud_csync.so
 
 %files -n nautilus-extension-nextcloud
 %dir %{_datadir}/nautilus-python/
