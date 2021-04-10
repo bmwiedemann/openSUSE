@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  6 16:04:44 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Hide the abort button when the network client is called
+  (bsc#1183586).
+- 4.4.0
+
+-------------------------------------------------------------------
 Fri Mar  5 13:36:44 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Allow registering system again during firstboot stage
