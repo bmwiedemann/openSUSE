@@ -25,7 +25,7 @@ Group:          System/Management
 URL:            https://github.com/numactl/numactl/releases
 Source0:        https://github.com/numactl/numactl/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
-# PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
+# PATCH-FIX-OPENSUSE -- Avoid segfault when no node can be found in sysfs
 Patch1:         0001-Fixed-segfault-when-no-node-could-be-found-in-sysfs-.patch
 Patch2:         numactl-clearcache-pie.patch
 

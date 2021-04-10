@@ -553,4 +553,13 @@
     <comment>- sysmacros.patch: Include &lt;sys/sysmacros.h&gt; for major/minor (bsc#1181571)</comment>
     <requestid>868194</requestid>
   </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>6e76bd8b06ed64367e05780f9ba460f3</srcmd5>
+    <version>2.0.14</version>
+    <time>1618061177</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 2.0.14 (SLE-17217):
+- sysmacros.patch: Include &lt;sys/sysmacros.h&gt; for major/minor (bsc#1181571) (bsc#1183796)</comment>
+    <requestid>883901</requestid>
+  </revision>
 </revisionlist>
