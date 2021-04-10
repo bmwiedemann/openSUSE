@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-boxes
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,22 +22,16 @@
 %define govf_sover 0.1
 %define gfrdp_sover 0.1
 Name:           gnome-boxes
-Version:        3.38.2
+Version:        40.0
 Release:        0
 Summary:        A GNOME 3 application to access remote or virtual systems
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/Boxes
-Source0:        https://download.gnome.org/sources/gnome-boxes/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-boxes/40/%{name}-%{version}.tar.xz
 
 # PATCH-FEATURE-OPENSUSE fcrozat@suse.com -- Ensure Tumbleweed is listed as recommended distribution
 Patch0:         gnome-boxes-opensuse.patch
-# PATCH-FATURE-OPENSUSE gnome-boxes-system-libhandy.patch dimstar@opensuse.org -- Revert the way upstream introduced the linhandy submodule in 3.38 (master is solved better)
-Patch1:         gnome-boxes-system-libhandy.patch
-# PATCH-FEATURE-OPENSUSE gnome-boxes-libhandy-as-submodule.patch dimstar@opensuse.org -- Convert libhandy to submodule, the master branch way
-Patch2:         gnome-boxes-libhandy-as-submodule.patch
-# PATCH-FEATURE-OPENSUSE gnome-boxes-libhandy-1.patch dimstar@opensuse.org -- Port to libhandy-1, taken from git master
-Patch3:         gnome-boxes-libhandy-1.patch
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
@@ -60,7 +54,7 @@ BuildRequires:  pkgconfig(libosinfo-1.0) >= 1.7
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.38
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.9
-BuildRequires:  pkgconfig(libvirt-gconfig-1.0) >= 2.0.0
+BuildRequires:  pkgconfig(libvirt-gconfig-1.0) >= 4.0.0
 BuildRequires:  pkgconfig(libvirt-gobject-1.0) >= 3.0.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(spice-client-gtk-3.0) >= 0.32
@@ -173,7 +167,8 @@ search results from Boxes.
 translation-update-upstream
 
 %build
-%meson
+%meson \
+  -Drdp=true
 %meson_build
 
 %check
