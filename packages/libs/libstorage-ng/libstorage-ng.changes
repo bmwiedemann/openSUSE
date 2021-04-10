@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Wed Apr 7 14:14:26 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#802
+- use exfat tools in /usr/sbin to work with both exfat-utils and
+  exfatprogs (gh#openSUSE/yast-storage-ng#1214)
+- 4.3.106
+
+--------------------------------------------------------------------
+Wed Mar 31 12:24:33 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Translated using Weblate (Spanish) (bsc#1149754)
+- 4.3.105
+
+--------------------------------------------------------------------
 Mon Mar 29 10:32:24 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#801
