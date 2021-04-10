@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  7 11:06:45 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Hide the abort button when the network client is called
+  (bsc#1183586).
+- 4.4.0
+
+-------------------------------------------------------------------
 Thu Mar 18 16:33:19 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Do not create zypp cache symlink when running in installed

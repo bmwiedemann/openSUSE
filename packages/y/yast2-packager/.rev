@@ -3040,4 +3040,12 @@
     <comment>submit new version 4.3.20</comment>
     <requestid>880127</requestid>
   </revision>
+  <revision rev="409" vrev="1">
+    <srcmd5>10f714128dfb285dabe2e4007bbfbf94</srcmd5>
+    <version>4.4.0</version>
+    <time>1618061166</time>
+    <user>RBrownSUSE</user>
+    <comment>submit new version 4.4.0</comment>
+    <requestid>883636</requestid>
+  </revision>
 </revisionlist>
