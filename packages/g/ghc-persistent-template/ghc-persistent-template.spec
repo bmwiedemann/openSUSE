@@ -17,35 +17,16 @@
 
 
 %global pkg_name persistent-template
-%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.9.1.0
+Version:        2.12.0.0
 Release:        0
 Summary:        Type-safe, non-relational, multi-backend persistence
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-aeson-devel
-BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-http-api-data-devel
-BuildRequires:  ghc-monad-control-devel
-BuildRequires:  ghc-monad-logger-devel
-BuildRequires:  ghc-path-pieces-devel
-BuildRequires:  ghc-persistent-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-template-haskell-devel
-BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-th-lift-instances-devel
-BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-unordered-containers-devel
 ExcludeArch:    %{ix86}
-%if %{with tests}
-BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-hspec-devel
-%endif
 
 %description
 Hackage documentation generation is not reliable. For up to date documentation,
@@ -64,16 +45,12 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
-%ghc_lib_build
+%ghc_lib_build_without_haddock
 
 %install
 %ghc_lib_install
-
-%check
-%cabal_test
 
 %post devel
 %ghc_pkg_recache

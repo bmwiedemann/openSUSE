@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 31 14:28:44 UTC 2021 - psimons@suse.com
+
+- Update persistent-template to version 2.12.0.0.
+  ## 2.12.0.0
+
+  * Decomposed `HaskellName` into `ConstraintNameHS`, `EntityNameHS`, `FieldNameHS`. Decomposed `DBName` into `ConstraintNameDB`, `EntityNameDB`, `FieldNameDB` respectively. [#1174](https://github.com/yesodweb/persistent/pull/1174)
+  * [#1214](https://github.com/yesodweb/persistent/pull/1214):
+      * This package was asborbed into `persistent` itself.
+
+-------------------------------------------------------------------
 Tue Mar 23 08:32:38 UTC 2021 - psimons@suse.com
 
 - Update persistent-template to version 2.9.1.0 revision 1.

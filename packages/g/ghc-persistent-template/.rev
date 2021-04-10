@@ -240,4 +240,12 @@
     <comment>automated update of haskell stack</comment>
     <requestid>881543</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>e6af4dc2c5c93b0b3e5f22688d00441f</srcmd5>
+    <version>2.12.0.0</version>
+    <time>1618061239</time>
+    <user>RBrownSUSE</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>883522</requestid>
+  </revision>
 </revisionlist>
