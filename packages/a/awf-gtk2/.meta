@@ -1,0 +1,5 @@
+<package name="awf-gtk2" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:common:Factory" package="awf-gtk2"/>
+</package>
