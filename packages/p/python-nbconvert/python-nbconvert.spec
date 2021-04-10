@@ -16,9 +16,18 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define doc_ver 6.0.7
-Name:           python-nbconvert
+Name:           python-nbconvert%{psuffix}
 Version:        6.0.7
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
@@ -55,7 +64,7 @@ Suggests:       %{name}-latex
 Provides:       python-jupyter_nbconvert = %{version}
 Obsoletes:      python-jupyter_nbconvert < %{version}
 BuildArch:      noarch
-# SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Pebble}
 BuildRequires:  %{python_module Pygments}
@@ -70,6 +79,7 @@ BuildRequires:  %{python_module jupyterlab-pygments}
 BuildRequires:  %{python_module mistune >= 0.7.4}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nbclient >= 0.5}
+BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat >= 4.4}
 BuildRequires:  %{python_module pandocfilters >= 1.4.1}
 BuildRequires:  %{python_module pyppeteer}
@@ -77,7 +87,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module tornado >= 4.0}
 BuildRequires:  %{python_module traitlets >= 4.2}
-# /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -138,13 +148,14 @@ rm docs/html/.buildinfo
 sed -i -e '/^#!\//, 1d' nbconvert/nbconvertapp.py
 sed -i -e '/^#!\//, 1d' nbconvert/filters/filter_links.py
 
-# Ignore stupid maxversion requirements
+# Ignore maxversion requirements
 sed -i -e "/nbclient/ s/,<.*'/'/" setup.py
 
 %build
 %python_build
 
 %install
+%if ! %{with test}
 %python_install
 
 mkdir -p %{buildroot}%{_docdir}/jupyter-nbconvert
@@ -154,21 +165,20 @@ cp -r docs/html %{buildroot}%{_docdir}/jupyter-nbconvert/
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_docdir}/jupyter-nbconvert/
+%endif
 
+%if %{with test}
 %check
 pushd docs
 export LANG=en_US.UTF-8
-export PYTHONDONTWRITEBYTECODE=1
-export JUPYTER_PATH=%{buildroot}%{_datadir}/jupyter
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+%{python_expand # installed package in :test flavor
 $python -B -m ipykernel.kernelspec --user
 pytest-%{$python_bin_suffix} -v -k 'not network' --pyargs nbconvert
 }
 popd
-# naughty test suite: this empty directory in the now deprecated template folder
-# is created with mode 700 during the tests and causes other packages to fail
-rmdir %{buildroot}%{_datadir}/jupyter/nbconvert/templates/html
+%endif
 
+%if ! %{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.md
@@ -178,6 +188,7 @@ rmdir %{buildroot}%{_datadir}/jupyter/nbconvert/templates/html
 %files -n jupyter-nbconvert
 %license LICENSE
 %{_bindir}/jupyter-nbconvert
+%dir %{_datadir}/jupyter/
 %dir %{_datadir}/jupyter/nbconvert
 %{_datadir}/jupyter/nbconvert/templates
 
@@ -189,5 +200,6 @@ rmdir %{buildroot}%{_datadir}/jupyter/nbconvert/templates/html
 %dir %{_docdir}/jupyter-nbconvert/
 %{_docdir}/jupyter-nbconvert/nbconvert.pdf
 %{_docdir}/jupyter-nbconvert/html
+%endif
 
 %changelog

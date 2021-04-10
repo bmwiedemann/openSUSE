@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  8 22:30:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Actually break the cycle: test flavor needs a psuffix
+
+-------------------------------------------------------------------
+Wed Mar 31 14:30:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Test in multibuild in order to break build dependency cycle with
+  nbclient
+
+-------------------------------------------------------------------
 Sun Feb 28 22:22:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add missing runtime requirement of nbclient. Keep the minversion
