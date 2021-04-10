@@ -1,7 +1,7 @@
 #
 # spec file for package adaptec-firmware
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%{?!_firmwaredir:%define _firmwaredir /lib/firmware}
 
 Name:           adaptec-firmware
 Summary:        Firmware files for Adaptec SAS Cards (AIC94xx Series)

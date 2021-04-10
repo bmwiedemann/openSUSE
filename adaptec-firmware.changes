@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Mar 21 10:42:29 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix build on Leap which does not have %_firmwaredir
+
+-------------------------------------------------------------------
 Mon Oct 19 12:47:57 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - Use %_firmwaredir
