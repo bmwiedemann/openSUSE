@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr  4 13:50:58 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Update package to 0.9.0
+  Highlights include:
+  + multi-client support
+  + supports newer glsl version
+  + add ETC2 compressed formats
+  + performance improvements
+  + misc. bug fixes
+
+-------------------------------------------------------------------
 Wed Feb 12 14:47:31 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Update package to 0.8.2

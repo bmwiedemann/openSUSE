@@ -105,4 +105,19 @@
     <comment></comment>
     <requestid>773741</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3d814a0af7a6d5769a5ee5367ce7d948</srcmd5>
+    <version>0.9.0</version>
+    <time>1618061176</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update package to 0.9.0
+  Highlights include:
+  + multi-client support
+  + supports newer glsl version
+  + add ETC2 compressed formats
+  + performance improvements
+  + misc. bug fixes
+</comment>
+    <requestid>883891</requestid>
+  </revision>
 </revisionlist>
