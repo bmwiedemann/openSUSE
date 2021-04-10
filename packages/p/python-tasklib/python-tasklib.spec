@@ -1,7 +1,7 @@
 #
 # spec file for package python-tasklib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tasklib
-Version:        2.1.1
+Version:        2.3.0
 Release:        0
 Summary:        Python Task Warrior library
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/robgolding/tasklib
 Source:         https://files.pythonhosted.org/packages/source/t/tasklib/tasklib-%{version}.tar.gz
 Patch0:         disable-windows-test.patch
