@@ -77,6 +77,9 @@ This package the contains shared library for testing component.
 %patch1 -p1
 
 %build
+# workaround for building with GCC11, issue opened upstream https://github.com/BelledonneCommunications/bctoolbox/issues/13
+export CFLAGS="%(echo %{optflags}) -Wno-array-parameter"
+export CXXFLAGS="$CFLAGS"
 %cmake -DENABLE_STATIC=OFF
 %cmake_build
 

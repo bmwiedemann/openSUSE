@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  7 07:02:10 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Workaround to allow building with GCC11 
+
+-------------------------------------------------------------------
 Wed Mar 31 11:32:51 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.5.0:
