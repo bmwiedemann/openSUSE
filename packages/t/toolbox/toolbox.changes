@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 29 09:36:19 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.1+git20210329.d14ac82:
+  * Fix localtime and mount sys, e.g., for tracing
+  * Fix 'toolbox list' returning an error code even if working
+
+-------------------------------------------------------------------
 Thu Mar 11 13:49:05 UTC 2021 - kukuk@suse.com
 
 - Update to version 2.1+git20210311.15cb3ad:
