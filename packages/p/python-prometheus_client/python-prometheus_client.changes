@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr  8 17:16:38 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.10.1 release
+  * [BUGFIX] Support lowercase prometheus_multiproc_dir environment 
+    variable in mark_process_dead.
+
+-------------------------------------------------------------------
+Mon Apr  5 23:44:20 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to upstream 0.10.0 release
+  * [CHANGE] Python 2.6 is no longer supported. #592
+  * [CHANGE] The prometheus_multiproc_dir environment variable is 
+    deprecated in favor of PROMETHEUS_MULTIPROC_DIR. #624
+  * [FEATURE] Follow redirects when pushing to Pushgateway using
+    passthrough_redirect_handler. #622
+  * [FEATURE] Metrics support a clear() method to remove all children. #642
+  * [ENHANCEMENT] Tag support in GraphiteBridge. #618
+
+-------------------------------------------------------------------
 Fri Nov 20 12:56:42 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
 
 - Update to upstream 0.9.0 release

@@ -1,7 +1,7 @@
 #
 # spec file for package python-prometheus_client
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-prometheus_client
-Version:        0.9.0
+Version:        0.10.1
 Release:        0
 Summary:        Python client for the Prometheus monitoring system
 License:        Apache-2.0
