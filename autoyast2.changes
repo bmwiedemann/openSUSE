@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Apr  8 16:13:44 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
+
+- fix autoyast profile parser (bsc#1184508)
+- 4.4.2
+
+-------------------------------------------------------------------
+Wed Apr  7 11:50:33 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not crash while sorting the list of modules to be processed
+  during the 2nd stage (bsc#1184316).
+- Prevent AutoYaST UI from crashing when trying to apply a module
+  changes (bsc#1184429).
+- Use 'module' instead of 'listentry' when exporting pre-modules
+  and post-modules lists (bsc#1184342).
+- Show the <ask-list> only once during autoinstallation
+  (bsc#1184317).
+- Add the 'mkfs_options' element to the schema (bsc#1184268).
+- 4.4.1
+
+-------------------------------------------------------------------
+Wed Apr  7 10:40:15 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
+
+- consistent handling of empty elements in autoyast profile (bsc#1180968)
+- 4.4.0
+
+-------------------------------------------------------------------
+Thu Apr  1 10:27:56 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix crash during using autoyast UI (bsc#1184216)
+- 4.3.76
+
+-------------------------------------------------------------------
 Thu Mar 18 09:25:15 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
 
 - fix handling of empty signature-handling element in autoyast
