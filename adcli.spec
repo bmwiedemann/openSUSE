@@ -1,7 +1,7 @@
 #
 # spec file for package adcli
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,19 @@
 #
 
 
+%define filehash 30880d967e79cee789194435e70fbf30
+%define sighash 1075c948917caa32464c15ec9b6c5caf
 Name:           adcli
-Version:        0.9.0+git.0.1b15280
+Version:        0.9.1
 Release:        0
 Summary:        Tool for performing actions on an Active Directory domain
 License:        LGPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://gitlab.freedesktop.org/realmd/adcli
-Source0:        %{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+Source0:        https://gitlab.freedesktop.org/sbose/adcli/uploads/%{filehash}/%{name}-%{version}.tar.gz
+Source2:        https://gitlab.freedesktop.org/sbose/adcli/uploads/%{sighash}/%{name}-%{version}.tar.gz.sig
+# https://keys.openpgp.org/vks/v1/by-fingerprint/4A21C23848CDC107F487939849236C40EE9D57EB
+Source3:        %{name}.keyring
 BuildRequires:  libxslt-tools
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
@@ -53,16 +55,19 @@ This package contains the documentation for adcli.
 %setup -q
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-%configure --disable-static \
-           --disable-silent-rules
-make %{?_smp_mflags}
+%configure \
+	--disable-static \
+	--disable-silent-rules \
+	--enable-strict
+%make_build
 
 %install
 %make_install
-
 # Remove zero-length file.
 rm %{buildroot}/%{_datadir}/doc/%{name}/adcli-docs.proc
+
+%check
+%make_build check
 
 %files
 %license COPYING
@@ -71,6 +76,7 @@ rm %{buildroot}/%{_datadir}/doc/%{name}/adcli-docs.proc
 %{_mandir}/man8/adcli.8%{?ext_man}
 
 %files doc
+%license COPYING
 %doc %{_datadir}/doc/%{name}
 
 %changelog

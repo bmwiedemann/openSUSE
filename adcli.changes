@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 22 22:45:53 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.9.1:
+  * tools: add show-computer command
+  * add description option to join and update
+  * Use GSS-SPNEGO if available
+  * add option use-ldaps
+  * tools: disable SSSD's locator plugin
+  * doc: explain required AD permissions
+  * computer: add create-msa sub-command
+  * Add account-disable option
+  * fix coredump in discovery (boo#1183870)
+- use upstream bootstrapped tarball
+- add upstream signing key and validate source signature
+- use strict build
+- run tests
+
+-------------------------------------------------------------------
 Wed Nov 20 15:41:09 UTC 2019 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to version 0.9.0+git.0.1b15280:
