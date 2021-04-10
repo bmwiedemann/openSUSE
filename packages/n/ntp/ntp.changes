@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  1 16:18:52 UTC 2021 - Yaroslav Kurlaev <yaroslav.kurlaev@gmail.com>
+
+- Change PIDFile path in the systemd unit file from /var/run
+  /run to remove a warning from systemd.
+
+-------------------------------------------------------------------
 Fri Feb 12 09:19:47 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Disown /var/lib/ntp, it is now part of the sysuser-ntp package.

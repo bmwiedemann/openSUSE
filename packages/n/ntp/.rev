@@ -1220,4 +1220,12 @@ Properly categorise licenses and sync with Fedora declaration (forwarded request
     <comment>- Disown /var/lib/ntp, it is now part of the sysuser-ntp package.</comment>
     <requestid>876223</requestid>
   </revision>
+  <revision rev="128" vrev="5">
+    <srcmd5>84443eb7fe00082d1a311cf3e515e1bd</srcmd5>
+    <version>4.2.8p15</version>
+    <time>1618061226</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>883348</requestid>
+  </revision>
 </revisionlist>

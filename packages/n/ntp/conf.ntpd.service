@@ -12,7 +12,7 @@ ConditionCapability=CAP_SYS_TIME
 
 [Service]
 Type=forking
-PIDFile=/var/run/ntp/ntpd.pid
+PIDFile=/run/ntp/ntpd.pid
 ExecStart=/usr/sbin/start-ntpd start
 RestartSec=11min
 Restart=always
