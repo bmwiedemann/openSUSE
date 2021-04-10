@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 30 19:03:16 UTC 2021 - Noel Power <nopower@suse.com>
+
+- Fix PyErrorHandler() function, normalise exception object;
+  (bsc#1184182).
+- 4.1.4
+
+-------------------------------------------------------------------
 Thu Mar 12 13:30:21 UTC 2020 - Noel Power <nopower@suse.com>
 
 - Fix build for python 3.8; (bsc#1166517)/
