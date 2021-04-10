@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Tue Mar 23 10:44:02 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.7.0
+  * Server lists have been reorganized to make room for more
+    servers (#875):
+    - Default has been renamed to Any Genre 1.
+    - Any Genre has been renamed to Any Genre 2.
+    - Any Genre 3 has been added.
+    - Choral/Barbershop has been added.
+    - Classical/Folk/Choral has been renamed to Classical/Folk.
+  * Central server addresses have been moved to the jamulus.io 
+    domain (#919).
+    The fischvolk.de addresses are deprecated.
+  * GUI: If a name is provided using --clientname, that name is 
+    shown first in the window title, to avoid clipping in the 
+    Windows task bar (#789).
+  * GUI: Translations have been updated:
+    - Dutch, by @jerogee (#1110)
+    - French, by @trebmuh & @jujudusud (#1199 & #1113)
+    - German, by @rolamos (#1097)
+    - Italian, by @dzpex (#1112)
+    - Polish, by @SeeLook (#1099)
+    - Portugese, by @melcon & @Snayler (#1141 & #1168)
+    - Slovak, by @jose1711 (#1104)
+    - Spanish, by @ignotus666 (#1152)
+    - Swedish, by @genesisproject2020 (#1182 & #1106)
+  * Active recording state is now highlighted in the mixerboard
+    title (#968).
+  * Client window makes it more obvious when not connected to
+    a server by graying out input levels and showing a message
+    (#847, #983).
+  * Screensaver and screen blanking are now prevented on Macs
+   (#834).
+  * Windows installer has been improved (#792, #841).
+    Note: If you are using ASIO4ALL, we strongly suggest that
+    you take a screenshot of your ASIO4ALL settings before upgrading.
+    The installer will try its best to migrate your settings, but
+    it may fail to do so when using custom installation paths.
+  * Windows installer interface now supports English, Dutch, French,
+    German, Italian, Polish, Portuguese, Spanish and Swedish.
+  * Windows ASIO Setup button placement has been improved to be below
+    the driver selection (#977).
+  * Chat dialog has gained support for auto-linking http addresses
+    (#879).
+  * Chat messages no longer allow HTML-formatted chat messages due to
+    security reasons (#939). HTML formatting in Welcome messages will
+    continue to work.
+  * Mixerboard background image quality in the Fancy skin has been
+    improved (#970).
+  * MIDI controller logic has been improved to support fader, pan,
+    mute and solo buttons in --ctrlmidich syntax (#945).
+    Mute & solo buttons are only for toggle-type controllers and do
+    not support headless operation yet.
+  * Servers connected to central servers behind the same NAT can
+    now be made accessible to public clients via the newly added
+    --serverpublicip option (#954).
+  * External IP detection no longer generates traffic to Cloudflare
+   (#633, #1092).
+  * Version update detection has been improved (#1155):
+    - The check now uses two servers instead of one 
+      (updatecheck1.jamulus.io and updatecheck2.jamulus.io).
+    - The server version is now ignored if it is not a release, due
+      to a suffix such as dev, beta or rc.
+  * Official Ubuntu/Debian packages are now built and published as 
+    part of the release (#1100).
+    The packages are compatible with Ubuntu 18.04 or later.
+  * Experimental .apk installation packages for Android are now 
+    provided (#880).
+  * Bug fix: A suspected memory leak has been solved by removing 
+    usage of ConsoleWriterFactory (#926).
+  * Bug fix: Changing ASIO driver properties like switching 
+    input/outputs in ASIO4ALL now resets input/output channel 
+    mapping in Jamulus again (#796).
+    This was done to solve a bug with ASIO4ALL introduced in the
+    last version.
+  * Bug fix: Fader levels, mute and solo state are now restored 
+    properly when reconnecting to a restarted server (#955, #1010).
+    This is a server-side fix.
+  * Bug fix: Multiple memory leaks in the server's recording feature
+    have been fixed (#1073).
+  * Bug fix: Menu accelerator keys have been fixed in multiple
+    translations (#1165).
+  * Bug fix: Windows sound driver lacked driverInfo initialisation
+    (#1194).
+  * Internal build and release process have been re-designed,
+    automated and moved to Github.
+  * Internal development builds now contain a detailed version
+    number (#475).
+- Change to new projekt- and source-url.
+
+-------------------------------------------------------------------
 Fri Jan 22 12:01:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - %pre needs to pull in "nogroup", too.
@@ -426,4 +517,3 @@ Fri Mar  9 16:05:27 UTC 2018 - aloisio@gmx.com
 Fri Jan 03 17:21:57 CET 2014 - pascal.bleser@opensuse.org
 
 - initial version (3.3.3)
-
