@@ -17,13 +17,13 @@
 
 
 Name:           gnome-initial-setup
-Version:        3.38.4
+Version:        40.0
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/OS/InitialSetup
-Source0:        https://download.gnome.org/sources/gnome-initial-setup/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-initial-setup/40/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-SLE gnome-initial-setup-smarter.patch FATE#325763 FATE#321126 boo#1067288 bnc#1029083 qzhao@suse.com -- Investigate gnome-initial-setup, and make a Smarter gnome initial configuration.
 Patch0:         gnome-initial-setup-smarter.patch
 
@@ -86,10 +86,6 @@ Initial assistant, helping you to get the system up and running.
 
 %install
 %meson_install
-%if 0%{?sle_version} >= 150200
-rm -rf %{buildroot}%{_libexecdir}/gnome-welcome-tour
-rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/gnome-welcome-tour.desktop
-%endif
 %find_lang %{name} %{?no_lang_C}
 
 %pre
@@ -98,10 +94,7 @@ useradd -rM -d /run/gnome-initial-setup/ -s /sbin/nologin %{name} || :
 %files
 %license COPYING
 %doc README.md
-%dir %{_datadir}/gdm
-%dir %{_datadir}/gdm/greeter
-%dir %{_datadir}/gdm/greeter/applications
-%{_datadir}/gdm/greeter/applications/gnome-initial-setup.desktop
+%{_datadir}/applications/gnome-initial-setup.desktop
 %dir %{_datadir}/gnome-session
 %dir %{_datadir}/gnome-session/sessions
 %{_datadir}/gnome-session/sessions/gnome-initial-setup.session
@@ -116,17 +109,11 @@ useradd -rM -d /run/gnome-initial-setup/ -s /sbin/nologin %{name} || :
 %if !0%{?sle_version} || 0%{?sle_version} >= 160000
 %{_userunitdir}/gnome-initial-setup-copy-worker.service
 %{_userunitdir}/gnome-initial-setup-first-login.service
-%{_userunitdir}/gnome-welcome-tour.service
 %dir %{_userunitdir}/gnome-session@gnome-initial-setup.target.d
 %{_userunitdir}/gnome-session@gnome-initial-setup.target.d/session.conf
 %dir %{_userunitdir}/gnome-session.target.wants
 %{_userunitdir}/gnome-session.target.wants/gnome-initial-setup-copy-worker.service
 %{_userunitdir}/gnome-session.target.wants/gnome-initial-setup-first-login.service
-%{_userunitdir}/gnome-session.target.wants/gnome-welcome-tour.service
-%endif
-%if 0%{?sle_version} < 150200
-%{_libexecdir}/gnome-welcome-tour
-%{_sysconfdir}/xdg/autostart/gnome-welcome-tour.desktop
 %endif
 
 %files lang -f %{name}.lang

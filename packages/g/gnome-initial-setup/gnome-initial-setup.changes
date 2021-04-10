@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sat Mar 20 09:26:24 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 40.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Thu Mar 18 14:46:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 10:38:26 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.beta:
+  + Completing GNOME Initial Setup no longer triggers GNOME Tour.
+    GNOME Shell 40 now prompts new and upgrading users to run the
+    tour.
+  + Previous versions of Initial Setup would run the first time a
+    user logs in ("existing user" mode) as well as when the system
+    is booted with no users ("new user" mode). Initial Setup no
+    longer displays any UI in "existing user" mode, to avoid
+    colliding with the tour. The mode has not been removed in code.
+  + A simple check has been added to the main() function. If your
+    distribution needs the old behaviour, this check can be patched
+    out. The hope is that a future version of GNOME will restore
+    "existing user" mode, but run Initial Setup from the same
+    cut-down Shell that is used in "new user" mode.
+  + Initial Setup's .desktop file is now installed to
+    @datadir@/applications rather than a GDM-specific directory.
+    This means its icon is displayed correctly when run within a
+    normal shell session. Some distros have previously worked
+    around this issue by installing a symbolic link.
+
+-------------------------------------------------------------------
+Tue Feb 16 04:40:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + Some enhancements to the avatar picker:
+    - The "Take a photo…" button now has the suggested-action
+      style.
+    - Generated avatars now have a darker border.
+    - Fix runtime warning when built without libcheese.
+  + The "Welcome" page, displayed when the language picker is
+    disabled, has a refreshed splash image.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Feb 15 18:25:55 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.4:
