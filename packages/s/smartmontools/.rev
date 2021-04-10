@@ -780,4 +780,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
   - FreeBSD: Device scan does no longer include T_ENCLOSURE devices.</comment>
     <requestid>860712</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>692fa1fc41df4879e9b8dea04e3ba039</srcmd5>
+    <version>7.2</version>
+    <time>1618061184</time>
+    <user>RBrownSUSE</user>
+    <comment>Add BSC.</comment>
+    <requestid>883908</requestid>
+  </revision>
 </revisionlist>

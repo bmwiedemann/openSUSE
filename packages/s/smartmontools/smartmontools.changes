@@ -28,7 +28,7 @@ Wed Jan  6 12:10:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
   - Dropped support for pre-C99 snprintf().
   - configure: Dropped option '--without-working-snprintf'.
   - configure: Fixed '-fstack-protector*' detection.
-  - Linux: Various fixes of smartd.service file.
+  - Linux: Various fixes of smartd.service file (bsc#1183699).
   - Darwin: NVMe log support.
   - FreeBSD: Device scan does no longer include T_ENCLOSURE devices.
   - NetBSD: Fixed timeout handling.
