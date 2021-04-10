@@ -36,6 +36,7 @@ Patch1:         %{name}-fillupdir-fixes.patch
 Patch9:         %{name}-use-pbl.patch
 Patch10:        %{name}-on-error-option-yesno.patch
 Patch11:        %{name}-mounts.cc-Include-sys-ioctl.h.patch
+Patch12:        %{name}-Add-bootdev-to-dracut-command-line.patch
 BuildRequires:  asciidoc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -91,6 +92,7 @@ after a crash dump has occured.
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 
 %build
 export CXXFLAGS="%{optflags} -std=c++11"

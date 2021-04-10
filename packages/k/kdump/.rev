@@ -941,4 +941,14 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>878617</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>480edcc55f2f04b45064c07bcf0b476f</srcmd5>
+    <version>0.9.1</version>
+    <time>1618061170</time>
+    <user>RBrownSUSE</user>
+    <comment>- kdump-Add-bootdev-to-dracut-command-line.patch: Add 'bootdev=' to
+  dracut command line (bsc#1182309).
+</comment>
+    <requestid>883777</requestid>
+  </revision>
 </revisionlist>
