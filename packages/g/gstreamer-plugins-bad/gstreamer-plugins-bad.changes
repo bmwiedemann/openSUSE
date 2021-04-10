@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Mar 30 09:01:57 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.18.4:
+  + avwait: Don't post messages with the mutex locked
+  + d3d11h264dec: Reconfigure decoder object on DPB size change
+    and keep track of actually configured DPB size
+  + dashsink: fix double unref of sinkpad caps
+  + decklinkvideosink: Use correct numerator for 29.97fps
+  + decklinkvideosink: fix auto format detection
+  + decklinksrc: Use a more accurate capture time
+  + d3d11videosink: Fix build error on UWP
+  + interlace: negotiation and buffer leak fixes
+  + mpegvideoparse: do not clip, so decoder receives data from
+    keyframe even if it's before the segment start
+  + mpegtsparse: Fix switched DTS/PTS when set-timestamps=false
+  + nvh264sldec: Reopen decoder object if larger DPB size is
+    required
+  + sdpsrc: fix double free if sdp is provided as string via the
+    property
+  + vulkan: Fix elements long name.
+
+-------------------------------------------------------------------
 Sat Feb  6 01:16:54 UTC 2021 - Federico Mena Quintero <federico@suse.com>
 
 - Disable the kate/libtiger plugin.  Kate streams for karaoke are not

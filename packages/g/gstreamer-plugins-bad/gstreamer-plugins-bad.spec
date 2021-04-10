@@ -28,7 +28,7 @@
 %bcond_with faad
 
 Name:           gstreamer-plugins-bad
-Version:        1.18.3
+Version:        1.18.4
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -118,7 +118,7 @@ BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(zvbi-0.2)
 BuildRequires:  pkgconfig(zxing)
 Requires(post): glib2-tools
-Requires(postun): glib2-tools
+Requires(postun):glib2-tools
 # FIXME! - this leads to unresolvables currently
 #%%define gstreamer_plugins_bad_req %%(xzgrep --text "^GST.*_REQ" %%{S:0} | sort -u | sed 's/GST_REQ=/gstreamer >= /;s/GSTPB_REQ=/gstreamer-plugins-base >= /' | tr '\\n' ' ')
 #Requires:       %%gstreamer_plugins_bad_req
