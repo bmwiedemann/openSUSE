@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  6 14:51:18 UTC 2021 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Add CVE-2021-30004.patch -- forging attacks may occur because
+  AlgorithmIdentifier parameters are mishandled in tls/pkcs1.c and tls/x509v3.c
+  (bsc#1184348)
+
+-------------------------------------------------------------------
 Wed Mar  3 15:31:02 UTC 2021 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Fix systemd device ready dependencies in wpa_supplicant@.service file.
@@ -13,8 +20,8 @@ Sat Feb 27 23:14:13 UTC 2021 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 -------------------------------------------------------------------
 Thu Feb  4 12:27:02 UTC 2021 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
-- Add CVE-2021-0326.patch -- P2P group information processing vulnerability 
-  (bsc#1181777) 
+- Add CVE-2021-0326.patch -- P2P group information processing vulnerability
+  (bsc#1181777)
 
 -------------------------------------------------------------------
 Tue Oct  6 15:20:18 UTC 2020 - Florian <sp1ritCS@protonmail.com>
