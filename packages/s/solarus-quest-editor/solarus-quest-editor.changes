@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr  6 20:21:30 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 1.6.5:
+  * Map editor: Fix crash when generating contours with missing
+    patterns (gl#solarus-games/solarus-quest-editor#494).
+  * Map editor: Fix resize and edit shortcuts not working sometimes
+    (gl#solarus-games/solarus-quest-editor#272).
+  * Import dialog: Fix file count inconsistencies
+    (gl#solarus-games/solarus-quest-editor#446).
+  * Script editor: Fix crash when indenting wrapped lines
+    (gl#solarus-games/solarus-quest-editor#440).
+- Drop 0001-Add-missing-include-directive-for-QPainterPath.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
 Thu Jun  4 17:58:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch to fix build with Qt 5.15:

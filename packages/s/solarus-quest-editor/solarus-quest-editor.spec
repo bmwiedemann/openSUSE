@@ -1,7 +1,7 @@
 #
 # spec file for package solarus-quest-editor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           solarus-quest-editor
-Version:        1.6.4
+Version:        1.6.5
 Release:        0
 Summary:        GUI to edit quests for the Solarus engine
-License:        GPL-3.0-or-later AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://www.solarus-games.org/
 Source:         https://gitlab.com/solarus-games/solarus-quest-editor/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Add-missing-include-directive-for-QPainterPath.patch
 BuildRequires:  cmake >= 3.1
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -75,7 +73,7 @@ This package contains assets for the Solarus Quest Editor.
 
 %files
 %license license.txt license_gpl.txt
-%doc readme.md changelog.txt
+%doc readme.md changelog.md
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/icons/hicolor/20x20

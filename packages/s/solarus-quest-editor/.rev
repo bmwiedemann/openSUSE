@@ -117,4 +117,22 @@
     <comment></comment>
     <requestid>811592</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f863325fce38be7bf3833803da0912fb</srcmd5>
+    <version>1.6.5</version>
+    <time>1618061228</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.6.5:
+  * Map editor: Fix crash when generating contours with missing
+    patterns (gl#solarus-games/solarus-quest-editor#494).
+  * Map editor: Fix resize and edit shortcuts not working sometimes
+    (gl#solarus-games/solarus-quest-editor#272).
+  * Import dialog: Fix file count inconsistencies
+    (gl#solarus-games/solarus-quest-editor#446).
+  * Script editor: Fix crash when indenting wrapped lines
+    (gl#solarus-games/solarus-quest-editor#440).
+- Drop 0001-Add-missing-include-directive-for-QPainterPath.patch:
+  Fixed upstream.</comment>
+    <requestid>883452</requestid>
+  </revision>
 </revisionlist>
