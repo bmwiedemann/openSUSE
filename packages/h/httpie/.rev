@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>828244</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>201ed8ffa302751ef490c7edc7850fbe</srcmd5>
+    <version>2.3.0</version>
+    <time>1618061227</time>
+    <user>RBrownSUSE</user>
+    <comment>Forward the current version of httpie to Factory</comment>
+    <requestid>883346</requestid>
+  </revision>
 </revisionlist>

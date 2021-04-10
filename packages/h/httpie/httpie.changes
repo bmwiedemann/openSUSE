@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Mar 19 12:26:10 UTC 2021 - Robert Munteanu <rombert@apache.org>
+
+- Disable tests that fail in OBS 
+
+-------------------------------------------------------------------
+Wed Jan 20 08:08:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * Added support for streamed uploads (#201).
+  * Added support for multipart upload streaming (#684).
+  * Added support for body-from-file upload streaming (http httpbin.org/post @file).
+  * Added --chunked to enable chunked transfer encoding (#753).
+  * Added --multipart to allow multipart/form-data encoding for non-file --form requests as well.
+  * Added support for preserving field order in multipart requests (#903).
+  * Added --boundary to allow a custom boundary string for multipart/form-data requests.
+  * Added support for combining cookies specified on the CLI and in a session file (#932).
+  * Added out of the box SOCKS support with no extra installation (#904).
+  * Added --quiet, -q flag to enforce silent behaviour.
+  * Fixed the handling of invalid expires dates in Set-Cookie headers (#963).
+  * Removed Tox testing entirely (#943). 
+- drop httpie-adjust-requirements.patch (obsolete)
+- drop singlespec packaging. this is a commandline utility, not a 
+  python module, so building it for multiple versions of python makes
+  no sense.
+  
+-------------------------------------------------------------------
 Tue Aug 18 15:32:42 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.2.0:

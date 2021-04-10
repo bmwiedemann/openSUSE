@@ -1,7 +1,7 @@
 #
 # spec file for package httpie
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           httpie
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        CLI, cURL-like tool for humans
 License:        BSD-3-Clause
@@ -27,24 +25,25 @@ Group:          Productivity/Networking/Web/Utilities
 URL:            https://httpie.org/
 Source:         https://github.com/jakubroztocil/httpie/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        http.1
-Patch0:         httpie-adjust-requirements.patch
-BuildRequires:  %{python_module Pygments >= 2.1.3}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest-httpbin}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests >= 2.18.4}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Pygments >= 2.1.3
-Requires:       python-requests >= 2.18.4
-Suggests:       python-argparse >= 1.2.1
-Suggests:       python-colorama >= 0.2.4
-Provides:       httpie
+BuildRequires:  python3-Pygments >= 2.5.2
+BuildRequires:  python3-mock
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-httpbin
+BuildRequires:  python3-requests >= 2.22.0
+BuildRequires:  python3-requests-toolbelt >= 0.9.1
+BuildRequires:  python3-setuptools
+Requires:       python3-Pygments >= 2.5.2
+Requires:       python3-requests >= 2.22.0
+Requires:       python3-requests-toolbelt >= 0.9.1
+Provides:       python3-httpie = 2.3.0
+Provides:       python38-httpie = 2.3.0
+Obsoletes:      python3-httpie < 2.3.0
+Obsoletes:      python38-httpie < 2.3.0
 BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
-%python_subpackages
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 
 %description
 HTTPie consists of a single "http" command designed for debugging and
@@ -55,38 +54,31 @@ responses.
 
 %prep
 %setup -q
-%patch0 -p1
 
 #drop shebang
 sed -i -e '/^#!\//, 1d' httpie/__main__.py
 
 %build
 export LC_CTYPE=en_US.UTF-8
-%python_build
+%python3_build
 
 %install
 export LC_CTYPE=en_US.UTF-8
-%python_install
-%python_clone -a %{buildroot}%{_bindir}/http
-%python_clone -a %{buildroot}%{_bindir}/https
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python3_install
+%fdupes %{buildroot}%{$python_sitelib}
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/http.1
 
 %check
 export LC_CTYPE=en_US.UTF-8
-%pytest
+export PYTHONPATH=$PWD
+# disable tests that fail on OBS with [Errno -3] Temporary failure in name resolution
+pytest --deselect=tests/test_uploads.py
 
-%post
-%python_install_alternative http https
-
-%postun
-%python_uninstall_alternative http https
-
-%files %{python_files}
+%files
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %license LICENSE
-%python_alternative %{_bindir}/http
-%python_alternative %{_bindir}/https
+%{_bindir}/http
+%{_bindir}/https
 %{python_sitelib}/*
 %{_mandir}/man1/http.1%{?ext_man}
 
