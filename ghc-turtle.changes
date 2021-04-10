@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr  5 14:15:06 UTC 2021 - psimons@suse.com
+
+- Update turtle to version 1.5.22.
+  1.5.22
+
+  * Add new `update` utility
+  * Improve documentation for `limit`
+
+-------------------------------------------------------------------
 Mon Mar 22 08:40:00 UTC 2021 - psimons@suse.com
 
 - Update turtle to version 1.5.21 revision 1.
