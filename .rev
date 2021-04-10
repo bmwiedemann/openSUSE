@@ -28,4 +28,12 @@
 need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcrozat)</comment>
     <requestid>863162</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c04b1650a83cb6dc46197f2076ea51d9</srcmd5>
+    <version>40.0</version>
+    <time>1618061213</time>
+    <user>RBrownSUSE</user>
+    <comment>GNOME 40 - here we come (forwarded request 880961 from dimstar)</comment>
+    <requestid>881132</requestid>
+  </revision>
 </revisionlist>

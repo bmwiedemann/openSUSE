@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar 21 16:31:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + rdp: Add support for FreeRDP 2.3, support 2.3, requires at
+    least 2.2.
+  + Manu bugfixes.
+- Add pkgconfig(freerdp-client2), pkgconfig(freerdp-server2),
+  pkgconfig(fuse3), pkgconfig(libvncclient),
+  pkgconfig(libvncserver), and pkgconfig(xkbcommon) BuildRequires:
+  better align with what meson looks for.
+- Change _service file to point to the proper upstream git repo
+  (gitlab.gnome.org/GNOME/gnome-remote-desktop).
+- Drop gnutls-anontls.patch,
+  0001-vnc-Copy-pixels-using-the-right-destination-stride.patch
+  0001-vnc-Drop-frames-if-client-is-gone.patch: fixed upstream:
+  fixed upstream.
+
+-------------------------------------------------------------------
 Fri Jan  8 15:37:47 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to version 0.1.9:
@@ -8,7 +26,7 @@ Fri Jan  8 15:37:47 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
   BuildRequires.
 - Bump pipewire minimum version to 0.3.0.
 - Update url to GNOME main project.
-- Add0001-vnc-Drop-frames-if-client-is-gone.patch 
+- Add0001-vnc-Drop-frames-if-client-is-gone.patch
   Avoid race condition on disconnect (glgo#GNOME/gnome-remote-desktop#43)
 - Add gnutls-anontls.patch (Fedora), requires patched libVNCServer.
 - Add 0001-vnc-Copy-pixels-using-the-right-destination-stride.patch:
