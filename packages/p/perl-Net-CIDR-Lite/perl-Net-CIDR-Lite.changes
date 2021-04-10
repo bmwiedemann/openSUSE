@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr  5 03:06:37 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.22
+   see /usr/share/doc/packages/perl-Net-CIDR-Lite/Changes
+
+  0.22  2021-04-04
+      - Security: IPv4 octets with leading zeroes are no longer allowed.
+        https://blog.urth.org/2021/03/29/security-issues-in-perl-ip-address-distros/
+
+-------------------------------------------------------------------
 Wed Mar 27 14:24:38 UTC 2013 - stefan.jakobs@rus.uni-stuttgart.de
 
 - remove 'BuildRequires: perl-macros' from spec file, because perl
