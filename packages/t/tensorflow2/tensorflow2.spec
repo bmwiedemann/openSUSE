@@ -93,6 +93,7 @@
 %{!?compiler_family:%global compiler_family gnu}
 %{hpc_init -c %compiler_family %{?with_mpi:-m %mpi_flavor} %{?c_f_ver:-v %{c_f_ver}} %{?mpi_ver:-V %{mpi_ver}} %{?ext:-e %{ext}}}
 %{?with_mpi:%global hpc_module_pname p%{pname}}
+# hpc macros expect this, but we do not use python-rpm-macros
 %define python_flavor python3
 %define package_name   %{hpc_package_name %_vers}
 %define package_name_provide tensorflow2%{hpc_package_name_tail}
@@ -108,7 +109,7 @@
 %define package_name   %pname%{?package_suffix}
 %define package_name_conflict tensorflow%{?package_suffix}
 %define package_python_sitearch %{python3_sitearch}
-%define package_python_sitelib %{python3_sitelib} 
+%define package_python_sitelib %{python3_sitelib}
 %define package_prefix %_prefix
 %define package_bindir %_bindir
 %define package_libdir %_libdir
@@ -126,7 +127,7 @@ Source0:        https://github.com/tensorflow/tensorflow/archive/v%{version}%{?c
 Source1:        tensorflow2-rpmlintrc
 # IMPORTANT
 # although some of the following libraries are available in factory they could
-# not be used as 
+# not be used as
 #   * explicit versions are needed which differ from the factory ones
 #   * bazel and the obs version have different symbols due to hidden compiler flags
 # License10: Apache-2.0
@@ -204,9 +205,12 @@ Patch13:        remove-weakref.patch
 Patch14:        fix-lite.patch
 # Fix from upstream for gcc10.1
 Patch20:        removed-clog-build-as-included-in-cpuinfo.patch
+# Fix for numpy 1.20 -- https://stackoverflow.com/questions/66373169 , https://github.com/tensorflow/tensorflow/issues/47691
+Patch21:        numpy-tensor-small.patch
+# Fix for hdf5 3.0 -- https://github.com/tensorflow/tensorflow/issues/44467
+Patch22:        tf-keras-hdf5-3.patch
 
 Requires:       python3
-Requires:       python3-Keras-Applications
 Requires:       python3-Keras-Preprocessing
 Requires:       python3-abseil
 Requires:       python3-astor
@@ -244,7 +248,6 @@ BuildRequires:  bazel-skylib-source
 BuildRequires:  bazel-toolchains-source
 BuildRequires:  bazel-workspaces
 #BuildRequires:  bazel-rules-foreign-cc-source
-#BuildRequires:  bazel-rules-python-source
 %endif
 BuildRequires:  curl
 %if %{with cuda}
@@ -272,9 +275,9 @@ BuildRequires:  fftw3-devel
 BuildRequires:  flatbuffers-devel
 BuildRequires:  giflib-devel
 BuildRequires:  git
-%if 0%{?suse_version} > 1500 
+%if 0%{?suse_version} > 1500
 %if %{with cuda}
-# use gcc-7 for build with cuda, as nvcc can not handle 
+# use gcc-7 for build with cuda, as nvcc can not handle
 # gcc9
 BuildRequires:  gcc7
 BuildRequires:  gcc7-c++
@@ -303,7 +306,6 @@ BuildRequires:  protobuf-java
 BuildRequires:  python-pybind11-common-devel
 BuildRequires:  python3
 BuildRequires:  python3-Cython
-BuildRequires:  python3-Keras-Applications
 BuildRequires:  python3-Keras-Preprocessing
 BuildRequires:  python3-abseil
 BuildRequires:  python3-astor
@@ -402,7 +404,6 @@ more CPUs in a desktop, server, or mobile device without rewriting code.
 
 This package provides examples from the website.
 
-
 %package -n libtensorflow%{libmaj}%{?hpc_package_name_tail}
 Summary:        Shared library for tensorflow
 Group:          Libraries
@@ -450,14 +451,13 @@ more CPUs in a desktop, server, or mobile device without rewriting code.
 %endif
 
 %prep
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # fighting bazel
 %define bazeldir %{_sourcedir}/BAZEL
 %define bz_cachdir %{_sourcedir}/BAZEL_CACHE
 # macro for removing nested directories
 %define sanitize_dir() _uglydir=$(ls -d *); shopt -s dotglob;mv $_uglydir/* .; rmdir $_uglydir
 # macro for copying the files to the bazel cache dir
-%define makebazelcache() mkdir -p %{bz_cachdir}/content_addressable/sha256/%{?2:%2}%{?!2:$(sha256sum %1 | cut -f 1 -d ' ')}/; cp %1 %{bz_cachdir}/content_addressable/sha256/%{?2:%2}%{?!2:$(sha256sum %1 | cut -f 1 -d ' ')}/file ; 
+%define makebazelcache() mkdir -p %{bz_cachdir}/content_addressable/sha256/%{?2:%2}%{?!2:$(sha256sum %1 | cut -f 1 -d ' ')}/; cp %1 %{bz_cachdir}/content_addressable/sha256/%{?2:%2}%{?!2:$(sha256sum %1 | cut -f 1 -d ' ')}/file ;
 
 # make clean for rebuild
 mkdir -p %{bazeldir}
@@ -502,6 +502,8 @@ mkdir -p %{bazeldir}
 %patch13 -p 1
 %patch14 -p 1
 %patch20 -p 1
+%patch21 -p 1
+%patch22 -p 1
 
 %define make_depend_src() test -e $(basename %{1}| sed 's/-.*//') && rmdir %{?2}%{!?2:$(basename %{1}| sed 's/-.*//')}; test -e %{2} && rmdir %{2}; tar xzf %{1}; mv $(basename %{1} | sed 's/\.tar\.gz//' ) %{?2}%{!?2:$(basename %{1}| sed 's/-.*//')}
 # extract bazel rules
@@ -512,7 +514,7 @@ cd -
 %if %{is_lite}
 mkdir tensorflow/lite/tools/make/downloads/
 pushd tensorflow/lite/tools/make/downloads/
-#  eigen, gemmlowp and abseil_cpp 
+#  eigen, gemmlowp and abseil_cpp
 cp %{SOURCE26} %{SOURCE17} %{SOURCE19} .
 mkdir tmp
 tar xzf eigen.tar.gz -C tmp && mv tmp/* eigen
@@ -521,7 +523,7 @@ tar xzf %{SOURCE100} -C tmp && mv tmp/* fgoogletest
 tar xzf abseil-cpp.tar.gz -C tmp && mv tmp/* absl
 unzip %{SOURCE63} -d tmp && mv tmp/* ruy
 unzip %{SOURCE60} -d tmp && mv tmp/* cpuinfo
-tar xzf %{SOURCE27} 
+tar xzf %{SOURCE27}
 mv ARM_NEON_2_x86_SSE* neon_2_sse
 tar xzf %{SOURCE15} -C tmp && mv tmp/* farmhash
 # We use installed flatbuffers
@@ -545,7 +547,7 @@ popd
 %if %{is_lite}
 make %{?_smp_mflags} -f tensorflow/lite/tools/make/Makefile \
     $(pwd)/tensorflow/lite/tools/make/gen/linux_$(uname -m)/lib/libtensorflow-lite.a \
-    $(pwd)/tensorflow/lite/tools/make/gen/linux_$(uname -m)/bin/minimal 
+    $(pwd)/tensorflow/lite/tools/make/gen/linux_$(uname -m)/bin/minimal
 # Build of benchmark-lib.a is broken
 %else
 
@@ -564,13 +566,13 @@ export TEST_TMPDIR=%{bazeldir}
 export PYTHON_LIB_PATH=%{python3_sitearch}
 export PYTHON_BIN_PATH=/usr/bin/python3
 export CC_OPT_FLAGS=-O2
-export TF_NEED_JEMALLOC=0 
-export TF_NEED_GCP=0 
+export TF_NEED_JEMALLOC=0
+export TF_NEED_GCP=0
 export TF_NEED_HDFS=1
 export TF_NEED_S3=1
-export TF_ENABLE_XLA=0 
-export TF_NEED_VERBS=0 
-export TF_NEED_OPENCL=0 
+export TF_ENABLE_XLA=0
+export TF_NEED_VERBS=0
+export TF_NEED_OPENCL=0
 export TF_NEED_ROCM=0
 export TF_SYSTEM_LIBS="\
     absl_py,\
@@ -613,7 +615,7 @@ export PATH=PATH="/usr/local/cuda-10.1/bin/:${PATH}"
 export CUDA_HOME="/usr/local/cuda-10.1,/usr"
 export CUDA_TOOLKIT_PATH=/"usr/local/cuda-10.1,/usr"
 export TF_CUDA_PATHS="/usr/local/cuda-10.1,/usr"
-export TF_NEED_CUDA=1 
+export TF_NEED_CUDA=1
 export TF_NCCL_VERSION=2.7.3
 %else
 export TF_NEED_CUDA=0
@@ -720,10 +722,10 @@ done
 # Install tensorflow-lite.pc
 mkdir -p %{buildroot}%{_libdir}/pkgconfig
 cat <<EOF > %{buildroot}%{_libdir}/pkgconfig/tensorflow-lite.pc
-Name: tensorflow lite
+Name:           tensorflow lite
 Description: tensorflow lite static library
-Version: %{vers}
-Requires:
+Version:        %{vers}
+Requires:       
 Libs: -L%{_libdir} -ltensorflow-lite -lflatbuffers
 Cflags: -I%{_includedir}
 EOF
@@ -745,7 +747,7 @@ mv LICENSE THIRD_PARTY_TF_C_LICENSES %{_topdir}/BUILD/%{pname}-%{version}/
 popd
 # remove spurious executeable bits
 # for hpc build remove usr prefix dir
-%if %{with hpc} 
+%if %{with hpc}
 cd %{buildroot}%{?hpc_prefix}
 mv usr/* .
 rmdir usr
@@ -761,7 +763,7 @@ cp *.pc %{buildroot}%{package_libdir}/pkgconfig
 # install libtensorflow*.so
 #install -D bazel-bin/tensorflow/libtensorflow.so %{buildroot}%{package_libdir}/libtensorflow.so
 
-%fdupes -s %{buildroot}%{?hpc_prefix}  
+%fdupes -s %{buildroot}%{?hpc_prefix}
 
 # install after fdupes
 cp -vd  \
@@ -841,18 +843,21 @@ cp -r $OUTPUT_DIR/tensorflow/* %{buildroot}/%{package_python_sitelib}/tensorflow
 %post -n libtensorflow_framework%{libmaj}%{?hpc_package_name_tail} -p /sbin/ldconfig
 %postun -n libtensorflow_framework%{libmaj}%{?hpc_package_name_tail} -p /sbin/ldconfig
 
-# Lite version is very different so package it separetly
 %if %{is_lite}
 %files
+# Lite version is very different so package it separetly
 %{package_bindir}/*
+
 %files -n %{package_name}-devel
 %{package_libdir}/libtensorflow-lite.a
 %dir %{_includedir}/tensorflow/lite/
 %{_includedir}/tensorflow/lite/*
 %{package_libdir}/pkgconfig/*.pc
-%else # not lite build
+
+%else
 
 %files
+# not lite build
 %defattr(-,root,root,-)
 %{package_bindir}/estimator_ckpt_converter
 %{package_bindir}/saved_model_cli
@@ -871,6 +876,7 @@ cp -r $OUTPUT_DIR/tensorflow/* %{buildroot}/%{package_python_sitelib}/tensorflow
 %if %{with hpc}
 %hpc_modules_files
 %endif
+
 %files -n %{package_name}-devel
 %{package_python_sitelib}/tensorflow_core/include
 #%%{package_python_sitearch}/tensorflow_core/include
@@ -881,16 +887,21 @@ cp -r $OUTPUT_DIR/tensorflow/* %{buildroot}/%{package_python_sitelib}/tensorflow
 %if %{without hpc}
 %{package_libdir}/pkgconfig/*.pc
 %endif
+
 %files -n libtensorflow_framework%{libmaj}%{?hpc_package_name_tail}
 %{package_libdir}/libtensorflow_framework.so.%{libmaj}*
+
 %files -n libtensorflow_cc%{libmaj}%{?hpc_package_name_tail}
 %{package_libdir}/libtensorflow_cc.so.%{libmaj}*
+
 %files -n libtensorflow%{libmaj}%{?hpc_package_name_tail}
 %{package_libdir}/libtensorflow.so.%{libmaj}*
+
 %ifarch x86_64
 %files -n libiomp5%{?hpc_package_name_tail}
 %{package_libdir}/libiomp5.so
 %endif
+
 %files -n %{package_name}-doc
 #%%{package_python_sitelib}/tensorflow/examples
 %license THIRD_PARTY_TF_C_LICENSES LICENSE

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  6 16:27:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't BuildRequire keras_applications. Tensorflow provides it
+  itself: https://github.com/tensorflow/tensorflow/commit/23c3bdaa
+- These were discovered by Keras test suite:
+  * add numpy-tensor-small.patch for Numpy >= 1.20
+    gh#tensorflow/tensorflow#47691
+  * add tf-keras-hdf5-3.patch for hdf5 >= 3.0
+    gh#tensorflow/tensorflow#44467
+
+-------------------------------------------------------------------
 Thu Feb 18 14:26:20 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Generate and install pkgconfig files for tensorflow-lite and
