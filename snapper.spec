@@ -57,6 +57,7 @@ BuildRequires:  pkg-config
 %if 0%{?fedora_version} >= 24 || 0%{?centos_version} >= 800
 BuildRequires:  glibc-langpack-de
 BuildRequires:  glibc-langpack-en
+BuildRequires:  glibc-langpack-fr
 %endif
 %if ! 0%{?mandriva_version}
 %if 0%{?fedora_version} >= 23
@@ -87,6 +88,7 @@ BuildRequires:  lcov
 %endif
 Requires:       diffutils
 Requires:       libsnapper5 = %version
+Requires:       systemd
 %if 0%{?suse_version}
 Recommends:     logrotate snapper-zypp-plugin
 Supplements:    btrfsprogs
@@ -192,7 +194,10 @@ fi
 %endif
 %config(noreplace) %{_sysconfdir}/logrotate.d/snapper
 %{_unitdir}/snapper*.*
-%config /etc/dbus-1/system.d/org.opensuse.Snapper.conf
+%if 0%{?suse_version} <= 1500
+%dir %{_datadir}/dbus-1/system.d
+%endif
+%{_datadir}/dbus-1/system.d/org.opensuse.Snapper.conf
 %{_datadir}/dbus-1/system-services/org.opensuse.Snapper.service
 
 %package -n libsnapper5

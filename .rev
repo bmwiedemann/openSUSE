@@ -991,4 +991,12 @@
     <comment>submit new version 0.8.16</comment>
     <requestid>880079</requestid>
   </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>4c1a40e9d55c8ddc01e4c54d597cedb9</srcmd5>
+    <version>0.8.16</version>
+    <time>1618061175</time>
+    <user>RBrownSUSE</user>
+    <comment>- updated to latest repository</comment>
+    <requestid>883887</requestid>
+  </revision>
 </revisionlist>
