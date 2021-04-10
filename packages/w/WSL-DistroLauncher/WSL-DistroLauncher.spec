@@ -1,7 +1,7 @@
 #
 # spec file for package WSL-DistroLauncher
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,9 +70,16 @@ if [ -e /usr/lib/os-release ]; then
 else
 	. /etc/os-release
 fi
+# During prerelease phases, parens around RC etc. in PRETTY_NAME
+# are not properly escaped if passed to mingw configure step.
+# Bash substitution requires two steps:
+# 1. Keep only alphanumeric characters and spaces
+PRETTY_NAME_ALPHANUM="${PRETTY_NAME//[^a-zA-Z0-9- ]/}"
+# 2. Replace spaces with hyphen
+DISTRO_ID="${PRETTY_NAME_ALPHANUM// /-}"
 %{_mingw64_configure} --with-windmc=%{_mingw64_windmc} \
                       --with-windres=%{_mingw64_windres} \
-                      --with-distro-id="${PRETTY_NAME// /-}" \
+                      --with-distro-id="$DISTRO_ID" \
                       --with-distro-name="$PRETTY_NAME" \
                       --with-distro-icon="icon.ico"
 make %{?_smp_mflags}

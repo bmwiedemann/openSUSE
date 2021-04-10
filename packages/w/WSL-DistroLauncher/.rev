@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>792983</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>76059dc35404bdc37bb2925faa86fe8e</srcmd5>
+    <version>0.0.1+git20200306.f858909</version>
+    <time>1618061261</time>
+    <user>RBrownSUSE</user>
+    <comment>- During prerelease phases, parens around RC etc. in PRETTY_NAME
+  are not properly escaped if passed to mingw configure step.
+  * PRETTY_NAME keep only alphanum+space when passing as distro-id (forwarded request 883925 from jfkw)</comment>
+    <requestid>883926</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  8 22:33:08 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- During prerelease phases, parens around RC etc. in PRETTY_NAME
+  are not properly escaped if passed to mingw configure step.
+  * PRETTY_NAME keep only alphanum+space when passing as distro-id
+
+-------------------------------------------------------------------
 Fri Apr 10 18:31:04 UTC 2020 - Scott Reeves <sreeves@suse.com>
 
 - Update git snapshot - Better error handling on WSL2 startup
@@ -33,8 +40,8 @@ Tue Oct  1 16:34:56 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
 -------------------------------------------------------------------
 Mon Sep  9 05:34:47 UTC 2019 - Rich Williams <riwilliams@suse.com>
 
-- Added patch (0005-adduser-vs-useradd.patch) to change default 
-  MS (Ubuntu-centric) user management commands to SUSE-centric 
+- Added patch (0005-adduser-vs-useradd.patch) to change default
+  MS (Ubuntu-centric) user management commands to SUSE-centric
   commands.
 
 -------------------------------------------------------------------
@@ -65,7 +72,7 @@ Wed Aug 29 15:16:44 UTC 2019 - Dan Čermák <dcermak@suse.com>
 Fri Aug 23 15:45:34 UTC 2019 - Rich Williams <riwilliams@suse.com>
 
 - Code now rebased from upstream (Microsoft) source.
-- Several "patches-to-patches-that-patched-a-patch" are consolidated: 
+- Several "patches-to-patches-that-patched-a-patch" are consolidated:
     - `0001-Fix-race-during-build.patch`
     - `0001-Use-mconsole-instead-of-mwindows.patch`
     - `mingw.patch` (only patches to `*/Makefile.*`)
@@ -77,7 +84,7 @@ Fri Aug 23 15:45:34 UTC 2019 - Rich Williams <riwilliams@suse.com>
 - A better suited substitute for `wscanf_s()` was found in the
   mingw64 headers: `wscanf_s()` --> `swscanf_s()`
 - Added shell script to handle file encoding and line ends in
-  the upstream files. 
+  the upstream files.
 
 -------------------------------------------------------------------
 Thu Oct 12 11:47:49 UTC 2017 - cbosdonnat@suse.com
