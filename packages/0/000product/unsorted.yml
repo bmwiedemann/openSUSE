@@ -980,6 +980,7 @@ unsorted:
   - awesome-freedesktop 
   - awesome-shifty 
   - awesome-vicious 
+  - awf-gtk2 
   - awkward-devel 
   - aws-cli 
   - aws-efs-utils 
@@ -1562,6 +1563,7 @@ unsorted:
   - busybox-sharutils 
   - busybox-syslogd 
   - busybox-sysvinit-tools 
+  - busybox-tar 
   - busybox-telnet 
   - busybox-testsuite 
   - busybox-tftp 
@@ -1938,6 +1940,7 @@ unsorted:
   - clFFT-devel: [x86_64] 
   - clack 
   - clamav-devel 
+  - clamav-milter 
   - clamtk 
   - clamtk-lang 
   - clamz 
@@ -2730,6 +2733,7 @@ unsorted:
   - dhall-yaml: [x86_64] 
   - dhcp-devel 
   - dhcp-doc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - dhcp-tools 
   - dhcpd-pools 
   - dhewm3 
   - dhex 
@@ -4284,6 +4288,8 @@ unsorted:
   - ghc-bloomfilter-devel: [x86_64] 
   - ghc-bootstrap: [x86_64] 
   - ghc-bootstrap-helpers: [x86_64] 
+  - ghc-boring: [x86_64] 
+  - ghc-boring-devel: [x86_64] 
   - ghc-boxes: [x86_64] 
   - ghc-boxes-devel: [x86_64] 
   - ghc-brick: [x86_64] 
@@ -5006,6 +5012,8 @@ unsorted:
   - ghc-snap-server-devel: [x86_64] 
   - ghc-socks: [x86_64] 
   - ghc-socks-devel: [x86_64] 
+  - ghc-some: [x86_64] 
+  - ghc-some-devel: [x86_64] 
   - ghc-sop-core: [x86_64] 
   - ghc-sop-core-devel: [x86_64] 
   - ghc-split: [x86_64] 
@@ -6195,13 +6203,11 @@ unsorted:
   - gtk3-metatheme-yaru 
   - gtk3-metatheme-yuyo 
   - gtk3-tools-32bit: [x86_64] 
-  - gtk4-branding-upstream 
   - gtk4-devel 
   - gtk4-devel-32bit: [x86_64] 
-  - gtk4-lang 
   - gtk4-metatheme-adapta 
+  - gtk4-metatheme-matcha 
   - gtk4-metatheme-plata 
-  - gtk4-schema 
   - gtk4-tools 
   - gtkam 
   - gtkam-doc 
@@ -6570,6 +6576,7 @@ unsorted:
   - httpcomponents-core-javadoc 
   - httpcomponents-project 
   - httperf 
+  - httpie 
   - httrack 
   - httrack-devel 
   - hub 
@@ -6769,12 +6776,12 @@ unsorted:
   - imb-openmpi2 
   - imb-openmpi3 
   - imb-openmpi4 
-  - imb_2019_6-gnu-mpich-hpc 
-  - imb_2019_6-gnu-mvapich2-hpc 
-  - imb_2019_6-gnu-openmpi1-hpc 
-  - imb_2019_6-gnu-openmpi2-hpc 
-  - imb_2019_6-gnu-openmpi3-hpc 
-  - imb_2019_6-gnu-openmpi4-hpc 
+  - imb_2021_2-gnu-mpich-hpc 
+  - imb_2021_2-gnu-mvapich2-hpc 
+  - imb_2021_2-gnu-openmpi1-hpc 
+  - imb_2021_2-gnu-openmpi2-hpc 
+  - imb_2021_2-gnu-openmpi3-hpc 
+  - imb_2021_2-gnu-openmpi4-hpc 
   - imgen 
   - imgp 
   - imgp-bash-completion 
@@ -7470,6 +7477,7 @@ unsorted:
   - jupyter-notebook-lang 
   - jupyter-notebook-latex 
   - jupyter-octave-kernel 
+  - jupyter-panel: [x86_64] 
   - jupyter-plotly 
   - jupyter-pythreejs 
   - jupyter-pythreejs-jupyterlab 
@@ -8878,6 +8886,7 @@ unsorted:
   - libQt6Mqtt6 
   - libQt6Network6 
   - libQt6NetworkAuth6 
+  - libQt6OpcUa6 
   - libQt6OpenGL6 
   - libQt6OpenGLWidgets6 
   - libQt6PrintSupport6 
@@ -9653,7 +9662,6 @@ unsorted:
   - libcaffe1_0_0 
   - libcaffe_1_0-gnu-hpc 
   - libcairo-gobject2-32bit: [x86_64] 
-  - libcairo-script-interpreter2 
   - libcairo-script-interpreter2-32bit: [x86_64] 
   - libcairomm-1_0-1-32bit: [x86_64] 
   - libcairomm-1_16-1 
@@ -9817,7 +9825,6 @@ unsorted:
   - libclocale-devel 
   - libclocale1 
   - libcloudproviders-devel 
-  - libcloudproviders0 
   - libcloudproviders0-32bit: [x86_64] 
   - libclthreads2 
   - libclucene-core1-32bit: [x86_64] 
@@ -10395,8 +10402,8 @@ unsorted:
   - libflint15 
   - libflorence-1_0-1 
   - libfltk1-32bit: [x86_64] 
-  - libfluidsynth2 
-  - libfluidsynth2-32bit: [x86_64] 
+  - libfluidsynth3 
+  - libfluidsynth3-32bit: [x86_64] 
   - libflxmlrpc1 
   - libfm 
   - libfm-devel 
@@ -10812,7 +10819,6 @@ unsorted:
   - libgstmpegts-1_0-0-32bit: [x86_64] 
   - libgstpbutils-1_0-0-32bit: [x86_64] 
   - libgstphotography-1_0-0-32bit: [x86_64] 
-  - libgstplayer-1_0-0 
   - libgstplayer-1_0-0-32bit: [x86_64] 
   - libgstreamer-1_0-0-32bit: [x86_64] 
   - libgstreamerd-3-0 
@@ -10830,7 +10836,6 @@ unsorted:
   - libgstwayland-1_0-0-32bit: [x86_64] 
   - libgstwebrtc-1_0-0-32bit: [x86_64] 
   - libgtk-3-0-32bit: [x86_64] 
-  - libgtk-4-1 
   - libgtk-4-1-32bit: [x86_64] 
   - libgtk-frdp-0_1 
   - libgtk-layer-shell0 
@@ -10922,7 +10927,6 @@ unsorted:
   - libhangul1-32bit: [x86_64] 
   - libharfbuzz-gobject0-32bit: [x86_64] 
   - libharfbuzz-icu0-32bit: [x86_64] 
-  - libharfbuzz-subset0 
   - libharfbuzz-subset0-32bit: [x86_64] 
   - libharminv3 
   - libharu-devel 
@@ -14296,7 +14300,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of dvd:libxcb-dri3-0 
+  - libxcb-devel: [i586] # devel package of dvd:libxcb-xinerama0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -15117,9 +15121,9 @@ unsorted:
   - mako 
   - malaga-suomi 
   - malcontent-devel 
-  - mame: [x86_64] 
+  - mame 
   - mame-data 
-  - mame-mess: [x86_64] 
+  - mame-mess 
   - mame-tools 
   - man-pages-mk 
   - man-pages-nl 
@@ -20125,6 +20129,7 @@ unsorted:
   - poco-devel 
   - podman: [i586] 
   - podman-cni-config: [i586] 
+  - podman-docker 
   - podofo 
   - poedit 
   - poedit-lang 
@@ -20889,7 +20894,6 @@ unsorted:
   - python3-hawkey 
   - python3-heatclient 
   - python3-hivex 
-  - python3-httpie 
   - python3-img-proof 
   - python3-img-proof-tests 
   - python3-imobiledevice 
@@ -23367,6 +23371,7 @@ unsorted:
   - python36-qrcode 
   - python36-qscintilla-qt5 
   - python36-qscintilla-qt5-sip 
+  - python36-qstylizer 
   - python36-qt3d-qt5 
   - python36-qt3d-qt5-api 
   - python36-qt3d-qt5-doc 
@@ -23634,7 +23639,6 @@ unsorted:
   - python36-sphobjinv 
   - python36-spidev 
   - python36-spotipy 
-  - python36-spyder-kernels 
   - python36-sqlalchemy-migrate 
   - python36-sqlite-fts4 
   - python36-sqlitedict 
@@ -26230,6 +26234,7 @@ unsorted:
   - python38-qrcode 
   - python38-qscintilla-qt5 
   - python38-qscintilla-qt5-sip 
+  - python38-qstylizer 
   - python38-qsymm 
   - python38-qt3d-qt5 
   - python38-qt3d-qt5-api 
@@ -27064,6 +27069,13 @@ unsorted:
   - qt6-networkauth-docs-qch 
   - qt6-networkauth-examples 
   - qt6-networkauth-private-devel 
+  - qt6-opcua 
+  - qt6-opcua-devel 
+  - qt6-opcua-docs-html 
+  - qt6-opcua-docs-qch 
+  - qt6-opcua-examples 
+  - qt6-opcua-imports 
+  - qt6-opcua-private-devel 
   - qt6-opengl-devel 
   - qt6-opengl-private-devel 
   - qt6-openglwidgets-devel 

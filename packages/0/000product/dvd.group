@@ -253,7 +253,6 @@
     <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-sendmail" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="busybox-static" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="busybox-tar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="busybox-unzip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="bzip2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -377,7 +376,6 @@
     <package name="dhcp-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="dhcp-relay" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="dhcp-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
-    <package name="dhcp-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
     <package name="dialog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="dialog-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-multimedia -->
     <package name="diffutils" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -849,6 +847,9 @@
     <package name="gtk3-metatheme-greybird-geeko" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis_opt -->
     <package name="gtk3-schema" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gtk3-tools" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="gtk4-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gtk4-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gtk4-schema" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gtkiterm" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="gtksourceview-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="gtksourceview4-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1621,7 +1622,7 @@
     <package name="libXpresent1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libXrandr2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libXrender1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libXss1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libXss1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libXt6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libXtst6" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libXv1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -1732,6 +1733,7 @@
     <package name="libcaca0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libcacard0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcairo-gobject2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libcairo-script-interpreter2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcairo2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libcairomm-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcamd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1770,6 +1772,7 @@
     <package name="libclamav9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libclang11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libclastfm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="libcloudproviders0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libclucene-contribs-lib1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libclucene-core1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libclucene-shared1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2062,6 +2065,7 @@
     <package name="libgstmpegts-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgstpbutils-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgstphotography-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgstplayer-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgstreamer-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgstriff-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgstrtp-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2079,6 +2083,7 @@
     <package name="libgthread-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgtk-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libgtk-3-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libgtk-4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgtk-vnc-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgtkhex-3-0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libgtkimageview0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2111,6 +2116,7 @@
     <package name="libhangul1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libharfbuzz-gobject0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libharfbuzz-icu0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libharfbuzz-subset0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libharfbuzz0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libhavege2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libheif1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2170,7 +2176,7 @@
     <package name="libjsonrpc-glib-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libjte2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libkColorPicker0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libkImageAnnotator0_4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libkImageAnnotator0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkaccounts2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkasten-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libkate1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2280,7 +2286,7 @@
     <package name="libmetalink3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmetis5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmikmod3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libmilter1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="libmilter1_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libminiupnpc17" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libminizip1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmission-control-plugins0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2408,7 +2414,7 @@
     <package name="libpcre2-16-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpcre2-32-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libpcre2-posix2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libpcre2-posix2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libpcreposix0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="libpcsclite1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpeas-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2844,7 +2850,7 @@
     <package name="libxcb-damage0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libxcb-dpms0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libxcb-dri2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libxcb-dri3-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libxcb-dri3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libxcb-glx0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libxcb-icccm4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libxcb-image0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3348,7 +3354,7 @@
     <package name="perl-Encode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Encode-Detect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Encode-Locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="perl-Error" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
+    <package name="perl-Error" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Expect" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="perl-Exporter-Tiny" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-File-Listing" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3356,6 +3362,7 @@
     <package name="perl-FileHandle-Unget" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="perl-GD" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Geography-Countries" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Git" supportstatus="unsupported"/> <!-- reason: dvd:git -->
     <package name="perl-HTML-Parser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-HTML-Tagset" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-HTTP-Cookies" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
