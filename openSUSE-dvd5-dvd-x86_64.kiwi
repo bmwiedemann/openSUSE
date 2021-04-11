@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20210408" schemaversion="4.1">
+<image name="OBS__openSUSE___20210410" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210408</productvar>
+      <productvar name="VERSION">20210410</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210408,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210410,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210408/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210410/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -271,7 +271,6 @@
       <repopackage name="busybox-sed"/>
       <repopackage name="busybox-sendmail"/>
       <repopackage name="busybox-static"/>
-      <repopackage name="busybox-tar"/>
       <repopackage name="busybox-unzip"/>
       <repopackage name="busybox-xz"/>
       <repopackage name="bzip2"/>
@@ -396,7 +395,6 @@
       <repopackage name="dhcp-doc" arch="x86_64"/>
       <repopackage name="dhcp-relay"/>
       <repopackage name="dhcp-server"/>
-      <repopackage name="dhcp-tools"/>
       <repopackage name="dialog"/>
       <repopackage name="dialog-lang"/>
       <repopackage name="diffutils"/>
@@ -896,6 +894,9 @@
       <repopackage name="gtk3-metatheme-greybird-geeko"/>
       <repopackage name="gtk3-schema"/>
       <repopackage name="gtk3-tools"/>
+      <repopackage name="gtk4-branding-upstream"/>
+      <repopackage name="gtk4-lang"/>
+      <repopackage name="gtk4-schema"/>
       <repopackage name="gtkiterm"/>
       <repopackage name="gtksourceview-lang"/>
       <repopackage name="gtksourceview4-lang"/>
@@ -1544,6 +1545,7 @@
       <repopackage name="libcaca0"/>
       <repopackage name="libcacard0"/>
       <repopackage name="libcairo-gobject2"/>
+      <repopackage name="libcairo-script-interpreter2"/>
       <repopackage name="libcairo2"/>
       <repopackage name="libcairo2-32bit" arch="x86_64"/>
       <repopackage name="libcairomm-1_0-1"/>
@@ -1587,6 +1589,7 @@
       <repopackage name="libclamav9"/>
       <repopackage name="libclang11"/>
       <repopackage name="libclastfm0"/>
+      <repopackage name="libcloudproviders0"/>
       <repopackage name="libclucene-contribs-lib1"/>
       <repopackage name="libclucene-core1"/>
       <repopackage name="libclucene-shared1"/>
@@ -1928,6 +1931,7 @@
       <repopackage name="libgstmpegts-1_0-0"/>
       <repopackage name="libgstpbutils-1_0-0"/>
       <repopackage name="libgstphotography-1_0-0"/>
+      <repopackage name="libgstplayer-1_0-0"/>
       <repopackage name="libgstreamer-1_0-0"/>
       <repopackage name="libgstriff-1_0-0"/>
       <repopackage name="libgstrtp-1_0-0"/>
@@ -1947,6 +1951,7 @@
       <repopackage name="libgtk-2_0-0"/>
       <repopackage name="libgtk-2_0-0-32bit" arch="x86_64"/>
       <repopackage name="libgtk-3-0"/>
+      <repopackage name="libgtk-4-1"/>
       <repopackage name="libgtk-vnc-2_0-0"/>
       <repopackage name="libgtkhex-3-0"/>
       <repopackage name="libgtkimageview0"/>
@@ -1981,6 +1986,7 @@
       <repopackage name="libhangul1"/>
       <repopackage name="libharfbuzz-gobject0"/>
       <repopackage name="libharfbuzz-icu0"/>
+      <repopackage name="libharfbuzz-subset0"/>
       <repopackage name="libharfbuzz0"/>
       <repopackage name="libharfbuzz0-32bit" arch="x86_64"/>
       <repopackage name="libhavege2"/>
@@ -2238,7 +2244,7 @@
       <repopackage name="libkgantt-lang"/>
       <repopackage name="libKGantt2"/>
       <repopackage name="libkgapi-lang"/>
-      <repopackage name="libkImageAnnotator0_4_0"/>
+      <repopackage name="libkImageAnnotator0"/>
       <repopackage name="libkioarchive5"/>
       <repopackage name="libkipi-data"/>
       <repopackage name="libkleo"/>
@@ -3716,6 +3722,7 @@
       <repopackage name="perl-GD"/>
       <repopackage name="perl-Geography-Countries"/>
       <repopackage name="perl-gettext"/>
+      <repopackage name="perl-Git"/>
       <repopackage name="perl-HTML-Parser"/>
       <repopackage name="perl-HTML-Tagset"/>
       <repopackage name="perl-HTTP-Cookies"/>
