@@ -18,16 +18,19 @@
 
 
 Name:           rbac-manager
-Version:        0.9.4
+Version:        0.10.0
 Release:        0
 Summary:        Kubernetes operator for easier RBAC management
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/FairwindsOps/rbac-manager
 Source:         %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.13
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
+%{go_nostrip}
 
 %description
 RBAC Manager was designed to simplify authorization in Kubernetes. This is an operator that supports declarative configuration for RBAC with new custom resources. Instead of managing role bindings or service accounts directly, you can specify a desired state and RBAC Manager will make the necessary changes to achieve that state.
@@ -42,7 +45,7 @@ This package contains the yaml file requried to download and run the
 rbac-manager in a kubernetes cluster.
 
 %prep
-%setup -q
+%setup -qa1
 
 %build
 go build -mod vendor -buildmode=pie -a -o rbac-manager ./cmd/manager/main.go
@@ -53,8 +56,11 @@ install -D -m 0755 rbac-manager %{buildroot}%{_sbindir}/
 
 # Install provided yaml file to download and run the rbac-manager
 mkdir -p %{buildroot}%{_datadir}/k8s-yaml/rbac-manager
-install -m 0644 deploy/all.yaml %{buildroot}%{_datadir}/k8s-yaml/rbac-manager
-sed -i -e 's|image: "quay.io/reactiveops/rbac-manager:.*|image: "kubic/rbac-manager:%{version}"|g' %{buildroot}%{_datadir}/k8s-yaml/rbac-manager/all.yaml
+install -m 0644 deploy/0_namespace.yaml %{buildroot}%{_datadir}/k8s-yaml/rbac-manager
+install -m 0644 deploy/1_rbac.yaml %{buildroot}%{_datadir}/k8s-yaml/rbac-manager
+install -m 0644 deploy/2_crd.yaml %{buildroot}%{_datadir}/k8s-yaml/rbac-manager
+install -m 0644 deploy/3_deployment.yaml %{buildroot}%{_datadir}/k8s-yaml/rbac-manager
+sed -i -e 's|image: "quay.io/reactiveops/rbac-manager:.*|image: "kubic/rbac-manager:%{version}"|g' %{buildroot}%{_datadir}/k8s-yaml/rbac-manager/3_deployment.yaml
 
 %files
 %license LICENSE
