@@ -1,8 +1,117 @@
 -------------------------------------------------------------------
-Wed Mar  3 21:08:31 UTC 2021 - Michael Gorse <mgorse@suse.com>
+Sat Mar 20 08:25:38 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.40.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 18 13:19:44 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.39.3:
+  + ESoupAuthBearer: Shorten the token expiry time by 4 more
+    seconds.
+  + ESoupSession: Refresh Bearer auth token during request
+    redirect.
+  + MetaBackend tests: Relax a runtime requirement.
+  + Calendar: Add functions to clamp a VTIMEZONE component.
+  + e_cal_client_get_component_as_string: Clamp the VTIMEZONE
+    component.
+  + test-cal-utils: Add test to clamp a VTIMEZONE by a future time.
+  + Calendar: Make few improvements in the Weather backend.
+  + camel-debug: Copy cached backtrace symbol strings.
+  + camel-gpg-context: Add some debug prints.
+  + [IMAPx] Cancel authentication request when failed to get the
+    SASL response.
+  + EBookMetaBackend: Add 'backend_module_directory' property into
+    the class.
+  + Allow to load modules from custom prefixes.
+  + reminder-watcher: Process "Dismiss All" requests in the
+    background.
+  + Allocate large-enough buffer for g_base64_decode_step().
+  + CamelSpoolStore: Use cache for often accessed data.
+  + alarm-notify: Default notify-past-events to false plus few
+    related fixes.
+  + e-book-backend-file: Fix busy loop when modifying multiple
+    contacts at once.
+  + Use SHA256 instead of SHA1 where appropriate.
+  + Fix integer overflow on 32-bit architectures.
+  + Fix a memory leak in camel_util_get_directory_variants().
+  + Updated translations.
+- Drop evolution-data-server-boo1182882.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Mar  3 21:05:06 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Add evolution-data-server-boo1182882.patch: fix buffer overrun
   when parsing base64 data (boo#1182882).
+
+-------------------------------------------------------------------
+Mon Feb 15 10:48:23 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 3.39.2:
+  + Use default OAuth2 services on scratch sources.
+  + CamelNetworkSettings: Unset default value for the 'user'
+    property.
+  + Adapt to libgweather 40.alpha API changes.
+  + IMAPx: Ignore unexpected untagged LIST/LSUB responses.
+  + Calendar: Use ACKNOWLEDGED VALARM property.
+  + CamelMime*: Annotate the data arrays with element-type uint8.
+  + CalDAV: Support calendar-order property.
+  + Flatpak: Share NSS database with the system.
+  + e_xml_is_element_name: Can fail to match a namespaced node.
+  + Camel: Conversion between UTF-8 and UTF-7 misbehaves for emoji.
+  + vala: Make webdav_discover_sources E.Source methods.
+  + Fix variable reference in
+    e_source_mail_identity_set_signature_uid docs.
+  + Correct typos in a/an.
+- Bump so_edataserver to 26, so_edataserverui to 3, following
+  upstream (also in baselibs.conf).
+
+-------------------------------------------------------------------
+Mon Feb 15 03:39:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require libgdata-devel by evolution-data-server-devel when
+  introspection support is enabled:
+  + libedataserver-1.2.deps specifies a dependency on libgdata.
+
+-------------------------------------------------------------------
+Mon Feb 15 03:39:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.39.1:
+  + Addressbook:file backend: Prevent percent letter in photo
+    filename.
+  + Bump gtk+ requirement to 3.16, due to used functions from that
+    version.
+  + CalComponentParameterBag: The take method gives the ownership
+    of the object.
+  + CalComponentPropertyBag: The take method gives the ownership of
+    the object.
+  + Calendar:
+    - Fix a possible leak in e_cal_util_parse_ics_string().
+    - Make it possible to assign email address to On This Computer
+      sources.
+  + Camel: Special-case search for the match of the MESSAGE-ID
+    headers.
+  + CamelMimeFilterToHTML: Change how empty <div> is recognized.
+  + DataCalView: Created objects could be notified twice.
+  + EBook/CalBackend: Correct free function for the
+    pending_operations queue.
+  + EBufferTagger: Derive link color from the theme.
+  + EReminderWatcher:
+    - Catch a race condition when creating a calendar view.
+    - Default alarm range should be from the day begin.
+  + GLibTools.cmake: Generate signal marshallers without source
+    reference.
+  + Introduce e_async_closure_new_with_context().
+  + Mark a missed user-visible text for translation.
+  + ReminderWatcher: Add detailed debug prints about the scheduled
+    reminders.
+  + Vala: Mark the message field of CamelFolderThreadNode as
+    nullable.
+  + alarm-notify: Provide application reference in canberra calls.
+  + e-categories: Show migration runtime warning only if the file
+    exists.
+  + Updated translations.
 
 -------------------------------------------------------------------
 Fri Feb 12 17:08:42 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -138,7 +247,7 @@ Fri May 29 19:39:53 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
     glgo#GNOME/evolution-data-server#212,
     glgo#GNOME/evolution-data-server#213,
     glgo#GNOME/evolution-data-server#219,
-    glgo#GNOME/evolution#915. 
+    glgo#GNOME/evolution#915.
 
 -------------------------------------------------------------------
 Sat Apr 25 17:48:37 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>

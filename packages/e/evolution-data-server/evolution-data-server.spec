@@ -22,8 +22,8 @@
 # When updating the sonums, do not forget to also update baselibs.conf
 %define so_camel 62
 %define so_ebackend 10
-%define so_edataserver 25
-%define so_edataserverui 2
+%define so_edataserver 26
+%define so_edataserverui 3
 %define so_ebook 20
 %define so_ebook_contacts 3
 %define so_edata_book 26
@@ -32,16 +32,14 @@
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.38.4
+Version:        3.40.0
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Apps/Evolution
-Source0:        https://download.gnome.org/sources/evolution-data-server/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution-data-server/3.40/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM evolution-data-server-boo1182882.patch boo#1182882 mgorse@suse.com -- fix buffer overrun when decoding base64 data.
-Patch0:         evolution-data-server-boo1182882.patch
 
 BuildRequires:  cmake
 BuildRequires:  db-devel
@@ -69,7 +67,7 @@ BuildRequires:  translation-update-upstream
 BuildRequires:  vala >= 0.22.0
 BuildRequires:  pkgconfig(gcr-base-3) >= 3.4
 BuildRequires:  pkgconfig(goa-1.0) >= 3.8
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.0.4
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.25
@@ -278,6 +276,7 @@ Requires:       libedataserver-1_2-%{so_edataserver} = %{version}
 Requires:       libedataserverui-1_2-%{so_edataserverui} = %{version}
 Requires:       openldap2-devel
 %if %{?with_introspection}
+Requires:       libgdata-devel
 Requires:       typelib-1_0-Camel-1_2 = %{version}
 Requires:       typelib-1_0-EBook-1_2 = %{version}
 Requires:       typelib-1_0-EBookContacts-1_2 = %{version}
