@@ -18,19 +18,15 @@
 
 
 Name:           gnome-tweaks
-Version:        3.34.1
+Version:        40.beta
 Release:        0
 Summary:        A tool to customize advanced GNOME 3 options
-License:        GPL-3.0-or-later AND CC0-1.0
+License:        CC0-1.0 AND GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Tweaks
-Source0:        https://download.gnome.org/sources/gnome-tweaks/3.34/%{name}-%{version}.tar.xz
-
-# PATCH-FIX-UPSTREAM 77dde7477922f645946bfc64b1b25aeed2b01919.patch -- Update Norwegian bokmål translation
-Patch1:         77dde7477922f645946bfc64b1b25aeed2b01919.patch
-# PATCH-FEATURE-UPSTREAM gnome-tweaks-port-libhandy-1.patch -- Port to libhandy-1
-Patch2:         gnome-tweaks-port-libhandy-1.patch
-
+Source0:        https://download.gnome.org/sources/gnome-tweaks/40/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 70.patch dimstar@pensuse.org -- Do not fail to detect GNOME 40.rc version
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-tweaks/-/merge_requests/70.patch
 BuildRequires:  fdupes
 # GI is needed to have typelib() Requires
 BuildRequires:  gobject-introspection
@@ -91,6 +87,7 @@ rm -rf %{buildroot}/%{python3_sitelib}/gtweak/tweaks/__pycache__/*.pyc
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/*/apps/org.gnome.tweak*
 %{_libexecdir}/gnome-tweak-tool-lid-inhibitor
+%{_datadir}/glib-2.0/schemas/org.gnome.tweaks.gschema.xml
 
 %files lang -f %{name}.lang
 
