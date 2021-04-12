@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb 23 09:29:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + Fix import dialog.
+  + pgp:
+    - Add support for HKPS servers.
+    - Allow empty passphrase on key creation.
+    - Fix expiry container disabled.
+  + gkr: Add icon for network passwords.
+  + ui: use libhandy list styling.
+  + deps:
+    - Bump to libhandy 1.1 and remove submodule.
+    - Bump minimal supported version of gcr.
+    - Bump minimal supported versions of gpg/gpgme.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Feb 22 08:48:18 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 153.patch: key-manager: Make sure to update after unlocking

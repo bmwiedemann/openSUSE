@@ -17,18 +17,18 @@
 
 
 Name:           seahorse
-Version:        3.38.1
+Version:        40.alpha
 Release:        0
 Summary:        GNOME interface for gnupg
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GFDL-1.1-only
 Group:          Productivity/Security
 URL:            https://wiki.gnome.org/Apps/Seahorse
-Source0:        https://download.gnome.org/sources/seahorse/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/seahorse/40/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM 153.patch boo#1179003 dimstar@opensuse.org -- key-manager: Make sure to update after unlocking
 Patch0:         https://gitlab.gnome.org/GNOME/seahorse/-/merge_requests/153.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
-BuildRequires:  gpg2
+BuildRequires:  gpg2 >= 2.2.0
 BuildRequires:  libxslt-tools
 BuildRequires:  meson >= 0.51
 BuildRequires:  openldap2-devel
@@ -40,16 +40,16 @@ BuildRequires:  vala
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(avahi-glib) >= 0.6
-BuildRequires:  pkgconfig(gcr-3) >= 3.11.91
-BuildRequires:  pkgconfig(gcr-ui-3) >= 3.11.91
+BuildRequires:  pkgconfig(gcr-3) >= 3.18
+BuildRequires:  pkgconfig(gcr-ui-3) >= 3.18
 BuildRequires:  pkgconfig(gio-2.0) >= 2.58
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.58
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.58
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.58
-BuildRequires:  pkgconfig(gpgme) >= 1.7.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
-BuildRequires:  pkgconfig(libhandy-1)
+BuildRequires:  pkgconfig(gpgme) >= 1.14.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(libhandy-1) >= 1.1.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.16
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.33.92
 BuildRequires:  pkgconfig(pwquality)
