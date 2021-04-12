@@ -96,4 +96,12 @@ Can't really provide infinitely many versions!</comment>
   [CVE-2019-20797, boo#1171974]</comment>
     <requestid>813049</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b88c7b70348188b1e6e06b14f32ecdb1</srcmd5>
+    <version>2.6um+g69</version>
+    <time>1618223828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.6um and snapshot 2.6um+git69 (07925d634)</comment>
+    <requestid>884442</requestid>
+  </revision>
 </revisionlist>

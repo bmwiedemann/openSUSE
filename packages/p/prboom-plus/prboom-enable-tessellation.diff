@@ -1,20 +1,20 @@
-Date: 2011-08-03 18:36:44+0200
+From 6f50776b2c6365671fe53bdfc4bc9ffa622f1e06 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
-Upstream: sent
+Date: Wed, 3 Aug 2011 18:36:44 +0200
+Subject: [PATCH 1/4] Unconditionally enable GL tesselation
 
 Always do tesselation, because otherwise, map hacks like
 self-referencing sectors (cf.
 http://doom.wikia.com/wiki/Making_a_self-referencing_sector) will not
 be rendered.
-
 ---
- src/gl_main.c |    3 +++
+ prboom2/src/gl_main.c | 3 +++
  1 file changed, 3 insertions(+)
 
-Index: prboom-plus-2.5.1.4/src/gl_main.c
-===================================================================
---- prboom-plus-2.5.1.4.orig/src/gl_main.c
-+++ prboom-plus-2.5.1.4/src/gl_main.c
+diff --git prboom2/src/gl_main.c prboom2/src/gl_main.c
+index 20712b7e..8fbceb4f 100644
+--- prboom2/src/gl_main.c
++++ prboom2/src/gl_main.c
 @@ -36,6 +36,9 @@
  #ifdef HAVE_CONFIG_H
  #include "config.h"
@@ -25,3 +25,6 @@ Index: prboom-plus-2.5.1.4/src/gl_main.c
  
  #include "gl_opengl.h"
  
+-- 
+2.30.2
+

@@ -1,14 +1,16 @@
+From 2bf8068e0cd916b39fd2c57f3c9bf582b0fc45d8 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
-Date: 2012-02-19 07:16:45.000000000 +0100
+Date: Sun, 19 Feb 2012 07:16:45 +0100
+Subject: [PATCH] Drop __DATE__/__TIME__ / enable reproducible builds
 
 ---
- src/version.c |    4 ++--
+ prboom2/src/version.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Index: prboom2-2.5.1.5+svn4532/src/version.c
-===================================================================
---- prboom2-2.5.1.5+svn4532.orig/src/version.c
-+++ prboom2-2.5.1.5+svn4532/src/version.c
+diff --git prboom2/src/version.c prboom2/src/version.c
+index 1f5401f2..2cc173f6 100644
+--- prboom2/src/version.c
++++ prboom2/src/version.c
 @@ -37,11 +37,11 @@
  #include "version.h"
  
@@ -23,3 +25,6 @@ Index: prboom2-2.5.1.5+svn4532/src/version.c
  #endif
  
  const char version_date[] = BUILD_DATE " " BUILD_TIME;
+-- 
+2.30.2
+

@@ -1,7 +1,7 @@
 #
 # spec file for package prboom-plus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,44 +17,36 @@
 
 
 Name:           prboom-plus
-Version:        2.5.1.5+svn4532
+Version:        2.6um+g69
 Release:        0
 Summary:        DOOM source port with demo compatibility
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            http://prboom-plus.sf.net/
 
-#SVN-Clone:	https://svn.prboom.org/repos/branches/prboom-plus-24/prboom2
-#Sibling-Prj:	https://github.com/coelckers/prboom-plus (umapinfo fork)
-#DL-URL:	http://downloads.sf.net/prboom-plus/prboom-plus-2.5.1.4.tar.gz
-Source:         prboom2-%version.tar.xz
+#Git-Clone:	https://github.com/coelckers/prboom-plus
+Source:         %name-%version.tar.xz
 Patch1:         prboom-nodatetime.diff
-Patch2:         prboom-types1.diff
-Patch3:         prboom-types2.diff
-Patch5:         prboom-enable-tessellation.diff
-Patch6:         prboom-hbar-color.diff
-Patch7:         prboom-hbar-all.diff
-Patch8:         prboom-hbar-gradient.diff
-Patch9:         0001-fix-heap-buffer-overflows-in-UDP-code-CVE-2019-20797.patch
+Patch2:         prboom-enable-tessellation.diff
+Patch3:         prboom-hbar-all.diff
+Patch4:         prboom-hbar-gradient.diff
 BuildRequires:  Mesa-devel
-BuildRequires:  automake
+BuildRequires:  c++_compiler
+BuildRequires:  cmake
 BuildRequires:  fluidsynth-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
 BuildRequires:  libvorbis-devel
 BuildRequires:  pcre-devel
+BuildRequires:  portmidi-devel
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(SDL2_net)
 BuildRequires:  pkgconfig(sdl2)
-%if 0%{?suse_version} >= 1320
-BuildRequires:  portmidi-devel
-%endif
-BuildRequires:  update-desktop-files
 Suggests:       freedoom
-Provides:       prboom = 2.5.0plus
-Obsoletes:      prboom <= 2.5.0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Provides:       prboom = 2.6um
+Obsoletes:      prboom <= 2.6
 
 %description
 PrBoom+ is a conservative Doom source port. It features:
@@ -72,26 +64,24 @@ PrBoom+ is a conservative Doom source port. It features:
   mode.
 
 %prep
-%autosetup -p1 -n prboom2-%version
+%autosetup -p0
 
 %build
-cp -alv data/sounds/free/*.wav data/sounds/
-cp -alv data/sprites/free/* data/sprites/
-autoreconf -fi
-# rpm has its own optimizations, so turn off shipped defaults
-%configure --enable-gl --disable-cpu-opt --program-prefix="" \
-	--with-waddir="%_datadir/doom" --disable-dogs CFLAGS="%optflags -fcommon"
-make %{?_smp_mflags}
+pushd prboom2/
+%cmake -DDOOMWADDIR="%_datadir/doom"
+%cmake_build
+popd
 
 %install
-b="%buildroot"
-%make_install gamesdir="%_bindir"
-
+pushd prboom2/
+%cmake_install
 # convenience symlink
-ln -s prboom-plus "%buildroot/%_bindir/prboom"
+b="%buildroot"
+ln -s prboom-plus "$b/%_bindir/prboom"
 install -Dm0644 ICONS/prboom-plus.svg "$b/%_datadir/icons/hicolor/scalable/apps/prboom-plus.svg"
 install -Dm0644 ICONS/prboom-plus.desktop "$b/%_datadir/applications/prboom-plus.desktop"
 install -Dm0644 ICONS/prboom-plus.bash "$b/%_datadir/bash-completion/completions/prboom-plus.bash"
+popd
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 %post

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Apr  9 23:53:06 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch to Oelcker's prboom-plus-um code base
+- Update to release 2.6um and snapshot 2.6um+git69 (07925d634)
+  * Support for UMAPINFO lump, customizable intermissions,
+    customizable episode menu.
+  * It is now possible to set individual key bindings to
+    unassigned (completely disable a hotkey function)
+  * Support for Compressed ZDoom BSP nodes.
+  * 100 extra sprites (SP00..SP99) for use in DEH/BEX,
+    200 extra sounds for use in DEH/BEX.
+  * Add -statdump parameter from Chocolate Doom.
+  * Add -stroller parameter.
+  * Added new BEX property "Dropped item" for mobjs.
+  * New demo format with "PR+UM" signature.
+  * Add a "-pistolstart" command line parameter.
+  * Add ALSA sequencer API backend for ALSA MIDI support.
+  * Now defaults to ffmpeg for video encoding
+    (switched from previous oggenc2 & x264).
+- Drop 0001-fix-heap-buffer-overflows-in-UDP-code-CVE-2019-20797.patch
+  (merged), prboom-types1.diff (obsolete),
+  prboom-types2.diff (obsolete), prboom-hbar-color.diff (folded
+  into prboom-hbar-gradient.diff)
+
+-------------------------------------------------------------------
 Tue Jun  9 20:32:48 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-fix-heap-buffer-overflows-in-UDP-code-CVE-2019-20797.patch

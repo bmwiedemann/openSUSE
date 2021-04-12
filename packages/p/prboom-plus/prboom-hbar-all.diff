@@ -1,20 +1,20 @@
+From a0bae535928cbce4eb9da8dd5d33b473776c9693 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
-Date: 2013-05-01 09:53:49.000000000 +0200
-Category: improvement
-Status: sent Wed, 1 May 2013 14:28:44 +0200
+Date: Wed, 1 May 2013 09:53:49 +0200
+Subject: [PATCH 1/2] Show health bar for all destructible mobjs
+References: https://github.com/coelckers/prboom-plus/pull/274
 
-Show the health bar for all destructible items (including
-barrels and Lost Souls).
-
+Show the health bar for all destructible items, especially so
+including barrels and Lost Souls.
 ---
- src/gl_main.c |    3 ++-
+ prboom2/src/gl_main.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-Index: prboom2/src/gl_main.c
-===================================================================
---- prboom2.orig/src/gl_main.c
+diff --git prboom2/src/gl_main.c prboom2/src/gl_main.c
+index 20712b7e..e2402e16 100644
+--- prboom2/src/gl_main.c
 +++ prboom2/src/gl_main.c
-@@ -2399,7 +2399,8 @@ static void gld_DrawSprite(GLSprite *spr
+@@ -2328,7 +2328,8 @@ static void gld_DrawSprite(GLSprite *sprite)
  
  static void gld_AddHealthBar(mobj_t* thing, GLSprite *sprite)
  {
@@ -24,3 +24,6 @@ Index: prboom2/src/gl_main.c
    {
      GLHealthBar hbar;
      int health_percent = thing->health * 100 / thing->info->spawnhealth;
+-- 
+2.31.1
+
