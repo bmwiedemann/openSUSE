@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat Apr 10 07:45:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.9.2
+  * update pythoncapi_compat: Fix support with PyPy 3.7
+- Update to 1.9.0
+  * add shift operations (``<<``, ``>>``, ``<<=``, ``>>=``)
+  * add ``bitarray.util.ba2base()`` and ``bitarray.util.base2ba()``,
+- Update to 1.8.2
+  * fix crash caused by unsupported types in binary operations,
+  * speedup initializing or extending a bitarray from another
+    with different bit endianness.
+  * add formatting options to ``bitarray.util.pprint()``
+  * add and improve tests (all 291 tests run in less than half
+    a second on a modern machine)
+- Update to 1.8.1
+  * moved implementation of and ``hex2ba()`` and ``ba2hex()``
+    to C-level
+  * add ``bitarray.util.parity()``
+- Update to 1.8.0
+  * add ``bitarray.util.serialize()`` and
+    ``bitarray.util.deserialize()``
+  * allow whitespace (ignore space and ``\n\r\t\v``) in input
+    strings; e.g. ``bitarray('01 11')`` or ``a += '10 00'``
+  * add ``bitarray.util.pprint()``
+  * When initializing a bitarray from another with different
+    bit endianness, e.g. ``a = bitarray('110', 'little')``
+    and ``b = bitarray(a, 'big')``, the buffer used to be
+    simply copied, with consequence that ``a == b`` would
+    result in ``False``.  This is fixed now, that is
+    ``a == b`` will always evaluate to ``True``.
+  * add test for loading existing pickle file (created using
+    bitarray 1.5.0)
+- Update to 1.7.1
+  * Raise TypeError when incorrect index is used during
+    assignment, e.g. ``a[1.5] = 1``
+  * raise TypeError (not IndexError) when assigning slice to
+    incorrect type, e.g. ``a[1:4] = 1.2``
+  * improve some docstrings and tests
+- Update to 1.7.0
+  * add ``bitarray.util.urandom()``
+  * raise TypeError when trying to extend bitarrays from bytes
+    on Python 3, ie. ``bitarray(b'011')`` and ``.extend(b'110')``.
+    (Deprecated since 1.4.1)
+- Update to 1.6.2
+  * use ``Py_SET_TYPE()`` and ``Py_SET_SIZE()`` for Python 3.10
+  * add official Python 3.10 support
+  * fix slice assignment to same object,
+    e.g. ``a[2::] = a`` or ``a[::-1] = a``,
+  * add bitarray.h,
+
+-------------------------------------------------------------------
 Fri Nov  6 10:48:49 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 1.6.1

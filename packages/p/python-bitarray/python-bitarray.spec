@@ -1,7 +1,7 @@
 #
 # spec file for package python-bitarray
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bitarray
-Version:        1.6.1
+Version:        1.9.2
 Release:        0
 Summary:        Efficient Arrays of Booleans
 License:        Python-2.0
@@ -28,6 +28,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
 BuildRequires:  %{python_module dbm}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -64,7 +65,7 @@ rm examples/growth/.gitignore
 
 %files %{python_files}
 %license LICENSE
-%doc examples AUTHORS CHANGE_LOG README.md TODO
+%doc examples CHANGE_LOG README.rst TODO
 %{python_sitearch}/bitarray*
 
 %changelog
