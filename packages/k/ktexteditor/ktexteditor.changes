@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr  5 07:12:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Too many changes since 5.80.0, only listing bugfixes:
+  * Don't warn about unsaved changes when closing if blank and unsaved (kde#391208)
+  * Use QPalette::highlight for the scrollbar minimap slider (kde#434690)
+  * Restrict horizontal range of cursor to avoid unintentionally wrapping. (kde#423253)
+  * Add option to keep spaces to the left of cursor when saving (kde#433455)
+  * fix unit tests => don't remove trailing spaces (kde#434163)
+  * fix spellcheck word detection for non-ASCII (kde#433673)
+  * fix auto-completion for non ASCII words (kde#433672)
+
+-------------------------------------------------------------------
 Sun Mar  7 09:27:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.80.0
