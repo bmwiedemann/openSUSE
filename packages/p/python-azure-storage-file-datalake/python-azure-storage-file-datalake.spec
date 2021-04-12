@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-storage-file-datalake
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-storage-file-datalake
-Version:        12.2.0
+Version:        12.3.0
 Release:        0
 Summary:        Azure DataLake service client library for Python
 License:        MIT
@@ -36,12 +36,12 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.9.0
+Requires:       python-azure-core >= 1.10.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-storage-blob < 13.0.0
-Requires:       python-azure-storage-blob >= 12.6.0
+Requires:       python-azure-storage-blob >= 12.8.0
 Requires:       python-azure-storage-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.6.10
+Requires:       python-msrest >= 0.6.18
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages
