@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-shell-extensions
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,13 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-shell-extensions
-Version:        3.38.2
+Version:        40.0
 Release:        0
 Summary:        A collection of extensions for GNOME Shell
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell/Extensions
-Source0:        https://download.gnome.org/sources/gnome-shell-extensions/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-shell-extensions/40/%{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source2:        sle-classic.desktop
 Source5:        sle-classic.json
@@ -125,7 +125,7 @@ sed -i -e 's/openSUSE/SUSE Linux Enterprise/g' README.SUSE
 %meson \
     -D classic_mode=true \
     -D extension_set=classic \
-    -D enable_extensions="apps-menu,places-menu,launch-new-instance,window-list,workspace-indicator,horizontal-workspaces,user-theme"
+    -D enable_extensions="apps-menu,places-menu,launch-new-instance,window-list,workspace-indicator,user-theme"
 %meson_build
 
 %install
@@ -169,7 +169,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 
 %files -n gnome-shell-classic
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.classic.gschema.override
-%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.user-theme.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.window-list.gschema.xml
 %{_datadir}/glib-2.0/schemas/00_org.gnome.shell.extensions.sle-classic.gschema.override
 %dir %{_datadir}/gnome-shell/extensions
@@ -178,7 +177,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %{_datadir}/gnome-shell/extensions/places-menu@gnome-shell-extensions.gcampax.github.com/
 %{_datadir}/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com/
 %{_datadir}/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com/
-%{_datadir}/gnome-shell/extensions/horizontal-workspaces@gnome-shell-extensions.gcampax.github.com/
 %dir %{_datadir}/gnome-shell/modes
 %{_datadir}/gnome-shell/modes/classic.json
 %dir %{_datadir}/gnome-shell/theme/
@@ -210,6 +208,7 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %files -n gnome-shell-extension-user-theme
 %license COPYING
 %{_datadir}/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com/
+%{_datadir}/glib-2.0/schemas/org.gnome.shell.extensions.user-theme.gschema.xml
 
 %files common-lang -f %{name}.lang
 
