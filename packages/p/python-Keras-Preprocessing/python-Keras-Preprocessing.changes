@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr  6 15:24:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.2 
+  * Allow zoom_range to be int or int tuple
+- Fix Requirements
+
+-------------------------------------------------------------------
+Mon Feb 15 16:44:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- NEP 29: Tumbleweed does not have python36-numpy and depending
+  packages anymore. Skip python36 build.
+
+-------------------------------------------------------------------
 Fri May 29 09:00:23 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not run doc tests as they require old TF

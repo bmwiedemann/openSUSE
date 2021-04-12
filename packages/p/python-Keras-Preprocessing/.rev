@@ -29,4 +29,12 @@
     <comment>- Do not run doc tests as they require old TF</comment>
     <requestid>810154</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>42afbcaf0495a16b1ffd8f210354ce78</srcmd5>
+    <version>1.1.2</version>
+    <time>1618235326</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>883622</requestid>
+  </revision>
 </revisionlist>

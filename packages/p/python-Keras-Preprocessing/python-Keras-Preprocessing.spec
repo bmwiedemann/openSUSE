@@ -1,7 +1,7 @@
 #
-# spec file for package python-Keras-Preprocessing
+# spec file for package python-Keras-Preprocessing-test
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
+# tensorflow2 is python3 single flavor only
+%define         pythons python3
 Name:           python-Keras-Preprocessing%{psuffix}
-Version:        1.1.0
+Version:        1.1.2
 Release:        0
 Summary:        Data preprocessing and augmentation package for deep learning models
 License:        MIT
@@ -37,18 +38,18 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.9.1
-Requires:       python-six >= 1.9.0
 # It won't work without it but we don't want a build loop in OBS
-Recommends:     python-Keras
+Recommends:     tensorflow2
 # match up with tensorflow
 ExcludeArch:    %{ix86}
 %if %{with test}
-BuildRequires:  %{python_module Keras}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module numpy >= 1.9.1}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six >= 1.9.0}
+BuildRequires:  %{python_module scipy}
+BuildRequires:  tensorflow2
 %endif
 %python_subpackages
 
@@ -59,8 +60,6 @@ working with image data, text data, and sequence data.
 
 %prep
 %setup -q -n Keras_Preprocessing-%{version}
-# do not add extra opts for pytest
-rm setup.cfg
 
 %build
 %python_build
