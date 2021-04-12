@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr  5 07:12:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Too many changes since 5.80.0, only listing bugfixes:
+  * Auto fire SearchField's accepted, with optional extra delay (kde#435084)
+  * Fix focus handling in OverlaySheet to be managed as one FocusScope (kde#431295)
+  * [FormLayout] Use layout boundaries on twin layout hints (kde#434383)
+  * the visible part should always at least be as tall as item (kde#433815)
+  * Fix potential crash in SizeGroup (kde#434079)
+  * turn contentItemParent into a FocusScope (kde#433991)
+
+-------------------------------------------------------------------
 Sun Mar  7 09:26:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.80.0
