@@ -50,6 +50,7 @@ Patch1:         tell-the-truth-about-private-api.patch
 Patch2:         webkit-bwo141288.patch
 Patch3:         qtwebkit-5.212.0_pre20200309-bison-3.7.patch
 Patch4:         icu-68.patch
+Patch5:         0001-Remove-invalid-g_object-declarations-to-fix-build-wi.patch
 %if %{with avsupport}
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
