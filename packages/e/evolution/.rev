@@ -2024,4 +2024,12 @@ Recommended for 12.3</comment>
     <comment></comment>
     <requestid>872500</requestid>
   </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>20505b44964d4e428f75a009a7efa6a1</srcmd5>
+    <version>3.40.0</version>
+    <time>1618223710</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880926 from dimstar)</comment>
+    <requestid>881098</requestid>
+  </revision>
 </revisionlist>

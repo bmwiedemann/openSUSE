@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Sat Mar 20 08:26:50 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.40.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 18 13:25:23 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.39.3:
+  + Calendar: Fix several memory leaks.
+  + ECompEditorPageGeneral: Change signal connect function on meeting store.
+  + itip-utils: Clamp the VTIMEZONE component of the sent component.
+  + itip_view_rebuild_source_list: Count with parent ESource being NULL.
+  + Mail: Correct compress thread level indentation.
+  + CompEditor: Check for "one-alarm-only" calendar capability.
+  + Allow to load modules from custom prefixes.
+  + Flatpak: Show Save All button in attachment bar.
+  + CompEditor: Make it easier to add a reminder.
+  + ECert: Provide and use SHA256 for certificate comparison.
+  + EWebDAVBrowser: Remove 'calendar-order' property when unset on save.
+  + Composer: Disable visual wrapping of anchors in Plain Text mode.
+  + Composer: Correct typo in node property names.
+  + Calendar: Fix couple memory leaks.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 15 10:44:32 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 3.39.2:
+  + Calendar:
+    - Ability to change RSVP response.
+    - Event tooltip can be misplaced.
+    - Preserve time when creating events with double-click.
+  + CompEditor: Allow editing meetings if not owner.
+  + Composer:
+    - Quoted text visually changes linewrap after paste.
+    - Paste plain text as Preformatted.
+    - Invalid wrapping with a space at the end of the line.
+  + templates:
+    - Prefer message body selection as Reply does.
+    - Quoted body shown incorrectly in Plain Text mode.
+  + HTMLEditor: Add "Preserve ratio" into image properties dialog.
+  + Address book: Provide feedback when searching in the List View.
+  + Adapt to libgweather 40.alpha API changes.
+  + CalDAV: Support calendar-order property.
+  + Flatpak: Share NSS database with the system.
+  + The XDG_CURRENT_DESKTOP env is a list.
+  + Correct typos in a/an.
+
+-------------------------------------------------------------------
+Mon Feb 15 03:39:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.39.1:
+  + html-editor: Update unit tests after change for I#1204.
+  + CollectionAccountWizard: Show provided error message when
+    password is required.
+  + EWebKitEditor: Prevent NULL dereference on call to
+    WebKitWebView methods.
+  + ECalendarItem: Settings loaded only when being shown.
+  + Show preview of imported data in import assistant.
+  + Reuse existing mail session when generating import preview.
+  + Fix two memory leaks related to data import.
+  + Add 'Expression' condition to Calendar/Memo/Task Advanced
+    Searches.
+  + Tasks: Add 'Scheduled Tasks' filter option.
+  + e-convert.js: Missing line breaks with nested paragraphs.
+  + em-folder-properties: Add a 'Path' value to the General tab.
+  + Calendar:
+    - Make it possible to assign email address to On This Computer
+      sources.
+    - Linkify URL and Location in import component preview.
+  + ECompEditor:
+    - Listen for target backend property change notification.
+    - Extract plain email address from backend property.
+    - Add easy way to open URLs in the Location field.
+  + Mail: Disable 'Export to PDF' on drag & drop.
+  + Bump glib requirement to 2.56.
+  + Add Kabyle translation into the e_supported_locales array.
+  + ECalModel: Do not remove all objects on range change.
+  + Composer: UL/OL not wrapped properly in Plain Text mode.
+  + Shell: Make it possible to show webkit://gpu information.
+  + Misc: Mark ellipsis for translation.
+  + Add '--force-shutdown' argument information into the man page.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Feb 12 17:09:02 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.4:

@@ -20,15 +20,15 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution
-Version:        3.38.4
+Version:        3.40.0
 Release:        0
 # FIXME: check if note on license is still valid (comment before license)
 Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
 # NOTE: Some files are currently GPL-2.0 but pending relicensing, see bnc#749859
-License:        LGPL-2.0-only AND LGPL-3.0-only AND OLDAP-2.8 AND CC-BY-SA-3.0 AND GFDL-1.1-only AND GFDL-1.3-only
+License:        CC-BY-SA-3.0 AND LGPL-2.0-only AND LGPL-3.0-only AND OLDAP-2.8 AND GFDL-1.1-only AND GFDL-1.3-only
 Group:          Productivity/Networking/Email/Clients
 URL:            https://wiki.gnome.org/Apps/Evolution/
-Source0:        https://download.gnome.org/sources/evolution/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evolution/3.40/%{name}-%{version}.tar.xz
 
 BuildRequires:  bison
 BuildRequires:  bogofilter
@@ -56,7 +56,7 @@ BuildRequires:  pkgconfig(gail-3.0) >= 3.2.0
 BuildRequires:  pkgconfig(gcr-3) >= 3.4
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.24.0
 BuildRequires:  pkgconfig(geocode-glib-1.0) >= 3.10
-BuildRequires:  pkgconfig(gio-2.0) >= 2.40.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(gladeui-2.0) >= 3.10.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gnome-autoar-0) >= 0.1.1
@@ -218,6 +218,7 @@ translation-update-upstream
 %{_datadir}/glib-2.0/schemas/org.gnome.evolution.plugin.external-editor.gschema.xml
 # despite the plugins being split in their own packages, the schema must be present in any case
 %{_datadir}/glib-2.0/schemas/org.gnome.evolution.bogofilter.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.evolution.plugin.sender-validator.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.evolution.spamassassin.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/icons/hicolor/*/apps/evolution.svg
@@ -284,6 +285,8 @@ translation-update-upstream
 %{_libdir}/evolution/plugins/*-prefer-plain.*
 %{_datadir}/glib-2.0/schemas/org.gnome.evolution.plugin.prefer-plain.gschema.xml
 %{_libdir}/evolution/plugins/*-publish-calendar.*
+%{_libdir}/evolution/plugins/liborg-gnome-evolution-sender-validation.so
+%{_libdir}/evolution/plugins/org-gnome-evolution-sender-validation.eplug
 %{_libdir}/evolution/plugins/*-save-calendar.*
 %{_libdir}/evolution/plugins/*-templates.*
 %{_datadir}/glib-2.0/schemas/org.gnome.evolution.plugin.templates.gschema.xml
