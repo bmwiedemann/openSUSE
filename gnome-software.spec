@@ -16,17 +16,10 @@
 #
 
 
-<<<<<<< Updated upstream
-%define gs_plugin_api 13
-%define _version 3_38_1
-Name:           gnome-software
-Version:        3.38.1
-=======
 %define gs_plugin_api 16
 %define _version 40_0
 Name:           gnome-software
 Version:        40.0
->>>>>>> Stashed changes
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later

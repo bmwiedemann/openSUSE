@@ -716,8 +716,6 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment></comment>
     <requestid>870853</requestid>
   </revision>
-<<<<<<< Updated upstream
-=======
   <revision rev="77" vrev="1">
     <srcmd5>72fdc4858277170b639c1665cee34de0</srcmd5>
     <version>40.0</version>
@@ -726,5 +724,4 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment>GNOME 40 - here we come (forwarded request 880969 from dimstar)</comment>
     <requestid>881140</requestid>
   </revision>
->>>>>>> Stashed changes
 </revisionlist>
