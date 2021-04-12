@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Mar 28 03:07:57 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.23
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.23    2021-03-27
+          [CHANGES]
+           * Unit tests and documentation of the handling of the final-value
+             semantics of `do { try ... }`
+           * Also mention core's `feature 'try'` in documentation
+           * Gives notice that the experimental 'try_value' feature is now
+             discouraged and will eventually be removed
+
+  0.22    2021-03-26
+          [CHANGES]
+           * Preserve wantarray context within the try {} block (RT133616)
+           * List-context `try do {}` now works fine as well
+           * Apply unit-testing for RT134790
+
+-------------------------------------------------------------------
 Sat Jan 23 03:09:35 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.21
