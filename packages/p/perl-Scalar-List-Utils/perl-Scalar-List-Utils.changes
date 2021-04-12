@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 31 03:09:27 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.56
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.56 -- 2021-03-30
+  	[CHANGES]
+  	 * Added `List::Util::zip`, `List::Util::mesh` and related functions
+  	   (RT129479)
+  	 * Updated embedded ppport.h for Devel::PPPort v3.62
+
+-------------------------------------------------------------------
 Mon Apr 13 03:13:01 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.55
