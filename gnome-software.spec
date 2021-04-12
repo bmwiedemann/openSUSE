@@ -16,22 +16,27 @@
 #
 
 
+<<<<<<< Updated upstream
 %define gs_plugin_api 13
 %define _version 3_38_1
 Name:           gnome-software
 Version:        3.38.1
+=======
+%define gs_plugin_api 16
+%define _version 40_0
+Name:           gnome-software
+Version:        40.0
+>>>>>>> Stashed changes
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Software
-Source0:        https://download.gnome.org/sources/gnome-software/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-software/40/%{name}-%{version}.tar.xz
 %if 0%{?sle_version}
 # PATCH-FIX-OPENSUSE gnome-software-launch-gpk-update-viewer-for-updates.patch bsc#1077332 boo#1090042 sckang@suse.com -- Don't launch gnome-software when clicking the updates notification. Launch gpk-update-viewer instead.
 Patch0:         gnome-software-launch-gpk-update-viewer-for-updates.patch
 %endif
-# PATCH-FIX-UPSTREAM gnome-software-failed-offline-update-notification.patch bsc#1161095 glgo#GNOME/gnome-software!471 sckang@suse.com -- plugin-loader: handle offline update errors properly.
-Patch1:         gnome-software-failed-offline-update-notification.patch
 # PATCH-FIX-OPENSUSE gnome-software-no-static-lib.patch dimstar@opensuse.org -- convert libgnomesoftware.a to a shared lib
 Patch2:         gnome-software-no-static-lib.patch
 
@@ -39,19 +44,20 @@ BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  suse-xsl-stylesheets
-BuildRequires:  pkgconfig(appstream-glib) >= 0.7.3
+BuildRequires:  pkgconfig(appstream) >= 0.14.0
 BuildRequires:  pkgconfig(flatpak) >= 0.6.12
 BuildRequires:  pkgconfig(fwupd) >= 1.0.3
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.18.0
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.11.5
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.18.0
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
+BuildRequires:  pkgconfig(libhandy-1) >= 1.0.2
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.52.0
 BuildRequires:  pkgconfig(malcontent-0) >= 0.3.0
@@ -140,8 +146,9 @@ rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 %dir %{_datadir}/gnome-shell/search-providers
 %{_datadir}/gnome-shell/search-providers/org.gnome.Software-search-provider.ini
 %{_datadir}/icons/hicolor/*/*/*.svg
-%dir %{_libdir}/gs-plugins-%{gs_plugin_api}
-%{_libdir}/gs-plugins-%{gs_plugin_api}/*.so
+%dir %{_libdir}/gnome-software
+%dir %{_libdir}/gnome-software/plugins-%{gs_plugin_api}
+%{_libdir}/gnome-software/plugins-%{gs_plugin_api}/*.so
 #{_libexecdir}/gnome-software-service
 %{_libexecdir}/gnome-software-cmd
 %{_libexecdir}/gnome-software-restarter
@@ -149,10 +156,10 @@ rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 %{_sysconfdir}/xdg/autostart/gnome-software-service.desktop
 
 %files -n libgnomesoftware-%{_version}
-%{_libdir}/libgnomesoftware-%{version}.so
+%{_libdir}/gnome-software/libgnomesoftware-%{version}.so
 
 %files devel
-%doc AUTHORS MAINTAINERS
+%doc AUTHORS
 %dir %{_includedir}/%{name}
 %{_datadir}/gtk-doc/html/%{name}/
 %dir %{_datadir}/doc/gnome-software

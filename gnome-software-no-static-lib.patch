@@ -1,14 +1,14 @@
-Index: gnome-software-3.37.92/lib/meson.build
+Index: gnome-software-40.rc/lib/meson.build
 ===================================================================
---- gnome-software-3.37.92.orig/lib/meson.build
-+++ gnome-software-3.37.92/lib/meson.build
-@@ -45,8 +45,8 @@ if get_option('polkit')
-   librarydeps += polkit
- endif
+--- gnome-software-40.rc.orig/lib/meson.build
++++ gnome-software-40.rc/lib/meson.build
+@@ -68,8 +68,8 @@ libgnomesoftware_include_directories = [
+   include_directories('..'),
+ ]
  
--libgnomesoftware = static_library(
+-libgnomesoftware = library(
 -  'gnomesoftware',
-+libgnomesoftware = shared_library(
++libgnomesoftware = library(
 +  'gnomesoftware-'+meson.project_version(),
    sources : [
      'gs-app.c',
