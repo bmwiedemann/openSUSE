@@ -22,26 +22,21 @@
 # Do NOT create library package or a devel package!
 #
 ############################# NOTE ##################################
-
 Name:           uid_wrapper
 Version:        1.2.8
 Release:        0
-
 Summary:        A wrapper for privilege seperation
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://cwrap.org/
-
+URL:            https://cwrap.org/
 Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source3:        uid_wrapper.keyring
-
 BuildRequires:  cmake
 BuildRequires:  libcmocka-devel
 BuildRequires:  pkgconf
 BuildRequires:  user(nobody)
-
 Recommends:     cmake
 Recommends:     pkgconf
 
@@ -68,7 +63,7 @@ development/testing.
   -DUNIT_TESTING=ON \
   -DCMAKE_SKIP_RPATH:BOOL=OFF
 
-make %{?_smp_mflags} VERBOSE=1
+%make_build
 
 %install
 %cmake_install
@@ -77,20 +72,16 @@ make %{?_smp_mflags} VERBOSE=1
 %ctest
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS README.md ChangeLog
 %license LICENSE
 %{_libdir}/libuid_wrapper.so*
-%dir %{_libdir}/cmake
 %dir %{_libdir}/cmake/uid_wrapper
 %{_libdir}/cmake/uid_wrapper/uid_wrapper-config-version.cmake
 %{_libdir}/cmake/uid_wrapper/uid_wrapper-config.cmake
-%dir %{_libdir}/pkgconfig
 %{_libdir}/pkgconfig/uid_wrapper.pc
-%{_mandir}/man1/uid_wrapper.1*
+%{_mandir}/man1/uid_wrapper.1%{?ext_man}
 
 %changelog
