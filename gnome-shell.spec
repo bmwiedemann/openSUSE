@@ -19,14 +19,14 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        3.38.3
+Version:        40.0
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GnomeShell
-Source:         https://download.gnome.org/sources/gnome-shell/3.38/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-shell/40/%{name}-%{version}.tar.xz
 # SOURCE-FEATURE-SLE aboutMenu fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
 Source1:        aboutMenu.js
 # SOURCE-FEATURE-OPENSUSE noise-texture boo#1176418 qkzhu@suse.com -- Add noise-texture as the default greeter background, used by patch4.
@@ -91,6 +91,7 @@ BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.33.1
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 0.11.92
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.0
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(ibus-1.0) >= 1.5.2
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.13.2
 BuildRequires:  pkgconfig(libcanberra)
@@ -99,7 +100,7 @@ BuildRequires:  pkgconfig(libcroco-0.6) >= 0.6.8
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.1
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.1
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
-BuildRequires:  pkgconfig(libmutter-7) >= 3.38.0
+BuildRequires:  pkgconfig(libmutter-8) >= 40.0
 BuildRequires:  pkgconfig(libnm) >= 1.10.4
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse) >= 2.0
@@ -109,9 +110,9 @@ BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.11
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mutter-clutter-7) >= 3.37.91
-BuildRequires:  pkgconfig(mutter-cogl-7) >= 3.37.91
-BuildRequires:  pkgconfig(mutter-cogl-pango-7) >= 3.37.91
+BuildRequires:  pkgconfig(mutter-clutter-8) >= 40.0
+BuildRequires:  pkgconfig(mutter-cogl-8) >= 40.0
+BuildRequires:  pkgconfig(mutter-cogl-pango-8) >= 40.0
 BuildRequires:  pkgconfig(polkit-agent-1) >= 0.100
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  python(abi) >= 3
@@ -301,6 +302,10 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Extensions.D
 %{_datadir}/dbus-1/services/org.gnome.Shell.Screencast.service
 %{_datadir}/gnome-shell/org.gnome.Shell.Screencast
 %{_datadir}/gnome-shell/org.gnome.Shell.Screencast.src.gresource
+
+%{_datadir}/dbus-1/services/org.gnome.ScreenSaver.service
+%{_datadir}/gnome-shell/org.gnome.ScreenSaver
+%{_datadir}/gnome-shell/org.gnome.ScreenSaver.src.gresource
 
 %files devel
 %doc HACKING.md

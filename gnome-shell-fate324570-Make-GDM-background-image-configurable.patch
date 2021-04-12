@@ -1,8 +1,8 @@
-diff --git a/data/gnome-shell-theme.gresource.xml b/data/gnome-shell-theme.gresource.xml
-index 6c1b9cd..e8e23a3 100644
---- a/data/gnome-shell-theme.gresource.xml
-+++ b/data/gnome-shell-theme.gresource.xml
-@@ -12,6 +12,7 @@
+Index: gnome-shell-40.rc/data/gnome-shell-theme.gresource.xml
+===================================================================
+--- gnome-shell-40.rc.orig/data/gnome-shell-theme.gresource.xml
++++ gnome-shell-40.rc/data/gnome-shell-theme.gresource.xml
+@@ -16,6 +16,7 @@
      <file alias="icons/scalable/status/message-indicator-symbolic.svg">message-indicator-symbolic.svg</file>
      <file>no-events.svg</file>
      <file>no-notifications.svg</file>
@@ -10,10 +10,10 @@ index 6c1b9cd..e8e23a3 100644
      <file>pad-osd.css</file>
      <file alias="icons/scalable/status/eye-open-negative-filled-symbolic.svg">eye-open-negative-filled-symbolic.svg</file>
      <file alias="icons/scalable/status/eye-not-looking-symbolic.svg">eye-not-looking-symbolic.svg</file>
-diff --git a/data/theme/gnome-shell-sass/widgets/_screen-shield.scss b/data/theme/gnome-shell-sass/widgets/_screen-shield.scss
-index 00c549a..57e9ab6 100644
---- a/data/theme/gnome-shell-sass/widgets/_screen-shield.scss
-+++ b/data/theme/gnome-shell-sass/widgets/_screen-shield.scss
+Index: gnome-shell-40.rc/data/theme/gnome-shell-sass/widgets/_screen-shield.scss
+===================================================================
+--- gnome-shell-40.rc.orig/data/theme/gnome-shell-sass/widgets/_screen-shield.scss
++++ gnome-shell-40.rc/data/theme/gnome-shell-sass/widgets/_screen-shield.scss
 @@ -65,6 +65,11 @@
    box-shadow: 0px 2px 4px rgba(0,0,0,0.6);
  }
@@ -24,12 +24,12 @@ index 00c549a..57e9ab6 100644
 +}
 +
  #lockDialogGroup {
-   background-color: lighten(#2e3436, 8%);
+   background-color: $system_bg_color;
  }
-diff --git a/js/ui/screenShield.js b/js/ui/screenShield.js
-index 86221a3..2947695 100644
---- a/js/ui/screenShield.js
-+++ b/js/ui/screenShield.js
+Index: gnome-shell-40.rc/js/ui/screenShield.js
+===================================================================
+--- gnome-shell-40.rc.orig/js/ui/screenShield.js
++++ gnome-shell-40.rc/js/ui/screenShield.js
 @@ -4,6 +4,7 @@ const { AccountsService, Clutter, Gio,
          GLib, Graphene, Meta, Shell, St } = imports.gi;
  const Signals = imports.signals;
@@ -38,7 +38,7 @@ index 86221a3..2947695 100644
  const GnomeSession = imports.misc.gnomeSession;
  const OVirt = imports.gdm.oVirt;
  const LoginManager = imports.misc.loginManager;
-@@ -16,6 +17,8 @@ const SmartcardManager = imports.misc.smartcardManager;
+@@ -16,6 +17,8 @@ const SmartcardManager = imports.misc.sm
  
  const { adjustAnimationTime } = imports.ui.environment;
  
@@ -47,7 +47,7 @@ index 86221a3..2947695 100644
  const SCREENSAVER_SCHEMA = 'org.gnome.desktop.screensaver';
  const LOCK_ENABLED_KEY = 'lock-enabled';
  const LOCK_DELAY_KEY = 'lock-delay';
-@@ -25,6 +28,9 @@ const DISABLE_LOCK_KEY = 'disable-lock-screen';
+@@ -25,6 +28,9 @@ const DISABLE_LOCK_KEY = 'disable-lock-s
  
  const LOCKED_STATE_STR = 'screenShield.locked';
  
@@ -90,7 +90,7 @@ index 86221a3..2947695 100644
      }
  
      _setActive(active) {
-@@ -473,6 +498,53 @@ var ScreenShield = class {
+@@ -492,6 +517,53 @@ var ScreenShield = class {
          this.emit('wake-up-screen');
      }
  

@@ -1,9 +1,51 @@
 -------------------------------------------------------------------
-Fri Mar 19 21:27:12 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+Sat Mar 20 16:49:12 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Mar 19 21:25:30 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Disable
   gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch:
   Clears existing keyboard on gnome-shell restart (boo#1183823).
+
+-------------------------------------------------------------------
+Wed Mar 17 12:49:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Define default app grid arrangement.
+  + Fix shading behind system modal dialogs.
+  + Only show logout-inhibiting apps in end-session dialog.
+  + Fix minimap previews on multi-monitor systems.
+  + Drop strict extension version match for unstable releases.
+  + Fix missing app menu after overview gesture.
+  + Improve app folder appearance.
+  + Fix window previews becoming undraggable after workspace
+    switch.
+  + Fix dragging icons to a different page in RTL locales.
+  + Support double super for opening app grid.
+  + Improve workspace handling on secondary monitors.
+  + Improve interaction when dragging between app grid pages.
+  + Fix launching on requested workspace on wayland.
+  + Make wifi strength indicator consistent with icons in Settings.
+  + Start session in overview.
+  + Tweak window preview layout in overview.
+  + Improve overview performance.
+  + Fix new workspaces being invisible in minimap.
+  + Fix glitch after dragging window preview from second monitor.
+  + Do not switch workspaces when scrolling during super-tab.
+  + Make OSK shifting up windows more reliable.
+  + Fix swipe gesture glitches.
+  + Fix mis-scaled preview icons in window picker.
+  + Fix unintended app grid changes during icon DND in dash.
+  + Fix missing X11 fallback icons.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Rebase
+  gnome-shell-fate324570-Make-GDM-background-image-configurable.patch.
 
 -------------------------------------------------------------------
 Wed Mar 17 11:16:17 UTC 2021 - Cliff Zhao <qzhao@suse.com>
@@ -11,6 +53,102 @@ Wed Mar 17 11:16:17 UTC 2021 - Cliff Zhao <qzhao@suse.com>
 - Update gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch:
   Modify the Japanese input engine load order which will more fit
   for our community(bnc#1183475);
+
+-------------------------------------------------------------------
+Tue Feb 23 08:21:47 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.beta:
+  + Overview redesign:
+    - Move dash to the bottom.
+    - Do not duplicate dash icons in app grid.
+    - Separate favorites from running apps in dash.
+    - Change to a horizontal workspace layout.
+    - Move background to workspaces.
+    - Overhaul window preview style.
+    - Rework workspace switching animation.
+    - Show workspace side-by-side.
+    - Allow switching workspaces with super+scroll on wayland.
+    - Allow swiping through more than one workspace at a time.
+    - Extend active dash area to the screen edge.
+    - Change overall overview layout.
+    - Refine workspace activation in overview.
+    - Add vertical swipe gesture to shift through overview>
+    - Add shortcuts for shifting through overview.
+    - Round background corners in overview.
+    - Hide workspace minimap when using less than two workspaces.
+    - Scale down backgrounds in window picker.
+    - Minor improvements and bug fixes.
+  + Fix glitch in app folder icons on smaller displays.
+  * Remove arrows from top bar menus.
+  * Fix stuck grab after failed area screenshots.
+  * Prefer image-data hint over app-icon in notifications>
+  * Fix drag actor position when animations are turned off.
+  * Improve spacing in MPRIS notifications with small text.
+  * Add Welcome dialog after major updates.
+  * Do not save empty commands in run dialog history.
+  * Consider device type for fingerprint hint on login screen.
+  * Add tooltip to Extensions app to view unellipsized description.
+  * Fix stuck polkit dialog when using non-password auth.
+  * Provide screenshot feedback (flash, shutter) before writing
+    file to disk.
+  * Improve Thai layout in on-screen keyboard.
+  * Improve error handling for fingerprint auth.
+  * Handle a large number of window previews more gracefully.
+  * Follow swipe gesture when bringing up on-screen keyboard.
+  * Disable out-of-date extensions by default (again).
+  * Fixed crashes.
+  * Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan 23 14:26:55 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha.1.1:
+  + Adapt to settings moving to gsettings-desktop-schemas.
+  + Misc. bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 15 15:20:55 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha.1:
+  + Restore app picker fade during swipes.
+  + Sort extensions in Looking Glass alphabetically.
+  + Fix screenshots of unredirected fullscreen windows on X11.
+  + Use GPU to render (most) shadows.
+  + Refine avatar styling.
+  + Fix storing VPN secrets.
+  + Don't depend on asciidoc and sassc when building from tarball.
+  + Use horizontal pages in app picker.
+  + Avoid costly icon theme lookups unless when needed.
+  + Properly expose locked state to logind.
+  + Use 3 fingers for system swipe gestures.
+  + Fix glitches in overview transitions.
+  + Improve login screen accessibility.
+  + Overhaul top bar styling.
+  + Allow changing input volume by scrolling over microphone icon.
+  + Port Extensions app and portal to GTK4.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+- Add pkgconfig(gtk4) BuildRequires: new dependency. NOTE:
+  currently, there are indeed GTK3 AND GTK4 required.
+
+-------------------------------------------------------------------
+Fri Jan 15 08:43:09 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + Handle @content properties in ease() functions.
+  + Fix screencast indicator on Xorg.
+  + Expand ellipsized app picker labels on hover.
+  + Fix inline-replies in chat notifications.
+  + Refine MPRIS notification layout.
+  + Improve do-not-disturb support.
+  + Fix mobile broadband support.
+  + Add extension filtering in Extensions app.
+  + Improve app picker spacing on larger resolutions.
+  + Plugged leaks.
+  + Fixed crashes.
+  + Updated translations.
 
 -------------------------------------------------------------------
 Thu Jan 14 18:22:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>

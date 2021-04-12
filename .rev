@@ -1712,4 +1712,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   for our community(bnc#1183475);</comment>
     <requestid>880179</requestid>
   </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>e3a68d6ba47e634cf72acf7b83a8285e</srcmd5>
+    <version>40.0</version>
+    <time>1618223730</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880966 from dimstar)</comment>
+    <requestid>881137</requestid>
+  </revision>
 </revisionlist>
