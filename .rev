@@ -1668,4 +1668,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment></comment>
     <requestid>872974</requestid>
   </revision>
+  <revision rev="197" vrev="1">
+    <srcmd5>e9e4f2ce2c0bbf206ca31d686078f9c6</srcmd5>
+    <version>40.0</version>
+    <time>1618223757</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 881017 from dimstar)</comment>
+    <requestid>881178</requestid>
+  </revision>
 </revisionlist>

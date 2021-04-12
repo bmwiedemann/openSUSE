@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Mar 21 08:05:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 18 13:14:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Location: Wrap label to fit smaller window sizes.
+  + Mouse & Touchpad: Allow horizontal scrolling in test page.
+  + Network: Fix creation of the netmask widget.
+  + Various fixes to the language chooser.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 22 11:57:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.beta:
+  + Various improvements to fingerprint management.
+  + Show hardware model and vendor in the About panel.
+  + New Keyboard panel design.
+  + New power mode selector in the Power panel.
+  + About:
+    - Show hardware model and vendor.
+    - Use os-release to search for the OS logo.
+  + Accessibility: Major code cleanup.
+  + Display: Try harder to select a good and working scale.
+  + Keyboard: Handle input sources.
+  + Power:
+    - Rearrange battery code to a new widget.
+    - Add a new "Power Mode" section.
+  + Sharing: Also disable Traker3.
+  + Sound: Update mute button icon when volume changes.
+  + User Accounts
+    - Fix free of constant string
+    - Use properly translated fingerprint strings
+    - Improve transition to parental controls window
+    - Many improvements to fingerprint management
+  + Updated translations.
+- Drop control-center-complete-SAE-support.patch: fixed upstreaam.
+
+-------------------------------------------------------------------
 Tue Feb 16 10:41:56 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.38.4:

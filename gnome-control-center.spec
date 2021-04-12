@@ -26,16 +26,14 @@
 %endif
 
 Name:           gnome-control-center
-Version:        3.38.4
+Version:        40.0
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-control-center/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-control-center/40/%{name}-%{version}.tar.xz
 
-# PATCH-FIX-UPSTREAM control-center-complete-SAE-support.patch glgo#GNOME/gnome-control-center!831, jsc#SLE-14992 sckang@suse.com -- network: complete SAE support.
-Patch0:         control-center-complete-SAE-support.patch
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
 Patch1001:      gnome-control-center-info-never-use-gnome-software.patch
@@ -50,7 +48,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  krb5-devel
-BuildRequires:  meson >= 0.51.0
+BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-dbusmock
 BuildRequires:  translation-update-upstream
@@ -69,7 +67,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.53.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gnome-bluetooth-1.0) >= 3.18.2
-BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.27.90
+BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.33.4
 BuildRequires:  pkgconfig(gnome-settings-daemon) >= 3.25.90
 BuildRequires:  pkgconfig(goa-1.0) >= 3.25.3
 BuildRequires:  pkgconfig(goa-backend-1.0)
@@ -82,8 +80,8 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.20
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libgtop-2.0)
-BuildRequires:  pkgconfig(libhandy-1) >= 0.90.0
-BuildRequires:  pkgconfig(libnm) >= 1.20.0
+BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
+BuildRequires:  pkgconfig(libnm) >= 1.24.0
 BuildRequires:  pkgconfig(libnma) >= 1.8.0
 BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
@@ -191,10 +189,6 @@ GNOME control center.
 %setup -q
 translation-update-upstream po gnome-control-center-2.0
 
-# Tumbleweed, Leap > 15.2 plus SLE > 15.2
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150200
-%patch0 -p1
-%endif
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
 %patch1001 -p1
