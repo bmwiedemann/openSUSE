@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Feb 15 10:41:07 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 3.39.2:
+  + libdocument:
+    -  Fix parameter type in gtk-doc.
+    -  Fix return value.
+    -  Stop trusting phsyical dimensions from monitors.
+  + libview:
+    -  Fix support for HiDPI in link preview.
+    -  Rorgo setting device offset on page surfaces.
+  + pdf: Keep same visual appearance between displayed and copied
+    text.
+  + Shell:
+    - Use HdyApplicationWindow.
+    - Use theme bg color for content view.
+    - Switch thumbnails's sidebar to two colums layout when using
+      dual page.
+    - Adjust reorder index for message area.
+    - Don't show close button on searchbar.
+    - Remove fullscreen overlay.
+    - hide close button when fullscreened.
+- New build requirement: pkgconfig(libhandy-1).
+
+-------------------------------------------------------------------
+Mon Feb 15 03:39:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.39.1:
+  + shell:
+    - Make F10 toggle the main menu.
+    - Mark the document title when modified.
+    - Remove style for gtk < 3.18.
+    - Track document modified status.
+    - Check for file changes when reopening a PDF.
+    - Handle reset form action.
+    - Remove trailing spaces.
+    - Add new field "contains_js".
+    - Add print setting to draw borders.
+  + help:
+    - Make order of keys consistent.
+    - Sync help against menu.
+    - Sync help against the text in the print dialog.
+  + build system:
+    - Make the build reproducible.
+    - Build using libm in some of the backends.
+    - Check poppler version when resetting form.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Feb 14 15:08:25 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.2:

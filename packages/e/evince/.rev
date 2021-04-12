@@ -1146,4 +1146,12 @@
     <comment></comment>
     <requestid>872514</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>60157b2da11c95ca13309796a594da7d</srcmd5>
+    <version>3.39.2</version>
+    <time>1618223709</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880925 from dimstar)</comment>
+    <requestid>881097</requestid>
+  </revision>
 </revisionlist>
