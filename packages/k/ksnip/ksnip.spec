@@ -1,7 +1,7 @@
 #
 # spec file for package ksnip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ksnip
-Version:        1.8.0
+Version:        1.8.2
 Release:        0
 Summary:        Screenshot tool
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kColorPicker-devel
-BuildRequires:  kImageAnnotator-devel >= 0.4.0
+BuildRequires:  kImageAnnotator-devel >= 0.4.2
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xvfb-run

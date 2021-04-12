@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Mar 23 10:48:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.8.2
+  Fixed:
+  * Add missing includes to build on UNIX.
+  * Ksnip starts minimized.
+  * Main window still show after screenshot when corresponding
+    option disabled.
+  * Cancel screenshot shows main window when window was hidden.
+  * Close button hidden after taking screenshot under kwin.
+
+-------------------------------------------------------------------
+Sat Mar 13 11:25:34 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.8.1
+  * Changed: Allow changing adorner color for rect area selection.
+    (#519)
+  * Changed: Notarize ksnip for macOS. (#402)
+  * Changed: Default font for numbering tool change to Arial.
+    (#200)
+  * Changed kImageAnnotator: Horizontally align text inside spin
+    box. (#203)
+  * Changed kImageAnnotator: Change zoom with mouse wheel to
+    CTRL+Wheel. (#210)
+  * Fixed: If file selection is cancelled during ksnip's file open
+    dialog via tray icon, ksnip closes. (#503)
+  * Fixed: Cancel on Quit not work when editor is hidden. (#342)
+  * Fixed: Canceling rect area selection activates main window.
+    (#521)
+  * Fixed: Enter key doesn't finishes resizing. (#523)
+  * Fixed: Missing version number in mac binaries. (#401)
+  * Fixed: Canceling save dialog show the option save path in the
+    header. (#545)
+  * Fixed: Save-as Window does not get focus when using snap.
+    (#543)
+  * Fixed: Editor can not be shown again after click close icon.
+    (#400)
+  * Fixed: Icons and text boxes not correctly scaled under gnome
+    with hdpi. (#549)
+  * Fixed: Window captures include non-transparent border of
+    background on Gnome. (#460)
+  * Fixed: Annotating hidpi image downscales the result after being
+    saved. (#172)
+  * Fixed kImageAnnotator: Brazilian Portuguese translation not
+    loaded. (#176)
+  * Fixed kImageAnnotator: error: control reaches end of non-void
+    function. (#177)
+  * Fixed kImageAnnotator: Cursor in Text tool have too bad
+    visibility. (#184)
+  * Fixed kImageAnnotator: bumped SONAME without name change.
+    (#185)
+  * Fixed kImageAnnotator: Entering multiple characters at once
+    moves the text cursor only for one character. (#186)
+  * Fixed kImageAnnotator: Activating context menu while drawing
+    item leaves item in error state. (#196)
+  * Fixed kImageAnnotator: Icons not scaled on gnome with hdpi
+    enabled. (#201)
+  * Fixed kImageAnnotator: Text/Number Pointer and Text/Number
+    Arrow don't inherit Text/Number Font in Settings. (#208)
+
+-------------------------------------------------------------------
 Mon Dec 14 20:57:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Run testsuite
