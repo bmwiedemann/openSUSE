@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Mar 25 04:33:03 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 2.6.2:
+  * Fix UI when running with libhandy 1.x 
+
+-------------------------------------------------------------------
+Wed Mar 24 11:19:17 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Remove 2c28932c6266cbeddbe49d7aa6ca8d70d125e96f.patch
+  Included in release 2.6.0. 
+
+-------------------------------------------------------------------
+Wed Mar 24 06:36:39 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 2.6.1:
+  * Fixed automatic layout.
+
+-------------------------------------------------------------------
+Wed Mar 24 04:27:45 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 2.6.0:
+  * Added support for opening HTML files.
+  * Consistent inner and outer margins.
+  * The automatic layout no longer supports 4 columns.
+  * Fixed long words overflowing.
+  * Fixed custom themes not saved across sessions.
+  * Fixed shortcuts for key pads.
+  * Fixed opening non-UTF-8 zipped FB2 files.
+  * Fixed books not opening on GNOME 40. 
+
+-------------------------------------------------------------------
 Sun Mar 21 15:03:26 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Added https://github.com/johnfactotum/foliate/commit/2c28932c6266cbeddbe49d7aa6ca8d70d125e96f.patch

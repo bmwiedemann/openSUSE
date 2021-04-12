@@ -19,14 +19,13 @@
 %global __requires_exclude typelib\\(Handy\\) = 0.0
 %define oname com.github.johnfactotum.Foliate
 Name:           foliate
-Version:        2.5.0
+Version:        2.6.2
 Release:        0
 Summary:        A GTK eBook reader
 License:        GPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://johnfactotum.github.io/foliate/
 Source:         %{name}-%{version}.tar.gz
-Patch:          https://github.com/johnfactotum/foliate/commit/2c28932c6266cbeddbe49d7aa6ca8d70d125e96f.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
