@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  9 10:30:10 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- Add overlay for smbios information (bsc#1183079)
+   * smbios-overlay.dts
+
+-------------------------------------------------------------------
 Mon Mar 15 17:32:52 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Update to 16991af20b (2021-03-15) (bsc#1183238):

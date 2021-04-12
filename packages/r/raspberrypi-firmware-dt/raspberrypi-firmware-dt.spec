@@ -28,6 +28,7 @@ Source1:        disable-vc4-overlay.dts
 Source2:        uboot-bcm2835-pl011-overlay.dts
 Source3:        disable-v3d-overlay.dts
 Source4:        enable-bt-overlay.dts
+Source5:        smbios-overlay.dts
 Source100:      get-from-git.sh
 Patch0:         upstream-overlay-rpi-poe.patch
 Requires:       raspberrypi-firmware
@@ -58,7 +59,7 @@ for dts in arch/arm/boot/dts/bcm27*dts arch/arm64/boot/dts/broadcom/bcm27*dts; d
 done
 
 export DTC_FLAGS="-R 0 -p 0 -@ -H epapr"
-for dts in arch/arm/boot/dts/overlays/*dts %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4}; do
+for dts in arch/arm/boot/dts/overlays/*dts %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5}; do
     target=$(basename ${dts%*.dts})
     target=${target%*-overlay}
     mkdir -p $PPDIR/overlays
@@ -69,6 +70,7 @@ done
 cp arch/arm/boot/dts/overlays/README $PPDIR/overlays/
 
 %define dtbdir /boot/vc
+
 %install
 install -m 700 -d %{buildroot}%{dtbdir}/
 install -m 700 -d %{buildroot}%{dtbdir}/overlays
