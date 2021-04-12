@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20210410" schemaversion="4.1">
+<image name="OBS__openSUSE___20210412" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210410</productvar>
+      <productvar name="VERSION">20210412</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210410,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210412,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210410/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210412/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -695,6 +695,7 @@
       <repopackage name="gnome-dictionary-lang"/>
       <repopackage name="gnome-disk-utility"/>
       <repopackage name="gnome-disk-utility-lang"/>
+      <repopackage name="gnome-extensions"/>
       <repopackage name="gnome-icon-theme"/>
       <repopackage name="gnome-icon-theme-extras"/>
       <repopackage name="gnome-icon-theme-symbolic"/>
@@ -1694,8 +1695,8 @@
       <repopackage name="libeconf0-32bit" arch="x86_64"/>
       <repopackage name="libedata-book-1_2-26"/>
       <repopackage name="libedata-cal-2_0-1"/>
-      <repopackage name="libedataserver-1_2-25"/>
-      <repopackage name="libedataserverui-1_2-2"/>
+      <repopackage name="libedataserver-1_2-26"/>
+      <repopackage name="libedataserverui-1_2-3"/>
       <repopackage name="libedc_ecc1_0"/>
       <repopackage name="libedc_ecc_dec1_0"/>
       <repopackage name="libedit0"/>
@@ -1870,7 +1871,7 @@
       <repopackage name="libgnome-menu-3-0"/>
       <repopackage name="libgnomekbd-lang"/>
       <repopackage name="libgnomekbd8"/>
-      <repopackage name="libgnomesoftware-3_38_1"/>
+      <repopackage name="libgnomesoftware-40_0"/>
       <repopackage name="libgnomesu"/>
       <repopackage name="libgnomesu-lang"/>
       <repopackage name="libgnomesu0"/>
@@ -1980,7 +1981,6 @@
       <repopackage name="libgxps2"/>
       <repopackage name="libHalf-2_5-25"/>
       <repopackage name="libhandle1"/>
-      <repopackage name="libhandy-0_0-0"/>
       <repopackage name="libhandy-1-0"/>
       <repopackage name="libhandy-lang"/>
       <repopackage name="libhangul1"/>
@@ -2391,7 +2391,7 @@
       <repopackage name="libmtp9"/>
       <repopackage name="libmusicbrainz4"/>
       <repopackage name="libmusicbrainz5-1"/>
-      <repopackage name="libmutter-7-0"/>
+      <repopackage name="libmutter-8-0"/>
       <repopackage name="libmwaw-0_3-3"/>
       <repopackage name="libmxml1"/>
       <repopackage name="libmygpo-qt5-1"/>
@@ -2879,7 +2879,7 @@
       <repopackage name="libtelepathy-glib0"/>
       <repopackage name="libtelepathy-logger3"/>
       <repopackage name="libtemplate_glib-1_0-0"/>
-      <repopackage name="libtepl-5-0"/>
+      <repopackage name="libtepl-6-0"/>
       <repopackage name="libtevent-util0"/>
       <repopackage name="libtevent-util0-32bit" arch="x86_64"/>
       <repopackage name="libtevent0"/>
@@ -3137,6 +3137,7 @@
       <repopackage name="libxkbcommon0"/>
       <repopackage name="libxkbfile-devel" arch="x86_64"/>
       <repopackage name="libxkbfile1"/>
+      <repopackage name="libxkbregistry0"/>
       <repopackage name="libxklavier16"/>
       <repopackage name="libxml2-2"/>
       <repopackage name="libxml2-2-32bit" arch="x86_64"/>
@@ -4914,7 +4915,7 @@
       <repopackage name="telepathy-mission-control"/>
       <repopackage name="telepathy-mission-control-plugin-goa"/>
       <repopackage name="template-glib-lang"/>
-      <repopackage name="tepl-5-lang"/>
+      <repopackage name="tepl-6-lang"/>
       <repopackage name="terminfo"/>
       <repopackage name="terminfo-base"/>
       <repopackage name="terminfo-iterm"/>
@@ -5038,6 +5039,7 @@
       <repopackage name="typelib-1_0-GstValidate-1_0"/>
       <repopackage name="typelib-1_0-GstVideo-1_0"/>
       <repopackage name="typelib-1_0-Gtk-3_0"/>
+      <repopackage name="typelib-1_0-Gtk-4_0"/>
       <repopackage name="typelib-1_0-GtkClutter-1_0"/>
       <repopackage name="typelib-1_0-GtkSource-4"/>
       <repopackage name="typelib-1_0-GWeather-3_0"/>

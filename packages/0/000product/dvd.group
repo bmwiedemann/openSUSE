@@ -657,6 +657,7 @@
     <package name="gnome-dictionary-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-disk-utility" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="gnome-disk-utility-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="gnome-extensions" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gnome-icon-theme-extras" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="gnome-icon-theme-symbolic" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -1862,8 +1863,8 @@
     <package name="libeconf0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libedata-book-1_2-26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libedata-cal-2_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libedataserver-1_2-25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libedataserverui-1_2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libedataserver-1_2-26" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libedataserverui-1_2-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libedc_ecc1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libedc_ecc_dec1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libedit0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2009,7 +2010,7 @@
     <package name="libgnome-menu-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomekbd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomekbd8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libgnomesoftware-3_38_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libgnomesoftware-40_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomesu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomesu-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgnomesu0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2110,7 +2111,6 @@
     <package name="libgweather-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgxps2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libhandle1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libhandy-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libhandy-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libhandy-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libhangul1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2271,7 +2271,7 @@
     <package name="libmailutils5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libmalcontent-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmalcontent-ui-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libmanette-0_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libmanette-0_2-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmariadb3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmariadbd19" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libmarkdown2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2317,7 +2317,7 @@
     <package name="libmtp9" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmusicbrainz4" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libmusicbrainz5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libmutter-7-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libmutter-8-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmwaw-0_3-3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libmxml1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libmygpo-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2701,7 +2701,7 @@
     <package name="libtelepathy-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtelepathy-logger3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtemplate_glib-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
-    <package name="libtepl-5-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libtepl-6-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtevent-util0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtevent0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtextstyle0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -2884,6 +2884,7 @@
     <package name="libxkbcommon-x11-0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libxkbcommon0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libxkbfile1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libxkbregistry0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libxklavier16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libxml2-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libxml2-tools" supportstatus="unsupported"/> <!-- reason: dvd:grub2-snapper-plugin -->
@@ -4526,7 +4527,7 @@
     <package name="telepathy-mission-control" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="telepathy-mission-control-plugin-goa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="template-glib-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
-    <package name="tepl-5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="tepl-6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="terminfo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="terminfo-base" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="terminfo-iterm" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4651,6 +4652,7 @@
     <package name="typelib-1_0-GstValidate-1_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="typelib-1_0-GstVideo-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Gtk-3_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="typelib-1_0-Gtk-4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GtkClutter-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-GtkSource-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Handy-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
