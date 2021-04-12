@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-synapse-monitoring
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        Microsoft Azure Synapse Monitoring Client Library for Python
 License:        MIT
