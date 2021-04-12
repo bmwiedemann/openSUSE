@@ -20,7 +20,7 @@
 %define majorver 5.0
 %define base_name tryton
 Name:           trytond
-Version:        %{majorver}.33
+Version:        %{majorver}.34
 Release:        0
 Summary:        An Enterprise Resource Planning (ERP) system
 License:        GPL-3.0-or-later
@@ -34,7 +34,7 @@ Source4:        %{name}_log.conf
 Source5:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
 Source6:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 Source20:       %{name}.service
-Patch0:         fix_werkzeug.patch	
+Patch0:         fix_werkzeug.patch
 Patch1:         revert_werkzeug_setup.patch
 BuildRequires:  fdupes
 BuildRequires:  python3-Werkzeug
