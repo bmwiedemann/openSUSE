@@ -1,7 +1,7 @@
 #
 # spec file for package python-arf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# This version of the package intentionally doesn't work with
-# Python < 3.5.
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-arf
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 # Note: I know that "advertisement" words are frowned on, but in this case
 # the package name is an acronym so "advanced" needs to stay in
@@ -32,12 +31,12 @@ Source:         https://files.pythonhosted.org/packages/source/a/arf/arf-%{versi
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-h5py >= 2.2
-Requires:       python-numpy >= 1.3
+Requires:       python-h5py >= 2.10
+Requires:       python-numpy >= 1.19
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module h5py >= 2.2}
-BuildRequires:  %{python_module numpy >= 1.3}
+BuildRequires:  %{python_module h5py >= 2.10}
+BuildRequires:  %{python_module numpy >= 1.19}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
