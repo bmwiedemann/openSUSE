@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 10 20:28:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build: no numpy and datawidgets for python36 on
+  Tumbleweed
+
+-------------------------------------------------------------------
 Tue Feb  2 23:22:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.2.1 with 2.2.0 jupyterlab extension

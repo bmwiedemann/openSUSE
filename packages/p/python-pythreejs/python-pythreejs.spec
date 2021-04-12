@@ -16,8 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 %define mainver 2.2.1
 %define labver  2.2.0
 Name:           python-pythreejs
@@ -42,16 +43,16 @@ Requires:       python-ipydatawidgets >= 1.1.1
 Requires:       python-ipywidgets >= 7.2.1
 Requires:       python-numpy >= 1.14
 BuildArch:      noarch
-# SECTION test requirements -- don't pull in python36 packages following NEP 29
+# SECTION test requirements
 BuildRequires:  %{python_module ipydatawidgets >= 1.1.1}
 BuildRequires:  %{python_module ipywebrtc}
 BuildRequires:  %{python_module ipywidgets >= 7.2.1}
-BuildRequires:  %{python_module matplotlib if %python-base >= 3.7}
+BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module nbval}
-BuildRequires:  %{python_module numpy >= 1.14 if %python-base >= 3.7}
+BuildRequires:  %{python_module numpy >= 1.14}
 BuildRequires:  %{python_module pytest-check-links}
-BuildRequires:  %{python_module scikit-image if %python-base >= 3.7}
-BuildRequires:  %{python_module scipy if %python-base >= 3.7}
+BuildRequires:  %{python_module scikit-image}
+BuildRequires:  %{python_module scipy}
 # /SECTION
 %python_subpackages
 
