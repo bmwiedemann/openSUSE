@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Mar 22 07:56:59 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + No changes since version 40.rc.
+
+-------------------------------------------------------------------
+Thu Mar 18 09:54:43 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Xsettings: Go back to loading gtk modules from
+    lib/gnome-settings-daemon-3.0.
+  + Test framework improvements
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 10:32:21 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.beta:
+  + Power: Close idleness notifications before suspending.
+  + Media-keys:
+    - Fix compiler warning.
+    - Remove screenshot sound feedback, performed by GNOME Shell.
+  + Xsettings: Use Restart=on-failure like other plugins.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Jan 17 08:48:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha.1:
+  + Use pathless "false" on dummy desktop files.
+  + Auto-start screen saver service.
+  + Datetime: Make use of new gweather API.
+  + Xsettings:
+    - Fix mouse schema location.
+    - Fix updates after font settings changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 12 10:45:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + Housekeeping: Fix crash when atime is not present.
+  + Power:
+    - Avoid automatic logout in GDM/greeter.
+    - Do not warn more than once per warning level for devices.
+  + USB-protection: Do not warn about ServiceUnknown errors for
+    USBGuard.
+  + Datetime: Query GWeather DB on the fly instead of caching.
+  + Color:
+    - Use the windowing system color transform matrix if available.
+   - Consider night-light active when disabled until tomorrow.
+  + Xsettings:
+    - Use font aa/hinting/rgba-order from
+      gsettings-desktop-schemas.
+    - Use mouse drag-threshold/double-click from
+      gsettings-desktop-schemas.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Nov 26 10:46:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer pass

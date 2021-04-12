@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-settings-daemon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,13 +28,13 @@
 %endif
 
 Name:           gnome-settings-daemon
-Version:        3.38.1
+Version:        40.0
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-settings-daemon
-Source0:        https://download.gnome.org/sources/gnome-settings-daemon/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-settings-daemon/40/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gnome-settings-daemon-initial-keyboard.patch bsc#979051 boo#1009515 federico@suse.com -- Deal with the default keyboard being set from xkb instead of GNOME
 Patch1:         gnome-settings-daemon-initial-keyboard.patch
@@ -180,8 +180,8 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 %{_datadir}/gnome-settings-daemon/
 %{_libexecdir}/gsd-backlight-helper
 %{_libexecdir}/gsd-printer
-%dir %{_libdir}/gnome-settings-daemon-3.0/
-%{_libdir}/gnome-settings-daemon-3.0/libgsd.so
+%dir %{_libdir}/gnome-settings-daemon-40/
+%{_libdir}/gnome-settings-daemon-40/libgsd.so
 # Explicitly list all the plugins so we know we don't lose any
 
 %{_libexecdir}/gsd-a11y-settings
@@ -286,7 +286,7 @@ rm %{buildroot}%{_sysconfdir}/xdg/autostart/org.gnome.SettingsDaemon.Wacom.deskt
 
 %files devel
 %doc AUTHORS ChangeLog
-%{_includedir}/gnome-settings-daemon-3.0/
+%{_includedir}/gnome-settings-daemon-40/
 %{_libdir}/pkgconfig/gnome-settings-daemon.pc
 
 %files lang -f %{name}.lang
