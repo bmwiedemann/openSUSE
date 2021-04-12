@@ -1,7 +1,7 @@
 #
 # spec file for package python-onnxconverter-common
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,28 @@
 #
 
 
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# Tumbleweed does not have a python36-numpy anymore: NEP 29 dropped Python 3.6 for NumPy 1.20
+%define skip_python36 1
 Name:           python-onnxconverter-common
-Version:        1.6.5
+Version:        1.8.0
 Release:        0
 Summary:        ONNX Converter and Optimization Tools
 License:        MIT
 URL:            https://github.com/microsoft/onnxconverter-common
-Source:         https://github.com/microsoft/onnxconverter-common/archive/v%{version}.tar.gz#/onnxconverter_common-%{version}.tar.gz
+Source:         https://github.com/microsoft/onnxconverter-common/archive/%{version}.tar.gz#/onnxconverter_common-%{version}.tar.gz
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module onnx}
 BuildRequires:  %{python_module protobuf}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Requires:       python-onnx
 Requires:       python-protobuf
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 
@@ -58,12 +58,14 @@ dos2unix README.md
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+# no onnxruntime in Factory
+ignorefiles="--ignore tests/test_float16.py --ignore tests/test_onnx2py.py --ignore tests/test_onnxfx.py"
+%pytest $ignorefiles
+
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/onnxconverter_common*
-
-%check
-%pytest
 
 %changelog
