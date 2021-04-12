@@ -19,15 +19,13 @@
 %define gst_branch 1.0
 
 Name:           gstreamer-plugins-vaapi
-Version:        1.18.3
+Version:        1.18.4
 Release:        0
 Summary:        Gstreamer VA-API plugins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
 Source0:        %{url}/src/gstreamer-vaapi/gstreamer-vaapi-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gst-vaapi-glx-iterate-over-FBConfig.patch -- glx: Iterate over FBConfig and select 8 bit color size
-Patch0:         gst-vaapi-glx-iterate-over-FBConfig.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLESv3-devel

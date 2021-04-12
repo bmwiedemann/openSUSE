@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 31 15:08:23 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.18.4:
+  + h264 encoder: append encoder exposure to aud
+  + postproc: Fix a problem of propose_allocation when passthrough
+  + glx: Iterate over FBConfig and select 8 bit color size
+- Remove patch which is already included:
+  * gst-vaapi-glx-iterate-over-FBConfig.patch
+
+-------------------------------------------------------------------
 Thu Jan 21 21:41:35 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gst-vaapi-glx-iterate-over-FBConfig.patch: glx: Iterate over
