@@ -1,7 +1,7 @@
 #
 # spec file for package python-dash-renderer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dash-renderer
-Version:        1.8.3
+Version:        1.9.1
 Release:        0
 Summary:        Front-end component renderer for Dash
 License:        MIT
@@ -44,6 +44,9 @@ cp %{SOURCE99} .
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+# no python tests available, js testing is hard.
+# %%check
 
 %files %{python_files}
 %license LICENSE
