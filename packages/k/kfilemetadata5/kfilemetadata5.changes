@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr  5 07:12:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Changes since 5.80.0:
+  * This method is unused (fix unity compile support)
+  * Enable Unicode support in QRegularExpression where needed
+
+-------------------------------------------------------------------
 Sun Mar  7 09:26:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.80.0
