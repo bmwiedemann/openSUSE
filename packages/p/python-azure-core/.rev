@@ -80,4 +80,15 @@
     <comment></comment>
     <requestid>864638</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b0a4d07111b0196ca244deb5c337e0ed</srcmd5>
+    <version>1.13.0b1</version>
+    <time>1618235339</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.13.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 881852 from glaubitz)</comment>
+    <requestid>881913</requestid>
+  </revision>
 </revisionlist>
