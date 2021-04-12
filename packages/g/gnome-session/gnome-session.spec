@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-session
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-session
-Version:        3.38.0
+Version:        40.beta
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-session/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-session/40/%{name}-%{version}.tar.xz
 Source1:        gnome
 Source2:        gnome.desktop
 
@@ -120,7 +120,7 @@ install -d -m755 %{buildroot}%{_bindir}
 install -m755 %{SOURCE1} %{buildroot}%{_bindir}/gnome
 install -d -m755 %{buildroot}%{_datadir}/xsessions
 install -m644 %{SOURCE2} %{buildroot}%{_datadir}/xsessions/gnome.desktop
-%find_lang %{name}-3.0 %{?no_lang_C}
+%find_lang %{name}-40 %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 # remove wayland files on s390/s390x
 %ifarch s390 s390x
@@ -218,6 +218,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %dir %{_userunitdir}/gnome-session@gnome.target.d
 %{_userunitdir}/gnome-session@gnome.target.d/gnome.session.conf
 
-%files lang -f %{name}-3.0.lang
+%files lang -f %{name}-40.lang
 
 %changelog
