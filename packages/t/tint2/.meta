@@ -1,5 +1,0 @@
-<package name="tint2" project="openSUSE:Factory">
-  <title></title>
-  <description>tint2 is a simple panel/taskbar made for modern X window managers.</description>
-  <devel project="X11:Utilities" package="tint2"/>
-</package>
