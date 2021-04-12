@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Apr  7 21:07:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- filelist fix for the glib build 
+
+-------------------------------------------------------------------
+Sun Jan 24 20:01:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.9:
+  * Add support for empty parameters, e.g. CN=""
+  * Accept VTIMEZONE with more than one X- property
+  * Several fixes for recurrences containing BYWEEKNO
+  * icalrecurrencetype_from_string() will reject any RRULE that contains a
+    rule-part that occurs more than once
+  * Improve thread safety
+  * Fix compiled-in path for the built-in timezone data
+  * Fix reading TZif files with empty v1 data (use v2+ whenever possible)
+  * Add backwards compatibility for previous TZIDs
+  * Built-in timezones updated to tzdata2020d
+  * Fix build with newer libicu
+  * Fix cross-compile support in libical-glib 
+- remove 0001-Fix-build-with-icu-68.1.patch libical-read-v2-v3-data.patch:
+  upstream
+
+-------------------------------------------------------------------
 Fri Dec  4 23:18:50 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Add 0001-Fix-build-with-icu-68.1.patch: fix build with icu 68.1.

@@ -1,7 +1,7 @@
 #
-# spec file for package libical
+# spec file for package libical-glib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,36 +25,31 @@
 %define name_ext %{nil}
 %bcond_with glib
 %endif
-
 Name:           libical%{name_ext}
-Version:        3.0.8
+Version:        3.0.9
 Release:        0
-%if %{without glib}
-Summary:        An Implementation of Basic iCAL Protocols
-License:        MPL-2.0 OR LGPL-2.1-only
-Group:          Development/Libraries/C and C++
-%else
-Summary:        GObject wrapper for libical library
-License:        MPL-2.0 OR LGPL-2.1-only
-Group:          Development/Libraries/C and C++
-%endif
 URL:            https://github.com/libical/libical
 Source:         %{url}/releases/download/v%{version}/libical-%{version}.tar.gz
 Source2:        baselibs.conf
 Source3:        libical-rpmlintrc
-
 Patch1:         0001-vcc.y-factor-out-hexdigit-conversion.patch
 Patch2:         0002-vcc.y-fix-infinite-loop-with-lower-case-hex-digits.patch
 Patch3:         0003-vcc.y-fix-infinite-loop-with-non-hex-digits.patch
 Patch4:         0004-vobject.c-vCard-Unicode-reading-support.patch
 Patch5:         0005-vcc.y-do-not-ignore-field-separator-in-QUOTED-PRINTA.patch
-Patch6:         libical-read-v2-v3-data.patch
-Patch7:         0001-Fix-build-with-icu-68.1.patch
-
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.1
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(icu-i18n)
+%if %{without glib}
+Summary:        An Implementation of Basic iCAL Protocols
+License:        LGPL-2.1-only OR MPL-2.0
+Group:          Development/Libraries/C and C++
+%else
+Summary:        GObject wrapper for libical library
+License:        LGPL-2.1-only OR MPL-2.0
+Group:          Development/Libraries/C and C++
+%endif
 %if %{with glib}
 BuildRequires:  gtk-doc
 BuildRequires:  vala
@@ -64,7 +59,6 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(libxml-2.0)
 %endif
-
 %if %{without glib}
 %description -n libical
 Libical is an implementation of the IETF's iCalendar
@@ -72,6 +66,7 @@ calendaring and scheduling protocols (RFC 2445, 2446, and 2447). It
 parses iCal components and provides a C API for manipulating the
 component properties, parameters, and subcomponents.
 %else
+
 %description -n libical-glib
 This package provides a GObject wrapper for libical library with support
 for GObject Introspection.
@@ -217,12 +212,15 @@ rm %{buildroot}%{_libdir}/pkgconfig/libical.pc
 %doc doc/*.txt
 %doc examples/
 %else
+
 %files -n %{name}%{sonum}
 %{_libdir}/libical-glib.so.*
 
 %files devel
 %{_libdir}/libical-glib.so
 %{_libdir}/pkgconfig/libical-glib.pc
+%dir %{_libexecdir}/libical
+%{_libexecdir}/libical/ical-glib-src-generator
 %{_includedir}/libical-glib/
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/libical-glib.vapi
