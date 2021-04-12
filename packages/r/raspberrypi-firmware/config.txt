@@ -44,6 +44,9 @@ dtoverlay=uboot-bcm2835-pl011
 # 'dtoverlay=disable-bt' in 'extraconfig.txt'.
 dtoverlay=enable-bt
 
+# Add minimal SMBIOS info
+dtoverlay=smbios
+
 [pi1]
 
 # Max ARM freq (default 700 MHz)

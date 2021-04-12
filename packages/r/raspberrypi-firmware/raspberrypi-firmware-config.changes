@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  9 12:47:11 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- Use smbios overlay to get minimal SMBIOS information through dmidecode (bsc#1183079)
+
+-------------------------------------------------------------------
 Tue Mar 16 10:32:30 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Fix previous change. No need to set DWC2 in host mode. OTG works fine on
