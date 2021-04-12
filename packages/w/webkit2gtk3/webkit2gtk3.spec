@@ -31,10 +31,10 @@
 %define _gold_linker 0
 %endif
 Name:           webkit2gtk3
-Version:        2.30.5
+Version:        2.31.91
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
-License:        LGPL-2.0-or-later AND BSD-3-Clause
+License:        BSD-3-Clause AND LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://webkitgtk.org
 Source0:        %{url}/releases/%{_name}-%{version}.tar.xz
@@ -44,11 +44,9 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 firefox.
 Patch0:         no-forced-sse.patch
-# PATCH-FIX-UPSTREAM webkit-font-scaling.patch https://bugs.webkit.org/show_bug.cgi?id=218450 badshah400@gmail.com -- Fix system font scaling not applied to 'font-size: XXXpt'
-Patch1:         webkit-font-scaling.patch
 
 # Below patches are for 15.0/15.1 only
-# PATCH-FIX-OPENSUSE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary.
+# PATCH-NEEDS-REBASE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary (was: PATCH-FIX-OPENSUSE).
 Patch100:       webkit-process.patch
 # PATCH-FIX-OPENSUSE old-wayland-scanner.patch mgorse@suse.com -- pass code to wayland-scanner, rather than private-code
 Patch101:       old-wayland-scanner.patch
@@ -84,7 +82,7 @@ BuildRequires:  pkgconfig(freetype2) >= 2.4.2
 BuildRequires:  pkgconfig(geoclue-2.0) >= 2.1.5
 BuildRequires:  pkgconfig(glib-2.0) >= 2.36
 BuildRequires:  pkgconfig(gnutls) >= 3.0.0
-BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.0.3
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.14.0
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-codecparsers-1.0)
@@ -95,7 +93,7 @@ BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.2
 BuildRequires:  pkgconfig(libbrotlidec) >= 1.0.1
@@ -108,6 +106,7 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.8.0
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
+BuildRequires:  pkgconfig(manette-0.2)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(upower-glib)
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
@@ -280,9 +279,8 @@ A small test browswer from webkit, useful for testing features.
 %prep
 %setup -q -n webkitgtk-%{version}
 %patch0 -p1
-%patch1 -p1
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
-%patch100 -p1
+#%patch100 -p1
 %patch101 -p1
 %endif
 
