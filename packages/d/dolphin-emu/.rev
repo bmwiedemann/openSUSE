@@ -356,4 +356,41 @@
   * msbuild: bundle all dolphin &quot;core&quot; code into single library</comment>
     <requestid>871231</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5b3a0b61319ba340f9b86045edec68db</srcmd5>
+    <version>5.0+git.20210404T223733.ccc99ebfe3</version>
+    <time>1618223783</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0+git.20210404T223733.ccc99ebfe3:
+  * Replace uses of cassert with Common/Assert.h
+  * VertexShaderGen: Sonic epsilon hack for OpenGL ES
+  * GameINI: RM8E01 - Update Cheats
+  * GameINI: GP7E01 - Update Cheats
+  * GameINI: GP6E01 - Update Cheats
+  * GameINI: GP5E01 - Update Cheats
+  * GameINI: GMPE01 - Update Cheats
+  * Translation resources sync with Transifex
+  * JitArm64: Allow DoJit at address 0 (fix launching Wii titles)
+  * Android: Add &quot;Synchronize GPU Thread&quot; setting (SyncOnSkipIdle/SyncGPU)
+  * Android: Expand the game INI deletion prompt
+  * Android: Rename &quot;Enable Logging&quot; to &quot;Write Logs to File&quot;
+  * Add additional commits to .git-blame-ignore-revs
+  * GameList: Use titles from the Title Database for shortcut creation
+  * GameList: Remove invalid characters when creating a desktop shortcut
+  * Fix PanicAlert when recording FIFOs
+  * Refactor CP array constants slightly
+  * DSPHLE: Don't restore the last UCode when the crc doesn't match
+  * AudioCommon: Initialize before HW
+  * PPCAnalyst: Rework the store-safe logic
+  * JitArm64: Use STP for pc/npc, part 2
+  * Translation resources sync with Transifex
+  * VolumeVerifier: Align partition reads to groups
+  * VolumeVerifier: Handle contents overlapping
+  * VolumeVerifier: Handle overlapping blocks more efficiently
+  * Avoid using panic alerts in DiscIO
+  * SI/DeviceGBA: Improve link stability
+  * JitArm64: Constant carry flag optimizations
+  * Android: Limit the height of the in-game menu's game title</comment>
+    <requestid>883041</requestid>
+  </revision>
 </revisionlist>

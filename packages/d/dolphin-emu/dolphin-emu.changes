@@ -1,4 +1,250 @@
 -------------------------------------------------------------------
+Mon Apr 05 12:45:46 UTC 2021 - idonmez@suse.com
+
+- Update to version 5.0+git.20210404T223733.ccc99ebfe3:
+  * Replace uses of cassert with Common/Assert.h
+  * VertexShaderGen: Sonic epsilon hack for OpenGL ES
+  * GameINI: RM8E01 - Update Cheats
+  * GameINI: GP7E01 - Update Cheats
+  * GameINI: GP6E01 - Update Cheats
+  * GameINI: GP5E01 - Update Cheats
+  * GameINI: GMPE01 - Update Cheats
+  * Translation resources sync with Transifex
+  * JitArm64: Allow DoJit at address 0 (fix launching Wii titles)
+  * Android: Add "Synchronize GPU Thread" setting (SyncOnSkipIdle/SyncGPU)
+  * Android: Expand the game INI deletion prompt
+  * Android: Rename "Enable Logging" to "Write Logs to File"
+  * Add additional commits to .git-blame-ignore-revs
+  * GameList: Use titles from the Title Database for shortcut creation
+  * GameList: Remove invalid characters when creating a desktop shortcut
+  * Fix PanicAlert when recording FIFOs
+  * Refactor CP array constants slightly
+  * DSPHLE: Don't restore the last UCode when the crc doesn't match
+  * AudioCommon: Initialize before HW
+  * PPCAnalyst: Rework the store-safe logic
+  * JitArm64: Use STP for pc/npc, part 2
+  * Translation resources sync with Transifex
+  * VolumeVerifier: Align partition reads to groups
+  * VolumeVerifier: Handle contents overlapping
+  * VolumeVerifier: Handle overlapping blocks more efficiently
+  * Avoid using panic alerts in DiscIO
+  * SI/DeviceGBA: Improve link stability
+  * JitArm64: Constant carry flag optimizations
+  * Android: Limit the height of the in-game menu's game title
+  * Android: Make the in-game menu scrollbar wider
+  * Android: Add some missing settings to Hacks section of Graphics
+  * JitArm64: Fix broken format strings in Arm64RegCache
+  * Open the properties window when alt+enter is used on the game list
+  * Apply More Core::RunAsCPUThread
+  * DolphinQt: update hotkeyscheduler to run at 200hz, giving more precision for FreeLook motion devices
+  * FreeLook: update camera and manager to use a delta time for movement (in case we decide to move this somewhere else in the future)
+  * Boot: Move initial UpdateWantDeterminism call earlier
+  * DolphinQt: update FreeLook to use relative input
+  * DolphinQt: Add separate Free Look tab for rotation
+  * FreelookManager: Add gyro to support either keyboard/gamepad binding or motion based controllers
+  * VideoCommon: update FreeLook camera to add quaternion based rotation, fix orbital and fps implementations
+  * InputCommon: Allow for partial gyro mapping; for Free Look, this allows you to only pitch or only yaw
+  * InputCommon / DolphinQt / Core: Add a "RelativeMouse" input which provides the raw delta mouse input
+  * RenderWidget: Remove mouse based Free Look since it has moved to the HotkeyScheduler
+  * Common: Add function to get Euler angles from a Quaternion
+  * JitArm64: Optimize general case of srawx
+  * Android: Fix rescanning on first app launch after cache clear
+  * CMake: Fix unused compiler flag warning
+  * Fix loading save states with bluetooth passthrough
+  * Android: Fix recreating main activity
+  * JitArm64: Improve srawx special case carry calculation
+  * Arm64Gen: Convert ARM64Reg to enum class
+  * Gamelist: Fix 'Open Containing Folder'
+  * [Updater] Check whether we've already had an update triggered
+  * DVDThread: Set ReadError instead of BlockOOB for failed reads
+  * DVDInterface: Make the WBFS/CISO hack only affect WBFS/CISO
+  * DiscIO: Move magic constants for discs to DiscUtils
+  * DiscIO: Move some code from VolumeVerifier to DiscUtils
+  * DiscIO: Move some code from DiscExtractor to new file DiscUtils
+  * Display a progress bar to notify the user, about the work is being done
+  * Fix detecting rso modules
+  * EnumFormatter: fix signed/unsigned comparison warnings
+  * Translation resources sync with Transifex
+  * Touchscreen: Add override specifiers
+  * ControllerInterface: Fix unused-result warning
+  * GraphicsWidget: Remove unused field
+  * Fix shadowing warnings
+  * IOS: Add maybe_unused attribute to variables
+  * FreeLookCamera: Add override specifiers
+  * FreeLookCamera: Remove unused variable
+  * FreeLookController: Fix signed/unsigned warning
+  * Arm64Gen: Move constant and make constexpr
+  * Arm64Gen: Remove unused constant
+  * Jit64: divwx - Simplify divisor == -1 case
+  * Jit64: divwx - Micro-optimize default case
+  * Jit64: divwx - Optimize division by 2
+  * Jit64: divwx - Optimize power-of-two divisors
+  * Jit64: divwx - Micro-optimize certain divisors
+  * Jit64: divwx - Optimize constant divisor
+  * JitCommon: Signed 32-bit division magic constants
+  * Jit64: divwx - Special case dividend == 0
+  * Jit64: divwx - Optimize constant dividend
+  * Force RTC bias to 0 when custom RTC is disabled too
+  * Boot: Initialize Wii root before saving SYSCONF file
+  * Config: Give Movie and Netplay higher priority than CommandLine
+  * NetPlay: Sync more settings
+  * DiscIO: Fix reading certain WIA chunks with many exceptions
+  * VolumeVerifier: Fix potential crash when cancelling
+  * Use formatters in GetBPRegInfo; add missing commands
+  * Convert BPMemory to BitField and enum class
+  * Add FogParam0::FloatValue and FogParam3::FloatValue
+  * Fix typo with ztex2 op in UseVertexDepthRange
+  * Rename BPMEM_EFB_BR to BPMEM_EFB_WH
+  * Use XFMEM_REGISTERS_START/END in XFRegWritten and LoadXFReg
+  * Add names and descriptions for regular XF memory
+  * Add names and descriptions for XF registers to the FIFO analyzer
+  * Convert XFMemory to BitField and enum class
+  * Add names and descriptions for CP registers to the FIFO analyzer
+  * Convert CPMemory to BitField and enum class
+  * Create constants for CP registers and masks
+  * DolphinNoGUI/PlatformX11: Work around X.h's None being undefined
+  * Create BitFieldArray
+  * Add fmt support to BitField
+  * Allow specifying StorageType for BitField
+  * Create EnumFormatter
+  * Android: Don't save settings immediately after switching platform tab
+  * Android: Move "skip scanning" logic to MainPresenter
+  * InputCommon: instead of blocking on individual DSU server sockets, block on a selector built up from all server sockets
+  * Jit64: Add optional argument to GenerateOverflow
+  * BreakpointWidget: Use QSignalBlocker
+  * BreakpointWidget: Fix delete deleting both MBP and BP at address
+  * Breakpoints: Change icon when disabled
+  * Android: Broadcast update before updating additional metadata
+  * Android: Remove #ifdef __cplusplus checks
+  * IOS: update network/ip/top to use the RAII winsock context
+  * Core: Use RAII winsock object to cleanly create and destroy WSA in gdb-stub
+  * Common: Add RAII object that initializes and cleans up winsock
+  * IOS/ES: Emulate /sys/launch.sys for more accurate timings
+  * IOS/FS: Expose some more ioctls for internal Dolphin use
+  * IOS: Hang PPC when reloading IOS for a PPC title launch
+  * Fix symbol map being loaded too early during title changes
+  * IOS: Emulate IOS boot timings
+  * IOS: Simplify IPC initialisation
+  * IOS: Emulate ES boot timings
+  * IOS: Emulate BootstrapPPC syscall delays
+  * IOS: Clear 0-0x3fff when setting up low MEM1 constants
+  * BreakpointWidget: Emit BreakpointsChanged to update views
+  * Watches: Fix Save and Load from strings
+  * CMake: Include WIL headers
+  * CMake: Disable warning C5054 on DolphinQt
+  * CMake: Build with -std:c++latest for MSVC
+  * Android: Delete more references in IDCache.cpp
+  * DolphinQt: Removed unused this capture in lambda
+  * Android: Add @Keep annotation to BooleanSupplier
+  * Allow to disable/enable from the BreakpointWidget
+  * SI/DeviceGBA: Ensure data socket isn't backed up
+  * JitArm64: Fix unsigned/signed arg/param mismatch
+  * Allow to disable/enable breakpoints
+  * Core/Memmap: Don't try to map logical memory from inactive physical regions.
+  * Core/Memmap: Store and check which physical regions are actually mapped instead of relying on SConfig staying the same.
+  * DebugInterface: Check visited addresses in GetThreads
+  * Tools: Dolphin symbol map ghidra scripts added
+  * GameSettings: Set Texture Cache Accuracy to "Safe" for Jerry Rice & Nitus' Dog Football
+  * GameSettings: Disable "Defer EFB Copies to RAM" and Set Texture Cache Accuracy to "Medium" for Marvel Super Hero Squad
+  * GameSettings: Disable "Defer EFB Copies to RAM" for NBA Live 08
+  * GameSettings: Disable Dual Core for National Geographic Challenge!
+  * GameSettings: Disable Dual Core for Dance! It's Your Stage
+  * GameSettings: Disable Dual Core for Brunswick Pro Bowling
+  * INI Changes
+  * Core/Memmap: Give more detailed error messages if memory mapping fails.
+  * InputCommon: reduce number of image loads and texture cache invalidations by only running dynamic input textures once for all controllers
+  * DolphinQt: Fix <game_id> tag in SoftwareRendererWidget.cpp
+  * Common: Move 'GetSection' functions to be public
+  * Common: don't call OnConfigChanged() unless it has actually changed
+  * MMU: Fix IsRAMAddress not working
+  * Core/MemoryWatcher: Use appropriate memory read function in ChasePointer().
+  * Simplify macro guards for HAVE_XRANDR
+  * Cleanup X11 and XRANDR Macros
+  * Stricter test for compiler flags
+  * IOS/NET: Add timeout on blocking connect
+  * Android: Use SwipeRefreshLayout in MainActivity
+  * Android: Don't queue up multiple rescans before directory initialization
+  * Android: Split GameFileCacheService broadcasts into two types
+  * Android: Refactor MainActivity, add forEachPlatformGamesView
+  * NetworkWidget: Reorganise SSL options group box
+  * Core: Fix time base unit mixup
+  * Translation resources sync with Transifex
+  * Fix issue were loaded memory breakpoints were not being triggered
+  * InputCommon: Move initial dynamic input texture configuration logic to a 'specification 1' function and load in a 'specification' attribute that defaults to 1 if not present (with 1 being the only valid value at the moment)
+  * IOS: Deduplicate IPC_OVERHEAD_TICKS timing constant
+  * IOS/ES: Emulate FS timings for content wrapper IPC commands
+  * IOS/ES: Allow various utility functions to return timing info
+  * IOS/FS: Allow IPC interface to be used internally from IOS HLE
+  * IOS/ES: Log content reads for debugging
+  * IOS/ES: Log content ID and index when opening contents for debugging
+  * MemoryWidget: Add "Add to watch" action
+  * RegisterWidget: Fix add to watch action
+  * InputCommon: Move DynamicInputTextureData to DynamicInputTextures::Data
+  * InputCommon: Move DynamicInputTextureConfiguration to DynamicInputTextures::Configuration
+  * JitArm64: Workaround for GCC ICE
+  * IOS/FS: Implement timings for older IOS versions as well
+  * Qt: Re-add IOS version to the game info tab
+  * JitArm64: Fix improper uses of offsetof
+  * PCAP: Add raw SSL packets logging support
+  * CodeViewWidget: Add WithDetailedUpdate to update CodeWidget
+  * Software: Implement points
+  * Software: Fix line-width effects
+  * Arm64Emitter: Expand the MOVI2R unit test a little
+  * Arm64Emitter: Use ORR in MOVI2R
+  * NetworkWidget: Add hostname to SSL table
+  * Arm64Emitter: Improve MOVI2R
+  * IOS: Clean up the way IPC replies are constructed
+  * HW: Add a UDL for timebase ticks to cycles conversions
+  * IOS: Remove unnecessary and unused PrepareForState
+  * Arm64Emitter: Allow specifying 21th bit of ADRP imm
+  * Arm64Emitter: Remove optimize parameter from MOVI2R
+  * Software: Always divide the texture coordinates by q.
+  * IOS: Simplify unnecessarily qualified names
+  * IOS: Use less ambiguous names for classes
+  * PCAP: Improve TCP session logging
+  * Restore BitField Natvis
+  * InputCommon: When using dynamic input textures, only call force reload textures once for packs that have multiple configurations
+  * VideoCommon: Join the prefetch thread before clearing to avoid a potential crash that can occur by multiple threads touching a single resource
+  * Rename docs/WIA.md to docs/WiaAndRvz.md
+  * Android: Add missing "World" entry in country list
+  * Android: Adjust logic for DOL/ELF long press
+  * hidapi: Use LIBUSB_LIBRARIES to link to libusb
+  * SSL: Workaround to remove SNI from ClientHello
+  * Core/DSP: Fix improper uses of offsetof
+  * Config: Fix expression window scroll wheel spam
+  * Enable EFB access from CPU for Ultimate I Spy
+  * GCMemcardUtils: Fix typo in comment.
+  * GCMemcardManager: Detect attempt to import multiple save files with the same internal name.
+  * GCMemcardManager: Add filename column.
+  * GCMemcardManager: Make columns sortable.
+  * GCMemcardManager: Make columns resizable by the user.
+  * GCMemcardManager: Small cleanups.
+  * GCMemcardManager: Replace remaining panic alert with ModalMessageBox.
+  * GCMemcard: Let ImportFile() take a Savefile instead of a direntry and a vector of blocks.
+  * GCMemcard: Remove obsolete methods.
+  * GCMemcardDirectory: Rewrite migration logic without ExportGci().
+  * GCMemcardManager: Rewrite file deleting logic to provide a better user experience.
+  * GCMemcardManager: Rewrite file copying logic to provide a better user experience.
+  * GCMemcardManager: Rewrite file importing logic to provide a better user experience.
+  * Common/VariantUtil: Add 'overloaded' helper struct for use with std::variant.
+  * GCMemcardManager: Rewrite file exporting logic to provide a better user experience.
+  * GCMemcardManager: Relayout file table for a more compact design.
+  * GCMemcardUtils: Implement GenerateFilename() as a cleaner variant of GCMemcard::GCI_FileName().
+  * GCMemcard: Implement ExportFile() to get a file on a card with a single method call.
+  * GCMemcard: Implement utility functions to read saves from and write saves to files, without involving a memory card.
+  * AudioCommon/WASAPI: Construct std::thread with invoke semantics instead of a lambda
+  * AudioCommon/WASAPI: Factorize device enumeration logic into a function to greatly reduce code duplication
+  * AudioCommon/WASAPI: Do volume adjustment only when really needed
+  * AudioCommon/WASAPI: Remove thread unsafe nullptr checks giving a false sense of safety
+  * AudioCommon/WASAPI: Use std::string_view where applicable
+  * AudioCommon/WASAPI: Use leaner memory model on m_running, no need for a full barrier
+  * AudioCommon/WASAPI: Simplify thread synchronization model by not detaching WASAPI handler thread
+  * AudioCommon/WASAPI: Use WRL/WIL whenever possible
+  * AudioCommon: Make HandleWinAPI handle all success return values properly, not just S_OK
+  * Software: Remove normalization special case
+  * GameSettings: Enable perf queries to fix sun in Need for Speed: Most Wanted
+
+-------------------------------------------------------------------
 Thu Feb 11 14:30:16 UTC 2021 - idonmez@suse.com
 
 - Update to version 5.0+git.20210211T001537.1fc6fbc2c0:
