@@ -17,7 +17,7 @@
 
 
 Name:           Srain
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        An IRC client
 License:        GPL-3.0-or-later AND ISC
@@ -43,8 +43,6 @@ IRC client written in GTK3+.
 
 %prep
 %autosetup -p1 -n srain-%{version}
-# remove unnecessary file
-rm -f data/themes/meson.build
 
 %build
 %meson -Ddoc_builders=man
