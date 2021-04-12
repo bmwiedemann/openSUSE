@@ -1,7 +1,7 @@
 #
 # spec file for package kubic-control
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,7 @@ License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/thkukuk/kubic-control
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) = 1.14
 ExcludeArch:    s390 %{ix86}
 
 %description
@@ -39,6 +38,7 @@ Requires:       etcdctl
 Requires:       flannel-k8s-yaml
 Requires:       hello-kubic-k8s-yaml >= 1.3
 Requires:       kubernetes-client
+Requires:       kubernetes-kubeadm
 Requires:       kubicctl
 Requires:       kured-k8s-yaml
 Requires:       kustomize
@@ -70,7 +70,7 @@ for a kubernetes cluster with multi-master.
 %setup -q
 
 %build
-make build
+%make_build build
 
 %install
 install -d -p %{buildroot}%{_bindir}

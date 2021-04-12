@@ -192,4 +192,14 @@
   - kubicctl: align options</comment>
     <requestid>830291</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>efc4ef7b7e3d77d9b02c27392a51a493</srcmd5>
+    <version>0.10.2</version>
+    <time>1618223630</time>
+    <user>dimstar_suse</user>
+    <comment>- kubicd: require kubernetes-kubeadm
+- pin to go 1.14, the certificate handling changes in 1.15 are
+  incompatible (issues/30)</comment>
+    <requestid>884041</requestid>
+  </revision>
 </revisionlist>

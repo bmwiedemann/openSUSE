@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  9 12:10:28 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- kubicd: require kubernetes-kubeadm
+- pin to go 1.14, the certificate handling changes in 1.15 are
+  incompatible (issues/30)
+
+-------------------------------------------------------------------
 Fri Aug 28 12:37:20 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.10.2
