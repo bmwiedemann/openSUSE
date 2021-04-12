@@ -18,7 +18,7 @@
 
 %define cpan_name Moo
 Name:           perl-Moo
-Version:        2.005003
+Version:        2.005004
 Release:        0
 Summary:        Minimalist Object Orientation (with Moose compatibility)
 License:        Artistic-1.0 OR GPL-1.0-or-later
