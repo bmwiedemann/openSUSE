@@ -1,7 +1,7 @@
 #
 # spec file for package saja-cascadia-code-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Xu Zhao (i@xuzhao.net).
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define fontname cascadia-code
 
 Name:           saja-cascadia-code-fonts
-Version:        2009.14
+Version:        2102.25
 Release:        0
 Summary:        Monospace terminal fonts from Microsoft
 License:        OFL-1.1

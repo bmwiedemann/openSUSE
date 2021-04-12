@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Apr  8 10:11:08 UTC 2021 - Thomas Schraitle <thomas.schraitle@suse.com> - 2102.25
+
+- Update to version 2102.25
+  * Closes #406 - updated anchor type to lock with the other equals-related ligatures
+  * Closes #408 - corrected component used for glyph to align with Unicode
+  * Closes #412 - updated locl features removing iacute_j ligature and Catalan substitution
+  * Closes #414 - increased overlaps of middle glyph for arrow ligatures
+  * Closes #415 - reduces width of macronbelow
+  * Closes #416 - rolls back name ID 4 modification as JetBrains cannot process it correctly
+  * Closes #428 - rolls back variation of the underline to prevent MVAR table generation
+  * Repositioned tilde in related ligatures. Previously it was higher than the standard one.
+  * Added missing vietnamese anchors on acute and grave (futureproofing).
+  * Corrected / made consistent greater & less positioning in </> and <$> related ligatures.
+  * Otherwise reviewed hinting
+
+For previous releases, see:
+
+* 2102.03: https://github.com/microsoft/cascadia-code/releases/tag/v2102.03
+* 2009.22: https://github.com/microsoft/cascadia-code/releases/tag/v2009.22
+* 2009.21: https://github.com/microsoft/cascadia-code/releases/tag/v2009.21
+
+-------------------------------------------------------------------
 Wed Sep 16 05:46:47 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 2009.14
