@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipydatawidgets
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
-%define mainver 4.0.1
-%define labver  6.2.0
+%define         skip_python36 1
+%define mainver 4.2.0
+%define labver  7.0.0
+%define jupver  5.4.0
 Name:           python-ipydatawidgets
 Version:        %{mainver}
 Release:        0
@@ -41,7 +43,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module nbval}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-Requires:       jupyter-ipydatawidgets = %{mainver}
+Requires:       jupyter-ipydatawidgets = %{jupver}
 Requires:       python-ipywidgets >= 7.0.0
 Requires:       python-notebook
 Requires:       python-numpy
@@ -60,9 +62,12 @@ datasets across different widgets, and different packages.
 This package provides the python interface.
 
 %package     -n jupyter-ipydatawidgets
+Version:        %{jupver}
+Release:        0
 Summary:        Jupyter widgets to help facilitate reuse of large datasets
 Group:          Development/Languages/Python
 Requires:       jupyter-notebook
+Provides:       jupyter-datawidgets = %{jupver}
 Requires:       python3-ipydatawidgets = %{mainver}
 
 %description -n jupyter-ipydatawidgets
@@ -76,8 +81,9 @@ Version:        %{labver}
 Release:        0
 Summary:        JupyterLab Widgets to help facilitate reuse of large datasets
 Group:          Development/Languages/Python
-Requires:       jupyter-ipydatawidgets = %{mainver}
+Requires:       jupyter-ipydatawidgets = %{jupver}
 Requires:       jupyter-jupyterlab
+Provides:       jupyter-datawidgets-jupyterlab = %{labver}
 Provides:       jupyter_ipydatawidgets_jupyterlab = %{labver}
 Obsoletes:      jupyter_ipydatawidgets_jupyterlab < %{labver}
 
@@ -105,11 +111,10 @@ cp %{buildroot}%{python3_sitelib}/ipydatawidgets-%{mainver}.dist-info/LICENSE.tx
 
 %check
 export LANG=en_US.UTF-8
-export PYTHONDONTWRITEBYTECODE=1
-%pytest %{buildroot}%{$python_sitelib}/ipydatawidgets/
+%pytest --pyargs ipydatawidgets
 
 %files %{python_files}
-%license %{python_sitelib}/ipydatawidgets-%{mainver}.dist-info/LICENSE.txt
+%license LICENSE.txt
 %{python_sitelib}/ipydatawidgets-%{mainver}*.dist-info/
 %{python_sitelib}/ipydatawidgets/
 
@@ -121,5 +126,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %files -n jupyter-ipydatawidgets-jupyterlab
 %license LICENSE.txt
 %{_jupyter_labextensions_dir}/jupyterlab-datawidgets-%{labver}.tgz
+%dir %{_jupyter_prefix}/labextensions
+%{_jupyter_prefix}/labextensions/jupyterlab-datawidgets
 
 %changelog
