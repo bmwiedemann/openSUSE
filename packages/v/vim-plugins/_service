@@ -1,0 +1,31 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/vim-latex/vim-latex</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@+%cd</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="revision">c04c32f467c160a569d0aec7f938ebe67297e321</param>
+  </service>
+  <service name="tar" mode="buildtime">
+    <param name="obsinfo">vim-latex.obsinfo</param>
+  </service>
+
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/bogado/file-line.git</param>
+    <param name="scm">git</param>
+    <param name="versionformat">@PARENT_TAG@+%cd</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="revision">559088afaf10124ea663ee0f4f73b1de48fb1632</param>
+  </service>
+  <service name="tar" mode="buildtime">
+    <param name="obsinfo">file-line.obsinfo</param>
+  </service>
+
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+
+</services>

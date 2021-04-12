@@ -1,0 +1,11 @@
+--- plugin/locateopen.vim
++++ plugin/locateopen.vim
+@@ -25,6 +25,8 @@
+     let s:slocate_app         = "slocate"
+ elseif executable("rlocate")
+     let s:slocate_app         = "rlocate"
++elseif executable("locate")
++    let s:slocate_app         = "locate"
+ else
+     finish
+ endif
