@@ -17,13 +17,13 @@
 
 
 Name:           gnome-terminal
-Version:        3.38.3
+Version:        3.40.0
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/X11/Terminals
 URL:            https://wiki.gnome.org/Apps/Terminal
-Source0:        https://download.gnome.org/sources/gnome-terminal/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-terminal/3.40/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 # Needed for search provider. It should not be needed in my opinion,
