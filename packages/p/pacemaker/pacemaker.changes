@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Sun Mar 21 17:21:29 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210310.83e765df6:
+- controller: re-joined node gets the host names of non-DC nodes (bsc#1180618)
+
+-------------------------------------------------------------------
+Sun Mar 21 16:05:07 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210309.90b3e455b:
+- Allow the none format in other command line tools.
+- scheduler,tools: stop using last-run in CIB status
+
+-------------------------------------------------------------------
+Sun Mar 21 15:32:59 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210302.64e0c771d:
+- crm_mon.rng/crm_resource.rng: Change the schema type of 'expected' and 'call' to integer. (rh#1931332)
+
+-------------------------------------------------------------------
+Sun Mar 21 15:13:49 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210302.f537b60c2:
+- fenced: retry getting metadata until we get it
+- require glib 2.42.0 or later
+
+-------------------------------------------------------------------
+Sun Mar 21 14:39:24 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210224.63d2fa7c2:
+- pacemakerd: downgrade corosync connection loss messages
+- libcrmcommon: be consistent with IPC server names in messages
+- CIB: deprecate support for can_fail action meta-attribute
+- CIB: deprecate remove-after-stop cluster property
+- pacemakerd,tools: use high-resolution sleep in a couple of places
+- pacemakerd: use high-resolution sleep functions if available
+- configure: drop support for --with-acl option
+- rpm: update for new legacy links default
+- configure: add --with-concurrent-fencing-default option
+- scheduler: allow 2.0 compatibility mode for certain output
+- include: Bump CRM_FEATURE_SET to 3.7.2.
+- tools: Convert crm_verify to use formatted output.
+- tools: Use glib for command line handling in crm_verify.
+- iso8601: prevent sec overrun before adding up as long long
+- crmadmin: tweaks
+- scheduler: route monitor cancellations behind moving remote connections correctly
+- cluster: try to reconnect with corosync if it goes down
+
+- Rebase:
+  * pacemaker-nagios-plugin-dir.patch
+
+-------------------------------------------------------------------
+Sat Mar 20 13:53:24 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210223.dbc27b2ac:
+- fencer: optimize merging of fencing history by removing unneeded entries on creation of history diff (bsc#1181744)
+- fencing: new function stonith_op_state_pending() for checking if a fencing operation is in pending state (bsc#1181744)
+- fencer: update outdated pending operations according to returned ones from remote peer history (bsc#1181744)
+- fencer: broadcast returned fencing operations to update outdated pending ones in remote peer history (bsc#1181744)
+
+-------------------------------------------------------------------
+Sat Mar 20 13:45:07 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210212.a4892ccb5:
+- Fix a problem with crm_resource exit code handling.
+- Correct output of "crm_resource --locate" in case of clones. (rh#1925681)
+- tools: Add newlines to the description string in crm_simulate.
+- tools: Straighten out return codes in crm_diff.
+- libcrmcommon: Set extra_headers to NULL after freeing it.
+- tools: Mark a couple things as volatile in crm_mon.
+- tools: Allow other output formats for crm_mon -d.
+- libcrmcommon: Try to make sure formatted output is always written.
+- libcib, tools: Use the formatted output password prompt.
+- libcrmcommon: Add a prompt formatted output message.
+- tools, libcrmcommon: Add a progress formatted output message.
+
+-------------------------------------------------------------------
+Sat Mar 20 12:38:19 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210205.46cf48d27:
+- execd: Skips merging of canceled fencing monitors.(Fix:#CLBZ5393)
+- crm_mon: detect when run on remote-node
+- tools: get cibsecret stash working again
+- fencing: remove any devices that are not installed
+- crm_mon: suppress pacemakerd-status for non-text output
+- crm_mon: retry fencer connection as not fatal initially
+- tools: Report pacemakerd in state waiting for sbd
+- controller,scheduler,CTS: use ":" instead of "::" when displaying provider
+
+-------------------------------------------------------------------
+Sat Mar 20 11:53:36 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210128.7c8114f68:
+- scheduler: process remote shutdowns correctly (rh#1898457)
+- scheduler: warn if lrm_resource has no ID
+- scheduler: warn if node state has no ID or uname
+
+-------------------------------------------------------------------
+Fri Mar 19 14:36:46 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210128.aa41a984d:
+- cibsecret: use crmadmin -N (which also lists guest and remote nodes) to get nodes to sync to
+- tools: Free --resource=/--node= memory in crm_mon.
+- scheduler: Free the result of pe__node_display_name in one place.
+- tools: Free command-line related memory.
+- libcrmcommon: Don't leak memory in pcmk__cmdline_preproc.
+- libcrmcommon: Free the results in various test cases.
+- libpe_rules, libcrmcommon: Free the whole xml doc, not just the node.
+- crmadmin: use cluster instead of member term and remove pacemaker_remote node type
+- crmadmin: list remote/guest nodes and add parameter/variable to choose which node type(s) to list
+
+-------------------------------------------------------------------
+Fri Mar 19 13:28:44 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210121.55598be5e:
+- tools: The 'm' key in crm_mon is a cycle, not a toggle.
+- tools: Describe interactive crm_mon use in help and man page.
+- tools: Attempt to reestablish connections in crm_mon. (rh#1880426, rh#1466875)
+- tools: A lack of stonith history is not fatal in crm_mon. (rh#1880426)
+- tools: Report if getting fencing history failed in crm_mon.
+- tools: Adjust fencing shown indicator in crm_mon.
+- corosync: Add cfg_trackstart/stop calls
+
+-------------------------------------------------------------------
+Tue Mar 16 17:04:01 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210114.ad074d869:
+- all: use high-resolution timestamps in detail log when available
+- CIB: remove cibmon command
+
+-------------------------------------------------------------------
+Tue Mar 16 16:41:28 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210113.a4bbcb033:
+- scheduler: implement new critical and influence options (rh#1371576)
+- xml: allow colocation constraints to take "influence" option (rh#1371576)
+
+-------------------------------------------------------------------
+Tue Mar 16 16:18:32 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210112.631bb9c89:
+- tools: bump feature set for crm_resource --digests (rh#1872376)
+- tools: add crm_resource --digests option (rh#1872376)
+- tools: handle required node names better in crm_resource
+
+-------------------------------------------------------------------
+Tue Mar 16 14:22:22 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210111.c600d9092:
+- Build: tools: make stricter compilers happy
+- Build: resources: drop ocf:pacemaker:pingd
+- Build: require libqb 0.17.0 or later
+- Build: require glib 2.32.0 or later
+- Build,Doc,Test: all: drop support for Python 2
+
+- Rebase:
+  * pacemaker-Wno-format-signedness.patch
+
+-------------------------------------------------------------------
+Tue Mar 16 13:48:17 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210108.1f1408ca7:
+- scheduler: multiple issues with value-source in location rules (rh#1872376)
+- tools: respect rules when showing node attributes in crm_mon (rh#1872376)
+- scheduler: calculate secure digest properly for node attribute rules (rh#1872376)
+- scheduler: treat NULL and empty string the same in literal attribute comparisons (rh#1872376)
+- scheduler: don't include timeout in secure digests (rh#1872376)
+- scheduler: filter non-private parameters properly for digest (rh#1872376)
+- libcrmcommon: compare CRM_meta_ properly (rh#1872376)
+- liblrmd: Limit node name addition to proxied attrd update commands (rh#1907726)
+
+-------------------------------------------------------------------
 Fri Jan 29 12:42:52 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - pacemakerd: downgrade the warning about SBD_SYNC_RESOURCE_STARTUP to notice (bsc#1180966)
@@ -212,8 +383,8 @@ Fri Oct 30 13:10:26 UTC 2020 - Yan Gao <ygao@suse.com>
 Fri Oct 30 11:11:36 UTC 2020 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.4+20200819.643f19b71:
-- scheduler: update migrate-fail-9 test for migration code change (bsc#1177212)
-- scheduler: don't schedule a dangling migration stop if one already occurred (bsc#1177212)
+- scheduler: update migrate-fail-9 test for migration code change (bsc#1177212, bsc#1182607)
+- scheduler: don't schedule a dangling migration stop if one already occurred (bsc#1177212, bsc#1182607)
 
 -------------------------------------------------------------------
 Thu Oct 29 10:58:25 UTC 2020 - Yan Gao <ygao@suse.com>

@@ -80,7 +80,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        2.0.5+20210104.8ae19fdf9
+Version:        2.0.5+20210310.83e765df6
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -122,11 +122,11 @@ BuildRequires:  sed
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(corosync) >= 2.0.0
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.16
+BuildRequires:  pkgconfig(glib-2.0) >= 2.42
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(libexslt)
 # Pacemaker requires a minimum libqb functionality
-BuildRequires:  pkgconfig(libqb) > 0.13.0
+BuildRequires:  pkgconfig(libqb) > 0.17.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 # Pacemaker requires a minimum Python functionality
@@ -338,11 +338,13 @@ export LDFLAGS_HARDENED_LIB="%{?_hardening_ldflags}"
 
 autoreconf -fvi
 
+%global concurrent_fencing --with-concurrent-fencing-default=true
+%global compat20 --enable-compat-2.0
+
 %configure \
         --docdir=%{_docdir}/%{name}                \
         --disable-static                           \
         --disable-silent-rules                     \
-        --with-acl=true                            \
 %if %{with_nagios}
         --with-nagios=true                         \
 %endif
@@ -351,10 +353,12 @@ autoreconf -fvi
 %endif
         PYTHON=%{python_path}                          \
         %{!?with_hardening:    --disable-hardening}    \
-        %{!?with_legacy_links: --disable-legacy-links} \
+        %{?with_legacy_links:  --enable-legacy-links}  \
         %{?with_profiling:     --with-profiling}       \
         %{?with_coverage:      --with-coverage}        \
         %{?with_cibsecrets:    --with-cibsecrets}      \
+        %{?concurrent_fencing}                         \
+        %{?compat20}                                   \
         --with-initdir=%{_initddir}                    \
         --with-runstatedir=%{_rundir}                  \
         --localstatedir=%{_var}                        \
@@ -365,9 +369,10 @@ make %{?_smp_mflags}
 %install
 %make_install
 
+rm -fr %{buildroot}/etc/sysconfig
 install -d -m755 %{buildroot}%{_fillupdir}
-install -m 644 daemons/pacemakerd/pacemaker.sysconfig %{buildroot}%{_fillupdir}/sysconfig.pacemaker
-install -m 644 tools/crm_mon.sysconfig %{buildroot}%{_fillupdir}/sysconfig.crm_mon
+install -m 644 etc/sysconfig/pacemaker %{buildroot}%{_fillupdir}/sysconfig.pacemaker
+install -m 644 etc/sysconfig/crm_mon %{buildroot}%{_fillupdir}/sysconfig.crm_mon
 
 # Don't package static libs
 find %{buildroot} -type f -name "*.a" -delete -print
@@ -497,9 +502,7 @@ fi
 %exclude %{_libexecdir}/pacemaker/cts-log-watcher
 %exclude %{_libexecdir}/pacemaker/cts-support
 %exclude %{_sbindir}/pacemaker-remoted
-%if %{with legacy_links}
 %exclude %{_sbindir}/pacemaker_remoted
-%endif
 %dir %{_libexecdir}/pacemaker
 %{_libexecdir}/pacemaker/*
 
@@ -621,9 +624,7 @@ fi
 %{_sbindir}/rcpacemaker_remote
 
 %{_sbindir}/pacemaker-remoted
-%if %{with legacy_links}
 %{_sbindir}/pacemaker_remoted
-%endif
 %{_mandir}/man8/pacemaker-remoted.8%{ext_man}
 #%license licenses/GPLv2
 %doc COPYING ChangeLog

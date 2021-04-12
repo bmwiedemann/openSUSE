@@ -1818,4 +1818,41 @@
 - fencer: log operation state as readable string rather than integer enum value (forwarded request 868329 from yan_gao)</comment>
     <requestid>868330</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>ebd0d7395394cb7579d1a82d81070d48</srcmd5>
+    <version>2.0.5+20210310.83e765df6</version>
+    <time>1618223630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.5+20210310.83e765df6:
+- controller: re-joined node gets the host names of non-DC nodes (bsc#1180618)
+
+- Update to version 2.0.5+20210309.90b3e455b:
+- Allow the none format in other command line tools.
+- scheduler,tools: stop using last-run in CIB status
+
+- Update to version 2.0.5+20210302.64e0c771d:
+- crm_mon.rng/crm_resource.rng: Change the schema type of 'expected' and 'call' to integer. (rh#1931332)
+
+- Update to version 2.0.5+20210302.f537b60c2:
+- fenced: retry getting metadata until we get it
+- require glib 2.42.0 or later
+
+- Update to version 2.0.5+20210224.63d2fa7c2:
+- pacemakerd: downgrade corosync connection loss messages
+- libcrmcommon: be consistent with IPC server names in messages
+- CIB: deprecate support for can_fail action meta-attribute
+- CIB: deprecate remove-after-stop cluster property
+- pacemakerd,tools: use high-resolution sleep in a couple of places
+- pacemakerd: use high-resolution sleep functions if available
+- configure: drop support for --with-acl option
+- rpm: update for new legacy links default
+- configure: add --with-concurrent-fencing-default option
+- scheduler: allow 2.0 compatibility mode for certain output
+- include: Bump CRM_FEATURE_SET to 3.7.2.
+- tools: Convert crm_verify to use formatted output.
+- tools: Use glib for command line handling in crm_verify.
+- iso8601: prevent sec overrun before adding up as long long
+- crmadmin: tweaks (forwarded request 884033 from yan_gao)</comment>
+    <requestid>884034</requestid>
+  </revision>
 </revisionlist>
