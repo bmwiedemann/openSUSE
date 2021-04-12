@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
 URL:            http://www.gnome.org/projects/evolution/
 Source0:        http://www.five-ten-sg.com/libpst/packages/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM libpst-glib-2.68.patch dimstar@opensuse.org -- Fix build against glib 2.68
+Patch0:         libpst-glib-2.68.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gd-devel
 BuildRequires:  libgsf-devel
@@ -59,7 +61,7 @@ This subpackage contains the header files for developing
 applications that want to make use of libpst.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
