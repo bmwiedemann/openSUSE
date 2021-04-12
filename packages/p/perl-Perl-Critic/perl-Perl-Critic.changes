@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Mar 25 03:07:59 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.140
+   see /usr/share/doc/packages/perl-Perl-Critic/Changes
+
+  1.140 Tue Mar 23 21:42:19 CDT 2021
+      [New Features]
+      Subroutines::RequireFinalReturn now lets you specify a
+      terminal_methods parameter to specify methods that should been as
+      terminal.  This is like the terminal_funcs parameter, but for methods.
+      Thanks, Robin Smidsrød and Mike Bruins. (GH #920)
+  1.139_01 Tue Sep  1 23:52:18 CDT 2020
+      [Fixes]
+      Removed an extra /x in RequireInterpolationOfMetachars.pm that caused
+      deprecation warnings in Perl 5.22 and higher.  (GH #822)
+      Documentation::RequirePackageMatchesPodName now recognizes the package
+      name if it's in C<< I<> >> or C<< B<> >> markup.  Thanks, Renée Bäcker.
+      (GH #913)
+
+-------------------------------------------------------------------
 Sat Jan 25 03:09:34 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.138
