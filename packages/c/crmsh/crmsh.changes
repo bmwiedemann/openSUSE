@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Apr 12 08:31:45 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210412.7d40b39d:
+  * Dev: unittest: adjust unit test code according to previous commit
+  * Fix: bootstrap: sync corosync.conf before finished joining(bsc#1183359)
+
+-------------------------------------------------------------------
+Thu Apr 08 01:25:14 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210408.270d14c2:
+  * Dev: behave: adjust functional test for qdevice help change
+  * Dev: ui_cluster: add qdevice help info
+
+-------------------------------------------------------------------
+Tue Mar 30 06:15:05 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210330.06bf9cad:
+  * Dev: ui_cluster: enable/disable corosync-qdevice.service
+
+-------------------------------------------------------------------
+Mon Mar 29 14:01:43 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210329.61da557d:
+  * Dev: unittest: adjust unit test for parsing space in sbd devices
+  * Fix: bootstrap: parse space in sbd device correctly(bsc#1183883)
+
+-------------------------------------------------------------------
+Mon Mar 29 03:24:12 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210329.675e8981:
+  * Dev: unittest: adjust unit test for preflight_check since its path changed
+  * Dev: preflight_check: move preflight_check directory into crmsh
+
+-------------------------------------------------------------------
 Mon Mar 29 02:23:00 UTC 2021 - XinLiang <XLiang@suse.com>
 
 - Update to version crmsh-4.3.0+20210323.086cc4a3
