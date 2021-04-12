@@ -17,13 +17,13 @@
 
 
 Name:           tracker-miners
-Version:        3.0.4
+Version:        3.1.0
 Release:        0
 Summary:        Various miners for Tracker
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker-miners/3.0/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/tracker-miners/3.1/%{name}-%{version}.tar.xz
 
 BuildRequires:  asciidoc
 BuildRequires:  giflib-devel
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(icu-uc) >= 4.8.1.1
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libcue)
+BuildRequires:  pkgconfig(libcue) >= 2.0.0
 BuildRequires:  pkgconfig(libexif) >= 0.6
 BuildRequires:  pkgconfig(libgsf-1) >= 1.14.24
 BuildRequires:  pkgconfig(libgxps)
@@ -62,7 +62,7 @@ BuildRequires:  pkgconfig(libseccomp) >= 2.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6
 BuildRequires:  pkgconfig(poppler-glib) >= 0.16.0
 BuildRequires:  pkgconfig(totem-plparser)
-BuildRequires:  pkgconfig(tracker-sparql-3.0)
+BuildRequires:  pkgconfig(tracker-sparql-3.0) >= 3.1.0
 BuildRequires:  pkgconfig(upower-glib) >= 0.9.0
 # The schema files moved from libtracker-common to tracker-miners
 Conflicts:      libtracker-common-1_0 < 1.99

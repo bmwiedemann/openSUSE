@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Mar 23 09:25:36 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.1.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 18 09:07:36 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.1.0.rc:
+  + Dispatch monitor events on a private thread.
+  + Fix After= usage in systemd service files.
+  + Fix compiler warnings.
+
+-------------------------------------------------------------------
+Tue Feb 16 10:36:44 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.1.0.beta:
+  + Fix tracker-miner-fs-control-3 stall on shutdown.
+  + Improve ellipsizing in CLI tools.
+  + Update list of game-related mimetypes.
+  + Add disc-generic extractor guessing data for CUE files,
+    supported so far:
+    - Playstation images
+    - Turbografx images
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan 16 13:26:25 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.1.0.alpha:
+  + Fix "tracker3 search --folders".
+  + Allow "tracker3 search" to look for filenames.
+  + Improve "tracker3 info" to show file eligibility if not
+    indexed.
+  + Many performance improvements to tracker-miner-fs-3.
+  + Fix systemd unit files to depend on gnome-session.
+  + Improve time_t interpretation for negative timestamps.
+
+-------------------------------------------------------------------
 Mon Jan 11 06:35:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.0.4:
