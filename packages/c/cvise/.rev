@@ -532,4 +532,13 @@
   * Repeat clang_delta_std detection for each test-case.</comment>
     <requestid>882326</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a0067bc41caf5e3570ff16f1f6f48547</srcmd5>
+    <version>2.3.0+git.20210412.66ee8c1</version>
+    <time>1618235383</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git.20210412.66ee8c1:
+  * Class-to-struct pass: fix forward declarations.</comment>
+    <requestid>884625</requestid>
+  </revision>
 </revisionlist>

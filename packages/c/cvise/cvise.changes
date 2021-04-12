@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 12 10:10:05 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210412.66ee8c1:
+  * Class-to-struct pass: fix forward declarations.
+
+-------------------------------------------------------------------
 Wed Mar 31 09:47:19 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.3.0+git.20210331.352e93f:
