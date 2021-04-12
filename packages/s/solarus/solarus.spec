@@ -55,11 +55,7 @@ games based on the Solarus engine.
 
 %package gui
 Summary:        Graphical user interface to launch Solarus games
-# Package "gui" was split from main package on 1.6.1
-# Make sure upgrade of main package from version < 1.6.1
-# installs "gui" as well with a specific Provides
 Group:          Amusements/Games/RPG
-Provides:       %{name}:%{_bindir}/solarus-launcher
 
 %description gui
 This package provides a graphical user interface to launch games
@@ -103,13 +99,13 @@ Development files for Solarus, including header files.
 %cmake_install
 %find_lang %{name} --with-qt
 
-%if 0%{?suse_version} > 1510
 %check
+%if 0%{?suse_version} < 1550
 # Tweak path to find libsolarus.so and libsolarus-testing.so
 export LD_LIBRARY_PATH="$PWD/build:$PWD/build/tests"
+%endif
 # Tests 1200 and 1210 require a graphical display
 %ctest --exclude-regex "lua/bugs/(1200_.*|1210_.*)"
-%endif
 
 %post   -n libsolarus1 -p /sbin/ldconfig
 %postun -n libsolarus1 -p /sbin/ldconfig
