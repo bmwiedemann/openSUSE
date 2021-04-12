@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-eventhub
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-eventhub
-Version:        5.2.0
+Version:        5.3.1
 Release:        0
 Summary:        Azure Event Hubs client library for Python
 License:        MIT
@@ -38,7 +38,7 @@ Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.5.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-uamqp < 2.0
-Requires:       python-uamqp >= 1.2.7
+Requires:       python-uamqp >= 1.2.14
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages
