@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 10 14:20:45 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1617960903.4aa567c96:
+  * Dependency cron 2021-04-09
+  * Ensure workers are shown as offline after disconnecting gracefully immediately
+
+-------------------------------------------------------------------
 Thu Apr 08 06:39:36 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1617809893.cee5e7331:
