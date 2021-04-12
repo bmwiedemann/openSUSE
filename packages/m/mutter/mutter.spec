@@ -19,17 +19,17 @@
 # don't enable sysprof support by default
 %bcond_with profiler
 
-%define api_major 7
+%define api_major 8
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        3.38.3
+Version:        40.0
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source:         https://download.gnome.org/sources/mutter/3.38/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/mutter/40/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE mutter-Lower-HIDPI_LIMIT-to-144.patch fate#326682, bsc#1125467 qkzhu@suse.com -- Lower HIDPI_LIMIT to 144
 Patch3:         mutter-Lower-HIDPI_LIMIT-to-144.patch
@@ -58,7 +58,7 @@ BuildRequires:  pkgconfig(fribidi) >= 1.0.0
 BuildRequires:  pkgconfig(gbm) >= 17.3
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.61.1
 BuildRequires:  pkgconfig(glesv2)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.61.1
+BuildRequires:  pkgconfig(glib-2.0) >= 2.67.3
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gnome-settings-daemon)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
@@ -70,7 +70,7 @@ BuildRequires:  pkgconfig(json-glib-1.0) >= 0.12.0
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.26
 BuildRequires:  pkgconfig(libdrm) >= 2.4.83
 BuildRequires:  pkgconfig(libinput)
-BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.0
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.21
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.7
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev) >= 136

@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Sat Mar 20 16:46:58 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + xwayland: Check permissions on /tmp/.X11-unix.
+
+-------------------------------------------------------------------
+Wed Mar 17 12:46:29 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Fix keyboard input from remote desktop in Xorg session.
+  + Fix restoring focus to windows using globally active input.
+  + Expose unaccalerated touchpad gesture deltas.
+  + Avoid relayout on text attribute changes when possible.
+  + Add remote desktop caps- and num-lock state properties.
+  + Improve refresh rate calculation.
+  + Implement presentation-time protocol.
+  + Disable double-buffered shadow buffering.
+  + Fix missing cursor on tablet devices.
+  + Fix frame timings causing X11 clients to get stuck.
+  + Fix applying input settings on X11.
+  + Add headless native backend.
+  + Fix high latency and stalls with proprietary nvidia driver.
+  + Fix maximized windows not reacting to strut changes.
+  + Only start XWayland on demand when running under systemd.
+  + Sync LEDs when a new input device is added.
+  + Fix order in which subsurface placement operations are handled.
+  + Fixed crashes.
+  + Plugged leaks.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 23 08:18:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.beta:
+  + Consider clients without mapped windows for xwayland
+    auto-shutdown.
+  + Let compositor to handle super+scroll events.
+  + Default to starting Xwayland on demand.
+  + xwayland: Restore abstract socket support.
+  + Add support for atomic mode setting.
+  + Fix clip region glitches when using fractional scaling.
+  + Default to horizontal workspace layout.
+  + Do not ping unmanaging windows.
+  + Handle monitor changes during screencasts.
+  + Fix unexpected jumps after restoring misbehaving clients.
+  + Fix newly opened X11 windows being invisible in overview.
+  + Fix viewport of offscreen effects.
+  + Fix drag cancel animation when using geometry scaling.
+  + Improve touch-mode heuristics.
+  + Integrate clipboard with remote desktop sessions.
+  + Fix stuck icon in DND operation between X11 and wayland.
+  + Automatically synchronize pointer position after modal grabs.
+  + Reimplement support for CLUTTER_SHOW_FPS.
+  + Only pick on events that may move the pointer.
+  + Emit discrete scroll events for accumulated smooth events in
+    virtual X11 devices.
+  + Add support for rounded clipping when drawing background.
+  + Plugged memory leaks.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jan 15 15:14:29 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha.1.1:
+  + Adapt to settings moving to gsettings-desktop-schemas.
+  + Misc. bug fixes and cleanups.
+- Changes from version 40.alpha.1:
+  + Base ClutterEffects on ClutterPaintNodes.
+  + xwayland: Set xrandr primary output.
+  + Add paint node based blur support.
+  + Disable CRTCs if there is no monitor.
+  + Fix updates of mipmapped animated backgrounds.
+  + Allow remote desktop clients to specify scroll source.
+  + Support the color transform matrix RandR property on X11.
+  + Plugged memory leaks.
+  + Fixed crashes.
+  + Misc. bug fixes and cleanups.
+
+-------------------------------------------------------------------
+Fri Jan 15 08:38:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + Replace CoglMatrix with graphene_matrix.
+  + Allow to specify debug topics in MUTTER_DEBUG.
+- Bump api_major to 8, following upstream changes.
+
+-------------------------------------------------------------------
 Thu Jan 14 18:23:49 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.38.3:
