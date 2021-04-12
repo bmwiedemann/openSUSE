@@ -1,7 +1,7 @@
 #
 # spec file for package lightsoff
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           lightsoff
-Version:        3.38.0
+Version:        40.0.1
 Release:        0
 Summary:        Lights Out Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
 URL:            https://wiki.gnome.org/Apps/Lightsoff
-Source0:        https://download.gnome.org/sources/lightsoff/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/lightsoff/40/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
@@ -67,9 +67,11 @@ adjacent tiles.
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/applications/org.gnome.LightsOff.desktop
+%{_datadir}/dbus-1/services/org.gnome.LightsOff.service
 %{_datadir}/glib-2.0/schemas/org.gnome.LightsOff.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.LightsOff*
 %{_datadir}/metainfo/org.gnome.LightsOff.appdata.xml
+%{_mandir}/man6/lightsoff.6%{?ext_man}
 
 %files lang -f %{name}.lang
 
