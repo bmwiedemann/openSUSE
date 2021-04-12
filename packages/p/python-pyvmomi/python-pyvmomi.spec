@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyvmomi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyvmomi
-Version:        7.0.1
+Version:        7.0.2
 Release:        0
 Summary:        VMware vSphere Python SDK
 License:        Apache-2.0

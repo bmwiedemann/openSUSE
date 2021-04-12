@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  9 17:21:04 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.0.2
+  * Added new bindings to support vSphere 7.0U2. Includes updates
+    to VIM, PBM, EAM and SMS namespaces. For details, refer
+    “What’s New in vSphere API 7.0U2?” section in the API 
+    reference guide: https://code.vmware.com/apis/1131/vsphere
+
+-------------------------------------------------------------------
 Sat Oct 31 09:59:23 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - update to version 7.0.1
