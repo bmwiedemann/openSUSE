@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 31 03:08:33 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.21
+   see /usr/share/doc/packages/perl-Net-CIDR/ChangeLog
+
+  0.21
+
+  2021-03-30  Sam Varshavchik  <mrsam@courier-mta.com>
+
+  	* Update perldoc to emphasize proper usage of ciddrvalidate().
+
+-------------------------------------------------------------------
 Wed Apr 17 05:15:33 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.20
