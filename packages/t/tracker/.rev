@@ -1156,4 +1156,12 @@
     <comment>New stable release (forwarded request 862203 from iznogood)</comment>
     <requestid>862318</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>b78b697e6cbe5d2e3918855c9693c68b</srcmd5>
+    <version>3.1.0</version>
+    <time>1618223749</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 881001 from dimstar)</comment>
+    <requestid>881169</requestid>
+  </revision>
 </revisionlist>

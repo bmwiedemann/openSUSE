@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Mar 23 09:24:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.1.0:
+  + Add build-time warning for SQLite 3.35.
+  + Workaround other SQLite 3.35 bug.
+
+-------------------------------------------------------------------
+Thu Mar 18 09:06:31 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.1.0.rc:
+  + Add tracker_sparql_connection_bus_new_async().
+  + Fix TrackerNotifier signal subscriptions across the portal.
+  + Fix race condition / crash when performing SELECT queries.
+  + Propagate errors better when updating the database.
+  + Do not miss valid prefixed names in TrackerResource.
+  + Sparql 1.1 correctness fixes.
+  + Handle nesting of multivalued property functions.
+  + CI improvements in JUnit test results.
+
+-------------------------------------------------------------------
+Tue Feb 16 10:35:31 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.1.0.beta:
+  + Fix possible crash in fts:offsets function.
+  + Handle variables as service URIs, e.g.
+     SERVICE ?s { ... } VALUES ?s { ... }.
+  + Add more g-i-r annotations.
+  + Improve ellipsizing in CLI tools.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan 16 13:17:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.1.0.alpha:
+  + Add TrackerBatch, object made to hold multiple updates
+    (in SPARQL string form, or TrackerResource) that will
+    be performed atomically.
+  + Add TrackerEndpointHttp, a TrackerEndpoint subclass to
+    implement a (readonly) SPARQL HTTP endpoint as per
+    https://www.w3.org/TR/2013/REC-sparql11-protocol-20130321/.
+  + Add tracker:strip-punctuation SPARQL function.
+  + Specify that nfo:duration is expressed in seconds.
+  + Fix portal initialization order.
+  + Improve TTL parser.
+  + Improve date/time parsing.
+  + Make handling of large series of UPDATEs iteratively
+    to avoid stack size limits.
+  + Improve parallelization of queries.
+  + Optimize idempotent DELETE operations.
+  + Optimize insert operations.
+  + Optimize database resource refcount management.
+  + Fix tracker_notifier_signal_subscribe annotation.
+  + Fix possible race conditions handling ontology objects.
+  + Handle NULL arguments in tracker:uri-is-parent.
+  + Avoid FTS5 table inconsistency with SQLite >= 3.34.0.
+
+-------------------------------------------------------------------
 Mon Jan 11 06:33:00 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.0.3:

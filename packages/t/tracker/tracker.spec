@@ -21,13 +21,13 @@
 %define RPMTrackerAPI 3_0
 
 Name:           tracker
-Version:        3.0.3
+Version:        3.1.0
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
-Source0:        https://download.gnome.org/sources/tracker/3.0/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/tracker/3.1/%{name}-%{version}.tar.xz
 
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
