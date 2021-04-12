@@ -1,0 +1,138 @@
+From a749d4416282e1465272949525b3623d30871d29 Mon Sep 17 00:00:00 2001
+From: Matthias Brugger <mbrugger@suse.com>
+Date: Fri, 9 Apr 2021 14:35:11 +0200
+Subject: [PATCH] configs: rpi: Enable SMBIOS sysinfo driver
+
+Enalbe this driver to allow U-Boot to get SMBIOS table information from
+a device tree node.
+
+Signed-off-by: Matthias Brugger <mbrugger@suse.com>
+---
+ configs/rpi_0_w_defconfig      | 2 ++
+ configs/rpi_2_defconfig        | 2 ++
+ configs/rpi_3_32b_defconfig    | 2 ++
+ configs/rpi_3_b_plus_defconfig | 2 ++
+ configs/rpi_3_defconfig        | 2 ++
+ configs/rpi_4_32b_defconfig    | 2 ++
+ configs/rpi_4_defconfig        | 2 ++
+ configs/rpi_arm64_defconfig    | 2 ++
+ configs/rpi_defconfig          | 2 ++
+ 9 files changed, 18 insertions(+)
+
+diff --git a/configs/rpi_0_w_defconfig b/configs/rpi_0_w_defconfig
+index c0a9b6c788..206be1590c 100644
+--- a/configs/rpi_0_w_defconfig
++++ b/configs/rpi_0_w_defconfig
+@@ -28,6 +28,8 @@ CONFIG_DM_ETH=y
+ CONFIG_PINCTRL=y
+ # CONFIG_PINCTRL_GENERIC is not set
+ # CONFIG_REQUIRE_SERIAL_CONSOLE is not set
++CONFIG_SYSINFO=y
++CONFIG_SYSINFO_SMBIOS=y
+ CONFIG_USB=y
+ CONFIG_DM_USB=y
+ CONFIG_USB_DWC2=y
+diff --git a/configs/rpi_2_defconfig b/configs/rpi_2_defconfig
+index 33e0ef6989..d3d62f3028 100644
+--- a/configs/rpi_2_defconfig
++++ b/configs/rpi_2_defconfig
+@@ -28,6 +28,8 @@ CONFIG_DM_ETH=y
+ CONFIG_PINCTRL=y
+ # CONFIG_PINCTRL_GENERIC is not set
+ # CONFIG_REQUIRE_SERIAL_CONSOLE is not set
++CONFIG_SYSINFO=y
++CONFIG_SYSINFO_SMBIOS=y
+ CONFIG_USB=y
+ CONFIG_DM_USB=y
+ CONFIG_USB_DWC2=y
+diff --git a/configs/rpi_3_32b_defconfig b/configs/rpi_3_32b_defconfig
+index 15c62adc69..b69bc05833 100644
+--- a/configs/rpi_3_32b_defconfig
++++ b/configs/rpi_3_32b_defconfig
+@@ -30,6 +30,8 @@ CONFIG_DM_ETH=y
+ CONFIG_PINCTRL=y
+ # CONFIG_PINCTRL_GENERIC is not set
+ # CONFIG_REQUIRE_SERIAL_CONSOLE is not set
++CONFIG_SYSINFO=y
++CONFIG_SYSINFO_SMBIOS=y
+ CONFIG_USB=y
+ CONFIG_DM_USB=y
+ CONFIG_USB_DWC2=y
+diff --git a/configs/rpi_3_b_plus_defconfig b/configs/rpi_3_b_plus_defconfig
+index ebab0b4f86..8316a43116 100644
+--- a/configs/rpi_3_b_plus_defconfig
++++ b/configs/rpi_3_b_plus_defconfig
+@@ -30,6 +30,8 @@ CONFIG_DM_ETH=y
+ CONFIG_PINCTRL=y
+ # CONFIG_PINCTRL_GENERIC is not set
+ # CONFIG_REQUIRE_SERIAL_CONSOLE is not set
++CONFIG_SYSINFO=y
++CONFIG_SYSINFO_SMBIOS=y
+ CONFIG_USB=y
+ CONFIG_DM_USB=y
+ CONFIG_USB_DWC2=y
+diff --git a/configs/rpi_3_defconfig b/configs/rpi_3_defconfig
+index daeb6d1b64..bdfac3f31a 100644
+--- a/configs/rpi_3_defconfig
++++ b/configs/rpi_3_defconfig
+@@ -30,6 +30,8 @@ CONFIG_DM_ETH=y
+ CONFIG_PINCTRL=y
+ # CONFIG_PINCTRL_GENERIC is not set
+ # CONFIG_REQUIRE_SERIAL_CONSOLE is not set
++CONFIG_SYSINFO=y
++CONFIG_SYSINFO_SMBIOS=y
+ CONFIG_USB=y
+ CONFIG_DM_USB=y
+ CONFIG_USB_DWC2=y
+diff --git a/configs/rpi_4_32b_defconfig b/configs/rpi_4_32b_defconfig
+index 0cbdd5fee1..7a10d4b0d4 100644
+--- a/configs/rpi_4_32b_defconfig
++++ b/configs/rpi_4_32b_defconfig
+@@ -39,6 +39,8 @@ CONFIG_DM_RESET=y
+ CONFIG_DM_RNG=y
+ CONFIG_RNG_IPROC200=y
+ # CONFIG_REQUIRE_SERIAL_CONSOLE is not set
++CONFIG_SYSINFO=y
++CONFIG_SYSINFO_SMBIOS=y
+ CONFIG_USB=y
+ CONFIG_DM_USB=y
+ CONFIG_DM_USB_GADGET=y
+diff --git a/configs/rpi_4_defconfig b/configs/rpi_4_defconfig
+index 3f21f99edb..5d889df794 100644
+--- a/configs/rpi_4_defconfig
++++ b/configs/rpi_4_defconfig
+@@ -39,6 +39,8 @@ CONFIG_DM_RESET=y
+ CONFIG_DM_RNG=y
+ CONFIG_RNG_IPROC200=y
+ # CONFIG_REQUIRE_SERIAL_CONSOLE is not set
++CONFIG_SYSINFO=y
++CONFIG_SYSINFO_SMBIOS=y
+ CONFIG_USB=y
+ CONFIG_DM_USB=y
+ CONFIG_DM_USB_GADGET=y
+diff --git a/configs/rpi_arm64_defconfig b/configs/rpi_arm64_defconfig
+index d282d509ce..af45178962 100644
+--- a/configs/rpi_arm64_defconfig
++++ b/configs/rpi_arm64_defconfig
+@@ -36,6 +36,8 @@ CONFIG_DM_RESET=y
+ CONFIG_DM_RNG=y
+ CONFIG_RNG_IPROC200=y
+ # CONFIG_REQUIRE_SERIAL_CONSOLE is not set
++CONFIG_SYSINFO=y
++CONFIG_SYSINFO_SMBIOS=y
+ CONFIG_USB=y
+ CONFIG_DM_USB=y
+ CONFIG_USB_XHCI_HCD=y
+diff --git a/configs/rpi_defconfig b/configs/rpi_defconfig
+index 06b390d907..af084c8505 100644
+--- a/configs/rpi_defconfig
++++ b/configs/rpi_defconfig
+@@ -28,6 +28,8 @@ CONFIG_DM_ETH=y
+ CONFIG_PINCTRL=y
+ # CONFIG_PINCTRL_GENERIC is not set
+ # CONFIG_REQUIRE_SERIAL_CONSOLE is not set
++CONFIG_SYSINFO=y
++CONFIG_SYSINFO_SMBIOS=y
+ CONFIG_USB=y
+ CONFIG_DM_USB=y
+ CONFIG_USB_DWC2=y

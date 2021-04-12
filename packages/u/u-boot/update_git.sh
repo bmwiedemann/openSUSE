@@ -12,7 +12,7 @@
 set -e
 
 GIT_TREE=https://github.com/openSUSE/u-boot.git
-GIT_LOCAL_TREE=~/src/opensuse/u-boot
+GIT_LOCAL_TREE=~/src/opensuse/u-boot-opensuse
 GIT_BRANCH=tumbleweed-2021.04
 GIT_UPSTREAM_TAG=v2021.04
 GIT_DIR=`mktemp -d -p /dev/shm`

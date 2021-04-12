@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  9 12:43:13 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+Fix SMBIOS table entries (bsc#1183079)
+
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.04
+* Patches added:
+  0013-configs-rpi-Enable-SMBIOS-sysinfo-d.patch
+
+-------------------------------------------------------------------
 Tue Apr  6 11:25:03 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Add u-boot-zturnv5 flavour instead of u-boot-zturn.

@@ -232,6 +232,7 @@ Patch0009:      0009-sunxi-dts-OrangePi-Zero-Enable-SPI-.patch
 Patch0010:      0010-sunxi-Enable-SPI-support-on-Orange-.patch
 Patch0011:      0011-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch
 Patch0012:      0012-smbios-Fix-table-when-no-string-is-.patch
+Patch0013:      0013-configs-rpi-Enable-SMBIOS-sysinfo-d.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
