@@ -1,0 +1,5 @@
+<package name="python-Glances" project="openSUSE:Factory">
+  <title>A cross-platform curses-based monitoring tool</title>
+  <description>Glances is a cross-platform monitoring tool which aims to present a large amount of monitoring information through a curses or Web based interface. The information dynamically adapts depending on the size of the user interface.</description>
+  <devel project="devel:languages:python" package="python-Glances"/>
+</package>
