@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Mar 22 07:55:28 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 18 09:52:27 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Updated translations. 
+
+-------------------------------------------------------------------
+Tue Feb 16 10:30:23 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.beta:
+  + Use pgUp/Down shortcuts for horizontal workspace switching.
+  + Add super-based workspace navigation shortcuts.
+  + Remove “gnome-fallback” as a valid session name.
+  + Fix summary of `two-finger-scroll-enabled` key.
+  + Updated translations. 
+
+-------------------------------------------------------------------
+Mon Jan 11 13:52:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + Add scroll button locking to trackballs.
+  + Move mouse drag-threshold/double-click settings here.
+  + Move antialiasing/hinting/rgba-order settings here.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Sep 14 12:17:55 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.0:
@@ -7,7 +38,7 @@ Mon Sep 14 12:17:55 UTC 2020 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Sun Sep 13 13:04:15 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
-- Update gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch: 
+- Update gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch:
   Set noise-texture.png as the default value of picture-uri to
   avoid failed to load background error (boo#1176418).
 
@@ -32,7 +63,7 @@ Fri Sep  4 11:38:30 UTC 2020 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Fri Aug  7 07:55:52 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
-- Update gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch: 
+- Update gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-configuration.patch:
   + Remove noise texture background
   + Tweak the gdm grey color to be the same with 3.36 default behavior
     (boo#1172826).
