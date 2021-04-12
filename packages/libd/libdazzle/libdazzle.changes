@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 20 09:17:09 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.40.0:
+  + Build system fixes for mingw.
+  + PangoFontDescription to CSS conversion improvements.
+
+-------------------------------------------------------------------
 Mon Sep 14 10:12:36 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.0:
