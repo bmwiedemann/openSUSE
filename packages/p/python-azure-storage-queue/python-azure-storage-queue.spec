@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-storage-queue
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-storage-queue
-Version:        12.1.4
+Version:        12.1.5
 Release:        0
 Summary:        Microsoft Azure Storage Queue Client Library for Python
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-common >= 1.1.5
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.9.0
+Requires:       python-azure-core >= 1.10.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-storage-common < 3.0.0
 Requires:       python-azure-storage-common >= 2.1.0
