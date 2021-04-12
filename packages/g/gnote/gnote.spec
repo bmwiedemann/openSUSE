@@ -16,19 +16,17 @@
 #
 
 
-%define base_version 3.38
+%define base_version 40
 
 Name:           gnote
-Version:        3.38.1
+Version:        40.rc
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gnote
-Source0:        https://download.gnome.org/sources/gnote/%{base_version}/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnote/40/%{name}-%{version}.tar.xz
 Source99:       gnote-rpmlintrc
-# PATCH-FIX-UPSTREAM gnote-enabling-addin-for-opened-notes.patch bsc#1075342, glgo#GNOME/gnote!11 noteaddin: Fix newly enabled addin not working for opened.
-Patch0:         gnote-enabling-addin-for-opened-notes.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -80,7 +78,7 @@ translation-update-upstream
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-desktop-file-edit --add-category TextEditor %{buildroot}%{_datadir}/applications/%{name}.desktop
+desktop-file-edit --add-category TextEditor %{buildroot}%{_datadir}/applications/org.gnome.gnote.desktop
 %fdupes %{buildroot}%{_datadir}
 %find_lang %{name} %{?no_lang_C}
 
@@ -99,19 +97,19 @@ desktop-file-edit --add-category TextEditor %{buildroot}%{_datadir}/applications
 # Splitting does not make sense as it's just a lib for gnote itself (and it's plugins)
 %{_libdir}/libgnote-%{base_version}.so*
 %{_libdir}/libgnote.so
-%{_datadir}/applications/gnote.desktop
+%{_datadir}/applications/org.gnome.gnote.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.gnote.gschema.xml
 %{_datadir}/gnote/
 %{_datadir}/icons/hicolor/*/apps/gnote.*
 %{_mandir}/man1/gnote.1%{?ext_man}
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/gnote.appdata.xml
+%{_datadir}/metainfo/org.gnome.gnote.appdata.xml
 
 %files -n gnome-shell-search-provider-%{name}
 %{_datadir}/dbus-1/services/org.gnome.Gnote.service
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/search-providers
-%{_datadir}/gnome-shell/search-providers/gnote-search-provider.ini
+%{_datadir}/gnome-shell/search-providers/org.gnome.Gnote.search-provider.ini
 
 %files lang -f %{name}.lang
 

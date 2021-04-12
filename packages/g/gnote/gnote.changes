@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Mar 18 14:51:23 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Use reverse-domain convention for naming desktop and search
+    provider files.
+  + Refactor D-Bus support to reuse the connection established by
+    GtkApplication.
+  + Update AppData file format
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 23 11:14:20 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.beta:
+  + New Features:
+    * Add accelerator Ctrl+D for insert timestamp.
+    * WebDAV sync no longer uses wdfs.
+  + Fixes:
+    * Make insert timestamp plugin work again.
+    * Fix crash when synchronizing immediately after configuring.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jan 23 20:40:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + New Features:
+    - Change shortcut for find first/next to Ctrl-G/Ctrl-Shitf-G.
+    - Change icons and remove labels from find next/previous.
+  + Fixes:
+    - --search will raise existing search window or open a new one.
+    - Fix opening of context menu.
+    - Fix newly enabled addin not working for opened notes.
+    - Fix find previous match.
+    - Fix changing sorting not always works.
+    - Fix GTK criticals upon exiting the application.
+    - Fix few memory leaks.
+  + Updated translations.
+- Drop gnote-enabling-addin-for-opened-notes.patch: fixed upstream.
+- Bump base_version to 40, following upstream.
+
+-------------------------------------------------------------------
 Sat Jan 23 20:03:41 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.1:
@@ -40,7 +82,7 @@ Sat Sep  5 14:34:35 UTC 2020 - dimstar@opensuse.org
 Wed Sep  2 02:36:36 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add gnote-enabling-addin-for-opened-notes.patch: noteaddin: Fix
-  newly enabled addin not working for opened(bsc#1075342,
+  newly enabled addin not working for opened notes (bsc#1075342,
   glgo#GNOME/gnote!11).
 
 -------------------------------------------------------------------
