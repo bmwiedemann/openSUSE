@@ -213,4 +213,12 @@
   pattern. (forwarded request 863067 from fcrozat)</comment>
     <requestid>863167</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>373fb2a21493189407b6cc409c3c6c36</srcmd5>
+    <version>20201210</version>
+    <time>1618223763</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>881580</requestid>
+  </revision>
 </revisionlist>

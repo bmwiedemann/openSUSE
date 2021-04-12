@@ -301,6 +301,7 @@ Recommends:     gnome-power-manager
 Recommends:     gnome-session-default-session
 # boo#1090117
 Recommends:     gnome-shell-classic
+Recommends:     gnome-extensions
 Recommends:     gnome-terminal
 # bnc#879466
 Recommends:     gnome-user-docs
@@ -385,8 +386,8 @@ Recommends:     gnome-tweak-tool
 Recommends:     nautilus-extension-terminal
 Recommends:     nautilus-share
 Recommends:     pinentry-gnome3
-# bsc#1164858 bsc#1081584 
-# - only in Leap and SLE as we don't want to install gnome-packagekit by 
+# bsc#1164858 bsc#1081584
+# - only in Leap and SLE as we don't want to install gnome-packagekit by
 #   default on TW
 %if 0%{?sle_version}
 Recommends:     gnome-packagekit
