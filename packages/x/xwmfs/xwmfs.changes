@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 12 08:53:43 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version v0.90:
+  * feature: add desktops directory containing symlinks to respective windows
+  * feature: support wm/desktop_names node which returns the list of known desktop names
+
+-------------------------------------------------------------------
 Wed Mar  3 12:56:25 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - version bump to minor release 0.86:

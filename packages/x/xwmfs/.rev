@@ -47,4 +47,14 @@
   - fixes for clang and gcc-10 compilation.</comment>
     <requestid>876541</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>427b5b34f0c150aa570a969b770f9a61</srcmd5>
+    <version>0.90</version>
+    <time>1618235378</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v0.90:
+  * feature: add desktops directory containing symlinks to respective windows
+  * feature: support wm/desktop_names node which returns the list of known desktop names</comment>
+    <requestid>884612</requestid>
+  </revision>
 </revisionlist>

@@ -23,7 +23,7 @@ BuildRequires:  fuse-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libX11-devel
 Requires:       fuse
-Version:        0.86
+Version:        0.90
 Release:        0
 URL:            https://github.com/gerstner-hub/xwmfs
 Summary:        A file system for accessing X server and window manager features
