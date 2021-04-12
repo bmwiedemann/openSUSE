@@ -106,4 +106,17 @@
     <comment></comment>
     <requestid>844093</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1e743fa2e22551900dbcb6f5fee55be1</srcmd5>
+    <version>2.1.1</version>
+    <time>1618235379</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1
+  * A number of crashes in odd situations were fixed
+  * It is now possible to copy/paste positions in Edit mode.
+  * The batch analysis dialog has a new button to enqueue
+    an entire directory of SGF files.
+  * Engine games now allow board sizes up to 52. (forwarded request 884604 from cgiboudeaux)</comment>
+    <requestid>884605</requestid>
+  </revision>
 </revisionlist>

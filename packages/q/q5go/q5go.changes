@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 12 09:30:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.1.1
+  * A number of crashes in odd situations were fixed
+  * It is now possible to copy/paste positions in Edit mode.
+  * The batch analysis dialog has a new button to enqueue
+    an entire directory of SGF files.
+  * Engine games now allow board sizes up to 52.
+
+-------------------------------------------------------------------
 Mon Oct 26 12:07:43 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.0
