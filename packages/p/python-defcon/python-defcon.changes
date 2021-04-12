@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 23 19:23:58 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- reinstate python36 build (python36-FontTools is available)
+
+-------------------------------------------------------------------
 Fri Mar 19 01:52:35 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update 0.8.1:
