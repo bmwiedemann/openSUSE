@@ -1,7 +1,7 @@
 #
 # spec file for package python-vdirsyncer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source1:        vdirsyncer.service
 Source2:        vdirsyncer.timer
 # default deadline (200ms) is too short for obs
 Patch1:         python-vdirsyncer-shift-deadline.patch
+# Compatibility with latest click - taken directly from upstream git
+Patch2:         3eb9ce5ae4320d52e6c876874511ff96a8a45f51.patch
 BuildRequires:  %{python_module atomicwrites}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
@@ -44,7 +46,7 @@ Requires:       python-click-threading >= 0.2
 Requires:       python-requests >= 2.20.0
 Requires:       python-requests-toolbelt >= 0.4.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-requests-oauthlib
 BuildArch:      noarch
 # SECTION test requirements
@@ -58,10 +60,8 @@ BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module requests-toolbelt >= 0.4.40}
 BuildRequires:  %{python_module urllib3}
 # /SECTION
-%ifpython3
 Provides:       vdirsyncer = %{version}
 Obsoletes:      vdirsyncer < %{version}
-%endif
 %python_subpackages
 
 %description
@@ -73,6 +73,7 @@ what OfflineIMAP is for IMAP.
 %prep
 %setup -q -n vdirsyncer-%{version}
 %patch1 -p1
+%patch2 -p1
 rm -rf vdirsyncer.egg-info
 
 %build
@@ -81,11 +82,15 @@ rm -rf vdirsyncer.egg-info
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/vdirsyncer
-%python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 mkdir -p %{buildroot}%{_userunitdir}
-install -Dpm 0644 %{SOURCE0} %{buildroot}%{_userunitdir}/vdirsyncer.service
-install -Dpm 0644 %{SOURCE1} %{buildroot}%{_userunitdir}/vdirsyncer.timer
+%{python_expand \
+install -Dpm 0644 %{SOURCE1} %{buildroot}%{_userunitdir}/vdirsyncer-%{$python_bin_suffix}.service
+install -Dpm 0644 %{SOURCE2} %{buildroot}%{_userunitdir}/vdirsyncer-%{$python_bin_suffix}.timer
+%fdupes %{buildroot}/%{$python_sitelib}
+}
+%prepare_alternative -t %{_userunitdir}/vdirsyncer.service vdirsyncer.service
+%prepare_alternative -t %{_userunitdir}/vdirsyncer.timer vdirsyncer.timer
 
 %check
 export DETERMINISTIC_TESTS=true
@@ -93,7 +98,10 @@ export DETERMINISTIC_TESTS=true
 %pytest -k 'not test_legacy_status and not test_open_graphical_browser and not test_verbosity'
 
 %post
-%python_install_alternative vdirsyncer
+update-alternatives --install %{_bindir}/vdirsyncer vdirsyncer %{_bindir}/vdirsyncer-%{python_bin_suffix} %{python_version_nodots} \
+   --slave %{_userunitdir}/vdirsyncer.service vdirsyncer.service %{_userunitdir}/vdirsyncer-%{python_bin_suffix}.service \
+   --slave %{_userunitdir}/vdirsyncer.timer vdirsyncer.timer %{_userunitdir}/vdirsyncer-%{python_bin_suffix}.timer
+update-alternatives --auto vdirsyncer
 
 %postun
 %python_uninstall_alternative vdirsyncer
@@ -102,8 +110,11 @@ export DETERMINISTIC_TESTS=true
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/vdirsyncer
-%{python_sitelib}/*
+%{python_sitelib}/vdirsyncer*
+%{_userunitdir}/vdirsyncer-%{python_bin_suffix}.service
+%{_userunitdir}/vdirsyncer-%{python_bin_suffix}.timer
 %{_userunitdir}/vdirsyncer.service
 %{_userunitdir}/vdirsyncer.timer
+%ghost %{_sysconfdir}/alternatives/vdirsyncer*
 
 %changelog

@@ -98,4 +98,19 @@
     <comment></comment>
     <requestid>822345</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>ebb62a4a34da9a7963a9a3889feaf4de</srcmd5>
+    <version>0.16.8</version>
+    <time>1618240221</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ifpython3 macro guarding the Provides/Obsoletes 
+
+- Set up update-alternatives for systemd unit files.
+
+- Fix source references
+
+-fix compatibility with latest click - patch taken directly from upstream git
+ * 3eb9ce5ae4320d52e6c876874511ff96a8a45f51.patch</comment>
+    <requestid>884562</requestid>
+  </revision>
 </revisionlist>

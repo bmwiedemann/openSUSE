@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 12 06:56:05 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove ifpython3 macro guarding the Provides/Obsoletes 
+
+-------------------------------------------------------------------
+Fri Mar 12 19:57:06 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Set up update-alternatives for systemd unit files.
+
+-------------------------------------------------------------------
+Sun Feb 28 22:24:56 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix source references
+
+-------------------------------------------------------------------
+Tue Sep  1 15:11:22 UTC 2020 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+-fix compatibility with latest click - patch taken directly from upstream git
+ * 3eb9ce5ae4320d52e6c876874511ff96a8a45f51.patch 
+
+-------------------------------------------------------------------
 Thu Jul 23 09:16:29 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.16.8
