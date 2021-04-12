@@ -326,13 +326,6 @@ donttest+="or (test_distributed and test_persist)"
 donttest+="or (test_distributed and test_local_get_with_distributed_active)"
 donttest+="or (test_distributed and test_serializable_groupby_agg)"
 donttest+="or (test_distributed and test_await)"
-if [ $(getconf LONG_BIT) -eq 32 ]; then
-  # Fails to convert datatype in obs constrained memory for 32-bit platforms
-  donttest+="or (test_distributed and test_combo_of_layer_types)"
-  donttest+="or (test_distributed and test_annotation_pack_unpack)"
-  # https://github.com/dask/dask/issues/7489
-  donttest+="or (test_distributed and test_blockwise_numpy_)"
-fi
 %pytest --pyargs dask -ra -m "not network" -k "not ($donttest)" -n auto
 %endif
 

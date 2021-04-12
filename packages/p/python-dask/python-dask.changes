@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  9 13:47:13 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Reenable 32bit tests after distributed is not cythonized anymore
+  gh#dask/dask#7489
+  
+-------------------------------------------------------------------
 Sun Apr  4 16:38:31 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 -  update to version 2021.4.0:
