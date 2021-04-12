@@ -16,13 +16,14 @@
         <profile name="VMware" description="VMware for x86_64" arch="x86_64"/>
         <profile name="MS-HyperV" description="Hyper-V for x86_64" arch="x86_64"/>
         <profile name="OpenStack-Cloud" description="OpenStack Cloud" arch="x86_64,aarch64"/>
+        <profile name="DigitalOcean-Cloud" description="DigitalOcean Cloud" arch="x86_64"/>
         <profile name="VirtualBox" description="VirtualBox for x86_64" arch="x86_64"/>
         <profile name="Pine64" description="Pine64" arch="aarch64"/>
         <profile name="RaspberryPi" description="RaspberryPi (3+, aarch64)" arch="aarch64"/>
         <profile name="RaspberryPi2" description="RaspberryPi2 (armv7)" arch="armv7l"/>
         <profile name="Rock64" description="Rock64" arch="aarch64"/>
         <profile name="Vagrant" description="Vagrant for x86_64" arch="x86_64,aarch64"/>
-        <profile name="SelfInstall" description="Self Installing Image" arch="x86_64"/>
+        <profile name="SelfInstall" description="Self Installing Image" arch="x86_64,aarch64"/>
         <profile name="onie" description="ONIE Installer Image" arch="x86_64"/>
         <!-- Images (flavor + platform) -->
         <profile name="ContainerHost-kvm-and-xen" description="MicroOS with Podman for KVM and HVM Xen" arch="x86_64,aarch64">
@@ -73,6 +74,10 @@
             <requires profile="OpenStack-Cloud"/>
             <requires profile="Kubic-kubeadm"/>
         </profile>
+        <profile name="Kubic-kubeadm-DigitalOcean-Cloud" description="kubeadm with CRI-O for DigitalOcean Cloud" arch="x86_64">
+            <requires profile="DigitalOcean-Cloud"/>
+            <requires profile="Kubic-kubeadm"/>
+        </profile>
         <profile name="Kubic-kubeadm-Pine64" description="kubeadm with CRI-O for the Pine64" arch="aarch64">
             <requires profile="Pine64"/>
             <requires profile="Kubic-kubeadm"/>
@@ -89,9 +94,13 @@
             <requires profile="Vagrant"/>
             <requires profile="Kubic-kubeadm"/>
         </profile>
-        <profile name="ContainerHost-SelfInstall" description="MicroOS with Podman for SelfInstallation" arch="x86_64">
+        <profile name="ContainerHost-SelfInstall" description="MicroOS with Podman for SelfInstallation" arch="x86_64,aarch64">
             <requires profile="SelfInstall"/>
             <requires profile="ContainerHost"/>
+        </profile>
+        <profile name="Kubic-kubeadm-SelfInstall" description="kubeadm with CRI-O for SelfInstallation" arch="x86_64,aarch64">
+            <requires profile="SelfInstall"/>
+            <requires profile="Kubic-kubeadm"/>
         </profile>
     </profiles>
     <preferences profiles="kvm-and-xen" arch="x86_64">
@@ -289,6 +298,40 @@
                 <volume name="opt"/>
                 <volume name="srv"/>
                 <volume name="boot/grub2/arm64-efi" mountpoint="boot/grub2/arm64-efi"/>
+                <volume name="boot/writable"/>
+                <volume name="usr/local"/>
+            </systemdisk>
+            <size unit="G">24</size>
+        </type>
+    </preferences>
+    <preferences profiles="DigitalOcean-Cloud" arch="x86_64">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="vmx"
+            filesystem="btrfs"
+            format="qcow2"
+            firmware="uefi"
+            kernelcmdline="quiet systemd.show_status=yes console=ttyS0,115200 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=digitalocean"
+            bootpartition="false"
+            bootkernel="custom"
+            devicepersistency="by-uuid"
+            btrfs_root_is_snapshot="true"
+            btrfs_root_is_readonly_snapshot="true"
+            btrfs_quota_groups="true"
+            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
+        >
+            <bootloader name="grub2" console="gfxterm" />
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/i386-pc"/>
+                <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
             </systemdisk>
@@ -583,7 +626,7 @@
             firmware="uefi"
             initrd_system="dracut"
             installiso="true"
-            kernelcmdline="quiet systemd.show_status=yes console=ttyS0,115200 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=qemu"
+            kernelcmdline="quiet systemd.show_status=yes console=ttyS0,115200 console=tty0 net.ifnames=0 \$ignition_firstboot ignition.platform.id=metal"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -616,7 +659,6 @@
             </machine>
         </type>
     </preferences>
-
     <repository type="rpm-md" >
         <source path='obsrepositories:/'/>
     </repository>
@@ -630,7 +672,7 @@
         <package name="patterns-microos-defaults"/>
         <package name="kernel-default"/>
     </packages>
-    <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,VirtualBox,Pine64,RaspberryPi,RaspberryPi2,Rock64,Vagrant">
+    <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,VirtualBox,Pine64,RaspberryPi,RaspberryPi2,Rock64,Vagrant,DigitalOcean-Cloud">
         <!-- Needed for initial configuration, except on OpenStack-Cloud, where cloud-init is used -->
         <!-- On ONIE, the installer does the partitioning and salt is used for configuration -->
         <package name="ignition-dracut"/>

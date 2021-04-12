@@ -35,5 +35,7 @@
         <flavor>ContainerHost-Vagrant</flavor>
         <flavor>Kubic-kubeadm-Vagrant</flavor>
         <flavor>ContainerHost-SelfInstall</flavor>
+        <flavor>Kubic-kubeadm-SelfInstall</flavor>
+        <flavor>DigitalOcean-Cloud</flavor>
+        <flavor>Kubic-kubeadm-DigitalOcean-Cloud</flavor>
 </multibuild>
-

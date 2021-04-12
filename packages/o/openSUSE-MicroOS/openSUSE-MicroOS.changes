@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  9 00:11:04 UTC 2021 - Anthony Rabbito <hello@anthonyrabbito.com>
+
+- Introduce ignition based DigitalOcean image. 
+
+-------------------------------------------------------------------
 Fri Mar  5 10:58:15 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add hostname explicitly to avoid busybox-hostname
