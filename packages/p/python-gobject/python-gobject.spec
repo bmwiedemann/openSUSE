@@ -28,15 +28,15 @@
 %global __requires_exclude_from ^%{_libdir}/python.*/site-packages/gi/__init__.py$
 %define _name   pygobject
 Name:           python-gobject
-Version:        3.38.0
+Version:        3.40.0
 Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://wiki.gnome.org/Projects/PyGObject/
-Source0:        https://download.gnome.org/sources/pygobject/3.38/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/pygobject/3.40/%{_name}-%{version}.tar.xz
 
-BuildRequires:  %{python_module cairo >= 1.11.1}
+BuildRequires:  %{python_module cairo >= 1.16.0}
 BuildRequires:  %{python_module cairo-devel}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -100,8 +100,8 @@ addon libraries such as pygtk.
 %package -n %{name}-common-devel
 Summary:        Shared development files for GObject's Python bindings
 Group:          Development/Languages/Python
-Requires:       glib2-devel >= 2.38.0
-Requires:       gobject-introspection-devel >= 1.46.0
+Requires:       glib2-devel >= 2.56.0
+Requires:       gobject-introspection-devel >= 1.56.0
 Requires:       libffi-devel >= 3.0.0
 Requires:       pkgconfig(cairo)
 Requires:       pkgconfig(cairo-gobject)
@@ -123,7 +123,6 @@ export CFLAGS="%{optflags}"
 %install
 %python_install
 
-
 %{python_expand # delete unwanted python scripts and their compiled cache files
 # Drop pygtkcompat layer - It's useless and we lack other stuff for it to work
 rm -v %{buildroot}%{$python_sitearch}/gi/pygtkcompat.py*
@@ -138,7 +137,6 @@ find %{buildroot} "(" -name '*.la' -or -name '*.a' ")" -delete
 
 %{?python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-
 
 %files %{python_files}
 %license COPYING
