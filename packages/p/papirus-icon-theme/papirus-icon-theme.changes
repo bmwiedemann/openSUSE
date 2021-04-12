@@ -1,7 +1,129 @@
 -------------------------------------------------------------------
+Thu Apr  1 23:42:03 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20210401
+
+  - Added icons
+   
+    * Apollo Studio #2612
+    * Armello (Lutris & Steam)
+    * AT Launcher #2562
+    * Blush Blush (Steam & Lutris)
+    * Clight
+    * Colortone (Steam & Lutris)
+    * Crush Crush (Steam & Lutris)
+    * CubicSDR #2559
+    * Dead Or Alive 6
+    * Endless Zone (Steam & Lutris)
+    * ET: Legacy (Flathub) #2007
+    * Evernote Client
+    * Fluent Reader #2571
+    * Fluffychat #2576
+    * FortiClient & FortiClient SSLVPN #2603
+    * Freezer #2591
+    * FTB App #2586
+    * Gaphor #2553
+    * Gear Up (Steam & Lutris)
+    * glabels-qt #2593
+    * GNOME Software #2617
+    * GOA Microsoft Exchange #2563
+    * GoldenDict (Flathub) #2007
+    * Grand Theft Auto V (Steam & Lutris)
+    * GTA III (Steam & Lutris)
+    * GTA: Vice City (Steam & Lutris)
+    * Guilded #2597
+    * Hacknet (Steam & Lutris)
+    * Hashbrown #2572
+    * Helltaker (Steam & Lutris)
+    * Hyperspace #2599
+    * Jubler
+    * Jupyter Lab #2584
+    * KmCaster (Flathub) #2007
+    * Lara Croft and the Temple of Osiris (Lutris & Steam)
+    * LibreOffice 7.1.x
+    * Lite #2600
+    * LiVES
+    * MeshLab
+    * MeshLab (Flathub) #2007
+    * message-indicator-symbolic #2624
+    * Metadata Cleaner #2561
+    * Muse Dash (Lutris & Steam)
+    * Narcissu (Steam & Lutris)
+    * NBTExplorer (Flathub) #2007
+    * NEKOPARA vol. 0-4 (Steam & Lutris)
+    * NightSky (Steam & Lutris)
+    * nnn #2554
+    * Omnishell #2580
+    * Onivim2 #2607
+    * OpenRGB
+    * PHD2 #2579
+    * Phoenix Wright: Ace Attorney Trilogy (Steam & Lutris)
+    * Pitivi/GES video project (mimetype icons) #2594
+    * Plexamp (Flathub) #2007
+    * Portfolio Performance #2566
+    * qBittorrent (dark and light tray icons) #2609
+    * Sakura Spirit (Steam & Lutris)
+    * SciDAVis #2581
+    * Sengi #2556
+    * Setzer #2589
+    * Sidekick Web Browser #2602
+    * SoundCloud PWA #2604
+    * Steam Link (Flathub) #2007
+    * Stellaris (Lutris & Steam)
+    * SysMonTask #2598
+    * Tabletop Simulator (Lutris & Steam)
+    * Technic Launcher #2590
+    * Tekken 7 #2582
+    * The Witcher 3 (Steam & Lutris)
+    * Valheim (Steam & Lutris)
+    * Videomass
+    * Viper Browser
+    * Wike
+    * Xfce4 panel plugins:
+        * GenMon
+        * NetLoad
+        * SystemLoad
+    * Youtube-dl-gui (AppImage)
+    * Yuzu EA
+    * Zoho Mail - Desktop #2569
+  
+  - Updated icons
+  
+    * Applications folder #2549
+    * Clock #2613
+    * Dolphin File Manager (FlatHub)
+    * Epiphany #2573
+    * GNOME Disk Utility #2443
+    * KAlarm
+    * KPhotoAlbum
+    * Pitivi #2594
+    * Q4Wine #2618
+    * Steam #2588 #2595
+    * SteamOS
+    * VSCodium #2596
+    * web-, photo-, and video- cameras
+    * Windows distributor logo and Windows executable files
+    * Wine #2618
+    * wine-folder #2618
+    * Winetricks #2618
+    * Youtube
+    * Youtube Music Desktop
+    * Youtube-dl
+    * Zim Desktop Wiki #2616
+  
+  - Changes and fixes
+  
+    * Removed fedora-logo-icon to avoid confusion in RHEL 8 #2619
+  
+  - Others
+  
+    * Added alternate icons Nautilus and Thunar (see comment) #2567
+    
+
+-------------------------------------------------------------------
 Tue Mar  2 22:48:01 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
-- Update to version 20200302
+- Update to version 20210302
 
   - Highlights
 
@@ -95,7 +217,7 @@ Tue Mar  2 22:48:01 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 -------------------------------------------------------------------
 Tue Feb  2 01:05:35 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
-- Update to version  20200201
+- Update to version  20210201
 
   - Added icons
 
