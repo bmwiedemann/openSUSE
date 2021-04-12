@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymediainfo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-pymediainfo
-Version:        5.0.3
+Version:        5.0.4
 Release:        0
 Summary:        Python wrapper for the mediainfo library
 License:        MIT

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 11 15:09:57 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.0.4
+  New features:
+  * Remove setuptools runtime requirement by replacing
+    pkg_resources with importlib.metadata
+  * __version__ is now an empty string if the package is not
+    installed
+  Miscellaneous:
+  * Use setuptools_scm programatically in Sphinx's configuration
+    instead of calling setup.py --version
+
+-------------------------------------------------------------------
 Tue Nov 24 10:16:29 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.0.3
