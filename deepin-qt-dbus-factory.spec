@@ -20,7 +20,7 @@
 %define _name  dde-qt-dbus-factory
 
 Name:           deepin-qt-dbus-factory
-Version:        5.3.35
+Version:        5.4.4
 Release:        0
 Summary:        A repository storing auto-generated Qt5 D-Bus code
 License:        GPL-3.0-or-later
@@ -40,7 +40,6 @@ BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5WebKit)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 

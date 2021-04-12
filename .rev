@@ -77,4 +77,15 @@
     <comment> (forwarded request 873121 from hillwood)</comment>
     <requestid>875578</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b1a62d071a915236b5935400ae3a3cf2</srcmd5>
+    <version>5.4.4</version>
+    <time>1618223817</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the unneeded QtWebKit dependency.
+
+- Update version to 5.4.4
+  * Add some new apis (forwarded request 884198 from hillwood)</comment>
+    <requestid>884199</requestid>
+  </revision>
 </revisionlist>

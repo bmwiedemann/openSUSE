@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 28 17:01:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the unneeded QtWebKit dependency.
+
+-------------------------------------------------------------------
+Tue Mar 16 13:29:46 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.4
+  * Add some new apis 
+
+-------------------------------------------------------------------
 Tue Feb 16 14:36:21 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update versio to 5.3.35
