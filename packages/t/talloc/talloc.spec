@@ -1,7 +1,7 @@
 #
 # spec file for package talloc-man
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  python3-devel
 #!BuildIgnore:  python
 %endif # build_man
 URL:            http://talloc.samba.org/
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Samba talloc Library
 License:        LGPL-3.0-or-later
@@ -68,7 +68,6 @@ It is the core memory allocator used in Samba.
 
 This package includes the talloc2 library.
 
-
 %package -n libtalloc-devel
 Summary:        Libraries and Header Files to Develop Programs with talloc2 Support
 # Man pages are built in a 2nd spec file in order to break a build cycle with doxygen->cmake->krb5->libtalloc
@@ -86,7 +85,6 @@ destructors.
 It is the core memory allocator used in Samba.
 
 Libraries and Header Files to Develop Programs with talloc2 Support.
-
 
 %package -n python3-talloc
 Summary:        Python3 bindings for the Talloc library

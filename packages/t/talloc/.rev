@@ -380,4 +380,12 @@ x86-64 when building with python 3.5.</comment>
     <comment></comment>
     <requestid>841412</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>fe02b606860b3afc26a8b77a6ba0c967</srcmd5>
+    <version>2.3.2</version>
+    <time>1618223618</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>883654</requestid>
+  </revision>
 </revisionlist>

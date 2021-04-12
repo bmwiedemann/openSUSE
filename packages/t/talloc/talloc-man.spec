@@ -1,7 +1,7 @@
 #
 # spec file for package talloc-man
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  python3-devel
 #!BuildIgnore:  python
 %endif # build_man
 URL:            http://talloc.samba.org/
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Samba talloc Library
 License:        LGPL-3.0-or-later
@@ -69,7 +69,6 @@ It is the core memory allocator used in Samba.
 
 This package includes the talloc2 library.
 
-
 %package -n libtalloc-devel
 Summary:        Libraries and Header Files to Develop Programs with talloc2 Support
 # Man pages are built in a 2nd spec file in order to break a build cycle with doxygen->cmake->krb5->libtalloc
@@ -87,7 +86,6 @@ destructors.
 It is the core memory allocator used in Samba.
 
 Libraries and Header Files to Develop Programs with talloc2 Support.
-
 
 %package -n python3-talloc
 Summary:        Python3 bindings for the Talloc library
@@ -113,7 +111,6 @@ Libraries and Header Files to Develop Programs with python3-talloc Support
 %prep
 %setup -n talloc-%{version} -q
 %autopatch -p1
-sed -i 's;../../buildtools/bin/waf;./buildtools/bin/waf;g' Makefile
 
 %build
 %if ! %{build_man}
@@ -139,7 +136,7 @@ doxygen doxy.config
 
 %if ! %{build_man}
 %check
-%if 0%{?suse_version} != 1110 || "%{_build_arch}" == x86_64
+%if 0%{?suse_version} != 1110 || "%{_build_arch}" == "x86_64"
 %if "%{qemu_user_space_build}" == "1"
 echo "skipping test on qemu userspace build due to AT_RANDOM not changing"
 %else # qemu_user_space_build == 1
