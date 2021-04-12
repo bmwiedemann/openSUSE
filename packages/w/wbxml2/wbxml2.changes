@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr 11 11:38:20 UTC 2021 - Bo Simonsen <bosim@opensuse.org>
+
+- fixed spec file syntax
+- updated to version 0.11.7
+  * Added WBXML_INSTALL_FULL_HEADERS cmake flag to expose internal
+    API headers; changes library version for compatibility (e.g.
+    2.6.1 -> 20601.0.0)
+    (pull request #67 from David Llewellyn-Jones)
+  * Link to libexpat correctly (private). Therefore the tools
+    wbxml2xml and xml2wbxml do no longer link directly to libexpat.
+    (pull request #65 from Peter Keresztes Schmidt)
+  * Fixed several memory leaks and leak-sanitizer issues.
+    (pull requests #61, #62, #63 and #64 from Gaurav Gupta)
+  * During build use headers which come with source code and not
+    the installed headers.
+    (pull request #66 from David Llewellyn-Jones)
+
+-------------------------------------------------------------------
 Sat Apr 13 13:55:16 UTC 2019 - bosim@opensuse.org
 
 - updated to version 0.11.6

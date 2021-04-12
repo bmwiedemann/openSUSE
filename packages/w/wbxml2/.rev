@@ -215,4 +215,26 @@
 </comment>
     <requestid>693916</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b7a68e2b12d84c78082db784e3662b57</srcmd5>
+    <version>0.11.7</version>
+    <time>1618223838</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed spec file syntax
+- updated to version 0.11.7
+  * Added WBXML_INSTALL_FULL_HEADERS cmake flag to expose internal
+    API headers; changes library version for compatibility (e.g.
+    2.6.1 -&gt; 20601.0.0)
+    (pull request #67 from David Llewellyn-Jones)
+  * Link to libexpat correctly (private). Therefore the tools
+    wbxml2xml and xml2wbxml do no longer link directly to libexpat.
+    (pull request #65 from Peter Keresztes Schmidt)
+  * Fixed several memory leaks and leak-sanitizer issues.
+    (pull requests #61, #62, #63 and #64 from Gaurav Gupta)
+  * During build use headers which come with source code and not
+    the installed headers.
+    (pull request #66 from David Llewellyn-Jones)
+</comment>
+    <requestid>884469</requestid>
+  </revision>
 </revisionlist>

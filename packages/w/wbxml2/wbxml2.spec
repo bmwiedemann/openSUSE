@@ -30,9 +30,9 @@ Url:            http://libwbxml.opensync.org/
 Summary:        WBXML parser and compiler library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Version:        0.11.6
+Version:        0.11.7
 Release:        0
-Source:         libwbxml-%{version}.tar.bz2
+Source:         https://github.com/libwbxml/libwbxml/archive/refs/tags/libwbxml-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -81,7 +81,7 @@ libxml2. WBXML contains a library and its associated tools to parse,
 ecode and handle WBXML documents.
 
 %prep
-%setup -q -n libwbxml-%{version}
+%setup -q -n libwbxml-libwbxml-%{version}
 
 %build
 mkdir build
@@ -92,10 +92,10 @@ cmake \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DENABLE_INSTALL_DOC:BOOL=OFF \
-%if %{_lib} == lib64
+%if "%{_lib}" == "lib64"
         -DLIB_SUFFIX=64 \
 %endif
-         %{_builddir}/libwbxml-%{version}
+         %{_builddir}/libwbxml-libwbxml-%{version}
 make %{?_smp_mflags} VERBOSE=1
 popd
 
