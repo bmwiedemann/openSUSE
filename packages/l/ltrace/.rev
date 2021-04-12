@@ -388,4 +388,14 @@
     <comment>- Added s390x-ptrace.patch and remove 2 unused functions to fix 'expr_clone' error from latest release (forwarded request 855816 from skriesch)</comment>
     <requestid>855835</requestid>
   </revision>
+  <revision rev="46" vrev="13">
+    <srcmd5>e92ef2e4f34e7f868cb99efbdb871397</srcmd5>
+    <version>0.7.91</version>
+    <time>1618223631</time>
+    <user>dimstar_suse</user>
+    <comment>- add ltrace-0.7.91-ppc64le-scv.patch from Fedora
+- spec-cleaner
+- add timeout to testsuite run, it is non-fatal anyway</comment>
+    <requestid>884045</requestid>
+  </revision>
 </revisionlist>

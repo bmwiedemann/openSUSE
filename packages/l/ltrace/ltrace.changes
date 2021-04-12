@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  9 12:27:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add ltrace-0.7.91-ppc64le-scv.patch from Fedora
+- spec-cleaner
+- add timeout to testsuite run, it is non-fatal anyway 
+
+-------------------------------------------------------------------
 Mon Dec 14 17:01:27 UTC 2020 - Sarah Julia Kriesch <sarah.kriesch@ibm.com>
 
 - Added s390x-ptrace.patch and remove 2 unused functions to fix 'expr_clone' error from latest release
-
 
 -------------------------------------------------------------------
 Wed Nov 11 13:40:08 UTC 2020 - Jan Engelhardt <jengelh@inai.de>

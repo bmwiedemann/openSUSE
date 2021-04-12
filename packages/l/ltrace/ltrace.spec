@@ -1,7 +1,7 @@
 #
 # spec file for package ltrace
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,18 @@
 #
 
 
+%define git_id gea8928d
 Name:           ltrace
+Version:        0.7.91
+Release:        0
 Summary:        Library and system call tracer for programs
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
-Version:        0.7.91
-Release:        0
-URL:            http://ltrace.org/
-%define git_id gea8928d
+URL:            https://ltrace.org/
 Source:         ltrace-%{version}-%{git_id}.tar.bz2
 Source2:        baselibs.conf
-Patch:          readdir.patch
+Patch0:         readdir.patch
+Patch1:         https://src.fedoraproject.org/rpms/ltrace/raw/rawhide/f/ltrace-0.7.91-ppc64le-scv.patch
 Patch3:         ppc-ptrace.patch
 Patch4:         arm-trace.patch
 Patch5:         gcc9-printf-s-null-argument.patch
@@ -41,12 +42,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libtool
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  %ix86 s390x ppc ppc64 ppc64le %arm x86_64 alpha ia64 m68k aarch64
-# bug437293
-%ifarch ppc64
-Obsoletes:      ltrace-64bit
-%endif
+ExclusiveArch:  %{ix86} s390x ppc ppc64 ppc64le %{arm} x86_64 alpha ia64 m68k aarch64
 
 %description
 Ltrace is a program that runs the specified command until it exits. It
@@ -62,7 +58,8 @@ child processes may fail or some things may not work as expected.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5
@@ -74,11 +71,11 @@ child processes may fail or some things may not work as expected.
 ./autogen.sh
 export CFLAGS="%{optflags} -Wall -Wno-unused-local-typedefs"
 %configure --disable-shared
-make %{?_smp_mflags}
+%make_build
 
 %check
 %if 1
-if make check
+if timeout 180 make check
 then
 	echo 'no make check errors' > testresults.txt
 else
@@ -100,14 +97,14 @@ echo no make check > testsuite/%{_target_cpu}-testrun.sum
 
 %install
 %make_install
-rm -rf %{buildroot}/usr/share/doc/ltrace
+rm -rf %{buildroot}%{_datadir}/doc/ltrace
 
 %files
 %doc README
 %license COPYING
 %{_bindir}/ltrace
 %{_datadir}/ltrace
-%{_mandir}/man1/ltrace.1.gz
-%{_mandir}/man5/ltrace.conf.5.gz
+%{_mandir}/man1/ltrace.1%{?ext_man}
+%{_mandir}/man5/ltrace.conf.5%{?ext_man}
 
 %changelog
