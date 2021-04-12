@@ -27,7 +27,7 @@ License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://gnome.pages.gitlab.gnome.org/libmanette/
 Source:         https://download.gnome.org/sources/libmanette/0.2/%{name}-%{version}.tar.xz
-
+Source99:       baselibs.conf
 BuildRequires:  gcc
 BuildRequires:  gobject-introspection-devel >= 0.6.7
 BuildRequires:  meson >= 0.53.0

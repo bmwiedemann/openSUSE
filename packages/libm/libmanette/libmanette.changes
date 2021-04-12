@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 28 07:50:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add baselibs.conf: build libmanette-0_2-0. New dependency to
+  webkit2gtk3.
+
+-------------------------------------------------------------------
 Sat Nov 28 19:52:53 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.2.6:
