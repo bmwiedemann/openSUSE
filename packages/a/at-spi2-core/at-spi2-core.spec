@@ -1,7 +1,7 @@
 #
 # spec file for package at-spi2-core
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 Name:           at-spi2-core
-Version:        2.38.0
+Version:        2.40.0
 Release:        0
 Summary:        Assistive Technology Service Provider Interface - D-Bus based implementation
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org/
-Source0:        https://download.gnome.org/sources/at-spi2-core/2.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/at-spi2-core/2.40/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.46.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(dbus-1) >= 1.0
-BuildRequires:  pkgconfig(gio-2.0) >= 2.28
-BuildRequires:  pkgconfig(glib-2.0) >= 2.36.0
+BuildRequires:  pkgconfig(dbus-1) >= 1.5
+BuildRequires:  pkgconfig(gio-2.0) >= 2.28.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.62.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(x11)
