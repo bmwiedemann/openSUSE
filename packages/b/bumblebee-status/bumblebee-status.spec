@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           bumblebee-status
-Version:        2.1.2
+Version:        2.1.4
 Release:        0
 Summary:        Modular, theme-able status line generator for the i3 window manager
 License:        MIT
@@ -725,6 +725,7 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 %{_datadir}/%{name}/bumblebee/modules/core/debug.py
 %{_datadir}/%{name}/bumblebee/modules/core/disk.py
 %{_datadir}/%{name}/bumblebee/modules/core/error.py
+%{_datadir}/%{name}/bumblebee/modules/core/keys.py
 %{_datadir}/%{name}/bumblebee/modules/core/load.py
 %{_datadir}/%{name}/bumblebee/modules/core/memory.py
 %{_datadir}/%{name}/bumblebee/modules/core/nic.py

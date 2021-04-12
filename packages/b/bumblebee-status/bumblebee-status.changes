@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  7 23:48:01 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v2.1.4
+  * shell: do not default to "makewide"
+  * shell: remove obsolete event handlers
+- from v2.1.3
+  * Enable scrolling of shell module output
+  * Add fallback for user module loading
+  * Add a module "keys" that shows whether a key is pressed
+  * Make bumblebee more reactive
+
+-------------------------------------------------------------------
 Thu Feb 25 11:14:36 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add explicit BR for pyusb to fix Leap builds
