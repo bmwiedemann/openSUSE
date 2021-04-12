@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 21 08:06:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Updated translations. 
+
+-------------------------------------------------------------------
+Mon Feb 15 10:35:46 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 40.beta:
+  + Disk Usage Analyzer's visuals have been updated to match the
+    GNOME 40 visual style.
+  + Updated translations.
+- New build requirement: pkgconfig(libhandy-1).
+
+-------------------------------------------------------------------
 Mon Sep 14 12:43:39 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.0:

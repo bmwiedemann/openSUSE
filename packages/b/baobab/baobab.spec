@@ -1,7 +1,7 @@
 #
 # spec file for package baobab
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,13 +20,13 @@
 %define glib2_version 2.44
 
 Name:           baobab
-Version:        3.38.0
+Version:        40.0
 Release:        0
 Summary:        Disk Usage Analyzer
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/DiskUsageAnalyzer
-Source0:        https://download.gnome.org/sources/baobab/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/baobab/40/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= %{glib2_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib2_version}
 BuildRequires:  pkgconfig(gobject-2.0) >= %{glib2_version}
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(libhandy-1)
 
 %description
 Disk Usage Analyzer is a graphical, menu-driven application to analyse
