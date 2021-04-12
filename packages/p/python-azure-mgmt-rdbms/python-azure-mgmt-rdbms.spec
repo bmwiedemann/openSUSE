@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-rdbms
-Version:        8.0.0
+Version:        8.1.0b2
 Release:        0
 Summary:        Microsoft Azure RDBMS Management Client Library
 License:        MIT

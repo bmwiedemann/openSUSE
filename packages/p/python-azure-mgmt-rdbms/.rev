@@ -105,4 +105,15 @@
 - Update Requires from setup.py (forwarded request 862092 from glaubitz)</comment>
     <requestid>862330</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7be070d7fec5b0cc2d49c7b4afa3430d</srcmd5>
+    <version>8.1.0b2</version>
+    <time>1618235360</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 8.1.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 881886 from glaubitz)</comment>
+    <requestid>881966</requestid>
+  </revision>
 </revisionlist>
