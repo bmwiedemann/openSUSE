@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 10 07:59:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 4.9
+  * Correct display of serial number.
+  * Fix build error with GCC 4.8.
+
+-------------------------------------------------------------------
 Sat Sep 12 19:46:45 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 4.8

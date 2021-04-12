@@ -1,7 +1,7 @@
 #
 # spec file for package sispmctl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libsispmctl0
 Name:           sispmctl
-Version:        4.8
+Version:        4.9
 Release:        0
 Summary:        SIS-PM Control for Linux
 License:        GPL-2.0-only
