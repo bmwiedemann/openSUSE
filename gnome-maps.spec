@@ -17,13 +17,13 @@
 
 
 Name:           gnome-maps
-Version:        3.38.4
+Version:        40.0
 Release:        0
 Summary:        Maps Application for GNOME
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Maps
-Source0:        https://download.gnome.org/sources/gnome-maps/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-maps/40/%{name}-%{version}.tar.xz
 
 # Needed for typelib() Requires
 BuildRequires:  gobject-introspection
@@ -45,6 +45,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 # Needed for test run
 BuildRequires:  pkgconfig(gweather-3.0)
 #
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(rest-0.7) >= 0.7.90
 Recommends:     dbus(org.freedesktop.GeoClue2)

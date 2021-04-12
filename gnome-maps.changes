@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sat Mar 20 16:51:29 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 18 15:00:05 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Updated appdata screenshots.
+  + Updated POI defintions for OSM editing.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 15 11:00:44 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 40.beta:
+  + Made place bubble adaptive for use on phones.
+  + Show native name of places in addition to translated one.
+  + Avoid building some Flatpak dependencies which are now in the
+    SDK.
+  + Fix a bug resulting in writing a broken last view position on
+    exit in some circumstances.
+  + Fix a bug preventing wrapping around at the date line with dark
+    tiles.
+  + Increased width of layers thumbnails to avoid empty margins in
+    some translations.
+  + Update copyright year.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 15 03:39:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + Place bubbles redesign with larger thumbnails, tidy list view,
+    and summaries from Wikipedia when available in OSM.
+  + More adapative UI fixes (for the no-network display).
+  + Restore zooming to bounding boxes in search results (for
+    administrative areas, buildings, etc.).
+  + List compatible form factors in appdata.
+  + Don't display invalid URLs and also show error message for
+    invalid URLs when editing POIs in OSM.
+  + Show localized name in user's language in place bubbles when
+    available in OSM.
+  + Normalize tel: URIs to support the Calls app on Librem 5 and
+    Pinephone (among others).
+  + Improve handling of OpenStreetMap URLs (to address objects or
+    coordinated) when pasting into the search bar.
+  + Load file contents of shape layer files using async operations
+    (parsing is still done synchronous due to limitations with
+    GJS).
+  + Require GJS 1.66 now, to enable newer ES features like coalesce
+    and the safe navigation operators.
+  + Updated translations.
+- Add pkgconfig(libhandy-1) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Sat Feb 13 16:48:15 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.4:
