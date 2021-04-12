@@ -1,4 +1,4 @@
-From 8ce3c36cc6c7b311a8f970123798e8db0dca5393 Mon Sep 17 00:00:00 2001
+From fa1de4f333f423737c916efec3d3df772a6d8577 Mon Sep 17 00:00:00 2001
 From: Christophe Giboudeaux <christophe@krop.fr>
 Date: Mon, 13 Apr 2020 10:14:42 +0200
 Subject: [PATCH] Fix linker errors on Linux.
@@ -10,26 +10,26 @@ OpenToonz uses dlopen in a couple places, so it needs to link 'dl'.
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/toonz/sources/tnzcore/CMakeLists.txt b/toonz/sources/tnzcore/CMakeLists.txt
-index d637cd26..12b4d5da 100644
+index c34f3aa..b8d46d3 100644
 --- a/toonz/sources/tnzcore/CMakeLists.txt
 +++ b/toonz/sources/tnzcore/CMakeLists.txt
 @@ -356,5 +356,5 @@ endif()
  target_link_libraries(tnzcore
-     Qt5::OpenGL Qt5::Network Qt5::Multimedia
+     Qt5::Core Qt5::OpenGL Qt5::Network Qt5::Multimedia
      ${GL_LIB} ${GLUT_LIB} ${QT_LIB} ${Z_LIB} ${JPEG_LIB} ${LZ4_LIB}
 -    ${EXTRA_LIBS}
 +    ${EXTRA_LIBS} ${CMAKE_DL_LIBS}
  )
 diff --git a/toonz/sources/toonzqt/CMakeLists.txt b/toonz/sources/toonzqt/CMakeLists.txt
-index 3c1a329e..ee6a7139 100644
+index eb8536a..efba45c 100644
 --- a/toonz/sources/toonzqt/CMakeLists.txt
 +++ b/toonz/sources/toonzqt/CMakeLists.txt
-@@ -246,4 +246,4 @@ elseif(BUILD_ENV_UNIXLIKE)
+@@ -248,4 +248,4 @@ elseif(BUILD_ENV_UNIXLIKE)
      endif()
  endif()
  
 -target_link_libraries(toonzqt Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network Qt5::OpenGL Qt5::Svg ${EXTRA_LIBS} ${GL_LIB})
 +target_link_libraries(toonzqt Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network Qt5::OpenGL Qt5::Svg ${EXTRA_LIBS} ${GL_LIB} ${CMAKE_DL_LIBS})
 -- 
-2.26.0
+2.30.2
 

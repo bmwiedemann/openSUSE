@@ -17,26 +17,18 @@
 
 
 Name:           opentoonz
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        2D animation software
-# need to review license as site indicates: "modified BSD license"
 License:        BSD-2-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://opentoonz.github.io/e/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/opentoonz/opentoonz/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source3:        %{name}-rpmlintrc
-Patch0:         p_handle-no-return-in-nonvoid-function.patch
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-linker-errors-on-Linux.patch
+Patch0:         0001-Fix-linker-errors-on-Linux.patch
 # PATCH-FIX-OPENSUSE -- Use the system mypaint brushes
-Patch2:         0001-Use-the-system-mypaint-brushes.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-Fix-build-with-GCC-10.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-Fix-build-with-Qt-5.15.patch
-# PATCH-FIX-UPSTREAM
-Patch5:         0001-System-depend-code-deduplication.patch
+Patch1:         0001-Use-the-system-mypaint-brushes.patch
 BuildRequires:  boost-devel >= 1.55
 BuildRequires:  cmake
 BuildRequires:  freeglut-devel
@@ -57,6 +49,7 @@ BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5SerialPort)
 BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
@@ -67,7 +60,12 @@ BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libmypaint)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(lzo2)
+BuildRequires:  pkgconfig(mypaint-brushes-1.0) >= 1.3
+%ifarch x86_64
+BuildRequires:  pkgconfig(opencv)
+%endif
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
 ExclusiveArch:  i586 x86_64
@@ -90,11 +88,7 @@ find thirdparty/* -maxdepth 0 ! -name "tiff-*" ! -name "lzo" ! -name "kiss_fft*"
 # Keep thirdparty/lzo/driver, but remove library.
 rm -r thirdparty/lzo/2.*
 
-# Use the mypaint brushes instead of the local copy
-rm -fr stuff/library/mypaint\ brushes
-
 %build
-
 # TODO upstream planning to replace custom thirdparty libs with system versions
 cd thirdparty/tiff-*
 export CFLAGS="%{optflags} -fPIC"

@@ -95,4 +95,41 @@
     <comment></comment>
     <requestid>874439</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8b1d44603bc33b17a4a92059781484ae</srcmd5>
+    <version>1.5.0</version>
+    <time>1618235380</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0
+  * Ease Regulations for the Use of Animate Tool
+  * New - Aotz MyPaint brush set (Sketch, Ink, Fill, Clouds, Water,
+    Grass, Leaves, Fur, Eraser, etc.)
+  * Fix vector custom styles
+  * Fix color model pick mode
+  * New - Save/Reload Color Separation Colors Parameters
+  * New - Add snap option to control point editor tool
+  * New - Freehand mode in control point editor tool
+  * New - Convert To Vector : Align Boundary Strokes Direction Option
+  * New - Snap at intersection in cutter tool
+  * New - Bloom Iwa Fx
+  * New - Fractal Noise Iwa Fx
+  * New - Glare Iwa Fx
+  * New - Search bar in New Fx browser
+  * New - Linear color space option for Add Fx Ino
+  * New - Logarithmic option for Spiral fx
+  * New - Particle FX Preset: Flock fx
+  * New Segment Erase
+  * New Frame range for segment mode of eraser tool
+  * New - (Optional/Experimental) Expression Reference Manager
+  * New - Expression Function: Periodic Random
+  * New - Copy expression object address directly from UI
+  * New - multi arc shape in geometric tool
+  * Fix - Geometric tool / Type tool first point offset
+  * Enhance - Premultiply on Loading PNG images
+  * Fix - Fix copy/paste keyframe causing bad data
+  * New - Horizontal Level Strip option
+  * Fix icon rendering for HDPI
+  * Fix for Duplicate Window Title (Mac) (forwarded request 884614 from cgiboudeaux)</comment>
+    <requestid>884615</requestid>
+  </revision>
 </revisionlist>

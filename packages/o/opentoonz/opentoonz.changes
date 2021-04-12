@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Sun Apr 11 07:04:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.5.0
+  * Ease Regulations for the Use of Animate Tool
+  * New - Aotz MyPaint brush set (Sketch, Ink, Fill, Clouds, Water,
+    Grass, Leaves, Fur, Eraser, etc.)
+  * Fix vector custom styles
+  * Fix color model pick mode
+  * New - Save/Reload Color Separation Colors Parameters
+  * New - Add snap option to control point editor tool
+  * New - Freehand mode in control point editor tool
+  * New - Convert To Vector : Align Boundary Strokes Direction Option
+  * New - Snap at intersection in cutter tool
+  * New - Bloom Iwa Fx
+  * New - Fractal Noise Iwa Fx
+  * New - Glare Iwa Fx
+  * New - Search bar in New Fx browser
+  * New - Linear color space option for Add Fx Ino
+  * New - Logarithmic option for Spiral fx
+  * New - Particle FX Preset: Flock fx
+  * New Segment Erase
+  * New Frame range for segment mode of eraser tool
+  * New - (Optional/Experimental) Expression Reference Manager
+  * New - Expression Function: Periodic Random
+  * New - Copy expression object address directly from UI
+  * New - multi arc shape in geometric tool
+  * Fix - Geometric tool / Type tool first point offset
+  * Enhance - Premultiply on Loading PNG images
+  * Fix - Fix copy/paste keyframe causing bad data
+  * New - Horizontal Level Strip option
+  * Fix icon rendering for HDPI
+  * Fix for Duplicate Window Title (Mac)
+  * Fix for Full Screen on Multiple Monitors (WIndows)
+  * New - (Optional) Toolbar location
+  * New - Color Keys Global Palette
+  * Fix - OpenGL Line Smoothing
+  * Updated Dwango plugins (separate download)
+  * Fix Batch Rendering on Mac
+  * Updated Output Settings Dialogue
+  * Fix incorrect xml in tnz file
+  * Fix - Scene Cast Update on Pasting
+  * Enhancement - Improved target area for Transform selection
+  * New - (Optional) Create New Style Command Button
+  * Fix - Fix Vector Tape Tool on Joining Points at the Same Position
+  * Updated Languages ( )
+  * New - Initial support for Norwegian Bokmal
+  * New - Weblate widget
+  * New - Generation of translation projects now optional in cmake
+  * New - All New Icons (GUI Cleanup)
+  * New - Live update for 3DLuts via Preferences
+  * New - Additional UI Style Sheet customizations via Preferences
+  * New - Icons for all commands
+  * Update Default Room set
+  * Fix - Fix Crash When Drawing on Absent Level
+  * New - More shapes for Adobe Animate keyboard shortcuts
+  * New - Shortcut keypress length option
+  * New - Undo: Reset Undo when Saving Levels Preference Option
+- Drop patches:
+  * p_handle-no-return-in-nonvoid-function.patch
+  * 0001-Fix-build-with-GCC-10.patch
+  * 0001-Fix-build-with-Qt-5.15.patch
+  * 0001-System-depend-code-deduplication.patch
+- Rebase 0001-Fix-linker-errors-on-Linux.patch
+- Update 0001-Use-the-system-mypaint-brushes.patch
+
+-------------------------------------------------------------------
 Mon Feb 22 20:36:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - use usb-1.0 dependency instead of deprecated usb-0.1 

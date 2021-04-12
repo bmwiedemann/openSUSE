@@ -1,26 +1,72 @@
-From 9ed962d41dce825c60df869c96f062b3906cbc8d Mon Sep 17 00:00:00 2001
+From b149eff126a44344cd36d44d3004ba2b38e89c2e Mon Sep 17 00:00:00 2001
 From: Christophe Giboudeaux <christophe@krop.fr>
 Date: Mon, 13 Apr 2020 18:42:56 +0200
-Subject: [PATCH] Use the system mypaint brushes.
+Subject: [PATCH] Use the system mypaint brushes if available.
 
+CMake will check at build time whether mypaint-brushes 1.3
+is available and only install brushes not available in this release.
 ---
- toonz/sources/toonzlib/mypaintbrushstyle.cpp | 3 +++
- 1 file changed, 3 insertions(+)
+ toonz/sources/CMakeLists.txt                 | 16 ++++++++++++++++
+ toonz/sources/toonz/CMakeLists.txt           |  2 ++
+ toonz/sources/toonzlib/mypaintbrushstyle.cpp |  5 +++++
+ 3 files changed, 23 insertions(+)
 
+diff --git a/toonz/sources/CMakeLists.txt b/toonz/sources/CMakeLists.txt
+index 7cf3d7c5..21252259 100644
+--- a/toonz/sources/CMakeLists.txt
++++ b/toonz/sources/CMakeLists.txt
+@@ -480,6 +480,22 @@ elseif(BUILD_ENV_UNIXLIKE)
+     # Can be 'libmypaint' or 'libmypaint-1.x'
+     pkg_search_module(MYPAINT_LIB REQUIRED libmypaint libmypaint-1.3>=1.3)
+     
++    # Get the system mypaint brushes location
++    pkg_check_modules(MYPAINT_BRUSHES mypaint-brushes-1.0>=1.3)
++
++    if(MYPAINT_BRUSHES_FOUND)
++        pkg_get_variable(MYPAINT_BRUSHES_DIR mypaint-brushes-1.0 brushesdir)
++        add_definitions(-DMYPAINT_BRUSHES_DIR="${MYPAINT_BRUSHES_DIR}")
++        # This regex is used in toonzlib/CMakeLists.txt and matches brushes
++        # installed by mypaint-brushes 1.3
++        set(SYSTEM_MYPAINT_EXCLUDE "mypaint brushes/classic|deevad|experimental|kaerhon_v1|ramon|tanda")
++        message("**************** System mypaint brushes:" ${MYPAINT_BRUSHES_DIR})
++    else()
++        # Set an arbitrary value so not everything gets excluded if the system
++        # brushes are not found at build time
++        set(SYSTEM_MYPAINT_EXCLUDE "_nothing_")
++    endif()
++
+     if(PLATFORM EQUAL 64)
+         find_library(TURBOJPEG_LIB turbojpeg)
+         message("**************** turbojpeg lib:" ${TURBOJPEG_LIB})
+diff --git a/toonz/sources/toonz/CMakeLists.txt b/toonz/sources/toonz/CMakeLists.txt
+index 57407ca1..c1e456e3 100644
+--- a/toonz/sources/toonz/CMakeLists.txt
++++ b/toonz/sources/toonz/CMakeLists.txt
+@@ -721,6 +721,8 @@ exec \$OPENTOONZ_BASE/bin/OpenToonz \"\$@\"
+         DIRECTORY
+             ${CMAKE_SOURCE_DIR}/../../stuff
+         DESTINATION share/opentoonz
++        # Only excluded when using system mypaint brushes
++        REGEX "${SYSTEM_MYPAINT_EXCLUDE}" EXCLUDE
+     )
+ 
+ endif()
 diff --git a/toonz/sources/toonzlib/mypaintbrushstyle.cpp b/toonz/sources/toonzlib/mypaintbrushstyle.cpp
-index b299c106..adfb30db 100644
+index eecc7126..8a8aac4c 100644
 --- a/toonz/sources/toonzlib/mypaintbrushstyle.cpp
 +++ b/toonz/sources/toonzlib/mypaintbrushstyle.cpp
-@@ -76,6 +76,9 @@ std::string TMyPaintBrushStyle::getBrushType() { return "myb"; }
+@@ -82,6 +82,11 @@ TFilePathSet TMyPaintBrushStyle::getBrushesDirs() {
+   for (QStringList::iterator i = genericLocations.begin();
+        i != genericLocations.end(); ++i)
+     paths.push_back(TFilePath(*i) + "mypaint" + "brushes");
++#ifdef MYPAINT_BRUSHES_DIR
++  // Use the system brushes if available
++  const QString systemMypaintBrushes(MYPAINT_BRUSHES_DIR);
++  paths.push_back(TFilePath(systemMypaintBrushes));
++#endif
+   return paths;
+ }
  
- TFilePathSet TMyPaintBrushStyle::getBrushesDirs() {
-   TFilePathSet paths;
-+  // Load the mypaint brushes
-+  const QString mypaintBrushes("/usr/share/mypaint-data/1.0/brushes");
-+  paths.push_back(TFilePath(mypaintBrushes));
-   paths.push_back(m_libraryDir + "mypaint brushes");
-   QStringList genericLocations =
-       QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation);
 -- 
-2.26.0
+2.31.1
 
