@@ -422,8 +422,6 @@
     <comment></comment>
     <requestid>870847</requestid>
   </revision>
-<<<<<<< Updated upstream
-=======
   <revision rev="52" vrev="1">
     <srcmd5>f5000a8082216bf828e28c1c665a4e17</srcmd5>
     <version>3.40.0</version>
@@ -432,5 +430,4 @@
     <comment>GNOME 40 - here we come (forwarded request 880940 from dimstar)</comment>
     <requestid>881113</requestid>
   </revision>
->>>>>>> Stashed changes
 </revisionlist>
