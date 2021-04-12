@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr  5 07:12:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Changes since 5.80.0:
+  * Make it compile with unity cmake support
+  * Run clang-format
+  * Prevent clang-format uglification
+  * Add clang-format pre-commit hook
+  * Add trailing comma to enums
+  * handle negative years in easter and pascha calculations. (kde#434027)
+
+-------------------------------------------------------------------
 Sun Mar  7 09:26:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.80.0
