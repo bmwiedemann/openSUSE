@@ -17,11 +17,11 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Python 2 build fails always
+# Python 3 only syntax
 %define skip_python2 1
 %define pypi_name PyMuPDF
 Name:           python-%{pypi_name}
-Version:        1.18.9
+Version:        1.18.11
 Release:        0
 Summary:        Python binding for MuPDF, a PDF and XPS viewer
 License:        AGPL-3.0-only
@@ -29,7 +29,9 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/pymupdf/PyMuPDF
 Source:         https://files.pythonhosted.org/packages/source/P/PyMuPDF/PyMuPDF-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  jbig2dec-devel
@@ -56,6 +58,7 @@ book formats. PyMuPDF can also access files with extensions *.pdf,
 
 %prep
 %setup -q -n %{pypi_name}-%{version}
+dos2unix README.md changes.rst
 
 %build
 export CFLAGS="%{optflags} -I/usr/include/freetype2"
@@ -63,10 +66,10 @@ export CFLAGS="%{optflags} -I/usr/include/freetype2"
 
 %install
 %python_install
-rm %{buildroot}%{_prefix}/{COPYING,README.md,changes.rst}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+# https://github.com/pymupdf/PyMuPDF/issues/1002 requests a better test sequence
 cd /tmp
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -c 'import fitz'
 
