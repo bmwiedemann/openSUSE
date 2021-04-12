@@ -64,7 +64,6 @@ Requires:       frei0r-plugins >= 1.4-7.1
 Requires:       ladspa
 Requires:       libmlt6-modules > 6.6.0
 Requires:       melt > 6.6.0
-Requires:       qmelt
 Recommends:     lame
 Requires:       ffmpeg >= 2.7
 Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libvpx.so) --qf '%%{NAME} >= %%{VERSION}')
