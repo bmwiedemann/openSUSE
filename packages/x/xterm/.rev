@@ -1569,4 +1569,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
   * correct a typo in manual page, and note that KeepClipboard may not be compiled-in (report/patch by Sean C Farley).</comment>
     <requestid>871072</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>6ca751dbdd333a50cd0b37bc80e74925</srcmd5>
+    <version>367</version>
+    <time>1618223642</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884210</requestid>
+  </revision>
 </revisionlist>
