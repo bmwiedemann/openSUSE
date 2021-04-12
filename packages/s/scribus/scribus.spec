@@ -31,6 +31,8 @@ Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-fix-build-of-pdf-import-plugin-with-poppler-21.03.0.patch
 Patch2:         0002-fix-build-of-pdf-import-plugin-with-poppler-21.03.0.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0003-Page-getFormWidgets-returns-unique_ptr-in-poppler-21.04.0.patch
 BuildRequires:  cmake >= 3.12.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix

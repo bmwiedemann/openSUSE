@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  7 06:57:25 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to build with poppler 21.04.0:
+  * 0003-Page-getFormWidgets-returns-unique_ptr-in-poppler-21.04.0.patch
+
+-------------------------------------------------------------------
 Fri Mar 19 15:59:13 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patches from upstream to fix build with popper 21.03.0:
