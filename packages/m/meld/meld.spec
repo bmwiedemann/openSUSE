@@ -17,28 +17,27 @@
 
 
 Name:           meld
-Version:        3.20.3
+Version:        3.21.0
 Release:        0
 Summary:        Visual diff and merge tool
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            http://meldmerge.org/
-Source0:        https://download.gnome.org/sources/meld/3.20/%{name}-%{version}.tar.xz
-
-# PATCH-FIX-OPENSUSE meld-nodocs.patch dimstar@opensuse.org -- We do not want COPYING and NEWS installed like this
-Patch0:         meld-nodocs.patch
+Source0:        https://download.gnome.org/sources/meld/3.21/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 # Needed for typelib() Requires
 BuildRequires:  gobject-introspection-devel
-# Needed for highcolor macros
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  intltool
 BuildRequires:  itstool
-BuildRequires:  libxml2-tools
-BuildRequires:  python3 >= 3.3
+BuildRequires:  meson >= 0.47.0
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(glib-2.0) >= 2.48
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.0
+BuildRequires:  pkgconfig(py3cairo) >= 1.15.0
+BuildRequires:  pkgconfig(pygobject-3.0) >= 3.30
+BuildRequires:  pkgconfig(python3) >= 3.6
 # needed for VCS diffs
 Requires:       patch
 Requires:       python3-cairo
@@ -73,35 +72,18 @@ Subversion, Bazaar-ng and Mercurial can be browsed and viewed.
 
 %prep
 %autosetup -p1
+sed -i "s|/usr/bin/env python3|%{_bindir}/python3|g" bin/meld
 translation-update-upstream
 
 %build
-python3 setup.py build
+%meson
+%meson_build
 
 %install
-python3 setup.py \
-    --no-update-icon-cache \
-    --no-compile-schemas \
-    install --root %{buildroot} --prefix %{_prefix}
+%meson_install
 %find_lang %{name} %{?no_lang_C}
-%suse_update_desktop_file org.gnome.meld IDE
+%suse_update_desktop_file org.gnome.Meld IDE
 %fdupes %{buildroot}%{_datadir}
-
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%glib2_gsettings_schema_post
-%icon_theme_cache_post
-%icon_theme_cache_post HighContrast
-%mime_database_post
-
-%postun
-%desktop_database_postun
-%glib2_gsettings_schema_postun
-%icon_theme_cache_postun
-%icon_theme_cache_postun HighContrast
-%mime_database_postun
-%endif
 
 %files
 %license COPYING
@@ -109,16 +91,14 @@ python3 setup.py \
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/org.gnome.meld.appdata.xml
-%{_datadir}/applications/org.gnome.meld.desktop
+%{_datadir}/metainfo/org.gnome.Meld.appdata.xml
+%{_datadir}/applications/org.gnome.Meld.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.meld.gschema.xml
 %doc %{_datadir}/help/C/meld/
 %{_datadir}/icons/hicolor/*/*/*
-%{_datadir}/icons/HighContrast/
-%{_datadir}/mime/packages/org.gnome.meld.xml
+%{_datadir}/mime/packages/org.gnome.Meld.xml
 %{_mandir}/man1/meld.1%{?ext_man}
 %{python3_sitelib}/meld/
-%{python3_sitelib}/meld*egg-info*
 
 %files lang -f %{name}.lang
 

@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Feb 15 03:21:00 UTC 2021 - dimstar@opensuse.org
+
+- Update to version 3.21.0:
+  + Move to a modern GTK headerbar-based design.
+  + Make file comparison change navigation more intuitive by
+    changing how it decides where to scroll from.
+  + Completely refreshed Meld application icon.
+  + File comparison now has overscroll at the bottom of file
+    comparisons, making it easier to see end-of-file differences
+    and improving scroll syncing.
+  + Text wrapping, whitespace, line numbers and line highlight can
+    now all be toggled from the file comparison status bar.
+  + Features:
+    - Add support for CVS in version control comparisons.
+    - Copy selected file paths in folder comparison.
+    - Improve dark theme detection so custom Meld highlighting
+      better matches the user's theme.
+  + Fixes:
+    - Fix file comparison closing after file save (Vasily Galkin)
+    - Fix file comparison handling of certain line breaks (Kai Willadsen)
+  + Internal changes:
+    - Add Meson build system support.
+    - Move from GtkUIManager to GAction-based actions
+    - Move all UI-file-constructed widgets from custom Python
+      wrapper classes to using real GtkWidget templates.
+    - Move to new GtkSourceView 4 API.
+    - Modernised Python GObject API usage, including signal and
+      property usage.
+    - Support Python 3.8.
+  + Updated translations.
+- Switch to meson buildsystem:
+  + Add meson BuildRequires.
+  + Use %meson/%meson_build/%meson_install instead of
+    python3 setup.py calls.
+  + Drop hicolor-icon-theme, intltool, libxml2-tools and python3
+    BuildRequires.
+  + Add pkgconfig(glib-2.0), pkgconfig(gtk+-3.0),
+    pkgconfig(gtksourceview-4), pkgconfig(py3cairo),
+    pkgconfig(pygobject-3.0) and pkgconfig(python3) BuildRequires.
+- Remove legacy post/postun scriptlets.
+- Drop meld-nodocs.patch: no longer needed after the port to meson.
+
+-------------------------------------------------------------------
 Sat Feb 13 16:40:38 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.20.3:

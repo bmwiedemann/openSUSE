@@ -602,4 +602,12 @@
     <comment></comment>
     <requestid>872497</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>cc9853b0cf2e42bb1b5ea6c3bd42c32e</srcmd5>
+    <version>3.21.0</version>
+    <time>1618223777</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880910 from dimstar)</comment>
+    <requestid>881082</requestid>
+  </revision>
 </revisionlist>
