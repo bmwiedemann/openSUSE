@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 11 08:34:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36: No pandas and numpy for Tumbleweed
+
+-------------------------------------------------------------------
 Tue Dec 15 15:21:19 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix BuildRequire of python-xarray for all python3 flavors
