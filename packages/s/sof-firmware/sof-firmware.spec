@@ -16,8 +16,7 @@
 #
 
 
-%define repo_version 1.6.1
-%define package_version	1.6.1
+%define package_version	1.7
 
 %if 0%{?suse_version} < 1550
 %define _firmwaredir /lib/firmware
@@ -27,11 +26,13 @@ Name:           sof-firmware
 Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        1.6.1
+Version:        1.7
 Release:        0
 URL:            https://github.com/thesofproject/sof-bin
 BuildRequires:  fdupes
 Source:         https://github.com/thesofproject/sof-bin/archive/v%{package_version}.tar.gz#/sof-bin-%{package_version}.tar.gz
+# fix up bad directory setup in v1.7 tarball
+Patch1:         sof-bin-go-install-fix.patch
 BuildArch:      noarch
 # Merrifield
 Supplements:    modalias(pci:v00008086d0000119Asv*sd*bc*sc*i*)
@@ -73,15 +74,13 @@ Various firmware data files for SOF drivers.
 
 %prep
 %setup -q -n sof-bin-%{package_version}
+%patch1 -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_firmwaredir}
-ROOT=%{buildroot} SOF_VERSION=v%{repo_version} sh ./go.sh
-# drop broken links
-rm -f %{buildroot}%{_firmwaredir}/intel/sof/sof-jsl.ri
-rm -f %{buildroot}%{_firmwaredir}/intel/sof/community/sof-jsl.ri
+ROOT=%{buildroot} SOF_VERSION=v%{version} sh ./go.sh
 %fdupes -s %{buildroot}
 
 # A grand opening of a monkey theater now:

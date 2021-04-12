@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr  6 16:08:30 CEST 2021 - tiwai@suse.de
+
+- Update to version 1.7:
+  * Added support for Intel Tigerlake H
+  * The codec adapter has had many improvements and now supports
+    audio processing modules from Cadence
+  * Continued Zephyr integration now means SOF is supported as a
+    Zephyr module
+  * Scheduler improvements to support dynamic clock switching
+  * Major feature and performance improvements for Smart amplifiers,
+    SRC, Mux, Crossover and DRC
+  * Numerous bug fixes and performance improvements for Intel and
+    NXP platforms
+- Fix installation from v1.7 tarball:
+  sof-bin-go-install-fix.patch
+
+-------------------------------------------------------------------
 Mon Feb  1 11:33:08 CET 2021 - tiwai@suse.de
 
 - Yet more ugly workarounds for the rpm shortness about the symlink
