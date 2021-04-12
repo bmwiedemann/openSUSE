@@ -1,7 +1,7 @@
 #
 # spec file for package python-mplcursors
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-mplcursors
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        Interactive data selection cursors for Matplotlib
 License:        MIT
 URL:            https://github.com/anntzer/mplcursors
 Source:         https://files.pythonhosted.org/packages/source/m/mplcursors/mplcursors-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#anntzer/mplcursors#26
-Patch0:         mplcursors-unicodeminus.patch
-Patch1:         mplcursors-newstem.patch
-Patch2:         mplcursors-parse_annotation.patch
-Patch3:         mplcursors-fix-LineCollection.patch
-Patch4:         mplcursors-unicodeminus2.patch
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-matplotlib >= 2.1
+Requires:       python-matplotlib >= 3.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module matplotlib >= 2.1}
+BuildRequires:  %{python_module matplotlib >= 3.1}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
