@@ -1,7 +1,7 @@
 #
-# spec file for package tracker-miners
+# spec file for package tracker2-miners
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source0:        https://download.gnome.org/sources/tracker-miners/2.3/%{_name}-%
 
 # PATCh-FIX-UPSTREAM tracker-miners-bsc1165635-crawl-timestamp.patch boo#1165635 mgorse@suse.com -- properly set crawl timestamp.
 Patch0:         tracker-miners-bsc1165635-crawl-timestamp.patch
+# PATCH-FIX-UPSTREAM tracker-miners-boo1183879-seccomp-allow-fstatat64.patch glgo#GNOME/tracker-miners#167 boo#1183879
+Patch1:         tracker-miners-boo1183879-seccomp-allow-fstatat64.patch
 
 BuildRequires:  giflib-devel
 BuildRequires:  intltool >= 0.40.0
@@ -74,8 +76,8 @@ Conflicts:      libtracker-common-1_0 < 1.99
 Conflicts:      tracker < 1.99
 Obsoletes:      tracler-miners <= %{version}
 Provides:       tracker-miners = %{version}
-Obsoletes:      tracker-miner-rss <= 2.2.2
 Obsoletes:      tracker-miner-files-lang <= %{version}
+Obsoletes:      tracker-miner-rss <= 2.2.2
 
 %description
 Tracker is a desktop-neutral object database, tag/metadata database,

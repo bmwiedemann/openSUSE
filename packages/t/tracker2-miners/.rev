@@ -7,4 +7,14 @@
     <comment>Parallel submission to the Tracker 3 upgrade</comment>
     <requestid>836036</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a2859e0cf9fdcb13585577fe49601d04</srcmd5>
+    <version>2.3.5</version>
+    <time>1618223760</time>
+    <user>dimstar_suse</user>
+    <comment>- Backport 3.x fix for glgo#GNOME/tracker-miners#167 boo#1183879:
+  + tracker-miners-boo1183879-seccomp-allow-fstatat64.patch
+    This allows fstatat64&amp;newfstatat syscalls used by newer glibc. (forwarded request 881055 from mgorse)</comment>
+    <requestid>881181</requestid>
+  </revision>
 </revisionlist>

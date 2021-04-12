@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 22 13:00:58 UTC 2021 - Javier S. Pedro <dev.rpm@javispedro.com>
+
+- Backport 3.x fix for glgo#GNOME/tracker-miners#167 boo#1183879:
+  + tracker-miners-boo1183879-seccomp-allow-fstatat64.patch
+    This allows fstatat64&newfstatat syscalls used by newer glibc.
+
+-------------------------------------------------------------------
+
 Thu Sep 10 14:34:11 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.3.5:
