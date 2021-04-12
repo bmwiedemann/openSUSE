@@ -1,7 +1,7 @@
 #
 # spec file for package gedit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %bcond_without  python_bindings
 Name:           gedit
-Version:        3.38.1
+Version:        40.0
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gedit
-Source0:        https://download.gnome.org/sources/gedit/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gedit/40/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE gedit-desktop.patch -- Adds more MIME types.
 Patch0:         gedit-desktop.patch
 # PATCH-FIX-OPENSUSE gedit-plugins-python-env.patch bjorn.lie@gmail.com -- Fix python env
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.2
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
-BuildRequires:  pkgconfig(tepl-5) >= 5.0
+BuildRequires:  pkgconfig(tepl-6) >= 5.99.0
 BuildRequires:  pkgconfig(vapigen) >= 0.25.1
 BuildRequires:  pkgconfig(x11)
 Requires:       python3-cairo
@@ -143,7 +143,7 @@ translation-update-upstream po %{name}
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.time.gschema.xml
 %dir %{_libdir}/gedit/
-%{_libdir}/gedit/libgedit-3.38.so
+%{_libdir}/gedit/libgedit-40.0.so
 %{_libdir}/gedit/girepository-1.0/
 %dir %{_libdir}/gedit/plugins/
 # Explicitly list plugins so we know when we miss one

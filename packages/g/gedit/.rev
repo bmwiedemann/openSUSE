@@ -1029,4 +1029,12 @@
     <comment> (forwarded request 849738 from iznogood)</comment>
     <requestid>851025</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>6f99691f6e6cfd8fdc0d18752763926a</srcmd5>
+    <version>40.0</version>
+    <time>1618223716</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880932 from dimstar)</comment>
+    <requestid>881105</requestid>
+  </revision>
 </revisionlist>
