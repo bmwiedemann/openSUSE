@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr  9 17:29:25 UTC 2021 - aloisio@gmx.com
+
+- Update to version version 56.1.0
+  New features and enhancements:
+  * mkvmerge: AAC: added support for LOAS/LATM files with
+    channel configuration indexes 9–21 (e.g. channel count 22.2
+    for index 13) according to Rec. ITU-R BS.1196-7 & ISO/IEC
+    23008-3:2019.
+  Bug fixes:
+  * mkvmerge: HEVC/H.265 parser: fixed invalid memory access
+    that could happen when reading certain types of HEVC data
+    (e.g. with changing parameter sets mid-stream) from certain
+    containers (e.g. Matroska). This bug was introduced in
+    release 56.0.0.
+  * mkvextract: AAC: mkvextract will now abort with an useful
+    error message when the user tries to extract a track whose
+    'audio-specific config' element in `CodecPrivate` signals a
+    number of channels of 7 or greater than 8 as that isn't
+    supported by the ADTS format.
+  Build system changes:
+  * configure: the `--enable-ubsan` option hasn't actually
+    enabled anything since release 39.0.0.
+
+-------------------------------------------------------------------
 Mon Apr  5 12:31:25 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 56.0.0
