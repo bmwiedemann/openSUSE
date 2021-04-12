@@ -1,0 +1,5 @@
+<package name="python-url-normalize" project="openSUSE:Factory">
+  <title></title>
+  <description>URL normalization for Python</description>
+  <devel project="devel:languages:python" package="python-url-normalize"/>
+</package>
