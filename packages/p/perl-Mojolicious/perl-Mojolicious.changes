@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Wed Mar 24 03:08:29 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.14
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.14  2021-03-23
+    - Added EXPERIMENTAL support for :text pseudo-class to Mojo::DOM::CSS.
+
+  9.13  2021-03-22
+    - Improved request_id attribute in Mojo::Message::Request to be a little more unique.
+    - Fixed Mojolicious::Plugin::Mount to share the logger of the host application.
+
+-------------------------------------------------------------------
+Sun Mar 21 03:09:34 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.12
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.12  2021-03-21
+    - Improved mojo script startup time slightly with a Mojo::HelloWorld optimization.
+    - Improved design of built-in templates.
+
+  9.11  2021-03-20
+    - This release contains fixes for security issues, everybody should upgrade!
+    - Disabled format detection by default to fix vulnerabilities in many Mojolicious applications. That means some of
+      your routes that previously matched "/foo" and "/foo.json", will only match "/foo" after upgrading. From now on you
+      will have to explicitly declare the formats your routes are allowed to handle.
+        # /foo
+        # /foo.html
+        # /foo.json
+        $r->get('/foo')->to('bar#yada');
+      becomes
+        $r->get('/foo' => [format => ['html', 'json']])->to('bar#yada', format => undef);
+      And if you are certain that your application is not vulnerable, you also have the option to re-enable format
+      detection for a route and all its nested routes. Due to the high risk of vulnerabilities, this feature is going to
+      be removed again in a future release however.
+        my $active = $r->any([format => 1]);
+        $active->get('/foo')->to('Test#first');
+        $active->put('/bar')->to('Test#second');
+    - Improved built-in templates not to show embedded apps in the stash snapshot.
+    - Improved built-in development not found page to include tooltips with the compiled regular expressions for each
+      route.
+    - Improved Mojo::UserAgent to include "Content-Length: 0" with non-GET requests for better compatibility with broken
+      web servers.
+
+-------------------------------------------------------------------
+Tue Mar 16 03:09:24 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.10
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.10  2021-03-14
+    - Fixed top-level --help and -h options in Mojolicious::Commands.
+  9.09  2021-03-13
+    - Added comma_separated filter to Mojolicious::Validator.
+    - Fixed built-in templates to be a bit more responsive.
+    - Fixed filter list handling in Mojolicious::Validator::Validation.
+  9.08  2021-03-12
+    - Fixed a bug in Test::Mojo where Test::Mojo->new($app) would not work correctly.
+  9.07  2021-03-11
+    - Improved config override feature to work for Mojolicious::Lite applications.
+    - Improved Mojo::UserAgent performance slightly by not including unnecessary "Content-Length: 0" request headers.
+
+-------------------------------------------------------------------
+Mon Mar  8 03:07:00 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.03
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.03  2021-03-05
+    - Fixed a bug in Mojo::Transaction::WebSocket where finish event handlers would not always get the same number of
+      arguments passed.
+
+-------------------------------------------------------------------
+Tue Mar  2 03:11:46 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.02
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.02  2021-02-17
+    - Fixed finally method in Mojo::Promise to deal correctly with promises returned by the handler.
+    - Improved Mojo::Server::Daemon to include random ports in the "Web application available at ..." message.
+
+-------------------------------------------------------------------
 Wed Feb 17 03:11:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.01
