@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr  5 07:12:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Changes since 5.80.0:
+  * [SearchStore] Explicitly narrow timestamps for range query
+  * Add now mandatory args parameter to QProcess::startDetached()
+  * Port away from deprecated QDateTime(QDate) constructor
+  * Remove long defunct, xapian based filesearchstoretest
+  * Remove unused fileinfo.cpp/.h
+  * [MetadataMover] Update filename terms when moving/renaming file (kde#433116)
+  * [MetadataMover] Extend renaming test cases
+  * [MetadataMover] Use categorized logging for all debug statements
+  * [MetadataMover] Make some temporaries const
+  * Add trailing commas to enums
+
+-------------------------------------------------------------------
 Sun Mar  7 09:26:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.80.0
