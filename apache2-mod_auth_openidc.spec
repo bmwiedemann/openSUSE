@@ -16,8 +16,6 @@
 #
 
 
-%define apxs %{_sbindir}/apxs2
-%define apache_libexecdir %(%{apxs} -q LIBEXECDIR)
 Name:           apache2-mod_auth_openidc
 Version:        2.4.7
 Release:        0
@@ -25,15 +23,9 @@ Summary:        Apache2.x module for an OpenID Connect enabled Identity Provider
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://github.com/zmartzone/mod_auth_openidc/
-Source:         https://github.com/zmartzone/mod_auth_openidc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/zmartzone/mod_auth_openidc/releases/download/v%{version}/mod_auth_openidc-%{version}.tar.gz
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
-BuildRequires:  autoconf
-BuildRequires:  automake
-%if 0%{?suse_version} >= 1550
-BuildRequires:  hiredis-devel
-%endif
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cjose) >= 0.5.1
 BuildRequires:  pkgconfig(jansson) >= 2.0
@@ -42,6 +34,9 @@ BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(openssl) >= 1.0.1
 Requires:       %{apache_mmn}
 Requires:       %{apache_suse_maintenance_mmn}
+%if 0%{?suse_version} >= 1550
+BuildRequires:  hiredis-devel
+%endif
 
 %description
 This module enables an Apache 2.x web server to operate as an OpenID Connect Relying Party and/or OAuth 2.0 Resource Server.
@@ -50,7 +45,6 @@ This module enables an Apache 2.x web server to operate as an OpenID Connect Rel
 %setup -q -n mod_auth_openidc-%{version}
 
 %build
-./autogen.sh
 %configure \
 %if 0%{?is_opensuse} > 0
   %{?_with_hiredis}    \
@@ -58,13 +52,18 @@ This module enables an Apache 2.x web server to operate as an OpenID Connect Rel
   %{?_without_hiredis} \
 %endif
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -D -m0755 src/.libs/mod_auth_openidc.so %{buildroot}%{apache_libexecdir}/mod_auth_openidc.so
 
+%check
+make -j1 test
+
 %files
-%dir %{apache_libexecdir}
+%license LICENSE.txt
+%doc ChangeLog README.md AUTHORS
+%doc auth_openidc.conf
 %{apache_libexecdir}/mod_auth_openidc.so
 
 %changelog

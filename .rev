@@ -212,4 +212,16 @@ Bugfixes
     <comment>Update to version 2.4.7 (forwarded request 883107 from stroeder)</comment>
     <requestid>883176</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c8b3c49520dfd9792fc8f1b1014193d0</srcmd5>
+    <version>2.4.7</version>
+    <time>1618223852</time>
+    <user>dimstar_suse</user>
+    <comment>- test package
+
+- fix installation path on Factory (boo#1184572)
+- switch to bootstrapped tarball
+- package the license, docs and sample config</comment>
+    <requestid>884568</requestid>
+  </revision>
 </revisionlist>

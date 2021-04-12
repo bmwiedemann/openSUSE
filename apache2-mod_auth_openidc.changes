@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 12 07:49:03 UTC 2021 - pgajdos@suse.com
+
+- test package
+
+-------------------------------------------------------------------
+Sun Apr 11 12:14:14 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix installation path on Factory (boo#1184572)
+- switch to bootstrapped tarball
+- package the license, docs and sample config
+
+-------------------------------------------------------------------
 Mon Apr  5 22:41:02 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 2.4.7
