@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Mar 20 18:20:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + No changes since 40.rc.
+
+-------------------------------------------------------------------
+Thu Mar 18 11:57:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Metainfo: add a launchable tag.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 15 11:03:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 40.beta:
+  + Move sound effects to gnome-shell.
+  + Focus the filename entry by default.
+  + Remember delay for area screenshots.
+  + Remove compulsory_for_desktop.
+  + Updated translations.
+- Switch from _service to regular relaesed tarballs.
+
+-------------------------------------------------------------------
 Fri Sep 11 12:31:09 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.0:
