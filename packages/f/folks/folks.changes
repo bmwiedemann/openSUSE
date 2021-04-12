@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Feb  9 19:57:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable telepathy support again: set with_telepathy to 1.
+
+-------------------------------------------------------------------
+Wed Feb  3 17:20:13 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Allow to enable/disable telepathy integration using
+  with_telepathy: currently set to 0, as build with new vala fails.
+  Considering that telepathy is not really maintained anymore,
+  there seems little chance for a fix.
+
+-------------------------------------------------------------------
 Wed Nov 11 09:38:11 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix dependency of the devel project in case of tracker being
