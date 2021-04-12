@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-ai-metricsadvisor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-metricsadvisor
-Version:        1.0.0b2
+Version:        1.0.0b3
 Release:        0
 Summary:        Microsoft Azure Metrics Advisor Client Library for Python
 License:        MIT
@@ -38,7 +38,7 @@ Requires:       python-azure-ai-nspkg >= 1.0.0
 Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.6.0
 Requires:       python-msrest >= 0.6.12
-Requires:       python-six >= 1.6
+Requires:       python-six >= 1.11.0
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages
