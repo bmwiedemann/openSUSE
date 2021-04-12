@@ -50,6 +50,7 @@ Source4356:     brcmfmac4356-pcie.txt
 Source4561:     https://github.com/RPi-Distro/firmware-nonfree/raw/master/brcm/brcmfmac43456-sdio.bin
 Source4562:     https://github.com/RPi-Distro/firmware-nonfree/raw/master/brcm/brcmfmac43456-sdio.clm_blob
 Source4563:     https://github.com/RPi-Distro/firmware-nonfree/raw/master/brcm/brcmfmac43456-sdio.txt
+Source4564:     https://github.com/RPi-Distro/bluez-firmware/raw/master/broadcom/BCM4345C5.hcd
 Source4559:     https://github.com/RPi-Distro/bluez-firmware/raw/master/broadcom/BCM4345C0.hcd
 # Owns /lib/firmware/brcm and potentially conflicts
 BuildRequires:  kernel-firmware-brcm
@@ -96,16 +97,20 @@ ln -s brcmfmac43455-sdio.raspberrypi,4-model-b.txt.xz  %{buildroot}%{_firmwaredi
 # stored in '/lib/firmware/brcm'
 install -c -m 0644 %{SOURCE4309} %{buildroot}%{_firmwaredir}/brcm/
 install -c -m 0644 %{SOURCE4559} %{buildroot}%{_firmwaredir}/brcm/
+install -c -m 0644 %{SOURCE4564} %{buildroot}%{_firmwaredir}/brcm/
 # Symlinks for compatibility with deprecated hciattach
 ln -s brcm/BCM4345C0.hcd %{buildroot}%{_firmwaredir}/BCM4345C0.hcd
+ln -s brcm/BCM4345C5.hcd %{buildroot}%{_firmwaredir}/BCM4345C5.hcd
 ln -s brcm/BCM43430A1.hcd %{buildroot}%{_firmwaredir}/BCM43430A1.hcd
 
 %files
 %license LICENCE.broadcom_bcm43xx LICENCE.cypress
 %{_firmwaredir}/BCM43430A1.hcd
 %{_firmwaredir}/BCM4345C0.hcd
+%{_firmwaredir}/BCM4345C5.hcd
 %{_firmwaredir}/brcm/BCM43430A1.hcd
 %{_firmwaredir}/brcm/BCM4345C0.hcd
+%{_firmwaredir}/brcm/BCM4345C5.hcd
 %{_firmwaredir}/brcm/brcmfmac4329-sdio.solidrun,cubox-i-dl.txt
 %{_firmwaredir}/brcm/brcmfmac4330-sdio.solidrun,cubox-i-q.txt
 %{_firmwaredir}/brcm/brcmfmac4339-sdio.tronsmart,vega-s95-telos.txt

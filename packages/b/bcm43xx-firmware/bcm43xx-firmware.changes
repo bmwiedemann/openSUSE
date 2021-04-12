@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  9 11:20:00 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
+
+- Introduce firmware file for Raspberry Pi 400's bluetooth.
+
+-------------------------------------------------------------------
 Tue Mar 16 16:53:24 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Introduce Raspberry Pi 4 Compute Module's brcmfmac43455 configuration file.
