@@ -1299,4 +1299,12 @@ Also wanted for 13.1</comment>
     <comment></comment>
     <requestid>861744</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>5082943e626e548e7fb445f3e89cc40f</srcmd5>
+    <version>1.48.0</version>
+    <time>1618223739</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880982 from dimstar)</comment>
+    <requestid>881151</requestid>
+  </revision>
 </revisionlist>

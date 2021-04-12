@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Mar 20 07:08:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.48.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 18 09:25:39 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.47.91:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 17 09:50:20 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.47.90:
+  + google: Add Shared drives folder.
+  + google: Add Shared with me folder.
+  + google: Improve performance for folders with large number of
+    files.
+  + daemon: Set filesystem::use-preview explicitly and
+    consistently.
+  + daemon: Unify and shorten strings for prompt dialog titles.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 12 10:01:58 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.47.1:
+  + mtp: Fix crashes when storage descriptions are not provided.
+  + trash: Explicitly cancel file monitor to prevent deadlock.
+  + admin: Add copy and push implementations for better
+    performance.
+  + client: Add fallback to session bus for synchronous API.
+  + daemon: Use named sockets to avoid network permission
+    requirement.
+  + smb: Set fast content type independently of other attributes.
+
+-------------------------------------------------------------------
 Fri Jan  8 13:56:03 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.46.2:

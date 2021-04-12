@@ -18,13 +18,13 @@
 
 %bcond_without  cdda
 Name:           gvfs
-Version:        1.46.2
+Version:        1.48.0
 Release:        0
 Summary:        Virtual File System functionality for GLib
-License:        LGPL-2.0-or-later AND GPL-3.0-only
+License:        GPL-3.0-only AND LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/gvfs
-Source0:        https://download.gnome.org/sources/gvfs/1.46/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gvfs/1.48/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 ### NOTE: Please, keep SLE-only patches at bottom (starting on 1000).
@@ -55,7 +55,7 @@ BuildRequires:  pkgconfig(gudev-1.0) >= 147
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libbluray)
 BuildRequires:  pkgconfig(libcap)
-BuildRequires:  pkgconfig(libgdata) >= 0.17.11
+BuildRequires:  pkgconfig(libgdata) >= 0.18.0
 BuildRequires:  pkgconfig(libgphoto2) >= 2.4.0
 BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 1.2
 BuildRequires:  pkgconfig(libmtp) >= 1.1.12
@@ -113,7 +113,7 @@ This package provides a gvfs backend that supports Samba.
 
 %package backends
 Summary:        VFS functionality for GLib
-License:        LGPL-2.0-or-later AND GPL-3.0-only
+License:        GPL-3.0-only AND LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 # FIXME: use proper Requires(pre/post/preun/...)
