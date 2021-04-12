@@ -1,5 +1,5 @@
 #
-# spec file for package python-dash-table
+# spec file for package python-dash-table-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -26,11 +26,13 @@
 %bcond_with test
 %endif
 %define skip_python2 1
-# Upstream forgets to tag the release version, but we need the github archive for the test files
+# Upstream cannot tag the release version, due to a Julia bug,
+# but we need the github archive for the test files
 # https://github.com/plotly/dash-table/issues/850
-%define commit 93e88cdef2d1764c3b19ff9bd45f565c70e6704a
+# get this from the master branch (dev is the default but does not have the full package)
+%define commit 6dba4d539674b91a073a5e13dd344654390ce4f7
 Name:           python-dash-table%{psuffix}
-Version:        4.11.1
+Version:        4.11.3
 Release:        0
 Summary:        Dash table
 License:        MIT

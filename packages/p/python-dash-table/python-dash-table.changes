@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  9 21:47:27 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v4.11.3
+  * #862 - update docstrings per
+    https://github.com/plotly/dash/issues/1205
+  * #878 - update build process to use Webpack 5 and other latest
+    dependencies
+  * #854 - part of fixing dash import bug
+    https://github.com/plotly/dash/issues/1143
+
+-------------------------------------------------------------------
 Sun Jan  3 20:07:06 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Remove dependency on dash (build dependency cycle)
