@@ -1,7 +1,7 @@
 #
-# spec file for package sysprof
+# spec file for package sysprof%{_name_suffix}
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,13 +29,13 @@
 %define sover 4
 
 Name:           sysprof%{_name_suffix}
-Version:        3.38.1
+Version:        3.40.1
 Release:        0
 Summary:        A system-wide Linux profiler
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://wiki.gnome.org/Apps/Sysprof
-Source0:        https://download.gnome.org/sources/sysprof/3.38/sysprof-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/sysprof/3.40/sysprof-%{version}.tar.xz
 
 BuildRequires:  gcc-c++
 BuildRequires:  itstool
@@ -44,7 +44,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(glib-2.0) >= 2.56
+BuildRequires:  pkgconfig(glib-2.0) >= 2.67.4
+BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsystemd) >= 222
 BuildRequires:  pkgconfig(libunwind-generic)
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.105

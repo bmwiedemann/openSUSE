@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Mar 24 09:43:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.40.1:
+  + Fix build system issue which caused symbols from
+    libsysprof-capture.a to leak into the ABI of libraries
+    consuming it. This was due to inheritance of GNU default symbol
+    visibility. A recompilation of those libraries is necessary.
+
+-------------------------------------------------------------------
+Sat Mar 20 09:08:57 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.40.0:
+  + Improve symbol resolving on OSTree-based systems.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Feb 27 23:48:28 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.39.94:
+  + Fix some licenses in headers.
+  + Add API to sysprofd/libsysprof to tweak.
+  + /proc/sys/kernel/perf_event_paranoid to improve capture
+    quality.
+  + Tooling will now always try to change this value while
+    profiling + the system and ignore upon failure.
+  + ftruncate() before overwriting proc files.
+  + GTK aid has been removed as it is always enabled through the
+    use of control-fd now.
+  + Add a new Overlay capture frame type for mapping overlays
+    between the host and the process filesystem namespace.
+  + Use overlays to map flatpak containers to overlay directories
+    for both /app and /usr.
+  + Changes in version 3.39.92:
+  + Use pic when compiling static libsysprof-capture.
+  + Some changes to podman symbol decoding.
+  + Handle NULL readers gracefully from capture cursors.
+  + Use g_memdup2().
+  + UI tweaks.
+  + Translation updates.
+- Up glib2 dependency.
+- Add json-glib-1.0 to BuildRequires: new dependency.
+
+-------------------------------------------------------------------
+Fri Jan 15 08:34:13 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.39.90:
+  + polkit is optional (again) for sysprof-cli.
+  + Various fixes in kernel symbol resolving.
+  + Fix build when stack-protector is not used.
+  + Support elfparser on some interesting platforms.
+  + Updtaed translations.
+
+-------------------------------------------------------------------
 Fri Oct 16 10:57:53 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.1:
