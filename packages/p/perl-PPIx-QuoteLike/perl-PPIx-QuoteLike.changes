@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 27 03:06:37 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.016
+   see /usr/share/doc/packages/perl-PPIx-QuoteLike/Changes
+
+  0.016		2021-03-26	T. R. Wyant
+      Add rt.cpan.org back to bug reporting methods. Long live RT!
+
+      Get prerequisites up to snuff, and add xt/author/prereq.t to ensure
+      they stay that way.
+
+      Refactor authortest into three, so I do not have to generate stub
+      files to test without optional modules.
+
+-------------------------------------------------------------------
 Sat Feb  6 03:07:26 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.015
