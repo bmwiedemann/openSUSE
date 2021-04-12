@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-identity
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-identity
-Version:        1.5.0
+Version:        1.6.0b2
 Release:        0
 Summary:        Azure Identity client library for Python
 License:        MIT
@@ -39,10 +39,10 @@ Requires:       python-azure-core >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-cryptography >= 2.1.4
 Requires:       python-msal < 2.0.0
-Requires:       python-msal >= 1.6.0
+Requires:       python-msal >= 1.7.0
 Requires:       python-msal-extensions < 1.0.0
 Requires:       python-msal-extensions >= 0.3.0
-Requires:       python-six >= 1.6
+Requires:       python-six >= 1.12.0
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages
