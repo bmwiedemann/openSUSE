@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 12 12:12:03 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 2.1.3.
+  * Improved GPU indirect solver.
+- Stop using %exclude to remove static lib. 
+
+-------------------------------------------------------------------
 Tue Sep  1 15:38:50 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Fix devel package description. 

@@ -1,7 +1,7 @@
 #
 # spec file for package scs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           scs
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        Numerical package for solving large-scale convex cone problems
 License:        MIT
@@ -46,12 +46,12 @@ This package provides development libraries and headers for %{name}.
 
 %install
 %make_install INSTALL_LIB_DIR=%{buildroot}%{_libdir} INSTALL_INC_DIR=%{buildroot}%{_includedir}/%{name}
+rm -r %{buildroot}%{_libdir}/*.a
 
 %files devel
 %doc README.md
 %license LICENSE.txt
 %{_includedir}/%{name}
 %{_libdir}/*.so
-%exclude %{_libdir}/*.a
 
 %changelog
