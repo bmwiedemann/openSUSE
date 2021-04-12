@@ -16,19 +16,17 @@
 #
 
 
-Name:           perl-Spreadsheet-Read
-Version:        0.83
-Release:        0
 %define cpan_name Spreadsheet-Read
+Name:           perl-Spreadsheet-Read
+Version:        0.84
+Release:        0
 Summary:        Read the data from a spreadsheet
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{version}.tgz
 Source1:        cpanspec.yml
 Patch0:         nonstdperlpath.patch
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Data::Peek)
@@ -70,9 +68,8 @@ preferred) or Text::CSV_PP (1.05 or up required).
 For SquirrelCalc there is a very simplistic built-in parser
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
-%patch0 -p1
 
 %build
 # disable installation of examples to {_bindir}
@@ -89,7 +86,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTING.md examples README
 
 %changelog

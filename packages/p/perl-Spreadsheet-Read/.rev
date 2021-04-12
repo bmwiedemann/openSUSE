@@ -315,4 +315,12 @@
       * Fallback to Pod::Text if nroff not available in tools</comment>
     <requestid>865305</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>81fa2c5c7cdf3f0d5880dc3c984cd681</srcmd5>
+    <version>0.84</version>
+    <time>1618240225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>876532</requestid>
+  </revision>
 </revisionlist>

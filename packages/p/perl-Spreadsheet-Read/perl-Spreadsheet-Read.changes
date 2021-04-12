@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Mar  2 11:30:42 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Update nonstdperlpath.patch
+
+-------------------------------------------------------------------
+Sat Feb 27 03:09:10 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.84
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+
+  0.84	- 26 Feb 2021, H.Merijn Brand
+      * It's 2021
+      * Alias pivot to transpose (issue#36)
+      * Alias strip to trim      (issue#36)
+      * Check for consistent return values of parses ()
+
+-------------------------------------------------------------------
 Thu Jan 21 09:21:20 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - readd hack to suppress examples in %_bindir
