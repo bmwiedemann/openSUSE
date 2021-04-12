@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Mar 23 19:29:59 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.9.10
+  * Update to Defcon 0.8.0
+- Release 0.9.9
+  * Fixed import of version.
+- Release 0.9.8
+  * Add support for quadratic curves with no on-curve points in
+    Contour and Segment.
+- Release 0.9.7
+  * Change to github actions for CI and release.
+  * fontShell returns None when referenced file name doesn't exist
+    for an Image
+- Release 0.9.6
+  * fontShell has changed() implemented now
+- Release 0.9.5
+  * Fix for contours not getting updated in fontShell
+  * Fix for error message in normalizeKerningKey
+- Release 0.9.4
+  * Fixed release build
+- Release 0.9.3
+  *  All rounding uses otRound. #536, fixes #533.
+  *  Allow contour.segment to be empty (#480).
+  *  Image file names now get a png file extension (#482).
+  *  Fixed error in setting contour index (#488).
+  *  Fixed error in PointPositionMixin (#486, fixed by #491)
+  *  Added option to turn off normalizer tests
+  *  Test fixes and updates. #512.
+  *  various: Documentation updates and corrections
+- reinstate python36 build (python36-FontTools is available)
+- skip python2 for Leap
+
+-------------------------------------------------------------------
 Sat Feb 13 10:26:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 36 (no FontTools as that requries scipy) 

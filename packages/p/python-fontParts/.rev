@@ -15,4 +15,12 @@
     <comment>- skip python 36 (no FontTools as that requries scipy)</comment>
     <requestid>871635</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>79b7e89fbc8d32359115d188445c1281</srcmd5>
+    <version>0.9.10</version>
+    <time>1618240229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>880876</requestid>
+  </revision>
 </revisionlist>
