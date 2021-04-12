@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  7 13:19:01 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Install shim everywhere except on RPi (bsc#1182211)
+
+-------------------------------------------------------------------
 Tue Mar  9 15:44:50 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add systemd.show_status=1 to the kernel cmdline (bsc#1183186)
