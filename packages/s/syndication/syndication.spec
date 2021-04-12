@@ -17,14 +17,14 @@
 
 
 %define lname libKF5Syndication5
-%define _tar_path 5.80
+%define _tar_path 5.81
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           syndication
-Version:        5.80.0
+Version:        5.81.0
 Release:        0
 Summary:        RSS/Atom parsing library
 License:        LGPL-2.1-or-later
@@ -40,7 +40,6 @@ BuildRequires:  cmake(KF5Codecs) >= %{kf5_bugfix_version}
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Network) >= 5.14.0
 BuildRequires:  cmake(Qt5Test) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
 BuildRequires:  cmake(Qt5Xml) >= 5.14.0
 
 %description
