@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-system-monitor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-system-monitor
-Version:        3.38.0
+Version:        40.0
 Release:        0
 Summary:        A process monitor for the GNOME desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/SystemMonitor
-Source0:        https://download.gnome.org/sources/gnome-system-monitor/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-system-monitor/40/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.3.18
 BuildRequires:  pkgconfig(libgtop-2.0) >= 2.37.2
+BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.35
 BuildRequires:  pkgconfig(libsystemd) >= 44
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.0
@@ -69,7 +70,7 @@ translation-update-upstream po gnome-system-monitor
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc NEWS README.md
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/gnome-system-monitor
 %{_datadir}/applications/gnome-system-monitor.desktop
@@ -83,9 +84,11 @@ translation-update-upstream po gnome-system-monitor
 %dir %{_libexecdir}/%{name}/
 %{_libexecdir}/%{name}/gsm-kill
 %{_libexecdir}/%{name}/gsm-renice
+%{_libexecdir}/%{name}/gsm-taskset
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/gsm.gresource
 %{_datadir}/icons/hicolor/*/apps/org.gnome.SystemMonitor*.svg
+%{_datadir}/icons/hicolor/symbolic/apps/speedometer-symbolic.svg
 
 %files lang -f %{name}.lang
 
