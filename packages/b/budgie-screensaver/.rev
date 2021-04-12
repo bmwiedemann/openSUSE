@@ -24,4 +24,14 @@
     <comment></comment>
     <requestid>854328</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>944c0d57eb674c67d3ca29d9b3278ddb</srcmd5>
+    <version>20201110</version>
+    <time>1618223812</time>
+    <user>dimstar_suse</user>
+    <comment>- Add GNOME-40.patch: to fix conflict with GNOME 40
+- Prepare usrmerge
+</comment>
+    <requestid>884506</requestid>
+  </revision>
 </revisionlist>

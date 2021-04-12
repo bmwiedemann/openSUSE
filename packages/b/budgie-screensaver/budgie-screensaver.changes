@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 11 18:12:22 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add GNOME-40.patch: to fix conflict with GNOME 40
+
+-------------------------------------------------------------------
+Fri Apr  9 18:01:56 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Prepare usrmerge
+
+-------------------------------------------------------------------
 Wed Dec  9 15:13:32 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Removed gnome-desktop-3.36.patch: contained in upstream

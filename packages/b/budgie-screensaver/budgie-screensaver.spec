@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-screensaver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Callum Farmer <callumjfarmer13@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,11 @@
 #
 
 
+%if 0%{?usrmerged}
+%define chkpwd %{_sbindir}/unix2_chkpwd
+%else
+%define chkpwd /sbin/unix2_chkpwd
+%endif
 Name:           budgie-screensaver
 Version:        20201110
 Release:        0
@@ -24,9 +29,9 @@ Summary:        Fork of GNOME Screensaver for Budgie 10
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/getsolus/budgie-screensaver
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE remove-old-automake-macros.patch
-Patch:          remove-old-automake-macros.patch
+Patch0:         remove-old-automake-macros.patch
 # PATCH-FEATURE-OPENSUSE gnome-screensaver-suse-pam.patch
 Patch1:         gnome-screensaver-suse-pam.patch
 # PATCH-FIX-UPSTREAM gnome-screensaver-helper.patch bgo#640647 fcrozat@novell.com -- Put back helper authentication, removed by upstream
@@ -35,14 +40,14 @@ Patch2:         gnome-screensaver-helper.patch
 Patch3:         gnome-screensaver-xvkbd-on-lock.patch
 # PATCH-FIX-UPSTREAM gnome-screensaver-multihead-unlock.patch bnc#444157 bgo#455118 rodrigo@novell.com
 Patch4:         gnome-screensaver-multihead-unlock.patch
+Patch5:         GNOME-40.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gnome-common
 BuildRequires:  intltool
-BuildRequires:  libXScrnSaver-devel
-BuildRequires:  libXext-devel
-BuildRequires:  libXxf86vm-devel
 BuildRequires:  libtool
 BuildRequires:  pam-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
@@ -50,32 +55,34 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libgnomekbdui)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(x11)
-Requires:       /sbin/unix2_chkpwd
-
-%lang_package
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xscrnsaver)
+BuildRequires:  pkgconfig(xxf86vm)
+Requires:       pam
+%if 0%{?suse_version} < 1550
+BuildRequires:  pkgconfig(xxf86misc)
+%endif
 
 %description
 Fork of GNOME Screensaver for Budgie 10
 
+%lang_package
+
 %prep
-%setup -q
-%patch -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
-touch ./config.rpath
+export AUTOPOINT='intltoolize --copy --automake'
 touch ./ABOUT-NLS
 mkdir m4
-intltoolize --copy --force --automake
+mkdir build-aux
+touch build-aux/config.rpath
 autoreconf -fiv
 %configure\
 	--libexecdir=%{_libexecdir}/gnome-screensaver\
 	--with-pam-prefix=%{_sysconfdir}\
 	--enable-authentication-scheme=helper\
-	--with-passwd-helper="/sbin/unix2_chkpwd"\
+	--with-passwd-helper="%{chkpwd}"\
 	--with-console-kit\
 	--with-systemd\
 	--disable-docbook-docs
@@ -91,7 +98,7 @@ autoreconf -fiv
 %{_bindir}/*
 %{_libexecdir}/gnome-screensaver
 %{_datadir}/applications/gnome-screensaver.desktop
-%{_datadir}/dbus-1/services/org.gnome.ScreenSaver.service
+%{_datadir}/dbus-1/services/us.getsol.budgie-screensaver.service
 %{_mandir}/man1/*
 
 %files lang -f gnome-screensaver.lang
