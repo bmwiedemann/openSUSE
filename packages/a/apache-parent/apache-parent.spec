@@ -23,7 +23,10 @@ Summary:        Parent POM file for Apache projects
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://apache.org/
-Source0:        http://repo1.maven.org/maven2/org/apache/apache/%{version}/apache-%{version}-source-release.zip
+Source0:        https://repo1.maven.org/maven2/org/apache/apache/%{version}/apache-%{version}-source-release.zip
+Source1:        https://repo1.maven.org/maven2/org/apache/apache/%{version}/apache-%{version}-source-release.zip.asc
+Source2:        apache-parent.keyring
+
 BuildRequires:  javapackages-local
 BuildRequires:  unzip
 BuildArch:      noarch
