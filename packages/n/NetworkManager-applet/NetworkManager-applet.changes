@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Feb  3 09:31:49 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.20.0:
+  + Use wireless-security code from libnma.
+  + Add flatpak build configuration.
+  + Applet:
+    - Hide unmanaged ethernet devices in nm-applet.
+    - Fix Wi-Fi scan requests with appindicator.
+    - Add stock symbolic icons.
+  + Editor:
+    - Fix drop down list for connection.secondaries.
+    - Remove NotShowIn=GNOME.
+- Drop
+  NetworkManager-gnome-bsc1003069-default-agent-owned-secrets.patch:
+  patch needs to be moved over to libnma.
+
+-------------------------------------------------------------------
 Tue Jun 23 19:24:36 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 1.18.0:
