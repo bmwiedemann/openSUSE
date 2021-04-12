@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python36 1
 Name:           python-fontMath
 Version:        0.6.0
 Release:        0

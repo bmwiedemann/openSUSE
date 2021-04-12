@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 23 19:31:42 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- reinstate python36 build (python36-FontTools is available)
+
+-------------------------------------------------------------------
 Sat Feb 13 09:51:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python36 (no FontTools as it requires scipy) 
