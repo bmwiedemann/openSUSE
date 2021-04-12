@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  7 23:21:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.0:
+  * fix writing ispe box in HEIFs
+  * nclx output profile encoding parameters
+  * change the way nclx profiles is written so that macOS can read them
+  * API for listing file brands and checking file type
+  * fix heif_image_handle_get_depth_image_representation_info()
+
+-------------------------------------------------------------------
 Fri Jan  8 07:26:59 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add baselibs.conf: generate libheif1-32bit, which is a new

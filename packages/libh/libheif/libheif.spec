@@ -21,7 +21,7 @@
 %define gdk_pixbuf_binary_version 2.10.0
 
 Name:           libheif
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 #
@@ -55,7 +55,6 @@ format decoder and encoder.
 HEIF and AVIF are new image file formats employing HEVC (H.265) or AV1 image
 coding, respectively, for the best compression ratios currently possible.
 
-
 %package -n libheif1
 Summary:        HEIF/AVIF file format decoder and encoder
 Group:          System/Libraries
@@ -76,9 +75,8 @@ Group:          Development/Libraries/C and C++
 Requires:       libheif1 = %{version}-%{release}
 
 %description devel
-libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder. 
+libheif is a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder.
 This package contains the header files.
-
 
 %package -n gdk-pixbuf-loader-libheif
 Summary:        GDK PixBuf Loader for %{name}
