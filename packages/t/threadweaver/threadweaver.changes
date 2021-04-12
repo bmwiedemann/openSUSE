@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr  5 07:13:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Changes since 5.80.0:
+  * exception.h: fix export header include to work in namespace-prefixed include
+
+-------------------------------------------------------------------
 Sun Mar  7 09:27:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.80.0
