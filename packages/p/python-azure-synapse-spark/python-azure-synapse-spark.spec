@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-synapse-spark
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Microsoft Azure Synapse Spark Client Library for Python
 License:        MIT
