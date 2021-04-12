@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Mar 20 18:16:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Stable release. No changes since release candidate.
+
+-------------------------------------------------------------------
+Thu Mar 18 09:11:48 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 15 11:37:09 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 40.beta:
+  + Added new text templates for easier CSS editing.
+  + Updated bundled highlight.js and added SML highlighter.
+  + Added experimental links styles for the GNOME 40 help.
+  + Added html.grid.size parameter to templatize CSS grid size.
+  + Hide sidebars by default at 720px.
+  + Updated COPYING file, which was pretty out of date.
+  + Some documentation updates and improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Feb 13 16:52:35 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.3:
