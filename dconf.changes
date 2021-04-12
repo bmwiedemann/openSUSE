@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Mar 18 14:20:52 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.40.0:
+  + common: Add missing G_BEGIN/END_DECLS to allow use of headers
+    from C++ code.
+
+-------------------------------------------------------------------
+Tue Feb  9 12:40:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.39.1:
+  + Build:
+    - Improve libdconf visible symbols.
+    - Minor fixes to bash completion script.
+  + Engine: do not emit optimistic change notifications unless the
+    local value is different.
+  + service: add a systemd unit for D-Bus activation.
+
+-------------------------------------------------------------------
 Mon Sep 14 12:39:47 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 0.38.0:

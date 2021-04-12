@@ -1,7 +1,7 @@
 #
 # spec file for package dconf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           dconf
-Version:        0.38.0
+Version:        0.40.0
 Release:        0
 Summary:        Key-based configuration system
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://live.gnome.org/dconf
-Source0:        https://download.gnome.org/sources/dconf/0.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/dconf/0.40/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gtk-doc
@@ -125,6 +125,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/dconf/{profile,db}
 %{_mandir}/man1/dconf-service.1%{?ext_man}
 # alternative databases
 %{_sysconfdir}/dconf/
+%{_userunitdir}/dconf.service
 
 %files -n libdconf1
 %{_libdir}/libdconf.so.*
