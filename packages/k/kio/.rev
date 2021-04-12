@@ -929,4 +929,12 @@ I'd vote for Leap 15.0 as well... (forwarded request 604374 from wolfi323)</comm
   * 0001-MimeTypeFinderJob-don-t-put-job-on-hold-for-local-fi.patch</comment>
     <requestid>880771</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>3caebd79a92e9c620fbecf608f47a7e8</srcmd5>
+    <version>5.81.0</version>
+    <time>1618223674</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.81.0</comment>
+    <requestid>884266</requestid>
+  </revision>
 </revisionlist>
