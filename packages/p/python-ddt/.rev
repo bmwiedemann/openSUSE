@@ -116,4 +116,12 @@
   merged upstream</comment>
     <requestid>880822</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>6f9d4378b98c46253c977047ad098fb1</srcmd5>
+    <version>1.4.2</version>
+    <time>1618223621</time>
+    <user>dimstar_suse</user>
+    <comment>- fix python 2.x build</comment>
+    <requestid>883686</requestid>
+  </revision>
 </revisionlist>

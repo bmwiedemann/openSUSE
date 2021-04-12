@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  7 20:25:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- fix python 2.x build 
+
+-------------------------------------------------------------------
 Tue Mar 23 21:06:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.2:

@@ -33,7 +33,8 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest}
 %if %{with python2}
-BuildRequires:  python-mock
+BuildRequires:  python2-enum34
+BuildRequires:  python2-mock
 %endif
 # /SECTION
 %python_subpackages
