@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-multiapi-storage
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-multiapi-storage
-Version:        0.5.2
+Version:        0.6.2
 Release:        0
 Summary:        Microsoft Azure Storage Client Library for Python - with Multi API version Support
 License:        MIT
@@ -35,8 +35,11 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-common
+Requires:       python-azure-core < 2.0.0
+Requires:       python-azure-core >= 1.10.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-cryptography
+Requires:       python-cryptography >= 2.1.4
+Requires:       python-msrest >= 0.6.18
 Requires:       python-python-dateutil
 Requires:       python-requests
 Conflicts:      python-azure-sdk <= 2.0.0
