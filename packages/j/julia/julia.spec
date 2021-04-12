@@ -1,7 +1,7 @@
 #
 # spec file for package julia
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,20 +23,35 @@
 %undefine _build_create_debug
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
+%global __provides_exclude_from ^%{_libdir}/%{name}/.*\\.so$
+
+# List all bundled libraries.
+%global _privatelibs lib(LLVM-.*|ccalltest|dSFMT|git2|llvmcalltest|openlibm|suitesparse_wrapper|mbedcrypto|mbedtls|mbedx509|uv)\\.so.*
+%global __provides_exclude ^(%{_privatelibs})$
+%global __requires_exclude ^(%{_privatelibs})$
+
+# Temporary workaround to apply Patch1 that must be removed with Julia 1.6.1.
+%global _default_patch_fuzz 2
+
 %define libjulia_sover_major 1
-%define libjulia_sover_minor 5
+%define libjulia_sover_minor 6
 %if "@BUILD_FLAVOR@%{nil}" == "compat"
 %define compat_mode  1
 %else
 %define compat_mode  0
 %endif
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 URL:            http://julialang.org/
 Source0:        https://github.com/JuliaLang/julia/releases/download/v%{version}/julia-%{version}-full.tar.gz
+Source1:        julia-rpmlintrc
 Source99:       juliabuildopts
 # PATCH-FIX-OPENSUSE julia-env-script-interpreter.patch ronisbr@gmail.com -- Change script interpreted to avoid errors in rpmlint.
 Patch0:         julia-env-script-interpreter.patch
+# PATCH-FIX-UPSTREAM julia-fix-use_system_csl.patch ronisbr@gmail.com -- Fix build process with `USE_SYSTEM_CSL=1`.
+Patch1:         julia-fix-use_system_csl.patch
+# PATCH-FIX-OPENSUSE julia-fix_doc_build.patch ronisbr@gmail.com -- Makefile is building the docs with `USE_SYSTEM_CSL=1` even if they are already available in the tarball.
+Patch2:         julia-fix_doc_build.patch
 BuildRequires:  arpack-ng-devel >= 3.3.0
 BuildRequires:  blas-devel
 BuildRequires:  cmake
@@ -49,11 +64,11 @@ BuildRequires:  gmp-devel >= 6.1.2
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  lapack-devel >= 3.5.0
 BuildRequires:  libcurl-devel
+BuildRequires:  libnghttp2-devel
 BuildRequires:  libopenblas_openmp-devel >= 0.3.5
 BuildRequires:  libssh2-devel >= 1.9.0
 BuildRequires:  libunwind-devel >= 1.3.1
 BuildRequires:  m4
-BuildRequires:  mbedtls-devel >= 2.16.0
 BuildRequires:  mpfr-devel >= 4.0.2
 BuildRequires:  ncurses-devel
 BuildRequires:  openspecfun-devel
@@ -97,11 +112,11 @@ Name:           julia-compat
 %endif
 %if 0%{?compat_mode} == 0
 Summary:        High-level, high-performance dynamic programming language
-License:        MIT AND GPL-2.0-or-later AND BSD-3-Clause AND Zlib
+License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT AND Zlib
 Group:          Development/Languages/Other
 %else
 Summary:        High-level, high-performance dynamic programming language (without CPU optim.)
-License:        MIT AND GPL-2.0-or-later AND BSD-3-Clause AND Zlib
+License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT AND Zlib
 Group:          Development/Languages/Other
 %endif
 %if 0%{?compat_mode}
@@ -168,6 +183,8 @@ Contains the Julia manual, the reference documentation of the standard library.
 %prep
 %setup -q -n julia-%{version}
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 # remove .gitignore
 find . -name ".git*" -exec rm {} \;

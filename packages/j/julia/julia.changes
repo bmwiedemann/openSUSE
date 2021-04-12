@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr  9 02:07:16 UTC 2021 - Ronan Chagas <ronisbr@gmail.com>
+
+- Add patch `julia-fix-use_system_csl.patch` so that we can build
+  using the option `USE_SYSTEM_CSL=1`.
+- Add patch `julia-fix_doc_build.patch` to avoid building the
+  documentation even if when the tarball already contains it.
+  This seems an upstream bug that is triggered with
+  `USE_SYSTEM_CSL=1` together with the previous patch.
+- Add options `__provides_exclude` and `__requires_exclude` to
+  avoid conflict between the bundled libraries and the system
+  ones.
+
+-------------------------------------------------------------------
+Wed Apr  7 03:01:30 UTC 2021 - kh Lai <dlshcbmuipmam@hotmail.com>
+- Version bump to 1.6.0.
+- Add julia-rpmlintrc to filter devel-file-in-non-devel-package
+  error.
+- Use bundled version of mbedtls-devel instead of system library.
+
+-------------------------------------------------------------------
 Wed Oct 14 17:19:33 UTC 2020 - Radosław Wyrzykowski <r.wyrz@outlook.com>
 
 - Version bump to 1.5.2, see NEWS.md for details.
