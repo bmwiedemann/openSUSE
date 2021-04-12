@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr  5 07:12:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Too many changes since 5.80.0, only listing bugfixes:
+  * ensure qrc + QDir::searchPaths work for icons (kde#434451)
+- Drop patches:
+  * 0001-ensure-qrc-QDir-searchPaths-work-for-icons.patch
+  * 3262669e.patch
+
+-------------------------------------------------------------------
 Wed Mar 31 12:35:07 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add 3262669e.patch
