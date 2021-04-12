@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 %define pkg_name    psr
 
 Name:           %{php_name}-%{pkg_name}
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        PSR Extension Module
 License:        BSD-2-Clause

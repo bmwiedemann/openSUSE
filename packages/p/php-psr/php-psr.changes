@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 10 10:43:28 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 1.1.0
+  * Update psr/container to 1.1.1
+  * Add version ID constants to each header
+  * Use __dllspec(dllimport) where appropriate in php_psr.h on windows
+
+-------------------------------------------------------------------
 Wed Feb 17 08:35:10 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Run unit tests
