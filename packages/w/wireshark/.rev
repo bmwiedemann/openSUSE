@@ -1501,4 +1501,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment></comment>
     <requestid>878299</requestid>
   </revision>
+  <revision rev="172" vrev="2">
+    <srcmd5>e68ff24a5f70a991d3dc8c2bad40a4cf</srcmd5>
+    <version>3.4.4</version>
+    <time>1618223769</time>
+    <user>dimstar_suse</user>
+    <comment>wireshark changes for cmake 3.20 and glib</comment>
+    <requestid>883186</requestid>
+  </revision>
 </revisionlist>

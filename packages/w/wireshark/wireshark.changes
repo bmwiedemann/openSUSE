@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Mar 31 15:43:15 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- cmake 3.20 compatibility (boo#1184110)
+  add cmake_3-20_compatibility_1.patch and cmake_3-20_compatibility_2.patch
+
+-------------------------------------------------------------------
+Tue Mar 30 18:45:45 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Add patch from Fedora to fix build with glib2-2.68
+  + Patch: wireshark-0008-move-glib.patch
+
+-------------------------------------------------------------------
 Thu Mar 11 07:40:14 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 3.4.4:

@@ -36,6 +36,10 @@ URL:            https://www.wireshark.org/
 Source:         https://www.wireshark.org/download/src/%{name}-%{version}.tar.xz
 Source2:        https://www.wireshark.org/download/SIGNATURES-%{version}.txt#/%{name}-%{version}.tar.xz.asc
 Source3:        https://www.wireshark.org/download/gerald_at_wireshark_dot_org.gpg#/wireshark.keyring
+Patch1:         cmake_3-20_compatibility_1.patch
+Patch2:         cmake_3-20_compatibility_2.patch
+# Source: https://src.fedoraproject.org/rpms/wireshark/blob/f8e39e79bf25d6c3fb3f333e58f27165cc959781/f/wireshark-0008-move-glib.patch
+Patch8:         wireshark-0008-move-glib.patch
 Patch10:        wireshark-0001-dumpcap-permission-denied.patch
 BuildRequires:  bison
 BuildRequires:  flex
@@ -171,9 +175,8 @@ This package contains the Qt based UI for Wireshark.
 echo "`grep %{name}-%{version}.tar.xz %{SOURCE2} | grep SHA1 | head -n1 | cut -d= -f2`  %{SOURCE0}" | sha1sum -c
 echo "`grep %{name}-%{version}.tar.xz %{SOURCE2} | grep SHA256 | head -n1 | cut -d= -f2`  %{SOURCE0}" | sha256sum -c
 
-%setup -q
+%autosetup -p1
 sed -i 's/^Icon=wireshark.png$/Icon=wireshark/' wireshark*.desktop
-%patch10 -p1
 
 %build
 %cmake -DCMAKE_INSTALL_LIBDIR='%{_lib}/'

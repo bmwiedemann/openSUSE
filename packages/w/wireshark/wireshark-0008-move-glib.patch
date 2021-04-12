@@ -1,0 +1,312 @@
+diff --git a/caputils/capture_ifinfo.h b/caputils/capture_ifinfo.h
+index e063134b74..9965703538 100644
+--- a/caputils/capture_ifinfo.h
++++ b/caputils/capture_ifinfo.h
+@@ -11,12 +11,12 @@
+ #ifndef __CAPTURE_IFINFO_H__
+ #define __CAPTURE_IFINFO_H__
+ 
++#include <glib.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */
+ 
+-#include <glib.h>
+-
+ /*
+  * Explicitly set the interface_type enum values as these values are exposed
+  * in the preferences gui.interfaces_hidden_types string.
+diff --git a/epan/dissectors/dissectors.h b/epan/dissectors/dissectors.h
+index b9f4c6b0ff..6f83b01b7c 100644
+--- a/epan/dissectors/dissectors.h
++++ b/epan/dissectors/dissectors.h
+@@ -11,12 +11,12 @@
+ #ifndef __DISSECTOR_REGISTER_H__
+ #define __DISSECTOR_REGISTER_H__
+ 
++#include <glib.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */
+ 
+-#include <glib.h>
+-
+ typedef struct _dissector_reg {
+     const char *cb_name;
+     void (*cb_func)(void);
+diff --git a/epan/epan.h b/epan/epan.h
+index 1f6a52fa27..f646c1fc95 100644
+--- a/epan/epan.h
++++ b/epan/epan.h
+@@ -10,11 +10,12 @@
+ #ifndef __EPAN_H__
+ #define __EPAN_H__
+ 
++#include <glib.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */
+ 
+-#include <glib.h>
+ #include <epan/tvbuff.h>
+ #include <epan/prefs.h>
+ #include <epan/frame_data.h>
+diff --git a/epan/prefs.h b/epan/prefs.h
+index 1fc560ccdc..1814f53a80 100644
+--- a/epan/prefs.h
++++ b/epan/prefs.h
+@@ -11,12 +11,12 @@
+ #ifndef __PREFS_H__
+ #define __PREFS_H__
+ 
++#include <glib.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */
+ 
+-#include <glib.h>
+-
+ #include <epan/params.h>
+ #include <epan/range.h>
+ 
+diff --git a/epan/value_string.h b/epan/value_string.h
+index 03551e31f4..548ec6a7ae 100644
+--- a/epan/value_string.h
++++ b/epan/value_string.h
+@@ -11,11 +11,12 @@
+ #ifndef __VALUE_STRING_H__
+ #define __VALUE_STRING_H__
+ 
++#include <glib.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */
+ 
+-#include <glib.h>
+ #include "ws_symbol_export.h"
+ #include "wmem/wmem.h"
+ 
+diff --git a/epan/wmem/wmem_user_cb_int.h b/epan/wmem/wmem_user_cb_int.h
+index 3045d943ab..7232241c81 100644
+--- a/epan/wmem/wmem_user_cb_int.h
++++ b/epan/wmem/wmem_user_cb_int.h
+@@ -12,11 +12,12 @@
+ #ifndef __WMEM_USER_CB_INT_H__
+ #define __WMEM_USER_CB_INT_H__
+ 
++#include <glib.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */
+ 
+-#include <glib.h>
+ #include "wmem_user_cb.h"
+ 
+ WS_DLL_LOCAL
+diff --git a/ui/packet_range.h b/ui/packet_range.h
+index 6e7d34d118..2e5dad62af 100644
+--- a/ui/packet_range.h
++++ b/ui/packet_range.h
+@@ -14,12 +14,12 @@
+ #ifndef __PACKET_RANGE_H__
+ #define __PACKET_RANGE_H__
+ 
++#include <glib.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */
+ 
+-#include <glib.h>
+-
+ #include <epan/range.h>
+ #include <epan/frame_data.h>
+ 
+diff --git a/ui/recent.h b/ui/recent.h
+index 3d6d1c9cdb..5ae5852bb4 100644
+--- a/ui/recent.h
++++ b/ui/recent.h
+@@ -12,11 +12,12 @@
+ #ifndef __RECENT_H__
+ #define __RECENT_H__
+ 
++#include <glib.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */
+ 
+-#include <glib.h>
+ #include <stdio.h>
+ #include "epan/timestamp.h"
+ #include "ui/ws_ui_util.h"
+diff --git a/ui/rtp_media.h b/ui/rtp_media.h
+index 04290f6aee..e144ac571e 100644
+--- a/ui/rtp_media.h
++++ b/ui/rtp_media.h
+@@ -15,6 +15,8 @@
+ #ifndef __RTP_MEDIA_H__
+ #define __RTP_MEDIA_H__
+ 
++#include <glib.h>
++
+ /** @file
+  *  "RTP Player" dialog box common routines.
+  *  @ingroup main_ui_group
+@@ -24,8 +26,6 @@
+ extern "C" {
+ #endif /* __cplusplus */
+ 
+-#include <glib.h>
+-
+ /****************************************************************************/
+ /* INTERFACE */
+ /****************************************************************************/
+diff --git a/ui/rtp_stream.h b/ui/rtp_stream.h
+index e368a792bf..b683f16ba7 100644
+--- a/ui/rtp_stream.h
++++ b/ui/rtp_stream.h
+@@ -14,6 +14,8 @@
+ #ifndef __RTP_STREAM_H__
+ #define __RTP_STREAM_H__
+ 
++#include <glib.h>
++
+ /** @file
+  *  "RTP Streams" dialog box common routines.
+  *  @ingroup main_ui_group
+@@ -24,7 +26,6 @@ extern "C" {
+ #endif /* __cplusplus */
+ 
+ #include "tap-rtp-analysis.h"
+-#include <glib.h>
+ #include <stdio.h>
+ 
+ #include "cfile.h"
+diff --git a/ui/voip_calls.h b/ui/voip_calls.h
+index 0fc71f180f..cfd791d6f8 100644
+--- a/ui/voip_calls.h
++++ b/ui/voip_calls.h
+@@ -22,6 +22,8 @@
+ #ifndef __VOIP_CALLS_H__
+ #define __VOIP_CALLS_H__
+ 
++#include <glib.h>
++
+ /** @file
+  *  "VoIP Calls" dialog box common routines.
+  *  @ingroup main_ui_group
+@@ -31,7 +33,6 @@
+ extern "C" {
+ #endif /* __cplusplus */
+ 
+-#include <glib.h>
+ #include <stdio.h>
+ 
+ #include "epan/address.h"
+diff --git a/wsutil/file_util.h b/wsutil/file_util.h
+index 565b9d46e3..e9942f3c5b 100644
+--- a/wsutil/file_util.h
++++ b/wsutil/file_util.h
+@@ -11,6 +11,8 @@
+ #ifndef __FILE_UTIL_H__
+ #define __FILE_UTIL_H__
+ 
++#include <glib.h>
++
+ #include "config.h"
+ 
+ #include "ws_symbol_export.h"
+@@ -19,8 +21,6 @@
+ extern "C" {
+ #endif /* __cplusplus */
+ 
+-#include <glib.h>
+-
+ #ifdef _WIN32
+ #include <io.h>		/* for _read(), _write(), etc. */
+ #include <gmodule.h>
+diff --git a/wsutil/plugins.h b/wsutil/plugins.h
+index 49c221ef5e..9eaa0e41ea 100644
+--- a/wsutil/plugins.h
++++ b/wsutil/plugins.h
+@@ -11,13 +11,13 @@
+ #ifndef __PLUGINS_H__
+ #define __PLUGINS_H__
+ 
++#include <glib.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */
+ 
+-#include <glib.h>
+ #include <gmodule.h>
+-
+ #include "ws_symbol_export.h"
+ 
+ typedef void (*plugin_register_func)(void);
+diff --git a/ui/taps.h b/ui/taps.h
+index 4078e6d..d083519 100644
+--- a/ui/taps.h
++++ b/ui/taps.h
+@@ -11,12 +11,12 @@
+ #ifndef __TAP_REGISTER_H__
+ #define __TAP_REGISTER_H__
+ 
++#include <glib.h>
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */
+ 
+-#include <glib.h>
+-
+ typedef struct _tap_reg {
+     const char *cb_name;
+     void (*cb_func)(void);
+diff --git a/epan/epan_dissect.h b/epan/epan_dissect.h
+index f288682..6bce465 100644
+--- a/epan/epan_dissect.h
++++ b/epan/epan_dissect.h
+@@ -10,11 +10,12 @@
+ #ifndef EPAN_DISSECT_H
+ #define EPAN_DISSECT_H
+ 
++#include "epan.h"
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif /* __cplusplus */
+ 
+-#include "epan.h"
+ #include "tvbuff.h"
+ #include "proto.h"
+ #include "packet_info.h"
+diff --git a/epan/conversation.h b/epan/conversation.h
+index 2da42db..9457336 100644
+--- a/epan/conversation.h
++++ b/epan/conversation.h
+@@ -12,6 +12,7 @@
+ #define __CONVERSATION_H__
+ 
+ #include "ws_symbol_export.h"
++#include "packet.h"			/* for conversation dissector type */
+ 
+ #ifdef __cplusplus
+ extern "C" {
+@@ -46,8 +47,6 @@ extern "C" {
+ /* Flags to handle endpoints */
+ #define USE_LAST_ENDPOINT 0x08		/* Use last endpoint created, regardless of type */
+ 
+-#include "packet.h"			/* for conversation dissector type */
+-
+ /* Types of port numbers Wireshark knows about. */
+ typedef enum {
+ 	ENDPOINT_NONE,			/* no endpoint */
