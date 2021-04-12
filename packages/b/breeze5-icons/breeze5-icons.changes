@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr  5 07:12:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Changes since 5.80.0:
+  * Add a few symlinks for "configure" and "help-donate" (kde#435150)
+  * Add KMyMoney Pie-Chart Icon
+  * Link svn-* icons to new vcs-* icons
+  * Add vcs-* icons for Kate
+  * Also check for lxml.etree
+  * Make lock icon filled status consistent (kde#244542)
+  * Remove 22 brightness icons in 16 size folder
+  * Fix location of brightness icons
+  * Add high-brightness and low-brightness icons
+
+-------------------------------------------------------------------
 Sun Mar  7 09:26:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.80.0
