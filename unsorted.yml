@@ -2733,7 +2733,6 @@ unsorted:
   - dhall-yaml: [x86_64] 
   - dhcp-devel 
   - dhcp-doc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - dhcp-tools 
   - dhcpd-pools 
   - dhewm3 
   - dhex 
@@ -3524,7 +3523,6 @@ unsorted:
   - firebird-examples 
   - firebird-server 
   - firebird-utils 
-  - firecracker: [x86_64] 
   - firectl: [x86_64] 
   - firefox-esr-branding-openSUSE 
   - firefox-uget-integrator 
@@ -5369,7 +5367,6 @@ unsorted:
   - git-crypt 
   - git-daemon: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - git-delta 
-  - git-deps-html 
   - git-doc 
   - git-filter-repo 
   - git-lfs 
@@ -5407,6 +5404,7 @@ unsorted:
   - glade-catalog-libhandy 
   - glade-catalog-libpeas 
   - glade-catalog-v3270 
+  - glade-catalog-vte 
   - glade-sharp2 
   - glassfish-annotation-api 
   - glassfish-annotation-api-javadoc 
@@ -5566,7 +5564,6 @@ unsorted:
   - gnome-dvb-daemon 
   - gnome-dvb-daemon-lang 
   - gnome-epub-thumbnailer 
-  - gnome-extensions 
   - gnome-firmware 
   - gnome-firmware-lang 
   - gnome-font-viewer 
@@ -5719,7 +5716,6 @@ unsorted:
   - gnuradio-devel 
   - gnuradio-doc 
   - gnuradio-examples 
-  - gnuserv 
   - gnusocialshell 
   - gnustep-base 
   - gnustep-base-devel 
@@ -6016,7 +6012,6 @@ unsorted:
   - grpc-source 
   - grsync 
   - grsync-lang 
-  - grub 
   - grub2-branding-upstream 
   - grub2-i386-efi: [i586] 
   - grub2-i386-efi-debug: [i586] 
@@ -6498,7 +6493,6 @@ unsorted:
   - hfst-devel 
   - hfst-ospell 
   - hfst-ospell-devel 
-  - hg-fast-export 
   - hiawatha 
   - hiawatha-letsencrypt 
   - hibiscus 
@@ -7418,7 +7412,8 @@ unsorted:
   - junitperf 
   - junitperf-demo 
   - junitperf-javadoc 
-  - jupyter-bqplot 
+  - jupyter-bqplot-jupyterlab 
+  - jupyter-bqplot-notebook 
   - jupyter-cadabra2-kernel 
   - jupyter-calysto 
   - jupyter-doc 
@@ -7833,7 +7828,6 @@ unsorted:
   - kitemviews-devel-32bit: [x86_64] 
   - kiten-devel 
   - kitinerary-devel 
-  - kitty 
   - kiwi-man-pages 
   - kiwi-systemdeps 
   - kiwi-systemdeps-bootloaders 
@@ -7910,16 +7904,6 @@ unsorted:
   - kontactinterface-devel 
   - kontrast 
   - kontrast-lang 
-  - kopano-webapp 
-  - kopano-webapp-contactfax 
-  - kopano-webapp-folderwidgets 
-  - kopano-webapp-gmaps 
-  - kopano-webapp-lang 
-  - kopano-webapp-pimfolder 
-  - kopano-webapp-quickitems 
-  - kopano-webapp-titlecounter 
-  - kopano-webapp-webappmanual 
-  - kopano-webapp-zdeveloper 
   - kopete-devel 
   - kosmindoormap 
   - kosmindoormap-devel 
@@ -9312,8 +9296,6 @@ unsorted:
   - libastylej3 
   - libasync 
   - libasync-devel 
-  - libasyncns-devel 
-  - libasyncns0 
   - libatasmart-devel 
   - libathemecore1 
   - libatk-bridge-2_0-0-32bit: [x86_64] 
@@ -10196,8 +10178,8 @@ unsorted:
   - libecryptfs1-32bit: [x86_64] 
   - libedata-book-1_2-26-32bit: [x86_64] 
   - libedata-cal-2_0-1-32bit: [x86_64] 
-  - libedataserver-1_2-25-32bit: [x86_64] 
-  - libedataserverui-1_2-2-32bit: [x86_64] 
+  - libedataserver-1_2-26-32bit: [x86_64] 
+  - libedataserverui-1_2-3-32bit: [x86_64] 
   - libedit-devel 
   - libedit0-32bit: [x86_64] 
   - libeditorconfig-devel 
@@ -10680,7 +10662,6 @@ unsorted:
   - libgmpxx4 
   - libgmpxx4-32bit: [x86_64] 
   - libgmsh4_7 
-  - libgnome-desktop-3-19-32bit: [x86_64] 
   - libgnome-desktop-3-devel 
   - libgnome-games-support-devel 
   - libgnome-keyring-devel 
@@ -10921,6 +10902,7 @@ unsorted:
   - libhal1 
   - libhamlib++4 
   - libhamlib4 
+  - libhandy-0_0-0 
   - libhandy-devel 
   - libhandy0-devel 
   - libhangul-devel 
@@ -11613,6 +11595,7 @@ unsorted:
   - libmagic1-32bit: [x86_64] 
   - libmaia-devel 
   - libmaia1 
+  - libmanette-0_2-0-32bit: [x86_64] 
   - libmanette-devel 
   - libmapidb-devel 
   - libmapidb1 
@@ -12321,7 +12304,6 @@ unsorted:
   - libossp-uuid_dce16 
   - libostree-devel 
   - libostree-grub2 
-  - libotb7 
   - libotf 
   - libotf-devel 
   - libotf-devel-32bit: [x86_64] 
@@ -13163,7 +13145,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-3_9_1 
+  - librssguard-3_9_2 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -13948,10 +13930,10 @@ unsorted:
   - libva-x11-2-32bit: [x86_64] 
   - libva2-32bit: [x86_64] 
   - libvacuumutils37 
-  - libvala-0_50-0 
-  - libvala-0_50-devel 
-  - libvaladoc-0_50-0 
-  - libvaladoc-0_50-devel 
+  - libvala-0_52-0 
+  - libvala-0_52-devel 
+  - libvaladoc-0_52-0 
+  - libvaladoc-0_52-devel 
   - libvamp-hostsdk3: [i586] 
   - libvamp-hostsdk3-32bit: [x86_64] 
   - libvamp-sdk2 
@@ -14119,7 +14101,6 @@ unsorted:
   - libwebrtc_audio_processing-devel-static 
   - libwebrtc_audio_processing1-32bit: [x86_64] 
   - libwebsockets-devel 
-  - libwebvfx1 
   - libweston-9 
   - libweston-9-0 
   - libweston-desktop-9-0 
@@ -14368,7 +14349,6 @@ unsorted:
   - libxkbfile-devel-32bit: [x86_64] 
   - libxkbfile1-32bit: [x86_64] 
   - libxkbregistry-devel 
-  - libxkbregistry0 
   - libxkbui-devel 
   - libxkbui-devel-32bit: [x86_64] 
   - libxkbui1 
@@ -15092,8 +15072,6 @@ unsorted:
   - mISDNuser-devel 
   - mac-robber 
   - macchanger 
-  - machinery 
-  - machinery-doc 
   - macrofusion 
   - madplay 
   - madplay-lang 
@@ -15287,7 +15265,6 @@ unsorted:
   - matrix-synapse 
   - matthewlib-java 
   - matthewlib-java-javadoc 
-  - mautrix-telegram-server 
   - maven 
   - maven-ant-plugin 
   - maven-ant-plugin-javadoc 
@@ -15902,7 +15879,6 @@ unsorted:
   - mono-zeroconf-doc 
   - mono-zeroconf-provider-avahi 
   - monodoc-core 
-  - monteverdi 
   - moonjit 
   - moonjit-devel 
   - mopac7 
@@ -17694,7 +17670,6 @@ unsorted:
   - openpgm-devel 
   - openrct2 
   - openrct2-titlesequences 
-  - openrdate 
   - openregex 
   - openregex-javadoc 
   - openresolv 
@@ -17860,9 +17835,6 @@ unsorted:
   - ossim-sample-data 
   - osslsigncode 
   - ossp-uuid 
-  - otb-bin 
-  - otb-devel 
-  - otb-qt 
   - oto 
   - otpclient 
   - otter-browser 
@@ -20565,7 +20537,6 @@ unsorted:
   - pulseeffects-lang 
   - pulseview 
   - pumpa 
-  - pure-ftpd 
   - purpose-32bit: [x86_64] 
   - purpose-devel 
   - purpose-devel-32bit: [x86_64] 
@@ -20767,7 +20738,6 @@ unsorted:
   - python-tqdm-bash-completion 
   - python-translationstring-doc 
   - python-typeshed 
-  - python-xcaplib-bash-completion 
   - python-zope.deprecation-doc 
   - python-zope.event-doc 
   - python-zope.hookable-doc 
@@ -20785,6 +20755,7 @@ unsorted:
   - python3-Hamlib 
   - python3-HepMC 
   - python3-Keras: [x86_64] 
+  - python3-Keras-Preprocessing: [x86_64] 
   - python3-Keras-examples: [x86_64] 
   - python3-MapProxy 
   - python3-OpenImageIO 
@@ -20828,7 +20799,6 @@ unsorted:
   - python3-capstone 
   - python3-castellan 
   - python3-ccm 
-  - python3-cilium-microscope 
   - python3-cinderclient 
   - python3-clang 
   - python3-cliff 
@@ -20856,16 +20826,13 @@ unsorted:
   - python3-dnf-plugin-versionlock 
   - python3-dnf-plugins-core 
   - python3-dnf-plugins-extras-common 
-  - python3-dtfabric 
   - python3-ec2imgutils 
   - python3-ec2metadata 
-  - python3-enforce-pep8 
   - python3-espressomd 
   - python3-evemu 
   - python3-fastjet 
   - python3-fife 
   - python3-fityk 
-  - python3-flake8-future-import 
   - python3-framel 
   - python3-freezerclient 
   - python3-futurist 
@@ -20875,7 +20842,6 @@ unsorted:
   - python3-genders 
   - python3-gensio 
   - python3-gexiv2 
-  - python3-git-deps 
   - python3-glanceclient 
   - python3-glom 
   - python3-glucat 
@@ -20986,7 +20952,6 @@ unsorted:
   - python3-marisa 
   - python3-masakariclient 
   - python3-matrix-synapse-ldap3 
-  - python3-mautrix-telegram 
   - python3-mistralclient 
   - python3-mlt 
   - python3-monascaclient 
@@ -20994,20 +20959,17 @@ unsorted:
   - python3-mox3 
   - python3-mraa 
   - python3-murano-pkg-check 
-  - python3-napalm-exos 
   - python3-nemo 
   - python3-netgen: [x86_64] 
   - python3-neutronclient 
   - python3-newt 
   - python3-nghttp2 
-  - python3-nose2pytest 
   - python3-notcurses 
   - python3-notmuch 
   - python3-novaclient 
   - python3-ntp 
   - python3-obexftp 
   - python3-octaviaclient 
-  - python3-onnxconverter-common 
   - python3-openbabel 
   - python3-opencv 
   - python3-opencv3 
@@ -21044,7 +21006,6 @@ unsorted:
   - python3-oslo.vmware 
   - python3-oslotest 
   - python3-osprofiler 
-  - python3-otb 
   - python3-ovs 
   - python3-ovsdbapp 
   - python3-paraview 
@@ -21058,9 +21019,7 @@ unsorted:
   - python3-presagemate 
   - python3-prewikka 
   - python3-pwquality 
-  - python3-pyIOSXR 
   - python3-pycadf 
-  - python3-pyfg 
   - python3-pyghmi 
   - python3-pyginac 
   - python3-pyginac-devel 
@@ -21078,11 +21037,9 @@ unsorted:
   - python3-pytest-pyramid-server 
   - python3-pytest-server-fixtures 
   - python3-python-pseudorandom: [i586] 
-  - python3-python-qnotifications 
   - python3-renderspec 
   - python3-reno 
   - python3-rpmconf 
-  - python3-rpmfluff 
   - python3-rrdtool 
   - python3-rust2rpm 
   - python3-saharaclient 
@@ -21118,7 +21075,6 @@ unsorted:
   - python3-unbound 
   - python3-upm 
   - python3-vapoursynth 
-  - python3-vdirsyncer 
   - python3-virtualbox: [x86_64] 
   - python3-virtualenvwrapper 
   - python3-vtk 
@@ -21127,7 +21083,6 @@ unsorted:
   - python3-vtk-openmpi3 
   - python3-watchman 
   - python3-websockify 
-  - python3-xcaplib 
   - python3-xcb-proto-devel 
   - python3-xrootd 
   - python3-yang 
@@ -21212,7 +21167,6 @@ unsorted:
   - python36-JsonWeb 
   - python36-Kajiki 
   - python36-Keras-Applications: [x86_64] 
-  - python36-Keras-Preprocessing: [x86_64] 
   - python36-Kivy 
   - python36-Kivy-devel 
   - python36-LHAPDF 
@@ -21396,6 +21350,7 @@ unsorted:
   - python36-aiosmtplib 
   - python36-aiosqlite 
   - python36-aiounittest 
+  - python36-ajsonrpc 
   - python36-akismet 
   - python36-alabaster 
   - python36-aldjemy 
@@ -21429,7 +21384,6 @@ unsorted:
   - python36-apsw 
   - python36-arabic-reshaper 
   - python36-archmage 
-  - python36-arf 
   - python36-argcomplete 
   - python36-argh 
   - python36-argon2-cffi 
@@ -21756,7 +21710,6 @@ unsorted:
   - python36-bottle 
   - python36-bowler 
   - python36-bpython 
-  - python36-bqplot 
   - python36-branca 
   - python36-breathe 
   - python36-brewer2mpl 
@@ -21960,6 +21913,7 @@ unsorted:
   - python36-debian 
   - python36-decorator 
   - python36-deepmerge 
+  - python36-defcon 
   - python36-defusedxml 
   - python36-delegator 
   - python36-delegator.py 
@@ -22132,6 +22086,7 @@ unsorted:
   - python36-drms 
   - python36-dropbox 
   - python36-dtaidistance 
+  - python36-dtfabric 
   - python36-duckduckgo2 
   - python36-dukpy 
   - python36-dukpy-kovidgoyal 
@@ -22233,7 +22188,6 @@ unsorted:
   - python36-flake8-quotes 
   - python36-flaky 
   - python36-flasgger 
-  - python36-flask-jwt-extended 
   - python36-flask-oidc 
   - python36-flask-peewee 
   - python36-flask-restplus 
@@ -22254,6 +22208,9 @@ unsorted:
   - python36-flufl.testing 
   - python36-fluidity-sm 
   - python36-flup 
+  - python36-fontMath 
+  - python36-fontParts 
+  - python36-fontPens 
   - python36-forbiddenfruit 
   - python36-formats 
   - python36-freeipa 
@@ -22293,6 +22250,7 @@ unsorted:
   - python36-getmac 
   - python36-gevent 
   - python36-geventhttpclient 
+  - python36-gi-docgen 
   - python36-girder-client 
   - python36-git-pw 
   - python36-git-url-parse 
@@ -22436,7 +22394,6 @@ unsorted:
   - python36-ipdb 
   - python36-iptables 
   - python36-ipy 
-  - python36-ipydatawidgets 
   - python36-ipyevents 
   - python36-ipykernel 
   - python36-ipyleaflet 
@@ -22677,7 +22634,6 @@ unsorted:
   - python36-moreorless 
   - python36-moretools 
   - python36-moto 
-  - python36-mplcursors 
   - python36-mpmath 
   - python36-mrcz 
   - python36-msal 
@@ -22834,7 +22790,6 @@ unsorted:
   - python36-parameterized 
   - python36-paramiko 
   - python36-paramiko-expect 
-  - python36-parfive 
   - python36-parse 
   - python36-parse_type 
   - python36-parsedatetime 
@@ -23217,7 +23172,6 @@ unsorted:
   - python36-pytest-mypy 
   - python36-pytest-openfiles 
   - python36-pytest-order 
-  - python36-pytest-ordering 
   - python36-pytest-parallel 
   - python36-pytest-percent 
   - python36-pytest-plus 
@@ -23335,7 +23289,6 @@ unsorted:
   - python36-pythondialog 
   - python36-pythonfinder 
   - python36-pythonwhois 
-  - python36-pythreejs 
   - python36-pytidylib 
   - python36-pytils 
   - python36-pytimeparse 
@@ -23367,7 +23320,6 @@ unsorted:
   - python36-pyzo 
   - python36-q 
   - python36-qet_tb_generator 
-  - python36-qgrid 
   - python36-qrcode 
   - python36-qscintilla-qt5 
   - python36-qscintilla-qt5-sip 
@@ -23492,7 +23444,6 @@ unsorted:
   - python36-ruamel.std.pathlib 
   - python36-ruamel.yaml 
   - python36-ruamel.yaml.clib 
-  - python36-ruamel.yaml.cmd 
   - python36-ruamel.yaml.convert 
   - python36-ruffus 
   - python36-runthis-sphinxext 
@@ -23750,7 +23701,6 @@ unsorted:
   - python36-traitlets 
   - python36-traits 
   - python36-traitsui 
-  - python36-traittypes 
   - python36-transaction 
   - python36-transip 
   - python36-transitions 
@@ -23807,6 +23757,7 @@ unsorted:
   - python36-uproot 
   - python36-uritemplate 
   - python36-uritools 
+  - python36-url-normalize 
   - python36-urlextract 
   - python36-urlgrabber 
   - python36-urllib3 
@@ -23825,6 +23776,7 @@ unsorted:
   - python36-vcrpy 
   - python36-vcver 
   - python36-vcversioner 
+  - python36-vdirsyncer 
   - python36-venusian 
   - python36-venusian-doc 
   - python36-verboselogs 
@@ -24045,7 +23997,6 @@ unsorted:
   - python38-JsonWeb 
   - python38-Kajiki 
   - python38-Keras-Applications: [x86_64] 
-  - python38-Keras-Preprocessing: [x86_64] 
   - python38-Kivy 
   - python38-Kivy-devel 
   - python38-LHAPDF 
@@ -24225,6 +24176,7 @@ unsorted:
   - python38-aiosmtplib 
   - python38-aiosqlite 
   - python38-aiounittest 
+  - python38-ajsonrpc 
   - python38-akismet 
   - python38-alabaster 
   - python38-aldjemy 
@@ -24966,6 +24918,7 @@ unsorted:
   - python38-drms 
   - python38-dropbox 
   - python38-dtaidistance 
+  - python38-dtfabric 
   - python38-duckduckgo2 
   - python38-dukpy 
   - python38-dukpy-kovidgoyal 
@@ -25068,7 +25021,6 @@ unsorted:
   - python38-flake8-quotes 
   - python38-flaky 
   - python38-flasgger 
-  - python38-flask-jwt-extended 
   - python38-flask-oidc 
   - python38-flask-peewee 
   - python38-flask-restplus 
@@ -25130,6 +25082,7 @@ unsorted:
   - python38-geopy 
   - python38-getmac 
   - python38-ggplot 
+  - python38-gi-docgen 
   - python38-girder-client 
   - python38-git-pw 
   - python38-git-url-parse 
@@ -25515,7 +25468,6 @@ unsorted:
   - python38-minio 
   - python38-miniupnpc 
   - python38-misaka 
-  - python38-missingno 
   - python38-mistune 
   - python38-mitmproxy 
   - python38-mizani 
@@ -25657,6 +25609,7 @@ unsorted:
   - python38-oletools 
   - python38-onionshare 
   - python38-onnx 
+  - python38-onnxconverter-common 
   - python38-opcodes 
   - python38-openTSNE 
   - python38-openapi-codec 
@@ -26088,7 +26041,6 @@ unsorted:
   - python38-pytest-mypy 
   - python38-pytest-openfiles 
   - python38-pytest-order 
-  - python38-pytest-ordering 
   - python38-pytest-parallel 
   - python38-pytest-percent 
   - python38-pytest-plus 
@@ -26351,7 +26303,6 @@ unsorted:
   - python38-ruamel.std.pathlib 
   - python38-ruamel.yaml 
   - python38-ruamel.yaml.clib 
-  - python38-ruamel.yaml.cmd 
   - python38-ruamel.yaml.convert 
   - python38-ruffus 
   - python38-runthis-sphinxext 
@@ -26685,6 +26636,7 @@ unsorted:
   - python38-uproot 
   - python38-uritemplate 
   - python38-uritools 
+  - python38-url-normalize 
   - python38-urlextract 
   - python38-urlgrabber 
   - python38-usbsdmux 
@@ -26701,6 +26653,7 @@ unsorted:
   - python38-vcrpy 
   - python38-vcver 
   - python38-vcversioner 
+  - python38-vdirsyncer 
   - python38-vega 
   - python38-vega_datasets 
   - python38-venusian 
@@ -26912,7 +26865,6 @@ unsorted:
   - qlipper-lang 
   - qloud 
   - qm 
-  - qmelt 
   - qml-autoreqprov 
   - qml-box2d 
   - qmlpluginexports-qt5 
@@ -27527,7 +27479,6 @@ unsorted:
   - rsocket-32bit: [x86_64] 
   - rspamd 
   - rss-glx 
-  - rss2email 
   - rssguard 
   - rsstail 
   - rstart 
@@ -36902,8 +36853,6 @@ unsorted:
   - tini 
   - tini-static 
   - tint 
-  - tint2 
-  - tint2-lang 
   - tintii 
   - tinyb-devel 
   - tinyca2 
@@ -37292,7 +37241,6 @@ unsorted:
   - typelib-1_0-GstWebRTC-1_0 
   - typelib-1_0-Gtd-1_0 
   - typelib-1_0-Gtk-2_0 
-  - typelib-1_0-Gtk-4_0 
   - typelib-1_0-GtkFrdp-0_1 
   - typelib-1_0-GtkLayerShell-0_1 
   - typelib-1_0-GtkSource-3_0 
@@ -37347,7 +37295,7 @@ unsorted:
   - typelib-1_0-SpiceClientGlib-2_0 
   - typelib-1_0-SpiceClientGtk-3_0 
   - typelib-1_0-TelepathyFarstream-0_6 
-  - typelib-1_0-Tepl-5 
+  - typelib-1_0-Tepl-6 
   - typelib-1_0-Thunarx-3_0 
   - typelib-1_0-TimezoneMap-1_0 
   - typelib-1_0-Tracker-2_0 
@@ -37465,7 +37413,6 @@ unsorted:
   - unit-api 
   - unit-api-javadoc 
   - unittest-cpp-devel 
-  - universal-ctags 
   - univocity-parsers 
   - univocity-parsers-javadoc 
   - unixODBC 
@@ -37701,6 +37648,7 @@ unsorted:
   - vim-plugin-conky 
   - vim-plugin-diffchanges 
   - vim-plugin-editorconfig 
+  - vim-plugin-file-line 
   - vim-plugin-fugitive 
   - vim-plugin-gitdiff 
   - vim-plugin-gnupg 
@@ -37898,9 +37846,6 @@ unsorted:
   - weblate: [x86_64] 
   - weblate-doc: [x86_64] 
   - websocketpp-devel 
-  - webvfx 
-  - webvfx-devel 
-  - webvfx-module 
   - weechat 
   - weechat-devel 
   - weechat-lang 
