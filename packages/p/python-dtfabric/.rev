@@ -7,4 +7,12 @@
     <comment>Dependency of python-dfVFS.  Initial package.</comment>
     <requestid>765516</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cad9bf3b8af6b93782b8f5e8926ea467</srcmd5>
+    <version>20200621</version>
+    <time>1618240227</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>879215</requestid>
+  </revision>
 </revisionlist>

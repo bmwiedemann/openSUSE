@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 12 13:46:52 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 20200621 release
+  * No changelog was provided.
+
+-------------------------------------------------------------------
+Fri Mar 12 13:45:01 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Setup use of update-alternatives for the package binary.
+
+-------------------------------------------------------------------
 Fri Jan 17 10:51:12 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Initial effort to package dtfabric 20190120
