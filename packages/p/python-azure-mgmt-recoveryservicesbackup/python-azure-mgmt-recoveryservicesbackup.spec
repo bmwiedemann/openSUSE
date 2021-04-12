@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-recoveryservicesbackup
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Microsoft Azure Recovery Services Backup Management Client Library
 License:        MIT
