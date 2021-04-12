@@ -1842,4 +1842,12 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
 - simplify trigger code (forwarded request 874124 from yecril71pl)</comment>
     <requestid>874394</requestid>
   </revision>
+  <revision rev="235" vrev="1">
+    <srcmd5>4ea02eb87b5ff17d90f6e5e471c5d532</srcmd5>
+    <version>2.68.0</version>
+    <time>1618223718</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880936 from dimstar)</comment>
+    <requestid>881109</requestid>
+  </revision>
 </revisionlist>

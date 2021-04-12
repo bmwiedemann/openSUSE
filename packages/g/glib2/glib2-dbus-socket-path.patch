@@ -1,8 +1,8 @@
-Index: glib-2.66.5/gio/gdbusaddress.c
+Index: glib-2.67.3/gio/gdbusaddress.c
 ===================================================================
---- glib-2.66.5.orig/gio/gdbusaddress.c
-+++ glib-2.66.5/gio/gdbusaddress.c
-@@ -1331,7 +1331,7 @@ g_dbus_address_get_for_bus_sync (GBusTyp
+--- glib-2.67.3.orig/gio/gdbusaddress.c
++++ glib-2.67.3/gio/gdbusaddress.c
+@@ -1337,7 +1337,7 @@ g_dbus_address_get_for_bus_sync (GBusTyp
  
        if (ret == NULL)
          {

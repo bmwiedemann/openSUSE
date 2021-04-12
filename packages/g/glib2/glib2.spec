@@ -19,13 +19,13 @@
 %bcond_without     systemtap
 %bcond_without gtk_doc
 Name:           glib2
-Version:        2.66.7
+Version:        2.68.0
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/GLib
-Source0:        https://download.gnome.org/sources/glib/2.66/glib-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glib/2.68/glib-%{version}.tar.xz
 Source1:        glib2.sh
 Source2:        glib2.csh
 # Not upstream file. Only proposes upstream packages:
@@ -188,10 +188,10 @@ object files (commonly known as 'plug-ins').
 
 %package -n %{libgio}
 Summary:        A virtual file system library API
-Group:          System/Libraries
 # The tools are useful for people having libgio
 # bnc#555605: shared-mime-info is required by libgio to properly detect mime types, but not during build
 #!BuildIgnore:  shared-mime-info
+Group:          System/Libraries
 Requires:       %{name}-tools
 # bnc#678518: libgio interacts with others by means of dbus-launch
 Requires:       dbus-launch
