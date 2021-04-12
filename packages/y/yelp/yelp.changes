@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Mar 21 07:59:18 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Stable release. No changes since release candidate.
+
+-------------------------------------------------------------------
+Sat Mar 20 18:19:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 15 11:35:18 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 40.beta:
+  + Fix crashes from setting automatic IDs in DocBook 5 documents.
+  + Fix links to search results for ghelp documents.
+  + Fix crash when reloading Mallard document.
+  + Handle mouse back/forward buttons.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Feb 14 15:14:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.3:
