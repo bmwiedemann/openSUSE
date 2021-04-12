@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 26 03:06:32 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9720
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9720 2021-03-25
+  - better fix - no mutate inputs
+
+  0.9719 2021-03-25
+  - fix all_paths infinite loop on cycle - thanks @tobez for report
+
+-------------------------------------------------------------------
 Sun Mar 14 03:08:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9718
