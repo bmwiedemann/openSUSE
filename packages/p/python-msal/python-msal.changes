@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 25 13:35:20 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.10.0
+  + Enhancement: Proactive access token (AT) refreshing. Previously, an AT is
+    either valid or expired. If an AT expires and your network happens to have
+    a glitch, your app wouldn't be able to auth. Now, MSAL Python attempts to
+    refresh some AT (typically long-lived AT) half way towards their expiration,
+    and silently ignores the error and retries next time, so that your app would
+    be more resilient. All these happen automatically, without any code change
+    to your app. (#176, #312, #320)
+  + Adjustment: MSAL Python will keep RT in token cache even when its usage
+    encounters an "invalid_grant" error, so that the RT would likely still
+    be used by other requests. (#314, #315)
+- from version 1.9.0
+  + Enhancement: Starting from this version, MSAL will be compatible with both
+    PyJWT 1.x and PyJWT 2.x (#293, #296)
+  + Enhancement: Better support for upcoming Azure CLI's SSH extension (#300, #298)
+  + Enhancement: Better deprecation message for get_authorization_request_url()
+    and acquire_token_by_authorization_code(). (#301, #303)
+  + Enhancement: Better exception message when using incorrect case in client_id.
+    (#304, #307)
+  + Other improvements.
+
+-------------------------------------------------------------------
 Mon Jan 11 15:39:40 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.8.0
