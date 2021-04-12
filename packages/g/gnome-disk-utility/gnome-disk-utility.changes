@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Mar 19 10:15:36 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 18 14:59:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 15 10:57:20 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 40.beta:
+  + ui:
+    - Make disks-devtab a scrolledwindow.
+    - Move margins from stack to devtab.
+    - Use HdyStatusPage for empty view.
+    - Replace GtkTable with GtkGrid.
+    - Replace Notebook with stack in the main window.
+    - Replace GtkHBox and GtkVBox.
+    - Adjust margins.
+  + build:
+    - build: Pin libhandy wrapper to a specific version.
+    - Bump required libhandy to version 1.1.90.
+
+-------------------------------------------------------------------
+Fri Feb 12 04:40:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + window:
+    - Make adaptive with HdyLeaflet.
+    - Add empty state
+  + Add libhandy as a subproject (allowing to build if not
+    available as system library).
+  + Do not display zram devices.
+  + Flatpak build fixes.
+- Add pkgconfig(libhandy-1) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Thu Feb 11 11:00:33 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.2:

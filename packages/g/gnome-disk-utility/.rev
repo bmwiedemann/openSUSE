@@ -576,4 +576,12 @@
   + Updated translations. (forwarded request 871177 from iznogood)</comment>
     <requestid>871202</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>6b53e158d369bbc140f617908c15ca25</srcmd5>
+    <version>40.0</version>
+    <time>1618223724</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880951 from dimstar)</comment>
+    <requestid>881123</requestid>
+  </revision>
 </revisionlist>

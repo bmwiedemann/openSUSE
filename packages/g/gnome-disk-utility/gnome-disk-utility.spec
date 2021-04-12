@@ -17,13 +17,13 @@
 
 
 Name:           gnome-disk-utility
-Version:        3.38.2
+Version:        40.0
 Release:        0
 Summary:        Disks application for dealing with storage devices
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            https://wiki.gnome.org/Apps/Disks
-Source0:        https://download.gnome.org/sources/gnome-disk-utility/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-disk-utility/40/%{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson >= 0.50.0
@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.31.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16.0
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.1
+BuildRequires:  pkgconfig(libhandy-1) >= 1.1.90
 BuildRequires:  pkgconfig(liblzma) >= 5.0.5
 BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(libsecret-1) >= 0.7
