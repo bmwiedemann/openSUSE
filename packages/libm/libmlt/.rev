@@ -649,4 +649,16 @@ Only build sdl2 module.
 </comment>
     <requestid>823989</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>536b0e9d8999a8ac3e6a3ce69be05dad</srcmd5>
+    <version>6.26.0</version>
+    <time>1618223830</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed depreciated webvfx linked package, qmelt is no longer
+  needed for shotcut export.
+- Deleted obsolete webvfx-nobrowser.patch and
+  webvfx-versioned-libdir.patch
+- Update to version 6.26.0</comment>
+    <requestid>884444</requestid>
+  </revision>
 </revisionlist>

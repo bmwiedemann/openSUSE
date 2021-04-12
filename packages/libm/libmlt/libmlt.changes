@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Sun Apr 11 09:34:56 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Removed depreciated webvfx linked package, qmelt is no longer
+  needed for shotcut export.
+- Deleted obsolete webvfx-nobrowser.patch and
+  webvfx-versioned-libdir.patch
+
+-------------------------------------------------------------------
+Sat Apr 10 19:15:49 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.26.0
+  Modules:
+  * Added support for `hwaccel` query string parameter to the
+    `avformat` producer. It accepts the following values: vaapi
+    and cuda.
+  * Added support for `hwaccel_device` query string parameter to
+    the `avformat` producer. This is only used with vaapi
+    (device path) and cuda.
+  * Improved the usage of image slice threading in `frei0r`.
+    This only applies when `threads`=0 and only works with some
+    frei0r plugins that you must decide yourself.
+  * Added an ellipse item to `kdenlivetitle` producer.
+  * Added support for PNG and GIF as album art in the `avformat`
+    producer.
+  * Added BT.2020 color space metadata to the `avformat`
+    producer.
+  * Resolved many FFmpeg deprecations in the `avformat` producer
+    making it possible to support AV1 decoding.
+  * Added a `strobe` fitler that periodically makes the alpha
+    channel transparent.
+  * Added a new `typewriter` text filter (currently only works
+    with the kdenlivetitle producer).
+  * Improved sound quality for lower pitch shifts in `rbpitch`.
+  * Fixed speed of trick play in the `jack`, `rtaudio`,
+    `sdl_audio`, and `sdl2_audio` consumers.
+  * Fixed matrix for independent channels in `swresample` filter.
+  * Fixed leading zeros for the `timer` filter.
+  * Fixed flickering using `affine` with a `luma` transition.
+  * Fixed a crash using RGBA images in the `qimage` producer
+    (regression in v6.22.0).
+  * Fixed `brightness` filter misbehaves on `alpha` > 1.
+  * Fixed writing `flac` format file does not set its duration
+    in the `avformat` consumer.
+  * Fixed an infinite loop in `rbpitch` filter.
+  * Fixed `ttl` in the `qimage` producer.
+  * Fixed building with OpenCV 4.5
+  * Fixed artifacts with multiple HTML `qtext` filters and frame
+    threading.
+  * Deprecated the `start` and `end` properties on the following
+    (use property animation instead):
+    + brightness
+    + panner
+    + boxblur
+    + wave
+    + volume
+  * Deprecated the following services:
+    + data_show
+    + region
+    + transition filter
+    + autotrack_rectangle
+    + motion_est
+    + slowmotion
+  Other:
+  * CMake
+    + Fixed building without SWIG.
+    + Added many "MOD_..." options to explictly disable modules.
+    + Added src/tests and the option `BUILD_TESTING`, which
+      defaults off.
+    + All dependency checks moved to top level CMakeLists.txt.
+    + Install melt man page.
+    + Install oldfilm SVG files.
+    + Added src/examples.
+    + Install framework/metaschema.yaml.
+    + Fixed `plusgpl` datadir.
+    + Added all swwig/ languages.
+    + Increased C++ standard to C++14.
+  * Added an `AV1` encoding preset.
+  * Improved documentation of the requirement for C11.
+  * The minimum version of FFmpeg is v4.0 and Libav is no longer
+    supported.
+- Drop libmlt-0.8.2-vdpau.patch and everything related to vdpau
+  (no longer present in the tree)
+- Enable libebur128
+
+-------------------------------------------------------------------
+Mon Dec  7 07:44:54 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.24.0
+  Framework:
+  * Trigger a `property-changed` event on 
+    `mlt_properties_pass_list`.
+  * Fixed using a video transition with a video clip on an audio 
+    track.
+  * Reduce the amount of service caching to 2X #tracks to reduce 
+    memory usage.
+  Modules:
+  * Added the `pillar_echo` filter to the plus module.
+  * Added a `qtcrop` filter to the qt module.
+  * Added `html`, `resource`, `overflow-y`, and `_hide` 
+    properties to the `qtext` filter for rich text.
+  * Added the filter `choppy` to the core module.
+  * Added slice threading to the `brightness` filter.
+  * Fixed compiling with OpenCV 4.
+  * Fixed the colors when using `mlt_image_format=rgb24a` with 
+    `avformat` consumer.
+  * Fixed a possible crash in the `timewarp` producer on sources 
+    with non-integer frame rates.
+  * Fixed a regression in version 6.22 with multiple affine 
+    filters at the same time.
+  * Fixed possible abort or deadlock on recursive pthread 
+    mutexes in `avformat` producer.
+  * Fixed a crash in `crop` filter with large `center_bias` 
+    value when `use_profile` is 1.
+  * Fixed a white video frame appearing on threaded rendering in 
+    `freeze` filter.
+  * Fixed MLT XML DRD to permit empty playlists, which may occur 
+    on empty tracks in a multitrack.
+  * Fixed initializing QApplication in the `qimage` producer.
+  * Fixed interpolation when scaling with the `affine` rect and 
+    geomety properties.
+  * Fixed high memory usage with high factors of pitch shifting 
+    in the `rbpitch` filter.
+  * Fixed a crash on files with more than 32 streams in the 
+    `avformat` producer.
+  Other:
+  * Added the Python binding to the CMake build.
+  * Added the `sdl` (v1) module to the CMake build.
+  * Removed minrate and maxrate from the `webm` avformat 
+    consumer preset.
+
+-------------------------------------------------------------------
 Sun Aug  2 09:06:09 UTC 2020 - aloisio@gmx.com
 
 - Update to version 6.22.1

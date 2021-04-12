@@ -1,7 +1,7 @@
 #
 # spec file for package libmlt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,22 @@
 #
 
 
-# Dan Dennedy asked to disable it since it's buggy and unmaintained (see e.g. http://www.kdenlive.org/mantis/view.php?id=3070)
-%bcond_with vdpau
-
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 6.22.1
+%define lversion 6.26.0
 %define soname 6
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define soname_pp 3
 
 Name:           %{libname}
-Version:        6.22.1
+Version:        6.26.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.mltframework.org
 Source0:        https://github.com/mltframework/mlt/archive/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE libmlt-0.8.2-vdpau.patch reddwarf@opensuse.org -- Make VDPAU support work without the devel package
-Patch1:         libmlt-0.8.2-vdpau.patch
 # PATCH-FIX-UPSTREAM libmlt-fixluma.patch aloisio@gmx.com -- add LD_LIBRARY_PATH so that luma can run
 Patch2:         libmlt-fixluma.patch
 BuildRequires:  fdupes
@@ -50,7 +45,7 @@ BuildRequires:  gcc7-c++
 BuildRequires:  ladspa-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-devel
-BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Core) >= 5.10
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5OpenGL)
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -64,18 +59,19 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libdv)
+BuildRequires:  pkgconfig(libebur128)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libquicktime)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(movit)
 #!BuildIgnore:  opencv-qt5-devel
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavdevice)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libpostproc)
-BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libavcodec) >= 58
+BuildRequires:  pkgconfig(libavdevice) >= 58
+BuildRequires:  pkgconfig(libavformat) >= 58
+BuildRequires:  pkgconfig(libavutil) >= 56
+BuildRequires:  pkgconfig(libpostproc) >= 55
+BuildRequires:  pkgconfig(libswscale) >= 5
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(samplerate)
@@ -83,11 +79,6 @@ BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sox)
 BuildRequires:  pkgconfig(vidstab)
 BuildRequires:  pkgconfig(vorbisfile)
-%if %{with vdpau}
-BuildRequires:  pkgconfig(vdpau)
-# VDPAU support requires it
-BuildRequires:  pkgconfig(x11)
-%endif
 
 %description
 MLT is a multimedia framework for television broadcasting. It
@@ -164,10 +155,6 @@ Summary:        Modules for the MLT multimedia framework
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 Recommends:     frei0r-plugins
 Provides:       mlt(%{soname})(avformat)
-%if %{with vdpau}
-# I would recommend it, but to the best of my knowledge nobody but nvidia provides a backend
-Suggests:       %(rpm -qf $(readlink -e %{_libdir}/libvdpau.so) --qf '%{NAME}')
-%endif
 
 %description -n %{libname}%{soname}-modules
 MLT is a multimedia framework for television broadcasting. It
@@ -204,17 +191,16 @@ This package contains python bindings.
 
 %prep
 %setup -q -n %{_name}-%{version}
-%patch1
-%patch2 -p1
-
-# To complement libmlt-0.8.0-vdpau.patch.
-# When vdpau support is not compiled it will break the code. Doesn't matter because the code will not be used anyway.
-VDPAU_SONAME=$(objdump -p $(readlink -e %{_libdir}/libvdpau.so) | grep SONAME | sed 's/.*SONAME.* //' | tr -d '\n')
-sed "s/__VDPAU_SONAME__/${VDPAU_SONAME}/" -i src/modules/avformat/vdpau.c
+%autopatch -p1
 
 %build
 test -x "$(type -p gcc-7)" && export CC=gcc-7
 test -x "$(type -p g++-7)" && export CXX=g++-7
+
+# Until boo#1179650 is fixed
+%ifarch ppc64le
+export CFLAGS="-I%{_includedir}/eigen3"
+%endif
 
 # WARNING: building opencv module causes multicore issues - boo#1068792
 %configure --disable-opencv \
@@ -229,9 +215,6 @@ test -x "$(type -p g++-7)" && export CXX=g++-7
 --enable-lumas \
 %ifarch i586
 --disable-mmx \
-%endif
-%if %{with vdpau}
---avformat-vdpau \
 %endif
 --enable-extra-versioning \
 --swig-languages=python
