@@ -1606,4 +1606,12 @@ Fri Dec  18 23:51:08 UTC 2015 - damjanovic.ivo@gmail.com
     <comment>New stable release (forwarded request 862103 from iznogood)</comment>
     <requestid>862316</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>e5b625a81872dc5a62ba42933c56bdd0</srcmd5>
+    <version>1.68.0</version>
+    <time>1618223717</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880934 from dimstar)</comment>
+    <requestid>881107</requestid>
+  </revision>
 </revisionlist>

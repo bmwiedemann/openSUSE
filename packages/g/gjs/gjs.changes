@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Sat Mar 20 17:25:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.68.0:
+  + 40.rc session crashes in gjs on unlocking (sometimes).
+  + 40.rc: installed-tests installed despite explicitly disabled.
+- Drop 589.patch: fixed uptream.
+
+-------------------------------------------------------------------
+Fri Mar 19 08:33:31 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-enable test suite:
+  + Enable %check section and run %meson_test
+  + As the test suite also runs some graphical application, run
+    Xvfb before, so we have an X server available.
+  + Add xorg-x11-server-Xvfb BuildRequires
+
+-------------------------------------------------------------------
+Thu Mar 18 11:12:23 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.67.3:
+  + Closed bugs and merge requests:
+    - System.exit() doesn't work inside signal handler.
+    - GdkEvent subtypes trigger assert in Gtk4.
+    - 1.67.2: build fails with gcc 11.
+    - Warnings introspecting array of boxed type as signal
+      argument.
+    - Add list command to debugger.
+    - Assertion failure in enqueuePromiseJob.
+    - in interpreter Ctrl-c should exit inner shell if stuck.
+    - Compiler ambiguity in enum-utils.h on operator overloading.
+    - Fix GJS_DISABLE_JIT not fully disabling JIT.
+    - 1.67.2: Regress test hangs / timeouts on i686.
+    - object: Do not call any function on disposed GObject
+      pointers.
+- Add 589.patch: Do not wrongly install files for installed_tests
+  if explicitly disabled.
+
+-------------------------------------------------------------------
+Mon Feb 15 10:51:56 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.67.2:
+  + Importing ES modules is now supported.
+  + The debugger now has a "list" command which works very
+    similarly to its GDB equivalent.
+  + New API: GObject.ParamSpec.jsobject() works like the other
+    GObject.ParamSpec types.
+  + New API: System.programPath is the name of the JS program that
+    GJS is running.
+  + New API: System.programArgs is an array of arguments given to
+    the JS program.
+
+-------------------------------------------------------------------
+Tue Jan 12 11:01:47 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.67.1:
+  + The debugger now has a "backtrace full" command which works
+    very similarly to its GDB equivalent.
+  + The GObject.ParamFlags.CONSTRUCT_ONLY flag is now correctly
+    enforced, when using it on GObject classes defined in
+    JavaScript. This might break code that was incorrectly trying
+    to set a property that it had previously defined as
+    construct-only. The workaround is to remove the CONSTRUCT_ONLY
+    flag.
+  + Fixed exception when calling GObject.Type().
+  + Several performance improvements.
+  + Progress on ES Modules.
+  + Various refactors for type safety.
+  + Various maintenance.
+
+-------------------------------------------------------------------
 Sun Jan 10 11:28:08 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.66.2:

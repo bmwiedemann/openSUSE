@@ -17,13 +17,13 @@
 
 
 Name:           gjs
-Version:        1.66.2
+Version:        1.68.0
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
-License:        MIT AND LGPL-2.0-or-later
+License:        LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Gjs
-Source0:        https://download.gnome.org/sources/gjs/1.66/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gjs/1.68/%{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  git
@@ -31,6 +31,7 @@ BuildRequires:  meson >= 0.52.0
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemtap-sdt-devel
+BuildRequires:  xorg-x11-server-Xvfb
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(cairo-xlib)
@@ -67,7 +68,7 @@ Mozilla SpiderMonkey JavaScript engine.
 %package -n typelib-1_0-GjsPrivate-1_0
 Summary:        Introspection bindings for the GJS library
 # The tyeplib was renamed in gnome 3.6, to reflect it is a private lib.
-License:        MIT AND LGPL-2.0-or-later
+License:        LGPL-2.0-or-later AND MIT
 Group:          System/Libraries
 Obsoletes:      typelib-1_0-GjsDBus-1_0 < %{version}
 
@@ -77,7 +78,7 @@ Mozilla SpiderMonkey JavaScript engine.
 
 %package -n libgjs-devel
 Summary:        Development files for the GJS library
-License:        MIT AND LGPL-2.0-or-later
+License:        LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/GNOME
 Requires:       %{name} = %{version}
 Requires:       libgjs0 = %{version}
@@ -107,8 +108,11 @@ Mozilla SpiderMonkey JavaScript engine.
 %meson_install
 
 # FIXME # Try again on next versionbump
-#%%check
-#%%meson_test
+%check
+export DISPLAY=:98
+Xvfb :98 >& Xvfb.log & trap "kill $! || true" EXIT
+sleep 10
+%meson_test
 
 %post -n libgjs0 -p /sbin/ldconfig
 %postun -n libgjs0 -p /sbin/ldconfig
@@ -120,7 +124,7 @@ Mozilla SpiderMonkey JavaScript engine.
 %{_bindir}/gjs-console
 
 %files -n libgjs0
-%license COPYING.LGPL
+%license LICENSES/LGPL-2.0-or-later.txt
 %{_libdir}/*.so.*
 
 %files -n typelib-1_0-GjsPrivate-1_0
