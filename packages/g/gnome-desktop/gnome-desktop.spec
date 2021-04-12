@@ -17,14 +17,13 @@
 
 
 Name:           gnome-desktop
-Version:        3.38.4
+Version:        40.0
 Release:        0
 Summary:        The GNOME Desktop API Library
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-desktop/3.38/%{name}-%{version}.tar.xz
-Source99:       baselibs.conf
+Source0:        https://download.gnome.org/sources/gnome-desktop/40/%{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gnome-desktop-switch-Japanese-default-input-to-mozc.patch bnc#1029083 boo#1056289 qzhao@suse.com -- Switch new user's default input engine from "anthy" to "mozc" in gnome-desktop with Japanese language and ibus input frame-work condition.
 Patch1:         gnome-desktop-switch-Japanese-default-input-to-mozc.patch
@@ -33,6 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  intltool
+BuildRequires:  libxkbregistry0
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
@@ -47,6 +47,7 @@ BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(xkbfile)
+BuildRequires:  pkgconfig(xkbregistry)
 BuildRequires:  pkgconfig(xkeyboard-config)
 
 %description
@@ -145,15 +146,15 @@ translation-update-upstream po gnome-desktop
 
 %files -n libgnome-desktop-3-19
 %license COPYING.LIB
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS
 %{_libdir}/libgnome-desktop-3.so.*
 
 %files -n libgnome-desktop-3_0-common
 %doc %{_datadir}/help/C/fdl/
 %doc %{_datadir}/help/C/gpl/
 %doc %{_datadir}/help/C/lgpl/
+%{_libexecdir}/gnome-desktop-debug/
 %{_datadir}/locale/en/
-%{_libexecdir}/gnome-rr-debug
 
 %files -n typelib-1_0-GnomeDesktop-3_0
 %{_libdir}/girepository-1.0/GnomeDesktop-3.0.typelib

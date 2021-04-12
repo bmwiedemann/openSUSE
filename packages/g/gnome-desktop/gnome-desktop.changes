@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Mar 28 07:44:54 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: no longer build -32bit package. There is no
+  consumer left.
+
+-------------------------------------------------------------------
+Tue Mar 23 09:26:47 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + No changes.
+
+-------------------------------------------------------------------
+Fri Mar 19 10:16:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + bg-slide-show: Always parse date/time integers in base 10.
+  + Thumbnail:
+    - Fix thumbnailing of CBZ with UTF-8 filenames.
+    - Fix non-working thumbnailer in Flatpak.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 22 12:42:44 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.beta:
+  + xkbinfo: Update iso639Ids but not iso3166Ids correctly in
+    evdev.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb 16 21:38:55 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha.0:
+  + Add support for x-large and xx-large thumbnail sizes.
+  + Make it easier to profile thumbnailers.
+  + thumbnailer: Cache GStreamer's plugin registry.
+  + Sandbox thumbnailers in Flatpaks.
+  + Change default input source to anthy for Japanese>
+  + xkbinfo: use libxkbregistry to parse the rules files.
+  + Updated translations.
+- Add pkgconfig(xkbregistry) BuildRequires: new dependency.
+- Rebase gnome-desktop-switch-Japanese-default-input-to-mozc.patch.
+
+-------------------------------------------------------------------
 Tue Feb 16 20:38:55 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.4:
