@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 18 13:18:31 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.8.1:
+  + Fix highlighting in presence of byte-order-marks (BOM).
+  + meson.lang: Update keywords to 0.55.3 syntax.
+  + cmake.lang: Update keywords to 3.18.2 syntax.
+  + go.lang: make "0i" syntax highlight as integer.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Sep 19 00:00:05 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 4.8.0:
