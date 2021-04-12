@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 10 12:00:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.25
+  * no release notes
+- Add jupyterlab extension subpackage
+- Use upstreams jupyter-bqplot versioning in new subpackage names
+- Skip python36 build
+- Tests are not in the PyPI sdist, get them from GitHub.
+- No mock
+- Test notebooks with nbval
+
+-------------------------------------------------------------------
 Mon Jun 29 13:26:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.12.13
