@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 12 10:30:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.7.1
+  * Fix "TypeError: only pages can be inserted" with
+    libqpdf >= 10.2.0 & pikepdf < 2.7.0
+  * Display imported files in alphabetical order
+  * Release memory after rendering and deleting pages
+  * Installation instructions for FreeBSD
+  * Fix a segfault on "crop white borders" while rendering thumbnails
+  * Allow PDF Arranger to be recognized as a handler for all image
+    MIME type that it can handle
+  * Fix min & max zoom level limits
+  * Fix issue with pages copied with ctrl + dnd
+  * Fix displayed page range when using paste before
+
+-------------------------------------------------------------------
 Mon Feb  1 09:10:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.7.0

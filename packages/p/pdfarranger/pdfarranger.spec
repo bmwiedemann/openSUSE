@@ -1,7 +1,7 @@
 #
 # spec file for package pdfarranger
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Karl Cheng <qantas94heavy@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           pdfarranger
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Merge, split, rotate, crop, and rearrange pages of PDF documents
 License:        GPL-3.0-only
@@ -36,6 +36,7 @@ Requires:       python3-cairo
 Requires:       python3-dateutil >= 2.4.0
 Requires:       python3-pikepdf >= 1.7.0
 Requires:       typelib-1_0-Poppler-0_18
+Requires:       python3-gobject-Gdk
 Recommends:     %{name}-lang
 BuildArch:      noarch
 
