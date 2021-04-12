@@ -17,17 +17,17 @@
 
 
 Name:           dustrac
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Tile-based 2D Racing Game
 License:        GPL-3.0-only AND CC-BY-SA-3.0
 Group:          Amusements/Games/Action/Race
 URL:            https://juzzlin.github.io/DustRacing2D/
-Source:         https://github.com/juzzlin/DustRacing2D/archive/%{version}/dustrac-%{version}.tar.gz
+Source:         https://github.com/juzzlin/DustRacing2D/archive/%{version}/DustRacing2D-%{version}.tar.gz
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
-BuildRequires:  gcc >= 4.6
+BuildRequires:  gcc
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
@@ -51,19 +51,16 @@ creation. A separate engine, MiniCore, is used for physics modeling.
 %build
 %cmake \
   -DReleaseBuild=1 \
+  -DSystemFonts=1 \
   -DDATA_PATH=%{_datadir}/%{name} \
   -DDOC_PATH=%{_docdir}/%{name} \
   -DBUILD_SHARED_LIBS:BOOL=OFF # build the physics engine statically
                                # (not used by any other software)
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
 %fdupes -s %{buildroot}%{_prefix}
-
-# Use system fonts
-rm %{buildroot}%{_datadir}/%{name}/fonts/DejaVuSans-Bold.ttf
-ln -s %{_datadir}/fonts/truetype/DejaVuSans-Bold.ttf %{buildroot}%{_datadir}/%{name}/fonts/DejaVuSans-Bold.ttf
 
 %files
 %{_bindir}/dustrac-game
@@ -71,8 +68,6 @@ ln -s %{_datadir}/fonts/truetype/DejaVuSans-Bold.ttf %{buildroot}%{_datadir}/%{n
 %{_datadir}/%{name}/
 %{_datadir}/applications/dustrac-game.desktop
 %{_datadir}/applications/dustrac-editor.desktop
-%{_datadir}/pixmaps/dustrac-game.png
-%{_datadir}/pixmaps/dustrac-editor.png
 %{_datadir}/icons/hicolor/64x64/apps/dustrac-game.png
 %{_datadir}/icons/hicolor/64x64/apps/dustrac-editor.png
 %dir %{_datadir}/metainfo/
