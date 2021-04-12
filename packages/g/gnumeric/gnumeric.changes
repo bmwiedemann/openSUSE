@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Mar 20 18:36:58 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.12.49:
+  + Do not try to turn all of LibreOffice's SplitModes into frozen
+    panes.
+  + Fix graph size issue when the graph is in its own sheet.
+  + Fix one more graph size issue when the graph is in its own
+    sheet.
+  + Fix ssgrep problem when used as a filter.
+  + Rework conditional styling's upper level.
+  + Fix autofill array critical.
+  + Handle missing values in xlsx.  [#517]
+  + Fix critical when using fd://1.
+  + Don't trim spaces for csv files as per rfc 4180.
+  + Fix cvs separator guessing problem with quotes.
+  + Improve handling of expressions in csv files.
+  + Plug ssconvert leak.
+  + Fix bogus time match for "3.a".
+  + Use 1us resolution for NOW.
+  + Fix ssconvert sheet selection for csv.
+  + Test suite improvements.
+  + Fix ods import problem with irregular sheet sizes.
+  + Fix ods import problem with crazy named expressions.
+  + Allow plain space as 1000s separator in FR locale.
+  + Fix graph size problem affecting image output.
+  + Check for yelp in autogen.
+  + Fix ssconvert problem with conditional styles.
+  + Move from style regions to style classes in css.
+  + Implement #ifdef for built-in css.
+  + Dead kitten in css.
+  + Improve the drawing of filter combos.
+  + Allow theming of grid color.
+  + Fix dirty-tracking.
+  + Plug ods write leak.
+  + Disable cs documentation translation due to itstool/libxml2
+    bug.
+
+-------------------------------------------------------------------
 Thu Aug 20 15:46:41 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.47:

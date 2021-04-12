@@ -1,7 +1,7 @@
 #
 # spec file for package gnumeric
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnumeric
-Version:        1.12.48
+Version:        1.12.49
 Release:        0
 Summary:        Spreadsheet Application
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Office/Spreadsheets
 URL:            http://www.gnumeric.org/
-Source0:        http://download.gnome.org/sources/gnumeric/1.12/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnumeric/1.12/%{name}-%{version}.tar.xz
 Source1:        gnumeric-rpmlintrc
 BuildRequires:  bison
 BuildRequires:  docbook-dtds
@@ -186,9 +186,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/glib-2.0/schemas/org.gnome.gnumeric.plugin.gschema.xml
 %{_datadir}/gnumeric/
 %{_datadir}/icons/hicolor/*/apps/gnumeric.*
-%{_datadir}/pixmaps/*.png
-%{_datadir}/pixmaps/win32-gnumeric.ico
-%{_datadir}/pixmaps/gnumeric/
 %{_mandir}/man?/*%{ext_man}
 
 %files doc
