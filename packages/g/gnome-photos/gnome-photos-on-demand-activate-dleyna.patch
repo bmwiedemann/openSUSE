@@ -1,8 +1,8 @@
-Index: gnome-photos-3.30.1/src/photos-dlna-renderers-dialog.c
+Index: gnome-photos-40.beta/src/photos-dlna-renderers-dialog.c
 ===================================================================
---- gnome-photos-3.30.1.orig/src/photos-dlna-renderers-dialog.c
-+++ gnome-photos-3.30.1/src/photos-dlna-renderers-dialog.c
-@@ -191,6 +191,28 @@ photos_dlna_renderers_dialog_add_rendere
+--- gnome-photos-40.beta.orig/src/photos-dlna-renderers-dialog.c
++++ gnome-photos-40.beta/src/photos-dlna-renderers-dialog.c
+@@ -189,6 +189,28 @@ photos_dlna_renderers_dialog_add_rendere
    label = gtk_label_new (NULL);
    gtk_label_set_text (GTK_LABEL (label), name);
    gtk_container_add (GTK_CONTAINER (row_grid), label);
@@ -31,7 +31,7 @@ Index: gnome-photos-3.30.1/src/photos-dlna-renderers-dialog.c
  }
  
  
-@@ -198,7 +220,6 @@ static void
+@@ -196,7 +218,6 @@ static void
  photos_dlna_renderers_dialog_init (PhotosDlnaRenderersDialog *self)
  {
    GApplication *app;
@@ -39,7 +39,7 @@ Index: gnome-photos-3.30.1/src/photos-dlna-renderers-dialog.c
    PhotosSearchContextState *state;
  
    app = g_application_get_default ();
-@@ -213,18 +234,9 @@ photos_dlna_renderers_dialog_init (Photo
+@@ -211,18 +232,9 @@ photos_dlna_renderers_dialog_init (Photo
  
    gtk_list_box_set_header_func (self->listbox, photos_utils_list_box_header_func, NULL, NULL);
  
@@ -60,20 +60,20 @@ Index: gnome-photos-3.30.1/src/photos-dlna-renderers-dialog.c
  }
  
  
-Index: gnome-photos-3.30.1/src/photos-main-toolbar.c
+Index: gnome-photos-40.beta/src/photos-main-toolbar.c
 ===================================================================
---- gnome-photos-3.30.1.orig/src/photos-main-toolbar.c
-+++ gnome-photos-3.30.1/src/photos-main-toolbar.c
-@@ -539,8 +539,6 @@ photos_main_toolbar_populate_for_preview
+--- gnome-photos-40.beta.orig/src/photos-main-toolbar.c
++++ gnome-photos-40.beta/src/photos-main-toolbar.c
+@@ -561,8 +561,6 @@ photos_main_toolbar_populate_for_preview
    GApplication *app;
    PhotosBaseItem *item;
    gboolean favorite;
 -  gboolean remote_display_available;
 -  GAction *remote_display_action;
  
-   gtk_header_bar_set_show_close_button (GTK_HEADER_BAR (self->header_bar), TRUE);
+   hdy_header_bar_set_show_close_button (HDY_HEADER_BAR (self->header_bar), TRUE);
  
-@@ -575,13 +573,6 @@ photos_main_toolbar_populate_for_preview
+@@ -595,13 +593,6 @@ photos_main_toolbar_populate_for_preview
    favorite = photos_base_item_is_favorite (item);
    photos_main_toolbar_favorite_button_update (self, favorite);
  
@@ -87,10 +87,10 @@ Index: gnome-photos-3.30.1/src/photos-main-toolbar.c
    g_signal_connect_object (self->item_mngr,
                             "active-changed",
                             G_CALLBACK (photos_main_toolbar_item_active_changed),
-Index: gnome-photos-3.30.1/src/photos-main.c
+Index: gnome-photos-40.beta/src/photos-main.c
 ===================================================================
---- gnome-photos-3.30.1.orig/src/photos-main.c
-+++ gnome-photos-3.30.1/src/photos-main.c
+--- gnome-photos-40.beta.orig/src/photos-main.c
++++ gnome-photos-40.beta/src/photos-main.c
 @@ -49,7 +49,6 @@ main (gint argc, gchar *argv[])
  
    {
@@ -107,10 +107,10 @@ Index: gnome-photos-3.30.1/src/photos-main.c
      exit_status = g_application_run (app, argc, argv);
    }
  
-Index: gnome-photos-3.30.1/src/photos-remote-display-manager.c
+Index: gnome-photos-40.beta/src/photos-remote-display-manager.c
 ===================================================================
---- gnome-photos-3.30.1.orig/src/photos-remote-display-manager.c
-+++ gnome-photos-3.30.1/src/photos-remote-display-manager.c
+--- gnome-photos-40.beta.orig/src/photos-remote-display-manager.c
++++ gnome-photos-40.beta/src/photos-remote-display-manager.c
 @@ -30,7 +30,6 @@
  struct _PhotosRemoteDisplayManager
  {
