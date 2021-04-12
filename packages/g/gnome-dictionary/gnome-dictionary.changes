@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 20 16:53:38 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Dropped the app menu.
+  + Updated the application help.
+  + Removed non-working Spanish dict server.
+  + Updated the application icon.
+  + Updated the Flatpak sandbox and build.
+  + Fixed compiler warnings when building with newer toolchains.
+  + Fixed the sidebar sizing issue.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jan 25 14:09:32 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

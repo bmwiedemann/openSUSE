@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-dictionary
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gnome-dictionary
-Version:        3.26.1+20180313.ac6d4c0
+Version:        40.0
 Release:        0
 Summary:        Utility to look up words in dictionary sources
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Dictionary
 #Source0:       https://download.gnome.org/sources/gnome-dictionary/3.26/%%{name}-%%{version}.tar.xz
-Source:         %{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-dictionary/40/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
@@ -67,14 +67,16 @@ translation-update-upstream po %{name}
 %license COPYING
 %doc NEWS
 %doc %{_datadir}/help/C/%{name}/
-%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_bindir}/%{name}
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/org.gnome.Dictionary.appdata.xml
 %{_datadir}/applications/org.gnome.Dictionary.desktop
 %{_datadir}/dbus-1/services/org.gnome.Dictionary.service
 %{_datadir}/gdict-1.0
 %{_datadir}/glib-2.0/schemas/org.gnome.dictionary.gschema.xml
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Dictionary.Devel.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Dictionary.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.gnome.Dictionary-symbolic.svg
+%{_datadir}/metainfo/org.gnome.Dictionary.appdata.xml
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files lang -f %{name}.lang
 
