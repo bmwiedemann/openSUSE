@@ -237,4 +237,22 @@
 </comment>
     <requestid>874727</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a88fdfb85bab79d2979596cdb020d353</srcmd5>
+    <version>10.5.2+ff840563</version>
+    <time>1618223845</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.5.2+ff840563:
+  * Set an X error handler to catch BadWindow errors
+  * Improve stability of CarbonTray
+  * Fix issue with VirtualBox icon not being displayed in TaskList
+  * enable click on panel icons to toggle lock keys
+  * Compile with mutter-8 (GNOME 40 beta)
+  * Resolve issues with fullscreen tracking
+- Remove GNOME-40.patch: merged
+- Remove fullscreen-tracking.patch: merged
+- Add budgie-screensaver.patch: to fix conflict with GNOME 40
+</comment>
+    <requestid>884505</requestid>
+  </revision>
 </revisionlist>

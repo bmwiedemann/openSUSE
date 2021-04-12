@@ -19,17 +19,16 @@
 
 #
 Name:           budgie-desktop
-Version:        10.5.2+481e9bd2
+Version:        10.5.2+ff840563
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/Other
 URL:            https://getsol.us/solus/experiences/
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE: Create a clean separation between Budgie and GNOME desktops
-Patch:          desktop-override.patch
-Patch1:         fullscreen-tracking.patch
-Patch2:         GNOME-40.patch
+Patch0:         desktop-override.patch
+Patch1:         budgie-screensaver.patch
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -62,17 +61,17 @@ Requires:       gnome-control-center
 Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
 Requires:       ibus
-Recommends:     gnome-software
 Recommends:     NetworkManager-applet
-Recommends:     gnome-backgrounds
 Recommends:     budgie-desktop-doc
+Recommends:     gnome-backgrounds
+Recommends:     gnome-software
 
 %description
 Budgie Desktop is the flagship desktop for the Solus Operating System.
 
 %package -n typelib-1_0-Budgie-1_0
 Summary:        Introspection bindings for the Budgie Desktop
-Group:          System/Libraries 
+Group:          System/Libraries
 Requires:       %{name} = %{version}-%{release}
 Requires:       typelib(PeasGtk) = 1.0
 

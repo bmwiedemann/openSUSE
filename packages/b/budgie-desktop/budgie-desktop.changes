@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 11 17:50:58 UTC 2021 - gmbr3@opensuse.org
+
+- Update to version 10.5.2+ff840563:
+  * Set an X error handler to catch BadWindow errors
+  * Improve stability of CarbonTray
+  * Fix issue with VirtualBox icon not being displayed in TaskList
+  * enable click on panel icons to toggle lock keys
+  * Compile with mutter-8 (GNOME 40 beta)
+  * Resolve issues with fullscreen tracking
+- Remove GNOME-40.patch: merged
+- Remove fullscreen-tracking.patch: merged
+- Add budgie-screensaver.patch: to fix conflict with GNOME 40
+
+-------------------------------------------------------------------
 Tue Feb 23 19:45:13 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update GNOME-40.patch: Fix vapigen warnings for 6,7 & 8 alpha
