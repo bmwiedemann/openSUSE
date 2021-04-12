@@ -26,7 +26,7 @@
 %define lxd_ovmfdir %{lxd_datadir}/ovmf
 
 Name:           lxd
-Version:        4.12
+Version:        4.13
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -38,6 +38,8 @@ Source2:        %{name}.keyring
 Source3:        %{name}-rpmlintrc
 # LXD upstream doesn't use systemd, they use snapd.
 Source100:      %{name}.service
+# LXD upstream doesn't have a sample config file.
+Source101:      %{name}-config.yml
 # Additional runtime configuration.
 Source200:      %{name}.sysctl
 Source201:      %{name}.dnsmasq
@@ -278,6 +280,10 @@ do
 done
 popd
 
+# System-wide client configuration.
+install -D -m0644 %{S:101} %{buildroot}/etc/lxd/config.yml
+install -d -m0755 %{buildroot}/etc/lxd/servercerts
+
 # Install man pages.
 pushd man/
 for man in *
@@ -362,6 +368,10 @@ grep -q '^root:' /etc/subgid || \
 %{_bindir}/lx{c,d}*
 %{_mandir}/man*/*
 %{_libdir}/%{name}
+
+%dir /etc/lxd
+%config(noreplace) /etc/lxd/config.yml
+%dir /etc/lxd/servercerts
 
 %{lxd_datadir}
 

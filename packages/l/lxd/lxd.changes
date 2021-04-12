@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 12 05:19:43 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.13. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-13-has-been-released/10737
+  boo#1184580
+
+  + Support for instance filters in "lxc list"
+  + NVIDIA MIG support for containers
+  + System wide configuration in /etc/lxd
+  + Project resource usage
+  + Snapshot schedule aliases (cron-like @... aliases)
+  + images.default_architecture for multi-architecture setups
+  + New description column in "lxc {project,profile,storage} list"
+  + Reworked handling of default action in network ACLs
+  + "lxc stop --console"
+  + More auto-generated REST-API documentation
+
+-------------------------------------------------------------------
 Mon Mar 15 16:49:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move OVMF symlinks to /usr/share, /opt is not allowed in SUSE
