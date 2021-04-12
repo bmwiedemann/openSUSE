@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-storagecache
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,9 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-storagecache
-Version:        0.3.0
+Version:        0.5.0
 Release:        0
-Summary:        Microsoft Azure MyService Management Client Library
+Summary:        Microsoft Azure Storagecache Management Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
@@ -49,7 +49,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-This is the Microsoft Azure MyService Management Client Library.
+This is the Microsoft Azure Storagecache Management Client Library.
 
 Azure Resource Manager (ARM) is the next generation of management APIs that
 replace the old Azure Service Management (ASM).
