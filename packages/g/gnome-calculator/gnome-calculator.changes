@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sat Mar 20 09:30:16 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 40.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 18 13:08:47 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Resize window after switching mode.
+  + Fixed compilation warnings.
+  + Support offline currency conversion tests.
+  + Use official unit on conversion button click.
+  + Fixed temperature unit typos.
+  + Ellipsize conversion labels.
+  + Added Ctrl+Delete shortcut for clearing the current equation.
+  + Allow multiple decimal points #166.
+  + Added Ctrl+O shortcut for degrees symbol.
+  + Use gtk-sourceview 4.8.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Feb  9 11:40:28 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.beta:
+  + Fixed issues with initial loading of currencies.
+  + Rework currency retrieval preparing for currency provider
+    plugins.
+  + Fixed commandline conversions.
+  + Added currency conversion tests.
+  + Added support for frequencies conversion.
+  + Added support for converting to and from weeks.
+  + Added support for converting to and from centuries and decades.
+  + Increase buttons font size.
+  + Added % button to Advanced mode.
+  + Show 4 decimals in converter instead of only two.
+  + Added style classes to buttons.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 12 10:07:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + Use libhandy for window and headerbar.
+  + Use C instead of Clr in help.
+  + Fixed broken currency conversion on first start.
+  + Removed duplicate word from help.
+  + Added lbs shortcut for pounds conversion.
+  + Fixed inconsistent word size.
+  + Removed unused trunc button from programming mode.
+  + Fixed deprecation warnings.
+  + Added Serbian Dinar with fixed rate.
+  + Added Bangladeshi Taka with fixed rate.
+  + Updated mailing list contact to Discourse.
+  + Added basic help page for programming mode.
+  + Added insert character code button.
+  + Dim inapplicable bits on word size change.
+  + Make the conversion labels selectable.
+  + Do not convert on swap.
+  + Word size changer in programming mode.
+  + Added metric cups conversion unit.
+  + Fixed astronomical unit conversion.
+  + Fixed feet-based units name, added mph and kph shortcuts.
+  + Use shell copy to clipboard action.
+  + Fixed preferences of angle units.
+  + Updated translations.
+- Add pkgconfig(libhandy-1) BuildRequires: new dependency.
+- Disable test-suite for the time being: does not find the schema
+  (works on package level due to file triggers).
+
+-------------------------------------------------------------------
 Sat Nov 21 21:52:01 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.2:
