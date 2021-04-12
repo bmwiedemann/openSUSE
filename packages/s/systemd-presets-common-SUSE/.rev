@@ -136,4 +136,12 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
   (boo#1183012).</comment>
     <requestid>879681</requestid>
   </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>fc903d8d682bcbaa80987c6fd162be49</srcmd5>
+    <version>15</version>
+    <time>1618223644</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884212</requestid>
+  </revision>
 </revisionlist>

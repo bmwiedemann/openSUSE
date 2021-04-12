@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  7 09:38:24 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Enable hcn-init.service for HNV on POWER (bsc#1184136 ltc#192155).
+
+-------------------------------------------------------------------
 Wed Mar 10 12:39:54 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Enable user service pipewire-media-session.service (used with
