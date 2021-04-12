@@ -22,25 +22,20 @@
 # Do NOT create library package or a devel package!
 #
 ############################# NOTE ##################################
-
 Name:           nss_wrapper
 Version:        1.1.11
 Release:        0
-
 Summary:        A wrapper for the user, group and hosts NSS API
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://cwrap.org/
-
+URL:            https://cwrap.org/
 Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source2:        https://cryptomilk.org/gpgkey-8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D.gpg#/%{name}.keyring
 Source3:        %{name}-rpmlintrc
-
 BuildRequires:  cmake
 BuildRequires:  libcmocka-devel
 BuildRequires:  netcfg
-
 Recommends:     cmake
 Recommends:     pkgconf
 
@@ -74,7 +69,7 @@ development/testing.
 %cmake \
   -DUNIT_TESTING=ON
 
-make %{?_smp_mflags} VERBOSE=1
+%make_build VERBOSE=1
 
 %install
 %cmake_install
@@ -86,11 +81,9 @@ find %{buildroot}%{_bindir} -name "*.pl" \
 %ctest
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS README.md CHANGELOG
 %license LICENSE
 %{_bindir}/nss_wrapper.pl
@@ -98,8 +91,7 @@ find %{buildroot}%{_bindir} -name "*.pl" \
 %dir %{_libdir}/cmake/nss_wrapper
 %{_libdir}/cmake/nss_wrapper/nss_wrapper-config-version.cmake
 %{_libdir}/cmake/nss_wrapper/nss_wrapper-config.cmake
-%dir %{_libdir}/pkgconfig
 %{_libdir}/pkgconfig/nss_wrapper.pc
-%{_mandir}/man1/nss_wrapper.1*
+%{_mandir}/man1/nss_wrapper.1%{?ext_man}
 
 %changelog
