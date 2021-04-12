@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-core-tracing-opentelemetry
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-core-tracing-opentelemetry
-Version:        1.0.0b7
+Version:        1.0.0b8
 Release:        0
 Summary:        Azure Core Tracing OpenTelemetry client library for Python
 License:        MIT
@@ -39,7 +39,7 @@ BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-opentelemetry-api >= 0.13b0
+Requires:       python-opentelemetry-api >= 0.17b0
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages
