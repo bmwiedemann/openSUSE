@@ -1,5 +1,5 @@
 #
-# spec file for package python-dash-html-components
+# spec file for package python-dash-html-components-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -27,9 +27,10 @@
 %bcond_with test
 %endif
 # dash packagers do not regularly tag their releases on github due to some Julia bug
-%define commit 7209e0a2ed58815f183f2f2b55afab8b1c78974a
+# get this from the master branch (dev is the default but does not have the full package)
+%define commit 422c952ed2c86f6c3dbec04150da27688d464a57
 Name:           python-dash-html-components%{psuffix}
-Version:        1.1.1
+Version:        1.1.3
 Release:        0
 Summary:        Vanilla HTML components for Dash
 License:        MIT
@@ -42,10 +43,10 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module dash}
-BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module percy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module selenium}
+BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
 %endif
 %python_subpackages
 
