@@ -17,13 +17,13 @@
 
 
 Name:           mk-configure
-Version:        0.36.0
+Version:        0.37.0
 Release:        0
 Summary:        A build system on top of bmake
 License:        BSD-2-Clause AND MIT AND ISC
 Group:          Development/Tools/Building
-Url:            http://sourceforge.net/projects/mk-configure/
-Source:         http://prdownloads.sf.net/%{name}/%{name}-%{version}.tar.gz
+Url:            https://github.com/cheusov/mk-configure/
+Source:         https://sourceforge.net/projects/mk-configure/files/mk-configure/mk-configure-%{version}/%{name}-%{version}.tar.gz
 Source1:        mkcmake.macros
 Source9:        mk-configure-rpmlintrc
 
