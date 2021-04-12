@@ -891,4 +891,14 @@
     <comment></comment>
     <requestid>861754</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>0280eff7a99694b73d12a94823c071ba</srcmd5>
+    <version>4.5</version>
+    <time>1618240245</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5
+  + Bugfixes
+</comment>
+    <requestid>884679</requestid>
+  </revision>
 </revisionlist>
