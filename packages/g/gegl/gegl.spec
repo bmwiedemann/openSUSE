@@ -1,7 +1,7 @@
 #
 # spec file for package gegl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           gegl
-Version:        0.4.28
+Version:        0.4.30
 Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -31,7 +31,6 @@ Group:          Productivity/Graphics/Other
 URL:            http://gegl.org/
 Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-
 BuildRequires:  ImageMagick
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
@@ -153,7 +152,7 @@ input and output.
 %lang_package -n %{name}-0_4
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %ifarch aarch64
@@ -193,6 +192,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libgegl-sc-0.4.so
 %{_libdir}/libgegl-npd-0.4.so
 %{_libdir}/gegl-0.4/grey2.json
+%{_libdir}/gegl-0.4/dropshadow2.json
 %if %{with luajit}
 # lua files
 %dir %{_datadir}/gegl-0.4/

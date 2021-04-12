@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Mar 29 13:12:47 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.4.30: 
+  + New Operations:
+    - negative-darkroom: This operation is for artists who use hybrid workflow
+      technique of analog photography. After scanning a developed negative, this
+      operation is used to invert the scan to create a positive image by simulating
+      the light behaviour of darkroom enlarger and common photographic papers.
+  + Operations: 
+    - jpg-load,png-load,tiff-load: show ICC relatd problems as warnings.
+    - rgbe-load : fix handling of exponent=0 in RLE encoded files.
+    - color-reduction : Added blue-noise modes, the patents are expired for some
+      years already, also added fix to levels parameters; enabling bi-level.
+    - fattal02 : ensure gaussian pyramid has at least one level.
+    - paint-select (in workshop): multi-level banded graphcut, sub-region rather
+      than full buffer rcomputations and other improvements.
+- Drop 93.patch
+
+-------------------------------------------------------------------
+Fri Mar 26 08:14:25 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 93.patch: fix build with glib 2.67.3.
+
+-------------------------------------------------------------------
 Tue Dec 29 10:39:04 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.28:
@@ -19,7 +43,7 @@ Tue Dec 29 10:39:04 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 Tue Sep 22 10:01:30 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on aarch64 by pre-loading libgomp.so.1 to avoid:
-  "load error: /usr/lib64/libgomp.so.1: cannot allocate memory 
+  "load error: /usr/lib64/libgomp.so.1: cannot allocate memory
   in static TLS block"
 
 -------------------------------------------------------------------
