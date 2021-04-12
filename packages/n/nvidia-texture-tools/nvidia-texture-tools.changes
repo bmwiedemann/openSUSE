@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr  3 12:57:30 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop -march=native to avoid compile-time CPU-detection (boo#1100677)
+
+-------------------------------------------------------------------
 Mon Feb 22 19:47:09 UTC 2021 - Markus Ebner <info@ebner-markus.de>
 
 - Update to version 2.1.2

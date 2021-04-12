@@ -55,7 +55,19 @@ The source code of the Texture Tools is being released under the terms of
 the MIT license.
 
 %prep
-%setup -q
+%autosetup -p1
+%ifarch %{ix86} x86_64
+# on i586 compilation will fail without SSE
+CPU=corei7
+%endif
+%ifarch ppc
+CPU=power8
+%endif
+if [ -n "$CPU" ] ; then
+  sed -i "s/-march=native/-march=$CPU/" cmake/OptimalOptions.cmake
+else
+  sed -i "s/-march=native//" cmake/OptimalOptions.cmake
+fi
 
 %build
 %cmake \

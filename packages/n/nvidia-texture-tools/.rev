@@ -151,4 +151,12 @@
   integrated upstream (forwarded request 874441 from seijikun)</comment>
     <requestid>874479</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>b7451ea4d1eac48ab48be6c36a2facaa</srcmd5>
+    <version>2.1.2</version>
+    <time>1618223818</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884213</requestid>
+  </revision>
 </revisionlist>
