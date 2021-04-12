@@ -574,4 +574,12 @@ a newer version not fitting</comment>
     <comment>Push GNOME 3.38</comment>
     <requestid>847195</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>1986bf8e1e74808e1fa5842004c43c72</srcmd5>
+    <version>2.68.0</version>
+    <time>1618223718</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880935 from dimstar)</comment>
+    <requestid>881108</requestid>
+  </revision>
 </revisionlist>
