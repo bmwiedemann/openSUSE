@@ -1,7 +1,7 @@
 #
 # spec file for package bijiben
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,18 @@
 #
 
 
-%bcond_with zeitgeist
-
 Name:           bijiben
-Version:        3.38.0
+Version:        40.0
 Release:        0
 Summary:        Note editor for GNOME
 License:        GPL-3.0-or-later AND CC-BY-SA-3.0
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Bijiben
-Source0:        https://download.gnome.org/sources/bijiben/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/bijiben/40/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gettext
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
@@ -38,16 +36,15 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.58
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.3
+BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.33.92
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.92
-BuildRequires:  pkgconfig(libhandy-0.0) >= 0.0.10
+BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.26.0
-%if %{with zeitgeist}
-BuildRequires:  pkgconfig(zeitgeist-2.0)
-%endif
 
 %description
 Bijiben is a note editor designed to remain simple to use.
@@ -75,7 +72,6 @@ search results from documents.
 %meson \
 	-Dstatic=false \
 	-Dupdate-mimed=false \
-	%{?with_zeitgeist: -Dzeitgeist=true} \
 	%{nil}
 %meson_build
 

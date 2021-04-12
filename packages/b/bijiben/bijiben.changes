@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Mar 18 14:40:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Added bidirectional text support to notes view.
+  + Dropped Zeitgeist support.
+  + Enabled formatting without dependency on selected text.
+  + Improved Help.
+  + Improved Nextcloud support by using Nextcloud Notes API.
+  + Fixed many bugs and improved application code overall.
+  + Updated translations.
+- Clean up zeitgeist remainders in the spec file: it has been
+  disabled for a while already.
+- Add pkgconfig(json-glib-1.0) and pkgconfig(libcurl)
+  BuildRequires: new dependencies.
+- Replace pkgconfig(libhandy-0.0) BuildRequires with
+  pkgconfig(libhandy-1): follow upstreams port to libhandy-1.
+
+-------------------------------------------------------------------
 Tue Sep 22 12:31:10 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.0:
