@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 31 03:06:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.071
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.071   2021-03-30
+          - fix #67 (better handling of PEM decoding failures)
+
+-------------------------------------------------------------------
 Sat Feb 13 03:06:21 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.070
