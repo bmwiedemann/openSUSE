@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-contacts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-contacts
-Version:        3.38.1
+Version:        40.0
 Release:        0
 Summary:        Contacts Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Contacts
-Source0:        https://download.gnome.org/sources/gnome-contacts/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-contacts/40/%{name}-%{version}.tar.xz
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook_4
@@ -51,7 +51,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libebook-1.2) >= 3.13.90
 BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.30
 BuildRequires:  pkgconfig(libedataserverui-1.2) >= 3.13.90
-BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
+BuildRequires:  pkgconfig(libhandy-1) >= 1.1.0
 # Disable telepathy by default, following upstream, NOTE pass -Dtelepathy=true to meson if you reenable this.
 #BuildRequires:  pkgconfig(telepathy-glib) >= 0.22.0
 
@@ -107,7 +107,7 @@ search results from contacts.
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README.md
+%doc NEWS README.md
 %{_mandir}/man1/gnome-contacts.1%{ext_man}
 %{_bindir}/gnome-contacts
 %dir %{_datadir}/metainfo
