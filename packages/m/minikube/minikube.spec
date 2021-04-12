@@ -17,13 +17,13 @@
 
 
 Name:           minikube
-Version:        1.18.1
+Version:        1.19.0
 Release:        0
 Summary:        Tool to run Kubernetes locally
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/kubernetes/minikube
-Source0:        %{URL}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/kubernetes/minikube/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        %{name}-rpmlintrc
 BuildRequires:  git-core
@@ -33,13 +33,13 @@ BuildRequires:  libvirt-devel >= 1.2.14
 BuildRequires:  pkgconfig
 BuildRequires:  python
 BuildRequires:  wget
-BuildRequires:  golang(API) = 1.15
+BuildRequires:  golang(API) = 1.16
 Recommends:     docker-machine-driver-kvm2
 Recommends:     kubernetes-client
 Recommends:     libvirt
 Recommends:     libvirt-daemon-qemu
 Recommends:     qemu-kvm
-ExclusiveArch:  %{ix86} x86_64 aarch64
+ExcludeArch:    ppc64le s390x
 
 %description
 Minikube is a tool that allows running Kubernetes locally. Minikube
@@ -47,7 +47,7 @@ runs a single-node Kubernetes cluster inside a VM on your machine for
 users looking to try out Kubernetes or develop with it day-to-day.
 
 # vendor/github.com/libvirt/libvirt-go/domain_events.go:334: type [1073741824]_Ctype_struct__virDomainEventGraphicsSubjectIdentity too large
-%ifnarch i586
+%ifnarch i586 %{arm}
 %package -n docker-machine-driver-kvm2
 Summary:        KVM driver for docker-machine
 Group:          System/Management

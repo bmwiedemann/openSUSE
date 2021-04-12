@@ -1,4 +1,4 @@
 <services>
-  <service name="go_modules" mode="disabled">
-  </service>
+  <service name="download_files" mode="disabled"/>
+  <service name="go_modules" mode="disabled"/>
 </services>

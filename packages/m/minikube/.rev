@@ -307,4 +307,16 @@
     <comment></comment>
     <requestid>877822</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b6bf517942e3f15bedc46df58aea6276</srcmd5>
+    <version>1.19.0</version>
+    <time>1618223822</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.19.0:
+  * allow Auto-Pause addon on VMs #11019
+  * Do not allow running darwin/amd64 minikube binary on darwin/arm64 systems #11024
+  * Respect memory being set in the minikube config #11014
+  * new command image ls to list images in a cluster #11007</comment>
+    <requestid>884329</requestid>
+  </revision>
 </revisionlist>
