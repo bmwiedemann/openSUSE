@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  8 16:48:55 UTC 2021 - Ismail Dönmez <idonmez@suse.com>
+
+- Rename export-syslinux-lib-root.patch to syslinux-lib-root.patch
+  and fix syslinux logic.
+
+-------------------------------------------------------------------
 Sat Feb 13 20:24:56 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
 
 - Create subpackages for bash and zsh completions

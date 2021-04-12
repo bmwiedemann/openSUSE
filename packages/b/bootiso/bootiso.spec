@@ -12,25 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:          bootiso
-Version:       4.2.0
-Release:       0
-License:       GPL-3.0-only
-Group:         Development/Tools/Other
-Summary:       A bash script to securely create a bootable USB device from one image file
-Url:           https://github.com/jsamr/bootiso
-Source:        https://github.com/jsamr/bootiso/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch:         export-syslinux-lib-root.patch
-BuildArch:     noarch
-Requires:      bc
-Requires:      jq
-Requires:      wimtools
-Requires:      syslinux
+
+Name:           bootiso
+Version:        4.2.0
+Release:        0
+License:        GPL-3.0-only
+Group:          Development/Tools/Other
+Summary:        A bash script to securely create a bootable USB device from one image file
+URL:            https://github.com/jsamr/bootiso
+Source:         https://github.com/jsamr/bootiso/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch:          syslinux-lib-root.patch
+BuildArch:      noarch
+Requires:       bc
+Requires:       jq
+Requires:       syslinux
+Requires:       wimtools
 # zsh needed for installing completion
-BuildRequires: zsh
+BuildRequires:  zsh
 
 %description
 A bash program to securely and easily create a bootable USB device from one image file
