@@ -16,9 +16,9 @@
 #
 
 
-%define libver  3_9_1
+%define libver  3_9_2
 Name:           rssguard
-Version:        3.9.1
+Version:        3.9.2
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 License:        AGPL-3.0-or-later AND GPL-3.0-only

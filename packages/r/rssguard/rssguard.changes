@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 12 11:29:45 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.9.2
+  Fixed/changed:
+  * Fixed main app window behavior when it is maximized and
+    article is opened in external web browser.
+  * Google Reader API plugin now correctly synchronizes changed
+    messages back to server.
+
+-------------------------------------------------------------------
 Tue Apr  6 09:04:07 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.9.1
