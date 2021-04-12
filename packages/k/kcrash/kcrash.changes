@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr  5 07:12:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Changes since 5.80.0:
+  * document why we close FDs
+  * add licensing info for test fixtures
+  * prefer in-class init to ctor init
+  * remove undefined variable interpolation
+
+-------------------------------------------------------------------
 Sun Mar  7 09:26:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.80.0
