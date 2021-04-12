@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 24 03:06:35 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.16
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  4.16 2021-03-24T08:57:46+0900
+   - Fix handling OpenAPIv2 "responses" $ref when bundling
+
+  4.15 2021-03-24T07:57:58+0900
+   - Fix validating nullable inside anyOf for OpenAPIv3 #241
+   - Fix t/id-keyword-draft*.t test failures with Mojolicious 9.11 #242 #243
+   - Removed deprecated functions joi() and validate_json()
+   - Removed deprecated methods singleton() and version()
+
+-------------------------------------------------------------------
 Wed Feb 24 03:08:07 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.14
