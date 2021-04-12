@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-synapse-managedprivateendpoints
-Version:        0.1.0
+Version:        0.3.0
 Release:        0
 Summary:        Microsoft Azure Synapse Managed Private Endpoints Client Library for Python
 License:        MIT
