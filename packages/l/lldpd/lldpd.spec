@@ -26,12 +26,12 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           lldpd
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        Implementation of IEEE 802.1ab (LLDP)
 # We have some GPL linux headers in include/linux, they are used on
 # platforms where glibc headers are not recent enough
-License:        ISC AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND ISC
 Group:          System/Daemons
 URL:            http://vincentbernat.github.com/lldpd/
 Source0:        http://media.luffy.cx/files/lldpd/%{name}-%{version}.tar.gz
@@ -140,6 +140,7 @@ getent passwd %{lldpd_user} >/dev/null || \
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun  -n %{libname} -p /sbin/ldconfig
+
 %post
 %service_add_post lldpd.service
 %fillup_only
