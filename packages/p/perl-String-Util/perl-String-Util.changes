@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 27 03:09:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.32
+   see /usr/share/doc/packages/perl-String-Util/Changes
+
+  1.32  2021-03-26 14:06:00 PDT
+  1.32  2021-03-26 09:27:35 PDT
+  	- Per bug reports, trim(undef) will return undef
+  	- Add a custom separtor option to sanitize
+
+-------------------------------------------------------------------
 Tue Jul 28 09:53:49 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.31
