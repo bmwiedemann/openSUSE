@@ -35,4 +35,12 @@
 - Sprinkle in update-alternatives for parfive wrapper.</comment>
     <requestid>816513</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>147c8e99d49bba4c47e8deed6e182b31</srcmd5>
+    <version>1.3.0</version>
+    <time>1618223853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884569</requestid>
+  </revision>
 </revisionlist>

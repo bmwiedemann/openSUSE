@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr  9 13:25:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.3.0
+  * Add environment variable based options to help with debugging
+    @Cadair (#70)
+  * Any errors encountered downloading files are now logged to the
+    built in python logging system at the INFO level @dstansby (#58)
+  * Change use of ensure_future to newer create_task @1nF0rmed (#62)
+  * Infra Changes @nabobalis (#68)
+- Release 1.2.0
+  * Make parfive.Downloader.run_download public API and move all of
+    the parfive.Downloader.download logic into run_download. This
+    enabled using parfive from inside an async context. (#54)
+  * Handing a custom loop to Downloader now does nothing, and
+    parfive spins up its own loop. This is to prepare for python
+    3.10 where support for passing custom loops to various asyncio
+    methods will be removed. (#53)
+  * Fix a bug where downloads fail if max_conn is changed after
+    construction of the parfive.Downloader instance. (#56)
+- Skip python36: support ceased, no aioftp
+
+-------------------------------------------------------------------
 Tue Jun 23 07:39:57 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.1.0:

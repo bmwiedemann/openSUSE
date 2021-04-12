@@ -1,7 +1,7 @@
 #
 # spec file for package python-parfive
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-parfive
-Version:        1.1.0
+Version:        1.3.0
 Release:        0
 Summary:        A HTTP and FTP parallel file downloader
 License:        MIT
 URL:            https://parfive.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/p/parfive/parfive-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module aioftp}
+BuildRequires:  %{python_module aioftp >= 0.17.1}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
@@ -43,7 +44,7 @@ BuildRequires:  %{python_module tqdm}
 Requires:       python-aiohttp
 Requires:       python-tqdm
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-aioftp
 BuildArch:      noarch
 
