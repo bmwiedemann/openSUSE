@@ -932,4 +932,12 @@
   parsing base64 data (boo#1182882). (forwarded request 876819 from mgorse)</comment>
     <requestid>879957</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>4974eba3040e7436f8382cab9c283d8f</srcmd5>
+    <version>3.40.0</version>
+    <time>1618223713</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880928 from dimstar)</comment>
+    <requestid>881101</requestid>
+  </revision>
 </revisionlist>

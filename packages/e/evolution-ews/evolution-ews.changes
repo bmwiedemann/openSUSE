@@ -1,8 +1,41 @@
 -------------------------------------------------------------------
-Wed Mar  3 19:46:04 UTC 2021 - Michael Gorse <mgorse@suse.com>
+Sat Mar 20 08:27:18 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.40.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 18 13:45:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.39.3:
+  + CMake: Add FORCE_INSTALL_PREFIX compile time option.
+  + Allocate large-enough buffer for g_base64_decode_step().
+  + Updated translations.
+- Drop evolution-ews-boo1182882.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Mar  3 19:42:33 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Add evolution-ews-boo1182882.patch: fix buffer overrun when
   parsing base64 data (boo#1182882).
+
+-------------------------------------------------------------------
+Mon Feb 15 10:50:40 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 3.39.2:
+  + Calendar: Do not add organizer as the only attendee in Import.
+  + Mail: Drop to account name hides dragged folder.
+  + Sync GLibTools.cmake with Evolution-Data-Server.
+  + e-ews-notification: Add thread safety around get_events thread.
+
+-------------------------------------------------------------------
+Mon Feb 15 03:39:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.39.1:
+  + Handle share folder invitation mails.
+  + Created public folder not visible after restart.
+  + Allow change of the Microsoft 365 OAuth2 endpoints.
+  + Show HTML Description in calendar entries, when available.
 
 -------------------------------------------------------------------
 Fri Feb 12 17:09:25 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
