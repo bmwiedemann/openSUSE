@@ -78,4 +78,15 @@
 - Update Requires from setup.py (forwarded request 864348 from glaubitz)</comment>
     <requestid>864402</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c9bb1a3f0457a25ada424b3ab2d60807</srcmd5>
+    <version>15.0.0</version>
+    <time>1618235346</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 15.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 881864 from glaubitz)</comment>
+    <requestid>881941</requestid>
+  </revision>
 </revisionlist>
