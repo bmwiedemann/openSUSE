@@ -1,7 +1,7 @@
 #
 # spec file for package gdk-pixbuf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define gdk_pixbuf_binary_version 2.10.0
 
 Name:           gdk-pixbuf
-Version:        2.42.2
+Version:        2.42.4
 Release:        0
 Summary:        An image loading library
 License:        LGPL-2.1-or-later
@@ -38,7 +38,6 @@ Source3:        gdk-pixbuf-rpmlintrc
 Source99:       baselibs.conf
 
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  gtk-doc
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  meson >= 0.55.3
@@ -146,7 +145,7 @@ cp -a %{SOURCE2} .
 	-Djasper=false \
 	-Dx11=false \
 	-Dbuiltin_loaders=none \
-	-Dgtk_doc=true \
+	-Dgtk_doc=false \
 	-Dintrospection=enabled \
 	-Dman=true \
 	-Drelocatable=false \
@@ -251,7 +250,6 @@ fi
 %{_libdir}/*.so
 %{_datadir}/gir-1.0/GdkPixbuf-2.0.gir
 %{_datadir}/gir-1.0/GdkPixdata-2.0.gir
-%doc %{_datadir}/gtk-doc/html/gdk-pixbuf
 %{_rpmmacrodir}/macros.gdk-pixbuf
 
 %files lang -f %{name}.lang

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Mar 27 20:45:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable building of docs: creates a cycle with python:
+  + Drop python3-gi-docgen BuildRequires.
+  + Pass gtk_doc=false to meson
+
+-------------------------------------------------------------------
+Sun Mar 21 15:51:52 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.42.4:
+  + Make enum type registration thread safe.
+  + Do not install skipped test files.
+  + Fix GIF initialization.
+  + Always run GIF loader tests.
+  + Fix leaks discovered via ASan.
+  + Expose GdkPixbufLoader API via introspection.
+  + Fix revert-to-previous first frame behaviour for GIF files.
+  + Link to libintl if needed.
+  + Improve support for using gdk-pixbuf as a subproject.
+  + Fix build with GModule disabled.
+  + Use gi-docgen to generate the API reference from introspection
+    data.
+- Replace gtk-doc BuildRequires with python3-gi-docgen: follow
+  upstreams port.
+- As a workaround to
+  https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/issues/177, delete
+  the installed gi-docgen program files.
+
+-------------------------------------------------------------------
 Tue Dec  8 08:24:53 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 2.42.2:
