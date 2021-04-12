@@ -1,7 +1,7 @@
 #
 # spec file for package cheese
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://wiki.gnome.org/Apps/Cheese
 Source0:        https://download.gnome.org/sources/cheese/3.38/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         https://gitlab.gnome.org/GNOME/cheese/-/commit/7cf6268e54620bbbe5e6e61800c50fb0cb4bea57.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes

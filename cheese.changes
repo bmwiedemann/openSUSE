@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Feb 18 12:15:38 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 7cf6268e54620bbbe5e6e61800c50fb0cb4bea57.patch: Fix build
+  with new vala.
+
+-------------------------------------------------------------------
 Wed Sep 16 09:24:08 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.0:
