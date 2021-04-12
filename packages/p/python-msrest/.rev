@@ -109,4 +109,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>854019</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>05613e350f34b301f24431269633288c</srcmd5>
+    <version>0.6.21</version>
+    <time>1618235372</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.6.21
+  + For detailed information about changes see the
+    README.rst file provided with this package (forwarded request 881909 from glaubitz)</comment>
+    <requestid>881989</requestid>
+  </revision>
 </revisionlist>

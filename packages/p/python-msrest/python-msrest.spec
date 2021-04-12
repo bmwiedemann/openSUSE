@@ -1,7 +1,7 @@
 #
 # spec file for package python-msrest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-msrest
-Version:        0.6.19
+Version:        0.6.21
 Release:        0
 Summary:        AutoRest swagger generator Python client runtime
 License:        MIT
