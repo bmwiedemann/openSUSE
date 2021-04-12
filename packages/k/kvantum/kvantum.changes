@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 25 02:03:54 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 0.19.0
+
+  - Fixes and improvements to window dragging, especially from buttons.
+  - Added an option (to Kvantum Manager) for setting the toolbar
+    icon size to the font height if possible (it's the special value
+    of Kvantum Manager → Configure Active Theme → Sizes & Delays → Toolbar icon:).
+  - Better drawing of view-items.
+  - Fixed a rare problem in transient scrollbars. 
+
+-------------------------------------------------------------------
 Tue Jan  5 09:34:13 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 0.18.0
