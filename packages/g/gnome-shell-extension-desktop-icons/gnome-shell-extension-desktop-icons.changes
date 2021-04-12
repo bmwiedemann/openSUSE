@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Mar 19 19:05:48 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add desktop-icon-gnome-40.patch: Declare compatible to GNOME 40.
+
+-------------------------------------------------------------------
+Thu Mar 18 01:55:54 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update to version 20.10.0:
+  * Support for Gnome Shell 3.38 and new dialog APIs.
+  * Fix dragging several files.
+  * Allocate draggable actor before starting the drag.
+  * Fix for the native switcheroo controller.
+  * Avoid scheduling multiple layoutChildren idlers and other
+    fixes.
+  * Templates support.
+  * Preview files with spacebar.
+  * Allow to launch programs with the discrete GPU.
+  * Show mounted devices.
+  * Set home folder label to localized "Home".
+- Drop
+  gnome-shell-extension-desktop-icons-add-mount-disk-icon.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
 Mon Apr 27 02:56:44 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gnome-shell-extension-desktop-icons-add-mount-disk-icon.patch:

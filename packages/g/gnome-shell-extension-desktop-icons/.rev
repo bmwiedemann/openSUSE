@@ -33,4 +33,12 @@
   (jsc#SLE-12572 glgo#GNOME/World/ShellExtensions/desktop-icons!171). (forwarded request 802796 from xiaoguang_wang)</comment>
     <requestid>802986</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>84fd685e4f28012581c39e61cf983ff5</srcmd5>
+    <version>20.10.0</version>
+    <time>1618223730</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880967 from dimstar)</comment>
+    <requestid>881138</requestid>
+  </revision>
 </revisionlist>

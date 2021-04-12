@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-shell-extension-desktop-icons
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           gnome-shell-extension-desktop-icons
-Version:        20.04.0
+Version:        20.10.0
 Release:        0
 Summary:        Desktop icon support for GNOME Shell
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/World/ShellExtensions/desktop-icons
-Source:         desktop-icons-%{version}.tar.xz
+Source:         https://gitlab.gnome.org/World/ShellExtensions/desktop-icons/uploads/5e2d0748cf79d255d7c23df6a6e6901b/desktop-icons-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM desktop-icon-gnome-40.patch dimstar@opensuse.org -- Make extension compatible with GNOME 40
+Patch0:         desktop-icon-gnome-40.patch
 BuildRequires:  gnome-patch-translation
 # Needed for directory ownership
 BuildRequires:  gnome-shell >= 3.30
@@ -36,9 +38,6 @@ Requires:       nautilus >= 3.30.4
 Requires:       xdg-desktop-portal-gtk
 BuildArch:      noarch
 
-# PATCH-FIX-UPSTREAM gnome-shell-extension-desktop-icons-add-mount-disk-icon.patch jsc#SLE-12572 glgo#GNOME/World/ShellExtensions/desktop-icons!171 xwang@suse.com -- Add showing mounted devices's icon
-Patch0:         gnome-shell-extension-desktop-icons-add-mount-disk-icon.patch
-
 %description
 This package provides a GNOME Shell extension for showing the contents
 of ~/Desktop on the desktop of the Shell. Common file management
@@ -46,8 +45,7 @@ operations such as launching, copy/paste, rename and deleting are
 supported.
 
 %prep
-%setup -q -n desktop-icons-%{version}
-%patch0 -p1
+%autosetup -n desktop-icons-%{version}
 translation-update-upstream po %{name}
 gnome-patch-translation-prepare po %{name}
 
