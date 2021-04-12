@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Apr 10 12:56:40 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.18.11
+  * Improved layout of source distribution material.
+  * Stabilized Linux distribution detection for generating PyMuPDF
+    from sources.
+  * Page.get_xobjects delivers the result of Document.get_page_xobjects.
+  * Page.get_image_info delivers meta information for all images shown
+    on the page.
+  * Tools.mupdf_display_warnings allows setting on / off the display
+    of MuPDF-generated warnings. The default is off.
+  * Document.ez_save convenience alias of :meth:`Document.save`
+    with some different defaults.
+  * Image extractions of document pages now also contain the image's
+    **transformation matrix**. This concerns `Page.get_image_bbox`
+    and the DICT, JSON, RAWDICT, and RAWJSON variants of `Page.get_text`.
+- from v1.18.10
+  * Added old aliases for `DisplayList.get_pixmap` and
+    `DisplayList.get_textpage`.
+  * Stabilized removal of JavaScript objects with `Document.scrub`.
+  * Removed a loop in the reworked `TextWriter.fill_textbox`.
+  * `Document.xref_get_keys` and `Document.xref_get_key` to also allow
+    accessing the PDF trailer dictionary. This can be done by using
+    `-1` as the xref number argument.
+  * Added a number of functions for reconstructing the quads for text
+    lines, spans and characters extracted by `Page.get_text` options
+    "dict" and "rawdict".
+  * Added `Tools.unset_quad_corrections` to suppress character quad
+    corrections (occasionally required for erroneous fonts).
+
+-------------------------------------------------------------------
 Sat Feb 27 00:04:25 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Revised License to be AGPL-3.0-only
@@ -24,8 +55,8 @@ Sat Feb 27 00:04:25 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
     of the `warn` parameter to no longer print a warning message
     in overflow situations.
   * Added a utility function `recover_quad`, which computes the
-    quadrilateral of a span. This function can be used when
-    quadrilaterals for text extracted with the "dict" or "rawdict"
+    quadrilateral of a span. This function can be used for correctly
+    marking text extracted with the "dict" or "rawdict"
     options of `Page.get_text`.
 
 -------------------------------------------------------------------
