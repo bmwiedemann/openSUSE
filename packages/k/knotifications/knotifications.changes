@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr  5 07:12:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Changes since 5.80.0:
+  * Relicense files to LGPL-2.0-or-later
+  * Don't close resident notifications when action is invoked
+  * Add missing include for Qt 5.14
+  * Implement inline replies on Android
+  * Add an inline reply notification to the example
+  * Add KNotificationReplyAction for using inline-reply Notification API
+
+-------------------------------------------------------------------
 Sun Mar  7 09:27:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.80.0
