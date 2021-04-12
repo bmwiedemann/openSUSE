@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-1
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Name:           dbus-1
 Version:        1.12.20
 Release:        0
 Summary:        D-Bus Message Bus System
-License:        GPL-2.0-or-later OR AFL-2.1
+License:        AFL-2.1 OR GPL-2.0-or-later
 URL:            https://dbus.freedesktop.org/
 Source0:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz
 Source1:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz.asc
@@ -38,6 +38,7 @@ Patch1:         feature-suse-do-autolaunch.patch
 # Patch-Feature-opensuse sflees@suse.de, users shouldn't be allowed to start / stop the dbus service.
 Patch2:         feature-suse-refuse-manual-start-stop.patch
 BuildRequires:  audit-devel
+BuildRequires:  cmake
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libexpat-devel >= 2.1.0
 BuildRequires:  permissions
@@ -50,7 +51,7 @@ Requires(post): %{_libname} = %{version}
 Requires(post): update-alternatives
 Requires(post): diffutils
 Requires(pre):  permissions
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 Provides:       dbus-launch
 %sysusers_requires
 %if %{with selinux}
@@ -172,6 +173,7 @@ rm -Rf %{buildroot}%{_datadir}/doc/dbus
 
 %post -n %{_libname} -p /sbin/ldconfig
 %postun -n %{_libname} -p /sbin/ldconfig
+
 %pre -f messagebus.pre
 %service_add_pre dbus.service dbus.socket
 
@@ -280,7 +282,7 @@ fi
 %dir %{_libdir}/dbus-1.0
 %{_libdir}/dbus-1.0/include
 %{_libdir}/pkgconfig/dbus-1.pc
-%{_libdir}/cmake/
+%{_libdir}/cmake/DBus1
 %{_datadir}/xml/dbus-1
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-1-devel-doc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ Name:           dbus-1-devel-doc
 Version:        1.12.20
 Release:        0
 Summary:        Developer documentation package for D-Bus
-License:        GPL-2.0-or-later OR AFL-2.1
+License:        AFL-2.1 OR GPL-2.0-or-later
 URL:            https://dbus.freedesktop.org/
 Source0:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz
 Source1:        http://dbus.freedesktop.org/releases/dbus/%{_name}-%{version}.tar.gz.asc

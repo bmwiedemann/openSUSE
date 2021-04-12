@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  7 22:35:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- avoid listing cmake directory - owned by cmake package 
+
+-------------------------------------------------------------------
 Fri Dec  4 07:50:57 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - retire /lib/dbus-1/system-services as it's deprecated
