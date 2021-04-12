@@ -1,4 +1,253 @@
 -------------------------------------------------------------------
+Wed Apr  7 19:30:21 CEST 2021 - jslaby@suse.cz
+
+- Linux 5.11.12 (bsc#1012628).
+- arm64: mm: correct the inside linear map range during hotplug
+  check (bsc#1012628).
+- virtiofs: Fail dax mount if device does not support it
+  (bsc#1012628).
+- ext4: shrink race window in ext4_should_retry_alloc()
+  (bsc#1012628).
+- ext4: fix bh ref count on error paths (bsc#1012628).
+- fs: nfsd: fix kconfig dependency warning for NFSD_V4
+  (bsc#1012628).
+- rpc: fix NULL dereference on kmalloc failure (bsc#1012628).
+- iomap: Fix negative assignment to unsigned sis->pages in
+  iomap_swapfile_activate (bsc#1012628).
+- ASoC: rt1015: fix i2c communication error (bsc#1012628).
+- ASoC: rt5640: Fix dac- and adc- vol-tlv values being off by
+  a factor of 10 (bsc#1012628).
+- ASoC: rt5651: Fix dac- and adc- vol-tlv values being off by
+  a factor of 10 (bsc#1012628).
+- ASoC: sgtl5000: set DAP_AVC_CTRL register to correct default
+  value on probe (bsc#1012628).
+- ASoC: es8316: Simplify adc_pga_gain_tlv table (bsc#1012628).
+- ASoC: soc-core: Prevent warning if no DMI table is present
+  (bsc#1012628).
+- ASoC: cs42l42: Fix Bitclock polarity inversion (bsc#1012628).
+- ASoC: cs42l42: Fix channel width support (bsc#1012628).
+- ASoC: cs42l42: Fix mixer volume control (bsc#1012628).
+- ASoC: cs42l42: Always wait at least 3ms after reset
+  (bsc#1012628).
+- NFSD: fix error handling in NFSv4.0 callbacks (bsc#1012628).
+- ASoC: mediatek: mt8192: fix tdm out data is valid on rising edge
+  (bsc#1012628).
+- kernel: freezer should treat PF_IO_WORKER like PF_KTHREAD for
+  freezing (bsc#1012628).
+- vhost: Fix vhost_vq_reset() (bsc#1012628).
+- io_uring: fix ->flags races by linked timeouts (bsc#1012628).
+- io_uring: halt SQO submission on ctx exit (bsc#1012628).
+- scsi: st: Fix a use after free in st_open() (bsc#1012628).
+- scsi: qla2xxx: Fix broken #endif placement (bsc#1012628).
+- staging: comedi: cb_pcidas: fix request_irq() warn
+  (bsc#1012628).
+- staging: comedi: cb_pcidas64: fix request_irq() warn
+  (bsc#1012628).
+- ASoC: rt5659: Update MCLK rate in set_sysclk() (bsc#1012628).
+- ASoC: rt711: add snd_soc_component remove callback
+  (bsc#1012628).
+- thermal/core: Add NULL pointer check before using cooling
+  device stats (bsc#1012628).
+- locking/ww_mutex: Simplify use_ww_ctx & ww_ctx handling
+  (bsc#1012628).
+- locking/ww_mutex: Fix acquire/release imbalance in
+  ww_acquire_init()/ww_acquire_fini() (bsc#1012628).
+- nvmet-tcp: fix kmap leak when data digest in use (bsc#1012628).
+- io_uring: imply MSG_NOSIGNAL for send[msg]()/recv[msg]() calls
+  (bsc#1012628).
+- Revert "PM: ACPI: reboot: Use S5 for reboot" (bsc#1012628).
+- nouveau: Skip unvailable ttm page entries (bsc#1012628).
+- static_call: Align static_call_is_init() patching condition
+  (bsc#1012628).
+- ext4: do not iput inode under running transaction in
+  ext4_rename() (bsc#1012628).
+- io_uring: call req_set_fail_links() on short
+  send[msg]()/recv[msg]() with MSG_WAITALL (bsc#1012628).
+- net: mvpp2: fix interrupt mask/unmask skip condition
+  (bsc#1012628).
+- mptcp: deliver ssk errors to msk (bsc#1012628).
+- mptcp: fix poll after shutdown (bsc#1012628).
+- mptcp: init mptcp request socket earlier (bsc#1012628).
+- mptcp: add a missing retransmission timer scheduling
+  (bsc#1012628).
+- flow_dissector: fix TTL and TOS dissection on IPv4 fragments
+  (bsc#1012628).
+- mptcp: fix DATA_FIN processing for orphaned sockets
+  (bsc#1012628).
+- mptcp: provide subflow aware release function (bsc#1012628).
+- can: dev: move driver related infrastructure into separate
+  subdir (bsc#1012628).
+- net: introduce CAN specific pointer in the struct net_device
+  (bsc#1012628).
+- mptcp: fix race in release_cb (bsc#1012628).
+- net: bonding: fix error return code of bond_neigh_init()
+  (bsc#1012628).
+- mptcp: fix bit MPTCP_PUSH_PENDING tests (bsc#1012628).
+- can: tcan4x5x: fix max register value (bsc#1012628).
+- brcmfmac: clear EAP/association status bits on linkdown events
+  (bsc#1012628).
+- ath11k: add ieee80211_unregister_hw to avoid kernel crash
+  caused by NULL pointer (bsc#1012628).
+- rtw88: coex: 8821c: correct antenna switch function
+  (bsc#1012628).
+- netdevsim: dev: Initialize FIB module after debugfs
+  (bsc#1012628).
+- iwlwifi: pcie: don't disable interrupts for reg_lock
+  (bsc#1012628).
+- ath10k: hold RCU lock when calling
+  ieee80211_find_sta_by_ifaddr() (bsc#1012628).
+- net: ethernet: aquantia: Handle error cleanup of start on open
+  (bsc#1012628).
+- appletalk: Fix skb allocation size in loopback case
+  (bsc#1012628).
+- net: ipa: remove two unused register definitions (bsc#1012628).
+- net: ipa: use a separate pointer for adjusted GSI memory
+  (bsc#1012628).
+- net: ipa: fix register write command validation (bsc#1012628).
+- net: wan/lmc: unregister device when no matching device is found
+  (bsc#1012628).
+- net: 9p: advance iov on empty read (bsc#1012628).
+- bpf: Remove MTU check in __bpf_skb_max_len (bsc#1012628).
+- ACPI: tables: x86: Reserve memory occupied by ACPI tables
+  (bsc#1012628).
+- ACPI: processor: Fix CPU0 wakeup in acpi_idle_play_dead()
+  (bsc#1012628).
+- ACPI: scan: Fix _STA getting called on devices with unmet
+  dependencies (bsc#1012628).
+- ALSA: usb-audio: Apply sample rate quirk to Logitech Connect
+  (bsc#1012628).
+- ALSA: hda: Re-add dropped snd_poewr_change_state() calls
+  (bsc#1012628).
+- ALSA: hda: Add missing sanity checks in PM prepare/complete
+  callbacks (bsc#1012628).
+- ALSA: hda/realtek: fix a determine_headset_type issue for a
+  Dell AIO (bsc#1012628).
+- ALSA: hda/realtek: call alc_update_headset_mode() in
+  hp_automute_hook (bsc#1012628).
+- ALSA: hda/realtek: fix mute/micmute LEDs for HP 640 G8
+  (bsc#1012628).
+- xtensa: fix uaccess-related livelock in do_page_fault
+  (bsc#1012628).
+- xtensa: move coprocessor_flush to the .text section
+  (bsc#1012628).
+- KVM: SVM: load control fields from VMCB12 before checking them
+  (bsc#1012628).
+- KVM: SVM: ensure that EFER.SVME is set when running nested
+  guest or on nested vmexit (bsc#1012628).
+- PM: runtime: Fix race getting/putting suppliers at probe
+  (bsc#1012628).
+- PM: runtime: Fix ordering in pm_runtime_get_suppliers()
+  (bsc#1012628).
+- tracing: Fix stack trace event size (bsc#1012628).
+- s390/vdso: copy tod_steering_delta value to vdso_data page
+  (bsc#1012628).
+- s390/vdso: fix tod_steering_delta type (bsc#1012628).
+- drm/ttm: make ttm_bo_unpin more defensive (bsc#1012628).
+- mm: fix race by making init_zero_pfn() early_initcall
+  (bsc#1012628).
+- drm/amdkfd: dqm fence memory corruption (bsc#1012628).
+- drm/amd/pm: no need to force MCLK to highest when no display
+  connected (bsc#1012628).
+- drm/amdgpu/vangogh: don't check for dpm in is_dpm_running when
+  in suspend (bsc#1012628).
+- drm/amdgpu: fix offset calculation in
+  amdgpu_vm_bo_clear_mappings() (bsc#1012628).
+- drm/amdgpu: Set a suitable dev_info.gart_page_size
+  (bsc#1012628).
+- drm/amdgpu: check alignment on CPU page for bo map
+  (bsc#1012628).
+- reiserfs: update reiserfs_xattrs_initialized() condition
+  (bsc#1012628).
+- drm/imx: fix memory leak when fails to init (bsc#1012628).
+- drm/tegra: dc: Restore coupling of display controllers
+  (bsc#1012628).
+- drm/tegra: sor: Grab runtime PM reference across reset
+  (bsc#1012628).
+- vfio/nvlink: Add missing SPAPR_TCE_IOMMU depends (bsc#1012628).
+- pinctrl: microchip-sgpio: Fix wrong register offset for IRQ
+  trigger (bsc#1012628).
+- pinctrl: rockchip: fix restore error in resume (bsc#1012628).
+- pinctrl: qcom: sc7280: Fix SDC_QDSD_PINGROUP and UFS_RESET
+  offsets (bsc#1012628).
+- pinctrl: qcom: sc7280: Fix SDC1_RCLK configurations
+  (bsc#1012628).
+- pinctrl: qcom: lpass lpi: use default pullup/strength values
+  (bsc#1012628).
+- pinctrl: qcom: fix unintentional string concatenation
+  (bsc#1012628).
+- extcon: Add stubs for extcon_register_notifier_all() functions
+  (bsc#1012628).
+- extcon: Fix error handling in extcon_dev_register (bsc#1012628).
+- firmware: stratix10-svc: reset COMMAND_RECONFIG_FLAG_PARTIAL
+  to 0 (bsc#1012628).
+- powerpc/pseries/mobility: use struct for shared state
+  (bsc#1012628).
+- powerpc/pseries/mobility: handle premature return from H_JOIN
+  (bsc#1012628).
+- usb: dwc3: pci: Enable dis_uX_susphy_quirk for Intel Merrifield
+  (bsc#1012628).
+- video: hyperv_fb: Fix a double free in hvfb_probe (bsc#1012628).
+- powerpc/mm/book3s64: Use the correct storage key value when
+  calling H_PROTECT (bsc#1012628).
+- usbip: vhci_hcd fix shift out-of-bounds in vhci_hub_control()
+  (bsc#1012628).
+- USB: quirks: ignore remote wake-up on Fibocom L850-GL LTE modem
+  (bsc#1012628).
+- usb: musb: Fix suspend with devices connected for a64
+  (bsc#1012628).
+- usb: xhci-mtk: fix broken streams issue on 0.96 xHCI
+  (bsc#1012628).
+- cdc-acm: fix BREAK rx code path adding necessary calls
+  (bsc#1012628).
+- USB: cdc-acm: untangle a circular dependency between callback
+  and softint (bsc#1012628).
+- USB: cdc-acm: downgrade message to debug (bsc#1012628).
+- USB: cdc-acm: fix double free on probe failure (bsc#1012628).
+- USB: cdc-acm: fix use-after-free after probe failure
+  (bsc#1012628).
+- usb: gadget: udc: amd5536udc_pci fix null-ptr-dereference
+  (bsc#1012628).
+- usb: dwc2: Fix HPRT0.PrtSusp bit setting for HiKey 960 board
+  (bsc#1012628).
+- usb: dwc2: Prevent core suspend when port connection flag is 0
+  (bsc#1012628).
+- usb: dwc3: qcom: skip interconnect init for ACPI probe
+  (bsc#1012628).
+- usb: dwc3: gadget: Clear DEP flags after stop transfers in ep
+  disable (bsc#1012628).
+- soc: qcom-geni-se: Cleanup the code to remove proxy votes
+  (bsc#1012628).
+- staging: rtl8192e: Fix incorrect source in memcpy()
+  (bsc#1012628).
+- staging: rtl8192e: Change state information from u16 to u8
+  (bsc#1012628).
+- driver core: clear deferred probe reason on probe retry
+  (bsc#1012628).
+- drivers: video: fbcon: fix NULL dereference in fbcon_cursor()
+  (bsc#1012628).
+- riscv: evaluate put_user() arg before enabling user access
+  (bsc#1012628).
+- io_uring: do ctx sqd ejection in a clear context (bsc#1012628).
+- Revert "kernel: freezer should treat PF_IO_WORKER like
+  PF_KTHREAD for freezing" (bsc#1012628).
+- Revert "net: bonding: fix error return code of
+  bond_neigh_init()" (bsc#1012628).
+- commit 92a542e
+
+-------------------------------------------------------------------
+Tue Apr  6 17:45:31 CEST 2021 - tiwai@suse.de
+
+- firewire: nosy: Fix a use-after-free bug in nosy_ioctl()
+  (CVE-2021-3483 bsc#1184393).
+- commit c90d8a9
+
+-------------------------------------------------------------------
+Tue Apr  6 16:01:19 CEST 2021 - tiwai@suse.de
+
+- drm/i915: Fix invalid access to ACPI _DSM objects (bsc#1184074).
+- commit 6dbaa20
+
+-------------------------------------------------------------------
 Tue Mar 30 19:20:11 CEST 2021 - jslaby@suse.cz
 
 - Linux 5.11.11 (bsc#1012628).
