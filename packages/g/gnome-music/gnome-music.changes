@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 22 07:56:13 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Update appdata for the 40.0 release.
+
+-------------------------------------------------------------------
+Thu Mar 18 14:02:28 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + Improve startup loading.
+  + Misc playlist handling fixes.
+  + Use publication date instead of creation date for songs.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Nov 23 12:52:20 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.2:

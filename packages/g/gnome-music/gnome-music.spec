@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-music
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gnome-music
-Version:        3.38.2
+Version:        40.0
 Release:        0
 Summary:        Music Player for GNOME
-License:        SUSE-GPL-2.0-with-plugin-exception AND LGPL-2.1-or-later
+License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-music/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-music/40/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
 BuildRequires:  fdupes
