@@ -1,7 +1,7 @@
 #
 # spec file for package devhelp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 %define emacs_plugin_dir %{_datadir}/emacs/site-lisp
-%define vim_plugin_dir %{_datadir}/vim/site/plugin
+%define vim_plugin_dir %{_datadir}/vim/vimfiles/plugin/
 
 Name:           devhelp
-Version:        3.38.1
+Version:        40.alpha
 Release:        0
 Summary:        Developer's Help Program for GNOME
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Devhelp
-Source0:        https://download.gnome.org/sources/devhelp/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/devhelp/40/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.30.0
@@ -112,6 +112,9 @@ translation-update-upstream po %{name}
 %meson \
 	-Dflatpak_build=false \
 	-Dgtk_doc=true \
+        -Dplugin_gedit=true \
+        -Dplugin_vim=true \
+        -Dplugin_emacs=true \
 	%{nil}
 %meson_build
 
@@ -123,14 +126,6 @@ translation-update-upstream po %{name}
 
 # glibmm2 needs this
 mkdir -p %{buildroot}%{_datadir}/devhelp/books
-
-# Install emacs plugin
-mkdir -p %{buildroot}%{emacs_plugin_dir}
-cp -a plugins/devhelp.el %{buildroot}%{emacs_plugin_dir}
-
-# Install vim plugin
-mkdir -p %{buildroot}%{vim_plugin_dir}
-cp -a plugins/devhelp.vim %{buildroot}%{vim_plugin_dir}
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -176,7 +171,7 @@ cp -a plugins/devhelp.vim %{buildroot}%{vim_plugin_dir}
 %files -n vim-plugin-devhelp
 #Own these directories to not depend on additional requirements
 %dir %{_datadir}/vim
-%dir %{_datadir}/vim/site
+%dir %{_datadir}/vim/vimfiles
 %dir %{vim_plugin_dir}
 %{vim_plugin_dir}/devhelp.vim
 

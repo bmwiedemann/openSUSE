@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jan 16 13:42:21 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + New GNOME versioning scheme.
+  + Build: add plugin_emacs, plugin_gedit and plugin_vim options.
+  + Improve the Shortcuts window.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Nov 20 18:00:17 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 3.38.1:

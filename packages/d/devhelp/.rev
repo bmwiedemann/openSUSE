@@ -700,4 +700,12 @@
     <comment> (forwarded request 849737 from iznogood)</comment>
     <requestid>851024</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>cedf28d6682f06263acd9b07990ad864</srcmd5>
+    <version>40.alpha</version>
+    <time>1618223708</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 880921 from dimstar)</comment>
+    <requestid>881093</requestid>
+  </revision>
 </revisionlist>
