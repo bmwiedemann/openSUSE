@@ -16,16 +16,16 @@
 #
 
 
-%define api_ver 5
+%define api_ver 6
 %define lib_ver %{api_ver}-0
 Name:           tepl
-Version:        5.1.1
+Version:        6.00.0
 Release:        0
 Summary:        Text Editor Product Line
 License:        LGPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Projects/Tepl
-Source:         https://download.gnome.org/sources/tepl/5.1/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/tepl/6.00/%{name}-%{version}.tar.xz
 BuildRequires:  gobject-introspection-devel >= 1.42.0
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.53
@@ -100,8 +100,8 @@ applications that want to make use of tepl.
 %{_libdir}/girepository-1.0/Tepl-%{api_ver}.typelib
 
 %files devel
-%doc AUTHORS HACKING README
-%doc %{_datadir}/gtk-doc/html/%{name}-5
+%doc HACKING
+%doc %{_datadir}/gtk-doc/html/%{name}-%{api_ver}
 %{_datadir}/gir-1.0/Tepl-%{api_ver}.gir
 %{_includedir}/tepl-%{api_ver}/
 %{_libdir}/pkgconfig/tepl-%{api_ver}.pc

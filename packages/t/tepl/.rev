@@ -88,4 +88,12 @@
     <comment></comment>
     <requestid>872508</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>aa7d382d67d78c4c717366e65c9722d7</srcmd5>
+    <version>6.00.0</version>
+    <time>1618223749</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40 - here we come (forwarded request 881000 from dimstar)</comment>
+    <requestid>881168</requestid>
+  </revision>
 </revisionlist>
