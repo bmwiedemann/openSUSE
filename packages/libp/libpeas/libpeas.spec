@@ -1,7 +1,7 @@
 #
 # spec file for package libpeas
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,17 +20,17 @@
 %bcond_with python2
 %bcond_without python3
 Name:           libpeas
-Version:        1.28.0
+Version:        1.30.0
 Release:        0
 Summary:        GObject-based Plugin Engine
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Libpeas
-Source0:        https://download.gnome.org/sources/libpeas/1.28/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libpeas/1.30/%{name}-%{version}.tar.xz
 
 BuildRequires:  gettext
 BuildRequires:  gtk-doc
-BuildRequires:  meson >= 0.49.0
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
