@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jan 14 18:03:58 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.3.1:
+  + Build: port to Meson, remove Autotools.
+  + Updated translations.
+- Switch to meson buildsystem:
+  + Add meson BuildRequires.
+  + Replace configure/make/make_install with respective
+    meson/meson_build/meson_install macros.
+- Enable test suite: add %check session and call %meson_test.
+
+-------------------------------------------------------------------
 Fri Sep 11 18:31:28 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 5.2.0:

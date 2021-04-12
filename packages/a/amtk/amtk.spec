@@ -1,7 +1,7 @@
 #
 # spec file for package amtk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018 Luciano Santos, luc14n0@linuxmail.org.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,16 +20,17 @@
 %define api_ver 5
 %define libamtk libamtk-%{api_ver}-0
 Name:           amtk
-Version:        5.2.0
+Version:        5.3.1
 Release:        0
 Summary:        An Actions, Menus and Toolbars Kit
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/Amtk
-Source0:        https://download.gnome.org/sources/amtk/5.2/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/amtk/5.3/%{name}-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel >= 1.42.0
 BuildRequires:  gtk-doc >= 1.25
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.52
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
@@ -84,14 +85,16 @@ with AMTK.
 %autosetup -p1
 
 %build
-%configure \
-    --enable-gtk-doc
-%make_build
+%meson \
+  -Dgtk_doc=true
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 %find_lang %{name}-%{api_ver}
+
+%check
+%meson_test
 
 %post   -n %{libamtk} -p /sbin/ldconfig
 %postun -n %{libamtk} -p /sbin/ldconfig
@@ -105,8 +108,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/girepository-1.0/Amtk-%{api_ver}.typelib
 
 %files devel
-%doc ABOUT-NLS AUTHORS HACKING README
-%doc %{_datadir}/gtk-doc/html/%{name}-%{api_ver}.0
+%doc HACKING
+%doc %{_datadir}/gtk-doc/html/%{name}-%{api_ver}
 %{_datadir}/gir-1.0/Amtk-%{api_ver}.gir
 %{_includedir}/amtk-%{api_ver}/
 %{_libdir}/pkgconfig/amtk-%{api_ver}.pc
