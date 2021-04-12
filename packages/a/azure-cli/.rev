@@ -243,4 +243,16 @@
 - Update Requires from setup.py (forwarded request 865463 from glaubitz)</comment>
     <requestid>865479</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d70715986420d3a3e574e018f1ba682e</srcmd5>
+    <version>2.21.0</version>
+    <time>1618235374</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.21.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update Requires from setup.py (forwarded request 882521 from glaubitz)</comment>
+    <requestid>882574</requestid>
+  </revision>
 </revisionlist>
