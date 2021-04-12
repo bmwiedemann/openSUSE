@@ -125,4 +125,15 @@
     CHANGELOG.md file provided with this package (forwarded request 861723 from glaubitz)</comment>
     <requestid>861730</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>717a9490c1e1ead2039e2d4b2e12746b</srcmd5>
+    <version>18.0.0</version>
+    <time>1618235358</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 18.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 881884 from glaubitz)</comment>
+    <requestid>881964</requestid>
+  </revision>
 </revisionlist>
