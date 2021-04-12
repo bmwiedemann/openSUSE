@@ -1,7 +1,7 @@
 #
 # spec file for package zmusic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zmusic
-Version:        1.1.4
+Version:        1.1.6
 Release:        0
 Summary:        ZDoom component library for music handling
 License:        GPL-3.0-only
@@ -27,6 +27,8 @@ URL:            https://zdoom.org/
 #Git-Clone:     https://github.com/coelckers/ZMusic
 Source:         https://github.com/coelckers/ZMusic/archive/%version.tar.gz
 Patch1:         system-gme.patch
+Patch2:         dumb-dumb.patch
+Patch3:         0001-made-sndfile-imported-library-global.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
@@ -65,7 +67,7 @@ This subpackage contains the headers for the zmusic library, which is ZDoom's
 music component library.
 
 %prep
-%autosetup -p1 -n ZMusic-%version
+%autosetup -p0 -n ZMusic-%version
 
 %build
 # There is handcrafted assembler, which LTO does not play nice with.
@@ -101,5 +103,6 @@ rm -f "$b/%_libdir"/libzmusiclite*
 %files devel
 %_includedir/*
 %_libdir/libzmusic.so
+%_libdir/cmake/
 
 %changelog

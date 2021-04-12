@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 10 21:07:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.6
+  * Add detection of Opus comment tags in Ogg files.
+  * Multiply master volume for module player by 4.
+- Add 0001-made-sndfile-imported-library-global.patch,
+  dumb-dumb.patch.
+
+-------------------------------------------------------------------
 Sat Oct 31 12:02:30 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.4
