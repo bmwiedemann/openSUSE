@@ -46,7 +46,7 @@
 %define with_vulkan 0
 %define with_llvm 0
 
-%ifarch %{ix86} x86_64 %{arm} aarch64 ppc64 ppc64le
+%ifarch %{ix86} x86_64 %{arm} aarch64 ppc64 ppc64le riscv64
   %define gallium_loader 1
 %else
   %define gallium_loader 0
@@ -56,7 +56,7 @@
 %define vdpau_nouveau 0
 %define vdpau_radeon 0
 
-%ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le
+%ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le riscv64
   %define xvmc_support 1
   %define vdpau_nouveau 1
   %define vdpau_radeon 1
@@ -787,7 +787,7 @@ egl_platforms=x11,wayland
             -Ddri-drivers=nouveau \
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl,freedreno,vc4,etnaviv,lima,panfrost,kmsro,v3d \
   %else
-  %ifarch ppc64 ppc64le
+  %ifarch ppc64 ppc64le riscv64
             -Ddri-drivers=nouveau \
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast \
   %else
@@ -981,7 +981,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %endif
 
 %if %{drivers}
-%ifarch aarch64 %{ix86} x86_64 %{arm} ppc64 ppc64le
+%ifarch aarch64 %{ix86} x86_64 %{arm} ppc64 ppc64le riscv64
 %files -n libxatracker2
 %{_libdir}/libxatracker.so.2*
 
@@ -1021,7 +1021,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/vdpau/libvdpau_r600.so.1.0.0
 %endif
 
-%ifarch %{ix86} x86_64 ppc64 ppc64le %{arm} aarch64
+%ifarch %{ix86} x86_64 ppc64 ppc64le %{arm} aarch64 riscv64
 %files -n libvdpau_radeonsi
 %{_libdir}/vdpau/libvdpau_radeonsi.so
 %{_libdir}/vdpau/libvdpau_radeonsi.so.1
@@ -1042,7 +1042,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %files -n Mesa-dri
 %dir %{_libdir}/dri
 %{_libdir}/dri/*_dri.so
-%ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le
+%ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le riscv64
 %exclude %{_libdir}/dri/nouveau_dri.so
 %exclude %{_libdir}/dri/nouveau_vieux_dri.so
 %endif
@@ -1057,7 +1057,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/gallium-pipe/pipe_*.so
 %endif
 
-%ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le
+%ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le riscv64
 %files -n Mesa-dri-nouveau
 %{_libdir}/dri/nouveau_dri.so
 %{_libdir}/dri/nouveau_vieux_dri.so
@@ -1108,7 +1108,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %endif
 
 %if %{drivers}
-%ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le
+%ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le riscv64
 %files -n Mesa-libva
 %{_libdir}/dri/*_drv_video.so
 %endif
