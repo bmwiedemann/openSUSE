@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr  5 07:12:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.81.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.81.0
+- Changes since 5.80.0:
+  * qtquickengine: Do not forward intermediate states
+  * quickengine: Emit entryEvent signal with enum which is exposed to QML
+  * Create a NewStuff.Action component, add NewStuff.Settings global
+  * Fix minor typos
+  * Less risk of infinite spinner on uninstalling KPackage based things (kde#434371)
+
+-------------------------------------------------------------------
 Sun Mar  7 09:27:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.80.0
