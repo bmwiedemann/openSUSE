@@ -1,35 +1,142 @@
 -------------------------------------------------------------------
+Fri Apr  9 13:05:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.1.4
+  Big changelog since 2.0.7:
+  https://github.com/sunpy/sunpy/releases
+  Backwards incompatible changes in 2.1.0:
+  * Support for Python 3.6 and Numpy 1.15 has been dropped in line
+    with NEP 29. The minimum supported version of Astropy is now 4.
+    0, and the minimum version of scipy is now 1.2. (#4284)
+  * Changed sunpy.coordinates.sun.B0 return type from ~astropy.
+    coordinates.Angle to ~astropy.coordinates.Latitude. (#4323)
+  * An error is now raised if vmin or vmax are passed to to sunpy.
+    map.GenericMap.plot and they are already set on the map norm.
+    This is consistent with upcoming Matplotlib changes. (#4328)
+  * Previously slicing the result of Fido.search() (a ~sunpy.net.
+    fido_factory.UnifiedResponse object) so that it had a length
+    of one returned another ~sunpy.net.fido_factory.
+    UnifiedResponse object. Now it will return a ~sunpy.net.
+    base_client.QueryResponseTable object, which is a subclass of
+    astropy.table.Table. (#4358)
+  * The .size property of a coordinate frame with no associated
+    data will now raise an error instead of returning 0. (#4577)
+  * The following ~sunpy.map.Map methods have had support for
+    specific positional arguments removed. They must now be passed
+    as keyword arguments (i.e. m.method(keyword_arg=value)).
+  *   ~sunpy.map.GenericMap.submap: width, height.
+      ~sunpy.map.GenericMap.draw_rectangle: width, height, axes,
+       top_right. (#4616)
+  * The sunpy specific attributes .heliographic_observer and .rsun
+    are no longer set on the ~astropy.wcs.WCS returned by sunpy.
+    map.GenericMap.wcs. (#4620)
+  * Due to upstream changes, the parsing logic for the ~sunpy.net.
+    helio.HECClient now returns strings and not bytes for ~sunpy.
+    net.helio.HECClient.get_table_names. (#4643)
+  * Reduced the selection of dependent packages installed by
+    default via pip, which means that some of our sub-packages
+    will not fully import when sunpy is installed with pip install
+    sunpy. You can install all dependencies by specifying pip
+    install sunpy[all], or you can install sub-package-specific
+    dependencies by specifying, e.g., [map] or [timeseries].
+    (#4662)
+  * The class inheritance for ~sunpy.coordinates.metaframes.
+    RotatedSunFrame and the frames it creates has been changed in
+    order to stop depending on unsupported behavior in the
+    underlying machinery. The return values for some isinstance/
+    issubclass calls will be different, but the API for ~sunpy.
+    coordinates.metaframes.RotatedSunFrame is otherwise unchanged.
+    (#4691)
+  * Fix a bug in ~sunpy.map.GenericMap.submap where only the top
+    right and bottom left coordinates of the input rectangle in
+    world coordinates were considered when calculating the pixel
+    bounding box. All four corners are once again taken into
+    account now, meaning that ~sunpy.map.GenericMap.submap
+    correctly returns the smallest pixel box which contains all
+    four corners of the input rectangle.
+  * To revert to the previous 2.0.0 behaviour, first convert the
+    top right and bottom left coordinates to pixel space before
+    calling submap with:
+       top_right = smap.wcs.world_to_pixel(top_right) * u.pix
+       bottom_left = smap.wcs.world_to_pixel(bottom_left) * u.pix
+       smap.submap(bottom_left=bottom_left, top_right=top_right)
+    This will define the rectangle in pixel space. (#4727)
+  * VSO results where the size was -1 (missing data) now return
+    None rather than -1 to be consistent with other missing data
+    in the VSO results. (#4798)
+  * All result objects contained within the results of a Fido.
+    search() (a ~sunpy.net.fido_factory.UnifiedResponse object)
+    are now ~sunpy.net.base_client.QueryResponseTable objects (or
+    subclasses thereof). These objects are subclasses of astropy.
+    table.Table and can therefore be filtered and inspected as
+    tabular objects, and the modified tables can be passed to Fido.
+    fetch.
+  * This, while a breaking change for anyone accessing these
+    response objects directly, will hopefully make working with
+    Fido search results much easier. (#4798)
+  * Results from the ~sunpy.net.dataretriever.NOAAIndicesClient
+    and the ~sunpy.net.dataretriever.NOAAPredictClient no longer
+    has Start Time or End Time in their results table as the
+    results returned from the client are not dependant upon the
+    time parameter of a search. (#4798)
+  * The sunpy.net.vso.QueryResponse.search method has been removed
+    as it has not worked since the 1.0 release of sunpy. (#4798)
+  * The sunpy.net.hek.hek.HEKColumn class has been removed, the
+    HEKTable class now uses the standard astropy.table.Column
+    class. (#4798)
+  * The keys used to format file paths in Fido.fetch have changed.
+    They are now more standardised across all the clients, as they
+    are all extracted from the names of the columns in the results
+    table.
+  * For results from the VSO the keys are no longer separated with
+    ., and are based on the displayed column names. For results
+    from the dataretriever clients the only main change is that
+    the keys are now lower case, where they were capitilized
+    before. You can use the ~.sunpy.net.fido_factory.
+    UnifiedResponse.path_format_keys method to see all the
+    possible keys for a particular search. (#4798)
+  * The time returned from
+    ~sunpy.coordinates.sun.carrington_rotation_number has been
+    changed from the TT scale to the more common UTC scale. To undo
+    this change, use time_out = time_out.tt on the outputted time.
+    (#4819)
+  * .BaseQueryResponse.response_block_properties has been renamed
+    to .BaseQueryResponse.path_format_keys, on the return objects
+    from all search() methods on all clients and from Fido.search()
+    (#4798)
+
+-------------------------------------------------------------------
 Sat Jan 23 10:38:14 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 - Update to 2.0.7
-  + Big changlog since 1.1.0. 
+  + Big changlog since 1.1.0.
     See https://docs.sunpy.org/en/stable/whatsnew/2.0.html
     https://github.com/sunpy/sunpy/blob/master/CHANGELOG.rst
     and https://github.com/sunpy/sunpy/releases
   + Highlights from the 2.0 update:
-    * sunpy.net.Fido now supports tab completion of search 
-      attributes. This allows you to do a.Instrument.AIA, and 
-      print a.Instrument to see the list of known supported 
-      instruments.  
-    * sunpy.instr.aia.aiaprep has been deprecated in favor 
-      of the functionality in the aiapy 
+    * sunpy.net.Fido now supports tab completion of search
+      attributes. This allows you to do a.Instrument.AIA, and
+      print a.Instrument to see the list of known supported
+      instruments.
+    * sunpy.instr.aia.aiaprep has been deprecated in favor
+      of the functionality in the aiapy
       <https://aiapy.readthedocs.io/>__ package.
-    * Various fixes and clarifications to pixel indexing in 
+    * Various fixes and clarifications to pixel indexing in
       the sunpy.map subpackage.
-    * Standardization of specifying rectangles in coordinate 
-      space in the :meth:~sunpy.map.GenericMap.submap and 
-      :meth:~sunpy.map.GenericMap.draw_rectangle methods of 
+    * Standardization of specifying rectangles in coordinate
+      space in the :meth:~sunpy.map.GenericMap.submap and
+      :meth:~sunpy.map.GenericMap.draw_rectangle methods of
       ~sunpy.map.GenericMap.
-    * HTML quicklook previews of ~sunpy.map.GenericMap and 
-      ~sunpy.map.MapSequence instances are available with 
-      the new :meth:~sunpy.map.GenericMap.quicklook and 
-      :meth:~sunpy.map.MapSequence.quicklook methods, 
-      respectively. This is also the default display in 
+    * HTML quicklook previews of ~sunpy.map.GenericMap and
+      ~sunpy.map.MapSequence instances are available with
+      the new :meth:~sunpy.map.GenericMap.quicklook and
+      :meth:~sunpy.map.MapSequence.quicklook methods,
+      respectively. This is also the default display in
       Jupyter <https://jupyter.org/>__ notebooks.
-    * Integration of differential rotation into the 
-      sunpy.coordinates framework. This enables, amongst 
-      other things, the warping of images with the reproject 
-      <https://reproject.readthedocs.io/>__ package and the 
-      plotting of rotated grid lines with :ref:WCSAxes 
+    * Integration of differential rotation into the
+      sunpy.coordinates framework. This enables, amongst
+      other things, the warping of images with the reproject
+      <https://reproject.readthedocs.io/>__ package and the
+      plotting of rotated grid lines with :ref:WCSAxes
       <astropy:wcsaxes>.
 - Drop fix_importlib_py_ver.patch merged upstream
 
@@ -461,7 +568,7 @@ Tue Jul 23 15:30:32 UTC 2019 - Todd R <toddrme2178@gmail.com>
     * Fix generation of the coordinate transformation graph with Astropy 3.1.dev
     * Prevent helioviewer from erroring when downloading file to a directory that
       does not exist. It will now create the directory when required.
-    * Fix transformations into/out of Heliographic Stonyhurst frame when 
+    * Fix transformations into/out of Heliographic Stonyhurst frame when
       the coordinate representation is Cartesian.
     * Running the figure tests with ``setup.py test`` now saves the figures and the hashes to the same directory as setup.py.
     * `sunpy.instr.fermi.met_to_utc` now returns the correct utc time which takes into account the leap seconds that have passed.
@@ -639,4 +746,4 @@ Mon Feb 26 18:40:37 UTC 2018 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Thu Jun 22 14:57:35 UTC 2017 - alarrosa@suse.com
 
-- Initial release of python-sunpy 0.7.8 
+- Initial release of python-sunpy 0.7.8
