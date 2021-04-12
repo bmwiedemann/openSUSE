@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 28 03:09:46 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.19
+   see /usr/share/doc/packages/perl-UNIVERSAL-require/Changes
+
+  0.19 2021-03-27 NEILB
+      - Noted that the module is now deprecated
+      - Added a list of alternatives to SEE ALSO
+
+-------------------------------------------------------------------
 Tue Apr 14 17:34:48 UTC 2015 - coolo@suse.com
 
 - updated to 0.18
