@@ -382,4 +382,15 @@
   + For changes of the packet see https://www.gnucash.org/news.phtml (forwarded request 810510 from felle)</comment>
     <requestid>811408</requestid>
   </revision>
+  <revision rev="44" vrev="9">
+    <srcmd5>553022f5be550f246d3e5980896c6a16</srcmd5>
+    <version>4.5</version>
+    <time>1618235385</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5
+  + See NEWS for details
+  + Set Release according rpmlint
+</comment>
+    <requestid>884665</requestid>
+  </revision>
 </revisionlist>
