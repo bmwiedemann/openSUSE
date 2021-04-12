@@ -445,6 +445,7 @@ with the libbd_vdo plugin/library.
 %autosetup -p1
 
 %build
+export CFLAGS="%{optflags} -Wno-deprecated-declarations"
 %configure \
         --disable-static \
         --enable-introspection \

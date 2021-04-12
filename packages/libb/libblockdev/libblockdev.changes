@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 26 08:34:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add -Wno-deprecated-declarations to cflags: dealing with
+  deprecations is upstreams business and should not hinder
+  downstream packages from building.
+
+-------------------------------------------------------------------
 Wed Jan 20 08:14:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.25:
@@ -18,7 +25,7 @@ Wed Jan 20 08:14:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * lvm: Use the UNUSED macro instead of __attribute__((unused))
   * Fix max size limit for LVM thinpool metadata
   * loop: Retry LOOP_SET_STATUS64 on EAGAIN
-  
+
 -------------------------------------------------------------------
 Thu Aug 20 22:11:53 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
