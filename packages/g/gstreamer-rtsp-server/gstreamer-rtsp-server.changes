@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 31 16:21:16 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.18.4:
+  + rtspclientsink: fix deadlock on shutdown if no data has been
+    received yet
+  + rtspclientsink: fix leaks in unit tests
+  + rtsp-stream: avoid deadlock in send_func
+  + rtsp-client: cleanup transports during TEARDOWN
+
+-------------------------------------------------------------------
 Sat Jan 16 20:00:07 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.3:
