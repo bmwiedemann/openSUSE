@@ -77,4 +77,15 @@
   * Monitor container with conmon pid file (#2)</comment>
     <requestid>809052</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>611ed5fe08a142f22054ff5712341c76</srcmd5>
+    <version>0.0+git20210412.85b4fd5</version>
+    <time>1618240248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20210412.85b4fd5:
+  * Fix name of config file
+  * Update service files with new layout
+- Use etc/default instead of sysconfig for configuration file</comment>
+    <requestid>884689</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package container-registry-systemd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           container-registry-systemd
-Version:        0.0+git20200526.1d9ce7b
+Version:        0.0+git20210412.85b4fd5
 Release:        0
 Summary:        Systemd service files and config files for container-registry
 License:        GPL-3.0-or-later
 URL:            https://github.com/kubic-project/container-registry-systemd
 Source:         container-registry-systemd-%{version}.tar.xz
 Requires:       certstrap
-Requires(post): %fillup_prereq
 BuildArch:      noarch
 
 %description
@@ -40,13 +39,13 @@ to run the openSUSE container registry managed by systemd.
 mkdir -p %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_sysconfdir}/registry
 mkdir -p %{buildroot}%{_distconfdir}/registry
+mkdir -p %{buildroot}%{_distconfdir}/default
 mkdir -p %{buildroot}%{_localstatedir}/lib/container-registry
 mkdir -p %{buildroot}%{_unitdir}
-mkdir -p %{buildroot}%{_fillupdir}
 mkdir -p %{buildroot}/srv/registry
 install -m 644 config.yml* %{buildroot}%{_distconfdir}/registry/
 install -m 644 auth_config.yml %{buildroot}%{_distconfdir}/registry
-install -m 644 sysconfig.container-registry %{buildroot}%{_fillupdir}/
+install -m 644 container-registry.default %{buildroot}%{_distconfdir}/default/container-registry
 install -m 755 create-container-registry-certs.sh %{buildroot}%{_sbindir}/create-container-registry-certs
 install -m 755 setup-container-registry.sh %{buildroot}%{_sbindir}/setup-container-registry
 install -m 644 container-registry.service %{buildroot}%{_unitdir}/
@@ -59,7 +58,13 @@ ln -s /sbin/service %{buildroot}%{_sbindir}/rcregistry-auth_server
 %service_add_pre container-registry.service registry-auth_server.service
 
 %post
-%{fillup_only -n container-registry}
+if [ -f /etc/sysconfig/container-registry ]; then
+    if [ ! -e /etc/default/container-registry ]; then
+	mv /etc/sysconfig/container-registry /etc/default/container-registry
+    else
+	mv /etc/sysconfig/container-registry /etc/sysconfig/container-registry.rpmsave
+    fi
+fi
 %service_add_post container-registry.service registry-auth_server.service
 
 %preun
@@ -73,12 +78,12 @@ ln -s /sbin/service %{buildroot}%{_sbindir}/rcregistry-auth_server
 %doc README.md
 %dir %{_sysconfdir}/registry
 %dir %{_distconfdir}/registry
+%{_distconfdir}/default/container-registry
 %{_distconfdir}/registry/auth_config.yml
 %{_distconfdir}/registry/config.yml
 %{_distconfdir}/registry/config.yml.*
 %{_unitdir}/container-registry.service
 %{_unitdir}/registry-auth_server.service
-%{_fillupdir}/sysconfig.container-registry
 %{_sbindir}/create-container-registry-certs
 %{_sbindir}/setup-container-registry
 %{_sbindir}/rccontainer-registry

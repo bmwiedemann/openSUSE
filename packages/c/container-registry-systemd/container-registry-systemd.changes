@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 12 14:01:32 UTC 2021 - kukuk@suse.com
+
+- Update to version 0.0+git20210412.85b4fd5:
+  * Fix name of config file
+  * Update service files with new layout
+- Use etc/default instead of sysconfig for configuration file
+
+-------------------------------------------------------------------
 Tue May 26 14:53:44 UTC 2020 - kukuk@suse.com
 
 - Update to version 0.0+git20200526.1d9ce7b:
