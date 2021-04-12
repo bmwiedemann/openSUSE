@@ -27,6 +27,8 @@ Source:         https://media.inkscape.org/dl/resources/file/%{name}-%{version}.
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
+# PATCH-FIX-UPSTREAM 2790.patch dimstar@opensuse.org -- Fix build against glib 2.67.3
+Patch0:         https://gitlab.com/inkscape/inkscape/-/merge_requests/2790.patch
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
@@ -130,7 +132,7 @@ Inkscape is a vector graphics editor.
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{_version}
+%autosetup -n %{name}-%{_version} -p1
 
 %build
 %ifarch %{arm}

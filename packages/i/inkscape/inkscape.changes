@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 26 08:27:20 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 2790.patch: fix build against glib 2.67.3.
+
+-------------------------------------------------------------------
 Mon Jan 25 12:43:45 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.0.2
