@@ -15,4 +15,19 @@
     <comment></comment>
     <requestid>823966</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ae8d1f56f26b970a3dc0c98da6d2b39f</srcmd5>
+    <version>1.2.1</version>
+    <time>1618223633</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1
+- Changes since 1.1.1:
+  * Bump version to 1.2.1
+  * Bump version to 1.2.0
+  * Add the activity management protocol parts
+  * Add a TODOKF6 for which protocols should be deprecated by that time
+  * fix DTD issue
+- Add Vlad's key to plasma-wayland-protocols.keyring (forwarded request 884060 from Vogtinator)</comment>
+    <requestid>884061</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package plasma-wayland-protocols
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %bcond_without lang
 Name:           plasma-wayland-protocols
-Version:        1.1.1
+Version:        1.2.1
 Release:        0
 Summary:        Wayland protocols used by Plasma
 License:        LGPL-2.1-only AND LGPL-2.1-or-later AND MIT AND BSD-3-Clause
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/%{name}/%{name}-v%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/%{name}/%{name}-v%{version}.tar.xz.sig
 # Note: The key in there is currently only self-signed and so not actually trusted.
 Source2:        plasma-wayland-protocols.keyring
 %endif
@@ -39,7 +39,7 @@ This package contains the non-standard Wayland protocol definitions used by
 KDE Plasma.
 
 %prep
-%setup -q
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
   %cmake_kf5 -d build

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr  5 18:14:00 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.2.1
+- Changes since 1.1.1:
+  * Bump version to 1.2.1
+  * Bump version to 1.2.0
+  * Add the activity management protocol parts
+  * Add a TODOKF6 for which protocols should be deprecated by that time
+  * fix DTD issue
+- Add Vlad's key to plasma-wayland-protocols.keyring
+
+-------------------------------------------------------------------
 Sun Aug  2 07:56:22 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.1.1. No changelog
