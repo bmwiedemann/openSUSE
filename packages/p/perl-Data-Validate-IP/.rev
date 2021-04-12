@@ -7,4 +7,12 @@
     <comment>This is needed by ddclient update sr#639343</comment>
     <requestid>641659</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>32140e0c11dba96c9a1379d387b110b3</srcmd5>
+    <version>0.30</version>
+    <time>1618223802</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884100</requestid>
+  </revision>
 </revisionlist>

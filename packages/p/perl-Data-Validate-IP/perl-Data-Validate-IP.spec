@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Validate-IP
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Data-Validate-IP
-Version:        0.27
-Release:        0
 %define cpan_name Data-Validate-IP
+Name:           perl-Data-Validate-IP
+Version:        0.30
+Release:        0
 Summary:        IPv4 and IPv6 validation methods
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Data-Validate-IP/
-Source0:        http://www.cpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
+License:        Artistic-1.0 OR GPL-1.0-or-later
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(NetAddr::IP) >= 4
@@ -44,14 +42,14 @@ to a specific network or whether an address is public or private
 (reserved).
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -59,7 +57,7 @@ to a specific network or whether an address is public or private
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes CONTRIBUTING.md LICENSE README.md test-vars-ignore
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md test-vars-ignore
+%license LICENSE
 
 %changelog

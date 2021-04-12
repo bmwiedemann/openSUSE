@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Mar 30 03:06:16 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.30
+   see /usr/share/doc/packages/perl-Data-Validate-IP/Changes
+
+  0.30  2021-03-29
+  - Added some more details to the security docs to include mentions of the
+    is_*_ip() functions too.
+  0.29  2021-03-29
+  - Fixed a typo in the POD.
+  0.28  2021-03-29
+  - Added docs about the security implications of using functions like
+    is_private_ip4() without _also_ calling is_ipv4() first. This was inspired
+    by a recent issue with the Node netmask package. See
+    https://sick.codes/universal-netmask-npm-package-used-by-270000-projects-vulnerable-to-octal-input-data-server-side-request-forgery-remote-file-inclusion-local-file-inclusion-and-more-cve-2021-28918/
+    for a write up.
+
+-------------------------------------------------------------------
 Fri Nov 18 06:19:31 UTC 2016 - coolo@suse.com
 
 - updated to 0.27
