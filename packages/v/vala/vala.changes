@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Thu Mar 18 09:08:28 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.52.0:
+  + Various improvements and bug fixes:
+    - codegen: Include "glib.h" for deprecated symbols (GOBJECT).
+    - vala: Improve error for incompatible expressions in
+      conditional expression.
+    - vala: Check for unused attributes unconditionally.
+    - girparser: Allow overriding of "Compact" attribute for
+      classes.
+    - girparser: Handle empty "<type/>" element and report an
+      error.
+    - girparser: Add support for NoWrapper metadata for methods.
+    - build: Add --enable-test-asan configure option.
+
+-------------------------------------------------------------------
+Mon Mar  8 09:47:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.51.90:
+  + Various improvements and bug fixes:
+     - codegen:
+       + More use of get_ccode_type_name().
+       + "_first_array" parameter for params-array is variadic too.
+       + Inherit GType from base struct of SimpleType structs.
+     - vala:
+       + Report warning if --target-glib=auto was not evaluated
+         successfully.
+       + Fix ownership inheritance of "unowned var" in foreach
+         statement.
+       + Use pre-resolved symbol/type of SemanticAnalyzer if
+         possible.
+     - gdbus: Don't leak memory of deserialized arguments on error
+       in wrapper method.
+     - girparser: Reuse populated Node.gtype_struct_for instead of
+       resolving again.
+     - girparser: Evaluate "glib:type-struct" twice to pick up
+       reparented structs.
+     - testrunner: Include Gio-2.0/gio-2.0 for GIR tests too.
+  + Bindings: gtk4: Update to 4.1.1+f8f90d85.
+
+-------------------------------------------------------------------
+Sat Feb 27 23:26:29 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.51.3:
+  + Various improvements and bug fixes:
+    - codegen:
+      + Don't use volatile modifier in glib API when targetting >=
+        2.68.
+      + CCodeBaseModule.get_type_id_expression () won't return null.
+      + Don't wrongly emit declaration for default-handler of
+        signals.
+      + Include "string.h" for strcmp() (POSIX).
+    - vala:
+      + Generics value holding struct pointer requires casting on
+      access.
+      + Infer needle type for "in" expression on enum.
+      + Don't allow "in" operation with different enum types.
+      + Improve context check whether property is writeable on
+        assignments.
+      + Include "stdlib.h" for Enum.to_string() (POSIX).
+      + Set proper source_reference for implicit "this" and
+        "result" variables.
+      + Report error for invalid inner operand of unary
+        expressions.
+    - girwriter: Output default handler of signals.
+  + Bindings:
+    - glib-2.0: Add new symbols from 2.68.
+    - webkit2gtk-4.0: Update to 2.31.90.
+    - vapi: Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Fri Feb 19 09:40:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.51.2:
+  + Various improvements and bug fixes:
+    - vala:
+      + Check type-arguments in base-types/prerequisites of
+        class/interface.
+      + Include type-checks in preconditions of methods for type
+        narrowing.
+      + Capturing va_list parameters/variables is not allowed.
+      + Properly parse and handle chained initialization of
+        members.
+    - codewriter: Output valid vala syntax for LoopStatement and
+      don't write trailing ";" after body of WithStatement.
+  + Bindings:
+    + gstreamer: Update from 1.19.0+ git master.
+    + vapi: Update GIR-based bindings.
+
+-------------------------------------------------------------------
+Wed Feb 17 09:41:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.51.1:
+  + Support "binding" to bind GtkCallback to class of given
+    property.
+  + Add support for type narrowing.
+  + Support chain up to simple generics constructor.
+  + Perform runtime version check of libvala.
+  + girparser: Handle anonymous delegate not backed by
+    virtual-method or signal.
+  + Add support for 'opaque' compact classes.
+  + Add further support for params arrays in constructors.
+  + Improve handling of "NoWrapper" attribute.
+  + Improve support of SimpleType struct constructors.
+  + Use __attribute__ instead of G_GNUC_* in POSIX profile.
+  + Add SDL 2.x bindings [#1032] amd drop SDL 1.x.
+  + Various improvements and bug fixes.
+  + Various binding updates.
+
+-------------------------------------------------------------------
 Mon Jan 11 06:25:58 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.50.3:
