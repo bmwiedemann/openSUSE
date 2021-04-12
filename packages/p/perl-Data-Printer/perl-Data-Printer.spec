@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Printer
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,52 +12,55 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Data-Printer
-Version:        0.40
-Release:        0
 %define cpan_name Data-Printer
-Summary:        Colored Pretty-Print of Perl Data Structures and Objects
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Data-Printer/
+Name:           perl-Data-Printer
+Version:        1.000004
+Release:        0
+Summary:        Colored & full-featured pretty print of Perl data structures and objects
+License:        Artistic-1.0 OR GPL-1.0-or-later
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GA/GARU/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Clone::PP)
-BuildRequires:  perl(File::HomeDir) >= 0.91
-BuildRequires:  perl(Package::Stash) >= 0.3
-BuildRequires:  perl(Sort::Naturally)
-BuildRequires:  perl(Term::ANSIColor) >= 3
-BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(version) >= 0.77
-Requires:       perl(Clone::PP)
-Requires:       perl(File::HomeDir) >= 0.91
-Requires:       perl(Package::Stash) >= 0.3
-Requires:       perl(Sort::Naturally)
-Requires:       perl(Term::ANSIColor) >= 3
-Requires:       perl(Test::More) >= 0.88
 Requires:       perl(version) >= 0.77
 %{perl_requires}
 
 %description
-colored pretty-print of Perl data structures and objects
+The ever-popular Data::Dumper is a fantastic tool, meant to stringify data
+structures in a way they are suitable for being "eval"'ed back in. The
+thing is, a lot of people keep using it (and similar ones, like Data::Dump)
+to print data structures and objects on screen for inspection and
+debugging, and while you _can_ use those modules for that, it doesn't mean
+you _should_.
+
+This is where Data::Printer comes in. It is meant to do one thing and one
+thing only:
+
+_format Perl variables and objects to be inspected by a human_
+
+If you want to serialize/store/restore Perl data structures, this module
+will NOT help you. Try Storable, Data::Dumper, JSON, or whatever. CPAN is
+full of such solutions!
+
+Whenever you type 'use Data::Printer' or 'use DDP', we export two functions
+to your namespace:
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -65,7 +68,6 @@ colored pretty-print of Perl data structures and objects
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes examples README.md
+%doc Changes CONTRIBUTING.md examples README.md
 
 %changelog

@@ -1,4 +1,327 @@
 -------------------------------------------------------------------
+Thu Mar  4 03:06:19 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.000004
+   see /usr/share/doc/packages/perl-Data-Printer/Changes
+
+  1.0.4   2021-03-03
+      BUG FIXES:
+          - fix DBIx::Class print when literal SQL is present (Veesh Goldman)
+
+  1.0.3   2021-03-02
+      OTHER:
+          - fixup documentation on how to convert from the old .dataprinter
+            format to the new one (GH#157)
+          - test fixes
+
+-------------------------------------------------------------------
+Tue Mar  2 03:06:24 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.000002
+   see /usr/share/doc/packages/perl-Data-Printer/Changes
+
+  1.0.2   2021-02-28
+      OTHER:
+          * Material's color for caller_info and code is now a bit brighter
+            to improve readability on terminals with dark background.
+          * improve MS Windows support
+          * increase test coverage
+  1.0.1   2021-02-25
+      BUG FIXES:
+          - properly parse the "n" option in regexes
+          - fix unwrap of __PACKAGE__, __FILENAME__ and __LINE__
+            on caller_message (GH#156)
+          - add a single space between caller message and data when
+            caller_message_newline is false
+          - proper colorization on caller message.
+      OTHER:
+          - improve documentation on caller message behavior
+          - document caveat of printing array/hash slices (GH#152)
+          - fix broken link in documentation (GH#155)
+          - improve tip on how to make a drop-in replacement
+            to Data::Dumper (GH#154)
+  1.0.0   2021-02-24
+      We are really excited to finally bring to you Data::Printer 1.0.0 \o/
+      This release includes all modifications from the 0.99_* series as
+      described below.
+  0.99_026 2021-02-19
+      BUG FIXES:
+          - test fixes/updates
+          - improved support for Cpanel::JSON::XS::Boolean
+  0.99_025 2021-02-18
+      BUG FIXES:
+          - improved support for perl 5.8.9 (thank you cpantesters!)
+  0.99_024 2021-02-17
+      NEW FEATURES:
+          - fix rc file conversor to change 'color' to 'colors'
+            (thanks Buddy Burden for reporting the issue!)
+      OTHER:
+          - massive documentation rewrite.
+          - drop support for "ignore_keys" for now.
+  0.99_023 2021-02-01
+      NEW FEATURES:
+          - profiles! Now you make complex settings using Perl code.
+          - allow .dataprinter files on the project home and subdirs.
+          - new option 'warnings', when set to 0 will make DDP silence
+            (almost) all warnings such as theme/profile not found. Default is 1.
+          - filter for the 'Date' module (the evolution of Panda::Date)
+      BUG FIXES:
+          - properly show roles' attributes from Role::Tiny, Moo and Moose;
+          - 'quote_keys' also quotes the path of circular references and found elements.
+          - when 'quote_keys' is set, hash keys are quoted with whatever 'scalar_quotes'
+            is set to.
+          - escape quote characters in quoted strings and hash keys
+          - blessed regexps (in objects different than the native 'Regexp') are now
+            properly displayed as objects of their class.
+      OTHER:
+          - new string_max default: 4096
+          - new array_max default: 100
+          - new hash_max default: 100
+          - dropped filter support for the deprecated Panda::Date dist
+          - dropped filter support for the Date::Pcalc dist (buggy in recent perls)
+          - lowercased all words in class dump for output consistency
+  0.99_022 2020-09-26
+      BUG FIXES:
+          - fix test case of rc option containing spaces
+  0.99_021 2020-09-26
+      NEW FEATURES:
+          - 'caller_message_position' option to control whether to show labels 'before'
+            or 'after' the dump (defaults to 'before');
+          - 'caller_message_newline' puts an automatic "\n" after the message;
+          - 'resolve_scalar_refs' option to show values instead of just
+            the reference indicator;
+          - when multiline is false, string/hash/array overflow become "(...)";
+          - filter loading errors are not fatal anymore, unless you set the
+            'die_on_filter_error' option;
+      BUG FIXES:
+          - allow quoted values when parsing .dataprinter;
+          - np() is never colored on 'auto' colors;
+          - printing to a file or to a variable is never colored on 'auto' colors;
+          - fulldump typo fix;
+          - fix filter test failure when Mojo::JSON loads ::XS backends (GH#136);
+          - do not call 'stringify' on PDF::API2 objects as it's a destructive op;
+          - allow code filters in the new .dataprinter format, but only if the
+            file meets certain permissions criteria;
+          - 'dump' mode working as expected again;
+      OTHER:
+          - simplified homedir logic for MSWin32, Linux and MacOS
+            (Karen Etheridge);
+          - new 'contributing to' data;
+          - minor color adjustments on Material theme to improve legibility
+            on lighter terminals;
+  0.99_020 2018-06-30
+      NEW FEATURES:
+          - new 'fulldump' option to ignore max string/array/hash.
+          - also stringify on to_string()
+          - ContentType filter shows utf8 symbol for image/audio/video/etc
+          - ContentType filter now has its own color
+          - ContentType filter understands Sereal binaries
+      BUG FIXES:
+          - prevent 'undefined' warning in ContentType filter
+          - fix test on old HTTP::Headers
+      OTHER:
+          - improved documentation
+  0.99_019 2018-06-27
+      BUG FIXES:
+          - more filter fixes on different module versions
+            (many thanks to Slaven Rezić and all other CPAN testers).
+  0.99_018 2018-06-25
+      BUG FIXES:
+          - fix filter test on older HTTP::Message
+  0.99_017 2018-06-25
+      BUG FIXES:
+          - fix filter test failure on older Mojolicious
+          - fix filter test failure on older Digest::MD5
+  0.99_016 2018-06-25
+      NEW FEATURES:
+          - unsee() method in DDP objects to ignore visits
+          - new Web filter bundle parsing JSON, Cookies and HTTP Request/Response.
+          - DateTime filter now understands Time::Seconds and Time::Moment.
+      BUG FIXES:
+          - fixed show_tied, which was not working properly since the refactor.
+          - prevent non-ref counters from being refcounted
+          - fix floating point test error in unusual hardware/OS combinations.
+      OTHER:
+          - improved implementation of "seen" counter
+          - improved documentation
+          - removed unused code
+  0.99_015 2018-06-14
+      NEW FEATURES:
+          - new ContentType filter to detect popular binaries in strings,
+            like images, videos and documents.
+      OTHER:
+          - code tidying
+          - greatly improved documentation
+          - test coverage increased
+      BUG FIXES:
+          - DateTime/Digest/DB filters now honor colorization from themes
+          - test fixes
+  0.99_014 2018-06-08
+      BUG FIXES:
+          - DateTime filter: fix Class::Date test on systems
+            that treat GMT as UTC.
+  0.99_013 2018-06-08
+      NEW FEATURES:
+          - dualvar lax mode accepts leading/trailing whitespace in numbers
+          - DB filter: improve display of replication lag
+          - DB filter: list unique constraints on DBIC
+          - DB filter: improved parsing of DBIC sources/resultsets/rows
+      BUG FIXES:
+          - filter listings in RC file now always an array ref
+          - DateTime filter: fix parsing of old Mojo::Date objects
+          - DB filter: test fixes
+          - Digest filter updated and re-added
+      OTHER:
+          - DB filter: improve documentation
+          - DB filter: increase test coverage
+          - Digest filter: show class name by default on parsing digests
+  0.99_012 2018-05-25
+      NEW FEATURES:
+          - show_dualvar now accepts 'strict', 'lax' and 'off'. Default is
+            'lax', ignoring decimal zeroes to the right (e.g. 1.00 and '1',
+            '1.10' and 1.1)
+          - multiline => 0 now also shortens the hash separator
+      OTHER:
+          - test improvements
+          - improved documentation
+  0.99_011 2018-05-24
+      BUG FIXES:
+          - proper color downgrade on terminals who only support 256 colors.
+          - fixed colorization tests
+          - fixed DB external filters
+  0.99_010 2018-05-21
+      BUG FIXES:
+          - extra debug info for failed colorization tests
+          - another fix for Panda::Date (Slaven Rezić)
+  0.99_009 2018-05-20
+      BUG FIXES:
+          - fix dualvar test on different locales (Slaven Rezić)
+          - fix Panda::Date test when en_US locale not present (Slaven Rezić)
+  0.99_008 2018-05-20
+      NEW FEATURES:
+          - show_dualvar (defaults to true) lets you know whenever both numeric
+            and string values of a variable are set to a different thing
+            (Philippe "BooK" Bruhat)
+          - maybe_colorize() accepts a 'default color' so filters can use it.
+          - extra_config() provies all non-core settings passed
+            to Data::Printer, so filters can use them.
+          - DateTime filter for Panda::Date (Sergey Aleynikov)
+      BUG FIXES:
+          - fixed DateTime external filters
+          - fix issue with dereferencing code refs (Håkon Hægland)
+          - fix 'pass' on globs, regexes and code references
+            (Håkon Hægland, Sergey Aleynikov)
+      OTHER:
+          - documentation improvements
+  0.99_007 2018-05-17
+      BUG FIXES:
+          - fix regex parsing in 5.10.1
+          - test fixes for 5.11
+  0.99_006 2018-05-17
+      BUG FIXES:
+          - fix longstanding issue of displaying weirdly-named objects
+            like 'HASH' or "0" (github issue #105) (bessarabov + dur-randir)
+          - fix test for UNIVERSAL::DOES
+      OTHER:
+          - documentation improvements
+          - remove undocumented and unsupported extra option in
+            external filters.
+  0.99_005 2018-05-13
+      BUG FIXES:
+          - fix regex filter on perl 5.8
+          - improve ISA detection in perl 5.8 without MRO::Compat
+  0.99_004 2018-05-12
+      BUG FIXES:
+          - fix tests on win32
+  0.99_003 2018-05-11
+      BUG FIXES:
+          - fix test plan issue on some versions of Test::More
+          - die from caller perspective on filter error
+          - drop support for Sort::Naturally::XS
+  0.99_002 2018-05-10
+      BUG FIXES:
+          - fix tests when bogus RC file is present
+          - fix colored tests on travis
+          - fix refcount test on perls <= 5.12
+          - reset internal state after parsing
+          - when scouting for methods, ensure GVs are named
+          - synced p() and np() code so they behave exactly the same
+          - fix use_prototypes => 0
+          - prevent "double plan" warninga on tests
+      OTHER:
+          - extra tests to increase code coverage
+          - improved error handling in themes
+          - function to convert old RC format to the new one
+          - improved README
+          - extra debug info on test failures
+          - cleanup on unreachable code
+  0.99_001 2018-04-21
+      BACKWARDS-INCOMPATIBLE CHANGE
+          - new format for the .dataprinterrc file
+      NEW FEATURES:
+          - Data::Printer::Object available for public usage!
+            (big thanks to frew && rjbs)
+          - use DDP; p $foo, as => 'this is a label';
+            Hopefully this helps people tag their debug code without having
+            to write caller_info => 1, caller_message => '...'
+          - theme => 'XXX' will try and load Data::Printer::Theme::XXX,
+            which you can create to share your colour scheme with the world!
+          - speaking of colours, you can now use up to 256 of them
+            (if your terminal supports them, of course)
+          - print only a slice of arrays and hashes with:
+             - array_max => 10 (default is 50, set it to 0 for unlimited)
+             - array_overflow => '(...skipping __SKIPPED__ items...)'
+             - array_preserve => 'begin'
+               if the array has more than array_max elements, preserve the first
+               array_max elements and replace the rest with '(...skipping XX items...)'.
+               Other available options are 'end', 'middle', 'extremes', and 'none'.
+             - hash_max / hash_overflow / hash_preserve (same! note however that
+               preserved keys will only be the same if hash keys are sorted)
+               Defaults to 50.
+          - ignore_keys to skip their dump (feature by Eugen Konkov)
+          - string_max/string_overflow/string_preserve to limit string entries (scalars),
+            just like arrays and hashes. Defaults to 1024 and 'begin'. Set it
+            to 0 for unlimited size.
+          - new 'separator', 'brackets' and 'overflow' colors to control
+          - unicode_charnames, when set to 1 (together with escape_chars)
+            will try and use the Unicode name when escaping strings.
+            So `$s = "\x{2603}"; p $s` will output "\N{SNOWMAN}"
+          - show_refcount => 1 exposes the reference count for the data structure
+            (and inner data) if the count is greater than 1. (default 0, showing no refcounts).
+          - show_memsize => 1 shows the (approximated) amount of memory the variable
+            occupies for all variables on that level. This means that '1' will show
+            the size of the entire data structure, while 2 will also show sizes of
+            inner data, 3 will go even deeper and so on. To get the size of everything,
+            use 'all' - though usually you'll probably want to just use '1'.
+            This requires Devel::Size, so the default is 0 for none.
+          - memsize_unit defined in which unit to show the memory usage. Can be
+            set to 'b'(ytes), 'k'(ilobytes), 'm'(egabytes) or 'auto' (the default).
+          - new property 'format_inheritance', defaults to "lines", a shiny and much
+            clearer new way to displays methods per inherited package. You may also
+            set it to 'string' to preserve the old behaviour.
+          - inheritance tree is considered when filtering objects unless you disable
+            it with 'parent_filters => 0' (Ovid)
+          - new option 'stringify' (default: 1) will return the stringified version
+            of the object, if one is available. It will try overloaded strings/numbers,
+            as_string() and stringify() calls, respectively. Note that this will efectivelly
+            ignore all other class details you may have chosen.
+            (Sergey Aleynikov, Benct Philip Jonsson)
+          - new option show_overloads (default: 1) will list all overloads
+            from the object's class.
+          - the standard class filter is now able to show internals in blessed subs
+          - support for faster natural sorting via Sort::Key::Natural
+            if the user has it installed (feature request by @grr on github)
+      BUG FIXES:
+          - fix array subelement alignment when index is shown (GARU)
+          - show UNIVERSAL in linear ISA if it's on (GARU)
+          - use "\n" instead of $/ as default line separator (Håkon Hægland && Chung-Kuan Tsai)
+          - less magic added to internal Perl representation of variables
+            (Jarrod Funnell, Sergey Aleynikov, Michael Conrad, Nicolas R.)
+          - show_methods is now independent from show_inherited, meaning you can
+            check all inherited methods and no local ones, or any combination thereof.
+            This is the expected behaviour from the documentation, but was not happening.
+
+-------------------------------------------------------------------
 Thu Aug  3 05:21:36 UTC 2017 - coolo@suse.com
 
 - updated to 0.40
