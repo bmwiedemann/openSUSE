@@ -137,4 +137,12 @@ Another accidental omission in the KDE Frameworks update...</comment>
     <comment>KDE Frameworks 5.80 (forwarded request 878671 from cgiboudeaux)</comment>
     <requestid>878832</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a3cbcf049106f3165797cda2eb46c8b9</srcmd5>
+    <version>5.81.0</version>
+    <time>1618223682</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.81.0</comment>
+    <requestid>884283</requestid>
+  </revision>
 </revisionlist>
