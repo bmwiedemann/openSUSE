@@ -1,0 +1,109 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dddca4514f9098d775bbdcf2553f0665</srcmd5>
+    <version>0.1.0</version>
+    <time>1537971268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>637969</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a829348c2f5276f41daff4596c7d2439</srcmd5>
+    <version>0.3.0</version>
+    <time>1557833977</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.3.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Add patch to drop extras_require field from setup.py,
+  required for SLES12 as the setuptools version is too old
+  + amk_drop-extras-require.patch
+- Bump minimum version for namespace packages
+  to 3.0.0 in BuildRequires and Requires
+- Remove python-devel package from BuildRequires
+- Refresh patches for new version
+  + amk_drop-compatible-releases-operator.patch
+- Run fdupes to hardlink duplicate files
+  + Add fdupes to BuildRequires
+  + Add %fdupes invocation to %install
+- Update BuildRequires and Requires from setup.py (forwarded request 694355 from glaubitz)</comment>
+    <requestid>694567</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>407fc642438f165e2aa0bda3a1f2d117</srcmd5>
+    <version>0.4.0</version>
+    <time>1570710623</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735214 from glaubitz)</comment>
+    <requestid>735716</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9e8e2041ec268bd17175c50e7039760d</srcmd5>
+    <version>0.5.0</version>
+    <time>1580205386</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.5.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package (forwarded request 767747 from glaubitz)</comment>
+    <requestid>767836</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>39df7b9fab5d19a48dbbfa2eaa41370b</srcmd5>
+    <version>0.9.0</version>
+    <time>1601652124</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.9.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 830763 from glaubitz)</comment>
+    <requestid>830902</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aa73e0e722484dda884b65e731400e5a</srcmd5>
+    <version>0.10.0</version>
+    <time>1606649200</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.10.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 850442 from glaubitz)</comment>
+    <requestid>850530</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>df4eef53de58745c73e5a0c5ffbbf919</srcmd5>
+    <version>0.10.0</version>
+    <time>1607548725</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853940</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9ab347d0f5767e02a6444cab3a53c3ab</srcmd5>
+    <version>1.0.0b1</version>
+    <time>1610051203</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 861280 from glaubitz)</comment>
+    <requestid>861391</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e4a58ae7feb9a04f0c307e3c7af46024</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1618235355</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b1 (forwarded request 881879 from glaubitz)</comment>
+    <requestid>881960</requestid>
+  </revision>
+</revisionlist>
