@@ -18,7 +18,7 @@
 
 
 Name:           rbac-lookup
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        Tool to find roles and cluster roles in a Kubernetes cluster
 License:        Apache-2.0

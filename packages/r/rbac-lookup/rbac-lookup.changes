@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 09 08:54:20 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 0.6.4:
+  * Update documentation from template (#176)
+  * Managed by Terraform
+  * Add documentation site (#175)
+  * Bump google.golang.org/api from 0.40.0 to 0.41.0 (#172)
+  * Bump google.golang.org/api from 0.39.0 to 0.40.0 (#164)
+  * Bump k8s.io/client-go from 0.20.2 to 0.20.4 (#168)
+  * Bump google.golang.org/api from 0.38.0 to 0.39.0 (#163)
+  * Bump google.golang.org/api from 0.37.0 to 0.38.0 (#162)
+  * Update GoReleaser to version 0.155, add Linux/arm and Windows builds (#161)
+  * Bump google.golang.org/api from 0.36.0 to 0.37.0 (#160)
+
+-------------------------------------------------------------------
 Fri Feb 26 15:57:24 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Update to 0.6.3
