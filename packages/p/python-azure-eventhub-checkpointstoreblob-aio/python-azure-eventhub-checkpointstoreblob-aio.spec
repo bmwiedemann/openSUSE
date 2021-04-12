@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-eventhub-checkpointstoreblob-aio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 %define skip_python2 1
 Name:           python-azure-eventhub-checkpointstoreblob-aio
-Version:        1.1.1
+Version:        1.1.3
 Release:        0
 Summary:        Azure EventHubs Checkpoint Store client library for Python using Storage Blobs
 License:        MIT
@@ -39,11 +39,15 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-aiohttp < 4.0
 Requires:       python-aiohttp >= 3.0
+Requires:       python-azure-core < 2.0.0
+Requires:       python-azure-core >= 1.10.0
 Requires:       python-azure-eventhub < 6.0.0
 Requires:       python-azure-eventhub >= 5.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-storage-blob < 13.0.0
 Requires:       python-azure-storage-blob >= 12.0.0
+Requires:       python-cryptography >= 2.1.4
+Requires:       python-msrest >= 0.6.18
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages
