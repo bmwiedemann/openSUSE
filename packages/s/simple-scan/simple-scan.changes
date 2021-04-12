@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Mar 24 07:54:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Re-released with correct version number.
+
+-------------------------------------------------------------------
+Sat Mar 20 17:27:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Feb 26 13:02:29 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.beta:
+  + Don't repeat vendor name in the device name.
+  + GNOME 40 consistency updates.
+  + Fix crop size after decreasing page size.
+  + UI fixes: change crop icon, improve layout of buttons.
+  + Add redetect button to device list.
+  + Add new resolution 200 DPI.
+  + Add zero second delay for Multiple Pages from FlatBed.
+  + Display an error, when no documents found in the feeder.
+  + Rename 'Start again' button to 'New document'.
+  + Fix crash on lexmark backend.
+  + Updated translations.
+- Add pkgconfig(libhandy-1) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Tue Dec  8 13:48:03 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.2:
