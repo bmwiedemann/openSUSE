@@ -31,7 +31,7 @@
 %bcond_without python_plugin
 %endif
 Name:           gimp
-Version:        2.10.22
+Version:        2.10.24
 Release:        0
 Summary:        The GNU Image Manipulation Program
 License:        GPL-3.0-or-later
@@ -42,10 +42,6 @@ Source1:        macros.gimp
 # openSUSE palette file
 Source2:        openSUSE.gpl
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM git diff GIMP_2_10_22..gimp-2-10 -- plug-ins/common/file-heif.c > libheif-avif-only.patch mrueckert@suse.de -- only offer the fileformats that our current libheif actually supports 
-Patch:          libheif-avif-only.patch
-# PATCH-FIX-UPSTREAM Make graphviz/dot dependency optional -- https://github.com/GNOME/gimp/commit/2cae9b9acf9da98c4c9990819ffbd5aabe23017e.patch
-Patch1:         0001-app-make-gegl-introspect-an-optional-operation-depen.patch
 
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.0
@@ -77,7 +73,7 @@ BuildRequires:  pkgconfig(cairo) >= 1.12.2
 BuildRequires:  pkgconfig(cairo-pdf) >= 1.12.2
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.70
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.30.8
-BuildRequires:  pkgconfig(gegl-0.4) >= 0.4.24
+BuildRequires:  pkgconfig(gegl-0.4) >= 0.4.30
 BuildRequires:  pkgconfig(gexiv2) >= 0.10.6
 BuildRequires:  pkgconfig(glib-2.0) >= 2.54.2
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24.32
@@ -114,7 +110,7 @@ BuildRequires:  xdg-utils
 # obs does not automaticaly add this
 Requires:       libglib-2_0-0 >= 2.54.2
 Requires:       libgexiv2-2 >= 0.10.6
-Requires:       libbabl-0_1-0 >= 0.1.46
+Requires:       libbabl-0_1-0 >= 0.1.78
 # Explicitly declare the libgimp versions for upgrade purposes
 Requires:       libgimp-2_0-0 = %{version}
 Requires:       libgimpui-2_0-0 = %{version}
@@ -217,8 +213,6 @@ applications that want to make use of the GIMP libraries.
 
 %prep
 %setup -q
-%patch -p1
-%patch1 -p1
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8

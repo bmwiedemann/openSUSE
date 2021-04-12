@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Mon Mar 29 13:17:56 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.10.24
+  - Core:
+    - Ignore Pentax and PentaxDng metadata at export because they are
+      unsupported.
+    - DBus calls (remote file open, typically with double click on file
+      browser; and remote command run) are now processed after all command
+      line files (in case of calls during startup) and in the call order
+      (FIFO) for consistency. Some timeout has also been added to not spam
+      the core process with non-processable DBus calls during startup.
+    - Display profile name in "Color space" field of Image Properties and
+      improve ellipsis & wrap on dialog fields whose contents' size is not
+      controllable together with better dialog size management.
+    - Fix stack overflow when loading very large XCF files on Windows.
+    - Point snapping now works outside the canvas. This is used for snap
+      to guides, grid and vectors. Snap to grid only works off-canvas when
+      "Show All" is enabled because off-canvas grid is not visible
+      otherwise, though snap to guide and vectors will always work
+      off-canvas.
+  - Libgimp:
+    - Various metadata improvements:
+      * Improve reading of iptc tags that appear more than once.
+  - Plug-ins:
+    - JPEG export will better advertize when metadata export fails,
+      possibly with relevant error message. Image export would not fail,
+      but at least we make the person aware metadata is not properly
+      exported.
+    - More robust TIFF import and export:
+      * Better handling of Exif.Thumbnail.* tags on export.
+      * Import now ignores TIFF pages with invalid directory (rather than
+        freezing and output an error to warn of possible data loss).
+      * Import attempts to count the directories by reading them when the
+        headers does not announce any directory, which allows to salvage
+        images with improper header. Also if reading of a directory fail,
+        we now output a message to warn of possible data loss.
+      * Fixed loading 2 and 4-bit TIFF images in grayscale and indexed.
+      * Improve support of ExtraSamples fields with non-conformant TIFF
+        files.
+      * Improve loading of multi page tiffs with linear TRC.
+      * More safety checks as a result of fuzz-testing.
+      * Improve loading of MinIsWhite and MinIsBlack images.
+    - GeoTIFF tag support added (recognized and stored into image
+      parasites at import, then exported back when TIFF format is used)
+      with appropriate "Save GeoTIFF data" checkbox (checked by default)
+      to disable GeoTIFF metadata export when not desired.
+    - The metadata viewer and editor got a big cleaning and refactoring
+      pass, as well as various fixes and several improvements:
+      * Fix handling of IPTC tags which can appear more than once (such as
+        "Keywords") in both the viewer and editor.
+      * Always read both the IPTC and XMP equivalent tags in the editor,
+        instead of assuming they are necessarily the same.
+      * More IPTC equivalents of XMP tags added:
+        + Iptc.Application2.LocationName <=> Xmp.iptc.Location
+        + Iptc.Application2.BylineTitle <=> Xmp.photoshop.AuthorsPosition
+        + Iptc.Application2.CountryCode <=> Xmp.iptc.CountryCode
+        + Iptc.Application2.Writer <=> Xmp.photoshop.CaptionWriter
+      * The editor now properly saves IPTC tags.
+      * Improve UTF-8 conversion to avoid double string conversion (hence
+        actually breaking encoding).
+      * Use proper unit abbreviations and proper label casing.
+      * GPS data is now properly formatted with better precision and with
+        translatable string parts and tooltips are added to explain how to
+        correctly edit GPS data (latitude, longitude, altitude).
+        Also seconds part of latitude/longitude is now saved with more
+        precision and altitude details now switch from .1m to .10m.
+      * Better error reporting when the editor fails to write a tag, with
+        proper GUI error, so that such error do not go unseen.
+      * Better error handling when closing the editor or viewer too, and
+        improve error handling when the calendar dialog fails.
+      * Use a logging domain for debugging-only messages which pollutes
+        the output.
+      * Xmp.iptc.CreatorContactInfo/Iptc4xmpCore:* override the shorter
+        forms Xmp.iptc.Ci* if both are present, since the longer form is
+        more common.
+      * Improve saving of XMP metadata.
+      * And more bug fixes and refactoring steps to get rid of duplicate
+        code.
+    - PNG will now prompt only for layer offset different from zero. Some
+      software were always setting an offset of 0 (e.g.: POV-Ray v3.7) so
+      GIMP would unecessarily prompt the user until now for PNG created by
+      such software.
+    - BMP:
+      * allow loading of BMP images with incorrect BI_BITFIELDS
+        compression.
+      * support loading more bit depth such as 24bpp images.
+    - file-darktable:
+      * support updated Lua API of darktable 3.6 and beyond;
+      * Adding environment contents to debugging output when
+        DARKTABLE_DEBUG env variable is set.
+    - PDF import:
+      * New option to reverse order of layer.
+      * Support fractional DPI (allowing accurate page dimensions).
+    - DDS:
+      * Set blue channel of BC5 dds images to 0 instead of 255.
+      * Fix DDS BC5 compression/decompression with Red and Blue swapped.
+        We detect images created by an older GIMP on loading and swap the
+        channels back.
+    - HEIF:
+      * Removes the "HDR" mention on HEIF 10/12-bit export because high
+        bit depth does not necessarily means HDR.
+      * Runtime detection of HEIC and AVIF file formats (depending on
+        available encoders and decoders), which allows afterwards update
+        of the dependency, but also allows usage for a single format (e.g.
+        for distributions which want to support only AVIF).
+      * With libheif 1.10, visually lossless export is possible for
+        10/12 bit depths too
+    - PSD:
+      * More flexible reading of layer mask record size, skipping invalid
+        or unsupported mask info size, hence allowing us to load more PSD
+        files (at least the part of a PSD we support instead of failing
+        the whole import altogether).
+    - G3 fax images:
+      * Improve error handling when loading.
+      * Be more forgiving on bad lines which were quite frequent on older
+        fax images, allowing to salvage some old images.
+- Drop 0001-app-make-gegl-introspect-an-optional-operation-depen.patch
+- Drop libheif-avif-only.patch
+
+-------------------------------------------------------------------
 Fri Feb 12 20:13:47 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Recurse directories when looking for python plugins
