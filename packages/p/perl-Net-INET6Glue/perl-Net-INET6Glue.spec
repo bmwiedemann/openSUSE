@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-INET6Glue
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Net-INET6Glue
-Version:        0.603
-Release:        0
 %define cpan_name Net-INET6Glue
+Name:           perl-Net-INET6Glue
+Version:        0.604
+Release:        0
 Summary:        Make common modules IPv6 ready by hotpatching
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Net-INET6Glue/
-Source:         http://www.cpan.org/authors/id/S/SU/SULLR/%{cpan_name}-%{version}.tar.gz
+License:        Artistic-1.0 OR GPL-1.0-or-later
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/S/SU/SULLR/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IO::Socket::IP) >= 0.25
@@ -34,40 +33,37 @@ Requires:       perl(IO::Socket::IP) >= 0.25
 %{perl_requires}
 
 %description
-the Net::INET6Glue manpage is a collection of modules to make common
-modules IPv6 ready by hotpatching them.
+Net::INET6Glue is a collection of modules to make common modules IPv6 ready
+by hotpatching them.
 
 Unfortunatly the current state of IPv6 support in perl is that no IPv6
-support is in the core and that a lot of important modules (like the
-Net::FTP manpage, the Net::SMTP manpage, the LWP manpage,...) do not
-support IPv6 even if the modules for IPv6 sockets like the Socket6 manpage,
-the IO::Socket::IP manpage or the IO::Socket::INET6 manpage are available.
+support is in the core and that a lot of important modules (like Net::FTP,
+Net::SMTP, LWP,...) do not support IPv6 even if the modules for IPv6
+sockets like Socket6, IO::Socket::IP or IO::Socket::INET6 are available.
 
 This module tries to mitigate this by hotpatching. Currently the following
 submodules are available:
 
-* the Net::INET6Glue::INET_is_INET6 manpage
+* Net::INET6Glue::INET_is_INET6
 
-  Makes the IO::Socket::INET manpage behave like the IO::Socket::IP manpage
-  (with fallback to like the IO::Socket::INET6 manpage), especially make it
-  capable to create IPv6 sockets. This makes the LWP manpage, the Net::SMTP
-  manpage and others IPv6 capable.
+Makes IO::Socket::INET behave like IO::Socket::IP (with fallback to like
+IO::Socket::INET6), especially make it capable to create IPv6 sockets. This
+makes LWP, Net::SMTP and others IPv6 capable.
 
-* the Net::INET6Glue::FTP manpage
+* Net::INET6Glue::FTP
 
-  Hotpatches the Net::FTP manpage to support EPRT and EPSV commands which
-  are needed to deal with FTP over IPv6. Also loads the
-  Net::INET6Glue::INET_is_INET6 manpage.
+Hotpatches Net::FTP to support EPRT and EPSV commands which are needed to
+deal with FTP over IPv6. Also loads Net::INET6Glue::INET_is_INET6.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -75,7 +71,6 @@ submodules are available:
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes COPYRIGHT README
 
 %changelog

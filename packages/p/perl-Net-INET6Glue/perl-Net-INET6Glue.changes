@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Feb 27 03:08:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.604
+   see /usr/share/doc/packages/perl-Net-INET6Glue/Changes
+
+  0.604 2021/02/26
+  - change bugtracker in Makefile.PL to github
+
+-------------------------------------------------------------------
 Tue Nov 11 19:20:32 UTC 2014 - coolo@suse.com
 
 - updated to 0.603
