@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Mar 21 09:42:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Mar 18 14:27:20 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.rc:
+  + docs: Remove shortcuts page.
+  + docs: Update EOG icon.
+  + docs: Update some outdated information.
+  + help: Preferences do not have a close button.
+  + help: Fix a sentence suggesting click on
+    "Show other application".
+  + Part of a large image (exceeding certain dimensions) does not
+    display.
+  + docs: Remove PicasaWeb support.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 15 10:36:48 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 40.beta:
+  + Re-detect mimetype from data if loading fails the first time.
+  + Update EogWindow and EogListStore when deleting a monitored
+    directory.
+  + Warning about overwriting GError when unlinking a directory
+    while viewing.
+  + Update appdata screenshot.
+
+-------------------------------------------------------------------
+Mon Feb 15 09:38:47 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.alpha:
+  + build: Centralize path absolutization.
+
+-------------------------------------------------------------------
 Sun Feb 14 15:16:35 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.2:
