@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-keyvault-keys
-Version:        4.3.1
+Version:        4.4.0b3
 Release:        0
 Summary:        Microsoft Azure Key Vault Keys Client Library for Python
 License:        MIT
@@ -42,7 +42,8 @@ Requires:       python-azure-core >= 1.7.0
 Requires:       python-azure-keyvault-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-cryptography >= 2.1.4
-Requires:       python-msrest >= 0.6.0
+Requires:       python-msrest >= 0.6.21
+Requires:       python-six >= 1.12.0
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
