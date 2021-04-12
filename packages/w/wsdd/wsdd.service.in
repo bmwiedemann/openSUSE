@@ -6,7 +6,6 @@ Wants=network-online.target
 [Service]
 Type=simple
 AmbientCapabilities=CAP_SYS_CHROOT
-PermissionsStartOnly=true
 Environment= WSDD_ARGS=-p
 ExecStartPre=@LIBEXECDIR@/wsdd-init.sh
 EnvironmentFile=-/run/wsdd/env-vars
