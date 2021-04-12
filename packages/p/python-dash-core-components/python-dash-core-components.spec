@@ -1,5 +1,5 @@
 #
-# spec file for package python-dash-core-components
+# spec file for package python-dash-core-components-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,9 +28,10 @@
 %define skip_python2 1
 # Upstream cannot tag the release version, but we need the github archive for the test files
 # https://github.com/plotly/dash-core-components/issues/886
-%define commit 230997613c81ce927cf558720585a9632e3df192
+# get this from the master branch (dev is the default but does not have the full package)
+%define commit 44949a48a4c28ab6164eb4c823a346862ae2cfeb
 Name:           python-dash-core-components%{psuffix}
-Version:        1.14.1
+Version:        1.16.0
 Release:        0
 Summary:        Core component suite for Dash
 License:        MIT
@@ -42,9 +43,9 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module dash}
-BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module selenium}
+BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
 %endif
 %python_subpackages
 
