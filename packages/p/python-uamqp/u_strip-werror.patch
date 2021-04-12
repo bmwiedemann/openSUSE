@@ -1,48 +1,119 @@
-diff -Nru uamqp-1.2.2.orig/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/configs/azure_iot_build_rules.cmake uamqp-1.2.2/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/configs/azure_iot_build_rules.cmake
---- uamqp-1.2.2.orig/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/configs/azure_iot_build_rules.cmake	2019-07-03 18:02:50.000000000 +0200
-+++ uamqp-1.2.2/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/configs/azure_iot_build_rules.cmake	2019-09-24 15:44:41.776180260 +0200
-@@ -77,8 +77,6 @@
-         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4")
-     endif()
+diff -Nru uamqp-1.2.14.orig/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/configs/azure_iot_build_rules.cmake uamqp-1.2.14/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/configs/azure_iot_build_rules.cmake
+--- uamqp-1.2.14.orig/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/configs/azure_iot_build_rules.cmake	2021-02-01 22:29:05.000000000 +0100
++++ uamqp-1.2.14/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/configs/azure_iot_build_rules.cmake	2021-02-25 19:43:43.925161567 +0100
+@@ -71,8 +71,8 @@
+       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3")
+       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W3")
  elseif(UNIX) #LINUX OR APPLE
 -    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
 -    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
++    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
      if(NOT (IN_OPENWRT OR APPLE))
          set (CMAKE_C_FLAGS "-D_POSIX_C_SOURCE=200112L ${CMAKE_C_FLAGS}")
      endif()
-@@ -204,10 +202,6 @@
-     # Make warning as error
+@@ -194,8 +194,8 @@
      add_definitions(/WX)
-     ENDIF()
--ELSE()
--    # Make warning as error
+ ELSE()
+     # Make warning as error
 -    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
 -    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
++    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
  ENDIF()
  
  
-diff -Nru uamqp-1.2.2.orig/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/testtools/ctest/CMakeLists.txt uamqp-1.2.2/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/testtools/ctest/CMakeLists.txt
---- uamqp-1.2.2.orig/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/testtools/ctest/CMakeLists.txt	2019-07-03 18:02:50.000000000 +0200
-+++ uamqp-1.2.2/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/testtools/ctest/CMakeLists.txt	2019-09-24 15:41:34.789932583 +0200
-@@ -43,8 +43,6 @@
+diff -Nru uamqp-1.2.14.orig/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/deps/umock-c/CMakeLists.txt uamqp-1.2.14/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/deps/umock-c/CMakeLists.txt
+--- uamqp-1.2.14.orig/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/deps/umock-c/CMakeLists.txt	2021-02-01 22:29:05.000000000 +0100
++++ uamqp-1.2.14/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/deps/umock-c/CMakeLists.txt	2021-02-25 19:44:29.829732654 +0100
+@@ -22,15 +22,6 @@
+ # Build with -fPIC always
+ set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+ 
+-# Build with -Werror
+-if(MSVC)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4")
+-elseif(UNIX) # LINUX OR APPLE
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
+-endif()
+-
+ include (CTest)
+ include (CheckIncludeFiles)
+ 
+diff -Nru uamqp-1.2.14.orig/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/deps/umock-c/deps/ctest/CMakeLists.txt uamqp-1.2.14/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/deps/umock-c/deps/ctest/CMakeLists.txt
+--- uamqp-1.2.14.orig/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/deps/umock-c/deps/ctest/CMakeLists.txt	2021-02-01 22:29:05.000000000 +0100
++++ uamqp-1.2.14/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/deps/umock-c/deps/ctest/CMakeLists.txt	2021-02-25 19:44:52.714017351 +0100
+@@ -58,8 +58,8 @@
    
      endif()
  elseif(LINUX)
 -    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
 -    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
++    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
      if(NOT IN_OPENWRT)
          set (CMAKE_C_FLAGS "-D_POSIX_C_SOURCE=200112L ${CMAKE_C_FLAGS}")
      endif()
-diff -Nru uamqp-1.2.2.orig/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/testtools/umock-c/CMakeLists.txt uamqp-1.2.2/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/testtools/umock-c/CMakeLists.txt
---- uamqp-1.2.2.orig/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/testtools/umock-c/CMakeLists.txt	2019-07-03 18:02:50.000000000 +0200
-+++ uamqp-1.2.2/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/testtools/umock-c/CMakeLists.txt	2019-09-24 15:44:14.731867458 +0200
-@@ -26,9 +26,6 @@
- if(MSVC)
-     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
-     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4")
+diff -Nru uamqp-1.2.14.orig/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/testtools/ctest/CMakeLists.txt uamqp-1.2.14/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/testtools/ctest/CMakeLists.txt
+--- uamqp-1.2.14.orig/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/testtools/ctest/CMakeLists.txt	2021-02-01 22:29:05.000000000 +0100
++++ uamqp-1.2.14/src/vendor/azure-uamqp-c/deps/azure-c-shared-utility/testtools/ctest/CMakeLists.txt	2021-02-25 19:44:10.045486524 +0100
+@@ -58,8 +58,8 @@
+   
+     endif()
+ elseif(LINUX)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
++    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+     if(NOT IN_OPENWRT)
+         set (CMAKE_C_FLAGS "-D_POSIX_C_SOURCE=200112L ${CMAKE_C_FLAGS}")
+     endif()
+diff -Nru uamqp-1.2.14.orig/src/vendor/azure-uamqp-c/deps/azure-ctest/CMakeLists.txt uamqp-1.2.14/src/vendor/azure-uamqp-c/deps/azure-ctest/CMakeLists.txt
+--- uamqp-1.2.14.orig/src/vendor/azure-uamqp-c/deps/azure-ctest/CMakeLists.txt	2021-02-01 22:29:05.000000000 +0100
++++ uamqp-1.2.14/src/vendor/azure-uamqp-c/deps/azure-ctest/CMakeLists.txt	2021-02-25 19:45:14.686290701 +0100
+@@ -58,8 +58,8 @@
+   
+     endif()
+ elseif(LINUX)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
++    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+     if(NOT IN_OPENWRT)
+         set (CMAKE_C_FLAGS "-D_POSIX_C_SOURCE=200112L ${CMAKE_C_FLAGS}")
+     endif()
+diff -Nru uamqp-1.2.14.orig/src/vendor/azure-uamqp-c/deps/umock-c/CMakeLists.txt uamqp-1.2.14/src/vendor/azure-uamqp-c/deps/umock-c/CMakeLists.txt
+--- uamqp-1.2.14.orig/src/vendor/azure-uamqp-c/deps/umock-c/CMakeLists.txt	2021-02-01 22:29:05.000000000 +0100
++++ uamqp-1.2.14/src/vendor/azure-uamqp-c/deps/umock-c/CMakeLists.txt	2021-02-25 14:08:36.405536955 +0100
+@@ -22,15 +22,6 @@
+ # Build with -fPIC always
+ set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+ 
+-# Build with -Werror
+-if(MSVC)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3")
+-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W3")
 -elseif(UNIX) # LINUX OR APPLE
 -    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
 -    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
- endif()
- 
+-endif()
+-
  include (CTest)
+ include (CheckIncludeFiles)
+ 
+diff -Nru uamqp-1.2.14.orig/src/vendor/azure-uamqp-c/deps/umock-c/deps/ctest/CMakeLists.txt uamqp-1.2.14/src/vendor/azure-uamqp-c/deps/umock-c/deps/ctest/CMakeLists.txt
+--- uamqp-1.2.14.orig/src/vendor/azure-uamqp-c/deps/umock-c/deps/ctest/CMakeLists.txt	2021-02-01 22:29:05.000000000 +0100
++++ uamqp-1.2.14/src/vendor/azure-uamqp-c/deps/umock-c/deps/ctest/CMakeLists.txt	2021-02-25 19:42:58.572597348 +0100
+@@ -58,8 +58,8 @@
+   
+     endif()
+ elseif(LINUX)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
++    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+     if(NOT IN_OPENWRT)
+         set (CMAKE_C_FLAGS "-D_POSIX_C_SOURCE=200112L ${CMAKE_C_FLAGS}")
+     endif()

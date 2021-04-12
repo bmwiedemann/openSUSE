@@ -95,4 +95,17 @@
     HISTORY.rst file provided with this package (forwarded request 862391 from glaubitz)</comment>
     <requestid>862399</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e48f82ab899c7df6ac8155f766082756</srcmd5>
+    <version>1.2.15</version>
+    <time>1618235373</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.2.15
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Refresh patches for new version
+  + u_strip-werror.patch (forwarded request 881910 from glaubitz)</comment>
+    <requestid>881990</requestid>
+  </revision>
 </revisionlist>
