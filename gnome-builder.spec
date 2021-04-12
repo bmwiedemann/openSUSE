@@ -20,16 +20,20 @@
 %global __requires_exclude typelib\\(Ide\\)
 
 # Update this on every major/minor bump
-%define basever 3.38
+%define basever 3.40
 
 Name:           gnome-builder
+<<<<<<< Updated upstream
 Version:        3.38.2
+=======
+Version:        3.40.0
+>>>>>>> Stashed changes
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
-License:        GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Builder
-Source0:        https://download.gnome.org/sources/gnome-builder/%{basever}/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-builder/3.40/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
 BuildRequires:  fdupes
