@@ -41,6 +41,9 @@ BuildFlags: obsgendiff
 %if "%_repository" == "containerfile"
 Type: docker
 BuildEngine: podman
+# KUBEVIRTFROM is passed to container Dockerfiles using the --build-arg option, e.g.
+# docker build --build-arg KUBEVIRTFROM=opensuse/tumbleweed ...
+BuildFlags: dockerarg:KUBEVIRTFROM=opensuse/tumbleweed
 %endif
 %if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:NonFree" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:zSystems"
 Repotype: none
