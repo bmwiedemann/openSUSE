@@ -128,29 +128,29 @@
   boo#1180312: '20210329'
   boo#1180316: '20210408'
   boo#1180317: '20210103'
-  boo#1180358: '20210408'
+  boo#1180358: '20210412'
   boo#1180740: '20210115'
-  boo#1180754: '20210410'
+  boo#1180754: '20210412'
   boo#1180853: '20210111'
   boo#1181038: '20210223'
   boo#1181497: '20210127'
   boo#1182233: '20210302'
-  boo#1182240: '20210410'
+  boo#1182240: '20210412'
   boo#1182247: '20210318'
   boo#1182507: '20210222'
   boo#1182544: '20210311'
   boo#1182775: '20210308'
   boo#1182894: '20210308'
   boo#1182961: '20210410'
-  boo#1183082: '20210410'
-  boo#1183454: '20210410'
+  boo#1183082: '20210412'
+  boo#1183454: '20210412'
   boo#1183461: '20210410'
   boo#1183521: '20210329'
   boo#1183786: '20210410'
-  boo#1184060: '20210410'
+  boo#1184060: '20210412'
   boo#1184162: '20210410'
   boo#1184552: '20210410'
-  boo#1184610: '20210410'
+  boo#1184610: '20210412'
   bsc#1158994: '20200323'
   bsc#1159185: '20200103'
   bsc#1170555: '20200427'
@@ -274,7 +274,7 @@
   poo#73600: '20201107'
   poo#73603: '20201022'
   poo#73624: '20201109'
-  poo#75247: '20210410'
+  poo#75247: '20210412'
   poo#75313: '20201105'
   poo#76861: '20201202'
   poo#76864: '20201207'
@@ -311,16 +311,16 @@
   poo#89530: '20210410'
   poo#89602: '20210308'
   poo#89608: '20210318'
-  poo#89866: '20210410'
+  poo#89866: '20210412'
   poo#89984: '20210311'
   poo#89999: '20210410'
   poo#90002: '20210410'
-  poo#90374: '20210410'
+  poo#90374: '20210412'
   poo#90411: '20210410'
-  poo#90497: '20210408'
-  poo#90513: '20210410'
+  poo#90497: '20210412'
+  poo#90513: '20210412'
   poo#90797: '20210406'
-  poo#90998: '20210410'
+  poo#90998: '20210412'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -571,11 +571,17 @@ products:
     - x86_64
   - openSUSE-MicroOS:ContainerHost-VMware:
     - x86_64
+  - openSUSE-MicroOS:DigitalOcean-Cloud:
+    - x86_64
+  - openSUSE-MicroOS:Kubic-kubeadm-DigitalOcean-Cloud:
+    - x86_64
   - openSUSE-MicroOS:Kubic-kubeadm-kvm-and-xen:
     - x86_64
   - openSUSE-MicroOS:Kubic-kubeadm-MS-HyperV:
     - x86_64
   - openSUSE-MicroOS:Kubic-kubeadm-OpenStack-Cloud:
+    - x86_64
+  - openSUSE-MicroOS:Kubic-kubeadm-SelfInstall:
     - x86_64
   - openSUSE-MicroOS:Kubic-kubeadm-Vagrant:
     - x86_64
@@ -641,10 +647,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20210410'
+    <value>failed: '20210412'
 published: '20210408'
 publishing: '20210408'
-testing: '20210410'
+testing: '20210412'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
