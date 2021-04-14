@@ -1,7 +1,7 @@
 #
 # spec file for package libgnomekbd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/libgnomekbd
 Source0:        https://download.gnome.org/sources/libgnomekbd/3.26/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM libgnomekbd-avoid-coredump-on-ibus-engines.patch bnc#1160963, glgo#GNOME/libgnomekbd!6 qzhao@suse.com -- To avoid crash when working with ibus.
+Patch0:         libgnomekbd-avoid-coredump-on-ibus-engines.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -86,7 +88,7 @@ applications that want to make use of libgnomekbd.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 translation-update-upstream
 
 %build

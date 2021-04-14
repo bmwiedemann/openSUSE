@@ -417,4 +417,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767192 from dimstar)</comment>
     <requestid>767454</requestid>
   </revision>
+  <revision rev="58" vrev="5">
+    <srcmd5>bef32eccb7d6bb5ecf2317c6bf091eca</srcmd5>
+    <version>3.26.1</version>
+    <time>1618387768</time>
+    <user>dimstar_suse</user>
+    <comment>Add libgnomekbd-avoid-coredump-on-ibus-engines.patch: avoid libgnomekbd crash when working with ibus(bnc#1160963, glgo#GNOME/libgnomekbd!6). (forwarded request 882720 from qzhao)</comment>
+    <requestid>884644</requestid>
+  </revision>
 </revisionlist>

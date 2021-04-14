@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  2 12:03:02 UTC 2021 - Cliff Zhao <qzhao@suse.com>
+
+- Add libgnomekbd-avoid-coredump-on-ibus-engines.patch: avoid libgnomekbd
+  crash when working with ibus(bnc#1160963, glgo#GNOME/libgnomekbd!6). 
+
+-------------------------------------------------------------------
 Sat Jan 25 14:16:39 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

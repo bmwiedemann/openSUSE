@@ -1,0 +1,12 @@
+diff -Nura libgnomekbd-3.26.1/libgnomekbd/gkbd-keyboard-display.c libgnomekbd-3.26.1_new/libgnomekbd/gkbd-keyboard-display.c
+--- libgnomekbd-3.26.1/libgnomekbd/gkbd-keyboard-display.c	2019-02-07 06:18:56.000000000 +0800
++++ libgnomekbd-3.26.1_new/libgnomekbd/gkbd-keyboard-display.c	2021-04-02 19:56:19.587280314 +0800
+@@ -81,7 +81,7 @@
+ 	dlg = gkbd_keyboard_drawing_dialog_new ();
+ 	registry = xkl_config_registry_get_instance (engine);
+ 	xkl_config_registry_load (registry, TRUE);
+-	if (layout != NULL) {
++        if (layout != NULL && strcmp(layout, "default")) {
+ 		gkbd_keyboard_drawing_dialog_set_layout (dlg, registry,
+ 							 layout);
+ 	} else
