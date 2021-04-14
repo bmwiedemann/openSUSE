@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 26 01:41:35 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-cancel-transaction-if-daemon-disappears.patch:
+  Fix hangs in packagekit-glib2 client if daemon crashes
+  (gh#hughsie/PackageKit#464).
+
+-------------------------------------------------------------------
 Mon Mar 15 21:24:53 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
 
 - Add PackageKit-remove-transaction-size-limit.patch: Remove large transaction 

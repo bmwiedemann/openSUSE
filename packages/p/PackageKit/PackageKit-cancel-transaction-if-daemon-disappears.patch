@@ -1,0 +1,184 @@
+From b2452c2d0023aad6be0751f9785e20f34bed6887 Mon Sep 17 00:00:00 2001
+From: Philip Withnall <pwithnall@endlessos.org>
+Date: Fri, 19 Mar 2021 22:43:16 +0000
+Subject: [PATCH 1/2] packagekit-glib2: Cancel a transaction if the daemon
+ disappears
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Most of the time, when using a `GDBusProxy`, and the service you’re
+talking to disappears, you’ll get notified — the async D-Bus call you’re
+making will return an error. However, due to PackageKit’s design for
+handling long-running operations, there are long periods between a
+transaction being created, and emitting its `Finished` signal, when no
+D-Bus calls are pending.
+
+If the daemon crashes during one of these periods, there is currently no
+way for the packagekit-glib2 client code to notice until it tries to
+make another D-Bus call on the same `GDBusProxy` instance, and that
+might never happen — it might wait for the `Finished` signal forever.
+
+Avoid that by connecting to `notify::g-name-owner`, which is emitted on
+`GDBusProxy` if the daemon crashes. It changes value from the unique
+name of the service, to `NULL`. When that happens, abort the transaction
+state in the client with an error.
+
+This should stop gnome-software hanging indefinitely if PackageKit
+crashes during a transaction. In particular, if this happens a few times
+during consecutive refresh operations, gnome-software can eventually run
+out of worker threads, and become unresponsive entirely. (See
+https://gitlab.gnome.org/GNOME/gnome-software/-/issues/1118.) The same
+will likely be true of other clients which use packagekit-glib2.
+
+Equivalent changes don’t seem to be needed in `pk-control.c` (which also
+uses `GDBusProxy`), because all of its D-Bus operations appear to
+maintain no state outside of individual method calls.
+
+Signed-off-by: Philip Withnall <pwithnall@endlessos.org>
+---
+ lib/packagekit-glib2/pk-client.c | 31 ++++++++++++++++++++++++++++++-
+ 1 file changed, 30 insertions(+), 1 deletion(-)
+
+diff --git a/lib/packagekit-glib2/pk-client.c b/lib/packagekit-glib2/pk-client.c
+index 3f7d5230d..67df1c5ea 100644
+--- a/lib/packagekit-glib2/pk-client.c
++++ b/lib/packagekit-glib2/pk-client.c
+@@ -122,6 +122,9 @@ typedef struct {
+ 	PkClientHelper			*client_helper;
+ } PkClientState;
+ 
++static void
++pk_client_state_finish (PkClientState *state,
++                        const GError  *error);
+ static void
+ pk_client_properties_changed_cb (GDBusProxy *proxy,
+ 				 GVariant *changed_properties,
+@@ -133,6 +136,10 @@ pk_client_signal_cb (GDBusProxy *proxy,
+ 		     const gchar *signal_name,
+ 		     GVariant *parameters,
+ 		     gpointer user_data);
++static void
++pk_client_notify_name_owner_cb (GObject    *obj,
++                                GParamSpec *pspec,
++                                gpointer    user_data);
+ 
+ /**
+  * pk_client_error_quark:
+@@ -662,6 +669,9 @@ pk_client_state_finish (PkClientState *state, const GError *error)
+ 		g_signal_handlers_disconnect_by_func (state->proxy,
+ 						      G_CALLBACK (pk_client_signal_cb),
+ 						      state);
++		g_signal_handlers_disconnect_by_func (state->proxy,
++						      G_CALLBACK (pk_client_notify_name_owner_cb),
++						      state);
+ 		g_object_unref (G_OBJECT (state->proxy));
+ 	}
+ 
+@@ -1389,6 +1399,19 @@ pk_client_signal_cb (GDBusProxy *proxy,
+ 		return;
+ }
+ 
++static void
++pk_client_notify_name_owner_cb (GObject *obj,
++				GParamSpec *pspec,
++				gpointer user_data)
++{
++	PkClientState *state = (PkClientState *) user_data;
++	g_autoptr(GError) local_error = NULL;
++
++	local_error = g_error_new_literal (PK_CLIENT_ERROR, PK_CLIENT_ERROR_FAILED,
++					   "PackageKit daemon disappeared");
++	pk_client_state_finish (state, local_error);
++}
++
+ /*
+  * pk_client_proxy_connect:
+  **/
+@@ -1416,6 +1439,9 @@ pk_client_proxy_connect (PkClientState *state)
+ 	g_signal_connect (state->proxy, "g-signal",
+ 			  G_CALLBACK (pk_client_signal_cb),
+ 			  state);
++	g_signal_connect (state->proxy, "notify::g-name-owner",
++			  G_CALLBACK (pk_client_notify_name_owner_cb),
++			  state);
+ }
+ 
+ /*
+@@ -1440,7 +1466,7 @@ pk_client_method_cb (GObject *source_object,
+ 		return;
+ 	}
+ 
+-	/* wait for ::Finished() */
++	/* wait for ::Finished() or notify::g-name-owner (if the daemon disappears) */
+ }
+ 
+ /*
+@@ -4551,6 +4577,9 @@ pk_client_get_progress_state_finish (PkClientState *state, const GError *error)
+ 		g_signal_handlers_disconnect_by_func (state->proxy,
+ 						      G_CALLBACK (pk_client_signal_cb),
+ 						      state);
++		g_signal_handlers_disconnect_by_func (state->proxy,
++						      G_CALLBACK (pk_client_notify_name_owner_cb),
++						      state);
+ 		g_object_unref (G_OBJECT (state->proxy));
+ 	}
+ 
+-- 
+2.30.2
+
+
+From 7c5fbc921b83321f3e1e56fe24ab1d0840de35ab Mon Sep 17 00:00:00 2001
+From: Philip Withnall <pwithnall@endlessos.org>
+Date: Fri, 19 Mar 2021 22:51:01 +0000
+Subject: [PATCH 2/2] packagekit-glib2: Cancel a transaction if calling Cancel
+ fails
+
+If calling the `Cancel()` D-Bus method on a transaction fails, cancel
+the client-side state anyway, to prevent the client from waiting forever
+on a response which is unlikely to come.
+
+Spotted in https://gitlab.gnome.org/GNOME/gnome-software/-/issues/1118.
+
+Signed-off-by: Philip Withnall <pwithnall@endlessos.org>
+---
+ lib/packagekit-glib2/pk-client.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/lib/packagekit-glib2/pk-client.c b/lib/packagekit-glib2/pk-client.c
+index 67df1c5ea..eba4ee47d 100644
+--- a/lib/packagekit-glib2/pk-client.c
++++ b/lib/packagekit-glib2/pk-client.c
+@@ -569,14 +569,18 @@ pk_client_cancel_cb (GObject *source_object,
+ 		     gpointer user_data)
+ {
+ 	GDBusProxy *proxy = G_DBUS_PROXY (source_object);
++	PkClientState *state = user_data;
+ 	g_autoptr(GError) error = NULL;
+ 	g_autoptr(GVariant) value = NULL;
+ 
+ 	/* get the result */
+ 	value = g_dbus_proxy_call_finish (proxy, res, &error);
+ 	if (value == NULL) {
+-		/* there's not really a lot we can do here */
+-		g_warning ("failed to cancel: %s", error->message);
++		/* Instructing the daemon to cancel failed, so just return an
++		 * error to the client so they don’t wait forever. */
++		g_debug ("failed to cancel: %s", error->message);
++		g_prefix_error (&error, "Failed to cancel: ");
++		pk_client_state_finish (state, error);
+ 		return;
+ 	}
+ }
+@@ -600,7 +604,7 @@ pk_client_cancellable_cancel_cb (GCancellable *cancellable, PkClientState *state
+ 			   G_DBUS_CALL_FLAGS_NONE,
+ 			   PK_CLIENT_DBUS_METHOD_TIMEOUT,
+ 			   NULL,
+-			   pk_client_cancel_cb, NULL);
++			   pk_client_cancel_cb, state);
+ }
+ 
+ /*
+-- 
+2.30.2
+
