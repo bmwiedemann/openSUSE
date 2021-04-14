@@ -1,7 +1,7 @@
 #
 # spec file for package wmutils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wmutils
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Set of tools for X windows manipulation
 License:        ISC
@@ -30,6 +30,7 @@ Patch0:         wmutils-cflags.patch
 Patch1:         wmutils-conflict.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xcb-cursor)
 BuildRequires:  pkgconfig(xcb-util)
 
 %description
@@ -59,6 +60,7 @@ make %{?_smp_mflags}
 %{_bindir}/lsw
 %{_bindir}/mapw
 %{_bindir}/pfw
+%{_bindir}/slw
 %{_bindir}/wattr
 %{_bindir}/wmp
 %{_bindir}/wmv
@@ -72,6 +74,7 @@ make %{?_smp_mflags}
 %{_mandir}/man1/lsw.1%{ext_man}
 %{_mandir}/man1/mapw.1%{ext_man}
 %{_mandir}/man1/pfw.1%{ext_man}
+%{_mandir}/man1/slw.1%{?ext_man}
 %{_mandir}/man1/wattr.1%{ext_man}
 %{_mandir}/man1/wmp.1%{ext_man}
 %{_mandir}/man1/wmutils.1%{ext_man}

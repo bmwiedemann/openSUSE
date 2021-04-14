@@ -1,7 +1,7 @@
-Index: core-1.4/Makefile
+Index: core-1.5/Makefile
 ===================================================================
---- core-1.4.orig/Makefile
-+++ core-1.4/Makefile
+--- core-1.5.orig/Makefile
++++ core-1.5/Makefile
 @@ -40,6 +40,7 @@ $(OBJ): $(HDR) util.o
  install: $(BIN)
  	mkdir -p $(DESTDIR)$(PREFIX)/bin/
@@ -10,10 +10,10 @@ Index: core-1.4/Makefile
  	cd man; $(MAKE) install
  
  uninstall:
-Index: core-1.4/man/Makefile
+Index: core-1.5/man/Makefile
 ===================================================================
---- core-1.4.orig/man/Makefile
-+++ core-1.4/man/Makefile
+--- core-1.5.orig/man/Makefile
++++ core-1.5/man/Makefile
 @@ -21,6 +21,7 @@ MAN =           \
  install: $(MAN)
  	mkdir -p $(DESTDIR)$(MANPREFIX)/man1/
@@ -22,10 +22,10 @@ Index: core-1.4/man/Makefile
  
  uninstall:
  	@echo "uninstalling manpages"
-Index: core-1.4/man/wtf.1
+Index: core-1.5/man/wtf.1
 ===================================================================
---- core-1.4.orig/man/wtf.1
-+++ core-1.4/man/wtf.1
+--- core-1.5.orig/man/wtf.1
++++ core-1.5/man/wtf.1
 @@ -1,11 +1,11 @@
  .Dd December 13, 2014
 -.Dt WTF 1
@@ -41,10 +41,10 @@ Index: core-1.4/man/wtf.1
  .Ar wid
  .Sh DESCRIPTION
  .Nm
-Index: core-1.4/man/wmutils.1
+Index: core-1.5/man/wmutils.1
 ===================================================================
---- core-1.4.orig/man/wmutils.1
-+++ core-1.4/man/wmutils.1
+--- core-1.5.orig/man/wmutils.1
++++ core-1.5/man/wmutils.1
 @@ -29,10 +29,10 @@ show window's attributes
  move the mouse pointer
  .It wmv
@@ -65,40 +65,3 @@ Index: core-1.4/man/wmutils.1
 -.Xr wtf 1 ,
 +.Xr wm_wtf 1 ,
  .Xr wtp 1
-Index: core-1.4/README.md
-===================================================================
---- core-1.4.orig/README.md
-+++ core-1.4/README.md
-@@ -31,19 +31,19 @@ utilities
- Here are the tools. This project is quite young, new tools can arrive
- without being added to this list, so take it with a grain of salt.
- 
--* chwb  - change window's border
--* chwso - change window's stacking order
--* ignw  - ignore/unignore window
--* killw - kill windows
--* lsw   - list windows
--* mapw  - map/unmap windows
--* pfw   - print focused window
--* wattr - show window's attributes
--* wmp   - move the mouse pointer
--* wmv   - move a window
--* wrs   - resize a window
--* wtf   - focus a window
--* wtp   - teleport a window
-+* chwb   - change window's border
-+* chwso  - change window's stacking order
-+* ignw   - ignore/unignore window
-+* killw  - kill windows
-+* lsw    - list windows
-+* mapw   - map/unmap windows
-+* pfw    - print focused window
-+* wattr  - show window's attributes
-+* wmp    - move the mouse pointer
-+* wmv    - move a window
-+* wm_wtf - focus a window
-+* wrs    - resize a window
-+* wtp    - teleport a window
- 
- All these tools come with a manpage ! read them for further informations.
- 

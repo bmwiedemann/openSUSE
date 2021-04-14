@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 13 14:59:52 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.5
+  * slw.c: change cursor to select window
+  * new tool: slw
+  * Update IRC channel in the README
+- Refresh wmutils-conflict.patch
+
+-------------------------------------------------------------------
 Tue Nov 27 19:23:57 UTC 2018 - aloisio@gmx.com
 
 - Added wmutils-conflict.patch (fixes conflict with the bsd-games
