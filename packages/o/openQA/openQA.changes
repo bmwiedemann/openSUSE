@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 12 22:39:33 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1618218627.42ed03b34:
+  * container doc: Improve documentation about SSL
+  * container doc: Document stopping docker-compose setup
+  * container doc: Fix formatting of SSL section
+  * container doc: Move directory/storage explanations under Fedora section
+  * container doc: Fix working directory for docker-compose command
+  * container doc: State that docker-compose builds images automatically
+  * Improve container documentation
+  * containers: Add healthchecks to organize the docker-compose startup
+
+-------------------------------------------------------------------
 Sat Apr 10 14:20:45 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1617960903.4aa567c96:
