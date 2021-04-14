@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-core
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,24 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-google-cloud-core
-Version:        1.3.0
+Version:        1.6.0
 Release:        0
 Summary:        Google Cloud API client core library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://github.com/GoogleCloudPlatform/google-cloud-python
+URL:            https://github.com/googleapis/python-cloud-core
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-core/google-cloud-core-%{version}.tar.gz
-BuildRequires:  %{python_module google-api-core >= 1.16.0}
+BuildRequires:  %{python_module google-api-core >= 1.21.0}
+BuildRequires:  %{python_module google-auth >= 1.24.0}
 BuildRequires:  %{python_module grpcio >= 1.8.2}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-api-core >= 1.16.0
+Requires:       python-google-api-core >= 1.21.0
+Requires:       python-google-auth >= 1.24.0
+Requires:       python-six >= 1.12.0
 Recommends:     python-grpcio >= 1.8.2
 BuildArch:      noarch
 %if %{with python2}

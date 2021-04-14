@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr  6 07:45:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * add mtls support
+  * infer project from explicit service account creds
+  * add support for Python 3.9, drop support for Python 3.5
+  * require six>=1.12.0 and google-api-core>=1.21.
+  * avoid using 'pkg_resources' to determine version
+  * handle query_params tuples in JSONConnection.build_api_url
+  * add quota_project, credentials file, and scopes options
+  * add support for Python 3.8  
+
+-------------------------------------------------------------------
 Mon Apr 20 11:50:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
