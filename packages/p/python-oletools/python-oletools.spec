@@ -18,21 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-oletools
-Version:        0.56
+Version:        0.56.1
 Release:        0
 Summary:        Tools to analyze security characteristics of MS Office and OLE files
-License:        MIT AND BSD-2-Clause
+License:        BSD-2-Clause AND MIT
 URL:            http://www.decalage.info/python/oletools
 Source:         https://files.pythonhosted.org/packages/source/o/oletools/oletools-%{version}.zip
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module colorclass}
 BuildRequires:  %{python_module easygui}
 BuildRequires:  %{python_module msoffcrypto-tool}
 BuildRequires:  %{python_module olefile >= 0.46}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pyparsing >= 2.1.0}
+BuildRequires:  %{python_module pytest-runner}
 # /SECTION
 BuildRequires:  unzip
 BuildRequires:  fdupes
@@ -88,7 +88,8 @@ sed -i '1{/pcodedmp/d;}' %{buildroot}%{python_sitelib}/oletools-*.egg-info/requi
 %python_uninstall_alternative ezhexviewer
 
 %files %{python_files}
-%doc README.md README.rst
+%doc README.md
+%license oletools/LICENSE.txt
 %python_alternative %{_bindir}/ezhexviewer
 %python_alternative %{_bindir}/mraptor
 %python_alternative %{_bindir}/mraptor3

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr  5 19:31:25 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 0.56.1:
+ - olevba:
+  - fixed bug when parsing some malformed files (issue #629)
+ - oleobj:
+  - fixed bug preventing detection of links 'externalReference', 'frame', 'hyperlink' (issue #641, PR #670)
+ - setup:
+  - avoid installing msoffcrypto-tool when platform is PyPy+Windows (issue #473)
+  - PyPI version is now a wheel package to improve installation and avoid antivirus false positives due to test files (issues #215, #398)
+
+-------------------------------------------------------------------
 Sat Jan 23 18:16:58 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - initial package for version 0.56
