@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  9 09:57:24 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix build with Lua 5.4.3
+
+-------------------------------------------------------------------
 Thu Feb 18 15:55:50 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %lua_provides macro for default lua versioning
