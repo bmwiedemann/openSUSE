@@ -956,4 +956,12 @@
 - standalone pam_unix with NIS support</comment>
     <requestid>873577</requestid>
   </revision>
+  <revision rev="111" vrev="4">
+    <srcmd5>e345e1611d757c321e9b25743a21b33f</srcmd5>
+    <version>1.5.1</version>
+    <time>1618387767</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>883611</requestid>
+  </revision>
 </revisionlist>

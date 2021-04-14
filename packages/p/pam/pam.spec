@@ -65,6 +65,8 @@ Patch6:         pam_cracklib-removal.patch
 Patch7:         pam_tally2-removal.patch
 Patch8:         pam-bsc1177858-dont-free-environment-string.patch
 Patch9:         pam-pam_cracklib-add-usersubstr.patch
+Patch10:        pam-bsc1181443-make-nofile-unlimited-mean-nr_open.patch
+Patch11:        bsc1184358-prevent-LOCAL-from-being-resolved.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  cracklib-devel
@@ -176,6 +178,8 @@ cp -a %{SOURCE12} .
 %patch7 -R -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p1
 %if 0%{?usrmerged}
 %patch99 -p1
 %endif

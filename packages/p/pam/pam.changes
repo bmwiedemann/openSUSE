@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr  7 12:20:40 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- If "LOCAL" is configured in access.conf, and a login attempt from
+  a remote host is made, pam_access tries to resolve "LOCAL" as
+  a hostname and logs a failure.
+  Checking explicitly for "LOCAL" and rejecting access in this case
+  resolves this issue.
+  [bsc#1184358, bsc1184358-prevent-LOCAL-from-being-resolved.patch]
+
+-------------------------------------------------------------------
+Wed Mar 31 11:43:17 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- pam_limits: "unlimited" is not a legitimate value for "nofile"
+  (see setrlimit(2)). So, when "nofile" is set to one of the
+  "unlimited" values, it is set to the contents of
+  "/proc/sys/fs/nr_open" instead.
+  Also changed the manpage of pam_limits to express this.
+  [bsc#1181443, pam-bsc1181443-make-nofile-unlimited-mean-nr_open.patch]
+
+-------------------------------------------------------------------
 Thu Feb 18 22:16:43 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add missing conflicts for pam_unix-nis
