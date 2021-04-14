@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Apr 13 07:50:44 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.13.5
+ Improvements:
+  * Added workaround for bug in XLC 16.1.0.1
+  * Add detection for LCC when it is masquerading as GCC
+  * Modified posix signal handling so it supports newer libcs
+    + `MINSIGSTKSZ` was no longer usable in constexpr context.
+  Fixes:
+  * Fixed compilation of benchmarking when `min` and `max`
+    macros are defined
+    + Including `windows.h` without `NOMINMAX` remains a really
+      bad idea, don't do it
+  Miscellaneous:
+  * `Catch2WithMain` target (static library) is no longer built
+    by default
+    + Building it by default was at best unnecessary overhead
+      for people not using it, and at worst it caused trouble
+      with install paths
+    + To have it built, set CMake option
+      `CATCH_BUILD_STATIC_LIBRARY` to `ON`
+  * The check whether Catch2 is being built as a subproject is
+    now more reliable
+    + The problem was that if the variable name used internally
+      was defined the project including Catch2 as subproject, it
+      would not be properly overwritten for Catch2's CMake.
+  version 2.13.4
+  Improvements:
+  * Improved the hashing algorithm used for shuffling test cases
+    + `TEST_CASE`s that differ only in the last character should
+      be properly shuffled
+    + Note that this means that v2.13.4 gives you a different
+      order of test cases than 2.13.3, even given the same seed.
+  Miscellaneous:
+  * Deprecated `ParseAndAddCatchTests` CMake integration
+    + It is impossible to implement it properly for all the
+      different test case variants Catch2 provides, and there
+      are better options provided.
+    + Use `catch_discover_tests` instead, which uses runtime
+      information about available tests.
+  * Fixed bug in `catch_discover_tests` that would cause it to
+    fail when used in specific project structures
+  * Added Bazel build file
+  * Added an experimental static library target to CMake
+
+-------------------------------------------------------------------
 Tue Dec  1 11:27:06 UTC 2020 - aloisio@gmx.com
 
 - Update to version 2.13.3
