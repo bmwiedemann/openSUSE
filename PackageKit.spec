@@ -62,6 +62,8 @@ Patch7:         PackageKit-dnf-Add-support-for-coercing-upgrade-to-distupgrade.p
 Patch8:         PackageKit-zypp-initialize-pool.patch
 # PATCH-FIX-UPSTREAM PackageKit-remove-transaction-size-limit.patch gh#hughsie/PackageKit/commit#ff01813 gh#hughsie/PackageKit/commit#ff01813 -- Fix a "too many packages to process" error against full rebuilds
 Patch9:         PackageKit-remove-transaction-size-limit.patch
+# PATCH-FIX-UPSTREAM PackageKit-cancel-transaction-if-daemon-disappears.patch gh#hughsie/PackageKit#464 sckang@suse.com -- Fix hangs in packagekit-glib2 client if daemon crashes
+Patch10:        PackageKit-cancel-transaction-if-daemon-disappears.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
