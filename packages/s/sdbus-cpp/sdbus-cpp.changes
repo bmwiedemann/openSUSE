@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+* Thu Apr  1 20:10:43 UTC 2021 - Luca Boccassi <bluca@debian.org>
+
+- Initial packaging of version 0.8.3
+- Imported from Fedora https://src.fedoraproject.org/rpms/systemd/blob/rawhide/f/systemd.spec
+- Change source tarball name to sdbus-cpp-<version>.tar.gz
+- Add 0001-Find-and-link-against-pthread.patch to fix build failure
+- Use cmake_build doc, without --target, unsupported on SUSE
+- Set CMAKE_INSTALL_DOCDIR to /usr/share/doc/packages/sdbus-c++ to match _docdir
+- Explicitly list files in document page, wildcard not supported
+- Use SPDX license identifier
+- Set Group
+- Add ldconfig post/postun
+- Change main package name to libsdbus-c++0
+- Move cmake files to -devel package
+- Move changelog to sdbus-cpp.changes file
+- Move AUTHORS/ChangeLog/NEWS/README to -devel package
+- Apply changes from 'osc service localrun format_spec_file'
+- Remove 'undefine __cmake_in_source_build', not needed
+- Fix dependency from -devel/-bin packages to lib package

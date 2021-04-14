@@ -1,0 +1,43 @@
+From 6c2bbdfa433305af912e053abf6cbc69642ca684 Mon Sep 17 00:00:00 2001
+From: Luca Boccassi <luca.boccassi@microsoft.com>
+Date: Thu, 1 Apr 2021 11:57:58 +0100
+Subject: [PATCH] Find and link against pthread
+
+Building on SUSE fails, as std::thread usage requires linking
+against pthread:
+
+/usr/bin/c++ -fPIC -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type -flto=auto -DNDEBUG -O3 -DNDEBUG -flto=auto -Wl,--as-needed -Wl,--no-undefined -Wl,-z,now -shared -Wl,-soname,libsdbus-c++.so.0 -o libsdbus-c++.so.0.8.3 CMakeFiles/sdbus-c++-objlib.dir/src/Connection.cpp.o CMakeFiles/sdbus-c++-objlib.dir/src/Error.cpp.o CMakeFiles/sdbus-c++-objlib.dir/src/Message.cpp.o CMakeFiles/sdbus-c++-objlib.dir/src/Object.cpp.o CMakeFiles/sdbus-c++-objlib.dir/src/Proxy.cpp.o CMakeFiles/sdbus-c++-objlib.dir/src/Types.cpp.o CMakeFiles/sdbus-c++-objlib.dir/src/Flags.cpp.o CMakeFiles/sdbus-c++-objlib.dir/src/VTableUtils.c.o CMakeFiles/sdbus-c++-objlib.dir/src/SdBus.cpp.o  /usr/lib64/libsystemd.so
+/usr/lib64/gcc/x86_64-suse-linux/10/../../../../x86_64-suse-linux/bin/ld: /tmp/libsdbus-c++.so.0.8.3.uWoUml.ltrans0.ltrans.o: in function `sdbus::internal::Connection::enterEventLoopAsync()':
+<artificial>:(.text+0x2bb): undefined reference to `pthread_create'
+/usr/lib64/gcc/x86_64-suse-linux/10/../../../../x86_64-suse-linux/bin/ld: /tmp/libsdbus-c++.so.0.8.3.uWoUml.ltrans0.ltrans.o: in function `non-virtual thunk to sdbus::internal::Connection::enterEventLoopAsync()':
+<artificial>:(.text+0x37a): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+---
+ CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 90a7a3a..80f4a51 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -29,6 +29,9 @@ else()
+     include(cmake/LibsystemdExternalProject.cmake)
+ endif()
+ 
++# Required for std::thread
++find_package(Threads REQUIRED)
++
+ #-------------------------------
+ # SOURCE FILES CONFIGURATION
+ #-------------------------------
+@@ -108,6 +111,7 @@ if(BUILD_LIBSYSTEMD)
+     add_dependencies(sdbus-c++-objlib LibsystemdBuildProject)
+ endif()
+ target_link_libraries(sdbus-c++-objlib PUBLIC Systemd::Libsystemd)
++target_link_libraries(sdbus-c++-objlib PUBLIC Threads::Threads)
+ 
+ add_library(sdbus-c++)
+ target_include_directories(sdbus-c++ PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+-- 
+2.29.2
+

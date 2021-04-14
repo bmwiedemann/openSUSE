@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b7c03d1b6cac2ad64983593be7f87b87</srcmd5>
+    <version>0.8.3</version>
+    <time>1618387818</time>
+    <user>dimstar_suse</user>
+    <comment>Apply changes from Factory review:
+- Apply changes from 'osc service localrun format_spec_file'
+- Remove 'undefine __cmake_in_source_build', not needed
+- Refactor ldconfig hook
+- Remove $dist from revision
+- Fixed dependency from -devel/-bin to lib
+
+--
+
+I would like to request the inclusion of the sdbus-cpp library in SUSE distros. It's a C++ high-level API abstraction on top of the sd-bus library from libsystemd.
+
+It is already available in Fedora 32/32/34:
+
+https://src.fedoraproject.org/rpms/sdbus-cpp
+
+Debian 10 (backports) and 11:
+
+https://tracker.debian.org/pkg/sdbus-cpp
+
+Ubuntu 21.04:
+
+https://launchpad.net/ubuntu/+source/sdbus-cpp
+
+(a backport for Ubuntu 20.04 has also been requested)
+
+The spec file was imported from Fedora and adapted for SUSE.</comment>
+    <requestid>884894</requestid>
+  </revision>
+</revisionlist>
