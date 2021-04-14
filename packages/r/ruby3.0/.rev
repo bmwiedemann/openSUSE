@@ -16,4 +16,18 @@
   make sure the gem plugins path does not contain the buildroot</comment>
     <requestid>866946</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d1d68e1617ee48864000978518e9907e</srcmd5>
+    <version>3.0.1</version>
+    <time>1618398314</time>
+    <user>dimstar_suse</user>
+    <comment>- update to ruby 3.0.1 (boo#1184644)
+  https://www.ruby-lang.org/en/news/2021/04/05/ruby-3-0-1-released/ 
+  - CVE-2021-28965: XML round-trip vulnerability in REXML
+  Complete list of changes at
+  https://github.com/ruby/ruby/compare/v3_0_0...v3_0_1
+- drop https://github.com/rubygems/rubygems/pull/4317.patch 
+  included in update</comment>
+    <requestid>884952</requestid>
+  </revision>
 </revisionlist>

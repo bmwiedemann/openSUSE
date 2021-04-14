@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 13 11:30:03 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to ruby 3.0.1 (boo#1184644)
+  https://www.ruby-lang.org/en/news/2021/04/05/ruby-3-0-1-released/ 
+  - CVE-2021-28965: XML round-trip vulnerability in REXML
+
+  Complete list of changes at
+  https://github.com/ruby/ruby/compare/v3_0_0...v3_0_1
+- drop https://github.com/rubygems/rubygems/pull/4317.patch 
+  included in update
+
+-------------------------------------------------------------------
 Mon Jan 25 18:09:45 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - add https://github.com/rubygems/rubygems/pull/4317.patch 

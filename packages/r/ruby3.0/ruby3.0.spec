@@ -25,9 +25,9 @@ Name:           ruby3.0
 ####
 
 %define patch_level p0
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
-%define pkg_version 3.0.0
+%define pkg_version %{version}
 # make the exported API version explicit
 %define api_version 3.0.0
 %define rb_binary_suffix .ruby3.0
@@ -85,7 +85,6 @@ Source4:        %{name}-default.macros
 Source98:       series
 Source99:       %{name}-rpmlintrc
 Patch:          use-pie.patch
-Patch1:         https://github.com/rubygems/rubygems/pull/4317.patch 
 #
 BuildRequires:  ruby-bundled-gems-rpmhelper
 %if %{with clang}
@@ -421,13 +420,11 @@ make check V=1 TESTOPTS="$DISABLE_TESTS" ||:
 %{_bindir}/ruby*
 %{_bindir}/racc*
 %{_bindir}/typeprof*
-%{_mandir}/man1/bundle*.1*
 %{_mandir}/man1/irb*.1*
 %{_mandir}/man1/erb*.1*
 #{_mandir}/man1/rake*.1*
 %{_mandir}/man1/ri*.1*
 %{_mandir}/man1/ruby*.1*
-%{_mandir}/man5/gemfile*.5*
 %doc ChangeLog  KNOWNBUGS.rb NEWS.md README.EXT README.EXT.ja README.ja.md README.md CONTRIBUTING.md
 %license COPYING  COPYING.ja  GPL  LEGAL BSDL
 %{_rpmmacrodir}/macros.suse-ruby3.0*
