@@ -1,6 +1,0 @@
-<package name="tensorflow" project="openSUSE:Factory">
-  <title>Tensorflow for python</title>
-  <description>Tensorflow is framework for deep learning.</description>
-  <devel project="science:machinelearning" package="tensorflow"/>
-  <url>http://www.tensorflow.org</url>
-</package>
