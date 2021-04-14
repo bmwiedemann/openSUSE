@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 12 20:46:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Fix Requires
+
+-------------------------------------------------------------------
+Sat Apr  3 09:34:59 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove single-package spec, this is just a regular application which
+  happens to be written in Python, not a Python library.
+
+-------------------------------------------------------------------
 Thu Oct 29 15:48:48 UTC 2020 - Bruce Rogers <brogers@suse.com>
 
 - Fix setup.py to correctly identify the project packages git_deps

@@ -1,7 +1,7 @@
 #
 # spec file for package git-deps
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,20 +28,19 @@ URL:            https://github.com/aspiers/git-deps
 Source:         %{name}-%{version}.tar.xz
 Patch0:         dont-use-st-markdown.patch
 Patch1:         Fix-issue-with-unbuffered-text-I-O-under-python3.patch
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pygit2}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pygit2
+BuildRequires:  python3-pip
+BuildRequires:  python3-pygit2
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-six
+BuildRequires:  python3-wheel
+Requires:       python3-pygit2
 # for html subpackage
-Requires:       python-Flask
+Requires:       python3-Flask
 #Requires:       nodejs-browserify # broken/missing
 Requires:       npm
 BuildArch:      noarch
-%python_subpackages
 
 %description
 Tool to analyze git dependencies
@@ -56,17 +55,16 @@ Group:          Development/Tools/Version Control
 Documentation for git-deps.
 
 %prep
-%setup -q -n %{name}-%{version}
-%autopatch -p1
+%autosetup -p1 -n %{name}-%{version}
 
 %build
-%python_build
+python3 -s setup.py build
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+python3 -s setup.py install -O1 --skip-build --force --root %{buildroot} --prefix %{_prefix}
+%python_expand %fdupes %{buildroot}%{python_sitelib}
 
-%files %{python_files}
+%files
 %{_bindir}/git-deps
 %{_bindir}/git-fixup
 %{_bindir}/gitfile-handler
