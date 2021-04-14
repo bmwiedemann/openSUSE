@@ -1,7 +1,7 @@
 #
 # spec file for package pianobar
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016 Packman team: http://packman.links2linux.org/
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           pianobar
-Version:        2019.02.14
+Version:        2020.11.28
 Release:        0
 Summary:        Pandora Player
 License:        MIT

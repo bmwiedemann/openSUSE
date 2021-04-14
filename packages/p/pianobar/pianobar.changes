@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 13 12:37:17 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2020.11.28
+  * Support changing station modes
+  * Allow choosing time format
+  * Add optional debug output
+  version 2020.04.05:
+  * Support writing audio to named pipe (audio_pipe)
+  * Add resampling (sample_rate)
+  * Fix station list not showing more than 95 stations
+
+-------------------------------------------------------------------
 Thu Feb 14 12:53:46 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2019.02.14
