@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 13 06:34:33 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 0.71.3
+  * courier-authlib: Report failed LDAP authenticated bind correctly.
+
+-------------------------------------------------------------------
 Sun Apr  4 10:49:44 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Change ownership of socket directory from root:root to root:mail
