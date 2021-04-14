@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 13 19:13:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Upstream orphaned (or at least inactive), use active wangqr fork
+- Updated to fork version 3.3.2
+  * Show a notice when reaching 32bit memory limit instead of crash
+  * Fix OpenGL color depth issue with some GPU drivers
+  * Fix eyedropper not working
+  * Fix alt-drag behavior in audio window
+  * Fix saving audio clip with float samples
+  * Added support for AviSynth+ on linux
+  * Fix video rendering performance issue with visual tools
+  * Added the "align to hardsub in video" function
+  * Allow user change color for visual typesetting tool
+  * Bug fixes about HiDPI display issues
+  * Bug fixes about timing calculation for video frame and audio FFT
+- Added ax_boost-files.patch for fix build with boost >= 1.70
+- Dropped outdated patches Makefile.inc.in.patch,
+  remove-vendor-luajit-dependency.patch, aegisub-no-optimize.patch,
+  luaL_Reg-not-luaL_reg.patch, aegisub-fix_build_with_make4.3.patch
+
+-------------------------------------------------------------------
 Mon Aug 10 06:38:17 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use wxGTK3 instead of wxWidgets (GTK2), for better HiDPI and

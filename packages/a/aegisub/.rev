@@ -353,4 +353,12 @@ Removed spec file generated git_version.h, it's not needed when  git metadata is
     <comment>Change wxWidgets to gtk3</comment>
     <requestid>825275</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>dfcc14e4d6dd1824876dbb5ab9a1fd5e</srcmd5>
+    <version>3.3.2</version>
+    <time>1618387892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885217</requestid>
+  </revision>
 </revisionlist>
