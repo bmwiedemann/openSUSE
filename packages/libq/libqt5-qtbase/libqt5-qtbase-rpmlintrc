@@ -1,0 +1,3 @@
+addFilter("files-duplicated-waste .*")
+addFilter("files-duplicate .*")
+addFilter("shlib-fixed-dependency .*")
