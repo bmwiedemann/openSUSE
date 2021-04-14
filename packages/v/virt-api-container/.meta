@@ -1,0 +1,5 @@
+<package name="virt-api-container" project="openSUSE:Factory">
+  <title>Kubevirt API Container</title>
+  <description></description>
+  <devel project="Virtualization" package="virt-api-container"/>
+</package>

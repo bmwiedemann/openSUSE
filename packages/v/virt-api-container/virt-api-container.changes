@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Wed Mar 17 06:57:14 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add placeholder vars to be replaced during build
+- Fix mixed tabs and spaces
+
+-------------------------------------------------------------------
+Wed Nov 11 13:00:20 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- use ARG for defining base image 
+
+-------------------------------------------------------------------
+Thu Sep 10 22:23:29 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Adjust Dockerfile to conform to "Building Official Container
+  Images" documentation
+
+-------------------------------------------------------------------
+Fri Jun 19 21:15:07 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Initial container for virt-api
