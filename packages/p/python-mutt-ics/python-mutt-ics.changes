@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 14 05:33:14 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop broken %ifpython3 macro
+
+-------------------------------------------------------------------
 Mon May 25 06:50:56 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

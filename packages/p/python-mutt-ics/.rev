@@ -40,4 +40,12 @@
     <comment></comment>
     <requestid>808668</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>37fda3e232260dea2306364dcde7387d</srcmd5>
+    <version>0.9.2</version>
+    <time>1618387890</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop broken %ifpython3 macro</comment>
+    <requestid>885198</requestid>
+  </revision>
 </revisionlist>
