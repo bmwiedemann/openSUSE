@@ -17,13 +17,13 @@
 
 
 Name:           nnn
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        Terminal based file browser
 License:        BSD-2-Clause
 Group:          Productivity/File utilities
 URL:            https://github.com/jarun/nnn#nnn
-Source0:        https://github.com/jarun/nnn/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/jarun/nnn/archive/v%{version}.tar.gz#/v%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 %if 0%{?leap_version} == 420300
@@ -38,8 +38,8 @@ nnn is a fork of noice, a terminal file browser with keyboard
 shortcuts for navigation, opening files and running tasks. There is
 no config file and MIME associations are hard-coded.
 
-%prep 
-%setup -q 
+%prep
+%setup -q
 
 %build
 export CFLAGS="%{optflags}"
