@@ -394,7 +394,7 @@ Prefer: spamassassin:curl
 Prefer: -python36 -python39
 Prefer: -python36-hotdoc -python39-hotdoc
 Prefer: -python36-txt2tags -python39-txt2tags
-Prefer: -python3-ipython715 -python38-ipython715
+Prefer: -python3-ipython715 -python38-ipython715 -python39-ipython715
 
 # man and mandoc provide man; mandoc claims to be lightweight, but it was never discussed to be the new default
 Prefer: man
@@ -407,8 +407,9 @@ Prefer: -kubernetes1.18-kubelet-common -kubernetes1.19-kubelet-common
 
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
 Prefer: python3-tornado -python3-tornado4
-Prefer: python36-tornado -python36-tornado4 -python36-tornado5
+Prefer: python36-tornado -python36-tornado4 -python36-tornado5 
 Prefer: python38-tornado -python38-tornado4 -python38-tornado5
+Prefer: python39-tornado -python39-tornado4 -python39-tornado5
 
 # There are multiple PK backends available. Favor the openSUSE own zypp backend
 Prefer: PackageKit-backend-zypp
@@ -423,9 +424,10 @@ Prefer: tensorflow2
 Prefer: -python3-sip4 -python3-sip4-devel
 Prefer: -python36-sip4 -python36-sip4-devel
 Prefer: -python38-sip4 -python38-sip4-devel
+Prefer: -python39-sip4 -python39-sip4-devel
 
 # There is python[23]-prompt_toolkit and also python3-prompt_toolkit1 for compat. Use the unversioned one by default
-Prefer: python3-prompt_toolkit python38-prompt_toolkit python36-prompt_toolkit
+Prefer: python3-prompt_toolkit python39-prompt_toolkit python38-prompt_toolkit python36-prompt_toolkit
 
 # When perl provides a module that is also in a different package, but the consumer specifies no version, we go with perl/perl-base
 Prefer: perl-base perl
@@ -449,9 +451,7 @@ Prefer: php8:php8-cli
 
 # azure-cli reports: have choice for python3-vsts needed by python3-azure-functions-devops-build: python3-azure-devops python3-vsts
 # Use the real package name
-Prefer: python3-vsts
-Prefer: python36-vsts
-Prefer: python38-vsts
+Prefer: python3-vsts python36-vsts python38-vsts python39-vsts
 
 # for symbol syslog (syslogd is best as it has the least dependencies)
 Prefer: syslogd
@@ -466,7 +466,7 @@ Prefer: nodejs15 nodejs15-devel npm15
 Prefer: libpulse0-32bit libsane1-32bit -pipewire-pulseaudio
 
 # Have choice for vtk-java/vtk-tcl/python3-vtk needed by vtk-devel
-Prefer: vtk-java python3-vtk python36-vtk python38-vtk
+Prefer: vtk-java python3-vtk python36-vtk python38-vtk python39-vtk
 Prefer: eclipse-swt
 
 # wine comes in various flavors by now, we pick the unflavored ones
@@ -882,7 +882,7 @@ Prefer: -zvbi-devel-32bit
 Prefer: -zziplib-devel-32bit                          
 
 # have choice for python3-Sphinx needed by trytond: python3-Sphinx python3-Sphinx2
-Prefer: python3-Sphinx -python36-Sphinx2 -python38-Sphinx2 -python38-Sphinx2-latex
+Prefer: python3-Sphinx -python36-Sphinx2 -python38-Sphinx2 -python38-Sphinx2-latex -python39-Sphinx2 -python39-Sphinx2-latex
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
 Prefer: ruby2.7-rubygem-fast_gettext
@@ -897,12 +897,10 @@ Prefer: ruby2.7-rubygem-listen ruby2.7-rubygem-mime-types ruby2.7-rubygem-builde
 Prefer: opencv-devel
 
 # python3-pytest should win over the other python3-pytest<n> variants
-Prefer: python3-pytest python38-pytest python36-pytest
+Prefer: python3-pytest python38-pytest python36-pytest python39-pytest
 
 # There is python3-Django and python3-Django1 - as usual, we favor the unversioned one
-Prefer: -python3-Django1
-Prefer: -python36-Django1
-Prefer: -python38-Django1
+Prefer: -python3-Django1 -python36-Django1 -python38-Django1 -python39-Django1
 
 # Help OBS over the openssl-1_1_0 -> openssl-1_1 rename; OBS keeps the -32bit lingering around
 # https://github.com/openSUSE/open-build-service/issues/4373
