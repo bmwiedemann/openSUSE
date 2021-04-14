@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr  6 14:00:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.4
+- Changes since 5.21.3:
+  * Make sure that *m_twinSpacer is iniitialized in panelspacer (kde#422914)
+  * Comment was interpreted as part of Restart
+  * [applets/digital-clock] Fix timezone placeholder message positioning
+  * icons kcm: Clear pending deletions when Defaults button is clicked
+  * Remove pointless widget (kde#434910)
+  * krunner: Restore history related property and methods for compatibility with third party themes (kde#433173)
+  * Make bottom frame again visible (kde#434645)
+  * Fix color scheme preview (kde#434493)
+  * save layout when corona startup is completed (kde#433799)
+  * Klipper Waylandclipboard: force offer of specific mimetype to fix pasting to gtk applications
+
+-------------------------------------------------------------------
 Tue Mar 16 13:55:27 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.3
