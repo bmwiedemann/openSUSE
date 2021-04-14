@@ -1,7 +1,7 @@
 #
 # spec file for package ninja
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://ninja-build.org/
 Source0:        https://github.com/ninja-build/ninja/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        macros.ninja
 Patch1:         ninja-disable-maxprocs-test.patch
+Patch2:         ninja-re2c-g.patch
 BuildRequires:  gcc-c++
 BuildRequires:  python3-base
 BuildRequires:  re2c

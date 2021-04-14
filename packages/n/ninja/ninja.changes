@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  5 21:51:58 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- ninja-re2c-g.patch tell re2c to generate gcc specific code using
+  the -g flag, this usually results in lexers that are 20-25% faster.
+
+-------------------------------------------------------------------
 Tue Dec 29 18:55:10 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.2:
