@@ -661,4 +661,12 @@ Only build sdl2 module.
 - Update to version 6.26.0</comment>
     <requestid>884444</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>a99b6c63eeca804b800dbc7a2be8f68a</srcmd5>
+    <version>6.26.1</version>
+    <time>1618387889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885174</requestid>
+  </revision>
 </revisionlist>

@@ -18,14 +18,14 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 6.26.0
+%define lversion 6.26.1
 %define soname 6
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define soname_pp 3
 
 Name:           %{libname}
-Version:        6.26.0
+Version:        6.26.1
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
