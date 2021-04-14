@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Apr 13 23:29:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.14.1
+  * Fixes CVE-2020-13949
+  * Deprecated Languages:
+    + Deprecate ActionScript 3 support
+    + Deprecate Haskell bindings
+  * Removed Languages:
+    + Remove deprecated C# and netcore bindings
+  * Breaking Changes
+    + Upgrade to .NET Core 3.1 (LTS)
+    + Implement DEFAULT_MAX_LENGTH at TFramedTransport
+    + In Go library TDeserializer.Transport is now
+      typed *TMemoryBuffer instead of TTransport
+    + Haskell generator fails to distinguish between multiple enum
+      types with conflicting enum identifiers
+    + Upgrade NodeJS to 10.x
+    + Swift generator does not escape keywords properly
+    + In Go library TProcessor interface now includes ProcessorMap
+      and AddToProcessorMap functions.
+    + cpp: use all getaddrinfo() results when retrying failed bind()
+      in T{Nonblocking,}ServerSocket
+    + Now all Read, Write and Skip functions in TProtocol accept
+      context arg
+    + go: TSocket and TSSLSocket now have separated connect timeout
+      and socket timeout
+    + cpp: dropped support for Windows XP
+    + TException interface now has a new function: TExceptionType
+    + go: TClient.Call now returns ResponseMeta in addition to error 
+  * Full: https://github.com/apache/thrift/blob/0.14.1/CHANGES.md
+
+-------------------------------------------------------------------
 Sat Jan  2 20:07:17 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Build library for all parallel installable python3 flavors

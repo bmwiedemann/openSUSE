@@ -16,7 +16,7 @@
 #
 
 
-%define libversion 0_13_0
+%define libversion 0_14_1
 %define libgversion 0
 %bcond_without perl
 %bcond_without c
@@ -34,7 +34,7 @@
 %define skip_python38 1
 %endif
 Name:           thrift
-Version:        0.13.0
+Version:        0.14.1
 Release:        0
 Summary:        Framework for scalable cross-language services development
 License:        Apache-2.0
