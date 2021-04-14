@@ -1,0 +1,6 @@
+<package name="butane" project="openSUSE:Factory">
+  <title>Tool to generate Ignition configs from Butane Configs</title>
+  <description>Butane translates human-readable Butane Configs into machine readable Ignition configs for provisioning operating systems that use Ignition.</description>
+  <devel project="devel:kubic:ignition" package="butane"/>
+  <url>https://coreos.github.io/butane/</url>
+</package>
