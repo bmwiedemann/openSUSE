@@ -34,4 +34,15 @@
 </comment>
     <requestid>884506</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c769202bc36110225f7f29024adda144</srcmd5>
+    <version>20210412</version>
+    <time>1618387837</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210412:
+  * Change dbus name to us.getsol.budgie-screensaver
+- Remove GNOME-40.patch: merged
+</comment>
+    <requestid>884629</requestid>
+  </revision>
 </revisionlist>

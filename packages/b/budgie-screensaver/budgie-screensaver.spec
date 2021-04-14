@@ -2,7 +2,7 @@
 # spec file for package budgie-screensaver
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2020 Callum Farmer <callumjfarmer13@gmail.com>
+# Copyright (c) 2021 Callum Farmer <gmbr3@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define chkpwd /sbin/unix2_chkpwd
 %endif
 Name:           budgie-screensaver
-Version:        20201110
+Version:        20210412
 Release:        0
 Summary:        Fork of GNOME Screensaver for Budgie 10
 License:        GPL-2.0-or-later
@@ -40,7 +40,6 @@ Patch2:         gnome-screensaver-helper.patch
 Patch3:         gnome-screensaver-xvkbd-on-lock.patch
 # PATCH-FIX-UPSTREAM gnome-screensaver-multihead-unlock.patch bnc#444157 bgo#455118 rodrigo@novell.com
 Patch4:         gnome-screensaver-multihead-unlock.patch
-Patch5:         GNOME-40.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gnome-common

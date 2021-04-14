@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 12 11:22:38 UTC 2021 - gmbr3@opensuse.org
+
+- Update to version 20210412:
+  * Change dbus name to us.getsol.budgie-screensaver
+- Remove GNOME-40.patch: merged
+
+-------------------------------------------------------------------
 Sun Apr 11 18:12:22 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add GNOME-40.patch: to fix conflict with GNOME 40
