@@ -27,4 +27,12 @@
   - (update) Updated to RtAudio 4.1.1, and using shared lib in linux.</comment>
     <requestid>828568</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8b7974cfc6d2c4ae2dbc9d76410a6bb3</srcmd5>
+    <version>1.3.0</version>
+    <time>1618387870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884939</requestid>
+  </revision>
 </revisionlist>

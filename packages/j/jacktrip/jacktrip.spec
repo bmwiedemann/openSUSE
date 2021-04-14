@@ -1,7 +1,7 @@
 #
 # spec file for package jacktrip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           jacktrip
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Multi-machine network music performance over the Internet
 License:        MIT
@@ -26,6 +26,7 @@ Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/jcacerec/jacktrip
 Source:         https://github.com/jcacerec/jacktrip/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(alsa)
@@ -41,14 +42,11 @@ audio signal streaming.
 %setup -q
 
 %build
-cd src
-%qmake5 jacktrip.pro
-%make_build
+%meson
+%meson_build
 
 %install
-cd src
-make INSTALL_ROOT=%{buildroot} install
-rm -v %{buildroot}/%{_bindir}/jacktrip_debug
+%meson_install
 
 %files
 %doc CHANGESLOG.txt README.md TODO.txt
