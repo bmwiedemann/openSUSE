@@ -69,4 +69,27 @@
     <comment></comment>
     <requestid>883511</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>93acca60c51f7349c9bc290830d1ec83</srcmd5>
+    <version>0.10.1</version>
+    <time>1618387871</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.1:
+  Changes:
+  * Change the way the &quot;ignored&quot; status is aggregated for directories,
+    so directories containing ignored files no longer look like the
+    directory itself is ignored (bd4f144)
+  * Change the icon for TeX files to a &quot;T&quot; (e3e776a)
+  * Display the classification character (such as / for directories)
+    at the end of symlink targets (dbd11d3)
+  * Display more helpful error messages when a number in a
+    command-line option or environment variable fails to be parsed (550f2d2)
+  Fixes:
+  * Fix thousand separators not being displayed in file sizes (7a4cde7)
+  * Fix $EXA_GRID_ROWS displaying the wrong size table in certain
+    situations (c729e22)
+  * Fix month name not following locale when a file's date is in the
+    current year (3a8005c)</comment>
+    <requestid>884951</requestid>
+  </revision>
 </revisionlist>

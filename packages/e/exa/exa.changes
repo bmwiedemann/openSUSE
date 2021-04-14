@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 13 12:46:26 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.1:
+  Changes:
+  * Change the way the "ignored" status is aggregated for directories,
+    so directories containing ignored files no longer look like the
+    directory itself is ignored (bd4f144)
+  * Change the icon for TeX files to a "T" (e3e776a)
+  * Display the classification character (such as / for directories)
+    at the end of symlink targets (dbd11d3)
+  * Display more helpful error messages when a number in a
+    command-line option or environment variable fails to be parsed (550f2d2)
+  Fixes:
+  * Fix thousand separators not being displayed in file sizes (7a4cde7)
+  * Fix $EXA_GRID_ROWS displaying the wrong size table in certain
+    situations (c729e22)
+  * Fix month name not following locale when a file's date is in the
+    current year (3a8005c)
+
+-------------------------------------------------------------------
 Tue Apr  6 12:47:59 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.10.0: 
