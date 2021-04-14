@@ -1,0 +1,116 @@
+From c308fc8823f238e07ff914bb635f9e729b84c716 Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Thu, 8 Apr 2021 10:21:49 +0800
+Subject: [PATCH] dhcp-client: Support using valid lease configuration on
+ timeout
+
+dhclient checks lease file on timeout. If they are still valid, the ip
+configs will be used. While currently NetworkManager directly fails
+the dhcp configuration once timeout is reached.
+
+Fix that by using ip configs found in the valid lease file on timeout,
+when dhclient is the dhcp backend.
+
+https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/682
+---
+ src/core/devices/nm-device.c      |  7 ++-----
+ src/core/dhcp/nm-dhcp-client.c    | 13 ++++++++-----
+ src/core/dhcp/nm-dhcp-dhcpcanon.c |  1 +
+ src/core/dhcp/nm-dhcp-dhcpcd.c    |  1 +
+ 4 files changed, 12 insertions(+), 10 deletions(-)
+
+Index: NetworkManager-1.30.0/src/core/devices/nm-device.c
+===================================================================
+--- NetworkManager-1.30.0.orig/src/core/devices/nm-device.c
++++ NetworkManager-1.30.0/src/core/devices/nm-device.c
+@@ -9314,6 +9314,7 @@ dhcp4_state_changed(NMDhcpClient *client
+     switch (state) {
+     case NM_DHCP_STATE_BOUND:
+     case NM_DHCP_STATE_EXTENDED:
++    case NM_DHCP_STATE_TIMEOUT:
+         if (!ip4_config) {
+             _LOGW(LOGD_DHCP4, "failed to get IPv4 config in response to DHCP event.");
+             dhcp4_fail(self, state);
+@@ -9360,9 +9361,6 @@ dhcp4_state_changed(NMDhcpClient *client
+                 dhcp4_fail(self, state);
+         }
+         break;
+-    case NM_DHCP_STATE_TIMEOUT:
+-        dhcp4_fail(self, state);
+-        break;
+     case NM_DHCP_STATE_EXPIRE:
+         /* Ignore expiry before we even have a lease (NAK, old lease, etc) */
+         if (priv->ip_state_4 == NM_DEVICE_IP_STATE_CONF)
+Index: NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-client.c
+===================================================================
+--- NetworkManager-1.30.0.orig/src/core/dhcp/nm-dhcp-client.c
++++ NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-client.c
+@@ -19,6 +19,7 @@
+ 
+ #include "NetworkManagerUtils.h"
+ #include "nm-utils.h"
++#include "nm-dhcp-manager.h"
+ #include "nm-dhcp-utils.h"
+ #include "nm-dhcp-options.h"
+ #include "platform/nm-platform.h"
+@@ -443,14 +444,14 @@ nm_dhcp_client_set_state(NMDhcpClient *s
+     if (NM_IN_SET(new_state, NM_DHCP_STATE_BOUND, NM_DHCP_STATE_EXTENDED)) {
+         g_return_if_fail(NM_IS_IP_CONFIG_ADDR_FAMILY(ip_config, priv->addr_family));
+         g_return_if_fail(options);
+-    } else {
++    } else if (!NM_IN_SET (new_state, NM_DHCP_STATE_TIMEOUT)) {
+         g_return_if_fail(!ip_config);
+         g_return_if_fail(!options);
+     }
+ 
+     if (new_state >= NM_DHCP_STATE_BOUND)
+         timeout_cleanup(self);
+-    if (new_state >= NM_DHCP_STATE_TIMEOUT)
++    if (new_state >= NM_DHCP_STATE_TIMEOUT && !ip_config)
+         watch_cleanup(self);
+ 
+     /* The client may send same-state transitions for RENEW/REBIND events and
+@@ -557,8 +558,6 @@ nm_dhcp_client_watch_child(NMDhcpClient
+     g_return_if_fail(priv->pid == -1);
+     priv->pid = pid;
+ 
+-    nm_dhcp_client_start_timeout(self);
+-
+     g_return_if_fail(priv->watch_id == 0);
+     priv->watch_id = g_child_watch_add(pid, daemon_watch_cb, self);
+ }
+@@ -905,7 +904,9 @@ nm_dhcp_client_handle_event(gpointer
+     if (new_state == NM_DHCP_STATE_NOOP)
+         return TRUE;
+ 
+-    if (NM_IN_SET(new_state, NM_DHCP_STATE_BOUND, NM_DHCP_STATE_EXTENDED)) {
++    if (NM_IN_SET(new_state, NM_DHCP_STATE_BOUND, NM_DHCP_STATE_EXTENDED)
++        || (NM_IN_SET (new_state, NM_DHCP_STATE_TIMEOUT)
++           && g_strcmp0 (nm_dhcp_manager_get_config (nm_dhcp_manager_get ()), "dhclient") == 0)) {
+         GVariantIter iter;
+         const char * name;
+         GVariant *   value;
+Index: NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-dhcpcanon.c
+===================================================================
+--- NetworkManager-1.30.0.orig/src/core/dhcp/nm-dhcp-dhcpcanon.c
++++ NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-dhcpcanon.c
+@@ -156,6 +156,7 @@ dhcpcanon_start(NMDhcpClient *client,
+     nm_assert(pid > 0);
+     _LOGI("dhcpcanon started with pid %d", pid);
+     nm_dhcp_client_watch_child(client, pid);
++    nm_dhcp_client_start_timeout(self);
+     priv->pid_file = g_steal_pointer(&pid_file);
+     return TRUE;
+ }
+Index: NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-dhcpcd.c
+===================================================================
+--- NetworkManager-1.30.0.orig/src/core/dhcp/nm-dhcp-dhcpcd.c
++++ NetworkManager-1.30.0/src/core/dhcp/nm-dhcp-dhcpcd.c
+@@ -158,6 +158,7 @@ ip4_start(NMDhcpClient *client,
+     nm_assert(pid > 0);
+     _LOGI("dhcpcd started with pid %d", pid);
+     nm_dhcp_client_watch_child(client, pid);
++    nm_dhcp_client_start_timeout(self);
+     return TRUE;
+ }
+ 

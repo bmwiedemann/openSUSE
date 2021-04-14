@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr  9 06:11:21 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add nm-dhcp-use-valid-lease-on-timeout.patch: Support valid lease
+  file on dhcp timeout(glfd#NetworkManager/NetworkManager!811,
+  bsc#1183202).
+
+-------------------------------------------------------------------
+Thu Mar 25 07:54:02 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add NM-restore-MAC-on-release-only-when-cloned.patch: bond:
+  restore MAC on release only when there is a cloned MAC address
+  (glfo#NetworkManager/NetworkManager!775, bsc#1183967).
+
+-------------------------------------------------------------------
 Thu Feb 18 18:02:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.30.0:

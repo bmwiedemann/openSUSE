@@ -1,0 +1,66 @@
+From 190fd9aa9f3fbf5705c2b80b9fc64c89d22b7593 Mon Sep 17 00:00:00 2001
+From: Beniamino Galvani <bgalvani@redhat.com>
+Date: Sat, 6 Mar 2021 11:35:12 +0100
+Subject: [PATCH] bond: restore MAC on release only when there is a cloned MAC
+ address
+
+Currently we unconditionally reset the MAC to the previous value after
+releasing ports. This has some disadvantages:
+
+ - by default, after the last port is removed the bond will have one
+   of the previous port's address, which could conflict with the port;
+
+ - in some cases, changing the bond MAC is not possible. For example
+   when the bond is active-backup and has fail_over_mac=1|2. In such
+   case the netlink call succeeds, but the address doesn't
+   change; then NM would keep waiting for some time.
+
+Don't try to restore the MAC unless the bond connection has a cloned
+MAC set.
+
+https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/775
+---
+ src/core/devices/nm-device-bond.c | 20 ++++++++++++++------
+ 1 file changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/src/core/devices/nm-device-bond.c b/src/core/devices/nm-device-bond.c
+index 878d3e9e0c..29d3abb42a 100644
+--- a/src/core/devices/nm-device-bond.c
++++ b/src/core/devices/nm-device-bond.c
+@@ -444,9 +444,10 @@ release_slave(NMDevice *device, NMDevice *slave, gboolean configure)
+         _LOGD(LOGD_BOND, "bond slave %s is already released", nm_device_get_ip_iface(slave));
+ 
+     if (configure) {
+-        /* When the last slave is released the bond MAC will be set to a random
+-         * value by kernel; remember the current one and restore it afterwards.
+-         */
++        NMConnection *  applied;
++        NMSettingWired *s_wired;
++        const char *    cloned_mac;
++
+         address = g_strdup(nm_device_get_hw_address(device));
+ 
+         if (ifindex_slave > 0) {
+@@ -461,9 +462,16 @@ release_slave(NMDevice *device, NMDevice *slave, gboolean configure)
+             }
+         }
+ 
+-        nm_platform_process_events(nm_device_get_platform(device));
+-        if (nm_device_update_hw_address(device))
+-            nm_device_hw_addr_set(device, address, "restore", FALSE);
++        if ((applied = nm_device_get_applied_connection(device))
++            && ((s_wired = nm_connection_get_setting_wired(applied)))
++            && ((cloned_mac = nm_setting_wired_get_cloned_mac_address(s_wired)))) {
++            /* When the last slave is released the bond MAC will be set to a random
++             * value by kernel; if we have set a cloned-mac-address, we need to
++             * restore it to the previous value. */
++            nm_platform_process_events(nm_device_get_platform(device));
++            if (nm_device_update_hw_address(device))
++                nm_device_hw_addr_set(device, address, "restore", FALSE);
++        }
+ 
+         /* Kernel bonding code "closes" the slave when releasing it, (which clears
+          * IFF_UP), so we must bring it back up here to ensure carrier changes and
+-- 
+2.30.2
+

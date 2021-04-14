@@ -51,6 +51,10 @@ Patch5:         NetworkManager-1.10.6-netconfig.patch
 Patch6:         0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch
 # PATCH-FIX-OPENSUSE nm-add-CAP_SYS_ADMIN-permission.patch bsc#1129587 sckang@suse.com -- Add CAP_SYS_ADMIN which netconfig needs to call setdomainname
 Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
+# PATCH-FIX-UPSTREAM NM-restore-MAC-on-release-only-when-cloned.patch glfo#NetworkManager/NetworkManager!775, bsc#1183967 sckang@suse.com -- bond: restore MAC on release only when there is a cloned MAC address
+Patch8:         NM-restore-MAC-on-release-only-when-cloned.patch
+# PATCH-FIX-UPSTREAM nm-dhcp-use-valid-lease-on-timeout.patch glfd#NetworkManager/NetworkManager!811, bsc#1183202 sckang@suse.com Support valid lease file on dhcp timeout
+Patch9:         nm-dhcp-use-valid-lease-on-timeout.patch
 
 BuildRequires:  dnsmasq
 BuildRequires:  fdupes
@@ -189,6 +193,8 @@ translation-update-upstream
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
+%patch9 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
