@@ -38,7 +38,7 @@ Patch1:         gnome-shell-private-connection.patch
 Patch2:         gnome-shell-disable-ibus-when-not-installed.patch
 # PATCH-FEATURE-OPENSUSE gnome-shell-fate324570-Make-GDM-background-image-configurable.patch fate#324570, glgo#GNOME/gnome-shell#680, boo#1172826 qkzhu@suse.com -- make GDM background image configurable
 Patch4:         gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
-# PATCH-NEEDS-REBASE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog (WAS: PATCH-FEATURE-OPENSUSE)
+# PATCH-FEATURE-OPENSUSE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog
 Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
 # PATCH-FIX-UPSTREAM gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch jsc#SLE-16051 glgo#GNOME/gnome-shell!1563 qzhao@suse.com -- launch recommended input engines when Gnome-shell init in CJK regions.
 Patch6:         gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
@@ -52,14 +52,10 @@ Patch1002:      gnome-shell-domain.patch
 Patch1003:      gnome-shell-screen-disappear.patch
 # PATCH-FIX-SLE endSession-dialog-update-time-label-every-sec.patch bnc#886132 cxiong@suse.com -- update time label every second in end session dialog
 Patch1004:      endSession-dialog-update-time-label-every-sec.patch
-# PATCH-FEATURE-SLE gnome-shell-864872-unlock-by-mouse-motion.patch bnc#864872 dliang@suse.com -- 10px mouse motion to lift screen shield.
-Patch1005:      gnome-shell-864872-unlock-by-mouse-motion.patch
 # PATCH-FIX-SLE gnome-shell-lock-bg-on-primay.patch bnc#894050 dliang@suse.com -- display background of lock dialog on the primary screen.
 Patch1006:      gnome-shell-lock-bg-on-primary.patch
 # PATCH-FIX-SLE gs-fate318433-prevent-same-account-multi-logins.patch fate#318433 cxiong@suse.com -- prevent multiple simultaneous login.
 Patch1007:      gs-fate318433-prevent-same-account-multi-logins.patch
-# PATCH-FEATURE-SLE gnome-shell-1007468-lock-screen-SUSE-logo-missing.patch xwang@suse.com -- Add SUSE logo on lock screen for GNOME theme.
-Patch1008:      gnome-shell-1007468-lock-screen-SUSE-logo-missing.patch
 
 # needed for directory ownership
 BuildRequires:  asciidoc
@@ -182,9 +178,9 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch1 -p1
 %patch2 -p1
 %patch4 -p1
-#patch5 -p1
+%patch5 -p1
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
-#patch6 -p1
+%patch6 -p1
 %endif
 
 translation-update-upstream
@@ -194,10 +190,8 @@ translation-update-upstream
 %patch1002 -p1
 %patch1003 -p1
 %patch1004 -p1
-%patch1005 -p1
 %patch1006 -p1
 %patch1007 -p1
-%patch1008 -p1
 %endif
 
 cp %{SOURCE2} data/theme/

@@ -1,8 +1,8 @@
 diff --git a/js/ui/endSessionDialog.js b/js/ui/endSessionDialog.js
-index 42ae0d3f2..3e5eb94a8 100644
+index 1fdbd11..276d98d 100644
 --- a/js/ui/endSessionDialog.js
 +++ b/js/ui/endSessionDialog.js
-@@ -270,7 +270,7 @@ class EndSessionDialog extends ModalDialog.ModalDialog {
+@@ -295,7 +295,7 @@ class EndSessionDialog extends ModalDialog.ModalDialog {
          this.contentLayout.add_child(this._applicationSection);
  
          this._sessionSection = new Dialog.ListSection({
@@ -11,7 +11,7 @@ index 42ae0d3f2..3e5eb94a8 100644
          });
          this.contentLayout.add_child(this._sessionSection);
  
-@@ -643,8 +643,8 @@ class EndSessionDialog extends ModalDialog.ModalDialog {
+@@ -771,8 +771,8 @@ class EndSessionDialog extends ModalDialog.ModalDialog {
              this._applications.push(inhibitor);
          }
  
@@ -20,5 +20,5 @@ index 42ae0d3f2..3e5eb94a8 100644
 +        // if (dialogContent.showOtherSessions) // Hide _sessionList for jsc#SLE-9267
 +        //    this._loadSessions();
  
-         // Only consider updates and upgrades if PackageKit is available.
-         let updateTriggered = this._pkOfflineProxy ? this._pkOfflineProxy.UpdateTriggered : false;
+         let updatesAllowed = this._updatesPermission && this._updatesPermission.allowed;
+ 

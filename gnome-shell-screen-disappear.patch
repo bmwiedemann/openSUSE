@@ -1,9 +1,9 @@
-Index: gnome-shell-3.24.2/js/gdm/authPrompt.js
-===================================================================
---- gnome-shell-3.24.2.orig/js/gdm/authPrompt.js
-+++ gnome-shell-3.24.2/js/gdm/authPrompt.js
-@@ -458,8 +458,10 @@ const AuthPrompt = new Lang.Class({
-         this.setUser(null);
+diff --git a/js/gdm/authPrompt.js b/js/gdm/authPrompt.js
+index d2c9a16..7a4a0d3 100644
+--- a/js/gdm/authPrompt.js
++++ b/js/gdm/authPrompt.js
+@@ -500,8 +500,10 @@ var AuthPrompt = GObject.registerClass({
+         this._updateEntry(true);
          this.stopSpinning();
  
 -        if (oldStatus == AuthPromptStatus.VERIFICATION_FAILED)
@@ -11,6 +11,6 @@ Index: gnome-shell-3.24.2/js/gdm/authPrompt.js
 +            this._userVerifier.cancel();
              this.emit('failed');
 +        }
- 
-         let beginRequestType;
+         else if (oldStatus === AuthPromptStatus.VERIFICATION_CANCELLED)
+             this.emit('cancelled');
  

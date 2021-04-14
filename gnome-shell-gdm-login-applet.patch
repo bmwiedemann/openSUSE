@@ -1,7 +1,8 @@
-diff -urpN gnome-shell-3.33.91.orig/js/js-resources.gresource.xml gnome-shell-3.33.91/js/js-resources.gresource.xml
---- gnome-shell-3.33.91.orig/js/js-resources.gresource.xml	2019-08-21 15:00:39.000000000 -0500
-+++ gnome-shell-3.33.91/js/js-resources.gresource.xml	2019-09-04 10:15:21.233934725 -0500
-@@ -32,6 +32,7 @@
+diff --git a/js/js-resources.gresource.xml b/js/js-resources.gresource.xml
+index e65e0e9..eebbc36 100644
+--- a/js/js-resources.gresource.xml
++++ b/js/js-resources.gresource.xml
+@@ -35,6 +35,7 @@
      <file>perf/core.js</file>
      <file>perf/hwtest.js</file>
  
@@ -9,9 +10,11 @@ diff -urpN gnome-shell-3.33.91.orig/js/js-resources.gresource.xml gnome-shell-3.
      <file>ui/accessDialog.js</file>
      <file>ui/altTab.js</file>
      <file>ui/animation.js</file>
-diff -urpN gnome-shell-3.33.91.orig/js/ui/aboutMenu.js gnome-shell-3.33.91/js/ui/aboutMenu.js
---- gnome-shell-3.33.91.orig/js/ui/aboutMenu.js	1969-12-31 18:00:00.000000000 -0600
-+++ gnome-shell-3.33.91/js/ui/aboutMenu.js	2019-09-04 10:15:40.562037171 -0500
+diff --git a/js/ui/aboutMenu.js b/js/ui/aboutMenu.js
+new file mode 100644
+index 0000000..7add645
+--- /dev/null
++++ b/js/ui/aboutMenu.js
 @@ -0,0 +1,150 @@
 +// -*- mode: js; js-indent-level: 4; indent-tabs-mode: nil -*-
 +
@@ -163,10 +166,11 @@ diff -urpN gnome-shell-3.33.91.orig/js/ui/aboutMenu.js gnome-shell-3.33.91/js/ui
 +
 +    return hostname;
 +}
-diff -urpN gnome-shell-3.33.91.orig/js/ui/panel.js gnome-shell-3.33.91/js/ui/panel.js
---- gnome-shell-3.33.91.orig/js/ui/panel.js	2019-08-21 15:00:39.000000000 -0500
-+++ gnome-shell-3.33.91/js/ui/panel.js	2019-09-04 10:15:40.562037171 -0500
-@@ -769,6 +769,7 @@ class AggregateMenu extends PanelMenu.Bu
+diff --git a/js/ui/panel.js b/js/ui/panel.js
+index cba3241..f5dfc2b 100644
+--- a/js/ui/panel.js
++++ b/js/ui/panel.js
+@@ -722,6 +722,7 @@ class AggregateMenu extends PanelMenu.Button {
  });
  
  const PANEL_ITEM_IMPLEMENTATIONS = {
@@ -174,15 +178,16 @@ diff -urpN gnome-shell-3.33.91.orig/js/ui/panel.js gnome-shell-3.33.91/js/ui/pan
      'activities': ActivitiesButton,
      'aggregateMenu': AggregateMenu,
      'appMenu': AppMenuButton,
-diff -urpN gnome-shell-3.33.91.orig/js/ui/sessionMode.js gnome-shell-3.33.91/js/ui/sessionMode.js
---- gnome-shell-3.33.91.orig/js/ui/sessionMode.js	2019-08-21 15:00:39.000000000 -0500
-+++ gnome-shell-3.33.91/js/ui/sessionMode.js	2019-09-04 10:18:12.262841288 -0500
-@@ -33,7 +33,7 @@ const _modes = {
+diff --git a/js/ui/sessionMode.js b/js/ui/sessionMode.js
+index 2136e94..6d5e7c8 100644
+--- a/js/ui/sessionMode.js
++++ b/js/ui/sessionMode.js
+@@ -34,7 +34,7 @@ const _modes = {
          unlockDialog: null,
          components: [],
          panel: {
 -            left: [],
 +            left: ['aboutMenu'],
              center: [],
-             right: []
+             right: [],
          },

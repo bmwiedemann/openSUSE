@@ -1720,4 +1720,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>GNOME 40 - here we come (forwarded request 880966 from dimstar)</comment>
     <requestid>881137</requestid>
   </revision>
+  <revision rev="197" vrev="2">
+    <srcmd5>82e9d7d216e6b31081ea57d0de5073ab</srcmd5>
+    <version>40.0</version>
+    <time>1618387772</time>
+    <user>dimstar_suse</user>
+    <comment>Rebase SLE patches (forwarded request 883360 from mgorse)</comment>
+    <requestid>884651</requestid>
+  </revision>
 </revisionlist>

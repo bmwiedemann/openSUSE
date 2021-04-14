@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr  6 06:26:21 UTC 2021 - QK ZHU <qkzhu@suse.com>
+
+- Rebase patches, the following patches are rebased to version
+  40.0:
+  + gnome-shell-domain.patch
+  + gnome-shell-gdm-login-applet.patch
+  + gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
+  + gnome-shell-lock-bg-on-primary.patch
+  + gnome-shell-screen-disappear.patch
+  + gs-fate318433-prevent-same-account-multi-logins.patch
+- Drop 2 patches, lock screen redesigned in version 3.36 or later:
+  + gnome-shell-864872-unlock-by-mouse-motion.patch
+  + gnome-shell-1007468-lock-screen-SUSE-logo-missing.patch
+    (bsc#1184102).
+
+-------------------------------------------------------------------
+Sun Mar 21 17:07:53 UTC 2021 - Cliff Zhao <qzhao@suse.com>
+
+- Update
+  gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch:
+  fix (boo#1183823).
+
+-------------------------------------------------------------------
 Sat Mar 20 16:49:12 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:

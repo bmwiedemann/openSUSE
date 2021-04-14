@@ -248,39 +248,34 @@ index 0000000..2452696
 +});
 +Signals.addSignalMethods(DomainMenuButton.prototype);
 diff --git a/js/gdm/loginDialog.js b/js/gdm/loginDialog.js
-index c3f90dc..9546921 100644
+index 6f66a27..3f01ca0 100644
 --- a/js/gdm/loginDialog.js
 +++ b/js/gdm/loginDialog.js
-@@ -22,6 +22,7 @@ const { AccountsService, Atk, Clutter, Gdm, Gio,
- const Signals = imports.signals;
+@@ -21,6 +21,7 @@ const { AccountsService, Atk, Clutter, Gdm, Gio,
+         GLib, GObject, Meta, Pango, Shell, St } = imports.gi;
  
  const AuthPrompt = imports.gdm.authPrompt;
 +const Domain = imports.gdm.domain;
  const Batch = imports.gdm.batch;
  const BoxPointer = imports.ui.boxpointer;
  const CtrlAltTab = imports.ui.ctrlAltTab;
-@@ -437,6 +438,14 @@ var LoginDialog = GObject.registerClass({
+@@ -449,6 +450,10 @@ var LoginDialog = GObject.registerClass({
          this._authPrompt.hide();
-         this.add_child(this._authPrompt.actor);
+         this.add_child(this._authPrompt);
  
 +        this._userLayout = new St.BoxLayout({ vertical: false,
-+                        x_expand: true
-+                       });
-+        this._userSelectionBox.add(this._userLayout,
-+                                   { expand: true,
-+                                     x_align: St.Align.START,
-+                                     x_fill: true });
++                                              x_expand: true });
++        this._userSelectionBox.add_child(this._userLayout);
 +
          // translators: this message is shown below the user list on the
          // login screen. It can be activated to reveal an entry for
          // manually entering the username.
-@@ -454,10 +463,24 @@ var LoginDialog = GObject.registerClass({
+@@ -470,7 +475,18 @@ var LoginDialog = GObject.registerClass({
  
          this._notListedButton.hide();
  
--        this._userSelectionBox.add(this._notListedButton,
-+        this._userLayout.add(this._notListedButton,
-+                                   { expand: false});
+-        this._userSelectionBox.add_child(this._notListedButton);
++        this._userLayout.add_child(this._notListedButton);
 +
 +        // we add domain menu button
 +        this._domainMenuButton = new Domain.DomainMenuButton();
@@ -288,20 +283,14 @@ index c3f90dc..9546921 100644
 +            this._domainMenuButton.actor.hide();
 +
 +            this._domainMenuButton.connect('domain-activated',
-+                                  Lang.bind(this, function(list) {
-+                        this._hideUserListAskForDomainUsernameAndBeginVerification();
-+                                            }));
-+            this._userLayout.add(this._domainMenuButton.actor,
-                                    { expand: false,
--                                     x_align: St.Align.START,
-+                                     x_align: St.Align.END,
-                                      x_fill: true });
-+        }
-+        // domain end
++                                            Lang.bind(this, function(list) {
++                                                      this._hideUserListAskForDomainUsernameAndBeginVerification(); }));
++            this._userLayout.add_child(this._domainMenuButton.actor);
++        } // domain end
  
          this._bannerView = new St.ScrollView({ style_class: 'login-dialog-banner-view',
                                                 opacity: 0,
-@@ -942,6 +965,37 @@ var LoginDialog = GObject.registerClass({
+@@ -979,6 +995,37 @@ var LoginDialog = GObject.registerClass({
              });
      }
  
@@ -339,7 +328,7 @@ index c3f90dc..9546921 100644
      _startSession(serviceName) {
          this._bindOpacity();
          this.ease({
-@@ -1099,6 +1153,11 @@ var LoginDialog = GObject.registerClass({
+@@ -1134,6 +1181,11 @@ var LoginDialog = GObject.registerClass({
          this._askForUsernameAndBeginVerification();
      }
  
@@ -351,18 +340,18 @@ index c3f90dc..9546921 100644
      _hideUserListAndBeginVerification() {
          this._hideUserList();
          this._authPrompt.begin();
-@@ -1111,6 +1170,9 @@ var LoginDialog = GObject.registerClass({
-         this._sessionMenuButton.close();
+@@ -1147,6 +1199,9 @@ var LoginDialog = GObject.registerClass({
+         this._sessionMenuButton.hide();
          this._setUserListExpanded(true);
          this._notListedButton.show();
 +        if (this._domainMenuButton.domain_enabled)
 +            this._domainMenuButton.actor.show();
 +        this._userLayout.show();
-         this._userList.actor.grab_key_focus();
+         this._userList.grab_key_focus();
      }
  
 diff --git a/js/js-resources.gresource.xml b/js/js-resources.gresource.xml
-index b5348dd..7d48828 100644
+index eebbc36..5e5e7e2 100644
 --- a/js/js-resources.gresource.xml
 +++ b/js/js-resources.gresource.xml
 @@ -2,6 +2,7 @@
@@ -371,20 +360,17 @@ index b5348dd..7d48828 100644
      <file>gdm/authPrompt.js</file>
 +    <file>gdm/domain.js</file>
      <file>gdm/batch.js</file>
-     <file>gdm/fingerprint.js</file>
      <file>gdm/loginDialog.js</file>
+     <file>gdm/oVirt.js</file>
 diff --git a/po/POTFILES.in b/po/POTFILES.in
-index 33be57b..29bbd3c 100644
+index cb279c1..7772367 100644
 --- a/po/POTFILES.in
 +++ b/po/POTFILES.in
-@@ -7,6 +7,7 @@ data/org.gnome.shell.gschema.xml.in
+@@ -6,6 +6,7 @@ data/org.gnome.shell.gschema.xml.in
  data/org.gnome.Shell.PortalHelper.desktop.in.in
- js/extensionPrefs/main.js
+ js/dbusServices/extensions/ui/extension-prefs-dialog.ui
  js/gdm/authPrompt.js
 +js/gdm/domain.js
  js/gdm/loginDialog.js
  js/gdm/util.js
  js/misc/systemActions.js
--- 
-2.25.1
-
