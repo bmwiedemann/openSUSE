@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 13 07:59:37 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.7
+  * screenxlib.cpp: improved multi-monitor support for X11 based
+    systems
+  * backendxlib.cpp: fixed issues querying GTK theme colors
+  * window.cpp: fixed drawing issues on KDE systems
+  * arrows.cpp: fixed unintentional wrap-around when going below
+    zero value
+  * cursor.cpp: avoid sending two onInput signals when replacing
+    selected text
+  * semaphoreposix.cpp: use custom semaphore implementation
+    based on condition variable
+  * implemented alpha-blending for drawing bitmaps with alpha
+    channel
+
+-------------------------------------------------------------------
 Thu Jan  7 16:31:06 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.9.6

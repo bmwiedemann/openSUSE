@@ -20,7 +20,7 @@
 %define _lver   0.9
 %define sover   0
 Name:           smooth
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        C++ class library for widgets, IO, XML and more
 License:        Artistic-2.0
