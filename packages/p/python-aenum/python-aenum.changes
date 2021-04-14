@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 13 04:55:38 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.0.0:
+  * The more esoteric method of creating Enums have been modified or removed
+  * Member creation has been redone to match Python 3.10's methods.
+  * enum_property() has been renamed to property() (old name still available,
+    but deprecated).
+  * bin() replacement shows negative integers in twos-complement
+  * call __init_subclass__ after members have been added, and in Pythons < 3.6
+  * call __set_name__ in Pythons < 3.6
+  * do not convert/disallow private names
+  * add iteration/len support to NamedConstant
+  * add support to Constant to retrieve members by value
+  * add pickle/deepcopy support to Constant
+  * add support for Constant to use other Constant values
+  * AutoNumber and auto() now work together 
+- Update URL now that bitbucket is dead.
+
+-------------------------------------------------------------------
 Wed Dec 11 11:56:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.2.3:

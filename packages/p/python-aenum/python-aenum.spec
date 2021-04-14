@@ -1,7 +1,7 @@
 #
 # spec file for package python-aenum
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-aenum
-Version:        2.2.3
+Version:        3.0.0
 Release:        0
 Summary:        Advanced Enumerations, NamedTuples, and NamedConstants
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            https://bitbucket.org/stoneleaf/aenum
+URL:            https://github.com/ethanfurman/aenum
 Source:         https://files.pythonhosted.org/packages/source/a/aenum/aenum-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -55,7 +54,6 @@ well as the standard index notation.
 A NamedConstant is a class whose members cannot be rebound; it lacks
 all other Enum capabilities, however; consequently, it can have
 duplicate values.
-
 
 %prep
 %setup -q -n aenum-%{version}

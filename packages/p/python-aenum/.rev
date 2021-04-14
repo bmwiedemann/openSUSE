@@ -33,4 +33,26 @@ https://build.opensuse.org/request/show/612101</comment>
   * Various minor fixes</comment>
     <requestid>755836</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6f4ae18e15cd32a255b495ddd59a1ee7</srcmd5>
+    <version>3.0.0</version>
+    <time>1618387850</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * The more esoteric method of creating Enums have been modified or removed
+  * Member creation has been redone to match Python 3.10's methods.
+  * enum_property() has been renamed to property() (old name still available,
+    but deprecated).
+  * bin() replacement shows negative integers in twos-complement
+  * call __init_subclass__ after members have been added, and in Pythons &lt; 3.6
+  * call __set_name__ in Pythons &lt; 3.6
+  * do not convert/disallow private names
+  * add iteration/len support to NamedConstant
+  * add support to Constant to retrieve members by value
+  * add pickle/deepcopy support to Constant
+  * add support for Constant to use other Constant values
+  * AutoNumber and auto() now work together 
+- Update URL now that bitbucket is dead.</comment>
+    <requestid>884804</requestid>
+  </revision>
 </revisionlist>
