@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Apr 13 07:53:16 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.2.1, changes:
+  * From 2.2:
+  Fixed segfault for cases when primitive descriptor or attributed contain NaN (e6d05ec, dbca1e9, 0326b09, 0326b09)
+  Fixed engine creation failure for GPU subdevices (4c3a114)
+  Fixed long lines clipping in verbose output (70d70a8)
+  Fixed segfault in bfloat16 convolution weight gradient implementation on processors with Intel AMX support (a3a73a3)
+  Fixed performance regression in binary primitive with per_oc broadcast strategy (9ac85d8)
+  Worked around a bug with Microsoft Visual C++ compiler version detection in CMake 3.19 (2f39155)
+  Removed -std=c++11 build flag for DPC++ code to align with SYCL standard (1b026f5)
+  * Changes between 2.1 and 2.2:
+  Performance Optimizations
+    Intel Architecture processors
+      Improved performance of int8 compute functionality for future Intel Xeon Scalable processor (code name Sapphire Rapids). The functionality is disabled by default and should be enabled via CPU dispatcher control.
+      Improved performance of compute functionality for future Intel Core processor with Intel AVX2 and Intel DL Boost instructions support (code name Alder Lake).
+      Improved fp32 inner product forward propagation performance for processors with Intel AVX-512 support.
+      Improved dnnl_gemm performance for cases with n=1 on all supported processors.
+    Intel Graphics products
+      Introduced NHWC format support for activations for int8 primitives.
+    AArch64-based processors
+      Improved performance of fp32 and int8 convolution, and softmax primitives for processors with SVE 512 support.
+      Improved performance of fp32 convolution via Arm Compute Library (ACL).
+      Improved performance of convolution with a combination of sum and relu post-ops via ACL.
+  Functionality
+    Extended eltwise primitive with support for mish and hardswish algorithms.
+    Extended binary primitive with support for comparison operators.
+    Introduced support for post-ops in GPU resampling implementation.
+    Introduced asymmetric quantization support for int8 deconvolution.
+    Introduced binary post-ops support for matmul primitive.
+  Usability
+    Improved presentation of oneDNN primitives in VTune Amplifier.
+    Introduced Linux perf support for AArch64.
+    Introduced support for Fujitsu C++ compiler.
+    Introduced a build time check for minimal supported ACL version. Currently oneDNN requires ACL 21.02 or later.
+    Added support for cuDNN 8.x
+
+-------------------------------------------------------------------
 Wed Feb 17 14:17:47 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2.1

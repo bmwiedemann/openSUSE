@@ -31,7 +31,7 @@
 
 %define libname libdnnl2
 Name:           onednn
-Version:        2.1
+Version:        2.2.1
 Release:        0
 Summary:        Intel(R) Math Kernel Library for Deep Neural Networks
 License:        Apache-2.0
