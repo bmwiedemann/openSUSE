@@ -162,4 +162,19 @@
     <comment></comment>
     <requestid>867912</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c0aff7acbbc139ae4373cb8c016e60dc</srcmd5>
+    <version>2.23</version>
+    <time>1618387873</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.23:
+  Added:
+  * New filter: pretty-xml to indent/pretty-print XML documents
+  * New filter: jq to parse, transform, and extract JSON data
+  * New reporter: prowl
+  Fixed:
+  * Proper multi-line highlighting for wdiff (PR#615)
+  * Fix command-line generation for html2text (PR#619)</comment>
+    <requestid>884942</requestid>
+  </revision>
 </revisionlist>

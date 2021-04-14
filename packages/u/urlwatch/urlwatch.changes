@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 13 12:37:34 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.23:
+  Added:
+  * New filter: pretty-xml to indent/pretty-print XML documents
+  * New filter: jq to parse, transform, and extract JSON data
+  * New reporter: prowl
+  Fixed:
+  * Proper multi-line highlighting for wdiff (PR#615)
+  * Fix command-line generation for html2text (PR#619)
+
+-------------------------------------------------------------------
 Mon Jan  4 10:59:57 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.22:
