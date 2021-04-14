@@ -1,0 +1,180 @@
+-------------------------------------------------------------------
+Tue Apr 13 19:57:09 UTC 2021 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 4.4.9
+  * Add the minimal step on volume tap up
+  * Fix crash in m4a parser caused by an invalid scale
+  * Add filter by composer in "This device"
+  * Includes improvements for the Pulse Streamer. The playback lag
+    should be as short as possible, but it always depends on how
+    your Sonos device handles its internal buffer.
+
+-------------------------------------------------------------------
+Sun Aug 16 23:41:51 UTC 2020 - Adam Stephens <adam@valkor.net>
+
+- Update to 4.4.2
+- Update noson build dependency to 2.3.1
+
+-------------------------------------------------------------------
+Fri Jun 26 11:50:25 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to 4.4.1
+  * Add a new setting to configure an additional music location
+    other than the default XDG
+
+-------------------------------------------------------------------
+Tue Mar 17 14:52:25 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libqt5-qtgraphicaleffects and libqt5-qtquickcontrols2
+  dependencies: those Qt5 extensions are required to start the
+  application.
+- Drop update-alternatives dependencies: u-a is not used at all
+  here.
+
+-------------------------------------------------------------------
+Tue Jan 28 16:37:45 UTC 2020 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 4.2.6
+  * Fix set volume on moved to handle wheel mouse on desktop
+  * Fix resync track position after sleeping for the Sailfish app
+  *Minor graphical improvements
+
+-------------------------------------------------------------------
+Sun Jan 19 10:47:49 UTC 2020 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 4.2.5
+  * Fix on share index finished the library could not be reloaded
+  * Minor graphical improvements for the Sailfish app
+
+-------------------------------------------------------------------
+Thu Jan 16 20:43:15 UTC 2020 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 4.2.4
+  * Minor fixes
+  * Update translations for 4.2.0
+  * All controls are asynchonous
+  * Fix for playlist editing (drag/move and delete)
+  * Preview release for SailfishOS 3.2 using native framework
+    Silica 1.0
+  * GUI improvements and cleanup
+  * Better dragging of volumes (multi zones)
+
+-------------------------------------------------------------------
+Sun Dec 15 21:01:59 UTC 2019 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 4.1.0
+  * Allow to seek position for local file (also it fixes the
+    pause/play for local files)
+  * Allow to stream local media m4a
+  * Improves the GUI performances
+  * Minor fixes
+- Add %license and %doc to spec file
+
+-------------------------------------------------------------------
+Sun Dec 15 09:46:52 UTC 2019 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 4.0.2
+  * Fix cover url for local media files
+  * Minor fixes
+  * Review the music row design
+  * Fix performance issue using MPRIS2 (The service bumps the app
+    for the current position)
+  * Sync upstream libnoson (2.0.0)
+  * Fix double path in the service stack page
+  * Supports the MPRIS2 interface for player
+  * Allow to bypass the SSDP discovery by passing the url of a
+    SONOS device
+  * Fix missing search categories for the services without
+    presentation map
+  * Fix a bug in service registration (PocketCasts and probably
+    few others)
+  * Enable loudness setting
+  * Workaround Spotify BUG using locale en_GB
+  * Support for output fixed
+  * Minor fixed and improvements
+  * Fix for ID3 parser
+  * Minor fixes
+  * Improve the ogg parser
+  * Update translations for nl
+  * Minor improvements
+  * Add support for media file with the format OGG/Vorbis
+  * Fix language range to be compliant with RFC-4647 (Issue with
+    Spotify services)
+  * Fix SSL handshake on old android platforms
+  * Show the logo of the thumbnails providers to comply with their
+    guidelines
+  * Fetch thumbnails from DEEZER by default
+  * Improvements: libnoson 1.13.2
+  * Use multicast UDP packet as fallback when discovering
+  * Fix to work around multicast filtering when discovering devices
+  * Minor fixes
+
+-------------------------------------------------------------------
+Sat Apr  6 07:00:16 UTC 2019 - bosim@opensuse.org
+
+- Pulseaudio support
+
+-------------------------------------------------------------------
+Sat Apr  6 06:24:29 UTC 2019 - bosim@opensuse.org
+
+- Update to 3.11.4
+  * Fix Sonos API change in build 49263270 (10.1)
+  * Improve the fluency of the volume control for a zone.
+  * Use smaller step for the volume control: The wheel mouse still
+    works.
+  * Play a service item by clicking a button "play" instead the
+    item itself.
+  * Improve threading of the media scanner
+  * Includes a media scanner for audio files. Types supported are
+    FLAC, MP3 and AAC.
+  * It streams local audio files.
+  * It streams the pulseaudio output
+
+-------------------------------------------------------------------
+Mon Jan 21 17:14:29 UTC 2019 - bosim@opensuse.org
+
+- Update to 3.9.7
+  * Port away from deprecated API
+  * Fix getting initial sound settings
+  * Minor UI fixes
+  * Show more in song info
+  * Using customized footer in dialogs
+  * Enable wheel mouse to slide volume, and make it smoothest
+  * Improve zone connection on topology changed
+  * Fix SNI issue with OpenSSL
+  * Add support for language Danish
+  * Fix origin for icon rotation
+  * Show overlay during update of share index
+  * Fix keyboard input methods for Android 7.0 (Nougat) and upper
+  * Disable keyboard input when search field is hidden
+
+-------------------------------------------------------------------
+Wed Aug  8 14:57:07 UTC 2018 - jengelh@inai.de
+
+- Try improving description grammar.
+
+-------------------------------------------------------------------
+Fri Aug  3 19:01:55 UTC 2018 - bosim@opensuse.org
+
+- Update to 3.7.0
+- Removed _service file and added source URL
+- Use cmake-directories to avoid static linking of libnoson
+
+-------------------------------------------------------------------
+Sat Jul 21 07:55:08 UTC 2018 - bosim@opensuse.org
+
+- Updated to 3.6.4
+- Ran spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jul  5 17:47:40 UTC 2018 - bosim@opensuse.org
+
+- Updated to 3.6.3
+- Package now depend on libnoson1
+- Removed patch (fixed upstream)
+
+-------------------------------------------------------------------
+Sat Jun 30 13:09:52 UTC 2018 - bosim@opensuse.org
+
+- Initial package
+
