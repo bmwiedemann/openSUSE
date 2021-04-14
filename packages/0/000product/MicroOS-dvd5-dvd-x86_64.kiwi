@@ -395,6 +395,7 @@
       <repopackage name="libavahi-glib1" arch="x86_64"/>
       <repopackage name="libavcodec58_91" arch="x86_64"/>
       <repopackage name="libavformat58_45" arch="x86_64"/>
+      <repopackage name="libavif10" arch="x86_64"/>
       <repopackage name="libavtp0" arch="x86_64"/>
       <repopackage name="libavutil56_51" arch="x86_64"/>
       <repopackage name="libbasicobjects0" arch="x86_64"/>
@@ -416,6 +417,7 @@
       <repopackage name="libbrotlicommon1"/>
       <repopackage name="libbrotlidec1"/>
       <repopackage name="libbs2b0" arch="x86_64"/>
+      <repopackage name="libbsd0" arch="x86_64"/>
       <repopackage name="libbtrfs0" arch="x86_64"/>
       <repopackage name="libbytesize1" arch="x86_64"/>
       <repopackage name="libbz2-1"/>
@@ -1493,7 +1495,6 @@
       <repopackage name="xmodmap" arch="x86_64"/>
       <repopackage name="xorg-x11-fonts-core" arch="x86_64"/>
       <repopackage name="xorg-x11-server" arch="x86_64"/>
-      <repopackage name="xorg-x11-server-wayland" arch="x86_64"/>
       <repopackage name="xorg-x11-server-Xvfb" arch="x86_64"/>
       <repopackage name="xprop" arch="x86_64"/>
       <repopackage name="xrdb" arch="x86_64"/>
@@ -1501,6 +1502,7 @@
       <repopackage name="xsetroot" arch="x86_64"/>
       <repopackage name="xtables-plugins" arch="x86_64"/>
       <repopackage name="xterm-bin" arch="x86_64"/>
+      <repopackage name="xwayland" arch="x86_64"/>
       <repopackage name="xz"/>
       <repopackage name="yast2-logs" arch="x86_64"/>
       <repopackage name="yelp" arch="x86_64"/>

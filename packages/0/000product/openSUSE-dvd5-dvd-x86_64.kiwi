@@ -695,6 +695,8 @@
       <repopackage name="gnome-dictionary-lang"/>
       <repopackage name="gnome-disk-utility"/>
       <repopackage name="gnome-disk-utility-lang"/>
+      <repopackage name="gnome-documents"/>
+      <repopackage name="gnome-documents-lang"/>
       <repopackage name="gnome-extensions"/>
       <repopackage name="gnome-icon-theme"/>
       <repopackage name="gnome-icon-theme-extras"/>
@@ -719,6 +721,7 @@
       <repopackage name="gnome-music-lang"/>
       <repopackage name="gnome-online-accounts"/>
       <repopackage name="gnome-online-accounts-lang"/>
+      <repopackage name="gnome-online-miners"/>
       <repopackage name="gnome-packagekit"/>
       <repopackage name="gnome-packagekit-lang"/>
       <repopackage name="gnome-photos"/>
@@ -743,6 +746,7 @@
       <repopackage name="gnome-shell-lang"/>
       <repopackage name="gnome-shell-search-provider-bijiben"/>
       <repopackage name="gnome-shell-search-provider-contacts"/>
+      <repopackage name="gnome-shell-search-provider-documents"/>
       <repopackage name="gnome-shell-search-provider-epiphany"/>
       <repopackage name="gnome-shell-search-provider-gnome-calculator"/>
       <repopackage name="gnome-shell-search-provider-gnome-characters"/>
@@ -895,7 +899,7 @@
       <repopackage name="gtk3-metatheme-greybird-geeko"/>
       <repopackage name="gtk3-schema"/>
       <repopackage name="gtk3-tools"/>
-      <repopackage name="gtk4-branding-upstream"/>
+      <repopackage name="gtk4-branding-openSUSE"/>
       <repopackage name="gtk4-lang"/>
       <repopackage name="gtk4-schema"/>
       <repopackage name="gtkiterm"/>
@@ -1058,6 +1062,7 @@
       <repopackage name="jfsutils"/>
       <repopackage name="jhbuild" arch="x86_64"/>
       <repopackage name="jhbuild-lang" arch="x86_64"/>
+      <repopackage name="jhead"/>
       <repopackage name="jmdict"/>
       <repopackage name="joe"/>
       <repopackage name="jq"/>
@@ -1363,6 +1368,7 @@
       <repopackage name="kscreenlocker-lang"/>
       <repopackage name="kservice"/>
       <repopackage name="kservice-lang"/>
+      <repopackage name="ksh"/>
       <repopackage name="kshisen"/>
       <repopackage name="kshisen-lang"/>
       <repopackage name="ksirk"/>
@@ -3192,6 +3198,7 @@
       <repopackage name="libz1"/>
       <repopackage name="libz1-32bit" arch="x86_64"/>
       <repopackage name="libz3-4_8"/>
+      <repopackage name="libzapojit-0_0-0"/>
       <repopackage name="libzbar0"/>
       <repopackage name="libzck1"/>
       <repopackage name="libzebra1"/>
@@ -3263,6 +3270,8 @@
       <repopackage name="malcontent-lang"/>
       <repopackage name="man"/>
       <repopackage name="man-pages"/>
+      <repopackage name="man-pages-cs"/>
+      <repopackage name="man-pages-da"/>
       <repopackage name="man-pages-de"/>
       <repopackage name="man-pages-es"/>
       <repopackage name="man-pages-fr"/>
@@ -3798,6 +3807,7 @@
       <repopackage name="perl-XML-Writer"/>
       <repopackage name="permissions"/>
       <repopackage name="permissions-config"/>
+      <repopackage name="pfscalibration"/>
       <repopackage name="pfstmo"/>
       <repopackage name="pfstools"/>
       <repopackage name="phalanx"/>
@@ -5015,6 +5025,7 @@
       <repopackage name="typelib-1_0-Fwupd-2_0"/>
       <repopackage name="typelib-1_0-Gck-1"/>
       <repopackage name="typelib-1_0-Gcr-3"/>
+      <repopackage name="typelib-1_0-GData-0_0"/>
       <repopackage name="typelib-1_0-GdkPixbuf-2_0"/>
       <repopackage name="typelib-1_0-Gdm-1_0"/>
       <repopackage name="typelib-1_0-Geoclue-2_0"/>
@@ -5080,6 +5091,7 @@
       <repopackage name="typelib-1_0-Wnck-3_0"/>
       <repopackage name="typelib-1_0-XApp-1_0"/>
       <repopackage name="typelib-1_0-Xfconf-0"/>
+      <repopackage name="typelib-1_0-Zpj-0_0"/>
       <repopackage name="ucode-amd"/>
       <repopackage name="ucode-intel"/>
       <repopackage name="udev"/>
@@ -5314,7 +5326,6 @@
       <repopackage name="xorg-x11-server"/>
       <repopackage name="xorg-x11-server-extra"/>
       <repopackage name="xorg-x11-server-sdk" arch="x86_64"/>
-      <repopackage name="xorg-x11-server-wayland"/>
       <repopackage name="xorg-x11-server-Xvfb"/>
       <repopackage name="xorg-x11-Xvnc"/>
       <repopackage name="xorg-x11-Xvnc-module"/>
@@ -5338,6 +5349,7 @@
       <repopackage name="xterm-bin"/>
       <repopackage name="xtermset"/>
       <repopackage name="xtrans" arch="x86_64"/>
+      <repopackage name="xwayland"/>
       <repopackage name="xz"/>
       <repopackage name="xz-lang"/>
       <repopackage name="yakuake"/>
