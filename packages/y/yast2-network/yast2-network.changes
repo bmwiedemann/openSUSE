@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 13 12:32:16 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not crash when checking if an interface is a hotplug one and
+  it is not present (bsc#1184623)
+- 4.4.3
+
+-------------------------------------------------------------------
 Fri Apr  9 11:22:42 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - bsc#1181956
