@@ -23,9 +23,6 @@
 	  <port number='80/tcp'/>
           <port number='443/tcp'/>
 	</expose>
-        <volumes>
-          <volume name="/data"/>
-        </volumes>
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.nginx">
             <label name="org.opencontainers.image.title" value="openSUSE nginx web server container"/>
@@ -49,6 +46,10 @@
   <packages type="bootstrap">
     <package name="nginx"/>
     <package name="bash"/>
+    <package name="ca-certificates"/>
+    <package name="ca-certificates-mozilla"/>
+    <package name="-busybox-findutils"/>
+    <package name="timezone"/>
     <archive name="entrypoint.tar.gz"/>
     <package name="mandoc"/>
     <package name="-busybox-man"/>

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 14 06:23:28 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove unused /data volume
+
+-------------------------------------------------------------------
+Tue Apr 13 21:15:38 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add certificates and timezone database
+
+-------------------------------------------------------------------
+Tue Apr 13 19:46:23 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix cleaning up of /etc/nginx at build time
+
+-------------------------------------------------------------------
+Tue Apr 13 19:02:39 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Split entrypoing.sh in parts and introduce /docker-entrypoint.d
+  following nginx upstream.
+
+-------------------------------------------------------------------
 Fri Jun  5 10:48:12 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Remove "--" from the package list to separate pkgs from
