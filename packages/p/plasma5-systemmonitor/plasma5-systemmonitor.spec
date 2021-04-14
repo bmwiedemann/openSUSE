@@ -19,7 +19,7 @@
 %define kf5_version 5.73.0
 %bcond_without lang
 Name:           plasma5-systemmonitor
-Version:        5.21.3
+Version:        5.21.4
 Release:        0
 Summary:        An application for monitoring system resources
 License:        GPL-3.0-only
