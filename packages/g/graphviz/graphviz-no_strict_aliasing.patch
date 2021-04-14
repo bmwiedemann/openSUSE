@@ -1,9 +1,8 @@
---- .orig/lib/vmalloc/Makefile.am	2019-04-02 14:39:35.873818775 +0200
-+++ lib/vmalloc/Makefile.am	2019-04-02 14:50:07.659001790 +0200
-@@ -9,4 +9,6 @@
- 	vmprofile.c vmregion.c vmsegment.c vmset.c vmstat.c vmstrdup.c \
- 	vmtrace.c vmwalk.c
+--- graphviz-2.46.1/lib/vmalloc/Makefile.am.orig	2021-02-18 17:44:23.990163756 +0100
++++ graphviz-2.46.1/lib/vmalloc/Makefile.am	2021-02-18 17:46:38.615438829 +0100
+@@ -9,4 +9,5 @@
+ 	vmopen.c \
+ 	vmstrdup.c
  
 +libvmalloc_C_la_CFLAGS = -fno-strict-aliasing
-+
- EXTRA_DIST = README vmalloc.vcxproj*
+ EXTRA_DIST = vmalloc.vcxproj*

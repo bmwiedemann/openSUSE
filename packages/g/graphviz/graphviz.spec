@@ -1,7 +1,7 @@
 #
 # spec file for package graphviz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,32 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+
+%if "%{flavor}" == "addons"
+%define psuffix -%{flavor}
+%else
+%define psuffix %{nil}
+%endif
+
 #fixes build failure caused by new .debug files, not sure how to fix correctly
 
 %define mname graphviz
 %define libname libgraphviz6
 # name of the plugin config file that dot creates
 %define config_file config6
-# Build with extras or not, determines pulling additional dependencies
-# and breaks build cycle
-%bcond_with extras
 # Java and ocaml are not in ring1, thus this gets overriden in staging
 %bcond_without java
 %bcond_with    ocaml
+%if "%{flavor}" == "addons"
 # PHP7 requires swig >= 3.0.11, not available on Leap 42.x
 %if 0%{?suse_version} >= 1500
 %define php_version 7
 %else
 %define php_version 5
+%endif
+%define phpconf_dir %{_sysconfdir}/php%{php_version}/conf.d
+%define phpext_dir  %(%{__php_config} --extension-dir)
 %endif
 
 %define ruby_version $(pkg-config --variable=RUBY_API_VERSION %{_libdir}/pkgconfig/ruby-*.pc)
@@ -43,15 +52,16 @@
 %else
 %define sle12 0
 %endif
-Name:           graphviz
-Version:        2.42.3
+%bcond_without python2
+Name:           graphviz%{psuffix}
+Version:        2.46.1
 Release:        0
 Summary:        Graph Visualization Tools
 License:        EPL-1.0
 Group:          Productivity/Graphics/Visualization/Graph
-URL:            http://www.graphviz.org/
-Source:         https://www2.graphviz.org/Packages/stable/portable_source/graphviz-%{version}.tar.gz
-Source2:        graphviz-rpmlintrc
+URL:            https://www.graphviz.org/
+Source0:        https://gitlab.com/graphviz/graphviz/-/archive/2.46.1/graphviz-%{version}.tar.gz
+Source1:        graphviz-rpmlintrc
 #PATCH-FIX-UPSTREAM add flags to also link against libGLU and libGL
 Patch1:         graphviz-smyrna-link_against_glu.patch
 Patch2:         graphviz-fix-pkgIndex.patch
@@ -62,6 +72,8 @@ Patch6:         graphviz-2.20.2-interpreter_names.patch
 #PATCH-FIX-UPSTREAM Don't warn about harmless issues with swig generated code
 Patch7:         graphviz-useless_warnings.patch
 Patch8:         graphviz-no_strict_aliasing.patch
+Patch9:         graphviz-no_php_extra_libs.patch
+Patch10:        graphviz-2.46-fix-shebang.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -69,6 +81,7 @@ BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
+BuildRequires:  groff
 BuildRequires:  guile-devel
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
@@ -80,14 +93,14 @@ BuildRequires:  pkgconfig(gts)
 BuildRequires:  pkgconfig(zlib)
 Requires:       graphviz-plugins-core = %{version}
 Recommends:     graphviz-gd = %{version}
-%if %{with extras}
-BuildRequires:  argon2-devel
+%if "%{flavor}" == "addons"
 BuildRequires:  freeglut-devel
 
+BuildRequires:  ghostscript
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
+BuildRequires:  libwebp-devel
 BuildRequires:  perl
-BuildRequires:  python3-devel
 %if 0%{?suse_version} >= 1500
 BuildRequires:  php7-devel
 BuildRequires:  swig >= 3.0.11
@@ -112,7 +125,10 @@ BuildRequires:  pkgconfig(libglade-2.0)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(pango)
+%if %{with python2}
 BuildRequires:  pkgconfig(python)
+%endif
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(tcl)
 BuildRequires:  pkgconfig(x11)
@@ -124,6 +140,8 @@ BuildRequires:  java-devel >= 1.6.0
 %if %{with ocaml}
 BuildRequires:  ocaml
 %endif
+%else # if "{flavor}" == "addons"
+BuildRequires:  ghostscript_any
 %endif
 
 %description
@@ -231,19 +249,31 @@ Summary:        PHP Extension for Graphviz
 Group:          Productivity/Graphics/Visualization/Graph
 Requires:       graphviz = %{version}
 Requires:       php%{php_version}
+Requires:       php(api) = %{php_core_api}
+Requires:       php(zend-abi) = %{php_zend_api}
 
 %description -n graphviz-php
 The graphviz-php package contains the PHP extension for the graphviz
 tools.
 
-%package -n graphviz-python
+%package -n python2-gv
 Summary:        Python Extension for Graphviz
 Group:          Productivity/Graphics/Visualization/Graph
 Requires:       graphviz = %{version}
-Requires:       python
 
-%description -n graphviz-python
-The graphviz-python package contains the Python extension for the
+%description -n python2-gv
+The package contains the Python extension for the
+graphviz tools.
+
+%package -n python3-gv
+Summary:        Python 3 Extension for Graphviz
+Group:          Productivity/Graphics/Visualization/Graph
+Requires:       graphviz = %{version}
+Provides:       graphviz-python
+Obsoletes:      graphviz-python
+
+%description -n python3-gv
+The package contains the Python extension for the                
 graphviz tools.
 
 %package -n graphviz-ruby
@@ -266,6 +296,18 @@ Requires:       tk
 %description -n graphviz-tcl
 The graphviz-tcl package contains the various tcl packages (extensions)
 for the graphviz tools.
+
+%package -n graphviz-webp
+Summary:        WebP support for graphviz
+Group:          Productivity/Graphics/Visualization/Graph
+Requires:       graphviz = %{version}
+Requires:       graphviz-gnome = %{version}
+Requires:       libwebp7
+
+%description -n graphviz-webp
+The graphviz-webp package contains files needed for the support of WebP images
+
+
 
 %package -n graphviz-doc
 Summary:        Documentation for graphviz
@@ -316,7 +358,9 @@ programs that use the graphviz libraries including man3 pages.
 
 %patch6
 %patch7
-%patch8
+%patch8 -p1
+%patch9
+%patch10 -p1
 
 # pkg-config returns 0 (TRUE) when guile-2.2 is present
 if pkg-config --atleast-version=2.2 guile-2.2; then
@@ -336,7 +380,7 @@ sed -i \
 ./autogen.sh RUBY_VER=%{ruby_version}
 CFLAGS="%{optflags} -ffast-math -fno-strict-aliasing -fno-strict-overflow -fPIC"
 
-%if %{with extras}
+%if "%{flavor}" == "addons"
 
 CFLAGS="$CFLAGS -I/usr/include/ruby-%{ruby_version}.0"
 #seems to be broken? gives -I/usr/lib64/ruby/2.6.0/x86_64-linux-gnu, ruby.h is in /usr/lib64/ruby/2.6.0
@@ -355,7 +399,13 @@ export LDFLAGS="-pie"
       --without-ming \
       --disable-io \
       --without-visio \
-%if %{with extras}
+%if "%{flavor}" == "addons"
+%if %{with python2}
+      --enable-python2 \
+%else
+      --disable-python \
+      --disable-python2 \
+%endif
       --with-x \
       --with-qt \
       --with-smyrna \
@@ -409,7 +459,13 @@ done
 # There are no such binaries distributed by us
 rm -f %{buildroot}%{_mandir}/man1/mingle.1
 
-%if %{with extras}
+%if "%{flavor}" == "addons"
+mkdir -p %{buildroot}/%{phpconf_dir}
+cat > %{buildroot}%{phpconf_dir}/gv.ini <<EOF
+; comment out next line to disable gv extension in php
+extension = gv.so
+EOF
+
 # Fix doc location
 cp -a %{buildroot}%{_datadir}/%{mname}/doc %{buildroot}%{_defaultdocdir}/%{mname}-doc
 %fdupes -s %{buildroot}%{_defaultdocdir}/%{mname}-doc
@@ -476,7 +532,7 @@ fi
 
 %postun -n %{libname} -p /sbin/ldconfig
 
-%if %{with extras}
+%if "%{flavor}" == "addons"
 %files -n graphviz-gvedit
 %license COPYING
 %{_bindir}/gvedit
@@ -518,6 +574,12 @@ fi
 %post -n graphviz-tcl -p /sbin/ldconfig
 %postun -n graphviz-tcl -p /sbin/ldconfig
 
+%post -n graphviz-webp
+%{_bindir}/dot -c
+
+%postun -n graphviz-webp
+%{_bindir}/dot -c 2>/dev/null
+
 %files -n graphviz-guile
 %{_libdir}/graphviz/guile
 %{_mandir}/man3/gv.3guile%{ext_man}
@@ -554,18 +616,23 @@ fi
 %{_mandir}/man3/gv.3perl%{ext_man}
 
 %files -n graphviz-php
-%{_libdir}/php%{php_version}/extensions/gv.so
+%{phpext_dir}/gv.so
 %{_datadir}/php%{php_version}/gv.php
 %{_mandir}/man3/gv.3php%{ext_man}
+%config(noreplace) %{phpconf_dir}/gv.ini
 
-%files -n graphviz-python
+%if %{with python2}
+%files -n python2-gv
 %dir %{_libdir}/graphviz/python2
-%dir %{_libdir}/graphviz/python3
 %{python_sitearch}/_gv.so
 %{python_sitearch}/gv.py
 %{_libdir}/graphviz/python2/_gv.so
 %{_libdir}/graphviz/python2/gv.py
 %{_libdir}/graphviz/python2/libgv_python2.so
+%endif
+
+%files -n python3-gv
+%dir %{_libdir}/graphviz/python3
 %{python3_sitearch}/_gv.so
 %{python3_sitearch}/gv.py
 %{_libdir}/graphviz/python3/_gv.so
@@ -586,6 +653,9 @@ fi
 %{_libdir}/libtclplan*
 %{_datadir}/tcl/%{mname}/pkgIndex.tcl
 %{_mandir}/man3/*.3tcl*
+
+%files -n graphviz-webp
+%{_libdir}/graphviz/libgvplugin_webp.so*
 
 %files -n graphviz-doc
 %docdir %{_defaultdocdir}/%{mname}-doc

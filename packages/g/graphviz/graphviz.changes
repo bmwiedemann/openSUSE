@@ -1,4 +1,168 @@
 -------------------------------------------------------------------
+Thu Apr  8 16:01:30 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
+
+- Buildrequire full ghostscript in the addons package
+  to avoid a conflict betwen ghostcript-mini and ghostscript-devel
+
+-------------------------------------------------------------------
+Tue Mar 16 10:56:53 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
+
+- Replace ghostscript-mini dependency with ghostscript_any
+
+-------------------------------------------------------------------
+Mon Mar  1 13:55:28 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
+
+- Add graphviz-webp package to for webp image support
+
+-------------------------------------------------------------------
+Tue Feb 23 16:10:57 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
+
+- Reenable ghostscript, but require just ghostscript-mini
+
+-------------------------------------------------------------------
+Thu Feb 18 18:04:09 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
+
+- Update to new release 2.46.1 (changes since 2.44.1)
+  * Support for building against Guile 2.2
+  * Portable source is now also offered as a .tar.xz
+  * CentOS/RHEL 6 is no longer supported
+  * Vestiges of Qt4 support have been removed
+  * C++11 support is now required of the C++ compiler used to build Graphviz
+  * C99 support is now required of the C compiler used to build Graphviz
+  * Question about userout() function in agerror.c #1924
+  * The minimum version of Python required to run the test suite is 3.6
+  * memory leak in label construction
+  * gvedit compilation errors out, but works if manually compiled with qt5 #1862
+  * incorrect HTML BR attribute parsing code #1913
+  * broken overflow checks in RectArea #1906
+  * various memory leaks !1699
+  * Fix bad free in lefty !1709
+  * typo in pathcross #1926
+  * Out-of-bounds write caused by incorrect error handling of malloc in genUserdata #1928
+  * Offer .tar.xz files too #454
+  * Header file graphviz_version.h has no include guards #1929
+  * regression: newlines embedded in quoted labels / node names are not preserved in 2.46.0 #1931
+  * Properly fill graphviz_version.h !1706
+  * Cgraph's agxbuf API gained a new function agxbdisown(), for dissociating
+  * backing memory from the managed buffer
+  * Build system support for the Elbrus 2000 CPU, thanks to Michael Shigorin
+  * Cgraph's agheap() API has been removed
+  * Autotools build system support for eFence has been removed
+  * Building Graphviz with ICC defaults to -O2 instead of -O0
+  * Build system work arounds for GCC 3 have been removed
+  * Incomplete support for running the test suite under CMake has been removed
+  * Portable source tarballs now use the “ustar” POSIX format
+  * Minimum version of Flex required to build Graphviz is now 2.5.2
+  * Minimum version of Bison required to build Graphviz is now 3.0
+  * Minimum version of CMake required to build Graphviz using CMake is now 3.1
+  * gvpr: line numbers in gvpr errors/warnings are incorrect #1594
+  * URL typo in patchwork man page
+  * Escaped backslashes are not correctly handled when producing xdot with dot #165
+  * heap-over-flow(off-by-null) in lib/common/shapes.c #1700
+  * Windows MSBuild executables have the wrong version #1745
+  * Cast Overflow at pango_textlayout #1314
+  * x11 back end segfaults if display is unavailable #1776
+  * typo in cmd/gvpr/lib/clustg #1781
+  * Segfault in dot #1783
+  * Incorrect 'Arrow type "s" unknown' error #1444
+  * segfault on reading 0x10 #1724
+  * Null-dereference READ (144736912) #1676
+  * "Warning! PATH too long installer unable to modify PATH!" using CMake Windows installer and PATH length > 1024 #1770
+  * gvedit -? gives "option - unrecognized - ignored" instead of showing usage #1813
+  * lefty is not built for Windows (fixed for MSBuild builds only) #1818
+  * a failure to detect OpenGL glGenTextures() errors has been corrected
+  * sfio does compile time benchmarknig #1422
+  * iffe "lib" check always succeeds when compiler optimises #1521
+  * syntax error near text who is not present #1411
+  * Explicitly links with libstdc++; should allow libc++ if appropriate #163
+  * A macOS file that was erroneously excluded from portable source tarballs has
+  * been restored
+  * Add option -? for usage to diffimg
+  * Add option -? for usage to dotty
+  * Add option -? for usage to lneato
+  * Add option -? for usage to vimdot
+  * Fix smyrna -? to actually print usage instead of error
+  * Fix edgepaint -? to actually print usage instead of error
+  * Remove '"' from usage text in non-Windows version of dotty
+  * Correct misspelled 'smyrna' in usage
+  * Fix edgepaint -o option
+  * Correct shebang of gvmap.sh to use ksh
+  * Fix gvmap.sh -? option to exit with zero exit status
+  * Graphviz doesn't build on MacOS with the latest libc++ #1785
+  * make fails if ps2pdf is not installed (using autotools) #1763
+  * multiple graphs to file output causes a segfault #1845
+  * lefty PTY functionality relies on file descriptor implementation details #1823
+  * buffer overflow in fdpgen
+  * Crashes by VRML output when current directory is not writable #793
+  * Segmentation fault when newrank=true #1221
+  * sfdp craches #236
+  * fdp segmentation fault with GK=0 #1290
+  * fdp crash #1865
+  * Graphviz always crash with this simple dot file #167
+  * Seg fault in dot #1771
+  * gml2gv doesn't handle some attributes correctly #1869
+  * Add missing circo, fdp, neato, osage, patchwork, sfdp & twopi tools to Windows builds (copies of dot)
+  * Add gv2gml tool to CMake (copy of gml2gv on Windows, symlink to gml2gv otherwise)
+  * Regression: fdp generates internal names in the output #1876
+  * Regression: fdp assertion error on cluster in edge #1877
+  * Regression in id / &lt;title&gt; in svg for twopi #1907
+- graphviz-2.46-fix-shebang.patch added to make rpmlint happy
+- graphviz-no_strict_aliasing.patch changed to be applicable to current files
+- configure without ghostscript to break new build cycle
+- Update source URLs
+
+-------------------------------------------------------------------
+Thu Dec 31 16:07:29 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Use _multibuild to build graphviz and graphviz-addons in a single
+  development project
+  - graphviz-addons.changes
+  - graphviz-addons.spec
+
+-------------------------------------------------------------------
+Thu Dec 31 14:30:11 UTC 2020 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to new release 2.44.1 (changes since 2.42.3)
+  * applied RH patches (from graphviz-2.42.2-8.fc32.src.rpm)
+  * some allocation failures that could previously allow memory
+    corruption now exit
+  * lab_gamut.3.pdf is no longer included in release archives
+  * Fixed Neato's hier mode is broken since v2.44.0  
+  * Fixed segmentation fault (core dumped)
+  * New SGD mode in neato
+  * Add pkg-config files
+  * tred: add feature to output removed edges to stderr upon request
+  * Workaround: avoid creating a virtual edge loop.
+  * Add riscv64 to host_cpu configure.ac
+  * lib/cgraph: include empty malloc.h from subdir include
+  * lib/gvpr: compile mkdefs with $(HOSTCC) rather than $(CC) 
+  * lib/vpsc: rename bcopy->b_copy
+  * Fixed the NativeCodeAnalysis task failed unexpectedly.
+  * Include all test files in distro
+  * host_cpu add mips64 platform
+  * Correct description of 'port' syntax in manual
+  * svg output displays TITLE of %3 if graph had no name
+  * XML errors in generated SVG when URL attribute contains 
+    ampersand (&)
+  * Test files missing from source distributions
+  * SVG error for "g.transform.scale " in graphviz version 2.43
+- BuildRequires for ghostscript and groff (generate cdt documentation)
+- Extension graphviz-php changes:
+  * Require php(api) and php(zend-abi) to guarantee ABI compatibility
+  * Don't pull in extra libraries from PHP
+    + graphviz-no_php_extra_libs.patch
+  * Remove argon2-devel from list of dependencies
+  * Automatically enable extension when installed by providing
+    /etc/php{5,7}/conf.d/gv.ini
+
+-------------------------------------------------------------------
+Tue Mar 31 13:07:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Rename python*-graphviz to python*-gv, there is also normal
+  pypi graphviz package and we clash otherwise and override
+  each other
+
+-------------------------------------------------------------------
 Fri Mar 27 20:28:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add also configure option to not build py2 if the python2

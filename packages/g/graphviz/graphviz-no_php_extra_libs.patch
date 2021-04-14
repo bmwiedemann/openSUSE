@@ -1,0 +1,11 @@
+--- configure.ac	2019-07-13 05:14:04.000000000 +0200
++++ configure.ac	2020-12-31 13:46:52.374560516 +0100
+@@ -1116,7 +1116,7 @@ else
+           PHP_INCLUDES="`$PHPCONFIG --includes`"
+           PHP_INSTALL_DIR="`$PHPCONFIG --extension-dir`"
+           PHP_INSTALL_DATADIR="/usr/share/php"
+-          PHP_LIBS="`$PHPCONFIG --ldflags` `$PHPCONFIG --libs`"
++          PHP_LIBS="`$PHPCONFIG --ldflags`"
+           save_CPPFLAGS=$CPPFLAGS
+           CPPFLAGS="$CPPFLAGS $PHP_INCLUDES"
+           AC_CHECK_HEADER(php.h,,[
