@@ -920,4 +920,12 @@ Fri Sep 26 09:09:31 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.21.3</comment>
     <requestid>879622</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>2f181ae488995a48c57fe3835a4949c8</srcmd5>
+    <version>5.21.4</version>
+    <time>1618387802</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 883384 from Vogtinator)</comment>
+    <requestid>883431</requestid>
+  </revision>
 </revisionlist>
