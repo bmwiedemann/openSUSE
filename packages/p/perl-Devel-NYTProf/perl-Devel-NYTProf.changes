@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr  7 03:06:20 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.07
+   see /usr/share/doc/packages/perl-Devel-NYTProf/Changes
+
+  =head2 Changes in Devel::NYTProf 6.07 - 6th April 2020
+    Focus is to enable test suite to pass with perl-5.33.3 and higher.  (Changes
+      in blead required changes in expectations set in test data files.)
+    Correction to MANIFEST
+      thanks to mattlaw. #142
+    POD improvements
+      thanks to tomhukins. #129
+    Makefile.PL modernizations
+      thanks to karenetheridge. #126
+    .gitignore corrections
+      thanks to jkeenan. #146
+    Adapt tests to work with 5.33 and higher
+      thanks to jkeenan. #147
+
+-------------------------------------------------------------------
 Sun Jun 10 05:19:51 UTC 2018 - coolo@suse.com
 
 - updated to 6.06
