@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 12 03:09:20 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.008001
+   see /usr/share/doc/packages/perl-Net-Whois-RIPE/Changes
+
+  2.008001    2021-04-10
+              - Update to catch up with multiple RIPE database modifications (1.99):
+              - Slight update in README files
+
+-------------------------------------------------------------------
 Fri Feb  7 03:14:07 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 2.007004
