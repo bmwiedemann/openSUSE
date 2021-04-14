@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 31 03:07:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.2015
+   see /usr/share/doc/packages/perl-Moose/Changes
+
+  2.2015   2021-03-31
+    [TESTS]
+    - a test has been rewritten so as to remove IO::String from the prerequisite
+      list (#179, thanks Ricardo Signes!)
+    [OTHER]
+    - optional prereq on List::SomeUtils has been replaced with List::Util 1.56.
+
+-------------------------------------------------------------------
 Sat Dec 19 03:07:18 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.2014
