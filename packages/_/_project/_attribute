@@ -130,12 +130,12 @@
   boo#1180317: '20210103'
   boo#1180358: '20210412'
   boo#1180740: '20210115'
-  boo#1180754: '20210412'
+  boo#1180754: '20210414'
   boo#1180853: '20210111'
   boo#1181038: '20210223'
   boo#1181497: '20210127'
   boo#1182233: '20210302'
-  boo#1182240: '20210412'
+  boo#1182240: '20210414'
   boo#1182247: '20210318'
   boo#1182507: '20210222'
   boo#1182544: '20210311'
@@ -143,14 +143,14 @@
   boo#1182894: '20210308'
   boo#1182961: '20210412'
   boo#1183082: '20210412'
-  boo#1183454: '20210412'
+  boo#1183454: '20210414'
   boo#1183461: '20210412'
   boo#1183521: '20210329'
   boo#1183786: '20210412'
   boo#1184060: '20210412'
   boo#1184162: '20210412'
   boo#1184552: '20210412'
-  boo#1184610: '20210412'
+  boo#1184610: '20210414'
   boo#1184674: '20210412'
   bsc#1158994: '20200323'
   bsc#1159185: '20200103'
@@ -316,7 +316,7 @@
   poo#89984: '20210311'
   poo#89999: '20210412'
   poo#90002: '20210412'
-  poo#90374: '20210412'
+  poo#90374: '20210414'
   poo#90411: '20210412'
   poo#90497: '20210412'
   poo#90513: '20210412'
@@ -470,8 +470,6 @@ products:
     - x86_64
   - opensuse-hugo-image:
     - x86_64
-  - opensuse-ignition-config-transpiler-image:
-    - x86_64
   - opensuse-mariadb-client-image:
     - x86_64
   - opensuse-mariadb-image:
@@ -543,6 +541,8 @@ products:
     - x86_64
   - samba-image:
     - i586
+    - x86_64
+  - virt-api-container:
     - x86_64
   ftp:
   - 000product:openSUSE-ftp-ftp-i586_x86_64
@@ -648,10 +648,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20210412'
+    <value>failed: '20210414'
 published: '20210408'
 publishing: '20210408'
-testing: '20210412'
+testing: '20210414'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">

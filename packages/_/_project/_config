@@ -925,7 +925,7 @@ Prefer: -mingw64-headers-dummy-pthread -mingw32-headers-dummy-pthread
 
 # Below list still needs to be reviewed
 
-Prefer: xorg-x11-Xvnc:icewm
+Prefer: xorg-x11-Xvnc:icewm xorg-x11-server-wayland
 Prefer: cracklib-dict-small
 Prefer: libstdc++6 libgcc_s1 libquadmath0
 Prefer: libstdc++6-32bit libstdc++6-64bit
