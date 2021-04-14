@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 10 22:58:27 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.0.4:
+  * fix no sun audio crash on startup
+  * fix huge fonts on JDK-13 Linux/GTKTheme hi-res screens
+  * fix crash on no row selected in keyboard shortcut screen
+
+-------------------------------------------------------------------
 Tue Jun 23 17:51:10 UTC 2015 - nemysis@gmx.ch
 
 - license update: GPL-3.0+ No indication that this is GPL-3.0 (only)
