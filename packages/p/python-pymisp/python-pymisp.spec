@@ -18,9 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define misp_objects_revision 2b1c3532dccad651f960ff71defdbc422c40ef0c
+%define misp_objects_revision 067ae494983cd8dc3d8549e64166cd0d4faeab4f
 Name:           python-pymisp
-Version:        2.4.138
+Version:        2.4.141.1
 Release:        0
 Summary:        Python API for MISP
 License:        BSD-2-Clause
@@ -41,8 +41,8 @@ Requires:       python-jsonschema
 Requires:       python-oletools
 Requires:       python-python-dateutil
 Requires:       python-requests
-Recommends:     python-extract-msg >= 0.28.0
 Recommends:     %{name}-doc
+Recommends:     python-extract-msg >= 0.28.0
 Recommends:     python-magic
 Recommends:     python-reportlab
 Suggests:       python-pydeep

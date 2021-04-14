@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Tue Apr  6 20:54:42 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.4.141.1:
+ - Changes
+   - Re-bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+ - Other
+   - Fix bump version, deps, templates. [Raphaël Vinot]
+   - Update README.md. [Raphaël Vinot]
+- update to version 2.4.141:
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Get_uuid_or_id_from_abstract_misp accepts dict. [Raphaël Vinot]
+   - Remove references to ExpandedPyMISP. [Raphaël Vinot]
+     Fix #721
+   - Follow best practices and remove the logging handler. [Raphaël Vinot]
+   - Strip NULL string from value. [Raphaël Vinot]
+     https://github.com/MISP/PyMISP/issues/678
+   - Bump deps. [Raphaël Vinot]
+   - Raise exception on missing template in CSVLoader. [Raphaël Vinot]
+   - Bump templates. [Raphaël Vinot]
+   - Re-bump objects. [Raphaël Vinot]
+   - Bump object templates. [Raphaël Vinot]
+   - Add test case, fix mypy. [Raphaël Vinot]
+   - Take simple_value as value in MISPObject.add_attribute. [Raphaël
+     Vinot]
+ - Fix
+   - Use get_uuid_or_id_from_abstract_misp in tag methods. [Raphaël Vinot]
+     Fix #725
+   - Skip nameless sections in ELF. [Raphaël Vinot]
+   - Make reportlab tests optional if missing dep. [Raphaël Vinot]
+   - Enable taxonomy failed if global pythonify is on. [Raphaël Vinot]
+   - Properly pass content-type. [Raphaël Vinot]
+   - Re-enable support for uploading STIX 1 documents. [Raphaël Vinot]
+     Fix #711
+- update to version 2.4.140:
+ - New
+   - Soft delete object in MISPEvent. [Raphaël Vinot]
+     Fix #706
+   - Add in ability to add a new cluster relation. [Tom King]
+   - MISP Galaxy 2.0 capability. [Tom King]
+   - Soft delete object in MISPEvent. [Raphaël Vinot]
+     Fix #706
+ - Changes
+   - Bump changelog. [Raphaël Vinot]
+   - Bump version. [Raphaël Vinot]
+   - Bump object templates. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - [describetypes] updated. [Alexandre Dulaunoy]
+   - Bump objects templates. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump tests for galaxy cluster. [Raphaël Vinot]
+   - Improve Pydoc on search method's timestamp parameter. [Raphaël Vinot]
+     Fix #708
+   - Bump poetry file. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - [data] describeTypes updated. [Alexandre Dulaunoy]
+   - Add deprecation warning for Python < 3.8. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Don't parse the meta key into cluster elements on a MISPEvent, but
+     allow users to manually perform this action. [Tom King]
+   - Add in nosetests for MISP Galaxy functions, check default key as a
+     dict attribute not MISPAbstract attribute. [Tom King]
+   - Add in more Galaxy 2.0 functions and code cleanup. [Tom King]
+   - Add in add_cluster function and ability to search clusters within a
+     galaxy. [Tom King]
+   - Remove legacy stix converter. [Raphaël Vinot]
+   - Improve Pydoc on search method's timestamp parameter. [Raphaël Vinot]
+     Fix #708
+   - Bump poetry file. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - [data] describeTypes updated. [Alexandre Dulaunoy]
+   - Add deprecation warning for Python < 3.8. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+   - Bump deps. [Raphaël Vinot]
+ - Fix
+   - Typo in tests. [Raphaël Vinot]
+   - Make mypy happy in python 3.6 and 3.7. [Raphaël Vinot]
+   - Cosmetic changes, fix mypy. [Raphaël Vinot]
+   - Support text search again. [Raphaël Vinot]
+     Fix #705
+   - Do not add the serial-number twice. [Raphaël Vinot]
+   - Skip PE section if name is none AND size is 0. [Raphaël Vinot]
+   - Urllib3.__version__ may not have a patch number. [Raphaël Vinot]
+     fix https://github.com/MISP/PyMISP/issues/698
+   - Fix mispevent edit test by including default and distribution keys on
+     a GalaxyCluster. [Tom King]
+   - Support text search again. [Raphaël Vinot]
+     Fix #705
+   - Do not add the serial-number twice. [Raphaël Vinot]
+   - Skip PE section if name is none AND size is 0. [Raphaël Vinot]
+   - Urllib3.__version__ may not have a patch number. [Raphaël Vinot]
+     fix https://github.com/MISP/PyMISP/issues/698
+ - Other
+   - Removed unused import. [Nick]
+   - Supress ssl warnings. [Nick]
+   - Re-added error checking for defaults. [Nick]
+   - Deleted all references to org as it's unneeded. [Nick]
+   - Re-added brackets. [Nick]
+   - Multiple updates to proofpoint example. [Nick]
+     - Added additionally necessary keys to keys.py.example
+     - Added error check for unset keys
+     - Used built-in HTTP Basic Auth for requests instead of manually-created header
+     - Removed setting of orgc as that's pulled from the MISP key being used
+     -
+   - Removed cast of str to str. [Nick]
+   - Added check for invalid creds. [Nick]
+     Without the added check, the script will error out on line 29 since the key doesn't exist in the dict.  This at least gives a reason.
+   - Removed unused import. [Nick]
+   - Supress ssl warnings. [Nick]
+   - Re-added error checking for defaults. [Nick]
+   - Deleted all references to org as it's unneeded. [Nick]
+   - Re-added brackets. [Nick]
+   - Multiple updates to proofpoint example. [Nick]
+     - Added additionally necessary keys to keys.py.example
+     - Added error check for unset keys
+     - Used built-in HTTP Basic Auth for requests instead of manually-created header
+     - Removed setting of orgc as that's pulled from the MISP key being used
+     -
+   - Removed cast of str to str. [Nick]
+   - Added check for invalid creds. [Nick]
+     Without the added check, the script will error out on line 29 since the key doesn't exist in the dict.  This at least gives a reason.
+
+-------------------------------------------------------------------
 Sat Feb 20 14:20:55 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Add a rpmlintrc file to ignore warning about an empty file in the examples of the documentation
