@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 19 14:47:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to git master / 3.34.0+26:
+  + Updated translations.
+- Add 35.patch: Port to Tracker 3.
+- Replace pkgconfig(tracker-sparql-2.0) with
+  pkgconfig(tracker-sparql-3.0).
+- Drop pkgconfig(tracker-control-3.0) BuildRequires: no longer
+  needed.
+
+-------------------------------------------------------------------
 Tue Nov 17 16:46:06 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Remove BuildRequires pkgconfig(libgepub-0.6), no longer needed

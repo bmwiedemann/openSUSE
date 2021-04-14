@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-documents
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,14 @@
 %global __requires_exclude typelib\\(LOKDocView\\)
 %endif
 Name:           gnome-documents
-Version:        3.34.0
+Version:        3.34.0+26
 Release:        0
 Summary:        Document Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Documents
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-documents/-/merge_requests/35.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -47,8 +48,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.31.6
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.15
 BuildRequires:  pkgconfig(libgdata) >= 0.13.3
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.41.3
-BuildRequires:  pkgconfig(tracker-control-2.0) >= 0.17.3
-BuildRequires:  pkgconfig(tracker-sparql-2.0) >= 0.17.3
+BuildRequires:  pkgconfig(tracker-sparql-3.0) >= 0.17.3
 BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.6.0
 BuildRequires:  pkgconfig(zapojit-0.0) >= 0.0.2
 # This is a gjs application
