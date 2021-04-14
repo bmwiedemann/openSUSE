@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           polkit-kde-agent-5
-Version:        5.21.3
+Version:        5.21.4
 Release:        0
 Summary:        PolicyKit authentication agent for KDE
 License:        GPL-2.0-only AND LGPL-2.1-or-later
