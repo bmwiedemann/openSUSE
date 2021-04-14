@@ -1,7 +1,7 @@
 #
 # spec file for package pfstools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Patch3:         pfstools-stdlib.patch
 Patch4:         pfstools-1.8.1-fix-return-in-nonvoid.patch
 # PATCH-FIX-OPENSUSE - https://sourceforge.net/p/pfstools/bugs/45/
 Patch5:         pfstools-fix-libpfs-linkage.patch
+# PATCH-FIX-OPENSUSE - https://sourceforge.net/p/pfstools/bugs/49/
+Patch6:         pfstools-Fix-build-with-Octave-6.patch
 # patch derived from https://github.com/pld-linux/pfstools/commit/67bd2304e516545f2b203f975ac5dd30d2b479b3
 # I guess it could go upstream as is; sent email to mantiuk at gmail
 Patch7:         pfstools-ImageMagick7.patch
