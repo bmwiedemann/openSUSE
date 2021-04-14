@@ -1,7 +1,7 @@
 #
 # spec file for package python-bleach
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,21 +19,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bleach
-Version:        3.1.5
+Version:        3.3.0
 Release:        0
 Summary:        A whitelist-based HTML-sanitizing tool
 License:        Apache-2.0
 URL:            https://github.com/jsocol/bleach
 Source:         https://files.pythonhosted.org/packages/source/b/bleach/bleach-%{version}.tar.gz
 Patch0:         de-vendor.patch
-BuildRequires:  %{python_module html5lib >= 1.0.0}
+BuildRequires:  %{python_module html5lib >= 1.1}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-html5lib >= 1.0.0
+Requires:       python-html5lib >= 1.1
 Requires:       python-packaging
 Requires:       python-six >= 1.9
 BuildArch:      noarch

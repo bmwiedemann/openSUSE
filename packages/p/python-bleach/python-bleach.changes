@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 13 09:20:21 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.3.0:
+  * Backwards incompatible change: clean escapes HTML comments
+    even when strip_comments=False
+  * Fix CVE-2021-23980: mutation XSS on bleach.clean with specific
+    combinations of allowed tags (boo#1184547)
+- includes changes from 3.2.3:
+  * fix clean and linkify raising ValueErrors for certain inputs
+- includes changes from 3.2.2:
+  * fix linkify raising an IndexError on certain inputs
+- includes changes from 3.2.1:
+  * change linkifier to add rel="nofollow" as documented
+- includes changes from 3.2.0:
+  * html5lib dependency increased to 1.1.0
+
+-------------------------------------------------------------------
 Mon Aug 31 09:15:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip tests that fail with html5lib 1.1 ref the upstream ticket

@@ -122,4 +122,12 @@
   * replace missing ``setuptools`` dependency with ``packaging``. Thank you Benjamin Peterson.</comment>
     <requestid>830713</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>768ab1012d81730dc6e3b30d2977e429</srcmd5>
+    <version>3.3.0</version>
+    <time>1618398310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884911</requestid>
+  </revision>
 </revisionlist>
