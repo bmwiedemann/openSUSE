@@ -47,4 +47,17 @@ This will obsolete current packages man-pages-fr &amp; man-pages-fr-extra (to be
 - Cosmetic changes in comments and in the distribution_id macro.</comment>
     <requestid>878082</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7f450f0339f063dfffb9661c905d1268</srcmd5>
+    <version>4.9.3+406</version>
+    <time>1618387887</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.9.3+406:
+  * Add support for openSUSE Leap 15.3.
+  * Enable Czech and Danish.
+  * Updated many translations.
+- Update distribution_id macro to handle openSUSE Leap 15.3.
+</comment>
+    <requestid>885172</requestid>
+  </revision>
 </revisionlist>

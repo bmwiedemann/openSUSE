@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 13 21:04:22 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 4.9.3+406:
+  * Add support for openSUSE Leap 15.3.
+  * Enable Czech and Danish.
+  * Updated many translations.
+- Update distribution_id macro to handle openSUSE Leap 15.3.
+
+-------------------------------------------------------------------
 Tue Mar  9 21:56:36 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 4.9.3:

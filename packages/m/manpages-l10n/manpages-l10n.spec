@@ -1,6 +1,7 @@
 #
 # spec file for package manpages-l10n
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2021 Antoine Belvire <antoine.belvire@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,13 +17,17 @@
 #
 
 
+%define parent_tag 4.9.3
+%define tag_offset +406
+%define revision 90d1e9dc2c70df3f60a987d8366030728f4b6352
+
 Name:           manpages-l10n
-Version:        4.9.3
+Version:        %{parent_tag}%{?tag_offset}
 Release:        0
 Summary:        Translation of man pages
 License:        GPL-3.0-only
 URL:            https://manpages-l10n-team.pages.debian.net/manpages-l10n
-Source0:        https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+Source0:        https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/archive/%{revision}/%{name}-v%{version}.tar.bz2
 Source1:        macros.%{name}
 BuildRequires:  po4a
 BuildArch:      noarch
@@ -31,6 +36,8 @@ BuildArch:      noarch
 %description
 This package provides translations of man pages in multiple languages.
 
+%man_lang_package cs Czech
+%man_lang_package da Danish
 %man_lang_package de German
 %man_lang_package es Spanish
 %man_lang_package it Italian
@@ -45,7 +52,7 @@ This package provides translations of man pages in multiple languages.
 %man_lang_package fr French -o %{quote:man-pages-fr-extra <= 20151231}
 
 %prep
-%setup -q -n %{name}-v%{version}
+%setup -q -n %{name}-%{revision}
 
 %build
 %configure --enable-distribution=%{distribution_id}
