@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Thu Apr  8 08:51:05 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add LICENSE file
+
+-------------------------------------------------------------------
+Tue Apr  6 16:33:30 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Change TAGPREFIX 'opensuse/tumbleweed' to 'kubevirt'
+
+-------------------------------------------------------------------
+Tue Mar 16 08:33:01 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add meta info for virt-containers
+
+-------------------------------------------------------------------
+Mon Mar 15 06:27:20 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Initial commit
