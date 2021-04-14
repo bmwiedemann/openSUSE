@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 25 10:40:34 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix build with Octave 6 https://sourceforge.net/p/pfstools/bugs/49/
+  + pfstools-Fix-build-with-Octave-6.patch
+
+-------------------------------------------------------------------
 Wed Mar 11 09:32:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Require freeglut-devel instead of pkgconfig(freeglut).

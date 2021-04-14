@@ -300,4 +300,12 @@
     <comment></comment>
     <requestid>786115</requestid>
   </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>55bb4586e4853e2650d190817b4de56d</srcmd5>
+    <version>2.1.0</version>
+    <time>1618398316</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build in Factory (forwarded request 884907 from michals)</comment>
+    <requestid>884955</requestid>
+  </revision>
 </revisionlist>
