@@ -1056,4 +1056,12 @@ This should work now, I hope... ;-) (forwarded request 570364 from wolfi323)</co
     <comment>Plasma 5.21.3</comment>
     <requestid>879645</requestid>
   </revision>
+  <revision rev="126" vrev="35">
+    <srcmd5>cab1fa6f2d05a11f9242df630e5903b7</srcmd5>
+    <version>84.87~git20190606T185118~3d37a0c</version>
+    <time>1618387805</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 883384 from Vogtinator)</comment>
+    <requestid>883437</requestid>
+  </revision>
 </revisionlist>
