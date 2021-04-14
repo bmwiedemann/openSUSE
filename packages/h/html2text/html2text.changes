@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 13 10:48:40 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch to new project url
+- Update to version 2.0.0 boo#1168657
+- Drop patches:
+  * html2text-1.3.2a-400_remove_builtin_http_support.patch
+  * html2text-1.3.2a-611_recognize_input_encoding.patch
+  * html2text-debian-200_close_files_inside_main_loop.patch
+  * html2text-debian-220_nobs_when_stdout_is_a_tty.patch
+  * html2text-debian-500_utf8_support.patch
+  * html2text-debian-510_disable_backspaces.patch
+  * html2text-debian-600_multiple_meta_tags.patch
+  * html2text-debian-630_recode_output_to_locale_charset.patch
+  * html2text-debian-810_fix_deprecated_conversion_warnings.patch
+  * patch-amd64-html2text-1.3.2a.diff
+
+-------------------------------------------------------------------
 Thu Apr 27 16:32:45 UTC 2017 - toddrme2178@gmail.com
 
 - Implement update-alternatives to avoid conflict with
