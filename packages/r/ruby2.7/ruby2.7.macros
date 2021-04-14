@@ -1,0 +1,16 @@
+#
+# IMPORTANT IMPORTANT IMPORTANT IMPORTANT  IMPORTANT IMPORTANT
+#
+#  if you change any macros here you have to update the copy in the
+#  prjconf aswell.
+#
+# IMPORTANT IMPORTANT IMPORTANT IMPORTANT  IMPORTANT IMPORTANT
+#
+%rubygemsruby27() rubygem(ruby:2.7.0:%{expand:%%rubygemsx%*} %{expand:%%{rubygems%*}}
+%rubygemsxruby27() %{expand:%%{rubygemsx%*}}
+
+%rubyruby27() ruby2.7 %{expand:%%rubyx%*} %{expand:%%{ruby%*}}
+%rubyxruby27() %{expand:%%{rubyx%*}}
+
+%rubydevelruby27() ruby2.7-devel %{expand:%%rubydevelx%*} %{expand:%%{rubydevel%*}}
+%rubydevelxruby27() %{expand:%%{rubydevelx%*}}

@@ -1,0 +1,13 @@
+Index: ruby-2.7.0/template/Makefile.in
+===================================================================
+--- ruby-2.7.0.orig/template/Makefile.in
++++ ruby-2.7.0/template/Makefile.in
+@@ -271,7 +271,7 @@ miniruby$(EXEEXT):
+ $(PROGRAM):
+ 		@$(RM) $@
+ 		$(ECHO) linking $@
+-		$(Q) $(PURIFY) $(CC) $(LDFLAGS) $(XLDFLAGS) $(MAINOBJ) $(EXTOBJS) $(LIBRUBYARG) $(MAINLIBS) $(LIBS) $(EXTLIBS) $(OUTFLAG)$@
++		$(Q) $(PURIFY) $(CC) -pie $(LDFLAGS) $(XLDFLAGS) $(MAINOBJ) $(EXTOBJS) $(LIBRUBYARG) $(MAINLIBS) $(LIBS) $(EXTLIBS) $(OUTFLAG)$@
+ 		$(Q) $(POSTLINK)
+ 
+ PRE_LIBRUBY_UPDATE = [ -n "$(LIBRUBY_SO_UPDATE)" ] || $(gnumake:yes=exec) $(RM) $(LIBRUBY_EXTS)
