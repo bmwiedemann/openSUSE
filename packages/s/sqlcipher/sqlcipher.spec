@@ -16,10 +16,10 @@
 #
 
 
-%define         lib_version 3.33.0
-%define         lib_name lib%{name}-3_33_0-0
+%define         lib_version 3.34.1
+%define         lib_name lib%{name}-3_34_1-0
 Name:           sqlcipher
-Version:        4.4.2
+Version:        4.4.3
 Release:        0
 Summary:        SQLite database encryption
 License:        BSD-3-Clause
@@ -86,7 +86,7 @@ well suited for mobile development.
 This package contains development files for SQLCipher.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 export CFLAGS="%{optflags} -DSQLITE_HAS_CODEC -DSQLITE_TEMP_STORE=2"

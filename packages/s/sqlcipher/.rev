@@ -112,4 +112,17 @@
     <comment></comment>
     <requestid>867647</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ae5989d12ea62096b06edd87d7498689</srcmd5>
+    <version>4.4.3</version>
+    <time>1618387864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.3:
+  * Updates baseline to ustream SQLite 3.34.1
+  * Fixes sqlcipher_export handling of NULL parameters
+  * Removes randomization of rekey-delete tests to avoid false test failures
+  * Changes internal usage of sqlite_master to sqlite_schema
+  * Omits unusued profiling function under certain defines to avoid compiler warnings</comment>
+    <requestid>884895</requestid>
+  </revision>
 </revisionlist>

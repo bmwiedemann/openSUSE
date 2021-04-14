@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 13 09:09:16 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.4.3:
+  * Updates baseline to ustream SQLite 3.34.1
+  * Fixes sqlcipher_export handling of NULL parameters
+  * Removes randomization of rekey-delete tests to avoid false test failures
+  * Changes internal usage of sqlite_master to sqlite_schema
+  * Omits unusued profiling function under certain defines to avoid compiler warnings
+
+-------------------------------------------------------------------
 Thu Jan 28 23:43:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.2:
