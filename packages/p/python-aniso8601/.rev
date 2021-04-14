@@ -1,0 +1,140 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cf54b5fa1513570bebe0dc19f1307d4b</srcmd5>
+    <version>3.0.2</version>
+    <time>1534774878</time>
+    <user>dimstar_suse</user>
+    <comment>python-aniso8601 dep of  python-Flask-RESTful</comment>
+    <requestid>630420</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>65ca4c9e2d151d6bcd9c805c3d4ecf34</srcmd5>
+    <version>3.0.2</version>
+    <time>1544631889</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653910</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4e055cdfbe762aff9e0c80fc6c0f3779</srcmd5>
+    <version>5.1.0</version>
+    <time>1551883934</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.0:
+  * many changes see CHANGELOG.rst</comment>
+    <requestid>682126</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3c8ea805b0af0d69a11ac4977bdc0b7b</srcmd5>
+    <version>6.0.0</version>
+    <time>1552308698</time>
+    <user>coolo</user>
+    <comment>- Update to 6.0.0:
+  * Remove previously deprecated built in version of relativetimebuilder</comment>
+    <requestid>683738</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>025f71211becb0434b20af589deeefe9</srcmd5>
+    <version>7.0.0</version>
+    <time>1560459750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.0
+ * Handle all fractional components as an integer number of microseconds,
+    eliminating rounding issues</comment>
+    <requestid>709370</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>580d350593c4bdc74041a1bcd66c7ffb</srcmd5>
+    <version>8.0.0</version>
+    <time>1569523344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.0.0:
+  * Handle ',' character as a fractional separator, as required by 4.2.2.4, see PR 12
+  * Fix semver usage for prelease version, as required by clause 9</comment>
+    <requestid>733338</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f20cd021bd4f01cc89a2c2a154deac22</srcmd5>
+    <version>8.0.0</version>
+    <time>1587659567</time>
+    <user>dimstar_suse</user>
+    <comment>- Only BuildRequire python-mock with Python 2.</comment>
+    <requestid>796375</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a5e0e692ccca2aa2c2521db3c3672949</srcmd5>
+    <version>8.1.0</version>
+    <time>1608542651</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.1.0:
+  * Empty string arguments to get_date_resolution and parse_date now raise ISOFormatError, fixes 26
+  * None and non-string arguments to get_date_resolution and parse_date now raise ValueError
+  * Empty string arguments to parse_duration now raise ISOFormatError
+  * None and non-string arguments to parse_duration now raise ValueError
+  * Empty string arguments to parse_interval and parse_repeating_interval now raise ISOFormatError
+  * None and non-string arguments to parse_interval and parse_repeating_internval now raise ValueError
+  * Empty string arguments to get_time_resolution and parse_time now raise ISOFormatError
+  * None and non-string arguments to parse_time now raise ValueError
+  * None and non-string arguments to parse_timezone now raise ValueError
+  * Empty string arguments to parse_datetime now raise ISOFormatError
+  * None and non-string arguments to parse_datetime now raise ValueError
+  * Missing delimiter in datetime strings when calling parse_datetime now raises ISOFormatError
+  * Missing delimiter in regular and repeating interval strings when calling parse_interval and parse_repeating_interval now raises ISOFormatError
+  * get_time_resolution now correctly throws ISOFormatError when a time component has too many characters in a time using &quot;:&quot; as a separator</comment>
+    <requestid>857119</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>21bf38c764c7bcd4010d4493bb9395be</srcmd5>
+    <version>8.1.1</version>
+    <time>1612272330</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.1.1:
+  * Deprecate running tests with python setup.py tests as the test suite
+    support in Setuptools is deprecated
+  *  Add version to __init__.py
+  * Cleaner reading of README.rst into the long_description field of setup.py
+  * Define long_description_content_type as text/x-rst
+  * Simplify Sphinx configuration
+  * Add compat.is_string method, returns True for str, unicode types, False
+    otherwise, used to fix 28</comment>
+    <requestid>868435</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8861f5f424698dca200eb8a9bab6b87d</srcmd5>
+    <version>9.0.1</version>
+    <time>1618387852</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.0.1:
+  * Parsing prescribed durations with only hour and second time components (see PR 14)
+  * Parsing prescribed durations with only year and day components
+  * Add support for concise interval format (see 27)
+  * Add explicit bounds of [000, 366] to day of year component _parse_ordinal_date, this adds the same limits to dates of the format YYYYDDD or YYYY-DDD when using parse_date
+  * Add range_check_date, range_check_time, range_check_duration, range_check_repeating_interval, and range_check_timezone range checking class methods to BaseTimeBuilder there are no datetime or non-repeating interval check function as they are made of already checked parts
+  * PythonTimeBuilder now calls the appropriate range check functions using the range_check_date, range_check_time, range_check_duration, range_check_repeating_interval, and range_check_timezone methods defined in aniso8601.builders
+  * Add range_check_duration to PythonTimeBuilder which calls BaseTimeBuilder.range_check_duration and performs additional checks against maximum timedelta size
+  * Add range_check_interval to PythonTimeBuilder which handles building concise dates and performs additional checks against maximum timedelta size
+  * Add get_datetime_resolution which behaves like get_time_resolution but accepts a ISO 8601 date time as an argument, return value is a TimeResolution
+  * Add exceptions.RangeCheckError as a parent type of all failures in the range check methods, it descends from ValueError
+  * Add get_duration_resolution which behaves like other resolution helpers, return value is a DurationResolution
+  * Add get_interval_resolution which behaves like other resolution helpers, return value is a IntervalResolution
+  * Negative durations now fail at the parse step and simply raise ISOFormatError, calling a PythonTimeBuilder.build_duration directly with a negative duration component will yield an ISOFormatError in the range check
+  * Raise DayOutOfBoundsError if calendar day exceeds number of days in calendar month
+  * Raise ISOFormatError when date or time string contains extra whitespace
+  * Raise ISOFormatError when duration contains multiple duration designators (&quot;P&quot;), or time designators (&quot;T&quot;)
+  * PythonTimeBuilder.build_duration raises YearOutOfBoundsError, MonthOutOfBoundsError, WeekOutOfBoundsError, HoursOutOfBoundsError, MinutesOutOfBoundsError, or SecondsOutOfBoundsError when a given duration component would result in a timedelta that would exceed the maximum size
+  * Raise ISOFormatError if number of delimiters is not exactly 1 in parse_interval
+  * Raise ISOFormatError when either part of an interval string before of after the delimiter is empty
+  * Raise YearOutOfBoundsError in PythonTimeBuilder.build_interval if an interval with a duration would exceed the maximum or minimum years for Python date objects
+  * Simplify parse_date, build_date will now be called with explicit None arguments instead of date components not in the parsed string excluded from the call
+  * Change get_date_resolution to call parse_date and return the resolution based on the smallest parsed component
+  * Simplify parse_time, build_time will now be called with explicit None arguments instead of date components not in the parsed string excluded from the call
+  * Change get_time_resolution to call parse_time and return the resolution based on the smallest parsed component
+  * TupleBuilder now builds DateTuple, TimeTuple, DatetimeTuple, DurationTuple, IntervalTuple, RepeatingIntervalTuple and TimezoneTuple namedtuples
+  * Simplify parse_duration, build_duration will now be called with explicit None arguments when components of a prescribed duration are not present in the ISO 8601 duration string instead of being excluded from the call
+  * Remove unused decimalfraction.find_separator
+  * Remove unused PythonTimeBuilder._split_to_microseconds
+  * Removed NegativeDurationError 
+- Switch %pyunittest macro for running tests.</comment>
+    <requestid>884807</requestid>
+  </revision>
+</revisionlist>
