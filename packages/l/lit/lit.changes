@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 14 06:31:14 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop use of %ifpython3 macro, which no longer fires with multi-build
+  Python.
+
+-------------------------------------------------------------------
 Mon Sep 24 11:42:55 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
 
 - Use singlespec correctly

@@ -31,9 +31,7 @@ BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-%ifpython3
 Provides:       lit = %{version}
-%endif
 %python_subpackages
 
 %description
