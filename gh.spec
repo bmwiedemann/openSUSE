@@ -17,7 +17,7 @@
 
 
 Name:           gh
-Version:        1.7.0
+Version:        1.8.1
 Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT
@@ -25,21 +25,60 @@ Group:          Development/Tools/Version Control
 URL:            https://cli.github.com/
 Source0:        https://github.com/cli/cli/archive/v%{version}.tar.gz#/gh-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  fish
 BuildRequires:  golang(API) >= 1.13
+BuildRequires:  zsh
 Requires:       git
 
 %description
 Official CLI client for GitHub written in Go
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          Development/Tools/Version Control
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (gh and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command line completion support for %{name}.
+
+%package zsh-completion
+Summary:        ZSH Completion for %{name}
+Group:          Development/Tools/Version Control
+Requires:       %{name} = %{version}
+Supplements:    (gh and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+ZSH command line completion support for %{name}.
+
+%package fish-completion
+Summary:        Fish completion for %{name}
+Group:          Development/Tools/Version Control
+Requires:       %{name} = %{version}
+Supplements:    (gh and fish)
+BuildArch:      noarch
+
+%description fish-completion
+Fish command line completion support for %{name}.
+
 %prep
-%setup -q -n cli-%{version}
-%setup -q -T -D -n cli-%{version} -a 1
+%autosetup -n cli-%{version} -a 1
 
 %build
 export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw -ldflags=-linkmode=external"
 %make_build GH_VERSION="v%{version}" bin/gh manpages
 
 %install
+bin/gh completion -s bash  | install -Dm644 /dev/stdin \
+       %{buildroot}%{_datadir}/bash-completion/completions/gh
+bin/gh completion -s zsh   | install -Dm644 /dev/stdin \
+       %{buildroot}%{_datadir}/zsh/site-functions/_gh
+bin/gh completion -s fish  | install -Dm644 /dev/stdin \
+       %{buildroot}%{_datadir}/fish/vendor_completions.d/gh.fish
+
 install -D -m 0755 bin/gh %{buildroot}%{_bindir}/gh
 install -d %{buildroot}%{_mandir}/man1/
 cp share/man/man1/* %{buildroot}%{_mandir}/man1
@@ -49,5 +88,14 @@ cp share/man/man1/* %{buildroot}%{_mandir}/man1
 %license LICENSE
 %{_bindir}/gh
 %{_mandir}/man1/*
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/gh
+
+%files zsh-completion
+%{_datadir}/zsh/site-functions/_gh
+
+%files fish-completion
+%{_datadir}/fish/vendor_completions.d/gh.fish
 
 %changelog

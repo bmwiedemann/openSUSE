@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 13 07:50:34 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Supplement bash-completion instead of bash 
+
+-------------------------------------------------------------------
+Mon Apr 12 08:17:36 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 1.8.1:
+  * Fix pr status/checks crash with unrecognized statuse from
+    the server(#3336)
+  * Fix repo fork --clone not cloning an existing fork locally
+    when running non-interactively(#3334)
+  * Fix commands not respecting default hostname from GH_HOST(#3347)
+- Create subpackages for completions
+
+-------------------------------------------------------------------
 Sun Mar  7 18:06:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0:
