@@ -26,14 +26,8 @@
 %define _lto_cflags %{nil}
 
 %global _gimpplugindir %(gimptool-2.0 --gimpplugindir)/plug-ins
-# opencv3 is not available for ppc64
-%ifnarch ppc64
-%bcond_without opencv
-%else
-%bcond_with opencv
-%endif
 Name:           gmic
-Version:        2.9.6
+Version:        2.9.7
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -63,10 +57,13 @@ BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(zlib)
-%if %{with opencv}
 # gmic first looks for opencv 4 and falls back to opencv 3 if not found.
 # opencv 4 in not available in leap <= 15.3
-%if 0%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1500 
+BuildRequires:  pkgconfig(opencv)
+%else
+# ppc64 doesn't have opencv4
+%ifarch ppc64
 BuildRequires:  pkgconfig(opencv)
 %else
 BuildRequires:  pkgconfig(opencv4)
@@ -190,7 +187,6 @@ cd ..
 cd ..
 popd
 
-%if %{with opencv}
 # Build zart
 pushd zart
 %qmake5 zart.pro \
@@ -199,7 +195,6 @@ pushd zart
    GMIC_PATH=%{_builddir}/%{name}-%{version}/src
 %make_jobs
 popd
-%endif
 
 %install
 %cmake_install
@@ -224,12 +219,10 @@ install -d -m 0755 %{buildroot}%{_gimpplugindir}
 install -m 0755 build/gmic_gimp_qt %{buildroot}%{_gimpplugindir}/gmic_gimp_qt
 popd
 
-%if %{with opencv}
 # zart
 pushd zart
 install -m 0755 zart %{buildroot}%{_bindir}/zart
 popd
-%endif
 
 %post -n libgmic1 -p /sbin/ldconfig
 %postun -n libgmic1 -p /sbin/ldconfig
@@ -243,10 +236,8 @@ popd
 %{_datadir}/applications/gmic_qt.desktop
 %{_datadir}/pixmaps/gmic_qt.png
 
-%if %{with opencv}
 %files zart
 %{_bindir}/zart
-%endif
 
 %files -n gimp-plugin-gmic
 %license COPYING
