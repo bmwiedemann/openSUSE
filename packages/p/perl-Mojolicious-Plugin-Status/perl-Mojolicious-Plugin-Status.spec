@@ -18,7 +18,7 @@
 
 %define cpan_name Mojolicious-Plugin-Status
 Name:           perl-Mojolicious-Plugin-Status
-Version:        1.16
+Version:        1.17
 Release:        0
 Summary:        Mojolicious server status
 License:        Artistic-2.0
@@ -31,12 +31,12 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(BSD::Resource)
 BuildRequires:  perl(File::Map)
 BuildRequires:  perl(File::Temp) >= 0.2308
-BuildRequires:  perl(Mojolicious) >= 8.50
+BuildRequires:  perl(Mojolicious) >= 9.11
 BuildRequires:  perl(Sereal)
 Requires:       perl(BSD::Resource)
 Requires:       perl(File::Map)
 Requires:       perl(File::Temp) >= 0.2308
-Requires:       perl(Mojolicious) >= 8.50
+Requires:       perl(Mojolicious) >= 9.11
 Requires:       perl(Sereal)
 %{perl_requires}
 
