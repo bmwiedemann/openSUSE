@@ -386,7 +386,7 @@ unsorted:
   - adriconf 
   - adriconf-lang 
   - ads 
-  - aegisub: [x86_64] 
+  - aegisub 
   - aelfred 
   - aelfred-javadoc 
   - aer-inject 
@@ -1576,6 +1576,7 @@ unsorted:
   - busybox-wget 
   - busybox-which 
   - busybox-whois 
+  - butane 
   - buzztrax 
   - buzztrax-lang 
   - buzztrax-plugins 
@@ -4121,6 +4122,9 @@ unsorted:
   - gfxboot-branding-upstream 
   - gfxboot-devel 
   - gh 
+  - gh-bash-completion 
+  - gh-fish-completion 
+  - gh-zsh-completion 
   - ghc: [x86_64] 
   - ghc-Cabal: [x86_64] 
   - ghc-Cabal-devel: [x86_64] 
@@ -5367,6 +5371,8 @@ unsorted:
   - git-crypt 
   - git-daemon: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - git-delta 
+  - git-deps 
+  - git-deps-html 
   - git-doc 
   - git-filter-repo 
   - git-lfs 
@@ -5599,7 +5605,6 @@ unsorted:
   - gnome-nibbles 
   - gnome-nibbles-lang 
   - gnome-online-accounts-devel 
-  - gnome-online-miners 
   - gnome-packagekit-extras 
   - gnome-passwordsafe 
   - gnome-passwordsafe-lang 
@@ -5959,6 +5964,7 @@ unsorted:
   - graphviz-ruby 
   - graphviz-smyrna 
   - graphviz-tcl 
+  - graphviz-webp 
   - graphviz-x11 
   - grass 
   - grass-devel 
@@ -6198,6 +6204,7 @@ unsorted:
   - gtk3-metatheme-yaru 
   - gtk3-metatheme-yuyo 
   - gtk3-tools-32bit: [x86_64] 
+  - gtk4-branding-upstream 
   - gtk4-devel 
   - gtk4-devel-32bit: [x86_64] 
   - gtk4-metatheme-adapta 
@@ -6741,7 +6748,6 @@ unsorted:
   - ifuse 
   - igerman98-doc 
   - ignition 
-  - ignition-config-transpiler 
   - ignition-dracut-grub2 
   - iio-sensor-proxy-doc 
   - ikiwiki 
@@ -7287,7 +7293,6 @@ unsorted:
   - jhbuild: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - jhbuild-lang: [i586] 
   - jhbuild-recommended-deps 
-  - jhead 
   - jhighlight 
   - jhighlight-javadoc 
   - jigdo 
@@ -7821,6 +7826,7 @@ unsorted:
   - kismet-capture-nrf-nxp-kw41z 
   - kismet-capture-ti-cc-2531 
   - kismet-devel 
+  - kissfft: [x86_64] 
   - kissfft-devel: [x86_64] 
   - kitemmodels-devel 
   - kitemmodels-devel-32bit: [x86_64] 
@@ -7980,7 +7986,6 @@ unsorted:
   - kservice-32bit: [x86_64] 
   - kservice-devel 
   - kservice-devel-32bit: [x86_64] 
-  - ksh 
   - ksh-devel 
   - kshutdown 
   - ksmtp-devel 
@@ -9354,6 +9359,7 @@ unsorted:
   - libavformat58_45-32bit: [x86_64] 
   - libavfs0 
   - libavif-devel 
+  - libavif10-32bit: [x86_64] 
   - libavogadrolibs-suse0 
   - libavrdude1 
   - libavresample4_0-32bit: [x86_64] 
@@ -10677,7 +10683,7 @@ unsorted:
   - libgnt0 
   - libgnt0-32bit: [x86_64] 
   - libgnuastro12 
-  - libgnuradio-3_8_2 
+  - libgnuradio-3_8_3 
   - libgnuradio-fcdproplus-devel 
   - libgnuradio-fcdproplus3_8_0 
   - libgnuradio-iqbalance-devel 
@@ -11348,7 +11354,7 @@ unsorted:
   - libkim-api2 
   - libkioarchive-devel 
   - libkipi-devel 
-  - libkissfft-131: [x86_64] 
+  - libkissfft-float131: [x86_64] 
   - libkkc-devel 
   - libkkc2 
   - libkkc2-32bit: [x86_64] 
@@ -13257,6 +13263,7 @@ unsorted:
   - libscintilla-devel 
   - libscintilla3 
   - libscotch0 
+  - libsdbus-c++0 
   - libseafile0 
   - libsearpc-devel 
   - libsearpc1 
@@ -13437,7 +13444,7 @@ unsorted:
   - libspnav0 
   - libspqr2 
   - libspread-sheet-widget0 
-  - libsqlcipher-3_33_0-0 
+  - libsqlcipher-3_34_1-0 
   - libsqlite3-0-32bit: [x86_64] 
   - libsqlparser1 
   - libsratom-0-0-32bit: [x86_64] 
@@ -13654,15 +13661,12 @@ unsorted:
   - libtelepathy-qt5-farstream0-32bit: [x86_64] 
   - libtelepathy-qt5-service1 
   - libtelepathy-qt5-service1-32bit: [x86_64] 
-  - libtensorflow1: [x86_64] 
   - libtensorflow2: [x86_64] 
   - libtensorflow2-gnu-hpc: [x86_64] 
   - libtensorflow2-gnu-openmpi2-hpc: [x86_64] 
-  - libtensorflow_cc1: [x86_64] 
   - libtensorflow_cc2: [x86_64] 
   - libtensorflow_cc2-gnu-hpc: [x86_64] 
   - libtensorflow_cc2-gnu-openmpi2-hpc: [x86_64] 
-  - libtensorflow_framework1: [x86_64] 
   - libtensorflow_framework2: [x86_64] 
   - libtensorflow_framework2-gnu-hpc: [x86_64] 
   - libtensorflow_framework2-gnu-openmpi2-hpc: [x86_64] 
@@ -13682,11 +13686,11 @@ unsorted:
   - libtheora0-32bit: [x86_64] 
   - libtheoradec1-32bit: [x86_64] 
   - libtheoraenc1-32bit: [x86_64] 
-  - libthrift-0_13_0 
+  - libthrift-0_14_1 
   - libthrift-devel 
   - libthrift_c_glib0 
-  - libthriftnb-0_13_0 
-  - libthriftz-0_13_0 
+  - libthriftnb-0_14_1 
+  - libthriftz-0_14_1 
   - libtidy-devel 
   - libtidy5 
   - libtidyp-1_04-0 
@@ -14470,7 +14474,6 @@ unsorted:
   - libyui-qt-rest-api15 
   - libyui-rest-api-devel 
   - libyui-rest-api15 
-  - libzapojit-0_0-0 
   - libzapojit-devel 
   - libzbar-devel 
   - libzbar0-32bit: [x86_64] 
@@ -17077,6 +17080,7 @@ unsorted:
   - obs-service-product_converter 
   - obs-service-recompress 
   - obs-service-refresh_patches 
+  - obs-service-replace_using_env 
   - obs-service-replace_using_package_version 
   - obs-service-rust2rpm 
   - obs-service-set_version 
@@ -19637,7 +19641,6 @@ unsorted:
   - petsc_3_14_5-gnu-openmpi3-hpc-saws 
   - petsc_3_14_5-gnu-openmpi4-hpc-devel 
   - petsc_3_14_5-gnu-openmpi4-hpc-saws 
-  - pfscalibration 
   - pfsglview 
   - pfstools-devel 
   - pfstools-exr 
@@ -22307,6 +22310,7 @@ unsorted:
   - python36-gunicorn 
   - python36-guzzle_sphinx_theme 
   - python36-gvm-tools 
+  - python36-gwdatafind 
   - python36-gwosc 
   - python36-gyp 
   - python36-h11 
@@ -25132,6 +25136,7 @@ unsorted:
   - python38-guzzle_sphinx_theme 
   - python38-gvm-tools 
   - python38-gwcs 
+  - python38-gwdatafind 
   - python38-gwosc 
   - python38-gwyfile 
   - python38-gyp 
@@ -28146,6 +28151,9 @@ unsorted:
   - scummvm-extra 
   - scummvm-tools 
   - sd-mux-ctrl 
+  - sdbus-cpp-devel 
+  - sdbus-cpp-devel-doc 
+  - sdbus-cpp-xml2cpp 
   - sdcc 
   - sdcc-doc 
   - sdcc-libc-sources 
@@ -28973,13 +28981,6 @@ unsorted:
   - template-resolver 
   - template-resolver-javadoc 
   - tennebon-dynamic-wallpaper 
-  - tensorflow: [x86_64] 
-  - tensorflow-devel: [x86_64] 
-  - tensorflow-doc: [x86_64] 
-  - tensorflow-gnu-hpc: [x86_64] 
-  - tensorflow-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow-lite: [x86_64] 
-  - tensorflow-lite-devel: [x86_64] 
   - tensorflow2: [x86_64] 
   - tensorflow2-devel: [x86_64] 
   - tensorflow2-doc: [x86_64] 
@@ -28993,10 +28994,6 @@ unsorted:
   - tensorflow2_2_4_0-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow2_2_4_0-gnu-openmpi2-hpc-devel: [x86_64] 
   - tensorflow2_2_4_0-gnu-openmpi2-hpc-doc: [x86_64] 
-  - tensorflow_1_15_3-gnu-hpc: [x86_64] 
-  - tensorflow_1_15_3-gnu-hpc-devel: [x86_64] 
-  - tensorflow_1_15_3-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow_1_15_3-gnu-openmpi2-hpc-devel: [x86_64] 
   - tepl-devel 
   - termcap 
   - termcap-32bit: [x86_64] 
@@ -37176,7 +37173,6 @@ unsorted:
   - typelib-1_0-FolksTelepathy-0_6 
   - typelib-1_0-FwupdPlugin-1_0 
   - typelib-1_0-GCab-1_0 
-  - typelib-1_0-GData-0_0 
   - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
@@ -37315,7 +37311,6 @@ unsorted:
   - typelib-1_0-XplayerPlParser-1_0 
   - typelib-1_0-XreaderDocument-1_5 
   - typelib-1_0-XreaderView-1_5 
-  - typelib-1_0-Zpj-0_0 
   - typelib-1_0-kkc-1_0 
   - typelib-1_0-libmirage-3_2 
   - typesafe-config 
@@ -38338,6 +38333,7 @@ unsorted:
   - xorg-x11-server-Xspice: [x86_64] 
   - xorg-x11-server-sdk: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - xorg-x11-server-source 
+  - xorg-x11-server-wayland 
   - xorg-x11-server-wrapper 
   - xorg-x11-util-devel 
   - xorgproto-devel: [i586] 
@@ -38459,6 +38455,7 @@ unsorted:
   - xviewer-plugins-lang 
   - xvinfo 
   - xvkbd 
+  - xwayland-devel 
   - xwd 
   - xwininfo 
   - xwmfs 
