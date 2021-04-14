@@ -1174,4 +1174,11 @@
     <user>dimstar_suse</user>
     <comment>Backport changes from :Live project</comment>
   </revision>
+  <revision rev="146" vrev="146">
+    <srcmd5>6294d9fac9dfafce5584796c07f8290c</srcmd5>
+    <version>unknown</version>
+    <time>1618421067</time>
+    <user>dimstar_suse</user>
+    <comment>- Shrink RescueCD: drop libqt5-qttranslations.</comment>
+  </revision>
 </revisionlist>

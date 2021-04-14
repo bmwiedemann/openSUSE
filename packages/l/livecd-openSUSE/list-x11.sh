@@ -71,6 +71,7 @@ buildignore man-pages-posix
 buildignore libvulkan_radeon
 buildignore man
 buildignore groff
+buildignore libqt5-qttranslations
 
 # Moved here from list-common.sh. cyrus-sasl is needed by Pidgin in Xfce Live CD
 buildignore cyrus-sasl
