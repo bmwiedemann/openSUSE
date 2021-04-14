@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 13 09:02:55 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20210407:
+  * wireless-regdb: Update regulatory rules for Cuba (CU) on 5GHz
+  * wireless-regdb: Do not hardcode 'sforshee' in the certificate commonName
+
+-------------------------------------------------------------------
 Wed Feb 17 09:41:00 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20210129:

@@ -398,4 +398,14 @@ The license in the LICENSE file is ISC, not MIT (http://www.spdx.org/licenses/IS
   * wireless-regdb: update CNAF regulation url for ES</comment>
     <requestid>873055</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f86e9730747b8c18822258556b1df402</srcmd5>
+    <version>20210407</version>
+    <time>1618398309</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210407:
+  * wireless-regdb: Update regulatory rules for Cuba (CU) on 5GHz
+  * wireless-regdb: Do not hardcode 'sforshee' in the certificate commonName</comment>
+    <requestid>884892</requestid>
+  </revision>
 </revisionlist>
