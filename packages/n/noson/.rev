@@ -118,4 +118,15 @@
     <comment></comment>
     <requestid>817491</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2423b5e326c8184e93fdd05cf03e8085</srcmd5>
+    <version>2.4.1</version>
+    <time>1618387886</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.1
+  * Fallback when presentation map is invalid for the service
+  * Includes improvements for pulse streamer
+</comment>
+    <requestid>885151</requestid>
+  </revision>
 </revisionlist>

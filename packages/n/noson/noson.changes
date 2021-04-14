@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 13 19:46:06 UTC 2021 - Bo Simonsen <bosim@opensuse.org>
+
+- Update to 2.4.1
+  * Fallback when presentation map is invalid for the service
+  * Includes improvements for pulse streamer
+
+-------------------------------------------------------------------
 Fri Jun 26 11:44:37 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to 2.3.1:
