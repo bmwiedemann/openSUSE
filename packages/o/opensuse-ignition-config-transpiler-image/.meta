@@ -1,5 +1,0 @@
-<package name="opensuse-ignition-config-transpiler-image" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="devel:kubic:containers" package="opensuse-ignition-config-transpiler-image"/>
-</package>
