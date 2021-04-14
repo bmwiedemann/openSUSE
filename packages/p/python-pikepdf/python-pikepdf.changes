@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Apr  7 15:49:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.11.0
+  * Add new functions: Pdf.generate_appearance_streams and
+    Pdf.flatten_annotations, to support common work with PDF forms.
+- Update to version 2.10.0
+  * Fixed a XML External Entity (XXE) processing vulnerability in
+    PDF XMP metadata parsing (CVE-2021-29421)
+  * Bind new functions to check, when a PDF is opened, whether
+    the password used to open the PDF matched the owner password,
+    user password, or both: Pdf.user_password_matched and
+    Pdf.owner_password_matched.
+- Update to version 2.9.2
+  * Further expansion of test coverage of several functions, and
+    minor bug fixes along the way.
+  * Improve parameter validation for some outline-related functions.
+  * Fixed overloaded __repr__ functions in _methods.py not being
+    applied.
+- Update to version 2.9.1
+  * Fixed function signatures for _repr_mimebundle_ functions to
+    match IPython's spec.
+  * Fixed some error messages regarding attempts to do strange
+    things with pikepdf.Name, like pikepdf.Name.Foo = 3.
+  * Eliminated code to handle an exception that provably does not
+    occur.
+- Update to version 2.9.0
+  * We now issue a warning when attempting to use pikepdf.open
+    on a bytes object where it could be either a PDF loaded into
+    memory or a filename.
+  * pikepdf.Page.label will now return the "ordinary" page number
+    if no special rules for pages are defined.
+  * Many improvements to tests and test coverage.
+  * An obsolete private function Object._roundtrip was removed.
+
+-------------------------------------------------------------------
 Thu Mar  4 19:17:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.8.0
