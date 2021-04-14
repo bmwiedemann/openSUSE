@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 14 08:12:03 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.2.13.1
+  * Fix build break when using gcc 10 (and some other modern gcc versions)
+    but using C++11 compilation mode. #2930
+  * CMake: don't use --config inappropriately (CMake 3.20 was broken for
+    several of our helper build scripts for building dependencies). #2931
+  * Be robust to OpenEXR 2.x installations where IlmBase and OpenEXR had
+    separate sets of config files in different subdirectories. #2935
+
+-------------------------------------------------------------------
 Wed Apr  7 21:26:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - explicitly list pkgconfig and shared libs to avoid filesystem rpm
