@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr 10 20:04:50 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.15.5
+  * Removed WCONST macro 
+  * Fixed the L2CAP channel setup on Linux, now we use only the
+    interrupt/data channel (0x13) and not the control channel (0x11)
+  * Fixed the RVL-CNT-01-TR (gen 2) Wiimote.
+  * Added: Callback API with constant-size wiimote_callback_data_t.
+  * Initial MotionPlus support.
+  * Properly disable rumbling when told to.
+  * Additional internal function wiiuse_millisleep() to reduce the
+    number of ifdefs scattered through the code.
+  * Provide endianness-conversion and buffer/unbuffer functions,
+    rather than a jumble of function-style macros and raw type punning.
+
+-------------------------------------------------------------------
 Fri May 15 13:21:52 UTC 2015 - tchvatal@suse.com
 
 - Version bump once more to git snapshot 0.14_p20150515:

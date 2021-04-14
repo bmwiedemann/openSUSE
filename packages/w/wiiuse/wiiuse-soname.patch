@@ -1,21 +1,11 @@
-Index: wiiuse-0.14.0_p20150515/src/CMakeLists.txt
-===================================================================
---- wiiuse-0.14.0_p20150515.orig/src/CMakeLists.txt
-+++ wiiuse-0.14.0_p20150515/src/CMakeLists.txt
-@@ -57,6 +57,7 @@ if(WIN32)
+diff -Nur wiiuse-0.15.5/src/CMakeLists.txt new/src/CMakeLists.txt
+--- wiiuse-0.15.5/src/CMakeLists.txt	2019-11-24 16:52:38.000000000 +0100
++++ new/src/CMakeLists.txt	2021-04-10 22:29:04.894891570 +0200
+@@ -62,6 +62,7 @@
  	target_link_libraries(wiiuse ws2_32 setupapi ${WINHID_LIBRARIES})
  elseif(LINUX)
- 	target_link_libraries(wiiuse m ${BLUEZ_LIBRARIES})
-+        set_target_properties(wiiuse PROPERTIES SOVERSION 0 VERSION ${CPACK_PACKAGE_VERSION})
+ 	target_link_libraries(wiiuse m rt ${BLUEZ_LIBRARIES})
++	set_target_properties(wiiuse PROPERTIES SOVERSION 0 VERSION ${CPACK_PACKAGE_VERSION})
  elseif(APPLE)
  	# link libraries
  	find_library(IOBLUETOOTH_FRAMEWORK
-@@ -100,7 +101,7 @@ install(TARGETS
- 	development
- 	LIBRARY
- 	DESTINATION
--	lib
-+	lib${LIB_SUFFIX}
- 	COMPONENT
- 	runtime
- 	PUBLIC_HEADER

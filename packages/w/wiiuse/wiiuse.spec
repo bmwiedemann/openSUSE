@@ -1,7 +1,7 @@
 #
 # spec file for package wiiuse
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define libname libwiiuse0
 Name:           wiiuse
-Version:        0.14.0_p20150515
+Version:        0.15.5
 Release:        0
 Summary:        Connects with several Nintendo Wii remotes
-License:        GPL-3.0 and LGPL-3.0
+License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/rpavlik/wiiuse
-#Source0:        https://github.com/rpavlik/%{name}/archive/%{version}.tar.gz
-Source0:        %{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM: set properly soname for wiiuse library
+URL:            https://github.com/wiiuse/wiiuse
+Source0:        https://github.com/wiiuse/wiiuse/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         wiiuse-soname.patch
 BuildRequires:  bluez-devel
 BuildRequires:  cmake
@@ -34,7 +32,6 @@ BuildRequires:  dos2unix
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libSDL-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Wiiuse is a library written in C that connects with several Nintendo
@@ -68,7 +65,7 @@ dos2unix CHANGELOG.mkd README.mkd
 
 %build
 %cmake
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -77,16 +74,14 @@ make %{?_smp_mflags}
 rm -rf %{buildroot}%{_datadir}/doc/wiiuse
 
 %post -n %{libname} -p /sbin/ldconfig
-
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files -n %{libname}
-%defattr(-,root,root,-)
-%doc README.mkd LICENSE CHANGELOG.mkd
+%license LICENSE
 %{_libdir}/*.so.*
 
 %files devel
-%defattr(-,root,root,-)
+%doc README.mkd RELEASE.md CHANGELOG.mkd
 %{_includedir}/*
 %{_libdir}/*.so
 %{_bindir}/wiiuseexample
