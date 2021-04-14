@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 26 13:42:05 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not rely on apparmor at all for the -mini flavor:
+  + Drop apparmor-abstraction and apparmor-rpm-macros
+    BuildRequires.
+  + Do not package apparmor files.
+
+-------------------------------------------------------------------
+Tue Mar  9 12:34:30 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not require apparmor-abstractions: with the mini package being
+  used only during build (and never on end user workstations),
+  apparmor is not going to be enabled (build is in chroot/vm).
+  Keeping the dep-chain of the -mini flavor as small as possible.
+
+-------------------------------------------------------------------
 Fri Mar  5 12:35:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide ghostscript_any by ghostscript-mini: this is a valid

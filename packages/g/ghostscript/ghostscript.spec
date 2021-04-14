@@ -56,7 +56,7 @@ BuildRequires:  apparmor-rpm-macros
 Requires:       apparmor-abstractions
 %endif
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 Summary:        The Ghostscript interpreter for PostScript and PDF
 License:        AGPL-3.0-only
 Group:          Productivity/Office/Other

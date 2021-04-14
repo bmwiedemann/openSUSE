@@ -26,13 +26,8 @@ BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  update-alternatives
 BuildRequires:  zlib-devel
-%if 0%{?suse_version} >= 1500
-BuildRequires:  apparmor-abstractions
-BuildRequires:  apparmor-rpm-macros
-Requires:       apparmor-abstractions
-%endif
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 Summary:        Minimal Ghostscript for minimal build requirements
 License:        AGPL-3.0-only
 Group:          Productivity/Office/Other
@@ -104,9 +99,9 @@ Patch101:       ijs_exec_server_dont_use_sh.patch
 # in openSUSE products, cf. https://build.opensuse.org/request/show/877083
 Provides:       ghostscript_any = %{version}
 Conflicts:      ghostscript
-Conflicts:      ghostscript-x11
 Conflicts:      ghostscript-devel
 Conflicts:      ghostscript-library
+Conflicts:      ghostscript-x11
 # Install into this non-root directory (required when norootforbuild is used):
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -149,9 +144,9 @@ Summary:        Development files for Minimal Ghostscript
 Group:          Development/Libraries/C and C++
 Requires:       ghostscript-mini = %{version}
 Conflicts:      ghostscript
-Conflicts:      ghostscript-x11
 Conflicts:      ghostscript-devel
 Conflicts:      ghostscript-library
+Conflicts:      ghostscript-x11
 
 %description devel
 This package contains the development files for Minimal Ghostscript.
@@ -349,7 +344,6 @@ done
 # Switch back to the usual build log messages:
 set -x
 install -m 644 catalog.devices $DOCDIR
-install -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/apparmor.d/ghostscript
 
 # Move /usr/bin/gs to /usr/bin/gs.bin to be able to use update-alternatives
 install -d %buildroot%{_sysconfdir}/alternatives
@@ -359,9 +353,6 @@ ln -sf %{_sysconfdir}/alternatives/gs %{buildroot}%{_bindir}/gs
 
 %post
 /sbin/ldconfig
-%if 0%{?suse_version} >= 1500
-%apparmor_reload /etc/apparmor.d/ghostscript
-%endif
 %{_sbindir}/update-alternatives \
   --install %{_bindir}/gs gs %{_bindir}/gs.bin 15
 
@@ -449,10 +440,6 @@ fi
 %{_libdir}/libgs.so.*
 %{_libdir}/ghostscript/
 %{_libdir}/libijs-0.35.so
-%if 0%{?suse_version} < 1500
-%dir %{_sysconfdir}/apparmor.d
-%endif
-%{_sysconfdir}/apparmor.d/ghostscript
 
 %files devel
 %defattr(-,root,root)
