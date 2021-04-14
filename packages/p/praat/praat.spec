@@ -17,7 +17,7 @@
 
 
 Name:           praat
-Version:        6.1.38
+Version:        6.1.41
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
@@ -27,7 +27,7 @@ Source0:        https://github.com/praat/praat/archive/v%{version}.tar.gz#/%{nam
 Source3:        %{name}.changes
 # PATCH-FIX-OPENSUSE praat-use_system_libs.patch -- replace some embedded libs with system ones
 Patch1:         praat-use_system_libs.patch
-# PATCH-FIX-OPENSUSE praat-no-return-in-nonvoid.patch -- address rpmlint complaint
+# PATCH-FIX-OPENSUSE praat-no-return-in-nonvoid.patch -- make the compiler happy
 Patch2:         praat-no-return-in-nonvoid.patch
 BuildRequires:  gcc-c++
 BuildRequires:  glpk-devel
@@ -60,6 +60,7 @@ provisions for communicating with other programs.
 %build
 cp makefiles/makefile.defs.linux.pulse ./makefile.defs
 sed -e '/^CFLAGS/s/$/\ %{optflags}/' \
+    -e '/^CXXFLAGS/s/$/\ %{optflags}/' \
     -e '/^CC/s/=/?=/' -e '/^CXX/s/=/?=/' \
     -e '/^LINK/s/=/?=/' -i makefile.defs
 %make_build

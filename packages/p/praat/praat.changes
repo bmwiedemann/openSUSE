@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr 13 13:23:35 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.1.41
+  * TextGrid window: unselected boundaries can again be drawn to
+    the cursor.
+  * Windows: faster running cursor.
+  * Multi-line formula fields.
+  * Scripting: guard against too deep recursive calls to
+    runScript (depth 20).
+  * EEG: repaired a bug that could cause Praat to crash when
+    computing an ERPTier.
+  version 6.1.40:
+  * Inspect window: corrected a bug that could cause Praat to
+    crash when opening a string vector.
+  * Sound window: made channel scrolling work again when there
+    are more than 8 channels.
+  * Sound window: made channel muting by clicking on the
+    loudspeaker symbols work again.
+- Refresh praat-use_system_libs.patch and
+  praat-no-return-in-nonvoid.patch
+
+-------------------------------------------------------------------
 Thu Jan 21 14:19:36 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.1.38

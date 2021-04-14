@@ -1,7 +1,7 @@
-Index: praat-6.1.22/melder/melder_search.cpp
+Index: praat-6.1.41/melder/melder_search.cpp
 ===================================================================
---- praat-6.1.22.orig/melder/melder_search.cpp
-+++ praat-6.1.22/melder/melder_search.cpp
+--- praat-6.1.41.orig/melder/melder_search.cpp
++++ praat-6.1.41/melder/melder_search.cpp
 @@ -145,7 +145,7 @@ bool Melder_stringMatchesCriterion (cons
  			return !! place;
  		}
@@ -11,15 +11,3 @@ Index: praat-6.1.22/melder/melder_search.cpp
  }
  
  /* End of file melder_search.cpp */
-Index: praat-6.1.22/fon/PitchTierArea.h
-===================================================================
---- praat-6.1.22.orig/fon/PitchTierArea.h
-+++ praat-6.1.22/fon/PitchTierArea.h
-@@ -33,6 +33,7 @@ Thing_define (PitchTierArea, RealTierAre
- 			return U" st";
- 		else
- 			Melder_fatal (U"PitchTierArea::v_rightTickUnits: Unknown pitch units: ", (int) our p_units);
-+		return NULL;
- 	}
- 	double v_defaultYmin ()
- 		override { return 50.0; }
