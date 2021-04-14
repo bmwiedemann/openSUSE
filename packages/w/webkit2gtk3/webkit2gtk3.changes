@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr  2 17:34:41 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.32.0 (boo#1184155):
+  + Fix the authentication request port when URL omits the port.
+  + Fix iframe scrolling when main frame is scrolled in async
+    scrolling mode.
+  + Stop using g_memdup.
+  + Show a warning message when overriding signal handler for
+    threading suspension.
+  - Fix the build on RISC-V with GCC 11.
+  - Fix several crashes and rendering issues.
+  + Security fixes: CVE-2021-1788, CVE-2021-1844, CVE-2021-1871
+- Drop old-wayland-scanner.patch and webkit-process.patch, and also
+  drop support for Leap 15.0 and 15.1, since they are no longer
+  supported.
+
+-------------------------------------------------------------------
 Tue Mar 23 02:31:51 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.31.91:
@@ -56,9 +73,11 @@ Mon Mar 22 02:31:01 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 -------------------------------------------------------------------
 Sun Mar 21 20:33:09 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 2.30.6:
+- Update to version 2.30.6 (boo#1184262):
   + Update user agent quirks again for Google Docs and Google Drive.
   + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2020-27918, CVE-2020-29623, CVE-2021-1765
+  CVE-2021-1789, CVE-2021-1799, CVE-2021-1801, CVE-2021-1870.
 
 -------------------------------------------------------------------
 Fri Feb 19 07:45:12 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
@@ -173,7 +192,7 @@ Mon Sep 14 23:28:52 UTC 2020 - Michael Gorse <mgorse@suse.com>
   + Fix NTLM authentication.
   + Don't try to use SHM on wayland with older wpebackend-fdo.
   + Fix the build due to seccomp.h header not found.
-  + Security fixes: CVE-2020-9948, CVE-2020-9951.
+  + Security fixes: CVE-2020-9947, CVE-2020-9948, CVE-2020-9951.
 - Drop seccomp-build-fix.patch and wpe-shm-check.patch: fixed
   upstream.
 

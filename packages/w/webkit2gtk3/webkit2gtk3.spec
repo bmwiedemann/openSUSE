@@ -31,7 +31,7 @@
 %define _gold_linker 0
 %endif
 Name:           webkit2gtk3
-Version:        2.31.91
+Version:        2.32.0
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -45,35 +45,29 @@ Source99:       webkit2gtk3.keyring
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 firefox.
 Patch0:         no-forced-sse.patch
 
-# Below patches are for 15.0/15.1 only
-# PATCH-NEEDS-REBASE webkit-process.patch boo#1159329 mgorse@suse.com -- use single web process for evolution and geary (was: PATCH-FIX-OPENSUSE).
-Patch100:       webkit-process.patch
-# PATCH-FIX-OPENSUSE old-wayland-scanner.patch mgorse@suse.com -- pass code to wayland-scanner, rather than private-code
-Patch101:       old-wayland-scanner.patch
-
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  Mesa-libGLESv1_CM-devel
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  bison >= 2.3
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  bubblewrap
-%endif
 BuildRequires:  cmake
 BuildRequires:  enchant-devel
+BuildRequires:  gcc-c++ >= 4.9
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf >= 3.0.1
 BuildRequires:  hyphen-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  ninja
+BuildRequires:  openjpeg2
+BuildRequires:  openjpeg2-devel
 BuildRequires:  perl >= 5.10.0
 BuildRequires:  pkgconfig
+BuildRequires:  python3
 BuildRequires:  ruby >= 1.8.7
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  xdg-dbus-proxy
-%endif
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(atspi-2) >= 2.5.3
 BuildRequires:  pkgconfig(cairo) >= 1.10.2
@@ -104,26 +98,16 @@ BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.61.90
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libwoff2dec)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.8.0
 BuildRequires:  pkgconfig(libxslt) >= 1.1.7
 BuildRequires:  pkgconfig(manette-0.2)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(upower-glib)
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  pkgconfig(wpe-1.0) >= 1.3.0
 BuildRequires:  pkgconfig(wpebackend-fdo-1.0) >= 1.3.0
-%endif
-BuildRequires:  gcc-c++ >= 4.9
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} >= 1500
-BuildRequires:  openjpeg2
-BuildRequires:  openjpeg2-devel
-%endif
-%if 0%{?suse_version} > 1500
-BuildRequires:  pkgconfig(libwoff2dec)
-%endif
-BuildRequires:  python3
 %if %{_gold_linker}
 BuildRequires:  binutils-gold
 %endif
@@ -141,14 +125,10 @@ more.
 Summary:        Library for rendering web content, GTK+ Port
 # Require the injected bundles. The bundles are dlopen()ed
 Group:          System/Libraries
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 Requires:       bubblewrap
-%endif
 Requires:       libjavascriptcoregtk%{_sover} = %{version}
 Requires:       webkit2gtk-4_0-injected-bundles
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 Requires:       xdg-dbus-proxy
-%endif
 Provides:       %{_pkgname_no_slpp} = %{version}
 Obsoletes:      webkit2gtk3-plugin-process-gtk2
 
@@ -277,12 +257,7 @@ A small test browswer from webkit, useful for testing features.
 %lang_package -n %{_pkgname_no_slpp}
 
 %prep
-%setup -q -n webkitgtk-%{version}
-%patch0 -p1
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
-#%patch100 -p1
-%patch101 -p1
-%endif
+%autosetup -p1 -n webkitgtk-%{version}
 
 %build
 %define _lto_cflags %{nil}
@@ -317,14 +292,6 @@ export PYTHON=%{_bindir}/python3
   -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \
   -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \
   -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \
-%if 0%{?suse_version} <= 1500
-  -DUSE_WOFF2=false \
-  -DENABLE_MEDIA_SOURCE=OFF \
-%endif
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
-  -DUSE_WPE_RENDERER=OFF \
-  -DENABLE_BUBBLEWRAP_SANDBOX=OFF \
-%endif
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
 %ifarch aarch64
   -DENABLE_JIT=OFF \
