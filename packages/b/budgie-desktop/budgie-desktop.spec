@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013-2016 Ikey Doherty <ikey@solus-project.com>
+# Copyright (c) 2021 Callum Farmer <gmbr3@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 
 #
 Name:           budgie-desktop
-Version:        10.5.2+ff840563
+Version:        10.5.2+08c9d7cf
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -28,7 +29,6 @@ URL:            https://getsol.us/solus/experiences/
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE: Create a clean separation between Budgie and GNOME desktops
 Patch0:         desktop-override.patch
-Patch1:         budgie-screensaver.patch
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig

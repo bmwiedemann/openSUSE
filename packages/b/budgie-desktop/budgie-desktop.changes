@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 12 11:11:33 UTC 2021 - gmbr3@opensuse.org
+
+- Update to version 10.5.2+08c9d7cf:
+  * Changed budgie-screensaver dbus name
+  * Support moved font anti-aliasing and hinting in GSD 40
+- Remove budgie-screensaver.patch: merged
+
+-------------------------------------------------------------------
 Sun Apr 11 17:50:58 UTC 2021 - gmbr3@opensuse.org
 
 - Update to version 10.5.2+ff840563:
