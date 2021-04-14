@@ -20,7 +20,7 @@
 
 %bcond_without lang
 Name:           kactivitymanagerd
-Version:        5.21.3
+Version:        5.21.4
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        GPL-2.0-or-later
