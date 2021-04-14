@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 13 11:50:09 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20210413.ec9aed1:
+  * Bump date in the license poo#76378
+
+-------------------------------------------------------------------
+Tue Apr 13 10:35:17 UTC 2021 - opensuse-packaging@opensuse.org
+
+- Update to version 84.87.20210319.3745b19:
+  * treeinfo: bump treeinfo to 15.3
+  * Added translation using Weblate (Sinhala)
+  * Translated using Weblate (Portuguese (Portugal))
+  * Added translation using Weblate (Portuguese (Portugal))
+  * Update date across *po* files
+  * Update year in license poo#61260
+
+-------------------------------------------------------------------
 Thu Nov 14 14:23:33 UTC 2019 - opensuse-packaging@opensuse.org
 
 - Update to version 84.87.20190715.93dc01e:

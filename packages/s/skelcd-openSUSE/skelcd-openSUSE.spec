@@ -1,7 +1,7 @@
 #
 # spec file for package skelcd-openSUSE
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define version_unconverted 84.87.20190715.93dc01e
+%define version_unconverted 84.87.20210413.ec9aed1
 # changed by pre_checkin
 %define is_non_oss 0
 #
@@ -28,12 +28,12 @@
 %bcond_without  java
 #
 Name:           skelcd-openSUSE
-Version:        84.87.20190715.93dc01e
+Version:        84.87.20210413.ec9aed1
 Release:        0
 Summary:        Skeleton for openSUSE OSS Media Sets
 License:        MIT
 Group:          Metapackages
-Url:            https://github.com/openSUSE/skelcd-openSUSE
+URL:            https://github.com/openSUSE/skelcd-openSUSE
 Source:         skelcd-openSUSE-%{version}.tar.xz
 Source99:       skelcd-openSUSE-rpmlintrc
 BuildRequires:  build-key
