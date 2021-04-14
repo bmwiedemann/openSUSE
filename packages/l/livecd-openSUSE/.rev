@@ -1167,4 +1167,11 @@
     <comment>- Switch from exfat-utils to exfatprogs, see also gh#yast/yast-storage-ng#1214 (forwarded request 883332 from favogt)</comment>
     <requestid>883333</requestid>
   </revision>
+  <revision rev="145" vrev="145">
+    <srcmd5>b6556d83436b06e127cbbcbb5378d326</srcmd5>
+    <version>unknown</version>
+    <time>1618419489</time>
+    <user>dimstar_suse</user>
+    <comment>Backport changes from :Live project</comment>
+  </revision>
 </revisionlist>

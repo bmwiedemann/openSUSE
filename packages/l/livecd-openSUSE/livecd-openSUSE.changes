@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 14 16:56:37 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Backport fixes done by R. Brown in :Live directly:
+  + Remove psix-man to free up space
+  + Remove man and related packages, as man-pages are not being
+    installed.
+
+-------------------------------------------------------------------
 Tue Apr  6 13:55:09 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Switch from exfat-utils to exfatprogs, see also gh#yast/yast-storage-ng#1214

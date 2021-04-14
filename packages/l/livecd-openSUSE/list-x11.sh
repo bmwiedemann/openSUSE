@@ -67,6 +67,10 @@ buildignore exo-lang
 buildignore xfdesktop-lang
 buildignore xfce4-power-manager-lang
 buildignore noto-sans-cjk-fonts
+buildignore man-pages-posix
+buildignore libvulkan_radeon
+buildignore man
+buildignore groff
 
 # Moved here from list-common.sh. cyrus-sasl is needed by Pidgin in Xfce Live CD
 buildignore cyrus-sasl
