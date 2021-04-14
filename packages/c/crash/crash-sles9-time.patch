@@ -70,7 +70,7 @@ Index: b/kernel.c
  			fprintf(fp, "            p2m_mid_missing: %lx\n", kt->pvops_xen.p2m_mid_missing);
  		fprintf(fp, "                p2m_missing: %lx\n", kt->pvops_xen.p2m_missing);
  	}
-+	fprintf(fp, "         is_suse_kernel: %ld\n", kt->is_suse_kernel);
++	fprintf(fp, "         is_suse_kernel: %d\n", kt->is_suse_kernel);
  }
  
  /*

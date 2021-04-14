@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  8 10:37:00 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Add back some more missing KMP conditionals
+- Refresh crash-sles9-time.patch
+   * fix warning: format '%ld' expects argument of type 'long int', but argument 3 has type 'int'
+
+-------------------------------------------------------------------
 Tue Apr  6 15:49:26 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Crash KMPs cannot be always built.

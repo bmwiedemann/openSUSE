@@ -330,6 +330,7 @@ export CFLAGS="$RPM_OPT_FLAGS -fno-builtin-memset -fno-strict-aliasing"
 export GDB="gdb-%{gdb_version}"
 make RPMPKG="`cat .rh_rpm_package`" %{?jobs:-j%jobs}
 make extensions %{?jobs:-j%jobs}
+%if 0%{?build_kmp}
 export EXTRA_CFLAGS='-DVERSION=\"%version\"'
 for flavor in %flavors_to_build; do
     rm -rf kbuild/$flavor
@@ -337,6 +338,7 @@ for flavor in %flavors_to_build; do
     make -C /usr/src/linux-obj/%arch/$flavor modules \
       M=$PWD/kbuild/$flavor
 done
+%endif
 
 %install
 mkdir -p %{buildroot}%{_bindir}
@@ -368,6 +370,7 @@ mkdir -p $RPM_BUILD_ROOT/%{_datadir}/sial/crash
 install -m 0644 sial-scripts-%{scripts_version}/*.c \
                 $RPM_BUILD_ROOT/%{_datadir}/sial/crash
 %endif
+%if 0%{?build_kmp}
 # memory driver module
 export INSTALL_MOD_PATH=$RPM_BUILD_ROOT
 export INSTALL_MOD_DIR=updates
@@ -375,6 +378,7 @@ for flavor in %flavors_to_build; do
      make -C /usr/src/linux-obj/%arch/$flavor modules_install \
        M=$PWD/kbuild/$flavor
 done
+%endif
 
 %clean
 rm -rf %{buildroot}
