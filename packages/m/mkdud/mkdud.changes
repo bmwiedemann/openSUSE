@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Tue Apr 13 15:00:45 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#35
+- adapt to support xz compressed kernel modules (bsc#1184550)
+- 1.51
+
+--------------------------------------------------------------------
 Fri Jul 10 13:28:59 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mkdud#34
