@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  6 02:20:47 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Adapt sle-classic to version 40.0
+  + Update gse-sle-classic-ext.patch
+  + Update sle-classic@suse.com.tar.gz
+
+-------------------------------------------------------------------
 Sat Mar 20 16:50:23 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:

@@ -1,7 +1,7 @@
-Index: gnome-shell-extensions-3.35.92/extensions/window-list/extension.js
+Index: gnome-shell-extensions-40.0/extensions/window-list/extension.js
 ===================================================================
---- gnome-shell-extensions-3.35.92.orig/extensions/window-list/extension.js
-+++ gnome-shell-extensions-3.35.92/extensions/window-list/extension.js
+--- gnome-shell-extensions-40.0.orig/extensions/window-list/extension.js
++++ gnome-shell-extensions-40.0/extensions/window-list/extension.js
 @@ -23,6 +23,9 @@ const GroupingMode = {
      ALWAYS: 2,
  };
@@ -30,7 +30,7 @@ Index: gnome-shell-extensions-3.35.92/extensions/window-list/extension.js
  
          let layout = new Clutter.BoxLayout({ homogeneous: true });
          this._windowList = new St.Widget({
-@@ -833,7 +838,8 @@ class WindowList extends St.Widget {
+@@ -832,7 +837,8 @@ class WindowList extends St.Widget {
          let workspacesOnMonitor = this._monitor === Main.layoutManager.primaryMonitor ||
                                    !this._mutterSettings.get_boolean('workspaces-only-on-primary');
  
@@ -40,7 +40,7 @@ Index: gnome-shell-extensions-3.35.92/extensions/window-list/extension.js
      }
  
      _updateWindowListVisibility() {
-@@ -869,6 +875,9 @@ class WindowList extends St.Widget {
+@@ -868,6 +874,9 @@ class WindowList extends St.Widget {
      }
  
      _getMaxWindowListWidth() {
@@ -50,7 +50,7 @@ Index: gnome-shell-extensions-3.35.92/extensions/window-list/extension.js
          let indicatorsBox = this._workspaceIndicator.get_parent();
          return this.width - indicatorsBox.get_preferred_width(-1)[1];
      }
-@@ -1078,7 +1087,8 @@ class WindowList extends St.Widget {
+@@ -1068,7 +1077,8 @@ class WindowList extends St.Widget {
          this._mutterSettings.disconnect(this._workspacesOnlyOnPrimaryChangedId);
          this._mutterSettings.disconnect(this._dynamicWorkspacesChangedId);
  
@@ -60,7 +60,7 @@ Index: gnome-shell-extensions-3.35.92/extensions/window-list/extension.js
  
          Main.ctrlAltTabManager.removeGroup(this);
  
-@@ -1118,6 +1128,7 @@ class Extension {
+@@ -1107,6 +1117,7 @@ class Extension {
      constructor() {
          this._windowLists = null;
          this._hideOverviewOrig = Main.overview.hide;
@@ -68,7 +68,7 @@ Index: gnome-shell-extensions-3.35.92/extensions/window-list/extension.js
      }
  
      enable() {
-@@ -1137,19 +1148,47 @@ class Extension {
+@@ -1126,19 +1137,47 @@ class Extension {
              this._hideOverviewOrig.call(Main.overview);
          };
  
@@ -120,7 +120,7 @@ Index: gnome-shell-extensions-3.35.92/extensions/window-list/extension.js
      }
  
      disable() {
-@@ -1163,6 +1202,11 @@ class Extension {
+@@ -1152,6 +1191,11 @@ class Extension {
          this._monitorsChangedId = 0;
  
          this._windowLists.forEach(windowList => {
@@ -132,7 +132,7 @@ Index: gnome-shell-extensions-3.35.92/extensions/window-list/extension.js
              windowList.hide();
              windowList.destroy();
          });
-@@ -1171,6 +1215,11 @@ class Extension {
+@@ -1160,6 +1204,11 @@ class Extension {
          Main.windowPicker.destroy();
          delete Main.windowPicker;
  
@@ -144,10 +144,10 @@ Index: gnome-shell-extensions-3.35.92/extensions/window-list/extension.js
          Main.overview.hide = this._hideOverviewOrig;
      }
  
-Index: gnome-shell-extensions-3.35.92/extensions/window-list/sle-classic.css
+Index: gnome-shell-extensions-40.0/extensions/window-list/sle-classic.css
 ===================================================================
 --- /dev/null
-+++ gnome-shell-extensions-3.35.92/extensions/window-list/sle-classic.css
++++ gnome-shell-extensions-40.0/extensions/window-list/sle-classic.css
 @@ -0,0 +1,46 @@
 +@import url("stylesheet.css");
 +
@@ -195,11 +195,11 @@ Index: gnome-shell-extensions-3.35.92/extensions/window-list/sle-classic.css
 +    color: #888;
 +    box-shadow: inset -1px -1px 1px rgba(0,0,0,0.5);
 +  }
-Index: gnome-shell-extensions-3.35.92/extensions/places-menu/extension.js
+Index: gnome-shell-extensions-40.0/extensions/places-menu/extension.js
 ===================================================================
---- gnome-shell-extensions-3.35.92.orig/extensions/places-menu/extension.js
-+++ gnome-shell-extensions-3.35.92/extensions/places-menu/extension.js
-@@ -133,13 +133,21 @@ function init() {
+--- gnome-shell-extensions-40.0.orig/extensions/places-menu/extension.js
++++ gnome-shell-extensions-40.0/extensions/places-menu/extension.js
+@@ -139,13 +139,21 @@ function init() {
  
  let _indicator;
  
@@ -222,10 +222,10 @@ Index: gnome-shell-extensions-3.35.92/extensions/places-menu/extension.js
  }
  
  function disable() {
-Index: gnome-shell-extensions-3.35.92/extensions/apps-menu/extension.js
+Index: gnome-shell-extensions-40.0/extensions/apps-menu/extension.js
 ===================================================================
---- gnome-shell-extensions-3.35.92.orig/extensions/apps-menu/extension.js
-+++ gnome-shell-extensions-3.35.92/extensions/apps-menu/extension.js
+--- gnome-shell-extensions-40.0.orig/extensions/apps-menu/extension.js
++++ gnome-shell-extensions-40.0/extensions/apps-menu/extension.js
 @@ -27,6 +27,10 @@ const NAVIGATION_REGION_OVERSHOOT = 50;
  Gio._promisify(Gio._LocalFilePrototype, 'query_info_async', 'query_info_finish');
  Gio._promisify(Gio._LocalFilePrototype, 'set_attributes_async', 'set_attributes_finish');
@@ -237,7 +237,7 @@ Index: gnome-shell-extensions-3.35.92/extensions/apps-menu/extension.js
  var ApplicationMenuItem = GObject.registerClass(
  class ApplicationMenuItem extends PopupMenu.PopupBaseMenuItem {
      _init(button, app) {
-@@ -710,8 +714,6 @@ class ApplicationsButton extends PanelMe
+@@ -707,8 +711,6 @@ class ApplicationsButton extends PanelMe
          this.applicationsByCategory = {};
          this._tree.load_sync();
          let root = this._tree.get_root_directory();
@@ -246,7 +246,7 @@ Index: gnome-shell-extensions-3.35.92/extensions/apps-menu/extension.js
          let iter = root.iter();
          let nextType;
          while ((nextType = iter.next()) !== GMenu.TreeItemType.INVALID) {
-@@ -726,11 +728,15 @@ class ApplicationsButton extends PanelMe
+@@ -723,11 +725,15 @@ class ApplicationsButton extends PanelMe
              this.applicationsByCategory[categoryId] = [];
              this._loadCategory(categoryId, dir);
              if (this.applicationsByCategory[categoryId].length > 0) {
@@ -264,7 +264,7 @@ Index: gnome-shell-extensions-3.35.92/extensions/apps-menu/extension.js
          // Load applications
          this._displayButtons(this._listApplications(null));
  
-@@ -793,7 +799,10 @@ let appsMenuButton;
+@@ -790,7 +796,10 @@ let appsMenuButton;
  function enable() {
      appsMenuButton = new ApplicationsButton();
      let index = Main.sessionMode.panel.left.indexOf('activities') + 1;
@@ -276,26 +276,53 @@ Index: gnome-shell-extensions-3.35.92/extensions/apps-menu/extension.js
  }
  
  function disable() {
-Index: gnome-shell-extensions-3.35.92/data/gnome-classic.scss
+Index: gnome-shell-extensions-40.0/data/gnome-classic.css
 ===================================================================
---- gnome-shell-extensions-3.35.92.orig/data/gnome-classic.scss
-+++ gnome-shell-extensions-3.35.92/data/gnome-classic.scss
-@@ -63,9 +63,9 @@ $variant: 'light';
-   &.lock-screen,
-   &.unlock-screen, 
-   &.login-screen { 
--    background-color: transparentize($bg_color, 0.5);
--    background-gradient-start: transparentize($bg_color, 0.5);
--    background-gradient-end: transparentize($bg_color, 0.5);
+--- gnome-shell-extensions-40.0.orig/data/gnome-classic.css
++++ gnome-shell-extensions-40.0/data/gnome-classic.css
+@@ -2257,9 +2257,9 @@ StScrollBar {
+   #panel.solid .panel-corner:focus {
+     -panel-corner-radius: 0; }
+   #panel.lock-screen, #panel.unlock-screen, #panel.login-screen, #panel.solid.lock-screen, #panel.solid.unlock-screen, #panel.solid.login-screen {
+-    background-color: rgba(246, 245, 244, 0.5);
+-    background-gradient-start: rgba(246, 245, 244, 0.5);
+-    background-gradient-end: rgba(246, 245, 244, 0.5);
 +    background-color: transparent;
 +    background-gradient-direction: none;
 +    background-gradient-end: none;
-     border-bottom: none;
-     .panel-button { color: $osd_fg_color; }
-   }
-@@ -94,3 +94,5 @@ $variant: 'light';
-   background-image: url("calendar-today.svg");
- }
+     border-bottom: none; }
+     #panel.lock-screen .panel-button, #panel.unlock-screen .panel-button, #panel.login-screen .panel-button, #panel.solid.lock-screen .panel-button, #panel.solid.unlock-screen .panel-button, #panel.solid.login-screen .panel-button {
+       color: #eeeeec; }
+@@ -2286,3 +2286,6 @@ StScrollBar {
  
+ .calendar-day-with-events {
+   background-image: url("calendar-today.svg"); }
++
 +.popup-menu.panel-menu {
 +    margin-bottom: 0em; }
+Index: gnome-shell-extensions-40.0/extensions/workspace-indicator/extension.js
+===================================================================
+--- gnome-shell-extensions-40.0.orig/extensions/workspace-indicator/extension.js
++++ gnome-shell-extensions-40.0/extensions/workspace-indicator/extension.js
+@@ -322,7 +322,8 @@ class WorkspaceIndicator extends PanelMe
+     _updateThumbnailVisibility() {
+         const { workspaceManager } = global;
+         const vertical = workspaceManager.layout_rows === -1;
+-        const useMenu =
++        let isSLEClassicMode = Main.sessionMode.currentMode == "sle-classic" ? true : false;
++        const useMenu = isSLEClassicMode ? true :
+             vertical || workspaceManager.n_workspaces > MAX_THUMBNAILS;
+         this.reactive = useMenu;
+ 
+Index: gnome-shell-extensions-40.0/extensions/workspace-indicator/stylesheet.css
+===================================================================
+--- gnome-shell-extensions-40.0.orig/extensions/workspace-indicator/stylesheet.css
++++ gnome-shell-extensions-40.0/extensions/workspace-indicator/stylesheet.css
+@@ -1,5 +1,7 @@
+ .panel-workspace-indicator {
+   padding: 0 8px;
++  background-color: rgba(200, 200, 200, .5);
++  border: 1px solid #cccccc;
+ }
+ 
+ .panel-workspace-indicator-box {
