@@ -18,7 +18,7 @@
 
 %define cpan_name Perl-Tidy
 Name:           perl-Perl-Tidy
-Version:        20210111
+Version:        20210402
 Release:        0
 #Upstream: GPL-1.0-or-later
 Summary:        Parses and beautifies perl source
