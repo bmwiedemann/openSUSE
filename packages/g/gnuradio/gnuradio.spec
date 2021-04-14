@@ -1,7 +1,7 @@
 #
 # spec file for package gnuradio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,40 +15,31 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define sover  3_8_3
 %ifarch %{arm}
 # boo#1182440
 %define _lto_cflags %{nil}
 %endif
-
 %bcond_without docs
-
-%define sover  3_8_2
 Name:           gnuradio
-Version:        3.8.2.0
+Version:        3.8.3.0
 Release:        0
 Summary:        GNU software radio
 License:        GPL-3.0-or-later
 Group:          Productivity/Hamradio/Other
 URL:            https://gnuradio.org
-Source0:        https://github.com/gnuradio/gnuradio/releases/download/v%{version}/gnuradio-%{version}.tar.xz
+Source0:        https://github.com/gnuradio/gnuradio/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # http://www.nathanwest.us/grc_to_37.sh
 Source4:        grc_to_37.sh
 Source99:       %{name}-rpmlintrc
 Patch0:         missing_library.patch
 Patch1:         revert-23cece0d0.patch
 Patch2:         0001-gr-digital-glfsr.h-drop-boost-cstdint.hpp-and-use-cs.patch
-Patch3:         0002-boost_qualify_placeholders_with_their_full_namespace.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake >= 3.8
 BuildRequires:  cppunit-devel
 BuildRequires:  cppzmq-devel
-%if %{with docs}
-BuildRequires:  doxygen
-# TeX is required for formula rendering
-BuildRequires:  texlive-dvips
-BuildRequires:  texlive-latex
-BuildRequires:  tex(newunicodechar.sty)
-%endif
 BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel
 BuildRequires:  gcc-c++
@@ -62,6 +53,7 @@ BuildRequires:  libgsm-devel
 BuildRequires:  libjack-devel
 BuildRequires:  libmpir-devel
 BuildRequires:  log4cpp-devel
+BuildRequires:  ninja
 BuildRequires:  orc
 BuildRequires:  pkgconfig
 BuildRequires:  portaudio-devel
@@ -79,6 +71,9 @@ BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-six
 BuildRequires:  qwt6-qt5-devel
 BuildRequires:  swig >= 3.0.8
+BuildRequires:  typelib(Gtk) = 3.0
+BuildRequires:  typelib(PangoCairo) = 1.0
+BuildRequires:  typelib(cairo) = 1.0
 BuildRequires:  uhd-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(codec2)
@@ -86,16 +81,20 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(py3cairo)
 BuildRequires:  pkgconfig(volk) >= 2.0
-BuildRequires:  typelib(Gtk) = 3.0
-BuildRequires:  typelib(PangoCairo) = 1.0
-BuildRequires:  typelib(cairo) = 1.0
-Requires:       python3-numpy
-Requires:       python3-pyaml >= 3.11
-Requires:       python3-qt5
 # gr_modtool dependencies
 Requires:       python3-click
 Requires:       python3-click-plugins
 Requires:       python3-mako
+Requires:       python3-numpy
+Requires:       python3-pyaml >= 3.11
+Requires:       python3-qt5
+%if %{with docs}
+BuildRequires:  doxygen
+# TeX is required for formula rendering
+BuildRequires:  texlive-dvips
+BuildRequires:  texlive-latex
+BuildRequires:  tex(newunicodechar.sty)
+%endif
 
 %description
 GNU Radio is a collection of software that when combined with minimal
@@ -164,11 +163,7 @@ performance wireless devices into software problems.
 This package contains some examples of using GNU Radio.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 
 # remove buildtime from documentation
 sed -i 's|^HTML_TIMESTAMP         = YES|HTML_TIMESTAMP         = NO|' docs/doxygen/Doxyfile.in
@@ -178,6 +173,7 @@ sed -i 's|^HTML_TIMESTAMP         = YES|HTML_TIMESTAMP         = NO|' docs/doxyg
 find  gr-utils/python/modtool/templates/gr-newmod -name CMakeLists.txt -exec mv '{}' '{}.tmpl' \;
 
 %build
+%define __builder ninja
 %cmake \
   -DENABLE_GRC=ON \
 %ifarch armv6l armv6hl
