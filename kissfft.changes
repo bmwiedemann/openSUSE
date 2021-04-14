@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 13 04:34:12 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 131.1.0
+  * First release with semantic versioning. It has the roughly
+    the same code as v131, but some symbol visibility changes and
+    build enhancements to improve shared object usage and use as
+    a packaged/installed library.
+  * Removed kfc.h and kissfft_i32.hh from the install list since
+    they are not as generally useful as the others
+- Switch to cmake build
+- Add kissfft subpackage and rename library subpackage to match
+  library name
+- Drop kissfft-shared.patch (no longer necessary)
+- Drop kissfft-py3_1.patch and kissfft-py3_2.patch (merged
+  upstream)
+
+-------------------------------------------------------------------
 Sat Apr 25 12:15:45 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Initial package (v1.3.1)
