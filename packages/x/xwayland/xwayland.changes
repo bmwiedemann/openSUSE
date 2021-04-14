@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Tue Apr 13 15:21:03 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 21.1.1
+  * Fix XChangeFeedbackControl() request underflow (CVE-2021-3472,
+    ZDI-CAN-1259, bsc#1180128)
+
+-------------------------------------------------------------------
+Mon Apr 12 18:01:05 UTC 2021 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Additionally to not packing /usr/lib64/xorg/protocol.txt, delete it to fix 
+  the build 
+
+-------------------------------------------------------------------
+Mon Apr 12 10:48:11 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Make vendor name the same as xorg-x11-server
+
+-------------------------------------------------------------------
+Mon Apr 12 09:22:12 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed conflicting /usr/lib64/xorg/protocol.txt (already in
+  xorg-x11-server package)
+
+-------------------------------------------------------------------
+Wed Apr  7 08:55:57 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- added summary for -devel package 
+- some cleanup
+
+-------------------------------------------------------------------
+Wed Mar 17 21:20:29 UTC 2021 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Update to version 21.1.0:
+  * meson: Make sure XKM_OUTPUT_DIR has a trailing slash
+  * xwayland: Fix LeaveNotify for relative pointer
+- Highlights compared to xserver 1.20.10:
+  * Xwayland's XVideo support (via glamor) now supports NV12
+  * glamor can now accelerate some more RENDER extension formats
+  * Xwayland's GLX provider now uses the EGL implementation instead of Mesa's
+    swrast_dri.so directly
+  * Xwayland can now use the wp_viewport Wayland protocol for up-scaling of
+    fullscreen applications setting lower resolutions via the RandR / 
+    XFree86-VidModeExtension extensions
+  * Xwayland now alternates between multiple buffers for all Wayland surfaces,
+    making it less of a special case compared to other Wayland clients
+  * Xwayland can now use memfd_create for creating buffers shared with the
+    Wayland compositor when glamor hardware acceleration is disabled
+  * Xwayland has better support for clients using relative mouse input and 
+    keyboard grabs
+  * An Xwayland.1 manpage is now installed
+  * Xwayland now supports -listenfd, -version and -verbose command line options
+  * Xwayland now installs an xwayland.pc file which helps discovering the path
+    of the installed Xwayland binary and the features it supports
+  * Only meson is supported for building
+  * Only Xwayland and Xvfb can be built, only Xwayland can be installed
+
+-------------------------------------------------------------------
+Thu Mar  4 09:49:25 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 21.0.99.902
+  * second release candidate for the standalone Xwayland 21.1.0 release 
+  * meson.build: Keep the protocol version looking like xserver 1.20.x did
+  * xwayland: Delay cursor visibility update
+
+-------------------------------------------------------------------
+Fri Feb 26 10:25:41 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- added Buildrequires to pkgconfig(glproto) and pkgconfig(gl) to 
+  fix build on Leap
+
+-------------------------------------------------------------------
+Fri Feb 19 13:22:04 UTC 2021 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Initial stand-alone Xwayland package version 21.0.99.901 (boo#1182677)
