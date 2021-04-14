@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  6 14:00:37 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.4
+- Changes since 5.21.3:
+  * Prefer "21:9" over "64:27" aspect ratio
+
+-------------------------------------------------------------------
 Tue Mar 16 13:55:23 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.3
