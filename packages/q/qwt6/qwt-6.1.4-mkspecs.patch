@@ -1,0 +1,71 @@
+Index: qwt-6.1.4/qwtconfig.pri
+===================================================================
+--- qwt-6.1.4.orig/qwtconfig.pri
++++ qwt-6.1.4/qwtconfig.pri
+@@ -19,8 +19,7 @@ QWT_VERSION      = $${QWT_VER_MAJ}.$${QW
+ QWT_INSTALL_PREFIX = $$[QT_INSTALL_PREFIX]
+ 
+ unix {
+-    QWT_INSTALL_PREFIX    = /usr/local/qwt-$$QWT_VERSION
+-    # QWT_INSTALL_PREFIX = /usr/local/qwt-$$QWT_VERSION-qt-$$QT_VERSION
++    QWT_INSTALL_PREFIX = $$[QT_INSTALL_PREFIX]
+ }
+ 
+ win32 {
+@@ -28,9 +27,9 @@ win32 {
+     # QWT_INSTALL_PREFIX = C:/Qwt-$$QWT_VERSION-qt-$$QT_VERSION
+ }
+ 
+-QWT_INSTALL_DOCS      = $${QWT_INSTALL_PREFIX}/doc
+-QWT_INSTALL_HEADERS   = $${QWT_INSTALL_PREFIX}/include
+-QWT_INSTALL_LIBS      = $${QWT_INSTALL_PREFIX}/lib
++QWT_INSTALL_DOCS      = $$[QT_INSTALL_DOCS]/qwt6
++QWT_INSTALL_HEADERS   = $$[QT_INSTALL_HEADERS]/qwt6
++QWT_INSTALL_LIBS      = $$[QT_INSTALL_LIBS]
+ 
+ ######################################################################
+ # Designer plugin
+@@ -41,15 +40,13 @@ QWT_INSTALL_LIBS      = $${QWT_INSTALL_P
+ # add $${QWT_INSTALL_PREFIX}/plugins to QT_PLUGIN_PATH in the
+ # runtime environment of designer/creator.
+ ######################################################################
+-
+-QWT_INSTALL_PLUGINS   = $${QWT_INSTALL_PREFIX}/plugins/designer
+-
+ # linux distributors often organize the Qt installation
+ # their way and QT_INSTALL_PREFIX doesn't offer a good
+ # path. Also QT_INSTALL_PREFIX is only one of the default
+ # search paths of the designer - not the Qt creator
++######################################################################
+ 
+-#QWT_INSTALL_PLUGINS   = $$[QT_INSTALL_PREFIX]/plugins/designer
++QWT_INSTALL_PLUGINS   = $$[QT_INSTALL_PLUGINS]/designer
+ 
+ ######################################################################
+ # Features
+@@ -63,8 +60,7 @@ QWT_INSTALL_PLUGINS   = $${QWT_INSTALL_P
+ # with every Qt upgrade.
+ ######################################################################
+ 
+-QWT_INSTALL_FEATURES  = $${QWT_INSTALL_PREFIX}/features
+-# QWT_INSTALL_FEATURES  = $$[QT_INSTALL_PREFIX]/features
++QWT_INSTALL_FEATURES  = $$[QMAKE_MKSPECS]/features
+ 
+ ######################################################################
+ # Build the static/shared libraries.
+@@ -141,7 +137,7 @@ win32 {
+ # Otherwise you have to build them from the examples directory.
+ ######################################################################
+ 
+-#QWT_CONFIG     += QwtExamples
++QWT_CONFIG     += QwtExamples
+ 
+ ######################################################################
+ # The playground is primarily intended for the Qwt development
+@@ -171,5 +167,5 @@ macx:!static:CONFIG(qt_framework, qt_fra
+ 
+ unix {
+ 
+-    #QWT_CONFIG     += QwtPkgConfig
++    QWT_CONFIG     += QwtPkgConfig
+ }
