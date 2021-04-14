@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 13 04:16:33 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.97.0
+  Features:
+  * ENABLE_EXECINFO option in CMake to enable/disable stack trace
+  Bug Fixes:
+  * Fix attempt to access the released memory
+  * Fix April month name
+  * Refer to unknown user as unknown-user instead of user
+  * Handle low memory situation
+  * Fix many compiler warnings
+
+-------------------------------------------------------------------
 Tue Jan  7 11:44:35 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove marketing filler wording from description.
