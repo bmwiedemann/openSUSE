@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr 13 08:56:24 UTC 2021 - idoenmez+factory@suse.de
+
+- Update to version 0.33.1+git.20210412T140928.74f5d4940e:
+  * wayland: support the display-hidpi-scale property
+  * demux: undeprecate --cache-secs
+  * audio/aframe: reuse data buffer if less than 8 channels
+  * stream: turn stream_info.open2's args argument const
+  * stream_slice: fix use-after-free if inner stream fails to open
+  * player/scripting: fix use-after-free when loading script folders
+  * stream_mf: set correct stream origin
+  * demux_mf: improve format string processing
+  * manpage: fix a typo in the --aid option note
+  * vo_gpu: adjust interpolation_threshold's default
+  * options: Add validation macro for int type
+  * demux: Move demuxer help to new standard mechanism
+  * options: Make validation and help possible for all option types
+
+-------------------------------------------------------------------
 Tue Mar 23 13:11:23 UTC 2021 - idonmez@suse.com
 
 - Update to version 0.33.0+git.20210321T171820.6265724f33:
