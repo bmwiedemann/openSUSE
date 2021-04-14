@@ -1,7 +1,7 @@
 #
 # spec file for package speedtest-cli
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define oname   speedtest_cli
 Name:           speedtest-cli
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        Command line interface for testing internet bandwidth
 License:        Apache-2.0
@@ -36,7 +36,8 @@ Command line interface for testing internet bandwidth using
 speedtest.net
 
 %prep
-%setup -q
+%autosetup
+sed -i -e '/^#!\//, 1d' *.py
 
 %build
 %python3_build
