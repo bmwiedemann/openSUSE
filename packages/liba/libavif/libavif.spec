@@ -29,6 +29,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/AOMediaCodec/libavif
 #
 Source:         https://github.com/AOMediaCodec/libavif/archive/v%{version}/%{name}-%{version}.tar.gz
+Source99:       baselibs.conf
 #
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
