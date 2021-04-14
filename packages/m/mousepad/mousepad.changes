@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Apr  3 11:54:39 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.5.4
+  * Add --line/-l and --column/-c number (gxo#apps/mousepad#107,
+    gxo#apps/mousepad!83)
+  * Port to GtkSourceView 4 (gxo#apps/mousepad#55,
+    gxo#apps/mousepad#80, gxo#apps/mousepad!10)
+  * Delay request to scroll to cursor for the correct active view
+  * Monitor hardlinks with glib 2.56.2 (gxo#apps/mousepad#110,
+    gxo#apps/mousepad!82)
+  * Transfer encoding from remote to primary instance
+    (gxo#apps/mousepad#109)
+  * Prevent a crash when no language is found
+  * Make window require attention when opening new tabs
+    (gxo#apps/mousepad#106, gxo#apps/mousepad#93, gxo#apps/mousepad!81)
+  * Fix BOM array (gxo#apps/mousepad!80)
+  * Correctly initialize toolbar style combo box (gxo#apps/mousepad#103)
+  * Allow checking parent sources when looking up schema
+    (gxo#apps/mousepad#101)
+  * Fix missing parameter to "select-all" signal (gxo#apps/mousepad!79)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Feb 28 18:21:17 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.5.3
