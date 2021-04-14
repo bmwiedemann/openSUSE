@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Mar 26 14:17:24 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Enable AVIF support
+
+-------------------------------------------------------------------
+Mon Mar  8 19:59:24 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to 2.3.2:
+  * gif: allow decodin when both Global and Local Colormaps (#494)
+  * avif: Support for AVIF images via libavif (#557)
+  * heif: Support for HEIF/AVIF images via libheif (#395) (#557)
+  * webp: Drop ../deps/ search when building with cmake
+  * Windows: Remove unused snprintf fallback
+
+-------------------------------------------------------------------
+Tue Feb 23 19:03:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  - Fix potential integer overflow detected by oss-fuzz
+  - Fix #615 using libraqm
+  - Fix #303: gdlib.pc: use Requires instead of Libs (#537)
+  - Fixed #472: Adjusting CMakeLists.txt (#582)
+  - Fix #615: gdImageStringFT() fails for empty strings as of libgd 2.3.0 (#633)
+  - Fix typo but preserve BC
+  - Compute average in gdGuessBackgroundColorFromCorners properly (#483)
+  - CMakeLists.txt: zlib is enabled implicitly
+  - src/config.h.cmake: replace #cmakedefine01 with #define in macro ENABLE_GD_FOORMATS (#622)
+  - gdlib.pc: use prefixes for pkgconfig file
+  - cmake: remove required host includes (#617)
+  - Move initial declaration out of `for` loop
+  - distribute getlib script
+  - Make gd_nnquant.c less likely to introduce duplicate definitions (#601)
+  - webp: support pkg-config file
+  - gd_io: replace internal Putchar with gdPutC
+  - gd_io: trim unused Putword function
+
+-------------------------------------------------------------------
 Sun Aug  9 20:39:07 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Version update to 2.3.0:

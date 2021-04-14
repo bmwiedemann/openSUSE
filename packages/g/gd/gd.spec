@@ -1,7 +1,7 @@
 #
 # spec file for package gd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define prjname libgd
 %define lname libgd3
 Name:           gd
-Version:        2.3.0
+Version:        2.3.2
 Release:        0
 Summary:        A Drawing Library for Programs That Use PNG and JPEG Output
 License:        MIT
@@ -39,6 +39,9 @@ BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
+BuildRequires:  pkgconfig(libavif)
+%endif
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(xpm)
@@ -104,6 +107,9 @@ export CFLAGS="%{optflags} -ffp-contract=off"
 	--with-png \
 	--with-xpm \
 	--with-webp \
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
+	--with-avif \
+%endif
 	--with-zlib \
 	--disable-static
 %make_build
