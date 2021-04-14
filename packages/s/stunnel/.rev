@@ -212,4 +212,19 @@ Do not replace the active config file: boo#1182376</comment>
      -  The &quot;redirect&quot; option was fixed to properly handle unauthenticated requests (thx to Martin Stein). boo#1182529</comment>
     <requestid>874110</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>de8958a079ed48b512618e755c41225f</srcmd5>
+    <version>5.59</version>
+    <time>1618387833</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable testsuite for everything except Tumbleweed since it does not work on Leap/SLE
+- update to 5.59:
+  * new feature: Client-side &quot;protocol = ldap&quot; support
+  * Fix configuration reload when compression is used
+  * Fix paths in generated manuals
+  * Fix test suite fixed not to require external connectivity
+- run testsuite during package build
+</comment>
+    <requestid>884991</requestid>
+  </revision>
 </revisionlist>

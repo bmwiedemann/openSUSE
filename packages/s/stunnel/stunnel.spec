@@ -38,7 +38,7 @@ Requires(pre):  /usr/sbin/useradd
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           stunnel
-Version:        5.58
+Version:        5.59
 Release:        0
 Summary:        Universal TLS Tunnel
 License:        GPL-2.0-or-later
@@ -47,24 +47,28 @@ Recommends:     stunnel-doc = %version
 URL:            http://www.stunnel.org/
 Source:         https://www.stunnel.org/downloads/%{name}-%{version}.tar.gz
 Source1:        https://www.stunnel.org/downloads/%{name}-%{version}.tar.gz.asc
-Source2:        stunnel.keyring
+Source2:        https://www.stunnel.org/pgp.asc#/%{name}.keyring
 Source3:        sysconfig.syslog-stunnel
 Source4:        stunnel.rc
 Source7:        stunnel.README
 BuildRequires:  libopenssl-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  zlib-devel
-Requires(pre):         %fillup_prereq
-Requires(pre):         %{_sbindir}/useradd
-Requires(pre):         fileutils
-Requires(pre):         textutils
+# test dependencies
+BuildRequires:  netcat
+BuildRequires:  procps
+#
+Requires(pre):  %fillup_prereq
+Requires(pre):  %{_sbindir}/useradd
+Requires(pre):  fileutils
+Requires(pre):  textutils
 %if 0%{?suse_version} >= 1500
 Requires(pre):  group(nogroup)
 %endif
 
 %description
 Stunnel is a proxy designed to add TLS encryption functionality to existing clients and servers without
-any changes in the programs' code. Its architecture is optimized for security, portability, and 
+any changes in the programs' code. Its architecture is optimized for security, portability, and
 scalability (including load-balancing), making it suitable for large deployments.
 
 %package doc
@@ -93,9 +97,11 @@ sed -i 's/-m 1770//g' tools/Makefile.in
 	--bindir=%{_sbindir}
 make %{?_smp_mflags} LDADD="-pie -Wl,-z,defs,-z,relro,-z,now"
 
-# connot do checks with 5.49, checks depend on ncat and network interaction
-#%check
-#make %{?_smp_mflags} check
+%check
+# only works in Tumbleweed as of 2021-04-08
+%if 0%{?suse_version} > 1500
+  make %{?_smp_mflags} check
+%endif
 
 %install
 %if 0%{?suse_version} >= 1210
@@ -122,13 +128,13 @@ sed -i "s/^;setgid =/setgid =/" %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf
 sed -i "s/^;include =/include =/" %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample
 sed -i '/gmail-pop3/,+25 s/^./;&/' %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample
 sed -i "s/; Sample stunnel/# Sample stunnel/" %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample
-sed -i "s/^;/#/" %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample 
+sed -i "s/^;/#/" %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample
 mv %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf-sample %{buildroot}/%{_sysconfdir}/stunnel/stunnel.conf
 
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf %{buildroot}%{_docdir}/stunnel/INSTALL
-rm -rf %{buildroot}%{_docdir}/stunnel/INSTALL.WCE
-rm -rf %{buildroot}%{_docdir}/stunnel/INSTALL.W32
+rm -rf %{buildroot}%{_docdir}/stunnel/INSTALL.WCE.md
+rm -rf %{buildroot}%{_docdir}/stunnel/INSTALL.W32.md
 rm -rf %{buildroot}%{_docdir}/stunnel/ca-certs.pem
 rm -rf %{buildroot}%{_docdir}/stunnel/plugins/
 

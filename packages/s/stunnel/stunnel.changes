@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr  8 09:24:35 UTC 2021 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- Disable testsuite for everything except Tumbleweed since it does not work on Leap/SLE
+
+-------------------------------------------------------------------
+Tue Apr  6 16:58:52 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.59:
+  * new feature: Client-side "protocol = ldap" support
+  * Fix configuration reload when compression is used
+  * Fix paths in generated manuals
+  * Fix test suite fixed not to require external connectivity
+- run testsuite during package build
+
+-------------------------------------------------------------------
 Sun Feb 21 07:29:45 UTC 2021 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
 
 - Update to 5.58:
