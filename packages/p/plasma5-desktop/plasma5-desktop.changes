@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr  6 14:00:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.4
+- Changes since 5.21.3:
+  * fixup! fix broken keyboard configurations with single layout on Wayland
+  * fix broken keyboard configurations with single layout on Wayland (kde#433576)
+  * Fix zero badges (eg when downloading small files with Firefox)
+  * [applets/kickoff] Make section headers more section headery (kde#434669)
+
+-------------------------------------------------------------------
 Tue Mar 16 13:55:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.3
