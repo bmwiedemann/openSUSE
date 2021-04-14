@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr 10 03:07:42 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.16
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.16  2021-04-08
+    - Added support for format inheritance.
+    - Improved Mojo::Server::CGI with support for before_server_start hook.
+
+  9.15  2021-03-30
+    - Improved form generator in Mojo::UserAgent::Transactor to allow custom Content-Disposition headers.
+
+-------------------------------------------------------------------
 Wed Mar 24 03:08:29 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.14
