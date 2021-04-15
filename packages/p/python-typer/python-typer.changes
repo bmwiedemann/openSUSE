@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Wed Apr 14 16:06:14 UTC 2021 - Matthias Bach <marix@marix.org>
+
+- Properly specify package group.
+- Suppress false-positive detection of empty file in rpmlint.
+- Properly declare minimum version requirement vs. python-click to
+  avoid broken installation on Leap.
+
+-------------------------------------------------------------------
+Tue Apr 13 19:30:11 UTC 2021 - Matthias Bach <marix@marix.org> - 0.3.2
+
+- Initial package release

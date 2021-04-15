@@ -1,0 +1,2 @@
+# Marker file required for conformity with PEP-561
+addFilter("zero-length /usr/lib/python3.6/site-packages/typer/py.typed")
