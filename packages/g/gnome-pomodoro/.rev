@@ -211,4 +211,12 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
     <comment>get actually ready for gnome-shell 3.38 (forwarded request 840298 from develop7)</comment>
     <requestid>841168</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>88413c8c05b9e549409bc121fdd1c41e</srcmd5>
+    <version>0.19.1</version>
+    <time>1618498645</time>
+    <user>dimstar_suse</user>
+    <comment>Support gnome-shell &lt; 41</comment>
+    <requestid>885422</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-pomodoro
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-pomodoro
-Version:        0.18.0
+Version:        0.19.1
 Release:        0
 Summary:        A time management utility for GNOME
 License:        GPL-3.0-or-later
@@ -30,7 +30,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-utils
 BuildRequires:  gettext >= 0.19.6
 BuildRequires:  gnome-common
-BuildRequires:  gnome-shell < 3.39.0
+BuildRequires:  gnome-shell < 41
 BuildRequires:  gnome-shell >= 3.36.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.28
@@ -45,7 +45,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
 BuildRequires:  pkgconfig(libcanberra) >= 0.30
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.5.0
 BuildRequires:  pkgconfig(sqlite3)
-Requires:       gnome-shell < 3.39.0
+Requires:       gnome-shell < 41
 Requires:       gnome-shell >= 3.36.0
 Requires:       gstreamer
 Requires:       gtk3 >= 3.20.0
@@ -80,6 +80,7 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/org.gnome.Pomodoro.d
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+
 %posttrans
 gtk-update-icon-cache %{_datadir}/icons/hicolor &> /dev/null || :
 glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :

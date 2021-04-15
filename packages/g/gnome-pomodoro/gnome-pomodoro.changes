@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 13 12:41:06 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.19.1:
+  * Lower the cpu usage of the animation when on pause
+
+-------------------------------------------------------------------
+Wed Apr  7 07:11:44 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.19.0:
+  * Support for GNOME Shell 40
+  * Added support for meson
+  * Changed blur effect during break
+  * Updated translation
+
+-------------------------------------------------------------------
 Thu Oct  8 14:51:57 UTC 2020 - Andrei Dziahel <develop7@develop7.info>
 
 - get actually ready for gnome-shell 3.38
