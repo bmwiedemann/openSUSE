@@ -20,7 +20,7 @@
 %define libname_gtk3 libexo-2-0
 %bcond_with git
 Name:           exo
-Version:        4.16.1
+Version:        4.16.2
 Release:        0
 Summary:        Application Development Library for Xfce
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
