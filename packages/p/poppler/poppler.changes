@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Apr  4 15:48:16 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- update to 21.04.0
+  core:
+    * Hide symbols by default
+    * TextSelectionDumper: fix word order for RTL text
+    * Fix rendering of text in some files. Issue #1052
+    * Implement rendering of Masks of Image subtype. Issue #1058
+    * Forms: fix unclicking standalone form buttons. Issue #1034
+  glib:
+    * Expose more fields from MediaRendition in PopplerMedia
+    * Use stock glib macro to define boxed type
+    * Remove incorrecly used volatile from enum type registration code
+  qt5:
+    * Fix crash in files with malformed signatures
+    * Fix memory leak when QImage constructor "fails"
+  qt6:
+    * Fix crash in files with malformed signatures
+    * Fix memory leak when QImage constructor "fails"
+  utils:
+    * pdfsig: New paragraph for "-sign" in manpage
+    * pdfimages: Do not assert in "too big images". Issue #1061
+
+-------------------------------------------------------------------
+Fri Mar 19 13:27:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add a Qt6 flavor to poppler
+
+-------------------------------------------------------------------
 Sun Mar 14 21:00:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 21.03.0:

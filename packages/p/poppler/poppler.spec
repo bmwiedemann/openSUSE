@@ -22,16 +22,21 @@
 %else
 %global psuffix -%{flavor}
 %endif
+# Don't build poppler-qt6 on Leap <= 15.3
+%if "%{flavor}" == "qt6" && (%{suse_version} <= 1500 && 0%{?sle_version} <= 150300)
+ExclusiveArch:  do_not_build
+%endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.10
-%define poppler_sover 108
+%define poppler_sover 109
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
+%define poppler_qt6_sover 1
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        21.03.0
+Version:        21.04.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -39,7 +44,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://poppler.freedesktop.org/
 Source:         https://poppler.freedesktop.org/%{sname}-%{version}.tar.xz
 Source99:       baselibs.conf
-BuildRequires:  cmake >= 3.5
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
 BuildRequires:  gobject-introspection-devel
@@ -71,6 +76,12 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
+%endif
+%if "%{flavor}" == "qt6"
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6Widgets)
 %endif
 
 %description
@@ -122,6 +133,15 @@ Requires:       libpoppler%{poppler_sover} >= %{version}
 Poppler is a PDF rendering library, forked from the xpdf PDF viewer
 developed by Derek Noonburg of Glyph and Cog, LLC.
 
+%package -n     libpoppler-qt6-%{poppler_qt6_sover}
+Summary:        Qt6 wrapper for the Poppler PDF rendering library
+Group:          System/Libraries
+Requires:       libpoppler%{poppler_sover} >= %{version}
+
+%description -n libpoppler-qt6-%{poppler_qt6_sover}
+Poppler is a PDF rendering library, forked from the xpdf PDF viewer
+developed by Derek Noonburg of Glyph and Cog, LLC.
+
 %package        tools
 Summary:        PDF Rendering Library Tools
 Group:          Productivity/Publishing/PDF
@@ -167,17 +187,28 @@ Requires:       pkgconfig(Qt5Xml)
 Poppler is a PDF rendering library, forked from the xpdf PDF viewer
 developed by Derek Noonburg of Glyph and Cog, LLC.
 
+%package -n     libpoppler-qt6-devel
+Summary:        Development files for the Poppler Qt6 wrapper library
+Group:          Development/Libraries/C and C++
+Requires:       libpoppler-devel = %{version}
+Requires:       libpoppler-qt6-%{poppler_qt5_sover} = %{version}
+Requires:       cmake(Qt6Core)
+Requires:       cmake(Qt6Gui)
+Requires:       cmake(Qt6Widgets)
+
+%description -n libpoppler-qt6-devel
+Poppler is a PDF rendering library, forked from the xpdf PDF viewer
+developed by Derek Noonburg of Glyph and Cog, LLC.
+
 %prep
 %setup -q -n poppler-%{version}
 
 %build
-# Leap 15.0 doesn't know %%cmake_build
-%{?!cmake_build:%define cmake_build() make %{?_smp_mflags} VERBOSE=1}
-
 %if "%{flavor}" == "qt5"
 export MOCQT5='%{_libqt5_bindir}/moc'
 export MOCQT52='%{_libqt5_bindir}/moc'
 %endif
+
 # make introspection scanner (g-ir-scanner) work with older build envs
 export LD_LIBRARY_PATH=$(pwd)/build
 %cmake \
@@ -188,15 +219,23 @@ export LD_LIBRARY_PATH=$(pwd)/build
 	-DBUILD_GTK_TESTS=OFF \
 %if "%{flavor}" == "qt5"
 	-DENABLE_QT5=ON \
+	-DENABLE_QT6=OFF \
+	-DENABLE_GLIB=OFF \
+	-DENABLE_CPP=OFF \
+%endif
+%if "%{flavor}" == "qt6"
+	-DENABLE_QT6=ON \
+	-DENABLE_QT5=OFF \
 	-DENABLE_GLIB=OFF \
 	-DENABLE_CPP=OFF \
 %endif
 	%{nil}
+
 %cmake_build
 
 %install
 %cmake_install
-%if "%{flavor}" == "qt5"
+%if "%{flavor}" == "qt5" || "%{flavor}" == "qt6"
 cd %{buildroot} && find . -type f -o -type l | grep -v qt | xargs rm -v
 %endif
 
@@ -217,6 +256,8 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %{SOURCE99}
 %postun -n libpoppler-cpp%{poppler_cpp_sover} -p /sbin/ldconfig
 %post -n libpoppler-qt5-%{poppler_qt5_sover} -p /sbin/ldconfig
 %postun -n libpoppler-qt5-%{poppler_qt5_sover} -p /sbin/ldconfig
+%post -n libpoppler-qt6-%{poppler_qt5_sover} -p /sbin/ldconfig
+%postun -n libpoppler-qt6-%{poppler_qt5_sover} -p /sbin/ldconfig
 
 %if "%{flavor}" == "qt5"
 %files -n libpoppler-qt5-%{poppler_qt5_sover}
@@ -229,6 +270,18 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %{SOURCE99}
 %{_libdir}/pkgconfig/poppler-qt5.pc
 
 %else
+%if "%{flavor}" == "qt6"
+%files -n libpoppler-qt6-%{poppler_qt6_sover}
+%{_libdir}/libpoppler-qt6.so.%{poppler_qt6_sover}*
+
+%files -n libpoppler-qt6-devel
+%dir %{_includedir}/poppler
+%{_includedir}/poppler/qt6
+%{_libdir}/libpoppler-qt6.so
+%{_libdir}/pkgconfig/poppler-qt6.pc
+
+%else
+
 %files -n libpoppler%{poppler_sover}
 %license COPYING COPYING3
 %doc NEWS README.md README-XPDF
@@ -264,6 +317,7 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %{SOURCE99}
 %{_datadir}/gir-1.0/Poppler-%{poppler_api}.gir
 %doc %{_datadir}/gtk-doc/html/poppler
 
+%endif
 %endif
 
 %changelog

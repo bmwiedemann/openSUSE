@@ -1720,4 +1720,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>879839</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>24abeef8e5cd520da8ca167b92ee5868</srcmd5>
+    <version>21.04.0</version>
+    <time>1618498600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>883199</requestid>
+  </revision>
 </revisionlist>
