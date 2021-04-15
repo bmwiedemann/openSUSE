@@ -1,7 +1,7 @@
 #
 # spec file for package shadow
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,8 @@ Patch7:         shadow-4.1.5.1-logmsg.patch
 Patch13:        shadow-login_defs-comments.patch
 # PATCH-FEATURE-SUSE shadow-login_defs-suse.patch kukuk@suse.com -- Customize login.defs.
 Patch14:        shadow-login_defs-suse.patch
+# PATCH-FEATURE-SUSE Copy also skeleton files from /usr/etc/skel (boo#1173321)
+Patch15:        useradd-userkeleton.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
 Patch20:        disable_new_audit_function.patch
 BuildRequires:  audit-devel > 2.3
@@ -68,7 +70,10 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
+# It should be %%if %%{defined no_config}, but OBS cannot handle it:
+%if 0%{?suse_version} >= 1550
 BuildRequires:  libeconf-devel
+%endif
 BuildRequires:  libselinux-devel
 BuildRequires:  libsemanage-devel
 BuildRequires:  libtool
@@ -80,6 +85,18 @@ Requires(pre):  permissions
 Requires(pre):  user(root)
 Provides:       pwdutils = 3.2.20
 Obsoletes:      pwdutils <= 3.2.19
+Requires:       login_defs >= %{version}
+Provides:       useradd_or_adduser_dep
+
+%description
+This package includes the necessary programs for converting plain
+password files to the shadow password format and to manage user and
+group accounts.
+
+%package -n login_defs
+Summary:        login.defs configuration file
+Group:          System/Base
+BuildArch:      noarch
 # Virtual provides for supported variables in login.defs.
 # It prevents references to unknown variables.
 # Upgrade them only if shadow-util-linux.patch or
@@ -87,12 +104,10 @@ Obsoletes:      pwdutils <= 3.2.19
 # Call shadow-login_defs-check.sh before!
 Provides:       login_defs-support-for-pam = 1.3.1
 Provides:       login_defs-support-for-util-linux = 2.36
-Provides:       useradd_or_adduser_dep
 
-%description
-This package includes the necessary programs for converting plain
-password files to the shadow password format and to manage user and
-group accounts.
+%description -n login_defs
+This package contains the default login.defs configuration file
+as used by util-linux, pam and shadow.
 
 %prep
 %setup -q -a 1
@@ -106,6 +121,7 @@ group accounts.
 %patch7
 %patch13
 %patch14
+%patch15
 %if 0%{?suse_version} < 1330
 %patch20 -p1
 %endif
@@ -215,9 +231,12 @@ fi
 
 %pre
 %service_add_pre shadow.service shadow.timer
-for i in login.defs pam.d/chage pam.d/chfn pam.d/chpasswd pam.d/chsh pam.d/groupadd pam.d/groupdel pam.d/groupmod pam.d/newusers pam.d/passwd pam.d/useradd pam.d/userdel pam.d/usermod; do
+for i in pam.d/chage pam.d/chfn pam.d/chpasswd pam.d/chsh pam.d/groupadd pam.d/groupdel pam.d/groupmod pam.d/newusers pam.d/passwd pam.d/useradd pam.d/userdel pam.d/usermod; do
   test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i}.rpmsave.old ||:
 done
+
+%pre -n login_defs
+test -f /etc/login.defs.rpmsave && mv -v /etc/login.defs.rpmsave /etc/login.defs.rpmsave.old ||:
 
 %post
 %set_permissions %{_bindir}/chage
@@ -250,19 +269,22 @@ done
 %service_del_postun shadow.service shadow.timer
 
 %posttrans
+%if %{defined no_config}
 # Migration to /usr/etc
-for i in login.defs pam.d/chage pam.d/chfn pam.d/chpasswd pam.d/chsh pam.d/groupadd pam.d/groupdel pam.d/groupmod pam.d/newusers pam.d/passwd pam.d/useradd pam.d/userdel pam.d/usermod; do
+for i in pam.d/chage pam.d/chfn pam.d/chpasswd pam.d/chsh pam.d/groupadd pam.d/groupdel pam.d/groupmod pam.d/newusers pam.d/passwd pam.d/useradd pam.d/userdel pam.d/usermod; do
   test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i} ||:
 done
+%endif
+
+%posttrans -n login_defs
+# rpmsave file can be created by
+# - change of owning package (SLE15 SP2->SP3, Leap 15.2->15.3)
+# - Migration to /usr/etc (after SLE15 and Leap 15)
+test -f /etc/login.defs.rpmsave && mv -v /etc/login.defs.rpmsave /etc/login.defs ||:
 
 %files -f shadow.lang
 %license COPYING
 %doc NEWS doc/HOWTO README README.changes-pwdutils
-%if %{defined no_config}
-%attr(0644,root,root) %{_distconfdir}/login.defs
-%else
-%attr(0644,root,root) %config %{_sysconfdir}/login.defs
-%endif
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/default/useradd
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/subuid
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/subgid
@@ -332,7 +354,6 @@ done
 %{_mandir}/man1/passwd.1%{?ext_man}
 %{_mandir}/man1/sg.1%{?ext_man}
 %{_mandir}/man3/shadow.3%{?ext_man}
-%{_mandir}/man5/login.defs.5%{?ext_man}
 %{_mandir}/man5/shadow.5%{?ext_man}
 %{_mandir}/man8/chpasswd.8%{?ext_man}
 %{_mandir}/man8/groupadd.8%{?ext_man}
@@ -355,5 +376,13 @@ done
 %{_mandir}/man1/newuidmap.1%{?ext_man}
 
 %{_unitdir}/*
+
+%files -n login_defs
+%if %{defined no_config}
+%attr(0644,root,root) %{_distconfdir}/login.defs
+%else
+%attr(0644,root,root) %config %{_sysconfdir}/login.defs
+%endif
+%{_mandir}/man5/login.defs.5%{?ext_man}
 
 %changelog

@@ -37,20 +37,6 @@ fi
 # Main useradd tool creates this if specified on command line
 [ -d $HOMEDIR ] || exit 0
 
-#
-# Copy also skeleton files from /usr/etc/skel (boo#1173321)
-#
-USRSKELDIR=/usr/etc/skel
-if [ -d $USRSKELDIR ] ; then
-  for file in $(ls -A $USRSKELDIR); do
-    # Only copy if not exist yet, i.e. does *not* exist in /etc/skel, which is still
-    # being preferred ...
-    test -e $HOMEDIR/$file && continue
-    cp -a $USRSKELDIR/$file $HOMEDIR
-    chown -R $USER.$GID $HOMEDIR/$file
-  done
-fi
-
 # If SELinux is enabled, we have to run restorecon to assign
 # appropriate fcontexts to the respective $HOME and files under it
 if [ -x /usr/sbin/selinuxenabled ] && /usr/sbin/selinuxenabled ; then

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jan 28 22:28:02 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Do not require libeconf-devel on products without /usr/etc.
+
+-------------------------------------------------------------------
+Thu Jan 21 06:52:30 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Split login.defs configuration file into own sub-package, which
+  allows to install util-linux or pam on small embedded/edge
+  systems or container without the need to pull in the full shadow
+  suite.
+
+-------------------------------------------------------------------
+Wed Nov 11 14:38:13 UTC 2020 - Fabian Vogt <fvogt@suse.com>
+
+- Amend patches/useradd-userkeleton.patch to also write into
+  existing directories and prefer files from /etc
+
+-------------------------------------------------------------------
+Wed Nov 11 11:28:09 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch useradd-userkeleton.patch to extend original C code
+  of useradd to handle /usr/etc/skel (boo#1173321)
+- Remove /usr/etc/skel support in useradd.local script
+
+-------------------------------------------------------------------
 Mon Nov  2 15:54:02 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Change again useradd.local script to let it work even for system
@@ -169,7 +195,7 @@ Fri Jun 14 06:20:46 UTC 2019 - mvetter@suse.com
   * Usermod: guard against unsafe chown of homedir contents (Tomas Mraz)
   * Add LASTLOG_UID_MAX to login.defs (Tomas Mraz)
   * new[ug]idmap file capabilities support (Giuseppe Scrivano and Christian Brauner)
-  * Fix segfault in useradd (Tomas Mraz)
+  * Fix segfault in useradd (bsc#1141113, Tomas Mraz)
   * Coverity issues (Tomas Mraz)
   * Flush sssd caches (Jakub Hrozek)
   * Log UID in nologin (Vladimir Ivanov)
@@ -186,6 +212,9 @@ Fri Jun 14 06:20:46 UTC 2019 - mvetter@suse.com
   upstreamed https://github.com/shadow-maint/shadow/pull/112
 - Remove shadow-4.6.0-fix-usermod-prefix-crash.patch
   upstreamed https://github.com/shadow-maint/shadow/issues/110
+- Remove shadow-4.6-bsc1141113-useradd-segfault.patch
+  (SLE15 SP3 and openSUSE Leap 15.3 only)
+  upstreamed https://github.com/shadow-maint/shadow/issues/125
 - Rebase userdel-script.patch
 - Rebase useradd-script.patch
 - Rebase shadow-util-linux.patch

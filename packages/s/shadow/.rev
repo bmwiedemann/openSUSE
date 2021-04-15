@@ -586,4 +586,12 @@
   used by the useradd.local script (bsc#1178296)</comment>
     <requestid>845486</requestid>
   </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>c4c61359c307d225c4d872546e662e34</srcmd5>
+    <version>4.8.1</version>
+    <time>1618498593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>872327</requestid>
+  </revision>
 </revisionlist>
