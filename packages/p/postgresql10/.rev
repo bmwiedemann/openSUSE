@@ -552,4 +552,16 @@
   * Reindexing might be needed after applying this update.</comment>
     <requestid>873817</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>abee890f3d3c1d055811ebf564f2ce67</srcmd5>
+    <version>10.16</version>
+    <time>1618498623</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable build of the llvmjit subpackage on SLE, but it will
+  only be delivered on PackageHub for now.
+
+- Remove leftover PreReq on chkconfig, we stopped using it long
+  time ago.</comment>
+    <requestid>884608</requestid>
+  </revision>
 </revisionlist>

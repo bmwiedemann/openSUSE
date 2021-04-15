@@ -88,7 +88,7 @@ BuildRequires:  %libpq
 %bcond_with     systemd
 %bcond_with     systemd_notify
 %endif
-%if 0%{?is_opensuse} && 0%{?suse_version} >= 1500 && %pgsuffix >= 11 && %pgsuffix < 90
+%if 0%{?suse_version} >= 1500 && %pgsuffix >= 11 && %pgsuffix < 90
 %bcond_without  llvm
 %else
 # LLVM is currently unsupported on SLE, so don't use it
@@ -294,7 +294,6 @@ postgresql%pgsuffix-server-devel package.
 %package server
 Summary:        The Programs Needed to Create and Run a PostgreSQL Server
 Group:          Productivity/Databases/Servers
-PreReq:         /sbin/chkconfig
 PreReq:         postgresql = %version
 Requires:       glibc-locale
 Requires:       timezone
