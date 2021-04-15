@@ -148,4 +148,12 @@
     <comment></comment>
     <requestid>876267</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c8c1bc18f7c649e5acb75e40e039371d</srcmd5>
+    <version>3.10.3</version>
+    <time>1618498627</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.10.3</comment>
+    <requestid>884718</requestid>
+  </revision>
 </revisionlist>

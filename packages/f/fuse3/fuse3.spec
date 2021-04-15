@@ -17,10 +17,10 @@
 
 
 Name:           fuse3
-Version:        3.10.2
+Version:        3.10.3
 Release:        0
 Summary:        Reference implementation of the "Filesystem in Userspace"
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-2-Clause
+License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Filesystems
 URL:            https://github.com/libfuse/libfuse
 Source:         https://github.com/libfuse/libfuse/releases/download/fuse-%{version}/fuse-%{version}.tar.xz
