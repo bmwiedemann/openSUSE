@@ -1,7 +1,7 @@
 #
 # spec file for package workrave
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Group:          Productivity/Other
 URL:            http://www.workrave.org
 Source:         https://github.com/rcaelers/workrave/archive/v%{upstream_version}.tar.gz
 Source2:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM fix-wayland-gnome-crash.patch boo#1184773
+Patch0:         fix-wayland-gnome-crash.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -79,6 +81,7 @@ Workrave.
 
 %prep
 %setup -q -n %{name}-%{upstream_version}
+%patch0 -p1
 
 %build
 ./autogen.sh

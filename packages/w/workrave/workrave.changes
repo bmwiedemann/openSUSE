@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 15 06:38:32 UTC 2021 - Timo Jyrinki <tjyrinki@suse.com>
+
+- Add fix-wayland-gnome-crash.patch (boo#1184773).
+  * Cherry-pick and rebase a fix from upstream git to fix a GNOME crash.
+
+-------------------------------------------------------------------
 Wed Sep 16 08:01:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.0.44:
