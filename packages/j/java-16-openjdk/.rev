@@ -47,4 +47,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>871356</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d0922952444f9feb054994d8384f83eb</srcmd5>
+    <version>16.0.0.0</version>
+    <time>1618498650</time>
+    <user>dimstar_suse</user>
+    <comment>Java 16 official release</comment>
+    <requestid>885305</requestid>
+  </revision>
 </revisionlist>

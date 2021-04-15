@@ -35,10 +35,10 @@
 %global updatever       0
 %global patchver        0
 %global datever         2021-03-16
-%global buildver        35
-%global openjdk_repo    jdk16
-%global openjdk_tag     jdk-16+35
-%global openjdk_dir     jdk16-jdk-16-35
+%global buildver        36
+%global openjdk_repo    jdk16u
+%global openjdk_tag     jdk-16+36
+%global openjdk_dir     jdk16u-jdk-16-36
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -144,7 +144,7 @@
 %global tapsetdir %{tapsetroot}/tapset/%{_build_cpu}
 %endif
 Name:           java-%{featurever}-openjdk
-Version:        %{featurever}.%{interimver}.%{updatever}.%{patchver}~%{buildver}
+Version:        %{featurever}.%{interimver}.%{updatever}.%{patchver}
 Release:        0
 Summary:        OpenJDK %{featurever} Runtime Environment
 License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND SUSE-Public-Domain AND W3C
@@ -581,7 +581,7 @@ bash ../configure \
     --with-version-patch=%{patchver} \
     --with-version-date=%{datever} \
     --with-version-build=%{buildver} \
-%if 0
+%if 1
     --with-version-pre="" \
 %endif
     --with-version-opt="suse-%{release}-%{_arch}" \

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 14 10:44:08 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-16+36
+  * Official OpenJDK 16.0.0.0 release
+  * Fixes:
+    + JDK-8260709: C2: assert(false) failed: unschedulable graph
+
+-------------------------------------------------------------------
 Fri Feb  5 07:31:40 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-16+35
