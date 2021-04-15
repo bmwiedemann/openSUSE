@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr  9 10:03:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add %lua_version_nodots to equal package naming
+
+-------------------------------------------------------------------
 Fri Feb 26 15:54:56 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
-- Add -e (exclude) option
+- Add -e (exclude) option to %lua_provides
 
 -------------------------------------------------------------------
 Wed Jan 27 15:51:37 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>

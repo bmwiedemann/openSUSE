@@ -15,7 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if %{undefined _rpmmacrodir}
+%define _rpmmacrodir %{_rpmconfigdir}/macros.d
+%endif
 Name:           lua-macros
 Version:        20170611
 Release:        0
@@ -40,9 +42,9 @@ sed -i -e '/includedir/s!/lua!&-!' macros.lua
 :
 
 %install
-install -D -m 644 macros.lua %{buildroot}%{_usr}/lib/rpm/macros.d/macros.lua
+install -Dm644 macros.lua %{buildroot}%{_rpmmacrodir}/macros.lua
 
 %files
-%{_usr}/lib/rpm/macros.d/macros.lua
+%{_rpmmacrodir}/macros.lua
 
 %changelog

@@ -2,6 +2,7 @@
 
 # The major.minor version of Lua
 %lua_version %(lua -e 'print(_VERSION)' | cut -d ' ' -f 2)
+%lua_version_nodots %(perl -e "print %{lua_version}*10")
 
 # compiled modules should go here
 %lua_archdir %{_libdir}/lua/%{lua_version}
