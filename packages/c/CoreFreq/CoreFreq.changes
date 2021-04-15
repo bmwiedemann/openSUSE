@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 15 09:55:08 UTC 2021 - Michael Pujos <pujos.michael@gmail.com>
+
+- updated to v1.84.1
+  See commits on https://github.com/cyring/CoreFreq/commits/master
+  for changes list
+- added patch leap15_3.patch: fix failure to build on Leap 15.3
+
+-------------------------------------------------------------------
 Thu Dec 31 14:56:39 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
 
 - updated to git 20201229.

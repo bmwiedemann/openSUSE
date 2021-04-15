@@ -1,7 +1,7 @@
 #
 # spec file for package CoreFreq
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 # from coretypes.h
 %define corefreq_major  1
-%define corefreq_minor  82
-%define corefreq_rev    2
-%define gitdate 20201229
+%define corefreq_minor  84
+%define corefreq_rev    1
+%define gitdate 20210415
 Name:           CoreFreq
 Version:        %{corefreq_major}.%{corefreq_minor}.%{corefreq_rev}+git%{gitdate}
 Release:        0
@@ -29,6 +29,7 @@ License:        GPL-2.0-or-later
 URL:            https://github.com/cyring/CoreFreq
 Source:         %{name}-%{version}.tar.gz
 Patch0:         leap15_2.patch
+Patch1:         leap15_3.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
@@ -46,6 +47,9 @@ AMD Families 0Fh ... 17h (Zen), 18h (Hygon Dhyana)
 %setup -q -n CoreFreq
 %if 0%{?sle_version} == 150200
 %patch0 -p1
+%endif
+%if 0%{?sle_version} == 150300
+%patch1 -p1
 %endif
 
 %build

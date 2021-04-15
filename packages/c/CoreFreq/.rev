@@ -44,4 +44,16 @@
     <comment>updated to git 20201229</comment>
     <requestid>859617</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4b47c0f448520d5258a2e8b0f48843e6</srcmd5>
+    <version>1.84.1+git20210415</version>
+    <time>1618498683</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to v1.84.1
+  See commits on https://github.com/cyring/CoreFreq/commits/master
+  for changes list
+- added patch leap15_3.patch: fix failure to build on Leap 15.3
+</comment>
+    <requestid>885607</requestid>
+  </revision>
 </revisionlist>
