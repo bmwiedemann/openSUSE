@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Thu Apr 15 10:43:19 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Move Block.h to a sub-directory, so it doesn't conflict with 
+    libobjc-devel.
+
+-------------------------------------------------------------------
+Thu Apr  1 17:07:54 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+-  Add soversion.patch, to set the version to, by upstream default, 
+    unversioned shared libraries.
+-  Don't remove symlinks to libraries in the main package,
+    deadbeef can't find versioned libraries at linking time.
+-  Add libdispatch-rpmlintrc to silence errors caused by that.
+
+-------------------------------------------------------------------
+Wed Mar 31 18:57:34 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Fix build for Factory/Tumbleweed.
+    Build acript assumes gcc is used, so passes the gcc ('auto') flag
+    for LTO, which clang doesn't recognize. thanks @ismail on IRC for the tip)
+- Add llvm-gold to BuildRequires
+- Pass '-Wno-unused-command-line-argument' flag only on aarch64
+-------------------------------------------------------------------
+Thu Mar 25 21:50:30 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Initial packaging, based on Fedora spec file.
