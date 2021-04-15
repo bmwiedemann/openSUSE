@@ -1,0 +1,13 @@
+diff -Nur go-gir-generator-2.0.2/lib.in/gio-2.0/config.json go-gir-generator-2.0.2-new/lib.in/gio-2.0/config.json
+--- go-gir-generator-2.0.2/lib.in/gio-2.0/config.json	2019-05-09 13:16:36.000000000 +0800
++++ go-gir-generator-2.0.2-new/lib.in/gio-2.0/config.json	2021-02-21 16:01:22.695529988 +0800
+@@ -222,7 +222,8 @@
+ 			"launch_uris_as_manager_with_fds"
+ 		],
+ 		"Cancellable": [
+-			"connect"
++			"connect",
++			"source_new"
+ 		],
+ 		"Application": [
+ 			"get_dbus_connection"
