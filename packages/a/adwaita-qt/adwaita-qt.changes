@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 15 13:36:48 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix SLPP package name:
+  + Rename libadwaitaqt1_2_1 to  libadwaitaqt1: the libraries have
+    a sover of '1'.
+  + Obsolete the previously wrongly named  libadwaitaqt1_2_0 (
+    libadwaitaqt1_2_1 was never shipped in a product).
+
+-------------------------------------------------------------------
+Tue Apr 13 19:48:34 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.2.1
+  * Fixes for Adwaita library
+  * Define ADWAITAQT_LIBRARIES variable
+  * Define ADWAITAQT_INCLUDE_DIRS variable
+
+-------------------------------------------------------------------
 Tue Jan  5 21:14:33 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 1.2.0

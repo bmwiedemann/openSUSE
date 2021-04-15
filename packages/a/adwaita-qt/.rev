@@ -69,4 +69,21 @@
     <comment></comment>
     <requestid>862962</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1d011410815f52b6fe111e69e38445be</srcmd5>
+    <version>1.2.1</version>
+    <time>1618498689</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SLPP package name:
+  + Rename libadwaitaqt1_2_1 to  libadwaitaqt1: the libraries have
+    a sover of '1'.
+  + Obsolete the previously wrongly named  libadwaitaqt1_2_0 (
+    libadwaitaqt1_2_1 was never shipped in a product).
+
+- Update to 1.2.1
+  * Fixes for Adwaita library
+  * Define ADWAITAQT_LIBRARIES variable
+  * Define ADWAITAQT_INCLUDE_DIRS variable</comment>
+    <requestid>885673</requestid>
+  </revision>
 </revisionlist>

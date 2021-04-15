@@ -17,9 +17,9 @@
 #
 
 
-%define sover 1_2_0
+%define sover 1
 Name:           adwaita-qt
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Adwaita theme for Qt-based applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -27,7 +27,7 @@ URL:            https://github.com/FedoraQt/adwaita-qt
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  libqt5-qtbase-devel
+BuildRequires:  libqt5-qtbase-devel >= 5.12
 BuildRequires:  libqt5-qtx11extras-devel
 BuildRequires:  libxcb-devel
 Requires:       adwaita-qt5
@@ -46,6 +46,10 @@ Adwaita theme variant for applications utilizing Qt5
 
 %package -n libadwaitaqt%{sover}
 Summary:        Adwaita Qt5 library
+# The package was wwronlgy called  libadwaitaqt1_2_0 in the past
+# As long as we are at .so.1, we can obsolete this old, wrong
+# package name
+Obsoletes:      libadwaitaqt1_2_0
 
 %description -n libadwaitaqt%{sover}
 Adwaita theme variant for applications utilizing Qt5
