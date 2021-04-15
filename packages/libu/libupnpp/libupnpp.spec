@@ -16,14 +16,14 @@
 #
 
 
-%define so_ver  9
+%define so_ver  11
 Name:           libupnpp
-Version:        0.20.2
+Version:        0.21.0
 Release:        0
-Summary:        Library providing a higher level C++ API over libnpupnp or libupnp
+Summary:        Library providing a higher level API over libnpupnp or libupnp
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://www.lesbonscomptes.com/updmpdcli
+URL:            https://www.lesbonscomptes.com/upmpdcli/index.html
 Source0:        https://www.lesbonscomptes.com/upmpdcli/downloads/libupnpp-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -32,14 +32,24 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libnpupnp)
 
 %description
-Library providing a higher level C++ API over libnpupnp or libupnp
+Libupnpp is a C++ wrapper for libupnp a.k.a Portable UPnP (up to branch 0.17),
+or its C++ descendant, libnpupnp (versions 0.18 and later).
+
+Libupnpp can be used to implement UPnP devices and services, or Control Points.
+The Control Point side of libupnpp, which is documented here,
+allows a C++ program to discover UPnP devices, and exchange commands and status with them.
 
 %package -n %{name}%{so_ver}
 Summary:        Library providing a higher level C++ API over libnpupnp or libupnp
 Group:          System/Libraries
 
 %description -n %{name}%{so_ver}
-Library providing a higher level C++ API over libnpupnp or libupnp
+Libupnpp is a C++ wrapper for libupnp a.k.a Portable UPnP (up to branch 0.17),
+or its C++ descendant, libnpupnp (versions 0.18 and later).
+
+Libupnpp can be used to implement UPnP devices and services, or Control Points.
+The Control Point side of libupnpp, which is documented here,
+allows a C++ program to discover UPnP devices, and exchange commands and status with them.
 
 %package devel
 Summary:        Development files for %{name}
@@ -68,7 +78,7 @@ find %{buildroot} -type f -name "*a" -delete -print
 %license COPYING
 %{_libdir}/*.so.*
 
-%files -n libupnpp-devel
+%files devel
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc

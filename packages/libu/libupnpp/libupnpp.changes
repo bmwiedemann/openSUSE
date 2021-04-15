@@ -1,8 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 15 00:53:18 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.21.0:
+  * Allow configuring the subscription timeout (init option)
+  * Add interface for the lib to report a subscription autorenewal
+    failure, and to renew all subscriptions.
+  * Add API to set the product/version values in User-Agent
+    and Server headers.
+- Modified description
+
+-------------------------------------------------------------------
 Wed Jan 20 10:08:31 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.20.2:
-  * No upstream changelog available
+  * Content Directory interface: accept responses with 0 TotalMatches.
+  * Adjust excessively noisy messages.
 
 -------------------------------------------------------------------
 Sun Nov 15 21:08:51 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
