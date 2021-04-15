@@ -107,4 +107,62 @@
 </comment>
     <requestid>818873</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3fbdfa8aa62b65c3791afdc7da787bef</srcmd5>
+    <version>1.8.7</version>
+    <time>1618498629</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO for now.
+    Enabling LTO breaks the use of Clang as a compiler.
+    It's detected by the build system, but compiler test fails, so 
+    the build fails, since Clang is the only supported compiler now.
+- Disable soundtouch plugin on i586 architecture.
+- Update version to 1.8.7
+  * Fixed: Pulseaudio crash after a non-critical recoverable error
+  * Fixed: Hotkeys were sometimes not connecting to the correct UI plugins
+  * Fixed: Hotkey action &quot;Sort by title&quot; was missing
+  * Fixed: Unsupported ID3v2 frames are converted to supported frames instead of discarding
+  * Fixed: MP4 crash when encountering unknown metadata fields
+  * Fixed: Writing MP4 tags would corrupt the metadata, if the moov box is moving to the end of file
+  * Fixed: Off-by-one error when loading unsynchronized ID3v2.3 and 2.2 tags (sktt@github)
+  * Fixed: Parsing ALAC M4A files without relying on legacy 24-byte magic cookie
+  * Fixed: Saving the player resume state whenever a song finishes playing
+  * Fixed: ALSA deadlock / distortion bug caused by changing audio format at a wrong moment
+  * Fixed: WMA+CUE crash
+  
+  * version 1.8.6
+  * Fixed loading encoder presets in non-portable builds
+  * Fixed truncation of long group titles in the playlist
+   
+  * version 1.8.5
+  * Added the new ISO/IEC Base Media File Format library MP4P for working with MP4 files, which removes MP4FF dependency
+  * Added support for additional per-track metadata in cuesheets
+  * Added updating titlebar when displaying playback position (Nicolai Syvertsen)
+  * Added a more convenient way to edit container widgets in design mode (Nicolai Syvertsen)
+  * Fixed ALAC bug whiuch caused division by zero exception
+  * Fixed cuesheet parser bug caused by unknown/unsupported field names
+  * Fixed a series of bugs in the Adplug plugin
+  * Fixed a bug when parsing MP3 Xing/Info header, reading incorrect packet count
+  * Fixed a number of bugs in artwork plugin, especially affecting the Windows version (Jakub Wasylków, Keith Cancel)
+  * Fixed a SHIFT-JIS detection bug which caused memory corruption
+  * Fixed a bug when configuring keyboard shortcut involving Shift key
+  * Fixed a bug with playlist becoming to small in certain UI layouts
+  * Fixed a crash when deadbeef window becomes too small when using certain UI layouts
+  * Fixed drawing playlist column separators in certain newer GTK themes
+  * Fixed on-screen notification bug when too many notifications accumulated at the same time, spawning too many threads
+  * Fixed a bug, causing the Band field to be missing from %artist% specifier when using title formatting
+  * Fixed bugs leaking file handles in AAC and ALAC plugins (Thomas Jepp)
+  * Fixed handling certain non-conformant S3M files
+  * Fixed a bug where resizing the log window caused the auto-scroll to stop working (Nicolai Syvertsen)
+  * Fixed album shuffle bug, causing the same album to repeat after the last track of the album has finished
+  * Fixed shuffle bug causing short tracks to repeat
+  
+- Package changes
+  * Switch the build to Clang (the only upstream supported compiler since version 1.8.6)
+  * Remove deadbeef_disable_psf.patch, use configure switch instead.
+  * Use _service generated tarball instead of the broken Github one (missing gitmodules).
+  * Spec-cleaner run
+</comment>
+    <requestid>882627</requestid>
+  </revision>
 </revisionlist>

@@ -2,13 +2,9 @@
   <service mode="disabled" name="tar_scm">
     <param name="url">https://github.com/DeaDBeeF-Player/deadbeef.git</param>
     <param name="scm">git</param>
-    <param name="exclude">osx</param>
-    <param name="exclude">plugins/psf</param>
-    <param name="exclude">tools</param>
-    <param name="exclude">.git</param>
-    <param name="revision">1.8.1</param>
+    <param name="revision">1.8.7</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="filename">deadbeef_nopsf</param>
+    <param name="filename">deadbeef</param>
   </service>
   <service mode="disabled" name="recompress">
     <param name="file">*.tar</param>

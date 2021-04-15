@@ -1,7 +1,7 @@
 #
 # spec file for package deadbeef
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,30 @@
 #
 
 
+# LTO breaks compiler test at configure stage,
+# which is bad since Clang is the only suported compiler now.
+%define _lto_cflags %{nil}
 %bcond_with restricted
-
 Name:           deadbeef
-Version:        1.8.4
+Version:        1.8.7
 Release:        0
 Summary:        GTK+ audio player
 License:        Zlib AND GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://deadbeef.sourceforge.io/
-Source:         https://github.com/DeaDBeeF-Player/deadbeef/archive/%{version}/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}.appdata.xml
 # PATCH-FIX-OPENSUSE 0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 Patch0:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
-# PATCH-FEATURE-OPENSUSE deadbeef_disable_psf.patch aloisio@gmx.com -- Do not look for plugins/psf.
-Patch1:         %{name}_disable_psf.patch
 # PATCH-FIX-OPENSUSE deadbeef-drop-documents-installation.patch hillwood@opensuse.org -- Install documents by rpmbuild.
 Patch2:         %{name}-drop-documents-installation.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  clang
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
+BuildRequires:  libdispatch-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -94,9 +95,9 @@ Summary:        Extra plugins for DeaDBeeF
 License:        Zlib AND GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause AND Unicode AND NonFree
 Group:          Productivity/Multimedia/Sound/Players
 Requires:       %{name} = %{version}
+Recommends:     faac
 Obsoletes:      %{name}-restricted-plugins < %{version}
 Provides:       %{name}-restricted-plugins = %{version}-%{version}
-Recommends:     faac
 
 %description plugins-extra
 Extra plugins for DeaDBeeF audio player.
@@ -117,10 +118,19 @@ This package provides headers for DeaDBeeF plugins development.
 cp %{SOURCE1} %{name}.appdata.xml
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CC=clang
+export CXX=clang++
+export CFLAGS="%{optflags} -fno-strict-aliasing -fpie -fPIC"
 export CXXFLAGS="$CFLAGS"
-%configure  --disable-static
+export LDFLAGS="$LDFLAGS -pie"
+
+NOCONFIGURE=1 ./autogen.sh
+%configure \
+        --disable-static \
+%ifarch %{ix86}
+        --disable-soundtouch \
+%endif
+        --disable-psf
 %make_build
 
 %install
@@ -178,7 +188,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}/ddb_dumb.so*
 %{_libdir}/%{name}/ddb_mono2stereo.so*
 %{_libdir}/%{name}/ddb_shn.so*
+%ifnarch %{ix86}
 %{_libdir}/%{name}/ddb_soundtouch.so*
+%endif
 %{_libdir}/%{name}/alac.so*
 %{_libdir}/%{name}/in_sc68.so*
 %{_libdir}/%{name}/data68/
