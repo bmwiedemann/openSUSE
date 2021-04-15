@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 14 09:54:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop -m64/-m32 flags on Arm
+
+-------------------------------------------------------------------
 Mon Aug 18 10:32:51 UTC 2014 - cdenicolo@suse.com
 
 - license update:  LGPL-2.1+ or MIT
