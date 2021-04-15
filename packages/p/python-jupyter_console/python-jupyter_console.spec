@@ -19,14 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter_console
-Version:        6.1.0
+Version:        6.4.0
 Release:        0
 Summary:        Jupyter terminal console
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/jupyter_console
 Source0:        https://files.pythonhosted.org/packages/source/j/jupyter_console/jupyter_console-%{version}.tar.gz
-# https://github.com/jupyter/jupyter_console/pull/230
-Patch0:         python-jupyter_console-remove-nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,7 +45,7 @@ Requires:       python-jupyter-client
 Requires:       python-prompt_toolkit >= 2
 Requires:       python-pyzmq
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       python-jupyter-console = %{version}-%{release}
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       jupyter-jupyter_console = %{version}-%{release}
@@ -64,7 +62,6 @@ This code is based on the single-process IPython terminal.
 
 %prep
 %setup -q -n jupyter_console-%{version}
-%patch0 -p1
 # always build and install with setuptools: it is needed to get the entrypoint gh#jupyter/jupyter_console#222
 sed -i '/import sys/ a import setuptools' setup.py
 
@@ -87,7 +84,7 @@ sed -i '/import sys/ a import setuptools' setup.py
 
 %files %{python_files}
 %doc CONTRIBUTING.md README.md
-%license COPYING.md 
+%license COPYING.md
 %python_alternative %{_bindir}/jupyter-console
 %{python_sitelib}/jupyter_console
 %{python_sitelib}/jupyter_console-%{version}*-info

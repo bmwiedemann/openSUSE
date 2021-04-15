@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 14 16:06:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.4.0
+  * no release notes
+- Drop python-jupyter_console-remove-nose.patch merged upstream
+
+-------------------------------------------------------------------
 Wed Feb 10 23:30:30 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Force to import setuptools so that we get the entrypoint
