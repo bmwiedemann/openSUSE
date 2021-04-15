@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 15 07:57:18 UTC 2021 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.5.11:
+  * Fix rare possible issue with Kazoo volume control
+  * Passthrough for CDDA urls. An URL of the form:
+    http://upmpdprotoescape/cdda/dev/sr0/1
+    will be translated to: cdda:///dev/sr0/1
+    This hack allows tunneling CDDA URLs, which mpd understands but
+    some control points don’t like, for example, to construct a
+    playlist which will play the tracks from a CD device
+  * Reconnect the event loop when mpd restarts. Before the fix,
+    events stopped being generated after mpd restarted
+  * Radio metadata issues fixed
+  * Media Server: Deezer streaming service plugin
+  * Fix events not working when mpd had password set
+
+-------------------------------------------------------------------
 Tue Jan 19 11:14:55 UTC 2021 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.5.8:
