@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 14 15:12:55 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.14.0
+  * certbot-auto no longer checks for updates on any operating system.
+  * Don't output an empty line for a hidden certificate when certbot certificates 
+    is being used in combination with --cert-name or -d.0
+
+-------------------------------------------------------------------
 Mon Mar  8 08:22:31 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to version 1.13.0
