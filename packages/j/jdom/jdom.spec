@@ -1,7 +1,7 @@
 #
 # spec file for package jdom
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -177,9 +177,9 @@ cp %{SOURCE13} jaxen-%{jaxen_version}.pom
 %pom_xpath_set pom:project/pom:version "%{xom_version}%{xom_suffix}" xom-%{xom_version}.pom
 
 %build
-export JAVA_OPTS="-source 1.6 -target 1.6 -encoding UTF-8 -J-Xss4m"
+export JAVA_OPTS="-source 1.6 -target 1.6 -encoding UTF-8 -J-Xss6m"
 export JAVAC="javac ${JAVA_OPTS} "
-export ANT_OPTS="-Xss4m"
+export ANT_OPTS="-Xss6m"
 i=0
 CLASSPATH="%{stage1_build_dir}:$(build-classpath xerces-j2 xalan-j2 xalan-j2-serializer junit relaxngDatatype servletapi5 xpp2 xpp3)"
 SOURCE_DIRS="%{jaxen_dir}/src/java/main/ %{jdom_dir}/src/java/ %{saxpath_dir}/src/java/main/ %{xom_dir}/src/ %{dom4j_dir}/src/java"
