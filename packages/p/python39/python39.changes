@@ -5,7 +5,7 @@ Fri Feb 19 16:58:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
   - bpo#42938 (bsc#1181126): Avoid static buffers when computing
     the repr of ctypes.c_double and ctypes.c_longdouble
     values. This issue was assigned CVE-2021-3177.
-  - bpo#42967 (bso#1182379): Fix web cache poisoning
+  - bpo#42967 (bsc#1182379): Fix web cache poisoning
     vulnerability by defaulting the query args separator to &,
     and allowing the user to choose a custom separator. This
     issue was assigned CVE-2021-23336.

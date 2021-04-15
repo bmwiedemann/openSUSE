@@ -194,4 +194,12 @@
 </comment>
     <requestid>874156</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>fa3ad94c9f2f968de24a3add0d7c81e5</srcmd5>
+    <version>3.9.2</version>
+    <time>1618498596</time>
+    <user>dimstar_suse</user>
+    <comment>Fix changes file (bso -&gt; bsc abbreviation).</comment>
+    <requestid>878395</requestid>
+  </revision>
 </revisionlist>
