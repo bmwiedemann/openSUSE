@@ -26,6 +26,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/computationalmodelling/nbval
 Source:         https://files.pythonhosted.org/packages/source/n/nbval/nbval-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM nbval-filter-mpldeprecation.patch -- gh#computationalmodelling/nbval#167
+Patch0:         nbval-filter-mpldeprecation.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -77,7 +79,7 @@ Each cell is taken as a test, a cell that doesn't reproduce the
 expected output will fail.
 
 %prep
-%setup -q -n nbval-%{version}
+%autosetup -p1 -n nbval-%{version}
 sed -i 's/\r$//' README.md
 
 %build

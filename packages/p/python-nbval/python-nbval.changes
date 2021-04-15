@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 14 13:53:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+-  Add nbval-filter-mpldeprecation.patch for new Matplotlib 3.4
+   deprecation warnings -- gh#computationalmodelling/nbval#167
+
+-------------------------------------------------------------------
 Fri Feb 26 22:34:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Don't test numpy and matplotlib with Python 3.6: There is no
