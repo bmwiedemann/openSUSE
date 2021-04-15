@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Tue Apr 13 19:20:13 UTC 2021 - simmphonie@opensuse.org
+
+- add build requirements for %pytest
+- remove test for deprecated built-in GraphQL support
+- remove unrecognized arguments in setup.cfg
+
+-------------------------------------------------------------------
+Wed Feb 17 18:40:47 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 0.14.2
+
+-------------------------------------------------------------------
+Wed Dec  2 14:49:51 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- update to 0.14.1
+
+-------------------------------------------------------------------
+Sat Sep  5 11:33:42 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- initial packaging of 0.13.8
+ 
