@@ -1,0 +1,6 @@
+<package name="perl-Locale-Codes" project="openSUSE:Factory">
+  <title>perl-Locale-Codes - Distribution of modules to handle locale codes</title>
+  <description>*Locale-Codes* is a distribution containing a set of modules designed to work with sets of codes which uniquely identify something. For example, there are codes associated with different countries, different currencies, different languages, etc. These sets of codes are typically maintained in some standard.
+</description>
+  <devel project="devel:languages:perl" package="perl-Locale-Codes"/>
+</package>
