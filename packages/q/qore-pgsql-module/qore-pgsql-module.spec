@@ -48,6 +48,11 @@ stored prodedure and function execution, etc.
 %setup -q
 %patch0 -p1
 find test -type f|xargs chmod 644
+%ifarch %{arm} aarch64
+# Drop -m64/-m32 flags on Arm
+sed -i -e 's/ -m64//g' configure
+sed -i -e 's/ -m32//g' configure
+%endif
 
 %build
 CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" ./configure RPM_OPT_FLAGS="%{optflags}" --prefix=/usr --disable-debug

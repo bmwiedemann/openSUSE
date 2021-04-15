@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 14 09:52:04 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop -m64/-m32 flags on Arm
+
+-------------------------------------------------------------------
 Mon Aug  4 23:04:38 UTC 2014 - dvaleev@suse.com
 
 - Extend 64Bit architecture list 
