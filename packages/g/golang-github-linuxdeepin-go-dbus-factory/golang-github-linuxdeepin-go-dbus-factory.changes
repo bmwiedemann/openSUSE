@@ -1,0 +1,177 @@
+-------------------------------------------------------------------
+Wed Mar 10 13:04:30 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.8.6
+  * Add ukey API
+  * Optimize display
+  * Add some APIs for ShutdownFront
+
+-------------------------------------------------------------------
+Sat Feb 20 03:50:25 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.8.2
+  * Fix bugs
+  * chore(daemon): add interface of ClearTty in daemon
+  * Add many ID apis for workspace
+  * change(network): add ReuqestWirelessScanHasReturn api
+  * add com.deepin.daemon.timedate
+  * feat(system/power): add LockCpuFreq
+  * add attribute for login1's CurrentSessionPath
+  * feat(system/power): add SetCpuGovernor and boost
+  * chore: Modify control Description data
+  * and more feature....
+
+-------------------------------------------------------------------
+Mon Jul 15 13:00:09 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.9.0
+  * change(api): add com.deepin.WMSwitcher
+  * change(api): update com.deepin.wm
+
+-------------------------------------------------------------------
+Fri Apr 12 07:15:37 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.7.0 
+  * change(api): update com.deepin.wm
+  * feat: update com.deepin.daemon.greeter and com.deepin.XSettings
+  * change(api): update com.deepin.daemon.greeter
+  * change(api): update com.deepin.wm
+  * change(api): add org.kde.kwin Compositor
+
+-------------------------------------------------------------------
+Mon Mar 18 03:24:50 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Use https://github.com/linuxdeepin/go-dbus-factory branch instead of
+  https://github.com/linuxdeepin/dbus-factory. Upsteam use the new branch.
+  version 0.4.0
+  * check whether the callback is nil
+  * add com.deepin.lastore
+  * add debian
+  * regen
+  * rename client to proxy
+  * check path validity
+  * add org.freedesktop.login1
+  * generator +6
+  * add .gitignore
+  * add com.deepin.api.xeventmonitor
+  * generator +5
+  * add com.deepin.dde.daemon.dock
+  * generator +4
+  * generator +3
+  * generator +2
+  * generator +
+  * feat(generator): common property type define supported
+  * feat: autofill PropertyFix.EmptyValue
+  * add org.freedesktop.colormanager
+  * add org.freedesktop.modemmanager1
+  * add org.freedesktop.networkmanager device
+  * feat: add PropertyFix RenameTo
+  * add net.reactivated.fprint.Device
+  * add org.freedesktop.networkmanager
+  * add org.freedesktop.miracle.wfd
+  * add org.freedesktop.miracle.wifi
+  * add org.mpris.mediaplayer2
+  * update README
+  * add README
+  * add org.freedesktop.udisks2
+  * add org.ayatana.bamf
+  * add org.freedesktop.secrets
+  * add org.freedesktop.policykit1
+  * add org.freedesktop.timedate1
+  * add org.freedesktop.notifications
+  * add org.freedesktop.screensaver
+  * add com.deepin.daemon.daemon
+  * add com.deepin.daemon.greeter
+  * add com.deepin.api.cursorhelper
+  * add com.deepin.daemon.timedated
+  * add com.deepin.daemon.accounts
+  * add com.deepin.daemon.helper.backlight
+  * add com.deepin.daemon.inputdevices
+  * add com.deepin.daemon.gesture
+  * add com.deepin.daemon.network
+  * add com.deepin.api.localehelper
+  * add com.deepin.api.pinyin
+  * add com.deepin.system.power
+  * add com.deepin.daemon.audio
+  * add com.deepin.daemon.display
+  * add com.deepin.dde.launcher
+  * add com.deepin.daemon.apps
+  * add com.deepin.api.device
+  * add com.deepin.sessionmanager
+  * add org.freedesktop.dbus
+  * add org.bluez
+  * add net.reactivated.fprint
+  * add com.deepin.wm
+  * change package name
+  * add golang-dlib-dev
+  * change(api): update com.deepin.api.SoundThemePlayer
+  * change(api): add com.deepin.system.Network
+  * change(api): add com.deepin.dde.osd
+  * change(api): update com.deepin.wm
+  * feat: add com.deepin.api.soundthemeplayer
+  * chore: update com.deepin.daemon.Network
+  * feat: add org.freedesktop.NetworkManager ObjectManager
+  * feat: update com.deepin.daemon.daemon
+  * chore: add makefile for sw_64
+  * feat: update com.deepin.api.devicehore: networkmanager accessPoint add accessor
+  * update com.deepin.sessionmanager XSettings
+  * add net.hadess.sensorproxy
+  * update org.freedesktop.notifications
+
+-------------------------------------------------------------------
+Mon Mar 18 02:15:22 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update import_path. 
+
+-------------------------------------------------------------------
+Thu Apr 12 08:18:29 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 3.1.14
+  * update timedated xml
+  * update com.deepin.daemon.helper.Backlight
+  * update com.deepin.dde.Launcher
+
+-------------------------------------------------------------------
+Thu Mar  1 01:52:41 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 3.1.13
+  * Update com.deepin.lastore
+  * Update com.deepin.daemon.ImageBlur
+  * Fix adapt lintian
+  * Update com.deepin.lastore
+  * Update com.deepin.daemon.Accounts
+  * Update com.deepin.StartManager
+  * The doc: update links in README
+
+-------------------------------------------------------------------
+Wed Nov 29 13:33:18 UTC 2017 - hillwood@opensuse.org
+
+- Update to 3.1.10 
+  * Add 'fprintd'
+  * Add deepin system 'Daemon'
+  * Add system 'Greeter'
+  * Update 'keybinding'
+  * Update deepin wm interfaces
+
+-------------------------------------------------------------------
+Wed Nov  8 07:37:07 UTC 2017 - hillwood@opensuse.org
+
+- Update to 3.1.8
+  * Fix 'Welcome' xml format error
+  * Add 'Timedated' xml
+  * Add 'StartManager' xml
+  * Add make check target
+  
+-------------------------------------------------------------------
+Sat Aug 15 19:33:19 UTC 2015 - i@marguerite.su
+
+- Update to version 2.91.0*git20141231.6a1afaf:
+  * bluetooth: refactor code
+  * datetime: update xml
+  * bluetooth: add dbus property State
+  * export SwitchMode in com.deepin.daemon.Display
+  * datetime: update xml
+  * add com.deepin.store.Api
+  * add com.deepiin.api.Device
+  * appearance: update xml
+  * accounts: modify CreateUser return value
