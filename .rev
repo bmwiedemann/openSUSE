@@ -240,4 +240,13 @@
     <comment></comment>
     <requestid>881495</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ba99c5658004d48b2996aa7fae9aa7a9</srcmd5>
+    <version>2.6.3</version>
+    <time>1618498640</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.3:
+  * Fixed a performance issue with zipped files (including EPUB files) (forwarded request 882526 from Dead_Mozay)</comment>
+    <requestid>884642</requestid>
+  </revision>
 </revisionlist>

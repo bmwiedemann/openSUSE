@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  1 09:01:27 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 2.6.3:
+  * Fixed a performance issue with zipped files (including EPUB files)
+
+-------------------------------------------------------------------
 Thu Mar 25 04:33:03 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 2.6.2:
