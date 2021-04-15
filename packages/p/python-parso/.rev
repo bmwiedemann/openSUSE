@@ -140,4 +140,19 @@
 - Revert back to the 0.7.0 version.</comment>
     <requestid>856988</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c4b09d0337797d1959efddde8b5b5c41</srcmd5>
+    <version>0.8.1</version>
+    <time>1618498597</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.1 (according to gh#davidhalter/jedi#1650 it
+  should be compatible with python-jedi now):
+  - Dropped Support for Python 2.7, 3.4, 3.5
+  - It's possible to use ``pathlib.Path`` objects now in the API
+  - The stubs are gone, we are now using annotations
+  - ``namedexpr_test`` nodes are now a proper class called ``NamedExpr``
+  - A lot of smaller refactorings
+</comment>
+    <requestid>878622</requestid>
+  </revision>
 </revisionlist>
