@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Apr 12 02:51:32 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Dropped unneeded QT5 dependencies
+- Build Vulkan with conditional macros
+- Use cmake build macro
+  * Disable LTO, does not compile at the moment
+
+-------------------------------------------------------------------
+Sun Apr 11 14:31:20 UTC 2021 - Imo Hester <vortex@z-ray.de>
+
+- Disbaled Vulkan for Leap releases via cmake flags
+
+-------------------------------------------------------------------
+Sun Apr 11 14:04:03 UTC 2021 - Imo Hester <vortex@z-ray.de>
+
+- Disabled vulkan for Leap 15.2 and below due to older vulkan packages
+- Fixed pkg-config resolve issues for Leap 15.2 and below
+
+-------------------------------------------------------------------
+Sun Apr 11 13:41:51 UTC 2021 - Imo Hester <vortex@z-ray.de>
+
+- Updated to 4.0.0
+- Added Vulkan dependencies for the new vulkan backend
+- Changed GPL-2.0 to GPL-3.0 because CMakeList.txt sais:
+if(WZ_ENABLE_BACKEND_VULKAN)
+	# If Vulkan is enabled, use the GPL3 license for distribution
+	configure_file("${CMAKE_CURRENT_SOURCE_DIR}/pkg/licenses/COPYING.gpl3" "${WZ_DIST_LICENSE}" COPYONLY)
+else()
+	# GPLv2
+	configure_file("${CMAKE_CURRENT_SOURCE_DIR}/COPYING" "${WZ_DIST_LICENSE}" COPYONLY)
+endif()
+
+-------------------------------------------------------------------
 Sat Aug 29 15:58:51 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Update to version 3.4.1
