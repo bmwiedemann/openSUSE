@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr  7 14:56:16 CEST 2021 - mls@suse.de
+
+- fix rare segfault in resolve_jobrules() that could happen
+  if new rules are learnt
+- fix a couple of memory leaks in error cases
+- fix error handling in solv_xfopen_fd()
+- bump version to 0.7.19
+
+-------------------------------------------------------------------
+Fri Mar 26 14:17:46 CET 2021 - mls@suse.de
+
+- fixed regex code on win32
+- fixed memory leak in choice rule generation
+- repo_add_conda: add flag to skip v2 packages
+- bump version to 0.7.18
+
+-------------------------------------------------------------------
 Tue Jan 19 15:09:12 CET 2021 - mls@suse.de
 
 - repo_write: fix handling of nested flexarray
