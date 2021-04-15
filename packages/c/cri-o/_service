@@ -1,16 +1,18 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/cri-o/cri-o</param>
+    <param name="url">https://github.com/cri-o/cri-o.git</param>
     <param name="scm">git</param>
-    <param name="versionformat">1.19.1</param>
-    <param name="revision">v1.19.1</param>
+    <param name="revision">v1.20.2</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service mode="disabled" name="set_version">
   </service>
   <service name="recompress" mode="disabled">
-    <param name="file">cri-o-*.tar</param>
-    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
   </service>
-  <service name="set_version" mode="disabled">
-    <param name="basename">cri-o</param>
+  <service name="go_modules" mode="disabled">
   </service>
 </services>

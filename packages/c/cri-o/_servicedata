@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/cri-o/cri-o</param>
-              <param name="changesrevision">4e159cc8db813fb38e7429ba39ad2cf73b174446</param></service></servicedata>
+              <param name="changesrevision">4e159cc8db813fb38e7429ba39ad2cf73b174446</param></service><service name="tar_scm">
+                <param name="url">https://github.com/cri-o/cri-o.git</param>
+              <param name="changesrevision">d3ddab5440ec6ac2668cbbfe8b6db328f17bfd91</param></service></servicedata>

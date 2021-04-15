@@ -24,18 +24,23 @@
 %define project github.com/cri-o/cri-o
 # Define macros for further referenced sources
 Name:           cri-o
-Version:        1.19.1
+Version:        1.20.2
 Release:        0
 Summary:        OCI-based implementation of Kubernetes Container Runtime Interface
 License:        Apache-2.0
 Url:            https://github.com/cri-o/cri-o
 ExcludeArch:    i586
-Source0:        %{name}-%{version}.tar.xz
-Source1:        crio.service
-Source2:        sysconfig.crio
-Source3:        crio.conf
-Source4:        cri-o-rpmlintrc
-Source5:        kubelet.env
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
+Source2:        crio.service
+Source3:        sysconfig.crio
+Source4:        crio.conf
+Source5:        cri-o-rpmlintrc
+Source6:        kubelet.env
+# See https://github.com/containers/common/commit/27a6951e3644d9031a79819abb1bcb2bba8486ca
+# OBS has no zoneinfo, until the above patch comes to cri-o
+# we need to keep this one otherwise crio build fails.
+Patch1:         config-fix-tz.patch
 BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel-static
@@ -81,14 +86,15 @@ Conflicts:      docker-kubic-kubeadm-criconfig
 This package provides the CRI-O container runtime configuration for kubeadm
 
 %prep
-%setup -q
+%setup -qa1
+%patch1 -p1
 
 %build
 # Keep cgroupfs as the default cgroup manager for SLE15 builds
 %if 0%{?sle_version} >= 150000 && !0%{?is_opensuse}
-sed -i "s|.*apparmor_profile =.*|apparmor_profile = \"crio-default-%{version}\"|" %{SOURCE3}
-sed -i "s|^cgroup_manager = \"systemd\"$|cgroup_manager = \"cgroupfs\"|g" %{SOURCE3}
-sed -i "s|--cgroup-driver=systemd|--cgroup-driver=cgroupfs|g" %{SOURCE5}
+sed -i "s|.*apparmor_profile =.*|apparmor_profile = \"crio-default-%{version}\"|" %{SOURCE4}
+sed -i "s|^cgroup_manager = \"systemd\"$|cgroup_manager = \"cgroupfs\"|g" %{SOURCE4}
+sed -i "s|--cgroup-driver=systemd|--cgroup-driver=cgroupfs|g" %{SOURCE6}
 %endif
 
 # We can't use symlinks here because go-list gets confused by symlinks, so we
@@ -100,7 +106,7 @@ cp -avr * $HOME/go/src/%{project}
 cd $HOME/go/src/%{project}
 
 # Build crio
-make
+GO_BUILD="go build -mod vendor" make
 
 %pre
 %service_add_pre crio.service
@@ -141,14 +147,14 @@ install -d %{buildroot}/%{_mandir}/man8
 install -m 0644 docs/crio.conf.5 %{buildroot}/%{_mandir}/man5
 install -m 0644 docs/crio.8      %{buildroot}/%{_mandir}/man8
 # Configs
-sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE3}
-install -D -m 0644 %{SOURCE3}       %{buildroot}/%{_sysconfdir}/crio/crio.conf.d/00-default.conf
+sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE4}
+install -D -m 0644 %{SOURCE4}       %{buildroot}/%{_sysconfdir}/crio/crio.conf.d/00-default.conf
 install -D -m 0644 crio-umount.conf %{buildroot}/%{_datadir}/oci-umount/oci-umount.d/cri-umount.conf
-install -D -m 0644 %{SOURCE2}       %{buildroot}%{_fillupdir}/sysconfig.crio
+install -D -m 0644 %{SOURCE3}       %{buildroot}%{_fillupdir}/sysconfig.crio
 # Systemd
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/crio.service
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/crio.service
 # place kubelet.env in fillupdir
-install -D -m 0644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.kubelet
+install -D -m 0644 %{SOURCE6} %{buildroot}%{_fillupdir}/sysconfig.kubelet
 # Symlinks to rc files
 install -d -m 0755 %{buildroot}%{_sbindir}
 ln -sf service %{buildroot}%{_sbindir}/rccrio

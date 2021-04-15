@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 09 21:10:01 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.20.2:
+  * bump to latest c/storage 1.24 branch
+  * Remove check for CI env variable for release-notes and dependencies
+  * fix lint
+  * test: pin cri-tools to 1.20
+  * bump to v1.20.2
+  * Run GitHub actions on release branches
+  * Pin gocapability to v0.0.0-20180916011248-d98352740cb2
+  * [PATCH 9/9] add method comment
+  * [PATCH 8/9] restore irqbalance config only on system restart
+- Add vendor.tar.gz to avoid dependency downloads
+- Add config-fix-tz.patch to fix crio validation error while building
+
+-------------------------------------------------------------------
 Fri Jan 08 12:22:41 UTC 2021 - rbrown@suse.com
 
 - Update to version 1.19.1:
