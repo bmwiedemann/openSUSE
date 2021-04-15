@@ -308,4 +308,12 @@
     <comment></comment>
     <requestid>694814</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>45b4028127e2398dc76e6de574e1c3c9</srcmd5>
+    <version>2.8.0</version>
+    <time>1618498693</time>
+    <user>dimstar_suse</user>
+    <comment>Update to upstream version 2.8.0</comment>
+    <requestid>885675</requestid>
+  </revision>
 </revisionlist>

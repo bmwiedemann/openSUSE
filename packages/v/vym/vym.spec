@@ -1,7 +1,7 @@
 #
 # spec file for package vym
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           vym
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        Tool to generate and manipulate thought maps
 License:        GPL-2.0-only
 Group:          Productivity/Office/Other
-Url:            http://www.insilmaril.de/vym/index.html
+URL:            http://www.insilmaril.de/vym/index.html
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        %{name}.xml
 Source2:        %{name}.desktop
@@ -67,7 +67,7 @@ mkdir -p %{buildroot}%{_datadir}/vym
 mkdir -p %{buildroot}%{_datadir}/pixmaps
 install -m 0644 icons/vym.png %{buildroot}%{_datadir}/pixmaps
 mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
-install -m 0644 README.md LICENSE.txt INSTALL.txt %{buildroot}%{_defaultdocdir}/%{name}
+install -m 0644 README.md LICENSE.txt %{buildroot}%{_defaultdocdir}/%{name}
 install -m 0644 doc/*.pdf %{buildroot}%{_defaultdocdir}/%{name}
 make %{?_smp_mflags} DESTDIR=%{buildroot} install INSTALL_ROOT=%{buildroot}
 
