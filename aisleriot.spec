@@ -17,12 +17,16 @@
 
 
 Name:           aisleriot
+<<<<<<< Updated upstream
 Version:        3.22.14
+=======
+Version:        3.22.15
+>>>>>>> Stashed changes
 Release:        0
 Summary:        Solitaire Card Games for GNOME
 License:        GPL-3.0-or-later
 URL:            https://wiki.gnome.org/Apps/Aisleriot
-Source0:        https://gitlab.gnome.org/GNOME/aisleriot/-/archive/%{version}/aisleriot-%{version}.tar.gz
+Source0:        https://gitlab.gnome.org/GNOME/aisleriot/-/archive/%{version}/aisleriot-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 # Needed to get lsb data
@@ -61,8 +65,7 @@ This package provides extra themes for Aisleriot.
 
 %build
 %meson \
-    -Dtheme_kde=false \
-    %{nil}
+    -Dtheme_kde=false
 %meson_build
 
 %install
@@ -74,10 +77,6 @@ This package provides extra themes for Aisleriot.
 %files
 %license COPYING.GFDL
 %doc AUTHORS README.md
-%if 0%{?suse_version} <= 1140
-%doc %dir %{_datadir}/help
-%doc %dir %{_datadir}/help/C
-%endif
 %doc %{_datadir}/help/C/aisleriot/
 %{_bindir}/sol
 %dir %{_datadir}/metainfo

@@ -473,4 +473,16 @@
 - Run spec-cleaner (forwarded request 862012 from elimat)</comment>
     <requestid>863161</requestid>
   </revision>
+<<<<<<< Updated upstream
+=======
+  <revision rev="59" vrev="1">
+    <srcmd5>37d84fe909c86999993913e484972e02</srcmd5>
+    <version>3.22.15</version>
+    <time>1618498690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.22.15:
+  + Updated translations (forwarded request 885294 from susnux)</comment>
+    <requestid>885657</requestid>
+  </revision>
+>>>>>>> Stashed changes
 </revisionlist>
