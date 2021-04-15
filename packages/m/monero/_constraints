@@ -17,4 +17,14 @@
       </memory>
     </hardware>
   </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">13</size>
+      </memory>
+    </hardware>
+  </overwrite>
 </constraints>
