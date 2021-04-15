@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 14 03:07:32 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.17
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.17  2021-04-12
+    - Deprecated ?format=* parameter in favor of ?_format=* for content negotiation in Mojolicious::Renderer.
+
+-------------------------------------------------------------------
 Sat Apr 10 03:07:42 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.16
