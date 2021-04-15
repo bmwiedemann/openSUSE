@@ -1,7 +1,7 @@
 #
 # spec file for package python-Sphinx2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@
 %bcond_with test
 %endif
 %define skip_python2 1
+%define skip_python39 1
 Name:           python-Sphinx2%{psuffix}
 Version:        2.3.1
 Release:        0
