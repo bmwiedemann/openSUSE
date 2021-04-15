@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 15 06:20:36 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1618465785.f3f4079f:
+  * Fix return value of _dbus_do_call
+  * sshVirtsh: Allow additional parameters for run_cmd()
+  * Re-connect to dbus for each call
+  * signalblocker: Also block SIGCHLD
+
+-------------------------------------------------------------------
 Mon Apr 12 14:55:48 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1618238732.abb1c9e7:
