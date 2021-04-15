@@ -292,7 +292,8 @@ find %{buildroot}%{_libdir}/erlang -type d -path '*/priv/obj' -print | xargs rm 
 # doc
 mv README.md README
 mkdir -p erlang_doc
-find %{buildroot}%{_libdir}/erlang -maxdepth 3 -type d -name doc -or -name info | while read S;do D=`echo $S | sed -e 's|%{buildroot}%{_libdir}/erlang|erlang_doc|'`; B=`dirname $D`; mkdir -p $B; mv $S $D; done
+mv %{buildroot}%{_libdir}/erlang/doc ./erlang_doc
+find %{buildroot}%{_libdir}/erlang -maxdepth 4 -name info -or -type d -and -path '%{buildroot}%{_libdir}/**/doc/*' -and -not -name chunks -prune | while read S;do D=`echo $S | sed -e 's|%{buildroot}%{_libdir}/erlang|erlang_doc|'`; B=`dirname $D`; mkdir -p $B; mv $S $D; done
 # compress man pages ...
 find %{buildroot}%{_libdir}/erlang/man -type f -exec gzip {} +
 
@@ -358,6 +359,7 @@ getent passwd epmd || %{_sbindir}/useradd -g epmd -s /bin/false -r -c "Erlang Po
 %exclude %{_bindir}/epmd
 %dir %{_libdir}/erlang
 %dir %{_libdir}/erlang/lib/
+%exclude %{_libdir}/erlang/lib/*/doc/chunks
 %exclude %{_libdir}/erlang/lib/*/src
 %exclude %{_libdir}/erlang/lib/*/c_src
 %exclude %{_libdir}/erlang/lib/*/java_src
@@ -423,6 +425,14 @@ getent passwd epmd || %{_sbindir}/useradd -g epmd -s /bin/false -r -c "Erlang Po
 %files doc
 %defattr(0644,root,root,0755)
 %doc erlang_doc/*
+%{_libdir}/erlang/lib/*/doc/chunks
+%exclude %{_libdir}/erlang/lib/debugger-*/doc/chunks
+%exclude %{_libdir}/erlang/lib/dialyzer-*/doc/chunks
+%exclude %{_libdir}/erlang/lib/diameter-*/doc/chunks
+%exclude %{_libdir}/erlang/lib/et-*/doc/chunks
+%exclude %{_libdir}/erlang/lib/reltool-*/doc/chunks
+%exclude %{_libdir}/erlang/lib/observer-*/doc/chunks
+%exclude %{_libdir}/erlang/lib/wx-*/doc/chunks
 
 %files et
 %{_libdir}/erlang/lib/et-*/

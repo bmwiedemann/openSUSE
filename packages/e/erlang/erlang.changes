@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  8 16:27:35 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Pack doc/chunks into %{_libdir} (boo#1184492)
+
+-------------------------------------------------------------------
 Sun Jan 17 07:33:55 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Use wxWidgets < 3.1 (boo#1180488)
