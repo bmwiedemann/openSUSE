@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Apr 10 11:39:37 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.9.1
+  * Support recipient aliases for OpenPGP encryption
+  * The key and signature parts of the message security popup on a
+    received message could not be selected for copy/paste
+  * Various UX and theme improvements
+  MFSA 2021-13
+  * CVE-2021-23991 (bmo#1673240)
+    An attacker may use Thunderbird's OpenPGP key refresh mechanism
+    to poison an existing key
+  * MOZ-2021-23992 (bmo#1666236)
+    A crafted OpenPGP key with an invalid user ID could be used to
+    confuse the user
+  * CVE-2021-23993 (bmo#1666360)
+    Inability to send encrypted OpenPGP email after importing a
+    crafted OpenPGP key
+
+-------------------------------------------------------------------
 Sat Mar 20 09:20:00 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 78.9.0

@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major          78
-%define mainver        %major.9.0
-%define orig_version   78.9.0
+%define mainver        %major.9.1
+%define orig_version   78.9.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -61,12 +61,13 @@
 %define __requires_exclude ^(libmoz.*|liblgpllibs.*|libxul.*|libldap.*|libldif.*|libprldap.*)$
 %define localize 1
 %define crashreporter 0
-%if 0%{?sle_version} > 150100
-# pipewire is too old on Leap <=15.1
-# Activate only on everything newer
 %define with_pipewire0_3 1
-%else
+%define wayland_supported 1
+%if 0%{?sle_version} > 0 && 0%{?sle_version} < 150200
+# pipewire is too old on Leap <=15.1
 %define with_pipewire0_3 0
+# Wayland is too old on Leap <=15.1 as well
+%define wayland_supported 0
 %endif
 
 Name:           %{pkgname}
@@ -399,10 +400,10 @@ ac_add_options --libdir=%{_libdir}
 ac_add_options --includedir=%{_includedir}
 ac_add_options --enable-application=comm/mail
 ac_add_options --enable-release
-%if 0%{?sle_version} < 150200
-ac_add_options --enable-default-toolkit=cairo-gtk3
-%else
+%if 0%{wayland_supported}
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
+%else
+ac_add_options --enable-default-toolkit=cairo-gtk3
 %endif
 # bmo#1441155 - Disable the generation of Rust debug symbols on Linux32
 %ifarch %ix86 %arm
@@ -555,6 +556,7 @@ mkdir --parents %{buildroot}%{_bindir}/
 sed "s:%%PREFIX:%{_prefix}:g
 s:%%PROGDIR:%{progdir}:g
 s:%%APPNAME:%{progname}:g
+s:%%WAYLAND_SUPPORTED:%{wayland_supported}:g
 s:%%PROFILE:.thunderbird:g" \
   %{SOURCE3} > %{buildroot}%{progdir}/%{progname}.sh
 chmod 755 %{buildroot}%{progdir}/%{progname}.sh
