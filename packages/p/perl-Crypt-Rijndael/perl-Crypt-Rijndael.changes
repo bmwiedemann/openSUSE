@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  2 03:06:16 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-Crypt-Rijndael/Changes
+
+  1.16 - 2021-04-01
+     * Add non-blocksized encoding support to streaming modes
+     * Explicitly use downgraded strings
+
+-------------------------------------------------------------------
 Sun Oct 11 03:07:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.15
