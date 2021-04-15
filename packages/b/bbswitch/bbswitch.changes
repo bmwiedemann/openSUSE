@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 10 12:33:49 CET 2021 - tiwai@suse.de
+
+- Fix build with Leap 15.3 kernel due to the missing header
+  inclusion (boo#1183060):
+  bbswitch-fix-header-inclusion.patch
+- Refreshed 0001-Update-proc_create_call-for-5.6-kernel.patch
+
+-------------------------------------------------------------------
 Tue Aug 18 15:16:14 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix wrong usage of %{_libexecdir} for systemd owned directories

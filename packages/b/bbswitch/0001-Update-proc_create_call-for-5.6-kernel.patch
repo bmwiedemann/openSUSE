@@ -10,26 +10,12 @@ change it does is to fix it to build with the new kernel.
 
 [1] https://github.com/awcurless/bbswitch/commit/314d223a1d1bab86370c2da3771b76bf8ac93e3b
 ---
- bbswitch.c | 17 +++++++++--------
- 1 file changed, 9 insertions(+), 8 deletions(-)
+ bbswitch.c |   14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/bbswitch.c b/bbswitch.c
-index 341608f..2934b5a 100644
 --- a/bbswitch.c
 +++ b/bbswitch.c
-@@ -35,8 +35,9 @@
- #include <linux/suspend.h>
- #include <linux/seq_file.h>
- #include <linux/pm_runtime.h>
-+#include <linux/proc_fs.h>
- 
--#define BBSWITCH_VERSION "0.8"
-#+#define BBSWITCH_VERSION "0.9"
-+#define BBSWITCH_VERSION "0.8"
- 
- MODULE_LICENSE("GPL");
- MODULE_DESCRIPTION("Toggle the discrete graphics card");
-@@ -375,12 +376,12 @@ static int bbswitch_pm_handler(struct notifier_block *nbp,
+@@ -376,12 +376,12 @@ static int bbswitch_pm_handler(struct no
      return 0;
  }
  
@@ -48,7 +34,7 @@ index 341608f..2934b5a 100644
  };
  
  static struct notifier_block nb = {
-@@ -457,7 +458,7 @@ static int __init bbswitch_init(void) {
+@@ -458,7 +458,7 @@ static int __init bbswitch_init(void) {
          }
      }
  
