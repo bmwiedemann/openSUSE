@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Feb 11 14:58:54 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
+
+- Switch bazel to default version 3.7
+
+-------------------------------------------------------------------
 Mon Sep 21 10:16:57 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
 
 - Exclude arch %ix86
