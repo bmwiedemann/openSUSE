@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 12 09:00:22 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 3.5.10 with security fixes:
+  * Missing null pointer checks (introduced in Postfix 3.4) after
+    an internal I/O error during the smtp(8) to tlsproxy(8) handshake.
+    Found by Coverity, reported by Jaroslav Skarvada. Based on a
+    fix by Viktor Dukhovni.
+  * Null pointer bug (introduced in Postfix 3.0) and memory leak
+    (introduced in Postfix 3.4) after an inline: table syntax error
+    in main.cf or master.cf. Found by Coverity, reported by Jaroslav
+    Skarvada. Based on a fix by Viktor Dukhovni.
+  * Incomplete null pointer check (introduced: Postfix 2.10) after
+    truncated HaProxy version 1 handshake message. Found by Coverity,
+    reported by Jaroslav Skarvada. Fix by Viktor Dukhovni.
+  * Missing null pointer check (introduced: Postfix alpha) after
+    null argv[0] value.
+
+-------------------------------------------------------------------
 Wed Mar 10 15:12:11 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
 - (bsc#1183305) - config.postfix uses db as suffix for postmaps

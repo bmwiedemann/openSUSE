@@ -1,7 +1,0 @@
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0.18 (FreeBSD)
-
-iFcDBQBgBFwoDAtZDoDKFacRCvzhAP4yix6R51EeNGV+lGfzsS2NEgDnoGvdoXIp
-m8O0ocFIXAD9HgylqBBdTnAm3PnDawYVJS6vWPUKJRGrqjwnTJ4Ikqc=
-=ncG3
------END PGP SIGNATURE-----
