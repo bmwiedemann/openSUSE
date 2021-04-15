@@ -17,12 +17,13 @@
 
 
 Name:           mujs
-Version:        1.0.9
+Version:        1.1.1
 Release:        0
 Summary:        An embeddable Javascript interpreter
 License:        AGPL-3.0-or-later
+Group:          Development/Languages/C and C++
 URL:            https://mujs.com
-Source0:        https://mujs.com/downloads/mujs-1.0.9.tar.xz
+Source0:        https://mujs.com/downloads/%{name}-%{version}.tar.xz
 BuildRequires:  coreutils
 BuildRequires:  gcc
 BuildRequires:  grep
@@ -34,6 +35,7 @@ MuJS is a lightweight Javascript interpreter designed for embedding in other sof
 
 %package devel
 Summary:        MuJS development files
+Group:          Development/Languages/C and C++
 Provides:       %{name}-static = %{version}
 
 %description devel

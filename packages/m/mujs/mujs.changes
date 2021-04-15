@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 14 22:08:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update mujs 1.1.1
+  * Fix: Always create new scope for eval()
+  * Don't redefine/reset existing vars in script code
+  * Fix: RegExp.prototype should be a regular expression object
+  * Throw when redefining non-configurable/readonly properties
+  * Array:  Fix crash when length is negative
+  * fix split doesn't convert context to string if no argument is passed
+  * Parse integers with floats to support large numbers.
+  * Optimize array construction bytecode.
+  * Fix: Expose type of value as an enum with js_type()
+  * Fixed js_strtol: Prevent negative table indexing in
+- Update mujs 1.1.0
+  * Don't allow creating new properties on transient objects.
+  * Fixed escape characters in regex parser
+  * Handle NaN in Date accessors
+  * Handle undefined argument to Error constructor
+- Fixed RPM error because of missing RPM group
+
+-------------------------------------------------------------------
 Thu Mar 11 12:50:28 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Initialization mujs 1.0.9.
