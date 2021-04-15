@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 12 22:02:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- move license to licensedir 
+
+-------------------------------------------------------------------
 Tue Feb 23 20:56:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - make generated autoconf makefiles reproducible (bsc#1182604):

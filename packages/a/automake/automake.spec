@@ -109,7 +109,7 @@ sh bootstrap
 mkdir %{buildroot}%{_sysconfdir}
 echo %{_prefix}/local/share/aclocal >%{buildroot}%{_sysconfdir}/aclocal_dirlist
 ln -s %{_sysconfdir}/aclocal_dirlist %{buildroot}%{_datadir}/aclocal/dirlist
-install -m644 AUTHORS COPYING ChangeLog NEWS README THANKS %{buildroot}%{_docdir}/%{name}
+install -m644 AUTHORS ChangeLog NEWS README THANKS %{buildroot}%{_docdir}/%{name}
 # info's dir file is not auto ignored on some systems
 rm -rf %{buildroot}%{_infodir}/dir
 #name == automake
@@ -123,6 +123,7 @@ rm -rf %{buildroot}%{_infodir}/dir
 
 %if "%{flavor}" == ""
 %files
+%license COPYING
 %doc %{_docdir}/%{name}
 %{_bindir}/*
 %{_infodir}/*%{ext_info}

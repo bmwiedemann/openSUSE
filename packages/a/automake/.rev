@@ -495,4 +495,12 @@
   add automake-reproducible.patch</comment>
     <requestid>874730</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>ce79cbfa43292e20a4bb2d08360491d3</srcmd5>
+    <version>1.16.3</version>
+    <time>1618498593</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>880181</requestid>
+  </revision>
 </revisionlist>
