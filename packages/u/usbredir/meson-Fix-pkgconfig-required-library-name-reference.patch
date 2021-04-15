@@ -1,0 +1,25 @@
+From 115969ef3623497094e477ce004022d2aeb9d0cd Mon Sep 17 00:00:00 2001
+From: Bruce Rogers <brogers@suse.com>
+Date: Mon, 5 Apr 2021 16:02:37 -0600
+Subject: [PATCH] meson: Fix pkgconfig required library name reference
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ usbredirhost/meson.build | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/usbredirhost/meson.build b/usbredirhost/meson.build
+index 28dc688..a09188c 100644
+--- a/usbredirhost/meson.build
++++ b/usbredirhost/meson.build
+@@ -51,5 +51,6 @@ pkgconfig = import('pkgconfig')
+ pkgconfig.generate(usbredir_host_lib,
+                    name : 'libusbredirhost',
+                    description : 'usbredirhost library',
+-                   requires : [libusb_required_version, 'usbredirparser-0.5'],
++                   requires : [libusb_required_version, 'libusbredirparser-0.5'],
+                    variables : 'exec_prefix=${prefix}')
++
+-- 
+2.30.2
+

@@ -1,0 +1,29 @@
+From 897436a72104750fca14d24e176dbef17790101d Mon Sep 17 00:00:00 2001
+From: Bruce Rogers <brogers@suse.com>
+Date: Sat, 3 Apr 2021 11:55:44 -0600
+Subject: [PATCH] meson: Fix include directories needed to build
+
+The directories needed for building isn't specified correctly.
+Add the additional directories where header files reside.
+
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 8b2ccca..a0e73b0 100644
+--- a/meson.build
++++ b/meson.build
+@@ -9,7 +9,7 @@ project('usbredir', 'c', 'cpp',
+ 
+ summary_info = {'prefix': get_option('prefix')}
+ 
+-usbredir_include_root_dir = include_directories('.')
++usbredir_include_root_dir = include_directories('.', 'usbredirhost', 'usbredirparser')
+ 
+ cc_flags = [
+     '-Wp,-D_FORTIFY_SOURCE=2',
+-- 
+2.30.2
+

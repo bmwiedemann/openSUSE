@@ -1,7 +1,7 @@
 #
 # spec file for package usbredir
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,76 +18,85 @@
 
 
 Name:           usbredir
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
-Summary:        A protocol for redirection USB traffic
+Summary:        A protocol for redirecting USB traffic
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
-Url:            https://www.spice-space.org/usbredir.html
-Source:         https://www.spice-space.org/download/usbredir/%{name}-%{version}.tar.bz2
-BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libusb-1.0)
+URL:            https://www.spice-space.org/usbredir.html
+Source:         https://www.spice-space.org/download/usbredir/%{name}-%{version}.tar.xz
+Source1:        https://www.spice-space.org/download/usbredir/%{name}-%{version}.tar.xz.sig
+Patch1:         meson-Fix-include-directories-needed-to-build.patch
+Patch2:         meson-Fix-pkgconfig-required-library-name-reference.patch
+BuildRequires:  gcc-c++
+BuildRequires:  glib2-devel >= 2.44
+BuildRequires:  meson >= 0.48
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.22
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-usbredir is a protocol for redirection USB traffic from a single USB device,
-to a different (virtual) machine then the one to which the USB device is
-attached. See usb-redirection-protocol.txt for the description / definition
+usbredir is a protocol for redirecting USB traffic from a single USB device,
+to a different (virtual) machine than the one to which the USB device is
+attached. See usb-redirection-protocol.md for the description / definition
 of this protocol.
 
 %package -n libusbredirhost1
-Summary:        A protocol for redirection USB traffic
+Summary:        A protocol for redirecting USB traffic - Host-side library
 Group:          System/Libraries
 
 %description -n libusbredirhost1
-usbredir is a protocol for redirection USB traffic from a single USB device,
-to a different (virtual) machine then the one to which the USB device is
-attached. See usb-redirection-protocol.txt for the description / definition
+usbredir is a protocol for redirecting USB traffic from a single USB device,
+to a different (virtual) machine than the one to which the USB device is
+attached. See usb-redirection-protocol.md for the description / definition
 of this protocol.
 
 %package -n libusbredirparser1
-Summary:        A protocol for redirection USB traffic
+Summary:        A protocol for redirecting USB traffic - Client-side library
 Group:          System/Libraries
 Obsoletes:      libusbredirparser0 < %{version}
 Provides:       libusbredirparser0 = %{version}
 
 %description -n libusbredirparser1
-usbredir is a protocol for redirection USB traffic from a single USB device,
-to a different (virtual) machine then the one to which the USB device is
-attached. See usb-redirection-protocol.txt for the description / definition
+usbredir is a protocol for redirecting USB traffic from a single USB device,
+to a different (virtual) machine than the one to which the USB device is
+attached. See usb-redirection-protocol.md for the description / definition
 of this protocol.
 
 %package devel
-Summary:        A protocol for redirection USB traffic - Development files
+Summary:        A protocol for redirecting USB traffic - Development files
 Group:          Development/Languages/C and C++
 Requires:       libusbredirhost1 = %{version}
 Requires:       libusbredirparser1 = %{version}
 
 %description devel
-usbredir is a protocol for redirection USB traffic from a single USB device,
+usbredir is a protocol for redirecting USB traffic from a single USB device,
 to a different (virtual) machine than the one to which the USB device is
-attached. See usb-redirection-protocol.txt for the description / definition
+attached. See usb-redirection-protocol.md for the description / definition
 of this protocol.
 
 %prep
-%setup -q
+%setup -n %{name}-%{version}
+%patch1 -p1
+%patch2 -p1
 
 %build
-%configure --disable-static
-make %{?_smp_mflags}
+%meson -Dllvm-fuzz=disabled
+%meson_build
 
 %install
-%make_install LIBDIR=%{_libdir} PREFIX=%{_prefix}
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
 %post -n libusbredirhost1 -p /sbin/ldconfig
 %postun -n libusbredirhost1 -p /sbin/ldconfig
 %post -n libusbredirparser1 -p /sbin/ldconfig
 %postun -n libusbredirparser1 -p /sbin/ldconfig
+
 %files
 %defattr(-,root,root)
-%doc ChangeLog README
+%doc ChangeLog.md README.md
 %license COPYING
+%{_bindir}/usbredirect
+%{_mandir}/man1/usbredirect.1.gz
 %{_mandir}/man1/usbredirserver.1.gz
 %{_sbindir}/usbredirserver
 
@@ -101,7 +110,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel
 %defattr(-, root, root)
-%doc README.multi-thread
+%doc docs/multi-thread.md docs/usb-redirection-protocol.md
 %{_includedir}/usbredirhost.h
 %{_includedir}/usbredirfilter.h
 %{_includedir}/usbredirparser.h

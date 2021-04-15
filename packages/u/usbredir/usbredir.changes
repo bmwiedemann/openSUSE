@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr  5 18:28:43 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Update to version 0.9.0
+  + Changes noted in ChangeLog.md:
+     !2 Add usbredirect tool with feature parity with usbredirserver
+     !6 Add fuzzer for usbredirparser
+    !12 Add MSI installer for usbredirect tool
+    !11 Add meson build: autotool will be removed in a future release
+     !5 Limit packet's length to 65 kB
+    !4 Fix wrong up-cast when checking for package's length
+    Require LLVM's compiler-rt (optional: for fuzzer)
+    Require glib2 >= 2.44 (optional: for usbredirect)
+    Deprecate usbredirserver in favor of usbredirect
+  + Require libusb-1.0 >= 1.22 due to libusb_set_option() usage
+  + Require meson >= 0.48 due to dictionary usage
+  + Change docs to be in markdown format
+  + add usbredir TCP client
+  + add meson build support (which we now use to build package)
+- Package the new usbredir TCP client: 'usbredirect'
+- Fix meson include directory paths
+  + meson-Fix-include-directories-needed-to-build.patch
+- Fix pkgconfig data used in meson build
+  + meson-Fix-pkgconfig-required-library-name-reference.patch
+
+-------------------------------------------------------------------
 Mon Sep 17 23:13:41 UTC 2018 - Bruce Rogers <brogers@suse.com>
 
 - Update to version 0.8.0
