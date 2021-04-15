@@ -1,7 +1,7 @@
 #
 # spec file for package nodejs-underscore
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define _name underscore
 %if 0%{?suse_version} == 1315
@@ -21,7 +22,7 @@
 %endif
 
 Name:           nodejs-%{_name}
-Version:        1.8.3
+Version:        1.13.1
 Release:        0
 Summary:        A utility belt library for JavaScript
 License:        MIT
@@ -37,8 +38,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?nodejs_requires}
 
 %description
-Underscore.js is a utility belt library for JavaScript that provides support 
-for the usual functional suspects (each, map, reduce, filter...) without 
+Underscore.js is a utility belt library for JavaScript that provides support
+for the usual functional suspects (each, map, reduce, filter...) without
 extending any core JavaScript objects.
 
 %prep
@@ -56,7 +57,8 @@ rm -rf %{buildroot}%{nodejs_modulesdir}/underscore/test/.eslintrc
 
 %files
 %defattr(-,root,root,-)
-%doc CONTRIBUTING.md LICENSE README.md
+%doc CONTRIBUTING.md README.md
+%license LICENSE
 %dir %{nodejs_modulesdir}
 %{nodejs_modulesdir}/%{_name}
 
