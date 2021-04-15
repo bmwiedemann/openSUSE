@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbinteract
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-nbinteract
-Version:        0.2.5
+Version:        0.2.6
 Release:        0
 Summary:        Python package to export interactive HTML pages from Jupyter Notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/SamLau95/nbinteract
-Source:         https://github.com/SamLau95/nbinteract/archive/v%{version}.tar.gz
+Source:         https://github.com/SamLau95/nbinteract/archive/v%{version}.tar.gz#/nbinteract-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM nbinteract-nbconvert6.patch -- gh#SamLau95/nbinteract#152
+Patch0:         nbinteract-nbconvert6.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -83,7 +86,7 @@ on the logic of their programs.
 This package provides the command-line interface.
 
 %prep
-%setup -q -n nbinteract-%{version}
+%autosetup -p1 -n nbinteract-%{version}
 
 %build
 %python_build
