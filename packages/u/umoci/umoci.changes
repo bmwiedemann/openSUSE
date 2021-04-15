@@ -30,11 +30,21 @@ Tue Apr  6 11:13:10 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 - Backport patch to fix KIWI which depends on umoci having sane output from
   "umoci --version". <https://github.com/opencontainers/umoci/pull/369>
   + 0001-makefile-fix-bad-build-flags.patch
+- Remove upstreamed patches:
+  - CVE-2021-29136.patch
 
 -------------------------------------------------------------------
 Thu Apr  1 05:36:50 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Re-disable s390 builds.
+
+-------------------------------------------------------------------
+Tue Mar 30 06:00:18 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+[This was only ever released in Leap and SLES.]
+
+- Add fix for CVE-2021-29136. bsc#1184147
+  + CVE-2021-29136.patch
 
 -------------------------------------------------------------------
 Wed Jun 24 00:27:44 UTC 2020 - Aleksa Sarai <asarai@suse.com>

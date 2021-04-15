@@ -139,4 +139,12 @@ supercedes sr#455248.</comment>
     <comment></comment>
     <requestid>883793</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>81ecd717c40cadd799d4b500fac800be</srcmd5>
+    <version>0.4.7</version>
+    <time>1618498623</time>
+    <user>dimstar_suse</user>
+    <comment>Merge changelog with SLES. (forwarded request 885283 from cyphar)</comment>
+    <requestid>885284</requestid>
+  </revision>
 </revisionlist>
