@@ -7,4 +7,20 @@
     <comment>another distant dep of authlib</comment>
     <requestid>852348</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d85fb53b396eed1408a6e85c24d373c8</srcmd5>
+    <version>0.4.1</version>
+    <time>1611348715</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863746</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b79d1102f6513a3762aa7c3e1a0829bf</srcmd5>
+    <version>0.4.3</version>
+    <time>1618498657</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885363</requestid>
+  </revision>
 </revisionlist>

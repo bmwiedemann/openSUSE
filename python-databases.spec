@@ -1,7 +1,7 @@
 #
 # spec file for package python-databases
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-databases
-Version:        0.4.1
+Version:        0.4.3
 Release:        0
 Summary:        Async database support for Python
 License:        BSD-3-Clause
@@ -28,7 +28,8 @@ Source:         https://github.com/encode/databases/archive/%{version}.tar.gz#/d
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-sqlalchemy
+Requires:       python-sqlalchemy >= 1.3
+Suggests:       python-aiocontextvars
 Suggests:       python-aiomysql
 Suggests:       python-aiopg
 Suggests:       python-aiosqlite
@@ -39,7 +40,9 @@ BuildRequires:  %{python_module aiosqlite}
 BuildRequires:  %{python_module asyncpg}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module sqlalchemy}
+BuildRequires:  %{python_module sqlalchemy >= 1.3}
+BuildRequires:  (python3-aiocontextvars if python3-base < 3.7)
+BuildRequires:  (python36-aiocontextvars if python36-base)
 # /SECTION
 %python_subpackages
 
