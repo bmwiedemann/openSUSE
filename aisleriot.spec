@@ -17,11 +17,7 @@
 
 
 Name:           aisleriot
-<<<<<<< Updated upstream
-Version:        3.22.14
-=======
 Version:        3.22.15
->>>>>>> Stashed changes
 Release:        0
 Summary:        Solitaire Card Games for GNOME
 License:        GPL-3.0-or-later
