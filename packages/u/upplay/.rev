@@ -8,4 +8,13 @@
 upplay is a Qt5 UPnP / OpenHome audio  Control Point from the same developer than upmpdcli that it can control (among other devices).</comment>
     <requestid>851896</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aa862da4107c0ee418462ea84dc0a044</srcmd5>
+    <version>1.4.10</version>
+    <time>1618498691</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.4.10
+</comment>
+    <requestid>885646</requestid>
+  </revision>
 </revisionlist>

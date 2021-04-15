@@ -1,7 +1,7 @@
 #
 # spec file for package upplay
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           upplay
-Version:        1.4.7
+Version:        1.4.10
 Release:        0
 Summary:        UPnP and OpenHome audio Control Point
 License:        GPL-2.0-or-later
 URL:            https://www.lesbonscomptes.com/upplay/
 Source:         https://www.lesbonscomptes.com/upplay/downloads/upplay-%{version}.tar.gz
-Patch0:         dark-theme-fix.patch
-Patch1:         browser-back-mouse-button-support.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -40,7 +38,7 @@ upplay is a Qt5-based audio Control Point for browsing and playing music
 managed by your UPnP/DLNA media servers to your UPnP/DLNA/OpenHome players (renderers).
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 %qmake5 'WEBPLATFORM=webengine' QMAKE_POST_LINK='$(STRIP) $(TARGET)'

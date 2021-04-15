@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 15 12:46:31 UTC 2021 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.4.10
+  * Make the renderer selection dialog dynamic: it will react to a
+    renderer appearing on the network
+  * When the connection with a renderer is lost, try to reconnect
+    instead of asking the user what to do
+  * Improve device restart detection and renew subscriptions when needed
+  * Small fixes in colors in system dark theme
+  * Small fixes in Webengine version
+- removed dark-theme-fix.patch and browser-back-mouse-button-support.patch
+  now in upstream  
+
+-------------------------------------------------------------------
 Mon Nov 30 10:59:38 UTC 2020 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.4.7
