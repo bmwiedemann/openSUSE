@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Dec  6 10:53:45 UTC 2018 - mstopka@opensuse.org
+
+- Update to 15.10.3
+  * Move from OGG to WAV
+  * Remove external README and LICENSE as they are now part of release 
+
+-------------------------------------------------------------------
+Sat Dec  2 14:02:15 UTC 2017 - hillwood@opensuse.org
+
+- Update to 15.10.2
+  * Rename some files to follow naming convention
+  * Update camera shutter
+  * Add README and LICENSE
+  * Add debian to project 
+
+-------------------------------------------------------------------
+Sun Nov 12 13:59:19 UTC 2017 - hillwood@opensuse.org
+
+- Add Group tag. 
+
+-------------------------------------------------------------------
+Tue Oct  3 15:29:45 UTC 2017 - sensor.wen@gmail.com
+
+- Initial package.
