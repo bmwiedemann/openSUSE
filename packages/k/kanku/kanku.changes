@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Apr 15 10:46:53 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.10.3:
+  * [dist] bind "Requires: kanku*" to specific version
+  * [web] fix 'Subroutine redefined' in Kanku::REST
+  * [web] help for guest page
+  * [dist] removed help from views
+  * [web] help page as modal window
+  * [dist] added help page to spec
+  * [web] help page for job_history
+  * [web] fix tooltips in job page
+  * [web] more explainations in guest.js
+  * [web] fix for showDetails in common.js
+  * [handler] fixed ssh for Fedora 33
+  * [util] fix for Fedora login behavior
+  * [web] job id in comment title
+  * [web] improved tooltips
+  * [web] fix closeModal in common.js
+  * [web] fix route handling when retrigger a job
+  * [web] refresh button in jobs_results page
+
+-------------------------------------------------------------------
 Sat Feb 13 12:18:01 UTC 2021 - FSchreiner@suse.com
 
 - Update to version 0.10.2:

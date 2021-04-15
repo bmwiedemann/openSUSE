@@ -5,7 +5,14 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="extract">dist/kanku.spec</param>
+    <param name="extract">dist/debian.changelog</param>
+    <param name="extract">dist/debian.compat</param>
+    <param name="extract">dist/debian.control</param>
+    <param name="extract">dist/debian.dsc</param>
+    <param name="extract">dist/debian.rules</param>
     <param name="revision">master</param>
+    <param name="latest-signed-tag">true</param>
+    <param name="maintainers-asc">_maintainers.asc</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="compression">xz</param>

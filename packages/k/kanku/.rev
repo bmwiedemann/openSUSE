@@ -15,4 +15,30 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>874009</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5488bb93487ab334fd971140d59505d9</srcmd5>
+    <version>0.10.3</version>
+    <time>1618498686</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.3:
+  * [dist] bind &quot;Requires: kanku*&quot; to specific version
+  * [web] fix 'Subroutine redefined' in Kanku::REST
+  * [web] help for guest page
+  * [dist] removed help from views
+  * [web] help page as modal window
+  * [dist] added help page to spec
+  * [web] help page for job_history
+  * [web] fix tooltips in job page
+  * [web] more explainations in guest.js
+  * [web] fix for showDetails in common.js
+  * [handler] fixed ssh for Fedora 33
+  * [util] fix for Fedora login behavior
+  * [web] job id in comment title
+  * [web] improved tooltips
+  * [web] fix closeModal in common.js
+  * [web] fix route handling when retrigger a job
+  * [web] refresh button in jobs_results page
+</comment>
+    <requestid>885626</requestid>
+  </revision>
 </revisionlist>

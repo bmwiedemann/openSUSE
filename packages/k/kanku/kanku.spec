@@ -22,7 +22,7 @@
 
 Name:           kanku
 # Version gets set by obs-service-tar_scm
-Version:        0.10.2
+Version:        0.10.3
 Release:        0
 License:        GPL-3.0-only
 Summary:        Development and continuous integration
@@ -91,12 +91,12 @@ BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Mail::Sendmail)
 BuildRequires:  perl(Net::AMQP::RabbitMQ)
 BuildRequires:  perl(UUID)
-Requires:       kanku-cli
-Requires:       kanku-dispatcher
-Requires:       kanku-scheduler
-Requires:       kanku-triggerd
-Requires:       kanku-web
-Requires:       kanku-worker
+Requires:       kanku-cli = %{version}
+Requires:       kanku-dispatcher = %{version}
+Requires:       kanku-scheduler = %{version}
+Requires:       kanku-triggerd = %{version}
+Requires:       kanku-web = %{version}
+Requires:       kanku-worker = %{version}
 
 %description
 kanku is a utility for integration of kiwi images built
@@ -293,7 +293,7 @@ common config and lib files used in kanku
 
 %package cli
 Summary:        Command line client for kanku
-Requires:       kanku-common
+Requires:       kanku-common = %{version}
 Requires:       libvirt-client
 Requires(pre):  libvirt-daemon libvirt-daemon-driver-qemu
 Requires(pre):  sudo
@@ -344,8 +344,8 @@ getent passwd %{kanku_user} >/dev/null || useradd -r -g %{kanku_group} -G libvir
 
 %package web
 Summary:        WebUI for kanku
-Requires:       kanku-common
-Requires:       kanku-common-server
+Requires:       kanku-common = %{version}
+Requires:       kanku-common-server = %{version}
 Requires:       perl(Dancer2::Plugin::WebSocket)
 Requires:       perl(Mail::Message::Body::String)
 Requires:       perl(Mail::Transport::Send)
@@ -411,8 +411,8 @@ WebUI for kanku using perl Dancer
 %package worker
 Summary:        Worker daemon for kanku
 
-Requires:       kanku-common
-Requires:       kanku-common-server
+Requires:       kanku-common = %{version}
+Requires:       kanku-common-server = %{version}
 Requires:       perl(Net::AMQP::RabbitMQ)
 Requires:       perl(Sys::CPU)
 Requires:       perl(Sys::LoadAvg)
@@ -449,8 +449,8 @@ A remote worker for kanku based on RabbitMQ.
 %package dispatcher
 Summary:        Dispatcher daemon for kanku
 
-Requires:       kanku-common
-Requires:       kanku-common-server
+Requires:       kanku-common = %{version}
+Requires:       kanku-common-server = %{version}
 Requires:       perl(Net::AMQP::RabbitMQ)
 Requires(pre):  sudo
 Recommends:     rabbitmq-server
@@ -477,8 +477,8 @@ A dispatcher for kanku based on RabbitMQ.
 
 %package scheduler
 Summary:        Scheduler daemon for kanku
-Requires:       kanku-common
-Requires:       kanku-common-server
+Requires:       kanku-common = %{version}
+Requires:       kanku-common-server = %{version}
 
 %description scheduler
 A scheduler for kanku based on RabbitMQ.
@@ -500,8 +500,8 @@ A scheduler for kanku based on RabbitMQ.
 
 %package triggerd
 Summary:        Trigger daemon for kanku
-Requires:       kanku-common
-Requires:       kanku-common-server
+Requires:       kanku-common = %{version}
+Requires:       kanku-common-server = %{version}
 
 %description triggerd
 A triggerd for kanku based on RabbitMQ.
@@ -535,7 +535,7 @@ This package contains the documentation files for kanku.
 %package urlwrapper
 Summary:        Url wrapper for kanku:// urls
 Requires:       desktop-file-utils
-Requires:       kanku-cli
+Requires:       kanku-cli = %{version}
 Requires:       shared-mime-info
 Obsoletes:      kanku-url-wrapper
 
