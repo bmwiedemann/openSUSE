@@ -20,10 +20,10 @@
 
 %define ix_version 2.05
 %define spd_version 2.53
-%define sa_version 3.4.5
+%define sa_version 3.4.6
 %define sa_float %(echo %{sa_version} | awk -F. '{ printf "%d.%03d%03d", $1, $2, $3 }')
 %define perl_float %(echo %{perl_version} | awk -F. '{ printf "%d.%03d", $1, $2 }')
-%define rules_revision 1887800
+%define rules_revision 1888502
 
 %define IXHASH iXhash2-%{ix_version}
 %define SPAMPD spampd-%{spd_version}
