@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 15 12:21:42 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Set timezone (TZ)
+- Allow debug mode of entrypoint scripts
+
+-------------------------------------------------------------------
 Wed Apr 14 06:23:28 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove unused /data volume

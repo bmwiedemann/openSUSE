@@ -7,3 +7,7 @@ Webpages should be stored in /srv/nginx/htdocs
 
 It is possible to only override nginx.conf:
 podman run -d --rm -v /srv/nginx/etc/nginx.conf:/etc/nginx/nginx.conf --name nginx -p 80:80/tcp -p 443:443/tcp registry.opensuse.org/opensuse/nginx
+
+Environment Variables:
+- DEBUG=[0|1]	Run entrypoint script in debug mode
+- TZ=<timezone>	Set timezone
