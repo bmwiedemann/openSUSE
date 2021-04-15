@@ -1,4 +1,24 @@
 --------------------------------------------------------------------
+Wed Apr 14 14:26:15 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#30
+- improved git2log parser
+- fix handling of %setup macro
+- rewrite tobs script to not rely on config file but to use command
+  line options instead
+- update build_it jenkins wrapper script
+- update submit_it jenkins wrapper script
+- update README and move to asciidoc
+- 1.0
+
+--------------------------------------------------------------------
+Mon Apr 12 09:51:32 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#29
+- fix handling of %setup macro
+- 0.21
+
+--------------------------------------------------------------------
 Thu Apr 8 11:25:31 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc-devtools#28
