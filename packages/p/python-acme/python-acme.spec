@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define libname acme
 Name:           python-%{libname}
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0

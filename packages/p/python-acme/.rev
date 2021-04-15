@@ -552,4 +552,14 @@
     obtained from a non-default ACME server.</comment>
     <requestid>877591</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b3a12df4c688951d274b1af906e2c728</srcmd5>
+    <version>1.14.0</version>
+    <time>1618498660</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.14.0
+  * The module acme.magic_typing is deprecated and will be removed in 
+    a future release. Please use the built-in module typing instead.</comment>
+    <requestid>885405</requestid>
+  </revision>
 </revisionlist>

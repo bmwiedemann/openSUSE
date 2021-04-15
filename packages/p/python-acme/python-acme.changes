@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 14 15:09:01 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.14.0
+  * The module acme.magic_typing is deprecated and will be removed in 
+    a future release. Please use the built-in module typing instead.
+
+-------------------------------------------------------------------
 Mon Mar  8 08:06:00 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to version 1.13.0
