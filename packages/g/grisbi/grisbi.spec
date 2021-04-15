@@ -17,13 +17,14 @@
 
 
 Name:           grisbi
-Version:        1.2.2
+Version:        2.0.3
 Release:        0
 Summary:        Personal Accounting Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Finance
 URL:            http://www.grisbi.org
-Source0:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/1.2.x/1.2.2/%{name}-%{version}.tar.bz2
+Source0:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/2.0.x/2.0.3/%{name}-%{version}.tar.bz2
+Source1:        https://downloads.sourceforge.net/project/grisbi/grisbi%20stable/2.0.x/2.0.3/%{name}-%{version}.tar.bz2.asc
 
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -77,7 +78,7 @@ rm %{buildroot}%{_datadir}/mime-info/grisbi.{keys,mime}
 %{_datadir}/doc/grisbi/
 %{_datadir}/glib-2.0/schemas/org.gtk.grisbi.gschema.xml
 %{_datadir}/grisbi/
-%{_datadir}/icons/*/*/apps/grisbi.*
+%{_datadir}/icons/*/*/*/*grisbi.*
 %{_datadir}/mime/packages/grisbi.xml
 %{_datadir}/pixmaps/grisbi/
 

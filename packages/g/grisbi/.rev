@@ -171,4 +171,21 @@
     <comment>New upstream rel (forwarded request 795133 from iznogood)</comment>
     <requestid>795153</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>60e285ca0db16ce181c09258993a1a38</srcmd5>
+    <version>2.0.3</version>
+    <time>1618498688</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.3:
+  + Automatic integration of dark themes
+  + New color management of grisbi
+  + Added the ability to change the font size globally
+  + Improved use of grisbi with low definition screens
+  + Redesign of the credit management module
+  + Added import rules for CSV files
+  + Added of a search module in the list of operations
+  + Added the ability to automatically delete old backups
+  + Bugs fix (forwarded request 885259 from ailin_nemui)</comment>
+    <requestid>885650</requestid>
+  </revision>
 </revisionlist>
