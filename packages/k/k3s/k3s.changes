@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 14 14:26:22 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Add disk size requirement in constraints
+- host-local path fixup
+  * Refresh cni-bin-dir.patch
+
+-------------------------------------------------------------------
 Thu Mar 25 14:25:49 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to upstream version 1.20.4+k3s1

@@ -51,7 +51,7 @@ Conflicts:      kubectl
 Conflicts:      kubernetes-client
 Conflicts:      kubernetes-client-provider
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %{?systemd_requires}
 
 %description

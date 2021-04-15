@@ -6,7 +6,7 @@ diff -ur k3s-1.20.4-k3s1.orig/pkg/agent/config/config.go k3s-1.20.4-k3s1/pkg/age
  
  	if !nodeConfig.NoFlannel {
 -		hostLocal, err := exec.LookPath("host-local")
-+		hostLocal, err := exec.LookPath("/usr/libexec/cni/host-local")
++		hostLocal, err := exec.LookPath("/usr/lib/cni/host-local")
  		if err != nil {
  			return nil, errors.Wrapf(err, "failed to find host-local")
  		}
