@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 11 20:01:37 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.8.10 improved ags_hq_pitch_util.c.
+- fixed more deprecated Gtk+-3.0 symbols.
+- minor improvements.
+
+-------------------------------------------------------------------
 Fri Apr  2 16:05:26 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.8.5 fixed ags_lfo_synth_util.c offset and
