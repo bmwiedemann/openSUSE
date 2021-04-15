@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr  6 03:06:31 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.000
+   see /usr/share/doc/packages/perl-Mojo-DOM58/Changes
+
+  3.000     2021-04-04 23:34:33 EDT
+    - Added head and tail collection methods. (from Mojolicious 8.23)
+    - Added EXPERIMENTAL support for :any-link pseudo-class. (from Mojolicious 8.42)
+    - Added EXPERIMENTAL support for case-sensitive attribute selectors like
+      [foo="bar" s]. (from Mojolicious 8.42)
+    - Renamed experimental :matches pseudo-class to :is. (from Mojolicious 8.42)
+    - Fixed a bug where the case-sensitivity identifier in attribute selectors was
+      case-sensitive. (from Mojolicious 8.42)
+    - Fixed a bug where select and ruby elements were parsed incorrectly.
+      (from Mojolicious 8.54)
+    - Added EXPERIMENTAL support for :scope and :has pseudo-classes.
+      (from Mojolicious 8.54)
+    - Added support for MOJO_DOM58_CSS_DEBUG environment variable to print
+      diagnostics information for CSS selectors. (from Mojolicious 8.55)
+    - Unknown CSS selectors will now throw exceptions. (from Mojolicious 8.66)
+    - (INCOMPATIBLE CHANGE) Improved all_text method to exclude "<script>" and
+      "<style>" from text extraction in HTML documents. (from Mojolicious 9.0)
+
+-------------------------------------------------------------------
 Tue Nov 19 10:03:41 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Add cpanspec.yml file
