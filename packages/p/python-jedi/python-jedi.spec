@@ -1,7 +1,7 @@
 #
 # spec file for package python-jedi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-jedi
-Version:        0.17.2
+Version:        0.18.0
 Release:        0
 Summary:        An autocompletion tool for Python
 License:        MIT AND Python-2.0
@@ -26,14 +27,16 @@ Group:          Development/Languages/Python
 URL:            https://github.com/davidhalter/jedi
 Source0:        https://files.pythonhosted.org/packages/source/j/jedi/jedi-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-BuildRequires:  %{python_module parso >= 0.7.0}
+# PATCH-FIX-UPSTREAM Support pytest completion for Python 3.9 -- gh#davidhalter/jedi#1699
+Patch0:         https://github.com/davidhalter/jedi/commit/85ec94cf.patch#/jedi-py39-pytest.patch
+BuildRequires:  %{python_module parso >= 0.8.0}
 # need pytest 5 https://github.com/davidhalter/jedi/issues/1660
 BuildRequires:  %{python_module pytest < 6.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-parso >= 0.7.0
+Requires:       python-parso >= 0.8.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,7 +54,7 @@ Jedi uses an API to connect with IDEs. There is a reference
 implementation as a VIM plugin which uses Jedi's autocompletion.
 
 %prep
-%setup -q -n jedi-%{version}
+%autosetup -p1 -n jedi-%{version}
 
 %build
 %python_build

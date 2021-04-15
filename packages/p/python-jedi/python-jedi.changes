@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Mar 13 13:33:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add jedi-py39-pytest.patch to support Python 3.9
+
+-------------------------------------------------------------------
+Fri Dec 25 19:03:26 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- update to 0.18.0 (get it together with the latest python-parso just to
+  be sure):
+  - Dropped Python 2 and Python 3.5
+  - Using ``pathlib.Path()`` as an output instead of ``str`` in most
+    places:
+    - ``Project.path``
+    - ``Script.path``
+    - ``Definition.module_path``
+    - ``Refactoring.get_renames``
+    - ``Refactoring.get_changed_files``
+  - Functions with ``@property`` now return ``property`` instead of
+    ``function`` in ``Name().type``
+  - Started using annotations
+  - Better support for the walrus operator
+  - Project attributes are now read accessible
+  - Removed all deprecations
+
+  This is likely going to be the last minor release before 1.0.
+
+-------------------------------------------------------------------
+Thu Sep  3 20:26:53 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Revert back to 0.17.2.
+
+-------------------------------------------------------------------
 Thu Aug 27 11:04:42 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Exclude pytest 6 gh#davidhalter/jedi#1660
