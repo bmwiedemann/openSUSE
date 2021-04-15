@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Apr 10 20:48:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.1.3
+  * Change id generation to be hash based to avoid problematic
+    word combinations
+  * Added tests for python 3.9
+  * Fixed setup.py build operations to include package data
+- Release 5.1.2
+  * Fixed missing file in manifest
+- Release 5.1.1
+  * Changes convert.upgrade to upgrade minor 4.x versions to 4.5
+- Release 5.1.0
+  * Implemented CellIds from JEP-62
+  * Fixed a regression introduced when using fastjsonschema,
+     which does not directly support to validate a "reference"/
+     "subschema"
+  * Removed unreachable/unneeded code
+  * Added CI workflow for package release on tag push
+- Release 5.0.8
+  * Add optional support for using `fastjsonschema` as the JSON
+    validation library. To enable fast validation, install
+    `fastjsonschema` and set the environment variable
+    `NBFORMAT_VALIDATOR` to the value `fastjsonschema`.
+- Use github archive for full testsuite
+
+-------------------------------------------------------------------
 Sun Jun 28 19:07:15 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.0.7:

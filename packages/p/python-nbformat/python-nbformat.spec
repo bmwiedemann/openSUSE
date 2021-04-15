@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbformat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define doc_ver 5.0.4
 Name:           python-nbformat
-Version:        5.0.7
+Version:        5.1.3
 Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/nbformat
-Source:         https://files.pythonhosted.org/packages/source/n/nbformat/nbformat-%{version}.tar.gz
+# PyPI sdist has only some schema tests, get the full test suite frim GitHub sources
+Source:         %{url}/archive/%{version}.tar.gz#/nbformat-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Requires:       jupyter-nbformat = %{version}
 Requires:       python-ipython_genutils
 Requires:       python-jsonschema > 2.5.0
@@ -77,16 +80,25 @@ This package provides the jupyter components.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/jupyter-trust
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %fdupes %{buildroot}%{_docdir}/jupyter-nbformat/
 
 %check
-%pytest -k "not TestNotary and not SQLiteSignatureStoreTests"
+# we don't have the alternative validator, cannot fallback from it
+%pytest -k "not (fastjsonschema or test_fallback_validator_with_iter_errors_using_ref)"
+
+%post
+%python_install_alternative jupyter-trust
+
+%postun
+%python_uninstall_alternative jupyter-trust
 
 %files %{python_files}
 %license COPYING.md
 %doc README.md
+%python_alternative jupyter-trust
 %{python_sitelib}/nbformat-%{version}-py*.egg-info
 %{python_sitelib}/nbformat/
 
