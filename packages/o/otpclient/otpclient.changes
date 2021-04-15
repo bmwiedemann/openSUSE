@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 30 13:24:42 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4.4
+  * Remove sorting feature, as it's bugged due to an issue with
+    GtkTreeView. This feature will come back with v3.0, because
+    GtkColumnView will replace GtkTreeView
+
+-------------------------------------------------------------------
 Thu Mar 25 15:11:20 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.4.3

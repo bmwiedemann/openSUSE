@@ -75,4 +75,15 @@
     <comment></comment>
     <requestid>881499</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b7da086dbec7502597f84cf34a47c2ea</srcmd5>
+    <version>2.4.4</version>
+    <time>1618498639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.4
+  * Remove sorting feature, as it's bugged due to an issue with
+    GtkTreeView. This feature will come back with v3.0, because
+    GtkColumnView will replace GtkTreeView (forwarded request 882178 from polslinux)</comment>
+    <requestid>884641</requestid>
+  </revision>
 </revisionlist>
