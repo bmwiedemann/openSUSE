@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/containers/podman.git</param>
+              <param name="changesrevision">9f09fb62cba8f44c18eda84db3e72aab3ae76046</param></service></servicedata>
