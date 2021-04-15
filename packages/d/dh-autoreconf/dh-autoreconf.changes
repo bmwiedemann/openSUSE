@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 31 07:23:55 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Do not require perl, but use %perl_requires to avoid a rebuild
+  on perl updates
+
+-------------------------------------------------------------------
 Mon Mar 22 13:52:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not rquire ourselves to build: buildignore dh-autoreconf,

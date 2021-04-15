@@ -28,12 +28,10 @@ BuildRequires:  debhelper
 #!BuildIgnore:  dh-autoreconf
 BuildRequires:  xz
 Requires:       debhelper
-%if 0%{?suse_version}
-Requires:       perl = %{perl_version}
-%endif
 Provides:       deb:%{_bindir}/dh_autoreconf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
+%perl_requires
 
 %description
 dh-autoreconf provides a debhelper sequence addon named 'autoreconf' and
