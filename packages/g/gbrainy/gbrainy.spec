@@ -1,7 +1,7 @@
 #
 # spec file for package gbrainy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gbrainy
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        A brain teaser game and trainer
 License:        GPL-2.0-or-later
