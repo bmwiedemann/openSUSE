@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Apr 12 08:14:20 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#253
+- fix handling of modules in driver updates (bsc#1184550)
+- 7.0.32
+
+--------------------------------------------------------------------
 Thu Apr 1 08:48:43 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#252
