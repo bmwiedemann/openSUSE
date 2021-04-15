@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Mar 28 18:21:21 UTC 2021 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.33+5:
+  * Modified main menu, (gh#giuspen/cherrytree#1573).
+  * Added automatic syntax highlighting for the Dart language,
+    (gh#giuspen/cherrytree#1569).
+  * Fix changing codebox width of codeboxes with width in
+    percentage, (gh#giuspen/cherrytree#1556).
+  * Correct the FSF's postal address, (gh#giuspen/cherrytree#1566).
+  * Fix import from cherrytree file missing dialog asking for
+    parent node, (gh#giuspen/cherrytree#1562).
+  * Treat equally return key press and numeric keypad enter key
+    press, (gh#giuspen/cherrytree#1547).
+  * Translation updates.
+
+-------------------------------------------------------------------
 Mon Mar 15 16:18:00 UTC 2021 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.32:
