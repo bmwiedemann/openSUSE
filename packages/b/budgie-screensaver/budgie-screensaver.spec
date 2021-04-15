@@ -89,6 +89,8 @@ autoreconf -fiv
 
 %install
 %make_install
+mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
+cp %{buildroot}%{_datadir}/applications/gnome-screensaver.desktop %{buildroot}%{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %find_lang gnome-screensaver
 
 %files
@@ -97,7 +99,8 @@ autoreconf -fiv
 %{_bindir}/*
 %{_libexecdir}/gnome-screensaver
 %{_datadir}/applications/gnome-screensaver.desktop
-%{_datadir}/dbus-1/services/us.getsol.budgie-screensaver.service
+%{_datadir}/dbus-1/services/org.gnome.ScreenSaver.ForBudgie.service
+%{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %{_mandir}/man1/*
 
 %files lang -f gnome-screensaver.lang

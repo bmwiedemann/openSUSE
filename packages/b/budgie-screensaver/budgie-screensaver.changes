@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 15 13:58:22 UTC 2021 - gmbr3@opensuse.org
+
+- Update to version 20210412 (again):
+  * Rename service file to not conflict with gnome-shell.
+  * Revert "Change dbus name to us.getsol.budgie-screensaver"
+
+-------------------------------------------------------------------
 Mon Apr 12 11:22:38 UTC 2021 - gmbr3@opensuse.org
 
 - Update to version 20210412:

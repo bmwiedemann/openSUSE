@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/getsolus/budgie-screensaver.git</param>
-    <param name="revision">ad18df8ed74e202b3895270a83432b390f7fb8c1</param>
+    <param name="revision">01fc25dd4d5a72fb3e4174fcf52fdbc52627f0f7</param>
     <param name="versionformat">%cd</param>
     <param name="changesgenerate">enable</param>
   </service>
