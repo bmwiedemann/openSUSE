@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 15 06:42:19 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1618384717.6ce950447:
+  * CI: Fix db & webui_init startup
+  * Extend tests for login via OAuth2
+  * Update user authentication documentation to cover recent improvements
+  * OAuth: Allow setting a unique provider ID when specifying a custom parameters
+  * Make OAuth2 parameters customizable
+  * Improve OAuth2 changes based on suggestions from code review
+  * Attempt to make OAuth2 work with salsa.debian.org
+  * docs: Fix typo "connfigure"
+  * Dependency cron 2021-04-13
+  * CI: Add checks over static-check-containers and webui-docker-comopse to Mergify
+
+-------------------------------------------------------------------
 Mon Apr 12 22:39:33 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1618218627.42ed03b34:
