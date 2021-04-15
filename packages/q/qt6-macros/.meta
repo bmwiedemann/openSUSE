@@ -3,6 +3,6 @@
   <description>This package provides macros which are used by Qt6 packages.
 
 </description>
-  <devel project="KDE:Qt:6.0" package="qt6-macros"/>
+  <devel project="KDE:Qt6" package="qt6-macros"/>
   <url>https://www.opensuse.org</url>
 </package>

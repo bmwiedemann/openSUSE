@@ -1,5 +1,5 @@
 <package name="kanidm" project="openSUSE:Factory">
   <title>kanidm</title>
   <description></description>
-  <devel project="network" package="kanidm"/>
+  <devel project="network:idm" package="kanidm"/>
 </package>

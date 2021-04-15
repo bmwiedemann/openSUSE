@@ -5,5 +5,5 @@
 It comes with a command line tool in the go-bindata sub directory. This tool offers a set of command line options, used to customize the output being generated.
 
 **NOTE**: this package is required by the Kubernetes build process since 1.4.</description>
-  <devel project="devel:CaaSP:Head:ControllerNode" package="golang-github-jteeuwen-go-bindata"/>
+  <devel project="devel:kubic" package="golang-github-jteeuwen-go-bindata"/>
 </package>

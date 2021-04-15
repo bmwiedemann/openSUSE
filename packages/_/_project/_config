@@ -10,7 +10,7 @@ BuildFlags: genmetaalgo:1
 # The prjconf macros have a serial to help work around issues like https://github.com/openSUSE/open-build-service/issues/4088
 # On macros having impact on dep chains, update the serial (mainly ruby, python)
 # Using a date to indicate when we set the serial
-ExpandFlags: macroserial:20210202
+ExpandFlags: macroserial:20210416
 
 ExpandFlags: kiwi-nobasepackages
 ExpandFlags: docker-nobasepackages
@@ -1392,7 +1392,7 @@ Macros:
 ## PYTHON MACROS BEGIN
 # order of %pythons is important: The last flavor overrides any operation on conflicting files and definitions during expansions,
 # making it the "default" in many cases --> keep the primary python3 provider at the end.
-%pythons %{?!skip_python3:%{?!skip_python36:python36} %{?!skip_python38:python38}}
+%pythons %{?!skip_python3:%{?!skip_python36:python36} %{?!skip_python39:python39} %{?!skip_python38:python38}}
 %add_python() %{expand:%%define pythons %1 %pythons}
 
 %_without_python2 1
