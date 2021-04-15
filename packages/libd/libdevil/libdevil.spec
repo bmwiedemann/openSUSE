@@ -1,7 +1,7 @@
 #
 # spec file for package libdevil
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ Patch2:         DevIL-%{version}-libpng14.patch
 Patch3:         DevIL-%{version}-gcc5.patch
 # PATCH-FIX-UPSTREAM
 Patch4:         jp2-remove-use-of-uchar-define.patch
+# build with openexr3
+Patch5:         libdevil-openexr3.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  OpenEXR-devel
 BuildRequires:  SDL-devel
@@ -70,7 +72,7 @@ SDL and Allegro.
 
 %package tools
 Summary:        Tools that can be used when using DevIL libraries
-License:        LGPL-2.1-only AND GPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-2.1-only
 Group:          Development/Tools/Other
 Requires:       libIL%{libIL} = %{version}
 
@@ -86,7 +88,7 @@ Provides:       libdevil1 = %{version}
 Obsoletes:      libdevil1 < %{version}
 %if 0%{?suse_version}
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 %endif
 
 %description -n  libIL%{libIL}
@@ -126,6 +128,7 @@ This package contains the development libraries and headers.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p2
+%patch5 -p1
 # FIXME: src-IL/src/il_wdp.c unclear license: https://jxrlib.codeplex.com can stand as replacement
 # make sure we don't compile this accidentally
 > src-IL/src/il_wdp.c
