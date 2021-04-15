@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 29 22:10:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add furl-py39-join.patch to fix Python 3.9 test failure
+  gh#gruns/furl#139
+- Submitted tests_overcome_bpo42967.patch as gh#gruns/furl#140
+
+-------------------------------------------------------------------
 Tue Feb 23 16:19:20 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Switch testing to pytest, it is just more convenient to debug.

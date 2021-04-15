@@ -29,6 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/f/furl/furl-%{ver
 # With fix for bpo#42967, it is not possible to separate
 # parameters of URL query with semicolon
 Patch0:         tests_overcome_bpo42967.patch
+# PATCH-FIX-UPSTREAM furl-py39-join.patch -- gh#gruns/furl#139
+Patch1:         furl-py39-join.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -56,14 +58,18 @@ chmod -x *.md
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand #
+chmod -x %{buildroot}%{$python_sitelib}/furl-%{version}*-info/*
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 %check
-%pytest -vv
+%pytest
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
-%{python_sitelib}/*
+%{python_sitelib}/furl
+%{python_sitelib}/furl-%{version}*-info
 
 %changelog
