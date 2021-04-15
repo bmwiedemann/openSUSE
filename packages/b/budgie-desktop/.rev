@@ -267,4 +267,23 @@
 </comment>
     <requestid>884628</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1477331d2f6b42b6de6dbecef04a2334</srcmd5>
+    <version>10.5.2+7a5dcfda</version>
+    <time>1618498693</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.5.2+7a5dcfda:
+  * Use IconSize.DIALOG instead of IconSize.INVALID,
+    only scale if icon isn't already 48px in height.
+  * Drop use of Queue and Cancellable.
+  * Filter out audacious notifications so they don't
+    clutter up Raven.
+  * Fix application icons not scaling in Notification
+    Group headers.
+  * Don't filter device added / removed notifications.
+  * Revert &quot;Changed budgie-screensaver dbus name&quot;
+- Let budgie-screensaver handle XDG autostart
+</comment>
+    <requestid>885685</requestid>
+  </revision>
 </revisionlist>

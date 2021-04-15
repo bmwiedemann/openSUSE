@@ -20,7 +20,7 @@
 
 #
 Name:           budgie-desktop
-Version:        10.5.2+08c9d7cf
+Version:        10.5.2+7a5dcfda
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -144,6 +144,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
+rm %{buildroot}%{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
+
 %find_lang %{name}
 
 %post
@@ -174,7 +176,6 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %{_datadir}/xsessions/default.desktop
 %{_datadir}/xsessions/budgie-desktop.desktop
 %{_libdir}/budgie-desktop
-%{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %{_distconfdir}/xdg/autostart/budgie-desktop-nm-applet.desktop
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 
