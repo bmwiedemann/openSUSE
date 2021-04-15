@@ -77,8 +77,8 @@ Requires:       keyutils-devel
 Requires:       pkgconfig(com_err)
 Requires:       pkgconfig(libverto)
 Requires:       pkgconfig(ss)
-Provides:       krb5-devel = %{version}
 Conflicts:      krb5-devel
+Provides:       krb5-devel = %{version}
 
 %description devel
 Kerberos V5 is a trusted-third-party network authentication system,

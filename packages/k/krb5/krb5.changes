@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  7 16:10:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- do not own %sbindir, it comes from filesystem package 
+
+-------------------------------------------------------------------
 Fri Feb 19 12:10:25 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 1.19.1

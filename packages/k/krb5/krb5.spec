@@ -285,6 +285,7 @@ sed -i "s/%{_lto_cflags}//" %{buildroot}%{_bindir}/krb5-config
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+
 %preun server
 %service_del_preun krb5kdc.service kadmind.service kpropd.service
 
@@ -443,16 +444,15 @@ sed -i "s/%{_lto_cflags}//" %{buildroot}%{_bindir}/krb5-config
 %{_mandir}/man7/kerberos.7%{?ext_man}
 
 %files plugin-kdb-ldap
-%dir %{_libdir}/krb5
-%dir %{_libdir}/krb5/plugins
-%dir %{_libdir}/krb5/plugins/kdb
-%dir %{_sbindir}/
+%{_sbindir}/kdb5_ldap_util
 %dir %{_datadir}/kerberos
 %dir %{_datadir}/kerberos/ldap
 %config %{_datadir}/kerberos/ldap/kerberos.schema
 %config %{_datadir}/kerberos/ldap/kerberos.ldif
+%dir %{_libdir}/krb5
+%dir %{_libdir}/krb5/plugins
+%dir %{_libdir}/krb5/plugins/kdb
 %{_libdir}/krb5/plugins/kdb/kldap.so
-%{_sbindir}/kdb5_ldap_util
 %{_libdir}/libkdb_ldap*
 %{_mandir}/man8/kdb5_ldap_util.8%{?ext_man}
 
