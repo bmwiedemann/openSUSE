@@ -25,7 +25,7 @@
 %define   import_path     github.com/v2fly/v2ray-core/v4
 
 Name:           v2ray-core
-Version:        4.35.1
+Version:        4.37.3
 Release:        0
 Summary:        Network tools for building a computer network
 License:        MIT
@@ -35,12 +35,14 @@ Source0:        https://github.com/v2fly/v2ray-core/archive/v%{version}/%{name}-
 Source1:        vendor.tar.gz
 Source2:        v2ray.service
 Source3:        v2ray@.service
+Source4:        https://github.com/v2fly/geoip/raw/release/geoip.dat
+Source5:        https://github.com/v2fly/domain-list-community/raw/release/dlc.dat
 Source99:       %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
-# This package can not be built with go version < 1.15
-BuildRequires:  golang(API) = 1.15
+# This package (v4.37.3+) can not be built with go version < 1.16
+BuildRequires:  golang(API) = 1.16
 BuildRequires:  pkgconfig(systemd)
 AutoReqProv:    Off
 Provides:       v2ray = %{version}-%{release}
@@ -66,7 +68,6 @@ This package provide source code for %{repo}
 
 %prep
 %setup -q -a1 -n %{repo}-%{version}
-rm go.sum go.mod
 
 %build
 %goprep %{import_path}
@@ -81,8 +82,8 @@ mv %{_builddir}/go/bin/main %{_builddir}/go/bin/v2ctl
 %gofilelist
 
 install -d %{buildroot}%{_datadir}/v2ray
-install -m0644 release/config/geoip.dat %{buildroot}%{_datadir}/v2ray/
-install -m0644 release/config/geosite.dat %{buildroot}%{_datadir}/v2ray/
+install -m0644 %{SOURCE4} %{buildroot}%{_datadir}/v2ray/geoip.dat
+install -m0644 %{SOURCE5} %{buildroot}%{_datadir}/v2ray/geosite.dat
 
 install -d %{buildroot}%{_unitdir}
 install -m0644 %{SOURCE2} %{buildroot}%{_unitdir}/

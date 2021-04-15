@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Apr 15 06:11:12 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- update version to 4.37.3
+  * Add multiple address host support for DNS (#884 #886 #888)
+  * Fix geoiop & geosite load issue (#889)
+- update in 4.37.2
+  * Add browser forwarder support for Websocket (#818)
+  * Add Websocket 0-RTT early data support (#818)
+  * Add replay protection for Shadowsocks proxy (#777)
+  * Add queryStrategy option for DNS (#794)
+  * Add disableFallback & skipFallback option for DNS client (#864)
+  * Add inversed GeoIP matching (#860)
+  * Add grpcSettings & gunSettings to streamSettings (00879c4) @rprx
+  * Fix vprotogen loop dependency (#797) @Loyalsoldier @U-v-U
+  * Fix DNS tests timeout due to network instability (#805) @Loyalsoldier
+  * Remove AA header flag in DNS query (#817) @Loyalsoldier
+  * TProxy: cannot find IPv6 destination in redirect mode (#815) @mzz2017
+  * Context: ctx initialization for core.functions (#841) @rurirei
+  * Set FakeDNS FakeEnable option dynamically (#879) @sixg0000d @Loyalsoldier
+  * Fix Websocket early data 404 bug (#859) @k79e
+  * Fix QUIC: disconnect due to timeout (#850) @bhoppi
+  * Log: remove package path prefix in logs (#840 0138017 78c1993) @kslr
+- update in 4.36.2
+  * Fix gRPC max delay unintentionally low (1eaec68) @xiaokangwang
+  * Fix core panics when zero domain/full type of rule (#786) @darsvador
+- update in 4.36.1
+  * Add gRPC/gun transport (#757 #783)
+  * Add loopback proxy (#770)
+  * Add a new efficient routing rule matcher MphDomainMatcher (#743)
+  * FakeDNS: use 198.18.0.0/15 as default FakeDNS IP pool (#779)
+- update build needed golang version to 1.16
+- keep go.sum go.mod to fix build issue with 'matched no packages'
+- add geo files manually since upstream removed them from source
+
+-------------------------------------------------------------------
 Tue Mar  9 10:26:12 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - update version to 4.35.1
