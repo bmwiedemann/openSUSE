@@ -517,4 +517,12 @@
     <comment>rpm: drop extraneous explicit sqlite-libs runtime dependency (forwarded request 881659 from smithfarm)</comment>
     <requestid>881661</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>0378d2e5e604c8d06538f6b4eeed5324</srcmd5>
+    <version>16.2.0.91+g24bd0c4acf</version>
+    <time>1618498615</time>
+    <user>dimstar_suse</user>
+    <comment>16.2.0 (forwarded request 884583 from smithfarm)</comment>
+    <requestid>884584</requestid>
+  </revision>
 </revisionlist>

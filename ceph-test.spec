@@ -25,7 +25,7 @@
 %bcond_with cmake_verbose_logging
 %bcond_without ceph_test_package
 %bcond_with minimal_debugging_information
-%ifarch s390 s390x
+%ifarch s390
 %bcond_with tcmalloc
 %else
 %bcond_without tcmalloc
@@ -123,7 +123,7 @@
 # main package definition
 #################################################################################
 Name: ceph-test
-Version: 16.1.0.1217+g8e1da7347e
+Version: 16.2.0.91+g24bd0c4acf
 Release: 0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch: 2
@@ -139,7 +139,7 @@ License: LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group: System/Filesystems
 %endif
 URL: http://ceph.com/
-Source0: %{?_remote_tarball_prefix}ceph-16.1.0-1217-g8e1da7347e.tar.bz2
+Source0: %{?_remote_tarball_prefix}ceph-16.2.0-91-g24bd0c4acf.tar.bz2
 %if 0%{?suse_version}
 Source94: ceph-rpmlintrc
 Source95: checkin.sh
@@ -181,7 +181,11 @@ BuildRequires:	gcc-c++
 %endif
 BuildRequires:	gdbm
 %if 0%{with tcmalloc}
-%if 0%{?fedora} || 0%{?rhel}
+# libprofiler did not build on ppc64le until 2.7.90
+%if 0%{?fedora} || 0%{?rhel} >= 8
+BuildRequires:	gperftools-devel >= 2.7.90
+%endif
+%if 0%{?rhel} && 0%{?rhel} < 8
 BuildRequires:	gperftools-devel >= 2.6.1
 %endif
 %if 0%{?suse_version}
@@ -409,7 +413,7 @@ This package contains Ceph benchmarks and test tools.
 %endif
 %if 0%{with selinux}
 %endif
-%if 0%{?fedora} || 0%{?rhel}
+%if 0%{?rhel} && 0%{?rhel} < 8
 %if 0%{with tcmalloc}
 %endif
 %endif
@@ -586,7 +590,7 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{?suse_version}
 %endif
 %prep
-%autosetup -p1 -n ceph-16.1.0-1217-g8e1da7347e
+%autosetup -p1 -n ceph-16.2.0-91-g24bd0c4acf
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:

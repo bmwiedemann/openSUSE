@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr  8 12:48:11 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.2.0-91-g24bd0c4acf:
+  + rebase on top of upstream pacific SHA1 4cbaf866034715d053e6259dcd5bd8e4e1d1e1ed
+
+-------------------------------------------------------------------
+Thu Apr  1 15:10:47 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.2.0-31-g5922b2b9c1:
+  + rebase on top of upstream v16.2.0 (first stable release in Pacific series)
+    see https://ceph.io/releases/v16-2-0-pacific-released/
+
+-------------------------------------------------------------------
 Fri Mar 26 10:14:59 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 16.1.0-1217-g8e1da7347e:
