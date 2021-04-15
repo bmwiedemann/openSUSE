@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Mon Feb 22 02:04:37 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.6.3
+  * add print_gopath in Makefile
+  * feat(util/keysyms): add keysym to visible char map
+  * fix(randr): GetPreferredMode panic
+  * feat(xproto): add ChangeHosts
+
+-------------------------------------------------------------------
+Thu Apr 25 03:20:19 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.4.1
+  * feat: add util xcursor
+  * fix: build failed
+
+-------------------------------------------------------------------
+Sun Mar 10 13:12:36 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.3.0
+  * chore: use WriteBool and ReadBool
+  * feat: xkb add more functions
+  * chore: exts use new reader
+  * chore: xproto event use new reader
+  * feat: implement new Reader
+  * feat: add ext xkb
+  * feat: delete other error types, leaving only the Error type
+  * chore: continue to replace uint64 with SeqNum
+  * feat: use special seqNum to indicate error
+  * fix: requestCheck do not unlock c.ioMu before return
+  * chore: replace uint64 with SeqNum
+  * feat: reduce memory usage for encoding requests
+  * fix: requestCheck method
+  * feat: add ext shm
+  * feat: add ext render
+  * feat: support ge generic event
+  * feat: add ext input
+  * fix: readMapNotifyEvent no set Window field
+  * fix: conn read blocked when event chan full
+  * feat(ext/randr): add more events
+  * fix(ext/randr): name typo
+  * feat: add ext xfixes
+  * fead: handle conn read write error
+  * feat: Conn add method IDUsedCount
+  * fix: wrong call NewError
+  * feat: add resource id allocator
+  * feat: conn add atom cache
+  * fix: ewmh _NET_SUPPORTING_WM_CHECK is not root property
+  * feat: add ext randr
+  * feat: add ext dpms and screensaver
+  * chore: call log.Print if env DEBUG_X11_CLIENT = 1
+  * chore(deb): set env DH_GOLANG_EXCLUDES
+  * feat: handwriting encode decode part
+  * fix: atom WM_CHANGE_STATE not found
+  * fix(wm/ewmh): get icon failed
+  * feat: add WriteSelectionNotifyEvent
+  * chore: add makefile for sw_64
+  * fix: readSetup
+
+-------------------------------------------------------------------
+Sun Apr  8 05:50:58 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 0.0.2
+  * Remove usr/bin
+  * Expand event chan buffer size
+  * Fix: Adapt lintian
+
+-------------------------------------------------------------------
+Thu Nov  9 08:30:54 UTC 2017 - hillwood@opensuse.org
+
+- Change buildarch to noarch. 
+
+-------------------------------------------------------------------
+Wed Nov  8 07:58:27 UTC 2017 - hillwood@opensuse.org
+
+- Cleanup spec. 
+
+-------------------------------------------------------------------
+Tue Oct  3 15:29:45 UTC 2017 - sensor.wen@gmail.com
+
+- Initial package.
