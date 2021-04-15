@@ -206,4 +206,12 @@
   * Drop merged patch 0001-Change-the-SUSE-override-to-use-apachectl.patch</comment>
     <requestid>877738</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3598e54c524bf27fb0ee09c9c8d63c86</srcmd5>
+    <version>1.14.0</version>
+    <time>1618498662</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>885407</requestid>
+  </revision>
 </revisionlist>
