@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  7 18:58:34 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libksba 1.5.1:
+ * Support Brainpool curves specified by ECDomainParameters
+
+-------------------------------------------------------------------
 Fri Nov 20 18:49:02 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libksba 1.5.0:

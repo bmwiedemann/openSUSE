@@ -1,7 +1,7 @@
 #
 # spec file for package libksba
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define soname 8
 Name:           libksba
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        A X.509 Library
-License:        (LGPL-3.0-or-later OR GPL-2.0-or-later) AND GPL-3.0-or-later AND MIT
+License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnupg.org
 Source:         https://www.gnupg.org/ftp/gcrypt/libksba/%{name}-%{version}.tar.bz2
