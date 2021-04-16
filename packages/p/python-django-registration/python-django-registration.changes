@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 16 07:48:17 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.1.2 (bsc#1184427, CVE-2021-21416)
+  * Filter sensitive POST parameters in error reports
+  * Fix RemovedInDjango40Warning from Signal arguments
+
+-------------------------------------------------------------------
 Mon Apr 20 13:14:13 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Drop py2 dep from py3 only package
