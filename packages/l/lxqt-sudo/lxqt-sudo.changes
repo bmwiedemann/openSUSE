@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 16 10:17:32 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * Code: Handled what was deprecated by Qt5.15.
+
+-------------------------------------------------------------------
 Wed Nov  4 13:50:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.0:

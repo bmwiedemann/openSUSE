@@ -120,4 +120,13 @@
   * Use QFlags default constructor.</comment>
     <requestid>846009</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5451348619e7a4190f4c19d3156d0c20</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Code: Handled what was deprecated by Qt5.15.</comment>
+    <requestid>885946</requestid>
+  </revision>
 </revisionlist>
