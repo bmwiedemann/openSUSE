@@ -1,7 +1,7 @@
 #
 # spec file for package stow
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,32 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           stow
-Version:        2.2.2
+Version:        2.3.1
 Release:        0
 Summary:        Manage the installation of software packages from source
-License:        GPL-2.0+
+License:        GPL-3.0-or-later
 Group:          System/Packages
-Url:            http://www.gnu.org/software/stow/
-Source:         http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.bz2
-Source1:        stow-rpmlintrc
-Source2:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.bz2.sig
-Source3:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=stow&download=1#/%name.keyring
+URL:            https://gnu.org/software/stow/
+Source:         https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.bz2
+Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.bz2.sig
+Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=stow&download=1#/%name.keyring
+Source3:        stow-rpmlintrc
+BuildRequires:  perl
+BuildRequires:  perl-macros
 BuildRequires:  perl(IO::Scalar)
 BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Test::Output)
-Requires:       %{install_info_prereq}
+Requires(post): %{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 Requires:       perl >= 5.6.1
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-%{perl_requires}
+%{?perl_requires}
+%{?libperl_requires}
 
 %description
 GNU Stow is a symlink farm manager which takes distinct packages of
@@ -71,39 +74,29 @@ Documentation for GNU Stow %{version} in HTML and PDF format.
     --docdir=%{_defaultdocdir}/%{name}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 rm %{buildroot}%{_docdir}/stow/version.texi
-install -m 0644 COPYING README AUTHORS ChangeLog doc/ChangeLog.OLD \
-                NEWS THANKS TODO \
-    %{buildroot}%{_docdir}/stow
+rm %{buildroot}%{_docdir}/%{name}/INSTALL.md
 
 %check
-make %{?_smp_mflags} test
+%make_build test
 
 %post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
+%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{?ext_info}
 
-%postun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
+%preun
+%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{?ext_info}
 
 %files
-%defattr(-,root,root)
+%license COPYING
+%doc AUTHORS ChangeLog doc/ChangeLog.OLD README.md NEWS THANKS TODO
 %{_bindir}/*
 %{_mandir}/man8/stow.*
 %{_infodir}/stow*
 %dir %{_docdir}/stow
-%{_docdir}/stow/COPYING
-%{_docdir}/stow/README
-%{_docdir}/stow/AUTHORS
-%{_docdir}/stow/ChangeLog
-%{_docdir}/stow/ChangeLog.OLD
-%{_docdir}/stow/NEWS
-%{_docdir}/stow/THANKS
-%{_docdir}/stow/TODO
 %{perl_vendorlib}/*
 
 %files doc
-%defattr(-,root,root)
 %{_docdir}/stow/manual-single.html
 %{_docdir}/stow/manual-split
 %{_docdir}/stow/manual.pdf
