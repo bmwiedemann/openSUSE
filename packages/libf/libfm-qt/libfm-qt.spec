@@ -1,7 +1,7 @@
 #
 # spec file for package libfm-qt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libfm-qt
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        Library providing components to build desktop file managers
 License:        LGPL-2.1-or-later AND BSD-3-Clause
@@ -30,7 +30,7 @@ BuildRequires:  cmake >= 3.1.0
 # Needs private headers, see xdndworkaround.cpp
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-qttools-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.8.0
+BuildRequires:  lxqt-build-tools-devel >= 0.9.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -49,9 +49,9 @@ BuildRequires:  pkgconfig(x11)
 libfm-qt is the Qt port of libfm, a library providing components to
 build desktop file managers.
 
-%{lang_package -r libfm-qt8}
+%{lang_package -r libfm-qt9}
 
-%package -n libfm-qt8
+%package -n libfm-qt9
 Summary:        Library providing components to build desktop file managers
 # Require data files read by the library. For parallel installed library versions, the newest one wins
 Group:          System/Libraries
@@ -60,7 +60,7 @@ Recommends:     %{name}-lang
 Conflicts:      pcmanfm <= 0.10.0
 Provides:       libfm-qt
 
-%description -n libfm-qt8
+%description -n libfm-qt9
 libfm-qt is the Qt port of libfm, a library providing components to
 build desktop file managers.
 
@@ -78,7 +78,7 @@ Provides data to be read by libfm-qt
 %package -n libfm-qt-devel
 Summary:        Development files for libfm-qt
 Group:          Development/Libraries/C and C++
-Requires:       libfm-qt8 >= %{version}
+Requires:       libfm-qt9 >= %{version}
 Requires:       pkgconfig
 # libfm-qt has an -I on a path from menu-cache-devel
 Requires:       pkgconfig(libmenu-cache) >= 0.4.0
@@ -98,10 +98,10 @@ Libfm-Qt libraries for development
 
 %find_lang %{name} --with-qt
 
-%post -n libfm-qt8 -p /sbin/ldconfig
-%postun -n libfm-qt8 -p /sbin/ldconfig
+%post -n libfm-qt9 -p /sbin/ldconfig
+%postun -n libfm-qt9 -p /sbin/ldconfig
 
-%files -n libfm-qt8
+%files -n libfm-qt9
 %license LICENSE LICENSE.BSD-3-Clause
 %doc README.md
 %{_libdir}/libfm-qt.so.*

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr 16 06:40:20 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * Creation time is supported.
+  * Multiple files that are associated with the same app are launched
+    together.
+  * A menu-item is added to the "Open With..." menu to open mixed
+    selections with their default apps.
+  * The size limit for thumbnail creation is fixed.
+  * Blurred thumbnails with scale factors > 1 are fixed.
+  * A Delete action is added to the context menu of a trashed file.
+    Also, redundant items are removed from that menu.
+  * The Group entry of Properties dialog is enabled when the file
+    belongs to user.
+  * A rare crash on emptying Trash is fixed.
+  * The localization of LXQt file dialog is enabled.
+  * An issue is fixed in renaming template files before creating them.
+  * The emblem positions are corrected in compact and detailed views.
+  * Sorting by deletion time is corrected inside Trash.
+  * Other fixes and code cleanup.
+
+-------------------------------------------------------------------
 Wed Nov  4 13:23:42 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.0:

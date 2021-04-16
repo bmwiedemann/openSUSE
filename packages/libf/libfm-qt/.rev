@@ -210,4 +210,29 @@
   * Code cleanup.</comment>
     <requestid>845996</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>432e1aeee52f94f9f986f5f53a4331a7</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Creation time is supported.
+  * Multiple files that are associated with the same app are launched
+    together.
+  * A menu-item is added to the &quot;Open With...&quot; menu to open mixed
+    selections with their default apps.
+  * The size limit for thumbnail creation is fixed.
+  * Blurred thumbnails with scale factors &gt; 1 are fixed.
+  * A Delete action is added to the context menu of a trashed file.
+    Also, redundant items are removed from that menu.
+  * The Group entry of Properties dialog is enabled when the file
+    belongs to user.
+  * A rare crash on emptying Trash is fixed.
+  * The localization of LXQt file dialog is enabled.
+  * An issue is fixed in renaming template files before creating them.
+  * The emblem positions are corrected in compact and detailed views.
+  * Sorting by deletion time is corrected inside Trash.
+  * Other fixes and code cleanup.</comment>
+    <requestid>885932</requestid>
+  </revision>
 </revisionlist>
