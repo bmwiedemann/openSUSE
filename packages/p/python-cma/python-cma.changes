@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 16 11:30:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Don't build for Python 3.6, due to no NumPy.
+
+-------------------------------------------------------------------
 Wed May 13 07:12:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add missing runtime dependencies, as declared in setup.py

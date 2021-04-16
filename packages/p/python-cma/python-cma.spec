@@ -1,7 +1,7 @@
 #
 # spec file for package python-cma
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,6 +18,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# No numpy on 3.6
+%define skip_python36 1
 Name:           python-cma
 Version:        3.0.3
 Release:        0
