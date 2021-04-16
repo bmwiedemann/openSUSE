@@ -89,8 +89,6 @@
     <package name="libsasl2-3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libseccomp2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libselinux1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="libsemanage-conf" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libsemanage2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libsepol2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libsmartcols1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libsnappy1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -105,6 +103,7 @@
     <package name="libverto1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libz1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libzstd1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
+    <package name="login_defs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="makedumpfile" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="ncurses-utils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="netcfg" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -126,7 +125,6 @@
     <package name="rpm" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="rpm-config-SUSE" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="sed" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="shadow" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="suse-module-tools" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="system-group-hardware" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="system-group-kvm" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
@@ -948,7 +946,7 @@
     <package name="libpoppler-cpp0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libpoppler-qt5-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="libpoppler108" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libpoppler109" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libportal0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libprocps8" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
@@ -990,6 +988,8 @@
     <package name="libsamdb0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libsbc1" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libsecret-1-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
+    <package name="libsemanage-conf" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="libsemanage2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libsensors4" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libserd-0-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libsgutils2-1_45-2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
@@ -1339,6 +1339,7 @@
     <package name="setxkbmap" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="sg3_utils" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="sgml-skel" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
+    <package name="shadow" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="shared-mime-info" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base-microdnf -->
     <package name="shim" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="signon-plugin-oauth2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
