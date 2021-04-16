@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  5 10:02:22 UTC 2021 - Samu Voutilainen <smar@smar.fi>
+
+- Own directory /var/lib/kea, as that is used as default for
+  memfile lease store.
+
+-------------------------------------------------------------------
 Tue Nov 10 08:04:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.9.1

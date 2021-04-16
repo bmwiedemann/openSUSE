@@ -1,7 +1,7 @@
 #
 # spec file for package kea
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -445,6 +445,7 @@ systemd-tmpfiles --create kea.conf || :
 %_sbindir/perfdhcp
 %_datadir/kea/
 %_unitdir/*.service
+%dir %_localstatedir/lib/kea
 %_prefix/lib/tmpfiles.d/
 %attr(0775,keadhcp,keadhcp) %_localstatedir/log/kea/
 
