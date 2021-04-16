@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 16 07:00:12 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.0:
+  * Disk images can be opened and extracted.
+  * Window settings are remembered.
+  * The directory view is made horizontally scrollable.
+
+-------------------------------------------------------------------
 Wed Nov  4 13:33:28 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.3.0:

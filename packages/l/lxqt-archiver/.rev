@@ -28,4 +28,15 @@
   * Use bsdtar to handle RPM packages.</comment>
     <requestid>846000</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a346693306f8c49d96504e0e421af00b</srcmd5>
+    <version>0.4.0</version>
+    <time>1618610510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Disk images can be opened and extracted.
+  * Window settings are remembered.
+  * The directory view is made horizontally scrollable.</comment>
+    <requestid>885936</requestid>
+  </revision>
 </revisionlist>
