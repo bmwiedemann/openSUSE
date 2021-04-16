@@ -1,6 +1,7 @@
 #
 # spec file for package python-asttokens
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019-2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,27 +13,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asttokens
 Version:        2.0.4
 Release:        0
-License:        Apache-2.0
 Summary:        Annotate AST trees with source code positions
-Url:            https://github.com/gristlabs/asttokens
+License:        Apache-2.0
 Group:          Development/Languages/Python
+URL:            https://github.com/gristlabs/asttokens
 Source:         https://files.pythonhosted.org/packages/source/a/asttokens/asttokens-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Patch0:         py39.patch
 BuildRequires:  %{python_module astroid}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 ## Manual Begin
 Requires:       python-six
 ## Manual End
@@ -44,6 +47,7 @@ Annotate AST trees with source code positions
 
 %prep
 %setup -q -n asttokens-%{version}
+%autopatch -p1
 
 %build
 export LC_ALL=en_US.utf8
@@ -55,7 +59,7 @@ export LC_ALL=en_US.utf8
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest discover -v
+%pyunittest -v
 
 %files %{python_files}
 %doc README.rst

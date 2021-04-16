@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 16 12:42:11 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add patch py39.patch to fix build with Python 3.9
+
+-------------------------------------------------------------------
 Thu Nov 12 14:38:22 UTC 2020 - malcolmlewis@opensuse.org
 
 - Updated to version 2.0.4:
