@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 15 00:45:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.2.0:
+  * Some symbols are newly available as public API for new features.
+  * HinawaFwResp::requested2 is added to deprecate HinawaFwResp::requested
+  * Current implementation of HinawaFwResp::requested signal doesn't deliver
+    all information in data of struct fw_cdev_event_request2 type.
+    This is inconvenient for some applications bound to device which
+    sends transactions to different addresses within a certain space.
+    At release v2.1.0, nothing was added for error reporting of
+    HinawaFwResp since it was not necessary. However, it's
+    convenient to retrieve error reporting at failure of
+    allocation in 1394 OHCI controller.
+  * HinawaFwRespError enumeration is added and
+    hinawa_fw_resp_error_quark() represents the domain of GError
+    with the code in enumeration.
+
+-------------------------------------------------------------------
 Wed Aug 26 13:04:59 CEST 2020 - tiwai@suse.de
 
 - Updated to version 2.0.0:

@@ -17,7 +17,7 @@
 
 
 Name:           libhinawa
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        I/O library for IEEE 1394 asynchronous transactions
 License:        LGPL-2.1-or-later
