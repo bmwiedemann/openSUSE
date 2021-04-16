@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 16 09:58:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * Terminate all child processes on exiting the session.
+  * Removed Openbox configuration.
+  * Code cleanup and modernization.
+
+-------------------------------------------------------------------
 Wed Nov  4 13:48:46 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.0:

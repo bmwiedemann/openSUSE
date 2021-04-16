@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-session
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           lxqt-session
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        LXQt Session Manager
 License:        LGPL-2.1-or-later
@@ -35,22 +35,23 @@ Patch2:         lxqt-session-default_wm.patch
 BuildRequires:  cmake >= 3.0.2
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.8.0
+BuildRequires:  lxqt-build-tools-devel >= 0.9.0
 BuildRequires:  pkgconfig
 BuildRequires:  xdg-user-dirs
 BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
 BuildRequires:  pkgconfig(Qt5UiTools) >= 5.12
 BuildRequires:  pkgconfig(Qt5Xdg)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(libprocps)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(lxqt) >= %{version}
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
-BuildRequires:  pkgconfig(glib-2.0)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     %{name}-lang
-Obsoletes:      lxqt-common
-Obsoletes:      lxqt-l10n
+Obsoletes:      lxqt-common <= 0.12.0
+Obsoletes:      lxqt-l10n <= 0.12.0
 
 %description
 lxqt-session is the standard session manager used by LXQt. The lxqt-session manager
@@ -70,7 +71,7 @@ use when a user logs out and to restart them the next time the user logs in.
 
 %build
 %cmake -DPULL_TRANSLATIONS=No
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
@@ -94,7 +95,6 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %files
 %license LICENSE
 %doc AUTHORS
-%dir %{_sysconfdir}/xdg/openbox
 %dir %{_datadir}/kdm/
 %dir %{_datadir}/kdm/sessions/
 %{_bindir}/lxqt-config-session
@@ -103,7 +103,6 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %{_datadir}/applications/*.desktop
 %{_mandir}/man?/lxqt-*%{ext_man}
 %config %{_sysconfdir}/xdg/autostart/lxqt-xscreensaver-autostart.desktop
-%config %{_sysconfdir}/xdg/openbox/lxqt-rc.xml
 %{_bindir}/startlxqt
 %{_datadir}/kdm/sessions/lxqt.desktop
 %{_mandir}/man1/startlxqt.1%{?ext_man}
