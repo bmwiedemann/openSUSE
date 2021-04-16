@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr 16 11:23:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update 3.7.1:
+  * Fixed compilation against Qt < 5.14.
+  * Added a nullity check for paint device.
+
+-------------------------------------------------------------------
+Fri Apr 16 06:31:20 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.7.0:
+  * QSvgRenderer is used with a cache for SVG icons, so that LXQt's
+    icon handling could not be broken by intruding icon engines
+	that register themselves for "svg" (like kiconthemes 5.80).
+  * Allow runtime overriding of detachment of processes by
+    setting QTXDG_START_DETACH_TRULY.
+  * XTerm is added as a runtime dependency.
+  * Code cleanup.
+- Remove libqt5xdg-svg-render.patch: upstreamed
+
+-------------------------------------------------------------------
 Wed Mar 31 10:02:43 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1183834: Fix displaying of icons by using QSvgRenderer

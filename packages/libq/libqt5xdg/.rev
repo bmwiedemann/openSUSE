@@ -376,4 +376,24 @@
   * Add libqt5xdg-svg-render.patch</comment>
     <requestid>882920</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c67a3522b8441b8c32106aa7bc28c1a9</srcmd5>
+    <version>3.7.1</version>
+    <time>1618610507</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 3.7.1:
+  * Fixed compilation against Qt &lt; 5.14.
+  * Added a nullity check for paint device.
+
+- Update to 3.7.0:
+  * QSvgRenderer is used with a cache for SVG icons, so that LXQt's
+    icon handling could not be broken by intruding icon engines
+	that register themselves for &quot;svg&quot; (like kiconthemes 5.80).
+  * Allow runtime overriding of detachment of processes by
+    setting QTXDG_START_DETACH_TRULY.
+  * XTerm is added as a runtime dependency.
+  * Code cleanup.
+- Remove libqt5xdg-svg-render.patch: upstreamed</comment>
+    <requestid>885930</requestid>
+  </revision>
 </revisionlist>

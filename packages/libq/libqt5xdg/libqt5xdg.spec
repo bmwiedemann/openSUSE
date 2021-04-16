@@ -18,7 +18,7 @@
 
 %define _name libqtxdg
 Name:           libqt5xdg
-Version:        3.6.0
+Version:        3.7.1
 Release:        0
 Summary:        Qt implementation of xdg specs for lxqt
 License:        GPL-3.0-only
@@ -27,14 +27,13 @@ URL:            https://lxqt.org
 Source:         https://github.com/lxqt/libqtxdg/releases/download/%{version}/%{_name}-%{version}.tar.xz
 Source1:        https://github.com/lxqt/libqtxdg/releases/download/%{version}/%{_name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-Patch0:         libqt5xdg-svg-render.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.8.0
+BuildRequires:  lxqt-build-tools-devel >= 0.9.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core) >= 5.10
+BuildRequires:  pkgconfig(Qt5Core) >= 5.12
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Test)
@@ -89,7 +88,6 @@ Tools for QtXdg.
 
 %prep
 %setup -q -n %{_name}-%{version}
-%patch0 -p1
 
 %build
 %cmake
