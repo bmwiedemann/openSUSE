@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 16 12:30:00 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build for Leap 15.3
+
+-------------------------------------------------------------------
 Thu Jan  7 15:55:52 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Compile with %optflags

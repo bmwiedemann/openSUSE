@@ -43,6 +43,7 @@ BuildRequires:  LHAPDF-devel
 BuildRequires:  fastjet-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  gmp-devel
 BuildRequires:  rsync
 BuildRequires:  zlib-devel
 
