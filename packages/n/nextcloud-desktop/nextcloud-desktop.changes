@@ -91,7 +91,7 @@ Thu Apr  8 18:18:51 UTC 2021 - ecsos <ecsos@opensuse.org>
   - desktop#2972 Do no include glib.h with extern C
   - desktop#2979 Do not include glib.h with extern C (2)
   - desktop#2986 Bump version to 3.1.81
-
+  
 -------------------------------------------------------------------
 Sat Feb 20 10:24:03 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
@@ -100,6 +100,12 @@ Sat Feb 20 10:24:03 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
   - desktop#2920 [stable-3.1] Validate sensitive URLs to onle allow http(s) schemes.
   - desktop#2926 [stable-3.1] Validate the providers ssl certificate
   - desktop#2939 Bump release to 3.1.3
+- This also fix security issues:
+  - (boo#1184770, CVE-2021-22879, NC-SA-2021-008 , CWE-99)
+    Nextcloud Desktop Client prior to 3.1.3 is vulnerable to resource
+    injection by way of missing validation of URLs, allowing a 
+    malicious server to execute remote commands.
+    User interaction is needed for exploitation. 
 
 -------------------------------------------------------------------
 Thu Jan 28 17:31:58 UTC 2021 - ecsos <ecsos@opensuse.org>
@@ -180,62 +186,6 @@ Mon Dec 14 13:29:11 UTC 2020 - ecsos <ecsos@opensuse.org>
   - desktop#2690 Update documentation on how to generate debug logs.
   - desktop#2696 Bump master version to 3.1.0
 - Rebase nextcloud-desktop-fix-rpath.patch.
-
--------------------------------------------------------------------
-Mon Dec 14 13:29:11 UTC 2020 - ecsos <ecsos@opensuse.org>
-
-- Update to 3.1.0
-  - desktop#2221 Make QML code more declarative by using properties
-  - desktop#2497 MacOS: Fix memory leak in FolderWatcherPrivate::startWatching
-  - desktop#2500 Windows MSI: Update Docs & add SKIPAUTOUPDATE property
-  - desktop#2512 Handle redirects when downloading updates
-  - desktop#2514 Make it easier for user to provide debug information
-  - desktop#2520 Handle ask for optional password capability
-  - desktop#2521 Use friendly user agent during authentication
-  - desktop#2527 Improve conflict handling gui
-  - desktop#2530 Repair the Windows build
-  - desktop#2531 Bring back the "Pause sync" action in the systray context menu
-  - desktop#2534 Connection wizard improvements
-  - desktop#2540 Add last / to exclude list file path.
-  - desktop#2541 Don't use nullptr for QFlags
-  - desktop#2542 Avoid string translation puzzle
-  - desktop#2543 Update bookmarks location
-  - desktop#2551 Fix share dialog animation for enforced password policy
-  - desktop#2568 Fix crash when clicking on folder with status 403 in the main dialog.
-  - desktop#2572 Avoid depth infinity propfind for e2ee
-  - desktop#2575 Expose branding values to qtquick
-  - desktop#2580 Delay initialization of SettingsDialog
-  - desktop#2581 Ensure we quickly show/hide the systray window on startup
-  - desktop#2582 Also output the event flags in the debug logs
-  - desktop#2586 L10n: Add a space in generalsettings.ui
-  - desktop#2587 Triple dot to ellipsis
-  - desktop#2589 Misc fixes for Windows 7
-  - desktop#2591 Remove last left over of the "remote" wording
-  - desktop#2603 Get rid of FindQt5Keychain.cmake
-  - desktop#2615 Fetch apps when we get connected only
-  - desktop#2616 Move journaldb files back to sync folders
-  - desktop#2620 Make sure the settings dialog exist before hiding it
-  - desktop#2621 [documentation] upload chunks config
-  - desktop#2630 Master is now 3.0.81
-  - desktop#2647 Cherry pick updater fixes and improvements
-  - desktop#2648 Issue a warning for Debian pipeline failures but don't fail the CI
-  - desktop#2652 Handle the case when the release version differs from that in VERSION.cmake
-  - desktop#2655 Use dynamic path for account online/offline state icon.
-    Refresh GUI on connection state change.
-  - desktop#2658 Enable the QML debugger on debug builds
-  - desktop#2660 FolderWatcher: fixes and improvements
-  - desktop#2662 Fix QML debugging by removing incorrect dependency
-  - desktop#2663 Fix Windows compilation broken after QML debugging fix.
-  - desktop#2665 Sparkle build fixes
-  - desktop#2666 Notification action buttons and context menu
-  - desktop#2667 Master is now 3.0.82.
-  - desktop#2675 Fix AppImage build
-  - desktop#2677 Fix macOS bug where tray window causes spaces to switch
-  - desktop#2682 Add debug log to check which folders are being skipped during syncing.
-  - desktop#2685 Fixed slow sharee search in the share dialog
-  - desktop#2686 Added sharing via email.
-  - desktop#2690 Update documentation on how to generate debug logs.
-  - desktop#2696 Bump master version to 3.1.0
 
 -------------------------------------------------------------------
 Sat Oct 31 09:18:19 UTC 2020 - ecsos <ecsos@opensuse.org>
