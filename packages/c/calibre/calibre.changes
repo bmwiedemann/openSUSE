@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Apr 16 05:44:24 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.15.0
+  * New Features
+    - Allow auto scrolling through the list of books by pressing 
+      the X key or right clicking on the cover browser
+    - E-book viewer: Speed up first time open for EPUB files with 
+      lots of styling
+    - E-book viewer preferences: Allow searching for keyboard
+      shortcuts
+    - Edit book: Allow editing WEBP images
+    - Various improvements to the template language, see 
+      https://www.mobileread.com/forums/showthread.php?t=337573
+    - E-book viewer: Show the current progress percentage in the 
+      bottom bar of the viewer controls. This can be customized in 
+      the viewer preferences under Headers and footers
+    - E-book viewer: Add an option under Preferences->Miscellaneous
+      to not restore open panels such as Search, Table of Contents
+      etc on restart
+    - When exporting highlights as text or markdown also output top
+      level chapter titles
+    - Allow downloading metadata from amazon.se
+    - Preferences->Tweaks: Allow specifying that calibre should
+      open the book details window when double clicking on a book
+    - MOBI Output: Convert WebP images to PNG so they work with
+      Amazon's software
+    - DOCX Input: When converting embedded fonts, replace spaces in
+      the filename with underscores to keep the execrable epubcheck
+      happy
+    - E-book viewer: Selection bar: Add keyboard shortcuts for all
+      buttons. Hover over a button in the bar to see the shortcut
+  * Bug Fixes
+    - FB2 Output: Fix a regression in calibre 5 that caused
+      paragraphs containing only non-breaking spaces to be removed
+    - Metadata comments editor: Fix setting block alignment
+      destroying other block level properties
+    - E-book viewer: Fix margins not being adjusted immediately
+      when preferences are changed
+    - Edit book: Upgrade book internals: Fix skipping the NCX
+      removal dialog not remembering the chosen option
+    - Conversion: When specifying a line-height do not apply it to
+      the tag, as it is pointless and causes the execrable
+      epubcheck to complain
+    - E-book viewer: Improve scrolling behavior when extending the
+      selection using keyboard shortcuts
+    - E-book viewer: Fix read percent for HTML files that are
+      rendered in a single screen being 0% rather than 100%
+    - E-book viewer: Highlights panel: Do not expand all sections
+      when adding/deleting/modifying highlights
+    - CHM Input: Fix a regression in calibre 5.0 that broke opening
+      of some files that dont specify a character encoding
+    - EPUB2 metadata: Read ISBNs in identifier elements without
+      schemes if they are valid ISBNs and no properly identified
+      isbns are present
+    - Update Amazon metadata plugin for changes to amazon websites
+    - Edit book: Fix detection of class names containing
+      hyphens/underscores
+- Rebase calibre-setup.install.py.diff.
+
+-------------------------------------------------------------------
 Fri Mar 26 06:42:35 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.14.0

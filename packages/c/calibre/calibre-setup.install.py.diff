@@ -1,15 +1,13 @@
-diff -Pdpru calibre-2.79.0.orig/setup/install.py calibre-2.79.0/setup/install.py
---- calibre-2.79.0.orig/setup/install.py	2017-02-10 04:09:41.000000000 +0100
-+++ calibre-2.79.0/setup/install.py	2017-02-10 19:47:38.648066452 +0100
-@@ -75,11 +75,13 @@ class Develop(Command):
-         opts = self.opts
+diff -Pdpru calibre-5.15.0.orig/setup/install.py calibre-5.15.0/setup/install.py
+--- calibre-5.15.0.orig/setup/install.py	2021-04-16 04:20:00.000000000 +0200
++++ calibre-5.15.0/setup/install.py	2021-04-16 11:51:25.550511789 +0200
+@@ -87,10 +87,12 @@ class Develop(Command):
          if not opts.prefix:
              opts.prefix = sys.prefix
--        for x in ('prefix', 'libdir', 'bindir', 'sharedir', 'staging_root',
+         for x in ('prefix', 'libdir', 'bindir', 'sharedir', 'staging_root',
 -                'staging_libdir', 'staging_bindir', 'staging_sharedir'):
-+        for x in ('prefix', 'libdir', 'bindir', 'sharedir', 'mandir',
-+                      'staging_root', 'staging_libdir',
-+                      'staging_bindir', 'staging_sharedir', 'locale_dir'):
++                'staging_libdir', 'staging_bindir', 'staging_sharedir',
++                'mandir', 'locale_dir'):
              o = getattr(opts, x, None)
              if o:
                  setattr(opts, x, os.path.abspath(o))
@@ -17,7 +15,7 @@ diff -Pdpru calibre-2.79.0.orig/setup/install.py calibre-2.79.0/setup/install.py
          self.libdir = getattr(opts, 'libdir', None)
          if self.libdir is None:
              self.libdir = self.j(opts.prefix, 'lib')
-@@ -87,6 +89,9 @@ class Develop(Command):
+@@ -98,6 +100,9 @@ class Develop(Command):
          if self.bindir is None:
              self.bindir = self.j(opts.prefix, 'bin')
          self.sharedir = getattr(opts, 'sharedir', None)
@@ -27,7 +25,7 @@ diff -Pdpru calibre-2.79.0.orig/setup/install.py calibre-2.79.0/setup/install.py
          if self.sharedir is None:
              self.sharedir = self.j(opts.prefix, 'share')
          if not getattr(opts, 'staging_root', None):
-@@ -100,9 +105,17 @@ class Develop(Command):
+@@ -111,9 +116,17 @@ class Develop(Command):
          self.staging_sharedir = getattr(opts, 'staging_sharedir', None)
          if self.staging_sharedir is None:
              self.staging_sharedir = opts.staging_sharedir = self.j(opts.staging_root, 'share')
@@ -42,10 +40,10 @@ diff -Pdpru calibre-2.79.0.orig/setup/install.py calibre-2.79.0/setup/install.py
          self.staging_sharedir = opts.staging_sharedir = self.j(self.staging_sharedir, 'calibre')
 +        self.staging_mandir = opts.staging_mandir = self.j(self.staging_mandir, '')
 +        self.staging_localedir = opts.staging_localedir = self.j(self.staging_localedir, '')
+         self.system_plugins_loc = opts.system_plugins_location
  
          if self.__class__.__name__ == 'Develop':
-             self.libdir = self.SRC
-@@ -113,6 +126,8 @@ class Develop(Command):
+@@ -125,6 +138,8 @@ class Develop(Command):
              self.info('INSTALL paths:')
              self.info('\tLIB:', self.staging_libdir)
              self.info('\tSHARE:', self.staging_sharedir)
@@ -54,7 +52,7 @@ diff -Pdpru calibre-2.79.0.orig/setup/install.py calibre-2.79.0/setup/install.py
  
      def pre_sub_commands(self, opts):
          if not (islinux or isbsd or ishaiku):
-@@ -232,6 +247,11 @@ class Install(Develop):
+@@ -250,6 +265,11 @@ class Install(Develop):
                      'the launcher scripts. This option controls the prefix '
                      'to which the install will actually copy files. By default '
                      'it is set to the value of --prefix.'))
@@ -66,8 +64,8 @@ diff -Pdpru calibre-2.79.0.orig/setup/install.py calibre-2.79.0/setup/install.py
          parser.add_option('--staging-libdir',
              help='Where to put calibre library files. Default is <root>/lib')
          parser.add_option('--staging-bindir',
-@@ -240,6 +260,49 @@ class Install(Develop):
-             help='Where to put the calibre data files. Default is <root>/share')
+@@ -260,6 +280,49 @@ class Install(Develop):
+                 help='Path to a directory from which the installed calibre will load plugins')
          self.add_postinstall_options(parser)
  
 +    def install_localefiles(self):
