@@ -497,4 +497,22 @@
   * Code cleanup.</comment>
     <requestid>845997</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b954b89b89d5ee8e998bcad1816abfb0</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610508</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Natural keyboard navigation on Desktop.
+  * Creation time is supported.
+  * A menu-item is added to the Tools menu for opening the current
+    directory as admin (with GVFS).
+  * &quot;Create Launcher&quot; is added to the Tools menu.
+  * An option is added for max. file size with external thumbnailers.
+  * Always focus the visible view on opening a new tab.
+  * Close file tooltips on key pressing or changing
+    directory/filter/sorting.
+  * Several small fixes.</comment>
+    <requestid>885933</requestid>
+  </revision>
 </revisionlist>
