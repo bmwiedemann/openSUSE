@@ -1,0 +1,27 @@
+From 6ef406ac20a68f53e66bb98a0c9842dc9553da07 Mon Sep 17 00:00:00 2001
+From: Thierry Crozat <criezy@scummvm.org>
+Date: Tue, 9 Mar 2021 11:32:57 +0000
+Subject: [PATCH] AUDIO: Fix compilation with Fluidsynth2
+
+---
+ audio/softsynth/fluidsynth.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/audio/softsynth/fluidsynth.cpp b/audio/softsynth/fluidsynth.cpp
+index 215547c6bad4..3b9f55346437 100644
+--- a/audio/softsynth/fluidsynth.cpp
++++ b/audio/softsynth/fluidsynth.cpp
+@@ -46,7 +46,12 @@
+ #include "backends/platform/ios7/ios7_common.h"
+ #endif
+ 
+-static void logHandler(int level, char *message, void *data) {
++#if defined(FLUIDSYNTH_VERSION_MAJOR) && FLUIDSYNTH_VERSION_MAJOR > 1
++static void logHandler(int level, const char *message, void *data)
++#else
++static void logHandler(int level, char *message, void *data)
++#endif
++{
+ 	switch (level) {
+ 	case FLUID_PANIC:
+ 		error("FluidSynth: %s", message);

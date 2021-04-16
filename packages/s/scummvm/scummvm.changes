@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 16 14:49:13 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patches from upstream to fix build with fluidsynth 2.2
+  * 0001-FLUIDSYNTH-Make-FluidSynth-logging-less-noisy-by-default.patch
+  * 0002-FLUIDSYNTH-Swapped-debug-levels-for-FLUID_WARN-and-FLUID_INFO.patch
+  * 0003-FLUIDSYNTH-Fix-build.patch
+  * 0004-AUDIO-Fix-compilation-with-Fluidsynth2.patch
+  * 0005-FLUIDSYNTH-Simplify-FluidSynth-version-check.patch
+  * 0006-FLUIDSYNTH-Fix-compilation-with-Fluidsynth-2.2.patch
+
+-------------------------------------------------------------------
 Thu Nov  5 14:10:14 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Add Discord RPC support.

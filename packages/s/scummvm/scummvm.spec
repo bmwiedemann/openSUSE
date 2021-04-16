@@ -1,7 +1,7 @@
 #
 # spec file for package scummvm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,12 @@ License:        GPL-2.0-or-later
 Group:          Amusements/Games/Other
 URL:            https://www.scummvm.org/
 Source:         https://www.scummvm.org/frs/scummvm/%{version}/scummvm-%{version}.tar.xz
+Patch0:         0001-FLUIDSYNTH-Make-FluidSynth-logging-less-noisy-by-default.patch
+Patch1:         0002-FLUIDSYNTH-Swapped-debug-levels-for-FLUID_WARN-and-FLUID_INFO.patch
+Patch2:         0003-FLUIDSYNTH-Fix-build.patch
+Patch3:         0004-AUDIO-Fix-compilation-with-Fluidsynth2.patch
+Patch4:         0005-FLUIDSYNTH-Simplify-FluidSynth-version-check.patch
+Patch5:         0006-FLUIDSYNTH-Fix-compilation-with-Fluidsynth-2.2.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  discord-rpc-devel
 BuildRequires:  gcc-c++
@@ -80,6 +86,12 @@ These engines are in a worse state, but allow to play extra games.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 # build the endianness test without optimization otherwise gcc is too smart
 # and optimize everything away, making the test fail

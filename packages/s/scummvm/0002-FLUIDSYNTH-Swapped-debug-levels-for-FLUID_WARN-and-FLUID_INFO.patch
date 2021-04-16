@@ -1,0 +1,32 @@
+From 21d65cedf231cb03cd2e63863bd6d9d6bc70ed1d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torbj=C3=B6rn=20Andersson?=
+ <eriktorbjorn@users.sourceforge.net>
+Date: Mon, 8 Mar 2021 20:19:22 +0100
+Subject: [PATCH] FLUIDSYNTH: Swapped debug levels for FLUID_WARN and
+ FLUID_INFO
+
+If FLUID_INFO is "verbose informational messages", perhaps they should
+be better hidden from the average user than warnings. Particularly since
+warnings are the only kind I've actually seen in the wild. (Change
+suggested by criezy.)
+---
+ audio/softsynth/fluidsynth.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/audio/softsynth/fluidsynth.cpp b/audio/softsynth/fluidsynth.cpp
+index fe2b0689c283..e41a7515b205 100644
+--- a/audio/softsynth/fluidsynth.cpp
++++ b/audio/softsynth/fluidsynth.cpp
+@@ -55,10 +55,10 @@ static void logHandler(int level, const char *message, void *data) {
+ 		warning("FluidSynth: %s", message);
+ 		break;
+ 	case FLUID_WARN:
+-		debug(2, "FluidSynth: %s", message);
++		debug(1, "FluidSynth: %s", message);
+ 		break;
+ 	case FLUID_INFO:
+-		debug(1, "FluidSynth: %s", message);
++		debug(2, "FluidSynth: %s", message);
+ 		break;
+ 	case FLUID_DBG:
+ 		debug(3, "FluidSynth: %s", message);
