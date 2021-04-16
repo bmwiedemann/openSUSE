@@ -441,4 +441,14 @@
   * Dropped QProcess deprecated methods.</comment>
     <requestid>846006</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>481a2f3f31a8d4e66a75437afc62a6cc</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Separate idle watchers for AC and battery.
+  * An option to disable idle watcher when the active window is full-screen.</comment>
+    <requestid>885943</requestid>
+  </revision>
 </revisionlist>

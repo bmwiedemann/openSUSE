@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 16 09:57:07 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * Separate idle watchers for AC and battery.
+  * An option to disable idle watcher when the active window is full-screen.
+
+-------------------------------------------------------------------
 Wed Nov  4 13:44:24 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.0:
