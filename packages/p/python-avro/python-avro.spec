@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-avro
-Version:        1.10.1
+Version:        1.10.2
 Release:        0
 Summary:        A serialization and RPC framework for Python
 License:        Apache-2.0
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Requires:       python-Twisted
 Requires:       python-zope.interface
 Suggests:       python-python-snappy

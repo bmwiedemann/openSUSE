@@ -66,4 +66,12 @@
   * AVRO-2889 python tether test is flaky</comment>
     <requestid>864155</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bbda8d8c85bef749c541c98ac26f0d03</srcmd5>
+    <version>1.10.2</version>
+    <time>1618610504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885901</requestid>
+  </revision>
 </revisionlist>

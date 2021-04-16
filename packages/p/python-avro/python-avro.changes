@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 16 08:45:49 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.10.2
+  * Python: AVRO-2656 The standard avro package supports Python 3, and
+    the avro-python3 package is in the process of being deprecated. 
+  * Threading.is_alive Spelling for Py3.9
+
+-------------------------------------------------------------------
 Mon Jan 18 21:19:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.1:
