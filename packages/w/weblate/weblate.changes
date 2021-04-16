@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Apr 15 13:12:05 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Re-add and fix sed for python3
+
+-------------------------------------------------------------------
+Thu Apr 15 08:10:19 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Remove unneeded sed for python3
+
+-------------------------------------------------------------------
+Tue Mar 16 07:46:41 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.5.1
+  * Dropped support for migrating from 3.x releases, migrate through 4.1 or 4.0.
+  * Added exports into several monolingual formats.
+  * Simplified main navigation (replaced buttons with icons).
+  * Removed separate Celery queue for translation memory.
+  * Added support for aliasing languages at project level.
+  * The Weblate domain is now configured in the settings, see SITE_DOMAIN.
+  * Include user stats in the API.
+  * Rewritten support for GitHub and GitLab pull requests.
+  * Add Vue I18n formatting check.
+  * Unit API now properly handles plural strings.
+  * Support Markdown in contributor agreement.
+  * Added support for Python 3.9.
+  * Improved performance of translation memory updates.
+  * Weblate now requires Django 3.1.
+  * Improved support for non-standard language codes.
+  * Improved performance of file upload.
+  * Added support for lua-format used in gettext PO.
+  * Added support for sharing a component between projects.
+  * Dropped mailing list field on the project in favor of generic instructions for translators.
+  * Strings can now be added and removed in bilingual formats as well.
+  * Glossaries are now stored as regular components.
+  * Added support for customizing navigation text color.
+
+-------------------------------------------------------------------
+Tue Jan 26 14:12:45 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace system-user-wwwrun with user(wwwrun): be resilient to
+  package name changes.
+
+-------------------------------------------------------------------
 Fri Jun 19 12:31:30 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 4.1.1:
