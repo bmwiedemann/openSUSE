@@ -130,4 +130,13 @@
   * Fixed screen area and window modes with scale factors &gt; 1.</comment>
     <requestid>846022</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>784a6d1c7667790b9e73c620fff32c08</srcmd5>
+    <version>2.2.0</version>
+    <time>1618610521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0:
+  * Code cleanup as well as translations update.</comment>
+    <requestid>885956</requestid>
+  </revision>
 </revisionlist>
