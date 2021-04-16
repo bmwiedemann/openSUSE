@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 16 09:35:12 UTC 2021 - Timo Jyrinki <tjyrinki@suse.com>
+
+- Add support-gnome-40.patch to fix working with GNOME 40
+
+-------------------------------------------------------------------
 Thu Apr 15 06:38:32 UTC 2021 - Timo Jyrinki <tjyrinki@suse.com>
 
 - Add fix-wayland-gnome-crash.patch (boo#1184773).

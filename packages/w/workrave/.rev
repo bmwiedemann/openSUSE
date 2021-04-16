@@ -199,4 +199,13 @@
     <comment></comment>
     <requestid>885586</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>074849b2ea577c561a1b3f63a873ffc2</srcmd5>
+    <version>1.10.44</version>
+    <time>1618610530</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support-gnome-40.patch to fix working with GNOME 40
+</comment>
+    <requestid>886007</requestid>
+  </revision>
 </revisionlist>

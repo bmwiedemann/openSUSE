@@ -1,0 +1,21 @@
+From f199d4c5df43612b7d513168a00f8094fe08218a Mon Sep 17 00:00:00 2001
+From: Rob Caelers <rob.caelers@gmail.com>
+Date: Tue, 6 Apr 2021 21:30:09 +0200
+Subject: [PATCH] Support Gnome Shell 40 (#288)
+
+---
+ frontend/applets/gnome-shell/src/metadata.json.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/frontend/applets/gnome-shell/src/metadata.json.in b/frontend/applets/gnome-shell/src/metadata.json.in
+index c10ca8212..1662021e2 100644
+--- a/frontend/applets/gnome-shell/src/metadata.json.in
++++ b/frontend/applets/gnome-shell/src/metadata.json.in
+@@ -23,6 +23,7 @@
+                        "3.28",
+                        "3.30",
+                        "3.32",
++                       "40",
+                        "@shell_current@" ],
+  "localedir": "@LOCALEDIR@",
+  "url": "@url@"
