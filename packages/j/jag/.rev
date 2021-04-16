@@ -45,4 +45,12 @@
   * About: Added contributor nickname.</comment>
     <requestid>832957</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e0e21ae8a8097cb4205e53df65c68f7f</srcmd5>
+    <version>0.3.8</version>
+    <time>1618610539</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop owning directories provided by the filesystem package (boo#1184786)</comment>
+    <requestid>886089</requestid>
+  </revision>
 </revisionlist>

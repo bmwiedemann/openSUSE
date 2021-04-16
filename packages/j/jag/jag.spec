@@ -1,7 +1,7 @@
 #
 # spec file for package jag
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -115,7 +115,6 @@ install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 %files
 %license LICENSE
 %doc CHANGELOG README.md
-%dir %{_datadir}/appdata/
 %{_bindir}/%{name}
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop

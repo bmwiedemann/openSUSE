@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 16 17:21:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Stop owning directories provided by the filesystem package (boo#1184786)
+
+-------------------------------------------------------------------
 Tue Sep  8 10:39:17 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.3.8
