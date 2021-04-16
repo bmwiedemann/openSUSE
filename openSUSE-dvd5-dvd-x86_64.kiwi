@@ -1434,7 +1434,7 @@
       <repopackage name="libaccountsservice0"/>
       <repopackage name="libacl1"/>
       <repopackage name="libacl1-32bit" arch="x86_64"/>
-      <repopackage name="libadwaitaqt1_2_0"/>
+      <repopackage name="libadwaitaqt1"/>
       <repopackage name="libaio1"/>
       <repopackage name="libamd2"/>
       <repopackage name="libamtk-5-0"/>
@@ -2551,7 +2551,7 @@
       <repopackage name="libpoppler-cpp0"/>
       <repopackage name="libpoppler-glib8"/>
       <repopackage name="libpoppler-qt5-1"/>
-      <repopackage name="libpoppler108"/>
+      <repopackage name="libpoppler109"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libpopt0-32bit" arch="x86_64"/>
       <repopackage name="libportal0"/>
@@ -3228,6 +3228,7 @@
       <repopackage name="linux-glibc-devel"/>
       <repopackage name="lklug-fonts"/>
       <repopackage name="lockdev"/>
+      <repopackage name="login_defs"/>
       <repopackage name="logrotate"/>
       <repopackage name="lokalize"/>
       <repopackage name="lokalize-lang"/>

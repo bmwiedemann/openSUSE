@@ -379,8 +379,8 @@
       <repopackage name="libsasl2-3"/>
       <repopackage name="libseccomp2"/>
       <repopackage name="libselinux1"/>
-      <repopackage name="libsemanage-conf"/>
-      <repopackage name="libsemanage2"/>
+      <repopackage name="libsemanage-conf" arch="x86_64"/>
+      <repopackage name="libsemanage2" arch="x86_64"/>
       <repopackage name="libsepol2"/>
       <repopackage name="libsgutils2-1_45-2" arch="x86_64"/>
       <repopackage name="libsigc-2_0-0" arch="x86_64"/>
@@ -442,6 +442,7 @@
       <repopackage name="libzmq5" arch="x86_64"/>
       <repopackage name="libzstd1"/>
       <repopackage name="libzypp" arch="x86_64"/>
+      <repopackage name="login_defs"/>
       <repopackage name="logrotate" arch="x86_64"/>
       <repopackage name="lsof" arch="x86_64"/>
       <repopackage name="lvm2" arch="x86_64"/>
@@ -607,7 +608,7 @@
       <repopackage name="selinux-policy-targeted" arch="x86_64"/>
       <repopackage name="selinux-tools" arch="x86_64"/>
       <repopackage name="sg3_utils" arch="x86_64"/>
-      <repopackage name="shadow"/>
+      <repopackage name="shadow" arch="x86_64"/>
       <repopackage name="shared-mime-info" arch="x86_64"/>
       <repopackage name="shim" arch="x86_64"/>
       <repopackage name="slirp4netns" arch="x86_64"/>

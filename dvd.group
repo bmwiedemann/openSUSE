@@ -1645,7 +1645,7 @@
     <package name="libaccounts-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libaccountsservice0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libacl1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libadwaitaqt1_2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libadwaitaqt1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libaio1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libamd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libamtk-5-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2452,7 +2452,7 @@
     <package name="libpoppler-cpp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-glib8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpoppler-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libpoppler108" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libpoppler109" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libportal0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2943,6 +2943,7 @@
     <package name="linux-glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="lklug-fonts" supportstatus="unsupported"/> <!-- reason: dvd:lklug-fonts -->
     <package name="lockdev" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="login_defs" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="logrotate" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="lokalize" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="lokalize-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
