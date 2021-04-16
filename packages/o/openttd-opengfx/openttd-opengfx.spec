@@ -17,29 +17,29 @@
 
 
 Name:           openttd-opengfx
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Default baseset graphics for OpenTTD
 License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Other
-URL:            http://dev.openttdcoop.org/projects/opengfx
-Source:         https://cdn.openttd.org/opengfx-releases/%{version}/opengfx-%{version}-source.tar.xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
+URL:            https://github.com/OpenTTD/OpenGFX
+Source:         https://github.com/OpenTTD/OpenGFX/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  dos2unix
+BuildRequires:  fdupes
+BuildRequires:  grfcodec
 BuildRequires:  nml >= 0.5
+BuildRequires:  openttd-data
+BuildRequires:  python3-base
 BuildRequires:  xz
+Requires:       openttd-data >= 1.5
+Provides:       opengfx = %{version}
+BuildArch:      noarch
 %if 0%{?with_gimp}
 BuildRequires:  gimp >= 2.4
 %if 0%{?suse_version} < 1550
 BuildRequires:  gimp-plugins-python
 %endif
 %endif
-BuildRequires:  grfcodec
-BuildRequires:  openttd-data
-BuildRequires:  python3-base
-Requires:       openttd-data >= 1.5
-Provides:       opengfx = %{version}
 
 %description
 OpenGFX is an open source graphics base set designed to be used by OpenTTD.
@@ -48,30 +48,31 @@ OpenGFX provides a set of free and open source base graphics, and aims to
 ensure the best possible out-of-the-box experience with OpenTTD.
 
 %prep
-%setup -qn opengfx-%{version}-source
+%setup -q -n OpenGFX-%{version}
 %if 0%{?with_gimp}
 make clean-gfx
 %endif
 
 %build
 # set $UNIX2DOS to null, fixes http://dev.openttdcoop.org/issues/7669
-make UNIX2DOS= grf PYTHON=%{_bindir}/python3
+%make_build UNIX2DOS= grf PYTHON=%{_bindir}/python3 REPO_VERSION=%{version} _V=
 
 %install
 # we need to define version on the install target, else it could conflict with
 # possible same named opengfx in $HOME
 %define ogfxdir %{_datadir}/openttd/baseset/opengfx-%{version}
-make install INSTALL_DIR=%{buildroot}%{ogfxdir} PYTHON=%{_bindir}/python3 UNIX2DOS=
+make install INSTALL_DIR=%{buildroot}%{ogfxdir} PYTHON=%{_bindir}/python3 REPO_VERSION=%{version} _V=
 
 %check
-cp opengfx-%{version}.check.md5 opengfx-%{version}.md5
-make check _V= PYTHON=/usr/bin/python3
+%make_build opengfx-%{version}.check.md5 check PYTHON=%{_bindir}/python3 REPO_VERSION=%{version} _V=
 
 %files
-%defattr(-,root,root,-)
-%license %{ogfxdir}/LICENSE
+%license %{ogfxdir}/license.txt
 %doc %{ogfxdir}/changelog.txt
-%doc %{ogfxdir}/README.md
-%{ogfxdir}/
+%doc %{ogfxdir}/readme.txt
+%dir %{ogfxdir}
+%{ogfxdir}/opengfx.obg
+%{ogfxdir}/*.grf
+%{ogfxdir}/*.txt
 
 %changelog

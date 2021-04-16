@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 12 17:46:18 UTC 2021 - Jan Baier <jbaier@suse.com>
+
+- Update to version 0.6.1
+  * Add: GUI sprites for OpenTTD 1.11
+  * Change: New Arctic hotel design
+  * Fix: Correct offsets for toy factory
+
+-------------------------------------------------------------------
 Fri Jan  1 14:10:46 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Update to version 0.6.0
@@ -19,7 +27,7 @@ Mon May 27 14:45:12 UTC 2019 - Jon Brightwell <jon@moozaad.co.uk>
 - Tumbleweed needs gimp-plugins-python & python-xml
 - Update to version 0.5.5:
   * Add: Sprites for group liveries
-  * Update translations: 
+  * Update translations:
   	Czech
     German
     Hungarian
@@ -99,7 +107,7 @@ Tue Jun 25 13:25:11 UTC 2013 - pgajdos@suse.com
 
 - fix build with gcc 4.8
   * openttd-opengfx-gcc48.patch
-  
+
 -------------------------------------------------------------------
 Sat Dec 29 10:48:09 UTC 2012 - suse@ammler.ch
 
@@ -132,16 +140,16 @@ Mon Feb 20 11:23:14 UTC 2012 - suse@ammler.ch
 - upstream update 0.4.3
   - Feature: Support for the baseset part of railtype-specific tunnel sprites
   - Change: Update for a number of font glyphs (issue #3578)
-  - Fix / Revert: OpenTTD 1.1.5 and earlier requires some characters to be defined 
+  - Fix / Revert: OpenTTD 1.1.5 and earlier requires some characters to be defined
     via glyphs as the actionA is not sufficient for those versions (issue #3960)
 
 -------------------------------------------------------------------
 Thu Feb  9 18:27:36 UTC 2012 - suse@ammler.ch
 
 - upstream update 0.4.2
-  - Fix: [Makefile] Force makefile to build with one thread only 
+  - Fix: [Makefile] Force makefile to build with one thread only
     as gimp might barf on running in parallel (issue #3439)
-  - Fix: [Makefile] Don't remove the reference md5 file when 
+  - Fix: [Makefile] Don't remove the reference md5 file when
     using maintainer-clean (issue #3440)
   - Fix: The grfID of the extra grf was wrong... and would be found as NewGRF
   - Fix: sprite are out-of-bound (issue #3667)
@@ -184,13 +192,13 @@ Sun Aug 21 08:27:56 UTC 2011 - ammler@openttdcoop.org
   * Feature: New sprite for a sawmill tile
   * Feature: New sprites for Food Processor
   * Feature: Update to tropic rail wagons
-  * Feature: New rubber wagon sprites to match rail wagons rather 
+  * Feature: New rubber wagon sprites to match rail wagons rather
     than monolev wagons
   * Feature: New sprites for arctic CS2400 and MJS 1000
   * Feature: Temperate locomotives resized to 28px
   * Feature: New ground tile for toyland buildings
   * Fix: Tropic food monolev wagon was invisible
-  * Fix: New forest ground tile shows holes where trees used to sit 
+  * Fix: New forest ground tile shows holes where trees used to sit
     in invisible industries mode
 - mode "localonly" to download service
 
@@ -205,7 +213,7 @@ Tue May 24 22:29:48 UTC 2011 - ammler@openttdcoop.org
 Fri Apr  1 20:20:45 UTC 2011 - ammler@openttdcoop.org
 
 - upstream update 0.3.3
-  * part of source is built with nml, but the generated files are 
+  * part of source is built with nml, but the generated files are
     in the source too (to omit nml requirement)
   * fix some graphic glitches
 
@@ -220,7 +228,7 @@ Thu Dec 23 10:06:43 UTC 2010 - ammler@openttdcoop.org
 Sun Oct 31 16:26:15 UTC 2010 - ammler@openttdcoop.org
 
 - upstream update 0.3.1
-  * Name change to openttd-opengfx to make name compliment to 
+  * Name change to openttd-opengfx to make name compliment to
     other distros
 
 -------------------------------------------------------------------
@@ -229,7 +237,7 @@ Thu Apr 29 20:31:57 UTC 2010 - Marcel Gmür <ammler@openttdcoop.org>
 - upstream update 0.2.4
   * Fix: Adjust alignment of all rail vehicles
   * Feature: Slightly better PBS signals graphics - should be more visible
-  * Feature: Improve entrance roof of office building 
+  * Feature: Improve entrance roof of office building
 
 -------------------------------------------------------------------
 Wed Mar 31 11:59:27 UTC 2010 - Marcel Gmür <ammler@openttdcoop.org>
