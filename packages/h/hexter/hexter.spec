@@ -1,7 +1,7 @@
 #
-# spec file for package [hexter]
+# spec file for package hexter
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-# See also http://en.opensuse.org/openSUSE:Specfile_guidelines
-
 Name:           hexter
-Version:        1.0.3
+Version:        1.1.1
 Release:        0
 Summary:        A Yamaha DX7 software synthesizer for DSSI
-License:        GPL-2.0+
-Url:            http://dssi.sourceforge.net/hexter.html
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
-Source0:        http://downloads.sourceforge.net/project/dssi/hexter/%{version}/%{name}-%{version}.tar.bz2
+URL:            https://github.com/smbolton/hexter
+Source0:        %{URL}/releases/download/version_%{version}/hexter-%{version}.tar.bz2
 BuildRequires:  alsa-devel
 BuildRequires:  dssi-devel
 BuildRequires:  gtk2-devel
+BuildRequires:  ladspa-devel
 BuildRequires:  libjack-devel
 BuildRequires:  liblo-devel
-BuildRequires:  ladspa-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 Requires:       dssi
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Hexter is a software synthesizer that models the sound generation of
@@ -55,24 +52,18 @@ applications.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR=%{buildroot}
+%make_install
 find . %{buildroot} -name "*.la" -print -delete
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog COPYING README TODO
-%dir %{_libdir}/dssi/hexter
-%dir %{_datadir}/hexter
+%license COPYING
+%doc AUTHORS ChangeLog README.rst TODO
 %dir %{_libdir}/dssi
 %{_libdir}/dssi/hexter.so
-%{_libdir}/dssi/hexter/hexter_gtk
-%{_datadir}/%{name}/dx7_roms.dx7
-%{_datadir}/%{name}/fb01_roms_converted_12.dx7
-%{_datadir}/%{name}/fb01_roms_converted_34.dx7
-%{_datadir}/%{name}/fb01_roms_converted_5.dx7
-%{_datadir}/%{name}/tx7_roms.dx7
+%{_libdir}/dssi/hexter*
+%{_datadir}/%{name}
 
 %changelog
