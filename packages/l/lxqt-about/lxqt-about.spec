@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-about
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-about
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        LXQt About Dialog
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -27,11 +27,10 @@ Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{n
 Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
-BuildRequires:  lxqt-build-tools-devel >= 0.8.0
+BuildRequires:  lxqt-build-tools-devel >= 0.9.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5Xdg) >= 1.3.0
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(lxqt) >= %{version}
 Requires(post): desktop-file-utils
