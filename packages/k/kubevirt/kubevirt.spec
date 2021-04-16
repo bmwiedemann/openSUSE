@@ -164,7 +164,6 @@ build_tests="true" \
 	cmd/virt-handler \
 	cmd/virt-launcher \
 	cmd/virt-operator \
-	tools/csv-generator \
 	%{nil}
 
 env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version} ./hack/build-manifests.sh --skipj2
@@ -180,7 +179,6 @@ install -p -m 0755 _out/cmd/virt-chroot/virt-chroot %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-handler/virt-handler %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-launcher/virt-launcher %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-operator/virt-operator %{buildroot}%{_bindir}/
-install -p -m 0755 _out/cmd/csv-generator/csv-generator %{buildroot}%{_bindir}/
 install -p -m 0755 _out/tests/tests.test %{buildroot}%{_bindir}/virt-tests
 
 mkdir -p %{buildroot}%{_datadir}/kube-virt
@@ -227,7 +225,6 @@ install -m 0644 tests/default-config.json %{buildroot}%{_datadir}/kube-virt
 %license LICENSE
 %doc README.md
 %{_bindir}/virt-operator
-%{_bindir}/csv-generator
 
 %files manifests
 %license LICENSE
