@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 13 21:18:48 UTC 2021 - lars@linux-schulserver.de - 1.02
+
+- update to 1.02:
+  + Work around an issue with CLI options for deleting secret 
+    keys in gpg 2.2
+  + Make $gnupg->call('foo') update the internal GnuPG version number
+  + Localize tainted PATH env to make exec happy
+- remove t/get_public_keys.t as it tries to fetch keys from the 
+  internet, which is not possible in restricted build environments
+- use new upstream source url
+
+-------------------------------------------------------------------
 Thu Aug  6 11:04:20 UTC 2020 - Tina Müller <tina.mueller@suse.com>
 
 - Remove patches gpg2.2.6_7c85ac40660861e7507c43d043323c3f1b83921b.patch,

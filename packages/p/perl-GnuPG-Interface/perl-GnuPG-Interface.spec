@@ -1,7 +1,7 @@
 #
 # spec file for package perl-GnuPG-Interface
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           perl-GnuPG-Interface
-Version:        1.00
+Version:        1.02
 Release:        0
-%define cpan_name GnuPG-Interface
+%define         cpan_name GnuPG-Interface
 Summary:        Perl interface to GnuPG
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/J/JE/JESSE/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BP/BPS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -52,6 +52,8 @@ verification, and key-listing parsing.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+# remove tests that require an online system (OBS workers have no network)
+rm t/get_public_keys.t 
 
 %build
 PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
