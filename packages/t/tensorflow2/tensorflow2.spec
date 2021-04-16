@@ -18,12 +18,12 @@
 
 #
 %define pname tensorflow2
-%define vers 2.4.0
+%define vers 2.4.1
 #%%define cand -rc4
-%define _vers 2_4_0
+%define _vers 2_4_1
 %define libmaj 2
 %define libmin 4
-%define libref 0
+%define libref 1
 %define python_ver_hack python3.[0-9]
 %ifarch aarch64
 %define mklconfig mkl_aarch64
@@ -123,7 +123,7 @@ Summary:        A framework used for deep learning
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND FSFUL AND MIT AND MPL-2.0 AND OpenSSL AND Python-2.0
 Group:          Development/Languages/Python
 URL:            https://www.tensorflow.org/
-Source0:        https://github.com/tensorflow/tensorflow/archive/v%{version}%{?cand}.tar.gz#/tensorflow-v%{version}.tar.gz
+Source0:        https://github.com/tensorflow/tensorflow/archive/v%{version}%{?cand}.tar.gz#/tensorflow-%{version}.tar.gz
 Source1:        tensorflow2-rpmlintrc
 # IMPORTANT
 # although some of the following libraries are available in factory they could
