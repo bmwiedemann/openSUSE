@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 16 06:32:51 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  * A CMake FindXTerm module is added.
+
+-------------------------------------------------------------------
 Wed Nov  4 13:15:13 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.0:

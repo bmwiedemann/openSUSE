@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-build-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-build-tools
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Core build tools for LXQt
 License:        BSD-3-Clause
