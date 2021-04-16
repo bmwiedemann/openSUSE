@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 31 12:05:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add rope-pr333-py39.patch for python39 compatibility
+  gh#python-rope/rope#333
+
+-------------------------------------------------------------------
 Mon Oct 19 11:31:41 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.18.0:

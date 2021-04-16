@@ -1,7 +1,7 @@
 #
 # spec file for package python-rope
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/python-rope/rope
 Source:         https://files.pythonhosted.org/packages/source/r/rope/rope-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM rope-pr333-py39.patch gh#python-rope/rope#333
+Patch1:         rope-pr333-py39.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -59,6 +61,7 @@ export LANG=en_US.UTF-8
 %license COPYING
 %doc README.rst
 %doc docs/
-%{python_sitelib}/
+%{python_sitelib}/rope
+%{python_sitelib}/rope-%{version}*-info
 
 %changelog
