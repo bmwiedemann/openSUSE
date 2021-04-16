@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 16 09:49:44 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.1:
+  * Fixed compilation against Qt < 5.15.
+
+-------------------------------------------------------------------
+Fri Apr 16 07:10:43 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update 0.17.0:
+  * Made lxqt-config-appearance work under Wayland.
+  * Made the code cleaner and more up-to-date.
+
+-------------------------------------------------------------------
 Sun Nov 15 07:36:41 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.1:
