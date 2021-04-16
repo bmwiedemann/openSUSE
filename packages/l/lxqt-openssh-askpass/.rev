@@ -203,4 +203,13 @@
   * Bumped version to 0.16.0</comment>
     <requestid>846015</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d1c7b8d2069c1bcceab7ca657e5f264c</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610520</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Updated translations</comment>
+    <requestid>885953</requestid>
+  </revision>
 </revisionlist>
