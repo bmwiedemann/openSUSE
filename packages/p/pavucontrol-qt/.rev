@@ -106,4 +106,13 @@
   * Wrapped the text of connecting error label.</comment>
     <requestid>846016</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8715c30290c71ea960cc6eef54147f80</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610520</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * The redundant dbus dependency is removed.</comment>
+    <requestid>885955</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 16 10:37:57 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * The redundant dbus dependency is removed.
+
+-------------------------------------------------------------------
 Wed Nov  4 14:04:17 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.0:
