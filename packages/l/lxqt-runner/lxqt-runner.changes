@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 16 10:21:57 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * Prevent selection jumps in the drop-down list.
+  * Copy the calculation result to clipboard.
+  * Activated Home and End in the drop-down list.
+
+-------------------------------------------------------------------
 Wed Nov  4 13:52:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.0:
