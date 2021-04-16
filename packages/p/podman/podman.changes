@@ -1,21 +1,4 @@
 -------------------------------------------------------------------
-Fri Apr 09 16:55:51 UTC 2021 - alexandre.vicenzi@suse.com
-
-- Update to version 3.1.0:
-  * Bump to v3.1.0
-  * Fix test failure
-  * Update release notes for v3.1.0 final release
-  * [NO TESTS NEEDED] Turn on podman-remote build --isolation
-  * Fix long option format on docs.podman.io
-  * Fix containers list/prune http api filter behaviour
-  * [CI:DOCS] Add note to mappings for user/group userns in build
-  * Validate passed in timezone from tz option
-  * Generate Kubernetes PersistentVolumeClaims from named volumes
-  * libpod/image: unit tests: use a `registries.conf` for aliases
-- Require systemd 241 or newer due to podman dependency go-systemd v22,
-  otherwise build will fail with unknown C name errors
-
--------------------------------------------------------------------
 Mon Mar 29 16:29:46 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Create docker subpackage to allow replacing docker with

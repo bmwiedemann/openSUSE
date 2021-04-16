@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           podman
-Version:        3.1.0
+Version:        3.0.1
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -49,11 +49,7 @@ BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
 BuildRequires:  golang(API) = 1.13
 BuildRequires:  pkgconfig(libselinux)
-# Podman 3.1.0 requires systemd 241 or newer due to go-systemd
-# see https://github.com/coreos/go-systemd/issues/355
-# The next Podman release won't need it probably
-# see https://github.com/coreos/go-systemd/pull/358
-BuildRequires:  pkgconfig(libsystemd) >= 241
+BuildRequires:  pkgconfig(libsystemd)
 # Build fails with PIE enabled on ppc64le due to boo#1098017
 %ifarch ppc64le
 #!BuildIgnore: gcc-PIE
@@ -128,7 +124,7 @@ make %{?_smp_mflags} docs
 # Updates must be tested manually.
 
 %install
-make DESTDIR=%{buildroot} PREFIX=/usr install install.completions install.docker install.docker-docs
+make DESTDIR=%{buildroot} PREFIX=/usr install install.completions install.docker
 
 # packaged in libcontainers-common
 rm %{buildroot}/usr/share/man/man5/containers-mounts.conf.* %{buildroot}/usr/share/man/man5/oci-hooks.*

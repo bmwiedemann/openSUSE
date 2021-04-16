@@ -660,4 +660,11 @@ Bugfixes
     <comment></comment>
     <requestid>884637</requestid>
   </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>df1200bfafa581994bc8830c41aced24</srcmd5>
+    <version>3.0.1</version>
+    <time>1618583493</time>
+    <user>dimstar_suse</user>
+    <comment>https://github.com/containers/buildah/issues/3153</comment>
+  </revision>
 </revisionlist>
