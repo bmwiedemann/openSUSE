@@ -16,10 +16,8 @@ PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="%%TAGPREFIX%%/virt-api:%%PKG_VERSION%%.%RELEASE%"
 
-RUN zypper update -y && \
-    zypper install -y \
-           kubevirt-virt-api \
-           shadow && \
+RUN zypper -n install kubevirt-virt-api shadow && \
+    zypper clean -a && \
     useradd -u 1001 --create-home -s /bin/bash virt-api
 USER 1001
 ENTRYPOINT [ "/usr/bin/virt-api" ]
