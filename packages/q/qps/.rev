@@ -175,4 +175,14 @@
   * Avoided overflow in &quot;proc.cpp&quot;.</comment>
     <requestid>846020</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3b846b52ef9a92351e781eb9eb383704</srcmd5>
+    <version>2.3.0</version>
+    <time>1618610521</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.0:
+  * Prevent a crash on showing Qps' window if Qps is started
+    minimized to tray.</comment>
+    <requestid>885957</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 16 10:42:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.0:
+  * Prevent a crash on showing Qps' window if Qps is started
+    minimized to tray.
+
+-------------------------------------------------------------------
 Wed Nov  4 14:14:39 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.2.0:
