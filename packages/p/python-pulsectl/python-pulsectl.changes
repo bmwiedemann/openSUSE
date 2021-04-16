@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 16 13:32:15 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to 21.3.4
+  * Add timeout= option for connect() method [#48].
+  * Expose "base_volume" (alsa volume level) attribute for sinks/sources [#47].
+
+-------------------------------------------------------------------
 Thu Feb 25 11:33:35 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Require the pulseaudio-daemon capability instead of the

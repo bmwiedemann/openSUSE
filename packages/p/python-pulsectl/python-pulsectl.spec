@@ -19,23 +19,23 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-pulsectl
-Version:        20.2.4 
+Version:        21.3.4
 Release:        0
 Summary:        Python high-level interface and ctypes-based bindings for PulseAudio (libpulse)
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/mk-fg/python-pulse-control
+URL:            https://github.com/mk-fg/python-pulse-control
 Source:         https://files.pythonhosted.org/packages/source/p/pulsectl/pulsectl-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
+BuildArch:      noarch
 %if 0%{?sle_version} && 0%{?sle_version} < 150300
 Requires:       pulseaudio
 %else
 Requires:       pulseaudio-daemon
 %endif
-Requires:       python-setuptools
-BuildArch:      noarch
 %if %{with test}
 BuildRequires:  libpulse-devel
 BuildRequires:  pulseaudio
@@ -61,7 +61,7 @@ play, player-like client).
 
 %if %{with test}
 %check
-%python_exec -m unittest pulsectl.tests.all
+%pyunittest pulsectl.tests.all
 %endif
 
 %files %{python_files}
