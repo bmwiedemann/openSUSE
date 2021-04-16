@@ -17,11 +17,17 @@
 #
 
 
+%if 0%{?is_opensuse}
+    %define  distribution  openSUSE-Edition
+%else
+    %define  distribution  SUSE-Edition
+%endif
+
 Name:           deepin-terminal
 Version:        5.0.4.3
 Release:        0
 Summary:        Deepin terminal
-License:        GPL-3.0-or-later AND GPL-3.0-only
+License:        GPL-3.0-only AND GPL-3.0-or-later
 Group:          System/X11/Terminals
 URL:            https://github.com/linuxdeepin/deepin-terminal-gtk
 Source0:        https://github.com/linuxdeepin/deepin-terminal-gtk/archive/%{version}/%{name}-gtk-%{version}.tar.gz
@@ -60,7 +66,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %lang_package
 
 %description
-Deepin Terminal is an advanced terminal emulator with workspace, multiple 
+Deepin Terminal is an advanced terminal emulator with workspace, multiple
 windows, remote management, quake mode and other features.
 
 %prep
@@ -70,8 +76,7 @@ sed -i 's|return @@PROJECT_PATH@@;|return "%{_datadir}/%{name}";|' project_path.
 %build
 %cmake -DCMAKE_INSTALL_DIR=%{_prefix} \
        -DUSE_VENDOR_LIB=OFF \
-       -DCMAKE_C_FLAGS="$RPM_OPT_FLAGS" \
-       -DCMAKE_CXX_FLAGS="$RPM_OPT_FLAGS" 
+       -DVERSION=%{version}-%{distribution}
 %if 0%{?sle_version} > 150000 && 0%{?is_opensuse}
 %cmake_build
 %else
