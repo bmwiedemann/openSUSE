@@ -19,9 +19,9 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter-server
-Version:        1.4.1
+Version:        1.6.1
 Release:        0
-Summary:        The Jupyter Server
+Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter_server
@@ -29,6 +29,7 @@ Source:         https://github.com/jupyter/jupyter_server/archive/%{version}.tar
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Send2Trash}
 BuildRequires:  %{python_module anyio >= 2.0.2}
+BuildRequires:  %{python_module argon2-cffi}
 BuildRequires:  %{python_module ipython_genutils}
 BuildRequires:  %{python_module jupyter-client >= 6.1.1}
 BuildRequires:  %{python_module jupyter-core >= 4.4.0}
@@ -48,6 +49,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-Send2Trash
 Requires:       python-anyio
+Requires:       python-argon2-cffi
 Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 6.1.1
 Requires:       python-jupyter-core >= 4.4.0
@@ -104,7 +106,11 @@ done
 }
 export LANG=en_US.UTF-8
 export PATH=$PWD/build/testbin:$PATH
-%pytest
+if [ -e ~/.local/share/jupyter ]; then
+    echo "WARNING: Not a clean test environment."
+    echo "You might need to delete ~/.local/share/jupyter in order to avoid test failures."
+fi
+%pytest jupyter_server
 
 %post
 %python_install_alternative jupyter-server

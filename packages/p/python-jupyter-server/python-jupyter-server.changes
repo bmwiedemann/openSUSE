@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Apr 16 09:33:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Release 1.6.1:
+  * Fix race condition with async kernel management #472 (@jtpio)
+  * Fix kernel lookup #475 (@davidbrochart)
+  * Add Extension App Aliases to Server App #473 (@jtpio)
+  * Correct 'Content-Type' headers #471 (@faucct)
+- Release 1.6.0:
+  * Add env variable support for port options #461 (@afshin)
+  * Add support for JUPYTER_TOKEN_FILE #462 (@afshin)
+  * Remove unnecessary future imports #464 (@afshin)
+  * Add Changelog to Sphinx Docs #465 (@afshin)
+  * Update description for kernel restarted in the API docs #463
+    (@jtpio)
+  * Delete the extra “or” that prevents easy cut-and-paste of URLs.
+    #460 (@jasongrout)
+  * Add descriptive log for port unavailable and port-retries=0
+    #459 (@afshin)
+  * Add ReadTheDocs config #468 (@jtpio)
+  * Update MappingKM.restart_kernel to accept now kwarg #404
+    (@vidartf)
+- Release 1.5.1:
+  * Ensure jupyter config dir exists #454 (@afshin)
+  * Allow pre_save_hook to cancel save with HTTPError #456 (@minrk)
+- Release 1.5.0:
+  * Add Styling to the HTML Pages #452 (@afshin)
+  * Implement password hashing with argon2-cffi #450 (@afshin)
+  * Escape user input in handlers flagged during code scans #449
+    (@kevin-bates)
+  * Fix for the terminal shutdown issue #446 (@afshin)
+  * Update the branch filter for the CI badge #445 (@jtpio)
+  * Fix for UnboundLocalError in shutdown #444 (@afshin)
+  * Update CI badge and fix broken link #443 (@blink1073)
+  * Fix syntax typo #442 (@kiendang)
+  * Port terminal culling from Notebook #438 (@kevin-bates)
+  * More complex handling of open_browser from extension
+    applications #433 (@afshin)
+  * Correction in Changelog #429 (@Zsailer)
+  * Rename translation function alias #428 (@sngyo)
+- Note: Don't update to v1.6.2 before setuptools >= 0.49.4 is
+  available, which is required by jupyter-packaging 0.9!
+
+-------------------------------------------------------------------
 Thu Feb 25 20:54:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.4.1:
