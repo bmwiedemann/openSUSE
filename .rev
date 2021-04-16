@@ -339,4 +339,14 @@
   * Added depreciation notice to screenshot command line options.</comment>
     <requestid>846027</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>72fa347b653bc09e76c0b93d28a0eb3f</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610509</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Fitting images while navigating is made optional.
+  * Options are added to Preferences dialog for thumbnails.</comment>
+    <requestid>885935</requestid>
+  </revision>
 </revisionlist>

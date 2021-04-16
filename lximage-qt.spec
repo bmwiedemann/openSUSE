@@ -1,7 +1,7 @@
 #
 # spec file for package lximage-qt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lximage-qt
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        LXQt Image Viewer
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  lxqt-build-tools-devel >= 0.8.0
+BuildRequires:  lxqt-build-tools-devel >= 0.9.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5WindowSystem)
