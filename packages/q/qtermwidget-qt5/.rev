@@ -173,4 +173,19 @@
   * Bumped version to 0.16.1, for a point release of qterminal.</comment>
     <requestid>848667</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a14ce1ebac809bf6d8f2fed06f10b149</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610519</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Dropped the support for KDE3 color scheme formats.
+  * Properly implemented the &quot;Action after paste&quot; feature.
+  * Added modes for background image. How background images are
+    drawn is changed and manual reconfiguration may be needed.
+	See docs/configuration.md for more details.
+  * Added a method to disable bracketed paste mode.
+  * Fixed the execution after pasting when Ctrl is hold.</comment>
+    <requestid>885950</requestid>
+  </revision>
 </revisionlist>

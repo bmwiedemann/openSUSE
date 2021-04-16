@@ -1,7 +1,7 @@
 #
 # spec file for package qtermwidget-qt5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Konsole code was rewritten entirely with using Qt only, and all \
 code dealing with user interface parts and session management was \
 removed.
 Name:           qtermwidget-qt5
-Version:        0.16.1
+Version:        0.17.0
 Release:        0
 Summary:        %{pack_summ}
 License:        GPL-2.0-or-later
@@ -37,7 +37,7 @@ Source:         https://github.com/lxqt/qtermwidget/releases/download/%{version}
 Source1:        https://github.com/lxqt/qtermwidget/releases/download/%{version}/qtermwidget-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.1.9
-BuildRequires:  lxqt-build-tools-devel >= 0.8.0
+BuildRequires:  lxqt-build-tools-devel >= 0.9.0
 BuildRequires:  pkgconfig
 BuildRequires:  utf8proc-devel
 BuildRequires:  cmake(Qt5LinguistTools)

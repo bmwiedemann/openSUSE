@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 16 10:26:15 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * Dropped the support for KDE3 color scheme formats.
+  * Properly implemented the "Action after paste" feature.
+  * Added modes for background image. How background images are
+    drawn is changed and manual reconfiguration may be needed.
+	See docs/configuration.md for more details.
+  * Added a method to disable bracketed paste mode.
+  * Fixed the execution after pasting when Ctrl is hold.
+
+-------------------------------------------------------------------
 Sun Nov 15 07:40:50 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.1:
