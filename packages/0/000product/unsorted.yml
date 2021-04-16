@@ -23623,6 +23623,7 @@ unsorted:
   - python36-ssdeep 
   - python36-sshpubkeys 
   - python36-sshtunnel 
+  - python36-starlette 
   - python36-statsd 
   - python36-stem 
   - python36-stomp.py 
@@ -26491,6 +26492,7 @@ unsorted:
   - python38-ssdeep 
   - python38-sshpubkeys 
   - python38-sshtunnel 
+  - python38-starlette 
   - python38-statsd 
   - python38-statsmodels 
   - python38-stem 
@@ -26828,6 +26830,7 @@ unsorted:
   - python38-zxcvbn 
   - python39 
   - python39-32bit: [x86_64] 
+  - python39-APScheduler: [x86_64] 
   - python39-AnyQt 
   - python39-Arpeggio 
   - python39-Authlib 
@@ -26849,14 +26852,38 @@ unsorted:
   - python39-CommonMark 
   - python39-Cycler 
   - python39-Cython 
+  - python39-DataShape 
   - python39-DateTime 
   - python39-Delorean 
+  - python39-Django 
   - python39-Durus 
   - python39-EasyProcess 
   - python39-EditorConfig 
   - python39-ExifRead 
+  - python39-Fabric 
+  - python39-Flask 
+  - python39-Flask-Admin 
+  - python39-Flask-Babel 
+  - python39-Flask-BabelEx 
+  - python39-Flask-Bootstrap 
+  - python39-Flask-Caching 
+  - python39-Flask-Compress 
+  - python39-Flask-Cors 
+  - python39-Flask-Gravatar 
+  - python39-Flask-HTMLmin 
+  - python39-Flask-HTTPAuth 
+  - python39-Flask-Login 
+  - python39-Flask-Mail 
+  - python39-Flask-Migrate 
+  - python39-Flask-Paranoid 
+  - python39-Flask-Principal 
   - python39-Flask-RESTful 
   - python39-Flask-RSTPages 
+  - python39-Flask-SQLAlchemy 
+  - python39-Flask-Script 
+  - python39-Flask-Testing 
+  - python39-Flask-WTF 
+  - python39-Flask-doc 
   - python39-FontTools 
   - python39-FormEncode 
   - python39-Genshi 
@@ -26874,19 +26901,26 @@ unsorted:
   - python39-Keras-Applications: [x86_64] 
   - python39-Kivy 
   - python39-Kivy-devel 
+  - python39-LTTL 
+  - python39-Lektor 
   - python39-Levenshtein 
+  - python39-Logbook: [x86_64] 
   - python39-M2Crypto 
   - python39-Mako 
   - python39-Markdown 
   - python39-MarkupPy 
   - python39-MarkupSafe 
   - python39-Markups 
+  - python39-MechanicalSoup: [x86_64] 
   - python39-Ming 
   - python39-MiniMock 
   - python39-Morfessor 
   - python39-MouseInfo 
+  - python39-MulticoreTSNE 
+  - python39-Nuitka: [i586] 
   - python39-PGet 
   - python39-PTable 
+  - python39-Parsley 
   - python39-Paste 
   - python39-PasteDeploy 
   - python39-Paver 
@@ -26897,7 +26931,9 @@ unsorted:
   - python39-PrettyTable 
   - python39-Protego 
   - python39-PubChemPy 
+  - python39-Pweave: [x86_64] 
   - python39-PyAudio 
+  - python39-PyAutoGUI 
   - python39-PyBindGen 
   - python39-PyBrowserID 
   - python39-PyChart 
@@ -26905,8 +26941,10 @@ unsorted:
   - python39-PyCondor 
   - python39-PyDispatcher 
   - python39-PyECLib 
+  - python39-PyFxA 
   - python39-PyHamcrest 
   - python39-PyICU 
+  - python39-PyInstaller 
   - python39-PyJWT 
   - python39-PyKMIP 
   - python39-PyMeeus 
@@ -26924,12 +26962,15 @@ unsorted:
   - python39-PyRIC 
   - python39-PyRSS2Gen 
   - python39-PySDL2 
+  - python39-PyScreeze 
   - python39-PySocks 
   - python39-PyTrie 
   - python39-PyTweening 
+  - python39-PyVirtualDisplay 
   - python39-PyWavelets 
   - python39-PyWebDAV3 
   - python39-PyWebDAV3-GNUHealth 
+  - python39-PyX 
   - python39-PyYAML 
   - python39-Pygments 
   - python39-Pykka 
@@ -26938,11 +26979,13 @@ unsorted:
   - python39-Pyro4 
   - python39-QDarkStyle 
   - python39-Qt.py 
+  - python39-QtAwesome 
   - python39-QtPy 
   - python39-RegexOrder 
   - python39-Routes 
   - python39-SPARQLWrapper 
   - python39-SQLAlchemy 
+  - python39-SQLAlchemy-Utils 
   - python39-SecretStorage 
   - python39-Send2Trash 
   - python39-SimpleWebSocketServer 
@@ -26958,6 +27001,8 @@ unsorted:
   - python39-Theano 
   - python39-Trolly 
   - python39-Trololio 
+  - python39-Twisted 
+  - python39-TxSNI 
   - python39-URLObject 
   - python39-UkPostcodeParser 
   - python39-Unidecode 
@@ -26967,6 +27012,7 @@ unsorted:
   - python39-WTForms 
   - python39-WebOb 
   - python39-WebTest 
+  - python39-Werkzeug 
   - python39-Whoosh 
   - python39-XStatic 
   - python39-XStatic-Angular-Schema-Form 
@@ -26985,12 +27031,16 @@ unsorted:
   - python39-abimap-doc 
   - python39-abseil 
   - python39-acefile 
+  - python39-acitoolkit 
   - python39-acme 
   - python39-actdiag 
   - python39-adal 
+  - python39-adapt-parser 
   - python39-addict 
   - python39-aenum 
+  - python39-aesara 
   - python39-afdko 
+  - python39-affine 
   - python39-agate 
   - python39-agate-dbf 
   - python39-agate-lookup 
@@ -26998,14 +27048,20 @@ unsorted:
   - python39-agate-sql 
   - python39-agate-stats 
   - python39-aina 
+  - python39-aiobotocore 
   - python39-aiodns 
+  - python39-aioeventlet: [x86_64] 
   - python39-aiofiles 
   - python39-aioftp 
+  - python39-aiohttp 
   - python39-aiohttp-socks 
   - python39-aiohttp-theme 
+  - python39-aiohttp_cors 
   - python39-aioitertools 
   - python39-aioquic 
   - python39-aioredis 
+  - python39-aioresponses 
+  - python39-aiorpcX 
   - python39-aiosmtpd 
   - python39-aiosqlite 
   - python39-aiounittest 
@@ -27015,6 +27071,7 @@ unsorted:
   - python39-alembic 
   - python39-allpairspy 
   - python39-alsa 
+  - python39-altair 
   - python39-altair-widgets 
   - python39-altgraph 
   - python39-amqp 
@@ -27026,8 +27083,10 @@ unsorted:
   - python39-ansicolors 
   - python39-ansiwrap 
   - python39-antlr4-python3-runtime 
+  - python39-anyio 
   - python39-anyjson 
   - python39-anymarkup-core 
+  - python39-apache-libcloud 
   - python39-apipkg 
   - python39-apiron 
   - python39-appdirs 
@@ -27037,7 +27096,7 @@ unsorted:
   - python39-apsw 
   - python39-arabic-reshaper 
   - python39-arf 
-  - python39-argcomplete: [i586] 
+  - python39-argcomplete 
   - python39-argh 
   - python39-argon2-cffi 
   - python39-args 
@@ -27057,12 +27116,17 @@ unsorted:
   - python39-asv 
   - python39-async_generator 
   - python39-async_timeout 
+  - python39-asyncpg 
+  - python39-asyncssh 
+  - python39-atlassian-python-api 
   - python39-atom 
   - python39-atomicwrites 
   - python39-atpublic 
   - python39-atspi 
   - python39-attr 
   - python39-attrs 
+  - python39-audio-degrader 
+  - python39-audiogrep 
   - python39-audiomate 
   - python39-audioread 
   - python39-augeas 
@@ -27071,10 +27135,13 @@ unsorted:
   - python39-autodoc 
   - python39-autoflake 
   - python39-autopep8 
+  - python39-autoray 
   - python39-autoupgrade-ng 
   - python39-av 
   - python39-avocado-plugins-vt 
+  - python39-awkward 
   - python39-awpa 
+  - python39-aws-sam-translator: [x86_64] 
   - python39-aws-xray-sdk 
   - python39-aws-xray-sdk-Django 
   - python39-aws-xray-sdk-Flask-SQLAlchemy 
@@ -27134,11 +27201,14 @@ unsorted:
   - python39-azure-data-nspkg 
   - python39-azure-data-tables 
   - python39-azure-datalake-store 
+  - python39-azure-devops 
   - python39-azure-digitaltwins-core 
   - python39-azure-digitaltwins-nspkg 
   - python39-azure-eventgrid 
   - python39-azure-eventhub 
+  - python39-azure-eventhub-checkpointstoreblob 
   - python39-azure-eventhub-checkpointstoreblob-aio 
+  - python39-azure-functions-devops-build 
   - python39-azure-graphrbac 
   - python39-azure-identity 
   - python39-azure-keyvault 
@@ -27313,14 +27383,17 @@ unsorted:
   - python39-betamax 
   - python39-betamax-matchers 
   - python39-bibtexparser 
-  - python39-billiard: [i586] 
+  - python39-bidict 
+  - python39-billiard 
   - python39-binary 
   - python39-binaryornot 
+  - python39-bindep 
   - python39-biopython 
   - python39-bitarray 
   - python39-bitstring 
   - python39-bitstruct 
   - python39-bjoern 
+  - python39-black 
   - python39-bleach 
   - python39-blessed 
   - python39-blessings 
@@ -27329,6 +27402,7 @@ unsorted:
   - python39-blist 
   - python39-blockdiag 
   - python39-blosc 
+  - python39-blue 
   - python39-blurb 
   - python39-bobo 
   - python39-bobodoctestumentation 
@@ -27337,6 +27411,7 @@ unsorted:
   - python39-boltons 
   - python39-boolean.py 
   - python39-booleanOperations 
+  - python39-boto: [x86_64] 
   - python39-boto3: [x86_64] 
   - python39-botocore 
   - python39-bottle 
@@ -27371,6 +27446,7 @@ unsorted:
   - python39-capturer: [i586] 
   - python39-casacore 
   - python39-case 
+  - python39-cassandra-driver: [x86_64] 
   - python39-cassowary 
   - python39-casttube 
   - python39-catkin-pkg 
@@ -27378,11 +27454,13 @@ unsorted:
   - python39-cbor2 
   - python39-cchardet 
   - python39-celery 
+  - python39-celery-batches: [x86_64] 
   - python39-celerymon 
   - python39-cerealizer 
   - python39-certbot 
   - python39-certbot-apache 
   - python39-certbot-dns-cloudflare 
+  - python39-certbot-dns-digitalocean 
   - python39-certbot-dns-rfc2136 
   - python39-certbot-dns-route53: [x86_64] 
   - python39-certbot-nginx 
@@ -27392,14 +27470,18 @@ unsorted:
   - python39-cffi 
   - python39-cfgdiff 
   - python39-cfgv 
+  - python39-cfn-lint: [x86_64] 
+  - python39-cfscrape: [x86_64] 
   - python39-cftime 
   - python39-chai 
   - python39-chainmap 
   - python39-chardet 
+  - python39-chart-studio: [x86_64] 
   - python39-check-manifest 
   - python39-cheroot 
   - python39-ciscoconfparse 
   - python39-cl 
+  - python39-cleo 
   - python39-cli-helpers 
   - python39-click 
   - python39-click-aliases 
@@ -27414,11 +27496,13 @@ unsorted:
   - python39-click-spinner 
   - python39-click-threading 
   - python39-cligj 
+  - python39-clikit 
   - python39-clint 
   - python39-cloud-init-seed 
   - python39-cloud-sptheme 
   - python39-cloudflare 
   - python39-cloudpickle 
+  - python39-cloudscraper 
   - python39-cluster 
   - python39-cmarkgfm 
   - python39-cmd2 
@@ -27426,8 +27510,11 @@ unsorted:
   - python39-coards 
   - python39-codecov 
   - python39-cogapp 
+  - python39-colander 
   - python39-colorama 
+  - python39-colorcet 
   - python39-colorclass 
+  - python39-coloredlogs: [i586] 
   - python39-colorlog 
   - python39-colorlover 
   - python39-colour 
@@ -27447,6 +27534,8 @@ unsorted:
   - python39-contexter 
   - python39-contextlib2 
   - python39-contextvars 
+  - python39-control 
+  - python39-conu 
   - python39-convertdate 
   - python39-cookies 
   - python39-cooldict 
@@ -27458,11 +27547,16 @@ unsorted:
   - python39-coverage 
   - python39-coverage-config-reload-plugin 
   - python39-coverage-env-plugin 
+  - python39-coveralls 
+  - python39-coveralls-check 
   - python39-cppclean 
+  - python39-cpplint 
   - python39-cppy 
   - python39-cracklib 
+  - python39-crashtest 
   - python39-crayons 
   - python39-crcmod 
+  - python39-crochet 
   - python39-cron-descriptor 
   - python39-croniter 
   - python39-crontab 
@@ -27488,6 +27582,7 @@ unsorted:
   - python39-d2to1 
   - python39-daemonize 
   - python39-daiquiri 
+  - python39-dash: [x86_64] 
   - python39-dash-core-components 
   - python39-dash-html-components 
   - python39-dash-renderer 
@@ -27501,7 +27596,9 @@ unsorted:
   - python39-dask-diagnostics 
   - python39-dask-distributed 
   - python39-dask-dot 
+  - python39-databases 
   - python39-datadiff 
+  - python39-datashader 
   - python39-dateparser 
   - python39-dateutils 
   - python39-datrie 
@@ -27515,10 +27612,11 @@ unsorted:
   - python39-ddt 
   - python39-debian 
   - python39-decorator 
+  - python39-deepdiff 
   - python39-deepmerge 
   - python39-defusedxml 
   - python39-delegator 
-  - python39-delegator.py: [i586] 
+  - python39-delegator.py 
   - python39-demjson 
   - python39-dennis 
   - python39-dephell 
@@ -27530,24 +27628,28 @@ unsorted:
   - python39-dephell-markers 
   - python39-dephell-pythons 
   - python39-dephell-setuptools 
-  - python39-dephell-shells: [i586] 
+  - python39-dephell-shells 
   - python39-dephell-specifier 
   - python39-dephell-versioning 
   - python39-dephell_changelogs 
   - python39-deprecation 
   - python39-derpconf: [x86_64] 
   - python39-devel 
+  - python39-devpi-client 
   - python39-devpi-common 
+  - python39-devpi-server 
   - python39-dfdatetime 
   - python39-dfwinreg 
   - python39-dialite 
   - python39-dictdiffer 
   - python39-dicttoxml 
   - python39-diff-match-patch 
+  - python39-digitalocean 
   - python39-dill 
   - python39-dirtyjson 
   - python39-discid 
   - python39-discogs-client 
+  - python39-diskcache 
   - python39-dist 
   - python39-distlib 
   - python39-distorm3 
@@ -27555,12 +27657,93 @@ unsorted:
   - python39-distro 
   - python39-distroinfo 
   - python39-distutils-extra 
+  - python39-dj-database-url 
+  - python39-django-allauth 
+  - python39-django-appconf 
+  - python39-django-args 
+  - python39-django-attachments 
+  - python39-django-auth-ldap 
+  - python39-django-avatar 
+  - python39-django-axes 
+  - python39-django-bootstrap3 
+  - python39-django-bootstrap4: [x86_64] 
+  - python39-django-cacheops 
   - python39-django-ckeditor 
+  - python39-django-classy-tags 
+  - python39-django-codemod: [x86_64] 
+  - python39-django-collectd-rest 
+  - python39-django-compressor: [x86_64] 
+  - python39-django-contrib-comments 
+  - python39-django-cors-headers 
+  - python39-django-countries 
+  - python39-django-coverage-plugin 
+  - python39-django-crispy-forms 
+  - python39-django-debreach 
+  - python39-django-debug-toolbar 
+  - python39-django-dj-inmemorystorage 
+  - python39-django-dynamic-fixture 
   - python39-django-environ 
+  - python39-django-eremaea2 
+  - python39-django-extra-views 
+  - python39-django-filter 
+  - python39-django-formtools 
+  - python39-django-geoposition 
+  - python39-django-grappelli 
+  - python39-django-gravatar2 
+  - python39-django-guardian 
+  - python39-django-haystack 
+  - python39-django-health-check: [x86_64] 
+  - python39-django-invitations 
+  - python39-django-ipware 
+  - python39-django-jinja 
+  - python39-django-js-asset 
+  - python39-django-json-widget 
+  - python39-django-jsonfield 
+  - python39-django-localflavor 
+  - python39-django-mailer 
+  - python39-django-mathfilters 
   - python39-django-minio-storage 
+  - python39-django-model-utils 
+  - python39-django-money 
+  - python39-django-multiselectfield 
+  - python39-django-nine 
+  - python39-django-nose 
+  - python39-django-oauth-toolkit 
+  - python39-django-parler 
+  - python39-django-perf-rec 
+  - python39-django-pglocks 
+  - python39-django-phonenumber-field 
+  - python39-django-picklefield 
+  - python39-django-pipeline 
+  - python39-django-polymorphic 
+  - python39-django-pyscss: [x86_64] 
+  - python39-django-q 
+  - python39-django-qsessions 
+  - python39-django-redis 
+  - python39-django-registration 
+  - python39-django-request 
+  - python39-django-rest-framework-client 
   - python39-django-rest-framework-social-oauth2 
+  - python39-django-rest-invitations 
+  - python39-django-rest-knox 
+  - python39-django-reversion 
+  - python39-django-rosetta: [x86_64] 
+  - python39-django-sekizai 
   - python39-django-settings-toml 
+  - python39-django-sortedm2m 
+  - python39-django-tagging 
+  - python39-django-threadedcomments 
+  - python39-django-timezone-field 
+  - python39-django-treebeard 
+  - python39-django-user-agents 
+  - python39-django-utils-six 
+  - python39-django-webpack-loader 
+  - python39-django-webtest 
+  - python39-django-widget-tweaks 
   - python39-djangorestframework 
+  - python39-djangorestframework-camel-case 
+  - python39-djangorestframework-simplejwt 
+  - python39-djet 
   - python39-djvulibre 
   - python39-dkimpy 
   - python39-dnslib 
@@ -27568,6 +27751,8 @@ unsorted:
   - python39-doc 
   - python39-doc-devhelp 
   - python39-docformatter 
+  - python39-docker 
+  - python39-docker-compose 
   - python39-docker-pycreds 
   - python39-dockerpty 
   - python39-docopt 
@@ -27582,9 +27767,12 @@ unsorted:
   - python39-dpkt 
   - python39-dragonmapper 
   - python39-dropbox 
+  - python39-dtaidistance 
   - python39-dtfabric 
   - python39-duckduckgo2 
   - python39-dukpy-kovidgoyal 
+  - python39-dynaconf 
+  - python39-easy-thumbnails 
   - python39-easygui 
   - python39-easypysmb 
   - python39-easywatch 
@@ -27599,8 +27787,10 @@ unsorted:
   - python39-elasticsearch 
   - python39-elasticsearch-dsl 
   - python39-elementpath 
+  - python39-eliot 
   - python39-email-reply-parser 
   - python39-email_validator 
+  - python39-emcee 
   - python39-emoji 
   - python39-empy 
   - python39-encore 
@@ -27618,6 +27808,7 @@ unsorted:
   - python39-etcd: [x86_64] 
   - python39-ethtool 
   - python39-evdev 
+  - python39-eventlet: [x86_64] 
   - python39-evilunit 
   - python39-evtx 
   - python39-exam 
@@ -27632,10 +27823,14 @@ unsorted:
   - python39-fabio: [x86_64] 
   - python39-fake-useragent 
   - python39-fakeredis 
+  - python39-falcon 
+  - python39-fanficfare 
   - python39-fann2 
+  - python39-fastcluster 
   - python39-fasteners 
   - python39-fastimport 
   - python39-fb-re2 
+  - python39-fedora-messaging: [x86_64] 
   - python39-feedgen 
   - python39-feedgenerator 
   - python39-feedparser 
@@ -27658,16 +27853,25 @@ unsorted:
   - python39-flake8-debugger 
   - python39-flake8-deprecated 
   - python39-flake8-docstrings 
+  - python39-flake8-import-order 
+  - python39-flake8-imports 
+  - python39-flake8-isort 
+  - python39-flake8-pep3101 
   - python39-flake8-polyfill 
   - python39-flake8-quotes 
   - python39-flaky 
   - python39-flasgger 
+  - python39-flask-oidc 
+  - python39-flask-peewee 
   - python39-flatbuffers 
   - python39-flatdict 
   - python39-fleming 
   - python39-flexmock 
   - python39-flexx: [i586] 
+  - python39-flickrapi 
+  - python39-flit 
   - python39-flit-core 
+  - python39-flower: [x86_64] 
   - python39-fluent 
   - python39-flufl.bounce 
   - python39-flufl.i18n 
@@ -27679,6 +27883,7 @@ unsorted:
   - python39-fontParts 
   - python39-forbiddenfruit 
   - python39-formats 
+  - python39-freeipa 
   - python39-freetype-py 
   - python39-freezegun 
   - python39-fritzconnection 
@@ -27694,16 +27899,25 @@ unsorted:
   - python39-future 
   - python39-fuzzywuzzy 
   - python39-fysom 
+  - python39-gTTS 
   - python39-gTTS-token 
+  - python39-gcsfs: [x86_64] 
+  - python39-gcsfs-fuse: [x86_64] 
+  - python39-gear 
   - python39-ged4py 
+  - python39-genfire 
+  - python39-genson 
   - python39-genty 
   - python39-geographiclib 
+  - python39-geoip2 
   - python39-geolib 
   - python39-geolinks 
+  - python39-geomdl: [x86_64] 
   - python39-geomet 
   - python39-geopy 
   - python39-gevent: [x86_64] 
   - python39-geventhttpclient: [x86_64] 
+  - python39-ggplot 
   - python39-gi-docgen 
   - python39-girder-client 
   - python39-git-pw 
@@ -27715,44 +27929,67 @@ unsorted:
   - python39-glob2 
   - python39-gmpy 
   - python39-gmpy2 
+  - python39-gns3fy: [x86_64] 
   - python39-gobject 
   - python39-gobject-Gdk 
   - python39-gobject-cairo 
   - python39-gobject-devel 
   - python39-goobook 
+  - python39-google-auth 
+  - python39-google-auth-httplib2 
+  - python39-google-auth-oauthlib 
+  - python39-google-resumable-media 
+  - python39-googlemaps 
   - python39-gpgme 
   - python39-gphoto2 
   - python39-gprof2dot 
   - python39-gps3 
   - python39-grab 
+  - python39-graphene 
+  - python39-graphene-django 
+  - python39-graphql-core 
+  - python39-graphql-relay 
   - python39-graphviz 
   - python39-greenlet 
   - python39-greenlet-devel 
   - python39-grpcio 
   - python39-grpcio-gcp 
   - python39-gscholar 
+  - python39-gspread 
   - python39-gssapi 
   - python39-gst 
   - python39-gsw 
+  - python39-guessit 
   - python39-gunicorn 
   - python39-guzzle_sphinx_theme 
+  - python39-gvm-tools: [x86_64] 
   - python39-gwdatafind 
+  - python39-gwosc 
   - python39-gwyfile 
   - python39-h11 
   - python39-h2 
   - python39-h5netcdf 
   - python39-h5py 
+  - python39-h5py-openmpi1 
+  - python39-h5py-openmpi2 
+  - python39-h5py-openmpi3 
+  - python39-h5py-openmpi4 
+  - python39-hankel 
   - python39-hanzidentifier 
   - python39-happybase 
   - python39-haproxyctl 
-  - python39-hatch: [i586] 
+  - python39-hashids 
+  - python39-hatch 
   - python39-hawkauthlib 
   - python39-hcloud 
+  - python39-hdf5storage: [x86_64] 
+  - python39-healpy 
   - python39-helpdev 
   - python39-hepunits 
   - python39-hetzner 
   - python39-hetznercloud 
   - python39-hexdump 
+  - python39-hide-code: [x86_64] 
   - python39-hijri-converter 
   - python39-hiredis 
   - python39-hkdf 
@@ -27767,7 +28004,9 @@ unsorted:
   - python39-httmock 
   - python39-http-ece 
   - python39-http-parser 
+  - python39-httpbin: [x86_64] 
   - python39-httplib2 
+  - python39-httpretty: [x86_64] 
   - python39-httpsig_cffi 
   - python39-httptools 
   - python39-humanfriendly 
@@ -27775,12 +28014,14 @@ unsorted:
   - python39-humanize 
   - python39-hupper 
   - python39-husl 
+  - python39-hvac 
   - python39-hyperframe 
   - python39-hyperlink 
   - python39-hypothesis 
   - python39-hypothesis-auto 
   - python39-hypothesis-fspaths 
   - python39-hypothesmith 
+  - python39-i3ipc: [i586] 
   - python39-icalendar 
   - python39-identify 
   - python39-idle 
@@ -27794,10 +28035,14 @@ unsorted:
   - python39-imageio-ffmpeg 
   - python39-imagesize 
   - python39-imbox 
+  - python39-img2pdf 
   - python39-immutables 
+  - python39-importlab 
   - python39-importlib-metadata 
   - python39-importlib-resources 
+  - python39-imreg 
   - python39-incremental 
+  - python39-infinity 
   - python39-inflect 
   - python39-inflection 
   - python39-iniconfig 
@@ -27805,23 +28050,28 @@ unsorted:
   - python39-iniparse 
   - python39-injector 
   - python39-interrogate 
+  - python39-intervals 
   - python39-intervaltree 
+  - python39-invocations 
   - python39-invoke 
   - python39-iocapture 
   - python39-ipaddr 
-  - python39-ipdb: [i586] 
+  - python39-ipdb 
   - python39-iptables 
   - python39-ipy 
+  - python39-ipykernel: [x86_64] 
   - python39-ipython 
   - python39-ipython-iptest 
   - python39-ipython715 
   - python39-ipython715-iptest 
   - python39-ipython_genutils 
+  - python39-ipywidgets: [x86_64] 
   - python39-irc 
   - python39-isc_dhcp_leases 
   - python39-iso3166 
   - python39-iso8601 
   - python39-isodate 
+  - python39-isort 
   - python39-itemadapter 
   - python39-itsdangerous 
   - python39-itypes 
@@ -27847,10 +28097,11 @@ unsorted:
   - python39-jellyfish 
   - python39-jenkinsapi 
   - python39-jfscripts 
-  - python39-jgraph: [i586] 
+  - python39-jgraph 
   - python39-jinja2-pluralize 
   - python39-jinja2-time 
   - python39-jira 
+  - python39-jirafs 
   - python39-jmespath 
   - python39-joblib 
   - python39-josepy 
@@ -27865,9 +28116,11 @@ unsorted:
   - python39-jsonlines 
   - python39-jsonpatch 
   - python39-jsonpath-rw 
+  - python39-jsonpickle 
   - python39-jsonpointer 
   - python39-jsonref 
   - python39-jsonrpclib-pelix 
+  - python39-jsonschema 
   - python39-jsonslicer 
   - python39-jsonxs 
   - python39-junit-xml 
@@ -27876,13 +28129,23 @@ unsorted:
   - python39-jupyter-core 
   - python39-jupyter-nbutils 
   - python39-jupyter-packaging 
+  - python39-jupyter-protocol: [x86_64] 
+  - python39-jupyter-sphinx: [x86_64] 
+  - python39-jupyter-telemetry 
+  - python39-jupyter_console: [x86_64] 
+  - python39-jupyter_contrib_core: [x86_64] 
+  - python39-jupyter_highlight_selected_word: [x86_64] 
+  - python39-jupyter_kernel_test: [x86_64] 
   - python39-jupyter_latex_envs 
+  - python39-jupyter_nbextensions_configurator: [x86_64] 
   - python39-jupyterlab-pygments 
+  - python39-jupytext 
   - python39-jwcrypto 
   - python39-k5test 
   - python39-kafka-python 
   - python39-kaitaistruct 
   - python39-kasa 
+  - python39-kazoo: [x86_64] 
   - python39-keepalive 
   - python39-kerberos 
   - python39-keyczar 
@@ -27894,10 +28157,13 @@ unsorted:
   - python39-kiwisolver 
   - python39-kmatch 
   - python39-kmod 
+  - python39-knack: [x86_64] 
   - python39-kombu: [x86_64] 
   - python39-korean-lunar-calendar 
+  - python39-kubernetes 
   - python39-l20n 
   - python39-labelImg 
+  - python39-labels 
   - python39-lancet-ioam 
   - python39-langdetect 
   - python39-langtable 
@@ -27909,6 +28175,7 @@ unsorted:
   - python39-lazr.uri 
   - python39-lazy 
   - python39-lazy-object-proxy 
+  - python39-lazyarray 
   - python39-ldap 
   - python39-ldap3 
   - python39-ldapdomaindump 
@@ -27925,6 +28192,7 @@ unsorted:
   - python39-liblarch-gtk 
   - python39-libnacl 
   - python39-librouteros 
+  - python39-libsass 
   - python39-libusb1 
   - python39-libvirt-python 
   - python39-license-expression 
@@ -27938,6 +28206,7 @@ unsorted:
   - python39-linux-procfs 
   - python39-llvmlite 
   - python39-lmdb 
+  - python39-lmfit 
   - python39-lml 
   - python39-localzone 
   - python39-locket 
@@ -27953,6 +28222,7 @@ unsorted:
   - python39-m2r 
   - python39-macholib 
   - python39-magic 
+  - python39-magic-wormhole-transit-relay 
   - python39-magicalimport 
   - python39-mailman3-fedmsg-plugin 
   - python39-main-wrapper 
@@ -27972,8 +28242,13 @@ unsorted:
   - python39-matplotlib-tk 
   - python39-matplotlib-web 
   - python39-matplotlib-wx 
+  - python39-mautrix 
   - python39-maxminddb 
   - python39-mccabe 
+  - python39-md2workflow 
+  - python39-md2workflow-plugins-jira 
+  - python39-md2workflow-plugins-redmine 
+  - python39-mechanize 
   - python39-meld3 
   - python39-memory_profiler 
   - python39-metaextract 
@@ -27983,12 +28258,14 @@ unsorted:
   - python39-minidb 
   - python39-misaka 
   - python39-mistune 
+  - python39-mizani 
   - python39-moban 
   - python39-moban-ansible 
   - python39-mock 
   - python39-mock-open 
   - python39-mocket 
   - python39-mockldap 
+  - python39-model-bakery 
   - python39-modernize 
   - python39-mohawk 
   - python39-moksha-common 
@@ -27996,6 +28273,7 @@ unsorted:
   - python39-monotonic 
   - python39-more-itertools 
   - python39-moreorless 
+  - python39-moretools: [x86_64] 
   - python39-mpi4py 
   - python39-mpi4py-devel 
   - python39-mplcursors 
@@ -28014,6 +28292,7 @@ unsorted:
   - python39-mulpyplexer 
   - python39-multi_key_dict 
   - python39-multidict 
+  - python39-multipledispatch 
   - python39-munch 
   - python39-munkres 
   - python39-musicbrainzngs 
@@ -28028,9 +28307,14 @@ unsorted:
   - python39-nautilus-devel 
   - python39-nbclient 
   - python39-nbconvert 
-  - python39-nbindex-jupyter: [i586] 
+  - python39-nbformat 
+  - python39-nbindex-jupyter 
+  - python39-nbsmoke: [x86_64] 
+  - python39-nbsphinx: [x86_64] 
+  - python39-nbsphinx-link: [x86_64] 
   - python39-nbxmpp 
   - python39-nbxmpp-doc 
+  - python39-ncclient 
   - python39-ndg-httpsclient 
   - python39-neovim 
   - python39-neovim-remote 
@@ -28038,7 +28322,11 @@ unsorted:
   - python39-netCDF4 
   - python39-netaddr 
   - python39-netifaces 
+  - python39-netmiko 
   - python39-netpbmfile 
+  - python39-networkx 
+  - python39-nibabel 
+  - python39-nilearn: [x86_64] 
   - python39-nine 
   - python39-nltk 
   - python39-nocasedict 
@@ -28057,28 +28345,43 @@ unsorted:
   - python39-notebook 
   - python39-notebook-lang 
   - python39-notify2 
+  - python39-nox 
   - python39-nss 
   - python39-ntc-templates 
   - python39-ntfy 
   - python39-ntlm-auth 
   - python39-ntplib 
-  - python39-num2words: [i586] 
+  - python39-num2words 
   - python39-numba 
   - python39-numba-devel 
   - python39-numericalunits 
   - python39-numexpr 
   - python39-numpy 
   - python39-numpy-devel 
+  - python39-numpy-gnu-hpc 
+  - python39-numpy-gnu-hpc-devel 
+  - python39-numpy_1_20_1-gnu-hpc 
+  - python39-numpy_1_20_1-gnu-hpc-devel 
   - python39-numpydoc 
   - python39-nwdiag 
+  - python39-nxapi-plumbing 
   - python39-oauth2 
+  - python39-oauth2client 
+  - python39-oauth2client-flask 
+  - python39-oauth2client-gce 
   - python39-oauthlib 
   - python39-objgraph 
+  - python39-oci-sdk: [x86_64] 
   - python39-odfpy 
+  - python39-odorik: [x86_64] 
   - python39-olefile 
   - python39-oletools 
   - python39-opcodes 
+  - python39-openTSNE 
   - python39-openapi-codec 
+  - python39-openapi-core 
+  - python39-openapi-schema-validator 
+  - python39-openapi-spec-validator 
   - python39-opencensus 
   - python39-opencensus-context 
   - python39-opengl 
@@ -28089,11 +28392,14 @@ unsorted:
   - python39-openqa_client 
   - python39-openqa_review 
   - python39-opentelemetry-api 
+  - python39-opentracing: [x86_64] 
   - python39-openwrt-luci-rpc 
   - python39-orange-canvas-core 
+  - python39-orange-widget-base 
   - python39-ordered-namespace 
   - python39-ordered-set 
   - python39-orderedmultidict 
+  - python39-osc-tiny 
   - python39-oscrypto 
   - python39-osmviz 
   - python39-outcome 
@@ -28112,9 +28418,14 @@ unsorted:
   - python39-pandas 
   - python39-pandas-datareader 
   - python39-pandocfilters 
+  - python39-panel: [x86_64] 
   - python39-panflute 
   - python39-parallax 
+  - python39-param 
   - python39-parameterized 
+  - python39-paramiko 
+  - python39-paramiko-expect 
+  - python39-parfive 
   - python39-parse 
   - python39-parse_type 
   - python39-parsedatetime 
@@ -28136,6 +28447,7 @@ unsorted:
   - python39-pathspec 
   - python39-pathtools 
   - python39-patiencediff 
+  - python39-patsy 
   - python39-pbkdf2 
   - python39-pbr 
   - python39-pcodedmp 
@@ -28144,15 +28456,19 @@ unsorted:
   - python39-pdfminer.six 
   - python39-pdfrw 
   - python39-pecan 
+  - python39-peewee 
   - python39-pefile 
   - python39-pelican 
+  - python39-pem 
+  - python39-pendulum 
   - python39-pep517 
   - python39-pep8-naming 
   - python39-peppercorn 
+  - python39-percy 
   - python39-persistent 
   - python39-persistent-devel 
   - python39-petact 
-  - python39-pexpect: [i586] 
+  - python39-pexpect 
   - python39-pgmagick 
   - python39-phabricator 
   - python39-phonenumbers 
@@ -28161,6 +28477,9 @@ unsorted:
   - python39-pick 
   - python39-pickleshare 
   - python39-pifpaf 
+  - python39-pika 
+  - python39-pika-pool 
+  - python39-pikepdf 
   - python39-pilkit 
   - python39-pip 
   - python39-pip-api 
@@ -28169,7 +28488,7 @@ unsorted:
   - python39-pip-tools 
   - python39-pipdeptree 
   - python39-pipreqs 
-  - python39-pipx: [i586] 
+  - python39-pipx 
   - python39-pivy 
   - python39-pkgconfig 
   - python39-pkginfo 
@@ -28177,27 +28496,37 @@ unsorted:
   - python39-plaster 
   - python39-plaster-pastedeploy 
   - python39-platformio 
-  - python39-plette: [i586] 
+  - python39-plette 
+  - python39-plotly: [x86_64] 
+  - python39-plotly-jupyter: [x86_64] 
   - python39-pluggy 
   - python39-pluginbase 
+  - python39-plumbum 
   - python39-ply 
   - python39-plyvel 
   - python39-pmw 
   - python39-pname 
   - python39-podcastparser 
   - python39-podman 
+  - python39-poetry: [x86_64] 
+  - python39-poetry-core 
   - python39-polib 
+  - python39-pomegranate 
+  - python39-pomegranate-devel 
   - python39-pontos 
   - python39-pooch 
+  - python39-pook 
   - python39-poppler-qt5 
   - python39-poppler-qt5-devel 
   - python39-port-for 
   - python39-portalocker 
   - python39-portend 
   - python39-portpicker 
+  - python39-positional 
   - python39-power 
   - python39-poyo 
   - python39-pprintpp 
+  - python39-pproxy 
   - python39-praatio 
   - python39-pre-commit 
   - python39-precise-runner 
@@ -28210,15 +28539,17 @@ unsorted:
   - python39-progress 
   - python39-progressbar 
   - python39-progressbar2 
+  - python39-prometheus_client 
+  - python39-promise 
   - python39-prompt_toolkit 
   - python39-prompt_toolkit1 
   - python39-proselint 
-  - python39-pscript: [i586] 
+  - python39-pscript 
   - python39-psutil 
   - python39-psycopg2 
   - python39-psycopg2cffi 
-  - python39-ptpython: [i586] 
-  - python39-ptpython-ptipython: [i586] 
+  - python39-ptpython 
+  - python39-ptpython-ptipython 
   - python39-ptr 
   - python39-ptyprocess 
   - python39-publicsuffix 
@@ -28241,6 +28572,8 @@ unsorted:
   - python39-py3dns 
   - python39-py3status: [x86_64] 
   - python39-py7zr 
+  - python39-pyDOE2 
+  - python39-pyFFTW 
   - python39-pyLibravatar 
   - python39-pyModis 
   - python39-pyOCD 
@@ -28249,6 +28582,7 @@ unsorted:
   - python39-pyRFC3339 
   - python39-pyRXP 
   - python39-pyScss 
+  - python39-pyUSID: [x86_64] 
   - python39-pyVows: [x86_64] 
   - python39-pyacoustid 
   - python39-pyaes 
@@ -28278,12 +28612,14 @@ unsorted:
   - python39-pycparser 
   - python39-pycryptodome 
   - python39-pycryptodomex 
+  - python39-pyct 
   - python39-pycups 
   - python39-pycurl 
   - python39-pycxx 
   - python39-pycxx-devel 
   - python39-pydantic 
   - python39-pydash 
+  - python39-pydata-google-auth 
   - python39-pydbus 
   - python39-pydenticon 
   - python39-pydicom 
@@ -28293,15 +28629,19 @@ unsorted:
   - python39-pydot 
   - python39-pydot3 
   - python39-pydotplus 
+  - python39-pydub 
   - python39-pyeapi 
+  - python39-pyee 
   - python39-pyelftools 
   - python39-pyenchant 
   - python39-pyerfa 
   - python39-pyfakefs 
+  - python39-pyfeyn 
   - python39-pyfiglet 
   - python39-pyflakes 
   - python39-pyftpdlib 
   - python39-pyfuse3 
+  - python39-pygal 
   - python39-pygaljs 
   - python39-pygerrit2 
   - python39-pygit2 
@@ -28314,6 +28654,7 @@ unsorted:
   - python39-pyhcl 
   - python39-pyhibp 
   - python39-pyinotify 
+  - python39-pyipp 
   - python39-pyjavaproperties 
   - python39-pyjokes 
   - python39-pyjsparser 
@@ -28321,6 +28662,8 @@ unsorted:
   - python39-pykeepass 
   - python39-pykerberos 
   - python39-pykickstart 
+  - python39-pykwalify 
+  - python39-pylama 
   - python39-pylast 
   - python39-pylev 
   - python39-pylibacl 
@@ -28328,6 +28671,7 @@ unsorted:
   - python39-pyliblo-doc 
   - python39-pylibmc 
   - python39-pylineclip 
+  - python39-pylint 
   - python39-pylons-sphinx-themes 
   - python39-pylru 
   - python39-pylsqpack 
@@ -28357,13 +28701,22 @@ unsorted:
   - python39-pyparsing 
   - python39-pyperclip 
   - python39-pyperf 
+  - python39-pypet 
   - python39-pypiserver 
+  - python39-pyppeteer 
   - python39-pyprimes 
   - python39-pypsexec 
+  - python39-pypuppetdb: [x86_64] 
   - python39-pyqt-builder 
+  - python39-pyqtgraph 
   - python39-pyquery 
   - python39-pyrad 
+  - python39-pyramid 
+  - python39-pyramid-chameleon 
+  - python39-pyramid-debugtoolbar 
+  - python39-pyramid-mako 
   - python39-pyroma 
+  - python39-pyroomacoustics 
   - python39-pyroute2 
   - python39-pyrsistent 
   - python39-pyscard 
@@ -28382,18 +28735,23 @@ unsorted:
   - python39-pysolr 
   - python39-pyspnego 
   - python39-pysrt 
+  - python39-pyssim 
   - python39-pystache 
   - python39-pytaglib 
   - python39-pyte 
   - python39-pytesseract 
   - python39-pytest 
   - python39-pytest-aiofiles 
+  - python39-pytest-aiohttp 
   - python39-pytest-arraydiff 
   - python39-pytest-astropy 
   - python39-pytest-astropy-header 
   - python39-pytest-asyncio 
   - python39-pytest-attrib 
+  - python39-pytest-base-url 
   - python39-pytest-bdd 
+  - python39-pytest-benchmark 
+  - python39-pytest-black 
   - python39-pytest-check-links 
   - python39-pytest-click 
   - python39-pytest-console-scripts 
@@ -28401,8 +28759,11 @@ unsorted:
   - python39-pytest-datadir 
   - python39-pytest-dependency 
   - python39-pytest-describe 
+  - python39-pytest-django 
+  - python39-pytest-djangoapp 
   - python39-pytest-doctestplus 
   - python39-pytest-dotenv 
+  - python39-pytest-echo 
   - python39-pytest-env 
   - python39-pytest-error-for-skips 
   - python39-pytest-expect 
@@ -28410,13 +28771,18 @@ unsorted:
   - python39-pytest-flake8 
   - python39-pytest-flake8dir 
   - python39-pytest-flakes 
+  - python39-pytest-flask 
   - python39-pytest-forked 
   - python39-pytest-freezegun 
   - python39-pytest-git 
   - python39-pytest-helpers-namespace 
   - python39-pytest-html 
+  - python39-pytest-httpbin: [x86_64] 
+  - python39-pytest-httpserver 
   - python39-pytest-instafail 
+  - python39-pytest-isort 
   - python39-pytest-lazy-fixture 
+  - python39-pytest-localserver 
   - python39-pytest-metadata 
   - python39-pytest-mock 
   - python39-pytest-mpi 
@@ -28426,12 +28792,16 @@ unsorted:
   - python39-pytest-percent 
   - python39-pytest-plus 
   - python39-pytest-profiling 
+  - python39-pytest-pycodestyle 
   - python39-pytest-pythonpath 
+  - python39-pytest-qt 
   - python39-pytest-random-order 
   - python39-pytest-relaxed 
   - python39-pytest-remotedata 
+  - python39-pytest-reorder 
   - python39-pytest-repeat 
   - python39-pytest-rerunfailures 
+  - python39-pytest-responsemock 
   - python39-pytest-runner 
   - python39-pytest-services 
   - python39-pytest-shutil 
@@ -28444,6 +28814,7 @@ unsorted:
   - python39-pytest-super-check 
   - python39-pytest-svn 
   - python39-pytest-testconfig 
+  - python39-pytest-timeout 
   - python39-pytest-tldr 
   - python39-pytest-toolbox 
   - python39-pytest-tornado 
@@ -28451,9 +28822,12 @@ unsorted:
   - python39-pytest-translations 
   - python39-pytest-travis-fold 
   - python39-pytest-trio 
+  - python39-pytest-twisted 
+  - python39-pytest-vcr: [x86_64] 
   - python39-pytest-verbose-parametrize 
   - python39-pytest-virtualenv 
   - python39-pytest-xdist 
+  - python39-pytest-xvfb 
   - python39-pytest5 
   - python39-python-afl 
   - python39-python-aiml 
@@ -28462,6 +28836,8 @@ unsorted:
   - python39-python-bidi 
   - python39-python-box 
   - python39-python-cjson 
+  - python39-python-consul 
+  - python39-python-coveralls: [x86_64] 
   - python39-python-crfsuite 
   - python39-python-daemon 
   - python39-python-dateutil 
@@ -28469,17 +28845,24 @@ unsorted:
   - python39-python-docs-theme 
   - python39-python-dotenv 
   - python39-python-editor 
+  - python39-python-engineio: [x86_64] 
+  - python39-python-fedora 
   - python39-python-for-android 
   - python39-python-gammu 
   - python39-python-gflags 
+  - python39-python-gitlab 
   - python39-python-gnupg 
+  - python39-python-gvm 
+  - python39-python-jenkins 
   - python39-python-jose 
   - python39-python-json-logger 
   - python39-python-jsonrpc-server 
+  - python39-python-jsonschema-objects 
   - python39-python-lzo 
   - python39-python-magic 
   - python39-python-memcached 
   - python39-python-mimeparse 
+  - python39-python-mpd2 
   - python39-python-mpv 
   - python39-python-multipart 
   - python39-python-nmap 
@@ -28490,18 +28873,24 @@ unsorted:
   - python39-python-prctl 
   - python39-python-ptrace 
   - python39-python-rapidjson 
+  - python39-python-redis-lock 
   - python39-python-redmine 
   - python39-python-rpm-spec 
   - python39-python-rtmidi 
   - python39-python-rtmidi-doc 
   - python39-python-slugify 
   - python39-python-snappy 
+  - python39-python-socketio: [x86_64] 
   - python39-python-sql 
   - python39-python-stdnum 
+  - python39-python-subunit 
+  - python39-python-twitter 
   - python39-python-utils 
   - python39-python-vlc 
   - python39-python-whois 
+  - python39-python-xlib 
   - python39-python-yubico 
+  - python39-python3-openid 
   - python39-python3-saml 
   - python39-pythondialog 
   - python39-pythonfinder 
@@ -28522,13 +28911,20 @@ unsorted:
   - python39-pyux 
   - python39-pyvdr 
   - python39-pyvips 
+  - python39-pyviz-comms 
+  - python39-pyvmomi: [x86_64] 
   - python39-pywal 
+  - python39-pywbem: [x86_64] 
   - python39-pywbemtools 
   - python39-pywebpush 
+  - python39-pywinrm 
   - python39-pyxattr 
   - python39-pyxdg 
+  - python39-pyzmq: [x86_64] 
+  - python39-pyzmq-devel: [x86_64] # devel package of dvd:python38-pyzmq 
   - python39-q 
   - python39-qet_tb_generator 
+  - python39-qgrid: [x86_64] 
   - python39-qrcode 
   - python39-qstylizer 
   - python39-qt3d-qt5 
@@ -28543,6 +28939,7 @@ unsorted:
   - python39-qtcharts-qt5-api 
   - python39-qtcharts-qt5-doc 
   - python39-qtcharts-qt5-sip 
+  - python39-qtconsole: [x86_64] 
   - python39-qtdatavis3d-qt5 
   - python39-qtdatavis3d-qt5-api 
   - python39-qtdatavis3d-qt5-doc 
@@ -28556,6 +28953,8 @@ unsorted:
   - python39-rarfile 
   - python39-rarfile-doc 
   - python39-ravello-sdk 
+  - python39-raven: [x86_64] 
+  - python39-raven-aiohttp: [x86_64] 
   - python39-rawkit 
   - python39-rcssmin 
   - python39-rdflib 
@@ -28588,14 +28987,19 @@ unsorted:
   - python39-requests-futures 
   - python39-requests-gssapi 
   - python39-requests-hawk 
+  - python39-requests-html 
   - python39-requests-kerberos 
+  - python39-requests-mock 
+  - python39-requests-oauthlib 
   - python39-requests-toolbelt 
   - python39-requests-unixsocket 
+  - python39-requests_ntlm 
   - python39-requestsexceptions 
   - python39-requirements-detector 
   - python39-requirements-parser 
   - python39-requre: [i586] 
   - python39-resolvelib 
+  - python39-responses 
   - python39-restructuredtext_lint 
   - python39-restview 
   - python39-resultsdb_api 
@@ -28607,6 +29011,7 @@ unsorted:
   - python39-rfc3986 
   - python39-rfc3987 
   - python39-rfc6555 
+  - python39-rich 
   - python39-rise 
   - python39-rjsmin 
   - python39-rnginline 
@@ -28614,6 +29019,7 @@ unsorted:
   - python39-robotframework 
   - python39-rollbar 
   - python39-roman 
+  - python39-rpcq: [x86_64] 
   - python39-rply 
   - python39-rpm 
   - python39-rpmfile 
@@ -28646,9 +29052,14 @@ unsorted:
   - python39-schedule 
   - python39-schema 
   - python39-scikit-build 
+  - python39-scikit-dsp-comm 
   - python39-scikit-hep-testdata 
   - python39-scikit-image 
+  - python39-scikit-learn 
+  - python39-scikit-umfpack: [x86_64] 
+  - python39-scipy 
   - python39-scour 
+  - python39-scp 
   - python39-screeninfo 
   - python39-screenplain 
   - python39-scripttest 
@@ -28659,6 +29070,7 @@ unsorted:
   - python39-selectors2 
   - python39-selenium: [i586] 
   - python39-semanage 
+  - python39-semantic_version 
   - python39-semver 
   - python39-seqdiag 
   - python39-serpent 
@@ -28671,8 +29083,10 @@ unsorted:
   - python39-setuptools-declarative-requirements 
   - python39-setuptools-git 
   - python39-setuptools-version-command 
+  - python39-setuptools-wheel 
   - python39-setuptools_scm 
   - python39-setuptools_scm_git_archive 
+  - python39-sfs 
   - python39-sge-pygame 
   - python39-sgmllib3k 
   - python39-sgp4 
@@ -28682,6 +29096,7 @@ unsorted:
   - python39-shijian 
   - python39-shodan 
   - python39-shortuuid 
+  - python39-sidpy: [x86_64] 
   - python39-sievelib 
   - python39-sigal 
   - python39-signedjson 
@@ -28698,13 +29113,16 @@ unsorted:
   - python39-sip4-devel 
   - python39-siphashc 
   - python39-six 
+  - python39-sklearn-pandas 
   - python39-skyfield 
+  - python39-slackclient 
   - python39-sleekxmpp 
   - python39-slimit 
   - python39-slip 
   - python39-slip-dbus 
   - python39-slixmpp 
   - python39-slumber 
+  - python39-slycot 
   - python39-smartypants 
   - python39-smbprotocol 
   - python39-smmap 
@@ -28712,6 +29130,8 @@ unsorted:
   - python39-sniffio 
   - python39-snimpy 
   - python39-snowballstemmer 
+  - python39-social-auth-app-django: [x86_64] 
+  - python39-social-auth-core: [x86_64] 
   - python39-socketIO-client-nexus: [x86_64] 
   - python39-socketpool 
   - python39-softlayer 
@@ -28721,6 +29141,7 @@ unsorted:
   - python39-sox 
   - python39-spake2 
   - python39-spark_parser 
+  - python39-sparse 
   - python39-speaklater 
   - python39-spec 
   - python39-sphinx-argparse 
@@ -28744,10 +29165,12 @@ unsorted:
   - python39-sphinxcontrib-fulltoc 
   - python39-sphinxcontrib-github-alt 
   - python39-sphinxcontrib-htmlhelp 
+  - python39-sphinxcontrib-httpdomain 
   - python39-sphinxcontrib-issuetracker 
   - python39-sphinxcontrib-jsmath 
   - python39-sphinxcontrib-newsfeed 
   - python39-sphinxcontrib-nwdiag 
+  - python39-sphinxcontrib-pecanwsme 
   - python39-sphinxcontrib-plantuml 
   - python39-sphinxcontrib-programoutput 
   - python39-sphinxcontrib-qthelp 
@@ -28755,8 +29178,10 @@ unsorted:
   - python39-sphinxcontrib-serializinghtml 
   - python39-sphinxcontrib-svg2pdfconverter 
   - python39-sphinxcontrib-websupport 
+  - python39-sphobjinv 
   - python39-spidev 
   - python39-spotipy 
+  - python39-spyder-kernels: [x86_64] 
   - python39-sqlalchemy-migrate 
   - python39-sqlite-fts4 
   - python39-sqlite-utils 
@@ -28766,12 +29191,17 @@ unsorted:
   - python39-srcinfo 
   - python39-ssdeep 
   - python39-sshpubkeys 
+  - python39-sshtunnel 
+  - python39-starlette 
   - python39-statsd 
+  - python39-statsmodels 
   - python39-stomp.py 
   - python39-stomper 
   - python39-straight-plugin 
+  - python39-streamz 
   - python39-strict-rfc3339 
   - python39-strictyaml 
+  - python39-structlog 
   - python39-subgrab 
   - python39-subliminal 
   - python39-subscene-api 
@@ -28779,12 +29209,18 @@ unsorted:
   - python39-suds-jurko 
   - python39-suntime 
   - python39-sure 
+  - python39-svgpathtools: [x86_64] 
   - python39-svgwrite 
   - python39-svneverever 
+  - python39-swapper 
+  - python39-swifter: [x86_64] 
   - python39-sybil 
   - python39-sympy 
+  - python39-system_hotkey 
   - python39-systemd 
+  - python39-tableauserverclient 
   - python39-tables 
+  - python39-tabpy 
   - python39-tabulate 
   - python39-tap.py 
   - python39-tasklib 
@@ -28801,18 +29237,22 @@ unsorted:
   - python39-termstyle 
   - python39-tesserocr 
   - python39-test-server 
+  - python39-testfixtures 
   - python39-testpath 
+  - python39-testrepository 
   - python39-testresources 
   - python39-testscenarios 
   - python39-testsuite 
   - python39-testtools 
   - python39-text-unidecode 
   - python39-textX 
+  - python39-textdistance 
   - python39-textfsm 
   - python39-textile 
   - python39-texttable 
   - python39-textwrap3 
   - python39-thespian 
+  - python39-thewalrus: [x86_64] 
   - python39-threadpoolctl 
   - python39-three-merge 
   - python39-thriftpy2 
@@ -28820,9 +29260,11 @@ unsorted:
   - python39-tinycss2 
   - python39-tinydb 
   - python39-tinyrecord 
+  - python39-tinyrpc: [x86_64] 
   - python39-titlecase 
   - python39-tk 
   - python39-tkreadonly 
+  - python39-tldextract 
   - python39-tmx 
   - python39-tokenize-rt 
   - python39-toml 
@@ -28831,7 +29273,10 @@ unsorted:
   - python39-toolz 
   - python39-toposort 
   - python39-topy 
+  - python39-tornado5 
   - python39-tornado6 
+  - python39-tortilla: [x86_64] 
+  - python39-towncrier 
   - python39-tox 
   - python39-tox-no-internet 
   - python39-tox-travis 
@@ -28841,21 +29286,27 @@ unsorted:
   - python39-traceback2 
   - python39-traitlets 
   - python39-traits 
+  - python39-traittypes 
   - python39-transaction 
   - python39-transip 
   - python39-transitions 
   - python39-translationstring 
+  - python39-treq: [x86_64] 
   - python39-tri.declarative 
   - python39-tri.struct 
   - python39-trio 
   - python39-trustme 
   - python39-tsk 
+  - python39-tweepy: [x86_64] 
   - python39-twine 
   - python39-twitter.common.finagle-thrift 
   - python39-twitter.common.lang 
   - python39-twitter.common.rpc 
   - python39-twodict 
+  - python39-twython 
   - python39-txWS 
+  - python39-txZMQ: [x86_64] 
+  - python39-txaio 
   - python39-typed-ast 
   - python39-typeguard 
   - python39-typer 
@@ -28881,6 +29332,7 @@ unsorted:
   - python39-untokenize 
   - python39-uritemplate 
   - python39-uritools 
+  - python39-url-normalize: [x86_64] 
   - python39-urlextract 
   - python39-urlgrabber 
   - python39-urllib3 
@@ -28889,15 +29341,20 @@ unsorted:
   - python39-user-agents 
   - python39-user_agent 
   - python39-userpath 
+  - python39-uvicorn 
+  - python39-uvloop 
   - python39-validate_email 
   - python39-validators 
   - python39-varint 
   - python39-varlink 
+  - python39-vcrpy: [x86_64] 
   - python39-vcver 
   - python39-vcversioner 
+  - python39-vega: [x86_64] 
   - python39-vega_datasets 
   - python39-venusian 
   - python39-venusian-doc 
+  - python39-verboselogs 
   - python39-versioneer 
   - python39-versiontag 
   - python39-versiontools 
@@ -28909,22 +29366,30 @@ unsorted:
   - python39-virtualenv-clone 
   - python39-visitor 
   - python39-vistir 
+  - python39-vncdotool 
   - python39-vobject 
   - python39-volatile 
   - python39-voluptuous 
   - python39-voluptuous-serialize 
+  - python39-vsts 
+  - python39-vsts-cd-manager 
   - python39-vulkan 
   - python39-vulture 
   - python39-w3lib 
   - python39-wadllib 
   - python39-waitress 
   - python39-wakeonlan 
-  - python39-watermark: [i586] 
+  - python39-warlock 
+  - python39-watchdog 
+  - python39-watchdog-doc 
+  - python39-watchgod 
+  - python39-watermark 
   - python39-wcwidth 
   - python39-web.py 
   - python39-web_cache 
   - python39-webcolors 
   - python39-webencodings 
+  - python39-weblate-schemas 
   - python39-weblib 
   - python39-webruntime 
   - python39-websocket-client 
@@ -28934,6 +29399,7 @@ unsorted:
   - python39-wheel 
   - python39-wheezy.template 
   - python39-whichcraft 
+  - python39-whitenoise 
   - python39-wikipedia 
   - python39-wirerope 
   - python39-wiring 
@@ -28946,10 +29412,13 @@ unsorted:
   - python39-wsgi_intercept 
   - python39-wsproto 
   - python39-wstools 
+  - python39-wtf-peewee 
   - python39-wurlitzer 
   - python39-wxPython 
   - python39-wxPython-lang 
+  - python39-xapian-haystack 
   - python39-xapp 
+  - python39-xarray 
   - python39-xattr 
   - python39-xcffib 
   - python39-xdg 
@@ -28986,12 +29455,14 @@ unsorted:
   - python39-yaspin 
   - python39-yg.lockfile 
   - python39-youtube-dl 
-  - python39-yq: [i586] 
+  - python39-yq 
+  - python39-zake: [x86_64] 
   - python39-zc.buildout 
   - python39-zc.customdoctests 
   - python39-zc.lockfile 
   - python39-zdaemon 
   - python39-zeroconf 
+  - python39-zetup: [x86_64] 
   - python39-zhon 
   - python39-zict 
   - python39-zipp 
