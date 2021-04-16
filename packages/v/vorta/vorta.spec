@@ -17,7 +17,7 @@
 
 
 Name:           vorta
-Version:        0.7.4
+Version:        0.7.5
 Release:        0
 Summary:        Desktop Backup Client based on BorgBackup
 License:        GPL-3.0-only

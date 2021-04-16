@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 16 08:50:50 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.7.5
+  * Bug fixes and improvements
+    + With this release you can disable the system keychain and
+      just keep the repo passphrase in Vorta's settings DB
+      (slightly less secure).
+    + Also, keyring is now picked by assigning a score. So it will
+      prioritized KWallet on KDE and Secret Storage on Gnome.
+    + Use json mode to list archive files. By @rblenis (#885)
+      Add untranslated strings. By @samuel-w (#902)
+
+-------------------------------------------------------------------
 Sun Feb 28 20:37:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.4:
