@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 16 15:36:33 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
+
+- added "Requires" for netcfg as "/etc/protocols" is needed
+
+-------------------------------------------------------------------
 Thu Jan 14 15:49:44 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
 
 - initial package 0.0.1

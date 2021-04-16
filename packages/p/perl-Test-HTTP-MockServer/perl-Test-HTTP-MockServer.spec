@@ -16,18 +16,16 @@
 #
 
 
+%define cpan_name Test-HTTP-MockServer
 Name:           perl-Test-HTTP-MockServer
 Version:        0.0.1
 Release:        0
-%define cpan_name Test-HTTP-MockServer
-Summary:        Implement a mock HTTP server for use in tests
 License:        Apache-2.0
-Group:          Development/Libraries/Perl
+Summary:        Implement a mock HTTP server for use in tests
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DRUOSO/%{cpan_name}-v%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(HTTP::Parser)
@@ -39,8 +37,9 @@ Requires:       perl(HTTP::Response)
 Requires:       perl(JSON::XS)
 %{perl_requires}
 # MANUAL BEGIN
-BuildRequires:  netcfg
 BuildRequires:  perl(LWP::UserAgent)
+BuildRequires:  netcfg
+Requires:       netcfg
 # MANUAL END
 
 %description
@@ -69,7 +68,7 @@ no state is shared between the code running in the mock server and the test
 code.
 
 %prep
-%setup -q -n %{cpan_name}-v%{version}
+%autosetup  -n %{cpan_name}-v%{version}
 
 %build
 perl Build.PL installdirs=vendor
@@ -83,7 +82,6 @@ perl Build.PL installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc README
 
 %changelog
