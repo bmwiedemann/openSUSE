@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- OBS-ExcludeArch: i586 s390 -->
+
+<image schemaversion="6.9" name="php8-nginx-image" xmlns:suse_label_helper="com.suse.label_helper">
+  <description type="system">
+    <author>Thorsten Kukuk</author>
+    <contact>kukuk@suse.com</contact>
+    <specification>Container running PHP8 and nginx</specification>
+  </description>
+  <preferences>
+    <type
+      image="docker"
+      derived_from="obsrepositories:/opensuse/nginx#latest">
+      <containerconfig
+        name="opensuse/php8-nginx"
+        tag="latest"
+        additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%"
+        maintainer="Thorsten Kukuk &lt;kukuk@suse.com&gt;">
+        <subcommand execute="/usr/sbin/nginx"/>
+        <labels>
+          <suse_label_helper:add_prefix prefix="org.opensuse.php8-nginx">
+            <label name="org.opencontainers.image.title" value="php8-nginx container"/>
+            <label name="org.opencontainers.image.description" value="Image containing PHP8 and nginx."/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/php8-nginx:%PKG_VERSION%-%RELEASE%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+        <history author="Thorsten Kukuk &lt;kukuk@suse.com&gt;">php8-nginx container</history>
+      </containerconfig>
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-excludedocs>false</rpm-excludedocs>
+  </preferences>
+  <repository>
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="bootstrap">
+    <package name="php8"/>
+    <package name="php8-fpm"/>
+    <package name="php8-curl"/>
+    <package name="php8-ctype"/>
+    <package name="php8-dom"/>
+    <package name="php8-iconv"/>
+    <package name="php8-openssl"/>
+    <package name="php8-sqlite"/>
+    <package name="php8-tokenizer"/>
+    <package name="php8-xmlreader"/>
+    <package name="php8-xmlwriter"/>
+  </packages>
+</image>

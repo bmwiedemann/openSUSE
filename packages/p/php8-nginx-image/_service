@@ -1,0 +1,32 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/openSUSE/container-images.git</param>
+    <param name="revision">main</param>
+    <param name="extract">php8-nginx/php8-nginx-image.kiwi</param>
+    <param name="extract">php8-nginx/config.sh</param>
+    <param name="extract">php8-nginx/README.md</param>
+    <param name="extract">LICENSE</param>
+  </service>
+  <service name="obs_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/openSUSE/container-images.git</param>
+    <param name="revision">main</param>
+    <param name="version">_none_</param>
+    <param name="subdir">php8-nginx</param>
+    <param name="filename">root</param>
+    <param name="include">root/docker-entrypoint.d/30-populate-etc.sh</param>
+    <param name="include">root/docker-entrypoint.d/90-run-php-fpm.sh</param>
+    <param name="include">root/srv/www/htdocs/index.php</param>
+    <param name="include">root/usr/local/php/nginx.conf</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service mode="buildtime" name="kiwi_metainfo_helper"/>
+  <service mode="buildtime" name="kiwi_label_helper"/>
+  <service name="replace_using_package_version" mode="buildtime">
+      <param name="file">php8-nginx-image.kiwi</param>
+      <param name="regex">%PKG_VERSION%</param>
+      <param name="parse-version">patch</param>
+      <param name="package">php8</param>
+  </service>
+</services>
