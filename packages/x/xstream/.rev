@@ -15,4 +15,12 @@
     <comment>bsc#1180994, CVE-2020-26217, bsc#1180146, CVE-2020-26258 and bsc#1180145, CVE-2020-26259</comment>
     <requestid>864027</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1c94d3c50d7bb4ef33d4e1bdc0a00da8</srcmd5>
+    <version>1.4.16</version>
+    <time>1618610494</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1184796, CVE-2021-21351 and bsc#1184797, CVE-2021-21349</comment>
+    <requestid>885696</requestid>
+  </revision>
 </revisionlist>

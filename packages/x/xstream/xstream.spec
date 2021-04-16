@@ -19,13 +19,14 @@
 
 %bcond_with  hibernate
 Name:           xstream
-Version:        1.4.15
+Version:        1.4.16
 Release:        0
 Summary:        Java XML serialization library
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            https://x-stream.github.io/
 Source0:        https://repo1.maven.org/maven2/com/thoughtworks/%{name}/%{name}-distribution/%{version}/%{name}-distribution-%{version}-src.zip
+Patch0:         Revert-MXParser-changes.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -108,6 +109,7 @@ Parent POM for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 find . -name "*.class" -print -delete
 find . -name "*.jar" -print -delete
 
@@ -130,8 +132,6 @@ find . -name "*.jar" -print -delete
 %pom_xpath_set "pom:dependency[pom:groupId = 'org.codehaus.woodstox' ]/pom:artifactId" woodstox-core-asl xstream
 %pom_xpath_set "pom:dependency[pom:groupId = 'cglib' ]/pom:artifactId" cglib
 %pom_xpath_set "pom:dependency[pom:groupId = 'cglib' ]/pom:artifactId" cglib xstream
-# Replace old xmlpull dependency with xpp3
-%pom_change_dep :xmlpull xpp3:xpp3:1.1.4c xstream
 # Require unavailable proxytoys:proxytoys
 %pom_remove_plugin :maven-dependency-plugin xstream
 

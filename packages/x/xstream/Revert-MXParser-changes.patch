@@ -1,0 +1,408 @@
+--- xstream-1.4.16/pom.xml	2021-03-13 00:23:06.000000000 +0100
++++ xstream-1.4.16/pom.xml	2021-04-15 15:42:54.386563880 +0200
+@@ -576,13 +576,13 @@
+       </dependency>
+ 
+       <dependency>
+-        <groupId>io.github.x-stream</groupId>
+-        <artifactId>mxparser</artifactId>
+-        <version>${version.io.github.x-stream.mxparser}</version>
++        <groupId>xpp3</groupId>
++        <artifactId>xpp3_min</artifactId>
++        <version>${version.xpp3}</version>
+       </dependency>
+       <dependency>
+         <groupId>xpp3</groupId>
+-        <artifactId>xpp3_min</artifactId>
++        <artifactId>xpp3</artifactId>
+         <version>${version.xpp3}</version>
+       </dependency>
+       <dependency>
+@@ -595,11 +595,6 @@
+         <artifactId>kxml2</artifactId>
+         <version>${version.net.sf.kxml.kxml2}</version>
+       </dependency>
+-      <dependency>
+-        <groupId>xmlpull</groupId>
+-        <artifactId>xmlpull</artifactId>
+-        <version>${version.xmlpull}</version>
+-      </dependency>
+ 
+       <dependency>
+         <groupId>org.json</groupId>
+@@ -1151,7 +1146,6 @@
+     <version.commons.lang>2.4</version.commons.lang>
+     <version.dom4j>1.6.1</version.dom4j>
+     <version.hsqldb>2.2.8</version.hsqldb>
+-    <version.io.github.x-stream.mxparser>1.2.1</version.io.github.x-stream.mxparser>
+     <version.javaassist>3.12.1.GA</version.javaassist>
+     <version.javax.activation>1.1.1</version.javax.activation>
+     <version.javax.annotation.api>1.3.2</version.javax.annotation.api>
+--- xstream-1.4.16/xstream/pom.xml	2021-03-13 00:23:06.000000000 +0100
++++ xstream-1.4.16/xstream/pom.xml	2021-04-15 15:41:49.950193229 +0200
+@@ -69,8 +69,8 @@
+     </dependency>
+ 
+     <dependency>
+-      <groupId>io.github.x-stream</groupId>
+-      <artifactId>mxparser</artifactId>
++      <groupId>xpp3</groupId>
++      <artifactId>xpp3</artifactId>
+     </dependency>
+ 
+     <dependency>
+@@ -90,7 +90,6 @@
+     <dependency>
+       <groupId>xpp3</groupId>
+       <artifactId>xpp3_min</artifactId>
+-      <optional>true</optional>
+     </dependency>
+ 
+     <dependency>
+--- xstream-1.4.16/xstream/src/java/com/thoughtworks/xstream/io/xml/MXParserDomDriver.java	2021-03-13 00:23:06.000000000 +0100
++++ xstream-1.4.16/xstream/src/java/com/thoughtworks/xstream/io/xml/MXParserDomDriver.java	1970-01-01 01:00:00.000000000 +0100
+@@ -1,53 +0,0 @@
+-/*
+- * Copyright (C) 2021 XStream Committers.
+- * All rights reserved.
+- *
+- * The software in this package is published under the terms of the BSD
+- * style license a copy of which has been included with this distribution in
+- * the LICENSE.txt file.
+- *
+- * Created on 02. January 2021 by Joerg Schaible
+- */
+-package com.thoughtworks.xstream.io.xml;
+-
+-import com.thoughtworks.xstream.io.HierarchicalStreamDriver;
+-import com.thoughtworks.xstream.io.naming.NameCoder;
+-
+-import io.github.xstream.mxparser.MXParser;
+-
+-import org.xmlpull.v1.XmlPullParser;
+-
+-/**
+- * A {@link HierarchicalStreamDriver} for XPP DOM using the MXParser fork.
+- *
+- * @author J&ouml;rg Schaible
+- * @since 1.4.16
+- */
+-public class MXParserDomDriver extends AbstractXppDomDriver {
+-
+-    /**
+-     * Construct an MXParserDomDriver.
+-     *
+-     * @since 1.4.16
+-     */
+-    public MXParserDomDriver() {
+-        super(new XmlFriendlyNameCoder());
+-    }
+-
+-    /**
+-     * Construct an Xpp3DomDriver.
+-     *
+-     * @param nameCoder the replacer for XML friendly names
+-     * @since 1.4
+-     */
+-    public MXParserDomDriver(NameCoder nameCoder) {
+-        super(nameCoder);
+-    }
+-
+-    /**
+-     * {@inheritDoc}
+-     */
+-    protected XmlPullParser createParser() {
+-        return new MXParser();
+-    }
+-}
+--- xstream-1.4.16/xstream/src/java/com/thoughtworks/xstream/io/xml/MXParserDriver.java	2021-03-13 00:23:06.000000000 +0100
++++ xstream-1.4.16/xstream/src/java/com/thoughtworks/xstream/io/xml/MXParserDriver.java	1970-01-01 01:00:00.000000000 +0100
+@@ -1,55 +0,0 @@
+-/*
+- * Copyright (C) 2021 XStream Committers.
+- * All rights reserved.
+- *
+- * The software in this package is published under the terms of the BSD
+- * style license a copy of which has been included with this distribution in
+- * the LICENSE.txt file.
+- *
+- * Created on 2. January 2021 by Joerg Schaible
+- */
+-package com.thoughtworks.xstream.io.xml;
+-
+-
+-import com.thoughtworks.xstream.io.HierarchicalStreamDriver;
+-import com.thoughtworks.xstream.io.naming.NameCoder;
+-
+-import io.github.xstream.mxparser.MXParser;
+-
+-import org.xmlpull.v1.XmlPullParser;
+-
+-
+-/**
+- * A {@link HierarchicalStreamDriver} using the MXParser fork.
+- *
+- * @author J&ouml;rg Schaible
+- * @since 1.4.16
+- */
+-public class MXParserDriver extends AbstractXppDriver {
+-
+-    /**
+-     * Construct an MXParserDriver.
+-     *
+-     * @since 1.4.16
+-     */
+-    public MXParserDriver() {
+-        super(new XmlFriendlyNameCoder());
+-    }
+-
+-    /**
+-     * Construct an Xpp3Driver.
+-     *
+-     * @param nameCoder the replacer for XML friendly names
+-     * @since 1.4.16
+-     */
+-    public MXParserDriver(NameCoder nameCoder) {
+-        super(nameCoder);
+-    }
+-
+-    /**
+-     * {@inheritDoc}
+-     */
+-    protected XmlPullParser createParser() {
+-        return new MXParser();
+-    }
+-}
+--- xstream-1.4.16/xstream/src/test/com/thoughtworks/xstream/io/binary/BinaryStreamTest.java	2021-03-13 00:23:06.000000000 +0100
++++ xstream-1.4.16/xstream/src/test/com/thoughtworks/xstream/io/binary/BinaryStreamTest.java	2021-04-15 15:45:40.355519216 +0200
+@@ -16,7 +16,7 @@
+ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+ import com.thoughtworks.xstream.io.copy.HierarchicalStreamCopier;
+ import com.thoughtworks.xstream.io.xml.AbstractXMLReaderTest;
+-import com.thoughtworks.xstream.io.xml.MXParserDriver;
++import com.thoughtworks.xstream.io.xml.Xpp3Driver;
+ 
+ import java.io.ByteArrayOutputStream;
+ import java.io.StringReader;
+@@ -34,7 +34,7 @@
+     protected HierarchicalStreamReader createReader(String xml) throws Exception {
+         // Transmogrify XML input into binary format.
+         HierarchicalStreamReader xmlReader = 
+-                new MXParserDriver().createReader(new StringReader(xml));
++                new Xpp3Driver().createReader(new StringReader(xml));
+ 
+         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+         HierarchicalStreamWriter binaryWriter = new BinaryStreamWriter(buffer);
+--- xstream-1.4.16/xstream/src/test/com/thoughtworks/xstream/io/copy/HierarchicalStreamCopierTest.java	2021-03-13 00:23:06.000000000 +0100
++++ xstream-1.4.16/xstream/src/test/com/thoughtworks/xstream/io/copy/HierarchicalStreamCopierTest.java	2021-04-15 15:48:20.244440952 +0200
+@@ -16,7 +16,7 @@
+ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+ import com.thoughtworks.xstream.io.xml.AbstractXMLReaderTest;
+ import com.thoughtworks.xstream.io.xml.CompactWriter;
+-import com.thoughtworks.xstream.io.xml.MXParserDriver;
++import com.thoughtworks.xstream.io.xml.Xpp3Driver;
+ import com.thoughtworks.xstream.io.xml.XppReader;
+ import com.thoughtworks.xstream.io.xml.xppdom.XppFactory;
+ 
+@@ -35,7 +35,7 @@
+     // factory method - overriding base class.
+     protected HierarchicalStreamReader createReader(String xml) throws Exception {
+         HierarchicalStreamReader sourceReader = 
+-                new MXParserDriver().createReader(new StringReader(xml));
++                new Xpp3Driver().createReader(new StringReader(xml));
+ 
+         StringWriter buffer = new StringWriter();
+         HierarchicalStreamWriter destinationWriter = new CompactWriter(buffer);
+--- xstream-1.4.16/xstream/src/test/com/thoughtworks/xstream/io/DriverEndToEndTestSuite.java	2021-03-13 00:23:06.000000000 +0100
++++ xstream-1.4.16/xstream/src/test/com/thoughtworks/xstream/io/DriverEndToEndTestSuite.java	2021-04-15 15:46:14.723717329 +0200
+@@ -27,8 +27,6 @@
+ import com.thoughtworks.xstream.io.xml.JDomDriver;
+ import com.thoughtworks.xstream.io.xml.KXml2DomDriver;
+ import com.thoughtworks.xstream.io.xml.KXml2Driver;
+-import com.thoughtworks.xstream.io.xml.MXParserDomDriver;
+-import com.thoughtworks.xstream.io.xml.MXParserDriver;
+ import com.thoughtworks.xstream.io.xml.StaxDriver;
+ import com.thoughtworks.xstream.io.xml.WstxDriver;
+ import com.thoughtworks.xstream.io.xml.XomDriver;
+@@ -82,8 +80,6 @@
+         }
+         addDriverTest(new WstxDriver());
+         addDriverTest(new XomDriver());
+-        addDriverTest(new MXParserDomDriver());
+-        addDriverTest(new MXParserDriver());
+         addDriverTest(new Xpp3DomDriver());
+         addDriverTest(new Xpp3Driver());
+         addDriverTest(new XppDomDriver());
+--- xstream-1.4.16/xstream/src/test/com/thoughtworks/xstream/io/xml/MXParserReaderTest.java	2021-03-13 00:23:06.000000000 +0100
++++ xstream-1.4.16/xstream/src/test/com/thoughtworks/xstream/io/xml/MXParserReaderTest.java	1970-01-01 01:00:00.000000000 +0100
+@@ -1,41 +0,0 @@
+-/*
+- * Copyright (C) 2021 XStream Committers.
+- * All rights reserved.
+- *
+- * The software in this package is published under the terms of the BSD
+- * style license a copy of which has been included with this distribution in
+- * the LICENSE.txt file.
+- *
+- * Created on 2. January 2021 by Joerg Schaible
+- */
+-package com.thoughtworks.xstream.io.xml;
+-
+-import com.thoughtworks.xstream.XStreamException;
+-import com.thoughtworks.xstream.io.HierarchicalStreamDriver;
+-import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+-
+-import java.io.StringReader;
+-
+-public class MXParserReaderTest extends AbstractXMLReaderTest {
+-
+-    private HierarchicalStreamDriver driver = new MXParserDriver();
+-
+-    // factory method
+-    protected HierarchicalStreamReader createReader(String xml) throws Exception {
+-        return driver.createReader(new StringReader(xml));
+-    }
+-
+-    public void testIsXXEVulnerableWithExternalGeneralEntity() throws Exception {
+-        try {
+-            super.testIsXXEVulnerableWithExternalGeneralEntity();
+-            fail("Thrown " + XStreamException.class.getName() + " expected");
+-        } catch (final XStreamException e) {
+-            final String message = e.getCause().getMessage();
+-            if (message.indexOf("resolve entity") < 0) {
+-                throw e;
+-            }
+-        }
+-    }
+-
+-    // inherits tests from superclass
+-}
+--- xstream-1.4.16/xstream-distribution/src/content/changes.html	2021-03-13 00:23:06.000000000 +0100
++++ xstream-1.4.16/xstream-distribution/src/content/changes.html	2021-04-15 15:41:49.950193229 +0200
+@@ -55,12 +55,6 @@
+ 		<li><a href="CVE-2021-21351.html">CVE-2021-21351</a></li>
+ 	</ul>
+ 
+-	<h2>Major changes</h2>
+-
+-	<ul>
+-		<li>Switch from Xpp3 as default parser to MXParser, a fork of Xpp3.</li>
+-	</ul>
+-
+ 	<h2>Minor changes</h2>
+ 
+ 	<ul>
+--- xstream-1.4.16/xstream-distribution/src/content/download.html	2021-03-13 00:23:06.000000000 +0100
++++ xstream-1.4.16/xstream-distribution/src/content/download.html	2021-04-15 15:41:49.950193229 +0200
+@@ -55,14 +55,11 @@
+ 
+     <h1 id="optional-deps">Optional Dependencies</h1>
+ 
+-	<p>All these dependencies can be optional. XStream uses by default the XPP API in combination with the MXParser
+-	implementation. Therefore are these dependencies not declared as optional in Maven. However, depending on your
+-	choice of the XML parser, you can exclude the dependencies for the MXParser (e.g. by selecting StAX).  You will
+-	then have to declare the dependencies for the alternative XML parser yourself unless you use a parser form the Java
+-	runtime.</p>
+-
+-	<p>Note, that the bundle entries of the manifest do not declare any dependencies.  In an OSGi environment it is the
+-	task of the developer to setup the used bundles for his own project.</p>
++	<p>Note, that all those dependencies can be optional. XStream uses by default the XPP API in combination with the
++	Xpp3 implementation. Therefore are these dependencies not declared as optional in Maven. However, depending on your
++	choice of the XML parser, you can exclude the dependencies for the XPP API (e.g. by selecting Xpp3 directly) or
++	Xpp3 (e.g. by selecting StAX). You will then have to declare the dependencies for the alternative XML parser
++	yourself unless you use a parser form the Java runtime.</p>
+ 	
+     <ul>
+       <li>Supported XML parsers and packages:
+@@ -113,8 +110,8 @@
+     <ul>
+     	<li>JMH dependencies:
+     	<ul>
+-      		<li><a href="https://repo1.maven.org/maven2/org/openjdk/jmh/jmh-core/1.21/jmh-core-1.21.jar">JMH Core 1.21</a>, for Java 6 or higher.</li>
+-      		<li><a href="https://repo1.maven.org/maven2/org/openjdk/jmh/jmh-generator-annprocess/1.21/jmh-generator-annprocess-1.21.jar">JMH Generator Annotation Processor 1.21</a>, for Java 6 or higher.</li>
++      		<li><a href="https://repo1.maven.org/maven2/org/openjdk/jmh/jmh-core/1.19/jmh-core-1.19.jar">JMH Core 1.19</a>, for Java 6 or higher.</li>
++      		<li><a href="https://repo1.maven.org/maven2/org/openjdk/jmh/jmh-generator-annprocess/1.19/jmh-generator-annprocess-1.19.jar">JMH Generator Annotation Processor 1.19</a>, for Java 6 or higher.</li>
+       	</ul>
+       	</li>
+     </ul>
+--- xstream-1.4.16/xstream-jmh/pom.xml	2021-03-13 00:23:06.000000000 +0100
++++ xstream-1.4.16/xstream-jmh/pom.xml	2021-04-15 15:41:49.950193229 +0200
+@@ -175,13 +175,13 @@
+     </dependency>
+     <!-- parser -->
+     <dependency>
+-      <groupId>io.github.x-stream</groupId>
+-      <artifactId>mxparser</artifactId>
++      <groupId>xpp3</groupId>
++      <artifactId>xpp3_min</artifactId>
+       <scope>runtime</scope>
+     </dependency>
+     <dependency>
+       <groupId>xpp3</groupId>
+-      <artifactId>xpp3_min</artifactId>
++      <artifactId>xpp3</artifactId>
+       <scope>runtime</scope>
+     </dependency>
+     <dependency>
+--- xstream-1.4.16/xstream-jmh/src/java/com/thoughtworks/xstream/benchmark/jmh/ConverterTypeBenchmark.java	2021-03-13 00:23:06.000000000 +0100
++++ xstream-1.4.16/xstream-jmh/src/java/com/thoughtworks/xstream/benchmark/jmh/ConverterTypeBenchmark.java	2021-04-15 15:41:49.950193229 +0200
+@@ -37,7 +37,7 @@
+ import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
+ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+ import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+-import com.thoughtworks.xstream.io.xml.MXParserDriver;
++import com.thoughtworks.xstream.io.xml.Xpp3Driver;
+ import com.thoughtworks.xstream.security.ArrayTypePermission;
+ import com.thoughtworks.xstream.security.NoTypePermission;
+ import com.thoughtworks.xstream.security.PrimitiveTypePermission;
+@@ -230,7 +230,7 @@
+      */
+     @Setup(Level.Trial)
+     public void setUp(final BenchmarkParams params) {
+-        xstream = new XStream(new MXParserDriver());
++        xstream = new XStream(new Xpp3Driver());
+         xstream.addPermission(NoTypePermission.NONE);
+         xstream.addPermission(ArrayTypePermission.ARRAYS);
+         xstream.addPermission(PrimitiveTypePermission.PRIMITIVES);
+--- xstream-1.4.16/xstream-jmh/src/java/com/thoughtworks/xstream/benchmark/jmh/ParserBenchmark.java	2021-03-13 00:23:06.000000000 +0100
++++ xstream-1.4.16/xstream-jmh/src/java/com/thoughtworks/xstream/benchmark/jmh/ParserBenchmark.java	2021-04-15 15:41:49.950193229 +0200
+@@ -44,7 +44,6 @@
+ import com.thoughtworks.xstream.io.xml.JDom2Driver;
+ import com.thoughtworks.xstream.io.xml.JDomDriver;
+ import com.thoughtworks.xstream.io.xml.KXml2Driver;
+-import com.thoughtworks.xstream.io.xml.MXParserDriver;
+ import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
+ import com.thoughtworks.xstream.io.xml.StandardStaxDriver;
+ import com.thoughtworks.xstream.io.xml.WstxDriver;
+@@ -78,12 +77,6 @@
+      */
+     public enum DriverFactory {
+         /**
+-         * Factory for the {@link MXParserDriver}.
+-         *
+-         * @since 1.4.16
+-         */
+-        MXParser(new MXParserDriver()), //
+-        /**
+          * Factory for the {@link Xpp3Driver}.
+          *
+          * @since 1.4.9
+--- xstream-1.4.16/xstream-jmh/src/java/com/thoughtworks/xstream/benchmark/jmh/StringConverterBenchmark.java	2021-03-13 00:23:06.000000000 +0100
++++ xstream-1.4.16/xstream-jmh/src/java/com/thoughtworks/xstream/benchmark/jmh/StringConverterBenchmark.java	2021-04-15 15:41:49.950193229 +0200
+@@ -37,7 +37,6 @@
+ import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
+ import com.thoughtworks.xstream.core.util.WeakCache;
+ import com.thoughtworks.xstream.io.xml.CompactWriter;
+-import com.thoughtworks.xstream.io.xml.MXParserDriver;
+ import com.thoughtworks.xstream.io.xml.PrettyPrintWriter;
+ import com.thoughtworks.xstream.io.xml.Xpp3Driver;
+ import com.thoughtworks.xstream.security.ArrayTypePermission;
+@@ -258,7 +257,7 @@
+         } else {
+             throw new IllegalStateException("Unsupported benchmark type: " + benchmark);
+         }
+-        xstream = new XStream(new MXParserDriver());
++        xstream = new XStream(new Xpp3Driver());
+         xstream.addPermission(NoTypePermission.NONE);
+         xstream.addPermission(ArrayTypePermission.ARRAYS);
+         xstream.allowTypes(new Class[] {String.class});
