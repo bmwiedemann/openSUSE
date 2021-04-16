@@ -1,8 +1,8 @@
 #
 # spec file for package deepin-turbo
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2019 Hillwood Yang <hillwood@opensuse.org>
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,43 +13,49 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
+%define  sover  0
 
 Name:           deepin-turbo
-Version:        0.0.3
+Version:        0.0.5
 Release:        0
+License:        LGPL-2.1+
 Summary:        A screenshot tool
-License:        LGPL-2.1-or-later
+Url:            https://github.com/linuxdeepin/deepin-turbo
 Group:          Productivity/Graphics/Convertors
-URL:            https://github.com/linuxdeepin/deepin-turbo
 Source:         https://github.com/linuxdeepin/deepin-turbo/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-return-type-Werror.patch hillwood@opensuse.org - Fix return type Werror check
-Patch0:         fix-return-type-Werror.patch
+BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(dtkwidget)
+BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(dtkwidget)
-BuildRequires:  pkgconfig(libsystemd)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
 %description
 This is a default screenshot app for Linux Deepin.
 
+%package -n lib%{name}%{sover}
+Summary:        Deepin Turbo libraries
+Group:          System/Libraries
+
+%description -n lib%{name}%{sover}
+The package provides libraries for deepin-turbo.
+
 %package devel
 Summary:        Development tools for deepin turbo
 Group:          Development/Libraries/C and C++
+Requires:       lib%{name}%{sover} = %{version}-%{release}
 
 %description devel
 The deepin-turbo-devel package contains the header files for deepin-turbo.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1
 
 %build
 %cmake
@@ -58,29 +64,37 @@ The deepin-turbo-devel package contains the header files for deepin-turbo.
 %cmake_install
 
 %pre
-%service_add_pre %{name}-booster-dtkwidget.service
+%service_add_pre %{name}-booster-dtkwidget.service %{name}-booster-desktop.service
 
 %post
-%service_add_post %{name}-booster-dtkwidget.service
+%service_add_post %{name}-booster-dtkwidget.service %{name}-booster-desktop.service
 
 %preun
-%service_del_preun %{name}-booster-dtkwidget.service
+%service_del_preun %{name}-booster-dtkwidget.service %{name}-booster-desktop.service
 
 %postun
-%service_del_postun %{name}-booster-dtkwidget.service
+%service_del_postun %{name}-booster-dtkwidget.service %{name}-booster-desktop.service
+
+%post -n lib%{name}%{sover} -p /sbin/ldconfig
+%postun -n lib%{name}%{sover} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc README.md CHANGELOG
 %license COPYING.LESSER
 %{_bindir}/%{name}-single-instance
 %{_bindir}/%{name}-invoker
 %{_prefix}/lib/%{name}
-%{_userunitdir}/%{name}-booster-dtkwidget.service
-%{_libdir}/lib%{name}.so
+%dir %{_prefix}/lib/binfmt.d
+%{_prefix}/lib/binfmt.d/desktop.conf
+%{_prefix}/lib/systemd/user/%{name}-booster-desktop.service
+%{_prefix}/lib/systemd/user/%{name}-booster-dtkwidget.service
+
+%files -n lib%{name}%{sover}
+%{_libdir}/lib%{name}.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/%{name}
+%{_libdir}/lib%{name}.so
 
 %changelog
+

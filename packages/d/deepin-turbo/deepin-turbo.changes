@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Feb 24 08:17:24 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.0.5
+  * fix: missing override produces compiler warnings
+  * chore: remove the Qt env of platform plugin
+  * fix: make deepin-turbo a proper shared library
+  * feat: add desktop type for booster
+  * chore: add preload Qt library for 'desktop' booster
+  * feat: add the 'DesktopApp' binfmt conf file
+  * Support analyze booster type from desktop profile
+- Drop fix-return-type-Werror.patch, merged by upstream
+
+-------------------------------------------------------------------
 Thu Aug 27 13:06:34 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
