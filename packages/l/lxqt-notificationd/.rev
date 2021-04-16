@@ -298,4 +298,14 @@
     the mouse pointer.</comment>
     <requestid>846004</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4adb8815802e4b1bebcb9b0f7cc43a44</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * The notification summary is always handled as plain-text.
+  * Code cleanup.</comment>
+    <requestid>885941</requestid>
+  </revision>
 </revisionlist>
