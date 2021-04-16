@@ -166,4 +166,15 @@
   * Bumped version to 0.4.4</comment>
     <requestid>846001</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>159188a22023a5aabaab4167c5dcc795</srcmd5>
+    <version>0.4.5</version>
+    <time>1618610510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.5:
+  * Initialized some variables.
+  * Used &quot;= default&quot; to define trivial destructors.
+  * Handled Qt5.15's deprecations.</comment>
+    <requestid>885937</requestid>
+  </revision>
 </revisionlist>

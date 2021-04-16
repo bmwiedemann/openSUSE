@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 16 07:03:51 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.5:
+  * Initialized some variables.
+  * Used "= default" to define trivial destructors.
+  * Handled Qt5.15's deprecations.
+
+-------------------------------------------------------------------
 Wed Nov  4 13:35:50 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.4:
