@@ -84,6 +84,14 @@ fi
 APPID="${PRETTY_NAME//[^[:alnum:]]/}"
 IDENTITYAPPID="${PRETTY_NAME//[^[:alnum:]\.]/}"
 LAUNCHERNAME="${PRETTY_NAME//[^[:alnum:].]/-}.exe"
+
+# FIX bsc#1179874 Error in parsing the WSL appx package
+# PRETTY_NAME in SLES development snapshots can exceed 40 characters allowed in ShortName appx schema field
+# Define SHORT_NAME as first 35 characters of PRETTY_NAME and use in AppManifest.xml template
+# Length 35 discards development snapshot/beta/rc qualifier cleanly:
+# 'SUSE Linux Enterprise Server 15 SP3 (Snapshot11)' -> 'SUSE Linux Enterprise Server 15 SP3'
+SHORT_NAME="${PRETTY_NAME::35}"
+
 RELEASE="`rpm -q --qf '%%{release}' %image_package`"
 ARCH="%_arch"
 case "$ARCH" in
@@ -108,12 +116,12 @@ else
 	APPXNAME="${PRETTY_NAME//[^[:alnum:].]/-}-$ARCH-Build$RELEASE.appx"
 fi
 
-for i in PRETTY_NAME APPID IDENTITYAPPID ARCH PUBLISHER PUBLISHER_DISPLAY_NAME VERSION LAUNCHERNAME APPXNAME; do
+for i in PRETTY_NAME APPID IDENTITYAPPID ARCH PUBLISHER PUBLISHER_DISPLAY_NAME VERSION LAUNCHERNAME SHORT_NAME APPXNAME; do
 	eval echo "\"$i='\$$i'\""
 done > .settings
 
 cd files
-sed -e "s/@PRETTY_NAME@/${PRETTY_NAME}/g;s/@APPID@/$APPID/g;s/@IDENTITYAPPID@/$IDENTITYAPPID/g;s/@PUBLISHER@/$PUBLISHER/g;s/@PUBLISHER_DISPLAY_NAME@/$PUBLISHER_DISPLAY_NAME/g;s/@VERSION@/${VERSION}/g;s/@LAUNCHERNAME@/$LAUNCHERNAME/g;s/@ARCH@/$ARCH/g" \
+sed -e "s/@PRETTY_NAME@/${PRETTY_NAME}/g;s/@APPID@/$APPID/g;s/@IDENTITYAPPID@/$IDENTITYAPPID/g;s/@PUBLISHER@/$PUBLISHER/g;s/@PUBLISHER_DISPLAY_NAME@/$PUBLISHER_DISPLAY_NAME/g;s/@VERSION@/${VERSION}/g;s/@LAUNCHERNAME@/$LAUNCHERNAME/g;s/@SHORT_NAME@/$SHORT_NAME/g;s/@ARCH@/$ARCH/g" \
 	< %{SOURCE0} > AppxManifest.xml
 cat AppxManifest.xml
 
