@@ -1,0 +1,5 @@
+<package name="containerized-data-importer" project="openSUSE:Factory">
+  <title>containerized-data-importer</title>
+  <description>Containerized-Data-Importer (CDI) is a persistent storage management add-on for Kubernetes. It's primary goal is to provide a declarative way to build Virtual Machine Disks on PVCs for Kubevirt VMs.</description>
+  <devel project="Virtualization" package="containerized-data-importer"/>
+</package>
