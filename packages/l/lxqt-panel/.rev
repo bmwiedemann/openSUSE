@@ -1121,4 +1121,17 @@
   * Fixed compilation with Qt 5.12 and Qt 5.13.</comment>
     <requestid>846400</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3f24fd15681953d511736cfa99d7f405</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Optionally auto-hide panel only when it overlaps a window.
+  * Workaround for an issue with glibc 2.33 on old Docker engines.
+  * Fixed the popup of grouped task button in a special case.
+  * Fixed changing of world clock's time zone with mouse wheel.
+  * Code cleanup and modernization.</comment>
+    <requestid>885947</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 16 10:19:54 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * Optionally auto-hide panel only when it overlaps a window.
+  * Workaround for an issue with glibc 2.33 on old Docker engines.
+  * Fixed the popup of grouped task button in a special case.
+  * Fixed changing of world clock's time zone with mouse wheel.
+  * Code cleanup and modernization.
+
+-------------------------------------------------------------------
 Fri Nov  6 07:48:53 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.1:

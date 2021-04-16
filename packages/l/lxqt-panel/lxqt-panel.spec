@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-panel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,10 @@
 
 
 Name:           lxqt-panel
-Version:        0.16.1
+Version:        0.17.0
 Release:        0
 Summary:        Desktop Panel for LXQt
+# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 License:        GPL-2.0-or-later
 Group:          System/GUI/LXQt
 URL:            http://www.lxqt.org
@@ -31,7 +32,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libsensors4-devel
-BuildRequires:  lxqt-build-tools-devel >= 0.8.0
+BuildRequires:  lxqt-build-tools-devel >= 0.9.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Solid) >= 5.36.0
 BuildRequires:  cmake(KF5WindowSystem) >= 5.36.0
@@ -45,8 +46,8 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbusmenu-qt5)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libstatgrab)
-BuildRequires:  pkgconfig(lxqt) >= 0.16.0
-BuildRequires:  pkgconfig(lxqt-globalkeys) >= 0.16.0
+BuildRequires:  pkgconfig(lxqt) >= 0.17.0
+BuildRequires:  pkgconfig(lxqt-globalkeys) >= 0.17.0
 BuildRequires:  pkgconfig(lxqt-globalkeys-ui)
 BuildRequires:  pkgconfig(sysstat-qt5)
 BuildRequires:  pkgconfig(x11)
@@ -82,7 +83,7 @@ LXQt panel development files and headers
 %define _lto_cflags %{nil}
 export CXXFLAGS="%{optflags} $(pkg-config --cflags xkbcommon-x11)"
 %cmake -DPULL_TRANSLATIONS=No -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
