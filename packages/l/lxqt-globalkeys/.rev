@@ -350,4 +350,13 @@
   * Do not requite daemon restart for enabling shortcuts.</comment>
     <requestid>846003</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fde7e8ac887f8de3d2955a790cc7be3f</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Made the code cleaner and more up-to-date.</comment>
+    <requestid>885940</requestid>
+  </revision>
 </revisionlist>
