@@ -178,4 +178,16 @@
   * Fixed translation of shortcuts (in Terminal settings dialog).</comment>
     <requestid>848668</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8339c908f873ddf872e78d03c245e8f0</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610519</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Made &quot;Action after paste&quot; clearer and default to &quot;Scrolling to bottom&quot;.
+  * Added an option to disable bracketed paste mode.
+  * Added modes for background image.
+  * Removed two warnings that were shown when QTerminal was started.</comment>
+    <requestid>885952</requestid>
+  </revision>
 </revisionlist>
