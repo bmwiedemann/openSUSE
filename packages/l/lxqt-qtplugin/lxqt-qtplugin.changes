@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 16 06:54:33 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * Handled Qt 5.15 deprecations.
+  * Don't check before deleting a pointer.
+  * Don't use implicit conversions.
+  * Fixed a palette/highlight color related typo.
+
+-------------------------------------------------------------------
 Wed Nov  4 13:29:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.0:

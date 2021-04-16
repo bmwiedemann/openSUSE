@@ -260,4 +260,16 @@
   * Support more palette colors for better customization.</comment>
     <requestid>845998</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ea36ea2a79f402718d7465094cae0236</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610509</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Handled Qt 5.15 deprecations.
+  * Don't check before deleting a pointer.
+  * Don't use implicit conversions.
+  * Fixed a palette/highlight color related typo.</comment>
+    <requestid>885934</requestid>
+  </revision>
 </revisionlist>
