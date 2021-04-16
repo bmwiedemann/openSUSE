@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 13 20:19:05 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Do not hard-depend on systemd: use systemd_ordering instead of
+  systemd_requires.
+
+-------------------------------------------------------------------
 Tue Mar  9 07:03:44 UTC 2021 - pgajdos@suse.com
 
 - <IfModule mod_php.c> instead of <IfModule mod_php8.c> [bsc#1183180]

@@ -52,4 +52,14 @@
   % mod_php8.conf</comment>
     <requestid>877897</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>2d8d4279f44b3fddfad0b7e678215527</srcmd5>
+    <version>8.0.3</version>
+    <time>1618610495</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not hard-depend on systemd: use systemd_ordering instead of
+  systemd_requires.
+</comment>
+    <requestid>885700</requestid>
+  </revision>
 </revisionlist>
