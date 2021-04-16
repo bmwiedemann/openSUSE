@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Apr 13 11:48:58 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file 
+
+-------------------------------------------------------------------
+Thu Nov  9 16:15:00 UTC 2017 - mpluskal@suse.com
+
+- Force usage of optflags
+- Build fuse support as well
+
+-------------------------------------------------------------------
+Thu Nov  9 14:11:12 UTC 2017 - jzelazkova@suse.com
+- initial changelog entry for 1.0.9 
