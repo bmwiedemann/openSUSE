@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 15 15:01:42 UTC 2021 - Vladimir Nadvornik <nadvornik@suse.com>
+
+- version 0.12.1618498507.b68ecea
+- Disable all repos on Leap - SLES migration (bsc#1184237)
+
+-------------------------------------------------------------------
 Fri May 29 10:38:57 UTC 2020 - Vladimir Nadvornik <nadvornik@suse.com>
 
 - version 0.12.1590748670.86b0749

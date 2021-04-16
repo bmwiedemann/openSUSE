@@ -1,7 +1,7 @@
 #
 # spec file for package zypper-migration-plugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zypper-migration-plugin
-Version:        0.12.1590748670.86b0749
+Version:        0.12.1618498507.b68ecea
 Release:        0
 URL:            https://github.com/SUSE/zypper-migration
 Requires:       zypper >= 1.11.38

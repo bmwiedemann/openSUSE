@@ -124,4 +124,14 @@
 </comment>
     <requestid>810197</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c1c1de9318b25b4c6b2c796a3b5a7510</srcmd5>
+    <version>0.12.1618498507.b68ecea</version>
+    <time>1618610498</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.12.1618498507.b68ecea
+- Disable all repos on Leap - SLES migration (bsc#1184237)
+</comment>
+    <requestid>885716</requestid>
+  </revision>
 </revisionlist>
