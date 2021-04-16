@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        PHP extension providing access to maxminddb databases
 License:        Apache-2.0

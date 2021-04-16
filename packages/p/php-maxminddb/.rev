@@ -7,4 +7,12 @@
     <comment>Rename php7-maxminddb to php-maxminddb/</comment>
     <requestid>873880</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e63f7d754456318521dcfbe14a68a89c</srcmd5>
+    <version>1.10.1</version>
+    <time>1618610499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885759</requestid>
+  </revision>
 </revisionlist>

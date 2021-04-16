@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 14 18:01:21 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to version 1.10.0
+  * Fix a `TypeError` exception in the pure PHP reader when using large
+    databases on 32-bit PHP builds with the `bcmath` extension. Reported
+    by dodo1708. GitHub #124.
+
+-------------------------------------------------------------------
 Wed Feb 17 19:12:26 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Use _multibuild to also build for php8
