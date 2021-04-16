@@ -69,13 +69,11 @@ bracketed paste and so on, and which can be controlled by scripts.
 find . -type f -exec sed -i 's@#!%{_bindir}/env python3$@#!%{_bindir}/python3@' {} +
 find . -type f -exec sed -i 's@#!%{_bindir}/env python$@#!%{_bindir}/python@' {} +
 
-%build
-#tic -x -o/tmp/tmpWhatever terminfo/kitty.terminfo
-python3 setup.py --verbose linux-package --prefix %{buildroot}%{_prefix}
-
 %install
 # yes they have a makefile, no they dont use it properly
 # no they dont have a make install
+# we used to have this in the build section but since rpm 4.16 buildroot is cleaned
+python3 setup.py --verbose linux-package --prefix %{buildroot}%{_prefix}
 
 %fdupes %{buildroot}%{_prefix}/lib
 

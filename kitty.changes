@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 16 12:04:31 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Fix build on Factory:
+  kitty does not properly separate build and install. We used to
+  do both in the %build section. Since rpm 4.16 cleans the buildroot
+  is cleaned before %install. So now we run build/install in the
+  %install section
+
+-------------------------------------------------------------------
 Mon Dec 28 12:21:25 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.3:
