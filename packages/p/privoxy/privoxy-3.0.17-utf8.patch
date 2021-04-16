@@ -1,6 +1,6 @@
---- default.filter
-+++ default.filter
-@@ -375,7 +375,7 @@
+--- a/default.filter
++++ b/default.filter
+@@ -376,7 +376,7 @@
  s/\x84/,,/g
  s/\x85/.../g
  #s/\x88/^/g

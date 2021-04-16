@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr  9 19:47:02 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Using pcre is good, however using the pcreposix library is not and will
+  lead to undefined behaviour as symbol clashes with glibc.
+  (privoxy-nopcreposix.patch)
+
+-------------------------------------------------------------------
 Sat Mar  6 18:33:24 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.0.32:

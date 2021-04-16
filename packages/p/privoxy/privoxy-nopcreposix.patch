@@ -1,0 +1,78 @@
+--- a/project.h
++++ b/project.h
+@@ -110,15 +110,7 @@
+ #  include <pcrs.h>
+ #endif
+ 
+-#ifdef STATIC_PCRE
+-#  include "pcreposix.h"
+-#else
+-#  ifdef PCRE_H_IN_SUBDIR
+-#    include <pcre/pcreposix.h>
+-#  else
+-#    include <pcreposix.h>
+-#  endif
+-#endif
++#include <regex.h>
+ 
+ #ifdef _WIN32
+ /*
+--- a/configure.in
++++ b/configure.in
+@@ -113,6 +113,8 @@
+    CFLAGS=" "
+ fi
+ 
++AC_SYS_LARGEFILE
++AC_USE_SYSTEM_EXTENSIONS
+ AC_PROG_CC
+ AC_PROG_CPP
+ AC_PROG_INSTALL
+@@ -872,16 +874,6 @@
+    ])
+ ], [have_pcre=no])
+ 
+-AC_CHECK_LIB(pcreposix, regcomp, [
+-   AC_CHECK_HEADER(pcreposix.h, [
+-      AC_EGREP_HEADER(pcreposix_regerror, pcreposix.h, [AC_MSG_WARN([[pcreposix old version installed]]); have_pcreposix=no], [have_pcreposix=yes])
+-   ], [
+-      AC_CHECK_HEADER(pcre/pcreposix.h, [
+-         AC_EGREP_HEADER(pcreposix_regerror, pcre/pcreposix.h, [AC_MSG_WARN([[pcreposix old version installed]]); have_pcreposix=no], [have_pcreposix=yes]; [AC_DEFINE(PCREPOSIX_H_IN_SUBDIR)])
+-      ], [have_pcreposix=no])
+-   ])
+-], [have_pcreposix=no], -lpcre)
+-
+ dnl ================================================================
+ dnl libpcrs is temporarily disabled.
+ dnl
+@@ -1085,7 +1077,7 @@
+ if test $have_pcre = "yes"; then
+   echo "using libpcre"
+   STATIC_PCRE_ONLY=#
+-  LIBS="$LIBS -lpcre -lpcreposix"
++  LIBS="$LIBS -lpcre"
+   if test "$use_static_pcre" = "yes"; then
+     pcre_dyn=no
+     AC_DEFINE(PCRE_STATIC,1,[Define to statically link to pcre library on Windows.])
+--- a/GNUmakefile.in
++++ b/GNUmakefile.in
+@@ -287,8 +287,7 @@
+ # Add your flags here
+ OTHER_CFLAGS =
+ 
+-CFLAGS = @CFLAGS@ @CPPFLAGS@ $(OTHER_CFLAGS) $(SPECIAL_CFLAGS) -Wall \
+-         @STATIC_PCRE_ONLY@ -Ipcre
++CFLAGS = @CFLAGS@ @CPPFLAGS@ $(OTHER_CFLAGS) $(SPECIAL_CFLAGS) -Wall -fvisibility=hidden -include config.h \
+ 
+ LDFLAGS = @LDFLAGS@ $(DEBUG_CFLAGS) $(SPECIAL_CFLAGS)
+ 
+--- a/parsers.c
++++ b/parsers.c
+@@ -48,7 +48,6 @@
+ /*
+  * Convince GNU's libc to provide a strptime prototype.
+  */
+-#define __USE_XOPEN
+ #endif /*__GLIBC__ */
+ #include <time.h>
+ 

@@ -1,5 +1,5 @@
---- privoxy_nm
-+++ privoxy_nm
+--- /dev/null
++++ b/privoxy_nm
 @@ -0,0 +1,18 @@
 +#! /bin/sh
 +#
@@ -19,4 +19,3 @@
 +        exit 0
 +        ;;
 +esac
-+

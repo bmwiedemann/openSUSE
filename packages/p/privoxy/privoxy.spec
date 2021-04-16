@@ -32,6 +32,7 @@ Source5:        https://www.fabiankeil.de/gpg-keys/fk-8BA2371C.asc#/%{name}.keyr
 Patch1:         %{name}-3.0.21-config.patch
 Patch2:         %{name}-3.0.17-utf8.patch
 Patch3:         %{name}-3.0.16-networkmanager.systemd.patch
+Patch4:         privoxy-nopcreposix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pkgconfig
@@ -65,10 +66,7 @@ browser and a web server and filters contents as described in the
 configuration files.
 
 %prep
-%setup -q -n privoxy-%{version}-stable
-%patch1 -p1
-%patch2
-%patch3
+%autosetup -p1 -n privoxy-%{version}-stable
 
 %build
 autoreconf -fiv
@@ -77,7 +75,8 @@ autoreconf -fiv
 	--with-openssl\
 	--with-brotli \
 	--enable-extended-statistics \
-	--enable-pcre-host-patterns
+	--enable-pcre-host-patterns \
+	--enable-dynamic-pcre
 
 %make_build
 
