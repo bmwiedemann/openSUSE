@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 14 01:04:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.7.7
+  * Fixed CVE-2021-20286
+  * Fix parsing and construction of IPv6 URIs
+  * New API nbd_get_uri to get an NBD URI for a connection
+  * Permit "see also" links to nbd_get_error and nbd_get_errno
+  * Avoid over-long lines in POD. 
+  * Fix reporting of NBD URI support
+  * Let exit status reflect any failures during NBD_OPT_INFO
+  * Fix page eviction when len < page_size.
+
+-------------------------------------------------------------------
 Sun Mar 14 18:31:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Specfile modernization

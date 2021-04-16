@@ -15,30 +15,30 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sover 0
 
 Name:           libnbd
-Version:        1.7.1
+Version:        1.7.7
 Release:        0
 Summary:        NBD client library in userspace
 License:        LGPL-2.1-or-later
-URL:            https://github.com/libguestfs/libnbd
-Source0:        %{name}-%{version}.tar.gz
-
-Requires:       libnbd%{sover} = %{version}-%{release}
+URL:            https://gitlab.com/nbdkit/libnbd
+Source0:        %{name}-%{version}.tar.bz2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  libtool
+BuildRequires:  pkg-config
+BuildRequires:  ocaml(compiler)
 BuildRequires:  perl(Pod::Man)
 BuildRequires:  perl(Pod::Simple)
-BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(fuse)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gnutls) >= 3.3.0
 BuildRequires:  pkgconfig(libxml-2.0)
-
+Requires:       libnbd%{sover} = %{version}
 # Only for running the test suite.
 BuildRequires:  gcc-c++
 BuildRequires:  jq
@@ -46,7 +46,6 @@ BuildRequires:  jq
 BuildRequires:  nbd
 %endif
 BuildRequires:  qemu-tools
-
 
 %description
 NBD — Network Block Device — is a protocol for accessing Block Devices
@@ -70,6 +69,7 @@ The key features are:
 
 %package -n libnbd%{sover}
 Summary:        Core library for nbd
+
 %description -n libnbd%{sover}
 This is the NBD client library in userspace, a simple library for
 writing NBD clients.
@@ -77,20 +77,23 @@ writing NBD clients.
 %package devel
 Summary:        Development headers for %{name}
 Requires:       libnbd%{sover} = %{version}-%{release}
+
 %description devel
 This package contains development headers for %{name}.
 
 %package -n nbdfuse
 Summary:        FUSE support for %{name}
 Requires:       libnbd%{sover} = %{version}-%{release}
+
 %description -n nbdfuse
 This package contains FUSE support for %{name}.
 
 %package bash-completion
-Summary:       Bash tab-completion for %{name}
-BuildArch:     noarch
-Requires:      bash-completion >= 2.0
-Requires:      libnbd%{sover} = %{version}-%{release}
+Summary:        Bash tab-completion for %{name}
+BuildArch:      noarch
+Requires:       bash-completion >= 2.0
+Requires:       libnbd%{sover} = %{version}-%{release}
+
 %description bash-completion
 Install this package if you want intelligent bash tab-completion
 for %{name}.
@@ -99,7 +102,6 @@ for %{name}.
 %prep
 %autosetup -p1
 
-
 %build
 autoreconf -fiv
 %configure \
@@ -107,11 +109,9 @@ autoreconf -fiv
     --enable-fuse \
     --disable-golang \
     --disable-python \
-    --disable-ocaml \
     --disable-static
 
 %make_build
-
 
 %install
 %make_install
@@ -134,7 +134,6 @@ for f in fuse/test-*.sh; do
     touch $f
     chmod +x $f
 done
-
 
 %make_build check || {
     for f in $(find . -name test-suite.log); do
@@ -174,3 +173,5 @@ done
 
 %files bash-completion
 %{_datadir}/bash-completion
+
+%changelog
