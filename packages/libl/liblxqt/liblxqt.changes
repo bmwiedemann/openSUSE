@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 16 06:36:15 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  * Fixed dbus errors with invalid QVariant data sent over it.
+  * Modernized and cleaned up the code.
+
+-------------------------------------------------------------------
 Wed Nov  4 15:47:44 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Remove deprecated recommends on lang package
