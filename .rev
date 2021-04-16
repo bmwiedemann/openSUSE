@@ -48,4 +48,13 @@
   * Added the themes Clearlooks, Leech and Kvantum.</comment>
     <requestid>846011</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c9fc071f922124d531e8c2fb2714c4b5</srcmd5>
+    <version>0.17.0</version>
+    <time>1618610518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0:
+  * Added alternate background color to the calendar widget in some themes.</comment>
+    <requestid>885949</requestid>
+  </revision>
 </revisionlist>
