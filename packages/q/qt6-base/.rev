@@ -31,4 +31,12 @@
     <comment>Forward to devel project (forwarded request 882972 from cgiboudeaux)</comment>
     <requestid>882988</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>4433e8f66d56391f2709254c421548a0</srcmd5>
+    <version>6.0.3</version>
+    <time>1618694702</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop owning directories provided by the filesystem package (boo#1184786)</comment>
+    <requestid>886241</requestid>
+  </revision>
 </revisionlist>

@@ -853,15 +853,15 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %files -n libQt6Core6
 %license LICENSE.*
 # libQt6Core6 'provides' the runtime directories except
-# %%_qt6_importsdir and %%qt6_qmldir, owned by libQt6Qml6 and
-# %%_qt6_docdir, owned by all documentation packages
+# %%_qt6_importsdir and %%qt6_qmldir, owned by libQt6Qml6, %%_qt6_docdir
+# owned by all documentation packages and %%_qt6_sysconfdir,
+# owned by the filesystem package
 %dir %{_qt6_archdatadir}
 %dir %{_qt6_bindir}
 %dir %{_qt6_datadir}
 %dir %{_qt6_examplesdir}
 %dir %{_qt6_libexecdir}
 %dir %{_qt6_pluginsdir}
-%dir %{_qt6_sysconfdir}
 %dir %{_qt6_testsdir}
 %dir %{_qt6_translationsdir}
 %{_qt6_libdir}/libQt6Core.so.*
