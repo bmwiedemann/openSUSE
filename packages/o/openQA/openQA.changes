@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 17 14:35:53 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1618564988.9a9616334:
+  * Dependency cron 2021-04-16
+  * Fix result cleanup when retention period configured on job group level is zero
+  * Dependency cron 2021-04-15
+  * CI: Remove -q flag in docker-compose build in test_containers_compose
+
+-------------------------------------------------------------------
 Thu Apr 15 06:42:19 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1618384717.6ce950447:
