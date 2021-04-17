@@ -99,4 +99,12 @@
   + update config.guess and config.sub</comment>
     <requestid>853576</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>22548d1f6639a3797e85b4867ade41cb</srcmd5>
+    <version>7.20</version>
+    <time>1618694706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886277</requestid>
+  </revision>
 </revisionlist>

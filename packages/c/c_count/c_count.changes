@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 16 19:52:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 7.20:
+  * updated configure macros
+  * update config.guess and config.sub
+
+-------------------------------------------------------------------
 Mon Dec  7 12:16:44 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 7.19:
