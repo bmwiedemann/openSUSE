@@ -610,4 +610,15 @@
     <comment>GNOME 40 - here we come (forwarded request 880910 from dimstar)</comment>
     <requestid>881082</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>5e95e697f677c32b446a5d522c1e80c3</srcmd5>
+    <version>3.21.0</version>
+    <time>1618694720</time>
+    <user>dimstar_suse</user>
+    <comment>- Add typelib(GtkSource) = 4 requires: The code obscures a lot of
+  logic, instead of requiring GtkSource 4, they require GtkSource
+  (any version) and then runtime complain if it's not 4.
+  (boo#1184842). (forwarded request 886214 from dimstar)</comment>
+    <requestid>886364</requestid>
+  </revision>
 </revisionlist>

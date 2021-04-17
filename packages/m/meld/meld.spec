@@ -42,6 +42,9 @@ BuildRequires:  pkgconfig(python3) >= 3.6
 Requires:       patch
 Requires:       python3-cairo
 Requires:       python3-gobject-Gdk
+# the code obscures a lot of logic, instead of requiring GtkSource 4.0, they require
+# GtkSource (any version) and then runtime complain if it's not 4.0 :( (boo#1184842)
+Requires:       typelib(GtkSource) = 4
 # Suggest various vcs that meld can handle
 Suggests:       bzr
 Suggests:       cvs
