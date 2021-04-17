@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Sat Mar 20 10:06:27 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install qemu-tools (provides qemu-img)
+- Explicitly install dbus-1 (to suppress "have choice...")
+- Sort installed packages alphabetically
+
+-------------------------------------------------------------------
+Fri Mar 19 09:26:01 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Setup qemu system user bsc#1183749
+
+-------------------------------------------------------------------
+Wed Mar 17 07:05:26 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add placeholder vars to be replaced during build
+- Fix mixed tabs and spaces
+
+-------------------------------------------------------------------
+Tue Nov 17 23:02:10 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- use ARG for defining base image
+
+-------------------------------------------------------------------
+Tue Sep 15 03:18:15 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Adjust Dockerfile to conform to "Building Official Container
+  Images" documentation
+
+-------------------------------------------------------------------
+Fri Jul 24 21:01:39 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Install libvirt-client package
+
+-------------------------------------------------------------------
+Fri Jul 24 14:48:07 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Install iptables package
+
+-------------------------------------------------------------------
+Wed Jul 22 19:56:06 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Install kubevirt-container-disk package to get the container-disk
+  binary
+
+-------------------------------------------------------------------
+Fri Jun 26 14:51:15 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+-  Initial container for virt-handler

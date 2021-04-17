@@ -1,0 +1,5 @@
+<package name="virt-handler-container" project="openSUSE:Factory">
+  <title>KubeVirt handler container</title>
+  <description></description>
+  <devel project="Virtualization" package="virt-handler-container"/>
+</package>
