@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jan 20 03:10:21 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.0.8
+   see /usr/share/doc/packages/perl-Net-OBS-Client/Changes
+
+  0.0.8 2021-01-19
+      * fix conflicts
+  0.0.7 2021-01-19
+      * added perlcriticrc
+      * test cases based on Test::HTTP::MockServer
+      * fixed problem with use order
+      * improved POD
+      * removed usage of feature 'say' (for older perl versions)
+      * LWP::ConsoleLogger::Easy no longer mandatory if NET_OBS_CLIENT_DEBUG is set
+      * removed obsolete test modules
+  0.0.6 2021-01-13
+      * fixed POD for N::O::Client
+      * implemented project/package/buildresults method in N::O::Client
+      * removed spec file
+      * fixed BuildRequires
+  0.0.5 2021-01-12
+      * changed mail
+
+-------------------------------------------------------------------
 Wed Jan 13 13:19:30 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
 
 - updated to 0.0.6

@@ -16,17 +16,16 @@
 #
 
 
-Name:           perl-Net-OBS-Client
-Version:        0.0.6
-Release:        0
 %define cpan_name Net-OBS-Client
+Name:           perl-Net-OBS-Client
+Version:        0.0.8
+Release:        0
 Summary:        Simple OBS API calls
-License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+License:        Artistic-2.0
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/F/FS/FSM/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Config::INI::Reader)
@@ -37,7 +36,9 @@ BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Moose)
 BuildRequires:  perl(Moose::Role)
 BuildRequires:  perl(Path::Class)
+BuildRequires:  perl(Test::HTTP::MockServer)
 BuildRequires:  perl(URI::URL)
+BuildRequires:  perl(XML::Parser)
 BuildRequires:  perl(XML::Structured)
 Requires:       perl(Config::INI::Reader)
 Requires:       perl(Config::Tiny)
@@ -56,13 +57,11 @@ Net::OBS::Client aims to simplify usage of OBS
 (https://openbuildservice.org) API calls in perl.
 
 %prep
-%setup -q -n %{cpan_name}
-
-rm -f pm_to_blib
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -73,7 +72,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes ignore.txt KankuFile README
+%doc Changes README
 
 %changelog
