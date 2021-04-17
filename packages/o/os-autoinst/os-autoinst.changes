@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 17 14:20:38 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1618564966.3ff78d0c:
+  * Update tidy to 20210402
+  * mergify: Wait for all requested reviews
+  * 22-svirt.t: Simplify SSH tests for svirt console sshVirtsh
+  * 23-baseclass.t: Extent SSH test coverage
+  * baseclass: Add use OpenQA::Exceptions
+  * 23-baseclass.t: Use MockObject for Net::SSH2
+  * baseclass: Recover broken SSH connection with keep_open=>1
+
+-------------------------------------------------------------------
 Thu Apr 15 06:20:36 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1618465785.f3f4079f:
