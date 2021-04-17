@@ -1,7 +1,7 @@
 #
 # spec file for package touchegg
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           touchegg
-Version:        2.0.8
+Version:        2.0.9
 Release:        0
 Summary:        A multitouch gesture recogniser for GNU/Linux
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xtst)
@@ -55,8 +56,6 @@ actions in your desktop.
 
 %install
 %cmake_install
-mkdir -p %{buildroot}%{_unitdir}
-mv %{buildroot}/lib/systemd/system/touchegg.service %{buildroot}%{_unitdir}/%{name}.service
 
 %pre
 %service_add_pre %{name}.service
