@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 16 21:56:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Disable python39
+
+-------------------------------------------------------------------
 Sun Jan 17 23:04:08 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - disable build for python38 and drop py38.patch. Nobody should
