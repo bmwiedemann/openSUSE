@@ -1264,4 +1264,30 @@
   * Translation updates. (forwarded request 881768 from malcolmlewis)</comment>
     <requestid>884653</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>22c947ec189d94cd9402122be0baaf8b</srcmd5>
+    <version>0.99.35</version>
+    <time>1618694693</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.99.35:
+  * Fix issue in 0.99.34 H1/H2/H3/H4/H5/H6/small
+    not working for certain locale.
+  * Fix issue with bookmarks in tree right click menu.
+  * Implementation of configurable h1,h2,h3,small + (now supported)
+    h4,h5,h6.
+  * Reorganised the main menu.
+  * Fix undo/redo state machine vertical scrollbar position
+    and cursor position.
+  * Fix crash when importing text/html files with non ascii
+    file name on windows.
+  * Fix links to file/folder on windows with UNC path.
+  * Detect system shutdown to save config .
+  * Improved recognition of web link as you type in case of
+    start with ({[, end with ,;.)}].
+  * Fixed wheel click on file link (to open parent folder).
+  * Fix zooming text/tree font not being properly enforced like
+    preferences dialog does.
+  * Enabled logging to config folder, max size 5MB. (forwarded request 885867 from polslinux)</comment>
+    <requestid>886219</requestid>
+  </revision>
 </revisionlist>

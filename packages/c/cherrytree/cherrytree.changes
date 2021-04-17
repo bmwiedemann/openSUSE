@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Apr 16 07:09:53 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.99.35:
+  * Fix issue in 0.99.34 H1/H2/H3/H4/H5/H6/small
+    not working for certain locale.
+  * Fix issue with bookmarks in tree right click menu.
+  * Implementation of configurable h1,h2,h3,small + (now supported)
+    h4,h5,h6.
+  * Reorganised the main menu.
+  * Fix undo/redo state machine vertical scrollbar position
+    and cursor position.
+  * Fix crash when importing text/html files with non ascii
+    file name on windows.
+  * Fix links to file/folder on windows with UNC path.
+  * Detect system shutdown to save config .
+  * Improved recognition of web link as you type in case of
+    start with ({[, end with ,;.)}].
+  * Fixed wheel click on file link (to open parent folder).
+  * Fix zooming text/tree font not being properly enforced like
+    preferences dialog does.
+  * Enabled logging to config folder, max size 5MB.
+
+-------------------------------------------------------------------
 Sun Mar 28 18:21:21 UTC 2021 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.33+5:
