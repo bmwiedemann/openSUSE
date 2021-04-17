@@ -20,7 +20,7 @@ Name:           haserl
 BuildRequires:  automake
 BuildRequires:  lua-devel
 BuildRequires:  pkg-config
-Version:        0.9.35
+Version:        0.9.36
 Release:        0
 Url:            http://haserl.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/%{name}/haserl-devel/%{name}-%{version}.tar.gz
@@ -65,7 +65,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-/usr/bin/haserl
+%{_bindir}/haserl
 %{_mandir}/man1/haserl.1.gz
 
 %changelog

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 14 00:52:23 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.9.36:
+  * Fixed: Its possible to issue a PUT request without a CONTENT-TYPE.
+    Assume an octet-stream in that case. ( CVE-2021-29133 )
+  * Change the Prefix for variables to be the REQUEST_METHOD
+    (PUT/DELETE/GET/POST) THIS IS A BREAKING CHANGE
+  * Mitigations vs running haserl to get access to files not
+    available to the user.
+
+-------------------------------------------------------------------
 Thu Jul 30 10:45:11 UTC 2015 - dimstar@opensuse.org
 
 - Update to version 0.9.35:
