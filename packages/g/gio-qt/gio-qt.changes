@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Feb 23 01:47:11 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.0.9
+  * feat: interfaces for checking drive is removable
+  * fix: should disconnect when obj get destoryed
+  * feat: add binding for g_file_find_enclosing_mount().
+  * fix: extend the lifespan of captured objects.
+  * misc: disconnect volume monitor connection on destroy
+  * fix: dept for dev package
+  * feat: add DGioFileInfo::fsType.
+  * feat: add interface for g_volume_get_identifier.
+
+-------------------------------------------------------------------
+Fri Mar 20 14:54:31 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for 0.0.1 

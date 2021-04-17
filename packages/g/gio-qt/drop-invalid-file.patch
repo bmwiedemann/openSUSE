@@ -1,0 +1,20 @@
+diff -Nur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2019-11-27 19:07:55.000000000 +0800
++++ b/CMakeLists.txt	2020-03-20 22:48:40.254049788 +0800
+@@ -59,7 +59,6 @@
+     set (DOXYGEN_EXCLUDE_SYMBOLS "*Private;*Test")
+     set (DOXYGEN_QHG_LOCATION "qhelpgenerator")
+     set (DOXYGEN_QHP_NAMESPACE "org.deepin.gio-qt")
+-    set (DOXYGEN_QCH_FILE "../gio-qt.qch")
+     set (DOXYGEN_QHP_VIRTUAL_FOLDER "gio-qt")
+ 
+     doxygen_add_docs(doxygen
+@@ -69,8 +68,6 @@
+         COMMENT "Generate documentation via Doxygen"
+     )
+ 
+-    install (FILES ${CMAKE_CURRENT_BINARY_DIR}/docs/gio-qt.qch DESTINATION share/qt5/doc)
+-
+ else ()
+     message (STATUS "")
+     message (STATUS "To build docs, please use -DBUILD_DOCS=Yes")

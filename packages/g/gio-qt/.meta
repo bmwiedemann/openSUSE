@@ -1,0 +1,5 @@
+<package name="gio-qt" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:Deepin" package="gio-qt"/>
+</package>
