@@ -1,7 +1,7 @@
 #
 # spec file for package nanopb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,18 @@
 %define sover 0
 %define src_install_dir %{_prefix}/src/%{name}
 Name:           nanopb
-Version:        0.4.2
+Version:        0.4.5
 Release:        0
 Summary:        Protocol Buffers with small code size
 License:        Zlib
+Group:          Development/Libraries/C and C++
 URL:            https://jpa.kapsi.fi/nanopb/
-Source:         https://github.com/nanopb/nanopb/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/nanopb/nanopb/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  protobuf-devel
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3
 
 %description
 Nanopb is a C implementation of Google's Protocol Buffers data format. It is
@@ -36,6 +39,7 @@ with tight (2-10 kB ROM, <1 kB RAM) memory constraints.
 
 %package -n libprotobuf-nanopb%{sover}
 Summary:        Shared library for nanopb
+Group:          System/Libraries
 
 %description -n libprotobuf-nanopb%{sover}
 Shared library for nanopb - a C implementation of Google's Protocol Buffers
@@ -43,6 +47,7 @@ data format.
 
 %package devel
 Summary:        Development files for nanopb
+Group:          Development/Libraries/C and C++
 Requires:       libprotobuf-nanopb%{sover} = %{version}
 
 %description devel
@@ -51,6 +56,7 @@ data format.
 
 %package source
 Summary:        Source code of nanopb
+Group:          Development/Libraries/C and C++
 BuildArch:      noarch
 
 %description source
@@ -59,24 +65,22 @@ format.
 
 %prep
 %setup -q
-# Add support for tag numbers > 255 and fields larger than 255 bytes.
-sed -i 's|/\* #define PB_FIELD_16BIT 1 \*/|#define PB_FIELD_16BIT 1|' ./pb.h
 
 %build
-# nanopb_BUILD_GENERATOR - requires python2
-%cmake \
-  -Dnanopb_BUILD_GENERATOR=OFF
+%cmake
 %cmake_build
 
 %install
 %cmake_install
-
+# Install source code
 mkdir -p %{buildroot}%{src_install_dir}
 tar -xf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
+find %{buildroot}%{src_install_dir} -name ".*" -exec rm -rfv \{\} +
 # Fix env-script-interpreter rpmlint error
-find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!%{_bindir}/env python|#!%{_bindir}/python|' "{}" +
-# Add support for tag numbers > 255 and fields larger than 255 bytes.
-sed -i 's|/\* #define PB_FIELD_16BIT 1 \*/|#define PB_FIELD_16BIT 1|' %{buildroot}%{src_install_dir}/pb.h
+files=$(grep -rl '#!/usr/bin/env python' %{buildroot}%{src_install_dir}) && echo $files | xargs sed -i 's|#!/usr/bin/env python|#!%{_bindir}/python|'
+# Fix name and interpreter
+mv %{buildroot}%{_bindir}/nanopb_generator.py %{buildroot}%{_bindir}/nanopb_generator
+sed -i 's|env python3|python3|' %{buildroot}%{_bindir}/nanopb_generator
 
 %fdupes %{buildroot}%{src_install_dir}
 
@@ -89,15 +93,14 @@ sed -i 's|/\* #define PB_FIELD_16BIT 1 \*/|#define PB_FIELD_16BIT 1|' %{buildroo
 %{_libdir}/libprotobuf-nanopb.so.%{sover}
 
 %files devel
+%{_bindir}/nanopb_generator
+%{_bindir}/protoc-gen-nanopb
+%{python3_sitelib}/proto
 %{_includedir}/pb.h
 %{_includedir}/pb_common.h
 %{_includedir}/pb_decode.h
 %{_includedir}/pb_encode.h
 %{_libdir}/cmake/nanopb
-%{_libdir}/cmake/nanopb/nanopb-config-version.cmake
-%{_libdir}/cmake/nanopb/nanopb-config.cmake
-%{_libdir}/cmake/nanopb/nanopb-targets-relwithdebinfo.cmake
-%{_libdir}/cmake/nanopb/nanopb-targets.cmake
 %{_libdir}/libprotobuf-nanopb.so
 
 %files source

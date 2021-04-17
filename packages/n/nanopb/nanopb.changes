@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Apr 14 20:12:08 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.4.5:
+  * Fix CVE-2021-21401: Release of Invalid Pointer or Reference
+  * Fix unordered field numbers inside oneof causing fields to be ignored
+  * Fix pb_decode() not initializing fields inside oneof
+  * Fix compiler errors with complex oneof hierarchy and sizeof()
+  * Fix descriptor width calculation for 64-bit types
+  * Fix compiler error in generated initializer for submessage callback
+  * Fix duplicate union definition in generated file
+  * Add support for including comments from .proto file
+- Update to 0.4.4:
+  * Fix CVE-2020-26243, memory leak
+  * Fix generator error when oneof contains a single unresolved field size
+  * Fix unsigned enums not working correctly inside OneOf
+  * Fix recursion depth exceeded error in generator
+  * Add support for proto3 optional fields introduced in protoc 3.12
+  * Add better error message when enum type is not found
+  * Allow specifying descriptorsize on field level also
+  * Allow multiple targets to be created by calling NANOPB_GENERATE_CPP()
+- Update to 0.4.3
+  * Fix issue with unknown message sizes being referred inside oneof
+    encoded size calculation
+  * Fix problem with [default=xxxx, (nanopb).proto3=true] field
+    option combination
+  * Better support C++ types in generated structs
+  * Use grpcio protoc
+  * Make pb_decode_varint32() reject overlong varint encodings.
+  * Performance optimizations
+  * !! NOTE: version 0.4.3 changes layout of pb_msgdesc_t. It requires
+    recompiling .pb.c files and thus breaks ABI compatibility.
+- Enabled build of generator (requires Python3)
+
+-------------------------------------------------------------------
 Wed Sep 30 08:18:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.4.2:
