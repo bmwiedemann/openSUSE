@@ -243,4 +243,12 @@
     <comment>- Pull configparser only on python2</comment>
     <requestid>795809</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>21ad6e5b3bd3c146cf1ec7fcf298e97b</srcmd5>
+    <version>3.3.0</version>
+    <time>1618694700</time>
+    <user>dimstar_suse</user>
+    <comment>- build only for main python3 version</comment>
+    <requestid>886238</requestid>
+  </revision>
 </revisionlist>

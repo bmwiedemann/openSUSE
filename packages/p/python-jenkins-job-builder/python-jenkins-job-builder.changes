@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 17 08:44:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- build only for main python3 version 
+
+-------------------------------------------------------------------
 Mon Apr 20 11:45:45 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Pull configparser only on python2

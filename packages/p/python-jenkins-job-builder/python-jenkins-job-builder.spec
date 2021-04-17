@@ -1,7 +1,7 @@
 #
 # spec file for package python-jenkins-job-builder
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Thomas Bechtold <thomasbechtold@jpberlin.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,6 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
+%global pythons python3
 Name:           python-jenkins-job-builder
 Version:        3.3.0
 Release:        0
@@ -49,7 +50,7 @@ Requires:       python-setuptools
 Requires:       python-six >= 1.9.0
 Requires:       python-stevedore >= 1.17.1
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-configparser
