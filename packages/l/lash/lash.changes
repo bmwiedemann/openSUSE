@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 17 00:09:08 UTC 2021 - Simon Lees <sflees@suse.de>
+
+- Greatly simplify 0001-Fix-detection-of-Python-3.patch to use
+  pkg-config so that it also works with Leap 15.3
+- Fix up parts of the specfile so python3 is used in Leap 15.3
+
+-------------------------------------------------------------------
 Wed Oct 21 06:46:31 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - Run spec cleaner

@@ -1,7 +1,7 @@
 #
 # spec file for package lash
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,16 +41,15 @@ BuildRequires:  libjack-devel
 BuildRequires:  libtool
 BuildRequires:  libuuid-devel
 BuildRequires:  libxml2-devel
+BuildRequires:  python3-devel
 BuildRequires:  readline-devel
 BuildRequires:  swig
-BuildRequires:  python3-devel
 
 %description
 LASH (formerly LADCCA) is a session management system for JACK and ALSA
 audio applications on GNU/Linux. Its aim is to allow you to have many
 different audio programs running at once and to save the setup, close
 them down, then reload the setup at some other time.
-
 
 %package -n liblash1
 Summary:        Development package for LASH
@@ -99,9 +98,9 @@ This package contains the development files for the LASH system.
 
 %install
 %make_install
-rm -f %{buildroot}%{python_sitelib}/_lash.la
-rm -f %{buildroot}%{python_sitelib}/_lash.a
-chmod 644 %{buildroot}/%{python_sitelib}/lash.py
+rm -f %{buildroot}%{python3_sitelib}/_lash.la
+rm -f %{buildroot}%{python3_sitelib}/_lash.a
+chmod 644 %{buildroot}/%{python3_sitelib}/lash.py
 find %{buildroot} -type f -name "*.la" -delete -print
 
 # links for so.2 have to be made for older packages that link against liblash
@@ -126,8 +125,8 @@ popd
 
 %files -n python3-lash
 %doc pylash/test.py
-%{python_sitelib}/_lash.so
-%{python_sitelib}/lash.py
+%{python3_sitelib}/_lash.so
+%{python3_sitelib}/lash.py
 
 %post -n liblash1 -p /sbin/ldconfig
 %postun -n liblash1 -p /sbin/ldconfig

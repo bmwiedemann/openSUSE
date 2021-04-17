@@ -1,27 +1,24 @@
-From a680164a03fa79e4ba7865732b7696bd19bbd058 Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
-Date: Thu, 23 Jul 2020 19:59:27 +0200
-Subject: [PATCH] Fix detection of Python 3
+Simpler python detection patch Simon Lees sflees@suse.de
 
 ---
  acinclude.m4 | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/acinclude.m4 b/acinclude.m4
-index 4722b53..9c7048d 100644
---- a/acinclude.m4
-+++ b/acinclude.m4
-@@ -65,8 +65,8 @@ AC_DEFUN([AM_CHECK_PYTHON_HEADERS],
+Index: lash-0.5.4/acinclude.m4
+===================================================================
+--- lash-0.5.4.orig/acinclude.m4
++++ lash-0.5.4/acinclude.m4
+@@ -173,12 +173,7 @@ AC_DEFUN([AM_CHECK_PYTHON_HEADERS],
  [AC_REQUIRE([AM_PATH_PYTHON])
  AC_MSG_CHECKING(for headers required to compile python extensions)
  dnl deduce PYTHON_INCLUDES
 -py_prefix=`$PYTHON -c "import sys; print sys.prefix"`
 -py_exec_prefix=`$PYTHON -c "import sys; print sys.exec_prefix"`
-+py_prefix=`$PYTHON -c "import sys; print(sys.prefix)"`
-+py_exec_prefix=`$PYTHON -c "import sys; print(sys.exec_prefix)"`
- PYTHON_INCLUDES="-I${py_prefix}/include/python${PYTHON_VERSION}"
- if test "$py_prefix" != "$py_exec_prefix"; then
-   PYTHON_INCLUDES="$PYTHON_INCLUDES -I${py_exec_prefix}/include/python${PYTHON_VERSION}"
--- 
-2.27.0
-
+-PYTHON_INCLUDES="-I${py_prefix}/include/python${PYTHON_VERSION}"
+-if test "$py_prefix" != "$py_exec_prefix"; then
+-  PYTHON_INCLUDES="$PYTHON_INCLUDES -I${py_exec_prefix}/include/python${PYTHON_VERSION}"
+-fi
++PYTHON_INCLUDES=`pkg-config --cflags python3`
+ AC_SUBST(PYTHON_INCLUDES)
+ dnl check if the headers exist:
+ save_CPPFLAGS="$CPPFLAGS"
