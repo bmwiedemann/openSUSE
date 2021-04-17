@@ -1,0 +1,22 @@
+From db0714de2350493a1776ca4d4d9b743695d68576 Mon Sep 17 00:00:00 2001
+From: Christopher Head <chead@chead.ca>
+Date: Sat, 22 Aug 2020 11:15:33 -0700
+Subject: [PATCH] Fix FutureWarning from pandas
+
+---
+ influxdb/_dataframe_client.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/influxdb/_dataframe_client.py b/influxdb/_dataframe_client.py
+index e7ae9c17..1363cbf0 100644
+--- a/influxdb/_dataframe_client.py
++++ b/influxdb/_dataframe_client.py
+@@ -305,7 +305,7 @@ def _convert_dataframe_to_json(dataframe,
+              'time': np.int64(ts.value / precision_factor)}
+             for ts, tag, (_, rec) in zip(
+                 dataframe.index,
+-                dataframe[tag_columns].to_dict('record'),
++                dataframe[tag_columns].to_dict('records'),
+                 dataframe[field_columns].iterrows()
+             )
+         ]
