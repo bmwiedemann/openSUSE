@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Apr 10 23:31:57 UTC 2021 - Pau Garcia Quiles <pau.garcia@suse.com>
+
+- Update to 0.14.10 :
+  ENHANCEMENTS:
+  * cli: Emit an "already installed" event when a provider is found already 
+    installed (#27722)
+  * provisioner/remote-exec: Can now run in a mode that expects the remote 
+    system to be running Windows and excuting commands using the Windows 
+    command interpreter, rather than a Unix-style shell. Specify the 
+    target_platform as "windows" in the connection block. (#26865)
+  ENHANCEMENTS:
+  * backend/s3: Add support for AWS Single-Sign On (SSO) cached credentials 
+    (#27620)
+  * config: Terraform now does text processing using the rules and tables 
+    defined for Unicode 13. Previous versions were using Unicode 12 rules 
+    (#28034)
+  BUG FIXES:
+  * cli: Rerunning init will reuse installed providers rather than fetching 
+    the provider again (#27582)
+  * config: Fix panic when applying a config using sensitive values in some 
+    block sets (#27635)
+  * core: Fix "Invalid planned change" error when planning tainted resource 
+    which no longer exists (#27563)
+  * core: Fix panic when refreshing data source which contains sensitive 
+    values (#27567)
+  * core: Fix init with broken link in plugin_cache_dir (#27447)
+  * core: Prevent evaluation of removed data source instances during plan 
+    (#27621)
+  * core: Don't plan changes for outputs that remain null (#27512)
+  * cli: Fix show -json not outputting the full module tree when some child 
+    modules have no resources (#27352)
+  * cli: Fix excessively slow rendering of very large multi-line string 
+    outputs (#27746)
+  * cli: Fix missing provider requirements in JSON plan when specified using 
+    required_providers instead of provider config (#27697)
+  * config: Update HCL package to fix panics when indexing using sensitive 
+    values (#28034)
+  * core: Fix error when using sensitive values in provisioner configuration 
+    (#27819)
+  * core: Fix empty diags not getting associated with source (#28029)
+  * backend/remote: Fix non-functional -lock-timeout argument when using 
+    the remote backend with local operations (#27845)
+  * backend/remote: Fix error when migrating existing state to a new 
+    workspace on Terraform Cloud/Enterprise. (#28093)
+  * cli: Only rewrite provider locks file if its contents has changed. (#28230)
+
+-------------------------------------------------------------------
 Tue Jan 26 07:42:30 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.14.5 :
