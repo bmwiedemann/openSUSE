@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  8 08:49:14 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.32
+  * Upstream does not provide a changelog
+- Drop patch (fixed upstream):
+  * 0001-tests-fix-alignment-of-packed-fields-141.patch
+
+-------------------------------------------------------------------
 Tue Apr  6 09:09:21 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch:
