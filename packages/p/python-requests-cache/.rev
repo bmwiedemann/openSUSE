@@ -33,4 +33,12 @@
   * Fix DeprecationWarning from collections #140</comment>
     <requestid>729800</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5d929ceb2cd1771b87138be637d055b5</srcmd5>
+    <version>0.6.2</version>
+    <time>1618694679</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886292</requestid>
+  </revision>
 </revisionlist>

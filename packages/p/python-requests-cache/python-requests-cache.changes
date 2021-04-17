@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Apr 14 22:46:16 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Fix runtime Requires, adding missing prefix python-
+- Add Recommends python-redis and Suggests for python-boto3 and
+  python-mongodb
+- Activate integration tests, including redis
+- Update to v0.6.2
+  * Explicitly include docs, tests, and examples in sdist
+- from v0.6.1
+  * Handle errors due to invalid responses in BaseCache.urls
+  * Add recently renamed BaseCache.remove_old_entries() back, as an
+    alias with a DeprecationWarning
+  * Make parent dirs for new SQLite databases
+  * Add aws_access_key_id and aws_secret_access_key kwargs to
+    DynamoDbDict
+  * Update GridFSPickleDict.__delitem__ to raise a KeyError for
+    missing items
+  * Demote most logging.info statements to debug level
+  * Exclude test directory from find_packages()
+  * Make integration tests easier to run and/or fail more quickly in
+    environments where Docker isn't available
+
+-------------------------------------------------------------------
+Sat Apr 10 04:33:50 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.6.0
+  * See https://github.com/reclosedev/requests-cache/blob/master/HISTORY.md
+
+-------------------------------------------------------------------
 Tue Sep 10 10:50:37 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.5.2:
