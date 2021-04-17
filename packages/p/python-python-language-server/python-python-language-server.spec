@@ -31,6 +31,8 @@ Patch0:         pyls-jedi-newer.patch
 Patch1:         test_snippet_fix.patch
 # PATCH-FIX-UPSTREAM test_numpy_hover_fix.patch -- gh#python-ls/python-ls#7
 Patch2:         test_numpy_hover_fix.patch
+# PATCH-FIX-UPSTREAM test_py39-code_folding.patch -- gh#python-ls/python-ls#9
+Patch3:         test_py39-code_folding.patch
 BuildRequires:  %{python_module jedi >= 0.17.2}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module python-jsonrpc-server >= 0.4.0}
@@ -135,7 +137,7 @@ rm setup.cfg
 %endif
 # don't test numpy on python36: NEP 29
 python36_donttest=" or test_numpy or test_pandas or test_matplotlib"
-%pytest -ra -k "not (dummy_k_expr_start ${donttest} ${$python_donttest})"
+%pytest -ra -k "not (dummy_k_expr_start ${donttest} ${$python_donttest})" -vv
 
 %files %{python_files}
 %doc README.rst

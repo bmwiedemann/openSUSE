@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 15 15:08:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add test_py39-code_folding.patch for python 3.9 compatibility
+  gh#python-lsp/python-lsp-server#9
+- This package has essentially been abandoned by Palantir. An
+  updated fork is being prepared here:
+  https://github.com/python-lsp/python-lsp-server
+
+-------------------------------------------------------------------
 Tue Mar 30 18:15:10 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add test_numpy_hover_fix.patch and test_snippet_fix.patch in
