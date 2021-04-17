@@ -1,7 +1,7 @@
 #
 # spec file for package paper-icon-theme
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017 Sam Hewitt
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,49 +13,46 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           paper-icon-theme
-Version:        1.4.0
+Version:        1.5.0+git32.aa3e8af7
 Release:        0
 Summary:        Paper Icon theme
 License:        CC-BY-SA-4.0
 Group:          System/GUI/Other
-Url:            https://snwh.org/paper
-Source:         https://github.com/snwh/paper-icon-theme/archive/v%{version}.tar.gz
-BuildRequires:  automake
+URL:            https://snwh.org/paper
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  icon-naming-utils >= 0.8.7
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  meson
 BuildArch:      noarch
 
 %description
 Paper is a simple and modern icon theme with Material Design influences.
 
 %prep
-%setup -q
+%autosetup -p1
 find -L . -type l -print -delete
 chmod a-x AUTHORS README.md
 
 %build
-./autogen.sh
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-make install DESTDIR=%{buildroot} %{?_smp_mflags}
-rm -f %{buildroot}%{_datadir}/icons/Paper/AUTHORS
+%meson_install
 %fdupes %{buildroot}%{_datadir}/icons/Paper
 
-%post
-%icon_theme_cache_post Paper
-
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING LICENSE README.md
+%doc AUTHORS README.md
+%license LICENSE COPYING
 %{_datadir}/icons/Paper
+%{_datadir}/icons/Paper-Mono-Dark
 %ghost %{_datadir}/icons/Paper/icon-theme.cache
+%ghost %{_datadir}/icons/Paper-Mono-Dark/icon-theme.cache
 
 %changelog

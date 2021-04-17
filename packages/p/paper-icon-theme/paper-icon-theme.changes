@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 19 18:53:58 UTC 2021 - mrueckert@suse.de
+
+- Update to version 1.5.0+git32.aa3e8af7:
+  - Fix a lot of broken rendered icons in the paper theme
+  - Added a lot of new icons
+- switch to source service as the latest release still had broken
+  icons and it is not easy to create a diff for binary files.
+- modernize spec file
+
+-------------------------------------------------------------------
 Thu Jan  5 23:05:20 UTC 2017 - matthias.eliasson@gmail.com
 
 - Bump version to 1.4.0
