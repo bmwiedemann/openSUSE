@@ -27786,6 +27786,7 @@ unsorted:
   - python39-dtfabric 
   - python39-duckduckgo2 
   - python39-dukpy-kovidgoyal 
+  - python39-dulwich: [x86_64] 
   - python39-dynaconf 
   - python39-easy-thumbnails 
   - python39-easygui 
@@ -27845,6 +27846,7 @@ unsorted:
   - python39-fastcluster 
   - python39-fasteners 
   - python39-fastimport 
+  - python39-fastparquet 
   - python39-fb-re2 
   - python39-fedora-messaging: [x86_64] 
   - python39-feedgen 
@@ -27958,6 +27960,7 @@ unsorted:
   - python39-google-auth-oauthlib 
   - python39-google-resumable-media 
   - python39-googlemaps 
+  - python39-gpg 
   - python39-gpgme 
   - python39-gphoto2 
   - python39-gprof2dot 
@@ -29249,6 +29252,7 @@ unsorted:
   - python39-tabulate 
   - python39-tap.py 
   - python39-tasklib 
+  - python39-tbb 
   - python39-tblib 
   - python39-technicolor 
   - python39-telepot 
@@ -29280,6 +29284,7 @@ unsorted:
   - python39-thewalrus: [x86_64] 
   - python39-threadpoolctl 
   - python39-three-merge 
+  - python39-thrift 
   - python39-thriftpy2 
   - python39-timeout-decorator 
   - python39-tinycss2 
