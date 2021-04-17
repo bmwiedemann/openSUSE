@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 17 10:07:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 19.0
+  * The minimum required Qt version is now 5.15.
+  * Support compilation with Qt 6.
+  * The desktop version now always displays the manual with an
+    external browser, which removes the dependency on the Qt
+    WebView library and the compilation option
+    PENTOBI_OPEN_HELP_EXTERNALLY.
+  * The Qt SVG library is no longer needed.
+  * Loading game files in encodings other than UTF-8 is no
+    longer supported.
+
+-------------------------------------------------------------------
 Thu Mar  4 12:35:12 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 18.5

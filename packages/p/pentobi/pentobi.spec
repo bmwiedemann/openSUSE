@@ -17,7 +17,7 @@
 
 
 Name:           pentobi
-Version:        18.5
+Version:        19.0
 Release:        0
 Summary:        Program to play the board game Blokus
 License:        GPL-3.0-only
@@ -34,16 +34,16 @@ BuildRequires:  libqt5-linguist-devel
 BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig
 BuildRequires:  rsvg-convert
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.12
+BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5Core) >= 5.15
 BuildRequires:  pkgconfig(Qt5QuickControls2)
-BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5WebView)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(appstream)
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
+Requires(postun):hicolor-icon-theme
+Requires(postun):update-desktop-files
 
 %description
 Pentobi is a computer opponent for the board game Blokus with
