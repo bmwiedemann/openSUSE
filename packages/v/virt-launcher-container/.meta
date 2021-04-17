@@ -1,0 +1,5 @@
+<package name="virt-launcher-container" project="openSUSE:Factory">
+  <title>KubeVirt Launcher container</title>
+  <description></description>
+  <devel project="Virtualization" package="virt-launcher-container"/>
+</package>

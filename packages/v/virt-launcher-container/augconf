@@ -1,0 +1,27 @@
+# Enable unauthenticated tcp
+set /files/etc/libvirt/libvirtd.conf/listen_tls 0
+set /files/etc/libvirt/libvirtd.conf/listen_tcp 1
+set /files/etc/libvirt/libvirtd.conf/auth_tcp none
+
+
+# Listen on all interfaces for now
+set /files/etc/libvirt/qemu.conf/stdio_handler logd
+set /files/etc/libvirt/qemu.conf/spice_listen 0.0.0.0
+set /files/etc/libvirt/qemu.conf/vnc_listen 0.0.0.0
+set /files/etc/libvirt/qemu.conf/vnc_tls 0
+set /files/etc/libvirt/qemu.conf/vnc_sasl 0
+
+# Fixate user and group
+set /files/etc/libvirt/qemu.conf/user qemu
+set /files/etc/libvirt/qemu.conf/group qemu
+set /files/etc/libvirt/qemu.conf/dynamic_ownership 1
+set /files/etc/libvirt/qemu.conf/remember_owner 0
+
+# Workaround libvirt bug in /dev/ handling
+set /files/etc/libvirt/qemu.conf/namespaces
+
+# Have virtlogd log to stderr
+set /files/etc/libvirt/virtlogd.conf/log_outputs 2:stderr
+
+# Important to save
+save
