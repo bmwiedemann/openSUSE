@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 17 15:18:20 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.6.2
+  * MpvObject: set youtube-dl format before loading file 
+  * Bundle ssl certs from certify
+
+-------------------------------------------------------------------
 Wed Apr  7 10:49:52 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.6.1
