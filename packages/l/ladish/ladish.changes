@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 17 00:33:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Updated to git version 
+  * Fixes package version, as last one already was 1 (+git)
+  * Fix load project dialog
+  * Fix GetAllPorts D-Bus method declaration
+- Dropped upstream merged ladish-python3.patch, ladish.compile.patch
+- Dropped bundled waf, upstream provided got updated
+- Added ladish-version.patch to fix invalid version in some files
+
+-------------------------------------------------------------------
 Tue Oct 20 04:09:08 UTC 2020 - Simon Lees <sflees@suse.de>
 
 - Update to ladish-0.3-150-g27e38d3f with some build fixes

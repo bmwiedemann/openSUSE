@@ -1,0 +1,19 @@
+diff -Nur ladish-1+git.20210227/meson.build new/meson.build
+--- ladish-1+git.20210227/meson.build	2021-02-27 05:55:49.000000000 +0100
++++ new/meson.build	2021-04-17 02:21:01.188755702 +0200
+@@ -1,5 +1,5 @@
+ project('ladish', 'c', 'cpp',
+-  version : '0.3',
++  version : '1.0',
+   license : 'MIT')
+ 
+ data_dir = get_option('prefix') / 'share' / 'ladish'
+@@ -7,7 +7,7 @@
+ dbus_name_base = 'org.ladish'
+ dbus_base_path = '/org/ladish'
+ 
+-git_version = run_command(['git', 'rev-parse', '--short', 'HEAD']).stdout().strip()
++git_version = "-"
+ 
+ configure_file(output : 'version.h',
+     configuration : {

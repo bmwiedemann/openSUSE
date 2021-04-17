@@ -7,4 +7,12 @@
     <comment>Libraries are required by Cadence which will provide a much better UI</comment>
     <requestid>846357</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bf468a7a7e7cdf920030fd6e261e0076</srcmd5>
+    <version>1+git.20210227</version>
+    <time>1618694691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886151</requestid>
+  </revision>
 </revisionlist>

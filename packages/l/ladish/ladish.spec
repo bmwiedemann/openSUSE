@@ -1,7 +1,7 @@
 #
 # spec file for package ladish
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define enable_gui 0
 Name:           ladish
-Version:        0.3.150.g27e38d3f
+Version:        1+git.20210227
 Release:        0
 Summary:        LADI Session Handler
 License:        GPL-2.0-or-later AND AFL-2.1
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://ladish.org/
-Source:         %{name}-%{version}.tar.bz2
-# old version of waf doesn't work with py3
-Source2:        waf-2.0.20.tar.bz2
-Patch0:         ladish.compile.patch
-Patch1:         ladish-python3.patch
+Source:         %{name}-%{version}.tar.xz
+Patch0:         ladish-version.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -64,9 +61,6 @@ LADI Session Handler or simply ladish is a session management system for JACK ap
 %autosetup -p1
 
 %build
-tar -xf %{SOURCE2}
-cp waf-2.0.20/waf .
-cp -r waf-2.0.20/waflib .
 export CFLAGS="%{optflags} -Wno-error"
 export CXXFLAGS="%{optflags} -Wno-unused-but-set-variable"
 # --enable-pylash doesn't work with py3
@@ -75,6 +69,8 @@ export CXXFLAGS="%{optflags} -Wno-unused-but-set-variable"
 
 %install
 /usr/bin/python3 waf install --destdir=%{buildroot}
+# We install it later correctly
+rm -r %{buildroot}/%{_datadir}/doc
 %ifarch x86_64
 mv "%{buildroot}/usr/lib" "%{buildroot}%{_libdir}"
 %endif
@@ -91,8 +87,9 @@ rm -r %{buildroot}/%{_datadir}/locale/
 %postun -p /sbin/ldconfig
 
 %files
-%dir %{_datadir}/ladish
-%{_datadir}/ladish/*
+%license COPYING afl21.txt gpl2.txt
+%doc AUTHORS NEWS README
+%{_datadir}/ladish
 %{_bindir}/ladish_control
 %{_bindir}/ladishd
 %{_bindir}/jmcore
@@ -105,12 +102,7 @@ rm -r %{buildroot}/%{_datadir}/locale/
 %if %{enable_gui}
 %{_bindir}/gladish
 %{_datadir}/applications/gladish.desktop
-%{_datadir}/icons/hicolor/16x16/apps/gladish.png
-%{_datadir}/icons/hicolor/22x22/apps/gladish.png
-%{_datadir}/icons/hicolor/24x24/apps/gladish.png
-%{_datadir}/icons/hicolor/256x256/apps/gladish.png
-%{_datadir}/icons/hicolor/32x32/apps/gladish.png
-%{_datadir}/icons/hicolor/48x48/apps/gladish.png
+%{_datadir}/icons/hicolor/*/apps/gladish.png
 %lang(de) %{_datadir}/locale/de/LC_MESSAGES/ladish.mo
 %lang(fr) %{_datadir}/locale/fr/LC_MESSAGES/ladish.mo
 %lang(ru) %{_datadir}/locale/ru/LC_MESSAGES/ladish.mo
@@ -119,7 +111,5 @@ rm -r %{buildroot}/%{_datadir}/locale/
 %exclude %{_includedir}/lash*
 %exclude %{_libdir}/liblash.so*
 %exclude %{_libdir}/pkgconfig/lash-1.0.pc
-%exclude %{_libdir}/python2.7/site-packages/_lash.so
-%exclude %{_libdir}/python2.7/site-packages/lash.py
 
 %changelog
