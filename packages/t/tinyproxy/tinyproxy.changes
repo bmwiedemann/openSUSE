@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 16 17:31:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11
+  * Support for multiple bind directives.
+
+-------------------------------------------------------------------
 Tue Aug 25 19:19:18 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Do not suppress errors from groupadd/useradd
