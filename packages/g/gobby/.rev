@@ -367,4 +367,12 @@ No indication of GPL-2.0 &quot;only&quot; code and certainly no indication of ag
   * Fix some compile warnings (forwarded request 786990 from mcepl)</comment>
     <requestid>789266</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>4a7cb9bbb9368a982beaf9ccff5e8cdc</srcmd5>
+    <version>0.5.1+20180826.d16519e</version>
+    <time>1618694697</time>
+    <user>dimstar_suse</user>
+    <comment>- stop owning dirs provided by filesystem rpm (bsc#1184786) (forwarded request 885892 from dirkmueller)</comment>
+    <requestid>886220</requestid>
+  </revision>
 </revisionlist>

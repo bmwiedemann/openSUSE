@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 16 09:20:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop owning dirs provided by filesystem rpm (bsc#1184786) 
+
+-------------------------------------------------------------------
 Fri Mar 20 16:00:55 UTC 2020 - mcepl@suse.com
 
 - Update to version 0.5.1+20180826.d16519e:

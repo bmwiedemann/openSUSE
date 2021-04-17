@@ -1,7 +1,7 @@
 #
 # spec file for package gobby
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           gobby
 Version:        0.5.1+20180826.d16519e
 Release:        0
 Summary:        Collaborative editor (Infinote protocol)
-License:        ISC AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND ISC
 Group:          Productivity/Other
 URL:            http://gobby.0x539.de/
 Source0:        %{name}-%{version}.tar.xz
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(libgsasl)
 BuildRequires:  pkgconfig(libinfinity-0.7)
 BuildRequires:  pkgconfig(libxml++-2.6)
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %if 0%{?favor_gtk2}
 BuildRequires:  pkgconfig(gtkmm-2.4)
 BuildRequires:  pkgconfig(gtksourceview-2.0)
@@ -98,7 +98,6 @@ NOCONFIGURE=1 ./autogen.sh
 %files
 %license COPYING
 %doc AUTHORS
-%dir %{_datadir}/
 %dir %{_datadir}/help/
 %doc %{_datadir}/help/C/%{name}
 # %%dir %%{_datadir}/omf/
@@ -109,7 +108,6 @@ NOCONFIGURE=1 ./autogen.sh
 %{_datadir}/applications/%{_versioned_name}.desktop
 %{_datadir}/icons/*/*/apps/%{_versioned_name}.*
 %{_mandir}/man1/*%{ext_man}
-%dir %{_datadir}/appdata/
 %{_datadir}/appdata/gobby-0.5.appdata.xml
 %{_datadir}/glib-2.0/schemas/de.0x539.gobby.gschema.xml
 # FIXME: gnome-themes does not provide excluded directories yet.
