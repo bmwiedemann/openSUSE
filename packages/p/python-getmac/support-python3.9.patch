@@ -1,0 +1,30 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+
+Index: getmac-0.8.2/getmac/getmac.py
+===================================================================
+--- getmac-0.8.2.orig/getmac/getmac.py
++++ getmac-0.8.2/getmac/getmac.py
+@@ -356,6 +356,10 @@ def _uuid_ip(ip):
+ 
+ def _uuid_lanscan_iface(iface):
+     # type: (str) -> Optional[str]
++    if sys.version_info >= (3,9):
++        # Python 3.9 removed uuid._find_mac
++        return None
++
+     from uuid import _find_mac  # type: ignore
+ 
+     if not PY2:
+Index: getmac-0.8.2/tests/test_getmac.py
+===================================================================
+--- getmac-0.8.2.orig/tests/test_getmac.py
++++ getmac-0.8.2/tests/test_getmac.py
+@@ -78,6 +78,8 @@ def test_uuid_ip(mocker):
+     assert getmac._uuid_ip("en0") is None
+ 
+ 
++@pytest.mark.skipif(sys.version_info >= (3, 9),
++                    reason="uuid._find_mac was removed in Python 3.9")
+ def test_uuid_lanscan_iface(mocker):
+     mocker.patch("uuid._find_mac", return_value=2482700837424)
+     assert getmac._uuid_lanscan_iface("en1") == "02:42:0C:80:62:30"

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 16 17:16:11 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix build by skipping a test that doesn't work as
+  expected:
+  * fix-failing-darwin-test.patch
+- Add patch to fix build with python 3.9:
+  * support-python3.9.patch
+
+-------------------------------------------------------------------
 Tue May 26 06:34:22 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

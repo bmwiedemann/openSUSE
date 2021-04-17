@@ -1,7 +1,7 @@
 #
 # spec file for package python-getmac
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/GhostofGoes/getmac
 Source:         https://files.pythonhosted.org/packages/source/g/getmac/getmac-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE
+Patch0:         fix-failing-darwin-test.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         support-python3.9.patch
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
@@ -33,7 +37,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,6 +46,8 @@ A Python module to get MAC addresses of remote hosts and local interfaces.
 
 %prep
 %setup -q -n getmac-%{version}
+%patch0 -p1
+%patch1 -p1
 sed -i "1,4{/\/usr\/bin\/env/d}" getmac/__main__.py
 rm -r *egg-info
 find . -type f -exec chmod -x {} \;

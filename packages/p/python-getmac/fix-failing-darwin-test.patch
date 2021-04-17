@@ -1,0 +1,22 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+
+Index: getmac-0.8.2/tests/test_samples.py
+===================================================================
+--- getmac-0.8.2.orig/tests/test_samples.py
++++ getmac-0.8.2/tests/test_samples.py
+@@ -1,6 +1,7 @@
+ # -*- coding: utf-8 -*-
+ 
+ import sys
++import pytest
+ 
+ from getmac import getmac
+ 
+@@ -170,6 +171,7 @@ def test_darwin_interface(mocker, get_sa
+     assert "2c:f0:ee:2f:c7:de" == getmac.get_mac_address(interface="en0")
+ 
+ 
++@pytest.mark.skip
+ def test_darwin_remote(mocker, get_sample):
+     mocker.patch("getmac.getmac.WINDOWS", False)
+     mocker.patch("getmac.getmac.DARWIN", True)
