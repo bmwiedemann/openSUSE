@@ -17,7 +17,7 @@
 
 
 Name:           leocad
-Version:        21.01
+Version:        21.03
 Release:        0
 Summary:        CAD program for creating virtual LEGO models
 License:        GPL-2.0-only
@@ -25,6 +25,7 @@ URL:            http://leocad.org
 Source0:        https://github.com/leozide/leocad/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
 BuildRequires:  libqt5-qtbase-devel >= 5.4.0
 BuildRequires:  make
@@ -49,17 +50,14 @@ application.
 %install
 %suse_update_desktop_file -r -G 'CAD Application' %{name} Graphics 3DGraphics
 make install INSTALL_ROOT=%{buildroot} DISABLE_UPDATE_CHECK=1 LDRAW_LIBRARY_PATH=%{_datadir}/ldraw
-
-%fdupes %{buildroot}%{_datadir}/icons/hicolor/scalable/
+# We install it later correctly
+rm -rf %{buildroot}%{_datadir}/doc
+# Remove duplicates
+%fdupes %{buildroot}%{_datadir}
 
 %files
-%license %{_datadir}/doc/leocad/COPYING.txt
-%doc %{_datadir}/doc/leocad/README.txt
-%doc %{_datadir}/doc/leocad/CREDITS.txt
-%dir %{_datadir}/doc/leocad/
-%dir %{_datadir}/icons/hicolor/*
-%dir %{_datadir}/icons/hicolor/*/mimetypes
-%dir %{_datadir}/icons/hicolor/*/apps
+%license docs/COPYING.txt
+%doc docs/{README.txt,CREDITS.txt}
 %{_bindir}/leocad
 %{_datadir}/applications/leocad.desktop
 %{_mandir}/man1/leocad.1%{?ext_man}

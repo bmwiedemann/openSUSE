@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr 17 01:21:05 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 21.03:
+  * Added option to draw conditional lines.
+  * Added option to draw logos on studs.
+  * Added option to draw high contrast studs.
+  * Added option to configure edge colors.
+  * Added new find/replace widget.
+  * Improved Bricklink xml export.
+  * Added option to paste parts and keep their original steps.
+  * Added model measurements to the Properties Dialog.
+  * Load official parts before unofficial parts.
+  * Fixed mac retina display issues.
+
+-------------------------------------------------------------------
 Wed Jan 13 16:12:55 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 21.01.
