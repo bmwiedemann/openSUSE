@@ -23,7 +23,7 @@
 %define agent_group  zabbix
 %define SUSEfirewall_services_dir %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 Name:           zabbix
-Version:        4.0.28
+Version:        4.0.30
 Release:        0
 Summary:        Distributed monitoring system
 License:        GPL-2.0-or-later
@@ -632,9 +632,9 @@ fi
 %{_bindir}/zabbix-java-gateway
 %{_prefix}/lib/zabbix-java-gateway/zabbix-java-gateway-%{version}%{?rclevel}.jar
 %{_prefix}/lib/zabbix-java-gateway/android-json-4.3_r3.1.jar
-%{_prefix}/lib/zabbix-java-gateway/slf4j-api-1.6.1.jar
-%{_prefix}/lib/zabbix-java-gateway/logback-core-0.9.27.jar
-%{_prefix}/lib/zabbix-java-gateway/logback-classic-0.9.27.jar
+%{_prefix}/lib/zabbix-java-gateway/slf4j-api-1.7.30.jar
+%{_prefix}/lib/zabbix-java-gateway/logback-core-1.2.3.jar
+%{_prefix}/lib/zabbix-java-gateway/logback-classic-1.2.3.jar
 %{_sbindir}/rczabbix-java-gateway
 %attr(0770,root,%{server_group}) %dir %{_localstatedir}/log/%{server_user}
 %ghost %attr(0770,root,%{server_group}) %dir %{_rundir}/%{server_user}

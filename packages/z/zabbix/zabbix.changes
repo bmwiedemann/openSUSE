@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Apr 14 13:43:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.0.30
+- New features and improvements
+  + ZBXNEXT-6528,ZBXNEXT-6565 Improved performance of host.create and
+    template.create methods; improved performance of templates linking
+    process; optimized DB::insert() method to send bulk SQL inserts
+  + ZBX-19150 Added csrf check
+  + ZBX-12867 reworked problem event popup of problems widget to load data
+    only on mouse hover and click
+  + ZBX-18998 Rewrote API main object validation
+  + ZBX-19111 Improved performance of checking circular and double
+    linkages of templates
+  + ZBX-10370 allowed Java Gateway to use ssl with remote registry
+  + ZBX-19149 updated logback-core, logback-classic and slf4j-api jars
+    to the latest stable versions: 1.2.3, 1.2.3 and 1.7.30
+- Bug fixes:
+  + ZBX-19117 Fixed host deletion, template deletion and maintenance
+    update was not shown in audit log report when it was made via
+    API request
+  + ZBX-17000 Changed translation of 'last' for week of month in
+    japanese
+  + ZBX-19023 Fixed inheritance of the permissions and tag filters
+    for new host groups
+
+-------------------------------------------------------------------
+Wed Apr 14 13:32:26 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.0.29
+- New features and improvements
+  + ZBX-18886 Implemented proper resource cleanup when sender
+    terminates by signal
+  + ZBX-18449 Reworked trigger API validation
+- Bugfixes
+  + ZBX-18966 Fixed interface related errors when changing proxy
+    type from passive to active
+  + ZBX-18825 Fixed last year period calculation in service
+    availability report daily mode
+  + ZBX-18845 Fixed 'UserParameter' possible buffer overrun
+  + ZBX-18887 Fixed user session expiration when notification checks
+    are performed in background
+  + ZBX-18309 Fixed reading log files with NULL character in log line
+  + ZBX-18931 Fixed PHP runtime errors in CLineGraphDraw.php
+  + ZBX-18872 Fixed system.sw.os[name] for cases without quotation
+    mark in /etc/os-release
+  + ZBX-18885 Fixed SNMP agent item not accepting values that are
+    bigger than 2KB
+ - Last update (4.0.28) also included a fix for CVE-2021-27927
+ 
+-------------------------------------------------------------------
 Thu Mar  4 21:23:58 UTC 2021 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest release 4.0.28
