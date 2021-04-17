@@ -709,6 +709,7 @@ Prefer: -libexif-devel-32bit
 Prefer: -libexpat-devel-32bit                         
 Prefer: -libext2fs-devel-32bit                        
 Prefer: -libfabric-devel-32bit                        
+Prefer: -libfdisk-devel-32bit
 Prefer: -libfdt-devel-32bit                           
 Prefer: -libffi-devel-32bit                           
 Prefer: -libfl-devel-32bit                            

@@ -128,34 +128,34 @@
   boo#1180312: '20210329'
   boo#1180316: '20210408'
   boo#1180317: '20210103'
-  boo#1180358: '20210415'
+  boo#1180358: '20210416'
   boo#1180740: '20210115'
-  boo#1180754: '20210415'
+  boo#1180754: '20210416'
   boo#1180853: '20210111'
   boo#1181038: '20210223'
   boo#1181497: '20210127'
   boo#1182233: '20210302'
-  boo#1182240: '20210415'
+  boo#1182240: '20210416'
   boo#1182247: '20210318'
   boo#1182507: '20210222'
   boo#1182544: '20210311'
   boo#1182775: '20210308'
   boo#1182894: '20210308'
   boo#1182961: '20210415'
-  boo#1183082: '20210415'
-  boo#1183454: '20210415'
+  boo#1183082: '20210416'
+  boo#1183454: '20210416'
   boo#1183461: '20210414'
   boo#1183521: '20210329'
-  boo#1183786: '20210415'
-  boo#1184060: '20210415'
+  boo#1183786: '20210416'
+  boo#1184060: '20210416'
   boo#1184162: '20210415'
   boo#1184552: '20210415'
-  boo#1184610: '20210415'
-  boo#1184674: '20210415'
-  boo#1184678: '20210415'
+  boo#1184610: '20210416'
+  boo#1184674: '20210416'
+  boo#1184678: '20210416'
   boo#1184697: '20210414'
   boo#1184698: '20210415'
-  boo#1184776: '20210415'
+  boo#1184776: '20210416'
   bsc#1158994: '20200323'
   bsc#1159185: '20200103'
   bsc#1170555: '20200427'
@@ -209,7 +209,7 @@
   poo#63415: '20200215'
   poo#63418: '20200218'
   poo#63421: '20200211'
-  poo#63454: '20210415'
+  poo#63454: '20210416'
   poo#63457: '20210304'
   poo#63775: '20200222'
   poo#63778: '20200301'
@@ -274,13 +274,13 @@
   poo#71740: '20201024'
   poo#71782: '20201015'
   poo#71929: '20201103'
-  poo#71932: '20210415'
+  poo#71932: '20210416'
   poo#73102: '20201019'
   poo#73213: '20201011'
   poo#73600: '20201107'
   poo#73603: '20201022'
   poo#73624: '20201109'
-  poo#75247: '20210415'
+  poo#75247: '20210416'
   poo#75313: '20201105'
   poo#76861: '20201202'
   poo#76864: '20201207'
@@ -323,14 +323,14 @@
   poo#90002: '20210415'
   poo#90374: '20210414'
   poo#90411: '20210412'
-  poo#90497: '20210415'
-  poo#90513: '20210415'
+  poo#90497: '20210416'
+  poo#90513: '20210416'
   poo#90797: '20210406'
   poo#90998: '20210412'
   poo#91019: '20210415'
   poo#91058: '20210415'
-  poo#91079: '20210415'
-  poo#91088: '20210415'
+  poo#91079: '20210416'
+  poo#91088: '20210416'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -374,7 +374,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20210416</value>
+    <value>20210417</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -385,6 +385,8 @@ product_repo: images
 totest_images_repo: appliances
 products:
   container:
+  - butane-image:
+    - x86_64
   - ceph-csi-image:
     - x86_64
   - ceph-grafana-image:
@@ -522,6 +524,8 @@ products:
     - x86_64
   - opensuse-wsdd-image:
     - x86_64
+  - php8-nginx-image:
+    - x86_64
   - prometheus-webhook-snmp-image:
     - x86_64
   - rook-ceph-image:
@@ -657,10 +661,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20210416'
 published: '20210415'
 publishing: '20210415'
-testing: '20210415'
+testing: '20210416'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
