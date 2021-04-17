@@ -16,24 +16,25 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+# Flavor to build for
+%define pythons python3
 Name:           bump2version
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Version-bump software with a single command
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/c4urself/bump2version
-Source:         https://files.pythonhosted.org/packages/source/b/bump2version/bump2version-%{version}.tar.gz
+# using GH URL instead of PyPI as the PyPI tarball contains already-prebuilt files
+Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module pytest >= 3.4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testfixtures >= 6.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Obsoletes:      bumpversion <= 0.6.0
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 
 %python_subpackages
@@ -49,7 +50,7 @@ language.
 This package obsoletes bumpversion.
 
 %prep
-%setup -q -n bump2version-%{version}
+%setup -q
 
 %build
 %python_build

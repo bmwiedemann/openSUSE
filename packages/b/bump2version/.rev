@@ -24,4 +24,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>868014</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5848fe0f94c943cd2a7fe34896d9fbbd</srcmd5>
+    <version>1.0.1</version>
+    <time>1618694688</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1
+  * Enable special characters in search/replace
+  * Allow globbing a pattern to match multiple files
+  * Added a way to only bump a specified file via –no-configured-files
+  * Fixed: dry-run now correctly outputs
+  * Fixed: no more falling back to default search
+- Only build for major python3
+</comment>
+    <requestid>886118</requestid>
+  </revision>
 </revisionlist>

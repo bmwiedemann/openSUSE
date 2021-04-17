@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 16 18:34:13 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.0.1
+  * Enable special characters in search/replace
+  * Allow globbing a pattern to match multiple files
+  * Added a way to only bump a specified file via –no-configured-files
+  * Fixed: dry-run now correctly outputs
+  * Fixed: no more falling back to default search
+- Only build for major python3
+
+-------------------------------------------------------------------
 Sat Jan 23 17:38:14 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - use python alternatives for executables
