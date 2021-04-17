@@ -25,6 +25,8 @@ Summary:        A Session and Caching library with WSGI Middleware
 License:        Python-2.0
 URL:            https://pypi.python.org/pypi/random2
 Source:         https://files.pythonhosted.org/packages/source/r/random2/random2-%{version}.zip
+# PATCH-FIX-UPSTREAM -- python3.9.patch Origin: Debian
+Patch0:         python3.9.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,7 +47,7 @@ makes porting code to Python 3 a lot harder, if all those tests have to be
 adjusted. This package fixes that.
 
 %prep
-%setup -q -n random2-%{version}
+%autosetup -p1 -n random2-%{version}
 
 %build
 %python_build
