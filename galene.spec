@@ -25,7 +25,7 @@
 %bcond_without  apparmor
 
 Name:           galene
-Version:        0.3.2
+Version:        0.3.3
 Release:        0
 Summary:        Galène videoconferencing server
 License:        MIT
@@ -44,7 +44,7 @@ BuildRequires:  go >= 1.14
 BuildRequires:  systemd-rpm-macros
 Requires:       fdupes
 Requires:       filesystem
-Requires(pre): %fillup_prereq
+Requires(pre):  %fillup_prereq
 %if %{with apparmor}
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
@@ -54,7 +54,7 @@ Recommends:     apparmor-abstractions
 %description
 Galène is a videoconferencing server implemented in Go which can be
 deployed with moderate server resources.
- 
+
 %prep
 %setup -qa1
 %patch1 -p0

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 16 20:42:16 UTC 2021 - michael@stroeder.com
+
+- Update to version 0.3.3:
+  * Fixed an off-by-one error that could occasionally lead to a server
+    crash.
+  * Attempt to negotiate stereo Opus audio.
+
+-------------------------------------------------------------------
 Wed Mar  3 17:27:01 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - build without PIE on PPC64 platform
