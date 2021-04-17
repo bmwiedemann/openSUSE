@@ -1,0 +1,12 @@
+diff -Nur razercfg-0.38/librazer/CMakeLists.txt new/librazer/CMakeLists.txt
+--- razercfg-0.38/librazer/CMakeLists.txt	2016-10-30 17:39:48.000000000 +0100
++++ new/librazer/CMakeLists.txt	2016-11-10 16:13:29.205643647 +0100
+@@ -28,7 +28,7 @@
+ 
+ target_link_libraries(razer usb-1.0)
+ 
+-install(TARGETS razer DESTINATION lib)
++install(TARGETS razer DESTINATION lib${LIB_SUFFIX})
+ 
+ if (NOT DEFINED ENV{RPM_BUILD_ROOT} AND NOT DEFINED ENV{RAZERCFG_PKG_BUILD})
+ 	install_exec_cmd("ldconfig"
