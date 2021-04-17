@@ -1,7 +1,7 @@
 #
 # spec file for package python-sidpy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sidpy
-Version:        0.0.4a
+Version:        0.0.5
 Release:        0
 Summary:        Utilities for processing Spectroscopic and Imaging Data
 License:        MIT

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 14 18:15:43 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.0.5.
+  * Mathematical operations return sidpy.Dataset now instead of
+    dask.array. 
+
+-------------------------------------------------------------------
 Mon Jan 18 21:55:27 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Disable build for python 2 and python3.6 because numpy and scipy
