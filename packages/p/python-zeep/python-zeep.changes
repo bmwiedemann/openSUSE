@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 16 12:36:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix BuildRequires for new python39 flavor
+- Disable tests using python2 freezegun
+
+-------------------------------------------------------------------
 Fri Jan 22 14:22:53 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix typo in filelist

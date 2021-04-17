@@ -1,7 +1,7 @@
 #
 # spec file for package python-zeep
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,10 +48,12 @@ Requires:       python-aiohttp >= 1.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module appdirs >= 1.4.0}
+BuildRequires:  %{python_module aiohttp >= 1.0 if %python-base >= 3.4}
+BuildRequires:  %{python_module aioresponses >= 0.4.1 if %python-base > 3.4}
 BuildRequires:  %{python_module attrs >= 17.2.0}
 BuildRequires:  %{python_module cached-property >= 1.3.0}
 BuildRequires:  %{python_module defusedxml >= 0.4.1}
-BuildRequires:  %{python_module freezegun >= 0.3.8}
+BuildRequires:  %{python_module freezegun >= 0.3.8 if %python-base > 3.4}
 BuildRequires:  %{python_module isodate >= 0.5.4}
 BuildRequires:  %{python_module lxml >= 3.1.0}
 BuildRequires:  %{python_module mock >= 2.0.0}
@@ -65,10 +67,6 @@ BuildRequires:  %{python_module requests-toolbelt >= 0.7.1}
 BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  %{python_module tornado >= 4.0.2}
 BuildRequires:  %{python_module xmlsec >= 0.6.1}
-BuildRequires:  (python36-aiohttp >= 1.0 if python36-base)
-BuildRequires:  (python36-aioresponses >= 0.4.1 if python36-base)
-BuildRequires:  (python38-aiohttp >= 1.0 or (python3-aiohttp >= 0.4.1 and python3-base >= 3.4))
-BuildRequires:  (python38-aioresponses >= 0.4.1 or (python3-aioresponses >= 0.4.1 and python3-base >= 3.4))
 # /SECTION
 %python_subpackages
 
@@ -78,10 +76,6 @@ Python SOAP client based on python-lxml and python-requests
 %prep
 %setup -q -n zeep-%{version}
 %autopatch -p1
-# disable broken tests
-rm tests/test_wsse_signature.py
-rm tests/test_wsse_username.py
-rm tests/test_wsse_utils.py
 
 %build
 %python_build
@@ -92,7 +86,13 @@ rm tests/test_wsse_utils.py
 
 %check
 export LANG=en_US.UTF-8
-%pytest tests/
+# no working freezegun for python2
+python2_ignore="--ignore tests/test_cache.py"
+# broken tests
+ignorefiles="--ignore tests/test_wsse_signature.py \
+             --ignore tests/test_wsse_username.py \
+             --ignore tests/test_wsse_utils.py"
+%pytest tests/ ${$python_ignore} $ignorefiles
 
 %files %{python_files}
 %doc CHANGES README.rst
