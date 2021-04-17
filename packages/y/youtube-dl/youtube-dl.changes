@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 16 20:53:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.04.17
+  * [curiositystream] fix format extraction
+  * [cbssports] fix extraction
+  * [mtv] Fix Viacom A/B Testing Video Player extraction
+  * [youtube:tab] Pass innertube context and x-goog-visitor-id
+    header along with continuation requests
+  * [youtube] Improve URL to extractor routing
+  * [youtube] Add more invidious instances
+  * [youtube:tab] Detect series playlist on playlists page
+  * [youtube:tab] Improve grid extraction
+  * [youtube] Improve stretch extraction and fix stretched ratio
+    calculation
+  * [utils] Add support for support for experimental HTTP
+    response status code 308 Permanent Redirect
+
+-------------------------------------------------------------------
 Tue Apr  6 23:01:41 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2021.04.07
