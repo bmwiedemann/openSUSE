@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 16 12:09:56 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.1.2
+  * Fixes issue giving Endpoint.create() a list of dicts.
+
+-------------------------------------------------------------------
 Fri Apr  9 09:36:47 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 6.1.1
