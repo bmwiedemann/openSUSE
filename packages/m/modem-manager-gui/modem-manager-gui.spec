@@ -1,7 +1,7 @@
 #
 # spec file for package modem-manager-gui
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -82,19 +82,31 @@ make install INSTALLPREFIX=%{buildroot}
 %doc AUTHORS
 %doc Changelog
 %{_bindir}/%{name}
-%{_libdir}/%{name}
+%{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%dir %{_mandir}/*
-%{_mandir}/*/*
+%{_libdir}/%{name}
+%{_mandir}/ar
+%{_mandir}/bn
+%{_mandir}/de/man?/*
+%{_mandir}/fr/man?/*
+%{_mandir}/id/man?/*
+%{_mandir}/man?/*
+%{_mandir}/pl/man?/*
+%{_mandir}/pt_BR/man?/*
+%{_mandir}/ru/man?/*
+%{_mandir}/tr/man?/*
+%{_mandir}/uk/man?/*
+%{_mandir}/uz@Cyrl
+%{_mandir}/uz@Latn
+%{_mandir}/zh_CN/man?/*
 %{_datadir}/metainfo/%{name}.appdata.xml
 %dir %{_sysconfdir}/NetworkManager
 %dir %{_sysconfdir}/NetworkManager/dispatcher.d
 %{_sysconfdir}/NetworkManager/dispatcher.d/95-mmgui-timestamp-notifier
 # https://bugzilla.novell.com/show_bug.cgi?id=950215
 # %%dir %%{_datadir}/polkit-1
-# %%dir %%{_datadir}/polkit-1/actions	
+# %%dir %%{_datadir}/polkit-1/actions
 %exclude %{_datadir}/polkit-1/actions/ru.linuxonly.modem-manager-gui.policy
 
 %files lang -f %{name}.lang

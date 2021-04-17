@@ -88,4 +88,12 @@
 - remove fix-crash.patch (upstream)</comment>
     <requestid>829958</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>bf14a140df1503bb8345679a731541d9</srcmd5>
+    <version>0.0.20</version>
+    <time>1618694707</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886279</requestid>
+  </revision>
 </revisionlist>
