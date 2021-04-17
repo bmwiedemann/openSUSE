@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 17 12:25:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Exclude wx test for python39 flavor because of segfault inside
+  xvfb-run
+
+-------------------------------------------------------------------
 Tue Feb 23 19:25:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.3.0

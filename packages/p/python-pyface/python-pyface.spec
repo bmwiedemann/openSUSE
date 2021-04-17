@@ -79,10 +79,17 @@ export ETS_TOOLKIT=qt4
 %{python_expand mkdir tester_%{$python_bin_suffix}
 pushd tester_%{$python_bin_suffix}
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
-xvfb-run $python -m unittest discover -v pyface
+if [ "${python_flavor}" = "python39" ]; then
+  # segfault in pyface.ui.wx.data_view.tests.test_data_wrapper.TestDataWrapper
+  export EXCLUDE_TESTS="wx"
+else
+  # unset for other flavors
+  export EXCLUDE_TESTS=""
+fi
+xvfb-run --server-args "-screen 0 1920x1080x24" $python -m unittest discover -v pyface
 popd
-# wait 10 seconds before the next xvfb-run
-sleep 10
+# wait 2 seconds before the next xvfb-run
+sleep 2
 }
 
 %files %{python_files}
