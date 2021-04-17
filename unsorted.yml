@@ -2199,6 +2199,14 @@ unsorted:
   - container-support-utils 
   - containerd 
   - containerd-ctr 
+  - containerized-data-importer-api: [x86_64] 
+  - containerized-data-importer-cloner: [x86_64] 
+  - containerized-data-importer-controller: [x86_64] 
+  - containerized-data-importer-importer: [x86_64] 
+  - containerized-data-importer-manifests: [x86_64] 
+  - containerized-data-importer-operator: [x86_64] 
+  - containerized-data-importer-uploadproxy: [x86_64] 
+  - containerized-data-importer-uploadserver: [x86_64] 
   - containers-systemd: [i586] 
   - containment-rpm-docker 
   - contractor 
@@ -2704,6 +2712,8 @@ unsorted:
   - deepin-terminal-lang 
   - deepin-turbo 
   - deepin-turbo-devel 
+  - deepin-wallpapers 
+  - deepin-wallpapers-community 
   - deepin-x11-client 
   - dehydrated 
   - dehydrated-apache2 
@@ -7849,6 +7859,7 @@ unsorted:
   - kitemviews-devel-32bit: [x86_64] 
   - kiten-devel 
   - kitinerary-devel 
+  - kitty 
   - kiwi-man-pages 
   - kiwi-systemdeps 
   - kiwi-systemdeps-bootloaders 
@@ -10069,6 +10080,7 @@ unsorted:
   - libdebuginfod1-dummy 
   - libdecoration0 
   - libdecoration0-32bit: [x86_64] 
+  - libdeepin-turbo0 
   - libdeflate-devel 
   - libdeflate-tools 
   - libdeflate0 
@@ -10421,7 +10433,7 @@ unsorted:
   - libfm-qt-data 
   - libfm-qt-devel 
   - libfm-qt-lang 
-  - libfm-qt8 
+  - libfm-qt9 
   - libfm4 
   - libfmapi-devel 
   - libfmapi1 
@@ -21829,7 +21841,6 @@ unsorted:
   - python36-cloudpickle 
   - python36-cloudscraper 
   - python36-cluster 
-  - python36-cma 
   - python36-cmarkgfm 
   - python36-cmd2 
   - python36-cmdln 
@@ -27113,6 +27124,7 @@ unsorted:
   - python39-astroid 
   - python39-astropy 
   - python39-astropy-helpers 
+  - python39-asttokens 
   - python39-asv 
   - python39-async_generator 
   - python39-async_timeout 
@@ -27139,6 +27151,7 @@ unsorted:
   - python39-autoupgrade-ng 
   - python39-av 
   - python39-avocado-plugins-vt 
+  - python39-avro 
   - python39-awkward 
   - python39-awpa 
   - python39-aws-sam-translator: [x86_64] 
@@ -27504,6 +27517,7 @@ unsorted:
   - python39-cloudpickle 
   - python39-cloudscraper 
   - python39-cluster 
+  - python39-cma 
   - python39-cmarkgfm 
   - python39-cmd2 
   - python39-cmdln 
@@ -27614,6 +27628,7 @@ unsorted:
   - python39-decorator 
   - python39-deepdiff 
   - python39-deepmerge 
+  - python39-defcon 
   - python39-defusedxml 
   - python39-delegator 
   - python39-delegator.py 
@@ -27813,6 +27828,7 @@ unsorted:
   - python39-evtx 
   - python39-exam 
   - python39-execnet 
+  - python39-executing 
   - python39-exiv2 
   - python39-expects 
   - python39-exrex 
@@ -27881,6 +27897,7 @@ unsorted:
   - python39-flup 
   - python39-fontMath 
   - python39-fontParts 
+  - python39-fontPens 
   - python39-forbiddenfruit 
   - python39-formats 
   - python39-freeipa 
@@ -27888,6 +27905,7 @@ unsorted:
   - python39-freezegun 
   - python39-fritzconnection 
   - python39-frozendict 
+  - python39-fs 
   - python39-fsspec 
   - python39-ftputil 
   - python39-fudge 
@@ -28098,6 +28116,7 @@ unsorted:
   - python39-jenkinsapi 
   - python39-jfscripts 
   - python39-jgraph 
+  - python39-jinja2-fsloader 
   - python39-jinja2-pluralize 
   - python39-jinja2-time 
   - python39-jira 
@@ -28130,6 +28149,7 @@ unsorted:
   - python39-jupyter-nbutils 
   - python39-jupyter-packaging 
   - python39-jupyter-protocol: [x86_64] 
+  - python39-jupyter-server: [x86_64] 
   - python39-jupyter-sphinx: [x86_64] 
   - python39-jupyter-telemetry 
   - python39-jupyter_console: [x86_64] 
@@ -28150,6 +28170,7 @@ unsorted:
   - python39-kerberos 
   - python39-keyczar 
   - python39-keyring 
+  - python39-keyrings.alt 
   - python39-kismet-rest 
   - python39-kismetdb 
   - python39-kiss-headers 
@@ -28305,6 +28326,7 @@ unsorted:
   - python39-natsort 
   - python39-nautilus 
   - python39-nautilus-devel 
+  - python39-nbclassic: [x86_64] 
   - python39-nbclient 
   - python39-nbconvert 
   - python39-nbformat 
@@ -29019,6 +29041,7 @@ unsorted:
   - python39-robotframework 
   - python39-rollbar 
   - python39-roman 
+  - python39-rope 
   - python39-rpcq: [x86_64] 
   - python39-rply 
   - python39-rpm 
@@ -29045,6 +29068,7 @@ unsorted:
   - python39-sane 
   - python39-sarge 
   - python39-sas7bdat 
+  - python39-sasl 
   - python39-sat-search 
   - python39-sat-stac 
   - python39-scales 
@@ -29072,6 +29096,7 @@ unsorted:
   - python39-semanage 
   - python39-semantic_version 
   - python39-semver 
+  - python39-sentry-sdk: [x86_64] 
   - python39-seqdiag 
   - python39-serpent 
   - python39-serpy 
@@ -29317,6 +29342,7 @@ unsorted:
   - python39-u-msgpack-python 
   - python39-ua-parser 
   - python39-uamqp 
+  - python39-ufoLib2 
   - python39-ujson 
   - python39-uncertainties 
   - python39-unicodecsv 
@@ -29368,6 +29394,7 @@ unsorted:
   - python39-vistir 
   - python39-vncdotool 
   - python39-vobject 
+  - python39-voila: [x86_64] 
   - python39-volatile 
   - python39-voluptuous 
   - python39-voluptuous-serialize 
@@ -31585,6 +31612,7 @@ unsorted:
   - tardy 
   - target-isns 
   - targetcli-fb-common 
+  - tarix 
   - taskwarrior 
   - tayga 
   - tbb-devel 
@@ -31662,12 +31690,12 @@ unsorted:
   - tensorflow2-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow2-lite: [x86_64] 
   - tensorflow2-lite-devel: [x86_64] 
-  - tensorflow2_2_4_0-gnu-hpc: [x86_64] 
-  - tensorflow2_2_4_0-gnu-hpc-devel: [x86_64] 
-  - tensorflow2_2_4_0-gnu-hpc-doc: [x86_64] 
-  - tensorflow2_2_4_0-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow2_2_4_0-gnu-openmpi2-hpc-devel: [x86_64] 
-  - tensorflow2_2_4_0-gnu-openmpi2-hpc-doc: [x86_64] 
+  - tensorflow2_2_4_1-gnu-hpc: [x86_64] 
+  - tensorflow2_2_4_1-gnu-hpc-devel: [x86_64] 
+  - tensorflow2_2_4_1-gnu-hpc-doc: [x86_64] 
+  - tensorflow2_2_4_1-gnu-openmpi2-hpc: [x86_64] 
+  - tensorflow2_2_4_1-gnu-openmpi2-hpc-devel: [x86_64] 
+  - tensorflow2_2_4_1-gnu-openmpi2-hpc-doc: [x86_64] 
   - tepl-devel 
   - termcap 
   - termcap-32bit: [x86_64] 
