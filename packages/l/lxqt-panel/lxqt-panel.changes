@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 16 18:31:18 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- lxqt-panel-0.17.1:
+  * Fix compilation against Qt < 5.15
+
+-------------------------------------------------------------------
 Fri Apr 16 10:19:54 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.17.0:

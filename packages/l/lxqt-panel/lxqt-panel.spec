@@ -17,12 +17,11 @@
 
 
 Name:           lxqt-panel
-Version:        0.17.0
+Version:        0.17.1
 Release:        0
 Summary:        Desktop Panel for LXQt
-# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 License:        GPL-2.0-or-later
-Group:          System/GUI/LXQt
+Group:          System/GUI/Other
 URL:            http://www.lxqt.org
 Source:         https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/lxqt/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
@@ -93,7 +92,7 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags xkbcommon-x11)"
 
 %files
 %license LICENSE
-%doc AUTHORS
+%doc AUTHORS CHANGELOG
 %{_bindir}/%{name}
 %dir %{_datadir}/desktop-directories/
 %dir %{_datadir}/lxqt
@@ -110,9 +109,11 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags xkbcommon-x11)"
 %{_datadir}/lxqt/panel.conf
 
 %files devel
+%license LICENSE
 %{_includedir}/lxqt
 
 %files lang -f %{name}.lang
+%license LICENSE
 %dir %{_datadir}/lxqt/translations/
 %{_datadir}/lxqt/translations/%{name}
 
