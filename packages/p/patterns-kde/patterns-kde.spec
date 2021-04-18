@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-kde
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -322,6 +322,7 @@ Recommends:     plasma5-pa
 Recommends:     plasma5-pk-updates
 Recommends:     plasma5-addons
 Recommends:     plasma5-disks
+Recommends:     plasma5-systemmonitor
 Recommends:     plasma5-thunderbolt
 Recommends:     kgamma5
 # boo#1177628
