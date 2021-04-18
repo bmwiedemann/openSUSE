@@ -1,0 +1,5 @@
+<package name="python-poetry" project="openSUSE:Factory">
+  <title></title>
+  <description>Python dependency management and packaging made easy</description>
+  <devel project="devel:languages:python" package="python-poetry"/>
+</package>
