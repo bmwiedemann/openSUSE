@@ -701,4 +701,13 @@
 - Run spec-cleaner.</comment>
     <requestid>824091</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>746f946dd790e1f681470db41f20d9b0</srcmd5>
+    <version>4.6.0</version>
+    <time>1618775122</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.6.0:
+  * Many translation updates, see included ChangeLog (forwarded request 886330 from dirkmueller)</comment>
+    <requestid>886360</requestid>
+  </revision>
 </revisionlist>
