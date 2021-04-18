@@ -79,4 +79,12 @@
 - moved Xmodmap files to /usr/etc/X11 (boo#1173053)</comment>
     <requestid>833264</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>8625c60541a683ec38d65c04b594645a</srcmd5>
+    <version>1.0.10</version>
+    <time>1618775119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886351</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 17 16:39:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- modernize spec-file (move license to licensedir) 
+
+-------------------------------------------------------------------
 Wed Sep  9 15:57:08 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - reenabled move to /usr/etc/X11 for Tumbleweed (boo#1173053)
