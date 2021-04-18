@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 16 05:25:40 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Drop long-since upstreamed patch, originally needed to fix i386 builds on
+  SLES:
+  - 0001-makefile-remove-emoji.patch
+
+-------------------------------------------------------------------
 Sat Mar  6 07:17:00 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.4.4, to fix CVE-2021-21334.

@@ -35,8 +35,6 @@ Group:          System/Management
 URL:            https://containerd.tools
 Source:         %{name}-%{version}_%{git_short}.tar.xz
 Source1:        %{name}-rpmlintrc
-# OPENSUSE-FIX-UPSTREAM: Backport of https://github.com/containerd/containerd/pull/2764.
-Patch1:         0001-makefile-remove-emoji.patch
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
 BuildRequires:  go-go-md2man
@@ -83,7 +81,6 @@ separately from Docker.
 
 %prep
 %setup -q -n %{name}-%{version}_%{git_short}
-%patch1 -p1
 
 %build
 # NOTE: containerd will switch to go.mod in 1.5.x so this can be removed after
