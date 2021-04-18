@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Thu Apr 15 11:34:05 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#134
+- install with --removable if efivars are not writable
+  (bsc#1182749, bsc#1174111, bsc#1184160)
+- fix whitespace
+- 0.934
+
+--------------------------------------------------------------------
 Thu Feb 11 14:16:58 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#133
