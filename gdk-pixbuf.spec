@@ -20,7 +20,7 @@
 %define gdk_pixbuf_binary_version 2.10.0
 
 Name:           gdk-pixbuf
-Version:        2.42.4
+Version:        2.42.6
 Release:        0
 Summary:        An image loading library
 License:        LGPL-2.1-or-later

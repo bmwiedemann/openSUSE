@@ -685,4 +685,12 @@
 </comment>
     <requestid>881680</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>12b2e58d47fb092f32644cb2a8f16526</srcmd5>
+    <version>2.42.6</version>
+    <time>1618775113</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 885790 from susnux)</comment>
+    <requestid>886221</requestid>
+  </revision>
 </revisionlist>

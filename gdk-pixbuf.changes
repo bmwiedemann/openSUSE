@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 14 22:47:04 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to stable 2.42.6
+  + Yield gtk_doc option value in subprojects
+  + Always initialise locale on thumbnailer startup
+  + Add fallback subproject for libjpeg
+  + Use type:array for the builtin_loaders option
+  + Default to using builtin png and jpeg loaders
+
+-------------------------------------------------------------------
 Sat Mar 27 20:45:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Disable building of docs: creates a cycle with python:
