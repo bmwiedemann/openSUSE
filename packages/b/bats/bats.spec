@@ -1,7 +1,7 @@
 #
 # spec file for package bats
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define pname %{name}-core
 Name:           bats
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Bash Automated Testing System
 License:        MIT
 Group:          Development/Tools/Other
 URL:            https://github.com/%{pname}/%{pname}/
-Source:         https://github.com/%{pname}/%{pname}/archive/v%{version}.tar.gz
-# FIX-UPSTREAM: Backport of https://github.com/bats-core/bats-core/pull/344. bsc#1180135
-Patch1:         bsc1180135-0001-fix-dont-use-unbound-variables-in-setup-methods.patch
+Source:         %{URL}/archive/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 BuildRequires:  ncurses-utils
 Requires:       gnu_parallel
 BuildArch:      noarch
@@ -44,8 +42,6 @@ to test any UNIX program.
 
 %prep
 %setup -q -n %{pname}-%{version}
-# bsc#1180135
-%patch1 -p1
 
 sed -i '1s|#!%{_bindir}/env bash|#!/bin/bash|' ./lib{,exec}/%{pname}/* ./bin/bats
 %if 0%{?suse_version} <= 1500
