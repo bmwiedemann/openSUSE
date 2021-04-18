@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 14 11:56:22 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Hardening: compile with PIC, link as PIE
+
+-------------------------------------------------------------------
 Tue Oct 20 16:38:24 CEST 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - 41ef9a0bc36b9db7115fbe9623f989bfb47bbade.patch

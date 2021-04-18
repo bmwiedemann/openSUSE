@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 14 11:57:25 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Hardening: compile with PIC, link as PIE
+
+-------------------------------------------------------------------
 Fri Mar 26 13:42:05 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not rely on apparmor at all for the -mini flavor:
