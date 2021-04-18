@@ -1,0 +1,11 @@
+--- xf86-video-amdgpu-19.1.0.old/src/drmmode_display.h	2020-01-09 23:36:44.871438889 +0000
++++ xf86-video-amdgpu-19.1.0/src/drmmode_display.h	2020-01-09 23:37:15.904031508 +0000
+@@ -289,7 +289,7 @@
+ 			 uint64_t *ust, uint32_t *result_seq);
+ 
+ 
+-miPointerSpriteFuncRec drmmode_sprite_funcs;
++extern miPointerSpriteFuncRec drmmode_sprite_funcs;
+ 
+ 
+ #endif
