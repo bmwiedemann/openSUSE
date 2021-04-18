@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 16 15:57:48 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- The problem is due to the fact that the images in the POC have
+  a size of 0x0 and thus, when exporting, no data is written for
+  the image bits.
+  However, space is allocated for the header only, not taking
+  into account that sprintf appends a NUL byte.
+  [bsc#1184751, bsc#1184752, bsc1184751-add-space-for-NUL-byte.patch]
+
+-------------------------------------------------------------------
 Fri Feb 26 13:58:41 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - More overflow prevention of multiplying large ints

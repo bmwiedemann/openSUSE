@@ -38,6 +38,7 @@ Patch11:        libcaca-variable-type.patch
 Patch12:        Bug1120502-add_cast_to_prevent_overflow.patch
 Patch13:        Bug1143286_libcaca_configure_ac_chg_for_lto.patch
 Patch14:        libcaca-bsc1182731-prevent-overflow.patch
+Patch99:        bsc1184751-add-space-for-NUL-byte.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
@@ -144,6 +145,7 @@ drawing, triangle filling and sprite blitting.
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
+%patch99 -p1
 RUBY="ruby-`echo %{rb_ver} | sed 's|\.[^\.]*$||'`"
 find . -type f -exec sed -i "s|ruby-1.9|$RUBY|" \{\} \;
 pushd python
