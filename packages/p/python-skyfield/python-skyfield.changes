@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Apr 18 17:20:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.39
+  * The Angle.dstr() and Angle.hstr() methods now accept a
+    format= argument that lets callers override Skyfield’s default
+    angle formatting and supply their own; see Formatting angles.
+    #513
+  * The prototype planetary_magnitude() function now works not
+    only when given a single position, but when given a vector of
+    several positions.
+- Release 1.38
+  * Replaced the old historic ∆T table from the United States
+    Naval Observatory with up-to-date splines from the 2020 release
+    of the extensive research by Morrison, Stephenson, Hohenkerk,
+    and Zawilski and also adjusted the slope of Skyfield’s
+    near-future ∆T estimates to make the slope of ∆T much less
+    abrupt over the coming century.
+  * Added a full reference frame object for the TEME reference
+    frame used by SGP4 Earth satellite elements.
+- Release 1.37
+  * Added a frame_latlon_and_rates() method that can compute the
+    rates at which angles like altitude and azimuth, or right
+    ascension and declination, are changing.
+  * Accepted a contributor’s helpful fix for a rounding error that
+    had slightly shifted a few constellation boundaries. #548
+  * The Time tuple utc and method utc_strftime() are now backed by
+    the same math, so they always advance to the next calendar day
+    at the same moment. This makes it safe to mix values returned
+    by one of them with values returned by the other. #542
+  * Vector subtraction now returns the position subclass specific
+    to the resulting vector’s center. #549
+- Release 1.36
+  * Tweaked several lines of code that build NumPy arrays to avoid
+    a new deprecation warning Creating an ndarray from ragged
+    nested sequences (which is a list-or-tuple of
+    lists-or-tuples-or ndarrays with different lengths or shapes)
+    is deprecated. NumPy no longer wants to accept a simple
+    constant like 0.0 where the resulting array needs a whole row
+    of zeros. #536
+  * Added an hadec() position method that returns hour angle and
+    declination. #510
+  * The default str() and repr() strings for geographic positions
+    have been streamlined, and no longer raise ValueError when
+    elevation is an array. They now show simple decimals instead
+    of splitting degrees of longitude and latitude into minutes
+    and seconds; always show elevation, even if zero; properly
+    format NumPy arrays; and abbreviate long arrays. #524
+  * Fixed Angle.dstr() and Angle.hstr() to return an array of
+    strings when the angle itself is an array. #527
+- refressh finals2000A.all
+- new assay version
+- new Table-S15.2020.txt
+- allow some float error for all platforms
+  gh#skyfielders/python-skyfield#582
+
+-------------------------------------------------------------------
 Sun Feb 28 22:58:26 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix boo#1182424: Use https url of the Hipparcos catalog
@@ -37,36 +93,36 @@ Fri Jan  1 23:53:33 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
   * The :meth:`~skyfield.timelib.Time.utc_jpl()` method now
     correctly designates its return value as UTC instead of
     the ambiguious UT. #515
-- Refreshed finals2000A.all 
+- Refreshed finals2000A.all
 
 -------------------------------------------------------------------
 Tue Dec 15 17:59:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to v1.34
-  * The position classes have gained methods frame_xyz(), 
-    frame_xyz_and_velocity(), frame_latlon(), and 
-    from_time_and_frame_vectors() that work with a new 
-    library skyfield.framelib to offer a number of familiar 
-    reference frames. These replace the existing ad-hoc 
-    position methods for ecliptic and galactic coordinates, 
-    which are now deprecated (but will continue to be 
+  * The position classes have gained methods frame_xyz(),
+    frame_xyz_and_velocity(), frame_latlon(), and
+    from_time_and_frame_vectors() that work with a new
+    library skyfield.framelib to offer a number of familiar
+    reference frames. These replace the existing ad-hoc
+    position methods for ecliptic and galactic coordinates,
+    which are now deprecated (but will continue to be
     supported). See Coordinates in other reference frames.
   * Added support for IERS Polar Motion 𝑥 and 𝑦.
-  * Added a method lst_hours_at() that computes Local 
+  * Added a method lst_hours_at() that computes Local
     Sidereal Time.
-  * A new almanac routine moon_phase() returns the Moon 
-    phase as an angle where 0° is New Moon, 90° is First 
+  * A new almanac routine moon_phase() returns the Moon
+    phase as an angle where 0° is New Moon, 90° is First
     Quarter, 180° is Full, and 270° is Last Quarter. #282
-  * Almanac search routines that previously returned a 
-    Boolean true/false array now return an integer 0/1 
-    array instead, to work around a new deprecation warning 
-    in NumPy which, for example, would have outlawed using 
-    the Boolean array from moon_nodes() to index into the 
+  * Almanac search routines that previously returned a
+    Boolean true/false array now return an integer 0/1
+    array instead, to work around a new deprecation warning
+    in NumPy which, for example, would have outlawed using
+    the Boolean array from moon_nodes() to index into the
     MOON_NODES list that provides a name for each node. #486
-  * The undocumented columns magnitude_H and magnitude_G 
-    in the Minor Planet Center comets dataframe have been 
-    renamed magnitude_g and magnitude_k following further 
-    research on the file format (which does not itself 
+  * The undocumented columns magnitude_H and magnitude_G
+    in the Minor Planet Center comets dataframe have been
+    renamed magnitude_g and magnitude_k following further
+    research on the file format (which does not itself
     document which magnitude model is intended). #416
 - add finals2000A.all to testdata
 
@@ -147,70 +203,70 @@ Fri Nov 20 23:03:34 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 * The :class:`~skyfield.timelib.Time` object, if manually instantiated
   without a Julian date fraction, now provides a fraction array with
   dimensions that match the Julian date argument.
-  `#458 <https://github.com/skyfielders/python-skyfield/issues/458>`_ 
+  `#458 <https://github.com/skyfielders/python-skyfield/issues/458>`_
 
 -------------------------------------------------------------------
 Sat Sep 26 08:13:08 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 1.29
-  * Fix: the new Julian calendar feature was raising an 
-    exception in the calendar methods like 
-    `skyfield.timelib.Time.tt_calendar()` if the time 
+  * Fix: the new Julian calendar feature was raising an
+    exception in the calendar methods like
+    `skyfield.timelib.Time.tt_calendar()` if the time
     object was in fact an array of times. #450
-  * Fix: trying to iterate over a time object would raise an 
-    exception if the time was created through 
+  * Fix: trying to iterate over a time object would raise an
+    exception if the time was created through
     `~skyfield.timelib.Timescale.ut1()`.
 - Version 1.28
-  * Broken URL: Because the VizieR archive apparently decided 
-    to uncompress their copy of the hip_main.dat.gz Hipparcos 
-    catalog file, the old URL now returns a 404 error. As an 
-    emergency fix, this version of Skyfield switches to their 
-    uncompressed hip_main.dat. Hopefully they don’t compress 
-    it again and break the new URL! A more permanent solution 
+  * Broken URL: Because the VizieR archive apparently decided
+    to uncompress their copy of the hip_main.dat.gz Hipparcos
+    catalog file, the old URL now returns a 404 error. As an
+    emergency fix, this version of Skyfield switches to their
+    uncompressed hip_main.dat. Hopefully they don’t compress
+    it again and break the new URL! A more permanent solution
     is discussed at: #454
-  * To unblock this release, removed a few deprecated pre-1.0 
-    experiments from April 2015 in skyfield.hipparcos and 
-    skyfield.named_stars that broke because the Hipparcos 
-    catalog is no longer compressed; hopefully no one was 
+  * To unblock this release, removed a few deprecated pre-1.0
+    experiments from April 2015 in skyfield.hipparcos and
+    skyfield.named_stars that broke because the Hipparcos
+    catalog is no longer compressed; hopefully no one was
     using them.
-  * In a sweeping internal change, the 
-    `~skyfield.timelib.Timescale` and 
-    `~skyfield.timelib.Time` objects now offer support 
-    for the Julian calendar that’s used by historians for 
-    dates preceding the adoption of the Gregorian calendar in 
-    1582. See choice of calendars if you want to turn on 
+  * In a sweeping internal change, the
+    `~skyfield.timelib.Timescale` and
+    `~skyfield.timelib.Time` objects now offer support
+    for the Julian calendar that’s used by historians for
+    dates preceding the adoption of the Gregorian calendar in
+    1582. See choice of calendars if you want to turn on
     Julian dates in your application. #450
 
 -------------------------------------------------------------------
 Wed Sep 16 09:53:08 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 1.27
-  * The printed appearance of both vectors and of vector 
-    functions like Earth locations and Earth satellites 
-    have been rewritten to be more informative and 
+  * The printed appearance of both vectors and of vector
+    functions like Earth locations and Earth satellites
+    have been rewritten to be more informative and
     consistent.
-  * Added compute_calendar_date() which lets the caller 
-    choose the Julian calendar for ancient dates instead of 
-    always using the proleptic Gregorian calendar. This 
+  * Added compute_calendar_date() which lets the caller
+    choose the Julian calendar for ancient dates instead of
+    always using the proleptic Gregorian calendar. This
     should be particularly useful for historians.
-  * Added J() that builds a time array from an array of 
+  * Added J() that builds a time array from an array of
     floating point years. #436
-  * Added four new strftime methods for the non-UTC 
-    timescales (#443). All four of them support %f for 
-    microseconds, and provide a reasonable default format 
+  * Added four new strftime methods for the non-UTC
+    timescales (#443). All four of them support %f for
+    microseconds, and provide a reasonable default format
     string for callers who don’t wish to concoct their own:
       tai_strftime()
       tt_strftime()
       tdb_strftime()
-      ut1_strftime() 
-  * Thanks to several fixes, comets and asteroids with 
-    parabolic and hyperbolic orbits should now raise fewer 
+      ut1_strftime()
+  * Thanks to several fixes, comets and asteroids with
+    parabolic and hyperbolic orbits should now raise fewer
     errors.
- *  The prototype planetary_magnitude() can now return 
-    magnitudes for Uranus without raising an exception. The 
-    routine does not yet take into account whether the 
-    observer is facing the equator or poles of Uranus, so 
-    the magnitude predicted for the planet will only be 
+ *  The prototype planetary_magnitude() can now return
+    magnitudes for Uranus without raising an exception. The
+    routine does not yet take into account whether the
+    observer is facing the equator or poles of Uranus, so
+    the magnitude predicted for the planet will only be
     accurate to within about 0.1 magnitudes.
 
 -------------------------------------------------------------------
@@ -256,29 +312,29 @@ Sun Aug  2 11:51:04 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
     longer offers the non-standard ``localize()`` method.
     `#413 <https://github.com/skyfielders/python-skyfield/issues/413>`
 - make builds reproducible gh#skyfielders/python-skyfield#415
-    
+
 -------------------------------------------------------------------
 Sat Jul 25 11:43:28 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 1.25
   * Added skyfield.data.stellarium.parse_constellations()
     and skyfield.data.stellarium.parse_star_names()
-    to load Stellarium star names and constellation lines. 
-    Constellation lines are featured in a new example script 
-    neowise-chart that produces a finder chart for 
+    to load Stellarium star names and constellation lines.
+    Constellation lines are featured in a new example script
+    neowise-chart that produces a finder chart for
     comet C/2020 F3 NEOWISE.
-  * The Hipparcos star catalog should now load faster, having 
-    switched behind the scenes to a higher performance Pandas 
+  * The Hipparcos star catalog should now load faster, having
+    switched behind the scenes to a higher performance Pandas
     import routine.
   * Fixed the ability of  skyfield.timelib.Timescale.utc()
     to accept a Python datetime.date object as its argument.
     #409
-  * Slightly lowered the precision of two tests when they 
-    detect that Python is compiled for a 32-bit processor, so 
-    the test suite can succeed when contributors package 
+  * Slightly lowered the precision of two tests when they
+    detect that Python is compiled for a 32-bit processor, so
+    the test suite can succeed when contributors package
     Skyfield for 32-bit Linux. #411
 - use upstreams custom test runner 'assay'
-  * The runner does not have any releases yet. No package 
+  * The runner does not have any releases yet. No package
     available, so use assay-master-252.79f5d78.tar.gz directly
   * drop skyfield-pr405-replace-assay-by-pytest.patch
   * gh#brandon-rhodes/assay#6, gh#skyfielders/python-skyfield#405
@@ -293,25 +349,25 @@ Sat Jul 25 11:43:28 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 Wed Jul 22 14:42:06 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - release precision for i586 test
-  gh#skyfielders/python-skyfield#411 
+  gh#skyfielders/python-skyfield#411
 
 -------------------------------------------------------------------
 Wed Jul 22 14:13:46 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to Version 1.24
   * Added methods :meth:`~skyfield.timelib.Timescale.from_datetime()`
-    and :meth:`~skyfield.timelib.Timescale.from_datetimes()` to 
-    the :class:`~skyfield.timelib.Timescale` class, to 
-    better advertise the ability to build a Skyfield time 
-    from a Python datetime — an ability that was previously 
-    overloaded into the year parameter of the 
-    :meth:`~skyfield.timelib.Timescale.utc()` method (where 
-    it is still supported for backwards compatibility, but 
+    and :meth:`~skyfield.timelib.Timescale.from_datetimes()` to
+    the :class:`~skyfield.timelib.Timescale` class, to
+    better advertise the ability to build a Skyfield time
+    from a Python datetime — an ability that was previously
+    overloaded into the year parameter of the
+    :meth:`~skyfield.timelib.Timescale.utc()` method (where
+    it is still supported for backwards compatibility, but
     no longer documented).
-  * Fix: improved the accuracy with which velocity is 
-    converted between the Earth-fixed ITRF frame that rotates 
-    with the Earth and the inertial GCRS frame that does not. 
-    In particular, this should make Earth satellite 
+  * Fix: improved the accuracy with which velocity is
+    converted between the Earth-fixed ITRF frame that rotates
+    with the Earth and the inertial GCRS frame that does not.
+    In particular, this should make Earth satellite
     velocities more accurate.
 - rebase patches skyfield-pr404-comparefloat.patch
   and skyfield-pr405-replace-assay-by-pytest.patch
@@ -319,43 +375,43 @@ Wed Jul 22 14:13:46 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Sun Jul 12 19:12:27 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- fix typo in Patch0 url 
+- fix typo in Patch0 url
 
 -------------------------------------------------------------------
 Sat Jul 11 19:06:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - mention python-skyfield-rpmlintrc to specfile: don't warn about
-  matplotlib and html5lib in Requires 
+  matplotlib and html5lib in Requires
 
 -------------------------------------------------------------------
 Fri Jul 10 14:51:52 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- Update to Version 1.23     
-  * Added `kepler-orbits` support for generating the positions of comets and 
-    asteroids from Minor Planet Center data files.   
-  * Added `skyfield.positionlib.ICRF.is_behind_earth()` to determine whether a 
-    celestial object is blocked from an Earth satellite’s view by the Earth 
-    itself.    
-  * Replaced the awkward and hard-to-explain rough_period search parameter with 
-    the conceptually simpler step_days parameter, and updated the instructions 
-    in `searches` to match.    
-  * Made the `skyfield.iokit.Loader.load.tle_file()` import method less strict 
-    about Earth satellite names: any text on the line before two lines of TLE 
-    data is now saved as the satellite name. A parameter skip_names=True turns 
-    this off if, for particular TLE files, this leads to unwanted text being 
+- Update to Version 1.23
+  * Added `kepler-orbits` support for generating the positions of comets and
+    asteroids from Minor Planet Center data files.
+  * Added `skyfield.positionlib.ICRF.is_behind_earth()` to determine whether a
+    celestial object is blocked from an Earth satellite’s view by the Earth
+    itself.
+  * Replaced the awkward and hard-to-explain rough_period search parameter with
+    the conceptually simpler step_days parameter, and updated the instructions
+    in `searches` to match.
+  * Made the `skyfield.iokit.Loader.load.tle_file()` import method less strict
+    about Earth satellite names: any text on the line before two lines of TLE
+    data is now saved as the satellite name. A parameter skip_names=True turns
+    this off if, for particular TLE files, this leads to unwanted text being
     saved
 - directly copy downloaded testfiles as sources
 - move skyfield-openSUSE-comparefloat.patch to skyfield-PR404-comparefloat.patch
   and submit upstream: gh#skyfielders/python-skyfield#404
-- move skyfield-openSUSE-replace-testrunner.patch to 
+- move skyfield-openSUSE-replace-testrunner.patch to
   skyfield-PR405-replace-assay-by-pytest.patch and submit upstream:
   gh#skyfielders/python-skyfield#405
 - disable python2 package
-    
+
 -------------------------------------------------------------------
 Thu Jul  9 16:51:16 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- initial package. Version 1.22 
+- initial package. Version 1.22
 - provide a bunch of astronomical testdata which would be downloaded
   by the tests on networking hosts
 - skyfield-openSUSE-replace-testrunner.patch:

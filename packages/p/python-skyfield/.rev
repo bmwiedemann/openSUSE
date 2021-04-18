@@ -191,4 +191,41 @@ research-grade positions for planets and Earth satellites.</comment>
     <comment>- Fix boo#1182424: Use https url of the Hipparcos catalog</comment>
     <requestid>875838</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>337fd352b3c700d2c80d2d733acb5e84</srcmd5>
+    <version>1.39</version>
+    <time>1618775131</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.39
+  * The Angle.dstr() and Angle.hstr() methods now accept a
+    format= argument that lets callers override Skyfield’s default
+    angle formatting and supply their own; see Formatting angles.
+    #513
+  * The prototype planetary_magnitude() function now works not
+    only when given a single position, but when given a vector of
+    several positions.
+- Release 1.38
+  * Replaced the old historic ∆T table from the United States
+    Naval Observatory with up-to-date splines from the 2020 release
+    of the extensive research by Morrison, Stephenson, Hohenkerk,
+    and Zawilski and also adjusted the slope of Skyfield’s
+    near-future ∆T estimates to make the slope of ∆T much less
+    abrupt over the coming century.
+  * Added a full reference frame object for the TEME reference
+    frame used by SGP4 Earth satellite elements.
+- Release 1.37
+  * Added a frame_latlon_and_rates() method that can compute the
+    rates at which angles like altitude and azimuth, or right
+    ascension and declination, are changing.
+  * Accepted a contributor’s helpful fix for a rounding error that
+    had slightly shifted a few constellation boundaries. #548
+  * The Time tuple utc and method utc_strftime() are now backed by
+    the same math, so they always advance to the next calendar day
+    at the same moment. This makes it safe to mix values returned
+    by one of them with values returned by the other. #542
+  * Vector subtraction now returns the position subclass specific
+    to the resulting vector’s center. #549
+- Release 1.36</comment>
+    <requestid>886492</requestid>
+  </revision>
 </revisionlist>
