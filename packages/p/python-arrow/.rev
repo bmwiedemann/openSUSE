@@ -209,4 +209,12 @@
   * [FIX] Corrections to French, German, Japanese and Norwegian locales.</comment>
     <requestid>877856</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>52c5af2038b75ba11a022720ee29b8a2</srcmd5>
+    <version>1.0.3</version>
+    <time>1618775093</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable Python2 builds which are no longer supported upstream</comment>
+    <requestid>885633</requestid>
+  </revision>
 </revisionlist>

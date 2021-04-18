@@ -1,5 +1,5 @@
 #
-# spec file for package python
+# spec file for package python-arrow
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -24,7 +25,6 @@
 %else
 %bcond_with test
 %endif
-%bcond_without python2
 Name:           python-arrow%{?psuffix}
 Version:        1.0.3
 Release:        0
@@ -47,12 +47,6 @@ BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module simplejson}
-%endif
-%if %{with python2}
-BuildRequires:  python-backports.functools_lru_cache >= 1.2.1
-%endif
-%ifpython2
-Requires:       python-backports.functools_lru_cache >= 1.2.1
 %endif
 %python_subpackages
 

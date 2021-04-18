@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 15 12:33:30 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Disable Python2 builds which are no longer supported upstream
+
+-------------------------------------------------------------------
 Tue Mar  9 05:13:18 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.0.3:
