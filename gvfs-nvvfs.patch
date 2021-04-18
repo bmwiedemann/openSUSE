@@ -652,7 +652,7 @@ index 0000000..eebf062
 +
 +#endif /* __G_VFS_BACKEND_NVVFS_H__ */
 diff --git a/daemon/meson.build b/daemon/meson.build
-index dabdcb2..81e219a 100644
+index dabdcb2..bc90afd 100644
 --- a/daemon/meson.build
 +++ b/daemon/meson.build
 @@ -558,6 +558,20 @@ if enable_nfs
@@ -688,10 +688,10 @@ index 0000000..c5d6f8e
 +AutoMount=false
 +Scheme=nvvfs
 diff --git a/meson.build b/meson.build
-index 6525b79..016d4c7 100644
+index 34d754f..98d5332 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -461,6 +461,9 @@ if enable_nfs
+@@ -460,6 +460,9 @@ if enable_nfs
    libnfs_dep = dependency('libnfs', version: '>= 1.9.8')
  endif
  
@@ -701,14 +701,14 @@ index 6525b79..016d4c7 100644
  # *** SFTP backend ***
  enable_sftp = get_option('sftp')
  if enable_sftp
-@@ -514,6 +517,7 @@ output += '  gphoto2: ' + enable_gphoto2.to_string() + '\n'
- output += '  http: ' + enable_http.to_string() + '\n'
- output += '  mtp: ' + enable_mtp.to_string() + '\n'
- output += '  nds: ' + enable_nds.to_string() + '\n'
-+output += '  nvvfs: ' + enable_nvvfs.to_string() + '\n'
- output += '  nfs: ' + enable_nfs.to_string() + '\n'
- output += '  sftp: ' + enable_sftp.to_string() + '\n'
- output += '  smb: ' + enable_samba.to_string() + '\n'
+@@ -514,6 +517,7 @@ summary({
+   'http': enable_http,
+   'mtp': enable_mtp,
+   'nds': enable_nds,
++  'nvvfs': enable_nvvfs,
+   'nfs': enable_nfs,
+   'sftp': enable_sftp,
+   'smb': enable_samba,
 diff --git a/meson_options.txt b/meson_options.txt
 index dced004..e7a9398 100644
 --- a/meson_options.txt

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 16 04:51:53 UTC 2021 - QK ZHU <qkzhu@suse.com>
+
+- Rebase SLE patches gvfs-nds.patch and gvfs-nvvfs.patch for version
+  1.48.0:
+  + Use meson summary function instead of custom output(boo#1184104).
+
+-------------------------------------------------------------------
 Sat Mar 20 07:08:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.48.0:

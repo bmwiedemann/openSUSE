@@ -849,10 +849,10 @@ index 0000000..1068344
 +AutoMount=false
 +Scheme=nds
 diff --git a/meson.build b/meson.build
-index 080637b..6525b79 100644
+index d844335..34d754f 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -449,6 +449,12 @@ config_h.set('HAVE_LIBMTP', enable_mtp)
+@@ -448,6 +448,12 @@ config_h.set('HAVE_LIBMTP', enable_mtp)
  # *** AFP backend ***
  enable_afp = get_option('afp')
  
@@ -865,14 +865,14 @@ index 080637b..6525b79 100644
  # *** NFS backend ***
  enable_nfs = get_option('nfs')
  if enable_nfs
-@@ -507,6 +513,7 @@ output += '  google: ' + enable_google.to_string() + '\n'
- output += '  gphoto2: ' + enable_gphoto2.to_string() + '\n'
- output += '  http: ' + enable_http.to_string() + '\n'
- output += '  mtp: ' + enable_mtp.to_string() + '\n'
-+output += '  nds: ' + enable_nds.to_string() + '\n'
- output += '  nfs: ' + enable_nfs.to_string() + '\n'
- output += '  sftp: ' + enable_sftp.to_string() + '\n'
- output += '  smb: ' + enable_samba.to_string() + '\n'
+@@ -507,6 +513,7 @@ summary({
+   'gphoto2': enable_gphoto2,
+   'http': enable_http,
+   'mtp': enable_mtp,
++  'nds': enable_nds,
+   'nfs': enable_nfs,
+   'sftp': enable_sftp,
+   'smb': enable_samba,
 diff --git a/meson_options.txt b/meson_options.txt
 index 32f10d4..dced004 100644
 --- a/meson_options.txt

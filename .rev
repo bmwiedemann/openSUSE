@@ -1307,4 +1307,14 @@ Also wanted for 13.1</comment>
     <comment>GNOME 40 - here we come (forwarded request 880982 from dimstar)</comment>
     <requestid>881151</requestid>
   </revision>
+  <revision rev="171" vrev="2">
+    <srcmd5>fcdb686073595eff4c8ce8945c9b8e9e</srcmd5>
+    <version>1.48.0</version>
+    <time>1618775114</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase SLE patches gvfs-nds.patch and gvfs-nvvfs.patch for version
+  1.48.0:
+  + Use meson summary function instead of custom output(boo#1184104). (forwarded request 885822 from qkzhu)</comment>
+    <requestid>886222</requestid>
+  </revision>
 </revisionlist>
