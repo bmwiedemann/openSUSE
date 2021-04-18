@@ -52,4 +52,13 @@
     <comment>- fix build by taking current git temporary</comment>
     <requestid>882176</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ae2207756acafa673ab12d1d72a9db06</srcmd5>
+    <version>0.8</version>
+    <time>1618775123</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.8
+  no upstream changelog</comment>
+    <requestid>886432</requestid>
+  </revision>
 </revisionlist>
