@@ -26,8 +26,12 @@
 ###########################################################
 
 Name:           nodejs10
-Version:        10.24.0
+Version:        10.24.1
 Release:        0
+
+# Double DWZ memory limits
+%define _dwz_low_mem_die_limit  20000000
+%define _dwz_max_die_limit     100000000
 
 %define node_version_number 10
 
@@ -254,7 +258,7 @@ BuildRequires:  openssl-devel >= %{openssl_req_ver}
 
 %endif
 %else
-Provides:       bundled(openssl) = 1.1.1j
+Provides:       bundled(openssl) = 1.1.1k
 %endif
 
 %if ! 0%{with intree_cares}
@@ -341,7 +345,7 @@ Requires:       nodejs10 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 6.14.11
+Provides:       npm(npm) = 6.14.12
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
@@ -737,7 +741,7 @@ Provides:       bundled(node-wrappy) = 1.0.2
 Provides:       bundled(node-write-file-atomic) = 2.4.3
 Provides:       bundled(node-xdg-basedir) = 3.0.0
 Provides:       bundled(node-xtend) = 4.0.1
-Provides:       bundled(node-y18n) = 4.0.0
+Provides:       bundled(node-y18n) = 4.0.1
 Provides:       bundled(node-yallist) = 2.1.2
 Provides:       bundled(node-yallist) = 3.0.3
 Provides:       bundled(node-yargs) = 14.2.3

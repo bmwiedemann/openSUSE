@@ -488,4 +488,12 @@
   test-worker-stdio (bsc#1183155)</comment>
     <requestid>877765</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>740254fcc59a7535eaf8616936a45eed</srcmd5>
+    <version>10.24.1</version>
+    <time>1618775054</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>885430</requestid>
+  </revision>
 </revisionlist>

@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v10.23.3/Makefile
+Index: node-v10.24.1/Makefile
 ===================================================================
---- node-v10.23.3.orig/Makefile
-+++ node-v10.23.3/Makefile
+--- node-v10.24.1.orig/Makefile
++++ node-v10.24.1/Makefile
 @@ -43,7 +43,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,10 +21,10 @@ Index: node-v10.23.3/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-v10.23.3/tools/install.py
+Index: node-v10.24.1/tools/install.py
 ===================================================================
---- node-v10.23.3.orig/tools/install.py
-+++ node-v10.23.3/tools/install.py
+--- node-v10.24.1.orig/tools/install.py
++++ node-v10.24.1/tools/install.py
 @@ -77,7 +77,7 @@ def install(paths, dst): map(lambda path
  def uninstall(paths, dst): map(lambda path: try_remove(path, dst), paths)
  
@@ -125,10 +125,10 @@ Index: node-v10.23.3/tools/install.py
  
  def run(args):
    global node_prefix, install_path, target_defaults, variables
-Index: node-v10.23.3/doc/node.1
+Index: node-v10.24.1/doc/node.1
 ===================================================================
---- node-v10.23.3.orig/doc/node.1
-+++ node-v10.23.3/doc/node.1
+--- node-v10.24.1.orig/doc/node.1
++++ node-v10.24.1/doc/node.1
 @@ -30,24 +30,24 @@
  .Dt NODE 1
  .
@@ -158,10 +158,10 @@ Index: node-v10.23.3/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-v10.23.3/src/node.stp
+Index: node-v10.24.1/src/node.stp
 ===================================================================
---- node-v10.23.3.orig/src/node.stp
-+++ node-v10.23.3/src/node.stp
+--- node-v10.24.1.orig/src/node.stp
++++ node-v10.24.1/src/node.stp
 @@ -19,7 +19,7 @@
  // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  // USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -234,12 +234,12 @@ Index: node-v10.23.3/src/node.stp
  {
    scavenge = 1 << 0;
    compact = 1 << 1;
-Index: node-v10.23.3/deps/npm/man/man1/npm.1
+Index: node-v10.24.1/deps/npm/man/man1/npm.1
 ===================================================================
---- node-v10.23.3.orig/deps/npm/man/man1/npm.1
-+++ node-v10.23.3/deps/npm/man/man1/npm.1
+--- node-v10.24.1.orig/deps/npm/man/man1/npm.1
++++ node-v10.24.1/deps/npm/man/man1/npm.1
 @@ -1,11 +1,11 @@
- .TH "NPM" "1" "February 2021" "" ""
+ .TH "NPM" "1" "March 2021" "" ""
  .SH "NAME"
 -\fBnpm\fR \- javascript package manager
 +\fBnpm10\fR \- javascript package manager
@@ -344,10 +344,10 @@ Index: node-v10.23.3/deps/npm/man/man1/npm.1
 +npm10 help npmrc
  
  .RE
-Index: node-v10.23.3/node.gyp
+Index: node-v10.24.1/node.gyp
 ===================================================================
---- node-v10.23.3.orig/node.gyp
-+++ node-v10.23.3/node.gyp
+--- node-v10.24.1.orig/node.gyp
++++ node-v10.24.1/node.gyp
 @@ -22,8 +22,8 @@
      'node_shared_openssl%': 'false',
      'node_v8_options%': '',
@@ -359,10 +359,10 @@ Index: node-v10.23.3/node.gyp
      'node_intermediate_lib_type%': 'static_library',
      'library_files': [
        'lib/internal/per_context.js',
-Index: node-v10.23.3/src/node_main.cc
+Index: node-v10.24.1/src/node_main.cc
 ===================================================================
---- node-v10.23.3.orig/src/node_main.cc
-+++ node-v10.23.3/src/node_main.cc
+--- node-v10.24.1.orig/src/node_main.cc
++++ node-v10.24.1/src/node_main.cc
 @@ -119,6 +119,7 @@ int main(int argc, char* argv[]) {
  #endif
    // Disable stdio buffering, it interacts poorly with printf()
@@ -371,10 +371,10 @@ Index: node-v10.23.3/src/node_main.cc
    setvbuf(stdout, nullptr, _IONBF, 0);
    setvbuf(stderr, nullptr, _IONBF, 0);
    return node::Start(argc, argv);
-Index: node-v10.23.3/deps/npm/man/man1/npx.1
+Index: node-v10.24.1/deps/npm/man/man1/npx.1
 ===================================================================
---- node-v10.23.3.orig/deps/npm/man/man1/npx.1
-+++ node-v10.23.3/deps/npm/man/man1/npx.1
+--- node-v10.24.1.orig/deps/npm/man/man1/npx.1
++++ node-v10.24.1/deps/npm/man/man1/npx.1
 @@ -1,32 +1,32 @@
  .TH "NPX" "1" "July 2020" "npx@10.2.3" "User Commands"
  .SH "NAME"
@@ -459,10 +459,10 @@ Index: node-v10.23.3/deps/npm/man/man1/npx.1
  
  .RE
  
-Index: node-v10.23.3/tools/test.py
+Index: node-v10.24.1/tools/test.py
 ===================================================================
---- node-v10.23.3.orig/tools/test.py
-+++ node-v10.23.3/tools/test.py
+--- node-v10.24.1.orig/tools/test.py
++++ node-v10.24.1/tools/test.py
 @@ -893,7 +893,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm

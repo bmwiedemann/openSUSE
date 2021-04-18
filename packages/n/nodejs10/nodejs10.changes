@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  7 14:25:13 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- New upstream LTS version 10.24.1:
+  * CVE-2021-3450: OpenSSL - CA certificate check bypass with
+    X509_V_FLAG_X509_STRICT (High). (bsc#1183851)
+  * CVE-2021-3449: OpenSSL - NULL pointer deref in
+    signature_algorithms processing (High) (bsc#1183852)
+  * CVE-2020-7774: npm - Update y18n to fix Prototype-Pollution
+    (bsc#1184450)
+
+- versioned.patch: refreshed
+
+-------------------------------------------------------------------
 Mon Mar  8 14:54:19 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - limit_worker_stdio_memsize.patch: reduce memory footprint of
