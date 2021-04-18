@@ -1,0 +1,154 @@
+From cedbf6d5f3f70ca911176de87d6e453eeab4b7a1 Mon Sep 17 00:00:00 2001
+From: Adhemerval Zanella <adhemerval.zanella@linaro.org>
+Date: Thu, 8 Apr 2021 07:39:32 -0300
+Subject: [PATCH] linux: always update select timeout (BZ #27706)
+
+The timeout should be updated even on failure for time64 support.
+
+Checked on i686-linux-gnu.
+
+From 9d7c5cc38e58fb0923e88901f87174a511b61552 Mon Sep 17 00:00:00 2001
+From: Adhemerval Zanella <adhemerval.zanella@linaro.org>
+Date: Wed, 31 Mar 2021 13:53:34 -0300
+Subject: [PATCH] linux: Normalize and return timeout on select (BZ #27651)
+
+The commit 2433d39b697, which added time64 support to select, changed
+the function to use __NR_pselect6 (or __NR_pelect6_time64) on all
+architectures.  However, on architectures where the symbol was
+implemented with __NR_select the kernel normalizes the passed timeout
+instead of return EINVAL.  For instance, the input timeval
+{ 0, 5000000 } is interpreted as { 5, 0 }.
+
+And as indicated by BZ #27651, this semantic seems to be expected
+and changing it results in some performance issues (most likely
+the program does not check the return code and keeps issuing
+select with unormalized tv_usec argument).
+
+To avoid a different semantic depending whether which syscall the
+architecture used to issue, select now always normalize the timeout
+input.  This is a slight change for some ABIs (for instance aarch64).
+
+Checked on x86_64-linux-gnu and i686-linux-gnu.
+
+Index: glibc-2.33/include/time.h
+===================================================================
+--- glibc-2.33.orig/include/time.h
++++ glibc-2.33/include/time.h
+@@ -502,6 +502,11 @@ time_now (void)
+   __clock_gettime (TIME_CLOCK_GETTIME_CLOCKID, &ts);
+   return ts.tv_sec;
+ }
++
++#define NSEC_PER_SEC    1000000000L  /* Nanoseconds per second.  */
++#define USEC_PER_SEC    1000000L     /* Microseconds per second.  */
++#define NSEC_PER_USEC   1000L        /* Nanoseconds per microsecond.  */
++
+ #endif
+ 
+ #endif
+Index: glibc-2.33/sunrpc/svcauth_des.c
+===================================================================
+--- glibc-2.33.orig/sunrpc/svcauth_des.c
++++ glibc-2.33/sunrpc/svcauth_des.c
+@@ -58,7 +58,6 @@
+ 
+ #define debug(msg)		/*printf("svcauth_des: %s\n", msg) */
+ 
+-#define USEC_PER_SEC ((uint32_t) 1000000L)
+ #define BEFORE(t1, t2) timercmp(t1, t2, <)
+ 
+ /*
+Index: glibc-2.33/sysdeps/unix/sysv/linux/select.c
+===================================================================
+--- glibc-2.33.orig/sysdeps/unix/sysv/linux/select.c
++++ glibc-2.33/sysdeps/unix/sysv/linux/select.c
+@@ -33,13 +33,35 @@ int
+ __select64 (int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds,
+ 	    struct __timeval64 *timeout)
+ {
+-  struct __timespec64 ts64, *pts64 = NULL;
+-  if (timeout != NULL)
++  __time64_t s = timeout != NULL ? timeout->tv_sec : 0;
++  int32_t us = timeout != NULL ? timeout->tv_usec : 0;
++  int32_t ns;
++
++  if (s < 0 || us < 0)
++    return INLINE_SYSCALL_ERROR_RETURN_VALUE (EINVAL);
++
++  /* Normalize the timeout, as legacy Linux __NR_select and __NR__newselect.
++     Different than syscall, it also handle possible overflow.  */
++  if (us / USEC_PER_SEC > INT64_MAX - s)
+     {
+-      ts64 = timeval64_to_timespec64 (*timeout);
+-      pts64 = &ts64;
++      s = INT64_MAX;
++      ns = NSEC_PER_SEC - 1;
++    }
++  else
++    {
++      s += us / USEC_PER_SEC;
++      us = us % USEC_PER_SEC;
++      ns = us * NSEC_PER_USEC;
+     }
+ 
++  struct __timespec64 ts64, *pts64 = NULL;
++   if (timeout != NULL)
++     {
++       ts64.tv_sec = s;
++       ts64.tv_nsec = ns;
++       pts64 = &ts64;
++     }
++
+ #ifndef __NR_pselect6_time64
+ # define __NR_pselect6_time64 __NR_pselect6
+ #endif
+@@ -52,10 +74,10 @@ __select64 (int nfds, fd_set *readfds, f
+          (though the pselect() glibc call suppresses this behavior).
+          Since select() on Linux has the same behavior as the pselect6
+          syscall, we update the timeout here.  */
+-      if (r == 0 || errno != ENOSYS)
++      if (r >= 0 || errno != ENOSYS)
+ 	{
+ 	  if (timeout != NULL)
+-	    TIMEVAL_TO_TIMESPEC (timeout, &ts64);
++	    TIMESPEC_TO_TIMEVAL (timeout, &ts64);
+ 	  return r;
+ 	}
+ 
+@@ -64,14 +86,15 @@ __select64 (int nfds, fd_set *readfds, f
+ 
+ #ifndef __ASSUME_TIME64_SYSCALLS
+   struct timespec ts32, *pts32 = NULL;
+-  if (timeout != NULL)
++  if (pts64 != NULL)
+     {
+-      if (! in_time_t_range (timeout->tv_sec))
++      if (! in_time_t_range (pts64->tv_sec))
+ 	{
+ 	  __set_errno (EINVAL);
+ 	  return -1;
+ 	}
+-      ts32 = valid_timespec64_to_timespec (ts64);
++      ts32.tv_sec = s;
++      ts32.tv_nsec = ns;
+       pts32 = &ts32;
+     }
+ # ifndef __ASSUME_PSELECT
+@@ -84,7 +107,7 @@ __select64 (int nfds, fd_set *readfds, f
+   r = SYSCALL_CANCEL (pselect6, nfds, readfds, writefds, exceptfds, pts32,
+ 		      NULL);
+ # endif
+-  if (r >= 0 && timeout != NULL)
++  if (timeout != NULL)
+     *timeout = valid_timespec_to_timeval64 (ts32);
+ #endif
+ 
+@@ -105,7 +128,7 @@ __select (int nfds, fd_set *readfds, fd_
+       ptv64 = &tv64;
+     }
+   int r = __select64 (nfds, readfds, writefds, exceptfds, ptv64);
+-  if (r >= 0 && timeout != NULL)
++  if (timeout != NULL)
+     /* The remanining timeout will be always less the input TIMEOUT.  */
+     *timeout = valid_timeval64_to_timeval (tv64);
+   return r;

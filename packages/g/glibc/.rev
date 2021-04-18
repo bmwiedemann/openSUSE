@@ -2452,4 +2452,14 @@ for more fun options (forwarded request 147495 from coolo)</comment>
   (CVE-2021-27645, bsc#1182733, BZ #27462)</comment>
     <requestid>878145</requestid>
   </revision>
+  <revision rev="248" vrev="5">
+    <srcmd5>6a71f9cbca7ba11988be4bbcb743250c</srcmd5>
+    <version>2.33</version>
+    <time>1618775035</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable support for static PIE (bsc#1184646)
+- select-modify-timeout.patch: linux: always update select timeout
+  (bsc#1184339, BZ #27706) (forwarded request 885029 from Andreas_Schwab)</comment>
+    <requestid>885031</requestid>
+  </revision>
 </revisionlist>

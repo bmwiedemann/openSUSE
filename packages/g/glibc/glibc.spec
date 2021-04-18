@@ -255,6 +255,8 @@ Patch1002:      x86-isa-level.patch
 Patch1003:      nscd-netgroupcache.patch
 # PATCH-FIX-UPSTREAM nss: fix nss_database_lookup2's alternate handling (BZ #27416)
 Patch1004:      nss-database-lookup.patch
+# PATCH-FIX-UPSTREAM linux: always update select timeout (BZ #27706)
+Patch1005:      select-modify-timeout.patch
 
 ###
 # Patches awaiting upstream approval
@@ -477,6 +479,7 @@ Internal usrmerge bootstrap helper
 %patch1002 -p1
 %patch1003 -p1
 %patch1004 -p1
+%patch1005 -p1
 
 %patch2000 -p1
 %patch2001 -p1
@@ -574,22 +577,13 @@ BuildCCplus="%__cxx"
 #
 mkdir cc-base
 cd cc-base
-%ifarch %arm aarch64
-# remove [asynchronous-]unwind-tables during configure as it causes
-# some checks to fail spuriously on arm
-conf_cflags="${BuildFlags/-fasynchronous-unwind-tables/}"
-conf_cflags="${conf_cflags/-funwind-tables/}"
-%else
-conf_cflags="$BuildFlags"
-%endif
-
 %if %{build_profile}
 profile="--enable-profile"
 %else
 profile="--disable-profile"
 %endif
 ../configure \
-	CFLAGS="$conf_cflags" BUILD_CFLAGS="$conf_cflags" \
+	CFLAGS="$BuildFlags" BUILD_CFLAGS="$BuildFlags" \
 	CC="$BuildCC" CXX="$BuildCCplus" \
 	--prefix=%{_prefix} \
 	--libexecdir=%{_libexecdir} --infodir=%{_infodir} \
@@ -619,6 +613,9 @@ profile="--disable-profile"
 	--enable-stackguard-randomization \
 %endif
 	${enable_stack_protector:+--enable-stack-protector=$enable_stack_protector} \
+%ifarch %{ix86} x86_64 aarch64
+	--enable-static-pie \
+%endif
 	--enable-tunables \
 	--enable-kernel=%{enablekernel} \
 	--with-bugurl=http://bugs.opensuse.org \
@@ -626,8 +623,7 @@ profile="--disable-profile"
 	--enable-systemtap \
 	--disable-timezone-tools \
 	--disable-crypt
-# explicitly set CFLAGS to use the full CFLAGS (not the reduced one for configure)
-make %{?_smp_mflags} CFLAGS="$BuildFlags" BUILD_CFLAGS="$BuildFlags"
+make %{?_smp_mflags}
 cd ..
 
 #
@@ -844,11 +840,6 @@ touch %{buildroot}/etc/ld.so.cache
 chmod 644 %{buildroot}%{_bindir}/ldd
 
 rm -f %{buildroot}%{rootsbindir}/sln
-
-# Remove the buildflags tracking section and the build-id
-for o in %{buildroot}/%{_libdir}/crt[1in].o %{buildroot}/%{_libdir}/lib*_nonshared.a; do
-	objcopy -R ".comment.SUSE.OPTs" -R ".note.gnu.build-id" $o
-done
 
 %ifnarch i686
 mkdir -p %{buildroot}/usr/lib/tmpfiles.d/

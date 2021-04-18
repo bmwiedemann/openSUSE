@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 13 11:44:37 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Enable support for static PIE (bsc#1184646)
+- select-modify-timeout.patch: linux: always update select timeout
+  (bsc#1184339, BZ #27706)
+
+-------------------------------------------------------------------
+Tue Mar 23 16:55:51 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Don't remove -f[asynchronous-]unwind-tables during configure run, no
+  longer needed
+
+-------------------------------------------------------------------
 Mon Mar  8 10:43:30 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - nss-database-check-reload.patch: nsswitch: return result when nss
