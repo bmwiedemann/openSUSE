@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 14 13:53:36 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add missing arm grub2 efi subvolume (boo#1184788)
+- 20210414
+
+-------------------------------------------------------------------
 Mon Mar 29 09:07:18 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Respect additional software needed by security proposal
