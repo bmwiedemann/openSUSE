@@ -107,4 +107,12 @@
 - Stop passing Dbenchmarks=true, no longer recognized nor used. (forwarded request 867574 from iznogood)</comment>
     <requestid>867720</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5daae300efdfbd8b7f08433d0a2dd3dc</srcmd5>
+    <version>1.10.6</version>
+    <time>1618775092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885629</requestid>
+  </revision>
 </revisionlist>

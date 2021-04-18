@@ -17,7 +17,7 @@
 
 
 Name:           graphene
-Version:        1.10.2
+Version:        1.10.6
 Release:        0
 Summary:        Thin type layer for graphic libraries
 License:        MIT
@@ -84,9 +84,11 @@ This subpackage contains the development files for the Graphene library.
 %meson \
 	-Dgtk_doc=true \
 	-Dgobject_types=true \
-	-Dintrospection=true \
+	-Dintrospection=enabled \
 	-Dgcc_vector=true \
+%ifarch x86_64
 	-Dsse2=true \
+%endif
 %ifarch armv7hl
 	-Darm_neon=false \
 %else

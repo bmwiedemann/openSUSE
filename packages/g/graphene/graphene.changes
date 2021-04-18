@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr 15 11:42:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.10.6:
+  + Hide GRAPHENE_SIMD_S from the introspection data.
+  + Nudge ray axis when intersecting a box.
+- Changes from version 1.10.4:
+  + Add ARM NEON support when building with Visual Studio.
+  + Build fix on ARM64 Windows.
+  + Drop deprecated "python3" Meson module.
+  + Fix detection of non-intersecting boxes.
+  + Only enable SSE2 on x86_64.
+  + Use the compiler-appropriate alignment attributes.
+  + Change introspection option to a yielding feature.
+- Change -Dintrospection=true meson parameter to
+  -Dintrospection=enabled: follow upstream build system changes.
+- Wrap -Dsse2=true meson parameter into %ifarch x86_64: 32bit
+  builds for example do not support sse2 (likely boo#1184678).
+
+-------------------------------------------------------------------
 Thu Jan 28 12:08:06 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Pass conditional Darm_neon=false instead of Darm-neon=true to
