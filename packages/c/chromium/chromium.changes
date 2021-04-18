@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 14 16:09:27 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 89.0.4389.128 (boo#1184700):
+  * CVE-2021-21206: Use after free in blink
+  * CVE-2021-21220: Insufficient validation of untrusted input in
+    v8 for x86_64
+
+-------------------------------------------------------------------
 Sat Apr  3 17:41:28 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to 89.0.4389.114 bsc#1184256
