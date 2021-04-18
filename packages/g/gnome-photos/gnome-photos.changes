@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 15 13:26:25 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix dependencies after the move from Tracker 2 to Tracker 3:
+  + Drop pkgconfig(tracker-control-2.0) BuildRequires.
+  + Replace (tracker >= 2 with tracker < 2.99) Requires with
+    tracker >= 3.
+  + Replace (tracker-miner-files > 2 with tracker-miner-files <
+    2.99) Requires with tracker-miner-files >= 3.
+
+-------------------------------------------------------------------
 Thu Mar 25 13:23:25 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:

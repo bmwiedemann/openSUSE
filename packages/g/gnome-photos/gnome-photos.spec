@@ -60,12 +60,11 @@ BuildRequires:  pkgconfig(libgfbgraph-0.2) >= 0.2.1
 BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.26.0
-BuildRequires:  pkgconfig(tracker-control-2.0)
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
 # gnome-photos references tracker's glib schemas
-Requires:       (tracker >= 2 with tracker < 2.99)
-# and also org.freedesktop.Tracker.Miner.Files, which lives in tracker-miner-files
-Requires:       (tracker-miner-files > 2 with tracker-miner-files < 2.99)
+Requires:       tracker >= 3
+# and also org.freedesktop.Tracker.Miner3.Files, which lives in tracker-miner-files
+Requires:       tracker-miner-files >= 3
 # If we want to be able to send photos to a remote DLNA renderer, we require the dbus service for it
 Recommends:     dbus(dleyna-renderer-service)
 
