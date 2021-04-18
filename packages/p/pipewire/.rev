@@ -238,4 +238,12 @@
     <comment></comment>
     <requestid>880162</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e0ae1a9cdaa86dc96483433f8e92d510</srcmd5>
+    <version>0.3.25</version>
+    <time>1618775099</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.3.25 (forwarded request 884927 from stroeder)</comment>
+    <requestid>885654</requestid>
+  </revision>
 </revisionlist>

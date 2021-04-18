@@ -41,7 +41,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.24
+Version:        0.3.25
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -405,6 +405,7 @@ fi
 %{_bindir}/pw-cli
 %{_bindir}/pw-dot
 %{_bindir}/pw-dump
+%{_bindir}/pw-loopback
 %{_bindir}/pw-metadata
 %{_bindir}/pw-mididump
 %{_bindir}/pw-midiplay
