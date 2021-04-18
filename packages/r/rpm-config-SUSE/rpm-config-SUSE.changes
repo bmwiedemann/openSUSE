@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 05 15:52:55 UTC 2021 - lnussel@suse.de
+
+- Update to version 0.g76:
+  * Prepare usrmerge (boo#1029961)
+  * scripts/find-provides.ksyms: Handle XZ compressed kernel (boo#1179251).
+  * find-requires.ksyms: use "if kernel" conditional for modules-load.d
+  * find-requires.ksyms: actually generate modules-load.d dependencies
+  * find-requires.ksyms: Silence the awk warning
+  * find-provides.ksyms: Fix kernel version test
+  * find-provides.ksyms: Fix ksym-provides test
+
+-------------------------------------------------------------------
 Mon Oct 26 12:14:50 UTC 2020 - lnussel@suse.de
 
 - Update to version 0.g64:

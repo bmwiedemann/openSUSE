@@ -135,4 +135,19 @@
     <comment></comment>
     <requestid>845616</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ea8e9de9024f7ff10f646da9206f3de1</srcmd5>
+    <version>0.g76</version>
+    <time>1618775044</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.g76:
+  * Prepare usrmerge (boo#1029961)
+  * scripts/find-provides.ksyms: Handle XZ compressed kernel (boo#1179251).
+  * find-requires.ksyms: use &quot;if kernel&quot; conditional for modules-load.d
+  * find-requires.ksyms: actually generate modules-load.d dependencies
+  * find-requires.ksyms: Silence the awk warning
+  * find-provides.ksyms: Fix kernel version test
+  * find-provides.ksyms: Fix ksym-provides test</comment>
+    <requestid>885341</requestid>
+  </revision>
 </revisionlist>
