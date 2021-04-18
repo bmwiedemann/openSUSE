@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  7 17:35:46 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-bonding-opts.patch (bsc#1184085)
+  + Write proper bonding option configuration for SLE/openSUSE
+- Fix application and inclusion of
+  use_arroba_to_include_sudoers_directory-bsc_1181283.patchfix (bsc#1181283)
+
+-------------------------------------------------------------------
 Fri Jan 22 16:27:17 UTC 2021 - Jordi Massaguer <jmassaguerpla@suse.com>
 
 - Add use_arroba_to_include_sudoers_directory-bsc_1181283.patchfix (bsc#1181283)

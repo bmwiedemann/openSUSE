@@ -1,7 +1,7 @@
 #
 # spec file for package cloud-init
 #
-# Copyright (c) 2019 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,9 @@ Patch59:        cloud-init-recognize-hpc.patch
 # FIXME https://github.com/canonical/cloud-init/commit/eea754492f074e00b601cf77aa278e3623857c5a
 Patch60:        cloud-init-azure-def-usr-pass.patch
 Patch61:        cloud-init-sle12-compat.patch
-Patch70:        use_arroba_to_include_sudoers_directory-bsc_1181283.patch 
+Patch70:        use_arroba_to_include_sudoers_directory-bsc_1181283.patch
+# FIXME https://github.com/canonical/cloud-init/pull/831
+Patch71:        cloud-init-bonding-opts.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
@@ -142,8 +144,9 @@ Documentation and examples for cloud-init tools
 %patch60
 %if 0%{?suse_version} < 1500
 %patch61
-%patch70
 %endif
+%patch70 -p1
+%patch71
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)
 [ -n "$version_pys" ] ||
