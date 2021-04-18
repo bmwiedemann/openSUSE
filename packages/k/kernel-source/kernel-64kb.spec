@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.11
-%define patchversion 5.11.12
+%define patchversion 5.11.15
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -68,9 +68,9 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.11.12
+Version:        5.11.15
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g92a542e
+Release:        <RELEASE>.g64fb5bf
 %else
 Release:        0
 %endif
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-92a542ebeea6c920c96be6339334e6057738ffe2
-Provides:       kernel-srchash-92a542ebeea6c920c96be6339334e6057738ffe2
+Provides:       kernel-%build_flavor-base-srchash-64fb5bf155e202fa4188e204689cce6c85ea05cc
+Provides:       kernel-srchash-64fb5bf155e202fa4188e204689cce6c85ea05cc
 # END COMMON DEPS
-Provides:       %name-srchash-92a542ebeea6c920c96be6339334e6057738ffe2
+Provides:       %name-srchash-64fb5bf155e202fa4188e204689cce6c85ea05cc
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh
@@ -1145,6 +1145,7 @@ Summary:        Development files necessary for building kernel modules
 Group:          Development/Sources
 Provides:       %name-devel = %version-%source_rel
 Provides:       multiversion(kernel)
+Requires:       %{name} = %version-%source_rel
 %if ! %build_vanilla
 Requires:       kernel-devel%variant = %version-%source_rel
 Recommends:     make

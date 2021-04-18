@@ -5415,4 +5415,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.11.12 &amp; a CVE fix</comment>
     <requestid>883754</requestid>
   </revision>
+  <revision rev="582" vrev="1">
+    <srcmd5>8d1f44c1a7991aab9f93f6c861351954</srcmd5>
+    <version>5.11.15</version>
+    <time>1618775048</time>
+    <user>dimstar_suse</user>
+    <comment>5.11.15 &amp; 5.11.14 &amp; 5.11.13 &amp; other small fixes</comment>
+    <requestid>886086</requestid>
+  </revision>
 </revisionlist>
