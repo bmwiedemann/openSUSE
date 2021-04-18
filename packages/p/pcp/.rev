@@ -581,4 +581,12 @@ This is needed so that the rpm hack to update config.sub works (forwarded reques
 - Merge upstream build-time tmpdir fixes</comment>
     <requestid>873360</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>431fe44b3a3e52eefbff27980d199637</srcmd5>
+    <version>5.2.2</version>
+    <time>1618775117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886305</requestid>
+  </revision>
 </revisionlist>

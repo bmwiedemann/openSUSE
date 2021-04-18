@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 13 12:41:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace ancient RPM variables by modern equivalents.
+- Drop support for ancient SUSE and ancient Fedora.
+
+-------------------------------------------------------------------
 Sun Feb 14 21:43:28 UTC 2021 - David Disseldorp <ddiss@suse.com>
 
 - Spec file fixes and cleanups

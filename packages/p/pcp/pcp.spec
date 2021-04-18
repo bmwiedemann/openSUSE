@@ -21,12 +21,6 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%if 0%{?suse_version} > 1140 || 0%{?fedora_version} > 14
-%global has_systemd 1
-%else
-%global has_systemd 0
-%endif
-
 %if 0%{?suse_version}
 %global pcp_gr			System/Monitoring
 %global lib_pkg			libpcp3
@@ -288,11 +282,6 @@ Provides:       pcp-webapi = %{version}
 Obsoletes:      pcp-manager < 5.2.0
 Obsoletes:      pcp-manager-debuginfo < 5.2.0
 
-%if 0%{?suse_version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%else
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%endif
 BuildRequires:  autoconf
 BuildRequires:  avahi-devel
 BuildRequires:  bison
@@ -2361,9 +2350,6 @@ updated policy package.
 
 autoconf
 
-%clean
-rm -Rf $RPM_BUILD_ROOT
-
 %build
 %define _lto_cflags %{nil}
 %if 0%{?suse_version}
@@ -2372,7 +2358,7 @@ export PACKAGE_DISTRIBUTION="suse"
 %endif
 # tmpdir used during build https://github.com/performancecopilot/pcp/issues/1140
 export PACKAGE_BUILD_DATE=`date -u -r CHANGELOG +%Y-%m-%d`
-PCP_CFLAGS="$RPM_OPT_FLAGS" CFLAGS="$RPM_OPT_FLAGS" CCFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" %configure \
+PCP_CFLAGS="%{optflags}" CFLAGS="%{optflags}" CCFLAGS="%{optflags}" CXXFLAGS="%{optflags}" %configure \
    --with-tmpdir=%{_tempsdir} \
    --datarootdir=%{_datadir} \
    --docdir=%{_docdir} \
@@ -2390,14 +2376,14 @@ PCP_CFLAGS="$RPM_OPT_FLAGS" CFLAGS="$RPM_OPT_FLAGS" CCFLAGS="$RPM_OPT_FLAGS" CXX
    %{?_with_snmp} \
    %{?_with_nutcracker} \
    %{?_with_python2}
-PCP_CFLAGS="$RPM_OPT_FLAGS" CFLAGS="$RPM_OPT_FLAGS" CCFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" make default_pcp
+PCP_CFLAGS="%{optflags}" CFLAGS="%{optflags}" CCFLAGS="%{optflags}" CXXFLAGS="%{optflags}" make default_pcp
 
 ###############################################################################
 
 %install
 BACKDIR=`pwd`
 NO_CHOWN=true
-DIST_ROOT=$RPM_BUILD_ROOT
+DIST_ROOT="%{buildroot}"
 DIST_TMPFILES=$BACKDIR/install.tmpfiles
 export NO_CHOWN DIST_ROOT DIST_TMPFILES
 make install_pcp
@@ -2405,117 +2391,108 @@ make install_pcp
 PCP_GUI='pmchart|pmconfirm|pmdumptext|pmmessage|pmquery|pmsnap|pmtime'
 
 # Fix stuff we do/don't want to ship
-rm -f $RPM_BUILD_ROOT/%{_libdir}/*.a
+rm -f %{buildroot}/%{_libdir}/*.a
 
 %if %{disable_sheet2pcp}
 # remove sheet2pcp until BZ 830923 and BZ 754678 are resolved.
-rm -f $RPM_BUILD_ROOT/%{_bindir}/sheet2pcp $RPM_BUILD_ROOT/%{_mandir}/man1/sheet2pcp.1*
+rm -f %{buildroot}/%{_bindir}/sheet2pcp %{buildroot}/%{_mandir}/man1/sheet2pcp.1*
 %endif
 
 %if %{disable_libvirt}
-rm -fr $RPM_BUILD_ROOT/%{_pmdasdir}/libvirt
+rm -fr %{buildroot}/%{_pmdasdir}/libvirt
 %endif
 
 %if %{disable_postgresql}
-rm -fr $RPM_BUILD_ROOT/%{_pmdasdir}/postgresql
+rm -fr %{buildroot}/%{_pmdasdir}/postgresql
 %endif
 
 # remove {config,platform}sz.h as these are not multilib friendly.
-rm -f $RPM_BUILD_ROOT/%{_includedir}/pcp/configsz.h
-rm -f $RPM_BUILD_ROOT/%{_includedir}/pcp/platformsz.h
+rm -f %{buildroot}/%{_includedir}/pcp/configsz.h
+rm -f %{buildroot}/%{_includedir}/pcp/platformsz.h
 
 %if %{disable_infiniband}
 # remove pmdainfiniband on platforms lacking IB devel packages.
-rm -f $RPM_BUILD_ROOT/%{_pmdasdir}/ib
-rm -fr $RPM_BUILD_ROOT/%{_pmdasdir}/infiniband
+rm -f %{buildroot}/%{_pmdasdir}/ib
+rm -fr %{buildroot}/%{_pmdasdir}/infiniband
 %endif
 
 %if %{disable_mssql}
 # remove pmdamssql on platforms lacking MSODBC driver packages.
-rm -fr $RPM_BUILD_ROOT/%{_pmdasdir}/mssql
-rm -fr $RPM_BUILD_ROOT/%{_pmdasexecdir}/mssql
-rm -fr $RPM_BUILD_ROOT/%{_confdir}/mssql
+rm -fr %{buildroot}/%{_pmdasdir}/mssql
+rm -fr %{buildroot}/%{_pmdasexecdir}/mssql
+rm -fr %{buildroot}/%{_confdir}/mssql
 %endif
 
 %if %{disable_zabbix_agent}
-rm -fr $RPM_BUILD_ROOT/%{_libdir}/zabbix
-rm -fr $RPM_BUILD_ROOT/%{_sysconfdir}/zabbix
+rm -fr %{buildroot}/%{_libdir}/zabbix
+rm -fr %{buildroot}/%{_sysconfdir}/zabbix
 %endif
 
 %if %{disable_sdt}
-rm -fr $RPM_BUILD_ROOT/%{_tapsetdir}
+rm -fr %{buildroot}/%{_tapsetdir}
 %endif
 
 %if %{disable_selinux}
-rm -fr $RPM_BUILD_ROOT/%{_selinuxdir}
+rm -fr %{buildroot}/%{_selinuxdir}
 %endif
 
 %if %{disable_qt}
 %if !0%{?suse_version}
-rm -fr $RPM_BUILD_ROOT/%{_pixmapdir}
+rm -fr %{buildroot}/%{_pixmapdir}
 %endif
-rm -fr $RPM_BUILD_ROOT/%{_hicolordir}
-rm -fr $RPM_BUILD_ROOT/%{_confdir}/pmsnap
-rm -fr $RPM_BUILD_ROOT/%{_localstatedir}/lib/pcp/config/pmsnap
-rm -fr $RPM_BUILD_ROOT/%{_localstatedir}/lib/pcp/config/pmchart
-rm -f $RPM_BUILD_ROOT/%{_localstatedir}/lib/pcp/config/pmafm/pcp-gui
-rm -f $RPM_BUILD_ROOT/%{_datadir}/applications/pmchart.desktop
-rm -f `find $RPM_BUILD_ROOT/%{_mandir}/man1 | grep -E "$PCP_GUI"`
+rm -fr %{buildroot}/%{_hicolordir}
+rm -fr %{buildroot}/%{_confdir}/pmsnap
+rm -fr %{buildroot}/%{_localstatedir}/lib/pcp/config/pmsnap
+rm -fr %{buildroot}/%{_localstatedir}/lib/pcp/config/pmchart
+rm -f %{buildroot}/%{_localstatedir}/lib/pcp/config/pmafm/pcp-gui
+rm -f %{buildroot}/%{_datadir}/applications/pmchart.desktop
+rm -f `find %{buildroot}/%{_mandir}/man1 | grep -E "$PCP_GUI"`
 %else
-rm -rf $RPM_BUILD_ROOT/usr/share/doc/pcp-gui
+rm -rf %{buildroot}/usr/share/doc/pcp-gui
 %if 0%{?suse_version}
-mkdir -p $RPM_BUILD_ROOT/%{_pixmapdir}
-mv $RPM_BUILD_ROOT/%{_datadir}/pcp-gui/pixmaps/*.png $RPM_BUILD_ROOT/%{_pixmapdir}
-rm -rf $RPM_BUILD_ROOT/%{_datadir}/pcp-gui/pixmaps
-%suse_update_desktop_file -r -G 'Performance Copilot Chart' $RPM_BUILD_ROOT/%{_datadir}/applications/pmchart.desktop System Monitor
+mkdir -p %{buildroot}/%{_pixmapdir}
+mv %{buildroot}/%{_datadir}/pcp-gui/pixmaps/*.png %{buildroot}/%{_pixmapdir}
+rm -rf %{buildroot}/%{_datadir}/pcp-gui/pixmaps
+%suse_update_desktop_file -r -G 'Performance Copilot Chart' %{buildroot}/%{_datadir}/applications/pmchart.desktop System Monitor
 %else
-desktop-file-validate $RPM_BUILD_ROOT/%{_datadir}/applications/pmchart.desktop
+desktop-file-validate %{buildroot}/%{_datadir}/applications/pmchart.desktop
 %endif
 %endif
 
 %if %{disable_xlsx}
-rm -f $RPM_BUILD_ROOT/%{_bashcompdir}/pcp2xlsx
+rm -f %{buildroot}/%{_bashcompdir}/pcp2xlsx
 %endif
 
 %if %{disable_lio}
-rm -fr $RPM_BUILD_ROOT/%{_pmdasdir}/lio
+rm -fr %{buildroot}/%{_pmdasdir}/lio
 %endif
 
 %if 0%{?rhel} || 0%{?fedora} || 0%{?suse_version}
 # Fedora and RHEL default local only access for pmcd and pmlogger
-sed -i -e '/^# .*_LOCAL=1/s/^# //' $RPM_BUILD_ROOT/%{_sysconfdir}/sysconfig/{pmcd,pmlogger}
+sed -i -e '/^# .*_LOCAL=1/s/^# //' %{buildroot}/%{_sysconfdir}/sysconfig/{pmcd,pmlogger}
 %endif
 
-rm -f $RPM_BUILD_ROOT/%{_localstatedir}/lib/pcp/testsuite/perfevent/perfevent_coverage # drop unreproducible file (boo#1040589)
+rm -f %{buildroot}/%{_localstatedir}/lib/pcp/testsuite/perfevent/perfevent_coverage # drop unreproducible file (boo#1040589)
 
 %if 0%{?suse_version}
-mkdir -p $RPM_BUILD_ROOT/%{_tempsdir}
+mkdir -p %{buildroot}/%{_tempsdir}
 
-%__install -d -m 0755 ${RPM_BUILD_ROOT}/%{_sbindir}
-
-%if !0%{?has_systemd}
-# add /etc/init.d/X symlinks at /usr/sbin/rcX
-for script in pcp pmie pmproxy pmlogger pmcd; do
-	ln -s "%{_sysconfdir}/init.d/${script}" \
-	      "${RPM_BUILD_ROOT}/%{_sbindir}/rc${script}"
-done
-%else
-ln -sf /sbin/service $RPM_BUILD_ROOT/%{_sbindir}/rcpmcd
-ln -sf /sbin/service $RPM_BUILD_ROOT/%{_sbindir}/rcpmie
-ln -sf /sbin/service $RPM_BUILD_ROOT/%{_sbindir}/rcpmlogger
-ln -sf /sbin/service $RPM_BUILD_ROOT/%{_sbindir}/rcpmproxy
-%endif
+install -d -m 0755 %{buildroot}/%{_sbindir}
+ln -sf /sbin/service %{buildroot}/%{_sbindir}/rcpmcd
+ln -sf /sbin/service %{buildroot}/%{_sbindir}/rcpmie
+ln -sf /sbin/service %{buildroot}/%{_sbindir}/rcpmlogger
+ln -sf /sbin/service %{buildroot}/%{_sbindir}/rcpmproxy
 
 # SUSE requires use of %fillup_and_insserv
-mkdir -p $RPM_BUILD_ROOT/%{_fillupdir}
+mkdir -p %{buildroot}/%{_fillupdir}
 for f in pmlogger pmproxy pmcd pmie_timers pmlogger_timers pmfind; do
-	mv $RPM_BUILD_ROOT/%{_sysconfdir}/sysconfig/${f} \
-		$RPM_BUILD_ROOT/%{_fillupdir}/sysconfig.${f}
+	mv %{buildroot}/%{_sysconfdir}/sysconfig/${f} \
+		%{buildroot}/%{_fillupdir}/sysconfig.${f}
 done
 
 %else
 # default chkconfig off for Fedora and RHEL
-for f in $RPM_BUILD_ROOT/%{_initddir}/{pcp,pmcd,pmlogger,pmie,pmwebd,pmmgr,pmproxy}; do
+for f in %{buildroot}/%{_initddir}/{pcp,pmcd,pmlogger,pmie,pmwebd,pmmgr,pmproxy}; do
 	test -f "$f" || continue
 	sed -i -e '/^# chkconfig/s/:.*$/: - 95 05/' -e '/^# Default-Start:/s/:.*$/:/' $f
 done
@@ -2524,7 +2501,7 @@ done
 # list of PMDAs in the base pcp package
 for pmda in jbd2 kvm linux mmv pipe pmcd proc root xfs; do
     for alt in %{_pmdasdir} %{_pmdasexecdir} %{_confdir}; do
-        [ -d $RPM_BUILD_ROOT/$alt/$pmda ] && echo $alt/$pmda >>base_pmdas.list
+        [ -d %{buildroot}/$alt/$pmda ] && echo $alt/$pmda >>base_pmdas.list
     done
 done
 
@@ -2533,12 +2510,12 @@ for conf in discover labels nssdb pmafm pmcd pmfind pmie pmieconf pmlogconf \
     proc pipe linux pmlogger pmlogrewrite pmproxy pmsearch pmseries; do
     for alt in %{_confdir} %{_localstatedir}/lib/pcp/config; do
         replace=""; [ "$alt" = "%{_confdir}" ] && replace="%config(noreplace)"
-        [ -d $RPM_BUILD_ROOT/$alt/$conf ] && echo "$replace $alt/$conf" >>base_conf.list
+        [ -d %{buildroot}/$alt/$conf ] && echo "$replace $alt/$conf" >>base_conf.list
     done
 done
 
 # all base binary files except those split out into sub-packages
-ls -1 $RPM_BUILD_ROOT/%{_bindir} |\
+ls -1 %{buildroot}/%{_bindir} |\
   grep -E -v 'pmiostat|zabbix|zbxpcp|dstat|pmrep|pcp2csv' |\
   grep -E -v 'pcp2spark|pcp2graphite|pcp2influxdb|pcp2zabbix' |\
   grep -E -v 'pcp2elasticsearch|pcp2json|pcp2xlsx|pcp2xml' |\
@@ -2549,7 +2526,7 @@ sed -e 's#^#'%{_bindir}'\/#' >base_bin.list
 echo %{_pmnsdir} >>base_pmns.list
 echo %{_pmnsexecdir} >>base_pmns.list
 
-ls -1 $RPM_BUILD_ROOT/%{_bashcompdir} |\
+ls -1 %{buildroot}/%{_bashcompdir} |\
   grep -E -v 'pcp2spark|pcp2graphite|pcp2influxdb|pcp2zabbix' |\
   grep -E -v 'pcp2elasticsearch|pcp2json|pcp2xlsx|pcp2xml' |\
   grep -E -v 'pcp2csv|pmrep|pmdumptext' |\
@@ -2559,26 +2536,26 @@ sed -e 's#^#'%{_bashcompdir}'\/#' >base_bashcomp.list
 # pmiostat is a back-compat symlink to its pcp(1) sub-command variant
 # so its also in pcp-system-tools.
 %if !%{disable_python3}
-ls -1 $RPM_BUILD_ROOT/%{_bindir} |\
+ls -1 %{buildroot}/%{_bindir} |\
   grep -E -e 'pmiostat|pmrep|dstat|pcp2csv' |\
   sed -e 's#^#'%{_bindir}'\/#' >pcp-system-tools.list
-ls -1 $RPM_BUILD_ROOT/%{_libexecdir}/pcp/bin |\
+ls -1 %{buildroot}/%{_libexecdir}/pcp/bin |\
   grep -E -e 'atop|dmcache|dstat|free|iostat|ipcs|lvmcache|mpstat' \
         -e 'numastat|pidstat|shping|tapestat|uptime|verify' |\
   sed -e 's#^#'%{_libexecdir}/pcp/bin'\/#' >>pcp-system-tools.list
 %endif
 # Separate the pcp-selinux package files.
 %if !%{disable_selinux}
-ls -1 $RPM_BUILD_ROOT/%{_selinuxdir} |\
+ls -1 %{buildroot}/%{_selinuxdir} |\
   sed -e 's#^#'%{_selinuxdir}'\/#' > pcp-selinux.list
-ls -1 $RPM_BUILD_ROOT/%{_selinuxexecdir} |\
+ls -1 %{buildroot}/%{_selinuxexecdir} |\
   sed -e 's#^#'%{_selinuxexecdir}'\/#' >> pcp-selinux.list
-ls -1 $RPM_BUILD_ROOT/%{_libexecdir}/pcp/bin |\
+ls -1 %{buildroot}/%{_libexecdir}/pcp/bin |\
   grep -E 'selinux-setup' |\
   sed -e 's#^#'%{_libexecdir}/pcp/bin'\/#' >> pcp-selinux.list
 %endif
 
-ls -1 $RPM_BUILD_ROOT/%{_libexecdir}/pcp/bin |\
+ls -1 %{buildroot}/%{_libexecdir}/pcp/bin |\
 %if !%{disable_python3}
   grep -E -v 'atop|dmcache|dstat|free|iostat|ipcs|lvmcache|mpstat' |\
   grep -E -v 'numastat|shping|tapestat|uptime|verify|selinux-setup' |\
@@ -2588,25 +2565,25 @@ ls -1 $RPM_BUILD_ROOT/%{_libexecdir}/pcp/bin |\
   sed -e 's#^#'%{_libexecdir}/pcp/bin'\/#' >base_exec.list
 echo %{_libexecdir}/pcp/lib >>base_exec.list
 
-ls -1 $RPM_BUILD_ROOT/%{_booksdir} |\
+ls -1 %{buildroot}/%{_booksdir} |\
   sed -e 's#^#'%{_booksdir}'\/#' > pcp-doc.list
-ls -1 $RPM_BUILD_ROOT/%{_mandir}/man1 |\
+ls -1 %{buildroot}/%{_mandir}/man1 |\
   sed -e 's#^#'%{_mandir}'\/man1\/#' >>pcp-doc.list
-ls -1 $RPM_BUILD_ROOT/%{_mandir}/man5 |\
+ls -1 %{buildroot}/%{_mandir}/man5 |\
   sed -e 's#^#'%{_mandir}'\/man5\/#' >>pcp-doc.list
 %if 0%{?suse_version}
-mv $RPM_BUILD_ROOT/%{_datadir}/pcp/demos $RPM_BUILD_ROOT/%{_docdir}/pcp
-ls -1 $RPM_BUILD_ROOT/%{_docdir}/pcp/demos/tutorials |\
+mv %{buildroot}/%{_datadir}/pcp/demos %{buildroot}/%{_docdir}/pcp
+ls -1 %{buildroot}/%{_docdir}/pcp/demos/tutorials |\
   sed -e 's#^#'%{_docdir}/pcp/demos/tutorials'\/#' >>pcp-doc.list
 %else
-ls -1 $RPM_BUILD_ROOT/%{_datadir}/pcp/demos/tutorials |\
+ls -1 %{buildroot}/%{_datadir}/pcp/demos/tutorials |\
   sed -e 's#^#'%{_datadir}/pcp/demos/tutorials'\/#' >>pcp-doc.list
 %endif
 
 %if !%{disable_qt}
-ls -1 $RPM_BUILD_ROOT/%{_pixmapdir} |\
+ls -1 %{buildroot}/%{_pixmapdir} |\
   sed -e 's#^#'%{_pixmapdir}'\/#' > pcp-gui.list
-ls -1 $RPM_BUILD_ROOT/%{_hicolordir} |\
+ls -1 %{buildroot}/%{_hicolordir} |\
   sed -e 's#^#'%{_hicolordir}'\/#' >> pcp-gui.list
 cat base_bin.list base_exec.list base_bashcomp.list |\
   grep -E "$PCP_GUI" >> pcp-gui.list
@@ -2614,10 +2591,10 @@ echo %{_confdir}/pmchart >>pcp-gui.list
 echo %{_libexecdir}/pcp/bin/pmsnap >>pcp-gui.list
 %endif
 
-ls -1 $RPM_BUILD_ROOT/%{_logconfdir}/ |\
+ls -1 %{buildroot}/%{_logconfdir}/ |\
     sed -e 's#^#'%{_logconfdir}'\/#' |\
     grep -E -v 'zeroconf' >pcp-logconf.list
-ls -1 $RPM_BUILD_ROOT/%{_ieconfdir}/ |\
+ls -1 %{buildroot}/%{_ieconfdir}/ |\
     sed -e 's#^#'%{_ieconfdir}'\/#' |\
     grep -E -v 'zeroconf' >pcp-ieconf.list
 
@@ -2628,22 +2605,22 @@ cat base_pmdas.list base_conf.list base_bin.list base_exec.list base_bashcomp.li
   grep -E -v "$PCP_GUI|pixmaps|hicolor|pcp-doc|tutorials|selinux" |\
   grep -E -v %{_logsdir} > base.list
 %if !%{disable_systemd}
-mkdir -p $RPM_BUILD_ROOT/%{_tmpfilesdir}
-mv $DIST_TMPFILES $RPM_BUILD_ROOT/%{_tmpfilesdir}/pcp.conf
+mkdir -p %{buildroot}/%{_tmpfilesdir}
+mv $DIST_TMPFILES %{buildroot}/%{_tmpfilesdir}/pcp.conf
 echo %{_tmpfilesdir}/pcp.conf >> base.list
 %endif
 
 # all devel pcp package files except those split out into sub packages
-ls -1 $RPM_BUILD_ROOT/%{_mandir}/man3 |\
+ls -1 %{buildroot}/%{_mandir}/man3 |\
 sed -e 's#^#'%{_mandir}'\/man3\/#' | grep -v '3pm' >>pcp-doc.list
 %if 0%{?suse_version}
-ls -1 $RPM_BUILD_ROOT/%{_docdir}/pcp/demos |\
+ls -1 %{buildroot}/%{_docdir}/pcp/demos |\
 sed -e 's#^#'%{_docdir}'\/pcp\/demos\/#' | grep -E -v tutorials >> devel.list
 %else
-ls -1 $RPM_BUILD_ROOT/%{_datadir}/pcp/demos |\
+ls -1 %{buildroot}/%{_datadir}/pcp/demos |\
 sed -e 's#^#'%{_datadir}'\/pcp\/demos\/#' | grep -E -v tutorials >> devel.list
 %endif
-ls -1 $RPM_BUILD_ROOT/%{_bindir} |\
+ls -1 %{buildroot}/%{_bindir} |\
 grep -E 'pmdbg|pmclient|pmerr|genpmda' |\
 sed -e 's#^#'%{_bindir}'\/#' >>devel.list
 for pmda in sample simple trivial txmon; do
@@ -2848,7 +2825,6 @@ PCP_LOG_DIR=%{_logsdir}
 # C source files that rpmlint complains about. These are not devel files,
 # but rather they are (slightly obscure) PMDA config files.
 #
-%defattr(-,root,root)
 %doc CHANGELOG INSTALL.md README.md VERSION.pcp pcp.lsm
 %license COPYING
 %if 0%{?suse_version}
@@ -2995,7 +2971,6 @@ PCP_LOG_DIR=%{_logsdir}
 %endif
 
 %files zeroconf
-%defattr(-,root,root)
 %{_libexecdir}/pcp/bin/pmlogger_daily_report
 %if !%{disable_systemd}
 # systemd services for pmlogger_daily_report to replace the cron script
@@ -3014,7 +2989,6 @@ PCP_LOG_DIR=%{_logsdir}
 #additional pmlogger config files
 
 %files conf
-%defattr(-,root,root)
 %dir %{_includedir}/pcp
 %{_includedir}/pcp/builddefs
 %{_includedir}/pcp/buildrules
@@ -3025,7 +2999,6 @@ PCP_LOG_DIR=%{_logsdir}
 %config %{_localstatedir}/lib/pcp/config/derived/*
 
 %files -n %{lib_pkg}
-%defattr(-,root,root)
 %{_libdir}/libpcp.so.%{libpcp_pmda_sover}
 %{_libdir}/libpcp_pmda.so.%{libpcp_pmda_sover}
 %if !0%{?suse_version}
@@ -3037,28 +3010,22 @@ PCP_LOG_DIR=%{_logsdir}
 %else
 
 %files -n libpcp_gui%{libpcp_gui_sover}
-%defattr(-,root,root)
 %{_libdir}/libpcp_gui.so.%{libpcp_gui_sover}
 
 %files -n libpcp_mmv%{libpcp_mmv_sover}
-%defattr(-,root,root)
 %{_libdir}/libpcp_mmv.so.%{libpcp_mmv_sover}
 
 %files -n libpcp_trace%{libpcp_trace_sover}
-%defattr(-,root,root)
 %{_libdir}/libpcp_trace.so.%{libpcp_trace_sover}
 
 %files -n libpcp_import%{libpcp_import_sover}
-%defattr(-,root,root)
 %{_libdir}/libpcp_import.so.%{libpcp_import_sover}
 
 %files -n libpcp_web%{libpcp_web_sover}
-%defattr(-,root,root)
 %{_libdir}/libpcp_web.so.%{libpcp_web_sover}
 %endif
 
 %files -n %{lib_devel_pkg}
-%defattr(-,root,root)
 %{_libdir}/libpcp.so
 %{_libdir}/libpcp_gui.so
 %{_libdir}/libpcp_mmv.so
@@ -3083,45 +3050,36 @@ PCP_LOG_DIR=%{_logsdir}
 %{_pmdasdir}/txmon
 
 %files testsuite
-%defattr(-,pcpqa,pcpqa)
 %{_testsdir}
 
 %files import-sar2pcp
-%defattr(-,root,root)
 %{_bindir}/sar2pcp
 
 %files import-iostat2pcp
-%defattr(-,root,root)
 %{_bindir}/iostat2pcp
 
 %if !%{disable_sheet2pcp}
 %files import-sheet2pcp
-%defattr(-,root,root)
 %{_bindir}/sheet2pcp
 %endif
 
 %files import-mrtg2pcp
-%defattr(-,root,root)
 %{_bindir}/mrtg2pcp
 
 %files import-ganglia2pcp
-%defattr(-,root,root)
 %{_bindir}/ganglia2pcp
 
 %files import-collectl2pcp
-%defattr(-,root,root)
 %{_bindir}/collectl2pcp
 
 %if !%{disable_podman}
 %files pmda-podman
-%defattr(-,root,root)
 %{_pmdasdir}/podman
 %{_pmdasexecdir}/podman
 %endif
 
 %if !%{disable_statsd}
 %files pmda-statsd
-%defattr(-,root,root)
 %{_pmdasdir}/statsd
 %{_pmdasexecdir}/statsd
 %{_confdir}/statsd
@@ -3130,7 +3088,6 @@ PCP_LOG_DIR=%{_logsdir}
 
 %if !%{disable_perfevent}
 %files pmda-perfevent
-%defattr(-,root,root)
 %{_pmdasdir}/perfevent
 %{_pmdasexecdir}/perfevent
 %{_confdir}/perfevent
@@ -3139,7 +3096,6 @@ PCP_LOG_DIR=%{_logsdir}
 
 %if !%{disable_infiniband}
 %files pmda-infiniband
-%defattr(-,root,root)
 %{_pmdasdir}/infiniband
 %{_pmdasexecdir}/infiniband
 %endif
@@ -3499,7 +3455,6 @@ PCP_LOG_DIR=%{_logsdir}
 %{_pmdasexecdir}/weblog
 
 %files -n perl-PCP-PMDA -f perl-pcp-pmda.list
-%defattr(-,root,root)
 %if 0%{?suse_version}
 %dir %{_prefix}/lib/perl5/vendor_perl/*/*-linux-thread-multi*/PCP
 %dir %{_prefix}/lib/perl5/vendor_perl/*/*-linux-thread-multi*/auto/PCP
@@ -3507,7 +3462,6 @@ PCP_LOG_DIR=%{_logsdir}
 %endif
 
 %files -n perl-PCP-MMV -f perl-pcp-mmv.list
-%defattr(-,root,root)
 %if 0%{?suse_version}
 %dir %{_prefix}/lib/perl5/vendor_perl/*/*-linux-thread-multi*/PCP
 %dir %{_prefix}/lib/perl5/vendor_perl/*/*-linux-thread-multi*/auto/PCP
@@ -3515,7 +3469,6 @@ PCP_LOG_DIR=%{_logsdir}
 %endif
 
 %files -n perl-PCP-LogImport -f perl-pcp-logimport.list
-%defattr(-,root,root)
 %if 0%{?suse_version}
 %dir %{_prefix}/lib/perl5/vendor_perl/*/*-linux-thread-multi*/PCP
 %dir %{_prefix}/lib/perl5/vendor_perl/*/*-linux-thread-multi*/auto/PCP
@@ -3523,19 +3476,16 @@ PCP_LOG_DIR=%{_logsdir}
 %endif
 
 %files -n perl-PCP-LogSummary -f perl-pcp-logsummary.list
-%defattr(-,root,root)
 %if 0%{?suse_version}
 %dir %{_prefix}/lib/perl5/vendor_perl/*/PCP
 %endif
 
 %if !%{disable_python3}
 %files -n python3-pcp -f python3-pcp.list.rpm
-%defattr(-,root,root)
 %endif
 
 %if !%{disable_qt}
 %files gui -f pcp-gui.list
-%defattr(-,root,root,-)
 %{_pixmapdir}/pmchart.png
 %{_confdir}/pmsnap
 %config(noreplace) %{_confdir}/pmsnap/control
@@ -3547,7 +3497,6 @@ PCP_LOG_DIR=%{_logsdir}
 %endif
 
 %files doc -f pcp-doc.list
-%defattr(-,root,root,-)
 %if 0%{?suse_version}
 %exclude %{_docdir}/pcp/CHANGELOG
 %exclude %{_docdir}/pcp/COPYING
