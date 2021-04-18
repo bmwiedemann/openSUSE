@@ -23,4 +23,4 @@
 +
  LABEL="dasd_symlinks_end"
  
- # on device add set request queue scheduler to deadline
+ # on device add set request queue scheduler to none

@@ -383,4 +383,17 @@
 </comment>
     <requestid>877835</requestid>
   </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>dd4d021e91beeca2fd7add37ebeb7a1c</srcmd5>
+    <version>2.15.1</version>
+    <time>1618775059</time>
+    <user>dimstar_suse</user>
+    <comment>- Added s390-tools-sles15sp3-dasd-change-DASD-udev-rule-to-set-none-scheduler.patch
+  dasd: change default scheduler to reduce CPU consumption (bsc#1183810)
+- Modified s390-tools-sles12-create-filesystem-links.patch to fit after
+  applying s390-tools-sles15sp3-dasd-change-DASD-udev-rule-to-set-none-scheduler.patch
+- Removed 59-dasd.rules-wait_for.patch obsoleted by bsc#1183810.
+</comment>
+    <requestid>885470</requestid>
+  </revision>
 </revisionlist>

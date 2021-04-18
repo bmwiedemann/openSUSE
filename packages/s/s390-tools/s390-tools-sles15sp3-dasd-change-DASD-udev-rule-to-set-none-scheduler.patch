@@ -1,0 +1,52 @@
+Subject: [PATCH] [BZ 192049] udev/dasd: change DASD udev-rule to set none scheduler
+From: Stefan Haberland <sth@linux.ibm.com>
+
+Description:   dasd: change default scheduler to reduce CPU consumption
+Symptom:       CPU consumption up to 20% higher for mq-deadline
+               compared to none scheduler for DASD devices with no
+               difference in throughput.
+Problem:       Performance analysis showed that with recent DASD
+               device drivers using multi-queue block queuing the
+               throughput of mq-deadline and none scheduler is nearly
+               identical but the CPU consumption of mq-deadline
+               scheduler due to its optimizations is up to 20% higher
+               compared to none scheduler.
+Solution:      Set none scheduler as default in the DASD udev rule.
+Reproduction:  Use DASD devices with mq-deadline scheduler.
+Upstream-ID:   a65bc51cf4e5c1fe628bb182cc1a02ee83eb102d
+Problem-ID:    192049
+
+Upstream-Description:
+
+              udev/dasd: change DASD udev-rule to set none scheduler
+
+              Performance evaluation showed that using the mq-deadline scheduler for DASD
+              devices leads to a significantly higher CPU consumption compared to using
+              none scheduler while having the same amount of throughput.
+              Setting none scheduler as default in the dasd udev rule.
+
+              Signed-off-by: Stefan Haberland <sth@linux.ibm.com>
+              Reviewed-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+              Signed-off-by: Jan Hoeppner <hoeppner@linux.ibm.com>
+
+
+Signed-off-by: Stefan Haberland <sth@linux.ibm.com>
+---
+ etc/udev/rules.d/59-dasd.rules |    8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+--- a/etc/udev/rules.d/59-dasd.rules
++++ b/etc/udev/rules.d/59-dasd.rules
+@@ -26,10 +26,10 @@
+ 
+ LABEL="dasd_symlinks_end"
+ 
+-# on device add set request queue scheduler to deadline
++# on device add set request queue scheduler to none
+ SUBSYSTEM!="block", GOTO="sched_end"
+ 
+ ACTION!="change", GOTO="sched_end"
+-KERNEL=="dasd*[!0-9]", TEST=="queue/scheduler", ATTR{queue/scheduler}="deadline"
++KERNEL=="dasd*[!0-9]", TEST=="queue/scheduler", ATTR{queue/scheduler}="none"
+ 
+ LABEL="sched_end"

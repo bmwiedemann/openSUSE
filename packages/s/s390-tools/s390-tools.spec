@@ -99,6 +99,7 @@ Patch9:         s390-tools-sles15sp3-03-genprotimg-require-argument-for-ramdisk-
 Patch10:        s390-tools-sles15sp3-04-genprotimg-add-host-key-document-verification-suppor.patch
 Patch11:        s390-tools-sles15sp3-zkey-Fix-APQN-property-names.patch
 Patch12:        s390-tools-sles15sp3-zipl-fix-4k-scsi-ipl.patch
+Patch13:        s390-tools-sles15sp3-dasd-change-DASD-udev-rule-to-set-none-scheduler.patch
 
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch
@@ -110,11 +111,10 @@ Patch905:       s390-tools-sles15sp3-Format-devices-in-parallel.patch
 Patch906:       s390-tools-sles15sp3-Implement-Y-yast_mode.patch
 Patch907:       s390-tools-sles15sp3-Implement-f-for-backwards-compability.patch
 Patch908:       s390-tools-sles15sp3-dasdfmt-retry-BIODASDINFO-if-device-is-busy.patch
-Patch909:       59-dasd.rules-wait_for.patch
-Patch910:       s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
-Patch911:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
-Patch912:       s390-tools-sles15sp3-check-return-code-from-util_file_read_l.patch
-Patch913:       s390-tools-sles15sp3-remove-no-pie-link-arguments.patch
+Patch909:       s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
+Patch910:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
+Patch911:       s390-tools-sles15sp3-check-return-code-from-util_file_read_l.patch
+Patch912:       s390-tools-sles15sp3-remove-no-pie-link-arguments.patch
 
 BuildRequires:  curl-devel
 BuildRequires:  dracut
