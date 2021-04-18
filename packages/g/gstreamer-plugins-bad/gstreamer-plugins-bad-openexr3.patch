@@ -1,0 +1,31 @@
+Index: gst-plugins-bad-1.18.4/ext/openexr/gstopenexrdec.cpp
+===================================================================
+--- gst-plugins-bad-1.18.4.orig/ext/openexr/gstopenexrdec.cpp	2021-03-15 18:49:18.000000000 +0100
++++ gst-plugins-bad-1.18.4/ext/openexr/gstopenexrdec.cpp	2021-04-15 09:14:56.055900956 +0200
+@@ -42,8 +42,8 @@ public:
+   }
+ 
+   virtual bool read (char c[], int n);
+-  virtual Int64 tellg ();
+-  virtual void seekg (Int64 pos);
++  virtual uint64_t tellg ();
++  virtual void seekg (uint64_t pos);
+   virtual void clear ();
+ 
+ private:
+@@ -63,13 +63,13 @@ bool MemIStream::read (char c[], int n)
+   return (offset == size);
+ }
+ 
+-Int64 MemIStream::tellg ()
++uint64_t MemIStream::tellg ()
+ {
+   return offset;
+ }
+ 
+ void
+-MemIStream::seekg (Int64 pos)
++MemIStream::seekg (uint64_t pos)
+ {
+   offset = pos;
+   if (offset > size)

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 15 07:36:06 UTC 2021 - pgajdos@suse.com
+
+- added patches
+  fix https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/issues/1574
+  + gstreamer-plugins-bad-openexr3.patch
+
+-------------------------------------------------------------------
 Tue Mar 30 09:01:57 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.18.4:

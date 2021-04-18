@@ -39,6 +39,8 @@ URL:            https://gstreamer.freedesktop.org
 Source0:        %{_name}-%{version}.tar.xz
 Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
+# https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/issues/1574
+Patch0:         gstreamer-plugins-bad-openexr3.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
