@@ -608,4 +608,12 @@
     <comment></comment>
     <requestid>883666</requestid>
   </revision>
+  <revision rev="75" vrev="4">
+    <srcmd5>a02a7ac87635649f180064cb95ae72d6</srcmd5>
+    <version>1.5.6.1</version>
+    <time>1618775111</time>
+    <user>dimstar_suse</user>
+    <comment>- Stop owning directories provided by the filesystem package (boo#1184786)</comment>
+    <requestid>886085</requestid>
+  </revision>
 </revisionlist>

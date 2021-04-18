@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 16 16:21:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Stop owning directories provided by the filesystem package (boo#1184786)
+
+-------------------------------------------------------------------
 Wed Apr  7 06:57:25 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to build with poppler 21.04.0:

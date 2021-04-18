@@ -156,11 +156,7 @@ rm -f %{buildroot}%{_datadir}/doc/scribus/{ChangeLog,README}
 %dir %{_datadir}/doc/scribus/
 %dir %{_datadir}/icons/hicolor/1024x1024
 %dir %{_datadir}/icons/hicolor/1024x1024/apps
-%lang(de) %dir %{_mandir}/de
-%lang(de) %dir %{_mandir}/de/man1
 %lang(de) %{_mandir}/de/man1/scribus.1%{?ext_man}
-%lang(pl) %dir %{_mandir}/pl
-%lang(pl) %dir %{_mandir}/pl/man1
 %lang(pl) %{_mandir}/pl/man1/scribus.1%{?ext_man}
 %{_bindir}/scribus
 %{_datadir}/applications/scribus.desktop
