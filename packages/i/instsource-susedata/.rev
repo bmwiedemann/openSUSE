@@ -74,4 +74,13 @@
     <comment></comment>
     <requestid>799197</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7d61f569d12999d77faa7b0321fb837e</srcmd5>
+    <version>0.3.6</version>
+    <time>1618775107</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.3.6
+  * add option to add gpg keys as content tags (bsc#1184326) (forwarded request 885718 from oertel)</comment>
+    <requestid>885720</requestid>
+  </revision>
 </revisionlist>

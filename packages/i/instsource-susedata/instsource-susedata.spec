@@ -1,7 +1,7 @@
 #
 # spec file for package instsource-susedata
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           instsource-susedata
 Summary:        Utility to add susedata to repomd metadata
 License:        GPL-2.0-only
 Group:          System/Management
-Version:        0.3.5
+Version:        0.3.6
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 15 16:18:09 CEST 2021 - ro@suse.de
+
+- update to version 0.3.6
+  * add option to add gpg keys as content tags (bsc#1184326) 
+
+-------------------------------------------------------------------
 Wed Apr 29 00:27:25 CEST 2020 - ro@suse.de
 
 - update to version 0.3.5
