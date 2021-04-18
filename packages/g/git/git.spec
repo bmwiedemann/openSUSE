@@ -52,6 +52,7 @@ Source7:        https://www.kernel.org/pub/software/scm/git/%{name}-%{version}.t
 Source8:        %{name}.keyring
 Source9:        %{name}-gui.desktop
 Source10:       %{name}-gui.png
+Source11:       git-daemon.conf
 # PATCH-FIX-SUSE: Default to builtin add -i mode to avoid perl dependency
 Patch2:         suse-use-builtin-add-interactive.patch
 Patch3:         completion-wordbreaks.diff
@@ -73,6 +74,10 @@ BuildRequires:  perl-Error
 BuildRequires:  perl-MailTools
 BuildRequires:  python3-base
 BuildRequires:  systemd-rpm-macros
+%if 0%{?suse_version} >= 1500
+BuildRequires:  system-user-nobody
+BuildRequires:  sysuser-tools
+%endif
 BuildRequires:  tcsh
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
@@ -241,14 +246,16 @@ Email interface for the GIT version control system.
 %package daemon
 Summary:        Simple Server for Git Repositories
 Group:          Development/Tools/Version Control
-Requires:       git-core = %{version}
-Requires(pre):  %fillup_prereq
+%if 0%{?suse_version} >= 1550 
+Requires(pre):	group(nobody)
+%sysusers_requires
+%{?systemd_requires}
+%else
 Requires(pre):  %{_sbindir}/useradd
 Requires(pre):  shadow
-%{?systemd_requires}
-%if 0%{?suse_version} >= 1500
-Requires(pre):  group(nogroup)
 %endif
+Requires:       git-core = %{version}
+Requires(pre):  %fillup_prereq
 
 %description daemon
 A really simple TCP git daemon. In the default configuration it allows
@@ -346,6 +353,10 @@ chmod 755 .make
 %endif
 ./.make -C contrib/subtree/
 
+%if 0%{?suse_version} >= 1500
+%sysusers_generate_pre %{SOURCE11} git-daemon
+%endif
+
 %install
 ./.make install %{!?_without_docs: install-doc}
 ### git-web
@@ -427,6 +438,11 @@ install -d -m 755 %{buildroot}%{_datadir}/pixmaps
 install -m 644 %{SOURCE10} %{buildroot}%{_datadir}/pixmaps
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/%{name}-gui.desktop
 
+%if 0%{?suse_version} >= 1500
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 0644 %{SOURCE11} %{buildroot}%{_sysusersdir}/
+%endif
+
 %find_lang %{name}
 cat %{name}.lang >>bin-man-doc-files
 # use symlinks instead of hardlinks in sub-commands
@@ -435,10 +451,14 @@ cat %{name}.lang >>bin-man-doc-files
 %check
 ./.make %{?_smp_mflags} test
 
+%if 0%{?suse_version} >= 1500
+%pre daemon -f git-daemon.pre
+%else
 %pre daemon
 if ! %{_bindir}/getent passwd git-daemon >/dev/null; then
   %{_sbindir}/useradd -r -d %{_localstatedir}/lib/empty -s /bin/false -c "git daemon" -g nogroup git-daemon
 fi
+%endif
 %service_add_pre git-daemon.service
 
 %post daemon
@@ -501,6 +521,9 @@ fi
 %{!?_without_docs: %{_mandir}/man1/git-daemon.1*}
 %if 0%{?SuSEfirewall2}
 %config %{_fwdefdir}/*
+%endif
+%if 0%{?suse_version} >= 1500
+%{_sysusersdir}/git-daemon.conf
 %endif
 
 %files -n gitk

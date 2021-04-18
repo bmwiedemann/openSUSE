@@ -2293,4 +2293,12 @@ git 2.12.3
   that git-core is perl free</comment>
     <requestid>883834</requestid>
   </revision>
+  <revision rev="262" vrev="3">
+    <srcmd5>21728dfdbc47ecfbaace0cc928ed0926</srcmd5>
+    <version>2.31.1</version>
+    <time>1618775094</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885634</requestid>
+  </revision>
 </revisionlist>

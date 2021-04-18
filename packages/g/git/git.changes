@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  9 11:34:14 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Add sysusers file to create git-daemon user.
+
+-------------------------------------------------------------------
 Thu Apr  8 11:29:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add suse-use-builtin-add-interactive.patch
