@@ -40,7 +40,8 @@ URL:            https://gstreamer.freedesktop.org
 Source0:        %{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-good.appdata.xml
 Source99:       baselibs.conf
-
+# PATCH-FIX-UPSTREAM 612102fdbc3f813bf9d3406165692b5f742e51a6.patch dimstar@opensuse.org -- Fix build with GCC 11
+Patch0:         612102fdbc3f813bf9d3406165692b5f742e51a6.patch
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gcc-c++
