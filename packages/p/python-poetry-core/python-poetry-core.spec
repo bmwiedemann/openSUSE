@@ -1,7 +1,7 @@
 #
 # spec file for package python-poetry-core
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-poetry-core
-Version:        1.0.0
+Version:        1.0.3
 Release:        0
 Summary:        Python poetry core utilities
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/python-poetry/poetry-core
 # Only the github archive provides the tests
-Source:         %{URL}/archive/%{version}.tar.gz#/poetry-core-%{version}-gh.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/poetry-core-%{version}-gh.tar.gz
 BuildRequires:  %{python_module attrs >= 19.3.0}
 BuildRequires:  %{python_module jsonschema >= 3.2.0}
 BuildRequires:  %{python_module lark-parser >= 0.9.0}
@@ -68,8 +68,6 @@ PEP 517 compatible build frontends to build Poetry managed projects.
 rm poetry/__init__.py
 # unbundle: we provide the vendored packages on our own
 rm -r poetry/core/_vendor
-# remove executable bits
-find poetry/core -name '*.py' -executable -print0 | xargs -0 chmod a-x
 
 %build
 %pyproject_wheel
