@@ -1,7 +1,7 @@
 #
 # spec file for package ispc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           ispc
-Version:        1.14.1
+Version:        1.15.0
 Release:        0
 Summary:        C-based SPMD programming language compiler
 License:        BSD-3-Clause
@@ -43,7 +43,7 @@ BuildRequires:  glibc-devel-32bit
 %description
 A compiler for a variant of the C programming language, with extensions for
 "single program, multiple data" (SPMD) programming.
- 
+
 %prep
 %setup -q
 

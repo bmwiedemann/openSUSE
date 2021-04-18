@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Apr 18 12:17:04 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to 1.15.0.
+  * New loop unroll pragmas: #pragma unroll and #pragma nounroll
+    directives provide loop unrolling optimization hints to the 
+    compiler. This pragma may be used immediately before a loop 
+    statement. Currently, this functionality is limited to uniform 
+    for and do-while.
+  * More efficient packed_[load|store]_active() stdlib functions 
+    implementation (up to 2.5x faster), which now supports 64 bit types.
+  * New cpus: icelake-server, tigerlake , alderlake, sapphirerapids.
+  * Several stability fixes related to SOA types, bool varying type
+    initialization, broken alignment information, type scoping.
+  * Compile time improvements.
+  * Initial support of ahead of time compilation to oneAPI Level Zero
+    binary format using --emit-zebin switch. You can use this binary 
+    from ISPC Runtime by setting
+  * ISPCRT_USE_ZEBIN env variable to 1. Please note that SPIR-V format
+    is still a recommended and default way.
+  * Initial function pointers implementation.
+  * Global atomics support.
+  * Double math functions support.
+  * Memory functions support.
+  * Reworked masking approach. We disabled genx hardware mask by 
+    default and use a software mask by default.
+  * Improved address spaces differentiation.
+  * Initial debug support.
+  * TGLLP (TigerLake mobile CPU) support (--cpu=TGLLP).
+
+-------------------------------------------------------------------
 Fri Nov  6 17:18:06 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 Note, we don't do any GPU builds yet, because
