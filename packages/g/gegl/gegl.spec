@@ -31,6 +31,8 @@ Group:          Productivity/Graphics/Other
 URL:            http://gegl.org/
 Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# https://gitlab.gnome.org/GNOME/gegl/-/issues/284
+Patch0:         gegl-openexr3.patch
 BuildRequires:  ImageMagick
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
@@ -152,7 +154,7 @@ input and output.
 %lang_package -n %{name}-0_4
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %ifarch aarch64

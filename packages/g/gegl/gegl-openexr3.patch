@@ -1,0 +1,24 @@
+Index: gegl-0.4.30/operations/external/exr-load.cpp
+===================================================================
+--- gegl-0.4.30.orig/operations/external/exr-load.cpp	2021-03-27 20:13:57.953967000 +0100
++++ gegl-0.4.30/operations/external/exr-load.cpp	2021-04-14 12:59:45.356157579 +0200
+@@ -31,6 +31,7 @@ property_file_path (path, "File", "")
+ 
+ #include "gegl-op.h"
+ 
++#include <ImfFrameBuffer.h>
+ #include <ImfInputFile.h>
+ #include <ImfChannelList.h>
+ #include <ImfRgbaFile.h>
+Index: gegl-0.4.30/operations/external/exr-save.cc
+===================================================================
+--- gegl-0.4.30.orig/operations/external/exr-save.cc	2021-03-27 20:13:57.953967000 +0100
++++ gegl-0.4.30/operations/external/exr-save.cc	2021-04-14 13:00:22.140377503 +0200
+@@ -39,6 +39,7 @@ extern "C" {
+ } /* extern "C" */
+ 
+ #include <exception>
++#include <ImfFrameBuffer.h>
+ #include <ImfTiledOutputFile.h>
+ #include <ImfOutputFile.h>
+ #include <ImfChannelList.h>
