@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 18 17:10:56 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 0.3.0:
+  * Add support for config file
+  * Add man page
+  * Control how many frames are captured per second
+  * screencast: add outputchooser with config option
+
+-------------------------------------------------------------------
 Mon Feb 15 10:59:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.2.0:

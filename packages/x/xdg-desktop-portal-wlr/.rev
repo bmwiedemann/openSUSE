@@ -38,4 +38,16 @@
   * Update to wlr-screencopy-unstable-v1 version 3</comment>
     <requestid>872363</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>db82f4b8e976d80fd5a3963c3469619a</srcmd5>
+    <version>0.3.0</version>
+    <time>1618775128</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.0:
+  * Add support for config file
+  * Add man page
+  * Control how many frames are captured per second
+  * screencast: add outputchooser with config option</comment>
+    <requestid>886483</requestid>
+  </revision>
 </revisionlist>
