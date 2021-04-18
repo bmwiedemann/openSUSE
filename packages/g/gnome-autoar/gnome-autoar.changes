@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 14 00:40:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.3.1:
+  + Disallow symlinks in parents completely when extracting
+    ( CVE-2021-28650 )
+  + Drop recursive delete on failure to prevent data loss
+  + Add back RAR support
+
+-------------------------------------------------------------------
 Fri Feb 12 17:19:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.3.0:

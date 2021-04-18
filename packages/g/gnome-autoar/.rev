@@ -47,4 +47,16 @@
     <comment></comment>
     <requestid>872506</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b7ba3572940e9e787dfe450b22dae5ac</srcmd5>
+    <version>0.3.1</version>
+    <time>1618775102</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.1:
+  + Disallow symlinks in parents completely when extracting
+    ( CVE-2021-28650 )
+  + Drop recursive delete on failure to prevent data loss
+  + Add back RAR support (forwarded request 885189 from susnux)</comment>
+    <requestid>885656</requestid>
+  </revision>
 </revisionlist>
