@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 14 19:29:23 UTC 2021 - Matthias Bach <marix@marix.org>
+
+- Update to version 3.2
+  * Experimental support for specifying metadata in a [project] in
+    pyproject.toml table as specified by PEP-621.
+  * Fix writing METADATA file with multi-line information in
+    certain fields such as Author.
+  * Fix building wheel when a directory such as LICENSES appears
+    in the project root directory.
+  * Switch from the deprecated pytoml package to toml.
+
+-------------------------------------------------------------------
 Mon Oct 26 22:38:40 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 3.0

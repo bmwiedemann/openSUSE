@@ -1,7 +1,7 @@
 #
 # spec file for package python-flit-core
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-flit-core
-Version:        3.0.0
+Version:        3.2.0
 Release:        0
 Summary:        Distribution-building parts of Flit
 License:        BSD-3-Clause
@@ -27,11 +26,11 @@ URL:            https://github.com/takluyver/flit
 Source:         https://files.pythonhosted.org/packages/source/f/flit-core/flit_core-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytoml}
 BuildRequires:  %{python_module testpath}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytoml
+Requires:       python-toml
 BuildArch:      noarch
 %python_subpackages
 
