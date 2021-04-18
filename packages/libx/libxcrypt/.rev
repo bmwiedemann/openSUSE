@@ -86,4 +86,23 @@
   * Fix conversion error in lib/alg-gost3411-core.c (forwarded request 874286 from Andreas_Schwab)</comment>
     <requestid>874287</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a4eff376fd447a467e397ba8358758a8</srcmd5>
+    <version>4.4.19</version>
+    <time>1618775036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.19 
+  * Improve fallback implementation of explicit_bzero.
+  * Add glibc-on-CSKY, ARC, and RISCV-32 entries to libcrypt.minver.
+    These were added in GNU libc 2.29, 2.32, and 2.33 respectively
+  * Do not build xcrypt.h if we’re not going to install it.
+  * Do not apply --enable-obsolete-api-enosys mode to fcrypt.
+  * Compilation fix for NetBSD.  NetBSD’s &lt;unistd.h&gt; declares encrypt
+    and setkey to return int, contrary to POSIX (which says they return
+    void).  Rename those declarations out of the way with macros.
+  * Compilation fixes for building with GCC 11.
+    Basically fixes for explicit type-casting.
+  * Force update of existing symlinks during installation (forwarded request 885092 from polslinux)</comment>
+    <requestid>885113</requestid>
+  </revision>
 </revisionlist>
