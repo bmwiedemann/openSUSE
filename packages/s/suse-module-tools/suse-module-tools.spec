@@ -1,7 +1,7 @@
 #
 # spec file for package suse-module-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,14 @@
 %define modules_load_dir /usr/lib/modules-load.d
 
 # List of legacy file systems to be blacklisted by default
-%global fs_blacklist adfs affs bfs befs cramfs efs erofs exofs freevxfs f2fs hfs hpfs jfs minix nilfs2 ntfs omfs qnx4 qnx6 sysv ufs
+%global fs_blacklist adfs affs bfs befs cramfs efs erofs exofs freevxfs hfs hpfs jfs minix nilfs2 ntfs omfs qnx4 qnx6 sysv ufs
 
 %if 0%{?sle_version} >= 120200 && 0%{?sle_version} < 150000
 %global softdep_br_netfilter 1
 %endif
 
 Name:           suse-module-tools
-Version:        15.3.5
+Version:        15.4.0
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -62,7 +62,6 @@ This package contains helper scripts for KMP installation and
 uninstallation, as well as default configuration files for depmod and
 modprobe. These utilities are provided by kmod-compat or
 module-init-tools, whichever implementation you choose to install.
-
 
 %package legacy
 Summary:        Legacy "weak-modules" script for Code10

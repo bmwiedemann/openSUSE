@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 13 15:24:23 UTC 2021 - obs-service-tar-scm@invalid
+
+- Update to version 15.4.0:
+  * Enable f2fs (bsc#1184415)
+
+-------------------------------------------------------------------
 Mon Nov 02 17:03:42 UTC 2020 - mwilck@suse.com
 
 - Update to version 15.3.5:

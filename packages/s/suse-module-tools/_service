@@ -1,22 +1,22 @@
 <services>
-  <service mode="disabled" name="tar_scm">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/openSUSE/suse-module-tools.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">suse-module-tools</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
-    <param name="versionrewrite-pattern">\+[01]$</param>
-    <param name="versionrewrite-replacement"></param>
+    <param name="versionrewrite-pattern">([^+]*)\+0</param>
     <param name="revision">master</param>
     <param name="exclude">*.rpmlintrc</param>
   </service>
-<service mode="disabled" name="recompress">
-    <param name="file">*.tar</param>
-    <param name="compression">xz</param>
-  </service>
-  <service mode="disabled" name="extract_file">
-    <param name="archive">*.tar.xz</param>
+  <service name="extract_file" mode="manual">
+    <param name="archive">*.obscpio</param>
     <param name="files">*/suse-module-tools.spec</param>
     <param name="outfilename">suse-module-tools.spec</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
   </service>
 </services>
