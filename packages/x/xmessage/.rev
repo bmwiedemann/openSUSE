@@ -57,4 +57,12 @@
   * autogen.sh: use exec instead of waiting for configure to finish</comment>
     <requestid>593600</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9eeec0729531bb705ccc8c32a965f18f</srcmd5>
+    <version>1.0.5</version>
+    <time>1618775119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886352</requestid>
+  </revision>
 </revisionlist>
