@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 14 00:32:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.40.2
+  * This is the first release of gdk-pixbuf-xlib, previous versions
+    were based on gdk-pixbuf version 2.40.1
+  * Last version provided with this packaged was git revision dc22ea36
+  * There will be no future release as upstreams strongly
+    encourages to port away from it (the API were already deprecated)
+- Dropped upstream merged 1.patch and 2.patch
+- Use SourceURL instead of _service file, see
+  https://en.opensuse.org/SourceUrls
+
+-------------------------------------------------------------------
 Mon Nov  9 17:07:41 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 1.patch (MR!1): Headers are installed to the gdk-pixbuf-2.0

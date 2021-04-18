@@ -1,7 +1,7 @@
 #
 # spec file for package gdk-pixbuf-xlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,13 @@
 
 
 Name:           gdk-pixbuf-xlib
-Version:        2.40.1
+Version:        2.40.2
 Release:        0
 Summary:        An GdkPixbuf compat library
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/Archive/gdk-pixbuf-xlib
-Source:         %{name}-%{version}.tar.xz
+Source:         https://gitlab.gnome.org/Archive/gdk-pixbuf-xlib/-/archive/%{version}/gdk-pixbuf-xlib-%{version}.tar.bz2
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM 1.patch dimstar@opensuse.org -- Headers are installed to the gdk-pixbuf-2.0 for compat reasons
-Patch1:         https://gitlab.gnome.org/Archive/gdk-pixbuf-xlib/-/merge_requests/1.patch
-# PATCH-FIX-UPSTREAM 2.patch dimstar@opensuse.org -- build: Declare public dependencies in pkg-config
-Patch2:         https://gitlab.gnome.org/Archive/gdk-pixbuf-xlib/-/merge_requests/2.patch
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.39.2
@@ -60,11 +56,10 @@ Requires:       libgdk_pixbuf_xlib-2_0-0 = %{version}
 This package contains the development files for gdk-pixbuf-xlib.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
-%meson \
-	%{nil}
+%meson
 %meson_build
 
 %install

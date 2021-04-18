@@ -7,4 +7,12 @@
     <comment>Submit patched version</comment>
     <requestid>847343</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9bd929ef8fc27339a67edd2e01150e74</srcmd5>
+    <version>2.40.2</version>
+    <time>1618775103</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed changelog entry (forwarded request 885434 from susnux)</comment>
+    <requestid>885659</requestid>
+  </revision>
 </revisionlist>
