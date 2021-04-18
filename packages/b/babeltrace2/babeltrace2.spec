@@ -1,7 +1,7 @@
 #
 # spec file for package babeltrace2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,11 @@
 %define soname  libbabeltrace2
 %define sover   0
 Name:           babeltrace2
-Version:        2.0.3
+Version:        2.0.4
 Release:        0
 Summary:        Common Trace Format Babel Tower
 License:        MIT AND GPL-2.0-only
-URL:            https://diamon.org/babeltrace
+URL:            https://babeltrace.org/
 Source:         https://efficios.com/files/babeltrace/%{name}-%{version}.tar.bz2
 Source1:        https://efficios.com/files/babeltrace/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
