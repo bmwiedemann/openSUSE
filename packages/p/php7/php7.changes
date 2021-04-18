@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 13 20:19:05 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- Do not hard-depend on systemd: use systemd_ordering instead of
+  systemd_requires.
+
+-------------------------------------------------------------------
 Thu Mar  4 19:10:24 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 7.4.16: This is a bug fix release. See

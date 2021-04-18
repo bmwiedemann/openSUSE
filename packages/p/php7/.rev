@@ -1062,4 +1062,14 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
   https://www.php.net/ChangeLog-7.php#7.4.16</comment>
     <requestid>876812</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>d927887f55463694b6067f9014506cd4</srcmd5>
+    <version>7.4.16</version>
+    <time>1618775106</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not hard-depend on systemd: use systemd_ordering instead of
+  systemd_requires.
+</comment>
+    <requestid>885701</requestid>
+  </revision>
 </revisionlist>

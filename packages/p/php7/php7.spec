@@ -276,7 +276,7 @@ Requires:       %{apache_mmn}
 Requires:       apache2-prefork
 Requires:       php = %{version}
 Requires(post): %{_sbindir}/a2enmod
-Requires(preun): %{_sbindir}/a2enmod
+Requires(preun):%{_sbindir}/a2enmod
 Provides:       mod_php_any = %{version}
 Provides:       php-sapi = %{version}
 Obsoletes:      apache2-mod_php5
@@ -319,7 +319,7 @@ Requires:       php = %{version}
 Provides:       php-fpm = %{version}
 Provides:       php-sapi = %{version}
 Conflicts:      php-fpm < %{version}
-%systemd_requires
+%{?systemd_ordering}
 
 %description
 PHP is a server-side, cross-platform HTML embedded scripting language.
