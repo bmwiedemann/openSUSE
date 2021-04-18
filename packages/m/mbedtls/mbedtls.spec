@@ -97,7 +97,10 @@ sed -i 's|//\(#define MBEDTLS_THREADING_PTHREAD\)|\1|' include/mbedtls/config.h
 
 %build
 %define __builder ninja
+export CFLAGS="%{optflags} -Wno-stringop-overflow -Wno-maybe-uninitialized"
+export CXXLAGS="%{optflags} -Wno-stringop-overflow -Wno-maybe-uninitialized"
 %cmake \
+  -DUNSAFE_BUILD=ON \
   -DLINK_WITH_PTHREAD=ON \
   -DUSE_PKCS11_HELPER_LIBRARY=ON \
   -DENABLE_ZLIB_SUPPORT=ON \

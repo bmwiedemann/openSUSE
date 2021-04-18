@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 15 16:00:07 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+-  Workaround for building with gcc-11 boo#1181876
+
+-------------------------------------------------------------------
 Mon Mar 22 15:54:07 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2.26.0:

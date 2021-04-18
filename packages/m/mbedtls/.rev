@@ -318,4 +318,12 @@
   mbedtls-4237.patch</comment>
     <requestid>880715</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>11f59da7d0ed88c7311a9cc2d5bcfe4d</srcmd5>
+    <version>2.26.0</version>
+    <time>1618775110</time>
+    <user>dimstar_suse</user>
+    <comment>-  Workaround for building with gcc-11 boo#1181876</comment>
+    <requestid>885737</requestid>
+  </revision>
 </revisionlist>
