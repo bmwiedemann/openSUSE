@@ -792,4 +792,24 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>881418</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4b195bee69f83a6f6a552d0341787deb</srcmd5>
+    <version>0.9.3</version>
+    <time>1618775127</time>
+    <user>dimstar_suse</user>
+    <comment>-Update to version 0.9.3:
+ + Bugfixes:
+ + Fix &quot;Show in file browser&quot; to work with thunar.
+ + Check that the clicked rating position is to the right or left of the rectangle.
+ + Fix rescan when collection directory is removed and readded.
+ + Enhancements:
+ + Allow editing playlist metadata for radio streams.
+ + Make CollectionQuery subclass QSqlQuery, avoid copying QSqlQuery.
+ + Only enable FTS3 when schema needs upgrading, since FTS5 is used for search.
+ + Add setting for configuring the color for the currently playing song.
+ + Add setting to turn on OSD Pretty fading.
+ + Add commandline option to resize window.
+</comment>
+    <requestid>886482</requestid>
+  </revision>
 </revisionlist>
