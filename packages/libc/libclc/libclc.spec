@@ -16,13 +16,13 @@
 #
 
 
-%define _libclc_llvm_ver 11.0.1
+%define _libclc_llvm_ver 12.0.0
 
 Name:           libclc
 Version:        0.2.0+llvm%{_libclc_llvm_ver}
 Release:        0
 Summary:        OpenCL C programming language library
-License:        (BSD-3-Clause OR MIT) AND Apache-2.0 WITH LLVM-exception
+License:        Apache-2.0 WITH LLVM-exception AND (BSD-3-Clause OR MIT)
 Group:          Development/Libraries/C and C++
 URL:            https://libclc.llvm.org/
 Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_libclc_llvm_ver}/%{name}-%{_libclc_llvm_ver}.src.tar.xz
@@ -44,11 +44,12 @@ Library requirements of the OpenCL C programming language.
 # The libraries are bitcode files, so LTO is neither supported nor does it help.
 %define _lto_cflags %{nil}
 
-sed -i "s|python|python3|g" CMakeLists.txt
+# TODO: For building all targets, we need llvm-spirv.
 %cmake \
   -DCMAKE_C_COMPILER=clang \
   -DCMAKE_CXX_COMPILER=clang++ \
-  -DENABLE_RUNTIME_SUBNORMAL:BOOL=ON
+  -DENABLE_RUNTIME_SUBNORMAL:BOOL=ON \
+  -DLIBCLC_TARGETS_TO_BUILD="amdgcn--;amdgcn--amdhsa;amdgcn-mesa-mesa3d;r600--;nvptx--;nvptx64--;nvptx--nvidiacl;nvptx64--nvidiacl"
 %cmake_build
 
 %install

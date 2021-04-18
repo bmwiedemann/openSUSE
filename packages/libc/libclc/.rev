@@ -123,4 +123,12 @@
     <comment></comment>
     <requestid>861998</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c8075d8a04c9b5f2d75aba0ae7957905</srcmd5>
+    <version>0.2.0+llvm12.0.0</version>
+    <time>1618775118</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886350</requestid>
+  </revision>
 </revisionlist>
