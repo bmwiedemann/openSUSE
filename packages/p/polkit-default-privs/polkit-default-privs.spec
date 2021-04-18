@@ -23,7 +23,7 @@
 %endif
 
 Name:           polkit-default-privs
-Version:        1550+20210111.f725c25
+Version:        1550+20210409.c29362e
 Release:        0
 Summary:        SUSE PolicyKit default permissions
 License:        GPL-2.0-or-later
@@ -33,7 +33,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  polkit
 Requires:       polkit
 Supplements:    PolicyKit
-Supplements:    libpolkit0, polkit
+Supplements:    libpolkit0
+Supplements:    polkit
 BuildArch:      noarch
 # please open bugreports at bugzilla.suse.com
 URL:            http://github.com/openSUSE/polkit-default-privs.git
@@ -43,6 +44,7 @@ PreReq:         %fillup_prereq
 Predefined polkit profiles for different usage scenarios like desktop and
 server. These profiles define the kind of authentication required for various
 polkit actions used across applications.
+
 
 # use a separate package for the static whitelist (i.e. the one that isn't
 # part of the different profile selectable during runtime). This whitelist is

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 12 07:42:37 UTC 2021 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20210409.c29362e:
+  * profiles: add KDiskMark (bsc#1182521)
+  * profiles: add kdenetwork-filesharing (bsc#1175633) (#37)
+
+-------------------------------------------------------------------
 Mon Jan 11 13:02:14 UTC 2021 - matthias.gerstner@suse.com
 
 - Update to version 1550+20210111.f725c25:
