@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr 13 06:04:38 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not BuildRequire cmake: expat is part of the distro bootstrap
+  cycle and any additional dependency makes the ring larger. In
+  this case here, cmake was even only used to own a directory.
+
+-------------------------------------------------------------------
+Tue Apr  6 02:16:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * When calling XML_ParseBuffer without a prior successful call to
+    XML_GetBuffer as a user, no longer trigger undefined behavior
+    (by adding an integer to a NULL pointer) but rather return
+    XML_STATUS_ERROR and set the error code to (new) code
+    XML_ERROR_NO_BUFFER. Found by UBSan (UndefinedBehaviorSanitizer)
+    of Clang 11 (but not Clang 9).
+  * xmlwf: Exit status 2 was used for both:
+    - malformed input files (documented) and
+    - invalid command-line arguments (undocumented).
+    case of invalid command-line arguments now
+    has its own exit status 4, resolving the ambiguity.
+  * Other changes
+
+-------------------------------------------------------------------
 Sun Oct  4 19:19:55 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 2.2.10:

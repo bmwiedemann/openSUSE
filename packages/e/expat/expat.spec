@@ -1,7 +1,7 @@
 #
 # spec file for package expat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%global unversion 2_2_10
+%global unversion 2_3_0
 Name:           expat
-Version:        2.2.10
+Version:        2.3.0
 Release:        0
 Summary:        XML Parser Toolkit
 License:        MIT
@@ -72,12 +72,12 @@ rm -f examples/*.dsp
   --docdir="%{_docdir}/%{name}" \
   --disable-static
 %if 0%{?do_profiling}
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}"
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_generate}" LDFLAGS="%{optflags} %{cflags_profile_generate}" check
-  make %{?_smp_mflags} clean
-  make %{?_smp_mflags} CFLAGS="%{optflags} %{cflags_profile_feedback}"
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
+  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}" LDFLAGS="%{optflags} %{cflags_profile_generate}" check
+  %make_build clean
+  %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
 %else
-  make %{?_smp_mflags} CFLAGS="%{optflags}"
+  %make_build CFLAGS="%{optflags}"
 %endif
 
 %install
@@ -87,7 +87,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 chmod 0644 examples/elements.c
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n libexpat1 -p /sbin/ldconfig
 %postun -n libexpat1 -p /sbin/ldconfig
@@ -109,5 +109,7 @@ make %{?_smp_mflags} check
 %{_includedir}/*
 %{_libdir}/libexpat.so
 %{_libdir}/pkgconfig/expat.pc
+%dir %{_libdir}/cmake
+%{_libdir}/cmake/expat-%{version}
 
 %changelog
