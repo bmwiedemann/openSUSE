@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 13 13:23:44 UTC 2021 - pgajdos@suse.com
+
+- fix DFLTCC segfault [bsc#1177047]
+- added patches
+  fix https://git.savannah.gnu.org/cgit/gzip.git/commit/?id=be0a534ba2b6e77da289de8da79e70843b1028cc
+  + gzip-1.10-fix-DFLTCC-segfault.patch
+
+-------------------------------------------------------------------
 Thu Mar  4 01:57:35 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
 
 - gzip.spec: move %patch10 from the ifarch condition (mistake)

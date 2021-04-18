@@ -1,0 +1,76 @@
+From be0a534ba2b6e77da289de8da79e70843b1028cc Mon Sep 17 00:00:00 2001
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+Date: Thu, 24 Sep 2020 00:08:56 +0200
+Subject: Fix DFLTCC segfault when compressing or decompressing two files
+
+The value in total_in global variable from processing the first file
+affected processing of the second file.  Fix by making total_in local.
+---
+ dfltcc.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/dfltcc.c b/dfltcc.c
+index 86aa56e..3a5b92d 100644
+--- a/dfltcc.c
++++ b/dfltcc.c
+@@ -242,10 +242,8 @@ dfltcc_gdht (struct dfltcc_param_v0 *param)
+   dfltcc (DFLTCC_GDHT, param, NULL, NULL, &next_in, &avail_in, NULL);
+ }
+ 
+-static off_t total_in;
+-
+ static dfltcc_cc
+-dfltcc_cmpr_xpnd (struct dfltcc_param_v0 *param, int fn)
++dfltcc_cmpr_xpnd (struct dfltcc_param_v0 *param, int fn, off_t *total_in)
+ {
+   uch *next_out = outbuf + outcnt;
+   size_t avail_out = OUTBUFSIZ - outcnt;
+@@ -257,7 +255,7 @@ dfltcc_cmpr_xpnd (struct dfltcc_param_v0 *param, int fn)
+                          window);
+   off_t consumed_in = next_in - (inbuf + inptr);
+   inptr += consumed_in;
+-  total_in += consumed_in;
++  *total_in += consumed_in;
+   outcnt += ((OUTBUFSIZ - outcnt) - avail_out);
+   return cc;
+ }
+@@ -349,6 +347,7 @@ dfltcc_deflate (int pack_level)
+ 
+   union aligned_dfltcc_param_v0 ctx_v0;
+   struct dfltcc_param_v0 *param = init_param (&ctx_v0);
++  off_t total_in = 0;
+ 
+   /* Compress ifd into ofd in a loop.  */
+   while (true)
+@@ -398,7 +397,8 @@ dfltcc_deflate (int pack_level)
+         }
+ 
+       /* Compress inbuf into outbuf.  */
+-      while (dfltcc_cmpr_xpnd (param, DFLTCC_CMPR) == DFLTCC_CC_AGAIN)
++      while (dfltcc_cmpr_xpnd (param, DFLTCC_CMPR, &total_in)
++             == DFLTCC_CC_AGAIN)
+         ;
+ 
+       /* Unmask the input data.  */
+@@ -427,6 +427,7 @@ dfltcc_inflate (void)
+ 
+   union aligned_dfltcc_param_v0 ctx_v0;
+   struct dfltcc_param_v0 *param = init_param (&ctx_v0);
++  off_t total_in = 0;
+ 
+   /* Decompress ifd into ofd in a loop.  */
+   while (true)
+@@ -446,7 +447,8 @@ dfltcc_inflate (void)
+ 
+         /* Decompress inbuf into outbuf.  */
+         dfltcc_cc cc;
+-        while ((cc = dfltcc_cmpr_xpnd (param, DFLTCC_XPND)) == DFLTCC_CC_AGAIN)
++        while ((cc = dfltcc_cmpr_xpnd (param, DFLTCC_XPND, &total_in))
++               == DFLTCC_CC_AGAIN)
+           ;
+         if (cc == DFLTCC_CC_OK)
+           {
+-- 
+cgit v1.2.1
+
+

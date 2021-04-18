@@ -36,12 +36,14 @@ Patch7:         xz_lzma.patch
 Patch8:         manpage-no-date.patch
 Patch9:         gzip-1.10-ibm_dfltcc_support.patch
 Patch10:        gzip-1.10-fix_count_of_lines_to_skip.patch
+# https://git.savannah.gnu.org/cgit/gzip.git/commit/?id=be0a534ba2b6e77da289de8da79e70843b1028cc
+Patch11:        gzip-1.10-fix-DFLTCC-segfault.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  makeinfo
 BuildRequires:  xz
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description
 Gzip reduces the size of the named files using Lempel-Ziv coding LZ77.
@@ -61,6 +63,9 @@ times.
 %patch9 -p1
 %endif
 %patch10 -p1
+%ifarch s390x
+%patch11 -p1
+%endif
 
 %build
 export CFLAGS="%{optflags} -fomit-frame-pointer \
