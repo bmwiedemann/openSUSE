@@ -41,7 +41,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 20.3.5
+%define _version 21.0.2
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -109,7 +109,7 @@
 %endif
 
 Name:           Mesa-drivers
-Version:        20.3.5
+Version:        21.0.2
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -128,6 +128,8 @@ Patch2:         n_add-Mesa-headers-again.patch
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
+Patch101:       U_clover-Fix-build-with-llvm-12.patch
+Patch102:       U_clover-Add-missing-include-for-llvm-12-build-fix.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -616,7 +618,11 @@ This package contains the VDPAU state tracker for radeonsi.
 %package -n Mesa-libOpenCL
 Summary:        Mesa OpenCL implementation
 Group:          System/Libraries
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
+Requires:       libclc(llvm%{_llvm_sonum})
+%else
 Requires:       libclc
+%endif
 
 %description -n Mesa-libOpenCL
 This package contains the Mesa OpenCL implementation or GalliumCompute.
@@ -710,6 +716,8 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %patch54 -p1
 %patch58 -p1
 %patch100 -p1
+%patch101 -p1
+%patch102 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...
@@ -734,13 +742,13 @@ egl_platforms=x11,wayland
             -Dgles2=false \
             -Degl=true \
             -Dglx=disabled \
-            -Dosmesa=none \
+            -Dosmesa=false \
 %else
             -Dglvnd=true \
             -Dgles1=true \
             -Dgles2=true \
             -Degl=true \
-            -Dosmesa=classic \
+            -Dosmesa=true \
             -Dglx=auto \
             -Dllvm=false \
             -Dvulkan-drivers= \
@@ -797,8 +805,8 @@ egl_platforms=x11,wayland
   %endif
   %endif
 %else
-            -Ddri-drivers=swrast \
-            -Dgallium-drivers= \
+            -Ddri-drivers= \
+            -Dgallium-drivers=swrast \
 %endif
 %ifarch aarch64 %{ix86} x86_64 ppc64le s390x
             -Dvalgrind=true \
@@ -859,7 +867,7 @@ rm -f %{buildroot}/%{_libdir}/vdpau/libvdpau_gallium.so
 
 %else
 
-rm -rf %{buildroot}/%{_libdir}/dri/swrast_dri.so
+rm -f %{buildroot}/%{_libdir}/dri/*_dri.so
 
 rm -f %{buildroot}%{_libdir}/libGLES*
 # glvnd needs a default provider for indirect rendering where it cannot
@@ -937,7 +945,6 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/pkgconfig/egl.pc
 
 %files KHR-devel
-%dir %{_includedir}/KHR
 %{_includedir}/KHR
 
 %files libGL1

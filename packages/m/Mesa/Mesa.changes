@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Apr 17 16:41:33 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Move osmesa build back to Mesa, which we can now do after
+  choosing another dummy driver there.
+- Use LLVM-versioned libclc runtime dependency to ensure
+  bitcode compatibility. We have that in Tumbleweed and soon Leap.
+- U_clover-Fix-build-with-llvm-12.patch
+  * Fixes build with LLVM 12.
+- U_clover-Add-missing-include-for-llvm-12-build-fix.patch
+  * Fixes a missing header in the previous patch.
+
+-------------------------------------------------------------------
+Sat Apr 17 14:39:04 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Mesa-devel: no longer require libOSMesa-devel, since it's now
+  built in Mesa-drivers; packages should require it directly now,
+  preferrably via pkconfig(osmesa) ...
+
+-------------------------------------------------------------------
+Sat Apr 17 12:45:17 UTC 2021 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Switch dummy driver for mesa package from "auto" xorg driver (i965) to
+  gallium swrast driver
+
+-------------------------------------------------------------------
+Sat Apr 17 10:11:09 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 21.0.2
+  * many additions especially on the Radeon Vulkan (RADV) driver
+    front where sparse memory support is in place, AMD Smart Access
+    Memory / Resizable BAR optimizations, various RDNA 2
+    improvements, rapid packed math for ACO, and more.
+    Elsewhere in Mesa 21.0 there are continued RadeonSI 
+    optimizations, many Intel ANV and Iris improvements, OpenGL 3.3
+    for Freedreno, DXGI Winsys was added and initial Direct3D 12
+    code for WSL, OpenGL 4.1 for Zink, and more. 
+- moved osmesa build to Mesa-drivers since swrast driver has been
+  removed from Mesa
+
+-------------------------------------------------------------------
 Tue Apr  6 08:38:16 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Enable radeon and nouveau drivers on riscv64
