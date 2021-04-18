@@ -1,0 +1,54 @@
+From: Max Filippov <jcmvbkbc@gmail.com>
+Date: Tue, 30 Mar 2021 00:25:24 -0700
+Subject: target/xtensa: fix meson.build rule for xtensa cores
+
+Git-commit: 84317d57e8c61ff68eeaa1f2de93472fa930a6a4
+
+import_core.sh tries to change Makefile.objs when importing new xtensa
+core, but that file no longer exists. Rewrite meson.build rule to pick
+up all source files that match core-*.c pattern and drop commands that
+change Makefile.objs.
+
+Cc: qemu-stable@nongnu.org # v5.2.0
+Signed-off-by: Max Filippov <jcmvbkbc@gmail.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ target/xtensa/import_core.sh |  3 ---
+ target/xtensa/meson.build    | 13 ++++---------
+ 2 files changed, 4 insertions(+), 12 deletions(-)
+
+diff --git a/target/xtensa/import_core.sh b/target/xtensa/import_core.sh
+index c8626a8c02ebb41e2ab9aab3648f..1120a4a2a5e1ca6568d27a8eb06e 100755
+--- a/target/xtensa/import_core.sh
++++ b/target/xtensa/import_core.sh
+@@ -65,6 +65,3 @@ static XtensaConfig $NAME __attribute__((unused)) = {
+ 
+ REGISTER_CORE($NAME)
+ EOF
+-
+-grep -q core-${NAME}.o "$BASE"/Makefile.objs || \
+-    echo "obj-y += core-${NAME}.o" >> "$BASE"/Makefile.objs
+diff --git a/target/xtensa/meson.build b/target/xtensa/meson.build
+index dd750a977ef9c046a12e16415b58..7c4efa6c6290d68abb68d9fc9016 100644
+--- a/target/xtensa/meson.build
++++ b/target/xtensa/meson.build
+@@ -1,14 +1,9 @@
+ xtensa_ss = ss.source_set()
++
++xtensa_cores = run_command('sh', '-c', 'cd $MESON_SOURCE_ROOT/$MESON_SUBDIR ; ls -1 core-*.c')
++xtensa_ss.add(files(xtensa_cores.stdout().strip().split('\n')))
++
+ xtensa_ss.add(files(
+-  'core-dc232b.c',
+-  'core-dc233c.c',
+-  'core-de212.c',
+-  'core-de233_fpu.c',
+-  'core-dsp3400.c',
+-  'core-fsf.c',
+-  'core-sample_controller.c',
+-  'core-test_kc705_be.c',
+-  'core-test_mmuhifi_c3.c',
+   'cpu.c',
+   'exc_helper.c',
+   'fpu_helper.c',

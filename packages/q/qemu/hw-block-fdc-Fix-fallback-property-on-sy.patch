@@ -1,0 +1,47 @@
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Date: Wed, 7 Apr 2021 15:37:42 +0200
+Subject: hw/block/fdc: Fix 'fallback' property on sysbus floppy disk
+ controllers
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: da64789d3a16b2c5b5f1be9c75b00c2b8ae393a0
+
+Setting the 'fallback' property corrupts the QOM instance state
+(FDCtrlSysBus) because it accesses an incorrect offset (it uses
+the offset of the FDCtrlISABus state).
+
+Cc: qemu-stable@nongnu.org
+Fixes: a73275dd6fc ("fdc: Add fallback option")
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20210407133742.1680424-1-f4bug@amsat.org>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/block/fdc.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hw/block/fdc.c b/hw/block/fdc.c
+index d6ba6c8f730092632770cf66908b..11a43cd4a18c02e3492d3f171049 100644
+--- a/hw/block/fdc.c
++++ b/hw/block/fdc.c
+@@ -2961,7 +2961,7 @@ static Property sysbus_fdc_properties[] = {
+     DEFINE_PROP_SIGNED("fdtypeB", FDCtrlSysBus, state.qdev_for_drives[1].type,
+                         FLOPPY_DRIVE_TYPE_AUTO, qdev_prop_fdc_drive_type,
+                         FloppyDriveType),
+-    DEFINE_PROP_SIGNED("fallback", FDCtrlISABus, state.fallback,
++    DEFINE_PROP_SIGNED("fallback", FDCtrlSysBus, state.fallback,
+                         FLOPPY_DRIVE_TYPE_144, qdev_prop_fdc_drive_type,
+                         FloppyDriveType),
+     DEFINE_PROP_END_OF_LIST(),
+@@ -2987,7 +2987,7 @@ static Property sun4m_fdc_properties[] = {
+     DEFINE_PROP_SIGNED("fdtype", FDCtrlSysBus, state.qdev_for_drives[0].type,
+                         FLOPPY_DRIVE_TYPE_AUTO, qdev_prop_fdc_drive_type,
+                         FloppyDriveType),
+-    DEFINE_PROP_SIGNED("fallback", FDCtrlISABus, state.fallback,
++    DEFINE_PROP_SIGNED("fallback", FDCtrlSysBus, state.fallback,
+                         FLOPPY_DRIVE_TYPE_144, qdev_prop_fdc_drive_type,
+                         FloppyDriveType),
+     DEFINE_PROP_END_OF_LIST(),

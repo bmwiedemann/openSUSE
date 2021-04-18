@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr 13 19:17:26 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Include upstream patches designated as stable material and
+  reviewed for applicability to include here. NOTE that the
+  PIIX4 patch has migration implications: the change will also be
+  applied to the SLE-15-SP2 qemu, and a live migration from that
+  version to this SLE-15-SP3 qemu would require this patch to be
+  applied for a successful migration if PIIX4 southbridge is used
+  in the machine emulation (x86 i440fx)
+  block-rbd-fix-memory-leak-in-qemu_rbd_co.patch
+  block-rbd-Fix-memory-leak-in-qemu_rbd_co.patch
+  cpu-core-Fix-help-of-CPU-core-device-typ.patch
+  hw-arm-virt-acpi-build-Fix-GSIV-values-o.patch
+  hw-block-fdc-Fix-fallback-property-on-sy.patch
+  hw-isa-Kconfig-Add-missing-dependency-VI.patch
+  hw-isa-piix4-Migrate-Reset-Control-Regis.patch
+  hw-virtio-pci-Added-AER-capability.patch
+  hw-virtio-pci-Added-counter-for-pcie-cap.patch
+  s390x-css-report-errors-from-ccw_dstream.patch
+  target-xtensa-fix-meson.build-rule-for-x.patch
+  util-fix-use-after-free-in-module_load_o.patch
+  virtio-pci-compat-page-aligned-ATS.patch
+
+-------------------------------------------------------------------
 Tue Mar 30 17:30:11 UTC 2021 - Bruce Rogers <brogers@suse.com>
 
 - Switch method of splitting off hw-s390x-virtio-gpu-ccw.so as a

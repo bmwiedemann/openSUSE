@@ -1,0 +1,47 @@
+From: Stefano Garzarella <sgarzare@redhat.com>
+Date: Mon, 29 Mar 2021 17:01:29 +0200
+Subject: block/rbd: Fix memory leak in qemu_rbd_co_create_opts()
+
+Git-commit: b084b420d9d6347dede328fbcf18c8e4c695f7e8
+
+When we allocate 'q_namespace', we forgot to set 'has_q_namespace'
+to true. This can cause several issues, including a memory leak,
+since qapi_free_BlockdevCreateOptions() does not deallocate that
+memory, as reported by valgrind:
+
+  13 bytes in 1 blocks are definitely lost in loss record 7 of 96
+     at 0x4839809: malloc (vg_replace_malloc.c:307)
+     by 0x48CEBB8: g_malloc (in /usr/lib64/libglib-2.0.so.0.6600.8)
+     by 0x48E3FE3: g_strdup (in /usr/lib64/libglib-2.0.so.0.6600.8)
+     by 0x180010: qemu_rbd_co_create_opts (rbd.c:446)
+     by 0x1AE72C: bdrv_create_co_entry (block.c:492)
+     by 0x241902: coroutine_trampoline (coroutine-ucontext.c:173)
+     by 0x57530AF: ??? (in /usr/lib64/libc-2.32.so)
+     by 0x1FFEFFFA6F: ???
+
+Fix setting 'has_q_namespace' to true when we allocate 'q_namespace'.
+
+Fixes: 19ae9ae014 ("block/rbd: Add support for ceph namespaces")
+Signed-off-by: Stefano Garzarella <sgarzare@redhat.com>
+Message-Id: <20210329150129.121182-3-sgarzare@redhat.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Max Reitz <mreitz@redhat.com>
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+[BR: Modified subject to acheive unique patchname]
+---
+ block/rbd.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/block/rbd.c b/block/rbd.c
+index 15f1ac3b47d45e347a34579130ea..318e2826fc4180a1ad6837c81150 100644
+--- a/block/rbd.c
++++ b/block/rbd.c
+@@ -444,6 +444,7 @@ static int coroutine_fn qemu_rbd_co_create_opts(BlockDriver *drv,
+     loc->user        = g_strdup(qdict_get_try_str(options, "user"));
+     loc->has_user    = !!loc->user;
+     loc->q_namespace = g_strdup(qdict_get_try_str(options, "namespace"));
++    loc->has_q_namespace = !!loc->q_namespace;
+     loc->image       = g_strdup(qdict_get_try_str(options, "image"));
+     keypairs         = qdict_get_try_str(options, "=keyvalue-pairs");
+ 

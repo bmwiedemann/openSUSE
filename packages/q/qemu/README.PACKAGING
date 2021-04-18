@@ -1,42 +1,53 @@
 The qemu package includes a special maintenance workflow in order to support git
-based patching. Please use it in order to have changes you make be acceptable to
-the package maintainers.
+based patching, including of submodules. Please use it in order to have changes
+you make be acceptable to the package maintainers. A bash script (update_git.sh)
+implements this workflow.
 
-Currently a local clone of the upstream repo(s) is required for the packaging
-workflow. It is anticipated that the need for any extra setup will be reduced or
-even eliminated entirely in the future, but for now, you will need do so some
-setup. See config.sh for details.
+A local clone of the upstream repo(s) is required for the packaging workflow.
+If none is found, the qemu superproject will be cloned as a shallow repo for the
+workflow script's use. If you intend to do more than superficial work in the
+qemu package, unshallow it. The submodule local repos aren't needed unless you
+intend to do patch work there. See config.sh for the local repo paths.
 
-The qemu.spec file is generated from a qemu.spec.in template, so to make changes
-to the spec file beyond the patch name generation, patch reference and automated
-versioning done by the scripts, you need to edit the template. Do not directly
-edit the spec file. The spec file's version and patch references are added when
-the update_git.sh script is passed certain commands, as described below.
+The qemu.spec file is generated from a template file (qemu.spec.in), so to make
+spec file changes outside of the patch file references (handled by the script),
+you need to edit the template file, and NOT the qemu.spec file. The spec file's
+version and patch references are added when update_git.sh is passed certain
+commands, as described below.
 
 If you are not modifying any patches or their order, but just need to update the
 spec file from a changed template, run 'bash ./update_git.sh refresh'.
 
 If the set of patches is being modified, including their order, you will want to
 first run 'bash ./update_git.sh pkg2git', which makes the current package patch
-queue available in a local git branch named frombundle (see config.sh for the
-locations). This set of patches comes from a "bundle of git bundles", the
-bundles.tar.xz file, which is included as a package source file. You will then
-create an altered patch queue in the branch which corresponds to this release
-(eg: opensuse-5.0), using the frombundle branch as the starting point for your
-changes (eg perhaps start by doing git reset --hard frombundle, then cherry-pick
-upstream patches from there). Once you have the patch queue ready to go run
-'bash ./update_git.sh git2pkg' which updates the bundles.tar.xz file, as well as
-the spec and patch files.
+set available in a local git branch named 'frombundle' (see config.sh for the
+locations). This incarnation of the package patches comes from a "bundle of git
+bundles", included as a package source file named bundles.tar.xz, which the
+script extracts to the corresponding local frombundle branch. To add, remove or
+modify the package patches, you will then do that work in a local branch whose
+name corresponds to that qemu package's release version as follows:
+The qemu major and minor release numbers are part of the name, prefixed by
+'opensuse-', so, for example, for the v5.2.0 based SLE-15-SP3 qemu, the branch
+would be named 'opensuse-5.2'. You want to start your work based on the current
+patchqueue as contained in 'frombundle', so one approach is to do (depending on
+your local repo's current state), 'branch -B opensuse-5.2 frombundle', and then
+cherry-pick upstream patches into it, or interactive rebase it to modify or
+delete patches, etc. Be careful to keep the branch based on the upstream tag
+which represents the package tarball however! Once you have the patch queue
+ready to go, simply run 'bash ./update_git.sh git2pkg' (in your local obs branch
+directory) to refresh the bundles.tar.xz file, as well as the package spec and
+patch files. The package qemu.changes file is modified to list added or removed
+patches as a starting point for documenting the change.
 
-The default action for update_git.sh is git2pkg, which helps simplify repeated
-package updates as you modify the patch queue from the local git repo.
-
-The maintainer and automation use another workflow mode dealing with packaging
-the latest upstream qemu. See 'LATEST' references in the scripts for details.
-
-* * * * * * * * *
+When you are ready to check in the package, using 'bash update_git.sh ci' is
+provided as a convenience (and to help preserve correct spec file formatting,
+since a 'normal osc check-in' messes up the spec file a bit).
 
 Additional Notes:
+
+The maintainer and automation use another workflow mode dealing with packaging
+the latest upstream qemu. See 'LATEST' references in the scripts for details,
+as this is an 'expert mode' and isn't documented here.
 
 Patches which are from an upstream git repo should have the commit id recorded
 just below the Subject line (after a blank line) as follows:
@@ -47,13 +58,18 @@ If a patch is anticipated to be shortly included in upstream repo, mark that
 fact by doing the above with 40 0's, which will flag it as needing to be updated
 in the near future.
 
+We try to maintain, if possible, patch ordering as follows: (tarball as base),
+patches which come from upstream commits in commit order, patches which will
+soon be upstream (as mentioned above), followed by our private patches.
+
 Bug or feature tracking identifiers should also be added to the patch similarly,
 using the abbreviations identified here:
 http://en.opensuse.org/openSUSE:Packaging_Patches_guidelines#Current_set_of_abbreviations
 using the "Reference:" tag, with multiple entries comma separated.
 
 The ability to provide a conditional inclusion of a patch (eg based on
-architecture, is provided by using the "Include-If:" tag similarly, as follows:
+architecture, is provided by this workflow by using the "Include-If:" tag, as
+shown here:
 
 Include-If: %ifarch aarch64
 

@@ -1,0 +1,41 @@
+From: Andrew Melnychenko <andrew@daynix.com>
+Date: Thu, 3 Dec 2020 13:07:12 +0200
+Subject: hw/virtio-pci Added counter for pcie capabilities offsets.
+
+Git-commit: 06e97442420b03a1e0ff05e8eb554fac684ca736
+
+Removed hardcoded offset for ats. Added cap offset counter
+for future capabilities like AER.
+
+Signed-off-by: Andrew Melnychenko <andrew@daynix.com>
+Message-Id: <20201203110713.204938-2-andrew@daynix.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+[BR: needed for stable commit d83f46d189a26fa32434139954d264326f199a45]
+---
+ hw/virtio/virtio-pci.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+index 36524a5728e40da961b4db862558..ceaa233129c529b604f461e45336 100644
+--- a/hw/virtio/virtio-pci.c
++++ b/hw/virtio/virtio-pci.c
+@@ -1798,6 +1798,7 @@ static void virtio_pci_realize(PCIDevice *pci_dev, Error **errp)
+ 
+     if (pcie_port && pci_is_express(pci_dev)) {
+         int pos;
++        uint16_t last_pcie_cap_offset = PCI_CONFIG_SPACE_SIZE;
+ 
+         pos = pcie_endpoint_cap_init(pci_dev, 0);
+         assert(pos > 0);
+@@ -1833,7 +1834,8 @@ static void virtio_pci_realize(PCIDevice *pci_dev, Error **errp)
+         }
+ 
+         if (proxy->flags & VIRTIO_PCI_FLAG_ATS) {
+-            pcie_ats_init(pci_dev, 256);
++            pcie_ats_init(pci_dev, last_pcie_cap_offset);
++            last_pcie_cap_offset += PCI_EXT_CAP_ATS_SIZEOF;
+         }
+ 
+         if (proxy->flags & VIRTIO_PCI_FLAG_INIT_FLR) {

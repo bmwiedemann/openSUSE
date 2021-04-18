@@ -1,0 +1,134 @@
+From: Jason Wang <jasowang@redhat.com>
+Date: Tue, 6 Apr 2021 12:03:30 +0800
+Subject: virtio-pci: compat page aligned ATS
+
+Git-commit: d83f46d189a26fa32434139954d264326f199a45
+
+Commit 4c70875372b8 ("pci: advertise a page aligned ATS") advertises
+the page aligned via ATS capability (RO) to unbrek recent Linux IOMMU
+drivers since 5.2. But it forgot the compat the capability which
+breaks the migration from old machine type:
+
+(qemu) qemu-kvm: get_pci_config_device: Bad config data: i=0x104 read:
+0 device: 20 cmask: ff wmask: 0 w1cmask:0
+
+This patch introduces a new parameter "x-ats-page-aligned" for
+virtio-pci device and turns it on for machine type which is newer than
+5.1.
+
+Cc: Michael S. Tsirkin <mst@redhat.com>
+Cc: Peter Xu <peterx@redhat.com>
+Cc: Dr. David Alan Gilbert <dgilbert@redhat.com>
+Cc: qemu-stable@nongnu.org
+Fixes: 4c70875372b8 ("pci: advertise a page aligned ATS")
+Signed-off-by: Jason Wang <jasowang@redhat.com>
+Message-Id: <20210406040330.11306-1-jasowang@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/core/machine.c      |  1 +
+ hw/pci/pcie.c          | 10 ++++++----
+ hw/virtio/virtio-pci.c |  5 ++++-
+ hw/virtio/virtio-pci.h |  5 +++++
+ include/hw/pci/pcie.h  |  2 +-
+ 5 files changed, 17 insertions(+), 6 deletions(-)
+
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 72ceba57def38ca9dd5c683a71c4..7e99d0a05bdf1a7c898bc8923a77 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -37,6 +37,7 @@ GlobalProperty hw_compat_5_1[] = {
+     { "nvme", "use-intel-id", "on"},
+     { "pvpanic", "events", "1"}, /* PVPANIC_PANICKED */
+     { "pl011", "migrate-clk", "off" },
++    { "virtio-pci", "x-ats-page-aligned", "off"},
+ };
+ const size_t hw_compat_5_1_len = G_N_ELEMENTS(hw_compat_5_1);
+ 
+diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
+index d4010cf8f36178758315627d56bb..8bbabd6e2bb7b03c0f786e977fbf 100644
+--- a/hw/pci/pcie.c
++++ b/hw/pci/pcie.c
+@@ -964,16 +964,18 @@ void pcie_dev_ser_num_init(PCIDevice *dev, uint16_t offset, uint64_t ser_num)
+     pci_set_quad(dev->config + offset + pci_dsn_cap, ser_num);
+ }
+ 
+-void pcie_ats_init(PCIDevice *dev, uint16_t offset)
++void pcie_ats_init(PCIDevice *dev, uint16_t offset, bool aligned)
+ {
+     pcie_add_capability(dev, PCI_EXT_CAP_ID_ATS, 0x1,
+                         offset, PCI_EXT_CAP_ATS_SIZEOF);
+ 
+     dev->exp.ats_cap = offset;
+ 
+-    /* Invalidate Queue Depth 0, Page Aligned Request 1 */
+-    pci_set_word(dev->config + offset + PCI_ATS_CAP,
+-                 PCI_ATS_CAP_PAGE_ALIGNED);
++    /* Invalidate Queue Depth 0 */
++    if (aligned) {
++        pci_set_word(dev->config + offset + PCI_ATS_CAP,
++                     PCI_ATS_CAP_PAGE_ALIGNED);
++    }
+     /* STU 0, Disabled by default */
+     pci_set_word(dev->config + offset + PCI_ATS_CTRL, 0);
+ 
+diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+index f863f69ede4f4bf1c09fc39a5035..b7ab325ae99176ae18ee64a0bfa5 100644
+--- a/hw/virtio/virtio-pci.c
++++ b/hw/virtio/virtio-pci.c
+@@ -1840,7 +1840,8 @@ static void virtio_pci_realize(PCIDevice *pci_dev, Error **errp)
+         }
+ 
+         if (proxy->flags & VIRTIO_PCI_FLAG_ATS) {
+-            pcie_ats_init(pci_dev, last_pcie_cap_offset);
++            pcie_ats_init(pci_dev, last_pcie_cap_offset,
++                          proxy->flags & VIRTIO_PCI_FLAG_ATS_PAGE_ALIGNED);
+             last_pcie_cap_offset += PCI_EXT_CAP_ATS_SIZEOF;
+         }
+ 
+@@ -1917,6 +1918,8 @@ static Property virtio_pci_properties[] = {
+                      ignore_backend_features, false),
+     DEFINE_PROP_BIT("ats", VirtIOPCIProxy, flags,
+                     VIRTIO_PCI_FLAG_ATS_BIT, false),
++    DEFINE_PROP_BIT("x-ats-page-aligned", VirtIOPCIProxy, flags,
++                    VIRTIO_PCI_FLAG_ATS_PAGE_ALIGNED_BIT, true),
+     DEFINE_PROP_BIT("x-pcie-deverr-init", VirtIOPCIProxy, flags,
+                     VIRTIO_PCI_FLAG_INIT_DEVERR_BIT, true),
+     DEFINE_PROP_BIT("x-pcie-lnkctl-init", VirtIOPCIProxy, flags,
+diff --git a/hw/virtio/virtio-pci.h b/hw/virtio/virtio-pci.h
+index d7d5d403a9483f5f7e0f0f9b4110..2446dcd9aef197964b59f83b6183 100644
+--- a/hw/virtio/virtio-pci.h
++++ b/hw/virtio/virtio-pci.h
+@@ -42,6 +42,7 @@ enum {
+     VIRTIO_PCI_FLAG_INIT_PM_BIT,
+     VIRTIO_PCI_FLAG_INIT_FLR_BIT,
+     VIRTIO_PCI_FLAG_AER_BIT,
++    VIRTIO_PCI_FLAG_ATS_PAGE_ALIGNED_BIT,
+ };
+ 
+ /* Need to activate work-arounds for buggy guests at vmstate load. */
+@@ -84,6 +85,10 @@ enum {
+ /* Advanced Error Reporting capability */
+ #define VIRTIO_PCI_FLAG_AER (1 << VIRTIO_PCI_FLAG_AER_BIT)
+ 
++/* Page Aligned Address space Translation Service */
++#define VIRTIO_PCI_FLAG_ATS_PAGE_ALIGNED \
++  (1 << VIRTIO_PCI_FLAG_ATS_PAGE_ALIGNED_BIT)
++
+ typedef struct {
+     MSIMessage msg;
+     int virq;
+diff --git a/include/hw/pci/pcie.h b/include/hw/pci/pcie.h
+index 14c58ebdb6ec1fd5dc3c8563fed9..6063bee0ec632c563f236f520aef 100644
+--- a/include/hw/pci/pcie.h
++++ b/include/hw/pci/pcie.h
+@@ -137,7 +137,7 @@ void pcie_acs_reset(PCIDevice *dev);
+ 
+ void pcie_ari_init(PCIDevice *dev, uint16_t offset, uint16_t nextfn);
+ void pcie_dev_ser_num_init(PCIDevice *dev, uint16_t offset, uint64_t ser_num);
+-void pcie_ats_init(PCIDevice *dev, uint16_t offset);
++void pcie_ats_init(PCIDevice *dev, uint16_t offset, bool aligned);
+ 
+ void pcie_cap_slot_pre_plug_cb(HotplugHandler *hotplug_dev, DeviceState *dev,
+                                Error **errp);

@@ -1,0 +1,269 @@
+From: Pierre Morel <pmorel@linux.ibm.com>
+Date: Thu, 8 Apr 2021 18:32:09 +0200
+Subject: s390x: css: report errors from ccw_dstream_read/write
+
+Git-commit: d895d25ae2bb8519aa715dd2a97f09d4a66b189d
+
+ccw_dstream_read/write functions returned values are sometime
+not taking into account and reported back to the upper level
+of interpretation of CCW instructions.
+
+It follows that accessing an invalid address does not trigger
+a subchannel status program check to the guest as it should.
+
+Let's test the return values of ccw_dstream_write[_buf] and
+ccw_dstream_read[_buf] and report it to the caller.
+
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Pierre Morel <pmorel@linux.ibm.com>
+Acked-by: Halil Pasic <pasic@linux.ibm.com>
+Message-Id: <1617899529-9329-2-git-send-email-pmorel@linux.ibm.com>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+Signed-off-by: Bruce Rogers <brogers@suse.com>
+---
+ hw/char/terminal3270.c | 11 +++++--
+ hw/s390x/3270-ccw.c    |  5 +++-
+ hw/s390x/css.c         | 14 +++++----
+ hw/s390x/virtio-ccw.c  | 66 ++++++++++++++++++++++++++++++------------
+ 4 files changed, 69 insertions(+), 27 deletions(-)
+
+diff --git a/hw/char/terminal3270.c b/hw/char/terminal3270.c
+index d77981bb6d52a2af651bfa2b6ecb..f969ee57fd85164073f98c3285b5 100644
+--- a/hw/char/terminal3270.c
++++ b/hw/char/terminal3270.c
+@@ -199,9 +199,13 @@ static int read_payload_3270(EmulatedCcw3270Device *dev)
+ {
+     Terminal3270 *t = TERMINAL_3270(dev);
+     int len;
++    int ret;
+ 
+     len = MIN(ccw_dstream_avail(get_cds(t)), t->in_len);
+-    ccw_dstream_write_buf(get_cds(t), t->inv, len);
++    ret = ccw_dstream_write_buf(get_cds(t), t->inv, len);
++    if (ret < 0) {
++        return ret;
++    }
+     t->in_len -= len;
+ 
+     return len;
+@@ -259,7 +263,10 @@ static int write_payload_3270(EmulatedCcw3270Device *dev, uint8_t cmd)
+ 
+     t->outv[out_len++] = cmd;
+     do {
+-        ccw_dstream_read_buf(get_cds(t), &t->outv[out_len], len);
++        retval = ccw_dstream_read_buf(get_cds(t), &t->outv[out_len], len);
++        if (retval < 0) {
++            return retval;
++        }
+         count = ccw_dstream_avail(get_cds(t));
+         out_len += len;
+ 
+diff --git a/hw/s390x/3270-ccw.c b/hw/s390x/3270-ccw.c
+index 821319eee6d1066d7cf3113d3ab3..f3e7342b1e8eadc1938b5ad024c7 100644
+--- a/hw/s390x/3270-ccw.c
++++ b/hw/s390x/3270-ccw.c
+@@ -31,6 +31,9 @@ static int handle_payload_3270_read(EmulatedCcw3270Device *dev, CCW1 *ccw)
+     }
+ 
+     len = ck->read_payload_3270(dev);
++    if (len < 0) {
++        return len;
++    }
+     ccw_dev->sch->curr_status.scsw.count = ccw->count - len;
+ 
+     return 0;
+@@ -50,7 +53,7 @@ static int handle_payload_3270_write(EmulatedCcw3270Device *dev, CCW1 *ccw)
+     len = ck->write_payload_3270(dev, ccw->cmd_code);
+ 
+     if (len <= 0) {
+-        return -EIO;
++        return len ? len : -EIO;
+     }
+ 
+     ccw_dev->sch->curr_status.scsw.count = ccw->count - len;
+diff --git a/hw/s390x/css.c b/hw/s390x/css.c
+index 9961cfe7bf67460924ea68cb72bd..1ad6069ceacfc7459c25307c1fd9 100644
+--- a/hw/s390x/css.c
++++ b/hw/s390x/css.c
+@@ -1055,10 +1055,11 @@ static int css_interpret_ccw(SubchDev *sch, hwaddr ccw_addr,
+             }
+         }
+         len = MIN(ccw.count, sizeof(sch->sense_data));
+-        ccw_dstream_write_buf(&sch->cds, sch->sense_data, len);
++        ret = ccw_dstream_write_buf(&sch->cds, sch->sense_data, len);
+         sch->curr_status.scsw.count = ccw_dstream_residual_count(&sch->cds);
+-        memset(sch->sense_data, 0, sizeof(sch->sense_data));
+-        ret = 0;
++        if (!ret) {
++            memset(sch->sense_data, 0, sizeof(sch->sense_data));
++        }
+         break;
+     case CCW_CMD_SENSE_ID:
+     {
+@@ -1083,9 +1084,10 @@ static int css_interpret_ccw(SubchDev *sch, hwaddr ccw_addr,
+         } else {
+             sense_id[0] = 0;
+         }
+-        ccw_dstream_write_buf(&sch->cds, sense_id, len);
+-        sch->curr_status.scsw.count = ccw_dstream_residual_count(&sch->cds);
+-        ret = 0;
++        ret = ccw_dstream_write_buf(&sch->cds, sense_id, len);
++        if (!ret) {
++            sch->curr_status.scsw.count = ccw_dstream_residual_count(&sch->cds);
++        }
+         break;
+     }
+     case CCW_CMD_TIC:
+diff --git a/hw/s390x/virtio-ccw.c b/hw/s390x/virtio-ccw.c
+index 82ec2889b0c7ce64bb96b9c67212..43db5b93e1125d5ef806abfebb32 100644
+--- a/hw/s390x/virtio-ccw.c
++++ b/hw/s390x/virtio-ccw.c
+@@ -288,14 +288,20 @@ static int virtio_ccw_handle_set_vq(SubchDev *sch, CCW1 ccw, bool check_len,
+         return -EFAULT;
+     }
+     if (is_legacy) {
+-        ccw_dstream_read(&sch->cds, linfo);
++        ret = ccw_dstream_read(&sch->cds, linfo);
++        if (ret) {
++            return ret;
++        }
+         linfo.queue = be64_to_cpu(linfo.queue);
+         linfo.align = be32_to_cpu(linfo.align);
+         linfo.index = be16_to_cpu(linfo.index);
+         linfo.num = be16_to_cpu(linfo.num);
+         ret = virtio_ccw_set_vqs(sch, NULL, &linfo);
+     } else {
+-        ccw_dstream_read(&sch->cds, info);
++        ret = ccw_dstream_read(&sch->cds, info);
++        if (ret) {
++            return ret;
++        }
+         info.desc = be64_to_cpu(info.desc);
+         info.index = be16_to_cpu(info.index);
+         info.num = be16_to_cpu(info.num);
+@@ -364,7 +370,10 @@ static int virtio_ccw_cb(SubchDev *sch, CCW1 ccw)
+             VirtioDeviceClass *vdc = VIRTIO_DEVICE_GET_CLASS(vdev);
+ 
+             ccw_dstream_advance(&sch->cds, sizeof(features.features));
+-            ccw_dstream_read(&sch->cds, features.index);
++            ret = ccw_dstream_read(&sch->cds, features.index);
++            if (ret) {
++                break;
++            }
+             if (features.index == 0) {
+                 if (dev->revision >= 1) {
+                     /* Don't offer legacy features for modern devices. */
+@@ -385,9 +394,10 @@ static int virtio_ccw_cb(SubchDev *sch, CCW1 ccw)
+             }
+             ccw_dstream_rewind(&sch->cds);
+             features.features = cpu_to_le32(features.features);
+-            ccw_dstream_write(&sch->cds, features.features);
+-            sch->curr_status.scsw.count = ccw.count - sizeof(features);
+-            ret = 0;
++            ret = ccw_dstream_write(&sch->cds, features.features);
++            if (!ret) {
++                sch->curr_status.scsw.count = ccw.count - sizeof(features);
++            }
+         }
+         break;
+     case CCW_CMD_WRITE_FEAT:
+@@ -404,7 +414,10 @@ static int virtio_ccw_cb(SubchDev *sch, CCW1 ccw)
+         if (!ccw.cda) {
+             ret = -EFAULT;
+         } else {
+-            ccw_dstream_read(&sch->cds, features);
++            ret = ccw_dstream_read(&sch->cds, features);
++            if (ret) {
++                break;
++            }
+             features.features = le32_to_cpu(features.features);
+             if (features.index == 0) {
+                 virtio_set_features(vdev,
+@@ -447,9 +460,10 @@ static int virtio_ccw_cb(SubchDev *sch, CCW1 ccw)
+             ret = -EFAULT;
+         } else {
+             virtio_bus_get_vdev_config(&dev->bus, vdev->config);
+-            ccw_dstream_write_buf(&sch->cds, vdev->config, len);
+-            sch->curr_status.scsw.count = ccw.count - len;
+-            ret = 0;
++            ret = ccw_dstream_write_buf(&sch->cds, vdev->config, len);
++            if (ret) {
++                sch->curr_status.scsw.count = ccw.count - len;
++            }
+         }
+         break;
+     case CCW_CMD_WRITE_CONF:
+@@ -504,7 +518,10 @@ static int virtio_ccw_cb(SubchDev *sch, CCW1 ccw)
+         if (!ccw.cda) {
+             ret = -EFAULT;
+         } else {
+-            ccw_dstream_read(&sch->cds, status);
++            ret = ccw_dstream_read(&sch->cds, status);
++            if (ret) {
++                break;
++            }
+             if (!(status & VIRTIO_CONFIG_S_DRIVER_OK)) {
+                 virtio_ccw_stop_ioeventfd(dev);
+             }
+@@ -547,7 +564,10 @@ static int virtio_ccw_cb(SubchDev *sch, CCW1 ccw)
+         if (!ccw.cda) {
+             ret = -EFAULT;
+         } else {
+-            ccw_dstream_read(&sch->cds, indicators);
++            ret = ccw_dstream_read(&sch->cds, indicators);
++            if (ret) {
++                break;
++            }
+             indicators = be64_to_cpu(indicators);
+             dev->indicators = get_indicator(indicators, sizeof(uint64_t));
+             sch->curr_status.scsw.count = ccw.count - sizeof(indicators);
+@@ -568,7 +588,10 @@ static int virtio_ccw_cb(SubchDev *sch, CCW1 ccw)
+         if (!ccw.cda) {
+             ret = -EFAULT;
+         } else {
+-            ccw_dstream_read(&sch->cds, indicators);
++            ret = ccw_dstream_read(&sch->cds, indicators);
++            if (ret) {
++                break;
++            }
+             indicators = be64_to_cpu(indicators);
+             dev->indicators2 = get_indicator(indicators, sizeof(uint64_t));
+             sch->curr_status.scsw.count = ccw.count - sizeof(indicators);
+@@ -589,7 +612,10 @@ static int virtio_ccw_cb(SubchDev *sch, CCW1 ccw)
+         if (!ccw.cda) {
+             ret = -EFAULT;
+         } else {
+-            ccw_dstream_read(&sch->cds, vq_config.index);
++            ret = ccw_dstream_read(&sch->cds, vq_config.index);
++            if (ret) {
++                break;
++            }
+             vq_config.index = be16_to_cpu(vq_config.index);
+             if (vq_config.index >= VIRTIO_QUEUE_MAX) {
+                 ret = -EINVAL;
+@@ -598,9 +624,10 @@ static int virtio_ccw_cb(SubchDev *sch, CCW1 ccw)
+             vq_config.num_max = virtio_queue_get_num(vdev,
+                                                      vq_config.index);
+             vq_config.num_max = cpu_to_be16(vq_config.num_max);
+-            ccw_dstream_write(&sch->cds, vq_config.num_max);
+-            sch->curr_status.scsw.count = ccw.count - sizeof(vq_config);
+-            ret = 0;
++            ret = ccw_dstream_write(&sch->cds, vq_config.num_max);
++            if (!ret) {
++                sch->curr_status.scsw.count = ccw.count - sizeof(vq_config);
++            }
+         }
+         break;
+     case CCW_CMD_SET_IND_ADAPTER:
+@@ -657,7 +684,10 @@ static int virtio_ccw_cb(SubchDev *sch, CCW1 ccw)
+             ret = -EFAULT;
+             break;
+         }
+-        ccw_dstream_read_buf(&sch->cds, &revinfo, 4);
++        ret = ccw_dstream_read_buf(&sch->cds, &revinfo, 4);
++        if (ret < 0) {
++            break;
++        }
+         revinfo.revision = be16_to_cpu(revinfo.revision);
+         revinfo.length = be16_to_cpu(revinfo.length);
+         if (ccw.count < len + revinfo.length ||

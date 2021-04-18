@@ -7,16 +7,10 @@ set -e
 #   git2pkg (update package spec file and patches from git)
 #   pkg2git (update git (frombundle branch) from the package "bundleofbundles")
 #   refresh (refresh spec file from spec file template and "bundlofbundles")
+#   ci      (check-in to obs, avoiding some spec file formatting issues)
+#   initbundle (Update/Create bundle only)
 #
 #   (default is git2pkg)
-
-# As an aid to bypassing issues with our multibuild package and obs (see code
-# below following the osc localrun of osc service localrun format_spec_file),
-# provide an automated way to checkin without needing to type so much
-if [ "$1" = "ci" ]; then
-    osc ci -f -n --noservice
-    exit
-fi
 
 #==============================================================================
 
@@ -59,6 +53,8 @@ echo "description: package maintenance using a git-based workflow. Commands:"
 echo "  git2pkg (update package spec file and patches from git. Is default)"
 echo "  pkg2git (update git (frombundle branch) from the package "bundleofbundles")"
 echo "  refresh (refresh spec file from spec file template and "bundlofbundles")"
+echo "  ci       (check-in to build service, avoiding some spec file formatting issues)"
+echo "  initbundle (Update/Create bundle only)"
 echo "(See script for details on doing 'LATEST' workflow)"
 check_requirements
 }
@@ -77,7 +73,7 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" != "LATEST" ]; then
                 usage
                 exit
                 ;;
-                initbundle | git2pkg |  pkg2git | refresh )
+                initbundle | git2pkg |  pkg2git | refresh | ci)
                 ;;
             * )
                 echo "Unknown command"
@@ -89,6 +85,14 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" != "LATEST" ]; then
 fi
 
 check_requirements
+
+# As an aid to bypassing issues with our multibuild package and obs (see code
+# below following the osc localrun of osc service localrun format_spec_file),
+# provide an automated way to checkin without needing to type so much
+if [ "$1" = "ci" ]; then
+    osc ci -f -n --noservice
+    exit
+fi
 
 
 # TODO: Here we should validate the variables that should be set in config.sh
@@ -1011,12 +1015,11 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
     echo "SUCCESS"
     tail -9 ~/latest.log
 else # not LATEST
-#NOTNEEDED?    git -C ${LOCAL_REPO_MAP[0]} checkout $GIT_UPSTREAM_COMMIT_ISH --recurse-submodules -f &> /dev/null
     NEW_COMMIT_ISH=
     WRITE_LOG=1
     case  $1 in
         initbundle )
-            echo "Updating the bundle using the $GIT_BRANCH branch of the local repos."
+            echo "Updating/creating the bundle using the $GIT_BRANCH branch of the local repos."
             echo "(If SUCCESS is not printed upon completion, see ~/initbundle.log for issues)"
             initbundle &> ~/initbundle.log
             echo "SUCCESS"
