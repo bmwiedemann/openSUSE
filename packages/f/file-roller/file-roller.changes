@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 14 00:20:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.39.1
+  + New features and user visibile changes:
+    - Let nautilus handle properly rar files
+    - Remember If Showing Other Options.
+    - Action Enter key in password field.
+    - multicore xz compression.
+- Added nautilus extension subpackage
+- Update to version 3.38.1
+  + Skip files with symlinks in parents. ( CVE-2020-36314 )
+  + Fix use-after-free in error message reporting.
+  + Updated translations
+
+-------------------------------------------------------------------
 Mon Sep 14 12:35:51 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.0:

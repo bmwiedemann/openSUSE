@@ -1,7 +1,7 @@
 #
 # spec file for package file-roller
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,19 @@
 
 
 Name:           file-roller
-Version:        3.38.0
+Version:        3.39.1
 Release:        0
 Summary:        An Archive Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://wiki.gnome.org/Apps/FileRoller
-Source0:        https://download.gnome.org/sources/file-roller/3.38/%{name}-%{version}.tar.xz
-
+Source0:        https://download.gnome.org/sources/file-roller/3.39/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE file-roller-3.4-change-archiver-priority.patch bnc#767386 gankov@opensuse.org -- Give unzip a higher priority than 7z when unpackging zip files. Gives better results for non-latin charsets.
 Patch0:         file-roller-3.4-change-archiver-priority.patch
 # PATCH-FEATURE-OPENSUSE file-roller-pkg-match.patch bnc#696530 dimstar@opensuse.org -- List package match names for automatic installation using PK.
 Patch1:         file-roller-pkg-match.patch
 # PATCH-FIX-OPENSUSE file-roller-ignore-unrar-if-wrapper.patch bsc#1072118 mgorse@suse.com -- if unrar is a wrapper script for unar, then ignore it, and use unar instead.
 Patch2:         file-roller-ignore-unrar-if-wrapper.patch
-
 # Needed for directory ownership
 BuildRequires:  dbus-1
 BuildRequires:  fdupes
@@ -45,6 +43,7 @@ BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.14.0
 BuildRequires:  pkgconfig(libarchive) >= 3.0.0
+BuildRequires:  pkgconfig(libnautilus-extension)
 BuildRequires:  pkgconfig(libnotify) >= 0.4.3
 # Formats that we likely want to support by default
 Recommends:     bzip2
@@ -72,10 +71,20 @@ Suggests:       zoo
 #Suggests:       unace
 #Suggests:       unalz
 #Suggests:       unstuff
-Obsoletes:      nautilus-file-roller
 DocDir:         %{_defaultdocdir}
 
 %description
+File Roller is an archive manager for GNOME. With it, you can create
+and modify archives, view the contents of an archive, view a file
+contained in the archive, and extract files from the archive.
+
+%package -n nautilus-file-roller
+Summary:        File-roller extension for Nautilus
+Group:          Productivity/Archiving/Compression
+Requires:       %{name} = %{version}
+Requires:       nautilus
+
+%description -n nautilus-file-roller
 File Roller is an archive manager for GNOME. With it, you can create
 and modify archives, view the contents of an archive, view a file
 contained in the archive, and extract files from the archive.
@@ -88,10 +97,9 @@ translation-update-upstream po %{name}
 
 %build
 %meson \
-	-D notification=true \
-	-D libarchive=true \
-	-D magic=true \
-	%{nil}
+	-D notification=enabled \
+	-D libarchive=enabled \
+	-D magic=enabled
 %meson_build
 
 %install
@@ -103,16 +111,19 @@ translation-update-upstream po %{name}
 %license COPYING
 %doc AUTHORS NEWS
 %{_bindir}/file-roller
+%{_datadir}/file-roller/
 %{_libexecdir}/file-roller/
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.gnome.FileRoller.appdata.xml
+%{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.gnome.FileRoller.service
-%{_datadir}/dbus-1/services/org.gnome.FileRoller.ArchiveManager1.service
-%{_datadir}/file-roller/
+%{_datadir}/dbus-1/services/org.gnome.ArchiveManager1.service
 %doc %{_datadir}/help/C/%{name}/
 %{_datadir}/glib-2.0/schemas/org.gnome.FileRoller.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/*
+
+%files -n nautilus-file-roller
+%{_libdir}/nautilus/extensions-3.0/libnautilus-fileroller.so
 
 %files lang -f %{name}.lang
 
