@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 15 02:50:08 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Modified NetworkManager.conf: Use dhclient as the default dhcp
+  client(bsc#1183202).
+
+-------------------------------------------------------------------
 Fri Apr  9 06:11:21 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add nm-dhcp-use-valid-lease-on-timeout.patch: Support valid lease

@@ -1820,4 +1820,13 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
   (glfo#NetworkManager/NetworkManager!775, bsc#1183967). (forwarded request 883970 from JonathanKang)</comment>
     <requestid>884652</requestid>
   </revision>
+  <revision rev="223" vrev="3">
+    <srcmd5>6003e4aca40753ac412b49236e9338fd</srcmd5>
+    <version>1.30.0</version>
+    <time>1618775104</time>
+    <user>dimstar_suse</user>
+    <comment>- Modified NetworkManager.conf: Use dhclient as the default dhcp
+  client(bsc#1183202). (forwarded request 885498 from JonathanKang)</comment>
+    <requestid>885660</requestid>
+  </revision>
 </revisionlist>
