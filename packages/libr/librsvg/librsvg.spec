@@ -20,10 +20,10 @@
 %define librsvg_sover 2
 
 Name:           librsvg
-Version:        2.50.3
+Version:        2.50.4
 Release:        0
 Summary:        A Library for Rendering SVG Data
-License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND Apache-2.0 AND MIT
+License:        Apache-2.0 AND GPL-2.0-or-later AND LGPL-2.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/LibRsvg
 Source0:        https://download.gnome.org/sources/librsvg/2.50/%{name}-%{version}.tar.xz
@@ -57,7 +57,7 @@ http://www.w3c.org).
 
 %package -n librsvg-2-%{librsvg_sover}
 Summary:        A Library for Rendering SVG Data
-License:        LGPL-2.0-or-later AND Apache-2.0 AND MIT
+License:        Apache-2.0 AND LGPL-2.0-or-later AND MIT
 Group:          System/Libraries
 Provides:       librsvg2 = %{version}
 Obsoletes:      librsvg2 < %{version}
@@ -154,10 +154,12 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}
 %make_build check
 
 %post -n librsvg-2-%{librsvg_sover} -p /sbin/ldconfig
+
 %post -n gdk-pixbuf-loader-rsvg
 %{gdk_pixbuf_loader_post}
 
 %postun -n librsvg-2-%{librsvg_sover} -p /sbin/ldconfig
+
 %postun -n gdk-pixbuf-loader-rsvg
 %{gdk_pixbuf_loader_postun}
 

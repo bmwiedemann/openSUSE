@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 13 14:32:46 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 2.50.4:
+  + Update dependent crates that had security vulnerabilities:
+    - generic-array to 0.13.3 - RUSTSEC-2020-0146
+  + Reduced stack usage
+  + Add limit for too-large radiuses on the feMorphology filter
+  + Properly ignore elements in an error state inside
+    the "switch" element
+
+-------------------------------------------------------------------
 Thu Jan 28 18:58:15 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.50.3:

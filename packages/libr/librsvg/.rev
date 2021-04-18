@@ -846,4 +846,18 @@
   + Fix test suite on Rust 1.49. (forwarded request 867565 from iznogood)</comment>
     <requestid>867679</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>b736e40b32f263ee4d21f9c89e2f7bf1</srcmd5>
+    <version>2.50.4</version>
+    <time>1618775100</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.50.4:
+  + Update dependent crates that had security vulnerabilities:
+    - generic-array to 0.13.3 - RUSTSEC-2020-0146
+  + Reduced stack usage
+  + Add limit for too-large radiuses on the feMorphology filter
+  + Properly ignore elements in an error state inside
+    the &quot;switch&quot; element (forwarded request 885050 from polslinux)</comment>
+    <requestid>885655</requestid>
+  </revision>
 </revisionlist>
