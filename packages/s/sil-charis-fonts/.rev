@@ -75,4 +75,12 @@
     <comment>1</comment>
     <requestid>292909</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ee16032da98fe025db60adec744627fb</srcmd5>
+    <version>5.000</version>
+    <time>1618775079</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed URL in spec (forwarded request 885486 from susnux)</comment>
+    <requestid>885501</requestid>
+  </revision>
 </revisionlist>

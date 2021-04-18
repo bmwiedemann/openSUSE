@@ -22,7 +22,7 @@ Release:        0
 Summary:        Smart Unicode Font for Latin and Cyrillic Scripts
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            c
+Url:            https://software.sil.org/charis/
 Source0:        CharisSIL-%{version}.zip
 BuildRequires:  dos2unix
 BuildRequires:  fontpackages-devel
