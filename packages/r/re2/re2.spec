@@ -1,7 +1,7 @@
 #
 # spec file for package re2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%global longver 2021-02-02
+%global longver 2021-04-01
 %global shortver %(echo %{longver}|sed 's|-||g')
 %define libname libre2-9
 Name:           re2
@@ -105,6 +105,7 @@ find %{buildroot} -name 'lib%{name}.a' -delete
 %{_libdir}/lib%{name}.so.*
 
 %files devel
+%license LICENSE
 %{_includedir}/%{name}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc

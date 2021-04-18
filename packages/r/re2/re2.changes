@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 15 06:54:51 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2021-04-01:
+  * Make cached benchmarks actually use cached objects
+  * Address some -Wmissing-field-initializers warnings
+  * Make it easier to swap in a scalable reaer-writer mutex
+  * In the shared library, set compatibility version and
+    current version
+
+-------------------------------------------------------------------
 Thu Feb  4 09:53:32 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 2021-02-02:
