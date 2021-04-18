@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 14 08:29:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the QtWebKit dependency everywhere.
+  The QtWebKit module was abandoned upstream years ago and the
+  community fork didn't get far. The only package that had a
+  dependency on qtwebkit bindings (spyder) was fixed.
+
+-------------------------------------------------------------------
 Thu Mar 11 19:28:26 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.15.4

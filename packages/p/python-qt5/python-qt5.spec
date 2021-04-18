@@ -76,11 +76,6 @@ BuildRequires:  pkgconfig(Qt5XmlPatterns)
 BuildRequires:  pkgconfig(Qt5Quick3D)
 BuildRequires:  pkgconfig(Qt5RemoteObjects)
 %endif
-# Do not build WebKit support from SLE15
-%if 0%{?is_opensuse} || 0%{?suse_version} < 1500
-BuildRequires:  pkgconfig(Qt5WebKit)
-BuildRequires:  pkgconfig(Qt5WebKitWidgets)
-%endif
 BuildRequires:  %{python_module pyqt-builder >= 1.9}
 BuildRequires:  %{python_module qt5-sip}
 BuildRequires:  %{python_module sip-devel >= 5.3}
@@ -126,11 +121,6 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-qscintilla-qt5
 Recommends:     pkgconfig(Qt5Quick3D)
-# Do not build WebKit support from SLE15
-%if 0%{?is_opensuse} || 0%{?suse_version} < 1500
-Requires:       pkgconfig(Qt5WebKit)
-Requires:       pkgconfig(Qt5WebKitWidgets)
-%endif
 Provides:       python-PyQt5-devel = %{version}-%{release}
 Obsoletes:      python-PyQt5-devel < %{version}-%{release}
 Provides:       %{oldpython}-%{mname}-common-devel = %{version}-%{release}
