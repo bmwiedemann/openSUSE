@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 15 16:22:48 CEST 2021 - ro@suse.de
+
+- 1.3.1
+  * add option -g when calling add_product_susedata
+    to add gpg key ids as tags in repomd.xml (bsc#1184326)
+  * do not change the default install method in gfxboot.cfg
+    (bsc#1171018) Instead, just fill out the server & path
+    components in case the user wants to switch. The repo
+    location is already stored in the initrd in the
+    skelcd-installer-net-* packages.
+
+-------------------------------------------------------------------
 Tue Apr 21 14:43:12 UTC 2020 - Adrian Schröter <adrian@suse.de>
 
 - 1.3.0
