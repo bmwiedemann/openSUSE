@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Apr 09 08:38:18 UTC 2021 - trenn@suse.de
+
+- Update to version 4.8.0+git.1617895246.97a7479e (shortend):
+  * fence_virt: fix required=1 parameters that used to not be required and add deprecated=1 for old deprecated params
+  * fence_gce: default method moved back to powercycle (#389)
+  * fence_aws: add filter parameter to be able to limit which nodes are listed
+  * virt: fix a bunch of coverity scan errors in ip_lookup
+  * virt: make sure to provide an empty default to strncpy
+  * virt: make sure buffers are big enough for 0 byte end string
+  * virt: increase buffer size to avoid overruns
+  * virt: check return code in virt-sockets
+  * virt: fix error code checking
+  * virt: fix plugin (minor) memory leak and plug in load race
+  * virt: attempt to open file directly and avoid race condition
+  * virt: fix different coverity scan errors in common/tcp
+  * virt: cleanup deadcode in client/vsock
+  * virt: cleanup deadcode in client/tcp
+  * virt: fix potential buffer overrun
+  * virt: fix mcast coverity scan errors
+  * virt: drop pm-fence plugin
+  * virt: drop libvirt-qmf plugin
+  * virt: drop null plugin
+  * build: enable fence_virtd cpg plugin by default
+  * virt: drop fence_virtd non-modular build
+  * virt: fix plugin installation regression on upgrades
+  * fence_virt: metadata fixes, implement manpage generation and metadata/delay/rng checks
+  * virt: make sure variable is initialized
+  * Revert "virt: drop -Werror to avoid unnecessary failures"
+  * zvm: reformat fence_zvm to avoid gcc warnings
+  * Ignore fence-virt man pages
+  * Move fence_virt to the correct location
+  * Ignore unknown options on stdin
+  * fence_gce: support google-auth and oauthlib and fallback to deprecated libs when not available
+  * spec: add aliyun subpackage and fence_mpath_check* to mpath subpackage
+
+-------------------------------------------------------------------
 Wed Feb 10 20:25:29 UTC 2021 - trenn@suse.de
 
 - Update to version 4.7.1+git.1612974063.9e01fc92:

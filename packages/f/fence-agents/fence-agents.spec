@@ -29,7 +29,7 @@ Name:           fence-agents
 Summary:        Fence Agents for High Availability
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Productivity/Clustering/HA
-Version:        4.7.1+git.1612974063.9e01fc92
+Version:        4.8.0+git.1617895246.97a7479e
 Release:        0
 URL:            https://github.com/ClusterLabs/fence-agents
 Source0:        %{name}-%{version}.tar.xz
@@ -62,6 +62,7 @@ BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel
 BuildRequires:  libtool
+BuildRequires:  libxml2-devel
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt
 BuildRequires:  mozilla-nspr-devel
@@ -149,6 +150,7 @@ PYTHON="%{_bindir}/python3"
 PYTHON="%{_bindir}/python2"
 %endif
 export PYTHON
+echo "%{version}" >.tarball-version
 ./autogen.sh
 %{configure} --with-agents='%{agent_list}'
 make
@@ -189,13 +191,13 @@ PYTHONPATH=fence/agents/lib "%{python_version}" fence/agents/lib/tests/test_fenc
 %exclude %{_mandir}/man8/fence_dummy*
 %{_mandir}/man8/fence_*
 %{_libexecdir}/fence_*
-/usr/share/pkgconfig/fence-agents.pc
 
 %files amt_ws
 %{_sbindir}/fence_amt_ws
 %{_mandir}/man8/fence_amt_ws*
 
 %files devel
+/usr/share/pkgconfig/fence-agents.pc
 %{_sbindir}/fence_dummy
 %{_mandir}/man8/fence_dummy*
 
