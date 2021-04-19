@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 19 02:01:33 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2021.2.3:
+  * Support pytools.tag in persistent_dict
+  * Add a backport of pkgutil.resolve_name
+  * Add persistent_dict.KeyBuilder.new_hash for hash alg customization
+  * Use unordered_hash in KeyBuilder hashing frozenset
+  * Drop dependency on, included obsolete copy of 'decorator' pypi module
+  * make obj_array_vectorize work on class methods 
+- Don't build for Python 3.6, due to no NumPy.
+- Remove decorator from {Build,}Requires
+
+-------------------------------------------------------------------
 Sat Jan 23 01:10:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2021.1:

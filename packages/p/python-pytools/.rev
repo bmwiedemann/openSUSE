@@ -109,4 +109,20 @@
   * pytools.tag.Taggable added</comment>
     <requestid>866179</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ac48702a35123cd985a27c91c3fd68a7</srcmd5>
+    <version>2021.2.3</version>
+    <time>1618859151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2021.2.3:
+  * Support pytools.tag in persistent_dict
+  * Add a backport of pkgutil.resolve_name
+  * Add persistent_dict.KeyBuilder.new_hash for hash alg customization
+  * Use unordered_hash in KeyBuilder hashing frozenset
+  * Drop dependency on, included obsolete copy of 'decorator' pypi module
+  * make obj_array_vectorize work on class methods 
+- Don't build for Python 3.6, due to no NumPy.
+- Remove decorator from {Build,}Requires</comment>
+    <requestid>886512</requestid>
+  </revision>
 </revisionlist>
