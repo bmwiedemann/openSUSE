@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 19 01:40:25 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.4.1:
+  * CallbackFlags attributes are now writable 
+- Don't build for Python 3.6, NumPy isn't available
+
+-------------------------------------------------------------------
 Wed Jul 29 07:27:48 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.4.0

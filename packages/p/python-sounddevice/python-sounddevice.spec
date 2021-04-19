@@ -1,7 +1,7 @@
 #
 # spec file for package python-sounddevice
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-sounddevice
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Module to play and record sound with Python
 License:        MIT

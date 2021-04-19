@@ -71,4 +71,14 @@
     <comment></comment>
     <requestid>823365</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8e722dcb9a3e190eede179a055b328e5</srcmd5>
+    <version>0.4.1</version>
+    <time>1618859150</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.1:
+  * CallbackFlags attributes are now writable 
+- Don't build for Python 3.6, NumPy isn't available</comment>
+    <requestid>886510</requestid>
+  </revision>
 </revisionlist>
