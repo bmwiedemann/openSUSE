@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 16 13:00:57 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch fix-4-file-5.40.patch to support file 5.40 (boo#1184881)
+
+-------------------------------------------------------------------
 Sat Jul 25 14:46:39 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - remove patches not necessary anymore:

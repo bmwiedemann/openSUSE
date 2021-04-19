@@ -1,0 +1,15 @@
+---
+ test/test.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- test/test.py
++++ test/test.py	2021-04-16 12:54:00.275731435 +0000
+@@ -87,7 +87,7 @@ class MagicTest(unittest.TestCase):
+         try:
+             self.assert_values(m, {
+                 'magic._pyc_': 'python 2.4 byte-compiled',
+-                'test.pdf': 'PDF document, version 1.2',
++                'test.pdf': 'PDF document, version 1.2, 2 pages',
+                 'test.gz':
+                 ('gzip compressed data, was "test", from Unix, last '
+                  'modified: Sun Jun 29 01:32:52 2008',

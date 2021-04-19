@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-magic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source:         https://github.com/ahupp/python-magic/archive/%{version}.tar.gz
 #PATCH-FIX-OPENSUSE fix-test.patch -- adapt file outputs to opensuse
 Patch0:         fix-test.patch
 Patch1:         fix-test-tumbleweed.patch
+Patch2:         fix-4-file-5.40.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  file
@@ -57,6 +58,9 @@ supports both textual and MIME-type output.
 %elif 0%{?sle_version} < 150300 && 0%{?is_opensuse}
 # Leap 15.2 and older
 %patch0 -p1
+%endif
+%if %{?pkg_vcmp:%{pkg_vcmp file >= 5.40}}%{!?pkg_vcmp:0}
+%patch2 -p0
 %endif
 
 %build
