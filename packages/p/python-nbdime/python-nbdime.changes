@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 17 15:22:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to python 3.0.0 / jupyter 6.1.0 / jupyterlab 2.1.0
+  * Added support for JupyterLab 3. This includes compatability
+    with jupyter_server (notebook is still supported as well).
+  * Basic functionality for working with cell ids introduced in
+    notebook format spec 4.5. Full utilization of this for diffing/
+    merging functionality is planned for a later release.
+  * Fixed some issues with inline merging1
+
+-------------------------------------------------------------------
 Thu Feb  4 11:03:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.1.0 / jupyterlab extension 2.0.1
