@@ -1,0 +1,6 @@
+<package name="minetest" project="openSUSE:Factory">
+  <title>Minetest</title>
+  <description>Don't forget to update minetest-game, too.</description>
+  <devel project="games" package="minetest"/>
+  <url>http://www.minetest.net/</url>
+</package>
