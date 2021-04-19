@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 18 12:32:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.2.3
+  * This Release makes autodocsumm compatible with sphinx 3.4 and
+    3.5. See #42 
+- Release 0.2.2
+  * This release fixes a bug that included imported members in the
+    autosummary table (see #32, #33) and includes the sorting
+    bysource (#34). We also dropped the dependency on six (#35).
+- Release 0.2.1
+  * Patch for compatibility with python 3.5
+
+-------------------------------------------------------------------
 Thu Sep  3 04:27:24 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.2.0:

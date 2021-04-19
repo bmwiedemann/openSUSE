@@ -1,7 +1,7 @@
 #
 # spec file for package python-autodocsumm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-autodocsumm
-Version:        0.2.0
+Version:        0.2.3
 Release:        0
 Summary:        Extended sphinx autodoc including automatic autosummaries
 License:        GPL-2.0-only
 URL:            https://github.com/Chilipp/autodocsumm
-Source:         https://github.com/Chilipp/autodocsumm/archive/v%{version}.tar.gz
+Source:         https://github.com/Chilipp/autodocsumm/archive/v%{version}.tar.gz#/autodocsumm-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Sphinx
+Requires:       python-Sphinx >= 2.2
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module Sphinx >= 2.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sphinx-testing}
 # /SECTION
@@ -57,6 +57,7 @@ Extended sphinx autodoc including automatic autosummaries
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/autodocsumm
+%{python_sitelib}/autodocsumm-%{version}*-info
 
 %changelog
