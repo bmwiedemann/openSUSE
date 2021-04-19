@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Mar  4 06:10:09 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/20.12.3
+- No code change since 20.12.2
+
+-------------------------------------------------------------------
+Tue Mar  2 07:55:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to strengthen username validation when
+  using Samba (boo#1182005, kde#432757)
+  * 0001-run-input-user-group-names-through-input-validation.patch
+
+-------------------------------------------------------------------
+Wed Feb  3 08:28:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.12.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-02-apps-update
+- No code change since 20.12.1
+
+-------------------------------------------------------------------
+Tue Jan  5 12:25:25 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2021-01-apps-update
+- No code change since 20.12.0
+
+-------------------------------------------------------------------
+Sat Dec  5 23:16:05 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to 20.12.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/releases/2020-12-apps-update
+- No code change since 20.11.90
+
+-------------------------------------------------------------------
+Fri Nov 27 15:16:20 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.90
+  * New feature release
+- No code change since 20.11.80
+
+-------------------------------------------------------------------
+Sat Nov 14 00:01:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 20.11.80
+  * New feature release
+- Too many changes since 20.08.3, only listing bugfixes:
+  * add a group management page (kde#407846)
+  * only enable guest checkbox if the smb.conf allows it (kde#425203)
+  * resolve paths to their canonical representation (kde#425678)
+  * fix multiple opening of properties (kde#425591)
+  * add smb user management support (kde#334875)
+  * rejigger acl page and add a sheet to be shown when using a denial (kde#422554)
+  * give add/remove errors a GUI (kde#334618)
+
+-------------------------------------------------------------------
 Thu Nov  5 22:46:06 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.08.3
