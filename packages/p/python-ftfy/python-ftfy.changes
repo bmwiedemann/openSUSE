@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Apr 17 18:25:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.0.1
+  * The remove_terminal_escapes step was accidentally not being
+    used. This version restores it.
+  * Specified in setup.py that ftfy 6 requires Python 3.6 or later.
+  * Use a lighter link color when the docs are viewed in dark mode.
+- Version 6.0
+  * New function: ftfy.fix_and_explain() can describe all the
+    transformations that happen when fixing a string. This is
+    similar to what ftfy.fixes.fix_encoding_and_explain() did in
+    previous versions, but it can fix more than the encoding.
+  * fix_and_explain() and fix_encoding_and_explain() are now in
+    the top-level ftfy module.
+  * Changed the heuristic entirely. ftfy no longer needs to
+    categorize every Unicode character, but only characters that
+    are expected to appear in mojibake.
+  * Because of the new heuristic, ftfy will no longer have to
+    release a new version for every new version of Unicode. It
+    should also run faster and use less RAM when imported.
+  * The heuristic ftfy.badness.is_bad(text) can be used to
+    determine whether there appears to be mojibake in a string.
+    Some users were already using the old function
+    sequence_weirdness() for that, but this one is actually
+    designed for that purpose.
+  * Instead of a pile of named keyword arguments, ftfy functions
+    now take in a TextFixerConfig object. The keyword arguments
+    still work, and become settings that override the defaults in
+    TextFixerConfig.
+  * Added support for UTF-8 mixups with Windows-1253 and
+    Windows-1254.
+  * Overhauled the documentation: https://ftfy.readthedocs.org
+- Version 5.9
+  * This version is brought to you by the letter à and the number
+    0xC3.
+  * Tweaked the heuristic to decode, for example, "Ã " as the
+    letter "à" more often.
+  * This combines with the non-breaking-space fixer to decode "Ã "
+    as "à" as well. However, in many cases, the text " Ã " was
+    intended to be " à ", preserving the space -- the underlying
+    mojibake had two spaces after it, but the Web coalesced them
+    into one. We detect this case based on common French and
+    Portuguese words, and preserve the space when it appears
+    intended.
+  * Thanks to @zehavoc for bringing to my attention how common
+    this case is.
+  * Updated the data file of Unicode character categories to
+    Unicode 13, as used in Python 3.9. (No matter what version of
+    Python you're on, ftfy uses the same data.)
+- Version 5.8
+  * Improved detection of UTF-8 mojibake of Greek, Cyrillic,
+    Hebrew, and Arabic scripts.
+  * Fixed the undeclared dependency on setuptools by removing the
+    use of pkg_resources.
+
+-------------------------------------------------------------------
 Tue May 26 06:34:21 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
@@ -13,13 +69,13 @@ Tue Mar 10 08:48:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 Mon Aug 12 12:31:18 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 5.6
-  * The unescape_html function now supports all the HTML5 entities 
-    that appear in html.entities.html5, including those with long 
+  * The unescape_html function now supports all the HTML5 entities
+    that appear in html.entities.html5, including those with long
     names such as &DiacriticalDoubleAcute;.
-  * Unescaping of numeric HTML entities now uses the standard library's 
+  * Unescaping of numeric HTML entities now uses the standard library's
     html.unescape, making edge cases consistent.
-  * On top of Python's support for HTML5 entities, ftfy will also 
-    convert HTML escapes of common Latin capital letters that are 
+  * On top of Python's support for HTML5 entities, ftfy will also
+    convert HTML escapes of common Latin capital letters that are
     (nonstandardly) written in all caps, such as &NTILDE; for Ñ.
 
 -------------------------------------------------------------------

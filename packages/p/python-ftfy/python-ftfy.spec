@@ -1,7 +1,7 @@
 #
 # spec file for package python-ftfy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,18 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ftfy
-Version:        5.7
+Version:        6.0.1
 Release:        0
 Summary:        Python module for repairing mis-decoded Unicode text
 License:        MIT
 URL:            https://github.com/LuminosoInsight/python-ftfy
-Source:         https://github.com/LuminosoInsight/python-ftfy/archive/v%{version}.tar.gz
+Source:         https://github.com/LuminosoInsight/python-ftfy/archive/v%{version}.tar.gz#/ftfy-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-wcwidth
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -54,9 +54,12 @@ put through an encode/decode cycle with different encodings.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PATH="$PATH:%{buildroot}%{_bindir}"
-# test_cli: ftfy binary not found (update-alternatives)
-%pytest -k 'not test_cli'
+%{python_expand # provide u-a controlled cli command for tests
+mkdir -p build/testbin
+ln -s %{buildroot}%{_bindir}/ftfy-%{python_bin_suffix} build/testbin/ftfy
+}
+export PATH="build/testbin:$PATH"
+%pytest
 
 %post
 %python_install_alternative ftfy
