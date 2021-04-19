@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Apr 16 10:19:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- spec-cleaner part five out of five: sort and deduplicate requires
+- 4.4.4
+
+-------------------------------------------------------------------
+Fri Apr 16 09:50:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- spec-cleaner part two out of five: move conditionalized sections at the end
+- spec-cleaner part three out of five: move weak requires (recommends) below requires
+- spec-cleaner part four out of five: sort and deduplicate BuildRequires
+
+-------------------------------------------------------------------
+Fri Apr 16 08:39:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- remove check for non-systemd distros
+- first out of 5 splits of "spec-cleaner -m -i *ec" run (for easier review)
+
+-------------------------------------------------------------------
+Wed Apr 14 11:08:52 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Show 'Default' in the proposal summary as the PolicyKit Default
+  Privileges to be used when it is not specified or specified as
+  empty in the control file (bsc#1184277)
+- 4.4.3
+
+-------------------------------------------------------------------
+Wed Apr 14 09:46:38 UTC 2021 - Ludwig Nussel <lnussel@suse.com>
+
+- Check for usr/lib/modules to handle usrmerge (bsc#1029961)
+- 4.4.2
+
+-------------------------------------------------------------------
+Wed Apr 14 08:44:31 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not own system directories (like /usr/bin) (bsc#1184787):
+  + filesystem is responsible to bring those directories with the
+    correct permission flags. Owning them here only introduces
+    races/conflicts.
+  + As a result: expand the files section for bindir and unitdir to
+    be exact on the files.
+
+-------------------------------------------------------------------
+Fri Apr  9 16:21:31 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Start the "memsample" tool in a subshell to avoid "Terminated"
+  message displayed at the end (bsc#1184491)
+- 4.4.1
+
+-------------------------------------------------------------------
 Wed Apr  7 10:54:58 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Hide the abort button when the network client is called
