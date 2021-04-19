@@ -7,4 +7,12 @@
     <comment>Distributed computing tool using remote objects</comment>
     <requestid>755305</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>34d55377608bc622e83f7ce7e50b1b51</srcmd5>
+    <version>0.3.3</version>
+    <time>1618859175</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build on Python 3.6, due to no NumPy.</comment>
+    <requestid>886607</requestid>
+  </revision>
 </revisionlist>
