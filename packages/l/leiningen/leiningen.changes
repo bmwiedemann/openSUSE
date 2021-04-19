@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 19 11:58:12 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.9.6:
+  * Look for templates in a way that reflects new Clojars group rules.
+  * Update template-generating template to reflect new Clojars rules.
+  * Don't :reload in tests unless connecting to an nrepl.
+
+-------------------------------------------------------------------
 Tue Dec  8 08:42:18 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.9.5:

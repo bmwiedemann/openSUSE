@@ -1,7 +1,7 @@
 #
 # spec file for package leiningen
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           leiningen
 # Change LEIN_VERSION in lein-pkg when bumping
-Version:        2.9.5
+Version:        2.9.6
 Release:        0
 Summary:        Automation for Clojure projects
 License:        EPL-1.0
