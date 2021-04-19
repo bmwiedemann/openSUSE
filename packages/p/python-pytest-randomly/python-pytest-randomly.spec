@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-randomly
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,19 @@
 #
 
 
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-randomly
-Version:        3.4.1
+Version:        3.7.0
 Release:        0
 Summary:        Pytest plugin to randomly order tests and control random.seed
-License:        BSD-3-Clause
+License:        MIT
 URL:            https://github.com/pytest-dev/pytest-randomly
-Source:         https://github.com/pytest-dev/pytest-randomly/archive/%{version}.tar.gz
-#PATCH-FIX-UPSTREAM https://github.com/pytest-dev/pytest-randomly/commit/c89ba6bb4458704f47e08d3f2fcc7cf0ebb8f9da Fix deprecation warnings in tests (#281) 
-Patch0:         pytest6.patch
+Source:         https://github.com/pytest-dev/pytest-randomly/archive/%{version}.tar.gz#/pytest-randomly-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-importlib-metadata
+Requires:       python-importlib-metadata >= 3.6.0
 Requires:       python-pytest
 Recommends:     python-Faker >= 4.1.0
 Suggests:       python-numpy
@@ -38,10 +36,10 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Faker >= 4.1.0}
 BuildRequires:  %{python_module factory_boy}
-BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module importlib-metadata >= 3.6.0}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 # /SECTION
 %python_subpackages
 
@@ -67,9 +65,6 @@ Features:
 
 %prep
 %setup -q -n pytest-randomly-%{version}
-%patch0 -p1
-# Disregard Python 3.4+ restriction
-sed -i '/python_requires/d' setup.py
 
 %build
 %python_build
@@ -80,11 +75,16 @@ sed -i '/python_requires/d' setup.py
 
 %check
 # test_entrypoint_injection needs installed module for pytest to use
-%pytest -k 'not test_entrypoint_injection'
+donttest="test_entrypoint_injection"
+# no python36-numpy
+python36_donttest="or test_numpy"
+%pytest -k "not ($donttest ${$python_donttest})"
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_randomly.py*
+%pycache_only %{python_sitelib}/__pycache__/pytest_randomly*.pyc
+%{python_sitelib}/pytest_randomly-%{version}*-info
 
 %changelog

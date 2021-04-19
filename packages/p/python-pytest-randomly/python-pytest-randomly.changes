@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 17 10:11:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.7.0
+  * Drop dependency on backports.entry-points-selectable by
+    depending on importlib-metadata version 3.6.0+.
+- Release 3.6.0
+  * Fix deprecation warning from importlib-metadata 3.9.0+.
+  * Stop distributing tests to reduce package size. Tests are not
+    intended to be run outside of the tox setup in the repository.
+    Repackagers can use GitHub's tarballs per tag.
+  * Drop Python 3.5 support.
+- Release 3.5.0
+  * Support Python 3.9.
+  * Move license from BSD to MIT License
+- Drop pytest6.patch merged upstream 
+- Don't try test with non-existent python36-numpy
+
+-------------------------------------------------------------------
 Tue Aug 25 08:27:52 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.4.1
