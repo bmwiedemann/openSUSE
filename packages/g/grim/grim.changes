@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 19 12:07:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.3.2:
+  * Remove unnecessary wl_display_dispatch calls
+  * Fix 180-degree rotated buffers without Y_INVERT
+  * main,render: replace assert(false) with abort().
+
+-------------------------------------------------------------------
 Wed Jul 22 07:35:49 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.3.1:
