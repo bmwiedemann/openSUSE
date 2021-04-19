@@ -6,6 +6,7 @@ Thu Mar 25 23:51:47 UTC 2021 - Jason Sikes <jsikes@suse.com>
     the X509_V_FLAG_X509_STRICT flag. This flag enables additional
     security checks of the certificates present in a certificate
     chain. It is not set by default. ([CVE-2021-3450])
+    [bsc#1183851]
 
   * Fixed an issue where an OpenSSL TLS server may crash if sent a
     maliciously crafted renegotiation ClientHello message from a
@@ -18,6 +19,7 @@ Thu Mar 25 23:51:47 UTC 2021 - Jason Sikes <jsikes@suse.com>
     A server is only vulnerable if it has TLSv1.2 and renegotiation
     enabled (which is the default configuration). OpenSSL TLS
     clients are not impacted by this issue. ([CVE-2021-3449])
+    [bsc#1183852]
 
 -------------------------------------------------------------------
 Tue Mar  2 19:40:25 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
