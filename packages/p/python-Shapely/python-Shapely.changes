@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 17 10:55:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't use and test NumPy for python36 flavor: not available on
+  Tumbleweed (NEP29)
+- Make sure to test shapely.vectorized on remaining flavors by
+  changing the working dir.
+
+-------------------------------------------------------------------
 Sat Jan  9 20:58:53 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Add Shapely-fix-svg-collection-pr1042.patch

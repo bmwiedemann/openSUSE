@@ -31,19 +31,24 @@ Source:         https://files.pythonhosted.org/packages/source/S/Shapely/Shapely
 Patch0:         Shapely-fix-svg-collection-pr1042.patch
 BuildRequires:  %{python_module Cython >= 0.19}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  geos-devel >= 3.3
 BuildRequires:  python-rpm-macros
-Requires:       geos >= 3.3
-Recommends:     python-numpy
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
+%if 0%{suse_version} >= 1550
+BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
+BuildRequires:  %{python_module numpy-devel if (%python-base without python36-base)}
+%else
+# Application:Geo does not have the support for boolean build requirements within the
+# python_module macro for the SLE/Leap repos
+BuildRequires:  %{python_module numpy-devel}
 %if 0%{?suse_version} > 1320
 BuildRequires:  %{python_module matplotlib}
 %endif
-# /SECTION
+%endif
+Requires:       geos >= 3.3
+Recommends:     python-numpy
 Provides:       python-shapely = %{version}
 Obsoletes:      python-shapely < %{version}
 %python_subpackages
@@ -71,9 +76,15 @@ CFLAGS="%{optflags} `geos-config --cflags` LDFLAGS=`geos-config --clibs`"
 # Not for distribute
 rm -fv %{buildroot}%{_prefix}/shapely/_geos.pxi
 rm -frv %{buildroot}%{_prefix}/shapely
+%python_expand rm %{buildroot}%{$python_sitearch}/shapely/*/*.c
 
 %check
-%pytest_arch
+# make sure not to import the source dir without compiled shapely.vectorized during tests
+mkdir testenv
+cp -r tests setup.cfg testenv
+pushd testenv
+%pytest_arch -ra
+popd
 
 %files %{python_files}
 %license LICENSE.txt
