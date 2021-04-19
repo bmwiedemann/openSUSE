@@ -1,0 +1,12 @@
+Index: minetest-5.3.0/misc/net.minetest.minetest.desktop
+===================================================================
+--- minetest-5.3.0.orig/misc/net.minetest.minetest.desktop
++++ minetest-5.3.0/misc/net.minetest.minetest.desktop
+@@ -11,7 +11,6 @@ Comment[tr]=Tek-Çok oyuncuyla küplerde
+ Exec=minetest
+ Icon=minetest
+ Terminal=false
+-PrefersNonDefaultGPU=true
+ Type=Application
+ Categories=Game;Simulation;
+ StartupNotify=false
