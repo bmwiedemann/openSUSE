@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 16 07:02:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.4:
+  * #9071: Restrict docutils to 0.16
+  * #9078: autodoc: Async staticmethods and classmethods are considered as non
+    async coroutine-functions with Python3.10
+  * #8870, #9001, #9051: html theme: The style are not applied with docutils-0.17
+
+-------------------------------------------------------------------
 Tue Apr  6 01:32:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.3:

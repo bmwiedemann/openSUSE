@@ -28,7 +28,7 @@
 %endif
 %define skip_python2 1
 Name:           python-Sphinx%{psuffix}
-Version:        3.5.3
+Version:        3.5.4
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause

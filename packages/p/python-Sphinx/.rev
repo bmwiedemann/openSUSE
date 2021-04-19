@@ -737,4 +737,16 @@
   * #8959: using UNIX path separator in image directive confuses Sphinx on Windows</comment>
     <requestid>883114</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>dfcf04aacc5c21c36c389fd6dfa42aaf</srcmd5>
+    <version>3.5.4</version>
+    <time>1618859142</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.4:
+  * #9071: Restrict docutils to 0.16
+  * #9078: autodoc: Async staticmethods and classmethods are considered as non
+    async coroutine-functions with Python3.10
+  * #8870, #9001, #9051: html theme: The style are not applied with docutils-0.17</comment>
+    <requestid>885911</requestid>
+  </revision>
 </revisionlist>
