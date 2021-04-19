@@ -63,4 +63,18 @@
     <comment></comment>
     <requestid>768786</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>163a7e33be3635fdaa7d767ab058af4c</srcmd5>
+    <version>3.1.0</version>
+    <time>1618859155</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * Added
+    + query_type function to determine what as type fastnumbers will
+      interpret a given input
+  * Fixed
+    + Support for Python 3.9 (eliminate use of private Python C function
+      that is now hidden in 3.9)</comment>
+    <requestid>886526</requestid>
+  </revision>
 </revisionlist>
