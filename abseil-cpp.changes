@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+<<<<<<< Updated upstream
+=======
+Tue Apr 13 18:39:09 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to LTS version 20210324.0
+  * Breaking: The empty absl::container target has been removed from
+     the CMake build. This target had no effect and references to
+     this target in user code can safely be removed.
+  * New: The cleanup library has been released. This library contains
+     the control-flow-construct-like type absl::Cleanup which is used
+     for executing a callback on scope exit.
+  * New: The numeric library now includes bits.h, a polyfill header
+     containing implementations of C++20's bitwise math functions.
+  * New: Abseil now installs pkg-config files to make it easier to
+     use Abseil with some other build systems.
+  * New: Abseil now respects the default CMake installation paths.
+     Standard CMake variables like CMAKE_INSTALL_PREFIX can be used
+     to change the installation path.
+- Added Correctly-install-pkgconfig.patch from upstream to fix
+  installation of pkgconfig files
+- Call ldconfig on post and postun
+
+-------------------------------------------------------------------
+>>>>>>> Stashed changes
 Tue Dec 29 12:18:55 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 20200923.2
