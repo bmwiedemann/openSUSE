@@ -28,7 +28,7 @@
 %define skip_python36 1
 %define skip_python2 1
 Name:           python-afdko%{psuffix}
-Version:        3.5.0
+Version:        3.6.2
 Release:        0
 Summary:        Adobe Font Development Kit for OpenType
 License:        Apache-2.0

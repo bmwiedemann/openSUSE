@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Mar 11 05:09:13 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.6.2:
+  * [spec] Allow deleting glyphs via Multiple substitution (thanks @simoncozens!) (#1251, #1234, #1294)
+  * [makeotfexe] Allow negative internal leading (#1279, #1227)
+  * [docs] Clean up README.md (thanks @vladdoster!) (#1280)
+  * [cff2vf] Do not assume presence of STAT.AxisValueArray (#1283, #1281)
+  * [repo] Re-sync master --> develop (#1285)
+  * [spot] re-format documentation (#1287)
+  * [checkoutlinesufo] Add ignore-contour-order flag (#1289)
+  * [makeinstancesufo] Implement multiprocessing (#1293, #1161)
+  * [checkoutlinesufo] Fix restore_contour_order (#1296, #1291)
+  * [makeotf] don't fail when converting 'post' table format 3 -> 2 (#1303, #1301)
+  * [checkoutlinesufo] Fix logic for reporting duplicated start point (#1318, #1315)
+  * [tests, tx] increase precision (float --> double) to fix i586 failing tests (#1321, #1216, #1163)
+  * [checkoutlinesufo] Add CID support (#1224)
+  * [checkoutlinesufo] Fix nested loop variable (#1231)
+  * [tests] Update date regex to skip date & time metrics (#1232)
+  * [checkoutlinesufo] Update progress bar (#1243)
+  * [checkoutlinesufo] Implement -o (output file) option (#1244)
+  * [comparefamily, pdflib] Fix == None comparisons (#1264)
+  * [checkoutlinesufo] Remove UFO2-as-UFO3 hack (now up-converts to UFO3) (#1135, #1270)
+  * [tx] improve robustness (#1187, #1188)
+  * [makeotfexe] support OS/2.sFamilyClass in feature files (#1191, #1192)
+  * [docs] correct description of STAT location values (#1190, #1193)
+  * [ttfcomponentizer] add warning for empty psnames (#1198, #1199)
+  * [buildcff2vf] add STAT validation (#1200)
+  * [makeotf] allow anonymous glyphclass in LookupFlags (#1206)
+  * [agd] support 5-digit codepoints in AGD file (#1207, #1208)
+  * [makeinstancesufo] make designspace attributes lowercase (#1211, #1212)
+  * [makeotf] remove hyphen for STAT range definitions (#1197, #1213)
+  * [docs] clarify use of python3 and pip3 in README (#1215)
+  * [pdflib] fix circle-drawing bug (thanks @bcirc!) (#1218, #1219])
+  * [docs] clarify description of glyph name ranges (thanks @PeterCon!) (#1222, #1211)
+  * [checkoutlinesufo] add support for CID-keyed fonts (#1224) 
+
+-------------------------------------------------------------------
 Fri Feb 12 13:40:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 36 as python36-scipy is missing 
