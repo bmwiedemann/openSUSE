@@ -180,4 +180,27 @@
     <comment></comment>
     <requestid>865060</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>06b3232cb6f599f7b673a170707c9b0b</srcmd5>
+    <version>0.17</version>
+    <time>1618859153</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17:
+  * Add the Wh unit for battery capacity measurements
+  * Fix issue with reducable dimensionless units when using power
+    (Quantity**ndarray)
+  * Fix comparisons between Quantities and Measurements.
+  * UnitsContainer returns false if other is str and cannnot be parsed
+  * Fix numpy.linalg.solve unit output. (Issue #1246)
+  * Support numpy.lib.stride_tricks.sliding_window_view. (Issue #1255)
+  * Move all tests to pytest.
+  * Quantity comparisons now ensure other is Quantity.
+  * Add sign function compatibility.
+  * Fix scalar to ndarray tolist.
+  * Fix tolist function with scalar ndarray.
+  * Implements a first benchmark suite in airspeed velocity (asv). 
+  * Power for pseudo-dimensionless units.
+- No longer build for Python 3.6, due to no NumPy.</comment>
+    <requestid>886518</requestid>
+  </revision>
 </revisionlist>

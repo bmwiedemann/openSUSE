@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-Pint
-Version:        0.16.1
+Version:        0.17
 Release:        0
 Summary:        Physical quantities module
 License:        BSD-3-Clause
@@ -41,6 +42,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest >= 4.0}
+BuildRequires:  %{python_module pytest-subtests}
 BuildRequires:  %{python_module uncertainties >= 3.0}
 # /SECTION
 %python_subpackages
