@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Apr 15 10:31:02 UTC 2021 - schubi@suse.com 
+
+- Removed doxygen from build requires.
+
+-------------------------------------------------------------------
+Tue Apr 13 20:25:40 UTC 2021 - schubi@suse.com
+
+- Update to version 0.4.0+git20210413.fdb8025:
+  * Installing man pages via meson. (#147)
+
+-------------------------------------------------------------------
+Mon Apr 12 19:10:54 UTC 2021 - schubi@suse.com
+
+- Update to version 0.4.0+git20210412.1513a26:
+  * Added econftool cat option (#146)
+  * new API call: econf_readDirsHistory (showing ALL locations)
+  * new API call: econf_getPath (absolute path of the configuration file)
+
+-------------------------------------------------------------------
+Thu Apr 08 17:10:59 UTC 2021 - schubi@suse.com
+
+- Update to version 0.4.0+git20210408.6d33e5e:
+  * Man pages libeconf.3 and econftool.8.
+  * Handling multiline strings.
+  * Added libeconf_ext which returns more information like
+    line_nr, comments, path of the configuration file,...
+  * Econftool, an command line interface for handling configuration
+    files.
+  * Generating HTML API documentation with doxygen.
+  * Improving error handling and semantic file check.
+  * Joining entries with the same key to one single entry if
+    env variable ECONF_JOIN_SAME_ENTRIES has been set.
+
+-------------------------------------------------------------------
 Thu Oct 22 12:16:36 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - explicitly BuildRequire: pkgconfig for /usr/lib/rpm/pkgconfigdeps.sh

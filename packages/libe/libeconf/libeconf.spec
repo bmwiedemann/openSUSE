@@ -1,7 +1,7 @@
 #
 # spec file for package libeconf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libeconf0
 Name:           libeconf
-Version:        0.3.8+git20200710.5126fff
+Version:        0.4.0+git20210413.fdb8025
 Release:        0
 Summary:        Enhanced config file parser ala systemd
 License:        LGPL-2.1-or-later
@@ -52,6 +52,15 @@ This package contains all necessary include files and libraries needed
 to develop applications that needs to read configuration files from
 different locations.
 
+%package utils
+Summary:        Command line interface for libeconf
+Group:          System/Base
+Requires:       %{lname} = %{version}
+
+%description utils
+This package contains tools for handling configuration files in e.g. /usr/etc
+and /etc.
+
 %prep
 %setup -q
 
@@ -76,5 +85,10 @@ different locations.
 %{_includedir}/*.h
 %{_libdir}/libeconf.so
 %{_libdir}/pkgconfig/libeconf.pc
+%{_mandir}/man3/libeconf.3%{?ext_man}
+
+%files utils
+%{_bindir}/econftool
+%{_mandir}/man8/econftool.8%{?ext_man}
 
 %changelog
