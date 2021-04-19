@@ -139,6 +139,7 @@ if test ! -e "build"; then
   mkdir build
 fi
 pushd build
+export LDFLAGS="-pie"
 # FIXME: you should use the %%cmake macros
 cmake \
   -DCMAKE_C_FLAGS:STRING="%{optflags}" \

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 13 08:56:21 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- explicitly add -pie linker flag to make /usr/bin/csync a PIE binary
+  (bsc#1184122). The problem arises in upstream
+  cmake/Modules/DefineCompilerFlags.cmake where -fPIC is explicitly added to
+  compiler flags, which are also passed during link time. This overrides our
+  implicit gcc PIE profile.
+
+-------------------------------------------------------------------
 Sun Mar  7 07:07:35 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Fix bare words are no longer supported,
