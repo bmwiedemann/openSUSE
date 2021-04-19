@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Apr 18 02:27:07 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed SPEC file: Replaced broken URL with current upstream
+- Update to 3.17.0
+  * cf-agent can now simulate the changes done to files in a chroot, printing
+    diff or manifest information about what it would do in a normal evaluation.
+    Use the new command line option: `--simulate=diff` or `--simulate=manifest`.
+    Please note that only files and packages promises are simulated currently.
+  * Custom promise types can now be added using promise modules
+  * cf-monitord now uses /proc/net/* files to get network information if
+    possible
+  * Added new policy function execresult_as_data()
+  * Added optional argument to execresult for choosing between stdout and
+    stderr
+  * Outcome classes are now always defined for promiser in files promises
+  * and(), or(), not() now return boolean and cannot be used directly in
+    slist vars. They can now be used in other places where a boolean is
+    expected. (Most notably and / or promise attributes). The return values
+    can be converted to strings using concat(), if necessary (CFE-3470)
+  * Backgrounded commands are now correctly executed in the child process
+  * CFEngine policy bodies can now be completely empty
+  * Directory listings in files changes monitoring are now only updated
+    when there is a change
+  * Promises with 'action => bg()' no longer break reporting data (ENT-6042)
+  * Spaces inside square brackets (slist/data index) are now allowed in
+    class expressions (CFE-3320)
+  * Variables specifying data/list names in @() references are now expanded
+  * Added warnings when trying to use  to expand containers in mustache
+    templates (CFE-3457, CFE-3489)
+  * Limited unqualified host and domain name to 511 characters (CFE-3409)
+  * AVCs are no longer produced for CFEngine processes accessing /proc/net
+  * Fixed how we check for `--cols` argument to `ps` (ENT-6098)
+  * Fixed a memory leak in users promises
+  * Fixed a small memory leak in cf-promises (CFE-3461)
+  * Fixed expansion of variables in data/list references (CFE-3299)
+- FHS issue upstream resolved, can be installed accoring to FHS
+
+-------------------------------------------------------------------
 Wed Sep 23 08:34:55 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
 
 - drop cfengine-doc subpackage in favor of cfengine-documentation

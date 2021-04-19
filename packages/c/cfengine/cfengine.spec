@@ -1,7 +1,7 @@
 #
 # spec file for package cfengine
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define libname   libpromises
 %define libsoname %{libname}3
+
 # Yes, its not FHS conformant but in sync with cfengine documentation
-# reported upstream as https://cfengine.com/dev/issues/1896
-%define         basedir   %{_localstatedir}/%{name}
-%define         workdir   %{basedir}
+%define   basedir   %{_localstatedir}/%{name}
+%define   workdir   %{basedir}
 # This is the place where workdir should be
-#define         basedir   /var/lib/%%{name}
-#define         workdir   %%{basedir}/work
+#%%define basedir   %%{_localstatedir}/lib/%%{name}
+#%%define workdir   %%{basedir}/work
 
 %if 0%{?suse_version} < 1500
 # assume SuSEfirewall2
@@ -33,33 +33,33 @@
 # assume firewalld
 %define with_sfw2 0
 %endif
+# Version of libntech needed (see git repo of core)
+%define libntech_hash 4e9efcb84172110fa92742836b8d34688983c2e7
 # pass --with-bla to enable the build
 %bcond_with mysql
 %bcond_with postgresql
 %bcond_with libvirt
-
 Name:           cfengine
-Version:        3.16.0
+Version:        3.17.0
 Release:        0
 Summary:        Configuration management framework
 License:        GPL-3.0-only
 Group:          Productivity/Networking/System
-URL:            http://www.cfengine.org/
-Source:         https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-%{version}.tar.gz
-Source1:        %{name}.SuSEfirewall2
-Source2:        cf-execd.service
-Source3:        cf-monitord.service
-Source4:        cf-serverd.service
-Source5:        cf-monitord
-Source6:        cf-execd
-Source7:        cf-serverd
-Source10:       %{name}.cron
-Source11:       %{name}-rpmlintrc
-
-Recommends:     %{name}-documentation
-
+URL:            https://cfengine.com/
+Source0:        https://github.com/cfengine/core/archive/refs/tags/%{version}.tar.gz#/core-%{version}.tar.gz
+Source1:        https://github.com/cfengine/libntech/archive/%{libntech_hash}.tar.gz#/libntech-%{libntech_hash}.tar.gz
+Source11:       %{name}.SuSEfirewall2
+Source12:       cf-execd.service
+Source13:       cf-monitord.service
+Source14:       cf-serverd.service
+Source15:       cf-monitord
+Source16:       cf-execd
+Source17:       cf-serverd
+Source20:       %{name}.cron
+Source21:       %{name}-rpmlintrc
 BuildRequires:  bison
 BuildRequires:  db-devel
+BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  libacl-devel
 BuildRequires:  libtool
@@ -68,11 +68,15 @@ BuildRequires:  lmdb-devel >= 0.9.17
 BuildRequires:  openssl-devel >= 1.0.2e
 BuildRequires:  pam-devel
 BuildRequires:  pcre-devel >= 8.38
+BuildRequires:  pkgconfig
 # for flock
 BuildRequires:  util-linux
 # for llzma
 BuildRequires:  xz-devel
+BuildRequires:  pkgconfig(systemd)
 Requires:       %{libsoname} = %{version}
+Recommends:     %{name}-documentation
+%{?systemd_requires}
 %if !%{with_sfw2}
 BuildRequires:  firewall-macros
 %endif
@@ -85,9 +89,6 @@ BuildRequires:  libvirt-devel
 %if %{with postgresql}
 BuildRequires:  postgresql-devel
 %endif
-BuildRequires:  pkgconfig(systemd)
-%{?systemd_requires}
-BuildRequires:  fdupes
 %if 0%{?fedora_version} == 20
 BuildRequires:  perl-Exporter
 %endif
@@ -130,13 +131,12 @@ BuildArch:      noarch
 Lots of example promises for CFEngine.
 
 %prep
-%setup -q
-
+%setup -q -n core-%{version} -a 1
+[ -d libntech ] && rmdir -v libntech
+ln -s libntech-%{libntech_hash} libntech
 ##### rpmlint
 #### wrong-file-end-of-line-encoding
-#### incorrect-fsf-address
-### http://www.fsf.org/about/contact/
-find ./examples -type f -name "*.cf" -exec perl -p -i -e 's|\r\n|\n|,s|^# Foundation.*|# Foundation, 51 Franklin Street, Suite 500, Boston, MA 02110-1335, USA|' {} \;
+find ./examples -type f -name "*.cf" -exec perl -p -i -e 's|\r\n|\n|' {} \;
 
 %build
 EXPLICIT_VERSION=%{version} autoreconf -fvi -I m4
@@ -145,7 +145,7 @@ CC=cc CFLAGS="%{optflags} -fno-strict-aliasing" \
   --disable-static \
   --disable-silent-rules \
   --enable-fhs \
-  --datadir=/var \
+  --datadir=%{_localstatedir} \
   --with-workdir=%{workdir} \
 %if %{with postgresql}
   --with-postgresql \
@@ -171,15 +171,15 @@ CC=cc CFLAGS="%{optflags} -fno-strict-aliasing" \
 %endif
   --with-pam
 
-make %{?_smp_mflags}
+%make_build
 
 %check
 # FAIL: process_test
-make check %{?_smp_mflags} || : 
+%make_build check || :
 
 %install
 chmod -x ChangeLog
-make "DESTDIR=%{buildroot}" install
+%make_install
 
 # will appear in cfengine-examples
 rm -rf %{buildroot}/%{_docdir}/%{name}/examples
@@ -190,11 +190,11 @@ install -d %{buildroot}/{%{_bindir},%{_sbindir},%{workdir}/{bin,inputs,reports}}
 install -d %{buildroot}/%{basedir}/{backup,failsafe,config,plugins}
 
 # systemd: install sample cron file in docdir
-cp %{SOURCE10} %{buildroot}/%{_docdir}/%{name}
+cp %{SOURCE20} %{buildroot}/%{_docdir}/%{name}
 
 # install systemd scripts
 install -d %{buildroot}%{_unitdir}
-install -m 0644 %{SOURCE2} %{SOURCE3} %{SOURCE4} %{buildroot}/%{_unitdir}
+install -m 0644 %{SOURCE12} %{SOURCE13} %{SOURCE14} %{buildroot}/%{_unitdir}
 ln -s -f service %{buildroot}/%{_sbindir}/rccf-monitord
 ln -s -f service %{buildroot}/%{_sbindir}/rccf-execd
 ln -s -f service %{buildroot}/%{_sbindir}/rccf-serverd
@@ -202,7 +202,7 @@ ln -s -f service %{buildroot}/%{_sbindir}/rccf-serverd
 # create symlinks for bin_PROGRAMS
 # because: cf-promises needs to be installed in /var/cfengine/work/bin for pre-validation of full configuration
 for i in cf-agent cf-execd cf-key cf-monitord cf-promises cf-runagent cf-serverd cf-upgrade; do
-  ln -s -f ../../..%{_bindir}/${i} %{buildroot}%{workdir}/bin/${i}
+  ln -s -f %{_bindir}/${i} %{buildroot}%{workdir}/bin/${i}
 done
 
 rm -rf %{buildroot}/%{_libdir}/%{name}/libpromises.la
@@ -221,7 +221,7 @@ done
 
 # Firewall
 %if %{with_sfw2}
-install -D -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/cfengine
+install -D -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/cfengine
 %endif
 
 # Ckeabyo dyoes
@@ -254,13 +254,11 @@ fi
 %endif
 
 %post   -n %{libsoname} -p /sbin/ldconfig
-
 %postun -n %{libsoname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog README.md
 %license LICENSE
+%doc ChangeLog README.md
 %{_bindir}/cf-agent
 %{_bindir}/cf-check
 %{_bindir}/cf-execd
@@ -292,16 +290,13 @@ fi
 %{_docdir}/%{name}/cfengine.cron
 
 %files -n %{libsoname}
-%defattr(-,root,root)
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/%{libname}.so.*
 
 %files -n %{libname}-devel
-%defattr(-,root,root)
 %{_libdir}/%{name}/%{libname}.so
 
 %files examples
-%defattr(-,root,root)
 %doc examples/*cf
 
 %changelog
