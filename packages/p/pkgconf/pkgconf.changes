@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  7 16:19:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- do not own directories provided by filesystem 
+- small cleanups inspired by spec-cleaner
+
+-------------------------------------------------------------------
 Mon Aug 10 05:03:07 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Add /usr/local paths to pkg-config(1) search path for non RPM builds (boo#1175039)

@@ -111,4 +111,12 @@
     <comment>- Add /usr/local paths to pkg-config(1) search path for non RPM builds (boo#1175039)</comment>
     <requestid>825209</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>c7f09961c1f85869241fd9e1e55c1ecf</srcmd5>
+    <version>1.7.3</version>
+    <time>1618859133</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>883669</requestid>
+  </revision>
 </revisionlist>

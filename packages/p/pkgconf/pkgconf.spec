@@ -1,7 +1,7 @@
 #
 # spec file for package pkgconf
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -52,21 +52,16 @@ License:        ISC
 Group:          Development/Tools/Building
 URL:            http://pkgconf.org/
 Source0:        https://distfiles.dereferenced.org/%{name}/%{name}-%{version}.tar.xz
-
 # Simple wrapper script to offer platform versions of pkgconfig from Fedora
 Source1:        platform-pkg-config.in
-
-BuildRequires:  gcc
-BuildRequires:  make
-
 # For regenerating autotools scripts
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gcc
 BuildRequires:  libtool
-
+BuildRequires:  make
 # pkgconf uses libpkgconf internally
 Requires:       %{libname}%{?_isa} = %{version}-%{release}
-
 # This is defined within pkgconf code as a virtual pc (just like in pkgconfig)
 Provides:       pkgconfig(pkgconf) = %{version}
 
@@ -88,9 +83,9 @@ of %{name}.
 Summary:        Development files for lib%{name}
 License:        ISC
 Group:          Development/Libraries/C and C++
+Requires:       %{libname}%{?_isa} = %{version}-%{release}
 # Avoid dependency loop on itself by specifying the Provides directly
 Provides:       pkgconfig(libpkgconf) = %{version}
-Requires:       %{libname}%{?_isa} = %{version}-%{release}
 
 %description -n %{devname}
 This package provides files necessary for developing applications
@@ -144,12 +139,12 @@ autoreconf -fiv
            --with-system-includedir=%{_includedir} \
            --with-system-libdir=%{_libdir}
 
-%make_build V=1
+%make_build
 
 %install
 %make_install
 
-find %{buildroot} -name '*.la' -print -delete
+find %{buildroot} -type f -name "*.la" -delete -print
 
 mkdir -p %{buildroot}%{_sysconfdir}/pkgconfig/personality.d
 mkdir -p %{buildroot}%{_datadir}/pkgconfig/personality.d
@@ -221,14 +216,12 @@ rm -rf %{buildroot}%{_mandir}/man7
 %files m4
 %dir %{_datadir}/aclocal
 %{_datadir}/aclocal/pkg.m4
-%{_mandir}/man7/pkg.m4.7*
+%{_mandir}/man7/pkg.m4.7%{?ext_man}
 
 %files pkg-config
 %{_bindir}/pkg-config
 %{_bindir}/%{pkgconf_target_platform}-pkg-config
-%{_mandir}/man1/pkg-config.1*
-%dir %{_libdir}/pkgconfig
-%dir %{_datadir}/pkgconfig
+%{_mandir}/man1/pkg-config.1%{?ext_man}
 %endif
 
 %changelog
