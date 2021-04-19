@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 16 10:20:15 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable libdavd1 on Leap 15.2+ [boo#1184830]
+
+-------------------------------------------------------------------
+Fri Apr  9 18:52:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.4
+  * New demuxers, AV1 support improvements, and other enhancements.
+  * AV1 monochrome encoding support.
+- Remove ffmpeg_altivec_yuv2rgb_novsx.patch (merged)
+
+-------------------------------------------------------------------
 Sun Mar 14 21:08:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.2:

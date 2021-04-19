@@ -383,4 +383,13 @@
     <comment></comment>
     <requestid>880065</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>840aaadeea6dfe3637f3a0129bf57e9e</srcmd5>
+    <version>4.4</version>
+    <time>1618859146</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable libdavd1 on Leap 15.2+ [boo#1184830]
+- Update to release 4.4</comment>
+    <requestid>886260</requestid>
+  </revision>
 </revisionlist>
