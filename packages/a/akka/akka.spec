@@ -1,7 +1,7 @@
 #
 # spec file for package akka
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ Source8:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-remote_%{s
 Source9:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-slf4j_%{scala_short_version}/%{namedversion}/akka-slf4j_%{scala_short_version}-%{namedversion}.pom
 Source10:       https://repo1.maven.org/maven2/com/typesafe/akka/akka-transactor_%{scala_short_version}/%{namedversion}/akka-transactor_%{scala_short_version}-%{namedversion}.pom
 Patch0:         akka-2.3.0-encoding.patch
+Patch1:         akka-2.3.0-typesafe-config-1.3.0.patch
 BuildRequires:  ant
 BuildRequires:  java-devel
 BuildRequires:  javapackages-local
@@ -87,6 +88,9 @@ cp -p %{SOURCE1} build.xml
 sed -i "s|@VERSION@|%{namedversion}|" build.xml
 
 %patch0 -p1
+%if %{?pkg_vcmp:%pkg_vcmp typesafe-config >= 1.3}%{!?pkg_vcmp:0}
+%patch1 -p1
+%endif
 
 # handle compatibility netty jar
 sed -i -e "s|netty[.]jar|$(basename %{_javadir}/netty3-*.jar)|" build.xml

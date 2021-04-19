@@ -1,0 +1,20 @@
+--- akka-2.3.16/akka-actor/src/main/scala/akka/dispatch/CachingConfig.scala
++++ akka-2.3.16/akka-actor/src/main/scala/akka/dispatch/CachingConfig.scala
+@@ -178,5 +178,17 @@
+   def resolveWith(source: Config, options: ConfigResolveOptions) = config.resolveWith(source, options)
+ 
+   def resolveWith(source: Config) = config.resolveWith(source)
++
++  def getDuration(path: String) = config.getDuration(path)
++
++  def getDurationList(path: String) = config.getDurationList(path)
++
++  def getIsNull(path: String) = config.getIsNull(path)
++
++  def getMemorySize(path: String) = config.getMemorySize(path)
++
++  def getMemorySizeList(path: String) = config.getMemorySizeList(path)
++
++  def hasPathOrNull(path: String) = config.hasPathOrNull(path)
+ }
+ 
