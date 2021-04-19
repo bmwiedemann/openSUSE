@@ -1,7 +1,7 @@
 #
 # spec file for package typesafe-config
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           typesafe-config
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Configuration library for JVM languages
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            https://github.com/typesafehub/config/
-Source0:        https://github.com/typesafehub/config/archive/v%{version}.tar.gz
-Source1:        http://central.maven.org/maven2/com/typesafe/config/%{version}/config-%{version}.pom
+URL:            https://github.com/typesafehub/config
+Source0:        %{URL}/archive/v%{version}.tar.gz#/config-%{version}.tar.gz
+Source1:        https://repo1.maven.org/maven2/com/typesafe/config/%{version}/config-%{version}.pom
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
 BuildArch:      noarch
@@ -45,11 +45,11 @@ This package contains javadoc for %{name}.
 %build
 pushd config
 mkdir -p target/classes
-javac -d target/classes -source 6 -target 6 \
+javac -d target/classes -source 8 -target 8 \
   $(find src/main/java -name \*.java | xargs)
 jar -cf target/config.jar -C target/classes .
 mkdir -p target/api
-javadoc -d target/api -source 6 -notimestamp \
+javadoc -d target/api -source 8 -notimestamp \
   $(find src/main/java -name \*.java | xargs)
 
 %install
