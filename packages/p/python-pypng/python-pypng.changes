@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 17 21:48:57 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add pypng-pr104-py39.patch for Python 3.9 compatibility
+  gh#drj11/pypng#104
+- Expand u-a install scriptlets early (Fix rpmlint warnings) 
+
+-------------------------------------------------------------------
 Fri Feb 26 21:28:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Only test optional numpy when availalbe: python36-numpy is not
