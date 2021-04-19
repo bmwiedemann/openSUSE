@@ -197,7 +197,6 @@ Preinstall: liblzma5 libcap2 libacl1 libattr1
 Preinstall: libpopt0 libelf1
 Preinstall: libpcre1 libzstd1 libpcre2-8-0
 Preinstall: libreadline8
-Preinstall: libpcre2-8-0
 
 #Runscripts: aaa_base
 
