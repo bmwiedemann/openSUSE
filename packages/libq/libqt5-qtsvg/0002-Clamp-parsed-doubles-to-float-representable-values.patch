@@ -1,0 +1,48 @@
+From 95990cbeebc0ab9959e2a925a93ad4897416bbb7 Mon Sep 17 00:00:00 2001
+From: Allan Sandfeld Jensen <allan.jensen@qt.io>
+Date: Thu, 4 Mar 2021 14:28:48 +0100
+Subject: [PATCH 2/4] Clamp parsed doubles to float representable values
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Parts of our rendering assumes incoming doubles can still be sane
+floats.
+
+Fixes: QTBUG-91507
+Change-Id: I7086a121e1b5ed47695a1251ea90e774dd8f148d
+Reviewed-by: Robert Löhning <robert.loehning@qt.io>
+Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
+Reviewed-by: Mårten Nordheim <marten.nordheim@qt.io>
+(cherry picked from commit bfd6ee0d8cf34b63d32adf10ed93daa0086b359f)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ src/svg/qsvghandler.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/svg/qsvghandler.cpp b/src/svg/qsvghandler.cpp
+index b3d9aaf..9dac05c 100644
+--- a/src/svg/qsvghandler.cpp
++++ b/src/svg/qsvghandler.cpp
+@@ -673,7 +673,8 @@ static qreal toDouble(const QChar *&str)
+             val = -val;
+     } else {
+         val = QByteArray::fromRawData(temp, pos).toDouble();
+-        if (qFpClassify(val) != FP_NORMAL)
++        // Do not tolerate values too wild to be represented normally by floats
++        if (qFpClassify(float(val)) != FP_NORMAL)
+             val = 0;
+     }
+     return val;
+@@ -3046,6 +3047,8 @@ static QSvgStyleProperty *createRadialGradientNode(QSvgNode *node,
+         ncy = toDouble(cy);
+     if (!r.isEmpty())
+         nr = toDouble(r);
++    if (nr < 0.5)
++        nr = 0.5;
+ 
+     qreal nfx = ncx;
+     if (!fx.isEmpty())
+-- 
+2.25.1
+

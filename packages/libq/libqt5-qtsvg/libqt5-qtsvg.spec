@@ -31,6 +31,11 @@ Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}/submodules/%{tar_version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Improve-handling-of-malformed-numeric-values-in-svg-.patch
+Patch2:         0002-Clamp-parsed-doubles-to-float-representable-values.patch
+Patch3:         0003-Avoid-buffer-overflow-in-isSupportedSvgFeature.patch
+Patch4:         0004-Make-image-handler-accept-UTF-16-UTF-32-encoded-SVGs.patch
 BuildRequires:  libQt5Core-private-headers-devel >= %{version}
 BuildRequires:  libQt5Gui-private-headers-devel >= %{version}
 BuildRequires:  libQt5Widgets-private-headers-devel >= %{version}
@@ -42,13 +47,15 @@ BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(zlib)
+# Use git to apply the patches, Patch4 contains binary diffs
+BuildRequires:  git-core
 
 %description
 The Qt SVG module provides functionality for displaying SVG images
 as a widget, and to create SVG files using drawing commands.
 
 %prep
-%autosetup -p1 -n %{tar_version}
+%autosetup -p1 -S git -n %{tar_version}
 
 %package -n %{libname}
 Summary:        Qt 5 SVG Library

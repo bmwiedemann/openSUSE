@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 16 09:37:36 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add commits from kde's 5.15 branch:
+  * 0001-Improve-handling-of-malformed-numeric-values-in-svg-.patch
+  * 0002-Clamp-parsed-doubles-to-float-representable-values.patch
+    (bsc#1184783, QTBUG-91507, CVE-2021-3481)
+  * 0003-Avoid-buffer-overflow-in-isSupportedSvgFeature.patch
+  * 0004-Make-image-handler-accept-UTF-16-UTF-32-encoded-SVGs.patch
+    (QTBUG-90744)
+
+-------------------------------------------------------------------
 Fri Nov 20 12:09:39 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.15.2:
