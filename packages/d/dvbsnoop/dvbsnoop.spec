@@ -1,7 +1,7 @@
 #
 # spec file for package dvbsnoop
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        DVB / MPEG stream analyzer program
 License:        GPL-2.0+
 Group:          Hardware/TV
-Url:            https://dvbsnoop.sourceforge.net/
+Url:            http://dvbsnoop.sourceforge.net/
 Source:         https://sourceforge.net/projects/dvbsnoop/files/dvbsnoop/dvbsnoop-%{version}/dvbsnoop-%{version}.tar.gz
 
 %description
@@ -47,8 +47,8 @@ make %{?_smp_mflags}
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING README
+%license COPYING
+%doc AUTHORS README
 %{_bindir}/dvbsnoop
 %{_mandir}/man1/dvbsnoop.1%{ext_man}
 
