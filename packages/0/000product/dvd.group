@@ -3532,6 +3532,8 @@
     <package name="plasma5-pk-updates-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma5-session" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma5-session-wayland" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="plasma5-systemmonitor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="plasma5-systemmonitor-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma5-theme-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma5-thunderbolt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="plasma5-thunderbolt-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
