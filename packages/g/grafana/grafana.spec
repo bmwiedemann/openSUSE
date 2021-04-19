@@ -22,9 +22,9 @@
 %endif
 
 Name:           grafana
-Version:        7.4.2
+Version:        7.5.4
 Release:        0
-Summary:        The open-source platform for monitoring and observability.
+Summary:        The open-source platform for monitoring and observability
 License:        Apache-2.0
 Group:          System/Monitoring
 URL:            http://grafana.org/
@@ -35,18 +35,7 @@ Source2:        %{name}-rpmlintrc
 Source3:        README
 # Makefile to automate build process
 Source4:        Makefile
-# This patch is needed because upstream commit c8a7044 added an import
-# of gotest.tools/assert, but go.mod wasn't updated to also include this
-# dependency, which breaks vendoring when building RPMs on OBS.  This
-# will be fixed in a different way upstream in the next 7.4.x release
-# (see https://github.com/grafana/grafana/pull/31395), but we can't
-# use that patch here, because it won't be taken into account when
-# the go_modules source service is run, so we'll still end up with
-# modules.txt in vendor.tar.gz not matching go.dep in the source
-# tarball
-# TL;DR: To whoever does the next version bump of grafana, make sure
-# you drop this patch.  For any questions, hassle tserong@suse.com.
-Patch1:         add-gotest-module.patch
+Patch1:         drop-grafana-aws-sdk-0.3.0-module.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  golang-packaging

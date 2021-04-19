@@ -1,0 +1,11 @@
+diff -Pdpru grafana-7.5.3.orig/go.mod grafana-7.5.3/go.mod
+--- grafana-7.5.3.orig/go.mod	2021-04-07 12:36:01.000000000 +0200
++++ grafana-7.5.3/go.mod	2021-04-12 16:21:12.616379578 +0200
+@@ -43,7 +43,6 @@ require (
+ 	github.com/google/go-cmp v0.5.4
+ 	github.com/google/uuid v1.2.0
+ 	github.com/gosimple/slug v1.9.0
+-	github.com/grafana/grafana-aws-sdk v0.3.0
+ 	github.com/grafana/grafana-aws-sdk v0.4.0
+ 	github.com/grafana/grafana-plugin-model v0.0.0-20190930120109-1fc953a61fb4
+ 	github.com/grafana/grafana-plugin-sdk-go v0.88.0
