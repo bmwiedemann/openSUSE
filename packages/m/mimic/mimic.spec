@@ -1,7 +1,7 @@
 #
 # spec file for package mimic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %define _lto_cflags %{nil}
 Name:           mimic
-Version:        1.2.0.2
+Version:        1.3.0.1
 Release:        0
 Summary:        Mycroft's TTS engine, based on CMU's Flite (Festival Lite)
 License:        BSD-3-Clause AND MIT-CMU
 Group:          Productivity/Text/Convertors
 URL:            https://mimic.mycroft.ai
-#Source:         https://github.com/MycroftAI/mimic/archive/1.2.0.2.tar.gz
-Source:         1.2.0.2.tar.gz
+Source:         https://github.com/MycroftAI/mimic/archive/%{version}.tar.gz
 BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  make
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa) >= 1.0.11
 BuildRequires:  pkgconfig(icu-i18n)
@@ -63,7 +63,7 @@ reads it out loud to create a voice.
 This package contains the headers and development libraries for mimic.
 
 %prep
-%setup -q
+%setup -q -n %{name}1-%{version}
 
 %build
 ./autogen.sh
@@ -79,13 +79,17 @@ rm -fv "%{buildroot}/%{_libdir}"/*.la
 
 %files
 %defattr(-,root,root)
-%doc README.md NEWS.md ACKNOWLEDGEMENTS
+%doc README.md ACKNOWLEDGEMENTS
 %license COPYING
 %{_bindir}/compile_regexes
 %{_bindir}/mimic
 %{_bindir}/mimic_time
 %{_bindir}/mimicvox_info
 %{_bindir}/t2p
+%{_mandir}/man?/mimic.1.gz
+%{_datadir}/mimic/
+%{_datadir}/mimic/voices/
+%{_datadir}/mimic/voices/cmu_us_slt_hts.htsvoice
 
 %files -n libttsmimic0
 %{_libdir}/libttsmimic.so.0*
@@ -104,6 +108,7 @@ rm -fv "%{buildroot}/%{_libdir}"/*.la
 %{_libdir}/libttsmimic_lang_cmulex.so.0*
 %{_libdir}/libttsmimic_lang_usenglish.so.0*
 %{_libdir}/libttsmimic_lang_vid_gb_ap.so.0*
+%{_libdir}/libttsmimic_lang_cmu_us_slt_hts.so.0*
 
 %files devel
 %{_includedir}/ttsmimic
@@ -124,5 +129,6 @@ rm -fv "%{buildroot}/%{_libdir}"/*.la
 %{_libdir}/libttsmimic_lang_cmulex.so
 %{_libdir}/libttsmimic_lang_usenglish.so
 %{_libdir}/libttsmimic_lang_vid_gb_ap.so
+%{_libdir}/libttsmimic_lang_cmu_us_slt_hts.so
 
 %changelog
