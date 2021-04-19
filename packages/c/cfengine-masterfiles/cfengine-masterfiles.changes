@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 18 02:52:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed SPEC file: Replaced broken URL with current upstream
+- Update to 3.15.3 (3.15 LTS):
+  * https://github.com/cfengine/masterfiles/blob/3.15.0/CHANGELOG.md
+
+-------------------------------------------------------------------
 Mon Jul  2 11:27:49 UTC 2018 - kkaempf@suse.com
 
 - Update to 3.12.0 LTS
