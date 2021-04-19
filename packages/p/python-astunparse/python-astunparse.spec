@@ -1,7 +1,7 @@
 #
 # spec file for package python-astunparse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        BSD-3-Clause AND Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/simonpercivall/astunparse
 Source:         https://files.pythonhosted.org/packages/source/a/astunparse/astunparse-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM astunparse-pr57-py39.patch -- gh#simonpercivall/astunparse#57
+Patch0:         astunparse-pr57-py39.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.6.1}
 BuildRequires:  %{python_module wheel >= 0.23.0}
@@ -49,7 +51,7 @@ library implementation that supports both versions.
 Added to this is a pretty-printing dump utility function.
 
 %prep
-%setup -q -n astunparse-%{version}
+%autosetup -p1 -n astunparse-%{version}
 
 %build
 %python_build
@@ -64,6 +66,7 @@ Added to this is a pretty-printing dump utility function.
 %files %{python_files}
 %doc AUTHORS.rst README.rst HISTORY.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/astunparse
+%{python_sitelib}/astunparse-%{version}*-info
 
 %changelog

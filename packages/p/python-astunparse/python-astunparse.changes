@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 18 12:03:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add astunparse-pr57-py39.patch by Fedora maintainer for Python
+  3.9 support -- gh#simonpercivall/astunparse#57 
+
+-------------------------------------------------------------------
 Fri Jan 17 15:36:43 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 1.6.3
