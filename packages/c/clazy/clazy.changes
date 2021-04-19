@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 19 15:16:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-Fix-build-with-Clang-12.patch
+
+-------------------------------------------------------------------
 Tue Jan 26 13:35:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use a stricter llvm requirement. Only relying on the llvm

@@ -24,6 +24,8 @@ License:        LGPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://www.kdab.com/clazy-video/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-build-with-Clang-12.patch
 BuildRequires:  clang
 BuildRequires:  clang-devel >= 7.0
 BuildRequires:  cmake >= 3.7
