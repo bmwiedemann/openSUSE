@@ -1,0 +1,44 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2021-04-14 11:42:14.750408048
+
+If libpcre2-posix.so makes it into a process image somehow before
+libc.so (which is easy: gcc something.c -lpcre2-posix), pcre2's
+"regcomp" symbol wins a race over libc's "regcomp" symbol. There are
+likely more situations as well, because libc's "regcomp" is _also_
+marked as weak. Anyway, because the functions two are not
+behavior-compatible, problems arise.
+
+To stay ABI compatible, we could make a new library without regcomp etc.,
+and edit the .pc file to point to the new library, but that would not
+capture the case someone uses plain gcc -l without pkg-config.
+
+Since regcomp is "#defined" to pcre2_regcomp, any programs that were
+source-compiled are fine. Removing the reg* symbols from the library
+hence only breaks the case of dlsym(libpcre2-posix, "regcomp"),
+which, I will argue, is an absolute niche use of the PCRE libraries
+and something we are willing to break.
+
+---
+ src/pcre2posix.c |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: pcre2-10.36/src/pcre2posix.c
+===================================================================
+--- pcre2-10.36.orig/src/pcre2posix.c
++++ pcre2-10.36/src/pcre2posix.c
+@@ -185,6 +185,7 @@ This also ensures that the POSIX names a
+ include pcre2posix.h. It is vital to #undef the macro definitions from
+ pcre2posix.h! */
+ 
++#if 0
+ #undef regerror
+ PCRE2POSIX_EXP_DECL size_t regerror(int, const regex_t *, char *, size_t);
+ PCRE2POSIX_EXP_DEFN size_t PCRE2_CALL_CONVENTION
+@@ -218,6 +219,7 @@ regexec(const regex_t *preg, const char
+ {
+ return pcre2_regexec(preg, string, nmatch, pmatch, eflags);
+ }
++#endif
+ 
+ 
+ 
