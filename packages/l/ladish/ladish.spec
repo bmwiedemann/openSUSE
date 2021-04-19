@@ -21,7 +21,7 @@ Name:           ladish
 Version:        1+git.20210227
 Release:        0
 Summary:        LADI Session Handler
-License:        GPL-2.0-or-later AND AFL-2.1
+License:        AFL-2.1 AND GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://ladish.org/
 Source:         %{name}-%{version}.tar.xz
@@ -64,16 +64,13 @@ LADI Session Handler or simply ladish is a session management system for JACK ap
 export CFLAGS="%{optflags} -Wno-error"
 export CXXFLAGS="%{optflags} -Wno-unused-but-set-variable"
 # --enable-pylash doesn't work with py3
-/usr/bin/python3 waf configure --prefix=%{_prefix} --enable-liblash
+/usr/bin/python3 waf configure --prefix=%{_prefix} --libdir=%{_libdir} --enable-liblash
 /usr/bin/python3 waf build %{?_smp_mflags}
 
 %install
 /usr/bin/python3 waf install --destdir=%{buildroot}
 # We install it later correctly
 rm -r %{buildroot}/%{_datadir}/doc
-%ifarch x86_64
-mv "%{buildroot}/usr/lib" "%{buildroot}%{_libdir}"
-%endif
 %if %{enable_gui}
 %suse_update_desktop_file -r -i gladish "AudioVideo;Midi;"
 %else
