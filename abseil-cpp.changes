@@ -1,6 +1,4 @@
 -------------------------------------------------------------------
-<<<<<<< Updated upstream
-=======
 Tue Apr 13 18:39:09 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to LTS version 20210324.0
@@ -22,7 +20,6 @@ Tue Apr 13 18:39:09 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 - Call ldconfig on post and postun
 
 -------------------------------------------------------------------
->>>>>>> Stashed changes
 Tue Dec 29 12:18:55 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 20200923.2
