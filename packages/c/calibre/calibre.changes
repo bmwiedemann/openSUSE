@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Apr 19 05:37:04 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.16.1
+  * Bug Fixes
+    - CHM Input: Fix handling of some CHM files that use non-ASCII
+      internal filenames and dont specify a character encoding in
+      their metadata
+    - Fix a regression in the previous release that prevented
+      calibre from starting if there was a failure in a third party
+      plugin
+    - Content server viewer: Fix a regression in the previous that
+      broke handling of URLs in stylesheets
+    - Fix a regression in the previous release that broke changing
+      sections in the convert single book dialog after changing the
+      input or output formats
+    - Fix using 'is set' rules not working for column rules with
+      rating values
+    - E-book viewer: Fix a regression in 5.15 that causes the
+      viewer to ignore page-break CSS properties (in 5.16.1)
+    - Fix a regression that broke using stored templates (in 5.16.1)
+    - Fix auto scroll books shortcut not working in standalone
+      cover browser window (in 5.16.1)
+    - E-book viewer: Fix jumping to previous section sometimes not
+      working in flow mode (in 5.16.1)
+    - E-book viewer: Fix a regression in 5.15 that broke changing
+      keyboard shortcuts in the viewer preferences (in 5.16.1)
+    - E-book viewer: Fix a regression in 5.15 that broke using the
+      delete key to delete highlights (in 5.16.1)
+
+-------------------------------------------------------------------
 Sat Apr 17 08:41:55 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.16.0
