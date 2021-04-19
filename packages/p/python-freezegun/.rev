@@ -123,4 +123,12 @@
   * Fixed when accessing from thread after stop()</comment>
     <requestid>867591</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>1ac7db974da6c89c74884f9ddb3c7afb</srcmd5>
+    <version>1.1.0</version>
+    <time>1618859144</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885995</requestid>
+  </revision>
 </revisionlist>

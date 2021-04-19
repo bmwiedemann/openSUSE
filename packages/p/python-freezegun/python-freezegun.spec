@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-freezegun
 Version:        1.1.0
 Release:        0
@@ -34,9 +34,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python
 Requires:       python-python-dateutil > 2.7
 BuildArch:      noarch
-%if %{with python2}
-BuildRequires:  python-mock
-%endif
 %python_subpackages
 
 %description
@@ -60,6 +57,7 @@ time by mocking the datetime module.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/freezegun
+%{python_sitelib}/freezegun-%{version}*-info
 
 %changelog

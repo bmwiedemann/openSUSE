@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 16 12:47:48 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip python2 build. Not supported by upstream, a simple
+ `import freezegun` already fails. Was not detected because the
+  pyunittest runs 0 tests.
+
+-------------------------------------------------------------------
 Thu Jan 28 22:52:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:
