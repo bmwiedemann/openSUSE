@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 17 16:23:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9.2
+  * allow incomplete complex files to load fix #848
+  * Use list for checksum data_ranges
+
+-------------------------------------------------------------------
 Wed Dec 30 19:39:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.9.1
