@@ -1,7 +1,7 @@
 #
 # spec file for package dvbstream
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Broadcasts a DVB Stream over the Network
 License:        GPL-2.0+
 Group:          Productivity/Networking/Other
-Url:            http://www.linuxstb.org/dvbstream/index.shtml
+Url:            https://github.com/linuxstb/dvbtools
 Source:         %{name}-cvs.tar.bz2
 Patch0:         %{name}-use-rpmopts
 Patch1:         %{name}-include.dif
@@ -49,7 +49,8 @@ mkdir -p %{buildroot}%{_prefix}/bin
 install -m 755 $bins %{buildroot}%{_prefix}/bin
 
 %files
-%doc *.sh TELNET COPYING CHANGES README
+%license COPYING
+%doc *.sh TELNET CHANGES README
 %{_bindir}/dvbstream
 %{_bindir}/dumprtp
 %{_bindir}/rtpfeed

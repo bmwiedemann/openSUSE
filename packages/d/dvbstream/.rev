@@ -125,4 +125,12 @@
 - Removed BuildRequires dvb, builds just fine without it.</comment>
     <requestid>508135</requestid>
   </revision>
+  <revision rev="19" vrev="163">
+    <srcmd5>fd5c6326ed96fbc0ef6afd4acaceb509</srcmd5>
+    <version>0.6</version>
+    <time>1618859169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886586</requestid>
+  </revision>
 </revisionlist>
