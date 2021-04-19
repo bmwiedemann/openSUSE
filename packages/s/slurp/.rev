@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4e2ecdd70b82c9807d855b048e58c1c4</srcmd5>
+    <version>1.0</version>
+    <time>1549624400</time>
+    <user>coolo</user>
+    <comment>- Initial package of slurp 1.0 for openSUSE
+</comment>
+    <requestid>672360</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bb5f5557a4d6f034d5b4f80d64b2ee12</srcmd5>
+    <version>1.0.1</version>
+    <time>1550151227</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  * Mention scdoc as optional dependency
+  * Remove erronous endif
+  * Fix frame callback running after output free
+  * Use linux/input-event-codes.h on FreeBSD</comment>
+    <requestid>674530</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>76dee2329bbc62a32958575ddceeadb1</srcmd5>
+    <version>1.1.0</version>
+    <time>1551113910</time>
+    <user>coolo</user>
+    <comment>- Update to 1.1.0:
+  * Add man-pages option like swaywm/sway@ba16f16e4d5a
+  * Display alpha in usage
+  * Add user-defined output formatting (#33)
+  * Abort on escape (#25)
+  * Support selection across multiple outputs (#27)</comment>
+    <requestid>678842</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4fccae3778b5e3f530bbe92ee267fdbf</srcmd5>
+    <version>1.2.0</version>
+    <time>1559643265</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0:
+  * It's now possible to provide a list of predefined
+    regions to choose from
+  * A single-pixel selection mode has been added
+  * Check out the README for some examples:
+     https://github.com/emersion/slurp#example-usage</comment>
+    <requestid>707381</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cabc2118043366f3375f7ca138954248</srcmd5>
+    <version>1.3.0</version>
+    <time>1603031513</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.0:
+  * Touch input is now supported
+  * The current selection can now be moved by holding the Space key
+  * Choice boxes specified on stdin can now be labelled
+  * A new format option prints the name of the output
+  * The new -o option allows to add all outputs as choice boxes
+  * The new -r option forces the user to select one of the choice boxes</comment>
+    <requestid>842187</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fb677cda34dc14939d3127598a2731c0</srcmd5>
+    <version>1.3.1</version>
+    <time>1604609755</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.1:
+  * Fix off-by-one error in in_box function
+  * Print output into buffer, print result late
+  * Safe printf usage
+  * readme: simplify &quot;select output&quot; example
+  * readme: clarify that -f &quot;%o&quot; prints the output name</comment>
+    <requestid>846224</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bbe5fdd8c12e8748ef34f8d496b903cb</srcmd5>
+    <version>1.3.2</version>
+    <time>1618859188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.2:
+  * Fix incorrect anchor when output has negative position
+  * Fix loss of selection when pointer moves between outputs</comment>
+    <requestid>886685</requestid>
+  </revision>
+</revisionlist>
