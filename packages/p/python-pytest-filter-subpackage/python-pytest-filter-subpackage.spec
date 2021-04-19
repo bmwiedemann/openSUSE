@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-filter-subpackage
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,8 @@ shortcut to testing all code and documentation for a given sub-package.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# don't error on obs resource warnings
+sed -i '/^\s*error/ a \    ignore::ResourceWarning' setup.cfg
 %pytest
 
 %files %{python_files}

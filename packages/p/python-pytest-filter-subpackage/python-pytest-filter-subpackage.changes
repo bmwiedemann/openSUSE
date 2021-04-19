@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 16 15:02:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix test suite: Don't error on OBS resource warnings 
+
+-------------------------------------------------------------------
 Wed Dec  9 00:01:05 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix test failure gh#astropy/pytest-filter-subpackage#3
