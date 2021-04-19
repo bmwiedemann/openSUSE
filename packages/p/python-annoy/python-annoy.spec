@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-annoy
 Version:        1.17.0
 Release:        0
 Summary:        Approximation of Nearest Neighbors
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/spotify/annoy
 Source:         https://github.com/spotify/annoy/archive/v%{version}.tar.gz
 # PATCH-FIX-OPENSUSE boo#1100677
