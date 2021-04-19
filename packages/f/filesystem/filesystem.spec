@@ -64,6 +64,7 @@ function create_dir () {
     local BDIR=`dirname $NAME`
     test -d "$RPM_BUILD_ROOT/$NAME" && { echo "dir $NAME does already exist" ; echo "input out of sequence ?" ; exit 1 ; }
     test -n "$BDIR" -a ! -d $RPM_BUILD_ROOT$BDIR && create_dir 0755 root root $BDIR
+    test -w $RPM_BUILD_ROOT$BDIR || chmod u+w $RPM_BUILD_ROOT$BDIR
     mkdir -m $MODE $RPM_BUILD_ROOT/$NAME
     echo "$XTRA%%dir %%attr($MODE,$OWNR,$GRUP) $NAME" >> filesystem.list
     case "$NAME" in
@@ -95,15 +96,15 @@ usr/lib64 /lib64
 EOF
 %else
 cat >> directory.list << EOF
-0755 root root /bin
-0755 root root /lib
-0755 root root /sbin
+0555 root root /bin
+0555 root root /lib
+0555 root root /sbin
 %ifarch s390x %sparc x86_64 ppc64 ppc aarch64 ppc64le riscv64
-0755 root root /lib64
+0555 root root /lib64
 %endif
 EOF
 %endif
-cat >> directory.list <<EOF 
+cat >> directory.list <<EOF
 0755 root root %{?usrmerged:/usr}/lib/modules
 0755 root root %{_firmwaredir}
 EOF

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 26 11:32:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- also fix /var/lib/empty to be readonly 
+
+-------------------------------------------------------------------
+Thu Mar 25 19:56:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- make bindir/ _lib and _libdir readonly (mode 0555) to avoid
+  runpath-to-writeable-directory warning
+
+-------------------------------------------------------------------
 Wed Feb 10 18:34:25 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Add Ukrainian to the list of localized man directories.
