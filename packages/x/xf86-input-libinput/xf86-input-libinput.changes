@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 16 13:15:02 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.1
+  * Only one fix, the code to set the tap button mapping property
+    didn't correctly check for a valid device, causing memory 
+    corruption and a crash if called after a device was disabled.
+    Or, in more user-friendly terms: if your X session crashed
+    after calling `xinput disable $touchpad-device`, this release
+    has the fix for it.
+
+-------------------------------------------------------------------
 Tue Apr  6 08:29:47 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.0

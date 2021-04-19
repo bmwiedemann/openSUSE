@@ -17,7 +17,7 @@
 
 
 Name:           xf86-input-libinput
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Libinput driver for the Xorg X server
 License:        MIT
