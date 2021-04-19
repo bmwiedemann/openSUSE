@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 16 16:05:30 CEST 2021 - tiwai@suse.de
+
+- Add explicit dependency on libcap2 with version to libcap-progs
+  (bsc#1184690)
+
+-------------------------------------------------------------------
 Mon Mar 22 15:38:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.49:

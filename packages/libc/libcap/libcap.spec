@@ -80,6 +80,7 @@ using libcap.
 %package progs
 Summary:        Libcap utility programs
 Group:          System/Filesystems
+Requires:       libcap2 = %{version}
 
 %description progs
 This package contains utility programs handling capabilities via
