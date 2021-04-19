@@ -26,13 +26,16 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Delgan/loguru
 Source:         https://files.pythonhosted.org/packages/source/l/loguru/loguru-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pytest-6.2-excepthooks.patch
 Patch0:         https://github.com/Delgan/loguru/commit/31cf758ee9d22dbfa125f38153782fe20ac9dce5.patch#/pytest-6.2-excepthooks.patch
+# PATCH-FIX-UPSTREAM loguru-exception-formatting-py39.patch
+Patch1:         https://github.com/Delgan/loguru/commit/19f518c5f1f355703ffc4ee62f0e1e397605863e.patch#/loguru-exception-formatting-py39.patch
+BuildRequires:  %{python_module aiocontextvars if %python-base < 3.7}
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  ((python3-aiocontextvars and python3-base < 3.7) or (python36-aiocontextvars and python36-base))
 %if 0%{?python_version_nodots} < 37
 Requires:       python-aiocontextvars
 %endif
@@ -46,8 +49,7 @@ Python logging component providing a single object
 which dispatches log messages to configured handlers.
 
 %prep
-%setup -q -n loguru-%{version}
-%patch0 -p1
+%autosetup -p1 -n loguru-%{version}
 
 %build
 %python_build

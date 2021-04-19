@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 18 12:17:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add loguru-exception-formatting-py39.patch
+  https://github.com/Delgan/loguru/commit/19f518c5 for changed
+  exception formatting in Python 3.9
+
+-------------------------------------------------------------------
 Fri Feb 19 01:51:00 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add pytest-6.2-excepthooks.patch for compatibility with pytest 6.2

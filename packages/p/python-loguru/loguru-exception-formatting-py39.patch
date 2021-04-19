@@ -1,0 +1,161 @@
+From 19f518c5f1f355703ffc4ee62f0e1e397605863e Mon Sep 17 00:00:00 2001
+From: Delgan <delgan.py@gmail.com>
+Date: Sat, 13 Mar 2021 12:47:47 +0100
+Subject: [PATCH] Fix unit tests for exception formatting for Python 3.9
+
+Formatting changed, notably because absolute instead of relative paths
+are used in traceback: https://bugs.python.org/issue20443
+---
+ .../output/diagnose/indentation_error.txt     |  1 -
+ .../output/diagnose/syntax_error.txt          |  2 +-
+ .../others/syntaxerror_without_traceback.txt  |  8 ++---
+ .../output/ownership/syntaxerror.txt          | 10 +++---
+ tests/test_exceptions_formatting.py           | 31 ++++++++++++++++++-
+ 5 files changed, 40 insertions(+), 12 deletions(-)
+
+diff --git a/tests/exceptions/output/diagnose/indentation_error.txt b/tests/exceptions/output/diagnose/indentation_error.txt
+index b2faa4d..d5b950a 100644
+--- a/tests/exceptions/output/diagnose/indentation_error.txt
++++ b/tests/exceptions/output/diagnose/indentation_error.txt
+@@ -7,6 +7,5 @@
+ 
+   File "<string>", line 4
+     print("foobar")  #intentional faulty indentation here.
+-    ^
+ 
+ [31m[1mIndentationError[0m:[1m unexpected indent[0m
+diff --git a/tests/exceptions/output/diagnose/syntax_error.txt b/tests/exceptions/output/diagnose/syntax_error.txt
+index 6e1f612..c8b0761 100644
+--- a/tests/exceptions/output/diagnose/syntax_error.txt
++++ b/tests/exceptions/output/diagnose/syntax_error.txt
+@@ -7,6 +7,6 @@
+ 
+   File "<string>", line 4
+     b = 7 *
+-          ^
++           ^
+ 
+ [31m[1mSyntaxError[0m:[1m invalid syntax[0m
+diff --git a/tests/exceptions/output/others/syntaxerror_without_traceback.txt b/tests/exceptions/output/others/syntaxerror_without_traceback.txt
+index a4747ee..d798ba1 100644
+--- a/tests/exceptions/output/others/syntaxerror_without_traceback.txt
++++ b/tests/exceptions/output/others/syntaxerror_without_traceback.txt
+@@ -1,20 +1,20 @@
+ 
+   File "<string>", line 1
+     foo =
+-        ^
++         ^
+ [31m[1mSyntaxError[0m:[1m invalid syntax[0m
+ 
+   File "<string>", line 1
+     foo =
+-        ^
++         ^
+ [31m[1mSyntaxError[0m:[1m invalid syntax[0m
+ 
+   File "<string>", line 1
+     foo =
+-        ^
++         ^
+ [31m[1mSyntaxError[0m:[1m invalid syntax[0m
+ 
+   File "<string>", line 1
+     foo =
+-        ^
++         ^
+ [31m[1mSyntaxError[0m:[1m invalid syntax[0m
+diff --git a/tests/exceptions/output/ownership/syntaxerror.txt b/tests/exceptions/output/ownership/syntaxerror.txt
+index 1dc88ef..00763f6 100644
+--- a/tests/exceptions/output/ownership/syntaxerror.txt
++++ b/tests/exceptions/output/ownership/syntaxerror.txt
+@@ -13,7 +13,7 @@
+     exec("foo =")
+   File "<string>", line 1
+     foo =
+-        ^
++         ^
+ 
+ [31m[1mSyntaxError[0m:[1m invalid syntax[0m
+ 
+@@ -27,7 +27,7 @@
+     exec("foo =")
+   File "<string>", line 1
+     foo =
+-        ^
++         ^
+ 
+ [31m[1mSyntaxError[0m:[1m invalid syntax[0m
+ 
+@@ -40,7 +40,7 @@
+     exec("foo =")
+   File "<string>", line 1
+     foo =
+-        ^
++         ^
+ [31m[1mSyntaxError[0m:[1m invalid syntax[0m
+ 
+ [33m[1mTraceback (most recent call last):[0m
+@@ -50,7 +50,7 @@
+     exec("foo =")
+   File "<string>", line 1
+     foo =
+-        ^
++         ^
+ [31m[1mSyntaxError[0m:[1m invalid syntax[0m
+ 
+ Traceback (most recent call last):
+@@ -60,5 +60,5 @@ Traceback (most recent call last):
+     exec("foo =")
+   File "<string>", line 1
+     foo =
+-        ^
++         ^
+ SyntaxError: invalid syntax
+diff --git a/tests/test_exceptions_formatting.py b/tests/test_exceptions_formatting.py
+index 79c41f6..cad2dba 100644
+--- a/tests/test_exceptions_formatting.py
++++ b/tests/test_exceptions_formatting.py
+@@ -9,12 +9,41 @@
+ 
+ def normalize(exception):
+     """Normalize exception output for reproducible test cases"""
+-    if os.name:
++    if os.name == "nt":
+         exception = re.sub(
+             r'File[^"]+"[^"]+\.py[^"]*"', lambda m: m.group().replace("\\", "/"), exception
+         )
+         exception = re.sub(r"(\r\n|\r|\n)", "\n", exception)
+ 
++    if sys.version_info >= (3, 9, 0):
++
++        def fix_filepath(match):
++            filepath = match.group(1)
++            pattern = (
++                r'((?:\x1b\[[0-9]*m)+)([^"]+?)((?:\x1b\[[0-9]*m)+)([^"]+?)((?:\x1b\[[0-9]*m)+)'
++            )
++            match = re.match(pattern, filepath)
++            start_directory = os.path.dirname(os.path.dirname(__file__))
++            if match:
++                groups = list(match.groups())
++                groups[1] = os.path.relpath(os.path.abspath(groups[1]), start_directory) + "/"
++                relpath = "".join(groups)
++            else:
++                relpath = os.path.relpath(os.path.abspath(filepath), start_directory)
++            return 'File "%s"' % relpath
++
++        exception = re.sub(
++            r'File "([^"]+\.py[^"]*)"',
++            fix_filepath,
++            exception,
++        )
++
++    if sys.version_info < (3, 9, 0):
++        if "SyntaxError" in exception:
++            exception = re.sub(r"(\n *)(\^ *\n)", r"\1 \2", exception)
++        elif "IndentationError" in exception:
++            exception = re.sub(r"\n *\^ *\n", "\n", exception)
++
+     exception = re.sub(
+         r'"[^"]*/somelib/__init__.py"', '"/usr/lib/python/somelib/__init__.py"', exception
+     )
