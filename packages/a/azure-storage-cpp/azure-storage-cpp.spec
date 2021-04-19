@@ -18,12 +18,12 @@
 
 %define libname libazurestorage7
 Name:           azure-storage-cpp
-Version:        7.3.1
+Version:        7.5.0
 Release:        0
 Summary:        Microsoft Azure Storage Client SDK for C++
 License:        Apache-2.0
-URL:            https://blogs.msdn.com/b/windowsazurestorage/
-Source:         https://github.com/Azure/azure-storage-cpp/archive/v%{version}.tar.gz
+URL:            https://azure.github.io/azure-storage-cpp/
+Source:         https://github.com/Azure/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_chrono-devel

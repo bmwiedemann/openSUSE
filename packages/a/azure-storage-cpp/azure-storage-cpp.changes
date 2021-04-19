@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 18 01:40:13 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed SPEC file by replacing invalid URL with working one
+- Update to version 7.5.0
+  * New feature: Blob Versioning.
+  * New feature: Jumbo Put Block.
+  * New feature: Jumbo Put Blob.
+  * Service version upgraded to 2019-12-12.
+  * New feature: Premium File Share Properties.
+  * Fixed a bug: crash in table batch operation.
+
+-------------------------------------------------------------------
 Tue Apr  6 11:56:26 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add _constraints to avoid OOM
