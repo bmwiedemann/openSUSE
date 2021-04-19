@@ -1,7 +1,7 @@
-Index: xpra-4.1/setup.py
+Index: xpra-4.1.2/setup.py
 ===================================================================
---- xpra-4.1.orig/setup.py
-+++ xpra-4.1/setup.py
+--- xpra-4.1.2.orig/setup.py
++++ xpra-4.1.2/setup.py
 @@ -1531,7 +1531,7 @@ else:
          add_data_files("%s/man1" % man_path,  man_pages)
          add_data_files("share/applications",  glob.glob("fs/share/applications/*.desktop"))
@@ -11,7 +11,7 @@ Index: xpra-4.1/setup.py
          add_data_files("share/metainfo",      ["fs/share/metainfo/xpra.appdata.xml"])
  
      #here, we override build and install so we can
-@@ -1617,16 +1617,18 @@ else:
+@@ -1617,7 +1617,7 @@ else:
              if pam_ENABLED:
                  copytodir("fs/etc/pam.d/xpra", "/etc/pam.d")
  
@@ -20,20 +20,28 @@ Index: xpra-4.1/setup.py
              if service_ENABLED:
                  #Linux init service:
                  subs = {}
-                 if os.path.exists("/etc/sysconfig"):
--                    copytodir("fs/etc/sysconfig/xpra", "/etc/sysconfig")
-+                    shutil.copy("fs/etc/sysconfig/xpra", "fs/etc/sysconfig/sysconfig.xpra")
-+                    os.chmod("fs/etc/sysconfig/sysconfig.xpra", 0o644)
-+                    copytodir("fs/etc/sysconfig/sysconfig.xpra", "__FILLUPDIR__")
-                 elif os.path.exists("/etc/default"):
-                     copytodir("fs/etc/sysconfig/xpra", "/etc/default")
-                     subs[b"/etc/sysconfig"] = b"/etc/default"
+@@ -1625,15 +1625,15 @@ else:
+                     cdir = "/etc/sysconfig"
+                 elif is_Debian() or is_Ubuntu():
+                     cdir = "/etc/default"
+-                elif os.path.exists("/etc/sysconfig"):
+-                    cdir = "/etc/sysconfig"
+                 else:
+-                    cdir = "/etc/default"
+-                copytodir("fs/etc/sysconfig/xpra", cdir)
++                    cdir = "__FILLUPDIR__"
++                shutil.copy("fs/etc/sysconfig/xpra", "fs/etc/sysconfig/sysconfig.xpra")
++                os.chmod("fs/etc/sysconfig/sysconfig.xpra", 0o644)
++                copytodir("fs/etc/sysconfig/sysconfig.xpra", cdir)
+                 if cdir!="/etc/sysconfig":
+                     #also replace the reference to it in the service file below
+                     subs[b"/etc/sysconfig"] = cdir.encode()
 -                if os.path.exists("/bin/systemctl"):
 +                if os.path.exists("/usr/bin/systemctl"):
                      if sd_listen_ENABLED:
                          copytodir("fs/lib/systemd/system/xpra.service", systemd_dir,
                                    subs=subs)
-@@ -1754,7 +1756,6 @@ if scripts_ENABLED:
+@@ -1761,7 +1761,6 @@ if scripts_ENABLED:
  toggle_modules(WIN32, "xpra/scripts/win32_service")
  
  if data_ENABLED:

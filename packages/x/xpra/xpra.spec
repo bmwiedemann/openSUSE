@@ -17,9 +17,9 @@
 #
 
 
-%define xpra_ver 4.1.1
-%define html5_ver 4.0.6
-%define uglifyjs_ver 3.13.1
+%define xpra_ver 4.1.2
+%define html5_ver 4.1.2
+%define uglifyjs_ver 3.13.3
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
 Version:        %{xpra_ver}
@@ -139,7 +139,7 @@ sed -e 's|__FILLUPDIR__|%{_fillupdir}|' \
     -e 's|share/doc/xpra|share/doc/packages/xpra|' \
     -i setup.py
 
-sed -i '/install_html5/s/verbose=False/verbose=True/' %{name}-html5-%{html5_ver}/setup_html5.py
+sed -i '/install_html5/s/verbose=False/verbose=True/' %{name}-html5-%{html5_ver}/setup.py
 
 %build
 python3 setup.py clean
@@ -170,7 +170,7 @@ python3 setup.py install \
     --verbose
 
 pushd %{name}-html5-%{html5_ver}
-PATH=$PATH:../package/bin python3 setup_html5.py %{buildroot}%{_datadir}/%{name}/www
+PATH=$PATH:../package/bin python3 setup.py install %{buildroot}%{_datadir}/%{name}/www
 popd
 
 rm -rf %{buildroot}%{_datadir}/xpra/cuda

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Apr  6 14:18:51 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.1.2
+  * fix unnecessary screen update delays
+  * fix screen refresh rate detection
+  * increase the default screen update refresh rate
+  * fix missing encodings with 'upgrade' and 'upgrade-desktop'
+    subcommands
+  * fix client failures due to missing socket directories
+  * more correct API usage of 'notify2' backend
+  * fix `run_scaled` script handling of multiple arguments
+  * fix ioctl error with nested SSH connections
+  * fix video region detection error
+  * fix sessions GUI not updating on process exit
+  * fix compatibility with newer versions of python-zeroconf
+  * fix directory listing with the builtin http server (still
+    disabled by default)
+  * fix the server's GetAll dbus property handler
+  * fix display-name validation check
+  * the 'exec-wrapper' option no longer needs to use an absolute
+    path
+  * ignore bell audio devices
+  * show the correct list of pressed keys, unkown modifiers
+  * prevent the splash screen process from consuming too much CPU
+  * better service configuration file location detection
+  * packaging script fixes, library and documentation updates
+- Update xpra-html5 to 4.1.2 and uglify-js to 3.13.3
+- Refresh xpra-paths.patch
+
+-------------------------------------------------------------------
 Wed Mar 17 12:15:55 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.1.1 (fixes boo#1182526)
