@@ -1,0 +1,6 @@
+<package name="python-aiohttp-jinja2" project="openSUSE:Factory">
+  <title></title>
+  <description>jinja2 template renderer for aiohttp.web
+</description>
+  <devel project="devel:languages:python" package="python-aiohttp-jinja2"/>
+</package>
