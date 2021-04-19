@@ -120,4 +120,18 @@
   * Fix integral type sizing problem in JP2 codec. (#284)</comment>
     <requestid>882023</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ab83c81fa44933af8a0aa51c27caf53f</srcmd5>
+    <version>2.0.32</version>
+    <time>1618859185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.32:
+  * Between 2.0.29 and 2.0.32 were only experiments with
+    GitHub Actions
+
+- Update to 2.0.29:
+  * Loosen some overly tight restrictions on JP2 codestreams,
+    which caused some valid codestreams to be rejected. (#289)</comment>
+    <requestid>886663</requestid>
+  </revision>
 </revisionlist>

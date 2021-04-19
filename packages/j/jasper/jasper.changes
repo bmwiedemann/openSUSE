@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 19 11:38:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.32:
+  * Between 2.0.29 and 2.0.32 were only experiments with
+    GitHub Actions
+
+-------------------------------------------------------------------
+Mon Apr 19 11:38:25 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.29:
+  * Loosen some overly tight restrictions on JP2 codestreams,
+    which caused some valid codestreams to be rejected. (#289)
+
+-------------------------------------------------------------------
 Mon Mar 29 17:09:03 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.28:
