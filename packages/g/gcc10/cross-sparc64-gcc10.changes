@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 15 11:14:23 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 10.3.0 release (63fa67847628e5f358e7e2e7e), git1587
+- Disable nvptx offloading for aarch64 again since it doesn't work
+
+-------------------------------------------------------------------
 Thu Apr  1 11:40:36 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-10 branch head (892024d4af83b258801ff7484), git1574

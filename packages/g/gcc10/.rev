@@ -209,4 +209,13 @@
   * Includes GCC 10.3 RC1</comment>
     <requestid>882562</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>51967cf60a83e0aa3023315229430282</srcmd5>
+    <version>10.3.0+git1587</version>
+    <time>1618859135</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to GCC 10.3.0 release (63fa67847628e5f358e7e2e7e), git1587
+- Disable nvptx offloading for aarch64 again since it doesn't work</comment>
+    <requestid>885612</requestid>
+  </revision>
 </revisionlist>

@@ -80,7 +80,7 @@
 %define build_d 0
 %endif
 
-%ifarch x86_64 aarch64
+%ifarch x86_64
 %define build_nvptx 1
 %else
 %define build_nvptx 0
@@ -277,7 +277,7 @@ BuildRequires:  cross-amdgcn-newlib10-devel
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        10.2.1+git1574
+Version:        10.3.0+git1587
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')

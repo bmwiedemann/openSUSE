@@ -132,7 +132,7 @@ BuildRequires: cross-%cross_arch-glibc-devel
 BuildRequires: nvptx-tools
 Requires: nvptx-tools
 Requires: cross-nvptx-newlib-devel >= %{version}-%{release}
-ExclusiveArch: x86_64 aarch64
+ExclusiveArch: x86_64
 %define nvptx_newlib 1
 %endif
 %if "%{cross_arch}" == "amdgcn"

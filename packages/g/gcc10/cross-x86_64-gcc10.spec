@@ -113,7 +113,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        10.2.1+git1574
+Version:        10.3.0+git1587
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -219,7 +219,7 @@ BuildRequires:  cross-%cross_arch-glibc-devel
 BuildRequires:  nvptx-tools
 Requires:       cross-nvptx-newlib-devel >= %{version}-%{release}
 Requires:       nvptx-tools
-ExclusiveArch:  aarch64
+ExclusiveArch:  
 %define nvptx_newlib 1
 %endif
 %if "%{cross_arch}" == "amdgcn"
