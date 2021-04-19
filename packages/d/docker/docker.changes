@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 15 05:23:20 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 20.10.6-ce. See upstream changelog in the packaged
+  /usr/share/doc/packages/docker/CHANGELOG.md. bsc#1184768
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+- Backport upstream fix <https://github.com/moby/moby/pull/42273> for btrfs
+  quotas being removed by Docker regularly. bsc#1183855 bsc#1175081
+  + 0005-bsc1183855-btrfs-Do-not-disable-quota-on-cleanup.patch
+
+-------------------------------------------------------------------
 Wed Mar  3 00:49:58 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 20.10.5-ce. See upstream changelog in the packaged

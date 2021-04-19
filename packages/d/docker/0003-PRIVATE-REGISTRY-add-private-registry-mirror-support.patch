@@ -1,7 +1,7 @@
-From 10d0381bf317221167af0930c552a8b27c7861a4 Mon Sep 17 00:00:00 2001
+From 759c1b0c2d4a3c89dea396510d2a1518ad2fcb2c Mon Sep 17 00:00:00 2001
 From: Valentin Rothberg <vrothberg@suse.com>
 Date: Mon, 2 Jul 2018 13:37:34 +0200
-Subject: [PATCH 3/4] PRIVATE-REGISTRY: add private-registry mirror support
+Subject: [PATCH 3/5] PRIVATE-REGISTRY: add private-registry mirror support
 
 NOTE: This is a backport/downstream patch of the upstream pull-request
       for Moby, which is still subject to changes.  Please visit
@@ -1142,5 +1142,5 @@ index 3e3a5b41ffbd..451a6f874bc1 100644
  
  	endpoints = []APIEndpoint{
 -- 
-2.30.1
+2.30.2
 

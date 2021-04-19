@@ -42,24 +42,24 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_version 363e9a88a11b
-%define git_commit_epoch 1614234438
+%define git_version 8728dd246c3a
+%define git_commit_epoch 1618005978
 
 # We require a specific pin of libnetwork because it doesn't really do
 # versioning and minor version mismatches in libnetwork can break Docker
 # networking. All other key runtime dependencies (containerd, runc) are stable
 # enough that this isn't necessary.
-%define libnetwork_version fa125a3512ee0f6187721c88582bf8c4378bd4d7
+%define libnetwork_version b3507428be5b458cb0e2b4086b13531fb0706e46
 
 %define dist_builddir  %{_builddir}/dist-suse
 %define cli_builddir   %{dist_builddir}/src/github.com/docker/cli
 %define proxy_builddir %{dist_builddir}/src/github.com/docker/libnetwork
 
 Name:           %{realname}%{name_suffix}
-Version:        20.10.5_ce
+Version:        20.10.6_ce
 # This "nice version" is so that docker --version gives a result that can be
 # parsed by other people. boo#1182476
-%define nice_version 20.10.5-ce
+%define nice_version 20.10.6-ce
 Release:        0
 Summary:        The Moby-project Linux container runtime
 License:        Apache-2.0
@@ -92,6 +92,8 @@ Patch101:       0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
 Patch200:       0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
 # SUSE-BACKPORT: Backport of https://github.com/docker/docker/pull/37353. bsc#1073877 bsc#1099277
 Patch300:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+# SUSE-BACKPORT: Backport of https://github.com/moby/moby/pull/42273. bsc#1183855 bsc#1175081
+Patch301:       0005-bsc1183855-btrfs-Do-not-disable-quota-on-cleanup.patch
 BuildRequires:  audit
 BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
@@ -257,6 +259,8 @@ docker container runtime configuration for kubeadm
 %endif
 # bsc#1099277
 %patch300 -p1
+# bsc#1183855 bsc#1175081
+%patch301 -p1
 
 # README_SUSE.md for documentation.
 cp %{SOURCE103} .
@@ -322,7 +326,7 @@ export GOPATH="$GOPATH:$PWD"
 ###################
 
 pushd %{cli_builddir}
-./scripts/build/dynbinary
+make dynbinary
 
 mkdir -p ./man/man1
 go build -buildmode=pie -o gen-manpages github.com/docker/cli/man
