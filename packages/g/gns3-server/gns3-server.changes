@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  9 09:27:55 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.20
+  * Release Web UI version 2.2.20
+  * Fix packet capture with HTTPS remote server.
+  * Sync appliance files and remove old ones after sync with
+    online repo.
+  * Fix export for missing files
+  * Fix issue when trying to export temporary Dynamips files.
+
+-------------------------------------------------------------------
 Sat Mar  6 12:40:30 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.19
