@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 17 14:41:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v0.7.3
+  * Add support for Python 3.9
+- Disable python36 build (NumPy not available, NEP 29)
+
+-------------------------------------------------------------------
 Mon Dec 28 12:24:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - initial specfile for v0.7.2
