@@ -3,6 +3,7 @@ Thu Apr  8 20:46:21 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add txtJ07eHdR0m6.patch to fix CVE-2021-30184 (reported upstream on 
   https://lists.gnu.org/archive/html/bug-gnu-chess/2021-04/msg00000.html )
+  (boo#1184531)
 
 -------------------------------------------------------------------
 Sun May 31 14:58:50 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
