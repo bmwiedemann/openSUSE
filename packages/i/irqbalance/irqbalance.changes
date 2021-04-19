@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 13 13:56:00 UTC 2021 - trenn@suse.de
+
+- Add _service file pointing to github sources
+A _service
+- Update to version 1.8.0:
+  * Add return value check of opendir in do_one_cpu
+  * Hotplug may occur again during sleep, so wait until there is no hotplug
+
+-------------------------------------------------------------------
 Wed Mar 10 17:45:54 UTC 2021 - trenn@suse.de
 
 - Update to version 1.7.0+git20210222.9db8d5c:
