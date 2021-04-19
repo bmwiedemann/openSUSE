@@ -19,15 +19,13 @@
 %define upname rope
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rope
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
 Summary:        A python refactoring library
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/python-rope/rope
 Source:         https://files.pythonhosted.org/packages/source/r/rope/rope-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM rope-pr333-py39.patch gh#python-rope/rope#333
-Patch1:         rope-pr333-py39.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
