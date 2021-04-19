@@ -377,4 +377,41 @@
     <comment></comment>
     <requestid>879180</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dff7c4cd7c43114173f0279f5bcbbe9d</srcmd5>
+    <version>0.9.7</version>
+    <time>1618859187</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.7:
+  Changed:
+  * Improve Pulseaudio sink/source separation
+  * [Module CPU] fix crash due to empty frequencies
+
+- Update to 0.9.6:
+  Added:
+  * Implement support for reloading of config files. #842
+  * Add simpleclock as fallback when hhdate is not available #903
+  * Add option 'tag-labels' to river/tags #980
+  * Add &quot;tooltip-format&quot; to temperature module #891
+  * Support format-{state} for cpu/disk/memory #881
+  * Allow customization of battery module tooltip #830
+  * Add an option to use battery design capacity #964
+  * Add power formatter to battery module #996
+  * Add a way to configure auto_back_and_forth on Sway workspaces #1014
+  * Terminate custom module scripts on exit #1032
+  * Add length limits for MPD module tags #1002
+  * Add style for battery state &quot;plugged&quot; #1056
+  * Add default styling for disk module #1051
+  * Add cpu min/max/avg frequencies #1037
+  Changed:
+  * Fix Sway #waybar.solo CSS rule applying on split #946
+  * Fix for group module selectors when bar is vertical #959
+  * Added waybar_output.identifier support. #956
+  * Fixing logic in getIcon #965
+  * Fix issues in wlr/taskbar #969
+  * Fix duplicate bars on xdg_output property changes #992
+  * Update waybar-bluetooth.5.scd #1003
+  * Improved wlr/taskbar icon search. #1006</comment>
+    <requestid>886684</requestid>
+  </revision>
 </revisionlist>

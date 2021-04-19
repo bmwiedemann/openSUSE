@@ -17,7 +17,7 @@
 
 
 Name:           waybar
-Version:        0.9.5
+Version:        0.9.7
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
@@ -27,8 +27,6 @@ URL:            https://github.com/Alexays/Waybar
 # to get the `date` dependency. and create own tarball
 #Source:         https://github.com/Alexays/Waybar/archive/%{version}.tar.gz
 Source:         %{version}.tar.xz
-# PATCH-FIX-UPSTREAM 1015-rfkill_code_refactoring.patch gh#Alexays/Waybar#994 mcepl@suse.com
-Patch0:         1015-rfkill_code_refactoring.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-layer-shell-devel

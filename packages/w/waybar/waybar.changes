@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Apr 19 12:01:41 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.7:
+  Changed:
+  * Improve Pulseaudio sink/source separation
+  * [Module CPU] fix crash due to empty frequencies
+
+-------------------------------------------------------------------
+Mon Apr 19 12:00:29 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.6:
+  Added:
+  * Implement support for reloading of config files. #842
+  * Add simpleclock as fallback when hhdate is not available #903
+  * Add option 'tag-labels' to river/tags #980
+  * Add "tooltip-format" to temperature module #891
+  * Support format-{state} for cpu/disk/memory #881
+  * Allow customization of battery module tooltip #830
+  * Add an option to use battery design capacity #964
+  * Add power formatter to battery module #996
+  * Add a way to configure auto_back_and_forth on Sway workspaces #1014
+  * Terminate custom module scripts on exit #1032
+  * Add length limits for MPD module tags #1002
+  * Add style for battery state "plugged" #1056
+  * Add default styling for disk module #1051
+  * Add cpu min/max/avg frequencies #1037
+  Changed:
+  * Fix Sway #waybar.solo CSS rule applying on split #946
+  * Fix for group module selectors when bar is vertical #959
+  * Added waybar_output.identifier support. #956
+  * Fixing logic in getIcon #965
+  * Fix issues in wlr/taskbar #969
+  * Fix duplicate bars on xdg_output property changes #992
+  * Update waybar-bluetooth.5.scd #1003
+  * Improved wlr/taskbar icon search. #1006
+  * [calendar] CJK locale formatting #1007
+  * [wlr/taskbar] More icon search improvements. #1011
+  * [wlr/taskbar] Fix unhandled exception crash when icon name is a path. #1018
+  * [wlr/taskbar] Check StartupWMClass #1021
+  * Disable Idle Inhibitor module if unsupported #1026
+  * Rfkill code refactoring #1015
+  * Configure systemd.service file to allow reloading #1036
+  * fix: schedule output destruction on idle callback #1035
+  * Fix: CPU load values #1050
+  * meson.build: add missing waybar-sway-language manpage #1052
+  * Use the correct battery status when multiple batteries are present #1061
+- Remove 1015-rfkill_code_refactoring.patch: upstreamed
+
+-------------------------------------------------------------------
 Sun Mar 14 17:16:27 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add 1015-rfkill_code_refactoring.patch to avoid
