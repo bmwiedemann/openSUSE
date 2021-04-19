@@ -68,4 +68,37 @@ It's very actively maintained upstream, so I see no reason why it shouldn't be p
   * Feature: Import Ledger</comment>
     <requestid>853800</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>249131f255372cc2747e3758d234b8b8</srcmd5>
+    <version>2.25.0</version>
+    <time>1618859178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.25.0
+  * Correction: Please make qtwebengine dependency optional
+    (kde#429356)
+  * Correction: % increase calculation in dashboard account widgets
+    (kde#430535)
+  * Correction: changing filter criteria while grouping Operations
+    by Category expands a different set of categories (kde#430242)
+  * Correction: Skrooge crashes when copying tables in categories
+    with subcategories unfold (kde#432423)
+  * Correction: Currency download from Yahoo uses &quot;low&quot; instead of
+    &quot;close&quot; (kde#433514)
+  * Correction: Sub operations view's tab confusingly looks
+    identical to just &quot;Operations&quot; (kde#435330)
+  * Correction: Bookmarks are not created with tab name and icon
+    (kde#435847)
+  * Correction: strange appearance of Skrooge bank icon pop-up menu
+    if no scrollbar (kde#422273)
+  * Correction: Column combo box not visible in report in dashboard
+  * Feature: opt-out accounts from the &quot;accounts&quot; widget in the
+    Dashboard (see
+    https://forum.kde.org/viewtopic.php?f=210&amp;t=165735)
+  * Feature: New dashboard layouts: by columns and with layouts in
+    layouts
+
+  * Feature: In monthly reports, the templates are now able to
+    filter on the selected period</comment>
+    <requestid>886634</requestid>
+  </revision>
 </revisionlist>

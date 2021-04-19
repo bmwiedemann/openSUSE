@@ -1,7 +1,7 @@
 #
 # spec file for package skrooge
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2008 - 2012 Sascha Manns <saigkill@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %bcond_with qtwebengine
 %endif
 Name:           skrooge
-Version:        2.24.6
+Version:        2.25.0
 Release:        0
 Summary:        A Personal Finance Management Tool
 License:        GPL-3.0-only
@@ -98,7 +98,7 @@ analyze expenses.
 
 %build
 %if %{with qtwebengine}
-%cmake_kf5 -- -DSKG_WEBENGINE=ON
+%cmake_kf5 -- -DSKG_WEBENGINE=ON -DSKG_WEBKIT=OFF
 %else
 %cmake_kf5
 %endif
@@ -114,6 +114,9 @@ analyze expenses.
 
 %{kf5_post_install}
 
+# E: env-script-interpreter
+sed -i 's#env python3#python3#' %{buildroot}%{_kf5_sharedir}/skrooge/*.py
+
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -121,8 +124,6 @@ analyze expenses.
 %license COPYING
 %doc CHANGELOG README AUTHORS
 %doc %lang(en) %{_kf5_htmldir}/en/skrooge/
-%config %{_sysconfdir}/xdg/skrooge_*.knsrc
-%dir %{_kf5_appstreamdir}
 %dir %{_kf5_iconsdir}/breeze
 %dir %{_kf5_iconsdir}/breeze-dark
 %dir %{_kf5_iconsdir}/breeze-dark/actions
@@ -136,6 +137,7 @@ analyze expenses.
 %dir %{_kf5_sharedir}/config.kcfg
 %{_kf5_appstreamdir}/org.kde.%{name}.appdata.xml
 %{_kf5_bindir}/%{name}*
+%{_kf5_configdir}/skrooge_*.knsrc
 %{_kf5_iconsdir}/breeze*/actions/22/*.svgz
 %{_kf5_iconsdir}/hicolor/*/*/%{name}*.svgz
 %{_kf5_iconsdir}/hicolor/*/*/skg*.svgz

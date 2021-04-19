@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Apr 18 20:00:15 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 2.25.0
+  * Correction: Please make qtwebengine dependency optional
+    (kde#429356)
+  * Correction: % increase calculation in dashboard account widgets
+    (kde#430535)
+  * Correction: changing filter criteria while grouping Operations
+    by Category expands a different set of categories (kde#430242)
+  * Correction: Skrooge crashes when copying tables in categories
+    with subcategories unfold (kde#432423)
+  * Correction: Currency download from Yahoo uses "low" instead of
+    "close" (kde#433514)
+  * Correction: Sub operations view's tab confusingly looks
+    identical to just "Operations" (kde#435330)
+  * Correction: Bookmarks are not created with tab name and icon
+    (kde#435847)
+  * Correction: strange appearance of Skrooge bank icon pop-up menu
+    if no scrollbar (kde#422273)
+  * Correction: Column combo box not visible in report in dashboard
+  * Feature: opt-out accounts from the "accounts" widget in the
+    Dashboard (see
+    https://forum.kde.org/viewtopic.php?f=210&t=165735)
+  * Feature: New dashboard layouts: by columns and with layouts in
+    layouts
+
+-------------------------------------------------------------------
 Tue Dec  8 13:28:28 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.24.6. Bugs fixed:
@@ -10,6 +37,8 @@ Tue Dec  8 13:28:28 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
     assist with import
   * Correction: Ledger-cli export doesn't export negative
     values in the correct format
+  * Feature: In monthly reports, the templates are now able to
+    filter on the selected period
   * Feature: Import Ledger
 
 -------------------------------------------------------------------
