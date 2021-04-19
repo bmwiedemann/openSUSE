@@ -19,7 +19,7 @@
 # Tests require internet connection
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rt
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Python interface to Request Tracker API
 License:        GPL-3.0-only
@@ -50,7 +50,7 @@ Python implementation of Request Tracker (a ticketing system) REST API described
 
 %files %{python_files}
 %doc AUTHORS CHANGES README.rst
-%license COPYING 
+%license COPYING
 %{python_sitelib}/*
 
 %changelog

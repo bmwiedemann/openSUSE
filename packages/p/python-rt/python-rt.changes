@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  8 11:38:15 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.1.1:
+ - Fix support for custom field values containing newlines in API responses (#10, #11)
+   (the previous change in v1.0.11 fixed API requests) (#64)
+
+-------------------------------------------------------------------
 Thu Feb 25 19:44:00 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 2.1.0:
