@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 19 12:26:15 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210419.7c7526b:
+  * Add --skip-interestingness-test-check (-s) argument.
+
+-------------------------------------------------------------------
 Mon Apr 12 10:10:05 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.3.0+git.20210412.66ee8c1:

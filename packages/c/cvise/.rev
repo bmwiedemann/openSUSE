@@ -541,4 +541,13 @@
   * Class-to-struct pass: fix forward declarations.</comment>
     <requestid>884625</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>d2c8bf75705819e3303ae204e9e62a04</srcmd5>
+    <version>2.3.0+git.20210419.7c7526b</version>
+    <time>1618859191</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0+git.20210419.7c7526b:
+  * Add --skip-interestingness-test-check (-s) argument.</comment>
+    <requestid>886690</requestid>
+  </revision>
 </revisionlist>
