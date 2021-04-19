@@ -1,7 +1,7 @@
 #
 # spec file for package blanket
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           blanket
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        Listen to different sounds
 License:        GPL-3.0-or-later
 Group:          Amusements/Toys/Other
 URL:            https://github.com/rafaelmardojai/blanket
-Source:         https://github.com/rafaelmardojai/blanket/archive/0.3.1.tar.gz
+Source:         https://github.com/rafaelmardojai/blanket/archive/%{version}.tar.gz
 BuildRequires:  appstream-glib-devel
 BuildRequires:  libhandy-devel
 BuildRequires:  meson
