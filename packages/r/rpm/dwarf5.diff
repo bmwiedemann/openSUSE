@@ -5,11 +5,9 @@ a834fccf3c94f78ad6a1b35ae352b1ede183dde4
 86408cd826c32229817071bd008d9856cda4aca5
 0d1003bc723ba30bfe325bb51aeafe7dbfed6a5c
 
-diff --git a/tools/debugedit.c b/tools/debugedit.c
-index 6bea88551..b0849efd8 100644
---- a/tools/debugedit.c
-+++ b/tools/debugedit.c
-@@ -103,6 +103,8 @@ static bool need_string_replacement = false;
+--- ./tools/debugedit.c.orig	2021-03-30 09:34:25.206392109 +0000
++++ ./tools/debugedit.c	2021-03-30 09:34:40.186365656 +0000
+@@ -103,6 +103,8 @@ static bool need_string_replacement = fa
  /* Whether we need to do any updates of the string indexes (DW_FORM_strp)
     in debug_info for string indexes. */
  static bool need_strp_update = false;
@@ -106,7 +104,7 @@ index 6bea88551..b0849efd8 100644
      { NULL, NULL, NULL, 0, 0, 0 }
    };
  
-@@ -542,10 +555,11 @@ setup_relbuf (DSO *dso, debug_section *sec, int *reltype)
+@@ -542,10 +555,11 @@ setup_relbuf (DSO *dso, debug_section *s
        /* Relocations against section symbols are uninteresting in REL.  */
        if (dso->shdr[i].sh_type == SHT_REL && sym.st_value == 0)
  	continue;
@@ -152,7 +150,7 @@ index 6bea88551..b0849efd8 100644
  
  	  t->attr[t->nattr].attr = attr;
  	  t->attr[t->nattr++].form = form;
-@@ -1022,17 +1053,20 @@ string_find_entry (struct strings *strings, size_t old_idx)
+@@ -1022,17 +1053,20 @@ string_find_entry (struct strings *strin
     a replacement file string has been recorded for it, otherwise
     returns false.  */
  static bool
@@ -177,7 +175,7 @@ index 6bea88551..b0849efd8 100644
        const char *file = skip_dir_prefix (old_str, base_dir);
        if (file == NULL)
  	{
-@@ -1076,15 +1110,18 @@ record_file_string_entry_idx (struct strings *strings, size_t old_idx)
+@@ -1076,15 +1110,18 @@ record_file_string_entry_idx (struct str
     base_dir with dest_dir, just records the existing string associated
     with the index. */
  static void
@@ -200,7 +198,7 @@ index 6bea88551..b0849efd8 100644
        Strent *strent = strtab_add_len (strings->str_tab,
  				       str, strlen (str) + 1);
        if (strent == NULL)
-@@ -1217,13 +1254,28 @@ get_line_table (DSO *dso, size_t off, struct line_table **table)
+@@ -1217,13 +1254,28 @@ get_line_table (DSO *dso, size_t off, st
  
    /* version */
    t->version = read_16 (ptr);
@@ -434,7 +432,7 @@ index 6bea88551..b0849efd8 100644
  
    /* dir table: */
    value = 1;
-@@ -1622,6 +1787,296 @@ read_dwarf2_line (DSO *dso, uint32_t off, char *comp_dir)
+@@ -1622,6 +1787,296 @@ read_dwarf2_line (DSO *dso, uint32_t off
        read_uleb128 (ptr);
      }
  
@@ -731,7 +729,7 @@ index 6bea88551..b0849efd8 100644
    dso->lines.debug_lines_len += 4 + table->unit_length + table->size_diff;
    return table->replace_dirs || table->replace_files;
  }
-@@ -1639,6 +2094,40 @@ find_new_list_offs (struct debug_lines *lines, size_t idx)
+@@ -1639,6 +2094,40 @@ find_new_list_offs (struct debug_lines *
    return table->new_idx;
  }
  
@@ -772,7 +770,7 @@ index 6bea88551..b0849efd8 100644
  /* This scans the attributes of one DIE described by the given abbrev_tag.
     PTR points to the data in the debug_info. It will be advanced till all
     abbrev data is consumed. In phase zero data is collected, in phase one
-@@ -1657,7 +2146,6 @@ edit_attributes (DSO *dso, unsigned char *ptr, struct abbrev_tag *t, int phase)
+@@ -1657,7 +2146,6 @@ edit_attributes (DSO *dso, unsigned char
    for (i = 0; i < t->nattr; ++i)
      {
        uint32_t form = t->attr[i].form;
@@ -780,7 +778,7 @@ index 6bea88551..b0849efd8 100644
        while (1)
  	{
  	  /* Whether we already handled a string as file for this
-@@ -1743,38 +2231,24 @@ edit_attributes (DSO *dso, unsigned char *ptr, struct abbrev_tag *t, int phase)
+@@ -1743,38 +2231,24 @@ edit_attributes (DSO *dso, unsigned char
  			}
  		    }
  		}
@@ -833,7 +831,7 @@ index 6bea88551..b0849efd8 100644
  	      /* DW_AT_name is the primary file for this compile
  		 unit. If starting with / it is a full path name.
  		 Note that we don't handle DW_FORM_string in this
-@@ -1784,11 +2258,14 @@ edit_attributes (DSO *dso, unsigned char *ptr, struct abbrev_tag *t, int phase)
+@@ -1784,11 +2258,14 @@ edit_attributes (DSO *dso, unsigned char
  	      /* In phase zero we will look for a comp_dir to use.  */
  	      if (phase == 0)
  		{
@@ -852,7 +850,7 @@ index 6bea88551..b0849efd8 100644
  		  if (*name == '/' && comp_dir == NULL)
  		    {
  		      char *enddir = strrchr (name, '/');
-@@ -1809,107 +2286,37 @@ edit_attributes (DSO *dso, unsigned char *ptr, struct abbrev_tag *t, int phase)
+@@ -1809,107 +2286,37 @@ edit_attributes (DSO *dso, unsigned char
  		 pass (1) stores it (the new index). */
  	      if (dest_dir && phase == 0)
  		{
@@ -931,13 +929,10 @@ index 6bea88551..b0849efd8 100644
 -		  do_write_32_relocated (ptr, new_idx);
 -		}
 -	      ptr += 4;
-+	      edit_strp (dso, false /* line_strp */, ptr, phase, handled_strp);
- 	      break;
+-	      break;
 -	    case DW_FORM_string:
 -	      ptr = (unsigned char *) strchr ((char *)ptr, '\0') + 1;
-+	    case DW_FORM_line_strp:
-+	      edit_strp (dso, true /* line_strp */, ptr, phase, handled_strp);
- 	      break;
+-	      break;
 -	    case DW_FORM_indirect:
 -	      form = read_uleb128 (ptr);
 -	      continue;
@@ -947,11 +942,14 @@ index 6bea88551..b0849efd8 100644
 -	    case DW_FORM_block2:
 -	      len = read_16 (ptr);
 -	      form = DW_FORM_block1;
--	      break;
++	      edit_strp (dso, false /* line_strp */, ptr, phase, handled_strp);
+ 	      break;
 -	    case DW_FORM_block4:
 -	      len = read_32 (ptr);
 -	      form = DW_FORM_block1;
--	      break;
++	    case DW_FORM_line_strp:
++	      edit_strp (dso, true /* line_strp */, ptr, phase, handled_strp);
+ 	      break;
 -	    case DW_FORM_block:
 -	    case DW_FORM_exprloc:
 -	      len = read_uleb128 (ptr);
@@ -978,11 +976,10 @@ index 6bea88551..b0849efd8 100644
  	  break;
  	}
      }
-@@ -1964,6 +2371,163 @@ line_rel_cmp (const void *a, const void *b)
-   return 0;
+@@ -1965,6 +2372,163 @@ line_rel_cmp (const void *a, const void
  }
  
-+static int
+ static int
 +edit_info (DSO *dso, int phase, struct debug_section *sec)
 +{
 +  unsigned char *ptr, *endcu, *endsec;
@@ -1139,9 +1136,10 @@ index 6bea88551..b0849efd8 100644
 +  strings->str_buf = strdata->d_buf;
 +}
 +
- static int
++static int
  edit_dwarf2 (DSO *dso)
  {
+   Elf_Data *data;
 @@ -1995,7 +2559,7 @@ edit_dwarf2 (DSO *dso)
  		  struct debug_section *debug_sec = &debug_sections[j];
  		  if (debug_sections[j].data)
@@ -1221,7 +1219,18 @@ index 6bea88551..b0849efd8 100644
      }
  
 -  if (debug_sections[DEBUG_INFO].data != NULL)
--    {
++  if (debug_sections[DEBUG_INFO].data == NULL)
++    return 0;
++
++  unsigned char *ptr, *endsec;
++  int phase;
++  bool info_rel_updated = false;
++  bool types_rel_updated = false;
++  bool macro_rel_updated = false;
++  bool line_rel_updated = false;
++
++  for (phase = 0; phase < 2; phase++)
+     {
 -      unsigned char *ptr, *endcu, *endsec;
 -      uint32_t value;
 -      htab_t abbrev;
@@ -1229,8 +1238,13 @@ index 6bea88551..b0849efd8 100644
 -      int phase;
 -      bool info_rel_updated = false;
 -      bool macro_rel_updated = false;
-+  if (debug_sections[DEBUG_INFO].data == NULL)
-+    return 0;
++      /* If we don't need to update anyhing, skip phase 1. */
++      if (phase == 1
++	  && !need_strp_update
++	  && !need_line_strp_update
++	  && !need_string_replacement
++	  && !need_stmt_update)
++	break;
  
 -      for (phase = 0; phase < 2; phase++)
 -	{
@@ -1240,12 +1254,9 @@ index 6bea88551..b0849efd8 100644
 -	      && !need_string_replacement
 -	      && !need_stmt_update)
 -	    break;
-+  unsigned char *ptr, *endsec;
-+  int phase;
-+  bool info_rel_updated = false;
-+  bool types_rel_updated = false;
-+  bool macro_rel_updated = false;
-+  bool line_rel_updated = false;
++      rel_updated = false;
++      if (edit_info (dso, phase, &debug_sections[DEBUG_INFO]))
++	return 1;
  
 -	  ptr = debug_sections[DEBUG_INFO].data;
 -	  setup_relbuf(dso, &debug_sections[DEBUG_INFO], &reltype);
@@ -1259,41 +1270,15 @@ index 6bea88551..b0849efd8 100644
 -			 dso->filename);
 -		  return 1;
 -		}
-+  for (phase = 0; phase < 2; phase++)
-+    {
-+      /* If we don't need to update anyhing, skip phase 1. */
-+      if (phase == 1
-+	  && !need_strp_update
-+	  && !need_line_strp_update
-+	  && !need_string_replacement
-+	  && !need_stmt_update)
-+	break;
++      /* Remember whether any .debug_info relocations might need
++	 to be updated. */
++      info_rel_updated = rel_updated;
  
 -	      endcu = ptr + 4;
 -	      endcu += read_32 (ptr);
 -	      if (endcu == ptr + 0xffffffff)
 -		{
 -		  error (0, 0, "%s: 64-bit DWARF not supported", dso->filename);
--		  return 1;
--		}
-+      rel_updated = false;
-+      if (edit_info (dso, phase, &debug_sections[DEBUG_INFO]))
-+	return 1;
- 
--	      if (endcu > endsec)
--		{
--		  error (0, 0, "%s: .debug_info too small", dso->filename);
--		  return 1;
--		}
-+      /* Remember whether any .debug_info relocations might need
-+	 to be updated. */
-+      info_rel_updated = rel_updated;
- 
--	      cu_version = read_16 (ptr);
--	      if (cu_version != 2 && cu_version != 3 && cu_version != 4)
--		{
--		  error (0, 0, "%s: DWARF version %d unhandled", dso->filename,
--			 cu_version);
 -		  return 1;
 -		}
 +      rel_updated = false;
@@ -1305,20 +1290,22 @@ index 6bea88551..b0849efd8 100644
 +	  types_sec = types_sec->next;
 +	}
  
--	      value = read_32_relocated (ptr);
--	      if (value >= debug_sections[DEBUG_ABBREV].size)
+-	      if (endcu > endsec)
 -		{
--		  if (debug_sections[DEBUG_ABBREV].data == NULL)
--		    error (0, 0, "%s: .debug_abbrev not present", dso->filename);
--		  else
--		    error (0, 0, "%s: DWARF CU abbrev offset too large",
--			   dso->filename);
+-		  error (0, 0, "%s: .debug_info too small", dso->filename);
 -		  return 1;
 -		}
 +      /* Remember whether any .debug_types relocations might need
 +	 to be updated. */
 +      types_rel_updated = rel_updated;
-+
+ 
+-	      cu_version = read_16 (ptr);
+-	      if (cu_version != 2 && cu_version != 3 && cu_version != 4)
+-		{
+-		  error (0, 0, "%s: DWARF version %d unhandled", dso->filename,
+-			 cu_version);
+-		  return 1;
+-		}
 +      /* We might have to recalculate/rewrite the debug_line
 +	 section.  We need to do that before going into phase one
 +	 so we have all new offsets.  We do this separately from
@@ -1329,7 +1316,16 @@ index 6bea88551..b0849efd8 100644
 +	{
 +	  edit_dwarf2_line (dso);
  
--	      if (ptr_size == 0)
+-	      value = read_32_relocated (ptr);
+-	      if (value >= debug_sections[DEBUG_ABBREV].size)
+-		{
+-		  if (debug_sections[DEBUG_ABBREV].data == NULL)
+-		    error (0, 0, "%s: .debug_abbrev not present", dso->filename);
+-		  else
+-		    error (0, 0, "%s: DWARF CU abbrev offset too large",
+-			   dso->filename);
+-		  return 1;
+-		}
 +	  /* The line table programs will be moved
 +	     forward/backwards a bit in the new data. Update the
 +	     debug_line relocations to the new offsets. */
@@ -1345,7 +1341,8 @@ index 6bea88551..b0849efd8 100644
 +	      if (rbuf == NULL)
 +		error (1, errno, "%s: Could not allocate line relocations",
 +		       dso->filename);
-+
+ 
+-	      if (ptr_size == 0)
 +	      /* Sort them by offset into section. */
 +	      for (size_t i = 0; i < rels; i++)
  		{
@@ -1437,14 +1434,13 @@ index 6bea88551..b0849efd8 100644
 -		  if (rbuf == NULL)
 -		    error (1, errno, "%s: Could not allocate line relocations",
 -			   dso->filename);
--
--		  /* Sort them by offset into section. */
--		  for (size_t i = 0; i < rels; i++)
 +		  /* These relocations only happen in ET_REL files
 +		     and are section offsets. */
 +		  GElf_Addr r_offset;
 +		  size_t ndx = rbuf[i].ndx;
-+
+ 
+-		  /* Sort them by offset into section. */
+-		  for (size_t i = 0; i < rels; i++)
 +		  GElf_Rel rel;
 +		  GElf_Rela rela;
 +		  if (rtype == SHT_RELA)
@@ -1627,12 +1623,22 @@ index 6bea88551..b0849efd8 100644
 -
 -			  offset_len = (macro_flags & 0x01) ? 8 : 4;
 -			  line_offset = (macro_flags & 0x02) ? 1 : 0;
--
++		      macro_version = read_16 (ptr);
++		      macro_flags = read_8 (ptr);
++		      if (macro_version < 4 || macro_version > 5)
++			error (1, 0, "unhandled .debug_macro version: %d",
++			       macro_version);
++		      if ((macro_flags & ~2) != 0)
++			error (1, 0, "unhandled .debug_macro flags: 0x%x",
++			       macro_flags);
+ 
 -			  if (offset_len != 4)
 -			    error (0, 1,
 -				   "Cannot handle 8 byte macro offsets: %s",
 -				   dso->filename);
--
++		      offset_len = (macro_flags & 0x01) ? 8 : 4;
++		      line_offset = (macro_flags & 0x02) ? 1 : 0;
+ 
 -			  /* Update the line_offset if it is there.  */
 -			  if (line_offset)
 -			    {
@@ -1648,18 +1654,6 @@ index 6bea88551..b0849efd8 100644
 -				}
 -			    }
 -			}
-+		      macro_version = read_16 (ptr);
-+		      macro_flags = read_8 (ptr);
-+		      if (macro_version < 4 || macro_version > 5)
-+			error (1, 0, "unhandled .debug_macro version: %d",
-+			       macro_version);
-+		      if ((macro_flags & ~2) != 0)
-+			error (1, 0, "unhandled .debug_macro flags: 0x%x",
-+			       macro_flags);
-+
-+		      offset_len = (macro_flags & 0x01) ? 8 : 4;
-+		      line_offset = (macro_flags & 0x02) ? 1 : 0;
-+
 +		      if (offset_len != 4)
 +			error (0, 1,
 +			       "Cannot handle 8 byte macro offsets: %s",
@@ -1772,24 +1766,44 @@ index 6bea88551..b0849efd8 100644
 -	      Elf_Data *strdata = debug_sections[DEBUG_STR].elf_data;
 -	      int strndx = debug_sections[DEBUG_STR].sec;
 -	      Elf_Scn *strscn = dso->scn[strndx];
--
++	      if (rel_updated)
++		macro_rel_updated = true;
++	      macro_sec = macro_sec->next;
++	    }
++	}
+ 
 -	      /* Out with the old. */
 -	      strdata->d_size = 0;
 -	      /* In with the new. */
 -	      strdata = elf_newdata (strscn);
--
+ 
 -	      /* We really should check whether we had enough memory,
 -		 but the old ebl version will just abort on out of
 -		 memory... */
 -	      strtab_finalize (strtab, strdata);
 -	      debug_sections[DEBUG_STR].size = strdata->d_size;
 -	      dso->strings.str_buf = strdata->d_buf;
-+	      if (rel_updated)
-+		macro_rel_updated = true;
-+	      macro_sec = macro_sec->next;
- 	    }
--
+-	    }
++      /* Now handle all the DWARF5 line tables, they contain strp
++	 and/or line_strp entries that need to be registered/rewritten.  */
++      setup_relbuf(dso, &debug_sections[DEBUG_LINE], &reltype);
++      rel_updated = false;
+ 
++      /* edit_dwarf2_line will have set this up, unless there are no
++	 moved/resized (DWARF4) lines. In which case we can just use
++	 the original section data. new_idx will have been setup
++	 correctly, even if it is the same as old_idx.  */
++      unsigned char *line_buf = (unsigned char *)dso->lines.line_buf;
++      if (line_buf == NULL)
++	line_buf = debug_sections[DEBUG_LINE].data;
++      for (int ldx = 0; ldx < dso->lines.used; ldx++)
++	{
++	  struct line_table *t = &dso->lines.table[ldx];
++	  if (t->version >= 5)
++	    read_dwarf5_line (dso, line_buf + t->new_idx, t, phase);
  	}
++      if (rel_updated)
++	line_rel_updated = true;
  
 -      /* After phase 1 we might have rewritten the debug_info with
 -	 new strp, strings and/or linep offsets.  */
@@ -1799,38 +1813,6 @@ index 6bea88551..b0849efd8 100644
 -	dirty_section (DEBUG_MACRO);
 -      if (need_stmt_update)
 -	dirty_section (DEBUG_LINE);
- 
--      /* Update any relocations addends we might have touched. */
--      if (info_rel_updated)
--	update_rela_data (dso, &debug_sections[DEBUG_INFO]);
-+      /* Now handle all the DWARF5 line tables, they contain strp
-+	 and/or line_strp entries that need to be registered/rewritten.  */
-+      setup_relbuf(dso, &debug_sections[DEBUG_LINE], &reltype);
-+      rel_updated = false;
- 
--      if (macro_rel_updated)
-+      /* edit_dwarf2_line will have set this up, unless there are no
-+	 moved/resized (DWARF4) lines. In which case we can just use
-+	 the original section data. new_idx will have been setup
-+	 correctly, even if it is the same as old_idx.  */
-+      unsigned char *line_buf = (unsigned char *)dso->lines.line_buf;
-+      if (line_buf == NULL)
-+	line_buf = debug_sections[DEBUG_LINE].data;
-+      for (int ldx = 0; ldx < dso->lines.used; ldx++)
- 	{
--	  struct debug_section *macro_sec = &debug_sections[DEBUG_MACRO];
--	  while (macro_sec != NULL)
--	    {
--	      update_rela_data (dso, macro_sec);
--	      macro_sec = macro_sec->next;
--	    }
-+	  struct line_table *t = &dso->lines.table[ldx];
-+	  if (t->version >= 5)
-+	    read_dwarf5_line (dso, line_buf + t->new_idx, t, phase);
- 	}
-+      if (rel_updated)
-+	line_rel_updated = true;
-+
 +      /* Same for the debug_str and debug_line_str sections.
 +	 Make sure everything is in place for phase 1 updating of debug_info
 +	 references. */
@@ -1840,8 +1822,11 @@ index 6bea88551..b0849efd8 100644
 +      if (phase == 0 && need_line_strp_update)
 +	edit_dwarf2_any_str (dso, &dso->debug_line_str,
 +			     &debug_sections[DEBUG_LINE_STR]);
-     }
++    }
  
+-      /* Update any relocations addends we might have touched. */
+-      if (info_rel_updated)
+-	update_rela_data (dso, &debug_sections[DEBUG_INFO]);
 +  /* After phase 1 we might have rewritten the debug_info with
 +     new strp, strings and/or linep offsets.  */
 +  if (need_strp_update || need_line_strp_update
@@ -1854,7 +1839,8 @@ index 6bea88551..b0849efd8 100644
 +    dirty_section (DEBUG_MACRO);
 +  if (need_stmt_update || need_line_strp_update)
 +    dirty_section (DEBUG_LINE);
-+
+ 
+-      if (macro_rel_updated)
 +  /* Update any relocations addends we might have touched. */
 +  if (info_rel_updated)
 +    update_rela_data (dso, &debug_sections[DEBUG_INFO]);
@@ -1862,12 +1848,18 @@ index 6bea88551..b0849efd8 100644
 +    {
 +      struct debug_section *types_sec = &debug_sections[DEBUG_TYPES];
 +      while (types_sec != NULL)
-+	{
+ 	{
+-	  struct debug_section *macro_sec = &debug_sections[DEBUG_MACRO];
+-	  while (macro_sec != NULL)
+-	    {
+-	      update_rela_data (dso, macro_sec);
+-	      macro_sec = macro_sec->next;
+-	    }
 +	  update_rela_data (dso, types_sec);
 +	  types_sec = types_sec->next;
-+	}
-+    }
-+
+ 	}
+     }
+ 
 +  if (macro_rel_updated)
 +    {
 +      struct debug_section *macro_sec = &debug_sections[DEBUG_MACRO];
@@ -1904,7 +1896,7 @@ index 6bea88551..b0849efd8 100644
        destroy_lines (&dso->lines);
        free (dso);
      }
-@@ -2863,7 +3378,9 @@ main (int argc, char *argv[])
+@@ -2862,7 +3377,9 @@ main (int argc, char *argv[])
       in elfutils before 0.169 we will have to update and write out all
       section data if any data has changed (when ELF_F_LAYOUT was
       set). https://sourceware.org/bugzilla/show_bug.cgi?id=21199 */
@@ -1915,7 +1907,7 @@ index 6bea88551..b0849efd8 100644
  
  #if !_ELFUTILS_PREREQ (0, 169)
    /* string replacements or build_id updates don't change section size. */
-@@ -2935,10 +3452,12 @@ main (int argc, char *argv[])
+@@ -2934,10 +3451,12 @@ main (int argc, char *argv[])
  	      GElf_Xword sec_size = shdr->sh_size;
  
  	      /* We might have changed the size (and content) of the
@@ -1929,7 +1921,7 @@ index 6bea88551..b0849efd8 100644
  	      if (secnum == debug_sections[DEBUG_LINE].sec)
  		sec_size = debug_sections[DEBUG_LINE].size;
  
-@@ -3008,7 +3527,8 @@ main (int argc, char *argv[])
+@@ -3007,7 +3526,8 @@ main (int argc, char *argv[])
    chmod (file, stat_buf.st_mode);
  
    free ((char *) dso->filename);
@@ -1939,7 +1931,7 @@ index 6bea88551..b0849efd8 100644
    destroy_lines (&dso->lines);
    free (dso);
  
-@@ -3023,6 +3543,17 @@ main (int argc, char *argv[])
+@@ -3022,6 +3542,17 @@ main (int argc, char *argv[])
        macro_sec = next;
      }
  

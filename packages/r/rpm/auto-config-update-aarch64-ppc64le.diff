@@ -1,6 +1,8 @@
---- ./build/parseSpec.c.orig	2019-10-02 12:38:51.836127743 +0000
-+++ ./build/parseSpec.c	2019-10-02 12:52:33.818447657 +0000
-@@ -926,7 +926,22 @@ static rpmSpec parseSpec(const char *spe
+Index: build/parseSpec.c
+===================================================================
+--- build/parseSpec.c.orig
++++ build/parseSpec.c
+@@ -942,7 +942,30 @@ static rpmSpec parseSpec(const char *spe
  					  &(spec->buildrequires));
  	    break;
  	case PART_BUILD:
@@ -12,11 +14,19 @@
 +	    }
 +	    spec->build = newStringBuf();
 +	    appendLineStringBuf(spec->build,
-+		"ref=/usr/lib/rpm; testarch=$(uname -m)\n"
++		"ref=/usr/lib/rpm\n"
++		"mints=0\n"
++		"case $(uname -m) in\n"
++		"    aarch64) mints=20120610;;\n"
++		"    ppc64le) mints=20130610;;\n"
++		"    riscv64) mints=20160911;;\n"
++		"esac\n"
 +		"for s in guess sub; do\n"
 +		"    for c in $(find -maxdepth 8 -name \"config.$s\"); do\n"
 +		"         grep -q config-patches@ $c || continue\n"
-+		"         grep -q \"$testarch[-: ]\" $c || install -m 755 $ref/config.$s $c\n"
++		"         timestamp=$(sed -n \"/^timestamp=/{s///;s/[-'\\\"]//g;p;q;}\" $c)\n"
++		"         test -n \"$timestamp\" || continue\n"
++		"         test $timestamp -ge $mints || install -m 755 $ref/config.$s $c\n"
 +		"     done\n"
 +		"done\n"
 +	    );

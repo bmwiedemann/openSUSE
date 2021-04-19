@@ -59,7 +59,7 @@ Requires:       /usr/bin/awk
 Summary:        The RPM Package Manager
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        4.16.0
+Version:        4.16.1.3
 Release:        0
 URL:            https://rpm.org/
 #Git-Clone:     https://github.com/rpm-software-management/rpm
@@ -125,10 +125,9 @@ Patch109:       pythondistdeps.diff
 Patch117:       findsupplements.diff
 Patch122:       db_conversion.diff
 Patch123:       nextiteratorheaderblob.diff
-Patch127:       finddebuginfo-check-res-file.patch
-Patch128:       empty_dbbackend.diff
 Patch129:       ndbglue.diff
 Patch130:       dwarf5.diff
+Patch131:       posttrans.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -171,6 +170,7 @@ need an intimate knowledge of RPM packages in order to function.
 %package build
 Summary:        Tools and Scripts to create rpm packages
 Group:          System/Packages
+Requires:       librpmbuild%{librpmsover} = %{version}
 Requires:       rpm = %{version}
 Provides:       rpm:%_bindir/rpmbuild
 Provides:       rpmbuild
@@ -255,8 +255,7 @@ cp build-aux/config.guess build-aux/config.sub db/dist/
 %patch                   -P 93 -P 94                         -P 99
 %patch -P 100        -P 102 -P 103
 %patch -P 109                                           -P 117
-%patch -P 122 -P 123 -P 127 -P 128 -P 129
-%patch130 -p1
+%patch -P 122 -P 123 -P 129 -P 130 -P 131
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464
