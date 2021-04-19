@@ -145,4 +145,31 @@
     <comment></comment>
     <requestid>739459</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>017761cd956868f48a5ee6fbb5b5339f</srcmd5>
+    <version>1.8.0</version>
+    <time>1618859179</time>
+    <user>dimstar_suse</user>
+    <comment> - Fix previous changelog entry
+
+- Update to 1.8.0
+  * DVB-T support
+  * Increase program table size from 16 to 128
+  * Fix crash if no DVB service has Teletext
+  * Detect HEVC services for all regions (this fixes HEVC in Germany)
+  * Fix 100% cpu use when there is no vbi device
+  * Add zvbi support
+  * Add support for iso8859-7 (greek)
+  * Add support for KOI8-R encoding
+  * Support libpng-1.6
+- Update to 1.6.3
+  * compilation fix for libpng-1.5, this obsoletes alevt-libpng15.patch
+- Dropped obsoleted alevt-1.6.0-dvb-demux.patch,
+  alevt-happy-abuild.diff and alevt-overflow2.diff 
+  alevt-libpng15.patch
+- Modernized and fixed SPEC file
+  * Added working upstream URL
+- Add use-pkgconfig.patch</comment>
+    <requestid>886640</requestid>
+  </revision>
 </revisionlist>

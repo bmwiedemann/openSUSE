@@ -1,7 +1,7 @@
 #
 # spec file for package alevt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,31 +17,22 @@
 
 
 Name:           alevt
-%{expand:%%global _prefix %(pkg-config --variable prefix x11 || echo /usr/X11R6)}
-%if "%_prefix" == "/usr/X11R6"
-%define _man_dir man
-%else
-%define _man_dir share/man
-%endif
-BuildRequires:  libpng-devel
-BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(x11)
-Url:            http://www.goron.de/~froese/
+Version:        1.8.0
+Release:        0
 Summary:        Teletext and Videotext Decoder for the BTTV Driver
 License:        GPL-2.0-or-later
-Version:        1.6.2
-Release:        0
-Source0:        alevt-%version.tar.bz2
+Group:          Hardware/TV
+URL:            https://gitlab.com/alevt/alevt
+Source0:        %{URL}/-/archive/v%{version}/alevt-v%{version}.tar.bz2
 Source1:        alevt.desktop
-Source2:        alevt.png
-Patch2:         alevt-1.6.0-dvb-demux.patch
-Patch4:         alevt-overflow2.diff
-Patch5:         alevt-happy-abuild.diff
-# PATCH-FIX-UPSTREAM pngtoico-libpng15.patch -- pgajdos@suse.com; build with libpng15; sent today to froese@gmx.de
-# build against libpng14 should not be affected, otherwise please let me know
-Patch6:         alevt-libpng15.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# PATCH-FEATURE-UPSTREAM use-pkgconfig.patch -- https://gitlab.com/alevt/alevt/-/issues/1
+Patch0:         use-pkgconfig.patch
+BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(zvbi-0.2)
 
 %description
 AleVT is a teletext and videotext decoder and browser for the BTTV
@@ -50,34 +41,25 @@ windows, a page cache, regexp searching, a built-in manual, and more.
 There is also a program to get the time from teletext.
 
 %prep
-%setup -q
-%patch2 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%autosetup -p1 -n alevt-v%{version}
+# Enable ZVBI
+sed -i "s|#DEFS+=-DUSE_LIBZVBI|DEFS+=-DUSE_LIBZVBI|" Makefile
 
 %build
-make OPT="$RPM_OPT_FLAGS" %{?_smp_mflags}
+%make_build OPT="%{optflags}"
 
 %install
-echo "Using _prefix=%{_prefix} _man_dir=%{_man_dir}"
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT%{_prefix}/bin $RPM_BUILD_ROOT%{_prefix}/%{_man_dir}/man1
-make rpm-install USR_X11R6=%{_prefix} MAN=%{_man_dir}
-%suse_update_desktop_file -i alevt AudioVideo TV
+%make_install PREFIX="%{_prefix}"
+%suse_update_desktop_file -i alevt
 
 %files
-%defattr(-,root,root)
-%doc CHANGELOG COPYRIGHT README
-%dir %{_prefix}/include/X11/pixmaps
-/usr/share/applications/*.desktop
-/usr/share/pixmaps/alevt.png
-%{_prefix}/bin/alevt
-%{_prefix}/bin/alevt-cap
-%{_prefix}/bin/alevt-date
-%{_prefix}/include/X11/pixmaps/mini-alevt.xpm
-%doc %{_prefix}/%{_man_dir}/man1/alevt-cap.1.gz
-%doc %{_prefix}/%{_man_dir}/man1/alevt-date.1.gz
-%doc %{_prefix}/%{_man_dir}/man1/alevt.1x.gz
+%license COPYRIGHT
+%doc CHANGELOG README.md
+%{_bindir}/alevt
+%{_bindir}/alevt-cap
+%{_bindir}/alevt-date
+%{_datadir}/pixmaps/mini-alevt.xpm
+%{_datadir}/applications/*.desktop
+%{_mandir}/man1/alevt*.1{,x}*
 
 %changelog

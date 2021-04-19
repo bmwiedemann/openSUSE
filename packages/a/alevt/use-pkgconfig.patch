@@ -1,0 +1,39 @@
+diff -Nur alevt-v1.8.0/Makefile new/Makefile
+--- alevt-v1.8.0/Makefile	2019-04-02 22:12:06.000000000 +0200
++++ new/Makefile	2021-04-17 19:40:45.296304899 +0200
+@@ -16,26 +16,30 @@
+ 
+ CFLAGS=$(OPT) -DVERSION=\"$(VER)\" $(DEFS) -I$(USR_X11R6)/include
+ 
++PKGS="x11"
++
+ EXPOBJS=export.o exp-txt.o exp-html.o exp-gfx.o font.o
+ OBJS=main.o ui.o xio.o fdset.o vbi.o cache.o help.o edline.o search.o edit.o misc.o hamm.o lang.o $(EXPOBJS)
+ TOBJS=alevt-date.o vbi.o fdset.o misc.o hamm.o lang.o
+ COBJS=alevt-cap.o vbi.o fdset.o misc.o hamm.o lang.o $(EXPOBJS)
+ 
+ ifneq ($(findstring WITH_PNG,$(DEFS)),)
+-EXPLIBS=-lpng
++PKGS+="libpng"
+ endif
+ ifneq ($(findstring USE_LIBZVBI,$(DEFS)),)
+-ZVBILIB=-lzvbi -lpthread
+-EXPLIBS+=$(ZVBILIB)
++PKGS+="zvbi-0.2"
+ endif
++CFLAGS+=$(shell pkg-config --cflags $(PKGS))
++EXPLIBS=$(shell pkg-config --libs $(PKGS))
++
+ 
+ all: alevt alevt-date alevt-cap alevt.1x alevt-date.1 alevt-cap.1
+ 
+ alevt: $(OBJS)
+-	$(CC) $(OPT) $(OBJS) -o alevt -L$(USR_X11R6)/lib -L$(USR_X11R6)/lib64 -lX11 $(EXPLIBS)
++	$(CC) $(OPT) $(OBJS) -o alevt $(EXPLIBS)
+ 
+ alevt-date: $(TOBJS)
+-	$(CC) $(OPT) $(TOBJS) -o alevt-date $(ZVBILIB)
++	$(CC) $(OPT) $(TOBJS) -o alevt-date $(EXPLIBS)
+ 
+ alevt-cap: $(COBJS)
+ 	$(CC) $(OPT) $(COBJS) -o alevt-cap $(EXPLIBS)
