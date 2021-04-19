@@ -18,13 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sphinx-jsonschema
-Version:        1.16.7
+Version:        1.16.8
 Release:        0
 Summary:        Sphinx extension to display JSON Schema
 License:        GPL-3.0-only
 URL:            https://github.com/lnoor/sphinx-jsonschema
-# Upstream has not released/tagged the current version and the tarball at pypi.org is missing license and tests
-Source:         https://github.com/lnoor/sphinx-jsonschema/archive/ab7262e105845c306604eef60803a76ec8ff955e.tar.gz
+# Tarballs from pypi.org are missing license files
+Source:         https://github.com/lnoor/sphinx-jsonschema/archive/refs/tags/v%{version}.tar.gz#/sphinx-jsonschema-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,7 +46,7 @@ BuildRequires:  %{python_module requests}
 Sphinx extension to display JSON Schema.
 
 %prep
-%setup -q -n sphinx-jsonschema-ab7262e105845c306604eef60803a76ec8ff955e
+%setup -q -n sphinx-jsonschema-%{version}
 
 %build
 %python_build
