@@ -17,7 +17,7 @@
 
 
 Name:           minetest-game
-Version:        5.4.0
+Version:        5.4.1
 Release:        0
 Summary:        Minetest Game
 License:        LGPL-2.1-or-later AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND CC-BY-3.0 AND CC0-1.0
