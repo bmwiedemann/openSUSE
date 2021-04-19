@@ -1,7 +1,7 @@
 #
 # spec file for package dt
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dt
-Version:        18.32
+Version:        23.28
 Release:        0
 Summary:        Generic data test program
 License:        MIT
 Group:          System/Filesystems
-URL:            http://www.scsifaq.org/RMiller_Tools/dt.html
-Source:         http://dl.dropboxusercontent.com/u/32363629/Datatest/dt-source-v%{version}.tar.gz
+URL:            https://github.com/RobinTMiller/dt
+Source:         dt-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM dt-manpage.patch -- https://github.com/RobinTMiller/dt/issues/4
 Patch0:         dt-manpage.patch
-Patch1:         dt-wformat-security.patch
-Patch2:         dt-default-source-define.patch
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(uuid)
 
 %description
 dt is a generic data test program used to verify proper operation of
@@ -37,17 +38,22 @@ statisics and other test parameters before exiting.  Since verification
 of data is performed, dt can be thought of as a generic diagnostic tool.
 
 %prep
-%setup -q -n dt.v%{version}
+%setup -q
 %patch0
-%patch1
-%patch2
 
 %build
-export CFLAGS="%{optflags} -I.. -DAIO -DFIFO -DMMAP -D__linux__ -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -DTHREADS -DSCSI"
+CFLAGS=$(pkg-config --cflags uuid)
+export CFLAGS="%{optflags} $CFLAGS -I.. -DAIO -DFIFO -DMMAP -D__linux__ -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -DTHREADS -DSCSI"
+export LIBS=$(pkg-config --libs uuid)
 export LDFLAGS="-Wl,--no-undefined -Wl,-z,now"
 mkdir build
 cd build
-make %{?_smp_mflags} CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" -f ../Makefile.linux VPATH=.. OS=linux
+make %{?_smp_mflags} \
+  LIBS="$LIBS" \
+  CFLAGS="$CFLAGS" \
+  LDFLAGS="$LDFLAGS" \
+  -f ../Makefile.linux \
+  VPATH=.. OS=linux
 
 %install
 install -d -m 0755 %{buildroot}%{_datadir}/%{name}

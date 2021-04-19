@@ -1,0 +1,14 @@
+<services>
+	<service mode="disabled" name="obs_scm">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/RobinTMiller/dt.git</param>
+		<param name="version">23.28</param>
+		<param name="revision">67756d72982cad8f93475c2d4c5d901fbd50b1f7</param>
+	</service>
+	<service name="tar" mode="buildtime"/>
+	<service name="recompress" mode="buildtime">
+		<param name="file">*.tar</param>
+    	<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="buildtime"/>
+</services>

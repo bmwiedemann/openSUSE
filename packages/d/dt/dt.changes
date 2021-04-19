@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Apr 17 18:46:07 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update SPEC file, added working upstream URL
+  * Use OBS services for source generation
+- Update to 23.28
+  * Add support for forcing FALSE data corruptiong for debugging
+  * When creating log directories in setup_log_directory(),
+    create the last subdirectory (as required). For user specified
+    log directory, expand format control strings prior to creating
+    the directory (logdir= option).
+  * Create master log creation function for use by other tool parsers
+  * Add support for comma separated workload[s]= option
+  * When "trigger=" is specified, no parameters, then remove triggers.
+  * Add array=string option, esp. for external trigger scripts.
+  * Add --trigger= and --workload= parsing for I/O behavior options.
+  * Add support for starting slice offset.
+  * Add options for date and time field separator used when
+    formatting the log prefix format strings (e.g. "%ymd", "%hms")
+  * Apply special step option handling to both disks and files,
+    by setting up and ending offset so I/O loops break reaching
+    this offset.
+  * Add flag for output position, so zero offset is handled properly.
+  * Add "showvflags=hex" option to show block tag verify flags set
+  * When selecting 100% reads (readp=100), switch output file to
+    input file.
+  * Remove a file position sanity check no longer valid with
+    updates made in FindCapacity() with new logic associated
+    with the file position option.
+  * For Unix systems, increase the open file resource limit,
+    now that low limits are imposed on newer Linux distros,
+    to avoid false failures!
+  * Added "showfslba" and "showfsmap" commands to show the file
+    system map, for the file specified, assuming we can acquire FS
+    extents to map physical LBAs.
+  * When re-enabling stats via "enable=stats", ensure all the stat
+    flags reset when disabled, get enabled once again, esp. since
+    these are sticky.
+  * Add a retry data corruption limit option (retryDC_limit=value).
+  * The normal retry limit is used for retrying errors (60 by default).
+  * Added separate retry data corruption delay option (retryDC_delay).
+  * Change the default dispose mode setting to keep on error.
+  * Change the delete error log file default to be true.
+  * Add logdir= option to prepend to job/log file paths.
+  * Add support for capacity percentage for thin provisioned LUNs,
+    to help avoid exceeding backend storage for over-provisioned
+    volumes
+  * Add support for appending a default file name to a directory.
+  * Fix bug introduced with mounted files system check in copy mode.
+  * For Linux file systems with direct I/O, get the disk block size.
+  * This disk block size is required for later sanity checks for
+    direct I/O.
+  * Add mounted file system check when writing to /dev/ disk devices
+- Dropped obsoleted  dt-default-source-define.patch and
+  dt-wformat-security.patch
+
+-------------------------------------------------------------------
 Thu Jun  7 14:23:25 UTC 2018 - mpluskal@suse.com
 
 - Modernise spec file with spec-cleaner
