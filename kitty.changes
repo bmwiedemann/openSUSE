@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Mon Apr 19 18:22:06 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.1:
+  * icat: Fix some broken GIF images with no frame delays not
+    being animated (#3498)
+  * hints kitten: Fix sending hyperlinks to their default
+    handler not working (#3500)
+  * Wayland: Fix regression in previous release causing window
+    decorations to be drawn even when compositor supports server
+	side decorations (#3501)
+
+-------------------------------------------------------------------
+Mon Apr 19 11:48:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.0:
+  * Support display of animated images kitty +kitten icat animation.gif.
+    See Animation for details on animation support in the kitty graphics protocol.
+  * A new keyboard reporting protocol with various advanced features
+    that can be used by full screen terminal programs and even games,
+    see A protocol for comprehensive keyboard handling in terminals (#3248)
+  * Backward incompatibility: Session files now use the full launch command
+    with all its capabilities. However, the syntax of the command is slightly
+    different from before. In particular watchers are now specified directly
+    on launch and environment variables are set using --env.
+  * Allow setting colors when creating windows using the launch command.
+  * A new option tab_powerline_style to control the appearance of the tab
+    bar when using the powerline tab bar style.
+  * A new option scrollback_fill_enlarged_window to fill extra lines in the
+    window when the window is expanded with lines from the scrollback (#3371)
+  * diff kitten: Implement recursive diff over SSH (#3268)
+  * ssh kitten: Allow using python instead of the shell on the server,
+    useful if the shell used is a non-POSIX compliant one, such as fish (#3277)
+  * Add support for the color settings stack that XTerm copied from us
+    without acknowledgement and decided to use incompatible escape codes for.
+  * Add entries to the terminfo file for some user capabilities that are
+    shared with XTerm (#3193)
+  * The launch command now does more sophisticated resolving of executables to run.
+    The system-wide PATH is used first, then system specific default paths,
+    and finally the PATH inside the shell.
+  * Double clicking on empty tab bar area now opens a new tab (#3201)
+  * kitty @ ls: Show only environment variables that are different for each window, by default.
+  * When passing a directory or a non-executable file as the program to run to kitty
+    opens it with the shell or by parsing the shebang, instead of just failing.
+  * Linux: Fix rendering of emoji followed by the graphics variation selector
+    not being colored with some fonts (#3211)
+  * Unicode input: Fix using index in select by name mode not working for indices
+    larger than 16. Also using an index does not filter the list of matches. (#3219)
+  * Wayland: Add support for the text input protocol (#3410)
+  * Wayland: Fix mouse handling when using client side decorations
+  * Wayland: Fix un-maximizing a window not restoring its size to what it was
+    beforebeing maximized
+  * GNOME/Wayland: Improve window decorations the titlebar now shows the window title.
+    Allow running under Wayland on GNOME by default. (#3284)
+  * Panel kitten: Allow setting WM_CLASS (#3233)
+  * Also detect gemini:// URLs when hovering with the mouse (#3370)
+  * When using a non-US keyboard layout and pressing ctrl+key when the key
+    matches an English key, send that to the program running in the terminal
+    automatically (#2000)
+  * When matching shortcuts, also match on shifted keys, so a shortcut defined as
+    ctrl+plus will match a keyboard where you have to press shift+equal to get
+    the plus key (#2000)
+  * Fix extra space at bottom of OS window when using the fat layout with the tab
+    bar at the top (#3258)
+  * Fix window icon not working on X11 with 64bits (#3260)
+  * Fix OS window sizes under 100px resulting in scaled display (#3307)
+  * Fix rendering of ligatures in the latest release of Cascadia code, which for
+    some reason puts empty glyphs after the ligature glyph rather than before it (#3313)
+  * Improve handling of infinite length ligatures in newer versions of FiraCode
+    and CascadiaCode. Now such ligatures are detected based on glyph naming convention.
+    This removes the gap in the ligatures at cell boundaries (#2695)
+  * hints kitten: When using the linenumber action with a background action,
+    preserve the working directory (#3352)
+  * Graphics protocol: Fix suppression of responses not working for chunked transmission (#3375)
+  * Fix inactive tab closing causing active tab to change (#3398)
+  * Fix a crash on systems using musl as libc (#3395)
+  * Improve rendering of rounded corners by using a rectircle equation rather than a cubic bezier (#3409)
+  * Graphics protocol: Add a control to allow clients to specify that the cursor should
+    not move when displaying an image (#3411)
+  * Fix marking of text not working on lines that contain zero cells (#3403)
+  * Fix the selection getting changed if the screen contents scroll while the selection is in progress (#3431)
+  * X11: Fix resize_in_steps being applied even when window is maximized (#3473)
+
+-------------------------------------------------------------------
 Fri Apr 16 12:04:31 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Fix build on Factory:

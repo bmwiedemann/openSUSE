@@ -1,7 +1,7 @@
 #
 # spec file for package kitty
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kitty
-Version:        0.19.3
+Version:        0.20.1
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only

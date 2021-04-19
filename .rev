@@ -7,4 +7,41 @@
     <comment>Readd kitty https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/message/V2SKGSHVJAHVN4VU4D6XOAJYRDHGI7OQ/</comment>
     <requestid>885969</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fe3eb2e55913772142d00971611051f0</srcmd5>
+    <version>0.20.1</version>
+    <time>1618859185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.20.1:
+  * icat: Fix some broken GIF images with no frame delays not
+    being animated (#3498)
+  * hints kitten: Fix sending hyperlinks to their default
+    handler not working (#3500)
+  * Wayland: Fix regression in previous release causing window
+    decorations to be drawn even when compositor supports server
+	side decorations (#3501)
+
+- Update to 0.20.0:
+  * Support display of animated images kitty +kitten icat animation.gif.
+    See Animation for details on animation support in the kitty graphics protocol.
+  * A new keyboard reporting protocol with various advanced features
+    that can be used by full screen terminal programs and even games,
+    see A protocol for comprehensive keyboard handling in terminals (#3248)
+  * Backward incompatibility: Session files now use the full launch command
+    with all its capabilities. However, the syntax of the command is slightly
+    different from before. In particular watchers are now specified directly
+    on launch and environment variables are set using --env.
+  * Allow setting colors when creating windows using the launch command.
+  * A new option tab_powerline_style to control the appearance of the tab
+    bar when using the powerline tab bar style.
+  * A new option scrollback_fill_enlarged_window to fill extra lines in the
+    window when the window is expanded with lines from the scrollback (#3371)
+  * diff kitten: Implement recursive diff over SSH (#3268)
+  * ssh kitten: Allow using python instead of the shell on the server,
+    useful if the shell used is a non-POSIX compliant one, such as fish (#3277)
+  * Add support for the color settings stack that XTerm copied from us
+    without acknowledgement and decided to use incompatible escape codes for.
+  * Add entries to the terminfo file for some user capabilities that are</comment>
+    <requestid>886755</requestid>
+  </revision>
 </revisionlist>
