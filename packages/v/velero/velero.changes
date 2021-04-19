@@ -1,4 +1,188 @@
 -------------------------------------------------------------------
+Wed Apr 14 08:18:10 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 1.6.0:
+  * Add changelog and docs for v1.6.0
+  *  Upgrade docs for v1.6.0-rc2 (#3662)
+  * Revert printer columns (#3652)
+  * Add changelog and docs for v1.6.0-rc.1
+  * Allow Dockerfiles to be configurable (#3634)
+  * Remove unnecessary check
+  * Adress Ashish's second review
+  * Runs vSphere tests with snapshots (#3629)
+  * Address Ashish's review
+  * Addressed Bridget's review
+  * Addressed Dave's review
+  * Make uninstall more robust and informative
+  * Added volume snapshot test for backup/restore. (#3592)
+  * Improve GH Action PR assign + labeling (#3584)
+  * Update upgrade docs (#3568)
+  * Upgrade e2e tests to new plugin versions (v1.2)
+  * Restore progress reporting bug fix (#3583)
+  * Install plugins for additional BSL in E2E test (#3582)
+  * Updated Azure plugin in e2e tests to 1.1.2 (latest) (#3585)
+  * Upgrade restic from v0.9.6 to v0.12.0 (#3528)
+  * Use Credential from BSL for restic commands  (#3489)
+  * Partially revert adding credentials to VSL (#3561)
+  * Address review comments
+  * Add E2E test for multiple credentials
+  * Prefer conditional waiting over magic sleep (#3527)
+  * Proposed 1.7.0 roadmap (#3537)
+  * Assign a smaller number of reviewers to PRs (#3543)
+  * fix broken build (#3525)
+  * Pass configured BSL credential to plugin via config (#3442)
+  * Restore progress reporting (#3125)
+  * Support cli uninstall (#3399)
+  * Convert DownloadRequest resource/controller to kubebuilder  (#3004)
+  * Update in-code documentation to show resources can be specified with group name (#3498)
+  * (low priority) Add port fwding info to Tilt doc (#3424)
+  * Combine CRD install verification into 1 job, and update k8s versions (#3448)
+  * (low priority) Update to Thompson (#3502)
+  * Install CA certificates in Tilt Docker image (#3496)
+  * Update PR template to use checkbox task lists (#3492)
+  * Use pod namespace from backup when matching PVBs (#3475)
+  * added documentation for how velero handles encryption (#3463)
+  * E2E tests now run in multiple clouds in addition to KIND (#3286)
+  * fix typo in item_hook_handler (#3361)
+  * Use controller-runtime client to get restic secrets (#3320)
+  * Restore API group version by priority (#3133)
+  * Document design doc template (#3443)
+  * Really fix the Github pull request template (#3444)
+  * Use label to select Velero deployment in plugin cmd (#3447)
+  * Remove pull request processing from prow action (#3445)
+  * Add changelog
+  * Restore CAPI cluster objects in a better order
+  * Use correct suffix for Labeler config file (#3441)
+  * Pin version of labeler action
+  * Better validation
+  * Better help messages and validation check
+  * Fix typo
+  * Add changelog
+  * Add credential field to the bsl
+  * Enable Prow commands when opening or readying PRs
+  * Correct PR template file name
+  * Unify labels across GitHub Actions
+  * Update version of prow-action (#3434)
+  * Add colors to describe command (#3275)
+  * Enable automatic labeling of PRs via Actions (#3431)
+  * Close issues after 35 total days of inactivity. (#3427)
+  * Download restic binary using curl (#3421)
+  * feat: support set BackupStorageLocation(BSL) CA certificate (#3167)
+  * Modify InitContainer checking function that potentially incurs error (#3198)
+  * Instantiate the flag map on set
+  * Replace NewObjectBackupStore with interface (#3329)
+  * Download restic binary outside container (#3327)
+  * Add changelog entry
+  * Add snapshot-location set command
+  * Add credential arg to snapshot-location create
+  * Add credential field to VolumeSnapshotLocation
+  * Proposal for handling multiple credential secrets (#2403)
+  * remove FAQ pages
+  * Added information about minimum space required for Minio install. (#3393)
+  * Update docs for running velero locally (#3363)
+  * Remove references to zenhub (#3357)
+  * Reword message for Q&A issue template
+  * Fix typo (#3352)
+  * fix(tests): make tests pass?
+  * chore(gomod): bump k8s version
+  * chore(update): run 'make update'
+  * fix(tests): make tests pass
+  * fix: apply patch
+  * feat(gomod): bump versions
+  * chore(changelog): add changelog message
+  * refactor(external-snapshotter): bump to v4
+  * refactor(gomod): move replaces
+  * Add Q&A discussion to issue templates (#3339)
+  * Support fish shell completion (#3231)
+  * Update docs to clarify backup location and relationship with other data (#3309)
+  * Add Tilt configuration to debug using Delve (#3189)
+  * Updated for new repository for Kibishii Distributed Data Generator for e2e tests (#3267)
+  * Raise logging level for PV deletion timeout (#3316)
+  * Minor kubebuilder related items to clean up  (#3180)
+  * Download Restic binary and copy into Tilt Velero image (#3310)
+  * Increased limit for Velero pod to 512M.  Fixes #3234
+  * Capitalize all help messages (#3209)
+  * Nominate JenTing Hsiao for core maintainer (#3188)
+  * Improve name formatting logic and add more tests
+  * Fix path to crds.go file in codespell config (#3185)
+  * Minor refactor plus better documentation for naming
+  * issue: add flag to the schedule cmd to configure the `useOwnerReferencesInBackup` option  #3176 (#3182)
+  * Better name format for init containers
+  * Tencent S3 Compatible Support Docs (#3115)
+  * Owner reference in backup when created from schedule (#3127)
+  * Ignore config/crd/crds/crds.go file in codespell (#3174)
+  * Use inline markdown links in tables (#3114)
+  * ✨ Add more E2E tests and improvement (#3111)
+  * Add changelog
+  * Improvements to BSL logic
+  * Revert workflow access token changes (#3170)
+  * Preserve nodePort support with --preserve-nodeports flag (#3095)
+  * Add milestoned issues to their respective board (#3162)
+  * Use new repository-local board & github secret (#3163)
+  * Change distro (#3166)
+  * Draft design doc for restoring API group version by priority level (#3050)
+  * feat: support configure BSL CR to indicate which one is the default (#3092)
+  * Add Tilt configs (#3119)
+  * 🐛 BSLs with validation disabled should be validated at least once (#3084)
+  * Expand maintainer documentation (#3102)
+  * Organize design docs (#3101)
+  * Fix broken docker login action (#3121)
+  * Upgrade to Docker provided buildx action for CI (#3110)
+  * feat: add delete sub-command for backup-location (#3073)
+  * Don't fail backup deletion if downloading tarball fails (#2993)
+  * Add an E2E test framework to test Velero across cloud platforms (#3060)
+  * 🏃‍♂️ reducing verbosity of another log message (#3109)
+  * Modify function name typo (#3106)
+  * Fix project automation (#3089)
+  * 📖 Add docs to troubleshoot cloud-credentials (#3100)
+  * pass annotations from scheduler to created backup (#3067)
+  * Update to latest covenant coc (#3076)
+  * propose restore progress (#3016)
+  * Design doc for RestoreItemAction wait for AdditionalItems to be ready (#2867)
+  * 🏃‍♂️ Turn down logging verbosity (#3091)
+  * Add instructions to clone repo for examples (#3074)
+  * 🏃‍♂️ update setup-kind github actions CI (#3085)
+  * Add Dave Uchida (#3077)
+  * 📖 use correct link to the minio.md (#3071)
+  * Automate adding opened issues to the triage board (#3068)
+  * 🐛 Do not run ItemAction plugins for unresolvable types for all types (#3059)
+  * .github/workflows: add PR codespell workflow (#3064)
+  * Fix various typos found by codespell (#3057)
+  * 🐛 Use namespace and name to match PVB to Pod restore (#3051)
+  * Add custom 404 page to website (#3056)
+  * fixing 'velero.io/change-pvc-node-selector' plugin to fetch configmap using plugin name (#2970)
+  * 🏃‍♂ Improve log message clarity (#3047)
+  * 📖 Clarify restore hook init container priority (#3030)
+  * Add additional printer columns for CRDs (#2881)
+  * 📖 fix image links in how-velero-works page (#3031)
+  * Add warning to velero version cmd. Fixes #3017 (#3024)
+  * fix of microsoft typo in restic docs (#3037)
+  * fix minio code samples (#3034)
+  * Adding fix for restic init container index on restores. (#3011)
+  * Ensure PVs and PVCs remain bound when doing a restore (#3007)
+  * Add initial instructions for releasing plugins (#2952)
+  * create CRB with velero-<namespace> (#2886)
+  * Auto assign reviewers when PR is ready for review (#3006)
+  * Check existing remote branches in release script (#2951)
+  * Include --validate=false in upgrade instructions (#2969)
+  * 📖 document restic limitation of backing only pod volumes (#2976)
+  * Bump Go to 1.15 (#2974)
+  * Fix BSL controller to avoid invoking init() on all BSLs regardless of ValidationFrequency (#2992)
+  * Fix version cmd getting nil pointer (#2996)
+  * Centralize + rename controller names and list (#2936)
+  * Allow Timezone change in the container (#2944)
+  * Update ROADMAP.md (#2986)
+  * restore proper lowercase/plural CRD resource (#2949)
+  * Stephanie Bauman is leaving the velero project (#2985)
+  * Allow remote for release process to be configured (#2950)
+  * Improve release docs following v1.5.1 release (#2954)
+  * Fix adopters logos (#2968)
+  * Don't attempt to publish docker images on forks (#2953)
+  * Add Velero Office Hours info (#2962)
+  * Fix 'subcommand required' error w/ cobra upgrade (#2947)
+  * v1.5 blog post (#2940)
+
+-------------------------------------------------------------------
 Thu Apr 08 02:27:02 UTC 2021 - jenting.hsiao@suse.com
 
 - Update to version 1.5.4:
