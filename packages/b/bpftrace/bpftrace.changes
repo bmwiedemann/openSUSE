@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 16 17:42:10 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to bpftrace 0.12.1.
+  * Incorrect --info output bug fix release
+
+-------------------------------------------------------------------
 Sat Apr  3 04:19:14 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to bpftrace 0.12.0.

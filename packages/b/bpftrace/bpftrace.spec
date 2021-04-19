@@ -23,7 +23,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           bpftrace
-Version:        0.12.0
+Version:        0.12.1
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0
