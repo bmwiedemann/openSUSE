@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyreadstat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-pyreadstat
-Version:        1.0.6
+Version:        1.1.0
 Release:        0
 Summary:        Package to read and write statistical data files into pandas
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/Roche/pyreadstat
 Source:         https://github.com/Roche/pyreadstat/archive/v%{version}.tar.gz#/pyreadstat-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
