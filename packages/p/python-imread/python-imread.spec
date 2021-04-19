@@ -1,7 +1,7 @@
 #
 # spec file for package python-imread
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-imread
 Version:        0.7.4
 Release:        0
 Summary:        Image reading library
 License:        MIT
-Group:          Development/Languages/Python
 URL:            http://luispedro.org/software/imread
 Source:         https://files.pythonhosted.org/packages/source/i/imread/imread-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
