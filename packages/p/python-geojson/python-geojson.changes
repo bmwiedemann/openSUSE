@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 16 15:18:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.5.0
+  * Add "precision" parameter to GeoJSON Object classes with
+    default precision of 6 (0.1m)
+  * Fix bug where map_geometries() util was not preserving Feature
+    IDs
+  * Remove crs module and features to conform to official
+    WGS84-only GeoJSON spec
+- Switch to PyPI source
+- Add geojson-py39-jsonload.patch gh#jazzband/python-geojson#151
+  for compatibility with the python39 flavor
+
+-------------------------------------------------------------------
 Fri Mar  1 10:59:48 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.4.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-geojson
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-geojson
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Python bindings and utilities for GeoJSON
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/frewsxcv/python-geojson
-Source:         https://github.com/frewsxcv/python-geojson/archive/%{version}.tar.gz
+URL:            https://github.com/jazzband/python-geojson
+Source:         https://files.pythonhosted.org/packages/source/g/geojson/geojson-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM geojson-py39-jsonload.patch -- gh#jazzband/python-geojson#151
+Patch0:         https://github.com/jazzband/geojson/pull/151.patch#/geojson-py39-jsonload.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,7 +39,7 @@ data, classes for all GeoJSON Objects and an implementation of the Python
 geo interface specification.
 
 %prep
-%setup -q -n python-geojson-%{version}
+%autosetup -p1 -n geojson-%{version}
 
 %build
 %python_build
@@ -48,11 +50,12 @@ geo interface specification.
 
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%pyunittest -v
 
 %files %{python_files}
 %license LICENSE.rst
 %doc README.rst CHANGELOG.rst
-%{python_sitelib}/*
+%{python_sitelib}/geojson
+%{python_sitelib}/geojson-%{version}*-info
 
 %changelog

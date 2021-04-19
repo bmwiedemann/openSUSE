@@ -16,4 +16,12 @@
   * Allow FeatureCollections to be passed to coords</comment>
     <requestid>680457</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9392d0e0640facee01c2a56bed2ca400</srcmd5>
+    <version>2.5.0</version>
+    <time>1618859162</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886575</requestid>
+  </revision>
 </revisionlist>
