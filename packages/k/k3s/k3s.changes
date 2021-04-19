@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 19 10:54:43 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.20.6+k3s1:
+  * Update to v1.20.6
+  * add cloud controller manager fixes from master
+  * Update to v1.20.6
+  * Resolve local retention issue when S3 in use.
+  * add hidden attribute to disable flags
+  * delete nocluster file and remove build tag
+  * remove hidden attribute from cluster flags and related code
+  * add etcd s3 secret and access key flags and env vars to secret data
+  * put etcd bootstrap save call in goroutine and update comment
+  * remove duplicate method
+  * Have Bootstrap Data Stored in etcd at Completed Start (#3038)
+  * Etcd Snapshot/Restore to/from S3 Compatible Backends (#2902)
+  * Add ability to perform an etcd on-demand snapshot via cli (#2819)
+  * Update to Kubernetes v1.20.5 (#3094)
+  * [release 1.20] containerd: v1.4.4-k3s1 (#3086)
+  * Define a Controllers and LeaderControllers on the server config (#3053)
+  * Suppress test failure due to incompatible server
+  * Log clearer error on startup if NPC cannot be started
+  * Add script to test server/agent version compatibility
+  * [release-1.20] Add disable components flags  (#3019)
+  * Update to v1.20.4 (#2960)
+  * Update k3s-root to v0.8.1
+  * Use appropriate response codes for authn/authz failures
+- Bump go version to 1.15
+
+-------------------------------------------------------------------
 Wed Apr 14 14:26:22 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Add disk size requirement in constraints
