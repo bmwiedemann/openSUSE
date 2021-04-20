@@ -953,7 +953,6 @@
     <package name="inkscape-lang" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="inn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="inotify-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-transactional_base -->
-    <package name="insserv-compat" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="intel-vaapi-driver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="intlfonts-euro-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-fonts-fonts -->
     <package name="inxi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
