@@ -10206,6 +10206,7 @@ unsorted:
   - libecholib1_3-devel 
   - libecm1 
   - libeconf-devel 
+  - libeconf-utils 
   - libecpg6 
   - libecpg6-32bit: [x86_64] 
   - libecpint-devel 
@@ -21234,7 +21235,7 @@ unsorted:
   - python36-Pebble 
   - python36-Pillow 
   - python36-Pillow-tk 
-  - python36-Pint 
+  - python36-Pint: [x86_64] 
   - python36-PrettyTable 
   - python36-Protego 
   - python36-PsyLab 
@@ -21374,6 +21375,7 @@ unsorted:
   - python36-aioeventlet 
   - python36-aiofiles 
   - python36-aiohttp 
+  - python36-aiohttp-jinja2: [i586] 
   - python36-aiohttp-socks 
   - python36-aiohttp-theme 
   - python36-aiohttp_cors 
@@ -21399,7 +21401,7 @@ unsorted:
   - python36-amqpstorm 
   - python36-ana 
   - python36-aniso8601 
-  - python36-annoy 
+  - python36-annoy: [x86_64] 
   - python36-ansel 
   - python36-ansi2html 
   - python36-ansicolor 
@@ -21703,7 +21705,6 @@ unsorted:
   - python36-base58 
   - python36-bashate 
   - python36-basictracer 
-  - python36-bcolz 
   - python36-bcrypt 
   - python36-beautifulsoup4 
   - python36-before-after 
@@ -22410,7 +22411,7 @@ unsorted:
   - python36-impacket 
   - python36-importlib-metadata 
   - python36-importlib-resources 
-  - python36-imread 
+  - python36-imread: [x86_64] 
   - python36-incremental 
   - python36-infinity 
   - python36-inflect 
@@ -22486,7 +22487,7 @@ unsorted:
   - python36-jsmin 
   - python36-json-rpc 
   - python36-json5 
-  - python36-json_tricks 
+  - python36-json_tricks: [x86_64] 
   - python36-jsondate 
   - python36-jsondiff 
   - python36-jsonextended 
@@ -22754,7 +22755,7 @@ unsorted:
   - python36-ntlm-auth 
   - python36-ntplib 
   - python36-num2words 
-  - python36-numcodecs 
+  - python36-numcodecs: [x86_64] 
   - python36-numericalunits 
   - python36-numpydoc 
   - python36-nwdiag 
@@ -23132,7 +23133,7 @@ unsorted:
   - python36-pyramid-chameleon 
   - python36-pyramid-debugtoolbar 
   - python36-pyramid-mako 
-  - python36-pyreadstat 
+  - python36-pyreadstat: [x86_64] 
   - python36-pyroma 
   - python36-pyroute2 
   - python36-pyrsistent 
@@ -23329,7 +23330,7 @@ unsorted:
   - python36-pytimeparse 
   - python36-pytlv 
   - python36-pytoml 
-  - python36-pytools 
+  - python36-pytools: [x86_64] 
   - python36-pytricia 
   - python36-pytz 
   - python36-pytzdata 
@@ -23387,6 +23388,7 @@ unsorted:
   - python36-quantum-blackbird 
   - python36-queuelib 
   - python36-quicktions 
+  - python36-radexreader: [i586] 
   - python36-radon 
   - python36-random2 
   - python36-rarfile 
@@ -23580,7 +23582,7 @@ unsorted:
   - python36-sortedcollections 
   - python36-sortedcontainers 
   - python36-sortinghat 
-  - python36-sounddevice 
+  - python36-sounddevice: [x86_64] 
   - python36-soupsieve 
   - python36-sox 
   - python36-spake2 
@@ -24202,6 +24204,7 @@ unsorted:
   - python38-aiofiles 
   - python38-aioftp 
   - python38-aiohttp 
+  - python38-aiohttp-jinja2: [i586] 
   - python38-aiohttp-socks 
   - python38-aiohttp-theme 
   - python38-aiohttp_cors 
@@ -24526,7 +24529,6 @@ unsorted:
   - python38-base58 
   - python38-bashate 
   - python38-basictracer 
-  - python38-bcolz 
   - python38-beautifulsoup4 
   - python38-before-after 
   - python38-behave 
@@ -26253,6 +26255,7 @@ unsorted:
   - python38-queuelib 
   - python38-quicktions 
   - python38-quimb: [x86_64] 
+  - python38-radexreader: [i586] 
   - python38-radon 
   - python38-random2 
   - python38-rarfile 
@@ -26867,6 +26870,7 @@ unsorted:
   - python39-DataShape 
   - python39-DateTime 
   - python39-Delorean 
+  - python39-Deprecated 
   - python39-Django 
   - python39-Durus 
   - python39-EasyProcess 
@@ -26894,6 +26898,7 @@ unsorted:
   - python39-Flask-RSTPages 
   - python39-Flask-SQLAlchemy 
   - python39-Flask-Script 
+  - python39-Flask-Security-Too: [i586] 
   - python39-Flask-Testing 
   - python39-Flask-WTF 
   - python39-Flask-doc 
@@ -26941,6 +26946,7 @@ unsorted:
   - python39-Pebble 
   - python39-Pillow 
   - python39-Pillow-tk 
+  - python39-Pint: [i586] 
   - python39-PrettyTable 
   - python39-Protego 
   - python39-PubChemPy 
@@ -26972,6 +26978,7 @@ unsorted:
   - python39-PyPDF2 
   - python39-PyPrind 
   - python39-PyPrint 
+  - python39-PyQRCode: [i586] 
   - python39-PyRIC 
   - python39-PyRSS2Gen 
   - python39-PySDL2 
@@ -27001,6 +27008,7 @@ unsorted:
   - python39-SQLAlchemy-Utils 
   - python39-SecretStorage 
   - python39-Send2Trash 
+  - python39-Shapely: [i586] 
   - python39-SimpleWebSocketServer 
   - python39-SoundCard 
   - python39-SoundFile 
@@ -27069,6 +27077,7 @@ unsorted:
   - python39-aiofiles 
   - python39-aioftp 
   - python39-aiohttp 
+  - python39-aiohttp-jinja2: [i586] 
   - python39-aiohttp-socks 
   - python39-aiohttp-theme 
   - python39-aiohttp_cors 
@@ -27093,6 +27102,7 @@ unsorted:
   - python39-amqp 
   - python39-ana 
   - python39-aniso8601 
+  - python39-annoy: [i586] 
   - python39-ansel 
   - python39-ansi2html 
   - python39-ansicolor 
@@ -27119,6 +27129,7 @@ unsorted:
   - python39-arrow 
   - python39-asciimatics 
   - python39-asciitree 
+  - python39-asdf: [i586] 
   - python39-asgiref 
   - python39-asn1crypto 
   - python39-aspectlib 
@@ -27130,6 +27141,7 @@ unsorted:
   - python39-astropy 
   - python39-astropy-helpers 
   - python39-asttokens 
+  - python39-astunparse 
   - python39-asv 
   - python39-async_generator 
   - python39-async_timeout 
@@ -27149,7 +27161,9 @@ unsorted:
   - python39-augeas 
   - python39-authheaders 
   - python39-authres 
+  - python39-autobahn: [i586] 
   - python39-autodoc 
+  - python39-autodocsumm: [i586] 
   - python39-autoflake 
   - python39-autopep8 
   - python39-autoray 
@@ -27399,6 +27413,7 @@ unsorted:
   - python39-before-after 
   - python39-behave 
   - python39-bencode 
+  - python39-beniget 
   - python39-beren 
   - python39-betamax 
   - python39-betamax-matchers 
@@ -27504,6 +27519,7 @@ unsorted:
   - python39-chai 
   - python39-chainmap 
   - python39-chardet 
+  - python39-charset-normalizer: [i586] 
   - python39-chart-studio 
   - python39-check-manifest 
   - python39-cheroot 
@@ -27533,6 +27549,7 @@ unsorted:
   - python39-cloudscraper 
   - python39-cluster 
   - python39-cma 
+  - python39-cmapfile: [i586] 
   - python39-cmarkgfm 
   - python39-cmd2 
   - python39-cmdln 
@@ -27608,6 +27625,7 @@ unsorted:
   - python39-cx_Freeze 
   - python39-cymruwhois 
   - python39-cytoolz 
+  - python39-czifile: [i586] 
   - python39-d2to1 
   - python39-daemonize 
   - python39-daiquiri 
@@ -27868,6 +27886,7 @@ unsorted:
   - python39-fastcluster 
   - python39-fasteners 
   - python39-fastimport 
+  - python39-fastnumbers: [i586] 
   - python39-fastparquet 
   - python39-fb-re2 
   - python39-fedora-messaging: [x86_64] 
@@ -27935,6 +27954,7 @@ unsorted:
   - python39-frozendict 
   - python39-fs 
   - python39-fsspec 
+  - python39-ftfy 
   - python39-ftputil 
   - python39-fudge 
   - python39-funcparserlib 
@@ -27947,6 +27967,7 @@ unsorted:
   - python39-fysom 
   - python39-gTTS 
   - python39-gTTS-token 
+  - python39-gast 
   - python39-gcsfs: [x86_64] 
   - python39-gcsfs-fuse: [x86_64] 
   - python39-gear 
@@ -27956,6 +27977,7 @@ unsorted:
   - python39-genty 
   - python39-geographiclib 
   - python39-geoip2 
+  - python39-geojson 
   - python39-geolib 
   - python39-geolinks 
   - python39-geomdl 
@@ -28020,6 +28042,7 @@ unsorted:
   - python39-gunicorn 
   - python39-guzzle_sphinx_theme 
   - python39-gvm-tools 
+  - python39-gwcs: [i586] 
   - python39-gwdatafind 
   - python39-gwosc 
   - python39-gwyfile 
@@ -28031,6 +28054,7 @@ unsorted:
   - python39-h5py-openmpi2 
   - python39-h5py-openmpi3 
   - python39-h5py-openmpi4 
+  - python39-hammett 
   - python39-hankel 
   - python39-hanzidentifier 
   - python39-happybase 
@@ -28098,6 +28122,7 @@ unsorted:
   - python39-importlab 
   - python39-importlib-metadata 
   - python39-importlib-resources 
+  - python39-imread: [i586] 
   - python39-imreg 
   - python39-incremental 
   - python39-infinity 
@@ -28171,6 +28196,7 @@ unsorted:
   - python39-jsmin 
   - python39-json-rpc 
   - python39-json5 
+  - python39-json_tricks: [i586] 
   - python39-jsondate 
   - python39-jsondiff 
   - python39-jsonlib-python3 
@@ -28247,6 +28273,7 @@ unsorted:
   - python39-lesscpy 
   - python39-leveldb 
   - python39-lexicon 
+  - python39-lfdfiles: [i586] 
   - python39-lhafile 
   - python39-libarchive 
   - python39-libarchive-c 
@@ -28275,6 +28302,7 @@ unsorted:
   - python39-locket 
   - python39-lockfile 
   - python39-logilab-common 
+  - python39-loguru: [i586] 
   - python39-logutils 
   - python39-logzero 
   - python39-lupa 
@@ -28364,6 +28392,7 @@ unsorted:
   - python39-munkres 
   - python39-musicbrainzngs 
   - python39-mutagen 
+  - python39-mutmut: [i586] 
   - python39-mutt-ics 
   - python39-mygpoclient 
   - python39-mypy_extensions 
@@ -28422,6 +28451,7 @@ unsorted:
   - python39-num2words 
   - python39-numba 
   - python39-numba-devel 
+  - python39-numcodecs: [i586] 
   - python39-numericalunits 
   - python39-numexpr 
   - python39-numpy 
@@ -28444,6 +28474,7 @@ unsorted:
   - python39-octave-kernel 
   - python39-odfpy 
   - python39-odorik 
+  - python39-oiffile: [i586] 
   - python39-olefile 
   - python39-oletools 
   - python39-onnx 
@@ -28476,6 +28507,8 @@ unsorted:
   - python39-osc-tiny 
   - python39-oscrypto 
   - python39-osmviz 
+  - python39-ospd: [i586] 
+  - python39-ospd-openvas: [i586] 
   - python39-outcome 
   - python39-ovirt-engine-sdk 
   - python39-pa-ringbuffer 
@@ -28556,6 +28589,7 @@ unsorted:
   - python39-pika-pool 
   - python39-pikepdf 
   - python39-pilkit 
+  - python39-pingparsing: [i586] 
   - python39-pip 
   - python39-pip-api 
   - python39-pip-licenses 
@@ -28589,6 +28623,7 @@ unsorted:
   - python39-pomegranate 
   - python39-pomegranate-devel 
   - python39-pontos 
+  - python39-pony: [i586] 
   - python39-pooch 
   - python39-pook 
   - python39-poppler-qt5 
@@ -28764,6 +28799,7 @@ unsorted:
   - python39-pymemcache 
   - python39-pymetar 
   - python39-pymilter 
+  - python39-pymisp: [i586] 
   - python39-pymol 
   - python39-pymongo 
   - python39-pympv 
@@ -28783,8 +28819,10 @@ unsorted:
   - python39-pyperf 
   - python39-pypet 
   - python39-pypiserver 
+  - python39-pypng: [i586] 
   - python39-pyppeteer 
   - python39-pyprimes 
+  - python39-pyproj: [i586] 
   - python39-pypsexec 
   - python39-pypuppetdb 
   - python39-pyqt-builder 
@@ -28795,6 +28833,7 @@ unsorted:
   - python39-pyramid-chameleon 
   - python39-pyramid-debugtoolbar 
   - python39-pyramid-mako 
+  - python39-pyreadstat: [i586] 
   - python39-pyroma 
   - python39-pyroomacoustics 
   - python39-pyroute2 
@@ -28847,6 +28886,7 @@ unsorted:
   - python39-pytest-env 
   - python39-pytest-error-for-skips 
   - python39-pytest-expect 
+  - python39-pytest-filter-subpackage 
   - python39-pytest-fixture-config 
   - python39-pytest-flake8 
   - python39-pytest-flake8dir 
@@ -28876,6 +28916,7 @@ unsorted:
   - python39-pytest-pythonpath 
   - python39-pytest-qt 
   - python39-pytest-random-order 
+  - python39-pytest-randomly: [i586] 
   - python39-pytest-relaxed 
   - python39-pytest-remotedata 
   - python39-pytest-reorder 
@@ -28981,6 +29022,7 @@ unsorted:
   - python39-pytimeparse 
   - python39-pytlv 
   - python39-pytoml 
+  - python39-pytools: [i586] 
   - python39-pytricia 
   - python39-pytz 
   - python39-pytzdata 
@@ -29034,6 +29076,7 @@ unsorted:
   - python39-qtwebengine-qt5-sip 
   - python39-queuelib 
   - python39-quicktions 
+  - python39-radexreader: [i586] 
   - python39-radon 
   - python39-random2 
   - python39-rarfile 
@@ -29226,6 +29269,7 @@ unsorted:
   - python39-softlayer 
   - python39-sortedcollections 
   - python39-sortedcontainers 
+  - python39-sounddevice: [i586] 
   - python39-soupsieve 
   - python39-sox 
   - python39-spake2 
@@ -29293,6 +29337,7 @@ unsorted:
   - python39-structlog 
   - python39-subgrab 
   - python39-subliminal 
+  - python39-subprocrunner: [i586] 
   - python39-subscene-api 
   - python39-subst 
   - python39-suds-jurko 
@@ -29347,6 +29392,7 @@ unsorted:
   - python39-three-merge 
   - python39-thrift 
   - python39-thriftpy2 
+  - python39-tifffile: [i586] 
   - python39-timeout-decorator 
   - python39-tinycss2 
   - python39-tinydb 
@@ -29541,6 +29587,7 @@ unsorted:
   - python39-xsge_tmx 
   - python39-xvfbwrapper 
   - python39-xxhash 
+  - python39-yafe: [i586] 
   - python39-yamldoc 
   - python39-yamllint 
   - python39-yamlloader 
@@ -29555,6 +29602,7 @@ unsorted:
   - python39-youtube-dl 
   - python39-yq 
   - python39-zake 
+  - python39-zarr: [i586] 
   - python39-zc.buildout 
   - python39-zc.customdoctests 
   - python39-zc.lockfile 
