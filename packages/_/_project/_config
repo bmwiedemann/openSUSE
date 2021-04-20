@@ -458,8 +458,8 @@ Prefer: syslogd
 # A couple packares require a dbus daemon to show notifications - unless oterhwise specified, we prefer the 'standalong notification-daemon;
 Prefer: notification-daemon
 
-# We have multiple nodejs versions in the repo - prefer version 10 for now
-Prefer: nodejs15 nodejs15-devel npm15
+# We have multiple nodejs versions in the repo - prefer version -default (from meta package)
+Prefer: nodejs-default nodejs-devel-default npm-default
 
 # have choice for libpulse.so.0 needed by wine-32bit: apulse-32bit libpulse0-32bit - prefering the 'original'
 Prefer: libpulse0-32bit libsane1-32bit -pipewire-pulseaudio
