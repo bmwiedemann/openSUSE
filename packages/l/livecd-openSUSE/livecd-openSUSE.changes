@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 14 17:53:20 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Omit some more dracut modules from the Rescue CD's initrd
+
+-------------------------------------------------------------------
 Wed Apr 14 17:21:52 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Shrink RescueCD: drop libqt5-qttranslations.

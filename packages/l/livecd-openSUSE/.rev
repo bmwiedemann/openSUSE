@@ -1181,4 +1181,12 @@
     <user>dimstar_suse</user>
     <comment>- Shrink RescueCD: drop libqt5-qttranslations.</comment>
   </revision>
+  <revision rev="147" vrev="147">
+    <srcmd5>1eaa51711fce734427d1a847241c71cf</srcmd5>
+    <version>unknown</version>
+    <time>1618928044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887032</requestid>
+  </revision>
 </revisionlist>

@@ -55,6 +55,9 @@ if [ "$desktop" = "x11" ]; then
 	sed -i 's/echo network rootfs-block/echo rootfs-block/' /usr/lib/dracut/modules.d/90kiwi-live/module-setup.sh
 	echo 'omit_dracutmodules+=" network "' >> /etc/dracut.conf.d/no-network.conf
 
+	# This only needs to be able to boot the live cd
+	echo 'omit_dracutmodules+=" bcache crypt lvm mdraid lunmask "' >> /etc/dracut.conf.d/less-storage.conf
+
 	# Work around https://github.com/OSInside/kiwi/issues/1751
 	sed -i '/omit_dracutmodules=/d' /usr/bin/dracut
 fi
