@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Apr 21 13:16:06 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 10.0: 
+  * Switch to use Meson for build system instead of autotools
+  * Require libvirt >= 1.2.8
+  * Redesign UI to use title bar widget instead of menu bar
+  * Request use of dark theme by default, if available
+  * Don't filter out oVirt DATA storage domains
+    for ISO image sharing
+  * Add --keymap arg to allow keys to be remapped
+  * Display error message if no extension is present
+    for screenshot filename
+  * Fix misc memory leaks
+  * Use nicer error message if not ISOs are available
+  * Use more explicit accelerator hint to distinguish
+    left and right ctrl/alt keys
+  * Report detailed file transfer errors
+  * Use standard about diaglog
+  * Refresh and improve translations
+  * Install appstream data file in preferred location
+  * Refresh appstream data file contents
+  * Display VM title when listing VMs, if available
+  * Display VM description as tooltop, if available
+  * Sort VM names when listing
+  * Add --shared arg to request a shared session for VNC
+  * Disable all accels when not grabbed in kiosk mode
+  * Allow num keypad to be used for zoom changes
+  * Disable grab sequence in kiosk mode to prevent escape
+  * Allow zoom hotkeys to be set on the command line / vv file
+  * Display error message if VNC connection fails
+  * Fix warnings about atomics with new GLib
+  * Remove use of deprecated GTK APIs
+  * Document cursor ungrab sequence in man pages
+  * Honour Ctrl-C when auth dialog is active
+  * Minor UI tweaks to auth dialog
+  * Support VM power control actions with VNC
+  * Add --cursor arg to control whether a local pointer is
+    rendered with VNC
+  * Add --auto-resize arg and menu to control whether to
+  * resize the remote framebuffer to math local window size
+  * Add support for remote framebuffer resize with VNC
+  * Handle case sensitivity when parsing accelerator mappings
+
+-------------------------------------------------------------------
 Fri May  1 11:26:30 MDT 2020 - carnold@suse.com
 
 - Update to 9.0:

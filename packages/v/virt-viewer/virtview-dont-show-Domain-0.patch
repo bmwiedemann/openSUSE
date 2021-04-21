@@ -1,29 +1,11 @@
-References: bsc#983689
-A user should not be able to connect to Domain-0. Don't show it
-in the list.
-
-Index: virt-viewer-8.0/src/virt-viewer.c
-===================================================================
---- virt-viewer-8.0.orig/src/virt-viewer.c
-+++ virt-viewer-8.0/src/virt-viewer.c
-@@ -823,6 +823,7 @@ choose_vm(GtkWindow *main_window,
-     virDomainPtr *domains, dom = NULL;
-     int i, vms_running;
-     unsigned int flags = VIR_CONNECT_LIST_DOMAINS_RUNNING;
-+    const char *domain_name;
- 
-     g_return_val_if_fail(vm_name != NULL, NULL);
-     free(*vm_name);
-@@ -831,8 +832,11 @@ choose_vm(GtkWindow *main_window,
- 
+--- virt-viewer-10.0/src/virt-viewer.c.orig	2021-04-21 15:27:45.741347909 +0200
++++ virt-viewer-10.0/src/virt-viewer.c	2021-04-21 15:27:29.629291351 +0200
+@@ -820,6 +820,8 @@
      vms_running = virConnectListAllDomains(conn, &domains, flags);
      for (i = 0; i < vms_running; i++) {
-+        domain_name = virDomainGetName(domains[i]);
-+        if (domain_name == NULL || !strcmp(domain_name, "Domain-0"))
+         const char *name = virDomainGetName(domains[i]);
++        if (name == NULL || !strcmp(name, "Domain-0"))
 +            continue;
+         char *title = virDomainGetMetadata(domains[i], VIR_DOMAIN_METADATA_TITLE, NULL, 0);
+         char *description = virDomainGetMetadata(domains[i], VIR_DOMAIN_METADATA_DESCRIPTION, NULL, 0);
          gtk_list_store_append(model, &iter);
--        gtk_list_store_set(model, &iter, 0, virDomainGetName(domains[i]), -1);
-+        gtk_list_store_set(model, &iter, 0, domain_name, -1);
-         virDomainFree(domains[i]);
-     }
-     free(domains);

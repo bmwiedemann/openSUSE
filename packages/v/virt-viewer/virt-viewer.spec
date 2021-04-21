@@ -1,7 +1,7 @@
 #
 # spec file for package virt-viewer
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,27 +20,31 @@ Name:           virt-viewer
 Summary:        Virtual Machine Viewer
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Version:        9.0
+Version:        10.0
 Release:        0
-Url:            http://www.virt-manager.org
-Source:         https://virt-manager.org/download/sources/virt-viewer/%name-%version.tar.gz
+URL:            http://www.virt-manager.org
+Source:         https://releases.pagure.org/virt-viewer/virt-viewer-%{version}.tar.xz
+Source1:        https://releases.pagure.org/virt-viewer/virt-viewer-%{version}.tar.xz.asc
 Patch50:        netcat.patch
 Patch51:        virtview-desktop.patch
 Patch52:        virtview-dont-show-Domain-0.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-BuildRequires:  automake
+BuildRequires:  bash-completion-devel
+BuildRequires:  cmake
 BuildRequires:  gtk-vnc-devel >= 0.3.8
 BuildRequires:  intltool
 BuildRequires:  libglade2-devel
+BuildRequires:  libgovirt-devel
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  libxml2-devel
+BuildRequires:  meson
 BuildRequires:  spice-gtk-devel
 BuildRequires:  vte-devel
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-vnc-2.0)
-BuildRequires:  pkgconfig(libvirt) >= 0.10.0
-BuildRequires:  pkgconfig(libvirt-glib-1.0) >= 0.1.8
+BuildRequires:  pkgconfig(libvirt) >= 1.2.8
+BuildRequires:  pkgconfig(libvirt-glib-1.0) >= 1.2.8
 # Our Runtime requirements
 Requires:       netcat
 
@@ -56,26 +60,29 @@ the display, and libvirt for looking up VNC server details.
 %patch52 -p1
 
 %build
-%configure --with-spice-gtk --disable-update-mimedb
-make %{?_smp_mflags}
+%meson \
+    -Dspice=enabled \
+    %{nil}
+%meson_build
 
 %install
-%makeinstall
+%meson_install
 %{find_lang} %{name}
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc COPYING AUTHORS ChangeLog
-%dir %{_datadir}/appdata
+%doc AUTHORS
+%license COPYING
+%dir %{_datadir}/metainfo
+%dir %{_datadir}/bash-completion/completions
 %{_bindir}/%{name}
 %{_bindir}/remote-viewer
 %{_datadir}/icons/hicolor/*/apps/*
-%{_datadir}/icons/hicolor/24x24/devices/virt-viewer-usb.png
-%{_datadir}/icons/hicolor/24x24/devices/virt-viewer-usb.svg
 %{_mandir}/man1/virt-viewer.1*
 %{_mandir}/man1/remote-viewer.1*
 %{_datadir}/applications/remote-viewer.desktop
 %{_datadir}/mime/packages/virt-viewer-mime.xml
-%{_datadir}/appdata/remote-viewer.appdata.xml
+%{_datadir}/bash-completion/completions/virt-viewer
+%{_datadir}/metainfo/remote-viewer.appdata.xml
 
 %changelog
