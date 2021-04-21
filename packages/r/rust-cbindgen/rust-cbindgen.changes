@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 19 12:16:37 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 0.19.0
+   * Simplify types in generics
+   * Use --profile=check for macro expansion
+   * Use exported name to prefix enum variants
+   * Fix path attribute handling in inline submodules
+   * Fix a stack overflow with some recursive typedefs
+
+- Update to 0.18.0
+   * Simplify types in nested types such as pointed-to types and 
+     function signatures
+
+- Update to 0.17.0
+     * Add with_parse_extra_bindings to builder.
+     * Support NonZero and fix incorrect simplification of Option<ptr> into ptr.
+     * Deal with name conflicts correctly in declaration type resolution.
+     * Support pointers to ZSTs.
+
+-------------------------------------------------------------------
 Tue Jan 12 08:25:59 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to 0.16.0
