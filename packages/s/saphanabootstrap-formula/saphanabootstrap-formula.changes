@@ -1,14 +1,16 @@
 -------------------------------------------------------------------
 Thu Mar 18 07:41:18 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
-- Implement the load balancer use case in the cluster resource
+- Version bump 0.7.1
+- Implement the load balancer use case for GCP in the cluster resource
   agents template
 
 -------------------------------------------------------------------
 Fri Mar 12 15:39:31 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
-- Fix the HANA sidadm usage to tranfsorm to lowercase some states
-  managing the sudoers file in ha_cluster.sls state file 
+- Fix the HANA sidadm usage to transform to lowercase some states
+  managing the sudoers file in ha_cluster.sls state file
+  (bsc#1185090)
 
 -------------------------------------------------------------------
 Fri Mar  5 15:30:40 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
