@@ -1,7 +1,7 @@
 #
 # spec file for package containerized-data-importer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,11 @@ Group:          System/Packages
 URL:            https://github.com/kubevirt/containerized-data-importer
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  golang-packaging
+BuildRequires:  libnbd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sed
 BuildRequires:  golang(API) = 1.14
-BuildRequires:  libnbd-devel
 ExclusiveArch:  x86_64
 
 %description
