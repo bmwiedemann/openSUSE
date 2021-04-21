@@ -17,9 +17,9 @@
 #
 
 
-%define xpra_ver 4.1.2
+%define xpra_ver 4.1.3
 %define html5_ver 4.1.2
-%define uglifyjs_ver 3.13.3
+%define uglifyjs_ver 3.13.4
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
 Version:        %{xpra_ver}
@@ -27,7 +27,7 @@ Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
 URL:            https://www.xpra.org/
-Source0:        https://xpra.org/src/%{name}-%{version}.tar.xz
+Source0:        https://xpra.org/src/%{name}-%{version}.tar.gz
 Source1:        xpra-icon.png
 Source2:        https://xpra.org/src/%{name}-html5-%{html5_ver}.tar.xz
 Source3:        https://registry.npmjs.org/uglify-js/-/uglify-js-%{uglifyjs_ver}.tgz
