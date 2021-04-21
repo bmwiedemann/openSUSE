@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 23 23:28:41 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- avoid restarts on update by using %service_del_postun_without_restart 
+
+-------------------------------------------------------------------
 Sat Jan 30 18:46:49 UTC 2021 - Andrés Barrantes Silman <andresbs@opensuse.org>
 
 - Version bump to 0.7.0

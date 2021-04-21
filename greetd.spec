@@ -80,7 +80,7 @@ getent passwd greeter >/dev/null || %{_sbindir}/useradd -r -g greeter -G video -
 %service_del_preun %{name}.service
 
 %postun
-%service_del_postun %{name}.service
+%service_del_postun_without_restart %{name}.service
 
 %files
 %license LICENSE
