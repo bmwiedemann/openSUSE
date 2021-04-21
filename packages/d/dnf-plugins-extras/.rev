@@ -83,4 +83,12 @@
   + Patch: 0001-test_system_upgrade-Set-installroot-in-the-mocked-cl.patch</comment>
     <requestid>853459</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>501fa974e08da19ad0e03eceee7d8cec</srcmd5>
+    <version>4.0.14</version>
+    <time>1619031606</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>887048</requestid>
+  </revision>
 </revisionlist>

@@ -32,7 +32,7 @@
 %bcond_without tests
 
 Name:           dnf-plugins-extras
-Version:        4.0.13
+Version:        4.0.14
 Release:        0
 Summary:        Extras Plugins for DNF
 License:        GPL-2.0-or-later
@@ -41,7 +41,6 @@ URL:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 # Backports from upstream
-Patch0001:      0001-test_system_upgrade-Set-installroot-in-the-mocked-cl.patch
 
 BuildRequires:  cmake
 BuildRequires:  gettext
@@ -224,6 +223,11 @@ pushd %{buildroot}%{_unitdir}/system-update.target.wants/
   ln -sr ../dnf-system-upgrade.service
 popd
 
+# Link dnf-offline-{upgrade,distrosync}.8 to dnf-system-upgrade.8
+echo ".so man8/dnf-system-upgrade.8" > %{buildroot}%{_mandir}/man8/dnf-offline-upgrade.8
+echo ".so man8/dnf-system-upgrade.8" > %{buildroot}%{_mandir}/man8/dnf-offline-distrosync.8
+
+
 %find_lang %{name}
 
 %if ! %{with tracer}
@@ -263,6 +267,8 @@ pytest-%{python3_version} -v -s tests/
 %{_unitdir}/system-update.target.wants/dnf-system-upgrade.service
 %{python3_sitelib}/dnf-plugins/system_upgrade.py
 %{_mandir}/man8/dnf-system-upgrade.*
+%{_mandir}/man8/dnf-offline-upgrade.*
+%{_mandir}/man8/dnf-offline-distrosync.*
 
 %if %{with tracer}
 %files -n python3-dnf-plugin-tracer
