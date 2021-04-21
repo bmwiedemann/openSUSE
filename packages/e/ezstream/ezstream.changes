@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 21 18:17:01 UTC 2021 - Ming Li <mli@suse.com>
+
+- update to 1.0.2:
+ * Fix a crash, if metadata placeholders are configured for input files
+   that do not contain the respective values. From gui-lux on Github (#16).
+
+-------------------------------------------------------------------
 Mon Aug 17 12:15:01 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.0.1:
