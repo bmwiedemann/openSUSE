@@ -34,4 +34,12 @@
     It has now been corrected, and verified against CIE 159:2004.</comment>
     <requestid>682459</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3b94a64398876d75bbd07fd746e348f2</srcmd5>
+    <version>1.1.2</version>
+    <time>1619031615</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>887126</requestid>
+  </revision>
 </revisionlist>

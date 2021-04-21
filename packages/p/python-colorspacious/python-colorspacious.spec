@@ -1,7 +1,7 @@
 #
 # spec file for package python-colorspacious
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-colorspacious
 Version:        1.1.2
 Release:        0
 Summary:        Python library for doing colorspace conversions
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/njsmith/colorspacious
 Source:         https://files.pythonhosted.org/packages/source/c/colorspacious/colorspacious-%{version}.tar.gz
 BuildRequires:  %{python_module numpy}
