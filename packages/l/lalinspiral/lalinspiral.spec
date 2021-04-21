@@ -22,7 +22,7 @@
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalinspiral
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        LSC Algorithm Inspiral Library
 License:        GPL-2.0-or-later
@@ -93,7 +93,9 @@ Requires:       pkgconfig(lalframe)
 Requires:       pkgconfig(lalmetaio)
 Requires:       pkgconfig(lalsimulation)
 Requires:       pkgconfig(libmetaio)
+%if %{with octave}
 Requires:       pkgconfig(octave)
+%endif
 
 %description -n %{name}-devel
 This package contains sources and header files needed to build applications
