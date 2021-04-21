@@ -1,7 +1,7 @@
 #
 # spec file for package kronometer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A stopwatch application by KDE
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
-URL:            https://userbase.kde.org/Kronometer
+URL:            https://apps.kde.org/kronometer
 Source:         https://download.kde.org/stable/kronometer/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Crash)
@@ -60,40 +60,19 @@ Kronometer's main features are the following:
 %install
   %kf5_makeinstall -C build
   %find_lang %{name} --with-kde --with-man
-%if 0%{?opensuse_version} > 1320 || 0%{?sle_version} >= 120300
   %{kf5_find_htmldocs}
-%else
-# %%kf5_find_htmldocs is only defined since Leap 42.3
-  CURDIR=`pwd`
-  pushd %{buildroot}%{_kf5_htmldir}
-  for i in *; do
-    if ! [ -d "%{_datadir}/locale/${i}" ]; then
-        echo "Removing unsupported translation %{_kf5_htmldir}/${i}"
-        rm -rf "$i"
-    elif [ "$i" != "en" ]; then
-        echo "%doc %lang($i) %{_kf5_htmldir}/${i}" >> $CURDIR/%{name}.lang
-    fi
-  done
-  popd
-%endif
 
 %files -f %{name}.lang
 %license COPYING
 %doc README
-%{_kf5_applicationsdir}/org.kde.kronometer.desktop
-%{_kf5_bindir}/%{name}
-%dir %{_kf5_configkcfgdir}
-%{_kf5_configkcfgdir}/%{name}.kcfg
-%if 0%{?suse_version} == 1315 && 0%{?sle_version} < 120200
-%dir %{_kf5_appstreamdir}
-%endif
-%{_kf5_appstreamdir}/org.kde.kronometer.appdata.xml
-%{_kf5_iconsdir}/hicolor/*/apps/kronometer.*
 %doc %lang(en) %{_kf5_htmldir}/en/%{name}
 %doc %lang(en) %{_kf5_mandir}/man1/%{name}.1.gz
-%if 0%{?suse_version} == 1315 && 0%{?sle_version} < 120300
-%dir %{_kf5_mandir}/uk
-%dir %{_kf5_mandir}/uk/man1
-%endif
+# kf5-filesystem doesn't own this directory in 15.2
+%dir %{_kf5_configkcfgdir}
+%{_kf5_applicationsdir}/org.kde.kronometer.desktop
+%{_kf5_appstreamdir}/org.kde.kronometer.appdata.xml
+%{_kf5_bindir}/%{name}
+%{_kf5_configkcfgdir}/%{name}.kcfg
+%{_kf5_iconsdir}/hicolor/*/apps/kronometer.*
 
 %changelog

@@ -84,4 +84,15 @@
     <comment></comment>
     <requestid>719467</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0fc2bd9169a6ef0e05cef628fbc18313</srcmd5>
+    <version>2.2.3</version>
+    <time>1619031588</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec cleanup
+- Stop owning directories provided by the filesystem package (boo#1184786)
+
+- Update URL.</comment>
+    <requestid>886907</requestid>
+  </revision>
 </revisionlist>

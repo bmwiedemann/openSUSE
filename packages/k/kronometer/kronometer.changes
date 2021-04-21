@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 20 07:47:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+- Stop owning directories provided by the filesystem package (boo#1184786)
+
+-------------------------------------------------------------------
+Sat Apr 17 17:21:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update URL.
+
+-------------------------------------------------------------------
 Sun Jul 28 21:55:20 UTC 2019 - wbauer@tmo.at
 
 - Update to 2.2.3:
