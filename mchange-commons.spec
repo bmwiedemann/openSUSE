@@ -1,7 +1,7 @@
 #
 # spec file for package mchange-commons
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,19 @@
 
 %global git_tag mchange-commons-java-%{version}
 Name:           mchange-commons
-Version:        0.2.11
+Version:        0.2.20
 Release:        0
 Summary:        A collection of general purpose utilities for c3p0
 License:        LGPL-2.0-only OR EPL-1.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/swaldman/mchange-commons-java
-Source0:        https://github.com/swaldman/mchange-commons-java/archive/%{git_tag}/mchange-commons-%{version}.tar.gz
+Source0:        %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{git_tag}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  java-devel
 BuildRequires:  javapackages-local
-BuildRequires:  log4j12
+BuildRequires:  log4j
 BuildRequires:  slf4j
-BuildRequires:  typesafe-config
+BuildRequires:  typesafe-config >= 1.3.0
 BuildArch:      noarch
 
 %description
@@ -45,21 +45,26 @@ Group:          Documentation/HTML
 %{summary}.
 
 %prep
-%setup -q -n mchange-commons-java-%{git_tag}
+%setup -q -n %{git_tag}
 
 find -name '*.class' -delete
 find -name '*.jar' -delete
 
 %build
+export CLASS_PATH=$(build-classpath log4j log4j/log4j-{api,core} slf4j/slf4j-api typesafe-config)
 mkdir -p target/classes
-javac -d target/classes -source 7 -target 7 \
-  -cp $(build-classpath log4j12/log4j-12 slf4j typesafe-config) \
+javac -d target/classes \
+  -source 7 -target 7 \
+  -cp  "$CLASS_PATH" \
   $(find src/main/java -name \*.java | xargs)
+
 jar cf target/%{git_tag}.jar -C target/classes .
 jar uf target/%{git_tag}.jar -C src/main/resources .
 mkdir -p target/api
-javadoc -d target/api -source 7 -notimestamp \
-  -classpath $(build-classpath log4j12/log4j-12 slf4j typesafe-config) \
+javadoc -d target/api -source 7 \
+  -cp  "$CLASS_PATH" \
+  -Xdoclint:none \
+  -notimestamp \
   $(find src/main/java -name \*.java | xargs)
 
 sed "s/@mchange-commons-java.version.maven@/%{version}/g" \
