@@ -1,7 +1,7 @@
 #
 # spec file for package blosc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define major   1
 %define libname lib%{name}%{major}
 Name:           blosc
-Version:        1.20.1
+Version:        1.21.0
 Release:        0
 Summary:        A blocking, shuffling and lossless compression library
 License:        MIT AND BSD-3-Clause AND BSD-2-Clause
 Group:          Productivity/Archiving/Compression
 URL:            https://www.blosc.org/
-Source:         https://github.com/Blosc/c-blosc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/Blosc/c-blosc/archive/v%{version}.tar.gz#/c-blosc-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
