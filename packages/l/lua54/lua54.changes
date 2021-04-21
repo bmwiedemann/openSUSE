@@ -1,8 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 19 09:15:40 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add upstream-bugs.patch and upstream-bugs-test.patch to fix
+  bugs 1,2,3 for build and tests respectively.
+
+-------------------------------------------------------------------
+Mon Mar 29 17:04:47 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 5.4.3:
+  * Fixes bugs found in Lua 5.4.2
+- Removed upstream-bugs.patch: new release (no bugs found yet)
+- Removed upstream-bugs-test.patch: new release (no bugs found yet)
+
+-------------------------------------------------------------------
 Thu Mar 11 17:10:14 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add upstream-bugs.patch and upstream-bugs-test.patch to fix
-  bugs 2,3,4 for build and tests respectively. 
+  bugs 2,3,4 for build and tests respectively.
 
 -------------------------------------------------------------------
 Fri Jan 22 12:38:04 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>

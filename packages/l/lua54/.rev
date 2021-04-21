@@ -82,4 +82,13 @@
     <comment></comment>
     <requestid>878379</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5c977a6f2b757b500787b71b6e4f3abc</srcmd5>
+    <version>5.4.3</version>
+    <time>1619031487</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream-bugs.patch and upstream-bugs-test.patch to fix
+  bugs 1,2,3 for build and tests respectively.</comment>
+    <requestid>886619</requestid>
+  </revision>
 </revisionlist>

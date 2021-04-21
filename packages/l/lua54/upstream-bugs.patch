@@ -1,46 +1,149 @@
---- a/src/ldblib.c
-+++ b/src/ldblib.c
-@@ -152,6 +152,7 @@ static int db_getinfo (lua_State *L) {
-   lua_State *L1 = getthread(L, &arg);
-   const char *options = luaL_optstring(L, arg+2, "flnSrtu");
-   checkstack(L, L1, 3);
-+  luaL_argcheck(L, options[0] != '>', arg + 2, "invalid option '>'");
-   if (lua_isfunction(L, arg + 1)) {  /* info about a function? */
-     options = lua_pushfstring(L, ">%s", options);  /* add '>' to 'options' */
-     lua_pushvalue(L, arg + 1);  /* move function to 'L1' stack */
---- a/src/ltablib.c
-+++ b/src/ltablib.c
-@@ -146,7 +146,7 @@ static int tmove (lua_State *L) {
- static void addfield (lua_State *L, luaL_Buffer *b, lua_Integer i) {
-   lua_geti(L, 1, i);
-   if (!lua_isstring(L, -1))
--    luaL_error(L, "invalid value (%s) at index %d in table for 'concat'",
-+    luaL_error(L, "invalid value (%s) at index %I in table for 'concat'",
-                   luaL_typename(L, -1), i);
-   luaL_addvalue(b);
+From 47cffdc723c2e0c6dfaf62b7775ca1c1d338c0a4 Mon Sep 17 00:00:00 2001
+From: Roberto Ierusalimschy <roberto@inf.puc-rio.br>
+Date: Wed, 7 Apr 2021 14:59:26 -0300
+Subject: [PATCH] Bug: tbc variables in "for" loops don't avoid tail calls
+
+---
+ lparser.c         | 21 +++++++++++++++------
+ testes/locals.lua | 23 +++++++++++++++++++++++
+ 2 files changed, 38 insertions(+), 6 deletions(-)
+
+diff --git a/lparser.c b/lparser.c
+index 284ef1f0c..df9473c27 100644
+--- a/src/lparser.c
++++ b/src/lparser.c
+@@ -416,6 +416,17 @@ static void markupval (FuncState *fs, int level) {
  }
---- a/src/ldebug.c
-+++ b/src/ldebug.c
-@@ -638,14 +638,18 @@ static const char *funcnamefromcode (lua_State *L, CallInfo *ci,
  
  
++/*
++** Mark that current block has a to-be-closed variable.
++*/
++static void marktobeclosed (FuncState *fs) {
++  BlockCnt *bl = fs->bl;
++  bl->upval = 1;
++  bl->insidetbc = 1;
++  fs->needclose = 1;
++}
++
++
  /*
--** The subtraction of two potentially unrelated pointers is
--** not ISO C, but it should not crash a program; the subsequent
--** checks are ISO C and ensure a correct result.
-+** Check whether pointer 'o' points to some value in the stack
-+** frame of the current function. Because 'o' may not point to a
-+** value in this stack, we cannot compare it with the region
-+** boundaries (undefined behaviour in ISO C).
- */
- static int isinstack (CallInfo *ci, const TValue *o) {
--  StkId base = ci->func + 1;
--  ptrdiff_t i = cast(StkId, o) - base;
--  return (0 <= i && i < (ci->top - base) && s2v(base + i) == o);
-+  StkId pos;
-+  for (pos = ci->func + 1; pos < ci->top; pos++) {
-+    if (o == s2v(pos))
-+      return 1;
-+  }
-+  return 0;  /* not found */
+ ** Find a variable with the given name 'n'. If it is an upvalue, add
+ ** this upvalue into all intermediate functions. If it is a global, set
+@@ -1599,7 +1610,7 @@ static void forlist (LexState *ls, TString *indexname) {
+   line = ls->linenumber;
+   adjust_assign(ls, 4, explist(ls, &e), &e);
+   adjustlocalvars(ls, 4);  /* control variables */
+-  markupval(fs, fs->nactvar);  /* last control var. must be closed */
++  marktobeclosed(fs);  /* last control var. must be closed */
+   luaK_checkstack(fs, 3);  /* extra space to call generator */
+   forbody(ls, base, line, nvars - 4, 1);
  }
+@@ -1703,11 +1714,9 @@ static int getlocalattribute (LexState *ls) {
+ }
+ 
+ 
+-static void checktoclose (LexState *ls, int level) {
++static void checktoclose (FuncState *fs, int level) {
+   if (level != -1) {  /* is there a to-be-closed variable? */
+-    FuncState *fs = ls->fs;
+-    markupval(fs, level + 1);
+-    fs->bl->insidetbc = 1;  /* in the scope of a to-be-closed variable */
++    marktobeclosed(fs);
+     luaK_codeABC(fs, OP_TBC, reglevel(fs, level), 0, 0);
+   }
+ }
+@@ -1751,7 +1760,7 @@ static void localstat (LexState *ls) {
+     adjust_assign(ls, nvars, nexps, &e);
+     adjustlocalvars(ls, nvars);
+   }
+-  checktoclose(ls, toclose);
++  checktoclose(fs, toclose);
+ }
+ 
+ 
+From d205f3a4847bc8b835fda91f51ba1cf45b796baf Mon Sep 17 00:00:00 2001
+From: Roberto Ierusalimschy <roberto@inf.puc-rio.br>
+Date: Sat, 10 Apr 2021 10:19:21 -0300
+Subject: [PATCH] Bug: Lua source should not use C99 comments ("//")
+
+---
+ lvm.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/lvm.c b/lvm.c
+index c9729bcca..16e01d683 100644
+--- a/src/lvm.c
++++ b/src/lvm.c
+@@ -1156,8 +1156,10 @@ void luaV_execute (lua_State *L, CallInfo *ci) {
+     Instruction i;  /* instruction being executed */
+     StkId ra;  /* instruction's A register */
+     vmfetch();
+-// low-level line tracing for debugging Lua
+-// printf("line: %d\n", luaG_getfuncline(cl->p, pcRel(pc, cl->p)));
++    #if 0
++      /* low-level line tracing for debugging Lua */
++      printf("line: %d\n", luaG_getfuncline(cl->p, pcRel(pc, cl->p)));
++    #endif
+     lua_assert(base == ci->func + 1);
+     lua_assert(base <= L->top && L->top < L->stack_last);
+     /* invalidate top for instructions not expecting it */
+From 681297187ec45268e872b26753c441586c12bdd8 Mon Sep 17 00:00:00 2001
+From: Roberto Ierusalimschy <roberto@inf.puc-rio.br>
+Date: Fri, 16 Apr 2021 15:41:44 -0300
+Subject: [PATCH] Bug: yielding in '__close' mess up number of returns
+
+Yielding in a __close metamethod called when returning vararg results
+changes the top and so messes up the number of returned values.
+---
+ lstate.h          |  2 +-
+ lvm.c             | 12 +++++++++-
+ testes/locals.lua | 59 +++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 71 insertions(+), 2 deletions(-)
+
+diff --git a/lstate.h b/lstate.h
+index c1283bb6b..44cf939cb 100644
+--- a/src/lstate.h
++++ b/src/lstate.h
+@@ -165,7 +165,7 @@ typedef struct stringtable {
+ ** - field 'nyield' is used only while a function is "doing" an
+ ** yield (from the yield until the next resume);
+ ** - field 'nres' is used only while closing tbc variables when
+-** returning from a C function;
++** returning from a function;
+ ** - field 'transferinfo' is used only during call/returnhooks,
+ ** before the function starts or after it ends.
+ */
+diff --git a/lvm.c b/lvm.c
+index 16e01d683..e4b1903e7 100644
+--- a/src/lvm.c
++++ b/src/lvm.c
+@@ -847,10 +847,19 @@ void luaV_finishOp (lua_State *L) {
+       luaV_concat(L, total);  /* concat them (may yield again) */
+       break;
+     }
+-    case OP_CLOSE:  case OP_RETURN: {  /* yielded closing variables */
++    case OP_CLOSE: {  /* yielded closing variables */
+       ci->u.l.savedpc--;  /* repeat instruction to close other vars. */
+       break;
+     }
++    case OP_RETURN: {  /* yielded closing variables */
++      StkId ra = base + GETARG_A(inst);
++      /* adjust top to signal correct number of returns, in case the
++         return is "up to top" ('isIT') */
++      L->top = ra + ci->u2.nres;
++      /* repeat instruction to close other vars. and complete the return */
++      ci->u.l.savedpc--;
++      break;
++    }
+     default: {
+       /* only these other opcodes can yield */
+       lua_assert(op == OP_TFORCALL || op == OP_CALL ||
+@@ -1672,6 +1681,7 @@ void luaV_execute (lua_State *L, CallInfo *ci) {
+           n = cast_int(L->top - ra);  /* get what is available */
+         savepc(ci);
+         if (TESTARG_k(i)) {  /* may there be open upvalues? */
++          ci->u2.nres = n;  /* save number of returns */
+           if (L->top < ci->top)
+             L->top = ci->top;
+           luaF_close(L, base, CLOSEKTOP, 1);

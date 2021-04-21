@@ -25,7 +25,7 @@
 %define major_version 5.4
 %define libname liblua5_4-5
 Name:           lua54%{name_ext}
-Version:        5.4.2
+Version:        5.4.3
 Release:        0
 Summary:        Small Embeddable Language with Procedural Syntax
 License:        MIT
@@ -41,7 +41,7 @@ Patch0:         lua-build-system.patch
 Patch1:         attrib_test.patch
 Patch2:         files_test.patch
 Patch3:         main_test.patch
-# PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html#5.4.2
+# PATCH-FIX-UPSTREAM https://www.lua.org/bugs.html#5.4.3
 Patch4:         upstream-bugs.patch
 Patch5:         upstream-bugs-test.patch
 %if "%{flavor}" == "test"

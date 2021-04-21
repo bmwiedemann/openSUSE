@@ -132,23 +132,23 @@ Subject: build system
  $(LUA_A): $(BASE_O)
 -	$(AR) $@ $(BASE_O)
 -	$(RANLIB) $@
-+	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) -lm -ldl $(BASE_O:.o=.lo) -rpath /usr/lib -version-info 9:0:4 -o liblua$(V).la
++	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) -lm -ldl $(BASE_O:.o=.lo) -rpath /usr/lib -version-info 9:0:4 -o $(LUA_A)
 
  $(LUA_T): $(LUA_O) $(LUA_A)
 -	$(CC) -o $@ $(LDFLAGS) $(LUA_O) $(LUA_A) $(LIBS)
-+	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) $(LIBS) -static liblua$(V).la -Wl,-E lua.lo -o $@
++	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) $(LIBS) -static $(LUA_A) -Wl,-E lua.lo -o $@
 
  $(LUAC_T): $(LUAC_O) $(LUA_A)
 -	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) $(LUA_A) $(LIBS)
-+	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) -static liblua$(V).la luac.lo -o $@
++	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) -static $(LUA_A) luac.lo -o $@
 
  test:
--	./lua -v
-+	$(LIBTOOL) --mode=execute -dlopen ./liblua$(V).la ./lua$(V) -v
+-	./$(LUA_T) -v
++	$(LIBTOOL) --mode=execute -dlopen ./$(LUA_A) ./$(LUA_T) -v
 
  clean:
 	$(RM) $(ALL_T) $(ALL_O)
-@@ -142,14 +157,6 @@
+@@ -144,14 +159,6 @@
  .PHONY: all $(PLATS) help test clean default o a depend echo
 
  # Compiler modules may use special flags.
@@ -166,7 +166,7 @@ Subject: build system
 
 --- a/src/luaconf.h
 +++ b/src/luaconf.h
-@@ -227,7 +227,7 @@
+@@ -217,7 +217,7 @@
 
  #else			/* }{ */
 
