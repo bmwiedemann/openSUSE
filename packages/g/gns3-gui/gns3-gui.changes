@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  9 09:30:01 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.20
+  * Fix project does not load anymore.
+  * Do not connect to server while waiting for user to
+    accept/reject SSL certificate.
+  * Fix invalid server version check request.
+  * Add terminator as a predefined custom console option.
+
+-------------------------------------------------------------------
 Sat Mar  6 12:38:37 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.19
