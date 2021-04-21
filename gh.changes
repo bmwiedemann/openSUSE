@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Apr 20 23:40:06 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 1.9.2:
+  - Actions Fixes
+    * Fix Actions use int64 explicitly in Actions support #3432
+    * Fix requesting REST sub-resources on GHE #3461
+    * Fix run view --log when steps have slashes #3445
+    * Include magic repo resolution magic for gh workflow and gh run #3468
+  - Other Fixes
+    * Fix issue create --web #3472
+    * Fix detecting PR status when passing branch as arg #3351
+    * Bump AlecAivazis/survey to fix bug with unicode input #3439
+  - Development / Docs
+    * Increase linter timeout from 1min to 3min #3462
+    * Remove unused embedded struct #3402
+    * Add note on supported value types in raw-fields #3400
+    * linuxbrew details added in linux installation docs. #3465
+    * Add Funtoo Linux install instructions #3438
+    * Add Debian install variant without add-apt-repository #3419
+
+-------------------------------------------------------------------
+Mon Apr 19 15:19:07 UTC 2021 - Mustafa Çalışkan <musfay@protonmail.com>
+
+- Update to version 1.9.1:
+  * Create cache dir
+  * Fix whitespace formatting of `issue/pr view` help text
+  * Disallow unsupported values for `--json` flag
+  * Fix `pr view` tests broken by `createdAt` → `submittedAt` switch
+  * Fix assigning null Exporter
+  * Tests for GraphQL query builder and JSON exporter
+  * Add `gh help formatting` topic & link to it from commands with JSON output
+  * Placeholder consistency
+  * Minor usage improvements
+  * Bump run list limit
+  * Annotation fixes
+  * Unhide actions commands
+  * Incorporate wording feedback
+  * Fix small bug with startup_failure conclusion
+  * Add note about current branch detection
+- Prevent Makefile from overriding variables
+- Enable tests
+
+-------------------------------------------------------------------
 Tue Apr 13 07:50:34 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Supplement bash-completion instead of bash 

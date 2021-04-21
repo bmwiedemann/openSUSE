@@ -16,8 +16,9 @@
 #
 
 
+%define goflags "-buildmode=pie -trimpath -mod=vendor -modcacherw"
 Name:           gh
-Version:        1.8.1
+Version:        1.9.2
 Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT
@@ -25,9 +26,12 @@ Group:          Development/Tools/Version Control
 URL:            https://cli.github.com/
 Source0:        https://github.com/cli/cli/archive/v%{version}.tar.gz#/gh-%{version}.tar.gz
 Source1:        vendor.tar.gz
+# Test requirement
+BuildRequires:  git
+# Completions
 BuildRequires:  fish
-BuildRequires:  golang(API) >= 1.13
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.13
 Requires:       git
 
 %description
@@ -66,22 +70,27 @@ Fish command line completion support for %{name}.
 
 %prep
 %autosetup -n cli-%{version} -a 1
+# Upstream decided to tweak Makefile for easier cross-compiling. But the tweak
+# overrides variables so we need to remove them to pass GOFLAGS.
+sed -i 's/GOOS= GOARCH= GOARM= GOFLAGS= CGO_ENABLED=//g' Makefile
 
 %build
-export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw -ldflags=-linkmode=external"
-%make_build GH_VERSION="v%{version}" bin/gh manpages
+GOFLAGS=%{goflags} %make_build GH_VERSION="v%{version}" bin/gh manpages
 
 %install
-bin/gh completion -s bash  | install -Dm644 /dev/stdin \
+bin/gh completion -s bash | install -Dm644 /dev/stdin \
        %{buildroot}%{_datadir}/bash-completion/completions/gh
-bin/gh completion -s zsh   | install -Dm644 /dev/stdin \
+bin/gh completion -s zsh  | install -Dm644 /dev/stdin \
        %{buildroot}%{_datadir}/zsh/site-functions/_gh
-bin/gh completion -s fish  | install -Dm644 /dev/stdin \
+bin/gh completion -s fish | install -Dm644 /dev/stdin \
        %{buildroot}%{_datadir}/fish/vendor_completions.d/gh.fish
 
-install -D -m 0755 bin/gh %{buildroot}%{_bindir}/gh
+install -Dm755 bin/gh %{buildroot}%{_bindir}/gh
 install -d %{buildroot}%{_mandir}/man1/
 cp share/man/man1/* %{buildroot}%{_mandir}/man1
+
+%check
+GOFLAGS=%{goflags} make test
 
 %files
 %doc README.md
