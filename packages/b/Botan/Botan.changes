@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 16 16:56:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Botan 2.18.0
+  * Add support for implementing custom RNG objects through the FFI
+    interface
+  * Improve safegcd bounds, improving runtime performance
+  * Reject non-TLS messages as quickly as possible without waiting
+    for a full record.
+  * Fixes for TLS::Stream::async_shutdown
+- Removed unneeded GNU MP build requirement, support was dropped
+  with version 1.11.10
+- Enabled check target, verify integrity of build library
+
+-------------------------------------------------------------------
 Wed Dec 23 09:20:07 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Botan 2.17.3:

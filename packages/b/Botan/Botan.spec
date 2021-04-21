@@ -1,7 +1,7 @@
 #
 # spec file for package Botan
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define version_suffix 2-17
+%define version_suffix 2-18
 %define short_version 2
 Name:           Botan
-Version:        2.17.3
+Version:        2.18.0
 Release:        0
 Summary:        A C++ Crypto Library
 License:        BSD-2-Clause
@@ -31,9 +31,6 @@ Source2:        %{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  bzip2 >= 1.0.2
 BuildRequires:  gcc-c++
-# FIXME: is this dependency correct?
-BuildRequires:  gmp-devel >= 4.1
-#Requires:       gmp >= 4.1
 BuildRequires:  libbz2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
@@ -100,6 +97,7 @@ python3 ./configure.py \
   --with-bzip2 \
   --with-zlib \
   --with-openssl \
+  --with-openmp \
 %ifarch %{ix86}
   --cpu=x86_32
 %else
@@ -118,6 +116,9 @@ sed -i 's/env python/env python3/' src/scripts/install.py
 rm -f %{buildroot}/%{_libdir}/libbotan*.a
 chmod +x %{buildroot}%{python3_sitearch}/botan2.py
 sed -i '1s@^#!/.*@#!%{_bindir}/python3@' %{buildroot}%{python3_sitearch}/botan2.py
+
+%check
+make check
 
 %post -n libbotan-%{version_suffix} -p /sbin/ldconfig
 %postun -n libbotan-%{version_suffix} -p /sbin/ldconfig
