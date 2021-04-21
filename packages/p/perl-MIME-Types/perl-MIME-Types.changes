@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr 17 03:06:24 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.19
+   see /usr/share/doc/packages/perl-MIME-Types/ChangeLog
+
+  version 2.19: Fri 16 Apr 11:47:10 CEST 2021
+
+  	Improvements:
+  	- update with the newest data from IANA and Apache httpd
+
+  	Changes:
+  	- mp4 preference is video/mp4 [issue #5, Даша Федорова]
+  	- yt preference is video/vnd.youtube.yt [issue #6, Даша Федорова]
+  	- 3gp and 3gpp preference is video/3gpp [issue #7, Даша Федорова]
+
+-------------------------------------------------------------------
 Fri Dec 11 03:07:54 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.18
