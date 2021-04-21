@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 21 06:40:00 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Added upstream fix wine-winegcc-missing-includes.patch and
+  deleted wine-6.6_revert_commit_4f78781.patch.
+- This fixes carla and lmms builds.
+
+-------------------------------------------------------------------
+Mon Apr 19 10:51:51 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Added wine-6.6_revert_commit_4f78781.patch to fix boo#1184951.
+
+-------------------------------------------------------------------
 Sat Apr 10 06:06:28 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 6.6 development release

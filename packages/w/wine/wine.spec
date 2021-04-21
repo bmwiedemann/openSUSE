@@ -137,6 +137,8 @@ Source6:        wine-msi.desktop
 Source5:        ubuntuwine.tar.bz2
 Source7:        baselibs.conf
 Source8:        wine-rpmlintrc
+# PATCH FIX UPSTREAM wine-winegcc-missing-includes.patch fix https://bugs.winehq.org/show_bug.cgi?id=50996
+Patch0:         wine-winegcc-missing-includes.patch
 # SUSE specific patches
 # - currently none, but add them here
 #Patch0:         susefixes.patch
@@ -216,7 +218,7 @@ libraries.
 
 %prep
 %setup -q -n wine-%{realver}
-#patch0 -p1
+%autopatch -p1
 #
 cp %{S:3} .
 #

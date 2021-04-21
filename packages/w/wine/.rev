@@ -3931,4 +3931,14 @@
 - update staging to 6.6 release</comment>
     <requestid>884617</requestid>
   </revision>
+  <revision rev="337" vrev="2">
+    <srcmd5>cf8d55e9150d638e553b4533a21d9505</srcmd5>
+    <version>6.6</version>
+    <time>1619031620</time>
+    <user>dimstar_suse</user>
+    <comment>- Added upstream fix wine-winegcc-missing-includes.patch and
+  deleted wine-6.6_revert_commit_4f78781.patch.
+- This fixes carla and lmms builds. (forwarded request 887226 from plater)</comment>
+    <requestid>887336</requestid>
+  </revision>
 </revisionlist>
