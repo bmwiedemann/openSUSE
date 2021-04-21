@@ -1,7 +1,7 @@
 #
 # spec file for package hexchat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source2:        https://dl.%{name}.net/%{name}/%{name}-%{version}.tar.xz.asc
 Source3:        hexchat.keyring
 # PATCH-FEATURE-SLE migrate-configuration-from-xchat.patch tyang@suse.com fate#318480 -- replace xchat with hexchat
 Patch1:         migrate-configuration-from-xchat.patch
+# PATCH-FIX-UPSTREAM 2559.patch dimstar@opensuse.org -- fix segfault on lua_pop with Lua 5.4.3
+Patch2:         https://patch-diff.githubusercontent.com/raw/hexchat/hexchat/pull/2559.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  lua-devel
@@ -98,8 +100,7 @@ The HexChat plugin providing the Python 3 scripting interface.
 %lang_package
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %meson \
