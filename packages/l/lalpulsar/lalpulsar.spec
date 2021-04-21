@@ -24,7 +24,7 @@
 %define skip_python36 1
 
 Name:           lalpulsar
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        LSC Algorithm Pulsar Library
 License:        GPL-2.0-or-later
