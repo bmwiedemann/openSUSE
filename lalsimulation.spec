@@ -22,7 +22,7 @@
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalsimulation
-Version:        2.5.0
+Version:        2.5.1
 Release:        0
 Summary:        LSC Algorithm Simulation Library
 License:        GPL-2.0-only
