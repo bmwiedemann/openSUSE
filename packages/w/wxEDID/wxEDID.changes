@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Apr 20 02:21:19 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.0.25
+Changed
+  * default size for all spin controls on DTD_Constructor panel.
+    Looks ugly, but works with wxWidgets compiled against GTK3.
+Fixed
+  * <various functions> :: in case of error, always return error
+    message, not just the rcode. Some function were returning the
+    message only if "Ignore Errors" mode was enabled.
+  * Build fails with Clang: unlike GCC, Clang does not support
+    static initialization of flexible arrays in C++ mode:
+    removed flex arrays from all field groups descriptors.
+- Changes in v0.0.24
+Added
+  * VID: Video Input Descriptor: support for field definitions
+    introduced in EDID v1.4
+  * wxEDID_Frame::ImportEDID_hex(): report source file byte offset
+    if conversion fails.
+
+Changed
+  * EDID base block: UNK: Unknown Descriptor, unk_cl::init():
+    insert unknown byte fields instead of single byte string
+    (easier to view and edit).
+  * EDID_class.h: CEA-specific classes moved to dedicated headers:
+    CEA_class.h, CEA_EXT_class.h
+  * EDID_class.h: shared declarations moved to EDID_shared.h
+
+Fixed
+  * (BUG::regression) wxEDID_Frame::UpdateBlockTree():
+    the BlockTree was not expanded automatically when opened file
+    contains only the base EDID block (no extensions).
+  * (BUG::regression): edi_grp_cl::init_fields(): a call to
+    FieldsAr.Empty() is necessary for ForcedGroupRefresh()
+    functions.
+  * (old mislooked BUG): STI: Standard Timing Information: NU flag
+    was not set for unused fields.
+  * Menu "Options": "Reparse EDID buffer" and "AssembleEDID"
+    options are disabled until EDID data is loaded/imported.
+  * wxEDID_Frame::UpdateDataGrid(): missing auto-resizing of row
+    labels width: BlkDataGrid->SetRowLabelSize(wxGRID_AUTOSIZE).
+
+-------------------------------------------------------------------
 Sun Mar 14 17:44:07 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Drop wxedid-no-implicit-string-conversion.patch
