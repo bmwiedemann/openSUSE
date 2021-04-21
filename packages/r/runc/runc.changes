@@ -3,7 +3,7 @@ Wed Feb  3 04:09:17 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.0.0~rc93. Upstream changelog is available from
   https://github.com/opencontainers/runc/releases/tag/v1.0.0-rc93
-  bsc#1182451
+  bsc#1182451 bsc#1184962
 
   * Cgroupv2 support is no longer considered experimental.
   * Mountinfo parsing code has been reworked significantly.
