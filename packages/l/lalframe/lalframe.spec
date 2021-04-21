@@ -22,7 +22,7 @@
 # No support for octave >= 6
 %bcond_with octave
 Name:           lalframe
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        LSC Algorithm Frame Library for gravitational wave data analysis
 License:        GPL-2.0-or-later
