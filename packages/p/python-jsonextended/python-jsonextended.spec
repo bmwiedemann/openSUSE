@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonextended
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-jsonextended
 Version:        0.7.11
 Release:        0
 Summary:        A module to extend the python json package functionality
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/chrisjsewell/jsonextended
 Source:         https://github.com/chrisjsewell/jsonextended/archive/v%{version}.tar.gz#/jsonextended-%{version}.tar.gz
 BuildRequires:  %{python_module devel}

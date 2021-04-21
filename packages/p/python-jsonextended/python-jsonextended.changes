@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 19 04:34:26 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Don't build on Python 3.6, due to no NumPy. 
+
+-------------------------------------------------------------------
 Thu Apr 23 12:00:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip test apply_unitschema as it fails on rounding errors
