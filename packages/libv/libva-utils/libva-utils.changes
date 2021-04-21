@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 19 20:42:33 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 2.11.1:
+  * vainfo: add VA_RC_TCBRC to reported caps list
+  * jpegenc: Allow encoding a 4K frame
+  * h264encode: Added low_power command line option
+  * test_va_api: Enable new caps for VAConfigAttribEncryption
+  * ci: upgrade FreeBSD to 12.2
+  * ci: enable github actions
+
+-------------------------------------------------------------------
 Tue Dec 22 09:50:03 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.10.0:
