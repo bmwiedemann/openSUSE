@@ -18,11 +18,14 @@
 
 # NEP 29: python36-numpy and co. in TW are no more
 %define skip_python36 1
+# python2 not supported by upstream
+%define skip_python2 1
+
 %define shlib lib%{name}6
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalburst
-Version:        1.5.7
+Version:        1.5.8
 Release:        0
 Summary:        LSC Algorithm Burst Library
 License:        GPL-2.0-or-later

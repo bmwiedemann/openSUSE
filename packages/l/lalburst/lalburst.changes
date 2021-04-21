@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  1 23:50:43 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.5.8 (no release notes).
+- Disable python2 build: no longer supported by upstream and
+  python-ligo-* dependencies unavailable.
+
+-------------------------------------------------------------------
 Fri Feb 12 15:58:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.5.7
