@@ -179,7 +179,7 @@ done
 testselect_expr="${donttest:+-k \"not (${donttest# or })\"}"
 # http://docs.astropy.org/en/latest/development/testguide.html#running-tests
 # running pytest directly would require building the extensions inplace
-%python_exec -B -c "
+%{python_exec -B -c "
 import sys, astropy
 pytestargs = ('-v '
               '-n auto ' # pytest-xdist
@@ -188,7 +188,7 @@ pytestargs = ('-v '
               '$testselect_expr')
 returncode = astropy.test(args=pytestargs)
 sys.exit(returncode)
-"
+"}
 %endif
 
 %if !%{with test}

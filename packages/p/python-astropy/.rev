@@ -1156,4 +1156,12 @@
     frames, sky coordinates, and times. [#11133] (forwarded request 883882 from bnavigator)</comment>
     <requestid>883883</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>603ab434e2b2664c76fadfb40b2a73b4</srcmd5>
+    <version>4.2.1</version>
+    <time>1619031555</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886320</requestid>
+  </revision>
 </revisionlist>
