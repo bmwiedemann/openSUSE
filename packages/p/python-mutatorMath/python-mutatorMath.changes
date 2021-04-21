@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 18 13:00:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix missing runtime requirements and test requirement for ufo 
+  subpackage
+- reinstate python36 build, just as in FontTools.
+
+-------------------------------------------------------------------
 Sat Feb 13 17:07:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 build (FontTools requires scipy) 

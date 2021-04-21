@@ -18,7 +18,6 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-mutatorMath
 Version:        3.0.1
 Release:        0
@@ -32,9 +31,17 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildArch:      noarch
+Requires:       python-FontTools
+Requires:       python-defcon
+Requires:       python-fontMath
+# requires fonttools' extras_require[ufo] for the "ufo subpackage", despite not specified by setup.py
+Requires:       python-fs
 # SECTION test requirements
 BuildRequires:  %{python_module defcon}
+BuildRequires:  %{python_module FontTools}
 BuildRequires:  %{python_module fontMath}
+BuildRequires:  %{python_module fs}
+# Full stdlib required to avoid resource warnings in test suite.
 BuildRequires:  %{pythons}
 # /SECTION
 %python_subpackages
@@ -61,6 +68,7 @@ cp %{SOURCE99} .
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/mutatorMath
+%{python_sitelib}/MutatorMath-%{version}*-info
 
 %changelog
