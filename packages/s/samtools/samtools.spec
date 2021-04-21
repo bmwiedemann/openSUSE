@@ -1,7 +1,7 @@
 #
 # spec file for package samtools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           samtools
-Version:        1.10
+Version:        1.11
 Release:        0
 Summary:        Tools for manipulating next-generation sequencing data
 License:        MIT
@@ -56,6 +56,7 @@ make %{?_smp_mflags}
 perlbin=`which perl`
 sed -i "s:/usr/bin/env perl:${perlbin}:" %{buildroot}/%{_bindir}/*.pl
 sed -i "s:/usr/bin/env perl:${perlbin}:" %{buildroot}/%{_bindir}/plot-bamstats
+sed -i "s:/usr/bin/env perl:${perlbin}:" %{buildroot}/%{_bindir}/plot-ampliconstats
 
 %files
 %license LICENSE
