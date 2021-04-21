@@ -120,4 +120,12 @@ Fixes a crash in the mach64 driver (bnc#865607)
   * A boring release, fixing source compatibility with xserver 1.20.</comment>
     <requestid>610634</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>309603f693b50e2fbef9aa0e6bcdae2f</srcmd5>
+    <version>6.9.6</version>
+    <time>1619031622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887247</requestid>
+  </revision>
 </revisionlist>
