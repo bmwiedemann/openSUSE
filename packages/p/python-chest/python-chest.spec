@@ -1,7 +1,7 @@
 #
 # spec file for package python-chest
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-chest
 Version:        0.2.3
 Release:        0
 Summary:        Spill-to-disk dictionary for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/ContinuumIO/chest
 Source:         https://files.pythonhosted.org/packages/source/c/chest/chest-%{version}.tar.gz
 BuildRequires:  %{python_module HeapDict}
