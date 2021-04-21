@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>749993</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>dfacebe82d717ecf3c1f12ea95212fab</srcmd5>
+    <version>0.5.7</version>
+    <time>1619031618</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>887166</requestid>
+  </revision>
 </revisionlist>
