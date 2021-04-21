@@ -1,7 +1,7 @@
 #
 # spec file for package casacore
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%global shlib lib%{name}5
 # ninja too old on openSUSE Leap 15.1
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150100
 %bcond_with ninja
@@ -27,7 +26,8 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define sover 5
+%define sover 6
+%global shlib lib%{name}%{sover}
 %define srcname casacore
 
 # SECTION MPI DEFINITIONS
@@ -80,16 +80,12 @@
 # /SECTION
 
 Name:           %{pname}
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        A suite of C++ libraries for radio astronomy data processing
 License:        LGPL-2.0-or-later
 URL:            https://github.com/casacore/casacore
 Source:         https://github.com/casacore/casacore/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM casacore-drop-fftpak.patch badshah400@gmail.com -- Drop fftpak as it no longer compiles with recent gcc-fortran; taken from upstream commit
-Patch0:         casacore-drop-fftpak.patch
-# PATCH-FIX-UPSTREAM casacore-lawson_f-fortran-errors.patch badshah400@gmail.com -- Fix fortran errors and warnings with lawson_f; taken from upstream commit
-Patch1:         casacore-lawson_f-fortran-errors.patch
 # PATCH-FIX-UPSTREAM casacore-fitsio-header.patch badshah400@gmail.com -- Fix location of cfitsio headers used in sources
 Patch2:         casacore-fitsio-header.patch
 BuildRequires:  bison
@@ -111,6 +107,7 @@ BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(wcslib)
 BuildRequires:  pkgconfig(zlib)
+ExcludeArch:    %ix86
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{?mpi_vers}-config
 BuildRequires:  %{mpi_flavor}%{?mpi_vers}-devel
@@ -188,7 +185,7 @@ export CXXFLAGS="%{optflags}"
 %{my_bindir}/*
 
 %files -n %{shlib}
-%{my_libdir}/*.so.5
+%{my_libdir}/*.so.%{sover}
 
 %files devel
 %license COPYING

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Feb 25 21:11:59 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.4.0:
+  * Major modernization of Arrays, bringing it more in line with
+    C++11 (gh#casacore/casacore#1012).
+  * Use std::regex (gh#casacore/casacore#1072).
+  * Remove many warnings (gh#casacore/casacore#1024,
+    gh#casacore/casacore#1036, gh#casacore/casacore#1062).
+  * Use FFTW as default FFT provider (gh#casacore/casacore#1029,
+    gh#casacore/casacore#1047, gh#casacore/casacore#1049).
+  * UVFITS improvements (gh#casacore/casacore#1033,
+    gh#casacore/casacore#1040, gh#casacore/casacore#1064,
+    gh#casacore/casacore#1066, gh#casacore/casacore#1067).
+  * Support for 64-bit row numbers.
+- Drop patches incorporated upstream:
+  * casacore-drop-fftpak.patch
+  * casacore-lawson_f-fortran-errors.patch
+- Bump so version in shared lib name.
+- 32-bit builds not supported, use ExcludeArch to prevent build
+  failures.
+
+-------------------------------------------------------------------
 Mon Aug 17 13:33:29 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Add _constraints with 5GB min disk space to avoid build failure
