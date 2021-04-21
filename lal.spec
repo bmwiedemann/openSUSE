@@ -25,7 +25,7 @@
 # No support for octave >= 6
 %bcond_with octave
 Name:           lal
-Version:        7.1.1
+Version:        7.1.2
 Release:        0
 Summary:        A collection of various gravitational wave data analysis routines
 License:        GPL-2.0-only
