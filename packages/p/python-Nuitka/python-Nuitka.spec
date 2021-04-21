@@ -20,7 +20,7 @@
 %bcond_without  test_clang
 %bcond_without  test_gcc
 Name:           python-Nuitka
-Version:        0.6.13.2
+Version:        0.6.14.4
 Release:        0
 Summary:        Python compiler with full language support and CPython compatibility
 License:        Apache-2.0
@@ -169,6 +169,8 @@ if [ -f doc/nuitka.1 ]; then
 fi
 
 %check
+export CCACHE_DIR=~/.ccache/
+
 export TCL_LIBRARY=%{_libdir}/tcl/tcl8.6
 export TK_LIBRARY=%{_libdir}/tcl/tk8.6
 
@@ -189,6 +191,11 @@ mv tests/standalone/FlaskUsing.py /tmp
 mv tests/standalone/OpenGLUsing.py /tmp
 mv tests/standalone/PandasUsing.py /tmp
 
+# https://github.com/Nuitka/Nuitka/issues/1057
+if [[ "$python" == "python3.8" || "$python" == "python3.9" ]]; then
+  mv tests/standalone/RsaUsing.py /tmp
+fi
+
 # clang with debug
 
 export NUITKA_EXTRA_OPTIONS="--debug"
@@ -196,8 +203,8 @@ export NUITKA_EXTRA_OPTIONS="--debug"
 CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --skip-reflection-test --no-other-python
 
 mv /tmp/*Using.py tests/standalone/ ||:
-ccache --show-stats
-ccache --clear
+ccache -d ~/.ccache/ --show-stats
+ccache -d ~/.ccache/ --clear
 
 # VM disk is being exceeded by PandasUsing.
 # Trying to find where, if any, disk space is being consumed by each test run
@@ -217,8 +224,8 @@ export NUITKA_EXTRA_OPTIONS=""
 CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --skip-reflection-test --no-other-python
 
 mv /tmp/*Using.py tests/standalone/ ||:
-ccache --show-stats
-ccache --clear
+ccache -d ~/.ccache/ --show-stats
+ccache -d ~/.ccache/ --clear
 
 find tests -name '*.log' -print -delete
 rm -r /tmp/* ||:
@@ -236,8 +243,8 @@ export NUITKA_EXTRA_OPTIONS="--debug"
 CC=gcc $python ./tests/run-tests --skip-reflection-test --no-other-python
 
 mv /tmp/*Using.py tests/standalone/ ||:
-ccache --show-stats
-ccache --clear
+ccache -d ~/.ccache/ --show-stats
+ccache -d ~/.ccache/ --clear
 
 find tests -name '*.log' -print -delete
 rm -r /tmp/* ||:
