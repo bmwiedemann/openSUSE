@@ -29,4 +29,12 @@
     <comment>Removal of -lang recommends (forwarded request 768573 from dimstar)</comment>
     <requestid>768657</requestid>
   </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>9880db50bc93b89e46da891e21b31b15</srcmd5>
+    <version>0.3.4</version>
+    <time>1619031584</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed SPEC file, replace URL with working upstream URL. (forwarded request 886381 from susnux)</comment>
+    <requestid>886874</requestid>
+  </revision>
 </revisionlist>

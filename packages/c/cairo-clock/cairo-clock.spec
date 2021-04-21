@@ -12,14 +12,14 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 #
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 Name:           cairo-clock
 Summary:        Cairo-rendered on-screen clock
 Version:        0.3.4
-Release:        1
-URL:            http://macslow.thepimp.net/projects/cairo-clock
+Release:        0
+URL:            https://launchpad.net/cairo-clock
 Source0:        %{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM cairo-clock-fix-ldflags.patch deb#624922 vuntz@opensuse.org -- Taken from Debian, fix "unrecognized option '--export-dynamic'"
 Patch0:         cairo-clock-fix-ldflags.patch
@@ -32,7 +32,6 @@ BuildRequires:  intltool
 BuildRequires:  libglade2-devel
 BuildRequires:  librsvg2-devel
 BuildRequires:  update-desktop-files
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 It is an analog clock displaying the system-time. It leverages the
@@ -66,8 +65,8 @@ rm -rf %{buildroot}
 %desktop_database_postun
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING NEWS README TODO
+%license COPYING
+%doc AUTHORS NEWS README TODO
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
