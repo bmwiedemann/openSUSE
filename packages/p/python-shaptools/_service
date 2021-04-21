@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="filename">python-shaptools</param>
     <param name="versionformat">@PARENT_TAG@+git.%ct.%h</param>
-    <param name="revision">75f5f461d591f0d34c1ab24b1579ff1e64fc20c2</param>
+    <param name="revision">1951d234b51114379befab11c99c92dfa179a83f</param>
   </service>
 
   <service name="recompress" mode="disabled">

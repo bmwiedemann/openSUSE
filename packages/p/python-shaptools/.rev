@@ -154,4 +154,12 @@
     <comment>New version of python-shaptools released</comment>
     <requestid>879096</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f1f8e55177723be1ceab2b16b0fd6c76</srcmd5>
+    <version>0.3.12+git.1619007514.1951d23</version>
+    <time>1619031626</time>
+    <user>dimstar_suse</user>
+    <comment>Hotfix release for https://bugzilla.suse.com/show_bug.cgi?id=1185090</comment>
+    <requestid>887289</requestid>
+  </revision>
 </revisionlist>
