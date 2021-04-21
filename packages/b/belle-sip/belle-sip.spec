@@ -1,7 +1,7 @@
 #
 # spec file for package belle-sip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Mariusz Fik <fisiu@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define soname  libbellesip
 %define sover   1
 Name:           belle-sip
-Version:        4.4.0
+Version:        4.5.3
 Release:        0
 Summary:        C object-oriented SIP Stack
 License:        GPL-2.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  java
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 4.4.0
+BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
 BuildRequires:  pkgconfig(zlib)
 
 %description

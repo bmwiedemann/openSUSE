@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 15 20:17:28 UTC 2021 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
+
+- Update to 4.5.3:
+  * Use DNSService framework on iOS, to workaround the local network permission request triggered on iOS >= 14
+  * Fix routing according to RFC3263: uri with a port number shall not be resolved with SRV.
+
+-------------------------------------------------------------------
 Wed Jul 29 14:46:36 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.4.0 (changes since 4.3.1):
