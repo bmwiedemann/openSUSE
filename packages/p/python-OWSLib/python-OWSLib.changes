@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Apr 20 22:50:28 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Disable python36 build: pyproj not available
+- Enable test suite (at least a part of it)
+
+-------------------------------------------------------------------
+Sat Feb 13 00:34:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.23.0
+  * WMS: Handle empty <DataURL>.<Format> element in 
+    GetCapabilities (#739)
+  * WCS: Feature/wcs headers integration (#741)
+  * Tests: fix WFS tests (#743)
+  * Auth: Support requests AuthBase in addition to basic password 
+    authentication (#724)
+  * WCS: Fix bug with timeout not assigned (#738)
+  * Tests: restore ISO GM03 tests as pytests (#734)
+  * ISO: OWS/ISO metadata updates (#736)
+  * ISO: add support for ISO 19115 keyword thesaurus URLs via 
+    gmx:Anchor (#735)
+  * ISO: fix reference (#733)
+- Changes in 0.22.0
+  * Tests: Fix tests coveralls (#732)
+  * WCS, WFS: Add timeout to get capabilities (#730)
+  * Tests: migrate to GitHub actions (#727)
+  * ISO: add support for ISO 19115-2 (#726)
+- Fix malformed python_module line
+
+-------------------------------------------------------------------
 Thu Jan 21 09:57:32 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Depend on python-PyYAML instead of python-pyyaml

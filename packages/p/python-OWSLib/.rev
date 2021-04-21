@@ -31,4 +31,12 @@
     <comment>- Depend on python-PyYAML instead of python-pyyaml (forwarded request 865335 from Guillaume_G)</comment>
     <requestid>866244</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>32e92c7f882c07a42e71478dc097e02a</srcmd5>
+    <version>0.23.0</version>
+    <time>1619031558</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887219</requestid>
+  </revision>
 </revisionlist>
