@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-Transplant
 Version:        0.8.11
 Release:        0
 Summary:        Python module for calling out to Matlab
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/bastibe/transplant
 Source:         https://files.pythonhosted.org/packages/source/T/Transplant/Transplant-%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/bastibe/transplant/master/LICENSE
