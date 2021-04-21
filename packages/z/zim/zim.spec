@@ -1,7 +1,7 @@
 #
 # spec file for package zim
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Matthias Propst.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define skip_python2 1
 
 Name:           zim
-Version:        0.73.2
+Version:        0.73.4
 Release:        0
 Summary:        A Desktop Wiki
 License:        GPL-2.0-or-later
@@ -30,8 +30,9 @@ Source:         https://zim-wiki.org/downloads/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 # For directory ownership
 BuildRequires:  %{python_module gobject >= 3.2}
-BuildRequires:  %{pythons}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  python3
 BuildRequires:  typelib-1_0-Gtk-3_0
 # We need the %%mime_database_*, %%desktop_database_* and %%icon_theme_cache_*
 # macros for old suse versions
