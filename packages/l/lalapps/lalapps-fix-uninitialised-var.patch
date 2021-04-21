@@ -1,8 +1,8 @@
-Index: lalapps-6.26.0/src/string/StringSearch.c
+Index: lalapps-7.1.0/src/string/StringSearch.c
 ===================================================================
---- lalapps-6.26.0.orig/src/string/StringSearch.c
-+++ lalapps-6.26.0/src/string/StringSearch.c
-@@ -202,7 +202,7 @@ int main(int argc,char *argv[])
+--- lalapps-7.1.0.orig/src/string/StringSearch.c
++++ lalapps-7.1.0/src/string/StringSearch.c
+@@ -201,7 +201,7 @@ int main(int argc,char *argv[])
    unsigned seg_length;
    StringTemplate strtemplate[MAXTEMPLATES];
    int NTemplates;
@@ -11,23 +11,10 @@ Index: lalapps-6.26.0/src/string/StringSearch.c
    REAL8 fcutoff_fix[MAXTEMPLATES]; /* high frequency cutoffs given by the template bank file */
    SnglBurst *events=NULL;
    MetadataTable  process;
-Index: lalapps-6.26.0/src/pulsar/SFTTools/SFTvalidate.c
+Index: lalapps-7.1.0/src/pulsar/HoughFstat/HierarchicalSearch.c
 ===================================================================
---- lalapps-6.26.0.orig/src/pulsar/SFTTools/SFTvalidate.c
-+++ lalapps-6.26.0/src/pulsar/SFTTools/SFTvalidate.c
-@@ -59,7 +59,7 @@ int main(int argc, char** argv) {
-     /* and read successive SFTs blocks from the file and validate CRC
-        checksums */
-     for (count=0; 1; count++) {
--      struct headertag2 info,lastinfo;
-+      struct headertag2 info,lastinfo={};
-       int err=0, swapendian, move, j;
-       
-       err=ReadSFTHeader(fp, &info, NULL, &swapendian, 1);
-Index: lalapps-6.26.0/src/pulsar/HoughFstat/HierarchicalSearch.c
-===================================================================
---- lalapps-6.26.0.orig/src/pulsar/HoughFstat/HierarchicalSearch.c
-+++ lalapps-6.26.0/src/pulsar/HoughFstat/HierarchicalSearch.c
+--- lalapps-7.1.0.orig/src/pulsar/HoughFstat/HierarchicalSearch.c
++++ lalapps-7.1.0/src/pulsar/HoughFstat/HierarchicalSearch.c
 @@ -1255,7 +1255,7 @@ void SetUpSFTs( LALStatus *status,			/**
    REAL8 timebase, tObs, deltaFsft;
    UINT4 k,numSFTby2;
@@ -46,11 +33,11 @@ Index: lalapps-6.26.0/src/pulsar/HoughFstat/HierarchicalSearch.c
    HoughStats stats; /* statistics struct */
    CHAR *fileStats = NULL;
    FILE *fpStats = NULL;
-Index: lalapps-6.26.0/src/pulsar/SFTTools/splitSFTs.c
+Index: lalapps-7.1.0/src/pulsar/SFTTools/splitSFTs.c
 ===================================================================
---- lalapps-6.26.0.orig/src/pulsar/SFTTools/splitSFTs.c
-+++ lalapps-6.26.0/src/pulsar/SFTTools/splitSFTs.c
-@@ -199,7 +199,7 @@ int main( int argc, char **argv )
+--- lalapps-7.1.0.orig/src/pulsar/SFTTools/splitSFTs.c
++++ lalapps-7.1.0/src/pulsar/SFTTools/splitSFTs.c
+@@ -196,7 +196,7 @@ int main( int argc, char **argv )
  {
    int arg;                        /* current command-line argument */
    unsigned int bin;               /* current bin */
