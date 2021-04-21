@@ -1,7 +1,7 @@
 #
 # spec file for package belcard
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname  libbelcard
 %define sover   1
 Name:           belcard
-Version:        4.4.0
+Version:        4.5.3
 Release:        0
 Summary:        C++ library to manipulate vCard standard format files
 License:        GPL-3.0-or-later
@@ -31,8 +31,8 @@ Patch0:         belcard-fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 4.4.0
-BuildRequires:  pkgconfig(belr) >= 4.4.0
+BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
+BuildRequires:  pkgconfig(belr) >= 4.5.0
 
 %description
 Belcard is a C++ library to manipulate the vCard standard format files.
