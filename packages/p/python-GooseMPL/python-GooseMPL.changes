@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 20 00:50:05 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5.0: 
+  * Add new minmax function
+- Don't build on Python 3.6, due to no NumPy.
+
+-------------------------------------------------------------------
 Tue Jul  7 10:33:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
-- Update to 4.0.2
+- Update to 0.4.2
   * Integration "__version__" directly in module
   * Added functionality to write to HDF5 file
   * Updating requirements for readthedocs
