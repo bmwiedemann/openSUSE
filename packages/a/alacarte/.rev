@@ -500,4 +500,12 @@
 </comment>
     <requestid>783422</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>17b37e8fde4d970b3e019607fd6638e0</srcmd5>
+    <version>3.36.0</version>
+    <time>1619031582</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed broken upstream URL in SPEC file (forwarded request 886363 from susnux)</comment>
+    <requestid>886868</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package alacarte
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Menu editor for GNOME
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
-URL:            http://www.realistanew.com/projects/alacarte
+URL:            https://gitlab.gnome.org/GNOME/alacarte
 Source:         https://download.gnome.org/sources/alacarte/3.36/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE alacarte-trans.patch bnc#947793 qzhao@suse.org -- Fix untranslated messages
 Patch0:         alacarte-trans.patch
