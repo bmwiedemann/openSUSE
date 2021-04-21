@@ -1,0 +1,16 @@
+--- akka-2.3.16/akka-actor/src/main/scala/akka/dispatch/CachingConfig.scala	2021-04-19 16:08:27.697926946 +0200
++++ akka-2.3.16/akka-actor/src/main/scala/akka/dispatch/CachingConfig.scala	2021-04-20 09:28:51.409908736 +0200
+@@ -190,5 +190,13 @@
+   def getMemorySizeList(path: String) = config.getMemorySizeList(path)
+ 
+   def hasPathOrNull(path: String) = config.hasPathOrNull(path)
++
++  def getEnum[T <: Enum[T]](enumClass: Class[T], path: String) = config.getEnum(enumClass, path)
++
++  def getEnumList[T <: Enum[T]](enumClass: Class[T], path: String) = config.getEnumList(enumClass, path)
++
++  def getPeriod(path: String) = config.getPeriod(path)
++
++  def getTemporal(path: String) = config.getTemporal(path)
+ }
+ 

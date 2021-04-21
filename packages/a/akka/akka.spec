@@ -41,6 +41,7 @@ Source9:        https://repo1.maven.org/maven2/com/typesafe/akka/akka-slf4j_%{sc
 Source10:       https://repo1.maven.org/maven2/com/typesafe/akka/akka-transactor_%{scala_short_version}/%{namedversion}/akka-transactor_%{scala_short_version}-%{namedversion}.pom
 Patch0:         akka-2.3.0-encoding.patch
 Patch1:         akka-2.3.0-typesafe-config-1.3.0.patch
+Patch2:         akka-2.3.16-typesafe-config-1.4.1.patch
 BuildRequires:  ant
 BuildRequires:  java-devel
 BuildRequires:  javapackages-local
@@ -90,6 +91,9 @@ sed -i "s|@VERSION@|%{namedversion}|" build.xml
 %patch0 -p1
 %if %{?pkg_vcmp:%pkg_vcmp typesafe-config >= 1.3}%{!?pkg_vcmp:0}
 %patch1 -p1
+%endif
+%if %{?pkg_vcmp:%pkg_vcmp typesafe-config >= 1.4}%{!?pkg_vcmp:0}
+%patch2 -p1
 %endif
 
 # handle compatibility netty jar

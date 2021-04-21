@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 20 07:44:10 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * akka-2.3.16-typesafe-config-1.4.1.patch
+    + conditionlally applied patch to enable build against
+      typesafe-config >= 1.4.1
+
+-------------------------------------------------------------------
 Mon Apr 19 14:18:00 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
