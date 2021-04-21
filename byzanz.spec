@@ -1,7 +1,7 @@
 #
 # spec file for package byzanz
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2007 wberrier@gmail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Release:        0
 Summary:        Tool to record a running X desktop to an animated GIF file
 License:        GPL-2.0+
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-Url:            https://github.com/GNOME/byzanz
+URL:            https://gitlab.gnome.org/Archive/byzanz
 Source:         https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{version}.orig.tar.xz
 BuildRequires:  gettext-devel
 BuildRequires:  gnome-common
@@ -83,8 +83,8 @@ export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 %endif
 
 %files 
-%defattr(-, root, root)
-%doc AUTHORS ChangeLog COPYING NEWS
+%license COPYING
+%doc AUTHORS ChangeLog NEWS
 %if %{build_applet}
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/byzanzapplet.xml

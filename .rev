@@ -200,4 +200,12 @@
     <comment>Removal of -lang recommends (forwarded request 768572 from dimstar)</comment>
     <requestid>768656</requestid>
   </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>f5660adf06664ddc990e6484c07e5165</srcmd5>
+    <version>0.3.0+git20140619</version>
+    <time>1619031584</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed SPEC file: Replaced broken URL with latest upstream (forwarded request 886389 from susnux)</comment>
+    <requestid>886875</requestid>
+  </revision>
 </revisionlist>
