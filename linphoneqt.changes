@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Apr 15 20:20:19 UTC 2021 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
+
+- Added linphoneqt-0002-remove-bc_compute_full_version-usage.patch
+  * Patch from ArchLinux to fix build without .git or linphone SDK
+
+- Update to 4.2.5:
+  * No changelog available.
+
+- Update to 4.2.4:
+  * Play DTMF when receiving it and show the Dialpad on outgoing
+    call to allow sending DTMF
+  * Update settings view to not deactivate transport but allow not
+    binding port
+  * Show all call logs by clicking on previously bar
+  * Displaying names in UTF8
+  * Keep unsend typed message in memory when changing of chat room
+  * Log files have Qt logs
+  * Add SOCI Sqlite3 library in Appimage
+  * Use the more generic linphone folder and not Linphone for
+    installation
+  * Simplify build process to use install keyword
+
+- Update to 4.2.3:
+  * Add support to tel and callto protocols
+  * Allow Pulseaudio to switch devices automatically. For example,
+    it will mute all applications that have music when receive a
+    call from Linphone.
+  * Contact name can contain special characters
+  * Avoid to reduce window if it is currently maximized when
+    clicking on contacts
+  * Cleaner use of Windows registries
+ 
+- Update to 4.2.2:
+  * Crash on Opus
+
+-------------------------------------------------------------------
 Tue Oct  6 22:18:20 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - CMake Release build type to remove QML debugging boo#1140595

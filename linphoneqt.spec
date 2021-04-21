@@ -1,7 +1,7 @@
 #
 # spec file for package linphoneqt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   linphone
 Name:           linphoneqt
-Version:        4.2.1
+Version:        4.2.5
 Release:        0
 Summary:        Qt interface for Linphone
 License:        GPL-3.0-or-later
@@ -27,6 +27,8 @@ Source:         https://gitlab.linphone.org/BC/public/linphone-desktop/-/archive
 Source1:        %{_name}.appdata.xml
 # PATCH-FIX-OPENSUSE linphoneqt-fix-no-git.patch -- Fix building out-of-git.
 Patch0:         linphoneqt-fix-no-git.patch
+# PATCH-FIX-OPENSUSE https://aur.archlinux.org/cgit/aur.git/plain/0002-remove-bc_compute_full_version-usage.patch?h=linphone-desktop
+Patch1:         linphoneqt-0002-remove-bc_compute_full_version-usage.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -42,8 +44,8 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(linphone) >= 4.4.0
-BuildRequires:  pkgconfig(mediastreamer) >= 4.4.0
+BuildRequires:  pkgconfig(linphone) >= 4.5.0
+BuildRequires:  pkgconfig(mediastreamer) >= 4.5.0
 
 %description
 Linphone is a Web phone with a Qt interface. It lets you make
@@ -75,6 +77,11 @@ with high speed connections as well as 28k modems.
 cp %{SOURCE1} linphone.appdata.xml
 touch linphone-sdk/CMakeLists.txt
 mkdir -p build/linphone-sdk/desktop/{bin,share}
+
+# Fix building out-of-git
+echo '#define LINPHONE_QT_GIT_VERSION "${PROJECT_VERSION}"' >> linphone-app/src/config.h.cmake
+# Hardcode linphoneqt version
+echo "project(linphoneqt VERSION %{version})" > linphone-app/linphoneqt_version.cmake
 
 %build
 %cmake \
