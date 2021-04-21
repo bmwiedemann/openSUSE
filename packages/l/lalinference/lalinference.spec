@@ -25,7 +25,7 @@
 %define skip_python36 1
 
 Name:           lalinference
-Version:        2.0.6
+Version:        2.0.7
 Release:        0
 Summary:        LSC Algorithm Inference Library
 License:        GPL-2.0-or-later
