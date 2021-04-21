@@ -25,11 +25,7 @@
 %define _uaver  1100
 %define _socxx  1
 
-%ifarch x86_64 aarch64 %arm
-%bcond_without libcxx
-%else
 %bcond_with libcxx
-%endif
 
 %ifarch aarch64 ppc64 ppc64le %{ix86} x86_64
 %bcond_without openmp
@@ -54,9 +50,9 @@
 %bcond_with lldb_python
 %endif
 
-# Disabled on aarch64 because the build hangs. (boo#1178070)
+# Disabled on ARM because it's awfully slow and often times out. (boo#1178070)
 # Disabled on ppc64le because we can't use gold. (boo#1181621)
-%ifarch %{arm} ppc64 x86_64 %{ix86} s390x
+%ifarch ppc64 x86_64 %{ix86} s390x
 %bcond_without thin_lto
 %else
 %bcond_with thin_lto
@@ -65,7 +61,7 @@
 %bcond_with ffi
 %bcond_with oprofile
 %bcond_with valgrind
-%bcond_without clang_scripts
+%bcond_with clang_scripts
 %bcond_without polly
 %bcond_without lld
 
@@ -152,7 +148,7 @@ BuildRequires:  pkgconfig(zlib)
 # Avoid multiple provider errors
 Requires:       libLLVM%{_sonum}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     %{name}-doc
 # llvm does not work on s390
 ExcludeArch:    s390
@@ -234,9 +230,9 @@ URL:            https://clang.llvm.org/
 Requires:       libLTO%{_sonum}
 Requires:       libclang%{_sonum}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Recommends:     clang-tools
+Requires(postun):update-alternatives
 Recommends:     clang%{_sonum}-doc
+Recommends:     clang-tools
 Recommends:     libstdc++-devel
 Suggests:       libc++-devel
 
@@ -288,7 +284,10 @@ Summary:        CLANG frontend for LLVM (devel package)
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       clang%{_sonum} = %{version}
-Requires:       clang-tools = %{version}
+# This is just a pro-forma requirement so that CMake doesn't complain about
+# missing binaries. We don't care if it's the same version, and we have to
+# allow different versions to keep older versions of clangX-devel installable.
+Requires:       clang-tools
 Conflicts:      cmake(Clang)
 
 %description -n clang%{_sonum}-devel
@@ -431,7 +430,7 @@ Summary:        Linker for Clang/LLVM
 Group:          Development/Tools/Building
 URL:            https://lld.llvm.org/
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description -n lld%{_sonum}
 LLD is a linker from the LLVM project. That is a drop-in replacement for system linkers and runs much faster than them. It also provides features that are useful for toolchain developers.
@@ -465,7 +464,7 @@ BuildRequires:  pkgconfig(zlib)
 # Avoid multiple provider errors
 Requires:       liblldb%{_sonum} = %{version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python3-lldb%{_sonum}
 ExclusiveArch:  x86_64
 

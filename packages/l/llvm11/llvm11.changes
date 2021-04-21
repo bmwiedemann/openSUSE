@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 20 23:45:08 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Don't build clang-tools, libc++ and python3-clang anymore,
+  because they come from llvm12 now.
+- Remove version requirement from clang-tools dependency.
+
+-------------------------------------------------------------------
 Sun Feb 14 22:28:42 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Don't use gold and ThinLTO on ppc64le because of boo#1181621.
