@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 19 16:51:02 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed SPEC file: Replaced broken URL with current upstream
+
+-------------------------------------------------------------------
 Thu Oct 17 14:45:47 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)

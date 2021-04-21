@@ -1,7 +1,7 @@
 #
 # spec file for package blogbench
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Version:        1.1
 Release:        0
 Summary:        Filesystem Benchmark
 License:        ISC
-URL:            https://www.pureftpd.org/project/blogbench
+URL:            https://github.com/jedisct1/Blogbench
 Source0:        https://download.pureftpd.org/pub/%{name}/%{name}-%{version}.tar.bz2
 Source1:        https://download.pureftpd.org/pub/%{name}/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
