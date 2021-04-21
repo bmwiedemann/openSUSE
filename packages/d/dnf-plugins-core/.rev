@@ -232,4 +232,12 @@
   + [needs-restarting] add -s to list services (rh#1772939) (rh#1772939)</comment>
     <requestid>868795</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>69a33535663a3839d40bdc751307fcb9</srcmd5>
+    <version>4.0.21</version>
+    <time>1619031606</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>887047</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 13 14:14:56 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.0.21
+  + Add missing command line option to documentation
+  + doc: add packages to needs-restarting conf
+  + Set blacklist subcommand as deprecated
+  + Bugs fixed (rh#1914827, rh#1916782)
+  + Removed dependency on dnf.yum.misc.Checksum class (rh#1935465)
+
+-------------------------------------------------------------------
 Wed Feb  3 02:10:58 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 4.0.19
