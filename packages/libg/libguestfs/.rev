@@ -851,4 +851,38 @@
     <comment>Update to libguestfs version 1.44.0</comment>
     <requestid>862660</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>3dd9e8a19a309580f9f67c82286950b9</srcmd5>
+    <version>1.44.1</version>
+    <time>1619031552</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.44.1
+  * lib/appliance-kcmdline.c: Read UUID directly from appliance.
+  * daemon/xfs.c: Fix error message.
+  * daemon: chroot: Fix long-standing possible deadlock.
+  * daemon: Don't return bogus failure from readdir.
+  * daemon/btrfs.c: Ignore mkfs.btrfs allocstart option.
+  * python: Ignore code style error E128.
+  * php: Fix the build.
+  * builder: Don't redefine Val_none (OCaml 4.12).
+  * daemon: lvm: Use lvcreate --yes to avoid interactive prompts.
+  * Update common submodule.
+  * lib/fuse.c: Use safe_malloc instead of malloc.
+  * fuse/guestmount.c: Avoid leaking fp on error path.
+  * diff: Don't try to call unlink(NULL) on certain error paths.
+  * daemon/tar.c: Avoid bogus GCC analyzer warning.
+  * daemon/command.c daemon/debug.c df/main.c: Ignore bogus GCC analyzer warnings
+  * appliance: Add dhclient for Arch-like Manjaro distro.
+  * fish/tilde.c: Suppress more bogus -fanalyser warnings.
+  * lib/qemu.c: Suppress another bogus -fanalyser warning.
+  * builder: templates: Add ubuntu-20.04.
+  * builder: templates: Added rhel-7.9.
+  * lib: Move CLEANUP_GL_RECURSIVE_LOCK_UNLOCK to libguestfs header.
+  * appliance: Avoid having ${exec_prefix} in guestfs appliance path.
+  * build: Avoid warnings about unknown pragmas.
+- add libguestfs.env.patch
+- Remove ocaml_native_compiler conditional
+  build native target unconditionally</comment>
+    <requestid>887312</requestid>
+  </revision>
 </revisionlist>

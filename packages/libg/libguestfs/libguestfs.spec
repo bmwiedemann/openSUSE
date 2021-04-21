@@ -18,7 +18,7 @@
 # needsbinariesforbuild
 
 
-Version:        1.44.0
+Version:        1.44.1
 Release:        0
 %{ocaml_preserve_bytecode}
 
@@ -118,7 +118,7 @@ BuildRequires:  ocaml-hivex-devel
 BuildRequires:  ocaml-libvirt-devel
 
 #
-BuildRequires:  ocaml-rpm-macros >= 4.03
+BuildRequires:  ocaml-rpm-macros
 %if %{with ocaml_bindings}
 %define _configure_ocaml --enable-ocaml
 %endif
@@ -153,6 +153,7 @@ Patch53:        0004-python-include-dirs.patch
 # Our patches
 Patch100:       appliance.patch
 Patch101:       netconfig.patch
+Patch102:       libguestfs.env.patch
 
 Source0:        https://download.libguestfs.org/1.44-stable/libguestfs-%{version}.tar.gz
 Source3:        libguestfs.rpmlintrc
@@ -544,6 +545,7 @@ It can import a variety of guest operating systems from libvirt-managed hosts.
 %patch53 -p1
 %patch100 -p1
 %patch101 -p1
+%patch102 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -738,10 +740,8 @@ rm %{buildroot}/%{_datadir}/virt-p2v/p2v.ks.in
 %dir %{_libdir}/ocaml
 %dir %{_libdir}/ocaml/guestfs
 %{_libdir}/ocaml/guestfs/*.a
-%if %{ocaml_native_compiler}
 %{_libdir}/ocaml/guestfs/*.cmx
 %{_libdir}/ocaml/guestfs/*.cmxa
-%endif
 %{_libdir}/ocaml/guestfs/*.mli
 %endif
 #
