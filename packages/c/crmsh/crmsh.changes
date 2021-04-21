@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 16 15:43:11 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210416.49f489c2:
+  * Dev: unittest: add unit test code for query_qdevice_status functiona
+  * Dev: add "crm corosync status qdevice" sub-command
+
+-------------------------------------------------------------------
+Wed Apr 14 08:25:40 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.0+20210414.d22dd892:
+  * Dev: unittest: adjust unit test for disable sbd warning
+  * Dev: bootstrap: disable unnecessary warnings (bsc#1178118)
+
+-------------------------------------------------------------------
 Mon Apr 12 08:31:45 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.0+20210412.7d40b39d:
