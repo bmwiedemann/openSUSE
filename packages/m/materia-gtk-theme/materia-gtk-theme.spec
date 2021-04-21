@@ -18,7 +18,7 @@
 
 %define         _name    materia-theme
 Name:           materia-gtk-theme
-Version:        20200916
+Version:        20210322
 Release:        0
 Summary:        A Material Design theme for GNOME/GTK+ based desktop environments
 License:        GPL-2.0-only
