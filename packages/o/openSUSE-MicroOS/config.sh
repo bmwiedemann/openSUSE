@@ -142,10 +142,20 @@ sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.c
 sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
 
 #======================================
+# Workaround: Force network-legacy, network-wicked is not usable (boo#1182227)
+#--------------------------------------
+if rpm -q ignition-dracut-grub2; then
+	# Modify module-setup.sh, but undo the modification on the first call
+	mv /usr/lib/dracut/modules.d/40network/module-setup.sh{,.orig}
+	sed 's#echo "kernel-network-modules $network_handler"$#echo kernel-network-modules network-legacy; mv /usr/lib/dracut/modules.d/40network/module-setup.sh{.orig,}#' \
+		/usr/lib/dracut/modules.d/40network/module-setup.sh.orig > /usr/lib/dracut/modules.d/40network/module-setup.sh
+fi
+
+#======================================
 # Configure Pine64 specifics
 #--------------------------------------
 if [[ "$kiwi_profiles" == *"Pine64" ]]; then
-    echo 'add_drivers+=" fixed sunxi-mmc axp20x-regulator axp20x-rsb "' > /etc/dracut.conf.d/sunxi_modules.conf
+	echo 'add_drivers+=" fixed sunxi-mmc axp20x-regulator axp20x-rsb "' > /etc/dracut.conf.d/sunxi_modules.conf
 fi
 
 #======================================
