@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Apr 20 19:04:49 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to 4.6:
+  * The auto_translate management command has now a parameter for specifying translation mode.
+  * Added support for :ref:`txt`.
+  * Added trends and metrics for all objects.
+  * Added support for direct copying text from secondary languages.
+  * Added date filtering when browsing changes.
+  * Improved activity charts.
+  * Sender for contact form e-mails can now be configured.
+  * Improved parameters validation in component creation API.
+  * The rate limiting no longer applies to superusers.
+  * Improved automatic translation addon performance and reliability.
+  * The rate limiting now can be customized in the Docker container.
+  * API for creating components now automatically uses :ref:`internal-urls`.
+  * Simplified state indication while listing strings.
+  * Password hashing now uses Argon2 by default.
+  * Simplified progress bars indicating translation status.
+  * Renamed :ref:`addon-weblate.consistency.languages` to clarify the purpose.
+  * Fixed saving string state to XLIFF.
+  * Added language-wide search.
+  * Initial support for :ref:`docker-scaling` the Docker deployment.
+  * Fixed metrics collection.
+  * Fixed possible crash when adding strings.
+  * Improved search query examples.
+  * Fixed possible loss of newly added strings on replace upload.
+  * Configurable schedule for automatic translation.
+  * Added Lua format check.
+  * Ignore format strings in the :ref:`check-duplicate` check.
+  * Allow uploading screenshot from a translate page.
+  * Added forced file synchronization to the repository maintenance.
+  * Fixed automatic suggestions for languages with a longer code.
+  * Improved performance when adding new strings.
+  * Several bug fixes in quality checks.
+  * Several performance improvements.
+  * Added integration with :ref:`discover-weblate`.
+  * Fixed checks behavior with read-only strings.
+
+-------------------------------------------------------------------
 Thu Apr 15 13:12:05 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Re-add and fix sed for python3
