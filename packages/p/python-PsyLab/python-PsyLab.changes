@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 20 04:55:27 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.6, due to no NumPy.
+
+-------------------------------------------------------------------
 Sat Jan 11 14:03:38 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use pyproject_install macro (boo#1094323)
