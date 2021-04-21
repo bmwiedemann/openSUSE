@@ -1,0 +1,1148 @@
+Index: AMQPStorm-2.8.4/amqpstorm/basic.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/basic.py
++++ AMQPStorm-2.8.4/amqpstorm/basic.py
+@@ -5,7 +5,7 @@ import math
+ 
+ from pamqp import body as pamqp_body
+ from pamqp import header as pamqp_header
+-from pamqp import specification
++from pamqp import commands
+ 
+ from amqpstorm import compatibility
+ from amqpstorm.base import Handler
+@@ -45,7 +45,7 @@ class Basic(Handler):
+             raise AMQPInvalidArgument('prefetch_size should be an integer')
+         elif not isinstance(global_, bool):
+             raise AMQPInvalidArgument('global_ should be a boolean')
+-        qos_frame = specification.Basic.Qos(prefetch_count=prefetch_count,
++        qos_frame = commands.Basic.Qos(prefetch_count=prefetch_count,
+                                             prefetch_size=prefetch_size,
+                                             global_=global_)
+         return self._channel.rpc_request(qos_frame)
+@@ -76,7 +76,7 @@ class Basic(Handler):
+         elif self._channel.consumer_tags:
+             raise AMQPChannelError("Cannot call 'get' when channel is "
+                                    "set to consume")
+-        get_frame = specification.Basic.Get(queue=queue,
++        get_frame = commands.Basic.Get(queue=queue,
+                                             no_ack=no_ack)
+         with self._channel.lock and self._channel.rpc.lock:
+             message = self._get_message(get_frame, auto_decode=auto_decode)
+@@ -98,7 +98,7 @@ class Basic(Handler):
+         """
+         if not isinstance(requeue, bool):
+             raise AMQPInvalidArgument('requeue should be a boolean')
+-        recover_frame = specification.Basic.Recover(requeue=requeue)
++        recover_frame = commands.Basic.Recover(requeue=requeue)
+         return self._channel.rpc_request(recover_frame)
+ 
+     def consume(self, callback=None, queue='', consumer_tag='',
+@@ -154,7 +154,7 @@ class Basic(Handler):
+         """
+         if not compatibility.is_string(consumer_tag):
+             raise AMQPInvalidArgument('consumer_tag should be a string')
+-        cancel_frame = specification.Basic.Cancel(consumer_tag=consumer_tag)
++        cancel_frame = commands.Basic.Cancel(consumer_tag=consumer_tag)
+         result = self._channel.rpc_request(cancel_frame)
+         self._channel.remove_consumer_tag(consumer_tag)
+         return result
+@@ -181,8 +181,8 @@ class Basic(Handler):
+                                           properties, routing_key)
+         properties = properties or {}
+         body = self._handle_utf8_payload(body, properties)
+-        properties = specification.Basic.Properties(**properties)
+-        method_frame = specification.Basic.Publish(exchange=exchange,
++        properties = commands.Basic.Properties(**properties)
++        method_frame = commands.Basic.Publish(exchange=exchange,
+                                                    routing_key=routing_key,
+                                                    mandatory=mandatory,
+                                                    immediate=immediate)
+@@ -215,7 +215,7 @@ class Basic(Handler):
+             raise AMQPInvalidArgument('delivery_tag should be an integer')
+         elif not isinstance(multiple, bool):
+             raise AMQPInvalidArgument('multiple should be a boolean')
+-        ack_frame = specification.Basic.Ack(delivery_tag=delivery_tag,
++        ack_frame = commands.Basic.Ack(delivery_tag=delivery_tag,
+                                             multiple=multiple)
+         self._channel.write_frame(ack_frame)
+ 
+@@ -239,7 +239,7 @@ class Basic(Handler):
+             raise AMQPInvalidArgument('multiple should be a boolean')
+         elif not isinstance(requeue, bool):
+             raise AMQPInvalidArgument('requeue should be a boolean')
+-        nack_frame = specification.Basic.Nack(delivery_tag=delivery_tag,
++        nack_frame = commands.Basic.Nack(delivery_tag=delivery_tag,
+                                               multiple=multiple,
+                                               requeue=requeue)
+         self._channel.write_frame(nack_frame)
+@@ -261,7 +261,7 @@ class Basic(Handler):
+             raise AMQPInvalidArgument('delivery_tag should be an integer')
+         elif not isinstance(requeue, bool):
+             raise AMQPInvalidArgument('requeue should be a boolean')
+-        reject_frame = specification.Basic.Reject(delivery_tag=delivery_tag,
++        reject_frame = commands.Basic.Reject(delivery_tag=delivery_tag,
+                                                   requeue=requeue)
+         self._channel.write_frame(reject_frame)
+ 
+@@ -289,7 +289,7 @@ class Basic(Handler):
+ 
+         :rtype: dict
+         """
+-        consume_frame = specification.Basic.Consume(queue=queue,
++        consume_frame = commands.Basic.Consume(queue=queue,
+                                                     consumer_tag=consumer_tag,
+                                                     exclusive=exclusive,
+                                                     no_local=no_local,
+@@ -360,7 +360,7 @@ class Basic(Handler):
+             get_ok_frame = self._channel.rpc.get_request(message_uuid,
+                                                          raw=True,
+                                                          multiple=True)
+-            if isinstance(get_ok_frame, specification.Basic.GetEmpty):
++            if isinstance(get_ok_frame, commands.Basic.GetEmpty):
+                 return None
+             content_header = self._channel.rpc.get_request(message_uuid,
+                                                            raw=True,
+@@ -388,7 +388,7 @@ class Basic(Handler):
+         result = self._channel.rpc.get_request(confirm_uuid, raw=True)
+         if mandatory:
+             self._channel.check_for_exceptions()
+-        if isinstance(result, specification.Basic.Ack):
++        if isinstance(result, commands.Basic.Ack):
+             return True
+         return False
+ 
+Index: AMQPStorm-2.8.4/amqpstorm/channel.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/channel.py
++++ AMQPStorm-2.8.4/amqpstorm/channel.py
+@@ -3,7 +3,7 @@
+ import logging
+ from time import sleep
+ 
+-from pamqp import specification
++from pamqp import commands
+ from pamqp.header import ContentHeader
+ 
+ from amqpstorm import compatibility
+@@ -184,7 +184,7 @@ class Channel(BaseChannel):
+                 self.stop_consuming()
+             except AMQPChannelError:
+                 self.remove_consumer_tag()
+-            self.rpc_request(specification.Channel.Close(
++            self.rpc_request(commands.Channel.Close(
+                 reply_code=reply_code,
+                 reply_text=reply_text),
+                 connection_adapter=self._connection
+@@ -240,7 +240,7 @@ class Channel(BaseChannel):
+         :return:
+         """
+         self._confirming_deliveries = True
+-        confirm_frame = specification.Confirm.Select()
++        confirm_frame = commands.Confirm.Select()
+         return self.rpc_request(confirm_frame)
+ 
+     @property
+@@ -273,7 +273,7 @@ class Channel(BaseChannel):
+         elif frame_in.name == 'Channel.Close':
+             self._close_channel(frame_in)
+         elif frame_in.name == 'Channel.Flow':
+-            self.write_frame(specification.Channel.FlowOk(frame_in.active))
++            self.write_frame(commands.Channel.FlowOk(frame_in.active))
+         else:
+             LOGGER.error(
+                 '[Channel%d] Unhandled Frame: %s -- %s',
+@@ -288,7 +288,7 @@ class Channel(BaseChannel):
+         self._inbound = []
+         self._exceptions = []
+         self.set_state(self.OPENING)
+-        self.rpc_request(specification.Channel.Open())
++        self.rpc_request(commands.Channel.Open())
+         self.set_state(self.OPEN)
+ 
+     def process_data_events(self, to_tuple=False, auto_decode=True):
+@@ -319,7 +319,7 @@ class Channel(BaseChannel):
+     def rpc_request(self, frame_out, connection_adapter=None):
+         """Perform a RPC Request.
+ 
+-        :param specification.Frame frame_out: Amqp frame.
++        :param commands.Frame frame_out: Amqp frame.
+         :rtype: dict
+         """
+         with self.rpc.lock:
+@@ -371,7 +371,7 @@ class Channel(BaseChannel):
+     def write_frame(self, frame_out):
+         """Write a pamqp frame from the current channel.
+ 
+-        :param specification.Frame frame_out: A single pamqp frame.
++        :param commands.Frame frame_out: A single pamqp frame.
+ 
+         :return:
+         """
+@@ -391,7 +391,7 @@ class Channel(BaseChannel):
+     def _basic_cancel(self, frame_in):
+         """Handle a Basic Cancel frame.
+ 
+-        :param specification.Basic.Cancel frame_in: Amqp frame.
++        :param commands.Basic.Cancel frame_in: Amqp frame.
+ 
+         :return:
+         """
+@@ -404,7 +404,7 @@ class Channel(BaseChannel):
+     def _basic_return(self, frame_in):
+         """Handle a Basic Return Frame and treat it as an error.
+ 
+-        :param specification.Basic.Return frame_in: Amqp frame.
++        :param commands.Basic.Return frame_in: Amqp frame.
+ 
+         :return:
+         """
+@@ -451,7 +451,7 @@ class Channel(BaseChannel):
+         :rtype: tuple,None
+         """
+         basic_deliver = self._inbound.pop(0)
+-        if not isinstance(basic_deliver, specification.Basic.Deliver):
++        if not isinstance(basic_deliver, commands.Basic.Deliver):
+             LOGGER.warning(
+                 'Received an out-of-order frame: %s was '
+                 'expecting a Basic.Deliver frame',
+@@ -489,7 +489,7 @@ class Channel(BaseChannel):
+     def _close_channel(self, frame_in):
+         """Close Channel.
+ 
+-        :param specification.Channel.Close frame_in: Channel Close frame.
++        :param commands.Channel.Close frame_in: Channel Close frame.
+         :return:
+         """
+         self.set_state(self.CLOSED)
+Index: AMQPStorm-2.8.4/amqpstorm/channel0.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/channel0.py
++++ AMQPStorm-2.8.4/amqpstorm/channel0.py
+@@ -3,7 +3,7 @@
+ import logging
+ import platform
+ 
+-from pamqp import specification
++from pamqp import commands
+ from pamqp.heartbeat import Heartbeat
+ 
+ from amqpstorm import __version__
+@@ -64,7 +64,7 @@ class Channel0(object):
+ 
+         :return:
+         """
+-        self._write_frame(specification.Connection.Close())
++        self._write_frame(commands.Connection.Close())
+ 
+     def send_heartbeat(self):
+         """Send Heartbeat frame.
+@@ -78,7 +78,7 @@ class Channel0(object):
+     def _close_connection(self, frame_in):
+         """Connection Close.
+ 
+-        :param specification.Connection.Close frame_in: Amqp frame.
++        :param commands.Connection.Close frame_in: Amqp frame.
+         :return:
+         """
+         self._set_connection_state(Stateful.CLOSED)
+@@ -141,7 +141,7 @@ class Channel0(object):
+     def _send_start_ok(self, frame_in):
+         """Send Start OK frame.
+ 
+-        :param specification.Connection.Start frame_in: Amqp frame.
++        :param commands.Connection.Start frame_in: Amqp frame.
+         :return:
+         """
+         mechanisms = try_utf8_decode(frame_in.mechanisms)
+@@ -158,7 +158,7 @@ class Channel0(object):
+             )
+             self._connection.exceptions.append(exception)
+             return
+-        start_ok_frame = specification.Connection.StartOk(
++        start_ok_frame = commands.Connection.StartOk(
+             mechanism=mechanism,
+             client_properties=self._client_properties(),
+             response=credentials,
+@@ -169,7 +169,7 @@ class Channel0(object):
+     def _send_tune_ok(self, frame_in):
+         """Send Tune OK frame.
+ 
+-        :param specification.Connection.Tune frame_in: Tune frame.
++        :param commands.Connection.Tune frame_in: Tune frame.
+ 
+         :return:
+         """
+@@ -182,7 +182,7 @@ class Channel0(object):
+             self.max_frame_size, self.max_allowed_channels
+         )
+ 
+-        tune_ok_frame = specification.Connection.TuneOk(
++        tune_ok_frame = commands.Connection.TuneOk(
+             channel_max=self.max_allowed_channels,
+             frame_max=self.max_frame_size,
+             heartbeat=self._heartbeat)
+@@ -193,7 +193,7 @@ class Channel0(object):
+ 
+         :return:
+         """
+-        open_frame = specification.Connection.Open(
++        open_frame = commands.Connection.Open(
+             virtual_host=self._parameters['virtual_host']
+         )
+         self._write_frame(open_frame)
+Index: AMQPStorm-2.8.4/amqpstorm/connection.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/connection.py
++++ AMQPStorm-2.8.4/amqpstorm/connection.py
+@@ -7,7 +7,7 @@ from time import sleep
+ from pamqp import exceptions as pamqp_exception
+ from pamqp import frame as pamqp_frame
+ from pamqp import header as pamqp_header
+-from pamqp import specification
++from pamqp import commands
+ 
+ from amqpstorm import compatibility
+ from amqpstorm.base import IDLE_WAIT
+@@ -253,7 +253,7 @@ class Connection(Stateful):
+         """Marshal and write an outgoing pamqp frame to the Socket.
+ 
+         :param int channel_id: Channel ID.
+-        :param specification.Frame frame_out: Amqp frame.
++        :param commands.Frame frame_out: Amqp frame.
+ 
+         :return:
+         """
+@@ -320,7 +320,7 @@ class Connection(Stateful):
+             return data_in[byte_count:], channel_id, frame_in
+         except pamqp_exception.UnmarshalingException:
+             pass
+-        except specification.AMQPFrameError as why:
++        except commands.AMQPFrameError as why:
+             LOGGER.error('AMQPFrameError: %r', why, exc_info=True)
+         except ValueError as why:
+             LOGGER.error(why, exc_info=True)
+Index: AMQPStorm-2.8.4/amqpstorm/queue.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/queue.py
++++ AMQPStorm-2.8.4/amqpstorm/queue.py
+@@ -2,7 +2,7 @@
+ 
+ import logging
+ 
+-from pamqp.specification import Queue as pamqp_queue
++from pamqp.commands import Queue as pamqp_queue
+ 
+ from amqpstorm import compatibility
+ from amqpstorm.base import Handler
+Index: AMQPStorm-2.8.4/amqpstorm/tests/unit/basic/basic_exception_tests.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/tests/unit/basic/basic_exception_tests.py
++++ AMQPStorm-2.8.4/amqpstorm/tests/unit/basic/basic_exception_tests.py
+@@ -1,4 +1,4 @@
+-from pamqp import specification
++from pamqp import commands
+ from pamqp.body import ContentBody
+ 
+ from amqpstorm import Channel
+@@ -266,7 +266,7 @@ class BasicExceptionTests(TestFramework)
+ 
+     def test_basic_publish_confirms_raises_on_invalid_frame(self):
+         def on_publish_return_invalid_frame(*_):
+-            channel.rpc.on_frame(specification.Basic.Cancel())
++            channel.rpc.on_frame(commands.Basic.Cancel())
+ 
+         connection = FakeConnection(on_write=on_publish_return_invalid_frame)
+         channel = Channel(9, connection, 0.01)
+Index: AMQPStorm-2.8.4/amqpstorm/tests/unit/basic/basic_tests.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/tests/unit/basic/basic_tests.py
++++ AMQPStorm-2.8.4/amqpstorm/tests/unit/basic/basic_tests.py
+@@ -4,7 +4,7 @@ import string
+ import sys
+ 
+ from mock import Mock
+-from pamqp import specification
++from pamqp import commands
+ from pamqp.body import ContentBody
+ from pamqp.header import ContentHeader
+ 
+@@ -20,7 +20,7 @@ from amqpstorm.tests.utility import unit
+ class BasicTests(TestFramework):
+     def test_basic_qos(self):
+         def on_qos_frame(*_):
+-            channel.rpc.on_frame(specification.Basic.QosOk())
++            channel.rpc.on_frame(commands.Basic.QosOk())
+ 
+         connection = FakeConnection(on_write=on_qos_frame)
+         channel = Channel(9, connection, 1)
+@@ -34,7 +34,7 @@ class BasicTests(TestFramework):
+         message_len = len(message)
+ 
+         def on_get_frame(*_):
+-            channel.rpc.on_frame(specification.Basic.GetOk())
++            channel.rpc.on_frame(commands.Basic.GetOk())
+             channel.rpc.on_frame(ContentHeader(body_size=message_len))
+             channel.rpc.on_frame(ContentBody(value=message))
+ 
+@@ -54,7 +54,7 @@ class BasicTests(TestFramework):
+         message_len = len(message)
+ 
+         def on_get_frame(*_):
+-            channel.rpc.on_frame(specification.Basic.GetOk())
++            channel.rpc.on_frame(commands.Basic.GetOk())
+             channel.rpc.on_frame(ContentHeader(body_size=message_len))
+             channel.rpc.on_frame(ContentBody(value=message))
+ 
+@@ -71,7 +71,7 @@ class BasicTests(TestFramework):
+ 
+     def test_basic_get_empty(self):
+         def on_get_frame(*_):
+-            channel.rpc.on_frame(specification.Basic.GetEmpty())
++            channel.rpc.on_frame(commands.Basic.GetEmpty())
+ 
+         connection = FakeConnection(on_write=on_get_frame)
+         channel = Channel(9, connection, 1)
+@@ -104,7 +104,7 @@ class BasicTests(TestFramework):
+ 
+     def test_basic_recover(self):
+         def on_recover_frame(*_):
+-            channel.rpc.on_frame(specification.Basic.RecoverOk())
++            channel.rpc.on_frame(commands.Basic.RecoverOk())
+ 
+         connection = FakeConnection(on_write=on_recover_frame)
+         channel = Channel(9, connection, 1)
+@@ -117,7 +117,7 @@ class BasicTests(TestFramework):
+         tag = 'travis-ci'
+ 
+         def on_consume_frame(*_):
+-            channel.rpc.on_frame(specification.Basic.ConsumeOk(tag))
++            channel.rpc.on_frame(commands.Basic.ConsumeOk(tag))
+ 
+         connection = FakeConnection(on_write=on_consume_frame)
+         channel = Channel(9, connection, 1)
+@@ -129,7 +129,7 @@ class BasicTests(TestFramework):
+     def test_basic_ack(self):
+         def on_write(channel, frame):
+             self.assertEqual(channel, 9)
+-            self.assertIsInstance(frame, specification.Basic.Ack)
++            self.assertIsInstance(frame, commands.Basic.Ack)
+ 
+         connection = FakeConnection(on_write=on_write)
+         channel = Channel(9, connection, 1)
+@@ -141,7 +141,7 @@ class BasicTests(TestFramework):
+     def test_basic_nack(self):
+         def on_write(channel, frame):
+             self.assertEqual(channel, 9)
+-            self.assertIsInstance(frame, specification.Basic.Nack)
++            self.assertIsInstance(frame, commands.Basic.Nack)
+ 
+         connection = FakeConnection(on_write=on_write)
+         channel = Channel(9, connection, 1)
+@@ -153,7 +153,7 @@ class BasicTests(TestFramework):
+     def test_basic_reject(self):
+         def on_write(channel, frame):
+             self.assertEqual(channel, 9)
+-            self.assertIsInstance(frame, specification.Basic.Reject)
++            self.assertIsInstance(frame, commands.Basic.Reject)
+ 
+         connection = FakeConnection(on_write=on_write)
+         channel = Channel(9, connection, 1)
+@@ -187,7 +187,7 @@ class BasicTests(TestFramework):
+         self.assertEqual(channel_id, 9)
+ 
+         # Verify Classes
+-        self.assertIsInstance(basic_publish, specification.Basic.Publish)
++        self.assertIsInstance(basic_publish, commands.Basic.Publish)
+         self.assertIsInstance(content_header, ContentHeader)
+         self.assertIsInstance(content_body, ContentBody)
+ 
+@@ -201,7 +201,7 @@ class BasicTests(TestFramework):
+ 
+     def test_basic_publish_confirms_ack(self):
+         def on_publish_return_ack(*_):
+-            channel.rpc.on_frame(specification.Basic.Ack())
++            channel.rpc.on_frame(commands.Basic.Ack())
+ 
+         connection = FakeConnection(on_write=on_publish_return_ack)
+         channel = Channel(9, connection, 1)
+@@ -214,7 +214,7 @@ class BasicTests(TestFramework):
+ 
+     def test_basic_publish_confirms_nack(self):
+         def on_publish_return_nack(*_):
+-            channel.rpc.on_frame(specification.Basic.Nack())
++            channel.rpc.on_frame(commands.Basic.Nack())
+ 
+         connection = FakeConnection(on_write=on_publish_return_nack)
+         channel = Channel(9, connection, 1)
+@@ -275,11 +275,11 @@ class BasicTests(TestFramework):
+         message = self.message.encode('utf-8')
+         message_len = len(message)
+ 
+-        get_frame = specification.Basic.Get(queue='travis-ci',
++        get_frame = commands.Basic.Get(queue='travis-ci',
+                                             no_ack=False)
+ 
+         def on_get_frame(*_):
+-            channel.rpc.on_frame(specification.Basic.GetOk())
++            channel.rpc.on_frame(commands.Basic.GetOk())
+             channel.rpc.on_frame(ContentHeader(body_size=message_len))
+             channel.rpc.on_frame(ContentBody(value=message))
+ 
+@@ -296,11 +296,11 @@ class BasicTests(TestFramework):
+         message = self.message.encode('utf-8')
+         message_len = len(message)
+ 
+-        get_frame = specification.Basic.Get(queue='travis-ci',
++        get_frame = commands.Basic.Get(queue='travis-ci',
+                                             no_ack=False)
+ 
+         def on_get_frame(*_):
+-            channel.rpc.on_frame(specification.Basic.GetOk())
++            channel.rpc.on_frame(commands.Basic.GetOk())
+             channel.rpc.on_frame(ContentHeader(body_size=message_len))
+             channel.rpc.on_frame(ContentBody(value=message))
+ 
+@@ -314,11 +314,11 @@ class BasicTests(TestFramework):
+         self.assertEqual(result.body.encode('utf-8'), message)
+ 
+     def test_basic_get_message_empty_queue(self):
+-        get_frame = specification.Basic.Get(queue='travis-ci',
++        get_frame = commands.Basic.Get(queue='travis-ci',
+                                             no_ack=False)
+ 
+         def on_get_frame(*_):
+-            channel.rpc.on_frame(specification.Basic.GetEmpty())
++            channel.rpc.on_frame(commands.Basic.GetEmpty())
+ 
+         connection = FakeConnection(on_write=on_get_frame)
+         channel = Channel(9, connection, 1)
+@@ -396,14 +396,14 @@ class BasicTests(TestFramework):
+         tag = 'travis-ci'
+ 
+         def on_publish_return_ack(_, frame):
+-            self.assertIsInstance(frame, specification.Basic.Consume)
++            self.assertIsInstance(frame, commands.Basic.Consume)
+             self.assertEqual(frame.arguments, {})
+             self.assertEqual(frame.consumer_tag, tag)
+             self.assertEqual(frame.exclusive, True)
+             self.assertEqual(frame.no_ack, True)
+             self.assertEqual(frame.exclusive, True)
+             self.assertEqual(frame.queue, '')
+-            channel.rpc.on_frame(specification.Basic.ConsumeOk(tag))
++            channel.rpc.on_frame(commands.Basic.ConsumeOk(tag))
+ 
+         connection = FakeConnection(on_write=on_publish_return_ack)
+         channel = Channel(9, connection, 1)
+Index: AMQPStorm-2.8.4/amqpstorm/tests/unit/channel/channel_exception_tests.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/tests/unit/channel/channel_exception_tests.py
++++ AMQPStorm-2.8.4/amqpstorm/tests/unit/channel/channel_exception_tests.py
+@@ -1,6 +1,6 @@
+ import mock
+ from mock import Mock
+-from pamqp import specification
++from pamqp import commands
+ 
+ import amqpstorm
+ from amqpstorm import AMQPChannelError
+@@ -167,7 +167,7 @@ class ChannelExceptionTests(TestFramewor
+         channel = Channel(0, FakeConnection(), 360)
+         channel.set_state(channel.OPEN)
+ 
+-        basic_return = specification.Basic.Return(
++        basic_return = commands.Basic.Return(
+             reply_code=500,
+             reply_text='Error'
+         )
+@@ -189,7 +189,7 @@ class ChannelExceptionTests(TestFramewor
+         channel.set_state(channel.OPEN)
+         channel._consumer_tags = [4, 5, 6]
+ 
+-        close_frame = specification.Channel.Close(
++        close_frame = commands.Channel.Close(
+             reply_code=500,
+             reply_text='travis-ci'
+         )
+Index: AMQPStorm-2.8.4/amqpstorm/tests/unit/channel/channel_frame_tests.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/tests/unit/channel/channel_frame_tests.py
++++ AMQPStorm-2.8.4/amqpstorm/tests/unit/channel/channel_frame_tests.py
+@@ -1,6 +1,6 @@
+ from mock import Mock
+ from pamqp import ContentHeader
+-from pamqp import specification
++from pamqp import commands
+ from pamqp.body import ContentBody
+ 
+ import amqpstorm
+@@ -21,7 +21,7 @@ class ChannelFrameTests(TestFramework):
+         message = self.message.encode('utf-8')
+         message_len = len(message)
+ 
+-        deliver = specification.Basic.Deliver()
++        deliver = commands.Basic.Deliver()
+         header = ContentHeader(body_size=message_len)
+         body = ContentBody(value=message)
+ 
+@@ -38,7 +38,7 @@ class ChannelFrameTests(TestFramework):
+                                           lazy=True)
+         channel = Channel(0, connection, rpc_timeout=1)
+ 
+-        channel.on_frame(specification.Basic.Cancel('travis-ci'))
++        channel.on_frame(commands.Basic.Cancel('travis-ci'))
+ 
+         self.assertEqual(
+             self.get_last_log(),
+@@ -50,7 +50,7 @@ class ChannelFrameTests(TestFramework):
+         channel = Channel(0, Mock(name='Connection'), rpc_timeout=1)
+         channel.add_consumer_tag(tag)
+ 
+-        channel.on_frame(specification.Basic.CancelOk(tag))
++        channel.on_frame(commands.Basic.CancelOk(tag))
+ 
+         self.assertFalse(channel.consumer_tags)
+ 
+@@ -58,7 +58,7 @@ class ChannelFrameTests(TestFramework):
+         tag = 'travis-ci'
+         channel = Channel(0, Mock(name='Connection'), rpc_timeout=1)
+ 
+-        channel.on_frame(specification.Basic.ConsumeOk(tag))
++        channel.on_frame(commands.Basic.ConsumeOk(tag))
+ 
+         self.assertEqual(channel.consumer_tags[0], tag)
+ 
+@@ -70,7 +70,7 @@ class ChannelFrameTests(TestFramework):
+         channel.set_state(channel.OPEN)
+ 
+         channel.on_frame(
+-            specification.Basic.Return(
++            commands.Basic.Return(
+                 reply_code=500,
+                 reply_text='travis-ci',
+                 exchange='exchange',
+@@ -91,7 +91,7 @@ class ChannelFrameTests(TestFramework):
+         channel.set_state(channel.OPEN)
+ 
+         channel.on_frame(
+-            specification.Channel.Close(
++            commands.Channel.Close(
+                 reply_code=500,
+                 reply_text='travis-ci'
+             )
+@@ -109,7 +109,7 @@ class ChannelFrameTests(TestFramework):
+         channel.set_state(channel.OPEN)
+ 
+         channel.on_frame(
+-            specification.Channel.Close(
++            commands.Channel.Close(
+                 reply_code=500,
+                 reply_text='travis-ci'
+             )
+@@ -132,7 +132,7 @@ class ChannelFrameTests(TestFramework):
+         connection.write_frame = raise_on_write
+ 
+         channel.on_frame(
+-            specification.Channel.Close(
++            commands.Channel.Close(
+                 reply_code=500,
+                 reply_text='travis-ci'
+             )
+@@ -150,11 +150,11 @@ class ChannelFrameTests(TestFramework):
+         channel = Channel(0, connection, rpc_timeout=1)
+         channel.set_state(channel.OPEN)
+ 
+-        channel.on_frame(specification.Channel.Flow())
++        channel.on_frame(commands.Channel.Flow())
+ 
+         self.assertIsInstance(
+             connection.get_last_frame(),
+-            specification.Channel.FlowOk
++            commands.Channel.FlowOk
+         )
+ 
+     def test_channel_unhandled_frame(self):
+Index: AMQPStorm-2.8.4/amqpstorm/tests/unit/channel/channel_message_handling_tests.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/tests/unit/channel/channel_message_handling_tests.py
++++ AMQPStorm-2.8.4/amqpstorm/tests/unit/channel/channel_message_handling_tests.py
+@@ -2,7 +2,7 @@ import threading
+ 
+ from mock import Mock
+ from pamqp import ContentHeader
+-from pamqp import specification
++from pamqp import commands
+ from pamqp.body import ContentBody
+ 
+ from amqpstorm import AMQPChannelError
+@@ -19,7 +19,7 @@ class ChannelBuildMessageTests(TestFrame
+         message = self.message.encode('utf-8')
+         message_len = len(message)
+ 
+-        deliver = specification.Basic.Deliver()
++        deliver = commands.Basic.Deliver()
+         header = ContentHeader(body_size=message_len)
+         body = ContentBody(value=message)
+ 
+@@ -35,7 +35,7 @@ class ChannelBuildMessageTests(TestFrame
+         message = self.message.encode('utf-8')
+         message_len = len(message)
+ 
+-        deliver = specification.Basic.Deliver()
++        deliver = commands.Basic.Deliver()
+         header = ContentHeader(body_size=message_len)
+         body = ContentBody(value=message)
+ 
+@@ -51,7 +51,7 @@ class ChannelBuildMessageTests(TestFrame
+         message = self.message
+         message_len = len(message)
+ 
+-        deliver = specification.Basic.Deliver()
++        deliver = commands.Basic.Deliver()
+         header = ContentHeader(body_size=message_len)
+ 
+         channel._inbound = [deliver, deliver, header]
+@@ -67,7 +67,7 @@ class ChannelBuildMessageTests(TestFrame
+         message = self.message
+         message_len = len(message)
+ 
+-        deliver = specification.Basic.Deliver()
++        deliver = commands.Basic.Deliver()
+         header = ContentHeader(body_size=message_len)
+         body = ContentBody(value=message)
+ 
+@@ -81,20 +81,20 @@ class ChannelBuildMessageTests(TestFrame
+     def test_channel_build_message_headers(self):
+         channel = Channel(0, Mock(name='Connection'), 360)
+ 
+-        deliver = specification.Basic.Deliver()
++        deliver = commands.Basic.Deliver()
+         header = ContentHeader(body_size=10)
+ 
+         channel._inbound = [deliver, header]
+         result = channel._build_message_headers()
+ 
+-        self.assertIsInstance(result[0], specification.Basic.Deliver)
++        self.assertIsInstance(result[0], commands.Basic.Deliver)
+         self.assertIsInstance(result[1], ContentHeader)
+         self.assertEqual(result[1].body_size, 10)
+ 
+     def test_channel_build_message_headers_out_of_order(self):
+         channel = Channel(0, Mock(name='Connection'), 360)
+ 
+-        deliver = specification.Basic.Deliver()
++        deliver = commands.Basic.Deliver()
+         header = ContentHeader(body_size=10)
+ 
+         channel._inbound = [header, deliver]
+@@ -208,7 +208,7 @@ class ChannelBuildMessageTests(TestFrame
+             channel._inbound.append(ContentHeader(body_size=message_len))
+             channel._inbound.append(ContentBody(value=message))
+ 
+-        deliver = specification.Basic.Deliver()
++        deliver = commands.Basic.Deliver()
+         channel._inbound = [deliver]
+ 
+         self.assertTrue(channel._inbound)
+@@ -227,7 +227,7 @@ class ChannelBuildMessageTests(TestFrame
+         message = self.message.encode('utf-8')
+         message_len = len(message)
+ 
+-        deliver = specification.Basic.Deliver()
++        deliver = commands.Basic.Deliver()
+         header = ContentHeader(body_size=message_len)
+         body = ContentBody(value=message)
+ 
+@@ -247,7 +247,7 @@ class ChannelBuildMessageTests(TestFrame
+         message = self.message.encode('utf-8')
+         message_len = len(message)
+ 
+-        deliver = specification.Basic.Deliver()
++        deliver = commands.Basic.Deliver()
+         header = ContentHeader(body_size=message_len)
+         body = ContentBody(value=message)
+ 
+@@ -268,7 +268,7 @@ class ChannelBuildMessageTests(TestFrame
+         message = self.message.encode('utf-8')
+         message_len = len(message)
+ 
+-        deliver = specification.Basic.Deliver()
++        deliver = commands.Basic.Deliver()
+         header = ContentHeader(body_size=message_len)
+         body = ContentBody(value=message)
+ 
+@@ -291,7 +291,7 @@ class ChannelBuildMessageTests(TestFrame
+         message = self.message.encode('utf-8')
+         message_len = len(message)
+ 
+-        deliver = specification.Basic.Deliver()
++        deliver = commands.Basic.Deliver()
+         header = ContentHeader(body_size=message_len)
+         body = ContentBody(value=message)
+ 
+@@ -316,7 +316,7 @@ class ChannelBuildMessageTests(TestFrame
+         message = self.message.encode('utf-8')
+         message_len = len(message)
+ 
+-        deliver = specification.Basic.Deliver()
++        deliver = commands.Basic.Deliver()
+         header = ContentHeader(body_size=message_len)
+         body = ContentBody(value=message)
+ 
+@@ -342,7 +342,7 @@ class ChannelProcessDataEventTests(TestF
+         message = self.message.encode('utf-8')
+         message_len = len(message)
+ 
+-        deliver = specification.Basic.Deliver(consumer_tag='travis-ci')
++        deliver = commands.Basic.Deliver(consumer_tag='travis-ci')
+         header = ContentHeader(body_size=message_len)
+         body = ContentBody(value=message)
+ 
+@@ -367,7 +367,7 @@ class ChannelProcessDataEventTests(TestF
+         message = self.message.encode('utf-8')
+         message_len = len(message)
+ 
+-        deliver = specification.Basic.Deliver(consumer_tag='travis-ci')
++        deliver = commands.Basic.Deliver(consumer_tag='travis-ci')
+         header = ContentHeader(body_size=message_len)
+         body = ContentBody(value=message)
+ 
+@@ -401,7 +401,7 @@ class ChannelStartConsumingTests(TestFra
+         message = self.message.encode('utf-8')
+         message_len = len(message)
+ 
+-        deliver = specification.Basic.Deliver(consumer_tag='travis-ci')
++        deliver = commands.Basic.Deliver(consumer_tag='travis-ci')
+         header = ContentHeader(body_size=message_len)
+         body = ContentBody(value=message)
+ 
+@@ -430,7 +430,7 @@ class ChannelStartConsumingTests(TestFra
+         message_len = len(message)
+ 
+         def add_inbound():
+-            deliver = specification.Basic.Deliver(consumer_tag='travis-ci')
++            deliver = commands.Basic.Deliver(consumer_tag='travis-ci')
+             header = ContentHeader(body_size=message_len)
+             body = ContentBody(value=message)
+ 
+@@ -465,11 +465,11 @@ class ChannelStartConsumingTests(TestFra
+         message = self.message.encode('utf-8')
+         message_len = len(message)
+ 
+-        deliver_one = specification.Basic.Deliver(
++        deliver_one = commands.Basic.Deliver(
+             consumer_tag='travis-ci-1')
+-        deliver_two = specification.Basic.Deliver(
++        deliver_two = commands.Basic.Deliver(
+             consumer_tag='travis-ci-2')
+-        deliver_three = specification.Basic.Deliver(
++        deliver_three = commands.Basic.Deliver(
+             consumer_tag='travis-ci-3')
+         header = ContentHeader(body_size=message_len)
+         body = ContentBody(value=message)
+Index: AMQPStorm-2.8.4/amqpstorm/tests/unit/channel/channel_tests.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/tests/unit/channel/channel_tests.py
++++ AMQPStorm-2.8.4/amqpstorm/tests/unit/channel/channel_tests.py
+@@ -1,5 +1,5 @@
+ from mock import Mock
+-from pamqp import specification
++from pamqp import commands
+ 
+ from amqpstorm import Channel
+ from amqpstorm.basic import Basic
+@@ -46,8 +46,8 @@ class ChannelTests(TestFramework):
+ 
+     def test_channel_open(self):
+         def on_open_ok(_, frame_out):
+-            self.assertIsInstance(frame_out, specification.Channel.Open)
+-            channel.rpc.on_frame(specification.Channel.OpenOk())
++            self.assertIsInstance(frame_out, commands.Channel.Open)
++            channel.rpc.on_frame(commands.Channel.OpenOk())
+ 
+         channel = Channel(0, FakeConnection(on_write=on_open_ok), 360)
+ 
+@@ -58,10 +58,10 @@ class ChannelTests(TestFramework):
+ 
+     def test_channel_close(self):
+         def on_close_ok(_, frame_out):
+-            if isinstance(frame_out, specification.Basic.Cancel):
+-                channel.rpc.on_frame(specification.Basic.CancelOk())
++            if isinstance(frame_out, commands.Basic.Cancel):
++                channel.rpc.on_frame(commands.Basic.CancelOk())
+                 return
+-            channel.rpc.on_frame(specification.Channel.CloseOk())
++            channel.rpc.on_frame(commands.Channel.CloseOk())
+ 
+         channel = Channel(0, FakeConnection(on_write=on_close_ok), 360)
+ 
+@@ -80,9 +80,9 @@ class ChannelTests(TestFramework):
+ 
+     def test_channel_close_gracefully_with_queued_error(self):
+         def on_close_ok(_, frame_out):
+-            if isinstance(frame_out, specification.Basic.Cancel):
++            if isinstance(frame_out, commands.Basic.Cancel):
+                 raise AMQPChannelError('travis-ci')
+-            channel.rpc.on_frame(specification.Channel.CloseOk())
++            channel.rpc.on_frame(commands.Channel.CloseOk())
+ 
+         channel = Channel(0, FakeConnection(on_write=on_close_ok), 360)
+ 
+@@ -126,7 +126,7 @@ class ChannelTests(TestFramework):
+ 
+     def test_channel_confirm_deliveries(self):
+         def on_select_ok(*_):
+-            channel.rpc.on_frame(specification.Confirm.SelectOk())
++            channel.rpc.on_frame(commands.Confirm.SelectOk())
+ 
+         connection = FakeConnection(on_write=on_select_ok)
+         channel = Channel(0, connection, 0.01)
+@@ -144,7 +144,7 @@ class ChannelTests(TestFramework):
+         channel.set_state(channel.OPEN)
+         channel._consumer_tags = [4, 5, 6]
+ 
+-        close_frame = specification.Channel.Close(reply_code=200,
++        close_frame = commands.Channel.Close(reply_code=200,
+                                                   reply_text='travis-ci')
+         # Close Channel.
+         channel._close_channel(close_frame)
+Index: AMQPStorm-2.8.4/amqpstorm/tests/unit/channel0/channel0_frame_tests.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/tests/unit/channel0/channel0_frame_tests.py
++++ AMQPStorm-2.8.4/amqpstorm/tests/unit/channel0/channel0_frame_tests.py
+@@ -1,5 +1,5 @@
+ from pamqp.heartbeat import Heartbeat
+-from pamqp.specification import Connection
++from pamqp.commands import Connection
+ 
+ import amqpstorm
+ from amqpstorm import AMQPConnectionError
+Index: AMQPStorm-2.8.4/amqpstorm/tests/unit/channel0/channel0_tests.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/tests/unit/channel0/channel0_tests.py
++++ AMQPStorm-2.8.4/amqpstorm/tests/unit/channel0/channel0_tests.py
+@@ -1,7 +1,7 @@
+ import platform
+ 
+ from pamqp.heartbeat import Heartbeat
+-from pamqp.specification import Connection
++from pamqp.commands import Connection
+ 
+ import amqpstorm
+ from amqpstorm import AMQPConnectionError
+Index: AMQPStorm-2.8.4/amqpstorm/tests/unit/connection/connection_tests.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/tests/unit/connection/connection_tests.py
++++ AMQPStorm-2.8.4/amqpstorm/tests/unit/connection/connection_tests.py
+@@ -3,8 +3,8 @@ import threading
+ 
+ from mock import Mock
+ from pamqp import frame as pamqp_frame
+-from pamqp import specification
+-from pamqp.specification import Basic as spec_basic
++from pamqp import commands as commands
++from pamqp.commands import Basic as spec_basic
+ 
+ from amqpstorm import Channel
+ from amqpstorm import Connection
+@@ -111,7 +111,7 @@ class ConnectionTests(TestFramework):
+ 
+         self.assertEqual(data_in, b'')
+         self.assertEqual(channel_id, 0)
+-        self.assertIsInstance(frame_in, specification.Connection.Tune)
++        self.assertIsInstance(frame_in, commands.Connection.Tune)
+ 
+     def test_connection_handle_amqp_frame_none_returns_none(self):
+         connection = Connection('127.0.0.1', 'guest', 'guest', lazy=True)
+@@ -125,7 +125,7 @@ class ConnectionTests(TestFramework):
+         connection = Connection('127.0.0.1', 'guest', 'guest', lazy=True)
+ 
+         def throw_error(*_):
+-            raise specification.AMQPFrameError()
++            raise commands.AMQPFrameError()
+ 
+         restore_func = pamqp_frame.unmarshal
+         try:
+@@ -288,7 +288,7 @@ class ConnectionTests(TestFramework):
+                 index + 1, connection, 360)
+ 
+         def on_write(frame_out):
+-            self.assertIsInstance(frame_out, specification.Connection.Close)
++            self.assertIsInstance(frame_out, commands.Connection.Close)
+             connection._channel0._close_connection_ok()
+ 
+         connection._channel0._write_frame = on_write
+@@ -410,8 +410,8 @@ class ConnectionTests(TestFramework):
+         connection.set_state(connection.OPEN)
+ 
+         def on_open_ok(_, frame_out):
+-            self.assertIsInstance(frame_out, specification.Channel.Open)
+-            connection._channels[1].on_frame(specification.Channel.OpenOk())
++            self.assertIsInstance(frame_out, commands.Channel.Open)
++            connection._channels[1].on_frame(commands.Channel.OpenOk())
+ 
+         connection.write_frame = on_open_ok
+ 
+Index: AMQPStorm-2.8.4/amqpstorm/tests/unit/exchange/exchange_tests.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/tests/unit/exchange/exchange_tests.py
++++ AMQPStorm-2.8.4/amqpstorm/tests/unit/exchange/exchange_tests.py
+@@ -1,4 +1,4 @@
+-from pamqp.specification import Exchange as pamqp_exchange
++from pamqp.commands import Exchange as pamqp_exchange
+ 
+ from amqpstorm.channel import Channel
+ from amqpstorm.channel import Exchange
+Index: AMQPStorm-2.8.4/amqpstorm/tests/unit/queue/queue_tests.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/tests/unit/queue/queue_tests.py
++++ AMQPStorm-2.8.4/amqpstorm/tests/unit/queue/queue_tests.py
+@@ -1,4 +1,4 @@
+-from pamqp.specification import Queue as pamqp_queue
++from pamqp.commands import Queue as pamqp_queue
+ 
+ from amqpstorm.channel import Channel
+ from amqpstorm.channel import Queue
+Index: AMQPStorm-2.8.4/amqpstorm/tests/unit/tx_tests.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/tests/unit/tx_tests.py
++++ AMQPStorm-2.8.4/amqpstorm/tests/unit/tx_tests.py
+@@ -1,4 +1,4 @@
+-from pamqp import specification
++from pamqp import commands
+ 
+ from amqpstorm.channel import Channel
+ from amqpstorm.tests.utility import FakeConnection
+@@ -9,7 +9,7 @@ from amqpstorm.tx import Tx
+ class TxTests(TestFramework):
+     def test_tx_select(self):
+         def on_tx_select(*_):
+-            channel.rpc.on_frame(specification.Tx.SelectOk())
++            channel.rpc.on_frame(commands.Tx.SelectOk())
+ 
+         connection = FakeConnection(on_write=on_tx_select)
+         channel = Channel(0, connection, 0.01)
+@@ -21,7 +21,7 @@ class TxTests(TestFramework):
+ 
+     def test_tx_commit(self):
+         def on_tx_commit(*_):
+-            channel.rpc.on_frame(specification.Tx.CommitOk())
++            channel.rpc.on_frame(commands.Tx.CommitOk())
+ 
+         connection = FakeConnection(on_write=on_tx_commit)
+         channel = Channel(0, connection, 0.01)
+@@ -33,7 +33,7 @@ class TxTests(TestFramework):
+ 
+     def test_tx_rollback(self):
+         def on_tx_rollback(*_):
+-            channel.rpc.on_frame(specification.Tx.RollbackOk())
++            channel.rpc.on_frame(commands.Tx.RollbackOk())
+ 
+         connection = FakeConnection(on_write=on_tx_rollback)
+         channel = Channel(0, connection, 0.01)
+@@ -48,11 +48,11 @@ class TxTests(TestFramework):
+ 
+         def on_tx(*_):
+             if not self._active_transaction:
+-                channel.rpc.on_frame(specification.Tx.SelectOk())
++                channel.rpc.on_frame(commands.Tx.SelectOk())
+                 self._active_transaction = True
+                 return
+             self._active_transaction = False
+-            channel.rpc.on_frame(specification.Tx.CommitOk())
++            channel.rpc.on_frame(commands.Tx.CommitOk())
+ 
+         connection = FakeConnection(on_write=on_tx)
+         channel = Channel(0, connection, 0.01)
+@@ -68,11 +68,11 @@ class TxTests(TestFramework):
+ 
+         def on_tx(*_):
+             if not self._active_transaction:
+-                channel.rpc.on_frame(specification.Tx.SelectOk())
++                channel.rpc.on_frame(commands.Tx.SelectOk())
+                 self._active_transaction = True
+                 return
+             self._active_transaction = False
+-            channel.rpc.on_frame(specification.Tx.CommitOk())
++            channel.rpc.on_frame(commands.Tx.CommitOk())
+ 
+         connection = FakeConnection(on_write=on_tx)
+         channel = Channel(0, connection, 0.01)
+@@ -86,10 +86,10 @@ class TxTests(TestFramework):
+ 
+     def test_tx_with_statement_when_raises(self):
+         def on_tx(_, frame):
+-            if isinstance(frame, specification.Tx.Select):
+-                channel.rpc.on_frame(specification.Tx.SelectOk())
++            if isinstance(frame, commands.Tx.Select):
++                channel.rpc.on_frame(commands.Tx.SelectOk())
+                 return
+-            channel.rpc.on_frame(specification.Tx.CommitOk())
++            channel.rpc.on_frame(commands.Tx.CommitOk())
+ 
+         connection = FakeConnection(on_write=on_tx)
+         channel = Channel(0, connection, 0.01)
+@@ -111,11 +111,11 @@ class TxTests(TestFramework):
+ 
+         def on_tx(*_):
+             if not self._active_transaction:
+-                channel.rpc.on_frame(specification.Tx.SelectOk())
++                channel.rpc.on_frame(commands.Tx.SelectOk())
+                 self._active_transaction = True
+                 return
+             self._active_transaction = False
+-            channel.rpc.on_frame(specification.Tx.RollbackOk())
++            channel.rpc.on_frame(commands.Tx.RollbackOk())
+ 
+         connection = FakeConnection(on_write=on_tx)
+         channel = Channel(0, connection, 0.01)
+Index: AMQPStorm-2.8.4/amqpstorm/tx.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/tx.py
++++ AMQPStorm-2.8.4/amqpstorm/tx.py
+@@ -2,7 +2,7 @@
+ 
+ import logging
+ 
+-from pamqp import specification
++from pamqp import commands
+ 
+ from amqpstorm.base import Handler
+ 
+@@ -48,7 +48,7 @@ class Tx(Handler):
+         :return:
+         """
+         self._tx_active = True
+-        return self._channel.rpc_request(specification.Tx.Select())
++        return self._channel.rpc_request(commands.Tx.Select())
+ 
+     def commit(self):
+         """Commit the current transaction.
+@@ -62,7 +62,7 @@ class Tx(Handler):
+         :return:
+         """
+         self._tx_active = False
+-        return self._channel.rpc_request(specification.Tx.Commit())
++        return self._channel.rpc_request(commands.Tx.Commit())
+ 
+     def rollback(self):
+         """Abandon the current transaction.
+@@ -79,4 +79,4 @@ class Tx(Handler):
+         :return:
+         """
+         self._tx_active = False
+-        return self._channel.rpc_request(specification.Tx.Rollback())
++        return self._channel.rpc_request(commands.Tx.Rollback())
+Index: AMQPStorm-2.8.4/amqpstorm/exchange.py
+===================================================================
+--- AMQPStorm-2.8.4.orig/amqpstorm/exchange.py
++++ AMQPStorm-2.8.4/amqpstorm/exchange.py
+@@ -2,7 +2,7 @@
+ 
+ import logging
+ 
+-from pamqp.specification import Exchange as pamqp_exchange
++from pamqp.commands import Exchange as pamqp_exchange
+ 
+ from amqpstorm import compatibility
+ from amqpstorm.base import Handler
