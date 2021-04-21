@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>27989b9ce0d1f1e5cd7d6eab271c3c29</srcmd5>
+    <version>5.3.5</version>
+    <time>1538374600</time>
+    <user>dimstar_suse</user>
+    <comment>initialize package</comment>
+    <requestid>637913</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6833a6de58977b1827b202caf0f5d704</srcmd5>
+    <version>5.3.7</version>
+    <time>1542012286</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>648210</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8548ce4cbb8a1cd1d7d5e0d4292bd405</srcmd5>
+    <version>6.0.0</version>
+    <time>1544095058</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655323</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6788ad1b2ea25470fcb3da0876d08c68</srcmd5>
+    <version>6.0.1</version>
+    <time>1548064386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>665960</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>18a31425fc484e57a8912112f585a91a</srcmd5>
+    <version>6.0.2</version>
+    <time>1560970844</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>706015</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2d2791196f40fcf8b775b347ab2611ea</srcmd5>
+    <version>6.0.4</version>
+    <time>1569523303</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>733315</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fe8c3efce7448f5e8f869ab3bf54012a</srcmd5>
+    <version>6.0.5</version>
+    <time>1593090674</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817023</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fc67693e80b9723dd7a03e5f50e0b3e2</srcmd5>
+    <version>6.0.6</version>
+    <time>1594894660</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821155</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e36ec25dcf182d677108a6b9c9c9e936</srcmd5>
+    <version>6.0.7</version>
+    <time>1607714189</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854714</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a61ee5c875ffd74dd76319acee5da909</srcmd5>
+    <version>6.0.8</version>
+    <time>1619031614</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 887119 from mschnitzer)</comment>
+    <requestid>887121</requestid>
+  </revision>
+</revisionlist>

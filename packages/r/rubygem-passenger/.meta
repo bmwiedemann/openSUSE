@@ -1,0 +1,14 @@
+<package name="rubygem-passenger" project="openSUSE:Factory">
+  <title>Apache module for Ruby on Rails support</title>
+  <description>Passenger is an Apache module for Ruby on Rails support.
+
+
+
+Authors:
+--------
+    Phusion - http://www.phusion.nl/
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-passenger"/>
+  <url>https://www.phusion.nl/</url>
+</package>
