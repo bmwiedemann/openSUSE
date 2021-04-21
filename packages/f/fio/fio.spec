@@ -1,7 +1,7 @@
 #
 # spec file for package fio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,7 +36,7 @@
 %bcond_without librdmacm
 %endif
 Name:           fio
-Version:        3.25
+Version:        3.26
 Release:        0
 Summary:        Flexible I/O tester
 License:        GPL-2.0-only
