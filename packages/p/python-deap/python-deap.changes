@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 21 06:25:51 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Don't build for Python 3.6, due to no NumPy. 
+
+-------------------------------------------------------------------
 Thu Sep 10 14:57:56 UTC 2020 - pgajdos@suse.com
 
 - remove nose, python3
