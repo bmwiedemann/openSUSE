@@ -1,7 +1,7 @@
 #
 # spec file for package c3p0
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,15 +17,17 @@
 #
 
 
-%define mchange_commons_version 0.2.11
+%define mchange_commons_min_version 0.2.15
+%define mchange_commons_version %(rpm -q --qf '%%{VERSION}' mchange-commons)
+
 Name:           c3p0
-Version:        0.9.5.2
+Version:        0.9.5.5
 Release:        0
 Summary:        JDBC DataSources/Resource Pools
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/Java
-URL:            http://sourceforge.net/projects/c3p0/
-Source0:        http://downloads.sourceforge.net/sourceforge/c3p0/c3p0-0.9.5.2.src.tgz
+URL:            https://www.mchange.com/projects/c3p0/
+Source0:        http://downloads.sourceforge.net/sourceforge/c3p0/c3p0-%{version}.src.tgz
 Patch1:         %{name}-javadoc.patch
 BuildRequires:  ant
 BuildRequires:  ant-nodeps
@@ -33,7 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  junit
-BuildRequires:  mchange-commons = %{mchange_commons_version}
+BuildRequires:  mchange-commons >= %{mchange_commons_min_version}
 Requires:       mchange-commons = %{mchange_commons_version}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives

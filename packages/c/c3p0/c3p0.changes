@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 16 20:10:24 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.9.5.5
+  * Fixed CVE-2018-20433, version 0.9.5.2 allowed XXE in
+    extractXmlConfigFromInputStream during initialization.
+  * Properly implement the JDBC 4.1 abort method.
+  * Make XML parsing much more restrictove by default, but allow
+    users to revert to the old, permissive behavior by setting config
+    property 'com.mchange.v2.c3p0.cfg.xml.usePermissiveParser' to true
+  * Address situation where a throwable during forceKillAcquires() left
+    the force_kill_acquires flag set to true, making it impossible for
+    the pool to restart acquisition attempts on recovery.
+  * Upgrade dependency to mchange-commons-java 0.2.15, which
+    includes support for log4j2
+
+-------------------------------------------------------------------
 Sun Jul  7 10:00:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of description.
