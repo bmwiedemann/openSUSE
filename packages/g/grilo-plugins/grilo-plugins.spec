@@ -1,7 +1,7 @@
 #
 # spec file for package grilo-plugins
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,21 @@
 
 %define plugin_dir %(pkg-config --variable plugindir grilo-0.3)
 Name:           grilo-plugins
-Version:        0.3.12
+Version:        0.3.13
 Release:        0
 Summary:        Media and metadata plugins for the Grilo framework
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://live.gnome.org/Grilo
 Source0:        https://download.gnome.org/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
-
+# PATCH-FIX-UPSTREAM 108.patch dimstar@opensuse.org -- grl-lua-factory: Remove a bad pop, exposed by Lua 5.4.3, causing a crash.
+Patch0:         https://gitlab.gnome.org/GNOME/grilo-plugins/-/merge_requests/108.patch
 BuildRequires:  docbook_4
 BuildRequires:  fdupes
 BuildRequires:  gperf
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  itstool
-BuildRequires:  meson
+BuildRequires:  meson >= 0.44.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(avahi-glib)
@@ -162,7 +163,6 @@ This package provides the development files.
 %{plugin_dir}/libgrlflickr.so
 %{plugin_dir}/libgrlfreebox.so
 %{plugin_dir}/libgrlgravatar.so
-%{plugin_dir}/libgrljamendo.so
 %{plugin_dir}/libgrlmagnatune.so
 %{plugin_dir}/libgrllocalmetadata.so
 %{plugin_dir}/libgrlmetadatastore.so
@@ -173,7 +173,6 @@ This package provides the development files.
 %{plugin_dir}/libgrlshoutcast.so
 %{plugin_dir}/libgrlthetvdb.so
 %{plugin_dir}/libgrltmdb.so
-%{plugin_dir}/libgrlvimeo.so
 %{plugin_dir}/libgrlluafactory.so
 %dir %{_datadir}/grilo-plugins
 %dir %{_datadir}/grilo-plugins/grl-lua-factory

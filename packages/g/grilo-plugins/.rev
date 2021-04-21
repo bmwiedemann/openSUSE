@@ -421,4 +421,12 @@
     <comment></comment>
     <requestid>836549</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>1de538bd6c5462bfad22d88dbf3c410e</srcmd5>
+    <version>0.3.13</version>
+    <time>1619031488</time>
+    <user>dimstar_suse</user>
+    <comment>Fix excution with lua 5.4.3 (forwarded request 886866 from dimstar)</comment>
+    <requestid>886869</requestid>
+  </revision>
 </revisionlist>
