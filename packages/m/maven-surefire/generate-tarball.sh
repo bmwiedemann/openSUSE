@@ -2,10 +2,10 @@
 set -e
 
 name=maven-surefire
-version="$(sed -n 's/Version:\s*//p' *.spec)"
+version="$(sed -n 's/Version:\s*//p' ${name}.spec)"
 
 # RETRIEVE
-wget "http://repo2.maven.org/maven2/org/apache/maven/surefire/surefire/${version}/surefire-${version}-source-release.zip" -O "${name}-${version}.orig.zip"
+wget "https://archive.apache.org/dist/maven/surefire/surefire-${version}-source-release.zip" -O "${name}-${version}.orig.zip"
 
 rm -rf tarball-tmp
 mkdir tarball-tmp

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 19 16:59:36 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update generate-tarball.sh to use https URL [bsc#1182708]
+
+-------------------------------------------------------------------
 Tue Apr  2 09:06:05 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of maven-surefire 2.22.0
