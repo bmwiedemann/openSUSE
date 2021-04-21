@@ -1,7 +1,7 @@
 #
 # spec file for package framel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,9 @@
 #
 
 
+%define skip_python2 1
+# Disable py 3.6: no numpy
+%define skip_python36 1
 %global shlib lib%{name}8
 Name:           framel
 Version:        8.40.1
@@ -26,10 +29,12 @@ URL:            https://lappweb.in2p3.fr/virgo/FrameL/
 Source:         http://software.igwn.org/lscsoft/source/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM framel-fix-pkgconfig.patch badshah400@gmail.com -- Fix include and lib dir paths in pkgconfig file
 Patch0:         framel-fix-pkgconfig.patch
+BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
-BuildRequires:  python3-numpy-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python-rpm-macros
+%python_subpackages
 
 %description
 A Common Data Frame Format for Interferometric Gravitational Wave Detector has
@@ -46,60 +51,62 @@ matlab, dedicated to frame data manipulation including file input/output.
 
 This package provides the shared library for framel.
 
-%package devel
+%package -n %{name}-devel
 Summary:        Headers and sources for developing with the gravitational wave frame library
 Requires:       %{shlib} = %{version}
 
-%description devel
+%description -n %{name}-devel
 The Frame Library is a software in C language, with interfaces to python and
 matlab, dedicated to frame data manipulation including file input/output.
 
 This package property the headers and sources needed to develop applications
 against the frame library.
 
-%package -n python3-%{name}
-Summary:        Python module for framel - a library for gravitational wave frame data
-Requires:       python3
-
-%description -n python3-%{name}
-The Frame Library is a software in C language, with interfaces to python and
-matlab, dedicated to frame data manipulation including file input/output.
-
-This package provides the python3 module for frame library.
-
 %prep
 %autosetup -p1
 
 %build
+%{python_expand #for supported py3 flavours
+export PYTHON=$python
+mkdir ../${PYTHON}_build
+cp -pr ./ ../${PYTHON}_build
+pushd ../${PYTHON}_build
+sed -i 's/find_package(Python3 /find_package(Python3 %{$python_version} EXACT /' Python/CMakeLists.txt
 %cmake \
   -DCMAKE_INSTALL_INCLUDEDIR=%{_includedir}/%{name} \
   -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
   -DENABLE_PYTHON=yes
-
 %cmake_build
+popd
+}
 
 %install
+%{python_expand #for supported py3 flavours
+export PYTHON=$python
+pushd ../${PYTHON}_build
 %cmake_install
+popd
+}
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
 
-%files
+%files -n %{name}
 %license LICENSE
 %{_bindir}/*
 
 %files -n %{shlib}
 %{_libdir}/libframel.so.*
 
-%files devel
+%files -n %{name}-devel
 %license LICENSE
 %doc %{_docdir}/%{name}
 %{_includedir}/%{name}/
 %{_libdir}/libframel.so
 %{_libdir}/pkgconfig/*.pc
 
-%files -n python3-%{name}
+%files %{python_files}
 %license LICENSE
-%{python3_sitearch}/*
+%{python_sitearch}/*
 
 %changelog

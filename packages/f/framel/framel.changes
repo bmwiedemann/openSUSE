@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 18 19:51:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix the overeager python-rpm-macros error for main and devel
+  package declaration
+- Fix the cmake expansion for flavors
+
+-------------------------------------------------------------------
+Sat Feb 27 01:09:54 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Adapt for multiple python3 builds.
+- Disable building for python 3.6 since it does not support numpy.
+
+-------------------------------------------------------------------
 Fri Oct 23 07:18:52 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add framel-fix-pkgconfig.patch -- Fix include and lib dir paths
