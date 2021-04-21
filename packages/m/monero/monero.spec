@@ -36,7 +36,7 @@
 %define description_text_3 Security: Using the power of a distributed peer-to-peer consensus network, every transaction on the network is cryptographically secured. Individual wallets have a 24 word mnemonic seed that is only displayed once, and can be written down to backup the wallet. Wallet files are encrypted with a passphrase to ensure they are useless if stolen.
 %define description_text_4 Untraceability: By taking advantage of ring signatures, a special property of a certain type of cryptography, Monero is able to ensure that transactions are not only untraceable, but have an optional measure of ambiguity that ensures that transactions cannot easily be tied back to an individual user or computer.
 Name:           monero
-Version:        0.17.1.9
+Version:        0.17.2.0
 Release:        0
 Summary:        P2P digital currency
 License:        MIT

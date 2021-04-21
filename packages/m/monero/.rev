@@ -41,4 +41,34 @@
     <comment></comment>
     <requestid>885570</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2c46db4dce4cf85061cb8df5c09c8771</srcmd5>
+    <version>0.17.2.0</version>
+    <time>1619031589</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17.2.0:
+  * Tests: Fix test node_server.bind_same_p2p_port from randomly crashing
+  * build: prepare v0.17.2.0
+  * depends: openssl 1.1.1i -&gt; 1.1.1k
+  * cmake: Don't default to -march=native on OpenBSD
+  * ITS#9500 fix regression from ITS#8662
+  * cryptonote_protocol_handler: fix race condition
+  * cryptonote_protocol_handler: add race condition demo
+  * Fixed issues found by static analysis
+  * async_protocol_handler_config: fix deadlock
+  * async_protocol_handler_config: add deadlock demo
+  * fix serialization being different on mac
+  * trezor: simplify recognition of integrated addresses
+  * async_protocol_handler_config: remove connection correctly
+  * async_protocol_handler_config: add segfault demo
+  * ITS#9007 don't free loose writemap pages
+  * p2p: allow CIDR notation in DNS blocklist
+  * device_trezor: add redundant check
+  * device_trezor: wipe string fields properly
+  * boosted_tcp_server: fix connection lifetime
+  * boosted_tcp_server: add segfault demo
+  * p2p: only log to global when a blocked IP is not already blocked
+  * docs: Remove outdated bits about anonymity network seed nodes</comment>
+    <requestid>886889</requestid>
+  </revision>
 </revisionlist>
