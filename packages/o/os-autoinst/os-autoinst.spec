@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1618564966.3ff78d0c
+Version:        4.6.1618839153.ad5932c7
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -171,7 +171,7 @@ export NO_BRP_STALE_LINK_ERROR=yes
 export CI=1
 # account for sporadic slowness in build environments
 # https://progress.opensuse.org/issues/89059
-export OPENQA_TEST_TIMEOUT_SCALE_CI=4
+export OPENQA_TEST_TIMEOUT_SCALE_CI=6
 cd %{__builddir}
 %cmake_build check-pkg-build
 
