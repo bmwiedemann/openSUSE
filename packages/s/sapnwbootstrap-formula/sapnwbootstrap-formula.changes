@@ -1,14 +1,16 @@
 -------------------------------------------------------------------
 Tue Feb 23 12:31:57 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
-- Set the virtual ip addresses as permanent, except for HA scenarios,
-  to have them even after a reboot of the machine
+- Version bump 0.6.2
+  * Set the virtual ip addresses as permanent, except for HA
+  scenarios, to have them even after a reboot of the machine
+  (bsc#1185093)
 
 -------------------------------------------------------------------
 Fri Feb 19 08:48:58 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
 - Add some mandatory values in the DB and PAS templates for S4HANA
-  to avoid executions without them in the extra_parameters field 
+  to avoid executions without them in the extra_parameters field
 
 -------------------------------------------------------------------
 Mon Feb 15 12:34:27 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
