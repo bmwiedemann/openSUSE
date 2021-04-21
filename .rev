@@ -1,55 +1,10 @@
 <revisionlist>
   <revision rev="1" vrev="1">
-    <srcmd5>79a1be36f2d6ea8bf406131d4e9e1cc8</srcmd5>
-    <version>27.1</version>
-    <time>1589993230</time>
+    <srcmd5>ac66d37f90ea81c7275a3d0bf42d3250</srcmd5>
+    <version>27.4</version>
+    <time>1619031622</time>
     <user>dimstar_suse</user>
-    <comment>new package, will add the new user</comment>
-    <requestid>807491</requestid>
-  </revision>
-  <revision rev="2" vrev="2">
-    <srcmd5>7bc27902b9415c81834742fef7b89ca4</srcmd5>
-    <version>27.1</version>
-    <time>1592939221</time>
-    <user>dimstar_suse</user>
-    <comment>- fix compile with gcc10 by using -fcommon</comment>
-    <requestid>816577</requestid>
-  </revision>
-  <revision rev="3" vrev="1">
-    <srcmd5>ae6345f21fc9823e7ab0cd0fc96a2a07</srcmd5>
-    <version>27.2</version>
-    <time>1606428926</time>
-    <user>dimstar_suse</user>
-    <comment>- update to version 27.2
-  * web UI upgraded to v0.7.2:
-    - show cover artwork in album pages and lazy loading of artwork
-    - show playlist folders
-    - use sass/scss for css files
-    - add &quot;Radio&quot; tab to the music section
-    - add settings for artwork sources
-    - add pop up dialog for Remote pairing requests
-    - support adding/removing podcast subscriptions
-    - support marking all new podcast episodes/all episodes as played
-    - support searching by smart pl queries
-    - skip buttons for audiobooks and podcasts
-    - show localized times/dates
-    - generate colored placeholder image if cover artwork is missing
-    - show &quot;cast&quot; icon for Chromecast outputs
-    - styling changes of the navbars and moving the volume controls
-  * new speaker selection logic (persist user choice even after failure)
-  * speaker autoselect no longer enabled by default
-  * removed old admin page, not necessary any more
-  * fix/workaround for Apple TV's and HomePods that disconnect
-  * support for RSS feeds
-  * support for nested smart playlists (playlist folders)
-  * support for online artwork sources e.g. Discogs, Coverartarchive
-  * support for radio StreamUrl's that point to json with metadata
-  * fix incorrect artwork shown for unknown album/artists
-  * fix issue parsing shairport-sync progress metadata
-  * fix missing Spofity logout option
-  * fix for embedded artwork not working with ffmpeg 4.3+
-  * some smart PL improvements, e.g. support for more tags
-  * config option for Airplay timing/control ports (eases firewalling)</comment>
-    <requestid>850932</requestid>
+    <comment>re-submitting package, got deleted before</comment>
+    <requestid>887229</requestid>
   </revision>
 </revisionlist>

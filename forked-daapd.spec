@@ -29,7 +29,7 @@
 Summary:        DAAP server for iTunes and Chromecast with MPD and RSP support
 License:        GPL-2.0-or-later
 Name:           forked-daapd
-Version:        27.2
+Version:        27.4
 Release:        0
 URL:            https://github.com/ejurgensen/forked-daapd
 Source0:        https://github.com/ejurgensen/forked-daapd/releases/download/%{version}/%{name}-%{version}.tar.xz
@@ -43,7 +43,7 @@ BuildRequires:  pkgconfig(avahi-client) >= 0.6.24
 BuildRequires:  pkgconfig(json-c), antlr3-tool, antlr3c-devel, libgcrypt-devel >= 1.2.0
 BuildRequires:  pkgconfig(libavfilter), pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libavformat), pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libsodium), pkgconfig(libplist) >= 0.16
+BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(libswscale), pkgconfig(libavutil)
 BuildRequires:  pkgconfig(openssl), pkgconfig(libwebsockets) > 2.0.2
 BuildRequires:  pkgconfig(sqlite3) >= 3.5.0, pkgconfig(libevent) >= 2.0.0
@@ -51,6 +51,12 @@ BuildRequires:  pkgconfig(zlib), pkgconfig(libconfuse), pkgconfig(mxml)
 
 Requires:       logrotate
 Requires(pre):  pwdutils
+
+%if 0%{?suse_version} > 1500
+BuildRequires: pkgconfig(libplist-2.0)
+%else
+BuildRequires: pkgconfig(libplist)
+%endif
 
 %if %{with alsa}
 BuildRequires:  pkgconfig(alsa)
