@@ -17,7 +17,7 @@
 
 
 Name:           typesafe-config
-Version:        1.3.0
+Version:        1.4.1
 Release:        0
 Summary:        Configuration library for JVM languages
 License:        Apache-2.0
@@ -45,11 +45,20 @@ This package contains javadoc for %{name}.
 %build
 pushd config
 mkdir -p target/classes
-javac -d target/classes -source 8 -target 8 \
+javac -d target/classes \
+  -source 8 \
+  -target 8 \
+  -g \
+  -Xlint:unchecked \
   $(find src/main/java -name \*.java | xargs)
 jar -cf target/config.jar -C target/classes .
+
 mkdir -p target/api
-javadoc -d target/api -source 8 -notimestamp \
+javadoc -d target/api \
+  -source 8 \
+  -notimestamp \
+  -group "Public API (version %{version})" "com.typesafe.config:com.typesafe.config.parser" \
+  -group "Internal Implementation - Not ABI Stable" "com.typesafe.config.impl" \
   $(find src/main/java -name \*.java | xargs)
 
 %install
