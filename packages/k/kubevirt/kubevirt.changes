@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr 20 13:12:00 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Fix issue when calling `virsh-domcapabilities`
+  fix-virsh-domcapabilities-error.patch
+
+-------------------------------------------------------------------
+Tue Apr 20 08:33:46 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Package node-labeller.sh along with virt-launcher
+
+-------------------------------------------------------------------
+Mon Apr 19 15:04:21 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 0.40.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v0.40.0
+
+-------------------------------------------------------------------
+Mon Apr 19 14:44:25 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Disable changelog generation via tar_scm service (too verbose)
+
+-------------------------------------------------------------------
 Thu Apr 15 14:54:40 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Drop csv-generator

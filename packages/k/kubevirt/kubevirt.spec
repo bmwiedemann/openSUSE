@@ -17,7 +17,7 @@
 
 
 Name:           kubevirt
-Version:        0.38.1
+Version:        0.40.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -28,6 +28,7 @@ Source1:        kubevirt-psp-caasp.yaml
 Source100:      %{name}-rpmlintrc
 Patch0:         dont-build-virtctl-darwin.patch
 Patch1:         dont-use-bazel-in-build-manifests.patch
+Patch2:         fix-virsh-domcapabilities-error.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
@@ -181,6 +182,10 @@ install -p -m 0755 _out/cmd/virt-launcher/virt-launcher %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-operator/virt-operator %{buildroot}%{_bindir}/
 install -p -m 0755 _out/tests/tests.test %{buildroot}%{_bindir}/virt-tests
 
+# node-labeller needs to be installed in /bin
+mkdir -p %{buildroot}/bin
+install -p -m 0755 cmd/virt-launcher/node-labeller/node-labeller.sh %{buildroot}/bin/
+
 mkdir -p %{buildroot}%{_datadir}/kube-virt
 cp -r _out/manifests %{buildroot}%{_datadir}/kube-virt/
 # TODO:
@@ -220,6 +225,7 @@ install -m 0644 tests/default-config.json %{buildroot}%{_datadir}/kube-virt
 %license LICENSE
 %doc README.md
 %{_bindir}/virt-launcher
+/bin/node-labeller.sh
 
 %files virt-operator
 %license LICENSE
