@@ -81,4 +81,36 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
     <comment></comment>
     <requestid>862449</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3146d147af44bef655df8e5b3aac23fd</srcmd5>
+    <version>2.3.1</version>
+    <time>1619031598</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.3.1
+  New 3rd party printer profiles
+  * Multiple Creality printers profiles were added (Ender-3 Max,
+    Ender-4, Ender-6, CR-5 Pro, CR-5 Pro H, CR-6 SE, CR-6 Max,
+    CR-10 Max, CR-200B, CR-8), thanks @pmjdebruijn.
+  * Added Artillery printer profiles (Sidewinder X1, Genius),
+    thanks @SzabolcsHornyak.
+  * Added INAT printer profiles, thanks @MarkINAT.
+  * Updated Anycubic Kossel bed texture (thanks @brunosso) and
+    Anycubic Kossel bed STL.
+  Vulnerability issues fixed
+  * The Talos Cisco Intelligence Group did a great job identifying
+    potential security issues in loading invalid and potentially
+    malicious AMF and 3MF files, see their vulnerability reports
+    TALOS-2020-1222 and TALOS-2020-1218. We fixed these two
+    potential security issues with this release of PrusaSlicer.
+  Bugs fixed with respect to PrusaSlicer 2.3.0
+  * Reduced number of hits shown by the &quot;Find config option&quot;
+    dialog, fixed case insensitive search for non-Latin1 languages
+    #5202.
+  * Fixed G-code preview with coloring by a tool and visualization
+    of travels enabled #6095.
+  * Fixed opening of drop down menus at the bottom of the screen
+    on multi-monitor setups #2999 #5911 #5957. This issue has been
+    fixed by us in wxWidgets and accepted by the upstream. (forwarded request 886977 from bnavigator)</comment>
+    <requestid>886978</requestid>
+  </revision>
 </revisionlist>
