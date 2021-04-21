@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 21 00:19:11 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Don't use SecureBoot OVMF blobs, they don't work with LXD.
+- Add backport of <https://github.com/lxc/lxd/pull/8700> to fix LXD VMs on
+  openSUSE. boo#1181549
+  + boo1181549-0001-vm-qemu-configure-spice-using-spice-parameter.patch
+
+-------------------------------------------------------------------
 Mon Apr 12 05:19:43 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.13. The full upstream changelog is available from:

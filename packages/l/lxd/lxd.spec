@@ -43,6 +43,8 @@ Source101:      %{name}-config.yml
 # Additional runtime configuration.
 Source200:      %{name}.sysctl
 Source201:      %{name}.dnsmasq
+# Backport of <https://github.com/lxc/lxd/pull/8700>. boo#1181549
+Patch1:         boo1181549-0001-vm-qemu-configure-spice-using-spice-parameter.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  libacl-devel
@@ -106,6 +108,8 @@ Bash command line completion support for %{name}.
 
 %prep
 %setup -q
+# boo#1181549
+%patch1 -p1
 
 # Create fake "go mod"-like import paths. This is going to be really fun to
 # maintain but it's unfortunately necessary because openSUSE doesn't have nice
@@ -313,9 +317,9 @@ install -d -m 0755 %{buildroot}%{_localstatedir}/log/%{name}
 # in the way it expects. In particular, LXD depends on specific filenames for
 # the firmware files so we create fake ones with symlinks.
 mkdir -p %{buildroot}%{lxd_ovmfdir}
-ln -s %{_datarootdir}/qemu/ovmf-x86_64-ms-code.bin %{buildroot}%{lxd_ovmfdir}/OVMF_CODE.fd
-ln -s %{_datarootdir}/qemu/ovmf-x86_64-ms-vars.bin %{buildroot}%{lxd_ovmfdir}/OVMF_VARS.ms.fd
+ln -s %{_datarootdir}/qemu/ovmf-x86_64-code.bin %{buildroot}%{lxd_ovmfdir}/OVMF_CODE.fd
 ln -s %{_datarootdir}/qemu/ovmf-x86_64-vars.bin %{buildroot}%{lxd_ovmfdir}/OVMF_VARS.fd
+ln -s OVMF_VARS.fd %{buildroot}%{lxd_ovmfdir}/OVMF_VARS.ms.fd
 
 %fdupes %{buildroot}
 
