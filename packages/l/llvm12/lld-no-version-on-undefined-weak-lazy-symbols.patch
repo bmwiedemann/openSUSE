@@ -1,0 +1,36 @@
+diff --git a/lld/ELF/SyntheticSections.cpp b/lld/ELF/SyntheticSections.cpp
+--- a/lld/ELF/SyntheticSections.cpp
++++ b/lld/ELF/SyntheticSections.cpp
+@@ -3123,7 +3123,7 @@
+ void VersionTableSection::writeTo(uint8_t *buf) {
+   buf += 2;
+   for (const SymbolTableEntry &s : getPartition().dynSymTab->getSymbols()) {
+-    write16(buf, s.sym->versionId);
++    write16(buf, s.sym->isLazy() ? VER_NDX_GLOBAL : s.sym->versionId);
+     buf += 2;
+   }
+ }
+diff --git a/lld/test/ELF/version-script-weak.s b/lld/test/ELF/version-script-weak.s
+--- a/lld/test/ELF/version-script-weak.s
++++ b/lld/test/ELF/version-script-weak.s
+@@ -24,6 +24,19 @@
+ # CHECK-NEXT:   Section: Undefined
+ # CHECK-NEXT: }
+ 
++## The version of an unfetched lazy symbol is VER_NDX_GLOBAL. It is not affected by version scripts.
++# RUN: echo "v1 { *; };" > %t2.script
++# RUN: ld.lld -shared --version-script %t2.script %t.o --start-lib %t1.o --end-lib -o %t2.so
++# RUN: llvm-readelf -V %t2.so | FileCheck %s --check-prefix=CHECK2
++
++# CHECK2: 000: 0 (*local*) 1 (*global*)
++
++# RUN: ld.lld -shared --soname=tshared --version-script %t2.script %t1.o -o %tshared.so
++# RUN: ld.lld -shared --version-script %t2.script %t.o --start-lib %t1.o --end-lib %tshared.so -o %t3.so
++# RUN: llvm-readelf -V %t3.so | FileCheck %s --check-prefix=CHECK3
++
++# CHECK3: 000: 0 (*local*) 3 (v1)
++
+ .text
+  callq foo@PLT
+ .weak foo
+
