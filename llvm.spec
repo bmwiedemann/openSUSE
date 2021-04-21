@@ -16,7 +16,7 @@
 #
 
 
-%define _sonum 11
+%define _sonum 12
 %ifarch x86_64
 %define has_lldb 1
 # python3-lldb%{_sonum} is only built with these distributions (see llvm%{_sonum} package)
@@ -29,12 +29,13 @@
 # Obsolete packages <prefix>X or <prefix>X-<postfix> with X being a set of older versions.
 %define obsolete_llvm_versioned() \
 Obsoletes:      %{1}10%{?2:-%{2}} \
+Obsoletes:      %{1}11%{?2:-%{2}} \
 Obsoletes:      %{1}7%{?2:-%{2}} \
 Obsoletes:      %{1}8%{?2:-%{2}} \
 Obsoletes:      %{1}9%{?2:-%{2}}
 
 Name:           llvm
-Version:        11.0.1
+Version:        12.0.0
 Release:        0
 Summary:        Low Level Virtual Machine
 License:        Apache-2.0 WITH LLVM-exception OR NCSA

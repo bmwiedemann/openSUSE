@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 14 23:57:28 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 12.0.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/12.0.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/12.0.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/12.0.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/12.0.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/12.0.0/tools/lld/docs/ReleaseNotes.html
+
+-------------------------------------------------------------------
 Sat Jan  9 16:26:37 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 11.0.1.
