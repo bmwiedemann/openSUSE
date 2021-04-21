@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 31 21:05:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.0
+  * Change OCL_ICD_LAYERS to OPENCL_LAYERS to conform to
+    upecification
+  * Updated layer support around official CL/cl_layer.h
+  * Updated OpenCL Headers
+  * Fixed typo in manpage
+
+-------------------------------------------------------------------
 Sat Dec 12 21:50:37 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.14
