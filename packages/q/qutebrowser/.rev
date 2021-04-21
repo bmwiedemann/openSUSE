@@ -1615,4 +1615,41 @@ Changed
     the installed QtWebEngine version by inspecting the QtWebEngine</comment>
     <requestid>878536</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>247b381c927b78efddf2f6ded5c2c628</srcmd5>
+    <version>2.2.0</version>
+    <time>1619031573</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable test suite
+- Update to version 2.2.0
+Deprecated
+  * Running qutebrowser with Qt 5.12.0 is now unsupported and logs
+    a warning. It should still work - however, a workaround for
+    issues with the Nvidia graphic driver was dropped.
+    Newer Qt 5.12.x versions are still fully supported.
+  * The --force argument for :tab-only is deprecated, use --pinned
+    close instead.
+  * Using :tab-focus without an argument or count is now
+    deprecated, use :tab-next instead.
+Added
+  * New dependency on the QtDBus module. If this requirement is an
+    issue for you or your distribution, please open an issue!
+    Note that a DBus connection at runtime is still optional.
+  * New input.media_keys setting which can be used to disable
+    Chromium's handling of media keys.
+  * New :process command (and associated qute://process pages)
+    which can be used to view and terminate/kill external processes
+    spawned by qutebrowser.
+  * New content.site_specific_quirks.skip setting which can be used
+    to disable individual site-specific quirks.
+  * New --pinned argument for :tab-only, which replaces --force
+    (with --pinned close), but also can take --pinned keep to keep
+    pinned tabs without prompting.
+  * New fileselect.folder.command which can be used with
+    fileselect.handler = external to customize the command to use
+    to upload directories (&lt;input type=&quot;file&quot; webkitdirectory /&gt;
+    elements, which are non-standard but in wide use).
+  * New content.notifications.presenter setting with various new</comment>
+    <requestid>886814</requestid>
+  </revision>
 </revisionlist>

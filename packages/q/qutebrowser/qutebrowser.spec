@@ -17,7 +17,7 @@
 
 
 Name:           qutebrowser
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Keyboard-driven vim-like browser based on Qt5
 License:        GPL-3.0-or-later
@@ -26,22 +26,41 @@ URL:            https://qutebrowser.org/
 Source:         https://github.com/The-Compiler/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/The-Compiler/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+BuildRequires:  Mesa-dri
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python >= 3.6.1
+BuildRequires:  python3-Flask
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-MarkupSafe
 BuildRequires:  python3-PyYAML
+BuildRequires:  python3-beautifulsoup4
+BuildRequires:  python3-cheroot
 BuildRequires:  python3-devel >= 3.6
-BuildRequires:  python3-qt5 >= 5.12
+BuildRequires:  python3-hypothesis
+BuildRequires:  python3-importlib-resources
+BuildRequires:  python3-opengl
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-bdd
+BuildRequires:  python3-pytest-benchmark
+BuildRequires:  python3-pytest-instafail
+BuildRequires:  python3-pytest-mock
+BuildRequires:  python3-pytest-qt
+BuildRequires:  python3-pytest-rerunfailures
+BuildRequires:  python3-pytest-xvfb
+BuildRequires:  python3-qt5 > 5.12
+BuildRequires:  python3-qtwebengine-qt5
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-tk
+BuildRequires:  python3-tldextract
 Requires:       libqt5-sql-sqlite
 Requires:       python3-Jinja2
 Requires:       python3-MarkupSafe
 Requires:       python3-PyYAML
 Requires:       python3-opengl
-Requires:       python3-qt5 >= 5.12
+Requires:       python3-qt5 > 5.12
+Requires:       python3-qtwebengine-qt5
 Recommends:     python3-Pygments
 Recommends:     python3-adblock
 BuildArch:      noarch
@@ -49,17 +68,6 @@ BuildArch:      noarch
 BuildRequires:  python3-qt5-sip
 %else
 BuildRequires:  python3-sip
-%endif
-%if 0%{?suse_version} > 1500
-Requires:       python3-qtwebengine-qt5
-%endif
-%if 0%{?suse_version} >= 1550
-Requires:       python3-qt5-sip
-%else
-Requires:       python3-sip
-%endif
-%if 0%{?suse_version} <= 1320
-BuildRequires:  update-desktop-files
 %endif
 %if %{python3_version_nodots} <= 38
 Requires:       python3-importlib-resources
@@ -75,12 +83,14 @@ It's based on PyQt5 and can use either QtWebEngine or QtWebKit.
 %prep
 %setup -q
 sed -i '1d' %{name}/__main__.py
-sed -i 's,^#!/usr/bin/env ,#!%{_bindir}/,' \
+sed -i 's,^#!%{_bindir}/env ,#!%{_bindir}/,' \
     misc/userscripts/* \
     scripts/*.py
-sed -i 's,^#!/usr/bin/bash,#!/bin/bash,' \
+sed -i 's,^#!%{_bindir}/bash,#!/bin/bash,' \
     misc/userscripts/*
 mv misc/Makefile .
+# missing files in release tarball
+rm tests/unit/scripts/test_problemmatchers.py
 
 %build
 
@@ -92,6 +102,11 @@ chmod -x %{buildroot}%{_datadir}/%{name}/scripts/cycle-inputs.js \
     %{buildroot}%{_datadir}/%{name}/userscripts/README.md
 rm %{buildroot}%{python3_sitelib}/%{name}/git-commit-id
 %fdupes %{buildroot}%{python3_sitelib}/
+
+%check
+# NOTE: test suite is slow but doesn’t run reliably with xdist
+PYTHONPATH=. QUTE_BDD_WEBENGINE=true pytest -v \
+    -k 'not importlib'
 
 %if 0%{?suse_version} <= 1320
 %post
