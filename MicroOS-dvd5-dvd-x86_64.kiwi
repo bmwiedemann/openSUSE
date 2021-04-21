@@ -393,11 +393,11 @@
       <repopackage name="libavahi-common3" arch="x86_64"/>
       <repopackage name="libavahi-core7" arch="x86_64"/>
       <repopackage name="libavahi-glib1" arch="x86_64"/>
-      <repopackage name="libavcodec58_91" arch="x86_64"/>
-      <repopackage name="libavformat58_45" arch="x86_64"/>
+      <repopackage name="libavcodec58_134" arch="x86_64"/>
+      <repopackage name="libavformat58_76" arch="x86_64"/>
       <repopackage name="libavif10" arch="x86_64"/>
       <repopackage name="libavtp0" arch="x86_64"/>
-      <repopackage name="libavutil56_51" arch="x86_64"/>
+      <repopackage name="libavutil56_70" arch="x86_64"/>
       <repopackage name="libbasicobjects0" arch="x86_64"/>
       <repopackage name="libbd_crypto2" arch="x86_64"/>
       <repopackage name="libbd_fs2" arch="x86_64"/>
@@ -979,8 +979,8 @@
       <repopackage name="libsss_nss_idmap0" arch="x86_64"/>
       <repopackage name="libstartup-notification-1-0" arch="x86_64"/>
       <repopackage name="libstdc++6"/>
-      <repopackage name="libswresample3_7" arch="x86_64"/>
-      <repopackage name="libswscale5_7" arch="x86_64"/>
+      <repopackage name="libswresample3_9" arch="x86_64"/>
+      <repopackage name="libswscale5_9" arch="x86_64"/>
       <repopackage name="libsystemd0"/>
       <repopackage name="libtag1" arch="x86_64"/>
       <repopackage name="libtalloc2" arch="x86_64"/>

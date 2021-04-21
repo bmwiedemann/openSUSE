@@ -1685,13 +1685,13 @@
     <package name="libavahi-gobject0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavahi-ui-gtk3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavc1394-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libavcodec58_91" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libavfilter7_85" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libavformat58_45" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libavcodec58_134" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libavfilter7_110" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libavformat58_76" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libavif10" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libavresample4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libavtp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libavutil56_51" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libavutil56_70" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbabl-0_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbase" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbasicobjects0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -2455,7 +2455,7 @@
     <package name="libpopt0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libportal0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libportaudio2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpostproc55_7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libpostproc55_9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpotrace0" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="libpq5" supportstatus="unsupported"/> <!-- reason: dvd:postgresql -->
     <package name="libpresage1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2691,8 +2691,8 @@
     <package name="libsunpinyin3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsvn_auth_gnome_keyring-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libsvn_auth_kwallet-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libswresample3_7" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libswscale5_7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libswresample3_9" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libswscale5_9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsynctex2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsystemd0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libtag-extras1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5215,7 +5215,7 @@
     <package name="libaudit1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libavahi-client3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libavahi-common3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libavdevice58_10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libavdevice58_13" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libblkid1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libbrotli-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libbrotlicommon1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

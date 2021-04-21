@@ -1413,13 +1413,13 @@
       <repopackage name="libavahi-gobject0"/>
       <repopackage name="libavahi-ui-gtk3-0"/>
       <repopackage name="libavc1394-0"/>
-      <repopackage name="libavcodec58_91"/>
-      <repopackage name="libavfilter7_85"/>
-      <repopackage name="libavformat58_45"/>
+      <repopackage name="libavcodec58_134"/>
+      <repopackage name="libavfilter7_110"/>
+      <repopackage name="libavformat58_76"/>
       <repopackage name="libavif10"/>
       <repopackage name="libavresample4_0"/>
       <repopackage name="libavtp0"/>
-      <repopackage name="libavutil56_51"/>
+      <repopackage name="libavutil56_70"/>
       <repopackage name="libbabl-0_1-0"/>
       <repopackage name="libbase"/>
       <repopackage name="libbasicobjects0"/>
@@ -2370,7 +2370,7 @@
       <repopackage name="libpopt0"/>
       <repopackage name="libportal0"/>
       <repopackage name="libportaudio2"/>
-      <repopackage name="libpostproc55_7"/>
+      <repopackage name="libpostproc55_9"/>
       <repopackage name="libpotrace0"/>
       <repopackage name="libpq5"/>
       <repopackage name="libpresage1"/>
@@ -2661,8 +2661,8 @@
       <repopackage name="libsunpinyin3"/>
       <repopackage name="libsvn_auth_gnome_keyring-1-0"/>
       <repopackage name="libsvn_auth_kwallet-1-0"/>
-      <repopackage name="libswresample3_7"/>
-      <repopackage name="libswscale5_7"/>
+      <repopackage name="libswresample3_9"/>
+      <repopackage name="libswscale5_9"/>
       <repopackage name="libsynctex2"/>
       <repopackage name="libsystemd0"/>
       <repopackage name="libtag-extras1"/>
