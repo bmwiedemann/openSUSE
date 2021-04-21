@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar  2 18:40:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace sanitize_source.sh with a _service file
+- Don't use an insecure download URL (boo#1182933)
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue Apr  9 07:09:20 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add the missing libboost_system-devel dependency.

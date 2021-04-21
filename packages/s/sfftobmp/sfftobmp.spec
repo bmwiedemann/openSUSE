@@ -1,7 +1,7 @@
 #
 # spec file for package sfftobmp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,23 @@
 #
 
 
+%define rname sfftobmp3
 Name:           sfftobmp
+Version:        3.1.4
+Release:        0
 Summary:        Tool to convert Structured Fax Files (.sff) to other image formats
 License:        MIT
 Group:          Hardware/ISDN
-Version:        3.1.4
-Release:        0
-Url:            http://sf.net/projects/sfftools/
-
-#SVN-Clone:	svn://svn.code.sf.net/p/sfftools/code-0/sfftobmp3/tags/REL_3_1_4
-# Source tarballs no longer provided; have to generate them from SVN
-Source:         %name-%version.tar.xz
-Source2:        sanitize_source.sh
-Patch1:         boost_library.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://sf.net/projects/sfftools/
+Source:         %{rname}-%{version}.tar.xz
+Patch0:         boost_library.patch
 BuildRequires:  automake
-%if 0%{?suse_version} > 1325
+BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
-%else
-BuildRequires:  boost-devel
-%endif
-BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  unix2dos
-BuildRequires:  xz
 
 %description
 The CAPI interface for programming ISDN hardware expects and gives
@@ -54,8 +45,8 @@ all other graphics formats using the PBMPLUS tools that are included in
 almost every Linux distribution nowadays.
 
 %prep
-%setup -qn REL_3_1_4
-%patch1 -p1
+%autosetup -p1 -n %{rname}-%{version}
+
 chmod a+x configure
 dos2unix -c mac src/output.h
 
@@ -75,17 +66,16 @@ autoreconf --force --install
 # which is - so far - however harmless, because there are no destructors
 # *at all* in the derived classes.
 #
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
-install -d $RPM_BUILD_ROOT/%{_defaultdocdir}/sfftobmp/getopt
-install -m 644 doc/getopt/* $RPM_BUILD_ROOT/%{_defaultdocdir}/sfftobmp/getopt
+%make_install
+install -d %{buildroot}/%{_defaultdocdir}/sfftobmp/getopt
+install -m 644 doc/getopt/* %{buildroot}/%{_defaultdocdir}/sfftobmp/getopt
 rm -rf doc/getopt
-install -m 644 doc/* $RPM_BUILD_ROOT/%{_defaultdocdir}/sfftobmp
+install -m 644 doc/* %{buildroot}/%{_defaultdocdir}/sfftobmp
 
 %files
-%defattr(-,root,root)
 %{_bindir}/sfftobmp
 %doc %{_defaultdocdir}/sfftobmp
 
