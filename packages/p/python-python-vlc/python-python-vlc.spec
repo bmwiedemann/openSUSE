@@ -17,7 +17,7 @@
 
 
 Name:           python-python-vlc
-Version:        3.0.12117
+Version:        3.0.12118
 Release:        0
 Summary:        VLC bindings for python
 License:        LGPL-2.0-or-later

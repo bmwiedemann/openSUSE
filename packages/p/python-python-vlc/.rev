@@ -84,4 +84,12 @@
     <comment></comment>
     <requestid>883867</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>94d20076926b49bb61df3bc8df52155f</srcmd5>
+    <version>3.0.12118</version>
+    <time>1619031619</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.0.12118 (forwarded request 887212 from alois)</comment>
+    <requestid>887213</requestid>
+  </revision>
 </revisionlist>
