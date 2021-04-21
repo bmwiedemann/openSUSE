@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 13 14:35:20 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- ensure proper startup after network: stunnel-5.59_service_always_after_network.patch
+
+-------------------------------------------------------------------
 Thu Apr  8 09:24:35 UTC 2021 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
 
 - Disable testsuite for everything except Tumbleweed since it does not work on Leap/SLE

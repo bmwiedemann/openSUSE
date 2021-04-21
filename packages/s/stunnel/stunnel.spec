@@ -29,7 +29,7 @@ BuildRequires:  pkgconfig(systemd)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(pre):  %insserv_prereq
 Requires(pre):  /usr/sbin/useradd
-# %{_sbindir} does not work here!
+# macro _sbindir does not work here!
 
 %endif
 
@@ -51,6 +51,8 @@ Source2:        https://www.stunnel.org/pgp.asc#/%{name}.keyring
 Source3:        sysconfig.syslog-stunnel
 Source4:        stunnel.rc
 Source7:        stunnel.README
+# PATCH-FIX-UPSTREAM Fix service file, so it ensure we are starting after network is really up!
+Patch1:         stunnel-5.59_service_always_after_network.patch
 BuildRequires:  libopenssl-devel
 BuildRequires:  tcpd-devel
 BuildRequires:  zlib-devel
@@ -84,6 +86,7 @@ This package contains additional documentation for the stunnel program.
 
 %prep
 %setup -q -n stunnel-%{version}
+%patch1 -p1
 chmod -x %{_builddir}/stunnel-%{version}/tools/ca.*
 chmod -x %{_builddir}/stunnel-%{version}/tools/importCA.*
 
