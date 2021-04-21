@@ -7,4 +7,12 @@
     <comment>build dependency (tests) and optional runtime dependency for spyder</comment>
     <requestid>852702</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d4043bf44b44c98c0763213850026e77</srcmd5>
+    <version>0.4.6</version>
+    <time>1619031593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886913</requestid>
+  </revision>
 </revisionlist>

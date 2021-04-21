@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyls-black
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,8 @@ License:        MIT
 URL:            https://github.com/rupert/pyls-black
 # GitHub archive instead of PyPI sdist because of test files and LICENSE
 Source:         %{url}/archive/v%{version}.tar.gz#/pyls-black-%{version}-gh.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module black >= 19.3b0}
 BuildRequires:  %{python_module pytest}
@@ -37,8 +37,6 @@ BuildRequires:  fdupes
 Requires:       python-black >= 19.3b0
 Requires:       python-python-language-server
 Requires:       python-toml
-Conflicts:      python-yapf
-Conflicts:      python-autopep8
 BuildArch:      noarch
 %python_subpackages
 

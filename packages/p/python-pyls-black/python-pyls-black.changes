@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 19 18:38:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Do not conflict on autopep8 and yapf anymore
+
+-------------------------------------------------------------------
 Thu Nov 12 14:40:50 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Initial specfile for version 0.4.6
