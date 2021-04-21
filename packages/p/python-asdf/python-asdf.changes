@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 17 14:21:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.7.3
+  * Fix bug resulting in invalid strides values for views over FITS
+    arrays.
+  * Add pytest plugin options to skip and xfail individual tests
+    and xfail the unsupported ndarray-1.0.0 schema example.
+
+-------------------------------------------------------------------
 Thu Feb 11 10:18:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.7.2 

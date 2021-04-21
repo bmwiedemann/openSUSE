@@ -21,10 +21,10 @@
 # current astropy in TW requires python >= 3.7
 %define         skip_python36 1
 Name:           python-asdf
-Version:        2.7.2
+Version:        2.7.3
 Release:        0
 Summary:        Python tools to handle ASDF files
-License:        BSD-3-Clause AND BSD-2-Clause
+License:        BSD-2-Clause AND BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf
 Source0:        https://files.pythonhosted.org/packages/source/a/asdf/asdf-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 30.3.0}
@@ -39,7 +39,7 @@ Requires:       python-numpy >= 1.10
 Requires:       python-semantic_version >= 2.8
 Recommends:     python-lz4 >= 0.10
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 3.10}
