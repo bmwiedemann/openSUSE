@@ -7,4 +7,14 @@
     <comment>New container</comment>
     <requestid>885647</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b04717a5770ef06fd9d468dc25c463ad</srcmd5>
+    <version>1.0.0</version>
+    <time>1619031564</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1618856916.9a3d2a4:
+  * Add more php8 modules
+</comment>
+    <requestid>886763</requestid>
+  </revision>
 </revisionlist>

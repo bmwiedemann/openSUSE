@@ -40,11 +40,16 @@
   </repository>
   <packages type="bootstrap">
     <package name="php8"/>
-    <package name="php8-fpm"/>
-    <package name="php8-curl"/>
+    <package name="php8-cli"/>
     <package name="php8-ctype"/>
+    <package name="php8-curl"/>
     <package name="php8-dom"/>
+    <package name="php8-fpm"/>
+    <package name="php8-gd"/>
+    <package name="php8-gettext"/>
     <package name="php8-iconv"/>
+    <package name="php8-mbstring"/>
+    <package name="php8-mysql"/>
     <package name="php8-openssl"/>
     <package name="php8-sqlite"/>
     <package name="php8-tokenizer"/>
