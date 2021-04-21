@@ -66,4 +66,21 @@
   * Add SHORT_NAME as truncated PRETTY_NAME to comply with AppManifest.xml schema (forwarded request 883757 from jfkw)</comment>
     <requestid>883758</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>822a76df9d8d815563aa58ee5e09fefe</srcmd5>
+    <version>1</version>
+    <time>1619031580</time>
+    <user>dimstar_suse</user>
+    <comment>- Format AppxManifest.xml template for min diff to kiwi output
+  * kiwi appx image output emits Unix eol tidy xml with sorted attributes
+  * Use tidy --input-xml true --indent yes --indent-spaces 4
+    --sort-attributes alpha --wrap 0 --write-back yes AppxManifest.xml
+  * Manually remove space from empty xml elements closing &quot;/&gt;&quot;
+    as tidy has no setting for this:
+    sed -i -e &quot;s_ /&gt;_/&gt;_g&quot; AppxManifest.xml
+  * Remove xml declaration standalone=&quot;yes&quot; to match kiwi xml output
+  * Convert from DOS eol to Unix eol to match kiwi xml output
+  * Zero diff between template and kiwi output helps debugging (forwarded request 886831 from jfkw)</comment>
+    <requestid>886832</requestid>
+  </revision>
 </revisionlist>

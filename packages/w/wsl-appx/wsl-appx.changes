@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 5 08:29:47 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Format AppxManifest.xml template for min diff to kiwi output
+  * kiwi appx image output emits Unix eol tidy xml with sorted attributes
+  * Use tidy --input-xml true --indent yes --indent-spaces 4
+    --sort-attributes alpha --wrap 0 --write-back yes AppxManifest.xml
+  * Manually remove space from empty xml elements closing "/>"
+    as tidy has no setting for this:
+    sed -i -e "s_ />_/>_g" AppxManifest.xml
+  * Remove xml declaration standalone="yes" to match kiwi xml output
+  * Convert from DOS eol to Unix eol to match kiwi xml output
+  * Zero diff between template and kiwi output helps debugging
+
+-------------------------------------------------------------------
 Fri Mar  5 05:09:21 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Fix bsc#1179874 Error in parsing the WSL appx package
