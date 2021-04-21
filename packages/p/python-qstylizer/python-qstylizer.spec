@@ -26,16 +26,16 @@ URL:            https://github.com/blambright/qstylizer
 # no sdist on PyPI
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/qstylizer-%{version}-gh.tar.gz
 # PATCH-FIX-UPSTREAM qstylizer-tinycss2.patch -- gh#blambright/qstylizer#10
-Patch0:         qstylizer-tinycss2.patch
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
+Patch0:         https://github.com/blambright/qstylizer/pull/10.patch#/qstylizer-tinycss2.patch
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module inflection > 0.3.0}
-BuildRequires:  %{python_module tinycss2}
-BuildRequires:  %{python_module pytest-runner >= 2.7}
 BuildRequires:  %{python_module pytest >= 4}
 BuildRequires:  %{python_module pytest-mock >= 1.6}
+BuildRequires:  %{python_module pytest-runner >= 2.7}
+BuildRequires:  %{python_module tinycss2}
 #BuildRequires:  %%{python_module pytest-catchlog >= 1}
 BuildRequires:  %{python_module pytest-xdist >= 1.1}
 # /SECTION

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 19 16:22:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- refresh qstylizer-tinycss2.patch gh#blambright/qstylizer#10
+  because the egg-info/requires.txt is checked upon start by spyder
+
+-------------------------------------------------------------------
 Thu Apr  8 17:24:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for version 0.1.10
