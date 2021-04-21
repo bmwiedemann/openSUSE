@@ -22,7 +22,7 @@
 # octave >= 6 not supported
 %bcond_with    octave
 Name:           lalmetaio
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        LSC Algorithm MetaIO Library
 License:        GPL-2.0-or-later
