@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 21 04:17:59 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.6, due to no NumPy. 
+
+-------------------------------------------------------------------
 Thu Aug  6 09:02:59 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add remove_nose.patch to remove dependency on nose

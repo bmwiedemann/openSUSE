@@ -1,7 +1,7 @@
 #
 # spec file for package python-bloscpack
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
+%define skip_python36 1
 Name:           python-bloscpack
 Version:        0.16.0
 Release:        0
@@ -35,7 +36,7 @@ Requires:       python-blosc
 Requires:       python-numpy
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     cryptography >= 1.3.4
 Recommends:     python-pyOpenSSL >= 0.14
 BuildArch:      noarch
