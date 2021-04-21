@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 17 20:10:00 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add support-llvm12.patch to support building with LLVM 12.
+
+-------------------------------------------------------------------
 Tue Apr  6 01:52:35 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Update to version 1.51:
