@@ -77,4 +77,13 @@
 - Improve packaging: (forwarded request 880832 from jfkw)</comment>
     <requestid>880834</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>13e4619f2a1de499848e03449b93c1fa</srcmd5>
+    <version>0.82.1</version>
+    <time>1619031607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.82.1:
+  * Regression in media type suffix lookup (forwarded request 887072 from jfkw)</comment>
+    <requestid>887073</requestid>
+  </revision>
 </revisionlist>
