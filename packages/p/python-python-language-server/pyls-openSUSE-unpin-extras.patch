@@ -1,0 +1,32 @@
+Index: python-language-server-0.36.2/setup.py
+===================================================================
+--- python-language-server-0.36.2.orig/setup.py
++++ python-language-server-0.36.2/setup.py
+@@ -52,10 +52,10 @@ setup(
+         'all': [
+             'autopep8',
+             'flake8>=3.8.0',
+-            'mccabe>=0.6.0,<0.7.0',
+-            'pycodestyle>=2.6.0,<2.7.0',
++            'mccabe>=0.6.0',
++            'pycodestyle>=2.6.0',
+             'pydocstyle>=2.0.0',
+-            'pyflakes>=2.2.0,<2.3.0',
++            'pyflakes>=2.2.0',
+             # pylint >= 2.5.0 is required for working through stdin and only
+             # available with python3
+             'pylint>=2.5.0' if sys.version_info.major >= 3 else 'pylint',
+@@ -64,10 +64,10 @@ setup(
+         ],
+         'autopep8': ['autopep8'],
+         'flake8': ['flake8>=3.8.0'],
+-        'mccabe': ['mccabe>=0.6.0,<0.7.0'],
+-        'pycodestyle': ['pycodestyle>=2.6.0,<2.7.0'],
++        'mccabe': ['mccabe>=0.6.0'],
++        'pycodestyle': ['pycodestyle>=2.6.0'],
+         'pydocstyle': ['pydocstyle>=2.0.0'],
+-        'pyflakes': ['pyflakes>=2.2.0,<2.3.0'],
++        'pyflakes': ['pyflakes>=2.2.0'],
+         'pylint': [
+             'pylint>=2.5.0' if sys.version_info.major >= 3 else 'pylint'],
+         'rope': ['rope>0.10.5'],

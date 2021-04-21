@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 19 17:52:11 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add pyls-openSUSE-unpin-extras.patch -- unpin extras_requires,
+  because entrypoints requiring pyls[all] now check the
+  requirements in the egg-info/requires.txt 
+
+-------------------------------------------------------------------
 Thu Apr 15 15:08:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add test_py39-code_folding.patch for python 3.9 compatibility
