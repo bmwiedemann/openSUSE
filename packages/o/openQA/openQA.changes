@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 20 11:59:53 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1618919402.a469aea0f:
+  * Increase health-check retries
+  * Fix failing CI check for container file (static check DL3059)
+  * Prevent recursive apparmor profile inclusion
+  * CI: Retry if docker-compose build fails in webui-docker-compose test
+  * Fix content negotiation to use Accept headers again
+  * Improve parameter name 'check'
+
+-------------------------------------------------------------------
 Sat Apr 17 14:35:53 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1618564988.9a9616334:
