@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 20 13:45:08 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.1.0
+
+  05-04-2021
+    - Version 1.1.0
+    - MiniMime.lookup_by_extension is now case insensitive
+
+  26-03-2021
+    - Version 1.0.3
+    - Update mime types from upstream
+
+-------------------------------------------------------------------
 Mon Jul 15 07:20:52 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.0.2
