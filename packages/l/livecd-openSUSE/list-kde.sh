@@ -59,6 +59,7 @@ buildignore kmahjongg-lang
 buildignore konversation-lang
 buildignore libproxy1-pacrunner-webkit
 buildignore vlc-lang
+buildignore kipi-plugins
 
 install partitionmanager
 

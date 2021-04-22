@@ -65,7 +65,7 @@ buildignore libvdpau_r600
 buildignore pavucontrol
 buildignore libqmi-tools
 
-buildignore python3-pip
+buildignore 'python*-pip'
 
 buildignore multipath-tools-rbd
 

@@ -174,8 +174,8 @@
     <ignore name="pavucontrol"/>
     <package name="aaa_base" replaces="libqmi-tools"/>
     <ignore name="libqmi-tools"/>
-    <package name="aaa_base" replaces="python3-pip"/>
-    <ignore name="python3-pip"/>
+    <package name="aaa_base" replaces="python*-pip"/>
+    <ignore name="python*-pip"/>
     <package name="aaa_base" replaces="multipath-tools-rbd"/>
     <ignore name="multipath-tools-rbd"/>
     <package name="aaa_base" replaces="xorg-x11-Xvnc"/>
