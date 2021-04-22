@@ -25,7 +25,7 @@
 %bcond_with coverage
 
 Name:           snapper
-Version:        0.8.16
+Version:        0.9.0
 Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         snapper-%{version}.tar.bz2

@@ -999,4 +999,12 @@
     <comment>- updated to latest repository</comment>
     <requestid>883887</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>5fb67e501eb04fd1b067bc498eab7a89</srcmd5>
+    <version>0.9.0</version>
+    <time>1619107404</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 0.9.0</comment>
+    <requestid>886608</requestid>
+  </revision>
 </revisionlist>
