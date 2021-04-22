@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Apr 13 22:35:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.14.3
+  * spec: Mention that license-IDs are case-sensitive
+  * compose: Don't loop endlessly if external desktop l10n function
+    is set
+  * Never create a predictable dir in /tmp for caching
+  * qt: Implement missing Pool::componentsByCategories
+  * Share one user-owned read-only system metadata cache between all
+    applications
+  * pool: Clean up user sysdata caches if we start to use the system
+    cache
+  * Port over some parsing improvements for desktop-files from asgen
+  * compose: Add helper for reading desktop-entry files
+  * compose: Handle bad UTF-8 in desktop-entry files even better
+  * search: Perform partial token matches instead of prefix matches
+  * search: Unconditionally perform partial term matching after
+    exact matching
+  * news-to-metainfo: Recognize the "Contributors" section
+  * Update our own metainfo file for appstreamcli
+  * Read descriptions from collection XML correctly again
+  * search: Make whole-search string matching a lot more strict
+  * validator: Resolve false-positive when testing remote icon
+    URL validity
+  * utils: Improve textwrap if text is just one excessively
+    long word
+  * compose: Permit U+00AD SOFT HYPHEN in string values
+  * Validate our own metainfo file
+  * compose: Don't assume lowest priority for desktop-entry-only
+    components
+  * search: Only replace full words with greylist terms,
+    not partial ones
+  * ascli: Take all positional parameters as search terms when
+    searching
+
+-------------------------------------------------------------------
 Wed Feb 17 10:03:36 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.14.1:
