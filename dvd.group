@@ -292,8 +292,8 @@
     <package name="ckermit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="clamav" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="clang-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="clang11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="clang11-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="clang12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="clang12-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="clazy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="clicfs" supportstatus="unsupported"/> <!-- reason: dvd:clicfs -->
     <package name="clutter-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1540,8 +1540,9 @@
     <package name="libKUserFeedbackWidgets1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKWaylandServer5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKasten4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libLLVM11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libLTO11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libLLVM11" supportstatus="unsupported"/> <!-- reason: dvd:postgresql-contrib -->
+    <package name="libLLVM12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libLTO12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libMagick++-7_Q16HDRI5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libMagickCore-7_Q16HDRI9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libMagickWand-7_Q16HDRI9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1776,7 +1777,7 @@
     <package name="libcholmod3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libchromaprint1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libclamav9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="libclang11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
+    <package name="libclang12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libclastfm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libcloudproviders0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libclucene-contribs-lib1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -2595,7 +2596,6 @@
     <package name="librtlsdr0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="librubberband2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libruby2_7-2_7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libruby3_0-3_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="librygel-core-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="librygel-server-2_6-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libsamba-credentials0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3912,12 +3912,10 @@
     <package name="ruby2.7-rubygem-abstract_method" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby2.7-rubygem-actioncable-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actioncable-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-actionmailbox-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionmailer-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionmailer-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionpack-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionpack-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-actiontext-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionview-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-actionview-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activejob-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3926,8 +3924,6 @@
     <package name="ruby2.7-rubygem-activemodel-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activerecord-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activerecord-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-activestorage-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-activestorage-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activesupport-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-activesupport-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-addressable" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4026,7 +4022,6 @@
     <package name="ruby2.7-rubygem-get_process_mem" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-gettext" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-gettext_i18n_rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-gettext_i18n_rails_js" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-gli" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-globalid" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-gpgme" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4163,8 +4158,6 @@
     <package name="ruby2.7-rubygem-rack-protection" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rack-proxy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-rails-5.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby2.7-rubygem-rails-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rails-dom-testing" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rails-html-sanitizer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-rails-i18n" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4292,53 +4285,6 @@
     <package name="ruby2.7-rubygem-yard" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-yast-rake" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-zeitwerk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-actionpack-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-actionview-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-activemodel-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-activesupport-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-bindex" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-bootsnap" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-builder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-byebug" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-concurrent-ruby" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-crass" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-erubi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-ffi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-i18n" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-jbuilder" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-loofah" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-method_source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-msgpack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-nio4r" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-nokogiri" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-puma-4.1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-rack" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-rack-proxy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-rack-test-0_6" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-rails-dom-testing" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-rails-html-sanitizer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-railties-6.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-rb-fsevent" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-rb-inotify" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-sass-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-sassc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-sassc-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-spring" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-spring-watcher-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-sprockets" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-sprockets-rails" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-sqlite3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-thor" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-thread_safe" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-tilt" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-turbolinks" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-turbolinks-source" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-tzinfo-1.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-web-console" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-webpacker-4.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="ruby3.0-rubygem-zeitwerk" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rubygem-passenger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rubygem-passenger-apache2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="rzip" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4945,7 +4891,6 @@
     <package name="xz-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="yakuake" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="yakuake-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="yarn" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="yast2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-add-on" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
