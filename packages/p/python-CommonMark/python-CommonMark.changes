@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 14 06:00:21 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop broken %ifpython3 macro 
+
+-------------------------------------------------------------------
 Wed May  6 09:55:17 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't use %python3_only command, but properly use alternatives.

@@ -1,7 +1,7 @@
 #
 # spec file for package python-CommonMark
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       python-commonmark = %{version}
 Obsoletes:      python-commonmark < %{version}
 BuildArch:      noarch
@@ -43,11 +43,9 @@ Requires:       python-future >= 0.14.0
 Obsoletes:      %{oldpython}-commonmark < %{version}
 Provides:       %{oldpython}-commonmark = %{version}
 %endif
-%ifpython3
 Conflicts:      cmark
 Provides:       cmark-python
 Obsoletes:      cmark-python
-%endif
 %python_subpackages
 
 %description
