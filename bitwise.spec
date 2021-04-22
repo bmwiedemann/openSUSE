@@ -1,7 +1,8 @@
 #
 # spec file for package bitwise
 #
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           bitwise
-Version:        0.41
+Version:        0.42
 Release:        0
 Summary:        Interactive bitwise operation in ncurses
 License:        GPL-3.0-or-later
@@ -46,7 +47,7 @@ Some of the features include:
 
 %build
 autoreconf -fiv
-export CFLAGS="%{optflags} $(pkg-config --cflags ncursesw) $(pkg-config --libs ncursesw)"
+export CFLAGS="%{optflags} $(pkg-config --cflags --libs ncursesw)"
 %configure
 %make_build
 

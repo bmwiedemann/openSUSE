@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 16 18:14:55 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.42
+  * Add support for leading 0 on binary numbers
+
+-------------------------------------------------------------------
+Tue Apr  6 10:40:17 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Add "-Wl,--start-group" to CFLAGS to fix Tumbeweed linking
+  errors.
+
+-------------------------------------------------------------------
 Sun Dec  6 19:21:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.41
