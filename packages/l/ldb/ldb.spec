@@ -57,7 +57,7 @@ BuildRequires:  lmdb-devel >= %{lmdb_version}
 %endif
 
 URL:            https://ldb.samba.org/
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        An LDAP-like embedded database
 License:        LGPL-3.0-or-later
@@ -72,7 +72,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %description
 LDB is an LDAP-like embedded database.
 
-
 %package -n libldb2
 Summary:        An LDAP-like embedded database
 Group:          System/Libraries
@@ -83,7 +82,6 @@ Obsoletes:      libldb1
 LDB is an LDAP-like embedded database.
 
 This package includes the ldb2 library.
-
 
 %package -n libldb-devel
 Summary:        Libraries and Header Files to Develop Programs with ldb2 Support
@@ -96,14 +94,12 @@ LDB is an LDAP-like embedded database.
 
 Libraries and Header Files to Develop Programs with ldb2 Support.
 
-
 %package -n ldb-tools
 Summary:        Tools to manipulate LDB files
 Group:          Development/Libraries/C and C++
 
 %description -n ldb-tools
 Tools to manipulate LDB files.
-
 
 %package -n python3-ldb
 Summary:        Python3 bindings for the LDB library
