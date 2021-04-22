@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 17 09:25:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.1:
+  + Update user help.
+  + Add workaround for engine taking too long to move.
+  + Fix autosaved game being deleted when window is not closed
+    with Ctrl+Q.
+  + Fix invalid signal ID warning when starting a new game.
+
+-------------------------------------------------------------------
 Tue Mar 23 09:34:10 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:
