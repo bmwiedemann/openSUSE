@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>859698</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>edb03b13a3a399d9c8f37082f683ccde</srcmd5>
+    <version>0.925</version>
+    <time>1619107453</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>887457</requestid>
+  </revision>
 </revisionlist>
