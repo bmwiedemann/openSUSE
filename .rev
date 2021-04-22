@@ -175,4 +175,12 @@
     <comment></comment>
     <requestid>883774</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5de20db02de127faae91fcf6929c6ed1</srcmd5>
+    <version>1.13.0</version>
+    <time>1619107433</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 887362 from mschnitzer)</comment>
+    <requestid>887363</requestid>
+  </revision>
 </revisionlist>
