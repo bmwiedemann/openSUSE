@@ -1,3 +1,5 @@
+diff --git a/vpx_ports/x86_abi_support.asm b/vpx_ports/x86_abi_support.asm
+index 6b2d6b968..6cb439c9c 100644
 --- a/vpx_ports/x86_abi_support.asm
 +++ b/vpx_ports/x86_abi_support.asm
 @@ -10,6 +10,7 @@

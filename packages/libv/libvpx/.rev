@@ -423,4 +423,37 @@
     Various fixes to dynamic resizing for VP9 SVC.</comment>
     <requestid>826291</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>1b28d049833156225f68c8ad5292a4db</srcmd5>
+    <version>1.10.0</version>
+    <time>1619107391</time>
+    <user>dimstar_suse</user>
+    <comment>- using service/obspcio again because upstream tar ball is changing,
+  leading to trust validation errors
+
+- udpate to 1.10.0:
+  This maintenance release adds support for darwin20 and new codec controls, as
+  well as numerous bug fixes.
+  - Upgrading:
+    New codec control is added to disable loopfilter for VP9.
+    New encoder control is added to disable feature to increase Q on overshoot
+    detection for CBR.
+    Configure support for darwin20 is added.
+    New codec control is added for VP9 rate control. The control ID of this
+    interface is VP9E_SET_EXTERNAL_RATE_CONTROL. To make VP9 use a customized
+    external rate control model, users will have to implement each callback
+    function in vpx_rc_funcs_t and register them using libvpx API
+    vpx_codec_control_() with the control ID.
+  - Enhancement:
+    Use -std=gnu++11 instead of -std=c++11 for c++ files.
+  - Bug fixes:
+    Override assembler with --as option of configure for MSVS.
+    Fix several compilation issues with gcc 4.8.5.
+    Fix to resetting rate control for temporal layers.
+    Fix to the rate control stats of SVC example encoder when number of spatial
+    layers is 1.
+    Fix to reusing motion vectors from the base spatial layer in SVC.
+    2 pass related flags removed from SVC example encoder.</comment>
+    <requestid>885219</requestid>
+  </revision>
 </revisionlist>
