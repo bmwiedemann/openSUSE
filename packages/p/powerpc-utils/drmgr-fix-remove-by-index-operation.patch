@@ -1,0 +1,40 @@
+From 16469b696959aee4ce32d9f77483e1e3f192e82d Mon Sep 17 00:00:00 2001
+From: Laurent Dufour <ldufour@linux.ibm.com>
+Date: Fri, 16 Apr 2021 18:10:36 +0200
+Subject: [PATCH] drmgr: fix remove by index operation
+
+The commit e9f06531356f ("drmgr: introduce NUMA based LMB removal")
+introduce a special processing when NUMA is on and the remove by count
+operation is done.
+
+Unfortunately, that code is also triggered when doing a remove by index
+operation (-s argument) becauses usr_drc_count is set to 1. As a
+consequence the index constraint is not respected and any LMB can be
+removed.
+
+Add a check agains usr_drc_index which is set when a remove by index
+operation is done to ensure the numa removal code is not triggered in that
+case.
+
+Fixes: e9f06531356f ("drmgr: introduce NUMA based LMB removal")
+Signed-off-by: Laurent Dufour <ldufour@linux.ibm.com>
+---
+ src/drmgr/drslot_chrp_mem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/drmgr/drslot_chrp_mem.c b/src/drmgr/drslot_chrp_mem.c
+index f17c94adc270..8db98bb9e9ea 100644
+--- a/src/drmgr/drslot_chrp_mem.c
++++ b/src/drmgr/drslot_chrp_mem.c
+@@ -1749,7 +1749,7 @@ int do_mem_kernel_dlpar(void)
+ 	int rc, offset;
+ 
+ 
+-	if (usr_action == REMOVE && usr_drc_count) {
++	if (usr_action == REMOVE && usr_drc_count && !usr_drc_index) {
+ 		build_numa_topology();
+ 		if (numa_enabled) {
+ 			if (!numa_based_remove(usr_drc_count))
+-- 
+2.31.1
+

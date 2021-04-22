@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 19 09:38:04 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix memore remove by index (bsc#1183958 ltc#192149).
+   + drmgr-fix-remove-by-index-operation.patch
+
+-------------------------------------------------------------------
 Thu Apr  8 16:48:27 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Take into account NUMA topology when removing memory (bsc#1183958 ltc#192149).
