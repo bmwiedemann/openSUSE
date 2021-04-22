@@ -292,4 +292,18 @@
     <comment></comment>
     <requestid>882551</requestid>
   </revision>
+  <revision rev="35" vrev="6">
+    <srcmd5>fc903e3ba7ff5c25dc3fbfeeb76183a1</srcmd5>
+    <version>20210112</version>
+    <time>1619107425</time>
+    <user>dimstar_suse</user>
+    <comment>- Force overlay as default storage driver if system is not btrfs
+  (gh#containers/buildah#3153) 
+
+- Update common to 0.36.0
+- Update podman to 3.1.1
+- Update storage to 1.29.0
+- Update image to 5.11.0</comment>
+    <requestid>886688</requestid>
+  </revision>
 </revisionlist>

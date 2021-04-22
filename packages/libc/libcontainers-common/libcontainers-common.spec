@@ -17,16 +17,16 @@
 
 
 # commonver - version from containers/common
-%define commonver 0.35.3
+%define commonver 0.36.0
 
 # podman - version from containers/podman
-%define podmanver 3.1.0
+%define podmanver 3.1.1
 
 # storagever - version from containers/storage
-%define storagever 1.28.1
+%define storagever 1.29.0
 
 # imagever - version from containers/image
-%define imagever 5.10.5
+%define imagever 5.11.0
 
 Name:           libcontainers-common
 Version:        20210112
@@ -138,7 +138,7 @@ install -D -m 0644 common-%{commonver}/docs/containers.conf.5 %{buildroot}/%{_ma
 if [ $1 -eq 1 ] ; then
   fstype=$((findmnt -o FSTYPE -l --target /var/lib/containers || findmnt -o FSTYPE -l --target /var/lib) | grep -v FSTYPE)
   if [ "$fstype" = "btrfs" ]; then
-    sed -i 's/driver = ""/driver = "btrfs"/g' %{_sysconfdir}/containers/storage.conf
+    sed -i 's/driver = "overlay"/driver = "btrfs"/g' %{_sysconfdir}/containers/storage.conf
   fi
 fi
 

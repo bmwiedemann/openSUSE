@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 19 12:21:56 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Force overlay as default storage driver if system is not btrfs
+  (gh#containers/buildah#3153) 
+
+-------------------------------------------------------------------
+Mon Apr 19 11:03:30 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update common to 0.36.0
+- Update podman to 3.1.1
+- Update storage to 1.29.0
+- Update image to 5.11.0
+
+-------------------------------------------------------------------
 Tue Mar 30 08:37:09 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Update common to 0.35.3

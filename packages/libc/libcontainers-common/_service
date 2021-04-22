@@ -1,40 +1,38 @@
 <services>
-
-<service name="tar_scm" mode="disabled">
-<param name="url">https://github.com/containers/storage.git</param>
-<param name="scm">git</param>
-<param name="filename">storage</param>
-<param name="versionformat">1.28.1</param>
-<param name="revision">v1.28.1</param>
-</service>
-
-<service name="tar_scm" mode="disabled">
-<param name="url">https://github.com/containers/image.git</param>
-<param name="scm">git</param>
-<param name="filename">image</param>
-<param name="versionformat">5.10.5</param>
-<param name="revision">v5.10.5</param>
-</service>
-
-<service name="tar_scm" mode="disabled">
-<param name="url">https://github.com/containers/podman.git</param>
-<param name="scm">git</param>
-<param name="filename">podman</param>
-<param name="versionformat">3.1.0</param>
-<param name="revision">v3.1.0</param>
-</service>
-
-<service name="tar_scm" mode="disabled">
-<param name="url">https://github.com/containers/common.git</param>
-<param name="scm">git</param>
-<param name="filename">common</param>
-<param name="versionformat">0.35.3</param>
-<param name="revision">v0.35.3</param>
-</service>
-
-<service name="recompress" mode="disabled">
-<param name="file">*.tar</param>
-<param name="compression">xz</param>
-</service>
-
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/containers/storage.git</param>
+    <param name="scm">git</param>
+    <param name="filename">storage</param>
+    <param name="revision">v1.29.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/containers/image.git</param>
+    <param name="scm">git</param>
+    <param name="filename">image</param>
+    <param name="revision">v5.11.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/containers/podman.git</param>
+    <param name="scm">git</param>
+    <param name="filename">podman</param>
+    <param name="revision">v3.1.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/containers/common.git</param>
+    <param name="scm">git</param>
+    <param name="filename">common</param>
+    <param name="revision">v0.36.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
 </services>
