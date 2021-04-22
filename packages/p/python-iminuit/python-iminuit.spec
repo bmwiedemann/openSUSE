@@ -19,6 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Python2 support dropped since version 1.4.0
 %define skip_python2 1
+%define skip_python36 1
 %define modname iminuit
 Name:           python-%{modname}
 Version:        2.4.0
