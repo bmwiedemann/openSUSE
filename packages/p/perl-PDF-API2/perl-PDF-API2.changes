@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr 14 03:09:09 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.040
+   see /usr/share/doc/packages/perl-PDF-API2/Changes
+
+  2.040     2021-04-13
+      - Fix open() followed by stringify() resulting in a corrupt (mostly-empty)
+        PDF, which was broken by changes in 2.039 (reported by Gareth Tunley).
+      - [RT #134993] Calling open($filename) followed by saveas($same_filename)
+        instead of update() resulted in a corrupt PDF in 2.039, which no longer
+        reads the entire file into memory on open (reported by Marco Pessotto).
+      - [RT #134957] Fix encoding of \n in a PDF string containing non-printable
+        characters (reported by Stuart Henderson).
+      - [RT #133131] Fix endianness of 64-bit numbers in cross-reference stream
+        widths array (reported by Christopher Papademetrious, fix by Vadim Repin).
+
+-------------------------------------------------------------------
 Fri Mar  5 03:08:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.039

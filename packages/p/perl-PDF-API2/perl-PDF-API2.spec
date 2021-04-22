@@ -18,7 +18,7 @@
 
 %define cpan_name PDF-API2
 Name:           perl-PDF-API2
-Version:        2.039
+Version:        2.040
 Release:        0
 Summary:        Facilitates the creation and modification of PDF files
 License:        LGPL-2.1-or-later
