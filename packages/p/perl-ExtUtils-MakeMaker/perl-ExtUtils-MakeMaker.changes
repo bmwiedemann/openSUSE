@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 14 03:06:21 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.62
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+
+  7.62    Tue 13 Apr 18:58:24 BST 2021
+      No changes since v7.61_01
+  7.61_01 Sun 21 Mar 09:24:57 GMT 2021
+      Bug fixes:
+      - Use shellwords in ExtUtils::Liblist::Kid::_unix_os2_ext
+
+-------------------------------------------------------------------
 Thu Feb 18 03:06:25 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 7.60
