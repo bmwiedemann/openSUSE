@@ -1,7 +1,7 @@
 #
 # spec file for package python-mrcz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
+%define skip_python36 1
 Name:           python-mrcz
 Version:        0.5.6
 Release:        0

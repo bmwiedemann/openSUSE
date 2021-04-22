@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 22 06:21:32 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.6, due to no NumPy. 
+
+-------------------------------------------------------------------
 Tue May 12 08:26:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix python2 conditions to pull deps correctly
