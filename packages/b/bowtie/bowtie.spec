@@ -1,7 +1,7 @@
 #
 # spec file for package bowtie
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Fast and memory-efficient short read aligner
 License:        Artistic-1.0
 Group:          Productivity/Scientific/Other
-URL:            http://bio-bowtie.sourceforge.net/
+URL:            http://bowtie-bio.sourceforge.net/index.shtml
 Source:         https://github.com/BenLangmead/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
