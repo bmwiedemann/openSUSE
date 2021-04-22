@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Apr 22 06:34:25 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.2.0:
+  * Reduce memory usage when reading files in open mode
+  * Support files that use DAQmx format metadata without having DAQmx raw data
+  * Support different lengths of DAQmx buffers
+  * Support strain scaling with a full bridge type I configuration
+  * Support negative integer indexing in channels
+  * Improve performance reading many small interleaved data chunks
+  * Breaking change: Remove previously deprecated methods
+  * Correct the TDMS type used when writing floating point data
+  * Fix reading digital line scaler data with a non-zero offset
+  * Adds support for reading raw timestamps with full precision
+  * Fixes memory leaks caused by circular references
+  * Fix for reading tdms_index files with padding after metadata
+  * Add support for negative temperatures with RTD scaling
+  * Use tdms_index files when available
+  * Support indexing and slicing channels
+  * Support streaming data chunks
+  * Support iterating over files, groups and channels
+  * Deprecates many methods than will now warn when used
+  * Fixes inconsistent behaviour when exporting to Pandas dataframes
+- Do not build for Python 3.6, due to no NumPy.
+
+-------------------------------------------------------------------
 Thu May 21 10:56:39 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
