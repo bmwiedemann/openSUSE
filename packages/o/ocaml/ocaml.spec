@@ -18,11 +18,10 @@
 #
 
 
-%define ocaml_base_version 4.11
+%define ocaml_base_version 4.12
 #
 # This ensures that the find_provides/find_requires calls ocamlobjinfo correctly.
 # handle built-in ocaml helper from rpm-build, and helper from ocaml-rpm-macros
-%if %{ocaml_native_compiler}
 %global __suseocaml_requires_opts \
 	-c \
 	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
@@ -37,56 +36,39 @@
 %global __ocaml_provides_opts \
 	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
 	%{nil}
-%else
-%global __suseocaml_requires_opts \
-	-c \
-	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
-	-i Backend_intf \
-	-i Inlining_decision_intf \
-	-i Simplify_boxed_integer_ops_intf \
-	%{nil}
-%global __ocaml_requires_opts \
-	-c \
-	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
-	-i Backend_intf \
-	-i Inlining_decision_intf \
-	-i Simplify_boxed_integer_ops_intf \
-	%{nil}
-%global __suseocaml_provides_opts \
-	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
-	%{nil}
-%global __ocaml_provides_opts \
-	-f "%{_bindir}/env OCAMLLIB=%{buildroot}%{ocaml_standard_library} %{buildroot}%{_bindir}/ocamlrun %{buildroot}%{_bindir}/ocamlobjinfo.byte" \
-	%{nil}
-%endif
+
 %global  _buildshell /bin/bash
 %bcond_with ocaml_make_testsuite
+%bcond_without suse_ocaml_use_rpm_license_macro
 
 Name:           ocaml
-Version:        4.11.2
+Version:        4.12.0
 Release:        0
 Summary:        OCaml Compiler and Programming Environment
+%if %{with suse_ocaml_use_rpm_license_macro}
 License:        QPL-1.0 AND SUSE-LGPL-2.0-with-linking-exception
+%else
+License:        MIT
+%endif
 Group:          Development/Languages/OCaml
+BuildRoot:      %_tmppath/%name-%version-build
 URL:            http://www.ocaml.org
 Source0:        http://caml.inria.fr/pub/distrib/ocaml-%{ocaml_base_version}/ocaml-%{version}.tar.xz
-Source2:        ocaml-rpmlintrc
+Source2:        %{name}-rpmlintrc
 Patch0:         ocaml-configure-Allow-user-defined-C-compiler-flags.patch
-BuildRequires:  autoconf
-BuildRequires:  binutils-devel
+Patch1:         ocaml-SIGSTKSZ.patch
+BuildRequires:  autoconf >= 2.69
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml-rpm-macros >= 20210209
+BuildRequires:  ocaml-rpm-macros >= 20210421
 BuildRequires:  pkgconfig
 Requires:       ncurses-devel
 Requires:       ocaml(runtime) = %{version}-%{release}
 Obsoletes:      ocaml-docs
 Provides:       ocaml(compiler) = %{ocaml_base_version}
 Provides:       ocaml(ocaml_base_version) = %{ocaml_base_version}
-%if %{ocaml_native_compiler}
-Requires:       %(type -p gcc | xargs readlink -f)
+Requires:       %(type -P gcc | xargs readlink -f | xargs rpm -qf --qf '%%{NAME}\n')
 Provides:       ocaml(ocaml.opt) = %{ocaml_base_version}
-%endif
 Obsoletes:      ocaml-seq < %{version}-%{release}
 Obsoletes:      ocaml-seq-debuginfo < %{version}-%{release}
 Obsoletes:      ocaml-seq-devel < %{version}-%{release}
@@ -166,22 +148,23 @@ This package contains libraries and signature files for developing
 applications that use Ocaml.
 
 %prep
-%autosetup -p1
+%setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 echo %{version} > VERSION
-test -x "$(type -p gcc | xargs readlink -f)" && export CC="$_"
-test -x "$(type -p as  | xargs readlink -f)" && export AS="$_"
+export CC='gcc'
+export AS='as'
+test -x "$(type -P gcc | xargs readlink -f)" && export CC="$_"
+test -x "$(type -P as  | xargs readlink -f)" && export AS="$_"
 export ASPP="$CC -c"
-%if %{ocaml_native_compiler}
-configure_target='--enable-native-compiler'
-%else
-configure_target='--disable-native-compiler'
-%endif
+configure_target=
 extra_cflags=()
 extra_cflags+=( '-Werror=implicit-function-declaration' )
 extra_cflags+=( '-Werror=return-type' )
 extra_cflags+=( '-Wno-deprecated-declarations' )
+extra_cflags+=( '-ffat-lto-objects' )
 export EXTRA_CFLAGS="${extra_cflags[@]}"
 bash -x tools/autogen
 %ifarch %arm
@@ -189,9 +172,12 @@ bash -x tools/autogen
 triple_fault=`/bin/sh build-aux/config.guess`
 configure_target="${configure_target} --host=${triple_fault} --build=${triple_fault}"
 %endif
+# use only the fixed set of built-in CFLAGS
+CFLAGS='-pipe'
 ./configure --help
 %configure \
 	${configure_target} \
+	--enable-native-compiler \
 	--libdir=%{ocaml_standard_library}
 %make_build
 #
@@ -454,38 +440,33 @@ _EOF_
 done
 
 %files -f files.ocaml.META
+%defattr(-,root,root,-)
 %doc Changes
+%if %{with suse_ocaml_use_rpm_license_macro}
 %license LICENSE
+%endif
 %{_bindir}/*
 %{_mandir}/*/*
 %{ocaml_standard_library}/*.a
-%if %{ocaml_native_compiler}
 %{ocaml_standard_library}/*.cmxs
 %{ocaml_standard_library}/*.cmxa
 %{ocaml_standard_library}/*.cmx
 %{ocaml_standard_library}/*.o
-%endif
 %{ocaml_standard_library}/*.mli
 %{ocaml_standard_library}/libcamlrun_shared.so
-%if %{ocaml_native_compiler}
 %{ocaml_standard_library}/libasmrun_shared.so
-%endif
-%if %{ocaml_native_compiler}
 %{ocaml_standard_library}/threads/*.a
 %{ocaml_standard_library}/threads/*.cmxa
 %{ocaml_standard_library}/threads/*.cmx
-%endif
 %{ocaml_standard_library}/threads/*.mli
 %{ocaml_standard_library}/caml
 %{ocaml_standard_library}/Makefile.config
-%{ocaml_standard_library}/VERSION
 %{ocaml_standard_library}/eventlog_metadata
 %{ocaml_standard_library}/extract_crc
 %{ocaml_standard_library}/camlheader
 %{ocaml_standard_library}/camlheader_ur
 %{ocaml_standard_library}/expunge
 %{ocaml_standard_library}/ld.conf
-%{ocaml_standard_library}/objinfo_helper
 %{ocaml_standard_library}/camlheaderd
 %{ocaml_standard_library}/camlheaderi
 %exclude %{_bindir}/ocamlrun
@@ -493,6 +474,7 @@ done
 %exclude %{ocaml_standard_library}/ocamldoc
 
 %files runtime
+%defattr(-,root,root,-)
 %{_bindir}/ocamlrun
 %dir %{ocaml_standard_library}
 %{ocaml_standard_library}/*.cmo
@@ -509,17 +491,22 @@ done
 %exclude %{ocaml_standard_library}/topdirs.cmt
 %exclude %{ocaml_standard_library}/topdirs.cmti
 %doc Changes
+%if %{with suse_ocaml_use_rpm_license_macro}
 %license LICENSE
+%endif
 
 %files source
+%defattr(-,root,root,-)
 %{ocaml_standard_library}/*.ml
 
 %files ocamldoc -f files.ocamldoc.META
+%defattr(-,root,root,-)
 %{_bindir}/ocamldoc*
 %{ocaml_standard_library}/ocamldoc
 %doc ocamldoc/Changes.txt
 
 %files compiler-libs
+%defattr(-,root,root,-)
 %dir %{ocaml_standard_library}
 %{ocaml_standard_library}/topdirs.cmi
 %{ocaml_standard_library}/topdirs.cmt
@@ -531,13 +518,12 @@ done
 %{ocaml_standard_library}/compiler-libs/*.cmti
 
 %files compiler-libs-devel -f files.compiler-libs.META
+%defattr(-,root,root,-)
 %dir %{ocaml_standard_library}/compiler-libs
-%if %{ocaml_native_compiler}
 %{ocaml_standard_library}/compiler-libs/*.a
 %{ocaml_standard_library}/compiler-libs/*.o
 %{ocaml_standard_library}/compiler-libs/*.cmx
 %{ocaml_standard_library}/compiler-libs/*.cmxa
-%endif
 %{ocaml_standard_library}/compiler-libs/*.mli
 
 %if %{with ocaml_make_testsuite}

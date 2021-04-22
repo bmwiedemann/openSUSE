@@ -753,4 +753,21 @@ Use SPDX format (http://www.spdx.org/licenses). Where there is no suitable short
   See included Changes for benefits and breaking changes</comment>
     <requestid>875439</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>786243355b94d85f79aa329ef2b8d5cc</srcmd5>
+    <version>4.12.0</version>
+    <time>1619107410</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ocaml_native_compiler conditional
+  build native target unconditionally
+- Require versioned gcc package
+
+- update to version 4.12.0
+  See included Changes for benefits and breaking changes
+- Add ocaml-SIGSTKSZ.patch (#10266)
+
+- Use bcond suse_ocaml_use_rpm_license_macro for license in filelist
+- Add suse prefix to ocaml_native_compiler to avoid conflict</comment>
+    <requestid>887316</requestid>
+  </revision>
 </revisionlist>

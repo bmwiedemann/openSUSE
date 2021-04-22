@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 21 12:34:56 UTC 2021 - ohering@suse.de
+
+- Remove ocaml_native_compiler conditional
+  build native target unconditionally
+- Require versioned gcc package
+
+-------------------------------------------------------------------
+Tue Apr 13 13:13:13 UTC 2021 - ohering@suse.de
+
+- update to version 4.12.0
+  See included Changes for benefits and breaking changes
+- Add ocaml-SIGSTKSZ.patch (#10266)
+
+-------------------------------------------------------------------
+Fri Apr  9 09:09:09 UTC 2021 - ohering@suse.de
+
+- Use bcond suse_ocaml_use_rpm_license_macro for license in filelist
+- Add suse prefix to ocaml_native_compiler to avoid conflict
+
+-------------------------------------------------------------------
 Fri Feb 26 12:34:56 UTC 2021 - ohering@suse.de
 
 - update to version 4.11.2

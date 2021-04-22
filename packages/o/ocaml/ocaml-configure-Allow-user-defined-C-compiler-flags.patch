@@ -8,13 +8,13 @@ Subject: configure: Allow user defined C compiler flags.
 
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1738,6 +1738,9 @@ AS_IF([test x"$DEFAULT_STRING" = "xunsaf
+@@ -1816,6 +1816,9 @@ AS_IF([test x"$DEFAULT_STRING" = "xunsaf
    [default_safe_string=false],
    [default_safe_string=true])
  
-+# Allow user defined C Compiler flags
++# Store user defined global C Compiler flags
 +common_cflags="$common_cflags $EXTRA_CFLAGS"
 +
  oc_cflags="$common_cflags $internal_cflags"
  oc_cppflags="$common_cppflags $internal_cppflags"
- ocamlc_cflags="$common_cflags $sharedlib_cflags"
+ ocamlc_cflags="$common_cflags $sharedlib_cflags \$(CFLAGS)"
