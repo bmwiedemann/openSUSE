@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 20 20:41:21 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 1.20.0
+  * 1.20.x stable branch.
+
+-------------------------------------------------------------------
+Wed Apr 14 11:09:07 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Update to 1.19.10
+  * https://nginx.org/en/CHANGES
+  * Changed default value for "keepalive_requests" to 1000.
+  * Added "keepalive_time" directive and $connection_time variable.
+  * Fixed "gzip filter failed to use preallocated memory" alerts
+    appeared in logs when using zlib-ng.
+
+-------------------------------------------------------------------
 Sat Apr  3 10:29:25 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 1.19.9
