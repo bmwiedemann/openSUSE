@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 13 23:18:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.2.0
+  * A kqueue backend has been added, run natively without epoll-shim
+
+-------------------------------------------------------------------
 Wed Sep 16 07:27:15 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use %meson_build before calling %meson_install. The RPM macros
