@@ -858,4 +858,13 @@
   * Don't deinstall any pam_unix variant</comment>
     <requestid>872450</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>7323226d703d71c9d4b69864558d4672</srcmd5>
+    <version>84.87+git20210304.df696a0</version>
+    <time>1619107411</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20210304.df696a0:
+  * final name is glibc-usrmerge-bootstrap-helper</comment>
+    <requestid>876708</requestid>
+  </revision>
 </revisionlist>
