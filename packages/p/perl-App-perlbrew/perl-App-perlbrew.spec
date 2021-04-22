@@ -18,7 +18,7 @@
 
 %define cpan_name App-perlbrew
 Name:           perl-App-perlbrew
-Version:        0.91
+Version:        0.92
 Release:        0
 Summary:        Manage perl installations in your C<$HOME>
 License:        MIT
@@ -28,7 +28,7 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Perl::Releases) >= 5.20210123
+BuildRequires:  perl(CPAN::Perl::Releases) >= 5.20210320
 BuildRequires:  perl(Capture::Tiny) >= 0.36
 BuildRequires:  perl(Devel::PatchPerl) >= 2.08
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.22
@@ -45,10 +45,10 @@ BuildRequires:  perl(Test::More) >= 1.001002
 BuildRequires:  perl(Test::NoWarnings) >= 1.04
 BuildRequires:  perl(Test::Output) >= 1.03
 BuildRequires:  perl(Test::Simple) >= 1.001002
-BuildRequires:  perl(Test::Spec) >= 0.47
+BuildRequires:  perl(Test::Spec) >= 0.49
 BuildRequires:  perl(Test::TempDir::Tiny) >= 0.016
 BuildRequires:  perl(local::lib) >= 2.000014
-Requires:       perl(CPAN::Perl::Releases) >= 5.20210123
+Requires:       perl(CPAN::Perl::Releases) >= 5.20210320
 Requires:       perl(Capture::Tiny) >= 0.36
 Requires:       perl(Devel::PatchPerl) >= 2.08
 Requires:       perl(ExtUtils::MakeMaker) >= 7.22
@@ -65,7 +65,20 @@ BuildRequires:  wget
 # MANUAL END
 
 %description
-Manage perl installations in your C<$HOME>
+perlbrew is a program to automate the building and installation of perl in
+an easy way. It provides multiple isolated perl environments, and a
+mechanism for you to switch between them.
+
+Everything are installed unter '~/perl5/perlbrew'. You then need to include
+a bashrc/cshrc provided by perlbrew to tweak the PATH for you. You then can
+benefit from not having to run 'sudo' commands to install cpan modules
+because those are installed inside your 'HOME' too.
+
+For the documentation of perlbrew usage see perlbrew command on at
+https://metacpan.org/, or by running 'perlbrew help', or by visiting at
+https://perlbrew.pl/. The following documentation features the API of
+'App::perlbrew' module, and may not be remotely close to what your want to
+read.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
@@ -85,7 +98,7 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING.md metamerge.json README README.md
+%doc Changes CONTRIBUTING.md README
 %license LICENSE
 
 %changelog
