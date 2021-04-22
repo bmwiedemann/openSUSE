@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 14 13:12:03 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.9.20
+  * Bugfixes for Panini General, Biplane and Triplane output
+    projections
+  * Fix crash and security issue caused by malformed filename prefix
+    ( CVE-2021-20307 )
+- Dropped upstream fixed libpano-implicit-decl.patch
+- Use SourceURL: https://en.opensuse.org/SourceUrls
+- Do not ship build instructions and outdated docs
+
+-------------------------------------------------------------------
 Mon Oct 13 11:38:02 NOVT 2014 - salsergey@gmail.com
 
 - Upgraded to version 2.9.19

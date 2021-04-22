@@ -169,4 +169,12 @@ Deleted obsolete parts of descriptions and updated descriptions.</comment>
     <comment>1</comment>
     <requestid>256014</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>115fb23cd1bc411352d28392a41ac657</srcmd5>
+    <version>2.9.20</version>
+    <time>1619107491</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887826</requestid>
+  </revision>
 </revisionlist>
