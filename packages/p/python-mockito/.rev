@@ -98,4 +98,14 @@
     <comment></comment>
     <requestid>790480</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c3fa1e5c0ae7619949071e193f0bb359</srcmd5>
+    <version>1.2.2</version>
+    <time>1619107445</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.2:
+  * Fix typo in ``spy2`` doc
+- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>887439</requestid>
+  </revision>
 </revisionlist>

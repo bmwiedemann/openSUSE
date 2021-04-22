@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 22 06:00:46 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.2.2:
+  * Fix typo in ``spy2`` doc
+- Do not build for Python 3.6, due to no NumPy. 
+
+-------------------------------------------------------------------
 Wed Apr  1 07:13:22 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.2.1

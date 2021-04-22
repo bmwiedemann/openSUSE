@@ -1,7 +1,7 @@
 #
 # spec file for package python-mockito
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-mockito
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Spying framework
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/kaste/mockito-python
 # https://github.com/kaste/mockito-python/issues/36
 Source:         https://github.com/kaste/mockito-python/archive/%{version}.tar.gz
