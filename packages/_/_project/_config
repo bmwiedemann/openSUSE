@@ -35,6 +35,7 @@ Type: kiwi
 Repotype: none
 Patterntype: none
 Prefer: openSUSE-release-ftp
+Prefer: -postgresql13-devel-mini
 Support: release-compare
 BuildFlags: obsgendiff
 %endif
