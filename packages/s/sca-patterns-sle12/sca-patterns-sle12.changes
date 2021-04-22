@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 21 17:43:35 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- New regular patterns (8) for version 1.0.2
+  + sle12sp2/crosstalk_122-000019643.py: Special Register Buffer Data Sampling aka CrossTalk (CVE-2020-0543) (bsc#1154824)
+  + sle12sp2/ucodeintel_122-000019635.py: L1D data cache eviction and Vector Register sampling - CVE-2020-0548, CVE-2020-0549 (bsc#1156353)
+  + sle12sp3/crosstalk_123-000019643.py: Special Register Buffer Data Sampling aka CrossTalk (CVE-2020-0543) (bsc#1154824)
+  + sle12sp3/ucodeintel_123-000019635.py: L1D data cache eviction and Vector Register sampling - CVE-2020-0548, CVE-2020-0549 (bsc#1156353)
+  + sle12sp4/crosstalk_124-000019643.py: Special Register Buffer Data Sampling aka CrossTalk (CVE-2020-0543) (bsc#1154824)
+  + sle12sp4/ucodeintel_124-000019635.py: L1D data cache eviction and Vector Register sampling - CVE-2020-0548, CVE-2020-0549 (bsc#1156353)
+  + sle12sp5/crosstalk_125-000019643.py: Special Register Buffer Data Sampling aka CrossTalk (CVE-2020-0543) (bsc#1154824)
+  + sle12sp5/ucodeintel_125-000019635.py: L1D data cache eviction and Vector Register sampling - CVE-2020-0548, CVE-2020-0549 (bsc#1156353)
+
+-------------------------------------------------------------------
 Wed Mar 31 22:46:50 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes to version 1.0.2
