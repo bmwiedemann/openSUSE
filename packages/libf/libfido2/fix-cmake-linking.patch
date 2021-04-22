@@ -1,0 +1,13 @@
+diff -Nur libfido2-1.7.0/src/CMakeLists.txt new/src/CMakeLists.txt
+--- libfido2-1.7.0/src/CMakeLists.txt	2021-03-29 17:28:56.000000000 +0200
++++ new/src/CMakeLists.txt	2021-04-17 04:08:16.614325721 +0200
+@@ -45,6 +45,9 @@
+ 
+ if(USE_HIDAPI)
+ 	list(APPEND FIDO_SOURCES hid_hidapi.c)
++	if(NOT WIN32 AND NOT APPLE)
++		list(APPEND FIDO_SOURCES hid_unix.c)
++	endif()
+ elseif(WIN32)
+ 	list(APPEND FIDO_SOURCES hid_win.c)
+ elseif(APPLE)

@@ -18,20 +18,25 @@
 
 %define sover  1
 Name:           libfido2
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        FIDO U2F and FIDO 2.0 protocols
 License:        BSD-2-Clause
+Group:          Development/Libraries/C and C++
 URL:            https://developers.yubico.com/
 Source0:        https://developers.yubico.com/libfido2/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/libfido2/Releases/%{name}-%{version}.tar.gz.sig
+# PATCH-FIX-UPSTREAM fix-cmake-linking.patch -- Fix linking when building with hidapi, gh#323
+Patch0:         fix-cmake-linking.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(hidapi-hidraw)
 BuildRequires:  pkgconfig(libcbor)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Provides library functionality for communicating with a FIDO device
@@ -60,6 +65,7 @@ This package contains the header file needed to develop applications that
 use FIDO U2F and FIDO 2.0 protocols.
 
 %package     -n %{name}-utils
+Group:          Hardware/Other
 Summary:        Utility programs making use of libfido2, a library for FIDO U2F and FIDO 2.0
 Conflicts:      libfido2-0_4_0
 Conflicts:      libfido2-1_0_0
@@ -75,14 +81,15 @@ BuildArch:      noarch
 This package contains the udev rules for FIDO2 compatible devices.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %define __builder ninja
 %cmake \
     -DCBOR_LIBRARY_DIRS=%{_libdir} \
-    -DUSE_HIDAPI=0 \
-    -DBUILD_EXAMPLES=OFF
+    -DBUILD_EXAMPLES=OFF \
+    -DUSE_HIDAPI=ON \
+    -DNFC_LINUX=ON
 %cmake_build
 
 %install

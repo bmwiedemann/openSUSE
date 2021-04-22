@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 17 01:41:49 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.7.0:
+  * hid_win: detect devices with vendor or product IDs > 0x7fff
+  * Support for FIDO 2.1 authenticator configuration.
+  * Support for FIDO 2.1 UV token permissions.
+  * Support for FIDO 2.1 "credBlobs" and "largeBlobs" extensions.
+  * New API calls
+  * New fido_init flag to disable fido_dev_open’s U2F fallback
+  * Experimental NFC support on Linux.
+- Enabled hidapi again, issues related to hidapi are fixed upstream
+  * Added fix-cmake-linking.patch to fix linking
+
+-------------------------------------------------------------------
 Wed Jan 20 09:46:41 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.6.0:
