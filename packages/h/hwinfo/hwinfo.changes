@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Tue Apr 13 15:07:43 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#95
+- don't rely on select() updating its timeout arg (bsc#1184339)
+- 21.73
+
+--------------------------------------------------------------------
 Wed Jan 27 10:09:24 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#92

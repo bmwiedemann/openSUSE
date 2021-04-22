@@ -37,7 +37,7 @@ Summary:        Hardware Library
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
 Url:            http://gitorious.org/opensuse/hwinfo
-Version:        21.72
+Version:        21.73
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
