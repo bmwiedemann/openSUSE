@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 14 18:26:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with GCC 11:
+  * 0001-Fix-build-with-GCC-11.patch
+
+-------------------------------------------------------------------
+Wed Apr 14 16:35:17 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to avoid OOM
+
+-------------------------------------------------------------------
+Tue Apr 13 20:12:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add back missing part in fix1163766.patch (boo#1184610)
+
+-------------------------------------------------------------------
 Wed Mar 24 12:45:13 UTC 2021 - christophe@krop.fr
 
 - Update to version 5.15.3:

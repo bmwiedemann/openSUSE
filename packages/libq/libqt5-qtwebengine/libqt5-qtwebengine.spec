@@ -54,6 +54,8 @@ Patch4:         rtc-dont-use-h264.patch
 Patch5:         0001-Fix-normalization-of-app-locales.patch
 # PATCH-FIX-UPSTREAM
 Patch6:         chromium-glibc-2.33.patch
+# PATCH-FIX-UPSTREAM
+Patch7:         0001-Fix-build-with-GCC-11.patch
 # http://www.chromium.org/blink not ported to PowerPC
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint

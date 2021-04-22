@@ -6,14 +6,15 @@ Subject: [PATCH] https://bugzilla.opensuse.org/show_bug.cgi?id=1163766
 seccomp filters disallow a new kernel syscall to get time
 used on i586
 ---
- .../sandbox/linux/system_headers/x86_32_linux_syscalls.h  | 8 ++++++++
- .../chromium/sandbox/policy/linux/bpf_ime_policy_linux.cc | 3 +++
- 3 files changed, 16 insertions(+)
+ src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc |    6 ++++++
+ src/3rdparty/chromium/sandbox/linux/system_headers/x86_32_linux_syscalls.h |    8 ++++++++
+ src/3rdparty/chromium/sandbox/policy/linux/bpf_ime_policy_linux.cc         |    3 +++
+ 3 files changed, 17 insertions(+)
 
-diff --git a/src/3rdparty/chromium/sandbox/linux/system_headers/x86_32_linux_syscalls.h b/src/3rdparty/chromium/sandbox/linux/system_headers/x86_32_linux_syscalls.h
-index 7613c9bbc..7093ac054 100644
---- a/src/3rdparty/chromium/sandbox/linux/system_headers/x86_32_linux_syscalls.h
-+++ b/src/3rdparty/chromium/sandbox/linux/system_headers/x86_32_linux_syscalls.h
+Index: qtwebengine-everywhere-src-5.15.3/src/3rdparty/chromium/sandbox/linux/system_headers/x86_32_linux_syscalls.h
+===================================================================
+--- qtwebengine-everywhere-src-5.15.3.orig/src/3rdparty/chromium/sandbox/linux/system_headers/x86_32_linux_syscalls.h
++++ qtwebengine-everywhere-src-5.15.3/src/3rdparty/chromium/sandbox/linux/system_headers/x86_32_linux_syscalls.h
 @@ -1710,5 +1710,13 @@
  #define __NR_clone3 435
  #endif
@@ -28,20 +29,34 @@ index 7613c9bbc..7093ac054 100644
 +
  #endif  // SANDBOX_LINUX_SYSTEM_HEADERS_X86_32_LINUX_SYSCALLS_H_
  
-diff --git a/src/3rdparty/chromium/sandbox/policy/linux/bpf_ime_policy_linux.cc b/src/3rdparty/chromium/sandbox/policy/linux/bpf_ime_policy_linux.cc
-index 3fcdbcc18..c7a00c2c2 100644
---- a/src/3rdparty/chromium/sandbox/policy/linux/bpf_ime_policy_linux.cc
-+++ b/src/3rdparty/chromium/sandbox/policy/linux/bpf_ime_policy_linux.cc
-@@ -31,6 +31,9 @@ ResultExpr ImeProcessPolicy::EvaluateSyscall(int sysno) const {
- #endif
+Index: qtwebengine-everywhere-src-5.15.3/src/3rdparty/chromium/sandbox/policy/linux/bpf_ime_policy_linux.cc
+===================================================================
+--- qtwebengine-everywhere-src-5.15.3.orig/src/3rdparty/chromium/sandbox/policy/linux/bpf_ime_policy_linux.cc
++++ qtwebengine-everywhere-src-5.15.3/src/3rdparty/chromium/sandbox/policy/linux/bpf_ime_policy_linux.cc
+@@ -32,6 +32,9 @@ ResultExpr ImeProcessPolicy::EvaluateSys
  #if defined(__NR_clock_gettime)
      case __NR_clock_gettime:
-+#endif
+ #endif
 +#if defined(__NR_clock_gettime64)
 +    case __NR_clock_gettime64:
- #endif
++#endif
        return Allow();
  // https://crbug.com/991435
--- 
-2.30.2
-
+ #if defined(__NR_getrusage)
+Index: qtwebengine-everywhere-src-5.15.3/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+===================================================================
+--- qtwebengine-everywhere-src-5.15.3.orig/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
++++ qtwebengine-everywhere-src-5.15.3/src/3rdparty/chromium/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
+@@ -161,6 +161,12 @@ ResultExpr EvaluateSyscallImpl(int fs_de
+     return RestrictClockID();
+   }
+ 
++#if defined(__NR_clock_gettime64)
++  if (sysno == __NR_clock_gettime64 || sysno == __NR_clock_nanosleep_time64) {
++    return RestrictClockID();
++  }
++#endif
++
+   if (sysno == __NR_clone) {
+     return RestrictCloneToThreadsAndEPERMFork();
+   }

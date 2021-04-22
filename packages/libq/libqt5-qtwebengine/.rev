@@ -697,4 +697,17 @@
   * Suppress error pages also for http errors if they are disabled</comment>
     <requestid>881936</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>df9d6e362ab4d0703486ab6672a0baff</srcmd5>
+    <version>5.15.3</version>
+    <time>1619107404</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with GCC 11:
+  * 0001-Fix-build-with-GCC-11.patch
+
+- Update _constraints to avoid OOM
+
+- Add back missing part in fix1163766.patch (boo#1184610)</comment>
+    <requestid>885924</requestid>
+  </revision>
 </revisionlist>

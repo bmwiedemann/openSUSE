@@ -1,0 +1,36 @@
+From 7d0456664fb76572a560364172c31140ec20fc8a Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Wed, 14 Apr 2021 20:23:07 +0200
+Subject: [PATCH] Fix build with GCC 11.
+
+Origin:
+https://github.com/abseil/abseil-cpp/commit/5bf048b8
+https://github.com/google/perfetto/commit/372366b4
+
+---
+
+diff --git a/src/3rdparty/chromium/third_party/abseil-cpp/absl/synchronization/internal/graphcycles.cc b/src/3rdparty/chromium/third_party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
+index 19f9aab5b1a..27fec21681d 100644
+--- a/src/3rdparty/chromium/third_party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
++++ b/src/3rdparty/chromium/third_party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
+@@ -37,6 +37,7 @@
+ 
+ #include <algorithm>
+ #include <array>
++#include <limits>
+ #include "absl/base/internal/hide_ptr.h"
+ #include "absl/base/internal/raw_logging.h"
+ #include "absl/base/internal/spinlock.h"
+
+diff --git a/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/containers/string_pool.h b/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/containers/string_pool.h
+index 11ae91cfeca..58c6db27bd6 100644
+--- a/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/containers/string_pool.h
++++ b/src/3rdparty/chromium/third_party/perfetto/src/trace_processor/containers/string_pool.h
+@@ -22,6 +22,7 @@
+ 
+ #include <unordered_map>
+ #include <vector>
++#include <limits>
+ 
+ #include "perfetto/ext/base/optional.h"
+ #include "perfetto/ext/base/paged_memory.h"
