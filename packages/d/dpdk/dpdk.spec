@@ -1,7 +1,7 @@
 #
 # spec file for package dpdk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,6 +69,7 @@ Patch5:         0003-vhost-crypto-fix-missed-request-check-for-copy-mode.patch
 Patch6:         0004-vhost-crypto-fix-incorrect-write-back-source.patch
 Patch7:         0005-vhost-crypto-fix-data-length-check.patch
 Patch8:         0006-vhost-crypto-fix-possible-TOCTOU-attack.patch
+Patch9:         0001-kni-fix-build-with-Linux-5.9.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libelf-devel
@@ -173,6 +174,7 @@ The DPDK Kernel NIC Interface (KNI) allows userspace applications access to the 
 %patch6 -p1 -z .init
 %patch7 -p1 -z .init
 %patch8 -p1 -z .init
+%patch9 -p1 -z .init
 
 # This fixes CROSS compilation (broken) in the mk file for ThunderX
 sed -i '/^CROSS /s/^/#/'  mk/machine/thunderx/rte.vars.mk

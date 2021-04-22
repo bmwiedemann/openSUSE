@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 21 10:36:13 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add 0001-kni-fix-build-with-Linux-5.9.patch: fixes the build against kernel
+  >= 5.9. Also see here:
+
+  http://inbox.dpdk.org/users/CAJFAV8w8ozEkdSKdBHEHXJDxpChorGa1jUsNEcPMptG30bWykw@mail.gmail.com/T
+
+-------------------------------------------------------------------
 Tue Sep 29 09:13:17 UTC 2020 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
 - Add patches to fix vulnerability where malicious guest can harm the host

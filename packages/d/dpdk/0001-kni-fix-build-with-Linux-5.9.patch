@@ -1,0 +1,49 @@
+From 87efaea6376c8ae1a69e471450744a973995726b Mon Sep 17 00:00:00 2001
+From: Ferruh Yigit <ferruh.yigit@intel.com>
+Date: Mon, 17 Aug 2020 11:32:47 +0100
+Subject: [PATCH] kni: fix build with Linux 5.9
+
+Starting from Linux 5.9 'get_user_pages_remote()' API doesn't get
+'struct task_struct' parameter:
+commit 64019a2e467a ("mm/gup: remove task_struct pointer for all gup code")
+
+The change reflected to the KNI with version check.
+
+Cc: stable@dpdk.org
+
+Signed-off-by: Ferruh Yigit <ferruh.yigit@intel.com>
+---
+ kernel/linux/kni/compat.h  | 4 ++++
+ kernel/linux/kni/kni_dev.h | 5 +++++
+ 2 files changed, 9 insertions(+)
+
+Index: dpdk-stable-19.11.4/kernel/linux/kni/compat.h
+===================================================================
+--- dpdk-stable-19.11.4.orig/kernel/linux/kni/compat.h
++++ dpdk-stable-19.11.4/kernel/linux/kni/compat.h
+@@ -138,3 +138,7 @@
+ 	(SLE_VERSION_CODE && SLE_VERSION_CODE == SLE_VERSION(15, 3, 0))
+ #define HAVE_TX_TIMEOUT_TXQUEUE
+ #endif
++
++#if KERNEL_VERSION(5, 9, 0) > LINUX_VERSION_CODE
++#define HAVE_TSK_IN_GUP
++#endif
+Index: dpdk-stable-19.11.4/kernel/linux/kni/kni_dev.h
+===================================================================
+--- dpdk-stable-19.11.4.orig/kernel/linux/kni/kni_dev.h
++++ dpdk-stable-19.11.4/kernel/linux/kni/kni_dev.h
+@@ -101,8 +101,13 @@ static inline phys_addr_t iova_to_phys(s
+ 	offset = iova & (PAGE_SIZE - 1);
+ 
+ 	/* Read one page struct info */
++#ifdef HAVE_TSK_IN_GUP
+ 	ret = get_user_pages_remote(tsk, tsk->mm, iova, 1,
+ 				    FOLL_TOUCH, &page, NULL, NULL);
++#else
++	ret = get_user_pages_remote(tsk->mm, iova, 1,
++				    FOLL_TOUCH, &page, NULL, NULL);
++#endif
+ 	if (ret < 0)
+ 		return 0;
+ 
