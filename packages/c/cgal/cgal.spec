@@ -1,7 +1,7 @@
 #
 # spec file for package cgal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Ioda-Net Sàrl, Charmoille, Switzerland.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,18 +17,10 @@
 #
 
 
-# Disable Qt5 for embedded platforms, QOpenGlFunctions_2_1 is not available with GLES
-%ifarch %arm aarch64
-%bcond_with qt5
-%else
-%bcond_without qt5
-%endif
-
 #@TODO : clarify and split licence correctly, GPL & LGPL 3+ version
 #@TODO : split package in coherent parts
 #@TODO : rename parts (inspirated by sfcgal packaging)
 #@TODO : ask for rename and take into account the obsolete existant thing. like libcgal deps
-
 # soversions, according to Installation/CMakeLists.txt
 #   CGAL-4.14  : 14.0.0 , but only for CGAL_ImageIO (ABI broken in CGAL::Image_3.)
 #                              and for CGAL_Qt5 (ABI broken in DemoMainWindow)
@@ -37,19 +29,23 @@
 %define _sover_Core 13
 %define _sover_ImageIO 14
 %define _sover_Qt5 14
-
 %define _sourcename CGAL
 %define _libname() libCGAL%{?1}%{?2}%{expand:%{_sover%{?1}}}
+# Disable Qt5 for embedded platforms, QOpenGlFunctions_2_1 is not available with GLES
+%ifarch %{arm} aarch64
+%bcond_with qt5
+%else
+%bcond_without qt5
+%endif
 Name:           cgal
-Version:        5.1.1
+Version:        5.2.1
 Release:        0
 Summary:        Computational Geometry Algorithms Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://www.cgal.org/
 Source0:        https://github.com/CGAL/cgal/releases/download/v%{version}/CGAL-%{version}.tar.xz
-# Strange release artifact, .xz is double
-Source1:        https://github.com/CGAL/cgal/releases/download/v%{version}/CGAL-%{version}-doc_html.tar.xz.xz#/CGAL-%{version}-doc_html.tar.xz
+Source1:        https://github.com/CGAL/cgal/releases/download/v%{version}/CGAL-%{version}-doc_html.tar.xz
 Source2:        cgal-rpmlintrc
 BuildRequires:  blas-devel
 BuildRequires:  cmake >= 2.8.11
@@ -58,19 +54,19 @@ BuildRequires:  gcc-c++
 BuildRequires:  glu-devel
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
-BuildRequires:  libboost_atomic-devel >= 1.66.0
-BuildRequires:  libboost_system-devel >= 1.66.0
-BuildRequires:  libboost_thread-devel >= 1.66.0
+BuildRequires:  libboost_atomic-devel >= 1.66
+BuildRequires:  libboost_system-devel >= 1.66
+BuildRequires:  libboost_thread-devel >= 1.66
+BuildRequires:  mpfr-devel
+BuildRequires:  xz
+BuildRequires:  zlib-devel
+Requires:       libcgal-devel = %{version}
 %if %{with qt5}
 BuildRequires:  cmake(Qt5) >= 5.3
 BuildRequires:  cmake(Qt5OpenGL) >= 5.3
 BuildRequires:  cmake(Qt5Svg) >= 5.3
 BuildRequires:  cmake(Qt5Xml) >= 5.3
 %endif
-BuildRequires:  mpfr-devel
-BuildRequires:  xz
-BuildRequires:  zlib-devel
-Requires:       libcgal-devel = %{version}
 
 %description
 CGAL provides geometric algorithms in a C++ library.
@@ -143,12 +139,9 @@ hull algorithms, shape analysis, AABB and KD trees.
 Summary:        Development files and tools for CGAL applications
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND BSL-1.0
 Group:          Development/Libraries/C and C++
+Requires:       %{_libname} = %{version}
 Requires:       %{_libname _Core} = %{version}
 Requires:       %{_libname _ImageIO} = %{version}
-Requires:       %{_libname} = %{version}
-%if %{with qt5}
-Requires:       %{_libname _Qt5 - } = %{version}
-%endif
 Requires:       blas
 Requires:       cmake
 Requires:       gmp-devel
@@ -160,6 +153,9 @@ Requires:       mpfr-devel
 Requires:       zlib-devel
 #For compatibility with package looking for our old name
 Provides:       libcgal-devel = %{version}
+%if %{with qt5}
+Requires:       %{_libname _Qt5 - } = %{version}
+%endif
 
 %description devel
 This package provides the headers files and tools you may need to
@@ -193,7 +189,7 @@ This package provides the documentation for CGAL algorithms.
 %cmake -DCGAL_HEADER_ONLY=OFF \
        -DCGAL_INSTALL_LIB_DIR=%{_lib}
 
-make %{?_smp_mflags}
+%make_build
 
 # Unfortunately take +6600sec locally.
 # So we just deliver the source code in cgal package.

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 13 21:24:01 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 5.2.1
+  * See https://github.com/CGAL/cgal/pulls?utf8=%E2%9C%93&q=label%3AMerged_in_5.2.1
+- Update to 5.2.0
+  * Fixed multiple code execution vulnerabilities:
+    boo#1184975 ( CVE-2020-35636 ), boo#1184977 ( CVE-2020-28636 ),
+    boo#1184973 ( CVE-2020-28601 ) and boo#1184978 ( CVE-2020-35628 )
+  * For full list of other changes, see:
+    https://www.cgal.org/2020/12/22/cgal52/
+
+-------------------------------------------------------------------
 Wed Nov 18 07:48:56 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.1.1:
