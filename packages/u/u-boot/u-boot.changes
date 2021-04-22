@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 19 07:18:23 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.04
+* Patches added:
+  0014-fs-btrfs-fix-the-false-alert-of-dec.patch - boo#1183717
+
+-------------------------------------------------------------------
 Fri Apr  9 12:43:13 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
 
 Fix SMBIOS table entries (bsc#1183079)

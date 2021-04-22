@@ -1,0 +1,72 @@
+From 95067913a0d90d37decce6835bababa0f3739275 Mon Sep 17 00:00:00 2001
+From: Qu Wenruo <wqu@suse.com>
+Date: Sat, 17 Apr 2021 20:52:13 +0800
+Subject: [PATCH] fs: btrfs: fix the false alert of decompression failure
+
+There are some cases where decompressed sectors can have padding zeros.
+
+In kernel code, we have lines to address such situation:
+
+        /*
+         * btrfs_getblock is doing a zero on the tail of the page too,
+         * but this will cover anything missing from the decompressed
+         * data.
+         */
+        if (bytes < destlen)
+                memset(kaddr+bytes, 0, destlen-bytes);
+        kunmap_local(kaddr);
+
+But not in U-boot code, thus we have some reports of U-boot failed to
+read compressed files in btrfs.
+
+Fix it by doing the same thing of the kernel, for both inline and
+regular compressed extents.
+
+Reported-by: Matwey Kornilov <matwey.kornilov@gmail.com>
+Link: https://bugzilla.suse.com/show_bug.cgi?id=1183717
+Fixes: a26a6bedafcf ("fs: btrfs: Introduce btrfs_read_extent_inline() and btrfs_read_extent_reg()")
+Signed-off-by: Qu Wenruo <wqu@suse.com>
+---
+ fs/btrfs/inode.c | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/fs/btrfs/inode.c b/fs/btrfs/inode.c
+index 019d532a1a..2c2379303d 100644
+--- a/fs/btrfs/inode.c
++++ b/fs/btrfs/inode.c
+@@ -390,10 +390,16 @@ int btrfs_read_extent_inline(struct btrfs_path *path,
+ 			   csize);
+ 	ret = btrfs_decompress(btrfs_file_extent_compression(leaf, fi),
+ 			       cbuf, csize, dbuf, dsize);
+-	if (ret < 0 || ret != dsize) {
++	if (ret == (u32)-1) {
+ 		ret = -EIO;
+ 		goto out;
+ 	}
++	/*
++	 * The compressed part ends before sector boundary, the remaining needs
++	 * to be zeroed out.
++	 */
++	if (ret < dsize)
++		memset(dbuf + ret, 0, dsize - ret);
+ 	memcpy(dest, dbuf, dsize);
+ 	ret = dsize;
+ out:
+@@ -494,10 +500,16 @@ int btrfs_read_extent_reg(struct btrfs_path *path,
+ 
+ 	ret = btrfs_decompress(btrfs_file_extent_compression(leaf, fi), cbuf,
+ 			       csize, dbuf, dsize);
+-	if (ret != dsize) {
++	if (ret == (u32)-1) {
+ 		ret = -EIO;
+ 		goto out;
+ 	}
++	/*
++	 * The compressed part ends before sector boundary, the remaining needs
++	 * to be zeroed out.
++	 */
++	if (ret < dsize)
++		memset(dbuf + ret, 0, dsize - ret);
+ 	/* Then copy the needed part */
+ 	memcpy(dest, dbuf + btrfs_file_extent_offset(leaf, fi), len);
+ 	ret = len;
