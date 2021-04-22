@@ -1,0 +1,92 @@
+From e0f8087409bdff4c3036e38ed4f22f5f031306e8 Mon Sep 17 00:00:00 2001
+From: Ricardo Mateus <rjmateus@gmail.com>
+Date: Fri, 9 Apr 2021 10:57:27 +0100
+Subject: [PATCH] Notify beacon for Debian/Ubuntu systems (#347)
+
+Signed-off-by: Ricardo Mateus <rmateus@suse.com>
+(cherry picked from commit 33d6baebba94cc7a66d5555de984ca98684157a0)
+---
+ scripts/suse/dpkg/99dpkgnotify |  1 +
+ scripts/suse/dpkg/README.md    |  9 +++++++
+ scripts/suse/dpkg/dpkgnotify   | 44 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 54 insertions(+)
+ create mode 100644 scripts/suse/dpkg/99dpkgnotify
+ create mode 100644 scripts/suse/dpkg/README.md
+ create mode 100644 scripts/suse/dpkg/dpkgnotify
+
+diff --git a/scripts/suse/dpkg/99dpkgnotify b/scripts/suse/dpkg/99dpkgnotify
+new file mode 100644
+index 0000000000..8013387a57
+--- /dev/null
++++ b/scripts/suse/dpkg/99dpkgnotify
+@@ -0,0 +1 @@
++DPkg::Post-Invoke {"/usr/bin/dpkgnotify";};
+diff --git a/scripts/suse/dpkg/README.md b/scripts/suse/dpkg/README.md
+new file mode 100644
+index 0000000000..b7a75c4786
+--- /dev/null
++++ b/scripts/suse/dpkg/README.md
+@@ -0,0 +1,9 @@
++## What it is
++
++Debian base package to notify installation of new packages outside the control of salt.
++
++## Installation
++This script depends on python package, so python3 should be installed on the machine
++
++- The 99dpkgnotify file must be installed in /etc/apt/apt.conf.d/99dpkgnotify
++- The dpkgnotify file must be installed in /usr/bin/dpkgnotify
+diff --git a/scripts/suse/dpkg/dpkgnotify b/scripts/suse/dpkg/dpkgnotify
+new file mode 100644
+index 0000000000..d3ad3d2ba9
+--- /dev/null
++++ b/scripts/suse/dpkg/dpkgnotify
+@@ -0,0 +1,44 @@
++#!/usr/bin/python3
++
++import os
++import hashlib
++
++CK_PATH = "/var/cache/salt/minion/dpkg.cookie"
++DPKG_PATH = "/var/lib/dpkg/status"
++
++def _get_mtime():
++    """
++    Get the modified time of the Package Database.
++    Returns:
++        Unix ticks
++    """
++    return os.path.exists(DPKG_PATH) and int(os.path.getmtime(DPKG_PATH)) or 0
++
++
++def _get_checksum():
++    """
++    Get the checksum of the Package Database.
++    Returns:
++        hexdigest
++    """
++    digest = hashlib.sha256()
++    with open(DPKG_PATH, "rb") as pkg_db_fh:
++        while True:
++            buff = pkg_db_fh.read(0x1000)
++            if not buff:
++                break
++            digest.update(buff)
++    return digest.hexdigest()
++
++
++def dpkg_post_invoke():
++    """
++    Hook after the package installation transaction.
++    """
++    if 'SALT_RUNNING' not in os.environ:
++        with open(CK_PATH, 'w') as ck_fh:
++            ck_fh.write('{chksum} {mtime}\n'.format(chksum=_get_checksum(), mtime=_get_mtime()))
++
++
++if __name__ == "__main__":
++    dpkg_post_invoke()
+-- 
+2.30.2
+
+

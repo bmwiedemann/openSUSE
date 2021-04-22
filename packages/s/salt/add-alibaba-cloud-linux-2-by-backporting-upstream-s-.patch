@@ -1,0 +1,76 @@
+From ec0d11ed66e8541a9ccaebc85aab4724013fb71f Mon Sep 17 00:00:00 2001
+From: Pau Garcia Quiles <pau.garcia@suse.com>
+Date: Tue, 13 Apr 2021 10:31:09 +0200
+Subject: [PATCH] Add Alibaba Cloud Linux 2 by backporting upstream's
+ grain and discarding my own (#352)
+
+---
+ salt/grains/core.py            |  4 ++--
+ tests/unit/grains/test_core.py | 26 +++++++++++++++++---------
+ 2 files changed, 19 insertions(+), 11 deletions(-)
+
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index 09f9d29788..2b965a2a8a 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -1547,7 +1547,7 @@ _OS_NAME_MAP = {
+     "slesexpand": "RES",
+     "linuxmint": "Mint",
+     "neon": "KDE neon",
+-    "alibaba": "Alibaba Cloud (Aliyun)",
++    "alibabaclo": "Alinux",
+ }
+ 
+ # Map the 'os' grain to the 'os_family' grain
+@@ -1622,7 +1622,7 @@ _OS_FAMILY_MAP = {
+     "AIX": "AIX",
+     "TurnKey": "Debian",
+     "AstraLinuxCE": "Debian",
+-    "Alibaba Cloud (Aliyun)": "RedHat",
++    "Alinux": "RedHat",
+ }
+ 
+ # Matches any possible format:
+diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
+index 6aa05abe40..8280d6de47 100644
+--- a/tests/unit/grains/test_core.py
++++ b/tests/unit/grains/test_core.py
+@@ -782,17 +782,25 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+         Test if OS grains are parsed correctly in Alibaba Cloud Linux (Aliyun Linux) 2.1903 LTS
+         '''
+         _os_release_map = {
+-            '_linux_distribution': ('Alibaba Cloud Linux (Aliyun Linux)', '2.1903', 'Alibaba Cloud Linux (Aliyun Linux) 2.1903 LTS (Hunting Beagle)'),
++            "os_release_file": {
++                "NAME": "Alibaba Cloud Linux (Aliyun Linux)",
++                "VERSION": "2.1903 LTS (Hunting Beagle)",
++                "VERSION_ID": "2.1903",
++                "PRETTY_NAME": "Alibaba Cloud Linux (Aliyun Linux) 2.1903 LTS (Hunting Beagle)",
++                "ID": "alinux",
++                "ANSI_COLOR": "0;31",
++            },
++            "_linux_distribution": ("alinux", "2.1903", "LTS"),
+         }
+         expectation = {
+-            'os': 'Alibaba Cloud (Aliyun)',
+-            'os_family': 'RedHat',
+-            'oscodename': 'Alibaba Cloud Linux (Aliyun Linux) 2.1903 LTS (Hunting Beagle)',
+-            'osfullname': 'Alibaba Cloud Linux (Aliyun Linux)',
+-            'osrelease': '2.1903',
+-            'osrelease_info': (2, 1903),
+-            'osmajorrelease': 2,
+-            'osfinger': 'Alibaba Cloud Linux (Aliyun Linux)-2',
++            "os": "Alinux",
++            "os_family": "RedHat",
++            "oscodename": "Alibaba Cloud Linux (Aliyun Linux) 2.1903 LTS (Hunting Beagle)",
++            "osfullname": "Alibaba Cloud Linux (Aliyun Linux)",
++            "osrelease": "2.1903",
++            "osrelease_info": (2, 1903),
++            "osmajorrelease": 2,
++            "osfinger": "Alibaba Cloud Linux (Aliyun Linux)-2",
+         }
+         self._run_os_grains_tests(None, _os_release_map, expectation)
+ 
+-- 
+2.30.2
+
+

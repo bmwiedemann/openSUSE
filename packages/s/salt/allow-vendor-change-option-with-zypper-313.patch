@@ -1,0 +1,292 @@
+From 33ad6876a04e800afc08748133dc568a5e362903 Mon Sep 17 00:00:00 2001
+From: Martin Seidl <mseidl@suse.de>
+Date: Wed, 17 Mar 2021 14:05:42 +0100
+Subject: [PATCH] Allow vendor change option with zypper (#313)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* add patch support for allow vendor change option with zypper
+
+* adjust unit tests vendor change refactor, dropping cli arg
+
+* Fix pr issues
+
+Co-authored-by: Pablo Suárez Hernández <psuarezhernandez@suse.com>
+
+* Fix unit test for allow vendor change on upgrade
+
+* Add unit test with unsupported zypper version
+
+Co-authored-by: Pablo Suárez Hernández <psuarezhernandez@suse.com>
+---
+ salt/modules/zypperpkg.py            | 58 +++++++++++++---
+ tests/unit/modules/test_zypperpkg.py | 99 ++++++++++++++++++----------
+ 2 files changed, 112 insertions(+), 45 deletions(-)
+
+diff --git a/salt/modules/zypperpkg.py b/salt/modules/zypperpkg.py
+index 6f22994bf0..b35792237c 100644
+--- a/salt/modules/zypperpkg.py
++++ b/salt/modules/zypperpkg.py
+@@ -105,6 +105,10 @@ class _Zypper:
+     ZYPPER_LOCK = "/var/run/zypp.pid"
+     TAG_RELEASED = "zypper/released"
+     TAG_BLOCKED = "zypper/blocked"
++    # Dist upgrade vendor change support (SLE12+)
++    dup_avc = False
++    # Install/Patch/Upgrade vendor change support (SLE15+)
++    inst_avc = False
+ 
+     def __init__(self):
+         """
+@@ -218,6 +222,21 @@ class _Zypper:
+     def pid(self):
+         return self.__call_result.get("pid", "")
+ 
++    def refresh_zypper_flags(self):
++        try:
++            zypp_version = version('zypper')
++            # zypper version 1.11.34 in SLE12 update supports vendor change for only dist upgrade
++            if version_cmp(zypp_version, '1.11.34') >= 0:
++                # zypper version supports vendor change for dist upgrade
++                self.dup_avc = True
++            # zypper version 1.14.8 in SLE15 update supports vendor change in install/patch/upgrading
++            if version_cmp(zypp_version, '1.14.8') >= 0:
++                self.inst_avc = True
++            else:
++                log.error("Failed to compare Zypper version")
++        except Exception as ex:
++            log.error("Unable to get Zypper version: {}".format(ex))
++
+     def _is_error(self):
+         """
+         Is this is an error code?
+@@ -1431,6 +1450,7 @@ def install(
+     no_recommends=False,
+     root=None,
+     inclusion_detection=False,
++    novendorchange=True,
+     **kwargs
+ ):
+     """
+@@ -1478,6 +1498,9 @@ def install(
+     skip_verify
+         Skip the GPG verification check (e.g., ``--no-gpg-checks``)
+ 
++    novendorchange
++        Disallow vendor change
++
+     version
+         Can be either a version number, or the combination of a comparison
+         operator (<, >, <=, >=, =) and a version number (ex. '>1.2.3-4').
+@@ -1638,6 +1661,15 @@ def install(
+     cmd_install.append(
+         kwargs.get("resolve_capabilities") and "--capability" or "--name"
+     )
++    # Install / patching / upgrade with vendor change support is only in SLE 15+  opensuse Leap 15+
++    if not novendorchange:
++        __zypper__(root=root).refresh_zypper_flags()
++        if __zypper__(root=root).inst_avc:
++            cmd_install.append("--allow-vendor-change")
++            log.info("Enabling vendor changes")
++        else:
++            log.warning("Enabling/Disabling vendor changes is not supported on this Zypper version")
++
+ 
+     if not refresh:
+         cmd_install.insert(0, "--no-refresh")
+@@ -1793,19 +1825,25 @@ def upgrade(
+             cmd_update.extend(["--from" if dist_upgrade else "--repo", repo])
+         log.info("Targeting repos: %s", fromrepo)
+ 
+-    if dist_upgrade:
+-        # TODO: Grains validation should be moved to Zypper class
+-        if __grains__["osrelease_info"][0] > 11:
+-            if novendorchange:
+-                cmd_update.append("--no-allow-vendor-change")
+-                log.info("Disabling vendor changes")
+-            else:
++    if not novendorchange:
++        __zypper__(root=root).refresh_zypper_flags()
++        if dist_upgrade:
++            if __zypper__(root=root).dup_avc:
+                 cmd_update.append("--allow-vendor-change")
+                 log.info("Enabling vendor changes")
++            else:
++                log.warning(
++                    "Enabling/Disabling vendor changes is not supported on this Zypper version"
++                )
+         else:
+-            log.warning(
+-                "Enabling/Disabling vendor changes is not supported on this Zypper version"
+-            )
++            # Install / patching / upgrade with vendor change support is only in SLE 15+  opensuse Leap 15+
++            if __zypper__(root=root).inst_avc:
++                cmd_update.append("--allow-vendor-change")
++                log.info("Enabling vendor changes")
++            else:
++                log.warning(
++                    "Enabling/Disabling vendor changes is not supported on this Zypper version"
++                 )
+ 
+         if no_recommends:
+             cmd_update.append("--no-recommends")
+diff --git a/tests/unit/modules/test_zypperpkg.py b/tests/unit/modules/test_zypperpkg.py
+index 9c4a224c55..f32c382d7f 100644
+--- a/tests/unit/modules/test_zypperpkg.py
++++ b/tests/unit/modules/test_zypperpkg.py
+@@ -644,7 +644,6 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+                     zypper_mock.assert_any_call(
+                         "dist-upgrade",
+                         "--auto-agree-with-licenses",
+-                        "--no-allow-vendor-change",
+                     )
+ 
+                 with patch(
+@@ -691,46 +690,80 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+                         "dist-upgrade",
+                         "--auto-agree-with-licenses",
+                         "--dry-run",
+-                        "--no-allow-vendor-change",
+                     )
+                     zypper_mock.assert_any_call(
+                         "dist-upgrade",
+                         "--auto-agree-with-licenses",
+                         "--dry-run",
+-                        "--no-allow-vendor-change",
+                     )
+ 
+                 with patch(
+                     "salt.modules.zypperpkg.list_pkgs",
+-                    MagicMock(side_effect=[{"vim": "1.1"}, {"vim": "1.1"}]),
++                    MagicMock(side_effect=[{"vim": "1.1"}, {"vim": "1.1"}])
+                 ):
+-                    ret = zypper.upgrade(
+-                        dist_upgrade=True,
+-                        dryrun=True,
+-                        fromrepo=["Dummy", "Dummy2"],
+-                        novendorchange=False,
+-                    )
+-                    zypper_mock.assert_any_call(
+-                        "dist-upgrade",
+-                        "--auto-agree-with-licenses",
+-                        "--dry-run",
+-                        "--from",
+-                        "Dummy",
+-                        "--from",
+-                        "Dummy2",
+-                        "--allow-vendor-change",
+-                    )
+-                    zypper_mock.assert_any_call(
+-                        "dist-upgrade",
+-                        "--auto-agree-with-licenses",
+-                        "--dry-run",
+-                        "--from",
+-                        "Dummy",
+-                        "--from",
+-                        "Dummy2",
+-                        "--allow-vendor-change",
+-                        "--debug-solver",
+-                    )
++                    with patch.dict(zypper.__salt__,
++                                    {'pkg_resource.version': MagicMock(return_value='1.15'),
++                                     'lowpkg.version_cmp': MagicMock(return_value=1)}):
++                        ret = zypper.upgrade(
++                            dist_upgrade=True,
++                            dryrun=True,
++                            fromrepo=["Dummy", "Dummy2"],
++                            novendorchange=False,
++                        )
++                        zypper_mock.assert_any_call(
++                            "dist-upgrade",
++                            "--auto-agree-with-licenses",
++                            "--dry-run",
++                            "--from",
++                            "Dummy",
++                            "--from",
++                            "Dummy2",
++                            "--allow-vendor-change",
++                        )
++                        zypper_mock.assert_any_call(
++                            "dist-upgrade",
++                            "--auto-agree-with-licenses",
++                            "--dry-run",
++                            "--from",
++                            "Dummy",
++                            "--from",
++                            "Dummy2",
++                            "--allow-vendor-change",
++                            "--debug-solver",
++                        )
++
++                with patch(
++                    "salt.modules.zypperpkg.list_pkgs",
++                    MagicMock(side_effect=[{"vim": "1.1"}, {"vim": "1.1"}])
++                ):
++                    with patch.dict(zypper.__salt__,
++                                    {'pkg_resource.version': MagicMock(return_value='1.11'),
++                                     'lowpkg.version_cmp': MagicMock(return_value=1)}):
++                        ret = zypper.upgrade(
++                            dist_upgrade=True,
++                            dryrun=True,
++                            fromrepo=["Dummy", "Dummy2"],
++                            novendorchange=False,
++                        )
++                        zypper_mock.assert_any_call(
++                            "dist-upgrade",
++                            "--auto-agree-with-licenses",
++                            "--dry-run",
++                            "--from",
++                            "Dummy",
++                            "--from",
++                            "Dummy2",
++                        )
++                        zypper_mock.assert_any_call(
++                            "dist-upgrade",
++                            "--auto-agree-with-licenses",
++                            "--dry-run",
++                            "--from",
++                            "Dummy",
++                            "--from",
++                            "Dummy2",
++                            "--debug-solver",
++                        )
+ 
+                 with patch(
+                     "salt.modules.zypperpkg.list_pkgs",
+@@ -750,7 +783,6 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+                         "Dummy",
+                         "--from",
+                         "Dummy2",
+-                        "--no-allow-vendor-change",
+                     )
+                     zypper_mock.assert_any_call(
+                         "dist-upgrade",
+@@ -760,7 +792,6 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+                         "Dummy",
+                         "--from",
+                         "Dummy2",
+-                        "--no-allow-vendor-change",
+                         "--debug-solver",
+                     )
+ 
+@@ -797,7 +828,6 @@ class ZypperTestCase(TestCase, LoaderModuleMockMixin):
+                         "Dummy",
+                         "--from",
+                         "Dummy2",
+-                        "--no-allow-vendor-change",
+                     )
+ 
+                 with patch(
+@@ -911,7 +941,6 @@ Repository 'DUMMY' not found by its alias, number, or URI.
+                     "--auto-agree-with-licenses",
+                     "--from",
+                     "DUMMY",
+-                    "--no-allow-vendor-change",
+                 )
+ 
+     def test_upgrade_available(self):
+-- 
+2.30.1
+
+

@@ -1,0 +1,98 @@
+From a603d31c4d3ace3590952ef848f4244c41abe7c8 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <35733135+vzhestkov@users.noreply.github.com>
+Date: Fri, 9 Apr 2021 16:01:32 +0300
+Subject: [PATCH] Update target fix for salt-ssh to process targets
+ list (bsc#1179831) (#336)
+
+* Update target fix for salt-ssh to process targets list (bsc#1179831)
+
+* Improvement for fixing (bsc#1179831)
+---
+ salt/client/ssh/__init__.py | 48 ++++++++++++++++++++++++-------------
+ 1 file changed, 31 insertions(+), 17 deletions(-)
+
+diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
+index 6570fba5b1..1edb7b3b23 100644
+--- a/salt/client/ssh/__init__.py
++++ b/salt/client/ssh/__init__.py
+@@ -325,7 +325,7 @@ class SSH:
+         if not self.opts.get("ssh_cli_tgt"):
+             self.opts["ssh_cli_tgt"] = self.opts.get("tgt", "")
+         hostname = self.opts.get("ssh_cli_tgt", "")
+-        if "@" in hostname:
++        if isinstance(hostname, str) and "@" in hostname:
+             user, hostname = hostname.split("@", 1)
+         else:
+             user = self.opts.get("ssh_user")
+@@ -376,7 +376,7 @@ class SSH:
+                             self.__parsed_rosters[self.ROSTER_UPDATE_FLAG] = False
+                             return
+ 
+-    def _update_roster(self):
++    def _update_roster(self, hostname=None, user=None):
+         """
+         Update default flat roster with the passed in information.
+         :return:
+@@ -391,8 +391,8 @@ class SSH:
+                         "\n    passwd: {passwd}\n".format(
+                             s_user=getpass.getuser(),
+                             s_time=datetime.datetime.utcnow().isoformat(),
+-                            hostname=self.opts.get("tgt", ""),
+-                            user=self.opts.get("ssh_user", ""),
++                            hostname=hostname if hostname else self.opts.get("tgt", ""),
++                            user=user if user else self.opts.get("ssh_user", ""),
+                             passwd=self.opts.get("ssh_passwd", ""),
+                         )
+                     )
+@@ -409,20 +409,34 @@ class SSH:
+         Uptade targets in case hostname was directly passed without the roster.
+         :return:
+         """
+-        hostname = self.parse_tgt["hostname"]
++        hosts = self.parse_tgt["hostname"]
+         user = self.parse_tgt["user"]
+-        if hostname == "*":
+-            hostname = ""
+-
+-        if salt.utils.network.is_reachable_host(hostname):
+-            self.opts["tgt"] = hostname
+-            self.targets[hostname] = {
+-                "passwd": self.opts.get("ssh_passwd", ""),
+-                "host": hostname,
+-                "user": user,
+-            }
+-            if self.opts.get("ssh_update_roster"):
+-                self._update_roster()
++
++        if not isinstance(hosts, (list, tuple)):
++            hosts = list([hosts])
++        _hosts = list()
++        for hostname in hosts:
++            _user = user
++            if "@" in hostname:
++                _user, hostname = hostname.split("@", 1)
++            if hostname == "*":
++                continue
++            if salt.utils.network.is_reachable_host(hostname):
++                _hosts.append(hostname)
++                self.targets[hostname] = {
++                    "passwd": self.opts.get("ssh_passwd", ""),
++                    "host": hostname,
++                    "user": _user,
++                }
++                if self.opts.get("ssh_update_roster"):
++                    self._update_roster(hostname=hostname, user=_user)
++
++        if self.tgt_type == "list":
++            self.opts["tgt"] = _hosts
++        elif _hosts:
++            self.opts["tgt"] = _hosts[0]
++        else:
++            self.opts["tgt"] = ""
+ 
+     def get_pubkey(self):
+         """
+-- 
+2.31.1
+
+

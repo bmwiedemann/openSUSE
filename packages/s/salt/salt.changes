@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Apr 20 12:18:06 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Improvements on "ansiblegate" module:
+  * New methods: ansible.targets / ansible.discover_playbooks
+  * General bugfixes
+
+- Added:
+  * improvements-on-ansiblegate-module-354.patch
+
+-------------------------------------------------------------------
+Tue Apr 13 15:03:48 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Regression fix of salt-ssh on processing some targets
+
+- Added:
+  * regression-fix-of-salt-ssh-on-processing-targets-353.patch
+
+-------------------------------------------------------------------
+Tue Apr 13 08:40:32 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Add support for Alibaba Cloud Linux 2 (Aliyun Linux)
+
+- Added:
+  * add-alibaba-cloud-linux-2-by-backporting-upstream-s-.patch
+
+-------------------------------------------------------------------
+Fri Apr  9 14:39:50 UTC 2021 - Victor Zhestkov <victor.zhestkov@suse.com>
+
+- Update target fix for salt-ssh to process targets list (bsc#1179831)
+
+- Added:
+  * update-target-fix-for-salt-ssh-to-process-targets-li.patch
+
+-------------------------------------------------------------------
+Fri Apr  9 10:33:54 UTC 2021 - Alexander Graul <alexander.graul@suse.com>
+
+- Add notify beacon for Debian/Ubuntu systems
+- Add core grains support for AlmaLinux and Alibaba Could Linux
+
+- Added:
+  * add-almalinux-and-alibaba-cloud-linux-to-the-os-fami.patch
+  * notify-beacon-for-debian-ubuntu-systems-347.patch
+
+-------------------------------------------------------------------
+Wed Mar 17 14:17:05 UTC 2021 - Jochen Breuer <jbreuer@suse.de>
+
+- Allow vendor change option with zypper
+
+- Added:
+  * allow-vendor-change-option-with-zypper-313.patch
+
+-------------------------------------------------------------------
 Wed Mar 10 08:42:54 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - virt.network_update: handle missing ipv4 netmask attribute

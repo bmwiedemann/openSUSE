@@ -1724,4 +1724,38 @@ let build start it or we will get libvirt errors.
 - Master can read grains (bsc#1179696)</comment>
     <requestid>878135</requestid>
   </revision>
+  <revision rev="117" vrev="5">
+    <srcmd5>209f080f083ed5d4d700717c794c0fef</srcmd5>
+    <version>3002.2</version>
+    <time>1619107406</time>
+    <user>dimstar_suse</user>
+    <comment>- Improvements on &quot;ansiblegate&quot; module:
+  * New methods: ansible.targets / ansible.discover_playbooks
+  * General bugfixes
+- Added:
+  * improvements-on-ansiblegate-module-354.patch
+
+- Regression fix of salt-ssh on processing some targets
+- Added:
+  * regression-fix-of-salt-ssh-on-processing-targets-353.patch
+
+- Add support for Alibaba Cloud Linux 2 (Aliyun Linux)
+- Added:
+  * add-alibaba-cloud-linux-2-by-backporting-upstream-s-.patch
+
+- Update target fix for salt-ssh to process targets list (bsc#1179831)
+- Added:
+  * update-target-fix-for-salt-ssh-to-process-targets-li.patch
+
+- Add notify beacon for Debian/Ubuntu systems
+- Add core grains support for AlmaLinux and Alibaba Could Linux
+- Added:
+  * add-almalinux-and-alibaba-cloud-linux-to-the-os-fami.patch
+  * notify-beacon-for-debian-ubuntu-systems-347.patch
+
+- Allow vendor change option with zypper
+- Added:
+  * allow-vendor-change-option-with-zypper-313.patch</comment>
+    <requestid>887060</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,131 @@
+From beec6f3945bda722bfe9c0aa606065f04c89bc62 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julio=20Gonz=C3=A1lez=20Gil?=
+ <juliogonzalez@users.noreply.github.com>
+Date: Wed, 24 Mar 2021 14:12:34 +0100
+Subject: [PATCH] Add AlmaLinux and Alibaba Cloud Linux to the OS
+ Family list (#341)
+
+* Add AlmaLinux and Alibaba Cloud Linux to the OS Family list
+
+* Fix some grains tests
+---
+ salt/grains/core.py            |  4 +++
+ tests/unit/grains/test_core.py | 51 +++++++++++++++++++++++++++++++++-
+ 2 files changed, 54 insertions(+), 1 deletion(-)
+
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index 5634327623..09f9d29788 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -1532,6 +1532,7 @@ _OS_NAME_MAP = {
+     "oracleserv": "OEL",
+     "cloudserve": "CloudLinux",
+     "cloudlinux": "CloudLinux",
++    "almalinux": "AlmaLinux",
+     "pidora": "Fedora",
+     "scientific": "ScientificLinux",
+     "synology": "Synology",
+@@ -1546,6 +1547,7 @@ _OS_NAME_MAP = {
+     "slesexpand": "RES",
+     "linuxmint": "Mint",
+     "neon": "KDE neon",
++    "alibaba": "Alibaba Cloud (Aliyun)",
+ }
+ 
+ # Map the 'os' grain to the 'os_family' grain
+@@ -1563,6 +1565,7 @@ _OS_FAMILY_MAP = {
+     "Scientific": "RedHat",
+     "Amazon": "RedHat",
+     "CloudLinux": "RedHat",
++    "AlmaLinux": "RedHat",
+     "OVS": "RedHat",
+     "OEL": "RedHat",
+     "XCP": "RedHat",
+@@ -1619,6 +1622,7 @@ _OS_FAMILY_MAP = {
+     "AIX": "AIX",
+     "TurnKey": "Debian",
+     "AstraLinuxCE": "Debian",
++    "Alibaba Cloud (Aliyun)": "RedHat",
+ }
+ 
+ # Matches any possible format:
+diff --git a/tests/unit/grains/test_core.py b/tests/unit/grains/test_core.py
+index 15de4e363e..6aa05abe40 100644
+--- a/tests/unit/grains/test_core.py
++++ b/tests/unit/grains/test_core.py
+@@ -678,6 +678,35 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+         }
+         self._run_os_grains_tests(None, _os_release_map, expectation)
+ 
++    @skipIf(not salt.utils.platform.is_linux(), "System is not Linux")
++    def test_almalinux_8_os_grains(self):
++        """
++        Test if OS grains are parsed correctly in AlmaLinux 8
++        """
++        _os_release_map = {
++            "os_release_file": {
++                "NAME": "AlmaLinux",
++                "VERSION_ID": "8.3",
++                "PRETTY_NAME": "AlmaLinux 8",
++                "ID": "almalinux",
++                "ANSI_COLOR": "0;31",
++                "CPE_NAME": "cpe:/o:almalinux:almalinux:8.3",
++            },
++            "_linux_distribution": ("almaLinux", "8.3", ""),
++        }
++
++        expectation = {
++            "os": "AlmaLinux",
++            "os_family": "RedHat",
++            "oscodename": "AlmaLinux 8",
++            "osfullname": "AlmaLinux",
++            "osrelease": "8.3",
++            "osrelease_info": (8, 3,),
++            "osmajorrelease": 8,
++            "osfinger": "AlmaLinux-8",
++        }
++        self._run_os_grains_tests(None, _os_release_map, expectation)
++
+     def test_unicode_error(self):
+         raise_unicode_mock = MagicMock(
+             name="raise_unicode_error", side_effect=UnicodeError
+@@ -733,7 +762,7 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+         Test if OS grains are parsed correctly in Astra Linux CE 2.12.22 "orel"
+         """
+         _os_release_map = {
+-            "linux_distribution": ("AstraLinuxCE", "2.12.22", "orel"),
++            "_linux_distribution": ("AstraLinuxCE", "2.12.22", "orel"),
+         }
+         expectation = {
+             "os": "AstraLinuxCE",
+@@ -747,6 +776,26 @@ class CoreGrainsTestCase(TestCase, LoaderModuleMockMixin):
+         }
+         self._run_os_grains_tests("astralinuxce-2.12.22", _os_release_map, expectation)
+ 
++    @skipIf(not salt.utils.platform.is_linux(), 'System is not Linux')
++    def test_aliyunlinux2_os_grains(self):
++        '''
++        Test if OS grains are parsed correctly in Alibaba Cloud Linux (Aliyun Linux) 2.1903 LTS
++        '''
++        _os_release_map = {
++            '_linux_distribution': ('Alibaba Cloud Linux (Aliyun Linux)', '2.1903', 'Alibaba Cloud Linux (Aliyun Linux) 2.1903 LTS (Hunting Beagle)'),
++        }
++        expectation = {
++            'os': 'Alibaba Cloud (Aliyun)',
++            'os_family': 'RedHat',
++            'oscodename': 'Alibaba Cloud Linux (Aliyun Linux) 2.1903 LTS (Hunting Beagle)',
++            'osfullname': 'Alibaba Cloud Linux (Aliyun Linux)',
++            'osrelease': '2.1903',
++            'osrelease_info': (2, 1903),
++            'osmajorrelease': 2,
++            'osfinger': 'Alibaba Cloud Linux (Aliyun Linux)-2',
++        }
++        self._run_os_grains_tests(None, _os_release_map, expectation)
++
+     @skipIf(not salt.utils.platform.is_windows(), "System is not Windows")
+     def test_windows_platform_data(self):
+         """
+-- 
+2.30.2
+
+
