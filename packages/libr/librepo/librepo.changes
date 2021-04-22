@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 13 12:59:28 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 1.14.0
+  + Fix LRO_PRESERVETIME behavior
+  + Support multiple checksums in xattr (rh#1931904)
+  + Return "calculated" checksum if requested w/caching
+  + Fix lr_yum_download_url in case lr_handle is NULL
+
+-------------------------------------------------------------------
 Wed Feb  3 02:37:36 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 1.13.0

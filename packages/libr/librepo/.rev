@@ -182,4 +182,16 @@
   + Add support for working with certificates used with proxy (rh#1920991)</comment>
     <requestid>868794</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a7cc2569785b1dc4b9f9e216dba9926f</srcmd5>
+    <version>1.14.0</version>
+    <time>1619107384</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.14.0
+  + Fix LRO_PRESERVETIME behavior
+  + Support multiple checksums in xattr (rh#1931904)
+  + Return &quot;calculated&quot; checksum if requested w/caching
+  + Fix lr_yum_download_url in case lr_handle is NULL</comment>
+    <requestid>885032</requestid>
+  </revision>
 </revisionlist>

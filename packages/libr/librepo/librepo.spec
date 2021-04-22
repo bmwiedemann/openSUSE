@@ -37,7 +37,7 @@
 %define devname %{name}-devel
 
 Name:           librepo
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        Repodata downloading library
 License:        LGPL-2.0-or-later
@@ -90,7 +90,6 @@ BuildRequires:  python3-devel
 %if %{with tests}
 BuildRequires:  python3-gpg
 BuildRequires:  python3-Flask
-BuildRequires:  python3-nose
 BuildRequires:  python3-requests
 %endif
 BuildRequires:  python3-Sphinx
