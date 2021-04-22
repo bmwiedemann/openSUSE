@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 13 08:40:08 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Specify the appropriate set of local nss modules (boo#1177461)
+
+-------------------------------------------------------------------
 Fri Jun  5 05:49:51 UTC 2020 - Petr Vorel <pvorel@suse.cz>
 
 - Enable debug (--enable-debug, needed for getting messages with -d)

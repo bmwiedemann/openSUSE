@@ -1,7 +1,7 @@
 #
 # spec file for package rpcbind
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,7 +76,8 @@ export LDFLAGS="-pie -Wl,-z,relro,-z,now"
 	    --enable-debug \
 	    --with-statedir=%{_rundir}/%{name} \
 	    --with-rpcuser=rpc \
-	    --with-systemdsystemunitdir=%{_unitdir}
+	    --with-systemdsystemunitdir=%{_unitdir} \
+	    --with-nss-modules="files usrfiles"
 
 make %{?_smp_mflags}
 gcc -I/usr/include/tirpc -pie -fpie -fwhole-program -Wl,-z,relro,-z,now %{optflags} pmap_set.c -o pmap_set -ltirpc
