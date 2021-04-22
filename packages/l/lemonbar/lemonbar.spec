@@ -1,7 +1,7 @@
 #
 # spec file for package lemonbar
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           lemonbar
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        An X11 bar
 License:        MIT
 Group:          System/GUI/Other
-Url:            https://github.com/LemonBoy/bar
-Source0:        https://github.com/LemonBoy/bar/archive/v%{version}.tar.gz
+URL:            https://github.com/LemonBoy/bar
+Source0:        %{URL}/archive/refs/tags/v%{version}.tar.gz#/bar-%{version}.tar.gz
 BuildRequires:  libxcb-devel
 
 %description
@@ -41,8 +41,7 @@ make %{?_smp_mflags}
 %make_install PREFIX=%{_prefix}
 
 %files
-%defattr (-, root, root)
-%doc LICENSE
+%license LICENSE
 %{_bindir}/lemonbar
 %{_mandir}/man1/lemonbar.1%{ext_man}
 

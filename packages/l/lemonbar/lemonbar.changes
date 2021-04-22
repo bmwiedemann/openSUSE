@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr 17 01:03:08 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.4
+  + Unlimited number of clickable areas, the -a switch was removed.
+  + Unlimited number of loadable fonts (yay, I guess?).
+  + You can now specify what screens are used by lemonbar with
+    the -o switch.
+  + The new Sn specifier allows you to select a screen by name.
+  + Much better handling of rapidly-changing input
+  + Underlines and overlines are not reset when changing the
+    alignment.
+  + Use opaque black/white colors as default values.
+  + Reset the attributes and colors between each rendered line.
+
+-------------------------------------------------------------------
 Tue May  7 23:45:42 UTC 2019 - Xaver Hellauer <xaver@hellauer.bayern>
 
 - Update to version 1.3
