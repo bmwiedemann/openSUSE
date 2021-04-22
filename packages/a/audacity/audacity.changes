@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 19 14:02:21 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.0.2
+  * Audacity 3.0.2 fixes some important bugs and improves diagnostic
+    reporting.
+  * We also added a new preference for macro output, 
+    and a 'Save' button on the manage macros dialog.
+- Rebase audacity-no_buildstamp.patch.
+
+-------------------------------------------------------------------
 Thu Apr  8 08:39:08 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Update to release 3.0.0 and add patch for wxWidgets test:

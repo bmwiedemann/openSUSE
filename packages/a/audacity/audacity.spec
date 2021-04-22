@@ -17,7 +17,7 @@
 
 
 Name:           audacity
-Version:        3.0.0
+Version:        3.0.2
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        GPL-2.0-or-later
