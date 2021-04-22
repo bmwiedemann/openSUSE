@@ -3542,4 +3542,22 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * added &quot;%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects&quot;</comment>
     <requestid>876511</requestid>
   </revision>
+  <revision rev="391" vrev="1">
+    <srcmd5>fbb527728a489537fe4770f0aa3cd36e</srcmd5>
+    <version>1.20.11</version>
+    <time>1619107405</time>
+    <user>dimstar_suse</user>
+    <comment>- disable build of Xwayland, which is now being built in separate
+  xwayland package with more recent sources (boo#1182677)
+
+- Update to version 1.20.11
+  * bugfix release
+- supersedes U_Fix-XChangeFeedbackControl-request-underflow.patch,
+  U_xkb-Fix-heap-overflow-caused-by-optimized-away-min.patch
+
+- U_Fix-XChangeFeedbackControl-request-underflow.patch
+  * Fix XChangeFeedbackControl() request underflow (CVE-2021-3472,
+    ZDI-CAN-1259, bsc#1180128)</comment>
+    <requestid>886705</requestid>
+  </revision>
 </revisionlist>

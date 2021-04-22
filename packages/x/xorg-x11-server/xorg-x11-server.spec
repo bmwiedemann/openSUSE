@@ -22,9 +22,8 @@
 %endif
 
 %define pci_ids_dir %{_datadir}/X11/xorg_pci_ids
-%if 0%{?suse_version} >= 1330 || 0%{?build_xwayland}
-%define have_wayland 1
-%endif
+# now built separately in xwayland pkg with more recent sources (boo#1182677)
+%define have_wayland 0
 
 %define build_suid_wrapper 1
 
@@ -41,7 +40,7 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        1.20.10
+Version:        1.20.11
 Release:        0
 URL:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -50,7 +49,7 @@ Summary:        X
 # Source URL: http://xorg.freedesktop.org/archive/individual/xserver/
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Source0:        xserver-%{version}.tar.xz
+Source0:        xorg-server-%{version}.tar.bz2
 Source1:        sysconfig.displaymanager.template
 Source2:        README.updates
 Source3:        xorgcfg.tar.bz2
@@ -242,8 +241,6 @@ Patch1222:      b_sync-fix.patch
 
 Patch1401:      u_randr-Do-not-crash-if-slave-screen-does-not-have-pro.patch
 
-Patch1501:      U_xkb-Fix-heap-overflow-caused-by-optimized-away-min.patch
-
 Patch1502:      U_dix-window-Use-ConfigureWindow-instead-of-MoveWindow.patch
 
 Patch1503:      u_xfree86-Do-not-claim-pci-slots-if-fb-slot-is-already.patch
@@ -361,7 +358,7 @@ Group:          Development/Sources
 This package contains patched sources of X.Org Server.
 
 %prep
-%setup -q -n xserver-%{version} -a3
+%setup -q -n xorg-server-%{version} -a3
 # Early verification if the ABI Defines are correct. Let's not waste build cycles if the Provides are wrong at the end.
 sh %{SOURCE92} --verify . %{SOURCE91}
 
@@ -400,10 +397,11 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 ### patch222 might not be applicable anymore
 #%patch1222 -p1
 %patch1401 -p1
-%patch1501 -p1
 %patch1502 -p1
 %patch1503 -p1
+%if 0%{?have_wayland} == 1
 %patch1505 -p1
+%endif
 %patch1600 -p1
 %patch1801 -p1
 %patch1900 -p1
