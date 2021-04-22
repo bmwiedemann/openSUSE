@@ -303,4 +303,18 @@
     <comment>Update to 3.38.6 (forwarded request 880087 from dimstar)</comment>
     <requestid>880103</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>42acd5f62225272d9eb710ca0697c6f3</srcmd5>
+    <version>3.40.1</version>
+    <time>1619107462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.40.1:
+  + fix build with meson
+- Changes from version 3.40.0:
+  + port to gnome-shell 40
+  + placeholder for gnome-shell prefs
+- Replace pkgconfig(mutter-clutter-7) with
+  pkgconfig(mutter-clutter-8) BuildRequires (forwarded request 887039 from Gankov)</comment>
+    <requestid>887504</requestid>
+  </revision>
 </revisionlist>

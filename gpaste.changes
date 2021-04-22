@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 20 17:00:00 UTC 2021 - Andrey Gankov <gav@qsolution.ru>
+- Update to version 3.40.1:
+  + fix build with meson
+- Changes from version 3.40.0:
+  + port to gnome-shell 40
+  + placeholder for gnome-shell prefs
+- Replace pkgconfig(mutter-clutter-7) with
+  pkgconfig(mutter-clutter-8) BuildRequires  
+
+-------------------------------------------------------------------
 Fri Mar 19 12:23:19 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.38.6:
