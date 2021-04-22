@@ -32,4 +32,15 @@ new module for Qore programming language as described in: http://lists.opensuse.
     <comment></comment>
     <requestid>857088</requestid>
   </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>228938823781cb7c4dffa21c212e453b</srcmd5>
+    <version>1.0.1</version>
+    <time>1619107448</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build on armv7 and aarch64:
+  * Drop -m32/-m64 flags for %arm and aarch64
+  * Add missing aarch64 support in config.guess:
+    - qore_sqlite3_module_add_aarch64_to_config_guess.patch (forwarded request 885295 from Guillaume_G)</comment>
+    <requestid>887448</requestid>
+  </revision>
 </revisionlist>

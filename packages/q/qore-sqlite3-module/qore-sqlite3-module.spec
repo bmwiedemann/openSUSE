@@ -1,7 +1,7 @@
 #
 # spec file for package qore-sqlite3-module
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,11 +22,12 @@ Name:           qore-sqlite3-module
 Version:        1.0.1
 Release:        0
 Summary:        Sqlite3 DBI module for Qore
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Languages/Other
-Url:            http://www.qore.org
+URL:            http://www.qore.org
 Source:         http://prdownloads.sourceforge.net/qore/%{name}-%{version}.tar.gz
 Patch1:         qore_sqlite3_module_add_ppc64le_to_config_guess.patch
+Patch2:         qore_sqlite3_module_add_aarch64_to_config_guess.patch
 BuildRequires:  gcc-c++
 BuildRequires:  openssl-devel
 BuildRequires:  qore
@@ -55,7 +56,13 @@ xml module.
 %prep
 %setup -q
 %patch1 -p1
-%ifarch x86_64 ppc64 ppc64le s390x
+%patch2 -p1
+%ifarch %{arm} aarch64
+# Drop -m64/-m32 flags on Arm
+sed -i -e 's/ -m64//g' configure
+sed -i -e 's/ -m32//g' configure
+%endif
+%ifarch x86_64 aarch64 ppc64 ppc64le s390x
 c64=--enable-64bit
 %endif
 CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" ./configure RPM_OPT_FLAGS="%{optflags}" --prefix=/usr --disable-debug $c64
