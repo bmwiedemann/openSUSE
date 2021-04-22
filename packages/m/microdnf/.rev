@@ -62,4 +62,14 @@
   + Fix download subcommand to build with glib2 2.44.0</comment>
     <requestid>871460</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dda087b2f1c55c7b96393c5884fa8e89</srcmd5>
+    <version>3.8.0</version>
+    <time>1619107385</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.8.0
+  + Add &quot;makecache&quot; command
+  + Add &quot;distro-sync&quot; command</comment>
+    <requestid>885034</requestid>
+  </revision>
 </revisionlist>

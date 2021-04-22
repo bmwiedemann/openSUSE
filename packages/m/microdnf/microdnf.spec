@@ -15,10 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global libdnf_version 0.56.0
+%global libdnf_version 0.62.0
 
 Name:           microdnf
-Version:        3.7.1
+Version:        3.8.0
 Release:        0
 Summary:        Lightweight implementation of DNF in C
 Group:          System/Packages
