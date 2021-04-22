@@ -1,0 +1,158 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>569baf143631991a46397d0c9459de16</srcmd5>
+    <version>20191004</version>
+    <time>1570448464</time>
+    <user>dimstar_suse</user>
+    <comment>split ocaml-rpm-macros from ocaml.spec
+trim changes file</comment>
+    <requestid>735307</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>26443f0a2caad5fe147725be85df7f89</srcmd5>
+    <version>20191009</version>
+    <time>1571057555</time>
+    <user>dimstar_suse</user>
+    <comment>- Package also COPYRIGHT, for labltk
+- Package also Copyright, for dose3
+- Package also *.cmo
+- Package also *.so.owner
+- Package also *.o
+- Package also /etc/ld.so.conf.d
+- Package also *.js</comment>
+    <requestid>737404</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5710116b990c1559f45e17c68bbef3f8</srcmd5>
+    <version>20191101</version>
+    <time>1573164851</time>
+    <user>dimstar_suse</user>
+    <comment>- Moved ocaml-findlib.rpm.prov_req.attr.sh from ocaml to provide
+  ocamlfind() in ocaml itself
+- Handle license separately because sed w truncates output
+- Document individual file extensions
+- Move cmxs and so files to devel packages because they are not
+  used at runtime. Also, cmxs dependencies in main pkg are
+  not covered by ocaml-find-requires.sh (bsc#1154874)
+- Set VERSION unconditionally for each patch, sometimes dune picks it up
+- Pass --for-release-of-packages to dune via dune_release_pkgs=
+- Print potential BuildRequires during build
+- Package sml for camlp5
+- SLE_12 has still no license macro, package as doc instead
+- Use _smp_mflags instead of nproc for parallel build</comment>
+    <requestid>745385</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>176438b9411b45f00eb2e8ff1e6ba503</srcmd5>
+    <version>20191101</version>
+    <time>1575106530</time>
+    <user>dimstar_suse</user>
+    <comment>- Install also LGPL as license, needed by ocaml-lablgtk2</comment>
+    <requestid>750767</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bf60aa50a52cc8b7c2b42a8b818c18f1</srcmd5>
+    <version>20200220</version>
+    <time>1582725703</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ocaml-ocaml.rpm.prov_req.attr.sh
+  New script for rpm Provides/Requires, replacement for rpm
+  built-in ocaml(NAME)=hash, which covers bytecode and interfaces
+  Now it covers also native code via ocamlx(NAME)=HASH (bsc#1154874)
+- Update the filelist generator
+  Use awk to match directories in ocamls built-in ld.conf
+  C stublibs in default locations do not need a ld.so.conf entry
+  Remaining ld.so.conf files for stublibs go to the devel package
+- Disable debug in ocamlfind() Provides/Requires generator
+  Update META parser to handle multiline statements and ppx
+- Provide a ocaml_standard_library macro
+- Explicitly preserve debuginfo in .cmxs, already enforced by dune
+- Install also COPYRIGHT.txt as license, needed for some JaneStreet pkgs</comment>
+    <requestid>778683</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fea03324be88d30d7ecf599dbb78dfa5</srcmd5>
+    <version>20200321</version>
+    <time>1585085493</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable parallel build for OCaml 4.08, 4.09 and 4.10
+  to get reproducible cma archives (issue#9307)</comment>
+    <requestid>787222</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>00296f5012c86e5a2dd8bec13327db61</srcmd5>
+    <version>20200412</version>
+    <time>1586973167</time>
+    <user>dimstar_suse</user>
+    <comment>- run OCaml rpm dependency generator only if both path and magic matches (rpm#1173)</comment>
+    <requestid>793517</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>394db30f7d3c7ce23311cb46bda74904</srcmd5>
+    <version>20200514</version>
+    <time>1589992535</time>
+    <user>dimstar_suse</user>
+    <comment>- The filename for rpm *.attr files and the tag used within these
+  files must match. Otherwise rpm will not execute the helper scripts.
+  Use tag 'suseocaml', rename zocaml.attr to suseocaml.attr to
+  avoid filename conflicts with rpm-build.rpm (bsc#1154874)
+- Rename also ocamlfind to suseocamlfind
+- Escape plain % chars</comment>
+    <requestid>805574</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f428a1013e048bce24a281e7e09988a0</srcmd5>
+    <version>20200820</version>
+    <time>1598651104</time>
+    <user>dimstar_suse</user>
+    <comment>- Package also *.v, for Coq
+- Package changelog files
+- Enable native riscv64</comment>
+    <requestid>828815</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fb8c765d357bed5a339eafbbf9d29868</srcmd5>
+    <version>20210114</version>
+    <time>1611068449</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust injection of version into findlib META files
+  A file VERSION is not handled anymore by dune since 1.11.
+  Remove version: from *.opam files, inject version into dune-project</comment>
+    <requestid>864001</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b33ac9d841e6b5616c5da4d91d297af9</srcmd5>
+    <version>20210121</version>
+    <time>1612186905</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust parser of ocamfind() requires
+  Take negative predicates in requires() into account, and ignore them.
+  This is supposed to avoid dependency cycles due to excessive
+  list of dependencies.</comment>
+    <requestid>867714</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>363936523d898bd3bdfb15882a212700</srcmd5>
+    <version>20210209</version>
+    <time>1613427024</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix regex in file list generator to really match dot and extension</comment>
+    <requestid>870497</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f31ae615e9e9acbfcd84c10cf00a7268</srcmd5>
+    <version>20210421</version>
+    <time>1619107409</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ocaml_native_compiler flag, assume native target
+  This flag puts too much burden on pkgs that use ocaml, but build
+  with their buildsystem instead of using dune
+
+- Use bcond suse_ocaml_use_rpm_license_macro for license in filelist
+- Add suse prefix to ocaml_native_compiler to avoid conflict
+- Create Provides/Requires only for rpm variants which understand fileattrs
+- Fix syntax for chmod of .cmxs
+- Add conditional to disable debug_package macro when building with broken rpm variants</comment>
+    <requestid>887313</requestid>
+  </revision>
+</revisionlist>
