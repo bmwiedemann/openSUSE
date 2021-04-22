@@ -1,7 +1,7 @@
 #
 # spec file for package mtools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mtools
-Version:        4.0.26
+Version:        4.0.27
 Release:        0
 Summary:        Tools to access MS-DOS filesystems without kernel drivers
 License:        GPL-3.0-or-later
@@ -25,7 +25,8 @@ Group:          System/Filesystems
 URL:            http://mtools.linux.lu/
 Source0:        https://ftp.gnu.org/gnu/mtools/%{name}-%{version}.tar.bz2
 Source1:        https://ftp.gnu.org/gnu/mtools/%{name}-%{version}.tar.bz2.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=mtools&download=1#/%{name}.keyring
+# https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=mtools
+Source2:        %{name}.keyring
 Patch0:         %{name}-conf.diff
 Patch1:         %{name}-autoconf.diff
 Patch3:         %{name}-aliasing.diff
@@ -47,7 +48,7 @@ XDF support for OS/2 is also provided.
 
 %package doc
 Summary:        Documentation for mtools, a toolset for MS-DOS filesystem access
-License:        GPL-3.0-or-later AND GFDL-1.3-only
+License:        GFDL-1.3-only AND GPL-3.0-or-later
 Group:          Documentation/Other
 Requires:       %{name} = %{version}
 
@@ -87,6 +88,7 @@ cp -p mtools.conf %{buildroot}%{_sysconfdir}
 %exclude %{_bindir}/f*
 
 %files doc
+%license COPYING
 %doc *.pdf
 
 %changelog

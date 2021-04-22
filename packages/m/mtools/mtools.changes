@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 18 15:50:54 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- mtools 4.0.27:
+  * Fix type error in calls to iconv functions
+
+-------------------------------------------------------------------
 Sun Nov 29 18:52:21 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - mtools 4.0.26:
