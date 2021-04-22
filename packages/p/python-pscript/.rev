@@ -40,4 +40,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>766960</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b6195d0c518e4928d994d2a886d05a16</srcmd5>
+    <version>0.7.5</version>
+    <time>1619107441</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.5:
+  * Support for Python 3.9.
+  * Small docs improvements.
+  * Allow to rename functions starting with an uppercase letter.</comment>
+    <requestid>887395</requestid>
+  </revision>
 </revisionlist>

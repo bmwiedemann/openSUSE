@@ -1,7 +1,7 @@
 #
 # spec file for package python-pscript
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pscript
-Version:        0.7.3
+Version:        0.7.5
 Release:        0
 Summary:        Python to JavaScript compiler
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/flexxui/pscript
 Source:         https://files.pythonhosted.org/packages/source/p/pscript/pscript-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
