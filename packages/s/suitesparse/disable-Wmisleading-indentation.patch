@@ -1,0 +1,26 @@
+diff --git a/GraphBLAS/Demo/Include/graphblas_demos.h b/GraphBLAS/Demo/Include/graphblas_demos.h
+index 62809df..333c0b3 100644
+--- a/GraphBLAS/Demo/Include/graphblas_demos.h
++++ b/GraphBLAS/Demo/Include/graphblas_demos.h
+@@ -25,8 +25,6 @@
+ #pragma GCC diagnostic ignored "-Wint-in-bool-context"
+ #pragma GCC diagnostic ignored "-Wformat-truncation="
+ #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+-// enable these warnings as errors
+-#pragma GCC diagnostic error "-Wmisleading-indentation"
+ #endif
+ 
+ #pragma GCC diagnostic ignored "-Wunknown-pragmas"
+diff --git a/GraphBLAS/Source/GB_warnings.h b/GraphBLAS/Source/GB_warnings.h
+index 9591b84..cefc366 100644
+--- a/GraphBLAS/Source/GB_warnings.h
++++ b/GraphBLAS/Source/GB_warnings.h
+@@ -56,8 +56,6 @@
+ #pragma GCC diagnostic ignored "-Wint-in-bool-context"
+ #pragma GCC diagnostic ignored "-Wformat-truncation="
+ #pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+-// enable these warnings as errors
+-#pragma GCC diagnostic error "-Wmisleading-indentation"
+ #endif
+ 
+ // disable warnings from -Wall -Wextra -Wpendantic

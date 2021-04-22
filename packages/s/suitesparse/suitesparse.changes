@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  7 06:18:07 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add disable-Wmisleading-indentation.patch as a temporary workaround
+  for https://github.com/DrTimothyAldenDavis/SuiteSparse/issues/84
+  that will be fixed in the next release (boo#1183575).
+
+-------------------------------------------------------------------
 Tue Mar 16 07:34:25 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable LTO on %arm as it consumes too much memory

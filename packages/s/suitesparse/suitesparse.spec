@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %ifarch %{arm}
 %define _lto_cflags %{nil}
 %endif
@@ -36,6 +37,8 @@ Source0:        https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v%{ve
 Source2:        %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE build_csparse_shared.patch -- Build CSparse as a shared library
 Patch1:         build_csparse_shared.patch
+# PATCH-FIX-OPENSUSE disable-Wmisleading-indentation.patch bsc#1183575
+Patch2:         disable-Wmisleading-indentation.patch
 Patch775418:    bnc775418-enable-SuiteSparse_time-symbol.patch
 %if 0%{?suse_version} < 1500
 BuildRequires:  gcc7
@@ -587,6 +590,7 @@ SuiteSparse_config is part of the SuiteSparse sparse matrix suite.
 %prep
 %setup -q -n SuiteSparse-%{version}
 %patch1 -p1
+%patch2 -p1
 sed 's/^CHOLMOD_CONFIG =.*/CHOLMOD_CONFIG = -DNPARTITION/' -i SuiteSparse_config/SuiteSparse_config.mk
 %if %{without openblas}
 sed 's/-lopenblas/-lblas/' -i SuiteSparse_config/SuiteSparse_config.mk
@@ -784,9 +788,9 @@ popd
 
 %files -n %{cholmodlib}
 %doc CHOLMOD/README.txt
-%doc CHOLMOD/Doc/CHOLMOD_UserGuide.pdf 
+%doc CHOLMOD/Doc/CHOLMOD_UserGuide.pdf
 %license CHOLMOD/Doc/ChangeLog CHOLMOD/Doc/License.txt
-%license CHOLMOD/Cholesky/lesser.txt 
+%license CHOLMOD/Cholesky/lesser.txt
 %license CHOLMOD/MatrixOps/gpl.txt
 %{_libdir}/libcholmod.so.*
 
