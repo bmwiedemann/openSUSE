@@ -1,7 +1,7 @@
 #
 # spec file for package python-line_profiler
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-line_profiler
-Version:        2.1.2
+Version:        3.1.0
 Release:        0
 Summary:        Line-by-line profiler
 License:        BSD-3-Clause
@@ -29,15 +29,16 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module jupyter_ipython}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scikit-build}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-devel >= 3.5
+Requires:       python-jupyter_ipython
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
-%ifpython3
-Requires:       python3-base >= 3.5
-%endif
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -61,11 +62,12 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/kernprof
-%{python_expand chmod a+x %{buildroot}%{$python_sitearch}/*.py
-sed -i "s|#!%{_bindir}/env python|#!%__$python|" %{buildroot}%{$python_sitearch}/*.py
-$python -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}
-$python -O -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}
-%fdupes %{buildroot}%{$python_sitearch}
+%{python_expand chmod a+x %{buildroot}%{$python_sitelib}/line_profiler/*.py
+sed -i "s|#!%{_bindir}/env python|#!%__$python|" %{buildroot}%{$python_sitelib}/line_profiler/*.py
+$python -m compileall -d %{$python_sitelib}/line_profiler %{buildroot}%{$python_sitelib}/line_profiler
+$python -O -m compileall -d %{$python_sitelib}/line_profiler %{buildroot}%{$python_sitelib}/line_profiler
+rm -rf %{buildroot}%{$python_sitelib}/line_profiler/__pycache__
+%fdupes %{buildroot}%{$python_sitelib}
 }
 
 %post
@@ -75,21 +77,17 @@ $python -O -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}
 %python_uninstall_alternative kernprof
 
 %check
-# https://github.com/rkern/line_profiler/issues/128
-# %%{python_expand export PYTHONPATH="%%{buildroot}%%{$python_sitearch}"
-# py.test-%%{$python_bin_suffix} tests
-# }
+# test_cli needs ubelt, which we don't have and which is needed just for tests
+%pytest -k "not test_cli" tests
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt LICENSE_Python.txt
 %python_alternative %{_bindir}/kernprof
-%{python_sitearch}/line_profiler-%{version}-py*.egg-info
-%{python_sitearch}/kernprof.py*
-%{python_sitearch}/line_profiler*.py*
-%{python_sitearch}/_line_profiler*.so
-%python3_only %{python_sitearch}/line_profiler_py35.py*
-%pycache_only %{python_sitearch}/__pycache__/kernprof*.py*
-%pycache_only %{python_sitearch}/__pycache__/line_profiler*.py*
+%dir %{python_sitelib}/line_profiler
+%{python_sitelib}/line_profiler-%{version}-py*.egg-info
+%{python_sitelib}/kernprof.py*
+%{python_sitelib}/line_profiler/*.py*
+%{python_sitelib}/line_profiler/_line_profiler*.so
 
 %changelog
