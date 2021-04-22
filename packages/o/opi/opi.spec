@@ -61,10 +61,7 @@ cp opi.8.gz %{buildroot}%{_datadir}/man/man8
 %license LICENSE
 %doc README.md screenshot.png
 %{_bindir}/%{name}
-%dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.openSUSE.opi.appdata.xml
-%dir %{_datadir}/man
-%dir %{_datadir}/man/man8
 %{_datadir}/man/man8/opi.8.gz
 
 %changelog

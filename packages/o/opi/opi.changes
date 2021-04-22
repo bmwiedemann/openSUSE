@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 16 09:27:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop owning dirs provided by filesytem rpm (bsc#1184786) 
+
+-------------------------------------------------------------------
 Sun Jan 17 07:57:22 UTC 2021 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 0.10.0
