@@ -1,8 +1,8 @@
-Index: fedora-policy-20210309/policy/modules/roles/unprivuser.te
+Index: fedora-policy-20210419/policy/modules/roles/unprivuser.te
 ===================================================================
---- fedora-policy-20210309.orig/policy/modules/roles/unprivuser.te
-+++ fedora-policy-20210309/policy/modules/roles/unprivuser.te
-@@ -282,6 +282,13 @@ ifndef(`distro_redhat',`
+--- fedora-policy-20210419.orig/policy/modules/roles/unprivuser.te
++++ fedora-policy-20210419/policy/modules/roles/unprivuser.te
+@@ -291,6 +291,13 @@ ifndef(`distro_redhat',`
  ')
  
  optional_policy(`

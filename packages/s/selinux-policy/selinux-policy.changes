@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 19 11:37:49 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20210419
+- Refreshed:
+  * fix_dbus.patch
+  * fix_hadoop.patch
+  * fix_init.patch
+  * fix_unprivuser.patch
+
+-------------------------------------------------------------------
 Fri Mar 12 10:36:06 UTC 2021 - Ales Kedroutek <ales.kedroutek@suse.com>
 
 - Adjust fix_init.patch to allow systemd to do sd-listen on 
