@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 19 10:35:31 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
+
+- Update patch metadata.
+
+-------------------------------------------------------------------
+Thu Apr  8 09:55:13 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
+
+- Fix guessing of va_bits (bsc#1183977)
+  * makedumpfile-1-3-Use-vmcoreinfo-note-in-proc-kcore-for-mem-.patch
+  * makedumpfile-2-3-arm64-Make-use-of-NUMBER-VA_BITS-in-vmcore.patch
+  * makedumpfile-3-3-arm64-support-flipped-VA-and-52-bit-kernel.patch
+
+-------------------------------------------------------------------
 Wed Apr  7 09:52:16 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
 
 - Support kernel 5.11:

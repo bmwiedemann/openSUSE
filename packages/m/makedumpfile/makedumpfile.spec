@@ -46,6 +46,9 @@ Patch3:         %{name}-PN_XNUM.patch
 Patch4:         %{name}-printk-add-support-for-lockless-ringbuffer.patch
 Patch5:         %{name}-printk-use-committed-finalized-state-value.patch
 Patch6:         %{name}-use-uts_namespace.name-offset-VMCOREINFO.patch
+Patch7:         %{name}-1-3-Use-vmcoreinfo-note-in-proc-kcore-for-mem-.patch
+Patch8:         %{name}-2-3-arm64-Make-use-of-NUMBER-VA_BITS-in-vmcore.patch
+Patch9:         %{name}-3-3-arm64-support-flipped-VA-and-52-bit-kernel.patch
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libeppic-devel
