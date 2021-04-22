@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>626547</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>326532a9c21b86d1c9142ac28063ab32</srcmd5>
+    <version>3.1.2</version>
+    <time>1619107445</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.2 (see NEWS or ChangeLog for details)
+- Drop gnucobol-CFLAGS.patch (no longer needed)
+- Add fix_test_698.patch and enable hardening
+- Add buildtime requirements for libjson-c and libxml2
+- Disable lto to avoid test failure (forwarded request 858446 from alois)</comment>
+    <requestid>887440</requestid>
+  </revision>
 </revisionlist>

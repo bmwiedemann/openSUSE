@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Dec 23 17:43:58 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.1.2 (see NEWS or ChangeLog for details)
+- Drop gnucobol-CFLAGS.patch (no longer needed)
+- Add fix_test_698.patch and enable hardening
+- Add buildtime requirements for libjson-c and libxml2
+- Disable lto to avoid test failure
+
+-------------------------------------------------------------------
 Fri Jul 27 09:14:34 UTC 2018 - jengelh@inai.de
 
 - Trim redundancies from description.

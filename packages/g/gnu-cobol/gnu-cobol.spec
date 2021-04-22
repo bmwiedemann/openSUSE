@@ -1,7 +1,7 @@
 #
 # spec file for package gnu-cobol
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define         _lto_cflags      %{nil}
 %define sover   4
-%define _mver   3.0
-%define _over   3.0-rc1
+%define _mver   3.1
 Name:           gnu-cobol
-Version:        3.0rc1
+Version:        3.1.2
 Release:        0
 Summary:        A COBOL compiler
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Languages/Other
-Url:            https://savannah.gnu.org/projects/gnucobol
-Source0:        https://sourceforge.net/projects/open-cobol/files/gnu-cobol/%{_mver}/gnucobol-%{_over}.tar.xz
-Source1:        %{name}.changes
-# PATCH-FIX-OPENSUSE gnucobol-CFLAGS.patch -- fixes overreaching regex
-Patch2:         gnucobol-CFLAGS.patch
+URL:            https://savannah.gnu.org/projects/gnucobol
+Source0:        https://sourceforge.net/projects/open-cobol/files/gnu-cobol/%{_mver}/gnucobol-%{version}.tar.xz
+Source1:        https://sourceforge.net/projects/open-cobol/files/gnu-cobol/%{_mver}/gnucobol-%{version}.tar.xz.sig
+# PATCH-FIX-UPSTREAM fix_test_698.patch -- see https://sourceforge.net/p/gnucobol/bugs/695/
+Patch1:         fix_test_698.patch
+BuildRequires:  autoconf
 BuildRequires:  db-devel
 BuildRequires:  dos2unix
 BuildRequires:  gmp-devel
 BuildRequires:  help2man
 BuildRequires:  makeinfo
-BuildRequires:  ncurses-devel
+BuildRequires:  pkgconfig(json-c) >= 0.12
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(ncurses) >= 5.4
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 Provides:       opencobol = %{version}
@@ -67,31 +70,21 @@ cobc translates COBOL to executable using intermediate C sources,
 providing full access to nearly all C libraries.
 
 %prep
-%setup -q -n gnucobol-%{_over}
-%patch2 -p1
-# replace build date with date from changelog
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE1}")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-TIME="\"$(date -d "${modified}" "+%%R")\""
-find .  -name '*.[ch]' |\
-    xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
-# fix EOL encoding
-dos2unix ABOUT-NLS AUTHORS COPYING COPYING.DOC ChangeLog NEWS \
- README THANKS TODO COPYING.LESSER
+%autosetup -p1 -n gnucobol-%{version}
 
 %build
 %configure \
-	--enable-static=no
-make %{?_smp_mflags}
+        --enable-hardening \
+        --enable-static=no
+%make_build
 
 %install
 %make_install
-# do not ship these
-rm %{buildroot}%{_libdir}/libcob.la
 %find_lang gnucobol
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/gnucobol.info.gz
@@ -103,24 +96,23 @@ make %{?_smp_mflags} check
 %postun -n libcob%{sover} -p /sbin/ldconfig
 
 %files -f gnucobol.lang
-%defattr(-,root,root)
-%doc ABOUT-NLS AUTHORS COPYING COPYING.DOC ChangeLog NEWS README THANKS TODO
+%license COPYING COPYING.DOC
+%doc ABOUT-NLS AUTHORS ChangeLog NEWS README THANKS TODO
 %{_bindir}/cob-config
 %{_bindir}/cobc
 %{_bindir}/cobcrun
 %{_datadir}/gnucobol
-%{_infodir}/gnucobol.info%{ext_info}
+%{_infodir}/gnucobol.info%{?ext_info}
 %{_libdir}/gnucobol
+%{_mandir}/man1/cob-config.1%{ext_info}
 %{_mandir}/man1/cobc.1%{ext_info}
 %{_mandir}/man1/cobcrun.1%{ext_info}
 
 %files -n libcob%{sover}
-%defattr(-,root,root)
-%doc COPYING.LESSER
+%license COPYING.LESSER
 %{_libdir}/libcob.so.%{sover}*
 
 %files -n libcob-devel
-%defattr(-,root,root)
 %{_includedir}/libcob.h
 %{_includedir}/libcob
 %{_libdir}/libcob.so

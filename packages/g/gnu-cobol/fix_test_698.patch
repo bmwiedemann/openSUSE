@@ -1,0 +1,13 @@
+Index: gnucobol-3.1.2/tests/testsuite.src/run_misc.at
+===================================================================
+--- gnucobol-3.1.2.orig/tests/testsuite.src/run_misc.at
++++ gnucobol-3.1.2/tests/testsuite.src/run_misc.at
+@@ -10402,7 +10402,7 @@ COB_EXT_EXPORT int
+ CAPI (void *p1, ...)
+ {
+    int      k,nargs,type,digits,scale,size,sign,byvalue;
+-   cob_s64_t   val;
++   cob_s64_t   val = 0;
+    char     *str;
+    char     wrk[80],pic[30];	/* note: maxium _theoretical_ size */
+ 
