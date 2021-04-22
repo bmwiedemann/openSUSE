@@ -1321,4 +1321,12 @@ CVE-2020-13871 boo#1172646</comment>
     <comment>- Fix typo in macro definition. (forwarded request 880128 from marxin)</comment>
     <requestid>880148</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>1e0e6cc277a8ddcb8ba361727f514aac</srcmd5>
+    <version>3.35.5</version>
+    <time>1619107408</time>
+    <user>dimstar_suse</user>
+    <comment>SQLite3 3.35.5 (forwarded request 886927 from AndreasStieger)</comment>
+    <requestid>887264</requestid>
+  </revision>
 </revisionlist>

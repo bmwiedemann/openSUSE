@@ -17,25 +17,32 @@
 
 
 %define oname sqlite
-%define tarversion 3350200
+%define tarversion 3350500
 %bcond_with icu
 Name:           sqlite3
-Version:        3.35.2
+Version:        3.35.5
 Release:        0
 Summary:        Embeddable SQL Database Engine
 License:        SUSE-Public-Domain
 Group:          Productivity/Databases/Servers
 URL:            https://www.sqlite.org/
-Source0:        http://www.sqlite.org/2021/sqlite-src-%{tarversion}.zip
+Source0:        https://www.sqlite.org/2021/sqlite-src-%{tarversion}.zip
 Source1:        baselibs.conf
-Source2:        http://www.sqlite.org/2021/sqlite-doc-%{tarversion}.zip
+Source2:        https://www.sqlite.org/2021/sqlite-doc-%{tarversion}.zip
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  tcl-devel
 BuildRequires:  unzip
+%if 0%{suse_version} < 1500
+# As of 2021 we still need to be able to compile this on SLE-12
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  zlib-devel
+%global make_build make
+%else
 BuildRequires:  pkgconfig(zlib)
+%endif
 Provides:       %{oname} = %{version}
 Obsoletes:      %{oname} < %{version}
 %if %{with icu}
