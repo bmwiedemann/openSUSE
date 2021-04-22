@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 20 12:44:31 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.5
+  * fixed testsuite for Python 3.9
+  * The "epilog" from argparse object is dumped to "COMMENTS" sections.
+
+-------------------------------------------------------------------
 Thu Aug 20 15:43:19 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Resubmit for SLE (jsc#SLE-12826)
