@@ -22,7 +22,7 @@
 %define wdbus 1
 %define sonum 0
 Name:           jack
-Version:        1.9.17
+Version:        1.9.18
 Release:        0
 #to_be_filled_by_service
 Summary:        Jack-Audio Connection Kit
@@ -36,7 +36,6 @@ Patch0:         0001-Fix-compilation-of-documentation.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  readline-devel
@@ -125,14 +124,14 @@ communicate with jack clients/servers.
 %autopatch -p1
 
 #Change python script headers to python3
-for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
+for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
 
 %build
 %define _lto_cflags %{nil}
 export CFLAGS="%{optflags} -ggdb -fPIC"
 export CXXFLAGS="$CFLAGS"
 
-./waf -v %{_smp_mflags} \
+./waf -v %{?_smp_mflags} \
   --prefix=%{_prefix} \
   --libdir=%{_libdir} \
   --classic \
@@ -149,7 +148,7 @@ export CXXFLAGS="$CFLAGS"
   --mandir=%{_mandir}/man1 \
   configure
 
-./waf -v %{_smp_mflags} build
+./waf -v %{?_smp_mflags} build
 
 %install
 ./waf -j1 install --destdir=%{buildroot}
@@ -162,15 +161,12 @@ mv %{buildroot}%{_datadir}/jack-audio-connection-kit %{buildroot}%{_docdir}
 
 %post -n libjack%{sonum} -p /sbin/ldconfig
 %postun -n libjack%{sonum} -p /sbin/ldconfig
-
 %post -n libjacknet%{sonum} -p /sbin/ldconfig
 %postun -n libjacknet%{sonum} -p /sbin/ldconfig
-
 %post -n libjackserver%{sonum} -p /sbin/ldconfig
 %postun -n libjackserver%{sonum} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc ChangeLog.rst README*
 %license COPYING
 %{_mandir}/man1/*
@@ -194,19 +190,15 @@ mv %{buildroot}%{_datadir}/jack-audio-connection-kit %{buildroot}%{_docdir}
 %endif
 
 %files -n libjack%{sonum}
-%defattr(-, root, root)
 %{_libdir}/libjack.so.%{sonum}*
 
 %files -n libjacknet%{sonum}
-%defattr(-, root, root)
 %{_libdir}/libjacknet.so.%{sonum}*
 
 %files -n libjackserver%{sonum}
-%defattr(-, root, root)
 %{_libdir}/libjackserver.so.%{sonum}*
 
 %files -n libjack-devel
-%defattr(-, root, root)
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*
 %{_includedir}/%{name}
