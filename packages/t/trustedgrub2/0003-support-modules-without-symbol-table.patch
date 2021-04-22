@@ -1,0 +1,106 @@
+From 67dba97e4598eaf2deb14da044fbfb1c119cf76f Mon Sep 17 00:00:00 2001
+From: Andrei Borzenkov <arvidjaar@gmail.com>
+Date: Wed, 3 Feb 2016 20:34:55 +0300
+Subject: [PATCH] support modules without symbol table
+
+all_video module does not have any code or data and exists solely for
+.moddeps section to pull in dependencies. This makes all symbols unneeded.
+
+While in current binutils (last released version as of this commit is 2.26)
+``strip --strip-unneeded'' unintentionally adds section symbols for each
+existing section, this behavior was considered a bug and changed in commit
+14f2c699ddca1e2f706342dffc59a6c7e23e844c to completely strip symbol table
+in this case.
+
+Older binutils (verified with 2.17) and some other toolchains (at least
+elftoolchain r3223M), both used in FreeBSD, remove symbol table in all_video
+as well.
+
+Relax run-time check and do not return error for modules without symbol table.
+Add additional checks to module verifier to make sure such modules
+
+a) have non-empty .moddeps section. Without either externally visible symbols
+or .moddeps modules are completely useless and should not be built.
+
+b) do not have any relocations.
+
+Closes: 46986
+
+v2: add run-time check for empty symbol table if relocations are present as
+    suggested by Vladimir.
+---
+ grub-core/kern/dl.c           |  8 +++++++-
+ util/grub-module-verifierXX.c | 18 +++++++++++++++++-
+ 2 files changed, 24 insertions(+), 2 deletions(-)
+
+Index: trustedgrub2-1.4.0/grub-core/kern/dl.c
+===================================================================
+--- trustedgrub2-1.4.0.orig/grub-core/kern/dl.c
++++ trustedgrub2-1.4.0/grub-core/kern/dl.c
+@@ -337,8 +337,11 @@ grub_dl_resolve_symbols (grub_dl_t mod,
+     if (s->sh_type == SHT_SYMTAB)
+       break;
+ 
++  /* Module without symbol table may still be used to pull in dependencies.
++     We verify at build time that such modules do not contain any relocations
++     that may reference symbol table. */
+   if (i == e->e_shnum)
+-    return grub_error (GRUB_ERR_BAD_MODULE, N_("no symbol table"));
++    return GRUB_ERR_NONE;
+ 
+ #ifdef GRUB_MODULES_MACHINE_READONLY
+   mod->symtab = grub_malloc (s->sh_size);
+@@ -580,6 +583,9 @@ grub_dl_relocate_symbols (grub_dl_t mod,
+ 
+ 	if (seg)
+ 	  {
++	    if (!mod->symtab)
++	      return grub_error (GRUB_ERR_BAD_MODULE, "relocation without symbol table");
++
+ 	    err = grub_arch_dl_relocate_symbols (mod, ehdr, s, seg);
+ 	    if (err)
+ 	      return err;
+Index: trustedgrub2-1.4.0/util/grub-module-verifierXX.c
+===================================================================
+--- trustedgrub2-1.4.0.orig/util/grub-module-verifierXX.c
++++ trustedgrub2-1.4.0/util/grub-module-verifierXX.c
+@@ -176,7 +176,7 @@ get_symtab (const struct grub_module_ver
+       break;
+ 
+   if (i == grub_target_to_host16 (e->e_shnum))
+-    grub_util_error ("no symbol table");
++    return NULL;
+ 
+   sym = (Elf_Sym *) ((char *) e + grub_target_to_host (s->sh_offset));
+   *size = grub_target_to_host (s->sh_size);
+@@ -191,7 +191,21 @@ check_symbols (const struct grub_module_
+   Elf_Word size, entsize;
+   unsigned i;
+ 
++  /* Module without symbol table and without .moddeps section is useless
++     at boot time, so catch it early to prevent build errors */
+   sym = get_symtab (arch, e, &size, &entsize);
++  if (!sym)
++    {
++      Elf_Shdr *s = find_section (arch, e, ".moddeps");
++
++      if (!s)
++	grub_util_error ("no symbol table and no .moddeps section");
++
++      if (!s->sh_size)
++	grub_util_error ("no symbol table and empty .moddeps section");
++
++      return;
++    }
+ 
+   for (i = 0;
+        i < size / entsize;
+@@ -243,6 +257,8 @@ section_check_relocations (const struct
+   Elf_Word symtabsize, symtabentsize;
+ 
+   symtab = get_symtab (arch, ehdr, &symtabsize, &symtabentsize);
++  if (!symtab)
++    grub_util_error ("relocation without symbol table");
+ 
+   for (rel = (Elf_Rel *) ((char *) ehdr + grub_target_to_host (s->sh_offset)),
+ 	 max = (Elf_Rel *) ((char *) rel + grub_target_to_host (s->sh_size));
