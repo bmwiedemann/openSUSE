@@ -1,7 +1,7 @@
 #
 # spec file for package blog
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 Name:           blog
 Version:        2.20
+%define sonum   2
 Release:        0
 Summary:        Boot logging
 License:        GPL-2.0-or-later
@@ -38,11 +39,14 @@ information from this slave to the real character device a ring
 buffer is used to hold the information for writing it to an existing
 logging file.
 
-%package -n libblogger2
+%package -n libblogger%{sonum}
 Summary:        FIFO interface used by startproc
 Group:          System/Libraries
+%if %sonum == 2
+Provides:       %{name}:%{_libdir}/libblogger.so.2
+%endif
 
-%description -n libblogger2
+%description -n libblogger%{sonum}
 The libaray for the FIFO interface used by the LSB startproc command.
 
 %package	plymouth
@@ -50,7 +54,8 @@ Summary:        Replaces plymouth by blogd
 Group:          System/Base
 Requires:       blog
 Requires:       systemd
-Conflicts:      plymouth plymouth-dracut
+Conflicts:      plymouth
+Conflicts:      plymouth-dracut
 
 %description	plymouth
 The Blogd daemon can be used as a replacement for Plymouth in situations where
@@ -65,7 +70,7 @@ messages upto to point at which the file systems becomes unavailable.
 %package	devel
 Summary:        Provides library and header for boot logging
 Group:          Development/Libraries/C and C++
-Requires:       libblogger2 = %{version}
+Requires:       libblogger%{sonum} = %{version}
 
 %description	devel
 The libaray and the header file for the FIFO interface used to build
@@ -99,8 +104,8 @@ test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 %postun
 test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 
-%post   -n libblogger2 -p /sbin/ldconfig
-%postun -n libblogger2 -p /sbin/ldconfig
+%post   -n libblogger%{sonum} -p /sbin/ldconfig
+%postun -n libblogger%{sonum} -p /sbin/ldconfig
 
 %posttrans
 %{?regenerate_initrd_posttrans}
@@ -122,7 +127,7 @@ test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 %doc %{_mandir}/man8/setconsole.8.gz
 %doc %{_mandir}/man8/showconsole.8.gz
 
-%files -n libblogger2
+%files -n libblogger%{sonum}
 %{_libdir}/libblogger.so.*
 
 %files devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  9 07:19:38 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Fix package split done for shared library packaging guideline (bsc#1184479). 
+
+-------------------------------------------------------------------
 Thu Jan  9 11:34:47 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 2.20

@@ -123,4 +123,12 @@ use private glib API but implement a share memory mkstemp</comment>
 - Remove obsolate patch blog-Remove-unused-header.patch</comment>
     <requestid>762162</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>3bb7ff1cdde457b7de5c502c04a7094c</srcmd5>
+    <version>2.20</version>
+    <time>1619107382</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix package split done for shared library packaging guideline (bsc#1184479).</comment>
+    <requestid>883985</requestid>
+  </revision>
 </revisionlist>
