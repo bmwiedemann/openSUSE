@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 18 08:32:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.15.8:
+  - Fixed memory leak of Ruby arena objects (#8461)
+
+-------------------------------------------------------------------
 Tue Apr  6 01:47:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.15.7:
