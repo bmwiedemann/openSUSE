@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 15 15:15:15 UTC 2021 - olaf@aepfle.de
+
+- prep section should just extract and patch,
+  further modifications have to be done in the build section
+
+-------------------------------------------------------------------
+Wed Apr 14 11:32:49 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * PIE.patch
+    + build path independent objects
+
+-------------------------------------------------------------------
 Fri Jul 10 21:23:35 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 5.2.1

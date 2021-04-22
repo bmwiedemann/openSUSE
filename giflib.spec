@@ -1,7 +1,7 @@
 #
 # spec file for package giflib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 URL:            http://giflib.sf.net/
 Source:         http://downloads.sf.net/giflib/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
+Patch1:         PIE.patch
 BuildRequires:  libtool >= 2
 
 %description
@@ -55,7 +56,9 @@ This Library allows manipulating GIF Image files. Since the LZW patents
 have expired, giflib can again be used instead of libungif.
 
 %prep
-%autosetup
+%autosetup -p1
+
+%build
 for file in `find util -name "*.c"`; do
 	touch -r $file $file.stamp
 done
@@ -69,7 +72,6 @@ for file in `find util -name "*.c"`; do
     rm -v $file.stamp
 done
 
-%build
 export CFLAGS="%optflags"
 make %{?_smp_mflags}
 
