@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 18 22:39:41 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to 3.2.2:
+  * Background jobs no longer interfere with syntax highlighting (fish 3.2.1 regression)
+  * The command-not-found handler used suggestions from pacman on Arch
+    Linux, but this caused major slowdowns on some systems and has been disabled
+  * Certain programs (such as lazygit) could create situations where
+    fish would not receive keystrokes correctly, but it is now more
+    robust in these situations
+  * Completions for aura and tshark should no longer produce errors.
+  * fish will no longer hang on exit if another process is in the foreground
+    on macOS
+  * Arguments longer than 1024 characters no longer trigger excessive
+    CPU usage on macOS
+
+-------------------------------------------------------------------
 Thu Mar 18 17:40:37 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 -  Update to 3.2.1:
