@@ -667,4 +667,12 @@ Bugfixes
     <user>dimstar_suse</user>
     <comment>https://github.com/containers/buildah/issues/3153</comment>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>7e33f9fc1b2e37d666888ed1e277c6ca</srcmd5>
+    <version>3.1.1</version>
+    <time>1619107424</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>886673</requestid>
+  </revision>
 </revisionlist>
