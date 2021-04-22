@@ -1,7 +1,7 @@
 #
 # spec file for package python-pastream
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-pastream
 Version:        0.2.0.post0
 Release:        0
 Summary:        GIL-less Portaudio Streams for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/tgarc/pastream
 Source0:        https://files.pythonhosted.org/packages/source/p/pastream/pastream-%{version}.tar.gz
 Source100:      python-pastream-rpmlintrc
@@ -42,7 +42,7 @@ Requires:       python-cffi >= 1.0.0
 Requires:       python-pa-ringbuffer >= 0.1.2
 Requires:       python-sounddevice >= 0.3.9
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-numpy
 # SECTION test requirements
 BuildRequires:  %{python_module SoundFile >= 0.9.0}
