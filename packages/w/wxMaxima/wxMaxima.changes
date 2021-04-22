@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Apr 13 11:41:23 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 21.04.0:
+  * Fix visualization after "Evaluate all cells (Ctrl+Shift+R)"
+    (gh#wxMaxima-developers/wxmaxima#1512).
+  * Fix context sensitive help with F1
+    (gh#wxMaxima-developers/wxmaxima#1508).
+  * Add an option for not showing matching parenthesis
+    (gh#wxMaxima-developers/wxmaxima#1509).
+  * Changed the weather icons in the toolbar to more meaningful
+    ones (gh#wxMaxima-developers/wxmaxima#1514).
+  * Many bugfixes with respect to correctly breaking lines
+    (gh#wxMaxima-developers/wxmaxima#1528,
+     gh#wxMaxima-developers/wxmaxima#1471,
+     gh#wxMaxima-developers/wxmaxima#1512).
+  * Fix a bug in copy-paste of saved/loaded results
+    (gh#wxMaxima-developers/wxmaxima#1518).
+  * Fix a crash when pressing Ctrl-X while a math cell is selected
+    (gh#wxMaxima-developers/wxmaxima#1519).
+  * CMake 3.10 is now required for building wxMaxima.
+  * C++ 14 is required for building wxMaxima. Now CMake knows
+    about that fact.
+  * Many external build scripts are now replaced by C++ and CMake
+    commands.
+  * A menu entry for when to invoke the debugger.
+
+-------------------------------------------------------------------
 Thu Mar  4 19:54:12 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 21.02.0:

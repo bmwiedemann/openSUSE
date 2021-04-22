@@ -457,4 +457,12 @@ Depends on maxima (sr#121612)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>878415</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>b1df198e035ea3169934c21673204464</srcmd5>
+    <version>21.04.0</version>
+    <time>1619107467</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887522</requestid>
+  </revision>
 </revisionlist>
