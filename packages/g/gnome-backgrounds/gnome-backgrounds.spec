@@ -17,10 +17,10 @@
 
 
 Name:           gnome-backgrounds
-Version:        40.rc
+Version:        40.0
 Release:        0
 Summary:        GNOME Backgrounds
-License:        GPL-2.0-or-later AND CC-BY-2.0 AND CC-BY-SA-2.0 AND CC-BY-SA-3.0
+License:        CC-BY-2.0 AND GPL-2.0-or-later AND CC-BY-SA-2.0 AND CC-BY-SA-3.0
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-backgrounds
 Source0:        https://download.gnome.org/sources/gnome-backgrounds/40/%{name}-%{version}.tar.xz
