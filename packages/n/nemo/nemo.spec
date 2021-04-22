@@ -20,7 +20,7 @@
 %define sover   1
 %define typelib typelib-1_0-Nemo-3_0
 Name:           nemo
-Version:        4.8.5
+Version:        4.8.6
 Release:        0
 Summary:        File browser for Cinnamon
 License:        GPL-2.0-or-later
@@ -61,9 +61,9 @@ Requires:       glib2-tools
 Requires:       gvfs >= 1.3.2
 Requires:       python3
 Requires:       shared-mime-info >= 0.50
+Recommends:     %{name}-lang
 Recommends:     gdk-pixbuf-loader-rsvg
 Recommends:     gvfs-backends
-Recommends:     %{name}-lang
 Suggests:       xdg-user-dirs
 Suggests:       xplayer
 Suggests:       xreader
