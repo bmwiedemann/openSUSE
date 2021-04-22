@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar 31 14:59:15 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.14.2
+  * Release with dependency on ldb version 2.3.0.
+
+- Update to 4.14.1
+  * CVE-2021-20277: Fix out of bounds read in ldb_handler_fold; (bso#14655);
+  * CVE-2020-27840: Fix unauthenticated remote heap corruption via bad DNs;
+    (bso#14595);
+
+- Update to 4.14.0
+  * VFS layer modernized.
+  * Printers publishing in AD improved.
+  * Client group policies support for sudoers configuration and
+    cron jobs.
+  * Improved consistency of samba-tool subcommands.
+  * CTDB now uses the terms leader and follower instead of master and
+    slave. Configuration options have changed accordingly.
+  * The ctdb isnotrecmaster command is removed.
+  * For details on all items see WHATSNEW.txt in samba-doc package.
+
+-------------------------------------------------------------------
 Mon Mar  1 12:09:56 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Spec file fixes around systemd and requires; (bsc#1182830);

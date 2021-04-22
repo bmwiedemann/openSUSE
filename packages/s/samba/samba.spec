@@ -50,10 +50,10 @@
 %endif
 %endif
 
-%define talloc_version 2.3.1
+%define talloc_version 2.3.2
 %define tevent_version 0.10.2
 %define tdb_version    1.4.3
-%define ldb_version    2.1.4
+%define ldb_version    2.3.0
 
 %global with_mitkrb5 1
 %global with_dc 0
@@ -103,6 +103,8 @@ BuildRequires:  pam-devel
 BuildRequires:  popt-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-xml
+BuildRequires:  python3-Markdown
+BuildRequires:  python3-dnspython
 BuildRequires:  readline-devel
 %if 0%{?suse_version} >= 1330
 BuildRequires:  rpcgen
@@ -170,7 +172,7 @@ BuildRequires:  liburing-devel
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.13.4+git.199.be6e11f5ab2
+Version:        4.14.2+git.159.2a8872214bf
 Release:        0
 Url:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -397,6 +399,8 @@ Requires(pre): coreutils
 Requires(pre): /bin/mktemp
 Requires(pre): /usr/bin/killall
 Requires(pre): /usr/bin/sed
+Provides:       ctdb-tests = %{version}
+Obsoletes:      ctdb-tests <= %{version}
 
 %description -n ctdb
 ctdb is the clustered database used by Samba
@@ -410,14 +414,6 @@ Group:          System/Monitoring
 The CTDB Performance Co-Pilot (PCP) monitoring agent allows remote PCP
 clients to view and capture detailed real-time performance metrics for
 one or more cluster nodes.
-
-%package -n ctdb-tests
-Summary:        CTDB clustered database test suite
-License:        GPL-3.0-or-later
-Group:          Development/Tools
-
-%description -n ctdb-tests
-Test suite for clustered database (CTDB).
 
 
 %package -n libdcerpc-binding0
@@ -585,12 +581,13 @@ applications that want to make use of libndr.
 
 
 
-%package -n libsamba-credentials0
+%package -n libsamba-credentials1
 Summary:        Samba credential management library
 License:        GPL-3.0-or-later
 Group:          System/Libraries
+Obsoletes:      libsamba-credentials0 < %{version}
 
-%description -n libsamba-credentials0
+%description -n libsamba-credentials1
 This subpackage contains libraries for credentials management.
 
 
@@ -598,7 +595,7 @@ This subpackage contains libraries for credentials management.
 Summary:        Development files for the Samba credential management library
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libsamba-credentials0 = %{version}
+Requires:       libsamba-credentials1 = %{version}
 
 %description -n libsamba-credentials-devel
 This subpackage contains libraries and header files for developing
@@ -1483,8 +1480,8 @@ fi
 %postun -n libndr1 -p /sbin/ldconfig
 %post -n %{libnetapi_name} -p /sbin/ldconfig
 %postun -n %{libnetapi_name} -p /sbin/ldconfig
-%post   -n libsamba-credentials0 -p /sbin/ldconfig
-%postun -n libsamba-credentials0 -p /sbin/ldconfig
+%post   -n libsamba-credentials1 -p /sbin/ldconfig
+%postun -n libsamba-credentials1 -p /sbin/ldconfig
 %post   -n libsamba-errors0 -p /sbin/ldconfig
 %postun -n libsamba-errors0 -p /sbin/ldconfig
 %post   -n libsamba-hostconfig0 -p /sbin/ldconfig
@@ -2022,6 +2019,7 @@ exit 0
 %{_libdir}/samba/idmap
 %{_libdir}/samba/nss_info
 %dir %{_libdir}/samba/krb5
+%{_libdir}/samba/krb5/async_dns_krb5_locator.so
 %{_libdir}/samba/krb5/winbind_krb5_locator.so
 %{_libdir}/samba/krb5/winbind_krb5_localauth.so
 %{_mandir}/man1/ntlm_auth.1.*
@@ -2080,6 +2078,7 @@ exit 0
 %else
 %attr(755,root,root) %{INITDIR}/ctdb
 %endif
+%dir %{_datadir}/ctdb
 %dir %{_datadir}/ctdb/events
 %dir %{_datadir}/ctdb/events/legacy
 %{_datadir}/ctdb/events/legacy/*
@@ -2099,8 +2098,6 @@ exit 0
 %{_sbindir}/rcctdb
 %{_bindir}/ctdb
 %{_bindir}/ctdb_diagnostics
-%{_bindir}/ctdb_run_cluster_tests
-%{_bindir}/ctdb_run_tests
 %{_bindir}/ltdbtool
 %{_bindir}/onnode
 %{_bindir}/ping_pong
@@ -2141,7 +2138,6 @@ exit 0
 %{_mandir}/man7/ctdb.7.*
 %doc %{_defaultdocdir}/ctdb
 %{_sysconfdir}/ctdb/config_migrate.sh
-%{_bindir}/ctdb_local_daemons
 
 %if 0%{?build_ctdb_pmda}
 %files -n ctdb-pcp-pmda
@@ -2157,13 +2153,6 @@ exit 0
 %{_localstatedir}/lib/pcp/pmdas/ctdb/pmdactdb
 %{_localstatedir}/lib/pcp/pmdas/ctdb/pmns
 %endif
-
-%files -n ctdb-tests
-%defattr(-,root,root)
-%dir %{_libdir}/ctdb
-%{_libdir}/ctdb/tests/
-%dir %{_datadir}/ctdb
-%{_datadir}/ctdb/tests
 
 %files -n libdcerpc-binding0
 %defattr(-,root,root)
@@ -2271,9 +2260,9 @@ exit 0
 %{_libdir}/libnetapi.so
 %{_libdir}/pkgconfig/netapi.pc
 
-%files -n libsamba-credentials0
+%files -n libsamba-credentials1
 %defattr(-,root,root)
-%_libdir/libsamba-credentials.so.0*
+%_libdir/libsamba-credentials.so.1*
 
 %files -n libsamba-credentials-devel
 %defattr(-,root,root)
@@ -2342,7 +2331,6 @@ exit 0
 %_includedir/samba-4.0/util/discard.h
 %_includedir/samba-4.0/util/fault.h
 %_includedir/samba-4.0/util/signal.h
-%_includedir/samba-4.0/util/string_wrappers.h
 %_includedir/samba-4.0/util/substitute.h
 %_includedir/samba-4.0/util/time.h
 %_libdir/libsamba-util.so

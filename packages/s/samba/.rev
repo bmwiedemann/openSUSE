@@ -3375,4 +3375,12 @@ list of changes.</comment>
     <comment></comment>
     <requestid>876695</requestid>
   </revision>
+  <revision rev="268" vrev="1">
+    <srcmd5>9e7f373c02c08dacd257bc87f3fc5549</srcmd5>
+    <version>4.14.2+git.159.2a8872214bf</version>
+    <time>1619107393</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>885268</requestid>
+  </revision>
 </revisionlist>
