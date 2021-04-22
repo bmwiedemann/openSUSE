@@ -85,4 +85,13 @@
   time ago.</comment>
     <requestid>878016</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e7f04e84ed2e94efc400de3bc6f48a20</srcmd5>
+    <version>13.2</version>
+    <time>1619107398</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable build of the llvmjit subpackage on SLE, but it will
+  only be delivered on PackageHub for now.</comment>
+    <requestid>885325</requestid>
+  </revision>
 </revisionlist>
