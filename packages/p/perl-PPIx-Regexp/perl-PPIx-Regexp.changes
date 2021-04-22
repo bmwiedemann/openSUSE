@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 17 03:09:00 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.080
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.080		2021-04-16	T. R. Wyant
+      All uses of the postderef argument to new() now warn.
+
+-------------------------------------------------------------------
 Sat Mar 27 03:07:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.079
