@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 14 09:16:40 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.1 [boo#1184688]
+  * Fix `xkb_x11_keymap_new_from_device()` failing when the
+    keymap contains key types with missing level names, like the
+    one used by the `numpad:mac` option in xkeyboard-config.
+    (Regressed in 1.2.0.)
+
+-------------------------------------------------------------------
 Sat Apr  3 12:58:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.0
