@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 16 20:34:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update etcd.service: avoid args from commandline and environment
+  as it leads to start failure (bsc#1183703) 
+
+-------------------------------------------------------------------
 Wed Mar 03 13:50:06 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 3.4.15:
