@@ -17,7 +17,7 @@
 
 
 Name:           telegram-purple
-Version:        1.4.2
+Version:        1.4.7
 Release:        0
 Summary:        Plugin for Pidgin for supporting Telegram messager
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -84,8 +84,8 @@ make %{?_smp_mflags} V=1
 %doc AUTHORS CHANGELOG.md README.md
 %config %{_sysconfdir}/telegram-purple/
 %{_libdir}/purple-2/telegram-purple.so
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/telegram-purple.metainfo.xml
+%dir %{_datadir}/metainfo/
+%{_datadir}/metainfo/telegram-purple.metainfo.xml
 
 %files -n libpurple-plugin-telegram-lang -f telegram-purple.lang
 
