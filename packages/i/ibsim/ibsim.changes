@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 15 15:11:41 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Hardening: Link as Position Independent Executable.
+  - Added ibsim-PIE.patch
+
+-------------------------------------------------------------------
 Tue Mar  3 08:48:16 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to version 0.9

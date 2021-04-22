@@ -1,0 +1,12 @@
+Index: ibsim-0.9.0.7c2a604ec49a/ibsim/Makefile
+===================================================================
+--- ibsim-0.9.0.7c2a604ec49a.orig/ibsim/Makefile
++++ ibsim-0.9.0.7c2a604ec49a/ibsim/Makefile
+@@ -2,5 +2,7 @@ progs:=ibsim
+ 
+ -include ../defs.mk
+ 
++LDFLAGS += -pie
++
+ all: $(progs)
+ ibsim: $(objs)

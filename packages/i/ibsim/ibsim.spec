@@ -1,7 +1,7 @@
 #
 # spec file for package ibsim
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Release:        0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         ibsim-%{version}%{git_ver}.tar.gz
 Patch1:         ibsim-fix_type_punning.patch
+Patch2:         ibsim-PIE.patch
 URL:            https://github.com/linux-rdma/ibsim
 BuildRequires:  infiniband-diags-devel
 BuildRequires:  libibumad-devel
@@ -37,10 +38,10 @@ BuildRequires:  make
 ibsim provides simulation of infiniband fabric for using with OFA
 OpenSM, diagnostic and management tools.
 
-
 %prep
 %setup -q -n  %{name}-%{version}%{git_ver}
 %patch1
+%patch2 -p1
 
 %build
 export CFLAGS="${CFLAGS:-%{optflags}}"
