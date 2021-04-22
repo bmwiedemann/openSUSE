@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/kubernetes-sigs/cri-tools.git</param>
+              <param name="changesrevision">80bcedb1222865e848a4232a4bcf1a388b328ba9</param></service></servicedata>
