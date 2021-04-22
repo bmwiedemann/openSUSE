@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 21 17:42:35 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- New regular patterns (1) for version 1.3.1
+  + sle11sp4/crosstalk_114-000019643.py: Special Register Buffer Data Sampling aka CrossTalk (CVE-2020-0543) (bsc#1154824)
+
+-------------------------------------------------------------------
 Wed Mar 31 22:49:10 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes to version 1.3.1
