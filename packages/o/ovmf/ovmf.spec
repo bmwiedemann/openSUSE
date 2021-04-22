@@ -226,7 +226,6 @@ FLAVORS_X64=("ovmf-x86_64" "ovmf-x86_64-4m" "ovmf-x86_64-smm")
 BUILD_OPTIONS_X64=" \
 	$OVMF_FLAGS \
 	-a X64 \
-	-p OvmfPkg/OvmfPkgX64.dsc \
 	-b DEBUG \
 	-t $TOOL_CHAIN \
 "
@@ -303,19 +302,26 @@ collect_x86_64_debug_files()
 
 declare -A EXTRA_FLAGS_X64
 EXTRA_FLAGS_X64=(
-	[ovmf-x86_64]="-D FD_SIZE_2MB"
-	[ovmf-x86_64-4m]="-D FD_SIZE_4MB -D NETWORK_TLS_ENABLE"
-	[ovmf-x86_64-smm]="-D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SMM_REQUIRE -D EXCLUDE_SHELL"
+	[ovmf-x86_64]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_2MB"
+	[ovmf-x86_64-4m]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE"
+	[ovmf-x86_64-smm]="-a IA32 -p OvmfPkg/OvmfPkgIa32X64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SMM_REQUIRE -D EXCLUDE_SHELL"
 )
+declare -A OUTDIR_X64
+OUTDIR_X64=(
+	[ovmf-x86_64]="OvmfX64"
+	[ovmf-x86_64-4m]="OvmfX64"
+	[ovmf-x86_64-smm]="Ovmf3264"
+)
+
 %ifnarch x86_64
 # Assign the cross-compiler prefix
 export ${TOOL_CHAIN}_BIN="x86_64-suse-linux-"
 %endif
 for flavor in ${FLAVORS_X64[@]}; do
 	build $BUILD_OPTIONS_X64 ${EXTRA_FLAGS_X64[$flavor]}
-	cp Build/OvmfX64/DEBUG_*/FV/OVMF.fd      $flavor.bin
-	cp Build/OvmfX64/DEBUG_*/FV/OVMF_CODE.fd $flavor-code.bin
-	cp Build/OvmfX64/DEBUG_*/FV/OVMF_VARS.fd $flavor-vars.bin
+	cp Build/${OUTDIR_X64[$flavor]}/DEBUG_*/FV/OVMF.fd      $flavor.bin
+	cp Build/${OUTDIR_X64[$flavor]}/DEBUG_*/FV/OVMF_CODE.fd $flavor-code.bin
+	cp Build/${OUTDIR_X64[$flavor]}/DEBUG_*/FV/OVMF_VARS.fd $flavor-vars.bin
 
 %ifarch x86_64
 	collect_x86_64_debug_files $flavor

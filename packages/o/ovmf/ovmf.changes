@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 19 06:10:39 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Build ovmf-x86_64-smm against Ia32X64 to enable S3 support
+  (bsc#1184938)
+- Update ovmf-add-exclude-shell-flag.patch to include Ia32X64
+
+-------------------------------------------------------------------
 Tue Apr  6 07:04:42 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add ovmf-disable-brotli.patch to remove brotli since there is no
