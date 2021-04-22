@@ -1,7 +1,7 @@
 #
 # spec file for package SoQt
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %define         sover 20
 %define         realver 1.6.0
 Name:           SoQt
-Version:        1.6~pre.2047
+Version:        1.6.0
 Release:        0
 Summary:        A library which provides the glue between Coin and Qt
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
-URL:            https://bitbucket.org/Coin3D/coin/wiki/Home
-Source:         soqt-%{version}.tar.xz
+URL:            https://coin3d.github.io/SoQt/html/
+Source:         https://github.com/coin3d/soqt/releases/download/SoQt-%{version}/soqt-%{version}-src.tar.gz
 Patch0:         SoQt-man3.patch
 #PATCH-FIX-OPENSUSE 0001-Use-a-Find-module-to-find-older-Coin-versions.patch -- use a SoQt snapshot with a stable Coin package
 Patch1:         0001-Use-a-Find-module-to-find-older-Coin-versions.patch
@@ -34,6 +34,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5Widgets)
@@ -91,7 +92,7 @@ minimum of hassle for developers when working on multiplatform software, with
 the resulting large gains in productivity.
 
 %prep
-%setup -q -n soqt-%{version}
+%setup -q -n soqt
 %patch0
 %patch1 -p1
 # Fix broken Qt4 requires in pkgconfig file
@@ -111,6 +112,8 @@ cmake .. \
       -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
       -DBUILD_SHARED_LIBS:BOOL=ON \
       -DCMAKE_COLOR_MAKEFILE:BOOL=OFF \
+      -DSOQT_BUILD_DOCUMENTATION=TRUE \
+      -DSOQT_BUILD_DOC_MAN=TRUE \
       -DCoin_DOC_DIR=%{_docdir}/Coin
 make %{?_smp_mflags}
 
@@ -132,11 +135,13 @@ cd my_build
 %{_docdir}/SoQt
 
 %files devel
+%{_datadir}/SoQt
 %dir %{_includedir}/Inventor/Qt
 %{_includedir}/Inventor/Qt/*
-%{_datadir}/SoQt
-%{_libdir}/libSoQt.so
+%{_infodir}/SoQt1
 %{_libdir}/cmake/%{name}-%{realver}/
-%{_libdir}/pkgconfig
+%{_libdir}/libSoQt.so
+%{_libdir}/pkgconfig/SoQt.pc
+%{_mandir}/man3/*
 
 %changelog

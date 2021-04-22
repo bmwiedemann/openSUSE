@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar  8 23:12:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to final 1.6.0:
+  * see https://raw.githubusercontent.com/coin3d/soqt/SoQt-1.6.0/NEWS 
+
+-------------------------------------------------------------------
 Mon Nov 25 22:37:23 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix invalid Requires: in pkgconfig file, replace Qt(4) with Qt5.
