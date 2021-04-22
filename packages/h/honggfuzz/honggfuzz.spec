@@ -1,7 +1,7 @@
 #
 # spec file for package honggfuzz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           honggfuzz
-Version:        2.3.1
+Version:        2.4
 Release:        0
 Summary:        Security-oriented fuzzer with various analysis options
 License:        Apache-2.0
@@ -34,7 +34,7 @@ evolutionary, feedback-driven fuzzing based on code coverage
 (software and hardware).
 
 %prep
-%setup -q
+%autosetup
 
 %build
 export CFLAGS="%{optflags}"

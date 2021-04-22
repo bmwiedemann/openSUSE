@@ -129,4 +129,20 @@
 </comment>
     <requestid>830701</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e9ead0e05178cea0253cb1732894bc65</srcmd5>
+    <version>2.4</version>
+    <time>1619107454</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4:
+  * better NetBSD support (compatiblity)
+  * fixed mangle_getLen() #360
+  * disabled --linux_net_ns by default, as the Linux kernel dies under heavy load of new net namespaces
+  * added support for address compression in IntelPT mode
+  * simplified input_skipFactor() which now yields better results (faster coverage acquisition)
+  * added --save_smaller for the use with Rust fuzzing
+  * fixed Android build under MacOSX
+  * simplified some mangle() functions</comment>
+    <requestid>887467</requestid>
+  </revision>
 </revisionlist>

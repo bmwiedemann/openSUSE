@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 22 07:31:18 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.4:
+  * better NetBSD support (compatiblity)
+  * fixed mangle_getLen() #360
+  * disabled --linux_net_ns by default, as the Linux kernel dies under heavy load of new net namespaces
+  * added support for address compression in IntelPT mode
+  * simplified input_skipFactor() which now yields better results (faster coverage acquisition)
+  * added --save_smaller for the use with Rust fuzzing
+  * fixed Android build under MacOSX
+  * simplified some mangle() functions
+
+-------------------------------------------------------------------
 Wed Aug 26 07:52:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.3.1:
