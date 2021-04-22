@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 14 11:22:53 UTC 2021 - pgajdos@suse.com
+
+- added patches
+  fix build with openexr3
+  + freeimage-openexr3.patch
+
+-------------------------------------------------------------------
 Mon Aug 24 15:35:55 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - fix build with libraw 0.20 (libraw_0_20.patch)

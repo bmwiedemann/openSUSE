@@ -69,4 +69,12 @@ I copied the fix from gentoo. I tried to verify if that is fine, but libraw neit
 freeimage development seems dead and maybe should be replaced if possible.</comment>
     <requestid>828999</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>609ccc0a4177c88f97dac79ce6139491</srcmd5>
+    <version>3.18.0</version>
+    <time>1619107492</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887828</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package freeimage
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ Patch5:         CVE-2019-12211_2019-12213.patch
 Patch6:         bigendian.patch
 # PATCH-FIX-UPSTREAM: compile with libraw 0.20.0 - https://734724.bugs.gentoo.org/attachment.cgi?id=651956
 Patch7:         libraw_0_20.patch
+# build with openexr3
+Patch8:         freeimage-openexr3.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  jxrlib-devel
@@ -95,6 +97,7 @@ multithreading safe.
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 # Remove bundled libs to make sure these don't get used during compile
 rm -rf Source/LibPNG/ Source/LibRawLite/ Source/OpenEXR/ Source/ZLib/ Source/LibOpenJPEG/ Source/LibJPEG/
