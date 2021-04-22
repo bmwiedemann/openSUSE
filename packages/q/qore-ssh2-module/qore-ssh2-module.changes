@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 14 09:53:40 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop -m64/-m32 flags on Arm
+- Fix build on aarch64
+
+-------------------------------------------------------------------
 Fri Aug  1 21:54:53 UTC 2014 - dvlaeev@suse.com
 
 - Fix ppc64le build 
