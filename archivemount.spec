@@ -1,7 +1,7 @@
 #
 # spec file for package archivemount
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,8 @@ Version:        0.9.1
 Release:        0
 Summary:        Mounts an archive for access as a file system
 License:        LGPL-2.1-or-later AND BSD-2-Clause
-URL:            http://www.cybernoia.de/software/archivemount/
-Source:         http://www.cybernoia.de/software/archivemount/%{name}-%{version}.tar.gz
+URL:            https://www.cybernoia.de/software/archivemount.html
+Source:         https://www.cybernoia.de/software/archivemount/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fuse-devel
