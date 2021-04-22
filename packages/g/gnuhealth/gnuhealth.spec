@@ -156,9 +156,9 @@ rmdir backend
 #Write environment changes to /etc/bash.bashrc.local
 cat > /etc/bash.bashrc.local << "EOF"
 alias cdlogs='cd /var/log/tryton'
-alias cdexe='cd $(ls -d /usr/lib/python3.* )/site-packages/trytond'
+alias cdexe='cd %python3_sitelib/trytond'
 alias cdconf='cd /etc/tryton'
-alias cdmods='cd $(ls -d /usr/lib/python3.* )/site-packages/trytond/modules'
+alias cdmods='cd %python3_sitelib/trytond/modules'
 alias editconf='${EDITOR} /etc/tryton/trytond.conf'
 alias cdutil='cd /usr/bin'
 export EDITOR=nano

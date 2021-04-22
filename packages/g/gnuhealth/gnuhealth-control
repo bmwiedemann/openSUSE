@@ -24,10 +24,10 @@
 #
 ##############################################################################
 
-VERSION="3.6.5-openSUSE"
+VERSION="3.8.0-openSUSE"
 
 TRANSLATE_URL="https://hosted.weblate.org"
-GNUHEALTH_DIR=$(rpm -ql gnuhealth | egrep '^/usr/lib/python.\..{1,2}/site-packages$')
+GNUHEALTH_DIR=$(rpm --eval '%python3_sitelib')/trytond/modules
 UPDATE_DOWNLOAD_DIR=$(mktemp -d)
 
 usage()
