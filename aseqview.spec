@@ -1,7 +1,7 @@
 #
 # spec file for package aseqview
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           aseqview
-BuildRequires:  alsa-devel
-BuildRequires:  automake
-BuildRequires:  gtk2-devel
-BuildRequires:  update-desktop-files
-Summary:        ALSA Sequencer Event Viewer
-License:        GPL-2.0-only
 Version:        0.2.8
 Release:        0
+Summary:        ALSA Sequencer Event Viewer
+License:        GPL-2.0-only
+URL:            https://github.com/tiwai/aseqview
 Source:         %{name}-%{version}.tar.xz
 Source1:        aseqview.desktop
 Source2:        aseqview.png
 Patch0:         aseqview-0.2.2.dif
 Patch1:         aseqview-quote-macros.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Url:            http://www.alsa-project.org/~iwai/alsa.html
+BuildRequires:  alsa-devel
+BuildRequires:  automake
+BuildRequires:  gtk2-devel
+BuildRequires:  update-desktop-files
 
 %description
 ASeqView is an ALSA sequencer user client that works as an event viewer
@@ -40,29 +39,27 @@ off, controls, and pitch wheels, using bar graphs as seen in many
 sequencer applications.
 
 %prep
-%setup
+%setup -q
 %patch0
 %patch1 -p1
 
 %build
 autoreconf --force --install
 %configure --enable-gtk2
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
+%make_install
 %suse_update_desktop_file -i aseqview AudioVideo Music GTK
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/pixmaps
-cp %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/pixmaps
+mkdir -p %{buildroot}%{_datadir}/pixmaps
+cp %{SOURCE2} %{buildroot}%{_datadir}/pixmaps
 
 %files
-%defattr(-,root,root)
 %{_bindir}/*
+%license COPYING
 %doc README AUTHORS ChangeLog
-%doc %{_mandir}/man*/*
-%if %suse_version > 820
+%{_mandir}/man*/*
 %{_datadir}/applications/*.desktop
-%endif
 %{_datadir}/pixmaps/*.png
 
 %changelog
