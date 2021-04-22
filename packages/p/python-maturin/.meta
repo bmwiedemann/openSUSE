@@ -1,0 +1,10 @@
+<package name="python-maturin" project="openSUSE:Factory">
+  <title>Rust/Python Interoperability</title>
+  <description>Build and publish crates with pyo3, rust-cpython and cffi bindings
+as well as rust binaries as python packages.
+
+This project is a zero-configuration replacement for
+setuptools-rust milksnake. It supports building wheels for Python
+3.5+, can upload them to PyPI and has basic PyPy support.</description>
+  <devel project="devel:languages:python" package="python-maturin"/>
+</package>
