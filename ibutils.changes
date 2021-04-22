@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 15 15:38:24 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Hardening: Link ibis executable with -pie.
+  - Added ibutils-ibis-PIE.patch
+
+-------------------------------------------------------------------
 Sun Jun  7 12:58:06 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add ibis-drop-multiple-definition-of-IbisObj.patch to fix compilation with GCC10

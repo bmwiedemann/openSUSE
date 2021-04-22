@@ -1,7 +1,7 @@
 #
-# spec file for package ibutils
+# spec file for package ibutils%{?pname_suff}
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,7 @@ Patch5:         ibutils-no_special_ldflags_for_ibdmsh.patch
 Patch6:         ibutils-diagui.patch
 Patch7:         ibutils-fix-build-dependency.patch
 Patch8:         ibis-drop-multiple-definition-of-IbisObj.patch
+Patch9:         ibutils-ibis-PIE.patch
 URL:            http://www.openfabrics.org
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -88,6 +89,7 @@ ibdiag:   This package provides two tools which provide the user interface
             - ibdiagpath: Performs various fabric quality and health checks on
                           the given links and nodes in a specific path.
 %else
+
 %description
 The ibutils-ui package provides a set of graphical UI tools that check the health
 of an InfiniBand fabric.
@@ -123,6 +125,7 @@ This package contains shared libraries for the IB utils.
 %patch6
 %patch7
 %patch8
+%patch9 -p1
 
 %build
 autoreconf -fi
@@ -138,7 +141,7 @@ make %{?_smp_mflags} -Cibdiag
 %install
 export NO_BRP_TCL_INDEX_CHECK=true
 %if "%flavor" == ""
-%makeinstall 
+%makeinstall
 %else
 %makeinstall -Cibdiag/
 rm -f %buildroot%_bindir/git_version.tcl %buildroot%_bindir/ibdiagnet %buildroot%_bindir/ibdiagpath

@@ -1,0 +1,13 @@
+Index: ibutils-1.5.7/ibis/src/Makefile.am
+===================================================================
+--- ibutils-1.5.7.orig/ibis/src/Makefile.am
++++ ibutils-1.5.7/ibis/src/Makefile.am
+@@ -77,7 +77,7 @@ ibis_SOURCES = ibissh_wrap.cpp
+ # note the order of the libraries does matter as we static link
+ ibis_LDADD = -L. -libiscom $(OSM_LDFLAGS) $(TCL_LIBS)
+ ibis_DEPENDENCIES = libibiscom.a
+-
++ibis_LDFLAGS = -pie
+ 
+ # SWIG FILES:
+ SWIG_IFC_FILES= $(srcdir)/ibbbm.i \

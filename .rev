@@ -91,4 +91,13 @@
     <comment></comment>
     <requestid>812235</requestid>
   </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>32ebb90682ceebe5c75b489699ee648b</srcmd5>
+    <version>1.5.7.0.2</version>
+    <time>1619107465</time>
+    <user>dimstar_suse</user>
+    <comment>- Hardening: Link ibis executable with -pie.
+  - Added ibutils-ibis-PIE.patch</comment>
+    <requestid>887510</requestid>
+  </revision>
 </revisionlist>
