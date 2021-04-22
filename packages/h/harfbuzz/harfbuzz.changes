@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 13 08:20:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to version 2.8.0:
+  + Shape joining scripts other than Arabic/Syriac using the
+    Universal Shaping Engine. Previously these were shaped using
+    the generalized Arabic shaper.
+  + Fix regression in shaping of U+0B55 ORIYA SIGN OVERLINE.
+  + Update language tags.
+  + Variations: reduce error: do not round each interpolated delta.
+  + Documentation improvements.
+  + Subsetter improvements: subsets most, if not all, lookup types
+    now.
+  + Fuzzer-found fixes and other improvements when memory failures
+    happen.
+  + Removed most atomic implementations now that we have C++11
+    atomic impl.
+  + General codebase upkeep; using more C++11 features: constexpr
+    constructors, etc.
+
+-------------------------------------------------------------------
 Wed Jan 13 12:03:09 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Re-enable graphite2 support: TexLive relies on this to be
