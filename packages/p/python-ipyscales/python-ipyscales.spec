@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyscales
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define mainver 0.4.0
 %define labver  3.0.0
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-ipyscales
 Version:        %{mainver}
 Release:        0
 Summary:        A widget library for scales
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/vidartf/ipyscales
 Source:         https://files.pythonhosted.org/packages/py2.py3/i/ipyscales/ipyscales-%{mainver}-py2.py3-none-any.whl
 BuildRequires:  %{python_module notebook}
@@ -57,12 +57,12 @@ This package provides the python interface.
 
 %package     -n jupyter-ipyscales
 Summary:        A Jupyter widget library for scales
-Requires:       jupyter-notebook >= 4.0.0
 Requires:       jupyter-ipyscales = %{version}
+Requires:       jupyter-notebook >= 4.0.0
 Requires(post): jupyter-notebook
 Requires(post): jupyter-ipywidgets >= 7.0.0
-Requires(preun): jupyter-notebook
-Requires(preun): jupyter-ipywidgets >= 7.0.0
+Requires(preun):jupyter-notebook
+Requires(preun):jupyter-ipywidgets >= 7.0.0
 Conflicts:      python3-jupyter_ipyscales < 0.4.0
 
 %description -n jupyter-ipyscales
@@ -102,7 +102,6 @@ $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/ipysc
 %{jupyter_move_config}
 cp %{buildroot}%{python3_sitelib}/ipyscales-%{mainver}.dist-info/LICENSE.txt .
 %{fdupes %{buildroot}%{_jupyter_prefix} %{buildroot}%{python3_sitelib}}
-
 
 %check
 export PYTHONDONTWRITEBYTECODE=1

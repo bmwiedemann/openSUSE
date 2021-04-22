@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 22 03:59:17 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.6, due to no NumPy. 
+
+-------------------------------------------------------------------
 Fri Aug 16 17:17:14 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - The full jupyterlab isn't needed for install
