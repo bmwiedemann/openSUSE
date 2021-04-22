@@ -15,7 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+# No numpy for py3.6
+%define skip_python36 1
 %global modname uproot
 Name:           python-uproot
 Version:        4.0.0
