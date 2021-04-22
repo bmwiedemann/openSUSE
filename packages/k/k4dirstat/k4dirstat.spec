@@ -1,7 +1,7 @@
 #
 # spec file for package k4dirstat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           k4dirstat
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Graphical Disk Usage Utility
 License:        GPL-2.0-only AND LGPL-2.0-only
@@ -27,6 +27,7 @@ Source0:        https://github.com/jeromerobert/k4dirstat/archive/%{version}.tar
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Add-the-missing-cassert-include.patch
 BuildRequires:  kf5-filesystem
+BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DocTools)
@@ -39,9 +40,6 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
 Recommends:     k4dirstat-lang = %{version}
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
 
 %description
 K4DirStat (KDE Directory Statistics) is a small utility program that sums up
@@ -61,9 +59,7 @@ graphically.
 %install
 %kf5_makeinstall -C build
 
-%if 0%{?suse_version}
 %suse_update_desktop_file -r k4dirstat Qt KDE Utility Filesystem
-%endif
 
 %find_lang k4dirstat %{name}.lang
 

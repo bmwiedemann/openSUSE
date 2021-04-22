@@ -48,4 +48,14 @@
     <comment></comment>
     <requestid>819522</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ce36816eaba25da3b6e7db4b6973501b</srcmd5>
+    <version>3.2.2</version>
+    <time>1619107462</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.2:
+  * Save &quot;Show treemap&quot; status
+  * Fix a segfault after reading a cache file</comment>
+    <requestid>887500</requestid>
+  </revision>
 </revisionlist>
