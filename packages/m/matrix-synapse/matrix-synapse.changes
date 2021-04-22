@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 21 14:08:11 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to v1.32.1
+
+  This release fixes a regression in Synapse 1.32.0 that caused
+  connected Prometheus instances to become unstable. If you ran
+  Synapse 1.32.0 with Prometheus metrics, first upgrade to Synapse
+  1.32.1 and follow these instructions to clean up any excess
+  writeahead logs.
+
+  - Bugfixes
+    - Fix a regression in Synapse 1.32.0 which caused Synapse to
+      report large numbers of Prometheus time series, potentially
+      overwhelming Prometheus instances. (#9854)
+
+-------------------------------------------------------------------
 Tue Apr 20 17:15:24 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to v1.32.0

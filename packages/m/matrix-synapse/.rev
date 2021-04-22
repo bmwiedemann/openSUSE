@@ -251,4 +251,12 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment></comment>
     <requestid>887114</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>c021b3e0d1d24cf3324b4840d84f664f</srcmd5>
+    <version>1.32.1</version>
+    <time>1619107442</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887396</requestid>
+  </revision>
 </revisionlist>
