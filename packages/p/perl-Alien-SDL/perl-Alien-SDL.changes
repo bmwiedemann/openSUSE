@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 20 11:37:09 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Extend reproducible.patch (enforce list context for the return value
+  of sort because the behaviour of sort in scalar context is undefined)
+
+-------------------------------------------------------------------
 Wed Jun 19 12:44:41 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Extend reproducible.patch to sort file lists (boo#1041090)

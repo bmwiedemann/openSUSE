@@ -64,7 +64,7 @@ index 6d10d6d..328567f 100644
      find({ wanted => sub { push @files, rel2abs($_) if /$re/ }, follow => 1, no_chdir => 1 , follow_skip => 2}, $dir);
    };
 -  return @files;
-+  return sort @files;
++  return @files = sort @files; # enforce list context, see `perldoc -f sort`
  }
  
  sub find_SDL_dir {

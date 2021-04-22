@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Alien-SDL
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,9 +21,9 @@ Version:        1.446
 Release:        0
 %define cpan_name Alien-SDL
 Summary:        Building, Finding and Using Sdl Binaries
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Alien-SDL/
+URL:            http://search.cpan.org/dist/Alien-SDL/
 Source0:        http://www.cpan.org/authors/id/F/FR/FROGGS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         reproducible.patch
