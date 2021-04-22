@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Apr 20 16:42:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.0
+  * no release notes
+  * Add support for JupyterLab 2 and 3
+- Use pip (pyproject macros) so that the js extensions are
+  correctly installed
+
+-------------------------------------------------------------------
+Sun Jul 28 20:24:44 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.5.0
+  * Update for JupyterLab 1.0
+
+-------------------------------------------------------------------
+Wed May  1 17:56:20 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version
