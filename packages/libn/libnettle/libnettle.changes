@@ -4,7 +4,7 @@ Sun Mar 21 10:17:35 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 - GNU Nettle 3.7.2:
   * fix a bug in ECDSA signature verification that could lead to a
     denial of service attack (via an assertion failure) or possibly
-    incorrect results (boo#1183835)
+    incorrect results (CVE-2021-20305, boo#1184401)
   * fix a few related problems where scalars are required to be 
     canonically reduced modulo the ECC group order, but in fact may
     be slightly larger
