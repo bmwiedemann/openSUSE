@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Apr 15 15:58:16 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Add patch to fix crash when loading DVD repositories
+  + Patch: 0001-Fix-a-crash-when-repoId-not-found-in-loaded-conf-gke.patch
+
+-------------------------------------------------------------------
+Tue Apr 13 13:06:00 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.62.0
+  + Change order of TransactionItemReason (rh#1921063)
+  + Add two new comperators for security filters (rh#1918475)
+  + Apply security filters for candidates with lower priority
+  + Fix: Goal - translation of messages in global maps
+  + Enhance description of modular solvables
+  + Improve performance for module query 
+  + Change mechanism of modular errata applicability (rh#1804234)
+  + dnf_transaction_commit(): Remove second call to rpmtsSetVSFlags
+  + Fix a couple of memory leaks
+  + Fix: Setting of librepo handle in newHandle function
+  + Remove failsafe data when module is not enabled (rh#1847035)
+  + Expose librepo's checksum functions via SWIG
+  + Fix: Mising check of "hy_split_nevra()" return code
+  + Do not allow 1 as installonly_limit value (rh#1926261)
+  + Fix check whether the subkey can be used for signing
+  + Hardening: add signature check with rpmcliVerifySignatures 
+    (CVE-2021-3445, CVE-2021-3421, CVE-2021-20271, rh#1932079, rh#1932089, rh#1932090, boo#1183779)
+  + Add a config option sslverifystatus, defaults to false (rh#1814383)
+  + [context] Add API for distro-sync
+
+-------------------------------------------------------------------
 Tue Mar  2 13:24:47 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Fix dependency for repo-config-zypp subpackage to work with SLE

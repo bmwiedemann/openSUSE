@@ -1,0 +1,41 @@
+From be66d0908d939ddaf3022c5489012bd1dbdb0075 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ale=C5=A1=20Mat=C4=9Bj?= <amatej@redhat.com>
+Date: Wed, 14 Apr 2021 09:11:29 +0200
+Subject: [PATCH] Fix a crash when repoId not found in loaded conf gkeyFile
+ (RhBug:1946024)
+
+The crash was caused by missing return value check.
+
+This can happen for example when using a bootable iso media which is
+missing the [media] section in .treeinfo.
+
+= changelog =
+msg: Fix a crash when [media] section in .treeinfo is missing for bootable media
+type: bugfix
+resolves: https://bugzilla.redhat.com/show_bug.cgi?id=1946024
+---
+ libdnf/dnf-repo.cpp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/libdnf/dnf-repo.cpp b/libdnf/dnf-repo.cpp
+index 902eac92..710045fb 100644
+--- a/libdnf/dnf-repo.cpp
++++ b/libdnf/dnf-repo.cpp
+@@ -852,7 +852,13 @@ dnf_repo_conf_from_gkeyfile(libdnf::ConfigRepo &config, const char *repoId, GKey
+     // Reset to the initial state before reloading the configuration.
+     dnf_repo_conf_reset(config);
+ 
+-    g_auto(GStrv) keys = g_key_file_get_keys(gkeyFile, repoId, NULL, NULL);
++    g_autoptr(GError) error_local = NULL;
++    g_auto(GStrv) keys = g_key_file_get_keys(gkeyFile, repoId, NULL, &error_local);
++    if (keys == NULL) {
++        g_debug("Failed to load configuration for repo id \"%s\": %s", repoId, error_local->message);
++        return;
++    }
++
+     for (auto it = keys; *it != NULL; ++it) {
+         auto key = *it;
+         g_autofree gchar *str = g_key_file_get_value(gkeyFile, repoId, key, NULL);
+-- 
+2.31.1
+
