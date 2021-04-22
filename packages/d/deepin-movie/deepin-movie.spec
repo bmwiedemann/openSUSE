@@ -34,6 +34,10 @@ Patch0:         Fix-library-link.patch
 Patch1:         deepin-movie-add-qthelper.patch
 # PATCH-FIX-UPSTEAM libavformat-version-check.patch hillwood@opensuse.org - fix build on new ffmpeg
 Patch2:         libavformat-version-check.patch
+%ifarch aarch64
+# PATCH-FIX-UPSTEAM fix-build-on-ARM.patch hillwood@opensuse.org
+Patch3:         fix-build-on-ARM.patch
+%endif
 BuildRequires:  dtkcore >= 5.0.0
 BuildRequires:  fdupes
 BuildRequires:  glslang-devel

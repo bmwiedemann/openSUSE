@@ -1,0 +1,13 @@
+diff -Nur deepin-movie-reborn-5.7.6.165/src/backends/mpv/mpv_glwidget.cpp deepin-movie-reborn-5.7.6.165-new/src/backends/mpv/mpv_glwidget.cpp
+--- deepin-movie-reborn-5.7.6.165/src/backends/mpv/mpv_glwidget.cpp	2020-11-17 13:48:27.000000000 +0800
++++ deepin-movie-reborn-5.7.6.165-new/src/backends/mpv/mpv_glwidget.cpp	2021-04-21 22:09:20.171936528 +0800
+@@ -37,6 +37,9 @@
+ 
+ #include <dthememanager.h>
+ #include <DApplication>
++
++#define GLAPIENTRY
++
+ DWIDGET_USE_NAMESPACE
+ 
+ 

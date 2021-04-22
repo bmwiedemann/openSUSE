@@ -63,4 +63,12 @@
     <comment> (forwarded request 870085 from hillwood)</comment>
     <requestid>870086</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6b78f45f06a17410fecad43c747f586e</srcmd5>
+    <version>5.7.6.165</version>
+    <time>1619107478</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-build-on-ARM.patch</comment>
+    <requestid>887710</requestid>
+  </revision>
 </revisionlist>
