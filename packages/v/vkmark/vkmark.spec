@@ -18,7 +18,7 @@
 
 
 Name:           vkmark
-Version:        2017.08+git.20210301
+Version:        2017.08+git.20210312
 Release:        0
 Summary:        Vulkan benchmark utility
 License:        LGPL-2.1-or-later
