@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 19 03:07:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9721
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9721 2021-04-18
+  - fix BitMatrix and AdjacencyMatrix problems - thanks @dod38fr for report
+
+-------------------------------------------------------------------
 Fri Mar 26 03:06:32 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9720

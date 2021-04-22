@@ -18,7 +18,7 @@
 
 %define cpan_name Graph
 Name:           perl-Graph
-Version:        0.9720
+Version:        0.9721
 Release:        0
 Summary:        Graph data structures and algorithms
 License:        Artistic-1.0 OR GPL-1.0-or-later
