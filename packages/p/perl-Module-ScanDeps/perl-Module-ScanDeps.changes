@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 22 03:09:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.31
+   see /usr/share/doc/packages/perl-Module-ScanDeps/Changes
+
+  1.31  2021-04-21
+  - Try to match more PerlIO ":layer(args)" in open() or binmode()
+    e.g. Spreadsheet::ParseODS uses ":gzip(none)";
+    Thanks, @shawnlaffan, for the suggestion (cf. PR #12)
+  - XML::Twig::XPath needs either XML::XPathEngine or XML::XPath
+    XML::Twig may use URI if present
+  - Moo may use Class::XSAccessor if present
+  - Fixes #10 "Support IUP.pm Module"
+
+-------------------------------------------------------------------
 Thu Jan 14 03:08:52 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.30

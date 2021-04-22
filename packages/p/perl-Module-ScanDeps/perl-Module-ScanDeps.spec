@@ -18,7 +18,7 @@
 
 %define cpan_name Module-ScanDeps
 Name:           perl-Module-ScanDeps
-Version:        1.30
+Version:        1.31
 Release:        0
 Summary:        Recursively scan Perl code for dependencies
 License:        Artistic-1.0 OR GPL-1.0-or-later
