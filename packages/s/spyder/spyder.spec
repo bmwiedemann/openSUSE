@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           spyder
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -34,24 +34,31 @@ Requires:       %{name}-lang
 Requires:       cookiecutter >= 1.6.0
 Requires:       python3-Pygments >= 2.0
 Requires:       python3-QDarkStyle >= 3.0.2
-Requires:       python3-QtAwesome >= 0.5.7
+Requires:       python3-QtAwesome >= 1.0.2
 Requires:       python3-QtPy >= 1.5.0
 Requires:       python3-Sphinx >= 0.6.6
 Requires:       python3-atomicwrites >= 1.2.0
+Requires:       python3-autopep8
 Requires:       python3-chardet >= 2.0.0
 Requires:       python3-cloudpickle >= 0.5.0
 Requires:       python3-diff-match-patch >= 20181111
+Requires:       python3-flake8 >= 3.8.0
 Requires:       python3-intervaltree
 Requires:       python3-ipython >= 7.6.0
+Requires:       python3-jedi >= 0.17.2
 Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-keyring >= 17.0.0
+Requires:       python3-mccabe >= 0.6.0
 Requires:       python3-nbconvert >= 4.0
 Requires:       python3-numpydoc >= 0.6.0
+Requires:       python3-parso >= 0.7.0
 Requires:       python3-pexpect >= 4.4.0
 Requires:       python3-pickleshare >= 0.4
 Requires:       python3-psutil >= 5.3
-Requires:       python3-pygments >= 2.0
-Requires:       python3-pylint >= 1.0
+Requires:       python3-pycodestyle >= 2.6.0
+Requires:       python3-pydocstyle >= 2.0.0
+Requires:       python3-pyflakes >= 2.2.0
+Requires:       python3-pylint >= 2.5.0
 Requires:       python3-pyls-black >= 0.4.6
 Requires:       python3-pyls-spyder >= 0.3.2
 Requires:       python3-python-language-server >= 0.36.2
@@ -61,13 +68,13 @@ Requires:       python3-qstylizer >= 0.1.10
 Requires:       python3-qt5 >= 5.5
 Requires:       python3-qtconsole >= 5.0.3
 Requires:       python3-qtwebengine-qt5
+Requires:       python3-rope >= 0.10.5
 Requires:       python3-setuptools >= 39.0.0
 Requires:       python3-spyder-kernels >= 2.0.1
 Requires:       python3-textdistance >= 4.2.0
 Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
-Requires:       (python3-jedi >= 0.17.2 with python3-jedi < 0.18)
-Requires:       (python3-parso >= 0.7.0 with python3-parso < 0.8)
+Requires:       python3-yapf
 Recommends:     %{name}-dicom
 Recommends:     %{name}-hdf5
 Recommends:     python3-Cython >= 0.21
@@ -101,31 +108,38 @@ BuildRequires:  python3-Cython >= 0.21
 BuildRequires:  python3-Pillow
 BuildRequires:  python3-Pygments >= 2.0
 BuildRequires:  python3-QDarkStyle >= 3.0.2
-BuildRequires:  python3-QtAwesome >= 0.5.7
+BuildRequires:  python3-QtAwesome >= 1.0.2
 BuildRequires:  python3-QtPy >= 1.5.0
 BuildRequires:  python3-Sphinx >= 0.6.6
 BuildRequires:  python3-atomicwrites >= 1.2.0
+BuildRequires:  python3-autopep8
 BuildRequires:  python3-chardet >= 2.0.0
 BuildRequires:  python3-cloudpickle >= 0.5.0
 BuildRequires:  python3-diff-match-patch >= 20181111
+BuildRequires:  python3-flake8 >= 3.8.0
 BuildRequires:  python3-flaky
 BuildRequires:  python3-intervaltree
 BuildRequires:  python3-ipython >= 7.6.0
+BuildRequires:  python3-jedi >= 0.17.2
 BuildRequires:  python3-jsonschema >= 3.2.0
 BuildRequires:  python3-keyring >= 17.0.0
 BuildRequires:  python3-matplotlib >= 2.0.0
 BuildRequires:  python3-matplotlib-qt5
 BuildRequires:  python3-matplotlib-tk
+BuildRequires:  python3-mccabe >= 0.6.0
 BuildRequires:  python3-nbconvert >= 4.0
 BuildRequires:  python3-numpydoc >= 0.6.0
 BuildRequires:  python3-opengl
 BuildRequires:  python3-pandas >= 1.1.1
+BuildRequires:  python3-parso >= 0.7.0
 BuildRequires:  python3-pexpect >= 4.4.0
 BuildRequires:  python3-pickleshare >= 0.4
 BuildRequires:  python3-psutil >= 5.3
 BuildRequires:  python3-pyaml
-BuildRequires:  python3-pygments >= 2.0
-BuildRequires:  python3-pylint >= 1.0
+BuildRequires:  python3-pycodestyle >= 2.6.0
+BuildRequires:  python3-pydocstyle >= 2.0.0
+BuildRequires:  python3-pyflakes >= 2.2.0
+BuildRequires:  python3-pylint >= 2.5.0
 BuildRequires:  python3-pyls-black >= 0.4.6
 BuildRequires:  python3-pyls-spyder >= 0.3.0
 BuildRequires:  python3-pytest >= 5.0
@@ -141,16 +155,16 @@ BuildRequires:  python3-qstylizer >= 0.1.10
 BuildRequires:  python3-qt5 >= 5.5
 BuildRequires:  python3-qtconsole >= 5.0.3
 BuildRequires:  python3-qtwebengine-qt5
+BuildRequires:  python3-rope >= 0.10.5
 BuildRequires:  python3-scipy
 BuildRequires:  python3-spyder-kernels >= 2.0.1
 BuildRequires:  python3-sympy >= 0.7.3
 BuildRequires:  python3-textdistance >= 4.2.0
 BuildRequires:  python3-three-merge >= 0.1.1
 BuildRequires:  python3-watchdog
+BuildRequires:  python3-yapf
 BuildRequires:  xdpyinfo
 BuildRequires:  xvfb-run
-BuildRequires:  (python3-jedi >= 0.17.2 with python3-jedi < 0.18)
-BuildRequires:  (python3-parso >= 0.7.0 with python3-parso < 0.8)
 %endif
 
 %description
@@ -231,12 +245,15 @@ sed -i 's/\r$//' LICENSE.txt CHANGELOG.md
 # Remove shebang for non-executable-script RPMLint warning
 sed -i -e '/^#!\//, 1d' spyder/app/restart.py
 sed -i -e '/^#!\//, 1d' spyder/utils/external/github.py
-#sed -i -e '/^#!\//, 1d' spyder/plugins/ipythonconsole/scripts/conda-activate.sh
+
+sed -i -e '1 {s:/usr/bin/env bash.*:%{_bindir}/bash:}' spyder/plugins/ipythonconsole/scripts/conda-activate.sh
 
 chmod -x spyder/images/*/*.svg
 
 # macOS specific script
 rm spyder/utils/check-git.sh
+# windows script
+rm spyder/plugins/ipythonconsole/scripts/conda-activate.bat
 
 # remove pinned dependencies where OpenSUSE already has newer versions
 # that triggers an annoying warning on startup
@@ -244,6 +261,12 @@ rm spyder/utils/check-git.sh
 sed -i "s|JEDI_REQVER = '=|JEDI_REQVER = '>=|" spyder/dependencies.py
 # parso was pinned because of JEDI (PR#11476 and PR#11809)
 sed -i "s|PARSO_REQVER = '=|PARSO_REQVER = '>=|" spyder/dependencies.py
+# prevent pinned jedi, parso, pyqt5, pyqtwebengine in egg-info, read at runtime startup
+sed -e 's/jedi==/jedi>=/' \
+    -e 's/parso==/parso>=/' \
+    -e 's/pyqt5<5.13/pyqt5/' \
+    -e 's/pyqtwebengine<5.13/pyqtwebengine/' \
+    -i setup.py
 
 # replace pytest-ordering with pytest-order
 # gh#spyder-ide/spyder#14935
@@ -288,6 +311,7 @@ find %{buildroot}%{python3_sitelib}/spyder/locale -name '*.pot' -delete
 %check
 export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
+mkdir -p /tmp/spyder-abuild
 
 # Upstream splits the tests into slow and fast ones.
 # Add all tests which must be skipped into $donttest.
@@ -300,8 +324,9 @@ export PYTHONDONTWRITEBYTECODE=1
 donttest+=" or test_tab_copies_find_to_replace"
 # requires internet connection
 donttest+=" or test_github_backend"
-# we modified the dependencies in %%prep, this is a pure developer test
+# we modified the dependencies in %%prep, these are pure developer tests
 donttest+=" or test_dependencies_for_spyder_dialog_in_sync"
+donttest+=" or test_dependencies_in_sync"
 # (* no CI) fails on last assert
 donttest+=" or test_connection_dialog_remembers_input_with_ssh_passphrase"
 donttest+=" or test_connection_dialog_remembers_input_with_password"
@@ -337,7 +362,11 @@ donttest+=" or test_apps_dialog"
 # no venvs to load in our test environment
 donttest+=" or test_load_time"
 # no online help within qtbot timeout
-donttest+=" or test_get_pydoc"
+donttest+=" or test_get_pydoc or test_pydocbrowser"
+# seccomp bpf failures on i586
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+  donttest+=" or test_ipythonconsole"
+fi
 
 # tests marked slow:
 # completes to math.hypot(cooordinates) instead of expected math.hypot(*coordinates)
@@ -354,8 +383,6 @@ donttest+=" or test_kite_install"
 donttest+=" or test_ignore_warnings or  test_move_warnings or  test_get_warnings or  test_update_warnings"
 # qtbot timeout
 donttest+=" or test_get_hints"
-# package conflict -- can't install yapf or autopep8 with pyls-black installed
-donttest+=" or (formatting and (yapf or autopep8))"
 # occasional segfaults. fails to get the root tree otherwise (LSP problem?)
 donttest+=" or test_editor_outlineexplorer"
 # too flaky on some platforms

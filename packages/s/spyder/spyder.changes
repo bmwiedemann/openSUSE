@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr 19 16:15:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add python-language-server[all] requirements and unpin packages
+  in generated egg-info/requires.txt because they are checked on
+  startup now.
+
+-------------------------------------------------------------------
+Sat Apr 17 12:29:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.0.1
+  * Avoid false warning about incorrect spyder-kernels version.
+  * Fix error when opening a new editor window.
+  * Fix error when saving layouts.
+  * Fix several style issues.
+  * Fix clicking on tracebacks in the IPython console.
+- Unpin jedi and parso. python-python-language-server has been
+  patched.
+
+-------------------------------------------------------------------
 Thu Apr  8 16:57:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.0.0
