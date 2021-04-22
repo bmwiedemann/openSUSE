@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 16 03:06:48 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.23
+   see /usr/share/doc/packages/perl-Digest-CRC/Changes
+
+
+  0.23  Thu Apr 15 13:02:04 2021
+            - added wrapper for CRC-SAE-J1850
+
+-------------------------------------------------------------------
 Wed Jan 20 09:05:52 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - Regenerate with new cpanspec template

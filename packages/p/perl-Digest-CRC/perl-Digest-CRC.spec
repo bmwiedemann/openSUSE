@@ -18,7 +18,7 @@
 
 %define cpan_name Digest-CRC
 Name:           perl-Digest-CRC
-Version:        0.22.2
+Version:        0.23
 Release:        0
 #Upstream:  CRC algorithm code taken from "A PAINLESS GUIDE TO CRC ERROR DETECTION ALGORITHMS". the public domain.
 Summary:        Generic CRC functions
@@ -36,7 +36,7 @@ wrapper functions with the correct parameters for CRC-CCITT, CRC-16, CRC-32
 and CRC-64, as well as the CRC used in OpenPGP's ASCII-armored checksum.
 
 %prep
-%autosetup  -n %{cpan_name}-0.22
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
