@@ -1,7 +1,7 @@
 #
 # spec file for package python-nagiosplugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,12 +18,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-nagiosplugin
 Version:        1.3.2
 Release:        0
 Summary:        Class library for writing Nagios (Icinga) plugins
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://bitbucket.org/flyingcircus/nagiosplugin
 Source:         https://files.pythonhosted.org/packages/source/n/nagiosplugin/nagiosplugin-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
