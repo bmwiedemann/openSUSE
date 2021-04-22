@@ -30,7 +30,7 @@
 
 # logic for default version
 # OBSOLETE ARCHES
-%ifarch %ix86
+%ifarch %ix86 %{arm}
 %define default_node_ver 10
 %else
 

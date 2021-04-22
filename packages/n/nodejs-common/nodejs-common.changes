@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 15 12:35:21 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use older nodejs (10) for %{arm}
+
+-------------------------------------------------------------------
 Tue Mar  9 17:29:00 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - Provide nodejs and npm and nodejs-devel by the appropriate
