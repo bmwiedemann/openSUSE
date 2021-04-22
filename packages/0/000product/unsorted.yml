@@ -1735,16 +1735,16 @@ unsorted:
   - carla: [x86_64] 
   - carla-devel: [x86_64] 
   - carla-vst: [x86_64] 
-  - casacore 
-  - casacore-devel 
-  - casacore-openmpi1 
-  - casacore-openmpi1-devel 
-  - casacore-openmpi2 
-  - casacore-openmpi2-devel 
-  - casacore-openmpi3 
-  - casacore-openmpi3-devel 
-  - casacore-openmpi4 
-  - casacore-openmpi4-devel 
+  - casacore: [x86_64] 
+  - casacore-devel: [x86_64] 
+  - casacore-openmpi1: [x86_64] 
+  - casacore-openmpi1-devel: [x86_64] 
+  - casacore-openmpi2: [x86_64] 
+  - casacore-openmpi2-devel: [x86_64] 
+  - casacore-openmpi3: [x86_64] 
+  - casacore-openmpi3-devel: [x86_64] 
+  - casacore-openmpi4: [x86_64] 
+  - casacore-openmpi4-devel: [x86_64] 
   - casarest 
   - casarest-devel 
   - casarest-libs 
@@ -1951,8 +1951,12 @@ unsorted:
   - clang10-devel 
   - clang10-devel-32bit: [x86_64] 
   - clang10-doc 
+  - clang11 
   - clang11-devel 
   - clang11-devel-32bit: [x86_64] 
+  - clang11-doc 
+  - clang12-devel 
+  - clang12-devel-32bit: [x86_64] 
   - clang7 
   - clang7-devel 
   - clang7-devel-32bit: [x86_64] 
@@ -3649,6 +3653,7 @@ unsorted:
   - fontweak 
   - forge-parent 
   - forkbomb 
+  - forked-daapd 
   - forkstat 
   - forkstat-bash-completion 
   - form 
@@ -8645,6 +8650,7 @@ unsorted:
   - libLLVM10 
   - libLLVM10-32bit: [x86_64] 
   - libLLVM11-32bit: [x86_64] 
+  - libLLVM12-32bit: [x86_64] 
   - libLLVM7 
   - libLLVM7-32bit: [x86_64] 
   - libLLVM8 
@@ -8653,7 +8659,9 @@ unsorted:
   - libLLVM9-32bit: [x86_64] 
   - libLTO10 
   - libLTO10-32bit: [x86_64] 
+  - libLTO11 
   - libLTO11-32bit: [x86_64] 
+  - libLTO12-32bit: [x86_64] 
   - libLTO7 
   - libLTO7-32bit: [x86_64] 
   - libLTO8 
@@ -9619,8 +9627,8 @@ unsorted:
   - libboost_wave1_75_0-32bit: [x86_64] 
   - libboost_wave1_75_0-devel 
   - libboringssl1 
-  - libbotan-2-17 
-  - libbotan-2-17-32bit: [x86_64] 
+  - libbotan-2-18 
+  - libbotan-2-18-32bit: [x86_64] 
   - libbotan-devel 
   - libbotan-devel-32bit: [x86_64] 
   - libbox2d-devel 
@@ -9716,11 +9724,11 @@ unsorted:
   - libcapstone4 
   - libcares2-32bit: [x86_64] 
   - libcaribou0 
-  - libcasacore5 
-  - libcasacore5-openmpi1 
-  - libcasacore5-openmpi2 
-  - libcasacore5-openmpi3 
-  - libcasacore5-openmpi4 
+  - libcasacore6: [x86_64] 
+  - libcasacore6-openmpi1: [x86_64] 
+  - libcasacore6-openmpi2: [x86_64] 
+  - libcasacore6-openmpi3: [x86_64] 
+  - libcasacore6-openmpi4: [x86_64] 
   - libcblas3-32bit: [x86_64] 
   - libcbor-devel 
   - libccrtp3 
@@ -9822,7 +9830,9 @@ unsorted:
   - libclFFT2: [x86_64] 
   - libclang10 
   - libclang10-32bit: [x86_64] 
+  - libclang11 
   - libclang11-32bit: [x86_64] 
+  - libclang12-32bit: [x86_64] 
   - libclang7 
   - libclang7-32bit: [x86_64] 
   - libclang8 
@@ -11540,6 +11550,7 @@ unsorted:
   - liblittleb0 
   - liblldb10: [x86_64] 
   - liblldb11: [x86_64] 
+  - liblldb12: [x86_64] 
   - liblldb7: [x86_64] 
   - liblldb8: [x86_64] 
   - liblldb9: [x86_64] 
@@ -12148,6 +12159,7 @@ unsorted:
   - libomniORB4 
   - libomp10-devel 
   - libomp11-devel 
+  - libomp12-devel 
   - libomp7-devel 
   - libomp8-devel 
   - libomp9-devel 
@@ -13199,6 +13211,7 @@ unsorted:
   - librttr_core0_9_6 
   - librubberband-devel 
   - librubberband2-32bit: [x86_64] 
+  - libruby3_0-3_0 
   - librvngabw-0_0-0 
   - librvngabw-devel 
   - librvngabw-devel-doc 
@@ -14669,6 +14682,7 @@ unsorted:
   - lld 
   - lld10 
   - lld11 
+  - lld12 
   - lld7 
   - lld8 
   - lld9 
@@ -14678,6 +14692,8 @@ unsorted:
   - lldb10-devel: [x86_64] 
   - lldb11: [x86_64] 
   - lldb11-devel: [x86_64] # devel package of dvd:libLLVM11 
+  - lldb12: [x86_64] 
+  - lldb12-devel: [x86_64] # devel package of dvd:clang12-doc 
   - lldb7: [x86_64] 
   - lldb7-devel: [x86_64] 
   - lldb8: [x86_64] 
@@ -14717,6 +14733,17 @@ unsorted:
   - llvm11-polly 
   - llvm11-polly-devel 
   - llvm11-vim-plugins 
+  - llvm12 
+  - llvm12-LTO-devel 
+  - llvm12-LTO-devel-32bit: [x86_64] 
+  - llvm12-devel 
+  - llvm12-devel-32bit: [x86_64] 
+  - llvm12-doc 
+  - llvm12-gold 
+  - llvm12-opt-viewer 
+  - llvm12-polly 
+  - llvm12-polly-devel 
+  - llvm12-vim-plugins 
   - llvm7 
   - llvm7-LTO-devel 
   - llvm7-LTO-devel-32bit: [x86_64] 
@@ -20872,7 +20899,6 @@ unsorted:
   - python3-fastjet 
   - python3-fife 
   - python3-fityk 
-  - python3-framel 
   - python3-freezerclient 
   - python3-futurist 
   - python3-gcemetadata 
@@ -20914,7 +20940,6 @@ unsorted:
   - python3-keystoneclient 
   - python3-keystonemiddleware 
   - python3-kiwi 
-  - python3-lalapps: [x86_64] 
   - python3-lash 
   - python3-lasso 
   - python3-ldb-32bit: [x86_64] 
@@ -20978,6 +21003,7 @@ unsorted:
   - python3-lldb: [x86_64] 
   - python3-lldb10: [x86_64] 
   - python3-lldb11: [x86_64] 
+  - python3-lldb12: [x86_64] 
   - python3-lldb7: [x86_64] 
   - python3-lldb8: [x86_64] 
   - python3-lldb9: [x86_64] 
@@ -21193,8 +21219,6 @@ unsorted:
   - python36-Glances 
   - python36-Gloo 
   - python36-GooCalendar 
-  - python36-GooseMPL 
-  - python36-GridDataFormats 
   - python36-HTTPolice 
   - python36-HeapDict 
   - python36-IMAPClient 
@@ -21224,7 +21248,6 @@ unsorted:
   - python36-Morfessor 
   - python36-MouseInfo 
   - python36-Nuitka 
-  - python36-OWSLib 
   - python36-PGet 
   - python36-PTable 
   - python36-Parsley 
@@ -21232,13 +21255,11 @@ unsorted:
   - python36-PasteDeploy 
   - python36-Paver 
   - python36-PeachPy: [x86_64] 
-  - python36-PeakUtils 
   - python36-Pebble 
   - python36-Pillow 
   - python36-Pillow-tk 
   - python36-PrettyTable 
   - python36-Protego 
-  - python36-PsyLab 
   - python36-PubChemPy 
   - python36-PyAudio 
   - python36-PyAutoGUI 
@@ -21284,7 +21305,6 @@ unsorted:
   - python36-PyWebDAV3-GNUHealth 
   - python36-PyX 
   - python36-PyYAML 
-  - python36-Pydap 
   - python36-Pygments 
   - python36-Pykka 
   - python36-Pympler 
@@ -21316,7 +21336,6 @@ unsorted:
   - python36-Tempita 
   - python36-TermRecord 
   - python36-Theano 
-  - python36-Transplant 
   - python36-Trolly 
   - python36-Trololio 
   - python36-Twisted 
@@ -21732,7 +21751,6 @@ unsorted:
   - python36-blinker 
   - python36-blist 
   - python36-blockdiag 
-  - python36-bloscpack 
   - python36-blue 
   - python36-blurb 
   - python36-bobo 
@@ -21815,7 +21833,6 @@ unsorted:
   - python36-chart-studio 
   - python36-check-manifest 
   - python36-cheroot 
-  - python36-chest 
   - python36-ciscoconfparse 
   - python36-cl 
   - python36-cleo 
@@ -21854,7 +21871,6 @@ unsorted:
   - python36-coloredlogs 
   - python36-colorlog 
   - python36-colorlover 
-  - python36-colorspacious 
   - python36-colour 
   - python36-combi 
   - python36-commentjson 
@@ -21913,7 +21929,6 @@ unsorted:
   - python36-csv23 
   - python36-csvkit 
   - python36-ctypescrypto 
-  - python36-cufflinks 
   - python36-curio 
   - python36-curses 
   - python36-curtsies 
@@ -21943,7 +21958,6 @@ unsorted:
   - python36-dbus-python-devel 
   - python36-ddg3 
   - python36-ddt 
-  - python36-deap 
   - python36-debian 
   - python36-decorator 
   - python36-deepmerge 
@@ -22116,7 +22130,6 @@ unsorted:
   - python36-dpcontracts 
   - python36-dpkt 
   - python36-dragonmapper 
-  - python36-drms 
   - python36-dropbox 
   - python36-dtaidistance 
   - python36-dtfabric 
@@ -22486,7 +22499,6 @@ unsorted:
   - python36-json5 
   - python36-jsondate 
   - python36-jsondiff 
-  - python36-jsonextended 
   - python36-jsonlib-python3 
   - python36-jsonlines 
   - python36-jsonpatch 
@@ -22687,6 +22699,7 @@ unsorted:
   - python36-munkres 
   - python36-musicbrainzngs 
   - python36-mutagen 
+  - python36-mutatorMath 
   - python36-mutt-ics 
   - python36-mygpoclient 
   - python36-mypy 
@@ -23695,7 +23708,6 @@ unsorted:
   - python36-thrift 
   - python36-thriftpy2 
   - python36-timeout-decorator 
-  - python36-tinyarray 
   - python36-tinycss2 
   - python36-tinydb 
   - python36-tinyrecord 
@@ -25075,6 +25087,7 @@ unsorted:
   - python38-fontPens 
   - python38-forbiddenfruit 
   - python38-formats 
+  - python38-framel 
   - python38-freeipa 
   - python38-freetype-py 
   - python38-freezegun 
@@ -25387,6 +25400,7 @@ unsorted:
   - python38-labelImg 
   - python38-labels 
   - python38-lal: [x86_64] 
+  - python38-lalapps: [x86_64] 
   - python38-lalburst: [x86_64] 
   - python38-lalframe: [x86_64] 
   - python38-lalinference: [x86_64] 
@@ -26903,6 +26917,8 @@ unsorted:
   - python39-Gloo 
   - python39-Glymur 
   - python39-GooCalendar 
+  - python39-GooseMPL 
+  - python39-GridDataFormats 
   - python39-HTTPolice 
   - python39-HeapDict 
   - python39-IMAPClient 
@@ -26930,6 +26946,7 @@ unsorted:
   - python39-MouseInfo 
   - python39-MulticoreTSNE 
   - python39-Nuitka 
+  - python39-OWSLib 
   - python39-PGet 
   - python39-PTable 
   - python39-Parsley 
@@ -26937,12 +26954,14 @@ unsorted:
   - python39-PasteDeploy 
   - python39-Paver 
   - python39-PeachPy: [x86_64] 
+  - python39-PeakUtils 
   - python39-Pebble 
   - python39-Pillow 
   - python39-Pillow-tk 
   - python39-Pint 
   - python39-PrettyTable 
   - python39-Protego 
+  - python39-PsyLab 
   - python39-PubChemPy 
   - python39-Pweave 
   - python39-PyAudio 
@@ -26987,6 +27006,7 @@ unsorted:
   - python39-PyWebDAV3-GNUHealth 
   - python39-PyX 
   - python39-PyYAML 
+  - python39-Pydap 
   - python39-Pygments 
   - python39-Pykka 
   - python39-Pympler 
@@ -27015,6 +27035,7 @@ unsorted:
   - python39-Tempita 
   - python39-TermRecord 
   - python39-Theano 
+  - python39-Transplant 
   - python39-Trolly 
   - python39-Trololio 
   - python39-Twisted 
@@ -27095,6 +27116,7 @@ unsorted:
   - python39-altair-widgets 
   - python39-altgraph 
   - python39-amqp 
+  - python39-amqpstorm 
   - python39-ana 
   - python39-aniso8601 
   - python39-annoy 
@@ -27433,6 +27455,7 @@ unsorted:
   - python39-blist 
   - python39-blockdiag 
   - python39-blosc 
+  - python39-bloscpack 
   - python39-blue 
   - python39-blurb 
   - python39-bobo 
@@ -27520,6 +27543,7 @@ unsorted:
   - python39-chart-studio 
   - python39-check-manifest 
   - python39-cheroot 
+  - python39-chest 
   - python39-ciscoconfparse 
   - python39-cl 
   - python39-cleo 
@@ -27560,6 +27584,7 @@ unsorted:
   - python39-coloredlogs 
   - python39-colorlog 
   - python39-colorlover 
+  - python39-colorspacious 
   - python39-colour 
   - python39-combi 
   - python39-commentjson 
@@ -27615,6 +27640,7 @@ unsorted:
   - python39-cstruct 
   - python39-csv23 
   - python39-ctypescrypto 
+  - python39-cufflinks 
   - python39-curio 
   - python39-curses 
   - python39-curtsies 
@@ -27654,6 +27680,7 @@ unsorted:
   - python39-dbus-python-devel 
   - python39-ddg3 
   - python39-ddt 
+  - python39-deap 
   - python39-debian 
   - python39-decorator 
   - python39-deepdiff 
@@ -27818,6 +27845,7 @@ unsorted:
   - python39-dpcontracts 
   - python39-dpkt 
   - python39-dragonmapper 
+  - python39-drms 
   - python39-dropbox 
   - python39-dtaidistance 
   - python39-dtfabric 
@@ -27945,6 +27973,7 @@ unsorted:
   - python39-fontPens 
   - python39-forbiddenfruit 
   - python39-formats 
+  - python39-framel 
   - python39-freeipa 
   - python39-freetype-py 
   - python39-freezegun 
@@ -28203,6 +28232,7 @@ unsorted:
   - python39-json_tricks 
   - python39-jsondate 
   - python39-jsondiff 
+  - python39-jsonextended 
   - python39-jsonlib-python3 
   - python39-jsonlines 
   - python39-jsonpatch 
@@ -28261,6 +28291,15 @@ unsorted:
   - python39-l20n 
   - python39-labelImg 
   - python39-labels 
+  - python39-lal: [x86_64] 
+  - python39-lalapps: [x86_64] 
+  - python39-lalburst: [x86_64] 
+  - python39-lalframe: [x86_64] 
+  - python39-lalinference: [x86_64] 
+  - python39-lalinspiral: [x86_64] 
+  - python39-lalmetaio: [x86_64] 
+  - python39-lalpulsar: [x86_64] 
+  - python39-lalsimulation: [x86_64] 
   - python39-lancet-ioam 
   - python39-langdetect 
   - python39-langtable 
@@ -28402,6 +28441,7 @@ unsorted:
   - python39-munkres 
   - python39-musicbrainzngs 
   - python39-mutagen 
+  - python39-mutatorMath 
   - python39-mutmut 
   - python39-mutt-ics 
   - python39-mygpoclient 
@@ -28671,6 +28711,7 @@ unsorted:
   - python39-proselint 
   - python39-proto-plus 
   - python39-protobuf 
+  - python39-psautohint 
   - python39-pscript 
   - python39-psutil 
   - python39-psycopg2 
@@ -29069,6 +29110,7 @@ unsorted:
   - python39-qscintilla-qt5 
   - python39-qscintilla-qt5-sip 
   - python39-qstylizer 
+  - python39-qsymm 
   - python39-qt3d-qt5 
   - python39-qt3d-qt5-api 
   - python39-qt3d-qt5-doc 
@@ -29361,6 +29403,7 @@ unsorted:
   - python39-subscene-api 
   - python39-subst 
   - python39-suds-jurko 
+  - python39-sunpy 
   - python39-suntime 
   - python39-sure 
   - python39-svgpathtools: [x86_64] 
@@ -29415,6 +29458,7 @@ unsorted:
   - python39-thriftpy2 
   - python39-tifffile 
   - python39-timeout-decorator 
+  - python39-tinyarray 
   - python39-tinycss2 
   - python39-tinydb 
   - python39-tinyrecord 
@@ -29479,6 +29523,7 @@ unsorted:
   - python39-ua-parser 
   - python39-uamqp 
   - python39-ufoLib2 
+  - python39-ufoProcessor 
   - python39-ujson 
   - python39-uncertainties 
   - python39-unicodecsv 
@@ -30389,13 +30434,21 @@ unsorted:
   - ruby2.7-devel-extra 
   - ruby2.7-doc 
   - ruby2.7-doc-ri 
+  - ruby2.7-rubygem-actionmailbox-6.0 
+  - ruby2.7-rubygem-actiontext-6.0 
+  - ruby2.7-rubygem-activestorage-5.2 
+  - ruby2.7-rubygem-activestorage-6.0 
   - ruby2.7-rubygem-gettext-setup 
+  - ruby2.7-rubygem-gettext_i18n_rails_js 
   - ruby2.7-rubygem-libyui-rake 
   - ruby2.7-rubygem-listen-doc-3_1 
+  - ruby2.7-rubygem-rails-5.2 
+  - ruby2.7-rubygem-rails-6.0 
   - ruby2.7-rubygem-rspec-rails-3.9 
   - ruby2.7-rubygem-ruby_dep-doc 
   - ruby2.7-rubygem-unicorn-doc 
   - ruby2.7-rubygem-unicorn-testsuite 
+  - ruby3.0 
   - ruby3.0-devel 
   - ruby3.0-devel-extra 
   - ruby3.0-doc 
@@ -30408,16 +30461,20 @@ unsorted:
   - ruby3.0-rubygem-actionmailer-5.2 
   - ruby3.0-rubygem-actionmailer-6.0 
   - ruby3.0-rubygem-actionpack-5.2 
+  - ruby3.0-rubygem-actionpack-6.0 
   - ruby3.0-rubygem-actiontext-6.0 
   - ruby3.0-rubygem-actionview-5.2 
+  - ruby3.0-rubygem-actionview-6.0 
   - ruby3.0-rubygem-activejob-5.2 
   - ruby3.0-rubygem-activejob-6.0 
   - ruby3.0-rubygem-activemodel-5.2 
+  - ruby3.0-rubygem-activemodel-6.0 
   - ruby3.0-rubygem-activerecord-5.2 
   - ruby3.0-rubygem-activerecord-6.0 
   - ruby3.0-rubygem-activestorage-5.2 
   - ruby3.0-rubygem-activestorage-6.0 
   - ruby3.0-rubygem-activesupport-5.2 
+  - ruby3.0-rubygem-activesupport-6.0 
   - ruby3.0-rubygem-addressable 
   - ruby3.0-rubygem-aes_key_wrap 
   - ruby3.0-rubygem-afm 
@@ -30436,9 +30493,13 @@ unsorted:
   - ruby3.0-rubygem-bcrypt_pbkdf 
   - ruby3.0-rubygem-benchmark 
   - ruby3.0-rubygem-bindata 
+  - ruby3.0-rubygem-bindex 
   - ruby3.0-rubygem-binding_of_caller 
+  - ruby3.0-rubygem-bootsnap 
+  - ruby3.0-rubygem-builder 
   - ruby3.0-rubygem-bundler 
   - ruby3.0-rubygem-bundler-audit 
+  - ruby3.0-rubygem-byebug 
   - ruby3.0-rubygem-capistrano 
   - ruby3.0-rubygem-celluloid 
   - ruby3.0-rubygem-cfa 
@@ -30455,8 +30516,10 @@ unsorted:
   - ruby3.0-rubygem-coffee-script-source 
   - ruby3.0-rubygem-colorator 
   - ruby3.0-rubygem-commander 
+  - ruby3.0-rubygem-concurrent-ruby 
   - ruby3.0-rubygem-cool.io 
   - ruby3.0-rubygem-crack 
+  - ruby3.0-rubygem-crass 
   - ruby3.0-rubygem-css_parser 
   - ruby3.0-rubygem-debase 
   - ruby3.0-rubygem-debase-ruby_core_source 
@@ -30481,6 +30544,7 @@ unsorted:
   - ruby3.0-rubygem-ed25519 
   - ruby3.0-rubygem-em-websocket 
   - ruby3.0-rubygem-equalizer 
+  - ruby3.0-rubygem-erubi 
   - ruby3.0-rubygem-erubis 
   - ruby3.0-rubygem-eventmachine 
   - ruby3.0-rubygem-exception_notification 
@@ -30492,6 +30556,7 @@ unsorted:
   - ruby3.0-rubygem-faraday_middleware 
   - ruby3.0-rubygem-fast_gettext 
   - ruby3.0-rubygem-fast_gettext-1.1 
+  - ruby3.0-rubygem-ffi 
   - ruby3.0-rubygem-flog 
   - ruby3.0-rubygem-fluentd 
   - ruby3.0-rubygem-fog-core 
@@ -30528,9 +30593,11 @@ unsorted:
   - ruby3.0-rubygem-http-cookie 
   - ruby3.0-rubygem-http_parser.rb 
   - ruby3.0-rubygem-httpclient 
+  - ruby3.0-rubygem-i18n 
   - ruby3.0-rubygem-ice_nine 
   - ruby3.0-rubygem-inifile 
   - ruby3.0-rubygem-jaro_winkler 
+  - ruby3.0-rubygem-jbuilder 
   - ruby3.0-rubygem-jekyll 
   - ruby3.0-rubygem-jekyll-sass-converter 
   - ruby3.0-rubygem-jekyll-watch 
@@ -30549,15 +30616,18 @@ unsorted:
   - ruby3.0-rubygem-lightbox2 
   - ruby3.0-rubygem-liquid 
   - ruby3.0-rubygem-liquid-4 
+  - ruby3.0-rubygem-listen 
   - ruby3.0-rubygem-little-plugger 
   - ruby3.0-rubygem-locale 
   - ruby3.0-rubygem-log4r 
   - ruby3.0-rubygem-logging 
   - ruby3.0-rubygem-lolcat 
+  - ruby3.0-rubygem-loofah 
   - ruby3.0-rubygem-mail 
   - ruby3.0-rubygem-manpages 
   - ruby3.0-rubygem-marcel 
   - ruby3.0-rubygem-mercenary 
+  - ruby3.0-rubygem-method_source 
   - ruby3.0-rubygem-micromachine 
   - ruby3.0-rubygem-mime 
   - ruby3.0-rubygem-mime-types 
@@ -30574,6 +30644,7 @@ unsorted:
   - ruby3.0-rubygem-mixlib-shellout 
   - ruby3.0-rubygem-mocha 
   - ruby3.0-rubygem-moneta 
+  - ruby3.0-rubygem-msgpack 
   - ruby3.0-rubygem-multi_json 
   - ruby3.0-rubygem-multi_xml 
   - ruby3.0-rubygem-multipart-post 
@@ -30587,6 +30658,8 @@ unsorted:
   - ruby3.0-rubygem-net-sftp 
   - ruby3.0-rubygem-net-ssh 
   - ruby3.0-rubygem-netrc 
+  - ruby3.0-rubygem-nio4r 
+  - ruby3.0-rubygem-nokogiri 
   - ruby3.0-rubygem-nori 
   - ruby3.0-rubygem-oauth2 
   - ruby3.0-rubygem-omniauth 
@@ -30623,21 +30696,30 @@ unsorted:
   - ruby3.0-rubygem-public_suffix-3.1 
   - ruby3.0-rubygem-puma 
   - ruby3.0-rubygem-puma-4 
+  - ruby3.0-rubygem-puma-4.1 
   - ruby3.0-rubygem-puma_worker_killer 
   - ruby3.0-rubygem-pundit 
+  - ruby3.0-rubygem-rack 
   - ruby3.0-rubygem-rack-1_6 
   - ruby3.0-rubygem-rack-2.0 
   - ruby3.0-rubygem-rack-accept 
   - ruby3.0-rubygem-rack-oauth2 
   - ruby3.0-rubygem-rack-protection 
+  - ruby3.0-rubygem-rack-proxy 
+  - ruby3.0-rubygem-rack-test-0_6 
   - ruby3.0-rubygem-rails-5.2 
   - ruby3.0-rubygem-rails-6.0 
+  - ruby3.0-rubygem-rails-dom-testing 
+  - ruby3.0-rubygem-rails-html-sanitizer 
   - ruby3.0-rubygem-rails-i18n 
   - ruby3.0-rubygem-railties-5.2 
+  - ruby3.0-rubygem-railties-6.0 
   - ruby3.0-rubygem-rainbow 
   - ruby3.0-rubygem-raindrops 
   - ruby3.0-rubygem-rake-12_0 
   - ruby3.0-rubygem-rake-compiler 
+  - ruby3.0-rubygem-rb-fsevent 
+  - ruby3.0-rubygem-rb-inotify 
   - ruby3.0-rubygem-rb-kqueue 
   - ruby3.0-rubygem-rdiscount 
   - ruby3.0-rubygem-regexp_parser 
@@ -30677,8 +30759,11 @@ unsorted:
   - ruby3.0-rubygem-safe_yaml 
   - ruby3.0-rubygem-sass 
   - ruby3.0-rubygem-sass-listen 
+  - ruby3.0-rubygem-sass-rails 
   - ruby3.0-rubygem-sass-rails-5.1 
+  - ruby3.0-rubygem-sassc 
   - ruby3.0-rubygem-sassc-2.2 
+  - ruby3.0-rubygem-sassc-rails 
   - ruby3.0-rubygem-sdoc 
   - ruby3.0-rubygem-semantic_range 
   - ruby3.0-rubygem-serverengine 
@@ -30691,8 +30776,13 @@ unsorted:
   - ruby3.0-rubygem-sinatra 
   - ruby3.0-rubygem-slim 
   - ruby3.0-rubygem-slop 
+  - ruby3.0-rubygem-spring 
+  - ruby3.0-rubygem-spring-watcher-listen 
+  - ruby3.0-rubygem-sprockets 
   - ruby3.0-rubygem-sprockets-3.7 
   - ruby3.0-rubygem-sprockets-helpers 
+  - ruby3.0-rubygem-sprockets-rails 
+  - ruby3.0-rubygem-sqlite3 
   - ruby3.0-rubygem-sshkit 
   - ruby3.0-rubygem-stomp 
   - ruby3.0-rubygem-strptime 
@@ -30700,15 +30790,21 @@ unsorted:
   - ruby3.0-rubygem-temple 
   - ruby3.0-rubygem-terminal-table 
   - ruby3.0-rubygem-text 
+  - ruby3.0-rubygem-thor 
   - ruby3.0-rubygem-thor-0_19 
+  - ruby3.0-rubygem-thread_safe 
+  - ruby3.0-rubygem-tilt 
   - ruby3.0-rubygem-timers 
   - ruby3.0-rubygem-tmuxinator 
   - ruby3.0-rubygem-tomlrb 
   - ruby3.0-rubygem-treetop 
   - ruby3.0-rubygem-trollop 
   - ruby3.0-rubygem-ttfunk 
+  - ruby3.0-rubygem-turbolinks 
+  - ruby3.0-rubygem-turbolinks-source 
   - ruby3.0-rubygem-tzinfo 
   - ruby3.0-rubygem-tzinfo-0 
+  - ruby3.0-rubygem-tzinfo-1.2 
   - ruby3.0-rubygem-tzinfo-data 
   - ruby3.0-rubygem-uglifier 
   - ruby3.0-rubygem-unf 
@@ -30721,9 +30817,11 @@ unsorted:
   - ruby3.0-rubygem-validate_url 
   - ruby3.0-rubygem-virtus 
   - ruby3.0-rubygem-warden 
+  - ruby3.0-rubygem-web-console 
   - ruby3.0-rubygem-webfinger 
   - ruby3.0-rubygem-webmock-2_3 
   - ruby3.0-rubygem-webpacker 
+  - ruby3.0-rubygem-webpacker-4.0 
   - ruby3.0-rubygem-websocket 
   - ruby3.0-rubygem-websocket-driver 
   - ruby3.0-rubygem-websocket-extensions 
@@ -30736,6 +30834,7 @@ unsorted:
   - ruby3.0-rubygem-xmlhash 
   - ruby3.0-rubygem-yajl-ruby 
   - ruby3.0-rubygem-yard 
+  - ruby3.0-rubygem-zeitwerk 
   - rubygem-docker-api 
   - rubygem-docker-api-doc 
   - rubygem-docker-api-testsuite 
@@ -41328,6 +41427,7 @@ unsorted:
   - yank 
   - yara 
   - yara-doc 
+  - yarn 
   - yaru-icon-theme 
   - yasm 
   - yasm-devel 

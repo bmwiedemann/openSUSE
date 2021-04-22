@@ -309,8 +309,8 @@
       <repopackage name="ckermit"/>
       <repopackage name="clamav"/>
       <repopackage name="clang-tools"/>
-      <repopackage name="clang11"/>
-      <repopackage name="clang11-doc"/>
+      <repopackage name="clang12"/>
+      <repopackage name="clang12-doc"/>
       <repopackage name="clazy"/>
       <repopackage name="clicfs"/>
       <repopackage name="clutter-gtk-lang"/>
@@ -1593,7 +1593,7 @@
       <repopackage name="libcholmod3"/>
       <repopackage name="libchromaprint1"/>
       <repopackage name="libclamav9"/>
-      <repopackage name="libclang11"/>
+      <repopackage name="libclang12"/>
       <repopackage name="libclastfm0"/>
       <repopackage name="libcloudproviders0"/>
       <repopackage name="libclucene-contribs-lib1"/>
@@ -2312,6 +2312,7 @@
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia81"/>
       <repopackage name="libLLVM11"/>
+      <repopackage name="libLLVM12"/>
       <repopackage name="liblmdb-0_9_29"/>
       <repopackage name="libloader"/>
       <repopackage name="liblockdev1"/>
@@ -2325,7 +2326,7 @@
       <repopackage name="liblsan0" arch="x86_64"/>
       <repopackage name="libltdl7"/>
       <repopackage name="libltdl7-32bit" arch="x86_64"/>
-      <repopackage name="libLTO11"/>
+      <repopackage name="libLTO12"/>
       <repopackage name="liblttng-ust0" arch="x86_64"/>
       <repopackage name="liblua5_1-5"/>
       <repopackage name="liblua5_3-5"/>
@@ -2744,7 +2745,6 @@
       <repopackage name="librtlsdr0"/>
       <repopackage name="librubberband2"/>
       <repopackage name="libruby2_7-2_7"/>
-      <repopackage name="libruby3_0-3_0"/>
       <repopackage name="librygel-core-2_6-2"/>
       <repopackage name="librygel-server-2_6-2"/>
       <repopackage name="libsamba-credentials0"/>
@@ -4289,12 +4289,10 @@
       <repopackage name="ruby2.7-rubygem-abstract_method"/>
       <repopackage name="ruby2.7-rubygem-actioncable-5.2"/>
       <repopackage name="ruby2.7-rubygem-actioncable-6.0"/>
-      <repopackage name="ruby2.7-rubygem-actionmailbox-6.0"/>
       <repopackage name="ruby2.7-rubygem-actionmailer-5.2"/>
       <repopackage name="ruby2.7-rubygem-actionmailer-6.0"/>
       <repopackage name="ruby2.7-rubygem-actionpack-5.2"/>
       <repopackage name="ruby2.7-rubygem-actionpack-6.0"/>
-      <repopackage name="ruby2.7-rubygem-actiontext-6.0"/>
       <repopackage name="ruby2.7-rubygem-actionview-5.2"/>
       <repopackage name="ruby2.7-rubygem-actionview-6.0"/>
       <repopackage name="ruby2.7-rubygem-activejob-5.2"/>
@@ -4303,8 +4301,6 @@
       <repopackage name="ruby2.7-rubygem-activemodel-6.0"/>
       <repopackage name="ruby2.7-rubygem-activerecord-5.2"/>
       <repopackage name="ruby2.7-rubygem-activerecord-6.0"/>
-      <repopackage name="ruby2.7-rubygem-activestorage-5.2"/>
-      <repopackage name="ruby2.7-rubygem-activestorage-6.0"/>
       <repopackage name="ruby2.7-rubygem-activesupport-5.2"/>
       <repopackage name="ruby2.7-rubygem-activesupport-6.0"/>
       <repopackage name="ruby2.7-rubygem-addressable"/>
@@ -4404,7 +4400,6 @@
       <repopackage name="ruby2.7-rubygem-get_process_mem"/>
       <repopackage name="ruby2.7-rubygem-gettext"/>
       <repopackage name="ruby2.7-rubygem-gettext_i18n_rails"/>
-      <repopackage name="ruby2.7-rubygem-gettext_i18n_rails_js"/>
       <repopackage name="ruby2.7-rubygem-gli"/>
       <repopackage name="ruby2.7-rubygem-globalid"/>
       <repopackage name="ruby2.7-rubygem-gpgme"/>
@@ -4541,8 +4536,6 @@
       <repopackage name="ruby2.7-rubygem-rack-protection"/>
       <repopackage name="ruby2.7-rubygem-rack-proxy"/>
       <repopackage name="ruby2.7-rubygem-rack-test-0_6"/>
-      <repopackage name="ruby2.7-rubygem-rails-5.2"/>
-      <repopackage name="ruby2.7-rubygem-rails-6.0"/>
       <repopackage name="ruby2.7-rubygem-rails-dom-testing"/>
       <repopackage name="ruby2.7-rubygem-rails-html-sanitizer"/>
       <repopackage name="ruby2.7-rubygem-rails-i18n"/>
@@ -4670,53 +4663,6 @@
       <repopackage name="ruby2.7-rubygem-yard"/>
       <repopackage name="ruby2.7-rubygem-yast-rake"/>
       <repopackage name="ruby2.7-rubygem-zeitwerk"/>
-      <repopackage name="ruby3.0"/>
-      <repopackage name="ruby3.0-rubygem-actionpack-6.0"/>
-      <repopackage name="ruby3.0-rubygem-actionview-6.0"/>
-      <repopackage name="ruby3.0-rubygem-activemodel-6.0"/>
-      <repopackage name="ruby3.0-rubygem-activesupport-6.0"/>
-      <repopackage name="ruby3.0-rubygem-bindex"/>
-      <repopackage name="ruby3.0-rubygem-bootsnap"/>
-      <repopackage name="ruby3.0-rubygem-builder"/>
-      <repopackage name="ruby3.0-rubygem-byebug"/>
-      <repopackage name="ruby3.0-rubygem-concurrent-ruby"/>
-      <repopackage name="ruby3.0-rubygem-crass"/>
-      <repopackage name="ruby3.0-rubygem-erubi"/>
-      <repopackage name="ruby3.0-rubygem-ffi"/>
-      <repopackage name="ruby3.0-rubygem-i18n"/>
-      <repopackage name="ruby3.0-rubygem-jbuilder"/>
-      <repopackage name="ruby3.0-rubygem-listen"/>
-      <repopackage name="ruby3.0-rubygem-loofah"/>
-      <repopackage name="ruby3.0-rubygem-method_source"/>
-      <repopackage name="ruby3.0-rubygem-msgpack"/>
-      <repopackage name="ruby3.0-rubygem-nio4r"/>
-      <repopackage name="ruby3.0-rubygem-nokogiri"/>
-      <repopackage name="ruby3.0-rubygem-puma-4.1"/>
-      <repopackage name="ruby3.0-rubygem-rack"/>
-      <repopackage name="ruby3.0-rubygem-rack-proxy"/>
-      <repopackage name="ruby3.0-rubygem-rack-test-0_6"/>
-      <repopackage name="ruby3.0-rubygem-rails-dom-testing"/>
-      <repopackage name="ruby3.0-rubygem-rails-html-sanitizer"/>
-      <repopackage name="ruby3.0-rubygem-railties-6.0"/>
-      <repopackage name="ruby3.0-rubygem-rb-fsevent"/>
-      <repopackage name="ruby3.0-rubygem-rb-inotify"/>
-      <repopackage name="ruby3.0-rubygem-sass-rails"/>
-      <repopackage name="ruby3.0-rubygem-sassc"/>
-      <repopackage name="ruby3.0-rubygem-sassc-rails"/>
-      <repopackage name="ruby3.0-rubygem-spring"/>
-      <repopackage name="ruby3.0-rubygem-spring-watcher-listen"/>
-      <repopackage name="ruby3.0-rubygem-sprockets"/>
-      <repopackage name="ruby3.0-rubygem-sprockets-rails"/>
-      <repopackage name="ruby3.0-rubygem-sqlite3"/>
-      <repopackage name="ruby3.0-rubygem-thor"/>
-      <repopackage name="ruby3.0-rubygem-thread_safe"/>
-      <repopackage name="ruby3.0-rubygem-tilt"/>
-      <repopackage name="ruby3.0-rubygem-turbolinks"/>
-      <repopackage name="ruby3.0-rubygem-turbolinks-source"/>
-      <repopackage name="ruby3.0-rubygem-tzinfo-1.2"/>
-      <repopackage name="ruby3.0-rubygem-web-console"/>
-      <repopackage name="ruby3.0-rubygem-webpacker-4.0"/>
-      <repopackage name="ruby3.0-rubygem-zeitwerk"/>
       <repopackage name="rubygem-passenger"/>
       <repopackage name="rubygem-passenger-apache2"/>
       <repopackage name="rzip"/>
@@ -5356,7 +5302,6 @@
       <repopackage name="xz-lang"/>
       <repopackage name="yakuake"/>
       <repopackage name="yakuake-lang"/>
-      <repopackage name="yarn"/>
       <repopackage name="yast2"/>
       <repopackage name="yast2-add-on"/>
       <repopackage name="yast2-alternatives"/>
