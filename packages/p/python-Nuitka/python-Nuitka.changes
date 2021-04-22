@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 20 18:29:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Split out the tests into clang/gcc and python flavor multibuilds
+  The build time on Factory was getting out ouf hand with 3 python
+  flavors.
+
+-------------------------------------------------------------------
 Mon Apr 19 06:39:23 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Explicitly set CCACHE_DIR during tests and printing stats

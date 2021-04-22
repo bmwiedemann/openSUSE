@@ -1,5 +1,5 @@
 #
-# spec file for package python-Nuitka
+# spec file for package python-Nuitka%{?psuffix}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,10 +16,95 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == ""
+%bcond_with     test_clang
+%bcond_with     test_gcc
+%define psuffix %{nil}
+%else
+%define psuffix -%{flavor}
+%endif
+
+# Can't test for substrings server-side, so spell everything out.
+# Keep this in sync with the multi-python build set!
+%if 0%{suse_version} < 1550
+
+%if "%{flavor}" == "clang-test-py2"
 %bcond_without  test_clang
+%bcond_with     test_gcc
+%define pythons python2
+%endif
+%if "%{flavor}" == "clang-test-py36"
+%bcond_without  test_clang
+%bcond_with     test_gcc
+%define pythons python3
+%endif
+%if "%{flavor}" == "clang-test-py38"
+ExclusiveArch:  do-not-build
+%endif
+%if "%{flavor}" == "clang-test-py39"
+ExclusiveArch:  do-not-build
+%endif
+%if "%{flavor}" == "gcc-test-py2"
+%bcond_with     test_clang
 %bcond_without  test_gcc
-Name:           python-Nuitka
+%define pythons python2
+%endif
+%if "%{flavor}" == "gcc-test-py36"
+%bcond_with     test_clang
+%bcond_without  test_gcc
+%define pythons python3
+%endif
+%if "%{flavor}" == "gcc-test-py38"
+ExclusiveArch:  do-not-build
+%endif
+%if "%{flavor}" == "gcc-test-py39"
+ExclusiveArch:  do-not-build
+%endif
+
+%else
+
+%if "%{flavor}" == "clang-test-py2"
+ExclusiveArch:  do-not-build
+%endif
+%if "%{flavor}" == "clang-test-py36"
+%bcond_without  test_clang
+%bcond_with     test_gcc
+%define pythons python36
+%endif
+%if "%{flavor}" == "clang-test-py38"
+%bcond_without  test_clang
+%bcond_with     test_gcc
+%define pythons python38
+%endif
+%if "%{flavor}" == "clang-test-py39"
+%bcond_without  test_clang
+%bcond_with     test_gcc
+%define pythons python39
+%endif
+%if "%{flavor}" == "gcc-test-py2"
+ExclusiveArch:  do-not-build
+%endif
+%if "%{flavor}" == "gcc-test-py36"
+%bcond_with     test_clang
+%bcond_without  test_gcc
+%define pythons python36
+%endif
+%if "%{flavor}" == "gcc-test-py38"
+%bcond_with     test_clang
+%bcond_without  test_gcc
+%define pythons python38
+%endif
+%if "%{flavor}" == "gcc-test-py39"
+%bcond_with     test_clang
+%bcond_without  test_gcc
+%define pythons python39
+%endif
+
+%endif
+
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+Name:           python-Nuitka%{?psuffix}
 Version:        0.6.14.4
 Release:        0
 Summary:        Python compiler with full language support and CPython compatibility
@@ -40,7 +125,7 @@ Requires:       python-boltons
 Requires:       python-devel
 Requires:       scons
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     ccache
 Recommends:     chrpath
 Recommends:     clang
@@ -51,6 +136,10 @@ Suggests:       gdb
 Suggests:       libfuse2
 BuildArch:      noarch
 # SECTION Testing requirements
+%if %{with test_clang}
+BuildRequires:  clang
+%endif
+%if %{with test_gcc} || %{with test_clang}
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module appdirs}
@@ -65,8 +154,8 @@ BuildRequires:  %{python_module opengl}
 BuildRequires:  %{python_module passlib}
 #BuildRequires: %%{python_module pendulum}
 BuildRequires:  %{python_module pycairo}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pmw}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module rsa}
 BuildRequires:  %{python_module sip4}
@@ -76,15 +165,12 @@ BuildRequires:  %{python_module urllib3}
 BuildRequires:  %{python_module xml}
 BuildRequires:  ccache
 BuildRequires:  chrpath
-BuildRequires:  clang
 BuildRequires:  gdb
 BuildRequires:  strace
 BuildRequires:  tk
-BuildRequires:  (python2-gtk if python2-base)
-BuildRequires:  (python2-numpy if python2-base)
-BuildRequires:  (python2-pandas if python2-base)
-BuildRequires:  python3-numpy
-BuildRequires:  python3-pandas
+BuildRequires:  %{python_module gtk if (%python-base with python-base)}
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
+BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
 # pyside2 has working tests, however it exists on few arch
 #BuildRequires:  python3-pyside2
 # AppImageKit not available in Factory yet
@@ -92,6 +178,7 @@ BuildRequires:  python3-pandas
 #BuildRequires:  appimagetool
 #BuildRequires:  pkgconfig(fuse)
 BuildRequires:  libfuse2
+%endif
 # /SECTION Testing requirements
 %python_subpackages
 
@@ -143,9 +230,13 @@ rm tests/standalone/NumpyUsing.py
 # https://github.com/Nuitka/Nuitka/issues/1037
 rm tests/standalone/PendulumUsing.py
 
+# adjust mtime so that deduplicating the cache files after install does not make them inconsistent
+find nuitka -name __init__.py -exec touch -m -r nuitka/__init__.py {} ';'
+
 %build
 %python_build
 
+%if ! %{with test_gcc} && ! %{with test_clang}
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -167,12 +258,24 @@ if [ -f doc/nuitka.1 ]; then
   %python_clone -a %{buildroot}%{_mandir}/man1/nuitka.1.gz
   %python_clone -a %{buildroot}%{_mandir}/man1/nuitka-run.1.gz
 fi
+%endif
 
 %check
 export CCACHE_DIR=~/.ccache/
 
 export TCL_LIBRARY=%{_libdir}/tcl/tcl8.6
 export TK_LIBRARY=%{_libdir}/tcl/tk8.6
+
+# scons is primary python3 only, but used in the tests it needs to find the modules in its "own" flavor. Luckily it is pure...
+mkdir my-scons
+cp -r %{python3_sitelib}/SCons my-scons/
+%{python_expand #
+mkdir build/testbin
+cp -r %{_bindir}/scons* build/testbin/
+sed -i '1 s/python3/$python /' build/testbin/*
+}
+export SCONS_LIB_DIR=$PWD/my-scons
+export PATH=$PWD/build/testbin:$PATH
 
 # Use `export CC=clang` to force using clang
 # which has known failures
@@ -203,8 +306,13 @@ export NUITKA_EXTRA_OPTIONS="--debug"
 CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --skip-reflection-test --no-other-python
 
 mv /tmp/*Using.py tests/standalone/ ||:
+%if 0%{?suse_version} >= 1550
 ccache -d ~/.ccache/ --show-stats
 ccache -d ~/.ccache/ --clear
+%else
+ccache --show-stats
+ccache --clear
+%endif
 
 # VM disk is being exceeded by PandasUsing.
 # Trying to find where, if any, disk space is being consumed by each test run
@@ -224,8 +332,13 @@ export NUITKA_EXTRA_OPTIONS=""
 CC=clang $python ./tests/run-tests --skip-basic-tests --skip-syntax-tests --skip-program-tests --skip-package-tests --skip-plugins-tests --skip-reflection-test --no-other-python
 
 mv /tmp/*Using.py tests/standalone/ ||:
+%if 0%{?suse_version} >= 1550
 ccache -d ~/.ccache/ --show-stats
 ccache -d ~/.ccache/ --clear
+%else
+ccache --show-stats
+ccache --clear
+%endif
 
 find tests -name '*.log' -print -delete
 rm -r /tmp/* ||:
@@ -243,8 +356,13 @@ export NUITKA_EXTRA_OPTIONS="--debug"
 CC=gcc $python ./tests/run-tests --skip-reflection-test --no-other-python
 
 mv /tmp/*Using.py tests/standalone/ ||:
+%if 0%{?suse_version} >= 1550
 ccache -d ~/.ccache/ --show-stats
 ccache -d ~/.ccache/ --clear
+%else
+ccache --show-stats
+ccache --clear
+%endif
 
 find tests -name '*.log' -print -delete
 rm -r /tmp/* ||:
@@ -252,6 +370,7 @@ rm -r /tmp/* ||:
 %endif
 }
 
+%if ! %{with test_gcc} && ! %{with test_clang}
 %post
 %python_install_alternative nuitka nuitka-run nuitka.1 nuitka-run.1
 
@@ -266,5 +385,6 @@ rm -r /tmp/* ||:
 %python_alternative %{_bindir}/nuitka
 %python_alternative %{_mandir}/man1/nuitka.1
 %python_alternative %{_mandir}/man1/nuitka-run.1
+%endif
 
 %changelog
