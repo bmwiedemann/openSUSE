@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 19 13:23:06 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 0.3.0:
+  * chore: Bump up Go to v1.15 (#82)
+  * feat: Add JSON export functionality (#81)
+  * chore: Switch to main branch (#80)
+  * feat: Add -o wide flag to print the ROLE column (#79)
+  * chore: Add krew-release-bot for publishing plugin releases (#78)
+  * refactor: Use KIND to run integration tests (#77)
+  * chore: Bump up Go from 1.12 to 1.14 (#76)
+  * chore: Remove Travis CI config (#75)
+  * chore: Migrate from Travis CI to GitHub Actions (#74)
+  * chore: Replace google/glog with kubernetes/klog (#71)
+
+-------------------------------------------------------------------
 Sun Jun  9 15:21:16 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary.

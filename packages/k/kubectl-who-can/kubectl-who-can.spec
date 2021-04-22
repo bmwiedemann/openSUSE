@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-who-can
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,16 @@
 
 
 Name:           kubectl-who-can
-Version:        0.0+git20190606.c185aaa
+Version:        0.3.0
 Release:        0
 Summary:        Tool to show who has permissions to verbs and resources in Kubernetes
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/aquasecurity/kubectl-who-can
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.11
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.15
 ExcludeArch:    s390 %{ix86}
 
 %description
@@ -38,7 +38,7 @@ to <verb> <resources> in kubernetes
 %setup -qa1
 
 %build
-sed -i -e 's|go build -o|go build -buildmode=pie -mod vendor -o|g' makefile
+sed -i -e 's|go build -o|go build -buildmode=pie -mod vendor -o|g' Makefile
 make
 
 %install

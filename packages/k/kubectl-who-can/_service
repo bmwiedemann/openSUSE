@@ -1,15 +1,17 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="version">0.0</param>
-    <param name="versionformat">0.0+git%cd.%h</param>
-    <param name="url">git://github.com/aquasecurity/kubectl-who-can.git</param>
+    <param name="url">https://github.com/aquasecurity/kubectl-who-can.git</param>
     <param name="scm">git</param>
+    <param name="revision">v0.3.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">kukuk@suse.de</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="recompress" mode="disabled">
-    <param name="compression">xz</param>
+    <param name="compression">gz</param>
     <param name="file">*.tar</param>
   </service>
   <service name="set_version" mode="disabled"/>
+  <service name="go_modules" mode="disabled">
+  </service>
 </services>
