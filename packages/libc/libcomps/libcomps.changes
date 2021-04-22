@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 13 12:40:10 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 0.1.16
+  + Fix a crash when clearing COMPS_ObjRTree (rh#1888343)
+  + Fixes for leaks and crashes
+
+-------------------------------------------------------------------
 Sat Jun  6 22:27:58 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Upgrade to 0.1.15

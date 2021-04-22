@@ -19,7 +19,7 @@
 
 %define major 0
 %define minor 1
-%define patch 15
+%define patch 16
 %define libname %{name}%{major}
 %define devname %{name}-devel
 
@@ -30,7 +30,7 @@ Summary:        Comps XML file manipulation library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/rpm-software-management/libcomps
-Source0:        %{url}/archive/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  check-devel
 BuildRequires:  cmake
@@ -94,7 +94,7 @@ Obsoletes:      python2-libcomps < 0.1.9
 This package provides the Python 3 bindings for libcomps library.
 
 %prep
-%autosetup -n %{name}-%{name}-%{version} -p1
+%autosetup  -p1
 
 %build
 %cmake -DPYTHON_DESIRED:STRING=3 ../libcomps/
