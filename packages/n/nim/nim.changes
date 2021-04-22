@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Wed Apr 21 23:34:57 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.2.12  
+  * Fixed GC crash resulting from inlining of the memory
+    allocation procs
+  * Fixed “incorrect raises effect for $(NimNode)” (#17454)
+- from version 1.2.10
+  * Fixed “JS backend doesn’t handle float->int type conversion “ (#8404)
+  * Fixed “The “try except” not work when the “OSError:
+    Too many open files” error occurs!” (#15925)
+  * Fixed “Nim emits #line 0 C preprocessor directives with
+    –debugger:native, with ICE in gcc-10” (#15942)
+  * Fixed “tfuturevar fails when activated” (#9695)
+  * Fixed “nre.escapeRe is not gcsafe” (#16103)
+  * Fixed ““Error: internal error: genRecordFieldAux” - in
+    the “version-1-4” branch” (#16069)
+  * Fixed “-d:fulldebug switch does not compile with gc:arc” (#16214)
+  * Fixed “osLastError may randomly raise defect and crash” (#16359)
+  * Fixed “generic importc proc’s don’t work (breaking lots
+    of vmops procs for js)” (#16428)
+  * Fixed “Concept: codegen ignores parameter passing” (#16897)
+  * Fixed “{.push exportc.} interacts with anonymous functions” (#16967)
+  * Fixed “memory allocation during {.global.} init breaks GC” (#17085)
+  * Fixed "Nimble arbitrary code execution for specially crafted package metadata"
+    + https://github.com/nim-lang/security/security/advisories/GHSA-rg9f-w24h-962p
+    + (bsc#1185083, CVE-2021-21372)
+  * Fixed "Nimble falls back to insecure http url when fetching packages"
+    + https://github.com/nim-lang/security/security/advisories/GHSA-8w52-r35x-rgp8
+    + (bsc#1185084, CVE-2021-21373)
+  * Fixed "Nimble fails to validate certificates due to insecure httpClient defaults"
+    + https://github.com/nim-lang/security/security/advisories/GHSA-c2wm-v66h-xhxx
+    + (bsc#1185085, CVE-2021-21374)
+- from version 1.2.8
+  * Fixed “Defer and –gc:arc” (#15071)
+  * Fixed “Issue with –gc:arc at compile time” (#15129)
+  * Fixed “Nil check on each field fails in generic function” (#15101)
+  * Fixed “[strscans] scanf doesn’t match a single character with
+    $+ if it’s the end of the string” (#15064)
+  * Fixed “Crash and incorrect return values when using
+    readPasswordFromStdin on Windows.” (#15207)
+  * Fixed “Inconsistent unsigned -> signed RangeDefect usage
+    across integer sizes” (#15210)
+  * Fixed “toHex results in RangeDefect exception when
+    used with large uint64” (#15257)
+  * Fixed “Mixing ‘return’ with expressions is allowed in 1.2” (#15280)
+  * Fixed “proc execCmdEx doesn’t work with -d:useWinAnsi” (#14203)
+  * Fixed “memory corruption in tmarshall.nim” (#9754)
+  * Fixed “Wrong number of variables” (#15360)
+  * Fixed “defer doesnt work with block, break and await” (#15243)
+  * Fixed “Sizeof of case object is incorrect. Showstopper” (#15516)
+  * Fixed “Mixing ‘return’ with expressions is allowed in 1.2” (#15280)
+  * Fixed “regression(1.0.2 => 1.0.4) VM register messed up
+    depending on unrelated context” (#15704)
+- from version 1.2.6
+  * Fixed “The pegs module doesn’t work with generics!” (#14718)
+  * Fixed “[goto exceptions] {.noReturn.} pragma is not detected
+    in a case expression” (#14458)
+  * Fixed “[exceptions:goto] C compiler error with dynlib pragma
+    calling a proc” (#14240)
+  * Fixed “Nim source archive install: ‘install.sh’ fails with error:
+    cp: cannot stat ‘bin/nim-gdb’: No such file or directory” (#14748)
+  * Fixed “Stropped identifiers don’t work as field names in
+    tuple literals” (#14911)
+  * Fixed “uri.decodeUrl crashes on incorrectly formatted input” (#14082)
+  * Fixed “odbcsql module has some wrong integer types” (#9771)
+  * Fixed “[ARC] Compiler crash declaring a finalizer proc
+    directly in ‘new’” (#15044)
+  * Fixed “code with named arguments in proc of winim/com can
+    not been compiled” (#15056)
+  * Fixed “javascript backend produces javascript code with syntax
+    error in object syntax” (#14534)
+  * Fixed “[ARC] SIGSEGV when calling a closure as a tuple
+    field in a seq” (#15038)
+  * Fixed “Compiler crashes when using string as object variant
+    selector with else branch” (#14189)
+  * Fixed “Constructing a uint64 range on a 32-bit machine leads
+    to incorrect codegen” (#14616)
+
+-------------------------------------------------------------------
 Sun Jun 21 10:09:15 UTC 2020 - dmacvicar@suse.com
 
 - Update to version 1.2.2:

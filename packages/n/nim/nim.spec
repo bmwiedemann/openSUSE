@@ -1,7 +1,7 @@
 #
 # spec file for package nim
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nim
-Version:        1.2.2
+Version:        1.2.12
 Release:        0
 Summary:        A statically typed, imperative programming language
 License:        MIT

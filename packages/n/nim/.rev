@@ -118,4 +118,41 @@
     <comment></comment>
     <requestid>817562</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ca3b52c7b2252a088012ef27b11f1aef</srcmd5>
+    <version>1.2.12</version>
+    <time>1619107449</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.12  
+  * Fixed GC crash resulting from inlining of the memory
+    allocation procs
+  * Fixed “incorrect raises effect for $(NimNode)” (#17454)
+- from version 1.2.10
+  * Fixed “JS backend doesn’t handle float-&amp;gt;int type conversion “ (#8404)
+  * Fixed “The “try except” not work when the “OSError:
+    Too many open files” error occurs!” (#15925)
+  * Fixed “Nim emits #line 0 C preprocessor directives with
+    –debugger:native, with ICE in gcc-10” (#15942)
+  * Fixed “tfuturevar fails when activated” (#9695)
+  * Fixed “nre.escapeRe is not gcsafe” (#16103)
+  * Fixed ““Error: internal error: genRecordFieldAux” - in
+    the “version-1-4” branch” (#16069)
+  * Fixed “-d:fulldebug switch does not compile with gc:arc” (#16214)
+  * Fixed “osLastError may randomly raise defect and crash” (#16359)
+  * Fixed “generic importc proc’s don’t work (breaking lots
+    of vmops procs for js)” (#16428)
+  * Fixed “Concept: codegen ignores parameter passing” (#16897)
+  * Fixed “{.push exportc.} interacts with anonymous functions” (#16967)
+  * Fixed “memory allocation during {.global.} init breaks GC” (#17085)
+  * Fixed &quot;Nimble arbitrary code execution for specially crafted package metadata&quot;
+    + https://github.com/nim-lang/security/security/advisories/GHSA-rg9f-w24h-962p
+    + (bsc#1185083, CVE-2021-21372)
+  * Fixed &quot;Nimble falls back to insecure http url when fetching packages&quot;
+    + https://github.com/nim-lang/security/security/advisories/GHSA-8w52-r35x-rgp8
+    + (bsc#1185084, CVE-2021-21373)
+  * Fixed &quot;Nimble fails to validate certificates due to insecure httpClient defaults&quot;
+    + https://github.com/nim-lang/security/security/advisories/GHSA-c2wm-v66h-xhxx
+    + (bsc#1185085, CVE-2021-21374) (forwarded request 887387 from glaubitz)</comment>
+    <requestid>887450</requestid>
+  </revision>
 </revisionlist>
