@@ -94,4 +94,12 @@ Only fontbox and jempbox are built as pdfbox itself depends on Adobe's pcif.</co
     <comment></comment>
     <requestid>860184</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c6f41bd65c5c65e3161ab1d734e9962d</srcmd5>
+    <version>2.0.23</version>
+    <time>1619107395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885319</requestid>
+  </revision>
 </revisionlist>

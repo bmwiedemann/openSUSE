@@ -18,7 +18,7 @@
 
 # Only fontbox and jempbox are built as pdfbox itself depends on Adobe's pcif.
 Name:           apache-pdfbox
-Version:        2.0.22
+Version:        2.0.23
 Release:        0
 Summary:        Java PDF Library
 License:        Apache-2.0 AND OFL-1.1

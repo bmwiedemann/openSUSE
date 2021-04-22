@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 12 08:13:49 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.0.23:
+  * Security fixes:
+    - CVE-2021-27807: A carefully crafted PDF file can trigger an
+      infinite loop while loading the file [bsc#1184356]
+    - CVE-2021-27906: OutOfMemory-Exception while loading a crafted
+      PDF file [bsc#1184357]
+  * Bug fixes:
+    - Transparency Group issues
+    - getLastSignatureDictionary modifies internal structure of PDDocument
+    - NullPointerexception in AcroFormOrphanWidgetsProcessor.resolveNonRootField()
+    - AcroForm PDTextField formatting lost when setting value
+    - java.lang.IndexOutOfBoundsException
+    - Failure to modify cropBox when splitting a PDF Page vertically into 2 pieces
+    - ArrayIndexOutOfBoundsException in isOwnerPassword
+    - IllegalArgumentException in computeEncryptedKeyRev56
+    - IllegalArgumentException in PDFObjectStreamParser.privateReadObjectNumbers
+    - ClassCastException in COSStream.getFilterList
+    - ArrayIndexOutOfBoundsException in PDFXrefStreamParser.parseValue
+   * Improvements:
+    - Improve document signing
+    - Allow reuse of subsetted fonts by inverting the ToUnicode CMap
+    - improve performance in signature validation
+    - Add more checks to PDFXrefStreamParser and reduce memory footprint
+    - Use StringBuilder for key in PDDeviceN.toRGBWithTintTransform()
+    - Don't use RGB loop in PDDeviceN.toRGBWithTintTransform()
+
+-------------------------------------------------------------------
 Mon Jan  4 12:21:38 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Add source signature and keyring
