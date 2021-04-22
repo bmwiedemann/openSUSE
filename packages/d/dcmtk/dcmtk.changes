@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 20 13:40:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 3.6.6. See DOCS/CHANGES.366 for more information
+- Drop 0001-Link-charls-statically.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Thu Oct 22 20:02:27 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to avoid file conflict between dcmtk and charls:

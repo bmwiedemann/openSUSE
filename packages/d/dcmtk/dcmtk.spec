@@ -17,9 +17,9 @@
 
 
 %define libname libdcmtk3_6
-%define abiversion 15
+%define abiversion 16
 Name:           dcmtk
-Version:        3.6.5
+Version:        3.6.6
 Release:        0
 Summary:        DICOM Toolkit
 License:        BSD-3-Clause AND Apache-2.0
@@ -28,16 +28,14 @@ URL:            https://dicom.offis.de/dcmtk.php.en
 Source0:        ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/release/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE dcmtk-fix-DCMTKTargets.cmake.patch -- Do not track executables to be able to use dcmtk-devel without dcmtk package
 Patch0:         dcmtk-fix-DCMTKTargets.cmake.patch
-# PATCH-FIX-OPENSUSE 0001-Link-charls-statically.patch -- avoid file conflict with CharLS-devel
-Patch1:         0001-Link-charls-statically.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libicu-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tcpd-devel
+BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
@@ -73,8 +71,6 @@ parts the DICOM standard.
 
 %build
 %cmake \
- -DINSTALL_DOCDIR=%{_docdir}/dcmtk \
- -DINSTALL_HTMDIR=%{_docdir}/dcmtk/html \
  -DBUILD_SHARED_LIBS=ON \
  -DDCMTK_WITH_XML=ON \
  -DDCMTK_WITH_OPENSSL=ON \
@@ -87,7 +83,7 @@ parts the DICOM standard.
 %cmake_install
 
 # Remove zero-length file (fix rpmlint warning)
-rm -f %{buildroot}%{_datadir}/dcmtk/wlistdb/OFFIS/lockfile
+rm %{buildroot}%{_datadir}/dcmtk/wlistdb/OFFIS/lockfile
 
 # Move configuration files from /usr/etc to /etc/
 mv %{buildroot}%{_prefix}%{_sysconfdir} %{buildroot}

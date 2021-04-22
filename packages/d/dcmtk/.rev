@@ -195,4 +195,14 @@
     <comment></comment>
     <requestid>844055</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>251c2a14a038654348a7d970e4bade3c</srcmd5>
+    <version>3.6.6</version>
+    <time>1619107447</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.6. See DOCS/CHANGES.366 for more information
+- Drop 0001-Link-charls-statically.patch
+- Spec cleanup</comment>
+    <requestid>887441</requestid>
+  </revision>
 </revisionlist>
