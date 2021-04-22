@@ -392,6 +392,7 @@ Patch785:       0045-squash-Add-support-for-Linux-EFI-stub-loading-on-aar.patch
 Patch786:       0046-squash-verifiers-Move-verifiers-API-to-kernel-image.patch
 Patch787:       0001-kern-efi-sb-Add-chainloaded-image-as-shim-s-verifiab.patch
 Patch788:       0001-ieee1275-Avoiding-many-unecessary-open-close.patch
+Patch789:       0001-Workaround-volatile-efi-boot-variable.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -773,6 +774,7 @@ swap partition while in resuming
 %patch786 -p1
 %patch787 -p1
 %patch788 -p1
+%patch789 -p1
 
 %build
 # collect evidence to debug spurious build failure on SLE15

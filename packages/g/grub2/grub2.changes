@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 19 09:53:43 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix build error on armv6/armv7 (bsc#1184712)
+  * 0001-emu-fix-executable-stack-marking.patch
+
+-------------------------------------------------------------------
+Thu Apr  8 12:32:52 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix error grub_file_filters not found in Azure virtual machine (bsc#1182012)
+  * 0001-Workaround-volatile-efi-boot-variable.patch 
+
+-------------------------------------------------------------------
 Tue Mar 16 02:57:12 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Fix powerpc-ieee1275 lpar takes long time to boot with increasing number of
