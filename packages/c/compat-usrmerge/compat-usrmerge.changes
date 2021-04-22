@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Thu Mar 25 09:50:48 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- catch boolean deps
+
+-------------------------------------------------------------------
+Thu Mar 18 12:24:15 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- cp can't handle copying a dir over non-directories. So move those
+  away in advance. Happened with /lib/udev existing as link on older
+  distros
+
+-------------------------------------------------------------------
+Mon Mar 15 17:41:10 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- update file lists based on current factory data
+
+-------------------------------------------------------------------
+Thu Feb 25 10:22:09 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- initial package

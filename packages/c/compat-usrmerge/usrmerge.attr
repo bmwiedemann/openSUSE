@@ -1,0 +1,10 @@
+%__usrmerge_provides()  %{lua:
+  -- XXX: use repo data of actual requires
+  require("usrmerge_binsbindeps")
+  local file = rpm.expand("%1")
+  local pfxlen = string.len(rpm.expand("%buildroot").."/usr")+1
+  if usrmerge_binsbindeps[string.sub(file, pfxlen)] then
+    print(string.sub(file, pfxlen))
+  end
+}
+%__usrmerge_path        ^/usr/s?bin/.*

@@ -1,0 +1,114 @@
+#!/bin/bash
+# based on code from dracut convertfs.sh
+
+ROOT=
+
+# the package is installed with AutoReq off, so no guarantee that
+# coreutils actually works
+if ! (cp --help && mountpoint --help && mountpoint --help) > /dev/null; then
+	echo "tools not functional, exit"
+	exit 1
+fi
+
+# clean up after ourselves no matter how we die.
+cleanup() {
+    echo "Something failed, cleaning up"
+    for dir in bin sbin lib lib64; do
+	rm -rf -- "$ROOT/usr/${dir}.usrmerge"
+    done
+}
+
+trap 'ret=$?; [[ $ret -ne 0 ]] && cleanup;exit $ret;' EXIT
+trap 'exit 1;' SIGINT
+
+mountpoint -q "$ROOT/usr" || CP_HARDLINK="-l"
+
+set -e
+
+# merge / and /usr in new dir in /usr
+for dir in bin sbin lib lib64; do
+    rm -rf -- "$ROOT/usr/${dir}.usrmerge"
+    [[ -L "$ROOT/$dir" ]] && continue
+    [[ -d "$ROOT/$dir" ]] || continue
+    echo "Make a copy of \`$ROOT/$dir'."
+    [[ -d "$ROOT/$dir" ]] \
+        && cp -ax -l "$ROOT/$dir" "$ROOT/usr/${dir}.usrmerge"
+    # cp can't handle copying a dir over non-directories. So move
+    # those away in advance. Happened with /lib/udev existing as
+    # link on older distros
+    while read d; do
+	f="$ROOT/usr/$dir.usrmerge/$d"
+	if test -e "$f" -a \( -L "$f" -o ! -d "$f" \); then
+	    echo "Warning: /$dir/$d conflicts with directory /usr/$dir/$d and will be removed"
+	    rm -rf "$f.usrmerge~"
+	    mv "$f" "$f.usrmerge~"
+	fi
+    done < <(find "$ROOT/usr/$dir" -type d -printf "%P\n" )
+    echo "Merge the copy with \`$ROOT/usr/$dir'."
+    [[ -d "$ROOT/usr/${dir}.usrmerge" ]] \
+        || mkdir -p "$ROOT/usr/${dir}.usrmerge"
+    cp -axT $CP_HARDLINK --backup --suffix=.usrmerge~ "$ROOT/usr/$dir" "$ROOT/usr/${dir}.usrmerge"
+    echo "Clean up duplicates in \`$ROOT/usr/$dir'."
+    # delete all symlinks that have been backed up. /usr versions
+    # override / ones
+    find "$ROOT/usr/${dir}.usrmerge" -type l -name '*.usrmerge~' -delete || :
+    # in rare cases the symlinks may point from /usr to /, so remove
+    # the link in that case
+    while read file; do
+	o=${file%%.usrmerge~}
+	[ -L "$o" ] && mv -f "$file" "$o"
+    done < <(find "$ROOT/usr/${dir}.usrmerge" \
+        -name '*.usrmerge~' -type f)
+done
+# switch over merged dirs in /usr
+for dir in bin sbin lib lib64; do
+    if [ -d "$ROOT/usr/${dir}.usrmerge" ]; then
+	echo "Switch to new \`$ROOT/usr/$dir'."
+	/usr/libexec/xmv "$ROOT/usr/${dir}.usrmerge" "$ROOT/usr/$dir"
+    fi
+done
+
+# replace dirs in / with links to /usr
+for dir in bin sbin lib lib64; do
+    if [ ! -L "$ROOT/$dir" -a -d "$ROOT/$dir" ]; then
+	  echo "Create \`$ROOT/$dir' symlink."
+	  rm -rf "$ROOT/${dir}.usrmerge" || :
+	  ln -s usr/$dir "$ROOT/${dir}.usrmerge"
+	  /usr/libexec/xmv "$ROOT/$dir" "$ROOT/${dir}.usrmerge"
+    fi
+done
+
+echo "Clean up backup files."
+# everything seems to work; cleanup
+for dir in bin sbin lib lib64; do
+    for pfx in usr/ /; do
+	 # if we get killed in the middle of "rm -rf", ensure not to leave
+	 # an incomplete directory, which is moved back by cleanup()
+	d="$ROOT/${pfx}${dir}.usrmerge"
+	if [ -d "$d" ]; then
+	    echo "$d ..."
+	    mv "$d" "$d~"
+	    rm -rf "$d~"
+	fi
+    done
+done
+
+# XXX: confirm this is needed
+for dir in lib lib64; do
+    [[ -d "$ROOT/$dir" ]] || continue
+    for lib in "$ROOT"/usr/${dir}/lib*.so*.usrmerge~; do
+        [[ -f $lib ]] || continue
+        mv -v $lib ${lib/.so/_so}
+    done
+done
+
+set +e
+
+echo "Run ldconfig."
+ldconfig -r "$ROOT"
+
+#. $ROOT/etc/selinux/config
+#if [ -n "$(command -v setfiles)" ] && [ "$SELINUX" != "disabled" ] && [ -f /etc/selinux/${SELINUXTYPE}/contexts/files/file_contexts ]; then
+#    echo "Fixing SELinux labels"
+#    setfiles -r $ROOT -p /etc/selinux/${SELINUXTYPE}/contexts/files/file_contexts $ROOT/sbin $ROOT/bin $ROOT/lib $ROOT/lib64 $ROOT/usr/lib $ROOT/usr/lib64 $ROOT/etc/ld.so.cache $ROOT/var/cache/ldconfig || :
+#fi
