@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Apr 19 08:27:57 UTC 2021 - Niklas Haas <obs@haasn.xyz>
+
+- Update libplacebo to version 3.120.2:
+
+This minor release fixes a number of additional bugs related to the
+thread queue, included demos, included helpers, and build system.
+
+Changes:
+- replace the `shaderc` library checks by pkg-config checks
+- `pl_dispatch` no longer grows infinitely, but prunes stale cache
+  entries after a certain threshold
+- improve logging of GPU capabilities (including format capabilities)
+
+Fixes and performance improvements:
+- fix a typo on an error message
+- fix a use-after-free edge case in `plplay`
+- filter out Infinity, NaN and other values from fps/vps estimates
+- add several warnings for suspected frame queue API misuses
+- fix a crash when combining pl_render_image_mix with cropped frames
+- fix a crash on AV_PIX_FMT_NONE in the libav helpers
+- fix the loading of overlays in the `sdlimage` demo
+- fix a number of potential overflows on 32-bit platforms
+- omit redundant identity matrices in pl_shader_decode_color
+- fix crash in frame queue with certain out-of-order PTS sequences
+- add missing link to vulkan dependency in the `video-filtering` demo
+- correctly shift overlays when drawing to subsampled YCbCr planes
+- add missing check for PL_GPU_CAP_CALLBACKS in `utils/{libav,dav1d}.h`
+- improve handling of asynchronous texture uploads in `utils/libav.h`
+
+-------------------------------------------------------------------
 Tue Apr  6 06:57:44 UTC 2021 - Niklas Haas <obs@haasn.xyz>
 
 - Update libplacebo to version 3.120.1:
