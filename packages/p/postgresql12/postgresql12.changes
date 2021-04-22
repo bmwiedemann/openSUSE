@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 15 19:29:39 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Re-enable build of the llvmjit subpackage on SLE, but it will
+  only be delivered on PackageHub for now.
+
+-------------------------------------------------------------------
 Tue Mar  9 13:52:19 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Remove leftover PreReq on chkconfig, we stopped using it long
