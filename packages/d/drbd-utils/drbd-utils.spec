@@ -1,7 +1,7 @@
 #
 # spec file for package drbd-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if !0%{?usrmerged}
 %define sbindir /sbin
@@ -39,6 +40,7 @@ Patch3:         fence-after-pacemaker-down.patch
 # PATCH-SUSE-FIX: Disable quorum in default configuration (bsc#1032142)
 Patch4:         0001-Disable-quorum-in-default-configuration-bsc-1032142.patch
 Patch5:         move_fencing_from_disk_to_net_in_example.patch
+Patch6:         pie-fix.patch
 
 Provides:       drbd-bash-completion = %{version}
 Provides:       drbd-pacemaker = %{version}
@@ -88,6 +90,7 @@ raid 1. It is a building block for setting up clusters.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 export WANT_DRBD_REPRODUCIBLE_BUILD=1

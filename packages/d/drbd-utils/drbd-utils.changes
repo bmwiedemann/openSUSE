@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 21 10:15:08 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add pie-fix.patch: explicitly pass -pie linker flag when building drbdmon.
+  The Makefile explicitly passes -fPIC, thereby breaking our gcc-PIE profile.
+  In addition the Makefile also ignores CXXFLAGS and LDFLAGS passed via the
+  environment. Therefore fix it with this patch. This makes drbdmon a PIE
+  binary (bsc#1184122).
+
+-------------------------------------------------------------------
 Tue Nov 17 16:01:34 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)

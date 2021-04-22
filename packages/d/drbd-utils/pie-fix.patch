@@ -1,0 +1,13 @@
+Index: drbd-utils-9.14.0/user/drbdmon/Makefile.in
+===================================================================
+--- drbd-utils-9.14.0.orig/user/drbdmon/Makefile.in
++++ drbd-utils-9.14.0/user/drbdmon/Makefile.in
+@@ -1,6 +1,7 @@
+ CXXFLAGS=-std=c++11 -I. -I../shared -Icppdsaext/src -Wall -Werror --pedantic-errors -fPIC -O2 \
+ -Wsign-compare -Wpointer-arith -Wswitch-default -Wswitch-enum -Wtype-limits \
+--Wmissing-declarations -Wshadow
++-Wmissing-declarations -Wshadow \
++-pie
+ CXX = @CXX@
+ LIBS = @LIBS@
+ 
