@@ -187,4 +187,13 @@ Upgrade to version 11.11:
   time ago.</comment>
     <requestid>878018</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>03f4278e5b4d50589af44cf42f6ba2c9</srcmd5>
+    <version>11.11</version>
+    <time>1619107396</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-enable build of the llvmjit subpackage on SLE, but it will
+  only be delivered on PackageHub for now.</comment>
+    <requestid>885323</requestid>
+  </revision>
 </revisionlist>
