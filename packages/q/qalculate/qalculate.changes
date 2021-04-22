@@ -1,3 +1,31 @@
+------------------------------------------------------------------
+Tue Apr  6 14:04:06 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.18.0:
+  * Improve handling of expressions with log-based units
+  * Improve conversion of expression with multiple units
+    to a single unit (e.g. m/W to W)
+  * Output (kilo)gram instead of tonne with small prefix
+  * New functions for statistical distributions: probit(), betadist(),
+    cauchydist(), chisqdist(), expinv(), fdist(), gammadist(),
+    tdist(), wblinv(), weibulldist()
+  * Improve functions for statistical distribution
+  * Improve sexagesimal input and output, and add geodistance()
+    for calculation of distance between two GPS coordinates
+  * Add command() function, which runs an external command
+    and returns the output
+  * erfinv() function and support for solving equations
+    with error functions
+  * Fix conversion with relative temperature units activated
+  * Fix gammainc() function
+  * Fix keyboard focus when run hidden automatically at startup
+  * Temperature calculation modes (absolute, relative, hybrid)
+  * Allow prefixes, with full name, without units (e.g. kilo = 10^3)
+  * Extended and improved simplified Chinese translation
+  * Save handle vector function argument property
+  * Fix never ending loop when calculating []*[]
+  * Minor bug fixes and feature improvements
+
 -------------------------------------------------------------------
 Sun Jan 10 00:46:29 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 

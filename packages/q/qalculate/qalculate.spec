@@ -19,7 +19,7 @@
 %define major   21
 %define libname libqalculate
 Name:           qalculate
-Version:        3.16.1
+Version:        3.18.0
 Release:        0
 Summary:        Multi-purpose desktop calculator application
 License:        GPL-2.0-or-later
@@ -29,13 +29,14 @@ Source:         https://github.com/Qalculate/libqalculate/releases/download/v%{v
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  intltool
-BuildRequires:  libxml2-devel
-BuildRequires:  mpfr-devel
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
+BuildRequires:  libnghttp2-devel
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(mpfr)
 Requires:       %{name}-data >= %{version}
 
 %description
@@ -80,8 +81,8 @@ Summary:        Header files, libraries and development documentation for %{libn
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       gmp-devel
-Requires:       libxml2-devel
-Requires:       mpfr-devel
+Requires:       pkgconfig(libxml-2.0)
+Requires:       pkgconfig(mpfr)
 
 %description -n %{libname}-devel
 This package contains the header files and development
