@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 22 07:37:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.2.8
+  * Support for Qt 5.15
+  * REUSE compliant licensing
+- Drop 0001-Fix-build-with-Qt-5.15.patch. Merged upstream.
+
+-------------------------------------------------------------------
 Fri Apr  3 09:44:40 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with Qt 5.15:

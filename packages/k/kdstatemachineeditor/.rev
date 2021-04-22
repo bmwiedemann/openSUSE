@@ -59,4 +59,15 @@
   * 0001-Fix-build-with-Qt-5.15.patch</comment>
     <requestid>791148</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c850cdcb577b157a3c92a345fa13c792</srcmd5>
+    <version>1.2.8</version>
+    <time>1619107461</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.8
+  * Support for Qt 5.15
+  * REUSE compliant licensing
+- Drop 0001-Fix-build-with-Qt-5.15.patch. Merged upstream.</comment>
+    <requestid>887497</requestid>
+  </revision>
 </revisionlist>
