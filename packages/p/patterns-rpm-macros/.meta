@@ -1,0 +1,5 @@
+<package name="patterns-rpm-macros" project="openSUSE:Factory">
+  <title>RPM Macros for python</title>
+  <description></description>
+  <devel project="system:install:head" package="patterns-rpm-macros"/>
+</package>
