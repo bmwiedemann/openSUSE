@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>535c3cf970221fa5e51f6b204aa75580</srcmd5>
+    <version>0.7.3</version>
+    <time>1511949186</time>
+    <user>dimstar_suse</user>
+    <comment>new package, usefull for some people</comment>
+    <requestid>545994</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>806123f459fdc996e656d7e7e3405489</srcmd5>
+    <version>1.0.0</version>
+    <time>1521716821</time>
+    <user>dimstar_suse</user>
+    <comment>- Extend previous changelog entry
+- Modernise spec file
+
+- version 1.0.0
+  * supports 8bit encodings like latin1, latin2.
+  * The border arts is correctly printed on terminals with these
+    encodings.
+  * Searching is more robust and more correct now
+  * With mentioned long option the ascii art (borders) can be
+    replaced by more pretty unicode art
+  * Add options --ignore-case and --IGNORE-CASE</comment>
+    <requestid>589717</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ab097a74ea700c225234117ee4b460f9</srcmd5>
+    <version>1.6.2</version>
+    <time>1537018603</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>634720</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>00c221dacf7083f9023b2133e95e91c2</srcmd5>
+    <version>1.9.0</version>
+    <time>1567850017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>728710</requestid>
+  </revision>
+</revisionlist>
