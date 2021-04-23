@@ -1,4 +1,82 @@
 --------------------------------------------------------------------
+Fri Apr 23 11:38:05 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#500
+- fix NVMf autoconnect udev rule (bsc#1184908)
+- 16.72
+
+--------------------------------------------------------------------
+Wed Apr 21 10:08:05 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#490
+- re-enable SecureBoot on AARCH64 on SLE Micro enable building the
+  SLE Micro flavor based on OBS macro
+- 16.71
+
+--------------------------------------------------------------------
+Wed Apr 21 09:13:18 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#497
+- add udev rules for NVMf autoconnect in the installation system
+  (bsc#1184908)
+- 16.70
+
+--------------------------------------------------------------------
+Tue Apr 20 15:37:23 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#496
+- add even more USB Type-C modules (bsc#1185010)
+- 16.69
+
+--------------------------------------------------------------------
+Tue Apr 20 10:04:55 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#492
+- allow loading of unsupported modules (bsc#1184413, bsc#1183140)
+- 16.68
+
+--------------------------------------------------------------------
+Tue Apr 20 10:02:52 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#491
+- build with kernel-default-optional on Leap (bsc#1184413)
+- 16.67
+
+--------------------------------------------------------------------
+Mon Apr 19 13:54:26 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#487
+- gefrickel: don't skip non-existing
+- 16.66
+
+--------------------------------------------------------------------
+Fri Apr 16 14:42:24 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#484
+- add USB Type-C modules (bsc#1184867)
+- 16.65
+
+--------------------------------------------------------------------
+Fri Apr 16 14:03:40 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#481
+- enable multipathd in rescue system (bsc#1184686)
+
+--------------------------------------------------------------------
+Fri Apr 16 13:15:24 UTC 2021 - Lubos.Kocman@suse.com
+
+- merge gh#openSUSE/installation-images#480
+- build with kernel-default-extra on Leap (bsc#1184413, bsc#1183140)
+- 16.64
+
+--------------------------------------------------------------------
+Wed Apr 14 10:39:46 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#478
+- Fix grub branding for %{arm}
+- 16.63
+
+--------------------------------------------------------------------
 Thu Apr 8 14:08:59 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#473

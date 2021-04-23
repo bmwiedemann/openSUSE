@@ -43,6 +43,7 @@ ExclusiveArch:  do_not_build
 %define with_reiserfs_kmp 0
 %define with_ssl_hmac 1
 %define with_exfat 0
+%define with_kernel_extra 0
 %bcond_without sbl
 %bcond_without vnc
 %bcond_with xen
@@ -64,6 +65,7 @@ ExclusiveArch:  do_not_build
 %if 0%{?is_opensuse}
 %define theme openSUSE
 %if 0%{?sle_version}
+%define with_kernel_extra 1
 # define the_version %(echo %sle_version | sed -Ee 's/^([0-9][0-9])(0|([0-9]))([0-9]).*/\\1.\\3\\4/')
 %define the_version \\$releasever
 %if "%{the_version}" == ""
@@ -91,14 +93,12 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if "%flavor" == "SMO"
+%if 0%{?is_smo}
 # build for both Leap and SLE
 %if 0%{?sle_version}
 %ifnarch %ix86
 %define theme SMO
 %endif
-# SMO is built based on 15-SP2, which does not include shim for aarch64
-%ifarch aarch64
-%define with_shim 0
 %endif
 %endif
 %endif
@@ -285,7 +285,7 @@ BuildRequires:  plymouth-branding-%branding_plymouth
 %ifarch %ix86 x86_64
 BuildRequires:  gfxboot-branding-%branding_gfxboot
 %endif
-%ifarch %ix86 x86_64 aarch64 riscv64
+%ifarch %ix86 x86_64 aarch64 %{arm} riscv64
 BuildRequires:  grub2-branding-%branding_grub2
 %endif
 
@@ -385,6 +385,10 @@ BuildRequires:  jfsutils
 BuildRequires:  joe
 BuildRequires:  kbd
 BuildRequires:  kernel-default
+%if %with_kernel_extra
+BuildRequires:  kernel-default-extra
+BuildRequires:  kernel-default-optional
+%endif
 BuildRequires:  kernel-firmware
 BuildRequires:  kexec-tools
 BuildRequires:  khmeros-fonts
@@ -622,7 +626,7 @@ BuildRequires:  s390-tools-hmcdrvfs
 %ifarch %ix86 x86_64
 BuildRequires:  gfxboot-branding
 %endif
-%ifarch %ix86 x86_64 aarch64 riscv64
+%ifarch %ix86 x86_64 aarch64 %{arm} riscv64
 BuildRequires:  grub2-branding
 %endif
 %ifnarch s390 s390x
@@ -669,7 +673,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        16.62
+Version:        16.72
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)
