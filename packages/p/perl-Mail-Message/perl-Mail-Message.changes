@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Mon Nov 23 17:01:26 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
+
+- Boiled down %description to relevant infos 
+
+-------------------------------------------------------------------
+Thu Oct 15 03:08:17 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.010
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.010: Wed 14 Oct 19:22:36 CEST 2020
+
+  	Fixes:
+  	- username of address as quoted-string. [Andy Beverley]
+
+-------------------------------------------------------------------
+Sat Feb  8 03:11:08 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 3.009
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.009: Fri  7 Feb 15:22:18 CET 2020
+  
+  	Fixes:
+  	- avoid folding inside phrases.  Also, encode more characters.
+  	  Reported by [Andrew Beverley]
+
+-------------------------------------------------------------------
+Tue Feb 12 06:12:43 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.008
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+-------------------------------------------------------------------
+Wed Sep 19 05:33:18 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 3.007
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+-------------------------------------------------------------------
+Wed Feb  7 15:49:00 UTC 2018 - coolo@suse.com
+
+- updated to 3.006
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.006: Wed 24 Jan 16:55:26 CET 2018
+  
+  	Improvements:
+  	- spell corrections rt.cpan.org #123993 [Damyan Ivanov, debian]
+  	- add some 'use warnings'
+  	- convert to GIT
+  	- publish on GitHUB
+
+-------------------------------------------------------------------
+Sat Dec 23 06:36:20 UTC 2017 - coolo@suse.com
+
+- updated to 3.005
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.005: Fri 22 Dec 09:43:45 CET 2017
+  
+  	Fixes:
+  	- repair loose dependency on Mail::Transport [cpantesters]
+
+-------------------------------------------------------------------
+Fri Dec 22 06:36:04 UTC 2017 - coolo@suse.com
+
+- updated to 3.004
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.004: Thu 21 Dec 09:08:52 CET 2017
+  
+  	Fixes:
+  	- field unfold replaces leading whitespace into blank. [Mark Nienberg]
+  
+  	Improvements:
+  	- improve docs on $msg->send().
+
+-------------------------------------------------------------------
+Thu Nov  9 06:30:28 UTC 2017 - coolo@suse.com
+
+- updated to 3.003
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.003: Wed  8 Nov 13:02:24 CET 2017
+  
+  	Fixes:
+  	- incorrect use of reftype.   rt.cpan.org#121244 [Matthew Darwin]
+  	- missing 'use warnings' in ::Build
+
+-------------------------------------------------------------------
+Wed Oct 18 05:10:22 UTC 2017 - coolo@suse.com
+
+- initial package 3.002
+ * created by cpanspec 1.78.08

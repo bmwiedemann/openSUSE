@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0e263cfc4697c5512aaef59346d88c6c</srcmd5>
+    <version>2.0+git8.9dde49c</version>
+    <time>1604510773</time>
+    <user>dimstar_suse</user>
+    <comment>I'd like to maintain this GTK theme in Factory.</comment>
+    <requestid>845713</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6645599cd17f30f238736a95b30ea263</srcmd5>
+    <version>2.0+git17.d3b3d53</version>
+    <time>1609866943</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0+git17.d3b3d53:
+  * Xfce: Improve thunar appearance
+  * Cinnamon: Fix top border appearing when window is maximized
+  * Gnome-shell: Improve searchbar appearance
+  * KDE: Update logout screen buttons appearance
+  * Gnome-shell: Fix color of month back/forward arrows
+  * KDE: Update full screen preview
+  * Mate: Fix active indicator in volume and brightness popup
+  * Gnome: Fix shell log because of double values for box-shadow
+  * Gnome-shell: Fix calendar and workspace-switcher issues in gnome v3.38
+</comment>
+    <requestid>860418</requestid>
+  </revision>
+</revisionlist>

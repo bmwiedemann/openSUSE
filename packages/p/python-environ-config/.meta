@@ -1,0 +1,5 @@
+<package name="python-environ-config" project="openSUSE:Factory">
+  <title></title>
+  <description>Boilerplate-free configuration with env variables</description>
+  <devel project="devel:languages:python" package="python-environ-config"/>
+</package>

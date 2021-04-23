@@ -1,0 +1,4 @@
+# W: shlib-policy-missing-lib: false positive: this integrates with libzypp, name is correct
+addFilter("shlib-policy-missing-lib");
+# W: suse-missing-rclink: the service is not meant to be manually started, hence the rcFOO link makes no sense
+addFilter("suse-missing-rclink");

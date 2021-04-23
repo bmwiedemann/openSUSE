@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Tue Jan 08 11:00:22 UTC 2019 - Michał Rostecki <mrostecki@suse.de>
+
+- Make use of tar_scm service.
+- Update to version 1.2.0:
+  * proto: fix handling of required fields after multiple
+    violations (#679)
+  * Update issue templates
+  * README.md: remove usage of group in example (#673)
+  * jsonpb: avoid unexported fields in hand-crafted message (#671)
+  * proto: make invalid UTF-8 errors non-fatal (#660)
+  * jsonpb: strictly document JSONPBMarshaler and JSONPBUnmarshaler
+    behavior (#662)
+  * proto: revert strict erroring of deterministic and custom
+    marshalers (#658)
+  * protoc-gen-go: refactor generator by splitting up
+    generateMessage (#657)
+  * proto: fix and cleanup test for deterministic marshal with
+    custom marshalers (#656)
+  * jsonpb: avoid copying string-valued map-keys (#654)
+- Add protoc-gen-go-source package - some Go programs using gRPC
+  and protobuf need protobuf definitions which are included inside
+  the source code.
+- Patch protoc-gen-go source to add Bazel support.
+
+-------------------------------------------------------------------
+Mon Jul  9 14:26:12 UTC 2018 - mrostecki@suse.com
+
+- Initial release

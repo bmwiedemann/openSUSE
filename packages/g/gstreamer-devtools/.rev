@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4cbc59dab659c028a7697eae667d29e5</srcmd5>
+    <version>1.18.0</version>
+    <time>1603821533</time>
+    <user>dimstar_suse</user>
+    <comment>Add gst-devtools as replacement for -validate</comment>
+    <requestid>844351</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>857553887c79fb1f4e45ef67fd48fcb1</srcmd5>
+    <version>1.18.1</version>
+    <time>1607349626</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853318</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>52c9b4138c45f5bc13252d1eab95bfbf</srcmd5>
+    <version>1.18.2</version>
+    <time>1607876979</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>854818</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>80302aa7b7318a5fe3fac2add8c5ecb4</srcmd5>
+    <version>1.18.2</version>
+    <time>1610123924</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>861581</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>755fda7a43e1d804468e85183050655e</srcmd5>
+    <version>1.18.3</version>
+    <time>1611262465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>864323</requestid>
+  </revision>
+</revisionlist>

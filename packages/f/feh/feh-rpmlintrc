@@ -1,0 +1,2 @@
+# we just need jpegtran bin from libjpeg-turbo (boo#1080592)
+addFilter("W: explicit-lib-dependency")

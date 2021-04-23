@@ -1,0 +1,5 @@
+<package name="libmd" project="openSUSE:Factory">
+  <title>message digest functions from BSD systems</title>
+  <description>The libmd library provides various message digest (&quot;hash&quot;) functions, as found on various BSDs on a library with the same name and with a compatible API.</description>
+  <devel project="devel:libraries:c_c++" package="libmd"/>
+</package>

@@ -1,0 +1,7 @@
+<package name="tcmu-runner" project="openSUSE:Factory">
+  <title>Service supporting user-space kernel TCM/LIO target</title>
+  <description>A daemon that handles the userspace side of the LIO TCM-User backstore.
+
+See https://github.com/agrover/tcmu-runner</description>
+  <devel project="Base:System" package="tcmu-runner"/>
+</package>

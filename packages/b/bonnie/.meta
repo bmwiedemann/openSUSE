@@ -1,0 +1,6 @@
+<package name="bonnie" project="openSUSE:Factory">
+  <title>File System Benchmark</title>
+  <description>Bonnie is a popular performance benchmark that targets various aspects
+of Unix file systems.</description>
+  <devel project="benchmark" package="bonnie"/>
+</package>

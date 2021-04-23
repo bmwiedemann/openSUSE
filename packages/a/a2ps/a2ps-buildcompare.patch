@@ -1,0 +1,40 @@
+---
+ doc/a2ps.texi |    5 ++---
+ etc/README.in |    4 ----
+ 2 files changed, 2 insertions(+), 7 deletions(-)
+
+Index: a2ps-4.14/doc/a2ps.texi
+===================================================================
+--- a2ps-4.14.orig/doc/a2ps.texi
++++ a2ps-4.14/doc/a2ps.texi
+@@ -103,7 +103,7 @@ approved by the author.
+ @titlepage
+ @title GNU a2ps, version @value{VERSION}
+ @subtitle General Purpose PostScript Generating Utility
+-@subtitle Edition @value{EDITION}, @value{UPDATED}
++@subtitle Edition @value{EDITION}
+ @author Akim Demaille
+ @author Miguel Santana
+ 
+@@ -141,8 +141,7 @@ GNU @pack{} is a filter which generates
+ with pretty-printing features, strong support for many alphabets, and
+ customizable layout.
+ 
+-This is Edition @value{VERSION} of the @pack{} documentation, updated
+-@value{UPDATED}.
++This is Edition @value{VERSION} of the @pack{} documentation.
+ 
+ @menu
+ * Introduction::                Foreword
+Index: a2ps-4.14/etc/README.in
+===================================================================
+--- a2ps-4.14.orig/etc/README.in
++++ a2ps-4.14/etc/README.in
+@@ -1,7 +1,3 @@
+-The last installation in this directory occurred the
+-	@date@
+-for GNU a2ps version @version@.
+-
+ The content of this directory (unless reorganized by the local
+ installer) is:
+ 

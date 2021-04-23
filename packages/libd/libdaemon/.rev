@@ -1,0 +1,190 @@
+<revisionlist>
+  <revision rev="1" vrev="39">
+    <srcmd5>4483545c5493e435e257e6d585370ce3</srcmd5>
+    <version>0.10</version>
+    <time>1166115259</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0c7f28c8d93af675e838fc541775ab1c</srcmd5>
+    <version>0.11</version>
+    <time>1183588999</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b1d4d86ff54ef837e76722f13fdaa868</srcmd5>
+    <version>0.12</version>
+    <time>1184343132</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>750d187092ba5b028718f84b42241a44</srcmd5>
+    <version>0.12</version>
+    <time>1185149950</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="15">
+    <srcmd5>d34c8733dcab59d72821cdf8cb9b9d3c</srcmd5>
+    <version>0.12</version>
+    <time>1189723485</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="27">
+    <srcmd5>cf7686ed3f5facd8bc167e6fe297b62b</srcmd5>
+    <version>0.12</version>
+    <time>1196899578</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="28">
+    <srcmd5>ddf59625316c6bed49c7c4a93d56eb90</srcmd5>
+    <version>0.12</version>
+    <time>1197999995</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="30">
+    <srcmd5>ddf59625316c6bed49c7c4a93d56eb90</srcmd5>
+    <version>0.12</version>
+    <time>1197999995</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="31">
+    <srcmd5>69cc48afdd77a9d1525e49746e36f450</srcmd5>
+    <version>0.12</version>
+    <time>1227882353</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>83f593003dbd40785f42c50ab5ab85ed</srcmd5>
+    <version>0.13</version>
+    <time>1231779959</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>15b3574f92adff79725dfa06f0c6d4d3</srcmd5>
+    <version>0.13</version>
+    <time>1233268405</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>e57e7738782abfdbcbe8b067285bddd4</srcmd5>
+    <version>0.13</version>
+    <time>1233936690</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>e57e7738782abfdbcbe8b067285bddd4</srcmd5>
+    <version>0.13</version>
+    <time>1233936690</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>d2ed834182112d0d264449e808f9d2e4</srcmd5>
+    <version>0.13</version>
+    <time>1268924532</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>2e174bbe82e37cc16a8a17ced42dc92e</srcmd5>
+    <version>0.13</version>
+    <time>1272121038</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libdaemon based on submit request 38733 from user coolo
+</comment>
+    <requestid>38733</requestid>
+  </revision>
+  <revision rev="16" vrev="9">
+    <srcmd5>2e174bbe82e37cc16a8a17ced42dc92e</srcmd5>
+    <version>0.13</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>2e174bbe82e37cc16a8a17ced42dc92e</srcmd5>
+    <version>0.13</version>
+    <time>1278678588</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>00c41bc90bc1ae76d71bd715c2b283f2</srcmd5>
+    <version>0.14</version>
+    <time>1286493638</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:libraries:c_c++/libdaemon based on submit request 49791 from user prusnak
+</comment>
+    <requestid>49791</requestid>
+  </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>00c41bc90bc1ae76d71bd715c2b283f2</srcmd5>
+    <version>0.14</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>00c41bc90bc1ae76d71bd715c2b283f2</srcmd5>
+    <version>0.14</version>
+    <time>1319182081</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>e87cdcbc03bad02f2500ec08397a4761</srcmd5>
+    <version>0.14</version>
+    <time>1323192181</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="22" vrev="8">
+    <srcmd5>78888ea24941263ad79597d4efcf7645</srcmd5>
+    <version>0.14</version>
+    <time>1329318948</time>
+    <user>coolo</user>
+    <comment>- Move library back to %{_libdir}, /usr merge project. (forwarded request 103816 from elvigia)</comment>
+    <requestid>104137</requestid>
+  </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>78888ea24941263ad79597d4efcf7645</srcmd5>
+    <version>0.14</version>
+    <time>1340183572</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="24" vrev="12">
+    <srcmd5>78888ea24941263ad79597d4efcf7645</srcmd5>
+    <version>0.14</version>
+    <time>1359109253</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="14">
+    <srcmd5>78888ea24941263ad79597d4efcf7645</srcmd5>
+    <version>0.14</version>
+    <time>1379662922</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="16">
+    <srcmd5>78888ea24941263ad79597d4efcf7645</srcmd5>
+    <version>0.14</version>
+    <time>1409301529</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="27" vrev="17">
+    <srcmd5>3bacc37c3ddf2ea50536903d6ffdccff</srcmd5>
+    <version>0.14</version>
+    <time>1426485183</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>290611</requestid>
+  </revision>
+  <revision rev="28" vrev="18">
+    <srcmd5>58f648e4995af5ea853b12ae28969e2f</srcmd5>
+    <version>0.14</version>
+    <time>1491907102</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>482514</requestid>
+  </revision>
+</revisionlist>

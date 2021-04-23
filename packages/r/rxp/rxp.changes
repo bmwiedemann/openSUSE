@@ -1,0 +1,81 @@
+-------------------------------------------------------------------
+Wed Oct 15 07:17:07 UTC 2014 - jengelh@inai.de
+
+- Remove ancient specfile tags and sections
+
+-------------------------------------------------------------------
+Tue Jun 16 07:24:21 CEST 2009 - coolo@novell.com
+
+- fix build with glibc 2.10
+
+-------------------------------------------------------------------
+Tue Aug  7 04:52:42 CEST 2007 - crrodriguez@suse.de
+
+- update to version 1.4.8 with some bugfixes
+- spec file cleanup
+- make autobuild 100% happy 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:41:16 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Sep  8 16:20:23 CEST 2005 - ke@suse.de
+
+- Remove executable bit from manpage.  Reported by Martin Lasarsch
+  [#114849].
+
+-------------------------------------------------------------------
+Fri Apr 29 15:12:53 CEST 2005 - ke@suse.de
+
+- Update to 1.4.4.
+
+-------------------------------------------------------------------
+Thu Aug  5 14:53:44 CEST 2004 - ke@suse.de
+
+- Update to version 1.4.0:
+  - Bug fixes (memory leaks etc.).
+  - Fix namespace handling.
+  - Speedup.
+
+-------------------------------------------------------------------
+Wed Feb 25 16:55:33 CET 2004 - hmacht@suse.de
+
+- building as non-root
+
+-------------------------------------------------------------------
+Tue Jul  1 13:40:06 CEST 2003 - coolo@suse.de
+
+- don't use $RPM_PACKAGE_NAME
+
+-------------------------------------------------------------------
+Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
+
+- removed bogus self-provides 
+
+-------------------------------------------------------------------
+Fri Sep 29 15:08:55 CEST 2000 - ke@suse.de
+
+- Update to version 1.2.
+- Use _mandir macro.
+
+-------------------------------------------------------------------
+Thu Feb 24 14:10:39 CET 2000 - ke@suse.de
+
+- General spec file cleanup:
+- Add group tag.
+- Move manpage -> /usr/share.
+- Move suse_chekc to the end of %install.
+
+-------------------------------------------------------------------
+Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
+
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+
+-------------------------------------------------------------------
+Thu Jun 10 10:41:15 MEST 1999 - ke@suse.de
+
+- initial package: version 1.0.7
+
+

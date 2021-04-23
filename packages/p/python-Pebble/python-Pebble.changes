@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Thu Jan 14 03:53:26 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.6.0
+  * Features:
+    + issue #73: allow passing `multiprocessing.context` object
+      as `concurrent.process` and `ProcessPool` parameter
+  * Fixes:
+    + issues #34, #35: rework Pool termination logic to silence Windows errors
+    + issue #68: use fully qualified function name in `concurrent.process`
+      decorator trampoline to handle class inheritance in Windows
+    + issue #69: correctly propagate the timeout in pool's map method
+    + issue #64: rework versioning logic 
+
+-------------------------------------------------------------------
+Wed May  6 15:47:22 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Bump to 4.5.2:
+  - Fix issue #58: handle pool connection teardown in Python 3.8
+
+-------------------------------------------------------------------
+Mon Apr 20 11:18:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix build without python2
+
+-------------------------------------------------------------------
+Thu Mar 26 16:16:44 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.5.1
+  * add daemon parameter to decorator
+  * travis: add Python 3.8 tests
+
+-------------------------------------------------------------------
+Wed Jan 15 10:59:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 4.4.1
+  * use poll in channel implementation instead of select 
+  * handle pickling errors in ProcessPool
+  * add test cases
+
+-------------------------------------------------------------------
+Mon Oct  7 15:00:00 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 4.4.0:
+  * Various doc and test fixes
+
+-------------------------------------------------------------------
+Sat Aug 24 05:59:11 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use description from upstream.
+
+-------------------------------------------------------------------
+Sun Aug 11 03:51:46 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

@@ -1,0 +1,22 @@
+Index: latencytop-0.5/latencytop.8
+===================================================================
+--- latencytop-0.5.orig/latencytop.8
++++ latencytop-0.5/latencytop.8
+@@ -15,7 +15,7 @@
+ latencytop \- a tool for developers to visualize system latencies
+ .SH SYNOPSIS
+ .B latencytop
+-.RI [ --unknown ] " " [ processes ... ]
++.RI [ --unknown ] " " [ -c ] " " [ processes ... ]
+ .SH DESCRIPTION
+ This manual page documents briefly the
+ .B latencytop
+@@ -46,6 +46,8 @@ If you press \fBf\fP then \fBLatencyTop\
+ currently waiting for an \fBfsync\fP to finish. Pressing \fBf\fP again
+ returns you to the normal operating mode of \fBLatencyTop\fP.
+ 
++\fB-c\fP    this commandline argument produces incremental and textual output that is suitable for reporting latency issues
++
+ .SH SEE ALSO
+ .BR powertop (1)
+ .br

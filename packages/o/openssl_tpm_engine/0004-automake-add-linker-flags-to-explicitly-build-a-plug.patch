@@ -1,0 +1,25 @@
+From 62277287b042e849fc656a81e3412212dcc0cfed Mon Sep 17 00:00:00 2001
+From: Matthias Gerstner <matthias.gerstner@suse.de>
+Date: Fri, 1 Dec 2017 17:22:07 +0100
+Subject: [PATCH] automake: add linker flags to explicitly build a plugin
+ instead of a regular library
+
+---
+ Makefile.am | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile.am b/Makefile.am
+index 53bd3e6..44a8888 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -8,6 +8,7 @@ openssl_enginedir=@libdir@/openssl/engines
+ 
+ libtpm_la_LIBADD=-lcrypto -lc -ltspi
+ libtpm_la_SOURCES=e_tpm.c e_tpm.h e_tpm_err.c
++libtpm_la_LDFLAGS=-avoid-version -module -shared -export-dynamic
+ 
+ create_tpm_key_SOURCES=create_tpm_key.c
+ create_tpm_key_LDADD=-ltspi -lcrypto
+-- 
+2.13.6
+

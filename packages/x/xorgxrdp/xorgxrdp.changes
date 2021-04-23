@@ -1,0 +1,136 @@
+-------------------------------------------------------------------
+Wed Jan  6 09:02:18 UTC 2021 - Felix Zhang <fzhang.foss@gmail.com>
+
+- Update to version 0.2.15
+  - Give group permission also to disconnect socket (#177)
+  - Add logs on socket files deletion failure (#176)
+  - Fix bug in killing disconnected sessions (#175)
+
+-------------------------------------------------------------------
+Mon Sep 14 10:23:51 UTC 2020 - Felix Zhang <fzhang.foss@gmail.com>
+
+- Update to version 0.2.14
+  + Reduce input lag by using two different delays #166
+  + Do not fail randr resize if size not changed #161 #156
+- Update the upstream maintainer's keyring
+-------------------------------------------------------------------
+Thu Mar 12 08:21:13 UTC 2020 - Felix Zhang <fzhang.foss@gmail.com>
+
+- Update to version 0.2.13
+  + Add support for button 8/9 #157
+
+-------------------------------------------------------------------
+Wed Dec 11 09:08:25 UTC 2019 - Felix Zhang <fzhang.foss@gmail.com>
+
+- Update to version 0.2.12
+  + Glamor support for hardware acceleration #151
+  + Fix some memory leak #152
+  + Fix issue on screen resizing #153 neutrinolabs/xrdp#914
+
+-------------------------------------------------------------------
+Sat Oct 12 10:43:24 UTC 2019 - Felix Zhang <fezhang@suse.com>
+
+- Update to version 0.2.11 (jsc#SLE-9612)
+  + Fix crash on reconnect when monitors change #121 #147
+
+-------------------------------------------------------------------
+Thu Jun 13 06:36:56 UTC 2019 - Felix Zhang <fezhang@suse.com>
+
+- Update to version 0.2.10
+  + Improve reliability killing disconnected sessions
+  + Introduce suppress output support (requires upcoming xrdp
+    v0.9.11)
+
+-------------------------------------------------------------------
+Mon Apr 29 17:11:02 UTC 2019 - Felix Zhang <fezhang@suse.com>
+
+- BuildRequires libXfont2-devel for SLE12-SP4 and later
+
+-------------------------------------------------------------------
+Tue Dec 18 09:36:17 UTC 2018 - Felix Zhang <fezhang@suse.com>
+
+- Update to version 0.2.9 (jsc#SLE-5926)
+  + Add a feature to disconnect idle sessions
+  + Disable autorepeat in Xorg, it is done in RDP layer
+
+-------------------------------------------------------------------
+Thu Sep 20 08:57:44 UTC 2018 - fezhang@suse.com
+
+- Update to version 0.2.8
+  + Fix invalid memory access issues #124 #125
+
+-------------------------------------------------------------------
+Mon Aug  6 07:35:47 UTC 2018 - fezhang@suse.com
+
+- Add xorg-macros BuildRequires and %{x11_abi_videodrv_req} and
+  %{x11_abi_xinput_req} to prevent ABI mismatch with Xorg, reported
+  and fix suggested by Michal Srb (boo#1103556).
+
+-------------------------------------------------------------------
+Tue Jul  3 03:03:35 UTC 2018 - fezhang@suse.com
+
+- Update to version 0.2.7
+  + Build fix #119 #123
+
+-------------------------------------------------------------------
+Tue Apr 17 02:56:02 UTC 2018 - fezhang@suse.com
+
+- Update to version 0.2.6
+  + Fix GNOME 3 gnome-settings-daemon crash issue #111
+  + Show correct version in Xorg log #114 #115
+
+-------------------------------------------------------------------
+Wed Jan 31 17:52:38 CET 2018 - ro@suse.de
+
+- Add s390 to excludearch list
+
+-------------------------------------------------------------------
+Sat Jan  6 19:16:29 UTC 2018 - fezhang@suse.com
+
+- Update to version 0.2.5
+  + Adjust socket file permission #110
+  + Accept display number 0 #106
+  + Assembly code refactoring
+
+-------------------------------------------------------------------
+Thu Sep 28 04:23:42 UTC 2017 - fezhang@suse.com
+
+- Update to 0.2.4
+  + Implement disconnection by xrdp-dis command #51
+
+-------------------------------------------------------------------
+Mon Sep  4 05:20:53 UTC 2017 - fezhang@suse.com
+
+- Exclude s390x arch
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Wed Aug 16 05:23:06 UTC 2017 - ftake@geeko.jp
+
+- Update to 0.2.3
+  + Fix X programs crash when reconnecting to xrdp with different
+    screen size
+- Fix build error for Leap 42.3
+  + Use libXfont-devel instead of libXfont2-devel
+
+-------------------------------------------------------------------
+Tue Jul 11 09:13:09 UTC 2017 - fezhang@suse.com
+
+- Add source verification
+  + Add xorgxrdp-0.2.2.tar.gz.asc
+  + Add xorgxrdp.keyring, from the signer Koichiro IWAO (@metalefty
+    on github)
+
+-------------------------------------------------------------------
+Fri Jun 23 18:09:29 UTC 2017 - ftake@geeko.jp
+
+- Update to 0.2.2
+  * RemoteFX codec bandwidth optimization for aggressive
+    application redraws
+  * Code cleanups
+
+-------------------------------------------------------------------
+Mon May  1 15:58:52 UTC 2017 - ftake@geeko.jp
+
+- Initial package
+

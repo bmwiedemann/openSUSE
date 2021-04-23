@@ -1,0 +1,8 @@
+<package name="language-detector" project="openSUSE:Factory">
+  <title>Language Detection Library for Java</title>
+  <description>A language detector / language guesser library in Java.
+
+</description>
+  <devel project="Java:packages" package="language-detector"/>
+  <url>https://github.com/optimaize/language-detector</url>
+</package>

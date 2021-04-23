@@ -1,0 +1,111 @@
+Index: gcc/common.opt
+===================================================================
+--- gcc/common.opt	(revision 244266)
++++ gcc/common.opt	(working copy)
+@@ -2295,6 +2299,10 @@ fstack-check
+ Common Alias(fstack-check=, specific, no)
+ Insert stack checking code into the program.  Same as -fstack-check=specific.
+ 
++fstack-clash-protection
++Common Report Var(flag_stack_clash_protection)
++Insert probes per page for dynamically allocated stack space
++
+ fstack-limit
+ Common Var(common_deferred_options) Defer
+ 
+Index: gcc/explow.c
+===================================================================
+--- gcc/explow.c	(revision 244266)
++++ gcc/explow.c	(working copy)
+@@ -1277,6 +1277,8 @@ get_dynamic_stack_size (rtx *psize, unsi
+   *psize = size;
+ }
+ 
++#define PROBE_INTERVAL (1 << STACK_CHECK_PROBE_INTERVAL_EXP)
++
+ /* Return an rtx representing the address of an area of memory dynamically
+    pushed on the stack.
+ 
+@@ -1305,6 +1307,8 @@ allocate_dynamic_stack_space (rtx size,
+   HOST_WIDE_INT stack_usage_size = -1;
+   rtx_code_label *final_label;
+   rtx final_target, target;
++  rtx loop_lab, end_lab, skip_lab, last_size, before_skip;
++  int probe_pass = 0;
+ 
+   /* If we're asking for zero bytes, it doesn't matter what we point
+      to since we can't dereference it.  But return a reasonable
+@@ -1440,6 +1444,30 @@ allocate_dynamic_stack_space (rtx size,
+   /* Don't let anti_adjust_stack emit notes.  */
+   suppress_reg_args_size = true;
+ 
++  if (flag_stack_clash_protection)
++    {
++#ifndef STACK_GROWS_DOWNWARD
++      sorry("-fstack-clash-protection is incompatible with upward growing stack");
++#endif
++      size = copy_to_mode_reg (Pmode, convert_to_mode (Pmode, size, 1));
++      loop_lab = gen_label_rtx ();
++      end_lab = gen_label_rtx ();
++      skip_lab = gen_label_rtx ();
++      /* We insert 'target = virtual_stack_dynamic_rtx' here, but target
++	 is changed later, so that insn can be constructed only later.  */
++      before_skip = get_last_insn ();
++      emit_cmp_and_jump_insns (size, CONST0_RTX (Pmode), EQ, NULL_RTX,
++			       Pmode, 1, skip_lab);
++      emit_label (loop_lab);
++      emit_cmp_and_jump_insns (size, GEN_INT (PROBE_INTERVAL), LTU,
++			       NULL_RTX, Pmode, 1, end_lab);
++      last_size = expand_binop (Pmode, sub_optab, size, GEN_INT (PROBE_INTERVAL), size,
++				1, OPTAB_WIDEN);
++      gcc_assert (last_size == size);
++      size = GEN_INT (PROBE_INTERVAL);
++    }
++
++again:
+   /* Perform the required allocation from the stack.  Some systems do
+      this differently than simply incrementing/decrementing from the
+      stack pointer, such as acquiring the space by calling malloc().  */
+@@ -1499,6 +1527,15 @@ allocate_dynamic_stack_space (rtx size,
+       if (STACK_GROWS_DOWNWARD)
+ 	emit_move_insn (target, virtual_stack_dynamic_rtx);
+     }
++  if (flag_stack_clash_protection && probe_pass == 0)
++    {
++      probe_pass = 1;
++      emit_stack_probe (target);
++      emit_jump (loop_lab);
++      emit_label (end_lab);
++      size = last_size;
++      goto again;
++    }
+ 
+   suppress_reg_args_size = false;
+ 
+@@ -1510,6 +1547,17 @@ allocate_dynamic_stack_space (rtx size,
+       emit_label (final_label);
+       target = final_target;
+     }
++  if (flag_stack_clash_protection)
++    {
++      rtx seq;
++      emit_stack_probe (target);
++      emit_label (skip_lab);
++      start_sequence ();
++      emit_move_insn (target, virtual_stack_dynamic_rtx);
++      seq = get_insns ();
++      end_sequence ();
++      emit_insn_after (seq, before_skip);
++    }
+ 
+   target = align_dynamic_address (target, required_align);
+ 
+@@ -1593,8 +1641,6 @@ emit_stack_probe (rtx address)
+    the current stack pointer.  STACK_GROWS_DOWNWARD says whether to add
+    or subtract them from the stack pointer.  */
+ 
+-#define PROBE_INTERVAL (1 << STACK_CHECK_PROBE_INTERVAL_EXP)
+-
+ #if STACK_GROWS_DOWNWARD
+ #define STACK_GROW_OP MINUS
+ #define STACK_GROW_OPTAB sub_optab

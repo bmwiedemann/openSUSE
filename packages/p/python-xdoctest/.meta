@@ -1,0 +1,5 @@
+<package name="python-xdoctest" project="openSUSE:Factory">
+  <title>python-xdoctest</title>
+  <description>A rewrite of the builtin doctest module</description>
+  <devel project="devel:languages:python" package="python-xdoctest"/>
+</package>

@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4f22f2048fa0a7ed5feef6817a5cbfb</srcmd5>
+    <version>0.0</version>
+    <time>1601652876</time>
+    <user>dimstar_suse</user>
+    <comment>New service, needed for official Dockerfile builds.</comment>
+    <requestid>835210</requestid>
+  </revision>
+</revisionlist>

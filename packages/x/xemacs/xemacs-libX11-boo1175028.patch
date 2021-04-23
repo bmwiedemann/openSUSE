@@ -1,0 +1,15 @@
+---
+ src/input-method-xlib.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- src/input-method-xlib.c
++++ src/input-method-xlib.c	2020-08-13 07:54:18.827193037 +0000
+@@ -300,7 +300,7 @@ XIM_init_frame (struct frame *f)
+ 
+   xim = DEVICE_X_XIM (d);
+ 
+-  if (!xim)
++  if (!xim || ! DEVICE_X_XIM_STYLES(d))
+     {
+       return;
+     }

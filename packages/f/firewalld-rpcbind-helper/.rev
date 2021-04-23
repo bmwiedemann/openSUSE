@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3616cd4a59a55ae831748783b8c0d1c1</srcmd5>
+    <version>0.1</version>
+    <time>1523956637</time>
+    <user>dimstar_suse</user>
+    <comment>I would like to add this new package which helps with the migration from
+SuSEfirewall2 to firewalld.
+
+This time tied to python3 as discussed in sr#595722.</comment>
+    <requestid>596999</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>64328f0cf7abbda0b5f609699ff96630</srcmd5>
+    <version>0.1</version>
+    <time>1524144628</time>
+    <user>dimstar_suse</user>
+    <comment>- Feed file through spec-cleaner: get rid of old-age $RPM_ shell vars (forwarded request 597441 from jengelh)</comment>
+    <requestid>597455</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9a3ad7c4b28e59e9a049eb618abf16d2</srcmd5>
+    <version>0.2</version>
+    <time>1526220324</time>
+    <user>dimstar_suse</user>
+    <comment>- update to new minor release that fixes bugs:
+  * error in some cases when running with python3 because of a missing decode
+  * error when sysconfig files have not been existing, because packages have
+    not been installed yet
+- dropped shebang.patch: is now covered by new release tarball
+
+- use %doc and %license macros in a cleaner way</comment>
+    <requestid>606428</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>828b0269d4709bbfabc08d2f95cc8ea8</srcmd5>
+    <version>0.21</version>
+    <time>1566248551</time>
+    <user>dimstar_suse</user>
+    <comment>- update to new minor release that fixes a bug that can occur with python3
+  when `rpcbind -p` contains a port listing neither for udp nor for tcp. See
+  [1].
+  [1]: https://github.com/mgerstner/firewalld-rpcbind-helper/issues/1</comment>
+    <requestid>724582</requestid>
+  </revision>
+</revisionlist>

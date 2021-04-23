@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f283b2c5add89ac2b86f3cd327458e49</srcmd5>
+    <version>1.4.0.1</version>
+    <time>1553611257</time>
+    <user>dimstar_suse</user>
+    <comment>I want to maintain libadlmidi in Factory</comment>
+    <requestid>684474</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b7428eaae1e95a7ae5b39e2f5e9cc579</srcmd5>
+    <version>1.4.0.1</version>
+    <time>1591743145</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>812963</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0ff8c832302a373e237a7a1adc3cd424</srcmd5>
+    <version>1.5.0</version>
+    <time>1601399068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838409</requestid>
+  </revision>
+</revisionlist>

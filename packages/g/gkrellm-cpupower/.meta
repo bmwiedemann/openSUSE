@@ -1,0 +1,5 @@
+<package name="gkrellm-cpupower" project="openSUSE:Factory">
+  <title>gkrellm-cpufreq</title>
+  <description></description>
+  <devel project="X11:Utilities" package="gkrellm-cpupower"/>
+</package>

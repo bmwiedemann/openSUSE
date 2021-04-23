@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eee9b342b80e055b59b01efae1e5eeb7</srcmd5>
+    <version>15.2</version>
+    <time>1579032509</time>
+    <user>dimstar_suse</user>
+    <comment>new package for WSL</comment>
+    <requestid>764201</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3b97337734c1405bb7df6b44298844fb</srcmd5>
+    <version>15.2</version>
+    <time>1579557300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>765727</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>665b1892c202244338d6c8fd95aa1a47</srcmd5>
+    <version>15.2</version>
+    <time>1579791288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766511</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b7db360ebc3f56a25ef9ab4572ee76ec</srcmd5>
+    <version>15.2</version>
+    <time>1581087248</time>
+    <user>dimstar_suse</user>
+    <comment>- don't install the special apache config anymore as we don't know what it's
+  good for.
+- mount /var/tmp as tmpfs as workaround for the broken wslfs implementation on
+  Windows side (boo#1159195)</comment>
+    <requestid>770909</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b8e3a38db038cf7baf990ddb8a9d923d</srcmd5>
+    <version>15.2</version>
+    <time>1593090419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>816837</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>2731f9533b77fde3914e90404741ef98</srcmd5>
+    <version>15.2</version>
+    <time>1602282588</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>840415</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7a6fef1a8a1bb2e25f04ffb575bf990c</srcmd5>
+    <version>1.0.0</version>
+    <time>1614108040</time>
+    <user>dimstar_suse</user>
+    <comment>basic solution for https://code.djangoproject.com/ticket/361 which was wontfix</comment>
+    <requestid>874319</requestid>
+  </revision>
+</revisionlist>

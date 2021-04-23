@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Tue Apr 24 06:30:54 UTC 2018 - bliu@suse.com
+
+- kronosnet-1.3 is available now(bsc#1090641)
+    changes since 1.2
+        * Fix potential crashes in the crypto code
+
+    changes since 1.1    
+        * Fix a potential crash when using external destination handlers
+        * Improve compression level validation by delegating the validation to
+          the external compression library
+        * Improve the build system to accommodate repeatable builds
+
+-------------------------------------------------------------------
+Mon Mar  5 06:19:10 UTC 2018 - bliu@suse.com
+
+- kronosnet-1.0 is available now(bsc#1077702)
+    kronosnet-1.1 released, so upgrade to 1.1
+    * Fix plugins loader by switching from RPATH to RUNPATH
+    * Man pages are now automatically generated at build time
+    * Better error reporting from crypto plugins
+    * Fix and improve the whole build system
+    * Add support for some older lz4 versions
+    * Fix issue with UDP sockets that could cause knet to spin
+    * Add new API call to run knet unprivileged
+
+    Added: kronosnet-1.1.tar.gz
+           add-version.patch
+    Removed: kronosnet-1.0.tar.gz
+
+-------------------------------------------------------------------
+Tue Jan 30 23:16:45 UTC 2018 - jengelh@inai.de
+
+- Fix almost-empty SRPM description.
+- Fix faulty leading whitespace in descriptions.
+- Reduce size of %if..%endif blocks to minimum.
+- Remove pkgconfig requires that are already automatically detected.
+
+-------------------------------------------------------------------
+Tue Jan 26 06:24:30 UTC 2018 - bliu@suse.com
+
+- kronosnet-1.0 is available now(bsc#1077702)
+    Added: kronosnet-1.0.tar.gz
+           kronosnet.spec
+           kronosnet.changes

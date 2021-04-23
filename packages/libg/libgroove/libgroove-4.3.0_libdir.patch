@@ -1,0 +1,75 @@
+diff -U 3 -dHrN libgroove-4.3.0.orig/CMakeLists.txt libgroove-4.3.0/CMakeLists.txt
+--- libgroove-4.3.0.orig/CMakeLists.txt	2015-05-26 04:32:01.000000000 +0300
++++ libgroove-4.3.0/CMakeLists.txt	2016-05-26 04:54:44.010826634 +0300
+@@ -166,7 +166,7 @@
+ set_target_properties(groove_static PROPERTIES
+   OUTPUT_NAME groove
+   COMPILE_FLAGS "${LIB_CFLAGS} -fPIC")
+-install(TARGETS groove_static DESTINATION lib)
++install(TARGETS groove_static DESTINATION lib${LIB_SUFFIX})
+ 
+ 
+ install(FILES
+@@ -174,7 +174,7 @@
+   "groove/queue.h"
+   "groove/encoder.h"
+   DESTINATION "include/groove")
+-install(TARGETS groove DESTINATION lib)
++install(TARGETS groove DESTINATION lib${LIB_SUFFIX})
+ 
+ add_executable(metadata example/metadata.c)
+ set_target_properties(metadata PROPERTIES
+@@ -211,7 +211,7 @@
+   include_directories(${SDL2_INCLUDE_DIR})
+ 
+   install(FILES "grooveplayer/player.h" DESTINATION "include/grooveplayer")
+-  install(TARGETS grooveplayer DESTINATION lib)
++  install(TARGETS grooveplayer DESTINATION lib${LIB_SUFFIX})
+ 
+   add_library(grooveplayer_static STATIC
+     ${LIBGROOVE_PLAYER_SOURCES}
+@@ -219,7 +219,7 @@
+   set_target_properties(grooveplayer_static PROPERTIES
+     OUTPUT_NAME grooveplayer
+     COMPILE_FLAGS "${LIB_CFLAGS} -fPIC")
+-  install(TARGETS grooveplayer_static DESTINATION lib)
++  install(TARGETS grooveplayer_static DESTINATION lib${LIB_SUFFIX})
+ 
+ 
+   add_executable(playlist example/playlist.c ${PROJECT_SOURCE_DIR}/grooveplayer/player.h)
+@@ -246,7 +246,7 @@
+   include_directories(${EBUR128_INCLUDE_DIR})
+ 
+   install(FILES "grooveloudness/loudness.h" DESTINATION "include/grooveloudness")
+-  install(TARGETS grooveloudness DESTINATION lib)
++  install(TARGETS grooveloudness DESTINATION lib${LIB_SUFFIX})
+ 
+ 
+   add_library(grooveloudness_static STATIC
+@@ -255,7 +255,7 @@
+   set_target_properties(grooveloudness_static PROPERTIES
+     OUTPUT_NAME grooveloudness
+     COMPILE_FLAGS "${LIB_CFLAGS} -fPIC")
+-  install(TARGETS grooveloudness_static DESTINATION lib)
++  install(TARGETS grooveloudness_static DESTINATION lib${LIB_SUFFIX})
+ 
+ 
+   add_executable(replaygain example/replaygain.c)
+@@ -282,7 +282,7 @@
+   include_directories(${CHROMAPRINT_INCLUDE_DIR})
+ 
+   install(FILES "groovefingerprinter/fingerprinter.h" DESTINATION "include/groovefingerprinter")
+-  install(TARGETS groovefingerprinter DESTINATION lib)
++  install(TARGETS groovefingerprinter DESTINATION lib${LIB_SUFFIX})
+ 
+ 
+   add_library(groovefingerprinter_static STATIC
+@@ -291,7 +291,7 @@
+   set_target_properties(groovefingerprinter_static PROPERTIES
+     OUTPUT_NAME groovefingerprinter
+     COMPILE_FLAGS "${LIB_CFLAGS} -fPIC")
+-  install(TARGETS groovefingerprinter_static DESTINATION lib)
++  install(TARGETS groovefingerprinter_static DESTINATION lib${LIB_SUFFIX})
+ 
+ 
+   add_executable(fingerprint example/fingerprint.c)

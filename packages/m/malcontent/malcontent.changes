@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Dec 10 15:52:43 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Split MalcontentControl into seperate package so a library
+  doesn't require a desktop application.
+
+-------------------------------------------------------------------
+Wed Nov 18 11:09:13 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Don't actually install com.endlessm.ParentalControls.rules: this
+  just grants 'wheel'-group members access without password; as
+  openSUSE does not support 'wheel' by default, we only ship the
+  file as sample file (boo#1177974#c8).
+
+-------------------------------------------------------------------
+Sat Oct 31 11:25:34 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- The library needs to require the daemon package as it is not
+  usable without it. e.g. gnome-control-center -> applications wont
+  list any informations.
+
+-------------------------------------------------------------------
+Sat Sep  5 20:58:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Initial package, version 0.9.0.

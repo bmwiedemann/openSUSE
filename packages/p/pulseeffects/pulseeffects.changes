@@ -1,0 +1,192 @@
+-------------------------------------------------------------------
+Fri Jan  8 07:01:05 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 4.8.4
+  Added:
+  * Added Allpass filter in Equalizer plugin.
+  Fixed:
+  * The equalizer UI is now correctly shown when a profile with 
+    30 bands is loaded at startup.
+  * Added a workaround for systems that were crashing because the
+    locale is not correctly set at system level.
+  Note to packagers:
+  * This is the last release supporting Pulseaudio. The following
+    PulseEffects releases will be based on the new Pipewire
+    multimedia server and only fixes to critical bugs will be
+    backported to the legacy pulseaudio branch
+    https://github.com/wwmm/pulseeffects/tree/pulseaudio-legacy.
+- Changes from 4.8.3
+  Added:
+  * New Noise Reduction plugin based on the RNNoise library.
+  * Band Quality factor exposed in the Equalizer main interface.
+  * A new settings was added to the general section of our settings
+    menu: Activity Timeout. It is the time during which 
+    PulseEffects monitors if there is any application playing audio.
+    If there is none we stop our playback stream in order to save
+    cpu usage. This timeout has been in place for a long time but
+    until now its value could not be configured by the user.
+  * When no application is playing audio PulseEffects pipeline is
+    now put in the ready state instead of the paused state. This
+    should help to reduce cpu usage in situations like the ones
+    described in https://github.com/wwmm/pulseeffects/issues/829
+  * Updated Chinese translation.
+  Fixed:
+  * Values outside GTK widgets are now shown according to system
+    locale settings.
+  * Applying APO Equalizer preset when locale is different than "C"
+    is now working properly.
+  * Equalizer and Crystalizer UI redesigned: band wrapper is 
+    extended to fit all the available horizontal space; homogeneous
+    property has been applied to get the same space between band sliders.
+  * App info and plugin interfaces made scrollable: now PulseEffects
+    window does not change its size when switching beetween plugins.
+  * Loudness plugin: removed reference signal button (test signals can
+    be used in its stead); input value is now saved to preset.
+  Note to packagers:
+  * The Noise Reduction is an optional plugin. For it to be 
+    available to the user the library RNNoise
+    https://github.com/xiph/rnnoise has to be installed when
+    PulseEffects is compiled.
+
+-------------------------------------------------------------------
+Mon Sep 21 16:06:01 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 4.8.2.
+  * Fix when importing Equalizer APO presets the bands were not 
+    being set to the APO mode.
+- Changelog from 4.8.1.
+  * Blocklist adopted and related command modified as a checkbutton
+    inside the app info ui.
+  * Pulseaudio’s media name property is shown for each application
+    in the Applications section.
+  * Deesser UI redesigned and applied homogeneous property to all 
+    plugin UI to get same space between controls and make them fit 
+    all the available horizontal space.
+  * Modified Applications row in the left side plugin list to show 
+    an icon according to input/output effects while the pipeline 
+    global level meter is only shown when something is 
+    recording/playing
+  * The feature that shows the last used preset in the preset menu 
+    button label was improved. When seeing input effects widget it 
+    shows the last used input preset. And when seeing output 
+    effects widgets it shows the last used output preset.
+  * New application icon.
+
+-------------------------------------------------------------------
+Sat Aug 29 09:18:17 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.8.0
+  Added:
+  * Loudness plugin has been replaced with the new Loudness
+    Compensator by Linux Studio Plugins.
+  * The Stereo Tools and the Maximizer plugins can now be used
+    when applying effects to microphone signals.
+  * New parameters have been added to the following plugins:
+    Compressor, Gate and Limiter.
+  * Plugin user interfaces have been redesigned with
+    checkbutton list and new global output level meter for both
+    output and input pipelines.
+  * The user has now the ability to change the minimum and
+    maximum frequency in the spectrum user interface.
+  * New command line that allows to hide the window when
+    running PulseEffects in service mode. This will allow tray
+    applets to hide our window.
+  * Initial support to Equalizer APO presets.
+  * Improved Slovak and Czech Translations.
+  Removed:
+  * The spectrum scaling feature was removed as it leads to
+    wrong mouse hover values when used
+    https://github.com/wwmm/pulseeffects/issues/733. And
+    fixing this will require the addition of an amount of code
+    complexity that does not seem worth it.
+  Note to packagers:
+  * This release is using GTKMM 3.24 features and Linux Studio
+    Plugins >= `1.1.24`. If you can not use any of these
+    libraries do not upgrade to PulseEffects 4.8.0!
+  * MDA is not needed anymore as optional dependency.
+  version 4.7.3:
+  Added:
+  * PulseEffects now searches for presets in /etc/PulseEffects
+    and directories specified by \$XDG_CONFIG_DIRS environment
+    variable.
+  * Our interface now shows third party Plugins credits.
+  * Each plugin now has a reset button
+  * Improved convolver impulse response files plot
+  * Applications entry now have a blacklist button to make it
+    easier to blacklist an application the user does not want
+    effects to be applied.
+  Fixed:
+  * Fixed a severe memory leak that happened whenever the
+    window was closed.
+  * PulseEffects no longer crashes when an empty or corrupted
+    preset is provided.
+  * Fixed laxity setting not being applied in the deesser
+- Fixes boo#1171896
+
+-------------------------------------------------------------------
+Wed May 20 08:28:36 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.7.2
+  Added:
+  * Compatibility to Linux Studio Plugins `1.1.14`
+  * The convolver plugin now accepts the wav extension in the
+    impulse files.
+  * Checking exceptions in the main function.
+  * Headers deprecated in Boost 1.72 were replaced.
+  Notes to package maintainers: 
+  * As the `bypass` property in Linux Studio Plugins `1.1.14`
+    was renamed to `enabled` this new PulseEffects version
+    won't work with older Linux Studio Plugins versions.
+    Although I could add checks and somehow try to support both
+    versions this makes the code ugly. And I think that nowadays
+    upgrading LSP should not be hard. If it is do not upgrade to
+    PE `4.7.2`.
+- Fixes boo#1171896
+
+-------------------------------------------------------------------
+Tue Mar  3 07:03:59 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Spec cleanup
+- Dropped group tag
+
+-------------------------------------------------------------------
+Mon Mar  2 22:15:32 UTC 2020 - andy great <andythe_great@pm.me>
+
+-Update to version 4.7.1 (see CHANGELOG.md)
+
+-------------------------------------------------------------------
+Mon Jan 13 12:31:38 UTC 2020 - andy great <andythe_great@pm.me>
+-Fix recommended dependencies to enable all functionalities.
+-Update to version 4.7.0 (see CHANGELOG.md)
+ * Improved Italian translations.
+ * Do not open the main window when listing the available presets
+  through command line options.
+  This will also help third party tools like 
+  https://github.com/boomshop/pulseffectstray
+
+-------------------------------------------------------------------
+Mon Sep 23 12:02:15 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 4.6.8 (see CHANGELOG.md) 
+  * It is now possible to set different buffer and latency values 
+    for the pulsesrc 
+    and the pulsesink plugins. 
+    This means that there is more room to reduce the overall latency. 
+    Pulsesrc is at the start of the effects pipeline and 
+    pulsesink at its end.
+
+-------------------------------------------------------------------
+Sun Aug 18 11:44:39 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
+
+- Update to version 4.6.6 (see CHANGELOG.md)
+
+-------------------------------------------------------------------
+Thu Jun 20 11:55:30 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.6.4 (see CHANGELOG.md)
+- Added Recommends for external plugin packages
+
+-------------------------------------------------------------------
+Tue Feb 12 17:09:09 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Initial package (v4.5.0)

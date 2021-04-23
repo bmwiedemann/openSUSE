@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Categories=Game;Amusement;
+Name=xcowhelp
+GenericName=xcowsay help
+Icon=xcowhelp
+Terminal=false
+Comment= A help for cowsay
+Exec=xcowhelp

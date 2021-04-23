@@ -1,0 +1,21 @@
+<package name="osmo-trx" project="openSUSE:Factory">
+  <title>SDR transceiver that implements Layer 1 of a GSM BTS</title>
+  <description>OsmoTRX is a software-defined radio transceiver that implements the Layer 1
+physical layer of a BTS comprising the following 3GPP specifications:
+
+TS 05.01 &quot;Physical layer on the radio path&quot;
+TS 05.02 &quot;Multiplexing and Multiple Access on the Radio Path&quot;
+TS 05.04 &quot;Modulation&quot;
+TS 05.10 &quot;Radio subsystem synchronization&quot;
+
+In this context, BTS is &quot;Base transceiver station&quot;. It's the stations that
+connect mobile phones to the mobile network.
+
+3GPP is the &quot;3rd Generation Partnership Project&quot; which is the collaboration
+between different telecommunication associations for developing new
+generations of mobile phone networks. (post-2G/GSM)
+
+</description>
+  <devel project="network:telephony" package="osmo-trx"/>
+  <url>https://osmocom.org/projects/osmotrx/wiki/OsmoTRX</url>
+</package>

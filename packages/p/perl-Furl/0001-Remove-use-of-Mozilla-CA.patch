@@ -1,0 +1,57 @@
+From 089e7229a96b7a0b165407fc2575c31c99fdb43b Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Wed, 24 Jul 2019 12:28:32 +0200
+Subject: [PATCH] Remove use of Mozilla::CA
+
+The fallback to system-wide certificates seems to happen automatically
+if no CA path or CA file has been specified.
+---
+ META.json        | 1 -
+ cpanfile         | 1 -
+ lib/Furl/HTTP.pm | 6 ------
+ 3 files changed, 8 deletions(-)
+
+diff --git a/META.json b/META.json
+index d4ff609..350df3a 100644
+--- a/META.json
++++ b/META.json
+@@ -71,7 +71,6 @@
+             "Encode" : "0",
+             "HTTP::Parser::XS" : "0.11",
+             "MIME::Base64" : "0",
+-            "Mozilla::CA" : "0",
+             "Scalar::Util" : "0",
+             "Socket" : "0",
+             "Time::HiRes" : "0",
+diff --git a/cpanfile b/cpanfile
+index d62b2ba..d0024d8 100644
+--- a/cpanfile
++++ b/cpanfile
+@@ -1,7 +1,6 @@
+ requires 'perl', 5.008_001;
+ 
+ requires 'HTTP::Parser::XS' => 0.11;
+-requires 'Mozilla::CA';
+ requires 'MIME::Base64';
+ requires 'Class::Accessor::Lite';
+ requires 'Encode';
+diff --git a/lib/Furl/HTTP.pm b/lib/Furl/HTTP.pm
+index 1f29d40..2b2477d 100644
+--- a/lib/Furl/HTTP.pm
++++ b/lib/Furl/HTTP.pm
+@@ -686,12 +686,6 @@ sub _ssl_opts {
+             $ssl_opts->{SSL_verifycn_scheme} = 'www'
+         }
+     }
+-    if ($ssl_opts->{SSL_verify_mode}) {
+-        unless (exists $ssl_opts->{SSL_ca_file} || exists $ssl_opts->{SSL_ca_path}) {
+-            require Mozilla::CA;
+-            $ssl_opts->{SSL_ca_file} = Mozilla::CA::SSL_ca_file();
+-        }
+-    }
+     $ssl_opts;
+ }
+ 
+-- 
+2.22.0
+

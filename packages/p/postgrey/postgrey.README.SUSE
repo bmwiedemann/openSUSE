@@ -1,0 +1,52 @@
+Postgrey for SuSE
+-----------------
+
+These instructions assume you use Postfix.
+
+Greylisting has several disadvantages and is not recommended. Be warned
+before enabling, and make familiar with them via Wikipedia before
+activatation: http://en.wikipedia.org/wiki/Greylisting#Disadvantages
+
+USE postgrey AT YOUR OWN RISC!!!
+
+Howto
+
+0. Get postgrey RPM package and install it (seems already been done :-)
+
+1. If necessary modify the postgrey whitelist files in /etc/postgrey
+   NOTE: the files are located in /etc/postgrey and NOT in /etc/postfix
+   as running the postgrey daemon is possible on a different host too.
+
+2. If necessary modify the startup options in /etc/sysconfig/postgrey
+   This can be done graphical via YaST -> System -> "/etc/sysconfig Editor"
+   in "Network/Mail/Postgrey" too.
+   
+3. Insert the daemon "postgrey" into System Services:
+   - either by command line: "insserv postgrey; /etc/init.d/postgrey start"
+   - or graphical via YaST -> System -> "System Services (Runlevel)"
+
+4. Edit postfix configuration to use postgrey.
+   - Open an editor of your choice and edit file /etc/postfix/main.cf
+   - Search for "smtpd_recipient_restrictions" and append to end of this
+     line (separate with comma ','):
+     , check_policy_service unix:postgrey/socket
+   Note: assuming here that default configuration for POSTGREY_CONN_OPTIONS
+   in /etc/sysconfig/postgrey was chosen:
+   "--unix=/var/spool/postfix/postgrey/socket"
+
+5. Notify postfix system about configuration change:
+   - in a command line tool do as root: "rcpostfix reload"
+   
+
+Mailservers will usually have more complex smtpd restriction parameters,
+please read the Postfix documentation if you're not familiar with those.
+
+Since some mailservers don't work well with greylisting, exceptions are
+defined in whitelist files.  The default whitelists are in
+/etc/postgrey; by default additional *.local files are read if they
+exist in that directory.  If you specify any whitelist files on the
+commandline, the default locations are *not* used at all.  Read the
+postgrey manpage for more information.
+
+The postgrey package does not depend on postfix, as you can run it on a
+dedicated machine separate from your mailserver.

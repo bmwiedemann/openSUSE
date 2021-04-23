@@ -1,0 +1,40 @@
+---
+description: |-
+  Perl's API has changed over time, gaining new features, new functions,
+  increasing its flexibility, and reducing the impact on the C namespace
+  environment (reduced pollution). The header file written by this module,
+  typically _ppport.h_, attempts to bring some of the newer Perl API features
+  to older versions of Perl, so that you can worry less about keeping track
+  of old releases, but users can still reap the benefit.
+  
+  'Devel::PPPort' contains two functions, 'WriteFile' and 'GetFileContents'.
+  'WriteFile''s only purpose is to write the _ppport.h_ C header file. This
+  file contains a series of macros and, if explicitly requested, functions
+  that allow XS modules to be built using older versions of Perl. Currently,
+  Perl versions from 5.003 to 5.20 are supported.
+  
+  'GetFileContents' can be used to retrieve the file contents rather than
+  writing it out.
+  
+  This module is used by 'h2xs' to write the file _ppport.h_.
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+#preamble: |-
+# BuildRequires:  gcc-c++
+#post_prep: |-
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+#post_install: |-
+# sed on %{name}.files
+#license: SUSE-NonFree
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module

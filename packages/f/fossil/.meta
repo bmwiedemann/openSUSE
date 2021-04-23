@@ -1,0 +1,5 @@
+<package name="fossil" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:tools:scm" package="fossil"/>
+</package>

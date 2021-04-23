@@ -1,0 +1,2020 @@
+-------------------------------------------------------------------
+Sat Feb  9 23:34:45 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add fontconfig-do-not-remove-UUID-file.patch: Removing .uuid
+  files caused frequent rescanning of all system fonts causing
+  intermittent CPU usage surges, for example, when browsing using
+  firefox; patch taken from upstream commit (boo#1124816,
+  https://gitlab.freedesktop.org/fontconfig/fontconfig/merge_requests/8).
+
+-------------------------------------------------------------------
+Sat Jan 12 12:07:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Implement shared library packaging guideline
+- Split documentation to soothe rpmlint's
+  "W: package-with-huge-docs 86%"
+
+-------------------------------------------------------------------
+Sat Jan 12 11:50:46 UTC 2019 - ecsos@opensuse.org
+
+- Fix self obsoletion ipa-fonts-config and IPA-fonts-config.
+- Fix build error in Leap 42.3.
+- Fix location of fontconfig-devel.* doc-files.
+
+-------------------------------------------------------------------
+Fri Jan 11 13:59:16 UTC 2019 - bjorn.lie@gmail.com
+
+- Package AUTHORS, ChangeLog and README via standard doc macro.
+
+-------------------------------------------------------------------
+Wed Oct 31 09:16:31 UTC 2018 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to 2.13.1:
+  * conf.d: Drop aliases for (URW)++ fonts
+  * variable fonts support
+  * Use uuid-based cache filename if uuid is assigned to dirs
+  * Add new API to find out a font from current search path
+  * Add FONTCONFIG_SYSROOT environment variable
+  * [varfonts] Add FC_FONT_VARIATIONS
+  * [varfonts] Add FC_VARIABLE
+  * Add Simplified Chinese translations
+  * Fix memory leaks, double frees etc.
+  * See README for details
+- Drop fontconfig-remove-debug-output.patch
+
+-------------------------------------------------------------------
+Mon Jan 15 12:47:39 UTC 2018 - pgajdos@suse.com
+
+- fc-query: remove redundant debug output
+  + fontconfig-remove-debug-output.patch
+
+-------------------------------------------------------------------
+Wed Nov  8 21:43:21 UTC 2017 - aavindraa@gmail.com
+
+- Update to 2.12.6:
+  * conf.d: Drop aliases for (URW)++ fonts (upstreamed)
+  * other minor fixes
+- Includes changes from 2.12.5:
+  * update docs
+  * Accept 4 digit script tag in FcLangNormalize().
+  * fc-blanks: fall back to the static data available in repo if
+    downloaded data is corrupted
+  * emoji related fixes
+  * various cleanups
+  * support listing named instances
+
+-------------------------------------------------------------------
+Fri Jul 21 11:02:23 UTC 2017 - tchvatal@suse.com
+
+- Version update to 2.12.4:
+  * Various distcheck errors
+  * FcCharSetHash(): use the 'numbers' values to compute the hash
+  * fc-lang: gracefully handle the case where the last language initial is < 'z'
+  * Fix an off-by-one error in FcLangSetIndex()
+  * Fix erroneous test on language id in FcLangSetPromote()
+  * FcLangSetCompare(): fix bug when two charsets come from different "buckets"
+  * Treat C.UTF-8 and C.utf8 locales as built in the C library
+- Remove merged upstream fontconfig-locale_c.utf8.patch
+- Remove fontconfig-doc archive, the generated output is already
+  present in the upstream released tarball
+- Remove unused configure options
+
+-------------------------------------------------------------------
+Tue Jul 11 00:00:52 UTC 2017 - jengelh@inai.de
+
+- Remove --with-pic which is only useful for static libs.
+
+-------------------------------------------------------------------
+Mon Jun  5 11:33:07 UTC 2017 - pgajdos@suse.com
+
+- Update to 2.12.3:
+      Don't call perror() if no changes happens in errno
+      Fix FcCacheOffsetsValid()
+      Fix the build issue with gperf 3.1
+      Fix the build issue on GNU/Hurd
+      Update a bit for the changes in FreeType 2.7.1
+      Add the description of FC_LANG envvar to the doc
+      Bug 101202 - fontconfig FTBFS if docbook-utils is installed
+      Correct cache version info in doc/fontconfig-user.sgml
+      Avoid conflicts with integer width macros from TS 18661-1:2014
+      Fix PostScript font alias name
+      Update aliases for URW June 2016
+- removed unneeded:
+  - fontconfig-glibc-2.25.patch
+  - make-check.patch
+
+-------------------------------------------------------------------
+Sun Feb 26 01:44:16 UTC 2017 - qantas94heavy@gmail.com
+
+- Add patch fontconfig-glibc-2.25.patch
+  * Fixes build with glibc 2.25.
+
+-------------------------------------------------------------------
+Thu Aug 11 11:50:05 UTC 2016 - pgajdos@suse.com
+
+- Update to 2.12.1:
+      Update CaseFolding.txt to Unicode 9.0
+      Fix some errors related to python3
+      Bug 96676 - Check range of FcWeightFromOpenType argument
+      Update libtool revision
+      Properly validate offsets in cache files.
+
+-------------------------------------------------------------------
+Mon Jul 11 14:20:11 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 2.12.0:
+  + Support the size specific design selection in OS/2 table
+    version 5.
+  + Allow the modification on 'lang' and 'charset' objects.
+  + Increase the refcount in FcConfigSetCurrent().
+  + some updates in orth files.
+  + Add --error-on-no-fonts option to fc-cache.
+  + Use lang=und instead of lang=xx for "undetermined".
+  + Add FC_WEIGHT_DEMILIGHT and change from 65 to 55.
+  + Add FC_COLOR.
+  + Treat color fonts as scalable.
+  + no FC_LANG added with FcConfigSubstitute() when it has "und".
+  + Hardcode blanks in library.
+  + Support symbol fonts.
+  + Unicode 8.0 support.
+  + Add hintstyle templates and default hintslight.
+  + GX font support.
+  + Improve the footprint issue on updating caches.
+  + Bump the cache version to 6.
+  + more bug fixes.
+
+-------------------------------------------------------------------
+Wed Mar  9 16:20:54 UTC 2016 - idonmez@suse.com
+
+- Add fontconfig-locale_c.utf8.patch to recognize C.UTF-8 locale,
+  patch from Debian.
+
+-------------------------------------------------------------------
+Tue May 19 06:56:57 UTC 2015 - fstrba@suse.com
+
+- Clean the spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Nov 29 20:51:29 UTC 2014 - bwiedemann@suse.com
+
+- fix wrong path to documentation (bnc#907685)
+- removed patch: usr-share-doc-packages.patch
+
+-------------------------------------------------------------------
+Mon Mar 24 19:54:56 UTC 2014 - hrvoje.senjan@gmail.com
+
+- Update to 2.11.1
+  + do not build test-migration for Win32
+  + Fix build issue on Debian/kFreeBSD 7.0
+  + Update ax_pthread.m4 to the latest version
+  + Fix the dynamic loading issue on NetBSD
+  + Use stat() if there are no d_type in struct dirent
+  + Fix a build issue on Solaris 10
+  + Change the default weight on match to FC_WEIGHT_NORMAL
+  + Warn if no <test> nor <edit> elements in <match>
+  + Correct DTD
+  + Re-scan font directories only when it contains subdirs
+  + Fix typo
+  + fixed fdo#72086 - Check for gperf in autogen.sh
+  + Simplify to validate the availability of posix_fadvise
+  + Simplify to validate the availability of scandir
+  + Fix a typo
+  + Fix a build issue on platforms where doesn't
+    support readlink()
+  + Improve the performance issue on rescanning directories
+  + fixed fdo#73686 - confdir is not set correctly
+    in fontconfig.pc
+  + Update zh_hk.orth
+  + clean up the unused files
+  + Add missing license headers
+  + Update the use of autotools' macro
+  + Fix a crash issue when empty strings are set to the BDF
+    properties
+  + Add a doc for FcDirCacheRescan
+  + Add missing #include <sys/statvfs.h> in fcstat.c
+  + Fix incompatible API on AIX with random_r and initstate_r
+  + Fallback to lstat() in case the filesystem doesn't support
+    d_type in struct dirent
+  + Update doc to include the version info of `since when'
+  + fixed fdo#73291 - poppler does not show fl ligature
+  + Add README describes the criteria to add/modify the
+    orthography files
+  + Fix autoconf warning, warning: AC_COMPILE_IFELSE was called
+    before AC_USE_SYSTEM_EXTENSIONS
+  + Leave room for null terminators in arrays
+  + Avoid memory leak when NULL path passed to FcStrBuildFilename
+  + Avoid null pointer dereference in FcNameParse if malloc fails
+  + Bug 72380 - Never drop first font when trimming
+  + Fix inversion between Tinos and Cousine in the comment
+  + Add metric aliases for additional Google ChromeOS fonts
+  + Defaulting <cachedir> to LOCAL_APPDATA_FONTCONFIG_CACHE for
+    Win32 build
+  + fc-cache: --sysroot option takes an argument
+- Drop patches from/merged upstream:
+  0001-Fix-inversion-between-Tinos-and-Cousine-in-the-comme.patch,
+  0002-Add-metric-aliases-for-additional-Google-ChromeOS-fo.patch
+  and fontconfig-crash-bdf.patch
+
+-------------------------------------------------------------------
+Thu Feb  6 16:56:30 UTC 2014 - pgajdos@suse.com
+
+- removed iso639-{1,2} and local.conf.instsys
+- *.conf files moved to fonts-config package
+
+-------------------------------------------------------------------
+Fri Jan 31 07:30:10 UTC 2014 - pgajdos@suse.com
+
+- fix fontconfig crash for special bdf font [bnc#860596]
+  * added fontconfig-crash-bdf.patch
+
+-------------------------------------------------------------------
+Fri Dec  6 13:33:14 UTC 2013 - fcrozat@suse.com
+
+- Add
+  0001-Fix-inversion-between-Tinos-and-Cousine-in-the-comme.patch:
+  fix error in 30-metric-aliases.conf comments (fdo#72395).
+- Add
+  0002-Add-metric-aliases-for-additional-Google-ChromeOS-fo.patch:
+  add compat fonts for Cambria, Caladea and Symbol (fdo#72395).
+
+-------------------------------------------------------------------
+Fri Oct 11 14:27:15 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to final 2.11.0
+  + Do not create a config dir for migration when no config files
+    nor dirs
+  + Fix memory leaks in FcFreeTypeQueryFace
+  + Deprecate / remove FC_RASTERIZER (fdo#68955)
+  + Fix a crash when FcPattern is set to null on FcFontSetList()
+    and FcFontList()
+  + Exit with the error code when FcNameParse() failed
+  + Avoid reading config.h twice (fdo#69833)
+
+-------------------------------------------------------------------
+Sat Aug 31 14:32:49 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 2.10.95 (2.11 RC5)
+  + Crashfix release, no upstream changelog provided
+
+-------------------------------------------------------------------
+Thu Aug 29 09:56:52 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 2.10.94 (2.11 RC4)
+  + FcNameParse() should ignore leading whitespace
+    in parameters
+  + Fix a comparison of constant warning with clang
+  + Fix a shift count overflow on 32bit box
+  + Fix a incompatible pointer warning on NetBSD
+  + Add FcTypeUnknown to FcType to avoid comparison of constant -1
+  + Fix the behavior of intermixed tests end edits in match
+  + Ignore scandir() check on mingw
+  + Use INT_MAX instead of unreliable hardcoding value
+  + Add FC_UNUSED to FC_ASSERT_STATIC macro to avoid compiler warning
+  + Rework to apply the intermixed test and edit elements in one-pass
+  + trivial code optimization
+  + Correct fontconfig.pc to add certain dependencies for build
+  + Correct fontconfig.pc to add certain dependencies for static build
+  + Fix wrong edit position
+  + Invalid read/write with valgrind when assigning something twice
+    (fdo#67809)
+  + warn deprecated only when migration failed
+  + Match on FC_SCALABLE (fdo#67845)
+  + fontformat in match pattern is not respected? (fdo#16818)
+  + More metric compat fonts (fdo#68340)
+  + Add default aliases for Georgia, Garamond, Palatino Linotype,
+    Trebuchet MS (fdo#63399)
+  + Fix a typo
+  + Fix a crash when non-builtin objects are edited
+  + Fix a wrong edit position when 'kind' is different
+  + copy qu.orth to quz.orth (fdo#68587)
+  + Add quz.orth to Makefile.am
+  + Minor
+  + Fix assertion
+
+-------------------------------------------------------------------
+Tue May 21 17:07:35 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 2.10.93
+  + matching native fonts with even :lang=en (fdo#62980)
+  + Ensure closing fp on error
+  + Obtain fonts data via FT_Face instead of opening a file directly
+  + Revert the previous change and rework to not export freetype
+    API outside fcfreetype.c
+  + documented FC_HASH and FC_POSTSCRIPT_NAME
+  + make check fails: .. contents:: :depth: 2 (fdo#63329)
+  + Use the glob matching for filename
+  + conf.d/README outdated (fdo#63452
+  + Fix missing OSAtomicCompareAndSwapPtrBarrier() on Mac OS X 10.4
+  + FcFreeTypeQueryFace fails on postscripts fonts loaded
+    from memory (fdo#63922)
+  + build-chain, replace INCLUDES directive by AM_CPPFLAGS
+- dropped conf.d-readme-templatedir.patch (upstreamed)
+- dropped fontconfig-fix-webfont.patch (upstreamed)
+
+-------------------------------------------------------------------
+Sun May 12 12:27:43 UTC 2013 - dimstar@opensuse.org
+
+- Add fontconfig-fix-webfont.patch: Fix webfont issue (bnc#819467).
+
+-------------------------------------------------------------------
+Thu Apr 11 10:24:57 UTC 2013 - pgajdos@suse.com
+
+- dropped metric-arial-narrow.patch (upstreamed)
+- dropped metric-croscore.patch (upstreamed)
+- /etc/conf.d/55-local.conf
+- tag /etc/fonts/conf.d/*.conf files as %config, not
+  %config(noreplace)
+- /etc/fonts/conf.d/README now mentions correct template dir
+  [bnc#810034]
+  * conf.d-readme-templatedir.patch
+- revert the change from Mon May 28 11:53:08 UTC 2012 because
+  hintslight implies autohinter. Rather render Liberation, DejaVu
+  and Droid sans serif and serif fonts with BCI, even if it means
+  thin (sometimes too much, see Liberation Sans 'R') glyphs. It
+  should be readable (less blurred). I'll add fontconfig hinting
+  profile in near future which will force autohinter for those
+  which like more thick fonts even if sometimes more blurred.
+
+-------------------------------------------------------------------
+Fri Apr  5 15:32:01 UTC 2013 - hrvoje.senjan@gmail.com
+
+- Update to version 2.10.92
+  + support FC_POSTSCRIPT_NAME (fdo#38737)
+  + Fix a SIGSEGV on FcPatternGet* with NULL pattern
+  + Fix crash with FcConfigSetCurrent(NULL)
+  + Do not copy FC_*LANG_OBJECT even if it's not available on the
+    pattern
+  + Added a --sysroot like option to fc-cache (fdo#59456)
+  + Add OpenType feature tags support (fdo#50497)
+  + Fix fc-cache crash caused by looking up NULL object incorrectly
+  + Add mode="delete" to <edit> (fdo#23757)
+  + Use AM_MISSING_PROG instead of hardcoding missing
+  + Add font-file hash (fdo#50733)
+  + Add Culmus foundry to the vendor list
+  + Fix broken conf.d/10-autohint.conf and conf.d/10-unhinted.conf
+    (fdo#60748)
+  + Add Liberation Sans Narrow to 30-metric-aliases.conf (fdo#60783)
+- Automake 1.11 is required, so bump the BuildRequires
+
+-------------------------------------------------------------------
+Thu Mar 21 08:16:43 UTC 2013 - pgajdos@suse.com
+
+- use autohinter for Anonymous Pro
+  http://www.marksimonson.com/info/anonymous-pro-usage-notes
+
+-------------------------------------------------------------------
+Mon Mar  4 10:40:31 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 2.10.91:a
+  + Fix memory corruptions.
+  + Fix linker calls.
+  + Make the library thread-safe.
+  + Bugs fixed: fdo#29312, fdo#47705
+- Drop cloexec.patch: fixed upstream (slighlty different).
+
+-------------------------------------------------------------------
+Mon Mar  4 09:40:31 UTC 2013 - pgajdos@suse.com
+
+- build with automake 1.13
+
+-------------------------------------------------------------------
+Wed Feb 13 10:08:11 UTC 2013 - pgajdos@suse.com
+
+- added mapping Arial Narrow <-> Liberation Sans Narrow into
+  metric-aliases.conf [bnc#762695]
+  * metric-arial-narrow.patch
+
+-------------------------------------------------------------------
+Tue Nov 27 09:17:26 UTC 2012 - pgajdos@suse.com
+
+- updated to 2.10.2:
+  + Fix syntax errors in fonts.dtd.
+  + Bug 57114 - regression on FcFontMatch with namelang
+  + Update CaseFolding.txt to Unicode 6.2
+  + Bug 57286 - Remove UnBatang and Baekmuk Batang from monospace in 65-nonlatin.conf
+  + Fix N'ko orthography
+  + Install config files first
+
+-------------------------------------------------------------------
+Mon Sep 24 10:03:29 UTC 2012 - pgajdos@suse.com
+
+- turn off autohinter for Verdana again, which implies using BCI
+  with hintstyle=3 [bnc#737215], [bnc#781631]
+
+-------------------------------------------------------------------
+Thu Sep 13 15:03:10 UTC 2012 - pgajdos@suse.com
+
+- updated to 2.10.0:
+  * /etc/fonts/conf.avail is deprecated and is packaged only
+    for compatibility reasons; package should install its *.conf
+    files in its data dir and link it into /etc/fonts/conf.d as
+    usual
+  * introduced warning -- <alias> should not contain more <family>s
+  * introduced warning -- <test> should not contain more values
+  * introduced warning -- reading configurations from ~/.fonts.conf
+    is deprecated; move ~/.fonts.conf into $XDG_CONFIG_HOME/fontconfig/fonts.conf
+    (the same for ~/.fonts.conf.d, see
+     http://freedesktop.org/software/fontconfig/fontconfig-user.html)
+
+-------------------------------------------------------------------
+Thu Aug  2 15:09:56 UTC 2012 - pgajdos@suse.com
+
+- Arimo is sans-serif and Tinos is serif, not the opposite
+
+-------------------------------------------------------------------
+Fri Jul 27 09:52:20 UTC 2012 - pgajdos@suse.com
+
+- added configuration for croscorefonts
+
+-------------------------------------------------------------------
+Thu Jul 26 12:15:37 UTC 2012 - pgajdos@suse.com
+
+- hintnone for IPA fonts [bnc#766319]
+
+-------------------------------------------------------------------
+Tue Jul  3 11:37:52 UTC 2012 - pgajdos@suse.com
+
+- add <prefer> and <default> aliases for Droid fonts into SUSE-specific
+  config; if they are not present and e. g. system with only droid font
+  installed, you get "Droid Sans" instead of "Droid Sans Mono" even if
+  "monospace" requested; that causes e. g. gvim displaying glyphs with
+  additional space
+- add also <default> aliases for DejaVu fonts into SUSE-specific config;
+  in case that someone has deinstalled them but gui or document explicitly
+  wants them
+
+-------------------------------------------------------------------
+Tue Jun 12 10:41:54 CEST 2012 - tiwai@suse.de
+
+- Revisit SUSE-specific config (bnc#766319):
+  * Split suse-hinting.conf to a part defining the default
+    autohint and a part defining the default hintstyle depending on
+    autohint.  These are now put in conf.d/11-suse-hinting.conf and
+    16-suse-hintstyle.conf, so that extra packages may put their
+    own autohint value between them.
+  * Move suse-bitmaps.conf to conf.d, too
+  * Move optional configs modified by fonts-config to fonts-config
+    package itself
+- Set autohint=true for IPA* fonts as well as MS fonts;
+  hintslight will be chosen automatically (bnc#766319)
+- Add missing IPAex* fonts to suse-generic-names.conf lists.
+- Obsolete ipa-fonts-config package as the default configs are now
+  included in this package
+
+-------------------------------------------------------------------
+Sun Jun  3 22:18:41 UTC+8 2012 - hillwood@linuxfans.org
+
+- fix Chinese Mono font.
+
+-------------------------------------------------------------------
+Sat Jun  2 20:47:53 UTC+8 2012 - hillwood@linuxfans.org
+
+- set WenQuanYi Micro He as default Chinese font.
+
+-------------------------------------------------------------------
+Fri Jun  1 06:54:41 UTC 2012 - pgajdos@suse.com
+
+- don't install 29-liberation-aliases.conf, because
+  30-metric-aliases.conf already contains these bindings
+
+-------------------------------------------------------------------
+Mon May 28 11:53:08 UTC 2012 - pgajdos@suse.com
+
+- DejaVu Sans, Droid Sans, Liberation Sans: use
+  hintslight with BCI (instead of hintfull with BCI)
+- DejaVu Serif, Droid Serif, Liberation Serif: use
+  hintslight with BCI (instead of hintfull with BCI)
+- DejaVu Sans Mono, Droid Sans Mono, Liberation Mono: keep
+  hintfull with BCI
+- Cantarell: use hintfull with autohinter
+
+-------------------------------------------------------------------
+Thu May 24 14:24:05 UTC 2012 - pgajdos@suse.com
+
+- turn autohinter for Verdana (BCI off)
+
+-------------------------------------------------------------------
+Wed Mar 21 14:59:41 UTC 2012 - pgajdos@suse.com
+
+- updated to 2.9.0:
+  * many bugfixes, see NEWS
+  * removed suse-font-dirs.conf
+  * changed suse-hinting.conf: use hintslight with autohinter,
+    hintfull only for BCI [bnc#722427]
+  * include suse-generic-names.conf again
+  * added Cantarell into suse-generic-names.conf and suse-post-user.conf
+    (sans-serif font)
+  * added STIXGeneral into suse-generic-names.conf and suse-post-user.conf
+    (serif font)
+  * turn autohinter on for Liberation Sans (BCI off)
+  * dropped upstreamed urw-aliases-whitespaces.patch
+  * dropped upstreamed bugzilla-246783-do-not-crash-when-config-files-contain-broken-stuff.patch
+  * dropped upstreamed bugzilla-179457-fix-font-file-names-for-wine.patch
+    (https://bugzilla.novell.com/show_bug.cgi?id=179457#c8)
+  * dropped upstreamed bnc438855-make-FcInitReinitialize-work-again.patch
+  * dropped AppleRoman-DynaFont.patch
+
+-------------------------------------------------------------------
+Sun Jan  1 23:42:27 UTC 2012 - crrodriguez@opensuse.org
+
+- The O_CLOEXEC patch missed one case, in particular the
+  loading of configuration files, this has been fixed.
+
+-------------------------------------------------------------------
+Thu Dec 15 09:20:44 UTC 2011 - cfarrell@suse.com
+
+- license update: MIT
+  Just list MIT in the spec file - this is not a dual license
+
+-------------------------------------------------------------------
+Thu Dec  8 10:24:16 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Thu Dec  1 16:50:47 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sun Nov  6 16:00:40 UTC 2011 - crrodriguez@opensuse.org
+
+- Support symbol visibility features
+- Use O_CLOEXEC where needed in libfontconfig, callers may fork()
+  and we end up leaking library internal fds to their child processes.
+
+-------------------------------------------------------------------
+Tue Oct 25 10:28:47 UTC 2011 - pgajdos@suse.com
+
+- add /etc/fonts/local.conf [bnc#722427]
+
+-------------------------------------------------------------------
+Wed Oct  5 14:35:54 UTC 2011 - uli@suse.com
+
+- cross-build fix: force host architecture
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Apply packaging guidelines (remove redundant/obsolete
+  tags/sections from specfile, etc.)
+
+-------------------------------------------------------------------
+Fri Jan 21 10:36:23 UTC 2011 - coolo@novell.com
+
+- regenerate doc tar ball
+
+-------------------------------------------------------------------
+Tue Dec  7 11:41:33 CET 2010 - pgajdos@suse.cz
+
+- <prefer> DejaVu Mono before Andale Mono [bnc#656184]
+
+-------------------------------------------------------------------
+Thu Nov 25 13:15:08 CET 2010 - pgajdos@suse.cz
+
+- <prefer> "Liberation Mono" instead of "Liberation Sans" in
+  monospace <family>
+
+-------------------------------------------------------------------
+Tue Nov  9 11:52:25 CET 2010 - pgajdos@suse.cz
+
+- prefer Nanum fonts before Un fonts [bnc#647355]
+  * modified suse-post-user.conf
+- turn autohinting for unfonts on [bnc#647355]
+  * modified suse-hinting.conf
+
+-------------------------------------------------------------------
+Tue Aug 31 14:29:08 CEST 2010 - pgajdos@suse.cz
+
+- add AvantGarde, NewCenturySchoolbook, ZapfChancery and
+  ZapfDingbats aliases into 30-urw-aliases.conf as
+  workaround to [bnc#434676]
+  --> added urw-aliases-whitespaces.patch
+- see http://bugs.freedesktop.org/show_bug.cgi?id=19128
+
+-------------------------------------------------------------------
+Fri Jul 23 08:39:25 UTC 2010 - mxwu@novell.com
+
+- add 10-lcdfilter-lcddefault.conf.
+  * enable lcdfilter.
+
+-------------------------------------------------------------------
+Fri Jun  4 11:51:55 UTC 2010 - coolo@novell.com
+
+- revert the previous change after I reenabled the freetype2 patch
+
+-------------------------------------------------------------------
+Tue Apr  6 14:33:12 UTC 2010 - coolo@novell.com
+
+- disable patch that 'fixes' make check for a patched freetype2
+
+-------------------------------------------------------------------
+Thu Feb 11 09:38:44 UTC 2010 - mxwu@novell.com
+
+- Add support for WenQuanYi Bitmap Song.
+
+-------------------------------------------------------------------
+Mon Dec 14 20:22:32 CET 2009 - jengelh@medozas.de
+
+- add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Mon Dec  7 11:14:35 CET 2009 - pgajdos@suse.cz
+
+- updated to version 2.8.0 (see README)
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:16 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Aug 31 16:14:45 CEST 2009 - tiwai@suse.de
+
+- add wqy-zenhei fonts to suse-post-user.conf (bnc#519059)
+
+-------------------------------------------------------------------
+Thu Jul  9 12:07:15 CEST 2009 - tiwai@suse.de
+
+- updated to version 2.7.0:
+  * update Thai default families
+  * add ~/.fonts.conf.d to default config
+  * fc-list --verbose and --quiet options
+  * added fc-scan and fc-query
+  * see details below
+    http://fontconfig.org/release/ChangeLog-2.7.0
+
+-------------------------------------------------------------------
+Mon Feb 23 19:12:01 CET 2009 - crrodriguez@suse.de
+
+- fontconfig leaks memory [bnc#302498]
+
+-------------------------------------------------------------------
+Thu Feb 05 13:02:59 CET 2009 - mfabian@suse.de
+
+- cleanup old patches:
+  • remove obsolete fc-app-dir-fix-new-new.diff
+  • remove obsolete fontconfig-minmaxabs.patch
+  • remove obsolete fc-cache.patch.
+  • remove obsolete bugzilla-160226-multiarch-cache-file-problem.patch
+  • remove fc-match.patch which reversed the order of
+    FcDefaultSubstitute() and FcConfigSubstitute(), this was only
+    experimental and always commented out in the fontconfig.spec file.
+  • remove obsolete
+    bugzilla-128937-turn-off-embedded-bitmaps-by-default.patch
+  • remove obsolete fc-verbose.diff.
+
+-------------------------------------------------------------------
+Tue Feb 03 16:43:16 CET 2009 - mfabian@suse.de
+
+- bnc#468407: add the Arabic font "KacstBook" to the preference
+  lists for serif, sans-serif, and monospace. Until now there was
+  no font at all preferred for Arabic when the dejavu fonts were
+  not installed and even if they were installed there was still no
+  preferred Arabic font for serif. This caused a certain
+  randomness in the fonts used by YaST2.
+
+-------------------------------------------------------------------
+Mon Jan 26 17:59:34 CET 2009 - mfabian@suse.de
+
+- bnc#466068: insert "VL Gothic" in the preference lists between
+  "IPA Gothic" and "Sazanami Gothic".
+
+-------------------------------------------------------------------
+Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
+
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+
+-------------------------------------------------------------------
+Mon Nov 24 12:34:56 CET 2008 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293, bnc#439840)
+
+-------------------------------------------------------------------
+Fri Nov 07 18:22:17 CET 2008 - mfabian@suse.de
+
+- bnc#438855: make FcInitReinitialize() work again. This function
+  is important to make it possible for YaST2 to load new fonts
+  which are copied into instsys after YaST2 is already running.
+
+-------------------------------------------------------------------
+Wed Oct 29 18:56:15 CET 2008 - mfabian@suse.de
+
+- bnc#433591: make "Lohit Oriya" the default font for Oriya. See
+  also:
+  https://bugzilla.mozilla.org/show_bug.cgi?id=461155
+- change /usr/share/doc/fontconfig to /usr/share/doc/packages/fontconfig
+  in the documentation (man-pages and sgml).
+
+-------------------------------------------------------------------
+Tue Sep 23 13:27:10 CEST 2008 - mfabian@suse.de
+
+- kill "la" files and static libraries *only* for versions >
+  openSUSE 11.0.
+
+-------------------------------------------------------------------
+Wed Sep 10 16:55:07 CEST 2008 - mfabian@suse.de
+
+- update to 2.6.0. Some changes from the ChangeLog:
+  • new configurables for sub-pixel filter configuration.
+  • Don't check cache file time stamps when cleaning cache dir.
+    Cache file mtime is meaningless now that the directory time is
+    encoded in
+    the cache.
+  • Also check configDirs mtimes in FcConfigUptoDate
+    Checking only config files and font directories can miss
+    changes which affect only a configuration directory. Check
+    those to catch any changes.
+  • Update CaseFolding.txt to Unicode 5.1.0
+- remove fix-pattern-duplicate.diff (included upstream).
+
+-------------------------------------------------------------------
+Tue Aug 26 12:14:12 CEST 2008 - crrodriguez@suse.de
+
+- kill "la" files and static libraries
+
+-------------------------------------------------------------------
+Mon May 26 14:44:48 CEST 2008 - mfabian@suse.de
+
+- bnc#246804: remove workaround to force the detection of FreeMono
+  as monospace, freefont >= 0.20080323 has the spacing problem
+  fixed.
+
+-------------------------------------------------------------------
+Wed May 21 15:54:42 CEST 2008 - mfabian@suse.de
+
+- bnc#378463:
+  • accept "Liberation Serif", "Liberation Sans", and
+    "Liberation Mono" as fallbacks for "Times New Roman", "Arial",
+    and "Courier New" respectively.
+  • Mark the "Liberation" fonts with their generics to get
+    reasonable fallbacks if they are not installed.
+  • Add these fonts to the preference lists (below DejaVu).
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Dec 18 16:07:26 CET 2007 - mfabian@suse.de
+
+- add "Lucida Sans Typewriter", "Lucida Sans", and "Lucida Bright"
+  to the list of fonts which should always use the byte code
+  interpreter if anti-aliasing is off. Suggested by
+  Bernhard Walle <bwalle@suse.de>.
+
+-------------------------------------------------------------------
+Tue Oct 16 17:39:14 CEST 2007 - mfabian@suse.de
+
+- Bugzilla #334154: make "Lohit Punjabi" the default font for
+  Punjabi (move ugly FreeSans, FreeSerif, FreeMono down in
+  the preference lists to make this possible).
+
+-------------------------------------------------------------------
+Tue Oct 16 16:18:27 CEST 2007 - mfabian@suse.de
+
+- Bugzilla #308961 comment #24: give "AR PL ShanHeiSun Uni" higher
+  priority than FZMingTi because the latter one doesn’t have
+  embedded bitmaps.
+
+-------------------------------------------------------------------
+Mon Oct 15 16:58:24 CEST 2007 - mfabian@suse.de
+
+- Bugzilla #308961: make "AR PL ShanHeiSun Uni" the default font
+  for traditional and simplified Chinese (unless the commercial
+  fonts FZ* or CMEX* are installed which still have higher
+  priority).
+
+-------------------------------------------------------------------
+Fri Apr 27 19:00:49 CEST 2007 - aj@suse.de
+
+- Add libexpat-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Fri Mar 23 18:46:17 CET 2007 - mfabian@suse.de
+
+- Bugzilla #118131 comment #93: set the autohinter default
+  matching on "font" instead of on "pattern".
+  If an autohint value is set in pattern, OpenOffice 2.1 will use
+  that even if there are fontconfig rules matching on "font" which
+  should override it again). This doesn't cause any problems for
+  Cairo/Gnome (see bug #104365) because Cairo/Gnome don't try to
+  change the autohint value anyway.
+
+-------------------------------------------------------------------
+Mon Mar 12 16:01:47 CET 2007 - mfabian@suse.de
+
+- duplicate patterns correctly (fixes some parts of bug #244579
+  for Qt4).
+  fix-pattern-duplicate.diff (by Stephan Kulow <coolo@suse.de>).
+
+-------------------------------------------------------------------
+Wed Feb 21 17:25:57 CET 2007 - mfabian@suse.de
+
+- Bugzilla #246783: avoid crashes when config files contain
+  some incorrect expressions.
+
+-------------------------------------------------------------------
+Tue Feb 20 19:02:49 CET 2007 - mfabian@suse.de
+
+- Bugzilla #246804: force detection of FreeMono as monospace as
+  well, recent versions of this font are broken and have glyphs
+  with wrong width.
+
+-------------------------------------------------------------------
+Tue Feb 20 17:07:34 CET 2007 - mfabian@suse.de
+
+- update to 2.4.2.
+  + remove do-not-clean-cache-files-for-different-architectures.patch
+    (included upstream).
+  + remove improve-monospace-detection.patch and fix this in
+    the setup instead of in the c-code using the feature
+    match target="scan" (see bugzilla #246804).
+
+-------------------------------------------------------------------
+Tue Feb 06 19:16:24 CET 2007 - mfabian@suse.de
+
+- fix order of changelog entries.
+
+-------------------------------------------------------------------
+Wed Jan 24 01:08:58 CET 2007 - mfabian@suse.de
+
+- Bugzilla #237347: make Pothana2000 the default font for Telugu.
+
+-------------------------------------------------------------------
+Mon Nov 20 15:31:31 CET 2006 - mfabian@suse.de
+
+- Meiryo is not good for monospace.
+
+-------------------------------------------------------------------
+Wed Nov 15 20:24:23 CET 2006 - mfabian@suse.de
+
+- sync hinting and bitmap setup with fonts-config:
+  + Bugzilla #215602:  don't use the embedded bitmaps in the IPA
+    fonts because they are only available in 12, 14, and 16 pixels.
+  + Bugzilla #215602: Don't use the autohinter for fonts where it
+    it distorts the metrics so badly that even the digits which
+    should be monospaced are not monospaced at all anymore.
+  + Don't use the autohinter for good quality TrueType fonts.
+- add some new fonts to the prefer lists.
+
+-------------------------------------------------------------------
+Fri Nov 10 16:53:09 CET 2006 - mfabian@suse.de
+
+- choose nicer default fonts for sans-serif, serif, and monospace.
+  It is not necessary anymore to choose fonts which are metric
+  compatible to the Adobe fonts as the default, the bug in kpdf
+  is apparently fixed (see Bugzilla #129081). The default fonts
+  for all three styles are now Déjà Vu on openSUSE.
+
+-------------------------------------------------------------------
+Fri Oct 27 12:03:01 CEST 2006 - mfabian@suse.de
+
+- make last patch a little bit nicer to get it included upstream.
+
+-------------------------------------------------------------------
+Tue Oct 24 16:53:40 CEST 2006 - mfabian@suse.de
+
+- do not delete cache files for different architectures.
+
+-------------------------------------------------------------------
+Fri Oct 20 15:20:23 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #213616: make suse-font-dirs.conf work again
+  by symlinking it into /etc/fonts/conf.d.
+
+-------------------------------------------------------------------
+Wed Oct 18 15:01:01 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #213190, Fate #300430: "Use CMEXSong font as the
+  default font for zh_TW locale"
+
+-------------------------------------------------------------------
+Mon Oct 16 17:22:53 CEST 2006 - mfabian@suse.de
+
+- update to 2.4.1.
+  + cache files for different architectures are in different
+   files now
+  + the user specific cache has been split from a single file
+    in to seperate files for each font directory which are now
+    stored in ~/.fontconfig/.
+
+-------------------------------------------------------------------
+Thu Jun 22 12:15:03 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #185864: add "Requires: bash" to make the postun
+  and preun scripts of the SLES9 fontconfig package work.
+
+-------------------------------------------------------------------
+Fri Jun 02 15:24:25 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #179457: fix font handling for wine (from upstream CVS):
+  wine uses FcPatternGet instead of FcPatternGetString to find the
+  full path name of a font file. This used to work but has been
+  broken recently in the fontconfig 2.4 branch.
+
+-------------------------------------------------------------------
+Fri Apr 28 19:26:28 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #104365: match on "pattern" instead on "font" to edit
+  the default hinting settings to make it easier to override
+  the defaults with applications using FcPatternDel() and
+  FcPatternAdd...().
+
+-------------------------------------------------------------------
+Wed Apr 19 16:34:50 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #166260 and bugzilla #162064:
+  add "Khmer OS System" to the prefer lists of fontconfig.
+
+-------------------------------------------------------------------
+Tue Apr 11 18:47:50 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #59409: don't set a default value for rgba at all,
+  rely on the auto-detection instead. Previously it was impossible
+  to switch subpixelhinting off in the KDE control centre if
+  it had been switched on by the auto-detection. But in the
+  meantime this has been fixed in KDE, therefore we don't have
+  a reason anymore to override the auto-detection.
+
+-------------------------------------------------------------------
+Tue Apr 04 11:56:38 CEST 2006 - mfabian@suse.de
+
+- use "OpenSymbol" as another fallback for "Symbol" in addition
+  to "Standard Symbols L".
+
+-------------------------------------------------------------------
+Mon Apr 03 18:51:22 CEST 2006 - mfabian@suse.de
+
+- Bugzilla #158573: CID keyed fonts should be blacklisted in the
+  fontconfig setup because they don't (yet) work with
+  freetype2.
+
+-------------------------------------------------------------------
+Fri Mar 31 11:28:47 CEST 2006 - zsu@suse.de
+
+- Bugzilla #158573:  Hinting will be done before Embolden in
+  freetype2, but in such case, Embolden will get wrong result
+  on some glyph contours after applying hinting.
+  Actually, hinting should be done after embolden, but we can't
+  fix it in current freetype2. So as a workaround, just turn off
+  hinting if we want to do embolden.
+
+-------------------------------------------------------------------
+Fri Mar 24 11:11:28 CET 2006 - mfabian@suse.de
+
+- Bugzilla #160226: When alternately starting a 32 bit and 64 bit
+  application on a 64 bit system, ~/.fonts.cache-2 was always
+  deleted and generated again, which caused a big performance
+  issue. ~/.fonts.cache-2 is intended to be multi-arch, but this
+  didn't work right.
+
+-------------------------------------------------------------------
+Thu Mar 16 11:46:14 CET 2006 - mfabian@suse.de
+
+- Bugzilla #130350: I forgot to add the agfa-fonts "Andale Sans",
+  "Andy MT", "Bell MT", and "Monotype Sorts" to the list of fonts
+  which should always use the byte code interpreter if
+  anti-aliasing is off.
+
+-------------------------------------------------------------------
+Fri Mar 10 16:03:18 CET 2006 - mfabian@suse.de
+
+- update to 2.3.94 (no significant changes, just a nicer
+  version number).
+- don't apply fc-verbose.diff anymore, the warnings cause
+  too much confusion (see for example bug #156405).
+
+-------------------------------------------------------------------
+Fri Feb 24 18:08:55 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060224: fix for Bugzilla #153402 included
+  upstream.
+
+-------------------------------------------------------------------
+Fri Feb 24 17:16:05 CET 2006 - mfabian@suse.de
+
+- fix Bugzilla #153402: "fc-cache crashes on some .ttc fonts".
+
+-------------------------------------------------------------------
+Wed Feb 22 11:36:00 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060222:
+  + Strip \r and whitespace from input; fixes bug 3454.
+  + make fontconfig not crash on pango badness.
+  + Remove one more archaic character in ka.orth
+  + Freeze patterns created by configuration file for tiny
+    memory savings (every little bit helps).
+- fix for bugzilla #152453 now included upstream.
+
+-------------------------------------------------------------------
+Tue Feb 21 12:39:31 CET 2006 - mfabian@suse.de
+
+- Bugzilla #152453: fix crash in fc-cat, see also:
+  http://lists.freedesktop.org/archives/fontconfig/2006-February/002130.html
+
+-------------------------------------------------------------------
+Mon Feb 20 18:52:17 CET 2006 - mfabian@suse.de
+
+- add Korean fonts "UnBatang" and "UnDotum" to the prefer lists
+  above the Baekmuk fonts.
+
+-------------------------------------------------------------------
+Fri Feb 17 16:44:39 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060220:
+  + Don't bail if fontconfig can't remove a dir cache file.
+  + Skip the ID of a cache file when copying.
+  + Eliminate 'source file too small' bug in FcDirCacheWrite.
+  + Add -r --really-force option which blows away cache files and
+    then regenerates them.
+  + Deal correctly with changing FC_CACHE_MAGIC.
+  + Enable fc-cat to print out old-style cache info when given a
+    directory name.
+  + Bump up magic version; we changed the binary format.
+  + Fix triggering of segfault caused by misreading cache files
+    (reported by fcrozat).
+  + Fix the underlying cause of the below segfault (must usually
+    call FcDirCacheHasCurrentArch after FcDirCacheValid).
+- Dirk Mueller's make_fccache_f_work.diff is obsolete because of
+  the --really-force option.
+
+-------------------------------------------------------------------
+Tue Feb 14 00:13:45 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060214:
+- patch to ignore broken bitmap fonts included upstream.
+- memory leaks in error conditon code fixed.
+
+-------------------------------------------------------------------
+Mon Feb 13 22:16:03 CET 2006 - mfabian@suse.de
+
+- Bugzilla #150552: ignore broken bitmap fonts which don't even
+  have a BDF property FAMILY_NAME.
+
+-------------------------------------------------------------------
+Mon Feb 13 16:05:08 CET 2006 - mfabian@suse.de
+
+- Bugzilla #132577: add the DejaVu fonts to the prefer lists.
+- add suse-font-dirs.conf to make sure a basic list of font
+  dirs exists even if "SuSEconfig --module fonts" didn't run yet.
+
+-------------------------------------------------------------------
+Mon Feb 13 14:29:40 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060213.
+- Takashi IWAI's fc-prefer-var-cache.diff, and
+  fc-fcmatch-pattern-fix.diff included upstream.
+
+-------------------------------------------------------------------
+Fri Feb 10 14:23:28 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060210:
+- Dirk Mueller's value_hash_speedup.diff included upstream.
+- Dirk Mueller's fc-verbose.diff slightly adapted to current CVS.
+- Takashi IWAI's fc-lang-idx-fixes.diff included upstream.
+- Takashi IWAI's fc-app-dir-fix.diff only partly included upstream,
+  the missing parts are still necessary to make it work.
+- add fc-prefer-var-cache.diff (by Takashi IWAI <tiwai@suse.de>
+  to prefer cache files in /var/cache/fontconfig over cache files
+  in the font directories.
+- Bugzilla #148361, comment #20: add fc-validatecache-option.diff
+  to improve performance if a validate option is set to false in
+  ~/.fonts.conf.
+- Bugzilla #132577: add rules to /etc/fonts to use the DejaVu
+  fonts if the user requests the SUSE fonts and these are not
+  available anymore.
+- fix by Takashi for segfault in fc-cache with non-existing
+  directory as argument.
+- add fc-fcmatch-pattern-fix.diff (by Takashi IWAI <tiwai@suse.de>
+  to fix the problem reported in:
+  http://lists.freedesktop.org/archives/fontconfig/2006-February/002072.html
+
+-------------------------------------------------------------------
+Tue Feb 07 20:08:04 CET 2006 - mfabian@suse.de
+
+- add value_hash_speedup.diff by Dirk Mueller <dmueller@suse.de>
+  see also
+  http://lists.freedesktop.org/archives/fontconfig/2006-February/002045.html
+
+-------------------------------------------------------------------
+Tue Feb 07 16:10:17 CET 2006 - mfabian@suse.de
+
+- Bugzilla #148693: add fc-app-dir-fix-new.diff
+  (by Takashi IWAI <tiwai@suse.de>).
+- update to 2.3.93.20060207:
+- euro.patch included upstream.
+- Takashi IWAI's patches fontconfig-fontsubdir-parse-fix.diff,
+  fccache-update-check.diff, fc-loop-scan-fix.diff,
+  fc-cache-loop-fix.diff included upstream.
+- Takashi IWAI's fc-lang-idx-fixes.diff partly included upstream.
+
+-------------------------------------------------------------------
+Tue Feb 07 11:54:25 CET 2006 - mfabian@suse.de
+
+- Bugzilla #148361: avoid stat () on all files in all
+  sub-directories of font-directories by including a list
+  of all font-directores including the sub-directories generated
+  by SuSEconfig.fonts (/usr/sbin/fonts-config).
+
+-------------------------------------------------------------------
+Mon Feb 06 16:23:30 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060206.16:
+  improved version of seife-crash.diff now included upstream.
+
+-------------------------------------------------------------------
+Mon Feb 06 16:01:26 CET 2006 - mfabian@suse.de
+
+- fc-loop-scan-fix.diff (by Takashi IWAI <tiwai@suse.de>):
+  the endless loop in fc-cache if a subdirectory was a symlink
+  pointing to a directory higher up was already fixed but
+  there was still an endless loop when using fontconfig
+  (e.g. when using "fc-match").
+
+-------------------------------------------------------------------
+Mon Feb 06 11:47:57 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060206.
+- fontconfig-misc-warning-fixes.diff, fontconfig-memleak-fix.diff
+  included upstream.
+- Dirk Mueller's seife-crash.diff partly included upstream.
+
+-------------------------------------------------------------------
+Sun Feb  5 09:00:10 CET 2006 - aj@suse.de
+
+- Fix typo in suse-post-user.conf [#148268].
+
+-------------------------------------------------------------------
+Fri Feb 03 16:33:38 CET 2006 - mfabian@suse.de
+
+- fc-cache-loop-fix.diff (by Takashi IWAI <tiwai@suse.de>):
+  fc-cache did loop endless if a subdirectory was a symlink
+  pointing to a directory higher up, e.g.
+  ln -s /usr/share/fonts /usr/share/fonts/ttt
+
+-------------------------------------------------------------------
+Fri Feb 03 16:01:06 CET 2006 - mfabian@suse.de
+
+- bugzilla #147994:
+  include IPAGothic as a fallback for IPAPGothic in the prefer
+  list for sans (and some more fixes in the same spirit).
+
+-------------------------------------------------------------------
+Thu Feb  2 20:20:36 CET 2006 - tiwai@suse.de
+
+- Fixed language detections.  Now :lang=xxx should work.
+
+-------------------------------------------------------------------
+Thu Feb  2 17:45:12 CET 2006 - dmueller@suse.de
+
+- add patch to never open or validate font caches
+  when fc-cache -f is used.
+
+-------------------------------------------------------------------
+Wed Feb  1 20:21:52 CET 2006 - tiwai@suse.de
+
+- Fixes by Dirk Mueller <dmueller@suse.de>:
+  fc-verbose.diff, seife-crash.diff
+- print out a warning if the global cache expired
+- fix crashes on malformed fonts.cache
+
+-------------------------------------------------------------------
+Tue Jan 31 20:27:38 CET 2006 - mfabian@suse.de
+
+- two more patches by Takashi Iwai <tiwai@suse.de>:
+  fontconfig-memleak-fix.diff, fccache-update-check.diff
+
+-------------------------------------------------------------------
+Tue Jan 31 19:39:28 CET 2006 - mfabian@suse.de
+
+- Patches by Takashi Iwai <tiwai@suse.de>:
+-  fontconfig-misc-warning-fixes.diff (mainly to check return values
+  of read (), write (), and seek ()).
+- fontconfig-fontsubdir-parse-fix.diff:
+  if FcConfigNormalizeFontDir () was called with a directory
+  which is not a subdirectory of a directory from a .conf file,
+  the list of all subdirectories was added to the list of known
+  directories. When doing this again, the list of subdirectories
+  was added again. Takashi's patch fixes this.
+
+-------------------------------------------------------------------
+Tue Jan 31 11:25:07 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060131.
+- fc-cache-should-not-stop-at-the-first-non-existing-directory.patch,
+  destroy-completely-broken-cache-files-in-home-directory.patch
+  included upstream
+- add "make check" to .spec file and fix expected output.
+
+-------------------------------------------------------------------
+Mon Jan 30 21:13:52 CET 2006 - mfabian@suse.de
+
+- fc-cache-should-not-stop-at-the-first-non-existing-directory.patch
+
+-------------------------------------------------------------------
+Mon Jan 30 20:47:05 CET 2006 - mfabian@suse.de
+
+- destroy-completely-broken-cache-files-in-home-directory.patch:
+  when no string at all can be read from a ~/.fonts.cache-2 file
+  or if such a file does not start with FC_GLOBAL_MAGIC_COOKIE,
+  something is badly wrong and the file should be destroyed.
+
+-------------------------------------------------------------------
+Mon Jan 30 12:31:52 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060130.
+- full-path-problem.patch included upstream now.
+- check return values of read(), write(), and lseek() and give
+  error message if something goes wrong.
+- endless-loop.patch included upstream
+
+-------------------------------------------------------------------
+Fri Jan 27 19:06:39 CET 2006 - mfabian@suse.de
+
+- check return values of FcCacheReadString () to fix endless loop.
+  See:
+  http://lists.freedesktop.org/archives/fontconfig/2006-January/001959.html
+
+-------------------------------------------------------------------
+Fri Jan 27 17:10:08 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060127.
+- blacklist the Hershey-fonts, the *.fon fonts from the "wine"
+  package and all *.bdf fonts because these do not work with
+  fontconfig/Xft2 (at least not now).
+
+-------------------------------------------------------------------
+Fri Jan 27 01:25:29 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Thu Jan 26 17:26:29 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060126.
+  do-not-crash-if-non-existing-directories-are-referenced-from-local-cache-file.patch
+  is now included upstream.
+
+-------------------------------------------------------------------
+Thu Jan 26 17:09:21 CET 2006 - mfabian@suse.de
+
+- do-not-crash-if-non-existing-directories-are-referenced-from-local-cache-file.patch
+  to fix the problem reported in:
+  http://lists.freedesktop.org/archives/fontconfig/2006-January/001948.html
+
+-------------------------------------------------------------------
+Wed Jan 25 16:04:10 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060125.
+  (memory leaks fixed, zhe-su-fix-zh-hk-support.patch included
+  upstream).
+- don't package /var/cache/fontconfig/stamp, only
+  package the directory.
+- improve-normalization-of-font-path-add-subdirs.patch:
+  add an cheap method to add subdirectories to the list of
+  font directories to avoid having to call the expensive
+  FcInitLoadConfigAndFonts () function.
+
+-------------------------------------------------------------------
+Fri Jan 20 22:02:20 CET 2006 - mfabian@suse.de
+
+- add improve-normalization-of-font-path.patch.
+
+-------------------------------------------------------------------
+Fri Jan 20 11:47:58 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060120.
+- bugzilla #142215: unaligned-access.patch by
+  Andreas Schwab <schwab@suse.de> now included upstream.
+
+-------------------------------------------------------------------
+Thu Jan 19 16:01:27 CET 2006 - schwab@suse.de
+
+- Fix stupid misaligned accesses.
+
+-------------------------------------------------------------------
+Thu Jan 19 12:11:21 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060119.
+- add-dir-early-in-FcDirScanConfig.patch now included upstream.
+- fix-inode-compare.diff (by Dirk Mueller <dmueller@suse.de>) is
+  also included upstream.
+
+-------------------------------------------------------------------
+Wed Jan 18 15:32:48 CET 2006 - mfabian@suse.de
+
+- add add-dir-early-in-FcDirScanConfig.patch to fix the problem
+  reported in
+  http://lists.freedesktop.org/archives/fontconfig/2006-January/001904.html
+
+-------------------------------------------------------------------
+Mon Jan 16 14:49:34 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060116.
+- remove fc-cat-crash.patch (included upstream).
+
+-------------------------------------------------------------------
+Thu Jan 12 15:34:17 CET 2006 - mfabian@suse.de
+
+- add zhe-su-fix-zh-hk-support.patch (by Zhe Su <zsu@novell.com>,
+  see also:
+  http://lists.freedesktop.org/archives/fontconfig/2006-January/001861.html
+  http://lists.freedesktop.org/archives/fontconfig/2006-January/001864.html
+
+-------------------------------------------------------------------
+Thu Jan 12 12:56:40 CET 2006 - mfabian@suse.de
+
+- add normalize-path-in-fc-cache.patch to fix the problem reported
+  here:
+  http://lists.freedesktop.org/archives/fontconfig/2006-January/001878.html
+  Although
+  http://lists.freedesktop.org/archives/fontconfig/2006-January/001875.html
+  claims that this problem was fixed, part of the problem still
+  remained. "fc-cache /foo/bar" and "fc-cache /foo/bar/" generate
+  files with the same name (md5sum) now, the command using the
+  final '/' always rewrote the cache even if it was already
+  up-to-date.
+
+-------------------------------------------------------------------
+Wed Jan 11 13:25:13 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060110.
+- add full-path-problem.patch to fix the problem that all
+  full path names reported by "fc-match -v" and "fc-list : file"
+  omit the last directory component which caused all applications
+  using fontconfig to crash.
+
+-------------------------------------------------------------------
+Mon Jan 09 16:46:46 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060109.
+- remove Zhe Su's patch fcmatch-2.3.93-take2.patch (has been
+  included upstream).
+- remove my dummy-crash.patch (included upstream).
+- add fc-cat-crash.patch to fix the problem reported in
+  http://lists.freedesktop.org/archives/fontconfig/2006-January/001879.html
+- sync /etc/fonts/suse-hinting.conf with the template in
+  the fonts-config package.
+
+-------------------------------------------------------------------
+Thu Jan 05 16:36:41 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060105 (fixes the problem reported in
+  http://lists.freedesktop.org/archives/fontconfig/2006-January/001854.html
+  )
+- add new java-1_4_2 font directory. Being able to use
+  wildcards in directories would be helpful ...
+
+-------------------------------------------------------------------
+Wed Jan 04 19:43:57 CET 2006 - mfabian@suse.de
+
+- add dummy-crash.patch o avoid the crash when calling
+  'fc-match "foo:\\_\\_DUMMY\\_\\_=1"'.
+- sync /etc/fonts/suse-hinting.conf with the template in
+  the fonts-config package.
+
+-------------------------------------------------------------------
+Tue Jan 03 15:38:44 CET 2006 - mfabian@suse.de
+
+- update to 2.3.93.20060103 (fixes Bugzilla #141217).
+
+-------------------------------------------------------------------
+Fri Dec 30 18:15:24 CET 2005 - mfabian@suse.de
+
+- apply fcmatch-2.3.93-take2.patch (by Zhe Su <zsu@novell.com>)
+  to fix the problem that fonts sometimes could not be matched by
+  their localized names anymore. See also
+  http://lists.freedesktop.org/archives/fontconfig/2005-December/001843.html
+  and the other mails in that thread.
+
+-------------------------------------------------------------------
+Wed Dec 21 16:48:40 CET 2005 - mfabian@suse.de
+
+- update to 2.3.93.20051222.
+
+-------------------------------------------------------------------
+Tue Dec 13 12:44:31 CET 2005 - mfabian@suse.de
+
+- Bugzilla #118720: add Hebrew fonts from the culmus package to
+  the prefer lists: "Frank Ruehl CLM" (serif),
+  "Nachlieli CLM" (sans-serif), "Miriam Mono CLM" (monospace).
+
+-------------------------------------------------------------------
+Thu Dec 08 19:01:45 CET 2005 - mfabian@suse.de
+
+- bitmap-encoding-problem.patch: PCF fonts that have no encoded
+  characters must be skipped, they are usually just Unicode fonts
+  transcoded to some legacy encoding. Only Unicode and Latin1
+  are supported by fontconfig, if such fonts are not skipped they
+  can be accidentally matched by fontconfig and used by
+  applications. But they don't work, most applications only
+  display replacement characters when such fonts are used, some
+  even crash (urxvt). Probably fonts that have no encoded
+  characters in other formats than PCF are also useless and
+  can be skipped as well.
+
+-------------------------------------------------------------------
+Wed Dec 07 15:35:59 CET 2005 - mfabian@suse.de
+
+- update to 2.3.92.20051206.
+
+-------------------------------------------------------------------
+Wed Nov 30 11:04:21 CET 2005 - coolo@suse.de
+
+- update once more to CVS as more patches of us went in
+
+-------------------------------------------------------------------
+Thu Nov 24 21:35:00 CET 2005 - coolo@suse.de
+
+- update to CVS to include even more performance patches
+
+-------------------------------------------------------------------
+Tue Nov 22 09:37:13 CET 2005 - coolo@suse.de
+
+- update to CVS to include performance patches by Dirk Mueller and
+  some crash fixes by others
+
+-------------------------------------------------------------------
+Thu Nov 17 17:03:45 CET 2005 - coolo@suse.de
+
+- update to CVS to include several fixes by Andreas Schwab, Michael Matz
+  and me (generic architecture support)
+
+-------------------------------------------------------------------
+Thu Nov  3 09:01:32 CET 2005 - coolo@suse.de
+
+- update to 2.3.91.20051103 with an extra patch to avoid creating
+  invalid cashes (#128080 seems fixed)
+
+-------------------------------------------------------------------
+Thu Oct 27 15:20:56 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #128937: use FcFalse as the default value for
+  FC_EMBEDDED_BITMAP (requested by Zhe Su).
+- Bugzilla #130350: add agfa-fonts "Andale Sans", "Andy MT",
+  "Bell MT", and "Monotype Sorts" to the list of fonts which
+  are rendered with the byte code interpreter and without
+  anti-aliasing up to the pixellimit specified in
+  /etc/sysconfig/fonts-config.
+
+-------------------------------------------------------------------
+Wed Oct 26 12:16:17 CEST 2005 - mfabian@suse.de
+
+- update to 2.3.91.20051026.
+
+-------------------------------------------------------------------
+Mon Oct 24 14:03:14 CEST 2005 - mfabian@suse.de
+
+- update to 2.3.91.20051024.
+  + remove bugzilla-102328.patch (included upstream).
+  + remove fontconfig-sentinel.patch (included upstream).
+  + remove Zhe Su's
+    bugzilla-128930-support-localized-family-and-style-names.patch
+    (included upstream)
+
+-------------------------------------------------------------------
+Thu Oct 20 11:59:13 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #129081: move fonts which are metric compatible to
+  Helvetica to the top of the prefer list for sans-serif, fonts
+  which are metric compatible to Times to the top of the prefer
+  list for serif, and fonts which are metric compatible to courier
+  to the top of the prefer list for monospace.
+  This is needed for example to display pdf documents better in
+  kpdf.
+- Bugzilla #128930: use newer version of Zhe Su's patch to solve
+  the problem mentioned in comment #8.
+
+-------------------------------------------------------------------
+Wed Oct 19 14:50:02 CEST 2005 - mfabian@suse.de
+
+- update to 2.3.91.20051019.
+  + remove fix-return-code.patch (included upstream).
+- Bugzilla #128930: add patch by Zhe Su <zsu@novell.com> to
+  improve support of localized font family and style names by
+  sorting them according to the current locale settings.
+  With this change, applications which use fontconfig will
+  automatically get the localized font family and style names.
+
+-------------------------------------------------------------------
+Fri Oct 14 16:24:33 CEST 2005 - mfabian@suse.de
+
+- the return value of fc-cache in directories where
+  fonts.cache-2 doesn't exist was 1. Fix this.
+
+-------------------------------------------------------------------
+Thu Oct 13 14:42:51 CEST 2005 - mfabian@suse.de
+
+- update to 2.3.91.20051013
+  current head of fontconfig 2.4 branch).
+  Fixes problem that fc-cache returns 1 (failed) when updating
+  an already existing fonts.cache-2 file.
+
+-------------------------------------------------------------------
+Wed Oct 12 11:35:23 CEST 2005 - mfabian@suse.de
+
+- update to 2.3.91.20051012
+  (current head of fontconfig 2.4 branch).
+  Solves the performance regression problem that fc-cache
+  did take a lot of time even when nothing was changed in the
+  font directories.
+
+-------------------------------------------------------------------
+Fri Oct 07 15:22:21 CEST 2005 - mfabian@suse.de
+
+- update to 2.3.91.20051007
+  (current head of fontconfig 2.4 branch).
+
+-------------------------------------------------------------------
+Tue Sep 27 15:05:57 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #118727: fix artificial bold for applications using
+  cairo. Thanks to Zhe Su <zsu@novell.com>.
+
+-------------------------------------------------------------------
+Fri Sep 09 15:05:19 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #114949 comment #20 - #21: add a rule to
+  suse-post-user.conf to switch off the autohinter for the webfonts
+  and the agfa-fonts if anti-aliasing is already off.
+  This nice idea came from Sven Burmeister.
+
+-------------------------------------------------------------------
+Thu Sep 08 13:07:55 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #114949: remove stuff from /etc/fonts/*.conf which
+  has become obsolete. Rules to replace outline fonts with
+  bitmap fonts are not necessary anymore if fonts are available
+  which can achieve rendering quality equal to hand tuned
+  bitmaps when the byte code interpreter is used.
+
+-------------------------------------------------------------------
+Fri Sep 02 14:37:28 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #114949: move the rules to setup the hinting and
+  anti-aliasing and the rules to enable embedded bitmaps from
+  suse-pre-user.conf into seperate files and include these
+  from suse-pre-user.conf. This makes it easier to edit or replace
+  these rules with SuSEconfig.fonts according to values of
+  variables in /etc/sysconfig.
+
+-------------------------------------------------------------------
+Sat Aug 20 10:42:43 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #105990: switch on embedded bitmaps again during
+  the installation.
+
+-------------------------------------------------------------------
+Fri Aug 19 22:09:49 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #105626: work around the loss of rendering quality
+  for the IPA fonts caused by the update to freetype 2.1.10 by
+  switching off the hinting for the IPA fonts.
+
+-------------------------------------------------------------------
+Tue Aug 16 19:25:24 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #102328: use Keith Packard's fix for the problem in
+  the last changelog.
+
+-------------------------------------------------------------------
+Tue Aug 16 17:02:35 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #102328: fall back to POSIX if the effective value
+  of LC_CTYPE is the empty string "". By falling back to POSIX
+  here we make sure that even in this case fontconfig matches
+  something readable. Without that it apparently matches completely
+  random and might match a font which doesn't even have ASCII
+  glyphs. As a result, nothing at all may be displayed.
+
+-------------------------------------------------------------------
+Fri Jul 29 17:41:39 CEST 2005 - mfabian@suse.de
+
+- Revert the defaults in /etc/fonts/suse-pre-user.conf to use
+  the autohinter and anti-aliasing by default always. Most users
+  apparently do not like the bitmap look and feel caused by the
+  last change. As this seems to be a matter of taste, I leave the
+  rule to achieve that bitmap look and feel in
+  /etc/fonts/suse-pre-user.conf as an example but disable it by
+  default. Users who want a bitmap look and feel have to copy
+  that rule to their personal ~/.fonts.conf file and enable it
+  by choosing a non-zero pixelsize limit as explained in
+  the comments in /etc/fonts/suse-pre-user.conf.
+
+-------------------------------------------------------------------
+Fri Jul 22 16:51:29 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #64424: "Bytecodeinterpreter in freetype2 - wieso
+  ausgeschaltet?"
+  The byte code interpreter is enabled now at build time in our
+  freetype2 package. Setup the defaults in /etc/fonts to use
+  black and white rendering (antialias=false) and the byte code
+  interpreter (autohint=false) for a few fonts which are known to
+  have high quality byte code instructions. Set antialias=true
+  and autohint=true as the default for all other fonts.
+
+-------------------------------------------------------------------
+Thu Jul 21 17:31:09 CEST 2005 - mfabian@suse.de
+
+- update to 2.3.2.20050721.
+- Bugzilla #52167: "fc-list reports inconsistent spacing values
+  for some fonts": add a patch to improve the detection of
+  monospaced fonts: ignore glyphs with advance=0 when detecting
+  monospaced fonts and add a special exception for "Luxi Mono"
+  and "Nimbus Mono L".
+
+-------------------------------------------------------------------
+Wed Jul 20 21:55:50 CEST 2005 - mfabian@suse.de
+
+- Bugzilla #94110: add more directories to the default font path.
+
+-------------------------------------------------------------------
+Tue Jul 12 17:13:00 CEST 2005 - mfabian@suse.de
+
+- update to 2.3.2.20050712
+  + remove ka.orth.patch, now included.
+
+-------------------------------------------------------------------
+Wed Jun 29 15:46:05 CEST 2005 - sbrabec@suse.cz
+
+- Added expat to fontconfig-devel to make the .la checker easier.
+
+-------------------------------------------------------------------
+Fri May 20 12:48:05 CEST 2005 - mfabian@suse.de
+
+- Fix ka.orth (Georgian), it apparently requires too many
+  characters which are not really used for Georgian.
+- Add BPG fonts (for Georgian) to the preference lists.
+
+-------------------------------------------------------------------
+Thu Mar 17 12:44:55 CET 2005 - mfabian@suse.de
+
+- add Sazanami and IPA fonts to suse-generic-names.conf.
+
+-------------------------------------------------------------------
+Fri Mar 11 12:32:32 CET 2005 - mfabian@suse.de
+
+- Bugzilla #66498 again: the last change wasn't a good idea after
+  all. The design of the embedded bitmaps is quite bad in some
+  sizes, especially the Japanese katakana look extremely ugly.
+  Therefore it is better not to use the embedded bitmaps during
+  the installation. I added a special /etc/fonts/local.conf.instsys
+  file which should be copied to /etc/fonts/local.conf only for
+  the installation and which is not used in the installed system.
+
+-------------------------------------------------------------------
+Thu Mar 03 18:36:21 CET 2005 - mfabian@suse.de
+
+- Bugzilla #66498: use embedded bitmaps for Korean and Japanese
+  as well, not only for Chinese as before to get readable Japanese
+  and Chinese during the installation. The Latin fonts we currently
+  use during the installation are smaller as before. With the
+  Gnu Unifont currently used for CJK, this leads to clipping
+  problems because this bitmap font cannot scale to a smaller size.
+  When using TrueType fonts like FZSongTi for CJK, the clipping
+  problems disappear because the font can scale down. But in such
+  a tiny size, Japanese or Chinese is almost unreadable with
+  Anti-Aliasing. It's better readable with the embedded bitmaps.
+
+-------------------------------------------------------------------
+Mon Feb 21 16:18:00 CET 2005 - mfabian@suse.de
+
+- re-enable bitmap fonts.
+
+-------------------------------------------------------------------
+Fri Feb 18 17:56:01 CET 2005 - mfabian@suse.de
+
+- update to 2.2.99.20050218.
+
+-------------------------------------------------------------------
+Tue Feb  1 17:10:47 CET 2005 - meissner@suse.de
+
+- package now adds -fno-strict-aliasing by itself.
+- added sentinel valist markup for 2 functions.
+
+-------------------------------------------------------------------
+Thu Jan 13 17:32:42 CET 2005 - mfabian@suse.de
+
+- add entries for preferred fonts for Farsi (Persian):
+  Terafik -> sans-serif, monospaced, Nazil -> serif.
+
+-------------------------------------------------------------------
+Wed Oct 06 17:09:06 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #46852: add /usr/lib/ooo-1.1/share/fonts to the default
+  directories searched for fonts.
+
+-------------------------------------------------------------------
+Fri Sep 17 12:36:11 CEST 2004 - mfabian@suse.de
+
+- add "Georgia", "Trebuchet", "Segoe", "Bell MT", and "Andale Sans"
+  to the generic lists.
+
+-------------------------------------------------------------------
+Tue Sep 14 06:48:30 CEST 2004 - mfabian@suse.de
+
+- add FZMingTiB to the "monospace" prefer list (thanks to Zhe Su
+  for noticing). Remove all "Kai" fonts from the "sans-serif"
+  prefer list.
+
+-------------------------------------------------------------------
+Tue Sep 14 05:06:57 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #45160, Comment #6:
+  prefer FZSongTi and FZMingTiB also for sans-serif instead of
+  the "Kai" fonts.
+
+-------------------------------------------------------------------
+Tue Sep 14 03:08:42 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #44409: set the default value for rgba to "unknown"
+  instead of "none".
+
+-------------------------------------------------------------------
+Mon Sep  6 16:50:58 CEST 2004 - mfabian@suse.de
+
+- add Japanese IPA fonts to prefer lists.
+- add FZMingTiB to prefer list for "serif" below "FZSongTi"
+  (if we don't install the Arphic fonts by default, there is
+  no traditional Chinese font left in the list otherwise).
+
+-------------------------------------------------------------------
+Wed Aug 25 12:05:44 CEST 2004 - kukuk@suse.de
+
+- Avoid /bin/sh in PreRequires
+
+-------------------------------------------------------------------
+Tue Aug 10 18:33:52 CEST 2004 - mfabian@suse.de
+
+- for some Bengali fonts (e.g. "Mukti Narrow"), the autohinter
+  works well with the patch from
+  http://www.kde.gr.jp/~akito/patch/freetype2/2.1.7
+  applied. But for "Likhan" it still doesn't work that well
+  (look how the "matra" lines at the top line up). Therefore,
+  switch off the autohinter for the "Likhan" font.
+
+-------------------------------------------------------------------
+Mon Aug  9 13:09:35 CEST 2004 - mfabian@suse.de
+
+- add Bengali fonts "Likhan" (serif) and "Mukti Narrow"
+  (sans-serif) to the prefer lists.
+
+-------------------------------------------------------------------
+Wed Aug  4 14:56:41 CEST 2004 - mfabian@suse.de
+
+- add sazanami fonts to the prefer lists.
+
+-------------------------------------------------------------------
+Wed Jul 28 12:13:50 CEST 2004 - mfabian@suse.de
+
+- update to 2.2.96.20040728. remove fontconfig.patch, this is
+  included upstream now. This update also includes a patch by
+  Lubos Lunak <l.lunak@suse.cz> which helps to improve the
+  performance of fontconfig with KDE.
+
+-------------------------------------------------------------------
+Fri Jun  4 18:13:12 CEST 2004 - mfabian@suse.de
+
+- prefer the proportinal "HGPMinchoL" instead of the monospaced
+  "HGMinchoL" for serif. Same with "HGPGothicB" instead of
+  "HGGothicB" for sans-serif.
+- add all Mincho and Gothic faces of the commercial Ricoh fonts
+  to the list of generic names in suse-generic-names.conf to get
+  reasonable fallbacks if those fonts are not installed.
+
+-------------------------------------------------------------------
+Fri May 28 23:37:52 CEST 2004 - mfabian@suse.de
+
+- add the Japanese fonts "HGMinchoL" and "HGGothicB" made by Ricoh
+  to the prefer lists and generics lists. These are the fonts which
+  Novell Japan has licensed, they should be preferred if they are
+  installed.
+
+-------------------------------------------------------------------
+Wed May 26 11:23:00 CEST 2004 - ro@suse.de
+
+- fix build by defining MIN,MAX and ABS where needed
+
+-------------------------------------------------------------------
+Fri Apr 23 17:20:41 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #38243: fix the characters set handling for the
+  Japanese Dynafonts.
+
+-------------------------------------------------------------------
+Tue Apr 20 12:51:00 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #38244:
+  remove rules to force use of embedded bitmaps by switching
+  off anti-aliasing. This is not needed anymore because libXft
+  in our XFree86 package is patched to make use of the embedded
+  bitmaps anyway if the embeddedbitmap=true parameter is set.
+
+-------------------------------------------------------------------
+Fri Apr 16 21:40:29 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #38244: use embedded bitmaps by default for Chinese
+  (requested by Zhe Su).
+
+-------------------------------------------------------------------
+Fri Apr 16 12:56:56 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #38205: make hintstyle=hintfull the default again
+  for CJK fonts. Our freetype package now has a patch applied to
+  improve the hinting for CJK fonts, with that patch the results
+  are much better with hintstyle=hintfull than with
+  hintstyle=hintnone.
+- fix from upstream CVS: (src/fcfreetype.c):
+  * Fixed bug in using available_sizes[i].height which
+    is in pixels, not 64ths of a pixel.
+
+-------------------------------------------------------------------
+Sat Apr  3 22:13:28 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #38204 comment #5:
+  "Fix some issue in the default alias list": SimSun is a serif
+  font, it should not ge in the generics sans-serif list.
+- Bugzilla #38204 comment #9:
+  add rule to get artificial bold for fonts without a bold version.
+  Until Bugzilla #38202 is fixed, this rule does nothing, but it
+  does no harm either.
+- also specify the foundry when trying to prefer bitmap fonts,
+  without that the prefer_bitmap rules won't work with Qt
+  applications.
+
+-------------------------------------------------------------------
+Fri Apr  2 20:04:52 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #37540: rework rules for use of bitmap fonts to make
+  it easier to get at clearly readable results for CJK if by using
+  embedded bitmaps are used:
+  * improve rules for the case "prefer_bitmap=true" (not default)
+    for Latin fonts: replace all "Helvetica" clones with
+    the bitmap font "Adobe Helvetica", all "Times" clones with
+    "Adobe Times", and all "Courier" clones with "Adobe Courier".
+    For hardcore bitmap addicts.
+  * use embedded bitmaps only for complete ranges, i.e. never
+    use bitmaps from size a-b, scalable fonts from b-c, and bitmaps
+    again from size c-d.
+  * don't match pixelsizes with compare="eq" when trying to use
+    embedded bitmaps. This won't work if non-integer pixelsizes are
+    requested. Use compare="more_eq" and compare="less_eq" to check
+    for a range instead. Then the embedded bitmaps will be used
+    for the whole range, even if non-integer pixelsizes are
+    requested.
+  *  use embedded bitmaps for "FZSongTi" only up to 18 pixel.
+- change prefer lists for Chinese:
+  * make "FZSongTi" the highest priority "serif" and "monospace"
+    font for Chinese
+  * make "FZKaiTi" the highest priority "sans-serif" font for
+    Chinese.
+  * remove "SimSun", "FZSongTi", "HanyiSong", and "ZYSong18030"
+    from the prefer list for "sans-serif" because these are really
+    serif fonts.
+  * remove "AR PL KaitiM GB" and "AR PL KaitiM Big5" from the prefer
+    list for monospace. All other Chinese fonts in this list are
+    "ming" or "song" style, it is weird to have fonts of the
+    completely different "kai" style in the same list.
+
+-------------------------------------------------------------------
+Thu Apr  1 01:50:36 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #37114 and 37540: use hintstyle=hintnone for
+  CJK fonts to improve rendering.
+- Bugzilla #37820: handle dual-width fonts as proportional fonts
+  to avoid extra wide spacing.
+- Bugzilla #34400: CID-keyed fonts work for SuSE 9.1 remove
+  the directory /usr/share/ghostscript/Resource/CIDFont/ from
+  the default font directory list again.
+
+-------------------------------------------------------------------
+Mon Mar 29 11:24:11 CEST 2004 - mfabian@suse.de
+
+- Bugzilla #37310: fix location of fontconfig-user.html in
+  man-pages.
+
+-------------------------------------------------------------------
+Wed Mar 24 23:50:31 CET 2004 - mfabian@suse.de
+
+- Bugzilla #36879: don't match fonts without foundries if
+  a specific foundry is requested (fix from upstream CVS).
+- remove bitmap-spacing.patch (included upstream).
+- install iso639-{1,2} as documentation
+
+-------------------------------------------------------------------
+Fri Mar 19 15:47:29 CET 2004 - mfabian@suse.de
+
+- Bugzilla 36561#:
+  require the Euro sign for languages fr,nl,de,el,es,it,pt,fi,
+  and en.
+
+-------------------------------------------------------------------
+Thu Mar 11 13:00:27 CET 2004 - bg@suse.de
+
+- use -fPIC for static libraries too.
+
+-------------------------------------------------------------------
+Tue Mar  2 17:16:28 CET 2004 - mfabian@suse.de
+
+- update to 2.2.92.20040221.
+- add bitmap-spacing.patch to fix Bugzilla #34677
+
+-------------------------------------------------------------------
+Mon Mar  1 17:09:27 CET 2004 - mfabian@suse.de
+
+- add entries for Adrian's new "SUSE Sans", "SUSE Serif",
+  "SUSE Sans Mono" fonts. Prefer over Nimbus and Luxi.
+
+-------------------------------------------------------------------
+Mon Feb  9 15:36:27 CET 2004 - mfabian@suse.de
+
+- update to 2.2.92.20040206.
+- remove fontconfig-ta.orth-cvs.patch and freetype-2.1.7.patch
+  (included now).
+- add /usr/local/share/fonts/ as a default directory (see
+  http://mail.fontconfig.org/pipermail/fontconfig/2003-October/000671.html
+- add /usr/share/ghostscript/Resource/CIDFont/ as a default
+  font directory.
+- add rule to use the URW font "Standard Symbols L" as a
+  replacement if the original Adobe "Symbol" font is not available.
+  (see Bugzilla #34324)
+- move SuSE specific fontconfig rules into included files.
+
+-------------------------------------------------------------------
+Sat Jan 10 21:20:17 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Tue Dec 23 02:38:47 CET 2003 - mfabian@suse.de
+
+- make it build with freetype 2.1.7 again.
+- Bugzilla Bug 32080: turn off subpixel hinting by default.
+
+-------------------------------------------------------------------
+Thu Oct  2 17:56:25 CEST 2003 - mfabian@suse.de
+
+- remove "ed" from "# neededforbuild".
+
+-------------------------------------------------------------------
+Thu Aug 28 11:18:12 CEST 2003 - mfabian@suse.de
+
+- add "FreeSans", "FreeSerif", "FreeMono" to fonts.conf
+  (priority below Nimbus, Bitstream and Luxi).
+- move priority of "Bitstream Vera" fonts below Nimbus.
+- move fontconfig-devel documentation to
+  /usr/share/doc/packages/fontconfig-devel.
+
+-------------------------------------------------------------------
+Sun Aug 24 10:08:22 CEST 2003 - adrian@suse.de
+
+- add freetype2-devel and glibc-devel to the -devel Requires
+
+-------------------------------------------------------------------
+Sat Aug 23 16:46:01 CEST 2003 - adrian@suse.de
+
+- udpate to version 2.2.1
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Jul 15 11:49:44 CEST 2003 - mfabian@suse.de
+
+- add rules to use embedded bitmaps in FZSongTi if desired.
+- use binding="same" instead of binding="strong" when adding
+  bitmap fonts to the pattern. This is necessary to keep the
+  generic aliases "sans-serif" etc. working as usual even
+  if "prefer_bitmap" is set to "true". With binding="strong",
+  "sans-serif" always expands to "Adobe Helvetica" if
+  "prefer_bitmap" is set to "true" which is not useful for
+  many languages.
+
+-------------------------------------------------------------------
+Wed Jul  9 14:47:15 CEST 2003 - sndirsch@suse.de
+
+- added FZSongTi to serif, sans-serif and monospace family aliases
+
+-------------------------------------------------------------------
+Wed May 28 12:38:22 CEST 2003 - mfabian@suse.de
+
+- install fc-list and fc-cache man pages.
+
+-------------------------------------------------------------------
+Sun May 18 22:43:25 CEST 2003 - mfabian@suse.de
+
+- fontconfig-ta.orth-cvs.patch: Remove 0b82 and Tamil numbers from
+  tamil orthography (from upstream cvs)
+- add Tamil fonts to "prefer" aliases
+- remove duplicate entries of the Bitstream fonts from fonts.conf
+- set globaladvance=false for Y.OzFont because it is a dual-width
+  font.
+- change .spec file to make it possible to build with /usr/X11R6
+  prefix (to make updates for SuSE Linux 8.2 easy).
+
+-------------------------------------------------------------------
+Wed Apr 23 13:00:17 CEST 2003 - sndirsch@suse.de
+
+- created package

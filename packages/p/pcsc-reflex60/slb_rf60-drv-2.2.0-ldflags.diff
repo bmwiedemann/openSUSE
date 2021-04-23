@@ -1,0 +1,11 @@
+--- Makefile
++++ Makefile
+@@ -3,7 +3,7 @@
+ # Implementation
+ 
+ CC   = gcc -DCPU_ICAP_PC=1 -fPIC $(COPTS)
+-LD   = ld
++LD   = $(LD)
+ OBJS = serial.o ifdhandler.o ctapi.o AdmHndlr.o T1Hndlr.o
+ LIBN = libslb_rf60.so
+ 

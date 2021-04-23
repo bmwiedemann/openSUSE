@@ -1,0 +1,55 @@
+Index: libcmpiutil-0.5.6/std_invokemethod.c
+===================================================================
+--- libcmpiutil-0.5.6.orig/std_invokemethod.c
++++ libcmpiutil-0.5.6/std_invokemethod.c
+@@ -115,7 +115,7 @@ static int parse_eo_array(CMPIArray *str
+                 }
+ 
+                 CMSetArrayElementAt(*instances_out, i,
+-                                    (CMPIValue *)&inst,
++                                    (CMPIValue *)(void*)&inst,
+                                     CMPI_instance);
+         }
+ 
+Index: libcmpiutil-0.5.6/std_association.c
+===================================================================
+--- libcmpiutil-0.5.6.orig/std_association.c
++++ libcmpiutil-0.5.6/std_association.c
+@@ -38,9 +38,9 @@ void set_reference(struct std_assoc *ass
+                    const CMPIObjectPath *target)
+ {
+         CMSetProperty(inst, assoc->source_prop,
+-                      (CMPIValue *)&source, CMPI_ref);
++                      (CMPIValue *)(void*)&source, CMPI_ref);
+         CMSetProperty(inst, assoc->target_prop,
+-                      (CMPIValue *)&target, CMPI_ref);
++                      (CMPIValue *)(void*)&target, CMPI_ref);
+ }
+ 
+ static bool match_op(const CMPIBroker *broker,
+Index: libcmpiutil-0.5.6/std_indication.c
+===================================================================
+--- libcmpiutil-0.5.6.orig/std_indication.c
++++ libcmpiutil-0.5.6/std_indication.c
+@@ -392,7 +392,7 @@ CMPIStatus stdi_raise_indication(const C
+         if (s.rc != CMPI_RC_OK)
+                 return s;
+ 
+-        s = CMAddArg(argsin, "TheIndication", &ind, CMPI_instance);
++        s = CMAddArg(argsin, "TheIndication", (void*)&ind, CMPI_instance);
+         if (s.rc != CMPI_RC_OK)
+                 return s;
+ 
+Index: libcmpiutil-0.5.6/eo_parser_xml.c
+===================================================================
+--- libcmpiutil-0.5.6.orig/eo_parser_xml.c
++++ libcmpiutil-0.5.6/eo_parser_xml.c
+@@ -269,7 +269,7 @@ static bool parse_array_property(const C
+                 type = parse_array(broker, tstr, val_arr, &array);
+                 if (type != CMPI_null) {
+                         CU_DEBUG("Setting array property");
+-                        CMSetProperty(inst, name, &array, (CMPI_ARRAY | type));
++                        CMSetProperty(inst, name, (void*)&array, (CMPI_ARRAY | type));
+                 }
+         }
+ 

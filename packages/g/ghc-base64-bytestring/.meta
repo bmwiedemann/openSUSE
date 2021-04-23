@@ -1,0 +1,8 @@
+<package name="ghc-base64-bytestring" project="openSUSE:Factory">
+  <title>Fast base64 encoding and deconding for ByteStrings</title>
+  <description>
+Fast base64 encoding and deconding for ByteStrings
+  </description>
+  <devel project="devel:languages:haskell" package="ghc-base64-bytestring"/>
+  <url>http://hackage.haskell.org/package/base64-bytestring</url>
+</package>

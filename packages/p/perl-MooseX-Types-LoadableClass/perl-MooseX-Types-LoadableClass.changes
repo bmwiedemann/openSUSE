@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Sat Jun 17 05:56:42 UTC 2017 - coolo@suse.com
+
+- updated to 0.015
+   see /usr/share/doc/packages/perl-MooseX-Types-LoadableClass/Changes
+
+  0.015     2017-06-16 23:37:46Z
+    - do not create an extra, unused ClassName type (this fixes a problem
+      observed with MooseX::Types and Sub::Defer; see RT#119534)
+
+-------------------------------------------------------------------
+Sun Aug 23 09:05:32 UTC 2015 - coolo@suse.com
+
+- updated to 0.014
+   see /usr/share/doc/packages/perl-MooseX-Types-LoadableClass/Changes
+
+  0.014     2015-08-16 02:03:26Z
+    - update some distribution tooling
+
+-------------------------------------------------------------------
+Fri Feb  6 13:13:01 UTC 2015 - coolo@suse.com
+
+- updated to 0.013
+  - switch from Class::Load to Module::Runtime for loading modules
+
+-------------------------------------------------------------------
+Tue Nov 26 07:35:16 UTC 2013 - coolo@suse.com
+
+- updated to 0.012
+  - re-release with fixed encoding in metadata, support files
+  - only try to load the class if it's a valid module name (ilmari)
+  - avoid trying to load the class if already loaded (minor optimization)
+  - repository moved to the github moose organization
+
+-------------------------------------------------------------------
+Sat Jul 27 11:58:35 UTC 2013 - coolo@suse.com
+
+- updated to 0.009
+  - now performing type checking in the type check itself, not the coercion,
+    to fix results when the type check fails (RT#86041, Karen Etheridge)
+
+-------------------------------------------------------------------
+Wed Jun  5 19:07:32 UTC 2013 - coolo@suse.com
+
+- updated to 0.008
+  - Do not require Test::Exception. RT#75246
+
+-------------------------------------------------------------------
+Fri Feb 17 11:23:28 UTC 2012 - coolo@suse.com
+
+- updated to 0.007
+ - Be more paranoid about the potential for $_ being clobbered.
+
+-------------------------------------------------------------------
+Sat Nov 19 07:42:07 UTC 2011 - coolo@suse.com
+
+- initial package 0.006
+    * created by cpanspec 1.78.06
+

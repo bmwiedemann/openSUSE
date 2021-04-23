@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>daa2a0dcfdec86ed6bf7ffa1c823c43d</srcmd5>
+    <version>4.1.1</version>
+    <time>1517234257</time>
+    <user>dimstar_suse</user>
+    <comment>This should fix (boo#1063781)</comment>
+    <requestid>569719</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d8061b0ecc10d567d466a8b0c8396697</srcmd5>
+    <version>4.3.1</version>
+    <time>1556022889</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>692480</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>58f83d19cafaec8fefb32a3e021379e9</srcmd5>
+    <version>5.0</version>
+    <time>1579792257</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>766055</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>21e54fb9c17dc01ae4ce729c94728516</srcmd5>
+    <version>5.1.0</version>
+    <time>1583948616</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>782895</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>038f96ae0a720fce705e0ac3b816cdc9</srcmd5>
+    <version>5.1.1</version>
+    <time>1586247676</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790820</requestid>
+  </revision>
+</revisionlist>

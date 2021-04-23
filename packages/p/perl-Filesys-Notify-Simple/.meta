@@ -1,0 +1,11 @@
+<package name="perl-Filesys-Notify-Simple" project="openSUSE:Factory">
+  <title>Simple and dumb file system watcher</title>
+  <description>Filesys::Notify::Simple is a simple but unified interface to get
+notifications of changes to a given filesystem path. It utilizes inotify2
+on Linux and fsevents on OS X if they're installed, with a fallback to the
+full directory scan if they're not available.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Filesys-Notify-Simple"/>
+  <url>http://search.cpan.org/dist/Filesys-Notify-Simple/</url>
+</package>

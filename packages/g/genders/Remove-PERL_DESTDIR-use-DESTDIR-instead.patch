@@ -1,0 +1,55 @@
+From: Egbert Eich <eich@suse.com>
+Date: Sun Jan 28 01:06:12 2018 +0100
+Subject: Remove PERL_DESTDIR - use DESTDIR instead
+Patch-mainline: Not yet
+Git-commit: ecdfb6b2a5fac8510284e183dcbab6fce52a6e01
+References: 
+
+DESTDIR is set at installation time - it should be sufficient
+for our use case.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ configure.ac                               | 5 -----
+ src/extensions/perl/Libgenders/Makefile.am | 8 +-------
+ 2 files changed, 1 insertion(+), 12 deletions(-)
+diff --git a/configure.ac b/configure.ac
+index 31cb8b4..3d4199d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -157,11 +157,6 @@ AC_CHECK_HEADERS( \
+ AC_GENDERS_FILE
+ 
+ #
+-# Check for extension stuff
+-#
+-AC_EXTENSION_DESTDIR
+-
+-#
+ # Check for perl stuff
+ #
+ AC_PERL_EXTENSIONS
+diff --git a/src/extensions/perl/Libgenders/Makefile.am b/src/extensions/perl/Libgenders/Makefile.am
+index c544df2..440cc01 100644
+--- a/src/extensions/perl/Libgenders/Makefile.am
++++ b/src/extensions/perl/Libgenders/Makefile.am
+@@ -7,18 +7,12 @@
+ # Use Perl's ExtUtils::MakeMaker to get autoconf/automake to install
+ # into the correct location
+ 
+-# DESTDIR is usually set during make install time, not configure or
+-# make time, so we work around it with the --with-extension-destdir
+-# autoconf option.
+-
+-PERL_DESTDIR = @EXTENSION_DESTDIR@
+-
+ PERL_INC = "-I$(srcdir)/../../../../config -I$(srcdir)/../../../libgenders"
+ 
+ PERL_LIBS = "-L$(srcdir)/../../../libgenders/.libs -lgenders"
+ 
+ MAKEMAKERFLAGS = INSTALLDIRS=$(PERL_ARCH_INSTALL) \
+-		 DESTDIR=$(PERL_DESTDIR) \
++		 DESTDIR=$(DESTDIR) \
+ 		 PREFIX=$(prefix) \
+ 		 INC=$(PERL_INC) \
+ 		 LIBS=$(PERL_LIBS) \

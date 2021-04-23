@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5e12ad8177ef48e54ab66d2f2d771e19</srcmd5>
+    <version>0.4</version>
+    <time>1560971319</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>710560</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e8d0b03bd234f51451d8f76f00ebae07</srcmd5>
+    <version>0.4.1</version>
+    <time>1568379580</time>
+    <user>lnussel_factory</user>
+    <comment>- Update to 0.4.1:
+  * Avoid using :class:`asyncio.Future` for the blocking integration.
+  * Set the 'destination' field on method return and error messages to the
+    'sender' from the parent message.</comment>
+    <requestid>730190</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5ab5fd88dfb09f69798d927c9ddd0450</srcmd5>
+    <version>0.4.2</version>
+    <time>1583226928</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.2:
+  The blocking ``DBusConnection`` integration class now has a ``.close()``
+  method, and can be used as a context manager::
+    from jeepney.integrate.blocking import connect_and_authenticate
+    with connect_and_authenticate() as connection:</comment>
+    <requestid>780407</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>735f9695977e2032846ad69838c72865</srcmd5>
+    <version>0.4.3</version>
+    <time>1583775263</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783023</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cd21afc85e8bd3669bbb4848700f6114</srcmd5>
+    <version>0.5.0</version>
+    <time>1606648798</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0:
+  * New common scheme for I/O integration - see Connections and Routers.
+  * Message.serialise() accepts a serial number, to serialise outgoing messages
+  without modifying the message object.
+  * Improved documentation, including API docs.</comment>
+    <requestid>850954</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8be7b625f41bc0f76be88e25da6318d3</srcmd5>
+    <version>0.6.0</version>
+    <time>1608729558</time>
+    <user>dimstar_suse</user>
+    <comment>- uppate to 0.6.0:
+  * New method :meth:`~.blocking.DBusConnection.recv_until_filtered` in the
+    blocking I/O integration to receive messages until one is filtered into a
+    queue.
+  * More efficient buffering of received data waiting to be parsed into D-Bus
+    messages.</comment>
+    <requestid>857121</requestid>
+  </revision>
+</revisionlist>

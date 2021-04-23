@@ -1,0 +1,8 @@
+<package name="python-telepot" project="openSUSE:Factory">
+  <title>Python framework for Telegram Bot API</title>
+  <description>Telepot helps you build applications for Telegram Bot API. It works on Python 2.7 and Python 3. It also has an async version based on asyncio and Python 3.5+.
+
+</description>
+  <devel project="devel:languages:python" package="python-telepot"/>
+  <url>https://github.com/nickoala/telepot</url>
+</package>

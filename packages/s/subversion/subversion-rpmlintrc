@@ -1,0 +1,3 @@
+# libsvn_subr calls exit as part of the default malfunction handler.
+# That's OK. Library users are expected to override the default handler.
+addFilter("subversion.*shared-lib-calls-exit.*libsvn_subr-1.so.*")

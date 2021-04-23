@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Sun Oct  2 16:49:00 BST 2016 - aspiers@suse.com
+
+- Update to 0.24
+  - Fix parsing of zypper lr -d, which now lists a
+    gpg check field
+
+-------------------------------------------------------------------
+Mon Oct 21 14:33:10 BST 2013 - aspiers@suse.com
+
+- Update to 0.23
+  - remove trailing whitespace from each line
+- Add download_files source service
+- Add missing COPYING source
+
+-------------------------------------------------------------------
+Thu Sep 12 11:11:41 BST 2013 - aspiers@suse.com
+
+- Update to 0.22:
+  - fix whitespace parsing issue with zypper lr -d
+  - align usage text
+
+-------------------------------------------------------------------
+Wed Sep 11 17:28:50 BST 2013 - aspiers@suse.com
+
+- Run "osc service localrun format_spec_file" on spec file.
+- Add missing .changes file.
+

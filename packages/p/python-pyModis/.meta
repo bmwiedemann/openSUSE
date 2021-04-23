@@ -1,0 +1,5 @@
+<package name="python-pyModis" project="openSUSE:Factory">
+  <title>pyModis</title>
+  <description>pyModis is a Free and Open Source Python based library to work with MODIS data. It offers bulk-download for user selected time ranges, mosaicking of MODIS tiles, and the reprojection from Sinusoidal to other projections, convert HDF format to other formats.</description>
+  <devel project="Application:Geo" package="python-pyModis"/>
+</package>

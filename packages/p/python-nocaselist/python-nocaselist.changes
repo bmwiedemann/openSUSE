@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Mon Feb  1 18:14:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.4:
+  * Migrated from Travis and Appveyor to GitHub Actions. This required changes
+    in several areas including dependent packages used for testing and
+    coverage. This did not cause any changes on dependent packages used for the
+    installation of the package. 
+
+-------------------------------------------------------------------
+Tue Oct 13 14:42:53 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- initial specfile 1.0.3 

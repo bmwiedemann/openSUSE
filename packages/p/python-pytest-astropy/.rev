@@ -1,0 +1,41 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0a9610ef6e169e57648db009b5e310a6</srcmd5>
+    <version>0.4.0</version>
+    <time>1534543394</time>
+    <user>dimstar_suse</user>
+    <comment>Required by python-astropy</comment>
+    <requestid>629425</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>58550da72b95968b69bdf1ac4215b8af</srcmd5>
+    <version>0.5.0</version>
+    <time>1551113506</time>
+    <user>coolo</user>
+    <comment>- Update to 0.5.0:
+  * Just updates in metadata</comment>
+    <requestid>676367</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e2bd7f46a7cbe1f9b9f969c2472ac0be</srcmd5>
+    <version>0.7.0</version>
+    <time>1576927742</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0
+  * requires new pytest-astropy-header (Request 755857)
+  * Python 3 only
+</comment>
+    <requestid>758030</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6617158b596bcb4252a423acf2976d8e</srcmd5>
+    <version>0.8.0</version>
+    <time>1587467088</time>
+    <user>dimstar_suse</user>
+    <comment>- UPdate to 0.8.0:
+  * Added pytest-filter-subpackage and pytest-cov as dependencies. [#29]
+  * Dropped support for Python 2.7 and 3.5. [#29]
+  * Require Hypothesis 5.1 or later. [#29]</comment>
+    <requestid>785478</requestid>
+  </revision>
+</revisionlist>

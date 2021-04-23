@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Fri Jan  1 13:15:38 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.0.2:
+  * Log dbus_error only when debug logging is enabled
+  * Correct man page location
+
+-------------------------------------------------------------------
+Thu Dec 19 16:15:36 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libudev) instead of libudev-devel:
+  Allow OBS to shortcut through the -mini flavors.
+
+-------------------------------------------------------------------
+Wed Feb 20 17:59:33 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Use a full Source URL and original tarball.
+
+-------------------------------------------------------------------
+Tue Jan 22 22:00:00 UTC 2019 - Stefan Koch <stefan.koch10@gmail.com>
+
+- update to 1.0.1:
+  * Fix string comparing
+  * Support string quoting
+
+-------------------------------------------------------------------
+Tue Feb 13 22:30:00 UTC 2018 - stefan.koch10@gmail.com
+
+- update outdated source (fix dbus group)
+- remove group creation within spec file
+
+-------------------------------------------------------------------
+Mon Feb  5 08:19:29 UTC 2018 - meissner@suse.com
+
+- updated to current git
+
+-------------------------------------------------------------------
+Thu Feb  1 06:41:46 UTC 2018 - meissner@suse.com
+
+- do not do groupdel
+
+-------------------------------------------------------------------
+Thu Oct 12 06:56:57 UTC 2017 - meissner@suse.com
+
+- initial package, a USB device authentication tool that avoids
+  BadUSB style attacks.

@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dd56f1360735cd9514696e952994783f</srcmd5>
+    <version>1.17.1</version>
+    <time>1551024809</time>
+    <user>coolo</user>
+    <comment>new package</comment>
+    <requestid>672399</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a000c5eff8ced82638fea87eba8933ec</srcmd5>
+    <version>1.17.1</version>
+    <time>1554977966</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove reference to the parent pom since we are not building
+  using Maven.
+- Make tests conditional and switched off by default
+</comment>
+    <requestid>693096</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>046963f157e6b1302d0cea32ed042d25</srcmd5>
+    <version>1.17.1</version>
+    <time>1562056725</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the reference to jansi-project parent from jansi pom
+- Resolve manually jansi-native-version variable so that ivy
+  understands it
+</comment>
+    <requestid>712780</requestid>
+  </revision>
+</revisionlist>

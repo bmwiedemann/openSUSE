@@ -1,0 +1,20 @@
+<package name="soundtouch" project="openSUSE:Factory">
+  <title>Audio Processing Library</title>
+  <description>SoundTouch is an open source audio processing library that allows
+changing the sound tempo, pitch and playback rate parameters
+independently from each other.
+*Easy-to-use implementation of time-stretch, pitch-shift and sample
+ rate transposing routines.
+*High-performance object-oriented C++ implementation.
+*Clear and easy-to-use programming interface via a single C++ class.
+*Supported audio data format : 16Bit integer or 32bit floating point
+ PCM mono/stereo
+*Capable of real-time audio stream processing:
+ input/output latency max. ~ 100 ms.
+ Processing 44.1kHz/16bit stereo sound in realtime requires a 133 Mhz
+ Intel Pentium processor or better.
+*Additional assembler-level and Intel-MMX instruction set optimizations
+ for Intel x86 compatible processors, offering several times increase
+ in the processing performance.</description>
+  <devel project="multimedia:libs" package="soundtouch"/>
+</package>

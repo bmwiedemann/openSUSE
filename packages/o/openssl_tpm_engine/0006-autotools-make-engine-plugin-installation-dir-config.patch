@@ -1,0 +1,56 @@
+From 415c8fea14862a02ae1b6f405327ddbb659c7edc Mon Sep 17 00:00:00 2001
+From: Matthias Gerstner <matthias.gerstner@suse.de>
+Date: Mon, 4 Dec 2017 17:54:12 +0100
+Subject: [PATCH] autotools: make engine plugin installation pkg-config aware
+ and configurable
+
+If a pkg-config enginesdir variable can be found, use that as default
+engines installation dir. As a fallback use the previously hard coded
+path.
+
+Using --with-enginedir=/my/engine/dir the user can now choose the
+target installation directory explicitly.
+
+Some distributions like SUSE are placing engine plugins into different
+directories for OpenSSL 1.0 and OpenSSL 1.1. This switch makes this
+easier and allows packagers to drop custom patches.
+---
+ Makefile.am  |  2 +-
+ configure.in | 11 +++++++++++
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+
+Index: openssl_tpm_engine-0.4.2/Makefile.am
+===================================================================
+--- openssl_tpm_engine-0.4.2.orig/Makefile.am
++++ openssl_tpm_engine-0.4.2/Makefile.am
+@@ -3,7 +3,7 @@ SUBDIRS=. test
+ EXTRA_DIST = README  openssl.cnf.sample
+ 
+ bin_PROGRAMS=create_tpm_key
+-openssl_enginedir=@libdir@/openssl/engines
++openssl_enginedir=@enginedir@
+ 
+ engine_libs=-lcrypto -lc -ltspi
+ engine_sources=e_tpm.c e_tpm.h e_tpm_err.c
+Index: openssl_tpm_engine-0.4.2/configure.in
+===================================================================
+--- openssl_tpm_engine-0.4.2.orig/configure.in
++++ openssl_tpm_engine-0.4.2/configure.in
+@@ -70,6 +70,17 @@ AC_TRY_COMPILE(
+ )
+ AM_CONDITIONAL([OPENSSL_11], [test x$openssl_11 = xtrue])
+ 
++PKG_CHECK_MODULES([libcrypto], [libcrypto],
++		  [libcrypto_enginesdir=`$PKG_CONFIG --variable=enginesdir libcrypto`],
++		  [libcrypto_enginesdir="\${libdir}/openssl/engines"]
++)
++
++AC_ARG_WITH([enginedir],
++  [AS_HELP_STRING([--with-enginedir=DIR], [engine directory])],
++  [enginedir=$withval],
++  [enginedir="$libcrypto_enginesdir"])
++AC_SUBST([enginedir], [$enginedir])
++
+ CFLAGS="$CFLAGS -Wall"
+ AC_SUBST(CFLAGS)
+ 

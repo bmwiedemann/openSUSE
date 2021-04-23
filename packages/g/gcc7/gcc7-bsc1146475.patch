@@ -1,0 +1,226 @@
+2019-10-01  Alexandre Oliva <oliva@adacore.com>
+
+	PR debug/91507
+	* dwarf2out.c (override_type_for_decl_p): New.
+	(gen_variable_die): Use it.
+
+	* gcc.dg/debug/dwarf2/array-0.c: New.
+	* gcc.dg/debug/dwarf2/array-1.c: New.
+	* gcc.dg/debug/dwarf2/array-2.c: New.
+	* gcc.dg/debug/dwarf2/array-3.c: New.
+	* g++.dg/debug/dwarf2/array-0.C: New.
+	* g++.dg/debug/dwarf2/array-1.C: New.
+	* g++.dg/debug/dwarf2/array-2.C: New.  Based on libstdc++-v3's
+	src/c++98/pool_allocator.cc:__pool_alloc_base::_S_heap_size.
+	* g++.dg/debug/dwarf2/array-3.C: New.  Based on
+	gcc's config/i386/i386-features.c:xlogue_layout::s_instances.
+	* g++.dg/debug/dwarf2/array-4.C: New.
+
+Index: gcc/testsuite/gcc.dg/debug/dwarf2/array-0.c
+===================================================================
+--- gcc/testsuite/gcc.dg/debug/dwarf2/array-0.c	(nonexistent)
++++ gcc/testsuite/gcc.dg/debug/dwarf2/array-0.c	(revision 276403)
+@@ -0,0 +1,10 @@
++/* { dg-do compile } */
++/* { dg-options "-gdwarf-2 -dA" } */
++extern int array[42];
++
++int array[42];
++
++/* Verify that we get only one DW_TAG_subtrange_type (plus abbrev),
++   with a DW_AT_upper_bound.  */
++/* { dg-final { scan-assembler-times " DW_TAG_subrange_type" 2 } } */
++/* { dg-final { scan-assembler-times " DW_AT_upper_bound" 1 } } */
+Index: gcc/testsuite/gcc.dg/debug/dwarf2/array-2.c
+===================================================================
+--- gcc/testsuite/gcc.dg/debug/dwarf2/array-2.c	(nonexistent)
++++ gcc/testsuite/gcc.dg/debug/dwarf2/array-2.c	(revision 276403)
+@@ -0,0 +1,8 @@
++/* { dg-do compile } */
++/* { dg-options "-gdwarf-2 -dA" } */
++int array[42];
++
++/* Verify that we get only one DW_TAG_subtrange_type (plus abbrev)
++   with DW_AT_upper_bound.  */
++/* { dg-final { scan-assembler-times " DW_TAG_subrange_type" 2 } } */
++/* { dg-final { scan-assembler-times " DW_AT_upper_bound" 1 } } */
+Index: gcc/testsuite/gcc.dg/debug/dwarf2/array-1.c
+===================================================================
+--- gcc/testsuite/gcc.dg/debug/dwarf2/array-1.c	(nonexistent)
++++ gcc/testsuite/gcc.dg/debug/dwarf2/array-1.c	(revision 276403)
+@@ -0,0 +1,10 @@
++/* { dg-do compile } */
++/* { dg-options "-gdwarf-2 -dA" } */
++extern int array[];
++
++int array[42];
++
++/* Verify that we get two DW_TAG_subtrange_type (each with an abbrev),
++   but only one DW_AT_upper_bound.  */
++/* { dg-final { scan-assembler-times " DW_TAG_subrange_type" 4 } } */
++/* { dg-final { scan-assembler-times " DW_AT_upper_bound" 1 } } */
+Index: gcc/testsuite/gcc.dg/debug/dwarf2/array-3.c
+===================================================================
+--- gcc/testsuite/gcc.dg/debug/dwarf2/array-3.c	(nonexistent)
++++ gcc/testsuite/gcc.dg/debug/dwarf2/array-3.c	(revision 276403)
+@@ -0,0 +1,8 @@
++/* { dg-do compile } */
++/* { dg-options "-gdwarf-2 -dA" } */
++int array[] = { 0, 1, 2 };
++
++/* Verify that we get only one DW_TAG_subtrange_type (plus abbrev)
++   with DW_AT_upper_bound.  */
++/* { dg-final { scan-assembler-times " DW_TAG_subrange_type" 2 } } */
++/* { dg-final { scan-assembler-times " DW_AT_upper_bound" 1 } } */
+Index: gcc/testsuite/g++.dg/debug/dwarf2/array-1.C
+===================================================================
+--- gcc/testsuite/g++.dg/debug/dwarf2/array-1.C	(nonexistent)
++++ gcc/testsuite/g++.dg/debug/dwarf2/array-1.C	(revision 276403)
+@@ -0,0 +1,13 @@
++/* { dg-do compile } */
++/* { dg-options "-gdwarf-2 -dA" } */
++struct S
++{
++  static int array[];
++};
++
++int S::array[42];
++
++/* Verify that we get two DW_TAG_subrange_type, only one of which with
++   a DW_AT_upper_bound.  */
++/* { dg-final { scan-assembler-times " DW_TAG_subrange_type" 4 } } */
++/* { dg-final { scan-assembler-times " DW_AT_upper_bound" 1 } } */
+Index: gcc/testsuite/g++.dg/debug/dwarf2/array-2.C
+===================================================================
+--- gcc/testsuite/g++.dg/debug/dwarf2/array-2.C	(nonexistent)
++++ gcc/testsuite/g++.dg/debug/dwarf2/array-2.C	(revision 276403)
+@@ -0,0 +1,15 @@
++/* { dg-do compile } */
++/* { dg-options "-gdwarf-2 -dA" } */
++struct S
++{
++  typedef int i_t;
++  static i_t array[42];
++};
++
++int S::array[42];
++
++/* Verify that we get two DW_TAG_subrange_type (plus abbrev), and two
++   DW_AT_upper_bound, because a different symbolic name is used for
++   the array element type.  */
++/* { dg-final { scan-assembler-times " DW_TAG_subrange_type" 3 } } */
++/* { dg-final { scan-assembler-times " DW_AT_upper_bound" 2 } } */
+Index: gcc/testsuite/g++.dg/debug/dwarf2/array-3.C
+===================================================================
+--- gcc/testsuite/g++.dg/debug/dwarf2/array-3.C	(nonexistent)
++++ gcc/testsuite/g++.dg/debug/dwarf2/array-3.C	(revision 276403)
+@@ -0,0 +1,20 @@
++/* { dg-do compile } */
++/* { dg-options "-gdwarf-2 -dA" } */
++struct S
++{
++  S() {}
++  ~S() {}
++  static const S array[2];
++};
++
++const S S::array[2] = { S(), S() };
++
++/* Verify that we get only one DW_TAG_subrange_type (plus the abbrev),
++   and one DW_AT_upper_bound (non-abbrev), because the array
++   definition loses the readonly wrapper for the array type because of
++   the dynamic initializers.  The const types are 4: S, S*, int, and
++   S[4], plus the abbrev.  A const version of S[4] doesn't make sense,
++   but we output it.  */
++/* { dg-final { scan-assembler-times " DW_TAG_const_type" 5 } } */
++/* { dg-final { scan-assembler-times " DW_TAG_subrange_type" 2 } } */
++/* { dg-final { scan-assembler-times " DW_AT_upper_bound" 1 } } */
+Index: gcc/testsuite/g++.dg/debug/dwarf2/array-0.C
+===================================================================
+--- gcc/testsuite/g++.dg/debug/dwarf2/array-0.C	(nonexistent)
++++ gcc/testsuite/g++.dg/debug/dwarf2/array-0.C	(revision 276403)
+@@ -0,0 +1,13 @@
++/* { dg-do compile } */
++/* { dg-options "-gdwarf-2 -dA" } */
++struct S
++{
++  static int array[42];
++};
++
++int S::array[42];
++
++/* Verify that we get only one DW_TAG_subrange_type with a
++   DW_AT_upper_bound.  */
++/* { dg-final { scan-assembler-times " DW_TAG_subrange_type" 2 } } */
++/* { dg-final { scan-assembler-times " DW_AT_upper_bound" 1 } } */
+Index: gcc/testsuite/g++.dg/debug/dwarf2/array-4.C
+===================================================================
+--- gcc/testsuite/g++.dg/debug/dwarf2/array-4.C	(nonexistent)
++++ gcc/testsuite/g++.dg/debug/dwarf2/array-4.C	(revision 276403)
+@@ -0,0 +1,16 @@
++/* { dg-do compile } */
++/* { dg-options "-gdwarf-2 -dA" } */
++struct S
++{
++  S() {}
++  ~S() {}
++};
++
++const S array[2] = { S(), S() };
++
++/* Like array-3, but with a non-member array without a separate
++   declaration, to check that we don't issue the nonsensical
++   DW_TAG_const_type used by the member array declaration there.  */
++/* { dg-final { scan-assembler-times " DW_TAG_const_type" 4 } } */
++/* { dg-final { scan-assembler-times " DW_TAG_subrange_type" 2 } } */
++/* { dg-final { scan-assembler-times " DW_AT_upper_bound" 1 } } */
+Index: gcc/dwarf2out.c
+===================================================================
+--- gcc/dwarf2out.c	(revision 276402)
++++ gcc/dwarf2out.c	(revision 276403)
+@@ -23705,6 +23705,34 @@ local_function_static (tree decl)
+     && TREE_CODE (DECL_CONTEXT (decl)) == FUNCTION_DECL;
+ }
+ 
++/* Return true iff DECL overrides (presumably completes) the type of
++   OLD_DIE within CONTEXT_DIE.  */
++
++static bool
++override_type_for_decl_p (tree decl, dw_die_ref old_die,
++			  dw_die_ref context_die)
++{
++  tree type = TREE_TYPE (decl);
++  int cv_quals;
++
++  if (decl_by_reference_p (decl))
++    {
++      type = TREE_TYPE (type);
++      cv_quals = TYPE_UNQUALIFIED;
++    }
++  else
++    cv_quals = decl_quals (decl);
++
++  dw_die_ref type_die = modified_type_die (type,
++					   cv_quals | TYPE_QUALS (type),
++					   false,
++					   context_die);
++
++  dw_die_ref old_type_die = get_AT_ref (old_die, DW_AT_type);
++
++  return type_die != old_type_die;
++}
++
+ /* Generate a DIE to represent a declared data object.
+    Either DECL or ORIGIN must be non-null.  */
+ 
+@@ -23957,7 +23985,9 @@ gen_variable_die (tree decl, tree origin
+ 	  && !DECL_ABSTRACT_P (decl_or_origin)
+ 	  && variably_modified_type_p (TREE_TYPE (decl_or_origin),
+ 				       decl_function_context
+-							(decl_or_origin))))
++				       (decl_or_origin)))
++      || (old_die && specialization_p
++	  && override_type_for_decl_p (decl_or_origin, old_die, context_die)))
+     {
+       tree type = TREE_TYPE (decl_or_origin);
+ 

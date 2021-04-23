@@ -1,0 +1,6 @@
+<package name="perl-Algorithm-CheckDigits" project="openSUSE:Factory">
+  <title>Perl extension to generate and test check digits</title>
+  <description>Perl extension to generate and test check digits</description>
+  <devel project="devel:languages:perl" package="perl-Algorithm-CheckDigits"/>
+  <url>http://search.cpan.org/perldoc?Algorithm::CheckDigits</url>
+</package>

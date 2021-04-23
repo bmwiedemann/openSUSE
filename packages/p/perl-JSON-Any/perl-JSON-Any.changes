@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Sun Jun 14 08:15:38 UTC 2015 - coolo@suse.com
+
+- updated to 1.39
+   see /usr/share/doc/packages/perl-JSON-Any/Changes
+
+  1.39      2015-06-10 04:37:49Z
+      - mark this distribution as deprecated in metadata
+      - drop dependency on namespace::clean
+
+-------------------------------------------------------------------
+Mon Apr 13 19:30:04 UTC 2015 - coolo@suse.com
+
+- updated to 1.38
+   see /usr/share/doc/packages/perl-JSON-Any/Changes
+
+-------------------------------------------------------------------
+Tue Nov 26 07:34:04 UTC 2013 - coolo@suse.com
+
+- updated to 1.32
+   Include dep Test::Requires in dist.ini 
+   bump minimum version requirement for JSON.pm 
+
+   fix the tests to properly exclude JSON::XS
+
+   A bug came up where JSON::XS and JSON.pm had incompatible revisions
+   but installed just fine. This was a problem because JSON.pm will
+   silently load JSON::XS in the background and caused explosions.
+
+   We now try to exclude JSON::XS except in the case we're actually
+   testing it directly.
+
+   Also we've removed some of the tests for JSON::Syck as it's been
+   deprecated. We also add in tests for Cpanel::JSON::XS which got
+   missed when it was added as a choice. 
+
+   JSON::XS 3.x is incompatible with JSON.pm < 2.90 in the exact way
+   that JSON::Any uses things in the test suite.
+
+-------------------------------------------------------------------
+Fri Jul 26 05:42:06 UTC 2013 - coolo@suse.com
+
+- updated to 1.30
+    * Add support for Cpanel::JSON::XS and JSON::PP. Fixes RT#85424 & RT#67967. (perigrin)
+    * Fix documentation bug RT#86065.
+
+-------------------------------------------------------------------
+Wed Jun 08 23:54:08 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 1.29:
+  * artificially bump our version number because an upstream author decided to
+    not play nice, fixes RT#68690
+- changes from 1.23:
+  * support JSON v1.15 as well as 2.x
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:08 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:20 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Sun Nov 28 11:37:51 UTC 2010 - coolo@novell.com
+
+- remove .packlist file
+
+-------------------------------------------------------------------
+Sun Jul 25 00:00:00 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.22
+
+-------------------------------------------------------------------
+Thu Apr  9 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.19
+- spec file pimping
+
+-------------------------------------------------------------------
+Sun Oct 26 00:00:00 UTC 2008 - gerrit.beine@gmx.de
+
+- first release 1.17
+
+

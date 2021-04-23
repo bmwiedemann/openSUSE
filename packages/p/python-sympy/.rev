@@ -1,0 +1,232 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>acb18ce9950dd5fceb3918d16b74aad9</srcmd5>
+    <version>0.7.1</version>
+    <time>1336471840</time>
+    <user>coolo</user>
+    <comment>sympy is arguably one of the most important scientific/mathematics python packages, along with numpy, scipy, and matplotlib.  It allows python to do symbolic mathematics (i.e. computer algebra) in a similar manner to mathematica and maple.  
+
+Note: resubmit with fixed license</comment>
+    <requestid>116372</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3fec3fe0cb9e612cc6c70f201ef94a9c</srcmd5>
+    <version>0.7.1</version>
+    <time>1338528183</time>
+    <user>coolo</user>
+    <comment>fix build for SLE-11  (forwarded request 123024 from TheBlackCat)</comment>
+    <requestid>123025</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3fec3fe0cb9e612cc6c70f201ef94a9c</srcmd5>
+    <version>0.7.1</version>
+    <time>1340184095</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>64c6492e360303b52021a68519b65ec5</srcmd5>
+    <version>0.7.1</version>
+    <time>1357238452</time>
+    <user>namtrac</user>
+    <comment>Fix building on SLES 11 (forwarded request 146918 from TheBlackCat)</comment>
+    <requestid>146921</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>64c6492e360303b52021a68519b65ec5</srcmd5>
+    <version>0.7.1</version>
+    <time>1359110129</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>914dad6e131b20fd61580cdca45b2cf8</srcmd5>
+    <version>0.7.2</version>
+    <time>1362999982</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157740</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>86482670b434939706ccb38b1a0a17fc</srcmd5>
+    <version>0.7.2</version>
+    <time>1371650266</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>180023</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>86482670b434939706ccb38b1a0a17fc</srcmd5>
+    <version>0.7.2</version>
+    <time>1379664295</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c5ac8c1b60b4b30d73241e5b70c988ac</srcmd5>
+    <version>0.7.3</version>
+    <time>1380218351</time>
+    <user>coolo</user>
+    <comment>- Update to version 0.7.3:
+  + See https://github.com/sympy/sympy/wiki/Release-Notes-for-0.7.3
+- Use update-alternatives for binaries / man-pages</comment>
+    <requestid>200655</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>abb400901b73e6f0b21b750fe772e2f4</srcmd5>
+    <version>0.7.4.1</version>
+    <time>1390430354</time>
+    <user>coolo</user>
+    <comment>update to latest version (forwarded request 213550 from apersaud)</comment>
+    <requestid>213685</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bc2acc333b5e4aece8d8f8986b72382d</srcmd5>
+    <version>0.7.5</version>
+    <time>1394392828</time>
+    <user>coolo</user>
+    <comment>update to latest version (forwarded request 224934 from apersaud)</comment>
+    <requestid>225019</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>bc2acc333b5e4aece8d8f8986b72382d</srcmd5>
+    <version>0.7.5</version>
+    <time>1409303001</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>892c92e1d46705871ce964649dec378e</srcmd5>
+    <version>0.7.5</version>
+    <time>1416347109</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>261628</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>40ceb75f10946adf49cee879898c25da</srcmd5>
+    <version>0.7.6</version>
+    <time>1444285442</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>309845</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>54a2271b0df31ace4862183a7227e703</srcmd5>
+    <version>1.1.1</version>
+    <time>1503925851</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>517189</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>055c037fadacae247848c85273c64d92</srcmd5>
+    <version>1.1.1</version>
+    <time>1511274591</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541761</requestid>
+  </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>9d2e846a188bbe97a685d40979061d1d</srcmd5>
+    <version>1.1.1</version>
+    <time>1512041565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544340</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ff639701c5d46da0d0b4a2f5fb97beb2</srcmd5>
+    <version>1.3</version>
+    <time>1537264224</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>636251</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>a35bf6ab28d59175d55711307de53a30</srcmd5>
+    <version>1.3</version>
+    <time>1538672549</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>639909</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>205f1ad85454c15cb7ba9e0af7f6fe7b</srcmd5>
+    <version>1.3</version>
+    <time>1540988081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>645346</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4e94a798b99d049613b151f5630b378c</srcmd5>
+    <version>1.4</version>
+    <time>1555588717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695448</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>128b2e99bbf97630dad5c015f2c0d2c9</srcmd5>
+    <version>1.5.1</version>
+    <time>1579101448</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764610</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>19d74e9df4218927a2451c3866903079</srcmd5>
+    <version>1.6</version>
+    <time>1593606448</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 1.6
+  + Backwards compatibility breaks and deprecations
+    &gt; assumptions
+      * Removed deprecated Q.bounded (use Q.finite instead). Deprecated since version 1.0 (issue: #9425) (#18390 by @Smit-create)
+      * Removed deprecated Q.infinitesimal (use Q.zero instead). Deprecated since version 1.0 (issue: #9675) (#18390 by @Smit-create)
+      * Removed deprecated Q.infinity (use Q.infinte instead). Deprecated since version 1.0 (issue: #9426) (#18390 by @Smit-create)
+    &gt; calculus
+      * Deprecated evaluate argument in differentiate_finite for making non-conservative finite differences. (#17881 by @vezeli)
+    &gt; combinatorics
+      * Using Permutation.print_cyclic will raise deprecation warnings (#18033 by @oscarbenjamin, @souravgl0, and @sylee957)
+    &gt; core
+      * Deprecated sympify automatically converting custom objects with __str__ or __repr__ implemented. (#19006 by @sylee957)
+      * BREAKING CHANGE: Basic.has no longer accepts strings as input. For example in SymPy 1.5 you could do Symbol('x').has('x') and the string 'x' passed to has would be sympified to a symbol so that the result would be True. In SymPy 1.6 this will raise an error because the string 'x' can not be sympified using strict sympification. (#19251 by @oscarbenjamin)
+      * Remove deprecated bounded, unbounded and infinitesimal. Deprecated since version 0.7.6 (issue #8071) (#18503 by @Smit-create)
+      * Relational is no longer a subclass of Expr and does not produce nonsensical results in arithmetic operations. This affects all Relational subclasses (Eq, Ne, Gt, Ge, Lt, Le). It is no longer possible to call meaningless Expr methods like as_coeff_Mul on Relational instances. (#18053 by @oscarbenjamin)
+      * Expr now uses cooperative dispatch for binary operations so it is possible for non-Expr Basic subclasses to override the behaviour of e.g. a + b where one of a or b is an instance of Expr. This also means that any non-Expr Basic subclasses can not depend on Expr.__add__ to create Add(a, b): if a class is not a subclass of Expr and wants to define binary operations with Expr it must do so explicitly in its own __add__ method. For classes depending on this this is not a backward compatible change. (#18116 by @oscarbenjamin)
+    &gt; matrices
+      * The Matrix.is_zero property has been renamed to Matrix.is_zero_matrix.
+      * Matrix.is_zero is now always False. This is because in general is_zero means the number zero so a matrix can never be zero.
+    &gt; To get the old behavior of M.is_zero in both old and new versions of sympy use from sympy.core.logic import fuzzy_and; fuzzy_and(m.is_zero for m in M). (#18464 by @sylee957)
+    &gt; polys
+      * BREAKING CHANGE: Poly and PurePoly now subclass Basic rather than Expr. This means that they no longer have various Expr methods such as expand that do not make sense for Poly. Use as_expr to convert the Poly to an Expr before using Expr methods. (#18613 by @oscarbenjamin)
+      * BREAKING CHANGE: Poly instances with different domains now always compare unequal with p1 == p2 and p1.eq(p2). Previously Poly instances that had the same expression and generators would compare equal even if the domains were different. In some cases it might be necessary to specify the domain when comparing e.g. if p == Poly(x, x, domain='QQ'). (#18613 by @oscarbenjamin)
+      * DEPRECATION: Mixing Poly with non-polynomial Expr in binary operations is now deprecated. For example Poly(x, x) * exp(x) will give a deprecation warning but still return the Expr x*exp(x) as before. If the Expr can be converted to Poly (e.g. Poly(x, x) * x) then a Poly will be returned. To get an Expr always use the as_expr method first to convert the Poly to an Expr. To get a Poly always use as_poly to convert the Expr to a Poly. (#18613 by @oscarbenjamin)
+      * DEPRECATION: Passing Poly as the integrand to the integrate function or Integral class is now deprecated. Use the integrate method instead e.g. Poly(x, x).integrate(x) (#18613 by @oscarbenjamin)
+    &gt; printing
+      * Removed deprecated Ccodeprinter (Use C89Printer or C99Printer instead). Deprecated since version 1.1 (Issue : #12220). (#18392 by @risubaba)
+      * Removed deprecated file viewer option in preview. Deprecated since version 0.7.3(Issue: #7018) (#18392 by @risubaba)
+      * Removed deprecated StringIO viewer option in preview. Deprecated since version 0.7.2(Issue: #7083) (#18392 by @risubaba)
+    &gt; sets</comment>
+    <requestid>818062</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c55472ad646eb5b2af8135b80ee13ef3</srcmd5>
+    <version>1.6.2</version>
+    <time>1600278119</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.2:
+  * bugfixes</comment>
+    <requestid>834887</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0cacd6bb4f6e040db5e2d1c1b6c3cf8e</srcmd5>
+    <version>1.7.1</version>
+    <time>1611668809</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>866693</requestid>
+  </revision>
+</revisionlist>

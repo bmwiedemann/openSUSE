@@ -1,0 +1,26 @@
+<package name="perl-Digest-Perl-MD5" project="openSUSE:Factory">
+  <title>Perl implementation of Ron Rivests MD5 Algorithm</title>
+  <description>This modules has the same interface as the much faster 'Digest::MD5'. So
+you can easily exchange them, e.g.
+
+	BEGIN {
+	  eval {
+	    require Digest::MD5;
+	    import Digest::MD5 'md5_hex'
+	  };
+	  if ($@) { # ups, no Digest::MD5
+	    require Digest::Perl::MD5;
+	    import Digest::Perl::MD5 'md5_hex'
+	  }		
+	}
+
+If the 'Digest::MD5' module is available it is used and if not you take
+'Digest::Perl::MD5'.
+
+You can also install the Perl part of Digest::MD5 together with
+Digest::Perl::MD5 and use Digest::MD5 as normal, it falls back to
+Digest::Perl::MD5 if it cannot load its object files.
+
+For a detailed Documentation see the 'Digest::MD5' module.</description>
+  <devel project="devel:languages:perl" package="perl-Digest-Perl-MD5"/>
+</package>

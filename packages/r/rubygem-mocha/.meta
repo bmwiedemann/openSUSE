@@ -1,0 +1,12 @@
+<package name="rubygem-mocha" project="openSUSE:Factory">
+  <title>A library for mocking and stubbing using a syntax like that of JMock</title>
+  <description>Mocha is a library for mocking and stubbing using a syntax like that of JMock.
+
+It can be used with many testing frameworks e.g. Test::Unit, RSpec, test/spec,
+expectations, Dust, MiniTest and even JtestR.
+
+Mocha provides a unified, simple and readable syntax for both traditional
+mocking and partial mocking.</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-mocha"/>
+  <url>http://mocha.rubyforge.org/</url>
+</package>

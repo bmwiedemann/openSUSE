@@ -1,0 +1,49 @@
+-------------------------------------------------------------------
+Sat Apr 29 19:30:23 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 6.10
+  * C codegen: test P vs PE in goto/call/ret statements in EOF
+    actions, just before re-entering. If at the end of the input
+    block then the EOF check is jumped to. This change prevents
+    overrunning the buffer if control flow is issued in an EOF
+    action without fixing the input pointer first. If a program
+    properly issues an fhold before the control flow the program
+    won't be affected.
+  * Updated action label generation. The previous set of
+    conditions for generating the label didn't cover actions
+    coming from the eofAction pointer (eof trans covered since it
+    points into the set of transitions).
+  * Use separate signed/unsigned values for host type min/max.
+    Using separate values avoids the need to type cast before the
+    data goes into FsmCtx structs. Keep it in native types until
+    it is used.
+  * Optionally do not generate entry point variables. Adds
+    noentry write option for data.
+
+-------------------------------------------------------------------
+Sat Mar 18 22:44:33 UTC 2017 - jengelh@inai.de
+
+- Fork last 6.x state into ragel-6.spec.
+
+-------------------------------------------------------------------
+Sun Mar 15 17:04:03 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 6.9
+  * updated command-line synopsis
+  * ocaml: fix missing semicolon
+  * ocaml: support -G1
+  * ocaml: choose a unique name for type state
+  * ruby: reduce the amount of calls to GET_WIDE_KEY()
+  * union test case: warning fix
+  * omit line directives around expression-oriented write statements
+  * use AS_IF and test command to check if the DIST file is present
+  * added missing std:: using
+  * go: added '//line' directive support
+- Add gpg signature and project keyring fof gpg verification
+- Remove 0001-explicit-methods-inherited-from-base-templates.patch;
+  merged on upstream release
+
+-------------------------------------------------------------------
+Fri Nov 16 17:31:27 UTC 2012 - jengelh@inai.de
+
+- Initial package (version 6.7) for build.opensuse.org

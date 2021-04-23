@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>850385f8d6c8dd789b0fef2d4848fe8e</srcmd5>
+    <version>1.6.9</version>
+    <time>1307457787</time>
+    <user>saschpe</user>
+    <comment>Copy from server:dns/ldns based on submit request 71311 from user dec16180
+</comment>
+    <requestid>71311</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>850385f8d6c8dd789b0fef2d4848fe8e</srcmd5>
+    <version>1.6.9</version>
+    <time>1319182066</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>56105e99a2535fe72ab889f9aa15317d</srcmd5>
+    <version>1.6.11</version>
+    <time>1323869626</time>
+    <user>coolo</user>
+    <comment>- new version 1.6.11
+  * new ldnsx python module
+  * fix heap overflow (bnc#720277, CVE-2011-3581)</comment>
+    <requestid>95239</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>25f747ed6c9d08795c3ada694ba04518</srcmd5>
+    <version>1.6.11</version>
+    <time>1329242504</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>104272</requestid>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>25f747ed6c9d08795c3ada694ba04518</srcmd5>
+    <version>1.6.11</version>
+    <time>1340183549</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>25f747ed6c9d08795c3ada694ba04518</srcmd5>
+    <version>1.6.11</version>
+    <time>1359109222</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6964ab26df5a3cbb706abaabcef3ca73</srcmd5>
+    <version>1.6.16</version>
+    <time>1366289954</time>
+    <user>coolo</user>
+    <comment>Fix tar archive problem</comment>
+    <requestid>171367</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6964ab26df5a3cbb706abaabcef3ca73</srcmd5>
+    <version>1.6.16</version>
+    <time>1379662864</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7d7accdbc55f179d3c0cc4254fe858a4</srcmd5>
+    <version>1.6.17</version>
+    <time>1402058188</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>236338</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>7d7accdbc55f179d3c0cc4254fe858a4</srcmd5>
+    <version>1.6.17</version>
+    <time>1409301466</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>56ff1a7f47f9b38379316b68a6dadbfe</srcmd5>
+    <version>1.6.17</version>
+    <time>1441296176</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>328336</requestid>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>48944c5ed05a96c07a69260006d1b7fd</srcmd5>
+    <version>1.6.17</version>
+    <time>1464014174</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>396540</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0a37e5db380f2579de2746ea46eedcc0</srcmd5>
+    <version>1.7.0</version>
+    <time>1511688890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542906</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b1e463d96b28b5b006c1d91bbade94d4</srcmd5>
+    <version>1.7.0</version>
+    <time>1516091449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>562480</requestid>
+  </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>09042a952ec9753c32307b51a4aed69e</srcmd5>
+    <version>1.7.0</version>
+    <time>1560457962</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>708388</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2051198a9e8f56aa0f50e2f9034a4890</srcmd5>
+    <version>1.7.1</version>
+    <time>1565962140</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>723051</requestid>
+  </revision>
+</revisionlist>

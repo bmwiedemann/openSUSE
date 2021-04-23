@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>844471b09d625652ae046fed3b67c82e</srcmd5>
+    <version>3.6.0</version>
+    <time>1555321940</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial spec for v3.6.0
+</comment>
+    <requestid>693643</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8904a38f24052784c2c753945dc1d176</srcmd5>
+    <version>3.6.0</version>
+    <time>1559029372</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>705620</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9ab73e5aa0bf594bc42d92fdd30e61a5</srcmd5>
+    <version>3.6.0</version>
+    <time>1570557476</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable py2 build as it is unresolvable</comment>
+    <requestid>735851</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5592d4b9bb51e41391b6e3c918c9f17d</srcmd5>
+    <version>4.1.0</version>
+    <time>1586248084</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0:
+  * Expiry format now defaults to whatever is used Django REST framework
+  * The behavior can be overriden via EXPIRY_DATETIME_FORMAT setting
+  * Fully customizable expiry format via format_expiry_datetime
+  * Fully customizable response payload via get_post_response_data
+  * Changes have been made to the create() method on the AuthToken model.
+    It now returns the model instance and the raw token instead of just
+    the token to allow the expiry field to be included in the success response.</comment>
+    <requestid>791487</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ed8faf5a82f613386837a1e672fc21e8</srcmd5>
+    <version>4.1.0</version>
+    <time>1588105917</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to build with Django 3.x:
+  * django3.patch</comment>
+    <requestid>798611</requestid>
+  </revision>
+</revisionlist>

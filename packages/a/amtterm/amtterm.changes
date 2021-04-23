@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Mon Jul 23 13:31:44 UTC 2018 - mchandras@suse.de
+
+- Version bump to 1.6. Some of the changes are
+  * move wsman stuff
+  * switch to vte 2.91
+  * fix version
+  * Add note about AMT 9.0
+  * switch over to use gtk3
+- Remove patches which have made it upstream
+  * amtterm-fix-version.patch
+  * amtterm-fixup-indentation.patch
+  * amtterm-git0ece513.patch
+  * amtterm-gtk3.patch
+  * amtterm-note-about-amt90.patch
+  * amtterm-wsman-password.patch
+  * amtterm-wsman.patch
+- spec-cleaner fixes
+- Split graphical UI to a separate subpackage
+
+-------------------------------------------------------------------
+Tue Aug  2 14:26:28 CEST 2016 - tiwai@suse.de
+
+- Update to 1.4:
+  including the support code 0x29 encountered in redirection
+- Deprecate amtterm-git0ece513.patch
+- Replace amtterm-gtk3 with the upstream patch amtterm-gtk3.patch
+- Backported from the upstream git repo for minor fixes
+  amtterm-note-about-amt90.patch
+  amtterm-fix-version.patch
+  amtterm-fixup-indentation.patch
+- Backported from the upstream git repo to add amttool-wsman:
+  amtterm-wsman.patch
+  amtterm-wsman-password.patch
+- Clean up spec file, fix builds with SLE11-SP4 and
+  openSUSE-Leap-42.1
+
+-------------------------------------------------------------------
+Sun Apr 19 19:40:25 UTC 2015 - plinnell@opensuse.org
+
+- fix license tag
+
+-------------------------------------------------------------------
+Fri Apr 17 08:26:57 UTC 2015 - kkaempf@suse.com
+
+- Don't build gamt for openSUSE > 13.1, incompatible vte api.
+
+-------------------------------------------------------------------
+Thu Oct  3 23:16:08 UTC 2013 - sreeves@suse.com
+
+- Add amtterm-git0ece513.patch. (Upstream git commits)
+      * Decode 0x29 message
+      * git release - also push tage
+
+-------------------------------------------------------------------
+Sat May 12 06:01:44 UTC 2012 - mrdocs@opensuse.org
+
+- put the BuildRequires in the right place 
+
+-------------------------------------------------------------------
+Fri May 11 18:49:58 UTC 2012 - mrdocs@opensuse.org
+
+- add vte-devel to fix build on Factory
+-------------------------------------------------------------------
+Fri May 11 18:18:02 UTC 2012 - mrdocs@opensuse.org
+
+- run spec-cleaner on spec file
+
+-------------------------------------------------------------------
+Thu May 10 18:00:07 UTC 2012 - jeffm@suse.com
+
+- Update to 1.3
+  - Patched to use GTK3.
+
+-------------------------------------------------------------------
+Wed Dec 23 11:52:55 CET 2009 - bernhard@bwalle.de
+
+- Update to 1.2
+
+-------------------------------------------------------------------
+Sat Nov  8 16:49:01 CET 2008 - bwalle@suse.de
+
+- Update to 1.1
+
+-------------------------------------------------------------------
+Fri Jan 11 16:49:19 CET 2008 - bwalle@suse.de
+
+- initial SUSE package
+
+-------------------------------------------------------------------

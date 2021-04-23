@@ -1,0 +1,6 @@
+<package name="perl-Term-Size-Any" project="openSUSE:Factory">
+  <title>Retrieve terminal size</title>
+  <description>This is a unified interface to retrieve terminal size. It loads one module of a list of known alternatives, each implementing some way to get the desired terminal information. This loaded module will actually do the job on behalf of 'Term::Size::Any'. Thus, 'Term::Size::Any' depends on the availability of one of these modules: Term::Size (soon to be supported), Term::Size::Perl, Term::Size::ReadKey (soon to be supported) or Term::Size::Win32  This release fallbacks to Term::Size::Win32 if running in Windows 32 systems. For other platforms, it uses the first of Term::Size::Perl, Term::Size or Term::Size::ReadKey which loads successfully. (To be honest, I disabled the fallback to Term::Size and Term::Size::ReadKey which are buggy by now.)</description>
+  <devel project="devel:languages:perl" package="perl-Term-Size-Any"/>
+  <url>https://metacpan.org/release/Term-Size-Any</url>
+</package>

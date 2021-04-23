@@ -1,0 +1,7 @@
+<package name="perl-HTTP-Body" project="openSUSE:Factory">
+  <title>HTTP Body Parser</title>
+  <description>HTTP::Body parses chunks of HTTP POST data and supports application/octet-
+stream, application/x-www-form-urlencoded, and multipart/form-data.</description>
+  <devel project="devel:languages:perl" package="perl-HTTP-Body"/>
+  <url>http://search.cpan.org/dist/HTTP-Body/</url>
+</package>

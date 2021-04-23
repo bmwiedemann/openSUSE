@@ -1,0 +1,275 @@
+-------------------------------------------------------------------
+Tue Jan 26 08:52:39 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.6.0:
+  * UPDATED: Update CMakeLists.txt for Universal Binary
+  * CHANGED: Reformat comment
+  * UPDATED: Apply astyle to all files
+  * FIXED: Fix style issue with ODT output format
+  * FIXED: Improve README install path
+  * FIXED: Re-enable token object pools in default configuration
+  * version bump
+  * UPDATED: Restructure source code organization; Restructure Cmake configuration file; restructure Makefile
+  * version bump
+  * ADDED: Add additional blockquote tests
+  * FIXED: Fix issue when parsing blockquote that contains raw HTML
+  * FIXED: Don't free NULL link
+  * FIXED: Fix regression
+  * FIXED: Improve blockquote parser
+  * FIXED: Add latex footer to beamer output format (fixes #185)
+  * FIXED: Fix test suite
+  * FIXED: Prevent iOS Safari from bastardizing left arrow unicode character with an ugly emoji
+  * FIXED: Allow hyphen in image/link unquoted attributes
+  * ADDED: Add format to create HTML with storing of assets
+  * FIXED: Fix issue with tight list where last item has multiple paragraphs not being recognized as a loose list
+  * FIXED: Fix CMake issue
+  * FIXED: tweak CriticMarkup highlight handling
+  * version bump
+  * FIXED: Update cpack generator for macOS
+  * Fix fsf address in files licenses.
+  * FIXED: Fix memory leak in ITMZ reader
+  * UPDATED: Adjust cmake to only make library when included from a parent project
+  * FIXED: Don't use undefined version string
+
+-------------------------------------------------------------------
+Thu Feb  6 12:28:22 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.5.1:
+  * FIXED: Fix README version
+  * version bump
+  * FIXED: Fix error when pruning tokens
+  * FIXED: Fix array overflow with wide tables
+  * FIXED: Fix tests
+  * FIXED: Fix null dereference
+  * FIXED: Fix memory leak
+  * FIXED: Fix null dereference
+  * FIXED: Fix edge case in fenced code blocks
+  * FIXED: Use more definitive edge case fix
+  * FIXED: Fix metadata edge case
+  * FIXED: Fix typos
+  * FIXED: Ensure use of bash for creating AllTests.c
+  * FIXED: Fix edge case in block parsing
+  * FIXED: Fix edge case error in definition lists
+  * UPDATED: Shorten hash function for compiling speed since we are hashing shorter strings
+  * FIXED: Fix name mismatch of mmd6-default-metadata (Addresses #173)
+  * UPDATED: Update notes source text
+  * version bump; copyright bump
+  * FIXED: Fix test suite for new captions
+  * ADDED: Add title as short caption for figures and tables to be used in list of figures and list of tables.  Addresses #177 -- thanks, 	MArpogaus
+  * FIXED: Fix memory leak (#172) -- thanks Alfons
+  * UPDATED: Update cmake for xcode 11
+  * UPDATED: Tweak smart quote rules to avoid false positive matches when using double quote as inches mark
+  * FIXED: Fix two small potential errors
+  * UPDATED: Make astyle
+  * FIXED: Fix edge case with single item loose lists (fixes #174)
+  * FIXED: Update README template
+  * Fixes to README
+  * Revert "remove build folder"
+  * remove build folder
+  * update README with instructions for Xcode
+  * FIXED: Fix regression
+  * ADDED: Add ASCII case detection
+  * UPDATED: Refactor header file inclusion
+  * UPDATED: Tidy code
+  * FIXED: Fix potential errors related to checking for metadata
+  * FIXED: Improve efficiency when checking for existence of metadata
+  * FIXED: Fix potential memory address error
+  * FIXED: Allow building libMMD has a child project for testing
+  * FIXED: Fix length of metadata if no trailing line ending
+  * UPDATED: Tidy code
+  * UPDATED: Tidy code
+  * FIXED: Improve BOM stripping
+  * UPDATED: reduce false-positive rate of metadata where first line contains colon but metadata is not intended
+  * UPDATED: Automatically disable libCurl on iOS
+  * UPDATED: remove reliance on version.h when testing
+  * UPDATED: Remove debug statement
+  * UPDATED: Add UTF-8 validity check function
+  * UPDATED: Fix main() when token pools disabled
+  * UPDATED: Update char.c
+  * UPDATED: Remove some old debugging statements that aren't necessary anymore
+  * FIXED: Fix filename
+  * UPDATED: Additional README comments about Xcode
+  * add how to build Xcode framework to README
+  * FIXED: Fix trim trailing whitespace
+  * UPDATED: Update astyle
+  * UPDATED: Add MARKUP token type
+  * UPDATED: Update astyle settings
+  * FIXED: Fix potential issue in d_string
+  * FIXED: Fix potential issue in d_string
+  * UPDATED: Remove i386 build architecture from default configuration
+  * ADDED: Add {{TOC:1}} and {{TOC:1-2}} options
+  * UPDATED: Silence warnings
+  * UPDATED: Apply astyle
+  * FIXED: Fix potential bug when reading OPML/ITMZ
+  * FIXED: Update Quick Start PDF
+  * FIXED: Clean up Quick Start guide
+  * FIXED: Update Quick Start PDF
+  * FIXED: Fix prior bad edits to quick start guide
+  * FIXED: Fix warning
+  * FIXED: Fix handling of hebrew language option
+  * UPDATED: Fix doxygen template
+  * UPDATED: Update advanced headers test suite
+  * ADDED: Add support for random header labels when not manually specified (Addresses #157)
+  * FIXED: Prevent line breaks in HTML/ODF attributes
+  * UPDATED: table id attribute should be on table not caption
+  * FIXED: Fix whitespace issues with headers with manual labels
+  * FIXED: Include .html for EPUB and .fodt for ODT when transcluding with wildcard extension
+  * UPDATED: Silence some Xcode warnings
+  * FIXED: Fix pointer dereference (fixes #152)
+  * UPDATED: Change convenience scripts for better POSIX compliance (implements #150) (Thanks, Ryan)
+  * UPDATED: Apply astyle
+  * FIXED: Ensure newline at end of header contents when importing from OPML/ITMZ
+  * FIXED: Fix CMake config for MacPorts (fixes #146)
+  * FIXED: Fix letterhead reference to memoir-footer. (Fixes #143)
+  * FIXED: Use C11 (had old C99 as well, but I suspect that wasn't actually used
+  * FIXED: Fix PATH in convenience scripts
+  * FIXED: Fix bugs in new zip extraction code
+  * Update mmd6-letterhead-leader.tex
+  * FIXED: Add byte for null terminator when extracting from zip archive
+  * FIXED: Update re2c scanners and prevent crash on certain documents with unexpected encoding
+  * ADDED: Add conversion from ITMZ routines
+  * UPDATED: Refactor XML parsing; improve OPML reading; add ITMZ (iThoughts) reading/writing (experimental feature); a few other small tweaks
+  * UPDATED: Update macOS deployment version to 10.6 for Mojave
+  * UPDATED: Don't require opening <?xml> in OPML
+  * UPDATED: Apply astyle
+  * UPDATED: Add OPML routines to libMultiMarkdown.h
+  * UPDATED: Update d_string
+
+-------------------------------------------------------------------
+Tue Nov  5 13:23:24 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Use modern macro for cmake
+
+-------------------------------------------------------------------
+Thu Oct 17 12:24:58 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Wed Mar  6 09:29:20 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.4.0:
+  * version bump
+  * FIXED: Fix token length in OPML
+  * UPDATED: Allow '\' to preserve line break in metadata.  (Addresses #86)
+  * FIXED: Prevent potential null dereference
+  * Avoid potential error with stack_free
+  * FIXED: Use Setext headers when necessary to convert from OPML to text (fixes #138)
+  * UPDATED: Apply astyle
+  * ADDED: Add opml option to read for MultiMarkdown OPML files
+  * UPDATED: Adjust metadata for test files
+  * FIXED: Trim single remaining whitespace when exporting headers
+
+-------------------------------------------------------------------
+Thu Mar  8 15:13:19 UTC 2018 - mpluskal@suse.com
+
+- Update to version 6.3.0:
+  * version bump
+  * UPDATED: Apply astyle to source
+  * UPDATED: Remove deprecated fodt.c and fodt.h
+  * FIXED: Fix issue with list bullets in fenced code blocks
+  * FIXED: Fix typo in QuickStart.txt (fixes #111)
+  * Fix encoding of some markup inside LaTeX texttt environment (fixes #110 and #108)
+  * UPDATED: Update dates
+  * UPDATED: Add test suite to d_string
+  * FIXED: Fix edge case with superscripts and punctuation
+
+-------------------------------------------------------------------
+Thu Dec  7 13:40:29 UTC 2017 - mpluskal@suse.com
+
+- Update to version 6.2.3:
+  * version bump
+  * FIXED: Fix potential NULL pointer dereference
+  * FIXED: Fix bug with multiple footnotes in single paragraph when exporting to LaTeX
+  * CHANGED: Update superscript/subscript algorithm to allow leading instances
+  * UPDATED: Refactor file utilities into file.c/h
+  * FIXED: Prevent pointer overflow
+  * UPDATED: Silence Xcode static analyzer false positives
+  * FIXED: Fix potential bug
+  * FIXED: Fix potential bug
+  * UPDATED: Fix issue with AStyle indent settings
+
+-------------------------------------------------------------------
+Wed Nov 15 16:30:29 UTC 2017 - mpluskal@suse.com
+
+- Update dependencies
+
+-------------------------------------------------------------------
+Fri Nov  3 09:25:51 UTC 2017 - mpluskal@suse.com
+
+- Conflict with MultiMarkdown-5
+- Provide virtual package markdown
+
+-------------------------------------------------------------------
+Thu Oct 19 13:37:22 UTC 2017 - mpluskal@suse.com
+
+- New package MultiMarkdown-6 based on MultiMarkdown-5
+
+-------------------------------------------------------------------
+Thu Jun 22 14:10:24 UTC 2017 - mpluskal@suse.com
+
+- Enable tests
+- Update alernatives handling according to current guidelines
+
+-------------------------------------------------------------------
+Fri Oct 28 13:30:26 UTC 2016 - mpluskal@suse.com
+
+- Fix typo and add more comments
+
+-------------------------------------------------------------------
+Tue Oct 18 06:55:11 UTC 2016 - mpluskal@suse.com
+
+- Use update alternatives to allow parallel installation with discount
+- Avoid conflict with mtools
+
+-------------------------------------------------------------------
+Sun Oct 16 08:18:28 UTC 2016 - mpluskal@suse.com
+
+- Update to version 5.4.0:
+  * Improve accuracy and performance of strong/emph
+  * CHANGED: Update greg
+  * 5.3.0
+  * CHANGED: Update README
+  * ADDED: Move static library options to separate make target
+  * FIXED: Fix crash with empty table label
+  * ADDED: Add email address to cpack settings (addresses #31)
+  * CHANGED: Increase list of syntax structures that are evaluated for abbreviations (Thanks, David!)
+  * FIXED: Avoids problem mentioned on github (#30), but doesn't actually solve it. Any help appreciated!
+  * version bump 5.4.0
+
+-------------------------------------------------------------------
+Sat Jul 09 16:58:27 UTC 2016 - mpluskal@suse.com
+
+- Update to version 5.3.0:
+  * FIXED: Don't allow math spans inside strong/emph
+  * FIXED: Fix slow parsing of complex strong/emph (Fixes #18)
+  * CHANGED: Update test suite
+  * FIXED: Improve performance; FIXED: Fix additional edge case in emph/strong parser
+  * Improve accuracy and performance of strong/emph
+  * CHANGED: Update greg
+  * 5.3.0
+
+-------------------------------------------------------------------
+Wed Jul 06 19:28:15 UTC 2016 - mpluskal@suse.com
+
+- Fix building on linux (needs static glibc and -D_GNU_SOURCE)
+
+-------------------------------------------------------------------
+Sun May 01 10:57:35 UTC 2016 - mpluskal@suse.com
+
+- Update to version 5.2.0:
+  * ADDED: Add support for 'HTML FOOTER' metadata -- appended at very end of HTML documents (after footnotes)
+  * CHANGED: Update documentation for HTML Footer metadata
+  * CHANGED: Update Math test suite
+  * FIXED: Improve accuracy of strong/emph parsing; CHANGED: Allow nested strong/emph spans (though effect of output is not defined for all formats)
+  * ADDED: Add additional test cases
+  * CHANGED: recursive support for CriticMarkup syntax (e.g. an addition can be included inside a substitution).
+  * FIXED: Remove debugging statement in recent CriticMarkup changes
+  * CHANGED: Update test suite
+  * Version bump 5.2.0
+
+-------------------------------------------------------------------
+Sun May  1 10:42:27 UTC 2016 - mpluskal@suse.com
+
+- Initial package
+

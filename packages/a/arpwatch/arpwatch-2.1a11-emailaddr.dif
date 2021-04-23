@@ -1,0 +1,232 @@
+--- a/addresses.h.in
++++ b/addresses.h.in
+@@ -1,2 +1,4 @@
+ #define WATCHER "root"
+-#define WATCHEE "arpwatch (Arpwatch)"
++#define WATCHEE "root (Arpwatch)"
++extern char *watcher;
++extern char *watchee;
+--- a/arpsnmp.8
++++ b/arpsnmp.8
+@@ -30,6 +30,12 @@ arpsnmp - keep track of ethernet/ip addr
+ ] [
+ .B -f
+ .I datafile
++] [
++.B -e
++.I username
++] [
++.B -s
++.I username
+ ]
+ .I file
+ [
+@@ -60,6 +66,27 @@ Note that an empty
+ file must be created before the first time you run
+ .BR arpsnmp .
+ .LP
++If the
++.B -e 
++flag is used, 
++.B arpsnmp
++sends e-mail messages to
++.I username
++rather than the default (root).
++If a single `-' character is given for the username,
++sending of e-mail is suppressed,
++but logging via syslog is still done as usual.
++(This can be useful during initial runs, to collect data
++without being flooded with messages about new stations.)
++.LP
++If the
++.B -s 
++flag is used, 
++.B arpsnmp
++sends e-mail messages with
++.I username
++as the return address, rather than the default (root).
++.LP
+ .SH "REPORT MESSAGES"
+ (See the
+ .BR arpwatch (1)
+--- a/arpsnmp.c
++++ b/arpsnmp.c
+@@ -59,6 +59,7 @@ static const char rcsid[] =
+ #include "file.h"
+ #include "machdep.h"
+ #include "util.h"
++#include "addresses.h"
+ 
+ /* Forwards */
+ int	main(int, char **);
+@@ -90,7 +91,7 @@ main(int argc, char **argv)
+ 	}
+ 
+ 	opterr = 0;
+-	while ((op = getopt(argc, argv, "df:")) != EOF)
++	while ((op = getopt(argc, argv, "df:e:s:")) != EOF)
+ 		switch (op) {
+ 
+ 		case 'd':
+@@ -105,6 +106,24 @@ main(int argc, char **argv)
+ 			arpfile = optarg;
+ 			break;
+ 
++		case 'e':
++			if ( optarg ) {
++				watcher = strdup(optarg);
++			} else {
++				(void)fprintf(stderr, "%s: Need recipient username/e-mail address after -e\n", prog);
++				usage();
++			}
++			break;
++
++		case 's':
++			if ( optarg ) {
++				watchee = strdup(optarg);
++			} else {
++				(void)fprintf(stderr, "%s: Need sender username/e-mail address after -s\n", prog);
++				usage();
++			}
++			break;
++
+ 		default:
+ 			usage();
+ 		}
+@@ -185,6 +204,6 @@ usage(void)
+ 
+ 	(void)fprintf(stderr, "Version %s\n", version);
+ 	(void)fprintf(stderr,
+-	    "usage: %s [-d] [-f datafile] file [...]\n", prog);
++	    "usage: %s [-d] [-f datafile] [-e username] [-s username] file [...]\n", prog);
+ 	exit(1);
+ }
+--- a/arpwatch.8
++++ b/arpwatch.8
+@@ -46,6 +46,12 @@ arpwatch - keep track of ethernet/ip add
+ ] [
+ .B -u
+ .I username
++] [
++.B -e
++.I username
++] [
++.B -s
++.I username
+ ]
+ .ad
+ .SH DESCRIPTION
+@@ -107,6 +113,27 @@ and group ID to that of the primary grou
+ .IR username .
+ This is recommended for security reasons.
+ .LP
++If the
++.B -e 
++flag is used, 
++.B arpwatch
++sends e-mail messages to
++.I username
++rather than the default (root).
++If a single `-' character is given for the username,
++sending of e-mail is suppressed,
++but logging via syslog is still done as usual.
++(This can be useful during initial runs, to collect data
++without being flooded with messages about new stations.)
++.LP
++If the
++.B -s 
++flag is used, 
++.B arpwatch
++sends e-mail messages with
++.I username
++as the return address, rather than the default (root).
++.LP
+ Note that an empty
+ .I arp.dat
+ file must be created before the first time you run
+--- a/arpwatch.c
++++ b/arpwatch.c
+@@ -85,6 +85,7 @@ struct rtentry;
+ #include "machdep.h"
+ #include "setsignal.h"
+ #include "util.h"
++#include "addresses.h"
+ 
+ /* Some systems don't define these */
+ #ifndef ETHERTYPE_REVARP
+@@ -230,7 +231,7 @@ main(int argc, char **argv)
+ 	interface = NULL;
+ 	rfilename = NULL;
+ 	pd = NULL;
+-	while ((op = getopt(argc, argv, "df:i:n:Nr:u:")) != EOF)
++	while ((op = getopt(argc, argv, "df:i:n:Nr:u:e:s:")) != EOF)
+ 		switch (op) {
+ 
+ 		case 'd':
+@@ -272,6 +273,26 @@ main(int argc, char **argv)
+ 			}
+ 			break;
+ 
++		case 'e':
++			if ( optarg ) {
++				watcher = strdup(optarg);
++			}
++			else {
++				fprintf(stderr, "%s: Need recipient username/e-mail address after -e\n", prog);
++				usage();
++			}
++			break;
++
++		case 's':
++			if ( optarg ) {
++				watchee = strdup(optarg);
++			}
++			else {
++				fprintf(stderr, "%s: Need sender username/e-mail address after -s\n", prog);
++				usage();
++			}
++			break;
++
+ 		default:
+ 			usage();
+ 		}
+@@ -904,6 +925,7 @@ usage(void)
+ 
+ 	(void)fprintf(stderr, "Version %s\n", version);
+ 	(void)fprintf(stderr, "usage: %s [-dN] [-f datafile] [-i interface]"
+-	    " [-n net[/width]] [-r file] [-u username]\n", prog);
++	    " [-n net[/width]] [-r file] [-u username]"
++	    " [-e username] [-s username]\n", prog);
+ 	exit(1);
+ }
+--- a/report.c
++++ b/report.c
+@@ -70,6 +70,9 @@ struct rtentry;
+ 
+ #define PLURAL(n) ((n) == 1 || (n) == -1 ? "" : "s")
+ 
++char *watcher = WATCHER;
++char *watchee = WATCHEE;
++
+ static int cdepth;	/* number of outstanding children */
+ 
+ static char *fmtdate(time_t);
+@@ -240,8 +243,6 @@ report(register char *title, register u_
+ 	register FILE *f;
+ 	char tempfile[64], cpu[64], os[64];
+ 	char *fmt = "%20s: %s\n";
+-	char *watcher = WATCHER;
+-	char *watchee = WATCHEE;
+ 	char *sendmail = PATH_SENDMAIL;
+ 	char *unknown = "<unknown>";
+ 	char buf[132];
+@@ -258,6 +259,9 @@ report(register char *title, register u_
+ 		}
+ 		f = stdout;
+ 		(void)putc('\n', f);
++	} else if (watcher == NULL || *watcher == NULL || *watcher == '-') {
++		dosyslog(LOG_NOTICE, title, a, e1, e2);
++		return;
+ 	} else {
+ 		/* Setup child reaper if we haven't already */
+ 		if (!init) {

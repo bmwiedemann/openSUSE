@@ -1,0 +1,74 @@
+#!/bin/bash
+
+RETVAL=0
+
+initialize() {
+  # Initialize $TYPE tables
+  echo -n $"  $TYPE tables: "
+  if [ -r /etc/sysconfig/ebtables.$TYPE ]; then
+    /usr/sbin/ebtables -t $TYPE --atomic-file /etc/sysconfig/ebtables.$TYPE --atomic-commit > /dev/null || RETVAL=1
+  else
+    echo -n "not configured"
+  fi
+  if [ $RETVAL -eq 0 ]; then
+    echo -n $"[  OK  ]"
+    echo -ne "\r"
+  else
+    echo -n $"[FAILED]"
+    echo -ne "\r"
+  fi
+}
+
+case $1 in
+  start)
+   # Initialize	filter tables
+   TYPE=filter
+   initialize
+ 
+   # Initialize NAT tables
+   echo
+   TYPE=nat
+   initialize
+
+   # Initialize broute tables
+   echo
+   TYPE=broute
+   initialize
+  ;;
+  stop)
+    /usr/sbin/ebtables -t filter --init-table || RETVAL=1
+    /usr/sbin/ebtables -t nat --init-table || RETVAL=1
+    /usr/sbin/ebtables -t broute --init-table || RETVAL=1
+
+    for mod in $(grep -E '^(ebt|ebtable)_' /proc/modules | cut -f1 -d' ') ebtables; do
+       /usr/sbin/rmmod $mod || RETVAL=1
+    done
+
+    if [ $RETVAL -eq 0 ]; then
+      echo -n $"[  OK  ]"
+      echo -ne "\r"
+    else
+      echo -n $"[FAILED]"
+      echo -ne "\r"
+    fi
+  ;;
+  save)
+    echo -n $"Saving Ethernet bridge filtering (ebtables): "
+    /usr/sbin/ebtables -t filter --atomic-file /etc/sysconfig/ebtables.filter --atomic-save || RETVAL=1
+    /usr/sbin/ebtables -t nat --atomic-file /etc/sysconfig/ebtables.nat --atomic-save || RETVAL=1
+    /usr/sbin/ebtables -t broute --atomic-file /etc/sysconfig/ebtables.broute --atomic-save || RETVAL=1
+    if [ $RETVAL -eq 0 ]; then
+      echo -n $"[  OK  ]"
+      echo -ne "\r"
+    else
+      echo -n $"[FAILED]"
+      echo -ne "\r"
+    fi
+  ;;
+  *)
+    echo "usage: ${0##*/} {start|stop|save}" >&2
+    exit 1
+  ;;
+esac
+
+# vim:set ts=2 sw=2 ft=sh et:

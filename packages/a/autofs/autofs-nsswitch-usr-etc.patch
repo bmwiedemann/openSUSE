@@ -1,0 +1,15 @@
+---
+ lib/nss_parse.y |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/lib/nss_parse.y
++++ b/lib/nss_parse.y
+@@ -168,6 +168,8 @@
+ 	int status;
+ 
+ 	nsswitch = open_fopen_r(NSSWITCH_FILE);
++	if (!nsswitch)
++		nsswitch = open_fopen_r("/usr" NSSWITCH_FILE);
+ 	if (!nsswitch) {
+ 		logerr("couldn't open %s", NSSWITCH_FILE);
+ 		return 1;

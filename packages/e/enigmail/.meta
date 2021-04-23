@@ -1,0 +1,5 @@
+<package name="enigmail" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="mozilla:Factory" package="enigmail"/>
+</package>

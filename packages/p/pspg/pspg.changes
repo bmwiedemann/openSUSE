@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Fri Sep 06 08:23:12 UTC 2019 - petr@yarpen.cz
+
+- version 1.9.0
+  * Sort by numeric column support
+  * vertical cursor (column cursor) & column searching support
+    (since 1.7.0)
+  * fixes for menu drawing. Menus that are larger in any dimension
+    over terminal when terminal is resized (since 1.6.5)
+  * libvte related fixes for color processing (since 1.6.4)
+  * minor overall bugfixes
+
+-------------------------------------------------------------------
+Mon Sep 10 11:27:32 UTC 2018 - petr@yarpen.cz
+
+- version 1.6.2
+  * Uses readline when this library is available. It supports
+    persistent history of searching strings
+  * configuration via pull down menu
+  * possibility to hide status/menu/command bars
+  * possibility to show row numbers
+  * possibility to hide cursor
+
+-------------------------------------------------------------------
+Wed Mar 21 11:32:41 UTC 2018 - mpluskal@suse.com
+
+- Extend previous changelog entry
+- Modernise spec file
+
+-------------------------------------------------------------------
+Tue Mar 20 09:21:34 UTC 2018 - petr@yarpen.cz
+
+- version 1.0.0
+  * supports 8bit encodings like latin1, latin2.
+  * The border arts is correctly printed on terminals with these
+    encodings.
+  * Searching is more robust and more correct now
+  * With mentioned long option the ascii art (borders) can be
+    replaced by more pretty unicode art
+  * Add options --ignore-case and --IGNORE-CASE
+
+-------------------------------------------------------------------
+Mon Nov 27 12:43:20 UTC 2017 - mpluskal@suse.com
+
+- Use source url
+- Cleanup with spec-cleaner
+- Use macro for configure
+- Use pkgconfig style of dependencies
+
+-------------------------------------------------------------------
+Mon Nov 27 12:40:55 UTC 2017 - petr@yarpen.cz
+
+- initial import to OBS
+- version 0.7.3
+

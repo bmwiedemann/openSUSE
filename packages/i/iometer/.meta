@@ -1,0 +1,5 @@
+<package name="iometer" project="openSUSE:Factory">
+  <title>I/O subsystem measurement and characterization tool</title>
+  <description>Iometer is an I/O subsystem measurement and characterization tool for single and clustered systems.</description>
+  <devel project="benchmark" package="iometer"/>
+</package>

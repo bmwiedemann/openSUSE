@@ -1,0 +1,105 @@
+diff -Ndurp kbd-2.0.2/contrib/font2psf kbd-2.0.2-fix-bashisms/contrib/font2psf
+--- kbd-2.0.2/contrib/font2psf	2012-02-27 12:27:10.000000000 +0200
++++ kbd-2.0.2-fix-bashisms/contrib/font2psf	2014-10-19 23:07:11.719239190 +0300
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/bin/sh
+ #written by Martin Lohner, SuSE GmbH, Dec 1998
+ echo "This script converts 256 character font to psf-fonts"
+ echo "It simply assumes that all files in the current directory"
+@@ -15,24 +15,21 @@ read a
+ random=hfdsvnpoh97k
+ if [ $a = y   -o $a = Y ] ; then
+ 	echo "Creating psf-headers..."
+-	echo -ne "\066" > $random
+-	echo -ne "\004" >> $random
+-	echo -ne "\000" >> $random
++	printf "\066\004\000" > $random
+ 
+-	
+-	echo -ne "\006" > $random.6.tmp
++	printf "\006" > $random.6.tmp
+ 	cat $random $random.6.tmp > $random.6
+-	echo -ne "\010" > $random.8.tmp
++	printf "\010" > $random.8.tmp
+ 	cat $random $random.8.tmp > $random.8
+-	echo -ne "\012" > $random.10.tmp
++	printf "\012" > $random.10.tmp
+ 	cat $random $random.10.tmp > $random.10
+-	echo -ne "\014" > $random.12.tmp
++	printf "\014" > $random.12.tmp
+ 	cat $random $random.12.tmp > $random.12
+-	echo -ne "\016" > $random.14.tmp
++	printf "\016" > $random.14.tmp
+ 	cat $random $random.14.tmp > $random.14
+-	echo -ne "\020" > $random.16.tmp
++	printf "\020" > $random.16.tmp
+ 	cat $random $random.16.tmp > $random.16
+-	echo -ne "\023" > $random.19.tmp
++	printf "\023" > $random.19.tmp
+ 	cat $random $random.19.tmp > $random.19
+ 	
+ 	for i in 6 8 10 12 14 16 19; do
+diff -Ndurp kbd-2.0.2/contrib/psfsplit kbd-2.0.2-fix-bashisms/contrib/psfsplit
+--- kbd-2.0.2/contrib/psfsplit	2012-02-27 12:27:10.000000000 +0200
++++ kbd-2.0.2-fix-bashisms/contrib/psfsplit	2014-10-19 22:53:02.271296655 +0300
+@@ -11,17 +11,17 @@ then	echo $1 -- non .psf file
+ 	exit
+ fi
+ size=`hexdump -e '/1 "%i" ' -n1 -s2 $1 `
+-size=$[ ($size % 2 + 1) * 256 ]
++size=$((($size % 2 + 1) * 256))
+ height=`hexdump -e '/1 "%i" ' -n1 -s3 $1 `
+ echo $size chars, height=$height
+ mkdir $1_
+-dd bs=4 count=1 if=$1 of=$1_/#psf_header &>/dev/null
++dd bs=4 count=1 if=$1 of=$1_/#psf_header >/dev/null 2>&1
+ i=0
+-while let $[ i < $size ]
++while [ $i -lt $size ]
+ do
+-	dd bs=1 count=$height skip=$[ $i * $height + 4 ] if=$1 \
+-		of=$1_/`printf "%.3x" $i` &>/dev/null
+-	let i+=1
++	dd bs=1 count=$height skip=$(($i * $height + 4)) if=$1 \
++		of=$1_/`printf "%.3x" $i` >/dev/null 2>&1
++	i=$((i + 1))
+ done
+-dd bs=1 skip=$[ $i * $height + 4 ] if=$1 of=$1_/map_tables &>/dev/null
++dd bs=1 skip=$(($i * $height + 4)) if=$1 of=$1_/map_tables >/dev/null 2>&1
+ 
+diff -Ndurp kbd-2.0.2/contrib/showconsolefont kbd-2.0.2-fix-bashisms/contrib/showconsolefont
+--- kbd-2.0.2/contrib/showconsolefont	2012-02-27 12:27:10.000000000 +0200
++++ kbd-2.0.2-fix-bashisms/contrib/showconsolefont	2014-10-19 22:58:03.106276304 +0300
+@@ -5,16 +5,16 @@
+ # A small shell script version of the `showconsolefont' C program
+ #
+ 
+-echo -e "\033%G"
++printf "\033%%G\n"
+ for L in "0 2 4 6" "1 3 5 7"; do
+     for P in 0 1 2 3 4 5 6 7; do
+ 	for U in 0 1 2 3; do
+ 	    for K in $L; do
+-		echo -ne "  \357\20$U\2$K$P"
++		printf "  \357\20$U\2$K$P"
+ 	    done
+ 	done
+ 	echo
+     done
+     echo
+ done
+-echo -ne "\033%@"
++printf "\033%%@"
+diff -Ndurp kbd-2.0.2/rc/suse-kbd.rc kbd-2.0.2-fix-bashisms/rc/suse-kbd.rc
+--- kbd-2.0.2/rc/suse-kbd.rc	2012-02-27 12:27:11.000000000 +0200
++++ kbd-2.0.2-fix-bashisms/rc/suse-kbd.rc	2014-10-19 23:00:34.475266064 +0300
+@@ -76,7 +76,7 @@ case "$1" in
+ 	else
+ 	    return=$rc_failed
+ 	fi
+-	echo -e "Loading keymap ${retmsg#Loading*/usr/lib/kbd/keymaps/*/}${return}"
++	printf "Loading keymap ${retmsg#Loading*/usr/lib/kbd/keymaps/*/}${return}\n"
+ 	;;
+     stop)
+ 	;;

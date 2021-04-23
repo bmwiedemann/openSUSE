@@ -1,0 +1,6 @@
+<package name="modello-maven-plugin" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="modello"/>
+  <bcntsynctag>modello</bcntsynctag>
+</package>

@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Fri Feb 26 11:06:01 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix lua naming
+
+-------------------------------------------------------------------
+Thu Feb 18 18:02:37 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- It would be better to rename the package to MessagePack, but
+  certainly RPMs must be called same as the package in OBS.
+
+-------------------------------------------------------------------
+Thu Feb 18 16:01:08 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use %lua_provides macro for default lua versioning
+
+-------------------------------------------------------------------
+Mon Jul  6 19:07:11 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target
+
+-------------------------------------------------------------------
+Mon Oct 30 14:45:32 UTC 2017 - jmatejek@suse.com
+
+- do not build for Lua 5.2
+
+-------------------------------------------------------------------
+Wed Aug 16 10:30:22 UTC 2017 - tchvatal@suse.com
+
+- Add %release to old package obsolete/provide as we still have
+  the same version
+
+-------------------------------------------------------------------
+Thu Jul 13 18:49:06 UTC 2017 - tchvatal@suse.com
+
+- Switch to multibuild syntax
+
+-------------------------------------------------------------------
+Thu Jul 13 18:43:33 UTC 2017 - tchvatal@suse.com
+
+- Rename to lua-messagepack to be used by all namespaced variants
+
+-------------------------------------------------------------------
+Tue Dec  8 12:24:19 UTC 2015 - ronisbr@gmail.com
+
+- Add documentation to the package.
+
+-------------------------------------------------------------------
+Sat Dec  5 13:00:52 UTC 2015 - ronisbr@gmail.com
+
+- Fix source URL.
+
+-------------------------------------------------------------------
+Wed Dec  2 11:27:10 UTC 2015 - ronisbr@gmail.com
+
+- Initial version based on devel:languages:lua/lua-messagepack
+

@@ -1,0 +1,5 @@
+<package name="python-ged4py" project="openSUSE:Factory">
+  <title>python-ged4py</title>
+  <description>GEDCOM tools for Python</description>
+  <devel project="devel:languages:python" package="python-ged4py"/>
+</package>

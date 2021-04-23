@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OBS-ExclusiveArch: aarch64 x86_64 -->
+<!--
+		This file is generated,
+		don't manually modify this file,
+		please check README
+-->
+<image xmlns:suse_label_helper="com.suse.label_helper" schemaversion="6.9" name="rook-ceph-image">
+  <description type="system">
+    <author>SUSE LLC</author>
+    <contact>https://bugs.opensuse.org</contact>
+    <specification>Rook container for Ceph</specification>
+  </description>
+  <preferences>
+    <type image="docker" derived_from="obsrepositories:/opensuse/ceph/ceph#tumbleweed">
+      <containerconfig tag="latest" maintainer="SUSE LLC (https://bugs.opensuse.org)" additionaltags="tumbleweed,%PKG_VERSION%,%PKG_VERSION%.%PKG_COMMIT_NUM%,%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%" name="opensuse/rook/ceph">
+        <entrypoint execute="/tini">
+          <argument name="--"/>
+          <argument name="/usr/bin/rook"/>
+        </entrypoint>
+        <labels>
+          <suse_label_helper:add_prefix prefix="org.opensuse.rook-ceph">
+            <label name="org.opencontainers.image.title" value="Rook container for Ceph"/>
+            <label name="org.opencontainers.image.description" value="Rook container for Ceph"/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opencontainers.image.vendor" value="SUSE LLC"/>
+            <label name="org.opencontainers.image.url" value="https://registry.opensuse.org/opensuse/rook/ceph:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/rook/ceph:%PKG_VERSION%.%PKG_COMMIT_NUM%.%RELEASE%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+        <history author="SUSE LLC">Install rook and configuration</history>
+      </containerconfig>
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <rpm-excludedocs>true</rpm-excludedocs>
+    <locale>en_US</locale>
+    <keytable>us.map.gz</keytable>
+  </preferences>
+  <repository type="rpm-md">
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="image">
+    <package name="ca-certificates"/>
+    <package name="tini"/>
+    <package name="rook"/>
+    <package name="rook-rookflex"/>
+    <package name="rook-k8s-yaml"/>
+    <package name="coreutils"/>
+    <package name="krb5"/>
+    <package name="netcfg"/>
+    <package name="openSUSE-build-key"/>
+  </packages>
+  <packages type="bootstrap">
+    <package name="filesystem"/>
+    <package name="glibc-locale-base"/>
+    <package name="kubic-locale-archive"/>
+    <package name="openSUSE-release-ftp"/>
+  </packages>
+</image>

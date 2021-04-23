@@ -1,0 +1,7 @@
+<package name="ghc-primitive" project="openSUSE:Factory">
+  <title>Wrappers for primitive operations</title>
+  <description>
+This package provides wrappers for primitive array operations from GHC.Prim.
+  </description>
+  <devel project="devel:languages:haskell" package="ghc-primitive"/>
+</package>

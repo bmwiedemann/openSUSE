@@ -1,0 +1,45 @@
+-------------------------------------------------------------------
+Mon Nov 16 11:13:19 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Fix build for RedHat 7
+
+-------------------------------------------------------------------
+Thu Oct 29 09:43:31 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Require Go >= 1.14 also for CentOS
+
+-------------------------------------------------------------------
+Fri Oct  9 12:24:58 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Add support for CentOS
+
+-------------------------------------------------------------------
+Wed Sep 23 09:33:57 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Replace %{?systemd_requires} with %{?systemd_ordering}
+
+-------------------------------------------------------------------
+Tue Sep 15 15:22:43 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Pin Golang version to 1.14
+
+-------------------------------------------------------------------
+Mon Aug 31 09:32:56 UTC 2020 - Matei Albu <malbu@suse.com>
+
+- Add requires for fillup, groupadd, useradd, systemd (bsc#1175946)
+
+-------------------------------------------------------------------
+Thu Aug  6 12:53:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim old specfile constructs. Avoid double %setup. Avoid
+  fdupes across volumes.
+
+-------------------------------------------------------------------
+Thu Jul 30 13:23:06 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Migrate source service to obs_scm
+
+-------------------------------------------------------------------
+Thu May 28 13:23:53 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Initial package version 0.4.0

@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed Aug 19 09:48:57 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
+
+- Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
+
+-------------------------------------------------------------------
+Fri Sep 28 09:22:37 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove empty %post/%postun.
+- Remove redundant marketing paragraph from description.
+
+-------------------------------------------------------------------
+Fri Sep 28 07:09:15 UTC 2018 - mchang@suse.com
+
+- Update source URL
+
+-------------------------------------------------------------------
+Mon Nov 20 07:54:37 UTC 2017 - mchang@suse.com
+
+- Initial version 

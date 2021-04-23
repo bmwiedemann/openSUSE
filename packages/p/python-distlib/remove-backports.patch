@@ -1,0 +1,81 @@
+Index: distlib-0.3.1/distlib/_backport/shutil.py
+===================================================================
+--- distlib-0.3.1.orig/distlib/_backport/shutil.py
++++ distlib-0.3.1/distlib/_backport/shutil.py
+@@ -19,7 +19,7 @@ try:
+ except ImportError:
+     from collections import Callable
+ import errno
+-from . import tarfile
++import tarfile
+ 
+ try:
+     import bz2
+Index: distlib-0.3.1/distlib/compat.py
+===================================================================
+--- distlib-0.3.1.orig/distlib/compat.py
++++ distlib-0.3.1/distlib/compat.py
+@@ -311,10 +311,7 @@ except ImportError: # pragma: no cover
+             return 'IronPython'
+         return 'CPython'
+ 
+-try:
+-    import sysconfig
+-except ImportError: # pragma: no cover
+-    from ._backport import sysconfig
++import sysconfig
+ 
+ try:
+     callable = callable
+Index: distlib-0.3.1/setup.py
+===================================================================
+--- distlib-0.3.1.orig/setup.py
++++ distlib-0.3.1/setup.py
+@@ -6,7 +6,6 @@
+ #
+ 
+ import distutils.core
+-from distutils.sysconfig import get_python_lib
+ from os.path import join, dirname, abspath
+ import re
+ import sys
+@@ -69,7 +68,6 @@ distutils.core.setup(
+         'distlib._backport',
+     ],
+     package_data={
+-        'distlib._backport': ['sysconfig.cfg'],
+         'distlib': ['t32.exe', 't64.exe', 'w32.exe', 'w64.exe'],
+     },
+     cmdclass={
+Index: distlib-0.3.1/tests/distlib_tests.py
+===================================================================
+--- distlib-0.3.1.orig/tests/distlib_tests.py
++++ distlib-0.3.1/tests/distlib_tests.py
+@@ -10,7 +10,6 @@ _ver = sys.version_info[:2]
+ from test_database import (DataFilesTestCase, TestDatabase, TestDistribution,
+                            TestEggInfoDistribution, DepGraphTestCase)
+ from test_index import PackageIndexTestCase
+-from test_locators import LocatorTestCase
+ from test_manifest import ManifestTestCase
+ from test_markers import MarkersTestCase
+ from test_metadata import MetadataTestCase, LegacyMetadataTestCase
+@@ -23,6 +22,5 @@ from test_wheel import WheelTestCase
+ 
+ if _ver == (2, 6):
+     from test_shutil import TestCopyFile, TestMove, TestShutil
+-    from test_sysconfig import TestSysConfig, MakefileTests
+ from test_util import (UtilTestCase, ProgressTestCase, FileOpsTestCase,
+                        GlobTestCase)
+Index: distlib-0.3.1/tests/test_shutil.py
+===================================================================
+--- distlib-0.3.1.orig/tests/test_shutil.py
++++ distlib-0.3.1/tests/test_shutil.py
+@@ -20,7 +20,7 @@ import tempfile
+ from compat import unittest
+ 
+ 
+-from distlib._backport import shutil, tarfile
++from distlib._backport import shutil; import tarfile
+ from distlib._backport.shutil import (
+     _make_tarball, _make_zipfile, make_archive, unpack_archive,
+     register_archive_format, unregister_archive_format, get_archive_formats,

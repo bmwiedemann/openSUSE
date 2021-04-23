@@ -1,0 +1,9 @@
+<package name="opengost-fonts" project="openSUSE:Factory">
+  <title>Open-source Russian GOST Fonts</title>
+  <description>Open-source version of the fonts by Russian standard GOST 2.304-81
+«Letters for drawings».
+
+</description>
+  <devel project="M17N:fonts" package="opengost-fonts"/>
+  <url>https://bitbucket.org/fat_angel/opengostfont/overview</url>
+</package>

@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Fri Nov  1 12:34:56 UTC 2019 - ohering@suse.de
+
+- Require current dune macros
+- Use _service file
+
+-------------------------------------------------------------------
+Fri Apr 20 08:15:14 UTC 2018 - andy@onthewings.net
+
+- Fix Source: url. 
+
+-------------------------------------------------------------------
+Tue Jul 25 13:04:54 UTC 2017 - ohering@suse.de
+
+- Use Group: Development/Languages/OCaml
+
+-------------------------------------------------------------------
+Mon Jul 17 12:48:58 UTC 2017 - ohering@suse.de
+
+- Wrap specfile conditionals to fix quilt setup
+
+-------------------------------------------------------------------
+Wed May 31 07:07:33 UTC 2017 - olaf@aepfle.de
+
+- Replace tabs with spaces in generated _oasis file
+
+-------------------------------------------------------------------
+Wed May 17 10:34:57 UTC 2017 - olaf@aepfle.de
+
+- Version 1.0.1
+
+-------------------------------------------------------------------
+Tue May 16 11:14:08 UTC 2017 - olaf@aepfle.de
+
+- Build with oasis
+
+-------------------------------------------------------------------
+Sat Dec 24 17:20:22 UTC 2016 - antoine.belvire@opensuse.org
+
+- Create package ocaml-jsonm-1.0.0
+

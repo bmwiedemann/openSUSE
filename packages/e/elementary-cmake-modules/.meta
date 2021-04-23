@@ -1,0 +1,5 @@
+<package name="elementary-cmake-modules" project="openSUSE:Factory">
+  <title>CMake's elementary modules</title>
+  <description>Shared modules like FindVala.cmake</description>
+  <devel project="X11:Pantheon" package="elementary-cmake-modules"/>
+</package>

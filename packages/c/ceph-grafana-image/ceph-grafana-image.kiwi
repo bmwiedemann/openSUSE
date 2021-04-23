@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OBS-ExclusiveArch: aarch64 x86_64 -->
+<!--
+		This file is generated,
+		don't manually modify this file,
+		please check README
+    -->
+<image xmlns:suse_label_helper="com.suse.label_helper" schemaversion="6.9" name="ceph-grafana-image">
+  <description type="system">
+    <author>SUSE LLC</author>
+    <contact>https://bugs.opensuse.org</contact>
+    <specification>Grafana container image for Ceph</specification>
+  </description>
+  <preferences>
+    <type image="docker" derived_from="obsrepositories:/opensuse/tumbleweed">
+      <containerconfig tag="latest" maintainer="SUSE LLC (https://bugs.opensuse.org)" additionaltags="tumbleweed,%PKG_VERSION%,%PKG_VERSION%.%RELEASE%" name="opensuse/ceph/grafana">
+        <expose>
+          <port number="3000/tcp"/>
+        </expose>
+        <entrypoint execute="bash">
+          <argument name="/usr/local/bin/entrypoint.sh"/>
+        </entrypoint>
+        <subcommand clear="true"/>
+        <labels>
+          <suse_label_helper:add_prefix prefix="org.opensuse.ceph">
+            <label name="org.opencontainers.image.title" value="Grafana for Ceph"/>
+            <label name="org.opencontainers.image.description" value="Grafana container image for Ceph"/>
+            <label name="org.opencontainers.image.version" value="%PKG_VERSION%.%RELEASE%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opencontainers.image.vendor" value="SUSE LLC"/>
+            <label name="org.opencontainers.image.url" value="https://registry.opensuse.org/opensuse/ceph/grafana:%PKG_VERSION%.%RELEASE%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/ceph/grafana:%PKG_VERSION%.%RELEASE%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+        <history author="SUSE LLC">Install grafana and ceph dashboards</history>
+      </containerconfig>
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <rpm-excludedocs>true</rpm-excludedocs>
+    <locale>en_US</locale>
+    <keytable>us.map.gz</keytable>
+  </preferences>
+  <repository>
+    <source path="obsrepositories:/"/>
+  </repository>
+  <packages type="bootstrap">
+    <package name="openSUSE-release-ftp"/>
+    <package name="grafana"/>
+    <package name="grafana-piechart-panel"/>
+    <package name="grafana-status-panel"/>
+    <package name="ceph-grafana-dashboards"/>
+  </packages>
+</image>

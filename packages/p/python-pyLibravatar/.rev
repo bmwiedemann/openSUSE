@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4594c296f057651f2bb1dcfa1b50904</srcmd5>
+    <version>1.7</version>
+    <time>1533292680</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627032</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>901668183e7112edc71860371aefa004</srcmd5>
+    <version>1.7</version>
+    <time>1533887350</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628111</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1ed55b0bd83d037b318fb84de7dc7435</srcmd5>
+    <version>1.7</version>
+    <time>1587659599</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable python2 build</comment>
+    <requestid>796429</requestid>
+  </revision>
+</revisionlist>

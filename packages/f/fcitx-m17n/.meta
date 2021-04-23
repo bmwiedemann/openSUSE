@@ -1,0 +1,5 @@
+<package name="fcitx-m17n" project="openSUSE:Factory">
+  <title>fcitx-m17n</title>
+  <description>M17N engine for fcitx. It allows input of many languages using the input table maps from m17n-db.</description>
+  <devel project="M17N" package="fcitx-m17n"/>
+</package>

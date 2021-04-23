@@ -1,0 +1,10 @@
+<package name="httpcomponents-project" project="openSUSE:Factory">
+  <title>Common POM file for HttpComponents</title>
+  <description>Common Maven POM  file for HttpComponents. This project should be
+required only for building dependent packages with Maven. Please don't
+use it as runtime requirement.
+
+</description>
+  <devel project="Java:packages" package="httpcomponents-project"/>
+  <url>http://hc.apache.org/</url>
+</package>

@@ -1,0 +1,29 @@
+------------------------------------------------------------------------
+r1950 | mabri | 2018-11-17 00:05:15 +0100 (sáb 17 de nov de 2018) | 4 líneas
+
+Fix issue #32: null pointer dereference in PdfTranslator::setTarget()
+
+This is in podofoimpose and fixed there (pdftranslator.cpp) directly.
+
+
+Index: tools/podofoimpose/pdftranslator.cpp
+===================================================================
+--- tools/podofoimpose/pdftranslator.cpp	(revisión: 1949)
++++ tools/podofoimpose/pdftranslator.cpp	(revisión: 1950)
+@@ -256,7 +256,13 @@
+ 				PdfPage * page = sourceDoc->GetPage ( i );
+ 				PdfMemoryOutputStream outMemStream ( 1 );
+ 
+-				PdfXObject *xobj = new PdfXObject ( page->GetMediaBox(), targetDoc );
++				if (!page) // Fix issue #32
++                {
++                    std::ostringstream oss;
++                    oss << "Page " << i << " (0-based) of " << pcount << " in source doc not found!";
++                    PODOFO_RAISE_ERROR_INFO( ePdfError_PageNotFound, oss.str() );
++                }
++                PdfXObject *xobj = new PdfXObject ( page->GetMediaBox(), targetDoc );
+ 				if ( page->GetContents()->HasStream() )
+ 				{
+ 					page->GetContents()->GetStream()->GetFilteredCopy ( &outMemStream );
+
+------------------------------------------------------------------------

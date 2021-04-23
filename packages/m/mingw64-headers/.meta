@@ -1,0 +1,9 @@
+<package name="mingw64-headers" project="openSUSE:Factory">
+  <title>MinGW-W64 headers for win32 and win64</title>
+  <description>MinGW Win64 headers.
+
+
+</description>
+  <devel project="windows:mingw:win64" package="mingw64-headers"/>
+  <url>http://www.mingw.org/</url>
+</package>

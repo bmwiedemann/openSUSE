@@ -1,0 +1,11 @@
+---
+preamble: |-
+  Requires: xdg-utils
+post_install: |-
+  install -dm0755 %{buildroot}%{_sysconfdir}/dochazka-cli
+  install -m0640 ext/CLI_SiteConfig.pm.example %{buildroot}%{_sysconfdir}/dochazka-cli/CLI_SiteConfig.pm
+  install -m0644 ext/CLI_SiteConfig.pm.example %{buildroot}%{_sysconfdir}/dochazka-cli/CLI_SiteConfig.pm.example
+
+  echo "%dir %{_sysconfdir}/dochazka-cli" >> %{name}.files
+  echo "%config(noreplace) %attr(0640,root,root) %{_sysconfdir}/dochazka-cli/CLI_SiteConfig.pm" >> %{name}.files
+  echo "%config %{_sysconfdir}/dochazka-cli/CLI_SiteConfig.pm.example" >> %{name}.files

@@ -1,0 +1,6 @@
+<package name="perl-Module-Build-Using-PkgConfig" project="openSUSE:Factory">
+  <title>perl-Module-Build-Using-PkgConfig - Extend Module::Build to more easily use platform libraries provided by pkg-config</title>
+  <description>This subclass of Module::Build provides some handy methods to assist the _Build.PL_ script of XS-based module distributions that make use of platform libraries managed by _pkg-config_. As well as supporting libraries installed on a platform-wide basis and thus visible to _pkg-config_ itself, this subclass also assists with 'Alien::'-based wrappers of these system libraries, allowing them to be dynamically installed at build time if the platform does not provide them. </description>
+  <devel project="devel:languages:perl" package="perl-Module-Build-Using-PkgConfig"/>
+  <url>https://metacpan.org/release/Module-Build-Using-PkgConfig</url>
+</package>

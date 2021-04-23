@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Sep 22 12:28:11 UTC 2020 - psimons@suse.com
+
+- Update wai-app-static to version 3.1.7.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Aug 19 08:07:41 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints with 6GB min disk space for ppc64/ppc64le
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:35 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Sat Aug 15 02:02:12 UTC 2020 - psimons@suse.com
+
+- Update wai-app-static to version 3.1.7.2.
+  ## 3.1.7.2
+
+  * optparse-applicative 0.16.0.0 support
+
+-------------------------------------------------------------------
+Tue Jun  9 09:26:18 UTC 2020 - psimons@suse.com
+
+- Add wai-app-static at version 3.1.7.1.
+

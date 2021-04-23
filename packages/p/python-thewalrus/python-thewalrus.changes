@@ -1,0 +1,105 @@
+-------------------------------------------------------------------
+Mon Feb  8 14:35:31 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Disable build for python 3.6 because numpy does not support it.
+
+-------------------------------------------------------------------
+Thu Nov 26 07:51:50 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 0.14.0.
+  * New features
+    * Adds the function find_classical_subsystem that tries to find
+      a subset of the modes with a classical covariance matrix.
+    * Adds the functions mean_number_of_clicks and 
+      variance_number_of_clicks that calculate the first and second 
+      statistical moments of the total number of clicks in a 
+      Gaussian state centered at the origin. 
+    * Adds the module decompositions with the function williamson 
+      to find the Williamson decomposition of an even-size 
+      positive-semidefinite matrix. 
+    * Adds the loop_hafnian_quad function to the Python interface 
+      for converting double precision matrices into quad precision, 
+      doing the calculations in quad precision, and then return the 
+      result as a double. 
+  * Improvements
+    * Introduces a new faster and significantly more accurate 
+      algorithm to calculate power traces allowing to speed up the 
+      calculation of loop hafnians 
+    * The quantum module has been refactored and organized into 
+      sub-modules. Several functions have been renamed, while the 
+      old names are being deprecated. 
+    * Adds support for C++14 
+    * pytest-randomly is added to the test suite to improve testing 
+      and avoid stochastically failing tests. 
+    * Modifies the function input_validation to use np.allclose for
+      checking the symmetry of the input matrices.
+    * Modifies the function _hafnian to calculate efficiently loop 
+      hafnians of diagonal matrices.
+  * Breaking changes
+    * Removes the redundant function normal_ordered_complex_cov.
+    * Renames the function mean_number_of_clicks to be 
+      mean_number_of_click_graph.
+
+-------------------------------------------------------------------
+Thu Sep 24 21:14:01 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Actually manually adding "-fopenmp" to CFLAGS allows us to use
+  even the standard SUSE CFLAGS (workaround found in the same
+  bug).
+
+-------------------------------------------------------------------
+Mon Sep 21 15:08:09 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Standard OpenSUSE CFLAGS break the build
+  (gh#XanaduAI/thewalrus#198).
+
+-------------------------------------------------------------------
+Thu Sep 17 19:35:47 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Fix spec file typo.
+
+-------------------------------------------------------------------
+Fri Sep 11 20:38:18 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Update to version 0.13.0.
+  * Adds a new algorithm for hafnians of matrices with low rank. 
+  * Adds a function to calculate the fidelity between two Gaussian
+    quantum states. 
+  * Adds a new module, thewalrus.random, to generate random 
+    unitary, symplectic and covariance matrices. 
+  * Adds new functions normal_ordered_expectation, 
+    photon_number_expectation and photon_number_squared_expectation
+    in thewalrus.quantum to calculate expectation values of 
+    products of normal ordered expressions and number operators and
+    their squares. 
+  * Adds the function hafnian_sample_graph_rank_one in 
+    thewalrus.samples to sample from rank-one adjacency matrices. 
+  * Adds parallelization support using Dask for 
+    quantum.probabilities. 
+  * Removes support for Python 3.5. 
+  * Changes in the interface and speed ups in the functions in the 
+    thewalrus.fock_gradients module.
+  * Improves documentation of the multidimensional Hermite 
+    polynomials.
+  * Improves speed of fock_tensor when the symplectic matrix passed 
+    is also orthogonal. 
+  * Fixes Numba decorated functions not rendering properly in the 
+    documentation. 
+  * Solves the issue with quantum and samples not being rendered in
+    the documentation or the TOC. 
+  * Fix bug where quantum and samples were not showing up in the 
+    documentation.
+  * The functions in thewalrus.fock_gradients are now separated 
+    into functions for the gradients and the gates. Moreover, they 
+    are renamed, for instance Dgate becomes displacement and its
+    gradient is now grad_displacement.
+
+-------------------------------------------------------------------
+Wed Aug  5 16:12:15 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Use pytest for %check 
+
+-------------------------------------------------------------------
+Sun Aug  2 10:05:38 UTC 2020 - andy great <andythe_great@pm.me>
+
+- Initial package release. 

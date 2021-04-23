@@ -1,0 +1,220 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>29e10a0c1acf259b08d7f11cb8426198</srcmd5>
+    <version>0.7.0</version>
+    <time>1506108804</time>
+    <user>dimstar_suse</user>
+    <comment>- repackage for stable releases
+- updated to latest stable release (0.7.0)
+- updated to latest git version
+- enhanced description
+- realised sources as services (git clone and recompress to *.tar.bz2
+- made install section cleaner
+- replaced ./$FILENAME with ./* to fit all files in a specific doc directory in the files section
+- Capitalized summary to prevent this error
+herbstluftwm.x86_64: E: summary-not-capitalized (Badness: 63) C a manual tiling window manager
+- added desktop file to start herbstluftwm from all standard display managers
+- updated source to current git status (04.12.2011)
+- corrected program version tag
+- renamed source *.tar.bz2
+- added missing dependency (ncurses-utils)
+- another dependency
+- make file changes (install paths)
+- added Group Tag to *.spec file
+- added makefile parameters
+- another makefile parameters (install dirs)
+- added files to the 'files' section
+- added missing directories to 'files' section
+- added make install to section %install 
+- added dependency glib2-devel as build requirement
+- moved option -n %{${MACRO}} to setup section #layer 8 failure :P 
+- added source and a test spec file 
+</comment>
+    <requestid>526282</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>11c6162b83fb087cff49ad8742b9e5c4</srcmd5>
+    <version>0.7.0</version>
+    <time>1512734294</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>554727</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>570e690b7f814abd9c1a854f1bf7239b</srcmd5>
+    <version>0.7.0</version>
+    <time>1515876408</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563341</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>718e1eaa020e68be299064d1f94db422</srcmd5>
+    <version>0.7.2</version>
+    <time>1560760508</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>710286</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>47d930469cf0648586e53b5b3eee66a5</srcmd5>
+    <version>0.8.0</version>
+    <time>1586869903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>793813</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a9366f589b49412ded6f7a4f00c61ca3</srcmd5>
+    <version>0.8.1</version>
+    <time>1587467578</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * the frame index 'e' refers to the first empty frame
+    (e.g. 'rule index=e' places new windows in empty frames, if possible)
+  * new setting 'hide_covered_windows' to improve the appearance
+    when used with a compositor.
+  * resize floating windows with the same command ('resize') as in
+    tiling mode and thus the same keybindings as in tiling mode.
+    Therefore, the 'fractiondelta' parameter to the 'resize' command
+    is now optional.
+  * keybind now checks that the bound command exists.
+  * cycle_all (Alt-Tab) now also traverses floating clients
+  * new setting 'auto_detect_panels' controlling the panel
+    detection algorithm.
+  * improved herbstclient tab completion for the fish shell
+  Bug fixes:
+  * Handle the regular expression &quot;&quot; correctly, since the grammar
+    of extended regular expressions does not allow &quot;&quot;.
+  * Error handling for the lack of xrandr
+  * Fixes to make it compile on other systems and architecture</comment>
+    <requestid>795955</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>72081fa0fe4e786b7ba4fe7b9847b2bb</srcmd5>
+    <version>0.8.2</version>
+    <time>1588697775</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.2:
+  * Selection of empty frames by the mouse (by click or by hover if
+    focus_follows_mouse is enabled)
+  * The commands 'close_and_remove' / 'close_or_remove' act like
+    'close' for floating clients
+  * The decoration window allows focusing, moving, and resizing
+    the client via the mouse (as known from standard floating
+    window managers)
+  * Improved herbstclient tab completion for the fish shell
+  * Fix a crash in the error handler when a invalid monitor
+    name is passed. (Affects list_padding move_monitor
+    rename_monitor lock_tag unlock_tag)
+  * Fix the type of WM_STATE
+  * The client attributes sizehints_tiling and sizehints_floating
+    are now writable
+  * Fix EWMH urgency change for clients without WM hints set
+  * Fix the exit code of the 'focus' command</comment>
+    <requestid>800246</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3ab52bff2a90d9f910f6dfdc084ca4cd</srcmd5>
+    <version>0.8.3</version>
+    <time>1591653931</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.3:
+  * Set .desktop file Type to Application (#903) 
+  * Ignore EnterNotify events by grabs and decoration (#907) 
+  * Don't drop later EnterNotify during enternotify() (#909) 
+  * Consistently use $(BUILDDIR) in Makefile
+  * Remove unused command interface methods (#917) 
+  * Update and add new tests</comment>
+    <requestid>812452</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cc498be72aa072aff529650d1b5d742b</srcmd5>
+    <version>0.9.0</version>
+    <time>1604306654</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.0:
+  * When an application fails to focus itself (because
+    focus_stealing_prevention is active), then the window is marked
+    as urgent.
+  * New optional argument for the 'split' command for splitting
+    non-leaf frames
+  * Frame objects: the frame layout can be introspected via the
+    'tiling' object present in each tag, e.g.: 'tags.focus.tiling'.
+  * New command 'foreach' for iterating over objects
+  * New attribute 'urgent_count' for tags, counting the number of
+    urgent clients on a tag
+  * New rule consequence 'floatplacement' that updates the placement
+    of floating clients ('floatplacement=smart' for little overlap,
+    'floatplacement=center' for centering) or leaves the floating
+    position as is ('floatplacement=none')
+  * New rule condition 'pgid'
+  * New format specifier '%c' in the 'sprintf' command (useful
+    in combination with 'foreach')
+  * The 'new_attr' command now also accepts an initial value
+  * React to a change of the 'floating_focused' attribute of the
+    tag object
+  * New frame index character 'p' for accessing the parent frame
+  * Object tree documentation as a json file
+  Bug fixes:
+  * Fix wrong behaviour in 'cycle_layout' in the case where the
+    current layout is not contained in the layout list passed
+    to 'cycle_layout'.
+  * Fix handling of delta -1 in 'focus_monitor' and 'cycle_monitor'
+  * Fixed precision decimals in the layout tree (more reliable
+    in- and output of fractions in frame splits)</comment>
+    <requestid>845299</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3e3e0782a9af66e5be8978206b9de147</srcmd5>
+    <version>0.9.1</version>
+    <time>1609783714</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.1:
+  * Client minimization (controlled by the attribute 'minimized' of
+    every client)
+  * The 'index' attribute of tags is now writable. This allows adjusting
+    the order of existing tags.
+  * New child object 'focused_client' for each tag object.
+  * New child object 'focused_frame' for the tiling object of each tag
+    object.
+  * New child object 'parent_frame' for each client providing the frame
+    the client sits in
+  * New command 'mirror'
+  * New command 'apply_tmp_rule'
+  * The 'apply_rules' command now reports parse errors
+  * Reserve space for panels that do not set _NET_WM_STRUT e.g. conky
+    windows of type 'dock'.
+  * Only build json object doc if WITH_DOCUMENTATION is activated
+  * Bug fixes:
+    - When hiding windows, correctly set their WM_STATE to IconicState
+      (we set it to Withdrawn state before, which means &quot;unmanaged&quot; and
+      thus is wrong). This may require restarting pagers when upgrading
+      hlwm live.
+    - Fix crash in 'split explode'
+    - 'split explode' preserves the window focus (as in v0.7.2 and before)</comment>
+    <requestid>860111</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5553ef6dda32a56786f47c35757bee27</srcmd5>
+    <version>0.9.2</version>
+    <time>1613581984</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.2:
+  * Client window titles (controlled by the theme attributes
+    'title_height', 'title_color', 'title_font')
+  * New command 'help' for live documentation on the object tree
+  * New 'watch' command that emits hooks when attribute values change.
+  * The 'lock_tag' attribute is now writable.
+  * New 'geometry' attribute for monitors.
+  * New dependencies: xft, freetype
+  Bug fixes:
+  * Correctly interpret _NET_WM_STRUT. This fixes panels that leave
+    a bit of space between the panel and the monitor edge and also
+    panels between two monitors.
+  * Correctly handling minimized clients when removing a tag.
+  * Preserve stacking order when changing the floating state of a tag
+  * Update frame objects correctly in the commands 'mirror' and 'rotate'</comment>
+    <requestid>873176</requestid>
+  </revision>
+</revisionlist>

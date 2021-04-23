@@ -1,0 +1,8 @@
+<package name="perl-ExtUtils-Manifest" project="openSUSE:Factory">
+  <title>Utilities to write and check a MANIFEST file</title>
+  <description>ExtUtils::Manifest - utilities to write and check a MANIFEST file
+
+</description>
+  <devel project="devel:languages:perl" package="perl-ExtUtils-Manifest"/>
+  <url>http://search.cpan.org/dist/ExtUtils-Manifest/</url>
+</package>

@@ -1,0 +1,13 @@
+Index: eigen-3.3.8/CMakeLists.txt
+===================================================================
+--- eigen-3.3.8.orig/CMakeLists.txt
++++ eigen-3.3.8/CMakeLists.txt
+@@ -536,7 +536,7 @@ set ( EIGEN_VERSION_MAJOR  ${EIGEN_WORLD
+ set ( EIGEN_VERSION_MINOR  ${EIGEN_MAJOR_VERSION} )
+ set ( EIGEN_VERSION_PATCH  ${EIGEN_MINOR_VERSION} )
+ set ( EIGEN_DEFINITIONS "")
+-set ( EIGEN_INCLUDE_DIR "${CMAKE_INSTALL_PREFIX}/${INCLUDE_INSTALL_DIR}" )
++set ( EIGEN_INCLUDE_DIR ${INCLUDE_INSTALL_DIR} )
+ set ( EIGEN_ROOT_DIR ${CMAKE_INSTALL_PREFIX} )
+ 
+ # Interface libraries require at least CMake 3.0

@@ -1,0 +1,13 @@
+Index: QCSXCAD-0.6.0/QCSXCAD.cpp
+===================================================================
+--- QCSXCAD-0.6.0.orig/QCSXCAD.cpp
++++ QCSXCAD-0.6.0/QCSXCAD.cpp
+@@ -165,7 +165,7 @@ QString QCSXCAD::GetInfoString()
+ {
+ 	QString text = QString("%1").arg(_QCSXCAD_LIB_NAME_);
+ 	text += QString("<br>Author: %1<br>EMail: %2").arg(_QCSXCAD_AUTHOR_).arg(_QCSXCAD_AUTHOR_MAIL_);
+-	text += QString("<br>Version: %1\t Build: %2 %3").arg(_QCSXCAD_VERSION_).arg(__DATE__).arg(__TIME__);
++	text += QString("<br>Version: %1").arg(_QCSXCAD_VERSION_);
+ 	text += QString("<br>License: %1").arg(_QCSXCAD_LICENSE_);
+ 	return text;
+ }

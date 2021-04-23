@@ -1,0 +1,38 @@
+## Path:	Network/Mail/Exim
+## Description:	Exim mailserver configuration
+## Type:	string
+## Default:	"-bd -q30m"
+## ServiceRestart: exim
+#
+# Command line arguments to hand over to exim
+# Normally: -bd	-q30m	(run as background daemon)
+#
+EXIM_ARGS="-bd -q30m"
+
+## Type:        yesno
+## Default:     "no"
+# 
+# Create weekly reports (see man 8 eximstats)?
+# The reports are saved in the same directory as the log files.
+#
+# To see an example of the reports, you can use this command:
+# eximstats < /var/log/exim/main.log |less
+#
+EXIM_REPORT_WEEKLY="no"
+
+## Type:        yesno
+## Default:     "no"
+# 
+# Create HTML reports (see the EXIM_REPORT_WEEKLY setting) in 
+# /srv/www/eximstats?
+# needs the eximstats-html package to be installed
+#
+EXIM_REPORT_WEEKLY_HTML="no"
+
+## Type:        yesno
+## Default:     "no"
+# 
+# Send the reports (see the EXIM_REPORT_WEEKLY setting) via mail to 
+# postmaster?
+#
+EXIM_REPORT_WEEKLY_SEND="no"

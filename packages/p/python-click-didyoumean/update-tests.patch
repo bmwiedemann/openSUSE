@@ -1,0 +1,46 @@
+--- click-didyoumean-0.0.3/tests/test_core.py.orig	2019-03-09 21:25:55.235169977 +0700
++++ click-didyoumean-0.0.3/tests/test_core.py	2019-03-09 21:27:50.552100072 +0700
+@@ -34,7 +34,9 @@
+ 
+     result = runner.invoke(cli, ["barr"])
+     assert result.output == (
+-        "Usage: cli [OPTIONS] COMMAND [ARGS]...\n\n"
++        "Usage: cli [OPTIONS] COMMAND [ARGS]...\n"
++        'Try "cli --help" for help.\n'
++        "\n"
+         "Error: No such command \"barr\".\n\n"
+         "Did you mean one of these?\n"
+         "    barrr\n"
+@@ -66,7 +68,9 @@
+     cli = DYMCommandCollection(sources=[cli1, cli2])
+     result = runner.invoke(cli, ["barr"])
+     assert result.output == (
+-        "Usage: root [OPTIONS] COMMAND [ARGS]...\n\n"
++        "Usage: root [OPTIONS] COMMAND [ARGS]...\n"
++        'Try "root --help" for help.\n'
++        "\n"
+         "Error: No such command \"barr\".\n\n"
+         "Did you mean one of these?\n"
+         "    barrr\n"
+@@ -94,7 +98,9 @@
+     # if cutoff factor is 1.0 the match must be perfect.
+     result = runner.invoke(cli, ["barr"])
+     assert result.output == (
+-        "Usage: cli [OPTIONS] COMMAND [ARGS]...\n\n"
++        "Usage: cli [OPTIONS] COMMAND [ARGS]...\n"
++        'Try "cli --help" for help.\n'
++        "\n"
+         "Error: No such command \"barr\".\n"
+     )
+ 
+@@ -123,7 +129,9 @@
+     # if cutoff factor is 1.0 the match must be perfect.
+     result = runner.invoke(cli, ["barr"])
+     assert result.output == (
+-        "Usage: cli [OPTIONS] COMMAND [ARGS]...\n\n"
++        "Usage: cli [OPTIONS] COMMAND [ARGS]...\n"
++        'Try "cli --help" for help.\n'
++        "\n"
+         "Error: No such command \"barr\".\n\n"
+         "Did you mean one of these?\n"
+         "    barrr\n"

@@ -1,0 +1,73 @@
+From 2c5af506075fa0fb57e731ad8c7ef23e20c6a827 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Mon, 26 Sep 2011 11:17:04 +0200
+Subject: [PATCH] Honor DESTDIR in 'install'
+
+---
+ build/xplatproviders/GNUmakefile.in |   48 +++++++++++++++++-----------------
+ 1 files changed, 24 insertions(+), 24 deletions(-)
+
+diff --git a/build/xplatproviders/GNUmakefile.in b/build/xplatproviders/GNUmakefile.in
+index 9c72977..fd5d63b 100644
+--- a/build/xplatproviders/GNUmakefile.in
++++ b/build/xplatproviders/GNUmakefile.in
+@@ -48,32 +48,32 @@ LOG=./install.log
+ DATE=$(shell date "+%Y-%m-%dT%H:%M:%S.0Z")
+ 
+ install:
+-	mkdir -p $(PREFIX)
+-	mkdir -p $(LIBDIR)
+-	mkdir -p $(CONFDIR)
+-	mkdir -p $(RUNDIR)
+-	mkdir -p $(LOGDIR)
+-	mkdir -p $(MOFDIR)
+-	mkdir -p $(STATEDIR)
+-	cp ./target/*/libSCXCoreProviderModule.* $(LIBDIR)/
+-	cp ./build/xplatproviders/scxlog.conf $(CONFDIR)/
+-	cp ./build/xplatproviders/scxrunas.conf $(CONFDIR)/
+-	rm -rf $(CONFDIR)/installinfo.txt
+-	echo $(DATE) >> $(CONFDIR)/installinfo.txt
+-	echo $(VERSION) >> $(CONFDIR)/installinfo.txt
+-	cp ./source/code/mof/scx.mof $(MOFDIR)/
+-	cp ./source/code/providers/scx_core_r.mof $(MOFDIR)/
+-	$(foreach i, $(PROVIDERS), mkdir -p $(MOFDIR)/$(i)_provider $(NL) ) 
+-	$(foreach i, $(PROVIDERS), sed "s-root/scx-$(WITH_NAMESPACE)-g" ./source/code/providers/$(i)_provider/scx_$(i)_r.mof > $(MOFDIR)/$(i)_provider/scx_$(i)_r.mof $(NL) )
++	mkdir -p $(DESTDIR)$(PREFIX)
++	mkdir -p $(DESTDIR)$(LIBDIR)
++	mkdir -p $(DESTDIR)$(CONFDIR)
++	mkdir -p $(DESTDIR)$(RUNDIR)
++	mkdir -p $(DESTDIR)$(LOGDIR)
++	mkdir -p $(DESTDIR)$(MOFDIR)
++	mkdir -p $(DESTDIR)$(STATEDIR)
++	cp ./target/*/libSCXCoreProviderModule.* $(DESTDIR)$(LIBDIR)/
++	cp ./build/xplatproviders/scxlog.conf $(DESTDIR)$(CONFDIR)/
++	cp ./build/xplatproviders/scxrunas.conf $(DESTDIR)$(CONFDIR)/
++	rm -rf $(DESTDIR)$(CONFDIR)/installinfo.txt
++	echo $(DATE) >> $(DESTDIR)$(CONFDIR)/installinfo.txt
++	echo $(VERSION) >> $(DESTDIR)$(CONFDIR)/installinfo.txt
++	cp ./source/code/mof/scx.mof $(DESTDIR)$(MOFDIR)/
++	cp ./source/code/providers/scx_core_r.mof $(DESTDIR)$(MOFDIR)/
++	$(foreach i, $(PROVIDERS), mkdir -p $(DESTDIR)$(MOFDIR)/$(i)_provider $(NL) ) 
++	$(foreach i, $(PROVIDERS), sed "s-root/scx-$(WITH_NAMESPACE)-g" ./source/code/providers/$(i)_provider/scx_$(i)_r.mof > $(DESTDIR)$(MOFDIR)/$(i)_provider/scx_$(i)_r.mof $(NL) )
+ 
+ uninstall:
+-	rm -f $(LIBDIR)/*libSCXCoreProviderModule*
+-	rm -f $(CONFDIR)/scxlog.conf
+-	rm -f $(CONFDIR)/scxrunas.conf
+-	rm -f $(CONFDIR)/installinfo.txt
+-	rm -f $(MOFDIR)/scx.mof
+-	rm -f $(MOFDIR)/scx_core_r.mof
+-	$(foreach i, $(PROVIDERS), rm -rf $(MOFDIR)/$(i)_provider $(NL) ) 
++	rm -f $(DESTDIR)$(LIBDIR)/*libSCXCoreProviderModule*
++	rm -f $(DESTDIR)$(CONFDIR)/scxlog.conf
++	rm -f $(DESTDIR)$(CONFDIR)/scxrunas.conf
++	rm -f $(DESTDIR)$(CONFDIR)/installinfo.txt
++	rm -f $(DESTDIR)$(MOFDIR)/scx.mof
++	rm -f $(DESTDIR)$(MOFDIR)/scx_core_r.mof
++	$(foreach i, $(PROVIDERS), rm -rf $(DESTDIR)$(MOFDIR)/$(i)_provider $(DESTDIR)$(NL) ) 
+ 
+ ROOT=/tmp/$(PKG)
+ TAR=$(CURDIR)/$(PKG).tar
+-- 
+1.7.6.1
+

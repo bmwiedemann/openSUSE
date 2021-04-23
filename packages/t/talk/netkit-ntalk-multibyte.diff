@@ -1,0 +1,699 @@
+--- netkit-ntalk-0.17/talk/display.c.mb	2000-07-29 20:50:27.000000000 +0200
++++ netkit-ntalk-0.17/talk/display.c	2003-03-04 11:04:36.000000000 +0100
+@@ -39,6 +39,11 @@
+  * From: @(#)display.c	5.4 (Berkeley) 6/1/90
+  *
+  * Heavily modified 11/99 by dholland to add scrollback support.
++ *
++ * multibyte support 2002 by Gerd Knorr <kraxel@bytesex.org>
++ * also got window resize without crashing for free because
++ * I had to replace some fixed-length arrays by dynamically
++ * allocated ones :-)
+  */
+ char display_rcsid[] = 
+   "$Id: display.c,v 1.15 2000/07/29 18:50:27 dholland Exp $";
+@@ -49,16 +54,21 @@
+  */
+ #include <string.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ #include <signal.h>
+ #include <errno.h>
+ #include <assert.h>
++#include <wchar.h>
++#include <iconv.h>
+ #include <curses.h>
++#include <langinfo.h>
++#include <sys/select.h>
+ #include "talk.h"
+ 
+ #define MAX_MAXLINES 16384
+ 
+ typedef struct {
+-	char *l_text;
++	wchar_t *l_text;
+ } line;
+ 
+ typedef struct {
+@@ -66,9 +76,11 @@
+ 	int   s_nlines;         /* Number of valid lines in s_lines[] */
+ 	int   s_maxlines;       /* Max already-allocated number of lines */
+ 	int   s_scrollup;       /* Number of lines scrolled back */
+-	char *s_typebuf;        /* Current input line */
++	char *s_typebuf_raw;    /* Current input line */
++        int   s_typebuf_len;    /* Current position in input line */
++	wchar_t *s_typebuf_w;
++	int   s_typebuf_wlen;
+         int   s_typebufpos;     /* Current position in input line */
+-	int   s_typebufmax;     /* Max length of input line */
+ 	char  cerase;           /* Erase-character key */
+ 	char  werase;           /* Erase-word key */
+ 	char  lerase;           /* Erase-line key */
+@@ -79,6 +91,18 @@
+ static window his_win;          /* Scrolling data for bottom window */
+ static int sepline;             /* Line where separator is */
+ static int last_was_bot;        /* if 1, last win with activity was bottom */
++char *peer_encoding = NULL;
++
++static void
++wait_for_data(int fd)
++{
++    fd_set          se;
++    
++    FD_ZERO(&se);
++    FD_SET(fd,&se);
++    select(fd+1,&se,NULL,NULL,NULL);
++}
++
+ 
+ static
+ void
+@@ -105,10 +129,12 @@
+ 
+ 	win->s_scrollup = 0;
+ 
+-	win->s_typebufmax = COLS+1;
+-	win->s_typebufpos = 0;
+-	win->s_typebuf = malloc(win->s_typebufmax);
+-	if (!win->s_typebuf) p_error("Out of memory");
++	win->s_typebufpos   = 0;
++	win->s_typebuf_len  = 0;
++	win->s_typebuf_raw  = NULL;
++	win->s_typebuf_wlen = 64;
++	win->s_typebuf_w    = malloc((win->s_typebuf_wlen+1) *
++				     sizeof(wchar_t));
+ 
+ 	win->cerase = 2;   /* ^B */
+ 	win->werase = 23;  /* ^W */
+@@ -142,6 +168,7 @@
+ 	/* Set curses modes. */
+ 	cbreak();
+ 	noecho();
++	nodelay(stdscr,1); /* otherwise get_wch() may block */
+ 	nl();        /* force cr->lf */
+ 
+ 	init_window(&my_win);
+@@ -188,10 +215,10 @@
+ 		move(topline+i, 0);
+ 		line = win->s_nlines - (nlines - 1) + i - win->s_scrollup;
+ 		if (line >=0 && line < win->s_nlines) {
+-			addstr(win->s_lines[line].l_text);
++			addwstr(win->s_lines[line].l_text);
+ 		}
+ 		else if (line==win->s_nlines) {
+-			addstr(win->s_typebuf);
++			addwstr(win->s_typebuf_w);
+ 		}
+ 		clrtoeol();
+ 	}
+@@ -266,81 +293,65 @@
+ 	dorefresh();
+ }
+ 
+-static
+-int
+-do_one_getch(void)
+-{
+-	static int gotesc = 0;
+-	int ich;
+-	unsigned char ch;
+-
+-	ich = getch();
+-	if (ich==ERR) {
+-		return -1;
+-	}
+-
+-	ch = (unsigned char)ich;
+-
+-	if (!gotesc && ch==27) {
+-		gotesc = 1;
+-		return -1;
+-	}
+-	if (gotesc) {
+-		gotesc = 0;
+-		return ((int)ch)|256;
+-	}
+-#if 0 /* blah - someone please fix this */
+-	if (ch & 128) {
+-		/*
+-		 * It would be nice to be able to tell if this is meant to 
+-		 * be a meta-modifier, in which case we should flip it to
+-		 * the next bit over, or an actual 8-bit character, in
+-		 * which case it should be passed through.
+-		 *
+-		 * The following kludge probably won't work right. When will
+-		 * we get *working* international charset support in unix?
+-		 * XXX.
+-		 */
+-		const char *foo = getenv("LC_CTYPE");
+-		if (!foo) {
+-			return = ((int)(ch&127))|256;
+-		}
+-	}
+-#endif
+-	return ch;
+-}
+-
+ /*
+  * Note: at this level we trap scrolling keys and other local phenomena.
+  * Erase/word erase/line erase, newlines, and so forth get passed through,
+  * sent to the other guy, and ultimately come out in display().
+  */
+-int
++char*
+ dogetch(void)
+ {
+-	int k = do_one_getch();
++	static int gotesc = 0;
+ 	int scrl = sepline-2;  /* number of lines to scroll by */
++	wint_t k;
++	wchar_t wc[2];
++	static char mbs[16];
++
++#if 1
++	/* not implemented in older libncursesw versions */
++	if (OK != get_wch(&k))
++	    k = L'?';
++#else
++	/* buggy due to stdio buffering (cut+paste shows this nicely) */
++	k = getwchar();
++#endif
++	if (WEOF == k)
++		return NULL;
+ 
+-	if (k==('p'|256)) {          /* M-p: scroll our window up */
++	if (!gotesc && k == 27) {
++		gotesc = 1;
++		return NULL;
++	}
++
++	if (gotesc && k==L'p') {          /* M-p: scroll our window up */
+ 		doscroll(&my_win, scrl);
++		gotesc = 0;
++		return NULL;
+ 	}
+-	else if (k==('n'|256)) {     /* M-n: scroll our window down */
++	else if (gotesc && k==L'n') {     /* M-n: scroll our window down */
+ 		doscroll(&my_win, -scrl);
++		gotesc = 0;
++		return NULL;
+ 	}
+-	else if (k==('p'&31)) {      /* C-p: scroll other window up */
++	else if (k==(L'p'&31)) {      /* C-p: scroll other window up */
+ 		doscroll(&his_win, scrl);
++		return NULL;
+ 	}
+-	else if (k==('n'&31)) {      /* C-n: scroll other window down */
++	else if (k==(L'n'&31)) {      /* C-n: scroll other window down */
+ 		doscroll(&his_win, -scrl);
++		return NULL;
+ 	}
+ 	else if (k == '\f') {        /* C-l: reprint */
+ 		clear();
+ 		dorefresh();
++		return NULL;
+ 	}
+-	else if (k>=0) {
+-		return k;
+-	}
+-	return -1;
++
++	gotesc = 0;
++	wc[0] = k;
++	wc[1] = L'\0';
++	wcstombs(mbs,wc,sizeof(mbs));
++	return mbs;
+ }
+ 
+ /**************************************************************/
+@@ -349,8 +360,11 @@
+ void
+ display_lerase(window *win)
+ {
+-	win->s_typebuf[0] = 0;
+-	win->s_typebufpos = 0;
++	free(win->s_typebuf_raw);
++	win->s_typebuf_raw  = NULL;
++	win->s_typebuf_len  = 0;
++	win->s_typebuf_w[0] = L'\0';
++	win->s_typebufpos   = 0;
+ }
+ 
+ static
+@@ -371,7 +385,7 @@
+ display_eol(window *win)
+ {
+ 	line *tmpl;
+-	char *tmps;
++	wchar_t *tmps;
+ 
+ 	if (win->s_nlines == win->s_maxlines) {
+ 		if (win->s_maxlines < MAX_MAXLINES) {
+@@ -393,7 +407,7 @@
+ 	}
+ 	assert(win->s_nlines < win->s_maxlines);
+ 	
+-	while ((tmps = strdup(win->s_typebuf))==NULL && win->s_nlines>0) {
++	while ((tmps = wcsdup(win->s_typebuf_w))==NULL && win->s_nlines>0) {
+ 		discard_top_line(win);
+ 	}
+ 	if (!tmps) {
+@@ -407,61 +421,84 @@
+ 	if (win==&my_win) topmessage = NULL;
+ }
+ 
+-static
+-void
+-display_addch(window *win, int ch)
++static wchar_t *try_convert(char *charset, char *src, size_t ilen)
+ {
+-	/*
+-	 * Leave one extra byte of space in the type buffer. This is so that
+-	 * the last column of the screen doesn't get used, because the refresh
+-	 * code does clreol after it, and that clears the next line of the 
+-	 * screen, which makes a mess.
+-	 */
+-	if (win->s_typebufpos+2 == win->s_typebufmax) {
+-		display_eol(win);
+-	}
+-	win->s_typebuf[win->s_typebufpos++] = ch;
+-	win->s_typebuf[win->s_typebufpos] = 0;
+-}
+-
+-static
+-void
+-display_tab(window *win) {
+-	while (win->s_typebufpos%8 != 0) {
+-		display_addch(win, ' ');
+-	}
+-}
++	size_t olen;
++	wchar_t *dest;
++	char *d;
++	iconv_t ic;
++	int rc;
++
++	ic = iconv_open("WCHAR_T", charset);
++	if (NULL == ic)
++		return NULL;
++
++	dest = malloc((ilen+1) * sizeof(wchar_t));
++	d = (char*)dest;
++	if (NULL == dest)
++		p_error("Out of memory");
++	olen = ilen * sizeof(wchar_t);
++	rc = iconv(ic,&src,&ilen,&d,&olen);
++	iconv_close(ic);
++	if (-1 == rc) {
++		free(dest);
++		return NULL;
++	}
++	*((wchar_t*)d) = L'\0';
++	return dest;
++}
++
++static int convert_back(char *charset,
++			char *dest, int dlen,
++			wchar_t *src, int slen)
++{
++	size_t ilen,olen;
++	char *ibuf,*obuf;
++	iconv_t ic;
++	
++	ic = iconv_open(charset, "WCHAR_T");
++	if (NULL == ic)
++		return -1;
+ 
+-static
+-void
+-display_cerase(window *win)
+-{
+-	if (win->s_typebufpos > 0) {
+-		win->s_typebuf[--win->s_typebufpos] = 0;
++	ilen = slen * sizeof(wchar_t);
++	olen = dlen;
++	ibuf = (char*)src;
++	obuf = dest;
++	iconv(ic,&ibuf,&ilen,&obuf,&olen);
++	iconv_close(ic);
++	return obuf - dest;
++}
++
++static int display_addchar(window *win, int *out, int *pos, wchar_t ch)
++{
++	int width;
++
++	width = wcwidth(ch);
++	if (-1 == width)
++		/* non-printable by the current locale */
++		ch = L'?';
++	width = wcwidth(ch);
++	    
++	if (*out >= win->s_typebuf_wlen) {
++		win->s_typebuf_wlen += 16;
++		win->s_typebuf_w = realloc(win->s_typebuf_w,
++					   (win->s_typebuf_wlen+1) *
++					   sizeof(wchar_t));
++		if (NULL == win->s_typebuf_w)
++			p_error("Out of memory");
+ 	}
++	if (*pos + width > COLS-1)
++		return -1;
++	win->s_typebuf_w[*out] = ch;
++	*out += 1;
++	*pos += width;
++	return 0;
+ }
+ 
+-static
+-void
+-display_werase(window *win)
++static void display_delchar(window *win, int *out, int *pos)
+ {
+-	/*
+-	 * Search backwards until we find the beginning of a word or 
+-	 * the beginning of the line.
+-	 */
+-	int lastpos=win->s_typebufpos;
+-	int pos = lastpos;
+-
+-	while (pos>=0) {
+-		int onword = pos<lastpos && win->s_typebuf[pos]!=' ';
+-		int prevspace = pos==0 || win->s_typebuf[pos-1]==' ';
+-		if (onword && prevspace) break;
+-		pos--;
+-	}
+-	if (pos<0) pos = 0;
+-
+-	win->s_typebuf[pos] = 0;
+-	win->s_typebufpos = pos;
++	*out -= 1;
++	*pos -= wcwidth(win->s_typebuf_w[*out]);
+ }
+ 
+ /*
+@@ -471,46 +508,141 @@
+ void
+ display(int hiswin, unsigned char *text, int size)
+ {
+-	int j;
++	static char msg[80];
++	int in,out,pos;
++	wchar_t *tmp;
++	int tmplen;
++	char *lcharset,*charset = NULL;
+ 	window *win = hiswin ? &his_win : &my_win;
+ 	last_was_bot = hiswin;
+ 
+-	for (j = 0; j < size; j++) {
+-		if (text[j] == '\n' || text[j]=='\r') {
+-			display_eol(win);
+-		}
+-		else if (text[j]=='\b' || 
+-			 text[j]==127 || 
+-			 text[j]==win->cerase) {
++	/* append new data to current line */
++	win->s_typebuf_raw = realloc(win->s_typebuf_raw,
++				     win->s_typebuf_len + size);
++	if (NULL == win->s_typebuf_raw)
++		p_error("Out of memory");
++	memcpy(win->s_typebuf_raw+win->s_typebuf_len,text,size);
++	win->s_typebuf_len += size;
+ 
+-			/* someday erase characters will work right in unix */
+-			display_cerase(win);
+-		}
+-		else if (text[j] == win->werase) {
+-			display_werase(win);
++	/* convert the line to wchar_t */
++	lcharset = nl_langinfo(CODESET);
++	if (hiswin) {
++		/*
++		 * Because as talk doesn't say what charset the other
++		 * end uses, we have to do some guesswork here ...
++		 *
++		 *   Very first try is encoding specified on the command
++		 *   line option (if present).
++		 *
++		 *   First try is utf-8 which is easy to identify
++		 *   because iconv very likely failes if the guess is
++		 *   wrong (or it doesn't matter if the guess is wrong
++		 *   because the received text is plain us-ascii which
++		 *   in turn is a subset utf-8 ...).
++		 *
++		 *   Next try is the charset used by the current
++		 *   locale, taking in account that the people talking
++		 *   to each other likely use the same language and
++		 *   thus the same locale.
++		 *
++		 *   If nothing else works, we use iso-8859-1 as
++		 *   fallback.
++		 */
++		char *try[] = {
++			peer_encoding,
++			"UTF-8",
++			lcharset,
++			"ISO-8859-1",
++		};
++		size_t i;
++		
++		for (i = 0, tmp = NULL; i < sizeof(try)/sizeof(char*); i++) {
++			if (NULL == try[i])
++				continue;
++			charset = try[i];
++			tmp = try_convert(charset,win->s_typebuf_raw,
++					  win->s_typebuf_len);
++			if (tmp)
++				break;
++		}
++#if 1
++		/* nice for trouble shooting ... */
++		sprintf(msg,"guessed peer charset: %s",charset);
++		message(msg);
++#endif
++	} else {
++		charset = lcharset;
++		tmp = try_convert(charset,win->s_typebuf_raw,
++				  win->s_typebuf_len);
++	}
++	if (NULL == tmp)
++		p_error("iconv");
++
++	/* (re-)build wchar_t line buffer */
++	tmplen = wcslen(tmp);
++	
++	for (in = 0, out = 0, pos = 0; in < tmplen; in++) {
++		if (tmp[in] == L'\n' || tmp[in]==L'\r') {
++			break;
++		}
++		else if (tmp[in]==L'\b' || 
++			 tmp[in]==127 || 
++			 tmp[in]==win->cerase) {
++			if (out > 0)
++				display_delchar(win,&out,&pos);
++		}
++		else if (tmp[in] == win->werase) {
++			while (out > 0 && win->s_typebuf_w[out-1] != L' ')
++				display_delchar(win,&out,&pos);
+ 		}
+-		else if (text[j] == win->lerase) {
++		else if (tmp[in] == win->lerase) {
+ 			/* line kill */
+-			display_lerase(win);
++			out = 0;
++			pos = 0;
+ 		}
+-		else if (text[j] == '\a') {
+-			beep();
++		else if (tmp[in] == L'\a') {
++			if (in+1 == tmplen)
++				beep();
+ 		}
+-		else if (text[j] == '\f') {
++		else if (tmp[in] == '\f') {
+ 			/* nothing */
+ 		}
+-		else if (text[j] == '\t') {
+-			display_tab(win);
++		else if (tmp[in] == L'\t') {
++			while ((out % 8) != 0) {
++				if (-1 == display_addchar(win,&out,&pos,L' '))
++					break;
++			}
++			if ((out % 8) != 0)
++				break;
++		}
++		else if ((tmp[in]) < L' ') {
++			if (-1 == display_addchar(win,&out,&pos,L'^'))
++				break;
++			if (-1 == display_addchar(win,&out,&pos,tmp[in] + 64))
++				break;
+ 		}
+-		else if ((text[j] & 0x7F) < ' ') {
+-			display_addch(win, '^');
+-			display_addch(win, (text[j] & 63) + 64);
+-		} 
+ 		else {
+-			display_addch(win, text[j]);
++			if (-1 == display_addchar(win,&out,&pos,tmp[in]))
++				break;
+ 		}
+ 	}
+-	dorefresh();
++	win->s_typebuf_w[out] = L'\0';
++	win->s_typebufpos = pos;
++
++	if (in != tmplen) {
++		/* line break */
++		display_eol(win);
++		if (tmp[in] == L'\n' || tmp[in]==L'\r')
++			in++;
++	}
++	if (in != tmplen) {
++		/* more data for the next line ... */
++		size = convert_back(charset,text,size,tmp+in,tmplen-in);
++		display(hiswin,text,size);
++	} else {
++		dorefresh();
++	}
++	free(tmp);
+ }
+ 
+ /**************************************************************/
+@@ -586,6 +718,7 @@
+ 
+ 	if (hold) {
+ 		/* alternative screen, wait before exiting */
++		wait_for_data(0);
+ 		getch();
+ 	}
+ 
+@@ -603,6 +736,7 @@
+ 	if (direct != 1 && hold) {
+ 		/* alternative screen, prompt before exit */
+ 		middle_message("Press any key to exit", "");
++		wait_for_data(0);
+ 		getch();
+ 	}
+ 	else {
+--- netkit-ntalk-0.17/talk/io.c.mb	2000-07-23 02:31:57.000000000 +0200
++++ netkit-ntalk-0.17/talk/io.c	2003-03-03 16:40:08.000000000 +0100
+@@ -58,7 +58,8 @@
+ talk(void)
+ {
+ 	fd_set read_set;
+-	int nb, k;
++	int nb;
++	char *k;
+ 	unsigned char buf[BUFSIZ];
+ 
+ 	message("Connection established");
+@@ -97,11 +98,10 @@
+ 		}
+ 		if (FD_ISSET(0, &read_set)) {
+ 			k = dogetch();
+-			if (k>=0 && sockt>=0) {
+-				nb = 1;
+-				buf[0] = k;
+-				display(0, buf, nb);
+-				while (write(sockt, buf, nb)==-1 && 
++			if (NULL != k && sockt>=0) {
++				nb = strlen(k);
++				display(0, k, nb);
++				while (write(sockt, k, nb)==-1 && 
+ 				       errno==EAGAIN)
+ 					;
+ 			}
+--- netkit-ntalk-0.17/talk/talk.c.mb	1999-08-01 05:20:44.000000000 +0200
++++ netkit-ntalk-0.17/talk/talk.c	2003-03-03 16:40:08.000000000 +0100
+@@ -41,6 +41,11 @@
+ char talk_rcsid[] = 
+   "$Id: talk.c,v 1.3 1999/08/01 03:20:44 dholland Exp $";
+ 
++#include <stdio.h>
++#include <stdlib.h>
++#include <unistd.h>
++#include <locale.h>
++#include <getopt.h>
+ #include "../version.h"
+ 
+ #include "talk.h"
+@@ -62,7 +67,28 @@
+ int
+ main(int argc, char *argv[])
+ {
+-	get_names(argc, argv);
++	int c;
++	
++	if (NULL == setlocale(LC_ALL,"")) {
++		fprintf(stderr,"warning: locale not supported by libc\n");
++		 /* give the user the chance to read the error message
++		  * before init_display() clears the screen ... */
++		sleep(3);
++	}
++
++	for (;;) {
++		if (-1 == (c = getopt(argc, argv, "p:")))
++			break;
++		switch (c) {
++		case 'p':
++			peer_encoding = optarg;
++			break;
++		default:
++			exit(1);
++		}
++	}
++	get_names(argc - optind+1, argv + optind-1);
++	
+ 	init_display();
+ 	open_ctl();
+ 	open_sockt();
+--- netkit-ntalk-0.17/talk/talk.h.mb	1999-11-25 08:46:44.000000000 +0100
++++ netkit-ntalk-0.17/talk/talk.h	2003-03-03 16:40:08.000000000 +0100
+@@ -68,7 +68,7 @@
+ void set_his_edit_chars(int ctrlh, int ctrlu, int ctrlw);
+ void dobeep(void);
+ void dorefresh(void);
+-int dogetch(void);  /* returns 0-255 or -1 meaning no character */
++char* dogetch(void);  /* returns mbs or NULL meaning no character */
+ 
+ #define HIS_DAEMON 0
+ #define MY_DAEMON 1
+@@ -78,3 +78,4 @@
+ extern	struct in_addr his_machine_addr;
+ extern	u_short daemon_port;
+ extern	CTL_MSG msg;
++extern char *peer_encoding;
+--- netkit-ntalk-0.17/talk/talk.1.mb	2000-07-31 01:57:02.000000000 +0200
++++ netkit-ntalk-0.17/talk/talk.1	2003-03-03 16:40:08.000000000 +0100
+@@ -40,6 +40,7 @@
+ .Nd talk to another user
+ .Sh SYNOPSIS
+ .Nm talk
++[-p encoding]
+ .Ar person
+ .Op Ar ttyname
+ .Sh DESCRIPTION
+@@ -48,7 +49,11 @@
+ terminal to that of another user.
+ .Pp
+ Options available:
+-.Bl -tag -width ttyname
++.Bl -tag -width encoding
++.It Ar encoding
++The charset encoding sent by your peer (i.e. UTF-8, ISO-8859-1,
++EUC-JP, whatever).  Default is some guesswork based on the incoming
++data and your current locate.
+ .It Ar person
+ If you wish to talk to someone on your own machine, then
+ .Ar person
+--- netkit-ntalk-0.17/talkd/announce.c.mb	2003-03-03 16:40:08.000000000 +0100
++++ netkit-ntalk-0.17/talkd/announce.c	2003-03-03 16:40:08.000000000 +0100
+@@ -43,6 +43,7 @@
+ #include <sys/wait.h>
+ #include <sys/socket.h>
+ #include <errno.h>
++#include <time.h>
+ #include <syslog.h>
+ #include <unistd.h>
+ #include <stdio.h>

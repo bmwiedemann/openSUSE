@@ -1,0 +1,38 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2011-09-25 20:28:23.716113840 +0200
+Upstream: dead?
+
+Do not automatically append any extension; nobody expects this.
+
+---
+ yaccsrc/Script.cc |   17 -----------------
+ 1 file changed, 17 deletions(-)
+
+Index: surf-1.0.6/yaccsrc/Script.cc
+===================================================================
+--- surf-1.0.6.orig/yaccsrc/Script.cc
++++ surf-1.0.6/yaccsrc/Script.cc
+@@ -480,23 +480,6 @@ void Script::saveColorImage ()
+ 	 * I could have just thrown an exception in FileWriter if the file couldnt
+ 	 * be opened. But now Ive got to open the file too early...
+ 	 */
+-	
+-	if (color_output_data == color_output_xwd_data) {
+-		strcat(surface_filename_data, ".xwd");
+-	} else if (color_output_data == color_output_sun_data) {
+-		strcat(surface_filename_data, ".ras");
+-	} else if (color_output_data == color_output_ppm_data) {
+-		strcat(surface_filename_data, ".ppm");
+-	} else if (color_output_data == color_output_jpeg_data) {
+-		strcat(surface_filename_data, ".jpg");
+-	} else if (color_output_data == color_output_postscript_data) {
+-		strcat(surface_filename_data, ".ps");
+-	} else if (color_output_data == color_output_encapsulatedpostscript_data) {
+-		strcat(surface_filename_data, ".eps");
+-	} else if (color_output_data == color_output_pdf_data) {
+-		strcat(surface_filename_data, ".pdf");
+-	} 
+-
+ 	FileWriter fw (surface_filename_data);
+ 	FILE *f = fw.openFile();
+ 	if (f==0) {

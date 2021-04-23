@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Sun Dec 25 15:03:45 UTC 2016 - sor.alexei@meowr.ru
+
+- Rename the pidgin-advanced-sound-notification-lang package to
+  pidgin-plugin-advanced-sound-notification-lang.
+- Require Pidgin of the exact or greater version.
+- Use tarball signing.
+
+-------------------------------------------------------------------
+Thu Jan 12 16:41:37 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  SPDX
+
+-------------------------------------------------------------------
+Tue Sep 27 13:06:44 UTC 2011 - vuntz@opensuse.org
+
+- Cleanup for inclusion in Factory.
+
+-------------------------------------------------------------------
+Fri Sep  2 14:09:12 UTC 2011 - christoph.miebach@web.de
+
+- New package (version 1.2.1).
+

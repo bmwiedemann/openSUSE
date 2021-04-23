@@ -1,0 +1,164 @@
+From: Henning Meyer <surfer@imaginary2008.de>
+Updated-by: Jan Engelhardt <jengelh@medozas.de>
+Upstream: dead?
+
+Add partial rendering support to surf, for use with surfer.
+
+---
+ src/Options.cc    |   31 +++++++++++++++++++++++++++++++
+ src/Options.h     |    1 +
+ yaccsrc/Script.cc |   34 +++++++++++++++++++++++++++++++---
+ 3 files changed, 63 insertions(+), 3 deletions(-)
+
+Index: surf-1.0.6/src/Options.cc
+===================================================================
+--- surf-1.0.6.orig/src/Options.cc
++++ surf-1.0.6/src/Options.cc
+@@ -24,6 +24,7 @@
+ 
+ #include "Options.h"
+ #include <iostream>
++#include <strstream>
+ #include <string.h>
+ #include <stdlib.h>
+ 
+@@ -47,16 +48,42 @@ char usage_text[] = "Usage: surf -n | --
+ 
+ #endif
+ 
++int clip_xmin = -1;
++int clip_ymin = -1;
++int clip_xmax = -1;
++int clip_ymax = -1;
++
+ Options::Options(int _argc, char* _argv[])
+ 	: argc(_argc), argv(_argv),
+ 	  fileopts(1), no_gui(false), execute(false),
+ 	  progress_dialog(false), auto_resize(false)
++	  , quiet(false)
+ {
++#ifdef NO_GUI
++	for (fileopts = 1; fileopts < argc; ++fileopts) {
++		if (strcmp(argv[fileopts], "--clip_to") == 0) {
++			++fileopts;
++			clip_xmin = strtol(argv[fileopts++], NULL, 0);
++			clip_ymin = strtol(argv[fileopts++], NULL, 0);
++			clip_xmax = strtol(argv[fileopts++], NULL, 0);
++			clip_ymax = strtol(argv[fileopts], NULL, 0);
++		} else if (strcmp(argv[fileopts], "-q") == 0) {
++			quiet = true;
++			std::cout.rdbuf((new std::ostrstream())->rdbuf());
++			std::cerr.rdbuf((new std::ostrstream())->rdbuf());
++		} else if (strcmp(argv[fileopts], "-n") == 0) {
++			// ... nothing to do
++		} else {
++			break;
++		}
++	}
++#else
+ 	if(argc > 1 &&
+ 	   (strcmp(argv[1], "-n") == 0 || strcmp(argv[1], "--no-gui") == 0)) {
+ 		no_gui = true;
+ 		fileopts = 2;
+ 	}
++#endif
+ #ifndef NO_GUI
+           else {
+ 		gtk_init(&argc, &argv);
+@@ -79,6 +106,10 @@ Options::Options(int _argc, char* _argv[
+ 				progress_dialog = true;
+ 			} else if(strcmp(argv[i], "--auto-resize") == 0) {
+ 				auto_resize = true;
++			} else if (strcmp(argv[fileopts], "-q") == 0) {
++				quiet = true;
++				std::cout.rdbuf((new std::ostrstream())->rdbuf());
++				std::cerr.rdbuf((new std::ostrstream())->rdbuf());
+ 			} else if(strcmp(argv[i], "-n") == 0 ||
+ 				  strcmp(argv[i], "--no-gui") == 0) {
+ 				std::cerr << "Error: \'" << argv[i] << "\' must be the only option\n\n"
+Index: surf-1.0.6/src/Options.h
+===================================================================
+--- surf-1.0.6.orig/src/Options.h
++++ surf-1.0.6/src/Options.h
+@@ -22,6 +22,7 @@ private:
+ 	bool execute;
+ 	bool progress_dialog;
+ 	bool auto_resize;
++	bool quiet;
+ };
+ 
+ extern Options* options;
+Index: surf-1.0.6/yaccsrc/Script.cc
+===================================================================
+--- surf-1.0.6.orig/yaccsrc/Script.cc
++++ surf-1.0.6/yaccsrc/Script.cc
+@@ -44,6 +44,13 @@
+ #include <sys/stat.h>
+ #include <unistd.h>
+ 
++extern "C" int surface_run_commands;
++
++extern int clip_xmin;
++extern int clip_ymin;
++extern int clip_xmax;
++extern int clip_ymax;
++
+ #include "FileWriter.h"
+ #include "TreePolynom.h"
+ #include "Misc.h"
+@@ -78,8 +85,6 @@
+ // #define DEBUG
+ #include "sdebug.h"
+ 
+-using namespace std;
+-
+ TSDrawingArea	*Script::display	= 0;
+ RgbBuffer	*Script::buffer		= 0;
+ bit_buffer	*Script::bitbuffer	= 0;
+@@ -90,6 +95,7 @@ Preview          Script::preview;
+ 
+ Condition scriptRunning;
+ 
++using namespace std;
+ 
+ /* extern "C" */ void symtab_delete_element(symtab *);
+ 
+@@ -145,6 +151,10 @@ void *Script::startThread (void *data)
+ 	if (ess->parse_result == 0) {
+ 		internalExecuteScript (ess->thirdPart);
+ 	}
++#ifdef NO_GUI
++	if (ess->errorOccured())
++		cerr << ess->getErrorString() << endl;
++#endif
+ 
+ 	scriptRunning.lock();
+ 	scriptRunning.value = 0;
+@@ -392,8 +402,26 @@ void Script::drawSurface()
+ 	getBuffer()->clearTags();
+ 
+ 	*getZBuffer() = -10.0;
+-	sc.surface_calculate(0, 0, main_width_data, main_height_data, *getBuffer());
+ 
++	int xmin = 0;
++	int ymin = 0;
++	int xmax = main_width_data;
++	int ymax = main_height_data;
++
++// begin - partial image hack
++#define ZMAX(a, b) (a > b ? a : b)
++#define ZMIN(a, b) (a < b ? a : b)
++	if (clip_xmin >= 0)
++		xmin = ZMIN(ZMAX(clip_xmin, 0), main_width_data);
++	if (clip_ymin >= 0)
++		ymin = ZMIN(ZMAX(clip_ymin, 0), main_height_data);
++	if (clip_xmax >= 0)
++		xmax = ZMIN(ZMAX(clip_xmax, 0), main_width_data);
++	if (clip_ymax >= 0)
++		ymax = ZMIN(ZMAX(clip_ymax, 0), main_height_data);
++// end - partial image hack
++
++	sc.surface_calculate(xmin, ymin, xmax, ymax, *getBuffer());
+ 
+ 	if( display_numeric.stereo_eye ) {
+ 		// -----------------

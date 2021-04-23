@@ -1,0 +1,152 @@
+-------------------------------------------------------------------
+Mon May  6 09:45:41 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Fix building with new orc by skiping testsuite subfolder as
+  we are not executing the tests anyway
+- Update URL
+- Adjust the Sources URL
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Feb  1 12:03:46 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Mon Jan 23 09:10:15 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.0.11:
+  + Added 10-bit and 16-bit support to both the encoder and
+    decoder.
+
+-------------------------------------------------------------------
+Thu Dec 15 13:49:56 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Fri Apr 14 13:38:21 UTC 2011 - toddrme2178@gmail.com
+   
+- added 32bit compatibility libraries
+- fixed documentation package dependency (fix for RMPLINT warning)
+- added explicit test for needed orc version
+
+-------------------------------------------------------------------
+Sun Dec 19 17:33:05 UTC 2010 - lnussel@suse.de
+
+- provide libschroedinger-devel
+
+-------------------------------------------------------------------
+Sat Oct  9 11:20:09 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 1.0.10:
+   + Build fixes on various platforms
+   + Speed increases for low-delay syntax
+   + Fix unaligned access in orc code, which was uncovered by a
+     recent Orc bug fix.
+   + No encoder changes
+- Drop schroedinger-1.0.9-fix-linking.patch: fixed upstream another
+  way. Also remove the call to autoreconf.
+
+-------------------------------------------------------------------
+Thu Mar 25 11:20:31 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.0.9:
+  + Orc: Complete conversion to Orc and removal of liboil
+    dependency.
+  + Added a lot of orc code to make things faster. A lot faster.
+  + New motion vector generation, enabled by default.
+  + New CBR rate control, enabled by default.
+  + New scene change detection, enabled by default.
+  + Encoder went through several rounds of tuning, improving
+    quality greatly.
+  + New encoder setting "force-profile". Allows easy access to one
+    of three VC-2 profiles (vc2_low_delay, vc2_simple, vc2_main)
+    for intermediate coding. Default is same as before: long-GOP
+    Dirac.
+  + Improved lossless encoding. Works in concert with
+    force-profile.
+- Changes from version 1.0.8:
+  + encoder: various performance enhancements
+  + Orc: More Orc conversion. The next release will likely require
+    Orc to build.
+  + Add a fast path for 8x8 non-obmc motion blocks.
+  + encoder: Fix the queue-depth setting so that it actually works.
+  + Fix a bitstream conformance bug. Shows up as a psychadelic
+    color pattern. Broken bitstreams should be uncommon, however,
+    if the decoder detects a broken bitstream, it will be played
+    correctly.
+  + Move GStreamer plugin to gst-plugins-bad
+  + encoder: Strictly enforce bit rate. Encoded pictures are cut
+    off if they are larger than the available buffer.
+  + encoder: Change the backref engine to use an IPPPP...
+    structure, using the last two pictures as references.
+- Drop schroedinger-am111.patch: fixed upstream.
+- Drop schroedinger-strict-aliasing.patch: fixed upstream.
+- Drop schroedinger-gstreamer-conflict.patch: the gstreamer plugin
+  moved to gstreamer-plugins-bad.
+- Remove gstreamer-0_10-schroedinger subpackage and
+  gstreamer-0_10-devel, gstreamer-0_10-plugins-base-devel
+  BuildRequires.
+- Remove liboil-devel BuildRequires.
+- Add orc BuildRequires.
+- Fix self-obsoletion of schroedinger.
+- Changes schroedinger Requires to schroedinger-devel for devel
+  pacakge.
+- Add schroedinger-1.0.9-fix-linking.patch to fix build, and call
+  autoreconf -fi.
+
+-------------------------------------------------------------------
+Thu Aug 27 16:29:11 UTC 2009 - mseben@novell.com
+
+- added gstreamer-conflict.patch to fix build :rename function, 
+  which conflicts with gstreamer
+
+-------------------------------------------------------------------
+Tue Jul 21 21:46:09 CEST 2009 - dominique-obs@leuenberger.net
+
+- Require gcc-c++
+- schroedinger-am111.patch, taken from upstream git 
+
+-------------------------------------------------------------------
+Wed Jul  1 17:04:07 CEST 2009 - sbrabec@suse.cz
+
+- Updated to version 1.0.7:
+  * Requires liboil-0.3.16
+  * New configure flag '--disable-encoder'
+  * New constant-quality encoding mode
+  * Various encoder improvements
+  * Speed improvements in decoder
+  * API additions for parsing streams in the decoder
+  * API improvements handling interlaced video
+  * Rewrite of the GStreamer elements, including new base classes
+    for video encoding and decoding
+  * Moved extra GStreamer elements to Cog
+
+-------------------------------------------------------------------
+Thu Nov  6 18:39:38 CET 2008 - sbrabec@suse.cz
+
+- Use better package name for gstreamer package.
+
+-------------------------------------------------------------------
+Fri Aug 15 00:45:16 EDT 2008 - abockover@suse.de
+
+- Updated to 1.0.5 release
+- Many bug fixes
+- Better documentation
+- Performance gains in the encoder
+- GStreamer element improvements
+
+-------------------------------------------------------------------
+Mon Mar 10 22:50:15 CET 2008 - abockover@suse.de
+
+- New schroedinger package (1.0.0 release)
+- Provides a high quality optimized implementation of the Dirac
+  video codec from the BBC
+- Four packages:
+  * libschroedinger-1_0-0: Base Schroedinger library
+  * gstreamer-0_10-libschroedinger-1_0-0: GStreamer plugin for decoding
+    and encoding Dirac video content
+  * schroedinger-devel: Header files for developing against Schroedinger
+  * shroedinger-doc: Documentation (gtk-doc) for the Schroedinger library
+

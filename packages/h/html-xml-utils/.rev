@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ff7116ae62599603c7cbbd0d700c26e8</srcmd5>
+    <version>7.4</version>
+    <time>1516359095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>560872</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>116cf551d8e54669895b7c4350c3f109</srcmd5>
+    <version>7.6</version>
+    <time>1519683919</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>579964</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c1e28edcdf580d88ed904a2727700d1d</srcmd5>
+    <version>7.7</version>
+    <time>1530993697</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621124</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ee3a1232c6c9fc2e8f3f0f068b23f3b0</srcmd5>
+    <version>7.7</version>
+    <time>1531813287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622856</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d90ef71af31adaf38e541e2a7e16c266</srcmd5>
+    <version>7.8</version>
+    <time>1572180111</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 7.8:
+ * textwrap.c, langinfo.c, hxnormalize.c: Added knowledge about
+   languages that do not use spaces between words. In such languages,
+   a newline should not be converted to a space in outc() in
+   textwrap.c, but only to a break opportunity.
+ * hxtoc.c: The element to group headings in HTML5 is called
+   HGROUP, not HEADER. The heading of a section (SECTION, ARTICLE,
+   etc.) need not be the first element, there may be non-header
+   elements before it.
+ * hxwls.c: Print &quot;longdesc&quot;, &quot;classid&quot; or &quot;codebase&quot; in the second
+   column for the corresponding attribute. Also recognize srcset
+   (somewhat).
+ * hxnormalize.c: Added option -X to indicate the input is XML
+   instead of HTML. Handle conversion of CDATA elements to XML by
+   escaping &lt; and &amp; instead of adding &lt;![CDATA[. Added corresponding
+   test normalize13.sh.
+</comment>
+    <requestid>743106</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>90856915f582165c4ddaefdbb0ae6e3c</srcmd5>
+    <version>7.9</version>
+    <time>1610381752</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862243</requestid>
+  </revision>
+</revisionlist>

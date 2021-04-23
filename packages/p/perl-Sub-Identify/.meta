@@ -1,0 +1,8 @@
+<package name="perl-Sub-Identify" project="openSUSE:Factory">
+  <title>Retrieve names of code references</title>
+  <description>Sub::Identify allows you to retrieve the real name of code references.
+For this, it uses perl's introspection mechanism, provided by the
+B module.</description>
+  <devel project="devel:languages:perl" package="perl-Sub-Identify"/>
+  <url>http://search.cpan.org/dist/Sub-Identify</url>
+</package>

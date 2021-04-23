@@ -1,0 +1,25 @@
+<package name="objenesis" project="openSUSE:Factory">
+  <title>A library for instantiating Java objects</title>
+  <description>Objenesis is a small Java library that serves one purpose: to instantiate
+a new object of a particular class.
+Java supports dynamic instantiation of classes using Class.newInstance();
+however, this only works if the class has an appropriate constructor. There
+are many times when a class cannot be instantiated this way, such as when
+the class contains constructors that require arguments, that have side effects,
+and/or that throw exceptions. As a result, it is common to see restrictions
+in libraries stating that classes must require a default constructor.
+Objenesis aims to overcome these restrictions by bypassing the constructor
+on object instantiation. Needing to instantiate an object without calling
+the constructor is a fairly specialized task, however there are certain cases
+when this is useful:
+* Serialization, Remoting and Persistence - Objects need to be instantiated
+  and restored to a specific state, without invoking code.
+* Proxies, AOP Libraries and Mock Objects - Classes can be sub-classed without
+  needing to worry about the super() constructor.
+* Container Frameworks - Objects can be dynamically instantiated in
+  non-standard ways.
+
+</description>
+  <devel project="Java:packages" package="objenesis"/>
+  <url>http://objenesis.org/</url>
+</package>

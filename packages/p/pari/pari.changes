@@ -1,0 +1,384 @@
+-------------------------------------------------------------------
+Sun Feb  7 21:15:14 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to release 2.13.1. Fixes the following bugs:
+  * GC error in idealinv.
+  * qfminim inefficiency (initial bound from non-LLL-reduced matrix).
+  * mfshimura in weight 3/2 => infinite loop
+  * matsolve([1,1,1/2; 1,0,1/2; 2,1,0], [-1;1;-1]) -> SEGV.
+  * qfminim(Mat(1),,,2) -> precision error.
+  * subst(p, v, t_SER) very slow if p contains many variables.
+  * mfsymboleval for trivial path returned 0 instead of a vector
+    of 0s when f has multiple embeddings.
+  * 2^(1 + O(3^4)) -> type error.
+  * Zn_quad_roots(8,0,-1) to compute roots of x^2-1 mod 8 -> [4,[1,3]]
+    (1 or 3 mod 4) instead of the expected [2,[1]] (1 mod 2).
+  * tan(1+10^20*I) -> overflow (same for cotan and psi).
+  * Mod(2,3)^1000000000000000000001 -> Mod(-1,3).
+  * subst(O(y) + x, x, (1 - y + O(y^2))*x + O(x^2)) -> SEGV.
+  * (Mod(0,3) + x) + O(x^2) -> x + O(x^2)  [now Mod(1,3)*x + O(x^2)].
+  * Precision too low for units in mfgaloisprojrep.
+  * Missing GC at the end of RgXn_inv.
+  * (-1)^(1/3) -> -1 instead of exp(log(-1)/3).
+  * mfeisenstein(k, trivial characters mod N > 1) was incorrect.
+  * Missing GC in qfsolve.
+
+-------------------------------------------------------------------
+Mon Oct 26 15:03:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.13.0
+  * New libpari functions: perm_sqr, perm_powu, perm_orderu, quodif.
+  * Added asymptotically fast quadunit.
+  * Faster intnumgaussinit and change default number of points
+    to B/4, suitable when b - a ~ distance to the nearest pole.
+  * In libpari, perm_pow now takes a t_INT exponent, permorder
+    and perm_order return a t_INT.
+  * sizebyte(objects containing t_LIST): would assign size 3 to all lists
+  * permorder returned incorrect results for large orders
+  * cure SIGSEGV on [Map(Mat([0, 0])), [0, 0, 1]]
+  * cure SIGSEGV on zeta(I+2^(-64))
+  * cure infinite loop on p=[4,54];lfunmf(mfinit(p,0), mftraceform(p,0))
+  * printf("%5.2f",M) transposed M
+  * bnfinit instability at low accuracy. E.g., at \p38
+    P=x^7+22*x^6+184*x^5+764*x^4+2020*x^3+3792*x^2+5712*x+4;
+    bnfinit(P,1).no -> 4 times too large
+  * Accuracy problems in bnfisunit after bnfinit(P,1). E.g.,
+    P=x^7-22*x^6+169*x^5-568*x^4+1263*x^3-1506*x^2+2295*x+2;
+    setrand(1); K=bnfinit(P,1); U=bnfunits(K,idealprimedec(K,2));
+    bnfisunit(K,4*(x^2-18*x+85)/x^2*Mod(1,K.pol),U) -> error
+- Update to release 2.12.1.
+  * New functions in GP: asympnumraw, bnrmap, bnfunits,
+    dirpowerssum, ellpadiclambdamu, eulerianpol, eulerfrac,
+    eulerpol, eulervec, fft, fftinv, halfgcd, lfundual, lfunshift,
+    matreduce, mfisetaquo, mscosets, msfarey, nfsubfieldscm,
+    nfsubfieldsmax, parforeach, parforprimestep, parplothexport,
+    permcycles, polylogmult, rootsof1, zetamultdual.
+  * New libpari functions: absZ_factor_limit_strict,
+    bnf_build_cheapfu, bnf_compactfu, bnf_compactfu_mat,
+    bnf_get_sunits, bnf_has_fu, bnrchar_primitive_raw,
+    bnrconductor_factored, bnrconductor_raw, bnrisprincipalmod,
+    bnr_subgroup_check, checkbnr_i, checkfarey_i,
+    closure_callgen0prec, cmpss, cmpuu, cyc_get_expo, div_content,
+    ellQtwist_bsdperiod, etaquotype, expIPiC, expIPiR, F2m_row,
+    F2Ms_colelim, F2Ms_ker, F2Ms_to_F2m, F2m_to_F2Ms,
+    F2m_transpose, F2v_and_inplace, F2v_hamming,
+    F2v_negimply_inplace, F2v_or_inplace, F2xn_inv, F2xn_red,
+    F2xqX_halfgcd, F2xX_to_F2xC, F2xXV_to_F2xM, factorial_Fl,
+    factorial_Fp, famat_div, famat_idealfactor, famat_nfvalrem,
+    famat_remove_trivial, famatV_factorback, famatV_zv_factorback,
+    ff_parse_Tp, FFX_add, FFX_halfgcd, Flv_factorback, Flx_blocks,
+    Flx_Fl_sub, Flx_is_totally_split, Flxn_expint, Flxq_autpowers,
+    FlxqV_factorback, FlxqX_fromNewton, FlxqX_Newton,
+    FlxqXn_expint, FlxqXn_inv, FlxqXn_mul, FlxqXn_sqr,
+    Flx_translate1_basecase, FlxV_Flv_multieval, FlxX_blocks,
+    FlxX_invLaplace, FlxX_Laplace, FlxXn_red, FlxX_translate1,
+    forqfvec1, FpV_prod, FpXC_to_mod, FpX_divu, FpX_Fp_div,
+    FpX_FpXV_multirem, FpXM_to_mod, FpXn_expint, FpXQXn_expint,
+    FpXV_chinese, FpXY_FpXQ_evaly, FqC_FqV_mul, FqC_to_mod,
+    FqV_factorback, FqXC_to_mod, FqX_expint, FqXM_to_mod,
+    galoismatrixapply, gc_const, gen_sort_shallow, gen_ZpM_Newton,
+    groupelts_conj_set, groupelts_quotient, groupelts_to_group,
+    group_subgroup_is_faithful, halfgcdii, hash_zv,
+    idealfactor_partial, ideallogmod, ideallog_units,
+    ideallog_units0, idealpseudominvec, Idealstarmod, init_Flxq,
+    is_qfb_t, Kronecker_to_ZXQX, lfunquadneg, minim_zm,
+    mseval2_ooQ, mspadic_parse_chi, mspadic_unit_eigenvalue,
+    nf_cxlog, nf_cxlog_normalize, nfhyperellpadicfrobenius,
+    nflogembed, nfsign_fu, nfsign_tu, nfV_cxlog, nfX_disc,
+    nfX_resultant, pariplot, pari_realloc_ip, pow2Pis, pow2Pis,
+    powPis, powPis, QabM_tracerel, Qab_tracerel, QabV_tracerel,
+    Qdivis, Qdiviu, Q_lval, Q_lvalrem, QM_gauss_i, QM_image,
+    QM_image_shallow, QM_ImQ, QM_ImQ_all, QM_ImZ, QM_ImZ_all,
+    QM_sqr, quotient_groupelts, QXQ_to_mod_shallow, QXQX_gcd,
+    QXQX_mul, QXQX_powers, QXQX_QXQ_mul, QXQX_sqr, radicalu,
+    random_zv, rfracrecip, RgM_ZM_mul, RgV_type, RgV_type2,
+    RgX_halfgcd, RgXn_expint, RgXV_to_FlxV,
+    rnf_get_ramified_primes, SL2_inv_shallow, sumdivmultexpr,
+    sunits_makecoprime, uis2psp, uispsp, upowers, vec_equiv,
+    vecfactorsquarefreeu_coprime, vec_reduce, vecsmall_is1to1,
+    vecsmall_isconst, vecvecsmall_sort_inplace,
+    vecvecsmall_sort_shallow, Vgaeasytheta, ZC_u_divexact,
+    zlx_translate1, zlxX_translate1, ZMrow_equal0, ZpM_invlift,
+    ZpX_primedec, ZV_lcm, ZV_snf_gcd, zv_sumpart, ZX_compositum,
+    zx_lval, ZXQ_minpoly, ZXQ_powers, ZXQX_gcd, ZXQX_ZXQ_mul,
+    ZX_realroots_irred, ZX_sturm_irred, ZXX_evalx0, ZXX_Q_mul,
+    zx_z_divexact,
+  * Allow nfinit([T, basis, ramified primes]).
+  * Allow nf.p, rnf.p [rational ramified primes].
+  * Add flag bit to ZM_snfall_i.
+  * Allow real t_QUAD in floor, ceil, divrem, %, \, \/.
+  * Parallel support for lfuninit.
+  * Direct formulas for quadratic Dirichlet L-functions at integers.
+  * lfuncreate: support for closures of arity 0.
+  * Compact representation of units in bnf (bnfinit(pol,1)) and of
+       principal ideal generators (bnfisprincipal(bnf,id,4)).
+  * lfuncreate(znstar or bnr,): allow a vector of characters =>
+       vector-valued L-function.
+  * Holes in multi-assignement: [a,,c]=[1,2,3].
+  * nfisincl: new flag: return a single embedding.
+  * qflll(x,3) in place reduction: return x * qflll(x) (faster).
+  * galoisinit: support for group (3x3):4 (GAP4(36,9)).
+  * Removed obsolete function rootsof1_kannan: use nfrootsof1.
+  * Removed obsolete function checkbnrgen: use bnr_get_gen.
+  * For additional changes, see the included changelog.
+- Update to release 2.12.0.
+  * New functions in GP: airy, arity, bnrclassfield, derivn,
+    dirpowers, ellE, ellK, export, exportall, ffmaprel,
+    getlocalbitprec, getlocalprec, hypergeom, idealdown,
+    idealismaximal, mfgaloisprojrep, nfdiscfactors, pollaguerre,
+    polteichmuller, strjoin, strsplit, strtime, unexport,
+    unexportall.
+  * New libpari functions: bid_get_fact2, closure_derivn,
+    constzeta, divisorsu_fact_factored, divisorsu_moebius,
+    F2xqX_disc, F2xqX_resultant, F2x_recip, F2x_Teichmuller,
+    FF_preimagerel, FF_var, FFX_disc, FFX_extgcd, FFX_gcd,
+    FFXQ_minpoly, FFX_resultant, Flx_fromNewton, Flx_integ,
+    Flx_invLaplace, Flx_Laplace, Flx_Newton, Flxn_exp, Flxn_red,
+    Flxn_sqr, FlxqX_disc, FlxqX_resultant, Flx_Teichmuller,
+    Fp_divu, FpXC_FpXQ_eval, FpXQX_disc, FpXQX_resultant, gc_bool,
+    gc_double, gc_int, gc_long, gc_NULL, gc_ulong,
+    gluncloneNULL_deep, guncloneNULL, hash_init, hash_init_ulong,
+    has_str_len, identity_zv, identity_ZV, maxprimeN, mpsinhcosh,
+    mulu_interval_step, nfX_to_monic, nonsquare_Fl,
+    pari_get_histrtime, polint_i, polintspec, pollegendre_reduced,
+    psi1series, qfiseven, rfrac_deflate, rfrac_deflate_max,
+    rfrac_deflate_order, RgV_is_arithprog, RgV_isin_i, set_avma,
+    setunion_i, walltimer_delay, walltimer_start, ZpXQX_liftroots,
+    zv_cyc_minimal, zv_cyc_minimize, ZXQ_powu.
+  * qfbsolve(Q,n) now supports arbitrary integer n.
+  * limitnum/asympnum: allow closures of the form
+    N->[u(1),...,u(N)], which allows to handle efficiently sums,
+    recursions, continued fractions, etc.
+  * Optional flag to pollegendre and polhermite.
+  * Allow subst(e, x, vector v) for vector(subst(e, x, v[i])).
+  * Optional v argument to nfmodprinit.
+  * Support call by reference in GP function: f(~L,x)=listput(~L,x+1).
+  * Generic fast linear algebra using CUP decomposition.
+  * Implement lfunmfspec in odd weight.
+  * Support for rational model in ellratpoints and hyperellratpoints.
+  * Fast algorithm for zeta([a + b*n | n<-[0..N]]).
+  * ellheight(E) now returns the Faltings height of E.
+  * lfun now allows non-integral weights.
+  * example/parigp.sty to re-enable PARI's \pmatrix with amsmath.
+  * Removed member functions .futu and .tufu (deprecated since 2.2).
+  * Removed inferior hash function hash_str2: use hash_str.
+  * Removed obsolete binary flag '2' in matsnf (make it a no no-op).
+  * For additional changes, see the included changelog.
+
+-------------------------------------------------------------------
+Sat Jun  6 23:59:38 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.11.4
+  * fixed "factor((x-1)*(x-y)^2)" going into an infinite loop
+  * "ellap" could fail with division by 0
+  * cure wrong results from "bnfsunit"
+
+-------------------------------------------------------------------
+Thu Mar  5 16:44:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.11.3
+  * Avoid division by zero in Flx_extresultant when one input is 0.
+  * Fix crashes executing "ispower(27,2^60)",
+    "issquare(non square t_FFELT, &x)",
+    "polcompositum(x^2+x/3+1,x^2+x/3+1)",
+    "polrootsreal(x+0.)", "qflllgram([2,2,3;4,5,6])",
+    or printf("%10.6f\n",2^-100).
+
+-------------------------------------------------------------------
+Fri Aug 23 13:49:16 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable pthreads [boo#1142714]
+- Avoid duplicate shipping of documentation.
+
+-------------------------------------------------------------------
+Sun Jul 28 22:37:35 UTC 2019 - Simon Puchert <simonpuchert@alice.de>
+
+- Update to new upstream release 2.11.2
+  * Fixed minpoly(Mod(1,t^2)) causing SIGSEGV.
+  * Fixed segfault in ffinvmap(m) on bad input.
+  * Fixed factormod(x^3+1,[y^2+1,2]) causing SIGSEGV.
+  * Fixed incorrect use of graphcolors leading to a SIGSEGV.
+  * Fixed [a,b]=a possibly leading to memory corruption.
+  * Fixed a memory leak in cgetalloc when lg overflows.
+  * Fixed a possible segfault in padicappr.
+  * Fixed core() possibly destroying its input,
+    if stored in a GP variable.
+  * Fixed stack corruption in quad_disc.
+  * Fixed an infinite loop and stack corruption in ellmoddegree.
+- Drop the separate changelog as RPMLINT warns about it being a
+  duplicate of the file CHANGES (which is already included).
+
+-------------------------------------------------------------------
+Mon Mar 25 19:08:37 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Prepare the KDE4/Qt4 removal in factory.
+
+-------------------------------------------------------------------
+Mon Dec 10 23:51:20 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.11.1
+  * Fixed a heap buffer overflow
+  * Fixed mfsplit(mf,,flag) could return uninitialized objects
+    causing SIGSEGV
+  * Fixed incgam(-1000.4,2) causing SIGSEGV
+  * Fixed mfcoefs(mfDelta(),0) causing SIGSEGV
+  * Fixed segfault in rnfidealup
+
+-------------------------------------------------------------------
+Fri Dec  7 21:14:49 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Use %macro instead of %{macro} wherever possible.
+
+-------------------------------------------------------------------
+Fri Dec  7 16:38:08 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Fix building on SLE 15
+- Use %license macro
+
+-------------------------------------------------------------------
+Wed Aug 29 20:32:25 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 2.11.0
+  * fixed uninitialized memory reads in lgcdii and red_montgomery
+  * fixed memory leaks on pari_close [s_dbginfo, s_frame,
+    colormap/graphcolor
+  * polcoeff is deprecated and renamed polcoef: it now only
+    applies to scalars, polynomials, series and rational
+    functions; no longer to vector/matrices or quadratic forms
+    (use [] or "component")
+  * libpari: rename polcoeff0 -> polcoef, polcoeff_i -> polcoef_i,
+    truecoeff -> truecoef
+
+-------------------------------------------------------------------
+Sat Sep  9 12:33:24 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.9.3
+  * Expression "issquare(Mod(1,67)*x^4+Mod(14,67)*x^2+Mod(49,67))"
+    and "polroots(t_POL whose coeffs vary by a factor > 2^100000)"
+    had caused SIGSEGV
+
+-------------------------------------------------------------------
+Tue Feb 21 00:00:10 UTC 2017 - jengelh@inai.de
+
+- Update to new upstream release 2.9.1
+  * lfunartin was using too much stack
+  * fflog in char 3 or 5 was slower than intended
+  * modular algorithms could fail for very large input
+
+-------------------------------------------------------------------
+Tue Nov 29 11:45:37 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.9.0
+* fixed nfisisom(x,x^0) causing a crash
+* fixed crash on BIB in ellpointtoz(t_PADIC)
+* fixed wrong result for nfroots(non-monic t_POL)
+* fixed division by zero on doing
+  e=ellinit([1,-1,1,98,126],O(5^10)); ellpointtoz(e,[1,14])
+* fixed rare crash in bnfisprincipal
+
+-------------------------------------------------------------------
+Sun Jul 31 16:46:14 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.7.6
+* fixed O(1)==O(x) returning 0
+* matsolve(a,b) and a^(-1) gave wrong results [or SEGV] when t_MAT
+  a was not square and a,b "modular"; same for x^(-1)
+* fixed a memory leak in pari_close: sopath was not freed
+
+-------------------------------------------------------------------
+Sat Mar 12 20:32:55 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 2.7.5
+* forprime engine could skip (fast) sieve in favour of (slow)
+* corrected return values/exceptions of functions
+
+-------------------------------------------------------------------
+Thu Feb 26 12:42:06 UTC 2015 - jengelh@inai.de
+
+- Update to new upstream release 2.7.3
+* "??bnrL1" and "??ellL1" did not work anymore and were fixed
+* thue(f^e*g, ...), e even, (f,g)=1 missed solutions such that f<0
+* nfisincl(t_POL, t_POL) could lead to wrong negative results
+* ellcard over non-prime fields could return wrong results
+* weber(1+I) was missing its imaginary part
+
+-------------------------------------------------------------------
+Sun Oct 12 08:15:21 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.7.2. Fixed were:
+* (gp -p N) or (primelimit=N in gprc_ for N >= 436273290 resulted
+  in an incorrect primetable.
+* monomial(exact zero, d, v) returned an invalid t_POL / t_RFRAC
+* contfracpnqn(v, n) returned partial quotients p[-1]/q[-1] ...
+  p[n-1]/q[n-1], instead of the documented p[0]/q[0] ... p[n]/q[n]
+* iferr() could crash if some component of the t_ERROR were clones
+* nffactor() could overflow the stack when default accuracy too low
+* obsolete use of E=[a1,a2,a3,a4,a6] in ellmul crashed
+* incorrect rounding in mulrr/divrr for one-word precision reals
+* multiif did not handle correctly return() in conditions
+* is_gener_Fp could return wrong results
+* Fq_sqrtn(t_INT,..,&zeta) could return a wrong root of 1
+* bnfinit: SEGV due to precision issues
+* zm_zc_mul only worked for square zm matrices
+* [gphelp] infinite loop when $COLUMNS too small
+* factoru(1) returned a t_MAT instead of the expected "matsmall"
+* when compatible = 3; series() used a random precision
+* isprime() could crash on large input
+* gphelp did not handle === correctly
+
+-------------------------------------------------------------------
+Wed Aug  6 05:14:57 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.7.1
+* Q_pvalrem(t_FRAC) returned a wrong result
+* The "ellheegner" function was using too much memory in some cases
+* nfhilbert(K,x,y, P above 2) could give wrong results
+* nfpow_u didn't handle non-integral rational numbers
+* nfroots(, t_POL with leading coeff -1) could miss solutions
+
+-------------------------------------------------------------------
+Fri Apr 18 14:53:48 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.7.0
+* added new library functions FlxX_to_FlxC, FlxXV_to_FlxM, polx_FlxX,
+  Flx_lead, RgV_to_RgM
+
+-------------------------------------------------------------------
+Wed Feb  5 01:56:32 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 2.5.5
+* sin'(1) with default(compatible,3) caused a crash
+* add missing call to normalize() in lift(t_POL/t_SER)
+* galoisinit(x^3+x^2-2*x-1) led to uninitialized read
+* polred() could return non-squarefree polynomials
+* bnrdisc could return a wrong result if the modulus had more than
+  2 prime divisors
+* FFT mulii relied on unspecified order of evaluation
+* local() could corrupt polynomial variable of the same name
+- Add pari-nodate.diff
+
+-------------------------------------------------------------------
+Sun Jan  6 20:10:01 UTC 2013 - jengelh@inai.de
+
+- Restore original library filename after confirming with upstream
+  (This change is transparent to all users)
+
+-------------------------------------------------------------------
+Thu Nov 29 19:09:42 UTC 2012 - jengelh@inai.de
+
+- Update to new upstream release 2.5.3
+* Fixed a bug whereby calling a GP function with a lot of omitted
+  arguments could crash
+* idealramgroups() and idealfrobenius() did not accept a bnf
+
+-------------------------------------------------------------------
+Sun Feb 26 22:13:05 UTC 2012 - scorot@free.fr
+
+- fix build requirement to allow build on SLE-11
+- recompress source file to bzip2 format to allow build on SLE-11
+- add missing %%post and %%postun scriptlets 
+
+-------------------------------------------------------------------
+Mon Sep 26 08:52:28 UTC 2011 - jengelh@medozas.de
+
+- Initial package (version 2.5.0) for build.opensuse.org

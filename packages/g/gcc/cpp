@@ -1,0 +1,3 @@
+#!/bin/sh
+# Traditionally, /lib/cpp only knew about C.
+exec /usr/bin/cpp -xc "$@"

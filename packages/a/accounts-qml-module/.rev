@@ -1,0 +1,33 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a44808c81cae433230964d1731f25b76</srcmd5>
+    <version>0.7</version>
+    <time>1576234894</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by KDE Applications 19.12</comment>
+    <requestid>755949</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a44808c81cae433230964d1731f25b76</srcmd5>
+    <version>0.7</version>
+    <time>1600078329</time>
+    <user>dimstar_suse</user>
+    <comment>Not needed anymore, fails to build with Qt 5.15.1</comment>
+    <requestid>833929</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a44808c81cae433230964d1731f25b76</srcmd5>
+    <version>0.7</version>
+    <time>1600082153</time>
+    <user>dimstar_suse</user>
+    <comment>Undeleted, still needed</comment>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ff4124a6f1fceeef7bb97ed953f589b5</srcmd5>
+    <version>0.7</version>
+    <time>1600082172</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by some purpose plugins</comment>
+    <requestid>834289</requestid>
+  </revision>
+</revisionlist>

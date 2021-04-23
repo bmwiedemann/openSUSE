@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Tue Aug 18 10:45:31 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Jun 16 11:14:22 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Re-generate file with latest version of spec-cleaner.
+
+-------------------------------------------------------------------
+Fri Nov  8 16:14:16 UTC 2019 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete group attributes.
+
+-------------------------------------------------------------------
+Sat Oct 20 11:31:46 UTC 2018 - Peter Simons <psimons@suse.com>
+
+- Use https URL to refer to bugs.opensuse.org.
+
+-------------------------------------------------------------------
+Fri Aug 17 09:43:29 UTC 2018 - psimons@suse.com
+
+- Update mwc-random to version 0.14.0.0.
+  ## Changes in 0.14.0.0
+
+    * Low level functions for acquiring random data for initialization
+      of PRGN state is moved to `System.Random.MWC.SeedSource` module
+
+    * Ensure that carry is always correct when restoring PRNG state from
+      seed. Only affects users who create 258 element seed manually.
+      (#63, #65)
+
+-------------------------------------------------------------------
+Fri Jul 20 13:38:44 UTC 2018 - psimons@suse.com
+
+- Add mwc-random at version 0.13.6.0.

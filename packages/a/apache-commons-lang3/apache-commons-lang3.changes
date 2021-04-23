@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Mon Mar 25 17:41:59 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Remove pom parent, since we don't use it when not building with
+  maven
+
+-------------------------------------------------------------------
+Mon Feb  4 06:21:14 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Clean-up the spec file and install less jar symlinks
+
+-------------------------------------------------------------------
+Mon Oct 22 10:24:43 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Build commons-lang3-3.8.1 using modified build.xml and
+  default.properties from 3.4.
+- Removed patch:
+  * commons-lang3-3.4-javadoc.patch
+    - integrated in the build.xml
+- Use source and target version 1.7, since the code contains
+  diamond operator.
+
+-------------------------------------------------------------------
+Wed May  2 12:22:44 UTC 2018 - tchvatal@suse.com
+
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct  9 06:45:42 UTC 2017 - fstrba@suse.com
+
+- Modified patch:
+  * commons-lang3-3.4-javadoc.patch
+    + Fix build with jdk9
+- Allow building with jdk9 too
+- Run fdupes on javadoc
+
+-------------------------------------------------------------------
+Thu Sep 14 12:45:49 UTC 2017 - fstrba@suse.com
+
+- Specify java target and source level 1.6
+- Force building with jdk < 1.9, since jdk9's javadoc chocks on one
+  class file (internal error)
+
+-------------------------------------------------------------------
+Fri May 19 09:59:33 UTC 2017 - pcervinka@suse.com
+
+- New build dependency: javapackages-local
+
+-------------------------------------------------------------------
+Sun Jan 24 12:45:36 UTC 2016 - p.drouand@gmail.com
+
+- Initial release (version 3.4)
+

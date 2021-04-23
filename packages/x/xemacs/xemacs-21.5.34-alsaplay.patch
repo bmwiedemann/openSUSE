@@ -1,0 +1,13 @@
+--- xemacs-21.5.34/src/alsaplay.c
++++ xemacs-21.5.34/src/alsaplay.c
+@@ -375,6 +375,10 @@ alsa_play_sound_data (const Binbyte *dat
+   if ((err = snd_pcm_writei (pcm_handle, data, length)) < 0)
+     goto error_mixer;
+ 
++  /* Wait for it to finish */
++  if ((err = snd_pcm_drain (pcm_handle)) < 0)
++    goto error_mixer;
++
+   /* Put the volume back the way it used to be */
+   reset_volume (&mix);
+ 

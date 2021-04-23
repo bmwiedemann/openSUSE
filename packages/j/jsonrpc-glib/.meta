@@ -1,0 +1,5 @@
+<package name="jsonrpc-glib" project="openSUSE:Factory">
+  <title>jsonrpc-glib</title>
+  <description></description>
+  <devel project="GNOME:Factory" package="jsonrpc-glib"/>
+</package>

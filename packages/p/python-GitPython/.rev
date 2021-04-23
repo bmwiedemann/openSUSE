@@ -1,0 +1,364 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8207c81c25b3c1837eb1ce9f7b63993d</srcmd5>
+    <version>0.3.2.RC1</version>
+    <time>1322215982</time>
+    <user>coolo</user>
+    <comment>Needs dr #93432</comment>
+    <requestid>93437</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>34b608a64dce474daa91699368de1dc1</srcmd5>
+    <version>0.3.2.RC1</version>
+    <time>1323194141</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>34b608a64dce474daa91699368de1dc1</srcmd5>
+    <version>0.3.2.RC1</version>
+    <time>1340184029</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>4059b5c68e9f318b1c3d8cc9621880cf</srcmd5>
+    <version>0.3.2.RC1</version>
+    <time>1340726103</time>
+    <user>coolo</user>
+    <comment>- Spec file cleanup</comment>
+    <requestid>126147</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>4059b5c68e9f318b1c3d8cc9621880cf</srcmd5>
+    <version>0.3.2.RC1</version>
+    <time>1359109977</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>4059b5c68e9f318b1c3d8cc9621880cf</srcmd5>
+    <version>0.3.2.RC1</version>
+    <time>1379664103</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>1b33f9cb6a4e8708d9aa78f5fec4699e</srcmd5>
+    <version>0.3.2.RC1</version>
+    <time>1380217978</time>
+    <user>coolo</user>
+    <comment>- Require git-core for the cgit backend (bnc#841684)</comment>
+    <requestid>200718</requestid>
+  </revision>
+  <revision rev="8" vrev="12">
+    <srcmd5>1b33f9cb6a4e8708d9aa78f5fec4699e</srcmd5>
+    <version>0.3.2.RC1</version>
+    <time>1409302789</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>58ffbec9b5a20a203f66df2834d589a5</srcmd5>
+    <version>1.0.1</version>
+    <time>1431405998</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>305743</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>344a120fd4f10e7f84b4328e1c8d8dd0</srcmd5>
+    <version>2.1.9</version>
+    <time>1526371499</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.1.9:
+  * Drop support for EOL Python 2.6 and 3.3
+  * Allow mmap not just for py2.6, 2.7 and 3.6+ but also 3.0+
+  * Fix doc typos
+- Implement single-spec version
+- Update to version 2.1.8
+  * bugfixes
+- Update to version 2.1.6
+  * bugfixes
+  * support for worktrees
+- Update to version 2.1.3
+  * bugfixes
+- Update to version 2.1.1
+  * bugfixes
+- Update to version 2.1.0
+  * Much better windows support!
+  * The `GIT_DIR` environment variable does not override the `path` argument when
+    initializing a `Repo` object anymore. However, if said `path` unset, `GIT_DIR`
+    will be used to fill the void.
+- Update to version 2.0.9
+  * Bugfixes
+  * `tag.commit` will now resolve commits deeply.
+  * `Repo` objects can now be pickled, which helps with multi-processing.
+  * `Head.checkout()` now deals with detached heads, which is when it will return
+    the `HEAD` reference instead.
+  * `DiffIndex.iter_change_type(...)` produces better results when diffing
+- update to 2.0.8:
+  * Py2.6 support dropped
+  * lots of new features and bugfixes
+</comment>
+    <requestid>603412</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>03d21ca301df55b308be365125a85c9a</srcmd5>
+    <version>2.1.11</version>
+    <time>1533732855</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>627962</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d3c5cc25d9b3039d687cf5b639a41553</srcmd5>
+    <version>2.1.11</version>
+    <time>1539758422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>642043</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>0ce2f81afd336333f0380c57ec9e46b0</srcmd5>
+    <version>2.1.11</version>
+    <time>1548334944</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove superfluous devel dependency for noarch package
+</comment>
+    <requestid>659269</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1b619c9d9949690f3b89965c34706275</srcmd5>
+    <version>2.1.11.1531661757.92a4819</version>
+    <time>1553263419</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.11.1531661757.92a4819:
+  * Bump version to 2.1.11
+  * fix whitespace violation
+  * Update test_docs.py
+  * Dedent code blocks in tutorial.
+  * Allow pathlib.Path in Repo.__init__
+  * Fix small typo
+  * Fix exception on import in MacOS
+  * Bump to 2.1.10
+  * Add change in type support
+  * Get correcly rename change_type.
+- Simplify the service file and generating of the tarball
+  and base everything on a tag
+
+- Activate test suite and remove bcond test
+- Add merged_pr_793.patch already merged upstream to fix Python 3.7,
+  especially git submodules
+- Add test_blocking_lock_file-extra-time.patch to avoid an
+  indeterministic timing failure
+- Add test-skips.patch to skip one expected failure and workaround
+  two unknown failures
+- Remove test suite from the runtime package
+- Add doc/source/*.rst to %docs
+- Remove dependency on python3-mock
+- Set build dependency ddt minimum version 1.1.1</comment>
+    <requestid>685385</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9e33dc9e4929cd4083b11153d3674c9b</srcmd5>
+    <version>3.0.2.1566444429.0765792</version>
+    <time>1569523193</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.2.1566444429.0765792:
+  * prepare next release
+  * BF: remove ddt from requirements.txt since no ddt required at run time.
+  * Bump version to 3.0.1
+  * Remove dependency on 'gitdb'; fixes #908
+  * Changelog information
+  * Adding test
+  * Returning commit object instead of hash value
+  * Snack case as requested in #903
+  * Method stating which commit is being played during an halted rebase
+  * Fix performance regression, see #906
+- Drop merged patch merged_pr_793.patch
+- Rebase patch test-skips.patch</comment>
+    <requestid>732882</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a4548c72735eb94dd88f255887ade12a</srcmd5>
+    <version>3.0.3.1570041589.23b83cd</version>
+    <time>1570557490</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.3.1570041589.23b83cd:
+  * Prepare v3.0.3
+  * git: repo: base: update clone_from env argument description
+  * remove previously added debug code from test_doc.py
+  * Revert &quot;Remove control character stripping.&quot;
+  * Try to fix tests; get more debug output
+  * Update util.py
+  * Update util.py
+  * Remove control character stripping.
+  * add type check to git.Remote.__eq__
+  * Take advantage of universal newlines.
+  * Parse rejected deletes.
+  * Remove assert that can fail erroneously.
+  * Fix test_commit_msg_hook_success.
+  * fix decoding problem
+  * Fix #889: Add DeepSource config and fix some major issues</comment>
+    <requestid>735864</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7492d3481aaf56a67b69145aaf55e78d</srcmd5>
+    <version>3.0.5</version>
+    <time>1574015017</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>749100</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f891ec387d9a3ee633edfc96fbea216d</srcmd5>
+    <version>3.1.0.1582544583.8c9da73</version>
+    <time>1585842298</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable three more tests on git submodules:
+  * https://github.com/gitpython-developers/GitPython/issues/597
+  * test-skips.patch
+
+- Update to version 3.1.0.1582544583.8c9da73:
+  * Replace invalid bytes when decoding TagObject stream
+  * Use UTF-8 encoding when getting information about a symbolic reference
+  * Remove and replace references to nose with unittest in documentation
+  * Remove nose from test requirements
+  * Replace nose with unittest in tox configuration
+  * Replace nose with unittest in Travis CI script
+  * Added changelog for unreleased changes
+  * Restrict gitdb2 version to &lt;4
+  * Remove test.lib.asserts and use unittest.mock.patch directly
+  * Replace assert_false with assertFalse
+  * Replace assert_true with assertTrue
+  * Replace raises with assertRaises
+  * Replace assert_raises with assertRaises
+  * Replace assert_not_equal with assertNotEqual
+  * Replace assert_equal with assertEqual
+  * Remove and replace assert_match with assertRegex
+  * Remove old, no longer used assert methods
+  * Remove references to old mock library in documentation
+  * Remove outdated checks for unittest.mock existence
+  * Fix Python version requirement in documentation
+  * Remove badges for no longer existing Waffle site from README
+  * Add support for Python 3.8
+  * Replace deprecated Logger.warn with Logger.warning
+  * Replace deprecated assertRaisesRegexp alias with assertRaisesRegex
+  * Replace deprecated assertNotEquals alias with assertNotEqual</comment>
+    <requestid>790858</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>bee62d72d55286bac970a2efca4fd5e7</srcmd5>
+    <version>3.1.1.1586590969.b860d1873a25</version>
+    <time>1588610500</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>800005</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b5308abac874efa836791256121e5e4c</srcmd5>
+    <version>3.1.2.1588659169.f14903a</version>
+    <time>1591743190</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>813004</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a79348f87dce373c8f8ebb3156a72945</srcmd5>
+    <version>3.1.3.1590895281.24cd6da</version>
+    <time>1592245710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.3.1590895281.24cd6da:
+  * Bump patch level
+  * BF: tollerate errors while parsing fetch lines
+  * Fix flake8 errors
+  * Improve unfortunate wording</comment>
+    <requestid>814539</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>81fd9751a92884fe69d85f918230b225</srcmd5>
+    <version>3.1.7.1594621338.176838a3</version>
+    <time>1598351918</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.7.1594621338.176838a3:
+- refresed test-skips.patch and test_blocking_lock_file-extra-time.patch
+- used pytest as test runner
+  * bump patch level
+  * Fixed broken file paths.
+  * bump patch level
+  * test: add installation test
+  * tools: update tool scripts after moving tests
+  * MANIFEST.in: update to exclude tests
+  * setup.py: exclude all test files
+  * tests: move to root dir
+  * bump patch level
+  * Revert moving tests out of 'git' folder, related to #1030
+  * bump patch level
+  * tools: update tool scripts after moving tests
+  * MANIFEST.in: update to exclude tests
+  * setup.py: exclude all test files
+  * tests: move to root dir
+  * Add Ram Rachum to AUTHORS
+  * Fix exception causes all over the codebase
+  * Fix exception causes in 7 modules
+  * Fix exception causes in cmd.py</comment>
+    <requestid>828143</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>46d5d663e692b6b91bee6803645daeaa</srcmd5>
+    <version>3.1.12.1610074031.f653af66</version>
+    <time>1610736335</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.12.1610074031.f653af66:
+  * fix flake
+  * fix tests the fast way
+  * First attempt to fix failing test of #1103
+- Update to version 3.1.12.1609914640.3dd71d3e:
+  * prepare release
+  * Fix handle_diff_line for -z option.
+  * try fixing up test fixtures and implementation
+  * Add '-z' on top of '--raw' to avoid path name mangling
+  * fix universal_newlines TypeError
+  * docs: fix simple typo, repostory -&gt; repository
+  * Added ability to define git environment in submodule add/update methods
+  * change decode type and add replace flag
+  * bump patch level
+  * Fix default actor name handling
+  * bump patch level
+  * Get system user id in a lazy manner
+  * Keep flake happy
+  * Do not break convention when updating sys.path
+  * Bump patch level
+  * rename sublist to subset
+  * Rename get_ignored to ignored and fix the documentation
+  * Find paths ignored in .gitignore
+  * Add venv to gitignore
+  * git/repo/base.py: is_dirty(): Fix pathspec handling
+  * Fix typo
+  * Update release verification instructions as suggested in #1055
+  * Adjust signature key - please read if you verify installs/packages
+  * bump patch level
+  * Ensure that detached HEAD does not raise when comparing branch name.
+  * Reformat code to remove unnecessary indentation
+  * Remove name as not necessary to track down authors.
+  * update contribution guidelines to be a little less concise and more polite
+  * Add missing blank line
+  * Add missing rules to match hierarchy path
+  * Update AUTHOR to respect to contributing guidelines.
+  * Add unit tests
+  * Fix logic to properly compare glob pattern to value
+  * Add method to retrieve all possible paths to include
+  * Add reference to repository to config.
+  * Update check method to find all includes
+  * Add Regex to match content of &quot;includeIf&quot; section
+  * inform about Gitoxide
+  * add myself to authors
+  * accept datetime instances as dates
+  * Ensure only fully matching symrefs are deleted
+  * Fixed all warnings in documentation and updated Makefile to treat warnings as errors.
+  * Added nose to test-requirements
+</comment>
+    <requestid>863126</requestid>
+  </revision>
+</revisionlist>

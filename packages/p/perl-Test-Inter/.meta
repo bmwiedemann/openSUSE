@@ -1,0 +1,7 @@
+<package name="perl-Test-Inter" project="openSUSE:Factory">
+  <title>Framework for more readable interactive test scripts</title>
+  <description>This is another framework for writing test scripts. It is loosely inspired
+by Test::More, and has most of it's functionality, but it is not a drop-in
+replacement.</description>
+  <devel project="devel:languages:perl" package="perl-Test-Inter"/>
+</package>

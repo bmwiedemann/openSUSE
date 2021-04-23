@@ -1,0 +1,7 @@
+<package name="omniORB" project="openSUSE:Factory">
+  <title>A robust high performance CORBA ORB for C++ and Python</title>
+  <description>omniORB is a robust high performance CORBA ORB for C++ and Python. It adheres to version 2.6 of the CORBA specification and is fully interoperable with other CORBA ORBs.
+
+</description>
+  <devel project="science" package="omniORB"/>
+</package>

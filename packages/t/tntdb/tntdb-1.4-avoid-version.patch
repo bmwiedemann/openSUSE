@@ -1,0 +1,65 @@
+Index: tntdb-1.4/src/mysql/Makefile.am
+===================================================================
+--- tntdb-1.4.orig/src/mysql/Makefile.am
++++ tntdb-1.4/src/mysql/Makefile.am
+@@ -7,7 +7,7 @@ if MAKE_MYSQL
+ driver_LTLIBRARIES = tntdb@abi_current@-mysql.la
+ 
+ tntdb@abi_current@_mysql_la_SOURCES = $(sources)
+-tntdb@abi_current@_mysql_la_LDFLAGS = -module -version-info @sonumber@ @MYSQL_LDFLAGS@ @SHARED_LIB_FLAG@
++tntdb@abi_current@_mysql_la_LDFLAGS = -module -avoid-version -version-info @sonumber@ @MYSQL_LDFLAGS@ @SHARED_LIB_FLAG@
+ tntdb@abi_current@_mysql_la_LIBADD = $(top_builddir)/src/libtntdb.la
+ 
+ endif
+Index: tntdb-1.4/src/oracle/Makefile.am
+===================================================================
+--- tntdb-1.4.orig/src/oracle/Makefile.am
++++ tntdb-1.4/src/oracle/Makefile.am
+@@ -23,7 +23,7 @@ if MAKE_ORACLE
+ driver_LTLIBRARIES = tntdb@abi_current@-oracle.la
+ 
+ tntdb@abi_current@_oracle_la_SOURCES = $(sources)
+-tntdb@abi_current@_oracle_la_LDFLAGS = -module -version-info @sonumber@ @SHARED_LIB_FLAG@
++tntdb@abi_current@_oracle_la_LDFLAGS = -module -avoid-version -version-info @sonumber@ @SHARED_LIB_FLAG@
+ tntdb@abi_current@_oracle_la_LIBADD = $(top_builddir)/src/libtntdb.la @ORACLE_OCI_LDFLAGS@ 
+ 
+ endif
+Index: tntdb-1.4/src/postgresql/Makefile.am
+===================================================================
+--- tntdb-1.4.orig/src/postgresql/Makefile.am
++++ tntdb-1.4/src/postgresql/Makefile.am
+@@ -7,7 +7,7 @@ if MAKE_POSTGRESQL
+ driver_LTLIBRARIES = tntdb@abi_current@-postgresql.la
+ 
+ tntdb@abi_current@_postgresql_la_SOURCES = $(sources)
+-tntdb@abi_current@_postgresql_la_LDFLAGS = -module -version-info @sonumber@ @PG_LDFLAGS@ @SHARED_LIB_FLAG@
++tntdb@abi_current@_postgresql_la_LDFLAGS = -module -avoid-version -version-info @sonumber@ @PG_LDFLAGS@ @SHARED_LIB_FLAG@
+ tntdb@abi_current@_postgresql_la_LIBADD = $(top_builddir)/src/libtntdb.la
+ 
+ endif
+Index: tntdb-1.4/src/replicate/Makefile.am
+===================================================================
+--- tntdb-1.4.orig/src/replicate/Makefile.am
++++ tntdb-1.4/src/replicate/Makefile.am
+@@ -7,7 +7,7 @@ if MAKE_REPLICATE
+ driver_LTLIBRARIES = tntdb@abi_current@-replicate.la
+ 
+ tntdb@abi_current@_replicate_la_SOURCES = $(sources)
+-tntdb@abi_current@_replicate_la_LDFLAGS = -module -version-info @sonumber@ @SHARED_LIB_FLAG@
++tntdb@abi_current@_replicate_la_LDFLAGS = -module -avoid-version -version-info @sonumber@ @SHARED_LIB_FLAG@
+ tntdb@abi_current@_replicate_la_LIBADD = $(top_builddir)/src/libtntdb.la
+ 
+ endif
+Index: tntdb-1.4/src/sqlite/Makefile.am
+===================================================================
+--- tntdb-1.4.orig/src/sqlite/Makefile.am
++++ tntdb-1.4/src/sqlite/Makefile.am
+@@ -7,7 +7,7 @@ if MAKE_SQLITE
+ driver_LTLIBRARIES = tntdb@abi_current@-sqlite.la
+ 
+ tntdb@abi_current@_sqlite_la_SOURCES = $(sources)
+-tntdb@abi_current@_sqlite_la_LDFLAGS = -module -version-info @sonumber@ -lsqlite3 @SHARED_LIB_FLAG@
++tntdb@abi_current@_sqlite_la_LDFLAGS = -module -avoid-version -version-info @sonumber@ -lsqlite3 @SHARED_LIB_FLAG@
+ tntdb@abi_current@_sqlite_la_LIBADD = $(top_builddir)/src/libtntdb.la
+ 
+ endif

@@ -1,0 +1,6 @@
+<package name="perl-Text-SimpleTable-AutoWidth" project="openSUSE:Factory">
+  <title>Text::SimpleTable::AutoWidth - Simple eyecandy ASCII tables with auto-width</title>
+  <description>Simple eyecandy ASCII tables with auto-selection columns width, as seen in Catalyst.</description>
+  <devel project="devel:languages:perl" package="perl-Text-SimpleTable-AutoWidth"/>
+  <url>https://metacpan.org/release/Text-SimpleTable-AutoWidth</url>
+</package>

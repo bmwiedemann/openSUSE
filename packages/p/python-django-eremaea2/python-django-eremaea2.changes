@@ -1,0 +1,102 @@
+-------------------------------------------------------------------
+Tue Dec  1 08:25:48 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 2.0.16
+  - Support HTTP Digest Auth in eremaeactl tool
+
+-------------------------------------------------------------------
+Fri Aug 28 13:01:54 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 2.0.15
+  - Introduce eremaea.target to improve post/pre scripts
+  - Fix build for recent djangorestframework
+
+-------------------------------------------------------------------
+Mon Feb 26 09:29:24 UTC 2018 - matwey.kornilov@gmail.com
+
+- Version 2.0.13
+  - Style cleanups
+  - Improve cache-control for collections
+
+-------------------------------------------------------------------
+Sun Dec 24 12:23:46 UTC 2017 - matwey.kornilov@gmail.com
+
+- Tune %{python_module} definition 
+
+-------------------------------------------------------------------
+Sun Dec 24 10:19:18 UTC 2017 - matwey.kornilov@gmail.com
+
+- BuildRequire: %{pythons}
+  We need sqlite3 module from standard library for tests.
+
+-------------------------------------------------------------------
+Sun Dec 24 09:46:51 UTC 2017 - matwey.kornilov@gmail.com
+
+- Version 2.0.12
+  - Add LICENSE file to %doc
+
+-------------------------------------------------------------------
+Sat Dec 23 19:10:46 UTC 2017 - matwey.kornilov@gmail.com
+
+- Add lost BuildRequires: python-rpm-macros
+
+-------------------------------------------------------------------
+Sat Dec 23 17:44:46 UTC 2017 - matwey.kornilov@gmail.com
+
+- Version 2.0.11
+  - Support Django 2.0
+
+-------------------------------------------------------------------
+Sat Dec 23 17:17:43 UTC 2017 - matwey.kornilov@gmail.com
+
+- Follow openSUSE Python Singlespec
+
+-------------------------------------------------------------------
+Sun Aug  6 13:44:27 UTC 2017 - matwey.kornilov@gmail.com
+
+- Version 2.0.10.1
+
+-------------------------------------------------------------------
+Sun Aug  6 12:04:35 UTC 2017 - matwey.kornilov@gmail.com
+
+- Version 2.0.10
+
+-------------------------------------------------------------------
+Wed Aug 31 16:43:30 UTC 2016 - matwey.kornilov@gmail.com
+
+- Version 2.0.9
+
+-------------------------------------------------------------------
+Wed Aug 10 17:11:21 UTC 2016 - matwey.kornilov@gmail.com
+
+- Version 2.0.8
+
+-------------------------------------------------------------------
+Tue Jun 21 16:23:53 UTC 2016 - matwey.kornilov@gmail.com
+
+- Version 2.0.6:
+  + Use additional prefix in MEDIA_ROOT
+
+-------------------------------------------------------------------
+Sun Apr 10 12:03:39 UTC 2016 - matwey.kornilov@gmail.com
+
+- Version 2.0.5
+  + Fix systemd unit
+
+-------------------------------------------------------------------
+Sun Apr 10 10:57:28 UTC 2016 - matwey.kornilov@gmail.com
+
+- Version 2.0.4
+  + Add eremaeactl control tool
+
+-------------------------------------------------------------------
+Sun Apr  3 09:13:28 UTC 2016 - matwey.kornilov@gmail.com
+
+- Version 2.0.2
+  + Add initial Django migration
+
+-------------------------------------------------------------------
+Fri Apr  1 11:11:19 UTC 2016 - matwey.kornilov@gmail.com
+
+- Initial version
+

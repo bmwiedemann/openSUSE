@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dc3b658ba0e2800af5432bb3750ab5c9</srcmd5>
+    <version>4.3.10</version>
+    <time>1565695491</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of python-nbconvert</comment>
+    <requestid>722798</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c3f3f1500ed10b07926b430b3819282a</srcmd5>
+    <version>4.3.10</version>
+    <time>1566665379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>725780</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b1eae76be4f4b9376391dcc757402987</srcmd5>
+    <version>4.4.0</version>
+    <time>1570557503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.0:
+  * Various doc and test fixes</comment>
+    <requestid>735888</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a3147a5a746fc887a73c7953ee970073</srcmd5>
+    <version>4.4.1</version>
+    <time>1579101494</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>764621</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>720bd9be1391982bb97117f0a3522aa3</srcmd5>
+    <version>4.5.1</version>
+    <time>1585262272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>788613</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>95a2f5bd71d8874cfa58b6bb28fca8e3</srcmd5>
+    <version>4.5.1</version>
+    <time>1587467416</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795796</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>19b71d29dc5488a80d04a4edcf6327ca</srcmd5>
+    <version>4.5.2</version>
+    <time>1588856173</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to 4.5.2:
+  - Fix issue #58: handle pool connection teardown in Python 3.8</comment>
+    <requestid>800949</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>17b3f2e83e1c8f1948db7ad6bf5dc351</srcmd5>
+    <version>4.6.0</version>
+    <time>1610633138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.6.0
+  * Features:
+    + issue #73: allow passing `multiprocessing.context` object
+      as `concurrent.process` and `ProcessPool` parameter
+  * Fixes:
+    + issues #34, #35: rework Pool termination logic to silence Windows errors
+    + issue #68: use fully qualified function name in `concurrent.process`
+      decorator trampoline to handle class inheritance in Windows
+    + issue #69: correctly propagate the timeout in pool's map method
+    + issue #64: rework versioning logic</comment>
+    <requestid>863006</requestid>
+  </revision>
+</revisionlist>

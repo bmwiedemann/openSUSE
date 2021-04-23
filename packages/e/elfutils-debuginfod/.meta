@@ -1,0 +1,7 @@
+<package name="elfutils-debuginfod" project="openSUSE:Factory">
+  <title>Higher-level library to access ELF</title>
+  <description>This package provides a higher-level library to access ELF files. This
+is a part of elfutils package.</description>
+  <devel project="openSUSE:Factory" package="elfutils"/>
+  <bcntsynctag>elfutils</bcntsynctag>
+</package>

@@ -1,0 +1,118 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>034634f18ce26a136767c0c568649f23</srcmd5>
+    <version>1.01</version>
+    <time>1279651814</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-Test-Inter based on submit request 43525 from user computersalat
+</comment>
+    <requestid>43525</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1a26969f61c6cedab4c284d226b98ac8</srcmd5>
+    <version>1.01</version>
+    <time>1291584054</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 54660 from user coolo
+</comment>
+    <requestid>54660</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8119e721aa6989622720f80149eb7e65</srcmd5>
+    <version>1.01</version>
+    <time>1291584062</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 54660
+</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>8119e721aa6989622720f80149eb7e65</srcmd5>
+    <version>1.01</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>8119e721aa6989622720f80149eb7e65</srcmd5>
+    <version>1.01</version>
+    <time>1319182311</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>98522a0fc54195e7ee46d9507552d5ab</srcmd5>
+    <version>1.03</version>
+    <time>1321876044</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>92305</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>e83a2d874d09ede4c6d6ed76da41229b</srcmd5>
+    <version>1.03</version>
+    <time>1323193693</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>e83a2d874d09ede4c6d6ed76da41229b</srcmd5>
+    <version>1.03</version>
+    <time>1340183930</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>e83a2d874d09ede4c6d6ed76da41229b</srcmd5>
+    <version>1.03</version>
+    <time>1359109815</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c966540355f2db6240693f59b327bcfd</srcmd5>
+    <version>1.05</version>
+    <time>1370519472</time>
+    <user>coolo</user>
+    <comment>- updated to 1.05
+   The __nl__ substitution wasn't happening.
+   Fixed the Build.PL/Makefile.PL scripts to not install the example scripts.  RT 84091 (forwarded request 177491 from coolo)</comment>
+    <requestid>177518</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>c966540355f2db6240693f59b327bcfd</srcmd5>
+    <version>1.05</version>
+    <time>1379663872</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>c966540355f2db6240693f59b327bcfd</srcmd5>
+    <version>1.05</version>
+    <time>1409302515</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>46fa520e6133a5d45c43ba24f0619040</srcmd5>
+    <version>1.06</version>
+    <time>1429186416</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297008</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>928d382c07f619993be955e920cdd245</srcmd5>
+    <version>1.07</version>
+    <time>1521499163</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>588514</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6f04b7ac65a512ada781435a7d021f22</srcmd5>
+    <version>1.09</version>
+    <time>1552901794</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685286</requestid>
+  </revision>
+</revisionlist>

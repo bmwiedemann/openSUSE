@@ -1,0 +1,12 @@
+Index: fontforge-20201107/fontforgeexe/cvimportdlg.c
+===================================================================
+--- fontforge-20201107.orig/fontforgeexe/cvimportdlg.c
++++ fontforge-20201107/fontforgeexe/cvimportdlg.c
+@@ -710,6 +710,7 @@ static int GFD_Options(GGadget *g, GEven
+ 	_ImportParamsDlg(ImportParamsState());
+ 	d->opts_shown = true;
+     }
++    return 0;
+ }
+ 
+ static int e_h(GWindow gw, GEvent *event) {

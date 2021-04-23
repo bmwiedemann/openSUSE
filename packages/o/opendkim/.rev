@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>94539d93c83fab6fb5bb582df0b6d803</srcmd5>
+    <version>unknown</version>
+    <time>1526372016</time>
+    <user>dimstar_suse</user>
+    <comment>As an important part of the email infrastructure on a mail server I would like to see it in openSUSE official repository.</comment>
+    <requestid>606559</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e136b474d5502d1c67ef823179b0c399</srcmd5>
+    <version>unknown</version>
+    <time>1530866892</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>621115</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>30ababc2af8ff52f2a57d4997b45ae4d</srcmd5>
+    <version>unknown</version>
+    <time>1595098821</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821538</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>f61759afae3ab8902c4ba5f26bebc345</srcmd5>
+    <version>unknown</version>
+    <time>1597955394</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827960</requestid>
+  </revision>
+</revisionlist>

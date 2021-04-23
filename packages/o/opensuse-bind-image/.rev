@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a67c054c2e0d44e39137564153d19c19</srcmd5>
+    <version>1.0.0</version>
+    <time>1571951349</time>
+    <user>dimstar_suse</user>
+    <comment>For r.o.o/opensuse</comment>
+    <requestid>742254</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bce481d6d41ca8a22903ca59ebf5948d</srcmd5>
+    <version>1.0.0</version>
+    <time>1576752793</time>
+    <user>dimstar_suse</user>
+    <comment>- Change the owner of files inside the tarball to root:root
+</comment>
+    <requestid>758114</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f2f6f2f8fd9eae2179c86fdb231cdcbd</srcmd5>
+    <version>1.0.0</version>
+    <time>1584745201</time>
+    <user>dimstar_suse</user>
+    <comment>- Create and handle rndc.key in entrypoint script
+- Drop config.sh, fixed in busybox container
+</comment>
+    <requestid>786960</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>62d3addebe8239baa76c961f4bd08dab</srcmd5>
+    <version>1.0.0</version>
+    <time>1589055567</time>
+    <user>dimstar_suse</user>
+    <comment>- Use bind-utils instead busybox variant
+- Use mandoc instead of busybox variant</comment>
+    <requestid>798935</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>42b5c6306d50055dd5baed53d4545f16</srcmd5>
+    <version>1.0.0</version>
+    <time>1591423956</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove &quot;--&quot; from the package list to separate pkgs from
+  arguments: kiwi does this implicit now. (forwarded request 811750 from dimstar)</comment>
+    <requestid>811761</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,11 @@
+--- Makefile
++++ Makefile
+@@ -32,7 +32,7 @@
+ # To configure the buffer size of dds2tar
+ # change or uncomment the following line :
+ # BUFFER=-DST_BUFFER_BLOCKS=32
+-BUFFER=-DST_BUFFER_BLOCKS=0
++BUFFER=-DST_BUFFER_BLOCKS=32
+ 
+ # To include some experimental stuff
+ # uncomment the following line :

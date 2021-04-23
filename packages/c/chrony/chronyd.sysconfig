@@ -1,0 +1,9 @@
+## Path:	Network/Chrony
+## Description:	Chrony time synchronization settings
+## Type:	string
+## Default:	""
+## ServiceRestart: chronyd
+#
+# Command line options for chronyd
+#
+OPTIONS=""

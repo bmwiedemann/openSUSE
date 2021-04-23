@@ -1,0 +1,11 @@
+--- mojo-executor-mojo-executor-parent-2.3.1/mojo-executor/src/main/java/org/twdata/maven/mojoexecutor/MojoExecutor.java	2019-11-23 20:33:23.082262552 +0100
++++ mojo-executor-mojo-executor-parent-2.3.1/mojo-executor/src/main/java/org/twdata/maven/mojoexecutor/MojoExecutor.java	2019-11-23 20:32:56.434427749 +0100
+@@ -197,7 +197,7 @@
+      * @return The plugin instance
+      */
+     public static Plugin plugin(String groupId, String artifactId, String version) {
+-        return plugin(groupId, artifactId, version, Collections.emptyList());
++        return plugin(groupId, artifactId, version, Collections.<Dependency>emptyList());
+     }
+ 
+     /**

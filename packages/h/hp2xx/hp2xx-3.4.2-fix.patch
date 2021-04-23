@@ -1,0 +1,11 @@
+--- a/sources/Makefile	Mon Jul 29 09:39:09 2002
++++ b/sources/Makefile	Mon Jul 29 09:39:28 2002
+@@ -46,7 +46,8 @@
+ # For non-gcc compilers, simply set CFLAGS = -O (to start with)
+ #
+ CC       = gcc
+-CFLAGS	=  -O2 -g -I/usr/X11R6/include $(DEFINES) $(EX_DEFS) -Wall -pedantic -Wuninitialized -Wunused -Wreturn-type -Wmissing-prototypes -Wstrict-prototypes  
++OPTFLAGS = -O2
++CFLAGS	=  $(OPTFLAGS) -g -I/usr/X11R6/include $(DEFINES) $(EX_DEFS) -Wall -pedantic -Wuninitialized -Wunused -Wreturn-type -Wmissing-prototypes -Wstrict-prototypes  
+ LINT	= splint
+ LINTFLAGS = -weak -initallelements +posixlib -I/usr/X11R6/include $(DEFINES) $(EX_DEFS)

@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dfd28537798090b9445a34f711f1b1e8</srcmd5>
+    <version>0.3.3</version>
+    <time>1503591883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>517379</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d4ed27fea5c779cdf7d3d24952e51f4f</srcmd5>
+    <version>0.3.3</version>
+    <time>1509461064</time>
+    <user>dimstar_suse</user>
+    <comment>drop lua5.2 from multibuild</comment>
+    <requestid>537634</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>aa58de6687fe819dd716804a4acc5859</srcmd5>
+    <version>0.3.3</version>
+    <time>1594817784</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54 as new build target</comment>
+    <requestid>819792</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>34492bf3c948fdc334825bbcb8dbb6dd</srcmd5>
+    <version>0.3.3</version>
+    <time>1613677345</time>
+    <user>dimstar_suse</user>
+    <comment>- It would be better to rename the package to MessagePack, but
+  certainly RPMs must be called same as the package in OBS.
+- Use %lua_provides macro for default lua versioning
+</comment>
+    <requestid>873530</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>4a9c5f889d289ee051f8a3cbeb5a2f3b</srcmd5>
+    <version>0.3.3</version>
+    <time>1614373325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>875414</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed May  1 12:55:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace old $RPM_* shell vars.
+- Remove redundant %clean section.
+
+-------------------------------------------------------------------
+Thu Mar 21 15:52:48 UTC 2019 - josef.moellers@suse.com
+
+- Add systemd support
+  [bsc#1116057, network-autoconfig.service, boot.network-autoconfig]
+
+-------------------------------------------------------------------
+Tue Jan 14 09:56:47 UTC 2014 - mvidner@suse.com
+
+- ported to wicked (FATE#316111)
+- 1.0
+
+-------------------------------------------------------------------
+Tue Dec 21 12:40:32 UTC 2010 - mvidner@suse.cz
+
+- Initial packaging
+

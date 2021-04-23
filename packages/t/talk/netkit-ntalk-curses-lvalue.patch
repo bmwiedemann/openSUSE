@@ -1,0 +1,12 @@
+Index: netkit-ntalk-0.17/talk/display.c
+===================================================================
+--- netkit-ntalk-0.17.orig/talk/display.c	2017-02-17 09:47:42.675898241 +0100
++++ netkit-ntalk-0.17/talk/display.c	2017-02-17 09:52:22.516569335 +0100
+@@ -147,7 +147,6 @@ real_init_display(void)
+ 	struct sigaction sigac;
+ 
+ 	/* Open curses. */
+-	LINES = COLS = 0;
+ 	if (initscr() == NULL) {
+ 		printf("initscr failed: TERM is not set or set to an "
+ 		       "unknown terminal type.\n");

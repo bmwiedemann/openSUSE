@@ -1,0 +1,40 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2016-11-28 01:24:21.839709993 +0100
+
+Because surf defined "min", it also replaced functions libstdc++ calls on itself.
+---
+ src/def.h |   22 ++++------------------
+ 1 file changed, 4 insertions(+), 18 deletions(-)
+
+Index: surf-1.0.6/src/def.h
+===================================================================
+--- surf-1.0.6.orig/src/def.h
++++ surf-1.0.6/src/def.h
+@@ -77,23 +76,10 @@
+ 
+ 
+ enum {red,green,blue}; 					/* sk */
+-#ifdef MIN
+-#undef MIN
+-#endif
+-
+-#define MIN(a,b)	( ((a)<(b))?(a):(b) )
+-#ifndef min
+-#define min(a,b)	( ((a)<(b))?(a):(b) )
+-#endif
+-
+-#ifdef MAX
+-#undef MAX
+-#endif
+-
+-#define MAX(a,b)	( ((a)<(b))?(b):(a) )
+-#ifndef max
+-#define max(a,b)	( ((a)<(b))?(b):(a) )
+-#endif
++template<typename U, typename V> V min(U a, V b) { return a<b?a:b; }
++template<typename U, typename V> V MIN(U a, V b) { return a<b?a:b; }
++template<typename U, typename V> V max(U a, V b) { return a>b?a:b; }
++template<typename U, typename V> V MAX(U a, V b) { return a>b?a:b; }
+ 
+ 
+ #ifndef TRUE

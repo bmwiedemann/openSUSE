@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Thu Aug 27 02:12:28 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Convert to single spec
+- Activate test suite
+- Update to v1.0.1
+  * Include test files in source distribution
+  * Added all Python 3 versions to tox.ini and supported list
+- from v1.0
+  * "Macedonia, the former Yugoslav Republic of" changed to
+    "North Macedonia" (effective 2019-03-13)
+  * Added numeric code 983 for Kosovo to mirror usage by the
+    National Statistical Office of Canada
+- from v0.9
+  * New entry for Kosovo (XK / XKX)
+  * Swaziland changed to Eswatini (effective 2018-07-16)
+- from v0.8
+  * Czechia (changed 2016-09)
+  * United Kingdom of Great Britain and Northern Ireland
+    (changed 2014-12)
+
+-------------------------------------------------------------------
+Tue Jun 30 13:06:01 UTC 2015 - prusnak@opensuse.org
+
+- created package (version 0.7)
+

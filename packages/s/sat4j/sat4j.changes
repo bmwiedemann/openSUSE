@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Fri Nov 23 15:25:48 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.3.5
+- Modified patch:
+  * sat4j-sourcetarget.patch
+    + rediff to changed context and add utf-8 encoding for build
+
+-------------------------------------------------------------------
+Thu Nov 22 22:04:12 UTC 2018 - Fridrich Strba <fstrba@suse.com>
+
+- Buildrequire javapackages-local in order to generate the osgi
+  provides.
+
+-------------------------------------------------------------------
+Wed Sep 20 07:19:52 UTC 2017 - fstrba@suse.com
+
+- Added patches:
+  * sat4j-sourcetarget.patch
+    + make the java source and target level consistent with what
+      is specified on command-line
+    + specify the UTF-8 encoding of the source files
+  * sat4j-manifest.patch
+    + fix rpmlint warning about Class-path in manifest
+	+ remove all mentions of Class-path from MANIFEST.MF files
+
+-------------------------------------------------------------------
+Sun May 21 07:47:07 UTC 2017 - tchvatal@suse.com
+
+- Remove un-needed dependencies
+
+-------------------------------------------------------------------
+Fri Jun 27 11:52:43 UTC 2014 - tchvatal@suse.com
+
+- Fix build on SLE11
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:19 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Thu Oct 18 08:59:57 UTC 2012 - p.drouand@gmail.com
+
+- Update to 2.3.2 version :
+ * Bug [SAT-55] Fix memory leak in case of repeated use of Sat4j in an application
+ * Bug [SAT-60] ClassCastException when a class implements Propagatable but not Constr watches a conflicting literal
+ * Improvement [SAT-38] Investigate usage of plain CNF rather than custom cardinality of PB constraints 
+ * Improvement [SAT-59] Use package-info.java instead of package.html for package JavaDoc 
+ * Improvement [SAT-67] Concurrent calls to isSatisfiable 
+ * New Feature [SAT-56] Allow the end user to visualize the search of the solvers 
+ * New Feature [SAT-63] Make Java 1.5 binaries instead of 1.4 
+ * New Feature [SAT-71] Add statistics in ManyCore solvers on the solvers that answers 
+ * Sub-task    [SAT-51] Allow usage of Lower Bounding on Sat4j PB command line 
+
+-------------------------------------------------------------------
+Mon Jun 18 13:58:30 UTC 2012 - mvyskocil@suse.cz
+
+- fix a build with jdk7 (-Dtarget) 
+
+-------------------------------------------------------------------
+Wed Jul 29 15:48:25 CEST 2009 - mvyskocil@suse.cz
+
+- Don't use release date to make number of Factory rebuilds smaller 
+
+-------------------------------------------------------------------
+Tue Jun  2 14:22:34 CEST 2009 - mvyskocil@suse.cz
+
+- Initial packaging of sat4j 2.0.3 in openSUSE 
+

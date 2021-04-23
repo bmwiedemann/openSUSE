@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a4acb03158d7af832249cd39c2901d08</srcmd5>
+    <version>0.3.1</version>
+    <time>1553888563</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>689286</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>83b5d111de3dbfbfe77374305ebd0fb0</srcmd5>
+    <version>0.3.1</version>
+    <time>1555574243</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop duplicated word.
+</comment>
+    <requestid>695336</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>e848c9397bb262763157159ac9acfc86</srcmd5>
+    <version>0.3.1</version>
+    <time>1575464020</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch no-import-from-collections.patch to avoid any import
+  directly from collections.</comment>
+    <requestid>753288</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>17bbf1fe3ea89e40ee32b0708600e58c</srcmd5>
+    <version>0.4.0</version>
+    <time>1605124024</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Drop Python 2.7 support
+- LICENSE now included in the tarball, drop the separate Source. 
+- Drop fix-sorting-py2.patch, Python 2 not supported
+- Drop no-import-from-collections.patch, included upstream
+- No longer BuildRequire python-devel, and switch to the macro for
+  testsuite</comment>
+    <requestid>847639</requestid>
+  </revision>
+</revisionlist>

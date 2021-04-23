@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Tue May 28 10:04:52 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Do not ignore errors from groupadd.
+- Convert sysvinit script to systemd service unit. [boo#1116030]
+
+-------------------------------------------------------------------
+Wed Mar 15 19:03:51 UTC 2017 - dimstar@opensuse.org
+
+- Add %insserv_prereq PreReq: since we still install legacy initd
+  services it is our own duty to ensure the legacy tools to handle
+  them are installed.
+
+-------------------------------------------------------------------
+Wed Jul 23 15:54:16 UTC 2014 - meissner@suse.com
+
+- make init script executable, fix build
+
+----------------------------------------------------------------------------
+Sun May 19 16:07:07 UTC 2013 - dap.darkness@gmail.com
+
+- Changes file was fixed up in according to sr's #175639 & #175789.
+- Switched from user nobody to pdns to correspond Factory rules.
+
+----------------------------------------------------------------------------
+Tue May 14 18:50:55 UTC 2013 - dap.darkness@gmail.com
+
+- Branched from home:Reki.
+- Updated from 1.2.9 to 1.2.9a.
+- Spec-file was completely fixed up.

@@ -1,0 +1,147 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>e165f1a1efe299857a5c22d48215886d</srcmd5>
+    <version>0.3</version>
+    <time>1242927757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>e165f1a1efe299857a5c22d48215886d</srcmd5>
+    <version>0.3</version>
+    <time>1242927757</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>85c288411edaeeff71ca148b3a904482</srcmd5>
+    <version>0.5</version>
+    <time>1260263772</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/fifth-leg-font based on submit request 25808 from user vuntz
+</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8456a46b25955833da409c1f14b5677b</srcmd5>
+    <version>0.6</version>
+    <time>1265918887</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/fifth-leg-font based on submit request 32246 from user vuntz
+</comment>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>9b72ae83503a60e2fb7f85705bca7bc4</srcmd5>
+    <version>0.6</version>
+    <time>1268923523</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>9b72ae83503a60e2fb7f85705bca7bc4</srcmd5>
+    <version>0.6</version>
+    <time>1278667344</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>9b72ae83503a60e2fb7f85705bca7bc4</srcmd5>
+    <version>0.6</version>
+    <time>1278678574</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>18b43fcd2a5ce7bf8b0a1de9bd0a4f2d</srcmd5>
+    <version>0.6</version>
+    <time>1289419119</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 52448 from user dimstar
+</comment>
+    <requestid>52448</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>ddf96ac7d44761b11615b8b4045a5131</srcmd5>
+    <version>0.6</version>
+    <time>1289419127</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 52448
+</comment>
+  </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>ddf96ac7d44761b11615b8b4045a5131</srcmd5>
+    <version>0.6</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>24a3b4586a4aa42c93443c6baac4f366</srcmd5>
+    <version>0.6</version>
+    <time>1317542468</time>
+    <user>lrupp</user>
+    <comment>Pushing G:F</comment>
+    <requestid>85636</requestid>
+  </revision>
+  <revision rev="12" vrev="13">
+    <srcmd5>24a3b4586a4aa42c93443c6baac4f366</srcmd5>
+    <version>0.6</version>
+    <time>1319181876</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="14">
+    <srcmd5>d7b7e4511a2e229939bac72762c5849c</srcmd5>
+    <version>0.6</version>
+    <time>1323191362</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="15">
+    <srcmd5>0d4c9686ed970d0f94d09aa0465674a4</srcmd5>
+    <version>0.6</version>
+    <time>1338016991</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122126</requestid>
+  </revision>
+  <revision rev="15" vrev="17">
+    <srcmd5>0d4c9686ed970d0f94d09aa0465674a4</srcmd5>
+    <version>0.6</version>
+    <time>1340183326</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="18">
+    <srcmd5>161e6cdf2ce23e1346c94b69ba8a87fe</srcmd5>
+    <version>0.6</version>
+    <time>1347617777</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133930</requestid>
+  </revision>
+  <revision rev="17" vrev="20">
+    <srcmd5>161e6cdf2ce23e1346c94b69ba8a87fe</srcmd5>
+    <version>0.6</version>
+    <time>1359108875</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="22">
+    <srcmd5>161e6cdf2ce23e1346c94b69ba8a87fe</srcmd5>
+    <version>0.6</version>
+    <time>1379662337</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="23">
+    <srcmd5>ff30d21ae2ce8ec33bb6d42a76fce054</srcmd5>
+    <version>0.6</version>
+    <time>1380199370</time>
+    <user>coolo</user>
+    <comment>- fixed typo in website [bnc#840414]</comment>
+    <requestid>200676</requestid>
+  </revision>
+  <revision rev="20" vrev="25">
+    <srcmd5>ff30d21ae2ce8ec33bb6d42a76fce054</srcmd5>
+    <version>0.6</version>
+    <time>1409300873</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

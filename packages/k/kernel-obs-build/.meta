@@ -1,0 +1,9 @@
+<package name="kernel-obs-build" project="openSUSE:Factory">
+  <title>The Linux Kernel Sources</title>
+  <description>Linux kernel sources with many fixes and improvements.</description>
+  <devel project="openSUSE:Factory" package="kernel-source"/>
+  <build>
+    <disable arch="i586"/>
+  </build>
+  <bcntsynctag>kernel-source</bcntsynctag>
+</package>

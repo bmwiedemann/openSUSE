@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Sat Jun 27 08:44:06 UTC 2015 - coolo@suse.com
+
+- updated to 0.29
+   see /usr/share/doc/packages/perl-MooX-Types-MooseLike/Changes
+
+  0.29 - 2015-06-26
+      - Add more Num tests (meAmdios)
+      - Improve POD (meAmidos)
+      - Add DISTNAME to MakeMaker args
+
+-------------------------------------------------------------------
+Tue Apr 14 19:41:12 UTC 2015 - coolo@suse.com
+
+- updated to 0.28
+   see /usr/share/doc/packages/perl-MooX-Types-MooseLike/Changes
+
+  0.28 - 2015-02-27
+      - Refine POD (github.com/meAmidos)
+      - Bump version of Moo and Module::Runtime pre-reqs
+      - Modernize Makefile.PL
+
+-------------------------------------------------------------------
+Sun Sep 21 06:53:39 UTC 2014 - coolo@suse.com
+
+- updated to 0.27
+    - Fix tests to not use package B (haarg)
+    - Bugfix for recent versions of Moo changing error messages (skaufman)
+
+-------------------------------------------------------------------
+Thu Aug  1 15:50:23 UTC 2013 - coolo@suse.com
+
+- initial package 0.25
+    * created by cpanspec 1.78.07
+

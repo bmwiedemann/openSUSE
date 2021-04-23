@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Sun Dec  6 19:00:17 UTC 2020 - psimons@suse.com
+
+- Update strict to version 0.4.0.1.
+  # 0.4.0.1
+
+  - Allow `bytestring-0.11`
+  - Remove duplicate `semigroups` dependency
+
+-------------------------------------------------------------------
+Tue Aug 18 10:46:06 UTC 2020 - Peter Simons <psimons@suse.com>
+
+- Replace %setup -q with the more modern %autosetup macro.
+
+-------------------------------------------------------------------
+Tue Aug 11 09:28:18 UTC 2020 - psimons@suse.com
+
+- Add strict at version 0.4.
+

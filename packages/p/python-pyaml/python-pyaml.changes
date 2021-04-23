@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Thu Mar 19 10:22:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 20.3.1
+  * Add -r/--replace command-line option
+
+-------------------------------------------------------------------
+Wed May 15 17:37:38 UTC 2019 - Gary Smith <GSmith@suse.com>
+
+- Update to version 19.4.1
+  * no changelog available
+
+-------------------------------------------------------------------
+Mon Sep 10 12:27:33 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description. Use noun phrasing.
+
+-------------------------------------------------------------------
+Fri Aug 31 10:43:07 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 17.12.1:
+  * Internal changes
+- Drop some useless dependencies and conditions
+
+-------------------------------------------------------------------
+Fri Nov 10 04:23:04 UTC 2017 - arun@gmx.de
+
+- update to version 17.10.0:
+  * README: add link to ruamel.yaml module as a parser counterpart
+
+- changes from version 17.8.0:
+  * Represent numpy arrays as lists, as per #24
+
+- changes from version 17.7.2:
+  * allow line width to be passed in throguh cli
+
+-------------------------------------------------------------------
+Thu May 18 15:04:04 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

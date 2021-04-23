@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b421ae9a7bb7101eb8a77acffa1935c</srcmd5>
+    <version>1.00</version>
+    <time>1375901378</time>
+    <user>coolo</user>
+    <comment>needed by HTTP::Message</comment>
+    <requestid>185902</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>7b421ae9a7bb7101eb8a77acffa1935c</srcmd5>
+    <version>1.00</version>
+    <time>1379663711</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>7b421ae9a7bb7101eb8a77acffa1935c</srcmd5>
+    <version>1.00</version>
+    <time>1409302332</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4dd841b387e8337678799bbad57d81b7</srcmd5>
+    <version>1.001</version>
+    <time>1429657667</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296650</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>070f6416ec8e2a8e4c31e17820b72074</srcmd5>
+    <version>1.004</version>
+    <time>1601743988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838287</requestid>
+  </revision>
+</revisionlist>

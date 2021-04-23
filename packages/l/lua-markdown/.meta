@@ -1,0 +1,5 @@
+<package name="lua-markdown" project="openSUSE:Factory">
+  <title>Markdown text-to-html markup system</title>
+  <description>A pure-lua implementation of the Markdown text-to-html markup system.</description>
+  <devel project="devel:languages:lua" package="lua-markdown"/>
+</package>

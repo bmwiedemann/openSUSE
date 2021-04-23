@@ -1,0 +1,9 @@
+<package name="minidlna" project="openSUSE:Factory">
+  <title>DLNA compatible server</title>
+  <description>MiniDLNA (aka ReadyDLNA) is server software with the aim of being fully
+compliant with DLNA/UPnP-AV clients.
+
+</description>
+  <devel project="multimedia:apps" package="minidlna"/>
+  <url>http://sourceforge.net/projects/minidlna/</url>
+</package>

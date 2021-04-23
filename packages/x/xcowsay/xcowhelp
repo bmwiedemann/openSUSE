@@ -1,0 +1,3 @@
+#!/bin/bash
+
+xcowsay -h |head -n 24 |xcowsay

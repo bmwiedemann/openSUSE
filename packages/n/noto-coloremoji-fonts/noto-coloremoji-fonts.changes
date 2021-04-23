@@ -1,0 +1,42 @@
+-------------------------------------------------------------------
+Thu Sep 17 06:19:18 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
+
+- Update to v2020-09-16-unicode13_1
+  * Unicode 13.1 update
+
+-------------------------------------------------------------------
+Thu Jul 23 08:04:53 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to v2020-07-22-unicode13_0
+  * Unicode 13.0 update.
+
+-------------------------------------------------------------------
+Thu Apr  9 11:11:54 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to v2020-04-08-unicode12_1
+  * Emoji 12.1 svg & png files
+
+-------------------------------------------------------------------
+Wed Feb 26 17:08:35 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to Version 20191119 Unicode 12
+  * Updated font file and artwork to Unicode 12
+  * Added flags for:
+    + BL: Saint Barthélemy
+    + BQ: Caribbean Netherlands
+    + MQ: Martinique
+    + RE: Réunion
+    + TF: French Southern Territories
+  * Changed flags for:
+    + XK: Kosovo
+    + FR: France
+    + NL: Netherlands
+  * This release also fixes the people holding hands emoji to work for
+    any combination of skin tone modifiers.
+
+-------------------------------------------------------------------
+Tue Apr 30 10:35:43 UTC 2019 - Yunhe Guo <i@guoyunhe.me>
+
+- Splited from google-noto-fonts project
+- Removed black and white emoji font, which was deprecated
+- Version 20180810 Unicode 11

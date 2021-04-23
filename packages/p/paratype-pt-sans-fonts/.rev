@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>61dad92a863b9f8ea22c780c94e4187e</srcmd5>
+    <version>2.003OFL</version>
+    <time>1327484419</time>
+    <user>coolo</user>
+    <comment>The package renamed from PTSans-fonts according to Fonts Packaging Policy</comment>
+    <requestid>100945</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>efdd89f35e093db898edb323b5d7d34e</srcmd5>
+    <version>2.003OFL</version>
+    <time>1338017273</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>122175</requestid>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>efdd89f35e093db898edb323b5d7d34e</srcmd5>
+    <version>2.003OFL</version>
+    <time>1340183777</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>f654912ea35887e0498ced49f1a0bcce</srcmd5>
+    <version>2.003OFL</version>
+    <time>1347618803</time>
+    <user>namtrac</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>133976</requestid>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>f654912ea35887e0498ced49f1a0bcce</srcmd5>
+    <version>2.003OFL</version>
+    <time>1359109573</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>f654912ea35887e0498ced49f1a0bcce</srcmd5>
+    <version>2.003OFL</version>
+    <time>1379663501</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5fc3e21c8da1e833a40005ca4c60e5fd</srcmd5>
+    <version>2.005OFL</version>
+    <time>1407942500</time>
+    <user>lnussel</user>
+    <comment>update to 2.005OFL</comment>
+    <requestid>244370</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>5fc3e21c8da1e833a40005ca4c60e5fd</srcmd5>
+    <version>2.005OFL</version>
+    <time>1409302111</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

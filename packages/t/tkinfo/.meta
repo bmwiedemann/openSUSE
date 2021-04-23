@@ -1,0 +1,7 @@
+<package name="tkinfo" project="openSUSE:Factory">
+  <title>Viewer for info-files</title>
+  <description>TkInfo is a tk script to read GNU &quot;info&quot; files and display them. TkInfo
+can be used stand-alone (via WISH) or embedded within an application to
+provide integrated, online help.</description>
+  <devel project="Publishing" package="tkinfo"/>
+</package>

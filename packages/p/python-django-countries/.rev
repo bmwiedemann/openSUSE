@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e06bda9f4806d166e6bbf0cd416231f9</srcmd5>
+    <version>6.1.2</version>
+    <time>1591991094</time>
+    <user>dimstar_suse</user>
+    <comment>Nice little application for Django projects providing fixtures
+and models for a &quot;complete&quot; list of world countries and US states.
+Also throwing in a small template filter for getting country flags by
+ISO 3166-1 alpha-2 country code.</comment>
+    <requestid>814133</requestid>
+  </revision>
+</revisionlist>

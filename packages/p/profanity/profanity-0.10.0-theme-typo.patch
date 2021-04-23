@@ -1,0 +1,38 @@
+From 9e679a03a5180f0c6a7b8d466ec7b544647459f4 Mon Sep 17 00:00:00 2001
+From: Michael Vetter <jubalh@iodoru.org>
+Date: Mon, 18 Jan 2021 10:32:53 +0100
+Subject: [PATCH] Fix color typo in headache and whiteness theme
+
+Reported at: https://bugzilla.suse.com/show_bug.cgi?id=1180739
+Fixes https://github.com/profanity-im/profanity/issues/1471
+---
+ themes/headache  | 2 +-
+ themes/whiteness | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/themes/headache b/themes/headache
+index 5b2f5cba1..cf2c8f259 100644
+--- a/themes/headache
++++ b/themes/headache
+@@ -36,7 +36,7 @@ otr.untrusted=yellow
+ online=red
+ away=cyan
+ chat=green
+-dnd=megenta
++dnd=magenta
+ xa=cyan
+ offline=green
+ incoming=yellow
+diff --git a/themes/whiteness b/themes/whiteness
+index bea6722e2..8115b99a9 100644
+--- a/themes/whiteness
++++ b/themes/whiteness
+@@ -16,7 +16,7 @@ titlebar.xa=white
+ statusbar=blue
+ statusbar.text=white
+ statusbar.brackets=white
+-statusbar.active=megenta
++statusbar.active=magenta
+ statusbar.new=red
+ main.text=black
+ main.text.me=black

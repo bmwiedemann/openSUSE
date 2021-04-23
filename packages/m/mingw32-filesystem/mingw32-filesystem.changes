@@ -1,0 +1,86 @@
+-------------------------------------------------------------------
+Thu Nov  5 10:38:47 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to 20201105
+- Add macro _mingw32_create_macro_links
+- Add macro _mingw32_gdb and command line wrapper /usr/bin/mingw32-gdb
+- In mingw32-scripts support rpm macro processing according to
+  https://rpm.org/user_doc/macros.htm
+
+-------------------------------------------------------------------
+Sat Oct 17 14:32:20 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to 20201017
+- Fix bug not keeping quotes in bash arguments provided to mingw32-scripts.sh
+  which is for example required to specify a different cmake generator 
+
+-------------------------------------------------------------------
+Tue Aug 25 19:27:01 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to 20200825
+- Fix
+  * W: non-etc-or-var-file-marked-as-conffile /usr/libexec/rpm/fileattrs/mingw32-cmake.attr
+  * w: non-etc-or-var-file-marked-as-conffile /usr/libexec/rpm/mingw32-cmake.prov
+  * W: script-without-shebang /usr/libexec/rpm/fileattrs/mingw32-cmake.attr
+  * W: non-standard-group Development/Libraries
+  * installing mingw32-scripts on Tumbleweed
+  * not using present rpmlint config for building this package
+
+-------------------------------------------------------------------
+Thu Aug 20 12:06:28 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add missing Fortran case into macros.mingw32* (boo#1173990)
+
+-------------------------------------------------------------------
+Sun Aug 16 04:26:24 UTC 2020 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fix warning about non standard group (boo#1173189)
+- Make cmake package support to be more in sync with native package
+  * Add mingw32-cmake.prov and mingw32-cmake.attr ported from native
+    cmake package to support generating mingw32(cmake:xxx) dependencies
+    required by newer KDE Frameworks 5 and other packages.
+  * Move out cmake related macros from macros.mingw32 into macros.mingw32-cmake
+  * Define macro _mingw32_cmake_build
+  * Fix deprecated call to %make_jobs
+  CMake support may be better located in a package named mingw32-cross-cmake
+  but need to be used here until the deprecated dependency generator provided
+  by this package is converted to sets of *.attr/*.prov files.
+- Add additional man languages 'id' and 'uk' used by KDE Frameworks5 packages
+
+-------------------------------------------------------------------
+Sun Apr 19 17:39:26 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Process debuginfo in a reproducible way (boo#1041090)
+
+-------------------------------------------------------------------
+Wed Dec 18 21:49:04 UTC 2019 - Martin Koegler <martin.koegler@chello.at>
+
+- Revert -lssp 
+
+-------------------------------------------------------------------
+Tue Dec 17 09:21:43 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add -lssp to the link flags, otherwise building of some packages
+  (like mingw32-cairo) will be aborted with the error 'undefined
+  reference to `__memcpy_chk`'. This library seems not be added by
+  gcc 9.2 automatically.
+
+-------------------------------------------------------------------
+Mon Nov 25 16:31:30 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- add macro _mingw32_ldflags_bootstrap for bootstrap packages
+
+-------------------------------------------------------------------
+Sun Nov 24 21:36:08 UTC 2019 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- fix compile errors: undefined reference to `__memcpy_chk`
+
+-------------------------------------------------------------------
+Fri Nov 22 10:58:42 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- disable default debug package only if the mingw debug macro is used
+
+-------------------------------------------------------------------
+Wed Nov 20 13:40:31 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
+
+- inital package for Factory submission

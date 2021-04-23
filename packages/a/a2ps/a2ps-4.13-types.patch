@@ -1,0 +1,21 @@
+--- lib/liba2ps.h
++++ lib/liba2ps.h	2008-10-27 11:40:05.145358590 +0100
+@@ -57,16 +57,8 @@
+ #  endif
+ #endif
+ 
+-/*
+- * The type bool must be defined, for instance with
+-
+- #if HAVE_STDBOOL_H
+- # include <stdbool.h>
+- #else
+- typedef enum {false = 0, true = 1} bool;
+- #endif
+-
+-*/
++#include <stdbool.h>
++#include <sys/types.h>
+ 
+ __BEGIN_DECLS
+ 

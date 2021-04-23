@@ -1,0 +1,62 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db3b7d2af70ebc8c8e5e306d3ad152ec</srcmd5>
+    <version>1.4</version>
+    <time>1527933945</time>
+    <user>dimstar_suse</user>
+    <comment>schema-based serialization and deserialization library</comment>
+    <requestid>612076</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e8c55620b8439eef1dea06d55a9d5889</srcmd5>
+    <version>1.4</version>
+    <time>1544726830</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>655392</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>353681fa75549eded40fe4b642a6e787</srcmd5>
+    <version>1.7.0</version>
+    <time>1551024825</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>672756</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ad2146cafafa7b2086b219b07217bb42</srcmd5>
+    <version>1.7.0</version>
+    <time>1571210050</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738302</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>177404eadd1a1c16bce4b8f495e5cc22</srcmd5>
+    <version>1.7.0</version>
+    <time>1579463794</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.0 (2019-02-01), also fixes bsc#1123996 (CVE-2017-18361)</comment>
+    <requestid>765544</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>0c64ea3d4a659f51483eb3da0916c0be</srcmd5>
+    <version>1.7.0</version>
+    <time>1587162660</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-tests.patch allowing use of pytest (gh#Pylons/colander#210)</comment>
+    <requestid>794806</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>1ce70ff311156be5a242d11a778f00a0</srcmd5>
+    <version>1.7.0</version>
+    <time>1587581500</time>
+    <user>dimstar_suse</user>
+    <comment>- Obsolete the lang subpackage to avoid conflicts
+- Do not generate docu twice, it is provided online by
+  upstream so we don't have to bother really at all
+
+- Eliminate complicated py2k constructs</comment>
+    <requestid>795833</requestid>
+  </revision>
+</revisionlist>

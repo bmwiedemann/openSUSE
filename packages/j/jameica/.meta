@@ -1,0 +1,5 @@
+<package name="jameica" project="openSUSE:Factory">
+  <title>Jameica Platform</title>
+  <description>Runtime enviroment for financial Java applications</description>
+  <devel project="Java:packages" package="jameica"/>
+</package>

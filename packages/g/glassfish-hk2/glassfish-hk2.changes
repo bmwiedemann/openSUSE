@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Thu Mar 26 07:50:52 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.5.0
+- Removed patch:
+  * glassfish-hk2-2.3.0-hk2-utils-osgi_bundle.patch
+    + fixes included in 0001-OSGi-metadata-fixes.patch
+- Added patches:
+  * 0001-OSGi-metadata-fixes.patch
+    + unbundles tiger-types from hk2-utils
+    + fixes invalid whitespace in hk2-core
+  * 0002-Fixed-tests.patch
+- Modified patch:
+  * hk2-jdk11.patch
+    + fixes com.sun.enterprise.module.Module vs java.lang.Module
+      ambiguity
+    + rediff to changed context
+
+-------------------------------------------------------------------
+Fri Mar  6 11:41:36 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of glassfish-hk2 2.4.0

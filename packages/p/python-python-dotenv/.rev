@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7332b791d68405431f9834b5e843613d</srcmd5>
+    <version>0.10.1</version>
+    <time>1550668521</time>
+    <user>maxlin_factory</user>
+    <comment>- Initial spec for 0.10.1
+</comment>
+    <requestid>677632</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>627dc218b21324012b0f93968fb4bca6</srcmd5>
+    <version>0.10.1</version>
+    <time>1552207017</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>682595</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>53787be66405a4405353263ea96a1ddf</srcmd5>
+    <version>0.10.2</version>
+    <time>1558939152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.2:
+  * Add type hints and expose them to users (@qnighy)(#172)
+  * load_dotenv and dotenv_values now accept an encoding parameter, defaults to None (@theskumar)(@earlbread)(#161)
+  * Fix str/unicode inconsistency in Python 2: values are always str now. (@bbc2)(#121)
+  * Fix Unicode error in Python 2, introduced in 0.10.0. (@bbc2)(#176)</comment>
+    <requestid>705389</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5b3d45931363da9ef44c091dec59a677</srcmd5>
+    <version>0.10.3</version>
+    <time>1563808814</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.3:
+  * Small cleanups</comment>
+    <requestid>717596</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>05ee4a9709a7202d9a57e597ad59564e</srcmd5>
+    <version>0.12.0</version>
+    <time>1584531959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * various fixes</comment>
+    <requestid>786117</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e33c61983abb48f46ba38b2c580559e7</srcmd5>
+    <version>0.13.0</version>
+    <time>1592398041</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>807938</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>863f42e180435221d737809d075f3d03</srcmd5>
+    <version>0.13.0</version>
+    <time>1593606419</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817955</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>afdac9dda80f8a8a624b002907c2f9e1</srcmd5>
+    <version>0.14.0</version>
+    <time>1596652199</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>824524</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d3939e6d9f7ecc2dd2a5c2a2f2b04834</srcmd5>
+    <version>0.15.0</version>
+    <time>1607801338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>853582</requestid>
+  </revision>
+</revisionlist>

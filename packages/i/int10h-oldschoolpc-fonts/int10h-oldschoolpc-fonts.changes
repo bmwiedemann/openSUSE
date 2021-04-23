@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Tue Nov 24 21:23:43 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2
+  * MxPlus line of fonts: The characters ď, ť, ľ, Ľ now
+    consistently use the modified form of the háček/caron
+    diacritic (as used in Czech/Slovak).
+  * New fonts:
+  * PC-compatible computers: NEC MultiSpeed (4 fonts), Schneider
+    EuroPC (3 fonts), Tandy 1000 Video I -2x (1 font), Tandy 1000
+    Video II -2x (1 font)
+  * PC semi-compatibles: DEC Rainbow 100 (4 fonts), HP 150
+    Touchscreen (1 font), Robotron A7100 (1 font), Tandy 2000
+    graphics modes (3 fonts), Zenith Z-100 (2 fonts)
+
+-------------------------------------------------------------------
+Tue Nov  3 11:11:23 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1
+  * New fonts: Acer 710 Mono, HP 100LX, Olivetti MS-DOS, Sanyo
+    MBC-55x, Sanyo MBC-775, Sharp PC-3000, TeleVideo Tele-PC, CL
+    Eagle II, CL Eagle III, CL Stingray, InteGraphics VGA,
+    PhoenixVGA, Sigma Designs RealMagic, STB AutoEGA, early
+    Trident/TVGA8800CS, Tseng EVA-480 ET2000, Various/ACM VGA,
+    Acorn BBC Master 512, Atari Portfolio, Philips :YES G-2x,
+    Texas Instruments PC/PPC, Wang Professional Computer.
+  * Removed Olivetti MxVGA: superseded by CL Stingray.
+- Switched to the Mx437/MxPlus variant font files and made
+  Px437/PxPlus a fontconfig-level alias for compatibility.
+
+-------------------------------------------------------------------
+Thu Oct 29 11:37:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0
+  * Added new variants: Ac (aspect corrected) and
+    Mx (Mixed outline + bitmap).
+  * New fonts (overview): AMI EGA, Acer-*, Apricot-*, Compaq
+    Port3, DOS V, EpsonMGA, EverexME (like EGA), IBM Model30, IBM
+    PS/55, LE Model D, NEC APC3, Nix8810, Olivetti M15/MX,
+    Trident.
+  * VGA SquarePx was renamed to AST PremiumExec.
+  * ToshibaLCD was renamed to ToshibaSat; a few other minor
+    renames.
+- All pre-stretched fonts (both Ac or Px-2X/Px-2Y variants) were
+  moved to the -stretched subpackage.
+   
+-------------------------------------------------------------------
+Tue Jan 22 23:14:06 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Expand font scaling notes and separate out to extra file
+  (there is a lot to talk about).
+
+-------------------------------------------------------------------
+Fri Oct 28 17:09:15 UTC 2016 - jengelh@inai.de
+
+- Initial package (version 1.0) for build.opensuse.org

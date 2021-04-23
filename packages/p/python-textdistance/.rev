@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4455d1bc5798cc0f9a420ffceaef9c09</srcmd5>
+    <version>4.2.0</version>
+    <time>1608729714</time>
+    <user>dimstar_suse</user>
+    <comment>requirement for spyder</comment>
+    <requestid>858234</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>51a9d89ddc9f278392b3292da49575d9</srcmd5>
+    <version>4.2.0</version>
+    <time>1609705636</time>
+    <user>dimstar_suse</user>
+    <comment>- Add extend-timeout.patch switching off timeout on failing test.
+</comment>
+    <requestid>859964</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>556dad7908dcc748daadcd109c9db324</srcmd5>
+    <version>4.2.0</version>
+    <time>1613774645</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 build (no numpy)</comment>
+    <requestid>873578</requestid>
+  </revision>
+</revisionlist>

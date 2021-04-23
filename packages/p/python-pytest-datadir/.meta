@@ -1,0 +1,5 @@
+<package name="python-pytest-datadir" project="openSUSE:Factory">
+  <title></title>
+  <description>pytest plugin for test data directories and files</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-datadir"/>
+</package>

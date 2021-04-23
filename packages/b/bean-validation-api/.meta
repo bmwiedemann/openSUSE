@@ -1,0 +1,5 @@
+<package name="bean-validation-api" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="bean-validation-api"/>
+</package>

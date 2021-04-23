@@ -1,0 +1,5 @@
+<package name="python-before-after" project="openSUSE:Factory">
+  <title></title>
+  <description>before_after provides utilities for testing race conditions.</description>
+  <devel project="devel:languages:python" package="python-before-after"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="python-translitcodec" project="openSUSE:Factory">
+  <title></title>
+  <description>Unicode to 8-bit charset transliteration codec</description>
+  <devel project="devel:languages:python" package="python-translitcodec"/>
+</package>

@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Mon Aug 17 19:04:17 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.4:
+  * Allow --get-volume with --get-mute
+  * Check return values when creating and connecting `pa_context`
+  * add "--get-volume-human" option that gives 75% or muted
+
+-------------------------------------------------------------------
+Tue Sep  5 09:07:33 UTC 2017 - mpluskal@suse.com
+
+- Simplify spec file and clean it up with spec-cleaner
+- Use optflags when building
+
+-------------------------------------------------------------------
+Fri Sep  1 17:34:06 UTC 2017 - raineforest@raineforest.me
+
+- Add compatibility macro for %make_build to fix building for Leap
+
+-------------------------------------------------------------------
+Tue Aug 22 21:24:23 UTC 2017 - raineforest@raineforest.me
+
+- Initial release

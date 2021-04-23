@@ -1,0 +1,13 @@
+Index: tbb-2019_U9/build/linux.gcc.inc
+===================================================================
+--- tbb-2019_U9.orig/build/linux.gcc.inc
++++ tbb-2019_U9/build/linux.gcc.inc
+@@ -72,7 +72,7 @@ ifeq ($(cfg), debug)
+         CPLUS_FLAGS = -DTBB_USE_DEBUG -O0 -g
+ endif
+ 
+-CPLUS_FLAGS += $(ITT_NOTIFY) -DUSE_PTHREAD -pthread
++CPLUS_FLAGS += $(ITT_NOTIFY) $(OPTFLAGS) -DUSE_PTHREAD -pthread
+ LIB_LINK_FLAGS += -pthread
+ 
+ TBB_ASM.OBJ=

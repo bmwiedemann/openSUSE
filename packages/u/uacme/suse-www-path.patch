@@ -1,0 +1,69 @@
+diff --git a/docs/uacme.html b/docs/uacme.html
+index 1ade1ed..0d7a8d7 100644
+--- a/docs/uacme.html
++++ b/docs/uacme.html
+@@ -1153,11 +1153,11 @@ The key authorization (for <strong>dns-01</strong> and <strong>tls-alpn-01</stro
+ <div class="paragraph"><p>The <em>uacme.sh</em> hook script included in the distribution can be used
+ to automate the certificate issuance with <em>http-01</em> challenges,
+ provided a web server for the domain being validated runs on the
+-same machine, with webroot at /var/www</p></div>
++same machine, with webroot at /srv/www/htdocs</p></div>
+ <div class="literalblock">
+ <div class="content monospaced">
+ <pre>#!/bin/sh
+-CHALLENGE_PATH=/var/www/.well-known/acme-challenge
++CHALLENGE_PATH=/srv/www/htdocs/.well-known/acme-challenge
+ ARGS=5
+ E_BADARGS=85</pre>
+ </div></div>
+diff --git a/uacme.1 b/uacme.1
+index ee91327..c9211c4 100644
+--- a/uacme.1
++++ b/uacme.1
+@@ -322,14 +322,14 @@ Failure (syntax or usage error; configuration error; processing failure; unexpec
+ .RE
+ .SH "EXAMPLE HOOK SCRIPT"
+ .sp
+-The \fIuacme\&.sh\fR hook script included in the distribution can be used to automate the certificate issuance with \fIhttp\-01\fR challenges, provided a web server for the domain being validated runs on the same machine, with webroot at /var/www
++The \fIuacme\&.sh\fR hook script included in the distribution can be used to automate the certificate issuance with \fIhttp\-01\fR challenges, provided a web server for the domain being validated runs on the same machine, with webroot at /srv/www/htdocs
+ .sp
+ .if n \{\
+ .RS 4
+ .\}
+ .nf
+ #!/bin/sh
+-CHALLENGE_PATH=/var/www/\&.well\-known/acme\-challenge
++CHALLENGE_PATH=/srv/www/htdocs/\&.well\-known/acme\-challenge
+ ARGS=5
+ E_BADARGS=85
+ .fi
+diff --git a/uacme.1.txt b/uacme.1.txt
+index 03b0af0..08bd2b1 100644
+--- a/uacme.1.txt
++++ b/uacme.1.txt
+@@ -195,10 +195,10 @@ EXAMPLE HOOK SCRIPT
+ The 'uacme.sh' hook script included in the distribution can be used
+ to automate the certificate issuance with 'http-01' challenges,
+ provided a web server for the domain being validated runs on the 
+-same machine, with webroot at /var/www
++same machine, with webroot at /srv/www/htdocs
+ 
+     #!/bin/sh
+-    CHALLENGE_PATH=/var/www/.well-known/acme-challenge
++    CHALLENGE_PATH=/srv/www/htdocs/.well-known/acme-challenge
+     ARGS=5
+     E_BADARGS=85
+     
+diff --git a/uacme.sh b/uacme.sh
+index cf65d32..478824e 100755
+--- a/uacme.sh
++++ b/uacme.sh
+@@ -16,7 +16,7 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+-CHALLENGE_PATH="${UACME_CHALLENGE_PATH:-/var/www/.well-known/acme-challenge}"
++CHALLENGE_PATH="${UACME_CHALLENGE_PATH:-/srv/www/htdocs/.well-known/acme-challenge}"
+ ARGS=5
+ E_BADARGS=85
+ 

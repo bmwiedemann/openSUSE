@@ -1,0 +1,5 @@
+<package name="hexedit" project="openSUSE:Factory">
+  <title>hexedit</title>
+  <description>Editor that shows files in format similar hexdump -C</description>
+  <devel project="editors" package="hexedit"/>
+</package>

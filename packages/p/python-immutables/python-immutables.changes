@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Mon Dec  7 15:34:37 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add skip_32bit_tests.patch (gh#MagicStack/immutables#53) to skip tests
+  which fail on 32bit architectures.
+
+-------------------------------------------------------------------
+Tue Oct 13 07:42:13 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- skip tests that fail on 32bit 
+
+-------------------------------------------------------------------
+Wed Sep 16 11:27:37 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.14:
+  * python 3.8 support
+  * Various improvements w.r.t. type annotations & typing
+  * Fix pure-Python implementation to accept keyword argument
+  * Fix the mutation API to maintain elements count correctly
+  * Allow None to be used as key in pure-Python implementation.
+- remove py38.patch (upstream)
+
+-------------------------------------------------------------------
+Mon Mar  9 08:33:40 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.11:
+  * Python 3.8 fixes
+- Add one more py38 patch:
+  * py38.patch
+
+-------------------------------------------------------------------
+Tue Sep 10 13:49:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+
+-------------------------------------------------------------------
+Sun Apr 14 10:46:18 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.9

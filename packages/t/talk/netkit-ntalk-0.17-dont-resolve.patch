@@ -1,0 +1,37 @@
+--- talkd/talkd.c
++++ talkd/talkd.c
+@@ -220,28 +220,13 @@
+ 			   AF_INET);
+ 	if (hp == NULL) {
+ 		syslog(LOG_WARNING, "%s: bad dns", theirip);
+-		send_reject_packet(mp, &sn, MACHINE_UNKNOWN, 0);
+-		return;
+-	}
+-	strncpy(theirhost, hp->h_name, sizeof(theirhost));
+-	theirhost[sizeof(theirhost)-1] = 0;
+-
+-	hp = gethostbyname(theirhost);
+-	if (hp == NULL) {
+-		syslog(LOG_WARNING, "%s: bad dns", theirip);
+-		send_reject_packet(mp, &sn, MACHINE_UNKNOWN, 0);
+-		return;
+-	}
+-
+-	for (i=ok=0; hp->h_addr_list[i] && !ok; i++) {
+-		if (!memcmp(hp->h_addr_list[i], &sn.sin_addr, 
+-			    sizeof(sn.sin_addr))) ok = 1;
+-	}
+-	if (!ok) {
+-		syslog(LOG_WARNING, "%s: bad dns", theirip);
+-		send_reject_packet(mp, &sn, MACHINE_UNKNOWN, 0);
+-		return;
++                strncpy(theirhost, theirip, sizeof(theirhost));
++                theirhost[sizeof(theirhost)-1] = 0;
+ 	}
++        else {
++        	strncpy(theirhost, hp->h_name, sizeof(theirhost));
++	        theirhost[sizeof(theirhost)-1] = 0;
++        }
+ 
+ 	/*
+ 	 * Try to straighten out bad packets.

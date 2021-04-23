@@ -1,0 +1,104 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5d0b3e96504b47ddabbba2125ffe216a</srcmd5>
+    <version>1.29</version>
+    <time>1311665579</time>
+    <user>saschpe</user>
+    <comment>indirect dep of hermes</comment>
+    <requestid>76583</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e777e59ce174c01187531a46db63b415</srcmd5>
+    <version>1.29</version>
+    <time>1311665594</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76583
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>e777e59ce174c01187531a46db63b415</srcmd5>
+    <version>1.29</version>
+    <time>1319182281</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>bf24763ba12a51cd9f486ba07539f82b</srcmd5>
+    <version>1.29</version>
+    <time>1323193407</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>bf24763ba12a51cd9f486ba07539f82b</srcmd5>
+    <version>1.29</version>
+    <time>1340183863</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>bf24763ba12a51cd9f486ba07539f82b</srcmd5>
+    <version>1.29</version>
+    <time>1359109712</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f77cb6939dd7dccda4ac47e479523f1b</srcmd5>
+    <version>1.30</version>
+    <time>1375178749</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>184510</requestid>
+  </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>f77cb6939dd7dccda4ac47e479523f1b</srcmd5>
+    <version>1.30</version>
+    <time>1379663722</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ac847cbc9cabdaaab47b412832d58336</srcmd5>
+    <version>1.32</version>
+    <time>1385490345</time>
+    <user>coolo</user>
+    <comment>- updated to 1.32
+   Include dep Test::Requires in dist.ini 
+   bump minimum version requirement for JSON.pm 
+   fix the tests to properly exclude JSON::XS
+   A bug came up where JSON::XS and JSON.pm had incompatible revisions
+   but installed just fine. This was a problem because JSON.pm will
+   silently load JSON::XS in the background and caused explosions.
+   We now try to exclude JSON::XS except in the case we're actually
+   testing it directly.
+   Also we've removed some of the tests for JSON::Syck as it's been
+   deprecated. We also add in tests for Cpanel::JSON::XS which got
+   missed when it was added as a choice. 
+   JSON::XS 3.x is incompatible with JSON.pm &lt; 2.90 in the exact way
+   that JSON::Any uses things in the test suite.</comment>
+    <requestid>208447</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>ac847cbc9cabdaaab47b412832d58336</srcmd5>
+    <version>1.32</version>
+    <time>1409302346</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fc62fedcb925842599da8355ffcfdf92</srcmd5>
+    <version>1.38</version>
+    <time>1429107837</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296067</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3fa4f9892bf292d90b83aa46299aaaf5</srcmd5>
+    <version>1.39</version>
+    <time>1434383419</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>312019</requestid>
+  </revision>
+</revisionlist>

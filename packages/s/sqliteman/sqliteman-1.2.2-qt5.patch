@@ -1,0 +1,354 @@
+From 62eab3c77e0eab212b5f358e2682bb77deff8702 Mon Sep 17 00:00:00 2001
+From: Jouni Kosonen <jouni.kosonen@tukesoft.com>
+Date: Sat, 21 Oct 2017 17:58:44 +0300
+Subject: [PATCH] dev-db/sqliteman: Depend on x11-libs/qscintilla[qt5]
+
+Gentoo-bug: 634982
+Closes: https://github.com/gentoo/gentoo/pull/6002
+---
+
+Index: sqliteman-1.2.2/CMakeLists.txt
+===================================================================
+--- sqliteman-1.2.2.orig/CMakeLists.txt
++++ sqliteman-1.2.2/CMakeLists.txt
+@@ -100,29 +100,8 @@ SET(CMAKE_CXX_FLAGS_RELEASE "-O2 ${CXX_W
+ SET(CMAKE_C_FLAGS_RELEASE "-O2 ${CXX_WARNINGS}")
+ 
+ 
+-SET (QT_MT_REQUIRED true)
+-SET (QT_MIN_VERSION "4.2.0")
+-SET( QT_USE_QTSQL TRUE )
+-SET( QT_USE_QTXML TRUE )
+-FIND_PACKAGE( Qt4 REQUIRED )
+-MESSAGE(STATUS Qt4 version: ${QT_VERSION_MAJOR}.${QT_VERSION_MINOR}.${QT_VERSION_PATCH})
+-# suggest Qt upgrade
+-if (QT_VERSION_MINOR LESS 3)
+-    MESSAGE(STATUS "")
+-    MESSAGE(STATUS "__ BIG FAT WARNING! _______________________________")
+-    MESSAGE(STATUS "Your Qt version seems older than it should be.")
+-    MESSAGE(STATUS "Althought will be Sqliteman compilled successfully,")
+-    MESSAGE(STATUS "it will be limited in its features.")
+-    MESSAGE(STATUS "There are some important bugs in older Qt versions.")
+-    MESSAGE(STATUS "Please upgrade to the current Qt version.")
+-    MESSAGE(STATUS "___________________________________________________")
+-    MESSAGE(STATUS "")
+-endif (QT_VERSION_MINOR LESS 3)
+-MESSAGE(STATUS Qt4 includes: ${QT_INCLUDES})
+-MESSAGE(STATUS Qt4 libs: ${QT_LIBRARY_DIR})
+-
+-INCLUDE( ${QT_USE_FILE} )
+-
++SET (QT_MIN_VERSION "5.6.1")
++FIND_PACKAGE( Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Sql Widgets )
+ 
+ IF (WANT_INTERNAL_QSCINTILLA)
+     MESSAGE(STATUS "QSci: Building with internal copy of QScintilla.")
+Index: sqliteman-1.2.2/cmake/modules/FindQScintilla.cmake
+===================================================================
+--- sqliteman-1.2.2.orig/cmake/modules/FindQScintilla.cmake
++++ sqliteman-1.2.2/cmake/modules/FindQScintilla.cmake
+@@ -10,21 +10,18 @@
+ #
+ # Redistribution and use is allowed according to the terms of the FreeBSD license.
+ 
+-IF(NOT QT4_FOUND)
+-    INCLUDE(FindQt4)
+-ENDIF(NOT QT4_FOUND)
+-
+ SET(QSCINTILLA_FOUND FALSE)
+ 
+-IF(QT4_FOUND)
++IF(Qt5_FOUND)
+     FIND_PATH(QSCINTILLA_INCLUDE_DIR qsciglobal.h
+-    "${QT_INCLUDE_DIR}/Qsci" /usr/include /usr/include/Qsci
++        HINTS ${Qt5Core_INCLUDE_DIRS}
++        PATH_SUFFIXES Qsci
+     )
+ 
+-    SET(QSCINTILLA_NAMES ${QSCINTILLA_NAMES} qscintilla2 libqscintilla2)
++    SET(QSCINTILLA_NAMES ${QSCINTILLA_NAMES} qscintilla2 libqscintilla2 qscintilla2_qt5 libqscintilla2_qt5 qscintilla2-qt5 libqscintilla2-qt5)
+     FIND_LIBRARY(QSCINTILLA_LIBRARY
+         NAMES ${QSCINTILLA_NAMES}
+-        PATHS ${QT_LIBRARY_DIR}
++        HINTS ${Qt5Core_LIBRARIES}
+     )
+ 
+     IF (QSCINTILLA_LIBRARY AND QSCINTILLA_INCLUDE_DIR)
+@@ -41,7 +38,7 @@ IF(QT4_FOUND)
+         ENDIF (CYGWIN)
+ 
+     ENDIF (QSCINTILLA_LIBRARY AND QSCINTILLA_INCLUDE_DIR)
+-ENDIF(QT4_FOUND)
++ENDIF(Qt5_FOUND)
+ 
+ IF (QSCINTILLA_FOUND)
+   IF (NOT QScintilla_FIND_QUIETLY)
+Index: sqliteman-1.2.2/sqliteman/CMakeLists.txt
+===================================================================
+--- sqliteman-1.2.2.orig/sqliteman/CMakeLists.txt
++++ sqliteman-1.2.2/sqliteman/CMakeLists.txt
+@@ -139,12 +139,12 @@ IF (WANT_RESOURCES)
+     )
+ ENDIF (WANT_RESOURCES)
+ SET (SQLITEMAN_RCS ${SQLITEMAN_RCS} api/api.qrc)
+-QT4_ADD_RESOURCES( SQLITEMAN_RC_RCS ${SQLITEMAN_RCS} )
++QT5_ADD_RESOURCES( SQLITEMAN_RC_RCS ${SQLITEMAN_RCS} )
+ 
+ 
+-QT4_WRAP_UI( SQLITEMAN_UI_HDRS ${SQLITEMAN_UI} )
++QT5_WRAP_UI( SQLITEMAN_UI_HDRS ${SQLITEMAN_UI} )
+ 
+-QT4_WRAP_CPP( SQLITEMAN_MOC_SRC ${SQLITEMAN_MOC} )
++QT5_WRAP_CPP( SQLITEMAN_MOC_SRC ${SQLITEMAN_MOC} )
+ 
+ INCLUDE_DIRECTORIES( ${CMAKE_BINARY_DIR} )
+ INCLUDE_DIRECTORIES( ${CMAKE_BINARY_DIR}/sqliteman )
+@@ -157,10 +157,13 @@ IF (WANT_INTERNAL_QSCINTILLA)
+         ${CMAKE_SOURCE_DIR}/sqliteman/qscintilla2/Qt4/Qsci
+     )
+ ELSE (WANT_INTERNAL_QSCINTILLA)
+-    INCLUDE_DIRECTORIES( ${QSCINTILLA_INCLUDE_DIR} )
++    INCLUDE_DIRECTORIES(
++        ${QSCINTILLA_INCLUDE_DIR}
++        ${Qt5Widgets_INCLUDE_DIRS}
++        ${Qt5Sql_INCLUDE_DIRS}
++    )
+ ENDIF (WANT_INTERNAL_QSCINTILLA)
+ 
+-
+ IF (MSVC)
+     # this is a must to switch off subsystem:console (console window poping up)
+     # WinMain wrapper from QT_QTMAIN_LIBRARY is used and liner must be modified
+@@ -177,7 +180,7 @@ ADD_EXECUTABLE( ${EXE_NAME} ${WIN32_SUBS
+ 		${SQLITEMAN_RC_RCS}
+ )
+ 
+-TARGET_LINK_LIBRARIES( ${EXE_NAME} ${QT_LIBRARIES}) # ${POPULATOR_LIB})
++TARGET_LINK_LIBRARIES( ${EXE_NAME} Qt5::Widgets Qt5::Sql )
+ 
+ IF (WIN32)
+     # don't use console subsystem
+Index: sqliteman-1.2.2/sqliteman/alterviewdialog.h
+===================================================================
+--- sqliteman-1.2.2.orig/sqliteman/alterviewdialog.h
++++ sqliteman-1.2.2/sqliteman/alterviewdialog.h
+@@ -8,11 +8,8 @@ for which a new license (GPL+exception)
+ #ifndef ALTERVIEWDIALOG_H
+ #define ALTERVIEWDIALOG_H
+ 
+-#include <qwidget.h>
+-
+ #include "ui_createviewdialog.h"
+ 
+-
+ /*! \brief GUI for view altering
+ \author Petr Vanek <petr@scribus.info>
+ */
+@@ -22,10 +19,10 @@ class AlterViewDialog : public QDialog
+ 
+ 	public:
+ 		AlterViewDialog(const QString & name, const QString & schema, QWidget * parent = 0);
+-		~AlterViewDialog(){};
++		~AlterViewDialog(){}
+ 
+ 		bool update;
+-		void setText(const QString & text) { ui.sqlEdit->setText(text); };
++		void setText(const QString & text) { ui.sqlEdit->setText(text); }
+ 
+ 	private:
+ 		Ui::CreateViewDialog ui;
+Index: sqliteman-1.2.2/sqliteman/analyzedialog.h
+===================================================================
+--- sqliteman-1.2.2.orig/sqliteman/analyzedialog.h
++++ sqliteman-1.2.2/sqliteman/analyzedialog.h
+@@ -8,8 +8,6 @@ for which a new license (GPL+exception)
+ #ifndef ANALYZEDIALOG_H
+ #define ANALYZEDIALOG_H
+ 
+-#include <qdialog.h>
+-
+ #include "ui_analyzedialog.h"
+ 
+ 
+@@ -23,7 +21,7 @@ class AnalyzeDialog : public QDialog
+ 
+ 	public:
+ 		AnalyzeDialog(QWidget * parent = 0);
+-		~AnalyzeDialog(){};
++		~AnalyzeDialog(){}
+ 
+ 	private:
+ 		Ui::AnalyzeDialog ui;
+Index: sqliteman-1.2.2/sqliteman/constraintsdialog.h
+===================================================================
+--- sqliteman-1.2.2.orig/sqliteman/constraintsdialog.h
++++ sqliteman-1.2.2/sqliteman/constraintsdialog.h
+@@ -8,8 +8,6 @@ for which a new license (GPL+exception)
+ #ifndef CONSTRAINTSDIALOG_H
+ #define CONSTRAINTSDIALOG_H
+ 
+-#include <qdialog.h>
+-
+ #include "ui_constraintsdialog.h"
+ 
+ 
+@@ -23,7 +21,7 @@ class ConstraintsDialog : public QDialog
+ 
+ 	public:
+ 		ConstraintsDialog(const QString & tabName, const QString & schema, QWidget * parent = 0);
+-		~ConstraintsDialog(){};
++		~ConstraintsDialog(){}
+ 
+ 		bool update;
+ 
+Index: sqliteman-1.2.2/sqliteman/createindexdialog.h
+===================================================================
+--- sqliteman-1.2.2.orig/sqliteman/createindexdialog.h
++++ sqliteman-1.2.2/sqliteman/createindexdialog.h
+@@ -8,8 +8,6 @@ for which a new license (GPL+exception)
+ #ifndef INDEXDIALOG_H
+ #define INDEXDIALOG_H
+ 
+-#include <qwidget.h>
+-
+ #include "ui_createindexdialog.h"
+ 
+ 
+@@ -27,7 +25,7 @@ class CreateIndexDialog : public QDialog
+ 		\param parent standard Qt parent
+ 		*/
+ 		CreateIndexDialog(const QString & tabName, const QString & schema, QWidget * parent = 0);
+-		~CreateIndexDialog(){};
++		~CreateIndexDialog(){}
+ 
+ 		bool update;
+ 
+Index: sqliteman-1.2.2/sqliteman/dataexportdialog.cpp
+===================================================================
+--- sqliteman-1.2.2.orig/sqliteman/dataexportdialog.cpp
++++ sqliteman-1.2.2/sqliteman/dataexportdialog.cpp
+@@ -223,7 +223,7 @@ bool DataExportDialog::exportHTML()
+ 	{
+ 		out << "<tr>";
+ 		for (int i = 0; i < m_header.size(); ++i)
+-			out << "<th>" << m_header.at(i) << "</th>";
++			out << "<th>" << m_header.at(i).toHtmlEscaped() << "</th>";
+ 		out << "</tr>" << endl();
+ 	}
+ 
+@@ -234,7 +234,7 @@ bool DataExportDialog::exportHTML()
+ 		out << "<tr>";
+ 		QSqlRecord r = m_data->record(i);
+ 		for (int j = 0; j < m_header.size(); ++j)
+-			out << "<td>" << r.value(j).toString() << "</td>";
++			out << "<td>" << r.value(j).toString().toHtmlEscaped() << "</td>";
+ 		out << "</tr>" << endl();
+ 	}
+ 	out << "</table>" << endl() << "</body>" << endl() << "</html>";
+@@ -256,7 +256,7 @@ bool DataExportDialog::exportExcelXML()
+ 	{
+ 		out << "<ss:Row ss:StyleID=\"1\">" << endl();
+ 		for (int i = 0; i < m_header.size(); ++i)
+-			out << "<ss:Cell><ss:Data ss:Type=\"String\">" << m_header.at(i) << "</ss:Data></ss:Cell>" << endl();
++			out << "<ss:Cell><ss:Data ss:Type=\"String\">" << m_header.at(i).toHtmlEscaped() << "</ss:Data></ss:Cell>" << endl();
+ 		out << "</ss:Row>" << endl();
+ 	}
+ 
+@@ -267,7 +267,7 @@ bool DataExportDialog::exportExcelXML()
+ 		out << "<ss:Row>" << endl();
+ 		QSqlRecord r = m_data->record(i);
+ 		for (int j = 0; j < m_header.size(); ++j)
+-			out << "<ss:Cell><ss:Data ss:Type=\"String\">" << r.value(j).toString() << "</ss:Data></ss:Cell>" << endl();
++			out << "<ss:Cell><ss:Data ss:Type=\"String\">" << r.value(j).toString().toHtmlEscaped() << "</ss:Data></ss:Cell>" << endl();
+ 		out << "</ss:Row>" << endl();
+ 	}
+ 
+Index: sqliteman-1.2.2/sqliteman/populatordialog.cpp
+===================================================================
+--- sqliteman-1.2.2.orig/sqliteman/populatordialog.cpp
++++ sqliteman-1.2.2/sqliteman/populatordialog.cpp
+@@ -7,7 +7,7 @@ for which a new license (GPL+exception)
+ #include <QSqlQuery>
+ #include <QSqlError>
+ #include <QHeaderView>
+-#include <math.h>
++#include <QtMath>
+ 
+ #include "populatordialog.h"
+ #include "populatorcolumnwidget.h"
+Index: sqliteman-1.2.2/sqliteman/shortcutmodel.cpp
+===================================================================
+--- sqliteman-1.2.2.orig/sqliteman/shortcutmodel.cpp
++++ sqliteman-1.2.2/sqliteman/shortcutmodel.cpp
+@@ -45,7 +45,7 @@ QVariant ShortcutModel::data(const QMode
+ 		return QVariant(index.column() == 0 ? m_values.at(index.row()).first : m_values.at(index.row()).second);
+ 	}
+ 	if (role == Qt::BackgroundRole && index.column() == 0 && m_values.at(index.row()).first.isEmpty())
+-		return QVariant(Qt::red);
++		return QVariant(QColor(Qt::red));
+ 	return QVariant();
+ }
+ 
+Index: sqliteman-1.2.2/sqliteman/sqlmodels.cpp
+===================================================================
+--- sqliteman-1.2.2.orig/sqliteman/sqlmodels.cpp
++++ sqliteman-1.2.2/sqliteman/sqlmodels.cpp
+@@ -47,7 +47,7 @@ QVariant SqlTableModel::data(const QMode
+ 
+ 	// mark rows prepared for a deletion in this trasnaction
+ 	if (role == Qt::BackgroundColorRole && m_deleteCache.contains(item.row()))
+-		return QVariant(Qt::red);
++		return QVariant(QColor(Qt::red));
+ 
+ 	// nulls
+ 	if (m_useNull && curr.isNull())
+Index: sqliteman-1.2.2/sqliteman/sqlparser/tosqlparse.h
+===================================================================
+--- sqliteman-1.2.2.orig/sqliteman/sqlparser/tosqlparse.h
++++ sqliteman-1.2.2/sqliteman/sqlparser/tosqlparse.h
+@@ -50,7 +50,6 @@ This file is based on the TOra source co
+ 
+ #include <list>
+ #include <algorithm>
+-// #include <qstring.h>
+ #include <QString>
+ 
+ // class toConnection;
+Index: sqliteman-1.2.2/sqliteman/tabletree.cpp
+===================================================================
+--- sqliteman-1.2.2.orig/sqliteman/tabletree.cpp
++++ sqliteman-1.2.2/sqliteman/tabletree.cpp
+@@ -6,6 +6,8 @@ for which a new license (GPL+exception)
+ */
+ #include <QMouseEvent>
+ #include <QApplication>
++#include <QDrag>
++#include <QMimeData>
+ 
+ #include "database.h"
+ #include "tabletree.h"
+Index: sqliteman-1.2.2/sqliteman/vacuumdialog.h
+===================================================================
+--- sqliteman-1.2.2.orig/sqliteman/vacuumdialog.h
++++ sqliteman-1.2.2/sqliteman/vacuumdialog.h
+@@ -8,7 +8,7 @@ for which a new license (GPL+exception)
+ #ifndef VACUUMDIALOG_H
+ #define VACUUMDIALOG_H
+ 
+-#include <qdialog.h>
++#include <QDialog>
+ 
+ #include "ui_vacuumdialog.h"
+ 
+Index: sqliteman-1.2.2/sqliteman/sqliteprocess.h
+===================================================================
+--- sqliteman-1.2.2.orig/sqliteman/sqliteprocess.h
++++ sqliteman-1.2.2/sqliteman/sqliteprocess.h
+@@ -8,6 +8,7 @@ for which a new license (GPL+exception)
+ #ifndef SQLITEPROCESS_H
+ #define SQLITEPROCESS_H
+ 
++#include <QObject>
+ #include <QStringList>
+ 
+ 

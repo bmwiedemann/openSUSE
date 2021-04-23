@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c8f08d49eb0d47d30165caa311c4bf1d</srcmd5>
+    <version>0.4.0</version>
+    <time>1555928788</time>
+    <user>maxlin_factory</user>
+    <comment>- Convert to single spec
+- Add %license
+- Update to v0.4.0
+  * Added Python 3 compatibility
+- Initial version for v0.3
+</comment>
+    <requestid>696467</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>89f689df361a1572d229029f1a2feef9</srcmd5>
+    <version>0.5.2</version>
+    <time>1583949241</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783736</requestid>
+  </revision>
+</revisionlist>

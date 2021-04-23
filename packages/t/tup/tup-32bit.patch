@@ -1,0 +1,25 @@
+diff --git a/Tuprules.tup b/Tuprules.tup
+index 153fac75..6a9e4253 100644
+--- a/Tuprules.tup
++++ b/Tuprules.tup
+@@ -95,6 +95,7 @@ ifeq ($(TUP_SERVER),fuse3)
+ export PKG_CONFIG_PATH
+ CFLAGS += `pkg-config fuse3 --cflags`
+ CFLAGS += -DFUSE3
++CFLAGS += -D_FILE_OFFSET_BITS=64
+ endif
+ 
+ ifeq ($(TUP_SERVER),ldpreload)
+diff --git a/build.sh b/build.sh
+index e165f9da..32ce1daf 100755
+--- a/build.sh
++++ b/build.sh
+@@ -18,7 +18,7 @@ if [ "$server" = "fuse" ]; then
+ 	plat_ldflags="`pkg-config fuse --libs`"
+ 	plat_files="$plat_files ../src/tup/server/fuse*.c ../src/tup/server/master_fork.c"
+ elif [ "$server" = "fuse3" ]; then
+-	plat_cflags="`pkg-config fuse3 --cflags` -DFUSE3"
++	plat_cflags="`pkg-config fuse3 --cflags` -DFUSE3 -D_FILE_OFFSET_BITS=64"
+ 	plat_ldflags="`pkg-config fuse3 --libs`"
+ 	plat_files="$plat_files ../src/tup/server/fuse*.c ../src/tup/server/master_fork.c"
+ elif [ "$server" = "ldpreload" ]; then

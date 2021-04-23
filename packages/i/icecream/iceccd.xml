@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Icecream compiler daemon (iceccd)</short>
+  <description>Icecream is a distributed compiler daemon. Enable this option if this host is a compile node.</description>
+  <port protocol="tcp" port="10245"/>
+  <source-port port="8765" protocol="udp"/><!-- scheduler announcements -->
+</service>

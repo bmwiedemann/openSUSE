@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>710db1e06ea27e26e8ea406f9653221a</srcmd5>
+    <version>0.1.0</version>
+    <time>1570710735</time>
+    <user>dimstar_suse</user>
+    <comment>- New Python Azure ADK component package</comment>
+    <requestid>735767</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d5c8b8ee65451ff14db47e7f365d7593</srcmd5>
+    <version>0.2.0</version>
+    <time>1580205411</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.2.0
+  + For detailed information about changes see the
+    HISTORY.txt file provided with this package
+- Update %description from README.rst (forwarded request 767755 from glaubitz)</comment>
+    <requestid>767843</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f71589d85b960bfb4bfd0b1df36a8fb8</srcmd5>
+    <version>0.2.0</version>
+    <time>1607548834</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853989</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>85cf042a25459ec9288647a943fd61ac</srcmd5>
+    <version>1.0.0b1</version>
+    <time>1610051264</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section
+- Update Requires from setup.py (forwarded request 861356 from glaubitz)</comment>
+    <requestid>861440</requestid>
+  </revision>
+</revisionlist>

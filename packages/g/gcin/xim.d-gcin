@@ -1,0 +1,21 @@
+if ! type -p gcin > /dev/null 2>&1 ; then
+    echo "gcin is not installed. please run `sudo zypper in gcin`."
+    return 1
+fi
+
+# Force OOo to use gtk-immodule
+# so gcin can use on_the_spot mod to insert characters
+	export OOO_FORCE_DESKTOP=gnome
+
+# Environment Variables
+export LC_CTYPE=$LANG
+export XMODIFIERS="@im=gcin"
+export GTK_IM_MODULE=gcin
+export GTK3_IM_MODULE=gcin
+export QT_IM_SWITCHER=imsw-multi
+export QT_IM_MODULE=gcin
+
+gcin &
+
+# success:
+return 0

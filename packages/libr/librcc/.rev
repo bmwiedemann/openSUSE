@@ -1,0 +1,93 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6a37c6c71463163ce2b8fd26a1c66463</srcmd5>
+    <version>0.2.9</version>
+    <time>1337004698</time>
+    <user>coolo</user>
+    <comment>rename librcc0</comment>
+    <requestid>120683</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6a37c6c71463163ce2b8fd26a1c66463</srcmd5>
+    <version>0.2.9</version>
+    <time>1340183627</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d89ae22493fb38f78f1799b59ee1dffc</srcmd5>
+    <version>0.2.10</version>
+    <time>1356097841</time>
+    <user>coolo</user>
+    <comment>update to 0.2.10</comment>
+    <requestid>146233</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d89ae22493fb38f78f1799b59ee1dffc</srcmd5>
+    <version>0.2.10</version>
+    <time>1359109337</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>a223905a3426c02001524a073ed0bb1b</srcmd5>
+    <version>0.2.10</version>
+    <time>1374753297</time>
+    <user>coolo</user>
+    <comment>Now depends on libguess.</comment>
+    <requestid>183699</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>bf296d68c76a9dfcb325bb884bd1a1b3</srcmd5>
+    <version>0.2.10</version>
+    <time>1375444648</time>
+    <user>coolo</user>
+    <comment>- buildignore glib-networking to break a cycle:
+  unzip -&gt; librcc -&gt; libproxy -&gt; libXau -&gt; xorg-x11-proto-devel -&gt; docbook-xsl-stylesheets</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>67bc83c2a023b0c86ab08cfbcca205a5</srcmd5>
+    <version>0.2.10</version>
+    <time>1375451752</time>
+    <user>coolo</user>
+    <comment>revert</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>67bc83c2a023b0c86ab08cfbcca205a5</srcmd5>
+    <version>0.2.10</version>
+    <time>1379663064</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>095b73f29ff6f517a4cec0b4e5fbd885</srcmd5>
+    <version>0.2.10</version>
+    <time>1382616571</time>
+    <user>scarabeus_factory</user>
+    <comment>Drop librtranslate-devel from BuildRequires to shorten build cycle.</comment>
+    <requestid>204456</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a7df09c902d621442a2ea53939158707</srcmd5>
+    <version>0.2.12</version>
+    <time>1391406549</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>215061</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>a7df09c902d621442a2ea53939158707</srcmd5>
+    <version>0.2.12</version>
+    <time>1409301692</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>117c99a8654398359f449de879c0a423</srcmd5>
+    <version>0.2.12</version>
+    <time>1447882343</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>344451</requestid>
+  </revision>
+</revisionlist>

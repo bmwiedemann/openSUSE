@@ -1,0 +1,8 @@
+<package name="sat4j" project="openSUSE:Factory">
+  <title>A library of SAT solvers written in Java</title>
+  <description>The aim of the SAT4J library is to provide an efficient library of SAT
+solvers in Java. The SAT4J library targets first users of SAT &quot;black
+boxes&quot;, those willing to embed SAT technologies into their application
+without worrying about the details.</description>
+  <devel project="Java:packages" package="sat4j"/>
+</package>

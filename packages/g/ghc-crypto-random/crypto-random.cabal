@@ -1,0 +1,50 @@
+Name:                crypto-random
+Version:             0.0.9
+x-revision: 1
+Description:         Simple cryptographic random related types
+License:             BSD3
+License-file:        LICENSE
+Copyright:           Vincent Hanquez <vincent@snarc.org>
+Author:              Vincent Hanquez <vincent@snarc.org>
+Maintainer:          Vincent Hanquez <vincent@snarc.org>
+Synopsis:            Simple cryptographic random related types
+Category:            Cryptography
+Build-Type:          Simple
+Homepage:            http://github.com/vincenthz/hs-crypto-random
+Cabal-Version:       >=1.6
+
+Library
+  Build-depends:     base >= 4 && < 5
+                   , bytestring
+                   , securemem
+                   , vector >= 0.7
+  Exposed-modules:   Crypto.Random
+                   , Crypto.Random.Test
+                   , Crypto.Random.API
+  Other-modules:     Crypto.Random.Generator
+                   , Crypto.Random.Entropy
+                   , Crypto.Random.Entropy.Source
+  ghc-options:       -Wall
+  if os(windows)
+    cpp-options:    -DWINDOWS
+    Build-Depends:  Win32
+    Other-modules:  Crypto.Random.Entropy.Windows
+    extra-libraries: advapi32
+  else
+    Build-Depends:  unix
+    Other-modules:  Crypto.Random.Entropy.Unix
+
+  if arch(i386)
+    cpp-options: -DARCH_X86
+  if arch(x86_64)
+    cpp-options: -DARCH_X86_64
+
+  if arch(x86_64)
+    cpp-options:    -DSUPPORT_RDRAND
+    Other-modules:  Crypto.Random.Entropy.RDRand
+    c-sources:      cbits/rdrand.c
+
+source-repository head
+  type:     git
+  location: git://github.com/vincenthz/hs-crypto-random
+  subdir:   types

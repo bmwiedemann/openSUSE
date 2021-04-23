@@ -1,0 +1,6 @@
+<package name="yast2-sysconfig" project="openSUSE:Factory">
+  <title>YaST2 - Sysconfig Editor</title>
+  <description>A graphical /etc/sysconfig/* editor with integrated search and context
+information.</description>
+  <devel project="YaST:Head" package="yast2-sysconfig"/>
+</package>

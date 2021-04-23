@@ -1,0 +1,23 @@
+Backport of 0f801e0b6cc9f67c9a8983127e23161f6025c5b6
+
+Index: gcc/config/aarch64/aarch64.c
+===================================================================
+--- gcc/config/aarch64/aarch64.c	(revision 278213)
++++ gcc/config/aarch64/aarch64.c	(working copy)
+@@ -13453,7 +13453,6 @@ aarch64_copy_one_block_and_progress_poin
+ bool
+ aarch64_expand_movmem (rtx *operands)
+ {
+-  unsigned int n;
+   rtx dst = operands[0];
+   rtx src = operands[1];
+   rtx base;
+@@ -13467,7 +13466,7 @@ aarch64_expand_movmem (rtx *operands)
+   if (!CONST_INT_P (operands[2]))
+     return false;
+ 
+-  n = UINTVAL (operands[2]);
++  unsigned HOST_WIDE_INT n = UINTVAL (operands[2]);
+ 
+   /* Try to keep the number of instructions low.  For cases below 16 bytes we
+      need to make at most two moves.  For cases above 16 bytes it will be one

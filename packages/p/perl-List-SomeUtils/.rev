@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a41a7e9e31c95b710104570b80c7e2a5</srcmd5>
+    <version>0.52</version>
+    <time>1468579956</time>
+    <user>dimstar_suse</user>
+    <comment>needed for perl-List-AllUtils</comment>
+    <requestid>408207</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5fde9531e75563cb0af0f08fd5a536a3</srcmd5>
+    <version>0.53</version>
+    <time>1472026008</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>420455</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>efb7b8b9bcb915da021e875b90e71580</srcmd5>
+    <version>0.54</version>
+    <time>1497687674</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502490</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3694f20aa5fdb5beeddf499e7a48baa9</srcmd5>
+    <version>0.56</version>
+    <time>1503132908</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>516819</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>98cf34e5399de9dc24a9ada2e35e9a6c</srcmd5>
+    <version>0.58</version>
+    <time>1572773950</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743757</requestid>
+  </revision>
+</revisionlist>

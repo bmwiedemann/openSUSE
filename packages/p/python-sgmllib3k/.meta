@@ -1,0 +1,5 @@
+<package name="python-sgmllib3k" project="openSUSE:Factory">
+  <title></title>
+  <description>Python 3 port of Python 2's standard library `sgmllib`.</description>
+  <devel project="devel:languages:python" package="python-sgmllib3k"/>
+</package>

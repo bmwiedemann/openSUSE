@@ -1,0 +1,120 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d05a61e6fa046a2f0e74dd958dd42777</srcmd5>
+    <version>1.35</version>
+    <time>1484818977</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>446679</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>93f9110791b8a22b5956becc79287759</srcmd5>
+    <version>1.35</version>
+    <time>1485682696</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>452615</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bdf11d3ca34db7469bb86bdf3cf9286a</srcmd5>
+    <version>1.35</version>
+    <time>1493363631</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>491263</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>e7322a8c24e49a385bec50d95a284b1a</srcmd5>
+    <version>1.35</version>
+    <time>1534100041</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not depend on unittest2 it is not needed:
+  * no-unittest2.patch
+- Really execute the tests</comment>
+    <requestid>628597</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b315cc9bdd640070e3581696dacff698</srcmd5>
+    <version>1.35</version>
+    <time>1557751952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>702495</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>85bd171ef38cb28cefe940ce85a46c13</srcmd5>
+    <version>2.0.1</version>
+    <time>1583948968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>783436</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2f46d7ce8cbe040b7357e5aabe855961</srcmd5>
+    <version>2.0.2</version>
+    <time>1584744838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>785415</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>81e942433827fa8c7c820298ddcc988e</srcmd5>
+    <version>2.0.3</version>
+    <time>1585484865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>789362</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bd70acc33ae3979488d0b9ff8c65fad4</srcmd5>
+    <version>3.0.0</version>
+    <time>1592245756</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.0:
+  * Build Windows, macOS and manylinux wheels on CI and deploy to PyPI
+  * Breaking change: New reject_bytes option to raise on bytes,
+   defaults to True to align with json library. Set to False for
+   old behaviour (#266) @elelay
+  * Breaking change: Add an allow_nan keyword argument to dumps,
+  defaults to True to align with json library. Set to False for old
+  behaviour (#327) @segfault
+  Specify setuptools_scm config in pyproject.toml (#399) @BenjaminSchubert
+  * Remove python 2.x support</comment>
+    <requestid>814556</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0cbf565be7eb749577fdc477cf85df5e</srcmd5>
+    <version>3.1.0</version>
+    <time>1596457098</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * PEP 489 Multi Phase Init support (#418) @WillAyd
+  * PyPy3 test fixes (#413) @mgorny</comment>
+    <requestid>824027</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7d6a51ba4c3f305da26207336a5e272d</srcmd5>
+    <version>4.0.1</version>
+    <time>1606428865</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.1:
+  * Fix UnicodeDecodeError on arm64/aarch64
+  * Add support for Python 3.9
+  * Drop support for EOL Python 3.5
+  * Make PEP 384 compliant</comment>
+    <requestid>850915</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>98cb79226d9c15abb3122a4fa6bc3e72</srcmd5>
+    <version>4.0.2</version>
+    <time>1612272339</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.2:
+  * Travis CI: Test on 3.9 final, remove 3.8
+  * Toward matching Python standard library output for float
+  * Fix errors on reading long decimal floats
+  * Fix #429: Make empty dict/list indented serialization match stdlib json
+  * Fix dealing with None types</comment>
+    <requestid>868446</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,14 @@
+<services>
+  <service mode="disabled" name="tar_scm">
+    <param name="changesgenerate">enable</param>
+    <param name="revision">152fb9b32f60e201a6de2f25a1783c87c01aaf1a</param>
+    <param name="scm">git</param>
+    <param name="url">https://github.com/ocaml/opam-file-format.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+  </service>
+  <service mode="disabled" name="recompress">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+</services>

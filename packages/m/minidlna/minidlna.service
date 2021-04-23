@@ -1,0 +1,15 @@
+[Unit]
+Description=MiniDLNA is a DLNA/UPnP-AV server software
+After=network-online.target syslog.target local-fs.target
+Wants=network-online.target
+
+[Service]
+User=minidlna
+Group=minidlna
+PIDFile=/run/minidlna/minidlna.pid
+Type=simple
+ExecStart=/usr/sbin/minidlnad -S
+ExecReload=/usr/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

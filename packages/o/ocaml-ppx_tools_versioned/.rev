@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>82bb3f8d87bd2d7452aa145dd0ed3d12</srcmd5>
+    <version>5.1</version>
+    <time>1530303839</time>
+    <user>dimstar_suse</user>
+    <comment>Tools for authors of ppx rewriters.
+
+The is a dependency of sedlex, which in turn is a dependency of the next version of Haxe (4.0.0).</comment>
+    <requestid>614879</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e7c23b6e3fb67d321518f905fa28ee84</srcmd5>
+    <version>5.2.1</version>
+    <time>1546946743</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release (5.2.1)
+  * port build system to dune
+  * add topkg support 
+</comment>
+    <requestid>660406</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e72524af2384faaf797eee9786051131</srcmd5>
+    <version>5.2.1</version>
+    <time>1551025079</time>
+    <user>coolo</user>
+    <comment>Fix build with ocaml-dune 1.7.1.
+</comment>
+    <requestid>677888</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>12d83b211ae59eaab42faf3ec0d0e99b</srcmd5>
+    <version>5.2.2</version>
+    <time>1558516551</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release (5.2.2)
+  * Support for compiling with OCaml 4.08.
+</comment>
+    <requestid>704383</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5ab7eee8e90c9d0182b12d948da7d1ec</srcmd5>
+    <version>5.2.3</version>
+    <time>1564302181</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release (5.2.3)
+  * Support for OCaml 4.08 and 4.09.
+</comment>
+    <requestid>719284</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>38128f188cbb8d9839d12b09d4be2de7</srcmd5>
+    <version>5.2.3</version>
+    <time>1571950922</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>735916</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>13dd4b36c5acb077ff2176e634b338d9</srcmd5>
+    <version>5.2.3</version>
+    <time>1573504101</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>746709</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f7f8e2b2fe59cfc4690d7541003e2fbc</srcmd5>
+    <version>5.3.0</version>
+    <time>1583447071</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release (5.3.0)
+  * Support for OCaml 4.10</comment>
+    <requestid>781875</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2b8354ac461d8214f7eda206cdc82d0a</srcmd5>
+    <version>5.4.0</version>
+    <time>1598274410</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.4.0
+  * Support for OCaml 4.11</comment>
+    <requestid>828689</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,118 @@
+-------------------------------------------------------------------
+Fri Feb 19 10:10:28 UTC 2016 - coolo@suse.com
+
+- updated to 1.003028
+   see /usr/share/doc/packages/perl-Devel-REPL/Changes
+
+  1.003028   2016-02-16 01:13:08Z
+    - increase the required version of Data::Dump::Streamer (see RT#105466)
+
+-------------------------------------------------------------------
+Wed Jan 20 10:01:48 UTC 2016 - coolo@suse.com
+
+- updated to 1.003027
+   see /usr/share/doc/packages/perl-Devel-REPL/Changes
+
+-------------------------------------------------------------------
+Mon Sep 15 15:15:13 UTC 2014 - coolo@suse.com
+
+- updated to 1.003026
+  - fix inclusion of of optional plugin prereqs when installation is run
+    non-interactively
+
+-------------------------------------------------------------------
+Mon Nov 25 07:36:22 UTC 2013 - coolo@suse.com
+
+- updated to 1.003025
+  - The default profile is now "Minimal", not "Default", as Default requires
+    some optional features; Default renamed to Standard (RT#88615)
+  - workaround added for plugins consuming plugins that use optional features
+  - install problems fixed when some optional prereqs are not installed, by
+    properly detecting the lack of features during testing (RT#88542)
+  - spelling fixes (RT#87691, David Steinbrunner)
+  - removed use of deprecated functions from Class::MOP
+  - long-deprecated Devel::REPL::Plugin::NewlineHack removed at last
+  - converted dist to Dist::Zilla, with a different mechanism for specifying
+    optional features (install with cpanm --interactive to be prompted)
+  - shebang fixed in re.pl so it is rewritten to point to the proper perl at
+    install time (RT#70928)
+  - Fix "No arguments!" error in Plugin::DDS when nothing to dump (RT#71205,
+    Ash Berlin)
+  - fix failing test when Lexical::Persistence is not installed
+
+-------------------------------------------------------------------
+Tue Jun  4 08:31:54 UTC 2013 - coolo@suse.com
+
+- updated to 1.003018
+  - more attempts to fix Term::ReadLine issues in tests (RT#84246, mephinet)
+
+  - fix issues with Term::ReadLine:Perl in tests (RT#84246) (thanks,
+    Christopher McCann!)
+
+  - make all plugins load again by using native traits (thanks, Zaki Mughal!)
+    (RT#84011)
+
+  - fix "Attempt to use reference as lvalue in substr" warning on perl 5.16
+    (thanks, ilmari!)
+  - plugins that are used by the default profile now default to being
+    installed, fixing RT#83669 and RT#83677
+
+-------------------------------------------------------------------
+Fri Nov 30 19:07:39 UTC 2012 - coolo@suse.com
+
+- updated to 1.003014
+   - now using native Moose attribute traits, instead of the deprecated
+     MooseX::AttributeHelper (thanks, Justin Hunter!)
+   - now using namespace::autoclean rather than namespace::clean (thanks, Karen
+     Etheridge!)
+
+-------------------------------------------------------------------
+Fri Jun  1 20:19:30 UTC 2012 - coolo@suse.com
+
+- updated to 1.003013
+  - Make Sys::SigAction optional dependency for Win32 systems
+  - Apply some plugin related patchs from Caleb Cushing
+
+-------------------------------------------------------------------
+Sat Dec 31 16:30:50 UTC 2011 - coolo@suse.com
+
+- update to 1.003012
+  - Remove some old code to avoid a future Moose warnin
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:47 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Wed Jul 28 16:18:09 UTC 2010 - jw@novell.com
+
+- re.pl did not start, added Requires: perl(File::Which)
+
+-------------------------------------------------------------------
+Wed Jun 16 12:31:52 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.003011:
+  * history plugin now works for Term::ReadLine::Perl
+  * add ReadLine file completion if no other matches, fixes rt.cpan#58351
+  * add a bit more description of Turtle plugin to its POD
+  * fix rt.cpan#43151 where _-> completion had error
+  * added docs on quoting and history expansion addressing rt.cpan#48459
+
+- explicitly require perl = perl_version
+
+-------------------------------------------------------------------
+Wed May 26 04:59:29 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.003010
+
+-------------------------------------------------------------------
+Tue May 11 22:52:41 UTC 2010 - pascal.bleser@opensuse.org
+
+- add missing Requires on Lexical::Persistence
+
+-------------------------------------------------------------------
+Tue May 11 18:40:06 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (1.003009)
+

@@ -1,0 +1,13 @@
+Index: xyscan/src/xyscanAbout.cpp
+===================================================================
+--- xyscan.orig/src/xyscanAbout.cpp
++++ xyscan/src/xyscanAbout.cpp
+@@ -28,7 +28,7 @@ using namespace std;
+ xyscanAbout::xyscanAbout(QWidget* parent, Qt::WindowFlags fl)
+     : QDialog(parent, fl),
+       mTitlePixmap(":/images/xyscanSplash.png"),
+-      mVersionText(QString(tr("Release ")) + QString(VERSION) + QString(" (") + QString(__DATE__) + QString(")"))
++      mVersionText(QString(tr("Release ")) + QString(VERSION))
+ {
+     setModal(true);
+ 

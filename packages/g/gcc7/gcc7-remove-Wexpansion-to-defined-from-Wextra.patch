@@ -1,0 +1,26 @@
+Index: gcc/c-family/c.opt
+===================================================================
+--- gcc/c-family/c.opt	(revision 246224)
++++ gcc/c-family/c.opt	(working copy)
+@@ -596,7 +596,7 @@ C ObjC C++ ObjC++ Var(warn_double_promot
+ Warn about implicit conversions from \"float\" to \"double\".
+ 
+ Wexpansion-to-defined
+-C ObjC C++ ObjC++ CPP(warn_expansion_to_defined) CppReason(CPP_W_EXPANSION_TO_DEFINED) Var(cpp_warn_expansion_to_defined) Init(0) Warning EnabledBy(Wextra || Wpedantic)
++C ObjC C++ ObjC++ CPP(warn_expansion_to_defined) CppReason(CPP_W_EXPANSION_TO_DEFINED) Var(cpp_warn_expansion_to_defined) Init(0) Warning EnabledBy(Wpedantic)
+ Warn if \"defined\" is used outside #if.
+ 
+ Wimplicit-function-declaration
+diff --git gcc/testsuite/gcc.dg/cpp/defined-Wextra.c gcc/testsuite/gcc.dg/cpp/defined-Wextra.c
+index 460a1cb43b2..b4de2b72d97 100644
+--- gcc/testsuite/gcc.dg/cpp/defined-Wextra.c
++++ gcc/testsuite/gcc.dg/cpp/defined-Wextra.c
+@@ -1,7 +1,7 @@
+ /* Copyright (C) 2000 Free Software Foundation, Inc.  */
+ 
+ /* { dg-do preprocess } */
+-/* { dg-options "-Wextra" } */
++/* { dg-options "-Wextra -Wexpansion-to-defined" } */
+ 
+ /* Use of defined in different contexts.  */
+ 

@@ -1,0 +1,238 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>e2df09d4d449614553bcb91b29190ee0</srcmd5>
+    <version>1.7.1</version>
+    <time>1179110031</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c95eb59a14a7b69042971037bd2754d8</srcmd5>
+    <version>1.8.0</version>
+    <time>1205114310</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f04f11cc3c021e62f06ffee0745420c3</srcmd5>
+    <version>1.8.1</version>
+    <time>1220889937</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e40dbfd3075d8d02e89a32434c1f200e</srcmd5>
+    <version>1.8.2</version>
+    <time>1225711346</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>804899e2ba3cbb82b834d4e72aa3e7bb</srcmd5>
+    <version>1.8.2</version>
+    <time>1248726039</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>804899e2ba3cbb82b834d4e72aa3e7bb</srcmd5>
+    <version>1.8.2</version>
+    <time>1248726039</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>cf49d0ace1e1400f70540de21abe71fa</srcmd5>
+    <version>1.8.2</version>
+    <time>1268924564</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>92a0a4e9aeae7d9f39da3161a93e8c2a</srcmd5>
+    <version>1.9.0</version>
+    <time>1275322481</time>
+    <user>autobuild</user>
+    <comment>Copy from GNOME:Factory/libgadu based on submit request 40763 from user vuntz
+</comment>
+    <requestid>40763</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>92a0a4e9aeae7d9f39da3161a93e8c2a</srcmd5>
+    <version>1.9.0</version>
+    <time>1278667358</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>92a0a4e9aeae7d9f39da3161a93e8c2a</srcmd5>
+    <version>1.9.0</version>
+    <time>1278678589</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>517831d9b5425569902e5973dc74de9a</srcmd5>
+    <version>1.9.1</version>
+    <time>1286800729</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:common:Factory/libgadu based on submit request 50168 from user coolo
+</comment>
+    <requestid>50168</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>517831d9b5425569902e5973dc74de9a</srcmd5>
+    <version>1.9.1</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3387b8ea17cd3087238cc9a67f098c8f</srcmd5>
+    <version>1.10.1</version>
+    <time>1300956330</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64935 from user coolo
+</comment>
+    <requestid>64935</requestid>
+  </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>fc061efe63ae60a7fc83d7b4a018b712</srcmd5>
+    <version>1.10.1</version>
+    <time>1300956337</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64935
+</comment>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fe1c31cb68adada65bbad3fa55287d3a</srcmd5>
+    <version>1.11.0</version>
+    <time>1308298687</time>
+    <user>saschpe</user>
+    <comment>New version</comment>
+    <requestid>73923</requestid>
+  </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>174dc0e1b259fba723ccc8ab9d706b4a</srcmd5>
+    <version>1.11.0</version>
+    <time>1308298697</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 73923
+</comment>
+  </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>174dc0e1b259fba723ccc8ab9d706b4a</srcmd5>
+    <version>1.11.0</version>
+    <time>1319182092</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>e74f0cf9f069c8f1aa2198f1ee58a970</srcmd5>
+    <version>1.11.0</version>
+    <time>1325658269</time>
+    <user>coolo</user>
+    <comment>- Apply /usr/local include work-around for 12.1 only (bnc#719176).
+
+- Fix include path (/usr/local) in .pc file.
+- Replace -devel with pkgconfig() in BuildRequires.
+- Fix license notation according to spdx.</comment>
+    <requestid>98454</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c0895b2d44aeae734ba4e2d0e7240dd0</srcmd5>
+    <version>1.11.1</version>
+    <time>1327922804</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.11.1, bugfix release:
+  + improved SSL support with GnuTLS library
+  + improved pkg-config handling
+  + improved conversion of invalid UTF-8 sequence
+  + improved hostname resolving on systems without gethostbyname_r()</comment>
+    <requestid>101970</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>c0895b2d44aeae734ba4e2d0e7240dd0</srcmd5>
+    <version>1.11.1</version>
+    <time>1340183585</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5624ff17b3c6851da536262dba000acb</srcmd5>
+    <version>1.11.2</version>
+    <time>1343134987</time>
+    <user>coolo</user>
+    <comment>Bugfix update. I hope it can be pushed to 12.2 (Update) too.</comment>
+    <requestid>128808</requestid>
+  </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>5624ff17b3c6851da536262dba000acb</srcmd5>
+    <version>1.11.2</version>
+    <time>1359109270</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>5624ff17b3c6851da536262dba000acb</srcmd5>
+    <version>1.11.2</version>
+    <time>1379662950</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5a0059ab6f6a7827c7595148850c596a</srcmd5>
+    <version>1.11.4</version>
+    <time>1400055963</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.11.4, bugfix release:
+  + Fix buffer overflow with remote code execution potential.
+    Only triggerable by a Gadu-Gadu server or a man-in-the-middle.
+    CVE-2013-6487
+  + Fix memory overwrite in file transfer with proxy server.
+  + Minor fixes reported by Pidgin project members.</comment>
+    <requestid>233522</requestid>
+  </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>40eeeabd6e8abbfd09bd3de92f6a1c3c</srcmd5>
+    <version>1.11.4</version>
+    <time>1401167379</time>
+    <user>coolo</user>
+    <comment>This is exactly the same as the previous request, just mentions all related bugs and CVE.</comment>
+    <requestid>234910</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>48dbd5f153bcafe7f1bff30809f851df</srcmd5>
+    <version>1.12.0</version>
+    <time>1403762418</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>238002</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>48dbd5f153bcafe7f1bff30809f851df</srcmd5>
+    <version>1.12.0</version>
+    <time>1409301562</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>34e859ced5fc0b1728123376551fc2bf</srcmd5>
+    <version>1.12.1</version>
+    <time>1423214400</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.12.1, bugfix release:
+  + improved compatibility with GG11 protocol
+  + fix segfaults when got incorrect reply from public catalog
+  + fixes related to proxy servers (forwarded request 283942 from Fisiu)</comment>
+    <requestid>283943</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>cb1f606ccca81852f52236a607243c83</srcmd5>
+    <version>1.12.2</version>
+    <time>1497687592</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>501548</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>1d6db92c2f5739c31334a87efbbd2db2</srcmd5>
+    <version>1.12.2</version>
+    <time>1559029247</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705449</requestid>
+  </revision>
+</revisionlist>

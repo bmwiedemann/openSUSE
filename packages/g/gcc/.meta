@@ -1,0 +1,5 @@
+<package name="gcc" project="openSUSE:Factory">
+  <title>The system GNU C Compiler</title>
+  <description>The system GNU C Compiler.</description>
+  <devel project="devel:gcc" package="gcc"/>
+</package>

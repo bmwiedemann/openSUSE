@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Sat Sep 12 16:24:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.19:
+  * API change to use full 32 bit segment numbers, in accordance
+    to the JBIG2 specification.
+  * Better handling of end of input data stream and and when
+    encountering errors in the arithmetic decoder stream. This
+    should improve many situations where jbig2dec appeared to
+    run forever.
+  * Fix several bugs related to signedness or over-/underflow
+    checks that were not robust.
+  * Bug fixes for issues reported by Coverity/OSS-fuzz.
+  * Add option to limit memory usage to command line tool.
+  * Update manpages, and command line tool usage.
+
+-------------------------------------------------------------------
+Sun May 24 11:36:57 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add Patch fix-for-restore-abi.patch. Restore abi export of 
+  jbig2_ctx_new.
+
+-------------------------------------------------------------------
+Wed Apr 15 11:31:01 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.18
+  * Performance enhancements related to decoding of MMR and
+    generic regions as well as composing images onto pages.
+  * Bug fixes for a few issues reported by Coverity and OSS-Fuzz.
+    version 0.17:
+  * Improved test suite by verifying input file contents and
+    adding all ubc test streams. Fixed bugs where previously
+    missing ubc test streams were decoded incorrectly.
+  * Bug fixes for a few issues reported by Coverity.
+  * Moved version number to jbig2.h, and adapted configure
+    correspondingly. Added pkg-config file to be installed
+    along side library.
+    version 0.16:
+  * API change allowing for library users to get the custom
+    allocator so it may be freed if necessary. This is useful if
+    the allocator is extended with e.g. a custom pointer needed
+    by the allocator callbacks.
+    version 0.15:
+  * Bug fix release, with many security related and stability
+    fixes as well as better tolerance/behaviour with out of spec
+    files
+- New upstream source
+- Now running autoreconf before configure to avoid problems with
+  the latter. Also build require automake and libtool for this
+  purpose.
+- Dropped Group tag
+- Spec cleanup
+
+-------------------------------------------------------------------
+Sun Nov 19 05:13:13 UTC 2017 - aloisio@gmx.com
+
+- Use AGPL-3.0+ license
+
+-------------------------------------------------------------------
+Fri Nov 10 15:22:40 UTC 2017 - aloisio@gmx.com
+
+- Update to 0.14
+  * Bug fix release
+- Spec cleanup
+
+-------------------------------------------------------------------
+Wed May  4 18:14:05 UTC 2016 - mpluskal@suse.com
+
+- Update to 0.13
+  * Bug fix release.
+- Cleanup spec file with spec-cleaner
+- Drop autoreconf call
+- Update dependencies
+
+-------------------------------------------------------------------
+Thu Dec 10 16:50:25 UTC 2015 - p.drouand@gmail.com
+
+- Include missing memento.h
+
+-------------------------------------------------------------------
+Tue Dec  8 18:41:31 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.12
+  * Bug fix release
+- Remove libpng-devel and xz requirements
+- Add autoconf, automake and libtool build dependencies; need to
+  run autoreconf
+
+-------------------------------------------------------------------
+Fri Feb 15 09:54:56 UTC 2013 - badshah400@gmail.com
+
+- Use the correct link to source tarball (from sourceforge)
+- Add BuildRequires: xz, because source tarball is xz compressed
+- Cleanup spec file.
+
+-------------------------------------------------------------------
+Wed Jan 16 22:22:07 UTC 2013 - gber@opensuse.org
+
+- clean up specfile further
+- make jbig2dec-devel dpend on libjbig2dec0
+
+-------------------------------------------------------------------
+Thu Aug 16 13:23:31 UTC 2012 - idonmez@suse.com
+
+- Cleanup spec file 
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sat Jul  7 18:54:55 UTC 2012 - sleep_walker@suse.cz
+
+- add -fPIC into CFLAGS
+
+-------------------------------------------------------------------
+Thu Jul  5 21:30:05 UTC 2012 - sleep_walker@suse.cz
+
+- accept wider convence for man page
+
+-------------------------------------------------------------------
+Thu Jul  5 08:20:53 UTC 2012 - sleep_walker@suse.cz
+
+- fix build for factory
+
+-------------------------------------------------------------------
+Wed Jul  4 22:40:08 UTC 2012 - sleep_walker@suse.cz
+
+- replace tarballs
+
+-------------------------------------------------------------------
+Wed Jul  4 22:15:01 UTC 2012 - sleep_walker@suse.cz
+
+- update to 0.11
+
+-------------------------------------------------------------------
+Tue Oct 27 13:20:24 UTC 2009 - lnussel@suse.de
+
+- initial package version 0.10
+

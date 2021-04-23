@@ -1,0 +1,48 @@
+# Add post-recording fixup of length fields in wav header to reflect
+# correct file size when recording was stopped prematurely by the user.
+
+--- bplaysrc/bplay.c	2011-08-14 13:27:16.377717882 +0200
++++ bplaysrc/bplay.c	2011-08-14 13:27:16.605717839 +0200
+@@ -297,14 +297,14 @@
+ 			filetype = F_RAW;	/* Change to change default */
+ 		switch(filetype)
+ 		{
++			wavhead header;
++
+ 		case F_WAV:
+ 			/* Spit out header here... */
+ #ifndef LP2CD
+ 			fprintf(stderr, "Writing MS WAV sound file");
+ #endif
+ 			{
+-				wavhead header;
+-
+ 				char *riff = "RIFF";
+ 				char *wave = "WAVE";
+ 				char *fmt = "fmt ";
+@@ -346,6 +346,25 @@
+ 			initsems(0, 1);
+ 
+ 			shmrec(thefd, bcount, 1);
++
++			/* Rewrite header with updated length fields now
++			 * that we know the true file size. Writing is done
++			 * in a separate process, so it's easiest to gather
++			 * the number of bytes written from fstat(). [dk]
++			 */
++			if (filetype == F_WAV &&
++			    lseek(thefd, 0, SEEK_SET) != -1) {
++				struct stat st;
++				if (fstat(thefd, &st) != -1) {
++					header.length = cpu_to_le32(
++						(u_int32_t) (st.st_size - 8));
++					header.data_length = cpu_to_le32(
++						(u_int32_t) (st.st_size -
++							sizeof(header)));
++					write(thefd, &header, sizeof(header));
++				}
++			}
++				
+ 			break;
+ 		case F_VOC:
+ 			/* Spit out header here... */

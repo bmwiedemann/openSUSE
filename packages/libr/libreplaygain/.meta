@@ -1,0 +1,9 @@
+<package name="libreplaygain" project="openSUSE:Factory">
+  <title>Analyze Input Samples and Give the Recommended dB Change</title>
+  <description>
+libreplaygain is a library that analyzes input samples and give the recommended
+dB change.
+</description>
+  <devel project="multimedia:libs" package="libreplaygain"/>
+  <url>http://www.musepack.net/</url>
+</package>

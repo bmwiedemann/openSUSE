@@ -1,0 +1,43 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2b66c1dbb9a50763cbaf5fa8e1d6acbe</srcmd5>
+    <version>4.3.4</version>
+    <time>1600801544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>830265</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>192f35279fb4b366cdde1912af337310</srcmd5>
+    <version>5.0.1</version>
+    <time>1602349441</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.1:
+  * Integration with the new PlatformIO Trusted Registry
+  * Integration with the new Account Management System
+  * New Package Management System
+  * see https://docs.platformio.org/page/core/migration.html  for migrating from 4.x
+  * full list of changes at https://docs.platformio.org/en/latest/core/history.html</comment>
+    <requestid>840482</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0a250b945f413ac464045b06c1ed85f8</srcmd5>
+    <version>5.0.2</version>
+    <time>1604309763</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.2:
+  * Improved “core.call” RPC for PlatformIO Home
+  * Fixed a “KeyError: ‘versions’” when dependency does not exist in the
+  registry
+  * Fixed an issue with GCC linker when “native” dev-platform is used in pair
+  with library dependencies
+  * Fixed an “AssertionError: ensure_dir_exists” when checking library updates
+  from simultaneous subprocesses
+  * Fixed an issue when pio package publish command removes original archive
+  after submitting to the registry
+  * Fixed an issue when multiple pio lib install command with the same local
+  library results in duplicates in lib_deps (issue #3715) Fixed an issue with
+  a “wrong” timestamp in device monitor output using “time” filter</comment>
+    <requestid>845251</requestid>
+  </revision>
+</revisionlist>

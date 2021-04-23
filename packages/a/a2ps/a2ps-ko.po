@@ -1,0 +1,1448 @@
+# a2ps-4.10 Korean po file
+# Copyright (C) 1997 Free Software Foundation, Inc.
+# CHOI Junho <junker@jazz.snu.ac.kr>, 1998.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: a2ps-4.10.1\n"
+"POT-Creation-Date: 1999-02-18 15:03+0100\n"
+"PO-Revision-Date: 2001-01-23 21:00+0900\n"
+"Last-Translator: Hwang, Sang-Jin <violiet@suse.de>\n"
+"Language-Team: Korean <ko@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=euc-kr\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. TRANS: the type of the end-of-line rules, is `any type', i.e.
+#. lines ended by \n, or \r, or \r\n, or \n\r are OK
+#: src/buffer.c:68
+msgid "any type"
+msgstr "모든 종류"
+
+#: lib/routines.c:153 lib/xbackupfile.c:248 lib/xbackupfile.c:276
+#: lib/xbackupfile.c:284 src/delegate.c:265
+#, fuzzy, c-format
+msgid "cannot create file `%s'"
+msgstr "출력 파일 `%s'을 만들 수 없습니다"
+
+#: lib/routines.c:183 lib/routines.c:189 src/delegate.c:274 src/select.c:225
+#, fuzzy, c-format
+msgid "cannot open a pipe on `%s'"
+msgstr "`%s'의 파이프를 열 수 없습니다"
+
+#. E.g.: Delegation `PsNup', from ps to ps
+#: src/delegate.c:394
+#, c-format
+msgid "Delegation `%s', from %s to %s\n"
+msgstr "위임 `%s': %s에서 %s로\n"
+
+#: src/delegate.c:413 src/delegate.c:435
+msgid "Applications configured for delegation"
+msgstr "어플리케이션은 위임 설정이 되었습니다"
+
+#: src/generate.c:96
+#, fuzzy, c-format
+msgid "`%s' is a directory"
+msgstr "`%s'는 디렉토리입니다"
+
+#: lib/confg.c:292 lib/confg.c:459 lib/routines.c:147 src/generate.c:103
+#: src/main.c:589 src/main.c:596
+#, c-format
+msgid "cannot open file `%s'"
+msgstr "파일 `%s'을 열 수 없습니다"
+
+#. Another kind of error occured: exit
+#: lib/xbackupfile.c:224 src/generate.c:108
+#, fuzzy, c-format
+msgid "cannot get informations on file `%s'"
+msgstr "파일 `%s'의 정보를 얻을 수 없습니다"
+
+#: src/generate.c:175
+#, c-format
+msgid "[%s (%s): 1 page on 1 sheet]\n"
+msgstr "[%s (%s): 1 페이지/1 장]\n"
+
+#: src/generate.c:181
+#, c-format
+msgid "[%s (%s): %d pages on 1 sheet]\n"
+msgstr "[%s (%s): %d 페이지/1 장]\n"
+
+#: src/generate.c:188
+#, c-format
+msgid "[%s (%s): %d pages on %d sheets]\n"
+msgstr "[%s (%s): %d 페이지/%d 장]\n"
+
+#: src/generate.c:215
+#, c-format
+msgid "[Total: 1 page on 1 sheet] %s\n"
+msgstr "[합계: 1 페이지/1 장] %s\n"
+
+#: src/generate.c:219
+#, c-format
+msgid "[Total: %d pages on 1 sheet] %s\n"
+msgstr "[합계: %d 페이지/1장] %s\n"
+
+#: src/generate.c:224
+#, c-format
+msgid "[Total: %d pages on %d sheets] %s\n"
+msgstr "[합계: %d 페이지/%d 장] %s\n"
+
+#: src/generate.c:235
+msgid "[No output produced]\n"
+msgstr "[출력 없음]\n"
+
+#: src/generate.c:306
+#, c-format
+msgid "%s, delegated to %s"
+msgstr "%s, %s로 위임"
+
+#: src/generate.c:312
+#, c-format
+msgid "[%s (%s): failed.  Ignored]\n"
+msgstr "[%s (%s): 실패. 무시함]\n"
+
+#: src/generate.c:320
+#, c-format
+msgid "[%s (unprintable): ignored]\n"
+msgstr "[%s (출력불가능): 무시함]\n"
+
+#: src/generate.c:329
+#, c-format
+msgid "[%s (binary): ignored]\n"
+msgstr "[%s (바이너리): 무시함]\n"
+
+#: src/generate.c:350
+msgid "plain"
+msgstr "보통"
+
+#: lexssh.l:345
+msgid "end-of-line in string constant"
+msgstr "문자열 상수 안에서 행의 끝"
+
+#: lexssh.l:411
+msgid "end-of-line in regular expression"
+msgstr "정규식에서 행의 끝"
+
+#: src/main.c:185
+#, c-format
+msgid "received signal %d: %s"
+msgstr ""
+
+#. TRANS: highlighting level = heavy (2/2)
+#: src/main.c:224
+msgid "heavy"
+msgstr "고급"
+
+#. TRANS: highlighting level = normal (1/2)
+#: src/main.c:228
+msgid "normal"
+msgstr "보통"
+
+#. TRANS: highlighting level = none (0/2)
+#: src/main.c:232
+msgid "none"
+msgstr "없음"
+
+#. TRANS: Please try not to guess the translation.  Go and see
+#. * in already translated GNU programs (e.g. the most recent
+#. * versions of GNU recode) for `legal' translations.
+#: src/main.c:298
+msgid ""
+"This program is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2, or (at your option)\n"
+"any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software Foundation,\n"
+"Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+msgstr ""
+"본 프로그램은 프리 소프트웨어입니다. 따라서 당신은 Free Software\n"
+"Foundation에서 공표한 GNU 일반 공유 라이센스에 따라(라이센스의 버전은\n"
+"2이거나, (당신이 선택한) 차후의 어떤 버전), 본 프로그램을 재배포\n"
+"그리고/혹은 수정할 수 있습니다.\n"
+"\n"
+"본 프로그램은 유용하기를 바라는 마음에서 배포되지만, \n"
+"이에 대해 어떠한 보증도 갖고 있지 않으며, 심지어는 특정 목적을 위한\n"
+"사용의 적합성이나 상품의 질에 대한 암묵적인 보증도 갖고 있지 않습니다.\n"
+"보다 자세한 정보는 GNU 일반 공유 라이센스를 참조하십시오.\n"
+"\n"
+"당신은 본 프로그램과 함께 GNU 일반 공유 라이센스의 복사본을 받았을\n"
+"것입니다. 만약 그렇지 않다면, Free Sofrware Foundation, Inc., 59 Temple\n"
+"Place - Suite 330, Boston, MA 02111-1307, USA. 로 문의하십시오.\n"
+
+#. TRANS: If your charset supports the character (c) (which is � in
+#. ISO Latin 1), please use it!
+#: src/main.c:326
+msgid ""
+"\n"
+"Copyright (c) 1988, 89, 90, 91, 92, 93 Miguel Santana\n"
+"Copyright (c) 1995, 96, 97, 98, 99 Akim Demaille, Miguel Santana\n"
+msgstr ""
+"\n"
+"저작권 (c) 1988, 89, 90, 91, 92, 93 Miguel Santana\n"
+"저작권 (c) 1995, 96, 97, 98, 99 Akim Demaille, Miguel Santana\n"
+
+#: src/main.c:331
+msgid ""
+"This is free software; see the source for copying conditions.  There is NO\n"
+"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
+msgstr ""
+"이것은 프리 소프트웨어입니다: 복사 조건에 대해서는 소스를 보세요.\n"
+"특정 목적을 위한 사용의 적합성이나 상품의 질에 대한 암묵적인 보증도 갖고\n"
+"있지 않습니다.\n"
+
+#. TRANS: Don't forget to add something about your own translation, e.g.
+#. Written by <Akim.Demaille@inf.enst.fr> and <Miguel.Santana@st.com>
+#. Translated by <me@here>
+#. News, updates and documentation: visit http://www.inf.enst.fr/~demaille/a2ps/
+#. Send comments about translation to me@my.email
+#: src/main.c:341
+msgid ""
+"\n"
+"Written by <Akim.Demaille@inf.enst.fr> and <Miguel.Santana@st.com>\n"
+"News, updates and documentation: visit "
+"http://www.inf.enst.fr/~demaille/a2ps/\n"
+msgstr ""
+"\n"
+"<Akim.Demaille@inf.enst.fr>와 <Miguel.Santana@st.com>가 작성하였습니다.\n"
+"뉴스, 업데이트와 문서는 http://www.inf.enst.fr/~demaille/a2ps/을 방문하세요\n"
+"* 번역에 대한 문의는 CHOI Junho<junker@jazz.snu.ac.kr>로 하세요\n"
+
+#: src/main.c:362
+#, c-format
+msgid "Configuration status of %s %s\n"
+msgstr "%s의 설정 상황 %s\n"
+
+#: src/main.c:366 src/main.c:703
+msgid "Sheets:\n"
+msgstr "장:\n"
+
+#: src/main.c:367
+#, fuzzy, c-format
+msgid ""
+"  medium          = %s%s, %s\n"
+"  page layout     = %d x %d, %s\n"
+"  borders         = %s\n"
+"  file alignment  = %s\n"
+"  interior margin = %d\n"
+msgstr ""
+"  기본 종이             = %s%s\n"
+"  페이지당 레이아웃     = %d x %d (%s, %s)\n"
+"  가장자리              = %s\n"
+"  압축 모드             = %s\n"
+"  안쪽 여백             = %d\n"
+
+#: src/main.c:376
+msgid "portrait"
+msgstr "세로넓게"
+
+#: src/main.c:376
+msgid "landscape"
+msgstr "가로넓게"
+
+#: src/main.c:385
+#, c-format
+msgid "%d characters per line"
+msgstr "행당 %d개 문자"
+
+#: src/main.c:388
+#, c-format
+msgid "%d lines per page"
+msgstr "페이지당 %d개 행"
+
+#: src/main.c:391
+#, c-format
+msgid "font size is %gpt"
+msgstr "글꼴 크기는 %gpt"
+
+#: src/main.c:396
+msgid "no"
+msgstr "아니오"
+
+#. number line: each line
+#: src/main.c:400
+msgid "each line"
+msgstr "각 행"
+
+#. number line: each %d line
+#: src/main.c:404
+#, c-format
+msgid "each %d lines"
+msgstr "각 %d개 행"
+
+#: src/main.c:407 src/main.c:719
+msgid "Virtual pages:\n"
+msgstr "가상 페이지:\n"
+
+#: src/main.c:408
+#, fuzzy, c-format
+msgid ""
+"  number lines         = %s\n"
+"  format               = %s\n"
+"  tabulation size      = %d\n"
+"  non printable format = %s\n"
+msgstr ""
+"  행번호                = %s\n"
+"  형식                  = %s\n"
+"  탭 크기               = %d\n"
+"  인쇄할 수 없는 형식   = %s\n"
+
+#: src/main.c:419
+msgid "Headers:\n"
+msgstr "머릿말:\n"
+
+#: src/main.c:420
+#, fuzzy, c-format
+msgid ""
+"  header       = %s\n"
+"  left footer  = %s\n"
+"  footer       = %s\n"
+"  right footer = %s\n"
+"  left title   = %s\n"
+"  center title = %s\n"
+"  right title  = %s\n"
+"  under lay    = %s\n"
+msgstr ""
+"  머릿말              = %s\n"
+"  왼쪽 꼬릿말         = %s\n"
+"  꼬릿말              = %s\n"
+"  오른쪽 꼬릿말       = %s\n"
+"  왼쪽 제목           = %s\n"
+"  가운제 제목         = %s\n"
+"  오른쪽 제목         = %s\n"
+"  페이지 아래 놓임    = %s\n"
+
+#: src/main.c:439 src/main.c:746
+msgid "Input:\n"
+msgstr "입력:\n"
+
+#: src/main.c:440
+#, fuzzy, c-format
+msgid ""
+"  truncate lines = %s\n"
+"  interpret      = %s\n"
+"  end of line    = %s\n"
+"  encoding       = %s\n"
+"  document title = %s\n"
+"  prologue       = %s\n"
+"  print anyway   = %s\n"
+"  delegating     = %s\n"
+msgstr ""
+"  긴 행 자르기          = %s\n"
+"  해석                  = %s\n"
+"  행의 끝               = %s\n"
+"  기본 인코딩           = %s\n"
+"  문서 제목             = %s\n"
+"  기본 서문             = %s\n"
+"  무조건 출력           = %s\n"
+"  위임                  = %s\n"
+
+#. TRANS: a2ps -E --list=options.  Warning, this answer is also
+#. * used for the PPD file.  Make it compatible with both.
+#: src/main.c:465 src/main.c:532
+msgid "selected automatically"
+msgstr "자동적으로 선택되었습니다"
+
+#: src/main.c:468 src/main.c:761
+msgid "Pretty-printing:\n"
+msgstr "출력 꾸미기:\n"
+
+#: src/main.c:469
+#, fuzzy, c-format
+msgid ""
+"  style sheet     = %s\n"
+"  highlight level = %s\n"
+"  strip level     = %d\n"
+msgstr ""
+"  스타일 시트           = %s\n"
+"  하이라이트 수준       = %s\n"
+"  잘라내기 수준         = %d\n"
+
+#: src/main.c:489
+msgid "never make backups"
+msgstr "백업을 만들지 않는다"
+
+#: src/main.c:493
+msgid "simple backups of every file"
+msgstr "모든 파일의 간단한 백업을 만든다"
+
+#. appears in a2ps --version-=existing --list=defaults
+#: src/main.c:498
+msgid ""
+"numbered backups of files already numbered,\n"
+"                            and simple of others"
+msgstr ""
+"번호가 주어진 백업이 있으면 번호를 주고, 그렇지 않으면\n"
+"                            단순하게 합니다"
+
+#: src/main.c:503
+msgid "numbered backups of every file"
+msgstr "모든 파일의 번호가 주어진 백업"
+
+#: src/main.c:507 src/main.c:771
+msgid "Output:\n"
+msgstr "출력:\n"
+
+#: src/main.c:508
+#, fuzzy, c-format
+msgid ""
+"  destination     = %s\n"
+"  version control = %s\n"
+"  backup suffix   = %s\n"
+msgstr ""
+"  출력하는 곳             = %s\n"
+"  버전 제어               = %s\n"
+"  백업 접미사             = %s\n"
+
+#: src/main.c:522 src/main.c:782
+msgid "PostScript:\n"
+msgstr "포스트스크립트:\n"
+
+#: src/main.c:523
+#, fuzzy, c-format
+msgid ""
+"  magic number              = %s\n"
+"  Printer Description (PPD) = %s\n"
+"  default PPD               = %s\n"
+"  page label format         = %s\n"
+"  number of copies          = %d\n"
+"  sides per sheet           = %s\n"
+"  page device definitions   = "
+msgstr ""
+"  매직 번호                 = %s\n"
+"  프린터 설명 (PPD)         = %s\n"
+"  기본 PPD                  = %s\n"
+"  페이지 레이블 포맷        = %s\n"
+"  복사본 수                 = %d\n"
+"  장당 면수                 = %d\n"
+"  페이지 장치 정의          = "
+
+#: src/main.c:543
+msgid "  statusdict definitions    = "
+msgstr "    statusdict 정의         = "
+
+#: src/main.c:546
+#, c-format
+msgid "  page prefeed              = %s\n"
+msgstr "  페이지 미리 배출          = %s\n"
+
+#.
+#. * Internal Details
+#.
+#: src/main.c:555
+msgid "Internals:\n"
+msgstr "내부:\n"
+
+#: src/main.c:556
+#, fuzzy, c-format
+msgid ""
+"  verbosity level     = %d\n"
+"  file command        = %s\n"
+"  temporary directory = %s\n"
+"  library path        = \n"
+msgstr ""
+"  출력 수준           = %d\n"
+"  파일 명령           = %s\n"
+"  임시 디렉토리       = %s\n"
+
+#: src/main.c:657
+#, c-format
+msgid ""
+"Usage: %s [OPTIONS]... FILES...\n"
+"   or: %s [OPTIONS]...\n"
+"To print FILES, or to print the standard input.\n"
+"Mandatory arguments to long options are mandatory for short options too.\n"
+"Long options marked with * require a yes/no argument, corresponding\n"
+"short options stand for `yes'.\n"
+msgstr ""
+"사용법: %s [OPTIONS]... [FILES]...\n"
+"  또는: %s [OPTIONS]...\n"
+"FILES를 출력하거나 표준 출력을 출력합니다.\n"
+"긴 이름 옵션의 필수적인 인수는 짧은 이름 옵션에도 필요합니다.\n"
+"*로 표시된 긴 이름 옵션은 예/아니오(yes/no) 인수가 필요하며,\n"
+"대응하는 짧은 이름 옵션은 `예(yes)'를 의미합니다.\n"
+
+#: src/main.c:670
+msgid "Tasks (exit successfully):\n"
+msgstr "작업 (성공적으로 종료):\n"
+
+#. TRANS: for helptoman to work better, please make sure that the
+#. * paragraph TOPIC be indented the same way (with a space at the
+#. * beginning of continued lines)
+#: src/main.c:674
+msgid ""
+"  -V, --version              display version\n"
+"  --help                     display this help\n"
+"  --copyright                display Copyright and copying conditions\n"
+"  --guess                    display guessed types of FILES\n"
+"  --list=TOPIC               display a report on TOPIC\n"
+"\n"
+"TOPIC can be any non-ambiguous abbreviation of:\n"
+" * `defaults': default settings and parameters,\n"
+" * `features': short list of supported media, encodings, style sheets etc.\n"
+" * `delegations', `encodings', `variables', `media',\n"
+"   `ppd', `printers', `prologues', `style-sheets', `user-options': \n"
+"   detailed list.\n"
+msgstr ""
+"  -V, --version              버전 정보를 표시하고 종료합니다\n"
+"  --help                     이 도움말을 표시하고 종료합니다\n"
+"  --copyright                저작권과 복사 조건을 표시합니다\n"
+"  --guess                    FILES의 종류를 추측하여 표시합니다\n"
+"  --list=TOPIC               TOPIC의 보고서를 표시합니다\n"
+"\n"
+"TOPIC 은 다음 중 하나의 명료한 축약 단어가 될 수 있습니다:\n"
+" * `defaults': 기본 설정과 매개변수,\n"
+" * `features': 지원하는 매체, 인코딩, 스타일 시트 등의 짧은 목록.\n"
+" * `delegations', `encodings', `variables', `media',\n"
+"   `ppd', `printers', `prologues', `style-sheets', `user-options': \n"
+"   자세한 목록.\n"
+
+#: src/main.c:693
+msgid "Global:\n"
+msgstr "전역:\n"
+
+#: src/main.c:694
+#, fuzzy
+msgid ""
+"  -q, --quiet, --silent      be really quiet\n"
+"  -v, --verbose[=LEVEL]      set verbosity on, or to LEVEL\n"
+"  -=, --user-option=OPTION   use the user defined shortcut OPTION\n"
+"      --debug                enable debugging features\n"
+"  -D, --define=KEY[:VALUE]   unset variable KEY or set to VALUE\n"
+msgstr ""
+"  -q, --quiet, --silent      아무 메시지도 출력하지 않습니다\n"
+"  -v, --verbose              작업에 대해 메시지를 출력합니다\n"
+"  -=, --user-option=OPTION   사용자 정의 단축 OPTION을 사용합니다\n"
+"  --debug                    디버깅 기능을 가능하게 합니다\n"
+"  --define=KEY[:VALUE]       매크로 K에 값 V을 지정하거나 해제합니다\n"
+
+#: src/main.c:704
+#, fuzzy
+msgid ""
+"  -M, --medium=NAME      use output medium NAME\n"
+"  -r, --landscape        print in landscape mode\n"
+"  -R, --portrait         print in portrait mode\n"
+"      --columns=NUM      number of columns per sheet (NUM > 0)\n"
+"      --rows=NUM         number of rows per sheet (NUM > 0)\n"
+"      --major=DIRECTION  first fill (DIRECTION=) rows, or columns\n"
+"  -1, -2, ..., -9        predefined font sizes and layouts for 1.. 9 "
+"virtuals\n"
+"  -A, --file-align=MODE  align separate files according to MODE (fill, rank\n"
+"                         page, sheet, or a number)\n"
+"  -j, --borders*         print borders around columns\n"
+"      --margin[=NUM]     define an interior margin of size NUM\n"
+msgstr ""
+"  -M, --medium=NAME           출력 매체 NAME을 사용합니다\n"
+"  -1, -2, ..., -9            1-9 가상페이지를 위한 정의된 레이아웃 사용\n"
+"  --columns=NUM              종이당 열 수 (NUM > 0)\n"
+"  --rows=NUM                 종이당 행 수 (NUM > 0)\n"
+"  --major=DIRECTION          먼저(DIRECTION=rows,columns)행/열을 채웁니다\n"
+"  -r, --landscape            가로가 넒게 인쇄합니다\n"
+"  -R, --portrait             세로가 넒게 인쇄합니다\n"
+"  -j, --borders*             열 주변 가장자리를 인쇄합니다\n"
+"  -A, --compact*             같은 종이에 두 파일을 찍을 수 있게 합니다\n"
+"  --margin[=NUM]             안쪽 여백 크기를 NUM으로 정의합니다\n"
+
+#: src/main.c:720
+#, fuzzy
+msgid ""
+"      --line-numbers=NUM     precede each NUM lines with its line number\n"
+"  -C                         alias for --line-numbers=5\n"
+"  -f, --font-size=SIZE       use font SIZE (float) for the body text\n"
+"  -L, --lines-per-page=NUM   scale the font to print NUM lines per virtual\n"
+"  -l, --chars-per-line=NUM   scale the font to print NUM columns per "
+"virtual\n"
+"  -m, --catman               process FILE as a man page (same as -L66)\n"
+"  -T, --tabsize=NUM          set tabulator size to NUM\n"
+"  --non-printable-format=FMT specify how non-printable chars are printed\n"
+msgstr ""
+"  --line-numbers=NUM         NUM행마다 행번호를 출력합니다\n"
+"  -C                         --line-numbers=5와 같습니다\n"
+"  -f, --fontsize=SIZE        본문에 크기SIZE(float)의 폰트를 사용합니다\n"
+"  -L, --lines-per-page=NUM   각 페이지에 들어갈 행 수를 정합니다\n"
+"  -l, --columns-per-page=NUM 각 페이지에 들어갈 열 수를 정합니다\n"
+"  -m, --catman               파일을 맨페이지로 처리합니다(-L66과 동일)\n"
+"  -T, --tabsize=NUM          탭 크기를 NUM로 지정합니다\n"
+"  --non-printable-format=FMT 출력할 수 없는 글자들의 형식을 FMT로 합니다\n"
+
+#: src/main.c:732
+msgid "Headings:\n"
+msgstr "머릿말:\n"
+
+#: src/main.c:734
+#, no-c-format
+msgid ""
+"  -B, --no-header            no page headers at all\n"
+"  -b, --header[=TEXT]        set page header\n"
+"  -u, --underlay[=TEXT]      print TEXT under every page\n"
+"  --center-title[=TEXT]      set page title to TITLE\n"
+"  --left-title[=TEXT]        set left and right page title to TEXT\n"
+"  --right-title[=TEXT]\n"
+"  --left-footer[=TEXT]       set sheet footers to TEXT\n"
+"  --footer[=TEXT]            TEXT may use special $ and % escapes\n"
+"  --right-footer[=TEXT]\n"
+msgstr ""
+"  -B, --no-header            머릿말을 사용하지 않습니다\n"
+"  -b, --header[=TEXT]        페이지 머릿말을 지정합니다\n"
+"  -u, --underlay[=TEXT]      각 페이지 아래에 TEXT를 출력합니다\n"
+"  --center-title[=TEXT]      페이지 제목을 TITLE로 합니다\n"
+"  --left-title[=TEXT]        왼쪽과 오른쪽 페이지 제목을 TEXT로 합니다\n"
+"  --right-title[=TEXT]\n"
+"  --left-footer[=TEXT]       꼬릿말을 TEXT로 합니다\n"
+"  --footer[=TEXT]            TEXT는 $과 %특별 에스케이프 문자를 사용할 수\n"
+"  --right-footer[=TEXT]      있습니다\n"
+
+#: src/main.c:747
+#, fuzzy
+msgid ""
+"  -a, --pages[=RANGE]        select the pages to print\n"
+"  -c, --truncate-lines*      cut long lines\n"
+"  -i, --interpret*           interpret tab, bs and ff chars\n"
+"      --end-of-line=TYPE     specify the eol char (TYPE: r, n, nr, rn, any)\n"
+"  -X, --encoding=NAME        use input encoding NAME\n"
+"  -t, --title=NAME           set the name of the job\n"
+"      --stdin=NAME           set the name of the input file stdin\n"
+"      --print-anyway*        force binary printing\n"
+"  -Z, --delegate*            delegate files to another application\n"
+"      --toc[=TEXT]           generate a table of content\n"
+msgstr ""
+"  -a, --pages[=RANGE]        출력할 페이지를 선택합니다\n"
+"  -c, --truncate-lines*      긴 행을 자릅니다\n"
+"  -i, --interpret*           탭, 백스페이스(BS), 폼피드(FF)를 해석합니다\n"
+"  --end-of-line=TYPE         행의 끝 문자를 지정(TYPE: r, n, nr, rn, any)\n"
+"  -X, --encoding=NAME        입력 인코딩으로 NAME을 사용합니다\n"
+"  -t, --title=NAME           표준입력의 경우 파일 이름을 지정합니다\n"
+"  --stdin=NAME               표준 입력의 파일 이름을 지정합니다\n"
+"  --prologue=FILE            PostScript 앞부분으로 FILE.pro을 사용합니다\n"
+"  --print-anyway*            무조건 출력을 하게 합니다\n"
+"  -Z, --delegate*            파일을 다른 어플리케이션에게 위임합니다\n"
+
+#: src/main.c:762
+msgid ""
+"  -E, --pretty-print[=LANG]  enable pretty-printing (set style to LANG)\n"
+"  --highlight-level=LEVEL    set pretty printing highlight LEVEL\n"
+"                             LEVEL can be none, normal or heavy\n"
+"  -g                         alias for --highlight-level=heavy\n"
+"  --strip-level=NUM          level of comments stripping\n"
+msgstr ""
+"  -E, --pretty-print[=LANG]  출력 꾸미기를 사용합니다(스타일은 LANG로)\n"
+"  --highlight-level=LEVEL    출력 꾸미기의 하이라이드 수준을 LEVEL로 지정\n"
+"                             LEVEL은 none, normal, heavy일 수 있습니다\n"
+"  -g                         --highlight-level=heavy의 별명\n"
+"  --strip-level=NUM          주석문 제거 수준\n"
+
+#: src/main.c:772
+msgid ""
+"  -o, --output=FILE          leave output to file FILE.  If FILE is `-',\n"
+"                             leave output to stdout.\n"
+"  --version-control=WORD     override the usual version control\n"
+"  --suffix=SUFFIX            override the usual backup suffix\n"
+"  -P, --printer=NAME         send output to printer NAME\n"
+"  -d                         send output to the default printer\n"
+msgstr ""
+"  -o, --output=FILE          출력을 FILE로 보냅니다. 만약 FILE이 `-'이면\n"
+"                             출력은 표준 출력입니다.\n"
+"  --version-control=WORD     버전 제어를 지정합니다\n"
+"  --suffix=SUFFIX            백업 접미사를 지정합니다\n"
+"  -P, --printer=NAME         출력을 프린터 NAME으로 보냅니다\n"
+"  -d                         출력을 기본 프린터로 보냅니다\n"
+
+#: src/main.c:783
+#, fuzzy
+msgid ""
+"      --prologue=FILE        include FILE.pro as PostScript prologue\n"
+"      --ppd[=KEY]            automatic PPD selection or set to KEY\n"
+"  -n, --copies=NUM           print NUM copies of each page\n"
+"  -s, --sides=MODE           set the duplex MODE (`1' or `simplex',\n"
+"                             `2' or `duplex', `tumble')\n"
+"  -S, --setpagedevice=K[:V]  pass a page device definition to output\n"
+"      --statusdict=K[:[:]V]  pass a statusdict definition to the output\n"
+"  -k, --page-prefeed         enable page prefeed\n"
+"  -K, --no-page-prefeed      disable page prefeed\n"
+msgstr ""
+"  --ppd[=KEY]                자동 PPD 선택 또는 KEY로 지정합니다\n"
+"  -n, --copies=NUM           각 페이지당 NUM개의 장을 복사합니다\n"
+"  -s, --sides=NUM            장당 면수 (recto/recto-verso)\n"
+"  -D, --setpagedevice=K[:V]  페이지 장치 정의를 출력으로 넘깁니다\n"
+"  -S, --statusdict=K[:[:]V]  statusdict정의를 출력으로 넘깁니다\n"
+"  -k, --page-prefeed         페이지 미리 내기를 가능하게 합니다\n"
+"  -K, --no-page-prefeed      페이지 미리 내기를 불가능하게 합니다\n"
+
+#. TRANS: This is the second place where you are invited to drop
+#. * a mail to report translation problems. Eg.:
+#. Report bugs to <a2ps-bugs@gnu.org>
+#. Report translation problems to <me@there>
+#: src/main.c:800
+msgid "Report bugs to <bug-a2ps@gnu.org>\n"
+msgstr "버그 리포트는 <bug-a2ps@gnu.org>로 보내 주세요\n"
+
+#: src/main.c:1094
+msgid "Table of Content"
+msgstr "차례"
+
+#: src/parsessh.y:236
+#, c-format
+msgid "cannot process `%s' which requires a2ps version %s"
+msgstr "a2ps 버전 %s를 필요로 하는 `%s'를 처리할 수 없습니다"
+
+#: fonts.l:829 fonts.l:831 fonts.l:833 lib/pathwalk.c:307 lib/pathwalk.c:390
+#: src/select.c:188 src/ssheet.c:845
+#, fuzzy, c-format
+msgid "cannot find file `%s'"
+msgstr "파일 `%s%s'을 찾을 수 없습니다"
+
+#. sheets.map can not be found: there is no automatic prettyprinting
+#: src/select.c:190
+msgid "automatic style selection cancelled"
+msgstr "자동 스타일 선택은 취소되었습니다"
+
+#: src/ssheet.c:290
+#, fuzzy, c-format
+msgid "cannot compile regular expression `%s': %s"
+msgstr "정규식 `%s'를 컴파일할 수 없습니다: %s"
+
+#: src/ssheet.c:958 src/ssheet.c:979
+#, fuzzy
+msgid "Known Style Sheets"
+msgstr "알려진 스타일 시트 (언어)"
+
+#: src/ssheet.c:1430
+#, c-format
+msgid "cannot find style sheet `%s': using plain style"
+msgstr "스타일 시트 `%s'를 찾을 수 없습니다: 보통 스타일을 사용합니다"
+
+#: src/sshread.c:453
+#, fuzzy, c-format
+msgid "unknown encoding `%s', ignored"
+msgstr "알 수 없는 인코딩: `%s', 무시합니다"
+
+#: src/versions.c:153
+#, fuzzy, c-format
+msgid "invalid version number `%s'"
+msgstr "잘못된 버전 번호: `%s'"
+
+#: lib/caret.c:43
+msgid "space (i.e., ` ')"
+msgstr "공백 (예> ` ')"
+
+#: lib/caret.c:45
+msgid "octal (i.e., `\\001' etc.)"
+msgstr "8진수 (예> `\\001' 등등.)"
+
+#: lib/caret.c:47
+msgid "hexadecimal (i.e., `\\x0a' etc.)"
+msgstr "16진수 (예> `\\x0a' 등등.)"
+
+#: lib/caret.c:49
+msgid "caret (i.e., `^C', `M-^C' etc.)"
+msgstr "제어문자 (예> `^C', `M-^C' 등등.)"
+
+#: lib/caret.c:51
+msgid "emacs (i.e., `C-c', `M-C-c' etc.)"
+msgstr "emacs (예> `C-c', `M-C-c' 등등.)"
+
+#: lib/caret.c:53
+msgid "question-mark (i.e., `?')"
+msgstr "의문부호 (예> `?')"
+
+#: lib/confg.c:257 lib/encoding.c:639
+#, fuzzy, c-format
+msgid "invalid option `%s'"
+msgstr "%s: 잘못된 옵션 -- %c\n"
+
+#: lib/confg.c:268 lib/encoding.c:577 lib/encoding.c:617 lib/prolog.c:146
+#, fuzzy, c-format
+msgid "missing argument for `%s'"
+msgstr "`%s'의 인수 없음"
+
+#: lib/confg.c:324 lib/confg.c:331 lib/confg.c:338
+#, c-format
+msgid "invalid definition for printer `%s': %s"
+msgstr "프린터 `%s'에 대한 잘못된 정의: %s"
+
+#: lib/confg.c:329 lib/confg.c:332
+msgid "Unknown Printer"
+msgstr "알 수 없는 프린터"
+
+#: lib/confg.c:336 lib/confg.c:339
+msgid "Default Printer"
+msgstr "기본 프린터"
+
+#: lib/confg.c:392 lib/options.c:699
+#, fuzzy, c-format
+msgid "invalid variable identifier `%s'"
+msgstr "잘못된 매크로 식별자: `%s'"
+
+#: lib/confg.c:425
+#, c-format
+msgid "obsolete `%s' entry.  Ignored"
+msgstr "사용하지 않는 `%s' 엔트리. 무시합니다"
+
+#: lib/encoding.c:1115 lib/encoding.c:1136
+msgid "Known Encodings"
+msgstr "알려진 인코딩"
+
+#: lib/faces.c:156
+msgid "incomplete knowledge of faces"
+msgstr "폰트 모양에 대해 불완전하게 알고 있습니다"
+
+#: lib/filtdir.c:99 lib/filtdir.c:128
+#, c-format
+msgid "cannot close directory `%s'"
+msgstr "디렉토리 `%s'를 닫을 수 없습니다"
+
+#: lib/argmatch.c:173 lib/getnum.c:61 lib/getnum.c:119 lib/getnum.c:217
+#, fuzzy, c-format
+msgid "invalid argument `%s' for `%s'"
+msgstr "잘못된 인수 `%s'가 옵션 `%s'에 사용"
+
+#: lib/getnum.c:121
+#, fuzzy, c-format
+msgid "Valid arguments are integers n such that: %s\n"
+msgstr "올바른 인수는 %d 이하의 정수입니다\n"
+
+#: lib/getnum.c:219
+#, fuzzy, c-format
+msgid "Valid arguments are floats f such that: %s\n"
+msgstr "올바른 인수는 %d 이하의 정수입니다\n"
+
+#: lib/jobs.c:89 lib/jobs.c:98
+msgid "user"
+msgstr "사용자"
+
+#: lib/jobs.c:104
+msgid "Unknown User"
+msgstr "알 수 없는 사용자"
+
+#: lib/jobs.c:360
+#, fuzzy, c-format
+msgid "unknown encoding `%s'"
+msgstr "알 수 없는 인코딩: `%s', 무시합니다"
+
+#: lib/madir.c:59
+msgid "rows first"
+msgstr "행 먼저"
+
+#: lib/madir.c:62
+msgid "columns first"
+msgstr "열 먼저"
+
+#: lib/media.c:173
+#, fuzzy, c-format
+msgid "unknown medium `%s'"
+msgstr "알 수 없는 매체 `%s'"
+
+#: lib/media.c:208 lib/media.c:237
+msgid "Known Media"
+msgstr "알려진 매체"
+
+#: lib/media.c:211
+msgid "Name"
+msgstr "이름"
+
+#: lib/media.c:212
+msgid "dimensions"
+msgstr "차원"
+
+#. TRANS: Variables (formely called `macro meta sequences', eeeaerk)
+#. are things such as #(psnup) which is substituted to a bigger strings,
+#. e.g. -#v #?q|-q|| #?j|-d|| #?r||-c| -w#w -h#h
+#: lib/metaseq.c:103 lib/metaseq.c:112
+msgid "Known Variables"
+msgstr "알려진 매크로 메타 시퀀스"
+
+#: lib/metaseq.c:287 lib/metaseq.c:299
+#, c-format
+msgid "Printed by %s"
+msgstr "%s님이 출력"
+
+#: lib/metaseq.c:297
+#, c-format
+msgid "Printed by %s from %s"
+msgstr "%s님이 %s에서 출력"
+
+#: lib/metaseq.c:307 lib/metaseq.c:326
+msgid "cannot get current working directory"
+msgstr "현재 작업 디렉토리를 얻을 수 없습니다"
+
+#: lib/metaseq.c:340 lib/metaseq.c:533 lib/metaseq.c:562 lib/metaseq.c:651
+#: lib/metaseq.c:953 lib/metaseq.c:986
+#, c-format
+msgid "%s: too long argument for %s escape"
+msgstr "%s: 에스케이프 %s에 너무 긴 인수"
+
+#. Translators: please make a short date format
+#. * according to the std form in your language, using
+#. * the standard strftime(3)
+#: lib/metaseq.c:363 lib/metaseq.c:674
+msgid "%b %d, %y"
+msgstr "%y년 %b %d일"
+
+#. Translators: please make a long date format
+#. * according to the std form in your language, using
+#. * GNU strftime(3)
+#: lib/metaseq.c:372 lib/metaseq.c:683
+msgid "%A %B %d, %Y"
+msgstr "%Y년 %B %d일 %A"
+
+#: lib/metaseq.c:418 lib/metaseq.c:447 lib/metaseq.c:490 lib/metaseq.c:723
+#: lib/metaseq.c:807 lib/metaseq.c:866 lib/metaseq.c:921 lib/metaseq.c:1098
+#: lib/metaseq.c:1233 lib/metaseq.c:1245 lib/metaseq.c:1288
+#, c-format
+msgid "%s: unknown `%s' escape `%c' (%d)"
+msgstr "%s: 알 수 없는 `%s' 에스케이프 `%c' (%d)"
+
+#. `%q' localized `Page %d'
+#: lib/metaseq.c:425 lib/metaseq.c:814
+#, c-format
+msgid "Page %d"
+msgstr "%d쪽"
+
+#. `%Q' localized `Page %d/%c'
+#: lib/metaseq.c:430 lib/metaseq.c:825
+#, c-format
+msgid "Page %d/%c"
+msgstr "%d/%c쪽"
+
+#: lib/metaseq.c:530 lib/metaseq.c:547 lib/metaseq.c:607 lib/metaseq.c:950
+#: lib/metaseq.c:971
+#, c-format
+msgid "%s: missing `%c' for %s%c escape"
+msgstr "%s: `%c'가 에스케이프 %s%c에 빠졌습니다"
+
+#: lib/metaseq.c:592 lib/metaseq.c:1020
+#, c-format
+msgid "%s: invalid separator `%s%c' for `%s' escape"
+msgstr "%s: 잘못된 분리자 `%s%c'가 에스케이프 `%s'에 사용"
+
+#: lib/metaseq.c:600 lib/metaseq.c:610
+#, c-format
+msgid "%s: invalid argument for %s%c escape"
+msgstr "%s: 에스케이프 %s%c에 잘못된 인수"
+
+#. This file is finised, we do know its real number of pages
+#: lib/metaseq.c:821
+#, c-format
+msgid "Page %d/%d"
+msgstr "%d/%d쪽"
+
+#: lib/metaseq.c:1265
+msgid "output command"
+msgstr "출력 명령"
+
+#: lib/options.c:299
+#, c-format
+msgid "Try `%s --help' for more information.\n"
+msgstr "더 많은 정보를 얻으러면 `%s --help'명령을 하십시오.\n"
+
+#: lib/output.c:467
+#, fuzzy, c-format
+msgid "invalid face `%s'"
+msgstr "%s: 잘못된 옵션 -- %c\n"
+
+#: lib/output.c:539
+#, c-format
+msgid "`%s' with no matching `%s'"
+msgstr "`%s'와 맞는 `%s'이 없습니다"
+
+#: lib/ppd.c:108
+#, fuzzy
+msgid "Known Fonts"
+msgstr "알려진 인코딩"
+
+#. TRANS: This `none' is an answer to `List of known fonts: None'
+#: lib/ppd.c:111
+msgid ""
+"\n"
+"  None.\n"
+msgstr ""
+
+#: lib/ppd.c:149 lib/ppd.c:165
+msgid "Known PostScript Printer Descriptions"
+msgstr ""
+
+#: lib/prange.c:305 lib/prange.c:323
+#, fuzzy, c-format
+msgid "invalid interval `%s'"
+msgstr "잘못된 정수 범위: %s"
+
+#: lib/printers.c:242
+msgid "no default command for option `-d'"
+msgstr "옵션 `-d'에 대한 기본 명령이 없습니다"
+
+#: lib/printers.c:254
+#, c-format
+msgid "no default command for unknown printer `%s'"
+msgstr "알 수 없는 프린터 `%s'에 대한 기본 명령이 없습니다"
+
+#: lib/printers.c:439
+msgid "sent to the standard output"
+msgstr "표준 출력으로 보냅니다"
+
+#: lib/printers.c:440
+msgid "sent to the default printer"
+msgstr "기본 프린터로 보냅니다"
+
+#: lib/printers.c:445
+#, c-format
+msgid "saved into the file `%s'"
+msgstr "파일 `%s'로 저장합니다"
+
+#: lib/printers.c:446
+#, c-format
+msgid "sent to the printer `%s'"
+msgstr "프린터 `%s'로 보냅니다"
+
+#: lib/printers.c:623 lib/printers.c:631
+msgid "Known Outputs (Printers, etc.)"
+msgstr "알려진 출력 방향(프린터 등등)"
+
+#: lib/prolog.c:98 lib/prolog.c:181
+msgid "Known Prologues"
+msgstr "알려진 서문"
+
+#: lib/prolog.c:582
+#, c-format
+msgid "font %f too big"
+msgstr "폰트 %f는 너무 큽니다"
+
+#: lib/psgen.c:661
+#, c-format
+msgid "`%s' is a binary file, printing aborted"
+msgstr "`%s' 는 이진 파일입니다. 출력을 중단합니다"
+
+#: lib/useropt.c:75
+#, fuzzy, c-format
+msgid "unknown user option `%s'"
+msgstr "알려진 사용자 옵션"
+
+#: lib/useropt.c:86 lib/useropt.c:97
+msgid "Known User Options"
+msgstr "알려진 사용자 옵션"
+
+#: lib/xbackupfile.c:105 lib/xmalloc.c:53
+msgid "Memory exhausted"
+msgstr "메모리가 모자랍니다"
+
+#: lib/xbackupfile.c:240 lib/xbackupfile.c:252
+#, fuzzy, c-format
+msgid "cannot rename file `%s' as `%s'"
+msgstr "파일 `%s'의 이름을 `%s'로 바꿀 수 없습니다"
+
+#: lib/xbackupfile.c:255
+#, fuzzy, c-format
+msgid "restored file `%s'"
+msgstr "출력 파일 `%s'을 만들 수 없습니다"
+
+#: lib/argmatch.c:174
+#, fuzzy, c-format
+msgid "ambiguous argument `%s' for `%s'"
+msgstr "애매한 인수 `%s'가 옵션 `%s'에 사용"
+
+#. We try to put synonyms on the same line.  The assumption is that
+#. synonyms follow each other
+#: lib/argmatch.c:194
+msgid "Valid arguments are:"
+msgstr "올바른 인수는:"
+
+#: lib/error.c:102
+msgid "Unknown system error"
+msgstr "알 수 없는 시스템 에러"
+
+#: lib/getopt.c:680
+#, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: 옵션 `%s'은 애매합니다\n"
+
+#: lib/getopt.c:704
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: 옵션 `--%s'은 인수가 없습니다\n"
+
+#: lib/getopt.c:709
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: 옵션 `%c%s'은 인수가 없습니다\n"
+
+#: lib/getopt.c:726 lib/getopt.c:899
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: 옵션 `%s'은 인수가 필요합니다\n"
+
+#. --option
+#: lib/getopt.c:755
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: 인식할 수 없는 옵션 `--%s'\n"
+
+#. +option or -option
+#: lib/getopt.c:759
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: 인식할 수 없는 옵션 `%c%s'\n"
+
+#. 1003.2 specifies the format of this message.
+#: lib/getopt.c:785
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: 잘못된 옵션 -- %c\n"
+
+#: lib/getopt.c:788
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: 잘못된 옵션 -- %c\n"
+
+#. 1003.2 specifies the format of this message.
+#: lib/getopt.c:818 lib/getopt.c:948
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: 옵션은 인수가 필요합니다 -- %c\n"
+
+#: lib/getopt.c:865
+#, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: 옵션 `-W %s'은 애매합니다\n"
+
+#: lib/getopt.c:883
+#, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: 옵숀 `-W %s'은 인수가 없습니다\n"
+
+#~ msgid "pipe in %s\n"
+#~ msgstr "%s안의 파이프\n"
+
+#~ msgid "save in %s\n"
+#~ msgstr "%s에 저장\n"
+
+#, fuzzy
+#~ msgid "%s: invalid argument `%s' for `%s'\n"
+#~ msgstr "잘못된 인수 `%s'가 옵션 `%s'에 사용"
+
+#, fuzzy
+#~ msgid "invalid interval: %s"
+#~ msgstr "잘못된 정수 범위: %s"
+
+#~ msgid "illegal integer interval: %s"
+#~ msgstr "잘못된 정수 범위: %s"
+
+#, fuzzy
+#~ msgid "cannot find file %s"
+#~ msgstr "파일 `%s'을 찾을 수 없습니다"
+
+#, fuzzy
+#~ msgid "unrecognized font `%s'"
+#~ msgstr "인식할 수 없는 폰트: `%s'"
+
+#, fuzzy
+#~ msgid "unrecognized face `%s'"
+#~ msgstr "인식할 수 없는 폰트 모양: `%s'"
+
+#, fuzzy
+#~ msgid "missing argument for %s"
+#~ msgstr "`%s'의 인수 없음"
+
+#, fuzzy
+#~ msgid "invalid variable identifier %s"
+#~ msgstr "잘못된 매크로 식별자: `%s'"
+
+#, fuzzy
+#~ msgid "invalid argument %s for `%s'"
+#~ msgstr "잘못된 인수 `%s'가 옵션 `%s'에 사용"
+
+#, fuzzy
+#~ msgid "cannot create file %s"
+#~ msgstr "출력 파일 `%s'을 만들 수 없습니다"
+
+#, fuzzy
+#~ msgid "cannot open a pipe on %s"
+#~ msgstr "`%s'의 파이프를 열 수 없습니다"
+
+#, fuzzy
+#~ msgid "cannot open file %s"
+#~ msgstr "파일 `%s'을 열 수 없습니다"
+
+#, fuzzy
+#~ msgid "cannot open configuration file %s"
+#~ msgstr "설정 파일 `%s'을 열 수 없습니다"
+
+#~ msgid "encoding %s unknown"
+#~ msgstr "인코딩 %s는 알지 못합니다"
+
+#~ msgid "yes"
+#~ msgstr "예"
+
+#~ msgid "  library path        = \n"
+#~ msgstr "  라이브러리 경로        = \n"
+
+#~ msgid "user option `%s' not defined"
+#~ msgstr "사용자 옵션 `%s'를 정의하지 않았습니다"
+
+#, fuzzy
+#~ msgid "illegal option: %s"
+#~ msgstr "잘못된 옵션: `%s'"
+
+#~ msgid "illegal option: `%s'"
+#~ msgstr "잘못된 옵션: `%s'"
+
+#~ msgid ""
+#~ "syntax error in option string `%s':\n"
+#~ "missing end of quotation: %c"
+#~ msgstr ""
+#~ "옵션 문자열 `%s'에 문법 오류:\n"
+#~ "인용 부호의 끝이 없습니다: %c"
+
+#, fuzzy
+#~ msgid "cannot backup and create file `%s'"
+#~ msgstr "출력 파일 `%s'을 만들 수 없습니다"
+
+#~ msgid "wrong value for option %s: `%s'"
+#~ msgstr "옵션 %s에 잘못된 값: `%s'"
+
+#~ msgid "Valid arguments are integers between %d and %d\n"
+#~ msgstr "올바른 인수는 %d와 %d사이의 정수입니다\n"
+
+#~ msgid "Valid arguments are integers greater than %d\n"
+#~ msgstr "올바른 인수는 %d 이상의 정수입니다\n"
+
+#~ msgid "Valid arguments are lengths between %gpt and %gpt\n"
+#~ msgstr "올바른 인수는 %gpt 와 %gpt 사이의 길이입니다\n"
+
+#~ msgid "cannot find configuration file `%s'"
+#~ msgstr "설정 파일 `%s'을 열 수 없습니다"
+
+#~ msgid "Dynamic array `%s':\n"
+#~ msgstr "동적 배열 `%s':\n"
+
+#~ msgid "\tload: %d/%d (%2.1f%%)\n"
+#~ msgstr "\t읽기: %d/%d (%2.1f%%)\n"
+
+#~ msgid "Dynamic string:\n"
+#~ msgstr "동적 문자열:\n"
+
+#~ msgid "steady"
+#~ msgstr "정상성장"
+
+#~ msgid "linear"
+#~ msgstr "선형성장"
+
+#~ msgid "geometrical"
+#~ msgstr "등비성장"
+
+#~ msgid "\tgrowth: %s, increment: %d\n"
+#~ msgstr "\t성장: %s, 증가: %d\n"
+
+#~ msgid "can't allocate %ld bytes for hash table: memory exhausted"
+#~ msgstr "해싱 테이블에 %ld바이트를 할당할 수 없습니다: 메모리가 모자랍니다"
+
+#~ msgid "Load=%ld/%ld=%.0f%%, "
+#~ msgstr "로드=%ld/%ld=%.0f%%, "
+
+#~ msgid "Rehash=%d, "
+#~ msgstr "재해싱=%d, "
+
+#~ msgid "Collisions=%ld/%ld=%.0f%%"
+#~ msgstr "충돌=%ld/%ld=%.0f%%"
+
+#~ msgid "Document title"
+#~ msgstr "문서 제목"
+
+#~ msgid "Page label"
+#~ msgstr "페이지 레이블"
+
+#~ msgid "free"
+#~ msgstr "자유"
+
+#~ msgid "unexpected option: `%c' (%d)"
+#~ msgstr "잘못된 옵션: `%c' (%d)"
+
+#, fuzzy
+#~ msgid "  %-10s = save in %s\n"
+#~ msgstr "  %-20s = %s에 저장\n"
+
+#~ msgid "water mark"
+#~ msgstr "내비치는 무늬"
+
+#~ msgid "right header"
+#~ msgstr "오른쪽 머릿말"
+
+#~ msgid "center footer"
+#~ msgstr "가운에 꼬릿말"
+
+#~ msgid "right footer"
+#~ msgstr "오른쪽 꼬릿말"
+
+#~ msgid "left footer"
+#~ msgstr "왼쪽 꼬릿말"
+
+#~ msgid "center title"
+#~ msgstr "가운데 제목"
+
+#~ msgid "right title"
+#~ msgstr "오른쪽 제목"
+
+#~ msgid "left title"
+#~ msgstr "왼쪽 제목"
+
+#, fuzzy
+#~ msgid "General information on %s:\n"
+#~ msgstr "파일 \"%s\"을 찾을 수 없습니다"
+
+#, fuzzy
+#~ msgid ""
+#~ "  version             = %s\n"
+#~ "  verbosity level     = %d\n"
+#~ "  library path        = \n"
+#~ msgstr ""
+#~ "%s에 대한 일반적 정보    :\n"
+#~ "  버전                = %s\n"
+#~ "  라이브러리 경로     = %s\n"
+#~ "  메시지 출력 수준    = %d\n"
+
+#~ msgid "found following options (argc=%d):\n"
+#~ msgstr "다음 옵션을 찾았습니다(argc=%d):\n"
+
+#~ msgid "failure\n"
+#~ msgstr "실패\n"
+
+#, fuzzy
+#~ msgid "Unkown Printer"
+#~ msgstr "알 수 없는 프린터"
+
+#, fuzzy
+#~ msgid "[%s (%s): 1 sheet]\n"
+#~ msgstr "[%s(%s): 1 페이지/1 장]\n"
+
+#, fuzzy
+#~ msgid "[%s (%s): %d sheets]\n"
+#~ msgstr "[%s(%s): %d 페이지/%d 장]\n"
+
+#, fuzzy
+#~ msgid "%s: no closing `%s' for %s escape"
+#~ msgstr "%s: 에스케이프 %s에 닫는 괄호 ')'가 없습니다"
+
+#~ msgid "%s: too long variable name for %s escape"
+#~ msgstr "%s: 에스케이프 %s에 너무 긴 변수 이름을 지정하였습니다"
+
+#, fuzzy
+#~ msgid "file_lookup(%s%c%s%s) = "
+#~ msgstr "file_lookup(): %s%c%s%s\t"
+
+#~ msgid "suffix_lookup(): %s%c*.%s\n"
+#~ msgstr "suffix_lookup(): %s%c*.%s\n"
+
+#, fuzzy
+#~ msgid ""
+#~ "  -P, --printer=NAME         send output to printer NAME\n"
+#~ "  -d                         send output to the  default printer\n"
+#~ "  -s, --sides=NUM            number of sheet sides (recto/recto-verso)\n"
+#~ msgstr ""
+#~ "  -P, --printer=NAME         출력을 프린터 NAME으로 보냅니다\n"
+#~ "  -d                         출력을 기본 프린터로 보냅니다\n"
+#~ "  -s  --sides=NUM            종이의 면수를 지정합니다(겉쪽면/안쪽면)\n"
+
+#, fuzzy
+#~ msgid "In the style %s, the keyword `%s' uses upper chars"
+#~ msgstr "스타일 %s에서 키워드 '%s'는 대문자를 사용합니다"
+
+#, fuzzy
+#~ msgid "In the style %s, the sequence `%s-%s' uses upper chars"
+#~ msgstr "스타일 %s에서 순서 '%s-%s'는 대문자를 사용합니다"
+
+#~ msgid "in style %s, keyword `%s' is defined twice"
+#~ msgstr "스타일 %s에서 키워드 `%s'를 두번 정의하였습니다"
+
+#, fuzzy
+#~ msgid "in style %s, operator `%s' is defined twice"
+#~ msgstr "스타일 %s에서 키워드 `%s'를 두번 정의하였습니다"
+
+#~ msgid "can't get current working directory"
+#~ msgstr "현재 작업 디렉토리를 얻을 수 없습니다"
+
+#, fuzzy
+#~ msgid "expansion of %s user string (`%s') is `%s'\n"
+#~ msgstr "%s(사용자 문자열 (\"%s\"))의 확장은 \"%s\"입니다\n"
+
+#, fuzzy
+#~ msgid "cannot open `%s'"
+#~ msgstr "파일 \"%s\"을 열 수 없습니다"
+
+#~ msgid "error opening `%s'"
+#~ msgstr "`%s'를 여는데 오류가 발생했습니다"
+
+#, fuzzy
+#~ msgid "error getting file `%s' modification time"
+#~ msgstr "\"%s\"의 변경 시간을 얻는데 오류가 발생했습니다"
+
+#, fuzzy
+#~ msgid "cannot find file \"%s%s\""
+#~ msgstr "파일 \"%s\"을 찾을 수 없습니다"
+
+#, fuzzy
+#~ msgid "couldn't find system's configuration file `%s%c%s'"
+#~ msgstr "설정 파일 `%s%c%s'을 열 수 없습니다"
+
+#, fuzzy
+#~ msgid "unable to fork"
+#~ msgstr "파이프를 열 수 없습니다"
+
+#~ msgid "error starting `/bin/sh -c %s'"
+#~ msgstr "`/bin/sh -c %s'을 실행하는데 오류가 발생했습니다"
+
+#~ msgid "[Total: %d page on "
+#~ msgstr "[합계: %d 페이지/"
+
+#~ msgid "sheet"
+#~ msgstr "장"
+
+#~ msgid "space"
+#~ msgstr "여백"
+
+#~ msgid "caret"
+#~ msgstr "캐럿"
+
+#, fuzzy
+#~ msgid "Known Media\n"
+#~ msgstr "알려진 매체(%d)\n"
+
+#~ msgid "Known languages (%d)"
+#~ msgstr "알려진 언어(%d)"
+
+#~ msgid ""
+#~ "  In %s:\n"
+#~ "\t"
+#~ msgstr ""
+#~ "  %s안에:\n"
+#~ "\t"
+
+#~ msgid "rows"
+#~ msgstr "행"
+
+#~ msgid "columns"
+#~ msgstr "열"
+
+#~ msgid "path_walk() on path %s\n"
+#~ msgstr "경로 %s에서 path_walk()\n"
+
+#~ msgid "unknown"
+#~ msgstr "알 수 없음"
+
+#~ msgid "In the style %s, the symbol '%s' uses upper chars"
+#~ msgstr "스타일 %s에서 기호 '%s'는 대문자를 사용합니다"
+
+#~ msgid "in style %s, regular symbol `%s' is defined twice"
+#~ msgstr "스타일 %s에서 일반 기호 `%s'를 두번 정의하였습니다"
+
+#~ msgid "in style %s, special symbol `%s' is defined twice"
+#~ msgstr "스타일 %s에서 특수 기호 `%s'를 두번 정의하였습니다"
+
+#~ msgid "not enough \\verb delimiters (%s) to print %s"
+#~ msgstr "\\verb구분자(%s)는 %s를 출력하기에 불충분합니다"
+
+#~ msgid "couldn't find prolog \"%s\""
+#~ msgstr "서문 \"%s\"을 찾을 수 없습니다"

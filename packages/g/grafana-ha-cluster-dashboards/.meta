@@ -1,0 +1,6 @@
+<package name="grafana-ha-cluster-dashboards" project="openSUSE:Factory">
+  <title>Grafana HA Cluster Dashboards</title>
+  <description>Grafana Dashboards displaying metrics about a Pacemaker/Corosync High Availability Cluster.</description>
+  <devel project="network:ha-clustering:sap-deployments:devel" package="grafana-ha-cluster-dashboards"/>
+  <url>https://github.com/ClusterLabs/ha_cluster_exporter/tree/master/dashboards</url>
+</package>

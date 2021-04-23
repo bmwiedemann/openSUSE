@@ -1,0 +1,307 @@
+-------------------------------------------------------------------
+Wed Feb 17 15:02:46 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.2:
+  * Client window titles (controlled by the theme attributes
+    'title_height', 'title_color', 'title_font')
+  * New command 'help' for live documentation on the object tree
+  * New 'watch' command that emits hooks when attribute values change.
+  * The 'lock_tag' attribute is now writable.
+  * New 'geometry' attribute for monitors.
+  * New dependencies: xft, freetype
+  Bug fixes:
+  * Correctly interpret _NET_WM_STRUT. This fixes panels that leave
+    a bit of space between the panel and the monitor edge and also
+    panels between two monitors.
+  * Correctly handling minimized clients when removing a tag.
+  * Preserve stacking order when changing the floating state of a tag
+  * Update frame objects correctly in the commands 'mirror' and 'rotate'
+
+-------------------------------------------------------------------
+Mon Jan  4 09:47:42 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.1:
+  * Client minimization (controlled by the attribute 'minimized' of
+    every client)
+  * The 'index' attribute of tags is now writable. This allows adjusting
+    the order of existing tags.
+  * New child object 'focused_client' for each tag object.
+  * New child object 'focused_frame' for the tiling object of each tag
+    object.
+  * New child object 'parent_frame' for each client providing the frame
+    the client sits in
+  * New command 'mirror'
+  * New command 'apply_tmp_rule'
+  * The 'apply_rules' command now reports parse errors
+  * Reserve space for panels that do not set _NET_WM_STRUT e.g. conky
+    windows of type 'dock'.
+  * Only build json object doc if WITH_DOCUMENTATION is activated
+  * Bug fixes:
+    - When hiding windows, correctly set their WM_STATE to IconicState
+      (we set it to Withdrawn state before, which means "unmanaged" and
+      thus is wrong). This may require restarting pagers when upgrading
+      hlwm live.
+    - Fix crash in 'split explode'
+    - 'split explode' preserves the window focus (as in v0.7.2 and before)
+
+-------------------------------------------------------------------
+Sun Nov  1 21:25:19 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  * When an application fails to focus itself (because
+    focus_stealing_prevention is active), then the window is marked
+    as urgent.
+  * New optional argument for the 'split' command for splitting
+    non-leaf frames
+  * Frame objects: the frame layout can be introspected via the
+    'tiling' object present in each tag, e.g.: 'tags.focus.tiling'.
+  * New command 'foreach' for iterating over objects
+  * New attribute 'urgent_count' for tags, counting the number of
+    urgent clients on a tag
+  * New rule consequence 'floatplacement' that updates the placement
+    of floating clients ('floatplacement=smart' for little overlap,
+    'floatplacement=center' for centering) or leaves the floating
+    position as is ('floatplacement=none')
+  * New rule condition 'pgid'
+  * New format specifier '%c' in the 'sprintf' command (useful
+    in combination with 'foreach')
+  * The 'new_attr' command now also accepts an initial value
+  * React to a change of the 'floating_focused' attribute of the
+    tag object
+  * New frame index character 'p' for accessing the parent frame
+  * Object tree documentation as a json file
+  Bug fixes:
+  * Fix wrong behaviour in 'cycle_layout' in the case where the
+    current layout is not contained in the layout list passed
+    to 'cycle_layout'.
+  * Fix handling of delta -1 in 'focus_monitor' and 'cycle_monitor'
+  * Fixed precision decimals in the layout tree (more reliable
+    in- and output of fractions in frame splits)
+  * Fixes in maximize.sh
+
+-------------------------------------------------------------------
+Mon Jun  8 07:56:04 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.3:
+  * Set .desktop file Type to Application (#903) 
+  * Ignore EnterNotify events by grabs and decoration (#907) 
+  * Don't drop later EnterNotify during enternotify() (#909) 
+  * Consistently use $(BUILDDIR) in Makefile
+  * Remove unused command interface methods (#917) 
+  * Update and add new tests
+
+-------------------------------------------------------------------
+Tue May  5 07:17:51 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.2:
+  * Selection of empty frames by the mouse (by click or by hover if
+    focus_follows_mouse is enabled)
+  * The commands 'close_and_remove' / 'close_or_remove' act like
+    'close' for floating clients
+  * The decoration window allows focusing, moving, and resizing
+    the client via the mouse (as known from standard floating
+    window managers)
+  * Improved herbstclient tab completion for the fish shell
+  * Fix a crash in the error handler when a invalid monitor
+    name is passed. (Affects list_padding move_monitor
+    rename_monitor lock_tag unlock_tag)
+  * Fix the type of WM_STATE
+  * The client attributes sizehints_tiling and sizehints_floating
+    are now writable
+  * Fix EWMH urgency change for clients without WM hints set
+  * Fix the exit code of the 'focus' command
+
+-------------------------------------------------------------------
+Tue Apr 21 06:23:38 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.1:
+  * the frame index 'e' refers to the first empty frame
+    (e.g. 'rule index=e' places new windows in empty frames, if possible)
+  * new setting 'hide_covered_windows' to improve the appearance
+    when used with a compositor.
+  * resize floating windows with the same command ('resize') as in
+    tiling mode and thus the same keybindings as in tiling mode.
+    Therefore, the 'fractiondelta' parameter to the 'resize' command
+    is now optional.
+  * keybind now checks that the bound command exists.
+  * cycle_all (Alt-Tab) now also traverses floating clients
+  * new setting 'auto_detect_panels' controlling the panel
+    detection algorithm.
+  * improved herbstclient tab completion for the fish shell
+  Bug fixes:
+  * Handle the regular expression "" correctly, since the grammar
+    of extended regular expressions does not allow "".
+  * Error handling for the lack of xrandr
+  * Fixes to make it compile on other systems and architecture
+
+-------------------------------------------------------------------
+Sun Apr 12 20:45:28 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  * single window floating (every client has an attribute 'floating' which can
+    be set at run time and via the rule consequence 'floating=on')
+  * monitor detection via xrandr
+  * detection of external panels
+  * new command: apply_rules
+  * new command: export (convenience wrapper around setenv)
+  * new client attribute: keys_inactive (negation of keymask)
+  * new command: drag (initiates moving/resizing a window by mouse)
+  * if tags have been configured through EWMH before herbstluftwm starts (from
+    a previous running window manager), then herbstluftwm re-uses these tags
+    (start with --no-tag-import to disable this)
+  * The build system is now cmake. See the INSTALL file if you need to
+    compile herbstluftwm yourself.
+  * the 'remove' command now tries to preserve the focus and the client
+    arrangement. Intuitively speaking, 'remove' is undoing a frame split.
+  * Many boolean style settings were formerly of type int. Now, these are
+    boolean settings.
+  * The 'toggle' command only works for boolean settings. For the former
+    behavior for int-typed settings, use 'cycle_value'.
+  * Writing '%%' in the 'sprintf' format string now gives a literate '%', just
+    as printf. Formerly it stayed '%%'.
+  * The 'keybind' command now accepts all valid key symbols, even if they are
+    not present on the current keyboard layout at the time of setup.
+  * the rules are also applied to those clients that change their WM_CLASS
+    after being shown already.
+  * 'detect_monitors' has an additional '--list-all' parameter
+  * do not change the focus (for focus_follows_mouse=1) when an unmanaged
+    dialog (e.g. a rofi menu or a notification) closes.
+  * list_rules now prints regex-based rule conditions with '~' instead of '='
+  * new attributes on every monitor for pad_up pad_down pad_left pad_right
+  * new flag --exit-on-xerror (to be used in automated testing only)
+  * Formerly, double dots in object paths were allowed (similar to double
+    slashes in file paths in unix). Right now, they are only allowed at the end
+    (which is necessary for the tab-completion of attr):
+    - +monitors+ is valid
+    - +monitors.+ is valid
+    - +monitors..+ is valid
+    - +monitors.by-name.+ is valid
+    - +monitors..by-name.+ is *invalid*
+- Remove examples-remove-executable-bits.patch
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed May 29 07:19:37 UTC 2019 - mvetter@suse.com
+
+- Update to 0.7.2:
+  * When herbstluftwm is not running and herbstclient is called,
+    the absent herbstluftwm is detected instead of hanging forever.
+  * Close window on _NET_CLOSE_WINDOW. This makes closing windows
+    via ewmh panels work.
+  * Fix return code of remove_attr
+  * Fix error when unmanaging clients
+  * Some typo fixes in the documentation
+- Remove and replace with sed:
+  * herbstluftwm-shebangs.patch
+  * herbstluftwm-shebangs-2.patch
+  * herbstluftwm-shebangs-3.patch
+
+-------------------------------------------------------------------
+Fri Mar 22 01:23:44 UTC 2019 - xaver@hellauer.bayern
+
+- updated to latest stable release (0.7.1)
+- changes to herbstluftwm-shebangs.patch due to rejects caused by upstream changes
+- add herbstluftwm-shebangs-3.patch
+- fish-completion package
+
+-------------------------------------------------------------------
+Wed Jan 10 14:22:05 UTC 2018 - jengelh@inai.de
+
+- Update RPM groups and summaries.
+
+-------------------------------------------------------------------
+Mon Jan  1 00:41:19 UTC 2018 - avindra@opensuse.org
+
+- Split files into appropriate sub-packages
+- Pass optflags to gcc via CPPFLAGS instead of CXXFLAGS
+- Patches for fixing build errors and warnings
+  * add herbstluftwm-shebangs.patch
+  * add herbstluftwm-shebangs-2.patch
+  * add examples-remove-executable-bits.patch
+- Source download
+  * update all urls to use https
+  * track .sig file
+- General tidiness
+  * cleanup with spec-cleaner
+  * use %make_install macro
+  * renumber sources
+
+-------------------------------------------------------------------
+Tue Dec  5 21:35:10 UTC 2017 - crrodriguez@opensuse.org
+
+- Respect %optflags 
+- BuildRequire only the needed x libs, not xorg-x11-devel
+
+-------------------------------------------------------------------
+Tue Sep  5 03:45:45 UTC 2017 - aavindraa@gmail.com
+
+- repackage for stable releases
+- updated to latest stable release (0.7.0)
+
+-------------------------------------------------------------------
+Mon Apr 23 19:47:03 UTC 2012 - seiler@b1-systems.de
+
+- updated to latest git version
+
+-------------------------------------------------------------------
+Tue Apr 17 11:09:47 UTC 2012 - seiler@b1-systems.de
+
+- enhanced description
+
+-------------------------------------------------------------------
+Tue Apr 17 10:47:43 UTC 2012 - seiler@b1-systems.de
+
+- realised sources as services (git clone and recompress to *.tar.bz2
+- made install section cleaner
+- replaced ./$FILENAME with ./* to fit all files in a specific doc directory in the files section
+- Capitalized summary to prevent this error
+herbstluftwm.x86_64: E: summary-not-capitalized (Badness: 63) C a manual tiling window manager
+
+-------------------------------------------------------------------
+Mon Jan  2 15:29:19 UTC 2012 - seiler@b1-systems.de
+
+- added desktop file to start herbstluftwm from all standard display managers
+
+-------------------------------------------------------------------
+Wed Dec  7 13:04:10 UTC 2011 - seiler@b1-systems.de
+
+- updated source to current git status (04.12.2011)
+
+-------------------------------------------------------------------
+Wed Dec  7 12:42:22 UTC 2011 - seiler@b1-systems.de
+
+- corrected program version tag
+- renamed source *.tar.bz2
+
+-------------------------------------------------------------------
+Wed Dec  7 08:25:40 UTC 2011 - seiler@b1-systems.de
+
+- added missing dependency (ncurses-utils)
+- another dependency
+- make file changes (install paths)
+- added Group Tag to *.spec file
+- added makefile parameters
+- another makefile parameters (install dirs)
+- added files to the 'files' section
+- added missing directories to 'files' section
+
+-------------------------------------------------------------------
+Tue Nov 22 22:08:36 UTC 2011 - seiler@b1-systems.de
+
+- added make install to section %install 
+
+-------------------------------------------------------------------
+Tue Nov 22 22:05:13 UTC 2011 - seiler@b1-systems.de
+
+- added dependency glib2-devel as build requirement
+
+-------------------------------------------------------------------
+Tue Nov 22 21:53:40 UTC 2011 - seiler@b1-systems.de
+
+- moved option -n %{${MACRO}} to setup section #layer 8 failure :P 
+
+-------------------------------------------------------------------
+Tue Nov 22 21:46:47 UTC 2011 - seiler@b1-systems.de
+
+- added source and a test spec file 
+

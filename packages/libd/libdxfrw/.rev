@@ -1,0 +1,65 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dfb28f6216b668d2b1b278d746f8f414</srcmd5>
+    <version>0.5.11</version>
+    <time>1399317025</time>
+    <user>coolo</user>
+    <comment>New package submission: libdxfrw - Library to read and write DXF files, libdxfrw can be used by newer version of librecad</comment>
+    <requestid>232289</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>296d3919d5659db093c2d9b18416784d</srcmd5>
+    <version>0.5.11</version>
+    <time>1399755475</time>
+    <user>coolo</user>
+    <comment>- Set RPM group to more usual values (forwarded request 233303 from jengelh)</comment>
+    <requestid>233307</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>206b66958e30318624feb353daeb17ed</srcmd5>
+    <version>0.5.12</version>
+    <time>1407744454</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244053</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>206b66958e30318624feb353daeb17ed</srcmd5>
+    <version>0.5.12</version>
+    <time>1409301542</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c9e51709b586f7fb1bb1d89e3548f793</srcmd5>
+    <version>0.6.1</version>
+    <time>1441955058</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>330267</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8dc4181cd5404b1f19b698f0a0837c65</srcmd5>
+    <version>0.6.3</version>
+    <time>1451674029</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>348046</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9239a354c3d5e51db24ce105af5ddec4</srcmd5>
+    <version>0.6.3</version>
+    <time>1465938445</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>401240</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3ea582ef5bb6680282014ce8ab535577</srcmd5>
+    <version>0.6.3+git.20190501</version>
+    <time>1558783266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705288</requestid>
+  </revision>
+</revisionlist>

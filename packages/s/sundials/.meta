@@ -1,0 +1,7 @@
+<package name="sundials" project="openSUSE:Factory">
+  <title>Suite of nonlinear solvers</title>
+  <description>SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers for use in writing mathematical software.
+
+SUNDIALS was implemented with the goal of providing robust time integrators and nonlinear solvers that can easily be incorporated into existing simulation codes. The primary design goals were to require minimal information from the user, allow users to easily supply their own data structures underneath the solvers, and allow for easy incorporation of user-supplied linear solvers and preconditioners.</description>
+  <devel project="science" package="sundials"/>
+</package>

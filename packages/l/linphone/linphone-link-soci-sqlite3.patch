@@ -1,0 +1,36 @@
+Index: liblinphone-4.4.0/CMakeLists.txt
+===================================================================
+--- liblinphone-4.4.0.orig/CMakeLists.txt
++++ liblinphone-4.4.0/CMakeLists.txt
+@@ -138,12 +138,7 @@ find_package(Sqlite3 REQUIRED)
+ find_package(XML2 REQUIRED)
+ 
+ if (ENABLE_DB_STORAGE)
+-	#APPLE platform does not use dlopen for soci backend
+-	if (APPLE OR ANDROID)
+-		find_package(Soci REQUIRED COMPONENTS sqlite3)
+-	else()
+-		find_package(Soci REQUIRED)
+-	endif()
++        find_package(Soci REQUIRED COMPONENTS sqlite3)
+ 	set(HAVE_DB_STORAGE 1)
+ endif()
+ 
+Index: liblinphone-4.4.0/src/CMakeLists.txt
+===================================================================
+--- liblinphone-4.4.0.orig/src/CMakeLists.txt
++++ liblinphone-4.4.0/src/CMakeLists.txt
+@@ -60,11 +60,8 @@ if(ZLIB_FOUND)
+ endif()
+ if (ENABLE_DB_STORAGE)
+ 	if (SOCI_FOUND)
+-		#take care of the order  for static link
+-		if(APPLE OR ANDROID)
+-			list(APPEND INTERFACE_LIBS ${SOCI_sqlite3_PLUGIN})
+-			list(APPEND LINK_LIBS ${SOCI_sqlite3_PLUGIN})
+-		endif()
++		list(APPEND INTERFACE_LIBS ${SOCI_sqlite3_PLUGIN})
++		list(APPEND LINK_LIBS ${SOCI_sqlite3_PLUGIN})
+ 		list(APPEND INTERFACE_LIBS soci)
+ 		list(APPEND LINK_LIBS ${SOCI_LIBRARIES})
+ 	endif()

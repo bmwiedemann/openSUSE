@@ -1,0 +1,6 @@
+<package name="perl-Passwd-Keyring-Gnome" project="openSUSE:Factory">
+  <title>perl-Passwd-Keyring-Gnome - Password storage implementation based on GNOME Keyring</title>
+  <description>Password storage implementation based on GNOME Keyring.</description>
+  <devel project="devel:languages:perl" package="perl-Passwd-Keyring-Gnome"/>
+  <url>https://metacpan.org/release/Passwd-Keyring-Gnome</url>
+</package>

@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Mon Sep 18 11:43:04 UTC 2017 - fstrba@suse.com
+
+- Removed patch:
+  * jakarta-commons-modeler-java14compat.patch
+    - Not needed, since we pass those source and target levels to 
+      ant on command-line
+- Clean spec file and fix a warning
+- Specify to ant dependencies on command-line instead of using
+  system-wide classpath
+
+-------------------------------------------------------------------
+Sat May 20 18:21:44 UTC 2017 - tchvatal@suse.com
+
+- Remove obsolete dep and cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Fri Sep 13 10:58:02 UTC 2013 - pgajdos@suse.com
+
+- use unversioned javadocdir
+
+-------------------------------------------------------------------
+Tue May  8 17:01:16 CEST 2007 - dbornkessel@suse.de
+
+- use mx4j instead of jmx 
+
+-------------------------------------------------------------------
+Mon Mar 19 15:16:07 CET 2007 - dbornkessel@suse.de
+
+- update to version 2.0 ... needed for newest tomcat55
+  BUG REPORTS ADDRESSED:
+  o MODELER-18   support for general descriptors
+  o MODELER-17   [modeler] MbeansSource don't use args at mbeans and operations
+  o MODELER-16   [modeler] download links broken  
+  o MODELER-15   [modeler] IntrospectionUtils memory leak  
+  o MODELER-14   After setting an Attribute the Notification Listener will not performed  
+  o MODELER-13   [modeler] BaseModelMBean class setModeledType method should be setModelerType  
+  o MODELER-12   [modeler] ManagedBean uses the wrong case for ObjectReference  
+  o MODELER-11   [modeler] Null Pointer Exception - Non-Singleton Registry  
+  o MODELER-10   [modeler] DTD violation when using simple wrapping  
+  o MODELER-9    [modeler] Registry.convertValue doesn't support longs  
+  o MODELER-8    [modeler] AttributeChangeNotification sent before attribute changes  
+  o MODELER-7    sendAttributeChangeNotification on setAttribute  
+  o MODELER-6    [modeler] wiki page is immutable and out-of-date  
+  o MODELER-5    [modeler] setServer stack overflow  
+  o MODELER-4    [modeler] Overloaded operations throw "wrong number of parameters" exception  
+  o MODELER-3    [modeler] maven build fails on os x with test failure.  
+  o MODELER-2    [modeler] Registry insufficiently synchronized  
+  o MODELER-1    ClassNotFoundException while using the Notification  
+
+-------------------------------------------------------------------
+Mon Sep 25 13:39:47 CEST 2006 - skh@suse.de
+
+- don't use icecream
+- use source="1.4" and target="1.4" for build with java 1.5
+
+-------------------------------------------------------------------
+Wed Jan 25 21:46:38 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Jul 27 17:05:49 CEST 2005 - jsmeix@suse.de
+
+- Adjustments in the spec file.
+
+-------------------------------------------------------------------
+Mon Jul 18 16:26:09 CEST 2005 - jsmeix@suse.de
+
+- Current version 1.1 from JPackage.org
+
+-------------------------------------------------------------------
+Sun Sep  5 23:37:58 CEST 2004 - skh@suse.de
+
+- Initial package created with version 1.1 (JPackage 1.5)
+

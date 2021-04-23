@@ -1,0 +1,5 @@
+<package name="tntdb" project="openSUSE:Factory">
+  <title></title>
+  <description>A candidate to be moved to server:database</description>
+  <devel project="devel:libraries:c_c++" package="tntdb"/>
+</package>

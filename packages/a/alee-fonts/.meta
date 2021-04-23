@@ -1,0 +1,6 @@
+<package name="alee-fonts" project="openSUSE:Factory">
+  <title>Korean TrueType fonts by A Lee.</title>
+  <description>Korean TrueType fonts by A Lee.
+</description>
+  <devel project="M17N:fonts" package="alee-fonts"/>
+</package>

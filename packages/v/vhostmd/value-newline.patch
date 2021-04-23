@@ -1,0 +1,17 @@
+Index: vhostmd-1.1/vhostmd/metric.c
+===================================================================
+--- vhostmd-1.1.orig/vhostmd/metric.c
++++ vhostmd-1.1/vhostmd/metric.c
+@@ -280,6 +280,12 @@ int metric_value_get(metric *m)
+       goto out;
+ 
+    fread(m->value, 1, len-1, fp);
++
++   if (m->type != M_XML) {
++     size_t end = strlen(m->value) - 1;
++     if (m->value[end] == '\n')
++       m->value[end] = '\0';
++   }
+    
+  out:
+    ret = pclose(fp);

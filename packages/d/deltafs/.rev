@@ -1,0 +1,113 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>098b0d39f692b6c952c288dabf173fb1</srcmd5>
+    <version>1.0</version>
+    <time>1258986529</time>
+    <user>autobuild</user>
+    <comment>Copy from IBS home:mszeredi:branches:SUSE:Factory:Head/deltafs based on submit request 2958 from user mszeredi
+</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>906a03a2d7bcfad1b902aa6795bfe254</srcmd5>
+    <version>1.0</version>
+    <time>1268923314</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>906a03a2d7bcfad1b902aa6795bfe254</srcmd5>
+    <version>1.0</version>
+    <time>1278667341</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>906a03a2d7bcfad1b902aa6795bfe254</srcmd5>
+    <version>1.0</version>
+    <time>1278678570</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>906a03a2d7bcfad1b902aa6795bfe254</srcmd5>
+    <version>1.0</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>c9f2ca5f35ab1e22b4be8c8eee470a75</srcmd5>
+    <version>1.0</version>
+    <time>1300870266</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64937 from user licensedigger
+</comment>
+    <requestid>64937</requestid>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>3ee402c8fe5247c7e673d130e8ee136d</srcmd5>
+    <version>1.0</version>
+    <time>1300870277</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64937
+</comment>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>99d15d9fb8497bfc41ebf05334169cbe</srcmd5>
+    <version>1.0</version>
+    <time>1316680888</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83238 from jengelh)</comment>
+    <requestid>84278</requestid>
+  </revision>
+  <revision rev="9" vrev="13">
+    <srcmd5>99d15d9fb8497bfc41ebf05334169cbe</srcmd5>
+    <version>1.0</version>
+    <time>1319181845</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="10" vrev="14">
+    <srcmd5>9a71d77c3cd98627208fd4b333b8c1b4</srcmd5>
+    <version>1.0</version>
+    <time>1322839536</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94770 from coolo)</comment>
+    <requestid>94859</requestid>
+  </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>70fef752517a74c2e487187d4c2ed941</srcmd5>
+    <version>1.0</version>
+    <time>1323191144</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="12" vrev="17">
+    <srcmd5>70fef752517a74c2e487187d4c2ed941</srcmd5>
+    <version>1.0</version>
+    <time>1340183276</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="13" vrev="19">
+    <srcmd5>70fef752517a74c2e487187d4c2ed941</srcmd5>
+    <version>1.0</version>
+    <time>1359108807</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="14" vrev="21">
+    <srcmd5>70fef752517a74c2e487187d4c2ed941</srcmd5>
+    <version>1.0</version>
+    <time>1379662219</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="23">
+    <srcmd5>70fef752517a74c2e487187d4c2ed941</srcmd5>
+    <version>1.0</version>
+    <time>1409300755</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

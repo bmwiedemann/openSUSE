@@ -1,0 +1,66 @@
+--- a/raven/utils/testutils.py
++++ b/raven/utils/testutils.py
+@@ -11,10 +11,7 @@ import raven
+ 
+ from exam import Exam
+ 
+-try:
+-    from unittest2 import TestCase as BaseTestCase
+-except ImportError:
+-    from unittest import TestCase as BaseTestCase  # NOQA
++from unittest import TestCase as BaseTestCase
+ 
+ 
+ class TestCase(Exam, BaseTestCase):
+--- a/setup.py
++++ b/setup.py
+@@ -35,7 +35,6 @@ with open('raven/__init__.py', 'rb') as
+ 
+ 
+ install_requires = []
+-unittest2_requires = ['unittest2']
+ 
+ flask_requires = [
+     'Flask>=0.8',
+@@ -54,9 +53,8 @@ webpy_tests_requires = [
+     'web.py',
+ ]
+ 
+-# If it's python3, remove unittest2 & web.py.
++# If it's python3, remove web.py.
+ if sys.version_info[0] == 3:
+-    unittest2_requires = []
+     webpy_tests_requires = []
+ 
+ # If it's Python 3.5+, add Sanic packages.
+@@ -94,7 +92,7 @@ tests_require = [
+ ] + (
+     flask_requires + flask_tests_requires
+     + sanic_requires + sanic_tests_requires
+-    + unittest2_requires + webpy_tests_requires
++    + webpy_tests_requires
+ )
+ 
+ 
+@@ -129,7 +127,6 @@ setup(
+     extras_require={
+         'flask': flask_requires,
+         'tests': tests_require,
+-        ':python_version<"3.2"': ['contextlib2'],
+     },
+     license='BSD',
+     tests_require=tests_require,
+--- a/raven/base.py
++++ b/raven/base.py
+@@ -22,10 +22,7 @@ from random import Random
+ from types import FunctionType
+ from threading import local
+ 
+-if sys.version_info >= (3, 2):
+-    import contextlib
+-else:
+-    import contextlib2 as contextlib
++import contextlib
+ 
+ try:
+     from thread import get_ident as get_thread_ident

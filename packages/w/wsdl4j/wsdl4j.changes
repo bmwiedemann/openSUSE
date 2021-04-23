@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Mon Sep 11 20:09:45 UTC 2017 - fstrba@suse.com
+
+- Specify java source and target level 1.6 in order to allow
+  building with jdk9
+
+-------------------------------------------------------------------
+Fri May 19 12:12:11 UTC 2017 - tchvatal@suse.com
+
+- Fix building of axis with this new javapackages-tools
+
+-------------------------------------------------------------------
+Wed Mar 18 09:46:24 UTC 2015 - tchvatal@suse.com
+
+- Fix build with new javapackages-tools
+
+-------------------------------------------------------------------
+Fri Dec  5 13:51:02 UTC 2014 - p.drouand@gmail.com
+
+- Replace java2-devel-packages with javapackages-tools
+
+-------------------------------------------------------------------
+Fri Jul 11 14:07:48 UTC 2014 - tchvatal@suse.com
+
+- Do not version javadoc dir.
+
+-------------------------------------------------------------------
+Fri Jun 27 11:48:18 UTC 2014 - tchvatal@suse.com
+
+- Fix build on SLE11.
+
+-------------------------------------------------------------------
+Tue Jun 17 15:39:38 UTC 2014 - tchvatal@suse.com
+
+- Cleanup with spec-cleaner.
+
+-------------------------------------------------------------------
+Tue Jun 17 15:36:50 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 1.6.3 to match upstream code.
+  * Package done to match fedora one.
+- Delete no longer needed patch:
+  * wsdl4j-java14compat.patch
+
+-------------------------------------------------------------------
+Fri Sep 13 08:19:51 UTC 2013 - mvyskocil@suse.com
+
+- temoporary provide osgi(javax.wsdl) to satisfy axis depenencies
+
+-------------------------------------------------------------------
+Fri Sep 22 15:38:55 CEST 2006 - skh@suse.de
+
+- don't use icecream
+- use target="1.4" and source="1.4" for build with java 1.5
+
+-------------------------------------------------------------------
+Wed Jan 25 21:49:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Jul 29 11:38:24 CEST 2005 - jsmeix@suse.de
+
+- Adjustments in the spec file.
+
+-------------------------------------------------------------------
+Wed Jul 20 10:02:23 CEST 2005 - jsmeix@suse.de
+
+- Current version 1.5.1 from JPackage.org
+
+-------------------------------------------------------------------
+Thu Sep 16 19:49:06 CEST 2004 - skh@suse.de
+
+- Fix prerequires of javadoc subpackage
+
+-------------------------------------------------------------------
+Mon Sep  6 22:29:04 CEST 2004 - skh@suse.de
+
+- Initial package with version 1.4
+

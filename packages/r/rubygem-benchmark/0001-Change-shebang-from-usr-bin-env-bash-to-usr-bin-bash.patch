@@ -1,0 +1,22 @@
+From e9ccb0d87093fc3f5e36670ce8c24c25a760dcd9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
+Date: Mon, 6 Jan 2020 10:54:24 +0100
+Subject: [PATCH] Change shebang from /usr/bin/env bash to /usr/bin/bash
+
+---
+ bin/setup | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/bin/setup b/bin/setup
+index dce67d8..6b30229 100755
+--- a/bin/setup
++++ b/bin/setup
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ set -euo pipefail
+ IFS=$'\n\t'
+ set -vx
+-- 
+2.24.1
+

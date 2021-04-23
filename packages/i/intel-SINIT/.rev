@@ -1,0 +1,66 @@
+<revisionlist>
+  <revision rev="1" vrev="81">
+    <srcmd5>32c6cbb6ef306c3be0970fdbc6d4acf0</srcmd5>
+    <version>2.3</version>
+    <time>1392873610</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:openSUSE:Factory:NonFree package:intel-SINIT revision:6</comment>
+  </revision>
+  <revision rev="2" vrev="82">
+    <srcmd5>e2064ff987f9ec903f41bc205e92ee30</srcmd5>
+    <version>2.3</version>
+    <time>1392873722</time>
+    <user>coolo</user>
+    <comment>add to factory</comment>
+    <requestid>223114</requestid>
+  </revision>
+  <revision rev="3" vrev="84">
+    <srcmd5>e2064ff987f9ec903f41bc205e92ee30</srcmd5>
+    <version>2.3</version>
+    <time>1409301233</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="85">
+    <srcmd5>2c780991796b688bbf92eb515b0b351d</srcmd5>
+    <version>2.3</version>
+    <time>1415118604</time>
+    <user>coolo</user>
+    <comment>- Specfile cleanup: avoid %fdupes on buildroot, simplify %install.</comment>
+    <requestid>259537</requestid>
+  </revision>
+  <revision rev="5" vrev="86">
+    <srcmd5>76ddfae00cb5b282dacb72a2ab030d9b</srcmd5>
+    <version>2.3</version>
+    <time>1494938666</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to current zipfiles available from
+  https://software.intel.com/en-us/articles/intel-trusted-execution-technology
+  (new: 5th - 7th gen series broadwell/skylake/kaby lake)
+- Rewrote package description and summary (was partly copied from tboot, and
+  thus wrong), to be more clear and descriptive.
+  -&gt; per suggestions in declined sr#494269</comment>
+    <requestid>494625</requestid>
+  </revision>
+  <revision rev="6" vrev="87">
+    <srcmd5>4a54e4176ab2b304838248a11e3d4bae</srcmd5>
+    <version>2.3</version>
+    <time>1511817509</time>
+    <user>dimstar_suse</user>
+    <comment>- Correctly install SINIT files ending in lower case .bin into /usr/lib/sinit,
+  instead of into the documentation dirs.</comment>
+    <requestid>545895</requestid>
+  </revision>
+  <revision rev="7" vrev="88">
+    <srcmd5>68bab277c0168411565d0e79f422bb77</srcmd5>
+    <version>2.3</version>
+    <time>1604306493</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to current zipfiles available from
+  https://software.intel.com/content/www/us/en/develop/articles/intel-trusted-execution-technology.html
+  - it seems 7th_gen_i5_i7-SINIT_74.zip was replaced by
+    6th_7th_gen_i5_i7-SINIT_79.zip. The old variant is still packaged though.
+  - new 8th_9th_gen_i5_i7-SINIT_81.zip for Coffee Lake platforms.</comment>
+    <requestid>845032</requestid>
+  </revision>
+</revisionlist>

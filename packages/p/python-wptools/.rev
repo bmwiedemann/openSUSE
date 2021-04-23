@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ea6307b79eb2c4ae1dd74e60acc957d3</srcmd5>
+    <version>0.4</version>
+    <time>1509461012</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4
+- Converted to single-spec
+- Refreshed python3-wptools-avoid-reading-readme.patch as
+  python-wptools-avoid-reading-readme.patch
+- Initial package.
+- Add python3-wptools-avoid-reading-readme.patch: README.rst
+  contains numerous spurious characters that are not readable in
+  ascii, causing setup.py to fail. Skip reading this file in
+  setup.py and manually insert a long description text instead.
+</comment>
+    <requestid>537240</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c2fb9e19e8a13cd986cce10e9f9720bb</srcmd5>
+    <version>0.4.5</version>
+    <time>1513762798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558346</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bdd573465b00698e1c708c55962e103d</srcmd5>
+    <version>0.4.6</version>
+    <time>1515623789</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>563082</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1185e653cd1781ae16881dd12f983b2b</srcmd5>
+    <version>0.4.7</version>
+    <time>1516092183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>564489</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>83a5df51f4ec2f5eb30897520eb0b60f</srcmd5>
+    <version>0.4.8</version>
+    <time>1517167946</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>570013</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a5c20e36fbb2b58062a406283f6f98e5</srcmd5>
+    <version>0.4.12</version>
+    <time>1525210119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>602625</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fd7c40471e12c48f801d5ea4e7258607</srcmd5>
+    <version>0.4.14</version>
+    <time>1527583669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>612424</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a8935a0f322ab59aa72c89570592a597</srcmd5>
+    <version>0.4.15</version>
+    <time>1530303851</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>615435</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ef4a7b8b65a5f22e677f1a1483934e62</srcmd5>
+    <version>0.4.17</version>
+    <time>1540320030</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643793</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>96f78eab35bafcfefbc3dbb7ea070d6b</srcmd5>
+    <version>0.4.17</version>
+    <time>1544726702</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654067</requestid>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>b4b3a9cdb40f45bc779f432c17674c37</srcmd5>
+    <version>0.4.17</version>
+    <time>1571210230</time>
+    <user>dimstar_suse</user>
+    <comment>Replace %fdupes -s with plain %fdupes; hardlinks are better.</comment>
+    <requestid>738423</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>90ae5c417a82c2b813d6c764ad661bc5</srcmd5>
+    <version>0.4.17</version>
+    <time>1589892422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>806811</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,5 @@
+<package name="prometheus-webhook-snmp-image" project="openSUSE:Factory">
+  <title>Prometheus Alertmanager SNMP webhook image</title>
+  <description>Image containing Prometheus Alertmanager receiver for SNMP traps</description>
+  <devel project="server:monitoring" package="prometheus-webhook-snmp-image"/>
+</package>

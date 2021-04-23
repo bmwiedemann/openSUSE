@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>603fefec0173d2119253486ca451591b</srcmd5>
+    <version>1.2.6</version>
+    <time>1560337669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>692731</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ddf84b70cc787963b943f5a26ee6b511</srcmd5>
+    <version>5.8.0.8</version>
+    <time>1613677223</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.8.0.8
+  * The new ui design. (forwarded request 869909 from hillwood)</comment>
+    <requestid>869910</requestid>
+  </revision>
+</revisionlist>

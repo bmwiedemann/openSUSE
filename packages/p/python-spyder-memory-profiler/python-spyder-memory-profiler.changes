@@ -1,0 +1,104 @@
+-------------------------------------------------------------------
+Tue Feb  2 13:23:29 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Provide primary python3 module names for consistency with other
+  spyder extensions
+
+-------------------------------------------------------------------
+Thu Jan 28 00:44:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Not a singlespec package (never really was): Spyder is only
+  available for the primary interpreter
+
+-------------------------------------------------------------------
+Sun Apr 19 09:58:47 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to version .2.1
+  This release fixes some compatibility issues with Spyder 4.1 and some other bugs.
+  ### Issues Closed
+
+  * gh#spyder-ide/spyder-memory-profiler#27
+    Check TextEditor call
+    (PR gh#spyder-ide/spyder-memory-profiler#29)
+  * gh#spyder-ide/spyder-memory-profiler#26
+    Move README to markdown
+    (PR gh#spyder-ide/spyder-memory-profiler#28)
+  * gh#spyder-ide/spyder-memory-profiler#25
+    Move CI to github actions
+    (PR gh#spyder-ide/spyder-memory-profiler#28)
+  * gh#spyder-ide/spyder-memory-profiler#21
+    start Profile memory usage
+    (PR gh#spyder-ide/spyder-memory-profiler#31)
+
+  ### Pull Requests Merged
+
+  * gh#spyder-ide/spyder-memory-profiler#31
+    PR: Fix Start button
+    (gh#spyder-ide/spyder-memory-profiler#21)
+  * gh#spyder-ide/spyder-memory-profiler#30
+    PR: Fix opening editor from profiler widget
+  * gh#spyder-ide/spyder-memory-profiler#29
+    Widget: Fix initialization of TextEditor
+    (gh#spyder-ide/spyder-memory-profiler#27)
+  * gh#spyder-ide/spyder-memory-profiler#28
+    PR: Transfer CI to GitHub Actions
+    (gh#spyder-ide/spyder-memory-profiler#26,
+    gh#spyder-ide/spyder-memory-profiler#25)
+  * gh#spyder-ide/spyder-memory-profiler#24
+    PR: Add CONF_DEFAULTS
+
+  In this release 4 issues and 5 pull requests were closed.  
+
+-------------------------------------------------------------------
+Tue Mar 24 16:05:23 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- add release to provides and obsoletes
+
+-------------------------------------------------------------------
+Mon Mar 23 17:07:51 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- spyder3 rename to spyder
+- rename built package to spyder-memory-profiler 
+
+-------------------------------------------------------------------
+Tue Mar 17 21:11:27 UTC 2020 - code@bnavigator.de
+
+- update to 0.2.0
+- move to pytest-xvfb
+
+-------------------------------------------------------------------
+Fri Dec  6 18:44:56 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Disable python2 support since dependencies dropped python2
+
+-------------------------------------------------------------------
+Tue Apr 23 11:13:24 CEST 2019 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC
+- Requires https://build.opensuse.org/request/show/697268 to make
+  the test suite pass.
+
+-------------------------------------------------------------------
+Wed Feb 13 18:05:57 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Tests require locale subdir
+
+-------------------------------------------------------------------
+Thu Aug 16 07:59:43 UTC 2018 - jengelh@inai.de
+
+- Trim redundancies from description and adjust grammar.
+
+-------------------------------------------------------------------
+Wed Aug 15 17:08:59 UTC 2018 - toddrme2178@gmail.com
+
+- Enable unit tests
+
+-------------------------------------------------------------------
+Mon Aug 13 17:46:24 UTC 2018 - toddrme2178@gmail.com
+
+- Update description per upstream request.
+
+-------------------------------------------------------------------
+Tue Sep 12 21:00:09 UTC 2017 - toddrme2178@gmail.com
+
+- Initial version

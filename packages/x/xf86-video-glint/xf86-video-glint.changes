@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Thu Jan 19 14:33:10 UTC 2017 - sndirsch@suse.com
+
+- Update to version 1.2.9:
+  * Remove mibstore.h
+  * Pass the pci device through to fbdevHWInit
+  * Adapt Block/WakeupHandler signature for ABI 23
+  * Fix I2C for DDC2.
+- supersedes U_Remove-mibstore.h.patch,
+  U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch
+
+-------------------------------------------------------------------
+Tue Nov 29 22:28:44 UTC 2016 - sndirsch@suse.com
+
+- U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch 
+  * Adapt Block/WakeupHandler signature for ABI 23
+
+-------------------------------------------------------------------
+Wed Aug  7 15:03:15 CEST 2013 - ro@suse.de
+
+- add ExcludeArch for s390 and s390x 
+
+-------------------------------------------------------------------
+Thu Mar 21 14:32:11 UTC 2013 - sndirsch@suse.com
+
+-  Add mibstore.patch, fixes build with xorg-server 1.14 
+
+-------------------------------------------------------------------
+Wed Mar 20 14:19:02 UTC 2013 - sndirsch@suse.com
+
+- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333) 
+
+-------------------------------------------------------------------
+Sun Sep  2 18:38:38 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 1.2.8:
+  + Build against server with no XAA support.
+  + Port to new compat API.
+
+-------------------------------------------------------------------
+Thu Apr 19 15:18:54 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 1.2.7:
+  + compatibility with X.Org 1.12.x
+- Use %x11_abi_videodrv_req instead of static ABI Requires.
+
+-------------------------------------------------------------------
+Wed Apr 18 15:51:24 UTC 2012 - vuntz@opensuse.org
+
+- Split xf86-video-glint from xorg-x11-driver-video.
+  Initial version: 1.2.6.
+

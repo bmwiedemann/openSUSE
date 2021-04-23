@@ -1,0 +1,74 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>21b43c1c9d56c79c684acbd6c08bd355</srcmd5>
+    <version>1.4.1</version>
+    <time>1521499034</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.1:
+  * Add more gsettings keys to allow using gsettings overrides
+    instead of the onboard-defaults.conf file.
+- Drop BuildRequires on gettext: not needed any more.
+- Drop Requires on gsettings-backend-dconf, and instead require
+  gsettings-desktop-schemas: the current version works with any
+  gsettings backend, not only with the -dconf one.
+- Remove hashbangs from non-exec files.
+- Split out a gnome-shell-extension-onboard package, that provides
+  integration with gnome-shell.
+- Switch to pkgconfig based BuildRequires wherever applicable.
+- Make package own some non-standard directories it installs its
+  sound files to.
+- update to version 1.1.2
+- update to version 1.1.1
+- update to version 1.0.1
+- update to version 0.99.0 
+</comment>
+    <requestid>585720</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4ce7870fdd3c684486e2af4e1335e4be</srcmd5>
+    <version>1.4.1</version>
+    <time>1552491753</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>684688</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2f297a4298635e5101cd82330de2971a</srcmd5>
+    <version>1.4.1</version>
+    <time>1556916227</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove required python3-virtkey which has been not used since
+  0.99:
+  https://bazaar.launchpad.net/~onboard/onboard/0.99/revision/1537.1.2
+- Add patch onboard-remove-dep-typelib-appindicator3.patch: Remove
+  the typelib(Appindicator3) dependency because SLE does not ship
+  it (fate#326794). (forwarded request 692786 from yfjiang)</comment>
+    <requestid>693280</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>03884a64c7c46f267af90341b1df5af5</srcmd5>
+    <version>1.4.1</version>
+    <time>1580511388</time>
+    <user>dimstar_suse</user>
+    <comment>Removal of -lang recommends (forwarded request 768626 from dimstar)</comment>
+    <requestid>768687</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c198582ce3ffd5a22d91cb6dd218a342</srcmd5>
+    <version>1.4.1</version>
+    <time>1588450630</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove onboard-remove-dep-typelib-appindicator3.patch for SLE
+  inclusively later than 15-SP2. It will make the SLE version gains
+  appindicator feature just as Leap did (jsc#SLE-11847). (forwarded request 799177 from yfjiang)</comment>
+    <requestid>799472</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>4c15c47d18f0ec50bae55c2772dae48f</srcmd5>
+    <version>1.4.1</version>
+    <time>1588610591</time>
+    <user>dimstar_suse</user>
+    <comment>Requires iso-codes as it is needed implicitly in Onboard/LanguageSupport.py. (forwarded request 799920 from yfjiang)</comment>
+    <requestid>800064</requestid>
+  </revision>
+</revisionlist>

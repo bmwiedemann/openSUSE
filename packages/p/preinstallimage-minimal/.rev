@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d626f80b2341346616b8147636edeb59</srcmd5>
+    <version>unknown</version>
+    <time>1340876866</time>
+    <user>coolo</user>
+    <comment>osc copypac from project:openSUSE:Factory package:preinstallimage-base revision:2</comment>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3976741042acbdfe40963d283b3fd98f</srcmd5>
+    <version>unknown</version>
+    <time>1340876915</time>
+    <user>coolo</user>
+    <comment>trying to minimize</comment>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>313c91729612cae417e32d90f61b903d</srcmd5>
+    <version>unknown</version>
+    <time>1340876990</time>
+    <user>coolo</user>
+    <comment>even more minimal</comment>
+  </revision>
+  <revision rev="4" vrev="5">
+    <srcmd5>313c91729612cae417e32d90f61b903d</srcmd5>
+    <version>unknown</version>
+    <time>1359109953</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="7">
+    <srcmd5>313c91729612cae417e32d90f61b903d</srcmd5>
+    <version>unknown</version>
+    <time>1379664068</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>313c91729612cae417e32d90f61b903d</srcmd5>
+    <version>unknown</version>
+    <time>1409302746</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>8d1df19fe554f36910e6f2c3de3540ab</srcmd5>
+    <version>unknown</version>
+    <time>1525250739</time>
+    <user>dimstar_suse</user>
+    <comment>add ignore on cputype-armv6l</comment>
+    <requestid>602983</requestid>
+  </revision>
+</revisionlist>

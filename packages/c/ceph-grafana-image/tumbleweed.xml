@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<param>
+  <image>obsrepositories:/opensuse/tumbleweed</image>
+  <tags>tumbleweed</tags>
+  <name>opensuse/ceph/grafana</name>
+  <prefix>org.opensuse.ceph</prefix>
+  <url>https://registry.opensuse.org/opensuse/ceph/grafana:%PKG_VERSION%.%RELEASE%</url>
+  <reference>registry.opensuse.org/opensuse/ceph/grafana:%PKG_VERSION%.%RELEASE%</reference>
+  <bootstrap-packages>
+    <package name="openSUSE-release-ftp"/>
+  </bootstrap-packages>
+</param>

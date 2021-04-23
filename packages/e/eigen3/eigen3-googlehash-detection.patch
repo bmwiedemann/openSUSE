@@ -1,0 +1,13 @@
+Index: eigen-3.3.8/cmake/FindGoogleHash.cmake
+===================================================================
+--- eigen-3.3.8.orig/cmake/FindGoogleHash.cmake
++++ eigen-3.3.8/cmake/FindGoogleHash.cmake
+@@ -12,6 +12,8 @@ find_path(GOOGLEHASH_INCLUDES
+ 
+ if(GOOGLEHASH_INCLUDES)
+   # let's make sure it compiles with the current compiler
++  # C++11 is needed for googlehash
++  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+   file(WRITE ${CMAKE_BINARY_DIR}/googlehash_test.cpp
+   "#include <google/sparse_hash_map>\n#include <google/dense_hash_map>\nint main(int argc, char** argv) { google::dense_hash_map<int,float> a; google::sparse_hash_map<int,float> b; return 0;}\n")
+   try_compile(GOOGLEHASH_COMPILE ${CMAKE_BINARY_DIR} ${CMAKE_BINARY_DIR}/googlehash_test.cpp OUTPUT_VARIABLE GOOGLEHASH_COMPILE_RESULT)

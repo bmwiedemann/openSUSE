@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Thu Feb 18 23:01:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 build (no numpy) 
+
+-------------------------------------------------------------------
+Sun Jan  3 14:27:00 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add extend-timeout.patch switching off timeout on failing test.
+
+-------------------------------------------------------------------
+Sat Dec 19 22:06:48 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Initial specfile for version 4.2.0
+- required by spyder 4.2.1 

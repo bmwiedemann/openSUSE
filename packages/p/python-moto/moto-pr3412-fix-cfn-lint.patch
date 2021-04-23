@@ -1,0 +1,27 @@
+From b3ae6a0f12ba86fe40d5d5dae0d75d01e126db39 Mon Sep 17 00:00:00 2001
+From: Bert Blommers <info@bertblommers.nl>
+Date: Sat, 24 Oct 2020 11:16:30 +0100
+Subject: [PATCH] #3411 - CF - Allow multiple cfn-lint API versions
+
+---
+ moto/cloudformation/utils.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/moto/cloudformation/utils.py b/moto/cloudformation/utils.py
+index 54c338b9b..d025af5fd 100644
+--- a/moto/cloudformation/utils.py
++++ b/moto/cloudformation/utils.py
+@@ -71,7 +71,12 @@ def validate_template_cfn_lint(template):
+     abs_filename = os.path.abspath(filename)
+ 
+     # decode handles both yaml and json
+-    template, matches = decode.decode(abs_filename, False)
++    try:
++        template, matches = decode.decode(abs_filename, False)
++    except TypeError:
++        # As of cfn-lint 0.39.0, the second argument (ignore_bad_template) was dropped
++        # https://github.com/aws-cloudformation/cfn-python-lint/pull/1580
++        template, matches = decode.decode(abs_filename)
+ 
+     # Set cfn-lint to info
+     core.configure_logging(None)

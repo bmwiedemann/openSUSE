@@ -1,0 +1,172 @@
+--- a/cmake/FindReadline.cmake
++++ b/cmake/FindReadline.cmake
+@@ -0,0 +1,58 @@
++############################################################################
++# FindReadline.cmake
++# Copyright (C) 2014  Belledonne Communications, Grenoble France
++#
++############################################################################
++#
++# This program is free software; you can redistribute it and/or
++# modify it under the terms of the GNU General Public License
++# as published by the Free Software Foundation; either version 2
++# of the License, or (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software
++# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
++#
++############################################################################
++#
++# - Find the readline include file and library
++#
++#  READLINE_FOUND - system has readline
++#  READLINE_INCLUDE_DIRS - the readline include directory
++#  READLINE_LIBRARIES - The libraries needed to use readline
++
++if(APPLE AND NOT IOS)
++	set(READLINE_HINTS "/usr")
++endif()
++if(READLINE_HINTS)
++	set(READLINE_LIBRARIES_HINTS "${READLINE_HINTS}/lib")
++endif()
++
++find_path(READLINE_INCLUDE_DIRS
++	NAMES readline.h
++	HINTS "${READLINE_HINTS}"
++	PATH_SUFFIXES include/readline
++)
++
++if(READLINE_INCLUDE_DIRS)
++	set(HAVE_READLINE_H 1)
++	set(HAVE_HISTORY_H 1)
++endif()
++
++find_library(READLINE_LIBRARIES
++	NAMES readline
++	HINTS "${READLINE_LIBRARIES_HINTS}"
++)
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(Readline
++	DEFAULT_MSG
++	READLINE_INCLUDE_DIRS READLINE_LIBRARIES HAVE_READLINE_H HAVE_HISTORY_H
++)
++
++mark_as_advanced(READLINE_INCLUDE_DIRS READLINE_LIBRARIES HAVE_READLINE_H HAVE_HISTORY_H)
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -69,6 +69,7 @@ option(ENABLE_ASSETS "Package sound asse
+ option(ENABLE_PACKAGE_SOURCE "Create 'package_source' target for source archive making (CMake >= 3.11)" OFF)
+ 
+ cmake_dependent_option(ENABLE_NOTIFY "Enable libnotify support." YES "ENABLE_GTK_UI;NOT APPLE" NO)
++cmake_dependent_option(ENABLE_READLINE "Enable readline support." YES "ENABLE_CONSOLE_UI" NO)
+ cmake_dependent_option(ENABLE_ASSISTANT "Turn on assistant compiling." YES "ENABLE_GTK_UI" NO)
+ 
+ set(CMAKE_CXX_STANDARD 11)
+@@ -156,6 +157,15 @@ if(ENABLE_TUNNEL)
+ 		set(ENABLE_TUNNEL OFF CACHE BOOL "Enable tunnel support." FORCE)
+ 	endif()
+ endif()
++if(ENABLE_READLINE)
++	find_package(Readline)
++	if(READLINE_FOUND)
++		set(HAVE_READLINE 1)
++	else()
++		message(WARNING "Could not find the readline library!")
++		set(ENABLE_READLINE OFF CACHE BOOL "Enable readline support." FORCE)
++	endif()
++endif()
+ if(ENABLE_NOTIFY)
+ 	find_package(Notify)
+ 	if(NOTIFY_FOUND)
+@@ -302,7 +312,7 @@ else()
+ 	if (SUGGEST_OVERRIDE)
+ 		list(APPEND STRICT_OPTIONS_CXX "-Wsuggest-override" "-Wno-error=suggest-override" )
+ 	endif ()
+-	list(APPEND STRICT_OPTIONS_C "-Wstrict-prototypes" "-Werror=strict-prototypes")
++	list(APPEND STRICT_OPTIONS_C "-Wstrict-prototypes")
+ 	if(CMAKE_C_COMPILER_ID STREQUAL "GNU")
+ 		list(APPEND STRICT_OPTIONS_C "-fno-inline-small-functions")
+ 	endif()
+--- a/config.h.cmake
++++ b/config.h.cmake
+@@ -42,6 +42,9 @@
+ #cmakedefine BUILD_WIZARD
+ #cmakedefine HAVE_NOTIFY4
+ #cmakedefine HAVE_ZLIB 1
++#cmakedefine HAVE_READLINE
++#cmakedefine HAVE_READLINE_H
++#cmakedefine HAVE_HISTORY_H
+ #cmakedefine HAVE_CU_GET_SUITE 1
+ #cmakedefine HAVE_CU_CURSES 1
+ #cmakedefine HAVE_LIBUDEV_H 0
+--- a/console/CMakeLists.txt
++++ b/console/CMakeLists.txt
+@@ -41,6 +41,10 @@ target_link_libraries(linphonec ${LINPHO
+ set_target_properties(linphonec PROPERTIES LINK_FLAGS "${LINPHONE_LDFLAGS}")
+ set_target_properties(linphonec PROPERTIES LINKER_LANGUAGE CXX)
+ 
++if(READLINE_FOUND)
++	target_include_directories(linphonec PUBLIC ${READLINE_INCLUDE_DIRS})
++	target_link_libraries(linphonec ${READLINE_LIBRARIES})
++endif()
+ if(INTL_FOUND)
+ 	target_link_libraries(linphonec ${INTL_LIBRARIES})
+ endif()
+@@ -48,6 +52,10 @@ endif()
+ if(WIN32)
+ 	add_executable(linphoned WIN32 ${LINPHONEC_SOURCE_FILES})
+ 	target_link_libraries(linphoned ${LINPHONE_LIBS_FOR_TOOLS} bctoolbox ortp mediastreamer ${XSD_LIBRARIES})
++	if(READLINE_FOUND)
++		target_include_directories(linphoned PUBLIC ${READLINE_INCLUDE_DIRS})
++		target_link_libraries(linphoned ${READLINE_LIBRARIES})
++	endif()
+ 	if(INTL_FOUND)
+ 		target_link_libraries(linphoned ${INTL_LIBRARIES})
+ 	endif()
+@@ -58,6 +66,11 @@ target_link_libraries(linphonecsh ${LINP
+ set_target_properties(linphonecsh PROPERTIES LINK_FLAGS "${LINPHONE_LDFLAGS}")
+ set_target_properties(linphonecsh PROPERTIES LINKER_LANGUAGE CXX)
+ 
++if(READLINE_FOUND)
++	target_include_directories(linphonecsh PUBLIC ${READLINE_INCLUDE_DIRS})
++	target_link_libraries(linphonecsh ${READLINE_LIBRARIES})
++endif()
++
+ set(INSTALL_TARGETS linphonec linphonecsh)
+ if(WIN32)
+ 	list(APPEND INSTALL_TARGETS linphoned)
+--- a/daemon/CMakeLists.txt
++++ b/daemon/CMakeLists.txt
+@@ -123,6 +123,11 @@ target_link_libraries(linphone-daemon ${
+ set_target_properties(linphone-daemon PROPERTIES LINK_FLAGS "${LINPHONE_LDFLAGS}")
+ set_target_properties(linphone-daemon PROPERTIES LINKER_LANGUAGE CXX)
+ 
++if(READLINE_FOUND)
++	target_include_directories(linphone-daemon PUBLIC ${READLINE_INCLUDE_DIRS})
++	target_link_libraries(linphone-daemon ${READLINE_LIBRARIES})
++endif()
++
+ add_executable(linphone-daemon-pipetest ${DAEMON_PIPETEST_SOURCE_FILES})
+ target_link_libraries(linphone-daemon-pipetest ${LINPHONE_LIBS_FOR_TOOLS} ortp mediastreamer)
+ set_target_properties(linphone-daemon-pipetest PROPERTIES LINK_FLAGS "${LINPHONE_LDFLAGS}")
+--- a/daemon/daemon.cc
++++ b/daemon/daemon.cc
+@@ -31,11 +31,6 @@
+ #include <functional>
+ #include <limits>
+ 
+-#ifdef HAVE_READLINE
+-#include <readline/readline.h>
+-#include <readline/history.h>
+-#endif
+-
+ #ifndef _WIN32
+ #include <poll.h>
+ #endif

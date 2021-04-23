@@ -1,0 +1,22 @@
+Author: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Date:   Thu Aug 10 23:07:33 2017 +0200
+
+Do not store build date
+
+and build user
+in order to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+
+Index: GASNet-1.28.2/configure
+===================================================================
+--- GASNet-1.28.2.orig/configure
++++ GASNet-1.28.2/configure
+@@ -3991,7 +3991,7 @@ $as_echo "$as_me: WARNING: Apple gcc is
+   { $as_echo "$as_me:${as_lineno-$LINENO}: result: system info:      $SYSTEM_NAME $SYSTEM_TUPLE" >&5
+ $as_echo "system info:      $SYSTEM_NAME $SYSTEM_TUPLE" >&6; }
+   BUILD_USER=`whoami 2> /dev/null || id -un 2> /dev/null || echo $USER`
+-  BUILD_ID="`date` $BUILD_USER"
++  BUILD_ID="reproducible"
+   { $as_echo "$as_me:${as_lineno-$LINENO}: result: build id:       $BUILD_ID" >&5
+ $as_echo "build id:       $BUILD_ID" >&6; }
+ 

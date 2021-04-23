@@ -1,0 +1,137 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>26f20f50365ce7d93f0f77e85fa3b87b</srcmd5>
+    <version>1.01</version>
+    <time>1311148692</time>
+    <user>saschpe</user>
+    <comment>needed by Any-Moose</comment>
+    <requestid>76225</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1c6ff24c0c0d116595532e857a1caf80</srcmd5>
+    <version>1.01</version>
+    <time>1311148710</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76225
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>1c6ff24c0c0d116595532e857a1caf80</srcmd5>
+    <version>1.01</version>
+    <time>1319182288</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c3ad87b66857022fab4b572d3ec7aeaf</srcmd5>
+    <version>1.04</version>
+    <time>1321273451</time>
+    <user>coolo</user>
+    <comment>- update to 1.04:
+     - Fixed _cmp to compare properly (MIYAGAWA)
+     - Fixed the automated MakeMaker dependency addition (MIYAGAWA)
+     - Last Perl 5.5 compatible MakeMaker was actually 6.36 (ADAMK)
+     - META.yml flag dynamic_config is now always generated (ADAMK)
+     - Added the convenience command static_config, as the default is to be
+       dynamic (ADAMK)
+     - Module::Install::DSL will automatically set static_config unless it
+       can see an 'if' or 'unless' suffix (ADAMK)
+
+- update to 1.02:
+  * support for installdeps_target in Module::Install::AutoInstall and
+    Module::AutoInstall
+  * support for installdeps_notest, upgradedeps and upgradedeps_notest,
+    listdeps and listalldeps targets in Module::AutoInstall</comment>
+    <requestid>91030</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e01f90345b492655488b834a1d243da8</srcmd5>
+    <version>1.04</version>
+    <time>1323193471</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>e01f90345b492655488b834a1d243da8</srcmd5>
+    <version>1.04</version>
+    <time>1340183876</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>e01f90345b492655488b834a1d243da8</srcmd5>
+    <version>1.04</version>
+    <time>1359109740</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>e01f90345b492655488b834a1d243da8</srcmd5>
+    <version>1.04</version>
+    <time>1379663747</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>52e326e678cc7885c265387ba5eedd71</srcmd5>
+    <version>1.08</version>
+    <time>1394526754</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>225392</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>52e326e678cc7885c265387ba5eedd71</srcmd5>
+    <version>1.08</version>
+    <time>1409302384</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1284fbe871ffd1774fc7230068ea70b7</srcmd5>
+    <version>1.14</version>
+    <time>1429107719</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>295787</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7d55e8e4001ce7a8bcb0e6f86ce2d460</srcmd5>
+    <version>1.15</version>
+    <time>1429346459</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>297740</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9c96c06e4413cb56c3406329721c4195</srcmd5>
+    <version>1.16</version>
+    <time>1430576145</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>305004</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ce21f820aaec3aaeb0335f7540dfe049</srcmd5>
+    <version>1.17</version>
+    <time>1478780919</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>439462</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3bf05b150e4078c6fc1faf3b9fcbc40a</srcmd5>
+    <version>1.18</version>
+    <time>1491907421</time>
+    <user>maxlin_factory</user>
+    <comment>1</comment>
+    <requestid>486132</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8bfbbb641f2fb084ce781b74f2e59ccf</srcmd5>
+    <version>1.19</version>
+    <time>1518187646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>573984</requestid>
+  </revision>
+</revisionlist>

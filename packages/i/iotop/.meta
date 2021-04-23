@@ -1,0 +1,9 @@
+<package name="iotop" project="openSUSE:Factory">
+  <title>Top Like UI to Show Per-Process I/O Going on</title>
+  <description>Linux has always been able to show how much I/O was going on (the bi
+and bo columns of the vmstat 1 command).
+
+Iotop is a Python program with a UI similar to top to show on behalf of
+which process is the I/O going on.</description>
+  <devel project="Base:System" package="iotop"/>
+</package>

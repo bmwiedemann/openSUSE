@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>045031a12f3d2841cbf57c618d7f645b</srcmd5>
+    <version>0.12</version>
+    <time>1478626059</time>
+    <user>dimstar_suse</user>
+    <comment>required for perl-Net-Dropbox-API</comment>
+    <requestid>416604</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e2f8d3cb7add05ff47c09183ee02c28f</srcmd5>
+    <version>0.12</version>
+    <time>1507065517</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530686</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>99bba4528ebd74ecd1e24b4ccda6022c</srcmd5>
+    <version>0.13</version>
+    <time>1524643252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>599324</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Thu Dec 17 15:05:54 UTC 2020 - Jens K. <jens@karatek.net>
+
+- Change .desktop file so module launches with xdg-su (bsc#1180173).
+- 4.3.1
+
+-------------------------------------------------------------------
+Wed Nov 18 22:10:43 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
+
+- Handle properly help command for alternatives client
+  (bsc#1172340)
+- 4.3.0
+
+-------------------------------------------------------------------
+Thu Jan 16 12:12:09 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Clean spec file using spec-cleaner (main goal: use %license,
+  boo#1082318).
+- 4.2.3
+
+-------------------------------------------------------------------
+Mon Aug 26 09:17:13 CEST 2019 - schubi@suse.de
+
+- Using rb_default_ruby_abi tag in the spec file in order to
+  handle several ruby versions (bsc#1146403).
+- 4.2.2
+
+-------------------------------------------------------------------
+Fri Jul 19 09:09:41 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added "BuildRequires: update-desktop-files"
+- Related to the previous desktop file changes (fate#319035)
+- 4.2.1
+
+-------------------------------------------------------------------
+Fri May 31 12:24:51 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add metainfo (fate#319035)
+- Revamp spec
+- Replace GenericName with Comment
+- 4.2.0
+
+-------------------------------------------------------------------
+Fri Nov 23 19:02:13 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Provide icon with module (boo#1109310)
+- 4.1.0
+
+-------------------------------------------------------------------
+Fri Apr  6 18:50:12 UTC 2018 - mfilka@suse.com
+
+- bnc#1087957 - version bump
+- 4.0.0
+
+-------------------------------------------------------------------
+Mon Mar 13 09:47:52 UTC 2017 - ancor@suse.com
+
+- Fixed RPM packaging error (bsc#1029088)
+- 3.2.0
+
+-------------------------------------------------------------------
+Mon Aug  8 09:33:12 UTC 2016 - joaquinmnsm@gmail.com
+
+- Added textdomain to enable translations. (bsc#1019091)
+- Enabled auto submit to factory.
+- Added yardopts file for code documentation.
+- 3.1.4
+
+-------------------------------------------------------------------
+Wed Jul 27 09:49:46 UTC 2016 - joaquinmnsm@gmail.com
+
+- Shows a confirmation dialog to continue if don't have permissions.
+- Fixed crash when try to save changes without permissions.
+- 3.1.3
+
+-------------------------------------------------------------------
+Fri Jul 22 11:21:46 UTC 2016 - joaquinmnsm@gmail.com
+
+- Added entry in YaST Control Center and system menu.
+- 3.1.2
+
+-------------------------------------------------------------------
+Thu Jul 21 19:47:50 UTC 2016 - joaquinmnsm@gmail.com
+
+- Added help button.
+- 3.1.1
+
+-------------------------------------------------------------------
+Tue Jun 28 10:55:28 UTC 2016 - joaquinmnsm@gmail.com
+
+- Initial version
+- 3.1.0

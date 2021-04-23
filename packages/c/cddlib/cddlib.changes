@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Tue Dec  8 16:22:28 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.94m
+  * Fix and error, where a non-redundant linearity could be
+    considered redundant.
+  * Fix an optimization error in ViaShooting code so that the linear
+    programs are now much smaller.
+  * Fixed memory leaks in the redundancy code.
+
+-------------------------------------------------------------------
+Sun Sep 20 06:38:16 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.94l
+  * Merged 0001-build-extend-extern-C-block-in-header-files.patch
+- Split command-line programs to new package cddlib-tools.
+
+-------------------------------------------------------------------
+Sat Sep 19 09:18:52 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.94k
+  * Header files are now installed to PREFIX/include/cddlib to
+    avoid clashes with other libraries.
+  * pkg-config cddlib.pc file added.
+- Add 0001-build-extend-extern-C-block-in-header-files.patch
+
+-------------------------------------------------------------------
+Sat Oct 20 11:41:09 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.94j
+  * Introduced cddexec as a replacement of cdd_both_reps that many
+    distributions packaged.
+- Remove cddlib-flags.diff, cddlib-automake.diff
+
+-------------------------------------------------------------------
+Mon Apr 30 22:12:36 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 0.94i
+  * The missing definition of dd_set_d function (in the
+    -DGMPRATIONAL case) was added.
+
+-------------------------------------------------------------------
+Mon Dec 25 21:51:31 UTC 2017 - jengelh@inai.de
+
+- Switch include directory to /usr/include/cdd as that seems to be
+  expected by downstream programs (like gfan).
+
+-------------------------------------------------------------------
+Mon Feb 20 23:47:31 UTC 2017 - jengelh@inai.de
+
+- Update homepage URL
+
+-------------------------------------------------------------------
+Mon Jul  4 08:20:19 UTC 2016 - jengelh@inai.de
+
+- Update cddlib-automake.diff to add -no-undefined
+
+-------------------------------------------------------------------
+Sat Mar 12 21:02:34 UTC 2016 - jengelh@inai.de
+
+- Update to new upstream release 0.94h
+* One unspecified minor bugfix
+
+-------------------------------------------------------------------
+Sat Oct 11 18:22:10 UTC 2014 - jengelh@inai.de
+
+- Use source URLs
+
+-------------------------------------------------------------------
+Tue Aug 21 23:03:03 UTC 2012 - jengelh@inai.de
+
+- Restore and rediff patches
+
+-------------------------------------------------------------------
+Tue Aug 21 19:59:49 UTC 2012 - dmitry@roshchin.org
+
+- Update to version 0.94g
+  * fixed memory leaks in cddlib.c and cddlp.c
+  * integrated patches for making the library
+    shared and more compatible for C++ compilers

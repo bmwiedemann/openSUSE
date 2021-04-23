@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Tue Oct  8 06:59:41 UTC 2019 - Klaus Kämpf <kkaempf@suse.com>
+
+- enable drop-stropts.h-include.patch on all platforms
+
+-------------------------------------------------------------------
+Mon Jul  3 06:57:16 UTC 2017 - kkaempf@suse.com
+
+- add configure-assume-host-SUSE-if-SUSE_VERSION-set.patch
+  to detect host in absence of /etc/issue
+
+- add drop-stropts.h-include.patch
+  fixes redhat/centos/fedora builds
+
+- rename 0002-Consider-gcc-in-SUSE-can-handle-dynamic_cast.patch
+  to Consider-gcc-in-SUSE-and-REDHAT-can-handle-dynamic_c.patch
+
+-------------------------------------------------------------------
+Wed Jan 25 04:49:32 UTC 2017 - bwiedemann@suse.com
+
+- Add reproducible.patch to allow for reproducible builds
+
+-------------------------------------------------------------------
+Sat Jul 23 02:56:10 UTC 2016 - rpm@fthiessen.de
+
+- Added fix-gcc6.patch for gcc6 build (Tumbleweed / Factory).
+  * Fixes boo#985164
+
+-------------------------------------------------------------------
+Sat Jun 29 17:27:19 UTC 2013 - crrodriguez@opensuse.org
+
+- Also do not strip shared libraries,fix debug info generation
+- Use %{?_smp_mflags}
+
+-------------------------------------------------------------------
+Sat Jun 29 17:06:42 UTC 2013 - crrodriguez@opensuse.org
+
+- Use %optflags 
+- Cleanup CXXFLAGS and remove Werror so build does not
+  fail with gcc 4.8 (xplatproviders-gcc48.patch)
+
+-------------------------------------------------------------------
+Fri Mar 22 16:29:13 UTC 2013 - dvaleev@suse.com
+
+- set ExclusiveArch to x86, as cpu_provider is x86 specific
+
+-------------------------------------------------------------------
+Fri Oct 26 12:49:31 UTC 2012 - kkaempf@suse.com
+
+- SuSEconfig dropped, fix SUSE detection during build
+
+-------------------------------------------------------------------
+Thu May 31 15:53:30 UTC 2012 - kkaempf@suse.com
+
+- Fix building
+
+-------------------------------------------------------------------
+Mon Sep 19 07:16:39 UTC 2011 - kkaempf@suse.com
+
+- Initial version 1.0.0
+

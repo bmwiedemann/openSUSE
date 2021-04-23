@@ -1,0 +1,37 @@
+IMPORTANT: Please change gcc.spec.in or cross.spec.in and then
+run ./pre_checkin.sh!  Do not change any .spec directly!
+
+Since GCC comes with a testsuite that runs for quite a long time and
+that test suite also contains some known failures, we should run the
+testsuite of GCC whenever the compiler is changed to ensure a high
+quality compiler.
+
+The package is now split into two parts, gcc$VER and gcc$VER-testresults
+(plus various spec files for cross and offload).  The testsuite is run from
+gcc$VER-testresults.spec, a dummy source package with the actual testresults,
+gcc$VER-testresults, generated from it which contains testing logfiles and
+a summary.
+
+Before checking in a new compiler, please do the following steps as QA
+measure to check that the new compiler does not introduce any new
+failures:
+
+- In your branch project make sure at least gcc$VER and gcc$VER-testresults
+  are built for all relevant architectures of the product
+
+- When the build finished, call
+    /suse/rguenther/bin/compare-testresults-bs.sh \
+      gcc$VER-testresults gcc$VER-testresults \
+      SUSE:SLE-15:Update standard .1234 \
+      home:user:branches:gcc standard
+  It will compare testresults of the base (shipped in the product already,
+  look for the magic .1234 suffix as to the latest released update) to
+  your proposed update.  The differences will be recorded in a temporary
+  directory which is printed as output, they should not contain any new
+  failures.  If they do, please fix them or discuss this with the gcc
+  package maintainers.
+
+- Do not remove this file.
+
+Thanks,
+Your GCC packagers.

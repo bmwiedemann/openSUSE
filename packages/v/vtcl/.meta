@@ -1,0 +1,8 @@
+<package name="vtcl" project="openSUSE:Factory">
+  <title>Visual Tcl</title>
+  <description>Visual Tcl is a freely-available, high-quality application development
+environment for UNIX, Windows, and Macintosh platforms. Writing
+entirely in Tcl and generating pure Tcl should make porting either
+unnecessary or trivial.</description>
+  <devel project="devel:languages:tcl" package="vtcl"/>
+</package>

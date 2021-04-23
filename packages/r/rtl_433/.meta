@@ -1,0 +1,9 @@
+<package name="rtl_433" project="openSUSE:Factory">
+  <title>Turns RTL2832 dongle into a 433.92MHz generic data receiver</title>
+  <description>An application using librtlsdr to decode the temperature from
+wireless temperature sensors (433.92MHz) 
+
+</description>
+  <devel project="hardware:sdr" package="rtl_433"/>
+  <url>https://github.com/merbanan/rtl_433.git</url>
+</package>

@@ -1,0 +1,9 @@
+<package name="network-autoconfig" project="openSUSE:Factory">
+  <title>Find a connected eth interface and create an ifcfg for it</title>
+  <description>All available Ethernet network interfaces will be cycled
+until one is successfully configured.
+This script should run at the first boot of a machine
+that has several interfaces.</description>
+  <devel project="network:utilities" package="network-autoconfig"/>
+  <url>http://gitorious.org/opensuse/network-autoconfig</url>
+</package>

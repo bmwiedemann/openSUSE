@@ -1,0 +1,5 @@
+<package name="python-aioquic" project="openSUSE:Factory">
+  <title></title>
+  <description>Python implementation of QUIC and HTTP/3</description>
+  <devel project="devel:languages:python" package="python-aioquic"/>
+</package>

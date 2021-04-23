@@ -1,0 +1,11 @@
+<package name="lout" project="openSUSE:Factory">
+  <title>The Lout document formatting system : an alternative to LaTeX and Groff</title>
+  <description>Lout is a document formatting system designed and implemented by Jeffrey
+Kingston at the Basser Department of Computer Science, University of
+Sydney, Australia. The system reads a high-level description of a document
+similar in style to LaTeX and produces a PostScript file which can be
+printed on most laser printers and graphic display devices. Plain text
+output is also available, PDF output is limited but working (e.g. no
+graphics). Lout is inherently multilingual. Adding new languages is easy.</description>
+  <devel project="Publishing" package="lout"/>
+</package>

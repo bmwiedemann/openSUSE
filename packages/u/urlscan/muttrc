@@ -1,0 +1,6 @@
+#
+# Integrate this into your ~/.muttrc
+# to use urlscan instead of urlview
+#
+macro index,pager \cb |urlscan\n
+macro attach,compose \cb |urlscan\n

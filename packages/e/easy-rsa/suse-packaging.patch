@@ -1,0 +1,14 @@
+--- easyrsa.orig	2020-11-20 15:05:31.051230522 +0100
++++ easyrsa	2020-11-20 15:08:45.769207521 +0100
+@@ -1664,10 +1664,7 @@
+ 	vars=
+ 
+ 	# set up program path
+-	prog_file="$0"
+-	prog_file2="$(which -- "$prog_file" 2>/dev/null)" && prog_file="$prog_file2"
+-	prog_file2="$(readlink -f "$prog_file" 2>/dev/null)" && prog_file="$prog_file2"
+-	prog_dir="${prog_file%/*}"
++	prog_dir="/etc/easy-rsa"
+ 	prog_vars="${prog_dir}/vars"
+ 	# set up PKI path
+ 	pki_vars="${EASYRSA_PKI:-$PWD/pki}/vars"

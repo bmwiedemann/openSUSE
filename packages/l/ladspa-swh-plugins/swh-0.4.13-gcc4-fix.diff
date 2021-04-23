@@ -1,0 +1,13 @@
+Index: util/pitchscale.c
+===================================================================
+--- util/pitchscale.c.orig	2016-10-17 11:05:54.000000000 +0200
++++ util/pitchscale.c	2016-11-12 13:34:09.406003378 +0200
+@@ -41,7 +41,7 @@
+ 
+ #include "pitchscale.h"
+ 
+-static float ps_in[MAX_FRAME_LENGTH*2], ps_out[MAX_FRAME_LENGTH*2];
++float ps_in[MAX_FRAME_LENGTH*2], ps_out[MAX_FRAME_LENGTH*2];
+ static fft_plan aplan = NULL, splan = NULL;
+ 
+ void pitch_scale(sbuffers *buffers, const double pitchScale, const long

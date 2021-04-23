@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<param>
+  <image>obsrepositories:/suse/sle15#15.1</image>
+  <tags>sle15.1.nautilus</tags>
+  <name>ses/6/ceph/grafana</name>
+  <prefix>com.suse.ses</prefix>
+  <url>https://registry.suse.com/ses/6/ceph/grafana:%PKG_VERSION%.%RELEASE%</url>
+  <reference>registry.suse.com/ses/6/ceph/grafana:%PKG_VERSION%.%RELEASE%</reference>
+  <labels>
+    <label>
+      <name>com.suse.ses.version</name>
+      <value>6.0</value>
+    </label>
+    <label>
+      <name>com.suse.ses.url</name>
+      <value>https://www.suse.com/solutions/software-defined-storage/</value>
+    </label>
+  </labels>
+</param>

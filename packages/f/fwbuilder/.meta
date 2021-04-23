@@ -1,0 +1,6 @@
+<package name="fwbuilder" project="openSUSE:Factory">
+  <title>fwbuilder</title>
+  <description>Firewall Builder is a GUI firewall configuration and management tool that supports iptables (netfilter), ipfilter, pf, ipfw, Cisco PIX (FWSM, ASA) and Cisco routers extended access lists. Firewall Builder uses object-oriented approach, it helps administrator maintain a database of network objects and allows policy editing using simple drag-and-drop operations.</description>
+  <devel project="security" package="fwbuilder"/>
+  <url>http://www.fwbuilder.org/</url>
+</package>

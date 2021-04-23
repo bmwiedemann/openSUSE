@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8f30211398b1ae43cb957e23c3d36a45</srcmd5>
+    <version>0~git20191103</version>
+    <time>1581456197</time>
+    <user>dimstar_suse</user>
+    <comment>Atari Jaguar emulator</comment>
+    <requestid>772101</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>22ee77092f8a7cb2bdd8490d7dc07077</srcmd5>
+    <version>0~git20200521</version>
+    <time>1592939189</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>816543</requestid>
+  </revision>
+</revisionlist>

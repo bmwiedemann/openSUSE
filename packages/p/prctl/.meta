@@ -1,0 +1,6 @@
+<package name="prctl" project="openSUSE:Factory">
+  <title>A utility to perform process operations</title>
+  <description>The prctl utility allows a user to control certain process behaviors in
+the runtime environment.</description>
+  <devel project="utilities" package="prctl"/>
+</package>

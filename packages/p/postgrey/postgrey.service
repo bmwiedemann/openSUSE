@@ -1,0 +1,28 @@
+# This file is part of package postgrey.
+#
+# Copyright (c) 2012 Stefan Botter.
+# Author: Stefan Botter
+# Please send feedback to obs@botter.cc
+#
+# Description:
+#
+#  Used to start postgrey greylisting service
+#
+
+[Unit]
+Description=Postgrey Greylisting Service
+Requires=var-run.mount
+Wants=nss-lookup.target network.target remote-fs.target time-sync.target
+After=var-run.mount nss-lookup.target network.target remote-fs.target time-sync.target
+Before=mail-transfer-agent.target
+
+[Service]
+Type=forking
+EnvironmentFile=-/etc/sysconfig/postgrey
+ExecStart=/usr/sbin/postgrey -d $POSTGREY_CONN_OPTIONS $POSTGREY_DBDIR $POSTGREY_EXTRA_OPTIONS
+ExecReload=/usr/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target

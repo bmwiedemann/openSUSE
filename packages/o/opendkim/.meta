@@ -1,0 +1,15 @@
+<package name="opendkim" project="openSUSE:Factory">
+  <title>Milter based implementation of DKIM</title>
+  <description>DomainKeys Identified Mail (DKIM) lets an organization take responsibility for
+a message that is in transit.  The organization is a handler of the message,
+either as its originator or as an intermediary. Their reputation is the basis
+for evaluating whether to trust the message for further handling, such as
+delivery. Technically DKIM provides a method for validating a domain name
+identity that is associated with a message through cryptographic
+authentication.
+
+
+</description>
+  <devel project="server:mail" package="opendkim"/>
+  <url>http://www.opendkim.org/</url>
+</package>

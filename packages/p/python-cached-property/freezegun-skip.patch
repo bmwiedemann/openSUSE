@@ -1,0 +1,12 @@
+Index: cached-property-1.5.1/tests/test_cached_property.py
+===================================================================
+--- cached-property-1.5.1.orig/tests/test_cached_property.py
++++ cached-property-1.5.1/tests/test_cached_property.py
+@@ -191,6 +191,7 @@
+         self.assert_cached(check, 2)
+         self.assert_cached(check, 2)
+ 
++    @unittest.skip("new freezegun breaks behaviour of this test")
+     def test_threads_ttl_expiry(self):
+         Check = CheckFactory(self.cached_property_factory(ttl=100000), threadsafe=True)
+         check = Check()

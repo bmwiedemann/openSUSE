@@ -1,0 +1,10 @@
+<package name="python-hepunits" project="openSUSE:Factory">
+  <title>Units and constants in the HEP system of units</title>
+  <description>hepunits collects the most commonly used units and constants in the HEP System
+of Units, as derived from the basic units originally defined by the CLHEP
+project.
+
+</description>
+  <devel project="devel:languages:python:numeric" package="python-hepunits"/>
+  <url>https://github.com/scikit-hep/hepunits</url>
+</package>

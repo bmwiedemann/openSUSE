@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Sat Feb 20 18:28:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't test python36-numpy. Numpy 1.20 in Tumbleweed dropped
+  python36 (NEP 29) 
+
+-------------------------------------------------------------------
+Sun Jul  5 13:11:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- initial package for vesion 0.1 

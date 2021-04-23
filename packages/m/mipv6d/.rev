@@ -1,0 +1,208 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>5394fd8b70257100d7fd9ff2d7b58647</srcmd5>
+    <version>2.0.2</version>
+    <time>1221705634</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>5fdbf56affefdcfdc86864c997a4c638</srcmd5>
+    <version>2.0.2</version>
+    <time>1249684362</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>5fdbf56affefdcfdc86864c997a4c638</srcmd5>
+    <version>2.0.2</version>
+    <time>1249684362</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>9b88a2ac681e71be64989bb039e1aab6</srcmd5>
+    <version>2.0.2</version>
+    <time>1268924945</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>9b88a2ac681e71be64989bb039e1aab6</srcmd5>
+    <version>2.0.2</version>
+    <time>1278667367</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>9b88a2ac681e71be64989bb039e1aab6</srcmd5>
+    <version>2.0.2</version>
+    <time>1278678597</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>5d191ed43d96a759e39cd4d0fbb427f4</srcmd5>
+    <version>2.0.2</version>
+    <time>1294663267</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 57582 from user msmeissn
+</comment>
+    <requestid>57582</requestid>
+  </revision>
+  <revision rev="8" vrev="11">
+    <srcmd5>cd8944edb970e5d6dbce2540c7a9b69d</srcmd5>
+    <version>2.0.2</version>
+    <time>1294663277</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 57582
+</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a3d7987416e92f919f57fd473c9e53ca</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1294678143</time>
+    <user>darix</user>
+    <comment>Accepted submit request 57732 from user mtomaschewski
+</comment>
+    <requestid>57732</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d267602d0d239dae7bfc921e4efe8e6a</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1294678155</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 57732
+</comment>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>2e636fa2f015662f44838331229d0222</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1295288961</time>
+    <user>darix</user>
+    <comment>Accepted submit request 58446 from user mtomaschewski
+</comment>
+    <requestid>58446</requestid>
+  </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>d8f1297fd087e87a3bd208a3a41c3051</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1295288976</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 58446
+</comment>
+  </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>d8f1297fd087e87a3bd208a3a41c3051</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>c5d6d2b669fb9b9d02ee086c6658eb14</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1316459645</time>
+    <user>lrupp</user>
+    <comment>- Select libnl-1_1-devel (forwarded request 82451 from jengelh)</comment>
+    <requestid>83597</requestid>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>c5d6d2b669fb9b9d02ee086c6658eb14</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1319182179</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="16" vrev="11">
+    <srcmd5>19afd0861ab4856177271b0aa35fd948</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1320672110</time>
+    <user>coolo</user>
+    <comment>Updated to git master commit 74528e1f fixing a memory leak</comment>
+    <requestid>90041</requestid>
+  </revision>
+  <revision rev="17" vrev="12">
+    <srcmd5>fc34028591109298fa5e6fa750bdf2fa</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1323341474</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 95019 from coolo)</comment>
+    <requestid>95564</requestid>
+  </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>fc34028591109298fa5e6fa750bdf2fa</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1340183701</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="19" vrev="16">
+    <srcmd5>fc34028591109298fa5e6fa750bdf2fa</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1359109447</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="17">
+    <srcmd5>a501ff1a47cdbbd052bb958d3c194efd</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1366632716</time>
+    <user>coolo</user>
+    <comment>fixup - rebased and corrected SR#158693, so we can finally get it into Factory and build it again (forwarded request 172387 from dimstar)</comment>
+    <requestid>172561</requestid>
+  </revision>
+  <revision rev="21" vrev="19">
+    <srcmd5>a501ff1a47cdbbd052bb958d3c194efd</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1379663291</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="22" vrev="20">
+    <srcmd5>699822978da46d61b3dc2507288087aa</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1409118413</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246527</requestid>
+  </revision>
+  <revision rev="23" vrev="22">
+    <srcmd5>699822978da46d61b3dc2507288087aa</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1409301900</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="24" vrev="23">
+    <srcmd5>b6b8b30ff9ea92c2c345a2ba515ab45e</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1455701088</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the builtin libnetlink, as the upstream is no longer compatible
+  to the one mipv6d was developed against.</comment>
+    <requestid>358928</requestid>
+  </revision>
+  <revision rev="25" vrev="24">
+    <srcmd5>94e3575c91a6056d9bdbdd28fb8875fe</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1489866657</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>479781</requestid>
+  </revision>
+  <revision rev="26" vrev="25">
+    <srcmd5>e7e3daabb9eb4bb823ab38c1b5ea547a</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1513110208</time>
+    <user>dimstar_suse</user>
+    <comment>- Build against libopenssl-1_0_0-devel
+- Fixed incorrect memset lengths and added explicit braces around
+  conditional debug macro calls that may expand to empty if-body.
+  New patch file: mipv6-2.0.2-umip-0.4.diff</comment>
+    <requestid>556379</requestid>
+  </revision>
+  <revision rev="27" vrev="26">
+    <srcmd5>4338cc2cb87e15ba00157df2985aaca8</srcmd5>
+    <version>2.0.2.umip.0.4</version>
+    <time>1513245829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>556835</requestid>
+  </revision>
+</revisionlist>

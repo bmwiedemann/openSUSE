@@ -1,0 +1,14 @@
+Index: gdbm-1.19/src/version.c
+===================================================================
+--- gdbm-1.19.orig/src/version.c	2020-12-28 14:02:20.065391921 +0100
++++ gdbm-1.19/src/version.c	2020-12-28 14:03:54.389977011 +0100
+@@ -25,9 +25,6 @@
+    making the distdir. */
+ const char * gdbm_version = "GDBM version " PACKAGE_VERSION ". "
+ "23/12/2020"
+-#if defined(__STDC__) && defined(__DATE__) && defined(__TIME__)
+-		" (built " __DATE__ " " __TIME__ ")"
+-#endif
+ ;
+ int const gdbm_version_number[3] = {
+   GDBM_VERSION_MAJOR,

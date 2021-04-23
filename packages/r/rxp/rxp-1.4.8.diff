@@ -1,0 +1,13 @@
+Index: rxp-1.4.8/http.c
+===================================================================
+--- rxp-1.4.8.orig/http.c
++++ rxp-1.4.8/http.c
+@@ -197,7 +197,7 @@ FILE16 *http_open(const char *url,
+     memset(&addr, 0, sizeof(addr));
+     addr.sin_family = AF_INET;
+     /* If we were really enthusiastic, we would try all the host's addresses */
+-    memcpy(&addr.sin_addr, hostent->h_addr, hostent->h_length);
++    memcpy(&addr.sin_addr, hostent->h_addr_list[0], hostent->h_length);
+     addr.sin_port = htons((unsigned short)server_port);
+ 
+     /* Connect */

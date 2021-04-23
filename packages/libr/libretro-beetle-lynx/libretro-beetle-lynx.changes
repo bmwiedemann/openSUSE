@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Sat May 30 16:06:40 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200518:
+  * Silence most warnings
+  * Update core option label - Shorten option description and make key label more descriptive - This should reflect the proposed changes on the docs page
+  * Fix bug where loading homebrew dumps causes core to crash
+  * Add *.o as supported extentions (homebrews)
+  * Cleanup
+  * Implement environment callback RETRO_ENVIRONMENT_GET_INPUT_BITMASKS
+  * Bump version to 1.24.0
+  * Add core option to auto-rotate known games
+  * Update libretro-common
+  * Add database for common available titles
+  * Sync to 1.24.0
+  * Update file.c and header - Restores file_read and file_seek functions
+  * roadblasters flicker fix
+
+-------------------------------------------------------------------
+Thu Oct 10 21:18:38 UTC 2019 - i@guoyunhe.me
+
+- Update to version 0~git20190911:
+  * (tvOS) support building
+  * libretro: allow mingw cross compile
+  * iOS: support for building using buildbot recipe
+  * Update - MSVC2003 builds
+  * Add libnx target
+  * libretro: jni: Switch stl to c++ in preparation for ndk r20
+  * msvc targets
+  * Update - sync recent changes to to mdfn 1.22.2
+  * Stereo_Buffer.cpp: silence runtime error found when running -fsanitizer
+  * Update file.c
+- Rename to libretro-beetle-lynx to follow upstream naming
+- Remove info file because it is provided in core info package
+
+-------------------------------------------------------------------
+Wed Sep 13 11:54:10 UTC 2017 - aplazas@suse.com
+
+- Initial package, version 0~20170729.3b3fbd3 (no proper versioning
+  done by upstream).

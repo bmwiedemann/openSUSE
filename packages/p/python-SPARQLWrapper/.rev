@@ -1,0 +1,92 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>41880b2ffad5edf0c5ef70279e02e710</srcmd5>
+    <version>1.5.2</version>
+    <time>1387208544</time>
+    <user>coolo</user>
+    <comment>Needed for newer versions of python-rdflib, which is already in openSUSE:Factory</comment>
+    <requestid>209982</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>41880b2ffad5edf0c5ef70279e02e710</srcmd5>
+    <version>1.5.2</version>
+    <time>1409302803</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9eede13162da0bfad8ef3ec8ce3c420e</srcmd5>
+    <version>1.6.4</version>
+    <time>1456127748</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>359552</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4b391132c70bf66a430853aecb759b51</srcmd5>
+    <version>1.7.6</version>
+    <time>1474115853</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>427606</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a117cf67ae286c9676a328f2f0043467</srcmd5>
+    <version>1.8.0</version>
+    <time>1494937800</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.0
+- Implement single-spec version.
+- Fix source URL.</comment>
+    <requestid>493613</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>30b204da02fe400068e308ca976057d8</srcmd5>
+    <version>1.8.0</version>
+    <time>1515260827</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure to not bail out when building with py3 only
+- Do not recommend already required package</comment>
+    <requestid>561454</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>164c0a6c45c55c39c300c73b8b661a9f</srcmd5>
+    <version>1.8.2</version>
+    <time>1531813209</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>622793</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>be6c4f20b14162fe75cfa73034e2adeb</srcmd5>
+    <version>1.8.2</version>
+    <time>1574414470</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>746332</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>47e0323448e5003f983c0a2b9c842297</srcmd5>
+    <version>1.8.5</version>
+    <time>1585264926</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests as they need quite lot of magic to run just on py3
+
+- Update to 1.8.5:
+  - Improve/tests for development (#131)
+  - Changed. Be more strict on Accept Turtle header (#137)
+  - Migrated documentation from epydoc to sphinx and readthedocs
+  - Include ChangeLog.txt in the distribution
+  - Removed import of SPARQLWrapper in setup.py (fixed #113 and closed #115)
+  - Added support for querying RDF/XML in a CONSTRUCT query type
+  - Updated the procedure for determining the query type (#120)
+  - Do not send format parameter for the results ([format, output, results]) when the query is a SPARQL Update query
+  - Added test for new agrovoc SPARQL endpoint (using Fuseki2)
+  - Added test for 4store SPARQL endpoint (used by agroportal)
+  - Added/Updated tests
+  - Added examples
+  - Updated doc
+  - Fixed code generated for python3 using 2to3, adding a custom fixer (#109)</comment>
+    <requestid>784396</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,49 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>15bca4aad524138075aa31e3fb173d33</srcmd5>
+    <version>0.03</version>
+    <time>1324831096</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>97585</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>15bca4aad524138075aa31e3fb173d33</srcmd5>
+    <version>0.03</version>
+    <time>1340183796</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>15bca4aad524138075aa31e3fb173d33</srcmd5>
+    <version>0.03</version>
+    <time>1359109603</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>76b08b66b4ee4b803f70d68aa7d81ae4</srcmd5>
+    <version>0.04</version>
+    <time>1370447272</time>
+    <user>coolo</user>
+    <comment>- updated to 0.04
+       - Added support for MSWin32. RT #58862
+       - Added browser list for freebsd. RT #61758
+       - Added sensible-browser option for linux. RT #56544 (forwarded request 177241 from coolo)</comment>
+    <requestid>177348</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>76b08b66b4ee4b803f70d68aa7d81ae4</srcmd5>
+    <version>0.04</version>
+    <time>1379663560</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>76b08b66b4ee4b803f70d68aa7d81ae4</srcmd5>
+    <version>0.04</version>
+    <time>1409302172</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

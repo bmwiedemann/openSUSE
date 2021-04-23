@@ -1,0 +1,38 @@
+From cebd8b4651bfa660cff1dffec6eaf1e7dc1e02b3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Mon, 19 Sep 2011 10:48:13 +0200
+Subject: [PATCH] Support OBS in build/Makefile.pf.Linux
+
+---
+ build/Makefile.pf.Linux |   11 +++++++++--
+ 1 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/build/Makefile.pf.Linux b/build/Makefile.pf.Linux
+index 066a2d9..5199171 100644
+--- a/build/Makefile.pf.Linux
++++ b/build/Makefile.pf.Linux
+@@ -73,12 +73,19 @@ ifeq ($(CHECK_SUSE),1)
+ 	PF_DISTRO=SUSE
+ 	PF_MAJOR=$(shell head -n 1 /etc/SuSE-release | sed 's/.* \([0-9][0-9]*\)[ \.].*/\1/')
+ 	PF_MINOR=$(shell (head -n 1 /etc/SuSE-release | sed 's/.* [0-9][0-9]*[\.]\([0-9][0-9]*\).*/\1/') | grep -v '[^0-9]' || echo '0')
+-endif
+-
++else
+ ifeq ($(CHECK_RHEL),1)
+ 	PF_DISTRO=REDHAT
+ 	PF_MAJOR=$(shell head -n 1 /etc/redhat-release | sed 's/.* \([0-9][0-9]*\)[ \.].*/\1/')
+ 	PF_MINOR=$(shell (head -n 1 /etc/redhat-release | sed 's/.* [0-9][0-9]*[\.]\([0-9][0-9]*\).*/\1/') | grep -v '[^0-9]' || echo '0')
++else
++# Open Build Service
++ifneq (,$(SUSE_VERSION))
++	PF_DISTRO=SUSE
++	PF_MAJOR=$(shell echo $[$SUSE_VERSION / 100])
++	PF_MINOR=$(shell echo $[$SUSE_VERSION - $[$PF_MAJOR * 100]])
++endif
++endif
+ endif
+ 
+ # Catchall
+-- 
+1.7.6.1
+

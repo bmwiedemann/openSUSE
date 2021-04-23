@@ -1,0 +1,375 @@
+-------------------------------------------------------------------
+Sat Jan 30 19:34:44 UTC 2021 - lduncan@suse.com
+
+- Update to version 1.5.3:
+  * tcmur: error if both src/dst_dev are unset after CSCD parsing
+  * tcmur: don't assume two XCOPY CSCDs
+  * tcmur: fail XCOPY requests with inline data
+  * tcmur: fail cross-device XCOPY requests
+  * scsi: minor simplification of inquiry if/else logic
+  * Add supported vpd pages to zbc vpd pages
+  * lock: do not try to acquire the lock for read fops
+  * rbd: remove all the stale blacklist entries when opening devices
+  * tcmu-runner: explicitly release the g_runner_handlers resources
+  * glfs: add init/destroy support to fix memory leak
+  * tcmur: add the init/destroy support in struct tcmur_handler
+  * CMakeList.txt: fix the style and switch tabes to white spaces
+  * worker: do not set thread name in the callback fn
+  * target: convert recovery thread to work helpers
+  * rbd: add report event support
+  * runner: add handler error reporting cb
+  * runner: convert alua code to work helpers
+  * runner: add thread helpers
+  * rbd: fix formatting
+  * tcmur_device: remove unused recovery_thread member
+  * rbd: fix logging when client is blacklisted
+  * glfs: allow to load the device when the sizes disagree
+  * Fix possible cdb printing overflow
+  * libtcmu_log: Set tcmu_logbuf before log thread is created
+  * extra/install_dep.sh: Add support for SUSE
+  * glfs: disable the fencing when it is not support
+  * Simplify tcmu_set_thread_name
+  * extra script: Fix install_dep.sh
+  * logger: add pthread name
+  * tcmu-runner: set a name for each pthread
+  * libtcmu: remove stale fns declaration
+  * glfs: check EOF for read
+  * Add missing libpthread
+  * logger: correct the log message for log dir path
+  * logger: fix posible crash when loging to file
+  * Add tcmu_dev_get_memory_info() and split+rename device_add().
+  * Add support for Debian
+  * glfs: add lock support
+  * alua: make the lock done as INFO message
+
+-------------------------------------------------------------------
+Fri Jan  3 17:12:42 UTC 2020 - Lee Duncan <lduncan@suse.com>
+
+- Fixed i586 compilation complaint in tcmur_cmd_handler.c, adding:
+  * tcmu-runner-fix-i586-size_t-error.patch
+  (which came from David Disseldorp). Also, added requirement for
+  libnl3-devel version that supports signed network functions,
+  such as nla_put_s32().
+
+-------------------------------------------------------------------
+Thu Jan 02 23:19:36 UTC 2020 - lduncan@suse.com
+
+- Update to version 1.5.2:
+  * Bump version to 1.5.2
+  * Fix man unmap len reporting
+  * Bump version to 1.5.1.
+  * spec: fix build error
+  * Bump version to 1.5.0.
+  * Disable explicit alua support.
+  * Don't install headers.
+  * Add missing whatis entry for manpage
+  * Add link to tcmu-runner manpage from tcmu-runner.service
+  * Fix spelling s/Igoring/Ignoring/
+  * Fix spelling s/reseting/resetting/
+  * darray.h: avoid UB when decrementing zero pointer
+  * Log timed out commands
+  * lib/runner: Add helpers to convert lbas and bytes
+  * Check for optional handler callouts
+  * Drop unused tcmulib_cmd code
+  * Convert runner handlers and core code to tcmur_cmd
+  * Add tcmur-runner cmd struct
+  * Prep for separating runner fields from tcmulib_cmd
+  * tcmu-runner: simplify format unit io limit check
+  * Cleanup runner callout definitions
+  * runner: unbind aio code from tcmulib_cmd
+  * Set write_verify cbks in write_verify_init
+  * Set handle_caw_read_cbk in caw_init_readcmd
+  * Add tcmu-runner cmd completion function
+  * runner: fix up callout return info
+  * rename tcmur tcmulib command completion function
+  * libtcmu: Allow handlers to allocate n bytes with each command
+  * tcmur: remove useless code
+  * alua: fix pthread attr destroy
+  * tcmur: fix free of xcopy parse
+  * fbo: fix mutex destroy
+  * reconfig_device: add request cfg type to logs
+  * api: tcmu_cdb_print_info convert err log to debug
+  * tcmu: reconfig_device convert err log to debug
+  * tcmu: link libtcmalloc with libtcmu and handlers
+  * runner: fix crash during compound command execution
+  * cmake: set '-fno-builtin-XYZ' options when tcmalloc is used
+  * configfs: fix index out of bounds
+  * cmake: add a minor .so version number to libtcmu
+  * spec: track backuped files
+  * spec: update the spec file to fix the build error
+  * spec: pass the tcmalloc option to cmake command
+  * spec: switch to use rpm conditional switches
+  * extra: add gperftools-devel to install_dep script
+  * Optionally link against tcmalloc for improved small IO performance
+  * libtcmu_time: void header file include muti-times
+  * glfs: update the glfs logdir
+  * README: update to add uninstall
+  * lockfile: switch to use /run/tcmu.lock
+  * logrotate: fix duplicate log entry error
+  * Validate input for tcmu_log_dir_check()
+  * Fix parameter for tcmu_setup_log()
+  * Follow coding style, move leading brace
+  * Add method to query whether OOOC is supported
+  * glfs: fix build error for GFAPI version check
+  * glfs: add gfapi version check
+  * Fix unmap to handle refcount being 0
+  * fix typo in code
+  * rpm: remove %defattr
+  * rpm: remove %clean section
+  * rpm: use valid short name licenses in License field
+  * configfs: clean up the code
+  * Fix pthread error ret
+  * rbd: fix the error ret in tcmu_rbd_unlock
+  * Drop sense arg from tcmu_explicit_transition
+  * libtcmu: setup_netlink maybe failure but can't sensed
+  * Drop is_sync arg from tcmu_acquire_dev_lock
+  * Allow some commands to run while taking lock
+  * Drop in_lock_thread from __tcmu_reopen_dev
+  * Fix pthread error handling
+  * Check if device is opened before calling handler
+  * main: load_our_module maybe failure but can't sensed
+  * tcmu: clean up the code
+  * spec: fix building error
+  * logrotate: do not overwrite the exist config file
+  * logrotate: fix the install cmake file
+  * README: update and add the make_runnerrpm.sh info
+  * Fix 80 col formatting in def_log_path setup
+  * format-security: fix snprintf usage
+  * config: clean up the code
+  * Drop cfg path variable
+  * Switch some inotify messages from info to debug.
+  * libtcmu: carve-out library packages separately
+  * logger: skip resetting options if they match with current
+  * load_config: retry opening conf-file if the initial attempt fail
+  * cmake_install: backup old tcmu.conf version as tcmu.conf.old
+  * doc: update readme
+  * daemon: log start/exit msgs with crit level
+  * dyn-logger-config: honor the precedence
+  * main: organize the cleanup sequence
+  * config: deprecate tcmu_parse_config
+  * logger-init: honor the defaults when config key:value pair is commented
+  * config: cleanup few allocations and naming
+  * inotify: watch the directory not just file
+  * logger: check for -1 return value on open
+  * Call block/reset nl directly
+  * Call block/reset dev directly
+  * Fix up configfs file not found error message
+  * Move tcmu_get_runner_handler
+  * Build zbc/fbo with scsi.c
+  * Remove daemon priv hack
+  * Sync lbtmcu cmd and misc naming
+  * Sync libtcmu dev get/set naming
+  * Rename dev/nl block/reset cfgfs functions
+  * Rename tcmu_get_wwn to tcmu_cfgfs_dev_get_wwn
+  * Use uin32_t for cfgfs action values
+  * Rename tcmu_cfgfs_dev_get_attr to tcmu_cfgfs_dev_get_attr_int
+  * Drop tcmu_get_dev_size
+  * Drop tcmu_set_dev_size
+  * Rename tcmu_set_control to match cfgfs lib functions
+  * Use uin32_t instead of unsigned long for cfgfs lib function
+  * cfgfs: Add tcmu_cfgfs prefix to cfgfs lib functions
+  * lib: Update tcmulib_command_complete comments
+  * Partial revert of "libtcmu: do not install headers and drop libtcmu stable API"
+  * Revert "build: drop versionless libtcmu.so symlink"
+  * libtcmu: move tcmu_get_runner_handler into scsi.c
+  * libtcmu: move SCSI helpers out of libtcmu
+  * libtcmu: declare tcmu_cancel_thread in libtcmu_common.h
+  * libtcmu_log: get subtype from tcmulib_handler
+  * libtcmu_priv.h: drop unnecessary header files
+  * libtcmu: explicitly include tcmu-runner.h where necessary
+  * cmake: drop rsyslog build time check
+  * spec: remove changelog
+  * cmake: add rsyslog to dependencies list
+  * spec: add rsyslog to requires list
+  * systemd: start rsyslog.service before tcmu-runner.service
+  * config: do not update the logdir when it's commented in conf
+  * logger: add critical log level support
+  * libtcmu: remove useless parameter in remove_device
+  * spec-file: further changes to take options to ignore dependencies
+  * logrotate: add logrotate support for tcmu-runner-glfs.log
+  * tcmur: fix the unmap logging format
+  * glfs: add writesame support
+  * api: add zeroed iov check support
+  * tcmu: Fix CMake to install file_optical
+  * tcmu:fix extra backslash
+  * tcmu-runner.spec: fix the rpm build errors
+  * tcmu: Simplify command completion
+  * file_zbc: optionally build zbc handler
+  * file_zbc: fixed compile error under ppc64le
+  * Enable explicit alua support.
+
+  This replaced tcmu-runner-1.4.0.tar.xz with
+  tcmu-runner-1.5.2.tar.xz, and removed two patches that are
+  already in 1.5.2 so no longer needed:
+  * file_zbc-fixed-compile-error-under-ppc64le.patch
+  * file_zbc-optionally-build-zbc-handler.patch
+
+-------------------------------------------------------------------
+Tue Jun 18 17:15:22 UTC 2019 - David Disseldorp <ddiss@suse.com>
+
+- Move tcmu.conf into main package; (bsc#1138443)
+
+-------------------------------------------------------------------
+Wed May 22 13:32:52 UTC 2019 - David Disseldorp <ddiss@suse.com>
+
+- Add explicit libtcmu package dependency to avoid incorrect upstream
+  .so versioning; (bsc#1135815)
+
+-------------------------------------------------------------------
+Tue May 21 13:48:20 UTC 2019 - David Disseldorp <ddiss@suse.com>
+
+- Rename openSUSE zbc patches:
+  + file_zbc-fixed-compile-error-under-ppc64le ->
+    file_zbc-fixed-compile-error-under-ppc64le.patch
+  + file_zbc-optionally-build-zbc-handler ->
+    file_zbc-optionally-build-zbc-handler.patch
+
+-------------------------------------------------------------------
+Fri Oct 19 18:19:42 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 1.4.0:
+  * tcmu-runner: bump version to 1.4.0
+  * Disable explicit alua support.
+  * logger: notification on changing the options for dynamic reloading
+  * logger: update .gitignore for logrotate.conf_install.cmake
+  * logger: fix the return value
+  * Sync sig handler naming.
+  * Add logrotate support
+  * Move starting log message.
+  * Allow log file restart from SIGHUP
+  * Simplify log outputs
+  Replacing tcmu-runner-1.3.0.tar.gz with tcmu-runner-1.4.0.tar.xz,
+  updating the SPEC file, and removing patches:
+  * api-avoid-compiler-Werror-return-type-failures.patch
+  * build-drop-versionless-libtcmu.so-symlink.patch
+  * tcmu-runner-remove-uio-include-for-iovec.patch
+  * support custom cephx credentials; (bsc#1135369)
+
+-------------------------------------------------------------------
+Fri Feb  9 17:28:47 UTC 2018 - ddiss@suse.com
+
+- Update to version 1.3.0; (fate#322524)
+  + Improved Ceph RBD integration
+  + Support XCOPY copy-offload commands
+  + Support COMPARE_AND_WRITE, with Ceph OSD request mapping
+  + Asynchronous I/O improvements and bug fixes
+- Remove a number of downstream patches now carried upstream:
+  + glfs-discard-glfs_check_config
+  + fixed-local-dos-when-unregisterhandler-was-called-for-a-not-existing-handler
+  + only-allow-dynamic-unregisterhandler-for-external-handlers-thereby-fixing-dos
+  + fixed-a-number-of-memory-leaks-with-deregistering-of-dbus-handlers
+  + removed-all-check_config-callback-implementations-to-avoid-security-issues
+  + tcmu-runner-add-local-target_core_user-h
+- Remove development packages (bsc#1080619)
+  + API discontinued upstream
+- Add fix for -Werror-return-type failures:
+  + api-avoid-compiler-Werror-return-type-failures.patch
+- Add fix for library versioning:
+  + build-drop-versionless-libtcmu.so-symlink.patch
+
+-------------------------------------------------------------------
+Wed Sep 20 22:59:29 UTC 2017 - lduncan@suse.com
+
+- Add two patches: make target_core_user.h local, to insulate
+  tcmu-runner from kernel version/data structure/naming
+  changes, and add include of <sys/uio.h> to that file,
+  to fix "stuct iovec" not defined issue  (bsc#1058303),
+  adding patches:
+  * tcmu-runner-add-local-target_core_user-h
+  * tcmu-runner-remove-uio-include-for-iovec.patch
+  The latter patch is added only for SUSE version >= 13.3,
+  since it is only needed there.
+
+-------------------------------------------------------------------
+Wed Aug  9 21:48:42 UTC 2017 - lduncan@suse.com
+
+- Remove install prefix from beginning of install libdir when
+  setting tcmu-runner plugin path (bsc#1052795), adding
+  SUSE-specific patch:
+  * tcmu-runner-remove-handler-path-install-prefix.patch
+
+-------------------------------------------------------------------
+Thu Jul 20 01:53:01 UTC 2017 - lduncan@suse.com
+
+- One more update from Security Audit, adding one more patch:
+  - removed-all-check_config-callback-implementations-to-avoid-security-issues
+    (bsc#1049491)
+
+-------------------------------------------------------------------
+Thu Jul 20 01:18:42 UTC 2017 - lduncan@suse.com
+
+- Updates based on Security Audit, adding 4 patches:
+  * glfs-discard-glfs_check_config (bsc#1049485)
+  * fixed-local-dos-when-unregisterhandler-was-called-for-a-not-existing-handler
+    (bsc#1049488)
+  * only-allow-dynamic-unregisterhandler-for-external-handlers-thereby-fixing-dos
+    (bsc#1049489)
+  * fixed-a-number-of-memory-leaks-with-deregistering-of-dbus-handlers
+    (bsc#1049490)
+
+-------------------------------------------------------------------
+Mon May 15 16:14:50 UTC 2017 - ddiss@suse.com
+
+- Make Ceph RBD handler aarch64 and x86-64 only for now
+  + librbd isn't yet available for all platforms
+
+-------------------------------------------------------------------
+Thu May 11 20:46:08 UTC 2017 - ddiss@suse.com
+
+- Build the Ceph RBD handler and package separately; (fate#322524).
+- Split the GlusterFS handler into a separate package
+  + avoid adding an unnecessary dependencies to tcmu-runner core
+
+-------------------------------------------------------------------
+Thu May 11 17:25:11 UTC 2017 - ddiss@suse.com
+
+- Explicitly disable the GlusterFS handler for SLE builds.
+
+-------------------------------------------------------------------
+Thu May 11 15:12:24 UTC 2017 - ddiss@suse.com
+
+- Update to upstream version 1.2.0; (bsc#1038712).
+  + Add remove devices when tcmulib teardown
+  + fix builds done outside of source directory
+  + free tcmu_device after dev->fd is closed
+  + fix Read_Capacity_16
+  + detect INQURY response truncation
+  + fix incorrect memcpy length
+  + fix inquiry buffer length calculations
+  + add tcmu.conf for log level configuration
+- Remove upstreamed fixes:
+  + tcmu-runner-include-falloc-in-qcow.patch
+  + tcmu-runner-let-cmake-install-man-page.patch
+  + tcmu-runner-Use-CMake-FULL-library-directory-for-SOs.patch
+  + include-tcmu-runner-h-in-install.patch
+
+-------------------------------------------------------------------
+Sun Aug 21 17:08:20 UTC 2016 - jengelh@inai.de
+
+- rename libtcmu1-devel to libtcmu-devel
+- drop unnecessary %oname indirect macro
+
+-------------------------------------------------------------------
+Tue Aug 16 03:37:30 UTC 2016 - lduncan@suse.com
+
+- Updated SPEC file to break library into separate packages
+- Install tcmu-runner.h, adding:
+  * include-tcmu-runner-h-in-install.patch
+
+-------------------------------------------------------------------
+Fri Jul 29 15:08:48 UTC 2016 - jengelh@inai.de
+
+- Drop silly buildrequires on libgfapi0/libglib-2_0-0.
+  Abolish old macros.
+
+-------------------------------------------------------------------
+Sat May 28 16:55:45 UTC 2016 - lduncan@suse.com
+
+- Updated SPEC file to install LICENSE file (bsc#982130)
+
+-------------------------------------------------------------------
+Thu May  5 01:46:10 UTC 2016 - lduncan@suse.com
+
+- Created from upstream version 1.0.4
+
+-------------------------------------------------------------------

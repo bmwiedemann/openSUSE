@@ -1,0 +1,42 @@
+Index: apfel-3.0.4/configure.ac
+===================================================================
+--- apfel-3.0.4.orig/configure.ac
++++ apfel-3.0.4/configure.ac
+@@ -87,7 +87,6 @@ AC_ARG_ENABLE(pywrap, [AC_HELP_STRING(--
+   [don't build Python module (default=build)])],
+   [], [enable_pywrap=yes])   
+ 
+-enable_pywrap=yes
+ AZ_PYTHON_DEFAULT
+ ## Basic Python checks
+ if test x$enable_pywrap == xyes; then
+Index: apfel-3.0.4/Makefile.am
+===================================================================
+--- apfel-3.0.4.orig/Makefile.am
++++ apfel-3.0.4/Makefile.am
+@@ -1,6 +1,9 @@
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-SUBDIRS = include ccwrap src lib examples pywrap doc bin
++SUBDIRS = include ccwrap src lib examples doc bin
++if ENABLE_PYWRAP
++  SUBDIRS+=pywrap
++endif
+ dist_doc_DATA = README
+ dist_pkgdata_DATA = src/HELL/data/*
+ 
+Index: apfel-3.0.4/bin/Makefile.am
+===================================================================
+--- apfel-3.0.4.orig/bin/Makefile.am
++++ apfel-3.0.4/bin/Makefile.am
+@@ -1,2 +1,7 @@
+-EXTRA_DIST = apfel-config.in apfel.in
+-bin_SCRIPTS = apfel-config apfel ../examples/.libs/ListFunctions ../examples/.libs/CheckAPFEL
+\ No newline at end of file
++EXTRA_DIST = apfel-config.in
++bin_SCRIPTS = apfel-config ../examples/.libs/ListFunctions ../examples/.libs/CheckAPFEL
++
++if ENABLE_PYWRAP
++EXTRA_DIST+=apfel.in
++bin_SCRIPTS+=apfel
++endif

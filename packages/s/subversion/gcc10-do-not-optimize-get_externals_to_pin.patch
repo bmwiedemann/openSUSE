@@ -1,0 +1,18 @@
+diff --git a/subversion/bindings/javahl/native/SVNClient.cpp b/subversion/bindings/javahl/native/SVNClient.cpp
+index 2c83f56..f1c8b02 100644
+--- a/subversion/bindings/javahl/native/SVNClient.cpp
++++ b/subversion/bindings/javahl/native/SVNClient.cpp
+@@ -77,10 +77,13 @@
+ #include "private/svn_subr_private.h"
+ #include "svn_private_config.h"
+ 
++#pragma GCC push_options
++#pragma GCC optimize("-O0")
+ #include "ExternalItem.hpp"
+ #include "jniwrapper/jni_list.hpp"
+ #include "jniwrapper/jni_stack.hpp"
+ #include "jniwrapper/jni_string_map.hpp"
++#pragma GCC pop_options
+ 
+ 
+ SVNClient::SVNClient(jobject jthis_in)

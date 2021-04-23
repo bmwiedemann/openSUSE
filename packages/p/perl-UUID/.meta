@@ -1,0 +1,8 @@
+<package name="perl-UUID" project="openSUSE:Factory">
+  <title>DCE compatible Universally Unique Identifier library for Perl</title>
+  <description>The UUID library is used to generate unique identifiers for objects that may be accessible beyond the local system. For instance, they could be used to generate unique HTTP cookies across multiple web servers without communication between the servers, and without fear of a name clash.
+ 
+The generated UUIDs can be reasonably expected to be unique within a system, and unique across all systems, and are compatible with those created by the Open Software Foundation (OSF) Distributed Computing Environment (DCE) utility uuidgen.</description>
+  <devel project="devel:languages:perl" package="perl-UUID"/>
+  <url>https://metacpan.org/release/UUID</url>
+</package>

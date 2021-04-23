@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Fri Jun  5 10:45:36 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove "--" from the package list to separate pkgs from
+  arguments: kiwi does this implicit now.
+
+-------------------------------------------------------------------
+Fri Apr 17 13:45:25 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use bind-utils instead busybox variant
+- Use mandoc instead of busybox variant
+
+-------------------------------------------------------------------
+Fri Mar 20 14:43:53 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Create and handle rndc.key in entrypoint script
+- Drop config.sh, fixed in busybox container
+
+-------------------------------------------------------------------
+Thu Dec 19 09:24:34 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Change the owner of files inside the tarball to root:root
+
+-------------------------------------------------------------------
+Wed Oct 23 20:04:42 CEST 2019 - kukuk@suse.de
+
+- Fix expose ports
+- Fix displaying of manual pages
+
+-------------------------------------------------------------------
+Wed Oct  22 16:01:24 CEST 2019 - kukuk@suse.de
+
+- Initial version
+

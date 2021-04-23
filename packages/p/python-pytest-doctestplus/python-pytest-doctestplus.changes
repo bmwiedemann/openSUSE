@@ -1,0 +1,79 @@
+-------------------------------------------------------------------
+Tue Aug 25 13:53:35 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.8.0
+  * Compatibility with ``pytest`` 6.0.0. [#120]
+
+-------------------------------------------------------------------
+Tue Jun  9 08:05:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.7.0:
+  * Added a new ini option, doctest_subpackage_requires, that can
+    be used to skip specific subpackages based on required packages. [#112]
+
+-------------------------------------------------------------------
+Mon May 18 09:18:14 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.6.1:
+  * Disabling the usage of the doctest_ignore_import_errors option
+  * Drop support for python versions earlier than 3.6. [#103]
+  * Drop support for pytest versions earlier than 4.0. [#103]
+  * Fix compatibility with pytest 5.4. [#103]
+
+-------------------------------------------------------------------
+Mon Nov 18 08:01:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.0:
+  * No longer require Numpy. [#69]
+  * Fixed a bug that caused __doctest_requires__ to not work correctly with submodules. [#73]
+  * Fixed a limitation that meant that ELLIPSIS and FLOAT_CMP could not be used at the same time. [#75]
+  * Fixed a bug that caused .. doctest-requires:: to not work correctly. [#78]
+  * Fixed a FutureWarning related to split() with regular expressions. [#78]
+  * Make it possible to specify versions in .. doctest-requires::. [#78]
+  * Allow to use doctest-glob option instead of doctest-rst and text-file-format [#80]
+  * Make comment character configurable via ini variable text_file_comment_chars [#80]
+  * Respect ignore and ignore-glob options from pytest. [#82]
+  * Add --doctest-only option. [#83]
+  * Added an IGNORE_WARNINGS option for # doctest: [#84]
+- Remove merged patch pr_37.patch
+
+-------------------------------------------------------------------
+Fri Sep 20 09:47:57 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.0:
+  * Avoid SyntaxWarning regarding invalid escape sequence in Python 3.9. [#62]
+  * Compatibility with pytest 5.1 to avoid AttributeError caused by FixtureRequest. [#63]
+- Drop merged patch:
+  * merged_pr_63.patch
+- Rebase patch:
+  * pr_37.patch
+
+-------------------------------------------------------------------
+Fri Sep  6 16:53:49 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add merged_pr_63.patch to fix incompatibility with pytest 5.1
+- Add pr_37.patch to remove numpy dependency
+
+-------------------------------------------------------------------
+Fri Mar  8 11:10:23 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.3.0:
+  * Honor the collect_ignore option used in conftest.py. [#36]
+  * Make use of doctest_optionflags settings. [#39]
+  * Make it possible to set FLOAT_CMP globally in setup.cfg. [#40]
+  * Drop support for pytest versions earlier than 3.0. [#46]
+  * Extend doctest-skip, doctest-skip-all, and doctest-requires directives to work in TeX files. [#43]
+
+-------------------------------------------------------------------
+Thu Feb 14 12:22:53 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.2.0:
+  * Add doctest-plus-atol and doctest-plus-rtol options for setting the numerical tolerance. [#21]
+  * Update behavior of --doctest-modules option when plugin is installed. [#26]
+- Switch to github tarball to obtain tests
+- Enable tests using _multibuild
+
+-------------------------------------------------------------------
+Tue Aug 14 20:03:23 UTC 2018 - toddrme2178@gmail.com
+
+- Initial version

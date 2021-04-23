@@ -1,0 +1,55 @@
+#!/bin/sh
+#
+# Copyright (C) 2011 Canonical Ltd
+# Author: Michael Terry <michael.terry@canonical.com>
+# 
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, version 3 of the License.
+#
+# See http://www.gnu.org/copyleft/gpl.html for the full text of the license.
+
+PATH=/usr/local/bin:/bin:/usr/bin
+export PATH
+
+if [ -z "$XDG_SEAT_PATH" ]; then
+  # something went wrong
+  exit 1
+fi
+
+find_command () {
+    cmd="$1"
+    oIFS="${IFS}"; IFS=:
+    set -- ${PATH}
+    IFS="${oIFS}"
+
+    for part; do
+        [ -x "${part}/${cmd}" ] && return 0
+    done
+    return 1
+}
+
+lock_screen () {
+    for lock_cmd in \
+        "xscreensaver-command -lock" \
+        "gnome-screensaver-command --lock" \
+        "dbus-send --session --dest=org.freedesktop.ScreenSaver --type=method_call /ScreenSaver org.freedesktop.ScreenSaver.Lock"
+    do
+        ${lock_cmd} >/dev/null 2>&1 && return
+    done
+
+    for lock_cmd in \
+        "slock" \
+        "xlock -mode blank"
+    do
+        set -- ${lock_cmd}
+        if find_command "$1"; then
+            ${lock_cmd} >/dev/null 2>&1 &
+            return
+        fi
+    done
+}
+
+lock_screen
+
+dbus-send --system --type=method_call --print-reply --dest=org.freedesktop.DisplayManager $XDG_SEAT_PATH org.freedesktop.DisplayManager.Seat.SwitchToGreeter

@@ -1,0 +1,10 @@
+<package name="bs" project="openSUSE:Factory">
+  <title>Battleships Game for the Terminal</title>
+  <description>The classic game of Battleships against the computer. Uses character-cell
+graphics with a visual point-and-shoot interface. If you're using an xterm
+under Linux the mouse will work.
+
+</description>
+  <devel project="games" package="bs"/>
+  <url>http://www.catb.org/~esr/bs/</url>
+</package>

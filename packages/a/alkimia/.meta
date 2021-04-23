@@ -1,0 +1,8 @@
+<package name="alkimia" project="openSUSE:Factory">
+  <title>Library with common classes and functionality used by finance applications</title>
+  <description>
+libalkimia is a library with common classes and functionality used by finance 
+applications for the KDE SC.
+  </description>
+  <devel project="KDE:Extra" package="alkimia"/>
+</package>

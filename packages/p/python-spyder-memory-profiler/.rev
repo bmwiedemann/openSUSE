@@ -1,0 +1,85 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bc74763bb470bf546d700cef3eddf214</srcmd5>
+    <version>0.1.2</version>
+    <time>1526371541</time>
+    <user>dimstar_suse</user>
+    <comment>Profiler plugin for spyder and spyder3</comment>
+    <requestid>603492</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f747c574292b6a8d119c0f9c6eea0cab</srcmd5>
+    <version>0.1.2</version>
+    <time>1534543479</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>629548</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c0956974221894e1504deb9280b90402</srcmd5>
+    <version>0.1.2</version>
+    <time>1550151340</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>674699</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>69d369acfe5dab4cfcef927218d1c8a7</srcmd5>
+    <version>0.1.2</version>
+    <time>1556202023</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>697271</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>0fceb355e7d4b94ac55c1adb9c908089</srcmd5>
+    <version>0.1.2</version>
+    <time>1575923820</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755270</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b51abe07af3556024122a8b6c259b639</srcmd5>
+    <version>0.2.0</version>
+    <time>1584744864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>786139</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9447474346a0fdc24e759086a45420d7</srcmd5>
+    <version>0.2.0</version>
+    <time>1585842174</time>
+    <user>dimstar_suse</user>
+    <comment>- spyder3 rename to spyder [1]
+- rename built package to spyder-memory-profiler 
+
+[1] https://build.opensuse.org/request/show/790068</comment>
+    <requestid>790070</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b070b0374f2621af67850c71e97ed5c7</srcmd5>
+    <version>0.2.1</version>
+    <time>1587581436</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795548</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>47401b4195df4677320fa5d8909b5f0d</srcmd5>
+    <version>0.2.1</version>
+    <time>1611865737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867456</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>c08ad4cdae43e93abf194f793336af2d</srcmd5>
+    <version>0.2.1</version>
+    <time>1612378529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868688</requestid>
+  </revision>
+</revisionlist>

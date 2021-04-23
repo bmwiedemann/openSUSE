@@ -1,0 +1,492 @@
+-------------------------------------------------------------------
+Sat Feb 13 09:04:17 UTC 2021 - Anthony Rabbito <hello@anthonyrabbito.com>
+
+- Added if condition in spec if on a SUSE version use mkisofs, instead of genisoimage 
+
+-------------------------------------------------------------------
+Wed Jan  6 14:26:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- spec-cleaner run 
+
+-------------------------------------------------------------------
+Tue Nov 10 15:01:43 UTC 2020 - dmacvicar@suse.de
+
+- Install also in /usr/share/terraform to comply with v0.13
+  provider installation path.
+  https://www.terraform.io/docs/commands/cli-config.html#provider-installation
+
+-------------------------------------------------------------------
+Tue Nov 10 09:36:41 UTC 2020 - dmacvicar@suse.de
+
+- Update to version 0.6.3+git.1604843676.67f4f2aa:
+  * Revert adding of forward device parameter for networks
+  * Add .terraform to .gitignore
+  * Tubleweed -> Tumbleweed
+  * Example: Use the OpenStack image as it supports cloud-init
+  * Tubleweed -> Tumbleweed
+  * Fix channel type for qemu-guest-agent
+  * Improve terraform v0.13 migration doc
+  * CONTRIBUTING.md: process for schema changes
+  * CONTRIBUTING.md: mention testcases reproducing an issue
+  * Remove unused script
+  * Delete setup-host script not longer needed
+  * Remove unnecessary mknod /dev/kvm already present in Focal
+  * Assume this is not longer an issue
+  * Upgrade go to 1.13.x
+  * Comment which network attributes require ForceNew
+  * Do not run tests twice
+  * Upgrade Travis environment
+  * Restrict the network mutex to network definition
+  * go fmt
+  * Force creation of network when we can't update
+  * Do not allow defining networks in parallel
+  * Test case to reproduce issue #703
+  * Revert "Merge pull request #740 from vmorris/master"
+  * Fix pty console integration tests
+  * Add missing link to libvirt_pool documentation
+  * add more info to migration doc
+  * adapt toc
+  * Add documentation for v13
+  * Init example for TF13
+  * network: Trim the bridge name to 15 characters
+  * Fix gofmt errors
+  * Implement network detection for static IPs
+  * Remove unused function and variables
+  * Even an isolated network has dhcp
+  * Make static IP addresses permanent across reboots
+  * Update README.md
+  * Listen only to localhost
+  * Adjust generated dhcp to match libvirt limitation of max 65535 addresses
+  * Add tubleweed example
+
+-------------------------------------------------------------------
+Thu Jun 18 19:08:09 UTC 2020 - dmacvicar@suse.de
+
+- Update to version 0.6.2+git.1590253051.d1cf93cd:
+  * remove broken network if the creation failed
+  * Fix error msg
+  * Update to the latest testify
+  * Handle correctly destruction of inactive networks
+  * blacklist graphics for aarch64 as well.
+  * remove logging eyecatcher
+  * #703 - permit multiple libvirt networks
+  * Update .travis.yml to satisfy build config validation
+
+-------------------------------------------------------------------
+Tue Jul  2 13:47:11 UTC 2019 - Petr Cervinka <petr@cervinka.net>
+
+- Temporary support for terraform 0.12 to follow master branch in 
+  service file
+-------------------------------------------------------------------
+Fri Feb 22 06:21:29 UTC 2019 - Duncan Mac-Vicar <dmacvicar@suse.de
+
+- GO111MODULE=off GOPROXY=off to keep building with GOPATH
+  and vendor, in order to support multiple distributions and
+  go versions.
+
+-------------------------------------------------------------------
+Tue Oct 16 11:09:14 UTC 2018 - Duncan Mac-Vicar <dmacvicar@suse.de>
+
+- add -ldflags "-X main.version=%{version}"
+
+-------------------------------------------------------------------
+Wed Jun  6 15:03:24 UTC 2018 - fcastelli@suse.com
+
+- Remove the `genisoimage` requirement, this is no longer used
+- Add the `mkisofs` requirement
+
+-------------------------------------------------------------------
+Tue Feb 20 18:38:55 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.0.0+git20180220.f2cef405:
+  * Handle keyword-less kernel params
+
+-------------------------------------------------------------------
+Tue Feb 20 15:44:53 UTC 2018 - opensuse-packaging@opensuse.org
+
+- Update to version 0.0.0+git20180220.09834dbc:
+  * Handle keyword-less kernel params
+  * Add make target to run acceptance tests
+  * Update to use latest release of terraform (0.11.3)
+  * Fix broken tests on Travis
+  * Make the tests less noisy
+  * Fix apt directive for travis
+  * Travis: ensure libvirt development headers are installed
+  * Travis: fix error
+  * Ensure libvirt connection is released
+  * travis: do not run acceptance tests
+  * sort imports
+  * remove dead/unreachable code
+  * refactor cloudinit
+  * refactor resourceLibvirtDomainCreate
+  * refactor schemas
+  * fix difference detection when using an existing bridge network
+  * Update README's requirement section
+  * Modify cloudinit to use 'mkisofs' instead of 'genisoimage'.
+  * fix network linke
+  * add an example for ubuntu
+  * spelling....
+  * fix markdown spelling
+  * add the website docs to the README for visibility
+  * domain: honor arch, machine, and emulator settings
+  * Add new method to get information on domain interfaces
+  * Make add/updateHost a bit more resilient
+  * support local cdroms
+  * check uniqueness of storage volume name
+  * remove running from documentation
+  * remove running property in net and domain
+  * tests: format hcl strings
+  * Simplify the wait_for_leases mechanism
+  * Retry the query about interfaces to the qemu-agent
+  * adding documentation about network autostart
+  * add test for autostart option
+  * Init first backport
+  * Typo
+  * Add missing hcl markdown fence
+  * Remove intermediate variables in map iteration
+  * Simplify for loop
+  * Typo in cmdline docs
+  * Type not needed in literal anymore
+  * No need to make a 0 len slice
+  * Do not choke on empty kernel cmdline
+  * Split kernel cmdline test
+  * Read back cmdline, initrd and kernel attributes from the resource
+  * Fix tests by adding fixture for kernel and initrd
+  * Add support for kernel/initrd/cmdline
+  * don't allocate memory with 0 make variables
+  * remove duplicata declaration and simplify code.
+  * use poolMutexKV for locking resources.
+  * init govet on travis
+  * golint: Url -> URL
+  * Document disks from url
+  * Reuse newDefDisk()
+  * Add support for remote http disks (qemu http curl backend)
+  * add volume cloud_init test check
+  * add geniso to travis_guest
+  * Add AcceptTest for CloudInit
+  * golint on resource_libvirt_domain_test.go Use correct names in comments
+  * common string constant for errmsg lvirtconn is nil
+  * golint on various files
+  * Type name will be used as libvirt.LibVirtNetwork
+  * type name will be used as libvirt.LibVirtDomain by
+  * golinting on various files
+  * don't export oui variable
+  * fix golint on coreos_ingition_def.go
+  * fix golint on stream and volume_def.go
+  * Fix IP golint issues (style)
+  * fix golint on utils_net.go
+  * fix golint issues on utils.go
+  * Fix golint on test cloudinit
+  * error strings should not be capitalized or end
+  * fix golint on cloudinit_def.go
+  * comment on exported function should Start with
+  * don't use underscores in Go names
+  * fix golint on libvirt/utils_volume.go
+  * fix golinting libvirt/resource_libvirt_domain_test
+  * golint enablement
+  * Make test don't depend on install
+  * Dont print debug info it tests are ok
+  * Add more doc about the Makefile workflow(suggested)
+  * Add golint to makefile
+  * ligthen process with makefile
+  * fix travis
+  * make golint happy
+  * Improve layout Readme
+  * make the firmware file consistent with the docs
+  * Fix libvirt ovmf firmware integration test on non-Ubuntu
+  * Uri should be named URI
+  * Use the right markdown for doc troublesh.
+  * Add note about latest golang version required
+  * add gofmt check for pkg(libvirt and main)
+  * Google terraform link has changed: update link
+  * Add a small note about libvirt-devel
+  * DOC: improve readme, separating troubleshooting.
+
+-------------------------------------------------------------------
+Tue Oct 17 10:04:34 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 0.0.0+git20171017.4907902b:
+  * Fix crash occuring when domain is in state file but doesn't exist in libvirt.
+  * vendor: add libvirt-go-xml
+  * use github.com/libvirt-go-xml
+  * Fix broken tests
+  * fix failing console port conversion
+  * Improve documentation
+  * Added support for specifying NVRAM templates when using UEFI images.
+  * ensure volumes are free'd if there are no errors
+  * network: ensure networks are recreated
+  * vendor: depend on terraform v0.10.0
+  * fix import
+  * cloudinit: handle changes correctly
+  * cloudinit: show user_data in .tfstate file
+  * fix XML name of DHCP host element
+  * Fix string format of network addresses
+  * use libvirt-go-xml for volumes
+  * Ensure libvirt stream are cleaned up properly
+  * Adding support for arch and machine type
+  * Adding tests for machine and arch domain attributes from #166
+  * domain: Add support for BootDevice.
+  * domain: Improve documentation and add examples for BootDevice.
+  * FIX graphics autoport setting in examples
+  * fixes misspelling of boot_device in docs and example
+  * vendor: update deps
+  * FIX waitForLeases invalid key issue
+  * Fixing travis for forks
+  * Full support for arch,machine & emulator settings
+  * Trying longer timeout
+  * Remove redundant hostname check
+  * update Terraform and Go version
+  * Update readme with some details about the go version to use
+  * Bugfix: let libvirt populate channel source
+
+-------------------------------------------------------------------
+Thu Oct 12 08:06:00 UTC 2017 - thipp@suse.de
+
+- Update to version 0.0.0+git20171012.c034dc8e:
+  * Update readme with some details about the go version to use
+
+-------------------------------------------------------------------
+Fri Sep 22 11:08:42 UTC 2017 - thipp@suse.de
+
+- Update to version 0.0.0+git20170922.dbe46f97:
+  * update Terraform and Go version
+  * Full support for arch,machine & emulator settings
+  * Trying longer timeout
+  * Remove redundant hostname check
+
+-------------------------------------------------------------------
+Tue Sep 19 15:25:58 UTC 2017 - thipp@suse.de
+
+- Update to version 0.0.0+git20170919.3fd193d2:
+  * Adding tests for machine and arch domain attributes from #166
+  * domain: Add support for BootDevice.
+  * domain: Improve documentation and add examples for BootDevice.
+  * FIX graphics autoport setting in examples
+  * fixes misspelling of boot_device in docs and example
+  * vendor: update deps
+  * FIX waitForLeases invalid key issue
+  * Fixing travis for forks
+
+-------------------------------------------------------------------
+Wed Aug 09 08:29:44 UTC 2017 - thipp@suse.de
+
+- Update to version 0.0.0+git20170809.92ff0867:
+  * fix XML name of DHCP host element
+- Depend on terraform >= 0.10.0
+
+-------------------------------------------------------------------
+Tue Aug 08 10:40:09 UTC 2017 - thipp@suse.de
+
+- Update to version 0.0.0+git20170808.d9c8d155:
+  * ensure volumes are free'd if there are no errors
+  * network: ensure networks are recreated
+  * vendor: depend on terraform v0.10.0
+  * fix import
+  * cloudinit: handle changes correctly
+  * cloudinit: show user_data in .tfstate file
+
+-------------------------------------------------------------------
+Tue Aug 01 09:51:56 UTC 2017 - thipp@suse.de
+
+- Update to version 0.0.0+git20170801.968bf162:
+  * Fix: don't hide errors
+  * Add support of filesystem device to domain
+  * Add autostart option for domain resource.
+  * Added support for using raw volumes and an example using the functionality.
+  * Added autodetection of base volume format, eliminating the need for explicit configuration.
+  * Exported logic used to create a new backingStore representation onto a separated method.
+  * Fix crash occuring when domain is in state file but doesn't exist in libvirt.
+  * vendor: add libvirt-go-xml
+  * use github.com/libvirt-go-xml
+  * Fix broken tests
+  * fix failing console port conversion
+  * Improve documentation
+  * Added support for specifying NVRAM templates when using UEFI images.
+
+-------------------------------------------------------------------
+Wed Jul 12 13:01:46 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 0.0.0+git20170702.612d0af3:
+  * Seed RNG with current time.
+  * Add support for setting CPU mode.
+  * Set "custom" CPU mode in CPU acceptance test.
+  * Fix broken test
+  * Fix: don't hide errors
+  * Add support of filesystem device to domain
+  * Add autostart option for domain resource.
+  * Added support for using raw volumes and an example using the functionality.
+  * Added autodetection of base volume format, eliminating the need for explicit configuration.
+  * Exported logic used to create a new backingStore representation onto a separated method.
+
+-------------------------------------------------------------------
+Mon Jun 19 07:27:52 UTC 2017 - thipp@suse.de
+
+- Update to version 0.0.0+git20170616.b8914ec3:
+  * domain: add configurable timeouts
+  * Add default case for libvirt states
+  * Use file type definition for disks
+  * Seed RNG with current time.
+  * Add support for setting CPU mode.
+  * Set "custom" CPU mode in CPU acceptance test.
+  * use official libvirt-go bindings
+  * Fix broken test
+
+-------------------------------------------------------------------
+Wed Jun 14 14:30:58 UTC 2017 - fcastelli@suse.com
+
+- Rollback to previous version
+
+-------------------------------------------------------------------
+Wed Jun 14 06:17:33 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 0.0.0+git20170609.919ee121:
+  * Write Ignition file as a volume in a libvirt storage pool
+  * Use If-Modified-Since for downloading images
+  * Replace cryptic error with better one
+  * Fix code broken accidentally by merge of PR 116
+  * DRY code
+  * Fix broken tests by changing the way we vendor code
+  * Update README.md
+  * domain: add configurable timeouts
+  * Add default case for libvirt states
+  * Use file type definition for disks
+
+-------------------------------------------------------------------
+Wed May 03 09:42:21 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Remove vendor tarball from RPM spec
+- Update to version 0.0.0+git20170503.38dc9e8:
+  * Exclude `graphics` block on s390x and ppc64
+  * Add test for graphics
+  * Add scsi controller option and wwn to virtual disks
+  * user_data argument for cloud-init
+  * Docs
+  * cloud-init: rework user-data handling
+  * Code refactoring: rename struct
+  * Vendor dependencies with vndr
+
+-------------------------------------------------------------------
+Wed Mar 15 17:06:10 UTC 2017 - thipp@suse.de
+
+- Update to version 0.0.0+git20170315.6863033:
+  * simplify the install documentation
+  * Remove deprecated dotfile
+  * Adding issue template
+  * Test coverage for pool sync
+  * Code coverage of qemu_agent
+  * Test coverage for network_def
+  * Some code coverage for utils.go
+  * Increase code coverage by running TF acceptance tests
+  * Exclude `graphics` block on s390x and ppc64
+  * Add test for graphics
+
+-------------------------------------------------------------------
+Tue Feb 21 07:16:47 UTC 2017 - thipp@suse.de
+
+- Update to latest version from Git:
+  * Fix for bridged networks
+  * [Docs] Clearer description for "addresses" param
+- Update vendor.tar.xz
+
+-------------------------------------------------------------------
+Fri Feb 17 13:30:07 UTC 2017 - thipp@suse.de
+
+- Update to latest version from Git:
+  * Ignition support: first phase
+  * Add support for CoreOS ignition and console blocks
+  * Add DNS forwarder blocks to network resource definition
+  * travis: fix build issue
+- Require Terraform >= 0.8.5
+
+-------------------------------------------------------------------
+Mon Dec 19 13:43:56 UTC 2016 - thipp@suse.de
+
+- Update to latest version from Git:
+  * remove "experimental"
+  * Update Terraform dependency version to 0.8.0
+  * Documentation: add output attributes for domain and volume
+- remove patch PR_8867.patch
+- Require Terraform >= 0.8.0
+- Update vendor.tar.xz
+
+-------------------------------------------------------------------
+Fri Nov 25 16:37:02 UTC 2016 - fcastelli@suse.com
+
+- Update to latest release from master: ensure code works with libvirt 2.0
+- Enforce version check at runtime of terraform
+- patch PR_8867.patch: rebased against latest version of terraform
+
+-------------------------------------------------------------------
+Thu Nov  3 16:09:46 UTC 2016 - Michele.Bologna@suse.com
+
+- Terraform-libvirt version bump (20161102)
+- Patch vendor/terraform [plan with resource references a map fix]: PR#8867
+
+-------------------------------------------------------------------
+Tue Oct 11 12:25:30 UTC 2016 - thipp@suse.de
+
+- Add terraform-provider-libvirt-rpmlintrc
+
+-------------------------------------------------------------------
+Tue Oct 11 12:00:46 UTC 2016 - thipp@suse.de
+
+- Update to latest version from Git:
+  * Fixed cloud-init iso creation with type qcow2 instead raw
+  * Fixed addresses definition in libvirt_domain
+  * Make cloudinit generation more resilent
+  * Documentation: add "running" argument to domain
+  * Better handling of errors while creating a domain
+  * Add a random number generator device to all the domains
+  * Make the hostname field of cloudinit optional
+  * Implement firmware/nvram for domains, so we can use UEFI images
+  * Fix random issues when handling multiple cloudinit volumes
+
+-------------------------------------------------------------------
+Fri Aug  5 11:19:52 UTC 2016 - thipp@suse.de
+
+- Update to latest version from Git:
+  * Fix error while referencing a cloudinit from a domain
+  * Obtain the IP when in bridged network and with the qemu-agent
+  * Do not specify NAT when using routed network
+  * Update Terraform dependency version to 0.7.0
+- Require Terraform >= 0.7.0
+
+-------------------------------------------------------------------
+Mon Jul 25 06:34:12 UTC 2016 - thipp@suse.de
+
+- Add requirement: libvirt-client
+
+-------------------------------------------------------------------
+
+Thu Jul 21 15:18:10 UTC 2016 - fcastelli@suse.com
+
+- Fix cloudinit issues
+- Fix IP detection when using a bridged network
+
+-------------------------------------------------------------------
+Wed Jul 20 12:13:10 UTC 2016 - fcastelli@suse.com
+
+- Update to latest version from Git:
+  * use qemu-agent to gather network cards IPs even when domains are
+    not using a network managed by libvirt (eg: macvtap, bridge)
+
+-------------------------------------------------------------------
+Fri Jul 15 09:05:06 UTC 2016 - moio@suse.com
+
+- metadata refresh fix
+- new network resource
+- automatic activation of networks
+- automatic activation of pools
+
+-------------------------------------------------------------------
+Thu Jul  7 09:01:19 UTC 2016 - tboerger@suse.com
+
+- Dropped src package definition
+- Added go_nostrip macro
+- Set correct homepage to GitHub repo
+
+-------------------------------------------------------------------
+Fri Jul  1 13:30:24 UTC 2016 - fcastelli@suse.com
+
+- Initial release
+

@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Sun Dec  3 19:31:58 UTC 2017 - coolo@suse.com
+
+- updated to version 3.0.0
+ see installed Changelog.md
+
+-------------------------------------------------------------------
+Tue May 23 10:14:42 UTC 2017 - coolo@suse.com
+
+- updated to version 2.2.2
+ see installed Changelog.md
+
+  
+  # 2.2.2 (2017-04-21)
+  
+  * added explicit rake dependency to fix installation issue
+
+-------------------------------------------------------------------
+Thu Dec 29 05:37:39 UTC 2016 - coolo@suse.com
+
+- updated to version 2.2.1
+ see installed Changelog.md
+
+  
+  # 2.2.0 (2016-12-27)
+  
+  * improved Windows support
+  * added Ruby 2.4 support
+  * added `bold` alias method for `bright`
+  
+  # 2.2.1 (2016-12-28)
+  
+  * fixed gem installation (2.2.0 was a broken release)
+
+-------------------------------------------------------------------
+Mon Jan 25 05:52:47 UTC 2016 - coolo@suse.com
+
+- updated to version 2.1.0
+ see installed Changelog.md
+
+  
+  ## 2.1.0 (2016-01-24)
+  
+  * added X11 color support
+  * fixed `require` issue when rainbow is used as a dependency in another gem
+  * improved Windows support
+
+-------------------------------------------------------------------
+Mon Oct 13 18:36:09 UTC 2014 - coolo@suse.com
+
+- adapt to new rubygem packaging
+
+-------------------------------------------------------------------
+Thu Mar 20 14:16:57 UTC 2014 - tboerger@novell.com
+
+- Initial package 2.0.0
+
+-------------------------------------------------------------------
+Tue Nov  5 07:54:01 UTC 2013 - dmacvicar@suse.de
+
+- initial package for 1.1.4

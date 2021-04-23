@@ -1,0 +1,42 @@
+https://github.com/lifelines/lifelines/pull/389
+
+From 68666c90ba645c08ed3ee7a565ee3951ac43539c Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Fri, 6 Dec 2019 18:48:40 +0100
+Subject: [PATCH] Allow to override build date with SOURCE_DATE_EPOCH
+
+in order to make builds reproducible.
+See https://reproducible-builds.org/ for why this is good
+and https://reproducible-builds.org/specs/source-date-epoch/
+for the definition of this variable.
+
+Also switch to UTC to be independent of timezone.
+Also use ISO 8601 date format to be easier to parse.
+This also avoids use of %b that can vary from locales.
+
+This PR was done while working on reproducible builds for openSUSE.
+---
+ reports/gen_index | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/reports/gen_index b/reports/gen_index
+index 0343f87b..2ae4fe84 100644
+--- a/reports/gen_index
++++ b/reports/gen_index
+@@ -5,6 +5,7 @@
+ # January 2003 
+ 
+ use strict;
++use POSIX qw(strftime);
+ 
+ my $debug = 0;		#non-zero to enable debug output
+ my $viewoutput = 0;	#non-zero to enable printing output information
+@@ -93,7 +94,7 @@ have text identifying the person who generated the report.
+ EOF
+ }
+ sub print_trailer {
+-    my $today = `date "+%d %b %Y"`;
++    my $today = strftime("%Y-%m-%d", gmtime($ENV{SOURCE_DATE_EPOCH} || time));
+     print OUT  <<EOF
+ </DL>
+ <center>

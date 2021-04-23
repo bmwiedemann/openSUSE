@@ -1,0 +1,13 @@
+Index: xplatproviders-1.0.0/build/xplatproviders/GNUmakefile.in
+===================================================================
+--- xplatproviders-1.0.0.orig/build/xplatproviders/GNUmakefile.in
++++ xplatproviders-1.0.0/build/xplatproviders/GNUmakefile.in
+@@ -13,7 +13,7 @@ export SCX_BUILDVERSION_MINOR=0
+ export SCX_BUILDVERSION_PATCH=0
+ export SCX_BUILDVERSION_BUILDNR=001
+ export SCX_BUILDVERSION_DATE=20090426
+-export SCX_BUILDVERSION_DATE=$(shell date "+%Y%m%d")
++export SCX_BUILDVERSION_DATE=$(shell date --utc --date="@$${SOURCE_DATE_EPOCH:-$$(date +%s)}" "+%Y%m%d")
+ export SCX_BUILDVERSION_STATUS=XPlatProviders_Build
+ 
+ VERSION="$(SCX_BUILDVERSION_MAJOR).$(SCX_BUILDVERSION_MINOR).$(SCX_BUILDVERSION_PATCH)-$(SCX_BUILDVERSION_BUILDNR)"

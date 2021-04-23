@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sun Apr 19 23:18:32 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix egg info path 
+
+-------------------------------------------------------------------
+Sun Apr 19 23:06:33 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- update BR according to setup.cfg 
+
+-------------------------------------------------------------------
+Thu Mar 26 07:58:43 UTC 2020 - pgajdos@suse.com
+
+- initial version 2.0.0, required by python-twine testsuite
+

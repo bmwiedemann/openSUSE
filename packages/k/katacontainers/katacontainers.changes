@@ -1,0 +1,306 @@
+-------------------------------------------------------------------
+Fri Jan  8 12:49:37 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Update to 1.11.5:
+  runtime: Security fixes included:
+    - Readonly bind-mounts are now mounted read-only on the host.
+      With this fix, mounts are protected at VM boundary not just
+      the guest kernel. If a container escape were to occur, one
+      would be able to write to a directory or file that was
+      mounted read-only.
+    - Certain annotations in kata can be used to execute
+      pre-exiting binaries. This could be used to execute arbitrary
+      binaries with the onus of validating these paths left to the
+      stack about Kata. In this release, we added appropriate
+      validations so that an admin can configure a list of file
+      system paths that can be used to filter annotations that
+      represent valid file names.
+
+-------------------------------------------------------------------
+Fri Jun 19 15:04:27 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.11.1:
+  runtime:
+    - shm: handle shm mount backed by empty-dir memory volumes
+    - virtcontainers: Fix structured logging in device/config package
+    - vc: make host shared path readonly
+
+-------------------------------------------------------------------
+Thu May 28 16:24:26 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.11.0 (bsc#1172092, CVE-2020-2024)
+  runtime:
+    - qemu: Support PCIe device hotplug for q35
+    - qemu: Add virtio-mem support (experimental)
+    - Support pmem/nvdimm hotplug
+    - ipv6: Add support for ipv6
+    - persist: move "newstore" out of experimental:The "newstore"
+      feature has had been a "experimental" feature for long time.
+    - rootless: Fix rootless for case net=none
+    - Support device cgroup in the host when sandbox_cgroup_only
+      is true, the hypervisor has access only to the devices that
+      the sandbox and its containers need
+  shim:
+    - vendor: Update kata agent to 5bf8d4cc461
+    - vendor: Update logrus to v1.4.2
+    - make: Add support to strip the binary
+    - Makefile: overwrite PREFIX from environment
+
+-------------------------------------------------------------------
+Mon Jan 20 15:46:33 UTC 2020 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.10.0:
+  runtime:
+    - Initial support for Cloud Hypervisor
+    - HybridVsock support for cloud hypervisor and firecracker
+    - Updated Firecracker version to v0.19.1
+    - Better rootless support for firecracker
+    - This release deprecates bridged networking model
+
+-------------------------------------------------------------------
+Fri Dec 13 14:08:44 UTC 2019 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.9.3:
+  runtime:
+    - versions: bump fc version to v0.18.1
+    - backport 1.9: fix wrong number cpus after killing a container
+    - virtcontainers/store: make VCStoreUUIDPath rootless
+    - vc: Don't adjust block index on error
+    - vc: Persist file handle may leak in FS#ToDisk
+
+-------------------------------------------------------------------
+Wed Dec  4 16:56:28 UTC 2019 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.9.2:
+  runtime:
+    - rootless: Fix rangeUID parsing (Backport to 1.9)
+    - rootless: Fix cgroup creation logic for rootless(Backport to 1.9)
+
+-------------------------------------------------------------------
+Thu Nov 14 16:11:57 UTC 2019 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.9.1:
+  runtime:
+    - sandbox/cgroups: don't constrain if using SandboxCgroupsOnly
+    - ci: Fix versions_checker.sh
+
+-------------------------------------------------------------------
+Thu Oct 24 15:17:17 UTC 2019 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.9.0 tarballs, this is just a version bump without
+  any code changes.
+
+-------------------------------------------------------------------
+Mon Oct 21 14:15:11 UTC 2019 - Ralf Haferkamp <rhafer@suse.com>
+
+- Update to 1.9.0~rc0:
+  runtime:
+    - Fix cache factory UT
+    - Virtio-fs v0.3 support
+    - virtcontainers: set agent's logs vsock port
+    - config: Fix `virtio-fs` typo in Makefile
+    - Hypervisor: UUID fix for acrn hypevisor
+    - virtcontainers: change firecracker socket permissions
+    - Add annotations to provide custom configs
+    - Fix CRIO + Firecracker
+    - rootless: add rootless to kata
+    - QEMU: do not require nvdimm machine option with initrd
+    - s390x: Fix runtime build for s390x
+    - versions: Update kernel to 4.19.75
+    - config: honor DEFSHAREDFS_QEMU_VIRTIOFS and CONFIG_QEMU_VIRTIOFS_IN
+    - Support Firecracker 0.18
+    - virtcontainers: fix the issue of missing qemu error logs
+    - config: Fix the qemu-virtiofs.toml
+    - s390x: Share image between qemu instances
+    - The unit of newMemory is MB
+    - config: use 9p as default shared filesystem for nemu
+    - Remove annotation config json key
+  shim:
+    - shim/firecracker: Read agent's logs
+    - vendor: update kata agent
+- Fix config for set-version source-service to set version based
+  on the runtime filename. The previously used "katacontainers"
+  caused the service to fail.
+
+-------------------------------------------------------------------
+Wed Sep 25 11:46:31 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Update katacontainers to version 1.9.0~alpha2: 
+  runtime 1.9.0~alpha2:
+   * virtcontainers: Set sandbox dns in sandbox request
+   * vc: Remove bind destination when unmounting
+   * virtio-fs: add virtio_fs_extra_args for virtiofsd
+   * sandbox: combine sandbox cgroup functions
+   * sandbox: Join cgroup sandbox on create.
+   * cgroups: container: check cgroup path before use it
+   * sandbox: cgroup: prefix cgroup related methods
+   * sandbox: cgroups: move methods to sandbox file
+   * hypervisor: Fix MacVTap internetworking support in ACRN
+   * CompatOCISpec: limit usage of CompatOCISpec
+   * s390x: add virtio-blk-ccw
+   * virtcontainers: create generic function
+   * vsock: set VHOST_VSOCK_SET_GUEST_CID based based on arch
+   * vc: Delete store when new/create container is failed
+   * virtcontainers: fix kernel modules annotations
+   * kata-check: require kvm/vhost modules for amd64
+   * kata-check: reduce default output verbosity
+   * v2: Prevent killing all container processes when exec is failed
+   * shim-v2: add network stat in metric
+   * qemu: fix error message miss
+   * monitor: enlarge watch buffer
+   * hypervisor: allow to return a slice of pids
+   * virtcontainers: Fix the issue of watching console for firecracker
+   * qemu: add logfile when debug is on
+   * qemu: fix memory prealloc option handling
+   * qemu: check guest status with qmp query-status
+   * shimv2: cancel monitor before stopping sandbox
+   * qemu: do not try to stop qemu multiple times
+   * network: always cold unplug network devices
+   * Revert: "sandbox: remove network before stopping vm"
+   * agent: add default timeout for grpc requests
+   * container: do not pause a StateReady container
+   * sandbox: remove network before stopping vm
+   * virtcontainers: fix hotplug pci devices execeed max capacity bug
+   * vsock: Propogate error for vsock ioctl
+   * network: Ignore routes with proto as "kernel"
+   * acrn: Change the default network model for ACRN to macvtap
+   * network: Deprecate bridged networking mode.
+   * network: fix failed to remove network
+   * virtcontainers: add support for loading kernel modules
+   * shim-v2: fix shim leak when hypervisor exit unexpectly
+   * virtiofs: wait for virtiofsd process to release its resources
+   * pkg/katautils: Do not set init in the kernel command line
+   * virtiofs: fix virtiofs crash when cache=none
+   * virtcontainers: support SMP die
+   * qemu: support vfio pass x-pci-vendor-id and x-pci-device-id pass
+   * ut: skip TestBindUnmountContainerRootfsENOENTNotError for non-root
+   * ut: skip TestStartNetworkMonitor for non-root
+   * vc: move container mount cleanup to container.go
+   * shimv2: monitor sandbox liveness
+   * monitor: watch hypervisor
+   * agent: use hypervisor pid as backup proxy pid for non-kata proxy cases
+   * sandbox: do not fail SIGKILL
+   * sandbox: support force stop
+   * agent: mark agent dead when failing to connect
+   * container: allow to stop a paused container
+
+-------------------------------------------------------------------
+Wed Sep  4 14:40:50 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Add config file in /etc/kata-containers
+- Build with golang >= 1.12
+
+-------------------------------------------------------------------
+Tue Aug 27 14:58:06 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Remove image entry from configuration files only where both image and 
+  initrd are supported.
+
+-------------------------------------------------------------------
+Thu Aug  8 14:41:31 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Move dependency on kernel-kvmsmall to the katacontainers-image package. 
+
+-------------------------------------------------------------------
+Fri Aug  2 16:27:09 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Set the kernel version in the configuration files according to the one 
+  specified in the initrd image name.
+
+-------------------------------------------------------------------
+Wed Jul 31 08:46:47 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Use kernel-kvmsmall as guest VM kernel
+- Use katacontainers-image-initrd as gues VM OS image
+- Update katacontainers to version 1.9.0~alpha: 
+  - Introduce ACRN hypervisor support
+  - Upgrade the QEMU hypervisor from a QEMU-lite base to upstream QEMU 4.0.
+  - Kata templating code to make use of the upstream x-ignored-shared. 
+  - Firecracker hypervisor is updated to 0.17
+  - Kata now has support for using Firecracker's jailer
+  - Fixes and usability improvements for virtio-fs
+
+-------------------------------------------------------------------
+Wed May 29 10:30:39 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Do not require or  recomment qemu-lite, upstream is switching to 
+QEMU 4.0
+
+-------------------------------------------------------------------
+Tue May 28 14:03:32 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Do not require qemu-lite, just recommend it
+
+-------------------------------------------------------------------
+Tue May 28 13:18:21 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Update katacontainers to version 1.7.0:
+  + early experimental preview of virtio-fs
+    - virtio-fs is being developed as a replacement for 9pfs, providing better 
+    performance and compatibility for workloads which require host to guest 
+    filesystem sharing
+  * improved the implementation of k8s empty-dir (ephemeral volumes) based 
+  on host directories by creating these inside the VM itself.
+  * support for firecracker version 0.16
+  * a few optimization fixes, updated versions support
+
+-------------------------------------------------------------------
+Wed Apr 24 15:46:10 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Update katacontainers to version 1.7.0~alpha1:
+  runtime:
+    * agent: pass correct mount type to agent for ephemeral volumes
+    * network: Make tcfilter model as default
+    * netmon: Fix bug in how routes are converted
+    * storage: create k8s emptyDir inside VM
+    * cli: fix kata-check test
+    * shimv2: fix the issue of stop container failed
+    * qemu: Remove the storage directories if qemu get from the factory
+    * runtime: support memory hotplug via probe interface on aarch64
+  shim:
+  proxy:
+  ksm-throttler:
+    - no changes
+
+-------------------------------------------------------------------
+Mon Mar 25 11:02:53 UTC 2019 - Flavio Castelli <fcastelli@suse.com>
+
+- Update katacontainers to version 1.6.0:
+  -Add OpenTracing support: this release includes preview changes to support OpenTracing
+  - As part of the changes to enabled virtio-fs, now the agent can mount virtio-fs shared directories
+  - The agent allows cpuset request that not match with vcpus in the guest
+  - Kata Containers project updated to the Linux Kernel 4.19.x as preferred kernel version
+  - Now Kata supports NVDIMM on arm64
+  - Now cpu cgroups in sandbox are honored: This includes user defined paths and limit hypervisor vCPU threads
+- runtime:
+  -  Kata now uses kernel: update to 4.19.x as preferred kernel version.
+  -  Now Kata support snvdimm on arm64
+  -  Reimplement sandbox cgroup
+  -  Now cpu related cgroups in sandbox are honored including use user defined paths and limit hypervisor vcpu threads
+
+-------------------------------------------------------------------
+Fri Mar 22 21:23:29 UTC 2019 - Flavio Castelli <fcastelli@suse.com>
+
+- Add runtime helpers to start either the qemu or the firecracker
+  backends
+
+-------------------------------------------------------------------
+Wed Jan 30 16:42:44 UTC 2019 - Marco Vedovati <mvedovati@suse.com>
+
+- Update to Kata Containers version 1.5.0
+  runtime:
+  + add firecracker support
+  + containerd shim v2 support
+  * kata-check: do not require nested virtualization
+  + kata-env: Show runtime trace setting
+  + factory: set guest time after resuming
+  + sandbox: cleanup sandbox if creation failed
+  + block: Add new block storage driver "nvdimm"
+  + s390x: add support for s390x
+  shim:
+  + tracing: Add opentracing support
+
+-------------------------------------------------------------------
+Mon Dec 17 10:52:13 UTC 2018 - Marco Vedovati <mvedovati@suse.com>
+
+- katacontainers package creation version 1.5.0~rc1

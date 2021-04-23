@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Mon Mar 12 09:18:30 UTC 2018 - jengelh@inai.de
+
+- Fix SRPM group. Rename %soname to %sover to better reflect
+  its use.
+
+-------------------------------------------------------------------
+Fri Mar  9 19:03:38 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.5.8
+  * A Fall'16 release.
+  version 0.5.7
+  * Use getaddrinfo() instead of deprecated gethostbyname().
+  * Update on newer autoconf macros (m4).
+  * Fixes for building for Windows with configure and make.
+  * Makefile fixes for building in separate directory.
+  * Autoconf fix: AC_CONFIG_HEADER obsolete error (fixes #194).
+
+- Spec cleanup
+
+-------------------------------------------------------------------
+Mon Apr 16 16:50:09 CET 2012 - pascal.bleser@opensuse.org
+
+- initial version (0.0+r2342)
+

@@ -1,0 +1,12 @@
+[Unit]
+Description=searches for relevant entries in mail log, generates a daily report from this data, and sends them in a (human) readable to specified user
+#Documentation=none
+Before=logrotate.timer
+
+[Timer]
+OnCalendar=daily
+AccuracySec=12h
+Persistent=true
+
+[Install]
+WantedBy=timers.target

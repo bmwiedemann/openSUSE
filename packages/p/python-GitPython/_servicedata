@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">git://github.com/gitpython-developers/GitPython</param>
+              <param name="changesrevision">f653af66e4c9461579ec44db50e113facf61e2d3</param></service></servicedata>

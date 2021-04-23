@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4221130e2a09ed6623c89749a18dd650</srcmd5>
+    <version>4.8</version>
+    <time>1586248046</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>789651</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6f934eddedd12fc19259a7f7b23815e1</srcmd5>
+    <version>4.8</version>
+    <time>1586368533</time>
+    <user>dimstar_suse</user>
+    <comment>Conditional patch to allow building against lucene 8</comment>
+    <requestid>791949</requestid>
+  </revision>
+</revisionlist>

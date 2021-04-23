@@ -1,0 +1,69 @@
+-------------------------------------------------------------------
+Mon Apr 10 12:46:50 UTC 2017 - jslaby@suse.com
+
+- the version we downloaded previously is tagged 0.3.6 at last
+
+-------------------------------------------------------------------
+Fri Apr  7 09:29:14 UTC 2017 - jengelh@inai.de
+
+- Really clean the spec and remove ancient %clean section.
+
+-------------------------------------------------------------------
+Tue Mar 28 19:02:40 UTC 2017 - jslaby@suse.com
+
+- Clean the spec up
+- Require really what the scripts use
+- Update to version 0.3.5+git.20170328:
+  * Add --prefix and provide some examples.
+  * It's not --clearsign, but --detach-sign
+  * Use --armor as well in the examples
+  * Add support for subcmd config option
+  * Typo fix and record changes in ChangeLog
+  * Deprecate the use of the mailing list
+  * Support separate compress/decompress commands
+  * Fix disparity between config/docs and kup-server
+  * Add support for the "info" subcommand
+  * Make sure we use sanitized KUP_SUBCMD
+
+-------------------------------------------------------------------
+Thu Feb 13 15:42:27 UTC 2014 - jslaby@suse.com
+
+- fix Requires
+
+-------------------------------------------------------------------
+Wed Dec 14 22:01:09 UTC 2011 - gregkh@suse.com
+
+- update to 0.3.2 release
+
+-------------------------------------------------------------------
+Mon Nov 28 10:39:01 UTC 2011 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  SPDX format (http://www.spdx.org/licenses)
+
+-------------------------------------------------------------------
+Sat Nov 26 15:55:56 UTC 2011 - gregkh@suse.de
+
+- update to the 0.3.1 release
+- fix up a bunch of rpmlint warnings in the spec file
+- put a "proper" copyright description on the spec file
+
+-------------------------------------------------------------------
+Wed Nov 23 00:07:37 UTC 2011 - gregkh@suse.com
+
+- update to 0.3 release
+
+-------------------------------------------------------------------
+Wed Nov 16 00:31:10 UTC 2011 - gregkh@suse.com
+
+- some tweaks to the spec file to get it to build on SLE and Mandriva
+
+-------------------------------------------------------------------
+Tue Nov 15 22:34:41 UTC 2011 - gregkh@suse.com
+
+- adapted spec file to work properly in osc build environment
+
+-------------------------------------------------------------------
+Mon Oct 17 2011 John 'Warthog9' Hawley <warthog9@kernel.org>
+
+- created spec file

@@ -1,0 +1,18 @@
+<package name="goldendict" project="openSUSE:Factory">
+  <title>GoldenDict</title>
+  <description>    Feature-rich dictionary lookup program.
+    * Use of WebKit for an accurate articles' representation, complete with
+      all formatting, colors, images and links.
+    * Support of multiple dictionary file formats:
+      * Babylon .BGL files
+      * StarDict .ifo/.dict/.idx/.syn dictionaries
+      * Dictd .index/.dict(.dz) dictionary files
+      * ABBYY Lingvo .dsl source files
+      * ABBYY Lingvo .lsa/.dat audio archives
+    * Support for Wikipedia, Wiktionary or any other MediaWiki-based sites
+    * Scan popup functionality. A small window pops up with translation of a
+      word chosen from antoher application.
+    * And much more...
+  </description>
+  <devel project="Education" package="goldendict"/>
+</package>

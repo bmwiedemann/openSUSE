@@ -1,0 +1,26 @@
+Index: gcin-2.8.6/configure
+===================================================================
+--- gcin-2.8.6.orig/configure
++++ gcin-2.8.6/configure
+@@ -336,21 +336,6 @@ if [ $QT5_IM = 'N' ]; then
+   mv gcin.spec gcin.spec.tmp
+   grep -v qt5/plugins/inputmethods gcin.spec.tmp > gcin.spec
+ else
+-  cd qt5-im
+-  qtver=`pkg-config --modversion Qt5Core` 
+-  minv=`echo $qtver | cut -d. -f2` 
+-  if [ $minv -ge 5 ]; then
+-    echo "You have Qt > 5.5.1 "
+-    sed -e "s/FactoryInterface/FactoryInterface.5.1/" < gcin-qt5.h.in > gcin-qt5.h
+-    if [ $minv -ge 9 ]; then
+- 	cp -a Makefile59 Makefile	
+-    else
+- 	cp -a Makefile55 Makefile	
+-    fi
+-  else
+-    cp gcin-qt5.h.in gcin-qt5.h
+-  fi
+-  cd ..
+   for i in /usr/share/qt5/bin/moc /usr/lib/qt5/bin/moc /usr/lib/x86_64-linux-gnu/qt5/bin/moc /usr/lib/i386-linux-gnu/qt5/bin/moc /usr/lib64/qt5/bin/moc /usr/bin/moc
+   do
+     [ ! -x $i ] && continue

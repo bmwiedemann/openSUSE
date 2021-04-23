@@ -1,0 +1,20 @@
+diff --git a/vendor/compat-5.3/c-api/compat-5.3.h b/vendor/compat-5.3/c-api/compat-5.3.h
+index 8e10893..52d2830 100644
+--- a/vendor/compat-5.3/c-api/compat-5.3.h
++++ b/vendor/compat-5.3/c-api/compat-5.3.h
+@@ -397,11 +397,11 @@ COMPAT53_API void luaL_requiref (lua_State *L, const char *modname,
+
+
+ /* other Lua versions */
+-#if !defined(LUA_VERSION_NUM) || LUA_VERSION_NUM < 501 || LUA_VERSION_NUM > 503
++#if !defined(LUA_VERSION_NUM) || LUA_VERSION_NUM < 501
+
+-#  error "unsupported Lua version (i.e. not Lua 5.1, 5.2, or 5.3)"
++#  error "unsupported Lua version (i.e. less than Lua 5.1)"
+
+-#endif /* other Lua versions except 5.1, 5.2, and 5.3 */
++#endif
+
+
+
+

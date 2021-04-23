@@ -1,0 +1,103 @@
+Subject: Make libcpuset mountpoint agnostic.
+Date: Wed Jun  19 09:23:00 CEST 2013
+From: Mike Galbraith <mgalbraith@suse.de>
+References: bnc#625079, bnc#834223
+
+Addendum: s/cpuset/,cpuset in scan to make sure we're seeing the mount option
+vs some dainbramaged path component.
+
+Signed-off-by: Mike Galbraith <mgalbraith@suse.de>
+---
+ libcpuset.c |   37 +++++++++++++++++++++++++++++--------
+ 1 file changed, 29 insertions(+), 8 deletions(-)
+
+--- a/libcpuset.c
++++ b/libcpuset.c
+@@ -104,8 +104,8 @@ struct cpuset {
+ 	unsigned sched_load_balance_valid:1;
+ };
+ 
+-/* Presumed cpuset file system mount point */
+-static const char *cpusetmnt = "/dev/cpuset";
++/* Discovered cpuset file system mount point */
++static char cpusetmnt[PATH_MAX];
+ 
+ /* Stashed copy of cpunodemap[], mapping each cpu to its node. */
+ static const char *mapfile = "/var/run/cpunodemap";
+@@ -194,11 +194,11 @@ static const char *sn_top_node_prefix =
+ #endif
+ 
+ /*
+- * Check that cpusets supported, /dev/cpuset mounted.
++ * Check that cpusets supported, cpuset controler is mounted.
+  * If ok, return 0.
+  * If not, return -1 and set errno:
+  *	ENOSYS - kernel doesn't support cpusets
+- *	ENODEV - /dev/cpuset not mounted
++ *	ENODEV - cpuset controller not mounted
+  */
+ 
+ static enum {
+@@ -212,13 +212,34 @@ static int check()
+ {
+ 	if (check_state == check_notdone) {
+ 		struct stat statbuf;
++		FILE *mounts;
++		char buf[PATH_MAX], *start, *end;
++		int found = 0;
+ 
+ 		if (stat("/proc/self/cpuset", &statbuf) < 0) {
+ 			check_state = check_enosys;
+ 			goto done;
+ 		}
+ 
+-		if (stat("/dev/cpuset/tasks", &statbuf) < 0) {
++		mounts = fopen("/proc/mounts", "r");
++		if (mounts == NULL) {
++			check_state = check_enosys;
++			goto done;
++		}
++
++		while (fgets(buf, sizeof buf, mounts) != NULL) {
++			if (!strstr(buf, ",cpuset"))
++				continue;
++			start = strstr(buf, "/");
++			end = strstr(start, " ");
++			*end = '\0';
++			strcpy(cpusetmnt, start);
++			found = 1;
++			break;
++		}
++		fclose(mounts);
++
++		if (!found) {
+ 			check_state = check_enodev;
+ 			goto done;
+ 		}
+@@ -495,7 +516,7 @@ static char *pathcat3(char *buf, int buf
+  *
+  * Put full path of cpuset 'name' in buffer 'buf'.  If name
+  * starts with a slash (``/``) character, then this a path
+- * relative to ``/dev/cpuset``, otherwise it is relative to
++ * relative to cpusetmnt, otherwise it is relative to
+  * the current tasks cpuset.  Return 0 on success, else
+  * -1 on error, setting errno.
+  */
+@@ -2232,7 +2253,7 @@ int cpuset_collides_exclusive(const char
+  *  EACCES - search permission denied on intervening directory
+  *  ETIME - timed out - tasks remain after 'seconds' timeout
+  *  EMFILE - too many open files
+- *  ENODEV - /dev/cpuset not mounted
++ *  ENODEV - cpuset controller not mounted
+  *  ENOENT - component of cpuset path doesn't exist
+  *  ENOMEM - out of memory
+  *  ENOSYS - kernel doesn't support cpusets
+@@ -2609,7 +2630,7 @@ int cpuset_move_all(struct cpuset_pidlis
+  *  EACCES - search permission denied on intervening directory
+  *  ENOTEMPTY - tasks remain after multiple attempts to move them
+  *  EMFILE - too many open files
+- *  ENODEV - /dev/cpuset not mounted
++ *  ENODEV - cpuset controller not mounted
+  *  ENOENT - component of cpuset path doesn't exist
+  *  ENOMEM - out of memory
+  *  ENOSYS - kernel doesn't support cpusets

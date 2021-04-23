@@ -1,0 +1,7 @@
+<package name="ghc-digest" project="openSUSE:Factory">
+  <title>Various cryptographic hashes for bytestrings; CRC32 and Adler32 for now</title>
+  <description>This package provides efficient cryptographic hash implementations for strict and
+lazy bytestrings. For now, CRC32 and Adler32 are supported; they are implemented
+as FFI bindings to efficient code from zlib.</description>
+  <devel project="devel:languages:haskell" package="ghc-digest"/>
+</package>

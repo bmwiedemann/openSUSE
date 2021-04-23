@@ -1,0 +1,63 @@
+# Enable caching of up to 1000 output entriess
+cache-size=1000
+
+# Specify some default clone prefixes
+clone-prefix=ssh://domain.com/var/git
+
+# Specify the css url
+css=/cgit/cgit.css
+
+# Specify the logo url
+logo=/cgit/cgit.png
+
+# Show extra links for each repository on the index page
+enable-index-links=1
+
+# Show number of affected files per commit on the log pages
+enable-log-filecount=1
+
+# Show number of added/removed lines per commit on the log pages
+enable-log-linecount=1
+
+# Set the title and heading of the repository index page
+root-title=git repositories
+
+# Allow download of tar.gz, tar.bz2 and zip-files
+snapshots=tar.gz tar.bz2 zip
+
+
+##
+## List of common mimetypes
+##
+
+mimetype.git=image/git
+mimetype.html=text/html
+mimetype.jpg=image/jpeg
+mimetype.jpeg=image/jpeg
+mimetype.pdf=application/pdf
+mimetype.png=image/png
+mimetype.svg=image/svg+xml
+
+
+##
+## List of repositories.
+## PS: Any repositories listed when section is unset will not be
+##     displayed under a section heading
+## PPS: This list could be kept in a different file (e.g. '/etc/cgitrepos')
+##      and included like this:
+##        include=/etc/cgitrepos
+##
+
+# Add your repositories here.
+#
+# Examples:
+#
+# repo.url=main
+# repo.path=/var/git/main.git
+# repo.desc=Main repository
+# repo.owner=your.email@domain.com
+#
+# repo.url=secondary
+# repo.path=/var/git/ut.git
+# repo.desc=Secondary repository
+# repo.owner=another.email@domain.com

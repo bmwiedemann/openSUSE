@@ -1,0 +1,20 @@
+Author: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: 2018-07-13
+
+disable compile-time CPU detection because of
+https://bugzilla.opensuse.org/show_bug.cgi?id=1100677
+
+Index: givaro-4.0.4/configure.ac
+===================================================================
+--- givaro-4.0.4.orig/configure.ac
++++ givaro-4.0.4/configure.ac
+@@ -156,9 +156,6 @@ echo "----------------------------------
+ echo "        START  GIVARO CONFIG                   "
+ echo "-----------------------------------------------"
+ 
+-# Checks which SIMD optimization flags to use and set SIMD_CFLAGS accordingly
+-INSTR_SET
+-AC_SUBST(SIMD_FLAGS)
+ 
+ # Veltkamp Split in modular-extended.inl requires to use the SSE floating point multiplier and not the fp87
+ # This is by default on x86_64 but not on i386.

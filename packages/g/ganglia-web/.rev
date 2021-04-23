@@ -1,0 +1,51 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0db285cd53bb5f2b3713910eeb0bf147</srcmd5>
+    <version>3.7.2</version>
+    <time>1509722614</time>
+    <user>dimstar_suse</user>
+    <comment>- new package ganglia-web for visualization of the data gathered
+  by ganglia-gmetad
+  * fixed license</comment>
+    <requestid>535990</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d1820bfe361ec580707c432a0b5cc100</srcmd5>
+    <version>3.7.2</version>
+    <time>1523875672</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed all explicit php dependencies (bsc#1088887)
+  * updated README.SUSE (forwarded request 595660 from mslacken)</comment>
+    <requestid>595662</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>d8673ff76fa4c14644ffe856c2168980</srcmd5>
+    <version>3.7.2</version>
+    <time>1523956758</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix comment in config file to cover both php5 and php7
+  (bsc#1088887).</comment>
+    <requestid>597240</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f8ec874d92ded6ec8b26fa62dc094d0e</srcmd5>
+    <version>3.7.4</version>
+    <time>1576014369</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>755626</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fb53d18937f1100d013933c6aa5ecca4</srcmd5>
+    <version>3.7.5</version>
+    <time>1612182443</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.7.5 which fixes bsc#1179835 
+- various bugfixes and enhancements, highlights are:
+ * heatmap coloring enhanced
+ * Fix XSS from OBB#1005024 (https://www.openbugbounty.org/reports/1005024/)
+ * uses `httponly` and `secure` flags in setcookie calls
+ * add the available memory to the graph, if present</comment>
+    <requestid>868328</requestid>
+  </revision>
+</revisionlist>

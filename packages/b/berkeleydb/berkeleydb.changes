@@ -1,0 +1,73 @@
+-------------------------------------------------------------------
+Tue May 15 17:40:08 UTC 2018 - fstrba@suse.com
+
+- Build with source level 7 in order to anticipate the possible
+  removal of Java 6 compatibility
+  * Cannot use source level 8, since the
+    com.sleepycat.asm.ClassReader does not recognize the Java 8
+    bytecode.
+
+-------------------------------------------------------------------
+Fri Sep 15 10:44:53 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify jdk.version=1.6
+
+-------------------------------------------------------------------
+Tue Jul  8 10:39:52 UTC 2014 - tchvatal@suse.com
+
+- Do not depend on ant-trax and run spec-cleaner.
+
+-------------------------------------------------------------------
+Mon Sep  9 11:05:33 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Mon May 27 12:14:25 UTC 2013 - cfarrell@suse.com
+
+- license update: Sleepycat
+  Sleepycat,  not BSD-3-Clause
+
+-------------------------------------------------------------------
+Tue Dec 18 11:16:08 UTC 2012 - mvyskocil@suse.com
+
+- drop useless repack to tar.bz2 - use pristine tarball from upstream 
+
+-------------------------------------------------------------------
+Thu Dec 13 21:19:10 UTC 2012 - p.drouand@gmail.com
+
+- Update to 5.0.58 version:
+  * The file format change enabled significant improvements in operation
+    performance, memory and disk footprint, and concurrency of databases 
+    with duplicate keys. Due to these changes, an upgrade utility must 
+  	be run before opening an environment with this release, if the environment 
+  	was created using JE 4.1 or earlier. See the Upgrade Procedure below for 
+  	more information.
+  * An application which uses JE replication may not upgrade directly
+  	from JE 4.0 to JE 5.0. Instead, the upgrade must be done from JE 4.0 to 
+  	JE 4.1 and then to JE 5.0. Applications already at JE 4.1 are not affected. 
+  	Upgrade guidance can be found in the new chapter, "Upgrading a JE
+    Replication Group", in the "Getting Started with BDB JE High Availability" guide.
+- Use the %doc macro to copy documents in doc directory
+- Remove redundants documentation files with fdupes
+
+-------------------------------------------------------------------
+Fri Nov 25 09:41:52 UTC 2011 - coolo@suse.com
+
+- fix manuals packaged twice
+
+-------------------------------------------------------------------
+Sat Sep 17 19:27:52 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Fri Nov 27 13:26:45 UTC 2009 - mvyskocil@suse.cz
+
+- Disabled tests as they're blocking build of Factory 
+
+-------------------------------------------------------------------
+Thu May  7 10:44:40 CEST 2009 - mvyskocil@suse.cz
+
+- Initial SUSE packaging of 3.3.75 (from jpackage 5.0, but updated) 
+

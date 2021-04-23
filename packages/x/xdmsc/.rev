@@ -1,0 +1,131 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b8867a6cf9fe0ecf3151912d6f7fdd80</srcmd5>
+    <version>0.4</version>
+    <time>1168904527</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="35">
+    <srcmd5>2f86a71a302abdbaeaa1e6294c8f0fc4</srcmd5>
+    <version>0.4</version>
+    <time>1171036735</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="37">
+    <srcmd5>10306f0cef079cb66cdcc5bfcdf584b5</srcmd5>
+    <version>0.4</version>
+    <time>1171928140</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="134">
+    <srcmd5>10306f0cef079cb66cdcc5bfcdf584b5</srcmd5>
+    <version>0.4</version>
+    <time>1171928140</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="135">
+    <srcmd5>5857006dd186ee5f398318946fd2a8f7</srcmd5>
+    <version>0.4</version>
+    <time>1245363856</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="137">
+    <srcmd5>5857006dd186ee5f398318946fd2a8f7</srcmd5>
+    <version>0.4</version>
+    <time>1245363856</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="138">
+    <srcmd5>39f0202d603185e09106015ce35d8439</srcmd5>
+    <version>0.4</version>
+    <time>1259160924</time>
+    <user>autobuild</user>
+    <comment>Copy from X11:Utilities/xdmsc based on submit request 25055 from user WernerFink
+</comment>
+  </revision>
+  <revision rev="8" vrev="139">
+    <srcmd5>9bae0dd9b5bbc38e0460cadfbfd277a1</srcmd5>
+    <version>0.4</version>
+    <time>1268926550</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="141">
+    <srcmd5>9bae0dd9b5bbc38e0460cadfbfd277a1</srcmd5>
+    <version>0.4</version>
+    <time>1278667395</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="142">
+    <srcmd5>9bae0dd9b5bbc38e0460cadfbfd277a1</srcmd5>
+    <version>0.4</version>
+    <time>1278678625</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="145">
+    <srcmd5>9bae0dd9b5bbc38e0460cadfbfd277a1</srcmd5>
+    <version>0.4</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="147">
+    <srcmd5>9bae0dd9b5bbc38e0460cadfbfd277a1</srcmd5>
+    <version>0.4</version>
+    <time>1319182583</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>97247473fed4791befb07dac89d6770b</srcmd5>
+    <version>0.5</version>
+    <time>1323290472</time>
+    <user>coolo</user>
+    <comment>- I prefere GPL-2.0 
+
+- yast's license is GPLv2, which would require a COPYING, which is
+  overkill for this package. So declare it MIT</comment>
+    <requestid>95690</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>97247473fed4791befb07dac89d6770b</srcmd5>
+    <version>0.5</version>
+    <time>1340184341</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>97247473fed4791befb07dac89d6770b</srcmd5>
+    <version>0.5</version>
+    <time>1359110602</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>97247473fed4791befb07dac89d6770b</srcmd5>
+    <version>0.5</version>
+    <time>1379665010</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="9">
+    <srcmd5>97247473fed4791befb07dac89d6770b</srcmd5>
+    <version>0.5</version>
+    <time>1409303693</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>136b93165c23e2fd72b2f3e9436678b4</srcmd5>
+    <version>0.6</version>
+    <time>1514028002</time>
+    <user>dimstar_suse</user>
+    <comment>- Move forward to systemd based usage 
+
+- Use the %_fillupdir macro at installation time as well 
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)</comment>
+    <requestid>558770</requestid>
+  </revision>
+</revisionlist>

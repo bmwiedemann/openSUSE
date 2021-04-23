@@ -1,0 +1,11 @@
+<package name="tclx" project="openSUSE:Factory">
+  <title>TclX - Extended Tcl</title>
+  <description>Extended Tcl is a superset of standard Tcl. Extended Tcl has three
+basic functional areas: A set of new commands, a Tcl shell (a Unix
+shell-style command line and interactive environment), and a
+user-extensible library of useful Tcl procedures, any of which can be
+automatically loaded on the first attempt to execute it.
+
+In addition, a detailed help system is available for Tcl/Tk: tclhelp.</description>
+  <devel project="devel:languages:tcl" package="tclx"/>
+</package>

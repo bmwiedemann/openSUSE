@@ -1,0 +1,5 @@
+<package name="helm" project="openSUSE:Factory">
+  <title>The Kubernetes Package Manager</title>
+  <description>Helm is a tool for managing Kubernetes charts. Charts are packages of pre-configured Kubernetes resources.</description>
+  <devel project="devel:kubic" package="helm"/>
+</package>

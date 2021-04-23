@@ -1,0 +1,75 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bcb738c3670582349cf941534216fe2a</srcmd5>
+    <version>0.1.0</version>
+    <time>1518601808</time>
+    <user>dimstar_suse</user>
+    <comment>New azure sdk component</comment>
+    <requestid>575919</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9aa0dd28fe4dfee00d98e99ae800ddeb</srcmd5>
+    <version>0.3.0</version>
+    <time>1537971320</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to 4.0.0</comment>
+    <requestid>637987</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0263bc37b3c74d5245ffd4b4a938be7b</srcmd5>
+    <version>0.3.1</version>
+    <time>1557833777</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 694323 from glaubitz)</comment>
+    <requestid>694461</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fd4029d39ae423fb91fefb222d9664bd</srcmd5>
+    <version>0.4.0</version>
+    <time>1570710673</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Python Azure SDK to latest version (forwarded request 735241 from glaubitz)</comment>
+    <requestid>735738</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>913dbcc1764065eac89f2301af2e3b12</srcmd5>
+    <version>0.6.0</version>
+    <time>1574932550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>751423</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>89849fd8b165a9a5f5ea6bb4bea731fc</srcmd5>
+    <version>0.8.0</version>
+    <time>1601652132</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.8.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Rename HISTORY.rst to CHANGELOG.md in %files section
+- Rename README.rst to README.md in %files section (forwarded request 830764 from glaubitz)</comment>
+    <requestid>830903</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6a0083feb075a965542654214e483b93</srcmd5>
+    <version>0.8.0</version>
+    <time>1607548800</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>853971</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5518938beca2f3b6f2d1c6385408b11d</srcmd5>
+    <version>1.0.0b1</version>
+    <time>1610051254</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 861350 from glaubitz)</comment>
+    <requestid>861435</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Mon Jan 04 02:54:30 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to version 1.2.4
+  * Fix a few minor metadata issues
+  * Fix initial noise with Piano (zero comb filter and voices on
+    startup)
+  * Fix invalid Vocoder preset description
+  * Fix misleading indentation warnings with GCC 6
+  * Update build system
+  * Use rdfs:label for port groups
+
+-------------------------------------------------------------------
+Thu Jun 20 12:59:44 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to latest git commit to have python3 support
+- Added _service
+
+-------------------------------------------------------------------
+Sun Feb  8 21:43:23 UTC 2015 - pztrn@pztrn.name
+
+- Initial commit and build.

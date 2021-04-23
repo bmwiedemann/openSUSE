@@ -1,0 +1,96 @@
+-------------------------------------------------------------------
+Mon Sep  4 11:49:53 UTC 2017 - mpluskal@suse.com
+
+- Small packaging adjustements
+
+-------------------------------------------------------------------
+Sun Apr 12 10:06:59 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Use url for source
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Nov 10 12:26:05 CET 2006 - ro@suse.de
+
+- fix manpage permissions 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:25 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 16 19:41:16 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Thu Sep 30 15:39:43 CEST 2004 - postadal@suse.cz
+
+- removed dependency on kernel-source and set macro ST_BUFFER_BLOCKS on default value 32 (without-kernel-header.diff)
+
+-------------------------------------------------------------------
+Mon Apr 26 01:13:36 CEST 2004 - ro@suse.de
+
+- use RPM_OPT_FLAGS
+- add no-strict-aliasing
+
+-------------------------------------------------------------------
+Sat Jan 10 20:19:48 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Wed Jun  6 17:52:34 CEST 2001 - adostal@suse.cz
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------
+Thu Apr  5 12:15:18 CEST 2001 - cihlar@suse.cz
+
+- fixed neededforbuild
+
+-------------------------------------------------------------------
+Thu Feb  8 11:20:24 CET 2001 - cihlar@suse.cz
+
+- fixed neededforbuild
+
+-------------------------------------------------------------------
+Tue Oct 31 07:51:53 CET 2000 - cihlar@suse.de
+
+- updated to version 2.5.2
+- fixed copyright tag
+- used %{_mandir}
+
+-------------------------------------------------------------------
+Mon May 15 11:38:59 CEST 2000 - cihlar@suse.cz
+
+- Group sorted 
+
+-------------------------------------------------------------------
+Tue Apr  4 15:00:58 CEST 2000 - cihlar@suse.cz
+
+- added BuildRoot 
+
+-------------------------------------------------------------------
+Tue Jan 18 00:59:21 CET 2000 - ro@suse.de
+
+- man -> usr/share/man 
+
+-------------------------------------------------------------------
+Thu Oct 28 08:39:17 CEST 1999 - ro@suse.de
+
+- filelist fixed 
+
+-------------------------------------------------------------------
+Wed Oct 27 23:56:40 MEST 1999 - ro@suse.de
+
+- created package (version 2.4.21) 
+

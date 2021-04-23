@@ -1,0 +1,5 @@
+<package name="povray" project="openSUSE:Factory">
+  <title>povray</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="graphics" package="povray"/>
+</package>

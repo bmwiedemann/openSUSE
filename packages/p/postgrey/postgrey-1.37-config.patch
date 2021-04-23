@@ -1,0 +1,354 @@
+diff -rNU 15 ../postgrey-1.37-o/README ./README
+--- ../postgrey-1.37-o/README	2015-07-23 23:04:07.000000000 +0200
++++ ./README	2016-10-14 01:33:15.000000000 +0200
+@@ -9,31 +9,31 @@
+ 
+ - Perl >= 5.6.0
+ - Net::Server (Perl Module)
+ - IO::Multiplex (Perl Module)
+ - BerkeleyDB (Perl Module)
+ - Berkeley DB >= 4.1 (Library)
+ - Digest::SHA (Perl Module, only for --privacy option)
+ - NetAddr::IP
+ 
+ 
+ Documentation
+ -------------
+ 
+ See POD documentation in postgrey. Execute:
+ 
+-  perldoc postgrey
++  man postgrey
+ 
+ See also Postgrey's homepage:
+ 
+   http://postgrey.schweikert.ch/
+ 
+ 
+ Mailing-List and getting Help
+ -----------------------------
+ 
+ There is a mailing-list for the discussion of postgrey, where you can
+ also ask for help in case of trouble. To subscribe, send a mail with
+ subject 'subscribe' to:
+ 
+   postgrey-request@list.ee.ethz.ch 
+   
+diff -rNU 15 ../postgrey-1.37-o/contrib/postgreyreport ./contrib/postgreyreport
+--- ../postgrey-1.37-o/contrib/postgreyreport	2013-12-12 11:32:41.000000000 +0100
++++ ./contrib/postgreyreport	2016-10-14 01:34:27.000000000 +0200
+@@ -12,31 +12,31 @@
+ #use Net::RBLClient;
+ my $VERSION='1.14.3 (20100321)';
+ 
+ # used in maillog processing
+ my $RE_revdns_ip   	= qr/ ([^\[\s]+)\[(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\]/;	# ptr[1.2.3.4]
+ my $RE_reject 		= qr/reject: /;
+ my $RE_triplet 		= qr/$RE_revdns_ip: 450 .+from=<([^>]+)> to=<([^>]+)>/;
+ 
+ my $dns; my %dns_cache; 		# used for --check_sender 
+ my $rbl = undef;			# Net::RBLClient object
+ select((select(STDOUT), $| = 1)[0]); 	# Unbuffer standard output.
+ 
+ # default options, override via command line
+ my %opt = ( 	
+ 	user 			=> 'postgrey',
+-	dbdir 			=> '/var/spool/postfix/postgrey',
++	dbdir 			=> '/var/lib/postgrey',
+ 	delay			=> 300,
+ 	return_string		=> 'Greylisted',	# match on this string
+ 
+ 	check_sender		=> '',			# = mx,a,mx/24,a/24 # todo=spf - uses Net::DNS
+ 	show_tries		=> 0,			# number of greylist attempts within --delay
+ 	separate_by_subnet	=> '',			# if not blank output this string for every new /24
+ 	separate_by_ip	   	=> '',			# if not blank output this string for every new IP
+ 	single_line	   	=> 1,			# output everything on a single line? (grouping enabled if false )
+ 	tab			=> 0,			# use tabs as separators, not spaces (only in single line mode)
+ 	show_time		=> 0,			# show entry time in maillog
+ 	
+ 	skip_dnsbl		=> [],			# list of DNSBL servers to check and skip reporting for
+ 	skip_clients		=> [],			# files of clients to skip reporting	
+ 	skip_pool		=> 0,			# skip entries that appear to be a provider pool (last 2 ips in ptr)
+ 	match_clients		=> [], 			# files of ONLY clients to report on
+@@ -582,31 +582,31 @@
+ 
+ 
+ 
+ =head1 NAME
+ 
+ postgreyreport - Fatal report for Postfix Greylisting Policy Server
+ 
+ =head1 SYNOPSIS
+ 
+ B<postgreyreport> [I<options>...]
+ 
+  -h, --help                   display this help and exit
+      --version		      display version and exit
+ 
+      --user=USER              run as USER (default: postgrey)
+-     --dbdir=PATH             find db files in PATH (default: /var/spool/postfix/postgrey)
++     --dbdir=PATH             find db files in PATH (default: /var/lib/postgrey)
+      --delay=N                report triplets that did not try again after N seconds (default: 300)
+      --greylist-text=TXT      text to match on for greylist maillog lines
+ 
+      --skip_pool	      Skip report for 'subscriber pools' ( last 2 octets of IP found in PTR name )
+      --skip_dnsbl=RBL	      RBL server to query and skip reporting for any listed hosts (SLOW!!)
+      --skip_clients=FILE      PTR or IP or REGEXP of clients to skip in report        
+      --match_clients=FILE     *ONLY* report if fatal *AND* PTR/IP of client matches
+      
+      --show_tries	      display the number of attempts failed triplets made in first column
+      --show_time	      show entry time in maillog (single line only)
+      --tab		      use tabs as separators for easy cut(1)ting
+ 
+      --nosingle_line	      display sender/recipients grouped by ptr - ip
+      --separate_by_subnet=TXT display TXT for every new /24 (ex: "=================\n" )
+      --separate_by_ip=TXT     display TXT for every new IP  (ex: "\n")
+diff -rNU 15 ../postgrey-1.37-o/postgrey ./postgrey
+--- ../postgrey-1.37-o/postgrey	2016-09-22 10:09:38.000000000 +0200
++++ ./postgrey	2016-10-14 01:50:20.000000000 +0200
+@@ -12,32 +12,32 @@
+ use Pod::Usage;
+ use Getopt::Long 2.25 qw(:config posix_default no_ignore_case);
+ use NetAddr::IP;
+ use Net::Server; # used only to find out which version we use
+ use Net::Server::Multiplex;
+ use BerkeleyDB;
+ use Fcntl ':flock'; # import LOCK_* constants
+ use Sys::Hostname;
+ use Sys::Syslog; # used only to find out which version we use
+ use POSIX qw(strftime setlocale LC_ALL);
+ 
+ use vars qw(@ISA);
+ @ISA = qw(Net::Server::Multiplex);
+ 
+ my $VERSION = '1.37';
+-my $DEFAULT_DBDIR = '/var/spool/postfix/postgrey';
+-my $CONFIG_DIR = '/etc/postfix';
++my $DEFAULT_DBDIR = '/var/lib/postgrey';
++my $CONFIG_DIR = '/etc/postgrey';
+ 
+ sub read_clients_whitelists($)
+ {
+     my ($self) = @_;
+ 
+     my @whitelist_clients = ();
+     my @whitelist_ips = ();
+     for my $f (@{$self->{postgrey}{whitelist_clients_files}}) {
+         if(open(CLIENTS, $f)) {
+             while(<CLIENTS>) {
+                 s/#.*$//; s/^\s+//; s/\s+$//; next if $_ eq '';
+                 if(/^\/(\S+)\/$/) {
+                     # regular expression
+                     push @whitelist_clients, qr{$1}i;
+                 }
+@@ -613,34 +613,34 @@
+         postgrey => {
+             delay            => $opt{delay}     || 300,
+             max_age          => $opt{'max-age'} || 35,
+             last_maint       => time,
+             last_maint_keys  => 0, # do it on the first night
+             lookup_by_host   => $opt{'lookup-by-host'},
+             ipv4cidr         => $opt{'ipv4cidr'} || 24,
+             ipv6cidr         => $opt{'ipv6cidr'} || 64,            
+             awl_clients      => defined $opt{'auto-whitelist-clients'} ?
+                 ($opt{'auto-whitelist-clients'} ne '' ?
+                     $opt{'auto-whitelist-clients'} : 5) : 5,
+             retry_window     => $retry_window,
+             greylist_action  => $opt{'greylist-action'} || 'DEFER_IF_PERMIT',
+             greylist_text    => $opt{'greylist-text'} || 'Greylisted, see http://postgrey.schweikert.ch/help/%r.html',
+             whitelist_clients_files    => $opt{'whitelist-clients'} ||
+-                [ "$CONFIG_DIR/postgrey_whitelist_clients" ,
+-                  "$CONFIG_DIR/postgrey_whitelist_clients.local" ],
++                [ "$CONFIG_DIR/whitelist_clients" ,
++                  "$CONFIG_DIR/whitelist_clients.local" ],
+             whitelist_recipients_files => $opt{'whitelist-recipients'} ||
+-                [ "$CONFIG_DIR/postgrey_whitelist_recipients" ],
++                [ "$CONFIG_DIR/whitelist_recipients" ],
+             privacy => defined $opt{'privacy'},
+             hostname => defined $opt{hostname} ? $opt{hostname} : hostname,
+             exim => defined $opt{'exim'},
+             x_greylist_header  => $opt{'x-greylist-header'} || 'X-Greylist: delayed %t seconds by postgrey-%v at %h; %d',
+         },
+     }, 'postgrey';
+ 
+     # max_age is in days
+     $server->{postgrey}{max_age}*=3600*24;
+ 
+     # be sure to put in syslog any warnings / fatal errors
+     if(defined $server->{server}{log_file} and $server->{server}{log_file} eq 'Sys::Syslog') {
+         $SIG{__WARN__} = sub { Sys::Syslog::syslog('warning', '%s', "WARNING: $_[0]") };
+         $SIG{__DIE__}  = sub { Sys::Syslog::syslog('crit', '%s', "FATAL: $_[0]"); die @_; };
+     }
+@@ -800,126 +800,126 @@
+ 
+ B<postgrey> [I<options>...]
+ 
+  -h, --help              display this help and exit
+      --version           output version information and exit
+  -v, --verbose           increase verbosity level
+      --syslog-facility   Syslog facility to use (default mail)
+  -q, --quiet             decrease verbosity level
+  -u, --unix=PATH         listen on unix socket PATH
+      --socketmode=MODE   unix socket permission (default 0666)
+  -i, --inet=[HOST:]PORT  listen on PORT, localhost if HOST is not specified
+  -d, --daemonize         run in the background
+      --pidfile=PATH      put daemon pid into this file
+      --user=USER         run as USER (default: postgrey)
+      --group=GROUP       run as group GROUP (default: nogroup)
+-     --dbdir=PATH        put db files in PATH (default: /var/spool/postfix/postgrey)
++     --dbdir=PATH        put db files in PATH (default: /var/lib/postgrey)
+      --delay=N           greylist for N seconds (default: 300)
+      --max-age=N         delete entries older than N days since the last time
+                          that they have been seen (default: 35)
+      --retry-window=N    allow only N days for the first retrial (default: 2)
+                          append 'h' if you want to specify it in hours
+      --greylist-action=A if greylisted, return A to Postfix (default: DEFER_IF_PERMIT)
+      --greylist-text=TXT response when a mail is greylisted
+                          (default: Greylisted + help url, see below)
+      --lookup-by-subnet  strip the last N bits from IP addresses, determined by ipv4cidr and ipv6cidr (default)
+      --ipv4cidr=N        What cidr to use for the subnet on IPv4 addresses when using lookup-by-subnet (default: 24)
+      --ipv6cidr=N        What cidr to use for the subnet on IPv6 addresses when using lookup-by-subnet (default: 64)
+      --lookup-by-host    do not strip the last 8 bits from IP addresses
+      --privacy           store data using one-way hash functions
+      --hostname=NAME     set the hostname (default: `hostname`)
+      --exim              don't reuse a socket for more than one query (exim compatible)
+-     --whitelist-clients=FILE     default: /etc/postfix/postgrey_whitelist_clients
+-     --whitelist-recipients=FILE  default: /etc/postfix/postgrey_whitelist_recipients
++     --whitelist-clients=FILE     default: /etc/postfix/whitelist_clients
++     --whitelist-recipients=FILE  default: /etc/postfix/whitelist_recipients
+      --auto-whitelist-clients=N   whitelist host after first successful delivery
+                                   N is the minimal count of mails before a client is 
+                                   whitelisted (turned on by default with value 5)
+                                   specify N=0 to disable.
+      --listen-queue-size=N        allow for N waiting connections to our socket
+      --x-greylist-header=TXT      header when a mail was delayed by greylisting
+                                   default: X-Greylist: delayed <seconds> seconds by postgrey-<version> at <server>; <date>
+ 
+  Note that the --whitelist-x options can be specified multiple times,
+- and that per default /etc/postfix/postgrey_whitelist_clients.local is
++ and that per default /etc/postfix/whitelist_clients.local is
+  also read, so that you can put there local entries.
+ 
+ =head1 DESCRIPTION
+ 
+ Postgrey is a Postfix policy server implementing greylisting.
+ 
+ When a request for delivery of a mail is received by Postfix via SMTP, the
+ triplet C<CLIENT_IP> / C<SENDER> / C<RECIPIENT> is built. If it is the first
+ time that this triplet is seen, or if the triplet was first seen less than
+ I<delay> seconds (300 is the default), then the mail gets rejected with a
+ temporary error. Hopefully spammers or viruses will not try again later, as it
+ is however required per RFC.
+ 
+ Note that you shouldn't use the --lookup-by-host option unless you know what
+ you are doing: there are a lot of mail servers that use a pool of addresses to
+ send emails, so that they can change IP every time they try again. That's why
+ without this option postgrey will strip the last byte of the IP address when
+ doing lookups in the database.
+ 
+ =head2 Installation
+ 
+ =over 4
+ 
+ =item *
+ 
+ Create a C<postgrey> user and the directory where to put the database I<dbdir>
+-(default: C</var/spool/postfix/postgrey>)
++(default: C</var/lib/postgrey>)
+ 
+ =item *
+ 
+ Write an init script to start postgrey at boot and start it. Like this for example:
+ 
+  postgrey --inet=10023 -d
+ 
+ F<contrib/postgrey.init> in the postgrey source distribution includes a
+ LSB-compliant init script by Adrian von Bidder for the Debian system.
+ 
+ =item *
+ 
+ Put something like this in /etc/main.cf:
+ 
+  smtpd_recipient_restrictions =
+                permit_mynetworks
+                ...
+                reject_unauth_destination
+                check_policy_service inet:127.0.0.1:10023
+ 
+ =item *
+ 
+-Install the provided postgrey_whitelist_clients and
+-postgrey_whitelist_recipients in /etc/postfix.
++Install the provided whitelist_clients and
++whitelist_recipients in /etc/postgrey.
+ 
+ =item *
+ 
+-Put in /etc/postfix/postgrey_whitelist_recipients users that do not want
++Put in /etc/postgrey/whitelist_recipients users that do not want
+ greylisting.
+ 
+ =back
+ 
+ =head2 Whitelists
+ 
+ Whitelists allow you to specify client addresses or recipient address, for
+ which no greylisting should be done. Per default postgrey will read the
+ following files:
+ 
+- /etc/postfix/postgrey_whitelist_clients
+- /etc/postfix/postgrey_whitelist_clients.local
+- /etc/postfix/postgrey_whitelist_recipients
++ /etc/postgrey/whitelist_clients
++ /etc/postgrey/whitelist_clients.local
++ /etc/postgrey/whitelist_recipients
+ 
+ You can specify alternative paths with the --whitelist-x options.
+ 
+ Postgrey whitelists follow similar syntax rules as Postfix access tables.
+ The following can be specified for B<recipient addresses>:
+ 
+ =over 10
+ 
+ =item domain.addr
+ 
+ C<domain.addr> domain and subdomains.
+ 
+ =item name@
+ 
+ C<name@.*> and extended addresses C<name+blabla@.*>.
+diff -rNU 15 ../postgrey-1.37-o/postgrey_whitelist_clients ./postgrey_whitelist_clients
+--- ../postgrey-1.37-o/postgrey_whitelist_clients	2016-09-22 10:09:38.000000000 +0200
++++ ./postgrey_whitelist_clients	2016-10-14 01:43:55.000000000 +0200
+@@ -1,18 +1,18 @@
+ # postgrey whitelist for mail client hostnames
+ # --------------------------------------------
+-# put this file in /etc/postfix or specify its path
++# put this file in /etc/postgrey or specify its path
+ # with --whitelist-clients=xxx
+ #
+ # postgrey version: 1.37, build date: 2016-09-22
+ 
+ # greylisting.org: Southwest Airlines (unique sender, no retry)
+ southwest.com
+ # greylisting.org: isp.belgacom.be (wierd retry pattern)
+ isp.belgacom.be
+ # greylisting.org: Ameritrade (no retry)
+ ameritradeinfo.com
+ # greylisting.org: Amazon.com (unique sender with letters)
+ amazon.com
+ # 2004-05-20: Linux kernel mailing-list (unique sender with letters)
+ vger.kernel.org
+ # 2004-06-02: karger.ch, no retry
+diff -rNU 15 ../postgrey-1.37-o/postgrey_whitelist_recipients ./postgrey_whitelist_recipients
+--- ../postgrey-1.37-o/postgrey_whitelist_recipients	2016-09-22 10:09:38.000000000 +0200
++++ ./postgrey_whitelist_recipients	2016-10-14 01:44:27.000000000 +0200
+@@ -1,7 +1,7 @@
+ # postgrey whitelist for mail recipients
+ # --------------------------------------
+-# put this file in /etc/postfix or specify its path
++# put this file in /etc/postgrey or specify its path
+ # with --whitelist-recipients=xxx
+ 
+ postmaster@
+ abuse@

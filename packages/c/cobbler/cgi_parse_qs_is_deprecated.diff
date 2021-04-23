@@ -1,0 +1,26 @@
+diff --git a/cobbler/templar.py b/cobbler/templar.py
+index 9720a740e..aeb161214 100644
+--- a/cobbler/templar.py
++++ b/cobbler/templar.py
+@@ -132,7 +132,7 @@ def render(self, data_input, search_table, out_path, subject=None, template_type
+         # Now apply some magic post-filtering that is used by "cobbler import" and some other places. Forcing folks to
+         # double escape things would be very unwelcome.
+         hp = search_table.get("http_port", "80")
+-        server = search_table.get("server", "server.example.org")
++        server = search_table.get("server", self.settings.server)
+         if hp not in (80, '80'):
+             repstr = "%s:%s" % (server, hp)
+         else:
+diff --git a/svc/services.py b/svc/services.py
+index 7001e0258..fa4be4aac 100644
+--- a/svc/services.py
++++ b/svc/services.py
+@@ -63,7 +63,7 @@ def application(environ, start_response):
+             form[field] = t
+         label = not label
+ 
+-    form["query_string"] = cgi.parse_qs(environ['QUERY_STRING'])
++    form["query_string"] = urllib.parse.parse_qs(environ['QUERY_STRING'])
+ 
+     # This MAC header is set by anaconda during a kickstart booted with the
+     # kssendmac kernel option. The field will appear here as something

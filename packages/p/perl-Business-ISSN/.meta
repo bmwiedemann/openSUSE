@@ -1,0 +1,5 @@
+<package name="perl-Business-ISSN" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Business-ISSN"/>
+</package>

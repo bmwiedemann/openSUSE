@@ -1,0 +1,155 @@
+<revisionlist>
+  <revision rev="1" vrev="354">
+    <srcmd5>eb0ad838dc419199384a18e96642a1cf</srcmd5>
+    <version>1.3</version>
+    <time>1168904002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="488">
+    <srcmd5>eb0ad838dc419199384a18e96642a1cf</srcmd5>
+    <version>1.3</version>
+    <time>1168904002</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="489">
+    <srcmd5>fe53e8dd7cc459a4f69f5db6aa8801fb</srcmd5>
+    <version>1.3</version>
+    <time>1224729880</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="491">
+    <srcmd5>fe53e8dd7cc459a4f69f5db6aa8801fb</srcmd5>
+    <version>1.3</version>
+    <time>1224729880</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="492">
+    <srcmd5>2951a43588b32efb0a0f7c087e90b654</srcmd5>
+    <version>1.3</version>
+    <time>1268925783</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="494">
+    <srcmd5>2951a43588b32efb0a0f7c087e90b654</srcmd5>
+    <version>1.3</version>
+    <time>1278667382</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="495">
+    <srcmd5>2951a43588b32efb0a0f7c087e90b654</srcmd5>
+    <version>1.3</version>
+    <time>1278678612</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>57e12334063f4669d92a3e339e6f973f</srcmd5>
+    <version>1.5</version>
+    <time>1290252829</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53398 from user mvyskocil
+</comment>
+    <requestid>53398</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>cab297de5c55c3991c6e6f1e055ad7d1</srcmd5>
+    <version>1.5</version>
+    <time>1290252835</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53398
+</comment>
+  </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>cab297de5c55c3991c6e6f1e055ad7d1</srcmd5>
+    <version>1.5</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>b277b64617a137960cdcbae6357bd110</srcmd5>
+    <version>1.5</version>
+    <time>1300813262</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 64818 from user licensedigger
+</comment>
+    <requestid>64818</requestid>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>b9a15a7172ba3cc38d1a2bf6900c0db9</srcmd5>
+    <version>1.5</version>
+    <time>1300813291</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 64818
+</comment>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>b9a15a7172ba3cc38d1a2bf6900c0db9</srcmd5>
+    <version>1.5</version>
+    <time>1319182370</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>c84e0ee6306308dd7dad33ce7c71e126</srcmd5>
+    <version>1.5</version>
+    <time>1323193983</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="12">
+    <srcmd5>c84e0ee6306308dd7dad33ce7c71e126</srcmd5>
+    <version>1.5</version>
+    <time>1340184017</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="14">
+    <srcmd5>c84e0ee6306308dd7dad33ce7c71e126</srcmd5>
+    <version>1.5</version>
+    <time>1359109951</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="15">
+    <srcmd5>2e8392f42bc8aa660677fe0b27866dbc</srcmd5>
+    <version>1.5</version>
+    <time>1366088090</time>
+    <user>coolo</user>
+    <comment>- Cleanup spec file
+- Add Source URL, see https://en.opensuse.org/SourceUrls (forwarded request 164040 from namtrac)</comment>
+    <requestid>164099</requestid>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>2e8392f42bc8aa660677fe0b27866dbc</srcmd5>
+    <version>1.5</version>
+    <time>1379664065</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7f4e68ebd75fa6684a18fa02a5caa89f</srcmd5>
+    <version>1.6</version>
+    <time>1399032100</time>
+    <user>coolo</user>
+    <comment>- updated to 1.6:
+    * Improved messages and suppressed unnecessary error messages
+    * Added support for PR_MCE_KILL</comment>
+    <requestid>231983</requestid>
+  </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>7f4e68ebd75fa6684a18fa02a5caa89f</srcmd5>
+    <version>1.6</version>
+    <time>1409302744</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>7f4bfb7c1a08335aec366858cf8b4daa</srcmd5>
+    <version>1.6</version>
+    <time>1438899403</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>320050</requestid>
+  </revision>
+</revisionlist>

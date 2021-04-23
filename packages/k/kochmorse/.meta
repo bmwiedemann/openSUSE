@@ -1,0 +1,8 @@
+<package name="kochmorse" project="openSUSE:Factory">
+  <title>A simple morse tutor using the Koch method</title>
+  <description>A simple morse tutor using the Koch method.
+
+</description>
+  <devel project="hardware:sdr" package="kochmorse"/>
+  <url>https://github.com/hmatuschek/kochmorse</url>
+</package>

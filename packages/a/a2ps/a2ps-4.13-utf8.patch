@@ -1,0 +1,150 @@
+--- etc/a2ps_cfg.in
++++ etc/a2ps_cfg.in	2008-07-15 14:12:03.044199079 +0200
+@@ -266,6 +266,9 @@ $3p<-$3p> $4l# lines\n||
+ #               rm is done by a2ps itself.  No need to quote.
+ #
+ 
++########## UTF-8 filter for patched a2ps only
++Delegation: utf8 utf8:plain iconv -c -f UTF-8 -t $x
++
+ ########## Compressed files
+ # A compressed file should be decompressed and processed by a2ps
+ # A consequence is that the decompressed file may be delegated.
+--- sheets/sheets.map
++++ sheets/sheets.map	2008-07-15 17:24:53.922318567 +0200
+@@ -144,6 +144,9 @@ gmake:	/GNUmakefile/	/*\/GNUmakefile/
+ plain:	/*.doc/
+ 	/*.txt/
+ 
++# UTF-8 type for patched a2ps only
++utf8:	<UTF-8 Unicode text*>
++
+ # Ada files
+ ada:	/*.ad[abs]/
+ 
+--- src/buffer.c
++++ src/buffer.c	2008-07-15 17:11:53.197276387 +0200
+@@ -193,9 +193,24 @@ buffer_release (buffer_t * buffer)
+ {
+   /* VALUE is malloc'd only if BUFFER->LOWER_CASE */
+   if (buffer->lower_case)
+-    free (buffer->value);
++    {
++      free (buffer->value);
++      buffer->value = NULL;
++      buffer->allocsize = 0;
++    }    
+   /* I don't know how this one should be used */
+-  /*  obstack_free (&buffer->obstack, NULL); */
++  if (buffer->buf)
++    {
++      free(buffer->buf);
++      buffer->buf = NULL;
++      buffer->bufsize = 0;
++      buffer->bufoffset = 0;
++    }
++  if (buffer->len == 0)
++    {
++      buffer->content = obstack_finish(&buffer->obstack);
++    }
++  obstack_free (&buffer->obstack, NULL);
+ }
+ 
+ void
+--- src/generate.c
++++ src/generate.c	2008-07-15 17:12:02.778172717 +0200
+@@ -35,7 +35,7 @@ char *sample_tmpname = NULL;
+  */
+ enum style_kind_e
+ {
+-  no_style, binary, sshparser, unprintable, delegate
++  no_style, binary, sshparser, unprintable, delegate, utf8
+ };
+ 
+ static enum style_kind_e
+@@ -49,6 +49,8 @@ string_to_style_kind (const char * strin
+     return no_style;
+   else if (strequ (string, "delegate"))
+     return delegate;
++  else if (strequ (string, "utf8"))
++    return utf8;
+   return sshparser;
+ }
+ /************************************************************************/
+@@ -360,6 +362,76 @@ print (uchar * filename, int * native_jo
+       msg_file_pages_printed (job, _("plain"));
+       (*native_jobs)++;
+       break;
++
++    case utf8:
++      {
++	char * argv[21], * ptr;
++	int n, argc, pfd[2];
++	pid_t pid;
++
++	if ((contract = get_subcontract(file_job->type, "plain")) == (struct delegation*)0)
++	  goto plain_print;
++
++	argc = 1;
++	argv[0] = ptr = contract->command;
++	while ((ptr = (strchr(ptr, ' '))))
++	  {
++	    *ptr++ = '\0';
++	    if (argc < 20)
++	      argv[argc++] = ptr;
++	  }
++
++	for (n = 0; n < argc; n++)
++	  if (strstr(argv[n], "$x"))
++	    argv[n] = job->requested_encoding_name;
++	argv[argc] = (char*)0;
++
++	if (pipe(pfd) < 0)
++	  {
++	    message (msg_report2, (stderr, _("[%s (%s): failed.  Ignored]\n"), file_job->name, buf));
++	    break;
++	  }
++
++	switch ((pid = fork()))
++	{
++	case -1:
++	  close(pfd[0]);
++	  close(pfd[1]);
++	  goto err;
++	  break;
++	case  0:
++	  if ((n = fileno(input_buffer->stream)) == 0)
++	    {
++	      char * tmpfile = NULL;
++	      FILE * tmp;
++	      tempname_ensure(tmpfile);
++	      buffer_save(input_buffer, tmpfile);
++	      tmp = xrfopen(tmpfile);
++	      n = fileno(tmp);
++	      free(tmpfile);
++	    }
++	  close(0);
++	  if (dup(n) < 0)
++	    goto err;
++	  close(1);
++	  if (dup(pfd[1]) < 0)
++	    goto err;
++	  close(n);
++	  close(pfd[0]);
++	  close(pfd[1]);
++	  execvp(argv[0], argv);
++	err:
++	  message (msg_report2, (stderr, _("[%s (%s): failed.  Ignored]\n"), file_job->name, buf));
++	  break;
++	default:
++	  close(pfd[1]);
++	  input_buffer->bufoffset = input_buffer->bufsize;
++	  input_buffer->stream = fdopen(pfd[0], "r");
++	  input_buffer->pipe_p = true;
++	  goto plain_print;
++	}
++      break;
++      }
+     }
+ 
+   input_end (input_buffer);

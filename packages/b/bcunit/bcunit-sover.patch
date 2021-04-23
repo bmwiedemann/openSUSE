@@ -1,0 +1,10 @@
+--- a/BCUnit/Sources/CMakeLists.txt	2020-02-26 14:08:13.803879423 +0100
++++ b/BCUnit/Sources/CMakeLists.txt	2020-02-26 14:08:36.648004434 +0100
+@@ -176,6 +176,7 @@
+ endif()
+ if(ENABLE_SHARED)
+ 	add_library(bcunit SHARED ${SOURCE_FILES})
++    set_target_properties(bcunit PROPERTIES SOVERSION 1)
+ 	set_target_properties(bcunit PROPERTIES VERSION 1.0.1)
+ 	target_include_directories(bcunit PUBLIC
+ 		$<INSTALL_INTERFACE:include>

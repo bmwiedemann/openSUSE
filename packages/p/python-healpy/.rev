@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d047023ca4bdc76ba57573333cb34972</srcmd5>
+    <version>1.14.0</version>
+    <time>1608317974</time>
+    <user>dimstar_suse</user>
+    <comment>Python module for calculations on the sphere, based on the C++ library HEALPix</comment>
+    <requestid>856721</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5c9e17af1f80ec40f3cbfab5eeb8df91</srcmd5>
+    <version>1.14.0</version>
+    <time>1611348725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>865506</requestid>
+  </revision>
+</revisionlist>

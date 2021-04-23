@@ -1,0 +1,11 @@
+diff --git a/Makefile b/Makefile
+index 5ccc174..135350d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,5 @@
+ CC=gcc
+-CFLAGS=-I. -O3 -Wall
++CFLAGS+=-I. -O3 -Wall
+ DEPS = icmp.h tunnel.h
+ 
+ %.o: %.c $(DEPS)

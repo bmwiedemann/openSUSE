@@ -1,0 +1,197 @@
+<revisionlist>
+  <revision rev="1" vrev="2">
+    <srcmd5>d27616b51dd7a3c718afb1d15799c91c</srcmd5>
+    <version>1.0.0</version>
+    <time>1206676870</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5b6bd787fe005ececf38e226039334ee</srcmd5>
+    <version>1.0.5</version>
+    <time>1218847138</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f703a96c26154a54d09bd799e4d94468</srcmd5>
+    <version>1.0.5</version>
+    <time>1226007334</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a8c3e7aa1dcf99208a03d260b94f95fa</srcmd5>
+    <version>1.0.7</version>
+    <time>1247130165</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3803736518c9755046d608b7f6e376fb</srcmd5>
+    <version>1.0.7</version>
+    <time>1249341194</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1d82640975ba6b4c76c866d428d85546</srcmd5>
+    <version>1.0.7</version>
+    <time>1251490196</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/schroedinger based on submit request 19091 from user mseben
+</comment>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>1d82640975ba6b4c76c866d428d85546</srcmd5>
+    <version>1.0.7</version>
+    <time>1251490196</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:apps/schroedinger based on submit request 19091 from user mseben
+</comment>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>24746aba32f2c777f922ba520a3aa90c</srcmd5>
+    <version>1.0.7</version>
+    <time>1268926087</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1b11475287f4d03e15df99236b34627a</srcmd5>
+    <version>1.0.9</version>
+    <time>1270131513</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/schroedinger based on submit request 36482 from user prusnak
+</comment>
+    <requestid>36482</requestid>
+  </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1b11475287f4d03e15df99236b34627a</srcmd5>
+    <version>1.0.9</version>
+    <time>1278667388</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>1b11475287f4d03e15df99236b34627a</srcmd5>
+    <version>1.0.9</version>
+    <time>1278678618</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f022dad49eab1f868140df94337acb9e</srcmd5>
+    <version>1.0.10</version>
+    <time>1286802274</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/schroedinger based on submit request 50143 from user vuntz
+</comment>
+    <requestid>50143</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e7e37db0b0210d0e987824b6e042c69a</srcmd5>
+    <version>1.0.10</version>
+    <time>1292847220</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 56365 from user plater
+</comment>
+    <requestid>56365</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>d76be7646bb93302211427e786a0aa68</srcmd5>
+    <version>1.0.10</version>
+    <time>1292847239</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 56365
+</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>d76be7646bb93302211427e786a0aa68</srcmd5>
+    <version>1.0.10</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>bc2d8acdcf3a0f1a14f57716ebd0fd63</srcmd5>
+    <version>1.0.10</version>
+    <time>1303112743</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 67579 from user coolo
+</comment>
+    <requestid>67579</requestid>
+  </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>51c1189bd4c592eba8f276dc12b858d0</srcmd5>
+    <version>1.0.10</version>
+    <time>1303112783</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 67579
+</comment>
+  </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>51c1189bd4c592eba8f276dc12b858d0</srcmd5>
+    <version>1.0.10</version>
+    <time>1319182452</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="19" vrev="11">
+    <srcmd5>9a62ba3e17593f879e72604c6cde77e5</srcmd5>
+    <version>1.0.10</version>
+    <time>1324483253</time>
+    <user>coolo</user>
+    <comment>- fix license to be in spdx.org format (forwarded request 96774 from coolo)</comment>
+    <requestid>96776</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a9ebfe5aa2dd2e91779c26714eeb7118</srcmd5>
+    <version>1.0.11</version>
+    <time>1327404128</time>
+    <user>coolo</user>
+    <comment>Update to 1.0.11 (forwarded request 101099 from vuntz)</comment>
+    <requestid>101100</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>a9ebfe5aa2dd2e91779c26714eeb7118</srcmd5>
+    <version>1.0.11</version>
+    <time>1340184197</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>a9ebfe5aa2dd2e91779c26714eeb7118</srcmd5>
+    <version>1.0.11</version>
+    <time>1359110381</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>c66b2eb708c8f27e74bc751710a5c8cd</srcmd5>
+    <version>1.0.11</version>
+    <time>1359997308</time>
+    <user>coolo</user>
+    <comment>update license to new format (forwarded request 150718 from coolo)</comment>
+    <requestid>150721</requestid>
+  </revision>
+  <revision rev="24" vrev="8">
+    <srcmd5>c66b2eb708c8f27e74bc751710a5c8cd</srcmd5>
+    <version>1.0.11</version>
+    <time>1379664625</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>c66b2eb708c8f27e74bc751710a5c8cd</srcmd5>
+    <version>1.0.11</version>
+    <time>1409303328</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="26" vrev="11">
+    <srcmd5>690b4add002ecf4fbd8175d12e519898</srcmd5>
+    <version>1.0.11</version>
+    <time>1557263553</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with new orc by skiping testsuite subfolder as
+  we are not executing the tests anyway
+- Update URL
+- Adjust the Sources URL
+- Run spec-cleaner</comment>
+    <requestid>701038</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,72 @@
+-------------------------------------------------------------------
+Sun Jun  7 08:18:31 UTC 2015 - coolo@suse.com
+
+- updated to 0.013
+   see /usr/share/doc/packages/perl-Class-Std/Changes
+
+  
+  0.012 2015-05-24
+  
+      - pod fixed
+  
+      - better META.*
+  
+  0.013 2015-05-24
+  
+      - version in Class::Std::SCR
+
+-------------------------------------------------------------------
+Fri Nov 18 11:09:35 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Tue Nov 30 19:19:58 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Sep  8 22:34:52 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+- noarch pkg
+- bzipped/cleanup source
+
+-------------------------------------------------------------------
+Thu Dec 24 09:51:40 UTC 2009 - rbos@opensuse.org
+
+- Removed git repository information (thanks for all the work, Dan)
+- Fixed incompatibility with Perl 5.11+ label constraints
+- Remove unneeded dependency on version.pm
+
+-------------------------------------------------------------------
+Sat Jul 25 19:29:40 CEST 2009 - chris@computersalat.de
+
+- spec mods
+  * removed ^----------
+  * removed ^#---------
+
+-------------------------------------------------------------------
+Fri Jun 19 01:09:38 CEST 2009 - chris@computersalat.de
+
+- spec fix for perl-macros
+
+-------------------------------------------------------------------
+Wed Jun 17 00:29:53 CEST 2009 - chris@computersalat.de
+
+- added perl-macros
+  o autogen filelist with perl_gen_filelist
+
+-------------------------------------------------------------------
+Fri Jun 12 23:18:26 CEST 2009 - chris@computersalat.de
+
+- upgrade to new version 0.0.9
+- some spec mods
+  o deps
+  o autogen filelist
+
+-------------------------------------------------------------------
+Tue Dec 09 20:10:33 UTC 2007 - rbos@opensuse.org
+
+- Initial rpm build
+

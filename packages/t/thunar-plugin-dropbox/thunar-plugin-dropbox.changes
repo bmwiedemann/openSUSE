@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Sun May 31 14:43:05 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed sources 
+
+-------------------------------------------------------------------
+Sun May 31 14:21:30 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Update to version 0.3.1
+  * Port to thunarx-3
+  * Options grouped into submenu. 
+
+- Project has a new upstream
+- Drop obsolete thunar-dropbox-thunarx3.patch
+- Build system is now using cmake
+
+-------------------------------------------------------------------
+Mon Jan  7 17:41:37 UTC 2019 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Use "thunarx-3" for Leap 15 (at least in the Xfce repository).
+
+-------------------------------------------------------------------
+Mon Nov  5 00:02:03 UTC 2018 - Kyrill Detinov <lazy.kent@opensuse.org>
+
+- Add thunar-dropbox-thunarx3.patch: fix build with thunarx-3.
+
+-------------------------------------------------------------------
+Sat Mar 14 07:29:49 UTC 2015 - lazy.kent@opensuse.org
+
+- Update to 0.2.1.
+  * Fixed crash when files with invalid UTF-8 encoded filenames
+    were selected.
+  * Resolve symbolic links in paths.
+  * Install library with proper permissions, respect --libdir.
+- Drop thunar-plugin-dropbox-0.2.0-lib64.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Oct 17 13:48:04 UTC 2012 - lazy.kent@opensuse.org
+
+- Initial package created - 0.2.0.
+

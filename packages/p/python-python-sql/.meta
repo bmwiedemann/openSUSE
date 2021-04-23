@@ -1,0 +1,5 @@
+<package name="python-python-sql" project="openSUSE:Factory">
+  <title>Library to write SQL queries</title>
+  <description>python-sql is a library to write SQL queries in a pythonic way.</description>
+  <devel project="devel:languages:python" package="python-python-sql"/>
+</package>

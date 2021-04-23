@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Sat Jan  2 11:06:52 UTC 2021 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Only build Leap subpackage on Leap base and Tumbleweed based
+  distros subpackages on Tumbleweed base
+
+-------------------------------------------------------------------
+Tue Nov 17 12:21:00 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Add favicon.ico format
+
+-------------------------------------------------------------------
+Thu Oct 17 17:35:47 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
+Mon May  6 15:16:52 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Add viewBox and preserveAspectRatio to SVGs
+
+-------------------------------------------------------------------
+Sat Apr 13 23:01:06 UTC 2019 - Stasiek Michalski <hellcp@mailbox.org>
+
+- Initial package
+

@@ -1,0 +1,421 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4d58e4304f5081836c9766a6b38d3445</srcmd5>
+    <version>2.2.11</version>
+    <time>1168903740</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="27">
+    <srcmd5>9c899b6876459f34fb8399fdd6166724</srcmd5>
+    <version>2.2.11</version>
+    <time>1173968930</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>edd194a13115e12fb2ed3adf9890b9f4</srcmd5>
+    <version>2.2.12</version>
+    <time>1183591035</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bdef37ce36dbb6f9214a9ab8b2d48b01</srcmd5>
+    <version>2.2.13</version>
+    <time>1184440340</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fe1c442cfeadf4b043bab48c93dbe53a</srcmd5>
+    <version>2.2.14</version>
+    <time>1184579583</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0a75c1980b21dd482dd81ee8346436c5</srcmd5>
+    <version>2.2.17</version>
+    <time>1186685019</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a7895691fba18675fc9f41607de2929c</srcmd5>
+    <version>2.2.19</version>
+    <time>1193396898</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>44236158baf8a84c0461c50325884aec</srcmd5>
+    <version>2.2.20</version>
+    <time>1193657688</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>0967a7dc0045544869391dd080fd0ab5</srcmd5>
+    <version>2.2.20</version>
+    <time>1194306267</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b81b4ade260504e0b746134521329c0c</srcmd5>
+    <version>2.2.21</version>
+    <time>1194647552</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>f99910166af0d413ecf3e749f6bfa9f5</srcmd5>
+    <version>2.2.21</version>
+    <time>1195681247</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3237b4ec5a2afba18ecfcd5b2cdedfd4</srcmd5>
+    <version>2.2.22</version>
+    <time>1203035838</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="10">
+    <srcmd5>8e832609e632f8f0b9e40b03812fb5f7</srcmd5>
+    <version>2.2.22</version>
+    <time>1205431477</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>900c40f5223701518d132b940b7e9e21</srcmd5>
+    <version>2.2.22</version>
+    <time>1207833660</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="21">
+    <srcmd5>525dc82cd916449317693afeca7ecdc5</srcmd5>
+    <version>2.2.22</version>
+    <time>1208198172</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="28">
+    <srcmd5>bd8cacdab46b74c0851686db37861e54</srcmd5>
+    <version>2.2.22</version>
+    <time>1210373522</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="36">
+    <srcmd5>6a1bdbbbf323a1a6a989b54d87e42f03</srcmd5>
+    <version>2.2.22</version>
+    <time>1212764962</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>88490e22d3985e4d2a0414a2649fc127</srcmd5>
+    <version>2.3.1</version>
+    <time>1214262909</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="28">
+    <srcmd5>592dad48648f7fba77f89fb865a450cc</srcmd5>
+    <version>2.3.1</version>
+    <time>1220275661</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="30">
+    <srcmd5>d43928539d8019cadd19f1c4c2b3a520</srcmd5>
+    <version>2.3.1</version>
+    <time>1220662851</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="37">
+    <srcmd5>77c863a4286b199c8950a650c6bf9c36</srcmd5>
+    <version>2.3.1</version>
+    <time>1223306388</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="38">
+    <srcmd5>6bd90a957bdb640bf3db0de8686a5fe6</srcmd5>
+    <version>2.3.1</version>
+    <time>1224854658</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="39">
+    <srcmd5>1bb107e1528225fa7da2604e50276f79</srcmd5>
+    <version>2.3.1</version>
+    <time>1225213955</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="40">
+    <srcmd5>87d3f2228cd0ef7265519777f4aec37a</srcmd5>
+    <version>2.3.1</version>
+    <time>1225718219</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="41">
+    <srcmd5>b6b98c4d1add64a88d88d91c1af73530</srcmd5>
+    <version>2.3.1</version>
+    <time>1225929175</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="42">
+    <srcmd5>fc7c2423699c9835db66740deaa95677</srcmd5>
+    <version>2.3.1</version>
+    <time>1227278773</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="43">
+    <srcmd5>c400ce8c281c62dd358fcff1ca41c0cc</srcmd5>
+    <version>2.3.1</version>
+    <time>1233269167</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="46">
+    <srcmd5>66ecc811b582cc152b4c8fb13b5c4a76</srcmd5>
+    <version>2.3.1</version>
+    <time>1233703050</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="48">
+    <srcmd5>06cf59330f185ccb4797b60c0a98fe79</srcmd5>
+    <version>2.3.1</version>
+    <time>1234053763</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>87a2aa9fc468812e7e7f8486089f4f43</srcmd5>
+    <version>2.3.4</version>
+    <time>1242856508</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d96070b7c15a24738b1401eeaf29de48</srcmd5>
+    <version>2.3.5</version>
+    <time>1244451732</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>6c8670438b697a2a67d9b36426430875</srcmd5>
+    <version>2.3.5</version>
+    <time>1245077430</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>164cb003d5d433fc3091296ef6d6c988</srcmd5>
+    <version>2.3.5</version>
+    <time>1246629583</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c80850149941f8f6d5a011891c6011d9</srcmd5>
+    <version>2.3.7</version>
+    <time>1248731779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>c80850149941f8f6d5a011891c6011d9</srcmd5>
+    <version>2.3.7</version>
+    <time>1248731779</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>88d2816bf48bef77edfc6e5b0af023dd</srcmd5>
+    <version>2.3.7</version>
+    <time>1259927141</time>
+    <user>autobuild</user>
+    <comment>Copy from Linux-PAM/pam_krb5 based on submit request 25421 from user coolo
+</comment>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2f44de412111ec8706b72f1b92665972</srcmd5>
+    <version>2.3.10</version>
+    <time>1267786472</time>
+    <user>autobuild</user>
+    <comment>Copy from Linux-PAM/pam_krb5 based on submit request 34011 from user mcalmer
+</comment>
+    <requestid>34011</requestid>
+  </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>656f739b2ea49f5abb8bc0b90627f4ff</srcmd5>
+    <version>2.3.10</version>
+    <time>1268925279</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>a7fe7d9f921d31a27ff1032a7b815a62</srcmd5>
+    <version>2.3.11</version>
+    <time>1269274077</time>
+    <user>autobuild</user>
+    <comment>Copy from Linux-PAM/pam_krb5 based on submit request 35465 from user mcalmer
+</comment>
+    <requestid>35465</requestid>
+  </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>a7fe7d9f921d31a27ff1032a7b815a62</srcmd5>
+    <version>2.3.11</version>
+    <time>1278667375</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>a7fe7d9f921d31a27ff1032a7b815a62</srcmd5>
+    <version>2.3.11</version>
+    <time>1278678607</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>e99373682f41d03f49421c3b2db6b2ac</srcmd5>
+    <version>2.3.11</version>
+    <time>1290252866</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 53542 from user coolo
+</comment>
+    <requestid>53542</requestid>
+  </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>ed5c2d81346b96b39acdf6f7ce64d836</srcmd5>
+    <version>2.3.11</version>
+    <time>1290252875</time>
+    <user>autobuild</user>
+    <comment>Autobuild autoformatter for 53542
+</comment>
+  </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>ed5c2d81346b96b39acdf6f7ce64d836</srcmd5>
+    <version>2.3.11</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="45" vrev="9">
+    <srcmd5>16d3a71b9d4e00073c60bc039bc6fe5b</srcmd5>
+    <version>2.3.11</version>
+    <time>1299056959</time>
+    <user>saschpe</user>
+    <comment>Accepted submit request 63169 from user mcalmer
+</comment>
+    <requestid>63169</requestid>
+  </revision>
+  <revision rev="46" vrev="10">
+    <srcmd5>fcc7d76c0ebe41a96522a4da0b228e8d</srcmd5>
+    <version>2.3.11</version>
+    <time>1299056966</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 63169
+</comment>
+  </revision>
+  <revision rev="47" vrev="9">
+    <srcmd5>70d3b0ec4aa15ca807a266ca7cb4e617</srcmd5>
+    <version>2.3.13</version>
+    <time>1314188872</time>
+    <user>saschpe</user>
+    <comment>- disable checks during build. Does not work reliable in the
+  buildservice
+
+- update to version 2.3.13
+  * don't bother creating a v5 ccache in &quot;external&quot; mode
+  * add a &quot;trace&quot; option to enable libkrb5 tracing, if available
+  * avoid trying to get password-change creds twice
+  * use an in-memory ccache when obtaining tokens using v5 creds
+  * turn off creds==session in &quot;sshd&quot;
+  * add a &quot;validate_user_user&quot; option to control trying to perform
+    user-to-user authentication to validate TGTs when a keytab is not
+    available
+  * add an &quot;ignore_k5login&quot; option to control whether or not the module
+    will use the krb5_kuserok() function to perform additional
+    authorization checks
+  * turn on validation by default - verify_ap_req_nofail controls how we
+    treat errors reading keytab files now
+  * add an &quot;always_allow_localname&quot; option when we can use
+    krb5_aname_to_localname() to second-guess the krb5_kuserok() check
+  * prefer krb5_change_password() to krb5_set_password()</comment>
+    <requestid>79575</requestid>
+  </revision>
+  <revision rev="48" vrev="10">
+    <srcmd5>4d584b82c991dc5c66639346a8fdbdce</srcmd5>
+    <version>2.3.13</version>
+    <time>1314188883</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 79575
+</comment>
+  </revision>
+  <revision rev="49" vrev="12">
+    <srcmd5>4d584b82c991dc5c66639346a8fdbdce</srcmd5>
+    <version>2.3.13</version>
+    <time>1319182226</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="50" vrev="13">
+    <srcmd5>0249aeb62d65c1069156611a86eea3f7</srcmd5>
+    <version>2.3.13</version>
+    <time>1323192940</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="51" vrev="15">
+    <srcmd5>0249aeb62d65c1069156611a86eea3f7</srcmd5>
+    <version>2.3.13</version>
+    <time>1340183773</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="52" vrev="17">
+    <srcmd5>0249aeb62d65c1069156611a86eea3f7</srcmd5>
+    <version>2.3.13</version>
+    <time>1359109566</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="53" vrev="18">
+    <srcmd5>37858d36f761bb8fe109a44f2d8552fe</srcmd5>
+    <version>2.3.13</version>
+    <time>1362991957</time>
+    <user>coolo</user>
+    <comment>license update: BSD-3-Clause or LGPL-2.1+
+it is a dual license - hence the operator is ^or^ not ^and^ (forwarded request 157847 from babelworx)</comment>
+    <requestid>157849</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>6ef81b7243439e1e98d22fe5820ca888</srcmd5>
+    <version>2.4.4</version>
+    <time>1366233266</time>
+    <user>coolo</user>
+    <comment>- update to version 2.4.4
+  * drop configuration settings that duplicated library settings
+  * drop the existing_ticket option
+  * drop krb4 support
+  * add support for preserving configuration information in ccaches
+  * add support for creating and cleaning up DIR: ccaches
+  * finish cleaning up KEYRING: ccaches
+  * add experimental &quot;armor&quot; and &quot;armor_strategy&quot; options
+  * handle creation of /run/user/XXX for FILE: and DIR: caches
+  * handle different function signatures for krb5_trace_callback
+  * avoid overriding the primary when updating DIR: caches
+- obsolets patches (upstream):
+  * pam_krb5-2.2.0-0.5-configure_ac.dif
+  * use-urandom-for-tests.dif</comment>
+    <requestid>171075</requestid>
+  </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>6ef81b7243439e1e98d22fe5820ca888</srcmd5>
+    <version>2.4.4</version>
+    <time>1379663482</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>136bacf58d39142a8e3e0b29e82cbd48</srcmd5>
+    <version>2.4.4</version>
+    <time>1402403914</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>236546</requestid>
+  </revision>
+  <revision rev="57" vrev="6">
+    <srcmd5>136bacf58d39142a8e3e0b29e82cbd48</srcmd5>
+    <version>2.4.4</version>
+    <time>1409302099</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>394e9b5e1fa9b4ecb3e0aa22fa0b3772</srcmd5>
+    <version>2.4.13</version>
+    <time>1503593417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>515934</requestid>
+  </revision>
+</revisionlist>

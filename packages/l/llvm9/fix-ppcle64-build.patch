@@ -1,0 +1,33 @@
+From 3185c30c54d0af5bffbff3bcfd721668d086ff10 Mon Sep 17 00:00:00 2001
+From: serge-sans-paille <sguelton@redhat.com>
+Date: Thu, 6 Feb 2020 15:58:29 +0100
+Subject: [PATCH] Prefer __vector over vector keyword for altivec
+
+`vector' uses the keyword-and-predefine mode from gcc, while __vector is
+reliably supported.
+
+As a side effect, it also makes the code consistent in its usage of __vector.
+
+Differential Revision: https://reviews.llvm.org/D74129
+---
+ lib/Lex/Lexer.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/Lex/Lexer.cpp b/lib/Lex/Lexer.cpp
+index 9034726560d..a51745697b1 100644
+--- a/lib/Lex/Lexer.cpp
++++ b/lib/Lex/Lexer.cpp
+@@ -2552,8 +2552,8 @@ bool Lexer::SkipBlockComment(Token &Result, const char *CurPtr,
+         '/', '/', '/', '/',  '/', '/', '/', '/',
+         '/', '/', '/', '/',  '/', '/', '/', '/'
+       };
+-      while (CurPtr+16 <= BufferEnd &&
+-             !vec_any_eq(*(const vector unsigned char*)CurPtr, Slashes))
++      while (CurPtr + 16 <= BufferEnd &&
++             !vec_any_eq(*(const __vector unsigned char *)CurPtr, Slashes))
+         CurPtr += 16;
+ #else
+       // Scan for '/' quickly.  Many block comments are very large.
+-- 
+2.27.0
+

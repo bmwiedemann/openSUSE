@@ -1,0 +1,6 @@
+<package name="octave-forge-sockets" project="openSUSE:Factory">
+  <title></title>
+  <description>Socket functions for networking.
+This is part of Octave-Forge project.</description>
+  <devel project="science" package="octave-forge-sockets"/>
+</package>

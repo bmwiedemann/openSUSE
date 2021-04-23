@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Mon Jun  3 11:41:48 UTC 2013 - coolo@suse.com
+
+- updated to 0.04
+       - Added support for MSWin32. RT #58862
+       - Added browser list for freebsd. RT #61758
+       - Added sensible-browser option for linux. RT #56544
+
+-------------------------------------------------------------------
+Thu Feb 24 13:55:04 CET 2011 - pascal.bleser@opensuse.org
+
+- initial version (0.03)
+

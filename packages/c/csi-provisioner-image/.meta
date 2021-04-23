@@ -1,0 +1,5 @@
+<package name="csi-provisioner-image" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="filesystems:ceph" package="csi-provisioner-image"/>
+</package>

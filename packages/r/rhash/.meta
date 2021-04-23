@@ -1,0 +1,21 @@
+<package name="rhash" project="openSUSE:Factory">
+  <title>Recursive Hasher</title>
+  <description>RHash (Recurcive Hasher) is a console utility for computing and
+verifying magnet links and hash sums of files.
+It supports CRC32, MD4, MD5, SHA1/SHA2, Tiger, DC++ TTH, BitTorrent
+BTIH, AICH, eDonkey hash, GOST R 34.11-94, RIPEMD-160, HAS-160, EDON-R,
+Whirlpool and Snefru hash algorithms. Hash sums are used to ensure and
+verify integrity of large volumes of data for a long-term storing or
+transferring.
+
+Program features:
+ * Calculation of Magnet links and EDonkey 2000 links.
+ * Output in a predefined (SFV, BSD-like) or a user-defined format.
+ * Updating crc files (adding hash sums of files missing in the crc
+   file).
+ * Ability to process directories recursively.
+
+</description>
+  <devel project="network:utilities" package="rhash"/>
+  <url>http://rhash.anz.ru/?l=en</url>
+</package>

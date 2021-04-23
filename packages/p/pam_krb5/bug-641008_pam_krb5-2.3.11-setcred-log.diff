@@ -1,0 +1,75 @@
+Index: pam_krb5-2.4.13/src/auth.c
+===================================================================
+--- pam_krb5-2.4.13.orig/src/auth.c
++++ pam_krb5-2.4.13/src/auth.c
+@@ -435,13 +435,33 @@ pam_sm_setcred(pam_handle_t *pamh, int f
+ 	       int argc, PAM_KRB5_MAYBE_CONST char **argv)
+ {
+ 	const char *why = "";
++	krb5_context ctx;
++	struct _pam_krb5_options *options;
+ 	struct _pam_krb5_perms *saved_perms;
+-	notice("pam_setcred (%s) called",
+-		(flags & PAM_ESTABLISH_CRED)?"establish credential":
+-		(flags & PAM_REINITIALIZE_CRED)?"reinitialize credential":
+-		(flags & PAM_REFRESH_CRED)?"refresh credential":
+-		(flags & PAM_DELETE_CRED)?"delete credential":"unknown flag");
++
++	if (_pam_krb5_init_ctx(&ctx, argc, argv) != 0) {
++		warn("error initializing Kerberos");
++		return PAM_SERVICE_ERR;
++	}
++
++	options = _pam_krb5_options_init(pamh, argc, argv, ctx,
++					 _pam_krb5_option_role_general);
++	if (options == NULL) {
++		warn("error parsing options (shouldn't happen)");
++		krb5_free_context(ctx);
++		return PAM_SERVICE_ERR;
++	}
++
++	if (options->debug) {
++		debug("pam_setcred (%s) called",
++			(flags & PAM_ESTABLISH_CRED)?"establish credential":
++			(flags & PAM_REINITIALIZE_CRED)?"reinitialize credential":
++			(flags & PAM_REFRESH_CRED)?"refresh credential":
++			(flags & PAM_DELETE_CRED)?"delete credential":"unknown flag");
++	}
+ 	if (flags & PAM_ESTABLISH_CRED) {
++		_pam_krb5_options_free(pamh, ctx, options);
++		krb5_free_context(ctx);
+ 		return _pam_krb5_open_session(pamh, flags, argc, argv,
+ 					      "pam_setcred(PAM_ESTABLISH_CRED)",
+ 					      _pam_krb5_session_caller_setcred);
+@@ -464,20 +484,30 @@ pam_sm_setcred(pam_handle_t *pamh, int f
+ 			}
+ 			saved_perms = NULL;
+ 
++			_pam_krb5_options_free(pamh, ctx, options);
++			krb5_free_context(ctx);
+ 			return i;
+ 		} else {
+-			debug("looks unsafe - ignore refresh");
++			if (options->debug) {
++				debug("looks unsafe - ignore refresh");
++			}
+ 			if (saved_perms != NULL) {
+ 				_pam_krb5_restore_perms_r2e(saved_perms);
+ 			}
++			_pam_krb5_options_free(pamh, ctx, options);
++			krb5_free_context(ctx);
+ 			return PAM_IGNORE;
+ 		}
+ 	}
+ 	if (flags & PAM_DELETE_CRED) {
++		_pam_krb5_options_free(pamh, ctx, options);
++		krb5_free_context(ctx);
+ 		return _pam_krb5_close_session(pamh, flags, argc, argv,
+ 					       "pam_setcred(PAM_DELETE_CRED)",
+ 					       _pam_krb5_session_caller_setcred);
+ 	}
+ 	warn("pam_setcred() called with no flags. Assume PAM_ESTABLISH_CRED");
++	_pam_krb5_options_free(pamh, ctx, options);
++	krb5_free_context(ctx);
+ 	return pam_sm_open_session(pamh, (flags | PAM_ESTABLISH_CRED), argc, argv);
+ }

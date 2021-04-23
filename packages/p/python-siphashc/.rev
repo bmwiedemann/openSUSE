@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42d766ab2d5f4bb62f030b2c3562fd0e</srcmd5>
+    <version>1.0</version>
+    <time>1533292603</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by weblate</comment>
+    <requestid>626906</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7946dd23776e3b39a66c1959f73a29ba</srcmd5>
+    <version>1.0</version>
+    <time>1533887366</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>628179</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8cd87ecafd28ed2b304b7605804c8d0f</srcmd5>
+    <version>1.2</version>
+    <time>1551455213</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>678832</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c8661262701deb7bd2ce15182b2c7112</srcmd5>
+    <version>1.3</version>
+    <time>1578437630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3:
+  * Changed license to ISC.
+  * Fixed depreciation warning on Python 3.8.</comment>
+    <requestid>761155</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>31181fc0e2d042f63082fe504ea27445</srcmd5>
+    <version>1.3</version>
+    <time>1587659710</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop unused unittest2 dependency</comment>
+    <requestid>796467</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ac5068eb15deaf747ac578d2f70cc7ed</srcmd5>
+    <version>1.3</version>
+    <time>1591209356</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811092</requestid>
+  </revision>
+</revisionlist>

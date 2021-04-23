@@ -1,0 +1,16 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">https://github.com/fletcher/MultiMarkdown-6.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">MultiMarkdown-6</param>
+    <param name="revision">refs/tags/6.6.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

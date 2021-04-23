@@ -1,0 +1,12 @@
+<package name="gst123" project="openSUSE:Factory">
+  <title>GStreamer based Command Line Music Player</title>
+  <description>The gst123 program is designed to be a more flexible command line player akin
+to ogg123 and mpg123, but based on gstreamer. It can play all the file formats
+supported by gstreamer, like (but not limited to) flac, ogg and mp3.
+
+
+
+</description>
+  <devel project="multimedia:apps" package="gst123"/>
+  <url>http://space.twc.de/~stefan/gst123.php</url>
+</package>

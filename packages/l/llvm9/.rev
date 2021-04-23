@@ -1,0 +1,221 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d9c2c9bc67655554ad95120fe879f0ce</srcmd5>
+    <version>9.0.0</version>
+    <time>1571210258</time>
+    <user>dimstar_suse</user>
+    <comment>New major version of LLVM, now with additional dependency fixes.</comment>
+    <requestid>738487</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>209f9668da908e67be98fbc292db8524</srcmd5>
+    <version>9.0.0</version>
+    <time>1571653808</time>
+    <user>dimstar_suse</user>
+    <comment>- Let new {llvm,clang}*-doc packages &quot;Conflict&quot; with older devel
+  packages, which they were split from.
+- Let doc packages conflict with older versions of themselves.
+</comment>
+    <requestid>741231</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>92af08e1a2fd8240ce869e9d254f57b3</srcmd5>
+    <version>9.0.0</version>
+    <time>1573222889</time>
+    <user>dimstar_suse</user>
+    <comment>- Add openmp-export-fini.patch: Export termination function for
+  libomp.so, solves boo#1155108.
+- Remove flaky test case in libcxx.
+- Fix typo, BOLL -&gt; BOOL</comment>
+    <requestid>745131</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>80ef97e61e8a9498a9ca57197c50354d</srcmd5>
+    <version>9.0.0</version>
+    <time>1576062166</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gwp-asan-lto.patch: Make sure there are no LLVM IR files in static libraries that we package.
+- Add libcxx-tests-linux-distribution.patch (boo#1158293): Remove call to platform.linux_distribution: we don't expect failures.
+- Make documentation packages noarch.
+- Add llvm-add-missing-include.patch in order to fix boo#1158367.</comment>
+    <requestid>754550</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f17d863631a83094589b95c032425a65</srcmd5>
+    <version>9.0.1</version>
+    <time>1577267669</time>
+    <user>dimstar_suse</user>
+    <comment>new version</comment>
+    <requestid>758954</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>09fc0f2388597f7135e1bec784737ad0</srcmd5>
+    <version>9.0.1</version>
+    <time>1578322904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>760817</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>c484e54fbecff0283789a8911c36a6f1</srcmd5>
+    <version>9.0.1</version>
+    <time>1579195084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>763932</requestid>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>edd4e4d40f8fb064a2c05fd7c246ef08</srcmd5>
+    <version>9.0.1</version>
+    <time>1579867774</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>766401</requestid>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>78f535900652ab77041ee91c3ad6b6b8</srcmd5>
+    <version>9.0.1</version>
+    <time>1580373405</time>
+    <user>dimstar_suse</user>
+    <comment>- Add polly and lld build conditionals, remove excessive Requires
+  to clang from docs.  Fix conditional for libc++ use.
+  [jsc#SLE-7400, jsc#SLE-7614, jsc#SLE-7452, jsc#SLE-8920, jsc#SLE-7390,
+   jsc#SLE-7587]</comment>
+    <requestid>767824</requestid>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>53ea822ee57a78415ccb29aa80c92343</srcmd5>
+    <version>9.0.1</version>
+    <time>1580725623</time>
+    <user>dimstar_suse</user>
+    <comment>Move clang-{format,include-fixer,rename}.{el,py} from llvm-*-plugins to clang, drop empty llvm-emacs-plugins. (forwarded request 768749 from aaronpuchert)</comment>
+    <requestid>768764</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>704e703197b5b0cccc44ee777cc756f8</srcmd5>
+    <version>9.0.1</version>
+    <time>1581801695</time>
+    <user>dimstar_suse</user>
+    <comment>- Add vim-plugin-llvm Conflicts to clang subpackage which now
+  contains files formerly in llvmN-vim-plugins, conflicting with
+  packages from older llvm releases.
+
+- Add back emacs-llvm Provides and Conflicts to clang subpackage
+  originally in llvm-emacs-plugins to properly conflict with
+  llvm-emacs-plugins from older llvm releases.
+
+- Add clang5-devel to clang9-doc conflicts.
+
+- Add compiler-rt-sanitizer-ipc-perm.patch: Fix sanitizer-common
+  build with glibc 2.31.</comment>
+    <requestid>770860</requestid>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>39483291808cebd86b8c6d4c750f2e21</srcmd5>
+    <version>9.0.1</version>
+    <time>1584176066</time>
+    <user>dimstar_suse</user>
+    <comment>- Move all clang-related scripts (including those originally in
+  clangX-checker), hmaptool and clang-doc into a common
+  unversioned subpackage clang-tools, like python3-clang.
+  The scripts reference the unversioned executables, so allowing
+  multiple versions via update-alternatives would be misleading.
+  The clang-doc executable will come with assets in Clang 10, so
+  we have to take it out of update-alternatives as well.
+  This should be the proper solution to boo#1161873.
+- Include run-find-all-symbols script in clang-tools.
+- Remove metadata for clangX-include-fixer subpackage that never
+  had any files and thus wasn't released as rpm. There are so many
+  clang binaries that packaging them separately doesn't scale.
+- Fix lldb version string, adapt lldb-cmake.patch (boo#1165517).
+- Remove unneccesary libtool dependency.
+- Don't let clang depend on libc++, we link it with libstdc++.
+- Recommend gold plugin if clang and gold are installed.
+- Require clang-tools for clangX-devel.</comment>
+    <requestid>784085</requestid>
+  </revision>
+  <revision rev="13" vrev="9">
+    <srcmd5>e6495c758b34d261c212ae8a5bf276e5</srcmd5>
+    <version>9.0.1</version>
+    <time>1585342497</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove conflicts of clang-tools with {clang,llvm}{7,8}: the
+  relevant binaries have been removed from those packages. This
+  allows having clang-tools together with older versions of llvm.
+  For a smooth installation we add OrderWithRequires dependencies.
+- Fix typos in (still inactive) !%{with clang_scripts} part.</comment>
+    <requestid>787863</requestid>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>f7dbe38e614f6209a90ce8428748045c</srcmd5>
+    <version>9.0.1</version>
+    <time>1586466880</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't build clang-tools, libc++ and python3-clang anymore,
+  because they come from llvm10 now (boo#1168935).
+- Remove version requirement from clang-tools dependency.</comment>
+    <requestid>792576</requestid>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>c08cf781abe2b48015cf29230861c991</srcmd5>
+    <version>9.0.1</version>
+    <time>1594706329</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-ppcle64-build.patch to fix ppc64le build.</comment>
+    <requestid>820546</requestid>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>5fc7d9146952178c13ca0e7f1033a094</srcmd5>
+    <version>9.0.1</version>
+    <time>1599088539</time>
+    <user>dimstar_suse</user>
+    <comment>- start using ccache 
+</comment>
+    <requestid>831299</requestid>
+  </revision>
+  <revision rev="17" vrev="13">
+    <srcmd5>a7f05f6b8734717fcb932979035e3c2d</srcmd5>
+    <version>9.0.1</version>
+    <time>1601488474</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>838612</requestid>
+  </revision>
+  <revision rev="18" vrev="14">
+    <srcmd5>189d43c80a80abd3a76393672fa615de</srcmd5>
+    <version>9.0.1</version>
+    <time>1606252318</time>
+    <user>dimstar_suse</user>
+    <comment>- Let CMake files in {llvm,clang}X-devel refer to the versioned
+  binaries that come with the package instead of the symlink
+  managed by update-alternatives. (boo#1178513)</comment>
+    <requestid>849510</requestid>
+  </revision>
+  <revision rev="19" vrev="15">
+    <srcmd5>7966fc86cb4c9f3ed60489947dd3d356</srcmd5>
+    <version>9.0.1</version>
+    <time>1606726400</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch Fix-big-endian-miscompile-of-bitcast-zex.patch
+  to fix miscompilations with rustc 1.43 that lead to LTO failures
+  (bsc#1173202)</comment>
+    <requestid>851113</requestid>
+  </revision>
+  <revision rev="20" vrev="16">
+    <srcmd5>1398d62efaefdb69e7419423dfe5cef2</srcmd5>
+    <version>9.0.1</version>
+    <time>1608112829</time>
+    <user>dimstar_suse</user>
+    <comment>- '-mbranch-protection=standard' is broken on llvm9, so disable it
+  boo#1179085</comment>
+    <requestid>855896</requestid>
+  </revision>
+  <revision rev="21" vrev="17">
+    <srcmd5>71f644de7bed14ee910a18a19efbbf18</srcmd5>
+    <version>9.0.1</version>
+    <time>1609619438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>859728</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,30 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>88a8985341d0c2f9ab42b6ab540054a5</srcmd5>
+    <version>0.9.0</version>
+    <time>1604926705</time>
+    <user>dimstar_suse</user>
+    <comment>Add malcontent; new dep to GNOME 3.38</comment>
+    <requestid>847068</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1b63ba48512d05dcb3c724e4a882b561</srcmd5>
+    <version>0.9.0</version>
+    <time>1606649006</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't actually install com.endlessm.ParentalControls.rules: this
+  just grants 'wheel'-group members access without password; as
+  openSUSE does not support 'wheel' by default, we only ship the
+  file as sample file (boo#1177974#c8). (forwarded request 850957 from dimstar)</comment>
+    <requestid>851055</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c9574a5bcf80500583eff0de7326d449</srcmd5>
+    <version>0.9.0</version>
+    <time>1607801292</time>
+    <user>dimstar_suse</user>
+    <comment>- Split MalcontentControl into seperate package so a library
+  doesn't require a desktop application. (forwarded request 854615 from hellcp)</comment>
+    <requestid>854630</requestid>
+  </revision>
+</revisionlist>

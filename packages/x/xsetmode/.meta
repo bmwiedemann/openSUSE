@@ -1,0 +1,5 @@
+<package name="xsetmode" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="X11:XOrg" package="xsetmode"/>
+</package>

@@ -1,0 +1,5 @@
+<package name="kokkos" project="openSUSE:Factory">
+  <title>Kokkos C++ Performance Portability Programming</title>
+  <description>Kokkos Core implements a programming model in C++ for writing performance portable applications targeting all major HPC platforms. For that purpose it provides abstractions for both parallel execution of code and data management.  Kokkos is designed to target complex node architectures with N-level memory hierarchies and multiple types of execution resources. It currently can use OpenMP, Pthreads and CUDA as backend programming models.</description>
+  <devel project="science" package="kokkos"/>
+</package>

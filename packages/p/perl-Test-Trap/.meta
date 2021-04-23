@@ -1,0 +1,13 @@
+<package name="perl-Test-Trap" project="openSUSE:Factory">
+  <title>Trap exit codes, exceptions, output, etc</title>
+  <description>Primarily (but not exclusively) for use in test scripts: A block eval on
+steroids, configurable and extensible, but by default trapping (Perl)
+STDOUT, STDERR, warnings, exceptions, would-be exit codes, and return
+values from boxed blocks of test code.
+The values collected by the latest trap can then be queried or tested
+through a special trap object.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Test-Trap"/>
+  <url>http://search.cpan.org/dist/Test-Trap</url>
+</package>

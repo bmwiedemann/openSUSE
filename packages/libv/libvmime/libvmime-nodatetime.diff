@@ -1,0 +1,22 @@
+From 6908ad636e59339b9042205e6fd22444f45a7529 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Wed, 27 Mar 2013 17:52:26 +0100
+Subject: [PATCH] src: avoid __DATE__ and __TIME__
+
+---
+ src/vmime/base.cpp |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: vmime/src/vmime/base.cpp
+===================================================================
+--- vmime.orig/src/vmime/base.cpp
++++ vmime/src/vmime/base.cpp
+@@ -75,7 +75,7 @@ const string libname() { return (VMIME_P
+   *
+   * @return library version
+   */
+-const string libversion() { return (VMIME_VERSION " (" __DATE__ " " __TIME__ ")"); }
++const string libversion() { return (VMIME_VERSION " (_""_DATE_""_ causes unnecessary rebuilds - avoid)"); }
+ 
+ /** Return the library API version (eg: "6:1:6").
+   *

@@ -1,0 +1,36 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>db42826e2e25994114e3bd9fb097b5af</srcmd5>
+    <version>0.7.1</version>
+    <time>1590780138</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>808972</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0a29e7e25621fdd31f0b245ee7e31930</srcmd5>
+    <version>0.8.0</version>
+    <time>1602595876</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0
+  * Added bounds and controlPointBounds properties to Layer and Font objects, like in defcon API.
+</comment>
+    <requestid>839731</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0b75e61ed1d920c00d3486696b18dbb9</srcmd5>
+    <version>0.8.0</version>
+    <time>1613427496</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6 build (no FontTools as it needs scipy)</comment>
+    <requestid>871629</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3b61214cce643c075f3596d815abd790</srcmd5>
+    <version>0.11.1</version>
+    <time>1614274021</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874529</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>17eb80210075575ce3d8cc1944269be6</srcmd5>
+    <version>1.0</version>
+    <time>1480693266</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>441122</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d0c981f25c17ddaddb475187e0704861</srcmd5>
+    <version>1.0</version>
+    <time>1548335686</time>
+    <user>dimstar_suse</user>
+    <comment>- Expand font scaling notes and separate out to extra file</comment>
+    <requestid>667895</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>946a7c3cdf943afb4c6565a8ae443f62</srcmd5>
+    <version>2.0</version>
+    <time>1604054869</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0</comment>
+    <requestid>844872</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e21fe5c6dbb2dd661fc84f249b1bd3e0</srcmd5>
+    <version>2.1</version>
+    <time>1604510854</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.1</comment>
+    <requestid>845909</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8bf1f9a60fbd620c55bc858868a68ca1</srcmd5>
+    <version>2.2</version>
+    <time>1606328989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.2</comment>
+    <requestid>850620</requestid>
+  </revision>
+</revisionlist>

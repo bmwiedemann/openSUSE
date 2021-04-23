@@ -1,0 +1,64 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e844dfd0f425dfd31ac70ece47d8af0c</srcmd5>
+    <version>MACRO</version>
+    <time>1485250382</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission.</comment>
+    <requestid>450960</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f73eb380c6dcd39b29485762438743b7</srcmd5>
+    <version>1.6.3</version>
+    <time>1503593483</time>
+    <user>dimstar_suse</user>
+    <comment>- Add defines for the version number and a version number string
+  with '_' (underscores) to keep these close together and in sync. (forwarded request 516191 from eeich)</comment>
+    <requestid>516194</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>71a0c0af0eb1fa27a914da9a068ddda2</srcmd5>
+    <version>1.6.3</version>
+    <time>1509461054</time>
+    <user>dimstar_suse</user>
+    <comment>drop lua5.2 from multibuild</comment>
+    <requestid>537627</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>63e1060ed79da64bf9e648417233f363</srcmd5>
+    <version>1.7.0</version>
+    <time>1515876339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>559803</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2f6556acaa72c42b6e221e3be915f972</srcmd5>
+    <version>1.8.0</version>
+    <time>1588022982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.0:
+  - Lua 5.4 support
+  - lfs.link and lfs.symlinkattributes now work on Windows
+  - MACOSX_DEPLOYMENT_TARGET is configurable in the Makefile
+  - Fallback to _POSIX_PATH_MAX when MAXPATHLEN is not avaliable
+  - Fixed memory leak in case of realloc failure</comment>
+    <requestid>796457</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>01812dabece23a44773162c266c4cd3d</srcmd5>
+    <version>1.8.0</version>
+    <time>1594805503</time>
+    <user>dimstar_suse</user>
+    <comment>- Add lua54 as new build target</comment>
+    <requestid>819612</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>3557240e4edf2c3cfb0b86a8ff9b93b4</srcmd5>
+    <version>1.8.0</version>
+    <time>1612466622</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>867735</requestid>
+  </revision>
+</revisionlist>

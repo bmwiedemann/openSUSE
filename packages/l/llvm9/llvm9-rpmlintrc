@@ -1,0 +1,9 @@
+# This line is mandatory to access the configuration functions
+from Config import *
+
+addFilter("devel-file-in-non-devel-package .*/clang/.*/include/.*")
+addFilter("devel-file-in-non-devel-package .*/clang/.*/lib/.*")
+addFilter("devel-file-in-non-devel-package .*/usr/include/.*")
+
+addFilter("devel-file-in-non-devel-package .*/lib.*/*.a")
+addFilter("devel-file-in-non-devel-package .*/lib.*/*.so")

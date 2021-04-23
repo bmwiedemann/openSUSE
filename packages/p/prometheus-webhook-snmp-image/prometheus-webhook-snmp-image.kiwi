@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OBS-ExclusiveArch: aarch64 x86_64 -->
+<!--
+      This file is generated, don't manually modify this file.
+    -->
+<image xmlns:suse_label_helper="com.suse.label_helper" schemaversion="6.9" name="prometheus-webhook-snmp-image">
+  <description type="system">
+    <author>SUSE LLC</author>
+    <contact>https://bugs.opensuse.org</contact>
+    <specification>Image containing Prometheus Alertmanager receiver for SNMP traps</specification>
+  </description>
+  <preferences>
+    <type image="docker" derived_from="obsrepositories:/opensuse/tumbleweed">
+      <containerconfig tag="latest" maintainer="SUSE LLC (https://bugs.opensuse.org)" additionaltags="tumbleweed,%PKG_VERSION%,%PKG_VERSION%.%RELEASE%" name="opensuse/prometheus-webhook-snmp">
+        <environment>
+          <env name="PATH" value="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"/>
+          <env name="ARGS" value="--debug"/>
+          <env name="RUN_ARGS" value=""/>
+        </environment>
+        <subcommand execute="/bin/sh">
+          <argument name="-c"/>
+          <argument name="exec /usr/bin/prometheus-webhook-snmp $ARGS run $RUN_ARGS"/>
+        </subcommand>
+        <labels>
+          <suse_label_helper:add_prefix prefix="org.opensuse.prometheus-webhook-snmp">
+            <label name="org.opencontainers.image.title" value="Prometheus Alertmanager SNMP webhook"/>
+            <label name="org.opencontainers.image.description" value="Image containing Prometheus Alertmanager receiver for SNMP traps"/>
+            <label name="org.opencontainers.image.version" value="v%PKG_VERSION%.%RELEASE%"/>
+            <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
+            <label name="org.opencontainers.image.vendor" value="SUSE LLC"/>
+            <label name="org.opencontainers.image.url" value="https://registry.opensuse.org/opensuse/prometheus-webhook-snmp:%PKG_VERSION%.%RELEASE%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/prometheus-webhook-snmp:%PKG_VERSION%.%RELEASE%"/>
+            <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
+          </suse_label_helper:add_prefix>
+        </labels>
+        <history author="SUSE LLC">Install Prometheus Alertmanager receiver for SNMP traps</history>
+      </containerconfig>
+    </type>
+    <version>1.0.0</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <rpm-excludedocs>true</rpm-excludedocs>
+    <locale>en_US</locale>
+    <keytable>us.map.gz</keytable>
+  </preferences>
+  <packages type="bootstrap">
+    <package name="prometheus-webhook-snmp"/>
+    <package name="python3-prometheus_client"/>
+  </packages>
+  <repository type="rpm-md">
+    <source path="obsrepositories:/"/>
+  </repository>
+</image>

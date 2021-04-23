@@ -1,0 +1,6 @@
+<package name="arpwatch" project="openSUSE:Factory">
+  <title>Arpwatch Keeps Track of Ethernet and IP Address Pairings</title>
+  <description>Arpwatch keeps track of Ethernet and IP address pairings. It logs
+activity to syslog and reports certain changes via e-mail.</description>
+  <devel project="security" package="arpwatch"/>
+</package>

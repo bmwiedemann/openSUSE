@@ -1,0 +1,101 @@
+#! /bin/sh
+# Copyright (c) 2002-2003 SuSE Linux AG, Nuernberg, Germany.
+# Copyright (c) 2004-2008 SUSE Linux Products GmbH, Nuernberg, Germany.
+# All rights reserved.
+#
+# Author: Peter Poeml <poeml@suse.de>
+#
+### BEGIN INIT INFO
+# Provides:			exim sendmail
+# Required-Start:		$local_fs $remote_fs $network
+# Required-Stop:		$local_fs $remote_fs $network
+# Should-Start:			$named $time greylistd amavis spamd postgresql mysql
+# Should-Stop:			$named greylistd amavis spamd postgresql mysql
+# Default-Start:		3 5
+# Default-Stop:			0 1 2 6
+# Short-Description:		exim MTA
+# Description:			Start the exim MTA (mail transfer agent)
+### END INIT INFO
+
+EXIM_PID=/var/run/exim.pid
+EXIM_BIN=/usr/sbin/exim
+
+if [ -s /etc/sysconfig/exim ]; then 
+
+	. /etc/sysconfig/exim
+
+else 
+	# pre 8.0
+
+	# Source SuSE config
+	. /etc/rc.config
+
+	# Determine the base and follow a runlevel link name.
+	base=${0##*/}
+	link=${base#*[SK][0-9][0-9]}
+
+	# Force execution if not called by a runlevel directory.
+	test $link = $base && START_EXIM=yes
+	test "$START_EXIM" = yes || exit 0
+
+fi
+
+. /etc/rc.status
+rc_reset
+
+case "$1" in
+    start)
+	echo -n "Initializing SMTP port (exim)"
+	if [ -e $EXIM_PID ]; then
+		startproc -p $EXIM_PID $EXIM_BIN $EXIM_ARGS
+	else
+       		$EXIM_BIN $EXIM_ARGS
+	fi
+	rc_status -v
+	;;
+    stop)
+	echo -n "Shutting down SMTP port"
+	killproc -p $EXIM_PID -TERM $EXIM_BIN
+	rc_status -v
+	;;
+    test)
+	echo -n "Testing exim configuration"
+	$EXIM_BIN -bV
+	;;
+    try-restart)
+	## Do a restart only if the service was active before.
+	## Note: try-restart is now part of LSB (as of 1.9).
+	## RH has a similar command named condrestart.
+	$0 status
+	if test $? = 0; then
+		$0 restart
+	else
+		rc_reset        # Not running is not a failure.
+	fi
+	# Remember status and be quiet
+	rc_status
+	;;
+    restart)
+	$0 stop
+	$0 start
+	rc_status
+	;;
+    reload|force-reload)
+	echo -n "Reload service exim"
+	kill -HUP `cat $EXIM_PID* 2>/dev/null` 2> /dev/null || true
+	rc_status -v
+	;;
+    status)
+	echo -n "Checking for service exim: "
+	checkproc -p $EXIM_PID $EXIM_BIN
+	rc_status -v
+	;;
+    probe)
+	test /etc/exim.conf -nt $EXIM_PID \
+	&& echo reload
+	;;
+    *)
+	echo "Usage: $0 {start|stop|status|try-restart|restart|force-reload|reload|probe}"
+	exit 1
+esac
+rc_exit

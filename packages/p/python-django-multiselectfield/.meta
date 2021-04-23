@@ -1,0 +1,5 @@
+<package name="python-django-multiselectfield" project="openSUSE:Factory">
+  <title></title>
+  <description>Django multiple select field</description>
+  <devel project="devel:languages:python:django" package="python-django-multiselectfield"/>
+</package>

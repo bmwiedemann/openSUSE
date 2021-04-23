@@ -1,0 +1,50 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3488a541faec6abeda97f81a86899a0b</srcmd5>
+    <version>2.40.1</version>
+    <time>1481105565</time>
+    <user>dimstar_suse</user>
+    <comment>Early submission for GNOME 3.24 - getting things lined up</comment>
+    <requestid>443909</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>830f16045048f6f0b79f18bf0850a29d</srcmd5>
+    <version>2.40.1</version>
+    <time>1520502584</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581373 from dimstar)</comment>
+    <requestid>582872</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d47ea804363f642503c36e8b9cb8eb68</srcmd5>
+    <version>2.42.0</version>
+    <time>1545223639</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657854</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6cd30f1e13e7a6d0183efcd5005cd00e</srcmd5>
+    <version>2.42.1</version>
+    <time>1587659281</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push of project GNOME:Next (forwarded request 795099 from iznogood)</comment>
+    <requestid>795244</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d36a63032ecc125d1aa3fe7fe4ba42d1</srcmd5>
+    <version>2.42.2</version>
+    <time>1608729633</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 856918 from iznogood)</comment>
+    <requestid>857823</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4c3238b2682661473ed7d79cdc33336a</srcmd5>
+    <version>2.46.0</version>
+    <time>1612182335</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 867210 from iznogood)</comment>
+    <requestid>867242</requestid>
+  </revision>
+</revisionlist>

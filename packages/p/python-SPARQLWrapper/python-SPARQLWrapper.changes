@@ -1,0 +1,147 @@
+-------------------------------------------------------------------
+Wed Mar 11 17:00:28 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Disable tests as they need quite lot of magic to run just on py3
+
+-------------------------------------------------------------------
+Wed Mar 11 16:49:58 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.8.5:
+  - Improve/tests for development (#131)
+  - Changed. Be more strict on Accept Turtle header (#137)
+  - Migrated documentation from epydoc to sphinx and readthedocs
+  - Include ChangeLog.txt in the distribution
+  - Removed import of SPARQLWrapper in setup.py (fixed #113 and closed #115)
+  - Added support for querying RDF/XML in a CONSTRUCT query type
+  - Updated the procedure for determining the query type (#120)
+  - Do not send format parameter for the results ([format, output, results]) when the query is a SPARQL Update query
+  - Added test for new agrovoc SPARQL endpoint (using Fuseki2)
+  - Added test for 4store SPARQL endpoint (used by agroportal)
+  - Added/Updated tests
+  - Added examples
+  - Updated doc
+  - Fixed code generated for python3 using 2to3, adding a custom fixer (#109)
+
+-------------------------------------------------------------------
+Thu Nov  7 15:45:49 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Run through spec-cleaner
+
+-------------------------------------------------------------------
+Sun Jul  8 03:45:56 UTC 2018 - arun@gmx.de
+
+- specfile:
+  * update tests
+
+- update to version 1.8.2:
+  * Fixed bug (#100)
+  * Updated doc
+  * Added Unauthorized exception in SPARQLWrapperExceptions
+  * Added support for custom HTTP headers (#52)
+  * Changed timeout setting (#106)
+
+- changes from version 1.8.1:
+  * Update classifiers (Python 3.6)
+  * Added some documentation about the parameter to indicate the
+    output format
+  * Fixed typo in width calculation
+  * Added support for CSV, TSV (PR #98)
+  * Added support for Only HTTP Content Negotiation (#82)
+
+-------------------------------------------------------------------
+Wed Jan  3 18:11:19 UTC 2018 - tchvatal@suse.com
+
+- Make sure to not bail out when building with py3 only
+- Do not recommend already required package
+
+-------------------------------------------------------------------
+Mon May  8 19:48:46 UTC 2017 - toddrme2178@gmail.com
+
+- Fix source URL.
+
+-------------------------------------------------------------------
+Wed May  3 17:09:10 UTC 2017 - toddrme2178@gmail.com
+
+- Update to version 1.8.0
+  * Updated return formats for not content negotiation situations
+  * Included license in the MANIFEST (issue #76)
+  * Added explicit support for RDF/XML as allowed format (issue #75)
+  * Added proper shebang (issue #78)
+  * Moved keepalive as optional dependency (issue #79)
+  * Fixed hash check on prefixes (issue #77)
+- Fixed epydoc warnings (issue #41)
+- Implement single-spec version.
+- Fix source URL.
+
+-------------------------------------------------------------------
+Mon Sep 12 12:47:10 UTC 2016 - aplanas@suse.com
+
+- update to version 1.7.6
+  * Removed wrong response encoding (issue #70)
+  * Authorization header bug when using Python 3 (issue #71)
+- additional changes from version 1.7.5
+  * Removed pip dependency on setup (issue #69)
+- additional changes from version 1.7.4
+  * Fixed packaging (issue #66)
+- additional changes from version 1.7.3
+  * Finally fixed the keepalive issue in all Pyhon versions (issue #65)
+  * Removed old JSON layer in favor of the native json module
+- additional changes from version 1.7.2
+  * Moved to the new keepalive package (issues #53 and #61)
+- additional changes from version 1.7.1
+  * Fixed build in Python 3.x (issue #57)
+- additional changes from version 1.7.0
+  * Added support to HTTP Digest Auth Support (issue #45)
+  * Improved print_results showing language tag (xml:lang) and datatype
+  * Updated to RDFLib 4.x
+
+-------------------------------------------------------------------
+Fri Feb 12 09:53:34 UTC 2016 - olaf@aepfle.de
+
+- Remove BuildRequires python-rdflib to avoid cirular dependency
+
+-------------------------------------------------------------------
+Wed May 13 11:18:22 UTC 2015 - benoit.monin@gmx.fr
+
+- update to version 1.6.4:
+  * Fixed unicode problems on setup (issue #42)
+- additional changes from version 1.6.3:
+  * Fixed unicode problems with urllib in Python 3 (issue #35)
+  * Restored SPARQLWrapper2 class (issue #36)
+  * Enhanced warning for missing rdflib-jsonld (issue #38)
+  * Fixed build system (issue #39)
+- additional changes from version 1.6.2:
+  * Fixed query type detection with comments (issue #32)
+- additional changes from version 1.6.1:
+  * Added missing query types (issue #17)
+  * Added a new method to the API to select the request method to
+    be fully SPARQL 1.1 Protocol compliant (issue #28)
+  * Improved the test suite coverage, including support to run the
+    tests under Python 3.x (issues #20, #24 and #31)
+- additional changes from version 1.6.0:
+  * Returning raw response in case of unknown content type returned
+  * Fixed some issues with the last version of the SPARQL 1.1
+    Update Protocol
+  * setQuery() doesn't imply resetQuery() anymore
+  * Deprecated addCustomParameter(), addParameter() and
+    clearParameter() come to provide all required functionality
+  * SPARQLWrapper, QueryResult, Value, Bindings (and classes
+    inherited from them) are new-style classes now
+  * POST queries are accompanied by full set of parameters now
+  * Added rudimentary support for JSON-LD
+  * Added proper unit tests without dependencies of external
+    endpoints
+  * Fixed Python 3 compatibility issues in SmartWrapper module
+- require python-rdflib instead of recommending it
+- require python-simplejson for SLE11
+- add runtime dependencies as build dependencies
+- remove the fix of end-of-line encoding: changed upstream
+- run the tests during build with wrapper_test.py
+- change the documentation files to follow upstream
+
+-------------------------------------------------------------------
+Fri Dec  6 15:21:36 UTC 2013 - toddrme2178@gmail.com
+
+- Initial version (1.5.2)
+
+

@@ -1,0 +1,22 @@
+diff -ru a/src/ui/events-list-view.cpp b/src/ui/events-list-view.cpp
+--- a/src/ui/events-list-view.cpp	2020-06-02 10:44:36.000000000 +0200
++++ b/src/ui/events-list-view.cpp	2020-06-08 10:24:42.162320044 +0200
+@@ -4,6 +4,7 @@
+ #include <QToolTip>
+ #include <QLayout>
+ #include <QDebug>
++#include <QPainterPath>
+ 
+ #include "seafile-applet.h"
+ #include "main-window.h"
+diff -ru a/src/ui/private-share-dialog.cpp b/src/ui/private-share-dialog.cpp
+--- a/src/ui/private-share-dialog.cpp	2020-06-02 10:44:36.000000000 +0200
++++ b/src/ui/private-share-dialog.cpp	2020-06-08 10:24:53.538345357 +0200
+@@ -7,6 +7,7 @@
+ #include <QStringListModel>
+ #include <QDateTime>
+ #include <QScrollBar>
++#include <QPainterPath>
+ #include "api/api-error.h"
+ #include "api/requests.h"
+ #include "private-share-dialog.h"

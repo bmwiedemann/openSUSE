@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Fri Nov 20 20:13:19 UTC 2015 - mpluskal@suse.com
+
+- Use url for download
+- Add gpg signature
+- Cleanup spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Dec  2 14:48:09 UTC 2014 - lars@linux-schulserver.de
+
+- update to 0.16:
+  + Merged SNMP support from Alexandre Anriot - this adds support
+    for sending out SNMP traps in case of backup successes or 
+    failures.
+  + BUG#1351000: fixed crash when specifying both --help and 
+    $mail_report_on was set to 'always'
+- recommend MIME::Lite for mail report feature
+- recommend Net::SNMP for SNMP feature
+
+-------------------------------------------------------------------
+Tue Sep  9 19:57:46 UTC 2014 - lars@linux-schulserver.de
+
+- update to 0.15:
+  + BUG#1283094: The Option "--recoveryopts" did not actually work
+    when provided on the command line.
+- add Perl modules as explicit requires
+
+-------------------------------------------------------------------
+Sat Feb  1 17:23:03 UTC 2014 - lars@linux-schulserver.de
+
+- copied package from home:LenzGr for server:monitoring
+

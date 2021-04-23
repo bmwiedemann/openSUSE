@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Fri Nov 27 06:23:38 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Add changelog and docs
+- Enable Leap builds by disabling Python 2
+- Update to v1.2.1
+  * Add ability to pass `str` values to `foreign_key` for recipes
+    from other modules
+  * Add new parameter `_using` to support multi database applications
+  * Fixed _model parameter annotations
+  * Fixed bug when field has callable `default`
+  * Drop Python 3.5 support as it is retired
+  * Remove support for Django<2.2
+- from v1.2.0
+  * Support to Django 3.1 `JSONField`
+  * Added type annotations
+  * Support for Python 3.9
+  * Support for `prefix` in `seq` values
+  * Adjust imports for Django 3.1 compatibility
+
+-------------------------------------------------------------------
+Fri Sep  4 10:50:09 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v1.1.1
+
+-------------------------------------------------------------------
+Tue May  5 06:50:51 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.1.0

@@ -1,0 +1,60 @@
+diff --git a/gcc/testsuite/gcc.dg/strncmp-2.c b/gcc/testsuite/gcc.dg/strncmp-2.c
+index ed6c5fa0880..db46d0af4e0 100644
+--- a/gcc/testsuite/gcc.dg/strncmp-2.c
++++ b/gcc/testsuite/gcc.dg/strncmp-2.c
+@@ -40,6 +40,7 @@ static void test_driver_strncmp (void (test_strncmp)(const char *, const char *,
+     e = lib_memcmp(buf1,p2,sz);
+     (*test_memcmp)(buf1,p2,e);
+   }
++  mprotect (buf2+pgsz,pgsz,PROT_READ|PROT_WRITE);
+   free(buf2);
+ }
+ 
+diff --git a/libstdc++-v3/testsuite/ext/stdio_filebuf/char/79820.cc b/libstdc++-v3/testsuite/ext/stdio_filebuf/char/79820.cc
+index ba566f869c6..ca51d6d1a78 100644
+--- a/libstdc++-v3/testsuite/ext/stdio_filebuf/char/79820.cc
++++ b/libstdc++-v3/testsuite/ext/stdio_filebuf/char/79820.cc
+@@ -26,10 +26,12 @@ void
+ test01()
+ {
+   FILE* f = std::fopen("79820.txt", "w");
++    {
++      errno = 127;
++      __gnu_cxx::stdio_filebuf<char> b(f, std::ios::out, BUFSIZ);
++      VERIFY(errno == 127); // PR libstdc++/79820
++    }
+   std::fclose(f);
+-  errno = 127;
+-  __gnu_cxx::stdio_filebuf<char> b(f, std::ios::out, BUFSIZ);
+-  VERIFY(errno == 127); // PR libstdc++/79820
+ }
+ 
+ int
+diff --git a/gcc/testsuite/gcc.target/i386/xop-hsubX.c b/gcc/testsuite/gcc.target/i386/xop-hsubX.c
+index f0fa9b312f2..dc7944d8bb7 100644
+--- a/gcc/testsuite/gcc.target/i386/xop-hsubX.c
++++ b/gcc/testsuite/gcc.target/i386/xop-hsubX.c
+@@ -58,6 +58,7 @@ check_sbyte2word ()
+ 	    check_fails++;	
+ 	}
+     }
++  return check_fails;
+ }
+ 
+ static int
+@@ -75,6 +76,7 @@ check_sword2dword ()
+ 	    check_fails++;	
+ 	}
+     }
++  return check_fails;
+ }
+ 
+ static int
+@@ -92,6 +94,7 @@ check_dword2qword ()
+ 	    check_fails++;	
+ 	}
+     }
++  return check_fails;
+ }
+ 
+ static void

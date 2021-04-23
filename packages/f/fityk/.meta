@@ -1,0 +1,5 @@
+<package name="fityk" project="openSUSE:Factory">
+  <title>Non-linear curve fitting and data analysis</title>
+  <description>Fityk is a program for nonlinear curve-fitting of analytical functions (especially peak-shaped) to data (usually experimental data). It can also be used for visualization of x-y data only.</description>
+  <devel project="science" package="fityk"/>
+</package>

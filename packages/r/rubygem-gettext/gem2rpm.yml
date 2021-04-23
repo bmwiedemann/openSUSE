@@ -1,0 +1,3 @@
+:post_install: |-
+   echo "HALLO"
+   rm -v %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/test/fixtures/gtk_builder_ui_definitions.ui~

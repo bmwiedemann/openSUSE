@@ -1,0 +1,13 @@
+<package name="mylvmbackup" project="openSUSE:Factory">
+  <title>Utility for creating MySQL backups via LVM snapshots</title>
+  <description>mylvmbackup is a script for quickly creating backups of MySQL server's data
+files. To perform a backup, mylvmbackup obtains a read lock on all tables and
+flushes all server caches to disk, makes an LVM snapshot of the volume
+containing the MySQL data directory, and unlocks the tables again. The snapshot
+process takes only a small amount of time. When it is done, the server can
+continue normal operations, while the actual file backup proceeds.
+
+</description>
+  <devel project="server:database" package="mylvmbackup"/>
+  <url>http://www.lenzg.net/mylvmbackup/</url>
+</package>

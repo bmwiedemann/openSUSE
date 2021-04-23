@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>642e09a6cc394a9c687f9008e7a1214a</srcmd5>
+    <version>1.0.12</version>
+    <time>1506108841</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>527389</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>abeffe486dab734e3eec16ae5e94369c</srcmd5>
+    <version>1.0.12</version>
+    <time>1510837365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>542114</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0784083d9d24642b954984b405c774c9</srcmd5>
+    <version>1.1.0</version>
+    <time>1558037358</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>703245</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c49861bcd61afc9b1de7701621c2b5ee</srcmd5>
+    <version>1.1.0</version>
+    <time>1558351105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>704114</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c71b3aa53329bb16a4cc5d6ee41c3f4f</srcmd5>
+    <version>1.1.0</version>
+    <time>1559580957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707062</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>9bcb156b16236035dcf337e5caa66814</srcmd5>
+    <version>1.1.0</version>
+    <time>1583840014</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>783308</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>275b2547097a08f5cde3c03967fd9ea6</srcmd5>
+    <version>1.1.0</version>
+    <time>1587581488</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>795741</requestid>
+  </revision>
+</revisionlist>

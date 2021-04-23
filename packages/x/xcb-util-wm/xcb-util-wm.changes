@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Tue Feb 21 12:55:10 UTC 2017 - dimstar@opensuse.org
+
+- List baselibs.conf as source.
+
+-------------------------------------------------------------------
+Thu Feb  9 19:34:06 UTC 2017 - dimstar@opensuse.org
+
+- Explicitly BuildRequire m4
+
+-------------------------------------------------------------------
+Fri Feb 21 09:25:36 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 0.4.1:
+  + Xcb-proto should have never been required as xcb provides the
+    Atoms.
+  + Do not distribute ewmh C source file as they are generated with
+    M4.
+  + config: replace deprecated use of AC_OUTPUT with
+    AC_CONFIG_FILES.
+  + config: use AC_CONFIG_HEADERS to create a config.h file.
+  + make: implement the silent rules for m4 generated files.
+  + make: compile the library with standard xorg warning flags.
+  + Bump required xorg-macros version to >= 1.16.0.
+- Drop pkgconfig(xcb-proto) BuildRequires: No longer needed.
+
+-------------------------------------------------------------------
+Thu Jan 30 11:04:18 UTC 2014 - sndirsch@suse.com
+
+- update to version 0.4.0; changes since 0.3.9:
+  + Even though EWMH spec does not mandate window to be set, some
+    WM expect it to be set.
+  + Check submodules before running autoconf.
+
+-------------------------------------------------------------------
+Sun Feb 17 17:20:56 UTC 2013 - jengelh@inai.de
+
+- Use more robust make install call
+
+-------------------------------------------------------------------
+Mon Jun 18 12:09:04 CEST 2012 - vuntz@opensuse.org
+
+- Update baselibs.conf after soname bump that lead to libxcb-ewmh1
+  being now libxcb-ewmh2.
+
+-------------------------------------------------------------------
+Thu May 31 14:23:01 UTC 2012 - sndirsch@suse.com
+
+- update to version 0.3.9 
+  * Replacing c++ class keyword in interface header.
+  * Fix incomplete implementation of _NET_SUPPORTING_WM_CHECK.
+
+-------------------------------------------------------------------
+Wed Mar 21 10:37:02 UTC 2012 - jengelh@medozas.de
+
+- Initial package build.opensuse.org

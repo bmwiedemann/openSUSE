@@ -1,0 +1,5 @@
+<package name="ghc-cryptohash-sha1" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:haskell" package="ghc-cryptohash-sha1"/>
+</package>

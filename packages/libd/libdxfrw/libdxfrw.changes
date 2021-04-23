@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Sun May 19 17:50:31 UTC 2019 - jslaby@suse.com
+
+- switch from sourceforge to more up-to-date github repo
+- Update to version 0.6.3+git.20190501:
+  * Add build status and update example link
+  * Add Travis-CI script
+  * [#10] Fix compilation on GCC
+  * Fix bugs with .dwg import of TEXT and MTEXT entities
+  * This was unnecessary
+  * Link libdxfrw against libstdc++
+  * Return an error when the file ends prematurely
+  * Add version getter
+  * Fix polyline 2d/3d write
+  * Initialize return buffers in GetRawChar8 et al.
+- add
+  * 0001-cmake-use-GNUInstallDirs.patch
+  * 0002-cmake-set-library-VERSIONs.patch
+  * 0003-cmake-add-one-for-dwg2dxf.patch
+  * 0004-cmake-generate-and-install-pkgconfig.patch
+- remove
+  * libdxfrw-LibreCad-2.1.0-changes.patch
+
+-------------------------------------------------------------------
+Tue Jun  7 08:30:30 UTC 2016 - jslaby@suse.com
+
+- add libdxfrw-LibreCad-2.1.0-changes.patch
+- we need -std=c++11 for that patch to work
+
+-------------------------------------------------------------------
+Tue Dec  8 18:55:11 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 0.6.3
+  * No changelog available for this version
+
+-------------------------------------------------------------------
+Wed Sep  9 19:40:27 UTC 2015 - asterios.dramis@gmail.com
+
+- Update to version 0.6.1:
+  * Detailed changelog not available.
+  From version 0.6.0:
+  * First version with dwg read support.
+
+-------------------------------------------------------------------
+Fri Aug  8 20:17:24 UTC 2014 - asterios.dramis@gmail.com
+
+- Update to version 0.5.12:
+  * Detailed changelog not available.
+
+-------------------------------------------------------------------
+Fri May  9 23:44:16 UTC 2014 - jengelh@inai.de
+
+- Set RPM group to more usual values
+
+-------------------------------------------------------------------
+Wed Feb 19 22:48:52 UTC 2014 - asterios.dramis@gmail.com
+
+- Initial rpm release (version 0.5.11).

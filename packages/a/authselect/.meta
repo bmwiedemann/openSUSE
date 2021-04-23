@@ -1,0 +1,12 @@
+<package name="authselect" project="openSUSE:Factory">
+  <title>Configures authentication and identity sources from supported profiles</title>
+  <description>Authselect is designed to be a replacement for authconfig but it takes
+a different approach to configure the system. Instead of letting
+the administrator build the PAM stack with a tool (which may potentially
+end up with a broken configuration), it would ship several tested stacks
+(profiles) that solve a use-case and are well tested and supported.
+At the same time, some obsolete features of authconfig are not
+supported by authselect.</description>
+  <devel project="security:idm" package="authselect"/>
+  <url>https://github.com/authselect/authselect</url>
+</package>

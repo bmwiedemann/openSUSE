@@ -1,0 +1,5 @@
+<package name="colormake" project="openSUSE:Factory">
+  <title>Colorize the make output</title>
+  <description>A simple wrapper for making the output from make easier to read (more colorful), and errors easier to find in messy compilations. It was inspired by Micheal T. Babcock's excellent logcolorize program.</description>
+  <devel project="devel:tools:building" package="colormake"/>
+</package>

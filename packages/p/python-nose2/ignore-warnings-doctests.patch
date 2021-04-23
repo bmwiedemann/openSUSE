@@ -1,0 +1,18 @@
+Index: nose2-0.9.1/nose2/tests/functional/test_doctests_plugin.py
+===================================================================
+--- nose2-0.9.1.orig/nose2/tests/functional/test_doctests_plugin.py
++++ nose2-0.9.1/nose2/tests/functional/test_doctests_plugin.py
+@@ -1,8 +1,13 @@
++import warnings
+ from nose2.tests._common import FunctionalTestCase, support_file
+ 
+ 
+ class TestDoctestsPlugin(FunctionalTestCase):
+ 
++    def setUp(self):
++        super(TestDoctestsPlugin, self).setUp()
++        warnings.simplefilter('ignore')
++
+     def test_simple(self):
+         proc = self.runIn(
+             'scenario/doctests',

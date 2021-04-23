@@ -1,0 +1,28 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b39603ba07763eaed98fe282ddd9797a</srcmd5>
+    <version>2020.04.16.137ad</version>
+    <time>1592246040</time>
+    <user>dimstar_suse</user>
+    <comment>Initial version for Factory</comment>
+    <requestid>814715</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f21d755296afe3835f77847cd8f23e2</srcmd5>
+    <version>2020.09.03.138a1</version>
+    <time>1603203390</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2020.09.03.138a1
+  * Add support for booting from USB mass storage devices
+  * Add support for bootloader updates for USB MSD or network boot (self-update)
+  * Improve compatibility for USB devices which require the USB port power to be
+    switched off for a period of time during a reboot
+  * Add support GPT and Hybrid MBR partition tables
+  * Add support for EEPROM write-protect
+  * Add the ability to loop between different boot-modes until a bootable image is found.
+    The default is to loop between SD and USB-MSD
+  * VLI 0138A1 - Improve full-speed isochronous endpoint support
+</comment>
+    <requestid>842713</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,11 @@
+--- Makefile.in.orig
++++ Makefile.in
+@@ -26,7 +26,7 @@ ETCDIR          = @sysconfdir@
+ GEODB           = @GEODB_LOC@
+ CC              = @CC@
+ CFLAGS          = @CFLAGS@ @CPPFLAGS@
+-LIBS            = @LIBS@ -ljpeg -ldb -L/usr/X11R6/$(LIBNAME) -lX11 -lXpm
++LIBS            = @LIBS@ -ljpeg -ldb
+ WCMGR_LIBS      = @WCMGR_LIBS@
+ DEFS            = -DETCDIR=\"${ETCDIR}\" -DGEODB_LOC=\"${GEODB}\" @DEFS@ @OPTS@
+ LDFLAGS         = @LDFLAGS@

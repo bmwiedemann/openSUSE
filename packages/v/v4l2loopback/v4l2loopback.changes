@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Tue Feb  9 10:47:03 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Add undefined macros when building on older distributions
+
+-------------------------------------------------------------------
+Tue Feb  2 14:08:32 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Add Secureboot signing support
+
+-------------------------------------------------------------------
+Wed Dec 16 12:55:04 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- add -autoload subpackages that provides the configuration files
+  to autoload the driver on startup
+
+-------------------------------------------------------------------
+Fri Jul 10 18:44:42 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fixup util dependencies: pull in required vl42-ctl for
+  v4l2loopback-ctl, recommend gst-launch, supplement kernel
+  module (v4l2loopback.ko).
+- Make util package noarch, its just a shell script.
+
+-------------------------------------------------------------------
+Sun Apr 19 17:41:58 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.12.5
+  * Fix build in Linux 5.7-rc1 due to symbol name changes
+  * Simplify set/clear of V4L2_CAP_DEVICE_CAPS in querycaps
+  * Use temp-var for capabilities
+  * Also set vdev->device_caps
+
+-------------------------------------------------------------------
+Thu Apr  9 20:38:07 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.12.4
+  * Explain what exclusive_caps does instead of referring to a
+    closed ticket
+  * Use "Chrome" rather than "Chromium"
+  * Mention exclusive_caps mode option
+  * Add linebreaks to fix markdown
+  * Set the default number of buffers to 2 
+  * instruction on obtaining yuv files
+  * infinite loop over yuv frames
+  * Drop cast to (time_t) 
+  * print "SUCCESS" message on installation success 
+  * use v4l2_buffer ptr instead of timeval 
+
+- Dropped v4l2loopback-dont_use_timeval.patch and
+  v4l2loopback-drop_cast_to_time_t.patch (merged upstream)
+
+-------------------------------------------------------------------
+Tue Feb 25 09:28:10 UTC 2020 - aloisio@gmx.com
+
+- Added v4l2loopback-dont_use_timeval.patch and
+  v4l2loopback-drop_cast_to_time_t.patch (fix boo#1164757)
+
+-------------------------------------------------------------------
+Wed Jan  8 14:19:20 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Made build verbose
+- Removed Group and superfluous build requirements
+- Added v4l2loopback-include_header.patch (fixes boo#1159777)
+
+-------------------------------------------------------------------
+Sat Dec  7 08:31:59 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.12.3
+  * v4l2lookback: Port to kernel 5.4+
+  * Set video_device->device_caps for linux>4.7.0
+  * Set some more device_caps
+  * Update issue templates
+
+-------------------------------------------------------------------
+Mon May 27 18:55:53 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.12.2
+  * Fixed compat with kernel 5.0
+  * Replace v4l2_get_timestamp with ktime_get_ts(64) for
+    linux-5.1 compat
+
+- Dropped v4l2loopback-no_deprecated_function.patch (merged
+  upstream)
+
+-------------------------------------------------------------------
+Thu May 23 16:51:39 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Added v4l2loopback-no_deprecated_function.patch (fix build with
+  newer kernels)
+
+-------------------------------------------------------------------
+Wed Jan 23 21:41:22 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.12.1
+  [ IOhannes m zmölnig ]
+  * Fix permission of source code files
+  * Initialize variables
+  * Use %u to print size_t
+  * Improve coding style by removing unused variables
+  * More coding style fixes
+  * Use GStreamer-1.0 caps in the documentation
+  * Gst1.0 compat for example-script
+  * Protect VP9 and HEVC by #ifdef guards
+  [ Andrii Danyleiko ]
+  * Fix typo
+  [ Kai Kang ]
+  * Replace do_gettimeofday with v4l2_get_timestamp for linux-5
+    compat
+
+-------------------------------------------------------------------
+Mon Jul  2 12:15:49 UTC 2018 - aloisio@gmx.com
+
+- Update to version 0.12.0
+  * Fixed compat with kernel 4.16
+  * NV12 support
+  * 8bit Bayer support
+
+-------------------------------------------------------------------
+Mon Jun 25 16:26:15 UTC 2018 - aloisio@gmx.com
+
+- Use %{?linux_make_arch} when building kernel modules
+  (boo#1098050).
+
+-------------------------------------------------------------------
+Tue Apr  3 12:12:45 UTC 2018 - guillaume.gardet@opensuse.org
+
+- Update to 0.11.0:
+  * Adapted to new kernel timer API
+  * VP9 & HEVC support
+  * Hacks to work around issues with Google Chrome and GStreamer-0.10
+
+-------------------------------------------------------------------
+Fri Aug 11 17:33:50 UTC 2017 - aloisio@gmx.com
+
+- Added v4l-utils as runtime dependency
+
+-------------------------------------------------------------------
+Sat Jul 29 09:34:12 UTC 2017 - aloisio@gmx.com
+
+- Added preamble as source
+
+-------------------------------------------------------------------
+Fri Jul 28 19:53:08 UTC 2017 - aloisio@gmx.com
+
+- Update to 0.10.0
+
+-------------------------------------------------------------------
+Fri Jan 17 15:22:22 UTC 2014 - matwey.kornilov@gmail.com
+
+- Update to 0.8.0 
+
+-------------------------------------------------------------------
+Sun Feb 17 13:27:21 UTC 2013 - matwey.kornilov@gmail.com
+
+- Initial commit (0.6.3)
+

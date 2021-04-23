@@ -1,0 +1,56 @@
+diff -ru non-non-daw-v1.2.0.orig/mixer/non-mixer.desktop.in non-non-daw-v1.2.0/mixer/non-mixer.desktop.in
+--- non-non-daw-v1.2.0.orig/mixer/non-mixer.desktop.in	2017-07-08 19:11:23.000000000 +0200
++++ non-non-daw-v1.2.0/mixer/non-mixer.desktop.in	2018-05-31 13:52:35.691641586 +0200
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+ Name=Non Mixer
+ Comment=Modular Digital Audio Workstation - Mixer
+-Exec=@BIN_PATH@/non-mixer
++Exec=non-mixer
+ Terminal=false
+ Type=Application
+ Icon=non-mixer
+-Categories=AudioVideo;Audio;
++Categories=Audio;AudioVideo;AudioVideoEditing;Midi;Mixer
+diff -ru non-non-daw-v1.2.0.orig/sequencer/non-sequencer.desktop.in non-non-daw-v1.2.0/sequencer/non-sequencer.desktop.in
+--- non-non-daw-v1.2.0.orig/sequencer/non-sequencer.desktop.in	2017-07-08 19:11:23.000000000 +0200
++++ non-non-daw-v1.2.0/sequencer/non-sequencer.desktop.in	2018-05-31 13:40:38.828025982 +0200
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+ Name=Non Sequencer
+ Comment=Realtime MIDI sequencer for JACK MIDI
+-Exec=@BIN_PATH@/non-sequencer
++Exec=non-sequencer
+ Terminal=false
+ Type=Application
+ Icon=non-sequencer
+-Categories=AudioVideo;Audio;Midi;
++Categories=Audio;AudioVideo;AudioVideoEditing;Sequencer;Midi
+diff -ru non-non-daw-v1.2.0.orig/session-manager/non-session-manager.desktop.in non-non-daw-v1.2.0/session-manager/non-session-manager.desktop.in
+--- non-non-daw-v1.2.0.orig/session-manager/non-session-manager.desktop.in	2017-07-08 19:11:23.000000000 +0200
++++ non-non-daw-v1.2.0/session-manager/non-session-manager.desktop.in	2018-05-31 13:39:52.796022485 +0200
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+ Name=Non Session Manager
+ Comment=Audio session manager from the land of Non
+-Exec=@BIN_PATH@/non-session-manager
++Exec=non-session-manager
+ Terminal=false
+ Type=Application
+ Icon=non-session-manager
+-Categories=AudioVideo;Audio;
++Categories=Audio;AudioVideo;AudioVideoEditing
+diff -ru non-non-daw-v1.2.0.orig/timeline/non-timeline.desktop.in non-non-daw-v1.2.0/timeline/non-timeline.desktop.in
+--- non-non-daw-v1.2.0.orig/timeline/non-timeline.desktop.in	2017-07-08 19:11:23.000000000 +0200
++++ non-non-daw-v1.2.0/timeline/non-timeline.desktop.in	2018-05-31 13:42:14.592035259 +0200
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+ Name=Non Timeline
+ Comment=Modular Digital Audio Workstation - Timeline Editor
+-Exec=@BIN_PATH@/non-timeline
++Exec=non-timeline
+ Terminal=false
+ Type=Application
+ Icon=non-timeline
+-Categories=AudioVideo;Audio;
++Categories=Audio;AudioVideo;AudioVideoEditing;Recorder

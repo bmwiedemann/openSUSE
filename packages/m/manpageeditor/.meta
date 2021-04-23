@@ -1,0 +1,6 @@
+<package name="manpageeditor" project="openSUSE:Factory">
+  <title></title>
+  <description>A simple manual pages editor.</description>
+  <devel project="devel:tools" package="manpageeditor"/>
+  <url>http://keithhedger.hostingsiteforfree.com/pages/manpageeditor/help.html</url>
+</package>

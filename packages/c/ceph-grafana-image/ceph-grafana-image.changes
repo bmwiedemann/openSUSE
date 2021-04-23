@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed Jul  8 15:09:17 UTC 2020 - Patrick Seidensal <pseidensal@suse.com>
+
+- Remove openSUSE-release-ftp package from SLE distributions
+
+-------------------------------------------------------------------
+Fri Mar  6 14:18:30 UTC 2020 - pseidensal@suse.com
+
+- Provision Grafana dashboards of Ceph Dashboard (SES-1540)
+
+-------------------------------------------------------------------
+Thu Jan 23 08:46:58 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Add ceph-grafana-dashboards (SES-1313)
+
+-------------------------------------------------------------------
+Tue Jan 14 13:55:33 UTC 2020 - Kristoffer Gronlund <kgronlund@suse.com>
+
+- Initial version.
+

@@ -1,0 +1,5 @@
+<package name="python-traceback2" project="openSUSE:Factory">
+  <title></title>
+  <description>Backports of the traceback module</description>
+  <devel project="devel:languages:python" package="python-traceback2"/>
+</package>

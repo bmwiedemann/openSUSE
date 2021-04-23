@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9d1acf5a7b289883f1358e658d36bcd3</srcmd5>
+    <version>2.6</version>
+    <time>1551883764</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>681851</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6b3164ae1d513b9cff4c693a6b61d2bc</srcmd5>
+    <version>2.6</version>
+    <time>1552902165</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685622</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3ef96e167d1db9c77eca37aab410702c</srcmd5>
+    <version>2.6</version>
+    <time>1570448788</time>
+    <user>dimstar_suse</user>
+    <comment>Remove all reference to parent from pom files</comment>
+    <requestid>735442</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>03bb4009ae75b1bd014f7fd6e710f4f4</srcmd5>
+    <version>3.1</version>
+    <time>1575373220</time>
+    <user>dimstar_suse</user>
+    <comment>upgrade to 3.1 + allow building with jdk &gt;= 9</comment>
+    <requestid>752797</requestid>
+  </revision>
+</revisionlist>

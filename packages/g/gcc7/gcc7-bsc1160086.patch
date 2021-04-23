@@ -1,0 +1,72 @@
+2019-12-17  Andreas Krebbel  <krebbel@linux.ibm.com>
+
+	Backport from mainline
+	2019-12-16  Andreas Krebbel  <krebbel@linux.ibm.com>
+
+	PR target/92950
+	* config/s390/vector.md ("mov<mode>" for V_8): Replace lh, lhy,
+	and lhrl with llc.
+
+	* gcc.target/s390/vector/pr92950.c: New test.
+
+Index: gcc/testsuite/gcc.target/s390/vector/pr92950.c
+===================================================================
+--- gcc/testsuite/gcc.target/s390/vector/pr92950.c	(nonexistent)
++++ gcc/testsuite/gcc.target/s390/vector/pr92950.c	(revision 279454)
+@@ -0,0 +1,24 @@
++/* { dg-do run } */
++/* { dg-options "-O3 -mzarch -march=z13" } */
++
++struct a {
++  int b;
++  char c;
++};
++struct a d = {1, 16};
++struct a *e = &d;
++
++int f = 0;
++
++int main() {
++  struct a g = {0, 0 };
++  f = 0;
++
++  for (; f <= 1; f++) {
++    g = d;
++    *e = g;
++  }
++
++  if (d.c != 16)
++    __builtin_abort();
++}
+Index: gcc/config/s390/vector.md
+===================================================================
+--- gcc/config/s390/vector.md	(revision 279453)
++++ gcc/config/s390/vector.md	(revision 279454)
+@@ -289,9 +289,9 @@ (define_split
+ ; However, this would probably be slower.
+ 
+ (define_insn "mov<mode>"
+-  [(set (match_operand:V_8 0 "nonimmediate_operand" "=v,v,d,v,R,  v,  v,  v,  v,d,  Q,  S,  Q,  S,  d,  d,d,d,d,R,T")
+-        (match_operand:V_8 1 "general_operand"      " v,d,v,R,v,j00,jm1,jyy,jxx,d,j00,j00,jm1,jm1,j00,jm1,R,T,b,d,d"))]
+-  ""
++  [(set (match_operand:V_8 0 "nonimmediate_operand" "=v,v,d,v,R,  v,  v,  v,  v,d,  Q,  S,  Q,  S,  d,  d,d,R,T")
++        (match_operand:V_8 1 "general_operand"      " v,d,v,R,v,j00,jm1,jyy,jxx,d,j00,j00,jm1,jm1,j00,jm1,T,d,d"))]
++  "TARGET_VX"
+   "@
+    vlr\t%v0,%v1
+    vlvgb\t%v0,%1,0
+@@ -309,12 +309,10 @@ (define_insn "mov<mode>"
+    mviy\t%0,-1
+    lhi\t%0,0
+    lhi\t%0,-1
+-   lh\t%0,%1
+-   lhy\t%0,%1
+-   lhrl\t%0,%1
++   llc\t%0,%1
+    stc\t%1,%0
+    stcy\t%1,%0"
+-  [(set_attr "op_type"      "VRR,VRS,VRS,VRX,VRX,VRI,VRI,VRI,VRI,RR,SI,SIY,SI,SIY,RI,RI,RX,RXY,RIL,RX,RXY")])
++  [(set_attr "op_type"      "VRR,VRS,VRS,VRX,VRX,VRI,VRI,VRI,VRI,RR,SI,SIY,SI,SIY,RI,RI,RXY,RX,RXY")])
+ 
+ (define_insn "mov<mode>"
+   [(set (match_operand:V_16 0 "nonimmediate_operand" "=v,v,d,v,R,  v,  v,  v,  v,d,  Q,  Q,  d,  d,d,d,d,R,T,b")

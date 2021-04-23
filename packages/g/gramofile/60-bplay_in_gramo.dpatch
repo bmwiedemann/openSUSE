@@ -1,0 +1,105 @@
+# Call bplay and brec from dedicated locations rather than from the standard
+# path. Good for the Debian package, maybe not that desirable for the
+# upstream package. [dk]
+
+--- playwav.c	2011-08-14 13:27:14.941717336 +0200
++++ playwav.c	2011-08-14 13:27:16.193217596 +0200
+@@ -32,23 +32,47 @@
+ #include <curses.h>
+ #endif
+ 
++#define BPLAYCMD "/usr/lib/bplay_gramo"
+ 
+ void
+ playwav_playit (char *filename, int usebeginendtime, double begintime,
+ 		double endtime)
+ {
+-  char shellcmd[500];
+-
++  char shellcmd[500], *tmp;
++  int len, ret;
++  
+   switch (checkfile (filename))
+     {
+     case FILE_EXISTS:
+-
++	    
++      tmp = shellcmd;
++      len = 500;
++retry:
+       if (usebeginendtime)
+-	sprintf (shellcmd, "bplay_gramo -S -s 44100 -b 16 -J %ld -T %ld \"%s\"",
++	ret = snprintf (tmp, len,
++	          BPLAYCMD " -S -s 44100 -b 16 -J %ld -T %ld \"%s\"",
+ 		 (long) (begintime * 44100),
+ 		 (long) ((endtime - begintime) * 44100), filename);
+       else
+-	sprintf (shellcmd, "bplay_gramo -S -s 44100 -b 16 \"%s\"", filename);
++	ret = snprintf (tmp, len,
++	                BPLAYCMD " -S -s 44100 -b 16 \"%s\"", filename);
++
++      if (ret > len)
++        {
++	   tmp = alloca(ret);
++	   len = ret;
++	   if (tmp)
++	     goto retry;
++           error_window ("The system ran out of memory");
++	   break;
++	}
++	   
++      if (ret == -1)
++	{
++	   error_window ("Cannot handle file names this long. Sorry.");
++	   break;
++	}
++
+       /* defaults for raw files (but no -r, so .wav's supply their own
+          parameters) - you can even listen to executables in CD quality (: */
+ 
+
+--- reclp_main.c	2011-08-14 13:27:14.941717336 +0200
++++ reclp_main.c	2011-08-14 13:27:16.193217596 +0200
+@@ -18,20 +18,39 @@
+ #include <curses.h>
+ #endif
+ 
++#define BRECCMD "/usr/lib/brec_gramo"
+ 
+ void
+ record_from_lp (char *startdir)
+ {
+   char filename[250];
+-  char shellcmd[500];
++  char shellcmd[500], *tmp;
++  int ret, len;
+ 
+   if (!record_from_lp_get_filename (startdir, filename))
+     return;
+ 
+   def_prog_mode ();		/* save terminal state */
+ 
+-  sprintf (shellcmd, "brec_gramo -S -s 44100 -b 16 -t 6000 -w \"%s\"",
+-	   filename);
++  tmp = shellcmd;
++  len = 500;
++
++retry:  
++  ret = snprintf (tmp, 500, BRECCMD " -S -s 44100 -b 16 -t 6000 -w \"%s\"",
++	          filename);
++
++  if (ret > len)
++    {
++       tmp = alloca(ret);
++       len = ret;
++       if (tmp)
++         goto retry;
++       return;
++    }
++
++  if (ret == -1)
++    return;
++  
+   system (shellcmd);
+ 
+   reset_prog_mode ();		/* reset terminal state */

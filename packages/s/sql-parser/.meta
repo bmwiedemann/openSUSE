@@ -1,0 +1,6 @@
+<package name="sql-parser" project="openSUSE:Factory">
+  <title>sql-parser</title>
+  <description>SQL Parser for C++</description>
+  <devel project="devel:kubic" package="sql-parser"/>
+  <url>https://github.com/envoyproxy/sql-parser</url>
+</package>

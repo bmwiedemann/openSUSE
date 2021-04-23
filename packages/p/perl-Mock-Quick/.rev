@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3a1ff757c9a8bd641d7a3b3046a21ddc</srcmd5>
+    <version>1.108</version>
+    <time>1410967602</time>
+    <user>coolo</user>
+    <comment>needed for perl-Test-Exception-LessClever</comment>
+    <requestid>249596</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>596855eef95cb874fdc19d3bf65ce599</srcmd5>
+    <version>1.110</version>
+    <time>1440871481</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327315</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3d8366f3adc3c20b45be5315b92313d5</srcmd5>
+    <version>1.111</version>
+    <time>1464595065</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>398549</requestid>
+  </revision>
+</revisionlist>

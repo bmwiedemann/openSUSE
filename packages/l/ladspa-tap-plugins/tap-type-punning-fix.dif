@@ -1,0 +1,19 @@
+Index: tap-plugins-0.7.1/tap_utils.h
+===================================================================
+--- tap_utils.h
++++ tap_utils.h	2004-03-05 15:45:53.000000000 +0100
+@@ -95,6 +95,14 @@ for any bugs or malfunction. */
+ 
+ 
+ #define LN_2_2 0.34657359f
++static inline float FLUSH_TO_ZERO(float fv) {
++	union {
++		float f;
++		int i;
++	    } v;
++	    v.f = fv;
++	return (v.i & 0x7f800000) == 0 ?0.0f : fv;
++}
+ #define LIMIT(v,l,u) ((v)<(l)?(l):((v)>(u)?(u):(v)))
+ 
+ #define BIQUAD_TYPE float

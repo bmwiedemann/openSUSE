@@ -1,0 +1,310 @@
+-------------------------------------------------------------------
+Wed Oct  9 09:08:01 UTC 2013 - pgajdos@suse.com
+
+- added 31-linux-libertine-fonts.conf [bnc#757081]
+
+-------------------------------------------------------------------
+Thu Aug  2 21:12:39 UTC 2012 - asterios.dramis@gmail.com
+
+- Update to 5.3.0:
+  * Improved Libertine Bold (Small Caps, Cyrrilic ...).
+  * New style: Libertine Monospaced for the use in listings, code examples etc.
+  * Workaround in OS/2-Tabel for certain eBooks.
+  * Reorganized Kern-Tables. TTFs with additional Pair-Kerning are now much
+    smaller. This also solved problems with simple word processors, where
+    kerning memory could exceed.
+  * Many bug-fixes.
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:17 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jan  4 15:14:35 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0-with-font-exception or OFL-1.1
+  The GPL in the package has a font exception. Also, the relationship
+  between the licenses is a choice - i.e use the ^or^ operator
+
+-------------------------------------------------------------------
+Tue Dec 20 13:23:57 UTC 2011 - toms@suse.de
+
+- SPEC file: Changed Source Url, added fontname, corrected license
+  string according to automatic license review
+
+-------------------------------------------------------------------
+Wed Dec 14 12:08:58 UTC 2011 - toms@suse.de
+
+- Added obsoletes and provides as shown by Vincent.
+- Added also a FIXME about the rpmlint warning
+
+-------------------------------------------------------------------
+Tue Dec  6 14:16:25 UTC 2011 - toms@suse.de
+
+- Renamed LinuxLibertine -> linux-libertine-fonts according to 
+  Fedora packaging guidelines and FATE#313035
+  TODO: Get Provides and Obsoletes right
+
+-------------------------------------------------------------------
+Sat Sep 17 09:39:35 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Thu Jun 30 22:01:48 UTC 2011 - burnus@net-b.de
+
+- Update to 5.1.3. From the upstream ChangeLog (excerpt):
+  * Libertine Bold Italic: missing numeral sets, bold small caps,
+    bold greek letters added
+  * Libertine Bold: bold greek letters added
+  * Added missing ligatures
+
+-------------------------------------------------------------------
+Mon May 23 20:39:35 UTC 2011 - burnus@net-b.de
+
+- Update to 5.0.0. From the upstream ChangeLog (excerpt):
+  * Improved Libertine Italic
+  * New Libertine Bold Italic. Former style => Semibold Italic
+  * Additions to the Biolinum Keyboard
+  * Initials created (Display Glyphs with fine external contour)
+
+-------------------------------------------------------------------
+Mon Aug  2 21:18:56 UTC 2010 - tob@net-b.de
+
+- Update to 4.7.5. From the upstream ChangeLog (excerpt):
+  * added small cyrillic m (uni043C) to Biolinum and some other
+    missing cyrillics
+  * Inverted Interrobang (uni2E18) added
+  * Add Substitution/Transposition brackets 2E02-0A
+  * Problems with Fractions (ID 2665656): without a contextual
+    chaining substitution fractions like 1/7 or 1/10
+  * some glyphs were wrongly named
+  * sun is now called uni263C 
+  * I had to move that .cap-variants of the accents to the PUA,
+    because they covered space where Unicode in between defined
+    new characters. So I systematically moved the .cap-Accents
+  * new point accent at uni0358
+  * new Mark for uni0358 in many O/o-characters
+  * improved support for POJ (Taiwan transcription)
+  * now kerning for kernclasspair p.sc + a.sc 
+  * first use of contextual chaining substitution:
+    - when a combining accent follows an i, the dotlessi is
+      used to prevent an accent crash
+    - when one of the accented or leftwarding glyphs such as
+      (ä, V) follow an f, a short neck version of f (f.alt) is
+      being used for optical reasons
+  * Added U+033B COMBINING SQUARE BELOW
+  * Italic: Correction of schwa
+
+-------------------------------------------------------------------
+Mon Jul 12 10:49:12 CEST 2010 - pgajdos@suse.cz
+
+- using *.otf format instead of *.ttf [bnc#619937]
+
+-------------------------------------------------------------------
+Thu Apr  8 18:15:51 CEST 2010 - tiwai@suse.de
+
+- remove unnecessary buildrequires for too old distros
+
+-------------------------------------------------------------------
+Sat Jun 20 10:55:48 CEST 2009 - tiwai@suse.de
+
+- put back the hack to fix font file names (bnc#482405)
+
+-------------------------------------------------------------------
+Fri Jun 19 17:57:28 CEST 2009 - maiku.fabian@gmail.com
+
+- update to 4.4.1. From the upstream ChangeLog:
+  • First release of Linux Biolinum and its bold variant
+  • New paragraphs signs (uni00A7 and uni00B6)
+  • nicer guillemets uni00AB and 00BB as well as the single ones
+  • improved "copyright"-sign and "registered"-sign
+  • improved micro-sign
+  • further improvements in the small capitals set
+  • superior/inferior h, i, j, n, r has now new serifs, too
+  • new dotaccent.cap-glyph (slightly bigger than dotaccent) for
+    capital glyphs 
+  • j slightly improved upper serif (now similar to i)
+  • improvements in row of IPA-signs (recent serifs etc)
+  • Asterisk has now f-height (a bit lower than before) and lost
+    bearing left and right
+  • 0, 2, 3, 4, 5, 6, 7, 8, 9 slight improvements
+  • tilde, slight improvements
+  • cedilla improved (now somewhat thicker)
+  • ae improved
+  • C, c, e, t new finely bulged runner (or however you might call
+    the thin end of these letters)
+  • brought some ligatures up to recent baseglyph form
+  • florin improved
+  • dansk ring accent improved -> aring
+  • comma accent improved, in characters with this accent the
+    latter have now the same vertical position
+  • roman numbers improved
+  • and many smaller things I forgot to note
+  • as well as hopefully all that I marked as "solved" in the
+    bug tracker
+  • finer and more organic serifs for nearly all glyphs
+  • basic EM-background proportion changed to 726
+    (above base line) and 472 (below the baseline) 
+  • Fonts bounds/linespacing in TTF and OTF adjusted
+  • E, F: a bit thinner now
+  • A,V,W,v,w design improvements in diagonals
+  • some small improvements in spacing of small basic latin
+    charakters
+  • reduced overshoot for wide-round contours
+  • a, e: small designchange
+  • m is a little wider now
+  • basic working EM is now 1000 instead of 2048
+  • tz-ligature
+  • z's diagonal is a bit thicker, the horizontals a bit
+    thinner, now
+  • new glyphs like curl for bible studies
+  • shortened few overbounding glyphs
+  • improvements in polytonic greek
+  • J, j: change in design of the bow and drop
+  • There was a compiling-problem with the LinLibertine_Re-2.8.14.otf
+    that caused a unusable GSUB-table. Though outline-information
+    seemed to be unaffected MacOSX didn’t want to intall it.
+    This version should be without this bug, the reason for the old
+    bug could not be discovered.
+  • Change in the OpenType-Substitution table (different order of
+    interpretation: sups and sinf should be substituted even if
+    oldstyle flag is also set.
+  • True Cyrrillic italics for the italic variant
+  • new “a” for the italic, also thinner p, n, m and e
+  • Some stylistic improvements for italic numbers
+  • new @ for the italic
+  • further kerning
+  • improved accented characters in the italic variant 
+  • Q’s tail is now more harmonic and looks as drawn out of the O and
+    not as just clipped to the bottom
+  • Qu (Q_u) has been improved and is now standard ligature
+  • new form for s_t- and c_t-ligature, Thanks to Nathan!
+  • OpenType-GSUB-table has been improved. New functionality for
+    Romanian and Moldavian (comma-accent instead of cedilla),
+    for Turky (idotaccent.sc is chosen when Tyrkish is default
+    language, otherwiese i.sc is the small capital form used;
+    f_i_()-ligatures are set off in Turkish because it hinders
+    the differenciation of f-i and f-dotlessi in that language.
+  • Italic variant now uses the same perfect OpenType-GSUB as the regular.
+  • new a.sc for the italic. Adding missing sc-glyphs, bring
+    others to the latest design.
+  • TTF-Hinting improvements because of better TTF-Instruction
+    of FontForge
+  • some small kerning improvements
+  • glyphs U+02BE and U+02BF are no combining charakters > corrected
+  • kerning problem with 9 in italic corrected
+  • some small corrections as usual
+  • slavonic church signs added
+  • Added cartouches for numbers between 0 and 99 at uniE128 till uniE12A
+  • Change punctuationspace to width of fullstop (.) It is now 450 of
+    width and not 350.
+- remove dos2unix from BuildRequires, not needed anymore.
+
+-------------------------------------------------------------------
+Fri Mar 13 20:12:20 CET 2009 - crrodriguez@suse.de
+
+-  LinuxLibertine: constant font names needed [bnc#482405]
+-  Update to version 4.1.8 
+- finer and more organic serifs for nearly all glyphs
+- basic EM-background proportion changed to 726 (above base line) and 472 (below the baseline) 
+- Fonts bounds/linespacing in TTF and OTF adjusted
+- E, F: a bit thinner now
+- A,V,W,v,w design improvements in diagonals
+- some small improvements in spacing of small basic latin charakters
+- reduced overshoot for wide-round contours
+- a, e: small designchange
+- m is a little wider now
+- basic working EM is now 1000 instead of 2048
+- tz-ligature
+- z's diagonal is a bit thicker, the horizontals a bit thinner, now
+- new glyphs like curl for bible studies
+- shortened few overbounding glyphs
+- improvements in polytonic greek
+- J, j: change in design of the bow and drop
+
+-------------------------------------------------------------------
+Mon Mar 03 14:41:51 CET 2008 - mfabian@suse.de
+
+- update to 2.7.9. Changes from ChangeLog.txt:
+  • new Hinting! Now it is possible to use Libertine with Word on
+    Windows properly. The shape on screen should be clearer now
+    on every system!
+  • new kern pairs for better typography
+  • some wrong contour directions corrected
+  • many small corrections
+  • OT "fina" has been removed from wordend-sigma
+  • countless small improvements
+  • kerning for Caps variant
+  • the conflict (that came up lately with a library update)
+    between underlined and regular is diminished
+  • Symbols for „page“, „graph“, „picture“ and „table“ added
+  • Oldstyle numbers (minuscle numbers) were just contained as
+    proportionals. Somebody wanted them also as table numbers.
+    Ladder became standard oldstyles now. Some of these glyphs
+    look somehow thinner to fit them on the fixed width.
+  • bold italic variant had a wrong style entry which seemed
+    to confuse Mac's fonthandling, also other style confusions
+    should be fixed now
+  • bold italic also had wrong metrics which resulted in a
+    cutoff of glyph parts and wrong line spacing.
+  • großes Eszett hinzugefügt (uni1E9E) entsprechend
+    Kapitälchen-Eszett
+  • kleines Eszett so verändert, dass es zum großen passt
+    (ſz statt  ſs), das vorige Eszett ist als germandbls.alt
+    weiterenthalten
+  • Im Stilsatz ss03 kann für Schweizer nun automatisch von
+    Eszetts auf ss umgestellt werden.
+  • die dt. ÄÖÜ sind nun von der Alternativposition an die
+    rechte Stelle gerückt. Für die nichtdeutschsprachige Nutzung
+    empfehlen sich jetzt die (vormals standart, jetzt aber auf
+    die Alternativposition gewechselten Akzentuierten)
+  • Due to A. Panovs help hopefully a lot of design
+    improvements for the cyrrilic alphabet. 
+  • Some changes in Small Caps for better spacing.
+  • FO-overlap in Small Caps (due to wrong kerning entry) removed
+  • Complete revision of the bold version. Should result in a
+    clearer shape and better thin-width-contrast
+  • Due to better support in the FontForge editor the
+    OpenType-tables have been completely redefined.
+
+-------------------------------------------------------------------
+Fri May 11 12:59:38 CEST 2007 - mfabian@suse.de
+
+- update to 2.5.9 (Bugzilla #272050).
+
+-------------------------------------------------------------------
+Wed Aug 09 13:23:13 CEST 2006 - mfabian@suse.de
+
+- move fonts to /usr/share/fonts/truetype
+  (openSUSE 10.2 will use X11R7).
+
+-------------------------------------------------------------------
+Tue Aug 01 13:15:46 CEST 2006 - mfabian@suse.de
+
+- updated to 2.1.0:
+- use run_suseconfig_fonts macro.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:45:38 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep  5 23:49:07 CEST 2005 - dmueller@suse.de
+
+- update to 1.0.1 (#98882) 
+
+-------------------------------------------------------------------
+Thu Apr 15 14:13:27 CEST 2004 - adrian@suse.de
+
+- initial package of version 0.5.9
+  * Serif only fonts
+

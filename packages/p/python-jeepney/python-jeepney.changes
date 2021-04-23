@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Sun Dec 20 09:53:53 UTC 2020 - Dirk Müller <dmueller@suse.com>
+
+- uppate to 0.6.0:
+  * New method :meth:`~.blocking.DBusConnection.recv_until_filtered` in the
+    blocking I/O integration to receive messages until one is filtered into a
+    queue.
+  * More efficient buffering of received data waiting to be parsed into D-Bus
+    messages.
+
+-------------------------------------------------------------------
+Thu Nov 26 09:34:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.5.0:
+  * New common scheme for I/O integration - see Connections and Routers.
+  * Message.serialise() accepts a serial number, to serialise outgoing messages
+  without modifying the message object.
+  * Improved documentation, including API docs.
+
+-------------------------------------------------------------------
+Mon Mar  9 16:22:55 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.4.3
+  * Raise ConnectionResetError in blocking integration if socket.recv() 
+    gives no data
+
+-------------------------------------------------------------------
+Fri Feb 28 22:49:01 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.4.2:
+  The blocking ``DBusConnection`` integration class now has a ``.close()``
+  method, and can be used as a context manager::
+
+    from jeepney.integrate.blocking import connect_and_authenticate
+    with connect_and_authenticate() as connection:
+
+-------------------------------------------------------------------
+Wed Sep 11 14:40:14 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.4.1:
+  * Avoid using :class:`asyncio.Future` for the blocking integration.
+  * Set the 'destination' field on method return and error messages to the
+    'sender' from the parent message.
+
+-------------------------------------------------------------------
+Tue Jun 18 12:07:09 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- initial packaging (version 0.4)

@@ -1,0 +1,5 @@
+<package name="perl-Package-Variant" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:perl" package="perl-Package-Variant"/>
+</package>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<param>
+  <image>obsrepositories:/suse/sle15#15.2</image>
+  <tags>sle15.2.octopus</tags>
+  <name>ses/7/prometheus-webhook-snmp</name>
+  <prefix>com.suse.ses</prefix>
+  <url>https://registry.suse.com/ses/7/prometheus-webhook-snmp:%PKG_VERSION%.%RELEASE%</url>
+  <reference>registry.suse.com/ses/7/prometheus-webhook-snmp:%PKG_VERSION%.%RELEASE%</reference>
+  <labels>
+    <label>
+      <name>com.suse.ses.version</name>
+      <value>7.0</value>
+    </label>
+    <label>
+      <name>com.suse.ses.url</name>
+      <value>https://www.suse.com/products/suse-enterprise-storage/</value>
+    </label>
+  </labels>
+</param>

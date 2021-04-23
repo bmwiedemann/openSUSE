@@ -1,0 +1,5 @@
+<package name="vid_stab" project="openSUSE:Factory">
+  <title>vid_stab</title>
+  <description></description>
+  <devel project="multimedia:libs" package="vid_stab"/>
+</package>

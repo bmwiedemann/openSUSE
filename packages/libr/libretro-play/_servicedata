@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/libretro/Play-.git</param>
+              <param name="changesrevision">fedc1e1c2918a7490a881cdb4ec951a828c19671</param></service><service name="tar_scm">
+                <param name="url">https://github.com/jpd002/Play-.git</param>
+              <param name="changesrevision">caf83d311c416c4288ed13a202b8659f12aed1ee</param></service></servicedata>

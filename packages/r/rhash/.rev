@@ -1,0 +1,81 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>98b65d9a9806ccdfdb3674189142b3f6</srcmd5>
+    <version>1.3.4</version>
+    <time>1497603239</time>
+    <user>dimstar_suse</user>
+    <comment>dependency of cmake</comment>
+    <requestid>503332</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dc7285836a12e0dbf4d3c7ff22546742</srcmd5>
+    <version>1.3.5</version>
+    <time>1503592083</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.5:
+	* look for locales directory at PROGRAM_DIRECTORY\locale on
+    Windows
+	* look for config at PROGRAM_DIRECTORY\rhashrc on Windows</comment>
+    <requestid>517907</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>231e9ff887a6feb1b98110d87ff06af2</srcmd5>
+    <version>1.3.8</version>
+    <time>1551386251</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>678649</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>479898b4f1f2bcd70728ec5f9aa2a109</srcmd5>
+    <version>1.3.8</version>
+    <time>1573164774</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file:
+  * Honor optflags and allow creation of debuginfo package
+  * Add missed dependencies on openssl and pkgconfig
+  * Use url for download
+  * Misc small cleanups</comment>
+    <requestid>738820</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>36bb7676c26812c765dc56f590dd90cb</srcmd5>
+    <version>1.3.9</version>
+    <time>1581087140</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.9:
+  * change project license to BSD Zero Clause License
+  * add uk translations
+  * new printf-format modifier '%u' to print url-encoded filename, path or hash
+  * Bugfix: btih in magnet links shall be hex-encoded
+  * correctly align UTF8 file paths, while printing verification results
+  * respect UTF8 BOM when updating or verifying a hash file
+  * print a new-line after ed2k link, when --ed2k-link option is passed
+  * exit on output errors with exit_code = 2
+  * change option --update=&lt;file&gt; to update the specified file
+  * make short option '-P' to be an alias for --percents
+  * change %{mtime} format to 'YYYY-MM-DD hh:mm:ss'
+  * Bugfix: --sysconfdir was ignored while searching for config on Linux
+  * support verification of base64-formated hash sums
+  * add formatting options: --hex, --base32, -b/--base64
+  * Bugfix: properly handle symlinks on the command line
+- Fix localisation building by rhash-uk.patch</comment>
+    <requestid>770003</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a54aa4a36477451572f51bfd30edbe36</srcmd5>
+    <version>1.4.0</version>
+    <time>1597519098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>826211</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>42c80327c9740e7045e3185038eacc55</srcmd5>
+    <version>1.4.1</version>
+    <time>1611068447</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>863992</requestid>
+  </revision>
+</revisionlist>

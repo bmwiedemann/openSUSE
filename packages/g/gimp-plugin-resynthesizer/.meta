@@ -1,0 +1,10 @@
+<package name="gimp-plugin-resynthesizer" project="openSUSE:Factory">
+  <title>Suite of gimp plugins for texture synthesis</title>
+  <description>This package is a set of plugins for use with the Gimp program.
+
+The package includes:
+- resynthesizer plugin engine (without a GUI)
+- resynthesizer-gui plugin control panel for the engine
+- various plugins (in Python language) that call the resynthesizer engine</description>
+  <devel project="graphics" package="gimp-plugin-resynthesizer"/>
+</package>

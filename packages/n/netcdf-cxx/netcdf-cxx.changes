@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Sep  2 12:31:43 UTC 2014 - coolo@suse.com
+
+- fix license for spdx 1.2
+
+-------------------------------------------------------------------
+Tue Jun 26 22:53:11 UTC 2012 - reddwarf@opensuse.org
+
+- First version of the splitted package. Packaged because kst needs
+  it, but it's deprecated.
+

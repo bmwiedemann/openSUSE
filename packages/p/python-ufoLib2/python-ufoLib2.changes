@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Mon Feb 22 15:44:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to v0.11.1
+ * Component.move: apply delta to offset directly rather than 
+   translating, which fixes moving of flipped components.
+ * Typing: add GlyphSet protocol. More elegant than referring to 
+   Layer and Glyph explicitly, which nicely avoids circular 
+   imports.
+ * Some small typing fixes to circumvent microsoft/pyright#1297.
+ * Add APIs Font.object_lib(obj) and Glyph.object_lib(obj) to 
+   explicitly handle the new public.objectLibs mechanism of 
+   attaching libs to anchors, guidelines, contours, components and 
+   points.
+- Reinstate python36 build. FontTools does not need scipy anymore.
+
+-------------------------------------------------------------------
+Sat Feb 13 10:17:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.6 build (no FontTools as it needs scipy) 
+
+-------------------------------------------------------------------
+Thu Jul 23 12:03:45 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.8.0
+  * Added bounds and controlPointBounds properties to Layer and Font objects, like in defcon API.
+
+-------------------------------------------------------------------
+Wed May 20 10:04:35 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
+
+- Initial release of python-ufoLib2

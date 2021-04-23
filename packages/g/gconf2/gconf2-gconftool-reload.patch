@@ -1,0 +1,20 @@
+--- gconf/gconftool.c
++++ gconf/gconftool.c
+@@ -888,6 +888,8 @@
+       
+       gconf_engine_unref (conf);
+ 
++      g_spawn_command_line_sync ("/usr/bin/killall -q -HUP " GCONF_SERVERDIR "/" GCONFD, NULL, NULL, NULL, NULL);
++
+       return retval;
+     }
+ 
+@@ -901,6 +903,8 @@
+       
+       gconf_engine_unref (conf);
+ 
++      g_spawn_command_line_sync ("/usr/bin/killall -q -HUP " GCONF_SERVERDIR "/" GCONFD, NULL, NULL, NULL, NULL);
++
+       return retval;
+     }
+ 

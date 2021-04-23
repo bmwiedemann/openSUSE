@@ -1,0 +1,14 @@
+diff --git a/xvmc.pc.in b/xvmc.pc.in
+index 51b88ce..ecf81d2 100644
+--- a/xvmc.pc.in
++++ b/xvmc.pc.in
+@@ -6,7 +6,7 @@ includedir=@includedir@
+ Name: XvMC
+ Description: The XvMC Library
+ Version: @PACKAGE_VERSION@
+-Requires: xproto videoproto
+-Requires.private: x11 xext
++Requires: xproto videoproto xv
++Requires.private: x11 xext xv
+ Cflags: -I${includedir}
+ Libs: -L${libdir} -lXvMC

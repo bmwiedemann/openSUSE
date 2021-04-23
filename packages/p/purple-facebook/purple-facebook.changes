@@ -1,0 +1,82 @@
+-------------------------------------------------------------------
+Sun Jan 13 16:59:32 UTC 2019 - zawel1@gmail.com
+
+- update to version 0.9.6
+  * This release fixes these two recent issues:
+    * "Failed to get sync_sequence_id" (#449) Facebook increased the 
+      version number requirement for a significant fraction of users 
+      (but not everyone, at least not yet)
+    * "Failed to read fixed header" (#410 for nss, #444 for gnutls) 
+      NSS and GnuTLS, the two TLS/SSL libraries that libpurple supports, 
+      enabled TLS 1.3 support in recent versions, and so did facebook. 
+      There were some incompatibilities with libpurple 2.12.0 (fixed 
+      in 2.13.0) and a subtle race condition on our side.
+
+
+-------------------------------------------------------------------
+Sat Sep 16 16:11:14 UTC 2017 - zawel1@gmail.com
+
+- update to version 0.9.5
+  * Don't fail on groupchats with only two members including self (Those are created by the "Marketplace" feature)
+  * Use FetchContactsDeltaQuery for contact sync
+  * Don't disconnect when trying to join a chat after being kicked
+  * Extract target url from fbrpc:// URLs
+  * Handle new style topic/groupchat membership events
+  * Fix setting channel topics (tid=t_id.1234 is no longer valid)
+  * Fix creating threads, inviting, kicking members (misc api changes)
+  * Add everyone to "Facebook Friends" group and persist Non-Friends
+  * Don't save access token if not remembering password
+  * Save names of non-friends in the local alias in blist.xml
+  * Add "Mark messages as read only when available" setting
+
+
+-------------------------------------------------------------------
+Fri Jun  9 11:47:35 UTC 2017 - michal.hrusecky@opensuse.org
+
+- update to version 0.9.4
+  * Add content-type header to all requests, fixes http error 400
+  * Change error message when sync_sequence_id is missing, for clarity
+  * Bump orca version. Purely speculative, may not help with anything.
+
+-------------------------------------------------------------------
+Thu Mar 30 13:34:59 UTC 2017 - zawel1@gmail.com
+
+- Update to version 0.9.3 (changes since 0.9.0):
+  * This is now the minimum required version. It fixes connection
+    errors after facebook discontinued support for old versions of
+    facebook messenger for android. While most of the protocol
+    implementation was already above that version, there was a
+    subtle change that broke fetching of sync_sequence_id, and the
+    previously empty MQTT user agent string is now considered an
+    old version too.
+  * Set the MQTT user agent to look like Orca-Android 38.0.0.22.155
+    Fixes errors when trying to send messages.
+  * Use the new ThreadListQuery hash for seq id only, not for
+    thread queries.
+  * Fixes groupchat join errors.
+  * Send orca-formatted user agent for all HTTP requests too. Fixes
+    "Failed to parse thread information" errors when joining channels.
+
+-------------------------------------------------------------------
+Thu Dec  8 21:12:28 UTC 2016 - sor.alexei@meowr.ru
+
+- Replace the purple-facebook package with
+  libpurple-plugin-facebook.
+
+-------------------------------------------------------------------
+Mon Nov 28 20:57:08 UTC 2016 - mailaender@opensuse.org
+
+- update to version 0.9
+  * Set a non-empty HTTP User-Agent. Might help with #282
+  * Things ported from bitlbee-facebook (#276)
+    * fb_api_cb_contacts: Make all the other fields optional too (#267)
+    * fb_http_urlcmp: more loose comparison, to avoid showing urls twice
+    * Prevent disconnections on 509 errors, "Invalid attachment id"
+    * Make $.hugePictureUrl.uri optional
+    * Store sent message id in lastmid, to deduplicate echoed messages (#226)
+  * Proper version number.
+
+-------------------------------------------------------------------
+Sun Jul  3 18:32:55 UTC 2016 - mailaender@opensuse.org
+
+- initial packaging

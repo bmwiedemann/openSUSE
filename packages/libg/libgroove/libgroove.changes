@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Wed Feb 13 21:03:14 UTC 2019 - bjorn.lie@gmail.com
+
+- Add libgroove-4.3.0_ffmpeg-4.0.patch: Fix build with ffmpeg v4.
+- Following the above patch, drop ffmpeg3-devel BuildRequires.
+
+-------------------------------------------------------------------
+Sat Apr 21 12:56:48 UTC 2018 - jengelh@inai.de
+
+- Explicitly request ffmpeg 3.x for building
+
+-------------------------------------------------------------------
+Tue Oct 31 17:28:01 UTC 2017 - aloisio@gmx.com
+
+- Renamed package to upstream name
+- Renamed groove.patch to libgroove-4.3.0-no_overflow.patch
+  and added description
+
+-------------------------------------------------------------------
+Sat Oct 28 12:03:02 UTC 2017 - aloisio@gmx.com
+
+- Added libgroove-4.3.0-no_Werror.patch to fix build in Factory
+
+-------------------------------------------------------------------
+Wed Jun 29 11:33:12 UTC 2016 - avvissu@yandex.by
+
+- Build with -Wno-error=deprecated-declarations
+
+-------------------------------------------------------------------
+Thu Jun 16 18:01:13 UTC 2016 - aloisio@gmx.com
+
+- Added libgroove-4.3.0_unused-result.patch to fix SLE11 build
+
+-------------------------------------------------------------------
+Thu May 26 00:29:56 UTC 2016 - avvissu@yandex.by
+
+- Initial release
+

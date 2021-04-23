@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d66b9164dc98d5d40bd07ab1b423e769</srcmd5>
+    <version>3.0.6</version>
+    <time>1468579839</time>
+    <user>dimstar_suse</user>
+    <comment>needed by jekyll</comment>
+    <requestid>407392</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5d49d39eef816deca33b9a5d3082fb1c</srcmd5>
+    <version>4.0.0</version>
+    <time>1483047948</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>447123</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>58fbd75a16abe47e91ae1f4e3b5ae381</srcmd5>
+    <version>4.0.1</version>
+    <time>1548062727</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>656368</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>15645c4c2033c6dfcb931bbb7aef7d2c</srcmd5>
+    <version>4.0.3</version>
+    <time>1553699883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685132</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3e3fac91358ef0dcaed492a5faa835e5</srcmd5>
+    <version>5.0.0</version>
+    <time>1611262551</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 5.0.0
+ see installed History.md
+  ## 5.0.0 / 2021-01-06
+  
+  ### Features
+  * Add new `{% render %}` tag (#1122) [Samuel Doiron]
+  * Add support for `as` in `{% render %}` and `{% include %}` (#1181) [Mike Angell]
+  * Add `{% liquid %}` and `{% echo %}` tags (#1086) [Justin Li]
+  * Add [usage tracking](README.md#usage-tracking) [Mike Angell]
+  * Add `Tag.disable_tags` for disabling tags that prepend `Tag::Disableable` at render time (#1162, #1274, #1275) [Mike Angell]
+  * Support using a profiler for multiple renders (#1365, #1366) [Dylan Thacker-Smith]
+  
+  ### Fixes
+  * Fix catastrophic backtracking in `RANGES_REGEX` regular expression (#1357) [Dylan Thacker-Smith]
+  * Make sure the for tag's limit and offset are integers (#1094) [David Cornu]
+  * Invokable methods for enumerable reject include (#1151) [Thierry Joyal]
+  * Allow `default` filter to handle `false` as value (#1144) [Mike Angell]
+  * Fix render length resource limit so it doesn't multiply nested output (#1285) [Dylan Thacker-Smith]
+  * Fix duplication of text in raw tags (#1304) [Peter Zhu]
+  * Fix strict parsing of find variable with a name expression (#1317) [Dylan Thacker-Smith]
+  * Use monotonic time to measure durations in Liquid::Profiler (#1362) [Dylan Thacker-Smith]
+  
+  ### Breaking Changes
+  * Require Ruby &gt;= 2.5 (#1131, #1310) [Mike Angell, Dylan Thacker-Smith]
+  * Remove support for taint checking (#1268) [Dylan Thacker-Smith]
+  * Split Strainer class into StrainerFactory and StrainerTemplate (#1208) [Thierry Joyal]
+  * Remove handling of a nil context in the Strainer class (#1218) [Thierry Joyal]
+  * Handle `BlockBody#blank?` at parse time (#1287) [Dylan Thacker-Smith]
+  * Pass the tag markup and tokenizer to `Document#unknown_tag` (#1290) [Dylan Thacker-Smith]
+  * And several internal changes
+  
+  ### Performance Improvements
+  * Reduce allocations (#1073, #1091, #1115, #1099, #1117, #1141, #1322, #1341) [Richard Monette, Florian Weingarten, Ashwin Maroli]
+  * Improve resources limits performance (#1093, #1323) [Florian Weingarten, Dylan Thacker-Smith]
+  
+</comment>
+    <requestid>865202</requestid>
+  </revision>
+</revisionlist>

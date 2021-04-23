@@ -1,0 +1,7 @@
+<package name="bleachbit" project="openSUSE:Factory">
+  <title>Remove unnecessary files, free space, and maintain privacy</title>
+  <description>BleachBit deletes unnecessary files to free valuable disk space and maintain privacy. Rid your system of old junk including broken menu entries, cache, cookies, localizations, and temporary files.
+Designed for Linux  systems, it wipes clean Bash, Beagle, Epiphany, Firefox, Flash, GNOME, Java, KDE, OpenOffice.org, Opera, RealPlayer,VIM, XChat, and more.</description>
+  <devel project="utilities" package="bleachbit"/>
+  <url>https://www.bleachbit.org</url>
+</package>

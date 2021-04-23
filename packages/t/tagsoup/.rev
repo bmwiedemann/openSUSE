@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6da7177836a0e9bf26a421737bcd212b</srcmd5>
+    <version>1.2.1</version>
+    <time>1503593324</time>
+    <user>dimstar_suse</user>
+    <comment>New package that will be needed by icedtea-web</comment>
+    <requestid>515312</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>27af4c5eda65943509b5229aca1c13fe</srcmd5>
+    <version>1.2.1</version>
+    <time>1506195269</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with jdk9</comment>
+    <requestid>528137</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4defec84dbe50ef8cf2cc66d8bc18b66</srcmd5>
+    <version>1.2.1</version>
+    <time>1549916702</time>
+    <user>dimstar_suse</user>
+    <comment>Properly register the artifact</comment>
+    <requestid>672993</requestid>
+  </revision>
+</revisionlist>

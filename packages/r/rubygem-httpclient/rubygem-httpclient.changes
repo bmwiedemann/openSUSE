@@ -1,0 +1,180 @@
+-------------------------------------------------------------------
+Sat Dec 10 05:34:03 UTC 2016 - coolo@suse.com
+
+- updated to version 2.8.3
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Oct  8 04:32:11 UTC 2016 - coolo@suse.com
+
+- updated to version 2.8.2.4
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Sep 10 04:30:53 UTC 2016 - coolo@suse.com
+
+- updated to version 2.8.2.3
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Aug 16 04:30:08 UTC 2016 - coolo@suse.com
+
+- updated to version 2.8.2.1
+  no changelog found
+
+-------------------------------------------------------------------
+Mon Aug  8 04:38:16 UTC 2016 - coolo@suse.com
+
+- updated to version 2.8.1
+  no changelog found
+
+-------------------------------------------------------------------
+Sat May 21 04:33:46 UTC 2016 - coolo@suse.com
+
+- updated to version 2.8.0
+  no changelog found
+
+-------------------------------------------------------------------
+Sat Apr 23 04:32:22 UTC 2016 - coolo@suse.com
+
+- updated to version 2.7.2
+  no changelog found
+
+-------------------------------------------------------------------
+Thu Jan 21 05:37:01 UTC 2016 - coolo@suse.com
+
+- updated to version 2.7.1
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Nov 24 05:29:37 UTC 2015 - coolo@suse.com
+
+- updated to version 2.7.0.1
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Nov  6 05:30:01 UTC 2015 - coolo@suse.com
+
+- updated to version 2.7.0
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Feb 10 17:54:27 UTC 2015 - coolo@suse.com
+
+- updated to version 2.6.0.1, no changelog
+
+-------------------------------------------------------------------
+Tue Dec  2 09:40:44 UTC 2014 - dmitry_r@opensuse.org
+
+- updated to version 2.5.3.3
+
+-------------------------------------------------------------------
+Tue Jul 30 16:04:46 UTC 2013 - coolo@suse.com
+
+- updated to version 2.3.4.1, no changelog found
+
+-------------------------------------------------------------------
+Fri May 24 06:50:14 UTC 2013 - coolo@suse.com
+
+- updated to version 2.3.3
+   * Changes
+ 
+     * #144 Add User-Agent field by default. You can remove the header by
+       setting nil to HTTPClient#agent_name.
+
+-------------------------------------------------------------------
+Thu Jan 24 06:44:50 UTC 2013 - coolo@suse.com
+
+- updated to version 2.3.2
+   * #138 Revert Timeout change unintentionally included in v2.3.1.  It's
+     reported that the change causes background processes not terminated
+     properly.
+
+-------------------------------------------------------------------
+Wed Jan  2 08:05:50 UTC 2013 - coolo@suse.com
+
+- updated to version 2.3.1
+
+-------------------------------------------------------------------
+Mon Oct 15 20:09:40 UTC 2012 - coolo@suse.com
+
+- updated to version 2.3.0.1
+
+-------------------------------------------------------------------
+Sun Aug 26 05:58:50 UTC 2012 - coolo@suse.com
+
+- updated to version 2.2.7
+
+-------------------------------------------------------------------
+Wed Aug  1 05:04:35 UTC 2012 - coolo@suse.com
+
+- updated to version 2.2.5
+
+-------------------------------------------------------------------
+Fri Jun 11 10:00:01 UTC 2010 - mrueckert@suse.de
+
+- use rubygems_requires macro
+
+-------------------------------------------------------------------
+Fri Dec 25 02:24:10 UTC 2009 - prusnak@suse.cz
+
+- update to 2.1.5.2
+
+-------------------------------------------------------------------
+Thu Jan 15 18:23:35 CET 2009 - mrueckert@suse.de
+
+- update to version 2.1.3.1
+  - Proxy Authentication for SSL.
+  - Performance improvements.
+  - Full RDoc. Please tell me any English problem. Thanks in advance.
+  - Do multipart file upload when a given body includes a File. You
+    don't need to set 'Content-Type' and boundary String any more.
+  - Added propfind and proppatch methods.
+  - Avoid unnecessary memory consuming for get_content/post_content
+    with block. get_content returns nil when you call it with a
+    block.
+  - post_content with IO did not work when redirect/auth cycle is
+    required. (CAUTION: post_content now correctly follows
+    redirection and posts the given content)
+  - Exception handling cleanups.
+  - Raises HTTPClient::ConfigurationError? for environment problem
+    (trying to do SSL without openssl installed for example)
+  - Raises HTTPClient::BadResponse? for HTTP response problem. you
+    can get the response HTTPMessage returned via $!.res.
+  - Raises SocketError? for connection problem (as same as before).
+  - Avoid unnecessary negotiation cycle for Negotiate(NTLM)
+    authentication. Thanks Rishav for great support for debugging
+    Negotiate authentication.
+  - get_content/post_content with block yielded unexpected message
+    body during redirect/auth cycle.
+  - Relative URI redirection should be allowed from 2.1.2 but it
+    did not work... fixed.
+  - Avoid unnecessary timeout waiting when no message body returned
+    such as '204 No Content' for DAV.
+  - Avoid blocking on socket closing when the socket is already
+    closed by foreign host and the client runs under MT-condition.
+
+-------------------------------------------------------------------
+Mon Oct 15 20:15:11 CEST 2007 - mrueckert@suse.de
+
+- update to version 2.1.2
+  - implemented Negotiate authentication with a support from
+    exterior modules. 'rubyntlm' module is required for Negotiate
+    auth with IIS. 'win32/sspi' module is required for Negotiate
+    auth with ISA. (#23)
+  - a workaround for Ubuntu + SonicWALL timeout problem. try to
+    send HTTP request in one chunk. (#171)
+  - create new self-signing dist-cert which has serial number 0x01
+    and embed it in httpclient.rb. (#169)
+  - update cacert.p7s. certificates are imported from cacerts in
+    JRE 6 Update 2. 1 expired CA certificate 'C=US, O=GTE
+    Corporation, CN=GTE CyberTrust? Root' is removed.
+  - [BUG] SSL + debug_dev didn't work under version 2.1.1. (#168)
+  - [BUG] Reason-Phrase of HTTP response status line can be empty
+    according to RFC2616. (#170)
+
+-------------------------------------------------------------------
+Wed Sep  5 18:04:54 CEST 2007 - abauer@suse.de
+
+- initial version 2.1.1
+

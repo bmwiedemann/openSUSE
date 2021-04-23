@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Mon May 25 10:59:34 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
+
+- %python3_only -> %python_alternative
+
+-------------------------------------------------------------------
+Thu Apr 16 11:47:01 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.9.4
+  * v0.9.4 (2020-03-26)
+    * [GitHub pull #38](https://github.com/dpranke/pyjson5/pull/38)
+      Fix from fredrik@fornwall.net for dumps() crashing when passed
+      an empty string as a key in an object.
+  * v0.9.3 (2020-03-17)
+    * [GitHub pull #35](https://github.com/dpranke/pyjson5/pull/35)
+      Fix from pastelmind@ for dump() not passing the right args to dumps().
+    * Fix from p.skouzos@novafutur.com to remove the tests directory from
+      the setup call, making the package a bit smaller.
+  * v0.9.2 (2020-03-02)
+    * [GitHub pull #34](https://github.com/dpranke/pyjson5/pull/34)
+      Fix from roosephu@ for a badly formatted nested list.
+  * v0.9.1 (2020-02-09)
+    * [GitHub issue #33](https://github.com/dpranke/pyjson5/issues/33):
+       Fix stray trailing comma when dumping an object with an invalid key.
+  * v0.9.0 (2020-01-30)
+    * [GitHub issue #29](https://github.com/dpranke/pyjson5/issues/29):
+       Fix an issue where objects keys that started with a reserved
+       word were incorrectly quoted.
+    * [GitHub issue #30](https://github.com/dpranke/pyjson5/issues/30):
+       Fix an issue where dumps() incorrectly thought a data structure
+       was cyclic in some cases.
+    * [GitHub issue #32](https://github.com/dpranke/pyjson5/issues/32):
+       Allow for non-string keys in dicts passed to ``dump()``/``dumps()``.
+       Add an ``allow_duplicate_keys=False`` to prevent possible
+       ill-formed JSON that might result.
+
+-------------------------------------------------------------------
+Mon Jul 29 02:39:50 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

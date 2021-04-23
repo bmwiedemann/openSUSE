@@ -1,0 +1,5 @@
+<package name="libmatekbd" project="openSUSE:Factory">
+  <title>MATE Desktop keyboard configuration utilities</title>
+  <description>This package provides libmatekbd, an API to manage the keyboard in MATE Desktop applications and its utilities.</description>
+  <devel project="X11:MATE:Factory" package="libmatekbd"/>
+</package>

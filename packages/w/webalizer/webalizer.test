@@ -1,0 +1,27 @@
+                        Testform für webalize
+                        =====================
+
+Datum:      Tue Oct  6 21:52:44 MEST 1998
+Version:    1.20-07
+Maintainer: grimmer@suse.de
+
+Voraussetzungen:
+================
+
+Apache sollte schon eine Weile gelaufen sein, damit schon
+Zugriffe erfaßt worden sind.
+
+Folgende Pakete müssen installiert werden:
+
+1. apache
+
+Aufruf(e):
+========
+
+1. /usr/bin/webalizer
+
+Ergebnis(se):
+===========
+
+Unter http://localhost/webalizer sollte eine Zugriffsstatistik
+für den WWW-Server zu sehen sein.

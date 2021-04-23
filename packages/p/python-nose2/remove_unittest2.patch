@@ -1,0 +1,13 @@
+Index: nose2-0.9.0/setup.py
+===================================================================
+--- nose2-0.9.0.orig/setup.py
++++ nose2-0.9.0/setup.py
+@@ -44,7 +44,7 @@ setup(
+             "nose2-%s.%s = nose2:discover" % (py_version.major, py_version.minor),
+         ]
+     },
+-    test_suite="unittest.collector",
++    test_suite="nose2.tests",
+     # descriptive package info below
+     description="unittest2 with plugins, the succesor to nose",
+     long_description=LONG_DESCRIPTION,

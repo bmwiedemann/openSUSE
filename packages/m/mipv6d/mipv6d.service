@@ -1,0 +1,9 @@
+[Unit]
+Description=Mobile IPv6 Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/mip6d
+
+[Install]
+WantedBy=multi-user.target

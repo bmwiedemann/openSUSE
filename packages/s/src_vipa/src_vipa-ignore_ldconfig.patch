@@ -1,0 +1,11 @@
+--- Makefile.old	2014-01-27 14:13:23.000000000 +0100
++++ Makefile	2014-01-27 14:13:51.000000000 +0100
+@@ -51,7 +51,7 @@
+ 	$(INSTALL) -m 755 src_vipa.so $(SRC_VIPA_PATH)
+ 	$(INSTALL) -m 755 src_vipa.sh $(SRC_VIPA_STARTER_PATH)
+ 	$(INSTALL) -m 644 src_vipa.8 $(SRC_VIPA_MANPAGE_PATH)/man8
+-	$(LDCONFIG)
++	-/sbin/ldconfig
+ 
+ clean:
+ 	rm -f src_vipa.i src_vipa.s src_vipa.o src_vipa.sh src_vipa.so core src_vipa-$(VERSION).tar.gz

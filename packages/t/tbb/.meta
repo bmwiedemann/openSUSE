@@ -1,0 +1,13 @@
+<package name="tbb" project="openSUSE:Factory">
+  <title>Intell Threading Building Blocks</title>
+  <description>Intel(r) Threading Building Blocks (TBB) offers a rich and complete
+approach to expressing parallelism in a C++ program. It is a library
+that helps you take advantage of multi-core processor performance
+without having to be a threading expert. Threading Building Blocks is
+not just a threads-replacement library. It represents a higher-level,
+task-based parallelism that abstracts platform details and threading
+mechanism for performance and scalability.
+</description>
+  <devel project="devel:libraries:c_c++" package="tbb"/>
+  <url>https://www.threadingbuildingblocks.org/</url>
+</package>

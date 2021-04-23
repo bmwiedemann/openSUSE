@@ -1,0 +1,5 @@
+<package name="gnome-themes-extras" project="openSUSE:Factory">
+  <title>Additional GNOME Themes</title>
+  <description>This package contains several extra GNOME themes.</description>
+  <devel project="GNOME:Factory" package="gnome-themes-extras"/>
+</package>

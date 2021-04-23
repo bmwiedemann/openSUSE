@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Dec 24 10:57:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.3
+  * Fixed: unreduced poly not handled by nf_elem_get_set_fmpq_poly.
+  * Fixed a bug in nf_elem_reduce for linear fields.
+
+-------------------------------------------------------------------
+Sun Sep 20 22:27:48 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 0.2.2) for build.opensuse.org

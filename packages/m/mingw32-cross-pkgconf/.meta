@@ -1,0 +1,6 @@
+<package name="mingw32-cross-pkgconf" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="mingw32-pkgconf"/>
+  <bcntsynctag>mingw32-pkgconf</bcntsynctag>
+</package>

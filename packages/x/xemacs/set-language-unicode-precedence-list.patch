@@ -1,0 +1,87 @@
+Index: xemacs-21.5.29/lisp/mule/chinese.el
+===================================================================
+--- xemacs-21.5.29.orig/lisp/mule/chinese.el
++++ xemacs-21.5.29/lisp/mule/chinese.el
+@@ -223,7 +223,24 @@ G2: Sisheng (PinYin - ZhuYin)"
+ 
+ (set-language-info-alist
+  "Chinese-GB" '((setup-function . setup-chinese-gb-environment-internal)
+-		(charset chinese-gb2312 chinese-sisheng)
++		(charset ascii
++			 latin-iso8859-1
++			 latin-iso8859-2
++			 latin-iso8859-3
++			 latin-iso8859-4
++			 latin-iso8859-15
++			 cyrillic-iso8859-5
++			 greek-iso8859-7
++			 chinese-gb2312
++			 chinese-sisheng
++			 chinese-big5-1
++			 chinese-big5-2
++			 korean-ksc5601
++			 japanese-jisx0208
++			 japanese-jisx0208-1978
++			 japanese-jisx0212
++			 latin-jisx0201
++			 katakana-jisx0201)
+ 		(coding-system cn-gb-2312 iso-2022-7bit hz-gb-2312)
+ 		(coding-priority cn-gb-2312 big5 iso-2022-7bit)
+ 		(cygwin-locale "zh")
+@@ -297,7 +314,24 @@ of a Chinese character\"."))
+ (set-charset-ccl-program 'chinese-big5-2 'ccl-encode-big5-font)
+ 
+ (set-language-info-alist
+- "Chinese-BIG5" '((charset chinese-big5-1 chinese-big5-2)
++ "Chinese-BIG5" '((charset ascii
++			   latin-iso8859-1
++			   latin-iso8859-2
++			   latin-iso8859-3
++			   latin-iso8859-4
++			   latin-iso8859-15
++			   cyrillic-iso8859-5
++			   greek-iso8859-7
++			   chinese-big5-1
++			   chinese-big5-2
++			   chinese-gb2312
++			   chinese-sisheng
++			   korean-ksc5601
++			   japanese-jisx0208
++			   japanese-jisx0208-1978
++			   japanese-jisx0212
++			   latin-jisx0201
++			   katakana-jisx0201)
+ 		  (coding-system big5 iso-2022-7bit)
+ 		  (coding-priority big5 cn-gb-2312 iso-2022-7bit)
+ 		  (cygwin-locale "zh_TW")
+Index: xemacs-21.5.29/lisp/mule/japanese.el
+===================================================================
+--- xemacs-21.5.29.orig/lisp/mule/japanese.el
++++ xemacs-21.5.29/lisp/mule/japanese.el
+@@ -378,8 +378,24 @@ a similar structure:
+  "Japanese" '((setup-function . setup-japanese-environment-internal)
+ 	      (exit-function . exit-japanese-environment)
+ 	      (tutorial . "TUTORIAL.ja")
+-	      (charset japanese-jisx0208 japanese-jisx0208-1978
+-		       japanese-jisx0212 latin-jisx0201 katakana-jisx0201)
++	      (charset ascii
++		       latin-iso8859-1
++		       latin-iso8859-2
++		       latin-iso8859-3
++		       latin-iso8859-4
++		       latin-iso8859-15
++		       cyrillic-iso8859-5
++		       greek-iso8859-7
++	               japanese-jisx0208
++		       japanese-jisx0208-1978
++		       japanese-jisx0212
++		       latin-jisx0201
++		       katakana-jisx0201
++		       korean-ksc5601
++		       chinese-big5-1
++		       chinese-big5-2
++		       chinese-gb2312
++		       chinese-sisheng)
+ 	      (coding-system iso-2022-jp euc-jp
+ 			     shift-jis iso-2022-jp-2)
+ 	      (coding-priority iso-2022-jp euc-jp

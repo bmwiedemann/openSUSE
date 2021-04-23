@@ -1,0 +1,16 @@
+Index: eigen-3.3.8/CMakeLists.txt
+===================================================================
+--- eigen-3.3.8.orig/CMakeLists.txt
++++ eigen-3.3.8/CMakeLists.txt
+@@ -429,6 +429,11 @@ install(FILES
+   DESTINATION ${INCLUDE_INSTALL_DIR} COMPONENT Devel
+   )
+ 
++install(FILES
++  cmake/FindEigen3.cmake
++  DESTINATION ${CMAKE_INSTALL_PREFIX}/share/cmake/Modules
++  )
++
+ if(EIGEN_BUILD_PKGCONFIG)
+     configure_file(eigen3.pc.in eigen3.pc @ONLY)
+     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/eigen3.pc

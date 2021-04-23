@@ -1,0 +1,139 @@
+Backported to gcc7 from:
+
+From: Wilco Dijkstra <wdijkstr@arm.com>
+Date: Fri, 17 Jan 2020 13:17:21 +0000 (+0000)
+Subject: [AArch64] Fix shrinkwrapping interactions with atomics (PR92692)
+X-Git-Url: https://gcc.gnu.org/git/gitweb.cgi?p=gcc.git;a=commitdiff_plain;h=e5e07b68187b9aa334519746c45b8cffc5eb7e5c
+
+[AArch64] Fix shrinkwrapping interactions with atomics (PR92692)
+
+The separate shrinkwrapping pass may insert stores in the middle
+of atomics loops which can cause issues on some implementations.
+Avoid this by delaying splitting atomics patterns until after
+prolog/epilog generation.
+
+gcc/
+	PR target/92692
+	* config/aarch64/aarch64.c (aarch64_split_compare_and_swap)
+	Add assert to ensure prolog has been emitted.
+	(aarch64_split_atomic_op): Likewise.
+	* config/aarch64/atomics.md (aarch64_compare_and_swap<mode>)
+	Use epilogue_completed rather than reload_completed.
+	(aarch64_atomic_exchange<mode>): Likewise.
+	(aarch64_atomic_<atomic_optab><mode>): Likewise.
+	(atomic_nand<mode>): Likewise.
+	(aarch64_atomic_fetch_<atomic_optab><mode>): Likewise.
+	(atomic_fetch_nand<mode>): Likewise.
+	(aarch64_atomic_<atomic_optab>_fetch<mode>): Likewise.
+	(atomic_nand_fetch<mode>): Likewise.
+---
+
+Index: gcc-7.5.0+r278197/gcc/config/aarch64/aarch64.c
+===================================================================
+--- gcc-7.5.0+r278197.orig/gcc/config/aarch64/aarch64.c
++++ gcc-7.5.0+r278197/gcc/config/aarch64/aarch64.c
+@@ -12121,6 +12121,9 @@ aarch64_emit_post_barrier (enum memmodel
+ void
+ aarch64_split_compare_and_swap (rtx operands[])
+ {
++  /* Split after prolog/epilog to avoid interactions with shrinkwrapping.  */
++  gcc_assert (epilogue_completed);
++
+   rtx rval, mem, oldval, newval, scratch, x, model_rtx;
+   machine_mode mode;
+   bool is_weak;
+@@ -12205,6 +12208,9 @@ void
+ aarch64_split_atomic_op (enum rtx_code code, rtx old_out, rtx new_out, rtx mem,
+ 			 rtx value, rtx model_rtx, rtx cond)
+ {
++  /* Split after prolog/epilog to avoid interactions with shrinkwrapping.  */
++  gcc_assert (epilogue_completed);
++
+   machine_mode mode = GET_MODE (mem);
+   machine_mode wmode = (mode == DImode ? DImode : SImode);
+   const enum memmodel model = memmodel_from_int (INTVAL (model_rtx));
+Index: gcc-7.5.0+r278197/gcc/config/aarch64/atomics.md
+===================================================================
+--- gcc-7.5.0+r278197.orig/gcc/config/aarch64/atomics.md
++++ gcc-7.5.0+r278197/gcc/config/aarch64/atomics.md
+@@ -59,7 +59,7 @@
+    (clobber (match_scratch:SI 7 "=&r"))]
+   ""
+   "#"
+-  "&& reload_completed"
++  "&& epilogue_completed"
+   [(const_int 0)]
+   {
+     aarch64_split_compare_and_swap (operands);
+@@ -83,7 +83,7 @@
+    (clobber (match_scratch:SI 7 "=&r"))]
+   ""
+   "#"
+-  "&& reload_completed"
++  "&& epilogue_completed"
+   [(const_int 0)]
+   {
+     aarch64_split_compare_and_swap (operands);
+@@ -226,7 +226,7 @@
+    (clobber (match_scratch:SI 4 "=&r"))]
+   ""
+   "#"
+-  "&& reload_completed"
++  "&& epilogue_completed"
+   [(const_int 0)]
+   {
+     aarch64_split_atomic_op (SET, operands[0], NULL, operands[1],
+@@ -347,7 +347,7 @@
+   (clobber (match_scratch:SI 4 "=&r"))]
+   ""
+   "#"
+-  "&& reload_completed"
++  "&& epilogue_completed"
+   [(const_int 0)]
+   {
+     aarch64_split_atomic_op (<CODE>, NULL, operands[3], operands[0],
+@@ -403,7 +403,7 @@
+    (clobber (match_scratch:SI 4 "=&r"))]
+   ""
+   "#"
+-  "&& reload_completed"
++  "&& epilogue_completed"
+   [(const_int 0)]
+   {
+      aarch64_split_atomic_op (NOT, NULL, operands[3], operands[0],
+@@ -507,7 +507,7 @@
+    (clobber (match_scratch:SI 5 "=&r"))]
+   ""
+   "#"
+-  "&& reload_completed"
++  "&& epilogue_completed"
+   [(const_int 0)]
+   {
+     aarch64_split_atomic_op (<CODE>, operands[0], operands[4], operands[1],
+@@ -554,7 +554,7 @@
+    (clobber (match_scratch:SI 5 "=&r"))]
+   ""
+   "#"
+-  "&& reload_completed"
++  "&& epilogue_completed"
+   [(const_int 0)]
+   {
+     aarch64_split_atomic_op (NOT, operands[0], operands[4], operands[1],
+@@ -607,7 +607,7 @@
+    (clobber (match_scratch:SI 4 "=&r"))]
+   ""
+   "#"
+-  "&& reload_completed"
++  "&& epilogue_completed"
+   [(const_int 0)]
+   {
+     aarch64_split_atomic_op (<CODE>, NULL, operands[0], operands[1],
+@@ -631,7 +631,7 @@
+    (clobber (match_scratch:SI 4 "=&r"))]
+   ""
+   "#"
+-  "&& reload_completed"
++  "&& epilogue_completed"
+   [(const_int 0)]
+   {
+     aarch64_split_atomic_op (NOT, NULL, operands[0], operands[1],

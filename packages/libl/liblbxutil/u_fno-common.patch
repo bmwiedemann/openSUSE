@@ -1,0 +1,45 @@
+diff -u -r liblbxutil-1.1.0/src/lbx_zlib/lbx_zlib.c liblbxutil-1.1.0/src/lbx_zlib/lbx_zlib.c
+--- liblbxutil-1.1.0/src/lbx_zlib/lbx_zlib.c	2009-11-03 06:55:28.000000000 +0100
++++ liblbxutil-1.1.0/src/lbx_zlib/lbx_zlib.c	2020-01-08 18:42:27.748352503 +0100
+@@ -55,7 +55,7 @@
+ #ifdef WIN32
+ #define _WILLWINSOCK_
+ #endif
+-#define _BSD_SOURCE
++#define DEFAULT_SOURCE
+ #include <X11/Xos.h>
+ #include <X11/Xfuncs.h>
+ #include <stdio.h>
+diff -u -r liblbxutil-1.1.0/src/lbx_zlib/lbx_zlib.h liblbxutil-1.1.0/src/lbx_zlib/lbx_zlib.h
+--- liblbxutil-1.1.0/src/lbx_zlib/lbx_zlib.h	2009-11-03 06:52:21.000000000 +0100
++++ liblbxutil-1.1.0/src/lbx_zlib/lbx_zlib.h	2020-01-08 18:38:26.711719446 +0100
+@@ -136,9 +136,9 @@
+ #endif
+ 
+ /* lbx_zlib.c */
+-unsigned long stream_out_compressed;
+-unsigned long stream_out_uncompressed;
+-unsigned long stream_out_plain;
+-unsigned long stream_in_compressed;
+-unsigned long stream_in_uncompressed;
+-unsigned long stream_in_plain;
++extern unsigned long stream_out_compressed;
++extern unsigned long stream_out_uncompressed;
++extern unsigned long stream_out_plain;
++extern unsigned long stream_in_compressed;
++extern unsigned long stream_in_uncompressed;
++extern unsigned long stream_in_plain;
+diff -u -r liblbxutil-1.1.0/src/lbx_zlib/reqstats.c liblbxutil-1.1.0/src/lbx_zlib/reqstats.c
+--- liblbxutil-1.1.0/src/lbx_zlib/reqstats.c	2009-11-03 06:39:14.000000000 +0100
++++ liblbxutil-1.1.0/src/lbx_zlib/reqstats.c	2020-01-08 18:40:15.229805230 +0100
+@@ -43,8 +43,8 @@
+ 
+ #define LBX_CODE 136 /* XXX - this should not be hardcoded - on todo list */
+ 
+-extern unsigned long stream_in_compressed;
+-extern unsigned long stream_in_plain;
++unsigned long stream_in_compressed;
++unsigned long stream_in_plain;
+ extern unsigned long stream_in_packet_header_bytes;
+ extern unsigned long stream_in_uncompressed_bytes;
+ 

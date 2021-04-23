@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f2117b8b67106154a6c6c6879caf5c24</srcmd5>
+    <version>1.7.5</version>
+    <time>1554458526</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>690918</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fbc1dd8152b5c7acb4d02a3968352905</srcmd5>
+    <version>1.9.2</version>
+    <time>1583949256</time>
+    <user>dimstar_suse</user>
+    <comment>upgrade doxia/doxia-sitetools</comment>
+    <requestid>783793</requestid>
+  </revision>
+</revisionlist>

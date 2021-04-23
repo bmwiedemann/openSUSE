@@ -1,0 +1,26 @@
+Index: kbd-2.3.0/src/loadkeys.c
+===================================================================
+--- kbd-2.3.0.orig/src/loadkeys.c
++++ kbd-2.3.0/src/loadkeys.c
+@@ -27,6 +27,8 @@
+ 
+ static const char *const dirpath1[] = {
+ 	"",
++	DATADIR "/" XKBKEYMAPDIR "/",
++	DATADIR "/" LEGACYKEYMAPDIR "/**",
+ 	DATADIR "/" KEYMAPDIR "/**",
+ 	KERNDIR "/",
+ 	NULL
+Index: kbd-2.3.0/src/paths.h
+===================================================================
+--- kbd-2.3.0.orig/src/paths.h
++++ kbd-2.3.0/src/paths.h
+@@ -5,6 +5,8 @@
+  * The following five subdirectories are defined:
+  */
+ #define KEYMAPDIR "keymaps"
++#define XKBKEYMAPDIR "keymaps/xkb"
++#define LEGACYKEYMAPDIR "keymaps/legacy"
+ #define UNIMAPDIR "unimaps"
+ #define TRANSDIR "consoletrans"
+ #define VIDEOMODEDIR "videomodes"

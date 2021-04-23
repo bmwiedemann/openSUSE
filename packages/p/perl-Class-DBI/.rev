@@ -1,0 +1,24 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>827058045f4b94bd1e8db7ab62c01e52</srcmd5>
+    <version>3.0.17</version>
+    <time>1372413091</time>
+    <user>coolo</user>
+    <comment>needed for DBIx-Class</comment>
+    <requestid>181007</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>827058045f4b94bd1e8db7ab62c01e52</srcmd5>
+    <version>3.0.17</version>
+    <time>1379663581</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>827058045f4b94bd1e8db7ab62c01e52</srcmd5>
+    <version>3.0.17</version>
+    <time>1409302196</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

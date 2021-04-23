@@ -1,0 +1,116 @@
+Index: pam_krb5-2.4.13/src/auth.c
+===================================================================
+--- pam_krb5-2.4.13.orig/src/auth.c
++++ pam_krb5-2.4.13/src/auth.c
+@@ -56,6 +56,7 @@
+ #include "items.h"
+ #include "kuserok.h"
+ #include "log.h"
++#include "perms.h"
+ #include "options.h"
+ #include "prompter.h"
+ #include "session.h"
+@@ -434,6 +435,7 @@ pam_sm_setcred(pam_handle_t *pamh, int f
+ 	       int argc, PAM_KRB5_MAYBE_CONST char **argv)
+ {
+ 	const char *why = "";
++	struct _pam_krb5_perms *saved_perms;
+ 	notice("pam_setcred (%s) called",
+ 		(flags & PAM_ESTABLISH_CRED)?"establish credential":
+ 		(flags & PAM_REINITIALIZE_CRED)?"reinitialize credential":
+@@ -445,6 +447,8 @@ pam_sm_setcred(pam_handle_t *pamh, int f
+ 					      _pam_krb5_session_caller_setcred);
+ 	}
+ 	if (flags & (PAM_REINITIALIZE_CRED | PAM_REFRESH_CRED)) {
++		saved_perms = _pam_krb5_switch_perms_r2e();
++
+ 		if (flags & PAM_REINITIALIZE_CRED) {
+ 			why = "pam_setcred(PAM_REINITIALIZE_CRED)";
+ 			if (flags & PAM_REFRESH_CRED) {
+@@ -454,9 +458,18 @@ pam_sm_setcred(pam_handle_t *pamh, int f
+ 			why = "pam_setcred(PAM_REFRESH_CRED)";
+ 		}
+ 		if (_pam_krb5_sly_looks_unsafe() == 0) {
+-			return _pam_krb5_sly_maybe_refresh(pamh, flags, why,
+-							   argc, argv);
++			int i = _pam_krb5_sly_maybe_refresh(pamh, flags, why, argc, argv);
++			if (saved_perms != NULL) {
++				_pam_krb5_restore_perms_r2e(saved_perms);
++			}
++			saved_perms = NULL;
++
++			return i;
+ 		} else {
++			debug("looks unsafe - ignore refresh");
++			if (saved_perms != NULL) {
++				_pam_krb5_restore_perms_r2e(saved_perms);
++			}
+ 			return PAM_IGNORE;
+ 		}
+ 	}
+Index: pam_krb5-2.4.13/src/perms.c
+===================================================================
+--- pam_krb5-2.4.13.orig/src/perms.c
++++ pam_krb5-2.4.13/src/perms.c
+@@ -89,3 +89,49 @@ _pam_krb5_restore_perms(struct _pam_krb5
+ 	}
+ 	return ret;
+ }
++
++struct _pam_krb5_perms *
++_pam_krb5_switch_perms_r2e(void)
++{
++	struct _pam_krb5_perms *ret;
++	ret = malloc(sizeof(*ret));
++	if (ret != NULL) {
++		ret->ruid = getuid();
++		ret->euid = geteuid();
++		ret->rgid = getgid();
++		ret->egid = getegid();
++		if (ret->ruid == ret->euid) {
++			ret->ruid = -1;
++			ret->euid = -1;
++		}
++		if (ret->rgid == ret->egid) {
++			ret->rgid = -1;
++			ret->egid = -1;
++		}
++		if (setresgid(ret->rgid, ret->rgid, ret->egid) == -1) {
++			free(ret);
++			ret = NULL;
++		} else {
++			if (setresuid(ret->ruid, ret->ruid, ret->euid) == -1) {
++				setresgid(ret->rgid, ret->egid, ret->rgid);
++				free(ret);
++				ret = NULL;
++			}
++		}
++	}
++	return ret;
++}
++
++int
++_pam_krb5_restore_perms_r2e(struct _pam_krb5_perms *saved)
++{
++	int ret = -1;
++	if (saved != NULL) {
++		if ((setresuid(saved->ruid, saved->euid, saved->ruid) == 0) &&
++		   (setresgid(saved->rgid, saved->egid, saved->rgid) == 0)) {
++			ret = 0;
++		}
++		free(saved);
++	}
++	return ret;
++}
+Index: pam_krb5-2.4.13/src/perms.h
+===================================================================
+--- pam_krb5-2.4.13.orig/src/perms.h
++++ pam_krb5-2.4.13/src/perms.h
+@@ -37,4 +37,7 @@ struct _pam_krb5_perms;
+ struct _pam_krb5_perms *_pam_krb5_switch_perms(void);
+ int _pam_krb5_restore_perms(struct _pam_krb5_perms *saved);
+ 
++struct _pam_krb5_perms *_pam_krb5_switch_perms_r2e(void);
++int _pam_krb5_restore_perms_r2e(struct _pam_krb5_perms *saved);
++
+ #endif

@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Sat Feb 13 11:27:22 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Make tests work (a little bit, gh#mpx/lua-cjson#75) by adding
+  test_environment.patch.
+
+-------------------------------------------------------------------
+Fri Jan 29 12:55:13 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging of cjson 2.1.0.

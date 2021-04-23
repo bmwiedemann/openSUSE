@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Sat Mar 11 01:45:26 UTC 2017 - sfalken@opensuse.org
+
+- Edited %files to clear unpackaged files builderror in
+  openSUSE:Factory
+
+-------------------------------------------------------------------
+Mon Jun  6 12:30:09 UTC 2016 - jengelh@inai.de
+
+- Remove useless --with-pic (it's for static libs only, and they
+  are not built).
+- Shared library subpackage name must be libfunambol-9_0_1
+  because the SONAME is libfunambol-9.0.1.so.
+
+-------------------------------------------------------------------
+Thu Jun  2 13:22:13 UTC 2016 - tchvatal@suse.com
+
+- Cleanup a bit so we do not have diffing devel and factory
+
+-------------------------------------------------------------------
+Sun Nov 13 14:40:40 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+
+-------------------------------------------------------------------
+Sun Nov 13 09:16:30 UTC 2011 - coolo@suse.com
+
+- add libtool as explicit buildrequire to avoid implicit dependency from prjconf
+
+-------------------------------------------------------------------
+Wed Feb 16 11:06:44 UTC 2011 - alinm.elena@gmail.com
+
+- update to v 9.0 , see changeslog.txt
+
+-------------------------------------------------------------------
+Wed Aug 25 16:24:58 UTC 2010 - sasch.pe@gmx.de
+
+- added license file to the sharedlib package and additional
+  documentation to the devel package
+- removed installed unit-test files
+
+-------------------------------------------------------------------
+Wed Jun  2 17:20:13 UTC 2010 - sasch.pe@gmx.de
+
+- changed to version 8.0.5 (according to changelog)
+- made devel package depend on SONAME version 7
+
+-------------------------------------------------------------------
+Tue Apr 20 11:30:13 UTC 2010 - sasch.pe@gmx.de
+
+- updated to upstream version 8.0.1
+
+-------------------------------------------------------------------
+Mon Jul  4 13:34:38 CEST 2009 - sasch.pe@gmx.de
+
+- initial checkin of version 7.1.0
+

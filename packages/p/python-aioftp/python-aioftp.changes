@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Fri Jan 22 13:48:55 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Add minimum python-siosocks version.
+
+-------------------------------------------------------------------
+Thu Jan 21 14:09:30 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to 0.18.1.
+  * sync tests with new `siosocks`
+  * some docs fixes
+- Updates for 0.18.0
+  * server: fix `MLSX` time format
+  * server: resolve server address from connection
+- Updates for 0.17.2
+  * server: fix broken `python -m aioftp` after 3.7 migration
+- Updates for 0.17.1
+  * common/stream: add `readexactly` proxy method
+- Updates for 0.17.0
+  * tests: fix test_unlink_on_dir on POSIX compatible systems 
+  * docs: fix extra parentheses
+  * client: replace `ClientSession` with `Client.context`
+- Updates for 0.16.1
+  * client: strip date before parsing
+  * client: logger no longer prints out plaintext password 
+  * client: add custom passive commands to client 
+- Updates for 0.16.0
+  * server: remove obsolete `pass` to `pass_` command renaming
+  * client: fix leap year bug at `parse_ls_date` method
+  * all: add base exception class
+
+-------------------------------------------------------------------
+Thu Jan 16 15:52:14 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to 0.15.0
+  * server: use explicit mapping of available commands for security reasons
+  * client: add socks proxy support via siosocks
+  * client: add custom list parser
+
+-------------------------------------------------------------------
+Thu Nov  7 16:12:05 UTC 2019 - Matej Cepl <mcepl@suse.com>
+
+- Run through spec-cleaner
+
+-------------------------------------------------------------------
+Tue Jul 23 17:00:03 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

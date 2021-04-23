@@ -1,0 +1,40 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>633ea86d3d2f71182aa8f250603656a4</srcmd5>
+    <version>4.0.1</version>
+    <time>1593727267</time>
+    <user>dimstar_suse</user>
+    <comment>.</comment>
+    <requestid>808776</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c8d2955b036c6a0afbaf0d36d718e04b</srcmd5>
+    <version>4.0.2</version>
+    <time>1597658659</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.2
+  Windows kernel-mode driver support
+  - Add armv8, ppc32 &amp; thumbv8 modes
+  - Print instruction ID
+  - Support CS_OPT_UNSIGNED for ATT syntax
+  - Fix operand size for some instructions
+  - Fix LOCK prefixes
+  - Recognize xacquire/xrelease prefix
+  - Fix call/jmp access mode of mem operand
+  - Add ENDBR32, ENDBR64 to reduce mode
+  - Other minor fixes
+  - Support CS_OPT_UNSIGNED
+  - Fix register access flags for memory instructions
+  - Fix UMOV vess
+  - Update writeback for STR_POST_REG
+  - Store correct register value in op.reg_pair
+  - BDZLA is absolute branch
+  - Fix truncated 64bit imm operand
+  - Fix base/index printing
+  - Fix skipdata struct being destroyed
+  - Add __repr__ for capstone.CsInsn
+  - Fix Java bindings to use pointers instead of longs
+  - Fix x86_op record</comment>
+    <requestid>826947</requestid>
+  </revision>
+</revisionlist>

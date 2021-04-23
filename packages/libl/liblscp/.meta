@@ -1,0 +1,9 @@
+<package name="liblscp" project="openSUSE:Factory">
+  <title>LinuxSampler control protocol library</title>
+  <description>liblscp is an implementation of the LinuxSampler control protocol,
+proposed as a C language API.
+
+</description>
+  <devel project="multimedia:libs" package="liblscp"/>
+  <url>https://linuxsampler.org</url>
+</package>

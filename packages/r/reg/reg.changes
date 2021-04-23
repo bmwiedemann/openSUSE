@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Wed Dec 18 11:35:55 CET 2019 - kukuk@suse.de
+
+- Update to version 0.16.1
+  - Update vendor
+  - Adds support for passing a context with all http requests
+
+-------------------------------------------------------------------
+Fri Aug  9 08:57:29 CEST 2019 - kukuk@suse.de
+
+- Initial version
+

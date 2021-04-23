@@ -1,0 +1,50 @@
+From 837c9625207a997f3c1226d1299a2a53980fbe9b Mon Sep 17 00:00:00 2001
+From: Christy Norman <christy@linux.vnet.ibm.com>
+Date: Fri, 27 Sep 2019 07:29:15 -0700
+Subject: [PATCH 1/2] fix build for Power
+
+The zip -d flag will error if it doesn't find that extension.
+This is a fix for Power, but doesn't fix the default case.
+
+Signed-off-by: Christy Norman <christy@linux.vnet.ibm.com>
+
+Closes #9346.
+
+PiperOrigin-RevId: 271566240
+---
+ src/conditions/BUILD | 6 ++++++
+ third_party/BUILD    | 1 +
+ 2 files changed, 7 insertions(+)
+
+diff --git a/src/conditions/BUILD b/src/conditions/BUILD
+index 2b28e28057..faa41a439d 100644
+--- a/src/conditions/BUILD
++++ b/src/conditions/BUILD
+@@ -10,6 +10,12 @@ filegroup(
+     visibility = ["//src:__pkg__"],
+ )
+ 
++config_setting(
++    name = "linux_ppc",
++    values = {"cpu": "ppc"},
++    visibility = ["//visibility:public"],
++)
++
+ config_setting(
+     name = "linux_x86_64",
+     values = {"cpu": "k8"},
+diff --git a/third_party/BUILD b/third_party/BUILD
+index 159006d741..b2c0163d61 100644
+--- a/third_party/BUILD
++++ b/third_party/BUILD
+@@ -526,6 +526,7 @@ UNNECESSARY_DYNAMIC_LIBRARIES = select({
+     # The .so file is an x86 one, so we can just remove it if the CPU is not x86
+     "//src/conditions:arm": "*.so *.jnilib *.dll",
+     "//src/conditions:linux_aarch64": "*.so *.jnilib *.dll",
++    "//src/conditions:linux_ppc": "*.so *.jnilib *.dll",
+     # Play it safe -- better have a big binary than a slow binary
+     # zip -d does require an argument. Supply something bogus.
+     "//conditions:default": "*.bogusextension",
+-- 
+2.23.0
+

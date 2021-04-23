@@ -1,0 +1,71 @@
+From 92e7725900befac1ce05c1f13e0c18bd57d20898 Mon Sep 17 00:00:00 2001
+From: Martin Durant <martin.durant@utoronto.ca>
+Date: Wed, 16 Dec 2020 11:56:19 -0500
+Subject: [PATCH 1/2] Fix category ordering for path column
+
+---
+ intake/source/csv.py   | 12 +++---------
+ intake/source/utils.py |  2 ++
+ 2 files changed, 5 insertions(+), 9 deletions(-)
+
+Index: intake-0.6.0/intake/source/csv.py
+===================================================================
+--- intake-0.6.0.orig/intake/source/csv.py
++++ intake-0.6.0/intake/source/csv.py
+@@ -58,20 +58,14 @@ class CSVSource(base.DataSource, base.Pa
+     def _set_pattern_columns(self, path_column):
+         """Get a column of values for each field in pattern
+         """
+-        try:
+-            # CategoricalDtype allows specifying known categories when
+-            # creating objects. It was added in pandas 0.21.0.
+-            from pandas.api.types import CategoricalDtype
+-            _HAS_CDT = True
+-        except ImportError:
+-            _HAS_CDT = False
++        from pandas.api.types import CategoricalDtype
+ 
+         col = self._dataframe[path_column]
+-        paths = col.cat.categories
++        paths = sorted(col.cat.categories)
+ 
+         column_by_field = {field:
+             col.cat.codes.map(dict(enumerate(values))).astype(
+-                "category" if not _HAS_CDT else CategoricalDtype(set(values))
++                CategoricalDtype(set(values))
+             ) for field, values in reverse_formats(self.pattern, paths).items()
+         }
+         self._dataframe = self._dataframe.assign(**column_by_field)
+@@ -102,12 +96,6 @@ class CSVSource(base.DataSource, base.Pa
+                 **self._csv_kwargs)
+             return
+ 
+-        if not (DASK_VERSION >= '0.19.0'):
+-            raise ValueError("Your version of dask is '{}'. "
+-                "The ability to include filenames in read_csv output "
+-                "(``include_path_column``) was added in 0.19.0, so "
+-                "pattern urlpaths are not supported.".format(DASK_VERSION))
+-
+         drop_path_column = 'include_path_column' not in self._csv_kwargs
+         path_column = self._path_column()
+ 
+Index: intake-0.6.0/intake/source/utils.py
+===================================================================
+--- intake-0.6.0.orig/intake/source/utils.py
++++ intake-0.6.0/intake/source/utils.py
+@@ -212,6 +212,7 @@ def reverse_format(format_string, resolv
+ 
+     return args
+ 
++
+ def path_to_glob(path):
+     """
+     Convert pattern style paths to glob style paths
+@@ -255,6 +256,7 @@ def path_to_glob(path):
+     return glob
+ 
+ 
++
+ def path_to_pattern(path, metadata=None):
+     """
+     Remove source information from path when using chaching

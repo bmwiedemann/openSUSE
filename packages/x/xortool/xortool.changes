@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed Aug 26 08:35:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.99:
+  * completed transition to python 3
+  * bugfixes
+
+-------------------------------------------------------------------
+Tue Jan  7 12:01:01 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.98+git20191025 (changes since 0.96):
+  * Switch to Python 3.
+  * Fix a frequent char parse error for '00'.
+  * Add target text charset handling.
+  * Add a simple test script.
+
+-------------------------------------------------------------------
+Wed Sep 16 05:41:07 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

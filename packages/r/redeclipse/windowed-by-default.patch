@@ -1,0 +1,12 @@
+diff -burNE redeclipse-2.0.0_vanilla/src/engine/main.cpp redeclipse-2.0.0/src/engine/main.cpp
+--- redeclipse-2.0.0_vanilla/src/engine/main.cpp	2020-06-16 10:23:21.249977623 +0200
++++ redeclipse-2.0.0/src/engine/main.cpp	2020-06-16 10:25:03.533664683 +0200
+@@ -246,7 +246,7 @@
+     wantdisplaysetup = true;
+ }
+ 
+-VARF(IDF_INIT, fullscreen, 0, 1, 1, if(!(identflags&IDF_WORLD)) setfullscreen(fullscreen!=0));
++VARF(IDF_INIT, fullscreen, 0, 0, 1, if(!(identflags&IDF_WORLD)) setfullscreen(fullscreen!=0));
+ 
+ void resetfullscreen()
+ {

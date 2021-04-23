@@ -1,0 +1,57 @@
+Index: reflink/coreutils-6.9/src/ln.c
+===================================================================
+--- reflink.orig/coreutils-6.9/src/ln.c
++++ reflink/coreutils-6.9/src/ln.c
+@@ -152,52 +152,6 @@ target_directory_operand (char const *fi
+   return is_a_dir;
+ }
+ 
+-#ifndef HAVE_REFLINK
+-# ifndef HAVE_REFLINKAT
+-#  include <sys/syscall.h>
+-
+-#  ifndef SYS_reflinkat
+-#   ifdef __i386__
+-#    define __NR_reflinkat 337
+-#   endif
+-#   ifdef __x86_64__
+-#    define __NR_reflinkat 299
+-#   endif
+-#   define SYS_reflinkat __NR_reflinkat
+-#  endif  /* SYS_reflinkat */
+-
+-#  ifdef SYS_reflinkat
+-static int reflinkat(int olddirfd, const char *oldpath,
+-                     int newdirfd, const char *newpath,
+-                     int preserve, int flags)
+-{
+-  return syscall(SYS_reflinkat, olddirfd, oldpath, newdirfd, newpath,
+-                 preserve, flags);
+-}
+-#  else
+-static int reflinkat(int olddirfd, const char *oldpath,
+-                     int newdirfd, const char *newpath,
+-                     int preserve, int flags)
+-{
+-  return -ENOSYS;
+-}
+-#  endif  /* SYS_reflinkat */
+-# endif  /* HAVE_REFLINKAT */
+-
+-/*
+- * We've now defined reflinkat of some sort.  We can use it to build
+- * reflink.
+- */
+-# ifndef AT_FDCWD
+-#  define AT_FDCWD -100
+-# endif
+-static int reflink(const char *oldpath, const char *newpath,
+-                   int preserve)
+-{
+-  return reflinkat(AT_FDCWD, oldpath, AT_FDCWD, newpath, preserve, 0);
+-}
+-#endif  /* HAVE_REFLINK */
+-
+ #ifndef REFLINK_ATTR_NONE
+ # define REFLINK_ATTR_NONE 0
+ #endif

@@ -1,0 +1,144 @@
+-------------------------------------------------------------------
+Sun Nov 15 09:27:42 UTC 2015 - jengelh@inai.de
+
+- Grammar corrections to description.
+  Utilize new URL for source tarball (old one yielded NXDOMAIN).
+
+-------------------------------------------------------------------
+Fri Jan 17 14:40:54 UTC 2014 - lazy.kent@opensuse.org
+
+- Correct baselibs.conf.
+
+-------------------------------------------------------------------
+Fri Jan  3 09:51:24 UTC 2014 - lazy.kent@opensuse.org
+
+- Split off rcc-runtime subpackage.
+
+-------------------------------------------------------------------
+Sat Dec  7 11:21:43 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.2.12.
+  * Remove librcd and enca from pkgconfig requires.
+  * Use cs for Czech language (cz is wrong).
+  * Language autodetection: prefer english over the languages
+    without any non-parent word (english is global parent).
+  * Support LibGuess 1.1.
+  * Fix build system for compatibility with latest versions of
+    automake.
+  * Fix complaining in example.
+  * Multiple fixes of build system.
+  * Compatibility with older automake and fixes to release script.
+  * Unversion generated files.
+- Drop "librcc-0.2.9-czech_config", "librcc-0.2.10-libguess",
+  "libguess.c-64bit-portability" patches (fixed upstream).
+- Merge librcc0 and rcc-runtime packages because they depends on
+  each other.
+
+-------------------------------------------------------------------
+Tue Oct 22 15:58:10 UTC 2013 - lazy.kent@opensuse.org
+
+- Drop librtranslate-devel from BuildRequires to shorten build
+  cycle.
+
+-------------------------------------------------------------------
+Tue Jul 16 11:54:39 UTC 2013 - lazy.kent@opensuse.org
+
+- Fix Supplements tag placement.
+
+-------------------------------------------------------------------
+Tue Jun 25 14:51:28 UTC 2013 - mvyskocil@suse.com
+
+- download source tarball again, the former one did not match 
+
+-------------------------------------------------------------------
+Mon Jun 24 20:55:48 UTC 2013 - i@marguerite.su
+
+- add dependency: libguess
+  * for CJK charsets detection, or unzip fails(bnc#821877)
+- add patch: librcc-0.2.10-libguess.patch
+  * enable libguess
+- add patch: libguess.c-64bit-portability.patch
+  * fix 64bit portability issue libguess.c:48
+- enable libtranslate
+- fix rcc-runtime dependency for librcc0
+  * rcc-runtime should be dependency for librcc0 
+    instead of librcc
+  * without rcc-runtime, there'll be no engines, 
+    thus librcc0 is useless then
+
+-------------------------------------------------------------------
+Thu Dec 20 21:09:11 UTC 2012 - lazy.kent@opensuse.org
+
+- Update to 0.2.10.
+  * Fixed bugs.
+- Drop librcc-printf.diff, librcc-0.2.9-suse-lint.diff,
+  librcc-0.2.9-provide_prototype.patch (fixed upstream).
+- Build against libdb (build requires db-devel).
+
+-------------------------------------------------------------------
+Fri May 11 08:55:36 UTC 2012 - coolo@suse.com
+
+- rename base package to librcc to avoid package renames later
+
+-------------------------------------------------------------------
+Fri Dec 16 11:26:39 UTC 2011 - lazy.kent@opensuse.org
+
+- Corrected License tag according to SPDX standard.
+- Use full URL as a source.
+- Removed unsupported SUSE version check.
+- Spec clean up and formatting.
+
+-------------------------------------------------------------------
+Mon Nov 21 15:27:44 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/unwanted tags/section (cf. specfile guidelines)
+- Use %_smp_mflags for parallel building
+
+-------------------------------------------------------------------
+Sun Nov 20 06:18:35 UTC 2011 - coolo@suse.com
+
+- add libtool as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Aug 23 14:34:00 CEST 2011 - pth@suse.de
+
+- Use packageand to pull in librcc0 if aspell and unzip are
+  installed (bnc#710609).
+
+-------------------------------------------------------------------
+Mon Jun  7 12:04:31 UTC 2010 - lazy.kent.suse@gmail.com
+
+- corrected rccFree patch
+
+-------------------------------------------------------------------
+Wed May 26 10:59:41 UTC 2010 - pth@suse.de
+
+- Fixx rccFree definition and all its callers.
+
+-------------------------------------------------------------------
+Fri Apr  2 19:36:54 UTC 2010 - lazy.kent.suse@gmail.com
+
+- add COPYING
+
+-------------------------------------------------------------------
+Sun Mar 14 19:30:24 UTC 2010 - lazy.kent.suse@gmail.com
+
+- fix Czech locale code in config file
+
+-------------------------------------------------------------------
+Thu Mar 11 18:57:30 UTC 2010 - lazy.kent.suse@gmail.com
+
+- split off runtime package
+- remove rpmlint warnings
+
+-------------------------------------------------------------------
+Mon Mar  8 18:46:02 UTC 2010 - lazy.kent.suse@gmail.com
+
+- spec-file reworked
+- don't build GTK UI
+
+-------------------------------------------------------------------
+Sat Feb 13 00:00:00 MSK 2010 - csa@dside.dyndns.org
+
+ New version
+

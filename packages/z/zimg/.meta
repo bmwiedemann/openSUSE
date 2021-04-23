@@ -1,0 +1,9 @@
+<package name="zimg" project="openSUSE:Factory">
+  <title>display 2-D data of arbitrary format</title>
+  <description>zimg generates png images from arbitrary formatted f(x,y) data. Both
+plain unformatted ascii and a variety of binary input formats are
+supported. Output options include variable logarithmic color mapping
+VLCM and contour graphics and lots of color maps. zimg is a fast
+converter.</description>
+  <devel project="multimedia:libs" package="zimg"/>
+</package>

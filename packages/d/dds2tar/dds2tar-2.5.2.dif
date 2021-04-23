@@ -1,0 +1,33 @@
+--- Makefile
++++ Makefile
+@@ -139,17 +139,19 @@
+ 
+ install: dds2tar ddstool \
+ 	dds2tar.$(MANEXT) mt-dds.$(MANEXT) dds2index.$(MANEXT) dds-dd.$(MANEXT)
+-	install -c -s dds2tar $(BINDIR)
+-	install scsi_vendor $(BINDIR)
+-	install -c ddstool $(BINDIR)
+-	ls -l $(BINDIR)/dds2tar $(BINDIR)/ddstool
+-	install -c dds2tar.$(MANEXT)   $(MANDIR)/man$(MANEXT)
+-	install -c dds2index.$(MANEXT) $(MANDIR)/man$(MANEXT)
+-	install -c mt-dds.$(MANEXT)    $(MANDIR)/man$(MANEXT)
+-	install -c dds-dd.$(MANEXT)    $(MANDIR)/man$(MANEXT)
+-	ln -f $(BINDIR)/dds2tar  $(BINDIR)/dds2index
+-	ln -f $(BINDIR)/dds2tar  $(BINDIR)/mt-dds
+-	ln -f $(BINDIR)/dds2tar  $(BINDIR)/dds-dd
++	install -d $(DESTDIR)$(BINDIR)
++	install -d $(DESTDIR)$(MANDIR)/man$(MANEXT)
++	install -c dds2tar $(DESTDIR)$(BINDIR)
++	install scsi_vendor $(DESTDIR)$(BINDIR)
++	install -c ddstool $(DESTDIR)$(BINDIR)
++	ls -l $(DESTDIR)$(BINDIR)/dds2tar $(DESTDIR)$(BINDIR)/ddstool
++	install -m 644 -c dds2tar.$(MANEXT)   $(DESTDIR)$(MANDIR)/man$(MANEXT)
++	install -m 644 -c dds2index.$(MANEXT) $(DESTDIR)$(MANDIR)/man$(MANEXT)
++	install -m 644 -c mt-dds.$(MANEXT)    $(DESTDIR)$(MANDIR)/man$(MANEXT)
++	install -m 644 -c dds-dd.$(MANEXT)    $(DESTDIR)$(MANDIR)/man$(MANEXT)
++	ln -f $(DESTDIR)$(BINDIR)/dds2tar  $(DESTDIR)$(BINDIR)/dds2index
++	ln -f $(DESTDIR)$(BINDIR)/dds2tar  $(DESTDIR)$(BINDIR)/mt-dds
++	ln -f $(DESTDIR)$(BINDIR)/dds2tar  $(DESTDIR)$(BINDIR)/dds-dd
+ 
+ T=tar-1.13
+ tar: dds2tar.ps dds2index.ps mt-dds.ps dds-dd.ps ${T}.patch

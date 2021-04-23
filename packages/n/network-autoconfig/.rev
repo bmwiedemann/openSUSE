@@ -1,0 +1,77 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6d8305b86ea9629b96a9a1620f814cfa</srcmd5>
+    <version>0.8</version>
+    <time>1295946812</time>
+    <user>lrupp</user>
+    <comment>Accepted submit request 56618 from user mvidner
+</comment>
+    <requestid>56618</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f5a0ca4462eca5f73d3f72281a3c508a</srcmd5>
+    <version>0.8</version>
+    <time>1295946820</time>
+    <user>lrupp</user>
+    <comment>Autobuild autoformatter for 56618
+</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>f5a0ca4462eca5f73d3f72281a3c508a</srcmd5>
+    <version>0.8</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>f5a0ca4462eca5f73d3f72281a3c508a</srcmd5>
+    <version>0.8</version>
+    <time>1319182200</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>f5a0ca4462eca5f73d3f72281a3c508a</srcmd5>
+    <version>0.8</version>
+    <time>1340183732</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="6" vrev="11">
+    <srcmd5>f5a0ca4462eca5f73d3f72281a3c508a</srcmd5>
+    <version>0.8</version>
+    <time>1359109502</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="13">
+    <srcmd5>f5a0ca4462eca5f73d3f72281a3c508a</srcmd5>
+    <version>0.8</version>
+    <time>1379663365</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>264d510a00744a4cf0ef21ca9f0c66fb</srcmd5>
+    <version>1.0</version>
+    <time>1389732430</time>
+    <user>coolo</user>
+    <comment>- ported to wicked (FATE#316111)
+- 1.0</comment>
+    <requestid>213852</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>264d510a00744a4cf0ef21ca9f0c66fb</srcmd5>
+    <version>1.0</version>
+    <time>1409301975</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>a5610b125e26710a5df73816e05802ae</srcmd5>
+    <version>1.0</version>
+    <time>1562591510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>713855</requestid>
+  </revision>
+</revisionlist>

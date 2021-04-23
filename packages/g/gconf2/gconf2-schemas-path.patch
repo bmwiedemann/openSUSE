@@ -1,0 +1,27 @@
+Index: gconf/default.path.in
+===================================================================
+--- gconf/default.path.in.orig
++++ gconf/default.path.in
+@@ -23,16 +23,17 @@ include "$(HOME)/.gconf.path"
+ # $(USERCONFIGDIR)/gconf (or $(HOME)/.gconf when it exists, for backward compatibility)
+ xml:readwrite:$(DEFAULTUSERSOURCE)
+ 
+-# Location for system-wide settings that are set by the defaults mechanism
+-xml:readonly:@sysgconfdir@/gconf.xml.system
++# Then look at the systemwide customizations
++xml:readonly:@sysgconfdir@/gconf.xml.defaults
+ 
+ # To read in any defaults settings that the Sys Admin may have created
+ # prior to a desktop system upgrade. The SysAdmin can stick default values
+ # system-wide in this file.
+ include @sysgconfdir@/2/local-defaults.path
+ 
+-# Finally, look at the systemwide defaults
+-xml:readonly:@sysgconfdir@/gconf.xml.defaults
+-
++# Then check vendor preferences
++xml:readonly:@sysgconfdir@/gconf.xml.vendor
+ 
++# And finally look at the defaults defined by installed schemas
++xml:readonly:@sysgconfdir@/gconf.xml.schemas
+ 

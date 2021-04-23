@@ -1,0 +1,5 @@
+<package name="bananapir2-firmware" project="openSUSE:Factory">
+  <title>boot firmware for Banana Pi R2</title>
+  <description></description>
+  <devel project="hardware:boot" package="bananapir2-firmware"/>
+</package>

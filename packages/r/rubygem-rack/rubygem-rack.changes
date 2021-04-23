@@ -1,0 +1,364 @@
+-------------------------------------------------------------------
+Thu Jun 18 14:24:12 UTC 2020 - Eduardo Navarro <enavarro@suse.com>
+
+- updated to version 2.2.3
+ see installed CHANGELOG.md
+
+  ## [2.2.3] - 2020-06-15
+
+    [CVE-2020-8184] Only decode cookie values
+
+-------------------------------------------------------------------
+Tue Feb 18 15:21:41 UTC 2020 - Eduardo Navarro <enavarro@suse.com>
+
+- updated to version 2.2.2
+ see installed CHANGELOG.md
+
+  ## [2.2.2] - 2020-02-11
+
+  ### Fixed
+
+  - Fix incorrect Rack::Request#host value. ([#1591](https://github.com/rack/rack/pull/1591), [@ioquatix](https://github.com/ioquatix))
+  - Revert Rack::Handler::Thin implementation. ([#1583](https://github.com/rack/rack/pull/1583), [@jeremyevans](https://github.com/jeremyevans))
+  - Double assignment is still needed to prevent an "unused variable" warning. ([#1589](https://github.com/rack/rack/pull/1589), [@kamipo](https://github.com/kamipo))
+  - Fix to handle same_site option for session pool. ([#1587](https://github.com/rack/rack/pull/1587), [@kamipo](https://github.com/kamipo))
+
+-------------------------------------------------------------------
+Mon Feb 10 15:26:39 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 2.2.1
+ see installed CHANGELOG.md
+
+  # Changelog
+  
+  All notable changes to this project will be documented in this file. For info on how to format all future additions to this file please reference [Keep A Changelog](https://keepachangelog.com/en/1.0.0/).
+  
+  ## [2.2.1] - 2020-02-09
+  
+  ### Fixed
+  
+  - Rework `Rack::Request#ip` to handle empty `forwarded_for`. ([#1577](https://github.com/rack/rack/pull/1577), [@ioquatix](https://github.com/ioquatix))
+  
+  ## [2.2.0] - 2020-02-08
+  
+  ### SPEC Changes
+  
+  - `rack.session` request environment entry must respond to `to_hash` and return unfrozen Hash. ([@jeremyevans](https://github.com/jeremyevans))
+  - Request environment cannot be frozen. ([@jeremyevans](https://github.com/jeremyevans))
+  - CGI values in the request environment with non-ASCII characters must use ASCII-8BIT encoding. ([@jeremyevans](https://github.com/jeremyevans))
+  - Improve SPEC/lint relating to SERVER_NAME, SERVER_PORT and HTTP_HOST. ([#1561](https://github.com/rack/rack/pull/1561), [@ioquatix](https://github.com/ioquatix))
+  
+  ### Added
+  
+  - `rackup` supports multiple `-r` options and will require all arguments. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Server` supports an array of paths to require for the `:require` option. ([@khotta](https://github.com/khotta))
+  - `Files` supports multipart range requests. ([@fatkodima](https://github.com/fatkodima))
+  - `Multipart::UploadedFile` supports an IO-like object instead of using the filesystem, using `:filename` and `:io` options. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Multipart::UploadedFile` supports keyword arguments `:path`, `:content_type`, and `:binary` in addition to positional arguments. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Static` supports a `:cascade` option for calling the app if there is no matching file. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Session::Abstract::SessionHash#dig`. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Response.[]` and `MockResponse.[]` for creating instances using status, headers, and body. ([@ioquatix](https://github.com/ioquatix))
+  - Convenient cache and content type methods for `Rack::Response`. ([#1555](https://github.com/rack/rack/pull/1555), [@ioquatix](https://github.com/ioquatix))
+  
+  ### Changed
+  
+  - `Request#params` no longer rescues EOFError. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Directory` uses a streaming approach, significantly improving time to first byte for large directories. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Directory` no longer includes a Parent directory link in the root directory index. ([@jeremyevans](https://github.com/jeremyevans))
+  - `QueryParser#parse_nested_query` uses original backtrace when reraising exception with new class. ([@jeremyevans](https://github.com/jeremyevans))
+  - `ConditionalGet` follows RFC 7232 precedence if both If-None-Match and If-Modified-Since headers are provided. ([@jeremyevans](https://github.com/jeremyevans))
+  - `.ru` files supports the `frozen-string-literal` magic comment. ([@eregon](https://github.com/eregon))
+  - Rely on autoload to load constants instead of requiring internal files, make sure to require 'rack' and not just 'rack/...'. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Etag` will continue sending ETag even if the response should not be cached. ([@henm](https://github.com/henm))
+  - `Request#host_with_port` no longer includes a colon for a missing or empty port. ([@AlexWayfer](https://github.com/AlexWayfer))
+  - All handlers uses keywords arguments instead of an options hash argument. ([@ioquatix](https://github.com/ioquatix))
+  - `Files` handling of range requests no longer return a body that supports `to_path`, to ensure range requests are handled correctly. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Multipart::Generator` only includes `Content-Length` for files with paths, and `Content-Disposition` `filename` if the `UploadedFile` instance has one. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Request#ssl?` is true for the `wss` scheme (secure websockets). ([@jeremyevans](https://github.com/jeremyevans))
+  - `Rack::HeaderHash` is memoized by default. ([#1549](https://github.com/rack/rack/pull/1549), [@ioquatix](https://github.com/ioquatix))
+  - `Rack::Directory` allow directory traversal inside root directory. ([#1417](https://github.com/rack/rack/pull/1417), [@ThomasSevestre](https://github.com/ThomasSevestre))
+  - Sort encodings by server preference. ([#1184](https://github.com/rack/rack/pull/1184), [@ioquatix](https://github.com/ioquatix), [@wjordan](https://github.com/wjordan))
+  - Rework host/hostname/authority implementation in `Rack::Request`. `#host` and `#host_with_port` have been changed to correctly return IPv6 addresses formatted with square brackets, as defined by [RFC3986](https://tools.ietf.org/html/rfc3986#section-3.2.2). ([#1561](https://github.com/rack/rack/pull/1561), [@ioquatix](https://github.com/ioquatix))
+  - `Rack::Builder` parsing options on first `#\` line is deprecated. ([#1574](https://github.com/rack/rack/pull/1574), [@ioquatix](https://github.com/ioquatix))
+  
+  ### Removed
+  
+  - `Directory#path` as it was not used and always returned nil. ([@jeremyevans](https://github.com/jeremyevans))
+  - `BodyProxy#each` as it was only needed to work around a bug in Ruby <1.9.3. ([@jeremyevans](https://github.com/jeremyevans))
+  - `URLMap::INFINITY` and `URLMap::NEGATIVE_INFINITY`, in favor of `Float::INFINITY`. ([@ch1c0t](https://github.com/ch1c0t))
+  - Deprecation of `Rack::File`. It will be deprecated again in rack 2.2 or 3.0. ([@rafaelfranca](https://github.com/rafaelfranca))
+  - Support for Ruby 2.2 as it is well past EOL. ([@ioquatix](https://github.com/ioquatix))
+  - Remove `Rack::Files#response_body` as the implementation was broken. ([#1153](https://github.com/rack/rack/pull/1153), [@ioquatix](https://github.com/ioquatix))
+  - Remove `SERVER_ADDR` which was never part of the original SPEC. ([#1573](https://github.com/rack/rack/pull/1573), [@ioquatix](https://github.com/ioquatix))
+  
+  ### Fixed
+  
+  - `Directory` correctly handles root paths containing glob metacharacters. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Cascade` uses a new response object for each call if initialized with no apps. ([@jeremyevans](https://github.com/jeremyevans))
+  - `BodyProxy` correctly delegates keyword arguments to the body object on Ruby 2.7+. ([@jeremyevans](https://github.com/jeremyevans))
+  - `BodyProxy#method` correctly handles methods delegated to the body object. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Request#host` and `Request#host_with_port` handle IPv6 addresses correctly. ([@AlexWayfer](https://github.com/AlexWayfer))
+  - `Lint` checks when response hijacking that `rack.hijack` is called with a valid object. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Response#write` correctly updates `Content-Length` if initialized with a body. ([@jeremyevans](https://github.com/jeremyevans))
+  - `CommonLogger` includes `SCRIPT_NAME` when logging. ([@Erol](https://github.com/Erol))
+  - `Utils.parse_nested_query` correctly handles empty queries, using an empty instance of the params class instead of a hash. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Directory` correctly escapes paths in links. ([@yous](https://github.com/yous))
+  - `Request#delete_cookie` and related `Utils` methods handle `:domain` and `:path` options in same call. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Request#delete_cookie` and related `Utils` methods do an exact match on `:domain` and `:path` options. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Static` no longer adds headers when a gzipped file request has a 304 response. ([@chooh](https://github.com/chooh))
+  - `ContentLength` sets `Content-Length` response header even for bodies not responding to `to_ary`. ([@jeremyevans](https://github.com/jeremyevans))
+  - Thin handler supports options passed directly to `Thin::Controllers::Controller`. ([@jeremyevans](https://github.com/jeremyevans))
+  - WEBrick handler no longer ignores `:BindAddress` option. ([@jeremyevans](https://github.com/jeremyevans))
+  - `ShowExceptions` handles invalid POST data. ([@jeremyevans](https://github.com/jeremyevans))
+  - Basic authentication requires a password, even if the password is empty. ([@jeremyevans](https://github.com/jeremyevans))
+  - `Lint` checks response is array with 3 elements, per SPEC. ([@jeremyevans](https://github.com/jeremyevans))
+  - Support for using `:SSLEnable` option when using WEBrick handler. (Gregor Melhorn)
+  - Close response body after buffering it when buffering. ([@ioquatix](https://github.com/ioquatix))
+  - Only accept `;` as delimiter when parsing cookies. ([@mrageh](https://github.com/mrageh))
+  - `Utils::HeaderHash#clear` clears the name mapping as well. ([@raxoft](https://github.com/raxoft)) 
+  - Support for passing `nil` `Rack::Files.new`, which notably fixes Rails' current `ActiveStorage::FileServer` implementation. ([@ioquatix](https://github.com/ioquatix))
+  
+  ### Documentation
+  
+  - CHANGELOG updates. ([@aupajo](https://github.com/aupajo))
+  - Added [CONTRIBUTING](CONTRIBUTING.md). ([@dblock](https://github.com/dblock))
+
+-------------------------------------------------------------------
+Wed Jan 29 11:44:30 UTC 2020 - Daniel Donisa <daniel.donisa@suse.com>
+
+- updated to version 2.1.2 
+
+-------------------------------------------------------------------
+Mon Jan 27 11:28:34 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.1.1
+
+  * Remove Rack::Chunked from Rack::Server default middleware. (#1475, @ioquatix)
+  * Restore support for code relying on SessionId#to_s. (@jeremyevans)
+
+- non upstream changes
+
+  * removed the modification of the permissions for test/cgi/test.gz
+    during package build since it won't get installed anymore.
+
+-------------------------------------------------------------------
+Thu Dec 19 08:55:14 UTC 2019 - David Kang <dkang@suse.com>
+
+- updated to version 2.0.8
+  * CVE-2019-16782: Possible information leak / session hijack vulnerability
+
+-------------------------------------------------------------------
+Sat Apr  6 17:52:23 UTC 2019 - manuel <mschnitzer@suse.com>
+
+- updated to version 2.0.7
+
+  no changelog found
+
+-------------------------------------------------------------------
+Tue Nov  6 23:24:32 UTC 2018 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.0.6:
+  * CVE-2018-16471: cross-site scripting (XSS) flaw via the scheme
+    method on Rack::Request (bsc#1114828)
+
+-------------------------------------------------------------------
+Mon Apr 23 18:18:04 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 2.0.5
+ see installed HISTORY.md
+
+-------------------------------------------------------------------
+Mon Apr 16 15:47:33 UTC 2018 - mschnitzer@suse.com
+
+- Only build against ruby versions 2.3.x, 2.4.x, and 2.5.x
+- Fix package build by removing the executable bit for 'test.gz' file in gem
+
+-------------------------------------------------------------------
+Thu Feb  8 06:21:32 UTC 2018 - coolo@suse.com
+
+- updated to version 2.0.4
+ see installed HISTORY.md
+
+-------------------------------------------------------------------
+Tue Oct 31 14:09:19 UTC 2017 - mrueckert@suse.de
+
+- only build for 2.3+ from now
+
+-------------------------------------------------------------------
+Wed Jun  7 16:24:31 UTC 2017 - mrueckert@suse.de
+
+- re-add the rb_build_versions and rb_default_ruby_abi as otherwise
+  building on older distros fails.
+- add ruby 2.4
+
+-------------------------------------------------------------------
+Thu Jun  1 18:55:47 UTC 2017 - opensuse_buildservice@ojkastl.de
+
+- removed manual definition of rb_build_versions and rb_default_ruby_abi from gem2rpm.yml; recreated spec
+
+-------------------------------------------------------------------
+Tue May 23 10:12:04 UTC 2017 - coolo@suse.com
+
+- updated to version 2.0.3
+ see installed HISTORY.md
+
+-------------------------------------------------------------------
+Wed Jul  6 01:17:36 UTC 2016 - mrueckert@suse.de
+
+- make build again by only building for 2.2 and newer
+
+-------------------------------------------------------------------
+Fri Jul  1 04:34:13 UTC 2016 - coolo@suse.com
+
+- updated to version 2.0.1
+ see installed HISTORY.md
+
+-------------------------------------------------------------------
+Fri Jun 19 04:32:19 UTC 2015 - coolo@suse.com
+
+- updated to version 1.6.4
+ see installed HISTORY.md
+
+  Fri Jun 19 07:14:50 2015  Matthew Draper <matthew@trebex.net>
+
+  	* Work around a Rails incompatibility in our private API
+
+-------------------------------------------------------------------
+Wed Jun 17 04:37:32 UTC 2015 - coolo@suse.com
+
+- updated to version 1.6.2
+ see installed HISTORY.md
+
+  Fri Jun 12 11:37:41 2015  Aaron Patterson <tenderlove@ruby-lang.org>
+
+  	* Prevent extremely deep parameters from being parsed. CVE-2015-3225
+
+-------------------------------------------------------------------
+Thu May  7 04:29:35 UTC 2015 - coolo@suse.com
+
+- updated to version 1.6.1
+  no changelog found
+
+-------------------------------------------------------------------
+Fri Feb  6 18:18:15 UTC 2015 - coolo@suse.com
+
+- updated to version 1.6.0
+
+-------------------------------------------------------------------
+Sat Nov  1 23:17:03 UTC 2014 - tboerger@suse.com
+
+- Fixed all rpmlintrc errors to prevent failing builds with
+  multiple ruby versions
+
+-------------------------------------------------------------------
+Mon Sep 29 20:13:50 UTC 2014 - mrueckert@suse.de
+
+- added rpmlintrc to ignore the rackup shebang line in a test case
+- updated to new packaging scheme and add gem2rpm.yml
+
+-------------------------------------------------------------------
+Tue May 28 05:28:04 UTC 2013 - coolo@suse.com
+
+- new template version
+
+-------------------------------------------------------------------
+Tue Feb 12 13:45:09 UTC 2013 - coolo@suse.com
+
+- updated to version 1.5.2
+ * February 7th, Thirty fifth public release 1.5.2
+   * Fix CVE-2013-0263, timing attack against Rack::Session::Cookie
+   * Fix CVE-2013-0262, symlink path traversal in Rack::File
+   * Add various methods to Session for enhanced Rails compatibility
+   * Request#trusted_proxy? now only matches whole stirngs
+   * Add JSON cookie coder, to be default in Rack 1.6+ due to security concerns
+   * URLMap host matching in environments that don't set the Host header fixed
+   * Fix a race condition that could result in overwritten pidfiles
+   * Various documentation additions
+
+-------------------------------------------------------------------
+Sun Feb  3 17:14:19 UTC 2013 - coolo@suse.com
+
+- updated to version 1.5.1
+
+-------------------------------------------------------------------
+Thu Jan 24 06:34:01 UTC 2013 - coolo@suse.com
+
+- update to version 1.5.0, remove suffix
+  * Introduced hijack SPEC, for before-response and after-response hijacking
+  * SessionHash is no longer a Hash subclass
+  * Rack::File cache_control parameter is removed, in place of headers options
+  * Rack::Auth::AbstractRequest#scheme now yields strings, not symbols
+  * Rack::Utils cookie functions now format expires in RFC 2822 format
+  * Rack::File now has a default mime type
+  * rackup -b 'run Rack::File.new(".")', option provides command line configs
+  * Rack::Deflater will no longer double encode bodies
+  * Rack::Mime#match? provides convenience for Accept header matching
+  * Rack::Utils#q_values provides splitting for Accept headers
+  * Rack::Utils#best_q_match provides a helper for Accept headers
+  * Rack::Handler.pick provides convenience for finding available servers
+  * Puma added to the list of default servers (preferred over Webrick)
+  * Various middleware now correctly close body when replacing it
+  * Rack::Request#params is no longer persistent with only GET params
+  * Rack::Request#update_param and #delete_param provide persistent operations
+  * Rack::Request#trusted_proxy? now returns true for local unix sockets
+  * Rack::Response no longer forces Content-Types
+  * Rack::Sendfile provides local mapping configuration options
+  * Rack::Utils#rfc2109 provides old netscape style time output
+  * Updated HTTP status codes
+  * Ruby 1.8.6 likely no longer passes tests, and is no longer fully supported
+
+-------------------------------------------------------------------
+Tue Jan  8 20:26:44 UTC 2013 - coolo@suse.com
+
+- updated to version 1.4.3
+  * Add warnings when users do not provide a session secret
+  * Fix parsing performance for unquoted filenames
+  * Updated URI backports
+  * Fix URI backport version matching, and silence constant warnings
+  * Correct parameter parsing with empty values
+  * Correct rackup '-I' flag, to allow multiple uses
+  * Correct rackup pidfile handling
+  * Report rackup line numbers correctly
+  * Fix request loops caused by non-stale nonces with time limits
+  * Fix reloader on Windows
+  * Prevent infinite recursions from Response#to_ary
+  * Various middleware better conforms to the body close specification
+  * Updated language for the body close specification
+  * Additional notes regarding ECMA escape compatibility issues
+  * Fix the parsing of multiple ranges in range headers
+  * Prevent errors from empty parameter keys
+  * Added PATCH verb to Rack::Request
+  * Various documentation updates
+  * Fix session merge semantics (fixes rack-test)
+  * Rack::Static :index can now handle multiple directories
+  * All tests now utilize Rack::Lint (special thanks to Lars Gierth)
+  * Rack::File cache_control parameter is now deprecated, and removed by 1.5
+  * Correct Rack::Directory script name escaping
+  * Rack::Static supports header rules for sophisticated configurations
+  * Multipart parsing now works without a Content-Length header
+  * New logos courtesy of Zachary Scott!
+  * Rack::BodyProxy now explicitly defines #each, useful for C extensions
+  * Cookies that are not URI escaped no longer cause exceptions
+  * Security: Prevent unbounded reads in large multipart boundaries
+
+-------------------------------------------------------------------
+Tue Jul 31 13:13:42 UTC 2012 - jreidinger@suse.com
+
+- use new gem2rpm to provide new provisions
+
+-------------------------------------------------------------------
+Mon Apr  2 12:41:39 UTC 2012 - saschpe@suse.de
+
+- Spec file cleanup:
+  * Prepare for Factory submission
+
+-------------------------------------------------------------------
+Fri Mar 30 13:10:03 UTC 2012 - adrian@suse.de
+
+- handle /usr/bin/rackup via update-alternatives
+
+-------------------------------------------------------------------
+Thu Jan 26 16:06:57 UTC 2012 - mrueckert@suse.de
+
+- initial package of the 1.4 branch
+

@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Fri Feb 21 01:58:37 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.6.0:
+  * Update code and tests for changes in API
+  * Introduce mocked unit tests
+  * Refactor for changes in containers API
+  * ModuleNotFoundError: No module named 'pbr'
+  * Improve testing
+  * Apply pep8 and clean code
+  * remove redundant license file
+  * How to install from pypi
+- Correct BuildRequires.
+- Drop unshipped file from %license macro.
+
+-------------------------------------------------------------------
+Wed Aug 28 07:54:20 UTC 2019 - Thomas Bechtold <tbechtold@suse.com>
+
+- Initial packaging (version 0.12.0)

@@ -1,0 +1,10 @@
+<package name="jakarta-commons-discovery" project="openSUSE:Factory">
+  <title>Jakarta Commons Discovery</title>
+  <description>The Discovery component is about discovering, or finding,
+implementations for pluggable interfaces.  Pluggable interfaces are
+specified with the intent that multiple implementations are, or will
+be, available to provide the service described by the interface. 
+Discovery provides facilities for finding and instantiating classes and
+for lifecycle management of singleton (factory) classes.</description>
+  <devel project="Java:packages" package="jakarta-commons-discovery"/>
+</package>

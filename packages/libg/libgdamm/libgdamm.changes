@@ -1,0 +1,209 @@
+-------------------------------------------------------------------
+Wed Feb 28 16:34:21 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Sat Nov 28 00:34:10 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 4.99.11:
+  + SqlBuilder::select_add_target(): Avoid "stack smashing
+    detected".
+
+-------------------------------------------------------------------
+Wed Sep 30 12:52:13 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 4.99.10:
+  + Regenerate with the latest glibmm.
+
+-------------------------------------------------------------------
+Sat Jul 18 10:59:00 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 4.99.9:
+  + Use (and require) C++11.
+- Replace glibmm2-devel and libgda-devel BuildRequires for their
+  pkgconfig() style equivalents.
+
+-------------------------------------------------------------------
+Fri Apr 25 16:24:21 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 4.99.8:
+  + Value:
+    - Add missing create_as_int64/uint64() implementations.
+    - Add create_as_float/double() and set_float/double(),
+      deprecating the ambiguous constructors and set() methods.
+  + Build: Do not bother breaking the build if libgda was not built
+    with GdaDataModelDBD.
+
+-------------------------------------------------------------------
+Mon Apr 29 11:21:52 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 4.99.7:
+  + Minor build fix.
+
+-------------------------------------------------------------------
+Fri Mar  1 12:44:54 UTC 2013 - dimstar@opensuse.org
+
+- Spec-cleanup using format_spec_file service.
+
+-------------------------------------------------------------------
+Tue Jan 17 12:52:05 UTC 2012 - vuntz@opensuse.org
+
+- Remove explicit glibmm2-devel Requires from devel subpackage: if
+  needed, it will automatically get added the pkgconfig() way.
+- Add fdupes BuildRequires and use %fdupes on documentation.
+
+-------------------------------------------------------------------
+Tue Nov 29 21:17:13 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 4.99.6:
+  + Wrap GdaNumeric as Gnome::Gda::Numeric.
+  + Value: Use Numeric instead of GdaNumeric.
+  + Connection: Add create_from_string()
+
+-------------------------------------------------------------------
+Tue Nov  8 18:56:47 UTC 2011 - dimstar@opensuse.org
+
+- Update to 4.99.5:
+  + DataModelIter::get_value_at(): Throw an exception sometimes.
+  + Reduce unnecessary includes in headers.
+- Changes from 4.99.4.1:
+  + Connection: Add statement_to_sql() method overloads.
+  + ServerProvider: Added supports_operation() method overloads.
+- Changes from 4.99.4:
+  + Value: operator=()
+    - Check for identical instance.
+    - Check for the identical underlying GValue.
+    - set_binary(): reinit the type.
+- Changes from 4.99.3.1:
+  + Added SQL_OPERATOR_TYPE_ILIKE.
+- Changes from 4.99.3:
+  + Value:
+    - Adapt to null value changes in libgda.
+    - This means that you should not have static Gda::Value
+      instances, because the constructor needs the GType system.
+  + Build:
+    - Ignore warnings about long long, with
+      --enable-warnings=fatal.
+    - Remove now-unused GLIBMM_EXCEPTIONS_ENABLED ifdefs.
+- Changes from 4.99.0.1:
+  + Connection:
+    - Added new properties.
+    - Added *_row_into_table() methods.
+    - Added parse_sql_string(), async_statement_execute(),
+      async_fetch_result() and async_cancel().
+  + DataModel: get_row_from_values(): Use std::vector instead of
+    ListHandle, as already done for other API.
+  + Build: Avoid a tarball dependency on mm-common.
+- Changes from 4.99.0:
+  + Use libgda-5.0 instead of libgda-4.0.
+  + This (libgdamm-5.0) installs in parallel with libgdamm-4.0.
+- Changes from 4.1.2:
+  + Use std::vector<> instead of *Handle<> or std::list<> for
+    method paramteters and return types.
+- Rename libgda-4_0-12 to libgda-5_0-13, following soname change.
+
+-------------------------------------------------------------------
+Mon Feb 14 00:56:22 CET 2011 - vuntz@opensuse.org
+
+- Update to version 4.1.1:
+  + Config: Added get_provider() and ConfigError.
+  + Connection: Added quote_sql_identifier().
+  + DataSelect: Added rerun().
+  + MetaStore: Added set_identifiers_style().
+  + SqlStatement: Added string_to_type().
+  + Some documentation improvements.
+- Changes from version 3.99.21:
+  + DataModel: Declare DataModelError exceptions.
+  + ServerOperation: set_value_at(): Make this templated.
+  + Add CREATE_USER, ALTER USER and DROP USER server operations.
+  + SqlBuilder: Added add_field_id().
+  + Build: Fix the build with the latest libgda API.
+- Changes from version 3.99.20:
+  + Connection: Add
+    statement_execute_non_select_builder(SqlBuilder).
+  + SqlBuilder:
+    - Many API changes, mostly to match improvements in the C API.
+    - Declared the SqlError exception.
+  + Documentation: Added doxygen main text.
+
+-------------------------------------------------------------------
+Mon Mar 22 15:36:54 CET 2010 - vuntz@opensuse.org
+
+- Update to version 3.99.19:
+  + Added SqlBuilder, for building SQL statements.
+  + Connection::statement*(): const correction.
+  + Statement::to_sql(): Const correction.
+  + Value: Fix set(const gchar*) to call g_value_reinit().
+- Changes from version 3.99.18:
+  + MetaStruct: Add the MetaStructError exception, thrown by some
+    methods.
+
+-------------------------------------------------------------------
+Thu Oct  1 18:01:52 CEST 2009 - vuntz@opensuse.org
+
+- Rename libgdamm-4_0-11 to libgdamm-4_0-12 since the version of
+  the library was changed.
+- Remove Obsoletes for libgdamm-4_0-10 since we want to make it
+  possible to keep old libraries now.
+
+-------------------------------------------------------------------
+Sat Aug 29 15:18:39 CEST 2009 - vuntz@novell.com
+
+- Update to version 3.99.17.1:
+  + Reenable the per-class hierarchy graphs in the reference
+    documentation.
+  + Drop the custom HTML header and footer, and use the shared
+    doxygen.css file from mm-common.
+
+-------------------------------------------------------------------
+Thu Aug 27 09:05:10 CEST 2009 - vuntz@novell.com
+
+- Update to version 3.99.17:
+  + Connection:
+    - Added the CONNECTION_OPTIONS_SQL_IDENTIFIERS_CASE_SENSITIVE
+      which avoids exposing backend-specific case and quoting
+      weirdness to applications.
+     - update_meta_store_table(): Use
+       gda_meta_store_sql_identifier_quote() as mentioned in
+       bgo#589607, to make this work even with uppercase
+       characters.
+  + MetaStore: Can now thow a MetaStoreError exception.
+  + Use the mm-common build system.
+  + Build: Fix the build when exceptions are disabled.
+
+-------------------------------------------------------------------
+Fri Jul 31 12:51:47 CEST 2009 - vuntz@novell.com
+
+- Update to version 3.99.16:
+  + Build fixes for maemo (allow --fno-exceptions and
+    !GLIBMM_EXCEPTIONS_ENABLED)
+
+-------------------------------------------------------------------
+Tue Jun  2 17:57:11 CEST 2009 - vuntz@novell.com
+
+- Update to version 3.99.15:
+  + Connection: update_meta_store_table_names() and
+    update_meta_store_table(). Added an optional schema_name
+    parameter, allowing Glom to use this hack to increase
+    performance.
+  + DataProxy::get_values(): Actually return the result, fixing a
+    compiler warning. bgo#582997
+- Drop libgdamm-no_return_in_nonvoid.patch: fixed upstream.
+- Make new libgdamm-4_0-11 obsolete libgdamm-4_0-10.
+
+-------------------------------------------------------------------
+Mon May 18 02:38:56 CEST 2009 - vuntz@novell.com
+
+- Change glibmm24-devel to glibmm2-devel.
+
+-------------------------------------------------------------------
+Thu May 14 12:56:57 CEST 2009 - dominique-obs@leuenberger.net
+
+- Reformat spec file, based on comments by vuntz
+
+-------------------------------------------------------------------
+Wed May 13 01:49:00 CEST 2009 - dominique-obs@leuenberger.net
+
+- Initial packet for libgdamm, created during Community Week
+

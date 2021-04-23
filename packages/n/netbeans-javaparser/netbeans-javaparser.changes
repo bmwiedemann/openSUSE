@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Tue Sep 19 15:09:27 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify java source and target 1.6
+
+-------------------------------------------------------------------
+Tue Jul  8 10:54:41 UTC 2014 - tchvatal@suse.com
+
+- Do not depend on ant-nodeps.
+
+-------------------------------------------------------------------
+Mon Sep  9 11:06:14 UTC 2013 - tchvatal@suse.com
+
+- Move from jpackage-utils to javapackage-tools
+
+-------------------------------------------------------------------
+Thu Jun 21 10:28:45 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0-with-classpath-exception
+  SPDX format
+
+-------------------------------------------------------------------
+Wed Mar 24 09:24:00 UTC 2010 - mvyskocil@suse.cz
+
+- Update to 6.8, merged with (netbeans-javaparser-6.8-1.fc13.src.rpm)
+
+-------------------------------------------------------------------
+Tue May 19 13:58:15 CEST 2009 - mvyskocil@suse.cz
+
+- 'Initial packaging of netbeans-javaparser (from Fedora 11)'
+

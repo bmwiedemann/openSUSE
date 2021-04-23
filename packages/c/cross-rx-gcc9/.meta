@@ -1,0 +1,6 @@
+<package name="cross-rx-gcc9" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="gcc9"/>
+  <bcntsynctag>gcc9</bcntsynctag>
+</package>

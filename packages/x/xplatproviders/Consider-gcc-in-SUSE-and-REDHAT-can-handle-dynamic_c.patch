@@ -1,0 +1,25 @@
+From 34b770b1c6f1415a4d365678ac43a03feeb41a78 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Klaus=20K=C3=A4mpf?= <kkaempf@suse.de>
+Date: Thu, 31 May 2012 17:39:19 +0200
+Subject: [PATCH 5/5] Consider gcc in SUSE and REDHAT can handle dynamic_cast
+
+---
+ source/code/include/scxcorelib/scxcmn.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/source/code/include/scxcorelib/scxcmn.h b/source/code/include/scxcorelib/scxcmn.h
+index 24a8afb76779..74abc51e1876 100644
+--- a/source/code/include/scxcorelib/scxcmn.h
++++ b/source/code/include/scxcorelib/scxcmn.h
+@@ -175,7 +175,7 @@ typedef uint64_t scxulong;
+ /* Include scxcompat.h so it can be used without special requirements */
+ #include <scxcorelib/scxcompat.h>
+ 
+-#if !defined(sun) && !defined(aix) && !(defined(PF_DISTRO_SUSE) && PF_MAJOR==11)
++#if !defined(sun) && !defined(aix) && !defined(PF_DISTRO_SUSE) && !defined(PF_DISTRO_REDHAT)
+ 
+ // this macro disables dynamic_cast, since t causes problems on aix 5.3 - see wi 11149, 11220
+ #define dynamic_cast sorry_but_dynamic_cast_is_not_allowed_in_core_project_see_wi_11220
+-- 
+2.13.1
+

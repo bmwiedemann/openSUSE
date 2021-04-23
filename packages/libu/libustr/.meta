@@ -1,0 +1,8 @@
+<package name="libustr" project="openSUSE:Factory">
+  <title>String library, very low memory overhead, simple to import</title>
+  <description>Micro string library, very low overhead from plain strdup() (Ave. 44% for
+0-20B strings). Very easy to use in existing C code. At it's simplest you can
+just include a single header file into your .c and start using it.
+This package also distributes pre-built shared libraries.</description>
+  <devel project="security:SELinux" package="libustr"/>
+</package>

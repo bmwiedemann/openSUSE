@@ -1,0 +1,25 @@
+diff -dupr squashfs4.4/squashfs-tools/mksquashfs.c squashfs4.4_new/squashfs-tools/mksquashfs.c
+--- squashfs4.4/squashfs-tools/mksquashfs.c	2019-08-29 03:58:04.000000000 +0200
++++ squashfs4.4/squashfs-tools/mksquashfs.c	2019-10-21 15:34:39.393253955 +0200
+@@ -4948,9 +4948,9 @@ void write_filesystem_tables(struct squa
+ 	SQUASHFS_INSWAP_SUPER_BLOCK(sBlk); 
+ 	write_destination(fd, SQUASHFS_START, sizeof(*sBlk), sBlk);
+ 
+-	if(!nopad && (i = bytes & (4096 - 1))) {
+-		char temp[4096] = {0};
+-		write_destination(fd, bytes, 4096 - i, temp);
++	if(!nopad && (i = bytes & (65536 - 1))) {
++		char temp[65536] = {0};
++		write_destination(fd, bytes, 65536 - i, temp);
+ 	}
+ 
+ 	close(fd);
+@@ -5898,7 +5898,7 @@ printOptions:
+ 			ERROR("-force-uid <uid>\tset all file uids to <uid>\n");
+ 			ERROR("-force-gid <gid>\tset all file gids to <gid>\n");
+ 			ERROR("-nopad\t\t\tdo not pad filesystem to a multiple "
+-				"of 4K\n");
++				"of 64K\n");
+ 			ERROR("-keep-as-directory\tif one source directory is "
+ 				"specified, create a root\n");
+ 			ERROR("\t\t\tdirectory containing that directory, "

@@ -1,0 +1,46 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3624fbf74a3e2bac64d6a748fb667d72</srcmd5>
+    <version>2.0</version>
+    <time>1332415918</time>
+    <user>coolo</user>
+    <comment>Tools for DSP included in OMAP-like SoC.</comment>
+    <requestid>109756</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>3624fbf74a3e2bac64d6a748fb667d72</srcmd5>
+    <version>2.0</version>
+    <time>1340183292</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>3624fbf74a3e2bac64d6a748fb667d72</srcmd5>
+    <version>2.0</version>
+    <time>1359108828</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="7">
+    <srcmd5>3624fbf74a3e2bac64d6a748fb667d72</srcmd5>
+    <version>2.0</version>
+    <time>1379662256</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="9">
+    <srcmd5>3624fbf74a3e2bac64d6a748fb667d72</srcmd5>
+    <version>2.0</version>
+    <time>1409300791</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>38fd666b68f011ec9368eb0ecd9dcc32</srcmd5>
+    <version>2.0</version>
+    <time>1437478020</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316615</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,88 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>449293774e9bcb2b75a328b541886dd5</srcmd5>
+    <version>0.4.2</version>
+    <time>1353514417</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>141936</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>449293774e9bcb2b75a328b541886dd5</srcmd5>
+    <version>0.4.2</version>
+    <time>1359110121</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>94dee5b6a4534d5c3658a31ed9e00bf3</srcmd5>
+    <version>1.0b1</version>
+    <time>1362745870</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>157738</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cf6ccf9a34d1b9f8d100392a6d49c0e0</srcmd5>
+    <version>1.0b1</version>
+    <time>1365928736</time>
+    <user>coolo</user>
+    <comment>- Added requires and buildrequires python3.  It will not work properly without them on openSUSE &lt; 12.3
+- Cleanup some macros</comment>
+    <requestid>163868</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>a43973fd46465fc9e51089dc6d9bedda</srcmd5>
+    <version>1.0b1</version>
+    <time>1371650106</time>
+    <user>coolo</user>
+    <comment>housekeeping sr, necessary due to split between d:l:p and d:l:p3 and (manual) _link removal in Factory.</comment>
+    <requestid>180004</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>a43973fd46465fc9e51089dc6d9bedda</srcmd5>
+    <version>1.0b1</version>
+    <time>1379664282</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>2053ff71cf28270be7a5941069c8c70b</srcmd5>
+    <version>1.0b1</version>
+    <time>1382693482</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>204660</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>2053ff71cf28270be7a5941069c8c70b</srcmd5>
+    <version>1.0b1</version>
+    <time>1409302990</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dda4cd9b0a3db8bb721ca2cf158148b1</srcmd5>
+    <version>1.1</version>
+    <time>1432071435</time>
+    <user>dimstar_suse</user>
+    <comment>update</comment>
+    <requestid>307487</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>175d70ab2d85a6785fac22f40ed445ab</srcmd5>
+    <version>1.2</version>
+    <time>1504521183</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>519907</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1d0f09761c64086405b1a764320d6ede</srcmd5>
+    <version>1.2</version>
+    <time>1545648232</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>659670</requestid>
+  </revision>
+</revisionlist>

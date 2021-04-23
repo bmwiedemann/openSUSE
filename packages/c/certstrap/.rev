@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7c15b3b301ed3e8e3354d8fd36e70339</srcmd5>
+    <version>1.1.1+git20190303.350df15</version>
+    <time>1555588726</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>695517</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5f3d62b8c7b6fad26696c446e42a1f35</srcmd5>
+    <version>1.1.1+git20190303.350df15</version>
+    <time>1556312161</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>698221</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ddf3752c12564982bf6533259a0c1885</srcmd5>
+    <version>1.2.0+git20190920.dceba24</version>
+    <time>1569851566</time>
+    <user>dimstar_suse</user>
+    <comment>- Build pie binary
+- Update to version 1.2.0+git20190920.dceba24:
+  * Bump Go to 1.13
+  * Automatically inject version from tag in CI
+  * Bump github.com/urfave/cli from 1.21.0 to 1.22.1
+  * Allow to override default file inputs and outputs
+  * Bump github.com/urfave/cli from 1.20.0 to 1.21.0
+  * avoid using global variables</comment>
+    <requestid>732316</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cbd6b5e607697bc24e1d304501181936</srcmd5>
+    <version>1.2.0+git20200507.7cda9d4</version>
+    <time>1589660659</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0+git20200507.7cda9d4:
+  * update to readme &amp; .gitignore
+  * update to generated binaries information
+  * Enforce linter errors
+  * Fix issues surfaced by running `golangci-lint run`
+  * Configure GitHub Actions
+  * Fix docker build after removal of vendored deps
+  * Bump github.com/urfave/cli from 1.22.3 to 1.22.4
+  * Clean-up test execution
+  * Remove vendorized dependencies in favor of Go modules
+  * Bump github.com/urfave/cli from 1.22.2 to 1.22.3
+  * Set CRL expiration to 2 years
+  * Add option to create CA restricted to some domains
+  * Bump github.com/urfave/cli from 1.22.1 to 1.22.2
+  * Use raw string to avoid escaping
+  * Add minute and second granularity to expiration time
+  * Remove duplicate travis build
+  * Update README regarding go version</comment>
+    <requestid>805819</requestid>
+  </revision>
+</revisionlist>

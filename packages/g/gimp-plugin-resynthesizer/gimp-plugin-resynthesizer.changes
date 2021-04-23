@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Thu May 28 13:21:37 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add missing copyright header to the spec file
+
+-------------------------------------------------------------------
+Mon May 11 09:07:16 UTC 2020 - info@paolostivanin.com
+
+- Update to version 2.0.3.20190428:
+  * Adding missing translation on progress bar text.
+  * Adding French Translation and updating all po files with new strings.  Tweaked README on how to use translation files on Ubuntu.
+  * Add vagga test gimp-plugin-registry and installed resynthesizer.
+  * Add vagga scripts for testing build
+  * README: replace dead links with archive
+  * Issued #47 typo in readme
+
+-------------------------------------------------------------------
+Thu Jan  2 10:18:54 UTC 2014 - pgajdos@suse.com
+
+- updated to git snapshot 77eb3a6fc0
+  * fixes build failure (am 1.13)
+
+-------------------------------------------------------------------
+Thu May 16 11:32:51 UTC 2013 - prusnak@opensuse.org
+
+- updated to git snapshot 23dced0908
+  - fixes build failures
+- added gimp-plugins-python dependency
+- spec file cleanup
+
+-------------------------------------------------------------------
+Sun Jul  8 23:29:59 UTC 2012 - jw@suse.com
+
+- upgrade to 2.0, added autoconf/automake support
+- linking with gthread-2.0
+
+-------------------------------------------------------------------
+Sun Jul  8 21:25:02 UTC 2012 - jw@suse.com
+
+- fixed missing intltool and SUSE_ASNEEDED
+
+-------------------------------------------------------------------
+Wed Oct 12 20:43:26 UTC 2011 - dmacvicar@suse.de
+
+- initial package
+

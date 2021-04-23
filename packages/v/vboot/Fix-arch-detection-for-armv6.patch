@@ -1,0 +1,23 @@
+From: kasimir <kasimir_@outlook.de>
+Date: Mon, 5 Mar 2018 20:59:15 +0100
+Subject: [PATCH] Fix arch detection for armv6
+
+---
+ Makefile | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 013c6d8a..0f66a95c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -103,6 +103,8 @@ endif
+ 
+ ifeq (${ARCH},armv7l)
+   override ARCH := arm
++else ifeq (${ARCH},armv6l)
++  override ARCH := arm
+ else ifneq (,$(filter aarch64 arm64,${ARCH}))
+   override ARCH := arm
+ else ifeq (${ARCH},i386)
+-- 
+2.12.3

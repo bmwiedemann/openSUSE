@@ -1,0 +1,5 @@
+<package name="python-pytest-aiofiles" project="openSUSE:Factory">
+  <title></title>
+  <description>Pytest fixtures for writing aiofiles tests with pyfakefs</description>
+  <devel project="devel:languages:python:pytest" package="python-pytest-aiofiles"/>
+</package>

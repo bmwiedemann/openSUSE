@@ -1,0 +1,28 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d10b93d..b036d16 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -71,7 +71,7 @@ set(CPACK_SOURCE_IGNORE_FILES
+ #
+ IF(UNIX AND NOT APPLE)
+  INSTALL(FILES shared/kochmorse.svg
+-         DESTINATION share/icons)
++         DESTINATION share/icons/hicolor/scalable/apps)
+  INSTALL(FILES shared/kochmorse.desktop
+          DESTINATION share/applications)
+ ENDIF(UNIX AND NOT APPLE)
+diff --git a/shared/kochmorse.desktop b/shared/kochmorse.desktop
+index e7d4977..54177c6 100644
+--- a/shared/kochmorse.desktop
++++ b/shared/kochmorse.desktop
+@@ -3,8 +3,8 @@ Name=Koch Morse
+ GenericName=Morse Tutor
+ Comment=A simple Morse tutor using the Koch method.
+ Exec=kochmorse
+-Icon=/usr/share/icons/kochmorse.svg
++Icon=kochmorse.svg
+ Type=Application
+-Categories=Education;X-Teaching;
++Categories=Education;Languages;X-HamRadio;X-Teaching;
+ Terminal=false
+ Encoding=UTF-8

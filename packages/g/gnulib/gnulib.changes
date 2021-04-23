@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Thu Sep  3 14:58:56 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Update to version git.20200809.d6dabe8ee 
+  to Use __builtin_signbit* with clang.:
+  * lib/math.in.h (signbit): Use __builtin_signbit{,f,l} also on clang.
+  * m4/signbit.m4 (gl_SIGNBIT): Use __builtin_signbit{,f,l} also on clang.
+    Set REPLACE_SIGNBIT_USING_BUILTINS, not REPLACE_SIGNBIT_USING_GCC.
+  * m4/math_h.m4 (gl_MATH_H_DEFAULTS): Initialize
+    REPLACE_SIGNBIT_USING_BUILTINS, not REPLACE_SIGNBIT_USING_GCC.
+  * modules/math (Makefile.am): Substitute REPLACE_SIGNBIT_USING_BUILTINS,
+    not REPLACE_SIGNBIT_USING_GCC.
+- Earler changes can be found here:
+  https://git.savannah.gnu.org/cgit/gnulib.git/tree/ChangeLog
+- This gnulib version is required by PSPP 1.4.0, 1.4.1 and current master.
+
+-------------------------------------------------------------------
+Thu Sep  3 11:21:25 UTC 2020 - opensuse.lietuviu.kalba@gmail.com
+
+- Install relocatable.texi as well (rh#1474792).
+
+-------------------------------------------------------------------
+Wed Feb 19 10:33:56 UTC 2020 - mliska@suse.cz
+
+- Update to version git.20200216.f4693b016:
+  * fchmodat: Make more future-proof.
+  * lchmod: Make more future-proof.
+  * lchmod: Fix buggy override on macOS, HP-UX (regression from 2020-02-08).
+  * xnanosleep: prefer pause, and get remaining time
+  * lchmod: Improve cross-compilation guess.
+  * fstrcmp: Add API to clean up resources.
+  * wctype-h: Fix compilation errors in C++ (regression from 2020-01-25).
+  * fchmodat, lchmod: port to buggy Linux filesystems
+  * autoupdate
+  * lchmod: pacify Coverity CID 1491216
+
+-------------------------------------------------------------------
+Thu Sep 17 13:56:13 UTC 2015 - p.drouand@gmail.com
+
+- Update to commit 601d8f444dc927daf0fbefbc866b46bfaa44f59b
+  Fix build
+
+-------------------------------------------------------------------
+Tue Apr 21 16:31:08 UTC 2015 - p.drouand@gmail.com
+
+- Initial release (version 20150421)
+

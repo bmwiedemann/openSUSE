@@ -1,0 +1,15 @@
+---
+ Makefile |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/Makefile
++++ b/Makefile
+@@ -212,7 +212,7 @@ ibin:	gcin-nocur
+ 	rm -f $(bindir)/ts-contribute; ln -sf ts-edit $(bindir)/ts-contribute
+ 	install $(GCIN_SO) $(gcinlibdir)
+ 
+-icons_apps=$(datadir)/icons/hicolor/64x64/apps
++icons_apps=$(datadir)/pixmaps
+ install:
+ 	install -d $(icons_apps)
+ 	install -m 644 gcin.png $(icons_apps)

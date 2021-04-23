@@ -1,0 +1,259 @@
+-------------------------------------------------------------------
+Fri Feb 12 00:13:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.7.0:
+  * A new NVECTOR implementation based on the SYCL abstraction layer has been added
+    targeting Intel GPUs. At present the only SYCL compiler supported is the DPC++
+    (Intel oneAPI) compiler. See the SYCL NVECTOR section in the user guide for
+    more details. This module is considered experimental and is subject to major
+    changes even in minor releases.
+  * A new SUNMatrix and SUNLinearSolver implementation were added to interface with
+    the MAGMA linear algebra library. Both the matrix and the linear solver support
+    general dense linear systems as well as block diagonal linear systems, and both
+    are targeted at GPUs (AMD or NVIDIA).
+  * Fixed a bug in the SUNDIALS CMake which caused an error if the
+    CMAKE_CXX_STANDARD and SUNDIALS_RAJA_BACKENDS options were not provided.
+  * Fixed some compiler warnings when using the IBM XL compilers.
+  * A new NVECTOR implementation based on the AMD ROCm HIP platform has been added.
+    This vector can target NVIDIA or AMD GPUs. See HIP NVECTOR section in the user
+    guide for more details. This module is considered experimental and is subject
+    to change from version to version.
+  * The RAJA NVECTOR implementation has been updated to support the HIP backend in
+    addition to the CUDA backend. Users can choose the backend when configuring
+    SUNDIALS by using the `SUNDIALS_RAJA_BACKENDS` CMake variable. This module
+    remains experimental and is subject to change from version to version.
+ *  A new optional operation, `N_VGetDeviceArrayPointer`, was added to the N_Vector
+    API. This operation is useful for N_Vectors that utilize dual memory spaces,
+    e.g. the native SUNDIALS CUDA N_Vector.
+ *  The SUNMATRIX_CUSPARSE and SUNLINEARSOLVER_CUSOLVERSP_BATCHQR implementations
+    no longer require the SUNDIALS CUDA N_Vector. Instead, they require that the
+    vector utilized provides the `N_VGetDeviceArrayPointer` operation, and that the
+    pointer returned by `N_VGetDeviceArrayPointer` is a valid CUDA device pointer.
+- Minor refreshing of sundials-link-pthread.patch to apply cleanly
+  against updated sources.
+
+-------------------------------------------------------------------
+Wed Dec  2 12:59:07 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.5.0:
+  * Refactored the SUNDIALS CMake build system to improve build
+    times by as much as 35%.
+  * CMake 3.12.0 or newer is now required.
+  * Users will likely see CMake deprecation warnings, and
+    potentially new errors when incompatible CMake options have
+    been set (previously, these would fail silently).
+  * SUNDIALS now exports CMake targets and installs a
+    SUNDIALSConfig.cmake file.
+  * Added support for SuperLU DIST 6.3.0+.
+- Add sundials-link-pthread.patch: Link against pthread explicitly
+  to fix linking errors when `-Wl,--no-undefined` is added to the
+  linker flags; patch sent upstream.
+- Add BuildRequires: suitesparse-devel and enable KLU solver; pass
+  appropriate options to cmake to make sure the klu library and
+  header is correctly found.
+- Use cmake macros instead of manual cmake commands.
+- Split out new libsundials_generic package with the
+  libsundials_generic shared library.
+- Enable openmpi4 flavour.
+- Run tests except for tests that fail due to floating point
+  errors in the tests themselves.
+- Drop Group tags.
+
+-------------------------------------------------------------------
+Fri Sep 11 07:55:15 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.3.0:
+  * Added support to CVODE for integrating IVPs with constraints
+    using BDF methods and projecting the solution onto the
+    constraint manifold with a user defined projection function.
+  * Added the ability to control the CUDA kernel launch parameters
+    for the NVECTOR_CUDA and SUNMATRIX_CUSPARSE modules.
+  * The NVECTOR_CUDA kernels were rewritten to be more flexible.
+  * Added new capabilities for monitoring the solve phase in the
+    SUNNONLINSOL_NEWTON and SUNNONLINSOL_FIXEDPOINT modules, and
+    the SUNDIALS iterative linear solver modules.
+  * Added specialized fused CUDA kernels to CVODE which may offer
+    better performance on smaller problems when using CVODE with
+    the NVECTOR_CUDA module.
+  * Added a new function, CVodeSetMonitorFn, that takes a
+    user-function to be called by CVODE after every nst
+    successfully completed time-steps.
+  * Added a new function CVodeGetLinSolveStats to get the CVODE
+    linear solver statistics as a group.
+  * Added optional set functions to provide an alternative ODE
+    right-hand side function (ARKode and CVODE(S)), DAE residual
+    function (IDA(S)), or nonlinear system function (KINSOL) for
+    use when computing Jacobian-vector products with the internal
+    difference quotient approximation.
+  * Fixed a bug in ARKode where the prototypes for
+    ERKStepSetMinReduction() and ARKStepSetMinReduction() were not
+    included in arkode_erkstep.h and arkode_arkstep.h
+    respectively.
+  * Fixed a bug in ARKode where inequality constraint checking
+    would need to be disabled and then re-enabled to update the
+    inequality constraint values after resizing a problem.
+  * Fixed a bug in the iterative linear solver modules where an
+    error is not returned if the Atimes function is NULL or, if
+    preconditioning is enabled, the PSolve function is NULL.
+- Pass SUNDIALS_BUILD_WITH_MONITORING=ON to cmake to enable
+  monitoring the solve phase in different iterative solver
+  modules.
+
+-------------------------------------------------------------------
+Sat May  9 22:30:30 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.2.0 (See
+  https://computing.llnl.gov/projects/sundials/release-history for
+  details):
+  - Fixed a bug in how ARKode interfaces with a user-supplied,
+    iterative, unscaled linear solver.
+  - Fixed a bug in how ARKode interfaces with a user-supplied,
+    iterative, unscaled linear solver.
+  - Fixed a similar bug in how ARKode interfaces with scaled
+    linear solvers when solving problems with non-identity mass
+    matrices.
+  - Fixed a memory leak in CVODES and IDAS from not deallocating
+    the atolSmin0 and atolQSmin0 arrays.
+  - Fixed a bug where a non-default value for the maximum allowed
+    growth factor after the first step would be ignored.
+  - Functions were added to each of the time integration packages
+    to enable or disable the scaling applied to linear system
+    solutions with matrix-based linear solvers to account for
+    lagged matrix information.
+  - Added two new functions, ARKStepSetMinReduction() and
+    ERKStepSetMinReduction() to change the minimum allowed step
+    size reduction factor after an error test failure.
+  - Added a new SUNMatrix implementation, SUNMATRIX_CUSPARSE, that
+    interfaces to the sparse matrix implementation from the NVIDIA
+    cuSPARSE library.
+  - Added a new "stiff" interpolation module to ARKode, based on
+    Lagrange polynomial interpolation, that is accessible to each
+    of the ARKStep, ERKStep and MRIStep time-stepping modules.
+
+-------------------------------------------------------------------
+Wed Jan 29 12:03:45 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Remove duplicated definitions.
+- Remove bogus undefines of suffix and mpi_flavor for "serial"
+  flavour. The former causes builds to fail for openSUSE >= 1550
+  using rpm >= 4.15.
+
+-------------------------------------------------------------------
+Fri Nov  8 09:11:01 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Run spec-cleaner for minor cleanups.
+
+-------------------------------------------------------------------
+Thu Nov  7 18:18:36 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.0:
+  * Two new NVector implementations created to support flexible
+    partitioning of solution data among different processing
+    elements (e.g., CPU + GPU) or for multi-physics problems that
+    couple distinct MPI-based simulations together:
+    NVECTOR_MANYVECTOR, amd NVECTOR_MPIMANYVECTOR,
+  * An additional NVector implementation, NVECTOR_MPIPLUSX, has
+    been created to support the MPI+X paradigm where X is a type
+    of on-node parallelism (e.g., OpenMP, CUDA),
+  * One new required NVector operation, N_VGetLength, and ten new
+    optional vector operations have been added to the NVector API,
+  * Two new SUNLinearSolver implementations,
+    SUNLINEARSOLVER_SUPERLUDIST which interfaces with the
+    SuperLU_DIST distributed, sparse, linear solver library, and
+    the SUNLINEARSOLVER_CUSOLVERSP_BATCHQR, which interfaces to
+    the cuSOLVE sparse batched QR linear solver,
+  * A new SUNNonlinearSolver implementation,
+    SUNNONLINSOL_PETSCSNES, which provides an interface to the
+    PETSc SNES API,
+  * New Fortran 2003 interface modules that provide Fortran users
+    access to most of the SUNDIALS C API including ARKode,
+    CVODE(S), IDA(S), and KINSOL,
+  * Support for using explicit, implicit, or IMEX methods as the
+    fast integrator with the MRIStep time-stepper in ARKode,
+  * Several other minor changes and bug fixes: see
+    https://computing.llnl.gov/projects/sundials/release-history.
+- Merge all nvec solver libraries into a single shared lib
+  package: %{shlib_nvec}.
+
+-------------------------------------------------------------------
+Thu Nov  7 17:23:58 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Enable multibuild with serial, openmpi1, openmpi2, openmpi3,
+  and mvapich2 flavours.
+
+-------------------------------------------------------------------
+Wed Apr 10 13:08:49 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Follow shared library packaging policy and split out multiple
+  versioned shlib packages. The main shared lib %{shlib_main}
+  contains the common shared objects, while each individual solver
+  gets its own shared lib package.
+- Add blas-devel and lapack-devel BuildRequires; enable blas and
+  lapack (does not work with 64 bits) during cmake.
+- Enable pthread.
+
+-------------------------------------------------------------------
+Wed Apr 10 10:26:43 UTC 2019 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.1.0:
+  * An additional N_Vector implementation was added for Tpetra
+    vector from Trilinos library to facilitate interoperability
+    between SUNDIALS and Trilinos. This implementation is
+    accompanied by additions to user documentation and SUNDIALS
+    examples.
+  * A bug was fixed where a nonlinear solver object could be freed
+    twice in some use cases.
+  * The EXAMPLES_ENABLE_RAJA CMake option has been removed. The
+    option EXAMPLES_ENABLE_CUDA enables all examples that use CUDA
+    including the RAJA examples with a CUDA back end (if the RAJA
+    NVECTOR is enabled).
+  * The implementation header files (e.g. arkode_impl.h) are no
+    longer installed. This means users who are directly
+    manipulating package memory structures will need to update
+    their code to use the package’s public API.
+  * Python is no longer required to run make test and make
+    test_install.
+  * Fixed a bug in ARKodeButcherTable_Write when printing a
+    Butcher table without an embedding. 
+- Changes between previously packaged version (2.5.0) through
+  version 4.0.2:
+  https://computation.llnl.gov/projects/sundials/release-history.
+- Switch to cmake based build in keeping with upstream.
+- Drop devel-static package since application no longer builds
+  static libraries anyway.
+- Only build one (serial) version for now.
+- Update Source and URL tags.
+- Remove NOTICE and LICENSE files from includedir; package them
+  properly as doc. 
+
+-------------------------------------------------------------------
+Sat Jun  2 17:18:59 UTC 2012 - scorot@free.fr
+
+- fix mistyping in spec file which broke build where mvapich2
+  is not available 
+
+-------------------------------------------------------------------
+Sat Jun  2 16:05:49 UTC 2012 - scorot@free.fr
+
+- set --with-mpi-libs in configure in order to fix mpi library
+  linking
+
+-------------------------------------------------------------------
+Sat Jun  2 13:37:48 UTC 2012 - scorot@free.fr
+
+- enable parallel build for openmpi and mvapich2 
+
+-------------------------------------------------------------------
+Sat Jun  2 11:25:51 UTC 2012 - scorot@free.fr
+
+- remove not applied patch0 from files list 
+
+-------------------------------------------------------------------
+Sat Jun  2 10:55:48 UTC 2012 - scorot@free.fr
+
+- spec files re-formating
+- version 2.5.0
+ * Many bugfixes and new features
+ * See https://computation.llnl.gov/casc/sundials/download/
+   whatsnew.html for a complete list of changes
+

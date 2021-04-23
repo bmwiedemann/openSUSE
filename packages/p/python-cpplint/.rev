@@ -1,0 +1,83 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3171530013318c858b2bb2e297278521</srcmd5>
+    <version>1.4.4</version>
+    <time>1551216067</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove bcond test
+- Remove unnecessary build dependency on python devel
+- Add %license
+- Update to v1.4.4
+  * fix unit/cli tests for source release
+  * reduce diff to upstream by intentionally using deprecated functions
+    where upstream uses them
+  * add --version
+- from 1.4.3
+  * Revert &quot;Fix the build/endif_comment check&quot;, same as reverted in upstream
+- from 1.4.2
+  * Cleanup release, fixes further issues with tests and source distribution
+- from 1.4.1
+  * Cleanup release, only adds test support files to source dist
+- from 1.4.0
+  * Incorporate cpplint updates from google (e5d807c6a0d, 2018-05-03)
+  * Fix the build/endif_comment check
+  * Teach the explicit constructor check about constexpr
+  * Changed vs7 output format
+  * Remove presubmit check for DISALLOW_* macros
+  * add --quiet flag as in upstream
+  * support --root argument to run in different folder
+  * Fix 16bit Unicode issue
+- Initial version for v1.3.0
+</comment>
+    <requestid>679179</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f0dfe779f287e0e230dd9957fcdeadf0</srcmd5>
+    <version>1.4.5</version>
+    <time>1585761656</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>790634</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>63d0cd06cf3594fd9dd44961923d7bdc</srcmd5>
+    <version>1.4.5</version>
+    <time>1590650385</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>809606</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>87ee14da42a419edb1551319d5bafc3a</srcmd5>
+    <version>1.5.2</version>
+    <time>1593606421</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on textfixtures. 
+
+-  Update to 1.5.2:
+   * Fix #83, output formats &quot;sed&quot; and &quot;gsed&quot; to auto-fix some issues
+   * Fix #92, new category &quot;build/namespaces_headers&quot; for unnamed namespaces in header file
+   * Sort list of files before processing
+   * Fix #144 Falso positive for indent when using QT macros &quot;signals&quot; and &quot;slots&quot;
+   * Fix #76 Parsing of class decorators that also use digits
+   * Fix #139 Add message &quot;Relative paths like . and .. are not allowed&quot;
+   * Revert #43 behavior change for include order from 1.5.0, and hide it behind command-line-flag --includeorder=standardcfirst. It turns out there is no easy objective way to tell c system headers from certain c++ library headers, and Google cpplint intentionally classifies some C++ header includes as C system header for simplicity.
+   * Libraries considered as C system headers using --includeorder=standardcfirst now also includes linux-specifc headers (glibc-devel, glibc-kernheaders, linux-libc-dev).
+   * Fix #43 false positives in header include order by checking includes against a list of c headers. Since this interprets certain include lines different than before, output about header include order changes.
+   * Fix #135: allow 'if constexpr' in readability/braces.
+   * Fix runtime warning: Close files after reading contents</comment>
+    <requestid>817961</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c2a56d1997e894d3b3dc8f133a4ccf11</srcmd5>
+    <version>1.5.4</version>
+    <time>1598885459</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.4:
+  * Fix google#166, Allow space before C++11 attributes
+  * Fix #156: sed/gsed output parameter rejected
+  * Fix #156: sed/gsed output without other stdout information
+  * improvements to regression tests</comment>
+    <requestid>830677</requestid>
+  </revision>
+</revisionlist>

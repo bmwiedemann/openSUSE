@@ -1,0 +1,26 @@
+Index: icmake-8.01.00/icmake/icm_prepare
+===================================================================
+--- icmake-8.01.00.orig/icmake/icm_prepare
++++ icmake-8.01.00/icmake/icm_prepare
+@@ -27,7 +27,7 @@ try mkdir -p tmp
+ 
+ echo    Writing tmp/ROOT
+ ROOT=`echo $1 | sed 's_/$__'`
+-echo "ROOT=${ROOT}/" > tmp/ROOT
++echo "ROOT=${ROOT}" > tmp/ROOT
+  
+ . scripts/conversions
+ 
+Index: icmake-8.01.00/icmake/scripts/conversions
+===================================================================
+--- icmake-8.01.00.orig/icmake/scripts/conversions
++++ icmake-8.01.00/icmake/scripts/conversions
+@@ -3,7 +3,7 @@ CONFIG=INSTALL.im
+ . VERSION
+ . tmp/ROOT
+ 
+-ROOT=`echo ${ROOT}/ | sed 's,//,/,g' | sed 's,//,/,g'`
++ROOT=`echo ${ROOT} | sed 's,//,/,g' | sed 's,//,/,g'`
+ 
+ EXTENSION=`grep '^#' $CONFIG | grep "#define[[:space:]]\+EXTENSION" | \
+             sed 's,.*EXTENSION[[:space:]]\+\"\([^"]*\)".*,'${ROOT}'\1,'`

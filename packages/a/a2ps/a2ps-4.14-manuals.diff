@@ -1,0 +1,16 @@
+---
+ man/a2ps.1 |    3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+--- man/a2ps.1
++++ man/a2ps.1	2014-08-07 14:32:29.000000000 +0000
+@@ -81,8 +81,7 @@ first fill (DIRECTION=) rows, or columns
+ predefined font sizes and layouts for 1.. 9 virtuals
+ .TP
+ \fB\-A\fR, \fB\-\-file\-align\fR=\fIMODE\fR
+-align separate files according to MODE (fill, rank
+-page, sheet, or a number)
++align separate files according to MODE (`virtual', `rank', `page', `sheet', or a number)
+ .TP
+ \fB\-j\fR, \fB\-\-borders\fR*
+ print borders around columns

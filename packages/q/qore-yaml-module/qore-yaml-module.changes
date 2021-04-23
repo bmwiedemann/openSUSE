@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Sat Dec 19 18:06:02 UTC 2020 - sarah.kriesch@opensuse.org
+
+- enable s390x as an architecture in spec file
+
+-------------------------------------------------------------------
+Sun Aug 16 20:30:40 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.6:
+  * improved the description for the DESERIALIZATION-ERROR exception for
+  non-deserializable message bodies from HTTP servers with error responses (issue
+  1033) added the YamlRpcConnection class to the YamlRpcClient module updated the
+  DataStreamClient module for complex types and new internal RestClient API
+  changes (issue 2073) updated the DataStreamUtil module for complex types
+  fixed a bug deserializing single-quoted strings; also serialized "!number"
+  values will always include the tag to avoid potential future ambiguity (issue
+  2343) improved argument error messages with RPC calls in the YamlRpcHandler
+  module (issue 2573)
+
+  * new user modules for DataStream protocol support: YAML-encoded HTTP chunked
+  transfers where each chunk is a unique data entity DataStreamClient user module
+  DataStreamRequestHandler user module
+  DataStreamUtil user module
+
+  * user modules moved to top-level qore module directory from version-specific
+  module directory since they are valid for multiple versions of qore date/time
+  values (yaml !!timestamp type) are now always returned in the current time zone
+  locale so that time zone rules can be applied to deserialized dates; previously
+  time zone information was always lost which could cause errors when performing
+  date arithmetic on deserialized yaml dates
+
+  * fixed bugs deserializing canonically-encoded YAML strings; arbitrary-precision
+  numeric values were deserialized with their precision values ignored and
+  floating point +/-inf were deserialized as zero deprecated old camel-case names
+  and implemented new function names confirming to the standard naming convention
+  for functions
+
+-------------------------------------------------------------------
+Mon Aug 31 05:52:02 UTC 2015 - normand@linux.vnet.ibm.com
+
+- add --enable-64bit as already done for other qore-*-module
+
+-------------------------------------------------------------------
+Tue Jul 30 14:20:50 UTC 2014 - petr@yarpen.cz
+
+- migrated to OBS file layout
+

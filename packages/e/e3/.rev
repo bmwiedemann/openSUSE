@@ -1,0 +1,163 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa03694a7fed6a4ca3301ecbeab5bbb3</srcmd5>
+    <version>2.6.3</version>
+    <time>1168902658</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="139">
+    <srcmd5>aa03694a7fed6a4ca3301ecbeab5bbb3</srcmd5>
+    <version>2.6.3</version>
+    <time>1168902658</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="140">
+    <srcmd5>96c165996ea2a62d6ac5205450250e21</srcmd5>
+    <version>2.6.3</version>
+    <time>1245259486</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="142">
+    <srcmd5>96c165996ea2a62d6ac5205450250e21</srcmd5>
+    <version>2.6.3</version>
+    <time>1245259486</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>424cdb18fd0e7d83e4ba9f95dc58d0ee</srcmd5>
+    <version>2.7.1</version>
+    <time>1262892080</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/e3 based on submit request 28248 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9986cc7752660ff4f95ecf8775d2be38</srcmd5>
+    <version>2.7.1</version>
+    <time>1268923416</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>9986cc7752660ff4f95ecf8775d2be38</srcmd5>
+    <version>2.7.1</version>
+    <time>1278667343</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>9986cc7752660ff4f95ecf8775d2be38</srcmd5>
+    <version>2.7.1</version>
+    <time>1278678573</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c9c77b67c055072a05303fd606b68a06</srcmd5>
+    <version>2.8</version>
+    <time>1280957538</time>
+    <user>autobuild</user>
+    <comment>Copy from editors/e3 based on submit request 44511 from user coolo
+</comment>
+    <requestid>44511</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>c9c77b67c055072a05303fd606b68a06</srcmd5>
+    <version>2.8</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>7fa1710ac157216ce611139fbbf956c7</srcmd5>
+    <version>2.8</version>
+    <time>1316619386</time>
+    <user>saschpe</user>
+    <comment>- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Use %_smp_mflags for parallel build (forwarded request 83388 from jengelh)</comment>
+    <requestid>84198</requestid>
+  </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>2b254c51904a3903bafcf4052fc75892</srcmd5>
+    <version>2.8</version>
+    <time>1317542270</time>
+    <user>lrupp</user>
+    <comment>Forward arm fix to Factory</comment>
+    <requestid>85803</requestid>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>2b254c51904a3903bafcf4052fc75892</srcmd5>
+    <version>2.8</version>
+    <time>1319181860</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="9">
+    <srcmd5>6252971d22b9af1cc1f1106f5b2e98b8</srcmd5>
+    <version>2.8</version>
+    <time>1323191248</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>350ac86e4d55f0c0cbd881e9c1df1706</srcmd5>
+    <version>2.8</version>
+    <time>1330692440</time>
+    <user>coolo</user>
+    <comment>- Fix build for ppc, add ppc ppc64 to arch declerations (forwarded request 107570 from k0da)</comment>
+    <requestid>107699</requestid>
+  </revision>
+  <revision rev="16" vrev="12">
+    <srcmd5>350ac86e4d55f0c0cbd881e9c1df1706</srcmd5>
+    <version>2.8</version>
+    <time>1340183297</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="17" vrev="14">
+    <srcmd5>350ac86e4d55f0c0cbd881e9c1df1706</srcmd5>
+    <version>2.8</version>
+    <time>1359108835</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="15">
+    <srcmd5>c3f4d75881b8d4c6104ac5fe1e390cab</srcmd5>
+    <version>2.8</version>
+    <time>1375176508</time>
+    <user>coolo</user>
+    <comment>Changes in devel for quite time, lets just put it to factory too.</comment>
+    <requestid>184602</requestid>
+  </revision>
+  <revision rev="19" vrev="17">
+    <srcmd5>c3f4d75881b8d4c6104ac5fe1e390cab</srcmd5>
+    <version>2.8</version>
+    <time>1379662271</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="19">
+    <srcmd5>c3f4d75881b8d4c6104ac5fe1e390cab</srcmd5>
+    <version>2.8</version>
+    <time>1409300808</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fa1781e9ba8c7e305a6ceefc243ebaf2</srcmd5>
+    <version>2.82</version>
+    <time>1484132674</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.82
+  * now using fstat64-syscall on Linux32 
+  * avoid using &quot;brk&quot;-syscall due a conflict with Address Space
+    Layout Randomization (ASLR) in Linux: neeed if
+    /proc/sys/kernel/randomize_va_space is &gt;= 2
+- Small packaging cleanup:
+  * Use url for source
+  * Use correct rpm group
+  * Enable building on all architectures
+
+- Enable s390x in list of architectures</comment>
+    <requestid>449551</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,6 @@
+<package name="python-youtube-dl" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="youtube-dl"/>
+  <bcntsynctag>youtube-dl</bcntsynctag>
+</package>

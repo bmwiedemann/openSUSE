@@ -1,0 +1,32 @@
+--- samples/canonical
++++ samples/canonical
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl -w
++#!/usr/bin/perl -w
+ #
+ # Copyright 1999 Clark Cooper <coopercc@netheaven.com>
+ # All rights reserved.
+--- samples/xmlcomments
++++ samples/xmlcomments
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl -w
++#!/usr/bin/perl -w
+ #
+ # $Revision: 1.1.1.1 $
+ #
+--- samples/xmlfilter
++++ samples/xmlfilter
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl -w
++#!/usr/bin/perl -w
+ #
+ # $Revision: 1.1.1.1 $
+ #
+--- samples/xmlstats
++++ samples/xmlstats
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl -w
++#!/usr/bin/perl -w
+ #
+ # $Revision: 1.1.1.1 $
+ #

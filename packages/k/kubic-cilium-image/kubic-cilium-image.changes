@@ -1,0 +1,265 @@
+-------------------------------------------------------------------
+Wed Feb 19 10:20:18 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
+
+- Remove dependency on kubic-project/container-images Github
+  project - it's not used anymore.
+- Remove dependency on boringssl package - cilium-proxy is now
+  using OpenSSL instead.
+
+-------------------------------------------------------------------
+Tue Mar 26 13:09:47 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
+
+- Commit 4e60fe4 by Michal Rostecki mrostecki@opensuse.org 
+
+  cilium: Add missing xmlns for label_helper
+
+-------------------------------------------------------------------
+Mon Mar 25 16:54:05 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
+
+- Commit e33d2d9 by Michal Rostecki mrostecki@opensuse.org 
+
+  cilium: Add libboringssl0 package
+
+  This is a temporary solution for boo#1130050 - a bug in boringssl package
+  which results in the following kiwi error:
+
+  ``` buildinfo is broken... it says: unresolvable: have choice for
+  libcrypto.so.0()(64bit) needed by cilium-proxy: boringssl-devel
+  libboringssl0
+       have choice for libdecrepit.so.0()(64bit) needed by cilium-proxy:
+  boringssl-devel libboringssl0
+       have choice for libssl.so.0()(64bit) needed by cilium-proxy:
+  boringssl-devel libboringssl0
+  ```
+
+- Commit 6688f73 by Michal Rostecki mrostecki@opensuse.org 
+
+  cilium: Add openSUSE-release-ftp in Kubic
+
+  This is the fix for the following error in Cilium Kubic image:
+
+  ``` buildinfo is broken... it says: unresolvable: have choice for
+  product_flavor(openSUSE) needed by openSUSE-release: openSUSE-release-dvd
+  openSUSE-release-ftp [...]
+  ```
+
+  It's solved by choosing openSUSE-release-ftp as a bootstrap package.
+
+- Commit 72c9478 by Michal Rostecki mrostecki@opensuse.org 
+
+  pre_checkin: Allow to define extra bootstrap packages
+
+  This change allows to define packages section of type bootstrap per product
+  (kubic, caasp) by creating a file named
+  `${product}-extra-bootstrap-packages` (i.e. `kubic-extra-packages` or
+  `caasp-extra-packages`). Kiwi template, in order to support that 
+  functionality, has to contain `_EXTRA_BOOTSTRAP_PACKAGES_` marker.
+
+  The motivation behind it is the fact that some openSUSE packages require 
+  providers of product_flavor(openSUSE). The common solution for that is to
+  install i.e. openSUSE-release-ftp as a bootstrap package. However, that
+  problem and solution are valid only in openSUSE, not in SLE.
+
+-------------------------------------------------------------------
+Thu Mar 21 10:30:30 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
+
+- Commit 98feaa4 by Michal Rostecki mrostecki@opensuse.org 
+
+  cilium: Add cilium-proxy package
+
+  cilium-proxy package contains Envoy L7 proxy and communication bus with 
+  additional Cilium filters. It enables the functionality of L7 network 
+  policies in Cilium.
+
+- Commit 1989664 by Michal Rostecki mrostecki@opensuse.org 
+
+  cilium: Add history entry
+
+  Requested in review on OBS[0].
+
+  [0] https://build.opensuse.org/request/show/686932
+
+- Commit 20a4c55 by Michal Rostecki mrostecki@opensuse.org 
+
+  cilium: Add container labels
+
+  Requested in review on OBS[0].
+
+  [0] https://build.opensuse.org/request/show/686932
+
+- Commit fe784d1 by Michal Rostecki mrostecki@opensuse.org 
+
+  cilium: Use additionalflags instead of OBS-AddTag
+
+  Use the containerconfig.additionalflags attribute instead of OBS-AddTag 
+  comment.
+
+  Requested in review on OBS[0].
+
+  [0] https://build.opensuse.org/request/show/686932
+
+-------------------------------------------------------------------
+Wed Mar 20 13:02:50 UTC 2019 - Michal Rostecki <mrostecki@opensuse.org>
+
+- Commit ce43e39 by Nirmoy Das ndas@suse.de 
+
+  cilium: clean up redundant dependency and add cilium-cni
+
+  all the runtime dependency for cilium has been added to cilium package. 
+  cilium-cni is a new sub-package which contains cni binary and config for
+  cilium.
+
+  Signed-off-by: Nirmoy Das <ndas@suse.de>
+
+- Commit de441c0 by David Cassany dcassany@suse.de 
+
+  Fix typo in comments
+
+- Commit 4fdab4e by Michal Rostecki mrostecki@opensuse.org 
+
+  cilium: Clean up the package list and provide comments
+
+  This change removes packages which are already dependencies of the cilium
+  package and provides explanation why all the other packages in the list are
+  needed.
+
+- Commit 8a8bb79 by Michal Rostecki mrostecki@opensuse.org 
+
+  cilium: Clean up package list
+
+  This change removes gcc from the package list (which is not needed, because
+  only llvm can be used for compiling BPF programs) and adds an explanation
+  why glibc-devel-32bit is installed.
+
+- Commit 32945a3 by David Cassany dcassany@suse.de 
+
+  Update image names
+
+  This commit updates image names to match factory-auto review name policy.
+
+  Fixes #70
+
+- Commit 7b9e3cc by David Cassany dcassany@suse.de 
+
+  Update Tumbleweed base image reference
+
+  Tag of the latest build of Tumbleweed changed from `current` to
+  `latest`.
+
+- Commit 6649435 by David Cassany dcassany@suse.de 
+
+  Do not fail if no new change log entries are found
+
+  This commit makes pre_checkin.sh script to exit 0 if no new changelog 
+  entries are found (when using --mkchanges flag). This way the CI does not
+  report a failre when it is executed having nothing new to commit at OBS.
+
+- Commit 3dbfb55 by David Cassany dcassany@suse.de 
+
+  Distinguish between namespace and product
+
+  For caasp we started using namespaces like 'caasp/head' or 'caasp/vX'. The
+  slash is not an accepted character for 'name' attribute of <image> section.
+  The image name ends up to the filename, thus adding slashes is prohibited
+  there.
+
+- Commit 2278d29 by David Cassany dcassany@suse.de 
+
+  Updating the SLE15 base image tag
+
+  Current SLE15 image is published under 'latest' tag.
+
+- Commit b0dfa25 by David Cassany Viladomat dcassany@suse.de 
+
+  Merge pull request #57 from kubic-project/update_pre_checkin
+
+  Make pre_checkin.sh sript more usable
+- Commit c9f588f by David Cassany dcassany@suse.de 
+
+  Adding custom caasp namespaces
+
+  With this commit the caasp templates can be generated including a a caasp
+  suffix. For instance `./pre_checkin.sh caasp/v4` will generate the template
+  with image namespace of `caasp/v4`.
+
+- Commit 92c129f by David Cassany dcassany@suse.de 
+
+  Make pre_checkin.sh sript more usable
+
+  With this commit pre_checkin.sh script does no create the changes file by
+  default, so it can easily be used to recreate the KIWI files while testing
+  and debugging without requiring to commit anything. Also it only recreates
+  the KIWI files for the given product (caasp|kubic), kubic is the default if
+  none is given.
+
+- Commit aeddc59 by Nirmoy Das ndas@suse.de 
+
+  cilium: add awk in cilium container image
+
+  awk is used by cilium's init.sh
+
+- Commit a0a018b by Guillaume GARDET guillaume.gardet@free.fr 
+
+  Include glibc-devel-32bit only on x86_64
+
+- Commit ef1f101 by David Cassany dcassany@suse.de 
+
+  Add additional tags for images
+
+  With this commit images will be tagged with three different tags:
+  - <name>:<short_version>
+  - <name>:<long_version>
+  - <name>:<long_version>-<release>
+
+  With change there will be at least a unique tag per build and a semistable
+  tag, as the short_version is not expected to change within a distro release
+  cycle.
+
+- Commit 8e6eac7 by Michal Rostecki mrostecki@suse.de 
+
+  pre_checkin: Allow to define extra packages
+
+  This change allows to define extra packages per product (kubic, caasp) by
+  creating a file named `${product}-extra-packages` (i.e.
+  `kubic-extra-packages` or `caasp-extra-packages`). Kiwi template, in order
+  to support extra packages, has to contain
+  `_EXTRA_PACKAGES_` marker.
+
+  Signed-off-by: Michal Rostecki <mrostecki@suse.de>
+
+- Commit edee831 by David Cassany dcassany@suse.de 
+
+  Update pre_checkin.sh script
+
+  Now pre_checkin.sh script will ingore description generation for those
+  products missing changes file or new changelog entries.
+
+- Commit 995176f by David Cassany dcassany@suse.de 
+
+  Update pre_checkin.sh script
+
+  - Update caasp and kubic changes files
+  - The same changes format as for other kubic packages
+  - Exit on error: `set -e`
+
+- Commit 488929e by David Cassany dcassany@suse.de 
+
+  Generate *.changes file from git log in pre_checkin.sh script
+
+  With this commit a *.changes file is generated using the git-log tool 
+  formatted with the same template open build service tracks changes.
+
+- Commit 6d32f79 by David Cassany dcassany@suse.com 
+
+  Use correct image name and tag for SLE15 base image
+
+  With this commit the base image is set to suse/sle15:current for caasp
+  images, in line with SUSE:SLE-15:GA/sles15-image and bsc#1083671
+
+- Commit 95ca14f by David Cassany dcassany@suse.com 
+
+  Fix pre_checkin.sh typo
+
+- Commit dff2e43 by Nirmoy Das ndas@suse.de 
+
+  Add the Docker image for cilium

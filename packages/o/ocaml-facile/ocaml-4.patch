@@ -1,0 +1,57 @@
+--- a/lib/fcl_cstr.ml
++++ b/lib/fcl_cstr.ml
+@@ -50,7 +50,7 @@ let create ?(name = "anonymous") ?(nb_wa
+   and nb_solved = Fcl_stak.ref 0 in
+   let update i =
+     if update i then
+-      if Pervasives.not solved.(i) then begin
++      if solved.(i) == false then begin
+        	Fcl_stak.set nb_solved (Fcl_stak.get nb_solved + 1);
+        	array_set_true solved i
+       end in
+--- a/lib/fcl_misc.ml
++++ b/lib/fcl_misc.ml
+@@ -50,9 +50,9 @@ module Operators = struct
+     x - y
+ *)
+ 
+-  let (+) = Pervasives.(+)
+-  let (-) = Pervasives.(-)
+-  let ( * ) = Pervasives.( * )
++  let (+) = (+)
++  let (-) = (-)
++  let ( * ) = ( * )
+ 
+   let (=+) x y = x := !x + y
+   let (=+.) x y = x := !x +. y
+--- a/lib/fcl_nonlinear.ml
++++ b/lib/fcl_nonlinear.ml
+@@ -274,7 +274,7 @@ let min_max_of_div_for_div a b z =
+ let min_max_of_remainder x y =
+   let r_abs_max =
+     let min_y, max_y = Fd.min_max y in
+-    max (Pervasives.abs min_y) (Pervasives.abs max_y) - 1 in
++    max (abs min_y) (abs max_y) - 1 in
+   if Fd.min x >= 0 then (0, r_abs_max)
+   else if Fd.max x <= 0 then ((0 - r_abs_max), 0)
+   else ((0 - r_abs_max), r_abs_max)
+--- a/lib/fcl_sorting.ml
++++ b/lib/fcl_sorting.ml
+@@ -355,7 +355,7 @@ let sortp a =
+   else
+     let inf, sup =
+       Array.fold_left
+-      	(fun (inf, sup) x -> Pervasives.min (Fd.min x) inf, Pervasives.max (Fd.max x) sup) (max_int, min_int) a in
++      	(fun (inf, sup) x -> min (Fd.min x) inf, max (Fd.max x) sup) (max_int, min_int) a in
+     let d = Fd.array n inf sup
+     and p = Fd.array n 0 (n - 1) in
+     Fcl_cstr.post (cstr a ~p:(Some p) d);
+@@ -368,7 +368,7 @@ let sort a =
+   else
+     let inf, sup =
+       Array.fold_left
+-      	(fun (inf, sup) x -> Pervasives.min (Fd.min x) inf, Pervasives.max (Fd.max x) sup) (max_int, min_int) a in
++      	(fun (inf, sup) x -> min (Fd.min x) inf, max (Fd.max x) sup) (max_int, min_int) a in
+     let d = Fd.array n inf sup in
+     Fcl_cstr.post (cstr a d);
+     d;;

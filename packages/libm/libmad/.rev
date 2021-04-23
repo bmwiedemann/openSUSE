@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>98e2ad0d8793fa0f191e44b31a24e672</srcmd5>
+    <version>0.15.1b</version>
+    <time>1503593000</time>
+    <user>dimstar_suse</user>
+    <comment>Apparently libmad is now allowed, so restore it. This was rejected in SR#491354 and SR#505907</comment>
+    <requestid>513164</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ca276f5dcbce7fe9acadf734b6ce29ec</srcmd5>
+    <version>0.15.1b</version>
+    <time>1505237875</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>522871</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a0832ed27df61554b981cdb5c017ef9f</srcmd5>
+    <version>0.15.1b</version>
+    <time>1519307926</time>
+    <user>dimstar_suse</user>
+    <comment>- Add frame_length.diff from Debian to fix CVE-2017-8374
+  bsc#1036967</comment>
+    <requestid>578712</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,174 @@
+From: Enrico Tassi <gareuselesinge@debian.org>
+Date: Sun, 1 Mar 2015 16:13:52 +0100
+Subject: build system
+
+---
+ Makefile     | 25 ++++++++++++++-----------
+ src/Makefile | 31 +++++++++++++++++++------------
+ 2 files changed, 33 insertions(+), 23 deletions(-)
+
+Index: lua-5.1.5/Makefile
+===================================================================
+--- lua-5.1.5.orig/Makefile
++++ lua-5.1.5/Makefile
+@@ -2,6 +2,8 @@
+ # see INSTALL for installation instructions
+ # see src/Makefile and src/luaconf.h for further customization
+ 
++export LIBTOOL=libtool --quiet
++
+ # == CHANGE THE SETTINGS BELOW TO SUIT YOUR ENVIRONMENT =======================
+ 
+ # Your platform. See PLATS for possible values.
+@@ -9,22 +11,23 @@ PLAT= none
+ 
+ # Where to install. The installation starts in the src and doc directories,
+ # so take care if INSTALL_TOP is not an absolute path.
+-INSTALL_TOP= /usr/local
++INSTALL_TOP= /usr/
+ INSTALL_BIN= $(INSTALL_TOP)/bin
+-INSTALL_INC= $(INSTALL_TOP)/include
++INSTALL_INC= $(INSTALL_TOP)/include/lua$(V)/
+ INSTALL_LIB= $(INSTALL_TOP)/lib
+-INSTALL_MAN= $(INSTALL_TOP)/man/man1
++INSTALL_MAN= $(INSTALL_TOP)/share/man/man1
+ #
+ # You probably want to make INSTALL_LMOD and INSTALL_CMOD consistent with
+ # LUA_ROOT, LUA_LDIR, and LUA_CDIR in luaconf.h (and also with etc/lua.pc).
+ INSTALL_LMOD= $(INSTALL_TOP)/share/lua/$V
+-INSTALL_CMOD= $(INSTALL_TOP)/lib/lua/$V
++INSTALL_CMOD= $(INSTALL_LIB)/lua/$V
+ 
+ # How to install. If your install program does not support "-p", then you
+ # may have to run ranlib on the installed liblua.a (do "make ranlib").
+ INSTALL= install -p
+ INSTALL_EXEC= $(INSTALL) -m 0755
+ INSTALL_DATA= $(INSTALL) -m 0644
++INSTALL_LIBTOOL= $(LIBTOOL) --mode=install install -m 0644
+ #
+ # If you don't have install you can use cp instead.
+ # INSTALL= cp -p
+@@ -41,10 +44,10 @@ RANLIB= ranlib
+ PLATS= aix ansi bsd freebsd generic linux macosx mingw posix solaris
+ 
+ # What to install.
+-TO_BIN= lua luac
++TO_BIN= lua$(V) luac$(V)
+ TO_INC= lua.h luaconf.h lualib.h lauxlib.h ../etc/lua.hpp
+-TO_LIB= liblua.a
+-TO_MAN= lua.1 luac.1
++TO_LIB= liblua$(V).la
++TO_MAN= lua$(V).1 luac$(V).1
+ 
+ # Lua version and release.
+ V= 5.1
+@@ -53,16 +56,16 @@ R= 5.1.5
+ all:	$(PLAT)
+ 
+ $(PLATS) clean:
+-	cd src && $(MAKE) $@
++	cd src && $(MAKE) $@ V=$(V)
+ 
+ test:	dummy
+-	src/lua test/hello.lua
++	$(LIBTOOL) --mode=execute -dlopen src/liblua$(V).la src/lua$(V) -v
+ 
+ install: dummy
+ 	cd src && $(MKDIR) $(INSTALL_BIN) $(INSTALL_INC) $(INSTALL_LIB) $(INSTALL_MAN) $(INSTALL_LMOD) $(INSTALL_CMOD)
+ 	cd src && $(INSTALL_EXEC) $(TO_BIN) $(INSTALL_BIN)
+ 	cd src && $(INSTALL_DATA) $(TO_INC) $(INSTALL_INC)
+-	cd src && $(INSTALL_DATA) $(TO_LIB) $(INSTALL_LIB)
++	cd src && $(INSTALL_LIBTOOL) $(TO_LIB) $(INSTALL_LIB)
+ 	cd doc && $(INSTALL_DATA) $(TO_MAN) $(INSTALL_MAN)
+ 
+ ranlib:
+Index: lua-5.1.5/src/Makefile
+===================================================================
+--- lua-5.1.5.orig/src/Makefile
++++ lua-5.1.5/src/Makefile
+@@ -8,7 +8,7 @@
+ PLAT= none
+ 
+ CC= gcc
+-CFLAGS= -O2 -Wall $(MYCFLAGS)
++CFLAGS= -Wall $(MYCFLAGS)
+ AR= ar rcu
+ RANLIB= ranlib
+ RM= rm -f
+@@ -16,24 +16,28 @@ LIBS= -lm $(MYLIBS)
+ 
+ MYCFLAGS=
+ MYLDFLAGS=
+-MYLIBS=
++MYLIBS=-ldl
++
++%.o : %.c
++	$(LIBTOOL) --mode=compile --tag=CC $(CC) $(CFLAGS) -c $< -o $@
+ 
+ # == END OF USER SETTINGS. NO NEED TO CHANGE ANYTHING BELOW THIS LINE =========
+ 
+ PLATS= aix ansi bsd freebsd generic linux macosx mingw posix solaris
+ 
+-LUA_A=	liblua.a
++LUA_A=	liblua$(V).a
+ CORE_O=	lapi.o lcode.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o lmem.o \
+ 	lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o ltm.o  \
+-	lundump.o lvm.o lzio.o
++	lundump.o lvm.o lzio.o print.o
+ LIB_O=	lauxlib.o lbaselib.o ldblib.o liolib.o lmathlib.o loslib.o ltablib.o \
+ 	lstrlib.o loadlib.o linit.o
++BASE_O= $(CORE_O) $(LIB_O)
+ 
+-LUA_T=	lua
++LUA_T=	lua$(V)
+ LUA_O=	lua.o
+ 
+-LUAC_T=	luac
+-LUAC_O=	luac.o print.o
++LUAC_T=	luac$(V)
++LUAC_O=	luac.o
+ 
+ ALL_O= $(CORE_O) $(LIB_O) $(LUA_O) $(LUAC_O)
+ ALL_T= $(LUA_A) $(LUA_T) $(LUAC_T)
+@@ -48,14 +52,13 @@ o:	$(ALL_O)
+ a:	$(ALL_A)
+ 
+ $(LUA_A): $(CORE_O) $(LIB_O)
+-	$(AR) $@ $(CORE_O) $(LIB_O)	# DLL needs all object files
+-	$(RANLIB) $@
++	$(LIBTOOL) --mode=link --tag=CC  $(CC)  $(LDFLAGS) -lm -ldl $(BASE_O:.o=.lo) -rpath /usr/lib -version-info 6:0:1 -o liblua$(V).la
+ 
+ $(LUA_T): $(LUA_O) $(LUA_A)
+-	$(CC) -o $@ $(MYLDFLAGS) $(LUA_O) $(LUA_A) $(LIBS)
++	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) $(LIBS) -static liblua$(V).la -Wl,-E lua.lo -o $@
+ 
+ $(LUAC_T): $(LUAC_O) $(LUA_A)
+-	$(CC) -o $@ $(MYLDFLAGS) $(LUAC_O) $(LUA_A) $(LIBS)
++	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) -static liblua$(V).la luac.lo -o $@
+ 
+ clean:
+ 	$(RM) $(ALL_T) $(ALL_O)
+Index: lua-5.1.5/src/luaconf.h
+===================================================================
+--- lua-5.1.5.orig/src/luaconf.h
++++ lua-5.1.5/src/luaconf.h
+@@ -95,13 +95,17 @@
+ 
+ #else
+ #define LUA_ROOT	"/usr/local/"
++#define LUA_ROOT2	"/usr/"
+ #define LUA_LDIR	LUA_ROOT "share/lua/5.1/"
++#define LUA_LDIR2	LUA_ROOT2 "share/lua/5.1/"
+ #define LUA_CDIR	LUA_ROOT "lib/lua/5.1/"
++#define LUA_CDIR2	LUA_ROOT2 "lib/lua/5.1/"
+ #define LUA_PATH_DEFAULT  \
+ 		"./?.lua;"  LUA_LDIR"?.lua;"  LUA_LDIR"?/init.lua;" \
+-		            LUA_CDIR"?.lua;"  LUA_CDIR"?/init.lua"
++		            LUA_CDIR"?.lua;"  LUA_CDIR"?/init.lua;" \
++			    LUA_LDIR2"?.lua;"  LUA_LDIR2"?/init.lua"
+ #define LUA_CPATH_DEFAULT \
+-	"./?.so;"  LUA_CDIR"?.so;" LUA_CDIR"loadall.so"
++	"./?.so;" LUA_CDIR"?.so;" LUA_CDIR2"?.so;" LUA_CDIR"loadall.so"
+ #endif
+ 
+ 

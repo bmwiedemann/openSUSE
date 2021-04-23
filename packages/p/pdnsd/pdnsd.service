@@ -1,0 +1,11 @@
+[Unit]
+Description=Caching DNS proxy
+Documentation=man:pdnsd(8)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/pdnsd
+
+[Install]
+WantedBy=multi-user.target

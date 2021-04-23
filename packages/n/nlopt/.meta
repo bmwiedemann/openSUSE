@@ -1,0 +1,6 @@
+<package name="nlopt" project="openSUSE:Factory">
+  <title>A library for nonlinear optimization</title>
+  <description>NLopt is a free/open-source library for nonlinear optimization, providing a common interface for a number of different free
+optimization routines available online as well as original implementations of various other algorithms.</description>
+  <devel project="science" package="nlopt"/>
+</package>

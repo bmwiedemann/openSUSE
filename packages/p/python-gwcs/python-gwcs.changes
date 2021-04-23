@@ -1,0 +1,94 @@
+-------------------------------------------------------------------
+Thu Feb 11 10:24:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Actually do the update to 0.16.1 m-)
+- Skip schema tests not tolerating any deprecation warnings from
+  numpy 1.20 -- Already fixed upstream, but patch is too
+  unspecific gh#spacetelescope/gwcs#353
+
+-------------------------------------------------------------------
+Mon Jan 18 00:46:44 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.16.1
+  * Fix a regression with pixel_to_world for output frames with one
+    axis. [#342]
+- Skip python36 because python36-astropy is not available.
+
+-------------------------------------------------------------------
+Sat Dec 19 00:24:06 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to 0.16.0
+  * Added an option to to_fits_sip() to be able to specify the 
+    reference point (crpix) of the FITS WCS. [#337]
+  * Added support for providing custom range of degrees in 
+    to_fits_sip. [#339]
+  * Bounding_box now works with tuple of Quantities. [#331]
+  * Fix a formula for estimating crpix in to_fits_sip() so that 
+    crpix is near the center of the bounding box. [#337]
+  * Allow sub-pixel sampling of the WCS model when computing SIP 
+    approximation in to_fits_sip(). [#338]
+  * Fixed a bug in to_fits_sip due to which inv_degree was 
+    ignored. [#339]
+- 0.15.0 changelog
+  * Added insert_frame method to modify the pipeline of a 
+    WCS object. [#299]
+  * Added to_fits_tab method to generate FITS header and binary 
+    table extension following FITS WCS -TAB convention. [#295]
+  * Added in_image function for testing whether a point in world 
+    coordinates maps back to the domain of definition of the 
+    forward transformation. [#322]
+  * Implemented iterative inverse for imaging WCS. [#324]
+- 0.14.0 changelog
+  * Updated versions of schemas for gwcs objects based on 
+    latest versions of transform schemas in asdf-standard. 
+    [#307]
+  * Added a wcs.Step class to allow serialization to ASDF to 
+    use references. [#317]
+  * WCS.pipeline now is a list of Step instances instead of 
+    a (frame, transform) tuple. Use WCS.pipeline.transform and 
+    WCS.pipeline.frame to access them. [#319]
+  * Fix a bug in polygon fill for zero-width bounding boxes. 
+    [#293]
+  * Add an optional parameter input_frame to 
+    ``wcstools.wcs_from_fiducial`. [#312]
+
+-------------------------------------------------------------------
+Mon Jun  8 13:14:28 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.13.0
+  - Added two new transforms - ``SphericalToCartesian`` and
+  ``CartesianToSpherical``. [#275, #284, #285]
+  - Added ``to_fits_sip`` method to generate FITS header with SIP keywords [#286]
+  - Added ``get_ctype_from_ucd`` function. [#288]
+  - Fixed an off by one issue in ``utils.make_fitswcs_transform``. [#290]
+
+-------------------------------------------------------------------
+Mon Jan  6 15:57:28 UTC 2020 - Todd R <toddrme2178@gmail.com>
+
+- Update to 0.12.0
+  + New Features
+    * ``gwcs.WCS`` now supports the ``world_axis_object_components`` and
+      ``world_axis_object_classes`` methods of the low level WCS API as specified by
+      APE 14.
+    * Removed astropy-helpers from package.
+    * Added a method ``fix_inputs`` which rturns an unique WCS from a compound
+      WCS by fixing inputs.
+    * Added two new transforms - ``ToDirectionCosines`` and ``FromDirectionCosines``.
+    * Added new transforms ``WavelengthFromGratingEquation``, ``AnglesFromGratingEquation3D``.
+    * ``gwcs.WCS`` now supports the new ``world_axis_names`` and
+      ``pixel_axis_names`` properties on ``LowLevelWCS`` objects.
+    * Update the ``StokesFrame`` to work for arrays of coordinates and integrate
+      with APE 14.
+    * Added ``Snell3D``, ``SellmeierGlass`` and ``SellmeierZemax`` transforms.
+  + API Changes
+    * Changed the initialization of ``TemporalFrame`` to be consistent with other
+       coordinate frames.
+  + Bug Fixes
+    * Ensure that ``world_to_pixel_values`` and ``pixel_to_world_values`` always
+      accept and return floats, even if the underlying transform uses units.
+- Drop python2 subpackage due to dependencies dropping python2.
+
+-------------------------------------------------------------------
+Sat Sep 14 10:01:43 UTC 2019 - Benjamin Greiner <code@bnavigator.de>
+
+- initial spec 

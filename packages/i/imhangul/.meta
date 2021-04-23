@@ -1,0 +1,5 @@
+<package name="imhangul" project="openSUSE:Factory">
+  <title>GTK+-2.0 Hangul Input Modules</title>
+  <description>GTK+-2.0 Hangul input modules.</description>
+  <devel project="M17N" package="imhangul"/>
+</package>

@@ -1,0 +1,13 @@
+Index: nose2-0.9.1/setup.py
+===================================================================
+--- nose2-0.9.1.orig/setup.py
++++ nose2-0.9.1/setup.py
+@@ -32,7 +32,7 @@ setup(
+         # mock on py2, py3.4 and py3.5
+         # not just py2: py3 versions of mock don't all have the same
+         # interface and this can cause issues
+-        'mock==2.0.0;python_version<"3.6"',
++        'mock>=2.0.0;python_version<"3.6"',
+     ],
+     extras_require={
+         "coverage_plugin": ["coverage>=4.4.1"],

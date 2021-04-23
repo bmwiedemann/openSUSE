@@ -1,0 +1,108 @@
+-------------------------------------------------------------------
+Sun Jun 10 08:48:14 UTC 2018 - antoine.belvire@opensuse.org
+
+- Update to version 2018.1.
+  * Synchronization of batman-adv netlink and packet headers.
+  * Add DAT cache and multicast flags netlink support.
+  * Disable translation support for non-unicast mac addresses.
+
+-------------------------------------------------------------------
+Sat Nov  4 21:26:24 UTC 2017 - aavindraa@gmail.com
+
+- Update to version 2017.3
+  * See the following for all changes:
+    https://www.open-mesh.org/projects/open-mesh/news
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jan  5 14:50:19 UTC 2017 - p.drouand@gmail.com
+
+- Update to version 2016.5
+  * reimplement traceroute/ping commands in userspace without debugfs
+  * switch interface manipulation from (legacy) sysfs to rtnetlink
+  * coding style cleanups
+- Changes from version 2016.4
+  * integrate support for batman-adv netlink
+  * coding style cleanups
+  * documentation updates
+  * bugs squashed:
+    - fix endless loop in TP meter on some platforms
+    - fix build errors caused by name conflicts
+
+-------------------------------------------------------------------
+Fri Oct 21 18:52:23 UTC 2016 - p.drouand@gmail.com
+
+- Update to version 2016.3
+  * synchronize common headers with batman-adv
+  * support multicast logging and debug table
+  * split tcpdump OGM packet filter in OGM and OGMv2 filter
+  * add infrastructure to communicate with batadv netlink family
+  * integrate command to control new kernel throughput meter
+
+-------------------------------------------------------------------
+Wed Feb 10 19:03:07 UTC 2016 - p.drouand@gmail.com
+
+- Update to version 2016.0 
+  * No changelog available
+
+-------------------------------------------------------------------
+Thu Aug 27 12:16:38 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2015.1
+  * No changelog available
+
+-------------------------------------------------------------------
+Sun Jul 26 13:42:50 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2015.0
+  * No changelog available
+
+-------------------------------------------------------------------
+Mon Mar 30 14:29:47 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 2014.4.0
+  * No ChangeLog available
+
+-------------------------------------------------------------------
+Mon Dec 22 15:22:29 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 2014.3.0
+  + support latest kernels (2.6.29 - 3.16)
+  + drop QinQ claim frames in bridge loop avoidance
+  + fix a bogus warning from batadv_is_on_batman_iface()
+  + removed SET_ETHTOOL_OPS
+  + style improvements:
+   * remove semi-colon after macro definition
+   * add blank line between declarations and the rest of the code
+- Add make dependencies to pkg-config and pkgconfig(libnl-3.0);
+  new upstream requirements
+- Fix Url to batctl homepage
+- Use download Url as source
+
+-------------------------------------------------------------------
+Sat Dec  8 20:51:08 UTC 2012 - p.drouand@gmail.com
+
+- Update to 2012.4.0 version:
+  * now maintains a list of optional features and informs the user 
+    about a possibly deactivated optional feature.
+  * the sysfs / debugfs code has been refactored to remove redundant 
+    boilerplate code.
+  * option to display the newly added backbone gateway table
+
+-------------------------------------------------------------------
+Mon Feb 13 10:44:28 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Sat Sep 17 19:13:45 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+------------------------------------------------------------------
+Tue May 24 15:55:00 UTC 2011 - gregkh@suse.de
+
+ - initial creation of the batctl package, based on 2011.1.0 release.
+
+------------------------------------------------------------------

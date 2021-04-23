@@ -1,0 +1,157 @@
+-------------------------------------------------------------------
+Mon Feb  1 18:19:31 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.2:
+  * Travis CI: Test on 3.9 final, remove 3.8
+  * Toward matching Python standard library output for float
+  * Fix errors on reading long decimal floats
+  * Fix #429: Make empty dict/list indented serialization match stdlib json
+  * Fix dealing with None types
+ 
+-------------------------------------------------------------------
+Thu Nov 26 08:33:12 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 4.0.1:
+  * Fix UnicodeDecodeError on arm64/aarch64
+  * Add support for Python 3.9
+  * Drop support for EOL Python 3.5
+  * Make PEP 384 compliant 
+
+-------------------------------------------------------------------
+Mon Aug  3 05:24:24 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.1.0:
+  * PEP 489 Multi Phase Init support (#418) @WillAyd
+  * PyPy3 test fixes (#413) @mgorny
+
+-------------------------------------------------------------------
+Sun Jun 14 09:36:42 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * Build Windows, macOS and manylinux wheels on CI and deploy to PyPI
+  * Breaking change: New reject_bytes option to raise on bytes,
+   defaults to True to align with json library. Set to False for
+   old behaviour (#266) @elelay
+  * Breaking change: Add an allow_nan keyword argument to dumps,
+  defaults to True to align with json library. Set to False for old
+  behaviour (#327) @segfault
+  Specify setuptools_scm config in pyproject.toml (#399) @BenjaminSchubert
+  * Remove python 2.x support
+
+-------------------------------------------------------------------
+Sat Mar 28 16:22:49 UTC 2020 - Arun Persaud <arun@gmx.de>
+
+- update to version 2.0.3:
+  * Changed
+    + Drop legacy distutils in setup.py (#397) @hugovk
+    + Update benchmarking (#395) @hugovk
+  * Fixed
+    + Decrease dict key reference (#394) @suola
+    + Remove double_precision and precise_float from help text (#389)
+      @JTJL
+
+-------------------------------------------------------------------
+Sun Mar 15 19:44:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- update to version 2.0.2
+  Fix serialization issue (#382)
+- reactivate Python 2 build 
+
+-------------------------------------------------------------------
+Tue Mar 10 13:37:34 UTC 2020 - pgajdos@suse.com
+
+- version update to 2.0.1
+  Added
+    Include license file in manifest (#288) @kszucs
+    added "static" to C functions, where possible (#238) @WGH-
+    bring back benchmark introduction (#234) @rdpate
+    Add syntax highlighting to README (#255) @adamchainz
+    Test on new Travis CPUs (#350) @hugovk
+    Test on GitHub Actions (#348) @hugovk
+    Test on Python 3.9-dev to avoid surprises (#349) @hugovk
+    Use Release Drafter to draft releases (#365) @hugovk
+    Deploy from GitHub Actions instead of Travis CI (#364) @hugovk
+    Autodeploy to PyPI from Travis CI (#357) @hugovk
+    Lint with pre-commit: Black, isort, Flake8 (#354) @hugovk
+  Changed
+    Use Google's double-conversion lib to fix floating-point precision when converting doubles to and from strings, improves double encoding by 4-5x (eb7d894) @Jahaja
+    Reduce default buffer on stack size (#281) @ncopa
+    Update ultrajsondec.c (#260) @markpiekarz
+    Indent dict values (#217) @orivej
+    Test with pytest (#363) @hugovk
+    Less Travis (#361) @hugovk
+    Update links (#356) @hugovk
+    Tests: Remove unused, unmaintained blist (#362) @hugovk
+    Only deploy sdist from Travis CI (#359) @hugovk
+  Removed
+    Drop EOL Python 2.5-2.6, 3.2-3.4 and add 3.7-3.8 (#298) @hugovk
+    Remove serialization of date/datetime objects (50181f0) @Jahaja
+    Remove double_precision encoding option and precise_float decoding option (eb7d894) @Jahaja
+    Remove generic serialization of objects/iterables (53f85b1) @Jahaja
+    Remove support for __json__ method on str (5f98f01) @Jahaja
+    Remove blist tests (3a6ba52) @Jahaja
+  Fixed
+    Fix for sort_keys bug and a typo (870ee48) @Jahaja
+    Fix for overflowing long causing invalid JSON (409c6d4) @Jahaja
+    Following std JSON handling of None dict key (ac4637f)
+    Fix for incorrect order when using OrderedDict (c9f8318) @Jahaja
+    Fix reference counting bug for dict values (#353) @richafrank
+    Fix a couple of memory leaks. (#257) @borman
+    Correct JSON decoding implementation to die on trailing commas in Objects (#323) @timdawborn
+    fixup dconv_wrapper linkage (#312) @tclh123
+    Fix Warning: 'classifiers' should be a list, got type 'filter' (#351) @hugovk
+    Remove redundant license parameter (#341) @blag
+    do not forcefully remove the build directory manually (fix #179) (#207) @anthraxx
+    Merged pull request to fix memory leak. (#1) @Adriandorr
+    http -> https (#299) @hugovk
+- added patches
+  fix unbundle double-conversion
+  + python-ujson-system-double-conversion.patch
+- deleted patches
+  - do_not_remove_build_directory_manually.patch (upstreamed)
+  - no-unittest2.patch (upstreamed)
+  - ujson-1.35-fix-for-overflowing-long.patch (upstreamed)
+  - ujson-1.35-fix-ordering-of-orderdict.patch (upstreamed)
+  - ujson-1.35-sort_keys-segfault.patch (upstreamed)
+  - ujson-1.35-standard-handling-of-none.patch (upstreamed)
+  - ujson-1.35-test-depricationwarning.patch (upstreamed)
+  - ujson-1.35-use-static-where-possible.patch (upstreamed)
+
+-------------------------------------------------------------------
+Sun May 12 13:09:01 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Apply six patches from Gentoo:
+  * ujson-1.35-fix-for-overflowing-long.patch
+  * ujson-1.35-fix-ordering-of-orderdict.patch
+  * ujson-1.35-sort_keys-segfault.patch
+  * ujson-1.35-standard-handling-of-none.patch
+  * ujson-1.35-test-depricationwarning.patch
+  * ujson-1.35-use-static-where-possible.patch
+
+-------------------------------------------------------------------
+Fri Aug 10 11:15:14 UTC 2018 - tchvatal@suse.com
+
+- Do not depend on unittest2 it is not needed:
+  * no-unittest2.patch
+- Really execute the tests
+
+-------------------------------------------------------------------
+Wed Apr 26 03:28:07 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version
+- Fix source URL
+- Run tests
+- Add do_not_remove_build_directory_manually.patch
+  This avoids deleting build directories that the single-spec
+  macro system needs.
+
+-------------------------------------------------------------------
+Fri Dec 16 11:52:13 UTC 2016 - jengelh@inai.de
+
+- Replace filler words in description
+
+-------------------------------------------------------------------
+Fri Dec 16 09:48:29 UTC 2016 - tbechtold@suse.com
+
+- Initial packaging (version 1.35)
+

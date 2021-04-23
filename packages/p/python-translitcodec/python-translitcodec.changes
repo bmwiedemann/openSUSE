@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Wed Mar 11 10:05:10 UTC 2020 - pgajdos@suse.com
+
+- version update to 0.5.2
+  - Install package with setuptools
+  - Add python_requires to prevent installation with Python 2 packages
+  - Complete coverage of the Vietnamese alphabet
+  - Removed Python 2 support
+
+-------------------------------------------------------------------
+Thu Apr 18 15:51:20 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Convert to single spec
+- Add %license
+- Update to v0.4.0
+  * Added Python 3 compatibility
+
+-------------------------------------------------------------------
+Mon Jul 23 11:10:34 UTC 2012 - saschpe@suse.de
+
+- Initial version for v0.3
+

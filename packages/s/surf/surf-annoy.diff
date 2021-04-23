@@ -1,0 +1,288 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2011-09-25 19:01:22.292644447 +0200
+Upstream: dead?
+
+Don't flail with object files, use sources. Do not override
+commands, but use if/endif properly.
+
+---
+ Makefile.am               |   44 ++++++++++++++++++++++----------------------
+ Makefile.global           |    4 ++--
+ acinclude.m4              |   12 ++++++------
+ curve/Makefile.am         |    2 +-
+ debug/Makefile.am         |    2 +-
+ dither/Makefile.am        |    2 +-
+ draw/Makefile.am          |    2 +-
+ drawfunc/Makefile.am      |    2 +-
+ gtkgui/Makefile.am        |    4 ++--
+ image-formats/Makefile.am |    2 +-
+ misc/Makefile.am          |    4 ++--
+ mt/Makefile.am            |    2 +-
+ src/Makefile.am           |    2 +-
+ yaccsrc/Makefile.am       |    2 +-
+ 14 files changed, 43 insertions(+), 43 deletions(-)
+
+Index: surf-1.0.6/Makefile.am
+===================================================================
+--- surf-1.0.6.orig/Makefile.am
++++ surf-1.0.6/Makefile.am
+@@ -1,30 +1,32 @@
++include Makefile.global
++
+ AUTOMAKE_OPTIONS = foreign 1.4
+ 
+-DITHER_OBJ = dither/dither_brute.o dither/dither_clustered.o dither/dither_dispersed.o dither/dither_floyd_steinberg.o dither/dither_jarvis_judis_ninke.o dither/dither_stucki.o dither/dither_dot_diffusion.o dither/dither_smooth_dot_diffusion.o dither/copy_rgb_to_float.o dither/copy_rgb_to_float_curve.o dither/dither_pixel_radius_adjust.o
++DITHER_OBJ = dither/dither_brute.cc dither/dither_clustered.cc dither/dither_dispersed.cc dither/dither_floyd_steinberg.cc dither/dither_jarvis_judis_ninke.cc dither/dither_stucki.cc dither/dither_dot_diffusion.cc dither/dither_smooth_dot_diffusion.cc dither/copy_rgb_to_float.cc dither/copy_rgb_to_float_curve.cc dither/dither_pixel_radius_adjust.cc
+ 
+-DEBUG_OBJ = debug/debug.o
++DEBUG_OBJ = debug/debug.cc
+ 
+-MISC_OBJ = misc/welcomeMessage.o misc/Misc.o misc/mystrdup.o
++MISC_OBJ = misc/welcomeMessage.cc misc/Misc.cc misc/mystrdup.cc
+ 
+-DRAW_OBJ = draw/NewClip.o draw/NewClipSphere.o draw/NewClipSphereCentral.o draw/NewClipSphereParallel.o draw/NewClipAlgebraic.o draw/NewClipAlgebraicCube.o draw/NewClipAlgebraicTetra.o draw/NewClipAlgebraicOcta.o draw/NewClipAlgebraicDode.o draw/NewClipAlgebraicIco.o draw/NewClipAlgebraicCyl.o draw/NewClipAlgebraicUser.o draw/NewSimpleClip.o draw/SurfaceCalc.o
++DRAW_OBJ = draw/NewClip.cc draw/NewClipSphere.cc draw/NewClipSphereCentral.cc draw/NewClipSphereParallel.cc draw/NewClipAlgebraic.cc draw/NewClipAlgebraicCube.cc draw/NewClipAlgebraicTetra.cc draw/NewClipAlgebraicOcta.cc draw/NewClipAlgebraicDode.cc draw/NewClipAlgebraicIco.cc draw/NewClipAlgebraicCyl.cc draw/NewClipAlgebraicUser.cc draw/NewSimpleClip.cc draw/SurfaceCalc.cc
+ 
+-MT_OBJ = mt/GuiThread.o mt/Thread.o mt/TSDrawingArea.o mt/cthread.o
++MT_OBJ = mt/GuiThread.cc mt/Thread.cc mt/TSDrawingArea.cc mt/cthread.cc
+ 
+ if CUPS
+-GTKGUI_OBJ = gtkgui/start.o gtkgui/MainWindowController.o gtkgui/mycolor.o gtkgui/TextWidget.o gtkgui/showAbout.o gtkgui/ProgressDialog.o gtkgui/ColorWindow.o gtkgui/DrawingArea.o gtkgui/PositionWindow.o gtkgui/ConfigurationWindow.o gtkgui/NumericWindow.o gtkgui/ColorSelectionButton.o gtkgui/IlluminationWindow.o gtkgui/Requester.o gtkgui/DisplayWindow.o gtkgui/WidgetReadWriter.o gtkgui/DitherWindow.o gtkgui/ClipWindow.o gtkgui/Document.o gtkgui/RGBToStandard.o gtkgui/mygtk.o gtkgui/SaveImageDialog.o gtkgui/PrintImageDialog.o
++GTKGUI_OBJ = gtkgui/start.cc gtkgui/MainWindowController.cc gtkgui/mycolor.cc gtkgui/TextWidget.cc gtkgui/showAbout.cc gtkgui/ProgressDialog.cc gtkgui/ColorWindow.cc gtkgui/DrawingArea.cc gtkgui/PositionWindow.cc gtkgui/ConfigurationWindow.cc gtkgui/NumericWindow.cc gtkgui/ColorSelectionButton.cc gtkgui/IlluminationWindow.cc gtkgui/Requester.cc gtkgui/DisplayWindow.cc gtkgui/WidgetReadWriter.cc gtkgui/DitherWindow.cc gtkgui/ClipWindow.cc gtkgui/Document.cc gtkgui/RGBToStandard.cc gtkgui/mygtk.cc gtkgui/SaveImageDialog.cc gtkgui/PrintImageDialog.cc
+ else
+-GTKGUI_OBJ = gtkgui/start.o gtkgui/MainWindowController.o gtkgui/mycolor.o gtkgui/TextWidget.o gtkgui/showAbout.o gtkgui/ProgressDialog.o gtkgui/ColorWindow.o gtkgui/DrawingArea.o gtkgui/PositionWindow.o gtkgui/ConfigurationWindow.o gtkgui/NumericWindow.o gtkgui/ColorSelectionButton.o gtkgui/IlluminationWindow.o gtkgui/Requester.o gtkgui/DisplayWindow.o gtkgui/WidgetReadWriter.o gtkgui/DitherWindow.o gtkgui/ClipWindow.o gtkgui/Document.o gtkgui/RGBToStandard.o gtkgui/mygtk.o gtkgui/SaveImageDialog.o
++GTKGUI_OBJ = gtkgui/start.cc gtkgui/MainWindowController.cc gtkgui/mycolor.cc gtkgui/TextWidget.cc gtkgui/showAbout.cc gtkgui/ProgressDialog.cc gtkgui/ColorWindow.cc gtkgui/DrawingArea.cc gtkgui/PositionWindow.cc gtkgui/ConfigurationWindow.cc gtkgui/NumericWindow.cc gtkgui/ColorSelectionButton.cc gtkgui/IlluminationWindow.cc gtkgui/Requester.cc gtkgui/DisplayWindow.cc gtkgui/WidgetReadWriter.cc gtkgui/DitherWindow.cc gtkgui/ClipWindow.cc gtkgui/Document.cc gtkgui/RGBToStandard.cc gtkgui/mygtk.cc gtkgui/SaveImageDialog.cc
+ endif
+ 
+-CURVE_OBJ = curve/RBTree.o curve/resultant.o curve/RootFinder2d.o curve/RootFinder3d.o curve/DrawCurve.o curve/BigInteger.o
++CURVE_OBJ = curve/RBTree.cc curve/resultant.cc curve/RootFinder2d.cc curve/RootFinder3d.cc curve/DrawCurve.cc curve/BigInteger.cc
+ 
+-DRAWFUNC_OBJ =  drawfunc/Bezier.o drawfunc/Clip.o drawfunc/DrawfuncData.o drawfunc/DrawFunc.o drawfunc/Hornergroup.o drawfunc/Horner.o drawfunc/MappingMatrix.o drawfunc/MultiVariatePolynom.o drawfunc/Position.o drawfunc/Sturmchain.o drawfunc/UniVariatePolynom.o drawfunc/Vector.o drawfunc/HornergroupXY.o drawfunc/HornergroupXYZ.o drawfunc/RationalHornerXY.o
++DRAWFUNC_OBJ =  drawfunc/Bezier.cc drawfunc/Clip.cc drawfunc/DrawfuncData.cc drawfunc/DrawFunc.cc drawfunc/Hornergroup.cc drawfunc/Horner.cc drawfunc/MappingMatrix.cc drawfunc/MultiVariatePolynom.cc drawfunc/Position.cc drawfunc/Sturmchain.cc drawfunc/UniVariatePolynom.cc drawfunc/Vector.cc drawfunc/HornergroupXY.cc drawfunc/HornergroupXYZ.cc drawfunc/RationalHornerXY.cc
+ 
+-IMAGE_OBJ =  image-formats/eps.o image-formats/ps.o image-formats/sun.o image-formats/tiffprint.o image-formats/xbitmap.o image-formats/xwd.o image-formats/jpeg.o
++IMAGE_OBJ =  image-formats/eps.cc image-formats/ps.cc image-formats/sun.cc image-formats/tiffprint.cc image-formats/xbitmap.cc image-formats/xwd.cc image-formats/jpeg.cc
+ 
+-SRC_OBJ = src/RGBToNetscape.o src/compfn.o src/cube.o src/float_buffer.o src/gui_config.o src/init_parser.o src/main.o src/oct_quan.o src/RgbBuffer.o src/roots.o src/bit_buffer.o src/SurfaceDataStruct.o src/CanvasDataStruct.o src/symtab.o src/WindowGeometry.o src/antialiasing_factor.o src/stop.o src/Options.o
++SRC_OBJ = src/RGBToNetscape.cc src/compfn.cc src/cube.cc src/float_buffer.cc src/gui_config.cc src/init_parser.cc src/main.cc src/oct_quan.cc src/RgbBuffer.cc src/roots.cc src/bit_buffer.cc src/SurfaceDataStruct.cc src/CanvasDataStruct.cc src/symtab.cc src/WindowGeometry.cc src/antialiasing_factor.cc src/stop.cc src/Options.cc
+ 
+-YACCSRC_OBJ = yaccsrc/bezierarith.o yaccsrc/hornerarith.o yaccsrc/monomarith.o yaccsrc/mymemory.o yaccsrc/polyarith.o yaccsrc/polylex.o yaccsrc/polyroot.o yaccsrc/polyyacc.o yaccsrc/simple.o yaccsrc/polyx.o yaccsrc/lexfunc.o yaccsrc/SymbolTable.o yaccsrc/addDefaultSymbols.o yaccsrc/Script.o yaccsrc/ExecuteScriptStruct.o
++YACCSRC_OBJ = yaccsrc/bezierarith.cc yaccsrc/hornerarith.cc yaccsrc/monomarith.cc yaccsrc/mymemory.cc yaccsrc/polyarith.cc yaccsrc/polylex.c yaccsrc/polyroot.cc yaccsrc/polyyacc.c yaccsrc/simple.cc yaccsrc/polyx.cc yaccsrc/lexfunc.cc yaccsrc/SymbolTable.cc yaccsrc/addDefaultSymbols.cc yaccsrc/Script.cc yaccsrc/ExecuteScriptStruct.cc
+ 
+ 
+ LOCAL_OBJECTS = $(CURVE_OBJ) $(BALLS_OBJ) $(MISC_OBJ) $(DRAWFUNC_OBJ) $(IMAGE_OBJ) $(SRC_OBJ) $(YACCSRC_OBJ) $(MT_OBJ) $(DRAW_OBJ) $(DEBUG_OBJ) $(DITHER_OBJ)
+@@ -37,21 +39,19 @@ SUBDIRS = yaccsrc src image-formats draw
+ endif
+ 
+ bin_PROGRAMS = surf
+-surf_SOURCES = 
++surf_SOURCES = ${LOCAL_OBJECTS}
++if GUI
++surf_SOURCES += ${GTKGUI_OBJ}
++endif
+ EXTRA_DIST = background.pic Makefile.global aclocal.m4 surf.1 surf.xpm
+ man_MANS = surf.1
+ pkgdata_DATA = surf.xpm
+ 
+-if CUPS
+-surf: $(LOCAL_OBJECTS) $(GTKGUI_OBJ)
+-	$(CXX) $(LOCAL_OBJECTS) $(GTKGUI_OBJ) -o surf $(LDFLAGS) -lXmu -lXext -lXt @X_PRE_LIBS@ @X_LIBS@ -lX11 @X_EXTRA_LIBS@ $(LIBS) -lfl @GTK_LIBS@ -lcups
+-else
++surf_LDADD = -lfl
+ if GUI
+-surf: $(LOCAL_OBJECTS) $(GTKGUI_OBJ)
+-	$(CXX) $(LOCAL_OBJECTS) $(GTKGUI_OBJ) -o surf $(LDFLAGS) -lXmu -lXext -lXt @X_PRE_LIBS@ @X_LIBS@ -lX11 @X_EXTRA_LIBS@ $(LIBS) -lfl @GTK_LIBS@
+-else
+-surf: $(LOCAL_OBJECTS)
+-	$(CXX) $(LOCAL_OBJECTS) -o surf $(LDFLAGS) $(LIBS) -lfl 
++surf_LDADD += -lXmu -lXext -lXt @X_PRE_LIBS@ @X_LIBS@ -lX11 @X_EXTRA_LIBS@ $(LIBS) @GTK_LIBS@
++if CUPS
++surf_LDADD += -lcups
+ endif
+ endif
+ 
+Index: surf-1.0.6/Makefile.global
+===================================================================
+--- surf-1.0.6.orig/Makefile.global
++++ surf-1.0.6/Makefile.global
+@@ -1,5 +1,5 @@
+ if GUI
+-INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/drawfunc -I$(top_srcdir)/yaccsrc -I$(top_srcdir)/image-formats -I$(top_srcdir)/curve -I$(top_srcdir)/gtkgui -I$(top_srcdir)/mt -I$(top_srcdir)/draw -I$(top_srcdir)/misc -I$(top_srcdir)/debug -I$(top_srcdir)/xpm -I$(top_srcdir)/dither
++AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/drawfunc -I$(top_srcdir)/yaccsrc -I$(top_srcdir)/image-formats -I$(top_srcdir)/curve -I$(top_srcdir)/gtkgui -I$(top_srcdir)/mt -I$(top_srcdir)/draw -I$(top_srcdir)/misc -I$(top_srcdir)/debug -I$(top_srcdir)/xpm -I$(top_srcdir)/dither
+ else
+-INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/drawfunc -I$(top_srcdir)/yaccsrc -I$(top_srcdir)/image-formats -I$(top_srcdir)/curve -I$(top_srcdir)/mt -I$(top_srcdir)/draw -I$(top_srcdir)/misc -I$(top_srcdir)/debug -I$(top_srcdir)/xpm -I$(top_srcdir)/dither
++AM_CPPFLAGS = -I$(top_srcdir)/src -I$(top_srcdir)/drawfunc -I$(top_srcdir)/yaccsrc -I$(top_srcdir)/image-formats -I$(top_srcdir)/curve -I$(top_srcdir)/mt -I$(top_srcdir)/draw -I$(top_srcdir)/misc -I$(top_srcdir)/debug -I$(top_srcdir)/xpm -I$(top_srcdir)/dither
+ endif
+Index: surf-1.0.6/acinclude.m4
+===================================================================
+--- surf-1.0.6.orig/acinclude.m4
++++ surf-1.0.6/acinclude.m4
+@@ -10,7 +10,7 @@ dnl it is taken from the autotools distr
+ #   LF_CHECK_CXX_FLAG(-flag1 -flag2 -flag3 ...)
+ # -------------------------------------------------------------------------
+ 
+-AC_DEFUN(LF_CHECK_CXX_FLAG,[
++AC_DEFUN([LF_CHECK_CXX_FLAG],[
+   echo 'void f(){}' > conftest.cc
+   for i in $1
+   do
+@@ -34,7 +34,7 @@ AC_DEFUN(LF_CHECK_CXX_FLAG,[
+ #  LF_CHECK_CC_FLAG(-flag1 -flag2 -flag3 ...)
+ # -------------------------------------------------------------------------
+ 
+-AC_DEFUN(LF_CHECK_CC_FLAG,[
++AC_DEFUN([LF_CHECK_CC_FLAG],[
+   echo 'void f(){}' > conftest.c
+   for i in $1
+   do
+@@ -51,7 +51,7 @@ AC_DEFUN(LF_CHECK_CC_FLAG,[
+ ])
+ 
+ 
+-AC_DEFUN(RS_CHECK_HAVE_BOOL,[
++AC_DEFUN([RS_CHECK_HAVE_BOOL],[
+ 	AC_CACHE_CHECK(whether $CXX supports bool, rs_cv_have_bool, [
+ 		AC_LANG_SAVE
+ 		AC_LANG_CPLUSPLUS
+@@ -141,7 +141,7 @@ dnl ACCONFIG TEMPLATE
+ dnl #undef YOUR_OS
+ dnl END ACCONFIG
+ 
+-AC_DEFUN(LF_HOST_TYPE, [
++AC_DEFUN([LF_HOST_TYPE], [
+   AC_CANONICAL_HOST
+   if test -z "$host"
+   then
+@@ -170,7 +170,7 @@ dnl
+ dnl If the C++ compiler supports explicit template instantiation,
+ dnl define `HAVE_EXPLICIT_TEMPLATE_INSTANTIATION'.
+ dnl
+-AC_DEFUN(ICE_CXX_EXPLICIT_TEMPLATE_INSTANTIATION,
++AC_DEFUN([ICE_CXX_EXPLICIT_TEMPLATE_INSTANTIATION],
+ [
+ AC_REQUIRE([AC_PROG_CXX])
+ AC_MSG_CHECKING(whether ${CXX} supports explicit template instantiation)
+@@ -200,7 +200,7 @@ dnl
+ dnl @version $Id: /surf-1/acinclude.m4 22703 2006-03-04T21:20:19.270670Z ralf  $
+ dnl @author Luc Maisonobe
+ dnl
+-AC_DEFUN(AC_CXX_FUNCTION_NONTYPE_PARAMETERS,
++AC_DEFUN([AC_CXX_FUNCTION_NONTYPE_PARAMETERS],
+ [AC_CACHE_CHECK(whether the compiler supports function templates with non-type parameters,
+ ac_cv_cxx_function_nontype_parameters,
+ [AC_LANG_SAVE
+Index: surf-1.0.6/curve/Makefile.am
+===================================================================
+--- surf-1.0.6.orig/curve/Makefile.am
++++ surf-1.0.6/curve/Makefile.am
+@@ -1,4 +1,4 @@
+-include $(top_srcdir)/Makefile.global
++include ../Makefile.global
+ 
+ noinst_LIBRARIES = libdummy.a
+ libdummy_a_SOURCES = RBTree.cc RBTree.h		\
+Index: surf-1.0.6/debug/Makefile.am
+===================================================================
+--- surf-1.0.6.orig/debug/Makefile.am
++++ surf-1.0.6/debug/Makefile.am
+@@ -1,4 +1,4 @@
+-include $(top_srcdir)/Makefile.global
++include ../Makefile.global
+ 
+ noinst_LIBRARIES = libdummy.a
+ libdummy_a_SOURCES = debug.cc debug.h \
+Index: surf-1.0.6/dither/Makefile.am
+===================================================================
+--- surf-1.0.6.orig/dither/Makefile.am
++++ surf-1.0.6/dither/Makefile.am
+@@ -1,4 +1,4 @@
+-include $(top_srcdir)/Makefile.global
++include ../Makefile.global
+ 
+ noinst_LIBRARIES = libdummy.a
+ libdummy_a_SOURCES = dither_brute.cc dither_brute.h			\
+Index: surf-1.0.6/draw/Makefile.am
+===================================================================
+--- surf-1.0.6.orig/draw/Makefile.am
++++ surf-1.0.6/draw/Makefile.am
+@@ -1,4 +1,4 @@
+-include $(top_srcdir)/Makefile.global
++include ../Makefile.global
+ 
+ noinst_LIBRARIES = libdummy.a
+ 
+Index: surf-1.0.6/drawfunc/Makefile.am
+===================================================================
+--- surf-1.0.6.orig/drawfunc/Makefile.am
++++ surf-1.0.6/drawfunc/Makefile.am
+@@ -1,4 +1,4 @@
+-include $(top_srcdir)/Makefile.global
++include ../Makefile.global
+ 
+ noinst_LIBRARIES = libdummy.a
+ libdummy_a_SOURCES =	Bezier.cc Bezier.h				\
+Index: surf-1.0.6/gtkgui/Makefile.am
+===================================================================
+--- surf-1.0.6.orig/gtkgui/Makefile.am
++++ surf-1.0.6/gtkgui/Makefile.am
+@@ -1,6 +1,6 @@
+-include $(top_srcdir)/Makefile.global
++include ../Makefile.global
+ 
+-CPPFLAGS = @CPPFLAGS@ @GTK_CFLAGS@
++AM_CFLAGS = @GTK_CFLAGS@
+ noinst_LIBRARIES = libdummy.a
+ 
+ if CUPS
+Index: surf-1.0.6/image-formats/Makefile.am
+===================================================================
+--- surf-1.0.6.orig/image-formats/Makefile.am
++++ surf-1.0.6/image-formats/Makefile.am
+@@ -1,4 +1,4 @@
+-include $(top_srcdir)/Makefile.global
++include ../Makefile.global
+ 
+ noinst_LIBRARIES = libdummy.a
+ libdummy_a_SOURCES =  eps.cc ps.cc       tiffprint.cc     xbitmap.cc\
+Index: surf-1.0.6/misc/Makefile.am
+===================================================================
+--- surf-1.0.6.orig/misc/Makefile.am
++++ surf-1.0.6/misc/Makefile.am
+@@ -1,5 +1,5 @@
+-include $(top_srcdir)/Makefile.global
+-CPPFLAGS = @CPPFLAGS@ @GTK_CFLAGS@
++include ../Makefile.global
++AM_CFLAGS = @GTK_CFLAGS@
+ noinst_LIBRARIES = libdummy.a
+ 
+ libdummy_a_SOURCES = welcomeMessage.cc welcomeMessage.h	\
+Index: surf-1.0.6/mt/Makefile.am
+===================================================================
+--- surf-1.0.6.orig/mt/Makefile.am
++++ surf-1.0.6/mt/Makefile.am
+@@ -1,4 +1,4 @@
+-include $(top_srcdir)/Makefile.global
++include ../Makefile.global
+ 
+ noinst_LIBRARIES = libdummy.a
+ libdummy_a_SOURCES =	Thread.cc Thread.h			\
+Index: surf-1.0.6/src/Makefile.am
+===================================================================
+--- surf-1.0.6.orig/src/Makefile.am
++++ surf-1.0.6/src/Makefile.am
+@@ -1,4 +1,4 @@
+-include $(top_srcdir)/Makefile.global
++include ../Makefile.global
+ 
+ noinst_LIBRARIES = libdummy.a
+ libdummy_a_SOURCES = compfn.cc \
+Index: surf-1.0.6/yaccsrc/Makefile.am
+===================================================================
+--- surf-1.0.6.orig/yaccsrc/Makefile.am
++++ surf-1.0.6/yaccsrc/Makefile.am
+@@ -1,4 +1,4 @@
+-include $(top_srcdir)/Makefile.global
++include ../Makefile.global
+ 
+ EXTRA_DIST = polyyacc.h
+ YACC = @YACC@ -d

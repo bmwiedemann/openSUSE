@@ -1,0 +1,13 @@
+Index: oneTBB-2020.2/cmake/templates/TBBConfigInternal.cmake.in
+===================================================================
+--- oneTBB-2020.2.orig/cmake/templates/TBBConfigInternal.cmake.in
++++ oneTBB-2020.2/cmake/templates/TBBConfigInternal.cmake.in
+@@ -57,8 +57,6 @@ foreach (_tbb_component ${TBB_FIND_COMPO
+     if (EXISTS "${_tbb_release_lib}" OR EXISTS "${_tbb_debug_lib}")
+         if (NOT TARGET TBB::${_tbb_component})
+             add_library(TBB::${_tbb_component} SHARED IMPORTED)
+-            set_target_properties(TBB::${_tbb_component} PROPERTIES
+-                                INTERFACE_INCLUDE_DIRECTORIES "${_tbb_root}/include"@TBB_COMPILE_DEFINITIONS@)
+ 
+             if (EXISTS "${_tbb_release_lib}")
+                 set_target_properties(TBB::${_tbb_component} PROPERTIES

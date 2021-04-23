@@ -1,0 +1,22 @@
+Subject: Fix buf initialization (bnc#546310, bnc#984832)
+From: Derek Fults <dfults@sgi.com>
+Date: 2009-11-11 18:22 UTC
+
+Signed-off-by: Derek Fults <dfults@sgi.com>
+Signed-off-by: Mike Galbraith <mgalbraith@suse.de>
+---
+
+ libcpuset.c |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/libcpuset.c
++++ b/libcpuset.c
+@@ -3355,6 +3355,8 @@ int cpuset_latestcpu(pid_t pid)
+ 
+ 	if ((fd = open(buf, O_RDONLY)) < 0)
+ 		goto err;
++
++        memset(buf, '\0', sizeof(buf));
+ 	if (read(fd, buf, sizeof(buf)) < 1)
+ 		goto err;
+ 	close(fd);

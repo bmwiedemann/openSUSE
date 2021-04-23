@@ -1,0 +1,6 @@
+<package name="libretro-2048" project="openSUSE:Factory">
+  <title>2048 libretro core</title>
+  <description>Port of 2048 puzzle game to the libretro API.
+</description>
+  <devel project="Emulators" package="libretro-2048"/>
+</package>

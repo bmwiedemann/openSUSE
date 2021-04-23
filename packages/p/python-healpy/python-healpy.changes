@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu Jan 21 15:32:02 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip python36 because astropy is python >= 3.7
+
+-------------------------------------------------------------------
+Sun Aug 16 11:13:22 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add python-healpy-drop-pytest-runner.patch: Drop pytest-runner
+  which is unnecessary when running tests via pytest directly
+  (gh#healpy/healpy#649).
+
+-------------------------------------------------------------------
+Sun Aug 16 09:19:36 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package

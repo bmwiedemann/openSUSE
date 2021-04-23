@@ -1,0 +1,68 @@
+commit 41449c58c58e466bcf9cdc4f7415950382bad8d7
+Author: Roger Ferrer Ibanez <roger.ferrer@bsc.es>
+Date:   Fri Nov 8 08:26:30 2019 +0000
+
+    [RISCV] Fix evaluation of %pcrel_lo
+    
+    The following testcase
+    
+      function:
+      .Lpcrel_label1:
+            auipc   a0, %pcrel_hi(other_function)
+            addi    a1, a0, %pcrel_lo(.Lpcrel_label1)
+            .p2align        2          # Causes a new fragment to be emitted
+    
+            .type   other_function,@function
+      other_function:
+            ret
+    
+    exposes an odd behaviour in which only the %pcrel_hi relocation is
+    evaluated but not the %pcrel_lo.
+    
+      $ llvm-mc -triple riscv64 -filetype obj t.s | llvm-objdump  -d -r -
+    
+      <stdin>:      file format ELF64-riscv
+    
+      Disassembly of section .text:
+      0000000000000000 function:
+             0:     17 05 00 00     auipc   a0, 0
+             4:     93 05 05 00     mv      a1, a0
+                    0000000000000004:  R_RISCV_PCREL_LO12_I other_function+4
+    
+      0000000000000008 other_function:
+             8:     67 80 00 00     ret
+    
+    The reason seems to be that in RISCVAsmBackend::shouldForceRelocation we
+    only consider the fragment but in RISCVMCExpr::evaluatePCRelLo we
+    consider the section. This usually works but there are cases where the
+    section may still be the same but the fragment may be another one. In
+    that case we end forcing a %pcrel_lo relocation without any %pcrel_hi.
+    
+    This patch makes RISCVAsmBackend::shouldForceRelocation use the section,
+    if any, to determine if the relocation must be forced or not.
+    
+    Differential Revision: https://reviews.llvm.org/D60657
+
+Index: llvm-9.0.1.src/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.cpp
+===================================================================
+--- llvm-9.0.1.src.orig/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.cpp
++++ llvm-9.0.1.src/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.cpp
+@@ -57,11 +57,15 @@ bool RISCVAsmBackend::shouldForceRelocat
+     case RISCV::fixup_riscv_tls_gd_hi20:
+       ShouldForce = true;
+       break;
+-    case RISCV::fixup_riscv_pcrel_hi20:
+-      ShouldForce = T->getValue()->findAssociatedFragment() !=
+-                    Fixup.getValue()->findAssociatedFragment();
++    case RISCV::fixup_riscv_pcrel_hi20: {
++      MCFragment *TFragment = T->getValue()->findAssociatedFragment();
++      MCFragment *FixupFragment = Fixup.getValue()->findAssociatedFragment();
++      assert(FixupFragment && "We should have a fragment for this fixup");
++      ShouldForce =
++          !TFragment || TFragment->getParent() != FixupFragment->getParent();
+       break;
+     }
++    }
+     break;
+   }
+ 

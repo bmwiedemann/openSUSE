@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Thu May 22 16:10:08 UTC 2014 - tobias.johannes.klausmann@mni.thm.de
+
+- Update to version 1.0.3:
+  This release fixes gccmakedep with GNU cpp versions newer than
+  4.7, by no longer using cpp to generate the gccmakedep script.
+
+-------------------------------------------------------------------
+Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
+
+- Split gccmakedep from xorg-x11-util-devel.
+  Initial version: 1.0.2.
+

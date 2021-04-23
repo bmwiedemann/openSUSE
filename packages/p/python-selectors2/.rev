@@ -1,0 +1,54 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>216da3356e60cc90e46aa93b67acef09</srcmd5>
+    <version>2.0.1</version>
+    <time>1553084539</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>686883</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>772c725a3d646b0e6bacbbd67f8abbef</srcmd5>
+    <version>2.0.1</version>
+    <time>1553888611</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch selectors-skip-tests.patch to skip benchmark tests
+  that are flaky</comment>
+    <requestid>689790</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9a9e24c8ad97deaeb43e97f3b03ed97c</srcmd5>
+    <version>2.0.1</version>
+    <time>1559375253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update tolerance time for timed tests to make sure they
+  pass in obs:
+  * selectors-skip-tests.patch</comment>
+    <requestid>705865</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ccec15fba8f93e0b33cda7f669cd016a</srcmd5>
+    <version>2.0.1</version>
+    <time>1559902746</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump the timeout tolerance and do not skip tests, removing:
+  * selectors-skip-tests.patch</comment>
+    <requestid>707751</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>e10e99cf6f5308a4f6cbd7248bdb69e8</srcmd5>
+    <version>2.0.1</version>
+    <time>1569588567</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump the tolerance even more for the flaky OBS runtime</comment>
+    <requestid>731460</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>123120243d813bb63cca43762ebabb6a</srcmd5>
+    <version>2.0.1</version>
+    <time>1597955308</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>827937</requestid>
+  </revision>
+</revisionlist>

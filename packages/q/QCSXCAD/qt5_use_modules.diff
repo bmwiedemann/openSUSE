@@ -1,0 +1,11 @@
+--- QCSXCAD-0.6.1/CMakeLists.txt_orig	2018-06-18 21:47:14.072054407 +0200
++++ QCSXCAD-0.6.1/CMakeLists.txt	2018-06-18 21:48:46.851838077 +0200
+@@ -180,7 +180,7 @@
+ )
+ 
+ if(Qt5Widgets_FOUND)
+-    qt5_use_modules(QCSXCAD Widgets Xml)
++  set(QT_LIBRARIES Qt5::Widgets Qt5::Xml)
+ endif()
+ 
+ TARGET_LINK_LIBRARIES( QCSXCAD

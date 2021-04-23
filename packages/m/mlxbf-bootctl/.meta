@@ -1,0 +1,5 @@
+<package name="mlxbf-bootctl" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="hardware" package="mlxbf-bootctl"/>
+</package>

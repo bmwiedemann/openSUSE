@@ -1,0 +1,23 @@
+--- a/hamcrest-generator/src/main/java/org/hamcrest/generator/ReflectiveFactoryReader.java
++++ b/hamcrest-generator/src/main/java/org/hamcrest/generator/ReflectiveFactoryReader.java
+@@ -43,6 +43,13 @@
+ 
+             private int currentMethod = -1;
+             private Method[] allMethods = cls.getMethods();
++            {
++                java.util.Arrays.sort(allMethods, new java.util.Comparator<Method>() {
++                    public int compare(Method m1, Method m2) {
++                        return m1.toGenericString().compareTo(m2.toGenericString());
++                    }
++                });
++            }
+ 
+             @Override
+             public boolean hasNext() {
+@@ -171,4 +178,4 @@
+       return name.replace('$', '.');
+     }
+ 
+-}
+\ No newline at end of file
++}

@@ -1,0 +1,47 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6f05f4d1ab79c59c84f4a2908c727c80</srcmd5>
+    <version>7.0.6</version>
+    <time>1584744981</time>
+    <user>dimstar_suse</user>
+    <comment>New package see https://lists.opensuse.org/opensuse-factory/2020-03/msg00116.html</comment>
+    <requestid>786713</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>534a2d3607da0aa25ac3be679501e9ca</srcmd5>
+    <version>7.0.7</version>
+    <time>1586555612</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v7.0.7 (no changelog) 
+</comment>
+    <requestid>792890</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3cb3d17018e6aab21cfa4babb5994cb0</srcmd5>
+    <version>7.0.8</version>
+    <time>1591653908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.8 (no changelog)
+- Add fix_qpainterpath.patch
+</comment>
+    <requestid>812483</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>115e9409d418b08f6a3043875b90eab2</srcmd5>
+    <version>7.0.9</version>
+    <time>1597063918</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>823692</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2b208c4bf9173fa2f8a1dd04b05b6a69</srcmd5>
+    <version>7.0.10</version>
+    <time>1602596549</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.10 (no changelog) 
+- Add fix-cmake-name.patch
+</comment>
+    <requestid>841271</requestid>
+  </revision>
+</revisionlist>

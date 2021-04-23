@@ -1,0 +1,153 @@
+From: Fabian Vogt <fvogt@suse.com>
+Subject: Do not show symlinked session files more than once
+References: boo#1030873
+
+If a session file is a symlink that points into the currently
+searched directory, ignore it.
+
+Special take needs to be taken care to map the default-session
+hint passed to the greeter correctly. As symlinked sessions
+are not available anymore, the target of those needs to be
+passed as session name instead.
+
+Index: lightdm-1.30.0/liblightdm-gobject/session.c
+===================================================================
+--- lightdm-1.30.0.orig/liblightdm-gobject/session.c
++++ lightdm-1.30.0/liblightdm-gobject/session.c
+@@ -8,6 +8,10 @@
+  * See http://www.gnu.org/copyleft/lgpl.html the full text of the license.
+  */
+ 
++#define _GNU_SOURCE
++#include <libgen.h>
++#include <stdlib.h>
++
+ #include <string.h>
+ #include <gio/gdesktopappinfo.h>
+ 
+@@ -137,6 +141,23 @@ load_sessions_dir (GList *sessions, cons
+ 
+         g_autofree gchar *path = g_build_filename (sessions_dir, filename, NULL);
+ 
++        /* Ignore symlinks that point to files we will visit manually later. */
++        if (g_file_test (path, G_FILE_TEST_IS_SYMLINK))
++        {
++            gboolean skip = FALSE;
++
++            char *ltarget = canonicalize_file_name ((char *) path),
++                 *ltarget_dir = ltarget == NULL ? NULL : dirname(ltarget);
++
++            /* Link target is absolute -> compare with sessions_dir. */
++            skip = g_strcmp0 (ltarget_dir, sessions_dir) == 0;
++
++            free (ltarget);
++
++            if (skip)
++                continue;
++        }
++
+         g_autoptr(GKeyFile) key_file = g_key_file_new ();
+         g_autoptr(GError) e = NULL;
+         gboolean result = g_key_file_load_from_file (key_file, path, G_KEY_FILE_NONE, &e);
+Index: lightdm-1.30.0/src/seat.c
+===================================================================
+--- lightdm-1.30.0.orig/src/seat.c
++++ lightdm-1.30.0/src/seat.c
+@@ -9,6 +9,8 @@
+  * license.
+  */
+ 
++#define _GNU_SOURCE
++#include <libgen.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <sys/wait.h>
+@@ -552,11 +554,87 @@ find_resettable_greeter (Seat *seat)
+     return NULL;
+ }
+ 
++/* Returns basename of the .desktop file at the specified path.
++ * Returned string needs to be g_free'd. */
++static char *
++desktop_basename (const char *path)
++{
++    if (!path)
++        return NULL;
++
++    char *filename = g_path_get_basename (path);
++    if (!filename)
++        return NULL;
++
++    unsigned int len = strlen(filename);
++    if (len >= 8) /* strlen(".desktop") */
++        filename[len - 8] = '\0';
++
++    return filename;
++}
++
++static char *
++find_session_file (Seat *seat, const char *sessions_dir, const char *session_name)
++{
++    char **dirs;
++    char *ret_path = NULL;
++    int i;
++
++    g_return_val_if_fail (sessions_dir != NULL, NULL);
++    g_return_val_if_fail (session_name != NULL, NULL);
++
++    dirs = g_strsplit (sessions_dir, ":", -1);
++    for (i = 0; dirs[i]; i++)
++    {
++        g_autofree char *filename;
++        char *path;
++
++        filename = g_strdup_printf ("%s.desktop", session_name);
++        path = g_build_filename (dirs[i], filename, NULL);
++        if (g_file_test (path, G_FILE_TEST_EXISTS))
++        {
++            ret_path = path;
++            break;
++        }
++        else
++            g_free (path);
++    }
++    g_strfreev (dirs);
++
++    return ret_path;
++}
++
+ static void
+ set_greeter_hints (Seat *seat, Greeter *greeter)
+ {
+     greeter_clear_hints (greeter);
+-    greeter_set_hint (greeter, "default-session", seat_get_string_property (seat, "user-session"));
++
++    /* The user-session might be a symlink to the actual default-session. */
++    const char *user_session = seat_get_string_property (seat, "user-session");
++    char *default_session = NULL;
++
++    const char *sessions_dir = config_get_string (config_get_instance (), "LightDM", "sessions-directory");
++    g_autofree char *user_session_path = find_session_file (seat, sessions_dir, user_session);
++    if (g_file_test (user_session_path, G_FILE_TEST_IS_SYMLINK))
++    {
++        char *ltarget = canonicalize_file_name ((char*) user_session_path);
++
++        /* TODO: Check that the link target points into a valid session_dir. */
++
++        if (g_str_has_suffix (ltarget, ".desktop"))
++            default_session = desktop_basename (ltarget);
++
++        free(ltarget);
++    }
++
++    if (default_session)
++    {
++        greeter_set_hint (greeter, "default-session", default_session);
++        g_free (default_session);
++    }
++    else
++        greeter_set_hint (greeter, "default-session", user_session);
++
+     greeter_set_hint (greeter, "hide-users", seat_get_boolean_property (seat, "greeter-hide-users") ? "true" : "false");
+     greeter_set_hint (greeter, "show-manual-login", seat_get_boolean_property (seat, "greeter-show-manual-login") ? "true" : "false");
+     greeter_set_hint (greeter, "show-remote-login", seat_get_boolean_property (seat, "greeter-show-remote-login") ? "true" : "false");

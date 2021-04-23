@@ -1,0 +1,10 @@
+Index: data/keymaps/mac/include/mac-qwerty-layout.inc
+===================================================================
+--- data/keymaps/mac/include/mac-qwerty-layout.inc.orig	2012-02-27 11:27:11.000000000 +0100
++++ data/keymaps/mac/include/mac-qwerty-layout.inc	2014-08-22 08:47:46.799078582 +0200
+@@ -1,4 +1,4 @@
+-# qwertz-layout
++# qwerty-layout
+ keycode  12 = q
+ keycode  13 = w
+ keycode  14 = e

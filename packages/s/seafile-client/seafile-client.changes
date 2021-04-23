@@ -1,0 +1,176 @@
+-------------------------------------------------------------------
+Mon Oct 12 09:31:40 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 7.0.10 (no changelog) 
+- Add fix-cmake-name.patch
+
+-------------------------------------------------------------------
+Fri Jul 31 05:56:28 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 7.0.9:
+  * Avoid downloading existing blocks during sync download
+  * Fix crash when cancel syncing before a library is synced
+  * Fix incorrect error message in some error situations
+
+-------------------------------------------------------------------
+Mon Jun  8 08:34:19 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 7.0.8 (no changelog)
+- Add fix_qpainterpath.patch
+
+-------------------------------------------------------------------
+Fri Apr 10 06:27:09 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v7.0.7 (no changelog) 
+
+-------------------------------------------------------------------
+Thu Mar 12 08:52:59 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Fix spec file 
+
+-------------------------------------------------------------------
+Mon Feb 17 09:51:27 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v7.0.6
+
+-------------------------------------------------------------------
+Tue Jan 14 06:55:12 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v7.0.5 
+
+-------------------------------------------------------------------
+Thu Nov 21 06:42:11 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v7.0.4 
+
+-------------------------------------------------------------------
+Fri Nov 15 13:25:36 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- use spec-cleaner
+- use fpie
+
+-------------------------------------------------------------------
+Tue Nov 12 19:50:23 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add missing required deps 
+
+-------------------------------------------------------------------
+Tue Nov 12 11:20:48 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Fix spec file 
+
+-------------------------------------------------------------------
+Tue Nov 12 10:31:29 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Use new seafile package instead of libseafile0 
+
+-------------------------------------------------------------------
+Tue Nov 12 10:05:40 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to v7.0.3 
+
+-------------------------------------------------------------------
+Mon Aug 12 06:21:12 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v7.0.2 
+
+-------------------------------------------------------------------
+Wed Jun 12 08:05:41 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v7.0.1
+
+-------------------------------------------------------------------
+Fri May 31 13:54:46 UTC 2019 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v7.0.0 
+
+-------------------------------------------------------------------
+Fri Jan 18 08:23:20 UTC 2019 - Paolo Stivanin <pstivanin@suse.com>
+
+- Update to v6.2.11 
+
+-------------------------------------------------------------------
+Thu Dec 13 06:43:23 UTC 2018 - Paolo Stivanin <pstivanin@suse.com>
+
+- Update to v6.2.9 
+
+-------------------------------------------------------------------
+Sat Sep 15 07:20:07 UTC 2018 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to v6.2.5 
+
+-------------------------------------------------------------------
+Sat Sep  8 07:54:58 UTC 2018 - Paolo Stivanin <info@paolostivanin.com>
+
+- Remove unneeded build dep 
+
+-------------------------------------------------------------------
+Sat Sep  8 07:47:33 UTC 2018 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add shibboleth support 
+
+-------------------------------------------------------------------
+Thu Sep  6 12:46:53 UTC 2018 - flyos@mailoo.org
+
+- Rebuild in Cloud:Seafile on new bases
+
+-------------------------------------------------------------------
+Wed Aug  8 18:14:22 UTC 2018 - info@paolostivanin.com
+
+- removed ccnet dep (starting from v6.2.0 is no longer required)
+
+-------------------------------------------------------------------
+Sat Aug  4 14:50:50 UTC 2018 - christoph@stop.pe
+
+- Updated to version 6.2.4
+
+-------------------------------------------------------------------
+Tue May 22 07:11:01 UTC 2018 - christoph@stop.pe
+
+- Updated to version 6.1.8
+
+-------------------------------------------------------------------
+Wed Mar 28 09:22:38 UTC 2018 - christoph@stop.pe
+
+- Fixed build error on CentOS 7
+
+-------------------------------------------------------------------
+Sun Dec 31 11:23:56 UTC 2017 - christoph@stop.pe
+
+- Updated to version 6.1.4
+
+-------------------------------------------------------------------
+Fri Dec  8 08:05:05 UTC 2017 - christoph@stop.pe
+
+- Added patch from https://github.com/haiwen/seafile-client/pull/940/files to fix openssl 1.1 compatibility
+
+-------------------------------------------------------------------
+Thu Dec  7 07:44:37 UTC 2017 - christoph@stop.pe
+
+- Updated to version 6.1.3
+
+-------------------------------------------------------------------
+Mon Jul  3 07:25:30 UTC 2017 - christoph@stop.pe
+
+- Updated to version 6.0.7
+
+-------------------------------------------------------------------
+Sat Feb 25 12:54:48 UTC 2017 - christoph@stop.pe
+
+- Added missing patch file
+
+-------------------------------------------------------------------
+Sat Feb 25 12:51:09 UTC 2017 - christoph@stop.pe
+
+- Fixed some build errors
+
+-------------------------------------------------------------------
+Sat Feb 25 12:13:02 UTC 2017 - christoph@stop.pe
+
+- Updated to version 6.0.4
+
+-------------------------------------------------------------------
+Mon Sep 26 19:02:49 UTC 2016 - christoph@stop.pe
+
+- Initial packaging
+

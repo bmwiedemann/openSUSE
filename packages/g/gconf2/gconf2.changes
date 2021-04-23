@@ -1,0 +1,1246 @@
+-------------------------------------------------------------------
+Sat Jan 25 14:07:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Mon Jan 20 09:58:11 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop libidl-devel BuildRequires: Not used by default since GNOME
+  3.2 and deprecated since then.
+
+-------------------------------------------------------------------
+Wed Nov  6 21:55:06 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Drop gtk3 BuildRequires, only used by gconf-sanity-check,
+  removed in version 3.2.6.
+- Only Require python3-base for gsettings-schema-convert, which
+  provides xml/etree.
+- Remove huge Changelog (commit log), the NEWS file is sufficient.
+
+-------------------------------------------------------------------
+Tue Jun 11 16:16:53 UTC 2019 - mgorse@suse.com
+
+- Run gsettings-schema-convert through 2to3, and adjust to use
+  python 3. Also require python3, rather than python, and remove
+  python-lxml Recommends (boo#1136216).
+
+-------------------------------------------------------------------
+Tue May 14 11:14:42 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move RPM macros to %_rpmmacrodir.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:25:39 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jun 29 09:00:17 UTC 2017 - tchvatal@suse.com
+
+- Fix obvious typo } used instead of )
+
+-------------------------------------------------------------------
+Tue May 19 13:24:16 UTC 2016 - qzhao@suse.com
+
+- Update to GNOME 3.20  Fate#318572
+
+-------------------------------------------------------------------
+Thu Apr 14 20:29:11 UTC 2016 - mgorse@suse.com
+
+- Add gconf2-fdatasync.patch: call fdatasync rather than fsync,
+  and only if not installing (bsc#909045).
+
+-------------------------------------------------------------------
+Sat Nov 08 05:19:00 UTC 2014 - Led <ledest@gmail.com>
+
+- fix bashism in macros.gconf2
+
+-------------------------------------------------------------------
+Wed Jul 30 15:58:10 UTC 2014 - fcrozat@suse.com
+
+- Update macros.gconf2: ensure schemas file path is absolute
+  (bnc#886600).
+
+-------------------------------------------------------------------
+Thu May 15 09:57:09 UTC 2014 - dliang@suse.com
+
+- Add gconf2-pass-warning-to-caller.patch (bnc#872110)
+   dbus: Don't spew to console when unable to connect to dbus 
+   daemon instead pass the error up for the caller to decide what 
+   to do. This prevent untrappable warning messages from showing 
+   up at the console if gconftool --makefile-install-rule is called
+   Backport from upstream. (Ray Strode, commit#b0895e)
+
+-------------------------------------------------------------------
+Tue Feb  5 09:15:39 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.2.6:
+  + gsettings-schema-convert: Fix conversion of empty lists.
+  + Fix shutdown of gconfd (bgo#671490).
+  + Removed unused gconf_get_lock_dir function (bgo#646663).
+  + Use XDG config dir for settings storage (bgo#674803).
+  + Fix early bailout on OS X (bgo#685509).
+  + Fix a use-after-free (bgo#667167).
+  + Remove obsolete debian/ dir (bgo#682963).
+  + Remove gconf-sanity-check (bgo#646674).
+  + Other bugs fixed: bgo#686634, bgo#653809.
+  + Updated translations.
+- Rebase gconf2-schemas-path.patch.
+- Obsolete gconf-sanity-check subpackage, as the sanity check
+  binary was removed by upstream.
+
+-------------------------------------------------------------------
+Sun Mar 11 12:45:26 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.2.5:
+  + Fix an obvious memory error from the last release. 
+
+-------------------------------------------------------------------
+Thu Mar  8 18:26:16 UTC 2012 - zaitor@opensuse.org
+
+- Update to version 3.2.4:
+  + Don't migrate vendor settings to the user's dconf database
+    (bgo#671581).
+  + Store daemon data in XDG_RUNTIME_DIR (bgo#652289).
+  + Don't crash during sync if gconfd shutting down (bgo#670033).
+  + D-Bus backend: Add GCONF_DEFAULT_SOURCE_PATH support 
+    (bgo#664031).
+  + Don't attempt to migrate settings with non-existent schemas.
+  + Update the GIO cache after 'make uninstall' (fixes 'make
+    distcheck'). 
+- Drop gconf2-fix-crash-sync-dbus.patch, fixed upstream.
+
+-------------------------------------------------------------------
+Mon Feb 27 15:55:27 UTC 2012 - fcrozat@suse.com
+
+- Add gconf2-fix-crash-sync-shutdown.patch: fix crash during
+  syncing is done if gconfd is shutting down (bgo#670033).
+
+-------------------------------------------------------------------
+Mon Feb 13 10:46:39 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Tue Nov 15 10:10:45 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.3:
+  + Fix assert introduced in 3.2.2 (bgo#662991).
+-  Changes from version 3.2.2:
+  + Avoid crash when there is no reply to messages in
+    gconf_engine_notify_remove (bgo#661372).
+  + Clean-up ORBit vs DBus logic.
+- Changes from version 3.2.1:
+  + Fix "Configuration server couldn't be contacted" errors
+    (bgo#659835).
+  + Build fix for -Werror=format-security.
+  + Updated translations.
+- Drop gconf2-no-wrong-drop-db.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Oct 20 08:18:40 UTC 2011 - vuntz@opensuse.org
+
+- Add gconf2-no-wrong-drop-db.patch: partial fix gconf server not
+  correctly answering to clients after a while, because it believes
+  it can drop databases while they're being used. This is only a
+  partial fix, as there's another patch to fix a similar issue on
+  SIGHUP. It's safer to take just this part, as it's not intrusive
+  at all while the other one can be risky without more testing.
+
+-------------------------------------------------------------------
+Mon Sep 26 19:43:37 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 20 07:11:02 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.92:
+  + bgo#655954: allow setting gconf values to the schema defaults
+  + Updated translations.
+- Drop gconf2-fix-default-mandatory.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Tue Sep  6 18:04:29 UTC 2011 - vuntz@opensuse.org
+
+- Add gconf2-fix-default-mandatory.patch: fix setting default or
+  mandatory values for key, after dbus migration. Fix bnc#705409.
+  Patch by Joey Zheng <jzheng@suse.com>.
+
+-------------------------------------------------------------------
+Thu Sep  1 16:17:56 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.90:
+  + bgo#656262: Support for conversion files from user specified
+    and XDG data directories
+  + Updated translations.
+- Changes from version 3.1.6:
+  + Fixes on the distcheck fixes
+  + bgo#655656: Use "o" for the D-BUS object path rather than "s"
+    (this changes the internal D-BUS API but for now we have a
+    compatability bit that should avoid too much pain.)
+- Drop pkgconfig(ORBit-2.0) BuildRequires: we do not build with the
+  orbit backend.
+- Drop explicit Requires from devel packages that will
+  automatically be added the pkg-config way: dbus-1-glib-devel,
+  glib2-devel, orbit2-devel.
+
+-------------------------------------------------------------------
+Mon Aug 15 09:01:26 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.5:
+  + gsettings-convert: convert to unsigned int correctly
+  + Distcheck fixes
+  + bgo#656248: Handle messages that don't have interface set
+  + bgo#654801: Export pkg-config file and C include details in GIR
+    file
+  + Updated translations.
+- Add pkgconfig(ORBit-2.0) BuildRequires.
+
+-------------------------------------------------------------------
+Mon Jul 25 16:39:17 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.4:
+  + gsettings-data-convert: Call g_type_init()
+  + ensure_database: don't free the reply til we've finished with
+    its args
+  + build: Filter out generated corba code when building .gir
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Jul  2 08:56:54 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.3:
+  + This is version 2.32.5, re-released with the right version.
+- Pass --disable-orbit to configure to not depend on ORBit2, and
+  use dbus as IPC. Remove orbit2-devel BuildRequires.
+- Change --with-gtk=2.0 configure option to --with-gtk=3.0, and
+  change gtk2-devel BuildRequires to gtk3-devel.
+
+-------------------------------------------------------------------
+Fri Jul  1 16:37:33 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 2.32.5:
+  + Add optional and disabled by default port to DBus.
+  + Use the cache when looking for keys we know we don't have
+    locally.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jun 16 18:39:18 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 2.32.4:
+  + Fix distcheck.
+  + Remove glib and gtk+ deprecations from the example app.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 27 09:51:32 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.32.3:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Apr  4 13:29:55 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.32.2:
+  + bgo#644662: default GConf path includes hard-coded reference to
+    /etc/gconf.
+  + bgo#638679: Please make gsettings-data-convert.desktop
+    translatable.
+  + Updated translations.
+- Rebase patch gconf2-schemas-path.patch.
+
+-------------------------------------------------------------------
+Mon Nov 29 13:57:27 UTC 2010 - fcrozat@novell.com
+
+- Ensure gconf2 macros are using absolute paths when possible
+
+-------------------------------------------------------------------
+Mon Nov 15 11:31:39 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.32.1:
+  + Allow building against GTK+ 3
+  + Make gsettings-data-convert deal better with enums and flags
+  + bgo#631250: Remove an obsolete error message
+  + Updated translations.
+- Pass --with-gtk=2.0 to configure.
+
+-------------------------------------------------------------------
+Mon Sep 27 22:20:53 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Make ref() function return the passed object (bgo#629984)
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 31 09:37:57 UTC 2010 - aj@suse.de
+
+- Recommend instead of require lang package since it's not mandatory.
+
+-------------------------------------------------------------------
+Mon Aug 30 21:34:55 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.91:
+  + libgconf-2 was ported to the DBus bindings in gio, and no
+    longer links to libdbus.
+
+-------------------------------------------------------------------
+Thu Aug  5 23:48:38 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.7:
+  + gsettings-data-convert: Realloc the correct amount of memory
+  + Update GSettings backend to follow API changes
+  + Build fix
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 23 08:31:28 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.6:
+  + Features and fixes in gsettings-schema-convert:
+    - always add gettext domain
+    - convert 0/1 to false/true
+    - convert underscores to dashes
+    - convert to xml by default
+    - fix crash when lxml is missing
+    - don't crash on unknown types
+    - accept GConf schemas without defaults
+    - fix --help error
+
+-------------------------------------------------------------------
+Thu Jul 22 12:41:14 CEST 2010 - vuntz@opensuse.org
+
+- Add gobject-introspection-devel BuildRequires to get
+  introspection support.
+- Call %suse_update_desktop_file for
+  gsettings-data-convert.desktop.
+- Create an empty %{_datadir}/GConf/gsettings that is needed for
+  gsettings-data-convert users.
+- Move gsettings-schema-convert to devel subpackage.
+- Move macros.gconf2 to devel subpackage.
+- Fix documentation in macros.gconf2 when more than one -f needed
+  to be passed to %files.
+- Do not use ln in the gconf2 macros before comparing two files: if
+  the file gets updated, then the linked file will also be updated
+  so we won't notice a difference... Just use a cp instead of
+  trying to be clever.
+- Move the schemas from %{_datadir}/gconf/schemas to
+  %{_datadir}/GConf/schemas because we upstream now has a
+  %{_datadir}/GConf directory. The gconf2 macros are also updated
+  to handle this migration, since each package containing a gconf
+  schema is potentially affected. Also update gconftool-rebuild for
+  this.
+
+-------------------------------------------------------------------
+Thu Jul  8 10:56:51 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 2.31.5:
+  + Add gsettings-schema-convert (used to be part of GLib)
+  + Make the :path in groups optional again
+- Changes from version 2.31.4:
+  + Allow external orbit-idl-2 compiler for cross-compiling
+  + Implement fsync replacement on win32
+  + Make gsettings_backend_write consume the variant
+  + Fix build with GLib >= 2.25.9
+- Changes from version 2.31.3:
+  + Install an autostart file for gsettings-data-convert
+  + Expose the location of the default path file in the pc file
+  + Update GSettings backend to follow API changes
+  + Respect $datadir
+  + Fix annotations for gconf_client_notify_add
+  + Support silent build
+  + Don't print an error on the first run of gsettings-data-convert
+- Changes from version 2.31.2:
+  + Handle prefix when installing instrospection data
+  + Use /usr/share/GConf/gsettings in gsettings-data-convert
+  + Don't segfault if saved_state has blank lines in it
+  + Treat nonexisting keys as writable in the settings backend
+  + Warn if key is a path in gsettings-data-convert
+- Changes from version 2.31.1:
+  + Add a GSettings backend. This is meant as a tool to ease the
+    transition from GConf to GSettings/DConf, not as a permanent
+    solution. To use this backend with GSettings, set
+    GSETTINGS_BACKEND=gconf in your environment. Note that you
+    still need to convert your GConf schema to a GSettings schema
+    and install it
+  + Add a utility to migrate existing user settings from GConf to
+    GSettings. For details, see gsettings-data-convert(1)
+  + Add boxed types for GConfEntry and GConfValue
+  + Add introspection support
+  + Plug a memory leak when ignoring default values
+- Drop gconf2-crash.patch: fixed upstream.
+- Remove gnome-common BuildRequires and call to gnome-autogen.sh.
+
+-------------------------------------------------------------------
+Fri Jun  4 17:03:22 CEST 2010 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Fri Apr 23 10:49:50 UTC 2010 - lzwang@novell.com
+
+- bnc#598867: Add gconf2-crash.patch to fix crasher with corrupted
+  ~/.gconfd/saved_state ...
+
+-------------------------------------------------------------------
+Thu Apr  8 20:20:38 CEST 2010 - vuntz@opensuse.org
+
+- Provide a %gconf_schemas_requires macro that is similar to
+  %gconf_schemas_prereq, but doesn't use the deprecated PreReq.
+- We keep the old macro to enable a slow migration.
+
+-------------------------------------------------------------------
+Tue Mar 30 19:59:44 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.28.1:
+  + Make the defaults mechanism find the right polkit action
+  + Remove (worse than) useless signal handlers for SEGV, FPE, etc.
+    in gconfd
+  + Avoid a crash when gconftool-2 can't read the db
+  + Make gconf compile with -DGSEAL_ENABLE
+  + Updated translations.
+- Remove en@shaw translations on 11.2 and earlier.
+
+-------------------------------------------------------------------
+Thu Dec 17 20:27:11 CET 2009 - jengelh@medozas.de
+
+- Add baselibs.conf as a source
+
+-------------------------------------------------------------------
+Fri Dec  4 22:33:08 CET 2009 - vuntz@opensuse.org
+
+- Add gconf-sanity-check and gconf-polkit subpackages, to optimize
+  dependencies of the main package.
+- Fix self-obsoletion of gconf2-doc.
+
+-------------------------------------------------------------------
+Tue Sep 22 18:16:00 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Aug 26 10:45:36 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.27.0:
+  + Make gconf_value_encode/decode public api
+  + Add SetSystemValue and SetMandatoryValue functions to the
+    defaults service for future use in gconf-editor
+  + Allow overriding the default config path
+  + Port defaults menchanism to PolicyKit 1.0
+  + Updated translations.
+- Drop gconf2-polkit.patch.
+
+-------------------------------------------------------------------
+Tue Aug 11 22:19:10 CEST 2009 - dominique-obs@leuenberger.net
+
+- Add gconf2-polkit.patch to build against polkit1.
+- Add gnome-common and call to gnome-autogen.sh.
+- Adjust gconf2-pk-default-path.patch because of
+  gconf2-polkit.patch.
+- Replace PolicyKit-devel with polkit-devel BuildRequires.
+
+-------------------------------------------------------------------
+Mon May 18 01:36:01 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.2:
+  + Avoid assertion failures in gconf_client_lookup callers
+
+-------------------------------------------------------------------
+Wed May  6 14:08:55 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.26.1:
+  + Tracing improvements
+  + Track fully-cached directories in the client
+  + Improve performance of the markup backend
+  + Make openldap support optional
+  + Fix errno usage
+  + Updated translations.
+- Update gconf2-sabayon.patch to apply without fuzz.
+
+-------------------------------------------------------------------
+Tue Apr 28 11:52:06 CEST 2009 - vuntz@novell.com
+
+- Change the rpm gconf macros to move the .schemas files of
+  packages built with those macros from /etc/gconf/macros to
+  /usr/share/gconf/macros.
+  This implements fate#305318.
+
+-------------------------------------------------------------------
+Tue Mar 17 06:58:21 CET 2009 - mboman@suse.de
+
+- Update to version 2.26.0:
+  + Correct url to gconf website
+  + Plug memory leak in error path
+  + Remove deprecated GTK+ api
+  + Translation updates
+- Remove PreReq
+- Remove AutoReqProv, it's default
+
+-------------------------------------------------------------------
+Thu Feb 26 19:57:17 CET 2009 - vuntz@novell.com
+
+- Update macros.gconf2 to have faster package upgrades:
+  + do only one gconftool-2 --makefile-install-rule for all the
+    schemas files, instead of multiple calls
+  + compare the old schema with the new one and if they are not
+    different, skip the --makefile-uninstall-rule and
+    --makefile-install-rule for it
+  + note: this adds a dependency on diffutils for all packages
+    shipping gconf schemas
+- Remove unneeded BuildRequires: openssl-devel
+- Remove Requires from devel package: popt-devel
+- Add a note about why we probably need to keep gconftool-rebuild
+  until 12.2
+
+-------------------------------------------------------------------
+Sun Feb 22 01:37:03 CET 2009 - vuntz@novell.com
+
+- Fix gconf2-schemas-path.patch again to have gconf.xml.defaults
+  before "include @sysgconfdir@/2/local-defaults.path"
+- Remove the migration logic in pre for distributions <= 10.2: this
+  won't be supported for 11.2.
+
+-------------------------------------------------------------------
+Sat Feb 21 02:13:41 CET 2009 - mboman@suse.de
+
+- Update to version 2.25.2:
+  + Correct location of system settings in path configuration
+- Update gconf2-schemas-path.patch
+- Merge -doc into -devel since it only contains gtk-doc
+- Add Obsoletes/Requires for -doc in -devel section
+- Remove sgml-skel and gtk-doc from BuildRequires
+- Remove PreReq for mkdir, mb, rm, rmdir, ln and chmod. These would
+  always exist anyway
+- Remove AutoReqProv since it's default
+- Comment out autoreconf.
+
+-------------------------------------------------------------------
+Fri Feb 20 04:54:22 CET 2009 - vuntz@novell.com
+
+- Use "merged" for schema-install-source, for better performance.
+  Proposed by Michael Meeks.
+- Improve loop in gconftool-rebuild to be faster, courtesy of
+  Michael Meeks.
+
+-------------------------------------------------------------------
+Sat Feb 20 01:04:57 CET 2009 - mboman@suse.de
+
+- Update to version 2.25.1:
+  + Missing return in gconftool.c/do_toggle
+  + Fix xml-backend symbol exports on Cygwin
+  + Win32 build fixes
+  + Optimizations in the markup backend
+  + Don't hardcode paths in the defaults mechanism
+  + Fix dbus policy for the defaults mechanism
+  + Translation updates
+- Remove gconf2-bnc468388-dbus-send-dest.patch. Fixed upstream
+- Remove gconf2-fix-rpmlint.patch. Fixed upstream
+- Update gconf2-pk-default-path.patch
+
+-------------------------------------------------------------------
+Thu Feb 19 18:56:32 CET 2009 - vuntz@novell.com
+
+- Change the gconf path to have gconf.xml.defaults before "include
+  @sysgconfdir@/2/local-defaults.path" so that default settings
+  changed via the PolicyKit helpers are not overriden by other
+  default settings that are manually set.
+
+-------------------------------------------------------------------
+Tue Jan 27 02:58:59 CET 2009 - crrodriguez@suse.de
+
+- remove "la" files [BNC#357465]
+
+-------------------------------------------------------------------
+Tue Jan 27 01:04:41 CET 2009 - vuntz@novell.com
+
+- Add gconf2-bnc468388-dbus-send-dest.patch to add send_destination
+  in the dbus policy. Fix bnc#468388.
+
+-------------------------------------------------------------------
+Fri Jan 23 05:51:17 CET 2009 - vuntz@novell.com
+
+- Drop gconf2-predictable-filenames.patch: this was fixed another
+  way upstream.
+
+-------------------------------------------------------------------
+Sun Jan 11 17:10:35 EST 2009 - mboman@suse.de
+
+- Update to version 2.25.0:
+  + Fix various format string warnings
+  + Sync saved state to disk before closing
+  + Add --search-key-regex option to gconftool
+  + Add --toggle option to gconftool
+  + Translation updates
+
+-------------------------------------------------------------------
+Thu Oct 30 04:53:19 CET 2008 - vuntz@novell.com
+
+- Add gconf2-pk-default-path.patch to fix the path used by the
+  PolicyKit mechanism.
+
+-------------------------------------------------------------------
+Tue Sep 23 13:03:30 CDT 2008 - maw@suse.de
+
+- Update to version 2.24.0:
+  + Fix pokit-policy-file-validate check
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 11 22:40:46 EDT 2008 - jpr@novell.com
+
+- Create system defaults directory so that the sanity check program
+  will not fail
+
+-------------------------------------------------------------------
+Tue Aug 26 23:17:15 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.2:
+  + Use the DBus session bus instead of /tmp for the IOR
+  + Install a DBus service for system-wide settings.
+
+-------------------------------------------------------------------
+Tue Jun 24 22:16:43 CEST 2008 - mauro@suse.de
+
+- Updated requirements for the -devel package in the spec (a package
+  in the requirements changed it name to dbus-1-glib-devel). 
+
+-------------------------------------------------------------------
+Sat Jun  7 00:48:35 CEST 2008 - maw@suse.de
+
+- Update to version 2.23.1:
+  + Stop spamming syslog
+  + Signal handling fixes
+  + use AC_HELP_STRINGS for nice formatting
+  + timeout batching work
+  + Fix a crash when unsetting a key with no writable source
+  + allow overriding $TMPDIR
+  + integration with D-BUS
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Jun  4 14:57:38 CEST 2008 - sbrabec@suse.cz
+
+- Fail smartly if /etc/gconf/schemas contains no schemas
+  (bnc#397009).
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Tue Mar 25 17:11:17 CET 2008 - rodrigo@suse.de
+
+- Tag patches 
+
+-------------------------------------------------------------------
+Fri Mar 14 03:05:28 CET 2008 - maw@suse.de
+
+- Update to version 2.22.0:
+  + Fix deprecated openldap calls
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 11 18:25:56 CET 2008 - sbrabec@suse.cz
+
+- Added /etc/gconf/gconf.xml.vendor for branding and vendor
+  specific settings.
+- Clean-up orphan /etc/opt/gnome/gconf/schemas on update.
+
+-------------------------------------------------------------------
+Thu Jan 31 21:30:53 CET 2008 - maw@suse.de
+
+- Update to version 2.21.90:
+  + Don't use deprecated functions.
+
+-------------------------------------------------------------------
+Wed Jan 23 09:36:16 CST 2008 - maw@suse.de
+
+- Update to version 2.21.1:
+  + String and documentation fixes
+- Add gconf2-pkgconfig.patch (temporary).
+
+-------------------------------------------------------------------
+Wed Jan 23 09:36:16 CST 2008 - maw@suse.de
+
+- Update to version 2.21.1:
+  + String and documentation fixes
+- Add gconf2-pkgconfig.patch (temporary).
+
+-------------------------------------------------------------------
+Fri Nov 23 12:36:28 CST 2007 - maw@suse.de
+
+- Update to version 2.20.1:
+  + Documentation improvements
+  + Example schemas included in the tarball
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 19 16:39:52 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 2.20.0:
+  * Build fixes
+  * Compiler warning fixes
+
+-------------------------------------------------------------------
+Wed Sep 12 19:28:13 CEST 2007 - sbrabec@suse.cz
+
+- Use mv -T to prevent incorrect target path (#245776).
+
+-------------------------------------------------------------------
+Wed Sep 12 16:14:01 CEST 2007 - sbrabec@suse.cz
+
+- Add support for deprecated /opt/gnome in gconftool-rebuild
+  (#245550).
+
+-------------------------------------------------------------------
+Mon Aug  6 22:40:05 CEST 2007 - maw@suse.de
+
+- Split off a -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig# in %postun.
+
+-------------------------------------------------------------------
+Fri Jul 13 18:07:14 CEST 2007 - bk@suse.de
+
+- Update to 2.19.1, several fixes for bugzilla.gnome.org bugs:
+  - gconf/gconftool: Add --search-key argument.     Bug #406329
+  - Init GThread, fixes noisy MEMORY-WARNING        Bug #432923
+  - Make --help* output translated.                 Bug #432925
+  - Fix strings used for errors about invalid keys. Bug #406251
+  - Fix build failure with -z defs in LDFLAGS       Bug #409221
+
+-------------------------------------------------------------------
+Wed Mar 21 11:46:34 CST 2007 - maw@suse.de
+
+- Update to 2.18.0.1
+- Bug fixes, including bugzilla.gnome.org 309016, 314343, 341724,
+  341828, 357206, 385142, 396071, 406251, 414916, 314343.
+
+-------------------------------------------------------------------
+Fri Feb 16 12:43:28 CST 2007 - maw@suse.de
+
+- Update to 2.16.0
+
+-------------------------------------------------------------------
+Thu Feb 15 17:42:12 CET 2007 - sbrabec@suse.cz
+
+- Call proper mkdir in %post (#245776).
+
+-------------------------------------------------------------------
+Wed Feb 14 18:19:06 CET 2007 - sbrabec@suse.cz
+
+- Create more robust scriptlets (Andreas Hanke, #245074).
+
+-------------------------------------------------------------------
+Tue Feb 13 11:50:51 CET 2007 - sbrabec@suse.cz
+
+- Do not build unusable static libraries (#238552#c17).
+
+-------------------------------------------------------------------
+Sat Jan  6 18:24:08 CET 2007 - sbrabec@suse.cz
+
+- Improved scriptlets to not break patchrpms.
+
+-------------------------------------------------------------------
+Fri Dec 29 15:10:53 CET 2006 - sbrabec@suse.cz
+
+- Fail reasonably if %find_gconf_schemas does not find any schemas.
+
+-------------------------------------------------------------------
+Mon Dec 11 19:18:57 CET 2006 - sbrabec@suse.cz
+
+- Prefix changed to /usr.
+- Spec file cleanup.
+- Defined new clean scriptlets (#48114).
+
+-------------------------------------------------------------------
+Fri Jul 21 19:19:53 CEST 2006 - gekker@suse.de
+
+- Update to version 2.14.0
+- Remove upstreamed patch
+  Misc
+   - Improved manual page (Christopher Hanna)
+   - Uses the new g_slice API (Benoît Dejean)
+   - Got rid of padding members in private structs (Benoît)
+   - Speed up the installation of multiple schema files (Josselin Mouette,
+     Mark LcLoughlin)
+  Fixes
+   - Only calls closelog() when it has HAVE_SYSLOG_H (Tor Lillqvist)
+   - Fixed a memory leak, bugs #332528 and #334047 (Kjartan Maraas,
+     Matthias Clasen)
+
+- Update to version 2.13.5
+  Features
+   - Save translations in separate file with markup backend's "meged"
+     mode (Mark McLoughlin)
+   - Switch on "merged" mode for the defaults database (Mark McLoughlin)
+   - Make gconf_value_compare() and gconf_entry_equal() public (Jorn Baayen)
+   - Lots of new docs (Dinoop Thomas)
+  Fixes
+   - Remove unused --enable-gconf-source configure option (Mark McLoughlin)
+   - Fix parallel build (Thomas Vander Stichele)
+   - Make gconf_client_remove_dir() clear the dir's cache (Vincent Untz)
+   - Win32 build fix - include DLLs in zipfile package (Tor Lillqvist)
+   - Make gconf_value_decode() work with schemas (Nicolas Peninguy)
+   - Fix segault unescaping strings (Dan Williams)
+   - Remove C99 usage (Jens Granseuer)
+
+-------------------------------------------------------------------
+Tue Apr 18 14:34:34 CEST 2006 - sbrabec@suse.cz
+
+- Include sabayon paths (#167282).
+
+-------------------------------------------------------------------
+Fri Apr 14 15:06:41 CEST 2006 - sbrabec@suse.cz
+
+- Create separate databases for installed schemas and customization
+  (#166223).
+
+-------------------------------------------------------------------
+Sun Feb 26 16:10:22 CET 2006 - aj@suse.de
+
+- Reduce BuildRequires.
+
+-------------------------------------------------------------------
+Mon Feb 13 18:59:01 CET 2006 - danw@suse.de
+
+- Fix to use the exact patch from the Red Hat bug (which doesn't
+  work in all circumstances, but doesn't have potential bad side
+  effects either. Discussion in bnc.)
+
+-------------------------------------------------------------------
+Mon Feb 13 18:36:00 CET 2006 - danw@suse.de
+
+- Remove SuSEconfig.gconf2 and patch gconftool-2 to do the
+  killall -HUP itself. (Based on patch from bugzilla.redhat.com
+  173869.) Re-fixes #118384 without needing an extra SuSEconfig
+  script.
+
+-------------------------------------------------------------------
+Mon Jan 30 12:50:00 CET 2006 - sbrabec@suse.cz
+
+- Added SuSEconfig.gconf2 forcing database reload (#118384).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:32 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan 23 20:55:30 CET 2006 - rml@suse.de
+
+- Add gconf2-fix-bgo-323479-rml.patch (Fixes Novell #144844)
+
+-------------------------------------------------------------------
+Wed Jan  4 11:57:33 CET 2006 - sbrabec@suse.cz
+
+- Improved gconftool-rebuild: not wait on update, support standard
+  options, not remove mandatory database.
+
+-------------------------------------------------------------------
+Wed Dec 14 18:24:47 CET 2005 - sbrabec@suse.cz
+
+- Added related old version cleanups (feature #2852).
+
+-------------------------------------------------------------------
+Wed Nov 30 18:03:42 CET 2005 - gekker@suse.de
+
+- Update to version 2.12.1
+
+-------------------------------------------------------------------
+Tue Sep  6 12:05:47 CEST 2005 - sbrabec@suse.cz
+
+- Updated to version 2.12.0.
+
+-------------------------------------------------------------------
+Mon Aug 22 21:44:06 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.92 
+
+-------------------------------------------------------------------
+Tue Aug  2 15:35:26 CEST 2005 - ro@suse.de
+
+- use gtk2-devel-packages in nfb 
+
+-------------------------------------------------------------------
+Mon Aug  1 19:29:15 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.90
+- Remove upstreamed sentinel patch 
+
+-------------------------------------------------------------------
+Mon Jul 11 17:55:27 CEST 2005 - sbrabec@suse.cz
+
+- Removed unneeded static modules and .la files for modules.
+
+-------------------------------------------------------------------
+Fri Jun 17 00:06:52 CEST 2005 - gekker@suse.de
+
+- Fix sentinel patch to work with new glib2. 
+
+-------------------------------------------------------------------
+Tue Jun  7 19:04:38 CEST 2005 - gekker@suse.de
+
+- Update to version 2.11.1. 
+
+-------------------------------------------------------------------
+Wed Jun  1 16:32:34 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements (#72282).
+
+-------------------------------------------------------------------
+Tue Mar  8 22:00:41 CET 2005 - gekker@suse.de
+
+- Update to version 2.10.0 (GNOME 2.10).
+
+-------------------------------------------------------------------
+Thu Feb 10 21:08:09 CET 2005 - gekker@suse.de
+
+- Update toversion 2.9.91 
+
+-------------------------------------------------------------------
+Wed Feb  2 08:57:01 CET 2005 - meissner@suse.de
+
+- Added sentinel markups to 2 functions.
+
+-------------------------------------------------------------------
+Wed Dec 15 17:05:44 CET 2004 - gekker@suse.de
+
+- Update to version 2.9.2 
+
+-------------------------------------------------------------------
+Mon Nov 22 11:53:41 CET 2004 - ro@suse.de
+
+- make specfile rpm3 compliant ...
+  (non numeric if arguments need quoting)
+
+-------------------------------------------------------------------
+Fri Nov 19 17:17:52 CET 2004 - gekker@suse.de
+
+- Update to version 2.8.1 
+
+-------------------------------------------------------------------
+Sat Oct 30 00:56:18 CEST 2004 - ro@suse.de
+
+- locale rename: no -> nb
+
+-------------------------------------------------------------------
+Tue Oct 12 11:57:12 CEST 2004 - sbrabec@suse.cz
+
+- Fixed libexecdir for bi-arch (#47050).
+
+-------------------------------------------------------------------
+Tue Aug 17 15:42:51 CEST 2004 - sbrabec@suse.cz
+
+- Fixed gconf database permissions in gconftool-rebuild (#43898).
+
+-------------------------------------------------------------------
+Fri Aug  6 01:19:53 CEST 2004 - clahey@suse.de
+
+- Added gconf2-predictable-filenames.patch from Federico.
+
+-------------------------------------------------------------------
+Wed May 05 17:17:30 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.6.1.
+
+-------------------------------------------------------------------
+Thu Apr 15 18:08:54 CEST 2004 - sbrabec@suse.cz
+
+- Updated to version 2.6.0 (GNOME 2.6).
+
+-------------------------------------------------------------------
+Tue Mar 30 16:44:39 CEST 2004 - sbrabec@suse.cz
+
+- Fixed typos in gconftool-rebuild.
+- Support for /usr/local in gconftool-rebuild.
+
+-------------------------------------------------------------------
+Wed Mar 17 13:09:28 CET 2004 - sbrabec@suse.cz
+
+- Removed pre-purge one-time action from %post - now integrated to
+  yast2-update (#36196, #33114).
+
+-------------------------------------------------------------------
+Thu Mar 11 16:43:01 CET 2004 - sbrabec@suse.cz
+
+- Removed obsolete SuSEconfig.gconf2 (#33114).
+- Fixed %postun to allow future rename of package.
+- Added support for one-time rebuild of old schemas in %post.
+
+-------------------------------------------------------------------
+Fri Jan  9 22:44:52 CET 2004 - schwab@suse.de
+
+- Fix quoting in autoconf macros.
+
+-------------------------------------------------------------------
+Thu Nov 20 14:33:56 CET 2003 - hhetter@suse.de
+
+- don't use fillup -i anymore 
+
+-------------------------------------------------------------------
+Thu Nov 13 18:46:49 CET 2003 - sbrabec@suse.cz
+
+- Implemented " all " schemas installation to work around 9.0 %postun
+  lost files (bug #33078) and to remove orphan gconf files (bug #33114).
+- Install all schemas to all directories and predefined simple gconf2
+  default path.
+- Implemented SuSeconfig.gconf2 entries installer (for default panel).
+
+-------------------------------------------------------------------
+Tue Nov 11 13:33:45 CET 2003 - sbrabec@suse.cz
+
+- Updated gconf2 path.
+- Fixed %postun.
+
+-------------------------------------------------------------------
+Mon Oct 06 16:23:50 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.4.0.1.
+
+-------------------------------------------------------------------
+Fri Sep 26 14:36:11 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.4.0 (GNOME 2.4).
+
+-------------------------------------------------------------------
+Mon Sep 08 11:59:17 CEST 2003 - sbrabec@suse.cz
+
+- Updated %postun - remove files generated by SuSEconfig.
+
+-------------------------------------------------------------------
+Tue Sep  2 12:56:38 CEST 2003 - mmj@suse.de
+
+- Add sysconfig metadata [#28876]
+
+-------------------------------------------------------------------
+Tue Jul 15 17:23:01 CEST 2003 - sbrabec@suse.cz
+
+- GNOME prefix change to /opt/gnome.
+
+-------------------------------------------------------------------
+Wed Jul 09 12:55:49 CEST 2003 - sbrabec@suse.cz
+
+- Call libtoolize and autoreconf (required for amd64).
+
+-------------------------------------------------------------------
+Wed Jun 18 14:03:21 CEST 2003 - sbrabec@suse.cz
+
+- Updated to version 2.2.1.
+- Fixed directory packaging.
+- Generate and package docs.
+- Prefix clash fix.
+- Fixed fillup.
+
+-------------------------------------------------------------------
+Mon May 26 14:29:32 CEST 2003 - coolo@suse.de
+
+- run ldconfig in %postun 
+
+-------------------------------------------------------------------
+Mon Apr 14 11:20:36 CEST 2003 - sbrabec@suse.cz
+
+- Require orbit2-devel, not ORBit2-devel for devel package.
+
+-------------------------------------------------------------------
+Wed Feb 26 15:42:36 CET 2003 - sbrabec@suse.cz
+
+- FHS fix (bug #24353).
+
+-------------------------------------------------------------------
+Wed Jan 29 11:34:24 CET 2003 - hhetter@suse.de
+
+- updated to 2.2.0 release 
+
+-------------------------------------------------------------------
+Wed Jan 22 13:07:13 CET 2003 - ke@suse.de
+
+- Add sysconfig metadata; reported by Ladislav Slezak [# 22643].
+
+-------------------------------------------------------------------
+Wed Jan 15 13:57:18 CET 2003 - sbrabec@suse.cz
+
+- Added expat to neededforbuild.
+
+-------------------------------------------------------------------
+Wed Jan 15 09:32:49 CET 2003 - hhetter@suse.de
+
+- updated to version 2.1.90
+- filelist fix 
+
+-------------------------------------------------------------------
+Mon Sep  2 11:40:48 CEST 2002 - hhetter@suse.de
+
+- allow updating every new schemas files except it is
+  already provided in preconfiguration (Bug Id#18707)   
+- surpress warnings from older schemas files (Bug Id#18570)
+
+-------------------------------------------------------------------
+Tue Aug 20 09:27:12 CEST 2002 - hhetter@suse.de
+
+- added prereqs 
+
+-------------------------------------------------------------------
+Fri Aug  9 08:47:56 CEST 2002 - kukuk@suse.de
+
+- Add openssl to neededforbuild
+
+-------------------------------------------------------------------
+Thu Aug  8 11:05:23 CEST 2002 - hhetter@suse.de
+
+- run gconf2-initial after the normal schema
+  copying procedure, to ensure schemas are available
+  ( Bug Id# 17437)
+
+-------------------------------------------------------------------
+Wed Aug  7 14:22:55 CEST 2002 - hhetter@suse.de
+
+- updated to version 1.2.1
+
+-------------------------------------------------------------------
+Sat Jul 27 18:41:48 CEST 2002 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Wed Jul 10 14:27:03 CEST 2002 - hhetter@suse.de
+
+- provide correct default path for dist <= 7.3
+- rebuild the database if the gconf2-initial flag is touched
+- reduce verbosity level
+- create gconf.xml.mandatory if it does not exist
+- some cleanups 
+
+-------------------------------------------------------------------
+Wed Jul 10 09:54:14 CEST 2002 - hhetter@suse.de
+
+- fix install path for dist <= 7.3 
+
+-------------------------------------------------------------------
+Fri Jul  5 14:04:25 CEST 2002 - hhetter@suse.de
+
+- fix default strings 
+
+-------------------------------------------------------------------
+Fri Jul  5 10:47:38 CEST 2002 - hhetter@suse.de
+
+- maintain three default configuration sources (root,user,orig.
+  GNOME) on dist >= 8.0
+- configuration source switchable via sysconfig
+
+-------------------------------------------------------------------
+Fri Jun 28 13:26:27 CEST 2002 - hhetter@suse.de
+
+- fix require name=%{ver} for devel package 
+
+-------------------------------------------------------------------
+Thu Jun 20 18:09:27 CEST 2002 - hhetter@suse.de
+
+- create gconf.xml.defaults if it does not exist
+  (needed by a single GNOME2 installation) 
+
+-------------------------------------------------------------------
+Thu Jun 20 11:21:14 CEST 2002 - hhetter@suse.de
+
+- fix gconf path
+- include schema-install-source to force schema installation
+  location 
+
+-------------------------------------------------------------------
+Fri Jun 14 09:05:23 CEST 2002 - hhetter@suse.de
+
+- correctly set configuration source 
+
+-------------------------------------------------------------------
+Thu Jun 13 09:25:42 CEST 2002 - hhetter@suse.de
+
+- use gconf1 database as gconf2 source to enable upgrades
+  without config loss
+- supply a correct path-file
+- set gconf2 configuration source in SuSEconfig script 
+
+-------------------------------------------------------------------
+Wed Jun 12 11:19:23 CEST 2002 - hhetter@suse.de
+
+- updated to version 1.2.0
+- SuSEconfig.gconf2 ensures correct schema registration
+  in the gconf database 
+
+-------------------------------------------------------------------
+Tue Jun  4 11:30:03 CEST 2002 - hhetter@suse.de
+
+- updated to 1.1.11, source frozen
+- remove db patch, this backend is not needed 
+
+-------------------------------------------------------------------
+Wed May 22 15:42:22 CEST 2002 - meissner@suse.de
+
+- moved aclocal m4 file where it belongs.
+
+-------------------------------------------------------------------
+Tue May 14 11:52:26 CEST 2002 - ro@suse.de
+
+- fix filelist 
+
+-------------------------------------------------------------------
+Tue May 14 11:49:06 CEST 2002 - ro@suse.de
+
+- use libdir 
+
+-------------------------------------------------------------------
+Tue Apr  9 14:08:22 CEST 2002 - hhetter@suse.de
+
+- build with DB depending on SuSE version
+- updated to version 1.1.9 [gnome desktop beta3] 
+
+-------------------------------------------------------------------
+Fri Feb  1 13:52:14 CET 2002 - hhetter@suse.de
+
+- patched to build with db4.0
+- build the db backend 
+
+-------------------------------------------------------------------
+Thu Jan 31 16:29:22 CET 2002 - hhetter@suse.de
+
+- updated to version 1.1.6 [gnome desktop alpha2] 
+
+-------------------------------------------------------------------
+Thu Jan 17 11:26:03 CET 2002 - hhetter@suse.de
+
+- finally move gconftool back into main package,
+  it is needed at runtime 
+
+-------------------------------------------------------------------
+Thu Jan 17 09:24:55 CET 2002 - hhetter@suse.de
+
+- prefix to /opt/gnome2 
+
+-------------------------------------------------------------------
+Tue Jan 15 10:23:09 CET 2002 - hhetter@suse.de
+
+- gconftool now moved into devel package 
+
+-------------------------------------------------------------------
+Mon Jan 14 11:46:10 CET 2002 - hhetter@suse.de
+
+- remove the link to gconftool-2, will be fixed in 
+  the GNOME session scripts, depending on the desktop
+  version being loaded 
+
+-------------------------------------------------------------------
+Fri Jan 11 08:33:34 CET 2002 - hhetter@suse.de
+
+- added freetype2/-devel to #neededforbuild 
+
+-------------------------------------------------------------------
+Tue Jan  8 10:33:23 CET 2002 - hhetter@suse.de
+
+- initial SuSE Release for GNOME 2.0 platform
+- use newer version instead of the broken 1.1.1 
+- install pkconfig files in correct place 
+

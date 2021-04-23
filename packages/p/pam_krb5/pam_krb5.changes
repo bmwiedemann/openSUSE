@@ -1,0 +1,600 @@
+-------------------------------------------------------------------
+Wed Jul 26 07:04:12 UTC 2017 - josef.moellers@suse.com
+
+- Update to 2.4.13:
+  * Fix a memory leak on FAST-capable clients
+  * Learn to run 'kdc' and 'kpasswdd', if appropriate
+  * Add the ability to specify a server principal
+  * Drop _pam_krb5_stash_chown_keyring functionality
+  * Fix a configure syntax error
+  * Handle ccname templates that don't include a type
+  * Fix a memory leak (static analysis)
+  * default to subsequent_prompt=false for chauthtok
+  * Don't close descriptors for fork-without-exec
+  * Handle PKINIT without duplicate prompting
+  * Add support for rxkad-k5-kdf
+  [pam_krb5-LINGUAS.dif]
+
+-------------------------------------------------------------------
+Wed May 28 15:24:21 UTC 2014 - ckornacker@suse.com
+
+- serialize make process to prevent build failures on s390
+
+-------------------------------------------------------------------
+Tue Apr 16 11:06:38 CEST 2013 - mc@suse.de
+
+- update to version 2.4.4
+  * drop configuration settings that duplicated library settings
+  * drop the existing_ticket option
+  * drop krb4 support
+  * add support for preserving configuration information in ccaches
+  * add support for creating and cleaning up DIR: ccaches
+  * finish cleaning up KEYRING: ccaches
+  * add experimental "armor" and "armor_strategy" options
+  * handle creation of /run/user/XXX for FILE: and DIR: caches
+  * handle different function signatures for krb5_trace_callback
+  * avoid overriding the primary when updating DIR: caches
+- obsolets patches (upstream):
+  * pam_krb5-2.2.0-0.5-configure_ac.dif
+  * use-urandom-for-tests.dif
+
+-------------------------------------------------------------------
+Thu Mar  7 13:38:09 UTC 2013 - cfarrell@suse.com
+
+- license update: BSD-3-Clause or LGPL-2.1+
+  it is a dual license - hence the operator is ^or^ not ^and^
+
+-------------------------------------------------------------------
+Fri Mar  1 16:27:46 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Tue Aug 23 15:12:32 CEST 2011 - mc@suse.de
+
+- disable checks during build. Does not work reliable in the
+  buildservice
+
+-------------------------------------------------------------------
+Sun Aug 21 15:17:26 UTC 2011 - mc@novell.com
+
+- update to version 2.3.13
+  * don't bother creating a v5 ccache in "external" mode
+  * add a "trace" option to enable libkrb5 tracing, if available
+  * avoid trying to get password-change creds twice
+  * use an in-memory ccache when obtaining tokens using v5 creds
+  * turn off creds==session in "sshd"
+  * add a "validate_user_user" option to control trying to perform
+    user-to-user authentication to validate TGTs when a keytab is not
+    available
+  * add an "ignore_k5login" option to control whether or not the module
+    will use the krb5_kuserok() function to perform additional
+    authorization checks
+  * turn on validation by default - verify_ap_req_nofail controls how we
+    treat errors reading keytab files now
+  * add an "always_allow_localname" option when we can use
+    krb5_aname_to_localname() to second-guess the krb5_kuserok() check
+  * prefer krb5_change_password() to krb5_set_password()
+
+-------------------------------------------------------------------
+Tue Mar  1 17:41:57 CET 2011 - mc@suse.de
+
+- make pam_sm_setcred less verbose (bnc#641008) 
+
+-------------------------------------------------------------------
+Fri Nov 19 10:44:35 UTC 2010 - coolo@novell.com
+
+- remove autoreconf call - breaks more than it helps
+
+-------------------------------------------------------------------
+Mon Mar 22 12:03:20 CET 2010 - mc@suse.de
+
+- update to version 2.3.11
+  * create credentials before trying to look up the location of 
+    the user's home directory via krb5_kuserok()
+
+-------------------------------------------------------------------
+Thu Mar  4 12:22:27 CET 2010 - mc@suse.de
+
+- update to version 2.3.10-3
+  * add a "chpw_prompt" option
+  * add a "multiple_ccaches" option
+  * fine-tune the logic for selecting which key we use for 
+    validating credentials 
+  * fixes
+
+-------------------------------------------------------------------
+Mon Feb  1 12:17:08 UTC 2010 - jengelh@medozas.de
+
+- package baselibs.conf
+
+-------------------------------------------------------------------
+Tue Nov  3 19:09:36 UTC 2009 - coolo@novell.com
+
+- updated patches to apply with fuzz=0
+
+-------------------------------------------------------------------
+Mon Jul 27 11:53:30 CEST 2009 - mc@novell.com
+
+- version 2.3.7
+  * when refreshing credentials, store the new creds in the default
+    ccache if $KRB5CCNAME isn't set.
+  * prefer a "host" key, if one is found, when validating TGTs
+
+-------------------------------------------------------------------
+Wed Jun 24 19:29:55 CEST 2009 - sbrabec@suse.cz
+
+- Supplement pam-32bit/pam-64bit in baselibs.conf (bnc#354164).
+
+-------------------------------------------------------------------
+Mon Jun 15 15:32:11 CEST 2009 - mc@suse.de
+
+- compile fixes for krb5 1.7
+
+-------------------------------------------------------------------
+Mon Jun  8 09:52:00 CEST 2009 - mc@suse.de
+
+- update to version 2.3.5
+  * make prompting behavior for non-existent accounts and users who
+    just press enter match up with those who aren't/don't (#502602,
+    CVE-2009-1384) 
+
+-------------------------------------------------------------------
+Wed May 20 11:49:22 CEST 2009 - mc@suse.de
+
+- update to version 2.3.4
+  * don't request password-changing credentials using the same options
+    we use for ticket-granting tickets
+  * close a couple of open pipes to defunct processes, fix a couple
+    of debug messages
+  * fix ccache permissions bypass when the "existing_ticket" option is
+    used (CVE-2008-3825, which affects 2.2.0-2.2.25, 2.3.0, and 2.3.1) 
+- obsolete a lot of patches.
+
+-------------------------------------------------------------------
+Thu Feb  5 12:31:29 CET 2009 - mc@suse.de
+
+- update translations 
+
+-------------------------------------------------------------------
+Mon Feb  2 17:30:42 CET 2009 - mc@suse.de
+
+- pam_sm_setcred should assume PAM_ESTABLISH_CRED
+  if no flag are passed (bnc#470414)
+
+-------------------------------------------------------------------
+Tue Jan 13 12:34:56 CET 2009 - olh@suse.de
+
+- obsolete old -XXbit packages (bnc#437293)
+
+-------------------------------------------------------------------
+Fri Nov 21 12:54:39 CET 2008 - mc@suse.de
+
+- update translations 
+
+-------------------------------------------------------------------
+Wed Nov  5 15:12:17 CET 2008 - mc@suse.de
+
+- update translations 
+
+-------------------------------------------------------------------
+Wed Oct 29 11:35:39 CET 2008 - mc@suse.de
+
+- use the upstream fix for 
+  pam_krb5-2.3.1-fix-pwchange-with-use_shmem.dif  
+
+-------------------------------------------------------------------
+Tue Oct 28 15:09:24 CET 2008 - mc@suse.de
+
+- simplify switch permissions of refresh credentials
+  (remove pam_krb5-2.2.11-1-refresh-drop-restore-priv.dif
+   add pam_krb5-2.3.1-switch-perms-on-refresh.dif) 
+
+-------------------------------------------------------------------
+Fri Oct 24 13:44:42 CEST 2008 - mc@suse.de
+
+- write new ticket into shmem after password change if requested.
+  (bnc#438181)
+- update translations
+
+-------------------------------------------------------------------
+Mon Oct  6 16:34:48 CEST 2008 - mc@suse.de
+
+- fixing pam_krb5 existing_ticket permission flaw (CVE-2008-3825)
+  (bnc#425861)
+
+-------------------------------------------------------------------
+Thu Sep  4 10:21:53 CEST 2008 - mc@suse.de
+
+- if the realm name given to us is NULL, don't bother consulting 
+  the appdefaults
+- check for the "debug" flag earlier 
+
+-------------------------------------------------------------------
+Mon Sep  1 11:19:22 CEST 2008 - mc@suse.de
+
+- validate new fetched credentials 
+
+-------------------------------------------------------------------
+Fri Jun 20 16:26:30 CEST 2008 - mc@suse.de
+
+- version 2.3.1 
+  * translations for messages!
+  * added the ability to set up tokens in the rxk5 format
+  * added the "token_strategy" option to control which methods we'll
+    try to use for setting tokens
+  * merge "null_afs" functionality from Jan Iven
+  * when we're changing passwords, force at least one attempt to
+    authenticate using the KDC, even in the pathological case where
+    there's no previously- entered password and we were told not to ask
+    for one (brc#400611)
+
+-------------------------------------------------------------------
+Fri Jun  6 10:07:14 CEST 2008 - mc@suse.de
+
+- update i18n files
+
+-------------------------------------------------------------------
+Fri May  9 11:52:06 CEST 2008 - mc@suse.de
+
+- update i18n files
+
+-------------------------------------------------------------------
+Mon Apr 14 12:31:25 CEST 2008 - mc@suse.de
+
+- update i18n files 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
+
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+
+-------------------------------------------------------------------
+Thu Mar 13 18:24:31 CET 2008 - mc@suse.de
+
+- add i18n support 
+
+-------------------------------------------------------------------
+Mon Feb 11 13:37:46 CET 2008 - mc@suse.de
+
+- version 2.2.22
+  * moved .k5login checks to a subprocess to avoid screwing with the
+    parent process's tokens and PAG (fallout from #371761)
+  * all options which took true/false before ("debug", "tokens", and
+    so on) can now take service names
+
+-------------------------------------------------------------------
+Wed Nov 21 16:37:51 CET 2007 - mc@suse.de
+
+- some bugfixes from upstream 
+
+-------------------------------------------------------------------
+Fri Nov  9 11:55:11 CET 2007 - mc@suse.de
+
+- version 2.2.21
+  * fix permissions problems on keyring ccaches, so that users can write
+    to them after we've set them up, and we can still do the cleanup
+- remove pam_krb5-2.2.20-1-copy-cache-priv-fix.dif; fix is upstream
+
+-------------------------------------------------------------------
+Mon Nov  5 17:51:05 CET 2007 - mc@suse.de
+
+- pam_krb5-2.2.20-1-copy-cache-priv-fix.dif
+  fix permissions on the ccache im not file case
+- pam_krb5-2.2.20-1-debug-log-choice.dif
+  improve debug log
+
+-------------------------------------------------------------------
+Mon Oct 29 11:51:49 CET 2007 - mc@suse.de
+
+- version 2.2.20
+  * fixes for credential refreshing 
+- remove obsolete patch pam_krb5-2.2.19-fix-format-error.dif
+  (fix is upstream)
+
+-------------------------------------------------------------------
+Fri Oct 26 11:00:16 CEST 2007 - mc@suse.de
+
+- version 2.2.19: 
+  * the "keytab" option can now be used to specify a custom location
+    for a given service from within krb5.conf
+  * log messages are now logged with facility LOG_AUTHPRIV (or LOG_AUTH
+    if LOG_AUTHPRIV is not defined) instead of the application's default
+    or LOG_USER
+  * added the "pkinit_identity" option to provide a way to specify
+    where the user's public-key credentials are, and "pkinit_flags" to
+    specify arbitrary flags for libkrb5 (Heimdal only)
+  * added the "preauth_options" option to provide a way to specify
+    arbitrary preauthentication options to libkrb5 (MIT only)
+  * added the "ccname_template" option to provide a way to specify
+    where the user's credentials should be stored, so that KEYRING:
+    credential caches can be deployed at will.
+
+-------------------------------------------------------------------
+Tue Aug  7 11:03:59 CEST 2007 - mc@suse.de
+
+- version 2.2.17: 
+  * corrected a typo in the pam_krb5(8) man page
+  * clarified that the "tokens" flag should only be needed for
+    applications which are not using PAM correctly
+  * don't bother using a helper for creating v4 ticket files when we're
+    just getting tokens
+  * clean up the debug message which we emit when we do v5->v4
+    principal name conversion
+  * compilation fixes
+  * let default "external" and "use_shmem" settings be specified at
+    compile-time
+  * correctly return a "unknown user" error when attempting to change
+    a password for a user who has no corresponding principal (#235020)
+  * don't bother using a helper for creating ccache files, which we're
+    just going to delete, when we need to get tokens
+ 
+-------------------------------------------------------------------
+Mon Jul 16 10:34:08 CEST 2007 - mc@suse.de
+
+- version 2.2.14
+  * treat a "client revoked" error as an "unknown principal" error 
+  * some small bugfixes
+
+-------------------------------------------------------------------
+Fri Jul 13 10:31:01 CEST 2007 - mc@suse.de
+
+- version 2.2.13
+  * make it possible to have more than one ccache (and tktfile) at
+    a time to work around apps which open a session, set the 
+    environment, and initialize creds (when we previously created
+    a ccache, removing the one which was named in the environment)
+
+-------------------------------------------------------------------
+Mon Jul  2 10:09:34 CEST 2007 - mc@suse.de
+
+- version 2.2.12
+  * add a "pwhelp" option.
+  * Display the KDC error to users.
+  * lots of bugfixes
+
+-------------------------------------------------------------------
+Thu Mar 15 12:34:55 CET 2007 - mc@suse.de
+
+- drop privileges in _pam_krb5_sly_maybe_refresh when
+  running in set uid and restore them on exit of this
+  function. This enables us to refresh the ticket 
+  after screen un-lock.
+  [#124611]
+
+-------------------------------------------------------------------
+Mon Sep 25 10:45:53 CEST 2006 - mc@suse.de
+
+- version 2.2.11
+- remove two patches with are upstream now
+  - pam_krb5-2.2.10-0-oldauthtok.dif
+  - pam_krb5-2.2.10-0-testfix.dif
+- make use of --with-os-distribution 
+
+-------------------------------------------------------------------
+Thu Sep 14 10:40:55 CEST 2006 - mc@suse.de
+
+- fix pam_set_item call for AUTHTOK and OLDAUTHTOK 
+- fix testcase
+- if the server returns an error message during password-changing,
+  let the user see it
+- add the "debug_sensitive" option, which actually logs passwords
+- add the "no_subsequent_prompt" option, to force the module to
+  always answer a libkrb5 prompt with the PAM_AUTHTOK value
+
+-------------------------------------------------------------------
+Tue Sep 12 11:37:12 CEST 2006 - mc@suse.de
+
+- version 2.2.10
+  * log text for server-supplied error code along with the 
+    failure information. 
+  * rework the prompting bits so that it makes more correct use of 
+    the initial_prompt/use_first_pass flags and correctly disables
+    use of the callback for arbitrary prompts
+  * give the caller a way to specify which prompter callback we 
+    should use.
+  * track whether or not we want to let libkrb5 ask for information
+    via the callbacks.
+  * and more fixes
+
+-------------------------------------------------------------------
+Thu Jul 27 11:03:27 CEST 2006 - mc@suse.de
+
+- version 2.2.9
+  * look for krb5/krb5.h in preference to krb5.h (new in
+    MIT Kerberos 1.5) 
+  * if the default principal in the ccache doesn't match the 
+    userinfo structure, update the userinfo structure.
+  * always use the name of the v5 principal when saving 
+    credentials, especially for the "external" case where 
+    it may not be the value we originally guessed
+  * be more careful about other ways which our prompting 
+    callback can try to break us
+  * go back to overwriting the template, to avoid uncontrolled
+    growth in the filename.
+  * build the new ccache name by appending the mkstemp template
+    instead of assuming the previous file ended with one
+  * and more fixes.
+- remove pam_krb5-2.2.3-1-prompter-segfault.dif it is upstream now
+
+-------------------------------------------------------------------
+Wed Jun 28 12:06:39 CEST 2006 - mc@suse.de
+
+- update to version 2.2.8
+  * fix reporting of the reasons for password change failures
+  * add "krb4_use_as_req" to completely disallow any attempts to get
+    v4 credentials 
+  * do 524 conversion for the "external" cases, too
+- remove obsolete patches
+
+-------------------------------------------------------------------
+Fri Apr 21 11:18:26 CEST 2006 - mc@suse.de
+
+- fix segfault in prompter [#165972] 
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:14 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Jan 17 11:41:33 CET 2006 - mc@suse.de
+
+- add two patches from upstream
+  * pam_krb5-upstreamfix-password-handling.dif
+  * pam_krb5-upstreamfix-testcase.dif 
+- build with more then one job
+
+-------------------------------------------------------------------
+Fri Jan 13 16:04:17 CET 2006 - mc@suse.de
+
+- set /usr/bin/afs5log executable 
+
+-------------------------------------------------------------------
+Wed Jan 11 14:29:53 CET 2006 - mc@suse.de
+
+- add -fstack-protector to CFLAGS 
+
+-------------------------------------------------------------------
+Tue Dec 20 11:12:23 CET 2005 - mc@suse.de
+
+- update to version 2.2.3
+- remove pam_krb5-2.2.0-0.5-NULL-fix.dif; patch is now upstream
+
+-------------------------------------------------------------------
+Fri Dec  2 11:38:25 CET 2005 - mc@suse.de
+
+- update to version 2.2.2
+   * don't leak the keytab file descriptor
+   * actually check for AFS support first, so that the
+     ioctl-only support case will work properly.
+
+-------------------------------------------------------------------
+Mon Nov 14 16:28:45 CET 2005 - uli@suse.de
+
+- no afs_syscall on ARM
+
+-------------------------------------------------------------------
+Mon Nov 14 11:23:10 CET 2005 - mc@suse.de
+
+- update to version 2.2.0-2
+- remove obsolete patch (debug_false is upstream now) 
+
+-------------------------------------------------------------------
+Mon Oct 10 14:02:29 CEST 2005 - mc@suse.de
+
+- update to current CVS version
+- drop some patches (they are upstream now)
+- fix NULL problem
+
+-------------------------------------------------------------------
+Wed Aug 17 15:27:05 CEST 2005 - mc@suse.de
+
+- got official fix for the authtok problem
+  [#104051] 
+
+-------------------------------------------------------------------
+Mon Aug 15 13:41:42 CEST 2005 - mc@suse.de
+
+- fix the behavior of password changing if use_authtok
+  is not present [#104051] 
+
+-------------------------------------------------------------------
+Wed Jun 29 16:43:58 CEST 2005 - mc@suse.de
+
+- fix change password 
+
+-------------------------------------------------------------------
+Fri Jun 10 12:43:04 CEST 2005 - mc@suse.de
+
+- set default for debug to false [#87005] 
+
+-------------------------------------------------------------------
+Thu Apr  7 10:14:03 CEST 2005 - mc@suse.de
+
+- switch to version 2.2.0-0.5 
+
+-------------------------------------------------------------------
+Tue Feb 22 12:31:53 CET 2005 - nadvornik@suse.cz
+
+- fixed parsing of time values
+
+-------------------------------------------------------------------
+Mon Feb 21 17:40:20 CET 2005 - mc@suse.de
+
+- add pam_krb5-use-krb5_afslog.dif [#51047] 
+
+-------------------------------------------------------------------
+Tue Jan 18 16:43:06 CET 2005 - okir@suse.de
+
+- updated to latest pam_krb5 snapshot from sourcforge CVS
+
+-------------------------------------------------------------------
+Tue Jan 11 17:48:14 CET 2005 - ro@suse.de
+
+- re-added afs module (added krbafs to neededforbuild) 
+
+-------------------------------------------------------------------
+Mon Nov 22 02:14:17 CET 2004 - ro@suse.de
+
+- remove afs for the moment, mit-kerberos does not have support
+
+-------------------------------------------------------------------
+Wed Apr 28 17:26:47 CEST 2004 - ro@suse.de
+
+- added -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Fri Jan 16 12:27:46 CET 2004 - kukuk@suse.de
+
+- Add pam-devel to neededforbuild
+
+-------------------------------------------------------------------
+Sun Jan 11 12:03:01 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Wed Jul 16 14:29:56 CEST 2003 - nadvornik@suse.cz
+
+- replaced by different implementation of pam_krb5
+- afs support
+
+-------------------------------------------------------------------
+Fri Jun 20 11:35:20 CEST 2003 - okir@suse.de
+
+- fix build problem with latest heimdal
+- another fix for passwd updates (#20284)
+
+-------------------------------------------------------------------
+Wed Jun 18 12:05:04 CEST 2003 - ro@suse.de
+
+- use kerberos-devel-packages in neededforbuild 
+
+-------------------------------------------------------------------
+Tue Apr 15 10:23:57 CEST 2003 - ro@suse.de
+
+- fixed neededforbuild 
+
+-------------------------------------------------------------------
+Wed Aug 28 11:43:01 CEST 2002 - okir@suse.de
+
+- Security fix (#18463): unbecome_user did not properly reassert
+  original privilege, and the caller didn't check the return value.
+
+-------------------------------------------------------------------
+Wed Jul 31 14:45:27 CEST 2002 - okir@suse.de
+
+- suse_update_config now updates the right files
+
+-------------------------------------------------------------------
+Wed Jul 24 14:14:28 CEST 2002 - okir@suse.de
+
+- fixed passwd(1) support; updated README
+
+-------------------------------------------------------------------
+Tue Jul 23 03:38:08 PDT 2002 - okir@suse.de
+
+- initial packaging
+

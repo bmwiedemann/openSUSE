@@ -1,0 +1,26 @@
+diff -Pdru feh-3.3.orig/config.mk feh-3.3/config.mk
+--- feh-3.3.orig/config.mk	2020-01-23 13:02:06.447700070 +0100
++++ feh-3.3/config.mk	2020-01-23 13:08:13.502047086 +0100
+@@ -34,8 +34,8 @@
+ scalable_icon_dir = ${icon_dir}/scalable/apps
+ 
+ # default CFLAGS
+-CFLAGS ?= -g -O2
+-CFLAGS += -Wall -Wextra -pedantic
++OPTFLAGS = -g -O2
++CFLAGS += -Wall -Wextra -pedantic $(OPTFLAGS)
+ 
+ # Settings for glibc >= 2.19 - may need to be adjusted for other systems
+ CFLAGS += -std=c11 -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700
+diff -Pdru feh-3.3.orig/src/Makefile feh-3.3/src/Makefile
+--- feh-3.3.orig/src/Makefile	2020-01-23 13:02:06.451700139 +0100
++++ feh-3.3/src/Makefile	2020-01-23 13:06:40.140432705 +0100
+@@ -40,7 +40,7 @@
+ I_DSTS = ${I_SRCS:.raw=.inc}
+ 
+ feh: deps.mk ${OBJECTS} ${I_DSTS}
+-	${CC} ${LDFLAGS} ${CFLAGS} -o $@ ${OBJECTS} ${LDLIBS}
++	@${CC} ${LDFLAGS} ${CFLAGS} -o $@ ${OBJECTS} ${LDLIBS}
+ 
+ include deps.mk
+ 

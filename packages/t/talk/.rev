@@ -1,0 +1,148 @@
+<revisionlist>
+  <revision rev="1" vrev="592">
+    <srcmd5>33b82a225479cf76472ddba64c848f7c</srcmd5>
+    <version>0.17</version>
+    <time>1168450653</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="597">
+    <srcmd5>041c7c15b720b6513baa1ea98930ff8b</srcmd5>
+    <version>0.17</version>
+    <time>1173346006</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="601">
+    <srcmd5>8113f962fecfa4f4e8ae90581c9039ae</srcmd5>
+    <version>0.17</version>
+    <time>1175185841</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="662">
+    <srcmd5>03b900931d2da04b0f5e87f1745cb216</srcmd5>
+    <version>0.17</version>
+    <time>1207860591</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="684">
+    <srcmd5>68469a2453af6a42b78a6b72a9cf6988</srcmd5>
+    <version>0.17</version>
+    <time>1218065747</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="686">
+    <srcmd5>68469a2453af6a42b78a6b72a9cf6988</srcmd5>
+    <version>0.17</version>
+    <time>1218065747</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="699">
+    <srcmd5>cae293a6ebfc9b72d7d1f8b0092a4d74</srcmd5>
+    <version>0.17</version>
+    <time>1261401970</time>
+    <user>autobuild</user>
+    <comment>Copy from network/talk based on submit request 27224 from user coolo
+</comment>
+  </revision>
+  <revision rev="8" vrev="700">
+    <srcmd5>4199612860da2b6b664322ecfaf70368</srcmd5>
+    <version>0.17</version>
+    <time>1268926291</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="9" vrev="702">
+    <srcmd5>4199612860da2b6b664322ecfaf70368</srcmd5>
+    <version>0.17</version>
+    <time>1278667391</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="703">
+    <srcmd5>4199612860da2b6b664322ecfaf70368</srcmd5>
+    <version>0.17</version>
+    <time>1278678621</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="11" vrev="706">
+    <srcmd5>4199612860da2b6b664322ecfaf70368</srcmd5>
+    <version>0.17</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="708">
+    <srcmd5>4199612860da2b6b664322ecfaf70368</srcmd5>
+    <version>0.17</version>
+    <time>1319182505</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="13" vrev="709">
+    <srcmd5>7e29ae5160336552416766264c7d4115</srcmd5>
+    <version>0.17</version>
+    <time>1323194835</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="14" vrev="711">
+    <srcmd5>7e29ae5160336552416766264c7d4115</srcmd5>
+    <version>0.17</version>
+    <time>1340184256</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="15" vrev="713">
+    <srcmd5>7e29ae5160336552416766264c7d4115</srcmd5>
+    <version>0.17</version>
+    <time>1359110462</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="16" vrev="715">
+    <srcmd5>7e29ae5160336552416766264c7d4115</srcmd5>
+    <version>0.17</version>
+    <time>1379664765</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="717">
+    <srcmd5>7e29ae5160336552416766264c7d4115</srcmd5>
+    <version>0.17</version>
+    <time>1409303449</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="718">
+    <srcmd5>9382cf2379c6a68f626e9839fa866924</srcmd5>
+    <version>0.17</version>
+    <time>1426796353</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>291313</requestid>
+  </revision>
+  <revision rev="19" vrev="719">
+    <srcmd5>484c1c4cc55671df84cef29cae052c10</srcmd5>
+    <version>0.17</version>
+    <time>1487462605</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build
+  + netkit-ntalk-curses-lvalue.patch</comment>
+    <requestid>458636</requestid>
+  </revision>
+  <revision rev="20" vrev="720">
+    <srcmd5>9aefd7973397c2bb418d705148c68593</srcmd5>
+    <version>0.17</version>
+    <time>1497944360</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed xinetd service
+- Added ntalk.service and ntalk.socket (forwarded request 503970 from aliouliaki)</comment>
+    <requestid>503972</requestid>
+  </revision>
+  <revision rev="21" vrev="721">
+    <srcmd5>afa976b4f4f1f03a72a5e86c362e0a6d</srcmd5>
+    <version>0.17</version>
+    <time>1564155268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>718845</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,44 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>41118a5678ece729b56e47da6b6b4980</srcmd5>
+    <version>1</version>
+    <time>1432982020</time>
+    <user>dimstar_suse</user>
+    <comment>NEEEEDZ by LO ;)</comment>
+    <requestid>309078</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f5a457febfcd9682b6a6db04e7d367c2</srcmd5>
+    <version>1</version>
+    <time>1447234150</time>
+    <user>dimstar_suse</user>
+    <comment>- Redirect error output of ls to /dev/null to not clutter the posttrans
+  script output bnc#900186</comment>
+    <requestid>342249</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6578a9081d5f5fe38c8153ce7c1e529f</srcmd5>
+    <version>1</version>
+    <time>1493363460</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compat symlink wrt bsc#1035087 to avoid some failures
+  * Full fix needs to go to libreoffice package.</comment>
+    <requestid>489796</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0447bc772ae2f114cb7ea72e15fcec30</srcmd5>
+    <version>1</version>
+    <time>1495267835</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bsc#953511 by removing leftover dirs</comment>
+    <requestid>495355</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>d2523117b74900f2bb1adb5b657c8760</srcmd5>
+    <version>1</version>
+    <time>1562590749</time>
+    <user>dimstar_suse</user>
+    <comment>- Work with paranoid umask settings bsc#1139727</comment>
+    <requestid>713000</requestid>
+  </revision>
+</revisionlist>

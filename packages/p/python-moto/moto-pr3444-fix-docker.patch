@@ -1,0 +1,382 @@
+From 204fdabcc9d84b5efdaecae3fcc86c5bc893c38a Mon Sep 17 00:00:00 2001
+From: Bert Blommers <info@bertblommers.nl>
+Date: Sun, 8 Nov 2020 13:49:27 +0000
+Subject: [PATCH 1/5] #3359 - Downgrade Docker-version to not break mock_lambda
+ without Docker running
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index bcbc88a20..1eb781dbc 100755
+--- a/setup.py
++++ b/setup.py
+@@ -78,7 +78,7 @@ def get_version():
+ _dep_PyYAML = "PyYAML>=5.1"
+ _dep_python_jose = "python-jose[cryptography]>=3.1.0,<4.0.0"
+ _dep_python_jose_ecdsa_pin = "ecdsa<0.15"  # https://github.com/spulec/moto/pull/3263#discussion_r477404984
+-_dep_docker = "docker>=2.5.1"
++_dep_docker = "docker>=2.5.1,<=4.3.0"  # https://github.com/spulec/moto/issues/3359
+ _dep_jsondiff = "jsondiff>=1.1.2"
+ _dep_aws_xray_sdk = "aws-xray-sdk!=0.96,>=0.93"
+ _dep_idna = "idna<3,>=2.5"
+
+From c0700aa704356e314ac06d08542fcedf24af34ab Mon Sep 17 00:00:00 2001
+From: Bert Blommers <info@bertblommers.nl>
+Date: Sun, 8 Nov 2020 14:16:02 +0000
+Subject: [PATCH 2/5] Revert "#3359 - Downgrade Docker-version to not break
+ mock_lambda without Docker running"
+
+This reverts commit 204fdabcc9d84b5efdaecae3fcc86c5bc893c38a.
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 1eb781dbc..bcbc88a20 100755
+--- a/setup.py
++++ b/setup.py
+@@ -78,7 +78,7 @@ def get_version():
+ _dep_PyYAML = "PyYAML>=5.1"
+ _dep_python_jose = "python-jose[cryptography]>=3.1.0,<4.0.0"
+ _dep_python_jose_ecdsa_pin = "ecdsa<0.15"  # https://github.com/spulec/moto/pull/3263#discussion_r477404984
+-_dep_docker = "docker>=2.5.1,<=4.3.0"  # https://github.com/spulec/moto/issues/3359
++_dep_docker = "docker>=2.5.1"
+ _dep_jsondiff = "jsondiff>=1.1.2"
+ _dep_aws_xray_sdk = "aws-xray-sdk!=0.96,>=0.93"
+ _dep_idna = "idna<3,>=2.5"
+
+From 390a4d55102f49cade830bf422ebf36e3be7dacb Mon Sep 17 00:00:00 2001
+From: Bert Blommers <info@bertblommers.nl>
+Date: Sun, 8 Nov 2020 14:18:49 +0000
+Subject: [PATCH 3/5] #3359 - Only initiate Docker when invoking Lambdas
+
+---
+ moto/awslambda/models.py | 38 +++++++++++++++++++++++---------------
+ 1 file changed, 23 insertions(+), 15 deletions(-)
+
+diff --git a/moto/awslambda/models.py b/moto/awslambda/models.py
+index ce9c78fc6..12f98ec0c 100644
+--- a/moto/awslambda/models.py
++++ b/moto/awslambda/models.py
+@@ -162,25 +162,11 @@ def __init__(self, spec, region, validate_s3=True, version=1):
+         self.run_time = spec["Runtime"]
+         self.logs_backend = logs_backends[self.region]
+         self.environment_vars = spec.get("Environment", {}).get("Variables", {})
+-        self.docker_client = docker.from_env()
++        self.docker_client = None
+         self.policy = None
+         self.state = "Active"
+         self.reserved_concurrency = spec.get("ReservedConcurrentExecutions", None)
+ 
+-        # Unfortunately mocking replaces this method w/o fallback enabled, so we
+-        # need to replace it if we detect it's been mocked
+-        if requests.adapters.HTTPAdapter.send != _orig_adapter_send:
+-            _orig_get_adapter = self.docker_client.api.get_adapter
+-
+-            def replace_adapter_send(*args, **kwargs):
+-                adapter = _orig_get_adapter(*args, **kwargs)
+-
+-                if isinstance(adapter, requests.adapters.HTTPAdapter):
+-                    adapter.send = functools.partial(_orig_adapter_send, adapter)
+-                return adapter
+-
+-            self.docker_client.api.get_adapter = replace_adapter_send
+-
+         # optional
+         self.description = spec.get("Description", "")
+         self.memory_size = spec.get("MemorySize", 128)
+@@ -242,6 +228,26 @@ def replace_adapter_send(*args, **kwargs):
+ 
+         self.tags = dict()
+ 
++    def initiate_docker_client(self):
++        # We should only initiate the Docker Client at runtime.
++        # The docker.from_env() call will fall if Docker is not running
++        if self.docker_client is None:
++            self.docker_client = docker.from_env()
++
++            # Unfortunately mocking replaces this method w/o fallback enabled, so we
++            # need to replace it if we detect it's been mocked
++            if requests.adapters.HTTPAdapter.send != _orig_adapter_send:
++                _orig_get_adapter = self.docker_client.api.get_adapter
++
++                def replace_adapter_send(*args, **kwargs):
++                    adapter = _orig_get_adapter(*args, **kwargs)
++
++                    if isinstance(adapter, requests.adapters.HTTPAdapter):
++                        adapter.send = functools.partial(_orig_adapter_send, adapter)
++                    return adapter
++
++                self.docker_client.api.get_adapter = replace_adapter_send
++
+     def set_version(self, version):
+         self.function_arn = make_function_ver_arn(
+             self.region, ACCOUNT_ID, self.function_name, version
+@@ -412,6 +418,8 @@ def _invoke_lambda(self, code, event=None, context=None):
+ 
+             env_vars.update(self.environment_vars)
+ 
++            self.initiate_docker_client()
++
+             container = exit_code = None
+             log_config = docker.types.LogConfig(type=docker.types.LogConfig.types.JSON)
+             with _DockerDataVolumeContext(self) as data_vol:
+
+From 8d3cc3ef326ac4d82b79a5e20276bc9215c85fd7 Mon Sep 17 00:00:00 2001
+From: Bert Blommers <info@bertblommers.nl>
+Date: Sun, 8 Nov 2020 15:16:53 +0000
+Subject: [PATCH 4/5] #3359 - Reuse Docker-on-request for AWSLambda and Batch
+
+---
+ moto/awslambda/models.py | 31 ++++---------------------------
+ moto/batch/models.py     | 22 +++-------------------
+ moto/utilities/docker.py | 33 +++++++++++++++++++++++++++++++++
+ 3 files changed, 40 insertions(+), 46 deletions(-)
+ create mode 100644 moto/utilities/docker.py
+
+diff --git a/moto/awslambda/models.py b/moto/awslambda/models.py
+index 12f98ec0c..c5f29fd68 100644
+--- a/moto/awslambda/models.py
++++ b/moto/awslambda/models.py
+@@ -17,13 +17,12 @@
+ import re
+ import zipfile
+ import uuid
+-import functools
+ import tarfile
+ import calendar
+ import threading
+ import traceback
+ import weakref
+-import requests.adapters
++import requests.exceptions
+ 
+ from boto3 import Session
+ 
+@@ -47,6 +46,7 @@
+ from moto.dynamodb2 import dynamodb_backends2
+ from moto.dynamodbstreams import dynamodbstreams_backends
+ from moto.core import ACCOUNT_ID
++from moto.utilities.docker import DockerModel
+ 
+ logger = logging.getLogger(__name__)
+ 
+@@ -55,7 +55,6 @@
+ except ImportError:
+     from backports.tempfile import TemporaryDirectory
+ 
+-_orig_adapter_send = requests.adapters.HTTPAdapter.send
+ docker_3 = docker.__version__[0] >= "3"
+ 
+ 
+@@ -151,8 +150,9 @@ def __exit__(self, exc_type, exc_val, exc_tb):
+                     raise  # multiple processes trying to use same volume?
+ 
+ 
+-class LambdaFunction(CloudFormationModel):
++class LambdaFunction(CloudFormationModel, DockerModel):
+     def __init__(self, spec, region, validate_s3=True, version=1):
++        DockerModel.__init__(self)
+         # required
+         self.region = region
+         self.code = spec["Code"]
+@@ -162,7 +162,6 @@ def __init__(self, spec, region, validate_s3=True, version=1):
+         self.run_time = spec["Runtime"]
+         self.logs_backend = logs_backends[self.region]
+         self.environment_vars = spec.get("Environment", {}).get("Variables", {})
+-        self.docker_client = None
+         self.policy = None
+         self.state = "Active"
+         self.reserved_concurrency = spec.get("ReservedConcurrentExecutions", None)
+@@ -228,26 +227,6 @@ def __init__(self, spec, region, validate_s3=True, version=1):
+ 
+         self.tags = dict()
+ 
+-    def initiate_docker_client(self):
+-        # We should only initiate the Docker Client at runtime.
+-        # The docker.from_env() call will fall if Docker is not running
+-        if self.docker_client is None:
+-            self.docker_client = docker.from_env()
+-
+-            # Unfortunately mocking replaces this method w/o fallback enabled, so we
+-            # need to replace it if we detect it's been mocked
+-            if requests.adapters.HTTPAdapter.send != _orig_adapter_send:
+-                _orig_get_adapter = self.docker_client.api.get_adapter
+-
+-                def replace_adapter_send(*args, **kwargs):
+-                    adapter = _orig_get_adapter(*args, **kwargs)
+-
+-                    if isinstance(adapter, requests.adapters.HTTPAdapter):
+-                        adapter.send = functools.partial(_orig_adapter_send, adapter)
+-                    return adapter
+-
+-                self.docker_client.api.get_adapter = replace_adapter_send
+-
+     def set_version(self, version):
+         self.function_arn = make_function_ver_arn(
+             self.region, ACCOUNT_ID, self.function_name, version
+@@ -418,8 +397,6 @@ def _invoke_lambda(self, code, event=None, context=None):
+ 
+             env_vars.update(self.environment_vars)
+ 
+-            self.initiate_docker_client()
+-
+             container = exit_code = None
+             log_config = docker.types.LogConfig(type=docker.types.LogConfig.types.JSON)
+             with _DockerDataVolumeContext(self) as data_vol:
+diff --git a/moto/batch/models.py b/moto/batch/models.py
+index c4bc81a73..6a2d889bc 100644
+--- a/moto/batch/models.py
++++ b/moto/batch/models.py
+@@ -1,6 +1,5 @@
+ from __future__ import unicode_literals
+ import re
+-import requests.adapters
+ from itertools import cycle
+ import six
+ import datetime
+@@ -8,7 +7,6 @@
+ import uuid
+ import logging
+ import docker
+-import functools
+ import threading
+ import dateutil.parser
+ from boto3 import Session
+@@ -30,8 +28,8 @@
+ from moto.ec2.models import INSTANCE_TYPES as EC2_INSTANCE_TYPES
+ from moto.iam.exceptions import IAMNotFoundException
+ from moto.core import ACCOUNT_ID as DEFAULT_ACCOUNT_ID
++from moto.utilities.docker import DockerModel
+ 
+-_orig_adapter_send = requests.adapters.HTTPAdapter.send
+ logger = logging.getLogger(__name__)
+ COMPUTE_ENVIRONMENT_NAME_REGEX = re.compile(
+     r"^[A-Za-z0-9][A-Za-z0-9_-]{1,126}[A-Za-z0-9]$"
+@@ -311,7 +309,7 @@ def create_from_cloudformation_json(
+         return backend.get_job_definition_by_arn(arn)
+ 
+ 
+-class Job(threading.Thread, BaseModel):
++class Job(threading.Thread, BaseModel, DockerModel):
+     def __init__(self, name, job_def, job_queue, log_backend, container_overrides):
+         """
+         Docker Job
+@@ -324,6 +322,7 @@ def __init__(self, name, job_def, job_queue, log_backend, container_overrides):
+         :type log_backend: moto.logs.models.LogsBackend
+         """
+         threading.Thread.__init__(self)
++        DockerModel.__init__(self)
+ 
+         self.job_name = name
+         self.job_id = str(uuid.uuid4())
+@@ -342,24 +341,9 @@ def __init__(self, name, job_def, job_queue, log_backend, container_overrides):
+         self.daemon = True
+         self.name = "MOTO-BATCH-" + self.job_id
+ 
+-        self.docker_client = docker.from_env()
+         self._log_backend = log_backend
+         self.log_stream_name = None
+ 
+-        # Unfortunately mocking replaces this method w/o fallback enabled, so we
+-        # need to replace it if we detect it's been mocked
+-        if requests.adapters.HTTPAdapter.send != _orig_adapter_send:
+-            _orig_get_adapter = self.docker_client.api.get_adapter
+-
+-            def replace_adapter_send(*args, **kwargs):
+-                adapter = _orig_get_adapter(*args, **kwargs)
+-
+-                if isinstance(adapter, requests.adapters.HTTPAdapter):
+-                    adapter.send = functools.partial(_orig_adapter_send, adapter)
+-                return adapter
+-
+-            self.docker_client.api.get_adapter = replace_adapter_send
+-
+     def describe(self):
+         result = {
+             "jobDefinition": self.job_definition.arn,
+diff --git a/moto/utilities/docker.py b/moto/utilities/docker.py
+new file mode 100644
+index 000000000..576a9df1d
+--- /dev/null
++++ b/moto/utilities/docker.py
+@@ -0,0 +1,33 @@
++import docker
++import functools
++import requests.adapters
++
++
++_orig_adapter_send = requests.adapters.HTTPAdapter.send
++
++
++class DockerModel:
++    def __init__(self):
++        self.__docker_client = None
++
++    @property
++    def docker_client(self):
++        if self.__docker_client is None:
++            # We should only initiate the Docker Client at runtime.
++            # The docker.from_env() call will fall if Docker is not running
++            self.__docker_client = docker.from_env()
++
++            # Unfortunately mocking replaces this method w/o fallback enabled, so we
++            # need to replace it if we detect it's been mocked
++            if requests.adapters.HTTPAdapter.send != _orig_adapter_send:
++                _orig_get_adapter = self.docker_client.api.get_adapter
++
++                def replace_adapter_send(*args, **kwargs):
++                    adapter = _orig_get_adapter(*args, **kwargs)
++
++                    if isinstance(adapter, requests.adapters.HTTPAdapter):
++                        adapter.send = functools.partial(_orig_adapter_send, adapter)
++                    return adapter
++
++                self.docker_client.api.get_adapter = replace_adapter_send
++        return self.__docker_client
+
+From b5b1c45d68446d242be58b02089e1120bb9f6a51 Mon Sep 17 00:00:00 2001
+From: Bert Blommers <info@bertblommers.nl>
+Date: Mon, 9 Nov 2020 16:31:18 +0000
+Subject: [PATCH 5/5] Rename DockerUtilities to differentiate from
+ docker-dependency
+
+---
+ moto/awslambda/models.py                          | 2 +-
+ moto/batch/models.py                              | 2 +-
+ moto/utilities/{docker.py => docker_utilities.py} | 0
+ 3 files changed, 2 insertions(+), 2 deletions(-)
+ rename moto/utilities/{docker.py => docker_utilities.py} (100%)
+
+diff --git a/moto/awslambda/models.py b/moto/awslambda/models.py
+index c5f29fd68..a26fcba40 100644
+--- a/moto/awslambda/models.py
++++ b/moto/awslambda/models.py
+@@ -46,7 +46,7 @@
+ from moto.dynamodb2 import dynamodb_backends2
+ from moto.dynamodbstreams import dynamodbstreams_backends
+ from moto.core import ACCOUNT_ID
+-from moto.utilities.docker import DockerModel
++from moto.utilities.docker_utilities import DockerModel
+ 
+ logger = logging.getLogger(__name__)
+ 
+diff --git a/moto/batch/models.py b/moto/batch/models.py
+index 6a2d889bc..f729144d8 100644
+--- a/moto/batch/models.py
++++ b/moto/batch/models.py
+@@ -28,7 +28,7 @@
+ from moto.ec2.models import INSTANCE_TYPES as EC2_INSTANCE_TYPES
+ from moto.iam.exceptions import IAMNotFoundException
+ from moto.core import ACCOUNT_ID as DEFAULT_ACCOUNT_ID
+-from moto.utilities.docker import DockerModel
++from moto.utilities.docker_utilities import DockerModel
+ 
+ logger = logging.getLogger(__name__)
+ COMPUTE_ENVIRONMENT_NAME_REGEX = re.compile(
+diff --git a/moto/utilities/docker.py b/moto/utilities/docker_utilities.py
+similarity index 100%
+rename from moto/utilities/docker.py
+rename to moto/utilities/docker_utilities.py

@@ -1,0 +1,8 @@
+<package name="anjuta-extras" project="openSUSE:Factory">
+  <title>Extra plugins for anjuta</title>
+  <description>The package contains the following plugins:
+
+    * Scintilla Editor
+    * Scratchbox Support</description>
+  <devel project="GNOME:Factory" package="anjuta-extras"/>
+</package>

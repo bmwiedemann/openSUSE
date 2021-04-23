@@ -1,0 +1,6 @@
+<package name="perl-Convert-ASN1" project="openSUSE:Factory">
+  <title>ASN.1 Encode/Decode library</title>
+  <description>Convert::ASN1 encodes and decodes ASN.1 data structures using BER/DER
+rules.</description>
+  <devel project="devel:languages:perl" package="perl-Convert-ASN1"/>
+</package>

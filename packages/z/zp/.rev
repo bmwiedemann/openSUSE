@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c5407f2313a2789c5e685e5cdac9641d</srcmd5>
+    <version>0.2.0</version>
+    <time>1554384177</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release 0.2.0
+  * Model the short commands as sh aliases/functions instead
+- Version 0.1.0
+  * `zp`: `sudo zypper`
+  * `zi`: `sudo zypper install`
+  * `zr`: `sudo zypper remove`
+  * `zu`: `sudo zypper update` (Leap) or `sudo zypper dup` (Tumbleweed)
+  * `zs`: `sudo zypper search`
+</comment>
+    <requestid>691503</requestid>
+  </revision>
+</revisionlist>

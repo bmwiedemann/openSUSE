@@ -1,0 +1,8 @@
+# guile-json installs compiled guile bytecode into /usr/share
+# ignore it for now
+addFilter("E: arch-dependent-file-in-usr-share .*/usr/share/guile/site/.*")
+
+# using ELF for Guile bytecode confuses rpmlint
+addFilter("W: missing-PT_GNU_STACK-section .*/usr/share/guile/.*")
+addFilter("W: missing-PT_GNU_STACK-section /usr/lib64/guile/*/site-ccache*")
+addFilter("W: shared-lib-without-dependency-information .*/usr/share/guile/site/.*")

@@ -1,0 +1,4 @@
+%__localekf5_provides	%{_rpmconfigdir}/locale.prov
+%__localekf5_path		^%{_datadir}/locale/kf5/[^/]*/LC_MESSAGES/.*\\.mo$
+%__localekf5_provides_opts	%{name}
+%__localekf5_namespace	locale

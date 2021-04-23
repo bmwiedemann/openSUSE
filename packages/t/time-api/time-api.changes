@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Mon Dec  2 07:23:25 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Allow building with jdk >= 9
+
+-------------------------------------------------------------------
+Sun Jun  2 20:55:54 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Describe the package, not the JSR.
+
+-------------------------------------------------------------------
+Wed May 15 18:51:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Add Group: for documentation.
+
+-------------------------------------------------------------------
+Wed May 15 07:23:11 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of time-api 0.6.4

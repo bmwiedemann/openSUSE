@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d72800bf7b114a510cf6242346406b88</srcmd5>
+    <version>1.11.1</version>
+    <time>1527933551</time>
+    <user>dimstar_suse</user>
+    <comment>A linter for YAML files</comment>
+    <requestid>612034</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>44b2c5590af3052ae16ebaa3ab629fc5</srcmd5>
+    <version>1.11.1</version>
+    <time>1544726748</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654079</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>30dd201c0ae7261d97ade345ba013af9</srcmd5>
+    <version>1.13.0</version>
+    <time>1546246032</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662050</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ee67c99fd0c46c5ac077c431950299c4</srcmd5>
+    <version>1.15.0</version>
+    <time>1551113481</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>676266</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ac00e19a4ce22e225c30ba9fdf4a3e7</srcmd5>
+    <version>1.16.0</version>
+    <time>1560537782</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709965</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6d337f178797c78dc9a98dd4ce02e81e</srcmd5>
+    <version>1.17.0</version>
+    <time>1567679644</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.0:
+  * Simplify installation instructions in the README
+  * Add OpenBSD installation instructions
+  * Make YAML file extensions configurable</comment>
+    <requestid>724508</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a4f7286f07c8fa21ed0ba3fe09022218</srcmd5>
+    <version>1.18.0</version>
+    <time>1572542285</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.18.0:
+  * Lint .yamllint config file by default
+  * Also read config from .yamllint.yml and .yamllint.yaml
+  * Improve documentation for yaml-files
+  * Update documentation for pre-commit
+  * Explicitly disable empty-values and octal-values rules</comment>
+    <requestid>744156</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>744b3427a63d51c0335aad378899e321</srcmd5>
+    <version>1.20.0</version>
+    <time>1580928110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>770066</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4e881badfa4d87377940d119a5a22f03</srcmd5>
+    <version>1.22.1</version>
+    <time>1587071004</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.22.1:
+  * Fix quoted-strings rule with only-when-needed on corner cases
+  * Add check-keys option to the truthy rule
+  * Fix quoted-strings rule not working on sequences items
+  * Sunset Python 2
+  * Fix new-lines rule on Python 3 with DOS line endings
+  * Fix quoted-strings rule not working for string values matching scalars
+  * Add required: only-when-needed option to the quoted-strings rule</comment>
+    <requestid>794473</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ec21255d66258a7c0b8b45b79d2b5a18</srcmd5>
+    <version>1.23.0</version>
+    <time>1594228361</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to 1.23.0:
+  * Allow rules to validate their configuration
+  * Add options extra-required and extra-allowed to quoted-strings</comment>
+    <requestid>819117</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e77006226f4cb6e7b573d18e4054e74a</srcmd5>
+    <version>1.24.2</version>
+    <time>1595339476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>822075</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,53 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b7134ccea381beb8a8fe5b8325dd125b</srcmd5>
+    <version>0.9</version>
+    <time>1557141811</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial spec for v0.9
+</comment>
+    <requestid>694202</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0575c249d3c2ae4cea7d63c85039d33e</srcmd5>
+    <version>0.9</version>
+    <time>1568191206</time>
+    <user>dimstar_suse</user>
+    <comment>- Format with spec-cleaner</comment>
+    <requestid>729899</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c29b1650d4b6cdf28a074646f92b30c2</srcmd5>
+    <version>0.11</version>
+    <time>1583830272</time>
+    <user>dimstar_suse</user>
+    <comment>py38 fix</comment>
+    <requestid>782830</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b0533b731b72be88ad3af17dc2f7b2a9</srcmd5>
+    <version>0.14</version>
+    <time>1603961265</time>
+    <user>dimstar_suse</user>
+    <comment>- skip tests that fail on 32bit 
+
+- update to 0.14:
+  * python 3.8 support
+  * Various improvements w.r.t. type annotations &amp; typing
+  * Fix pure-Python implementation to accept keyword argument
+  * Fix the mutation API to maintain elements count correctly
+  * Allow None to be used as key in pure-Python implementation.
+- remove py38.patch (upstream)</comment>
+    <requestid>841417</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6b2468a529f25ed3440a4111eeed5c23</srcmd5>
+    <version>0.14</version>
+    <time>1607801342</time>
+    <user>dimstar_suse</user>
+    <comment>- Add skip_32bit_tests.patch (gh#MagicStack/immutables#53) to skip tests
+  which fail on 32bit architectures.
+</comment>
+    <requestid>853620</requestid>
+  </revision>
+</revisionlist>

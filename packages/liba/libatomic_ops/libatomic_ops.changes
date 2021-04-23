@@ -1,0 +1,204 @@
+-------------------------------------------------------------------
+Fri Aug  2 07:04:12 UTC 2019 - Martin Liška <mliska@suse.cz>
+
+- Use FAT LTO objects in order to provide proper static library.
+
+-------------------------------------------------------------------
+Fri Mar 15 09:40:59 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 7.6.10
+  * Fix compiler warnings
+
+-------------------------------------------------------------------
+Tue Jan  8 02:26:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 7.6.8
+  * Support aarch64-ilp32 (GCC) target
+
+-------------------------------------------------------------------
+Wed Oct 24 05:09:08 UTC 2018 - sean@suspend.net
+
+- Update to new upstream release 7.6.6
+  * Fix undefined reference to __atomic_load/store/cas_16
+  * Fix a typo in the overview section of README
+  * Fix comments style in configure.ac and Makefile.am
+  * Update copyright information in README and some header files
+- Remove patch libatomic_ops-ppc64.patch, looks merged
+
+-------------------------------------------------------------------
+Mon Jan 29 11:04:41 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 7.6.2
+  * Fix GCC 5.x compatibility for AArch64 double-wide primitives
+  * Implement fetch-CAS for s390[x] (gcc)
+  * Support n32 ABI for mips64
+  * Use LLD and SCD instructions on mips64
+  * Use generalized double-wide load/store if
+    AO_PREFER_GENERALIZED (gcc/x86)
+  * Use GCC atomic intrinsics for PowerPC 32/64 (GCC 4.8+ and
+    clang 3.8+)
+  * Use GCC atomic intrinsics for x86, x64, ARM, MIPS (gcc 4.9+,
+    clang 3.5+)
+  * Relax shareability domain for dmb st in AO_nop_write
+    (ARM/AArch64)
+  * Implement AO_CLEAR using C11 atomic intrinsic (GCC)
+  * Implement CAS_acquire/release/full using
+    __atomic_compare_exchange_n (gcc)
+  * Implement compiler_barrier using C11 __atomic_signal_fence
+    (GCC)
+  * Add initial nios2 architecture support
+  * Add asm-based and/or/xor implementation for char/short/int
+    (gcc/x86)
+  * Add asm-based char/short/int CAS implementation for
+    gcc/x86[_64]
+- Remove aarch64-gcc5.patch (no longer applies)
+
+-------------------------------------------------------------------
+Thu Apr  7 12:26:58 UTC 2016 - schwab@suse.de
+
+- aarch64-gcc5.patch: fix build with gcc >= 5
+
+-------------------------------------------------------------------
+Thu Mar  5 09:41:01 UTC 2015 - jengelh@inai.de
+
+- Update homepage URLs
+
+-------------------------------------------------------------------
+Mon Jul 21 08:44:50 UTC 2014 - jengelh@inai.de
+
+- Update to new upstream release 7.4.2
+* Add and/or/xor entries to list_atomic (tests).
+* Add char/short/int/AO_double_t and dd_acquire cases to list_atomic (tests).
+* Add double_store pthread-based implementation and tests.
+* Add generalized CAS primitives of char/short/int size.
+* Add generalized atomic and/or/xor operations for char/short/int types.
+* Add generalized fetch_and_add_acquire/release (for ARMv6+).
+* Add generic implementation of double_load primitives.
+* Add load/store primitives generalization based on CAS.
+* Add lock-based implementation of char/short/int_fetch_compare_and_swap.
+* Add missing double_compare_and_swap to generalization.
+* Add missing generalization of no-barrier CAS in template.
+* Always use 'mfence' for nop_full if target CPU supports SSE2 (gcc/x86).
+* Cast away volatile on dereference in CAS-based generalization primitives.
+* Define AO_int_X operations for ARM and avr32.
+* Define double-wide ordered loads/stores for x86.
+* Define int_and/or/xor primitives in ao_t_is_int header.
+* Define nop_full as compiler barrier for pre-ARMv6 single-core case.
+* Do not include standard_ao_double_t.h where double-CAS is unimplemented.
+* Do not report absence of meaningless nop, load and store in test_atomic.
+* Eliminate 'missing initializer' warning for AO_stack_t value initializer.
+* Eliminate arithmetic shifts in double-CAS (gcc/arm, msftc/x86).
+* Enable generalization of all variants of CAS via fetch_compare_and_swap.
+* Implement and/or/xor, AO_double_load for ARM.
+* Implement atomic store using direct write by default on ARMv6+.
+* Implement char/short/int-wide primitives using GCC built-in atomic/sync.
+* Implement char/short_fetch_and_add, char/short_load for ARMv6+ (GCC).
+* Implement char/short_store primitives at aligned addresses for ARM.
+* Implement double_load/store based on guaranteed x86 access atomicity.
+* Implement double_store for ARMv7 using LDREXD/STREXD.
+* Implement load/store via simple LDR/STR for ARMv6+ (msftc).
+* Implement nop_full/write using 'dmb' instruction if available (gcc/arm).
+* Minimize gcc/generic-arithm template by factoring out barriers.
+* Move 'unsigned' keyword to XCTYPE in generalize-small template.
+* Move definitions of ordered loads/stores to inner separate headers.
+* Move gcc-generic AO_t-wide primitives to generic-small/arithm headers.
+* Move generalized arithmetical primitives to 'generalize-arithm' template.
+* Optimize AO_spin manually to minimize compiler influence on its duration.
+* Remove X_aligned_atomic_load_store headers and template.
+* Remove duplicate AO_spin and AO_pause definition in atomic_ops_stack.
+* Remove gcc/x86_64.h eliminating code duplication of gcc/x86.h.
+* Remove nested AO_USE_PTHREAD_DEFS macro check in atomic_ops.h (gcc/arm).
+* Remove redundant 'cc' clobber for LDREXD instruction (gcc/arm).
+* Remove store_full from msftc/arm.h in favor of generalized primitive.
+* Reorder AO_double_t union elements for AO_DOUBLE_T_INITIALIZER portability.
+* Replace atomic_load_store.template with atomic_load and atomic_store ones.
+* Support AArch64 (64-bit ARM) target (GCC).
+* Support ARMv8 target (gcc/arm).
+* Use __atomic GCC built-in to implement generic double-wide CAS.
+* Use built-in __sync CAS for double-CAS if AO_USE_SYNC_CAS_BUILTIN for x86.
+- Drop libatomic_ops-aarch64.patch (no longer needed)
+
+-------------------------------------------------------------------
+Thu May 15 14:53:31 UTC 2014 - tchvatal@suse.com
+
+- Version bump to 7.2e:
+  * Various small fixes for 7.2 series.
+- Cleanup with spec-cleaner.
+
+-------------------------------------------------------------------
+Mon Feb 10 18:39:57 UTC 2014 - dvaleev@suse.com
+
+- Drop incorrect ppc64le patch
+- Force AO_load() to map to AO_load_acquire() for powerpc
+
+- added patches:
+  * libatomic_ops-ppc64.patch
+- removed patches:
+  * libatomic_ops-ppc64le.patch
+
+-------------------------------------------------------------------
+Mon Dec  2 21:00:35 UTC 2013 - dvaleev@suse.com
+
+- Fix build on ppc64le (add patch libatomic_ops-ppc64le.patch)
+
+-------------------------------------------------------------------
+Sun May 26 20:05:34 UTC 2013 - jengelh@inai.de
+
+- Update to upstream release 7.2d
+- pkgconfig support, testsuite was fixed and no longer
+  loops endlessy/crashes
+- Transplant libatomic_ops-aarch64.patch from "gc" package
+
+-------------------------------------------------------------------
+Wed May 23 12:45:39 UTC 2012 - jengelh@inai.de
+
+- Rename package to upstream name (libatomic-ops-devel ->
+  libatomic_ops)
+
+-------------------------------------------------------------------
+Wed Dec 21 10:31:39 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Fri Dec  2 16:34:32 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Tue Oct 18 23:37:21 UTC 2011 - adrian@suse.de
+
+- update to current 7.2alpha6 version
+  * fixes armv7 builds
+  * obsoletes all our patches
+- run test cases, except when running in not thread safe qemu
+- cleanup spec file
+- add official URLs to home page and source
+- use original upstream tar ball
+- fix build for sle 11
+
+-------------------------------------------------------------------
+Fri Dec 18 13:57:19 CET 2009 - jengelh@medozas.de
+
+- enable parallel building
+
+-------------------------------------------------------------------
+Sat Jun 20 13:14:14 CEST 2009 - coolo@novell.com
+
+- fix build with automake 1.11
+
+-------------------------------------------------------------------
+Thu Aug  2 12:53:01 CEST 2007 - tiwai@suse.de
+
+- fix ppc bugs in PPC assembler codes.
+
+-------------------------------------------------------------------
+Tue Jun 12 16:28:37 CEST 2007 - tiwai@suse.de
+
+- fixed the build with s390.
+
+-------------------------------------------------------------------
+Fri Jun  8 14:40:40 CEST 2007 - tiwai@suse.de
+
+- initial version: 1.2
+

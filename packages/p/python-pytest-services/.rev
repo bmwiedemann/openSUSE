@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c83b4539a52f1c43797b58e1d6b0ba6f</srcmd5>
+    <version>1.3.1</version>
+    <time>1552985870</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>681759</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>47707b1ddbfbcfb17b055921fdeb6efe</srcmd5>
+    <version>2.0.1</version>
+    <time>1574103974</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.1:
+  * #23: Rely on zc.lockfile for lockfile behavior.
+  * #28: Fixtures now supports later versions of mysql and no longer support versions of mysql prior to mysql --initialize support.
+  * #29: Fix issues with later versions of mysql where mysql_defaults_file fixture would prevent startup of mysql.
+  * Fixed issue in test suite where mysql fixture was not tested.
+  * Removed pytest_services.locks.lock_file.
+  * #20: Added workaround for issue with SysLogHandler.</comment>
+    <requestid>748853</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>97983f95d3a7dec9c9ab30716396a03f</srcmd5>
+    <version>2.0.1</version>
+    <time>1582725733</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not pull in mysql for tests we actually skip anyway</comment>
+    <requestid>778734</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>69fd5859b4e150fc781f5a16379e74bd</srcmd5>
+    <version>2.0.1</version>
+    <time>1585264947</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build without python2</comment>
+    <requestid>784625</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2cb0b9db6caddaef683e434fd6688fc8</srcmd5>
+    <version>2.1.0</version>
+    <time>1593546874</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>817715</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>66f1897cadf035f0f3f39079279847b3</srcmd5>
+    <version>2.2.1</version>
+    <time>1604926580</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>846346</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Fri Oct  9 19:35:26 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * Fix black squares around cow and bubble on non-compositing window manager
+
+-------------------------------------------------------------------
+Sun Feb  9 06:35:02 UTC 2020 - wnereiz@member.fsf.org
+
+- Upgrade to version 1.5
+
+Changes:
+
+    * Updated from Gtk2/GDK to Gtk3/Cairo. Note that because of the removal
+      of the `gtk_widget_shape_combine_mask' API that xcowsay used for
+      transparency, we now rely on the alpha channel of the window and a
+      compositing window manager for this.
+    * As a side effect of this, the bubble is now anti-aliased, fixing a
+      long-standing issue.
+    * Unfortunately running xcowsay without a compositor is no longer
+      supported. If this affects you please continue to use 1.4 as there are
+      no functional changes in 1.5.
+    * The cow position is more random (thanks to Tony Finch).
+
+- Update souce link to use tarball from github
+
+-------------------------------------------------------------------
+Mon Apr 15 08:12:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions.
+
+-------------------------------------------------------------------
+Fri Apr 12 07:58:22 UTC 2019 - wnereiz@fsf.member.org
+
+- Bump version to 1.4
+- Re-add xcowfortune because fortune is still and will be continue supported
+
+-------------------------------------------------------------------
+Sat Nov 25 02:46:53 UTC 2017 - wnereiz@fsf.member.org
+
+- Remove xcowfortune ("remove_xcowfortune.patch") because fortune will be dropped.
+- Add xcowsay.svg and xcowsay.desktop
+
+-------------------------------------------------------------------
+Fri Jan  1 04:28:24 UTC 2016 - wnereiz@fsf.member.org
+
+- Init the xcowsay spec file 
+

@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue Aug 25 07:58:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Switch to multibuild to avoid build cycles
+
+-------------------------------------------------------------------
+Fri May  1 02:36:27 PM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v1.0

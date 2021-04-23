@@ -1,0 +1,16 @@
+<package name="apache2-mod_fcgid" project="openSUSE:Factory">
+  <title>Alternative FastCGI module for Apache2</title>
+  <description>What is mod_fcgid? It is a binary compatibility alternative to Apache
+module mod_fastcgi.
+
+mod_fcgid has a new process management strategy, which concentrates on
+reducing the number of fastcgi server, and kick out the corrupt fastcgi
+server as soon as possible.
+
+To load the module into Apache, run the command &quot;a2enmod fcgid&quot; as
+root.
+
+See /etc/apache2/conf.d/mod_fcgid.conf and
+/usr/share/doc/packages/apache2-mod_fcgid for configuration.</description>
+  <devel project="Apache:Modules" package="apache2-mod_fcgid"/>
+</package>

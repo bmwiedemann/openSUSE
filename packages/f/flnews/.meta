@@ -1,0 +1,8 @@
+<package name="flnews" project="openSUSE:Factory">
+  <title>A fast and lightweight USENET newsreader</title>
+  <description>A fast and lightweight USENET newsreader.
+
+</description>
+  <devel project="server:mail" package="flnews"/>
+  <url>http://micha.freeshell.org/flnews/</url>
+</package>

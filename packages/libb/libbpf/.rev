@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>897781073202c05bb07eab5b4635d7cf</srcmd5>
+    <version>MACRO</version>
+    <time>1581368153</time>
+    <user>dimstar_suse</user>
+    <comment>libbpf package with a shared library. It's needed by bpftrace. After this SR gets accepted, I will also use it for building bpftool.</comment>
+    <requestid>772922</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>27e4059442e52c9a2469fade2c54f59e</srcmd5>
+    <version>MACRO</version>
+    <time>1591742925</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python3 as a build dependency. (forwarded request 812755 from mrostecki)</comment>
+    <requestid>812756</requestid>
+  </revision>
+</revisionlist>

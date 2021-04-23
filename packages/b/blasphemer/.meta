@@ -1,0 +1,5 @@
+<package name="blasphemer" project="openSUSE:Factory">
+  <title>Blasphemer</title>
+  <description>A free Heretic game data file.</description>
+  <devel project="games" package="blasphemer"/>
+</package>

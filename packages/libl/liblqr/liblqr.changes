@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Fri Sep  5 12:54:08 UTC 2014 - coolo@suse.com
+
+- add baselibs.conf to sources - ImageMagick needs its 32bit
+
+-------------------------------------------------------------------
+Fri Jul 26 19:16:34 UTC 2013 - asterios.dramis@gmail.com
+
+- Update to 0.4.2:
+  * Fixes a couple of bugs (some small memory leaks, installation issues on
+    MacOSX)
+- Changed License to LGPL-3.0 (library) and GPL-3.0 (examples dir only).
+- Build the development documentation (added docbook-xsl-stylesheets and
+  libxslt-tools build requirements).
+
+-------------------------------------------------------------------
+Sun Aug  7 14:44:44 UTC 2011 - toddrme2178@gmail.com
+ 
+- Fixed group (fix for RPMLINT warning)
+- Removed commented file
+
+-------------------------------------------------------------------
+Fri Jan 29 12:59:36 UTC 2010 - llunak@novell.com
+
+- Initial version 0.4.1
+

@@ -1,0 +1,5 @@
+<package name="clipman" project="openSUSE:Factory">
+  <title>A simple clipboard manager for Wayland</title>
+  <description>A basic clipboard manager for Wayland, with support for persisting copy buffers after an application exits.</description>
+  <devel project="X11:Wayland" package="clipman"/>
+</package>

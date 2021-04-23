@@ -1,0 +1,5 @@
+<package name="alsa-topology-conf" project="openSUSE:Factory">
+  <title>ALSA topology configurations</title>
+  <description></description>
+  <devel project="multimedia:libs" package="alsa-topology-conf"/>
+</package>

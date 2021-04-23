@@ -1,0 +1,13 @@
+Index: ocfs2-tools-1.8.5/libo2cb/o2cb_abi.c
+===================================================================
+--- a/libo2cb/o2cb_abi.c
++++ b/libo2cb/o2cb_abi.c
+@@ -201,7 +201,7 @@ redo:
+ 		}
+ 	} else if (len == -ENOENT) {
+ 		if (!setup_performed) {
+-			o2cb_setup_stack(OCFS2_CLASSIC_CLUSTER_STACK);
++			o2cb_setup_stack(OCFS2_PCMK_CLUSTER_STACK);
+ 			setup_performed = 1;
+ 			goto redo;
+ 		} else {

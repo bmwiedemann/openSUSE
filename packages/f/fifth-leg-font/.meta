@@ -1,0 +1,5 @@
+<package name="fifth-leg-font" project="openSUSE:Factory">
+  <title>Font for the openSUSE Brand</title>
+  <description>The Fifth Leg font is the font used for openSUSE branded material.</description>
+  <devel project="M17N:fonts" package="fifth-leg-font"/>
+</package>

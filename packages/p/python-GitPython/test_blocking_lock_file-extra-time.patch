@@ -1,0 +1,15 @@
+Index: GitPython-3.1.7.1594621338.176838a3/test/test_util.py
+===================================================================
+--- GitPython-3.1.7.1594621338.176838a3.orig/test/test_util.py
++++ GitPython-3.1.7.1594621338.176838a3/test/test_util.py
+@@ -165,9 +165,7 @@ class TestUtils(TestBase):
+         self.assertRaises(IOError, wait_lock._obtain_lock)
+         elapsed = time.time() - start
+         extra_time = 0.02
+-        if is_win:
+-            # for Appveyor
+-            extra_time *= 6  # NOTE: Indeterministic failures here...
++        extra_time *= 6  # NOTE: Indeterministic failures here...
+         self.assertLess(elapsed, wait_time + extra_time)
+ 
+     def test_user_id(self):

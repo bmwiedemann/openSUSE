@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Sun Sep 20 21:38:44 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile.
+
+-------------------------------------------------------------------
+Mon Nov 28 00:19:58 UTC 2016 - jengelh@inai.de
+
+- Add surf-minmax.diff to resolve build errors
+
+-------------------------------------------------------------------
+Wed Aug 29 17:33:06 UTC 2012 - scorot@free.fr
+
+- spec file reformating 
+
+-------------------------------------------------------------------
+Wed Aug 29 17:31:43 UTC 2012 - scorot@free.fr
+
+- add libtool requirment to fix build on recent product 
+
+-------------------------------------------------------------------
+Sun Feb 26 22:19:09 UTC 2012 - scorot@free.fr
+
+- fix build requirement to allow build on SLE-11
+- recompress source file to bzip for the same reason 
+
+-------------------------------------------------------------------
+Sun Sep 25 16:08:08 UTC 2011 - jengelh@medozas.de
+
+- Initial package for build.opensuse.org

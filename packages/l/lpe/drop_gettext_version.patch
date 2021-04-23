@@ -1,0 +1,30 @@
+commit 2b97735f5160d01697a5b0675b0b564d383e8bff
+Author: Adam Majer <adamm@zombino.com>
+Date:   Sun Jan 31 00:17:44 2016 -0600
+
+    Drop gettext version requirement
+
+diff --git a/configure b/configure
+index 4cb25df..bf7c515 100755
+--- a/configure
++++ b/configure
+@@ -17926,7 +17926,6 @@ $as_echo "#define HAVE_DCGETTEXT 1" >>confdefs.h
+ 
+ 
+ 
+-
+ if test "$USE_INCLUDED_LIBINTL" = "no" && test "$USE_NLS" = "yes"
+ then
+   if ! test "$gt_cv_func_gettext_libc" = "yes"
+diff --git a/configure.ac b/configure.ac
+index 1cb0546..bf591b6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -18,7 +18,6 @@ AC_PROG_MAKE_SET
+ dnl GNU gettext
+ ALL_LINGUAS="bg cs de es fr pl ru hu"
+ AM_GNU_GETTEXT
+-AM_GNU_GETTEXT_VERSION(0.19.7)
+ 
+ if test "$USE_INCLUDED_LIBINTL" = "no" && test "$USE_NLS" = "yes"
+ then

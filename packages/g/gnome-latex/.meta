@@ -1,0 +1,14 @@
+<package name="gnome-latex" project="openSUSE:Factory">
+  <title>Integrated LaTeX Environment for the GNOME desktop</title>
+  <description>LaTeXila is an Integrated LaTeX Environment for GNOME. The main features are:
+  * Configurable buttons to compile, convert and view a document in one click
+  * LaTeX commands auto-completion
+  * Symbol tables (Greek letters, arrows, ...)
+  * File browser integrated
+  * Template managing
+  * Menus with the most commonly used LaTeX commands
+  * Easy projects management
+
+</description>
+  <devel project="GNOME:Factory" package="gnome-latex"/>
+</package>

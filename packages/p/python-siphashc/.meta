@@ -1,0 +1,11 @@
+<package name="python-siphashc" project="openSUSE:Factory">
+  <title>python c-module for siphash</title>
+  <description>siphashc is a python c-module for siphash, based on floodberry's versionn
+It was merged from two versions of the module:
+
+* https://github.com/cactus/siphashc
+* https://github.com/carlopires/siphashc3
+  </description>
+  <devel project="devel:languages:python:django" package="python-siphashc"/>
+  <url>https://github.com/WeblateOrg/siphashc</url>
+</package>

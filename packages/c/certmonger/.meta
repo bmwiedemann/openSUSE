@@ -1,0 +1,5 @@
+<package name="certmonger" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="security:idm" package="certmonger"/>
+</package>

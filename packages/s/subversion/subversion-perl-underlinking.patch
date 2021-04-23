@@ -1,0 +1,26 @@
+Index: subversion-1.10.0-alpha2/Makefile.in
+===================================================================
+--- subversion-1.10.0-alpha2.orig/Makefile.in	2017-02-24 15:57:25.605638431 +0100
++++ subversion-1.10.0-alpha2/Makefile.in	2017-02-24 15:57:25.617638527 +0100
+@@ -865,7 +865,7 @@ swig-pl: $(swig-pl_DEPS)
+ 	    fi; \
+ 	  done; \
+ 	fi
+-	cd $(SWIG_PL_DIR)/native; $(MAKE) OPTIMIZE="" OTHERLDFLAGS="$(SWIG_LDFLAGS)"
++	cd $(SWIG_PL_DIR)/native; $(MAKE)
+ 
+ check-swig-pl: swig-pl swig-pl-lib
+ 	cd $(SWIG_PL_DIR)/native; $(MAKE) test
+Index: subversion-1.10.0-alpha2/subversion/bindings/swig/perl/native/Makefile.PL.in
+===================================================================
+--- subversion-1.10.0-alpha2.orig/subversion/bindings/swig/perl/native/Makefile.PL.in	2017-02-24 15:57:25.561638078 +0100
++++ subversion-1.10.0-alpha2/subversion/bindings/swig/perl/native/Makefile.PL.in	2017-02-24 15:57:25.617638527 +0100
+@@ -85,7 +85,7 @@ my %config = (
+                  " -I$svnlib_builddir",
+                  " -I$swig_srcdir -g"),
+     OBJECT => q/$(O_FILES)/,
+-    LIBS => [join(' ', $apr_ldflags,
++    LIBS => [join(' ', $apr_ldflags, '-lpthread -lapr-1 -lperl',
+                   (map {"-L$_"} @ldpaths),
+                   @ldmodules, '-lsvn_swig_perl-1',
+                   `$swig -perl -ldflags`)],

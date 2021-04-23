@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Wed Jun  3 09:47:37 UTC 2020 - pgajdos@suse.com
+
+- use %pytest macro
+
+-------------------------------------------------------------------
+Thu Apr 23 09:31:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Drop unused unittest2 dependency
+
+-------------------------------------------------------------------
+Mon Jan  6 13:30:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.3:
+  * Changed license to ISC.
+  * Fixed depreciation warning on Python 3.8.
+
+-------------------------------------------------------------------
+Sun Feb 24 02:10:09 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Remove nose custom test runner and unittest2 on Python 3
+- Added CHANGES.rst to docs
+- Add missing Provides to accompany Obsoletes
+- Add CFLAGS="%{optflags}"
+- Update to v1.2
+  * Included tests in the pypi package.
+- from v1.1
+  * Fixed README encoding.
+  * Included documentation in the pypi package.
+
+-------------------------------------------------------------------
+Wed Aug  8 15:36:35 UTC 2018 - jengelh@inai.de
+
+- Fix irrelevant description.
+
+-------------------------------------------------------------------
+Wed Aug  1 12:40:59 UTC 2018 - tchvatal@suse.com
+
+- Install license file
+- Make sure tests are run
+
+-------------------------------------------------------------------
+Wed Oct 25 09:17:02 UTC 2017 - buschmann23@opensuse.org
+
+- obsolete python-siphashc3
+
+-------------------------------------------------------------------
+Wed Oct 25 06:58:46 UTC 2017 - buschmann23@opensuse.org
+
+- initial package

@@ -1,0 +1,27 @@
+<package name="zp" project="openSUSE:Factory">
+  <title>zp: shorter command of zypper</title>
+  <description>- zp: sudo zypper
+- zi: sudo zypper install
+- zr: sudo zypper remove
+- zu: sudo zypper update (Leap) or sudo zypper dup (Tumbleweed)
+- zs: sudo zypper search
+
+# Install packages
+
+zi gimp krita minetest
+
+# Remove a package and clean up
+
+zr --clean-deps wine
+
+# Update system
+
+zu
+
+# Search packages
+
+zs composer
+
+Have a lot of fun...</description>
+  <devel project="utilities" package="zp"/>
+</package>

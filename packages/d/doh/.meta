@@ -1,0 +1,5 @@
+<package name="doh" project="openSUSE:Factory">
+  <title>doh</title>
+  <description></description>
+  <devel project="network:utilities" package="doh"/>
+</package>

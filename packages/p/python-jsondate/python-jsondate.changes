@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Tue Dec  4 12:49:33 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Wed Dec 13 07:48:47 UTC 2017 - sebix+novell.com@sebix.at
+
+- remove installed tests from python sitelib
+
+-------------------------------------------------------------------
+Tue Dec 12 09:11:55 UTC 2017 - sebix+novell.com@sebix.at
+
+- decouple shortened patch python3-fixes-pr-6.patch from upstream PR
+
+-------------------------------------------------------------------
+Mon Dec 11 19:26:20 UTC 2017 - sebix+novell.com@sebix.at
+
+- remove test condition and comment out broken tests
+- fix build on openSUSE Leap 42.3
+
+-------------------------------------------------------------------
+Thu Dec  7 17:32:20 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package for version 0.1.2
+- add python3-fixes-pr-6.patch to fix jsondate on python3

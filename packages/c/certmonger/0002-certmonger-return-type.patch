@@ -1,0 +1,14 @@
+git diff a/src/tdbush.c b/src/tdbush.c
+--- a/src/tdbush.c	2020-01-31 16:38:19.000000000 +0100
++++ b/src/tdbush.c	2020-04-12 18:57:38.733466036 +0200
+@@ -3689,9 +3689,8 @@
+ 				return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
+ 			}
+ 		}
+-	} else {
+-		return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
+ 	}
++	return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
+ }
+ 
+ /* org.fedorahosted.certmonger.request.resubmit */

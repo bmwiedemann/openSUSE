@@ -1,0 +1,840 @@
+-------------------------------------------------------------------
+Sun Jan 10 03:09:42 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.012001
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+-------------------------------------------------------------------
+Thu Oct 29 03:13:20 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.012000
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.012000	2020-10-28
+   [ Documentation ]
+   - Update NEWS file.
+  1.011_011	2020-10-16
+   [ Test Suite ]
+   - Bugs in old versions of Return::Type prevent integration tests from
+     passing on Perl 5.8.x; those tests now require Return::Type 0.007 or
+     above.
+   - More tests for Type::Coercion::FromMoose.
+   [ Packaging ]
+   - If the EXTENDED_TESTING environment variable is true, Perl 5.8.9 or
+     above is being used, and either Type::Tiny's version contains '_' or
+     testing is running on Travis CI, then Makefile.PL will add extra testing
+     dependencies.
+   [ Other ]
+   - Remove unnecessary BEGIN block in Eval::TypeTiny.
+  1.011_010	2020-10-16
+   - Simple useful coercions from Str for Type::Tiny::Enum (and
+     Types::Standard::Enum).
+  1.011_009	2020-10-09
+   [ Documentation ]
+   - Add _ForeignTypeConstraint to AllTypes.pod.
+   [ Test Suite ]
+   - Add tests for _ForeignTypeConstraint.
+   - Improve test coverage by adding tests for various esoteric parts of the
+     distribution and edge cases.
+   [ Other ]
+   - More efficient use of Type::Tiny::XS by Types::TypeTiny.
+   - Refactoring of Types::TypeTiny.
+   - Where various parts of Type::Tiny internally use type constraints to
+     check values, prefer is_* and assert_* functions over method calls.
+  1.011_008	2020-10-07
+   [ Documentation ]
+   - Some minor tidyups and updates to Type::Tiny::Manual.
+   [ Test Suite ]
+   - Better tests for the placeholder type constraints created by
+     Type::Library -declare flag.
+   - Test integration with Type::Nano as an example of a generic
+     non-Type::Tiny type constraint class.
+   - Test that $type->() works with subclasses that override the
+     assert_return method.
+   - Write tests for some internal undocumented methods.
+   [ Other ]
+   - Added: Type::Utils::assert() function.
+  1.011_007	2020-10-06
+   [ Bug Fixes ]
+   - ArgsObject inlining was closing over a coderef in a way that didn't work
+     on archaic versions of Perl. Resolve by calling the coderef outside the
+     closure.
+  1.011_006	2020-10-02
+   [ Documentation ]
+   - Include JSONCapable type example.
+   [ Test Suite ]
+   - Improved test coverage for Type::Library.
+   - Improved test coverage for Type::Params.
+   - Improved test coverage for Type::Registry.
+   - Improved test coverage for Type::Tiny::Union.
+   - Improved tests for Type::Utils::is().
+   - Various tests for garbage collection using Devel::Refcount.
+   [ Other ]
+   - Added: Type::Params now exports an ArgsObject type constraint.
+   - Test::TypeTiny's should_pass and should_fail exercise type constraints
+     in even more ways in EXTENDED_TESTING mode.
+  1.011_005	2020-09-30
+   - Added: Type::Library import now supports -extends and -utils flags.
+   - Type::Library -base import flag now marks the caller package as loaded
+     in %INC.
+  1.011_004	2020-09-30
+   [ Bug Fixes ]
+   - Make predeclared type constraints work better for Zydeco.
+   [ Documentation ]
+   - Document that ArrayLike and HashLike are now parameterizable.
+   [ Test Suite ]
+   - Make test suite work better with App::Yath.
+  1.011_003	2020-09-25
+   [ Bug Fixes ]
+   - Old versions of Data::Dumper would sometimes die when dumping certain
+     overloaded objects. Type::Tiny::_dd() now catches this in an eval {}.
+   - Types::Standard would sometimes complain about very old versions of
+     Scalar::Util.
+   [ Other ]
+   - ArrayLike and HashLike are now parameterizable, though the
+     implementation for the parameterized version is in pure Perl, not XS.
+   - Type::Tiny::Enum better caches regexps.
+   - Updated: ArrayLike, HashLike, CodeLike, and StringLike type constraints
+     can use XS if Type::Tiny::XS 0.022 is installed.
+  1.011_002	2020-09-22
+   - Added: Type::Utils now exports an `is` function but it needs to be
+     requested explicitly.
+  1.011_001	2020-09-21
+   [ Documentation ]
+   - Update the NEWS file.
+   [ Other ]
+   - Added: Add new list processing functions to Type::Tiny.
+  1.011_000	2020-09-15
+   [ Documentation ]
+   - Describe deficiencies of is_* functions for parameterized types.
+     Fixes RT#132918.
+     <https://rt.cpan.org/Public/Bug/Display.html?id=132918>
+   [ Other ]
+   - Type::Tiny::Enum now generates faster regexps to validate enums. (Code
+     stolen from Regexp::Trie.)
+
+-------------------------------------------------------------------
+Sat Sep  5 03:26:16 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.010006
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.010006	2020-09-04
+
+   [ Bug Fixes ]
+   - Eliminate recusion warnings when Type::Parser needs to parse complex
+     types.
+     Fixes RT#121957.
+     Diab Jerius++
+     <https://rt.cpan.org/Ticket/Display.html?id=121957>
+
+   [ Other ]
+   - Better handling of coercions for pre-declared types in Type::Library.
+     The type objects created before the type was properly defined will now
+     lazily attempt to find coercions from the properly defined type once it
+     becomes available.
+
+-------------------------------------------------------------------
+Thu Aug 27 03:10:09 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.010005
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.010005	2020-08-26
+
+   - Improvements to $AvoidCallbacks support for
+     Type::Tiny::{Class,Role,Duck,Enum,Union,Intersection}, and LaxNum, Ref,
+     RegexpRef, FileHandle, Object, Overload, and Tied types from
+     Types::Standard.
+
+-------------------------------------------------------------------
+Wed Aug 19 03:15:37 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.010004
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+-------------------------------------------------------------------
+Sun Aug  9 03:10:18 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.010003
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.010003	2020-08-08	The Crazy 88
+
+   [ Bug Fixes ]
+   - ClassName type constraint should treat empty @ISA as if no @ISA were
+     defined, like Type::Tiny::XS.
+     Fixes RT#132583.
+     Szymon Nieznański++
+     <https://rt.cpan.org/Ticket/Display.html?id=132583>
+   - Fix for Type::Tiny->can called as a class method.
+     Meredith Howard++
+     <https://github.com/tobyink/p5-type-tiny/pull/57>
+   - Fix predeclared types in Type::Library.
+     Meredith Howard++
+     <https://github.com/tobyink/p5-type-tiny/pull/58>
+
+   [ Documentation ]
+   - Document some edge cases for Types::Standard Int.
+     <https://rt.cpan.org/Ticket/Display.html?id=132754>
+
+-------------------------------------------------------------------
+Sat May  2 03:17:36 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+updated to 1.010002
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.010002	2020-05-01	Mayday
+  
+   [ Bug Fixes ]
+   - Better bareword handling on Perl < 5.14.
+     Fixes RT#132455.
+     Graham Knop++
+     Karen Etheridge++
+     <https://rt.cpan.org/Ticket/Display.html?id=132455>
+   - If Scalar::Util was below 1.18, the LaxNum type from Types::Standard
+     would accept blobs as being numbers. This is now fixed.
+     Fixes RT#132426.
+     Graham Knop++
+     <https://rt.cpan.org/Ticket/Display.html?id=132426>
+  
+
+-------------------------------------------------------------------
+Tue Mar 17 03:18:01 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.010001
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.010001	2020-03-16
+  
+   [ Documentation ]
+   - MooX::Pression mentions in documentation now refer to Zydeco.
+  
+   [ Test Suite ]
+   - Test suite passes in cperl, albeit with warnings.
+
+-------------------------------------------------------------------
+Thu Feb 20 03:14:06 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.010000
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.010000	2020-02-19
+  
+   [ Documentation ]
+   - Correct documentation of slurpy with compile_named.
+     Fixes RT#131720.
+     <https://rt.cpan.org/Ticket/Display.html?id=131720>
+  
+   [ Packaging ]
+   - Package as stable.
+  
+  1.009_003	2020-02-11
+  
+   [ Bug Fixes ]
+   - Fix importing multiple type libraries into a type registry at once.
+     Fixes RT#131744.
+     <https://rt.cpan.org/Ticket/Display.html?id=131744>
+  
+   [ Documentation ]
+   - Fix typo in documentation of `my_methods`.
+     Philippe Bruhat++
+  
+  1.009_002	2020-02-11
+  
+   [ Documentation ]
+   - Mention MooX::Pression.
+  
+   [ Other ]
+   - Added: Type::Params now supports `head` and `tail` options for
+     `compile`, `compile_named`, and `compile_named_oo`.
+   - Parameterized `Ref` type constraint in Types::Standard now checks its
+     parameter is a known Perl ref type.
+   - Type::Params on Perl older than 5.10 now uses its own B::perlstring
+     implementation to quote strings instead of using B::cstring.
+  
+  1.009_001	2020-02-06
+  
+   [ Test Suite ]
+   - More tests for recursively defined type constraints.
+  
+   [ Other ]
+   - Added: Type::Tiny::Enum now has an `as_regexp` method.
+   - In some edge cases, the regexps used by Type::Tiny::Enum will now be
+     slightly faster.
+  
+  1.009_000	2020-02-04
+  
+   - Subclasses of Moose::Meta::TypeConstraint are now converted to the
+     appropriate subclasses of Type::Tiny by Types::TypeTiny::to_TypeTiny,
+     instead of always being converted to the base class. This improves
+     inlining amongst other things.
+   - When types are declared by Type::Library's -declare import parameter,
+     the temporary subs installed can now generate placeholder type
+     constraints which allow the types to be used in recursive type
+     definitions.
+
+-------------------------------------------------------------------
+Fri Jan 31 03:22:52 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.008005
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.008005	2020-01-30
+  
+   [ Test Suite ]
+   - Remove some Perl 5.012+ syntax from test suite.
+
+-------------------------------------------------------------------
+Thu Jan 30 03:17:25 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.008004
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.008004	2020-01-29
+  
+   [ Bug Fixes ]
+   - When possible, inject `package Type::Tiny` in generated inline code that
+     has an appropriate lexical scope to insert it into. This will (mostly)
+     avoid inline code mistakenly using overridden versions of CORE::
+     functions.
+   - to_TypeTiny will now cowardly refuse to inline Moose types if they have
+     anything in their inline environment.
+
+-------------------------------------------------------------------
+Tue Jan 14 03:14:39 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.008003
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.008003	2020-01-13
+  
+   [ Documentation ]
+   - Update copyright dates to 2020.
+  
+   [ Packaging ]
+   - Makefile.PL will now bail out on cperl if AUTOMATED_TESTING environment
+     variable is set to true.
+  
+   [ Other ]
+   - Added: Type::Registry can now have a parent registry.
+  
+  1.008002	2020-01-11
+  
+   [ Bug Fixes ]
+   - Fix bareword errors if certain Type::Tiny subclasses were loaded prior
+     to Type::Tiny.
+     Fixes RT#131401.
+     <https://rt.cpan.org/Ticket/Display.html?id=131401>
+  
+   [ Documentation ]
+   - Fix typos.
+     Hauke D++
+  
+   [ Other ]
+   - Type::Tiny didn't accept string constraints for parameterizable type
+     constraints; this was not a documented restriction and didn't seem to
+     serve any purpose, so the restriction has been lifted.
+     <https://rt.cpan.org/Ticket/Display.html?id=131238>
+
+-------------------------------------------------------------------
+Sun Dec 29 03:13:35 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.008001
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.008001	2019-12-28
+  
+   - Types::TypeTiny honours $Type::Tiny::AvoidCallbacks.
+   - Types::TypeTiny now better mocks Type::Library, offering is_* and
+     assert_* functions for export.
+   - Use improved inline_assert when building the coderef for &{$type}
+     overloading.
+
+-------------------------------------------------------------------
+Wed Dec 18 11:01:18 UTC 2019 - Tina Mueller <tina.mueller@suse.com>
+
+- Limit description paragraphs to 2
+
+-------------------------------------------------------------------
+Wed Dec 11 03:12:43 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.008000
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  Home page:    <http://typetiny.toby.ink/>
+
+-------------------------------------------------------------------
+Thu Nov 14 09:40:52 UTC 2019 -  <timueller+perl@suse.de>
+
+- updated to 1.006000
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.006000	2019-11-12
+  
+   [ Documentation ]
+   - Links to Type::Tiny on GitHub/Travis/AppVeyor/Coveralls in Type::Tiny
+     pod.
+   - Minor correction to POD header for Type::Params
+     Jonas B Nielsen++
+     <https://github.com/tobyink/p5-type-tiny/pull/43>
+   - Types::Standard documentation fix.
+     Lucas Buchala++
+     <https://github.com/tobyink/p5-type-tiny/pull/48>
+  
+   [ Test Suite ]
+   - Improve test coverage.
+  
+   [ Packaging ]
+   - Bump minimum required version of Exporter::Tiny to 1.000000.
+   - Type::Tiny::XS 0.016 is recommended.
+  
+   [ Other ]
+   - Added: Type::Library now supports `of` and `where` options when
+     importing type constraints.
+   - Added: Type::Params multisig function now supports custom error
+     messages.
+     Benct Philip Jonsson++
+     <https://github.com/tobyink/p5-type-tiny/pull/44>
+   - Added: Type::Params named_to_list feature.
+     <https://rt.cpan.org/Ticket/Display.html?id=128337>
+   - Added: Type::Params signatures with slurpy hashrefs now allow true
+     hashrefs to be passed to them.
+   - Added: Type::Tiny::Enum now has a `unique_values` method.
+     <https://rt.cpan.org/Ticket/Display.html?id=129650>
+   - Added: Types::Standard ArrayRef parameterized type can now take a second
+     parameter, the minimum array length.
+   - Better implementation of is_subtype_of/is_supertype_of and related
+     functions.
+   - Don't use Int from Type::Tiny::XS unless version 0.016 is available.
+     <https://rt.cpan.org/Ticket/Display.html?id=130411>
+   - Eliminate memory cycles created by coderef overloading in Type::Tiny and
+     Type::Coercion.
+     Fixes RT#130823.
+     Ivanov Anton++
+     <https://rt.cpan.org/Ticket/Display.html?id=130823>
+   - Eval::TypeTiny's API is now considered to be stable.
+   - Fix Types::Standard's LazyLoad implementation.
+   - The `values` attribute of Type::Tiny::Enum now preserves order.
+     Fixes RT#129650.
+     Daniel Schröer++
+     <https://rt.cpan.org/Ticket/Display.html?id=129650>
+   - Tidy up Type::Tiny namespace a little by fully-referencing some
+     functions instead of importing them.
+   - Tweaks to Type::Tiny and Type::Coercion to avoid unnecessarily loading
+     overload.pm and overloading.pm.
+   - Types::TypeTiny::TypeTiny->has_coercion is now true.
+  
+  1.005_004	2019-11-11
+  
+   [ Documentation ]
+   - Types::Standard documentation fix.
+     Lucas Buchala++
+     <https://github.com/tobyink/p5-type-tiny/pull/48>
+  
+   [ Other ]
+   - Added: Type::Tiny::Enum now has a `unique_values` method.
+     <https://rt.cpan.org/Ticket/Display.html?id=129650>
+   - Don't use Int from Type::Tiny::XS unless version 0.016 is available.
+     <https://rt.cpan.org/Ticket/Display.html?id=130411>
+   - Eliminate memory cycles created by coderef overloading in Type::Tiny and
+     Type::Coercion.
+     Fixes RT#130823.
+     Ivanov Anton++
+     <https://rt.cpan.org/Ticket/Display.html?id=130823>
+   - The `values` attribute of Type::Tiny::Enum now preserves order.
+     Fixes RT#129650.
+     Daniel Schröer++
+     <https://rt.cpan.org/Ticket/Display.html?id=129650>
+  
+  1.005_003	2019-02-26
+  
+   [ Test Suite ]
+   - Improve test coverage.
+  
+   [ Other ]
+   - Fix Types::Standard's LazyLoad implementation.
+  
+  1.005_002	2019-01-29
+  
+   - Added: Type::Params named_to_list feature.
+     <https://rt.cpan.org/Ticket/Display.html?id=128337>
+  
+  1.005_001	2019-01-23
+  
+   - Added: Type::Library now supports `of` and `where` options when
+     importing type constraints.
+  
+  1.005_000	2019-01-20
+  
+   [ Bug Fixes ]
+   - Fix spelling in error message for Types::Common::String
+     LowerCaseSimpleStr.
+     Robert Rothenberg++
+     <https://github.com/tobyink/p5-type-tiny/pull/47>
+  
+   [ Documentation ]
+   - Fix Type::Params documentation error.
+     Nelo Onyiah++
+     <https://github.com/tobyink/p5-type-tiny/pull/45>
+   - Fix Types::Standard documentation error: incorrect third-party module
+     name.
+     Nelo Onyiah++
+     <https://github.com/tobyink/p5-type-tiny/pull/46>
+   - Minor correction to POD header for Type::Params
+     Jonas B Nielsen++
+     <https://github.com/tobyink/p5-type-tiny/pull/43>
+  
+   [ Packaging ]
+   - Bump minimum required version of Exporter::Tiny to 1.000000.
+  
+   [ Other ]
+   - Added: Type::Params multisig function now supports custom error
+     messages.
+     Benct Philip Jonsson++
+     <https://github.com/tobyink/p5-type-tiny/pull/44>
+   - Added: Types::Standard ArrayRef parameterized type can now take a second
+     parameter, the minimum array length.
+   - Better implementation of is_subtype_of/is_supertype_of and related
+     functions.
+   - Eval::TypeTiny's API is now considered to be stable.
+   - Tidy up Type::Tiny namespace a little by fully-referencing some
+     functions instead of importing them.
+   - Tweaks to Type::Tiny and Type::Coercion to avoid unnecessarily loading
+     overload.pm and overloading.pm.
+   - Type::Params signatures with slurpy hashrefs now allow true hashrefs to
+     be passed to them.
+   - Types::TypeTiny::TypeTiny->has_coercion is now true.
+
+-------------------------------------------------------------------
+Wed Jan  9 06:32:36 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.004004
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.004004	2019-01-08
+  
+   [ Bug Fixes ]
+   - Depend on Exporter::Tiny 0.040; older versions don't provide all the
+     functions Type::Library needs.
+  
+  1.004003	2019-01-08
+  
+   [ Bug Fixes ]
+   - Fix spelling in error message for Types::Common::String
+     LowerCaseSimpleStr.
+     Robert Rothenberg++
+     <https://github.com/tobyink/p5-type-tiny/pull/47>
+  
+   [ Documentation ]
+   - Fix Type::Params documentation error.
+     Nelo Onyiah++
+     <https://github.com/tobyink/p5-type-tiny/pull/45>
+   - Fix Types::Standard documentation error: incorrect third-party module
+     name.
+     Nelo Onyiah++
+     <https://github.com/tobyink/p5-type-tiny/pull/46>
+
+-------------------------------------------------------------------
+Sat Aug 25 06:08:14 UTC 2018 - coolo@suse.com
+
+- updated to 1.004002
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+-------------------------------------------------------------------
+Sat Jul 28 06:06:32 UTC 2018 - coolo@suse.com
+
+- updated to 1.004000
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+-------------------------------------------------------------------
+Wed Apr 18 06:03:48 UTC 2018 - coolo@suse.com
+
+- updated to 1.002002
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.002002	2018-04-17
+  
+   [ Bug Fixes ]
+   - Compatibility with constants and with CV-in-stash optimisation.
+     Fixes RT#123408.
+     <https://rt.cpan.org/Ticket/Display.html?id=123408>
+
+-------------------------------------------------------------------
+Wed Jun 14 06:28:35 UTC 2017 - coolo@suse.com
+
+- updated to 1.002001
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.002001	2017-06-08
+  
+   [ Test Suite ]
+   - Skip t/30-integration/Moose/native-attribute-traits.t on older Moose
+     because Test::Moose is broken.
+  
+   [ Packaging ]
+   - Ref::Util::XS 0.100 should be recommended, not 0.200 (which doesn't
+     exist yet).
+     Fixes RT#121981.
+     <https://rt.cpan.org/Ticket/Display.html?id=121981>
+
+-------------------------------------------------------------------
+Fri Jun  2 06:56:11 UTC 2017 - coolo@suse.com
+
+- updated to 1.002000
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.002000	2017-06-01
+  
+   [ Packaging ]
+   - Stable version number.
+  
+  1.001_016	2017-05-30
+  
+   [ Documentation ]
+   - Include page-numbers.pl example
+  
+  1.001_015	2017-05-20
+  
+   [ Bug Fixes ]
+   - Fix HashRef[Str]|Undef|Str parsing on Perl < 5.14.
+     Fixes RT#121764.
+     Aran Clary Deltac++
+     Graham Knop++
+     <https://rt.cpan.org/Ticket/Display.html?id=121764>
+  
+  1.001_014	2017-05-19
+  
+   - Include trailing line break at the end of stringified version of some
+     exceptions.
+     Peter Valdemar Mørch++
+  
+  1.001_013	2017-05-18	Kittiversary
+  
+   [ Bug Fixes ]
+   - Fixed crazy amount of UTF-8 warnings from Type::Params on Perl 5.6.x and
+     Perl 5.8.x.
+     Fixes RT#101582.
+     André Walker++
+     <https://rt.cpan.org/Ticket/Display.html?id=101582>
+     <https://github.com/tobyink/p5-type-tiny/pull/16>
+   - StrMatch changes in previous release broke the ability to check type
+     equality between two parameterized StrMatch types under some
+     circumstances. Changed how the hash key for stashing regexp references
+     gets built — is now closer to the old way. This doesn't revert the
+     change in 1.001_012 where regexp checks can be inlined better, but only
+     applies to those regexp references that can't easily be inlined.
+  
+  1.001_012	2017-05-17
+  
+   [ BACK COMPAT ]
+   - RegexpRef now accepts blessed objects if $object->isa('Regexp') returns
+     true.
+  
+   [ Other ]
+   - StrMatch will use Regexp::Util (if available) to inline regular
+     expressions more sensibly.
+  
+  1.001_011	2017-05-17
+  
+   [ Bug Fixes ]
+   - Type constraints like Tuple[Int] shouldn't report they have a coercion
+     if Int doesn't have a coercion.
+  
+   [ Other ]
+   - Added: Types::Standard now has a CycleTuple type.
+  
+  1.001_010	2017-05-16	Puppiversary
+  
+   [ Test Suite ]
+   - t/00-begin.t will now work around ANDK's apparently broken XS testing
+     environment.
+  
+  1.001_009	2017-05-13
+  
+   - Rewrite some benchmarking scripts to use
+     Benchmark::Featureset::ParamCheck.
+   - Use Ref::Util::XS (if it's installed) to speed up certain type checks.
+  
+  1.001_008	2017-05-10
+  
+   [ Bug Fixes ]
+   - Type::Params should make sure Type::Utils is loaded before calling
+     english_list().
+  
+   [ Documentation ]
+   - Rearrange the examples directory in the distribution.
+  
+   [ Other ]
+   - Added: Named parameter validation benchmarking script.
+   - Added: Reduce scope of local $SIG{__DIE__} in Type::Registry.
+     Graham Knop++
+  
+  1.001_007	2017-05-04	May the fourth be with you
+  
+   [ Documentation ]
+   - Comparison of Type::Params with new(ish) CPAN module
+     Params::ValidationCompiler.
+   - Show example of how to set defaults for parameters with Type::Params.
+  
+   [ Other ]
+   - Added: Type::Params' `multisig` function now sets a variable
+     `${^TYPE_PARAMS_MULTISIG}` to indicate which signature succeeded.
+   - Optimization of Type::Params positional parameter checking for simple
+     cases with no slurpy parameter and no coercions.
+   - Optimizations for Tuple and StrMatch type constraints from
+     Types::Standard.
+  
+  1.001_006	2017-04-30
+  
+   - Allow Type::Tiny's `constraint` parameter to be a string of Perl code.
+   - Localize $SIG{__DIE__} in Type::Registry.
+     Fixes RT#100780.
+     <https://rt.cpan.org/Ticket/Display.html?id=100780>
+  
+  1.001_005	2017-04-19
+  
+   [ Bug Fixes ]
+   - 02-api.t should check version of Moose available.
+     <https://github.com/tobyink/p5-type-tiny/pull/20>
+   - 20-unit/Type-Utils/warnings.t should check version of Test::Warnings.
+     Alexandr Ciornii++
+     <https://github.com/tobyink/p5-type-tiny/pull/21>
+   - Fix minor typos in documentation for Types::Standard.
+     Zoffix Znet++
+     <https://github.com/tobyink/p5-type-tiny/pull/30>
+   - Fix variable name typo in documentation for Type::Params.
+     Lucas Buchala++
+     <https://github.com/tobyink/p5-type-tiny/pull/37>
+  
+   [ Documentation ]
+   - Include projected release date for Type::Tiny 1.002000 in NEWS.
+  
+   [ Test Suite ]
+   - Bundle a test case for GH issue 14.
+     <https://github.com/tobyink/p5-type-tiny/issues/14>
+  
+   [ Other ]
+   - Improved error location reporting for Moo
+     Peter Valdemar Mørch++
+     <https://github.com/tobyink/p5-type-tiny/pull/35>
+   - Updated: NumericCode now coerces from strings with whitespace in them,
+     like MooseX::Types::Common::Numeric.
+     Denis Ibaev++
+     <https://github.com/tobyink/p5-type-tiny/pull/22>
+  
+  1.001_004	2017-02-06
+  
+   - Attempting ArrayRef[Int, Int] or similar now throws an exception.
+     Fixes RT#105299.
+     Thomas Sibley++
+     <https://rt.cpan.org/Ticket/Display.html?id=105299>
+  
+  1.001_003	2017-02-02
+  
+   - Updated: Merge fixes from stable Type-Tiny 1.000006.
+  
+  1.001_002	2014-10-25
+  
+   [ Bug Fixes ]
+   - Fix short-circuiting optimizations for parameterized HashRef, ArrayRef,
+     ScalarRef, and Map type constraints.
+     Fixes RT#99312.
+     Marcel Timmerman++
+     <https://rt.cpan.org/Ticket/Display.html?id=99312>
+   - Inlined version of Types::Standard::Int should check that the value is
+     not a reference.
+  
+   [ Test Suite ]
+   - Fix annoying warning message in test suite with recent versions of
+     Exporter::Tiny.
+  
+   [ Other ]
+   - Make equals/is_a_type_of/is_subtype_of/is_supertype_of in
+     Type::Tiny::Union work more like Moose::Meta::TypeConstraint::Union.
+  
+  1.001_001	2014-09-19
+  
+   - Lazy-load Text::Balanced in Type::Parser. (Many parses don't even need
+     it.)
+   - Lazy-load Type::Tiny::Union in Type::Params.
+   - Updated: Prefer Sub::Util over Sub::Name. (The former is smaller.)
+  
+  1.001_000	2014-09-07
+  
+   [ Bug Fixes ]
+   - Fix for Type::Registry::DWIM.
+     Fixes RT#98458.
+     Marcel Montes++
+     <https://rt.cpan.org/Ticket/Display.html?id=98458>
+   - Fix issues with coercions and native attribute traits with some oldish
+     versions of Moose on oldish versions of Perl.
+     Fixes RT#98159.
+     Peter Flanigan++
+     <https://rt.cpan.org/Ticket/Display.html?id=98159>
+  
+   [ Documentation ]
+   - Updated NEWS file.
+   - Updated TODO file.
+   - Updates to Type::Tiny::Manual::UsingWithMoose,
+     Type::Tiny::Manual::UsingWithMoo, and
+     Type::Tiny::Manual::UsingWithMouse.
+  
+   [ Test Suite ]
+   - Make some of the test case skip_all bits more ambitious; test older
+     versions of Moose and Moo than we were testing before.
+  
+   [ Other ]
+   - Added: Type::Params now provides `compile_named` and `validate_named`
+     functions which do the same thing as `compile` and `validate` but are
+     better for named arguments.
+   - Updated: If Sub::Name is unavailable, but the shiny new core Sub::Util
+     is available, then use it instead.
+   - Updated: Want Type::Tiny::XS 0.011.
+   - `Type::Utils::dwim_type` now allows more control over fallback
+     behaviours.
+
+-------------------------------------------------------------------
+Tue Feb 14 07:55:10 UTC 2017 - coolo@suse.com
+
+- updated to 1.000006
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.000006	2017-01-30
+  
+   [ Bug Fixes ]
+   - Fix escaping withing q{...} in a test case.
+     Fixes RT#114386.
+     Karen Etheridge++
+     <https://rt.cpan.org/Ticket/Display.html?id=114386>
+
+-------------------------------------------------------------------
+Tue Apr 14 19:37:43 UTC 2015 - coolo@suse.com
+
+- updated to 1.000005
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.000005	2014-10-25
+  
+   [ Bug Fixes ]
+   - Fix short-circuiting optimizations for parameterized HashRef, ArrayRef,
+     ScalarRef, and Map type constraints.
+     Fixes RT#99312.
+     Marcel Timmerman++
+     <https://rt.cpan.org/Ticket/Display.html?id=99312>
+  
+   [ Test Suite ]
+   - Fix annoying warning message in test suite with recent versions of
+     Exporter::Tiny.
+
+-------------------------------------------------------------------
+Wed Sep 17 19:42:51 UTC 2014 - coolo@suse.com
+
+- updated to 1.000004, see Changes
+
+-------------------------------------------------------------------
+Tue Oct  1 06:40:51 UTC 2013 - coolo@suse.com
+
+- initial package 0.028
+    * created by cpanspec 1.78.07
+

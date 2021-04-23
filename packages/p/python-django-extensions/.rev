@@ -1,0 +1,122 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57a7287c88ba7f97e1629cdf54bad971</srcmd5>
+    <version>2.1.6</version>
+    <time>1557653609</time>
+    <user>dimstar_suse</user>
+    <comment>- Activate the test suite
+- Add missing Requires python-six
+- Add Recommends and Suggests
+- Add fdupes
+- Update to v2.1.6
+- Use single spec style
+- Use %license
+- Add missing Requires python-Django
+- Update to v2.1.5
+- Update to version 1.2.2
+  + No changelog available
+- Use download url as source
+- Copy documentation from tarball
+- Update to 1.0.3:
+  - Sorry, no changelog atm.
+- Update to 1.0.2:
+  - Sorry, no changelog atm.
+- Update to 1.0.1:
+  - Sorry, no changelog atm.
+- Update to 1.0.0:
+  - Sorry, no changelog atm.
+- Update to 0.9:
+  - Sorry, no changelog atm.
+- Update to 0.8:
+  - Sorry, no changelog atm.
+- Update to 0.7.1:
+  - Sorry, no changelog atm.
+- Regenerate spec file with py2pack;
+- Bzip2 source code.
+- Update to 0.5;
+- Spec file cleaned with spec-cleaner;
+- Building as noarch for openSUSE &gt;= 11.2;
+- Fixed Author, Description, Summary and URL tags in spec file.
+</comment>
+    <requestid>692767</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>37548c9e36ce8095bb2c06619b460860</srcmd5>
+    <version>2.2.1</version>
+    <time>1568805085</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.2.1:
+  * More tests
+  * Many bugfixes
+  * Fixes for newest pytest/django
+
+- Use have/skip_python2/3 macros to allow building only one package</comment>
+    <requestid>731226</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ba29bb311de92ae8e1e27d851114d20c</srcmd5>
+    <version>2.2.3</version>
+    <time>1570557473</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.3:
+  * minor fixes
+- Disable py2 package due to unsattisfied dependencies</comment>
+    <requestid>735849</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fe3213f18d4a1355c7007407ce0e3849</srcmd5>
+    <version>2.2.5</version>
+    <time>1572443335</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.5:
+  * RandomCharField, Support unique_together
+  * export_emails, add settings for overriding queryset fields, order_by and the full_name function</comment>
+    <requestid>744146</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e7b42d4859f78466c2afd8cf9f7499c9</srcmd5>
+    <version>2.2.5</version>
+    <time>1579557276</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build in SLE-15: set en_US.UTF-8 encoding
+</comment>
+    <requestid>765870</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4a5d06f2a441ce504b4959b8ff5bd3b5</srcmd5>
+    <version>2.2.8</version>
+    <time>1582207103</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.8:
+  * Various small fixes</comment>
+    <requestid>777580</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f0fc2bd214504ac1293e669348bd3cf2</srcmd5>
+    <version>2.2.9</version>
+    <time>1585995986</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.9:
+  * Fix: shell_plus, move notebook down the list of prefered shells
+  * Fix: sqldiff, fix KeyError when detecting missing (unique) indexes
+  * Improvement: encrypted fields, make it harder to use deprecated keyczar fields
+  * Locale: Removed empty localizations</comment>
+    <requestid>791167</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>32b584de1dd4d8d2b2b3a7413fcc08f6</srcmd5>
+    <version>3.0.2</version>
+    <time>1594228458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>819154</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>da1b18aa1349deb0600ee030eaf9b0b7</srcmd5>
+    <version>3.1.0</version>
+    <time>1610558547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862654</requestid>
+  </revision>
+</revisionlist>

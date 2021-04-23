@@ -1,0 +1,214 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f83f6b8c3fe117a39389b93898905c1d</srcmd5>
+    <version>1.2</version>
+    <time>1168902388</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="119">
+    <srcmd5>f83f6b8c3fe117a39389b93898905c1d</srcmd5>
+    <version>1.2</version>
+    <time>1168902388</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="120">
+    <srcmd5>f213eb9dfce8d17c33b9e4c06e66e138</srcmd5>
+    <version>1.2</version>
+    <time>1245259026</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="122">
+    <srcmd5>f213eb9dfce8d17c33b9e4c06e66e138</srcmd5>
+    <version>1.2</version>
+    <time>1245259026</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="123">
+    <srcmd5>cd31d740bb2001277e104b5f4537e03d</srcmd5>
+    <version>1.2</version>
+    <time>1268923140</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="6" vrev="125">
+    <srcmd5>cd31d740bb2001277e104b5f4537e03d</srcmd5>
+    <version>1.2</version>
+    <time>1278667338</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="7" vrev="126">
+    <srcmd5>cd31d740bb2001277e104b5f4537e03d</srcmd5>
+    <version>1.2</version>
+    <time>1278678566</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f578f9971449352e9f7579c978d7b8e8</srcmd5>
+    <version>1.3</version>
+    <time>1280737469</time>
+    <user>autobuild</user>
+    <comment>Copy from Archiving/cabextract based on submit request 43875 from user msmeissn
+</comment>
+    <requestid>43875</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>0accd4a0c60f59007b4aec53f883fb2f</srcmd5>
+    <version>1.3</version>
+    <time>1293576998</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 56683 from user elvigia
+</comment>
+    <requestid>56683</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>7a5b1c47b7677266dd84a1deaae2ece2</srcmd5>
+    <version>1.3</version>
+    <time>1293577002</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 56683
+</comment>
+  </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>7a5b1c47b7677266dd84a1deaae2ece2</srcmd5>
+    <version>1.3</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>370ea792048ee7797a43c51d994121d0</srcmd5>
+    <version>1.4</version>
+    <time>1316465388</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build (forwarded request 83055 from jengelh)</comment>
+    <requestid>83595</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>370ea792048ee7797a43c51d994121d0</srcmd5>
+    <version>1.4</version>
+    <time>1319181801</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>d29c684a8416d9015e13e4bd19885f60</srcmd5>
+    <version>1.4</version>
+    <time>1323190938</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="15" vrev="6">
+    <srcmd5>d29c684a8416d9015e13e4bd19885f60</srcmd5>
+    <version>1.4</version>
+    <time>1340183224</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>d29c684a8416d9015e13e4bd19885f60</srcmd5>
+    <version>1.4</version>
+    <time>1359108727</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>d29c684a8416d9015e13e4bd19885f60</srcmd5>
+    <version>1.4</version>
+    <time>1379662076</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>d29c684a8416d9015e13e4bd19885f60</srcmd5>
+    <version>1.4</version>
+    <time>1409300604</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="13">
+    <srcmd5>79e954935dc686c62e28c6758e079fd5</srcmd5>
+    <version>1.4</version>
+    <time>1419249262</time>
+    <user>dimstar_suse</user>
+    <comment>- build with PIE (forwarded request 266034 from msmeissn)</comment>
+    <requestid>266035</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>31d694ad583cc64bb336a1743ae9f694</srcmd5>
+    <version>1.5</version>
+    <time>1424622407</time>
+    <user>dimstar_suse</user>
+    <comment>- Use url for source
+- New version 1.5:
+ * Several crashes and hangs were found by Debian project members 
+   using the afl tool to generate corrupt cabinet files. These 
+   crashes and hangs have been fixed.
+ * cabextract now replaces bad Unicode characters in filenames 
+   with the standard Unicode replacement character
+ * wince_rename now puts files under the correct installation path (forwarded request 287058 from pluskalm)</comment>
+    <requestid>287100</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0f4efe47542acc530cab3381c84543f0</srcmd5>
+    <version>1.6</version>
+    <time>1428064491</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>294243</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>416410cbd4f4052cb615b057dc91f8d4</srcmd5>
+    <version>1.6</version>
+    <time>1454353010</time>
+    <user>dimstar_suse</user>
+    <comment>- Tiny spec file cleanup</comment>
+    <requestid>356915</requestid>
+  </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>3b860d3774f1d333dacdfc1158133691</srcmd5>
+    <version>1.6</version>
+    <time>1524238057</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file with spec-cleaner</comment>
+    <requestid>596283</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>65a2cc7c5d69b37a7f46887d2a4cf849</srcmd5>
+    <version>1.7</version>
+    <time>1532774600</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7:
+  * Few bug fixes
+  * New &quot;--encoding&quot; option
+  * Properly handle lowercase conversion for non-ASCII characters.</comment>
+    <requestid>625607</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3a99ce88903afaaafdeed6775450f184</srcmd5>
+    <version>1.8</version>
+    <time>1541666828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>644169</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0ea2d1ff4150b35580f31df0dd2d6a37</srcmd5>
+    <version>1.9</version>
+    <time>1541746497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647277</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>201065a64e29b7b8049c4e85a3a73021</srcmd5>
+    <version>1.9.1</version>
+    <time>1569079798</time>
+    <user>maxlin_factory</user>
+    <comment>- Modernise spec file
+
+- Update to version 1.9.1
+  * Rerelease of 1.9 with some packaging issues fixed</comment>
+    <requestid>732180</requestid>
+  </revision>
+</revisionlist>

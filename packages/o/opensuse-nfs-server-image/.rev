@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e2272ce073a99a615754d25dda549754</srcmd5>
+    <version>1.0.0</version>
+    <time>1591286227</time>
+    <user>dimstar_suse</user>
+    <comment>New nfs-server container for official openSUSE registry namespace</comment>
+    <requestid>811500</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>209111b70f76ff9bfd90f87473e7a30e</srcmd5>
+    <version>1.0.0</version>
+    <time>1591423990</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>811766</requestid>
+  </revision>
+</revisionlist>

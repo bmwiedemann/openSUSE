@@ -1,0 +1,106 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>16ee72067e5d87bf91f91a409a69c0e5</srcmd5>
+    <version>1.100</version>
+    <time>1330966865</time>
+    <user>coolo</user>
+    <comment>new perl package</comment>
+    <requestid>104739</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>16ee72067e5d87bf91f91a409a69c0e5</srcmd5>
+    <version>1.100</version>
+    <time>1340183890</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>16ee72067e5d87bf91f91a409a69c0e5</srcmd5>
+    <version>1.100</version>
+    <time>1359109760</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c6bf91a3bc9e8323bbd881eee9abf2c7</srcmd5>
+    <version>2.003</version>
+    <time>1375365531</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>185356</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c6bf91a3bc9e8323bbd881eee9abf2c7</srcmd5>
+    <version>2.003</version>
+    <time>1379663788</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>41ec1e25de01c3ce325f6011249d6bed</srcmd5>
+    <version>2.004</version>
+    <time>1381127513</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>202446</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d55a63b76e734b694dd8581af8c627de</srcmd5>
+    <version>2.005</version>
+    <time>1385620705</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208663</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>505c4233812d6eec41a227428cf45a67</srcmd5>
+    <version>2.100</version>
+    <time>1395148585</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>226449</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>29cf09ce47f34287f237f61e27708cc1</srcmd5>
+    <version>2.200</version>
+    <time>1406146021</time>
+    <user>coolo</user>
+    <comment>-&gt;</comment>
+    <requestid>241901</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>29cf09ce47f34287f237f61e27708cc1</srcmd5>
+    <version>2.200</version>
+    <time>1409302424</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>27ae506e59298c71217d434542c7abb2</srcmd5>
+    <version>2.201</version>
+    <time>1410967557</time>
+    <user>coolo</user>
+    <comment>- updated to 2.201
+     - correct handling of uppercase a-labels in
+       domain_to_{ascii,unicode}
+     - FIXES: #98354: Capitalized ACE prefix does not work (reported
+       by victor@*****.ru)</comment>
+    <requestid>249364</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>33ebafceb46a44d86c4cfe36acca0946</srcmd5>
+    <version>2.300</version>
+    <time>1444130685</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>334897</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0728455089c70dfaad436523a2309b62</srcmd5>
+    <version>2.500</version>
+    <time>1572278325</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>743339</requestid>
+  </revision>
+</revisionlist>

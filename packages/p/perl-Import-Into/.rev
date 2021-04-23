@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6489552a6a3bef491fd2c8231ee65198</srcmd5>
+    <version>1.001001</version>
+    <time>1375779859</time>
+    <user>coolo</user>
+    <comment>needed by Package::Variant</comment>
+    <requestid>185471</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6489552a6a3bef491fd2c8231ee65198</srcmd5>
+    <version>1.001001</version>
+    <time>1379663719</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5652881c80baf888d865851d81afe8d4</srcmd5>
+    <version>1.002001</version>
+    <time>1395750332</time>
+    <user>coolo</user>
+    <comment>update</comment>
+    <requestid>227173</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8d096797ad7494f3158f5f9e5ed924e6</srcmd5>
+    <version>1.002004</version>
+    <time>1406360520</time>
+    <user>coolo</user>
+    <comment>- updated to 1.002004
+   - fix prerequisite declarations for older toolchain
+ 
+ 1.002003 - 2014-07-09
+   - module loading is now done while importing, making it unnecessary to load
+     them beforehand (RT#96995, Christian Walde)
+ 
+ 1.002002 - 2014-05-06
+   - minor metadata updates</comment>
+    <requestid>242325</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>8d096797ad7494f3158f5f9e5ed924e6</srcmd5>
+    <version>1.002004</version>
+    <time>1409302343</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cecd24538ca31476ce626f85a4991bde</srcmd5>
+    <version>1.002005</version>
+    <time>1443585013</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>327744</requestid>
+  </revision>
+</revisionlist>

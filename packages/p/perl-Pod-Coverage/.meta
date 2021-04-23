@@ -1,0 +1,13 @@
+<package name="perl-Pod-Coverage" project="openSUSE:Factory">
+  <title>Checks if the documentation of a module is comprehensive</title>
+  <description>Developers hate writing documentation. They'd hate it even more if their
+computer tattled on them, but maybe they'll be even more thankful in the
+long run. Even if not, perlmodstyle tells you to, so you must obey.
+
+This module provides a mechanism for determining if the pod for a given
+module is comprehensive.
+
+It expects to find either a =head(n&gt;1) or an =item block documenting a
+subroutine.</description>
+  <devel project="devel:languages:perl" package="perl-Pod-Coverage"/>
+</package>

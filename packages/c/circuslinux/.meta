@@ -1,0 +1,7 @@
+<package name="circuslinux" project="openSUSE:Factory">
+  <title>A Clone of the Atari 2600 Game &quot;Circus Atari&quot;</title>
+  <description>The object is to move a teeter-totter back and forth across the screen
+to bounce clowns into the air. When they reach the top, they pop rows
+of balloons, and then fall back down.</description>
+  <devel project="games" package="circuslinux"/>
+</package>

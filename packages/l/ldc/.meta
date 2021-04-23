@@ -1,0 +1,5 @@
+<package name="ldc" project="openSUSE:Factory">
+  <title>LDC</title>
+  <description>LLVM D Compiler</description>
+  <devel project="devel:languages:D" package="ldc"/>
+</package>

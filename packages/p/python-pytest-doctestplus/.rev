@@ -1,0 +1,107 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>67639f44d26e369e75c2b27c30f5cac0</srcmd5>
+    <version>0.1.3</version>
+    <time>1534543384</time>
+    <user>dimstar_suse</user>
+    <comment>required by python-pytest-astropy, which in turn is required by python-astropy</comment>
+    <requestid>629420</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fbc76ce1a82626c70e15c7faf80f708b</srcmd5>
+    <version>0.2.0</version>
+    <time>1550221334</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.0:
+  * Add doctest-plus-atol and doctest-plus-rtol options for setting the numerical tolerance. [#21]
+  * Update behavior of --doctest-modules option when plugin is installed. [#26]
+- Switch to github tarball to obtain tests
+- Enable tests using _multibuild</comment>
+    <requestid>674958</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0afa010eeedf14fe8f4ffeb33b331f38</srcmd5>
+    <version>0.3.0</version>
+    <time>1552207181</time>
+    <user>coolo</user>
+    <comment>- Update to 0.3.0:
+  * Honor the collect_ignore option used in conftest.py. [#36]
+  * Make use of doctest_optionflags settings. [#39]
+  * Make it possible to set FLOAT_CMP globally in setup.cfg. [#40]
+  * Drop support for pytest versions earlier than 3.0. [#46]
+  * Extend doctest-skip, doctest-skip-all, and doctest-requires directives to work in TeX files. [#43]</comment>
+    <requestid>682762</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ff353083116d08b255c5f3d618e71658</srcmd5>
+    <version>0.3.0</version>
+    <time>1567850146</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729081</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8cf32437c26b1bb0db883d7a2cc24502</srcmd5>
+    <version>0.4.0</version>
+    <time>1569523075</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0:
+  * Avoid SyntaxWarning regarding invalid escape sequence in Python 3.9. [#62]
+  * Compatibility with pytest 5.1 to avoid AttributeError caused by FixtureRequest. [#63]
+- Drop merged patch:
+  * merged_pr_63.patch
+- Rebase patch:
+  * pr_37.patch</comment>
+    <requestid>732116</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>40e99291b387eb469b01881ca7028676</srcmd5>
+    <version>0.5.0</version>
+    <time>1574104178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  * No longer require Numpy. [#69]
+  * Fixed a bug that caused __doctest_requires__ to not work correctly with submodules. [#73]
+  * Fixed a limitation that meant that ELLIPSIS and FLOAT_CMP could not be used at the same time. [#75]
+  * Fixed a bug that caused .. doctest-requires:: to not work correctly. [#78]
+  * Fixed a FutureWarning related to split() with regular expressions. [#78]
+  * Make it possible to specify versions in .. doctest-requires::. [#78]
+  * Allow to use doctest-glob option instead of doctest-rst and text-file-format [#80]
+  * Make comment character configurable via ini variable text_file_comment_chars [#80]
+  * Respect ignore and ignore-glob options from pytest. [#82]
+  * Add --doctest-only option. [#83]
+  * Added an IGNORE_WARNINGS option for # doctest: [#84]
+- Remove merged patch pr_37.patch</comment>
+    <requestid>749190</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e285f50358177b915b436909d41c60a2</srcmd5>
+    <version>0.6.1</version>
+    <time>1589892450</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1:
+  * Disabling the usage of the doctest_ignore_import_errors option
+  * Drop support for python versions earlier than 3.6. [#103]
+  * Drop support for pytest versions earlier than 4.0. [#103]
+  * Fix compatibility with pytest 5.4. [#103]</comment>
+    <requestid>806847</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>eef92a0e6af7040a3d0b3c2e77a94771</srcmd5>
+    <version>0.7.0</version>
+    <time>1591742991</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Added a new ini option, doctest_subpackage_requires, that can
+    be used to skip specific subpackages based on required packages. [#112]</comment>
+    <requestid>812817</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>384cc1d8fc0f0586aa7d8fd2bbc050a6</srcmd5>
+    <version>0.8.0</version>
+    <time>1598651117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>829699</requestid>
+  </revision>
+</revisionlist>

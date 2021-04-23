@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Mon Dec  7 00:42:19 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Skip testing with optional jupyter_ipython. Jupyter is only
+  available for Python >= 3.7
+  gh#openSUSE/python-rpm-macros#66
+
+-------------------------------------------------------------------
+Wed Dec  2 17:16:41 UTC 2020 - Michael Ströder <michael@stroeder.com>
+
+- Update to 0.15.0
+  * Add --export option to set to make it prepend the binding with export (#270 by @jadutter).
+  * Make set command create the .env file in the current directory if no .env file was found (#270 by @jadutter).
+  * Fix potentially empty expanded value for duplicate key (#260 by @bbc2).
+  * Fix import error on Python 3.5.0 and 3.5.1 (#267 by @gongqingkui).
+  * Fix parsing of unquoted values containing several adjacent space or tab characters (#277 by @bbc2, review by @x-yuri).
+
+-------------------------------------------------------------------
+Wed Aug  5 13:46:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.14.0
+  * Privilege definition in file over the environment in variable expansion (#256 by
+    [@elbehery95]).
+  * Improve error message for when file isn't found (#245 by [@snobu]).
+  * Use HTTPS URL in package meta data (#251 by [@ekohl]).
+
+-------------------------------------------------------------------
+Tue Jun 30 04:44:30 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Downgrade jupyter_ipython from Recommends to Suggests as
+  python-dotenv is now a dependency of docker-compose
+
+-------------------------------------------------------------------
+Wed May 20 12:41:06 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.13.0
+  * Add support for a Bash-like default value in variable expansion
+  * Fix escaping of quoted values written by set_key
+  * Few more fixes
+
+-------------------------------------------------------------------
+Wed Mar 18 09:17:07 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.12.0:
+  * various fixes
+
+-------------------------------------------------------------------
+Mon Jul 22 13:18:03 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.10.3:
+  * Small cleanups
+
+-------------------------------------------------------------------
+Sat May 25 08:58:11 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.10.2:
+  * Add type hints and expose them to users (@qnighy)(#172)
+  * load_dotenv and dotenv_values now accept an encoding parameter, defaults to None (@theskumar)(@earlbread)(#161)
+  * Fix str/unicode inconsistency in Python 2: values are always str now. (@bbc2)(#121)
+  * Fix Unicode error in Python 2, introduced in 0.10.0. (@bbc2)(#176)
+
+-------------------------------------------------------------------
+Thu Mar  7 15:42:54 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add LANG=C.UTF-8 to %check to fix tests on Leap
+- Rename tarball to match name provided by PyPI
+
+-------------------------------------------------------------------
+Fri Feb 15 06:37:32 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for 0.10.1

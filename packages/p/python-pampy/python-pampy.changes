@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Wed Mar 11 14:44:24 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 0.3.0
+  * Add type annotations support for matching
+  * Add support for callables which return Tuple[bool, List]
+  * Make match_value not depend on itself and add datetime example
+  * Add Enum support for matching
+
+-------------------------------------------------------------------
+Fri Jan 18 12:57:07 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Do not distribute tests on the system
+
+-------------------------------------------------------------------
+Mon Jan  7 09:11:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Run tests
+- Install license file
+- Update to 0.2.1:
+  * support python 3.7
+
+-------------------------------------------------------------------
+Fri Jan  4 13:59:46 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim rhetorics from description.
+
+-------------------------------------------------------------------
+Mon Dec 17 06:23:57 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging effort

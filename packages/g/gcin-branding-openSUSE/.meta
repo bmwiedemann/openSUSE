@@ -1,0 +1,5 @@
+<package name="gcin-branding-openSUSE" project="openSUSE:Factory">
+  <title>gcin-branding-openSUSE</title>
+  <description>This package provides openSUSE Look and Feel for gcin</description>
+  <devel project="M17N" package="gcin-branding-openSUSE"/>
+</package>

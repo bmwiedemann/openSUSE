@@ -1,0 +1,62 @@
+#
+# spec file for package perl-Class-Std
+#
+# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
+#
+
+
+Name:           perl-Class-Std
+Version:        0.013
+Release:        0
+%define cpan_name Class-Std
+Summary:        Support for creating standard "inside-out" classes
+License:        Artistic-1.0 or GPL-1.0+
+Group:          Development/Libraries/Perl
+Url:            http://search.cpan.org/dist/Class-Std/
+Source0:        http://www.cpan.org/authors/id/C/CH/CHORNY/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
+BuildArch:      noarch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  perl
+BuildRequires:  perl-macros
+BuildRequires:  perl(Module::Build) >= 0.420000
+%{perl_requires}
+
+%description
+This module provides tools that help to implement the "inside out object"
+class structure in a convenient and standard way.
+
+_Portions of the following code and documentation from "Perl Best
+Practices" copyright (c) 2005 by O'Reilly Media, Inc. and reprinted with
+permission._
+
+%prep
+%setup -q -n %{cpan_name}-%{version}
+
+%build
+%{__perl} Build.PL installdirs=vendor
+./Build build flags=%{?_smp_mflags}
+
+%check
+./Build test
+
+%install
+./Build install destdir=%{buildroot} create_packlist=0
+%perl_gen_filelist
+
+%files -f %{name}.files
+%defattr(-,root,root,755)
+%doc Changes demo README
+
+%changelog

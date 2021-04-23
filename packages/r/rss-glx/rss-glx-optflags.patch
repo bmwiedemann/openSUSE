@@ -1,0 +1,22 @@
+--- configure.in.orig
++++ configure.in
+@@ -11,9 +11,6 @@ AM_PROG_CC_C_O
+ AC_PROG_CC_C99
+ AC_C_BIGENDIAN
+ 
+-if test "x$GCC" = xyes; then
+-	CFLAGS="-O2"
+-fi
+ AC_ARG_ENABLE([debug], [AC_HELP_STRING([--enable-debug],
+     [build with debugging information default=no])],
+     [test "$enableval" = "yes" && CFLAGS="-g"])
+@@ -23,9 +20,6 @@ fi
+ 
+ AC_PROG_CXX
+ 
+-if test "x$GXX" = xyes; then
+-	CXXFLAGS="-O2"
+-fi
+ AC_ARG_ENABLE([debug], [AC_HELP_STRING([--enable-debug],
+     [build with debugging information default=no])],
+     [test "$enableval" = "yes" && CXXFLAGS="-g"])

@@ -1,0 +1,3 @@
+The command to run this container is:
+
+podman run -d --rm -v /etc/haproxy/haproxy.cfg:/etc/haproxy/haproxy.cfg:ro --net=host --name haproxy registry.opensuse.org/opensuse/haproxy

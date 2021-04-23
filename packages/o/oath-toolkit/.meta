@@ -1,0 +1,5 @@
+<package name="oath-toolkit" project="openSUSE:Factory">
+  <title>Makes it possible to build one-time password authentication systems</title>
+  <description>Makes it possible to build one-time password authentication systems</description>
+  <devel project="security" package="oath-toolkit"/>
+</package>

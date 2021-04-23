@@ -1,0 +1,187 @@
+-------------------------------------------------------------------
+Thu Oct 15 11:06:16 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to version 3.12.1
+  + Changed default frequency level to SIMD128 for Skylake, Cannon
+    Lake, Comet Lake and Tiger Lake CPUs. This change typically 
+    improves performance for renderers that just use SSE by
+    maintaining higher CPU frequencies. In case your renderer is
+    AVX optimized you can get higher ray tracing performance
+    by configuring the frequency level to simd256 through passing
+    frequency_level=simd256 to rtcNewDevice.
+
+-------------------------------------------------------------------
+Fri Sep 25 08:26:06 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to version 3.12.0
+  + Added linear cone curve geometry support. In this mode a real
+    geometric surface for curves
+  + with linear basis is rendered using capped cones. They are
+    discontinuous at edge boundaries.
+  + Enabled fast two level builder for instances when low quality
+    build is requested.
+  + Bugfix for BVH build when geometries got disabled.
+  + Added EMBREE_BACKFACE_CULLING_CURVES cmake option. This allows
+    for a cheaper round
+  + linear curve intersection when correct internal tracking and
+    back hits are not required.
+  + The new cmake option defaults to OFF.
+  + User geometries with invalid bounds with lower>upper in some
+    dimension will be ignored.
+  + Increased robustness for grid interpolation code and fixed
+    returned out of range u/v
+  + coordinates for grid primitive.
+  + Fixed handling of motion blur time range for sphere, discs, and
+    oriented disc geometries.
+  + Fixed missing model data in releases.
+  + Ensure compatibility to newer versions of oneTBB.
+  + Motion blur BVH nodes no longer store NaN values.
+
+-------------------------------------------------------------------
+Tue Sep  1 16:22:19 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- raise limits to 24G, since this version uses up to 22,6G on TW 
+  for build (16,7G on 15.2)
+
+-------------------------------------------------------------------
+Thu Aug 20 08:33:47 UTC 2020 - Martin Liška <mliska@suse.cz>
+
+- Use memory limit as the build is dominated by 2 huge gas runs.
+
+-------------------------------------------------------------------
+Thu Jul  9 11:07:33 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to version 3.11.0
+  + Round linear curves now automatically check for the existence
+    of left and right
+  + connected segments if the flags buffer is empty. Left segments
+    exist if the
+  + segment(id-1) + 1 == segment(id) and similarly for right
+    segments.
+  + Implemented the min-width feature for curves and points, which
+    allows to increase the
+  + radius in a distance dependent way, such that the curve or
+    points thickness is n pixels wide.
+  + Round linear curves are closed now also at their start.
+  + Embree no longer supports Visual Studio 2013 starting with this
+    release.
+  + Bugfix in subdivision tessellation level assignment for non-
+    quad base primitives
+  + Small meshes are directly added to top level build phase of
+    two-level builder to reduce memory consumption.
+  + Enabled fast two level builder for user geometries when low
+    quality build is requested.
+
+- update to version 3.10.0
+  + Added EMBREE_COMPACT_POLYS CMake option which enables double
+    indexed triangle and quad
+  + leaves to reduce memory consumption in compact mode by an
+    additional 40% at about
+  + 15% performance impact. This new mode is disabled by default.
+  + Compile fix for oneTBB 2021.1-beta05
+  + Releases upgrade to TBB 2020.2
+  + Compile fix for ISPC v1.13.0
+  + Adding RPATH to libembree.so in releases
+  + Increased required CMake version to 3.1.0
+  + Made instID member for array of pointers ray stream layout
+    optional again.
+
+- update to version 3.9.0
+  + Added round linear curve geometry support. In this mode a real
+    geometric surface for curves
+  + with linear basis is rendered using capped cones with spherical
+    filling between
+  + the curve segments.
+  + Added rtcGetSceneDevice API function, that returns the device a
+    scene got created in.
+  + Improved performance of round curve rendering by up to 1.8x.
+  + Bugfix to sphere intersection filter invokation for back hit.
+  + Fixed wrong assertion that triggered for invalid curves which
+    anyway get filtered out.
+  + RelWithDebInfo mode no longer enables assertions.
+  + Fixed an issue in FindTBB.cmake that caused compile error with
+    Debug build under Linux.
+  + Embree releases no longer provide RPMs for Linux. Please use
+    the RPMs coming with the package
+  + manager of your Linux distribution.
+
+-------------------------------------------------------------------
+Wed Feb  5 21:11:16 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- update to version 3.8.0
+  + New Features:
+    * Added collision detection support for user geometries (see
+      rtcCollide API function)
+    * Passing geomID to user geometry callbacks.
+  + Fixed Issues:
+    * Bugfix in AVX512VL codepath for rtcIntersect1
+    * For sphere geometries the intersection filter gets now
+      invoked for front and back hit.
+    * Fixed some bugs for quaternion motion blur.
+    * RTCIntersectContext always non-const in Embree API
+    * Made RTCHit aligned to 16 bytes in Embree API
+
+- update to version 3.7.0
+  + Added quaternion motion blur for correct interpolation of
+    rotational transformations.
+  + Fixed wrong bounding calculations when a motion blurred
+    instance did instantiate a motion blurred scene.
+  + In robust mode the depth test consistently uses tnear <= t <=
+    tfar now in order to robustly continue traversal at a previous
+    hit point in a way that guarentees reaching all hits, even hits
+    at the same place.
+  + Fixed depth test in robust mode to be precise at tnear and
+    tfar.
+  + Added next_hit tutorial to demonstrate robustly collecting all
+    hits along a ray using multiple ray queries.
+  + Implemented robust mode for curves. This has a small
+    performance impact but fixes bounding problems with flat
+    curves.
+  + Improved quality of motion blur BVH by using linear bounds
+    during binning.
+  + Implemented issue with motion blur builder where number of time
+    segments for SAH heuristic were counted wrong due to some
+    numerical issues.
+  + Fixed an accuracy issue with rendering very short fat curves.
+  + rtcCommitScene can now get called during rendering from
+    multiple threads to lazily build geometry. When TBB is used
+    this causes a much lower overhead than using
+    rtcJoinCommitScene.
+  + Geometries can now get attached to multiple scenes at the same
+    time, which simplifies mapping general scene graphs to API.
+  + Updated to TBB 2019.9 for release builds.
+  + Fixed a bug in the BVH builder for Grid geometries.
+  + Added macOS Catalina support to Embree releases.
+
+-------------------------------------------------------------------
+Fri Oct 11 18:49:03 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to version 3.6.1
+   Added Catmull-Rom curve types.
+   Added support for multi-level instancing.
+   Added support for point queries.
+   Fixed a bug preventing normal oriented curves being used unless timesteps were specified.
+   Fixed bug in external BVH builder when configured for dynamic build.
+   Added support for new config flag "user_threads=N" to device initialization
+   which sets the number of threads used by TBB but created by the user.
+   Fixed automatic vertex buffer padding when using rtcSetNewGeometry API function.
+
+-------------------------------------------------------------------
+Mon Sep  9 17:40:25 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim marketing from description.
+
+-------------------------------------------------------------------
+Sun Sep  8 16:14:54 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Relax _constraints, and use memory-constraints/limit_build instead
+- Disable building for every arch but x86_64, as embree strictly requires
+  at least SSE2.
+- Use FAT LTO objects in order to provide proper static library.
+- Use tbb-devel BuildRequires instead of cmake(TBB), the latter is not
+  available in Leap 15.x
+
+-------------------------------------------------------------------
+Mon Jul 15 19:54:19 UTC 2019 - Hans-Peter Jansen <hpj@urpla.net>
+
+- version 3.5.2: initial build

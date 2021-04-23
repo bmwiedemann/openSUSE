@@ -1,0 +1,8 @@
+# We are preventing the stripping to keep backtraces intact
+addFilter("unstripped-binary-or-object")
+
+# Golang doesn't support dynamic linking yet in a proper way
+addFilter("statically-linked-binary")
+
+# We are aware of that but shorter names are not possible
+addFilter("filename-too-long-for-joliet")

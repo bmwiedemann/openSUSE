@@ -1,0 +1,9 @@
+<package name="python-slip" project="openSUSE:Factory">
+  <title>The Simple Library for Python packages contain miscellaneous code for convenience, extension and workaround purposes</title>
+  <description> The Simple Library for Python packages contain miscellaneous code for convenience, extension and workaround purposes. It contains a number of modules:
+
+    slip.dbus.service, slip.dbus.polkit: Make using ​DBus and ​PolicyKit simple in your project
+    slip.gtk: Set up ​GTK+ labels so they resize with their parents
+    slip.util.hookable: Make certain Python base types run hooks when their &quot;content&quot; changes </description>
+  <devel project="devel:languages:python" package="python-slip"/>
+</package>

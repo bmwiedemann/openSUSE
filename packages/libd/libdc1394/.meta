@@ -1,0 +1,8 @@
+<package name="libdc1394" project="openSUSE:Factory">
+  <title>1394-Based Digital Camera Control Library</title>
+  <description>This library provides functionality for controlling any camera that
+conforms to the 1394-Based Digital Camera Specification. It utilizes
+the low-level functionality provided by libraw1394 to communicate with
+the camera.</description>
+  <devel project="multimedia:libs" package="libdc1394"/>
+</package>

@@ -1,0 +1,90 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>03253d2e4231ee8e52e8f26ea3cca3c8</srcmd5>
+    <version>1.2.7</version>
+    <time>1336471346</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115429</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>03253d2e4231ee8e52e8f26ea3cca3c8</srcmd5>
+    <version>1.2.7</version>
+    <time>1340184348</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d78f9d8b959458c40fb5a78d22969015</srcmd5>
+    <version>1.2.8</version>
+    <time>1347969690</time>
+    <user>coolo</user>
+    <comment>- Update to version 1.2.8:
+  + Build against server with no XAA support.
+  + Port to new compat API.</comment>
+    <requestid>134622</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>d78f9d8b959458c40fb5a78d22969015</srcmd5>
+    <version>1.2.8</version>
+    <time>1359110611</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>425b4e4328ebf3131d7021be2a40418a</srcmd5>
+    <version>1.2.8</version>
+    <time>1363950690</time>
+    <user>coolo</user>
+    <comment>-  Add mibstore.patch, fixes build with xorg-server 1.14 
+
+- introduce hardware supplements conditional on xorg-x11-server
+  package (bnc#810333)</comment>
+    <requestid>160462</requestid>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>bb9b7598014510c58fee5e3caea0f710</srcmd5>
+    <version>1.2.8</version>
+    <time>1377248964</time>
+    <user>scarabeus_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>195907</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>bb9b7598014510c58fee5e3caea0f710</srcmd5>
+    <version>1.2.8</version>
+    <time>1379665024</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="8" vrev="9">
+    <srcmd5>bb9b7598014510c58fee5e3caea0f710</srcmd5>
+    <version>1.2.8</version>
+    <time>1409303707</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="10">
+    <srcmd5>c1a8d3509b918ecb878821ec96eb4ed1</srcmd5>
+    <version>1.2.8</version>
+    <time>1480693366</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch 
+  * Adapt Block/WakeupHandler signature for ABI 23</comment>
+    <requestid>442917</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8cca1c1adab650c103ae2d081848288b</srcmd5>
+    <version>1.2.9</version>
+    <time>1485250531</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.9:
+  * Remove mibstore.h
+  * Pass the pci device through to fbdevHWInit
+  * Adapt Block/WakeupHandler signature for ABI 23
+  * Fix I2C for DDC2.
+- supersedes U_Remove-mibstore.h.patch,
+  U_Adapt-Block-WakeupHandler-signature-for-ABI-23.patch</comment>
+    <requestid>451421</requestid>
+  </revision>
+</revisionlist>

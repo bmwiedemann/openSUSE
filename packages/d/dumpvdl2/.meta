@@ -1,0 +1,21 @@
+<package name="dumpvdl2" project="openSUSE:Factory">
+  <title>A lightweight, standalone VDL Mode 2 message decoder and protocol analyzer</title>
+  <description>A lightweight, standalone VDL Mode 2 message decoder and protocol analyzer.
+
+Features:
+ * Runs under Linux (tested on: x86, x86-64, Raspberry Pi)
+ * Supports following SDR hardware:
+   - RTLSDR (via rtl-sdr library)
+   - Mirics SDR (via libmirisdr-4)
+   - reads prerecorded IQ data from file
+ * Decodes up to 8 VDL2 channels simultaneously
+ * Outputs messages to standard output or to a file (with optional daily
+   or hourly file rotation)
+ * Outputs ACARS messages to PlanePlotter over UDP/IP socket
+ * Supports message filtering by type or direction (uplink, downlink)
+ * Outputs decoding statistics using Etsy StatsD protocol
+
+</description>
+  <devel project="hardware:sdr" package="dumpvdl2"/>
+  <url>https://github.com/szpajder/dumpvdl2</url>
+</package>

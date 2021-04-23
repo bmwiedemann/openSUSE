@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd577584b28f0f11e7cc893bba57b8d5</srcmd5>
+    <version>0.36</version>
+    <time>1321280609</time>
+    <user>coolo</user>
+    <comment>new perl dependency</comment>
+    <requestid>91038</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9d07bb84dcb38997d2849a2878ce7832</srcmd5>
+    <version>0.36</version>
+    <time>1323193121</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>9d07bb84dcb38997d2849a2878ce7832</srcmd5>
+    <version>0.36</version>
+    <time>1340183807</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="4" vrev="6">
+    <srcmd5>9d07bb84dcb38997d2849a2878ce7832</srcmd5>
+    <version>0.36</version>
+    <time>1359109616</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="8">
+    <srcmd5>9d07bb84dcb38997d2849a2878ce7832</srcmd5>
+    <version>0.36</version>
+    <time>1379663582</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="10">
+    <srcmd5>9d07bb84dcb38997d2849a2878ce7832</srcmd5>
+    <version>0.36</version>
+    <time>1409302198</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+</revisionlist>

@@ -1,0 +1,79 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c36504c16c977daa458c439b7cae2e51</srcmd5>
+    <version>1.2.2</version>
+    <time>1336471655</time>
+    <user>coolo</user>
+    <comment>Pushing X11:XOrg</comment>
+    <requestid>115501</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c36504c16c977daa458c439b7cae2e51</srcmd5>
+    <version>1.2.2</version>
+    <time>1340184385</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="3" vrev="5">
+    <srcmd5>c36504c16c977daa458c439b7cae2e51</srcmd5>
+    <version>1.2.2</version>
+    <time>1359110694</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7e9377bb5ae6843a08b06b78becd9490</srcmd5>
+    <version>1.2.3</version>
+    <time>1376902301</time>
+    <user>scarabeus_factory</user>
+    <comment>Update to ver 1.2.3 (forwarded request 195512 from Zaitor)</comment>
+    <requestid>195560</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>7e9377bb5ae6843a08b06b78becd9490</srcmd5>
+    <version>1.2.3</version>
+    <time>1379665119</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>7e9377bb5ae6843a08b06b78becd9490</srcmd5>
+    <version>1.2.3</version>
+    <time>1409303806</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>4fd2642792c0a8c214451e98b4aa519f</srcmd5>
+    <version>1.2.3</version>
+    <time>1511426117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>544171</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>347d213a3df57c96728fa4fbf8b695c0</srcmd5>
+    <version>1.2.4</version>
+    <time>1523126979</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.4
+  * configure: Drop AM_MAINTAINER_MODE
+  * autogen.sh: Honor NOCONFIGURE=1
+  * autogen.sh: use quoted string variables
+  * Include unistd.h for usleep() if HAVE_USLEEP
+  * Fix one last warning about usage() format string.
+  * autogen: add default patch prefix
+  * autogen.sh: use exec instead of waiting for configure to finish
+- supersedes U_xset_fix-warning-about-usage-format-string.patch</comment>
+    <requestid>593571</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2bfcf735c068a61bbd63b341e01ab7ac</srcmd5>
+    <version>1.2.4</version>
+    <time>1561882493</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer require legacy extension xf86miscproto; no longer
+  provided by xorgproto-2019.1 by default</comment>
+    <requestid>711693</requestid>
+  </revision>
+</revisionlist>

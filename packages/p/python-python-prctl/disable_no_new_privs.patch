@@ -1,0 +1,12 @@
+Index: b/test_prctl.py
+===================================================================
+--- a/test_prctl.py
++++ b/test_prctl.py
+@@ -220,6 +220,7 @@ class PrctlTest(unittest.TestCase):
+         self.assertEqual(prctl.get_name(), name[:15])
+ 
+     @require('get_no_new_privs')
++    @unittest.skip('test fails, because ping doesn\'t use capabilities anymore (boo#1174504)')
+     def test_no_new_privs(self):
+         """Test the no_new_privs function"""
+         self.assertEqual(prctl.get_no_new_privs(), 0)

@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Nov  8 08:55:55 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to junit5 5.5.2
+- Distribute also the manifest-only junit-jupiter artifact
+- Build the console by default, since picocli package exists now
+
+-------------------------------------------------------------------
+Thu Apr 11 15:14:17 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging of junit5 5.4.0

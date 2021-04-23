@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>35a0b518e798631c8dfa597bec08a2bf</srcmd5>
+    <version>4.3.1</version>
+    <time>1533627890</time>
+    <user>dimstar_suse</user>
+    <comment>Required by python-zope.testbrowser</comment>
+    <requestid>627762</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>574155783f59e5af214d59511a96fe7f</srcmd5>
+    <version>4.3.1</version>
+    <time>1544726779</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>654088</requestid>
+  </revision>
+</revisionlist>

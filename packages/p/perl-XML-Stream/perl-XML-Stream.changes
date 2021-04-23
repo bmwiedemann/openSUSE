@@ -1,0 +1,160 @@
+-------------------------------------------------------------------
+Fri Feb  6 13:13:04 UTC 2015 - coolo@suse.com
+
+- updated to 1.24
+   - Update bug tracker location
+ 
+ 1.23_07 2014-12-17
+ ====
+   - Correct incorrectly tagged 1.23_06 (errantly tagged as 1.24_06)
+ 
+ 1.23_06 2011-07-19
+ ====
+   - Eliminate another set of cyclic references (szabgab)
+   - Stylistic improvements in tests (szabgab)
+   - Refactor debug output to separate module (szabgab)
+   - Weaken scalar references to address additional memory leak (szabgab)
+   - Add additional tests for scalar references (szabgab)
+   - Documentation format corrections (szabgab)
+ 
+ 
+ 1.23_05 2011-06-23
+ ====
+   - RT#8834 unindented POD so that it reformats properly (szabgab)
+   - Weaken cyclic references in XML::Stream to eliminate memory leak (szabgab)
+   - Increase use of warnings and strictures in tests and code (szabgab)
+   - Replace indirect object notation with direct invocation notation (szabgab)
+   - Replace manual TAP output with Test::More (szabgab)
+ 
+ 1.23_04 2010-09-22
+ ====
+   - RT#57649 Set default value for _tls flag
+   - Module metadata changes
+ 
+ 1.23_03 2010-09-20
+ ====
+   - RT#57649 Prepare cert verification params when TLS connection is requested
+ 
+ 1.23_02 2010-09-18
+ ====
+   - Convert project to Module::Build, with ExtUtils::MakeMaker compatibility
+   - RT#57649 SSL cert verification, enabled by default
+   - RT#53315 Remove old, bundled Test::* libraries, now core
+   - RT#54880 Clarify license terms
+   - RT#54151 Disable network-based tests via environment variable (for Debian)
+   - RT#56574 Fix object construction causing problems on Perl 5.12.0
+
+-------------------------------------------------------------------
+Fri Nov 18 08:40:56 UTC 2011 - coolo@suse.com
+
+- use original tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:36:20 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Wed Jul 14 13:27:28 UTC 2010 - chris@computersalat.de
+
+- recreated by cpanspec 1.78
+  o fix deps
+- noarch pkg
+
+-------------------------------------------------------------------
+Wed Jan 13 16:41:08 CET 2010 - anicka@suse.cz
+
+- update to 1.23
+  * RT#17484 Handle servers which re-use stream ID 
+  * RT#18711 Update link to XML Streams doc 
+  * RT#12977 Require perl >= 5.8.0
+  * RT#19415 Use jabber.org for tests
+  * RT#21932 Fix authname for Google Talk SASL auth
+  * RT#39098 Make dependencies more explicit
+  * RT#24817 Merge and massage of toddr's SASL fix
+  * RT#36864 Fake select on filehandles on win32
+  * RT#31215 Test and fix for XML node copying issue
+  * RT#17325 Fix and test for infinite loop on quotes
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Wed Jan 25 21:40:04 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug  1 13:34:46 CEST 2005 - mjancar@suse.cz
+
+- update to 1.22
+
+-------------------------------------------------------------------
+Thu Feb 26 17:37:33 CET 2004 - mjancar@suse.cz
+
+- update to 1.17
+
+-------------------------------------------------------------------
+Sun Jan 11 11:07:07 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 16:02:54 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Fri Jul 18 21:16:13 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Mon Jun 16 20:22:57 CEST 2003 - mjancar@suse.cz
+
+- fix filelist
+
+-------------------------------------------------------------------
+Mon May 19 11:32:22 CEST 2003 - ro@suse.de
+
+- remove perllocal.pod 
+
+-------------------------------------------------------------------
+Wed May 14 10:48:56 CEST 2003 - mjancar@suse.cz
+
+- disabled tests that require internet connectivity
+
+-------------------------------------------------------------------
+Wed Dec 18 18:30:06 CET 2002 - prehak@suse.cz
+
+- updated to version 1.16
+
+-------------------------------------------------------------------
+Mon Jul 29 12:44:50 CEST 2002 - mls@suse.de
+
+- Fixed neededforbuild for perl-5.8.0
+
+-------------------------------------------------------------------
+Sat Jul 20 19:18:19 CEST 2002 - prehak@suse.cz
+
+- update to version 1.15
+- added openSSL support
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Tue Jan 15 15:26:33 CET 2002 - rvasice@suse.cz
+
+- update to version 1.14
+
+-------------------------------------------------------------------
+Wed Aug 15 11:23:25 CEST 2001 - rvasice@suse.cz
+
+- initial package release (version 1.12)
+

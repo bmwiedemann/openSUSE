@@ -1,0 +1,5 @@
+<package name="python-compat-patcher-core" project="openSUSE:Factory">
+  <title>python-compat-patcher-core</title>
+  <description>Python patcher system to allow easy and lasting API compatibility.</description>
+  <devel project="devel:languages:python" package="python-compat-patcher-core"/>
+</package>

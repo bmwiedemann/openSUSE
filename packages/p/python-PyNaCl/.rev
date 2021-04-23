@@ -1,0 +1,91 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>990856b1e3094afdcf11eabd26c5e0d8</srcmd5>
+    <version>1.1.2</version>
+    <time>1502562246</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>502896</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>03f5cce6165e4b6c69e41ba46aa4dd40</srcmd5>
+    <version>1.2.1</version>
+    <time>1515623575</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1
+- use system libsodium (forwarded request 559378 from mimi_vx)</comment>
+    <requestid>559379</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>96388a98f6937971136c096ec2007099</srcmd5>
+    <version>1.3.0</version>
+    <time>1544816933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>657564</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2c9398af2b24eb6d4c3c3b26213d6b89</srcmd5>
+    <version>1.3.0</version>
+    <time>1559837686</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707231</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>9d194aabfc6de12d28e997a40ce89622</srcmd5>
+    <version>1.3.0</version>
+    <time>1564484458</time>
+    <user>dimstar_suse</user>
+    <comment>- add fix_tests.patch for new pytest</comment>
+    <requestid>716282</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>ccf99c5788e297f32db2f4dd87519ec9</srcmd5>
+    <version>1.3.0</version>
+    <time>1569851784</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing runtime dependency on cffi</comment>
+    <requestid>733177</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>b6d52382fdb9d31169157e158e92601b</srcmd5>
+    <version>1.3.0</version>
+    <time>1587325801</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix tests with latest hypothesis:
+  * hypothesis-no-unilmited.patch</comment>
+    <requestid>794783</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ce13b8e3b5a46e57c0e2ef7bb57bee8c</srcmd5>
+    <version>1.4.0</version>
+    <time>1594807301</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.0
+  * Update ``libsodium`` to 1.0.18.
+  * **BACKWARDS INCOMPATIBLE:** We no longer distribute 32-bit ``manylinux1``
+    wheels. Continuing to produce them was a maintenance burden.
+  * Added support for Python 3.8, and removed support for Python 3.4.
+  * Add low level bindings for extracting the seed and the public key
+    from crypto_sign_ed25519 secret key
+  * Add low level bindings for deterministic random generation.
+  * Add ``wheel`` and ``setuptools`` setup_requirements in ``setup.py`` (#485)
+  * Fix checks on very slow builders (#481, #495)
+  * Add low-level bindings to ed25519 arithmetic functions
+  * Update low-level blake2b state implementation
+  * Fix wrong short-input behavior of SealedBox.decrypt() (#517)
+  * Raise CryptPrefixError exception instead of InvalidkeyError when trying
+    to check a password against a verifier stored in a unknown format (#519)
+  * Add support for minimal builds of libsodium. Trying to call functions
+    not available in a minimal build will raise an UnavailableError
+    exception. To compile a minimal build of the bundled libsodium, set
+    the SODIUM_INSTALL_MINIMAL environment variable to any non-empty
+    string (e.g. ``SODIUM_INSTALL_MINIMAL=1``) for setup.
+- removed obsolete back-port patch:
+  * fix_tests.patch
+  * hypothesis-no-unilmited.patch
+  * python-PyNaCl-hypothesis-remove-average_size.patch</comment>
+    <requestid>819131</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,265 @@
+Quickstart document for Apache Subversion on openSUSE.
+
+For the full documentation, install the package subversion-doc and see
+/usr/share/doc/packages/subversion/html/book/svn-book.html
+An online version can be found at http://svnbook.red-bean.com/
+
+Topics:
+
+0. upgrading to Apache Subversion 1.11
+1. mini-howto
+2. allowing anonymous read access
+3. serving several repositories with SVNParentPath 
+4. serving the repositories at "/"
+5. running svnserve
+6. running svnserve under a different user
+7. quickstart for mod_dontdothat
+
+================================================================================
+
+0. upgrading to Apache Subversion 1.11
+
+- concerns when upgrading from earlier versions
+  * Upgrading the Working Copy
+    1.11 uses the same working copy format as 1.8 through 1.10. When upgrading
+    a working copy from a client earlier than 1.8, a one-time execution of
+    "svn upgrade" is required. After that, clients earlier than 1.8 will
+    be unable to use the working copy. For details, please see:
+    https://subversion.apache.org/docs/release-notes/1.10.html#wc-upgrade
+  * Upgrading the Repository
+    1.11 can read and write repositories created by earlier versions.
+    "svnadmin upgrade" may be used to upgrade to FSFS format 8 of 1.10,
+    after which the repository will be no longer be usable for 1.9 servers.
+    An optional dump/load cycle may be used to apply FSFS improvements
+    to past revisions, for 1.10 this is the LZ4 compression feature.
+    https://subversion.apache.org/docs/release-notes/1.10.html#compatibility
+    https://subversion.apache.org/docs/release-notes/1.10.html#lz4
+
+================================================================================
+
+1. mini-howto
+
+To run a subversion server, you need to configure apache2 to load two modules: 
+mod_dav and mod_dav_svn.
+
+  zypper in subversion-server
+  a2enmod dav
+  a2enmod dav_svn
+
+A default/example configuration of the dav_svn module can be found in
+/etc/apache2/conf.d/subversion.conf. The current default configuration
+automatically includes this file the default server configuration.
+
+The MaxKeepAliveRequests option in httpd.conf needs to be increased from 100
+(the default) to at least 1000 (there is no reason why it could not be 10000).
+This will improve performance by allowing serf clients to use fewer TCP
+connections to the server. Clients using neon will also work fine with this
+configuration.
+
+Create some directories to contain the repositories and other files:
+
+  mkdir -p /srv/svn/repos
+  mkdir -p /srv/svn/user_access
+  mkdir -p /srv/svn/html
+
+Edit /etc/apache2/conf.d/subversion.conf and uncomment the desired sections.
+
+The first section "project related HTML files" is optional and will allow you
+to return some static content when /repos is accessed alone. If you do not need
+this, discard this section. 
+
+If instead you wish to show a list of repositories, set "SVNListParentPath on"
+later. See for details:
+http://svnbook.red-bean.com/en/1.8/svn.serverconfig.httpd.html#svn.serverconfig.httpd.extra.browsing.reposlisting
+
+The section following that will configure a repository to be served out of 
+the path /srv/svn/repos/myproject1. Note that the location "/repo/myproject1"
+and "SVNPath" is specified explicitly, see section 3 for an alternative.
+
+To create the repository itself:
+
+  cd /srv/svn/repos
+  svnadmin create project1
+  chown -R wwwrun:www project1/{db,locks}
+
+If using svnserve is not planned, /srv/svn/repos may be owned by wwrun:www.
+Otherwise see instruction in the svnserve section on how to use the user and
+group svn.
+
+The webserver must be (re)started:
+
+  rcapache2 restart
+
+To create the user access files:
+
+  touch /srv/svn/user_access/project1_passwdfile
+  chown root:www /srv/svn/user_access/project1_passwdfile
+  chmod 640 /srv/svn/user_access/project1_passwdfile
+
+  htpasswd2 /srv/svn/user_access/project1_passwdfile user1
+  htpasswd2 /srv/svn/user_access/project1_passwdfile user2
+
+Create the group file for project1:
+  /srv/svn/user_access/project1_groupfile
+
+  project1_committers: user2
+  project1_readers: user1 user2
+
+
+You can test access by:
+
+  svn info http://127.0.0.1/repos/project1
+
+================================================================================
+
+2. allowing anonymous read access
+
+To allow anonymous read access, remove the <Limit GET...> section and move the
+three Auth* statements into the <LimitExcept GET...> section.
+
+================================================================================
+
+3. serving several repositories with SVNParentPath 
+
+When serving several repositories, instead of specifying each location with
+SVNPath in a separate location, you can use SVNParentPath with a single location.
+Change the <Location ...> directive form the template to start with the following:
+
+  <Location /repos/>
+    DAV svn
+    SVNParentPath /srv/svn/repos
+    SVNListParentPath on  
+
+Do not forget to restart the apache service to make the configuration effective.
+
+  service apache2 restart
+
+================================================================================
+
+4. serving the repositories at "/"
+
+Include the configuration into the relevant vhost configuration. Uncomment the 
+section in the template files labeled 'Hosting svn at "/"' and adjust as required.
+Note that this example uses "SVNParentPath" as given in the previous section.
+
+================================================================================
+
+5. running svnserve
+
+Subversion repositories can be via the svnserve daemon and a special network 
+protocol. svnserve should not run as root user. The startup scripts expects a 
+user/group named 'svn'.
+
+The subversion package creates an user and group svn.
+
+If you want to expose the repository via both svnserve and mod_dav_svn
+(Apache httpd) in parallel, ensure that the apache user is part of the
+svn group.
+
+  usermod -A svn wwwrun
+
+This requires a restart of the apache2 service to become effective.
+
+Change the permissions to let the svn group write, and set the setgid flag
+on the repositories.
+
+  chown -R svn:svn /srv/svn/repos
+  chmod -R g+ws /srv/svn/repos
+
+Then proceed to create repositories using svnadmin create described above.
+
+In either case, if using svnserve, ensure that the repositories are owned by
+svn:svn.
+
+The settings files with the options passed to the daemon is is located in:
+
+  /etc/sysconfig/svnserve
+
+To start, ensure proper ownership of repositories and run:
+
+  systemctl start svnserve
+
+For further information about multi-method repository access, see
+http://svnbook.red-bean.com/en/1.8/svn.serverconfig.multimethod.html
+
+You can test repository access by:
+
+  svn info svn://127.0.0.1/project1
+
+Please note that by default, svnserve is configured to be started with -R,
+meaning read-only access only. Remove to allow write access, after you have
+configured access via
+
+  /srv/svn/repos/repo1/conf/svnserve.conf
+
+To configue authentication for svnserve, see
+http://svnbook.red-bean.com/en/1.8/svn.serverconfig.svnserve.html#svn.serverconfig.svnserve.auth
+
+================================================================================
+
+6. running svnserve under a different user
+
+By default, the svnserve daemon will run with the svn:svn user and group.
+To configure the user under which the svnserve daemon will be executed:
+
+  systemctl edit svnserve
+
+Enter overriding settings as required:
+
+  [Service]
+  User=svn-alternate-user
+  Group=svn-alternate-group
+
+Verify:
+
+  systemctl cat svnserve
+
+Adjust permissions to /srv/svn/repos, /var/run/svnserve to allow the required
+read/write access.
+
+Make systemd pick up the changed unit file and restart the service:
+
+  systemctl daemon-reload
+  systemctl restart svnserve
+
+================================================================================
+
+7. quickstart for mod_dontdothat
+
+The apache module mod_dontdothat can be used to prevent users from causing high
+load on the server, e.g. checking out the root of the tree or the tags or 
+branches directories. 
+
+Make sure mod_dontdothat is loaded:
+$ a2enmod dontdothat
+
+Add configuration for the module, e.g.
+
+<Location />
+  DAV svn
+  SVNParentPath /srv/svn/repos/
+  SVNListParentPath on
+  # [...other configuration...]
+  <IfModule mod_dontdothat.c>
+    DontDoThatConfigFile /srv/svn/mod_dontdothat.config
+    DontDoThatDisallowReplay off
+  </IfModule>
+</Location>
+
+Restart apache to make the change effective.
+
+A fairly standard file /srv/svn/mod_dontdothat.config may contain:
+
+[recursive-actions]
+/*/trunk = allow
+/ = deny
+/* = deny
+/*/tags = deny
+/*/branches = deny
+/*/* = deny
+/*/*/tags = deny
+/*/*/branches = deny
+
+This allows checking out of /trunk and each branch, but disallows checking out
+all branches or the complete repository at once.
+

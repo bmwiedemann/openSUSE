@@ -1,0 +1,178 @@
+-------------------------------------------------------------------
+Tue May 29 15:33:22 UTC 2018 - ldevulder@suse.com
+
+- Add iotop-0.60-fix-proc-status-split.patch: Upstream commit to
+  fix crash when /proc/*/status doesn't have tab character (this
+  can be the case with vserver kernels)
+- Add iotop-0.6-ignore-invalid-lines-in-proc-status.patch: Upstream
+  commit to fix crash when /proc/*/status has invalid lines
+
+-------------------------------------------------------------------
+Wed Feb 21 11:15:11 UTC 2018 - mvetter@suse.com
+
+- bsc#1081915: Port to python3:
+  * Add iotop-0.6-python3_build.patch: Upstream commit to fix
+    python build by replacing itervalues() with values(). ID is
+    99c8d7cedce81f17b851954d94bfa73787300599
+  * Add iotop-0.6-python3-header.patch: Replace header to use
+    python3
+- Add iotop-0.6-noendcurses.patch: to prevent problems when closing
+  terminal while running iotop (rh#1035503)
+- Run spec-cleaner:
+  * Remove py_requires
+  * Use man macro
+- Drop condition around noarch
+
+-------------------------------------------------------------------
+Mon Mar 16 20:44:16 UTC 2015 - mpluskal@suse.com
+
+- Cleanup spec file with spec-cleaner
+- Remove no longer needed iotop-rpmlintrc
+- Build cleanup
+- Add gpg signature
+- Use fdupes to remove duplicates
+
+-------------------------------------------------------------------
+Thu Jun 27 12:26:01 CEST 2013 - pth@suse.de
+
+- Update to 0.6:
+  * Clean up the terminal on exit
+  * Stop busy looping on exit in certain conditions
+  * Restored UTF-8 support with python2
+  * Releases are now gpg signed with key "4096R/4D23A27E 2013-05-26"
+
+-------------------------------------------------------------------
+Sun Mar  3 07:44:09 UTC 2013 - zaitor@opensuse.org
+
+- Update to version 0.5:
+  + Adapt the display to the maximum pid width.
+  + Include both total and actual disk bandwidth in the summary.
+  + Conversion to Python 3.
+  + Installation to sbin instead of bin.
+
+-------------------------------------------------------------------
+Mon Oct 31 10:10:47 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.4.4:
+  * cosmetic fixes, including a better error message when missing root
+    credentials
+
+-------------------------------------------------------------------
+Wed Mar 30 07:42:46 UTC 2011 - saschpe@suse.de
+
+- Remove authors from %%description
+- Change "python ./setup.py" calls to "python setup.py"
+
+-------------------------------------------------------------------
+Mon Mar 28 23:04:21 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.4.3:
+  * the netlink message parsing code was fixed to accept alignment padding
+  * UTF-8 output is now forced even if the locale is misconfigured
+  * the semantic of the 'a' key was changed to show stats since iotop was
+    started
+
+- changes from 0.4.2:
+  * workaround for an ncurses bug where UTF-8 strings are misprinted
+  * ioprio support for the armel and hppa architectures was added
+  * a possible incompatibility with Linux 2.6.37 on 64-bit systems was fixed
+  * iotop does not crash anymore when the locale is incorrectly configured
+
+-------------------------------------------------------------------
+Tue Sep  7 12:18:40 CEST 2010 - pth@suse.de
+
+- Rename alignment patch.
+
+-------------------------------------------------------------------
+Mon Sep  6 11:56:52 CEST 2010 - pth@suse.de
+
+- Apply patch from author to adapt iotop to different alignments
+  on 64 Bit systems (bnc#617281).
+
+-------------------------------------------------------------------
+Thu Sep  2 17:31:20 CEST 2010 - pth@suse.de
+
+- Add py_requires
+- Update to 0.4.1. Changes since 0.2.1:
+  o Portability fix
+  o Better reporting of missing requirements
+
+  0.4
+  ~~~
+  o Compatibility with python2.4 using the ctypes module
+  o Stopped using setuptools in favor of straight distutils
+
+  0.3.2
+  ~~~~~
+  o Split long command lines in the middle instead of cutting them at the end
+  o Added a heuristic to detect kernels without CONFIG_TASK_DELAY_ACCT
+  o The I/O nice of a process/thread can be changed with the 'i' key
+
+  0.3.1
+  ~~~~~
+  o Fixed the ioprio syscall detection when running on i386/x86_64
+  o Fixed interaction between --accumulated and --only
+  o Fixed column sorting with --accumulated
+
+  0.3
+  ~~~
+  o -P is now fully implemented and is dynamically toggled with 'p'
+  o Show the I/O priority
+  o Added the --accumulated, --kilobytes, --time and --quiet options
+
+-------------------------------------------------------------------
+Sun Aug  9 12:43:26 CEST 2009 - coolo@novell.com
+
+- use new python macros
+
+-------------------------------------------------------------------
+Tue Aug 12 14:59:43 CEST 2008 - pth@suse.de
+
+- Remove py_requires and the rpmlintrc filters for warnings
+  resulting from the use of it.
+- Remove superfluous BuildRequires for python.
+
+-------------------------------------------------------------------
+Mon Aug 11 12:47:56 CEST 2008 - pth@suse.de
+
+- Add rpmlintrc file.
+
+-------------------------------------------------------------------
+Thu Jul 10 12:07:27 CEST 2008 - pth@suse.de
+
+- Update to 0.2.1. Changes since 0.1:
+
+  - 0.2.1:
+  * UTF-8 strings are now correctly handled
+
+  - 0.2
+  * Misconfigured terminals (TERM=xterm-color) are tolerated
+  * Added the --only option to only show processes or threads actually
+    doing I/O
+  * Typing 'o' dynamically toggles the --only option
+  * Cosmetic fixes as well as minor bug fixes
+  * Re-organized code to import vanilla pynl80211
+  * Added workaround KERNBUG display in -P
+
+-------------------------------------------------------------------
+Wed Mar 19 09:23:55 CET 2008 - aj@suse.de
+
+- Fix build (really include COPYING).
+- Fix rpmlint warnings about "useless-explicit-requires python" and
+  "redundant-prefix-tag"
+
+-------------------------------------------------------------------
+Fri Mar 14 18:50:43 CET 2008 - pth@suse.de
+
+- Include a copy of GPL2 (bnc#370246).
+
+-------------------------------------------------------------------
+Tue Feb 12 15:19:05 CET 2008 - pth@suse.de
+
+- Add missing requires for python-curses
+
+-------------------------------------------------------------------
+Wed Feb  6 12:50:00 CET 2008 - pth@suse.de
+
+- Initial package
+

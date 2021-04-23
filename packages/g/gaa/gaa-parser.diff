@@ -1,0 +1,54 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2011-09-27 00:41:26.547621097 +0200
+Upstream: dead
+
+Due to gaa's abuse of $$ to store a pointer, it needs to be
+enlarged to actually be able to store it without loss.
+
+---
+ source/gaa_parser.y |   11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+Index: gaa-1.6.6/source/gaa_parser.y
+===================================================================
+--- gaa-1.6.6.orig/source/gaa_parser.y
++++ gaa-1.6.6/source/gaa_parser.y
+@@ -24,6 +24,11 @@
+  */
+ #define YYPRINT
+ #define YYERROR_VERBOSE
++#define YYSTYPE_IS_TRIVIAL 1
++#define yystype YYSTYPE /* obsolescent; will be withdrawn */
++#define YYSTYPE_IS_DECLARED 1
++#include <stdint.h>
++typedef intptr_t YYSTYPE;
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -399,7 +404,7 @@ arg:
+ ;
+ arg_list:
+         {
+-        $$ = (int)malloc(sizeof(int));
++        $$ = (uintptr_t)malloc(sizeof(int));
+         ((int*)$$)[0] = 0;
+         }
+         | arg_real_list
+@@ -417,7 +422,7 @@ arg_real_list:
+         }
+ 	| arg STRING
+     {
+-        	$$ = (int)malloc((2 * GAAMAX_ARGLIST_COUNT + 1)* sizeof(int));
++        	$$ = (uintptr_t)malloc((2 * GAAMAX_ARGLIST_COUNT + 1)* sizeof(int));
+                 ((int*)$$)[0] = 1;
+                 ((int*)$$)[2*(((int*)$$)[0] - 1) + 1] = $1;
+                 ((int*)$$)[2*(((int*)$$)[0] - 1) + 2] = $2;
+@@ -431,7 +436,7 @@ arg_real_list:
+         }
+         | arg
+         {
+-        	$$ = (int)malloc((2 * GAAMAX_ARGLIST_COUNT + 1)* sizeof(int));
++        	$$ = (uintptr_t)malloc((2 * GAAMAX_ARGLIST_COUNT + 1)* sizeof(int));
+                 ((int*)$$)[0] = 1;
+                 ((int*)$$)[2*(((int*)$$)[0] - 1) + 1] = $1;
+                 ((int*)$$)[2*(((int*)$$)[0] - 1) + 2] = -1;

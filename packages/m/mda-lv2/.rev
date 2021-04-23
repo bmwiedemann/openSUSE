@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d184168ed871ff11ab96d6a4dc9df62b</srcmd5>
+    <version>1.2.2+git20190317</version>
+    <time>1562843279</time>
+    <user>dimstar_suse</user>
+    <comment>fixes (boo#1138500)</comment>
+    <requestid>711163</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1a4578ef3f007b381ed10b639b2979cb</srcmd5>
+    <version>1.2.4</version>
+    <time>1609959436</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.4
+  * Fix a few minor metadata issues
+  * Fix initial noise with Piano (zero comb filter and voices on
+    startup)
+  * Fix invalid Vocoder preset description
+  * Fix misleading indentation warnings with GCC 6
+  * Update build system
+  * Use rdfs:label for port groups
+</comment>
+    <requestid>860765</requestid>
+  </revision>
+</revisionlist>

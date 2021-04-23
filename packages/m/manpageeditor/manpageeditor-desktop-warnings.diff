@@ -1,0 +1,15 @@
+--- ManPageEditor/resources/applications/ManPageEditor.desktop.orig	2016-03-19 17:16:19.000000000 +0300
++++ ManPageEditor/resources/applications/ManPageEditor.desktop	2016-05-15 18:49:41.919140520 +0300
+@@ -1,9 +1,10 @@
+ [Desktop Entry]
+ Name=ManPageEditor
++GenericName=A simple manual pages editor
+ Comment=©K.D.Hedger 2013-2015 A simple Manpage editor
+ Terminal=false
+ Type=Application
+-Categories=Development;
+-MimeType=application/x-maneditdoc
++Categories=Utility;TextEditor;GTK;
++MimeType=application/x-maneditdoc;
+ Exec=manpageeditor
+ Icon=ManPageEditor

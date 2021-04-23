@@ -1,0 +1,10 @@
+[Unit]
+Description = xboxdrv
+
+[Service]
+User = root
+Type = simple
+ExecStart = /usr/bin/xboxdrv -D -c /etc/xboxdrv.conf
+
+[Install]
+WantedBy = multi-user.target

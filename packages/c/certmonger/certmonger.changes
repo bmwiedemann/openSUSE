@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Mon Aug 31 10:30:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
+
+- update to 0.79.11:
+  - Fix crash bug when generating thumbprints
+  - dogtag: use POST for profileProcess requests
+  - Improve logging in SCEP helper
+  - Add verbose option to SCEP CA if requested in add-scep-ca
+  - Re-order the way the SCEP signing and CA certs are collected
+  - Add new option to allow overriding the detected SCEP CA chain
+  - template_profile, issuer and MS certificate template are single-value
+  - Ensure that files read in have a trailing new-line
+  - Adapt to the new behavior of disconnect in dbus-broker
+  - Add long command-line options to CLI and man pages
+  - Include &message=CA-IDENT with GetCACaps and GetCACert requests
+  - Address issues uncovered by clang and Coverity
+  - Handle an uninitialized token when adding CA certs to an NSS db
+  - tests: Parametrize 025-casave with NSS db types 
+
+-------------------------------------------------------------------
+Sun Apr 12 18:01:28 UTC 2020 - Stasiek Michalski <stasiek@michalski.cc>
+
+- Initial package
+

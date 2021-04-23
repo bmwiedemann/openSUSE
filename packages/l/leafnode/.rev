@@ -1,0 +1,134 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2f8ea2176be93ed6194fbfe219efec6a</srcmd5>
+    <version>1.11.8</version>
+    <time>1358412281</time>
+    <user>coolo</user>
+    <comment>leafnode, was last in the distribution in 11.1</comment>
+    <requestid>148514</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>2f8ea2176be93ed6194fbfe219efec6a</srcmd5>
+    <version>1.11.8</version>
+    <time>1359109223</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9769d2c1458d17a76e34ff191c6587d8</srcmd5>
+    <version>1.11.10</version>
+    <time>1371134915</time>
+    <user>coolo</user>
+    <comment>1.11.10 (forwarded request 178592 from AndreasStieger)</comment>
+    <requestid>178593</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>9769d2c1458d17a76e34ff191c6587d8</srcmd5>
+    <version>1.11.10</version>
+    <time>1379662865</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9769d2c1458d17a76e34ff191c6587d8</srcmd5>
+    <version>1.11.10</version>
+    <time>1409301467</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>1fd987b0afb7dbb0cea523c52d896c00</srcmd5>
+    <version>1.11.10</version>
+    <time>1427983424</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>293848</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>af67f4657b0c09b0d6f89f07e5a011bc</srcmd5>
+    <version>1.11.11</version>
+    <time>1440658651</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>326592</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>cc0f7a9cbb542539c0fc4f0ef62763a9</srcmd5>
+    <version>1.11.11</version>
+    <time>1497944379</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>504220</requestid>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>4c15075d8ac79b6b16cf15121dcc1462</srcmd5>
+    <version>1.11.11</version>
+    <time>1568190348</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>724801</requestid>
+  </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>521bf85aee7f242cd2772ba5660e6151</srcmd5>
+    <version>1.11.11</version>
+    <time>1573165115</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>746027</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>85c44c9312a43c42cb0737145485333c</srcmd5>
+    <version>2.0.0+git.1527241185.66da754</version>
+    <time>1577450632</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace leafnode-1 with leafnode-2 (original leafnode-2
+  changelog is interspersed among the records of this changelog).
+  Details of the change are available in the file
+  CHANGES-FROM-LEAFNODE-1 packaged as a documentation file within
+  the package.
+- Add README-SUSE.rst for more information on the status of the
+  package in the openSUSE world.
+- Add systemd-timers.patch to switch from cron to systemd-timers
+  (bsc#1115443)
+- Remove leafnode-1.11.6-spooldir-permissions.diff patch which is
+  not relevant for the rebased leafnode.
+
+- Add Conflicts: inn, because of conflicting moderators(5)
+  manpage and really, these shouldn't be on one system together.
+
+- Remove support for cron and xinetd
+- Silence rpmlint
+
+- Clean up SPEC and setup _service, remove unnecessary RHEL/Fedora
+  conditionals.
+
+- Update to version 2.0.0+git.1527241185.66da754:
+  * Convert manpages to UTF8 and mark them a such.
+  * Fixes autotools on systemd-based systems.
+  * #define _DEFAULT_SOURCE for newer glibc features.h
+  * Avoid crash on missing/empty authentication file.
+  * Gitorious -&gt; GitLab.
+  * Replace defunct URLs by those that work.
+  * Replace COPYING.LGPL with a fresh copy.
+  * Apparently leafnode-2 as of now builds with autoconf 2.63</comment>
+    <requestid>753993</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5d0d20c388d762157d25af0c9b243b7a</srcmd5>
+    <version>2.0.0+git.1527241185.66da754</version>
+    <time>1591101693</time>
+    <user>dimstar_suse</user>
+    <comment>- Run through spec-cleaner</comment>
+    <requestid>810586</requestid>
+  </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>9d307d5b3809e207bd4cab11ea793eae</srcmd5>
+    <version>2.0.0+git.1527241185.66da754</version>
+    <time>1591558736</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sudoers droplet to allow users in newsadmin group to
+  run fetchnews.
+</comment>
+    <requestid>812113</requestid>
+  </revision>
+</revisionlist>

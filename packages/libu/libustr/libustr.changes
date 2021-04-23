@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Fri Feb 15 13:09:18 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Ensure neutrality of descriptions.
+- Kill libustr-devel-static package, which is not used by
+  anything.
+- Use standard %_libdir location for files.
+- Make build recipe more plain sh compatible.
+- Remove superfluous pkgconfig require (rpm autodetect this).
+- Move remaining developer documentation to libustr-devel.
+
+-------------------------------------------------------------------
+Wed May 16 07:32:22 UTC 2018 - mcepl@suse.com
+
+- Fixing metadata
+
+-------------------------------------------------------------------
+Thu Feb 22 15:10:39 UTC 2018 - fvogt@suse.com
+
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Thu Jul 31 15:05:22 UTC 2014 - dimstar@opensuse.org
+
+- Rename rpmlintrc to %{name}-rpmlintrc.
+  Follow the packaging guidelines.
+
+-------------------------------------------------------------------
+Mon Oct  7 08:56:14 UTC 2013 - schwab@suse.de
+
+- libustr-warning.patch: Fix -Wundef warning in installed header
+
+-------------------------------------------------------------------
+Fri May 10 10:51:42 UTC 2013 - idonmez@suse.com
+
+- This program depends on GNU C89 inline semantics, pass -std=gnu89
+  to fix compilation with clang (gcc is not effected by this change)
+
+-------------------------------------------------------------------
+Mon Jan  7 21:47:17 UTC 2013 - jengelh@inai.de
+
+- Parallel build with %_smp_mflags
+- Remove obsolete defines/sections
+- Resolve rpmlint warnings about RPM group
+
+-------------------------------------------------------------------
+Thu Dec  8 13:30:02 UTC 2011 - coolo@suse.com
+
+- fix license to be in spdx.org format
+
+-------------------------------------------------------------------
+Wed Oct 12 15:50:17 CEST 2011 - dmueller@suse.de
+
+- avoid check failure on qemu userspace build
+
+-------------------------------------------------------------------
+Wed Oct  5 15:11:40 UTC 2011 - uli@suse.com
+
+- cross-build fix: use %__cc macro
+
+-------------------------------------------------------------------
+Thu May 19 12:21:41 UTC 2011 - coolo@novell.com
+
+- add 32bit compat for libsemanage-32bit to use
+
+-------------------------------------------------------------------
+Fri Apr 30 18:09:30 UTC 2010 - coolo@novell.com
+
+- buildrequire pkg-config to fix provides
+
+-------------------------------------------------------------------
+Thu Mar 18 07:31:27 UTC 2010 - coolo@novell.com
+
+- split out devel-static package
+
+-------------------------------------------------------------------
+Wed Oct 22 16:17:27 CEST 2008 - mrueckert@suse.de
+
+- fix debug_packages_requires define
+
+-------------------------------------------------------------------
+Fri Aug  1 17:32:29 CEST 2008 - ro@suse.de
+
+- fix requires for debuginfo package
+
+-------------------------------------------------------------------
+Tue Jul 15 15:24:07 CEST 2008 - prusnak@suse.cz
+
+- initial version 1.0.4
+  * based on Fedora package by James Antill <james@fedoraproject.org>
+

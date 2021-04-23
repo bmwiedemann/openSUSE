@@ -1,0 +1,5 @@
+<package name="python-django-rest-framework-braces" project="openSUSE:Factory">
+  <title></title>
+  <description>Django REST Framework (DRF) utilities</description>
+  <devel project="devel:languages:python:django" package="python-django-rest-framework-braces"/>
+</package>

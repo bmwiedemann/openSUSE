@@ -1,0 +1,79 @@
+diff -ur python-prctl-1.7.orig/test_prctl.py python-prctl-1.7/test_prctl.py
+--- python-prctl-1.7.orig/test_prctl.py	2020-09-07 11:09:38.544700725 +0200
++++ python-prctl-1.7/test_prctl.py	2020-09-07 12:28:11.482301401 +0200
+@@ -44,6 +44,8 @@
+ class PrctlTest(unittest.TestCase):
+     # There are architecture specific tests
+     arch = os.uname()[4]
++    if arch == 'ppc' or arch == 'ppc64' or arch == 'ppc64le':
++        arch = 'powerpc'
+     # prctl behaviour differs when root, so you should test as root and non-root
+     am_root = os.geteuid() == 0
+ 
+@@ -110,6 +112,7 @@
+         self.assertEqual(prctl.get_dumpable(), False)
+         self.assertRaises(TypeError, prctl.get_dumpable, "42")
+ 
++    @unittest.skip('cannot change endianness of running python interpreter')
+     def test_endian(self):
+         """Test manipulation of the endianness setting"""
+         if self.arch == 'powerpc':
+@@ -136,13 +139,55 @@
+             self.assertRaises(OSError, prctl.get_fpemu)
+             self.assertRaises(OSError, prctl.set_fpemu, prctl.FPEMU_SIGFPE)
+ 
++# define PR_FP_EXC_SW_ENABLE	0x80	/* Use FPEXC for FP exception enables */
++# define PR_FP_EXC_DIV		0x010000	/* floating point divide by zero */
++# define PR_FP_EXC_OVF		0x020000	/* floating point overflow */
++# define PR_FP_EXC_UND		0x040000	/* floating point underflow */
++# define PR_FP_EXC_RES		0x080000	/* floating point inexact result */
++# define PR_FP_EXC_INV		0x100000	/* floating point invalid operation */
++# define PR_FP_EXC_DISABLED	0	/* FP exceptions disabled */
++# define PR_FP_EXC_NONRECOV	1	/* async non-recoverable exc. mode */
++# define PR_FP_EXC_ASYNC	2	/* async recoverable exception mode */
++# define PR_FP_EXC_PRECISE	3	/* precise exception mode */
++    def print_fpexc(self, fpexc):
++        if fpexc == 0:
++            print("PR_FP_EXC_DISABLED")
++        else:
++            if fpexc & 3 == _prctl.PR_FP_EXC_ASYNC:
++                print('PR_FP_EXC_ASYNC')
++            if fpexc & 3 == _prctl.PR_FP_EXC_NONRECOV:
++                print('PR_FP_EXC_NONRECOV')
++            if fpexc & 3 == _prctl.PR_FP_EXC_PRECISE:
++                print('PR_FP_EXC_PRECISE')
++            if fpexc & prctl.PR_FP_EXC_SW_ENABLE:
++                print('PR_FP_EXC_SW_ENABLE')
++            if fpexc & _prctl.PR_FP_EXC_DIV:
++                print('PR_FP_EXC_DIV')
++            if fpexc & _prctl.PR_FP_EXC_OVF:
++                print('PR_FP_EXC_OVF')
++            if fpexc & _prctl.PR_FP_EXC_UND:
++                print('PR_FP_EXC_UND')
++            if fpexc & _prctl.PR_FP_EXC_RES:
++                print('PR_FP_EXC_RES')
++            if fpexc & _prctl.PR_FP_EXC_INV:
++                print('PR_FP_EXC_INV')
++        print('\n');
++
+     def test_fpexc(self):
+         """Test manipulation of the fpexc setting"""
+         if self.arch == 'powerpc':
+-            # FIXME - untested
+-            prctl.set_fpexc(prctl.FP_EXC_SW_ENABLE)
+-            self.assertEqual(prctl.get_fpexc() & prctl.PR_FP_EXC_SW_ENABLE, prctl.PR_FP_EXC_SW_ENABLE)
++            fpexc = prctl.get_fpexc()
++            self.print_fpexc(fpexc)
++            # Did not find a sane combination of flags that is supported.
++            self.assertRaises(OSError, prctl.set_fpexc,
++                    prctl.FP_EXC_SW_ENABLE | _prctl.PR_FP_EXC_ASYNC | _prctl.PR_FP_EXC_DIV | _prctl.PR_FP_EXC_INV)
++            self.print_fpexc(prctl.get_fpexc())
++            self.assertEqual(prctl.get_fpexc(), fpexc)
++            prctl.set_fpexc(_prctl.PR_FP_EXC_DISABLED)
++            self.print_fpexc(prctl.get_fpexc())
++            self.assertEqual(prctl.get_fpexc(), _prctl.PR_FP_EXC_DISABLED)
+             self.assertRaises(ValueError, prctl.set_fpexc, 999)
++            prctl.set_fpexc(fpexc)
+         else:
+             self.assertRaises(OSError, prctl.get_fpexc)
+             self.assertRaises(OSError, prctl.set_fpexc)

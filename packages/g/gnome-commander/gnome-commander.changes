@@ -1,0 +1,874 @@
+-------------------------------------------------------------------
+Fri Jun 19 19:34:35 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to verson 1.10.3:
+  + New features:
+    - InternalViewer: Show metadata file information by default
+    - Minor memory management improvements
+  + Bug fixes:
+    - Fixed issue: Migrate deprecated GnomeFileEntry to
+      GtkFileChooserButton
+    - Fixed issue: Get rid of deprecated libgnome and libgnomeui
+    - Fixed issue: Search options: 'copy file name' does not work
+    - Fixed issue: Switch from nautilus-sendto to xdg-email as
+      default send-to command
+  + Updated translations.
+- Drop no longer needed, nor used pkgconfig(libgnome-2.0),
+  pkgconfig(libgnomeui-2.0) and python-devel BuildRequires.
+- Add explicit pkgconfig(gnome-vfs-2.0) BuildRequires, needed now
+  that libgnome no longer pulls it in.
+- Replace gcc-c++ for generic c++_compiler BuildRequires.
+- Slightly modernice spec, use modern macros.
+
+-------------------------------------------------------------------
+Thu Jan 30 11:10:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Fri May 17 18:54:50 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.10.2:
+  + Fix for compilation error with exiv2 0.27.1.
+  + Updated translations.
+- Changes from version 1.10.1:
+  + New features:
+    - Menu entry for (un)selecting files with the same filename
+      suffix.
+    - Search window can be optionally minimized or moved below the
+      main window.
+  + Bugs fixed:
+    - List of bookmarks is synchronized between Gnome Commander
+      instances.
+    - Removed gnome-config references.
+  + Updated documentation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Mar 31 11:28:07 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.10.0:
+  + New features:
+    - Gnome Commander icon and internal viewer icon refreshed.
+    - Gnome Commander settings are now completely migrated to
+      GSettings under the key `org.gnome.gnome-commander`.
+    - Settings in `~/.gnome2/gnome-commander` and in
+      `~/.gnome-commander/*` are migrated automatically.
+    - Script and plugin folder in `~/.gnome-commander` is moved
+      into `~/.config/gnome-commander`.
+  + Bugs fixed:
+    - Various warnings at compile time have been fixed
+    - Several code improvements and memory leaks have been fixed
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:28:31 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Mon Mar  5 04:40:31 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 1.8.1:
+  + New features:
+    - Store the size of the options dialog when closing itself.
+    - Remove unnecessary border lines from the options dialog tabs.
+  + Bug fixes: Fix simple script system for file names with spaces.
+  + Updated documentation.
+  + Updated translations.
+- Drop update-desktop-files BuildRequires and its macro: they are
+  no longer required.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:27:41 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Mon Oct  9 00:32:17 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 1.8.0:
+  + New features:
+    - Quick search can be activated by just typing a letter,
+      adjustable in the options tab.
+    - Option for saving/not saving the:
+      . Command line history on exit.
+      . Search history on exit.
+    - Added a settings option for deciding if the terminal window
+      should stay open when a command finishes.
+    - [build]:
+      . Don't use gnome-autogen.sh anymore.
+      . Translations are now handled by upstream gettext instead of
+        intltool.
+      . New documentation infrastructure: Use yelp-tools instead of
+        gnome-doc-utils.
+  + Other changes:
+    - Increased minimum GTK version from 2.8.0 to 2.18.0.
+    - Code cleanup.
+  + Bug fixes: [build] Python is now found at build time, too, when
+    its version is equal to or higher than 3.x.
+  + Updated documentation.
+  + Updated translations.
+- Add itstool: new dependency.
+- Add %fdupes macro: missing macro for the already had fdupes
+  BuildRequires package.
+- Add conditional use for translation-update-upstream: only non
+  suse distributions need it.
+- Drop %glib2_gsettings_schema_* and %desktop_database_* macros:
+  functionality now covered by file triggers.
+- Split package into a -doc subpackage: more than half the size of
+  package is documentation.
+- Replace gnome-doc-utils-devel BuildRequires by yelp-tools,
+  following the port to the new documentation infrastructure by
+  upstream.
+- No longer pass --disable-scrollkeeper to configure: it is no
+  longer recognized after the move to yelp-tools.
+- GNOME Commander project has been moved to GitHub. The new home
+  page now is located at http://gcmd.github.io/.
+
+-------------------------------------------------------------------
+Sat Sep 30 19:44:23 UTC 2017 - zaitor@opensuse.org
+
+- Pass --without-unique to configure, ensure that we do not depend
+  on libunique.
+
+-------------------------------------------------------------------
+Sun May 28 21:13:47 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 1.6.4:
+  + Other favourite apps settings not saved (bgo#779574).
+  + Internal-viewer by default display incorrect code pages
+    (bgo#619112).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 27 09:13:47 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 1.6.3:
+  + Libunique (sometimes called only 'unique') is now optional via
+    configure option.
+  + Updated translations.
+- Drop pkgconfig(unique-1.0) BuildRequires: following upstreams
+  work to make this optional and recommendation to no longer use
+  it.
+
+-------------------------------------------------------------------
+Sun Nov  6 19:29:48 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.6.2:
+  + New features:
+    - Disk free space label is shown in status bar if device list
+      isn't shown (works after restarting gcmd).
+    - Shortcut can be assigned for:
+      . Moving the cursor up or down.
+      . Viewing bookmarks of current device ("Show bookmarks of
+        current device").
+  + Bugs fixed:
+    - Color of marked files does not change when using theme colors
+      (bgo#398734).
+    - Device list entry width is set equal to the longest string in
+      the list.
+    - Fixed a bug in advance rename tool when utilizing METATAGS.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Nov  5 15:03:28 UTC 2016 - jengelh@inai.de
+
+- Update descriptions.
+- Remove redundant %clean section.
+
+-------------------------------------------------------------------
+Wed Nov  2 16:10:00 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.6.1:
+  + Selection background color not applied when using custom
+    colors (bgo#638174).
+  + Compiles with gcc6 -Werror=format-security (bgo#773063).
+- Changes from version 1.6.0:
+  + New features:
+    - Always reopen the tab which was previously closed in the
+      options dialog.
+    - Samba support is now optionally available via configure
+      option.
+    - Configurable command for sending files to a preferred
+      application.
+    - Button 'Edit files' accepts more than one selected file at
+      the same time.
+    - Device buttons and device list entries act as 'home buttons'
+      for that device when it is already active.
+    - Copy directory path to clipboard after right click on
+      dir-indicator.
+    - Show/hide mainmenu can be set as keyboard shortcut now.
+    - Simple plug-in system for file context menu.
+    - Display of application icons in the "Open With" popup menu.
+    - Write bookmark changes immediately to file, Sync bookmarks
+      between all instances.
+    - Storage of options is done in the dconf database now instead
+      of a gnome-config file (bgo#570733).
+    - Devices and fav-apps are now stored within the GKeyFile
+      format.
+    - File Roller plugin can use patterns of strftime when creating
+      the archive name.
+    - Started usage of google test framework for unit tests.
+    - New colour theme 'Winter'.
+    - Code cleanup.
+  + Removed "Open folder" command in popup menu and user actions.
+  + Bugs fixed: bgo#671616, bgo#683087, bgo#742752, bgo#767158,
+    bgo#769309, bgo#770062, bgo#770063.
+  + Updated translations.
+- Align BuildRequires with configure:
+  + Removed: libexiv2-devel, libgnomeui-devel, libgsf-devel,
+    libxslt, taglib-devel
+  + Added (pkgconfig()-style): exiv2, glib-2.0, gmodule-2.0,
+    gobject-2.0, gtk+-2.0, libgnome-2.0, libgnomeui-2.0, libgsf-1,
+    taglib.
+- Add %glib2_gsettings_schema_post/postun to the respective
+  scriptlets to handle the newly installed glib schemas.
+- Drop obsolete conditions for openSUSE 11.3.
+
+-------------------------------------------------------------------
+Sun Sep 18 20:28:41 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 1.4.9:
+  + bgo#764306: Spelling mistake and wrong words in strings.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 15 10:37:40 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 1.4.8:
+  + bgo#761580: Support gcc6 -Werror=format-security.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun May 31 03:34:37 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.4.7:
+  + bgo#745454: Segmentation fault after find files.
+  + bgo#749869: Segfault on the second search.
+  + bgo#734032: Clicking on .png file looks at wrong MIME type.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed May 20 18:05:09 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 1.4.6:
+  + Bugs fixed: bgo#653573, bgo#742752, bgo#746003, bgo#747771,
+    bgo#748869.
+  + Updated translations.
+- Drop gnome-commander-appdata-translation.patch: fixed upstream.
+- Remove libtool BuildRequires and call to autoreconf, as we no
+  longer carry any patches.
+
+-------------------------------------------------------------------
+Mon Apr 13 10:10:39 UTC 2015 - dimstar@opensuse.org
+
+- Add gnome-commander-appdata-translation.patch: Do not handle
+  appdata.xml.in as a config file, but let INTLTOOL_XML_RULE handle
+  it.
+- Add libtool BuildRequires and call to autoreconf, as above patch
+  touches the build system.
+
+-------------------------------------------------------------------
+Sun Jan 25 23:29:33 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 1.4.5:
+  + Fixed appdata missing in POT (bgo#741316).
+  + Fixed Option --start-right-dir crashes gnome-commander
+    (bgo#742716).
+  + Removed python-2.6 support from gentoo ebuild.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Nov 14 12:57:25 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.4:
+  + Migrated from gnome_execute_shell to g_spawn_async
+    (bgo#571495).
+  + Support for user's terminal different from gnome-terminal
+    (bgo#737088).
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jul 11 20:57:20 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.4.3:
+  + Fix crash when drag 'n drop objects via mouse (bgo#731557).
+- Changes from version 1.4.2:
+  + Switched from python-r1 to python-single-r1 in ebuild
+  + bgo#367949: Corrected async_xfer_callback-results for moving
+    folders.
+  + bgo#598161: Selecting text in internal viewer on lines with
+    TANew features.
+  + Text selection in int. viewer works on lines with TAB
+    characters.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sat Apr  5 08:32:58 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.4.1:
+  + Fix bgo#641842: use poppler-glib instead of poppler internal
+    API.
+  + Fix bgo#726682: Fix for undefined reference to vtable.
+  + Support for utf8 encoded creation and modification dates in
+    document metadata.
+  + Moved Search, Quick Search and Enable Filter from Edit to File
+    menu.
+  + Updated translations.
+- Replace libpoppler-devel for pkgconfig(poppler-glib)
+  BuildRequires following upstream changes.
+- Drop gnome-commander-docs.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Mon Mar 17 13:11:40 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 1.4.0:
+  + Support for tabs.
+  + Revamped bookmarks dialog.
+  + Revamped file properties dialog.
+  + One instance mode.
+  + New colour theme: green tiger.
+  + User defined LS_COLORS colours.
+  + Possibility to select/deselect files only.
+  + Support for automatic width counters in advanced file rename.
+  + Enhanced file name matching in quick search.
+  + Open terminal with administrator privileges.
+  + Prompt to confirm drag & drop operations.
+  + Right click popup menu for copying in internal viewer.
+  + --config-dir command line option for customized location of
+    config files.
+  + Several speed improvements including C++ rework and code
+    cleanups.
+  + New python plugin: 'apply_patch'.
+  + Dropped broken MIME type configuration.
+  + Dropped support for cvs plugin.
+  + Adjusted keybindings.
+  + Updated documentation.
+  + Bugs fixed: bgo#377463, bgo#492479, bgo#617140, bgo#632064,
+    bgo#632208, bgo#633107, bgo#633167, bgo#633331, bgo#634972,
+    bgo#637873, bgo#638059, bgo#660043, bgo#660268, bgo#667080,
+    bgo#696227, bgo#684527, bgo#660063, bgo#642178, lp#117226.
+  + Updated translations.
+- Add pkgconfig(gnome-keyring-1) and pkgconfig(unique-1.0)
+  BuildRequires: new dependencies.
+- Add gnome-commander-docs.patch: Fix installation of documentation
+  figures.
+
+-------------------------------------------------------------------
+Sun Jan 19 17:44:11 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 1.2.8.17:
+  + Fixed problem bgo#721132 (Support build with
+    -Werror=format-security).
+  + Updated GCMD home page location.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Dec 23 19:28:20 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 1.2.8.16:
+  + Fix for gcc-4.7 compiling problem.
+  + Fix build with newer poppler versions (bgo#676303, bgo#705724).
+  + Updated translations.
+- Drop gnome-commander-gcc47.patch, gnome-commander-glib236.patch,
+  gnome-commander-libgsf.patch and
+  gnome-commander-poppler020.patch: fixed upstream.
+- Drop libtool BuildRequires and call to autoreconf, as we don't
+  carry any patches anymore.
+- Minor spec file cleanup (using spec-cleaner) and drop obsolete
+  FIXME comment.
+
+-------------------------------------------------------------------
+Mon Jul 29 16:04:56 UTC 2013 - dimstar@opensuse.org
+
+- Update gnome-commander-poppler020.patch to use Goffset instead
+  of int, matching the poppler 0.20 API definition.
+
+-------------------------------------------------------------------
+Wed Mar 20 21:07:40 UTC 2013 - dimstar@opensuse.org
+
+- Add gnome-commander-libgsf.patch: Fix build with libgsf 1.14.26.
+- Add gnome-commander-glib236.patch: Fix build with glib 2.36.
+- Drop xz BuildRequires, as it now comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Wed May 23 15:00:45 UTC 2012 - vuntz@opensuse.org
+
+- Re-enable call to translation-update-upstream that was commented
+  out by accident.
+
+-------------------------------------------------------------------
+Fri May 18 18:31:41 UTC 2012 - dimstar@opensuse.org
+
+- Add gnome-commander-poppler020.patch: Fix build with poppler 0.20
+- Add libtool BuildRequires and call to autoreconf, as above patch
+  touches the build system.
+
+-------------------------------------------------------------------
+Sat Mar 17 22:46:51 UTC 2012 - dimstar@opensuse.org
+
+- Add gnome-commander-gcc47.patch: Fix build with gcc 4.7.
+
+-------------------------------------------------------------------
+Tue Jan  3 07:50:06 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 1.2.8.15:
+  + Fix missing links in documentation.
+  + Updated translations.
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Wed Oct  5 07:36:07 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 1.2.8.14:
+  + bgo#621756: custom port for ftp is not saved.
+  + bgo#657780: bugs in nl translation.
+
+-------------------------------------------------------------------
+Sat Aug  6 18:42:01 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.2.8.13:
+  + bgo#646871: crash on file properties when connected to FTP.
+
+-------------------------------------------------------------------
+Thu Jun 16 11:16:16 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 1.2.8.12:
+  + bgo#618214: crash when cancel a search
+  + bgo#640387: yet another fix for deprecated python modules:
+    md5, sha1
+  + bgo#649375: bookmarks not updated for newly added ones
+  + Fixed problem with mkdir permissions
+
+-------------------------------------------------------------------
+Wed May  4 14:39:12 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 1.2.8.11:
+  + Support for backward/forward mouse buttons
+  + Fixed bgo#639243: misleading docs for F2 shortcut
+  + Fixed bgo#640387: usage of deprecated python modules: md5, sha1
+  + Fixed problem with starting GNOME Commander as root
+  + Fixed problem with Traditional Chinese translation
+
+-------------------------------------------------------------------
+Sat Feb 12 18:11:47 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Mon Jan 17 10:03:38 CET 2011 - vuntz@opensuse.org
+
+- Update to version 1.2.8.10:
+  + bgo#448941: numeric keypad arrows don't work in the main window
+  + bgo#620275: add menu item to copy full path and file name to
+    clipboard
+  + bgo#637501: advrename: metatag popup menu shows wrong items
+  + Fixed problem with toggling path/basename/filename selections
+    in copy/move dialogs
+  + Fixed problem with searching path for devices
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Dec  8 08:49:33 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.2.8.9:
+  + New features:
+    - Support for shell-style wildcards in quick search
+  + Bug fixes:
+    - bgo#352024: F10 key doesn't work
+    - bgo#631243: advrename $c(width) regression
+
+-------------------------------------------------------------------
+Fri Sep 10 14:19:22 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.2.8.8:
+  + bgo#610764: menu item won't stay checked
+  + bgo#626469: add support for other su-like programs: xdg-su,
+    gnomesu
+  + Fixed problem with broken Spanish translation
+- Drop gnome-commander-xdg-su.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Aug  9 22:52:34 CEST 2010 - vuntz@opensuse.org
+
+- Add gnome-commander-xdg-su.patch: use xdg-su or gnomesu
+  (whichever is available) for 'Start GNOME Commander as Root'.
+- Add xdg-utils Recommends.
+
+-------------------------------------------------------------------
+Wed Aug  4 00:02:56 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.2.8.7:
+  + bgo#540438: no GUI message if meld cannot be executed
+  + bgo#616367: "File not found" dialog after startup
+  + bgo#620650: buffer overflow in load_fav_apps()
+  + bgo#622456: do not build plugins as shared library objects
+  + Fixed problem with editing options for favourite apps and
+    devices.
+- Drop upstreamed gnome-commander-avoid-version.patch.
+
+-------------------------------------------------------------------
+Mon Jun 21 14:44:35 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 1.2.8.6:
+  + bgo#602795: file content search
+  + bgo#609912: build error with --as-needed
+  + bgo#612685: crashes when double-clicking on a bookmark
+  + bgo#616801: build error on RHEL 5.5
+- Remove SUSE_ASNEEDED=0 from spec.
+- Add gnome-commander-avoid-version.patch and call autorecon.
+
+-------------------------------------------------------------------
+Sun Feb 14 13:06:47 CET 2010 - vuntz@opensuse.org
+
+- Update to version 1.2.8.5:
+  + bgo#604558: cursor lost/placed in wrong position
+  + bgo#604904: build error on OpenSolaris
+  + bgo#609342: do not show mtime for '..'
+  + Fixed problem with editing connections to Windows network
+  + Fixed problem with nonexistent user actions
+- Remove unneeded BuildRequires: docbook_4, perl-XML-Parser,
+  scrollkeeper.
+- Add BuildRequires for features: python-devel (python plugins),
+  chmlib-devel, libexiv2-devel, libgsf-devel, libpoppler-devel,
+  taglib-devel (metadata support)
+- Build with SUSE_ASNEEDED=0 to fix build.
+
+-------------------------------------------------------------------
+Fri Dec  4 02:42:15 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.2.8.4:
+  + bgo#602916: not working menu entry
+  + bgo#603301: crash when cancelling symlink creation by ESC
+  + lp#369818: incorrect sorting by size in panel
+  + Fixed problem with not working keypad enter in copy/move dialog
+  + Fixed problem with stalled keyboard after ALT+1/2 with hidden
+    device list
+
+-------------------------------------------------------------------
+Wed Dec  2 01:02:38 CET 2009 - vuntz@opensuse.org
+
+- Update to version 1.2.8.3:
+  + bgo#541891: file names with % in advanced file rename tool
+  + bgo#581645: uncomfortable quick search
+  + bgo#596768: build warnings for python
+  + bgo#596973: documentation build error
+  + bgo#597144: missing call to pclose
+  + bgo#597233: validating of doc translations
+  + bgo#597890: wrong arguments passed to meld
+  + bgo#598278: memory leak
+
+-------------------------------------------------------------------
+Mon Sep 28 20:01:52 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 1.2.8.2:
+  + bgo#591944 - permissions set to 000 after chmod
+  + bgo#595097 - build error for poppler >= 0.11.3
+  + Fixed problem with broken file icon after renaming a symbolic
+    link
+  + deb#438884 - wrong device label when switching panels with
+    CTRL+U.
+
+-------------------------------------------------------------------
+Tue Aug 11 08:45:02 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 1.2.8.1:
+  + bgo#587325 - crash in a clean chroot environment
+  + bgo#589108 - build error on openSUSE)
+  + bgo#591206 - crash while sysconf() on FreeBSD
+  + Fixed problem with $c(16) counter formatting in advanced file
+    rename templates
+- Drop gnome-commander-no-return-in-nonvoid.patch, upstreamed.
+
+-------------------------------------------------------------------
+Mon Jul 20 11:46:32 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 1.2.8
+  + New features:
+    - New key bindings:
+      CTRL+E         Open the history list for the command line
+    - New internal viewer key bindings:
+      T              Show metadata tags - replaces the old E
+      ALT+ENTER      Show metadata tags
+    - Support for PDF metatags in advanced file rename templates
+    - Revamped advanced file rename tool - regex backreferences -
+      '\number', profiles, upper/lowercase conversion, blanks
+       trimming and much more
+    - Support for metadata tags in internal viewer
+    - Support for single-click open mode
+    - Support for row alternate background in colour themes
+    - New colour theme: cafezinho
+    - New or updated translations and docs
+  + Bug fixes:
+    - bgo#375357 - crash when cancelling calculation of dir
+      properties
+    - bgo#536446 - file name not focused for in-place renaming
+    - bgo#539812 - crash when deleting files: broken it.po
+    - bgo#548947 - non-UTF8 locale date problem
+    - bgo#548948 - crash when home directory contains non-UTF8
+      characters
+    - bgo#548961 - support for input method when rename or
+      quicksearch
+    - bgo#554586 - AC_PROG_CXX macro problem
+    - bgo#554598 - GNOME Goal: LINGUAS
+    - bgo#556664 - bookmarks can not be saved for mounted devices
+    - bgo#556836 - pane scrolling when moving between panes
+    - bgo#567404 - crash when INSERT pressed over subdir
+    - bgo#567506 - slow startup for systems with many users
+    - bgo#570727 - usage of deprecated gnome_url_show
+    - bgo#571239 - replacing obsoleted GnomeColorPicker with
+      GtkColorButton
+    - bgo#571247 - replacing obsoleted GnomePixmap with GtkImage
+    - bgo#571558 - replacing deprecated GNOME_STOCK_* buttons with
+      GTK_STOCK_* counterparts
+    - bgo#576174 - case insensitive file name sorting in non
+      en_US.utf8 locale
+    - bgo#579633 - accessing administrator privileges with gksudo
+    - bgo#583135 - disabled 'Go to' button in search dialog
+    - bgo#583711 - crash when pressing ESC in bookmark dialog
+    - bgo#584727 - wrong positioning of file popup menu
+    - Fixed problem with setting equal pane size in horizontal mode
+    - Fixed problem with refreshing MIME information after file
+      renaming
++ Add patch gnome-commander-no-return-in-nonvoid.patch,
+  taken from git, bgo#589108
+
+-------------------------------------------------------------------
+Mon Feb 16 17:49:47 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Sat Jan 31 20:49:40 CET 2009 - vuntz@novell.com
+
+- Use sr@latin instead of sr@Latn.
+
+-------------------------------------------------------------------
+Tue Sep 02 19:50:00 CEST 2008 - mboman@novell.com
+
+- Update to version 1.2.7:
+  + Bugs fixed: bgo#522430, bgo#532615, bgo#538806, bgo#539753,
+    bgo#541404, bgo#392959, bgo#496150, bgo#499761, bgo#499764
+  + Fixed problem with file sorting in advanced file rename tool
+  + Support for all GnomeVFS network protocols (including SSH+FTP and
+    WebDAV)
+  + User defined shortcuts to arbitrary programs
+  + Copying selected URIs to clipboard with ALT+click on toolbar button
+  + Revamped search dialog
+  + Revamped transfer progress dialog
+  + Updated help docs
+  + Fixed problem with sorting of UTF-8 encoded file names
+  + Fixed problem with copying files to symlinked directories
+  + Fixed problem with full file path  while copying/moving to mounted
+    devices
+  + Root Mode for starting GNOME Commander with administrator privileges
+  + GUI for keyboard shortcuts management
+  + Open the current location in Nautilus file manager
+  + Multi-Rename-Tool - new $x and $X placeholders for random hexadecimal
+    numbers
+  + Revamped search dialog
+  + Support for <super>, <hyper> and <meta> modifiers (since GTK+ 2.10)
+  + Updated help docs
+  + New key bindings
+  + Update translations.
+- Removed gnome-commander-hide-menu-item.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Mon May 19 19:50:00 CEST 2008 - maw@suse.de
+
+- Add gnome-commander-hide-menu-item.patch (bnc#356181).
+
+-------------------------------------------------------------------
+Thu Mar  6 02:39:24 CET 2008 - jpr@suse.de
+
+- Update to 1.2.5
+Bug fixes:
+ * bgo #345314 (cursor not staying on file while renaming)
+ * bgo #353889 (disappearing files after failed move (F6))
+ * bgos #346286, #424447, #447882, #467058 (crash when using regex 
+   in renaming tool)
+ * bgos #365227 and #446361 (build issues on Solaris)
+ * bgo #424159 (column sort problem)
+ * bgo #434545 (Debian bug #421480: HUGE icons for device icons)
+ * bgo #447415 (inability to launch executables)
+ * bgo #448942 (SHIFT+ENTER: running a command in a separate terminal)
+ * bgo #449137 (renamed directories not accessed by name)
+ * bgo #468685 (crash in python module)
+ * bgo #490431 (view files with name containing '%')
+ * bgo #508565 (improper utf-8 handling in advanced file rename tool)
+ * bgo #510567 (failed assert when deleting dir)
+ * bgo when creating ~/dir
+ * bgo with updating of internal viewer status bar
+ * Fixed crash when creating dir with absolute path on SMB share
+ * Fixed crash when moving file with % in the name
+ * bgo with sporadically lost cursor in file pane
+ * bgo with mounting of devices with spaces in the name
+ * bgo with history of advrename templates
+ * Build fixes
+
+New features:
+ * Support for APE, FLAC and Vorbis metatags in advanced file 
+   rename templates
+ * Support for Exif makernotes metatags in advanced file rename
+   templates
+ * Support for file metatags in advanced file rename templates
+ * Metadata tags in file properties dialog
+ * Use the GNOME authentication manager for user's security 
+   credentials
+ * Open terminal in the current directory
+ * Default GNOME theme icons for home, SMB and FTP locations
+ * User defined shortcuts to bookmarks
+ * Send files via email or instant messenger (using nautilus-sendto)
+ * Updated help docs
+ * Updated translations
+ * New key bindings:
+      CTRL+LEFT/RIGHT Copying the current working directory from 
+      		      the active filelist to the inactive one
+      CTRL+N          Open new connection to remote server (replaces 
+      		      the old CTRL+G)
+- Remove gnome-command-desktop.patch, it was upstreamed
+- Remove no language sed, its no longer needed
+
+-------------------------------------------------------------------
+Fri Aug 10 11:07:30 CEST 2007 - coolo@suse.de
+
+- add C++ to buildrequires
+
+-------------------------------------------------------------------
+Wed Aug  8 17:21:20 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage.
+
+-------------------------------------------------------------------
+Mon Aug  6 11:35:42 CEST 2007 - thoenig@suse.de
+
+- update to 1.2.4 (skipped 1.2.2 and 1.2.3)
+- drop obsolete patch gnome-commander-compiler-warning.patch 
+- Changes:
+    * Support for python plugins
+    * New python plugins:
+          o Create MD5 (128-bit) checksum
+          o Create SHA-1 (160-bit) checksum
+    * Support for OLE and ODF metags in advanced file rename templates
+    * User defined shortcuts (via configuration file)
+    * SMB authentication
+    * Displaying total size of files in selected subirs
+    * 'cd -' for changing to the previous working directory
+    * More intuitive usage of diff tool
+    * Directory synchronizing
+    * Creating directories 'mkdir -p' like
+    * Updated help docs
+    * New or updated translations: ar, bg, cs, dz, en_GB, fr, it, oc, pl, sl, sv
+    * New key bindings:
+          o CTRL+\ Go to the root directory
+          o CTRL+` Go to the home directory
+          o CTRL+5 Create MD5 (128-bit) checksum
+          o CTRL+SHIFT+C Copy selected file names to clipboard
+- Fixes:
+    * Fixed problem with opening dirs by intviewer
+    * Fixed problem with editing dirs by gcmd
+    * Fixed problem #351952 (crash while doing a content search)
+    * Fixed problem #352253 (scrolling behaviour of the viewer)
+    * Fixed problem #360175 (crash while entering a dir with %)
+    * Fixed problem #371948 and #388970 (file path not escaped)
+    * Fixed problem #412162 (build with --enable-python=no)
+    * Build fixes
+
+-------------------------------------------------------------------
+Mon Jan  8 00:20:25 CET 2007 - ro@suse.de
+
+- GNOME moved to /usr 
+
+-------------------------------------------------------------------
+Tue Dec 26 12:53:24 CST 2006 - maw@suse.de
+
+- Move to /usr.
+
+-------------------------------------------------------------------
+Wed Dec 13 13:00:30 GMT 2006 - james@usr-local-bin.org
+
+- specify mandir to allow building on older products
+
+-------------------------------------------------------------------
+Tue Oct 17 22:24:30 CEST 2006 - jhargadon@suse.de
+
+- update to version 1.2.1
+- Fixed problem with scrollkeeper database update
+- Fix for crash when cmd dir indicator is empty
+- Fixed problem with refreshing after chown or chmod
+- Fixed problem #333898 (deprecated icon suffix in desktop file)
+- Fixed problem #347561 (plugin directory set incorrectly)
+- Fixed problem #347817 (incorrect use of Makefile linker flags)
+- Support for archives (gz,bz2,zip,lha,rar,jar,7-zip,zoo,deb,rpm)
+  via FileRoller plugin
+- New python-like indices for advanced file rename templates
+- Support for Exif and IPTC metags in advanced file rename templates
+- Fast access to advrename template placeholders
+- In-place rename (SHIFT+F6)
+- Revamped application menus
+- Saving window state across sessions
+- "Find" feature for internal viewer
+- New icon for internal viewer
+- Updated help docs
+- New or updated translations
+- New key bindings:
+      CTRL+SHIFT+H   Toggle hidden files on/off 
+
+-------------------------------------------------------------------
+Fri Oct 13 15:27:51 CEST 2006 - danw@suse.de
+
+- Update and re-enable gnome-commander-desktop.patch
+
+-------------------------------------------------------------------
+Fri Oct 13 00:24:33 CEST 2006 - ro@suse.de
+
+- added gnome-doc-utils-devel to buildreq 
+
+-------------------------------------------------------------------
+Tue Sep  5 14:37:12 CEST 2006 - anosek@suse.cz
+
+- fixed subscript out of range warning [#188733]
+
+-------------------------------------------------------------------
+Fri Sep  1 22:42:38 CEST 2006 - jhargadon@suse.de
+
+- update to version 1.2.0
+- Fixed problem #171051 (crashes on search with non-existent path)
+- Fixed problem with the lack of gnome menu entry
+- Fixed a crash when viewing SMB connections
+- Fixed problem #309877 (strange artifacts with horizontal scrolling)
+- Fixed problem #332258 (left/right start directory parameter) 
+- Fixed problem #336649 (permission numbers presentation)
+- Fixed problem with crashes when using broken or non-matching regex 
+  pattern in advrename
+- Monitoring of mounted volumes
+- Rewritten internal viewer
+- External tools and Exif/IPTC tags viewer for internal viewer
+- Zooming for internal viewer
+- Text selection for internal viewer
+- Revamped toolbar layout
+- Options for controlling copy and move overwriting
+- Copying selected full file paths with SHIFT+click on toolbar button
+- Better handling the change of the column sorting key
+- Initial doc framework
+- translation updates
+- patch to fix compiler warning
+
+-------------------------------------------------------------------
+Tue Mar  7 14:52:32 CET 2006 - sbrabec@suse.cz
+
+- New SuSE package, version 1.1.7.
+

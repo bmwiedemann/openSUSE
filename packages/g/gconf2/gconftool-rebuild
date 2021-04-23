@@ -1,0 +1,133 @@
+#! /bin/bash
+
+if test "$1" = --help ; then
+    echo "Usage: $0"
+    echo "Rebuilds gconf schemas database from installed schemas."
+    echo "or: $0 OPTION"
+    echo ""
+    echo "Needs root privileges."
+    echo ""
+    echo "These option names may not be abbreviated."
+    echo "      --verbose  explain what is being done"
+    echo "      --help     display this help and exit"
+    echo "      --version  output version information and exit"
+    echo ""
+    echo "Report bugs to http://bugzilla.novell.com/."
+    exit
+fi
+
+if test "$1" = --version ; then
+    echo "gconftool-rebuild 2.1"
+    exit
+fi
+
+if test "$1" = --verbose ; then
+    function vecho {
+	echo "$@"
+    }
+    VERBOSE=" --verbose"
+    UNVERBOSE=""
+else
+    function vecho {
+	:
+    }
+    VERBOSE=""
+    UNVERBOSE=" >/dev/null"
+fi
+
+if test "$UID" != 0 -a "$USER" != root; then
+    echo "You must be root to start $0." >&2
+    exit 1
+fi
+
+vecho "Rebuilding GConf database from scratch..."
+
+export GCONF_CONFIG_SOURCE=`/usr/bin/gconftool-2 --get-default-source`
+GCONF_SCHEMAS_DIR=${GCONF_CONFIG_SOURCE#*:*:}
+
+vecho ""
+vecho "Removing old database..."
+rm$VERBOSE -rf $GCONF_SCHEMAS_DIR
+
+vecho ""
+vecho "Setting default source..."
+umask 0022
+mkdir$VERBOSE $GCONF_SCHEMAS_DIR
+shopt -s nullglob
+cd /usr/share/GConf/schemas
+
+vecho ""
+vecho "Installing database entries from schemas..."
+eval "(/bin/ls /usr/share/GConf/schemas/*.schemas | xargs /usr/bin/gconftool-2 --makefile-install-rule) $UNVERBOSE"
+
+vecho ""
+vecho "Installing database entries from entries..."
+for SCHEMAS in /usr/share/GConf/schemas/*.entries ; do
+    eval /usr/bin/gconftool-2 --direct --config-source=$GCONF_CONFIG_SOURCE --load $SCHEMAS$UNVERBOSE
+done
+
+# /usr/share/gconf/schemas for compatibility with old packages (<=openSUSE 11.3 and SLED11), can be removed for 11.4+3
+if test -d /usr/share/gconf/schemas ; then
+    cd /usr/share/gconf/schemas
+
+    vecho ""
+    vecho "Installing database entries from schemas..."
+    eval "(/bin/ls /usr/share/gconf/schemas/*.schemas | xargs /usr/bin/gconftool-2 --makefile-install-rule) $UNVERBOSE"
+
+    vecho ""
+    vecho "Installing database entries from entries..."
+    for SCHEMAS in /usr/share/gconf/schemas/*.entries ; do
+        eval /usr/bin/gconftool-2 --direct --config-source=$GCONF_CONFIG_SOURCE --load $SCHEMAS$UNVERBOSE
+    done
+fi
+
+# /etc/gconf/schemas for compatibility with old packages (<=openSUSE 11.1 and SLED11), can be removed for 12.2
+if test -d /etc/gconf/schemas ; then
+    cd /etc/gconf/schemas
+
+    vecho ""
+    vecho "Installing database entries from schemas..."
+    eval "(/bin/ls /etc/gconf/schemas/*.schemas | xargs /usr/bin/gconftool-2 --makefile-install-rule) $UNVERBOSE"
+
+    vecho ""
+    vecho "Installing database entries from entries..."
+    for SCHEMAS in /etc/gconf/schemas/*.entries ; do
+        eval /usr/bin/gconftool-2 --direct --config-source=$GCONF_CONFIG_SOURCE --load $SCHEMAS$UNVERBOSE
+    done
+fi
+
+# /opt/gnome for compatibility with old packages (<=OpenSUSE 10.2 and SLED10), can be removed for 11.3
+if test -d /etc/opt/gnome/gconf/schemas ; then
+    cd /etc/opt/gnome/gconf/schemas
+
+    vecho ""
+    vecho "Installing database entries from schemas in /etc/opt/gnome..."
+    for SCHEMAS in /etc/opt/gnome/gconf/schemas/*.schemas ; do
+	eval /usr/bin/gconftool-2 --makefile-install-rule $SCHEMAS$UNVERBOSE
+    done
+
+    vecho ""
+    vecho "Installing database entries from entries in /etc/opt/gnome..."
+    for SCHEMAS in /etc/opt/gnome/gconf/schemas/*.entries ; do
+	eval /usr/bin/gconftool-2 --direct --config-source=$GCONF_CONFIG_SOURCE --load $SCHEMAS$UNVERBOSE
+    done
+fi
+
+if test -d /usr/local/etc/gconf/schemas ; then
+    cd /usr/local/etc/gconf/schemas
+
+    vecho ""
+    vecho "Installing database entries from schemas in /usr/local..."
+    for SCHEMAS in /usr/local/etc/gconf/schemas/*.schemas ; do
+	eval /usr/bin/gconftool-2 --makefile-install-rule $SCHEMAS$UNVERBOSE
+    done
+
+    vecho ""
+    vecho "Installing database entries from entries in /usr/local..."
+    for SCHEMAS in /usr/local/etc/gconf/schemas/*.entries ; do
+	eval /usr/bin/gconftool-2 --direct --config-source=$GCONF_CONFIG_SOURCE --load $SCHEMAS$UNVERBOSE
+    done
+fi
+
+vecho ""
+vecho "Done."

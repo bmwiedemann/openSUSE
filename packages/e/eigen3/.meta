@@ -1,0 +1,8 @@
+<package name="eigen3" project="openSUSE:Factory">
+  <title>C++ Template Library for Linear Algebra</title>
+  <description>
+Eigen is a C++ template library for linear algebra: matrices, vectors,
+numerical solvers, and related algorithms.
+</description>
+  <devel project="science" package="eigen3"/>
+</package>

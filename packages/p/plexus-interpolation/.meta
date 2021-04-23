@@ -1,0 +1,5 @@
+<package name="plexus-interpolation" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Java:packages" package="plexus-interpolation"/>
+</package>

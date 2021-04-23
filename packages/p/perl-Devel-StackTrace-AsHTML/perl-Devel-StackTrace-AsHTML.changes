@@ -1,0 +1,44 @@
+-------------------------------------------------------------------
+Mon Apr  4 09:34:31 UTC 2016 - coolo@suse.com
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-Devel-StackTrace-AsHTML/Changes
+
+  0.15  2016-04-01 12:23:25 PDT
+          - Switch to Milla (haarg)
+
+-------------------------------------------------------------------
+Tue Jun  4 08:34:11 UTC 2013 - coolo@suse.com
+
+- updated to 0.14
+      - Get subroutine arguments from the next frame too
+      - Fixed the use of $frame->subroutine since it returns a subroutine that is *invoked* on that
+        call frame, rather than what the frame is *in*. Fixed to peek the next frame to get the
+        current subroutine. (Caelum)
+
+-------------------------------------------------------------------
+Sat Apr 30 15:31:02 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.11
+   - You should now pass the error message in 'message' parameter explicitly to display as an error
+   - Use the first frame, not the second frame to capture error message
+   - Don't ignore the top frame. This should be donw using the ignore_package option (Jonathan Swartz)
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:10 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Tue Sep 21 01:32:28 UTC 2010 - dbahi@novell.com
+
+- put back the perl version dependency but removed 
+  the '(perl)' from perl(perl) >= 5.8.1 
+  as it causes an osc build failure
+
+-------------------------------------------------------------------
+Tue Sep 21 00:55:15 UTC 2010 - dbahi@novell.com
+
+- initial package 0.09
+  * created by cpanspec 1.78
+

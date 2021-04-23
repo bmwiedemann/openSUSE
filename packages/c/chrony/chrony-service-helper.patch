@@ -1,0 +1,12 @@
+diff -burNE chrony-3.5_orig/examples/chronyd.service chrony-3.5/examples/chronyd.service
+--- chrony-3.5_orig/examples/chronyd.service	2019-10-19 10:20:18.421076350 +0200
++++ chrony-3.5/examples/chronyd.service	2019-10-19 10:23:20.521233091 +0200
+@@ -10,6 +10,7 @@
+ PIDFile=/run/chrony/chronyd.pid
+ EnvironmentFile=-/etc/sysconfig/chronyd
+ ExecStart=/usr/sbin/chronyd $OPTIONS
++ExecStartPost=@LIBEXECDIR@/chrony/helper update-daemon
+ PrivateTmp=yes
+ ProtectHome=yes
+ ProtectSystem=full
+

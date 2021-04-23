@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Sun Jun 21 15:20:25 UTC 2015 - nemysis@gmx.ch
+
+- Fix Usage, Unable to load data
+- Add twind.sh, that game works from home
+- Change Desktop entry file
+- Add description for patch
+- Use for patch twind-1.1.0 instead of twind-%{version}
+- Add BuildRequires for hicolor-icon-theme
+- Change Description
+- Change sed, use %{_libexecdir}/%{name} instead of share/twind
+- Simplify installation handling, use normal build
+- Fix build with gcc5, add -fgnu89-inline
+
+-------------------------------------------------------------------
+Mon Dec  8 22:08:24 UTC 2014 - nemysis@gmx.ch
+
+- Use CFLAGS="%{optflags}" to fix
+  'File is compiled without RPM_OPT_FLAGS'
+- Install icon in %{_datadir}/icons/hicolor/-x-/apps/
+  instead of %{_datadir}/pixmaps/
+
+-------------------------------------------------------------------
+Fri Nov 14 20:30:22 UTC 2014 - nemysis@gmx.ch
+
+- Change Source0 to use Web URL
+- Use for patch %{name}-%{version} instead of twind-1.1.0
+
+-------------------------------------------------------------------
+Tue Oct 21 19:42:45 UTC 2014 - nemysis@gmx.ch
+
+- Remove twind-rpmlintrc
+
+-------------------------------------------------------------------
+Sun Oct 19 20:19:26 UTC 2014 - nemysis@gmx.ch
+
+- Add Source2 twind-rpmlintrc
+
+-------------------------------------------------------------------
+Sun Oct 19 20:17:54 UTC 2014 - nemysis@gmx.ch
+
+- Remove BuildRequires for desktop-file-utils
+
+-------------------------------------------------------------------
+Sun Oct 12 21:40:41 UTC 2014 - nemysis@gmx.ch
+
+- Use check for openSUSE %if 0%{?suse_version}
+- Use BuildRequires pkgconfig(SDL_image),pkgconfig(SDL_mixer,
+  pkgconfig(sdl) instead of libSDL_image-devel, libSDL_mixer-devel,
+  SDL-devel
+
+-------------------------------------------------------------------
+Mon Oct  6 21:05:25 UTC 2014 - nemysis@gmx.ch
+
+- Remove BuildRequires for pkgconfig
+
+-------------------------------------------------------------------
+Sun Oct  5 11:46:27 UTC 2014 - nemysis@gmx.ch
+
+- Change %fdupes
+
+-------------------------------------------------------------------
+Tue Sep 30 17:22:07 UTC 2014 - nemysis@gmx.ch
+
+- Use %{name}.desktop instead of Desktop Entry in spec
+- Use %{name}-rpmlintrc instead of Patch1
+- Remove not needed mkdir -p
+
+-------------------------------------------------------------------
+Sat Sep 27 23:07:56 UTC 2014 - nemysis@gmx.ch
+
+- Use pkgconfig instead of pkgconfig(sdl)
+- Change sed, cosmetical changes
+
+-------------------------------------------------------------------
+Mon Sep 22 10:56:03 UTC 2014 - nemysis@gmx.ch
+
+- Correct Path, Highscore and Permissions, that more users can
+  use same Highscore with own Results
+
+-------------------------------------------------------------------
+Tue Sep 16 07:36:35 UTC 2014 - nemysis@gmx.ch
+
+- Use $CURRENT_YEAR
+- Remove chmod g-s and use %attr(0755,root,games) %{_bindir}/%{name}
+- Use %{_datadir}/%{name} instead of %{_datadir}/%{name}/*
+
+-------------------------------------------------------------------
+Fri Sep 12 12:59:26 UTC 2014 - nemysis@gmx.ch
+
+- Add descriptions for patches
+- Reordering BuildRequires, added pkgconfig(sdl)
+- Add sed, /usr/bin/twind: Operation not permitted
+- Simplify installation handling
+- Add localstatedir
+
+-------------------------------------------------------------------
+Mon Sep  8 16:10:47 UTC 2014 - nemysis@gmx.ch
+
+- Fix Desktop file and rpmlint only say
+  no-manual-page-for-binary twind which not exist
+
+-------------------------------------------------------------------
+Mon Sep  8 16:03:10 UTC 2014 - nemysis@gmx.ch
+
+- Add twind-1.1.0.twind.c.patch in spec
+
+-------------------------------------------------------------------
+Mon Sep  8 15:59:15 UTC 2014 - nemysis@gmx.ch
+
+- Add forgotten twind-1.1.0.COPYING.patch to twind.spec
+
+-------------------------------------------------------------------
+Mon Sep  8 14:23:56 UTC 2014 - nemysis@gmx.ch
+
+- Initial package creation
+- Use mine first FreeBSD port games/twind for patch, new created with Quilt
+  twind-1.1.0.twind.c.patch
+- Add twind-1.1.0.COPYING.patch, correct Address
+- Add Desktop file and icon
+- Use %%fdupes macro to reduce size of the package

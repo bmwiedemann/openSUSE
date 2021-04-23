@@ -1,0 +1,127 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b28252fe1a44befe0af8abcec5277d3e</srcmd5>
+    <version>6.2.2</version>
+    <time>1509820165</time>
+    <user>dimstar_suse</user>
+    <comment>new package</comment>
+    <requestid>538617</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7d335fd043e1859c4f44b9c9a9b79287</srcmd5>
+    <version>6.2.2</version>
+    <time>1510837353</time>
+    <user>dimstar_suse</user>
+    <comment>- Update dependencies</comment>
+    <requestid>542089</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>95bab948c86ad341e54087b3086d0ac1</srcmd5>
+    <version>6.3.0</version>
+    <time>1520588792</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.3.0:</comment>
+    <requestid>584471</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>717fee94eec569848b4ffc4e30279bd7</srcmd5>
+    <version>6.4.0</version>
+    <time>1552985876</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.4.0:
+  * version bump
+  * FIXED: Fix token length in OPML
+  * UPDATED: Allow '\' to preserve line break in metadata.  (Addresses #86)
+  * FIXED: Prevent potential null dereference
+  * Avoid potential error with stack_free
+  * FIXED: Use Setext headers when necessary to convert from OPML to text (fixes #138)
+  * UPDATED: Apply astyle
+  * ADDED: Add opml option to read for MultiMarkdown OPML files
+  * UPDATED: Adjust metadata for test files
+  * FIXED: Trim single remaining whitespace when exporting headers</comment>
+    <requestid>682070</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>519c6b7273fcbf3cf60535bbea12efb1</srcmd5>
+    <version>6.4.0</version>
+    <time>1573047314</time>
+    <user>dimstar_suse</user>
+    <comment>- Use modern macro for cmake
+
+- Remove obsolete Groups tag (fate#326485)</comment>
+    <requestid>745490</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>198f9970f63a509a5f6dc26ad3b9a0cf</srcmd5>
+    <version>6.5.1</version>
+    <time>1581087202</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.5.1:
+  * FIXED: Fix README version
+  * version bump
+  * FIXED: Fix error when pruning tokens
+  * FIXED: Fix array overflow with wide tables
+  * FIXED: Fix tests
+  * FIXED: Fix null dereference
+  * FIXED: Fix memory leak
+  * FIXED: Fix null dereference
+  * FIXED: Fix edge case in fenced code blocks
+  * FIXED: Use more definitive edge case fix
+  * FIXED: Fix metadata edge case
+  * FIXED: Fix typos
+  * FIXED: Ensure use of bash for creating AllTests.c
+  * FIXED: Fix edge case in block parsing
+  * FIXED: Fix edge case error in definition lists
+  * UPDATED: Shorten hash function for compiling speed since we are hashing shorter strings
+  * FIXED: Fix name mismatch of mmd6-default-metadata (Addresses #173)
+  * UPDATED: Update notes source text
+  * version bump; copyright bump
+  * FIXED: Fix test suite for new captions
+  * ADDED: Add title as short caption for figures and tables to be used in list of figures and list of tables.  Addresses #177 -- thanks, 	MArpogaus
+  * FIXED: Fix memory leak (#172) -- thanks Alfons
+  * UPDATED: Update cmake for xcode 11
+  * UPDATED: Tweak smart quote rules to avoid false positive matches when using double quote as inches mark
+  * FIXED: Fix two small potential errors
+  * UPDATED: Make astyle
+  * FIXED: Fix edge case with single item loose lists (fixes #174)
+  * FIXED: Update README template
+  * Fixes to README</comment>
+    <requestid>770559</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>05a06cd9bc8b2bcd906b58be79632bb5</srcmd5>
+    <version>6.6.0</version>
+    <time>1611668831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.6.0:
+  * UPDATED: Update CMakeLists.txt for Universal Binary
+  * CHANGED: Reformat comment
+  * UPDATED: Apply astyle to all files
+  * FIXED: Fix style issue with ODT output format
+  * FIXED: Improve README install path
+  * FIXED: Re-enable token object pools in default configuration
+  * version bump
+  * UPDATED: Restructure source code organization; Restructure Cmake configuration file; restructure Makefile
+  * version bump
+  * ADDED: Add additional blockquote tests
+  * FIXED: Fix issue when parsing blockquote that contains raw HTML
+  * FIXED: Don't free NULL link
+  * FIXED: Fix regression
+  * FIXED: Improve blockquote parser
+  * FIXED: Add latex footer to beamer output format (fixes #185)
+  * FIXED: Fix test suite
+  * FIXED: Prevent iOS Safari from bastardizing left arrow unicode character with an ugly emoji
+  * FIXED: Allow hyphen in image/link unquoted attributes
+  * ADDED: Add format to create HTML with storing of assets
+  * FIXED: Fix issue with tight list where last item has multiple paragraphs not being recognized as a loose list
+  * FIXED: Fix CMake issue
+  * FIXED: tweak CriticMarkup highlight handling
+  * version bump
+  * FIXED: Update cpack generator for macOS
+  * Fix fsf address in files licenses.
+  * FIXED: Fix memory leak in ITMZ reader
+  * UPDATED: Adjust cmake to only make library when included from a parent project
+  * FIXED: Don't use undefined version string</comment>
+    <requestid>866744</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+<package name="metaio" project="openSUSE:Factory">
+  <title>LIGO Light-Weight XML library</title>
+  <description>This code implements a simple recursive-descent parsing scheme for LIGO_LW
+files.
+
+</description>
+  <devel project="science" package="metaio"/>
+  <url>http://www.lsc-group.phys.uwm.edu/daswg/projects/metaio.html</url>
+</package>

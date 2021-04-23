@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Feb 18 16:00:13 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use %lua_provides macro for default lua versioning
+
+-------------------------------------------------------------------
+Mon Jul  6 19:06:55 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Add lua54 as new build target
+
+-------------------------------------------------------------------
+Mon Oct 28 13:40:09 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Initial import of lua rock Markdown version 0.33

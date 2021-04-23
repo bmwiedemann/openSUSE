@@ -1,0 +1,152 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>24baa184c798644a044e7e34b64bcc29</srcmd5>
+    <version>1.22</version>
+    <time>1168903939</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="154">
+    <srcmd5>24baa184c798644a044e7e34b64bcc29</srcmd5>
+    <version>1.22</version>
+    <time>1168903939</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="155">
+    <srcmd5>f9d2dc7337b76e99141403beb852f8eb</srcmd5>
+    <version>1.22</version>
+    <time>1245338207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="157">
+    <srcmd5>f9d2dc7337b76e99141403beb852f8eb</srcmd5>
+    <version>1.22</version>
+    <time>1245338207</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="158">
+    <srcmd5>1e30e30d647e377f298c6e4c4d2ab9f1</srcmd5>
+    <version>1.22</version>
+    <time>1263225710</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Stream based on submit request 28942 from user coolo
+</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>59fba696f5734756e2fa1d5397005a70</srcmd5>
+    <version>1.23</version>
+    <time>1263490374</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Stream based on submit request 29463 from user anicka
+</comment>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>64cc0c6b6969eac07098f30f3560948f</srcmd5>
+    <version>1.23</version>
+    <time>1268925668</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>64cc0c6b6969eac07098f30f3560948f</srcmd5>
+    <version>1.23</version>
+    <time>1278667380</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>64cc0c6b6969eac07098f30f3560948f</srcmd5>
+    <version>1.23</version>
+    <time>1278678610</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>d23a41327d125fd6863ba2cf3095d93a</srcmd5>
+    <version>1.23</version>
+    <time>1279566114</time>
+    <user>autobuild</user>
+    <comment>Copy from devel:languages:perl/perl-XML-Stream based on submit request 43330 from user computersalat
+</comment>
+    <requestid>43330</requestid>
+  </revision>
+  <revision rev="11" vrev="7">
+    <srcmd5>2cad4ab40955f3bf82b6a3fc3264b7d4</srcmd5>
+    <version>1.23</version>
+    <time>1291998967</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55378 from user coolo
+</comment>
+    <requestid>55378</requestid>
+  </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>ffda5bd148e7889f8878d80455f6f55c</srcmd5>
+    <version>1.23</version>
+    <time>1291998978</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55378
+</comment>
+  </revision>
+  <revision rev="13" vrev="11">
+    <srcmd5>ffda5bd148e7889f8878d80455f6f55c</srcmd5>
+    <version>1.23</version>
+    <time>1297941525</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="14" vrev="13">
+    <srcmd5>ffda5bd148e7889f8878d80455f6f55c</srcmd5>
+    <version>1.23</version>
+    <time>1319182324</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="15" vrev="14">
+    <srcmd5>133244159cc3d331998303e07ab41106</srcmd5>
+    <version>1.23</version>
+    <time>1321876251</time>
+    <user>coolo</user>
+    <comment>- use original tar.gz</comment>
+    <requestid>92041</requestid>
+  </revision>
+  <revision rev="16" vrev="15">
+    <srcmd5>8efe647df009f2f6026391bf721358a6</srcmd5>
+    <version>1.23</version>
+    <time>1323193796</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>8efe647df009f2f6026391bf721358a6</srcmd5>
+    <version>1.23</version>
+    <time>1340183955</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="18" vrev="19">
+    <srcmd5>8efe647df009f2f6026391bf721358a6</srcmd5>
+    <version>1.23</version>
+    <time>1359109855</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="19" vrev="21">
+    <srcmd5>8efe647df009f2f6026391bf721358a6</srcmd5>
+    <version>1.23</version>
+    <time>1379663925</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="20" vrev="23">
+    <srcmd5>8efe647df009f2f6026391bf721358a6</srcmd5>
+    <version>1.23</version>
+    <time>1409302577</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5dcda33e7132221f5d96c987e80d5125</srcmd5>
+    <version>1.24</version>
+    <time>1423596099</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>284751</requestid>
+  </revision>
+</revisionlist>

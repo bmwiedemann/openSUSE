@@ -1,0 +1,49 @@
+diff -ru gnugo-3.7.2.orig/interface/gnugo.el gnugo-3.7.2/interface/gnugo.el
+--- gnugo-3.7.2.orig/interface/gnugo.el	2005-01-20 00:25:34.000000000 +0100
++++ gnugo-3.7.2/interface/gnugo.el	2005-02-04 17:03:34.099607950 +0100
+@@ -975,9 +975,7 @@
+                         (round (* size (gnugo-get :hmul)))
+                         1)
+                      -5))
+-             (edges (window-edges window))
+-             (right-w-edge (nth 2 edges))
+-             (avail-width (- right-w-edge (nth 0 edges)))
++             (avail-width (window-width))
+              (w (/ (- avail-width
+                       (+ (* size (gnugo-get :wmul))
+                          (if (symbol-plist (gnugo-f 'ispc))
+@@ -1348,8 +1346,8 @@
+   "Start a new sgf tree"
+   (gnugo-put :sgf-tree (list (list)))
+   (let ((g-blackp (string= "black" (gnugo-get :gnugo-color)))
+-	(black-stones (split-string (gnugo-query "list_stones black") " "))
+-	(white-stones (split-string (gnugo-query "list_stones white") " ")))
++	(black-stones (split-string (gnugo-query "list_stones black")))
++	(white-stones (split-string (gnugo-query "list_stones white"))))
+     (mapc (lambda (x) (apply 'gnugo-note x))
+           `((:GM 1)
+             (:FF 4)                     ; hmm maybe better: 3
+@@ -1390,7 +1388,7 @@
+   (gnugo-command (format "loadsgf %s" (expand-file-name filename)))
+   (let* ((colorhistory 
+ 	  (mapcar 
+-	   (lambda (x) (split-string x " ")) 
++	   (lambda (x) (split-string x)) 
+ 	   (split-string 
+ 	    (cdr (gnugo-synchronous-send/return "move_history")) "[=\n]")))
+ 	 (k (length colorhistory)))
+@@ -1418,11 +1416,11 @@
+ 	       (not
+ 		(string= "PASS" 
+ 			 (nth 1 
+-			      (split-string (gnugo-query "last_move") " ")))))
++			      (split-string (gnugo-query "last_move"))))))
+     (if (equal
+ 	 (car
+ 	  (split-string 
+-	   (cdr (gnugo-synchronous-send/return "undo")) " ")) "?")
++	   (cdr (gnugo-synchronous-send/return "undo")))) "?")
+ 	(error "cannot undo")
+       (gnugo-put :future-history
+ 	(cons (car (gnugo-get :sgf-tree)) (gnugo-get :future-history)))))
+

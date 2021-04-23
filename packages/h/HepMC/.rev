@@ -1,0 +1,82 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>35175e3a266926297b24e62dae3f60c9</srcmd5>
+    <version>2.06.09</version>
+    <time>1398434964</time>
+    <user>coolo</user>
+    <comment>New package: HepMC is a high energy particle physics software for maintaining event records for MC generators.</comment>
+    <requestid>230703</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>35175e3a266926297b24e62dae3f60c9</srcmd5>
+    <version>2.06.09</version>
+    <time>1409300430</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d25d4a938ffcea3e8695585126154ffb</srcmd5>
+    <version>3.0.0</version>
+    <time>1503593340</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>515864</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>962e5fdd9e6e950291127ec51c316467</srcmd5>
+    <version>3.1.1</version>
+    <time>1557141995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>700424</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>72006f711ee89bd7b80b27f6df2ee6a8</srcmd5>
+    <version>3.1.2</version>
+    <time>1578606853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>762561</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>70701bc621d8eca0901e26a05bc8908a</srcmd5>
+    <version>3.1.2</version>
+    <time>1586775250</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable setting rpaths on installed libs (fixes build failure on 15.2).
+</comment>
+    <requestid>793440</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0e0c9fa7cd1ab9d37270c454dcb82488</srcmd5>
+    <version>3.2.1</version>
+    <time>1590247601</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>796502</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d2fb30410308caee93bd91a9cd2e0d86</srcmd5>
+    <version>3.2.1</version>
+    <time>1591990929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>814032</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>79e6c5d4fa0a0d3c5fc868fc61ba4615</srcmd5>
+    <version>3.2.2</version>
+    <time>1595012024</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>821514</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8a056ce3650c9a2366c0f34938a25816</srcmd5>
+    <version>3.2.3</version>
+    <time>1608542675</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>857138</requestid>
+  </revision>
+</revisionlist>

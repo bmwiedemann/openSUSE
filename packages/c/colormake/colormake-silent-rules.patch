@@ -1,0 +1,29 @@
+From 1eb252fa120eb6d5846db0859e3cfdcc36d49baf Mon Sep 17 00:00:00 2001
+From: Ludovic Rousseau <ludovic.rousseau@gmail.com>
+Date: Thu, 13 Jun 2013 11:35:51 +0200
+Subject: [PATCH] Add support of silent rules
+
+With a project built in silent rules (./configure --enable-silent-rules
+or make V=0) the output is in the form:
+  CC     foo.o
+  CXX    bar.o
+---
+ colormake.pl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/colormake.pl b/colormake.pl
+index 857b272..34fbe20 100755
+--- a/colormake.pl
++++ b/colormake.pl
+@@ -96,7 +96,7 @@
+ 	{
+ 		$in = 'make';
+ 	}
+-	elsif ($thisline =~ s/^(\s*(libtool:\s*)?((compile|link):\s*)?(([[:ascii:]]+-)?g?(cc|\+\+)|(g|c)\+\+|clang).*)$/$col_gcc$1$col_norm/)
++	elsif ($thisline =~ s/^(\s*(libtool:\s*)?((compile|link):\s*)?(([[:ascii:]]+-)?g?(cc|\+\+)|(g|c)\+\+|clang|CC|CXX).*)$/$col_gcc$1$col_norm/)
+ 	{
+ 		$in = 'gcc';
+ 
+-- 
+1.9.3
+

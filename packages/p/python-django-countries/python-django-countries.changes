@@ -1,0 +1,48 @@
+-------------------------------------------------------------------
+Sat Jun  6 06:50:19 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v6.1.2
+
+-------------------------------------------------------------------
+Thu Apr 18 23:15:50 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Convert to single spec, fdupes, tidy
+- Add Obsoletes/Provides for old Python 2 package name
+- Remove tests from runtime package, fix hashbangs
+- Use %license, add CHANGES.rst to %doc
+- Update to v5.3.3
+
+-------------------------------------------------------------------
+Fri Sep 27 16:39:07 UTC 2013 - p.drouand@gmail.com
+
+- Update to version 1.5
+  + No changelog available
+- Replace python-distribute with python-setuptools BuildRequires
+
+-------------------------------------------------------------------
+Mon Oct 15 23:04:14 UTC 2012 - jfunk@funktronics.ca
+
+- Update to 1.4:
+  * Added and updated translations
+  * Updated country list (Libya changed)
+- Run tests
+- Add LICENSE to %doc
+- README is now README.rst
+
+-------------------------------------------------------------------
+Sat Oct  8 18:25:21 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.1.1:
+  - Sorry, no changelog.
+
+-------------------------------------------------------------------
+Thu Oct  6 02:14:48 UTC 2011 - alexandre@exatati.com.br
+
+- Update to 1.1;
+- Regenerate spec file with p2pack.
+
+-------------------------------------------------------------------
+Fri Jan 23 00:10:48 CET 2009 - poeml@suse.de
+
+- initial package (0.1-r3)
+

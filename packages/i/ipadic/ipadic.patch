@@ -1,0 +1,16 @@
+diff -ru ipadic-2.6.3/Makefile.in ipadic-2.6.3.new/Makefile.in
+--- ipadic-2.6.3/Makefile.in	2003-08-15 04:03:48.000000000 +0200
++++ ipadic-2.6.3.new/Makefile.in	2003-08-25 19:34:22.000000000 +0200
+@@ -450,10 +450,10 @@
+ 	$(MKDICDIR)/makeda chadic *.dic
+ 
+ install-data-local:
+-	if test -f @CHASEN_CHASENRC_PATH@  ; then \
++	if test -f $(DESTDIR)@CHASEN_CHASENRC_PATH@  ; then \
+ 		echo "Please modify @CHASEN_CHASENRC_PATH@"; \
+ 	else \
+-		cp chasenrc @CHASEN_CHASENRC_PATH@ ;\
++		cp chasenrc $(DESTDIR)@CHASEN_CHASENRC_PATH@ ;\
+ 	fi
+ 
+ # sjis-dist: dist

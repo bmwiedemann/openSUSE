@@ -1,0 +1,5 @@
+<package name="python-python-dotenv" project="openSUSE:Factory">
+  <title></title>
+  <description>Python library for .env support</description>
+  <devel project="devel:languages:python" package="python-python-dotenv"/>
+</package>

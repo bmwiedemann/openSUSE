@@ -1,0 +1,289 @@
+From: Jan Engelhardt <jengelh@medozas.de>
+Date: 2011-09-25 19:28:03.812889784 +0200
+Upstream: dead?
+
+stdlibc must be crazy for picking such an obvious name.
+
+---
+ curve/Matrix.h                 |    2 +-
+ curve/RBTree.h                 |    2 +-
+ curve/RefCounter.h             |    2 +-
+ curve/RootFinder2d.cc          |    2 +-
+ curve/TreePolynom.h            |    2 +-
+ curve/resultant.cc             |    2 +-
+ debug/debug.cc                 |    2 +-
+ draw/SurfaceCalc.cc            |    2 +-
+ drawfunc/DrawFunc.cc           |    2 +-
+ drawfunc/DrawfuncData.cc       |    2 +-
+ gtkgui/ColorSelectionButton.cc |    2 +-
+ gtkgui/ColorWindow.cc          |    2 +-
+ gtkgui/DrawingArea.cc          |    2 +-
+ gtkgui/IlluminationWindow.cc   |    2 +-
+ gtkgui/MainWindowController.cc |    2 +-
+ gtkgui/WidgetReadWriter.cc     |    2 +-
+ mt/GuiThread.cc                |    2 +-
+ mt/TSDrawingArea.cc            |    2 +-
+ mt/Thread.cc                   |    2 +-
+ yaccsrc/Script.cc              |    2 +-
+ 20 files changed, 20 insertions(+), 20 deletions(-)
+
+Index: surf-1.0.6/curve/Matrix.h
+===================================================================
+--- surf-1.0.6.orig/curve/Matrix.h
++++ surf-1.0.6/curve/Matrix.h
+@@ -31,7 +31,7 @@
+ #include <pthread.h>
+ 
+ // #define DEBUG
+-#include "debug.h"
++#include "sdebug.h"
+ 
+ template<class Type> 
+ class Matrix
+Index: surf-1.0.6/curve/RBTree.h
+===================================================================
+--- surf-1.0.6.orig/curve/RBTree.h
++++ surf-1.0.6/curve/RBTree.h
+@@ -29,7 +29,7 @@
+ #include <assert.h>
+ #include <iostream>
+ 
+-#include "debug.h"
++#include "sdebug.h"
+ 
+ class RBNode;
+ typedef void (*copyNodeFunc)(RBNode *dst, const RBNode *src);
+Index: surf-1.0.6/curve/RefCounter.h
+===================================================================
+--- surf-1.0.6.orig/curve/RefCounter.h
++++ surf-1.0.6/curve/RefCounter.h
+@@ -27,7 +27,7 @@
+ #define REFCOUNTER_H
+ 
+ #include <assert.h>
+-#include "debug.h"
++#include "sdebug.h"
+ 
+ 
+ class RefCounter
+Index: surf-1.0.6/curve/RootFinder2d.cc
+===================================================================
+--- surf-1.0.6.orig/curve/RootFinder2d.cc
++++ surf-1.0.6/curve/RootFinder2d.cc
+@@ -31,7 +31,7 @@
+ #include "Thread.h"
+ 
+ // #define DEBUG
+-#include "debug.h"
++#include "sdebug.h"
+ using namespace std;
+ 
+ 
+Index: surf-1.0.6/curve/TreePolynom.h
+===================================================================
+--- surf-1.0.6.orig/curve/TreePolynom.h
++++ surf-1.0.6/curve/TreePolynom.h
+@@ -29,7 +29,7 @@
+ #include <iostream>
+ 
+ #include "defs.h"
+-#include "debug.h"
++#include "sdebug.h"
+ #include "RBTree.h"
+ #include "RefCounter.h"
+ 
+Index: surf-1.0.6/curve/resultant.cc
+===================================================================
+--- surf-1.0.6.orig/curve/resultant.cc
++++ surf-1.0.6/curve/resultant.cc
+@@ -30,7 +30,7 @@
+ #include "Timer.h"
+ 
+ // #define DEBUG
+-#include "debug.h"
++#include "sdebug.h"
+ 
+ static Bezout<BigInteger>::Coeff3Poly convertToBigIntPoly ( const Polyxyz &p)
+ {
+Index: surf-1.0.6/debug/debug.cc
+===================================================================
+--- surf-1.0.6.orig/debug/debug.cc
++++ surf-1.0.6/debug/debug.cc
+@@ -26,7 +26,7 @@
+ #include <iostream>
+ #include <string.h>
+ 
+-#include "debug.h"
++#include "sdebug.h"
+ using namespace std;
+ 
+ static int level=0;
+Index: surf-1.0.6/draw/SurfaceCalc.cc
+===================================================================
+--- surf-1.0.6.orig/draw/SurfaceCalc.cc
++++ surf-1.0.6/draw/SurfaceCalc.cc
+@@ -26,7 +26,7 @@
+ #include <math.h>
+ #include <string.h>
+ 
+-#include "debug.h"
++#include "sdebug.h"
+ 
+ #include "SurfaceCalc.h"
+ #include "RgbBuffer.h"
+Index: surf-1.0.6/drawfunc/DrawFunc.cc
+===================================================================
+--- surf-1.0.6.orig/drawfunc/DrawFunc.cc
++++ surf-1.0.6/drawfunc/DrawFunc.cc
+@@ -45,7 +45,7 @@
+ #include "resultant.h"
+ 
+ // #define DEBUG
+-#include "debug.h"
++#include "sdebug.h"
+ using namespace std;
+ static Position* GetPosition ();
+ static Clip* GetClip (Position*);
+Index: surf-1.0.6/drawfunc/DrawfuncData.cc
+===================================================================
+--- surf-1.0.6.orig/drawfunc/DrawfuncData.cc
++++ surf-1.0.6/drawfunc/DrawfuncData.cc
+@@ -38,7 +38,7 @@
+ #include "RgbBuffer.h"
+ 
+ // #define DEBUG
+-#include "debug.h"
++#include "sdebug.h"
+ #include "stop.h"
+ 
+ 
+Index: surf-1.0.6/gtkgui/ColorSelectionButton.cc
+===================================================================
+--- surf-1.0.6.orig/gtkgui/ColorSelectionButton.cc
++++ surf-1.0.6/gtkgui/ColorSelectionButton.cc
+@@ -30,7 +30,7 @@
+ #include "ColorSelectionButton.h"
+ 
+ // #define DEBUG
+-#include "debug.h"
++#include "sdebug.h"
+ using namespace std;
+ 
+ void ColorSelectionButton::disconnect ()
+Index: surf-1.0.6/gtkgui/ColorWindow.cc
+===================================================================
+--- surf-1.0.6.orig/gtkgui/ColorWindow.cc
++++ surf-1.0.6/gtkgui/ColorWindow.cc
+@@ -31,7 +31,7 @@
+ #include "Options.h"
+ 
+ // #define DEBUG
+-#include "debug.h"
++#include "sdebug.h"
+ 
+ gboolean ColorWindow::color_window_key_pressed (GtkWidget *w, GdkEventKey *event, gpointer data)
+ {
+Index: surf-1.0.6/gtkgui/DrawingArea.cc
+===================================================================
+--- surf-1.0.6.orig/gtkgui/DrawingArea.cc
++++ surf-1.0.6/gtkgui/DrawingArea.cc
+@@ -34,7 +34,7 @@
+ #include "RgbBuffer.h"
+ 
+ // #define DEBUG
+-#include "debug.h"
++#include "sdebug.h"
+ #include "defs.h"
+ #include "bit_buffer.h"
+ #include "RGBToNetscape.h"
+Index: surf-1.0.6/gtkgui/IlluminationWindow.cc
+===================================================================
+--- surf-1.0.6.orig/gtkgui/IlluminationWindow.cc
++++ surf-1.0.6/gtkgui/IlluminationWindow.cc
+@@ -34,7 +34,7 @@
+ #include "TableBuilder.h"
+ #include "OptionMenuBuilder.h"
+ // #define DEBUG
+-#include "debug.h"
++#include "sdebug.h"
+ 
+ extern const char *LIGHT_SETTINGS_FIRST_PIC_STRING [MAIN_SURFACE_AMOUNT_NUM][LIGHT_SETTINGS_FIRST_NUM];
+ extern const char *LIGHT_SETTINGS_SECOND_PIC_STRING[MAIN_SURFACE_AMOUNT_NUM][LIGHT_SETTINGS_SECOND_NUM];
+Index: surf-1.0.6/gtkgui/MainWindowController.cc
+===================================================================
+--- surf-1.0.6.orig/gtkgui/MainWindowController.cc
++++ surf-1.0.6/gtkgui/MainWindowController.cc
+@@ -42,7 +42,7 @@
+ #include <strstream>
+ 
+ // #define DEBUG
+-#include "debug.h"
++#include "sdebug.h"
+ 
+ #include "MainWindowController.h"
+ #include "Script.h"
+Index: surf-1.0.6/gtkgui/WidgetReadWriter.cc
+===================================================================
+--- surf-1.0.6.orig/gtkgui/WidgetReadWriter.cc
++++ surf-1.0.6/gtkgui/WidgetReadWriter.cc
+@@ -30,7 +30,7 @@
+ 
+ 
+ // #define DEBUG
+-#include "debug.h"
++#include "sdebug.h"
+ using namespace std;
+ 
+ // ------------------------------------------
+Index: surf-1.0.6/mt/GuiThread.cc
+===================================================================
+--- surf-1.0.6.orig/mt/GuiThread.cc
++++ surf-1.0.6/mt/GuiThread.cc
+@@ -38,7 +38,7 @@
+ #include "Thread.h"
+ 
+ // #define DEBUG
+-#include "debug.h"
++#include "sdebug.h"
+ 
+ #define MAXFUNC 1024
+ 
+Index: surf-1.0.6/mt/TSDrawingArea.cc
+===================================================================
+--- surf-1.0.6.orig/mt/TSDrawingArea.cc
++++ surf-1.0.6/mt/TSDrawingArea.cc
+@@ -32,7 +32,7 @@
+ #include "DrawingArea.h"
+ 
+ // #define DEBUG
+-#include "debug.h"
++#include "sdebug.h"
+ 
+ 
+ struct DrawRgbBufferStruct
+Index: surf-1.0.6/mt/Thread.cc
+===================================================================
+--- surf-1.0.6.orig/mt/Thread.cc
++++ surf-1.0.6/mt/Thread.cc
+@@ -29,7 +29,7 @@
+ #include "Thread.h"
+ 
+ // #define DEBUG
+-#include "debug.h"
++#include "sdebug.h"
+ 
+ using namespace std;
+ 
+Index: surf-1.0.6/yaccsrc/Script.cc
+===================================================================
+--- surf-1.0.6.orig/yaccsrc/Script.cc
++++ surf-1.0.6/yaccsrc/Script.cc
+@@ -76,7 +76,7 @@
+ #include "symtab.h"
+ 
+ // #define DEBUG
+-#include "debug.h"
++#include "sdebug.h"
+ 
+ using namespace std;
+ 

@@ -1,0 +1,10 @@
+## Type:           string
+## Default:        ""
+## ServiceRestart: arpwatch
+#
+# Additional arguments when starting arpwatch with the init script
+# /etc/init.d/arpwatch or rcarpwatch.
+#
+# See man 8 arpwatch for all available commandline options.
+#
+ARPWATCH_ARGS=""

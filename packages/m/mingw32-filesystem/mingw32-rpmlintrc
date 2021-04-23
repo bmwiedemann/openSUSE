@@ -1,0 +1,22 @@
+# Unconditionally remove devel-file-in-non-devel rpmlint warning.
+addFilter ("^mingw32-.*devel-file-in-non-devel")
+
+# /usr/i686-w64-mingw32 is permitted by MinGW packaging guidelines.
+addFilter ("^mingw32-.*non-standard-dir-in-usr i686-w64-mingw32")
+addFilter ("^mingw32-.*suse-filelist-forbidden-fhs23 /usr/i686-w64-mingw32")
+
+# GCC and libtool create executable archive files.  It's not clear
+# why, but we permit this for now.
+addFilter ("^mingw32-.*spurious-executable-perm.*\.dll\.a$")
+
+# *.dll.a files are permitted arch-independent objects.
+addFilter ("^mingw32-.*arch-independent-package-contains-binary-or-object.*\.dll\.a$")
+
+addFilter ("^mingw32-.*mono-versioned-deps-missing")
+
+addFilter ("^mingw32-.*files-duplicate")
+
+addFilter("debuginfo-without-sources")
+
+# This group is used a lot, so ignore the warning about it.
+addFilter ("^mingw32-.*non-standard-group Development/Libraries$")

@@ -1,0 +1,35 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: 2017-06-19 20:50:00 +0200
+Subject: Prevent array from overflowing
+
+gcc warns about prepend[] potentially overflowing,
+this patch makes sure it doesn't.
+
+--- a/groove/file.c
++++ b/groove/file.c
+@@ -181,18 +181,19 @@ const char *groove_tag_value(struct Groo
+ 
+ static int tempfileify(char * str, size_t max_len) {
+     size_t len = strlen(str);
+-    if (len + 10 > max_len)
++    size_t ilen = 10;
++    if (len + ilen > max_len)
+         return -1;
+-    char prepend[11];
+-    int n = rand() % 99999;
+-    snprintf(prepend, 11, ".tmp%05d-", n);
++    char prepend[ilen + 1];
++    unsigned n = rand() % 99999U;
++    snprintf(prepend, sizeof(prepend), ".tmp%05u-", n);
+     // find the last slash and insert after it
+     // if no slash, insert at beginning
+     char * slash = strrchr(str, '/');
+     char * pos = slash ? slash + 1 : str;
+     size_t orig_len = len - (pos - str);
+-    memmove(pos + 10, pos, orig_len);
+-    strncpy(pos, prepend, 10);
++    memmove(pos + ilen, pos, orig_len);
++    strncpy(pos, prepend, ilen);
+     return 0;
+ }
+ 

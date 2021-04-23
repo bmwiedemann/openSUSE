@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
+ 
+- disable %{ix86} build
+ 
+-------------------------------------------------------------------
+Wed Dec  9 11:45:47 UTC 2020 - psimons@suse.com
+
+- Add servant-client at version 0.18.2.
+

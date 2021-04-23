@@ -1,0 +1,678 @@
+-------------------------------------------------------------------
+Wed Jul 10 17:13:40 UTC 2019 - Andreas Schwab <schwab@linux-m68k.org>
+
+- lto.patch: force no LTO during floating point format detection
+
+-------------------------------------------------------------------
+Sun May 19 15:53:56 UTC 2019 - Andreas Schwab <schwab@linux-m68k.org>
+
+- pow10.patch: use pow10 only if it exists
+
+-------------------------------------------------------------------
+Sun May 19 12:03:00 UTC 2019 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Fix url
+- Clean up spec file
+
+-------------------------------------------------------------------
+Sun May 19 00:08:25 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to aranym 1.1.0.
+  * Notable changes:
+    + ARAnyM is hosted by GitHub.com at https://aranym.github.io/
+    + there are automated builds for x86/amd64, armhf and macOS
+    + added hotkey for turning audio on/off
+    + HostFS MiNT file locking implemented
+    + nfosmesa updated to OpenGL 4.6
+    + MetaDOS driver improved
+    + hotkeys work in the Setup GUI dialog as well
+    + configurable directory for screenshots (via Setup GUI)
+    + on macOS the configuration file is now looked up first
+      in ~/Documents/Aranym_files (if it does not exist yet)
+    + displaying non-ASCII characters in the fileselector
+      should work now
+    + path of loaded TOS/EmuTOS can now be selected in the Setup GUI
+    + JIT CPU compiler now supports Solaris
+    + JIT CPU compiler now supports more 64bit hosts (like kfreebsd)
+  * New features:
+    + NatFeat SCSI driver for Linux
+    + NatFeat host exec
+    + NatFeat for query/set CPU JIT
+    + NatFeat for ARAnyM exit
+    + new command line option --option
+      that can set any value from the config file
+    + AppImage running on all Linux distros can now be built
+- arm-ucontext-t.patch: Removed
+- cas2-emulation.patch: Removed
+- fmovecr-const.patch: Removed
+- nan-sign.patch: Removed
+- ncr5380-mode-reg.patch: Removed
+
+-------------------------------------------------------------------
+Mon Feb 26 23:41:38 UTC 2018 - schwab@linux-m68k.org
+
+- arm-ucontext-t.patch: use ucontext_t instead of struct ucontext
+
+-------------------------------------------------------------------
+Mon Mar 21 00:04:40 UTC 2016 - schwab@linux-m68k.org
+
+- fmovecr-const.patch: Fix some FPU constants for MPFR
+- nan-sign.patch: Properly track sign bit of NaN in mpfr fpu emulator
+- ncr5380-mode-reg.patch: emulate NCR5380 MODE register
+
+-------------------------------------------------------------------
+Sat Mar 14 20:35:31 UTC 2015 - schwab@linux-m68k.org
+
+- cas2-emulation.patch: Fix CAS2 emulation
+
+-------------------------------------------------------------------
+Sun Oct 19 15:48:28 UTC 2014 - schwab@linux-m68k.org
+
+- Update to aranym 1.0.2.
+  * JIT CPU compiler now supports also ARM platforms driven by Linux
+  * JIT CPU compiler fixes memory management and adds some instructions
+  * massive NatFeat HostFS fixes and improvements (symlinks and more)
+  * NatFeat CD-ROM for Win32 and SDL
+  * NatFeat OSMesa support improved (OpenGL 4.4 / Mesa 10.1.4)
+    osmesa.ldg can replace tinygl.ldg now
+  * seamless mouse integration and keyboard input improved
+  * NVRAM: many country codes added (from current FreeMiNT)
+  * libSDL2 is supported now (along with libSDL 1.2.x)
+  * Cygwin, MinGW, Mac OS X, CentOS and Debian build fixes
+- ramdisk.patch: Removed
+
+-------------------------------------------------------------------
+Sun Sep 14 08:22:17 UTC 2014 - schwab@linux-m68k.org
+
+- ramdisk.patch: Always load ramdisk to end of memory chunk
+
+-------------------------------------------------------------------
+Sat Apr 12 20:36:17 UTC 2014 - schwab@linux-m68k.org
+
+- Update to aranym 0.9.16:
+  o JIT CPU compiler supported on 64-bit Linux and Mac OS X now!
+  o MFPR FPU emulation should be perfect
+  o Ethernet support under Mac OS X should be way better
+  o ARAnyM (with JIT?) now runs also on ARM platform driven by Linux
+  o new config setting "LoadToFastRAM" to load kernel in FastRAM
+  o David Gálvez improved NatFeat USB support (now requires FreeMiNT 1.17+)
+- Remove all patches
+- Enable JIT on x86_64 and arm
+
+-------------------------------------------------------------------
+Sun Mar 30 19:27:48 UTC 2014 - schwab@linux-m68k.org
+
+- lilo-load-to-fastram.patch: implement [LILO] LoadToFastRAM
+
+-------------------------------------------------------------------
+Mon Jan  6 14:38:34 UTC 2014 - schwab@linux-m68k.org
+
+- Add zlib-devel to build requires to reenable ZLIB support
+
+-------------------------------------------------------------------
+Tue Dec 10 18:19:17 UTC 2013 - schwab@linux-m68k.org
+
+- Enable NatFeat OSMesa support
+- fpu-fbccl.patch: fix emulation of FBcc.L
+- fpu-nan-bits.patch: preserve bits of NaN
+- fpu-rounding.patch: improve accuracy of denormal results
+- no-map-32bit.patch: use MAP_32BIT only when requested
+
+-------------------------------------------------------------------
+Tue Jun 18 18:09:11 UTC 2013 - schwab@linux-m68k.org
+
+- Update AFROS to version 8.12.
+
+-------------------------------------------------------------------
+Sun Apr 28 12:35:52 UTC 2013 - schwab@linux-m68k.org
+
+- byteswap.patch: Avoid conflict with <byteswap.h> imported by SDL
+
+-------------------------------------------------------------------
+Mon Apr 15 17:54:42 UTC 2013 - schwab@linux-m68k.org
+
+- Update to aranym 0.9.15
+
+ The main new feature of this release is the seamless mouse integration mode:
+
+ o Mouse input handling is improved a lot. Now ARAnyM has a seamless mouse
+   integration when new Clocky (2013/04/15) is loaded.
+ o There is no need to manually ungrab or grab the mouse.
+ o Also mouse grab on left button click now reacts on the first button
+   click everytime (previously only if you had window focus) and the
+   host and mouse cursor positions are synced.
+ o And if you ungrab the mouse intentionally then it's not automatically
+   grabbed when the host mouse pointer returns to ARAnyM window.
+ o At last, the annoying "resetting weird mouse packet" error is gone, too.
+
+ Bugs fixed:
+
+ o Native Features were missing proper memory overflow checks and bugs
+   in NatFeat drivers could kill the ARAnyM.
+ o NFVDI had a bug (a race condition) in resolution switching.
+ o build date of EmuTOS was decoded improperly
+
+-------------------------------------------------------------------
+Thu Feb 28 05:58:49 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Mon Oct  1 21:04:40 UTC 2012 - schwab@linux-m68k.org
+
+- Update to aranym 0.9.14.
+
+ version 0.9.14 news:
+
+ Mac users: check out the new bridged ethernet (see README_ethernet.rtf).
+
+ All users: try out the new Single Blit Composing and Single Blit Refresh
+ modes - they might give you a better video performance.
+
+ There are also many compilation and build fixes for various MacOSX targets
+ and few MPFR FPU fixes.
+
+ And last but not least, there's a neat user requested feature - mouse ungrab
+ (frees your keyboard and mouse from ARAnyM window so you can work in other
+ applications while ARAnyM is running) simply by clicking the host middle
+ mouse button (well, works only if you don't have the Eiffel mouse wheel
+ emulation enabled in settings).
+
+ version 0.9.13 news:
+
+ A couple of important bugfixes accumulated in last few days:
+
+   o USB NatFeat doesn't fail to claim devices in certain cases
+
+   o MPFR FPU got fix for restarting of instructions after access error
+
+   o JIT CPU version should work even when compiled with newer compilers
+
+   o update your mmusetup.cnf in MiNT setup for larger FastRAM (see
+     provided atari/mmusetup.cnf that is set for 512 MB FastRAM now)
+
+ version 0.9.12 news:
+
+ New features:
+
+   o MPFR based new precise FPU emulation core. Somewhat slower than the
+     normally used IEEE or UAE FPU emulation cores (about 5 times)
+     but should be totally complete and precise. Enabled in Linux binary
+     MMU builds (aranym-mmu). Hopefully Debian-m68k developers will enjoy it
+     :-)
+
+   o USB NatFeat fully usable: http://wiki.aranym.org/manual#usb
+     With a FreeMiNT driver you can access your USB flash discs from
+     the Atari side easily. First enter the SETUP GUI and plug in
+     the desired USB device. The USB support is compiled in by default
+     in all linux binary packages.
+
+   o NF Clipboard implemented newly for BeOS
+
+   o "aranym --version" will now list the built-in FPU core and also all
+     NatFeats that are compiled in.
+
+ Bugfixes:
+
+   o memleaks in various files
+   o blitter memmove fix
+   o MacOSX project fixes
+   o small 64bit fixes in nfcdrom
+   o aliasing issue fixes (in nfosmesa that is not compiled in)
+   o CPU CAS+CAS2 instructions - several very important fixes!
+   o some little fixes for newer GCCs in various files
+   o RPM spec file updated for Fedora, openSUSE and Mandriva. Give
+     rpmbuild -tb aranym_0.9.12.orig.tar.gz a try!
+
+ version 0.9.11 news:
+
+ New features: SCC serial port emulation and USB NatFeat support.
+ BeOS/Haiku port: fixes and improvements.
+ MMU emulation: fix for initialization and FPU registers.
+ Video: fix (refresh palette when switching from true color to bitplane
+ mode) and an improvement (use current fullscreen size if fixed size is 0x0).
+
+ version 0.9.10 news:
+
+ New feature: GEM clipboard support that allows you to pass data between
+ GEM clipboard and the host one (MS Windows, Mac OS X and X Window System).
+ It's currently implemented in FreeMiNT only and uses its aranym.xfs
+ virtual filesystem (U:\host\clipbrd). Please see setup instructions
+ in http://wiki.aranym.org/gem_clipbrd
+
+ Also couple of important bugfixes:
+
+ o fixed two nasty crashes in HostFS (related to recent symlink fixes)
+ o fixed Xcode building universal binaries on PPC
+ o VIDEL autozoom feature with correct aspect ratio for non-square pixels
+
+ version 0.9.9 news:
+
+ This time mostly bugfixes:
+
+ o fixed possible crash in HostFS when quitting ARAnyM (not serious)
+ o fixed possible crash due to bug in libSDL up to v1.2.13 (very serious)
+ o fixed some redrawing problems in 8 and 16 color depths with soft NfVDI
+ o fixed all compile time warnings and Categories entry in aranym.desktop
+ o fixed weirdness when mouse pointer was leaving the window on Win and OSX
+ o fixed problem with invalid HostFS symlink breaking directory list
+ o improvement: HostFS symlinks are now shown as relative if possible 
+ o fixed indirect descriptors handling in MMU
+ o fixed HostFS symlinks for certain path configurations
+ o added Mode key in the set of ARAnyM hotkey modifiers
+ o fixed Alt+mouse click problem on Mac OSX
+ o fixed Right Shift detection upon startup
+
+ If you found ARAnyM crashing previously when moving windows around
+ or doing any other activity where VDI had to blit screen areas then
+ please upgrade to this version ASAP. We've added a workaround for
+ a serious bug in the libSDL that was causing these weird ARAnyM crashes.
+
+ version 0.9.8beta news:
+
+ o CPU: fixed TRAPcc and FTRAPcc instructions (for Guillaume's mplayer :-)
+ o VIDEL: pixel precise horizontal scrolling implemented
+ o fixed BUSY signal handling on the parallel port
+ o fixed mouse grab/ungrab/autograb (see below)
+ o added new ARAnyM mouse cursor (white arrow)
+ o added middle mouse button handling (in Eiffel mode)
+ o added suport for reversing mouse Y-axis in IKBD (used in Linux-m68k)
+ o fixed many DSP56001 instructions
+ o fixed NFJPEG on 64bit hosts
+ o fixed several NF drivers to work under FreeMiNT (not rely on __NF cookie)
+ o buggy JIT-FPU was disabled. Now FPU is precise though slower in JIT mode
+
+ Mouse grab/ungrab/autograb has changed: first, ungrabbing when leaving
+ ARAnyM window was fixed (issue with autograb on the window border).
+ Then, ARAnyM got a new mouse cursor (white one) so you can recognize
+ now when the mouse is grabbed (the cursor pointer is black in TOS)
+ and when it's not (the cursor pointer is white now).
+ At last, mouse autograb upon entering ARAnyM window was disabled until
+ we can ensure the Atari mouse cursor is positioned in sync with host
+ mouse cursor (will require Atari OS support, probably in a form
+ of aranym.acc and AES implementing appl_tplay).
+ Also the "AutoGrabMouse" config option has been removed.
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Wed Nov 30 10:45:02 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Sat Nov  8 22:11:44 CET 2008 - schwab@suse.de
+
+- Update to aranym 0.9.7beta.
+  Mostly small fixes at various places plus a lot of work went into
+  improving the DSP56001 emulation. Also the sound DMA emulation is
+  improved to a point where GSXB driver should be unnecessary.
+
+  o improved automatic network setup on Mac
+  o reworked audio DMA emulation. Also added configurable host sound
+  frequency
+  o one MMU bug fixed (regarding TTR)
+  o special support for halting ARAnyM on linux-m68k reboot (--halt)
+  o SDL GUI fixed (missing events after alerts)
+  o EMULOP is now privileged so if some old ARAnyM TSR starts crashing
+  this is why
+  o joypads are now emulated
+  o joysticks and joypads can be configured in the config file
+  o '<>' and 'End' keys' scancodes made Atari compatible
+
+  Check the doc/config example file for the new [JOYSTICKS] and [AUDIO]
+  sections.
+
+-------------------------------------------------------------------
+Wed Oct 22 11:08:18 CEST 2008 - schwab@suse.de
+
+- Fix keyboard mapping.
+
+-------------------------------------------------------------------
+Sun Sep 28 09:38:09 CEST 2008 - schwab@suse.de
+
+- Make EMULOP privileged.
+
+-------------------------------------------------------------------
+Tue Jul 15 18:30:07 CEST 2008 - schwab@suse.de
+
+- Fix endian test.
+
+-------------------------------------------------------------------
+Mon Jul  7 17:47:56 CEST 2008 - schwab@suse.de
+
+- Run autoreconf.
+
+-------------------------------------------------------------------
+Mon Feb  4 17:14:43 CET 2008 - schwab@suse.de
+
+- Update to afros 0.9.6-1.
+
+-------------------------------------------------------------------
+Tue Jan 29 22:13:08 CET 2008 - schwab@suse.de
+
+- Update to aranym 0.9.6beta2.
+  Main change: major graphics output overhaul, two video backends - software
+  and OpenGL renderer. Faster graphics output on all platforms. Try enabling
+  the OpenGL output in the [OPENGL] section of the config file (beware, might
+  not work on some platforms, tested on Linux only).
+  Massive Mac OS X port improvements: MacIntel supported, fat binaries
+  available, JIT working (on x86), networking working, and more.
+  o IDE disks now up to 130 GB large (removed 32 GB barrier)
+  o SCSI/partitions no longer limited to 2 GB, and made up to 4x faster
+  o new ARAnyM logo at startup, new window manager, menu and desktop icons
+  o networking fixes: now works after reboot, new Setup config dialog added
+  o HostFS fixes: Dreadlabel() for MAGXDESK
+  o SDL-GUI: 8x16 font, 80 columns, improved old dialogs and added new ones
+  o MinGW compilable (native MS Windows binary, contrary to Cygwin one)
+  o RTC timer on Linux host for more precise MFP timer interrupts
+    (if it errors out try running "sudo sysctl -w dev.rtc.max-user-freq=1024")
+  o new command line option "--locale CC" where CC is ISO country code
+    (example: "--locale DE" will preset NVRAM to german keyboard layout)
+  o one more FPU bug (visible in frexp()) fixed
+
+-------------------------------------------------------------------
+Fri Jan 11 16:16:02 CET 2008 - schwab@suse.de
+
+- Update to head of trunk.
+
+-------------------------------------------------------------------
+Thu Nov 29 14:03:42 CET 2007 - schwab@suse.de
+
+- Update to head of trunk.
+
+-------------------------------------------------------------------
+Sun Jul 22 12:30:01 CEST 2007 - schwab@suse.de
+
+- Update to afros 0.9.5-2.
+
+-------------------------------------------------------------------
+Wed Jul 11 00:57:21 CEST 2007 - schwab@suse.de
+
+- Update to aranym 0.9.5beta.
+  This version brings major speed up of the MMU version thanks to contribution
+  of Roman Zippel and also many improvements for Mac OS X as well as bunch of
+  smaller fixes at many places by dedicated ARAnyM developers.
+  o OpenGL fixes: mouse cursor, alpha channel on big-endian machines
+  o OpenGL is loaded dynamically now (requires SDL 1.2.10 or newer)
+  o new project file for Xcode 2.x used to build Universal binaries of MacAranym
+  o JITc for Solaris x86
+  o MMU translation cache for major speed up of the MMU mode (now almost
+    comparable with non-MMU mode - 3 GHz host CPU outperforms 100 MHz 68060!)
+  o HostFS symlink fix
+  o new TOS patches and VIDEO SETUP dialogs. Most of the settings require
+    reboot to take effect.
+  o VIDEL refresh was wrong, now fixed and configurable on-the-fly in SETUP
+  o TV/VGA switch was wrong, now fixed and configurable in the SETUP
+  o small CPU bitfield insn fix, FPU sin/cos fix, VIDEL ST-Shifter fix,
+    nfVDI mfdb.fd_stand fix, TOS bconout redir fix...
+  o many other build system fixes
+
+-------------------------------------------------------------------
+Tue Jun 12 15:48:00 CEST 2007 - schwab@suse.de
+
+- Update to head of trunk.
+
+-------------------------------------------------------------------
+Thu Mar 29 14:03:05 CEST 2007 - schwab@suse.de
+
+- Add unzip to BuildRequires.
+
+-------------------------------------------------------------------
+Sat Dec  2 20:05:41 CET 2006 - schwab@suse.de
+
+- Update to aranym 0.9.4beta2.
+  I was so wrong when I wrote "last MMU bugs were fixed" in previous release
+  notes. This second beta release fixes several newly found CPU/FPU bugs that
+  appeared when ARAnyM became actually used by Debian-m68k people.
+  So the linux-m68k kernel as well as other MMU/FPU software should run
+  much better now.
+  Other news and fixes:
+  o optional MIDI output to /dev/sequencer (in [MIDI] try Type=sequencer)
+  o ARAnyM shouldn't hang on quit anymore
+  o protect2k enabled by default (better HW compatibility with Atari)
+  o cxx-exceptions enabled by default (considerably faster in MMU mode)
+  o in Cygwin ARAnyM ignores $HOME and follows Windows practice with
+    $HOME under Document and Settings/
+  o new config file option "GMTime" (set to No by default). When enabled,
+    ARAnyM uses Greenwich Mean Time (useful when running an OS that knows
+    timezones like something Linux based or maybe even properly configured
+    SpareMiNT)
+  o linux-m68k properly boots now (with HW initialized)
+  o IKBD settings (mouse wheel, AltGr) stored in [IKBD] section of ARAnyM
+    config file
+  o sound: preliminary locking (XBIOS LockSnd/UnlockSnd) implemented
+  o nfVDI: fixed vswr_mode alpha expansions (tested on newsgroup reader Troll)
+  o new option in [ETHx]: MAC = aa:bb:cc:dd:ee:ff for configuring the MAC
+    Address of the network interface. You can run several ARAnyMs in a LAN
+    now :-)
+  For the additions in the ARAnyM config file see the provided commented
+  configuration file.
+
+-------------------------------------------------------------------
+Fri Nov 24 00:19:28 CET 2006 - schwab@suse.de
+
+- Make UAE fpu emulator aliasing safe and use it on ppc.
+- Fix some fpu emulation bugs.
+
+-------------------------------------------------------------------
+Sat Nov 11 19:58:15 CET 2006 - schwab@suse.de
+
+- Fix another emulation bug.
+
+-------------------------------------------------------------------
+Fri Nov 10 13:49:04 CET 2006 - schwab@suse.de
+
+- Add fix for LINK and RTD emulation.
+
+-------------------------------------------------------------------
+Thu Nov  9 15:03:54 CET 2006 - schwab@suse.de
+
+- Add --enable-protect2k.
+- Make IKBD setting configurable.
+
+-------------------------------------------------------------------
+Tue Sep 26 15:17:11 CEST 2006 - schwab@suse.de
+
+- Readd lost --enable-cxx-exceptions.
+
+-------------------------------------------------------------------
+Mon Sep 25 11:33:00 CEST 2006 - schwab@suse.de
+
+- Update to aranym 0.9.4beta.
+  This release has one major highlight: two last MMU emulation bugs have
+  been fixed and ARAnyM now runs Linux-m68k stable for days without any
+  single issue. I can now fully recommend ARAnyM for Linux-m68k kernel
+  development and also Debian-m68k development. Hoping that it will help
+  the m68k linux platform to survive for a little longer.
+  There is also a great new feature for those who are tired of setting up
+  virtual disk drives for booting to TOS/GEM system: ARAnyM now supports
+  bootstrapping directly from host filesystem! You need new versions of
+  both EmuTOS and FreeMiNT kernel (with built-in HostFS driver) and
+  the following configuration (in the [GLOBAL] section of ARAnyM config file):
+    ------ aranym config --------
+    Bootstrap = /path/to/mint.prg
+    BootstrapArgs = DEBUG_LEVEL=1 BOOT_DELAY=0 MEM_PROT=NO 
+    BootDrive = C 
+    -----------------------------
+  Of course you also need to define the BootDrive (C:) host path in the
+  [HOSTFS] config section. FreeMiNT tries to locate the modules and other
+  files in usual C:\MINT\ path that is redirected to your host filesystem.
+  Other news and fixes:
+  o new command line parameter -P (as in Position) will position the ARAnyM
+    window to your desired location - enter the coordinates of upper left
+    window corner ("-P 50,50") or try to center the window with "-P center".
+    This should help especially on MS-Windows where the ARAnyM window often
+    ended partially off screen.
+  o Host desktop <-> AES clipboard interconnection. Currently for MS-Windows
+    only. You need a special FreeMiNT driver that creates a new filesystem
+    in FreeMiNT where you can point the AES to store the Clipboard. Find
+    more information in documentation at http://wiki.aranym.org/
+  o various improvements in graphics area - major speed up for bitplane modes,
+    speed up of graphics on Mac OS X, OpenGL alpha mask fix and others.
+  o Mac OS X: Swapped meaning of CTRL and META key for Mac OS X back to
+    "the logical way": The Apple key(s) represent left and right meta key
+    and CTRL key is mapped to Atari CTRL key.
+    A new, more Mac like set of keyboard shortcuts defined:
+	 Left Apple + , = Open preferences dialog
+	 Left Apple + q = Quit
+	 Left Apple + r = Reboot
+	 Left Apple + escape = Grab/Ungrab mouse cursor
+	 Left Apple + d = Enable debugger (if built-in)
+	 Left Apple + s = Save screenshot
+	 Left Apple + f = Toggle fullscreen mode
+  o MS-Windows: corrected/improved window/fullscreen toggle.
+  o bug #1521310 fixed: Shifters are now released before the GUI thread
+    is started.
+  o MIDI now outputs raw data which could be used for mapping the MIDI port
+    to host MIDI directly (untested)
+  o new compile-time configuration (--enable-protect2k) improves compatibility
+    with ST/TT/Falcon where hardware protects first 2 kB of RAM against
+    user mode accesses. Enabled by default in MMU build only since it can
+    cause some performance degradation.
+
+-------------------------------------------------------------------
+Sat Aug 26 01:10:58 CEST 2006 - schwab@suse.de
+
+- Compile with --enable-cxx-exceptions.
+
+-------------------------------------------------------------------
+Fri Aug 25 18:56:21 CEST 2006 - schwab@suse.de
+
+- Fix more typos.
+
+-------------------------------------------------------------------
+Fri Aug 25 11:57:55 CEST 2006 - schwab@suse.de
+
+- Fix a typo in the mmu emulation.
+
+-------------------------------------------------------------------
+Tue May 30 10:46:05 CEST 2006 - schwab@suse.de
+
+- Fix definition of fixed size integers.
+
+-------------------------------------------------------------------
+Mon May 15 15:23:30 CEST 2006 - schwab@suse.de
+
+- Update to aranym 0.9.3beta.
+  ARAnyM can now output via OpenGL and features TrueType fonts
+- Add aranym-jit.
+
+-------------------------------------------------------------------
+Mon Apr 10 22:01:09 CEST 2006 - schwab@suse.de
+
+- Force direct addressing mode.
+
+-------------------------------------------------------------------
+Sat Jan 28 15:04:02 CET 2006 - schwab@suse.de
+
+- Add gcc-c++ to BuildRequires.
+
+-------------------------------------------------------------------
+Thu Jan 26 00:43:27 CET 2006 - schwab@suse.de
+
+- Don't strip binaries.
+- Add SDL_image-devel to BuildRequires.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:34:20 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Sep 19 11:06:03 CEST 2005 - schwab@suse.de
+
+- Update to aranym 0.9.1-alpha.
+
+-------------------------------------------------------------------
+Mon May  2 01:24:22 CEST 2005 - schwab@suse.de
+
+- Update to aranym 0.9.0 and afros 20050424.
+
+-------------------------------------------------------------------
+Mon Apr 11 20:43:32 CEST 2005 - schwab@suse.de
+
+- Fix compiling with gcc4.
+
+-------------------------------------------------------------------
+Sun Feb 27 01:38:34 CET 2005 - schwab@suse.de
+
+- Update to afros 200502026.
+
+-------------------------------------------------------------------
+Wed Feb 23 15:05:02 CET 2005 - schwab@suse.de
+
+- Update to aranym 0.9.0beta2.
+
+-------------------------------------------------------------------
+Tue Feb 22 16:40:25 CET 2005 - schwab@suse.de
+
+- Update to aranym 0.9.0beta.
+
+-------------------------------------------------------------------
+Fri Feb 11 16:05:07 CET 2005 - schwab@suse.de
+
+- Update from CVS.
+- Use C++ exceptions.
+
+-------------------------------------------------------------------
+Wed Jan 26 00:08:19 CET 2005 - schwab@suse.de
+
+- Update from CVS.
+
+-------------------------------------------------------------------
+Mon Jan 24 01:43:58 CET 2005 - schwab@suse.de
+
+- Update from CVS.  Can boot Linux/m68k now.
+
+-------------------------------------------------------------------
+Wed Jan 12 14:24:26 CET 2005 - schwab@suse.de
+
+- Update from CVS.
+
+-------------------------------------------------------------------
+Mon Jan 10 17:17:53 CET 2005 - schwab@suse.de
+
+- Update from CVS.
+
+-------------------------------------------------------------------
+Tue Jan  4 01:34:07 CET 2005 - schwab@suse.de
+
+- Fix emulation of moves insn.
+- Fix loading of ramdisk in lilo.
+
+-------------------------------------------------------------------
+Sun Nov 28 14:32:59 CET 2004 - schwab@suse.de
+
+- Update to aranym 0.8.11beta.
+
+-------------------------------------------------------------------
+Thu Aug 19 14:50:02 CEST 2004 - schwab@suse.de
+
+- Update to aranym 0.8.10beta.
+
+-------------------------------------------------------------------
+Mon Jul 19 17:38:07 CEST 2004 - schwab@suse.de
+
+- Update to aranym 0.8.9beta.
+
+-------------------------------------------------------------------
+Tue Jun 22 14:07:55 CEST 2004 - schwab@suse.de
+
+- Fix 64-bit compatibility.
+- Reduce debug output.
+
+-------------------------------------------------------------------
+Sat May 22 23:45:11 CEST 2004 - schwab@suse.de
+
+- Build both with and without full mmu support.
+
+-------------------------------------------------------------------
+Fri May 21 13:15:12 CEST 2004 - schwab@suse.de
+
+- Enable lilo.
+
+-------------------------------------------------------------------
+Wed May 19 00:02:16 CEST 2004 - schwab@suse.de
+
+- Package created.
+

@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Sun Aug 10 16:12:13 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 2.005OFL.
+  * Vertically aligned position of English quotes - single and
+    double.
+  * Adjusted path few other signs related to them.
+  * By a dollar sign on the only officially designated it a place
+    in the Unicode: 20BD.
+  * Uppercase and lowercase letters CYRILLIC LETTER EL WITH
+    DESCENDER assigned double Unicode. In addition to the
+    previously defined codes of Private Use Area, added new codes
+    entered in the standard Unicode 7.0: 052E, 052F.
+
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:24 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Wed Dec 14 12:18:28 UTC 2011 - toms@suse.de
+
+- Renamed PTSans-fonts -> paratype-pt-sans-fonts according to
+  openSUSE packaging guidelines and FATE#313035
+  Adjusted Obsoletes and Provides accordingly
+
+-------------------------------------------------------------------
+Thu Nov 24 17:38:09 UTC 2011 - lazy.kent@opensuse.org
+
+- Spec clean up.
+
+-------------------------------------------------------------------
+Sat Sep 17 10:02:25 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Thu Jul  7 02:06:44 UTC 2011 - lazy.kent@opensuse.org
+
+- Provides locale be, ru, uk
+
+-------------------------------------------------------------------
+Mon Jun 27 03:25:40 UTC 2011 - lazy.kent@opensuse.org
+
+- Initial package created - 2.003OFL
+

@@ -1,0 +1,5 @@
+<package name="selinux-targeted-setup" project="openSUSE:Factory">
+  <title>selinux-targeted-setup</title>
+  <description></description>
+  <devel project="devel:kubic" package="selinux-targeted-setup"/>
+</package>

@@ -1,0 +1,56 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6201231db8e78b2995fece307a2ae4af</srcmd5>
+    <version>0.006</version>
+    <time>1375365415</time>
+    <user>coolo</user>
+    <comment>needed by another perl module</comment>
+    <requestid>185087</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>6201231db8e78b2995fece307a2ae4af</srcmd5>
+    <version>0.006</version>
+    <time>1379663642</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>52bde271bef5fe9a310a9b9b4bae9936</srcmd5>
+    <version>0.012</version>
+    <time>1385817711</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>208670</requestid>
+  </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>52bde271bef5fe9a310a9b9b4bae9936</srcmd5>
+    <version>0.012</version>
+    <time>1409302257</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a1ddfa9df2fe7b3225ac8104f7c48496</srcmd5>
+    <version>0.013</version>
+    <time>1434456350</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312197</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3c8766f896ee7f2550bf26bb0341983c</srcmd5>
+    <version>0.014</version>
+    <time>1434550577</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>312264</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b809136b5345c96fb8201aae932dd60e</srcmd5>
+    <version>0.015</version>
+    <time>1542012014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>647358</requestid>
+  </revision>
+</revisionlist>

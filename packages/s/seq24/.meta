@@ -1,0 +1,6 @@
+<package name="seq24" project="openSUSE:Factory">
+  <title>A Small, Real-Time MIDI Sequencer</title>
+  <description>Seq24 is a real-time midi sequencer. It was created to provide a very
+simple interface for editing and playing MIDI 'loops.'</description>
+  <devel project="multimedia:apps" package="seq24"/>
+</package>

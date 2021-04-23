@@ -1,0 +1,5 @@
+<package name="phonon4qt5-backend-gstreamer" project="openSUSE:Factory">
+  <title>phonon4qt5-backend-gstreamer</title>
+  <description></description>
+  <devel project="KDE:Frameworks5" package="phonon4qt5-backend-gstreamer"/>
+</package>

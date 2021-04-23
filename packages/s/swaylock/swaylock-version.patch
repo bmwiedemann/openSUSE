@@ -1,0 +1,12 @@
+diff -urEbw swaylock-1.5/meson.build swaylock-1.5.new/meson.build
+--- swaylock-1.5/meson.build	2020-01-22 17:19:47.000000000 +0100
++++ swaylock-1.5.new/meson.build	2020-01-23 09:59:07.028748129 +0100
+@@ -1,7 +1,7 @@
+ project(
+ 	'swaylock',
+ 	'c',
+-	version: '1.4',
++	version: '1.5',
+ 	license: 'MIT',
+ 	meson_version: '>=0.48.0',
+ 	default_options: [

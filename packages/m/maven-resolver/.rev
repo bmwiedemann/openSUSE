@@ -1,0 +1,34 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5549be445990ca11c4d71cfbaba30e3c</srcmd5>
+    <version>1.3.1</version>
+    <time>1554281412</time>
+    <user>dimstar_suse</user>
+    <comment>New package</comment>
+    <requestid>688996</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>823e3834c44c2639647a0c1f3141c803</srcmd5>
+    <version>1.4.1</version>
+    <time>1576014071</time>
+    <user>dimstar_suse</user>
+    <comment>1.4.1</comment>
+    <requestid>755279</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cbc1422218b28ea4fd3120300fae8b06</srcmd5>
+    <version>1.4.2</version>
+    <time>1610381651</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>862208</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1ef95975b5cfe770e532ecce47f7072d</srcmd5>
+    <version>1.4.2</version>
+    <time>1612378560</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868824</requestid>
+  </revision>
+</revisionlist>

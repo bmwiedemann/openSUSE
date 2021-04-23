@@ -1,0 +1,13 @@
+Index: sundials-5.7.0/src/nvector/pthreads/CMakeLists.txt
+===================================================================
+--- sundials-5.7.0.orig/src/nvector/pthreads/CMakeLists.txt
++++ sundials-5.7.0/src/nvector/pthreads/CMakeLists.txt
+@@ -26,6 +26,8 @@ sundials_add_library(sundials_nvecpthrea
+     nvector
+   OBJECT_LIBRARIES
+     sundials_generic_obj
++  LINK_LIBRARIES
++    PRIVATE pthread
+   OUTPUT_NAME
+     sundials_nvecpthreads
+   VERSION

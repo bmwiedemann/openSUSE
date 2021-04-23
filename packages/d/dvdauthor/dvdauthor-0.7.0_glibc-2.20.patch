@@ -1,0 +1,19 @@
+Index: src/compat.h
+===================================================================
+--- src/compat.h.orig
++++ src/compat.h
+@@ -146,12 +146,14 @@ int strtosigned
+     program on error. */
+ 
+ #ifndef HAVE_STRNDUP
++#ifndef __strndup
+ char * strndup
+   (
+     const char * s,
+     size_t n
+   );
+ #endif
++#endif
+ 
+ char * sprintf_alloc
+   (

@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c7d20d14ea0b4832d6aa73dc707732b1</srcmd5>
+    <version>1.1.1</version>
+    <time>1399317022</time>
+    <user>coolo</user>
+    <comment>created package; added COPYING file to %doc</comment>
+    <requestid>231965</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>c7d20d14ea0b4832d6aa73dc707732b1</srcmd5>
+    <version>1.1.1</version>
+    <time>1409300844</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>b3452327e88684edc0198804ca51ea8f</srcmd5>
+    <version>1.1.1</version>
+    <time>1411472747</time>
+    <user>coolo</user>
+    <comment>- Update description once more, based upon more recent changes in
+  the upstream Git repository.
+
+- Update description and other metadata
+- Use full %configure for build, and remove CFLAGS (nothing is
+  compiled)
+- Make file list more compact</comment>
+    <requestid>250621</requestid>
+  </revision>
+</revisionlist>

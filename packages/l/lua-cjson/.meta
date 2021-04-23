@@ -1,0 +1,5 @@
+<package name="lua-cjson" project="openSUSE:Factory">
+  <title>Lua Extension: JSON Encoding/Decoding</title>
+  <description>This is the Lua extension package for JSON encoding/decoding.</description>
+  <devel project="devel:languages:lua" package="lua-cjson"/>
+</package>

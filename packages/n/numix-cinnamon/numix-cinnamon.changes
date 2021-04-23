@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Sat Feb 24 18:18:06 UTC 2018 - sor.alexei@meowr.ru
+
+- Update to version 3.0:
+  * Add the popup-menu-arrow style.
+  * Add the popup-subtitle-menu-item style.
+  * Add slider and separator modules.
+  * Add the window-list preview style.
+  * Add the sound-applet style.
+  * Update notification-applet.
+  * Add the windows-quick-list module.
+  * Update the popup-subtitle-menu-item colour.
+  * Update the workspace-switcher applet.
+  * Update button:insensitive.
+  * Update thumbnail.png.
+  * Update popup-menu-disabled.
+  * Fix slider padding in popup-submenu.
+  * Remove padding-left from submenu items.
+  * Style battery info.
+  * Remove the accent-color-edit file.
+  * Fix keyboard layout applet height.
+  * Fix link colour in notifications.
+  * Tweak run dialogue completion box.
+  * Fix the window list attention assets.
+  * Fix check-box names.
+  * Add right/left padding to date label.
+  * Add min-height to notifications with images.
+  * Add hover state for the sound applet button.
+
+-------------------------------------------------------------------
+Sat Oct 31 19:40:09 UTC 2015 - sor.alexei@meowr.ru
+
+- Update to 2.6.
+
+-------------------------------------------------------------------
+Wed Oct 21 14:05:01 UTC 2015 - sor.alexei@meowr.ru
+
+- Initial package.

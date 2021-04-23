@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Thu Jun 20 13:55:56 UTC 2013 - max@suse.com
+
+- Update to 8.4.1 to fix build with Tcl 8.6.
+
+-------------------------------------------------------------------
+Fri Mar  1 06:24:13 UTC 2013 - coolo@suse.com
+
+- update license to new format
+
+-------------------------------------------------------------------
+Wed Dec 21 13:53:22 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Dec 21 10:31:50 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:42:01 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Dec 14 02:21:45 CET 2005 - ro@suse.de
+
+- fix typo in tcl configure script 
+
+-------------------------------------------------------------------
+Tue Jul 26 16:21:31 CEST 2005 - max@suse.de
+
+- New CVS snapshot: tclx8.4-20050712
+- Moved script library to /usr/share/tcl .
+
+-------------------------------------------------------------------
+Thu Nov 11 14:10:48 CET 2004 - ro@suse.de
+
+- fixed file list 
+
+-------------------------------------------------------------------
+Fri Apr 30 01:13:43 CEST 2004 - ro@suse.de
+
+- added -fno-strict-aliasing
+
+-------------------------------------------------------------------
+Sat Jan 10 21:36:57 CET 2004 - adrian@suse.de
+
+- add %run_ldconfig
+
+-------------------------------------------------------------------
+Tue Nov 26 18:07:35 CET 2002 - max@suse.de
+
+- New CVS snapshot: tclx8.4-20021126
+
+- Separated the TclX sources from the tcl package. For the older
+  history of this package see the change log of the tcl package.
+

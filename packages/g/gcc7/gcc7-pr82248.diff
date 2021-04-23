@@ -1,0 +1,13 @@
+Index: gcc/config/arm/arm.md
+===================================================================
+--- gcc/config/arm/arm.md	(revision 255006)
++++ gcc/config/arm/arm.md	(working copy)
+@@ -8613,7 +8613,7 @@ (define_insn "blockage"
+ )
+ 
+ (define_insn "probe_stack"
+-  [(set (match_operand:SI 0 "memory_operand" "=m")
++  [(set (match_operand:SI 0 "memory_operand" "=o")
+         (unspec:SI [(const_int 0)] UNSPEC_PROBE_STACK))]
+   "TARGET_32BIT"
+   "str%?\\tr0, %0"

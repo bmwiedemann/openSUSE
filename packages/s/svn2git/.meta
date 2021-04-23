@@ -1,0 +1,5 @@
+<package name="svn2git" project="openSUSE:Factory">
+  <title>Importer for one time conversion from SVN to Git</title>
+  <description>Tool to convert an SVN repository to Git based on a custom written ruleset, in order to properly migrate all branches and tags.</description>
+  <devel project="devel:tools:scm:svn" package="svn2git"/>
+</package>

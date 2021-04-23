@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a9336c1c722cd9f05cd12c7d5fafaf7c</srcmd5>
+    <version>0.4.0</version>
+    <time>1605217184</time>
+    <user>dimstar_suse</user>
+    <comment>new package for cardano support</comment>
+    <requestid>847837</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>de45e20abfa5a7367b1bb580b6dcc73a</srcmd5>
+    <version>0.4.0</version>
+    <time>1608633345</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857253</requestid>
+  </revision>
+</revisionlist>

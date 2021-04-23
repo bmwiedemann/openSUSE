@@ -1,0 +1,490 @@
+commit 93c4d53b0a5
+Author: Roger Ferrer Ibanez <rofirrim@gmail.com>
+Date:   Tue Sep 10 08:16:24 2019 +0000
+
+    [RISCV] Make -march=rv{32,64}gc the default in RISC-V Linux
+    
+    This is the logical follow-up of D65634.
+    
+    Differential Revision: https://reviews.llvm.org/D66003
+    
+    llvm-svn: 371496
+
+Index: clang-9.0.1.src/lib/Driver/ToolChains/Arch/RISCV.cpp
+===================================================================
+--- clang-9.0.1.src.orig/lib/Driver/ToolChains/Arch/RISCV.cpp
++++ clang-9.0.1.src/lib/Driver/ToolChains/Arch/RISCV.cpp
+@@ -12,6 +12,7 @@
+ #include "clang/Driver/DriverDiagnostic.h"
+ #include "clang/Driver/Options.h"
+ #include "llvm/Option/ArgList.h"
++#include "llvm/ADT/Optional.h"
+ #include "llvm/Support/TargetParser.h"
+ #include "llvm/Support/raw_ostream.h"
+ #include "ToolChains/CommonArgs.h"
+@@ -189,168 +190,182 @@ static void getExtensionFeatures(const D
+   }
+ }
+ 
+-void riscv::getRISCVTargetFeatures(const Driver &D, const ArgList &Args,
+-                                   std::vector<StringRef> &Features) {
+-  if (const Arg *A = Args.getLastArg(options::OPT_march_EQ)) {
+-    StringRef MArch = A->getValue();
++// Returns false if an error is diagnosed.
++static bool getArchFeatures(const Driver &D, StringRef MArch,
++                            std::vector<StringRef> &Features,
++                            const ArgList &Args) {
++  // RISC-V ISA strings must be lowercase.
++  if (llvm::any_of(MArch, [](char c) { return isupper(c); })) {
++    D.Diag(diag::err_drv_invalid_riscv_arch_name)
++        << MArch << "string must be lowercase";
++    return false;
++  }
+ 
+-    // RISC-V ISA strings must be lowercase.
+-    if (llvm::any_of(MArch, [](char c) { return isupper(c); })) {
+-      D.Diag(diag::err_drv_invalid_riscv_arch_name)
+-          << MArch << "string must be lowercase";
+-      return;
+-    }
++  // ISA string must begin with rv32 or rv64.
++  if (!(MArch.startswith("rv32") || MArch.startswith("rv64")) ||
++      (MArch.size() < 5)) {
++    D.Diag(diag::err_drv_invalid_riscv_arch_name)
++        << MArch << "string must begin with rv32{i,e,g} or rv64{i,g}";
++    return false;
++  }
+ 
+-    // ISA string must begin with rv32 or rv64.
+-    if (!(MArch.startswith("rv32") || MArch.startswith("rv64")) ||
+-        (MArch.size() < 5)) {
+-      D.Diag(diag::err_drv_invalid_riscv_arch_name) << MArch
+-        << "string must begin with rv32{i,e,g} or rv64{i,g}";
+-      return;
+-    }
++  bool HasRV64 = MArch.startswith("rv64");
+ 
+-    bool HasRV64 = MArch.startswith("rv64");
++  // The canonical order specified in ISA manual.
++  // Ref: Table 22.1 in RISC-V User-Level ISA V2.2
++  StringRef StdExts = "mafdqlcbjtpvn";
++  bool HasF = false, HasD = false;
++  char Baseline = MArch[4];
++
++  // First letter should be 'e', 'i' or 'g'.
++  switch (Baseline) {
++  default:
++    D.Diag(diag::err_drv_invalid_riscv_arch_name)
++        << MArch << "first letter should be 'e', 'i' or 'g'";
++    return false;
++  case 'e': {
++    StringRef Error;
++    // Currently LLVM does not support 'e'.
++    // Extension 'e' is not allowed in rv64.
++    if (HasRV64)
++      Error = "standard user-level extension 'e' requires 'rv32'";
++    else
++      Error = "unsupported standard user-level extension 'e'";
++    D.Diag(diag::err_drv_invalid_riscv_arch_name) << MArch << Error;
++    return false;
++  }
++  case 'i':
++    break;
++  case 'g':
++    // g = imafd
++    StdExts = StdExts.drop_front(4);
++    Features.push_back("+m");
++    Features.push_back("+a");
++    Features.push_back("+f");
++    Features.push_back("+d");
++    HasF = true;
++    HasD = true;
++    break;
++  }
+ 
+-    // The canonical order specified in ISA manual.
+-    // Ref: Table 22.1 in RISC-V User-Level ISA V2.2
+-    StringRef StdExts = "mafdqlcbjtpvn";
+-    bool HasF = false, HasD = false;
+-    char Baseline = MArch[4];
++  // Skip rvxxx
++  StringRef Exts = MArch.substr(5);
+ 
+-    // First letter should be 'e', 'i' or 'g'.
+-    switch (Baseline) {
+-    default:
+-      D.Diag(diag::err_drv_invalid_riscv_arch_name) << MArch
+-        << "first letter should be 'e', 'i' or 'g'";
+-      return;
+-    case 'e': {
++  // Remove non-standard extensions and supervisor-level extensions.
++  // They have 'x', 's', 'sx' prefixes. Parse them at the end.
++  // Find the very first occurrence of 's' or 'x'.
++  StringRef OtherExts;
++  size_t Pos = Exts.find_first_of("sx");
++  if (Pos != StringRef::npos) {
++    OtherExts = Exts.substr(Pos);
++    Exts = Exts.substr(0, Pos);
++  }
++
++  std::string Major, Minor;
++  if (!getExtensionVersion(D, MArch, std::string(1, Baseline), Exts, Major,
++                           Minor))
++    return false;
++
++  // TODO: Use version number when setting target features
++  // and consume the underscore '_' that might follow.
++
++  auto StdExtsItr = StdExts.begin();
++  auto StdExtsEnd = StdExts.end();
++
++  for (auto I = Exts.begin(), E = Exts.end(); I != E; ++I) {
++    char c = *I;
++
++    // Check ISA extensions are specified in the canonical order.
++    while (StdExtsItr != StdExtsEnd && *StdExtsItr != c)
++      ++StdExtsItr;
++
++    if (StdExtsItr == StdExtsEnd) {
++      // Either c contains a valid extension but it was not given in
++      // canonical order or it is an invalid extension.
+       StringRef Error;
+-      // Currently LLVM does not support 'e'.
+-      // Extension 'e' is not allowed in rv64.
+-      if (HasRV64)
+-        Error = "standard user-level extension 'e' requires 'rv32'";
++      if (StdExts.contains(c))
++        Error = "standard user-level extension not given in canonical order";
+       else
+-        Error = "unsupported standard user-level extension 'e'";
+-      D.Diag(diag::err_drv_invalid_riscv_arch_name)
+-        << MArch << Error;
+-      return;
++        Error = "invalid standard user-level extension";
++      D.Diag(diag::err_drv_invalid_riscv_ext_arch_name)
++          << MArch << Error << std::string(1, c);
++      return false;
+     }
+-    case 'i':
+-      break;
+-    case 'g':
+-      // g = imafd
+-      StdExts = StdExts.drop_front(4);
++
++    // Move to next char to prevent repeated letter.
++    ++StdExtsItr;
++
++    if (std::next(I) != E) {
++      // Skip c.
++      std::string Next = std::string(std::next(I), E);
++      std::string Major, Minor;
++      if (!getExtensionVersion(D, MArch, std::string(1, c), Next, Major, Minor))
++        return false;
++
++      // TODO: Use version number when setting target features
++      // and consume the underscore '_' that might follow.
++    }
++
++    // The order is OK, then push it into features.
++    switch (c) {
++    default:
++      // Currently LLVM supports only "mafdc".
++      D.Diag(diag::err_drv_invalid_riscv_ext_arch_name)
++          << MArch << "unsupported standard user-level extension"
++          << std::string(1, c);
++      return false;
++    case 'm':
+       Features.push_back("+m");
++      break;
++    case 'a':
+       Features.push_back("+a");
++      break;
++    case 'f':
+       Features.push_back("+f");
+-      Features.push_back("+d");
+       HasF = true;
++      break;
++    case 'd':
++      Features.push_back("+d");
+       HasD = true;
+       break;
++    case 'c':
++      Features.push_back("+c");
++      break;
+     }
++  }
+ 
+-    // Skip rvxxx
+-    StringRef Exts = MArch.substr(5);
+-
+-    // Remove non-standard extensions and supervisor-level extensions.
+-    // They have 'x', 's', 'sx' prefixes. Parse them at the end.
+-    // Find the very first occurrence of 's' or 'x'.
+-    StringRef OtherExts;
+-    size_t Pos = Exts.find_first_of("sx");
+-    if (Pos != StringRef::npos) {
+-      OtherExts = Exts.substr(Pos);
+-      Exts = Exts.substr(0, Pos);
+-    }
+-
+-    std::string Major, Minor;
+-    if (!getExtensionVersion(D, MArch, std::string(1, Baseline),
+-                             Exts, Major, Minor))
+-      return;
+-
+-    // TODO: Use version number when setting target features
+-    // and consume the underscore '_' that might follow.
+-
+-    auto StdExtsItr = StdExts.begin();
+-    auto StdExtsEnd = StdExts.end();
+-
+-    for (auto I = Exts.begin(), E = Exts.end(); I != E; ++I)  {
+-      char c = *I;
++  // Dependency check.
++  // It's illegal to specify the 'd' (double-precision floating point)
++  // extension without also specifying the 'f' (single precision
++  // floating-point) extension.
++  if (HasD && !HasF) {
++    D.Diag(diag::err_drv_invalid_riscv_arch_name)
++        << MArch << "d requires f extension to also be specified";
++    return false;
++  }
+ 
+-      // Check ISA extensions are specified in the canonical order.
+-      while (StdExtsItr != StdExtsEnd && *StdExtsItr != c)
+-        ++StdExtsItr;
+-
+-      if (StdExtsItr == StdExtsEnd) {
+-        // Either c contains a valid extension but it was not given in
+-        // canonical order or it is an invalid extension.
+-        StringRef Error;
+-        if (StdExts.contains(c))
+-          Error = "standard user-level extension not given in canonical order";
+-        else
+-          Error = "invalid standard user-level extension";
+-        D.Diag(diag::err_drv_invalid_riscv_ext_arch_name)
+-          << MArch <<  Error << std::string(1, c);
+-        return;
+-      }
++  // Additional dependency checks.
++  // TODO: The 'q' extension requires rv64.
++  // TODO: It is illegal to specify 'e' extensions with 'f' and 'd'.
+ 
+-      // Move to next char to prevent repeated letter.
+-      ++StdExtsItr;
++  // Handle all other types of extensions.
++  getExtensionFeatures(D, Args, Features, MArch, OtherExts);
+ 
+-      if (std::next(I) != E) {
+-        // Skip c.
+-        std::string Next = std::string(std::next(I), E);
+-        std::string Major, Minor;
+-        if (!getExtensionVersion(D, MArch, std::string(1, c),
+-                                 Next, Major, Minor))
+-          return;
+-
+-        // TODO: Use version number when setting target features
+-        // and consume the underscore '_' that might follow.
+-      }
+-
+-      // The order is OK, then push it into features.
+-      switch (c) {
+-      default:
+-        // Currently LLVM supports only "mafdc".
+-        D.Diag(diag::err_drv_invalid_riscv_ext_arch_name)
+-          << MArch << "unsupported standard user-level extension"
+-          << std::string(1, c);
+-        return;
+-      case 'm':
+-        Features.push_back("+m");
+-        break;
+-      case 'a':
+-        Features.push_back("+a");
+-        break;
+-      case 'f':
+-        Features.push_back("+f");
+-        HasF = true;
+-        break;
+-      case 'd':
+-        Features.push_back("+d");
+-        HasD = true;
+-        break;
+-      case 'c':
+-        Features.push_back("+c");
+-        break;
+-      }
+-    }
+-
+-    // Dependency check.
+-    // It's illegal to specify the 'd' (double-precision floating point)
+-    // extension without also specifying the 'f' (single precision
+-    // floating-point) extension.
+-    if (HasD && !HasF)
+-      D.Diag(diag::err_drv_invalid_riscv_arch_name) << MArch
+-        << "d requires f extension to also be specified";
++  return true;
++}
+ 
+-    // Additional dependency checks.
+-    // TODO: The 'q' extension requires rv64.
+-    // TODO: It is illegal to specify 'e' extensions with 'f' and 'd'.
++void riscv::getRISCVTargetFeatures(const Driver &D, const llvm::Triple &Triple,
++                                   const ArgList &Args,
++                                   std::vector<StringRef> &Features) {
++  llvm::Optional<StringRef> MArch;
++  if (const Arg *A = Args.getLastArg(options::OPT_march_EQ))
++    MArch = A->getValue();
++  else if (Triple.getOS() == llvm::Triple::Linux)
++    // RISC-V Linux defaults to rv{32,64}gc.
++    MArch = Triple.getArch() == llvm::Triple::riscv32 ? "rv32gc" : "rv64gc";
+ 
+-    // Handle all other types of extensions.
+-    getExtensionFeatures(D, Args, Features, MArch, OtherExts);
+-  }
++  if (MArch.hasValue() && !getArchFeatures(D, *MArch, Features, Args))
++    return;
+ 
+   // -mrelax is default, unless -mno-relax is specified.
+   if (Args.hasFlag(options::OPT_mrelax, options::OPT_mno_relax, true))
+@@ -372,8 +387,16 @@ void riscv::getRISCVTargetFeatures(const
+ }
+ 
+ StringRef riscv::getRISCVABI(const ArgList &Args, const llvm::Triple &Triple) {
+-  if (Arg *A = Args.getLastArg(options::OPT_mabi_EQ))
++  assert((Triple.getArch() == llvm::Triple::riscv32 ||
++          Triple.getArch() == llvm::Triple::riscv64) &&
++         "Unexpected triple");
++
++  if (const Arg *A = Args.getLastArg(options::OPT_mabi_EQ))
+     return A->getValue();
+ 
+-  return Triple.getArch() == llvm::Triple::riscv32 ? "ilp32" : "lp64";
++  // RISC-V Linux defaults to ilp32d/lp64d
++  if (Triple.getOS() == llvm::Triple::Linux)
++    return Triple.getArch() == llvm::Triple::riscv32 ? "ilp32d" : "lp64d";
++  else
++    return Triple.getArch() == llvm::Triple::riscv32 ? "ilp32" : "lp64";
+ }
+Index: clang-9.0.1.src/lib/Driver/ToolChains/Arch/RISCV.h
+===================================================================
+--- clang-9.0.1.src.orig/lib/Driver/ToolChains/Arch/RISCV.h
++++ clang-9.0.1.src/lib/Driver/ToolChains/Arch/RISCV.h
+@@ -19,7 +19,8 @@ namespace clang {
+ namespace driver {
+ namespace tools {
+ namespace riscv {
+-void getRISCVTargetFeatures(const Driver &D, const llvm::opt::ArgList &Args,
++void getRISCVTargetFeatures(const Driver &D, const llvm::Triple &Triple,
++                            const llvm::opt::ArgList &Args,
+                             std::vector<llvm::StringRef> &Features);
+ StringRef getRISCVABI(const llvm::opt::ArgList &Args,
+                       const llvm::Triple &Triple);
+Index: clang-9.0.1.src/lib/Driver/ToolChains/Clang.cpp
+===================================================================
+--- clang-9.0.1.src.orig/lib/Driver/ToolChains/Clang.cpp
++++ clang-9.0.1.src/lib/Driver/ToolChains/Clang.cpp
+@@ -335,7 +335,7 @@ static void getTargetFeatures(const Tool
+     break;
+   case llvm::Triple::riscv32:
+   case llvm::Triple::riscv64:
+-    riscv::getRISCVTargetFeatures(D, Args, Features);
++    riscv::getRISCVTargetFeatures(D, Triple, Args, Features);
+     break;
+   case llvm::Triple::systemz:
+     systemz::getSystemZTargetFeatures(Args, Features);
+@@ -1853,21 +1853,11 @@ void Clang::AddPPCTargetArgs(const ArgLi
+ 
+ void Clang::AddRISCVTargetArgs(const ArgList &Args,
+                                ArgStringList &CmdArgs) const {
+-  // FIXME: currently defaults to the soft-float ABIs. Will need to be
+-  // expanded to select ilp32f, ilp32d, lp64f, lp64d when appropriate.
+-  const char *ABIName = nullptr;
+   const llvm::Triple &Triple = getToolChain().getTriple();
+-  if (Arg *A = Args.getLastArg(options::OPT_mabi_EQ))
+-    ABIName = A->getValue();
+-  else if (Triple.getArch() == llvm::Triple::riscv32)
+-    ABIName = "ilp32";
+-  else if (Triple.getArch() == llvm::Triple::riscv64)
+-    ABIName = "lp64";
+-  else
+-    llvm_unreachable("Unexpected triple!");
++  StringRef ABIName = riscv::getRISCVABI(Args, Triple);
+ 
+   CmdArgs.push_back("-target-abi");
+-  CmdArgs.push_back(ABIName);
++  CmdArgs.push_back(ABIName.data());
+ }
+ 
+ void Clang::AddSparcTargetArgs(const ArgList &Args,
+Index: clang-9.0.1.src/test/Driver/riscv32-toolchain.c
+===================================================================
+--- clang-9.0.1.src.orig/test/Driver/riscv32-toolchain.c
++++ clang-9.0.1.src/test/Driver/riscv32-toolchain.c
+@@ -68,7 +68,7 @@
+ // CXX-RV32-BAREMETAL-NOSYSROOT-ILP32: "{{.*}}/Inputs/basic_riscv32_tree/lib/gcc/riscv32-unknown-elf/8.0.1{{/|\\\\}}crtend.o"
+ 
+ // RUN: %clang %s -### -no-canonical-prefixes -fuse-ld=ld \
+-// RUN:   -target riscv32-unknown-linux-gnu \
++// RUN:   -target riscv32-unknown-linux-gnu -mabi=ilp32 \
+ // RUN:   --gcc-toolchain=%S/Inputs/multilib_riscv_linux_sdk \
+ // RUN:   --sysroot=%S/Inputs/multilib_riscv_linux_sdk/sysroot 2>&1 \
+ // RUN:   | FileCheck -check-prefix=C-RV32-LINUX-MULTI-ILP32 %s
+@@ -84,7 +84,7 @@
+ // C-RV32-LINUX-MULTI-ILP32: "-L{{.*}}/Inputs/multilib_riscv_linux_sdk/sysroot/usr/lib32/ilp32"
+ 
+ // RUN: %clang %s -### -no-canonical-prefixes -fuse-ld=ld \
+-// RUN:   -target riscv32-unknown-linux-gnu -march=rv32imafd -mabi=ilp32d \
++// RUN:   -target riscv32-unknown-linux-gnu -march=rv32imafd \
+ // RUN:   --gcc-toolchain=%S/Inputs/multilib_riscv_linux_sdk \
+ // RUN:   --sysroot=%S/Inputs/multilib_riscv_linux_sdk/sysroot 2>&1 \
+ // RUN:   | FileCheck -check-prefix=C-RV32-LINUX-MULTI-ILP32D %s
+Index: clang-9.0.1.src/test/Driver/riscv64-toolchain.c
+===================================================================
+--- clang-9.0.1.src.orig/test/Driver/riscv64-toolchain.c
++++ clang-9.0.1.src/test/Driver/riscv64-toolchain.c
+@@ -68,7 +68,7 @@
+ // CXX-RV64-BAREMETAL-NOSYSROOT-LP64: "{{.*}}/Inputs/basic_riscv64_tree/lib/gcc/riscv64-unknown-elf/8.0.1{{/|\\\\}}crtend.o"
+ 
+ // RUN: %clang %s -### -no-canonical-prefixes -fuse-ld=ld \
+-// RUN:   -target riscv64-unknown-linux-gnu \
++// RUN:   -target riscv64-unknown-linux-gnu -mabi=lp64 \
+ // RUN:   --gcc-toolchain=%S/Inputs/multilib_riscv_linux_sdk \
+ // RUN:   --sysroot=%S/Inputs/multilib_riscv_linux_sdk/sysroot 2>&1 \
+ // RUN:   | FileCheck -check-prefix=C-RV64-LINUX-MULTI-LP64 %s
+@@ -84,7 +84,7 @@
+ // C-RV64-LINUX-MULTI-LP64: "-L{{.*}}/Inputs/multilib_riscv_linux_sdk/sysroot/usr/lib64/lp64"
+ 
+ // RUN: %clang %s -### -no-canonical-prefixes -fuse-ld=ld \
+-// RUN:   -target riscv64-unknown-linux-gnu -march=rv64imafd -mabi=lp64d \
++// RUN:   -target riscv64-unknown-linux-gnu -march=rv64imafd \
+ // RUN:   --gcc-toolchain=%S/Inputs/multilib_riscv_linux_sdk \
+ // RUN:   --sysroot=%S/Inputs/multilib_riscv_linux_sdk/sysroot 2>&1 \
+ // RUN:   | FileCheck -check-prefix=C-RV64-LINUX-MULTI-LP64D %s
+Index: clang-9.0.1.src/test/Preprocessor/riscv-target-features.c
+===================================================================
+--- clang-9.0.1.src.orig/test/Preprocessor/riscv-target-features.c
++++ clang-9.0.1.src/test/Preprocessor/riscv-target-features.c
+@@ -48,9 +48,9 @@
+ // RUN: -o - | FileCheck --check-prefix=CHECK-C-EXT %s
+ // CHECK-C-EXT: __riscv_compressed 1
+ 
+-// RUN: %clang -target riscv32-unknown-linux-gnu -march=rv32ifd -x c -E -dM %s \
++// RUN: %clang -target riscv32-unknown-linux-gnu -march=rv32ifd -mabi=ilp32 -x c -E -dM %s \
+ // RUN: -o - | FileCheck --check-prefix=CHECK-SOFT %s
+-// RUN: %clang -target riscv64-unknown-linux-gnu -march=rv64ifd -x c -E -dM %s \
++// RUN: %clang -target riscv64-unknown-linux-gnu -march=rv64ifd -mabi=lp64 -x c -E -dM %s \
+ // RUN: -o - | FileCheck --check-prefix=CHECK-SOFT %s
+ // CHECK-SOFT: __riscv_float_abi_soft 1
+ // CHECK-SOFT-NOT: __riscv_float_abi_single
+@@ -64,9 +64,9 @@
+ // CHECK-SINGLE-NOT: __riscv_float_abi_soft
+ // CHECK-SINGLE-NOT: __riscv_float_abi_double
+ 
+-// RUN: %clang -target riscv32-unknown-linux-gnu -march=rv32ifd -mabi=ilp32d -x c -E -dM %s \
++// RUN: %clang -target riscv32-unknown-linux-gnu -march=rv32ifd -x c -E -dM %s \
+ // RUN: -o - | FileCheck --check-prefix=CHECK-DOUBLE %s
+-// RUN: %clang -target riscv64-unknown-linux-gnu -march=rv64ifd -mabi=lp64d -x c -E -dM %s \
++// RUN: %clang -target riscv64-unknown-linux-gnu -march=rv64ifd -x c -E -dM %s \
+ // RUN: -o - | FileCheck --check-prefix=CHECK-DOUBLE %s
+ // CHECK-DOUBLE: __riscv_float_abi_double 1
+ // CHECK-DOUBLE-NOT: __riscv_float_abi_soft

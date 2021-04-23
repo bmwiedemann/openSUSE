@@ -1,0 +1,9 @@
+<package name="python-WebTest" project="openSUSE:Factory">
+  <title></title>
+  <description>This wraps any WSGI application and makes it easy to send test
+requests to that application, without starting up an HTTP server.
+ 
+This provides convenient full-stack testing of applications written
+with any WSGI-compatible framework.</description>
+  <devel project="devel:languages:python" package="python-WebTest"/>
+</package>

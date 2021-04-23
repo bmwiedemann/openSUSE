@@ -1,0 +1,181 @@
+From a88ca321429320675fba92f74d4f88d7e9a1845e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Mon, 1 Jun 2020 04:06:53 +0200
+Subject: [PATCH 3/3] Use explicit wxString::c_str conversion for
+ sipFindType(const char*)
+
+---
+ etgtools/tweaker_tools.py   |  6 +++---
+ sip/cpp/sip_corecmodule.cpp | 18 +++++++++---------
+ sip/gen/object.sip          |  6 +++---
+ sip/gen/window.sip          |  6 +++---
+ src/wxpy_api.sip            |  6 +++---
+ 5 files changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/etgtools/tweaker_tools.py b/etgtools/tweaker_tools.py
+index 09c798be..c07fdfa6 100644
+--- a/etgtools/tweaker_tools.py
++++ b/etgtools/tweaker_tools.py
+@@ -520,14 +520,14 @@ def addSipConvertToSubClassCode(klass):
+     %ConvertToSubClassCode
+         const wxClassInfo* info   = sipCpp->GetClassInfo();
+         wxString           name   = info->GetClassName();
+-        bool               exists = sipFindType(name) != NULL;
++        bool               exists = sipFindType(name.c_str()) != NULL;
+         while (info && !exists) {
+             info = info->GetBaseClass1();
+             name = info->GetClassName();
+-            exists = sipFindType(name) != NULL;
++            exists = sipFindType(name.c_str()) != NULL;
+         }
+         if (info)
+-            sipType = sipFindType(name);
++            sipType = sipFindType(name.c_str());
+         else
+             sipType = NULL;
+     %End
+diff --git a/sip/cpp/sip_corecmodule.cpp b/sip/cpp/sip_corecmodule.cpp
+index bab2a087..3fcddece 100644
+--- a/sip/cpp/sip_corecmodule.cpp
++++ b/sip/cpp/sip_corecmodule.cpp
+@@ -7576,7 +7576,7 @@ static PyObject* i_wxPyConstructObject(void* ptr,
+     if (pos != wxNOT_FOUND)
+         name = name.Mid(pos + nsDelimiter.Len());
+ 
+-    const sipTypeDef* td = sipFindType(name);
++    const sipTypeDef* td = sipFindType(name.c_str());
+     if (!td)
+         return NULL;
+     PyObject* transferObj = setThisOwn ? Py_None : NULL;
+@@ -7594,7 +7594,7 @@ static bool i_wxPyWrappedPtr_Check(PyObject* obj)
+ // Check if a PyObject is a specific wrapped class or subclass
+ static bool i_wxPyWrappedPtr_TypeCheck(PyObject* obj, const wxString& className)
+ {
+-    const sipTypeDef* td = sipFindType(className);
++    const sipTypeDef* td = sipFindType(className.c_str());
+     if (!td)
+         return false;
+     return sipCanConvertToType(obj, td, SIP_NO_CONVERTORS);
+@@ -7604,7 +7604,7 @@ static bool i_wxPyWrappedPtr_TypeCheck(PyObject* obj, const wxString& className)
+ // Convert a wrapped SIP object to its C++ pointer, ensuring that it is of the expected type
+ static bool i_wxPyConvertWrappedPtr(PyObject* obj, void **ptr, const wxString& className)
+ {
+-    const sipTypeDef* td = sipFindType(className);
++    const sipTypeDef* td = sipFindType(className.c_str());
+     if (!td)
+         return false;
+     if (! sipCanConvertToType(obj, td, SIP_NO_CONVERTORS))
+@@ -16045,14 +16045,14 @@ static const sipTypeDef *sipSubClass_wxObject(void **sipCppRet)
+ 
+             const wxClassInfo* info   = sipCpp->GetClassInfo();
+             wxString           name   = info->GetClassName();
+-            bool               exists = sipFindType(name) != NULL;
++            bool               exists = sipFindType(name.c_str()) != NULL;
+             while (info && !exists) {
+                 info = info->GetBaseClass1();
+                 name = info->GetClassName();
+-                exists = sipFindType(name) != NULL;
++                exists = sipFindType(name.c_str()) != NULL;
+             }
+             if (info)
+-                sipType = sipFindType(name);
++                sipType = sipFindType(name.c_str());
+             else
+                 sipType = NULL;
+ 
+@@ -16069,14 +16069,14 @@ static const sipTypeDef *sipSubClass_wxWindow(void **sipCppRet)
+ 
+             const wxClassInfo* info   = sipCpp->GetClassInfo();
+             wxString           name   = info->GetClassName();
+-            bool               exists = sipFindType(name) != NULL;
++            bool               exists = sipFindType(name.c_str()) != NULL;
+             while (info && !exists) {
+                 info = info->GetBaseClass1();
+                 name = info->GetClassName();
+-                exists = sipFindType(name) != NULL;
++                exists = sipFindType(name.c_str()) != NULL;
+             }
+             if (info)
+-                sipType = sipFindType(name);
++                sipType = sipFindType(name.c_str());
+             else
+                 sipType = NULL;
+ 
+diff --git a/sip/gen/object.sip b/sip/gen/object.sip
+index d94e1243..71d2fe78 100644
+--- a/sip/gen/object.sip
++++ b/sip/gen/object.sip
+@@ -189,14 +189,14 @@ public:
+         %ConvertToSubClassCode
+             const wxClassInfo* info   = sipCpp->GetClassInfo();
+             wxString           name   = info->GetClassName();
+-            bool               exists = sipFindType(name) != NULL;
++            bool               exists = sipFindType(name.c_str()) != NULL;
+             while (info && !exists) {
+                 info = info->GetBaseClass1();
+                 name = info->GetClassName();
+-                exists = sipFindType(name) != NULL;
++                exists = sipFindType(name.c_str()) != NULL;
+             }
+             if (info)
+-                sipType = sipFindType(name);
++                sipType = sipFindType(name.c_str());
+             else
+                 sipType = NULL;
+         %End
+diff --git a/sip/gen/window.sip b/sip/gen/window.sip
+index 6ad84464..b29898bb 100644
+--- a/sip/gen/window.sip
++++ b/sip/gen/window.sip
+@@ -2932,14 +2932,14 @@ public:
+         %ConvertToSubClassCode
+             const wxClassInfo* info   = sipCpp->GetClassInfo();
+             wxString           name   = info->GetClassName();
+-            bool               exists = sipFindType(name) != NULL;
++            bool               exists = sipFindType(name.c_str()) != NULL;
+             while (info && !exists) {
+                 info = info->GetBaseClass1();
+                 name = info->GetClassName();
+-                exists = sipFindType(name) != NULL;
++                exists = sipFindType(name.c_str()) != NULL;
+             }
+             if (info)
+-                sipType = sipFindType(name);
++                sipType = sipFindType(name.c_str());
+             else
+                 sipType = NULL;
+         %End
+diff --git a/src/wxpy_api.sip b/src/wxpy_api.sip
+index 5e63fc58..ac9c10ad 100644
+--- a/src/wxpy_api.sip
++++ b/src/wxpy_api.sip
+@@ -111,7 +111,7 @@ static PyObject* i_wxPyConstructObject(void* ptr,
+     if (pos != wxNOT_FOUND)
+         name = name.Mid(pos + nsDelimiter.Len());
+ 
+-    const sipTypeDef* td = sipFindType(name);
++    const sipTypeDef* td = sipFindType(name.c_str());
+     if (!td)
+         return NULL;
+     PyObject* transferObj = setThisOwn ? Py_None : NULL;
+@@ -129,7 +129,7 @@ static bool i_wxPyWrappedPtr_Check(PyObject* obj)
+ // Check if a PyObject is a specific wrapped class or subclass
+ static bool i_wxPyWrappedPtr_TypeCheck(PyObject* obj, const wxString& className)
+ {
+-    const sipTypeDef* td = sipFindType(className);
++    const sipTypeDef* td = sipFindType(className.c_str());
+     if (!td)
+         return false;
+     return sipCanConvertToType(obj, td, SIP_NO_CONVERTORS);
+@@ -139,7 +139,7 @@ static bool i_wxPyWrappedPtr_TypeCheck(PyObject* obj, const wxString& className)
+ // Convert a wrapped SIP object to its C++ pointer, ensuring that it is of the expected type
+ static bool i_wxPyConvertWrappedPtr(PyObject* obj, void **ptr, const wxString& className)
+ {
+-    const sipTypeDef* td = sipFindType(className);
++    const sipTypeDef* td = sipFindType(className.c_str());
+     if (!td)
+         return false;
+     if (! sipCanConvertToType(obj, td, SIP_NO_CONVERTORS))
+-- 
+2.26.2
+

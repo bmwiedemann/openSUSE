@@ -1,0 +1,61 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6fa528cf2e13a8587bd6f365a4b36623</srcmd5>
+    <version>1.6.0</version>
+    <time>1570800145</time>
+    <user>dimstar_suse</user>
+    <comment>Submission of rubygem-unicode-display_width, which is a dependency of rubocop.</comment>
+    <requestid>737440</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>834727b3d1cadee919f98c0952224f82</srcmd5>
+    <version>1.6.1</version>
+    <time>1583613638</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>773865</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e58037029b9b379a3316f56e5f841375</srcmd5>
+    <version>1.7.0</version>
+    <time>1589197216</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>802386</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>95704660b0c08e58a6826056a418a984</srcmd5>
+    <version>2.0.0</version>
+    <time>1611262567</time>
+    <user>dimstar_suse</user>
+    <comment>updated to version 2.0.0
+ see installed CHANGELOG.md
+  ## 2.0.0
+  
+  - Release 2.0.0
+  - Supports Ruby 3.0
+  
+  ## 2.0.0.pre2
+  
+  - Update 2.0 branch to Unicode 13
+  
+  ## 2.0.0.pre1
+  
+  Will be published as non-pre version on rubygems.org when Ruby 3.0 is released (December 2020)
+  
+  - Introduce new class-based API, which remembers your string-width configuration. See README for details.
+  - Remove auto-loading of string extension
+    - You can: `require &quot;unicode/display_width/string_ext&quot;` to continue to use the string extension
+    - The manual opt-out `require &quot;unicode/display_width/no_string_ext&quot;` is not needed anymore and will
+      issue a warning in the future
+  - Remove (already deprecated) String#display_size and String#display_width aliases
+  
+  Refactorings / Internal Changes:
+  
+  - Freeze string literals
+  - The Unicode::DisplayWidth now is class, instead of a module, this enables the new config-object API
+  
+</comment>
+    <requestid>865217</requestid>
+  </revision>
+</revisionlist>

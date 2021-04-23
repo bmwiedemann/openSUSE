@@ -1,0 +1,5 @@
+<package name="profanity" project="openSUSE:Factory">
+  <title>jabber client</title>
+  <description>Ncurses based jabber client inspired by irssi</description>
+  <devel project="network" package="profanity"/>
+</package>

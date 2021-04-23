@@ -1,0 +1,8 @@
+<package name="kiwi-images-wsl" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization:WSL" package="kiwi-images-wsl"/>
+  <build>
+    <disable/>
+  </build>
+</package>

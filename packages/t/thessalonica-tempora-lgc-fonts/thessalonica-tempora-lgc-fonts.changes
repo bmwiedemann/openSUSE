@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
+
+- amend spec file to reflect new font packaging scheme
+  (see openFATE#313536);
+
+-------------------------------------------------------------------
+Thu May 17 09:10:32 UTC 2012 - pgajdos@suse.com
+
+- call spec-cleaner
+
+-------------------------------------------------------------------
+Tue Apr 24 13:08:09 UTC 2012 - cfarrell@suse.com
+
+- license update: GPL-2.0-with-font-exception
+  See /tempora-lgc.otf/README
+
+-------------------------------------------------------------------
+Fri Jan 20 15:37:23 UTC 2012 - lazy.kent@opensuse.org
+
+- Package renamed from tempora-lgc-fonts according to Fonts
+  Packaging Policy.
+
+-------------------------------------------------------------------
+Sat Jan  7 16:05:19 UTC 2012 - lazy.kent@opensuse.org
+
+- Clean up spec.
+
+-------------------------------------------------------------------
+Fri Aug 26 22:44:54 UTC 2011 - lazy.kent@opensuse.org
+
+- Initial package created - 0.2.1
+

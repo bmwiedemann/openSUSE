@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Wed May  6 06:59:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to work with pytest5:
+  * pytest5.patch
+
+-------------------------------------------------------------------
+Tue Mar 24 09:20:50 UTC 2020 - pgajdos@suse.com
+
+- version update to 1.0.0
+  * fix(aiohttp): use latest version, allow Python 3.5+ for async http client
+- drop python2 support, python-aiohttp required
+
+-------------------------------------------------------------------
+Wed Mar 18 08:39:21 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 0.2.8
+  * fix collections import warning
+
+-------------------------------------------------------------------
+Fri Apr 19 12:04:31 PM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v0.2.6

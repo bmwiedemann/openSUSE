@@ -1,0 +1,5 @@
+<package name="catatonit" project="openSUSE:Factory">
+  <title>catatonit</title>
+  <description>A container init so simple it's effectively brain-dead.</description>
+  <devel project="Virtualization:containers" package="catatonit"/>
+</package>

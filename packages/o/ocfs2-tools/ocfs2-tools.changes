@@ -1,0 +1,1041 @@
+-------------------------------------------------------------------
+Thu Oct 29 11:10:30 UTC 2020 - ghe@suse.com
+
+- Point out the default value of mount options (bsc#1178248)
+  + mount.ocfs2-point-out-the-default-value-of-mount-opt.patch
+
+-------------------------------------------------------------------
+Mon Aug 10 10:50:30 UTC 2020 - ghe@suse.com
+
+- Add nocluster mount option support (bsc#1174943)
+  + mount.ocfs2-add-nocluster-mount-option-support.patch
+
+-------------------------------------------------------------------
+Wed May  6 11:30:20 UTC 2020 - ghe@suse.com
+
+- Fix debugfs.ocfs2 error on devices with sector size 4096 (bsc#1170530)
+  + debugfs.ocfs2-Fix-the-error-on-devices-with-sector-s.patch
+
+-------------------------------------------------------------------
+Thu Jan 30 10:29:12 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use %license instead of %doc [bsc#1082318]
+- Remove obsolete /sbin/chkconfig requires
+
+-------------------------------------------------------------------
+Tue Sep 10 11:23:05 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use -ffat-lto-objects when building static libraries.
+
+-------------------------------------------------------------------
+Mon Mar  4 10:00:30 UTC 2019 - ghe@suse.com
+
+- Fix build failure with glibc-2.28 (bsc#1126968)
+  + mounted.ocfs2-use-sys-sysmacros.h-include-for-makede.patch
+  + fix-build-failure-with-glibc-2.28.patch
+
+-------------------------------------------------------------------
+Thu Jan 10 10:25:30 UTC 2019 - ghe@suse.com
+
+- Add libdlm Requires dependency for ocfs2-tools (bsc#1121382)
+
+-------------------------------------------------------------------
+Mon Apr 30 13:49:06 UTC 2018 - crrodriguez@opensuse.org
+
+- fix pre/post/preun/postun scripts when systemd_enabled 
+- insserv_prereq is only needed when !systemd_enabled
+- run fillup to actually provision /etc/sysconfig/o2cb
+
+-------------------------------------------------------------------
+Wed Dec 13 03:11:37 UTC 2017 - lchen@suse.com
+
+- Remove install procedures for ocfs2console 
+
+-------------------------------------------------------------------
+Mon Dec 11 10:40:06 UTC 2017 - lchen@suse.com
+
+- Remove ocfs2console module from spec file
+
+-------------------------------------------------------------------
+Thu Nov 23 13:48:49 UTC 2017 - rbrown@suse.com
+
+- Replace references to /var/adm/fillup-templates with new 
+  %_fillupdir macro (boo#1069468)
+- Correct clearly invalid .changes timestamp
+
+-------------------------------------------------------------------
+Wed Nov 22 10:30:00 UTC 2017 - ghe@suse.com
+
+- Remove o2cb resource agent which is obsolete (bsc#1069099)
+
+-------------------------------------------------------------------
+Mon Oct 23 14:25:30 UTC 2017 - ghe@suse.com
+
+- Fix dependencies problem between ocfs2-tools and ocfs2-kmp (bsc#1060601)
+
+-------------------------------------------------------------------
+Mon Sep 04 15:45:15 UTC 2017 - ghe@suse.com
+
+- Add fsck.ocfs2-fix-compile-error-when-glibc-upgrade.patch (bsc#1057008)
+- Change license to GPL-2.0 from GPL-2.0+
+
+-------------------------------------------------------------------
+Thu Mar  9 12:36:30 UTC 2017 - ghe@suse.com
+
+- Update ocfs2-tools.tar.gz to upstream v1.8.5 (fate#322956)
+- Unify the source files between openSUSE:Factory and SLE12SP3
+  + 0004-mkfs.ocfs2-Abort-if-cluster-information-is-not-detec.patch
+  - bnc883550-Fix-mkfs.ocfs2-man-page-for-default-slots.patch
+- Drop patches (merged upstream):
+  - 0001-libo2dlm-Close-file-description-after-use.patch
+  - 0002-debugfs.ocfs2-Fix-a-bug-in-process_open_args.patch
+  - 0003-o2cb-add-build-scripts-for-rhel7.patch
+  - 0004-add-systemd-support.patch
+  - 0005-do-not-write-sysconfig-if-status-not-changed.patch
+  - 0006-o2cb-mount-debugfs-when-load-config.patch
+  - 0009-o2cb-fix-systemd-o2cb.service-failure.patch
+
+-------------------------------------------------------------------
+Thu Apr 21 09:57:15 UTC 2016 - zren@suse.com
+
+- Add 0009-o2cb-fix-systemd-o2cb.service-failure.patch to fix bsc#963959 
+
+-------------------------------------------------------------------
+Thu Mar 17 04:00:04 UTC 2016 - zren@suse.com
+
+- Add bnc#96864-ocfs2console-fix-starting-failure.patch 
+
+-------------------------------------------------------------------
+Tue Dec 22 03:23:50 UTC 2015 - zren@suse.com
+
+- Make pcmk as default stack for ocfs2, and this patch may go along
+  with us forever bnc#959660
+  +auto-setup-pcmk-stack-as-default-if-no-stack-is-setup.patch
+
+-------------------------------------------------------------------
+Tue Sep  8 02:58:55 UTC 2015 - zren@suse.com
+
+- Add systemd support for o2cb and ocfs2 service
+  + 0003-o2cb-add-build-scripts-for-rhel7.patch
+  + 0004-add-systemd-support.patch
+  + 0005-do-not-write-sysconfig-if-status-not-changed.patch
+  + 0006-o2cb-mount-debugfs-when-load-config.patch
+  + 0007-vendor-Add-vendor-files-for-sles12.patch
+  + 0008-ocfs2-tools-add-systemd-support-fix.patch
+
+-------------------------------------------------------------------
+Fri May  8 13:12:57 UTC 2015 - ghe@suse.com
+
+- libo2dlm: Close file description after use
+  + 0001-libo2dlm-Close-file-description-after-use.patch
+- debugfs.ocfs2: Fix a bug in process_open_args()
+  + 0002-debugfs.ocfs2-Fix-a-bug-in-process_open_args.patch
+
+-------------------------------------------------------------------
+Thu May  7 12:26:30 UTC 2015 - ghe@suse.com
+
+- Update ocfs2-tools.tar.bz2 to upstream v1.8.4
+- Use new ocfs2-tools git URL https://github.com/markfasheh/ocfs2-tools.git
+- Drop patches (merged upstream):
+  - 0001-Use-cmap-for-getting-cluster-name.patch
+  - 0002-Remove-controld-dependency-in-group_join-leave.patch
+  - 0003-Auto-setup-cluster_stack-based-on-what-is-on-disk.patch
+  - 0004-mkfs.ocfs2-Abort-if-cluster-information-is-not-detec.patch
+  - 0005-mkfs-Setup-cluster_stack-if-not-setup-based-on-what-.patch
+  - 0006-Auto-setup-pcmk-stack-as-default-if-no-stack-is-setu.patch
+
+-------------------------------------------------------------------
+Mon Feb  9 03:26:29 UTC 2015 - ghe@suse.com
+
+- Update ocfs2-tools.tar.bz2 to upstream v1.8.3
+- Drop patches (merged upstream):
+  - fix-indexed-dirs.patch
+  - 0001-fswreck-Create-a-loop-in-group-chains.patch
+  - 0002-Break-a-chain-loop-in-group-desc.patch
+  - restore-g_list_append.patch
+  - ocfs2console-libraries-include-aio.patch
+  - libocfs2-needs-libaio.patch
+  - libocfs2-Change-asserts-to-error.patch
+- Drop patches for ocfs2_controld
+  - force-debug.patch
+  - extra-debug.patch
+  - bug-805764-ocfs2-controld.patch
+  - bnc804707-reduce-RR-priority.patch
+  - use-symlink-in-udev-rules.patch
+
+-------------------------------------------------------------------
+Fri Jun 20 17:54:28 UTC 2014 - rgoldwyn@suse.com
+
+- Fix mkfs.ocfs2 man page to meniton number of slots are
+  dynamically determined based on filesystem size.
+
+-------------------------------------------------------------------
+Fri May 23 17:32:50 UTC 2014 - rgoldwyn@suse.com
+
+- Corrected udev directory from /etc/udev/rules.d
+
+-------------------------------------------------------------------
+Fri May 23 16:44:54 UTC 2014 - rgoldwyn@suse.com
+
+- Improve error message if DLM is not available (bnc#867329)
+  + 0007-Improve-error-message-if-DLM-service-is-unavailable.patch
+
+-------------------------------------------------------------------
+Wed Mar 12 04:31:43 UTC 2014 - rgoldwyn@suse.com
+
+- (bnc#867330) Fix group leave in patch:
+  0002-Remove-controld-dependency-in-group_join-leave.patch
+
+-------------------------------------------------------------------
+Tue Feb 11 16:57:54 UTC 2014 - rgoldwyn@suse.com
+
+- Recommend ocfs2-kmp
+- Autosetup pcmk if no cluster stack found (bnc#862758)
+   + 0006-Auto-setup-pcmk-stack-as-default-if-no-stack-is-setu.patch
+- Err if cannot write to cluster_stack (cluster mismatch)
+   + 0003-Auto-setup-cluster_stack-based-on-what-is-on-disk.patch
+
+-------------------------------------------------------------------
+Mon Feb 10 12:32:37 UTC 2014 - rgoldwyn@suse.com
+
+- Update summary and description for the -o2cb package (bnc#862761)
+
+-------------------------------------------------------------------
+Fri Jan 31 22:21:11 UTC 2014 - rgoldwyn@suse.com
+
+- Use libcmap.so.4 for dlopen in 0001-Use-cmap-for-getting-cluster-name.patch
+  to remove dependency on devel package (bnc#860982)
+
+-------------------------------------------------------------------
+Fri Dec 27 17:56:21 UTC 2013 - rgoldwyn@suse.com
+
+- Patch re-factoring, so that we don't have to compile with ldlm
+  + 0001-Use-cmap-for-getting-cluster-name.patch
+  + 0002-Remove-controld-dependency-in-group_join-leave.patch
+  + 0003-Auto-setup-cluster_stack-based-on-what-is-on-disk.patch
+  + 0004-mkfs.ocfs2-Abort-if-cluster-information-is-not-detec.patch
+  + 0005-mkfs-Setup-cluster_stack-if-not-setup-based-on-what-.patch
+  - 0001-libo2cb-Remove-controld-actions-from-group-join-leav.patch
+  - 0002-libo2cb-Remove-rest-of-controld-functions.patch
+  - 0003-Get-cluster-name-from-corosync-cmap.patch
+  - 0004-Remove-controld-structures-from-debugfs.ocfs2.patch
+  - 0005-Check-for-DLM-kernel-version-in-user_begin_group_joi.patch
+  - 0006-Add-cmap-and-dlm-libraries-in-the-tools.patch
+  - 0008-mount.ocfs2-Read-stack-from-device-and-setup-stack-i.patch
+  - 0009-mkfs.ocfs2-Abort-if-cluster-information-is-not-detec.patch
+  - 0010-mkfs-Setup-cluster_stack-if-not-setup-based-on-what-.patch
+  - 0011-Use-dlm_lt-instead-of-dlm-for-DLM-libraries.patch
+
+-------------------------------------------------------------------
+Tue Oct  1 15:07:57 UTC 2013 - rgoldwyn@suse.com
+
+- mkfs.ocfs2: Setup cluster_stack if not setup
+  + 0010-mkfs-Setup-cluster_stack-if-not-setup-based-on-what-.patch
+- Remove patch numbers for easier future maintainability.
+
+-------------------------------------------------------------------
+Fri Sep 13 08:34:08 UTC 2013 - lmb@suse.com
+
+- Move static libraries to devel-static subpackage.
+
+-------------------------------------------------------------------
+Thu Sep 12 09:30:27 UTC 2013 - lzhong@suse.com
+
+- mkfs.ocfs2/tunefs.ocfs2 may hang there because of dlm_unlock
+  + 0011-Use-dlm_lt-instead-of-dlm-for-DLM-libraries.patch
+
+-------------------------------------------------------------------
+Thu Sep  5 07:24:42 CDT 2013 - rgoldwyn@suse.com
+
+- mkfs.ocfs2 aborts if cluster information is not found/supplied
+  + 0009-mkfs.ocfs2-Abort-if-cluster-information-is-not-detec.patch
+
+-------------------------------------------------------------------
+Tue Sep  3 09:14:16 CDT 2013 - rgoldwyn@suse.com
+
+- Make mount.ocfs2 load ocfs2 kmp and setup cluster_stack if 
+  not found
+   + 0008-mount.ocfs2-Read-stack-from-device-and-setup-stack-i.patch
+
+-------------------------------------------------------------------
+Thu Aug 22 13:18:01 CDT 2013 - rgoldwyn@suse.com
+
+- Mark o2cb.ocf as obsolete. Anyone using o2cb.ocf will get an
+  info message stating so.
+
+-------------------------------------------------------------------
+Tue Aug 20 08:02:13 CDT 2013 - rgoldwyn@suse.com
+
+- The nocontrold effort (added nocontrold patches and disabled
+  corosync-2.3 controld compatibility patches): 
+  + 0001-libo2cb-Remove-controld-actions-from-group-join-leav.patch
+  + 0002-libo2cb-Remove-rest-of-controld-functions.patch
+  + 0003-Get-cluster-name-from-corosync-cmap.patch
+  + 0004-Remove-controld-structures-from-debugfs.ocfs2.patch
+  + 0005-Check-for-DLM-kernel-version-in-user_begin_group_joi.patch
+  + 0006-Add-cmap-and-dlm-libraries-in-the-tools.patch
+  - 0001-Remove-pacemaker-ais-stuff.patch
+  - 0002-Add-corosync-cfg-to-get-configuration-information.patch
+  - 0003-Remove-daemon-protocol-versions-and-consolidate-fs-v.patch
+  - 0005-Add-cluster_name-and-stack-name.patch
+
+-------------------------------------------------------------------
+Sat Aug 17 09:26:19 CDT 2013 - rgoldwyn@suse.com
+
+- libocfs2-Change-asserts-to-error.patch: Return control to 
+  fsck.ocfs2 instead of erring
+
+-------------------------------------------------------------------
+Fri Aug  9 13:55:01 CDT 2013 - rgoldwyn@suse.com
+
+- Add libraries back in devel package. This is required for
+  ocfs2-test
+- libocfs2-needs-libaio.patch: Add -laio to ocfs2.pc
+
+-------------------------------------------------------------------
+Tue Aug  6 09:21:41 CDT 2013 - rgoldwyn@suse.com
+
+- Fix FS protocol versions: 
+  + 0003-Remove-daemon-protocol-versions-and-consolidate-fs-v.patch
+  - 0003-Hard-code-protocol-versions.patch
+
+-------------------------------------------------------------------
+Wed Jul 31 08:01:02 CDT 2013 - rgoldwyn@suse.com
+
+- Get ocfs2_controld up to speed with corosync 2.3.x
+  + 0001-Remove-pacemaker-ais-stuff.patch
+  + 0002-Add-corosync-cfg-to-get-configuration-information.patch
+  + 0003-Hard-code-protocol-versions.patch
+  + 0005-Add-cluster_name-and-stack-name.patch
+  - ocfs2_controld-pacemaker.diff
+
+-------------------------------------------------------------------
+Mon Jul 22 10:57:44 UTC 2013 - ygao@suse.com
+
+- ocfs2_controld: ocfs2_controld-pacemaker.diff
+  * Replace use of send_ais_text() with send_cluster_text()
+  * Replace use of ais_dispatch() with plugin_dispatch()
+
+-------------------------------------------------------------------
+Wed Jul  3 07:40:31 CDT 2013 - rgoldwyn@suse.com
+- ocfs2console-libraries-include-aio.patch: Include aio 
+  while compiling ocfs2console (bnc#827504)
+
+-------------------------------------------------------------------
+Mon May 27 08:14:45 UTC 2013 - tserong@suse.com
+
+- Replace NAME= with SYMLINK+= in udev rules (bnc#779718)
+  + use-symlink-in-udev-rules.patch
+
+-------------------------------------------------------------------
+Wed May 22 03:04:22 UTC 2013 - tserong@suse.com
+
+- reduce ocfs2_controld priority to RR(1). (bnc#804707)
+  + bnc804707-reduce-RR-priority.patch
+- Fix the race between udev making misc device node and ocfs2 
+  opening that device (bnc#805764)
+  + bug-805764-ocfs2-controld.patch
+- ocfs2_controld: ocfs2_controld-pacemaker.diff -- changes to be
+  compatible with pacemaker >= 1.1.8
+
+-------------------------------------------------------------------
+Sat Apr 13 11:57:30 UTC 2013 - schwab@suse.de
+
+- Update config.guess/sub in the coreutils copy
+
+-------------------------------------------------------------------
+Tue Apr  9 14:42:28 UTC 2013 - e.istomin@edss.ee
+
+- g_list_append.patch: Fix o2cb node listing
+
+-------------------------------------------------------------------
+Tue Apr  2 09:47:35 UTC 2013 - speilicke@suse.com
+
+- Add _service file to automatically pull from git. It can be invoked
+  locally by "osc service disabledrun"
+- Use spec-cleaner
+- No need to call ldconfig without shared objects
+- Drop unneeded %clean section
+- No need to export CFLAGS, %configure does that.
+- Also provide ocfs2-support to have clean upgrade path
+- Drop patches (merged upstream):
+  + fix-pacemaker-libs.patch
+  + support-for-xvd-devices.patch
+
+-------------------------------------------------------------------
+Thu Mar 21 15:00:46 CDT 2013 - rgoldwyn@suse.com
+
+- Reverted tarball to v1.8.2
+- Added support-for-xvd-devices.patch: Support for xvd devices
+- Fixed a couple of rpmlint errors
+  - libdlm requirement
+  - devel package grouping changed
+- restore-g_list_append.patch is not required for old tarball
+
+-------------------------------------------------------------------
+Tue Mar 19 02:54:02 CDT 2013 - rgoldwyn@suse.com
+
+- Update ocfs2-tools.tar.bz2 to latest upstream for upstream fixes
+- restore-g_list_append.patch: Fix o2cb node listing
+
+-------------------------------------------------------------------
+Thu Oct 25 18:47:16 UTC 2012 - coolo@suse.com
+
+- add explicit buildrequire to libbz2-devel
+
+-------------------------------------------------------------------
+Tue Sep 25 11:24:55 CDT 2012 - rgoldwyn@suse.de
+
+- Fix infinite loop while checking for group desc chains
+  (bnc#781122)
+
+-------------------------------------------------------------------
+Fri Aug 24 12:12:32 CDT 2012 - rgoldwyn@suse.de
+
+- Updated to 1.8.2
+  - o2cluster: change cluster stack stamped on ocfs2 filesystem
+  - added man pages ocfs2, ocfs2.cluster.conf, o2hbmonitor
+  - fsck: faster fsck times because of aio; progress
+- fix-indexed-dirs.patch: Fix corrupt indexed directories through
+  fsck
+
+-------------------------------------------------------------------
+Sat Jul 28 14:27:46 UTC 2012 - aj@suse.de
+
+- Include sys/resource.h for getrlimit etc.
+
+-------------------------------------------------------------------
+Tue Apr 24 20:04:54 UTC 2012 - dimstar@opensuse.org
+
+- Add ocfs2-tools-kernel33.patch: Fix build with kernel 3.3, which
+  dropped umode_t.
+
+-------------------------------------------------------------------
+Wed Dec 21 14:13:46 UTC 2011 - coolo@suse.com
+
+- add autoconf as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Dec 21 10:31:42 UTC 2011 - coolo@suse.com
+
+- remove call to suse_update_config (very old work around)
+
+-------------------------------------------------------------------
+Fri Dec 16 12:06:36 UTC 2011 - tserong@suse.com
+
+- Fix ocfs2_controld build (/usr/include/pacemaker/crm/common/stack.h
+  moved to /usr/include/pacemaker/crm/cluster/stack.h) 
+
+-------------------------------------------------------------------
+Tue Aug 30 09:38:52 UTC 2011 - tserong@suse.com
+
+- Don't use /var/lock/subsys in /etc/init.d/ocfs2 (bnc#714644)
+
+-------------------------------------------------------------------
+Mon Aug 29 05:16:05 UTC 2011 - tserong@suse.com
+
+- Add -lcrmcommon to fix ocfs2_controld build.
+
+-------------------------------------------------------------------
+Fri Apr 15 12:46:03 UTC 2011 - i@coly.li
+
+- update ocfs2-tools to 1.8.0
+  - mkfs.ocfs2 enables file system features indexed-dirs, discontig-bg,
+    refcount & extended-slotmap by default.
+  - ocfs2console is no longer built by default.
+  - ocfs2-tools: fsck.ocfs2 and *ctl built dynamically by default
+  - debugfs: Add -T to logdump
+  - mounted.ocfs2: Show cluster and global heartbeat
+  - mount.ocfs2: Validate mount path before mount
+  - mount.ocfs2: Add support for o2cb global heartbeat
+  - tools: Detect differing cluster name and heartbeat modes
+  - mkfs.ocfs2: Add -U option to allow custom UUIDs
+  - mkfs.ocfs2: Add --global-heartbeat option
+  - libo2cb: Validate cluster name and cluster flags in classic_begin_group_join()
+  - o2cb: Add man page
+  - o2cb: Add ops start-heartbeat and stop-heartbeat
+  - o2cb: Add ops register-cluster and unregister-cluster
+  - o2cb: Add ops list-clusters, list-cluster, list-nodes and list-heartbeats
+  - o2cb: Add ops add-heartbeat, remove-heartbeat and heartbeat-mode
+  - o2cb: Add ops add-node and remove-node
+  - o2cb: Add ops add-cluster and remove-cluster
+  - o2cb: Add a new cluster configuration tool
+  - libo2cb: Adds support for global heartbeat
+  - libo2cb: Extend libo2cb api to learn ip address/port/local of a registered node
+  - o2cb_scandisk: Scan heartbeat devices
+  - debugfs.ocfs2: Journal logdump prints full inode and extent blocks
+  - debugfs.ocfs2: Improve block detection
+  - ocfs2-tools: Set hash seed when convert ocfs2 to support indexed-dirs
+  - ocfs2-tools: o2hbmonitor moved to /usr/sbin
+
+-------------------------------------------------------------------
+Thu Dec  2 08:09:49 UTC 2010 - i@coly.li
+
+- add '-q' in %setup of ocfs2-tools.spec, to make build log shorter.
+  (patch written by aj@suse.de)
+
+-------------------------------------------------------------------
+Wed Oct 20 17:33:02 UTC 2010 - i@coly.li
+
+- remove ocfs2-o2cb_ctl-static-glibc.diff, since it is unnecessary
+  to link glib2 statically in ocfs2-o2cb_ctl now.
+
+-------------------------------------------------------------------
+Wed Oct  6 05:39:20 UTC 2010 - i@coly.li
+
+- update ocfs2-tools to 1.6.3
+- remove gcc45-ftbfs-deb-565100.patch, the fix is in upstream now. 
+
+-------------------------------------------------------------------
+Wed Jul 28 21:35:46 PDT 2010 - mfasheh@novell.com
+ 
+- Make ocfs2-kmp a Recommend instead of a Requires. This allows easier
+  building of packages which in turn depend on ocfs2-tools.
+
+-------------------------------------------------------------------
+Wed Jun 30 14:12:48 UTC 2010 - i@coly.li
+
+- remove ocfs2-kmp dependency, since opensuse kernel does not privide such kmp.
+- change version string from 1.4.3 to 1.6.0 in ocfs2-tools.spec
+
+-------------------------------------------------------------------
+Wed Jun 30 08:51:06 UTC 2010 - i@coly.li
+
+- remove bug-585080-handle-symbolic-link.patch since it's upstream now.
+- remove version-1.4.3.patch, update to ocfs2-tools 1.6.0
+- remove dx_dirs patch set, since they are upstream now.
+   0001-dx_dirs-Add-library-support-for-directory-indexing.patch
+   0002-dx_dirs-debugfs.ocfs2-support.patch
+   0003-dx_dirs-mkfs.ocfs2-support.patch
+   0004-dx_dirs-Add-tunefs.ocfs2-feature-for-indexed-directo.patch
+   0005-dx_dirs-Update-for-dr_num_entries.patch
+   0006-dx_dirs-add-missing-ocfs2_filesys-fs-parameter.patch
+   0007-dx_dirs-more-library-support-for-directory-indexing.patch
+   0008-dx_dirs-fsck.ocfs2-support.patch
+   0009-dx_dirs-add-blocknr-in-callback-of-ocfs2_dir_iterate.patch
+   0010-dx_dirs-add-disable-indexed-dirs-support-in-tunefs.o.patch
+   0011-dx_dirs-build-indexed-trees-when-enabling-indexed-di.patch
+   0012-dx_dirs-fix-return-value-of-walk_dirblock-when-enabl.patch
+   0013-dx_dirs-try-to-install-dir-trailers-when-enable-inde.patch
+   0014-dx_dirs-add-an-initial-man-page-entry-for-indexed-di.patch
+   0015-fsck.ocfs2-prompt-before-truncating-an-invalid-dir-i.patch
+   0016-tunefs.ocfs2-move-o2ne_add_tailers-into-libocfs2ne.c.patch
+   0017-dx_dirs-add-check-for-invalid-slot-in-ocfs2_new_dx_r.patch
+   0018-mkfs.ocfs2-create-root-and-orphan-directories-as-ind.patch
+   0019-libocfs2-fix-flag-check-in-ocfs2_init_dir.patch
+   0020-libocfs2-fix-ocfs2_init_dir-to-retain-indexed-flag.patch
+   0021-fsck.ocfs2-verify-dirent-dx-entry-linkages.patch
+   0022-dx_dirs-stop-iterate-dir-entries-for-I-O-error.patch
+   0023-dx_dirs-check-callback-iter-dx_func-return-value-in-.patch
+   0024-dx_dirs-remove-unncessary-return-value-assignment.patch
+   0025-dx_dirs-unifiy-feature-string-of-indexed-dirs.patch
+   0026-dx_dirs-Improve-information-displayed-by-dump_dx_roo.patch
+   0027-dx_dirs-stop-iteration-of-dir-trailer-initialization.patch
+   0028-dx_dirs-stop-dx-insert-iteration-for-callback-error.patch
+   0029-dx_dirs-set-OCFS2_INDEXED_DIR_FL-after-indexed-tree-.patch
+   0030-dx_dirs-fix-ocfs2_swap_dx_entry_list-for-big-endian.patch
+   0031-dx_dirs-enable-metaecc-and-indexed-dirs-support-as-d.patch
+
+-------------------------------------------------------------------
+Sun Jun 27 23:44:54 UTC 2010 - tserong@novell.com
+
+- Fix mount.ocfs2.c compilation issue on gcc 4.5 (deb#565100)
+
+-------------------------------------------------------------------
+Sun Jun 27 09:58:09 UTC 2010 - tserong@novell.com
+
+- Fix configure checks for cpg and SaCkpt libraries
+
+-------------------------------------------------------------------
+Mon Jun 14 15:19:45 UTC 2010 - lmb@novell.com
+
+- ocfs2_controld.pcmk: compilation issue fixed.
+
+-------------------------------------------------------------------
+Mon Apr 26 14:43:04 UTC 2010 - coyli@novell.com
+
+- fixes for indexed-dirs
+  - 0016-tunefs.ocfs2-move-o2ne_add_tailers-into-libocfs2ne.c.patch
+  - 0017-dx_dirs-add-check-for-invalid-slot-in-ocfs2_new_dx_r.patch
+  - 0018-mkfs.ocfs2-create-root-and-orphan-directories-as-ind.patch
+  - 0019-libocfs2-fix-flag-check-in-ocfs2_init_dir.patch
+  - 0020-libocfs2-fix-ocfs2_init_dir-to-retain-indexed-flag.patch
+  - 0021-fsck.ocfs2-verify-dirent-dx-entry-linkages.patch
+  - 0022-dx_dirs-stop-iterate-dir-entries-for-I-O-error.patch
+  - 0023-dx_dirs-check-callback-iter-dx_func-return-value-in-.patch
+  - 0024-dx_dirs-remove-unncessary-return-value-assignment.patch
+  - 0025-dx_dirs-unifiy-feature-string-of-indexed-dirs.patch
+  - 0026-dx_dirs-Improve-information-displayed-by-dump_dx_roo.patch
+  - 0027-dx_dirs-stop-iteration-of-dir-trailer-initialization.patch
+  - 0028-dx_dirs-stop-dx-insert-iteration-for-callback-error.patch
+  - 0029-dx_dirs-set-OCFS2_INDEXED_DIR_FL-after-indexed-tree-.patch
+  - 0030-dx_dirs-fix-ocfs2_swap_dx_entry_list-for-big-endian.patch
+
+-------------------------------------------------------------------
+Sun Apr 11 20:06:09 CST 2010 - coyli@novell.com
+
+- update indexed-dirs patches to v11 patches
+  - a bug fix in fsck.ocfs2/pass2.c
+  - extra check whether the directory trailer overwrites valid
+    directory items.
+
+-------------------------------------------------------------------
+Thu Apr  8 17:19:21 UTC 2010 - lmb@novell.com
+
+- Add reflink user-space utility to expose the copy-on-write links in
+  OCFS2 for all platforms (bnc#594979).
+
+-------------------------------------------------------------------
+Thu Mar 25 19:17:55 UTC 2010 - coyli@novell.com
+
+- 0015-dx_dirs-enable-metaecc-and-indexed-dirs-support-as-d.patch:
+  enable metaecc and indexed-dirs support as default features.
+- ocfs2-tools-static-glib.diff: rename to ocfs2-o2cb_ctl-static-glibc.diff,
+  don't explicitly link pthread anymore.
+- update ocfs2-tools.tar.bz2 to upstream (0a1c1970):
+  - mkfs.ocfs2: enable xattr support as a default feature
+  - Fsck.ocfs2: Correctly check i_size for directory in a sparse
+    filesystem.
+  - fsck.ocfs2: Freshen up some fsck messages
+  - mkfs.ocfs2: Add dry-run option
+  - mkfs.ocfs2: Allocate groups to the extent allocator
+  - libocfs2: Add ocfs2_grow_chain_allocator()
+  - libocfs2: ocfs2_chain_add_group() adds new groups to the next
+    logical chain
+  - mounted.ocfs2: Add the stack/local to the output
+  - mounted.ocfs2: Display uuid in all caps
+  - mkfs.ocfs2: Tweak the feature compatibility list in manpage
+  - mkfs.ocfs2: Print fs features during make
+
+-------------------------------------------------------------------
+Fri Mar 12 06:32:34 UTC 2010 - coyli@novell.com
+
+- 0014-dx_dirs-man-page.diff: add an initial man page entry for
+  indexed-dirs feature. 
+
+-------------------------------------------------------------------
+Thu Mar 11 16:41:09 UTC 2010 - coyli@novell.com
+
+- bug-585080-handle-symbolic-link.patch: handle symbolic link device
+  file for tunefs.ocfs2 online resize (bnc#585080) 
+
+-------------------------------------------------------------------
+Thu Mar 11 02:50:57 UTC 2010 - coyli@novell.com
+
+- version-1.4.3.patch: keep package version as 1.4.3 for SLES11 HAE SP1.
+
+-------------------------------------------------------------------
+Thu Mar 11 01:04:34 UTC 2010 - coyli@novell.com
+
+- 0013-dx_dirs-try-to-install-dir-trailers-when-enable-inde.patch: try
+  to install dir trailers when enable indexed-dirs feature while
+  metaecc features is not enabled. The fix can avoid ocfs2_dx_dir_build()
+  in ocfs2-tools to overwrite existed dir entries lying in trailer area
+  by moving them into other dir blocks. No BNC associated.
+
+-------------------------------------------------------------------
+Fri Mar  5 09:13:30 UTC 2010 - coyli@novell.com
+
+- update indexed-dirs patches for
+  - remove the metaecc dependence code for indexed dirs. (bnc#584578)
+  - indexed dirs does not depend on metaecc, remove all
+    incorrect dependence code in mkfs.ocfs2 and tunefs.ocfs2 (bnc#585418)
+  - code clean up in mkfs.ocfs2
+- back port ocfs2-tools version 1.6 to SP1 ocfs2-tools package.
+
+-------------------------------------------------------------------
+Wed Mar  3 09:51:32 UTC 2010 - coyli@novell.com
+
+- add 0012-dx_dirs-fix-for-tunefs-metaecc-and-indexed-dirs.patch
+  (bnc#584578)
+
+-------------------------------------------------------------------
+Mon Feb 22 18:40:29 UTC 2010 - coyli@novell.com
+
+- update indexed dirs patches for fate#300315
+
+-------------------------------------------------------------------
+Fri Feb  5 10:25:07 UTC 2010 - coyli@novell.com
+
+- delete 64bytes_lvb_len_in_libo2dlm.diff (bnc#573460)
+
+-------------------------------------------------------------------
+Fri Jan 29 01:01:49 UTC 2010 - coyli@novell.com
+
+- update indexed dirs patches.
+
+-------------------------------------------------------------------
+Thu Jan 28 21:01:02 UTC 2010 - coyli@novell.com
+
+- compiling fix
+
+-------------------------------------------------------------------
+Thu Jan 28 20:52:10 UTC 2010 - coyli@novell.com
+
+- add disable indexed-dirs support in tunefs.ocfs2 (fate#300315)
+- more fixes for previous indexed-dirs patches
+
+-------------------------------------------------------------------
+Thu Jan 28 04:07:37 UTC 2010 - coyli@novell.com
+
+- add the first version of indexed dir support (fate#300315)
+
+-------------------------------------------------------------------
+Mon Jan 25 16:23:47 UTC 2010 - lmb@novell.com
+
+- ocfs2-tools requires openais for the user-space cluster stack.
+
+-------------------------------------------------------------------
+Wed Dec  9 09:47:31 UTC 2009 - "lmb@novell.com"
+
+- Fix ocfs2-tools build (bnc#561625).
+
+-------------------------------------------------------------------
+Tue Dec  8 14:42:05 UTC 2009 - "lmb@novell.com"
+
+- Add libcorosync-devel build dependency.
+
+-------------------------------------------------------------------
+Tue Dec  8 06:44:41 UTC 2009 - coyli@novell.com
+
+- 64bytes_lvb_len_in_libo2dlm.diff: use 64 bytes lvb len ((bnc#515645))
+
+-------------------------------------------------------------------
+Thu Nov 26 06:17:33 UTC 2009 - coyli@novell.com
+
+- change version number to 1.4.3
+
+-------------------------------------------------------------------
+Thu Nov 26 06:12:43 UTC 2009 - coyli@novell.com
+
+- update ocfs2-tools-1.4.3 to SLES11SP1
+
+-------------------------------------------------------------------
+Tue Nov  3 16:34:52 UTC 2009 - coyli@novell.com
+
+- bug-543119-o2dlm.patch: load libdlm_lt.so.3 explicitly in o2dlm.c (bnc#543119)
+- drop bug-543119_0001-Option-to-skip-cluster-checking-in-tunefs.ocfs2.patch since
+  bnc#543119 is a dlopen() issue, and this patch is not accepted by upstream.
+
+-------------------------------------------------------------------
+Wed Oct 14 09:20:32 UTC 2009 - "lmb@novell.com"
+
+- Implement a -F/--force option to bypass the cluster stack in
+  tunefs.ocfs2 (bnc#543119).
+
+-------------------------------------------------------------------
+Thu Sep 10 15:57:38 CEST 2009 - coly.li@suse.de
+
+- fix kill_deamon() from o2cb.ocf, now when the deamon to be killed
+  is not running, kill_deamon() will return SUCESS. Thanks to Dejan.
+
+-------------------------------------------------------------------
+Tue Aug  4 20:34:25 CST 2009 - coly.li@suse.de
+
+- add quota patches from Jan Kara, full support for enabling, disabling
+  and checking quotas.
+
+-------------------------------------------------------------------
+Tue Jul 28 21:26:27 CST 2009 - coly.li@suse.de
+
+- Update code to upstream 1.4.2, to support xattr and acl in sles11
+  (bnc#499278), thanks to Goldwyn Rodrigues.
+
+-------------------------------------------------------------------
+Mon Mar 30 12:45:00 CEST 2009 - lmb@suse.de
+
+- bug-478794-ocfs2_hb_ctl.diff: Fix crash on parsing corrupt file
+  systems (bnc#478794)
+- debug-ocfs2_hb_ctl.patch: Better error logging.
+
+-------------------------------------------------------------------
+Fri Mar 20 12:17:02 CET 2009 - abeekhof@suse.de
+
+- Fix the logging of calls to crm_terminate_member_no_mainloop() 
+
+-------------------------------------------------------------------
+Tue Mar 17 23:25:00 CET 2009 - lmb@suse.de
+
+- ocfs2_controld.pcmk crashed immediately on x86-64 (bnc#486104)
+
+-------------------------------------------------------------------
+Mon Mar 16 14:45:00 CET 2009 - lmb@suse.de
+
+- ocfs2_controld-retry-470741.diff: removed.
+- bug-470741_000{1,2,3}-ocfs2_controld.patch: retry most CKPT operations
+  forever, and recover from partially installed checkpoints
+  (bnc#470741).
+
+-------------------------------------------------------------------
+Thu Mar 12 14:34:26 CET 2009 - abeekhof@suse.de
+
+- Use a Pacemaker library function for kicking nodes form the cluster 
+
+-------------------------------------------------------------------
+Wed Mar 11 11:09:11 CET 2009 - abeekhof@suse.de
+
+- Add some extra logging for bnc#484028 
+
+-------------------------------------------------------------------
+Tue Mar 10 22:25:33 CET 2009 - abeekhof@suse.de
+
+- Allow debug message to been seen in syslog for bnc#484028 
+
+-------------------------------------------------------------------
+Thu Mar 05 09:00:00 CET 2009 - lmb@suse.de
+
+- Adjust packaging split.
+
+-------------------------------------------------------------------
+Fri Feb 27 03:53:53 CET 2009 - coyli@suse.de
+
+- tunefs.ocfs2.8.in_more_options.diff: add manual info for
+  -y, -n and --update-cluster-statck options (bnc#478259) 
+
+-------------------------------------------------------------------
+Sat Feb 21 16:00:00 CET 2009 - lmb@suse.de
+
+- ocfs2_controld-retry-470741.diff: Increase retry count.
+
+-------------------------------------------------------------------
+Fri Feb 20 13:20:00 CET 2009 - lmb@suse.de
+
+- Split off legacy O2CB init scripts and binaries into
+  ocfs2-tools-o2cb.
+
+-------------------------------------------------------------------
+Thu Feb 19 14:47:43 CET 2009 - coyli@suse.de
+
+- update o2cb.ocf to fix return value format (bnc#474353)
+
+-------------------------------------------------------------------
+Mon Feb 16 17:19:52 CET 2009 - coyli@suse.de
+
+- ocfs2console: Whoops, don't reset all warnings, just pop the DISPLAY one.
+  Thanks to Hu Ziming from IBM and Joel Becker from Oracle.
+
+-------------------------------------------------------------------
+Tue Feb 10 10:07:36 CET 2009 - coyli@suse.de
+
+- ocfs2console: remove unsupported option when calling tunefs.ocfs2 (bnc#472353)
+
+-------------------------------------------------------------------
+Mon Feb  9 16:52:25 CET 2009 - abeekhof@suse.de
+
+- Re-implement kill_stack_node() to use node attributes instead of stonithd
+- Reuse more functions from Pacemaker shared libraries
+- Have the o2cb OCF agent produce extra output if the daemon doesn't come up
+
+-------------------------------------------------------------------
+Thu Feb  5 19:55:41 CET 2009 - coyli@suse.de
+
+- Replace Hu Ziming's patch to Jeol Becker's patch for bnc#448523.
+
+-------------------------------------------------------------------
+Tue Jan 13 17:12:27 CET 2009 - coyli@suse.de
+
+- fix ocfs2console crashing when DISOPLAY is not correclty set(bnc#448523),
+  thanks to Hu Ziming from IBM.
+
+-------------------------------------------------------------------
+Sat Jan  3 18:41:34 CET 2009 - coly.li@suse.de
+
+- add ocfs2-kmp (ocfs2 KMP package) into installation dependency(bnc#459437)
+
+-------------------------------------------------------------------
+Fri Dec  5 01:00:12 CST 2008 - coyli@suse.de
+
+- ensure o2cb OCF resource agent is executable
+- add libdlm to ocfs2-tools' dependency (bnc#448751)
+
+-------------------------------------------------------------------
+Sat Nov 22 02:37:05 CET 2008 - mfasheh@suse.com
+
+- Add a quota fixup patch to match up system file names in tools
+  with the kernel.
+
+-------------------------------------------------------------------
+Wed Nov 12 11:25:01 CET 2008 - abeekhof@suse.de
+
+- Add an OCF-style script to allow Pacemaker to reliably manage the 
+  ocfs2 modules.  The existing LSB-style one is inadequate.
+
+-------------------------------------------------------------------
+Mon Oct 27 14:58:59 CET 2008 - abeekhof@suse.de
+
+- Refresh package to upstream a93731c164d024e0016520a1f4cd8f9007d7c05e
+- Remove part of the static glib patch as tunefs.ocfs2 no longer uses glib
+- Combine patches yet to be upstreamed to ease maintenance
+
+-------------------------------------------------------------------
+Mon Oct 27 15:53:41 CEST 2008 - mfasheh@suse.com
+
+- Add quota support patches
+
+-------------------------------------------------------------------
+Mon Oct 20 21:08:34 CEST 2008 - abeekhof@suse.de
+
+- New patch for ocfs2_controld - make sure stad(err|out|in) are mapped to /dev/null
+  and not left unassigned (which causes issues when logging)
+
+-------------------------------------------------------------------
+Mon Sep 22 11:41:51 CEST 2008 - abeekhof@suse.de
+
+- ocfs2console: Allow ocfs2console to enumerate device mapper devices (bnc#414756)
+
+-------------------------------------------------------------------
+Tue Sep 16 22:14:09 CEST 2008 - abeekhof@suse.de
+
+- Update for new pacemaker dependancies
+- Use correct path for ocfs2_controld.*
+- Package required udev rules
+
+-------------------------------------------------------------------
+Thu Sep 11 11:04:40 CEST 2008 - abeekhof@suse.de
+
+- Refresh from upstream 1.4.1 (0ead2f1b45568ca441cb3ed679efbbd7eeb68d98)
+- Add support for OpenAIS/Pacemaker (userspace cluster stack) integration 
+  based on upstream OCFS2 interface
+- Remove the custom Heartbeat integration
+- Bugfixes
+
+-------------------------------------------------------------------
+Tue Aug 26 20:54:05 CEST 2008 - jeffm@suse.com
+
+- Made init scripts LSB compliant.
+
+-------------------------------------------------------------------
+Fri Feb 22 17:05:56 CET 2008 - jeffm@suse.com
+
+- Re-added init script support for userspace heartbeat.
+
+-------------------------------------------------------------------
+Tue Feb 19 21:14:00 CET 2008 - jeffm@suse.com
+
+- Statically link glib-2.0 with tunefs and o2cb_ctl.
+
+-------------------------------------------------------------------
+Mon Jan 28 17:12:13 CET 2008 - jeffm@suse.com
+
+- Update to 1.3.9
+
+-------------------------------------------------------------------
+Mon Jan 14 22:13:41 CET 2008 - jeffm@suse.com
+
+- Update to 1.2.7
+  - Add shrinking journal size support
+  - Fix crash in slotmap
+  - Don't append _netdev for local mounts
+  - Add query support for tunefs
+  - Add remove slot features to tunefs
+
+-------------------------------------------------------------------
+Tue Aug  7 16:55:30 CEST 2007 - jeffm@suse.com
+
+- Update to 1.2.6
+  - Support for file attributes field
+  - Fix for automatically selecting next node number
+  - Multiple fsck fixes
+  - Offline resize
+  - Documentation updates
+
+-------------------------------------------------------------------
+Sun Nov 19 22:40:24 CET 2006 - schwab@suse.de
+
+- Don't use kernel headers.
+
+-------------------------------------------------------------------
+Sun Nov 19 22:09:50 CET 2006 - ro@suse.de
+
+- define offsetof locally if it does not come from kernel header 
+
+-------------------------------------------------------------------
+Mon Oct 30 17:43:47 CET 2006 - lmb@suse.de
+
+- Upgrade to version 1.2.2 to match in-kernel version.
+- Split-off devel subpackage.
+
+-------------------------------------------------------------------
+Sat Oct 28 22:48:11 CEST 2006 - meissner@suse.de
+
+- use RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Sat Sep 30 09:21:03 CEST 2006 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Wed Aug 16 16:12:07 CEST 2006 - cthiel@suse.de
+
+- buildrequire python-gtk-devel instead of python-gtk
+
+-------------------------------------------------------------------
+Wed May  3 10:24:04 CEST 2006 - kukuk@suse.de
+
+- Fix compile with new glibc
+
+-------------------------------------------------------------------
+Wed Apr 26 13:37:24 CEST 2006 - lmb@suse.de
+
+- Update to 1.2.1 to match in-kernel version.
+
+-------------------------------------------------------------------
+Mon Apr 24 13:07:50 CEST 2006 - lmb@suse.de
+
+- Create /sbin/rcocfs2, rco2cb symlinks (#167261).
+
+-------------------------------------------------------------------
+Tue Apr  4 17:07:28 CEST 2006 - lmb@suse.de
+
+- Install "ocfs2" init script and enable it (#160724).
+
+-------------------------------------------------------------------
+Fri Mar  3 00:17:55 CET 2006 - jeffm@suse.com
+
+- Updated to version 1.2.0, per Oracle
+
+-------------------------------------------------------------------
+Fri Mar  3 00:04:01 CET 2006 - jeffm@suse.com
+
+- Enabled o2cb by default on package install to allow it to shut
+  down when manually started. Otherwise, the system will hang
+  during shutdown.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:38:55 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Fri Nov 11 15:07:50 CET 2005 - lmb@suse.de
+
+- Should-Start: iscsi added (from SLES9) (#114733)
+
+-------------------------------------------------------------------
+Wed Nov  2 22:07:24 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Tue Nov  1 23:15:11 CET 2005 - jeffm@suse.com
+
+- Update to version 1.1.3 - SVN 1105
+
+-------------------------------------------------------------------
+Mon Aug 22 15:35:21 CEST 2005 - garloff@suse.de
+
+- Fix python defines.
+
+-------------------------------------------------------------------
+Mon Aug 22 12:47:14 CEST 2005 - garloff@suse.de
+
+- Fix build with different python versions.
+- Fix package description.
+
+-------------------------------------------------------------------
+Sat Aug 20 15:36:48 CEST 2005 - lmb@suse.de
+
+- Initial packaging of ocfs2-tools, from SLES9.
+- Update to version 1.1.1 - SVN 1063
+

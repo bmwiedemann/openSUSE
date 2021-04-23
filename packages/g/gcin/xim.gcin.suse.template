@@ -1,0 +1,12 @@
+#~/.xim template for users to set gcin as default input method
+#copy this file to ~/.xim
+#logout and login again, that's all
+#for more infomations, see ~/.xim.template
+
+export LC_CTYPE=$LANG
+export XMODIFIERS="@im=gcin"
+export GTK_IM_MODULE=gcin
+export GTK3_IM_MODULE=gcin
+export QT_IM_SWITCHER=imsw-multi
+export QT_IM_MODULE=gcin
+gcin & 

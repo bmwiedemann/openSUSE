@@ -1,0 +1,12 @@
+diff --git a/smemcap.c b/smemcap.c
+index 641c63b..9b97093 100644
+--- a/smemcap.c
++++ b/smemcap.c
+@@ -80,6 +80,7 @@ int archivefile(const char *path, int destfd)
+ 		cur = cur->next;
+ 		free(start);
+ 	}
++	return 0;
+ }
+ 
+ int archivejoin(const char *sub, const char *name, int destfd)

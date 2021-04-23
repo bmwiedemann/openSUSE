@@ -1,0 +1,5 @@
+<package name="gnugo" project="openSUSE:Factory">
+  <title>Chinese Game &quot;Go&quot;</title>
+  <description>Asian board game. /usr/share/doc/packages/gnugo</description>
+  <devel project="games" package="gnugo"/>
+</package>

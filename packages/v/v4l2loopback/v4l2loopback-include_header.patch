@@ -1,0 +1,38 @@
+From: Luigi Baldoni <aloisio@gmx.com>
+Date: 2020-01-08 15:10:05 +0100
+Subject: Include header outside of struct definition
+References: (boo#1159777)
+
+Make gcc DWARF generator work by moving struct
+definition inside header file.
+
+(many thanks to Mark J. Wielaard)
+
+Index: v4l2loopback-0.12.3/v4l2loopback.c
+===================================================================
+--- v4l2loopback-0.12.3.orig/v4l2loopback.c
++++ v4l2loopback-0.12.3/v4l2loopback.c
+@@ -397,9 +397,7 @@ struct v4l2l_format {
+ #define V4L2_PIX_FMT_HEVC  v4l2_fourcc('H', 'E', 'V', 'C')
+ #endif
+ 
+-static const struct v4l2l_format formats[] = {
+ #include "v4l2loopback_formats.h"
+-};
+ 
+ static const unsigned int FORMATS = ARRAY_SIZE(formats);
+ 
+Index: v4l2loopback-0.12.3/v4l2loopback_formats.h
+===================================================================
+--- v4l2loopback-0.12.3.orig/v4l2loopback_formats.h
++++ v4l2loopback-0.12.3/v4l2loopback_formats.h
+@@ -1,3 +1,4 @@
++static const struct v4l2l_format formats[] = {
+   /* here come the packed formats */
+ {
+    .name     = "32 bpp RGB, le",
+@@ -420,3 +421,4 @@
+      .flags    = FORMAT_FLAGS_COMPRESSED,
+      },
+ #endif /* V4L2_PIX_FMT_HEVC */
++};

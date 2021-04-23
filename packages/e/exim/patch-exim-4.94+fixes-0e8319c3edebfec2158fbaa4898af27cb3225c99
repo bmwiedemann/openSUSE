@@ -1,0 +1,112 @@
+diff -ru a/README.UPDATING b/README.UPDATING
+--- a/README.UPDATING	2020-05-30 22:35:38.000000000 +0200
++++ b/README.UPDATING	2020-06-08 10:36:12.136106000 +0200
+@@ -31,9 +31,9 @@
+ 
+ Some Transports now refuse to use tainted data in constructing their delivery
+ location; this WILL BREAK configurations which are not updated accordingly.
+-In particular: any Transport use of $local_user which has been relying upon
++In particular: any Transport use of $local_part which has been relying upon
+ check_local_user far away in the Router to make it safe, should be updated to
+-replace $local_user with $local_part_data.
++replace $local_part with $local_part_data.
+ 
+ Attempting to remove, in router or transport, a header name that ends with
+ an asterisk (which is a standards-legal name) will now result in all headers
+diff -ru a/src/acl.c b/src/acl.c
+--- a/src/acl.c	2020-05-30 22:35:38.000000000 +0200
++++ b/src/acl.c	2020-06-08 10:36:13.865973000 +0200
+@@ -3349,11 +3349,11 @@
+       {
+       /* Separate the regular expression and any optional parameters. */
+       const uschar * list = arg;
+-      uschar *ss = string_nextinlist(&list, &sep, big_buffer, big_buffer_size);
++      uschar *ss = string_nextinlist(&list, &sep, NULL, 0);
+       /* Run the dcc backend. */
+       rc = dcc_process(&ss);
+       /* Modify return code based upon the existence of options. */
+-      while ((ss = string_nextinlist(&list, &sep, big_buffer, big_buffer_size)))
++      while ((ss = string_nextinlist(&list, &sep, NULL, 0)))
+         if (strcmpic(ss, US"defer_ok") == 0 && rc == DEFER)
+           rc = FAIL;   /* FAIL so that the message is passed to the next ACL */
+       }
+@@ -3514,7 +3514,7 @@
+       int sep = 0;
+       const uschar *s = arg;
+       uschar * ss;
+-      while ((ss = string_nextinlist(&s, &sep, big_buffer, big_buffer_size)))
++      while ((ss = string_nextinlist(&s, &sep, NULL, 0)))
+         {
+         if (Ustrcmp(ss, "main") == 0) logbits |= LOG_MAIN;
+         else if (Ustrcmp(ss, "panic") == 0) logbits |= LOG_PANIC;
+@@ -3567,7 +3567,7 @@
+       {
+       /* Separate the regular expression and any optional parameters. */
+       const uschar * list = arg;
+-      uschar * ss = string_nextinlist(&list, &sep, big_buffer, big_buffer_size);
++      uschar * ss = string_nextinlist(&list, &sep, NULL, 0);
+       uschar * opt;
+       BOOL defer_ok = FALSE;
+       int timeout = 0;
+@@ -3672,11 +3672,11 @@
+       {
+       /* Separate the regular expression and any optional parameters. */
+       const uschar * list = arg;
+-      uschar *ss = string_nextinlist(&list, &sep, big_buffer, big_buffer_size);
++      uschar *ss = string_nextinlist(&list, &sep, NULL, 0);
+ 
+       rc = spam(CUSS &ss);
+       /* Modify return code based upon the existence of options. */
+-      while ((ss = string_nextinlist(&list, &sep, big_buffer, big_buffer_size)))
++      while ((ss = string_nextinlist(&list, &sep, NULL, 0)))
+         if (strcmpic(ss, US"defer_ok") == 0 && rc == DEFER)
+           rc = FAIL;	/* FAIL so that the message is passed to the next ACL */
+       }
+diff -ru a/src/auths/call_pam.c b/src/auths/call_pam.c
+--- a/src/auths/call_pam.c	2020-05-30 22:35:38.000000000 +0200
++++ b/src/auths/call_pam.c	2020-06-08 10:36:12.138178000 +0200
+@@ -83,8 +83,7 @@
+     {
+     case PAM_PROMPT_ECHO_ON:
+     case PAM_PROMPT_ECHO_OFF:
+-      arg = string_nextinlist(&pam_args, &sep, big_buffer, big_buffer_size);
+-      if (!arg)
++      if (!(arg = string_nextinlist(&pam_args, &sep, NULL, 0)))
+ 	{
+ 	arg = US"";
+ 	pam_arg_ended = TRUE;
+@@ -155,7 +154,7 @@
+ fail. PAM doesn't support authentication with an empty user (it prompts for it,
+ causing a potential mis-interpretation). */
+ 
+-user = string_nextinlist(&pam_args, &sep, big_buffer, big_buffer_size);
++user = string_nextinlist(&pam_args, &sep, NULL, 0);
+ if (user == NULL || user[0] == 0) return FAIL;
+ 
+ /* Start off PAM interaction */
+diff -ru a/src/exim.c b/src/exim.c
+--- a/src/exim.c	2020-05-30 22:35:38.000000000 +0200
++++ b/src/exim.c	2020-06-08 10:36:13.871593000 +0200
+@@ -2148,7 +2148,7 @@
+ 	concept of *the* alias file, but since Sun's YP make script calls
+ 	sendmail this way, some support must be provided. */
+ 	case 'i':
+-	  if (!*++argrest) bi_option = TRUE;
++	  if (!*argrest) bi_option = TRUE;
+ 	  else badarg = TRUE;
+ 	  break;
+ 
+diff -ru a/src/expand.c b/src/expand.c
+--- a/src/expand.c	2020-05-30 22:35:38.000000000 +0200
++++ b/src/expand.c	2020-06-08 10:36:13.873752000 +0200
+@@ -7208,9 +7208,8 @@
+         {
+ 	int cnt = 0;
+ 	int sep = 0;
+-	uschar buffer[256];
+ 
+-	while (string_nextinlist(CUSS &sub, &sep, buffer, sizeof(buffer))) cnt++;
++	while (string_nextinlist(CUSS &sub, &sep, NULL, 0)) cnt++;
+ 	yield = string_fmt_append(yield, "%d", cnt);
+         continue;
+         }

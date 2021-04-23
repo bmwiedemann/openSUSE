@@ -1,0 +1,5 @@
+<package name="lttng-modules" project="openSUSE:Factory">
+  <title>LTTng Kernel Tracing Modules</title>
+  <description>The LTTng Kernel Modules necessary for instrumenting kernel subsystems.</description>
+  <devel project="devel:tools:lttng" package="lttng-modules"/>
+</package>

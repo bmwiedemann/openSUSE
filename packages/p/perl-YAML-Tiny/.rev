@@ -1,0 +1,143 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3e4a1db9ec08424c7c4a072cee4a08ed</srcmd5>
+    <version>1.48</version>
+    <time>1311085281</time>
+    <user>saschpe</user>
+    <comment>needed by Any-Moose</comment>
+    <requestid>76223</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3431bce4dcf034fa237736d2c5b027d7</srcmd5>
+    <version>1.48</version>
+    <time>1311085293</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 76223
+</comment>
+  </revision>
+  <revision rev="3" vrev="4">
+    <srcmd5>3431bce4dcf034fa237736d2c5b027d7</srcmd5>
+    <version>1.48</version>
+    <time>1319182325</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b2c4a85fdb787bb708c781ad7ba18389</srcmd5>
+    <version>1.50</version>
+    <time>1321876270</time>
+    <user>coolo</user>
+    <comment>- update to 1.50
+    - Major bug fix, all code that writes arbitrary data should upgrade.
+    - Simple scalars with no whitespace but ending in a colon like ABC: were
+      not being quoted, which results in the parser confusing it with a
+      mapping key and crashing.
+  
+    - No functional changes.
+    - Don't depend on the YAML modules in RELEASE_TESTING, as it can
+      pollute the advisory META.yml.</comment>
+    <requestid>92391</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0237a3ec8ea9f36c7ab688a01e858014</srcmd5>
+    <version>1.50</version>
+    <time>1323193812</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fe9d3767f5463a8d14f5935de61cf1e2</srcmd5>
+    <version>1.51</version>
+    <time>1338029988</time>
+    <user>coolo</user>
+    <comment>- updated to 1.51
+   - The fix described in 1.48 was incorrect. Removing an additional
+     if $@ to fix it properly.
+   - Make the Scalar::Util version check resistant to bugs caused by
+     development versions.</comment>
+    <requestid>121933</requestid>
+  </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>fe9d3767f5463a8d14f5935de61cf1e2</srcmd5>
+    <version>1.51</version>
+    <time>1340183958</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>fe9d3767f5463a8d14f5935de61cf1e2</srcmd5>
+    <version>1.51</version>
+    <time>1359109860</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>fe9d3767f5463a8d14f5935de61cf1e2</srcmd5>
+    <version>1.51</version>
+    <time>1379663930</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>37984b04752dc37b8423f0c45191e872</srcmd5>
+    <version>1.56</version>
+    <time>1381064191</time>
+    <user>scarabeus_factory</user>
+    <comment></comment>
+    <requestid>202255</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f05e97782f9a9696fa3f1a71b269e574</srcmd5>
+    <version>1.58</version>
+    <time>1392186157</time>
+    <user>coolo</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>221907</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>f05e97782f9a9696fa3f1a71b269e574</srcmd5>
+    <version>1.58</version>
+    <time>1409302582</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>29d777981391b29b7b0ddd1abbc94cc9</srcmd5>
+    <version>1.66</version>
+    <time>1429769023</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>296714</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b7e571044a005a7f341ef17b84db23f2</srcmd5>
+    <version>1.67</version>
+    <time>1431980429</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>307003</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>72a71c60cef8fa17c51a693b171e13cf</srcmd5>
+    <version>1.69</version>
+    <time>1438421889</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>319232</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f75a5f9c101e82ed49c1230e19dc08fa</srcmd5>
+    <version>1.70</version>
+    <time>1487260089</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457029</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>19184ef03c2b4669c66f3b6bdb413461</srcmd5>
+    <version>1.73</version>
+    <time>1519683772</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>579748</requestid>
+  </revision>
+</revisionlist>

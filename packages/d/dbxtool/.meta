@@ -1,0 +1,5 @@
+<package name="dbxtool" project="openSUSE:Factory">
+  <title>hello</title>
+  <description>NOTE: Automatically created during Factory devel project migration by admin.</description>
+  <devel project="Base:System" package="dbxtool"/>
+</package>

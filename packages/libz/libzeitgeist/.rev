@@ -1,0 +1,116 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5a32270818f386f11c6d4217edbe19b9</srcmd5>
+    <version>0.3.2</version>
+    <time>1303955411</time>
+    <user>darix</user>
+    <comment>Accepted submit request 68527 from user babelworx
+</comment>
+    <requestid>68527</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8fdd6a971cd848a89662ae4c573079a7</srcmd5>
+    <version>0.3.2</version>
+    <time>1303955422</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 68527
+</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>642284d5c1500e03df1b099099007c65</srcmd5>
+    <version>0.3.10</version>
+    <time>1304928363</time>
+    <user>saschpe</user>
+    <comment>New upstream release</comment>
+    <requestid>69775</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dab04c0a15cdcd92b9ed8328243796f7</srcmd5>
+    <version>0.3.12</version>
+    <time>1315568330</time>
+    <user>saschpe</user>
+    <comment>Update to 0.3.12 (forwarded request 81605 from vuntz)</comment>
+    <requestid>81658</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>dab04c0a15cdcd92b9ed8328243796f7</srcmd5>
+    <version>0.3.12</version>
+    <time>1319182150</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>cd4b9a94b011e2881d44cb0414c71df9</srcmd5>
+    <version>0.3.12</version>
+    <time>1323192391</time>
+    <user>coolo</user>
+    <comment>replace license with spdx.org variant</comment>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>96d620dc7a1001e72526ca50b06a4524</srcmd5>
+    <version>0.3.14</version>
+    <time>1329476750</time>
+    <user>coolo</user>
+    <comment>Update to 0.3.14 (forwarded request 105173 from dimstar)</comment>
+    <requestid>105624</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ba1129d942b7c61d5193aa9d012338b0</srcmd5>
+    <version>0.3.16</version>
+    <time>1333022544</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>111765</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>561a7cec668ec7e1a34894efc74c75fd</srcmd5>
+    <version>0.3.18</version>
+    <time>1334216351</time>
+    <user>coolo</user>
+    <comment>Pushing G:F</comment>
+    <requestid>113197</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>561a7cec668ec7e1a34894efc74c75fd</srcmd5>
+    <version>0.3.18</version>
+    <time>1340183660</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>561a7cec668ec7e1a34894efc74c75fd</srcmd5>
+    <version>0.3.18</version>
+    <time>1359109390</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>561a7cec668ec7e1a34894efc74c75fd</srcmd5>
+    <version>0.3.18</version>
+    <time>1379663153</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>a2c7218c0c85b1b2133b72424c36cc4b</srcmd5>
+    <version>0.3.18</version>
+    <time>1399810597</time>
+    <user>coolo</user>
+    <comment>Add baselibs.conf as a source to build -32bit packages. (forwarded request 233315 from Lazy_Kent)</comment>
+    <requestid>233376</requestid>
+  </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>a2c7218c0c85b1b2133b72424c36cc4b</srcmd5>
+    <version>0.3.18</version>
+    <time>1409301785</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>06fb0c1a703e6aaf089a4ba17d1edcdd</srcmd5>
+    <version>0.3.18</version>
+    <time>1520588416</time>
+    <user>dimstar_suse</user>
+    <comment>spec-cleaner (forwarded request 581280 from dimstar)</comment>
+    <requestid>582847</requestid>
+  </revision>
+</revisionlist>

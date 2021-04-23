@@ -1,0 +1,275 @@
+--- a/src/jupyter_nbextensions_configurator.egg-info/requires.txt
++++ b/src/jupyter_nbextensions_configurator.egg-info/requires.txt
+@@ -7,7 +7,6 @@ traitlets
+ 
+ [test]
+ jupyter_contrib_core[testing_utils]
+-nose
+ requests
+ selenium
+ 
+--- a/tests/test_application.py
++++ b/tests/test_application.py
+@@ -12,7 +12,6 @@ import os
+ from unittest import TestCase
+ 
+ import jupyter_core.paths
+-import nose.tools as nt
+ from jupyter_contrib_core.notebook_compat import serverextensions
+ from jupyter_contrib_core.testing_utils import (
+     get_logger, patch_traitlets_app_logs,
+@@ -83,9 +82,8 @@ class AppTest(TestCase):
+         created_files = []
+         for root, subdirs, files in os.walk(dirs['conf']):
+             created_files.extend([os.path.join(root, f) for f in files])
+-        nt.assert_true(
+-            created_files,
+-            'enable should create files in {}'.format(dirs['conf']))
++        assert created_files, \
++            'enable should create files in {}'.format(dirs['conf'])
+ 
+         # a bit of a hack to allow initializing a new app instance
+         for klass in app_classes:
+@@ -102,16 +100,12 @@ class AppTest(TestCase):
+                 conf = Config(json.load(f))
+             nbapp = conf.get('NotebookApp', {})
+             if 'server_extensions' in nbapp:
+-                nt.assert_not_in(
+-                    'jupyter_nbextensions_configurator',
+-                    nbapp.server_extensions,
+-                    'conf after disable should empty'
+-                    'server_extensions list in file {}'.format(path))
++                assert 'jupyter_nbextensions_configurator' not in \
++                    nbapp.server_extensions, \
++                    'conf after disable should empty server_extensions list in file {}'.format(path)
+             nbservext = nbapp.get('nbserver_extensions', {})
+-            nt.assert_false(
+-                {k: v for k, v in nbservext.items() if v},
+-                'disable command should disable all '
+-                'nbserver_extensions in file {}'.format(path))
++            assert not {k: v for k, v in nbservext.items() if v}, \
++                'disable command should disable all nbserver_extensions in file {}'.format(path))
+ 
+         reset_app_class(DisableJupyterNbextensionsConfiguratorApp)
+ 
+@@ -119,7 +113,7 @@ class AppTest(TestCase):
+         """Check that app complains about extra args."""
+         for subcom in ('enable', 'disable'):
+             # sys.exit should be called if extra args specified
+-            with nt.assert_raises(SystemExit):
++            with pytest.raises(SystemExit):
+                 main_app([subcom, 'arbitrary_extension_name'])
+             for klass in app_classes:
+                 reset_app_class(klass)
+@@ -131,7 +125,7 @@ class AppTest(TestCase):
+             check_help_output(app_module, argv)
+             check_help_all_output(app_module, argv)
+         # sys.exit should be called if no argv specified
+-        with nt.assert_raises(SystemExit):
++        with pytest.raises(SystemExit):
+             main_app([])
+ 
+     def test_02_default_enable(self):
+@@ -160,5 +154,5 @@ class AppTest(TestCase):
+                 itertools.combinations(conflicting_flags, nn))
+         for flagset in conflicting_flagsets:
+             self.log.info('testing conflicting flagset {}'.format(flagset))
+-            nt.assert_raises(serverextensions.ArgumentConflict,
+-                             main_app, ['enable'] + list(flagset))
++            pytest.raises(serverextensions.ArgumentConflict,
++                          main_app, ['enable'] + list(flagset))
+--- a/tests/test_jupyterhub.py
++++ b/tests/test_jupyterhub.py
+@@ -13,7 +13,7 @@ import time
+ from subprocess import PIPE, STDOUT, Popen
+ 
+ from jupyter_contrib_core.testing_utils import get_logger
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest
+ from selenium.webdriver.support.ui import WebDriverWait
+ from tornado import gen
+ from tornado.ioloop import IOLoop
+--- a/tests/test_nbextensions_configurator.py
++++ b/tests/test_nbextensions_configurator.py
+@@ -10,10 +10,10 @@ import random
+ import shutil
+ import time
+ 
+-import nose.tools as nt
++import pytest
+ import yaml
+ from jupyter_contrib_core.notebook_compat.nbextensions import _get_config_dir
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest
+ from notebook.services.config import ConfigManager
+ from notebook.utils import url_path_join
+ from selenium.common.exceptions import NoSuchElementException
+@@ -48,21 +48,21 @@ class ConfiguratorTest(SeleniumNbextensi
+         self.driver.get(self.nbext_configurator_url)
+ 
+     def test_01_page_title(self):
+-        nt.assert_in('extension', self.driver.title.lower())
+-        nt.assert_in('configuration', self.driver.title.lower())
++        assert 'extension' in self.driver.title.lower()
++        assert 'configuration' in self.driver.title.lower()
+ 
+     def test_02_body_data_attribute(self):
+         nbext_list = self.driver.execute_script('return window.extension_list')
+         # we no longer embed the list into the page
+-        nt.assert_is_none(nbext_list)
++        assert nbext_list is None
+ 
+     def test_03_extension_ui_presence(self):
+         self.wait_for_selector(
+             '.nbext-ext-row', 'an nbextension ui should load')
+         enable_links = self.driver.find_elements_by_css_selector(
+             '.nbext-selector')
+-        nt.assert_greater(
+-            len(enable_links), 0, 'some nbextensions should have enable links')
++        assert len(enable_links) > 0, \
++            'some nbextensions should have enable links'
+ 
+     def test_04_readme_rendering(self):
+         # load an nbextension UI whose readme contains an image to render
+@@ -103,7 +103,7 @@ class ConfiguratorTest(SeleniumNbextensi
+             'tree', 'nbextensions_configurator/tree_tab/main',
+             expected_status=False)
+         self.driver.get(self.base_url())
+-        with nt.assert_raises(AssertionError):
++        with pytest.raises(AssertionError):
+             self.wait_for_selector('#tabs a[href$=nbextensions_configurator]')
+ 
+     def test_09_no_unconfigurable_yet(self):
+@@ -111,9 +111,8 @@ class ConfiguratorTest(SeleniumNbextensi
+         self.wait_for_selector(
+             '.nbext-ext-row', 'an nbextension ui should load')
+         selector = self.driver.find_element_by_css_selector('.nbext-selector')
+-        nt.assert_not_in(
+-            'daemon', selector.text,
+-            'There should be no daemons in the selector yet')
++        assert 'daemon' not in selector.text, \
++            'There should be no daemons in the selector yet'
+ 
+     def test_10_refresh_list(self):
+         # 'enable' a fake nbextension
+@@ -123,9 +122,8 @@ class ConfiguratorTest(SeleniumNbextensi
+         self.wait_for_selector('.nbext-button-refreshlist').click()
+         self.wait_for_partial_link_text(require)
+         selector = self.driver.find_element_by_css_selector('.nbext-selector')
+-        nt.assert_in(
+-            'daemon', selector.text,
+-            'There should now be a daemon in the selector')
++        assert 'daemon' in selector.text, \
++            'There should now be a daemon in the selector'
+ 
+     def test_11_allow_configuring_incompatibles(self):
+         require = 'balrog/daemon'
+@@ -146,15 +144,15 @@ class ConfiguratorTest(SeleniumNbextensi
+         # wait a second for the other nbextension ui to hide
+         time.sleep(1)
+         # there should be no forget button visible yet
+-        with nt.assert_raises(NoSuchElementException):
++        with pytest.raises(NoSuchElementException):
+             self.driver.find_element_by_css_selector(sel_forget)
+         # disable balrog
+         self.wait_for_selector(sel_disable)
+         visible_disablers = [
+             el for el in self.driver.find_elements_by_css_selector(sel_disable)
+             if el.is_displayed()]
+-        nt.assert_equal(1, len(visible_disablers),
+-                        'Only one disable button should be visible')
++        assert 1 == len(visible_disablers), \
++            'Only one disable button should be visible'
+         visible_disablers[0].click()
+         # now forget it
+         self.wait_for_selector(sel_forget, 'A forget button should display')
+@@ -168,15 +166,13 @@ class ConfiguratorTest(SeleniumNbextensi
+         time.sleep(1)
+         conf = self.get_config_manager().get(section)
+         stat = conf.get('load_extensions', {}).get(require)
+-        nt.assert_is_none(
+-            stat, '{} should not have a load_extensions entry'.format(require))
++        assert stat is None, '{} should not have a load_extensions entry'.format(require)
+         # and should no longer show in the list
+         self.wait_for_selector(
+             '.nbext-selector nav ul li', 'some nbextensions should show')
+         nbext_sel = self.driver.find_element_by_css_selector('.nbext-selector')
+-        nt.assert_not_in(
+-            'daemon', nbext_sel.text,
+-            'There should no longer be a daemon in the selector')
++        assert 'daemon' not in nbext_sel.text, \
++            'There should no longer be a daemon in the selector'
+ 
+     def test_13_duplicate_paths(self):
+         if getattr(self, 'notebook', None) is None:
+@@ -184,7 +180,7 @@ class ConfiguratorTest(SeleniumNbextensi
+ 
+         # duplicate the dodgy/test entry on path
+         saved = list(self.notebook.web_app.settings['nbextensions_path'])
+-        nt.assert_in(self.jupyter_dirs['dodgy']['nbexts'], saved)
++        assert self.jupyter_dirs['dodgy']['nbexts'] in saved
+         self.notebook.web_app.settings['nbextensions_path'].append(
+             self.jupyter_dirs['dodgy']['nbexts'])
+         try:
+@@ -196,9 +192,9 @@ class ConfiguratorTest(SeleniumNbextensi
+ //ancestor::div[
+     contains(concat(" ", normalize-space(@class), " "), " nbext-ext-row ")
+ ]''')
+-            with nt.assert_raises(NoSuchElementException):
++            with pytest.raises(NoSuchElementException):
+                 dummy.find_element_by_css_selector('.alert-warning')
+-            with nt.assert_raises(NoSuchElementException):
++            with pytest.raises(NoSuchElementException):
+                 dummy.find_element_by_xpath(
+                     './*[contains(text(),"different yaml files")]')
+         finally:
+@@ -236,11 +232,12 @@ class ConfiguratorTest(SeleniumNbextensi
+             if (require in enabled) == expected_status:
+                 break
+             time.sleep(check_period)
+-        assert_func = (
+-            nt.assert_in if expected_status else nt.assert_not_in)
+-        assert_func(require, enabled,
+-                    'nbxtension should {}be in enabled list'.format(
+-                        '' if expected_status else 'not '))
++        if expected_status:
++            assert require in enabled, \
++                'nbxtension should be in enabled list'
++        else:
++            assert require not in enabled, \
++                'nbxtension should not be in enabled list'
+ 
+     @classmethod
+     def add_test_yaml_files(cls):
+@@ -281,8 +278,8 @@ class ConfiguratorTest(SeleniumNbextensi
+         }
+         for fname, yaml_obj in test_yamls.items():
+             if fname != 'dummy':
+-                nt.assert_not_is_instance(
+-                    jupyter_nbextensions_configurator._process_nbextension_spec(yaml_obj),  # noqa: E501
++                assert not isinstance(
++                    jupyter_nbextensions_configurator._process_nbextension_spec(yaml_obj),
+                     dict)
+             yaml_path = os.path.join(dodgy_nbext_dir_path, fname + '.yaml')
+             with io.open(yaml_path, 'w') as f:
+--- a/setup.py
++++ b/setup.py
+@@ -53,7 +53,6 @@ options.
+         extras_require={
+             'test': [
+                 'jupyter_contrib_core[testing_utils]',
+-                'nose',
+                 'requests',
+                 'selenium',
+             ],
+--- a/tests/nbextensions_test_base.py
++++ b/tests/nbextensions_test_base.py
+@@ -14,7 +14,7 @@ from jupyter_contrib_core.testing_utils
+     GlobalMemoryHandler, get_wrapped_logger, wrap_logger_handlers,
+ )
+ from jupyter_contrib_core.testing_utils.jupyter_env import patch_jupyter_dirs
+-from nose.plugins.skip import SkipTest
++from unittest import SkipTest
+ from notebook.notebookapp import NotebookApp
+ from notebook.tests.launchnotebook import NotebookTestBase
+ from tornado.ioloop import IOLoop

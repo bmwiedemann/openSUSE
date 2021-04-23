@@ -1,0 +1,10 @@
+<package name="glassfish-hk2" project="openSUSE:Factory">
+  <title>Hundred Kilobytes Kernel</title>
+  <description>HK2 for Hundred Kilobytes Kernel is an abstraction to
+a module subsystem coupled with a simple yet powerful
+component model to build server side software.
+
+</description>
+  <devel project="Java:packages" package="glassfish-hk2"/>
+  <url>http://hk2.java.net/</url>
+</package>

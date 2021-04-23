@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>21cf969234f98dc123a6010b3a29fb99</srcmd5>
+    <version>0.1.4.2</version>
+    <time>1599506683</time>
+    <user>dimstar_suse</user>
+    <comment>initial submission</comment>
+    <requestid>832218</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0a3cebef86b4f9c502958fd11d2af5e0</srcmd5>
+    <version>0.1.4.2</version>
+    <time>1608633572</time>
+    <user>dimstar_suse</user>
+    <comment>update haskell stack in openSUS</comment>
+    <requestid>857360</requestid>
+  </revision>
+</revisionlist>

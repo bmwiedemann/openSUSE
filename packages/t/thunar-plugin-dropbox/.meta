@@ -1,0 +1,10 @@
+<package name="thunar-plugin-dropbox" project="openSUSE:Factory">
+  <title>Thunar Plugin That Adds Context-menu Items from Dropbox</title>
+  <description>Thunar Dropbox is a plugin for thunar that adds context-menu items from
+dropbox. This plugin does not come with dropbox itself, you will need
+to install that separately.
+
+</description>
+  <devel project="X11:xfce" package="thunar-plugin-dropbox"/>
+  <url>http://softwarebakery.com/maato/thunar-dropbox.html</url>
+</package>

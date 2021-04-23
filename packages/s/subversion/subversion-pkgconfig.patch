@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -91,7 +91,7 @@ swig_rbdir = $(SWIG_RB_SITE_ARCH_DIR)/sv
+ toolsdir = @bindir@/svn-tools
+ 
+ # where to install pkg-config files
+-pkgconfig_dir = $(datadir)/pkgconfig
++pkgconfig_dir = $(libdir)/pkgconfig
+ 
+ javahl_javadir = @libdir@/svn-javahl
+ javahl_javahdir = @libdir@/svn-javahl/include

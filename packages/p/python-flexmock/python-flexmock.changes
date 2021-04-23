@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Thu Mar 28 14:27:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.10.4:
+  - drop Python 2.6, 3.3 and Jython support
+  - add Python 3.6 and 3.7 support
+  - don't hide exception when flexmock is used as context manager
+  - fix expectation reset for static methods on pypy 2
+  - ensure original exception isn't suppressed in pytest hook
+
+-------------------------------------------------------------------
+Tue Mar 12 15:40:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.10.3:
+  - fix compatibility with py.test 4.1
+  - minor documentation fixes
+
+-------------------------------------------------------------------
+Wed Dec  5 01:06:27 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim bias from description.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:48:08 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Thu Sep  7 20:06:59 UTC 2017 - toddrme2178@gmail.com
+
+- Implement single-spec version.
+
+-------------------------------------------------------------------
+Thu Oct 13 10:22:24 UTC 2016 - alarrosa@suse.com
+
+- Initial package 
+- Official upstream release 0.10.2
+

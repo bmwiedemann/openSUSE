@@ -1,0 +1,13 @@
+[Unit]
+Description=NTalk Server
+Documentation=man:ntalkd(8) man:talk(1)
+
+[Service]
+User=nobody
+Group=tty
+ExecStart=/usr/sbin/in.ntalkd
+StandardInput=socket
+
+[Install]
+Also=ntalk.socket
+Alias=talk.service

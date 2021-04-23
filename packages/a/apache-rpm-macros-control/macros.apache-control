@@ -1,0 +1,68 @@
+# flag pattern: %%{apache_restart_flag}        restart all
+#               %%{apache_restart_flag}@       restart apache2.service
+#               %%{apache_restarT_flag}@<name> restart apache2@<name>.service
+%apache_restart_flag /var/run/httpd.restart.flag
+
+#
+# macro: apache_module_request_restart -- request restart of the apache
+#        instance(s) after rpm or zypper transaction
+#
+#        usage: apache_request_restart [-m module]
+#
+#        module: restart every instance for which a2enmod -q <module> is true; if
+#                no module specified, request restart of all instances
+#
+%apache_request_restart(m:) \
+  if [ -x /usr/bin/systemctl ]; then \
+    MODULE=%{-m:%{-m*}} \
+    if [ -z "$MODULE" ]; then \
+      # restart all instances \
+      touch %{apache_restart_flag} \
+      echo 'Requesting apache restart (all instances)' \
+    else \
+      running_units=$(systemctl list-units | grep 'apache2\\(@.*\\)\\?.service' | sed 's:\\(\\.service\\).*:\\1:') \
+      for unit in $running_units; do \
+        instance_name=$(echo $unit | sed 's:apache2@\\?\\(.*\\).service:\\1:') \
+        if HTTPD_INSTANCE="$instance_name" a2enmod -q $MODULE; then \
+          # restart only specified instance, %%{apache_restart_flag}@ \
+          # means _only_ apache2.service \
+          echo "$instance_name" > %{apache_restart_flag}@$instance_name \
+          echo "Requesting apache restart ($instance_name instance)" \
+        fi \
+      done \
+    fi \
+  fi \
+  %nil
+#
+# macro: apache_module_restart_if_needed 
+#
+#
+%apache_restart_if_needed() \
+  if [ -x /usr/bin/systemctl ]; then \
+    if [ -e %{apache_restart_flag} ]; then \
+      /usr/bin/systemctl daemon-reload > /dev/null 2>&1 || : \
+      /usr/bin/systemctl restart apache2.target > /dev/null 2>&1 || : \
+      echo 'Restarting apache (all instances)' \
+      # all instances was restarted, removing all flags \
+      rm %{apache_restart_flag}* \
+    else \
+      /usr/bin/systemctl daemon-reload > /dev/null 2>&1 || : \
+      for flag in %{apache_restart_flag}@*; do \
+        if [ ! -e $flag ]; then \
+          # %%{apache_restart_flag}@* have not matched anything \
+          break \
+        fi \
+        instance_name=$(cat $flag) \
+        if [ -z "$instance_name" ]; then \
+          instance_suffix="" \
+        else \
+          instance_suffix="@$instance_name" \
+        fi \
+        echo "Restarting apache ($instance_name instance)" \
+        /usr/bin/systemctl restart apache2${instance_suffix}.service > /dev/null 2>&1 || : \
+        rm %{apache_restart_flag}@$instance_name \
+      done \
+    fi \
+  fi \
+  %nil
+

@@ -1,0 +1,37 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1b269769d73b91c7b4f65707ccc342cb</srcmd5>
+    <version>1.5.1</version>
+    <time>1430113607</time>
+    <user>coolo</user>
+    <comment>New package</comment>
+    <requestid>297193</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>59fdb7488a7f19779fe0ae46b069d38f</srcmd5>
+    <version>1.6.0</version>
+    <time>1449687126</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.0
+  * Web dashboard added.
+  * see CHANGES for detailed list of changes</comment>
+    <requestid>347658</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>19a85ff660f768981fa69799faa154d4</srcmd5>
+    <version>1.6.0</version>
+    <time>1489415626</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building for Factory</comment>
+    <requestid>478942</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>071065d20b5ebff0fe937aa40ce54697</srcmd5>
+    <version>1.7.0</version>
+    <time>1529402557</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 1.7.0:
+  * see CHANGELOG.md for detailed list of changes</comment>
+    <requestid>617025</requestid>
+  </revision>
+</revisionlist>

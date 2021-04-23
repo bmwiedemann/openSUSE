@@ -1,0 +1,19 @@
+Index: pytest-aiofiles-0.2.0/tests/test_plugin.py
+===================================================================
+--- pytest-aiofiles-0.2.0.orig/tests/test_plugin.py
++++ pytest-aiofiles-0.2.0/tests/test_plugin.py
+@@ -2,7 +2,13 @@ from io import BufferedReader
+ 
+ import aiofiles
+ from aiofiles import base, threadpool
+-from asynctest import mock
++import sys
++if sys.version < "3.8":
++   # asynctest only supports older pythons
++   from asynctest import mock
++else:
++   # Python 3.8 and later can mock.patch async functions
++   from unittest import mock
+ from pyfakefs import fake_filesystem
+ import pytest
+ 

@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>25e3178a6b1308dc7c39ed4ba5e0579d</srcmd5>
+    <version>20201215</version>
+    <time>1608317961</time>
+    <user>dimstar_suse</user>
+    <comment>Add selinux-targeted-setup package</comment>
+    <requestid>856711</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>258151f9ff48003bcedc7ae343cbada0</srcmd5>
+    <version>20201215</version>
+    <time>1612901862</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>870628</requestid>
+  </revision>
+</revisionlist>

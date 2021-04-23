@@ -1,0 +1,135 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>206a04b0ccd40e2a679dd45558695abe</srcmd5>
+    <version>0.10.0</version>
+    <time>1503593498</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>516551</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>451427ebfa43bafd25fba5984c5dc92d</srcmd5>
+    <version>0.11.0</version>
+    <time>1522832844</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>593208</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>792a6235722a0a43605a3de05a517737</srcmd5>
+    <version>0.11.0</version>
+    <time>1530191600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>619370</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f9ac1b32d2757ebfc60758ada80bbdc9</srcmd5>
+    <version>0.12.0</version>
+    <time>1530653617</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>620227</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ef175a0fd0ed8cf155f582031ad342ee</srcmd5>
+    <version>0.12.1</version>
+    <time>1548335736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>668189</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f5c2e53b5046c7c7a750a70210085c3b</srcmd5>
+    <version>0.12.1</version>
+    <time>1558690386</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705074</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4c7371520c48cd6b5d8f657b2b7b6933</srcmd5>
+    <version>0.12.2</version>
+    <time>1559029415</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>705704</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ad1854c93f10d0c8c44a506e9b48feb3</srcmd5>
+    <version>0.12.3</version>
+    <time>1575727836</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>754868</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f5b9c8710d23df46457d8ec23fde5182</srcmd5>
+    <version>0.12.3</version>
+    <time>1578502638</time>
+    <user>dimstar_suse</user>
+    <comment>fixes boo#1159777</comment>
+    <requestid>761860</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>cc982eea3e170ce93a9c873f53f95758</srcmd5>
+    <version>0.12.3</version>
+    <time>1582643267</time>
+    <user>dimstar_suse</user>
+    <comment>- Added v4l2loopback-dont_use_timeval.patch and
+  v4l2loopback-drop_cast_to_time_t.patch (fix boo#1164757)
+</comment>
+    <requestid>779016</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>34f8fd9d37bf1125a914968b8cb2f721</srcmd5>
+    <version>0.12.4</version>
+    <time>1586555604</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792806</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ce4752a041d08a6e2a3d190dabe3973d</srcmd5>
+    <version>0.12.5</version>
+    <time>1587467166</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>795581</requestid>
+  </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c9dba7daf41abf1e351ef4b627ae401e</srcmd5>
+    <version>0.12.5</version>
+    <time>1594706245</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>820045</requestid>
+  </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>aaf7b3b0ae2325947a1990628ae3b417</srcmd5>
+    <version>0.12.5</version>
+    <time>1608733689</time>
+    <user>dimstar_suse</user>
+    <comment>- add -autoload subpackages that provides the configuration files
+  to autoload the driver on startup
+</comment>
+    <requestid>856499</requestid>
+  </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>6d98c7297d3b0d4e649963265ab311ff</srcmd5>
+    <version>0.12.5</version>
+    <time>1612378540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>868677</requestid>
+  </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>41312bfeebd96b459675049fb21a1147</srcmd5>
+    <version>0.12.5</version>
+    <time>1613044157</time>
+    <user>dimstar_suse</user>
+    <comment>- Add undefined macros when building on older distributions
+</comment>
+    <requestid>871164</requestid>
+  </revision>
+</revisionlist>

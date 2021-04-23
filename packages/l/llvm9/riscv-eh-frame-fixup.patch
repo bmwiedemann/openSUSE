@@ -1,0 +1,298 @@
+commit 7cb3cd34e8d
+Author: Alex Bradbury <asb@lowrisc.org>
+Date:   Tue Aug 20 12:32:31 2019 +0000
+
+    [RISCV] Implement getExprForFDESymbol to ensure RISCV_32_PCREL is used for the FDE location
+    
+    Follow binutils in using RISCV_32_PCREL for the FDE initial location. As
+    explained in the relevant binutils commit
+    <https://github.com/riscv/riscv-binutils-gdb/commit/a6cbf936e3dce68114d28cdf60d510a3f78a6d40>,
+    the ADD/SUB pair of relocations is problematic in the presence of linker
+    relaxation.
+    
+    This patch has the same end goal as D64715 but includes test changes and
+    avoids adding a new global VariantKind to MCExpr.h (preferring
+    RISCVMCExpr VKs like the rest of the RISC-V backend).
+    
+    Differential Revision: https://reviews.llvm.org/D66419
+    
+    llvm-svn: 369375
+
+commit 1c1f8f215d8
+Author: Alex Bradbury <asb@lowrisc.org>
+Date:   Mon Aug 19 13:23:02 2019 +0000
+
+    [RISCV] Don't force absolute FK_Data_X fixups to relocs
+    
+    The current behavior of shouldForceRelocation forces relocations for the
+    majority of fixups when relaxation is enabled. This makes sense for
+    fixups which incorporate symbols but is unnecessary for simple data
+    fixups where the fixup target is already resolved to an absolute value.
+    
+    Differential Revision: https://reviews.llvm.org/D63404
+    Patch by Edward Jones.
+    
+    llvm-svn: 369257
+
+commit 49a99788393
+Author: Hsiangkai Wang <hsiangkai@gmail.com>
+Date:   Fri Jul 19 06:10:36 2019 +0000
+
+    [DebugInfo] Some fields do not need relocations even relax is enabled.
+    
+    In debug frame information, some fields, e.g., Length in CIE/FDE and
+    Offset in FDE are attributes to describe the structure of CIE/FDE. They
+    are not related to the relaxed code. However, these attributes are
+    symbol differences. So, in current design, these attributes will be
+    filled as zero and LLVM generates relocations for them.
+    
+    We only need to generate relocations for symbols in executable sections.
+    So, if the symbols are not located in executable sections, we still
+    evaluate their values under relaxation.
+    
+    Differential Revision: https://reviews.llvm.org/D61584
+    
+    llvm-svn: 366531
+
+Index: llvm-9.0.1.src/lib/MC/MCExpr.cpp
+===================================================================
+--- llvm-9.0.1.src.orig/lib/MC/MCExpr.cpp
++++ llvm-9.0.1.src/lib/MC/MCExpr.cpp
+@@ -577,6 +577,24 @@ static void AttemptToFoldSymbolOffsetDif
+   A = B = nullptr;
+ }
+ 
++static bool canFold(const MCAssembler *Asm, const MCSymbolRefExpr *A,
++                    const MCSymbolRefExpr *B, bool InSet) {
++  if (InSet)
++    return true;
++
++  if (!Asm->getBackend().requiresDiffExpressionRelocations())
++    return true;
++
++  const MCSymbol &CheckSym = A ? A->getSymbol() : B->getSymbol();
++  if (!CheckSym.isInSection())
++    return true;
++
++  if (!CheckSym.getSection().hasInstructions())
++    return true;
++
++  return false;
++}
++
+ /// Evaluate the result of an add between (conceptually) two MCValues.
+ ///
+ /// This routine conceptually attempts to construct an MCValue:
+@@ -617,8 +635,7 @@ EvaluateSymbolicAdd(const MCAssembler *A
+   // the backend requires this to be emitted as individual relocations, unless
+   // the InSet flag is set to get the current difference anyway (used for
+   // example to calculate symbol sizes).
+-  if (Asm &&
+-      (InSet || !Asm->getBackend().requiresDiffExpressionRelocations())) {
++  if (Asm && canFold(Asm, LHS_A, LHS_B, InSet)) {
+     // First, fold out any differences which are fully resolved. By
+     // reassociating terms in
+     //   Result = (LHS_A - LHS_B + LHS_Cst) + (RHS_A - RHS_B + RHS_Cst).
+Index: llvm-9.0.1.src/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.cpp
+===================================================================
+--- llvm-9.0.1.src.orig/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.cpp
++++ llvm-9.0.1.src/lib/Target/RISCV/MCTargetDesc/RISCVAsmBackend.cpp
+@@ -33,6 +33,13 @@ bool RISCVAsmBackend::shouldForceRelocat
+   switch ((unsigned)Fixup.getKind()) {
+   default:
+     break;
++  case FK_Data_1:
++  case FK_Data_2:
++  case FK_Data_4:
++  case FK_Data_8:
++    if (Target.isAbsolute())
++      return false;
++    break;
+   case RISCV::fixup_riscv_got_hi20:
+   case RISCV::fixup_riscv_tls_got_hi20:
+   case RISCV::fixup_riscv_tls_gd_hi20:
+Index: llvm-9.0.1.src/lib/Target/RISCV/MCTargetDesc/RISCVELFObjectWriter.cpp
+===================================================================
+--- llvm-9.0.1.src.orig/lib/Target/RISCV/MCTargetDesc/RISCVELFObjectWriter.cpp
++++ llvm-9.0.1.src/lib/Target/RISCV/MCTargetDesc/RISCVELFObjectWriter.cpp
+@@ -7,6 +7,7 @@
+ //===----------------------------------------------------------------------===//
+ 
+ #include "MCTargetDesc/RISCVFixupKinds.h"
++#include "MCTargetDesc/RISCVMCExpr.h"
+ #include "MCTargetDesc/RISCVMCTargetDesc.h"
+ #include "llvm/MC/MCELFObjectWriter.h"
+ #include "llvm/MC/MCFixup.h"
+@@ -47,6 +48,7 @@ unsigned RISCVELFObjectWriter::getRelocT
+                                             const MCValue &Target,
+                                             const MCFixup &Fixup,
+                                             bool IsPCRel) const {
++  const MCExpr *Expr = Fixup.getValue();
+   // Determine the type of the relocation
+   unsigned Kind = Fixup.getKind();
+   if (IsPCRel) {
+@@ -87,6 +89,9 @@ unsigned RISCVELFObjectWriter::getRelocT
+   default:
+     llvm_unreachable("invalid fixup kind!");
+   case FK_Data_4:
++    if (Expr->getKind() == MCExpr::Target &&
++        cast<RISCVMCExpr>(Expr)->getKind() == RISCVMCExpr::VK_RISCV_32_PCREL)
++      return ELF::R_RISCV_32_PCREL;
+     return ELF::R_RISCV_32;
+   case FK_Data_8:
+     return ELF::R_RISCV_64;
+Index: llvm-9.0.1.src/lib/Target/RISCV/MCTargetDesc/RISCVMCAsmInfo.cpp
+===================================================================
+--- llvm-9.0.1.src.orig/lib/Target/RISCV/MCTargetDesc/RISCVMCAsmInfo.cpp
++++ llvm-9.0.1.src/lib/Target/RISCV/MCTargetDesc/RISCVMCAsmInfo.cpp
+@@ -11,7 +11,10 @@
+ //===----------------------------------------------------------------------===//
+ 
+ #include "RISCVMCAsmInfo.h"
++#include "MCTargetDesc/RISCVMCExpr.h"
+ #include "llvm/ADT/Triple.h"
++#include "llvm/BinaryFormat/Dwarf.h"
++#include "llvm/MC/MCStreamer.h"
+ using namespace llvm;
+ 
+ void RISCVMCAsmInfo::anchor() {}
+@@ -25,3 +28,20 @@ RISCVMCAsmInfo::RISCVMCAsmInfo(const Tri
+   Data16bitsDirective = "\t.half\t";
+   Data32bitsDirective = "\t.word\t";
+ }
++
++const MCExpr *RISCVMCAsmInfo::getExprForFDESymbol(const MCSymbol *Sym,
++                                                  unsigned Encoding,
++                                                  MCStreamer &Streamer) const {
++  if (!(Encoding & dwarf::DW_EH_PE_pcrel))
++    return MCAsmInfo::getExprForFDESymbol(Sym, Encoding, Streamer);
++
++  // The default symbol subtraction results in an ADD/SUB relocation pair.
++  // Processing this relocation pair is problematic when linker relaxation is
++  // enabled, so we follow binutils in using the R_RISCV_32_PCREL relocation
++  // for the FDE initial location.
++  MCContext &Ctx = Streamer.getContext();
++  const MCExpr *ME =
++      MCSymbolRefExpr::create(Sym, MCSymbolRefExpr::VK_None, Ctx);
++  assert(Encoding & dwarf::DW_EH_PE_sdata4 && "Unexpected encoding");
++  return RISCVMCExpr::create(ME, RISCVMCExpr::VK_RISCV_32_PCREL, Ctx);
++}
+Index: llvm-9.0.1.src/lib/Target/RISCV/MCTargetDesc/RISCVMCAsmInfo.h
+===================================================================
+--- llvm-9.0.1.src.orig/lib/Target/RISCV/MCTargetDesc/RISCVMCAsmInfo.h
++++ llvm-9.0.1.src/lib/Target/RISCV/MCTargetDesc/RISCVMCAsmInfo.h
+@@ -23,6 +23,9 @@ class RISCVMCAsmInfo : public MCAsmInfoE
+ 
+ public:
+   explicit RISCVMCAsmInfo(const Triple &TargetTriple);
++
++  const MCExpr *getExprForFDESymbol(const MCSymbol *Sym, unsigned Encoding,
++                                    MCStreamer &Streamer) const override;
+ };
+ 
+ } // namespace llvm
+Index: llvm-9.0.1.src/lib/Target/RISCV/MCTargetDesc/RISCVMCCodeEmitter.cpp
+===================================================================
+--- llvm-9.0.1.src.orig/lib/Target/RISCV/MCTargetDesc/RISCVMCCodeEmitter.cpp
++++ llvm-9.0.1.src/lib/Target/RISCV/MCTargetDesc/RISCVMCCodeEmitter.cpp
+@@ -266,6 +266,7 @@ unsigned RISCVMCCodeEmitter::getImmOpVal
+     switch (RVExpr->getKind()) {
+     case RISCVMCExpr::VK_RISCV_None:
+     case RISCVMCExpr::VK_RISCV_Invalid:
++    case RISCVMCExpr::VK_RISCV_32_PCREL:
+       llvm_unreachable("Unhandled fixup kind!");
+     case RISCVMCExpr::VK_RISCV_TPREL_ADD:
+       // tprel_add is only used to indicate that a relocation should be emitted
+Index: llvm-9.0.1.src/lib/Target/RISCV/MCTargetDesc/RISCVMCExpr.h
+===================================================================
+--- llvm-9.0.1.src.orig/lib/Target/RISCV/MCTargetDesc/RISCVMCExpr.h
++++ llvm-9.0.1.src/lib/Target/RISCV/MCTargetDesc/RISCVMCExpr.h
+@@ -36,6 +36,7 @@ public:
+     VK_RISCV_TLS_GD_HI,
+     VK_RISCV_CALL,
+     VK_RISCV_CALL_PLT,
++    VK_RISCV_32_PCREL,
+     VK_RISCV_Invalid
+   };
+ 
+Index: llvm-9.0.1.src/test/DebugInfo/RISCV/dwarf-riscv-relocs.ll
+===================================================================
+--- llvm-9.0.1.src.orig/test/DebugInfo/RISCV/dwarf-riscv-relocs.ll
++++ llvm-9.0.1.src/test/DebugInfo/RISCV/dwarf-riscv-relocs.ll
+@@ -6,14 +6,14 @@
+ 
+ ; Check that we actually have relocations, otherwise this is kind of pointless.
+ ; READOBJ-RELOCS:  Section (8) .rela.debug_info {
+-; READOBJ-RELOCS-NEXT:    0x0 R_RISCV_ADD32 - 0x0
+-; READOBJ-RELOCS-NEXT:    0x0 R_RISCV_SUB32 - 0x0
+-; READOBJ-RELOCS:  Section (11) .rela.debug_addr {
+-; READOBJ-RELOCS-NEXT:    0x0 R_RISCV_ADD32 - 0x0
+-; READOBJ-RELOCS-NEXT:    0x0 R_RISCV_SUB32 - 0x0
++; READOBJ-RELOCS:    0x1B R_RISCV_ADD32 - 0x0
++; READOBJ-RELOCS-NEXT:    0x1B R_RISCV_SUB32 - 0x0
++; READOBJ-RELOCS:  Section (15) .rela.debug_frame {
++; READOBJ-RELOCS:    0x20 R_RISCV_ADD32 - 0x0
++; READOBJ-RELOCS-NEXT:    0x20 R_RISCV_SUB32 - 0x0
+ ; READOBJ-RELOCS:  Section (17) .rela.debug_line {
+-; READOBJ-RELOCS-NEXT:    0x0 R_RISCV_ADD32 - 0xFFFFFFFC
+-; READOBJ-RELOCS-NEXT:    0x0 R_RISCV_SUB32 .Lline_table_start0 0x0
++; READOBJ-RELOCS:    0x5A R_RISCV_ADD16 - 0x0
++; READOBJ-RELOCS-NEXT:    0x5A R_RISCV_SUB16 - 0x0
+ 
+ ; Check that we can print the source, even with relocations.
+ ; OBJDUMP-SOURCE: Disassembly of section .text:
+Index: llvm-9.0.1.src/test/MC/RISCV/fde-reloc.s
+===================================================================
+--- llvm-9.0.1.src.orig/test/MC/RISCV/fde-reloc.s
++++ llvm-9.0.1.src/test/MC/RISCV/fde-reloc.s
+@@ -8,20 +8,8 @@ func:
+   ret
+ 	.cfi_endproc
+ 
+-# TODO: Should produce R_RISCV_32_PCREL for the FDE pc relocation. Many of the
+-# ADD32/SUB32 relocations also can be safely resolved even with linker
+-# relaxation enabled. This test is written to capture current behaviour, in
+-# preparation for follow-on patches to fix it.
+-
+ # RELAX-RELOC:   Section (4) .rela.eh_frame {
+-# RELAX-RELOC-NEXT:   0x0 R_RISCV_ADD32 - 0xFFFFFFFC
+-# RELAX-RELOC-NEXT:   0x0 R_RISCV_SUB32 - 0x0
+-# RELAX-RELOC-NEXT:   0x14 R_RISCV_ADD32 - 0x0
+-# RELAX-RELOC-NEXT:   0x14 R_RISCV_SUB32 - 0x0
+-# RELAX-RELOC-NEXT:   0x18 R_RISCV_ADD32 - 0x0
+-# RELAX-RELOC-NEXT:   0x18 R_RISCV_SUB32 - 0x0
+-# RELAX-RELOC-NEXT:   0x1C R_RISCV_ADD32 - 0x0
+-# RELAX-RELOC-NEXT:   0x1C R_RISCV_SUB32 - 0x0
++# RELAX-RELOC-NEXT:   0x1C R_RISCV_32_PCREL - 0x0
+ # RELAX-RELOC-NEXT:   0x20 R_RISCV_ADD32 - 0x0
+ # RELAX-RELOC-NEXT:   0x20 R_RISCV_SUB32 - 0x0
+ # RELAX-RELOC-NEXT: }
+Index: llvm-9.0.1.src/test/MC/RISCV/linker-relaxation.s
+===================================================================
+--- llvm-9.0.1.src.orig/test/MC/RISCV/linker-relaxation.s
++++ llvm-9.0.1.src/test/MC/RISCV/linker-relaxation.s
+@@ -136,3 +136,24 @@ sb t1, %pcrel_lo(2b)(a2)
+ # RELAX-RELOC: R_RISCV_RELAX - 0x0
+ # RELAX-FIXUP: fixup A - offset: 0, value: %pcrel_lo(.Ltmp1), kind: fixup_riscv_pcrel_lo12_s
+ # RELAX-FIXUP: fixup B - offset: 0, value: 0, kind: fixup_riscv_relax
++
++# Check that a relocation is not emitted for a symbol difference which has
++# been folded to a fixup with an absolute value. This can happen when a
++# difference expression refers to two symbols, at least one of which is
++# not defined at the point it is referenced. Then during *assembler*
++# relaxation when both symbols have become defined the difference may be folded
++# down to a fixup simply containing the absolute value. We want to ensure that
++# we don't force a relocation to be emitted for this absolute value even
++# when linker relaxation is enabled. The reason for this is that one instance
++# where this pattern appears in in the .eh_frame section (the CIE 'length'
++# field), and the .eh_frame section cannot be parsed by the linker unless the
++# fixup has been resolved to a concrete value instead of a relocation.
++  .data
++lo:
++  .word hi-lo
++  .quad hi-lo
++# NORELAX-RELOC-NOT: R_RISCV_32
++# NORELAX-RELOC-NOT: R_RISCV_64
++# RELAX-RELOC-NOT: R_RISCV_32
++# RELAX-RELOC-NOT: R_RISCV_64
++hi:

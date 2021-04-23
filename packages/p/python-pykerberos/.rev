@@ -1,0 +1,58 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63dd628d3b797ef0842bacefaaa63b6f</srcmd5>
+    <version>1.1.10</version>
+    <time>1458228877</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>371364</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a2049af2e4269a058f6e7836d348678c</srcmd5>
+    <version>1.1.13</version>
+    <time>1475054994</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>424240</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>de5361fa683a7183246ac930c90357c3</srcmd5>
+    <version>1.1.14</version>
+    <time>1503393074</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.14
+- convert to singlespec (forwarded request 518028 from tbechtold)</comment>
+    <requestid>518029</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>748bb0629b124bde03a204ffa676684a</srcmd5>
+    <version>1.1.14</version>
+    <time>1518281840</time>
+    <user>dimstar_suse</user>
+    <comment>- remove explicit krb5 requires, this is in conflict with
+  krb5-mini, which causes depending packages to build-fail</comment>
+    <requestid>558763</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d493c81928742a4a33fd497cb8133365</srcmd5>
+    <version>1.2.1</version>
+    <time>1549361946</time>
+    <user>coolo</user>
+    <comment>- update to 1.2.1:
+  * add crusty CMake support
+  * minor change to CBT struct
+  * get build working on OSX again
+  * changes based on upstream PR
+  * add CHANGELOG with entries for 1.2.1.beta1
+  * add winrm-style IOV encryption support
+  * bump repo version to 1.2.1dev
+  * Removing 3.2 from travis b/c it is no longer fully supported
+  * Added method to build the CBT structure and modified authGSSClientStep
+    to pass along this CBT structure if it is set
+  * obviously, verify shouldn't be const
+  * 1.2.1 final release
+  * Adding life support note to README
+- Use %license macro</comment>
+    <requestid>671252</requestid>
+  </revision>
+</revisionlist>

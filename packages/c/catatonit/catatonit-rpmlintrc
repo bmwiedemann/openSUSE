@@ -1,0 +1,3 @@
+# We need catatonit to be statically linked.
+addFilter ("^catatonit.*: W: statically-linked-binary /usr/bin/catatonit")
+addFilter ("^catatonit.*: W: position-independent-executable-suggested /usr/bin/catatonit")

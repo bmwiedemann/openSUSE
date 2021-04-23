@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Sat Aug 24 20:24:49 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 1.5.4
+  * mp_exp_t replaced by mpfr_exp_t, mp_prec_t replaced by
+    mpfr_prec_t, mp_rnd_t replaced by mpfr_rnd_t GMP_RNDx
+    replaced by MPFR_RNDx.
+
+-------------------------------------------------------------------
+Fri Jan 19 00:06:44 UTC 2018 - jengelh@inai.de
+
+- Update to new upstream release 1.5.3
+  * be compatible with MPFR version 4.0.0
+- Changes introduced with 1.5.2
+  * fix documentation of comparison functions
+  * fix bug in mpfi_sub_fr
+  * new symbols MPFI_VERSION_MAJOR, MPFI_VERSION_MINOR,
+    MPFI_VERSION_PATCHLEVEL, and MPFI_VERSION_STRING in mpfi.h
+  * detect availability of mpfr_z_sub, mpfr_z_div, and mpfr_q_sub
+    and use a custom implementation for the ones not provided by
+    MPFR (mpfr_z_sub appeared in MPFR 3.1.0, the other ones are
+    used in tests only)
+  * tadd_q does no more check overflow by default (required too
+    much memory)
+  * sign of zeros choice documented
+
+-------------------------------------------------------------------
+Thu Dec 13 23:03:23 UTC 2012 - jengelh@inai.de
+
+- Initial package (version 1.5.1) for build.opensuse.org

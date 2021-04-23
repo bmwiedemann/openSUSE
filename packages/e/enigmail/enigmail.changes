@@ -1,0 +1,433 @@
+-------------------------------------------------------------------
+Wed Oct  7 09:35:29 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- enigmail 2.2.4
+  * bugfixes and improvements
+  * translation updates
+
+-------------------------------------------------------------------
+Fri Sep 25 06:35:31 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- enigmail 2.2.2
+  * Enigmail version 2.2.x is a specially modified version, which
+    only works with Thunderbird 78 and later version. Enigmail 2.2.x
+    doesn't provide the traditional functionality, rather it exists
+    to help you migrate your keys and settings to Thunderbird 78.
+
+-------------------------------------------------------------------
+Fri Sep 18 11:52:59 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enigmail 2.1.8:
+  * Fix "Encrypt to key" action destroys PGP/ MIME signature
+  * Fix Filter fails silently on Enigmail's "Encrypt to key" action
+  * Fix Disable autocrypt header on custom sender address
+  * Fix VKS keyserver with custom port cannot be accesse
+  * Fix Filter fails silently on Enigmail's "Encrypt to key" action
+  * Fix Thunderbird dies immediately when sending a signed empty-bodied mail
+  * Fix Decrypted mail has empty Content-Type in the MIME part
+
+-------------------------------------------------------------------
+Sun Jun 28 06:49:16 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enigmail 2.1.7:
+  * display information about an upcoming release of Thunderbird 78
+  * Fix minor rendering problem with Deep Dark theme
+  * Fix running "Encrypt to key" filter fails silently
+  * Fix improper Content-Type setting for keyserver upload
+
+-------------------------------------------------------------------
+Wed Apr  8 09:10:47 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enigmail 2.1.6:
+  * Fix Setup Wizard gets Stuck if Keys in GnuPG available
+  * Fix Cannot confirm publish GnuPG key on WKS server
+  * Fix Automatic Key Refresh doesn't work with keys.openpgp.org
+  * Fix per-recipients rule 'set enigmail rules for' field unable to edit
+  * Fix File names of attachments are not encrypted
+
+-------------------------------------------------------------------
+Fri Jan  3 11:46:40 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enigmail 2.1.5:
+  * Security issue: unsigned MIME parts displayed as signed boo#1159973
+  * Ensure that upgrading GnuPG 2.0.x to 2.2.x upgrade converts keyring format
+  * Make Enigmail Compatible with Protected-Headers spec, draft 2
+
+-------------------------------------------------------------------
+Sun Dec 15 11:42:00 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enigmail 2.1.4:
+  * Fixes for UI glitches
+  * Option to "Attach public key to messages" was not restored properly
+
+-------------------------------------------------------------------
+Sun Nov  3 09:10:05 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enigmail 2.1.3:
+  * fix a bug in the setup wizard that could lead the wizard to
+    never complete scanning the inbox
+
+-------------------------------------------------------------------
+Fri Sep 20 20:20:13 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- boo#1151317: SeaMonkey is no longer supported. Update description
+  and no longer put in SeaMonkey addons path
+
+-------------------------------------------------------------------
+Tue Aug 20 11:27:36 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enigmail 2.1.2:
+  * compatibility with Mozilla Thunderbird 68
+  * New simplified setup wizard
+  * Full support for keys.openpgp.org
+  * Default to ECC keys on GnuPG 2.1 or later
+  * Autocrypt: implemented key-gossip and updates to known keys
+
+-------------------------------------------------------------------
+Thu Jul 11 12:28:47 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enimail 2.0.12:
+  * set the default keyserver to keys.openpgp.org in order to
+    mitigate the SKS Keyserver Network Attack boo#1141025
+
+-------------------------------------------------------------------
+Wed May 22 20:55:11 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enigmail 2.0.11:
+  * CVE-2019-12269: Specially crafted inline PGP messages could
+    spoof a "correctly signed" message (boo#1135855)
+
+-------------------------------------------------------------------
+Fri Mar 29 12:15:23 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enigmail 2.0.10:
+  * various bug fixes for configuring and handling encrypted e-mail
+  * UI fixes for dialogs, messages, and dark Thunderbird themes
+
+-------------------------------------------------------------------
+Mon Dec 10 11:03:56 UTC 2018 - astieger@suse.com
+
+- enigmail 2.0.9, fixing one security issues:
+  * An HTTP authentication dialog maye displayed during web key
+    discovery, allowing remote attackers to possibly trick the user
+    into entering e-mail credentials (bsc#1118935)
+- other bugs fixed:
+  * pEp - PGP/MIME signed-only messages are ignored
+  * Autocrypt overrules manually created Per-Recipient Rules
+  * "Re:" prefix on subject line disappears when editing encrypted,
+    saved draft
+
+-------------------------------------------------------------------
+Sun Aug  5 10:52:29 UTC 2018 - michael@stroeder.com
+
+- enigmail 2.0.8:
+  This release addresses a security issue and
+  solves a few regression bugs.
+  * a security issue has been fixed that allows an attacker to prepare
+    a plain, unauthenticated HTML message in a way that it looks like
+    it's signed and/or encrypted (boo#1104036)
+
+-------------------------------------------------------------------
+Wed Jun 13 19:19:16 UTC 2018 - astieger@suse.com
+
+- enigmail 2.0.7:
+  * CVE-2018-12020: Mitigation against GnuPG signature spoofing:
+    Email signatures could be spoofed via an embedded "--filename"
+    parameter in OpenPGP literal data packets. This update prevents
+    this issue from being exploited if GnuPG was not updated 
+    (boo#1096745)
+  * CVE-2018-12019: The signature verification routine interpreted
+    User IDs as status/control messages and did not correctly keep
+    track of the status of multiple signatures. This allowed remote
+    attackers to spoof arbitrary email signatures via public keys
+    containing crafted primary user ids (boo#1097525)
+
+-------------------------------------------------------------------
+Fri Jun  1 08:04:05 UTC 2018 - astieger@suse.com
+
+- enigmail 2.0.6.1:
+  * fix compatibility issue with Thunderbird 60b7
+  * disallow plaintext (literal packets) outside of encrpyted
+    packets
+
+-------------------------------------------------------------------
+Sun May 27 18:03:30 UTC 2018 - astieger@suse.com
+
+- enigmail 2.0.6:
+  * Replies to a partially encrypted message may have revealed
+    protected information - no longer display PGP/MIME message
+    part followed by unencrypted data (bsc#1094781)
+  * Fix signature Spoofing via Inline-PGP in HTML Mails
+  * Fix filter actions forgetting selected mail folder names
+
+-------------------------------------------------------------------
+Tue May 22 06:01:27 UTC 2018 - astieger@suse.com
+
+- enigmail 2.0.5:
+  * Improvements on previous fixes on CVE-2017-17688, bsc#1093151
+    and CVE-2017-17689, bsc#1093152 (EFAIL):
+    - do not decrypt MIME parts unnecessarily 
+    - improve Error Message for Missing MDC 
+
+-------------------------------------------------------------------
+Wed May 16 15:07:43 UTC 2018 - astieger@suse.com
+
+- enigmail 2.0.4:
+  * CVE-2017-17688: CFB gadget attacks allowed to exfiltrate
+    plaintext out of encrypted emails. enigmail now fails on GnuPG
+    integrit check warnings for old Algorithms (EFAIL, bsc#1093151)
+  * CVE-2017-17689: CBC gadget attacks allows to exfiltrate
+    plaintext out of encrypted emails (EFAIL), bsc#1093152)
+
+-------------------------------------------------------------------
+Wed May  9 13:52:41 UTC 2018 - astieger@suse.com
+
+- enigmail 2.0.3 addresses the following issues (bsc#1092581):
+  Stability and functionality:
+  * Thunderbird may at displaying a message with an encrypted e-mail
+  * Crash from processing double encrypted PGP/MIME message
+  * Specific UI interaction sequence may prevent editing OpenPGP
+    settings 
+  * Filter might not not executed at Thunderbird startup for ne
+    message 
+  * gpg not terminated correctly when canceling "Import Key"
+  Encryption/Decryption:
+  * Saving encrypted draft leaks subject (even if protected headers
+    are used)
+  * manual PGP/MIME sig verification not working 
+  * Autocrpyt "addr" address might not match "From" header 
+  * Viewing S/MIME signed email disables PGP signature checks 
+  * S/MIME signing/encryption defaults not applied correctly
+  E-mail subject handling:
+  * Double "Re:" prefix on replies
+  * "Re:" prefix on subject line disappears when editing encrypted,
+    saved draft
+  * Encrypted Message" subject in reply messages 
+
+-------------------------------------------------------------------
+Fri Apr 13 11:21:08 UTC 2018 - astieger@suse.com
+
+- enigmail 2.0.2, addressing more regressions in 2.0/2.0.1:
+  * protected headers should not check for force-display part
+  * Incorrectly displayed subject line in writing dialog when
+    forwarding 
+  * Error in Preferences Dialog upon loading 
+  * Autocrypt messages were unreadable without Enigmail
+
+-------------------------------------------------------------------
+Tue Apr  3 16:28:50 UTC 2018 - astieger@suse.com
+
+- enigmail 2.0.1, addressing several issues found in 2.0:
+  * S/MIME signing/encryption not working correctly, if Enigmail
+    is not enabled for an account
+  * Emails fail to decrypt if the sender address contains brackets
+  * Autocrypt-headers may flip manually created per-recipient rules
+  * The key manager does not load if no key on the keyring
+
+-------------------------------------------------------------------
+Mon Mar 26 08:22:06 UTC 2018 - astieger@suse.com
+
+- enigmail 2.0:
+  * The Encryption and Signing buttons now work for both OpenPGP
+    and S/MIME. Enigmail will chose between S/MIME or OpenPGP
+    depending on whether the keys for all recipients are available
+    for the respective standard.
+  * Support for the Autocrypt standard, which is now enabled by
+    default.
+  * Support for Pretty Easy Privacy (p≡p) is implemented in
+    Enigmail.
+  * Support for Web Key Directory (WKD) is implemented. Enigmail
+    will try to download unavailable keys during message
+    composition from WKD. GnuPG 2.2.x is used the provider
+    supports the Web Key Service protocol, users can also use
+    Enigmail to upload keys to WKD.
+  * The message subject can now be encrypted and replaced with a
+    dummy subject, following the Memory Hole standard for
+    protected Email Headers.
+  * The keys on the keyring are automatically refreshed from
+    keyservers at an irregular interval.
+  * Enigmail was turned into a "restartless" addon. That is, once
+    Enigmail is installed, subsequent updates will be installed
+    without needing to restart Thunderbird.
+  * Keys are internally addressed using the fingerprint instead of
+    the key ID.
+- Use %license (boo#1082318)
+
+-------------------------------------------------------------------
+Wed Dec 20 14:13:36 UTC 2017 - thardeck@suse.com
+
+- enigmail 1.9.9, fixing multiple vulnerabilities (boo#1073858):
+  * Enigmail could be coerced to use a malicious PGP public key
+    with a corresponding secret key controlled by an attacker
+  * Enigmail could have replayed encrypted content in partially
+    encrypted e-mails, allowing a plaintext leak
+  * Enigmail could be tricked into displaying incorrect signature
+    verification results
+  * Specially crafted content may cause denial of service
+
+-------------------------------------------------------------------
+Wed Oct  4 14:57:28 UTC 2017 - astieger@suse.com
+
+- enigmail 1.9.8.3:
+  * move calling of subprocess library to the end
+
+-------------------------------------------------------------------
+Tue Aug 22 10:46:32 UTC 2017 - astieger@suse.com
+
+- enigmail 1.9.8.2:
+  * fixed wrong translation that break keygen dialog
+  * make getting time format more robust
+  * Add support for new type of broken exchange messages
+
+-------------------------------------------------------------------
+Sun Jul  9 14:43:40 UTC 2017 - astieger@suse.com
+
+- enigmail 1.9.8.1:
+  * handle EINTR cases of child process terminations 
+
+-------------------------------------------------------------------
+Wed Jul  5 06:29:32 UTC 2017 - astieger@suse.com
+
+- enigmail 1.9.8:
+  * fix blocking in the mail sending process (boo#1047252)
+
+-------------------------------------------------------------------
+Mon May 15 16:47:41 UTC 2017 - wr@rosenauer.org
+
+- enigmail 1.9.7:
+  * This version fixes a compatibility bug on Thunderbird 52 that
+    makes keyserver up/downloads unusable
+
+-------------------------------------------------------------------
+Mon Nov 21 12:52:48 UTC 2016 - astieger@suse.com
+
+- enigmail 1.9.6.1:
+  * fix locating of GnuPG executable (openSUSE not affected)
+
+-------------------------------------------------------------------
+Sun Nov 13 12:02:26 UTC 2016 - astieger@suse.com
+
+- enigmail 1.9.6:
+  * Better detection is decrypted message is displayed
+  * New variant of PGP/MIME messages broken by MS-Exchange
+  * Make key importing more robust
+
+-------------------------------------------------------------------
+Mon Sep  5 14:30:21 UTC 2016 - astieger@suse.com
+
+- enigmail 1.9.5:
+  * fix failure during GnuPG installation
+  * Include AppData
+  * Forwarding an encrypted message results in empty body
+  * Fix parsing ofr last '=' in quoted-printable encoded
+    encrypted/signed parts
+  * fix regression in key selection for Per-Recipient-Rules
+- license is MPL-2.0, include license text
+
+-------------------------------------------------------------------
+Wed Jul 13 13:14:13 UTC 2016 - astieger@suse.com
+
+- enigmail 1.9.4:
+  * Improved compatibility with Send Later add-on
+  * Various bugs fixed
+
+-------------------------------------------------------------------
+Wed Jun  8 21:12:19 UTC 2016 - astieger@suse.com
+
+- enigmail 1.9.3:
+ * Fix Decrypt loop with S/MIME self-signed mails
+ * Fix Manage UIDs throws errors if called from key properties dialog
+ * Fix No error message if configured key not found on keyring
+ * Fix Enigmail munges display of messages with S/MIME signature
+ * Allow importing of expired keys
+
+-------------------------------------------------------------------
+Tue May  3 08:08:26 UTC 2016 - astieger@suse.com
+
+- enigmail 1.9.2:
+  * Add support for Zimbra OpenPGP encrypted messages
+  * Fix decrypt loop with S/MIME signed mails
+  * Fix silently failing import of revocation certificate
+  * Fix E-Mail saved as draft and reopened will show empty message
+  * Fix multipart/signed mail without micalg parameter blank body
+  * Fix display of changed key expiration date 
+
+-------------------------------------------------------------------
+Thu Apr  7 18:21:06 UTC 2016 - astieger@suse.com
+
+- enigmail 1.9.1:
+  * fix recignition of MS Exchange messages
+  * fix slow PGP/MIME signature verification with attachments
+  * fix freeze with large mail with signature
+  * fix backup/restore UI
+  * fix UI issues with German umlauts
+
+-------------------------------------------------------------------
+Mon Feb 29 15:12:52 UTC 2016 - astieger@suse.com
+
+- enigmail 1.9:
+  * Added support for GnuPG 2.1
+  * Backup and restore of keys and Enigmail settings
+  * Messages are sent using PGP/MIME by default
+  * Several new dialog windows that improve usability
+  * Added support for protected headers (off by default)
+  * There is no binary component anymore - this version runs on all
+    platforms for which Thunderbird and GnuPG are available.
+  * gpg2 2.0.7 or newer required
+  * no longer run tests, a utility is not available
+
+-------------------------------------------------------------------
+Tue May  5 10:06:12 UTC 2015 - astieger@suse.com
+
+- enigmail 1.8.2, fixing the following bugs:
+  * Punycode domain handling incorrect
+  * Mail is not automatically encrypted anymore. Enigmail does not
+    warn about unencrypted mail
+  * Decrypted message, but "Error - decryption failed" or "Error - 
+    no matching private/secret key found to decrypt message"
+  * Sign Button indicates wrong status on recipient rules
+  * Decryption filter merges Received headers incorrectly
+  * Questionmarks "???" in Enigmail menu and encrypting message
+    only with senders key
+  * Enigmail key management fails always fails to connect to
+    keyservers when searching for keys
+  * TB account hangs when filter for storing decrypted emails is
+    applied to IMAP account
+  * Deleting multiple keys in key manager fails
+  * INV_RECP error message confuses new users
+
+-------------------------------------------------------------------
+Thu Mar 26 10:38:58 UTC 2015 - astieger@suse.com
+
+- enigmail 1.8.1:
+  * Improved user interface for message composition
+  * Simplified setup wizard
+  * Possibility to permanently decrypt messages via filter rules
+  * Improved support for PGP/MIME messages from GPGTools sent from
+    MS Exchange Server
+  * Many bugs fixed
+  * last major version to support GnuPG 1.4.x
+- packaging changes: 
+  * update upstream signing key
+  * run unit tests during build
+  * remove gpg-offline
+  * run spec-cleaner
+  * add upstream sourc URLs
+
+-------------------------------------------------------------------
+Fri Aug 29 12:04:27 UTC 2014 - wr@rosenauer.org
+
+- update to version 1.7.2 (bmo#893330)
+  * bugfix release which contains several bugfixes including
+    mail with only Bcc recipients sent in plain text
+    (CVE-2014-5369)
+
+-------------------------------------------------------------------
+Sun Jul 20 12:31:49 UTC 2014 - wr@rosenauer.org
+
+- standalone enigmail 1.7 package previously built as part of
+  MozillaThunderbird
+  (since version 1.7 it's not required to build against Thunderbird
+  sources anymore and compatibility to Thunderbird and SeaMonkey at
+  the same time should be given)
+

@@ -1,0 +1,9 @@
+<package name="lpe" project="openSUSE:Factory">
+  <title>Small programming text editor</title>
+  <description>Lpe stands for &quot;lightweight programmer's editor&quot;, and is exactly that.
+It is designed to provide at the same time all the features that might
+be required in a decent code editor and a light, intuitive feel that
+makes it a pleasure to work with, making all necessary commands
+accessible as easily as possible.</description>
+  <devel project="editors" package="lpe"/>
+</package>

@@ -1,0 +1,6 @@
+<package name="imv" project="openSUSE:Factory">
+  <title>imv</title>
+  <description>Image viewer for X11/Wayland</description>
+  <devel project="X11:Utilities" package="imv"/>
+  <url>https://github.com/eXeC64/imv</url>
+</package>

@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Sat Feb  9 11:27:56 UTC 2019 - Fridrich Strba <fstrba@suse.com>
+
+- Not only install the pom, but also generate maven metadata so
+  so that the artifact can be used
+
+-------------------------------------------------------------------
+Thu Sep 21 19:46:20 UTC 2017 - fstrba@suse.com
+
+- Fix build with jdk9: specify source and target level 1.6
+- Added patch:
+  * tagsoup-1.2.1-jdk9.patch
+    + Don't specify java source and target levels on command-line
+	+ Give path to the built classes to javadoc
+
+-------------------------------------------------------------------
+Mon Jul 10 10:36:26 UTC 2017 - jengelh@inai.de
+
+- Ensure neutrality of description.
+
+-------------------------------------------------------------------
+Fri Jun 23 10:01:24 UTC 2017 - fstrba@suse.com
+
+- Initial commit of tagsoup-1.2.1, based on Fedora package

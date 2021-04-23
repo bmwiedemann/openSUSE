@@ -1,0 +1,52 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ba60ae61d2d3ff5bbd1b5531b6e6600</srcmd5>
+    <version>0.4.0</version>
+    <time>1528022167</time>
+    <user>dimstar_suse</user>
+    <comment>Critical tool for configuring jupyter notebook extensions</comment>
+    <requestid>611014</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>678cc8fca7af0e74f428474f2810e580</srcmd5>
+    <version>0.4.0</version>
+    <time>1529066782</time>
+    <user>maxlin_factory</user>
+    <comment>- Avoid bashism in scriptlet.
+- Use || true syntax instead of exit 0
+</comment>
+    <requestid>616082</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a478b1dc2e9f74c611dbf0a3fb8a9424</srcmd5>
+    <version>0.4.1</version>
+    <time>1558516169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>699925</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8689b994d1558622b6736029476e5980</srcmd5>
+    <version>0.4.1</version>
+    <time>1573772060</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>748440</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>7235f77ca1b39d7335ec6b7740296dcb</srcmd5>
+    <version>0.4.1</version>
+    <time>1586368577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>792286</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>d7fb943290eb10c0ca0f050af0541aec</srcmd5>
+    <version>0.4.1</version>
+    <time>1603545503</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>843666</requestid>
+  </revision>
+</revisionlist>
