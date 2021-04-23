@@ -1,0 +1,10 @@
+<package name="python-azure-mgmt-search" project="openSUSE:Factory">
+  <title>Microsoft Azure Search Management Client Library</title>
+  <description>This is the Microsoft Azure Search Management Client Library.
+
+Azure Resource Manager (ARM) is the next generation of management APIs that
+replace the old Azure Service Management (ASM).
+
+This package has been tested with Python 2.7, 3.3, 3.4, 3.5 and 3.6.</description>
+  <devel project="devel:languages:python:azure" package="python-azure-mgmt-search"/>
+</package>
