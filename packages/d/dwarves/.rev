@@ -218,4 +218,12 @@
     <comment>- Update to release 1.20</comment>
     <requestid>869608</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ed754ce1c29bea946d7a3a8a13d5d5f9</srcmd5>
+    <version>1.21</version>
+    <time>1619193017</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.21</comment>
+    <requestid>887535</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           dwarves
-Version:        1.20
+Version:        1.21
 Release:        0
 Summary:        DWARF utilities
 License:        GPL-2.0-only
@@ -29,7 +29,7 @@ Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
 Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
 Source9:        baselibs.conf
 BuildRequires:  cmake
-BuildRequires:  libdw-devel
+BuildRequires:  libdw-devel >= 0.171
 %if 0%{?suse_version} < 1550
 BuildRequires:  libebl-devel
 %endif

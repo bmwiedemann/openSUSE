@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 22 10:25:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Codify build requirement on elfutils >= 0.171
+
+-------------------------------------------------------------------
+Mon Apr 12 16:36:06 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.21
+  * Handle DWARF5 DW_OP_addrx and
+    subprogram ret type with abstract_origin properly.
+
+-------------------------------------------------------------------
 Fri Feb  5 01:08:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.20
