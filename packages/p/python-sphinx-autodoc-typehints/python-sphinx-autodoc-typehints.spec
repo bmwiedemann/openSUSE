@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-autodoc-typehints
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-sphinx-autodoc-typehints
-Version:        1.10.3
+Version:        1.11.0
 Release:        0
 Summary:        Type hints (PEP 484) support for the Sphinx autodoc extension
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/agronholm/sphinx-autodoc-typehints
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx-autodoc-typehints/sphinx-autodoc-typehints-%{version}.tar.gz
-# use object.inv which comes with python-doc; TODO more elegant solution
-Patch0:         python-sphinx-autodoc-typehints-system-object.inv.patch
+# PATCH-FIX-UPSTREAM no-net-tests.patch gh#agronholm/sphinx-autodoc-typehints#174 mcepl@suse.com
+# skip network tests
+Patch0:         no-net-tests.patch
 BuildRequires:  %{python_module setuptools >= 36.2.7}
 BuildRequires:  %{python_module setuptools_scm >= 1.7.0}
 BuildRequires:  fdupes
@@ -50,8 +51,7 @@ This is a Sphinx extension which allows to use Python 3 annotations for document
 and return value types of functions.
 
 %prep
-%setup -q -n sphinx-autodoc-typehints-%{version}
-%patch0 -p1
+%autosetup -p1 -n sphinx-autodoc-typehints-%{version}
 
 %build
 %python_build
@@ -62,7 +62,7 @@ and return value types of functions.
 
 %check
 # test_sphinx_output -- too depenedent on sphinx version available
-%pytest -k 'not test_sphinx_output'
+%pytest -k 'not (test_sphinx_output or network)'
 
 %files %{python_files}
 %{python_sitelib}/*

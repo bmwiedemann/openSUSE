@@ -54,4 +54,21 @@
     <comment></comment>
     <requestid>782837</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b1b03181619a010901aaba5fa5622bf0</srcmd5>
+    <version>1.11.0</version>
+    <time>1619193050</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-net-tests.patch which marks tests requiring network
+  (gh#agronholm/sphinx-autodoc-typehints#174).
+- update to 1.11.0:
+  * Dropped support for Sphinx &lt; 3.0
+  * Added support for alternative parameter names (``arg``, ``argument``, ``parameter``)
+  * Fixed import path for Signature (PR by Matthew Treinish)
+  * Fixed ``TypeError`` when formatting a parametrized ``typing.IO`` annotation
+  * Fixed data class displaying a return type in its ``__init__()`` method
+- remove python-sphinx-autodoc-typehints-system-object.inv.patch (breaks the build)
+</comment>
+    <requestid>888061</requestid>
+  </revision>
 </revisionlist>
