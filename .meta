@@ -1,0 +1,7 @@
+<package name="libmicro" project="openSUSE:Factory">
+  <title>kernel test suite, micro benchmark</title>
+  <description>LibMicro is intended to measure the performance of various system and
+library calls. LibMicro was developed by Bart Smaalders and Phil
+Harman.</description>
+  <devel project="benchmark" package="libmicro"/>
+</package>
