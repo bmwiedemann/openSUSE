@@ -1,0 +1,5 @@
+<package name="monitoring-plugins-traffic_limit" project="openSUSE:Factory">
+  <title>foo</title>
+  <description></description>
+  <devel project="server:monitoring" package="monitoring-plugins-traffic_limit"/>
+</package>
