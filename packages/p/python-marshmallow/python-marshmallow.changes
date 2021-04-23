@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Apr 22 09:42:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.11.1
+  * Fix treatment of dotted keys when unknown=INCLUDE (#1506).
+    Thanks @rbu for reporting and thanks @sirosen for the fix
+    (#1745).
+- Release 3.11.0
+  * Add fields.IPInterface, fields.IPv4Interface, and
+    IPv6Interface (#1733). Thanks @madeinoz67 for the suggestion
+    and the PR.
+  * Raise AttributeError for missing methods when using fields.
+    Method (#1675). Thanks @lassandroan.
+  * Remove unnecessary hasattr and getattr checks in Field (#1770).
+- Release 3.10.0
+  * Passing field metadata via keyword arguments is deprecated and
+    will be removed in marshmallow 4 (#1350). Use the explicit
+    metadata=... argument instead. Thanks @sirosen.
+- Release 3.9.1
+  * Cast to mapping type in Mapping.serialize and Mapping.
+    deserialize (#1685).
+  * Fix bug letting Dict pass invalid dict on deserialization when
+    no key or value Field is specified (#1685).
+- Release 3.9.0
+  * Add format argument to fields.Time and timeformat class Meta
+    option (#686). Thanks @BennyAlex for the suggestion and thanks
+    @infinityxxx for the PR.
+  * Remove usage of implicit typing.Optional (#1663). Thanks
+    @nadega for the PR.
+- Release 3.8.0
+  * Add fields.IP, fields.IPv4 and fields.IPv6 (#1485). Thanks
+    @mgetka for the PR.
+  * Fix typing in AwareDateTime (#1658). Thanks @adithyabsk for
+    reporting.
+- Use the python3 sphinx_build do build the docs
+  gh#openSUSE/python-rpm-macros#109
+
+-------------------------------------------------------------------
 Fri Aug 21 06:15:41 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.7.1:
@@ -38,7 +75,7 @@ Wed Nov 13 15:40:31 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 3.2.2:
  - Bug fixes:
-  - Don't load fields for which ``load_only`` and ``dump_only`` are both ``True`` (:pr:`1448`). 
+  - Don't load fields for which ``load_only`` and ``dump_only`` are both ``True`` (:pr:`1448`).
   - Fix types in ``marshmallow.validate`` (:pr:`1446`).
  - Support:
   - Test against Python 3.8 (pr:`1431`).
@@ -46,12 +83,12 @@ Wed Nov 13 15:40:31 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
 -------------------------------------------------------------------
 Tue Oct  8 15:03:26 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
-- Update to 3.2.1 
+- Update to 3.2.1
   * Fix typing for Schema.dump[s]
   * Fix compatibility with Python < 3.5.3
-  * Fix bug that raised an uncaught error when a nested schema 
+  * Fix bug that raised an uncaught error when a nested schema
     instance had an unpickleable object in its context
-  * Fix propagating dot-delimited only and exclude parameters to 
+  * Fix propagating dot-delimited only and exclude parameters to
     nested schema instances
   * Few bug fixes
 
@@ -97,7 +134,7 @@ Tue May 28 09:46:25 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
 Fri May 17 14:38:06 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 2.19.2
-  * Handle OverflowError when (de)serializing large integers with 
+  * Handle OverflowError when (de)serializing large integers with
     fields.Float
 
 -------------------------------------------------------------------

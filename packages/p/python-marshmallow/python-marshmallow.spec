@@ -1,7 +1,7 @@
 #
 # spec file for package python-marshmallow
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-marshmallow
-Version:        3.7.1
+Version:        3.11.1
 Release:        0
 Summary:        ORM/ODM/framework-agnostic library to convert datatypes from/to Python types
-License:        MIT AND BSD-3-Clause
+License:        BSD-3-Clause AND MIT
 Group:          Development/Languages/Python
 URL:            https://marshmallow.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/m/marshmallow/marshmallow-%{version}.tar.gz
@@ -66,7 +66,7 @@ HTML Documentation and examples for %{name}.
 
 %build
 %python_build
-sphinx-build docs/ docs/_build/html
+sphinx-build-%{python3_bin_suffix} docs/ docs/_build/html
 rm -r docs/_build/html/.buildinfo docs/_build/html/.doctrees
 
 %install

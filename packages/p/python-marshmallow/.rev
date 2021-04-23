@@ -127,4 +127,12 @@
 - Refresh patch python-marshmallow-no-version-warning.patch</comment>
     <requestid>828384</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a75d814c8dddc321f51702d30044f0eb</srcmd5>
+    <version>3.11.1</version>
+    <time>1619193044</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888006</requestid>
+  </revision>
 </revisionlist>
