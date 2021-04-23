@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 21 05:47:04 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 0.6.0:
+  * Use a custom proxy server and local http server for tests
+  * Use python-socks extended API
+- Add a simple import test at least
+
+-------------------------------------------------------------------
 Tue Feb 23 03:56:05 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.5.5:

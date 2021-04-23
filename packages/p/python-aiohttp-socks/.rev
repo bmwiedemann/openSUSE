@@ -31,4 +31,12 @@
   * Make it compatible with aiohttp 2.x again</comment>
     <requestid>874461</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b23128c01cfcc7c12e67352dc2993c21</srcmd5>
+    <version>0.6.0</version>
+    <time>1619193035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887218</requestid>
+  </revision>
 </revisionlist>
