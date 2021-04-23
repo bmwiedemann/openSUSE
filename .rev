@@ -525,4 +525,12 @@
     <comment>16.2.0 (forwarded request 884583 from smithfarm)</comment>
     <requestid>884584</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>e9068939690cfcd383aff9f964cee857</srcmd5>
+    <version>16.2.0.91+g24bd0c4acf</version>
+    <time>1619193007</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>886946</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 13 09:10:55 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- _constraints: raise s390x disk constraint to 42G after seeing a build fail
+  with "write error: No space left on device"
+
+-------------------------------------------------------------------
 Thu Apr  8 12:48:11 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 16.2.0-91-g24bd0c4acf:
