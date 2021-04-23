@@ -1,7 +1,7 @@
 #
 # spec file for package python-samplerate
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,41 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python36 1
+%bcond_without  python2
 Name:           python-samplerate
 Version:        0.1.0
 Release:        0
 License:        MIT
 Summary:        Python bindings for libsamplerate
-Url:            https://github.com/tuxu/python-samplerate
+URL:            https://github.com/tuxu/python-samplerate
 Group:          Development/Languages/Python
 Source0:        https://files.pythonhosted.org/packages/source/s/samplerate/samplerate-%{version}.tar.gz
+Source1:        https://github.com/tuxu/python-samplerate/raw/%{version}/tests/test_samplerate.py
 Source100:      python-samplerate-rpmlintrc
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module cffi >= 1.0.0}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  libsamplerate
+%if %{with python2}
+BuildRequires:  python-enum34
+%endif
 # /SECTION
 BuildRequires:  fdupes
+Requires:       libsamplerate
 Requires:       python-cffi >= 1.0.0
 Requires:       python-numpy
-Requires:       libsamplerate
+%ifpython2
+Requires:       python-enum34
+%endif
 BuildArch:      noarch
 
 %python_subpackages
@@ -58,6 +66,9 @@ It implements all three APIs available in libsamplerate:
 
 %prep
 %setup -q -n samplerate-%{version}
+mkdir tests
+cp %{SOURCE1} tests/
+sed -i -e "s/, 'pytest-runner'//" -e "/tests_require/ d" setup.py
 
 %build
 %python_build
@@ -69,9 +80,13 @@ It implements all three APIs available in libsamplerate:
 # Remove unneeded mac and windows library binaries
 %python_expand rm %{buildroot}%{$python_sitelib}/samplerate/_samplerate_data/*.*
 
+%check
+%pytest
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE.rst
-%{python_sitelib}/*
+%{python_sitelib}/samplerate
+%{python_sitelib}/samplerate-%{version}*-info
 
 %changelog
