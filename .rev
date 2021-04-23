@@ -1,0 +1,42 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8b9f7bff1ec15850a300e5b54faba02a</srcmd5>
+    <version>1.7.0</version>
+    <time>1594387942</time>
+    <user>dimstar_suse</user>
+    <comment> </comment>
+    <requestid>819971</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6367608e0e44289a08c0e25189d1daa0</srcmd5>
+    <version>1.7.0</version>
+    <time>1601044587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>837349</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6edad648b4dab9e6cb838d28bac28125</srcmd5>
+    <version>1.7.1.1</version>
+    <time>1606142747</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>849997</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4997e90b3e574221a7f6fea95fdfaf99</srcmd5>
+    <version>1.7.1.1</version>
+    <time>1610977153</time>
+    <user>dimstar_suse</user>
+    <comment>Update, dropped python2 support which is needed to build on Leap/Backports</comment>
+    <requestid>864043</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>34cc5c0df5351bc0dbddaeec59a8c024</srcmd5>
+    <version>1.7.2</version>
+    <time>1614001204</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>874189</requestid>
+  </revision>
+</revisionlist>

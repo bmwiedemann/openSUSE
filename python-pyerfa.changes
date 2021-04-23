@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Sun Feb 21 16:19:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to Version 1.7.2
+  * bundling updates
+  * The classproperty decorator is now thread-safe
+- Skip python36 build: With NumPy 1.20, python36-numpy is no
+  longer available in Tumbleweed (NEP 29)
+
+-------------------------------------------------------------------
+Fri Jan 15 18:11:42 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Use bundled ERFA in Leap
+- skip python2 for leap: upstream dropped python2 support, no
+  pytest doctestplus for python2
+
+-------------------------------------------------------------------
+Fri Nov 20 22:50:57 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Update to Version 1.7.1.1
+  * Fix incorrect ``__version__`` value [gh-60].
+- 1.7.1
+  * Bundled liberfa version update to v1.7.1.
+  * Now it is possible to build against system liberfa [gh-39].
+  * Improved the setup machinery to ensure a proper 
+    configuration of the embedded liberfa [gh-53] (see also 
+    https://github.com/liberfa/erfa/pull/73).
+  * Improve version testing [gh-53] (see issue gh-52 for 
+    rationale).
+  * Reworked version management [gh-57].
+  * Make pyerfa build reproducible [gh-46] (see issue gh-45 
+    for rationale).
+  * Improved docstring titles [gh-47].
+  * Most of the CI has been moved to GitHub Actions.
+- Drop pyerfa-pr39-usesystemerfa.patch merged upstream
+
+-------------------------------------------------------------------
+Fri Sep 25 08:33:49 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- skip version test to allow liberfa 1.7.1 -- gh#liberfa/pyerfa#52
+
+-------------------------------------------------------------------
+Fri Jul 10 10:00:25 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- allow updating liberfa 
+
+-------------------------------------------------------------------
+Mon Jul  6 12:07:16 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- initial package v1.7.0 
+- pyerfa-pr39-usesystemerfa.patch: gh#liberfa/pyerfa#39 to be able
+  to use the system provided erfa gh#liberfa/pyerfa#38
