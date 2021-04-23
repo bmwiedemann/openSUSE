@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Apr 22 12:22:47 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- bsc#1185106
+  - Initialize correctly the netmask when using the static bootproto
+    without an IP address defined.
+  - Fix MTU write when using wicked.
+
+-------------------------------------------------------------------
+Thu Apr 22 09:12:38 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not crash when modifying a virtual interface and checking if
+  it is hotplug (bsc#1184623, bsc#1185106)
+- 4.4.5
+
+-------------------------------------------------------------------
+Wed Apr 14 11:05:02 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not require a MAC address when activating a qeth device
+  with layer2 support (bsc#1184474).
+- 4.4.4
+
+-------------------------------------------------------------------
 Tue Apr 13 12:32:16 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not crash when checking if an interface is a hotplug one and
