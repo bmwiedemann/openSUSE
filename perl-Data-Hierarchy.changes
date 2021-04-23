@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Tue Dec  6 10:59:28 UTC 2011 - coolo@suse.com
+
+- regenerate with cpanspec to fix license
+
+-------------------------------------------------------------------
+Fri Nov 18 11:08:37 UTC 2011 - coolo@suse.com
+
+- use original .tar.gz
+
+-------------------------------------------------------------------
+Wed Dec  1 13:31:35 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:39 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Nov 29 14:26:26 UTC 2010 - coolo@novell.com
+
+* recreated by cpanspec 1.78.02
+
+-------------------------------------------------------------------
+Sun Nov 28 11:37:46 UTC 2010 - coolo@novell.com
+
+- remove .packlist file
+
+-------------------------------------------------------------------
+Tue Oct 19 08:38:31 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Jan 10 15:43:32 CET 2010 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Fri Jan  5 14:44:43 CET 2007 - lmuelle@suse.de
+
+- Update to version 0.34.
+  - Workaround various performance issues.  The real fix will be in 0.40.
+
+-------------------------------------------------------------------
+Mon Sep 18 04:22:26 CEST 2006 - lmuelle@suse.de
+
+- Update to version 0.31.
+  - Fix a test assuming hash key orders.
+  - Big rewrite, simplifying the API and documenting everything.
+  - Added to_relative (to help with SVK floating checkouts).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:37 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Wed Feb 16 22:29:18 CET 2005 - schwab@suse.de
+
+- Don't remove BuildRoot in %install.
+
+-------------------------------------------------------------------
+Mon Feb 14 18:58:17 CET 2005 - lmuelle@suse.de
+
+- Initial SuSE package.
