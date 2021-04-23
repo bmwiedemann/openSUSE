@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 22 07:51:02 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Revert copying the libzypp cache to the target system and
+  replacing it by a symlink, it is not safe and it can
+  cause crash (segfault) in some cases (bsc#1183711)
+- 4.4.1
+
+-------------------------------------------------------------------
 Wed Apr  7 11:06:45 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Hide the abort button when the network client is called
