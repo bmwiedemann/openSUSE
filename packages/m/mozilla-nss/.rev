@@ -2292,4 +2292,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>880741</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>c88a31ae978b41ece79e8894fc7041ef</srcmd5>
+    <version>3.63.1</version>
+    <time>1619192985</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.63.1
+  * no upstream release notes for 3.63.1 (yet)
+  Fixed in 3.63
+  * bmo#1697380 - Make a clang-format run on top of helpful contributions.
+  * bmo#1683520 - ECCKiila P384, change syntax of nested structs
+                  initialization to prevent build isses with GCC 4.8.
+  * bmo#1683520 - [lib/freebl/ecl] P-384: allow zero scalars in dual
+                  scalar multiplication.
+  * bmo#1683520 - ECCKiila P521, change syntax of nested structs
+                  initialization to prevent build isses with GCC 4.8.
+  * bmo#1683520 - [lib/freebl/ecl] P-521: allow zero scalars in dual
+                  scalar multiplication.
+  * bmo#1696800 - HACL* update March 2021 - c95ab70fcb2bc21025d8845281bc4bc8987ca683.
+  * bmo#1694214 - tstclnt can't enable middlebox compat mode.
+  * bmo#1694392 - NSS does not work with PKCS #11 modules not supporting
+                  profiles.
+  * bmo#1685880 - Minor fix to prevent unused variable on early return.
+  * bmo#1685880 - Fix for the gcc compiler version 7 to support setenv
+                  with nss build.
+  * bmo#1693217 - Increase nssckbi.h version number for March 2021 batch
+                  of root CA changes, CA list version 2.48.
+  * bmo#1692094 - Set email distrust after to 21-03-01 for Camerfirma's
+                  'Chambers of Commerce' and 'Global Chambersign' roots.
+  * bmo#1618407 - Symantec root certs - Set CKA_NSS_EMAIL_DISTRUST_AFTER.
+  * bmo#1693173 - Add GlobalSign R45, E45, R46, and E46 root certs to NSS.
+  * bmo#1683738 - Add AC RAIZ FNMT-RCM SERVIDORES SEGUROS root cert to NSS.
+  * bmo#1686854 - Remove GeoTrust PCA-G2 and VeriSign Universal root certs
+                  from NSS.
+  * bmo#1687822 - Turn off Websites trust bit for the “Staat der
+                  Nederlanden Root CA - G3” root cert in NSS.</comment>
+    <requestid>886901</requestid>
+  </revision>
 </revisionlist>
