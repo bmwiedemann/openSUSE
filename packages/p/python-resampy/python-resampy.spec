@@ -1,7 +1,7 @@
 #
 # spec file for package python-resampy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-resampy
 Version:        0.2.2
 Release:        0
@@ -25,7 +26,8 @@ Summary:        Signal resampling in Python
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/bmcfee/resampy
-Source:         https://files.pythonhosted.org/packages/source/r/resampy/resampy-%{version}.tar.gz
+# The GitHub archive includes the tests
+Source:         https://github.com/bmcfee/resampy/archive/refs/tags/%{version}.tar.gz#/resampy-%{version}-gh.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -66,6 +68,9 @@ sed -i -e '/^#!\//, 1d' */*.py
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.md

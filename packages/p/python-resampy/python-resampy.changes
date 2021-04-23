@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 23 11:46:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build: No NumPy for python36 in TW (NEP 29)
+- Enable test suite with GitHub archive
+
+-------------------------------------------------------------------
 Thu Apr  9 01:01:09 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Temporarily add skip_python2 to allow other packages to build.
