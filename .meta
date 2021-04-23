@@ -1,0 +1,5 @@
+<package name="pentaho-reporting-flow-engine" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="LibreOffice:Factory" package="pentaho-reporting-flow-engine"/>
+</package>
