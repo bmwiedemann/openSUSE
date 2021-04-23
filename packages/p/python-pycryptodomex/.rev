@@ -274,4 +274,41 @@
     <comment></comment>
     <requestid>852356</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ae100f307531b45073c606f38d880eac</srcmd5>
+    <version>3.10.1</version>
+    <time>1619193036</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.10.1:
+  * Python 3 wheels use ``abi3`` ABI tag.
+  * Remove Appveyor CI.
+  
+  3.10.0 (6 February 2021)
+  ++++++++++++++++++++++++
+  
+  Resolved issues
+  ---------------
+  * Fixed a potential memory leak when initializing block ciphers.
+  * GH#466: ``Crypto.Math.miller_rabin_test()`` was still using the system random
+    source and not the one provided as parameter.
+  * GH#469: RSA objects have the method ``public_key()`` like ECC objects.
+    The old method ``publickey()`` is still available for backward compatibility.
+  * GH#476: ``Crypto.Util.Padding.unpad()`` was raising an incorrect exception
+    in case of zero-length inputs. Thanks to Captainowie.
+  * GH#491: better exception message when ``Counter.new()`` is called with an integer
+    ``initial_value`` than doesn't fit into ``nbits`` bits.
+  * GH#496: added missing ``block_size`` member for ECB cipher objects. Thanks to willem.
+  * GH#500: ``nonce`` member of an XChaCha20 cipher object was not matching the original nonce.
+    Thanks to Charles Machalow.
+  
+  Other changes
+  -------------
+  * The bulk of the test vectors have been moved to the separate
+    package ``pycryptodome-test-vectors``. As result, packages ``pycryptodome`` and
+    ``pycryptodomex`` become significantly smaller (from 14MB to 3MB).
+  * Moved CI tests and build service from Travis CI to GitHub Actions.
+  
+  Breaks in compatibility</comment>
+    <requestid>887878</requestid>
+  </revision>
 </revisionlist>
