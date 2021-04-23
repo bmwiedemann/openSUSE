@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Mon Jan  4 11:40:29 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.11.0
+  * Drop Python 3.5 support, support Python 3.9.
+  * Remove ORM patching.
+  * Drop Django 2.0 and 2.1 support.
+  * Upgrade for sqlparse 0.4.0+. This required changing how SQL lists 
+    of one element are simplified, e.g. IN (1) will now be simplified 
+    to IN (#) instead of IN (...). You should regenerate your 
+    performance record files to match.
+
+-------------------------------------------------------------------
+Sat Oct 10 08:41:48 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Activate test suite
+
+-------------------------------------------------------------------
+Mon Jun 29 02:22:58 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v4.7.0
