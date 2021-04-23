@@ -17,12 +17,13 @@
 
 
 Name:           yast2-x11
-Version:        4.3.0
+Version:        4.4.1
 Release:        0
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Summary:        YaST2 - X11 support
+License:        GPL-2.0-only
+Group:          System/YaST
+URL:            https://github.com/yast/yast-x11/
 Source0:        %{name}-%{version}.tar.bz2
-
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -32,18 +33,14 @@ BuildRequires:  xorg-x11-libXmu-devel
 BuildRequires:  yast2-devtools >= 3.1.10
 Requires:       systemd
 Requires:       yast2-theme >= 4.1.7
-Summary:        YaST2 - X11 support
-License:        GPL-2.0-only
-Group:          System/YaST
-URL:            http://github.com/yast/yast-x11/
-Supplements:    packageand(yast2-installation:xorg-x11-server)
+Supplements:    (yast2-installation and xorg-x11-server)
 Obsoletes:      sax2-tools <= 8.1
 
 %description
 This package contains the programs and files for YaST2 X11 support.
 
 %prep
-%setup -n %{name}-%{version}
+%setup -q
 
 %build
 %yast_build
@@ -52,16 +49,12 @@ This package contains the programs and files for YaST2 X11 support.
 %yast_install
 
 %files
-%defattr(-,root,root)
-
+%license COPYING
 %{yast_ybindir}/active_window
 %{yast_ybindir}/testX
 %{yast_ybindir}/set_videomode
-/usr/sbin/xkbctrl
-/etc/icewm
-
-%doc %dir %{yast_docdir}
-%license %{yast_docdir}/COPY*
-%doc %{_mandir}/*/*
+%{_sbindir}/xkbctrl
+%{_sysconfdir}/icewm
+%{_mandir}/man1/xkbctrl.1*
 
 %changelog

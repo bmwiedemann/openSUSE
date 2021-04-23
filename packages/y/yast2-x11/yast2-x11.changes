@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop packaging docdir, it only contained the license which
+  is now in licensedir (bsc#1184897)
+- spec file cleanups
+- 4.4.1
+
+-------------------------------------------------------------------
+Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- 4.4.0
+
+-------------------------------------------------------------------
 Fri Feb  5 09:35:45 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Added "active_window" for switching the current X window
