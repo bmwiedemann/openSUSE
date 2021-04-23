@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 19 06:50:31 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.18.7
+  * don't wait for tasks to cancel if exiting by exception
+  * Fix tests for Python3.8 (we reenable them)
+  * Merge pull request #34
+  * SOCKS: Fix random auth on Python 3.8+
+  * Merge pull request #33
+  * session: add method on_disconnect_due_to_excessive_session_cost
+
+-------------------------------------------------------------------
 Fri Apr 24 18:13:36 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Skip over tests failing on Python 3.8 (gh#kyuupichan/aiorpcX#30)

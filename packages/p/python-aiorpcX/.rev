@@ -49,4 +49,12 @@
     <comment>- Skip over tests failing on Python 3.8 (gh#kyuupichan/aiorpcX#30)</comment>
     <requestid>797272</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6b238a970d2d4449bb7f5944c014099b</srcmd5>
+    <version>0.18.7</version>
+    <time>1619193040</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887912</requestid>
+  </revision>
 </revisionlist>
