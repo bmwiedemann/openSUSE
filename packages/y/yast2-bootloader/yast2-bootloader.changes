@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- 4.4.0
+
+-------------------------------------------------------------------
+Mon Apr 19 18:21:58 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix crash when bootloader is not managed by yast and security
+  module wants to show cpu mitigation (bsc#1184968)
+- 4.3.26
+
+-------------------------------------------------------------------
 Wed Mar 10 12:47:05 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Add validation to device map dialog to prevent exceeding BIOS
