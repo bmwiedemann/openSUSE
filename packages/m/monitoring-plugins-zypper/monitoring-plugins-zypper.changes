@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 22 14:59:13 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 1.98.7:
+  + remove unsupported Leap 15.1 and SLE 15 GA and and SP1
+  + add Leap 15.4 and SLE 15 SP4 as supported
+  + Tumbleweed should be at least from 2021
+  + Add user icinga to the sudo configuration (PR#1 thanks to mhauke)
+
+-------------------------------------------------------------------
 Mon Aug 10 14:58:53 UTC 2020 - Lars Vogdt <lars@linux-schulserver.de>
 
 - Update to 1.98.6 (fixes boo#1173872)

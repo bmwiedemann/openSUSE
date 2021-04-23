@@ -168,4 +168,16 @@ Package might get out as maintenance update for 13.2 (see bnc#904170) after acce
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>827658</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>cad57170b527c40904c08d9dfadef309</srcmd5>
+    <version>1.98.7</version>
+    <time>1619193036</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.98.7:
+  + remove unsupported Leap 15.1 and SLE 15 GA and and SP1
+  + add Leap 15.4 and SLE 15 SP4 as supported
+  + Tumbleweed should be at least from 2021
+  + Add user icinga to the sudo configuration (PR#1 thanks to mhauke)</comment>
+    <requestid>887824</requestid>
+  </revision>
 </revisionlist>
