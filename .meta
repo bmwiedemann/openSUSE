@@ -1,0 +1,15 @@
+<package name="hw-probe" project="openSUSE:Factory">
+  <title>Check operability of computer hardware and find drivers — openSUSE RPM package</title>
+  <description>A tool to check operability of computer hardware and find drivers.
+
+Probe — is a snapshot of your computer hardware state and system logs. The tool returns a permanent URL to view the probe of the computer.
+
+Command to create a probe:
+
+    sudo -E hw-probe -all -upload
+
+Share your probes with Linux developers in order to debug and fix problems on your computer.
+</description>
+  <devel project="hardware" package="hw-probe"/>
+  <url>https://github.com/linuxhw/hw-probe</url>
+</package>
