@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr 16 12:03:50 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add a mechanism to report issues to the user (related to
+  bsc#1181295).
+- 4.4.1
+
+-------------------------------------------------------------------
+Wed Apr 14 12:09:49 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Updated manual page ("man yast2") (bsc#1184681)
+- 4.4.0
+
+-------------------------------------------------------------------
+Mon Apr 12 15:12:41 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add a default value for file_path argument in ::new and ::load
+  methods of CFA::LoginDefs class.
+
+-------------------------------------------------------------------
 Mon Mar 29 09:46:31 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Add a AbstractWidget#displayed? to determine whether
