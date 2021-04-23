@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 23 14:36:31 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.7.1: 
+  * In verbose mode, we now print a message before each HTTP request.
+    Previously we would not print anything for retried requests.
+  * Expected response errors no longer cause request retries. For example, we
+    no longer retry the download request if the database subscription has
+    lapsed.
+  * When running with GEOIPUPDATE_FREQUENCY set, the Docker image will now
+    stop when sent a SIGTERM instead of waiting for a SIGKILL. Pull request
+    by Maxence POULAIN. GitHub #135.
+
+-------------------------------------------------------------------
 Wed Dec 16 12:19:29 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.6.0

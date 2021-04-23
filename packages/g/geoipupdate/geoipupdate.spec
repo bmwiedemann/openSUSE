@@ -1,7 +1,7 @@
 #
 # spec file for package geoipupdate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 # Common info
 Name:           geoipupdate
-Version:        4.6.0
+Version:        4.7.1
 Release:        0
 Summary:        GeoIP update client code
 License:        Apache-2.0 OR MIT
@@ -34,7 +34,7 @@ Source5:        README.SUSE
 Patch0:         disable-pandoc.patch
 %if 0%{?suse_version} >= 1500
 # Build-time parameters
-BuildRequires:  go >= 1.11
+BuildRequires:  go >= 1.13
 # Manpage
 BuildRequires:  perl%{?suse_version:-base}
 %endif
@@ -52,6 +52,7 @@ Requires:       geolite2legacy
 
 %description legacy
 Script for updating data in GeoIP Legacy format.
+
 
 # Preparation step (unpackung and patching if necessary)
 %prep
