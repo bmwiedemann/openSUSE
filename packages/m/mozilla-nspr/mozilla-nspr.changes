@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 18 07:30:01 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to version 4.30
+  * support longer thread names on macOS
+  * fix a build failure on OpenBSD
+
+-------------------------------------------------------------------
 Wed Sep 30 17:06:26 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to version 4.29

@@ -1,7 +1,7 @@
 #
 # spec file for package mozilla-nspr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #               2006-2020 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           mozilla-nspr
-Version:        4.29
+Version:        4.30
 Release:        0
 Summary:        Netscape Portable Runtime
 License:        MPL-2.0
@@ -42,7 +42,6 @@ facilities. These facilities include threads, thread synchronization,
 normal file and network I/O, interval timing and calendar time, basic
 memory management (malloc and free), and shared library linking.
 
-
 %package devel
 Summary:        Netscape Portable Runtime development files
 Group:          Development/Libraries/Other
@@ -58,7 +57,6 @@ NSPR provides platform independence for non-GUI operating system
 facilities. These facilities include threads, thread synchronization,
 normal file and network I/O, interval timing and calendar time, basic
 memory management (malloc and free), and shared library linking.
-
 
 %prep
 %setup -n nspr-%{version} -q
