@@ -38,7 +38,7 @@ URL:            https://www.gnu.org/software/findutils/
 #    osc ci
 Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1&file=./%{name}.keyring
+Source2:        https://savannah.gnu.org/project/release-gpgkeys.php?group=%{name}&download=1&file=./%{name}.keyring
 # adds a new option -xautofs to find to not descend into directories on autofs file systems
 Patch0:         findutils-xautofs.patch
 # BuildRequire dejagnu for 'runtest' to execute all tests.
