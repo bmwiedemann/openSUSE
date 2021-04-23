@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Tue Feb 16 10:22:08 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 0.16
+   see /usr/share/doc/packages/perl-DateTime-Format-ISO8601/Changes
+
+  0.16     2021-02-14
+
+  - Add support for YYYYMMDDThhmm[+-]hhmm and YYYY-MM-DDThh:mm+hh:mm
+    formats. Based on GH #13 from lbjw.
+
+-------------------------------------------------------------------
+Sun Oct 25 03:07:01 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-DateTime-Format-ISO8601/Changes
+
+  0.15     2020-10-24
+
+  - Fixed the SYNOPSIS, which showed calling parse_time with a string that would
+    cause an error. Reported by Yuki Yoshida. GH #12.
+
+-------------------------------------------------------------------
+Mon Aug 17 03:07:30 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-DateTime-Format-ISO8601/Changes
+
+-------------------------------------------------------------------
+Thu Apr 16 19:18:13 UTC 2015 - coolo@suse.com
+
+- updated to 0.08
+   see /usr/share/doc/packages/perl-DateTime-Format-ISO8601/Changes
+
+  0.08 Sat Feb 11 23:40:43 MST 2012
+      - rt.cpan.org #52645 : UTC offsets must be in the same format
+        (basic|extended) as the time as to which it is attached.
+
+* Sun Dec 25 2005 Dries Verachtert <dries@ulyssis.org> - 0.0403-1
+- Initial package.
