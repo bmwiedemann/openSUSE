@@ -87,4 +87,16 @@
   * tpm2: Addressed issues detected by cppcheck (false positives) (forwarded request 880005 from gary_lin)</comment>
     <requestid>880046</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>72c50a587059c83ac0b8802649d021fe</srcmd5>
+    <version>0.8.2</version>
+    <time>1619192976</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.2
+  * tpm2: rev155: Add new RsaAdjustPrimeCandidate code but do
+    not use (bsc#1184939 CVE-2021-3505)
+  * tpm2: Activate SEED_COMPAT_LEVEL_RSA_PRIME_ADJUST_FIX
+    (bsc#1184939 CVE-2021-3505) (forwarded request 886589 from gary_lin)</comment>
+    <requestid>886707</requestid>
+  </revision>
 </revisionlist>
