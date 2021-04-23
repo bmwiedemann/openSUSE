@@ -18,7 +18,7 @@
 
 %define sover   0
 Name:           bzrtp
-Version:        4.5.0
+Version:        4.5.3
 Release:        0
 Summary:        ZRTP keys exchange protocol implementation
 License:        GPL-3.0-or-later
@@ -30,7 +30,7 @@ Patch0:         bzrtp-fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(bctoolbox) >= 4.4.0
+BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(sqlite3)
 
