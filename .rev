@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>167b01eb1c543291887a00f9872e2fe9</srcmd5>
+    <version>0.002</version>
+    <time>1560459963</time>
+    <user>dimstar_suse</user>
+    <comment>Needed for Mojo::Redis</comment>
+    <requestid>709598</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d76ac8c22abe77c98eec4b7cf30b51f9</srcmd5>
+    <version>0.003</version>
+    <time>1567581343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>727975</requestid>
+  </revision>
+</revisionlist>
