@@ -1,0 +1,6 @@
+<package name="ntl" project="openSUSE:Factory">
+  <title>Library for Number Theory</title>
+  <description>NTL is a high-performance, portable C++ library providing data structures and algorithms for manipulating signed, arbitrary length integers, and for vectors, matrices, and polynomials over the integers and over finite fields.
+  </description>
+  <devel project="science" package="ntl"/>
+</package>
