@@ -1,0 +1,60 @@
+--- a/tests/fixtures.py
++++ b/tests/fixtures.py
+@@ -21,7 +21,7 @@ def system_path():
+ 
+ 
+ @pytest.yield_fixture
+-def system():
++def system(system_path):
+     '''
+     yields the contents of the system.evtx test file.
+     the returned value is a memory map of the contents,
+@@ -30,8 +30,7 @@ def system():
+     Returns:
+       mmap.mmap: the contents of the test file.
+     '''
+-    p = system_path()
+-    with open(p, 'rb') as f:
++    with open(system_path, 'rb') as f:
+         with contextlib.closing(mmap.mmap(f.fileno(), 0,
+                                           access=mmap.ACCESS_READ)) as buf:
+             yield buf
+@@ -52,7 +51,7 @@ def security_path():
+ 
+ 
+ @pytest.yield_fixture
+-def security():
++def security(security_path):
+     '''
+     yields the contents of the security.evtx test file.
+     the returned value is a memory map of the contents,
+@@ -61,8 +60,7 @@ def security():
+     Returns:
+       mmap.mmap: the contents of the test file.
+     '''
+-    p = security_path()
+-    with open(p, 'rb') as f:
++    with open(security_path, 'rb') as f:
+         with contextlib.closing(mmap.mmap(f.fileno(), 0,
+                                           access=mmap.ACCESS_READ)) as buf:
+             yield buf
+--- a/tests/test_records.py
++++ b/tests/test_records.py
+@@ -248,7 +248,7 @@ def test_parse_record(system):
+                     ['EndOfStreamNode']]]]],
+               ['Substitutions', None, [
+                 ['WstringTypeNode', 'System'],
+-                ['WstringTypeNode', 'C:\Windows\System32\Winevt\Logs\Archive-System-2012-03-14-04-17-39-932.evtx']]]]]]]]]]]
++                ['WstringTypeNode', 'C:\\Windows\\System32\\Winevt\\Logs\\Archive-System-2012-03-14-04-17-39-932.evtx']]]]]]]]]]]
+ 
+     assert extract_structure(record.root()) == expected
+ 
+@@ -264,7 +264,7 @@ def test_render_record(system):
+     chunk = one(fh.chunks())
+     record = one(chunk.records())
+ 
+-    xml = record.xml() 
++    xml = record.xml()
+     assert xml == textwrap.dedent('''\
+                                      <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event"><System><Provider Name="Microsoft-Windows-Eventlog" Guid="{fc65ddd8-d6ef-4962-83d5-6e5cfe9ce148}"></Provider>
+                                      <EventID Qualifiers="">105</EventID>
