@@ -1,0 +1,5 @@
+<package name="python-pycocotools" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="science:machinelearning" package="python-pycocotools"/>
+</package>
