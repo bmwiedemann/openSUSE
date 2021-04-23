@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycsw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-pycsw
-Version:        2.4.1
+Version:        2.6.0
 Release:        0
 Summary:        OGC CSW server implementation written in Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pycsw.org/
-Source:         https://files.pythonhosted.org/packages/source/p/pycsw/pycsw-%{version}.tar.gz
+# Use the GitHub archive instead of pypi because it has the test suite
+Source:         https://github.com/geopython/pycsw/archive/refs/tags/%{version}.tar.gz#/pycsw-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM pycsw-pr671-rm-json-encoding.patch -- gh#geopython/pycsw#671
+Patch0:         https://github.com/geopython/pycsw/pull/671.patch#/pycsw-pr671-rm-json-encoding.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,18 +38,19 @@ Requires:       python-Shapely >= 1.5.17
 Requires:       python-geolinks >= 0.2.0
 Requires:       python-lxml >= 3.6.2
 Requires:       python-pyproj >= 1.9.5.1
-Requires:       python-six >= 1.10.0
 Requires:       python-xmltodict >= 0.10.2
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module apipkg}
+BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module OWSLib >= 0.16.0}
 BuildRequires:  %{python_module Shapely >= 1.5.17}
 BuildRequires:  %{python_module geolinks >= 0.2.0}
 BuildRequires:  %{python_module lxml >= 3.6.2}
 BuildRequires:  %{python_module pyproj >= 1.9.5.1}
-BuildRequires:  %{python_module six >= 1.10.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module xmltodict >= 0.10.2}
 # /SECTION
 %python_subpackages
@@ -59,7 +64,9 @@ for the publishing and discovery of geospatial metadata. Existing
 repositories of geospatial metadata can be exposed via OGC:CSW 2.0.2.
 
 %prep
-%setup -q -n pycsw-%{version}
+%autosetup -p1 -n pycsw-%{version}
+# remove extra mock
+sed -i 's/import mock/from unittest import mock/' tests/unittests/test_{wsgi,util}.py
 
 %build
 %python_build
@@ -68,6 +75,15 @@ repositories of geospatial metadata can be exposed via OGC:CSW 2.0.2.
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/pycsw-admin.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+# online connection to demo.pycsw.org
+donttest="(GetRecords and distributedsearch)"
+# pyproj database context missing
+donttest+=" or (default_post_GetRecords-filter-bbox-reproject)"
+# many fail, not tested in upstream CI either
+donttest+=" or (functional and harvesting)"
+%pytest -ra -k "not ($donttest)"
 
 %post
 %python_install_alternative pycsw-admin.py

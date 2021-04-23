@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 22 10:43:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.6.0
+  * fix GetRecords startposition empty parameter fixes
+  * update OpenSearch temporal extent query support
+  * add 12 factor support
+  * support environment variables in configuration
+  * add kubernetes and helm configurations
+  * fix quoting for PostgreSQL backends
+  * add logging switch to pycsw-admin.py CLI to stdout
+  * safeguard XML as bytes to unicode
+  * update core model xml column to Unicode on repository creation
+  * handle different formats for CRS code input
+  * add test for invalid gml:posList geometry
+  * drop all Python 2 support
+- Enable test suite
+  * Remove extra mock import in test suite
+  * Add pycsw-pr671-rm-json-encoding.patch gh#geopython/pycsw#671
+- Disable python36 build: No pyproj and OWSLib for python36 on TW
+
+-------------------------------------------------------------------
 Wed May 20 07:26:21 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
