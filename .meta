@@ -1,0 +1,5 @@
+<package name="python-cssutils" project="openSUSE:Factory">
+  <title>A CSS Cascading Style Sheets library for Python</title>
+  <description>A Python package to parse and build CSS Cascading Style Sheets. DOM only, not any rendering facilities!</description>
+  <devel project="devel:languages:python" package="python-cssutils"/>
+</package>
