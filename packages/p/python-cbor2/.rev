@@ -41,4 +41,19 @@
  * Fractional seconds parsing in datetimes</comment>
     <requestid>828448</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>70d6c6787e1fdf52200028b9cb6b5f2f</srcmd5>
+    <version>5.2.0</version>
+    <time>1619193038</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2.0:
+  * Final version tested with Python 2.7 and 3.5
+  * README: Announce deprecation of Python 2.7, 3.5
+  * README: More detail and examples
+  * Bugfix: Fix segfault on loading huge arrays with C-backend (Sekenre)
+  * Build system: Allow packagers to force C-backend building or disable using env var (jameshilliard)
+  * Feature: :module:`cbor2.tool` Command line diagnostic tool (Sekenre)
+  * Feature: Ignore semantic tag used for file magic 55799 AKA &quot;Self-Described CBOR&quot; (kalcutter)</comment>
+    <requestid>887881</requestid>
+  </revision>
 </revisionlist>

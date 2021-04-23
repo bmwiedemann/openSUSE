@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 22 20:17:32 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * Final version tested with Python 2.7 and 3.5
+  * README: Announce deprecation of Python 2.7, 3.5
+  * README: More detail and examples
+  * Bugfix: Fix segfault on loading huge arrays with C-backend (Sekenre)
+  * Build system: Allow packagers to force C-backend building or disable using env var (jameshilliard)
+  * Feature: :module:`cbor2.tool` Command line diagnostic tool (Sekenre)
+  * Feature: Ignore semantic tag used for file magic 55799 AKA "Self-Described CBOR" (kalcutter) 
+
+-------------------------------------------------------------------
 Fri Aug 21 10:06:22 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to version 5.1.2
