@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 19 18:45:11 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Really fix recording OGG with parecord (bsc#1183546)
+  parecord-really-fix-recording-OGG.patch
+
+-------------------------------------------------------------------
 Tue Mar 16 22:03:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - move license to licensedir 
