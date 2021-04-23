@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-audit-laf
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-audit-laf
+Version:        4.4.1
+Release:        0
 Summary:        YaST2 - Configuration of Linux Auditing (LAF)
 License:        GPL-2.0-only
 Group:          System/YaST
-Version:        4.3.1
-Release:        0
-Url:            https://github.com/yast/yast-audit-laf
-
+URL:            https://github.com/yast/yast-audit-laf
 Source0:        %{name}-%{version}.tar.bz2
-
 BuildRequires:  perl-XML-Writer
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  yast2-testsuite
-
 # Wizard::SetDesktopTitleAndIcon
 Requires:       yast2 >= 2.21.22
 Requires:       yast2-ruby-bindings >= 1.0.0
-
 Supplements:    autoyast(audit-laf)
-
 BuildArch:      noarch
 
 %description
@@ -61,7 +56,6 @@ add rules for the audit subsystem.
 %{yast_desktopdir}
 %{yast_metainfodir}
 %{yast_scrconfdir}
-%doc %{yast_docdir}
 %license COPYING
 %{yast_schemadir}
 %{yast_icondir}
