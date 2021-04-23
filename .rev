@@ -1,0 +1,98 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5300b23ad4435373df8a5056be2b8842</srcmd5>
+    <version>1.9.4</version>
+    <time>1518601866</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.4
+  * Handle failed challenge submissions
+  * Remove dependency on PyExecJS
+- Update to 1.9.3
+  * Add LICENSE and README.md to source distribution
+- Remove Git LICENSE source
+- Add README.md to doc files
+- Update to 1.9.2
+  * Add __version__ to __init__.py
+- Include LICENSE from Git tag for now (not part of PyPI package)
+  Reported upstream
+- init, 1.9.1
+</comment>
+    <requestid>576017</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>daba7069d1dc7d8b39ae9a8175f30d15</srcmd5>
+    <version>1.9.5</version>
+    <time>1522935284</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.5
+  * Parse updated IUAM Javascript challenge
+</comment>
+    <requestid>593651</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e9acd9acdcce9995f2597fae0064c085</srcmd5>
+    <version>1.9.5</version>
+    <time>1544726473</time>
+    <user>dimstar_suse</user>
+    <comment>Remove superfluous devel dependency for noarch package</comment>
+    <requestid>653971</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>315cede1389cf0a5ff538d9c3b4e2ccc</srcmd5>
+    <version>1.9.7</version>
+    <time>1553611421</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.7:
+  * A hidden input form has been added to the challenge;
+    fix to allow bypassing it
+- Update to 1.9.6:
+  * various readme updates
+</comment>
+    <requestid>687059</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fcf86cb32106a72ebb9631c76c412760</srcmd5>
+    <version>2.0.4</version>
+    <time>1558037280</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to GitHub tarball, enable tests
+- Update to 2.0.4
+  * Detect captcha challenges, try harder to avoid them
+- Update to 2.0.3
+  * Support latest Cloudflare IUAM challenge
+- Update to 2.0.0
+  * Support latest Cloudflare IUAM challenge
+</comment>
+    <requestid>703129</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>750d4bc44239c13fbb5d44161d1ba9af</srcmd5>
+    <version>2.0.7</version>
+    <time>1560537751</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.7
+  * Enable HTTPS adapter by default
+</comment>
+    <requestid>709817</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c0fdfa2706424b2484481d6434f19d73</srcmd5>
+    <version>2.0.8</version>
+    <time>1565695311</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.8
+  * Default SSL ciphers changed to resolve issues with some users
+    reporting receiving Cloudflare captchas</comment>
+    <requestid>722490</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>962d548a069bcbb976bea801d91aac7b</srcmd5>
+    <version>2.1.1</version>
+    <time>1586869797</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1
+  * Updated to handle latest Cloudflare IUAM challenge
+</comment>
+    <requestid>792980</requestid>
+  </revision>
+</revisionlist>
