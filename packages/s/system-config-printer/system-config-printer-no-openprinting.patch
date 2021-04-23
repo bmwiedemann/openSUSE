@@ -14,11 +14,11 @@ Index: system-config-printer-1.5.5/cupshelpers/openprinting.py
          # CGI script to be executed
          query_command = "/query.cgi"
 @@ -76,6 +80,7 @@ class _QueryThread (threading.Thread):
-             if status == None: status = 0
+                 status = 0
  
          _debugprint ("%s: query complete" % self)
 +        ## openSUSE: just a guard to know if first part in patch should be updated
-         if self.callback != None:
+         if self.callback is not None:
              self.callback (status, self.user_data, self.result)
  
 Index: system-config-printer-1.5.5/newprinter.py

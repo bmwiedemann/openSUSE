@@ -8,7 +8,7 @@ Index: system-config-printer-1.5.4/print-applet.desktop.in
  Type=Application
 -Icon=printer
 +Icon=system-config-printer
- NotShowIn=KDE;
+ NotShowIn=KDE;GNOME;Cinnamon;
  StartupNotify=false
  X-GNOME-Autostart-Delay=30
 Index: system-config-printer-1.5.4/system-config-printer.desktop.in

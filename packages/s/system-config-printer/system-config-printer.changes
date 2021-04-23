@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Apr 18 11:08:17 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 1.5.15 (boo#1184930):
+  + set the minimum gettext version because autoconf 2.70 requires
+    it.
+  + create README file because autoconf requires it.
+- Changes from version 1.5.14:
+  + set preferred driver for DYMO LabelWriter 400.
+  + udev: ignore devices capable of IPP over USB, we have ipp-usb
+    for it.
+  + asyncpk1.py: dont require the exact Gdk version.
+- Changes from version 1.5.13:
+  + add checks for NULL in udev-configure-printer.
+  + github #174 - put back notification about missing pysmbc.
+  + python3.9 - xml module removed elem.getchildren() method,
+    use list(elem).
+  + Make the matching rule of printer device path more flexible.
+- For more details of the update between 1.5.7 and 1.5.13, please
+  see packaged NEWS file.
+- Drop upstream merged patches:
+  + 0001-Fallback-to-using-LC_CTYPE-if-LC_MESSAGES-is-empty-a.patch
+  + fix_connect_dialog_focus.diff
+  + system-config-printer-no-params-to-py3.patch
+  + system-config-printer-Gtk-introspect.patch
+  + system-config-printer-no-applet-in-gnome.patch
+
+-------------------------------------------------------------------
 Sat Jan 25 14:20:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

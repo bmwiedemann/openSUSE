@@ -1,7 +1,7 @@
 #
 # spec file for package system-config-printer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,30 +19,19 @@
 %define _icontheme adwaita
 %define _iconlocation Adwaita
 Name:           system-config-printer
-Version:        1.5.7
+Version:        1.5.15
 Release:        0
 Summary:        A printer administration tool
 License:        GPL-2.0-or-later
 Group:          Hardware/Printing
-URL:            http://cyberelk.net/tim/software/system-config-printer/
-Source0:        http://cyberelk.net/tim/data/system-config-printer/1.5/%{name}-%{version}.tar.xz
-Source1:        http://cyberelk.net/tim/data/system-config-printer/1.5/%{name}-%{version}.tar.xz.sig
-Source2:        %{name}.keyring
+URL:            https://github.com/OpenPrinting/system-config-printer/
+Source0:        https://github.com/OpenPrinting/system-config-printer/releases/download/v%{version}/system-config-printer-%{version}.tar.gz
+Source1:        https://github.com/OpenPrinting/system-config-printer/releases/download/v%{version}/system-config-printer-%{version}.tar.gz.asc
 Source99:       %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE system-config-printer-icon-brp-friendly.patch vuntz@novell.com -- brp checks don't like the printer icon name, so we have to use something else
 Patch13:        system-config-printer-icon-brp-friendly.patch
 # PATCH-FIX-OPENSUSE system-config-printer-no-openprinting.patch bnc#733542 vuntz@opensuse.org -- Disable feature that downloads ppd from openprinting.org
 Patch19:        system-config-printer-no-openprinting.patch
-# PATCH-FIX-UPSTREAM system-config-printer-Gtk-introspect.patch bnc#852450 dimstar@opensuse.org -- Require Gtk 3.0 to be present
-Patch20:        system-config-printer-Gtk-introspect.patch
-# PATCH-FIX-UPSTREAM system-config-printer-no-applet-in-gnome.patch rh#677676 fcrozat@suse.com -- Do not start applet in GNOME
-Patch21:        system-config-printer-no-applet-in-gnome.patch
-# PATCH-FIX-UPSTREAM system-config-printer-no-params-to-py3.patch boo#924809 dimstar@opensuse.org -- Do not pass parameters to python3
-Patch22:        system-config-printer-no-params-to-py3.patch
-# PATCH-FIX-UPSTREAM fix_connect_dialog_focus.diff gh#twaugh/system-config-printer#38 alarrosa@suse.com -- Allow to set the focus on a connect dialog combobox so the user can edit its contents
-Patch24:        fix_connect_dialog_focus.diff
-# PATCH-FIX-UPSTREAM 0001-Fallback-to-using-LC_CTYPE-if-LC_MESSAGES-is-empty-a.patch gh#twaugh/system-config-printer#108 alarrosa@suse.com -- Fix language usage when LC_MESSAGES is not set (which is the default)
-Patch25:        0001-Fallback-to-using-LC_CTYPE-if-LC_MESSAGES-is-empty-a.patch
 # PATCH-FEATURE-OPENSUSE system-config-printer-no-simple-gui.patch boo#1090189 dimstar@opensuse.org -- Remove unused _simple_gui class in openprinting.py. Pulls in GTK
 Patch100:       system-config-printer-no-simple-gui.patch
 # For directory ownership
@@ -163,11 +152,6 @@ automatically configured when plugged on the computer.
 %setup -q
 %patch13 -p1
 %patch19 -p1
-%patch20 -p1
-%patch21 -p1
-%patch22 -p1
-%patch24 -p1
-%patch25 -p1
 %patch100 -p1
 
 %build
@@ -201,8 +185,8 @@ done
 %doc ChangeLog README
 %{_bindir}/%{name}
 %{_bindir}/install-printerdriver
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/system-config-printer.appdata.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/system-config-printer.appdata.xml
 %{_datadir}/applications/system-config-printer.desktop
 %{_mandir}/man1/system-config-printer.1%{?ext_man}
 
