@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Apr  9 14:48:52 UTC 2021 - Ailin Nemui <ailin.nemui@gmail.com>
 
-- update to 1.2.3
+- update to 1.2.3 (boo#1184848)
   - Fix the compilation of utf8proc (#1021)
   - Fix wrong call to free. By Zero King (#1076)
   - Fix a colour reset in true colour themes when encountering

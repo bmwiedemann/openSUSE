@@ -513,4 +513,12 @@ Encode that % in the desc. (forwarded request 671883 from jengelh)</comment>
     <comment></comment>
     <requestid>884405</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>e85af160dbc16599c1afcd7de048b53a</srcmd5>
+    <version>1.2.3</version>
+    <time>1619192993</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>887977</requestid>
+  </revision>
 </revisionlist>
