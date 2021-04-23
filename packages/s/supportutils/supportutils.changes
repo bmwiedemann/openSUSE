@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr 19 17:05:13 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Additions to version 3.1.15
+  + Checks package signatures in rpm.txt (bsc#1021918)
+  + Optimize find (bsc#1184912)
+- Using zypper --xmlout (bsc#1181351)
+- Error fix for sysfs.txt (bsc#1089870)
+
+-------------------------------------------------------------------
+Thu Apr 15 18:14:10 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Additions to version 3.1.15
+  + Added drbd-overview to drbd.txt
+  + Added list-timers to systemd.txt (bsc#1169348)
+  + Including nfs4 in search (bsc#1184829)
+- Minor: Fix a typo (executible -> executable) #99
+- Changed minor wording to loaded module
+
+-------------------------------------------------------------------
 Mon Mar 22 17:25:12 UTC 2021 - jason.record@gmail.com
 
 - [powerpc] Collect dynamic_debug log files for ibmvNIC #98 (bsc#1183826)
