@@ -7,4 +7,12 @@
     <comment>Python implementation of the Earth Mover's Distance</comment>
     <requestid>655378</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>08a4b8b9d248e7a2a942f39390774e2a</srcmd5>
+    <version>0.5.1</version>
+    <time>1619193041</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>887916</requestid>
+  </revision>
 </revisionlist>

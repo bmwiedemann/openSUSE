@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 23 05:06:04 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.6, due to no NumPy. 
+
+-------------------------------------------------------------------
 Tue Nov  7 18:41:34 UTC 2017 - toddrme2178@gmail.com
 
 - initial version
