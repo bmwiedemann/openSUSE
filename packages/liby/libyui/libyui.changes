@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Apr 22 09:41:44 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added reference to autodocs (C++ API doc) and more docs
+  (part of bsc#1181653)
+- 4.2.5
+
+-------------------------------------------------------------------
+Thu Apr 15 13:54:57 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added support for $CMAKE_INSTALL_PREFIX for alternate installation dir
+  either as -D on the cmake command line or in the environment
+  (gh#14, part of bsc#1181653)
+- 4.2.4
+
+-------------------------------------------------------------------
+Wed Apr 14 13:53:22 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added toplevel build-all script (part of bsc#1181653)
+- Revamped toplevel README.md
+- Create local include dirs at cmake time to avoid root ownership
+  after "make install"
+- 4.2.3
+
+-------------------------------------------------------------------
+Tue Apr 13 15:51:37 UTC 2021 - Rodion Iafarov <riafarov@suse.com>
+
+- Adjust documentation url in libyui-rest-api for the new project
+  structure (bsc#1184363)
+- 4.2.2
+
+-------------------------------------------------------------------
 Thu Apr  8 15:06:58 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Cleaned up cmake build environment (part of bsc#1181653):
