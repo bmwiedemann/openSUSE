@@ -1,0 +1,25 @@
+<package name="perl-Data-Dump-Streamer" project="openSUSE:Factory">
+  <title>Accurately serializes a Data Structure as Perl Code</title>
+  <description>Given a list of scalars or reference variables, writes out their contents in
+perl syntax. The references can also be objects. The contents of each variable
+is output using the least number of Perl statements as convenient, usually only
+one. Self-referential structures, closures, and objects are output correctly.
+
+The return value can be evaled to get back an identical copy of the original
+reference structure. In some cases this may require the use of utility subs
+that Data::Dump::Streamer will optionally export.
+
+This module is very similar in concept to the core module Data::Dumper, with
+the major differences being that this module is designed to output to a stream
+instead of constructing its output in memory (trading speed for memory), and
+that the traversal over the data structure is effectively breadth first versus
+the depth first traversal done by the others.
+
+In fact the data structure is scanned twice, first in breadth first mode to
+perform structural analysis, and then in depth first mode to actually produce
+the output, but obeying the depth relationships of the first pass.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Data-Dump-Streamer"/>
+  <url>http://search.cpan.org/dist/Data-Dump-Streamer/</url>
+</package>
