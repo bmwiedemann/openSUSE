@@ -20,7 +20,7 @@
 %define _log_dir        %{_localstatedir}/log/%{name}
 %define _conf_dir       %{_sysconfdir}/%{name}
 Name:           redis
-Version:        6.2.1
+Version:        6.2.2
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
@@ -41,7 +41,7 @@ Patch0:         %{name}-conf.patch
 Patch1:         getMcontextEip-return-value.patch
 Patch3:         reproducible.patch
 Patch4:         ppc-atomic.patch
-BuildRequires:  libopenssl-devel
+BuildRequires:  libopenssl-devel >= 1.1.1
 BuildRequires:  pkgconfig
 BuildRequires:  procps
 BuildRequires:  sysuser-shadow
