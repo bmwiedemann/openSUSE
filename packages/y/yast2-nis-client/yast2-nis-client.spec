@@ -17,29 +17,26 @@
 
 
 Name:           yast2-nis-client
+Version:        4.4.1
+Release:        0
 Summary:        YaST2 - Network Information Services (NIS, YP) Configuration
 License:        GPL-2.0-only
 Group:          System/YaST
-Version:        4.3.6
-Release:        0
 URL:            https://github.com/yast/yast-nis-client
-
 Source0:        %{name}-%{version}.tar.bz2
-
 # SuSEfirewall2_* services merged into one service yast2-2.23.17
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
+# Nsswitch#Write
+BuildRequires:  libnsl-devel
+BuildRequires:  libtirpc-devel
 BuildRequires:  libtool
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2 >= 2.23.17
 BuildRequires:  yast2-core-devel
-# Nsswitch#Write
-BuildRequires:  libnsl-devel
-BuildRequires:  libtirpc-devel
-BuildRequires:  yast2-devtools >= 4.2.2
+BuildRequires:  yast2-devtools >= 4.4.0
 BuildRequires:  yast2-pam >= 4.3.0
-BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
-
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 # Wizard::SetDesktopTitleAndIcon
 Requires:       yast2 >= 2.21.22
 Requires:       yast2-network
@@ -47,21 +44,17 @@ Requires:       yast2-network
 Requires:       yast2-pam >= 4.3.2
 Requires:       yast2-ruby-bindings >= 1.0.0
 Requires:       yp-tools
-
+Supplements:    autoyast(nis)
 # .net.hostnames.rpc
 Conflicts:      yast2-core < 2.8.0
-
-Provides:       yast2-config-network:/usr/lib/YaST2/clients/lan_ypclient.ycp
+Provides:       yast2-config-network:%{_prefix}/lib/YaST2/clients/lan_ypclient.ycp
 Provides:       yast2-config-nis
 Provides:       yast2-config-nis-devel
 Provides:       yast2-trans-nis
-
 Obsoletes:      yast2-config-nis
 Obsoletes:      yast2-config-nis-devel
 Obsoletes:      yast2-nis-client-devel-doc
 Obsoletes:      yast2-trans-nis
-
-Supplements:    autoyast(nis)
 
 %description
 The YaST2 component for NIS configuration. NIS is a service similar to
@@ -78,6 +71,7 @@ yellow pages.
 %yast_metainfo
 
 %files
+%license COPYING
 %{yast_yncludedir}
 %{yast_clientdir}
 %{yast_moduledir}
@@ -88,7 +82,5 @@ yellow pages.
 %{yast_scrconfdir}
 %{yast_schemadir}
 %{yast_icondir}
-%doc %{yast_docdir}
-%license COPYING
 
 %changelog
