@@ -47,4 +47,23 @@
     <comment>Revert to rev 16</comment>
     <requestid>864128</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ac5c6567ab1b678cb0d9689d71c46caa</srcmd5>
+    <version>2.11.2</version>
+    <time>1619193048</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 2.11.2:
+  * Recognise that the smfp backend returns &quot;Device busy&quot; if the
+    scanner is turned off and display the relevant dialog, closes
+    #378 (gscan2pdf claims scanner is &quot;busy&quot; when not connected).
+  * Translation updates.
+- Changes from version 2.11.1:
+  * Fix bug importing a DjVu or TIFF with depth &gt; 1 and saving it
+    as PDF with G3/4.
+  * Remove zip and packbits PDF compression options. Rename
+    PNG-&gt;Flate, closes bug #366 (Rename PDF compression options).
+  * Don't write blank metadata fields, closes bug #375.
+  * Translation updates. (forwarded request 882461 from malcolmlewis)</comment>
+    <requestid>888048</requestid>
+  </revision>
 </revisionlist>

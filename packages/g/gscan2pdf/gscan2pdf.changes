@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Thu Apr  1 00:18:38 UTC 2021 - malcolmlewis@opensuse.org
+
+- Updated to version 2.11.2:
+  * Recognise that the smfp backend returns "Device busy" if the
+    scanner is turned off and display the relevant dialog, closes
+    #378 (gscan2pdf claims scanner is "busy" when not connected).
+  * Translation updates.
+- Changes from version 2.11.1:
+  * Fix bug importing a DjVu or TIFF with depth > 1 and saving it
+    as PDF with G3/4.
+  * Remove zip and packbits PDF compression options. Rename
+    PNG->Flate, closes bug #366 (Rename PDF compression options).
+  * Don't write blank metadata fields, closes bug #375.
+  * Translation updates.
+
+-------------------------------------------------------------------
+Tue Jan 19 19:35:30 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.11.0
+  * Run started callback before error callback
+  * + option to navigate through OCR output by position
+  * Fix hang trying to process page that has been deleted.
+  * Quit with fatal error if module versions do not match executable version.
+    Closes #370 (gscan2pdf opens to white screen).
+  * Take undo/redo snapshot when adding or correcting OCR text
+  * Don't lose OCR output when running user-defined tool
+  * Only update list of user-defined tools on pressing apply in preferences.
+  * + vertically split screen view for image and OCR output.
+  * Correct use of dpi option in v4.0.0-beta.1 tesseract call (i.e. Bionic).
+  * Check that the core font cannot encode the glyphs before using TTF.
+  * + option to put OCR output to the right of the image, rather than behind it.
+  * Additionally make source "Normal" a synonym for "flatbed". Closes #371
+    (Improve option for auto-select #Pages upon switching ADF/Normal)
+  * Fix bug estimating height of non-greyscale variable height scans.
+  * Update to Hungarian translation (thanks to csola)
+  * Update to Ukrainian translation (thanks to Yuri Chornoivan)
+- Changes from 2.10.2
+  * Catch errors running default launcher
+  * Check both stderr and stdout for libtiff-tools version
+    Closes Debian bug 977532 (gscan2pdf: save option not available)
+  * Rename drag tool -> pan tool
+  * Update to German translation (thanks to Matthias Sprau)
+  * Update to Turkish translation (thanks to Buckethead)
+  * Update to Ukrainian translation (thanks to Yuri Chornoivan)
+- Changes from 2.10.1
+  * Switch from Perlmagick to imagemagick for threshold tool to improve
+    performance. Closes Debian bug 968918 (Threshold function is extremely slow)
+  * + missing crop icon
+  * + View/Edit OCR toggle
+  * Don't zoom in/out if plus/minus pressed whilst editing OCR
+  * Allow cut/copy/paste whilst editing OCR
+  * Fixed bug manually adding OCR that overlaps with existing words
+  * + button to duplicate OCR text
+  * Fixed bug adding OCR text '0'
+  * Fixed bug processing deleted page
+  * Don't sort OCR confidence list if not changed
+  * Fixed bug decoding 3-octal UTF-8 characters in DjVu text layer
+  * Update to Hungarian translation (thanks to csola)
+  * Update to Ukrainian translation (thanks to Yuri Chornoivan)
+
+-------------------------------------------------------------------
+Wed Jan  6 13:42:51 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Insert needed Requires:perl(Gtk3::ImageView).
+- Move djvulibre, tiff and pdftk from Reccommends to Requires, 
+  because missing of these package will rise up a warning at startup.
+
+-------------------------------------------------------------------
+Mon Jan  4 18:01:31 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Change requires: from perl(PDF::API2) to perl(PDF::Builder).
+  The change was introduced in 2.10.0.
+
+-------------------------------------------------------------------
 Tue Oct 27 16:16:24 UTC 2020 - Sauerlandlinux@gmx.de
 
 - Add Recommends on pdftk for PDF encryption

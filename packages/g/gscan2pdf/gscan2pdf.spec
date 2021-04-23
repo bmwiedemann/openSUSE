@@ -1,7 +1,7 @@
 #
 # spec file for package gscan2pdf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gscan2pdf
-Version:        2.8.1
+Version:        2.11.2
 Release:        0
 Summary:        Easy scan to PDF
 License:        GPL-3.0-only
@@ -35,13 +35,14 @@ Requires:       perl(Filesys::Df)
 Requires:       perl(Glib)
 Requires:       perl(GooCanvas2)
 Requires:       perl(Gtk3)
+Requires:       perl(Gtk3::ImageView)
 Requires:       perl(Gtk3::SimpleList)
 Requires:       perl(Image::Magick)
 Requires:       perl(Image::Sane)
 Requires:       perl(List::MoreUtils)
 Requires:       perl(Locale::gettext)
 Requires:       perl(Log::Log4perl)
-Requires:       perl(PDF::API2)
+Requires:       perl(PDF::Builder)
 Requires:       perl(Proc::ProcessTable)
 Requires:       perl(Readonly)
 Requires:       perl(Set::IntSpan)
@@ -50,11 +51,11 @@ Requires:       typelib(GooCanvas) = 2.0
 %if 0%{?sle_version} >= 150200 && 0%{?is_opensuse} || 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
 Requires:       typelib(GdkPixdata) = 2.0
 %endif
-Recommends:     djvulibre
+Requires:       djvulibre
+Requires:       pdftk
+Requires:       tiff
 Recommends:     gocr
 Recommends:     tesseract-ocr
-Recommends:     tiff
-Recommends:     pdftk
 BuildArch:      noarch
 %{perl_requires}
 
