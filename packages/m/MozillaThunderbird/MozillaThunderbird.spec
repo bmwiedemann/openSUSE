@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major          78
-%define mainver        %major.9.1
-%define orig_version   78.9.1
+%define mainver        %major.10.0
+%define orig_version   78.10.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -212,6 +212,7 @@ PreReq:         textutils
 %requires_ge    mozilla-nss
 %requires_ge    libfreetype6
 Recommends:     libcanberra0
+Recommends:     libotr5
 Recommends:     libpulse0
 Requires(post): desktop-file-utils
 Requires(postun):desktop-file-utils
