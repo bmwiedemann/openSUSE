@@ -1,0 +1,10 @@
+<package name="yast2-multipath" project="openSUSE:Factory">
+  <title>YaST2 - Multipath Configuration</title>
+  <description>Multipath I/O is a fault tolerance technique whereby there is more than
+one physical path between the CPU in a computer system and its mass
+storage devices through the buses, controllers, switches, and bridge
+devices connecting them.
+
+You can configure your multipathed devices with this module.</description>
+  <devel project="YaST:Head" package="yast2-multipath"/>
+</package>
