@@ -18,12 +18,12 @@
 
 %define cpan_name MIME-Types
 Name:           perl-MIME-Types
-Version:        2.19
+Version:        2.20
 Release:        0
 Summary:        Definition of MIME types
 License:        Artistic-1.0 OR GPL-1.0-or-later
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARKOV/home/markov/local/perl-git/%{cpan_name}/public_html/mime-types/source/MIME-Types-219targz/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARKOV/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl

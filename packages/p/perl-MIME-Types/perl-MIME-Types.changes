@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 23 03:08:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.20
+   see /usr/share/doc/packages/perl-MIME-Types/ChangeLog
+
+  version 2.20: Thu 22 Apr 12:48:35 CEST 2021
+
+  	Fixes:
+  	- problems with PAUSE cause the previous release to show-up in
+  	  the wrong location.  Let's hope this release solves it.
+
+  	Changes:
+  	- heif/heic/heifs/heics/hif fix [issue #9, Даша Федорова]
+  	- no 'and' and 'or' extensions [issue #9, Даша Федорова]
+  	- application/octet-stream is better for .bin [issue #10, Даша Федорова]
+
+-------------------------------------------------------------------
 Sat Apr 17 03:06:24 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.19
