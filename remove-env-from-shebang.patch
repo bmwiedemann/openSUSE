@@ -1,0 +1,10 @@
+Index: wget-1.21.1/util/rmold.pl
+===================================================================
+--- wget-1.21.1.orig/util/rmold.pl
++++ wget-1.21.1/util/rmold.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env perl -w
++#!/usr/bin/perl -w
+ 
+ # Copyright (C) 1995-1997, 2007-2011, 2015, 2018-2021 Free Software
+ # Foundation, Inc.
