@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-devtools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           yast2-devtools
-Version:        4.2.7
+Version:        4.4.0
 Release:        0
-URL:            https://github.com/yast/yast-devtools
 Summary:        YaST2 - Development Tools
 License:        GPL-2.0-or-later
 Group:          System/YaST
-
+URL:            https://github.com/yast/yast-devtools
 Source0:        %{name}-%{version}.tar.bz2
-
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -35,9 +33,7 @@ BuildRequires:  libxslt
 BuildRequires:  perl-XML-Writer
 BuildRequires:  pkgconfig
 BuildRequires:  sgml-skel
-
 Requires:       yast2-buildtools
-
 BuildArch:      noarch
 
 %description
@@ -45,21 +41,14 @@ Scripts and templates for developing YaST2 modules and components.
 
 %package -n yast2-buildtools
 Summary:        Minimal set of tools needed to build yast module
-Group:          System/YaST
-
-Requires:       perl
-Requires:       perl-XML-Writer
 # we install our .pc under $prefix/share
+Group:          System/YaST
 Requires:       autoconf
 Requires:       automake
 Requires:       gettext-tools
+Requires:       perl
+Requires:       perl-XML-Writer
 Requires:       pkgconfig >= 0.16
-
-%if 0%{?suse_version} <= 1230
-# extra package for yard Markdown formatting in openSUSE <= 12.3
-Requires:       rubygem(%{rb_default_ruby_abi}:redcarpet)
-%endif
-
 Recommends:     cmake
 # /usr/lib/YaST2/bin/ydoxygen needs it
 Recommends:     doxygen
@@ -79,12 +68,12 @@ modules and components (both ruby and C++).
 %build
 make -f Makefile.cvs all
 
-./configure --prefix=%{_prefix} --libdir=%{_libdir}
-make
+%configure
+%make_build
 
 %install
-make install DESTDIR="%{buildroot}"
-[ -e "%{_datadir}/YaST2/data/devtools/NO_MAKE_CHECK" ] || Y2DIR="%{buildroot}%{_datadir}/YaST2" make check DESTDIR="%{buildroot}"
+%make_install
+[ -e "%{_datadir}/YaST2/data/devtools/NO_MAKE_CHECK" ] || Y2DIR="%{buildroot}%{_datadir}/YaST2" make check DESTDIR=%{buildroot}
 for f in `find %{buildroot}%{_datadir}/applications/YaST2 -name "*.desktop"` ; do
     d=${f##*/}
     %suse_update_desktop_file -d ycc_${d%.desktop} ${d%.desktop}
@@ -120,7 +109,7 @@ EOF
 %dir %{_prefix}/lib/YaST2
 %{_datadir}/cmake
 %dir %{_datadir}/YaST2
-%doc %{_datadir}/doc/packages/%{name}
+%doc %{_docdir}/%{name}
 %dir %{_prefix}/lib/YaST2/bin
 %{_prefix}/lib/YaST2/bin/scrdoc
 %{_prefix}/lib/YaST2/bin/ycp_puttext

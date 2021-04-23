@@ -1,9 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  7 19:37:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop installing COPYING as documentation - it is already installed
+  in licensedir (bsc#1184897)
+- spec file cleanups
+- 4.4.0
+
+-------------------------------------------------------------------
 Sun Oct  4 19:26:07 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Adapt appstream builder to changes in control center (related to
   (fate#319035) ( thanks to Stasiek Michalski)
-- 4.3.7
+- 4.2.7
 
 -------------------------------------------------------------------
 Tue May  5 13:20:44 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
