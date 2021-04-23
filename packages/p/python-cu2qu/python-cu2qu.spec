@@ -23,9 +23,10 @@ Version:        1.6.7
 Release:        0
 Summary:        Cubic-to-quadratic bezier curve conversion
 License:        Apache-2.0
-URL:            https://github.com/googlefonts
+URL:            https://github.com/googlefonts/cu2qu
 Source:         https://files.pythonhosted.org/packages/source/c/cu2qu/cu2qu-%{version}.zip
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module fs}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 23 13:27:56 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add fs BR to eliminate build failure.
+
+-------------------------------------------------------------------
 Sat Feb 13 10:23:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 (no FontTools as that requires scipy) 

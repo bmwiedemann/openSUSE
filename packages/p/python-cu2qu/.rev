@@ -23,4 +23,13 @@
     <comment>- skip python 3.6 (no FontTools as that requires scipy)</comment>
     <requestid>871633</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>d7781d9c6c6995fcdcf7f85faa69c58c</srcmd5>
+    <version>1.6.7</version>
+    <time>1619193048</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fs BR to eliminate build failure.
+</comment>
+    <requestid>888045</requestid>
+  </revision>
 </revisionlist>
