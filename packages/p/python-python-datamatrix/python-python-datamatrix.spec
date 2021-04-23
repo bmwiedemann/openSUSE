@@ -23,16 +23,15 @@ Version:        0.11.1
 Release:        0
 Summary:        A python library to work with tabular data
 License:        GPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/open-cogsci/python-datamatrix
 Source:         https://github.com/open-cogsci/python-datamatrix/archive/release/%{version}.tar.gz#/python-datamatrix-release-%{version}.tar.gz
 BuildRequires:  %{python_module fastnumbers}
-BuildRequires:  %{python_module json_tricks}
 BuildRequires:  %{python_module openpyxl}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module json_tricks if (%python-base without python36-base)}
 BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
 BuildRequires:  %{python_module nibabel if (%python-base without python36-base)}
 BuildRequires:  %{python_module nilearn if (%python-base without python36-base)}
@@ -80,7 +79,7 @@ fi
 
 %files %{python_files}
 %license copyright
-%doc readme.md 
+%doc readme.md
 %doc doc-pelican/content/pages/*
 %doc doc-pelican/data/
 %doc doc-pelican/include/api

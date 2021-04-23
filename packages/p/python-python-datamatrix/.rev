@@ -45,4 +45,12 @@
     <comment></comment>
     <requestid>873934</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e50cd2e8597f043856ed661490ddc192</srcmd5>
+    <version>0.11.1</version>
+    <time>1619193041</time>
+    <user>dimstar_suse</user>
+    <comment>- Add json_tricks to the list of optional but unavailable dependencies.</comment>
+    <requestid>887917</requestid>
+  </revision>
 </revisionlist>
