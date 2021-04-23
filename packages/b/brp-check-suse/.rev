@@ -588,4 +588,16 @@ Lets break everything :)
   * simplify split_paths using std::getline</comment>
     <requestid>863264</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>34ef3e1e181c331c54b34b4493deb9cd</srcmd5>
+    <version>84.87+git20210420.a4765d7</version>
+    <time>1619192975</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20210420.a4765d7:
+  * rename brp-50-fipscheck to brp-50-generate-fips-hmac
+
+- Update to version 84.87+git20210419.bf6495b:
+  * add brp-50-fipscheck for bsc#1184555</comment>
+    <requestid>887052</requestid>
+  </revision>
 </revisionlist>

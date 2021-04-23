@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 20 15:09:48 UTC 2021 - ro@suse.de
+
+- Update to version 84.87+git20210420.a4765d7:
+  * rename brp-50-fipscheck to brp-50-generate-fips-hmac
+
+-------------------------------------------------------------------
+Mon Apr 19 13:07:43 UTC 2021 - ro@suse.de
+
+- Update to version 84.87+git20210419.bf6495b:
+  * add brp-50-fipscheck for bsc#1184555
+
+-------------------------------------------------------------------
 Fri Jan 15 09:04:13 UTC 2021 - coolo@suse.com
 
 - Update to version 84.87+git20201203.5008eba:
