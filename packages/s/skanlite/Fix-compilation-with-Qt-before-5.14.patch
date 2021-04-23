@@ -1,0 +1,27 @@
+From b110846fadeb4f8fab48e0f488a335de7e16a7be Mon Sep 17 00:00:00 2001
+From: Wolfgang Bauer <wbauer@tmo.at>
+Date: Wed, 15 Jul 2020 09:11:43 +0000
+Subject: [PATCH] Fix compilation with Qt before 5.14
+
+This line has been forgotten to be changed in commit 823abcd2, resulting
+in a compiler error when e.g. building with Qt 5.12 LTS.
+---
+ src/SaveLocation.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/SaveLocation.cpp b/src/SaveLocation.cpp
+index 9709d49..d210be8 100644
+--- a/src/SaveLocation.cpp
++++ b/src/SaveLocation.cpp
+@@ -42,7 +42,7 @@ SaveLocation::SaveLocation(QWidget *parent)
+     connect(m_ui->u_urlRequester, &KUrlRequester::textChanged, this, &SaveLocation::updateGui);
+     connect(m_ui->u_imgPrefix, &QLineEdit::textChanged, this, &SaveLocation::updateGui);
+ #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+-    connect(u_imgFormat, static_cast<void (QComboBox::*)(const QString &)>(&QComboBox::activated), this, &SaveLocation::updateGui);
++    connect(m_ui->u_imgFormat, static_cast<void (QComboBox::*)(const QString &)>(&QComboBox::activated), this, &SaveLocation::updateGui);
+ #else
+     connect(m_ui->u_imgFormat, static_cast<void (QComboBox::*)(const QString &)>(&QComboBox::textActivated), this, &SaveLocation::updateGui);
+ #endif
+-- 
+GitLab
+

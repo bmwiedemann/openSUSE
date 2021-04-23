@@ -1,0 +1,5 @@
+<package name="skanlite" project="openSUSE:Factory">
+  <title>Scanner Front-End</title>
+  <description>Skanlite is a KDE front-end for the sane scanner library.</description>
+  <devel project="KDE:Extra" package="skanlite"/>
+</package>
