@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 12 13:01:27 MDT 2021 - carnold@suse.com
+
+- Add support for detecting SUSE Linux Enterprise Micro. See also
+  the osinfo-db package for the SLEM OS description file.
+  virtinst-add-slem-detection-support.patch
+
+-------------------------------------------------------------------
 Wed Feb 24 14:10:01 MST 2021 - acho@suse.com
 
 - bsc#1178926 - Unable to find any master var for loader

@@ -1750,4 +1750,12 @@
     <comment>Fix for bsc#1178926 installing with legacy bios</comment>
     <requestid>875162</requestid>
   </revision>
+  <revision rev="222" vrev="8">
+    <srcmd5>d7c05dc585fad2d0c63d4c7912acdf04</srcmd5>
+    <version>3.2.0</version>
+    <time>1619192977</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>886769</requestid>
+  </revision>
 </revisionlist>
