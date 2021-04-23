@@ -17,12 +17,12 @@
 
 
 Name:           yast2-pkg-bindings
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Summary:        YaST2 - Package Manager Access
+License:        GPL-2.0-only
+Group:          System/YaST
 Source0:        %{name}-%{version}.tar.bz2
-
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -30,22 +30,17 @@ BuildRequires:  libxslt
 # zypp::VendorAttr API
 BuildRequires:  libzypp-devel >= 17.25.0
 BuildRequires:  yast2-core-devel
-BuildRequires:  yast2-devtools >= 3.1.10
-
+BuildRequires:  yast2-devtools >= 4.4.0
 # needed for network detection
 Requires:       grep
 Requires:       iproute2
-
-Summary:        YaST2 - Package Manager Access
-License:        GPL-2.0-only
-Group:          System/YaST
 
 %description
 This package contains a name space for accessing the package manager
 library in YaST2.
 
 %prep
-%setup -n %{name}-%{version}
+%setup -q
 # build only the library, ignore documentation (it is in devel-doc package)
 echo "src" > SUBDIRS
 
@@ -58,10 +53,8 @@ echo "src" > SUBDIRS
 rm -rf %{buildroot}/%{yast_plugindir}/libpy2Pkg.la
 
 %files
-%defattr(-,root,root)
+%license COPYING
 %{yast_plugindir}/libpy2Pkg.so.*
 %{yast_plugindir}/libpy2Pkg.so
-%doc %{yast_docdir}
-%license COPYING
 
 %changelog

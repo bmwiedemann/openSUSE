@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop packaging docdir, it only contained the license which
+  is now in licensedir (bsc#1184897)
+- spec file cleanups
+- 4.4.1
+
+-------------------------------------------------------------------
 Wed Apr  7 15:32:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Removed not working PkgFunctions::AddAuthData(), it is not needed

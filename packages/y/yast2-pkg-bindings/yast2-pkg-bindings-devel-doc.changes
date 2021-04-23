@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop packaging docdir, it only contained the license which
+  is now in licensedir (bsc#1184897)
+- spec file cleanups
+- 4.4.1
+
+-------------------------------------------------------------------
 Thu Sep 17 11:37:48 CEST 2020 - schubi@suse.de
 
 - Added new call Pkg::SetAdditionalVendors (jsc#SLE-14807).
