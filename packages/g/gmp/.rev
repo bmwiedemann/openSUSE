@@ -523,4 +523,16 @@ discover that breaks ...
 </comment>
     <requestid>855709</requestid>
   </revision>
+  <revision rev="58" vrev="3">
+    <srcmd5>334b235e33c7262bd99d077d0071399d</srcmd5>
+    <version>6.2.1</version>
+    <time>1619192975</time>
+    <user>dimstar_suse</user>
+    <comment>Please stage with brp-check-suse (Staging:B)
+
+- Compute FIPS hmac for libgmp.so.10 [bsc#1184555]
+
+- do not break SLE 12 build when applying spec-cleaner</comment>
+    <requestid>887008</requestid>
+  </revision>
 </revisionlist>

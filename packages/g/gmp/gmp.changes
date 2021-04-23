@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 20 12:59:35 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Compute FIPS hmac for libgmp.so.10 [bsc#1184555]
+
+-------------------------------------------------------------------
+Sat Apr 10 12:05:09 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- do not break SLE 12 build when applying spec-cleaner
+
+-------------------------------------------------------------------
 Wed Dec  9 07:24:19 UTC 2020 - Richard Biener <rguenther@suse.com>
 
 - Add gmp-6.2.1-arm64-invert_limb.patch [bsc#1179751]
