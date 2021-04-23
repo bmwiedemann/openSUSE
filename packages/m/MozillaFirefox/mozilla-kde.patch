@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  929fbcb071c2e1ff551c73e8c364e9c1f4495171
+# Parent  53e325f006bd6a31f6f3d40ae248e4058897055a
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -31,7 +31,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  #ifdef MOZ_MEMORY
  #  include "mozmemory.h"
  #endif
-@@ -4573,25 +4574,37 @@ nsresult Preferences::InitInitialObjects
+@@ -4635,25 +4636,37 @@ nsresult Preferences::InitInitialObjects
    // application pref files for backwards compatibility.
    static const char* specialFiles[] = {
  #if defined(XP_MACOSX)
@@ -69,7 +69,7 @@ diff --git a/modules/libpref/Preferences.cpp b/modules/libpref/Preferences.cpp
  
    // Load jar:$app/omni.jar!/defaults/preferences/*.js
    // or jar:$gre/omni.jar!/defaults/preferences/*.js.
-@@ -4656,17 +4669,17 @@ nsresult Preferences::InitInitialObjects
+@@ -4718,17 +4731,17 @@ nsresult Preferences::InitInitialObjects
        }
  
        nsCOMPtr<nsIFile> path = do_QueryInterface(elem);
@@ -841,7 +841,7 @@ diff --git a/uriloader/exthandler/HandlerServiceParent.cpp b/uriloader/exthandle
 diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
 --- a/uriloader/exthandler/moz.build
 +++ b/uriloader/exthandler/moz.build
-@@ -86,17 +86,19 @@ else:
+@@ -77,17 +77,19 @@ else:
      SOURCES += [
          osdir + "/nsOSHelperAppService.cpp",
      ]
@@ -857,11 +857,11 @@ diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
      ]
  elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "android":
      UNIFIED_SOURCES += [
-         "android/nsAndroidHandlerApp.cpp",
-         "android/nsExternalURLHandlerService.cpp",
          "android/nsMIMEInfoAndroid.cpp",
      ]
-@@ -136,16 +138,17 @@ include("/ipc/chromium/chromium-config.m
+ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "windows":
+     UNIFIED_SOURCES += [
+@@ -125,16 +127,17 @@ include("/ipc/chromium/chromium-config.m
  FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
@@ -1837,7 +1837,7 @@ diff --git a/xpcom/components/moz.build b/xpcom/components/moz.build
 diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
 --- a/xpcom/io/nsLocalFileUnix.cpp
 +++ b/xpcom/io/nsLocalFileUnix.cpp
-@@ -49,16 +49,17 @@
+@@ -53,16 +53,17 @@
  #include "prproces.h"
  #include "nsIDirectoryEnumerator.h"
  #include "nsSimpleEnumerator.h"
@@ -1855,7 +1855,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  #  include "prmem.h"
  #  include "plbase64.h"
  
-@@ -2001,62 +2002,77 @@ nsLocalFile::SetPersistentDescriptor(con
+@@ -2021,62 +2022,77 @@ nsLocalFile::SetPersistentDescriptor(con
  
  NS_IMETHODIMP
  nsLocalFile::Reveal() {
@@ -1938,4 +1938,4 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  
    return giovfs->ShowURIForInput(mPath);
  #elif defined(MOZ_WIDGET_ANDROID)
-   // Try to get a mimetype, if this fails just use the file uri alone
+   // Not supported on GeckoView

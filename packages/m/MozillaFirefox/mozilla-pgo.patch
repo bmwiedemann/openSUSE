@@ -1,6 +1,6 @@
 # HG changeset patch
 # User Wolfgang Rosenauer <wr@rosenauer.org>
-# Parent  07b5ae8ccc4806fcc5ad74e32a2d3fb2b9d605d0
+# Parent  ed9681bd4359b83145247fb6b01a56a2c84879fd
 
 diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
 --- a/build/moz.configure/lto-pgo.configure
@@ -155,7 +155,7 @@ diff --git a/extensions/spellcheck/src/moz.build b/extensions/spellcheck/src/moz
 diff --git a/toolkit/components/terminator/nsTerminator.cpp b/toolkit/components/terminator/nsTerminator.cpp
 --- a/toolkit/components/terminator/nsTerminator.cpp
 +++ b/toolkit/components/terminator/nsTerminator.cpp
-@@ -425,16 +425,21 @@ void nsTerminator::StartWatchdog() {
+@@ -451,16 +451,21 @@ void nsTerminator::StartWatchdog() {
        // Defend against overflow
        crashAfterMS = INT32_MAX;
      } else {
@@ -170,10 +170,10 @@ diff --git a/toolkit/components/terminator/nsTerminator.cpp b/toolkit/components
 +  crashAfterMS = INT32_MAX;
 +
    UniquePtr<Options> options(new Options());
-   const PRIntervalTime ticksDuration = PR_MillisecondsToInterval(1000);
+   const PRIntervalTime ticksDuration =
+       PR_MillisecondsToInterval(HEARTBEAT_INTERVAL_MS);
    options->crashAfterTicks = crashAfterMS / ticksDuration;
    // Handle systems where ticksDuration is greater than crashAfterMS.
    if (options->crashAfterTicks == 0) {
-     options->crashAfterTicks = crashAfterMS / 1000;
+     options->crashAfterTicks = crashAfterMS / HEARTBEAT_INTERVAL_MS;
    }
- 

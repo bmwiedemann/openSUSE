@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Sun Apr 18 09:01:32 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 88.0
+  * New: PDF forms now support JavaScript embedded in PDF files.
+    Some PDF forms use JavaScript for validation and other
+    interactive features
+  * New: Print updates: Margin units are now localized
+  * New: Smooth pinch-zooming using a touchpad is now supported
+    on Linux
+  * New: To protect against cross-site privacy leaks, Firefox now
+    isolates window.name data to the website that created it.
+    Learn more
+  * Changed: Firefox will not prompt for access to your
+    microphone or camera if you’ve already granted access to the
+    same device on the same site in the same tab within the past
+    50 seconds. This new grace period reduces the number of times
+    you’re prompted to grant device access
+  * Changed: The ‘Take a Screenshot’ feature was removed from the
+    Page Actions menu in the url bar. To take a screenshot,
+    right-click to open the context menu. You can also add a
+    screenshots shortcut directly to your toolbar via the
+    Customize menu. Open the Firefox menu and select Customize…
+  * Changed: FTP support has been disabled, and its full removal
+    is planned for an upcoming release. Addressing this security
+    risk reduces the likelihood of an attack while also removing
+    support for a non-encrypted protocol
+  * Developer: Introduced a new toggle button in the Network
+    panel for switching between JSON formatted HTTP response and
+    raw data (as received over the wire).
+    !enter image description here
+  * Enterprise: Various bug fixes and new policies have been
+    implemented in the latest version of Firefox. You can see
+    more details in the Firefox for Enterprise 88 Release Notes.
+  * Fixed: Screen readers no longer incorrectly read content that
+    websites have visually hidden, as in the case of articles in
+    the Google Help panel
+  MFSA 2021-16 (bsc#1184960)
+  * CVE-2021-23994 (bmo#1699077)
+    Out of bound write due to lazy initialization
+  * CVE-2021-23995 (bmo#1699835)
+    Use-after-free in Responsive Design Mode
+  * CVE-2021-23996 (bmo#1701834)
+    Content rendered outside of webpage viewport
+  * CVE-2021-23997 (bmo#1701942)
+    Use-after-free when freeing fonts from cache
+  * CVE-2021-23998 (bmo#1667456)
+    Secure Lock icon could have been spoofed
+  * CVE-2021-23999 (bmo#1691153)
+    Blob URLs may have been granted additional privileges
+  * CVE-2021-24000 (bmo#1694698)
+    requestPointerLock() could be applied to a tab different from
+    the visible tab
+  * CVE-2021-24001 (bmo#1694727)
+    Testing code could have enabled session history manipulations
+    by a compromised content process
+  * CVE-2021-24002 (bmo#1702374)
+    Arbitrary FTP command execution on FTP servers using an
+    encoded URL
+  * CVE-2021-29945 (bmo#1700690)
+    Incorrect size computation in WebAssembly JIT could lead to
+    null-reads
+  * CVE-2021-29944 (bmo#1697604)
+    HTML injection vulnerability in Firefox for Android's Reader View
+  * CVE-2021-29946 (bmo#1698503)
+    Port blocking could be bypassed
+  * CVE-2021-29947 (bmo#1651449, bmo#1674142, bmo#1693476,
+    bmo#1696886, bmo#1700091)
+    Memory safety bugs fixed in Firefox 88
+- requires
+  * NSPR 4.30
+  * NSS 3.63.1
+- align wayland support logic
+
+-------------------------------------------------------------------
 Sat Mar 27 10:40:46 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Switch to clang_build globally; just on TW/x86_64 it does not work

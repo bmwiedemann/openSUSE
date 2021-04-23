@@ -4918,4 +4918,41 @@
     Memory safety bugs fixed in Firefox 87 and Firefox ESR 78.9</comment>
     <requestid>881766</requestid>
   </revision>
+  <revision rev="333" vrev="1">
+    <srcmd5>d69b9c21477c9d30410700d0fcc1701f</srcmd5>
+    <version>88.0</version>
+    <time>1619192987</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 88.0
+  * New: PDF forms now support JavaScript embedded in PDF files.
+    Some PDF forms use JavaScript for validation and other
+    interactive features
+  * New: Print updates: Margin units are now localized
+  * New: Smooth pinch-zooming using a touchpad is now supported
+    on Linux
+  * New: To protect against cross-site privacy leaks, Firefox now
+    isolates window.name data to the website that created it.
+    Learn more
+  * Changed: Firefox will not prompt for access to your
+    microphone or camera if you’ve already granted access to the
+    same device on the same site in the same tab within the past
+    50 seconds. This new grace period reduces the number of times
+    you’re prompted to grant device access
+  * Changed: The ‘Take a Screenshot’ feature was removed from the
+    Page Actions menu in the url bar. To take a screenshot,
+    right-click to open the context menu. You can also add a
+    screenshots shortcut directly to your toolbar via the
+    Customize menu. Open the Firefox menu and select Customize…
+  * Changed: FTP support has been disabled, and its full removal
+    is planned for an upcoming release. Addressing this security
+    risk reduces the likelihood of an attack while also removing
+    support for a non-encrypted protocol
+  * Developer: Introduced a new toggle button in the Network
+    panel for switching between JSON formatted HTTP response and
+    raw data (as received over the wire).
+    !enter image description here
+  * Enterprise: Various bug fixes and new policies have been
+    implemented in the latest version of Firefox. You can see</comment>
+    <requestid>886904</requestid>
+  </revision>
 </revisionlist>

@@ -84,8 +84,11 @@ export LIBXCB_ALLOW_SLOPPY_LOCK=1
 export GNOME_DISABLE_CRASH_DIALOG=1
 
 # Wayland
+# Only supported on newer systems
+WAYLAND_SUPPORTED=%WAYLAND_SUPPORTED
+
 # $XDG_SESSION_TYPE should contain either x11 or wayland
-if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+if [ $WAYLAND_SUPPORTED -eq 1 ] && [ "$XDG_SESSION_TYPE" = "wayland" ]; then
   export MOZ_ENABLE_WAYLAND=1
 fi
 

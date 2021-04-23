@@ -32,9 +32,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          87
+%define major          88
 %define mainver        %major.0
-%define orig_version   87.0
+%define orig_version   88.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -85,11 +85,13 @@ BuildArch:      i686
 %else
 %define crashreporter 0
 %endif
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150100
-# pipewire is too old on Leap <15.1
+%define with_pipewire0_3  1
+%define wayland_supported 1
+%if 0%{?sle_version} > 0 && 0%{?sle_version} < 150200
+# pipewire is too old on Leap <=15.1
 %define with_pipewire0_3 0
-%else
-%define with_pipewire0_3 1
+# Wayland is too old on Leap <=15.1 as well
+%define wayland_supported 0
 %endif
 
 Name:           %{pkgname}
@@ -115,8 +117,8 @@ BuildRequires:  libidl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.29
-BuildRequires:  mozilla-nss-devel >= 3.62
+BuildRequires:  mozilla-nspr-devel >= 4.30
+BuildRequires:  mozilla-nss-devel >= 3.63.1
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs10 >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -448,10 +450,10 @@ ac_add_options --prefix=%{_prefix}
 ac_add_options --libdir=%{_libdir}
 ac_add_options --includedir=%{_includedir}
 ac_add_options --enable-release
-%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
-ac_add_options --enable-default-toolkit=cairo-gtk3
-%else
+%if 0%{wayland_supported}
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
+%else
+ac_add_options --enable-default-toolkit=cairo-gtk3
 %endif
 # bmo#1441155 - Disable the generation of Rust debug symbols on Linux32
 %ifarch %ix86 %arm
@@ -628,6 +630,7 @@ mkdir --parents %{buildroot}/usr/bin
 sed "s:%%PREFIX:%{_prefix}:g
 s:%%PROGDIR:%{progdir}:g
 s:%%APPNAME:%{progname}:g
+s:%%WAYLAND_SUPPORTED:%{wayland_supported}:g
 s:%%PROFILE:.mozilla/firefox:g" \
   %{SOURCE3} > %{buildroot}%{progdir}/%{progname}.sh
 chmod 755 %{buildroot}%{progdir}/%{progname}.sh
