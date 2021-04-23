@@ -1,0 +1,71 @@
+# Commit 04181c6fb543db01f635227c7681ced4073109ba
+# Date 2021-03-12 17:01:52 +0100
+# Author Igor Druzhinin <igor.druzhinin@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+vtd: make sure QI/IR are disabled before initialisation
+
+BIOS might pass control to Xen leaving QI and/or IR in enabled and/or
+partially configured state. In case of x2APIC code path where EIM is
+enabled early in boot - those are correctly disabled by Xen before any
+attempt to configure. But for xAPIC that step is missing which was
+proven to cause QI initialization failures on some ICX based platforms
+where QI is left pre-enabled and partially configured by BIOS. That
+problem becomes hard to avoid since those platforms are shipped with
+x2APIC opt out being advertised by default at the same time by firmware.
+
+Unify the behaviour between x2APIC and xAPIC code paths keeping that in
+line with what Linux does.
+
+Signed-off-by: Igor Druzhinin <igor.druzhinin@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+
+--- a/xen/arch/x86/apic.c
++++ b/xen/arch/x86/apic.c
+@@ -46,7 +46,7 @@ static bool __read_mostly tdt_enabled;
+ static bool __initdata tdt_enable = true;
+ boolean_param("tdt", tdt_enable);
+ 
+-static bool __read_mostly iommu_x2apic_enabled;
++bool __read_mostly iommu_x2apic_enabled;
+ 
+ static struct {
+     int active;
+--- a/xen/drivers/passthrough/vtd/iommu.c
++++ b/xen/drivers/passthrough/vtd/iommu.c
+@@ -2121,7 +2121,7 @@ static int __must_check init_vtd_hw(void
+     u32 sts;
+ 
+     /*
+-     * Basic VT-d HW init: set VT-d interrupt, clear VT-d faults.  
++     * Basic VT-d HW init: set VT-d interrupt, clear VT-d faults, etc.
+      */
+     for_each_drhd_unit ( drhd )
+     {
+@@ -2131,6 +2131,16 @@ static int __must_check init_vtd_hw(void
+ 
+         clear_fault_bits(iommu);
+ 
++        /*
++         * Disable interrupt remapping and queued invalidation if
++         * already enabled by BIOS in case we've not initialized it yet.
++         */
++        if ( !iommu_x2apic_enabled )
++        {
++            disable_intremap(iommu);
++            disable_qinval(iommu);
++        }
++
+         spin_lock_irqsave(&iommu->register_lock, flags);
+         sts = dmar_readl(iommu->reg, DMAR_FECTL_REG);
+         sts &= ~DMA_FECTL_IM;
+--- a/xen/include/asm-x86/apic.h
++++ b/xen/include/asm-x86/apic.h
+@@ -24,6 +24,7 @@ enum apic_mode {
+     APIC_MODE_X2APIC    /* x2APIC mode - common for large MP machines */
+ };
+ 
++extern bool iommu_x2apic_enabled;
+ extern u8 apic_verbosity;
+ extern bool directed_eoi_enabled;
+ 

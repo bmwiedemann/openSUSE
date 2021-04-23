@@ -1,0 +1,165 @@
+# Commit 1f3d87c7512975274cc45c40097b05550eba1ac9
+# Date 2021-04-09 09:21:27 +0200
+# Author Boris Ostrovsky <boris.ostrovsky@oracle.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+x86/vpt: do not take pt_migrate rwlock in some cases
+
+Commit 8e76aef72820 ("x86/vpt: fix race when migrating timers between
+vCPUs") addressed XSA-336 by introducing a per-domain rwlock that was
+intended to protect periodic timer during VCPU migration. Since such
+migration is an infrequent event no performance impact was expected.
+
+Unfortunately this turned out not to be the case: on a fairly large
+guest (92 VCPUs) we've observed as much as 40% TPCC performance
+regression with some guest kernels. Further investigation pointed to
+pt_migrate read lock taken in pt_update_irq() as the largest contributor
+to this regression. With large number of VCPUs and large number of VMEXITs
+(from where pt_update_irq() is always called) the update of an atomic in
+read_lock() is thought to be the main cause.
+
+Stephen Brennan analyzed locking pattern and classified lock users as
+follows:
+
+1. Functions which read (maybe write) all periodic_time instances attached
+to a particular vCPU. These are functions which use pt_vcpu_lock() such
+as pt_restore_timer(), pt_save_timer(), etc.
+2. Functions which want to modify a particular periodic_time object.
+These functions lock whichever vCPU the periodic_time is attached to, but
+since the vCPU could be modified without holding any lock, they are
+vulnerable to XSA-336. Functions in this group use pt_lock(), such as
+pt_timer_fn() or destroy_periodic_time().
+3. Functions which not only want to modify the periodic_time, but also
+would like to modify the =vcpu= fields. These are create_periodic_time()
+or pt_adjust_vcpu(). They create XSA-336 conditions for group 2, but we
+can't simply hold 2 vcpu locks due to the deadlock risk.
+
+Roger then pointed out that group 1 functions don't really need to hold
+the pt_migrate rwlock and that instead groups 2 and 3 should hold per-vcpu
+lock whenever they modify per-vcpu timer lists.
+
+Suggested-by: Stephen Brennan <stephen.s.brennan@oracle.com>
+Suggested-by: Roger Pau Monné <roger.pau@citrix.com>
+Signed-off-by: Boris Ostrovsky <boris.ostrovsky@oracle.com>
+Reviewed-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Stephen Brennan <stephen.s.brennan@oracle.com>
+
+--- a/xen/arch/x86/hvm/vpt.c
++++ b/xen/arch/x86/hvm/vpt.c
+@@ -153,32 +153,43 @@ static int pt_irq_masked(struct periodic
+     return 1;
+ }
+ 
++/*
++ * Functions which read (maybe write) all periodic_time instances
++ * attached to a particular vCPU use pt_vcpu_{un}lock locking helpers.
++ *
++ * Such users are explicitly forbidden from changing the value of the
++ * pt->vcpu field, because another thread holding the pt_migrate lock
++ * may already be spinning waiting for your vcpu lock.
++ */
+ static void pt_vcpu_lock(struct vcpu *v)
+ {
+-    read_lock(&v->domain->arch.hvm.pl_time->pt_migrate);
+     spin_lock(&v->arch.hvm.tm_lock);
+ }
+ 
+ static void pt_vcpu_unlock(struct vcpu *v)
+ {
+     spin_unlock(&v->arch.hvm.tm_lock);
+-    read_unlock(&v->domain->arch.hvm.pl_time->pt_migrate);
+ }
+ 
++/*
++ * Functions which want to modify a particular periodic_time object
++ * use pt_{un}lock locking helpers.
++ *
++ * These users lock whichever vCPU the periodic_time is attached to,
++ * but since the vCPU could be modified without holding any lock, they
++ * need to take an additional lock that protects against pt->vcpu
++ * changing.
++ */
+ static void pt_lock(struct periodic_time *pt)
+ {
+-    /*
+-     * We cannot use pt_vcpu_lock here, because we need to acquire the
+-     * per-domain lock first and then (re-)fetch the value of pt->vcpu, or
+-     * else we might be using a stale value of pt->vcpu.
+-     */
+     read_lock(&pt->vcpu->domain->arch.hvm.pl_time->pt_migrate);
+     spin_lock(&pt->vcpu->arch.hvm.tm_lock);
+ }
+ 
+ static void pt_unlock(struct periodic_time *pt)
+ {
+-    pt_vcpu_unlock(pt->vcpu);
++    spin_unlock(&pt->vcpu->arch.hvm.tm_lock);
++    read_unlock(&pt->vcpu->domain->arch.hvm.pl_time->pt_migrate);
+ }
+ 
+ static void pt_process_missed_ticks(struct periodic_time *pt)
+@@ -543,8 +554,10 @@ void create_periodic_time(
+     pt->cb = cb;
+     pt->priv = data;
+ 
++    pt_vcpu_lock(v);
+     pt->on_list = 1;
+     list_add(&pt->list, &v->arch.hvm.tm_list);
++    pt_vcpu_unlock(v);
+ 
+     init_timer(&pt->timer, pt_timer_fn, pt, v->processor);
+     set_timer(&pt->timer, pt->scheduled);
+@@ -580,13 +593,26 @@ static void pt_adjust_vcpu(struct period
+         return;
+ 
+     write_lock(&pt->vcpu->domain->arch.hvm.pl_time->pt_migrate);
++
++    if ( pt->vcpu == v )
++        goto out;
++
++    pt_vcpu_lock(pt->vcpu);
++    if ( pt->on_list )
++        list_del(&pt->list);
++    pt_vcpu_unlock(pt->vcpu);
++
+     pt->vcpu = v;
++
++    pt_vcpu_lock(v);
+     if ( pt->on_list )
+     {
+-        list_del(&pt->list);
+         list_add(&pt->list, &v->arch.hvm.tm_list);
+         migrate_timer(&pt->timer, v->processor);
+     }
++    pt_vcpu_unlock(v);
++
++ out:
+     write_unlock(&pt->vcpu->domain->arch.hvm.pl_time->pt_migrate);
+ }
+ 
+--- a/xen/include/asm-x86/hvm/vpt.h
++++ b/xen/include/asm-x86/hvm/vpt.h
+@@ -128,12 +128,18 @@ struct pl_time {    /* platform time */
+     struct RTCState  vrtc;
+     struct HPETState vhpet;
+     struct PMTState  vpmt;
+-    /*
+-     * rwlock to prevent periodic_time vCPU migration. Take the lock in read
+-     * mode in order to prevent the vcpu field of periodic_time from changing.
+-     * Lock must be taken in write mode when changes to the vcpu field are
+-     * performed, as it allows exclusive access to all the timers of a domain.
+-     */
++     /*
++      * Functions which want to modify the vcpu field of the vpt need
++      * to hold the global lock (pt_migrate) in write mode together
++      * with the per-vcpu locks of the lists being modified. Functions
++      * that want to lock a periodic_timer that's possibly on a
++      * different vCPU list need to take the lock in read mode first in
++      * order to prevent the vcpu field of periodic_timer from
++      * changing.
++      *
++      * Note that two vcpu locks cannot be held at the same time to
++      * avoid a deadlock.
++      */
+     rwlock_t pt_migrate;
+     /* guest_time = Xen sys time + stime_offset */
+     int64_t stime_offset;

@@ -68,20 +68,6 @@ tboot.c:105:10: note: in expansion of macro 'memcmp'
       |          ^~~~~~
 
 
-For rijndael.c
-In file included from rijndael.c:33:
-/home/abuild/rpmbuild/BUILD/xen-4.14.1-testing/xen/include/crypto/rijndael.h:55:53: note: previously declared as 'const unsigned char[]'
-   55 | void    rijndaelEncrypt(const unsigned int [], int, const unsigned char [],
-      |                                                     ^~~~~~~~~~~~~~~~~~~~~~
-rijndael.c:865:8: error: argument 4 of type 'u8[16]' {aka 'unsigned char[16]'} with mismatched bound [-Werror=array-parameter=]
-  865 |     u8 ct[16])
-      |     ~~~^~~~~~
-In file included from rijndael.c:33:
-/home/abuild/rpmbuild/BUILD/xen-4.14.1-testing/xen/include/crypto/rijndael.h:56:13: note: previously declared as 'unsigned char[]'
-   56 |             unsigned char []);
-      |             ^~~~~~~~~~~~~~~~
-
-
 For x86_emulate/x86_emulate.c
 x86_emulate/x86_emulate.c:728:26: error: writing 1 byte into a region of size 0 [-Werror=stringop-overflow=]
   728 |     (ptr)[0 - PFX_BYTES] = ext < ext_8f08 ? 0xc4 : 0x8f; \
@@ -92,8 +78,8 @@ x86_emulate/x86_emulate.c:736:9: note: in expansion of macro 'copy_VEX'
 
 
 
---- xen-4.14.1-testing/tools/libs/foreignmemory/private.h.orig	2021-02-10 11:04:05.230562677 -0700
-+++ xen-4.14.1-testing/tools/libs/foreignmemory/private.h	2021-02-10 11:04:36.138561926 -0700
+--- trunk.orig/tools/libs/foreignmemory/private.h	2021-03-05 12:35:57.802022411 +0100
++++ trunk/tools/libs/foreignmemory/private.h	2021-03-05 12:39:34.022154265 +0100
 @@ -29,6 +29,9 @@ struct xenforeignmemory_handle {
  int osdep_xenforeignmemory_open(xenforeignmemory_handle *fmem);
  int osdep_xenforeignmemory_close(xenforeignmemory_handle *fmem);
@@ -104,8 +90,8 @@ x86_emulate/x86_emulate.c:736:9: note: in expansion of macro 'copy_VEX'
  void *osdep_xenforeignmemory_map(xenforeignmemory_handle *fmem,
                                   uint32_t dom, void *addr,
                                   int prot, int flags, size_t num,
---- xen-4.14.1-testing/xen/arch/x86/mpparse.c.orig	2021-02-10 11:18:01.174542374 -0700
-+++ xen-4.14.1-testing/xen/arch/x86/mpparse.c	2021-02-10 11:19:17.822540512 -0700
+--- trunk.orig/xen/arch/x86/mpparse.c	2021-03-05 12:35:57.802022411 +0100
++++ trunk/xen/arch/x86/mpparse.c	2021-03-05 12:39:34.022154265 +0100
 @@ -709,6 +709,9 @@ static int __init smp_scan_config (unsig
  	return 0;
  }
@@ -116,8 +102,8 @@ x86_emulate/x86_emulate.c:736:9: note: in expansion of macro 'copy_VEX'
  static void __init efi_check_config(void)
  {
  	struct intel_mp_floating *mpf;
---- xen-4.14.1-testing/xen/arch/x86/tboot.c.orig	2021-02-10 11:27:38.882528343 -0700
-+++ xen-4.14.1-testing/xen/arch/x86/tboot.c	2021-02-10 11:34:00.442519076 -0700
+--- trunk.orig/xen/arch/x86/tboot.c	2021-03-05 12:35:57.802022411 +0100
++++ trunk/xen/arch/x86/tboot.c	2021-03-05 12:39:34.022154265 +0100
 @@ -89,6 +89,9 @@ static void __init tboot_copy_memory(uns
      }
  }
@@ -138,8 +124,8 @@ x86_emulate/x86_emulate.c:736:9: note: in expansion of macro 'copy_VEX'
  static void tboot_gen_frametable_integrity(const uint8_t key[TB_KEY_SIZE],
                                             vmac_t *mac)
  {
---- xen-4.14.1-testing/xen/arch/x86/x86_emulate/x86_emulate.c.orig	2021-02-10 11:56:52.302485758 -0700
-+++ xen-4.14.1-testing/xen/arch/x86/x86_emulate/x86_emulate.c	2021-02-10 11:57:58.338484154 -0700
+--- trunk.orig/xen/arch/x86/x86_emulate/x86_emulate.c	2021-03-05 12:35:57.802022411 +0100
++++ trunk/xen/arch/x86/x86_emulate/x86_emulate.c	2021-03-05 12:39:34.022154265 +0100
 @@ -722,6 +722,9 @@ union vex {
      buf_ + 3; \
  })
@@ -150,15 +136,3 @@ x86_emulate/x86_emulate.c:736:9: note: in expansion of macro 'copy_VEX'
  #define copy_VEX(ptr, vex) ({ \
      if ( !mode_64bit() ) \
          (vex).reg |= 8; \
---- xen-4.14.1-testing/xen/include/crypto/rijndael.h	2021-02-10 11:41:50.018507672 -0700
-+++ xen-4.14.1-testing/xen/include/crypto/rijndael.h	2021-02-26 11:42:42.206506404 +0100
-@@ -52,7 +52,7 @@
- 
- int	rijndaelKeySetupEnc(unsigned int [], const unsigned char [], int);
- int	rijndaelKeySetupDec(unsigned int [], const unsigned char [], int);
--void	rijndaelEncrypt(const unsigned int [], int, const unsigned char [],
--	    unsigned char []);
-+void	rijndaelEncrypt(const unsigned int [], int, const unsigned char [16],
-+	    unsigned char [16]);
- 
- #endif /* __RIJNDAEL_H */

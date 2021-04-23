@@ -130,7 +130,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.14.1_14
+Version:        4.14.1_16
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -186,7 +186,13 @@ Patch15:        602e5a8c-gnttab-never-permit-mapping-transitive-grants.patch
 Patch16:        602e5abb-gnttab-bypass-IOMMU-when-mapping-own-grant.patch
 Patch17:        602ffae9-tools-libs-light-fix-xl-save--c-handling.patch
 Patch18:        6037b02e-x86-EFI-suppress-ld-2-36-base-relocs.patch
-Patch200:       xsa368.patch
+Patch19:        60410127-gcc11-adjust-rijndaelEncrypt.patch
+Patch20:        60422428-x86-shadow-avoid-fast-fault-path.patch
+Patch21:        604b9070-VT-d-disable-QI-IR-before-init.patch
+Patch22:        60535c11-libxl-domain-soft-reset.patch
+Patch23:        60700077-x86-vpt-avoid-pt_migrate-rwlock.patch
+Patch24:        60787714-x86-HPET-factor-legacy-replacement-mode-enabling.patch
+Patch25:        60787714-x86-HPET-avoid-legacy-replacement-mode.patch
 # libxc
 Patch300:       libxc-sr-3cccdae45242dab27198b8e150be0c85acd5d3c9.patch
 Patch301:       libxc-sr-readv_exact.patch
@@ -901,10 +907,35 @@ do
 	echo -n > $conf
 done
 `"
+> mods
 for mod in $mods
 do
-	echo "ExecStart=-/bin/sh -c 'modprobe $mod || :'" >> %{buildroot}/%{_unitdir}/${bn}
+	# load by alias, if possible, to handle pvops and xenlinux
+	alias="$mod"
+	case "$mod" in
+		xen-evtchn) ;;
+		xen-gntdev) ;;
+		xen-gntalloc) ;;
+		xen-blkback) alias='xen-backend:vbd' ;;
+		xen-netback) alias='xen-backend:vif' ;;
+		xen-pciback) alias='xen-backend:pci' ;;
+		evtchn) unset alias ;;
+		gntdev) unset alias ;;
+		netbk) alias='xen-backend:vif' ;;
+		blkbk) alias='xen-backend:vbd' ;;
+		xen-scsibk) unset alias ;;
+		usbbk) unset alias ;;
+		pciback) alias='xen-backend:pci' ;;
+		xen-acpi-processor) ;;
+		blktap2) unset alias ;;
+		*) ;;
+	esac
+	if test -n "${alias}"
+	then
+		echo "ExecStart=-/bin/sh -c 'modprobe $alias || :'" >> mods
+	fi
 done
+sort -u mods | tee -a %{buildroot}/%{_unitdir}/${bn}
 rm -rfv %{buildroot}/%{_initddir}
 install -m644 %SOURCE35 %{buildroot}/%{_fillupdir}/sysconfig.pciback
 

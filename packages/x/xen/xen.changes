@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr 19 12:03:30 MDT 2021 - carnold@suse.com
+
+- bsc#1180491 - "Panic on CPU 0: IO-APIC + timer doesn't work!"
+  60787714-x86-HPET-avoid-legacy-replacement-mode.patch
+  60787714-x86-HPET-factor-legacy-replacement-mode-enabling.patch
+- Upstream bug fixes (bsc#1027519)
+  60410127-gcc11-adjust-rijndaelEncrypt.patch
+  60422428-x86-shadow-avoid-fast-fault-path.patch
+  604b9070-VT-d-disable-QI-IR-before-init.patch
+  60535c11-libxl-domain-soft-reset.patch (Replaces xsa368.patch)
+  60700077-x86-vpt-avoid-pt_migrate-rwlock.patch
+
+-------------------------------------------------------------------
+Thu Mar 25 10:10:10 UTC 2021 - ohering@suse.de
+
+- bsc#1137251 - Restore changes for xen-dom0-modules.service which
+  were silently removed on 2019-10-17
+
+-------------------------------------------------------------------
 Fri Mar 12 19:19:19 UTC 2021 - ohering@suse.de
 
 - bsc#1177112 - Fix libxc.sr.superpage.patch
@@ -20,11 +39,11 @@ Mon Mar  8 16:16:16 UTC 2021 - ohering@suse.de
 -------------------------------------------------------------------
 Fri Mar  5 08:49:56 MST 2021 - carnold@suse.com
 
-- bsc#1183072 - VUL-0: xen: HVM soft-reset crashes toolstack (XSA-368)
-  Also resolves,
-    bsc#1179148 - kdump of HVM fails, soft-reset not handled by libxl
-    bsc#1181989 - openQA job causes libvirtd to dump core when
-    running kdump inside domain
+- bsc#1183072 - VUL-0: CVE-2021-28687: xen: HVM soft-reset crashes
+  toolstack (XSA-368). Also resolves,
+  bsc#1179148 - kdump of HVM fails, soft-reset not handled by libxl
+  bsc#1181989 - openQA job causes libvirtd to dump core when
+  running kdump inside domain
   xsa368.patch
 
 -------------------------------------------------------------------

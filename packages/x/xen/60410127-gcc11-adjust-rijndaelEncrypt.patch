@@ -1,0 +1,44 @@
+# Commit c6ad5a701b9a6df443a6c98d9e7201c958bbcafc
+# Date 2021-03-04 16:47:51 +0100
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+crypto: adjust rijndaelEncrypt() prototype for gcc11
+
+The upcoming release complains, not entirely unreasonably:
+
+In file included from rijndael.c:33:
+.../xen/include/crypto/rijndael.h:55:53: note: previously declared as 'const unsigned char[]'
+   55 | void    rijndaelEncrypt(const unsigned int [], int, const unsigned char [],
+      |                                                     ^~~~~~~~~~~~~~~~~~~~~~
+rijndael.c:865:8: error: argument 4 of type 'u8[16]' {aka 'unsigned char[16]'} with mismatched bound [-Werror=array-parameter=]
+  865 |     u8 ct[16])
+      |     ~~~^~~~~~
+In file included from rijndael.c:33:
+.../xen/include/crypto/rijndael.h:56:13: note: previously declared as 'unsigned char[]'
+   56 |             unsigned char []);
+      |             ^~~~~~~~~~~~~~~~
+
+Simply declare the correct array dimensions right away. This then allows
+compilers to apply checking at call sites, which seems desirable anyway.
+
+For the moment I'm leaving untouched the disagreement between u8/u32
+used in the function definition and unsigned {char,int} used in the
+declaration, as making this consistent would call for touching further
+functions.
+
+Reported-by: Charles Arnold <carnold@suse.com>
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Reviewed-by: Julien Grall <jgrall@amazon.com>
+
+--- a/xen/include/crypto/rijndael.h
++++ b/xen/include/crypto/rijndael.h
+@@ -52,7 +52,7 @@ void	 rijndael_encrypt(rijndael_ctx *, c
+ 
+ int	rijndaelKeySetupEnc(unsigned int [], const unsigned char [], int);
+ int	rijndaelKeySetupDec(unsigned int [], const unsigned char [], int);
+-void	rijndaelEncrypt(const unsigned int [], int, const unsigned char [],
+-	    unsigned char []);
++void	rijndaelEncrypt(const unsigned int [], int, const unsigned char [16],
++	    unsigned char [16]);
+ 
+ #endif /* __RIJNDAEL_H */

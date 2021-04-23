@@ -1,0 +1,269 @@
+# Commit b53173e7cdafb7a318a239d557478fd73734a86a
+# Date 2021-04-15 18:25:40 +0100
+# Author Jan Beulich <jbeulich@suse.com>
+# Committer Andrew Cooper <andrew.cooper3@citrix.com>
+x86/hpet: Don't enable legacy replacement mode unconditionally
+
+Commit e1de4c196a2e ("x86/timer: Fix boot on Intel systems using ITSSPRC
+static PIT clock gating") was reported to cause boot failures on certain
+AMD Ryzen systems.
+
+Refine the fix to do nothing in the default case, and only attempt to
+configure legacy replacement mode if IRQ0 is found to not be working.  If
+legacy replacement mode doesn't help, undo it before falling back to other IRQ
+routing configurations.
+
+In addition, introduce a "hpet" command line option so this heuristic
+can be overridden.  Since it makes little sense to introduce just
+"hpet=legacy-replacement", also allow for a boolean argument as well as
+"broadcast" to replace the separate "hpetbroadcast" option.
+
+Reported-by: Frédéric Pierret frederic.pierret@qubes-os.org
+Signed-off-by: Jan Beulich <jbeulich@suse.com>
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Reviewed-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+Tested-by: Frédéric Pierret <frederic.pierret@qubes-os.org>
+
+--- a/docs/misc/xen-command-line.pandoc
++++ b/docs/misc/xen-command-line.pandoc
+@@ -1221,9 +1221,42 @@ supported. See docs/misc/arm/big.LITTLE.
+ When the hmp-unsafe option is disabled (default), CPUs that are not
+ identical to the boot CPU will be parked and not used by Xen.
+ 
++### hpet
++    = List of [ <bool> | broadcast=<bool> | legacy-replacement=<bool> ]
++
++    Applicability: x86
++
++Controls Xen's use of the system's High Precision Event Timer.  By default,
++Xen will use an HPET when available and not subject to errata.  Use of the
++HPET can be disabled by specifying `hpet=0`.
++
++ * The `broadcast` boolean is disabled by default, but forces Xen to keep
++   using the broadcast for CPUs in deep C-states even when an RTC interrupt is
++   enabled.  This then also affects raising of the RTC interrupt.
++
++ * The `legacy-replacement` boolean allows for control over whether Legacy
++   Replacement mode is enabled.
++
++   Legacy Replacement mode is intended for hardware which does not have an
++   8254 PIT, and allows the HPET to be configured into a compatible mode.
++   Intel chipsets from Skylake/ApolloLake onwards can turn the PIT off for
++   power saving reasons, and there is no platform-agnostic mechanism for
++   discovering this.
++
++   By default, Xen will not change hardware configuration, unless the PIT
++   appears to be absent, at which point Xen will try to enable Legacy
++   Replacement mode before falling back to pre-IO-APIC interrupt routing
++   options.
++
++   This behaviour can be inhibited by specifying `legacy-replacement=0`.
++   Alternatively, this mode can be enabled unconditionally (if available) by
++   specifying `legacy-replacement=1`.
++
+ ### hpetbroadcast (x86)
+ > `= <boolean>`
+ 
++Deprecated alternative of `hpet=broadcast`.
++
+ ### hvm_debug (x86)
+ > `= <integer>`
+ 
+--- a/xen/arch/x86/hpet.c
++++ b/xen/arch/x86/hpet.c
+@@ -52,6 +52,8 @@ static unsigned int __read_mostly num_hp
+ DEFINE_PER_CPU(struct hpet_event_channel *, cpu_bc_channel);
+ 
+ unsigned long __initdata hpet_address;
++int8_t __initdata opt_hpet_legacy_replacement = -1;
++static bool __initdata opt_hpet = true;
+ u8 __initdata hpet_blockid;
+ u8 __initdata hpet_flags;
+ 
+@@ -63,6 +65,32 @@ u8 __initdata hpet_flags;
+ static bool __initdata force_hpet_broadcast;
+ boolean_param("hpetbroadcast", force_hpet_broadcast);
+ 
++static int __init parse_hpet_param(const char *s)
++{
++    const char *ss;
++    int val, rc = 0;
++
++    do {
++        ss = strchr(s, ',');
++        if ( !ss )
++            ss = strchr(s, '\0');
++
++        if ( (val = parse_bool(s, ss)) >= 0 )
++            opt_hpet = val;
++        else if ( (val = parse_boolean("broadcast", s, ss)) >= 0 )
++            force_hpet_broadcast = val;
++        else if ( (val = parse_boolean("legacy-replacement", s, ss)) >= 0 )
++            opt_hpet_legacy_replacement = val;
++        else
++            rc = -EINVAL;
++
++        s = ss + 1;
++    } while ( *ss );
++
++    return rc;
++}
++custom_param("hpet", parse_hpet_param);
++
+ /*
+  * Calculate a multiplication factor for scaled math, which is used to convert
+  * nanoseconds based values to clock ticks:
+@@ -765,6 +793,9 @@ int hpet_legacy_irq_tick(void)
+ 
+ static u32 *hpet_boot_cfg;
+ static uint64_t __initdata hpet_rate;
++static __initdata struct {
++    uint32_t cmp, cfg;
++} pre_legacy_c0;
+ 
+ bool __init hpet_enable_legacy_replacement_mode(void)
+ {
+@@ -778,8 +809,11 @@ bool __init hpet_enable_legacy_replaceme
+     /* Stop the main counter. */
+     hpet_write32(cfg & ~HPET_CFG_ENABLE, HPET_CFG);
+ 
++    /* Stash channel 0's old CFG/CMP incase we need to undo. */
++    pre_legacy_c0.cfg = c0_cfg = hpet_read32(HPET_Tn_CFG(0));
++    pre_legacy_c0.cmp = hpet_read32(HPET_Tn_CMP(0));
++
+     /* Reconfigure channel 0 to be 32bit periodic. */
+-    c0_cfg = hpet_read32(HPET_Tn_CFG(0));
+     c0_cfg |= (HPET_TN_ENABLE | HPET_TN_PERIODIC | HPET_TN_SETVAL |
+                HPET_TN_32BIT);
+     hpet_write32(c0_cfg, HPET_Tn_CFG(0));
+@@ -825,17 +859,33 @@ bool __init hpet_enable_legacy_replaceme
+     return true;
+ }
+ 
++void __init hpet_disable_legacy_replacement_mode(void)
++{
++    unsigned int cfg = hpet_read32(HPET_CFG);
++
++    ASSERT(hpet_rate);
++
++    cfg &= ~(HPET_CFG_LEGACY | HPET_CFG_ENABLE);
++
++    /* Stop the main counter and disable legacy mode. */
++    hpet_write32(cfg, HPET_CFG);
++
++    /* Restore pre-Legacy Replacement Mode settings. */
++    hpet_write32(pre_legacy_c0.cfg, HPET_Tn_CFG(0));
++    hpet_write32(pre_legacy_c0.cmp, HPET_Tn_CMP(0));
++
++    /* Restart the main counter. */
++    hpet_write32(cfg | HPET_CFG_ENABLE, HPET_CFG);
++}
++
+ u64 __init hpet_setup(void)
+ {
+     unsigned int hpet_id, hpet_period;
+     unsigned int last, rem;
+ 
+-    if ( hpet_rate )
++    if ( hpet_rate || !hpet_address || !opt_hpet )
+         return hpet_rate;
+ 
+-    if ( hpet_address == 0 )
+-        return 0;
+-
+     set_fixmap_nocache(FIX_HPET_BASE, hpet_address);
+ 
+     hpet_id = hpet_read32(HPET_ID);
+@@ -862,19 +912,8 @@ u64 __init hpet_setup(void)
+     if ( (rem * 2) > hpet_period )
+         hpet_rate++;
+ 
+-    /*
+-     * Intel chipsets from Skylake/ApolloLake onwards can statically clock
+-     * gate the 8259 PIT.  This option is enabled by default in slightly later
+-     * systems, as turning the PIT off is a prerequisite to entering the C11
+-     * power saving state.
+-     *
+-     * Xen currently depends on the legacy timer interrupt being active while
+-     * IRQ routing is configured.
+-     *
+-     * Reconfigure the HPET into legacy mode to re-establish the timer
+-     * interrupt.
+-     */
+-    hpet_enable_legacy_replacement_mode();
++    if ( opt_hpet_legacy_replacement > 0 )
++        hpet_enable_legacy_replacement_mode();
+ 
+     return hpet_rate;
+ }
+--- a/xen/arch/x86/io_apic.c
++++ b/xen/arch/x86/io_apic.c
+@@ -29,6 +29,8 @@
+ #include <xen/acpi.h>
+ #include <xen/keyhandler.h>
+ #include <xen/softirq.h>
++
++#include <asm/hpet.h>
+ #include <asm/mc146818rtc.h>
+ #include <asm/smp.h>
+ #include <asm/desc.h>
+@@ -1930,6 +1932,35 @@ static void __init check_timer(void)
+             local_irq_restore(flags);
+             return;
+         }
++
++        /*
++         * Intel chipsets from Skylake/ApolloLake onwards can statically clock
++         * gate the 8254 PIT.  This option is enabled by default in slightly
++         * later systems, as turning the PIT off is a prerequisite to entering
++         * the C11 power saving state.
++         *
++         * Xen currently depends on the legacy timer interrupt being active
++         * while IRQ routing is configured.
++         *
++         * If the user hasn't made an explicit choice, attempt to reconfigure
++         * the HPET into legacy mode to re-establish the timer interrupt.
++         */
++        if ( opt_hpet_legacy_replacement < 0 &&
++             hpet_enable_legacy_replacement_mode() )
++        {
++            printk(XENLOG_ERR "..no 8254 timer found - trying HPET Legacy Replacement Mode\n");
++
++            if ( timer_irq_works() )
++            {
++                local_irq_restore(flags);
++                return;
++            }
++
++            /* Legacy Replacement mode hasn't helped.  Undo it. */
++            printk(XENLOG_ERR "..no HPET timer found - reverting Legacy Replacement Mode\n");
++            hpet_disable_legacy_replacement_mode();
++        }
++
+         clear_IO_APIC_pin(apic1, pin1);
+         printk(KERN_ERR "..MP-BIOS bug: 8254 timer not connected to "
+                "IO-APIC\n");
+--- a/xen/include/asm-x86/hpet.h
++++ b/xen/include/asm-x86/hpet.h
+@@ -53,6 +53,7 @@
+ extern unsigned long hpet_address;
+ extern u8 hpet_blockid;
+ extern u8 hpet_flags;
++extern int8_t opt_hpet_legacy_replacement;
+ 
+ /*
+  * Detect and initialise HPET hardware: return counter update frequency.
+@@ -79,6 +80,12 @@ int hpet_legacy_irq_tick(void);
+ bool hpet_enable_legacy_replacement_mode(void);
+ 
+ /*
++ * Undo the effects of hpet_disable_legacy_replacement_mode().  Must not be
++ * called unless enable() returned true.
++ */
++void hpet_disable_legacy_replacement_mode(void);
++
++/*
+  * Temporarily use an HPET event counter for timer interrupt handling,
+  * rather than using the LAPIC timer. Used for Cx state entry.
+  */

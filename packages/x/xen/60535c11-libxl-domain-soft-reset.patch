@@ -1,7 +1,8 @@
-From b1d5e033df1858edd6fa328abd126522947440aa Mon Sep 17 00:00:00 2001
-From: Anthony PERARD <anthony.perard@citrix.com>
-Date: Wed, 24 Feb 2021 18:39:20 +0000
-Subject: [PATCH] libxl: Fix domain soft reset state handling
+# Commit dae3c3e8b257cd27d6b35a467a34bf79a6650340
+# Date 2021-03-18 14:56:33 +0100
+# Author Anthony PERARD <anthony.perard@citrix.com>
+# Committer Jan Beulich <jbeulich@suse.com>
+libxl: Fix domain soft reset state handling
 
 In do_domain_soft_reset(), a `libxl__domain_suspend_state' is used
 without been properly initialised and disposed of. This lead do a
@@ -15,20 +16,16 @@ libxl__domain_suspend_device_model(). So this patch adds
 libxl__domain_suspend_dispose() which can be called from the two
 places where we need to dispose of `dsps'.
 
+This is XSA-368.
+
+Reported-by: Olaf Hering <olaf@aepfle.de>
 Signed-off-by: Anthony PERARD <anthony.perard@citrix.com>
 Reviewed-by: Ian Jackson <iwj@xenproject.org>
 Tested-by: Olaf Hering <olaf@aepfle.de>
----
- tools/libxl/libxl_create.c      | 11 ++++++++---
- tools/libxl/libxl_dom_suspend.c | 15 +++++++++++----
- tools/libxl/libxl_internal.h    |  2 ++
- 3 files changed, 21 insertions(+), 7 deletions(-)
 
-diff --git a/tools/libxl/libxl_create.c b/tools/libxl/libxl_create.c
-index 2814818e34..83b0eb00bf 100644
 --- a/tools/libxl/libxl_create.c
 +++ b/tools/libxl/libxl_create.c
-@@ -2174,9 +2174,7 @@ static int do_domain_soft_reset(libxl_ctx *ctx,
+@@ -2174,9 +2174,7 @@ static int do_domain_soft_reset(libxl_ct
      state->console_tty = libxl__strdup(gc, console_tty);
  
      dss->ao = ao;
@@ -39,7 +36,7 @@ index 2814818e34..83b0eb00bf 100644
  
      rc = libxl__save_emulator_xenstore_data(dss, &srs->toolstack_buf,
                                              &srs->toolstack_len);
-@@ -2186,6 +2184,11 @@ static int do_domain_soft_reset(libxl_ctx *ctx,
+@@ -2186,6 +2184,11 @@ static int do_domain_soft_reset(libxl_ct
      }
  
      dss->dsps.ao = ao;
@@ -51,7 +48,7 @@ index 2814818e34..83b0eb00bf 100644
      dss->dsps.callback_device_model_done = soft_reset_dm_suspended;
      libxl__domain_suspend_device_model(egc, &dss->dsps); /* must be last */
  
-@@ -2204,6 +2207,8 @@ static void soft_reset_dm_suspended(libxl__egc *egc,
+@@ -2204,6 +2207,8 @@ static void soft_reset_dm_suspended(libx
          CONTAINER_OF(dsps, *srs, dss.dsps);
      libxl__app_domain_create_state *cdcs = &srs->cdcs;
  
@@ -60,8 +57,6 @@ index 2814818e34..83b0eb00bf 100644
      /*
       * Ask all backends to disconnect by removing the domain from
       * xenstore. On the creation path the domain will be introduced to
-diff --git a/tools/libxl/libxl_dom_suspend.c b/tools/libxl/libxl_dom_suspend.c
-index 25d1571895..2a280f69a1 100644
 --- a/tools/libxl/libxl_dom_suspend.c
 +++ b/tools/libxl/libxl_dom_suspend.c
 @@ -67,6 +67,16 @@ out:
@@ -81,7 +76,7 @@ index 25d1571895..2a280f69a1 100644
  /*----- callbacks, called by xc_domain_save -----*/
  
  void libxl__domain_suspend_device_model(libxl__egc *egc,
-@@ -388,10 +398,7 @@ static void domain_suspend_common_done(libxl__egc *egc,
+@@ -388,10 +398,7 @@ static void domain_suspend_common_done(l
  {
      EGC_GC;
      assert(!libxl__xswait_inuse(&dsps->pvcontrol));
@@ -93,8 +88,6 @@ index 25d1571895..2a280f69a1 100644
      dsps->callback_common_done(egc, dsps, rc);
  }
  
-diff --git a/tools/libxl/libxl_internal.h b/tools/libxl/libxl_internal.h
-index 94a23179d3..3bc3bbcf84 100644
 --- a/tools/libxl/libxl_internal.h
 +++ b/tools/libxl/libxl_internal.h
 @@ -3615,6 +3615,8 @@ struct libxl__domain_suspend_state {
@@ -106,6 +99,3 @@ index 94a23179d3..3bc3bbcf84 100644
  
  /* calls dsps->callback_device_model_done when done
   * may synchronously calls this callback */
--- 
-2.30.1
-
