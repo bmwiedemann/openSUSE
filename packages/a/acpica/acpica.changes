@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 16 15:01:48 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 20210331
+  * ACPI 6.4 is now supported!
+ ACPICA kernel-resident subsystem:
+  * Always create namespace nodes.
+  * Fixed a race condition in generic serial bus operation region handler. 
+ iASL Compiler/Disassembler and ACPICA tools:
+  * Add disassembly support for the IVRS table.
+  * Fixed a potential infinite loop due to type mismatch.
+ iASL/TableCompiler:
+  * update it with IORT table E.b revision changes.
+  * Add compilation support for the VIOT table.
+  * Add compilation support for CEDT table.
+  * Update of the CEDT template.
+
+-------------------------------------------------------------------
 Tue Jan  5 20:40:38 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 20210105
