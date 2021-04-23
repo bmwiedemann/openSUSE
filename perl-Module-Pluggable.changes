@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Sat Aug  8 08:48:49 UTC 2015 - coolo@suse.com
+
+- updated to 5.2
+   see /usr/share/doc/packages/perl-Module-Pluggable/Changes
+
+  2015-08-05 - 5.2
+      Use Module::Runtime if it's installed (thanks to Olivier Mengué)
+      Switch to using ExtUtils::MakeMaker (thanks to Karen Etheridge and Tim Orling)
+
+-------------------------------------------------------------------
+Fri Jun 26 06:02:58 UTC 2015 - coolo@suse.com
+
+- regenerate spec to fix build
+
+-------------------------------------------------------------------
+Sun Apr 20 21:24:45 UTC 2014 - mardnh@gmx.de
+
+- Update to 5.1:
+
+  - 2014-01-05 - 5.1
+    - Add in missing files left out of the MANIFEST due to stupidity
+      (thanks to Petr Pisar)
+
+  - 2013-12-20 - 5.0
+    - Gain support for @INC hooks and hence for App::FatPacker
+      (thanks to Diab Jerius)
+
+  - 2013-10-22 - 4.9
+    - Fix the fact that we can't handle single letter package names
+      (thanks sbaynes)
+
+  - 2013-05-27 - 4.8
+    - Fix some typos (David Steinbrunner)
+    - Fix error in testing when Text::BibTex is installed
+      (thanks to Andreas Koenig)
+    
+  - 2013-02-25 - 4.7
+    - Fix more hash ordering bugs in tests by forcing sort of returned plugins
+      (Yves Orton)
+
+  - 2013-01-23 - 4.6
+    - Add warning about future removal from core
+
+  - 2012-11-05 - 4.5
+    - Fix docs
+    - Fix problem with PAUSE upload
+    
+  - 2012-11-05 - 4.4
+    - Fix hash ordering bug in tests (Yves Orton)
+    - Fix install dir (Tatsuhiko Miyagawa)
+
+  - 2012-08-15 - 4.3
+    - Fix calling the correct method when instantiating (Doh!)
+    - Hopefully stop smoker failures
+
+  - 2012-08-14 - 4.2
+    - Fix a problem with installation directory (Jerry D. Hedden)
+
+  - 2012-07-20 - 4.1
+    - Allow triggers on events which gives a powerful way to modify behaviour
+     (Tim Brody, Dan Dascalescu, Paul Evans, Jens Rehsack)
+    - Put documentation in about behaviour under blib and test, allow searching
+      outside blib under test (suggestion from Stephen Baynes)
+    - Made following symlinks the default behaviour, added ability to turn
+      that off (Aran Deltac)
+    - Fix installation path (Matthias Dietrich, Todd Rinaldo)
+    - Allow min_depth and max_depth (as per suggestion from Jens Rehsack)
+    - Set our @INC up to include and prefer our search_dirs if necessary
+      (as per suggestion from Ian Goodacre)
+    - Switch to Module::Build
+    
+  - 2012-01-03 - 4.0
+      Don't use defined on an array (it's deprecated)
+
+-------------------------------------------------------------------
+Sun Aug 30 14:42:21 CEST 2009 - lars@linux-schulserver.de
+
+- Update to 3.9:
+  + Allow inner packages when in a one file situation 
+    (suggestion from Christopher Brown)
+  + Fix bug with requiring skipped packages (from Jos Boumans)
+- follow perl packaging guidelines
+- fix the filelist instead using rpmlintrc
+
+-------------------------------------------------------------------
+Wed Jan 21 15:48:28 CET 2009 - pth@suse.de
+
+- Update to 3.8
+  Changes since 3.5:
+  - Set INSTALLDIRS correctly in Makefile.PL
+  - A couple of other fixups to play nicely in Core
+  - Ignore editor cruft by default
+  - Doc patches
+  - Prevent prototype mismatch warnings under Error.pm
+  - Don't pick up the ::SUPER pseudo stash in 5.8
+  - Make things work under VOS
+  - Fix warning under Devel::Cover
+  - Make tests run under Taint again
+  - Get rid of Build.PL
+
+-------------------------------------------------------------------
+Mon Jan 14 14:35:12 CET 2008 - pth@suse.de
+
+- Fix file list.
+- Add a rpmlintrc.
+
+-------------------------------------------------------------------
+Wed Mar  7 15:15:36 CET 2007 - pth@suse.de
+
+- Update to 3.5
+  * Patch from Audrey Tang to prevent clobbering of $@
+  * Make sure we don't fail taint checking when other
+    Module::Pluggable::* modules are installed.
+  * Few more patches from Jos Boumans to get read for CORE
+  * Remove Class::Inspector dependency and inline code
+  * Prepare for assimilation into CORE
+
+-------------------------------------------------------------------
+Thu Oct 19 17:02:02 CEST 2006 - pth@suse.de
+
+- Initial package
+
