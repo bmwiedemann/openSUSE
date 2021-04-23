@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysofaconventions
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-pysofaconventions
 Version:        0.1.5
 Release:        0
@@ -33,7 +34,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module netCDF4}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-cov}
 # /SECTION
 %python_subpackages
 
@@ -43,6 +43,7 @@ pysofaconventions is a python implementation of the SOFA Specification.
 %prep
 %setup -q -n pysofaconventions-%{version}
 sed -i -e '/^#!\//, 1d' pysofaconventions/__init__.py
+sed -i -e 's/--cov-report term-missing --cov pysofaconventions//' setup.cfg
 
 %build
 %python_build
@@ -57,6 +58,7 @@ sed -i -e '/^#!\//, 1d' pysofaconventions/__init__.py
 
 %files %{python_files}
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pysofaconventions
+%{python_sitelib}/pysofaconventions-%{version}*-info
 
 %changelog
