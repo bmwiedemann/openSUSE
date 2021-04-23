@@ -838,4 +838,19 @@ Now with build cycle removed.</comment>
   * Add framer.app and framercanvas.com to PSL (#1217)</comment>
     <requestid>882295</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>ffce7cde50a138cb31955bcf4e09c5df</srcmd5>
+    <version>20210419</version>
+    <time>1619192983</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210419:
+  * exclude gov.st from publicsuffix since host act as public domain (#1257)
+  * util: gTLD data autopull updates for 2021-04-17T15:15:54 UTC (#1284)
+  * Add wixsite.com and editorx.io (#927)
+  * Update public_suffix_list.dat (#1263)
+  * Adding reserve-online.net, reserve-online.com, bookonline.app, hotelwithflight.com (#1254)
+  * Update Platform.sh domains (#1256)
+  * New Jelastic public domains are added and existing ones are reviewed (#1259)</comment>
+    <requestid>886892</requestid>
+  </revision>
 </revisionlist>
