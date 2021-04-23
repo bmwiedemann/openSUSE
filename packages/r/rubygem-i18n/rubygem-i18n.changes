@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 20 13:36:12 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.8.10
+
+  * Fix string locale will trigger on_fallback hook - #562
+
+-------------------------------------------------------------------
 Mon Feb 15 13:25:33 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.8.9
