@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 21 10:29:52 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Use the given BindDN to connect to the LDAP database.
+- bsc#1185054
+- 4.4.1
+
+-------------------------------------------------------------------
+Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- 4.4.0
+
+-------------------------------------------------------------------
 Tue Feb 26 14:09:19 UTC 2019 - José Iván López González <jlopez@suse.com>
 
 - Version bump (bsc#1124009)
