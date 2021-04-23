@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 22 20:45:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.3.1:
+  * Make AsyncRetrying callable
+  * Replace nap.sleep with a method to allow mocking after import
+  * Always return booleans from all retry_* methods
+  * Fix asyncio.iscoroutinefunction(f) check for decorated function
+  * Add call method to AsyncRetying
+
+-------------------------------------------------------------------
 Tue Jun 30 00:36:12 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.2.0:

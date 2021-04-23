@@ -136,4 +136,17 @@
 - Add typguard to BuildRequires</comment>
     <requestid>817787</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b9c4261db3920bc84a458a171a379768</srcmd5>
+    <version>6.3.1</version>
+    <time>1619193040</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.3.1:
+  * Make AsyncRetrying callable
+  * Replace nap.sleep with a method to allow mocking after import
+  * Always return booleans from all retry_* methods
+  * Fix asyncio.iscoroutinefunction(f) check for decorated function
+  * Add call method to AsyncRetying</comment>
+    <requestid>887893</requestid>
+  </revision>
 </revisionlist>
