@@ -26,7 +26,7 @@ Group:          Development/Languages/OCaml
 Url:            https://github.com/ocaml/ocamlbuild
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocaml-rpm-macros >= 20210409
 Requires:       %{name}-devel = %{version}
 
 %description
@@ -55,7 +55,7 @@ set -x
 exec \
 make \
 PREFIX=%{_prefix} \
-%if 0%{?ocaml_native_compiler}
+%if 0%{?suse_ocaml_native_compiler}
 OCAML_NATIVE_TOOLS=true \
 OCAML_NATIVE=true \
 %else

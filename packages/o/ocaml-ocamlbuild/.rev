@@ -38,4 +38,12 @@
     <comment>- Require current ocaml-rpm-macros</comment>
     <requestid>778535</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>1773f5da8f6e76b788ef9319fbe38f57</srcmd5>
+    <version>0.14.0</version>
+    <time>1619193035</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>887077</requestid>
+  </revision>
 </revisionlist>
