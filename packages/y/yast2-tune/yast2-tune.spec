@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-tune
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,17 @@
 
 
 Name:           yast2-tune
-Version:        4.3.1
+Version:        4.4.1
 Release:        0
 Summary:        YaST2 - Hardware Tuning
 License:        GPL-2.0-or-later
 Group:          System/YaST
 URL:            https://github.com/yast/yast-tune
-
 Source0:        %{name}-%{version}.tar.bz2
-
 BuildRequires:  update-desktop-files
 # CFA::SysctlConfig
 BuildRequires:  yast2 >= 4.2.67
-BuildRequires:  yast2-devtools >= 4.2.2
-
+BuildRequires:  yast2-devtools >= 4.4.0
 # # CFA::SysctlConfig
 Requires:       yast2 >= 4.2.67
 Requires:       yast2-bootloader
@@ -51,11 +48,12 @@ This package contains the YaST2 component for hardware configuration.
 
 %post
 # rename the config file to the new modprobe schema
-if test -e /etc/modprobe.d/newid; then
-    mv -f /etc/modprobe.d/newid /etc/modprobe.d/50-newid.conf
+if test -e %{_sysconfdir}/modprobe.d/newid; then
+    mv -f %{_sysconfdir}/modprobe.d/newid %{_sysconfdir}/modprobe.d/50-newid.conf
 fi
 
 %files
+%license COPYING
 %{yast_yncludedir}
 %{yast_clientdir}
 %{yast_desktopdir}
@@ -64,7 +62,5 @@ fi
 %{yast_libdir}
 %{yast_scrconfdir}
 %{yast_icondir}
-%doc %{yast_docdir}
-%license COPYING
 
 %changelog
