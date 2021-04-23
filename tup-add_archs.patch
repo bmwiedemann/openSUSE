@@ -1,0 +1,26 @@
+Index: tup-0.7.10/src/tup/platform.c
+===================================================================
+--- tup-0.7.10.orig/src/tup/platform.c
++++ tup-0.7.10/src/tup/platform.c
+@@ -58,6 +58,8 @@ const char *tup_arch = "sparc";
+ const char *tup_arch = "arm";
+ #elif __aarch64__
+ const char *tup_arch = "arm64";
++#elif __s390x__
++const char *tup_arch = "s390x";
+ #else
+ #error Unsupported cpu architecture. Please add support in tup/platform.c
+ #endif
+Index: tup-0.7.10/tup.1
+===================================================================
+--- tup-0.7.10.orig/tup.1
++++ tup-0.7.10/tup.1
+@@ -755,7 +755,7 @@ In this case, the @-variable "FOO" is ex
+ TUP_PLATFORM is a special @-variable. If CONFIG_TUP_PLATFORM is not set in the tup.config file, it has a default value according to the platform that tup itself was compiled in. Currently the default value is one of "linux", "solaris", "macosx", "win32", "freebsd" or "netbsd".
+ .TP
+ .B @(TUP_ARCH)
+-TUP_ARCH is another special @-variable. If CONFIG_TUP_ARCH is not set in the tup.config file, it has a default value according to the processor architecture that tup itself was compiled in. Currently the default value is one of "i386", "x86_64", "powerpc", "powerpc64", "ia64", "alpha", "sparc", "arm64", or "arm".
++TUP_ARCH is another special @-variable. If CONFIG_TUP_ARCH is not set in the tup.config file, it has a default value according to the processor architecture that tup itself was compiled in. Currently the default value is one of "i386", "x86_64", "powerpc", "powerpc64", "ia64", "alpha", "sparc", "arm64", "arm" or "s390x".
+ 
+ .SH "VARIANTS"
+ Tup supports variants, which allow you to build your project multiple times with different configurations. Perhaps the most common case is to build a release and a debug configuration with different compiler flags, though any number of variants can be used to support whatever configurations you like. Each variant is built in its own directory distinct from each other and from the source tree. When building with variants, the in-tree build is disabled. To create a variant, make a new directory at the top of the tup hierarchy and create a "tup.config" file there. For example:
