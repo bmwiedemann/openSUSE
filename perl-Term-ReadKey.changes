@@ -1,0 +1,156 @@
+-------------------------------------------------------------------
+Mon Jun 17 16:01:00 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
+
+- update to 2.38
+   * Bundle up various changes including:
+   * Indexing improvements
+   * Makefile improvements for some make utils
+   * Various code cleanups and modernizations
+- Updated URL to MetaCPAN
+- Updated spec file with spec-cleaner
+
+-------------------------------------------------------------------
+Sun Sep 24 06:47:38 UTC 2017 - coolo@suse.com
+
+- update to 2.37
+   * Better support parallel builds by making 'dynamic' a dependency of the ReadKey.pm
+   * Add a package declaration to the ReadKey_pm.PL to aid indexing
+   * Use FULLPERLRUNINST to run the ReadKey_pm.PL to get the 'blib'
+   * Fix GetTerminalSize() argument handling
+   * Fix miniperl build on Win32
+   * Remove unused Cwd
+   * Fix TAP output
+   * Fix warnings in XS file
+   * Don't attempt some tests if STDIN is not a terminal
+   * Generate ReadKey.pm from  ReadKey_pm.PL to expand blockoptions
+   * demand-load Carp,
+   * remove unneeded AutoLoader,
+   * Improve genchars.pl, support make -s silence.
+   * Improve Makefile.PL add SIGN, fix pure_site_install, support dual-life, fix realclean
+
+
+-------------------------------------------------------------------
+Thu May 29 16:47:00 UTC 2014 - stephan.barth@suse.com
+
+- Update to version 2.32 from 2.31
+  Upstream changes:
+  2014-05-10  Jonathan Stowe
+   * Makefile.PL: Makefile.PL more specific
+  2014-05-10  Jonathan Stowe <jns+git@gellyfish.co.uk>
+   * : Merge pull request #2 from jacquesg/warnings Fix some warnings
+  2014-03-09  Jonathan Stowe <jns+git@gellyfish.co.uk>
+   * Configure.pm, META.yml, Makefile.PL: Don't index Configure.pm
+  2014-03-03  Jonathan Stowe <jns+git@gellyfish.co.uk>
+   * Changes, README, ReadKey.pm: Added documentation patch as per
+     Chris Marshall Bumped version
+
+-------------------------------------------------------------------
+Tue Nov 26 09:14:50 UTC 2013 - coolo@suse.com
+
+- update to 2.31, new author, a more clearer license, no changelog
+
+-------------------------------------------------------------------
+Wed Oct  5 15:46:26 UTC 2011 - lars@linux-schulserver.de
+
+- also obsolete perl-TermReadKey 2.30
+
+-------------------------------------------------------------------
+Wed Sep 28 16:25:45 CET 2011 - pascal.bleser@opensuse.org
+
+- renamed to perl-Term-ReadKey
+
+-------------------------------------------------------------------
+Tue Nov 30 19:20:48 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:31:09 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Tue Oct 19 08:39:07 UTC 2010 - coolo@novell.com
+
+- add perl as explicit buildrequire
+
+-------------------------------------------------------------------
+Sun Dec 20 16:32:06 CET 2009 - jengelh@medozas.de
+
+- enable parallel build
+- enable testsuite on SPARC (there is a /dev/tty)
+
+-------------------------------------------------------------------
+Wed Jan 25 21:39:58 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Aug  1 13:30:59 CEST 2005 - mjancar@suse.cz
+
+- update to 2.30
+
+-------------------------------------------------------------------
+Fri Mar 26 10:43:20 CET 2004 - kukuk@suse.de
+
+- Fix Requires (/bin/stty is needed, not XFree86)
+
+-------------------------------------------------------------------
+Wed Feb 18 08:49:33 CET 2004 - kukuk@suse.de
+
+- Remove unused packages from neededforbuild
+- Don't run test suite on machines without /dev/tty
+
+-------------------------------------------------------------------
+Sat Jan 10 21:11:59 CET 2004 - adrian@suse.de
+
+- build as user
+
+-------------------------------------------------------------------
+Fri Aug 22 15:48:43 CEST 2003 - mjancar@suse.cz
+
+- require the perl version we build with
+
+-------------------------------------------------------------------
+Tue Jul 15 16:26:29 CEST 2003 - mjancar@suse.cz
+
+- adapt to perl-5.8.1
+- use %perl_process_packlist
+
+-------------------------------------------------------------------
+Wed Jun 18 09:08:08 CEST 2003 - coolo@suse.de
+
+- package directories
+
+-------------------------------------------------------------------
+Tue May 20 12:40:30 CEST 2003 - mjancar@suse.cz
+
+- remove unpackaged files
+
+-------------------------------------------------------------------
+Tue Nov 12 15:53:36 CET 2002 - prehak@suse.cz
+
+- updated to version 2.21
+- updated neededforbuild after xf86-rename
+
+-------------------------------------------------------------------
+Mon Jul 22 20:07:37 CEST 2002 - prehak@suse.cz
+
+- update to version 2.20
+- enabled make test
+
+-------------------------------------------------------------------
+Tue Jul  2 17:40:06 MEST 2002 - mls@suse.de
+
+- remove race in .packlist generation
+
+-------------------------------------------------------------------
+Thu Jan 17 13:07:02 CET 2002 - rvasice@suse.cz
+
+- update to version 2.16
+
+-------------------------------------------------------------------
+Fri Nov  2 11:36:35 CET 2001 - rvasice@suse.cz
+
+- initial package release (version 2.14)
+
