@@ -247,6 +247,7 @@ amdgpu: pci:v00001002d000073A2sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073A3sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073ABsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073AEsv*sd*bc*sc*i*
+amdgpu: pci:v00001002d000073AFsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073BFsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073C0sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000073C1sv*sd*bc*sc*i*
@@ -3101,6 +3102,14 @@ qcom_q6v5_pas: of:N*T*Cqcom,sm8250-cdsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sm8250-cdsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sm8250-slpi-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sm8250-slpi-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sm8350-adsp-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sm8350-adsp-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sm8350-cdsp-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sm8350-cdsp-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sm8350-mpss-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sm8350-mpss-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sm8350-slpi-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sm8350-slpi-pasC*
 qla1280: pci:v00001077d00001016sv*sd*bc*sc*i*
 qla1280: pci:v00001077d00001020sv*sd*bc*sc*i*
 qla1280: pci:v00001077d00001080sv*sd*bc*sc*i*
@@ -4871,6 +4880,8 @@ tegra_drm: of:N*T*Cnvidia,tegra114-dc
 tegra_drm: of:N*T*Cnvidia,tegra114-dcC*
 tegra_drm: of:N*T*Cnvidia,tegra114-dsi
 tegra_drm: of:N*T*Cnvidia,tegra114-dsiC*
+tegra_drm: of:N*T*Cnvidia,tegra114-gr2d
+tegra_drm: of:N*T*Cnvidia,tegra114-gr2dC*
 tegra_drm: of:N*T*Cnvidia,tegra114-gr3d
 tegra_drm: of:N*T*Cnvidia,tegra114-gr3dC*
 tegra_drm: of:N*T*Cnvidia,tegra114-hdmi

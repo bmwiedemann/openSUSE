@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Apr 19 15:42:23 UTC 2021 - tiwai@suse.com
+
+- Update to version 20210419 (git commit 940b7f42d45d):
+  * cxgb4: Update firmware to revision 1.25.4.0
+  * Mellanox: Add new mlxsw_spectrum firmware xx.2008.2438
+  * brcm: Link CM4's WiFi firmware with DMI machine name.
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * amdgpu: update navi14 smc firmware
+  * amdgpu: update navi10 SMC firmware
+  * QCA: Update Bluetooth firmware for QCA6174
+  * WHENCE: link to similar config file for rtl8821a support
+  * nfp: update Agilio SmartNIC flower firmware to rev AOTC-2.14.A.6
+  * amdgpu: add arcturus firmware
+  * rtl_bt: Add rtl8723bs_config-OBDA0623.bin symlink
+  * brcm: Add nvram for the Chuwi Hi8 (CWI509) tablet
+  * brcm: Add nvram for the Predia Basic tablet
+  * qcom: sm8250: update remoteproc firmware
+  * qcom: update a650 firmware files
+  * rtl_bt: Update RTL8822C BT(UART I/F) FW to 0x59A_76A3
+  * amdgpu: update sienna cichlid firmware for 20.50
+  * amdgpu: update vega20 firmware for 20.50
+  * amdgpu: update picasso firmware for 20.50
+  * amdgpu: update navi14 firmware for 20.50
+  * amdgpu: update vega12 firmware for 20.50
+  * amdgpu: update navi12 firmware for 20.50
+  * amdgpu: update vega10 firmware for 20.50
+  * amdgpu: update renoir firmware for 20.50
+  * amdgpu: update navi10 firmware for 20.50
+  * amdgpu: update raven2 firmware for 20.50
+  * amdgpu: update raven firmware for 20.50
+  * amdgpu: add initial support for navy flounder
+- Update aliases
+
+-------------------------------------------------------------------
 Thu Mar 18 14:01:03 UTC 2021 - tiwai@suse.com
 
 - Update to version 20210315 (git commit 3568f962908c):

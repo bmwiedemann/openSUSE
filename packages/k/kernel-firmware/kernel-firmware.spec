@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20210315
+%define version_unconverted 20210419
 
 Name:           kernel-firmware
-Version:        20210315
+Version:        20210419
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -392,6 +392,7 @@ Supplements:    modalias(pci:v00001002d000073A2sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073A3sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073ABsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073AEsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073AFsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073BFsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073C0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073C1sv*sd*bc*sc*i*)
@@ -3162,6 +3163,8 @@ Supplements:    modalias(of:N*T*Cnvidia,tegra114-dc)
 Supplements:    modalias(of:N*T*Cnvidia,tegra114-dcC*)
 Supplements:    modalias(of:N*T*Cnvidia,tegra114-dsi)
 Supplements:    modalias(of:N*T*Cnvidia,tegra114-dsiC*)
+Supplements:    modalias(of:N*T*Cnvidia,tegra114-gr2d)
+Supplements:    modalias(of:N*T*Cnvidia,tegra114-gr2dC*)
 Supplements:    modalias(of:N*T*Cnvidia,tegra114-gr3d)
 Supplements:    modalias(of:N*T*Cnvidia,tegra114-gr3dC*)
 Supplements:    modalias(of:N*T*Cnvidia,tegra114-hdmi)
@@ -3343,6 +3346,14 @@ Supplements:    modalias(of:N*T*Cqcom,sm8250-cdsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8250-cdsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8250-slpi-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8250-slpi-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-cdsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-mpss-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-mpss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-slpi-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-slpi-pasC*)
 Supplements:    modalias(of:N*T*Csilabs,wf200)
 Supplements:    modalias(of:N*T*Csilabs,wf200C*)
 Supplements:    modalias(of:N*T*Csilabs,wfx-sdio)
@@ -4432,6 +4443,7 @@ Supplements:    modalias(pci:v00001002d000073A2sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073A3sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073ABsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073AEsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073AFsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073BFsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073C0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073C1sv*sd*bc*sc*i*)
