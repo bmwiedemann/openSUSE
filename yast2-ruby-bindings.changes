@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 14 10:58:39 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Made the architecture string to fit in a 80x24 terminal
+  (bsc#1184474).
+- 4.4.0
+
+-------------------------------------------------------------------
 Wed Mar 17 13:55:01 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed password encrypting functions to work correctly also
