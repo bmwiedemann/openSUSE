@@ -122,4 +122,12 @@
     <comment></comment>
     <requestid>834778</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>6315c6cc93cde6fc02e1306c46b70a6c</srcmd5>
+    <version>5.15.1</version>
+    <time>1619298496</time>
+    <user>dimstar_suse</user>
+    <comment>forward to devel project (forwarded request 888020 from cgiboudeaux)</comment>
+    <requestid>888021</requestid>
+  </revision>
 </revisionlist>

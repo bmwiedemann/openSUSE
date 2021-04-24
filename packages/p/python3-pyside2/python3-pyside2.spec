@@ -1,7 +1,7 @@
 #
 # spec file for package python3-pyside2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,9 @@
 
 
 %bcond_with tests
+
+# QML imports created and used by examples
+%global __requires_exclude qmlimport\\((Charts|TextBalloonPlugin)
 
 %define mypython python3
 BuildRequires:  python3-devel
@@ -197,8 +200,10 @@ rm -Rf %{buildroot}%{_datadir}/PySide2/typesystems/typesystem_*_win.xml
 %exclude %{_datadir}/PySide2/examples
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/cmake
-%{_libdir}/pkgconfig
+%{_libdir}/cmake/PySide2-%{version}
+%{_libdir}/cmake/Shiboken2-%{version}
+%{_libdir}/pkgconfig/pyside2.pc
+%{_libdir}/pkgconfig/shiboken2.pc
 %{_mandir}/man*/*
 
 %files examples

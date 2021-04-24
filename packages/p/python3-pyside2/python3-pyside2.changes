@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 23 12:10:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Exclude internal imports detected by qml-autoreqprov.
+
+-------------------------------------------------------------------
+Wed Apr  7 22:56:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- avoid repackaging the pkgconfig and cmake directories - they are 
+  provided by the filesystem package 
+
+-------------------------------------------------------------------
 Tue Sep 15 06:23:38 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.15.1
