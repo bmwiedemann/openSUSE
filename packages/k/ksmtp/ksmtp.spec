@@ -18,15 +18,19 @@
 
 %bcond_without lang
 Name:           ksmtp
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Job-based library to send email through an SMTP server
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  cyrus-sasl-devel
-BuildRequires:  extra-cmake-modules >= 1.0.0
+BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
@@ -35,10 +39,6 @@ BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 KSMTP is a job based library to send email through an SMTP server.
@@ -69,7 +69,7 @@ to build programs that use the KSMTP library.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build -- -DBUILD_TESTING=ON
