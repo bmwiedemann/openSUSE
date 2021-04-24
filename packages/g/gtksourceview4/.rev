@@ -168,4 +168,14 @@ Hi legal / babelworx -- you already reviewed this ok in previous sr (sr#452943),
     <comment>GNOME 40 - here we come (forwarded request 880981 from dimstar)</comment>
     <requestid>881150</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>93142831a65ee857b370ae88e17af1f8</srcmd5>
+    <version>4.8.1</version>
+    <time>1619298423</time>
+    <user>dimstar_suse</user>
+    <comment>- Add d1ed58b2ab82bd5be55881088fc17ff1527511db.patch: build:
+  disable -Werror for incompatible-pointer-types. Works around
+  build failure with GCC 11. (forwarded request 887553 from dimstar)</comment>
+    <requestid>887557</requestid>
+  </revision>
 </revisionlist>

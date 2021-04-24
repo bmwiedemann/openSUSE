@@ -26,6 +26,8 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
 Source0:        https://download.gnome.org/sources/gtksourceview/4.8/%{_name}-%{version}.tar.xz
 Source1:        changes.lang
+# PATCH-FIX-UPSTREAM d1ed58b2ab82bd5be55881088fc17ff1527511db.patch dimstar@opensuse.org -- build: disable -Werror for incompatible-pointer-types
+Patch0:         https://gitlab.gnome.org/GNOME/gtksourceview/-/commit/d1ed58b2ab82bd5be55881088fc17ff1527511db.patch
 
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
@@ -108,7 +110,7 @@ features typical of a source editor.
 %lang_package
 
 %prep
-%setup -q -n %{_name}-%{version}
+%autosetup -n %{_name}-%{version} -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 22 11:36:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add d1ed58b2ab82bd5be55881088fc17ff1527511db.patch: build:
+  disable -Werror for incompatible-pointer-types. Works around
+  build failure with GCC 11.
+
+-------------------------------------------------------------------
 Thu Mar 18 13:18:31 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.8.1:
