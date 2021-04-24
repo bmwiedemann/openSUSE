@@ -1,0 +1,113 @@
+commit 8c4a1ccba0ea07c03659edc5933d8eab583611c1
+Author: Wuzzy <wuzzy2@mail.ru>
+Date:   Wed Apr 7 11:10:15 2021 +0000
+
+    Fix: Install location of 'make install' (#20)
+
+diff --git Makefile Makefile
+index fd7c013..c650644 100644
+--- Makefile
++++ Makefile
+@@ -27,7 +27,7 @@ BASE_FILENAME       ?= openmsx
+ # Documentation files
+ DOC_FILES ?= docs/readme.txt docs/license.txt docs/changelog.txt
+ 
+-# Possible offset to NewGRF version. Increase by one, if a release
++# Possible offset to baseset version. Increase by one, if a release
+ # branch is added to the repository
+ REPO_BRANCH_VERSION ?= 0
+ 
+@@ -42,11 +42,11 @@ SCRIPT_DIR          ?= build-common
+ # REQUIRED_NML_BRANCH  = 0.3
+ # MIN_NML_REVISION     = 0
+ 
+-##################################################################
++###################################################################
+ #
+-# Everything below here usually need not change for simple NewGRFs
++# Everything below here usually need not change for simple basesets
+ #
+-##################################################################
++###################################################################
+ 
+ # Define the filenames of the grf and nml file. They must be in the main directoy
+ GRF_FILE            ?= $(BASE_FILENAME).grf
+@@ -255,7 +255,7 @@ ifeq ($(NML),)
+ endif
+ ifdef REQUIRED_NML_BRANCH
+ ifneq ($(REQUIRED_NML_BRANCH),$(NML_BRANCH))
+-	$(_E) "Wrong NML version. This NewGRF requires an NML from the $(REQUIRED_NML_BRANCH) branch, but $(NML_BRANCH) found."
++	$(_E) "Wrong NML version. This baseset requires an NML from the $(REQUIRED_NML_BRANCH) branch, but $(NML_BRANCH) found."
+ 	$(_V) false
+ endif
+ endif
+@@ -460,7 +460,7 @@ maintainer-clean::
+ 	$(_E) "[MAINTAINER-CLEAN BUNDLE SRC]"
+ 	$(_V) -rm -rf $(MD5_SRC_FILENAME)
+ 
+-# target 'install' which installs the grf
++# target 'install' which installs the baseset
+ ################################################################
+ # Install targets
+ ################################################################
+@@ -477,7 +477,7 @@ OSTYPE:=$(shell uname -s)
+ 
+ # Check for OSX
+ ifeq ($(OSTYPE),Darwin)
+-INSTALL_DIR :=$(HOME)/Documents/OpenTTD/newgrf/$(BASE_FILENAME)
++INSTALL_DIR :=$(HOME)/Documents/OpenTTD/baseset/$(BASE_FILENAME)
+ endif
+ 
+ # Check for Windows / MinGW32
+@@ -488,20 +488,20 @@ ifeq "$(origin CC)" "default"
+ endif
+ WIN_VER = $(shell echo "$(OSTYPE)" | cut -d- -f2 | cut -d. -f1)
+ ifeq ($(WIN_VER),5)
+-	INSTALL_DIR :=C:\Documents and Settings\All Users\Shared Documents\OpenTTD\newgrf\$(BASE_FILENAME)
++	INSTALL_DIR :=C:\Documents and Settings\All Users\Shared Documents\OpenTTD\baseset\$(BASE_FILENAME)
+ else
+-	INSTALL_DIR :=C:\Users\Public\Documents\OpenTTD\newgrf\$(BASE_FILENAME)
++	INSTALL_DIR :=C:\Users\Public\Documents\OpenTTD\baseset\$(BASE_FILENAME)
+ endif
+ endif
+ 
+ # Check for Windows / Cygwin
+ ifeq ($(shell echo "$(OSTYPE)" | cut -d_ -f1),CYGWIN)
+-INSTALL_DIR :=$(shell cygpath -A -O)/OpenTTD/newgrf/$(BASE_FILENAME)
++INSTALL_DIR :=$(shell cygpath -A -O)/OpenTTD/baseset/$(BASE_FILENAME)
+ endif
+ 
+ # If non of the above matched, we'll assume we're on a unix-like system
+ ifeq ($(OSTYPE),Linux)
+-INSTALL_DIR := $(HOME)/.openttd/newgrf/$(BASE_FILENAME)
++INSTALL_DIR := $(HOME)/.openttd/baseset/$(BASE_FILENAME)
+ endif
+ 
+ endif
+@@ -513,15 +513,15 @@ ifeq ($(INSTALL_DIR),"")
+ 	$(_V) false
+ endif
+ 	$(_E) "[INSTALL] to $(INSTALL_DIR)"
+-	$(_V) install -d $(INSTALL_DIR)
+-	$(_V) install -m644 $< $(INSTALL_DIR)
++	$(_V) install -d $(INSTALL_DIR)/$(DIR_NAME)
++	$(_V) install -m644 $(DIR_NAME)/* $(INSTALL_DIR)/$(DIR_NAME)
+ 
+ # misc. convenience targets like 'langcheck'
+ -include $(SCRIPT_DIR)/Makefile_misc
+ 
+ help:
+-	$(_E) "all:         Build the entire NewGRF and its documentation"
+-	$(_E) "install:     Install into the default NewGRF directory ($(INSTALL_DIR))"
++	$(_E) "all:         Build the entire baseset and its documentation"
++	$(_E) "install:     Install into the default baseset directory ($(INSTALL_DIR))"
+ 	$(_E) "$(GENERATE_DOC):         Build the documentation ($(DOC_FILES))"
+ ifdef GFX_SCRIPT_LIST_FILES
+ 	$(_E) "$(GENERATE_GFX):         Build the graphics dependencies"
+@@ -575,5 +575,5 @@ endif
+ 	$(_E) "XZ XZ_FLAGS             defaults: $(XZ) $(XZ_FLAGS)"
+ 	$(_E)
+ 	$(_E) "INSTALL_DIR             defaults: $(INSTALL_DIR)"
+-	$(_E) "    Sets the default installation directory for NewGRFs"
++	$(_E) "    Sets the default installation directory for basesets"
+ 

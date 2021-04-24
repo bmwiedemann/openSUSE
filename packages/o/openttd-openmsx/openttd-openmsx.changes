@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 22 10:37:33 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim metadata that was repeated in description.
+
+-------------------------------------------------------------------
+Thu Apr 15 16:54:32 UTC 2021 - Jan Baier <jbaier@suse.com>
+
+- upstream update 0.4.0
+- add not yet released patch 0001-openmsx-fix-install-target.patch
+
+-------------------------------------------------------------------
 Mon Mar 19 22:01:55 UTC 2012 - suse@ammler.ch
 
-- change timidity from requires to recommends (bnc#752669) 
+- change timidity from requires to recommends (bnc#752669)
 
 -------------------------------------------------------------------
 Fri Mar 16 12:12:48 UTC 2012 - suse@ammler.ch
@@ -43,7 +54,7 @@ Sun Mar 14 14:25:10 UTC 2010 - Marcel Gmür <ammler@openttdcoop.org>
 -------------------------------------------------------------------
 Sat Feb 27 13:22:16 UTC 2010 - ammler@openttdcoop.org
 
-- requires timidity  
+- requires timidity
 
 -------------------------------------------------------------------
 Sat Feb 27 01:47:28 UTC 2010 - ammler@openttdcoop.org

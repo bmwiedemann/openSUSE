@@ -1,7 +1,7 @@
 #
 # spec file for package openttd-openmsx
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,52 +12,48 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           openttd-openmsx
-Version:        0.3.1
-Release:        1%{?dist}
+Version:        0.4.0
+Release:        0
 Summary:        An OpenTTD Music set
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Other
-
-Url:            http://dev.openttdcoop.org/projects/openmsx
-Source0:        http://bundles.openttdcoop.org/openmsx/releases/%{version}/openmsx-%{version}-source.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
-
+URL:            https://github.com/OpenTTD/OpenMSX
+Source0:        https://github.com/OpenTTD/OpenMSX/archive/refs/tags/%{version}.tar.gz
+Patch0:         0001-openmsx-fix-install-target.patch
 BuildRequires:  python
 Requires:       openttd-data >= 1.2
+BuildArch:      noarch
 %if 0%{?suse_version} || 0%{?mdkversion}
 Recommends:     timidity
 %endif
 
 %description
-OpenMSX is an open source replacement for the original Transport Tycoon Deluxe (TTD) 
-music. All contributions are licensed under the GPL v2.
+OpenMSX is a base music set for OpenTTD.
 
 %prep
-%setup -qn openmsx-%{version}-source
+%setup -q -n OpenMSX-%{version}
+%patch0
 
 %build
-make %{?_smp_mflags} _V=
+%make_build PYTHON=%{_bindir}/python3 REPO_VERSION=%{version} _V=
 
 %install
-%define omsxdir %{_datadir}/openttd/baseset
-make install INSTALL_DIR=%{buildroot}%{omsxdir} _V=
-#openmsx adds a versioned dir to the install dir
+%make_install INSTALL_DIR=%{buildroot}%{_datadir}/openttd/baseset PYTHON=%{_bindir}/python3 REPO_VERSION=%{version} _V=
+
 %define omsxdir %{_datadir}/openttd/baseset/openmsx-%{version}
 
 %files
-%defattr(-,root,root,-)
+%license %{omsxdir}/license.txt
+%doc %{omsxdir}/changelog.txt
+%doc %{omsxdir}/readme.txt
 %dir %{_datadir}/openttd
 %dir %{_datadir}/openttd/baseset
 %dir %{omsxdir}
-%doc %{omsxdir}/changelog.txt
-%doc %{omsxdir}/license.txt
-%doc %{omsxdir}/readme.txt
 %{omsxdir}/openmsx.obm
 %{omsxdir}/*.mid
 
