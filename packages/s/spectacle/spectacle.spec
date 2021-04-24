@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           spectacle
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Screen Capture Program
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/spectacle
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libqt5-qtdeclarative-private-headers-devel
@@ -70,10 +74,6 @@ Provides:       kscreengenie = %{version}
 # Upstream changed name twice (kscreengenie - kapture - spectacle)
 Obsoletes:      kapture < %{version}
 Provides:       kapture = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Spectactle is a screenshot-taking program made by KDE. It allows taking screenshots
@@ -89,9 +89,7 @@ Requires:       %{name}
 This package contains the documentation available for Spectacle, which is a
 screenshot capture program by KDE.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %autosetup -p1
@@ -118,32 +116,33 @@ screenshot capture program by KDE.
 %systemd_user_postun
 
 %files
-%dir %{_kf5_appstreamdir}
 %dir %{_kf5_libdir}/kconf_update_bin
 %dir %{_kf5_sharedir}/kconf_update
 %dir %{_kf5_sharedir}/kglobalaccel
+%doc %lang(en) %{_mandir}/man1/spectacle.1.gz
 %{_kf5_applicationsdir}/org.kde.spectacle.desktop
 %{_kf5_appstreamdir}/org.kde.spectacle.appdata.xml
 %{_kf5_bindir}/spectacle
 %{_kf5_dbusinterfacesdir}/org.kde.Spectacle.xml
+%{_kf5_debugdir}/spectacle.categories
 %{_kf5_iconsdir}/hicolor/*/*/spectacle*
+%{_kf5_libdir}/kconf_update_bin/spectacle-migrate-shortcuts
 %{_kf5_notifydir}/spectacle.notifyrc
 %{_kf5_sharedir}/dbus-1/services/org.kde.Spectacle.service
-%{_kf5_libdir}/kconf_update_bin/spectacle-migrate-shortcuts
-%{_kf5_sharedir}/kconf_update/spectacle_shortcuts.upd
 %{_kf5_sharedir}/kconf_update/spectacle_newConfig.upd
+%{_kf5_sharedir}/kconf_update/spectacle_shortcuts.upd
 %{_kf5_sharedir}/kglobalaccel/org.kde.spectacle.desktop
-%{_kf5_debugdir}/spectacle.categories
 %{_userunitdir}/app-org.kde.spectacle.service
 
 %files doc
-%license COPYING.DOC
+%license LICENSES/*
 %doc README.md
 %doc %lang(en) %{_kf5_htmldir}/en/spectacle/
 
+
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
