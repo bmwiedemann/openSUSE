@@ -21,13 +21,17 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-accounts-kcm
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
-Summary:        KCM Module for configuring Telepathy Instant Messaging Accounts
+Summary:        Configuration module to set up Telepathy accounts
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://community.kde.org/Real-Time_Communication_and_Collaboration
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -58,10 +62,6 @@ Recommends:     telepathy-rakia
 Recommends:     telepathy-salut
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This is a KControl Module which handles adding/editing/removing Telepathy
@@ -88,7 +88,7 @@ ConnectionManager-Protocol combinations where no plugin exists.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
