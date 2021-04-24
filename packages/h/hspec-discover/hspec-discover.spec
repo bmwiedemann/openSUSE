@@ -19,7 +19,7 @@
 %global pkg_name hspec-discover
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.7.9
+Version:        2.7.10
 Release:        0
 Summary:        Automatically discover and run Hspec tests
 License:        MIT
