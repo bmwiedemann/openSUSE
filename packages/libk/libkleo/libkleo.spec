@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkleo
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
-Summary:        Base package of Kleopatra, a KDE key manager
+Summary:        Base package of Kleopatra, a key manager by KDE
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_headers-devel
@@ -43,14 +47,11 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(QGpgme)
 BuildRequires:  cmake(Qt5Widgets)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
-libkleo is a library used by KDE PIM applications to handle cryptographic key and certificate management.
+libkleo is a library used by KDE PIM applications to handle cryptographic key
+and certificate management.
 
 %package -n libKF5Libkleo5
 Summary:        LibKleo library for kdepim
@@ -59,7 +60,8 @@ Group:          System/Libraries
 Requires:       libkleo = %{version}
 
 %description -n libKF5Libkleo5
-This package contains the libkleo library, a library used by KDE PIM applications to handle cryptographic key and certificate management.
+This package contains the libkleo library, a library used by KDE PIM
+applications to handle cryptographic key and certificate management.
 
 %package devel
 Summary:        Development package for libkleo
@@ -70,12 +72,12 @@ Requires:       libgpgmepp-devel
 Requires:       cmake(QGpgme)
 
 %description devel
-The development package for the libkleo libraries
+The development package for the libkleo libraries.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -92,10 +94,10 @@ The development package for the libkleo libraries
 
 %files devel
 %license LICENSES/*
+%{_kf5_cmakedir}/KF5Libkleo/
 %{_kf5_includedir}/Libkleo/
 %{_kf5_includedir}/libkleo/
 %{_kf5_includedir}/libkleo_version.h
-%{_kf5_libdir}/cmake/KF5Libkleo/
 %{_kf5_libdir}/libKF5Libkleo.so
 %{_kf5_mkspecsdir}/qt_Libkleo.pri
 
