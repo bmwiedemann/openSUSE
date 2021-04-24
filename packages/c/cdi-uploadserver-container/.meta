@@ -1,0 +1,5 @@
+<package name="cdi-uploadserver-container" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization" package="cdi-uploadserver-container"/>
+</package>
