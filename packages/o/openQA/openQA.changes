@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 22 20:45:06 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1619097622.241af4702:
+  * Enable signatures in …::Result::Jobs and fix issues
+  * Add tests for 'first_bad' link in investigation
+  * Show link to first bad test in investigation tab
+  * worker: Avoid running optipng/upload twice
+  * Fix missing test module results and extend related unit tests
+  * worker: Make uploading test order on final upload (when stopping job) work
+  * Add more tests for Main controller
+  * Use form validation in Main controller
+  * worker: Avoid redundant code for getting test status
+
+-------------------------------------------------------------------
 Tue Apr 20 11:59:53 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1618919402.a469aea0f:
