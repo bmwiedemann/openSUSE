@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 13 06:39:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Fix paint issue when unlocking empty login keyring
+    (boo#1179003).
+  + pgp:
+    - Properly fix keyserver registration.
+    - Add unit tests for PGP keyserver code.
+  * build: Unbreak build using vala 0.48.x.
+  * ci: Add minimal style checks to the CI.
+  * Several code cleanups.
+  * Updated translations.
+- Drop 153.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Tue Feb 23 09:29:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.alpha:

@@ -17,15 +17,13 @@
 
 
 Name:           seahorse
-Version:        40.alpha
+Version:        40.0
 Release:        0
 Summary:        GNOME interface for gnupg
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GFDL-1.1-only
+License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Security
 URL:            https://wiki.gnome.org/Apps/Seahorse
 Source0:        https://download.gnome.org/sources/seahorse/40/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 153.patch boo#1179003 dimstar@opensuse.org -- key-manager: Make sure to update after unlocking
-Patch0:         https://gitlab.gnome.org/GNOME/seahorse/-/merge_requests/153.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gpg2 >= 2.2.0

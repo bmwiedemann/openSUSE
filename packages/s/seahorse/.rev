@@ -854,4 +854,12 @@ A couple of patches for this are competing for upstream approval at bgo#659834 -
     <comment>GNOME 40 - here we come (forwarded request 880995 from dimstar)</comment>
     <requestid>881163</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>e2b19e1abf1f89b529c0d5d44659ccf1</srcmd5>
+    <version>40.0</version>
+    <time>1619298400</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 40.0 (forwarded request 884844 from dimstar)</comment>
+    <requestid>887471</requestid>
+  </revision>
 </revisionlist>
