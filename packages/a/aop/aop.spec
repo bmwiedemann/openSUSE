@@ -1,7 +1,7 @@
 #
 # spec file for package aop
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,27 +20,20 @@ Name:           aop
 Version:        0.6
 Release:        0
 Summary:        Ncurses based arcade game with only 64 lines of code
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
-Url:            http://raffi.at/view/code/aop
-Source0:        http://raffi.at/code/%{name}/%{name}-%{version}.tar.gz
+URL:            https://raffi.at/view/code/aop
+Source0:        https://raffi.at/code/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}.png
 Source2:        %{name}.desktop
 # PATCH-FIX-OPENSUSE - aop-Makefile.patch -- Fix build and installation
 Patch0:         %{name}-Makefile.patch
 # PATCH-FIX-OPENSUSE - aop-aop.c.patch-- Fix lifes and where are levels
 Patch1:         %{name}-aop.c.patch
-%if 0%{?suse_version}
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
-%endif
-%if 0%{?suse_version} < 1320
-BuildRequires:  ncurses-devel
-%else
 BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(ncurses)
-%endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Ambassador of Pain is a curses based arcade game for Linux/UNIX
@@ -52,37 +45,25 @@ the number of moves and don't losing any time.
 Lost lifes (0) can easily be picked up by simply drive over them.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %build
-%if 0%{?suse_version} < 1320
-CFLAGS="%optflags $(ncursesw6-config --cflags)"
-LIBS="$(ncursesw6-config --libs)"
-%else
-CFLAGS="%optflags $(pkg-config ncurses --cflags)"
-LIBS="$(pkg-config ncurses --libs)"
-%endif
-
-make %{?_smp_mflags} CFLAGS="$CFLAGS" LIBS="$LIBS"
+CFLAGS="%{optflags} $(pkg-config --cflags ncurses)"
+LIBS="$(pkg-config --libs ncurses)"
+%make_build CFLAGS="$CFLAGS" LIBS="$LIBS"
 
 %install
 %make_install
 
 # install icon
-install -Dm 0644 %{S:1} %{buildroot}%{_datadir}/pixmaps/%{name}.png
+install -Dm 0644 %{SOURCE1} %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
 # install Desktop file
-install -Dm 0644 %{S:2} %{buildroot}%{_datadir}/applications/%{name}.desktop
-
-%if 0%{?suse_version}
-    %suse_update_desktop_file %{name}
-%endif
+%suse_update_desktop_file -i %{name}
 
 %files
-%defattr(-,root,root)
-%doc COPYING README
+%doc README
+%license COPYING
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
