@@ -28,7 +28,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/mwaskom/seaborn
 Source:         https://files.pythonhosted.org/packages/source/s/seaborn/seaborn-%{version}.tar.gz
-BuildRequires:  %{python_module Pillow}
+# PATCH-FIX-UPSTREAM seaborn-pr2562-clustermap-colors.patch -- gh#mwaskom/seaborn#2562
+Patch0:         https://github.com/mwaskom/seaborn/pull/2562.patch#/seaborn-pr2562-clustermap-colors.patch
 BuildRequires:  %{python_module fastcluster}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module matplotlib >= 2.1.2}
@@ -93,9 +94,9 @@ Some of the features that seaborn offers are:
 %pytest seaborn
 
 %files %{python_files}
-%license LICENSE
+%license LICENSE licences/*
 %doc README.md
-%doc licences/
-%{python_sitelib}/seaborn*
+%{python_sitelib}/seaborn
+%{python_sitelib}/seaborn-%{version}*-info
 
 %changelog

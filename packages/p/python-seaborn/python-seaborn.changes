@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 24 15:09:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add seaborn-pr2562-clustermap-colors.patch for matplotlib 3.4
+  compatibility gh#mwaskom/seaborn#2562
+
+-------------------------------------------------------------------
 Fri Jan 22 19:13:36 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Disable python36 build because SciPy dropped Python 3.6 and
