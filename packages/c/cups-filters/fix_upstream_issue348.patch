@@ -1,0 +1,44 @@
+--- filter/foomatic-rip/foomaticrip.c.orig	2019-06-06 15:17:11.000000000 +0200
++++ filter/foomatic-rip/foomaticrip.c	2021-04-15 09:42:20.212339673 +0200
+@@ -241,8 +241,8 @@ char * extract_next_option(char *str, ch
+     if (!str)
+         return NULL;
+ 
+-    /* skip whitespace and commas */
+-    while (*p && (isspace(*p) || *p == ',')) p++;
++    /* skip whitespace */
++    while (*p && isspace(*p)) p++;
+ 
+     if (!*p)
+         return NULL;
+@@ -267,7 +267,7 @@ char * extract_next_option(char *str, ch
+     }
+     else {
+         *key = p;
+-        while (*p && *p != ':' && *p != '=' && *p != ' ') p++;
++        while (*p && *p != ':' && *p != '=' && !isspace(*p)) p++;
+     }
+ 
+     if (*p != ':' && *p != '=') { /* no value for this option */
+@@ -293,7 +293,7 @@ char * extract_next_option(char *str, ch
+     }
+     else {
+         *value = p;
+-        while (*p && *p != ' ' && *p != ',') p++;
++        while (*p && !isspace(*p)) p++;
+         if (*p == '\0')
+             return NULL;
+         *p = '\0';
+--- filter/foomatic-rip/options.c.orig	2019-06-06 15:17:11.000000000 +0200
++++ filter/foomatic-rip/options.c	2021-04-15 09:45:57.495237990 +0200
+@@ -956,6 +956,10 @@ int option_get_command(dstr_t *cmd, opti
+         return 1;
+     }
+ 
++    /* Consider "None" as "not set" for enumerated choice options */
++    if (opt->type == TYPE_ENUM && !strcasecmp(valstr, "None"))
++        return 0;
++
+     /* Consider "None" as the empty string for string and password options */
+     if ((opt->type == TYPE_STRING || opt->type == TYPE_PASSWORD) &&
+ 	!strcasecmp(valstr, "None"))

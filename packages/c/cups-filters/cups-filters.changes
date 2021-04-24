@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 15 09:51:25 CEST 2021 - jsmeix@suse.de
+
+- fix_upstream_issue348.patch fixes
+  https://github.com/OpenPrinting/cups-filters/issues/348
+  foomatic-rip segfaults with 'job-sheets=none,none'
+  but works with 'job-sheets=none'
+  (bsc#1182893)
+
+-------------------------------------------------------------------
 Tue Nov 10 08:06:10 CET 2020 - jsmeix@suse.de
 
 - The wrapper backends /usr/lib/cups/backend/beh

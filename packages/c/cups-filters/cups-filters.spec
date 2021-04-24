@@ -1,7 +1,7 @@
 #
 # spec file for package cups-filters
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,12 @@ Source0:        http://www.openprinting.org/download/cups-filters/cups-filters-%
 # and then removed the changes of the NEWS file from that patch because
 # the NEWS changes do not apply on the sources of the pristine 1.20.0 release:
 # Patch100 fix_upstream_bug_1421.patch is fixed in the cups-filters 1.20.1 sources.
+# Patch102 fix_upstream_issue348.patch fixes
+# https://github.com/OpenPrinting/cups-filters/issues/348
+# "foomatic-rip segfaults with 'job-sheets=none,none' but works with 'job-sheets=none'"
+# according to
+# https://github.com/OpenPrinting/cups-filters/commit/67c2128219ae0ba24917cb29bf0da0bddfd6864a
+Patch102:       fix_upstream_issue348.patch
 # Since cups-filters version 1.0.42 foomatic-rip is also provided by cups-filters.
 # The foomatic-rip version that is provided by cups-filters is not specified in the cups-filters sources
 # but on http://www.openprinting.org/download/foomatic/ the foomatic-filters-4.0-current.tar.gz
@@ -217,7 +223,12 @@ This package contains the development files for cups-filters.
 
 %prep
 %setup -q
-%autopatch -p1
+# Patch102 fix_upstream_issue348.patch fixes
+# https://github.com/OpenPrinting/cups-filters/issues/348
+# "foomatic-rip segfaults with 'job-sheets=none,none' but works with 'job-sheets=none'"
+# according to
+# https://github.com/OpenPrinting/cups-filters/commit/67c2128219ae0ba24917cb29bf0da0bddfd6864a
+%patch102
 
 %build
 # Just do what is described in the upstream INSTALL file

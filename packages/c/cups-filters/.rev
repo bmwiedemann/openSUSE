@@ -378,4 +378,12 @@
     <comment>cups-filters fix boo#1178604 (forwarded request 847407 from jsmeix)</comment>
     <requestid>847408</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>9803382a6e469aea814e714a1dadc7ec</srcmd5>
+    <version>1.27.2</version>
+    <time>1619298424</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>887558</requestid>
+  </revision>
 </revisionlist>
