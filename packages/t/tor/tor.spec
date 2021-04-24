@@ -1,7 +1,7 @@
 #
 # spec file for package tor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,6 +84,8 @@ for high-stakes anonymity.
 	--with-tor-user=%{toruser} \
 	--with-tor-group=%{torgroup} \
 	--enable-systemd \
+	--enable-lzma \
+	--enable-zstd \
 	--enable-unittests \
 	--enable-gcc-warnings-advisory \
 	--docdir=%{_docdir}/%{name}
@@ -117,7 +119,7 @@ sed -i -e "s|_tor|tor|g" contrib/operator-tools/tor.logrotate
 install -D -m 644 contrib/operator-tools/tor.logrotate %{buildroot}/%{_sysconfdir}/logrotate.d/%{name}
 
 %check
-%ifnarch ppc ppc64 ppc64le aarch64 armv7l
+%ifnarch ppc ppc64 ppc64le aarch64 armv7l i586
 %make_build check || (
 	find -type f -name test-suite.log -print -exec cat {} \;
 	exit 42

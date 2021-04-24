@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 23 21:22:30 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix logging issue due to systemd picking up stdout - boo#1181244
+  Continue to log notices to syslog by default.
+- actually build with lzma/zstd
+- skip i586 tests (boo#1179331)
+
+-------------------------------------------------------------------
 Tue Mar 16 23:38:53 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - tor 0.4.5.7

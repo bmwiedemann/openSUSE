@@ -1,9 +1,6 @@
 DataDirectory /var/lib/tor
 PidFile /var/run/tor/tor.pid
-#User tor # handled instead via tor.service
-Log notice file /var/log/tor/tor.log
-#Log notice syslog
-
+Log notice syslog
 ControlSocket /var/run/tor/control GroupWritable RelaxDirModeCheck
 ControlSocketsGroupWritable 1
 SocksPort unix:/var/run/tor/socks WorldWritable

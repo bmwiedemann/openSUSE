@@ -835,4 +835,15 @@ nicer version with try-reload-or-restart</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>881346</requestid>
   </revision>
+  <revision rev="92" vrev="3">
+    <srcmd5>c05f15bd1fd7a06f9dd3f35f7c68eccb</srcmd5>
+    <version>0.4.5.7</version>
+    <time>1619298549</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix logging issue due to systemd picking up stdout - boo#1181244
+  Continue to log notices to syslog by default.
+- actually build with lzma/zstd
+- skip i586 tests (boo#1179331)</comment>
+    <requestid>888127</requestid>
+  </revision>
 </revisionlist>
