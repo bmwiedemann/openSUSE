@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 Name:           python-passivetotal
-Version:        2.1.0
+Version:        2.3.0
 Release:        0
 Summary:        Client for the PassiveTotal REST API
 License:        GPL-2.0-only
@@ -82,7 +82,7 @@ cp %{SOURCE1} .
 %python_uninstall_alternative pt-info
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/pt-info
 %python_alternative %{_bindir}/pt-config
