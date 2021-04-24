@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-calendar
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiContact)
@@ -44,10 +48,6 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Test)
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This library provides calendar integration for Akonadi based Applications.
@@ -86,7 +86,7 @@ Development package for akonadi-calendar.
 %lang_package
 
 %prep
-%setup -q -n akonadi-calendar-%{version}
+%autosetup -p1 -n akonadi-calendar-%{version}
 
 %build
   %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
@@ -103,9 +103,9 @@ Development package for akonadi-calendar.
 
 %files -n libKF5AkonadiCalendar5
 %license LICENSES/*
-%{_kf5_libdir}/libKF5AkonadiCalendar.so.*
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
+%{_kf5_libdir}/libKF5AkonadiCalendar.so.*
 
 %files -n akonadi-plugin-calendar
 %{_kf5_plugindir}/akonadi_serializer_kcalcore.so
@@ -118,10 +118,10 @@ Development package for akonadi-calendar.
 %license LICENSES/*
 %dir %{_kf5_includedir}/Akonadi
 %dir %{_kf5_includedir}/akonadi
+%{_kf5_cmakedir}/KF5AkonadiCalendar/
 %{_kf5_includedir}/Akonadi/Calendar/
 %{_kf5_includedir}/akonadi-calendar_version.h
 %{_kf5_includedir}/akonadi/calendar/
-%{_kf5_cmakedir}/KF5AkonadiCalendar/
 %{_kf5_libdir}/libKF5AkonadiCalendar.so
 %{_kf5_mkspecsdir}/qt_AkonadiCalendar.pri
 
