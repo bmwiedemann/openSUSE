@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 17 13:33:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.1:
+  + hdydeck and hdyleaflet:
+    - Skip the unfolded allocation phase if there are no visible
+      children, fixing a crash.
+    - Fix the reverse child order.
+  + hdyheaderbar: stop force centering an expanded title when
+    loose.
+  + hdyflap: fix shadow glitches on flap child resizes.
+  + hdypreferenceswindow:
+    - give the window the .preferences style class.
+    - make the search results page's margins adaptive.
+  + demo: fix a memory leak in the view switcher demo.
+  + meson: avoid trailing slashes in directories if package_subdir
+    is empty.
+
+-------------------------------------------------------------------
 Wed Mar 17 12:54:13 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.2.0:

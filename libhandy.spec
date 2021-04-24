@@ -22,7 +22,7 @@
 %define with_glade 1
 
 Name:           libhandy
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        A GTK+ library to develop UI for mobile devices
 License:        LGPL-2.1-or-later
