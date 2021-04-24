@@ -561,4 +561,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>20.12.3 release</comment>
     <requestid>877190</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>3dbe993db3e2b408e6cf46c7909905cb</srcmd5>
+    <version>21.04.0</version>
+    <time>1619298477</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.04</comment>
+    <requestid>887754</requestid>
+  </revision>
 </revisionlist>

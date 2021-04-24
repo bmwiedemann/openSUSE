@@ -22,13 +22,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kwalletmanager5
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Wallet Management Tool
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kwalletmanager5
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
@@ -57,10 +61,6 @@ BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 Provides:       kwalletmanager = %{version}
 Obsoletes:      kwalletmanager < %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This application allows you to manage your KDE password wallet.
@@ -68,7 +68,7 @@ This application allows you to manage your KDE password wallet.
 %lang_package
 
 %prep
-%setup -q -n %{rname}-%{version}
+%autosetup -p1 -n %{rname}-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -85,10 +85,13 @@ This application allows you to manage your KDE password wallet.
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %{_kf5_applicationsdir}/*kwalletmanager5*.desktop
+%{_kf5_appstreamdir}/org.kde.kwalletmanager5.appdata.xml
 %{_kf5_bindir}/kwalletmanager5
+%{_kf5_dbuspolicydir}/org.kde.kcontrol.kcmkwallet5.conf
+%{_kf5_debugdir}/kwalletmanager.categories
 %{_kf5_iconsdir}/hicolor/*/*/*.*
 %{_kf5_libdir}/libexec/
 %{_kf5_plugindir}/
@@ -96,13 +99,10 @@ This application allows you to manage your KDE password wallet.
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.kcontrol.kcmkwallet5.service
 %{_kf5_sharedir}/kxmlgui5/
 %{_kf5_sharedir}/polkit-1/actions/org.kde.kcontrol.kcmkwallet5.policy
-%{_kf5_dbuspolicydir}/org.kde.kcontrol.kcmkwallet5.conf
-%{_kf5_appstreamdir}/org.kde.kwalletmanager5.appdata.xml
-%{_kf5_debugdir}/kwalletmanager.categories
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
