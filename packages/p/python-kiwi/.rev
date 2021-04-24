@@ -1759,4 +1759,12 @@
   repository/dnf.py</comment>
     <requestid>880676</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>15ea056afdc3e7a89e2564af79a8ce45</srcmd5>
+    <version>9.23.25</version>
+    <time>1619298394</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>887366</requestid>
+  </revision>
 </revisionlist>

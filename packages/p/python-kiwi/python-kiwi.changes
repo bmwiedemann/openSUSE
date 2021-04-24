@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Wed Apr 14 20:52:04 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.24 → 9.23.25
+
+-------------------------------------------------------------------
+Wed Apr 14 14:35:37 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update zypp.conf architecture setting
+
+  Make sure the architecture is set as parameter in the
+  zypp.conf file used for building the image. This is needed
+  to allow differentiation between host arch and image arch
+  for cross image build environments
+
+-------------------------------------------------------------------
+Wed Apr 14 12:53:28 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added option to set the image target architecture
+
+  The option --target-arch allows to set the architecture
+  used to build the image. By default this is the host
+  architecture. Please note, if the specified architecture
+  name does not match the host architecture and is therefore
+  requesting a cross architecture image build, it's important
+  to understand that for this process to work a preparatory
+  step to support the image architecture and binary format
+  on the building host is required and is not considered a
+  responsibility of kiwi. There will be a followup effort
+  on providing a plugin for kiwi which should be used to
+  manage the needed binfmt settings for cross arch image
+  builds
+
+-------------------------------------------------------------------
+Mon Apr 12 10:43:33 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added openssl to the core requires
+
+  openssl is used in kiwi to construct a password hash
+  if the plaintext password feature for user settings
+  is used. This Fixes bsc#1184128
+
+-------------------------------------------------------------------
+Sun Apr 11 20:38:27 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.23 → 9.23.24
+
+-------------------------------------------------------------------
+Fri Apr 09 12:56:33 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Decommission obsolete code reaching EOL
+
+  Use the @decommissioned decorator to raise for API methods
+  that a over the obsoletion period
+
+-------------------------------------------------------------------
+Fri Apr 09 10:55:49 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added mypy call to tox target
+
+  For the tox unit_pyX targets, mypy static type checking
+  is now called prior tests. This references Issue 1644
+
+-------------------------------------------------------------------
+Tue Apr 06 20:36:57 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Complete strong typing for API methods
+
+  Added required code changes to let mypy pass when running
+  from the toplevel kiwi namespace. This now finally
+  Fixes #1644
+
+-------------------------------------------------------------------
+Mon Apr 05 13:22:24 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.22 → 9.23.23
+
+-------------------------------------------------------------------
+Wed Mar 31 12:51:51 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added optional post_bootstrap.sh script hook
+
+  After the bootstrap phase a script post_bootstrap.sh is executed
+  in a chroot process which allows to add/modify system settings
+  prior the completion of the system installation. This helps
+  users for example with custom package manager settings and
+  Fixes #1763 as well as Fixes #1782
+
+-------------------------------------------------------------------
+Tue Mar 30 15:17:47 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update documentation
+
+  Add information about new volume filesystem_check attribute
+
+-------------------------------------------------------------------
+Tue Mar 30 11:29:56 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Allow to enable volumes for filesystem check
+
+  The new attribute <volume ... filesystem_check="true|false"/>
+  allows to change the default value for the fs_passno field in
+  the generated fstab file. By default kiwi sets "0" in this
+  field and leaves it up to the user to customize this as
+  appropriate via script code. Coding changes to the fstab file
+  via scripts are not very user friendly and with respect that
+  systemd takes over control and generates checkers depending on
+  the value of fs_passno it would be good if there is a way to
+  explicitly specify if checks to the filesystem are wanted or
+  not. Therefore the new attribute now exists. If set to: true
+  this results in a value of "2" for the fs_passno field. Please
+  note the root/boot and efi entries are excluded from this
+  setup. This Fixes #1728
+
+-------------------------------------------------------------------
 Mon Mar 22 14:19:29 CET 2021 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.23.21 → 9.23.22
@@ -6224,6 +6338,11 @@ Wed Aug 21 16:03:10 CEST 2019 - Marcus Schäfer <ms@suse.de>
 Wed Aug 21 15:15:54 CEST 2019 - Marcus Schäfer <ms@suse.de>
 
 - Added network setup for MicroOS test build
+
+-------------------------------------------------------------------
+Tue Aug 20 21:42:37 CEST 2019 - Andreas Schwab <schwab@suse.de>
+
+- Add support for riscv64
 
 -------------------------------------------------------------------
 Tue Aug 20 09:58:40 CEST 2019 - Marcus Schäfer <ms@suse.de>

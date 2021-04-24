@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.23.22
+Version:        9.23.25
 Provides:       kiwi-schema = 7.4
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -113,6 +113,7 @@ Requires:       kiwi-tools
 Requires:       mtools
 Requires:       rsync
 Requires:       tar >= 1.2.7
+Requires:       openssl
 
 %description -n kiwi-systemdeps-core
 This metapackage installs the necessary system dependencies
