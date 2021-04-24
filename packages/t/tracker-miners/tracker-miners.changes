@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 17 08:40:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.1.1:
+  + Block gstreamer nvcodec decoders.
+  + Fall back if no modification date is found.
+  + Handle new poppler enum value.
+  + Be more robust with broken EXIF GPS metadata.
+  + Test suite improvements.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Mar 23 09:25:36 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.1.0:
