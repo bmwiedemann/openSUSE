@@ -1,0 +1,5 @@
+<package name="cdi-apiserver-container" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization" package="cdi-apiserver-container"/>
+</package>

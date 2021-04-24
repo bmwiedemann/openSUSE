@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Tue Mar 16 16:06:56 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add placeholder vars to be replaced during build
+- Use KUBEVIRTFROM to set the base image
+
+-------------------------------------------------------------------
+Fri Mar 12 09:07:04 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Rename virt-cdi-apiserver to cdi-apiserver
+
+-------------------------------------------------------------------
+Sun Oct 25 23:03:09 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Initial container for CDI API server
