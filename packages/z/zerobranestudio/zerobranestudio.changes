@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 18 15:48:07 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use Lua default on TW and 5.1 on anything else
+
+-------------------------------------------------------------------
 Sat Jun 27 13:23:48 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - unbundle more libraries

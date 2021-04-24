@@ -15,9 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if 0%{suse_version} < 1550
 %define lua_version 5.1
-
+%define lua_version_nodots 51
+%else
+%define lua_version_nodots %{nil}
+%endif
 Name:           zerobranestudio
 Version:        1.90
 Release:        0
@@ -33,21 +36,28 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  lua51-copas
-BuildRequires:  lua51-devel
-BuildRequires:  lua51-lpeg
-BuildRequires:  lua51-luafilesystem
-BuildRequires:  lua51-luasec
-BuildRequires:  lua51-luasocket
+BuildRequires:  lua%{lua_version_nodots}-devel
+BuildRequires:  lua%{lua_version_nodots}-copas
+BuildRequires:  lua%{lua_version_nodots}-lpeg
+BuildRequires:  lua%{lua_version_nodots}-luafilesystem
+BuildRequires:  lua%{lua_version_nodots}-luasec
+%if 0%{suse_version} < 1550
+BuildRequires:  lua%{lua_version_nodots}-luasocket
+%else
+BuildRequires:  luasocket
+%endif
 BuildRequires:  wxlua-devel
 Requires:       libwxlua
-Requires:       lua51-BitOp
-Requires:       lua51-copas
-Requires:       lua51-lpeg
-Requires:       lua51-luafilesystem
-Requires:       lua51-luasec
-Requires:       lua51-luasocket
-Requires:       Lua(API) = %lua_version
+Requires:       lua%{lua_version_nodots}-copas
+Requires:       lua%{lua_version_nodots}-lpeg
+Requires:       lua%{lua_version_nodots}-luafilesystem
+Requires:       lua%{lua_version_nodots}-luasec
+%if 0%{suse_version} < 1550
+Requires:       lua%{lua_version_nodots}-luasocket
+%else
+Requires:       luasocket
+%endif
+Requires:       Lua(API) = %{lua_version}
 Recommends:     luajit
 Provides:       zbstudio
 Provides:       zerobrane-studio
@@ -70,7 +80,7 @@ rm -rf bin zbstudio/ZeroBraneStudio.app zbstudio.exe
 %build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-      -DLUA_EXECUTABLE=%{_bindir}/lua%lua_version
+      -DLUA_EXECUTABLE=%{_bindir}/lua%{lua_version}
 
 make %{?_smp_mflags}
 
@@ -78,7 +88,7 @@ make %{?_smp_mflags}
 %cmake_install
 
 cat >> %{buildroot}%{_datadir}/zbstudio/cfg/user.lua <<EOF
-path.lua = '%{_bindir}/lua%lua_version'
+path.lua = '%{_bindir}/lua%{lua_version}'
 path.lua52 = '%{_bindir}/lua5.2'
 EOF
 
