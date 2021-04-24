@@ -1049,4 +1049,12 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
     <comment> (forwarded request 799180 from iznogood)</comment>
     <requestid>799476</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>e778b9704b31ff19917a76eb5fbf7be5</srcmd5>
+    <version>40.0</version>
+    <time>1619298412</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 40.0 (forwarded request 886273 from dimstar)</comment>
+    <requestid>887490</requestid>
+  </revision>
 </revisionlist>

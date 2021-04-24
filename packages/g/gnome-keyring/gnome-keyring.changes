@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 17 12:59:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Update libcap-ng capability handling.
+  + UPdated translations.
+
+-------------------------------------------------------------------
 Wed Apr 29 20:37:49 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Enable FIPS patches on Leap (jsc#SLE-11880).
