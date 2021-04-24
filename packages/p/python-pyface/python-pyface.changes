@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 22 21:33:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- test with qtwebengine, now that qtwebkit has been removed.
+
+-------------------------------------------------------------------
 Sat Apr 17 12:25:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Exclude wx test for python39 flavor because of segfault inside

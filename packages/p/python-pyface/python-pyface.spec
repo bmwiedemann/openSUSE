@@ -32,6 +32,7 @@ BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module importlib-resources >= 1.1.0}
 BuildRequires:  %{python_module qt5}
+BuildRequires:  %{python_module qtwebengine-qt5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traits >= 6.2}
 BuildRequires:  %{python_module wxWidgets}
@@ -45,6 +46,7 @@ Requires:       python-traits >= 6.2
 Recommends:     python-Pygments
 Recommends:     python-numpy
 Recommends:     python-qt5
+Recommends:     python-qtwebengine-qt5
 Recommends:     python-traitsui
 Recommends:     python-wxWidgets
 BuildArch:      noarch
@@ -84,7 +86,7 @@ if [ "${python_flavor}" = "python39" ]; then
   export EXCLUDE_TESTS="wx"
 else
   # unset for other flavors
-  export EXCLUDE_TESTS=""
+  unset EXCLUDE_TESTS
 fi
 xvfb-run --server-args "-screen 0 1920x1080x24" $python -m unittest discover -v pyface
 popd
