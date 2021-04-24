@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-qstylizer
-Version:        0.1.10
+Version:        0.2.0
 Release:        0
 Summary:        Stylesheet Generator for PyQt{4-5}/PySide{1-2}
 License:        MIT
 URL:            https://github.com/blambright/qstylizer
 # no sdist on PyPI
-Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/qstylizer-%{version}-gh.tar.gz
-# PATCH-FIX-UPSTREAM qstylizer-tinycss2.patch -- gh#blambright/qstylizer#10
-Patch0:         https://github.com/blambright/qstylizer/pull/10.patch#/qstylizer-tinycss2.patch
+Source:         https://github.com/blambright/qstylizer/archive/refs/tags/%{version}.tar.gz#/qstylizer-%{version}-gh.tar.gz
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -62,7 +60,7 @@ export PBR_VERSION=%{version}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -vv
+%pytest
 
 %files %{python_files}
 %doc README.rst
