@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 23 09:17:45 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.1.2
+  * Added support for the new PFO_ZNALEC and PFO_TLUMOCNIK data-box types.
+  * Fixed found typos in documentation and commentaries in sources.
+
+-------------------------------------------------------------------
 Fri Mar 19 10:29:18 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - move .lang to the main rpm (to avoid conflicts of w/ multiple libs)

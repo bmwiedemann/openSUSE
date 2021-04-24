@@ -1,7 +1,7 @@
 #
-# spec file for package datovka
+# spec file for package libdatovka
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define libname %{name}0
 Name:           libdatovka
-Version:        0.1.1
+Version:        0.1.2
 Release:        0
 Summary:        Library for accessing the Czech Data Boxes
 License:        GPL-3.0-or-later
+Group:          System/Libraries
 URL:            https://www.datovka.cz/cs/pages/libdatovka.html
 Source0:        https://secure.nic.cz/files/datove_schranky/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://secure.nic.cz/files/datove_schranky/%{name}/%{name}-%{version}.tar.xz.sha256
