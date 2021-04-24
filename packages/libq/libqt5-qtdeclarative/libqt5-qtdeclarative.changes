@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 22 14:43:09 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix build with GCC 11 (boo#1185100):
+  * 0001-Include-limits-to-fix-build-with-GCC-11.patch
+
+-------------------------------------------------------------------
 Fri Mar 12 12:06:44 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Work around implicit dependency of src/qml on qmltyperegistrar

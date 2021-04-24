@@ -33,6 +33,7 @@ Source:         https://download.qt.io/official_releases/qt/5.15/%{real_version}
 Source1:        baselibs.conf
 # PATCH-FIX-OPENSUSE sse2_nojit.patch -- enable JIT and sse2 only on sse2 case
 Patch100:       sse2_nojit.patch
+Patch101:       0001-Include-limits-to-fix-build-with-GCC-11.patch
 Patch103:       qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch
 BuildRequires:  fdupes
 BuildRequires:  libQt5Core-private-headers-devel >= %{version}
