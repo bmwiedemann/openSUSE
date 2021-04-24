@@ -21,13 +21,17 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-common-internals
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Telepathy common module
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Other
 URL:            https://community.kde.org/Real-Time_Communication_and_Collaboration
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -55,10 +59,10 @@ BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Qml) >= 5.2.0
-BuildRequires:  cmake(Qt5Sql) >= 5.2.0
-BuildRequires:  cmake(Qt5Test) >= 5.2.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(libotr) >= 4.0.0
 Requires:       ktp-icons
@@ -73,10 +77,6 @@ Obsoletes:      libktpcommoninternals7 < %{version}
 Obsoletes:      libktpcommoninternals8 <= %{version}
 Provides:       %{name}5 = %{version}
 Obsoletes:      ktp-kpeople < %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 ktp-common-internals is the base library for all the KDE Telepathy packages.
@@ -110,7 +110,7 @@ icons for all the KDE Telepathy packages.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
