@@ -75,4 +75,20 @@
     <comment></comment>
     <requestid>875426</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>24450e4e13d164173cda22fcb48d2195</srcmd5>
+    <version>1.41.0</version>
+    <time>1619298568</time>
+    <user>dimstar_suse</user>
+    <comment>- Use correct upstream tarball
+- Update to version 1.41.0:
+  * Fix build with Lua 5.4
+  * Updated Libuv to 1.40.0
+  * Fix garbage collection-related memory bug with threads
+  * Make symlink/copyfile bindings more user-friendly
+- Tests and examples no longer included in tarball
+- Removed skip-failing-test.patch: no longer applicable
+</comment>
+    <requestid>888232</requestid>
+  </revision>
 </revisionlist>

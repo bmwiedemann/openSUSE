@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 %define mod_name luv
-%define upver 1.30.1-1
+%define upver 1.41.0-0
 %define libluv_sover 1
 %if 0%{?suse_version}
 %define flavor @BUILD_FLAVOR@
@@ -42,16 +42,13 @@ ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
-Version:        1.30.1
+Version:        1.41.0
 Release:        0
 Summary:        Bare libuv bindings for lua
 License:        Apache-2.0
 Group:          Development/Languages/Other
-URL:            https://github.com/luvit/luv
-Source:         https://github.com/luvit/%{mod_name}/archive/%{upver}.tar.gz#/%{mod_name}-%{upver}.tar.gz
-# PATCH-FIX-UPSTREAM skip-failing-test.patch gh#luvit/luv#473 mcepl@suse.com
-# skip failing test thread - test thread create with options table
-Patch0:         skip-failing-test.patch
+URL:            https://github.com/luvit/%{mod_name}
+Source:         https://github.com/luvit/%{mod_name}/archive/%{upver}/%{mod_name}-%{upver}.tar.gz
 BuildRequires:  libuv-devel
 BuildRequires:  lua-macros
 %lua_provides
@@ -113,14 +110,7 @@ project.
 
 %prep
 echo "Name is %{name}, Flavor is %{flavor}"
-%setup -q -n %{mod_name}-%{upver}
-%autopatch -p1
-
-# Remove bundled dependencies
-rm -rf deps
-
-# Remove network sensitive tests gh#luvit/luv#340
-rm -fv tests/test-dns.lua
+%autosetup -n %{mod_name}-%{upver}
 
 %build
 %if %{with public_lib}
@@ -158,16 +148,9 @@ install -v -m 0755 -p build/libluv* %{buildroot}%{lua_archdir}/
 mkdir -p %{buildroot}%{lua_incdir}/%{mod_name}
 install -v -m 0644 -p src/*.h %{buildroot}%{lua_incdir}/%{mod_name}/
 
-# For %%doc
-cp -rv lib/ examples/
-
-%check
-ln -sf build/luv.so .
-lua tests/run.lua
-
 %files
 %license LICENSE.txt
-%doc *.md examples/
+%doc *.md
 %{lua_archdir}/luv.so
 
 %files devel

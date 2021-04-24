@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr 24 16:21:59 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Use correct upstream tarball
+
+-------------------------------------------------------------------
+Sat Apr 24 15:05:17 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.41.0:
+  * Fix build with Lua 5.4
+  * Updated Libuv to 1.40.0
+  * Fix garbage collection-related memory bug with threads
+  * Make symlink/copyfile bindings more user-friendly
+- Tests and examples no longer included in tarball
+- Removed skip-failing-test.patch: no longer applicable
+
+-------------------------------------------------------------------
 Fri Feb 26 11:05:09 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fix placement of %lua_provides
