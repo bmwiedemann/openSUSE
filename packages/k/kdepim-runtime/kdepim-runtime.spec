@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdepim-runtime
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
@@ -68,14 +72,15 @@ BuildRequires:  cmake(KF5TextWidgets) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KPimGAPI)
 BuildRequires:  cmake(Qca-qt5)
-BuildRequires:  cmake(Qt5DBus) >= 5.11.0
-BuildRequires:  cmake(Qt5Network) >= 5.11.0
-BuildRequires:  cmake(Qt5NetworkAuth) >= 5.11.0
-BuildRequires:  cmake(Qt5Test) >= 5.11.0
-BuildRequires:  cmake(Qt5TextToSpeech) >= 5.11.0
-BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.11.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
-BuildRequires:  cmake(Qt5XmlPatterns) >= 5.11.0
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Keychain)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5NetworkAuth)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5TextToSpeech)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5XmlPatterns)
 Requires:       akonadi-plugin-calendar
 Requires:       akonadi-plugin-contacts
 Requires:       akonadi-plugin-kalarmcal
@@ -88,10 +93,6 @@ Obsoletes:      kdepim4-runtime < %{version}
 Obsoletes:      kio-pimlibs < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This package contains the Akonadi resources, agents and plugins needed to
@@ -100,7 +101,7 @@ use PIM applications.
 %lang_package
 
 %prep
-%setup -q -n kdepim-runtime-%{version}
+%autosetup -p1 -n kdepim-runtime-%{version}
 
 %build
 %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
@@ -120,18 +121,18 @@ use PIM applications.
 
 %files
 %license LICENSES/*
+%doc %lang(en) %{_kf5_htmldir}/en/kioslave5/
+%{_kf5_bindir}/*
+%{_kf5_dbusinterfacesdir}/*.xml
 %{_kf5_debugdir}/kdepim-runtime.categories
 %{_kf5_debugdir}/kdepim-runtime.renamecategories
-%doc %lang(en) %{_kf5_htmldir}/en/kioslave5/
 %dir %{_kf5_iconsdir}/hicolor/24x24
 %dir %{_kf5_iconsdir}/hicolor/72x72
 %dir %{_kf5_iconsdir}/hicolor/96x96
+%{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_iconsdir}/hicolor/24x24/apps
 %{_kf5_iconsdir}/hicolor/72x72/apps
 %{_kf5_iconsdir}/hicolor/96x96/apps
-%{_kf5_bindir}/*
-%{_kf5_dbusinterfacesdir}/*.xml
-%{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_libdir}/*.so.*
 %{_kf5_notifydir}/
 %{_kf5_plugindir}/
