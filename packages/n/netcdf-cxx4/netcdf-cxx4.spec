@@ -1,7 +1,7 @@
 #
 # spec file for package netcdf-cxx4
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -281,7 +281,7 @@ make check || {
 
 %post -n %{libname -s %{sover} -l %_ver} -p /sbin/ldconfig
 
-%postun -n %{libname -s %{sover} -l %_ver} 
+%postun -n %{libname -s %{sover} -l %_ver}
 /sbin/ldconfig
 %{?with_hpc:%hpc_module_delete_if_default}
 
@@ -302,7 +302,9 @@ make check || {
 %files -n %{libname -l %_ver}-devel
 %license COPYRIGHT
 %doc README.md RELEASE_NOTES.md
-%{p_includedir}/
+%{?with_hpc:%dir %{p_includedir}}
+%{p_includedir}/nc*.h
+%{p_includedir}/netcdf
 %{?with_hpc:%dir %{hpc_pkgconfigdir}}
 %{p_libdir}/pkgconfig/netcdf-cxx4.pc
 %{p_libdir}/libnetcdf_c++4.so
