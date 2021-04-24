@@ -1,7 +1,7 @@
 #
 # spec file for package dragonplayer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           dragonplayer
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Multimedia Player
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/dragonplayer
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -52,19 +56,15 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Phonon4Qt5)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
-Dragon Player is a simple KDE 4 video player.
+Dragon Player is a simple video player.
 
 %lang_package
 
 %prep
-%setup -q -n %{rname}-%{version}
+%autosetup -p1 -n %{rname}-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -82,24 +82,30 @@ Dragon Player is a simple KDE 4 video player.
 %postun -p /sbin/ldconfig
 
 %files
-%config %{_kf5_configdir}/dragonplayerrc
-%dir %{_kf5_htmldir}
-%dir %{_kf5_htmldir}/en
-%doc %lang(en) %{_kf5_htmldir}/en/*/
+%license LICENSES/*
+%doc %lang(en) %{_kf5_htmldir}/en/dragonplayer/
 %doc %{_kf5_mandir}/man1/dragon.1*
-%license COPYING COPYING.DOC
 %doc README
+%config %{_kf5_configdir}/dragonplayerrc
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/parts
+%dir %{_kf5_servicesdir}/ServiceMenus
+%dir %{_kf5_sharedir}/solid
+%dir %{_kf5_sharedir}/solid/actions
 %{_kf5_applicationsdir}/org.kde.dragonplayer.desktop
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.dragonplayer.appdata.xml
 %{_kf5_bindir}/dragon
-%{_kf5_iconsdir}/*/*/*/*.*
-%{_kf5_plugindir}/
-%{_kf5_servicesdir}/
-%{_kf5_sharedir}/solid/
+%{_kf5_iconsdir}/hicolor/*/apps/dragonplayer.*
+%{_kf5_iconsdir}/oxygen/*/actions/player-volume-muted.*
+%{_kf5_plugindir}/kf5/parts/dragonpart.so
+%{_kf5_servicesdir}/ServiceMenus/dragonplayer_play_dvd.desktop
+%{_kf5_servicesdir}/dragonplayer_part.desktop
+%{_kf5_sharedir}/solid/actions/dragonplayer-openaudiocd.desktop
+%{_kf5_sharedir}/solid/actions/dragonplayer-opendvd.desktop
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
