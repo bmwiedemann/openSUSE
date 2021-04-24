@@ -21,59 +21,57 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           dolphin
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/dolphin
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 Source3:        dolphinsu.desktop
 Patch0:         dolphin-go_up.diff
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Update-cached-viewContainer-geometry-every-time-they.patch
 # PATCH-FIX-OPENSUSE
-Patch100:       0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
-BuildRequires:  extra-cmake-modules >= 1.6.0
+Patch1:         0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
+BuildRequires:  extra-cmake-modules
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Activities) >= 5.7.0
+BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5Baloo)
 BuildRequires:  cmake(KF5BalooWidgets)
-BuildRequires:  cmake(KF5Bookmarks) >= 5.7.0
-BuildRequires:  cmake(KF5Completion) >= 5.7.0
-BuildRequires:  cmake(KF5Config) >= 5.7.0
-BuildRequires:  cmake(KF5CoreAddons) >= 5.7.0
+BuildRequires:  cmake(KF5Bookmarks)
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons) >= 5.7.0
-BuildRequires:  cmake(KF5DocTools) >= 5.7.0
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5FileMetaData)
-BuildRequires:  cmake(KF5I18n) >= 5.7.0
-BuildRequires:  cmake(KF5IconThemes) >= 5.7.0
-BuildRequires:  cmake(KF5Init) >= 5.7.0
-BuildRequires:  cmake(KF5KCMUtils) >= 5.7.0
-BuildRequires:  cmake(KF5KIO) >= 5.7.0
-BuildRequires:  cmake(KF5NewStuff) >= 5.7.0
-BuildRequires:  cmake(KF5Notifications) >= 5.7.0
-BuildRequires:  cmake(KF5Parts) >= 5.7.0
-BuildRequires:  cmake(KF5Solid) >= 5.7.0
-BuildRequires:  cmake(KF5TextEditor) >= 5.7.0
-BuildRequires:  cmake(KF5WindowSystem) >= 5.7.0
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5Init)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Solid)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Concurrent) >= 5.4.0
-BuildRequires:  cmake(Qt5Core) >= 5.4.0
-BuildRequires:  cmake(Qt5DBus) >= 5.4.0
-BuildRequires:  cmake(Qt5Gui) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Widgets)
 Requires:       baloo5-kioslaves
 Requires:       dolphin-part = %{version}-%{release}
 Recommends:     kio-extras5
 Recommends:     konsole-part
 Obsoletes:      dolphin5
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This package contains the default file manager of KDE Workspaces.
@@ -117,7 +115,6 @@ Provides:       %{name}-part-lang-all = %{version}
 BuildArch:      noarch
 
 %description -n %{name}-part-lang
-
 Provides translations for the "%{name}" package.
 %endif
 
@@ -149,9 +146,6 @@ Provides translations for the "%{name}" package.
 %license COPYING*
 %doc README.md
 %doc %lang(en) %{_kf5_htmldir}/en/dolphin/
-%dir %{_kf5_appstreamdir}
-%dir %{_kf5_htmldir}
-%dir %{_kf5_htmldir}/en
 %dir %{_kf5_sharedir}/kglobalaccel/
 %{_kf5_applicationsdir}/org.kde.dolphin.desktop
 %{_kf5_applicationsdir}/org.kde.dolphinsu.desktop
@@ -162,24 +156,22 @@ Provides translations for the "%{name}" package.
 %{_kf5_libdir}/libkdeinit5_dolphin.so
 %{_kf5_sharedir}/dbus-1/services/org.kde.dolphin.FileManager1.service
 %{_kf5_sharedir}/kglobalaccel/org.kde.dolphin.desktop
+%{_userunitdir}/plasma-dolphin.service
 
 %files part
 %license COPYING*
 %doc README.md
-%dir %{_kf5_configkcfgdir}
-%dir %{_kf5_plugindir}
-%dir %{_kf5_servicesdir}
-%dir %{_kf5_servicetypesdir}
 %{_kf5_configkcfgdir}/dolphin_*.kcfg
 %{_kf5_debugdir}/dolphin.categories
 %{_kf5_knsrcfilesdir}/servicemenu.knsrc
 %{_kf5_libdir}/libdolphinprivate.so.*
-%{_kf5_plugindir}/dolphinpart.so
 %{_kf5_plugindir}/kcm_dolphin*.so
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/parts
+%{_kf5_plugindir}/kf5/parts/dolphinpart.so
 %{_kf5_servicesdir}/dolphinpart.desktop
 %{_kf5_servicesdir}/kcmdolphingeneral.desktop
 %{_kf5_servicesdir}/kcmdolphinnavigation.desktop
-%{_kf5_servicesdir}/kcmdolphinservices.desktop
 %{_kf5_servicesdir}/kcmdolphinviewmodes.desktop
 %{_kf5_servicetypesdir}/fileviewversioncontrolplugin.desktop
 

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Apr 16 16:11:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- No code change since 21.03.90
+- Stop owning directories provided by the filesystem package (boo#1184786)
+
+-------------------------------------------------------------------
+Fri Apr  9 17:39:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- Changes since 21.03.80:
+  * KFileItemModel: DetailsModeSettings::directorySizeCount forces m_sortDirsFirst
+  * appstream: fix homepage url
+  * Fix crash calling openDirectories() in various cases
+  * Don't re-open already-open URLs when using session-restore feature (kde#434911)
+
+-------------------------------------------------------------------
+Sun Mar 21 13:27:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Too many changes to list here.
+- Drop 0001-Update-cached-viewContainer-geometry-every-time-they.patch
+
+-------------------------------------------------------------------
 Thu Mar  4 06:09:31 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.3
