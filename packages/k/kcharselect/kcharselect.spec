@@ -1,7 +1,7 @@
 #
 # spec file for package kcharselect
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcharselect
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE Character Selector
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kcharselect
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -37,14 +41,10 @@ BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core) >= 5.2.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -53,7 +53,7 @@ KCharSelect is the KDE character selector tool.
 %lang_package
 
 %prep
-%setup -q -n kcharselect-%{version}
+%autosetup -p1 -n kcharselect-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -68,12 +68,10 @@ KCharSelect is the KDE character selector tool.
   %suse_update_desktop_file org.kde.kcharselect Utility Accessibility
 
 %files
-%dir %{_kf5_htmldir}
-%dir %{_kf5_htmldir}/en
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %{_kf5_applicationsdir}/*.desktop
-%{_kf5_bindir}/kcharselect
 %{_kf5_appstreamdir}/org.kde.kcharselect.appdata.xml
+%{_kf5_bindir}/kcharselect
 
 %if %{with lang}
 %files lang -f %{name}.lang
