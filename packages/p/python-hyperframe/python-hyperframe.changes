@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 21 21:23:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.1:
+  - Added support for Python 3.9.
+  - Added type hints.
+
+-------------------------------------------------------------------
 Mon Sep 14 06:37:42 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.0.0:

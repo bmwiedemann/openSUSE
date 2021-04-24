@@ -83,4 +83,14 @@
     + Added support for Python 3.8.</comment>
     <requestid>834211</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d5fdaa66326fd53f775bdf1d7d556c9</srcmd5>
+    <version>6.0.1</version>
+    <time>1619298397</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.0.1:
+  - Added support for Python 3.9.
+  - Added type hints.</comment>
+    <requestid>887378</requestid>
+  </revision>
 </revisionlist>
