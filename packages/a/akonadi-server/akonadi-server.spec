@@ -17,18 +17,22 @@
 
 
 %define rname   akonadi
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-server
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://akonadi-project.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 Source99:       akonadi-server-rpmlintrc
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
@@ -75,10 +79,6 @@ Provides:       akonadi5 = %{version}
 # Needed for users of unstable repositories
 Obsoletes:      akonadi < %{version}
 Obsoletes:      akonadi-runtime < %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This package contains the data files of Akonadi, the KDE PIM storage
@@ -195,7 +195,6 @@ service.
 %doc AUTHORS
 %config %{_kf5_sysconfdir}/xdg/akonadi/mysql-global-mobile.conf
 %config %{_kf5_sysconfdir}/xdg/akonadi/mysql-global.conf
-%dir %{_kf5_configkcfgdir}
 %dir %{_kf5_iconsdir}/hicolor/256x256
 %dir %{_kf5_iconsdir}/hicolor/256x256/apps
 %dir %{_kf5_sysconfdir}/xdg/akonadi
@@ -209,12 +208,12 @@ service.
 %{_kf5_bindir}/akonaditest
 %{_kf5_bindir}/asapcat
 %{_kf5_configkcfgdir}/resourcebase.kcfg
+%{_kf5_debugdir}/akonadi.*categories
 %{_kf5_iconsdir}/hicolor/*/apps/akonadi.png
 %{_kf5_iconsdir}/hicolor/scalable/apps/akonadi.svgz
 %{_kf5_plugindir}/akonadi/
 %{_kf5_sharedir}/dbus-1/services/org.freedesktop.Akonadi.Control.service
 %{_kf5_sharedir}/mime/packages/akonadi-mime.xml
-%{_kf5_debugdir}/akonadi.*categories
 
 %files -n libKF5AkonadiAgentBase5
 %license LICENSES/*
@@ -242,8 +241,8 @@ service.
 
 %files devel
 %license LICENSES/*
-%dir %{_kf5_cmakedir}
 %{_kf5_bindir}/akonadi2xml
+%{_kf5_cmakedir}/KF5Akonadi
 %{_kf5_dbusinterfacesdir}/org.freedesktop.Akonadi.*.xml
 %{_kf5_includedir}/AkonadiAgentBase/
 %{_kf5_includedir}/AkonadiCore/
@@ -251,7 +250,6 @@ service.
 %{_kf5_includedir}/AkonadiXml/
 %{_kf5_includedir}/akonadi/
 %{_kf5_includedir}/akonadi_version.h
-%{_kf5_cmakedir}/KF5Akonadi
 %{_kf5_libdir}/libKF5AkonadiAgentBase.so
 %{_kf5_libdir}/libKF5AkonadiCore.so
 %{_kf5_libdir}/libKF5AkonadiPrivate.so
@@ -261,9 +259,9 @@ service.
 %{_kf5_mkspecsdir}/qt_AkonadiCore.pri
 %{_kf5_mkspecsdir}/qt_AkonadiWidgets.pri
 %{_kf5_mkspecsdir}/qt_AkonadiXml.pri
+%{_kf5_plugindir}/designer/
 %dir %{_kf5_sharedir}/kdevappwizard/
 %{_kf5_sharedir}/kdevappwizard/templates/
-%{_kf5_plugindir}/designer/
 
 %if %{with lang}
 %files lang -f %{name}.lang
