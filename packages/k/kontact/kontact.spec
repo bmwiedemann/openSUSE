@@ -20,13 +20,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kontact
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Personal Information Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
-URL:            https://www.kde.org
+URL:            https://kontact.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -57,21 +61,15 @@ Provides:       kontact5 = %{version}
 Obsoletes:      kontact5 < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Kontact combines the individual applications KMail, KAddressBook and
 KOrganizer as views in one window.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -90,9 +88,6 @@ KOrganizer as views in one window.
 
 %files
 %license LICENSES/*
-%{_kf5_debugdir}/kontact.categories
-%{_kf5_debugdir}/kontact.renamecategories
-%dir %{_kf5_appstreamdir}/
 %doc %lang(en) %{_kf5_htmldir}/en/kontact/
 %{_datadir}/kconf_update/
 %{_datadir}/messageviewer/
@@ -100,13 +95,15 @@ KOrganizer as views in one window.
 %{_kf5_appstreamdir}/org.kde.kontact.appdata.xml
 %{_kf5_bindir}/kontact
 %{_kf5_configkcfgdir}/kontact.kcfg
+%{_kf5_debugdir}/kontact.categories
+%{_kf5_debugdir}/kontact.renamecategories
 %{_kf5_iconsdir}/hicolor/*/apps/kontact.png
 %{_kf5_iconsdir}/hicolor/scalable/apps/kontact.svg
 %{_kf5_plugindir}/kcm_kontact.so
 %{_kf5_servicesdir}/kontactconfig.desktop
-%{_libdir}/libkontactprivate.so.*
 %dir %{_kf5_sharedir}/dbus-1/services/
 %{_kf5_sharedir}/dbus-1/services/org.kde.kontact.service
+%{_libdir}/libkontactprivate.so.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
