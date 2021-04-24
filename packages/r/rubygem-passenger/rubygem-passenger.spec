@@ -167,10 +167,10 @@ helper_scripts_dir=%{_libdir}/passenger/%{version}/helper-scripts/
 node_libdir=%{_libdir}/passenger/%{version}/nodejs_supportlib/
 resources_dir=%{_libdir}/passenger/%{version}/resources/
 apache2_module_path=%{apache_libexecdir}/mod_passenger.so
-ruby_libdir=
-ruby_extension_source_dir=
-nginx_module_source_dir=
-doc_dir=
+ruby_libdir=%{_libdir}/passenger/%{version}/ignore
+ruby_extension_source_dir=%{_libdir}/passenger/%{version}/ignore
+nginx_module_source_dir=%{_libdir}/passenger/%{version}/ignore
+doc_dir=%{_libdir}/passenger/%{version}/ignore
 EOF
 
 # webserver configs

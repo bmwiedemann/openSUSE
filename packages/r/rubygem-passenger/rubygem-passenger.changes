@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 24 09:42:35 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- passenger failed to start when values in locations.ini were empty.
+  However, we kept those values empty in previous versions of passenger
+  (< 6.0.8). Since that is no longer working, we now set them to a non
+  existent path (%{_libdir}/passenger/%{version}/ignore) which seems
+  to satisfy passenger.
+
+-------------------------------------------------------------------
 Tue Apr 20 13:48:32 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 6.0.8
