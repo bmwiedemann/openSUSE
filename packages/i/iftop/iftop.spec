@@ -1,7 +1,7 @@
 #
 # spec file for package iftop
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define         pkg_version 1.0pre4
 Name:           iftop
-Summary:        Real-Time Interface Bandwidth Usage
-License:        GPL-2.0+
-Group:          Productivity/Networking/Diagnostic
 Version:        0.99.4
 Release:        0
-%define         pkg_version 1.0pre4
-Url:            http://www.ex-parrot.com/~pdw/iftop/
-BuildRequires:  libpcap-devel
-BuildRequires:  automake
-Source0:        http://www.ex-parrot.com/~pdw/iftop/download/iftop-%{pkg_version}.tar.gz
+Summary:        Real-Time Interface Bandwidth Usage
+License:        GPL-2.0-or-later
+Group:          Productivity/Networking/Diagnostic
+URL:            https://www.ex-parrot.com/~pdw/iftop/
+Source0:        https://www.ex-parrot.com/~pdw/iftop/download/iftop-%{pkg_version}.tar.gz
 Patch0:         MAC-address-format.patch
 Patch1:         001-Avoid-32-bit-overflow-for-rates-when-calculating-bar.patch
 Patch2:         002-scale-up-to-tbit.patch
-Patch3:         003-rateidx_init-fix.patch  
+Patch3:         003-rateidx_init-fix.patch
 Patch4:         004-iftop-unlimited_text_output.patch
 Patch5:         0001-Prefer-ncurses6w.patch
 Patch6:         006-iftop-choose_first_running_interface.patch
 Patch7:         007-iftop-declare-extern-vars.patch
+BuildRequires:  automake
+BuildRequires:  libpcap-devel
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(ncursesw)
 %else
 BuildRequires:  ncurses-devel
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 iftop does for network usage what top(1) does for CPU usage. It listens
@@ -49,7 +48,7 @@ bandwidth usage by pairs of hosts. It is handy for explaining why the
 network links slow.
 
 %prep
-%setup -q -n %name-%pkg_version
+%setup -q -n %{name}-%{pkg_version}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -66,15 +65,15 @@ network links slow.
 %build
 autoreconf -fiv
 %configure
-%__make %{?smp_mflags} CPPFLAGS=-DUSE_GETIFADDRS
+%make_build %{?smp_mflags} CPPFLAGS=-DUSE_GETIFADDRS
 
 %install
-%makeinstall
+%make_install
 
 %files
-%defattr(-,root,root)
-%doc README ChangeLog COPYING TODO
+%license COPYING
+%doc README ChangeLog TODO
 %{_sbindir}/iftop
-%{_mandir}/man8/iftop.8*
+%{_mandir}/man8/iftop.8%{?ext_man}
 
 %changelog

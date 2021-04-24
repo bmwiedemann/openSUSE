@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 21 09:20:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- spec-cleaner run (move license to licensedir)
+  * use https for urls 
+
+-------------------------------------------------------------------
 Fri Jul 10 17:35:13 UTC 2020 - Brice DEKANY <brice.dekany@suse.com>
 
 - added 007-iftop-declare-extern-vars.patch: fix for compilations
