@@ -18,7 +18,7 @@
 
 %define _lto_cflags %{nil}
 Name:           ppsspp
-Version:        1.11.2~git20210215
+Version:        1.11.2~git20210422
 Release:        0
 Summary:        PlayStation Portable Emulator
 License:        GPL-2.0-or-later
@@ -57,9 +57,9 @@ BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-common
 Requires(post): hicolor-icon-theme
-Requires(postun): hicolor-icon-theme
+Requires(postun):hicolor-icon-theme
 # never built for PowerPC/Arm on 20200721
-ExcludeArch:    aarch64 %arm ppc ppc64 ppc64le
+ExcludeArch:    aarch64 %arm ppc ppc64 ppc64le s390x
 
 %description
 PPSSPP is a PSP emulator written in C++, and translates PSP CPU instructions directly into optimized x86, x64 and ARM machine code, using JIT recompilers (dynarecs).
@@ -223,9 +223,6 @@ install -m 444 -D icons/icon.svg %{buildroot}%{_datadir}/pixmaps/%{name}.svg
 %suse_update_desktop_file -c %{name}-qt PPSSPPQt 'PSP Emulator' %{name}-qt %{name} System Emulator
 
 %fdupes %{buildroot}
-
-%check
-%ctest
 
 %post
 %desktop_database_post

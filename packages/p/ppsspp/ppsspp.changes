@@ -1,4 +1,364 @@
 -------------------------------------------------------------------
+Fri Apr 23 13:17:29 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.11.2~git20210422:
+  * Debugger: Show string in status bar for li, etc.
+  * Io: Prevent error on bad handle for DevType().
+  * Debugger: Prompt with previous search string.
+  * Debugger: Mark ELF sections as suballocations.
+  * Core: Correct ValidSize outside scratchpad.
+  * Replacing the inconvenient prefix string for indentation with indent number.
+  * Fix missing hex string at the last row when data size is a multiple of 16 bytes
+  * GE Debugger: Keep dump generation deterministic.
+  * Buildfixes
+  * Update our miniupnp fork to upstream.
+  * Reporting: Avoid generated homebrew IDs.
+  * Oops
+  * Don't even bother checking touch.id == 0 for closing popup windows. It's fine to close with any touch.
+  * Remove now-redundant back button
+  * Change pointer ID allocation on iOS. Fixes part of #14240
+  * UI: Load BG image properly on init.
+  * Io: Calculate memory stick size on a thread.
+  * Module: Speed up module unload.
+  * Core: Init memory on multiple threads.
+  * Module: Process relocations on threads.
+  * Module: Process relocations using unchecked reads.
+  * GE Debugger: Thread dedupe pushbuf lookups.
+  * Common: Set a min size on threadpool work chunks.
+  * Common: Allow threadpool size up to 16.
+  * Umd: Fix thread wakeup.
+  * Fix defaults for io threading and vertex cache
+  * Remove duplicate from hardcoded settings
+  * whitespace nit
+  * Reorder core options
+  * Further core options and defaults
+  * Add defaults and core options
+  * SaveState: Use memmove for the copy.
+  * SaveState: Use SIMD to copy RAM faster.
+  * SaveState: Copy RAM using threads.
+  * Fix libretro build
+  * jit: Increase the cycle cost of div.s.
+  * jit: Increase the cycle cost of VFPU ops.
+  * jit: Count delay slot cycles separately.
+  * An attempt to detects getifaddrs availability properly
+  * Changing warning log to info log on GetIPList
+  * Added additional includes for GetIPList to work on Linux/Unix
+  * Added warning log for testing purpose on GetIPList function
+  * Rtc: Cleanup and simplify date struct handling.
+  * Build: Recompress pngs using better zlib.
+  * UI: Compress atlas metadata.
+  * UI: Compress zim files with zstd.
+  * UI: Load/save compressed atlas metadata.
+  * UI: Add zstd to ZIM compression handling.
+  * GE Debugger: Use zstd for save states.
+  * SaveState: Switch to zstd.
+  * Build: Add libzstd to build.
+  * Enable save encryption to bring libreto in line with standalone configuration defaults.
+  * UI: Remove extern global for UI message.
+  * GPU: Stop using Off as terminator for postshaders.
+  * Reporting: Add more info to libstubend error.
+  * Module: Add a missing error return case.
+  * Kernel: Define most reported missing kernel funcs.
+  * GLES: Always use fragColor0 on GL 3.0+.
+  * Reporting: Log more data about sceIoChStat().
+  * GPU: Avoid switch on uint.
+  * Shaders: Set vert shaders to mediump by default.
+  * GLES: Handle GLSL 1.30/1.40 better.
+  * Dialog: Reset last status more consistently.
+  * Dialog: Lock volatile on thread.
+  * Dialog: Use a thread to init dialogs too.
+  * Utility: Add a helper for the active dialog.
+  * Utility: Update logging to new syntax for dialogs.
+  * Utility: Move dialog classes to heap.
+  * Debugger: Add APIs to set/list/search mem tags.
+  * UI: Show more detailed load error messages.
+  * GPU: Preconvert light vecs to Vec3f.
+  * Disable spvremapper from glslang by default, we don't use it.
+  * UI: Oops, prioritize PIC1, not PIC0.
+  * Debugger: Provide memory mapping ranges.
+  * Debugger: Return detail for breakpoints in macros.
+  * Debugger: Add simple API to control tagging detail.
+  * Update glslang_UWP.vcxproj
+  * Forgot to return on invalid address, and moving reusable code out of HLE to prevent generating confusing logs
+  * Ooops wrong way to do random range
+  * minor fix
+  * Randomize signal strength between 1%~99% since games like MGS:PW are using signal strength to determine the strength of the recruit
+  * Fix stuck issue when scanning AP for Recruit on MGS:PW
+  * UI: Don't include symbols in recent games anim.
+  * UI: Centralize BG pic choosing a bit.
+  * UI: Add BG animation for recent games.
+  * UI: Flip Y analog direction based on config.
+  * Windows: Normalize left and right analog stick.
+  * UI: Log analog movement at a lower treshold.
+  * Debugger: Maintain atrac data source info.
+  * Debugger: Note atrac/sas reads from memory more.
+  * Debugger: Tag savedata load and info.
+  * Debugger: Memcheck and tag loading savedata to RAM.
+  * Deflt: Correct available input length.
+  * Deflt: Trigger memchecks / log source of writes.
+  * Deflt: Cleanup and refactor to one common func.
+  * Debugger: Note writes from debugger.
+  * Dmac: Invalidate source data before copy.
+  * Debugger: Include src tag in Memory::Memcpy.
+  * Debugger: Include framebuffer in framebuf pack tag.
+  * Debugger: Note GPU block transfer src as well.
+  * Debugger: Include source tag in memcpys.
+  * Debugger: Include filename in file IO memory tags.
+  * Debugger: Make memory tags longer.
+  * Debugger: Add menu to jump to begin/end of alloc.
+  * Fix crashing issue when leaving a multiplayer game room #14337
+  * revert filename prefix for reducehashranges
+  * Prevent flooding the logs with repeated attempts of Adding/Removing port mapping due to failure in the middle of UPnP initialization, as it needs to be reinitialized.
+  * Attempts to reconnect to Adhoc Server only when Creating/Joining/Connecting to a group or Scanning for groups, instead of on 2 seconds interval.
+  * Shows PSP error code as hex to be easier to find
+  * Show the socket error code when failed to connect to adhoc server
+  * Use a function to check for loopback address
+  * UI: Fix savedata screen sorting.
+  * fix: cleaned up my comment
+  * feat: reduceHash configuration
+  * Set ent_top/ent_size/stub_top/stub_size of SceModule
+  * yet another gradle update
+  * Fix Window size issue #14317
+  * PPGe: Remove ENTR hack, fix string concat.
+  * Savedata: Always write the file list to the SFO.
+  * Windows: Avoid segfault if memory except on boot.
+  * Core: Limit scan for functions to end of valid RAM.
+  * Core: Unbreak ValidSize limits.
+  * PPGe: Interpret invalid UTF-8 sequences better.
+  * PPGe: Apply overlong handling to wrapped text too.
+  * Add missing rule in .gitlab-ci.yml
+  * (Libretro/Gitlab) Add osx x64 target
+  * Update .gitlab-ci.yml
+  * Update lang submodule
+  * Add a setting for choosing background animation.
+  * Build: Simplify by always including FakeCPUDetect.
+  * Build: Remove "fake" vertex decoder jit.
+  * Add missing -DWITH_UPNP in a couple more places.
+  * Windows: Enable UPNP again after 14304
+  * UTF-8 PPGe: Remove overlong encodings. Work around a weird issue in Ratchet & Clank. See issue #14297
+  * Fix build with USE_MINIUPNPC=OFF
+  * VertexDecoderFake: Fix build
+  * CMake: Fix build when ENABLE_SPVREMAPPER=OFF
+  * CMake: Don't include X11 headers when compiling for FBDEV
+  * Disable range culling in Asphalt 2. See #14299
+  * Module: Correctly handle modules with -1 entry.
+  * Debugger: Ignore small memory info by default.
+  * Fix performance regression from failing to optimize the new mem tracker..
+  * GitHub: Add multiple issue templates w/checklists.
+  * Fix character's Side Space ltn0.pgf/ltn4.pgf
+  * Android: Fix "Load..." to allow all file types. Change backported from PR #14232
+  * Fix FlatOut Head On multiplayer.
+  * Debugger: Fix save state compat for slab info.
+  * Debugger: Add header for strlen.
+  * Further std::string removal
+  * Remove static assert on struct size, we don't really care that much.
+  * Buildfix
+  * Remove std::string from memblockinfo
+  * Additional indentation fix (forgot to save file)
+  * Indentation fixes
+  * Android: Add a dependency on the AndroidX appcompat library.
+  * Fix Teenage Mutant Ninja Turtles Multiplayer. Alternatively, changing NET_SHUTDOWN_DELAY_US to 501000 usec or more will also works.
+  * Warning fix, memleak fix
+  * SDL: Fix use after free on shutdown
+  * Only do the workaround in #14273 in Vulkan. May help #14280
+  * Some homebrew like Triple Triad tries to load flash0:/kd/pspnet*.prx. We better just lie.
+  * Couple warning fixes.
+  * GLSL vulkan: Specify the precision of function arguments. Works around #14269
+  * Work around crash in texture replacement. See #14252
+  * PipelineManagerVulkan: Log shader source when pipeline creation fails.
+  * Fix bug in vertex shader generator. See #14260.
+  * Switch: Workaround several missing toolchain defs.
+  * Switch: Disable multi-instance tracking.
+  * Allow polygon upscaling in Boku no Natsuyasumi series via IntraVRAMBlockTransferAllowCreateFB hack.
+  * Update assets/lang
+  * UI: Add search to savedata manager.
+  * UI: Fix L/R tab navigation.
+  * Build: Remove force include CMake line.
+  * GPU: Ignore replacements for framebufs.
+  * Build: More consistently avoid _M_ defines.
+  * Build: Remove old ARM define.
+  * Build: Remove MIPS define.
+  * Build: Remove IOS define.
+  * Build: Explicitly include ppsspp_config.h.
+  * SaveState: Automatically fix duplicate event types.
+  * Fix double space again
+  * Fix typo
+  * Module: Avoid logging bad pointers when no nids.
+  * PPGe: Reload atlas on load state if different.
+  * Only remove tha CMake line for Apple.
+  * iOS: Try a different JIT detection method, thanks Halo-Michael.
+  * Time to remove this line in CMakeLists.txt now.
+  * Tweak to jit detection based on feedback to #14201
+  * Windows: Stop using 1234 default unused paths.
+  * UI: Wrap long info items.
+  * Core: Handle Disc ID a bit more consistently.
+  * Core: Use homebrew disc IDs/titles when available.
+  * Removing TCPNoDelay option from Networking Settings and always enable it to improve response time.
+  * Replacing the deprecated gethostbyname function with getaddrinfo function to prevent getting deprecated warnings
+  * Making sure there are no warnings related to deprecated inet_ntoa function
+  * Mpeg: Allow full use of the buffer queue.
+  * GPU: Dirty texparams when cropping a self-copy.
+  * Windows: Add missing header for menu.
+  * GPU: Normalize zero consistently in hw transform.
+  * GE Debugger: Correct powered diffuse display.
+  * GPU: Normalize 0 to 1 always in software lighting.
+  * GPU: Look up replaced filtering options.
+  * Replacement: Read in texture filtering overrides.
+  * Windows: Setting for standard/debugger shortcuts.
+  * Dialog: Use dialog type header more consistently.
+  * Comment cleanup, allow file picker as far back as KitKat.
+  * Address feedback, remove probably-misleading comment (had already fixed it).
+  * Dialog: Respect accessThread priority on shutdown.
+  * Screenshot: Provide common params properly.
+  * HLE: Correct helper thread arg handling.
+  * Dialog: Track type id on dialog class.
+  * Savedata: Eat cycles in savedata shutdown start.
+  * Fix exit "race", add persistable permissions
+  * Android: Implement opening ISOs through a file picker and Storage Access Framework
+  * Add a Storage tab to System Information.
+  * mipsjit: Correct inheritance/compilation.
+  * jit: Avoid using mips identifier directly.
+  * UI: Require buttons always have text.
+  * UI: Expose lists better in descriptions.
+  * UI: Omit invisible views from viewgroup describe.
+  * UI: Lock only if mutating views.
+  * UI: Add text description for all views.
+  * UI: Rename Describe() method for logging.
+  * sceKernelFindModuleByName:Add delay for Fake module
+  * Umd: Disallow waiting on status that can't occur.
+  * Umd: Wake waiting threads on eject/insert.
+  * Umd: Delay common wait drive stat funcs.
+- Disabled tests as per upstream suggestion
+- Exclude s390x from build as big endian architecture
+
+-------------------------------------------------------------------
+Fri Feb 26 10:11:58 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.2~git20210224:
+  * SaveState: Fix Snappy build error on older clang.
+  * GPU: Revert stencil discard workaround change.
+  * GPU: Update SPIRV-Cross to 2021-01-15.
+  * Fix Size & Position jpn0.pgf/ltn0.pgf/ltn2.pgf/ltn4.pgf/ltn6.pgf
+  * SaveState: Avoid some warnings in Snappy.
+  * SaveState: Update to Snappy 453942b.
+  * GPU: Use stencil discard workaround w/o depth test.
+  * Mpeg: Correct stream buffer wrapping, cleanup.
+  * (libretro) Fix static makefile
+  * Don't even try the hack on iOS 14.4
+  * Add iOS version detection, turn off JIT on bootup if >= 14.3.
+  * UnitTest: call InitVFPUSinCos() to set vfpu_* function pointers
+  * CMake: enable testing
+  * CMake: add TestShaderGenerators source back to unitTest
+  * Mpeg: Set low latency flag for video decode.
+  * SaveState: Delay restart handling until end frame.
+  * SaveState: Start new events at end properly.
+  * glslang: Update to latest glslang.
+  * Making sure the port is bound to an interface when using bind with INADDR_ANY. Seems to fix #14130
+  * Minor changes.
+  * Minor AdhocMatching changes.
+  * Making sure src_addr and addrlen args of recvfrom is being set correctly upon use.
+  * Shows a warning on Screen when detecting AdhocMatching data coming from an incorrect port, progressing any further may ended with connection issue. Players will need to wait until the port detected correctly before progressing any further (may takes a few more seconds)
+  * Shows a warning log when bound port is shifted to negative port (may cause port issue when wrapped to 1024 or lower on android)
+  * Hook open season
+  * TexCache: Check for videos rendered as slices.
+  * Module: Block a few network modules already HLE'd.
+  * Debugger: Keep char *s for memchecks.
+  * Mpeg: Assume 29.97 if bad frame rate returned.
+  * Mpeg: Prevent sending flush packets to decode.
+  * Atrac: Update to latest FFmpeg packet pump.
+  * Update the discord-rpc submodule to the latest version.
+  * iOS: Undo app ID change.
+  * iOS: Fix multitouch tracking.
+  * GPU: Rotate screenshot framebuffer per display.
+  * Only consider the actual PPGe texture in kernel ram reliable.
+  * SDL: Init profiler on SDL/Qt.
+  * GPU: Correct more vertex/index endian swaps.
+  * HLE: Swap endian in matrix multiply replacement.
+  * Global: Correct many endian types and casts.
+  * UWP: Disable SDLChecks, which error on deprecated.
+  * Windows: Stop ignoring all deprecated warnings.
+  * Windows: Run OSK/chat input box asynchronously.
+  * Mpeg: Remove request_probe usage in newer FFmpeg.
+  * Mpeg: Update videos to latest FFmpeg packet pump.
+  * Mpeg: Clarify fallback problems.
+  * Mpeg: Correct stream detection in newer FFmpeg.
+  * Audiocodec: Update to latest FFmpeg packet pump.
+  * Mpeg: Use direct pts value checks in newer FFmpeg.
+  * AVI: Update to latest FFmpeg packet pump.
+  * AVI: Avoid deprecated ffmpeg context usage.
+  * Mpeg: Remove deprecated codec register calls.
+  * libretro: Always use CONTINUOUS flipping.
+  * TestVertexJit: fmodf() definition requires math.h
+  * UnitTest: test that the function pointer for vfpu_sincos() is non-null
+  * Fix "Enable chat" in Linux Qt build
+  * Windows: Reduce camera state locks.
+  * UI: Divert background only on change.
+  * UI: Correct tweens repeatedly finishing.
+  * UI: Use atomic to check for events.
+  * UI: Avoid PathBrowser lock with no remote files.
+  * Draw: Auto ref/release bound textures/samplers.
+  * Windows: Enable chat when selecting Enable Chat.
+  * Io: Allow early cancel of CRC calculation.
+  * Reporting: Block for CRC calc on shutdown.
+  * UI: Show CRC on game screen if calculated.
+  * GPU: Prevent memory fault when no framebuf yet.
+  * UI: Add button to show CRC on feedback screen.
+  * Dialog: Unlock volatile without Update call.
+  * CMake: use vendor GL implementations by setting CMP0072 to NEW
+  * GPU: Remove clear framebuf on first use speedhack.
+  * UI: Consider chat for visible UI.
+  * UI: Make chatButton_ a member of EmuScreen.
+  * UI: Avoid audio locks where possible.
+  * Turn funcreplacments on in libretro builds. See #12322
+  * Debugger: Prevent thread errors on mem alloc info.
+  * Debugger: Correct crash with no alloc tag.
+  * Debugger: Correct merging fragmented blocks.
+  * Debugger: Update status on scroll down.
+  * Debugger: Fix memory lookup in mirrors/uncached.
+  * Debugger: Show memory tag info in status bar.
+  * Debugger: Extend tag background on select too.
+  * Debugger: Highlight memory ranges in memory view.
+  * Debugger: Reorganize memory view painting.
+  * Debugger: Ignore unmarked mem block info in find.
+  * Debugger: Add initial UI for mem info type.
+  * Debugger: Correct search by empty string.
+  * Debugger: Optimize linear marking.
+  * Debugger: Track slabs by end, not size.
+  * Debugger: Defer memory map calculations.
+  * Debugger: Speed up lookup using an index.
+  * GPU: Cleanup comment.
+  * Debugger: Track ticks of allocation/write/etc.
+  * Debugger: Track texture usage too.
+  * Debugger: Mark framebuffers as VRAM allocations.
+  * Debugger: Notate Memcpys directly as well.
+  * Debugger: Notate memset tags directly.
+  * Debugger: Track memory allocations and writes.
+  * Debugger: Specifically tag relocations.
+  * Debugger: Notate more cases of memory clears.
+  * Debugger: Log access reason on memory breakpoint.
+  * Debugger: Add more metadata for memory usage.
+  * Mpeg: Correct incorrect upload size return.
+  * Rename the FuncReplacements setting to effectively reset it for everyone.
+  * libretro: Always use SKIP_FLIP.
+  * Display: Change default unthrottle mode on non-Win.
+  * Dialog: Clear volatile memory on unlock.
+  * Usb: Implement state waits.
+  * Experimenally turn off the debug symbols again - see if this helps the buildbot
+  * Debugger: Cleanup swprintf() usage.
+  * GPU: Correct some field shadowing.
+  * Windows: Prevent some virtual dtor warnings.
+  * Global: Cleanup class init order warnings.
+  * Windows: Correct some variable init warnings.
+  * D3D11: Fail if uniform buffer create fails.
+  * Global: Remove some unused variables.
+  * Windows: Remove unused file.
+  * Thread: Log error waiting already waiting thread.
+  * Thread: Log error when delaying a waiting thread.
+  * Audio: Avoid left shift when resampling.
+  * SaveState: Load misaligned wide strings properly.
+  * SaveState: Make event restoring more obvious.
+
+-------------------------------------------------------------------
 Mon Feb 15 16:46:24 UTC 2021 - pousaduarte@gmail.com
 
 - Update to version 1.11.2~git20210215:
