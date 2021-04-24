@@ -196,4 +196,23 @@
   * iser: fix segmentation fault when async message pdu is received</comment>
     <requestid>859042</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>76ca819241e41f6e53c78f61648bc97d</srcmd5>
+    <version>1.19.0+git.20210208</version>
+    <time>1619298400</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.0+git.20210208:
+  * test-tool: Change command_is_implemented from a global variable into an argument
+  * test-tool: Move a logging statement into write_residuals_test()
+  * test-tool: Add default clauses in recently modified switch statements
+  * test-tool, residuals: Rename struct residuals_test_data members
+  * test-tool: Add overwrite check for all test cases
+  * test-tool: Change write residuals tests overwrite check according to FCP-4
+  * test-tool: Refactoring residuals write tests
+  * test-tool: Allow CHECK CONDITION in response to overflow/underflow
+  * .travis.yml: Multiple changes
+  * test-tool: add simple REPORT LUNS test
+  * init: fix Wformat on 32-bit platforms</comment>
+    <requestid>887462</requestid>
+  </revision>
 </revisionlist>

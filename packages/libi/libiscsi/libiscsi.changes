@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 22 06:53:46 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.0+git.20210208:
+  * test-tool: Change command_is_implemented from a global variable into an argument
+  * test-tool: Move a logging statement into write_residuals_test()
+  * test-tool: Add default clauses in recently modified switch statements
+  * test-tool, residuals: Rename struct residuals_test_data members
+  * test-tool: Add overwrite check for all test cases
+  * test-tool: Change write residuals tests overwrite check according to FCP-4
+  * test-tool: Refactoring residuals write tests
+  * test-tool: Allow CHECK CONDITION in response to overflow/underflow
+  * .travis.yml: Multiple changes
+  * test-tool: add simple REPORT LUNS test
+  * init: fix Wformat on 32-bit platforms
+
+-------------------------------------------------------------------
 Mon Dec 28 15:13:31 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.0+git.20201217:

@@ -1,7 +1,7 @@
 #
 # spec file for package libiscsi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         sover 9
 Name:           libiscsi
-Version:        1.19.0+git.20201217
+Version:        1.19.0+git.20210208
 Release:        0
 Summary:        iSCSI client library and utilities
 License:        GPL-2.0-only AND LGPL-2.1-only
