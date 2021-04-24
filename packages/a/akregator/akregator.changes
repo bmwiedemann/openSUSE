@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Apr 16 16:10:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- Changes since 21.03.90:
+  * Avoid accidentally generating reserved values of feed IDs
+  * Treat feed IDs as unsigned everywhere (kde#429444)
+  * Fix empty article list after qtbase commit 4796296ed
+- Stop owning directories provided by the filesystem package (boo#1184786)
+
+-------------------------------------------------------------------
+Fri Apr  9 17:39:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- No code change since 21.03.80
+
+-------------------------------------------------------------------
+Sun Mar 21 13:27:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Too many changes since 20.12.3, only listing bugfixes:
+  * Fix Bug 397752 - HTML articles appear very small (kde#397752)
+  * Fix Bug 420520 - tray icon always shown (kde#420520)
+- Drop upstream patch:
+  * akregator-fix_systray.patch
+
+-------------------------------------------------------------------
 Thu Mar  4 06:09:21 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.3

@@ -16,20 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akregator
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        RSS Feed Reader
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/News/Utilities
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/akregator
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM akregator-fix_systray.patch
-Patch0:         akregator-fix_systray.patch
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
@@ -54,24 +56,20 @@ BuildRequires:  cmake(KF5Syndication)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Concurrent) >= 5.7.0
-BuildRequires:  cmake(Qt5Gui) >= 5.7.0
-BuildRequires:  cmake(Qt5Network) >= 5.7.0
+BuildRequires:  cmake(Qt5Concurrent) >= 5.14.0
+BuildRequires:  cmake(Qt5Gui) >= 5.14.0
+BuildRequires:  cmake(Qt5Network) >= 5.14.0
 BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Qml) >= 5.7.0
-BuildRequires:  cmake(Qt5Quick) >= 5.7.0
-BuildRequires:  cmake(Qt5Test) >= 5.7.0
-BuildRequires:  cmake(Qt5WebEngine) >= 5.7.0
-BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.7.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.7.0
+BuildRequires:  cmake(Qt5Qml) >= 5.14.0
+BuildRequires:  cmake(Qt5Quick) >= 5.14.0
+BuildRequires:  cmake(Qt5Test) >= 5.14.0
+BuildRequires:  cmake(Qt5WebEngine) >= 5.14.0
+BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.14.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
 Provides:       akregator5 = %{version}
 Obsoletes:      akregator5 < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -85,8 +83,7 @@ browser for news reading.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build -- -DBUILD_TESTING=OFF
@@ -107,15 +104,14 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 %files
 %license LICENSES/*
 %doc README
-%dir %{_kf5_appstreamdir}/
-%{_kf5_debugdir}/akregator.categories
-%{_kf5_debugdir}/akregator.renamecategories
+%doc %lang(en) %{_kf5_htmldir}/en/akregator/
 %{_kf5_applicationsdir}/org.kde.akregator.desktop
 %{_kf5_appstreamdir}/org.kde.akregator.appdata.xml
 %{_kf5_bindir}/akregator*
 %{_kf5_configkcfgdir}/akregator.kcfg
 %{_kf5_dbusinterfacesdir}/org.kde.akregator.part.xml
-%doc %lang(en) %{_kf5_htmldir}/en/akregator/
+%{_kf5_debugdir}/akregator.categories
+%{_kf5_debugdir}/akregator.renamecategories
 %{_kf5_iconsdir}/hicolor/*/apps/akregator*.png
 %{_kf5_iconsdir}/hicolor/scalable/apps/akregator.svg
 %{_kf5_libdir}/libakregatorinterfaces.so*
