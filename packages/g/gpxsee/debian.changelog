@@ -1,3 +1,9 @@
+gpxsee (9.0) stable; urgency=low
+
+  * Added support for Mapsforge maps.
+
+ -- Martin Tuma <tumic@cbox.cz>  Tue, 20 Apr 2021 00:49:16 +0200
+
 gpxsee (8.9) stable; urgency=low
 
   * Preserve the directory structure when loading maps/POIs.

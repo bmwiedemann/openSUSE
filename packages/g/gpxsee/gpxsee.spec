@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        8.9
+Version:        9.0
 Release:        1
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only
@@ -39,6 +39,7 @@ BuildRequires:  qt5-qtbase-devel
 BuildRequires:  qt5-qtbase-private-devel
 BuildRequires:  qt5-linguist
 Recommends: qt5-qtimageformats
+Recommends: qt5-qtsvg
 Recommends: qt5-qtpbfimageformat
 %else
 %if 0%{?suse_version}
@@ -54,6 +55,7 @@ BuildRequires:  libQt5Sql-devel
 BuildRequires:  libqt5-linguist
 Recommends: libQt5Sql5-sqlite
 Recommends: libqt5-qtimageformats
+Recommends: libqt5-qtsvg
 Recommends: libqt5-qtpbfimageformat
 %else
 # Mageia
@@ -67,6 +69,7 @@ BuildRequires:  libqt5opengl-devel
 BuildRequires:  libqt5sql-devel
 BuildRequires:  qttools5
 Recommends: qtimageformats5
+Recommends: libqt5-qtsvg
 Recommends: libqt5-database-plugin-sqlite
 Recommends: libqt5-qtpbfimageformat
 %endif
