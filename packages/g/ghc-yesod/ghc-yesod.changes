@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 15 10:25:20 UTC 2021 - psimons@suse.com
+
+- Update yesod to version 1.6.1.1.
+  # ChangeLog for yesod
+
+  ## 1.6.1.1
+
+  * Allow yesod-form 1.7
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
