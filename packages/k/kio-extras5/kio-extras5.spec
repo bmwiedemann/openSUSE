@@ -1,7 +1,7 @@
 #
 # spec file for package kio-extras5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,22 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio-extras5
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 Source99:       %{name}-rpmlintrc
+# openEXR causes build issues for Leap 15.2 & 15.3
+%if 0%{?suse_version} > 1500
 BuildRequires:  OpenEXR-devel
+%endif
 BuildRequires:  flac-devel
 BuildRequires:  gperf
 BuildRequires:  kf5-filesystem
@@ -58,12 +65,12 @@ BuildRequires:  cmake(KF5Pty)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5DBus) >= 5.11.0
-BuildRequires:  cmake(Qt5Network) >= 5.11.0
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Svg) >= 5.11.0
-BuildRequires:  cmake(Qt5Test) >= 5.11.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(smbclient)
 Recommends:     %{name}-lang
@@ -74,10 +81,6 @@ Provides:       kfileaudiopreview = 4.100.0
 Obsoletes:      kfileaudiopreview < 4.100.0
 Provides:       kde-odf-thumbnail = %{version}
 Obsoletes:      kde-odf-thumbnail < %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Additional KIO-slaves for KDE applications.
@@ -99,12 +102,10 @@ Requires:       libkioarchive5 = %{version}
 %description -n libkioarchive-devel
 This is the development package for libkioarchive
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
-%setup -q -n %{rname}-%{version}
+%autosetup -p1 -n %{rname}-%{version}
 sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
 
 %build
@@ -119,7 +120,7 @@ sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
   %endif
   # we don't need nor want devel symlink, and dbus interface -- kio-extras don't install any headers,
   # nor are meant for development
-  rm -rf %{buildroot}%{_kf5_sharedir}/dbus-1/
+  rm -r %{buildroot}%{_kf5_sharedir}/dbus-1
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -129,7 +130,9 @@ sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
 %files
 %license COPYING.*
 %{_kf5_configkcfgdir}/
+%{_kf5_debugdir}/kio-extras.categories
 %{_kf5_libdir}/libmolletnetwork5.so.*
+%{_kf5_libexecdir}/smbnotifier
 %{_kf5_plugindir}/
 %{_kf5_servicesdir}/
 %{_kf5_servicetypesdir}/
@@ -141,8 +144,6 @@ sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
 %{_kf5_sharedir}/mime/packages/kf5_network.xml
 %{_kf5_sharedir}/remoteview/
 %{_kf5_sharedir}/solid/
-%{_kf5_debugdir}/kio-extras.categories
-%{_kf5_libexecdir}/smbnotifier
 
 %files -n libkioarchive-devel
 %{_kf5_includedir}/kio_archivebase.h
