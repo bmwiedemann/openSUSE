@@ -1,7 +1,7 @@
 #
 # spec file for package openttd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2007-2012 The OpenTTD developers
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,16 +19,17 @@
 
 %define about OpenTTD is a reimplementation of the Microprose game "Transport Tycoon Deluxe" with lots of new features and enhancements. To play the game, you need either the original proprietary data set from the game, or install the recommend subpackages OpenGFX, OpenSFX and OpenMSX for an alternate, free set of graphics, sounds and music, respectively.
 Name:           openttd
-Version:        1.10.3
+Version:        1.11.1
 Release:        0
 Summary:        A clone of Chris Sawyer's Transport Tycoon Deluxe
 License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Other
-URL:            http://www.openttd.org
-Source:         https://proxy.binaries.openttd.org/openttd-releases/%{version}/%{name}-%{version}-source.tar.xz
+URL:            https://www.openttd.org
+Source:         https://cdn.openttd.org/openttd-releases/%{version}/%{name}-%{version}-source.tar.xz
 # PATCH-FEATURE-UPSTREAM https://bugs.openttd.org/task/6490
 Source2:        openttd.appdata.xml
 BuildRequires:  SDL-devel
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ > 3.3
 BuildRequires:  hicolor-icon-theme
@@ -107,40 +108,23 @@ This package provides the data files needed by %{name} or %{name}-dedicated.
 sed -i "s/__DATE__.*__TIME__/\"${SOURCE_DATE_EPOCH}\"/" src/rev.cpp.in
 
 %build
-# first, we build the dedicated binary and copy it to dedicated/
-CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" \
-CFLAGS_BUILD="%{optflags}" CXXFLAGS_BUILD="%{optflags}" \
-./configure \
-        --disable-strip \
-        --prefix-dir="%{_prefix}" \
-        --binary-dir="bin" \
-        --data-dir="share/%{name}" \
-        --enable-dedicated
-make %{?_smp_mflags} bundle BUNDLE_DIR="dedicated" VERBOSE=1
+# first, we build the dedicated binary inside dedicated/
+%define __builddir dedicated
+%cmake -DCMAKE_INSTALL_BINDIR="bin" -DCMAKE_INSTALL_DATADIR="share" -DOPTION_DEDICATED:BOOL=ON
+%cmake_build
+cd ..
 
-make %{?_smp_mflags} distclean
 # then, we build the common gui version which we install the usual way
-CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" \
-CFLAGS_BUILD="%{optflags}" CXXFLAGS_BUILD="%{optflags}" \
-./configure \
-        --disable-strip \
-        --prefix-dir="%{_prefix}" \
-        --binary-name="%{name}" \
-        --binary-dir="bin" \
-        --data-dir="share/%{name}" \
-        --doc-dir="share/doc/%{name}" \
-        --menu-name="OpenTTD" \
-        --menu-group="Game;StrategyGame;"
-
-make %{?_smp_mflags} VERBOSE=1
+%define __builddir build
+%cmake -DCMAKE_INSTALL_BINDIR="bin" -DCMAKE_INSTALL_DATADIR="share" -DOPTION_DEDICATED:BOOL=OFF
+%cmake_build
 
 %install
+# install the game
+%cmake_install INSTALL_DIR=%{buildroot}
+
 # install the dedicated server
 install -D -m0755 dedicated/openttd %{buildroot}%{_bindir}/%{name}-dedicated
-install -D -m0644 dedicated/man/openttd.6.gz %{buildroot}%{_mandir}/man6/%{name}-dedicated.6.gz
-
-# install the game
-make install INSTALL_DIR=%{buildroot} VERBOSE=1
 
 mkdir -p %{buildroot}%{_datadir}/appdata
 install -D -m0644 %{SOURCE2} %{buildroot}%{_datadir}/appdata/openttd.appdata.xml
@@ -175,11 +159,12 @@ fi
 %{_datadir}/appdata/openttd.appdata.xml
 %{_datadir}/icons/hicolor
 %{_datadir}/pixmaps/%{name}.32.xpm
+%{_datadir}/pixmaps/%{name}.64.xpm
 %{_mandir}/man6/%{name}.6%{?ext_man}
 
 %files dedicated
 %{_bindir}/%{name}-dedicated
-%{_mandir}/man6/%{name}-dedicated.6%{?ext_man}
+%{_mandir}/man6/%{name}.6%{?ext_man}
 
 %files data
 %{_datadir}/doc/%{name}
