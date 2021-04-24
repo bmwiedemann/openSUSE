@@ -1,7 +1,7 @@
 #
 # spec file for package qalculate-gtk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qalculate-gtk
-Version:        3.15.0
+Version:        3.18.0
 Release:        0
 Summary:        Multi-purpose cross-platform desktop calculator
 License:        GPL-2.0-or-later
@@ -27,12 +27,13 @@ Source0:        https://github.com/Qalculate/%{name}/archive/v%{version}.tar.gz#
 BuildRequires:  automake
 BuildRequires:  c++_compiler
 BuildRequires:  intltool
+BuildRequires:  libnghttp2-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.4
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12
-BuildRequires:  pkgconfig(libqalculate) >= 3.8.0
+BuildRequires:  pkgconfig(libqalculate) >= 3.18.0
 BuildRequires:  pkgconfig(libxml-2.0)
 
 %description

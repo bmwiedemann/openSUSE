@@ -47,4 +47,12 @@
     <comment>new upstream release</comment>
     <requestid>857100</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a6da2f349ee20df3264f37860dd26506</srcmd5>
+    <version>3.18.0</version>
+    <time>1619298489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>884021</requestid>
+  </revision>
 </revisionlist>

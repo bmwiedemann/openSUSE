@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr  6 14:05:53 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.18.0:
+  * Save chain mode setting (GUI)
+  * Handle SIGTERM signal (GUI)
+  * System tray improvements (GUI)
+  * Add convert to mixed units to result context menu (GUI)
+  * Redesigned expression, status, and result widgets (GUI)
+  * Chain mode (GUI) and syntax (e.g. 1+2*3=(1+2)*3=6)
+  * Configurable calculate-as-you-type add to history delay (GUI)
+  * Option to use a system tray icon (hides the application when
+    the main window is closed) on Windows (GUI)
+  * Improved completion (GUI)
+  * Support for qalc commands in GUI (expression is interpreted
+    as command if it begins with '/')
+  * Use arrow instead of "to" by default (GUI)
+
+-------------------------------------------------------------------
 Thu Dec 10 07:38:05 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 3.15.0:
