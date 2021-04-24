@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop packaging docdir, it only contained the license which
+  is now in licensedir (bsc#1184897)
+- spec file cleanups
+- 4.4.1
+
+-------------------------------------------------------------------
+Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- 4.4.0
+
+-------------------------------------------------------------------
 Tue Aug 11 10:55:38 CEST 2020 - schubi@suse.de
 
 - AutoYaST: Added supplements: autoyast(isns) into the spec file
