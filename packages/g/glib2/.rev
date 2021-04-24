@@ -1850,4 +1850,12 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment>GNOME 40 - here we come (forwarded request 880936 from dimstar)</comment>
     <requestid>881109</requestid>
   </revision>
+  <revision rev="236" vrev="1">
+    <srcmd5>24bf75b019ad6029e41b76f785aa6191</srcmd5>
+    <version>2.68.1</version>
+    <time>1619298404</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.68.1 (forwarded request 886225 from dimstar)</comment>
+    <requestid>887477</requestid>
+  </revision>
 </revisionlist>

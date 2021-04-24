@@ -19,7 +19,7 @@
 %bcond_without     systemtap
 %bcond_without gtk_doc
 Name:           glib2
-Version:        2.68.0
+Version:        2.68.1
 Release:        0
 Summary:        General-Purpose Utility Library
 License:        LGPL-2.1-or-later
@@ -214,7 +214,7 @@ Summary:        GIO module to use FAM
 # we need gio-querymodules in %%post/%%postun
 Group:          System/Libraries
 Requires(post): %{name}-tools
-Requires(postun): %{name}-tools
+Requires(postun):%{name}-tools
 Supplements:    (libgio-2_0-0 and fam)
 
 %description -n libgio-fam
@@ -348,6 +348,7 @@ mkdir -p %{buildroot}%{_datadir}/gtk-doc/html
 %post -n %{libglib} -p /sbin/ldconfig
 %post -n %{libgobject} -p /sbin/ldconfig
 %post -n %{libgthread} -p /sbin/ldconfig
+
 %post -n %{libgio}
 %{ldconfig}
 for ENV in gnome xfce lxde
@@ -363,6 +364,7 @@ done
 #%%meson_test
 
 %post -n libgmodule-2_0-0 -p /sbin/ldconfig
+
 %post -n libgio-fam
 %if 0
 ###############################################################################
@@ -380,6 +382,7 @@ done
 %postun -n %{libgthread} -p %{ldconfig}
 %postun -n %{libgio} -p %{ldconfig}
 %postun -n %{libgmodule} -p %{ldconfig}
+
 %postun -n libgio-fam
 %if 0
 ###############################################################################

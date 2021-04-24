@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 17 08:29:59 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.68.1:
+  + Fix a crash in `GKeyFile` when parsing a file which contains
+    translations using a `GKeyFile` instance which has loaded
+    another file previously.
+  + Pin GIO DLL in memory on Windows.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar 18 17:10:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.68.0:
