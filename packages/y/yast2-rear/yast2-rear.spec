@@ -17,15 +17,13 @@
 
 
 Name:           yast2-rear
-Version:        4.3.0
+Version:        4.4.1
 Release:        0
 Summary:        YaST2 - Rear - Relax and Recover
 License:        GPL-2.0-only
 Group:          System/YaST
 URL:            https://github.com/yast/yast-rear
-
 Source0:        %{name}-%{version}.tar.bz2
-
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  doxygen
 BuildRequires:  libxslt
@@ -33,16 +31,14 @@ BuildRequires:  perl-XML-Writer
 BuildRequires:  sgml-skel
 BuildRequires:  update-desktop-files
 BuildRequires:  yast2
-BuildRequires:  yast2-devtools >= 4.2.2
+BuildRequires:  yast2-devtools >= 4.4.0
 BuildRequires:  yast2-storage-ng
 BuildRequires:  yast2-testsuite
-BuildRequires:  rubygem(%rb_default_ruby_abi:rspec)
-
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 Requires:       rear >= 1.10.0
 Requires:       yast2
 Requires:       yast2-ruby-bindings >= 1.0.0
 Requires:       yast2-storage-ng
-
 BuildArch:      noarch
 
 %description
@@ -59,6 +55,7 @@ The YaST2 component for configuring Rear - Relax and Recover Backup
 %yast_metainfo
 
 %files
+%license COPYING
 %{yast_yncludedir}
 %{yast_clientdir}
 %{yast_moduledir}
@@ -67,7 +64,5 @@ The YaST2 component for configuring Rear - Relax and Recover Backup
 %{yast_metainfodir}
 %{yast_scrconfdir}
 %{yast_icondir}
-%doc %{yast_docdir}
-%license COPYING
 
 %changelog
