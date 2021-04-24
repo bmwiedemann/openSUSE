@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-search
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Framework for searching and managing PIM metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxapian-devel
@@ -46,22 +50,18 @@ BuildRequires:  cmake(KF5Runner) >= %{kf5_version}
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Test)
 Obsoletes:      baloo-pim < %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
-AkonadiSearch is a framework for searching and managing PIM metada
+AkonadiSearch is a framework for searching and managing PIM metadata
 
 %package -n libKF5AkonadiSearch
 Summary:        Core libraries for AkonadiSearch
 Group:          System/Libraries
 
 %description -n libKF5AkonadiSearch
-AkonadiSearch is a framework for searching and managing PIM metada. This package
-holds the core libraries
+AkonadiSearch is a framework for searching and managing PIM metadata.
+This package contains the core libraries
 
 %package devel
 Summary:        Development package for baloo5
@@ -76,13 +76,12 @@ Requires:       cmake(KF5Mime)
 Requires:       cmake(Qt5Core)
 
 %description devel
-Baloo is a framework for searching and managing metadata. This
-package contains aditional command line utilities. Development files.
+Development files for the AkonadiSearch library.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -100,19 +99,19 @@ package contains aditional command line utilities. Development files.
 %files -n libKF5AkonadiSearch
 %license LICENSES/*
 %{_kf5_libdir}/libKF5AkonadiSearchCore.so.*
+%{_kf5_libdir}/libKF5AkonadiSearchDebug.so.*
 %{_kf5_libdir}/libKF5AkonadiSearchPIM.so.*
 %{_kf5_libdir}/libKF5AkonadiSearchXapian.so.*
-%{_kf5_libdir}/libKF5AkonadiSearchDebug.so.*
 
 %files
 %license LICENSES/*
-%{_kf5_debugdir}/akonadi-search.categories
-%{_kf5_debugdir}/akonadi-search.renamecategories
-%dir %{_kf5_sharedir}/akonadi
-%dir %{_kf5_sharedir}/akonadi/agents
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/krunner
+%dir %{_kf5_sharedir}/akonadi
+%dir %{_kf5_sharedir}/akonadi/agents
 %{_kf5_bindir}/akonadi_indexing_agent
+%{_kf5_debugdir}/akonadi-search.categories
+%{_kf5_debugdir}/akonadi-search.renamecategories
 %{_kf5_plugindir}/akonadi/
 %{_kf5_plugindir}/kcm_krunner_pimcontacts.so
 %{_kf5_plugindir}/kf5/krunner/krunner_pimcontacts.so
@@ -121,10 +120,9 @@ package contains aditional command line utilities. Development files.
 
 %files devel
 %license LICENSES/*
-%dir %{_kf5_includedir}
+%{_kf5_cmakedir}/KF5AkonadiSearch/
 %{_kf5_includedir}/*.h
 %{_kf5_includedir}/AkonadiSearch/
-%{_kf5_cmakedir}/KF5AkonadiSearch/
 %{_kf5_libdir}/libKF5AkonadiSearchCore.so
 %{_kf5_libdir}/libKF5AkonadiSearchDebug.so
 %{_kf5_libdir}/libKF5AkonadiSearchPIM.so
