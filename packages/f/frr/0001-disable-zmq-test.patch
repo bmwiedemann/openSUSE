@@ -17,7 +17,7 @@ index 1f8ee5416..b298fe7b5 100644
  
 -    @pytest.mark.skipif('S["ZEROMQ_TRUE"]=""\n' not in open('../config.status').readlines(),
 -                        reason='ZEROMQ not enabled')
-+    @pytest.mark.xfail(reason="Test disabled due to intermittent build service timeouts")
++    @pytest.mark.skip(reason="Test disabled due to intermittent build service timeouts")
      def test_refout(self):
          return super(TestZMQ, self).test_refout()
 -- 
