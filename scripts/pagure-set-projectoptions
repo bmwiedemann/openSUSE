@@ -15,3 +15,7 @@ curl $verbose \
      --data "issue_tracker=false&pull_requests=false" \
      https://code.opensuse.org/api/0/$namespace/$pkg/options/update
 
+curl $verbose \
+     --header "Authorization: token $apitoken" --request POST \
+     --data "branch_name=master" \
+     https://code.opensuse.org/api/0/$namespace/$pkg/git/branches
