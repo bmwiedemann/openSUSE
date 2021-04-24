@@ -930,4 +930,15 @@
   + Update sle-classic@suse.com.tar.gz (forwarded request 883122 from xiaoguang_wang)</comment>
     <requestid>884650</requestid>
   </revision>
+  <revision rev="108" vrev="3">
+    <srcmd5>a17b19c13deae34c0f3b00f95fdbd6c2</srcmd5>
+    <version>40.0</version>
+    <time>1619298432</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove gnome-shell-classic-session package: From the upstream
+  commit 9a78c7e4, the gnome-classic.session was not used anymore,
+  we can remove gnome-shell-classic-session package now
+  (bsc#1184933). (forwarded request 887897 from mgorse)</comment>
+    <requestid>888001</requestid>
+  </revision>
 </revisionlist>

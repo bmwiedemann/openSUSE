@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 20 08:27:12 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Remove gnome-shell-classic-session package: From the upstream
+  commit 9a78c7e4, the gnome-classic.session was not used anymore,
+  we can remove gnome-shell-classic-session package now
+  (bsc#1184933).
+
+-------------------------------------------------------------------
 Tue Apr  6 02:20:47 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Adapt sle-classic to version 40.0

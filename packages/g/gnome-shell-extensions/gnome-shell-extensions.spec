@@ -77,7 +77,6 @@ This package provides files common to several GNOME Shell Extensions
 %package -n gnome-shell-classic
 Summary:        A collection of extensions for Gnome-shell classic
 Group:          System/GUI/GNOME
-Requires:       gnome-shell-classic-session
 Requires:       gnome-shell-extension-desktop-icons
 BuildArch:      noarch
 
@@ -86,14 +85,6 @@ This GNOME Shell extension adds a power off item in the status
 menu, and provides the ability to hibernate.
 
 This package provides the extensions required to switch to
-gnome-shell classic.
-
-%package -n gnome-shell-classic-session
-Summary:        A collection of extensions for Gnome-shell classic
-Group:          System/GUI/GNOME
-
-%description -n gnome-shell-classic-session
-This packages provides architecture dependent session files to
 gnome-shell classic.
 
 %package -n gnome-shell-extension-user-theme
@@ -200,10 +191,6 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 %ghost %{_sysconfdir}/alternatives/default-xsession.desktop
 %ghost %{_sysconfdir}/alternatives/default-waylandsession.desktop
 %endif
-
-%files -n gnome-shell-classic-session
-%defattr(-,root,root)
-%license COPYING
 
 %files -n gnome-shell-extension-user-theme
 %license COPYING
