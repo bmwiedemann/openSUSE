@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 21 01:25:24 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update set_trusted.sh: Use the right value in gio command
+  (bsc#1185026).
+
+-------------------------------------------------------------------
 Sat Mar 20 16:45:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:
