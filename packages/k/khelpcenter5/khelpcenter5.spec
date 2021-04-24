@@ -22,14 +22,18 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           khelpcenter5
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE Documentation Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/help
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
-BuildRequires:  extra-cmake-modules >= 1.3.0
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
+BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxapian-devel
 BuildRequires:  update-desktop-files
@@ -45,7 +49,7 @@ BuildRequires:  cmake(KF5Init)
 BuildRequires:  cmake(KF5KHtml)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Qt5DBus) >= 5.9.0
+BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 # khelpcenter uses some images and stylesheets from kdoctools (boo#1011094)
@@ -53,10 +57,6 @@ Requires:       kdoctools
 Recommends:     %{name}-lang
 Conflicts:      kdebase4-runtime < 17.04.1
 Provides:       suse_help_viewer
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Application to show KDE Applications' documentation.
@@ -64,7 +64,7 @@ Application to show KDE Applications' documentation.
 %lang_package
 
 %prep
-%setup -q -n %{rname}-%{version}
+%autosetup -p1 -n %{rname}-%{version}
 
 %build
   %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=share/locale/kf5
@@ -88,14 +88,14 @@ Application to show KDE Applications' documentation.
 %{_kf5_applicationsdir}/org.kde.Help.desktop
 %{_kf5_appstreamdir}/org.kde.Help.appdata.xml
 %{_kf5_bindir}/khelpcenter
-%{_kf5_configkcfgdir}/
+%{_kf5_configkcfgdir}/khelpcenter.kcfg
 %{_kf5_debugdir}/khelpcenter.categories
-%{_kf5_libdir}/libexec/
+%{_kf5_kxmlguidir}/khelpcenter/
+%{_kf5_libdir}/libexec/khc_*
 %{_kf5_libdir}/libkdeinit5_khelpcenter.so
 %{_kf5_servicesdir}/
 %{_kf5_sharedir}/kde4/
 %{_kf5_sharedir}/khelpcenter/
-%{_kf5_sharedir}/kxmlgui5/
 
 %if %{with lang}
 %files lang -f %{name}.lang
