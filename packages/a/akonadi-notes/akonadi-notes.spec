@@ -16,29 +16,29 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-notes
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Library to implement management of notes in Akonadi
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5Mime)
-BuildRequires:  cmake(Qt5Test) >= 5.6.0
-BuildRequires:  cmake(Qt5Xml) >= 5.6.0
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
+BuildRequires:  cmake(Qt5Test) >= 5.14.0
+BuildRequires:  cmake(Qt5Xml) >= 5.14.0
 
 %description
 Akonadi Notes is a library that bridges the type-agnostic API of
@@ -71,7 +71,7 @@ library in other applications.
 %lang_package
 
 %prep
-%setup -q -n akonadi-notes-%{version}
+%autosetup -p1 -n akonadi-notes-%{version}
 
 %build
 %cmake_kf5 -d build -- -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
@@ -94,10 +94,10 @@ library in other applications.
 %license LICENSES/*
 %dir %{_kf5_includedir}/Akonadi
 %dir %{_kf5_includedir}/akonadi
+%{_kf5_cmakedir}/KF5AkonadiNotes/
 %{_kf5_includedir}/Akonadi/Notes/
 %{_kf5_includedir}/akonadi-notes_version.h
 %{_kf5_includedir}/akonadi/notes/
-%{_kf5_cmakedir}/KF5AkonadiNotes/
 %{_kf5_libdir}/libKF5AkonadiNotes.so
 %{_kf5_mkspecsdir}/qt_AkonadiNotes.pri
 
