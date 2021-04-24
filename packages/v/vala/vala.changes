@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Apr 17 08:36:39 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.52.2:
+  + Regression and bug fixes:
+    - codegen:
+      . Don't free temp-var for element-access to array with boxed
+        structs.
+      . Don't free unowned heap allocated struct.
+  + Bindings: glib-2.0: Add simple_generics attribute to
+    GenericArray.find_custom().
+- Changes from version 0.52.1:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Improve handling of ellipsis parameter in get_ccode_name().
+      . Fix default value of get_ccode_destroy_notify_pos().
+      . Don't override valid target/destroy of previous lambda
+        argument.
+      . Don't call *_instance_init() in compact class chainup.
+    - vala: Mark tranformed static member-access as qualified.
+    - parser: Stricter mode for chained member initializer with
+      --keep-going.
+    - girwriter: namespace expects "c:symbol-prefixes" attribute.
+    - girwriter: Don't use instance-parameter inside callback.
+    - girparser,libvaladoc/girimporter: Don't guess length of xml
+      header, iterate forward to <repository>.
+    - libvaladoc/girimporter: parse_constant() use "c:identifier"
+      attribute first.
+  + Bindings:
+    - gsl: Add BLAS module.
+    - rest-0.7: Fix OAuthProxyAuthCallback binding.
+    - gtk+-3.0: Fix ModuleInitFunc binding.
+    - gio-2.0: Fix TlsPassword.get_value() binding.
+    - Fix several bindings which lead to invalid code by using
+      them in: javascriptcoregtk-4.0, libusb, libusb-1.0, pixman-1,
+      webkit2gtk-web-extension-4.0, x11, zlib.
+
+-------------------------------------------------------------------
 Thu Mar 18 09:08:28 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.52.0:

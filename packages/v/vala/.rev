@@ -1012,4 +1012,12 @@
     <comment>GNOME 40 - here we come (forwarded request 881003 from dimstar)</comment>
     <requestid>881171</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>1eb3c7b2a5f21ffa86b6c981177f4a72</srcmd5>
+    <version>0.52.2</version>
+    <time>1619298405</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.52.2 (forwarded request 886233 from dimstar)</comment>
+    <requestid>887480</requestid>
+  </revision>
 </revisionlist>

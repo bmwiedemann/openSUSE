@@ -23,7 +23,7 @@
 # decimal separator, hoping they will not get to the idea to create a 0.100 release.
 %define         vala_priority 52
 Name:           vala
-Version:        0.52.0
+Version:        0.52.2
 Release:        0
 Summary:        Programming language for GNOME
 License:        LGPL-2.1-or-later
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(libgvc) >= 2.16
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # Vala is a compiler, so it's also a devel package
 Provides:       vala-devel = %{version}
 Obsoletes:      vala-devel < %{version}
