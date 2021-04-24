@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Apr 24 15:56:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.4.0
+  New Features
+  * Add error_pattern argument to send_config_set() and
+    send_config_from_file() to allow configuration to stop when
+    pattern is detected.
+  * Add run_ttp method to support more complex TTP interactions.
+  * Juniper performance improvements.
+  * ASA performance improvements.
+  * Add telnet support to AdtranOS
+  New Drivers
+  * Allied Telesis AlliedWare Plus
+  * Brocade Fabric OS
+  * C-DOT CROS
+  * Ericsson IPOS
+  * Supermicro SMIS
+  Bug fixes/improvements
+  * Fixing Palo Alto line repaint issue
+  * Fixing F5 TMSH disconnect process
+  * Fix IOS-XR exit_config_mode issue
+  * Fixing some enable method state issues
+  * Fixing SR-OS remote file size
+  * Fixing issue with remote_file_size parsing failure
+  * Fix ASA enable() issue in session_preparation
+  * Fix Yamaha enter issue on exit enable mode
+  * Fix Yamaha telnet enter issue
+  * F5 TMOS driver update
+  * Fix newlines on Cisco NX-OS
+  * Fixes an issue with ssh _autodetect_remote_version
+  * Fix tplink_jetstream to support cryptography 3.1+
+  * Allowing Dell OS10 to support hyphen or space
+  * Fix authentication exception handling
+  * Improve ssh_autodetect so most common command happens first.
+  * Fix dell_force10 autodetect
+
+-------------------------------------------------------------------
 Tue Mar  2 07:42:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.3

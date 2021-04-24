@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-netmiko
-Version:        3.3.3
+Version:        3.4.0
 Release:        0
 Summary:        Multi-vendor library to simplify Paramiko SSH connections to network devices
 License:        MIT
@@ -51,7 +51,9 @@ Multi-vendor library to simplify Paramiko SSH connections to network devices.
 %prep
 %setup -q -n netmiko-%{version}
 # drop shebang
-sed -i -e '/^#!\//, 1d' netmiko/nokia/nokia_sros_ssh.py
+sed -i -e '/^#!\//, 1d' \
+  netmiko/nokia/nokia_sros.py \
+  netmiko/cdot/cdot_cros_ssh.py
 
 %build
 %python_build
