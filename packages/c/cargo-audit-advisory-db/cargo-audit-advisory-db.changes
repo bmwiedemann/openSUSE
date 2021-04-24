@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 20 00:45:30 UTC 2021 - wbrown@suse.de
+
+- Update to version 20210420:
+  * Yank advisories for once-again maintained `dirs`/`directories` crates (#876)
+  * Mark patched tiny-http version for 2020-0031 (#875)
+  * Assigned RUSTSEC-2021-0053 to algorithmica (#874)
+  * Report 0163-algorithmica to RustSec
+  * Add std CVE (#869)
+  * Update CVE numbers (#870)
+  * Update advisory to indicate patched versions of stackvector.
+  * Added patch to "fix" vulnerability. (#866)
+  * Assigned RUSTSEC-2021-0051 to outer_cgi, RUSTSEC-2021-0052 to id-map
+  * Add advisory for double-free issues in id-map
+
+-------------------------------------------------------------------
 Wed Mar 31 23:17:44 UTC 2021 - wbrown@suse.de
 
 - Update to version 20210401:

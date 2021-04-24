@@ -2,7 +2,7 @@
   <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/RustSec/advisory-db.git</param>
     <param name="scm">git</param>
-    <param name="version">20210401</param>
+    <param name="version">20210420</param>
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">wbrown@suse.de</param>
