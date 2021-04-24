@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaddressbook
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Address book application to manage contacts
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kaddressbook
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  pkgconfig
@@ -45,11 +49,11 @@ BuildRequires:  cmake(KF5Libkleo)
 BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5Prison)
-BuildRequires:  cmake(Qt5DBus) >= 5.2.0
-BuildRequires:  cmake(Qt5Gui) >= 5.2.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.2.0
-BuildRequires:  cmake(Qt5Test) >= 5.2.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(Qt5DBus) >= 5.14.0
+BuildRequires:  cmake(Qt5Gui) >= 5.14.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.14.0
+BuildRequires:  cmake(Qt5Test) >= 5.14.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
 Requires:       kdepim-runtime
 Requires:       libKPimAddressbookImportExport5 = %{version}
 Recommends:     %{name}-doc
@@ -58,10 +62,6 @@ Provides:       kaddressbook5 = %{version}
 Obsoletes:      kaddressbook5 < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 KAddressbook is an application by KDE to manage contacts.
@@ -120,7 +120,6 @@ for KAddressbook.
 
 %files
 %license LICENSES/*
-%dir %{_kf5_appstreamdir}/
 %dir %{_kf5_plugindir}/kontact5/
 %{_kf5_applicationsdir}/kaddressbook-importer.desktop
 %{_kf5_applicationsdir}/kaddressbook-view.desktop
@@ -149,9 +148,9 @@ for KAddressbook.
 %files -n libKPimAddressbookImportExport5-devel
 %license LICENSES/*
 %dir %{_includedir}/KPim
-%{_includedir}/KPim/kaddressbookimportexport_version.h
 %{_includedir}/KPim/KAddressBookImportExport/
 %{_includedir}/KPim/kaddressbookimportexport/
+%{_includedir}/KPim/kaddressbookimportexport_version.h
 %{_kf5_cmakedir}/KPimAddressbookImportExport/
 %{_kf5_libdir}/libKPimAddressbookImportExport.so
 %{_kf5_mkspecsdir}/qt_KAddressbookImportExport.pri
