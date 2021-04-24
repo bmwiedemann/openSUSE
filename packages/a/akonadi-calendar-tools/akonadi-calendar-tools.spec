@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-calendar-tools
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Console applications and utilities for managing calendars
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
@@ -41,14 +45,10 @@ BuildRequires:  cmake(KF5CalendarUtils)
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(Qt5Gui) >= 5.2.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(Qt5Gui) >= 5.14.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -57,7 +57,7 @@ Console applications and utilities for managing calendars in Akonadi.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build -- -DBUILD_TESTING=OFF
@@ -72,12 +72,12 @@ Console applications and utilities for managing calendars in Akonadi.
 
 %files
 %license LICENSES/*
-%{_kf5_debugdir}/console.categories
-%{_kf5_debugdir}/console.renamecategories
 %doc %lang(en) %{_kf5_htmldir}/en/konsolekalendar/
 %{_kf5_applicationsdir}/konsolekalendar.desktop
 %{_kf5_bindir}/calendarjanitor
 %{_kf5_bindir}/konsolekalendar
+%{_kf5_debugdir}/console.categories
+%{_kf5_debugdir}/console.renamecategories
 %{_kf5_iconsdir}/hicolor/*/apps/konsolekalendar.png
 
 %if %{with lang}
