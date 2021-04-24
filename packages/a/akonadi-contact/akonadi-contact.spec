@@ -18,18 +18,22 @@
 
 %define rname akonadi-contacts
 %define sonum   5
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-contact
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Grantlee5)
@@ -50,17 +54,13 @@ BuildRequires:  cmake(KF5Service) >= %{kf5_version}
 BuildRequires:  cmake(KF5TextWidgets) >= %{kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
-BuildRequires:  cmake(Qt5Test) >= 5.12.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Requires:       libKF5AkonadiContact5 = %{version}
 Requires:       libKF5ContactEditor5 = %{version}
 Recommends:     %{name}-lang
 Provides:       akonadi-contacts = %{version}
 Obsoletes:      akonadi-contacts < %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This package provides a library used for handling personal contacts,
@@ -105,7 +105,7 @@ Requires:       libKF5ContactEditor5 = %{version}
 Requires:       cmake(KF5Akonadi)
 Requires:       cmake(KF5Contacts)
 Requires:       cmake(KF5GrantleeTheme)
-Requires:       cmake(Qt5Widgets) >= 5.12.0
+Requires:       cmake(Qt5Widgets)
 Obsoletes:      akonadi-contacts-devel < %{version}
 Provides:       akonadi-contacts-devel = %{version}
 Obsoletes:      kdepim-apps-libs-devel <= 20.08.3
@@ -117,7 +117,7 @@ to develop KDE PIM applications.
 %lang_package
 
 %prep
-%setup -q -n %{rname}-%{version}
+%autosetup -p1 -n %{rname}-%{version}
 
 %build
 %cmake_kf5 -d build -- -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
@@ -136,11 +136,10 @@ to develop KDE PIM applications.
 
 %files
 %license LICENSES/*
-%dir %{_kf5_plugindir}
 %dir %{_kf5_plugindir}/akonadi/contacts/
+%{_kf5_datadir}/akonadi/contact/
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
-%{_kf5_datadir}/akonadi/contact/
 %{_kf5_plugindir}/akonadi/contacts/plugins/
 %{_kf5_plugindir}/kcm_akonadicontact_actions.so
 %{_kf5_servicesdir}/akonadicontact_actions.desktop
@@ -169,12 +168,12 @@ to develop KDE PIM applications.
 %dir %{_kf5_includedir}/ContactEditor
 %dir %{_kf5_includedir}/akonadi
 %dir %{_kf5_includedir}/contacteditor
+%{_kf5_cmakedir}/KF5AkonadiContact/
+%{_kf5_cmakedir}/KF5ContactEditor/
 %{_kf5_includedir}/Akonadi/Contact/
 %{_kf5_includedir}/ContactEditor
 %{_kf5_includedir}/akonadi/contact/
 %{_kf5_includedir}/contacteditor
-%{_kf5_cmakedir}/KF5AkonadiContact/
-%{_kf5_cmakedir}/KF5ContactEditor/
 %{_kf5_libdir}/libKF5AkonadiContact.so
 %{_kf5_libdir}/libKF5ContactEditor.so
 %{_kf5_mkspecsdir}/qt_AkonadiContact.pri
