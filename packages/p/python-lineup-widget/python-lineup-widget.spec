@@ -1,7 +1,7 @@
 #
 # spec file for package python-lineup-widget
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-lineup-widget
 Version:        1.0.7
 Release:        0
 License:        MIT
 Summary:        Wrapper around the LineUpjs library for multi attribute rankings
-Url:            https://github.com/datavisyn/lineup_widget
+URL:            https://github.com/datavisyn/lineup_widget
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/l/lineup-widget/lineup_widget-%{version}.tar.gz
 Source10:       https://raw.githubusercontent.com/lineupjs/lineup_widget/v%{version}/LICENSE.txt
@@ -41,7 +43,7 @@ BuildArch:      noarch
 
 %description
 LineUp is an interactive technique designed to create, visualize and explore
-rankings of items based on a set of heterogeneous attributes. 
+rankings of items based on a set of heterogeneous attributes.
 
 This package provides the python interface.
 
