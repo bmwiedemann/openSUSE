@@ -286,4 +286,12 @@
     <comment>UPdate to 4.1.2 (forwarded request 879855 from dimstar)</comment>
     <requestid>880098</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0e81273b738968e85b676fa60ea86d66</srcmd5>
+    <version>4.2.0</version>
+    <time>1619298410</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.2.0 (forwarded request 886249 from dimstar)</comment>
+    <requestid>887486</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Apr 17 09:18:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.2.0:
+  + GtkFileChooser: Make the location entry work again.
+  + GtlLabel: Fix tooltips on links.
+  + GtkTextView: Make scrolling work better with renderers.
+  + X11:
+    - Fix damage handling.
+    - Trap errors from the COW.
+  + Wayland: Fix key event matching with mismatched layouts.
+  + Inspector: Allow inspecting Unicode.
+  + Input:
+    - Improve dead key handling.
+    - Regenerate compose sequence table.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar 18 09:26:38 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.1.2:

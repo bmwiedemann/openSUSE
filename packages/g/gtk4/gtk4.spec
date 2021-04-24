@@ -22,14 +22,14 @@
 %define _name gtk
 
 Name:           gtk4
-Version:        4.1.2
+Version:        4.2.0
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.gtk.org/
 
-Source:         https://download.gnome.org/sources/gtk/4.1/%{_name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gtk/4.2/%{_name}-%{version}.tar.xz
 Source2:        settings.ini
 Source3:        macros.gtk4
 Source98:       gtk4-rpmlintrc
