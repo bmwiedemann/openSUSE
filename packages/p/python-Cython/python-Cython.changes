@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 21 21:19:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.29.23:
+  * Some problems with Python 3.10 were resolved.
+    Patches by Victor Stinner and David Woods.  (Github issues #4046, #4100)
+  * An incorrect "optimisation" was removed that allowed changes to a keyword
+    dict to leak into keyword arguments passed into a function.
+    Patch by Peng Weikang.  (Github issue #3227)
+  * Multiplied str constants could end up as bytes constants with language_level=2.
+    Patch by Alphadelta14 and David Woods.  (Github issue #3951)
+  * ``PY_SSIZE_T_CLEAN`` does not get defined any more if it is already defined.
+    Patch by Andrew Jones.  (Github issue #4104)
+
+-------------------------------------------------------------------
 Tue Feb 23 07:22:13 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.29.22 

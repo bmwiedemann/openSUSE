@@ -643,4 +643,21 @@
     <comment></comment>
     <requestid>874544</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>71de0f6905e95f22a64f8481e500643b</srcmd5>
+    <version>0.29.23</version>
+    <time>1619298395</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.29.23:
+  * Some problems with Python 3.10 were resolved.
+    Patches by Victor Stinner and David Woods.  (Github issues #4046, #4100)
+  * An incorrect &quot;optimisation&quot; was removed that allowed changes to a keyword
+    dict to leak into keyword arguments passed into a function.
+    Patch by Peng Weikang.  (Github issue #3227)
+  * Multiplied str constants could end up as bytes constants with language_level=2.
+    Patch by Alphadelta14 and David Woods.  (Github issue #3951)
+  * ``PY_SSIZE_T_CLEAN`` does not get defined any more if it is already defined.
+    Patch by Andrew Jones.  (Github issue #4104)</comment>
+    <requestid>887377</requestid>
+  </revision>
 </revisionlist>
