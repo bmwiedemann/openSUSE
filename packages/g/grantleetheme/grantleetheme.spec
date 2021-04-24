@@ -16,32 +16,32 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           grantleetheme
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Grantlee theme support
 License:        GPL-2.0-only
 Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-BuildRequires:  extra-cmake-modules >= 5.19.0
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
+BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Grantlee5)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(Qt5Network) >= 5.4.0
-BuildRequires:  cmake(Qt5Test) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 %if %{with lang}
 %requires_eq    grantlee5
 Recommends:     %{name}-lang
@@ -50,12 +50,10 @@ Recommends:     %{name}-lang
 %description
 the grantleetheme library adds Grantlee theme support for PIM applications.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -69,7 +67,7 @@ the grantleetheme library adds Grantlee theme support for PIM applications.
 %endif
 
 %package -n libKF5GrantleeTheme5
-Summary:        GrantleeTheme library for kdepim
+Summary:        GrantleeTheme library for KDE PIM applications
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Requires:       grantleetheme = %{version}
