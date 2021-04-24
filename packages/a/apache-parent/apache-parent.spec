@@ -1,7 +1,7 @@
 #
 # spec file for package apache-parent
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Parent POM file for Apache projects
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://apache.org/
+URL:            https://apache.org/
 Source0:        https://repo1.maven.org/maven2/org/apache/apache/%{version}/apache-%{version}-source-release.zip
 Source1:        https://repo1.maven.org/maven2/org/apache/apache/%{version}/apache-%{version}-source-release.zip.asc
 Source2:        apache-parent.keyring
