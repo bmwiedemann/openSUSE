@@ -23,7 +23,7 @@ Summary:        Default baseset graphics for OpenTTD
 License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Other
 URL:            https://github.com/OpenTTD/OpenGFX
-Source:         https://github.com/OpenTTD/OpenGFX/archive/refs/tags/%{version}.tar.gz
+Source:         %{URL}/archive/refs/tags/%{version}.tar.gz#/OpenGFX-%{version}.tar.gz
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  grfcodec
