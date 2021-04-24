@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 20 15:50:47 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 4.5.5.
+  * Core: set OpenGL context sharing flag for proper functionality
+    of the Qt WebEngine WebTabs backend
+  * Demo: fix freezing/stopping screen broadcasting when Veyon 
+    Master is configured to enforce selected mode for client 
+    computers
+  * Demo: fix context menu for computers to properly show 
+    "Stop demo" for any active screen sharing mode
+  * Service: Windows: fix memory leak
+  * Linux: make minimum session lifetime before server start 
+    configurable
+  * Linux: only consider graphically logged in users for access 
+    control rule condition "No user logged in"
+
+-------------------------------------------------------------------
 Tue Mar 23 13:17:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim metadata redundancies from descriptions. Fixup grammar.
