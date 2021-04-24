@@ -1,7 +1,7 @@
 #
 # spec file for package libkexiv2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,23 +23,23 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkexiv2
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Library to manipulate picture meta data
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 Requires:       %{name}-%{_so} = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 BuildRequires:  pkgconfig(exiv2) >= 0.25
 
 %description
@@ -66,7 +66,7 @@ Libkexiv2 is a wrapper around Exiv2 library to manipulate pictures
 metadata.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -79,13 +79,13 @@ metadata.
 %postun -n %{lname}-%{_so} -p /sbin/ldconfig
 
 %files -n %{lname}-%{_so}
-%license COPYING*
+%license LICENSES/*
 %doc README
-%{_kf5_libdir}/libKF5KExiv2.so.*
 %{_kf5_debugdir}/libkexiv2.categories
+%{_kf5_libdir}/libKF5KExiv2.so.*
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5KExiv2/
 %{_kf5_includedir}/
 %{_kf5_libdir}/libKF5KExiv2.so
