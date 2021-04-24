@@ -19,7 +19,7 @@
 %global pkg_name th-utilities
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.4.2
+Version:        0.2.4.3
 Release:        0
 Summary:        Collection of useful functions for use with Template Haskell
 License:        MIT

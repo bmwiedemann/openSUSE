@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 12 08:14:06 UTC 2021 - psimons@suse.com
+
+- Update th-utilities to version 0.2.4.3.
+  ## 0.2.4.3
+
+  * Adds a lower bound for `th-abstraction` dependency. Also released as
+    a hackage revision of `0.2.4.2`.  See [#15][]
+
+  [#15]: https://github.com/fpco/th-utilities/issues/15
+
+-------------------------------------------------------------------
 Wed Mar 24 11:20:41 UTC 2021 - psimons@suse.com
 
 - Update th-utilities to version 0.2.4.2.
