@@ -21,12 +21,16 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           signon-kwallet-extension
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KWallet integration for signon framework
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  signon-plugins-devel
 BuildRequires:  signond-libs-devel
@@ -37,16 +41,12 @@ BuildRequires:  cmake(Qt5Test)
 # This is very important - the default in signon is to save tokens in plaintext
 # in a sqlite database...
 Supplements:    signond
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 KWallet integration for signon framework.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
