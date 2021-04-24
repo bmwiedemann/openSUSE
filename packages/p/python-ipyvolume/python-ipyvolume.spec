@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyvolume
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-ipyvolume
 Version:        0.5.2
 Release:        0
@@ -37,8 +38,8 @@ Requires:       python-notebook
 Requires:       python-numpy
 Requires:       python-pythreejs >= 2.0.0
 Requires:       python-requests
-Requires:       python-traittypes
 Requires:       python-traitlets
+Requires:       python-traittypes
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
@@ -48,8 +49,8 @@ BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pythreejs >= 2.0.0}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module traittypes}
 BuildRequires:  %{python_module traitlets}
+BuildRequires:  %{python_module traittypes}
 # /SECTION
 %python_subpackages
 
@@ -61,8 +62,8 @@ This package provides the python interface.
 
 %package     -n jupyter-ipyvolume
 Summary:        IPython widget for rendering 3d volumes
-Requires:       jupyter-ipywidgets >= 7.0.0
 Requires:       jupyter-ipywebrtc
+Requires:       jupyter-ipywidgets >= 7.0.0
 Requires:       jupyter-notebook
 Requires:       jupyter-pythreejs >= 2.0.0
 Requires:       python3-ipyvolume = %{version}
