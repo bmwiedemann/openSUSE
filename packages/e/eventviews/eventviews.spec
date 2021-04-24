@@ -16,19 +16,23 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           eventviews
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Eventviews Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-BuildRequires:  extra-cmake-modules >= 5.19.0
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
+BuildRequires:  extra-cmake-modules
 BuildRequires:  libboost_headers-devel
 BuildRequires:  cmake(KChart)
 BuildRequires:  cmake(KF5Akonadi)
@@ -41,15 +45,11 @@ BuildRequires:  cmake(KF5Holidays)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5Mime)
-BuildRequires:  cmake(Qt5Test) >= 5.4.0
-BuildRequires:  cmake(Qt5UiTools) >= 5.4.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.4.0
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5UiTools)
+BuildRequires:  cmake(Qt5Widgets)
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -59,7 +59,7 @@ calendar events in agenda, list, month view or timeline fashion.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
