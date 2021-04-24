@@ -1,7 +1,7 @@
 #
 # spec file for package bwm-ng
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           bwm-ng
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Realtime Bandwidth Monitor
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://www.gropp.org/?id=projects&sub=bwm-ng
-Source0:        https://github.com/vgropp/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        https://www.gropp.org/bwm-ng/bwm-ng-%{version}.tar.gz
 Source1:        %{name}-icons.tar
 Source2:        %{name}.desktop
 BuildRequires:  glibc-devel
