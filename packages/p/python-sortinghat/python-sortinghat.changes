@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 23 21:42:58 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Don't build python36-* package (missing pandas)
+
+-------------------------------------------------------------------
 Thu Jun  4 07:19:33 UTC 2020 - pgajdos@suse.com
 
 - specify database name trough %mysql_testserver_start parameter
