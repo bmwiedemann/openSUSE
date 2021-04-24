@@ -1,7 +1,7 @@
 #
 # spec file for package kopete
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           kopete
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Instant Messenger
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
+URL:            https://apps.kde.org/kopete
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  alsa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  giflib-devel
@@ -70,10 +75,6 @@ BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libotr) >= 4.0.0
 BuildRequires:  pkgconfig(libsrtp)
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 %if 0%{?is_opensuse} || !0%{?sle_version}
 BuildRequires:  mediastreamer2-devel
 %endif
@@ -95,7 +96,7 @@ Kopete is the KDE instant messenger and supports multiple protocols.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -115,35 +116,35 @@ Kopete is the KDE instant messenger and supports multiple protocols.
 %files
 %license COPYING COPYING.DOC
 %doc README
+%{_kf5_applicationsdir}/org.kde.kopete.desktop
+%{_kf5_appsdir}/kconf_update/
+%{_kf5_appsdir}/kopete_history/
+%{_kf5_appstreamdir}/org.kde.kopete.appdata.xml
 %{_kf5_bindir}/kopete
 %{_kf5_bindir}/winpopup-*
-%{_kf5_plugindir}/kcm_kopete_*.so
-%{_kf5_plugindir}/kopete_*.so
-%{_kf5_plugindir}/chattexteditpart.so
-%{_kf5_plugindir}/accessible/
-%{_kf5_libdir}/libkopete.so.*
-%{_kf5_libdir}/libkopete*.so.*
-%{_kf5_libdir}/liboscar.so.*
-%{_kf5_libdir}/libqgroupwise.so
-%{_kf5_applicationsdir}/org.kde.kopete.desktop
-%{_kf5_sharedir}/dbus-1/interfaces/
+%{_kf5_configdir}/kopeterc
+%{_kf5_configkcfgdir}/
+%{_kf5_debugdir}/kopete.categories
 %{_kf5_htmldir}/en/kopete/
 %{_kf5_iconsdir}/hicolor/*/*/
 %{_kf5_iconsdir}/oxygen/*/*/
-%{_kf5_appsdir}/kconf_update/
 %{_kf5_kxmlguidir}/kopete*/
-%{_kf5_configkcfgdir}/
-%{_kf5_servicesdir}/*.protocol
+%{_kf5_libdir}/libkopete*.so.*
+%{_kf5_libdir}/libkopete.so.*
+%{_kf5_libdir}/liboscar.so.*
+%{_kf5_libdir}/libqgroupwise.so
+%{_kf5_notifydir}/kopete.notifyrc
+%{_kf5_plugindir}/accessible/
+%{_kf5_plugindir}/chattexteditpart.so
+%{_kf5_plugindir}/kcm_kopete_*.so
+%{_kf5_plugindir}/kopete_*.so
 %{_kf5_servicesdir}/*.desktop
+%{_kf5_servicesdir}/*.protocol
+%{_kf5_servicesdir}/kconfiguredialog/
 %{_kf5_servicetypesdir}/*.desktop
+%{_kf5_sharedir}/dbus-1/interfaces/
 %{_kf5_sharedir}/kopete/
 %{_kf5_sharedir}/sounds/*.ogg
-%{_kf5_appsdir}/kopete_history/
-%{_kf5_servicesdir}/kconfiguredialog/
-%{_kf5_configdir}/kopeterc
-%{_kf5_debugdir}/kopete.categories
-%{_kf5_appstreamdir}/org.kde.kopete.appdata.xml
-%{_kf5_notifydir}/kopete.notifyrc
 
 %files devel
 %license COPYING COPYING.DOC
