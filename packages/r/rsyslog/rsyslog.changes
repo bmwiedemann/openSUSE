@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 20 17:56:15 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Upgrade to rsyslog 8.2104.0:
+  * new contributed module imhiredis
+  * new built-in function get_property() to access property vars
+  * mmdblookup: add support for mmdb DB reload on HUP
+  * script bugfix: empty array in foreach() improperly handled
+  * imjournal bugfixes (handle leak, empty file)
+  * new contributed function module fmunflatten
+  * test bugfix: some tests did not work with newer TLS library versions
+  * some improvements to project CI
+
+-------------------------------------------------------------------
 Fri Feb 26 07:19:06 UTC 2021 - Thomas Blume <thomas.blume@suse.com>
 
 - update remote.conf example file to new 'Address' and 'Port' notation
