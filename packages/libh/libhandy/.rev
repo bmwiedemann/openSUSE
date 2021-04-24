@@ -147,4 +147,12 @@
     <comment>GNOME 40 - here we come (forwarded request 880986 from dimstar)</comment>
     <requestid>881155</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8d3dfa61133c5e4d9e27d460b68e6695</srcmd5>
+    <version>1.2.1</version>
+    <time>1619298413</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.2.1 (forwarded request 886285 from dimstar)</comment>
+    <requestid>887492</requestid>
+  </revision>
 </revisionlist>
