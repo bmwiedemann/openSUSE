@@ -1,7 +1,7 @@
 #
 # spec file for package domination
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           domination
-Version:        1.2.1
+Version:        1.2.3
 Release:        0
 Summary:        Board game that is a bit like the well known game Risk
 License:        GPL-3.0-only
@@ -31,15 +31,12 @@ Source4:        %{name}-SwingGUI.sh
 Source5:        %{name}.desktop
 Source6:        %{name}.png
 BuildRequires:  dos2unix
-BuildRequires:  java-devel >= 1.6.0
+BuildRequires:  fdupes
 BuildRequires:  unzip
+BuildRequires:  update-desktop-files
 Requires:       %{name}-data
 Requires:       jre >= 1.6.0
 BuildArch:      noarch
-%if 0%{?suse_version}
-BuildRequires:  fdupes
-BuildRequires:  update-desktop-files
-%endif
 
 %description
 Domination is a board game that is a bit like the well known game Risk.
@@ -80,17 +77,13 @@ cp -a maps %{buildroot}%{_datadir}/%{name}/
 for f in *.jar *.htm *.txt *.ini ; do
     install -Dm 0644 "$f" %{buildroot}%{_datadir}/%{name}
 done
-
 # install icon
 install -Dm 0644 %{SOURCE6} %{buildroot}%{_datadir}/pixmaps/%{name}.png
-
 # install Desktop file
 install -Dm 0644 %{SOURCE5} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
-%if 0%{?suse_version}
-    %suse_update_desktop_file %{name}
-    %fdupes -s %{buildroot}%{_prefix}
-%endif
+%suse_update_desktop_file %{name}
+%fdupes -s %{buildroot}%{_prefix}
 
 %files
 %{_bindir}/%{name}-*GUI

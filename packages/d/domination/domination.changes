@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Apr 11 02:06:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.2.3:
+  * PlayerList for Lobby games shows players with correct color
+  * Fix for hi-res Linux jdk-11 that sometimes uses display density
+    instead of scale
+  * Now works for gtk dark theme
+  * Auto-Defend now happens on the server for Lobby Multiplayer
+  * Map Editor shows rectangle for country that is used on cards
+  * SwingGUI: Options and AI speed setting put into same Options
+    Dialog
+  * max players can be changed in game.ini config file
+  * MapEditor: fixed zoom to keep the mouse position on map static
+  * SwingGUI: testing tab, show player for online games
+  * Can create private games online with a password to enter
+  * Can view cards and missions even when it is not your turn
+  * Filter online game maps by Michiel Pater
+  * Do not show dice statistics for turns when the player rolled no dice
+  * French text update by Adrien Laugueux
+  * Can Flag 🚩 a game as inappropriate with right click menu option
+  * MapEditor: checks for overlapping circles
+  * MapEditor: warning on no cards in map
+
+-------------------------------------------------------------------
 Fri Mar 27 14:21:59 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.2.1. Check the installed ChangeLog.txt file for the
