@@ -1,7 +1,7 @@
 #
 # spec file for package cal3d
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@ Release:        0
 Summary:        A 3D character animation library
 License:        LGPL-2.1+
 Group:          Productivity/Graphics/Convertors
-Url:            http://home.gna.org/cal3d/
+Url:            https://mp3butcher.github.io/Cal3D/
 Source:         https://github.com/mp3butcher/Cal3D/archive/%{version}.tar.gz#/%{oname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-boolean-to-pointer.patch -- https://gna.org/bugs/index.php?24805
 Patch0:         fix-boolean-to-pointer.patch
@@ -44,7 +44,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  sgml-skel
 Requires:       lib%{name}%{major} = %{version}
 Requires:       pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Cal3D is a skeletal based 3D character animation library written
@@ -122,8 +121,8 @@ find %{buildroot}%{_libdir} -name *.la -delete
 %postun -n lib%{name}%{major} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc %{name}/AUTHORS %{name}/ChangeLog %{name}/COPYING %{name}/README %{name}/TODO
+%license %{name}/COPYING
+%doc %{name}/AUTHORS %{name}/ChangeLog %{name}/README %{name}/TODO
 %{_bindir}/cal3d_converter
 %{_mandir}/man1/*
 
