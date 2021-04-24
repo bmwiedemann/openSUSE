@@ -1,7 +1,7 @@
 #
 # spec file for package libksane
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libksane
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE scanning library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  sane-backends-devel
@@ -42,10 +46,6 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 The KDE scanner library provides an API and widgets for using
@@ -80,7 +80,7 @@ scanners and other imaging devices supported by SANE.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -97,10 +97,10 @@ scanners and other imaging devices supported by SANE.
 
 %files -n %{lname}%{_so}
 %license COPYING*
-%{_kf5_libdir}/%{lname}.so.*
 %{_kf5_iconsdir}/hicolor/*/actions/black-white.png
 %{_kf5_iconsdir}/hicolor/*/actions/color.png
 %{_kf5_iconsdir}/hicolor/*/actions/gray-scale.png
+%{_kf5_libdir}/%{lname}.so.*
 
 %files devel
 %license COPYING*
