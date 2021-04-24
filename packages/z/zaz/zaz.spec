@@ -1,8 +1,7 @@
 #
 # spec file for package zaz
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright Vincent Petry <PVince81@opensuse.org>
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,30 +20,25 @@ Name:           zaz
 Version:        1.0.0
 Release:        0
 Summary:        Puzzle game about arranging balls in triplets
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Amusements/Games/Logic
-Url:            http://zaz.sourceforge.net/
+URL:            http://zaz.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE - zaz-extra_zaz.desktop.patch -- Add GenericName
 Patch0:         %{name}-extra_zaz.desktop.patch
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
 BuildRequires:  Mesa-devel
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
+BuildRequires:  opengl-games-utils
+BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL_image)
+BuildRequires:  pkgconfig(ftgl)
 BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(vorbis)
-%if 0%{?suse_version} <= 1320
-BuildRequires:  ftgl-devel
-%else
-BuildRequires:  pkgconfig(ftgl)
-%endif
 Requires:       opengl-games-utils
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Zaz (Zaz ain't Z***) is a game where the player has to get rid of
@@ -73,26 +67,23 @@ chmod 0644 extra/%{name}.desktop
 # Inject -lvorbis into the Makefile
 sed -i -e "/^LIBS\s*=*/s|$| -lvorbis|" Makefile src/Makefile
 
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install
 
-# Remove useless Documentation
-rm -f %{buildroot}%{_docdir}/%{name}/{INSTALL,NEWS}
-
+# Remove useless Documentation or license (we install manually)
+rm -f %{buildroot}%{_docdir}/%{name}/{INSTALL,NEWS,COPYING}
 # symlink OpenGL Wrapper
 ln -s opengl-game-wrapper.sh %{buildroot}%{_bindir}/%{name}-wrapper
 
-%if 0%{?suse_version}
-    %suse_update_desktop_file %{name}
-%endif
+%suse_update_desktop_file %{name}
 
 %find_lang %{name}
 
 %files -f %{name}.lang
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog README
+%license COPYING
+%doc AUTHORS ChangeLog README
 %{_bindir}/%{name}
 %{_bindir}/%{name}-wrapper
 %{_datadir}/applications/%{name}.desktop
