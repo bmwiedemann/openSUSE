@@ -1,7 +1,7 @@
 #
 # spec file for package kate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kate
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
-URL:            https://www.kde.org
+URL:            https://kate-editor.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Defuse-root-block.patch
 BuildRequires:  libgit2-devel
@@ -54,23 +58,19 @@ BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(KUserFeedback)
-BuildRequires:  cmake(Qt5Core) >= 5.10.0
-BuildRequires:  cmake(Qt5DBus) >= 5.10.0
-BuildRequires:  cmake(Qt5Script) >= 5.10.0
-BuildRequires:  cmake(Qt5Sql) >= 5.10.0
-BuildRequires:  cmake(Qt5Test) >= 5.10.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.10.0
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Script)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Requires:       %{name}-plugins = %{version}
 Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
-Kate is an advanced text editor for KDE.
+Kate is an advanced text editor by KDE.
 
 %package -n kwrite
 Summary:        KDE Text Editor
@@ -79,7 +79,7 @@ Requires:       %{name}-plugins = %{version}
 Obsoletes:      kwrite5 < %{version}
 
 %description -n kwrite
-KWrite is the default text editor of the K desktop environment.
+KWrite is a text editor by KDE.
 
 %package plugins
 Summary:        KDE Text Editor plugins
@@ -89,14 +89,13 @@ Provides:       ktexteditorpreviewplugin = %{version}
 Obsoletes:      ktexteditorpreviewplugin < %{version}
 
 %description plugins
-Kate is an advanced text editor for KDE. This package contains
+Kate is an advanced text editor by KDE. This package contains
 plugins and data files for Kate and KWrite editors.
 
 %lang_package
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -112,9 +111,6 @@ plugins and data files for Kate and KWrite editors.
 %files
 %license LICENSES/*
 %doc README*
-%dir %{_kf5_appstreamdir}
-%dir %{_kf5_htmldir}
-%dir %{_kf5_htmldir}/en
 %dir %{_kf5_iconsdir}/hicolor/150x150/
 %dir %{_kf5_iconsdir}/hicolor/150x150/apps
 %dir %{_kf5_iconsdir}/hicolor/310x310/
@@ -136,8 +132,6 @@ plugins and data files for Kate and KWrite editors.
 %files -n kwrite
 %license LICENSES/*
 %doc README*
-%dir %{_kf5_htmldir}
-%dir %{_kf5_htmldir}/en
 %doc %lang(en) %{_kf5_htmldir}/en/kwrite/
 %{_kf5_applicationsdir}/org.kde.kwrite.desktop
 %{_kf5_appstreamdir}/org.kde.kwrite.appdata.xml
