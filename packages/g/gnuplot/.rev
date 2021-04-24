@@ -916,4 +916,14 @@
   * 052cbd17.patch</comment>
     <requestid>854609</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>e95f1b52f4f1569e40b239ea642aab26</srcmd5>
+    <version>5.4.1</version>
+    <time>1619298398</time>
+    <user>dimstar_suse</user>
+    <comment>- Last commit had added patch gnuplot-PIE.patch
+
+- Hardening: compile with PIC and link with PIE.</comment>
+    <requestid>887452</requestid>
+  </revision>
 </revisionlist>

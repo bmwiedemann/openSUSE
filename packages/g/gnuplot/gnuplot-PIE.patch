@@ -1,0 +1,28 @@
+Index: gnuplot-5.4.1/src/Makefile.am
+===================================================================
+--- gnuplot-5.4.1.orig/src/Makefile.am
++++ gnuplot-5.4.1/src/Makefile.am
+@@ -61,6 +61,7 @@ util3d.c util3d.h variable.c variable.h
+ voxelgrid.c voxelgrid.h vplot.c vplot.h marching_cubes.h
+ 
+ gnuplot_LDADD = $(GD_LIBS) $(TERMLIBS) $(TERMXLIBS) $(WX_LIBS) $(QT_LIBS)
++gnuplot_LDFLAGS = -pie
+ 
+ pkglibexec_PROGRAMS = 
+ 
+@@ -69,6 +70,7 @@ pkglibexec_PROGRAMS += gnuplot_x11
+ gnuplot_x11_SOURCES = gplt_x11.c gplt_x11.h gpexecute.c gpexecute.h mousecmn.h version.c version.h
+ XLIBS = @LIBRARIES_FOR_X@
+ gnuplot_x11_LDADD = getcolor_x11.o $(XLIBS)
++gnuplot_x11_LDFLAGS = -pie
+ endif
+ 
+ getcolor_x11.o: getcolor.c
+@@ -185,6 +187,7 @@ qtterminal/QtGnuplotApplication.cpp qtte
+ qtterminal/QtGnuplotScene.cpp qtterminal/QtGnuplotItems.cpp \
+ qtterminal/QtGnuplotEvent.cpp
+ gnuplot_qt_LDADD = $(QT_LIBS)
++gnuplot_qt_LDFLAGS = -pie
+ 
+ # embed example (uncomment to build it)
+ # 

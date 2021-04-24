@@ -1,7 +1,7 @@
 #
-# spec file for package gnuplot
+# spec file for package gnuplot%{?psuffix}
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,11 +80,11 @@ Release:        0
 %global         underscore 5_4
 %if "%{flavor}" == ""
 Summary:        Function Plotting Utility and more
-License:        SUSE-Gnuplot AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND SUSE-Gnuplot
 Group:          Documentation/Other
 %else
 Summary:        Documentation of GNUplot
-License:        SUSE-Gnuplot AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND SUSE-Gnuplot
 Group:          Documentation/Other
 %endif
 Source0:        http://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/gnuplot-%{version}.tar.gz
@@ -103,6 +103,7 @@ Patch4:         gnuplot-4.6.0-demo.diff
 Patch5:         gnuplot-wx3.diff
 Patch6:         gnuplot-QtCore-PIC.dif
 Patch7:         gnuplot-gd.patch
+Patch8:         gnuplot-PIE.patch
 %define _x11lib     %{_libdir}
 %define _x11data    %{_datadir}/X11
 %define _libx11     %{_exec_prefix}/lib/X11
@@ -111,7 +112,7 @@ Patch7:         gnuplot-gd.patch
 %if "%{flavor}" == "doc"
 Requires:       %{sname}
 Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
+Requires(preun):%install_info_prereq
 BuildArch:      noarch
 %endif
 
@@ -137,12 +138,14 @@ cp %{_sourcedir}/picins.sty docs
 %patch5 -p1 -b .w3x
 %patch6 -p0 -b .pic
 %patch7 -p1 -b .gd
+%patch8 -p1 -b .pie
+
 %build
 autoreconf -fi
 
     export  CPPFLAGS="-I%{_includedir}/gd -DAppDefDir=\\\"%{_appdef}\\\""
     export  CPPFLAGS="$CPPFLAGS -DGNUPLOT_LIB_DEFAULT=\\\"%{_docdir}/%{sname}/demo\\\""
-    export  CFLAGS="${RPM_OPT_FLAGS} -pipe -D_GNU_SOURCE"
+    export  CFLAGS="${RPM_OPT_FLAGS} -pipe -D_GNU_SOURCE -fpic"
     export  CXXFLAGS="$CFLAGS -fno-strict-aliasing"
     export  LDFLAGS="-L%{_x11lib} -Wl,--as-needed"
     export  ARCHLIB=%_lib
