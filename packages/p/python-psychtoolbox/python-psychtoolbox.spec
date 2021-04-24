@@ -1,7 +1,7 @@
 #
 # spec file for package python-psychtoolbox
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-psychtoolbox
 Version:        3.0.16
 Release:        0
 # Note: the license text mentions non-FOSS code, but that is not included in this source archive
-License:        MIT and BSD-2-Clause AND X11 AND GPL-2.0-or-later AND LGPL-2.1-or-later AND AML
+License:        AML AND BSD-2-Clause AND MIT AND X11 AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Summary:        Pieces of Psychtoolbox-3 ported to CPython
-Url:            http://psychtoolbox.org
+URL:            http://psychtoolbox.org
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/p/psychtoolbox/psychtoolbox-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gl)
@@ -41,7 +44,6 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)
-BuildRequires:  python-rpm-macros
 
 
 BuildRequires:  gdb
