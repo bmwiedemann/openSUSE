@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Apr 21 15:07:38 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-15.0.3+3 (April 2021 CPU)
+  * Security fixes:
+    + JDK-8244473: Contextualize registration for JNDI
+    + JDK-8244543: Enhanced handling of abstract classes
+    + JDK-8259633: compiler/graalunit/CoreTest.java fails with NPE
+      after JDK-8244543
+    + JDK-8250568, CVE-2021-2161, bsc#1185056: Less ambiguous
+      processing
+    + JDK-8253799: Make lists of normal filenames
+    + JDK-8261183: Follow on to Make lists of normal filenames
+    + JDK-8249906, CVE-2021-2163, bsc#1185055: Enhance opening JARs
+    + JDK-8258247: Couple of issues in fix for JDK-8249906
+    + JDK-8259428: AlgorithmId.getEncodedParams() should return
+      copy
+    + JDK-8257001: Improve HTTP client support
+  * Other changes:
+    + JDK-8256682: JDK-8202343 is incomplete
+    + JDK-8202343: Disable TLS 1.0 and 1.1
+    + JDK-8252497: Incorrect numeric currency code for ROL
+    + JDK-8261912: Code IfNode::fold_compares_helper more
+      defensively
+    + JDK-8245400: Upgrade to LittleCMS 2.11
+    + JDK-8247867: Upgrade to freetype 2.10.2
+    + JDK-8260356: (tz) Upgrade time-zone data to tzdata2021a
+    + JDK-8259048: (tz) Upgrade time-zone data to tzdata2020f
+    + JDK-8261310: PPC64 Zero build fails with
+      'VMError::controlled_crash(int)::FunctionDescriptor
+      functionDescriptor' has incomplete type and cannot be defined
+    + JDK-8243559: Remove root certificates with 1024-bit keys
+      (See CSR JDK-8262079)
+
+-------------------------------------------------------------------
 Fri Jan 22 06:24:12 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-15.0.2+7 (January 2021 CPU,
@@ -353,51 +387,51 @@ Wed Nov 25 17:17:14 UTC 2020 - Fridrich Strba <fstrba@suse.com>
   * Fixes:
     + JDK-8211974: move test/jdk/lib/testlibrary/java/util/jar/
       /*.java to top-level library or a local library
-    + JDK-8217475: Unexpected StackOverflowError in "process 
+    + JDK-8217475: Unexpected StackOverflowError in "process
       reaper" thread
     + JDK-8229495: SIGILL in C2 generated OSR compilation
     + JDK-8236809: [Graal] java/lang/Class/getDeclaredField/
       /FieldSetAccessibleTest.java timeouts
     + JDK-8236935: Improve UX of the search control
-    + JDK-8242529: javac defines type annotations incorrectly for 
+    + JDK-8242529: javac defines type annotations incorrectly for
       record members (constructor and property accessor)
-    + JDK-8247229: jpackage tests failed due to "semop(1): 
+    + JDK-8247229: jpackage tests failed due to "semop(1):
       encountered an error: Invalid argument"
-    + JDK-8247502: PhaseStringOpts crashes while optimising 
+    + JDK-8247502: PhaseStringOpts crashes while optimising
       effectively dead code
     + JDK-8247670: Shenandoah: deadlock during class unloading OOME
-    + JDK-8248048: ZGC: AArch64: SIGILL in load barrier register 
+    + JDK-8248048: ZGC: AArch64: SIGILL in load barrier register
       spilling
-    + JDK-8248598: [Graal] Several testcases from 
+    + JDK-8248598: [Graal] Several testcases from
       applications/jcstress/acqrel.java fails with forbidden state
     + JDK-8248822: 8 vm/classfmt/atr_ann/atr_rtm_annot007/
       /atr_rtm_annot00709 tests fail w/ AOT
     + JDK-8249000: vm.gc.X should take selected JIT into account
-    + JDK-8249019: clean up FileInstaller $test.src $cwd in 
+    + JDK-8249019: clean up FileInstaller $test.src $cwd in
       vmTestbase_vm_compiler tests
-    + JDK-8249028: clean up FileInstaller $test.src $cwd in 
+    + JDK-8249028: clean up FileInstaller $test.src $cwd in
       vmTestbase_nsk_monitoring tests
-    + JDK-8249029: clean up FileInstaller $test.src $cwd in 
+    + JDK-8249029: clean up FileInstaller $test.src $cwd in
       vmTestbase_vm_defmeth tests
-    + JDK-8249032: clean up FileInstaller $test.src $cwd in 
+    + JDK-8249032: clean up FileInstaller $test.src $cwd in
       vmTestbase_nsk_sysdict tests
-    + JDK-8249033: clean up FileInstaller $test.src $cwd in 
+    + JDK-8249033: clean up FileInstaller $test.src $cwd in
       vmTestbase_vm_metaspace tests
-    + JDK-8249035: clean up FileInstaller $test.src $cwd in 
+    + JDK-8249035: clean up FileInstaller $test.src $cwd in
       vmTestbase_nsk_jdwp tests
-    + JDK-8249036: clean up FileInstaller $test.src $cwd in 
+    + JDK-8249036: clean up FileInstaller $test.src $cwd in
       vmTestbase_nsk_stress tests
-    + JDK-8249037: clean up FileInstaller $test.src $cwd in 
+    + JDK-8249037: clean up FileInstaller $test.src $cwd in
       vmTestbase_vm_g1classunloading tests
-    + JDK-8249038: clean up FileInstaller $test.src $cwd in 
+    + JDK-8249038: clean up FileInstaller $test.src $cwd in
       vmTestbase_vm_gc tests
     + JDK-8249086: JDK 15 L10N resource file update - msg drop 10
-    + JDK-8249097: test/lib/jdk/test/lib/util/JarBuilder.java has a 
+    + JDK-8249097: test/lib/jdk/test/lib/util/JarBuilder.java has a
       bad copyright
     + JDK-8249255: Build fails if source code in cygwin home dir
-    + JDK-8249256: [macos] Add EmptyFolderPackageTest test to 
+    + JDK-8249256: [macos] Add EmptyFolderPackageTest test to
       problem list
-    + JDK-8249258: java/util/StringJoiner/StringJoinerTest.java 
+    + JDK-8249258: java/util/StringJoiner/StringJoinerTest.java
       failed due to OOM
 
 -------------------------------------------------------------------
