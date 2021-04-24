@@ -1,7 +1,7 @@
 #
 # spec file for package carla
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ Name:           carla
 #NOTE: to update this package please change these two version fields in "_service" <param name="revision">v2.1.1</param> and
 #<param name="versionformat">2.1.1</param> to the version that you want and execute "osc service runall"
 # It will even fill in the .changes file. Please don't touch the Version: in the spec file, it will be filled automaticaly.
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        An audio plugin host
 License:        GPL-2.0-or-later AND BSD-2-Clause AND BSD-3-Clause

@@ -1,4 +1,371 @@
 -------------------------------------------------------------------
+Fri Apr 23 13:39:23 UTC 2021 - ecsos@opensuse.org
+
+- Update to version 2.3.0:
+  * Fix build
+  * Fix carla-single/standalone-bridges not having default options enabled
+  * Use .0 suffix for packaged files
+  * Bump version as 2.3.0
+  * Fix main client name for multiple carlas inside NSM Closes #1279
+  * Do not run 2nd instance of lv2 plugin if it has event output(s) Fixes #1350
+  * Tentative fix for missing vst3 poly aftertouch
+  * Use fixed buffers on standalone bridge mode
+  * Whitespace cleanup
+  * midipattern: use Esc key to close UI
+  * midipattern; kill note on event removal
+  * Cleanup midi pattern UI event handling, 2/2
+  * CarlaNative.h: move extern "C" after the includes to fix clang/libc++
+  * Cleanup midi pattern UI event handling, 1/2
+  * pianoroll: set cursor depending on hover action
+  * Fix cancelling plugin discovery Closes #1391
+  * Add .kdev_include_paths files
+  * patchcanvas: clear rubberband on right-click
+  * patchcanvas: stop storing keyboard modifier state, cleanup
+  * Fix sorting plugins by favorite Closes #1390
+  * Fix a typo
+  * Make sure to ignore CCs above 120
+  * Read lv2 midi:binding on control ports and parameters
+  * Set project filename/folder before saving, not after
+  * Fix a float vs int usage, which will break in python soon
+  * Fix recursive VST2 audioMasterAutomate parameter changes Fixes #1365
+  * Use Ctrl+P to open/close side panel Fixes #1193
+  * Fix strict build
+  * Bump version
+  * audio_decoder: assume 16bit for encoded libsndfile files
+  * Accept oga and opus audio files
+  * Update static lv2 bundle too
+  * Small tweaks in preparation of future things
+  * Add num tracks info to midifile
+  * audiofile: tweaks to "waveform" preview
+  * midifile: make sure to start new files at frame 0
+  * Fix a typo
+  * Update midi file static lv2 bundle data
+  * midifile: add repeat mode and make host-sync optional
+  * audiofile: only advance internal frame if there is a file
+  * Update static data of audiofile
+  * audiofile: add host sync, enable and volume parameters
+  * Fix wine bridge build for certain systems
+  * Fix (native) plugin discovery under Windows
+  * Fix plugin search listing AU as possible type on Windows
+  * Fix a compiler warning
+  * Fix loading project with vst3 plugin bridges
+  * Ship with magic.mgc file on macOS
+  * Setup CARLA_MAGIC_FILE env var for cxfreeze builds
+  * Tweaks to make dist
+  * Debug output of bridging vsts
+  * Package 32bit bridges on macos non-universal builds
+  * Use -universal suffix for macos-universal dmgs
+  * Update FUNDING.yml
+  * Update copyright year in about page
+  * Fix logic around gCarla.nogui
+  * Rework some CarlaString methods to prevent stack overflow
+  * Silence cxfreeze stdout
+  * Add FUNDING.yml
+  * Specify mp3 file support on "make features"
+  * Mention dr_mp3, libsndfile and zita-resampler in about page
+  * Bump version
+  * CLeanup
+  * Fix make dist for windows
+  * macOS arm64/x64 handling of VST3 plugins
+  * Fix some compiler warnings
+  * audiofile mp3: calculate seek points when loading file
+  * Prevent issues with hosts sending MIDI events where they shouldnt
+  * audiofile mp3: disable SIMD for macos-old builds
+  * Fix typo
+  * Fix pool fix calc, ignore wrap since it is too hard
+  * Remove audiofile global init
+  * Alternative mp3 handling via dr_mp3
+  * Fetch bitrate and pool fill for audiofile
+  * Read mp3 files on RAM
+  * Small missing definition
+  * audiofile: better use of local vs internal pool
+  * Fix make dist for old mingw
+  * Fix make dist plugin rules
+  * Add win32 binaries to win64 packaging
+  * Fix windows bridge build
+  * more make dist tweaks
+  * Finalize make dist for windows
+  * Fix bridges build
+  * Reduce excessive prints
+  * Fully delete embed lv2 ui window on hide Fixes #1339
+  * Fix assertion on empty project path; Change cwd of plugin bridges
+  * 2 more icons
+  * win32 make dist mostly works now
+  * More tweaks for win32 make dist
+  * Fix showing UI bridges for a few systems
+  * Fix windows native tools, now without symlinks
+  * Ignore irrelevant assertion when quitting windows bridge
+  * Move some code around
+  * Fix use of patchbay external canvas client with no plugins
+  * Fix strict build
+  * Fix some compiler warnings
+  * Add cursor position to audiofile
+  * Generate file preview for bigger files too
+  * send audiofile preview as lv2 vector
+  * audiofile: protect against race conditions when loading new files
+  * audiofile: fix resampling of full loaded file
+  * Try 30s for full audio file in ram
+  * carla-lv2: only ask for "idle" one at a time
+  * Smaller pool for audio file, but load full if < 10s; use mlock
+  * MIDI file length, WIP
+  * Fixup audiofile plugin for offline rendering
+  * Start work for new windows toolchain build
+  * Add a few more desktop-theme icon definitions
+  * Support lv2 parameters that are both readable and writable
+  * Fix mod fileTypes in lv2 audio/midi file plugins
+  * Ignore priority increase warnings when testing plugins
+  * Fix install with cross-compiling without lv2 plugin
+  * Give up with BINARY_* expose, alternative approach
+  * Try to fix strict build
+  * expose binary types as macros so they can be compared to BINARY_NATIVE
+  * Fix wine bridges build
+  * Do not show custom GUI is testing plugins
+  * Use carla-bridge-native.exe for native arch bridge on windows
+  * Minor tweaks as used for testing
+  * Fix previous commit
+  * Do not build external plugins by default
+  * Fix cross-compilation without an exe wrapper
+  * Yet another old macOS build fix
+  * Fix build on old macOS
+  * Fix windows build
+  * Reduce bridge plugin test to 5s
+  * Allow to run CV plugins in rack mode, CV connects to dummy port
+  * Clear PID when child process ends
+  * Fix usage of empty filenames and labels for plugin bridges
+  * Fix carla-control, regression from previous commits
+  * Fix crash on internal vst handling with bad macOS plugins
+  * Fix debug console output to be readable on macOS dark theme
+  * Show description for carla-plugins pkg
+  * Another makefile fix
+  * Create macOS dmg on make dist
+  * Remove old macOS data files
+  * Fix make install, more make dist work
+  * continue make dist cleanup
+  * Rename a file to prevent possible recursion issues
+  * make dist tweaks, now more generic
+  * Initial work for system icons
+  * Use proper carla-control icon in some systems
+  * Add carla-control to make dist
+  * Split off some makefile stuff into new files
+  * Create carla app bundle in "make dist" command
+  * Better way to find qt5 prefix on macOS for theme build
+  * Now fix new compilers too :P
+  * Force-fix macos theme builds
+  * Fix build on macOS 10.5
+  * Fix build on macOS 10.8
+  * Rework state path support in carla lv2 plugins
+  * Order lv2 parameters by URI
+  * Catch lv2 dsp->ui messages, and prevent recursion from carla
+  * Expose inline-display in carla lv2 plugins
+  * Map NATIVE_HOST_OPCODE_REQUEST_IDLE to lv2 worker
+  * Update pre-exported lv2-bundles to match latest changes
+  * Fix old compilers build
+  * Ammend previous commit
+  * Fix lv2-bundles build
+  * audiofile: Bail out if resample fails, whitespace cleanup
+  * Fix strict build
+  * Fix missing audio outputs in rack mode juce engine driver
+  * audiofile: add some info as parameter outputs
+  * Fix build with old compilers
+  * audiofile: reduce lock time and use a spinlock as guard
+  * audiofile: use host idle to read file, instead of custom thread
+  * bigmeter: do not request inline display during process
+  * audiofile: do not request inline display during process
+  * Finish resampling details, seems to work nicely
+  * On the fly resampling for audiofile
+  * Initial tests with resampler
+  * Add zita-resampler, to be used for audiofile
+  * Start trying to package for osx nicely
+  * Rough way of discoverying x64-only vsts on arm64 macOS
+  * Save/restore side panel visiblity for carla-control
+  * Remove custom return host on carla-control, no longer needed
+  * Silent a pylint warning
+  * Cleanup, fix offset in previous commit (OSC method)
+  * Really fix/ignore client name if known host
+  * Adjust static lv2 bundles for latest MOD file spec
+  * Ignore client name if OSC message is from known host
+  * Clear up situation with nogui and carla-osc-gui script
+  * Workaround buggy lo_address_get_port
+  * Cleanup some OSC message size
+  * Use OSC message source instead of URL arg as target
+  * Print a little debug info when new carla-control connects
+  * Fix strict build
+  * audio/midi file plugins should alway list their file "presets"
+  * Set audio and midi file path as used in MOD units
+  * Fix macos-old build
+  * Fix unused variable
+  * Fix strict build
+  * Put x64 lv2 plugins in bridge mode if needed (macOS only)
+  * Remove plugins from macOS quarentine before running them
+  * Only scan for relevant formats when using juce host
+  * Automatically run VST2 intel/arm binaries on macOS as needed
+  * Reduce amount of errors logged whe plugin bridge shm fails
+  * Fix libmagic detection under macos-universal builds
+  * Debug juce host plugin init
+  * Fix drag&drop of VST2 plugins under macOS
+  * Fix VST2 plugins nnot being loaded by juce host
+  * Fix macOS dev environment
+  * Try to fix macos-old build
+  * Rework audio file plugin a bit, clean midi file ignore list
+  * Document required MSYS2 fix
+  * Fix LV2 worker event order
+  * Make it no longer needed to do "make BUILDING_FOR_WINDOWS=true"
+  * Catch patch:Set messages to update built-in parameters
+  * Send lv2 parameter changes to UI; Don't reuse the same atom forge
+  * Some little work for lv2 parameters in ui bridges, update modgui
+  * Rework postponeRtEvent data to be union of structs
+  * Fix compiler warning with qt4 theming
+  * Fix wine32 build in Fedora
+  * More tweaks as needed for macOS
+  * Use newer cxfreeze on macOS universal builds
+  * Tweaks in makefile and macOS script, in preparation for arm64/m1
+  * Do not save/restore lv2 parameter-patch values, intercept restore
+  * Fix building tests
+  * Do not use fancy win32 dialog on mingw
+  * Specify the new exports in the relevant file
+  * Really fix symbols exports for host/native-plugin libs
+  * Update to JUCE 6.0.4
+  * Fix a few oddities in about dialog Closes #1272
+  * Bump version to alpha2
+  * Ammend last commit, use BUILD_BRIDGE_ALTERNATIVE_ARCH
+  * Fix bridge build
+  * Clear up which symbols are exposed in utils and standalone libs
+  * Special macOS 10.12 treatment for Carla-Control as done for Carla
+  * Fix GCC4 compatibility in clang
+  * Fix strict build for >= or < qt 5.15
+  * Final compatibility fixes
+  * A few more GCC4 compat fixes
+  * Fix juce_audio_basics for GCC4 compatibility
+  * Fix a build warning against Qt 5.15
+  * Fix juce_gui_basics to be GCC4 compatible
+  * Set TARGET_MACHINE var in makefile, even if target OS already set Fixes #1266
+  * Fix typo
+  * Add i486 and i586 to archs supported by juce
+  * Clean unzipfx of previous build Fixes #1267
+  * Add extra dev libs in linux build, for vst3 support
+  * Prevent assertion on getUniquePluginName() for short plugin names
+  * export carla_get_native_plugins_data function
+  * Fix previous commit
+  * Fix macOS build
+  * only try to use lv2 modgui under linux
+  * test-load carla as lv2 plugin too
+  * Fix memory leaks in LV2 stuff
+  * test-load our vst plugin
+  * Fix dropped symbols
+  * Cleanup memory of the VST plugin
+  * Remove "make test" target, this is for internal testing only
+  * Load and test all internal plugins
+  * Set NATIVE_PLUGIN_USES_CONTROL_VOLTAGE flag on C relevant plugins
+  * Add a test for carla-host-plugin usage
+  * Rework some symbol exports, resolving conflicts of standalone/utils
+  * Fix header include test; Add a "make test" target
+  * Fix CarlaNative.h for strict compiler mode
+  * Remove a useless "<br>" in macOS README
+  * Ignore "-psn_" prefixed CLI args on macOS
+  * Allow to use dark theme/mode on newer macOS
+  * Bump dev version for all the files
+  * Reload plugin parameters after loading project in carla-plugin Fixes #1217
+  * Allow to use canvas cut operations without prior window focus Fixes #1176
+  * Ignore mouse wheel events when dragging canvas around
+  * canvas: Only "drop" connection drag for mouse release of left button Fixes #1206
+  * Implement custom plugin ui title on bridges Fixes #1219
+  * Prevent assertion when jack driver not running in multi-client mode
+  * Fix plugins having wrong id when switched around in patchbay mode Closes #1259
+  * Better/faster detection for libmagic (when present)
+  * interposer: add 'exit' (redirects to '_exit')
+  * Match macos local env with build script
+  * Fix strict build
+  * Fixup macOS README, mentioning new plugin situation
+  * Do not enable all 64 max buses for AU plugins
+  * Tweaks for a proper macOS 10.12 build
+  * Only set special plugin ui flags under windows, not wine/bridges
+  * Fix warnings, print error code if win32 process start fails
+  * Do not put plugin UIs on top in Windows; Fix window type Fixes #1116
+  * Do not allow capture logs on windows, even if enabled
+  * Give custom message in about page when liblo/osc is not enabled
+  * Better compatibility with msys2
+  * One less include to fix build on macos
+  * Include utils code in carla-host-plugin library
+  * Missing symbols in carla-host-plugin Fixes #1251
+  * Add carla-host-plugin library, for usage in hosts
+  * Packaging xycontroller in linux binary builds
+  * Double-resolution tick for carla-lv2 plugin
+  * Prevent bad vst host from giving carla-plugin invalid time values See #1236
+  * Clear current project filename on engine stop Fixes #1243
+  * Fix oddities with MIDI learn Closes #1248
+  * Fix win32 packing
+  * Fix xycontroller scene not sending all values
+  * Generate macos app data for xycontroller-ui
+  * Tweak windows packing script
+  * patchcanvas: check validity of a few object's parentItems
+  * Fix strict build
+  * Build macos plugin packages
+  * Use a dedicated folder for macos 10.12 builds
+  * Alternative way to handle juce message thread in carla-plugin Fixes #1244 Fixes #1136
+  * Bring juce UIs to front when shown
+  * Re-link vst plugin objects when internal static libs change
+  * Set develop version as 2.3.0-alpha1
+  * Disable OSC by default on macos
+  * Don't hide juce desktop window before deletion, fixes VST3 crashes
+  * Forgot to revert a previous change; cleanup
+  * Alternative, cleaner approach to JUCE run loop on carla-plugin Fixes #1238
+  * Replace some XFlush calls with XSync
+  * Carefully handle lv2 ui child window, fixes crash with some x42 uis Fixes #1128
+  * Compress canvas clipboard image saving (as PNG) Closes #1078
+  * Fix build with old compilers
+  * Replace hacky midi-pattern temporary-note-flag with midi-queue
+  * Finalize XY controller plugin
+  * Add a simple midi queue class code
+  * internal plugins: Allow to notify UI of MIDI events
+  * Fix pipe UI message with empty value
+  * XYController fixup, params work now
+  * Fix build
+  * Add WIP XYController UI
+  * Add initial DSP code for xycontroller
+  * Remove incomplete, unused patchcanvas c++ stuff
+  * ScalableDial: Use PNG file for image 2
+  * Add carla_fillFloatsWithSingleValue util function
+  * Re-add dial_02 resources
+  * Proper way to (un)define the value
+  * Minor fix
+  * Pass the extra wine include flags when building dgl
+  * Another wine build fix
+  * Add include paths used in wine-devel-dev package
+  * Allow winehq-stable to build jackbridge
+  * CI fixup before-install
+  * CI: need i386 for linux main test too
+  * CI: Need to install wine on main linux build too, checking bridges
+  * CI fixup
+  * More CI tweaks
+  * Fix listing LV2 plugins on Windows
+  * fluidsynth note after touch only for version >= 2
+  * Alternative/better way to find all audio ports in juce plugins
+  * Use focal
+  * Wine packages in debian are weird..
+  * Final CI fix
+  * More CI tweaks
+  * More CI tweaks
+  * Use bionic for CI by default
+  * Use fluidsynth v2 in CI builds
+  * Note aftertouch is supported in fluidsynth now
+  * Fix typo
+  * midi pattern: prevent parameter changes when ui opens up
+  * midi pattern: Do not delete notes when changing number of measures
+  * midi pattern: quick&dirty note audition, fix octave offset
+  * MIDI file/pattern: do not lose any RT events during save
+  * Cleanup
+  * midi pattern: Keep playback position while changing BPM Fixes #1210
+  * Fix MIDI pattern missing notes at the edges, improve MIDI performance
+  * Yet another fix for last translation commits
+  * Build and installation of translation files
+  * Fix last commit (extra unused import)
+  * Search and load translation files at frontend startup
+  * Dont try to build C++ frontend code, we will not use it after all
+  * Select text in search entry also when focusing via shortcut
+  * Initial code for mapped parameter flags
+- Rebase carla-remove-pkgconf-rpath.patch.
+
+-------------------------------------------------------------------
 Wed Dec  9 08:08:36 UTC 2020 - munix9@googlemail.com
 
 - Fix Factory/Tumbleweed build with wine >= 6

@@ -6,8 +6,8 @@
     <param name="exclude">.git</param>
     <param name="exclude">data/windows</param>
     <param name="exclude">source/native-plugins/external/*</param>
-    <param name="revision">v2.2.0</param>
-    <param name="versionformat">2.2.0</param>
+    <param name="revision">v2.3.0</param>
+    <param name="versionformat">2.3.0</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">carla</param>
   </service>

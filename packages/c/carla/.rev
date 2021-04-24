@@ -178,4 +178,12 @@
 @licensedigger has seen fit to delay this package again after I purged the offending files from the tarball via a _service file after the last long delay. This means Factory carla won't build until wine boo#1179734 is fixed</comment>
     <requestid>854813</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6da8db4b0c57bd049915adca045cd632</srcmd5>
+    <version>2.3.0</version>
+    <time>1619298550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888129</requestid>
+  </revision>
 </revisionlist>
