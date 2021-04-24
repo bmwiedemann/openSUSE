@@ -1,7 +1,7 @@
 #
 # spec file for package python-Mathics
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Upstream no longer supports python2
 %define skip_python2 1
+%define skip_python36 1
 %define pyname Mathics3
 Name:           python-Mathics
 Version:        1.1.1
 Release:        0
 Summary:        A general-purpose computer algebra system
 # Mathics itself is licensed as GPL-3.0 but it includes third-party software with MIT, BSD-3-Clause, and Apache-2.0 Licensing; also includes data from wikipedia licensed under CC-BY-SA-3.0 and GFDL-1.3
-License:        GPL-3.0-only AND BSD-3-Clause AND MIT AND Apache-2.0
+License:        Apache-2.0 AND BSD-3-Clause AND GPL-3.0-only AND MIT
 URL:            https://mathics.github.io/
 Source:         https://github.com/mathics/Mathics/archive/%{version}/%{pyname}-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 1.8}
@@ -53,7 +54,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
