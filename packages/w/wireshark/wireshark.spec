@@ -27,7 +27,7 @@
 %bcond_with lz4
 %endif
 Name:           wireshark
-Version:        3.4.4
+Version:        3.4.5
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -36,10 +36,6 @@ URL:            https://www.wireshark.org/
 Source:         https://www.wireshark.org/download/src/%{name}-%{version}.tar.xz
 Source2:        https://www.wireshark.org/download/SIGNATURES-%{version}.txt#/%{name}-%{version}.tar.xz.asc
 Source3:        https://www.wireshark.org/download/gerald_at_wireshark_dot_org.gpg#/wireshark.keyring
-Patch1:         cmake_3-20_compatibility_1.patch
-Patch2:         cmake_3-20_compatibility_2.patch
-# Source: https://src.fedoraproject.org/rpms/wireshark/blob/f8e39e79bf25d6c3fb3f333e58f27165cc959781/f/wireshark-0008-move-glib.patch
-Patch8:         wireshark-0008-move-glib.patch
 Patch10:        wireshark-0001-dumpcap-permission-denied.patch
 BuildRequires:  bison
 BuildRequires:  flex
@@ -172,7 +168,6 @@ This package contains the Qt based UI for Wireshark.
 %prep
 # The publisher doesn't sign the source tarball, but a signatures file containing multiple hashes.
 # Verify hashes in that file against source tarball.
-echo "`grep %{name}-%{version}.tar.xz %{SOURCE2} | grep SHA1 | head -n1 | cut -d= -f2`  %{SOURCE0}" | sha1sum -c
 echo "`grep %{name}-%{version}.tar.xz %{SOURCE2} | grep SHA256 | head -n1 | cut -d= -f2`  %{SOURCE0}" | sha256sum -c
 
 %autosetup -p1

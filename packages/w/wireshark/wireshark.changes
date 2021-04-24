@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 22 07:18:30 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Wireshark 3.4.5:
+  * CVE-2021-22207: MS-WSP dissector excessive memory consumption
+    (boo#1185128, wnpa-sec-2021-04)
+  * Fix TShark not printing GeoIP information
+  * FIx TShark error when piping to "head"
+  * Fix missing parts of ASCII representation in Packet Bytes pane
+  * Fix dissection of NDPE attribute of NAN packet
+  * Fix TECMP: reserved flag interpreted as part of timestamp
+  * Fix DNS IXFR/AXFR multiple response
+  * Fix File too large issue
+- drop patches:
+  * cmake_3-20_compatibility_1.patch
+  * cmake_3-20_compatibility_2.patch
+  * wireshark-0008-move-glib.patch
+
+-------------------------------------------------------------------
 Wed Mar 31 15:43:15 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - cmake 3.20 compatibility (boo#1184110)
