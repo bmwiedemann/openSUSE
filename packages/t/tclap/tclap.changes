@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 17 02:42:04 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.2.4
+  * Minor obscure bug fixes
+  * Fixed ZshCompletionOutput
+
+-------------------------------------------------------------------
 Tue May 26 11:48:40 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Split -doc subpackage to a different spec file.
