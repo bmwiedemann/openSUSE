@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 17 16:21:24 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed spec file
+  * Updated URL and SourceURL
+  * Minor cleanup
+
+-------------------------------------------------------------------
 Mon Sep 11 12:01:30 UTC 2017 - jmatejek@suse.com
 
 - lua53.patch : add support for Lua 5.3 (upstream commit 1524b7c)
