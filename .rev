@@ -1378,4 +1378,13 @@ Hence, recommended to be added to 12.3</comment>
     <comment>GNOME 40 - here we come (forwarded request 881019 from dimstar)</comment>
     <requestid>881180</requestid>
   </revision>
+  <revision rev="185" vrev="2">
+    <srcmd5>6483c677cd4b158fb649d0fbf5ce1034</srcmd5>
+    <version>40.0</version>
+    <time>1619298420</time>
+    <user>dimstar_suse</user>
+    <comment>- Update set_trusted.sh: Use the right value in gio command
+  (bsc#1185026). (forwarded request 887211 from xiaoguang_wang)</comment>
+    <requestid>887506</requestid>
+  </revision>
 </revisionlist>
