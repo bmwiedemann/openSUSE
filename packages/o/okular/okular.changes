@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Apr 16 16:13:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- Changes since 21.03.90:
+  * Signature: Don't show "Reason: Not Available" if there's no signing reason
+  * Open the signed document on the page with the new signature
+  * Slight improvement to signature look&feel
+  * partest: Fix one test interfering with the next
+  * Don't call i18n before constructing QApplication
+  * Fix valgrind warning about uninit variables
+
+-------------------------------------------------------------------
+Fri Apr  9 17:41:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- Changes since 21.03.80:
+  * Fix a bug with zoom levels on cropped pages (kde#342003)
+  * conf: Fix layout warnings
+  * Fix playing RichMedia annotations (kde#434962)
+  * Fix white background flashing up when using Invert Lightness/Luma (kde#431372)
+  * If FB has multiple authors, show them all
+  * Add a few more formats supported by qimageformat plugins (kde#434888)
+  * Update screenshots in metadata
+
+-------------------------------------------------------------------
+Sun Mar 21 13:29:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Too many changes since 20.12.3, only listing bugfixes:
+  * Switch to existing document in new tab by default (kde#432942)
+  * Enhance FictionBook support: book annotation, text-author for the cite, section subtitles (kde#340134)
+  * Make ESC key leave fullscreen (kde#366276, kde#417337, kde#269677)
+  * Use more standard cmake functionality to search for discount (kde#431311)
+  * Fix Table Selection polluting clipboard history (kde#402110)
+- Enable build the mobile ui for Okular
+
+-------------------------------------------------------------------
 Thu Mar  4 06:11:55 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.3

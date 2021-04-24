@@ -1,7 +1,7 @@
 #
 # spec file for package okular
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,18 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           okular
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Office/Other
-URL:            https://www.kde.org
+URL:            https://okular.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 # PATCH-FEATURE-OPENSUSE
 Patch1000:      0001-Inform-users-about-the-okular-spectre-package-in-the.patch
 BuildRequires:  chmlib-devel
@@ -80,10 +84,6 @@ Recommends:     %{name}-lang
 Suggests:       %{name}-spectre
 Obsoletes:      okular5 < %{version}
 Provides:       okular5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Document viewing program; supports document in PDF, PS and
@@ -98,6 +98,17 @@ Requires:       %{name} = %{version}-%{release}
 Document viewing program; supports document in PDF, PS and
 many other formats. This package contains the plugins required
 to display PostScript documents and images.
+
+%package mobile
+Summary:        Document Viewer, Mobile UI
+Group:          Productivity/Office/Other
+Requires:       %{name} = %{version}-%{release}
+Requires:       kirigami2
+
+%description mobile
+Document viewing program; supports document in PDF, PS and
+many other formats. This contains the UI targeted at mobile devices with a
+touch screen.
 
 %package devel
 Summary:        Development files for the Okular document viewer
@@ -120,12 +131,8 @@ Document viewing program; supports document in various formats
 %prep
 %autosetup -p1 -n okular-%{version}
 
-# okular doesn't really need CMake 3.16.
-# Leap 15.1 only has 3.10, that's more than enough
-sed -i 's#3.16#3.10#' CMakeLists.txt
-
 %build
-%cmake_kf5 -d build -- -DBUILD_TESTING=ON -DOKULAR_UI=desktop
+%cmake_kf5 -d build -- -DBUILD_TESTING=OFF -DOKULAR_UI=both
 %cmake_build
 
 %install
@@ -136,16 +143,12 @@ sed -i 's#3.16#3.10#' CMakeLists.txt
   %{kf5_find_htmldocs}
 %endif
 
-rm -rfv %{buildroot}/%{_kf5_applicationsdir}/org.kde.mobile*
-
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
 %license COPYING*
 %{_kf5_debugdir}/okular.categories
-%dir %{_kf5_htmldir}
-%dir %{_kf5_htmldir}/en
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %doc %{_kf5_mandir}/man1/okular.*
 %{_kf5_applicationsdir}/okularApplication_chm.desktop
@@ -181,9 +184,11 @@ rm -rfv %{buildroot}/%{_kf5_applicationsdir}/org.kde.mobile*
 %{_kf5_appstreamdir}/org.kde.okular-xps.metainfo.xml
 %{_kf5_appstreamdir}/org.kde.okular.appdata.xml
 %{_kf5_bindir}/okular
-%{_kf5_configkcfgdir}/
+%{_kf5_configkcfgdir}/gssettings.kcfg
+%{_kf5_configkcfgdir}/okular*.kcfg
+%{_kf5_configkcfgdir}/pdfsettings.kcfg
 %{_kf5_iconsdir}/hicolor/*/*/okular.*
-%{_kf5_kxmlguidir}/
+%{_kf5_kxmlguidir}/okular/
 %{_kf5_libdir}/libOkular5Core.so.*
 %dir %{_kf5_plugindir}/okular/
 %dir %{_kf5_plugindir}/okular/generators/
@@ -223,7 +228,7 @@ rm -rfv %{buildroot}/%{_kf5_applicationsdir}/org.kde.mobile*
 %{_kf5_servicesdir}/ms-its.protocol
 %{_kf5_servicetypesdir}/okularGenerator.desktop
 %{_kf5_sharedir}/kconf_update
-%{_kf5_sharedir}/okular
+%{_kf5_sharedir}/okular/
 
 %files spectre
 %license COPYING*
@@ -231,6 +236,17 @@ rm -rfv %{buildroot}/%{_kf5_applicationsdir}/org.kde.mobile*
 %{_kf5_appstreamdir}/org.kde.okular-spectre.metainfo.xml
 %{_kf5_plugindir}/okular/generators/okularGenerator_ghostview.so
 %{_kf5_servicesdir}/okularGhostview.desktop
+
+%files mobile
+%license COPYING*
+%{_kf5_bindir}/okularkirigami
+%dir %{_kf5_qmldir}/org/
+%dir %{_kf5_qmldir}/org/kde/
+%{_kf5_qmldir}/org/kde/okular/
+%{_kf5_applicationsdir}/org.kde.okular.kirigami.desktop
+# Can use a wildcard here, for non-mobile it's already expanded above
+%{_kf5_applicationsdir}/org.kde.mobile.okular_*.desktop
+%{_kf5_appstreamdir}/org.kde.okular.kirigami.appdata.xml
 
 %files devel
 %license COPYING*
