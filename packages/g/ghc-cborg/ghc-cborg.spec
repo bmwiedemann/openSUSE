@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-cborg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name cborg
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.4.0
+Version:        0.2.5.0
 Release:        0
 Summary:        Concise Binary Object Representation (CBOR)
 License:        BSD-3-Clause
@@ -77,8 +77,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver base '< 4.15' '< 5'
-cabal-tweak-dep-ver ghc-prim '< 0.7' '< 1'
 
 %build
 %ghc_lib_build
