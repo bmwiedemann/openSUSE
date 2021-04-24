@@ -1,7 +1,7 @@
 #
 # spec file for package kio_audiocd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio_audiocd
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE I/O Slave for Audio CDs
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  alsa-devel
 BuildRequires:  cdparanoia-devel
 BuildRequires:  extra-cmake-modules
@@ -42,10 +46,6 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(Phonon4Qt5)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -63,7 +63,7 @@ This package contains the development files for the audiocd kio slave
 %lang_package
 
 %prep
-%setup -q -n %{rname}-%{version}
+%autosetup -p1 -n %{rname}-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -81,13 +81,13 @@ This package contains the development files for the audiocd kio slave
 
 %files
 %license COPYING*
+%doc %lang(en) %{_kf5_htmldir}/en/kioslave5/audiocd/
+%doc %lang(en) %{_kf5_htmldir}/en/kcontrol/audiocd/
 %dir %{_kf5_sharedir}/konqsidebartng
 %dir %{_kf5_sharedir}/konqsidebartng/virtual_folders
 %dir %{_kf5_sharedir}/konqsidebartng/virtual_folders/services
 %dir %{_kf5_sharedir}/solid
 %dir %{_kf5_sharedir}/solid/actions
-%doc %lang(en) %{_kf5_htmldir}/en/kioslave5/audiocd/
-%doc %lang(en) %{_kf5_htmldir}/en/kcontrol/audiocd/
 %{_kf5_appstreamdir}/org.kde.kio_audiocd.metainfo.xml
 %{_kf5_configkcfgdir}/audiocd_*_encoder.kcfg
 %{_kf5_debugdir}/kio_audiocd.categories
