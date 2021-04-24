@@ -18,7 +18,7 @@
 
 %global pkg_name hspec
 Name:           ghc-%{pkg_name}
-Version:        2.7.9
+Version:        2.7.10
 Release:        0
 Summary:        A Testing Framework for Haskell
 License:        MIT
