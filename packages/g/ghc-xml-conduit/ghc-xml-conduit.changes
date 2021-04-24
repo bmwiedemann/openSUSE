@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 16 11:05:14 UTC 2021 - psimons@suse.com
+
+- Update xml-conduit to version 1.9.1.1.
+  ## 1.9.1.1
+
+  * Entity declarations with tags inside are now correctly handled
+  * Parser now fails gracefully on malformed entity declarations
+  * Parameter entity declarations are now ignored
+
+-------------------------------------------------------------------
 Sat Feb 27 13:13:59 UTC 2021 - psimons@suse.com
 
 - Update xml-conduit to version 1.9.1.0.

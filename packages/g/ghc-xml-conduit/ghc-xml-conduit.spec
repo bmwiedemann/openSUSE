@@ -19,7 +19,7 @@
 %global pkg_name xml-conduit
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.9.1.0
+Version:        1.9.1.1
 Release:        0
 Summary:        Pure-Haskell utilities for dealing with XML with the conduit package
 License:        MIT
