@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kleopatra
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
-Summary:        KDE Key Manager
+Summary:        Certificate manager and GUI for OpenPGP and CMS cryptography
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kleopatra
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libboost_headers-devel
 BuildRequires:  update-desktop-files
@@ -58,13 +62,9 @@ Recommends:     paperkey
 Recommends:     %{name}-lang
 Obsoletes:      kleopatra5 < %{version}
 Provides:       kleopatra5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
-Kleopatra is a Key Manager for KDE.
+Kleopatra is a certificate manager and GUI for OpenPGP and CMS cryptography.
 
 %lang_package
 
@@ -89,11 +89,6 @@ Kleopatra is a Key Manager for KDE.
 
 %files
 %license LICENSES/*
-%{_kf5_debugdir}/kleopatra.categories
-%{_kf5_debugdir}/kleopatra.renamecategories
-%dir %{_kf5_appstreamdir}
-%dir %{_kf5_iconsdir}/hicolor/256x256
-%dir %{_kf5_iconsdir}/hicolor/256x256/apps
 %doc %lang(en) %{_kf5_htmldir}/en/kleopatra/
 %doc %lang(en) %{_kf5_htmldir}/en/kwatchgnupg/
 %{_kf5_applicationsdir}/kleopatra_import.desktop
@@ -101,6 +96,10 @@ Kleopatra is a Key Manager for KDE.
 %{_kf5_appstreamdir}/org.kde.kleopatra.appdata.xml
 %{_kf5_bindir}/kleopatra
 %{_kf5_bindir}/kwatchgnupg
+%{_kf5_debugdir}/kleopatra.categories
+%{_kf5_debugdir}/kleopatra.renamecategories
+%dir %{_kf5_iconsdir}/hicolor/256x256
+%dir %{_kf5_iconsdir}/hicolor/256x256/apps
 %{_kf5_iconsdir}/hicolor/*/apps/kleopatra.png
 %{_kf5_libdir}/libkleopatraclientcore.so*
 %{_kf5_libdir}/libkleopatraclientgui.so*
