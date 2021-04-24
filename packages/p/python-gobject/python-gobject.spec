@@ -28,7 +28,7 @@
 %global __requires_exclude_from ^%{_libdir}/python.*/site-packages/gi/__init__.py$
 %define _name   pygobject
 Name:           python-gobject
-Version:        3.40.0
+Version:        3.40.1
 Release:        0
 Summary:        Python bindings for GObject
 License:        LGPL-2.1-or-later

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 17 08:27:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.40.1:
+  + Fix tests with glib 2.68.
+  + Fix a regression with marshalling partial() objects.
+
+-------------------------------------------------------------------
 Fri Mar 19 20:08:28 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.40.0:

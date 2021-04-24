@@ -695,4 +695,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment>GNOME 40 - here we come (forwarded request 880993 from dimstar)</comment>
     <requestid>881161</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>c2ec3c9c187e3cfe92f95c006577253e</srcmd5>
+    <version>3.40.1</version>
+    <time>1619298403</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.40.1 (forwarded request 886224 from dimstar)</comment>
+    <requestid>887476</requestid>
+  </revision>
 </revisionlist>
