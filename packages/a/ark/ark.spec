@@ -1,7 +1,7 @@
 #
 # spec file for package ark
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,22 @@
 #
 
 
-%define SOMAJOR 20
+%define SOMAJOR 21
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ark
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/ark
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Support-building-against-libarchive-3.3.2-again.patch
 BuildRequires:  extra-cmake-modules
@@ -61,10 +65,6 @@ Recommends:     xz
 # unrar is non-free. Avoid installing it automatically.
 Suggests:       unrar
 Obsoletes:      ark-devel
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 %if 0%{?suse_version} > 1500
 Recommends:     p7zip-full
 %else
@@ -104,20 +104,24 @@ This is a KDE application to work with compressed archives.
 
 %files
 %license COPYING*
-%{_kf5_debugdir}/ark.categories
-%dir %{_kf5_htmldir}
-%dir %{_kf5_htmldir}/en
 %doc %lang(en) %{_kf5_htmldir}/en/ark/
 %doc %{_kf5_mandir}/man1/ark.*
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/kfileitemaction
+%dir %{_kf5_plugindir}/kf5/kio_dnd
 %{_kf5_applicationsdir}/org.kde.ark.desktop
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.ark.appdata.xml
 %{_kf5_bindir}/ark
-%{_kf5_configkcfgdir}/
+%{_kf5_configkcfgdir}/ark.kcfg
+%{_kf5_debugdir}/ark.categories
 %{_kf5_iconsdir}/hicolor/*/apps/*
-%{_kf5_plugindir}/
-%{_kf5_servicesdir}/
-%{_kf5_servicetypesdir}/
-%{_kf5_sharedir}/kxmlgui5/
+%{_kf5_plugindir}/arkpart.so
+%{_kf5_plugindir}/kerfuffle/
+%{_kf5_plugindir}/kf5/kfileitemaction/compressfileitemaction.so
+%{_kf5_plugindir}/kf5/kfileitemaction/extractfileitemaction.so
+%{_kf5_plugindir}/kf5/kio_dnd/extracthere.so
+%{_kf5_servicesdir}/ark_part.desktop
+%{_kf5_servicetypesdir}/kerfufflePlugin.desktop
 
 %files -n libkerfuffle%{SOMAJOR}
 %license COPYING*
