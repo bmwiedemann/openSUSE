@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalarmcal
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Library for handling kalarm calendar data
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Akonadi)
@@ -40,10 +44,6 @@ BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Test)
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This library provides access to and handling of kalarm calendar data.
@@ -62,7 +62,8 @@ Group:          System/Libraries
 Requires:       libKF5AlarmCalendar5 = %{version}
 
 %description -n akonadi-plugin-kalarmcal
-This package provides plugins for KDE PIM needed to read and write calendar-related notification data.
+This package provides plugins for KDE PIM applications needed to read and write
+calendar-related notification data.
 
 %package devel
 Summary:        Development files for kalarmcal
@@ -74,13 +75,13 @@ Requires:       cmake(KF5Holidays)
 Requires:       cmake(KF5IdentityManagement)
 
 %description devel
-This package contains necessary include files and libraries needed
-to develop applications wanting to use kalarmcal.
+This package contains necessary include files and libraries needed to develop
+applications wanting to use kalarmcal.
 
 %lang_package
 
 %prep
-%setup -q -n kalarmcal-%{version}
+%autosetup -p1 -n kalarmcal-%{version}
 
 %build
   %cmake_kf5 -d build -- -DBUILD_TESTING=ON -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
@@ -116,9 +117,9 @@ to develop applications wanting to use kalarmcal.
 %files devel
 %license LICENSES/*
 %{_kf5_cmakedir}/KF5AlarmCalendar/
-%{_kf5_libdir}/libKF5AlarmCalendar.so
 %{_kf5_includedir}/KAlarmCal/
 %{_kf5_includedir}/kalarmcal_version.h
+%{_kf5_libdir}/libKF5AlarmCalendar.so
 %{_kf5_mkspecsdir}/qt_KAlarmCal.pri
 
 %if %{with lang}
