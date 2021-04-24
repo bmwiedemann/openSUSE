@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkcddb
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        CDDB library for KDE Applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libmusicbrainz5-devel
 BuildRequires:  xz
@@ -45,10 +49,6 @@ Obsoletes:      libkcddb5 < %{version}
 Provides:       libkcddb5 = %{version}
 Obsoletes:      libkcddb16 < %{version}
 Provides:       libkcddb16 < %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 The KDE Compact Disc DataBase library provides an API for
@@ -79,7 +79,7 @@ information over the Internet.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -96,20 +96,19 @@ information over the Internet.
 %postun -n libKF5Cddb5 -p /sbin/ldconfig
 
 %files
-%license COPYING*
-%dir %{_kf5_htmldir}
-%dir %{_kf5_htmldir}/en
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %{_kf5_configkcfgdir}/
+%{_kf5_debugdir}/libkcddb.categories
 %{_kf5_plugindir}/
 %{_kf5_servicesdir}/
 
 %files -n libKF5Cddb5
-%license COPYING*
+%license LICENSES/*
 %{_kf5_libdir}/libKF5Cddb.so.*
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_kf5_cmakedir}/KF5Cddb/
 %{_kf5_includedir}/KCddb
 %{_kf5_includedir}/kcddb_version.h
@@ -118,7 +117,7 @@ information over the Internet.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
