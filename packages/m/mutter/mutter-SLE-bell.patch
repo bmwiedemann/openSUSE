@@ -1,110 +1,7 @@
-Index: mutter-3.34.1+24/src/meta/prefs.h
-===================================================================
---- mutter-3.34.1+24.orig/src/meta/prefs.h
-+++ mutter-3.34.1+24/src/meta/prefs.h
-@@ -91,6 +91,7 @@ typedef enum
-   META_PREF_WORKSPACE_NAMES,
-   META_PREF_VISUAL_BELL,
-   META_PREF_AUDIBLE_BELL,
-+  META_PREF_AUDIBLE_BELL_FORCE_THROUGH_SERVER,
-   META_PREF_VISUAL_BELL_TYPE,
-   META_PREF_GNOME_ACCESSIBILITY,
-   META_PREF_GNOME_ANIMATIONS,
-@@ -479,6 +480,9 @@ META_EXPORT
- gboolean           meta_prefs_bell_is_audible      (void);
- 
- META_EXPORT
-+gboolean           meta_prefs_bell_force_through_server (void);
-+
-+META_EXPORT
- GDesktopVisualBellType meta_prefs_get_visual_bell_type (void);
- 
- #endif
-Index: mutter-3.34.1+24/src/core/prefs.c
-===================================================================
---- mutter-3.34.1+24.orig/src/core/prefs.c
-+++ mutter-3.34.1+24/src/core/prefs.c
-@@ -99,6 +99,7 @@ static gboolean auto_raise_delay = 500;
- static gboolean focus_change_on_pointer_rest = FALSE;
- static gboolean bell_is_visible = FALSE;
- static gboolean bell_is_audible = TRUE;
-+static gboolean bell_force_through_server = FALSE;
- static gboolean gnome_accessibility = FALSE;
- static gboolean gnome_animations = TRUE;
- static gboolean locate_pointer_is_enabled = FALSE;
-@@ -346,6 +347,13 @@ static MetaBoolPreference preferences_bo
-       &bell_is_audible, /* FIXME: change the name: it's confusing */
-     },
-     {
-+      { "audible-bell-force-through-server",
-+        SCHEMA_MUTTER,
-+        META_PREF_AUDIBLE_BELL_FORCE_THROUGH_SERVER,
-+      },
-+      &bell_force_through_server,
-+    },
-+    {
-       { KEY_GNOME_ACCESSIBILITY,
-         SCHEMA_INTERFACE,
-         META_PREF_GNOME_ACCESSIBILITY,
-@@ -1654,6 +1662,9 @@ meta_preference_to_string (MetaPreferenc
-     case META_PREF_AUDIBLE_BELL:
-       return "AUDIBLE_BELL";
- 
-+    case META_PREF_AUDIBLE_BELL_FORCE_THROUGH_SERVER:
-+      return "AUDIBLE_BELL_FORCE_THROUGH_SERVER";
-+
-     case META_PREF_VISUAL_BELL_TYPE:
-       return "VISUAL_BELL_TYPE";
- 
-@@ -1929,6 +1940,12 @@ meta_prefs_bell_is_audible (void)
-   return bell_is_audible;
- }
- 
-+gboolean
-+meta_prefs_bell_force_through_server (void)
-+{
-+  return bell_force_through_server;
-+}
-+
- GDesktopVisualBellType
- meta_prefs_get_visual_bell_type (void)
- {
-Index: mutter-3.34.1+24/src/core/bell.c
-===================================================================
---- mutter-3.34.1+24.orig/src/core/bell.c
-+++ mutter-3.34.1+24/src/core/bell.c
-@@ -54,6 +54,11 @@
- #include "core/window-private.h"
- #include "meta/compositor.h"
- 
-+#include "meta/display.h"
-+#include "meta/meta-x11-display.h"
-+#include <X11/Xlib.h>
-+#include <X11/XKBlib.h>
-+
- G_DEFINE_TYPE (MetaBell, meta_bell, G_TYPE_OBJECT)
- 
- enum
-@@ -202,6 +207,14 @@ meta_bell_notify (MetaDisplay *display,
-   if (meta_prefs_get_visual_bell ())
-     bell_visual_notify (display, window);
- 
-+  if (meta_prefs_bell_force_through_server ())
-+   {
-+    MetaX11Display *x11_display = meta_display_get_x11_display (display);
-+    Display *xdisplay = meta_x11_display_get_xdisplay (x11_display);
-+    XkbForceBell (xdisplay, 100);
-+    return TRUE;
-+    }
-+
-   if (meta_prefs_bell_is_audible ())
-     return bell_audible_notify (display, window);
- 
-Index: mutter-3.34.1+24/data/org.gnome.mutter.gschema.xml.in
-===================================================================
---- mutter-3.34.1+24.orig/data/org.gnome.mutter.gschema.xml.in
-+++ mutter-3.34.1+24/data/org.gnome.mutter.gschema.xml.in
-@@ -137,6 +137,16 @@
+diff --unified --recursive --text --new-file --color mutter-40.0.old/data/org.gnome.mutter.gschema.xml.in mutter-40.0.new/data/org.gnome.mutter.gschema.xml.in
+--- mutter-40.0.old/data/org.gnome.mutter.gschema.xml.in	2021-04-23 08:52:33.870911873 +0800
++++ mutter-40.0.new/data/org.gnome.mutter.gschema.xml.in	2021-04-23 08:53:11.404056017 +0800
+@@ -156,6 +156,16 @@
        </description>
      </key>
  
@@ -121,3 +18,102 @@ Index: mutter-3.34.1+24/data/org.gnome.mutter.gschema.xml.in
      <child name="keybindings" schema="org.gnome.mutter.keybindings"/>
  
    </schema>
+diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/bell.c mutter-40.0.new/src/core/bell.c
+--- mutter-40.0.old/src/core/bell.c	2021-04-23 08:52:33.877578506 +0800
++++ mutter-40.0.new/src/core/bell.c	2021-04-23 08:53:11.404056017 +0800
+@@ -54,6 +54,11 @@
+ #include "core/window-private.h"
+ #include "meta/compositor.h"
+ 
++#include "meta/display.h"
++#include "meta/meta-x11-display.h"
++#include <X11/Xlib.h>
++#include <X11/XKBlib.h>
++
+ G_DEFINE_TYPE (MetaBell, meta_bell, G_TYPE_OBJECT)
+ 
+ enum
+@@ -202,6 +207,14 @@
+   if (meta_prefs_get_visual_bell ())
+     bell_visual_notify (display, window);
+ 
++  if (meta_prefs_bell_force_through_server ())
++   {
++    MetaX11Display *x11_display = meta_display_get_x11_display (display);
++    Display *xdisplay = meta_x11_display_get_xdisplay (x11_display);
++    XkbForceBell (xdisplay, 100);
++    return TRUE;
++    }
++
+   if (meta_prefs_bell_is_audible ())
+     return bell_audible_notify (display, window);
+ 
+diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/prefs.c mutter-40.0.new/src/core/prefs.c
+--- mutter-40.0.old/src/core/prefs.c	2021-04-23 08:52:33.877578506 +0800
++++ mutter-40.0.new/src/core/prefs.c	2021-04-23 08:53:11.404056017 +0800
+@@ -98,6 +98,7 @@
+ static gboolean focus_change_on_pointer_rest = FALSE;
+ static gboolean bell_is_visible = FALSE;
+ static gboolean bell_is_audible = TRUE;
++static gboolean bell_force_through_server = FALSE;
+ static gboolean gnome_accessibility = FALSE;
+ static gboolean gnome_animations = TRUE;
+ static gboolean locate_pointer_is_enabled = FALSE;
+@@ -352,6 +353,13 @@
+       &bell_is_audible, /* FIXME: change the name: it's confusing */
+     },
+     {
++      { "audible-bell-force-through-server",
++        SCHEMA_MUTTER,
++        META_PREF_AUDIBLE_BELL_FORCE_THROUGH_SERVER,
++      },
++      &bell_force_through_server,
++    },
++    {
+       { KEY_GNOME_ACCESSIBILITY,
+         SCHEMA_INTERFACE,
+         META_PREF_GNOME_ACCESSIBILITY,
+@@ -1714,6 +1722,9 @@
+     case META_PREF_AUDIBLE_BELL:
+       return "AUDIBLE_BELL";
+ 
++    case META_PREF_AUDIBLE_BELL_FORCE_THROUGH_SERVER:
++      return "AUDIBLE_BELL_FORCE_THROUGH_SERVER";
++
+     case META_PREF_VISUAL_BELL_TYPE:
+       return "VISUAL_BELL_TYPE";
+ 
+@@ -1992,6 +2003,12 @@
+   return bell_is_audible;
+ }
+ 
++gboolean
++meta_prefs_bell_force_through_server (void)
++{
++  return bell_force_through_server;
++}
++
+ GDesktopVisualBellType
+ meta_prefs_get_visual_bell_type (void)
+ {
+diff --unified --recursive --text --new-file --color mutter-40.0.old/src/meta/prefs.h mutter-40.0.new/src/meta/prefs.h
+--- mutter-40.0.old/src/meta/prefs.h	2021-04-23 08:52:33.877578506 +0800
++++ mutter-40.0.new/src/meta/prefs.h	2021-04-23 08:53:11.404056017 +0800
+@@ -91,6 +91,7 @@
+   META_PREF_WORKSPACE_NAMES,
+   META_PREF_VISUAL_BELL,
+   META_PREF_AUDIBLE_BELL,
++  META_PREF_AUDIBLE_BELL_FORCE_THROUGH_SERVER,
+   META_PREF_VISUAL_BELL_TYPE,
+   META_PREF_GNOME_ACCESSIBILITY,
+   META_PREF_GNOME_ANIMATIONS,
+@@ -480,6 +481,9 @@
+ gboolean           meta_prefs_bell_is_audible      (void);
+ 
+ META_EXPORT
++gboolean           meta_prefs_bell_force_through_server (void);
++
++META_EXPORT
+ GDesktopVisualBellType meta_prefs_get_visual_bell_type (void);
+ 
+ META_EXPORT

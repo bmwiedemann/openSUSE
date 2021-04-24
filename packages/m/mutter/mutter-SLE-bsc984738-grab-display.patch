@@ -1,38 +1,16 @@
-diff --git a/src/core/display-private.h b/src/core/display-private.h
-index 531c6f7..aaa90ec 100644
---- a/src/core/display-private.h
-+++ b/src/core/display-private.h
-@@ -174,6 +174,8 @@ struct _MetaDisplay
-   GHashTable *stamps;
-   GHashTable *wayland_windows;
+diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/display.c mutter-40.0.new/src/core/display.c
+--- mutter-40.0.old/src/core/display.c	2021-04-23 08:52:33.877578506 +0800
++++ mutter-40.0.new/src/core/display.c	2021-04-23 09:07:24.330113775 +0800
+@@ -827,6 +827,8 @@
+   display->check_fullscreen_later = 0;
+   display->work_area_later = 0;
  
-+  int server_grab_count;
-+
-   /* serials of leave/unmap events that may
-    * correspond to an enter event we should
-    * ignore
-@@ -322,6 +324,8 @@ struct _MetaDisplayClass
- gboolean      meta_display_open                (void);
- void          meta_display_close               (MetaDisplay *display,
-                                                 guint32      timestamp);
-+void          meta_display_grab                (MetaDisplay *display);
-+void          meta_display_ungrab              (MetaDisplay *display);
- 
- void          meta_display_unmanage_windows_for_screen (MetaDisplay *display,
-                                                         MetaScreen  *screen,
-diff --git a/src/core/display.c b/src/core/display.c
-index 4c7a00e..87e3307 100644
---- a/src/core/display.c
-+++ b/src/core/display.c
-@@ -585,6 +585,7 @@ meta_display_open (void)
-   display->focus_serial = 0;
-   display->server_focus_window = None;
-   display->server_focus_serial = 0;
 +  display->server_grab_count = 0;
- 
++
    display->mouse_mode = TRUE; /* Only relevant for mouse or sloppy focus */
    display->allow_terminal_deactivation = TRUE; /* Only relevant for when a
-@@ -1130,6 +1131,50 @@ meta_display_close (MetaDisplay *display,
+                                                   terminal has the focus */
+@@ -1140,6 +1142,50 @@
    meta_quit (META_EXIT_SUCCESS);
  }
  
@@ -53,7 +31,7 @@ index 4c7a00e..87e3307 100644
 +{
 +  if (display->server_grab_count == 0)
 +    {
-+      XGrabServer (display->xdisplay);
++      XGrabServer (display->x11_display->xdisplay);
 +    }
 +  display->server_grab_count += 1;
 +  meta_verbose ("Grabbing display, grab count now %d\n",
@@ -72,8 +50,8 @@ index 4c7a00e..87e3307 100644
 +      /* FIXME we want to purge all pending "queued" stuff
 +       * at this point, such as window hide/show
 +       */
-+      XUngrabServer (display->xdisplay);
-+      XFlush (display->xdisplay);
++      XUngrabServer (display->x11_display->xdisplay);
++      XFlush (display->x11_display->xdisplay);
 +    }
 +
 +  meta_verbose ("Ungrabbing display, grab count now %d\n",
@@ -83,30 +61,31 @@ index 4c7a00e..87e3307 100644
  /**
   * meta_display_for_x_display:
   * @xdisplay: An X display
-@@ -1516,7 +1561,7 @@ request_xserver_input_focus_change (MetaDisplay *display,
-    * we know which is which by making two requests that the server will
-    * process at the same time.
-    */
--  XGrabServer (display->xdisplay);
-+  meta_display_grab (display);
+diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/display-private.h mutter-40.0.new/src/core/display-private.h
+--- mutter-40.0.old/src/core/display-private.h	2021-04-23 08:52:33.877578506 +0800
++++ mutter-40.0.new/src/core/display-private.h	2021-04-23 09:07:24.330113775 +0800
+@@ -144,6 +144,8 @@
+   GHashTable *stamps;
+   GHashTable *wayland_windows;
  
-   serial = XNextRequest (display->xdisplay);
++  int server_grab_count;
++
+   /* serials of leave/unmap events that may
+    * correspond to an enter event we should
+    * ignore
+@@ -261,6 +263,8 @@
+   )
  
-@@ -1529,8 +1574,7 @@ request_xserver_input_focus_change (MetaDisplay *display,
-                    display->atom__MUTTER_FOCUS_SET,
-                    XA_STRING, 8, PropModeAppend, NULL, 0);
+ gboolean      meta_display_open                (void);
++void          meta_display_grab                (MetaDisplay *display);
++void          meta_display_ungrab              (MetaDisplay *display);
  
--  XUngrabServer (display->xdisplay);
--  XFlush (display->xdisplay);
-+  meta_display_ungrab (display);
- 
-   meta_display_update_focus_window (display,
-                                     meta_window,
-diff --git a/src/core/keybindings.c b/src/core/keybindings.c
-index ed34aea..a989200 100644
---- a/src/core/keybindings.c
-+++ b/src/core/keybindings.c
-@@ -979,6 +979,9 @@ meta_display_grab_window_buttons (MetaDisplay *display,
+ void meta_display_manage_all_xwindows (MetaDisplay *display);
+ void meta_display_unmanage_windows   (MetaDisplay *display,
+diff --unified --recursive --text --new-file --color mutter-40.0.old/src/core/keybindings.c mutter-40.0.new/src/core/keybindings.c
+--- mutter-40.0.old/src/core/keybindings.c	2021-04-23 08:52:33.877578506 +0800
++++ mutter-40.0.new/src/core/keybindings.c	2021-04-23 09:11:57.619333618 +0800
+@@ -1253,6 +1253,9 @@
  {
    MetaKeyBindingManager *keys = &display->key_binding_manager;
  
@@ -116,7 +95,7 @@ index ed34aea..a989200 100644
    /* Grab Alt + button1 for moving window.
     * Grab Alt + button2 for resizing window.
     * Grab Alt + button3 for popping up window menu.
-@@ -1015,6 +1018,9 @@ meta_display_ungrab_window_buttons (MetaDisplay *display,
+@@ -1289,6 +1292,9 @@
  {
    MetaKeyBindingManager *keys = &display->key_binding_manager;
  
@@ -126,7 +105,7 @@ index ed34aea..a989200 100644
    if (keys->window_grab_modifiers == 0)
      return;
  
-@@ -1041,6 +1047,9 @@ meta_display_grab_focus_window_button (MetaDisplay *display,
+@@ -1319,6 +1325,9 @@
  {
    MetaKeyBindingManager *keys = &display->key_binding_manager;
  
@@ -134,29 +113,30 @@ index ed34aea..a989200 100644
 +    return;
 +
    /* Grab button 1 for activating unfocused windows */
-   meta_verbose ("Grabbing unfocused window buttons for %s\n", window->desc);
+   meta_verbose ("Grabbing unfocused window buttons for %s", window->desc);
  
-@@ -1080,6 +1089,9 @@ meta_display_ungrab_focus_window_button (MetaDisplay *display,
+@@ -1343,6 +1352,9 @@
  {
    MetaKeyBindingManager *keys = &display->key_binding_manager;
  
 +  if (display->server_grab_count > 0)
 +    return;
 +
-   meta_verbose ("Ungrabbing unfocused window buttons for %s\n", window->desc);
+   meta_verbose ("Ungrabbing unfocused window buttons for %s", window->desc);
  
    if (!window->have_focus_click_grab)
-@@ -1309,6 +1321,9 @@ meta_window_grab_keys (MetaWindow  *window)
-   MetaDisplay *display = window->display;
-   MetaKeyBindingManager *keys = &display->key_binding_manager;
+@@ -1588,6 +1600,10 @@
  
+   if (meta_is_wayland_compositor ())
+     return;
++
 +  if (display->server_grab_count > 0)
 +    return;
-+
++    
    if (window->all_keys_grabbed)
      return;
  
-@@ -1348,6 +1363,9 @@ meta_window_ungrab_keys (MetaWindow  *window)
+@@ -1627,6 +1643,9 @@
        MetaDisplay *display = window->display;
        MetaKeyBindingManager *keys = &display->key_binding_manager;
  
@@ -166,20 +146,41 @@ index ed34aea..a989200 100644
        if (window->grab_on_frame &&
            window->frame != NULL)
          change_window_keygrabs (keys, window->frame->xwindow, FALSE);
-diff --git a/src/x11/window-x11.c b/src/x11/window-x11.c
-index 3d47f0d..5ea1213 100644
---- a/src/x11/window-x11.c
-+++ b/src/x11/window-x11.c
-@@ -507,6 +507,8 @@ meta_window_x11_manage (MetaWindow *window)
+diff --unified --recursive --text --new-file --color mutter-40.0.old/src/x11/meta-x11-display.c mutter-40.0.new/src/x11/meta-x11-display.c
+--- mutter-40.0.old/src/x11/meta-x11-display.c	2021-04-23 08:52:33.884245138 +0800
++++ mutter-40.0.new/src/x11/meta-x11-display.c	2021-04-23 09:07:24.330113775 +0800
+@@ -1945,7 +1945,7 @@
+    * we know which is which by making two requests that the server will
+    * process at the same time.
+    */
+-  XGrabServer (x11_display->xdisplay);
++  meta_display_grab(x11_display->display);
+ 
+   XSetInputFocus (x11_display->xdisplay,
+                   xwindow,
+@@ -1957,8 +1957,7 @@
+                    x11_display->atom__MUTTER_FOCUS_SET,
+                    XA_STRING, 8, PropModeAppend, NULL, 0);
+ 
+-  XUngrabServer (x11_display->xdisplay);
+-  XFlush (x11_display->xdisplay);
++  meta_display_ungrab(x11_display->display);
+ 
+   meta_x11_error_trap_pop (x11_display);
+ }
+diff --unified --recursive --text --new-file --color mutter-40.0.old/src/x11/window-x11.c mutter-40.0.new/src/x11/window-x11.c
+--- mutter-40.0.old/src/x11/window-x11.c	2021-04-23 08:52:33.884245138 +0800
++++ mutter-40.0.new/src/x11/window-x11.c	2021-04-23 09:07:24.330113775 +0800
+@@ -522,6 +522,8 @@
  
    meta_icon_cache_init (&priv->icon_cache);
  
 +  meta_display_grab (display);
 +
-   meta_display_register_x_window (display, &window->xwindow, window);
- 
-   /* assign the window to its group, or create a new group if needed */
-@@ -565,6 +567,13 @@ meta_window_x11_manage (MetaWindow *window)
+   meta_x11_display_register_x_window (display->x11_display,
+                                       &window->xwindow,
+                                       window);
+@@ -582,6 +584,13 @@
  
    meta_window_x11_update_shape_region (window);
    meta_window_x11_update_input_region (window);

@@ -41,7 +41,7 @@ Patch4:         mutter-disable-cvt-s390x.patch
 Patch1000:      mutter-SLE-bell.patch
 # PATCH-FIX-SLE mutter-SLE-relax-some-constraints-on-CSD-windows.patch bnc#883491 cxiong@suse.com -- Relax some constraints on window positioning for CSD windows s.t. they can be placed at the very top of the monitor.
 Patch1001:      mutter-SLE-relax-some-constraints-on-CSD-windows.patch
-# PATCH-NEEDS-REBASE mutter-SLE-bsc984738-grab-display.patch bsc#984738 bgo#769387 hpj@suse.com -- Revert a upstream commit to avoid X11 race condition that results in wrong dialog sizes.
+# PATCH-FIX-SLE mutter-SLE-bsc984738-grab-display.patch bsc#984738 bgo#769387 hpj@suse.com -- Revert a upstream commit to avoid X11 race condition that results in wrong dialog sizes.
 Patch1002:      mutter-SLE-bsc984738-grab-display.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
@@ -163,7 +163,7 @@ translation-update-upstream po mutter
 %if 0%{?sle_version}
 %patch1000 -p1
 %patch1001 -p1
-# %patch1002 -p1
+%patch1002 -p1
 %endif
 
 %build
