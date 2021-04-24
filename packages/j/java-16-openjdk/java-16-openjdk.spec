@@ -32,13 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      16
 %global interimver      0
-%global updatever       0
+%global updatever       1
 %global patchver        0
-%global datever         2021-03-16
-%global buildver        36
+%global datever         2021-04-20
+%global buildver        9
 %global openjdk_repo    jdk16u
-%global openjdk_tag     jdk-16+36
-%global openjdk_dir     jdk16u-jdk-16-36
+%global openjdk_tag     jdk-16.0.1+9
+%global openjdk_dir     jdk16u-jdk-16.0.1-9
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -237,10 +237,12 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
-%if 0%{?suse_version} > 1320
-BuildRequires:  gcc-c++ >= 5
+%if 0%{?suse_version} < 1500
+BuildRequires:  gcc7
+BuildRequires:  gcc7-c++
 %else
-BuildRequires:  gcc5-c++
+BuildRequires:  gcc >= 7
+BuildRequires:  gcc-c++ >= 7
 %endif
 BuildRequires:  giflib-devel
 BuildRequires:  hicolor-icon-theme
@@ -569,11 +571,11 @@ mkdir -p %{buildoutputdir}
 pushd %{buildoutputdir}
 
 bash ../configure \
-%if 0%{?suse_version} <= 1320
-    CPP=cpp-5 \
-    CXX=g++-5 \
-    CC=gcc-5 \
-    NM=gcc-nm-5 \
+%if 0%{?suse_version} < 1500
+    CPP=cpp-7 \
+    CXX=g++-7 \
+    CC=gcc-7 \
+    NM=gcc-nm-7 \
 %endif
     --with-version-feature=%{featurever} \
     --with-version-interim=%{interimver} \

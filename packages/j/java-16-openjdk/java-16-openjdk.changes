@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Thu Apr 22 05:21:09 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-16.0.1+9 (April 2021 CPU)
+  * Security fixes:
+    + JDK-8244473: Contextualize registration for JNDI
+    + JDK-8244543: Enhanced handling of abstract classes
+    + JDK-8259633: compiler/graalunit/CoreTest.java fails with NPE
+      after JDK-8244543
+    + JDK-8250568, CVE-2021-2161, bsc#1185056: Less ambiguous
+      processing
+    + JDK-8253799: Make lists of normal filenames
+    + JDK-8261183: Follow on to Make lists of normal filenames
+    + JDK-8249906, CVE-2021-2163, bsc#1185055: Enhance opening JARs
+    + JDK-8258247: Couple of issues in fix for JDK-8249906
+    + JDK-8259428: AlgorithmId.getEncodedParams() should return
+      copy
+    + JDK-8257001: Improve HTTP client support
+  * Fixes:
+    + JDK-8263968: CDS: java/lang/ModuleLayer.EMPTY_LAYER should be
+      singleton
+    + JDK-8261397: Try Catch Method Failing to Work When Dividing
+      An Integer By 0
+    + JDK-8259949: x86 32-bit build fails when -fcf-protection is
+      passed in the compiler flags
+    + JDK-8261483: jdk/dynalink/
+      /TypeConverterFactoryMemoryLeakTest.java failed with
+      "AssertionError: Should have GCd a method handle by now"
+    + JDK-8261752: Multiple GC test are missing memory requirements
+    + JDK-8256215: Shenandoah: re-organize saving/restoring machine
+      state in assembler code
+    + JDK-8259679: GitHub actions should use MSVC 14.28
+    + JDK-8260592: jpackage tests fail when Desktop is not supported
+    + JDK-8258534: Epsilon: clean up unused includes
+    + JDK-8253910: UseCompressedClassPointers depends on
+      UseCompressedOops in vmError.cpp
+    + JDK-8261912: Code IfNode::fold_compares_helper more
+      defensively
+    + JDK-8257746: Regression introduced with JDK-8250984 - memory
+      might be null in some machines
+    + JDK-8241372: Several test failures due to
+      javax.net.ssl.SSLException: Connection reset
+    + JDK-8261860: Crash caused by lambda proxy class loaded in
+      Shutdown hook
+    + JDK-8261758: [TESTBUG] gc/g1/TestGCLogMessages.java fails if
+      ergonomics detect too small InitialHeapSize
+    + JDK-8252883: AccessDeniedException caused by delayed file
+      deletion on Windows
+    + JDK-8259231: Epsilon: improve performance under contention
+      during virtual space expansion
+    + JDK-8259392: Zero error reporting is broken after JDK-8255711
+    + JDK-8259451: Zero: skip serviceability/sa tests, set vm.hasSA
+      to false
+    + JDK-8260934: java/lang/StringBuilder/HugeCapacity.java fails
+      without Compact Strings
+    + JDK-8260933: runtime/cds/serviceability/
+      /ReplaceCriticalClassesForSubgraphs.java fails without
+      CompactStrings
+    + JDK-8259849: Shenandoah: Rename store-val to IU-barrier
+    + JDK-8251944: Add Shenandoah test config to
+      compiler/gcbarriers/UnsafeIntrinsicsTest.java
+    + JDK-8261251: Shenandoah: Use object size for full GC
+      humongous compaction
+    + JDK-8261413: Shenandoah: Disable class-unloading in I-U mode
+    + JDK-8260048: Shenandoah: ShenandoahMarkingContext asserts are
+      unnecessary
+    + JDK-8259580: Shenandoah: uninitialized label in
+      VerifyThreadGCState
+    + JDK-8258490: Shenandoah: Full GC does not need to remark
+      threads and drain SATB buffers
+    + JDK-8259954: gc/shenandoah/mxbeans tests fail with -Xcomp
+    + JDK-8261170: Upgrade to freetype 2.10.4
+    + JDK-8261779: JCK test api/javax_crypto/
+      /EncryptedPrivateKeyInfo/Ctor4.html is failing with assertion
+      error when assertions enabled
+    + JDK-8258457: testlibrary_tests/ctw/JarDirTest.java fails with
+      InvalidPathException on windows
+    + JDK-8252971: WindowsFileAttributes does not know about Unix
+      domain sockets
+    + JDK-8253409: Double-rounding possibility in float fma
+    + JDK-8258077: Using -Xcheck:jni can lead to a double-free
+      after JDK-8193234
+     + JDK-8259446: runtime/jni/checked/
+       /TestCheckedReleaseArrayElements.java fails with stderr not
+       empty
+    + JDK-8261334: NMT: tuning statistic shows incorrect hash
+      distribution
+    + JDK-8260029: aarch64: fix typo in verify_oop_array
+    + JDK-8261522: [PPC64] AES intrinsics write beyond the
+      destination array
+    + JDK-8261585: Restore HandleArea used in
+      Deoptimization::uncommon_trap
+    + JDK-8260349: Cannot programmatically retrieve Metaspace max
+      set via JAVA_TOOL_OPTIONS
+    + JDK-8262018: Wrong format in SAP copyright header of
+      OsVersionTest
+    + JDK-8261261: The version extra fields needs to be overridable
+      in jib-profiles.js
+    + JDK-8261753: Test java/lang/System/OsVersionTest.java still
+      failing on BigSur patch versions after JDK-8253702
+    + JDK-8253702: BigSur version number reported as 10.16, should
+      be 11.nn
+    + JDK-8261022: Fix incorrect result of Math.abs() with char type
+    + JDK-8261209: isStandalone property: remove dependency on
+      pretty-print
+    + JDK-8261231: Windows IME was disabled after DnD operation
+    + JDK-8261310: PPC64 Zero build fails with
+      'VMError::controlled_crash(int)::FunctionDescriptor
+      functionDescriptor' has incomplete type and cannot be defined
+    + JDK-8259628: jdk/net/ExtendedSocketOption/
+      /AsynchronousSocketChannelNAPITest.java fails intermittently
+    + JDK-8198540: Dynalink leaks memory when generating type
+      converters
+    + JDK-8260380: Upgrade to LittleCMS 2.12
+    + JDK-8249867: xml declaration is not followed by a newline
+    + JDK-8260356: (tz) Upgrade time-zone data to tzdata2021a
+    + JDK-8256421: Add 2 HARICA roots to cacerts truststore
+    + JDK-8260864: ProblemList two security/krb5 tests on Linux
+    + JDK-8259706: C2 compilation fails with assert(vtable_index ==
+      Method::invalid_vtable_index) failed: correct sentinel value
+    + JDK-8259049: Uninitialized variable after JDK-8257513
+    + JDK-8257513: C2: assert((constant_addr -
+      _masm.code()->consts()->start()) == con.offset())
+    + JDK-8259339: AllocateUninitializedArray C2 intrinsic fails
+      with void.class input
+    + JDK-8260338: Some fields in HaltNode is not cloned
+    + JDK-8259773: Incorrect encoding of AVX-512 kmovq instruction
+    + JDK-8259619: C1: 3-arg StubAssembler::call_RT stack-use
+      condition is incorrect
+    + JDK-8259777: Incorrect predication condition generated by ADLC
+    + JDK-8259576: Misplaced curly brace in
+      Matcher::find_shared_post_visit
+    + JDK-8258243: C2: assert failed ("Bad derived pointer") with
+      -XX:+VerifyRegisterAllocator
+    + JDK-8258946: Fix optimization-unstable code involving signed
+      integer overflow
+    + JDK-8260570: Updating RE Configs for BUILD REQUEST 16.0.1+2
+    + JDK-8260009: InstanceKlass::has_as_permitted_subclass() fails
+      if subclass was redefined
+    + JDK-8260010: UTF8ZipCoder not thread-safe since JDK-8243469
+    + JDK-7146776: deadlock between URLStreamHandler.getHostAddress
+      and file.Handler.openconnection
+    + JDK-8226810: Failed to launch JVM because of
+      NullPointerException occured on System.props
+    + JDK-8259048: (tz) Upgrade time-zone data to tzdata2020f
+    + JDK-8259620: Bump release strings for JDK 16.0.1
+    + JDK-8258471: "search codecache" clhsdb command does not work
+    + JDK-8253368: TLS connection always receives close_notify
+      exception
+    + JDK-8258909: update jdk16u jcheck conf
+
+-------------------------------------------------------------------
 Wed Apr 14 10:44:08 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-16+36
