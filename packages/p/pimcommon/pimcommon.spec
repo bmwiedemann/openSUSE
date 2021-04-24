@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           pimcommon
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Base package of KDE PIM PimCommon library
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxslt-devel
@@ -57,18 +61,15 @@ BuildRequires:  cmake(KF5Purpose)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Core) >= 5.14.0
 BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Network) >= 5.12.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.12.0
-BuildRequires:  cmake(Qt5Test) >= 5.12.0
-BuildRequires:  cmake(Qt5UiTools) >= 5.12.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
-BuildRequires:  cmake(Qt5Xml) >= 5.12.0
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5UiTools)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This package contains the pimcommon library, used by several KDE PIM
