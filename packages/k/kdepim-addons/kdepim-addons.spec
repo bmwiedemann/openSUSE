@@ -16,23 +16,28 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdepim-addons
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
-Summary:        Addons for KDEPIM applications
+Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
 Group:          Productivity/Graphics/Other
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Enable-the-expert-plugin-by-default.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libmarkdown-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Grantlee5)
@@ -67,24 +72,19 @@ BuildRequires:  cmake(KPimGAPI)
 BuildRequires:  cmake(KPimImportWizard)
 BuildRequires:  cmake(KPimItinerary)
 BuildRequires:  cmake(KPimPkPass)
-BuildRequires:  cmake(Qt5Concurrent) >= 5.6.0
-BuildRequires:  cmake(Qt5DBus) >= 5.6.0
-BuildRequires:  cmake(Qt5OpenGL) >= 5.6.0
-BuildRequires:  cmake(Qt5Test) >= 5.6.0
-BuildRequires:  cmake(Qt5UiTools) >= 5.6.0
-BuildRequires:  cmake(Qt5WebEngine) >= 5.6.0
-BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.6.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.6.0
-BuildRequires:  cmake(Qt5XmlPatterns) >= 5.6.0
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5OpenGL)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5UiTools)
+BuildRequires:  cmake(Qt5WebEngine)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  cmake(Qt5XmlPatterns)
 Recommends:     %{name}-lang
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
-BuildRequires:  libboost_headers-devel
 
 %description
 Addons for KDE PIM applications, such as extensions for KMail, additional
@@ -93,8 +93,7 @@ themes, and plugins providing extra or advanced functionality.
 %lang_package
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build -- -DKDEPIMADDONS_BUILD_EXAMPLES=FALSE -DQTCREATOR_TEMPLATE_INSTALL_DIR=%{_kf5_sharedir}/qtcreator/templates
