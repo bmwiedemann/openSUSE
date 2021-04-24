@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-openvpn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           NetworkManager-openvpn
-Version:        1.8.12
+Version:        1.8.14
 Release:        0
 Summary:        NetworkManager VPN support for OpenVPN
 License:        GPL-2.0-or-later
@@ -90,7 +90,7 @@ exit 0
 %{_datadir}/dbus-1/system.d/nm-openvpn-service.conf
 
 %files gnome
-%{_datadir}/appdata/network-manager-openvpn.metainfo.xml
+%{_datadir}/metainfo/network-manager-openvpn.metainfo.xml
 %{_libexecdir}/nm-openvpn-auth-dialog
 %{_libdir}/NetworkManager/libnm-vpn-plugin-openvpn-editor.so
 

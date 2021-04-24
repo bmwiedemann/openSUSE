@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 17 12:29:12 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.8.14:
+  + Add support for the following OpenVPN options: push-peer-info,
+    remote-random-hostname, tls-crypt-v2.
+  + Add --explicit-exit-notify by default when using UDP.
+  + Fix compatibility issues with OpenVPN 2.5.0.
+  + Update translations.
+
+-------------------------------------------------------------------
 Fri May  1 09:02:44 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Set the path for the VPN service name file correctly to
