@@ -23,12 +23,16 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaccounts-providers
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  hicolor-icon-theme
@@ -43,10 +47,6 @@ BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 Requires:       signon-plugin-oauth2
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 KDE Accounts Providers.
@@ -54,7 +54,7 @@ KDE Accounts Providers.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -68,7 +68,8 @@ KDE Accounts Providers.
 
 %files
 %license LICENSES/*
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.kaccounts.nextcloud.appdata.xml
+%{_kf5_appstreamdir}/org.kde.kaccounts.owncloud.appdata.xml
 %{_kf5_iconsdir}/hicolor/*/apps/kaccounts-nextcloud.*
 %{_kf5_iconsdir}/hicolor/*/apps/kaccounts-owncloud.*
 %{_kf5_plugindir}/kaccounts/
