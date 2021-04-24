@@ -335,4 +335,14 @@ Feel free to revert the update to submit it to Factory or to leave the request o
     https://www.fltk.org/articles.php?L1635</comment>
     <requestid>758157</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>66a12100b0afb0f4989b8a30d55ab0d0</srcmd5>
+    <version>1.3.5</version>
+    <time>1619298425</time>
+    <user>dimstar_suse</user>
+    <comment>- explicitly pass -fPIC and -pie via CFLAGS and LDFLAGS to make /usr/bin/fluid
+  an position-independent executable. fltk by default passed -fPIC but not
+  -pie, which breaks our gcc-PIE profil. (bsc#1184122). (forwarded request 887525 from mgerstner)</comment>
+    <requestid>887565</requestid>
+  </revision>
 </revisionlist>

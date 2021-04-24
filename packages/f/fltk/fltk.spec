@@ -1,7 +1,7 @@
 #
 # spec file for package fltk
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -92,6 +92,8 @@ installation of this package requires a 3D library such as Mesa.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+export CFLAGS="-fPIC"
+export LDFLAGS="-pie"
 %configure \
   --enable-shared \
   --enable-threads

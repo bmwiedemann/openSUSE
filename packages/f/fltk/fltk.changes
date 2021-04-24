@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 22 09:28:38 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- explicitly pass -fPIC and -pie via CFLAGS and LDFLAGS to make /usr/bin/fluid
+  an position-independent executable. fltk by default passed -fPIC but not
+  -pie, which breaks our gcc-PIE profil. (bsc#1184122).
+
+-------------------------------------------------------------------
 Thu Dec 19 12:01:54 UTC 2019 - pgajdos@suse.com
 
 - version update to 1.3.5
