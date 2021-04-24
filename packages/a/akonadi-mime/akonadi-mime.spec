@@ -17,18 +17,22 @@
 
 
 %define sonum   5
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-mime
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        MIME email parser for KDE PIM
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxslt-devel
@@ -41,16 +45,13 @@ BuildRequires:  cmake(KF5ItemModels) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
-BuildRequires:  cmake(Qt5Test) >= 5.6.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
+BuildRequires:  cmake(Qt5Test) >= 5.14.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
-This package provides libraries needed for the correct parsing of email messages.
+This package provides libraries needed for the correct parsing of email
+messages.
 
 %package -n libKF5AkonadiMime5
 Summary:        MIME email parser for KDE PIM - core library
@@ -58,7 +59,8 @@ Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
 %description  -n libKF5AkonadiMime5
-This package contains the core libraries needed for the correct parsing of email messages.
+This package contains the core libraries needed for the correct parsing of email
+messages.
 
 %package -n akonadi-plugin-mime
 Summary:        MIME email parser for KDE PIM - runtime plugins
@@ -66,7 +68,8 @@ Group:          System/Libraries
 Requires:       libKF5AkonadiMime5 >= %{version}
 
 %description -n akonadi-plugin-mime
-This package provides plugins required by PIM applications read and write parsed email data.
+This package provides plugins required by PIM applications read and write parsed
+email data.
 
 %package devel
 Summary:        MIME email parser for KDE PIM - development files
@@ -81,7 +84,7 @@ in KDE PIM applications.
 %lang_package
 
 %prep
-%setup -q -n akonadi-mime-%{version}
+%autosetup -p1 -n akonadi-mime-%{version}
 
 %build
 %cmake_kf5 -d build -- -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
@@ -103,7 +106,6 @@ in KDE PIM applications.
 
 %files
 %license LICENSES/*
-%dir %{_kf5_configkcfgdir}
 %{_kf5_configkcfgdir}/specialmailcollections.kcfg
 %{_kf5_mkspecsdir}/qt_AkonadiMime.pri
 %{_kf5_sharedir}/mime/packages/x-vnd.kde.contactgroup.xml
@@ -119,10 +121,10 @@ in KDE PIM applications.
 %license LICENSES/*
 %dir %{_kf5_includedir}/Akonadi
 %dir %{_kf5_includedir}/akonadi
+%{_kf5_cmakedir}/KF5AkonadiMime/
 %{_kf5_includedir}/Akonadi/KMime/
 %{_kf5_includedir}/akonadi-mime_version.h
 %{_kf5_includedir}/akonadi/kmime/
-%{_kf5_cmakedir}/KF5AkonadiMime/
 %{_kf5_libdir}/libKF5AkonadiMime.so
 
 %if %{with lang}
