@@ -1,7 +1,7 @@
 #
 # spec file for package python-wmctrl
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wmctrl
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        Python programmatic control of X windows
 # Project is in the process of transitioning from Bitbucket to GitHub
@@ -26,9 +26,6 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/antocuni/wmctrl
 Source:         https://files.pythonhosted.org/packages/source/w/wmctrl/wmctrl-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/antocuni/wmctrl/master/LICENSE
-# Backport ofhttps://github.com/antocuni/wmctrl/pull/3
-Patch0:         pr_3.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -49,8 +46,6 @@ Python tool to programmatically control windows inside X.
 
 %prep
 %setup -q -n wmctrl-%{version}
-%patch0 -p1
-cp %{SOURCE1} .
 
 %build
 %python_build
@@ -66,7 +61,7 @@ cat > /tmp/test_script.sh <<EOF
 openbox &
 sleep 5
 wmctrl -l -G -p -x
-$python -m pytest -k 'not test_activate' test/test_wmctrl.py
+$python -m pytest -rs -k 'not (test_activate or test_properties or test_Desktop_active)' test/test_wmctrl.py
 EOF
 chmod +x /tmp/test_script.sh
 xvfb-run /tmp/test_script.sh
