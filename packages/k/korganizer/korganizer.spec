@@ -16,22 +16,27 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           korganizer
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/korganizer
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 Patch0:         korgac-autostart-default.patch
-# PATCH-FIX-OPENSUSE -- use 'designer-qt5' on openSUSE
+# PATCH-FIX-OPENSUSE
 Patch1:         0001-Look-for-designer-qt5-on-openSUSE.patch
 BuildRequires:  extra-cmake-modules
+BuildRequires:  libboost_headers-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiCalendar)
@@ -77,18 +82,11 @@ Provides:       korganizer5 = %{version}
 Obsoletes:      korganizer5 < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
-BuildRequires:  libboost_headers-devel
 
 %description
-KOrganizer is a calendar application for KDE.
+KOrganizer is a calendar application by KDE.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %autosetup -p1
@@ -111,28 +109,26 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 
 %files
 %license LICENSES/*
-%config %{_kf5_configdir}/autostart/org.kde.korgac.desktop
-%{_kf5_debugdir}/korganizer.categories
-%{_kf5_knsrcfilesdir}/korganizer.knsrc
-%{_kf5_debugdir}/korganizer.renamecategories
-%dir %{_kf5_appstreamdir}/
-%dir %{_kf5_iconsdir}/hicolor/256x256
-%dir %{_kf5_iconsdir}/hicolor/256x256/apps
 %doc %lang(en) %{_kf5_htmldir}/en/korganizer/
 %{_kf5_applicationsdir}/korganizer*.desktop
 %{_kf5_applicationsdir}/org.kde.korganizer.desktop
 %{_kf5_appstreamdir}/org.kde.korganizer.appdata.xml
 %{_kf5_bindir}/korgac
 %{_kf5_bindir}/korganizer
+%{_kf5_configdir}/autostart/org.kde.korgac.desktop
 %{_kf5_configkcfgdir}/korganizer.kcfg
 %{_kf5_dbusinterfacesdir}/org.kde.Korganizer.*.xml
 %{_kf5_dbusinterfacesdir}/org.kde.korganizer.*.xml
+%{_kf5_debugdir}/korganizer.categories
+%{_kf5_debugdir}/korganizer.renamecategories
+%dir %{_kf5_iconsdir}/hicolor/256x256
+%dir %{_kf5_iconsdir}/hicolor/256x256/apps
 %{_kf5_iconsdir}/hicolor/*/apps/*.png
-%{_kf5_iconsdir}/hicolor/scalable/apps/quickview.svgz
 %{_kf5_iconsdir}/hicolor/scalable/apps/korg-journal.svgz
 %{_kf5_iconsdir}/hicolor/scalable/apps/korg-todo.svg
 %{_kf5_iconsdir}/hicolor/scalable/apps/korganizer.svg
-%{_kf5_iconsdir}/oxygen/*/actions/*.png
+%{_kf5_iconsdir}/hicolor/scalable/apps/quickview.svgz
+%{_kf5_knsrcfilesdir}/korganizer.knsrc
 %{_kf5_libdir}/libkorganizer_core.so.*
 %{_kf5_libdir}/libkorganizer_interfaces.so.*
 %{_kf5_libdir}/libkorganizerprivate.so.*
@@ -145,13 +141,13 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 %{_kf5_servicesdir}/korganizer_*.desktop
 %{_kf5_servicesdir}/webcal.protocol
 %{_kf5_servicetypesdir}/korganizerpart.desktop
+%dir %{_kf5_sharedir}/dbus-1/services/
+%{_kf5_sharedir}/dbus-1/services/org.kde.korgac.service
+%{_kf5_sharedir}/dbus-1/services/org.kde.korganizer.service
 %{_kf5_sharedir}/kconf_update/
 %{_kf5_sharedir}/kontact/
 %{_kf5_sharedir}/korgac/
 %{_kf5_sharedir}/korganizer/
-%dir %{_kf5_sharedir}/dbus-1/services/
-%{_kf5_sharedir}/dbus-1/services/org.kde.korganizer.service
-%{_kf5_sharedir}/dbus-1/services/org.kde.korgac.service
 
 %if %{with lang}
 %files lang -f %{name}.lang

@@ -1,4 +1,4 @@
-From b2fa08a79a7307c7b0b47277e2d8d3b39ab4e323 Mon Sep 17 00:00:00 2001
+From a5407d204273a67a4074daa5105c7c3e713dcf1f Mon Sep 17 00:00:00 2001
 From: Christophe Giboudeaux <christophe@krop.fr>
 Date: Tue, 16 Feb 2021 10:23:51 +0100
 Subject: [PATCH] Look for designer-qt5 on openSUSE
@@ -8,19 +8,19 @@ Subject: [PATCH] Look for designer-qt5 on openSUSE
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/src/kcmdesignerfields.cpp b/src/kcmdesignerfields.cpp
-index e01c77e..5bd032d 100644
+index 64ac51f..407e971 100644
 --- a/src/kcmdesignerfields.cpp
 +++ b/src/kcmdesignerfields.cpp
-@@ -279,7 +279,7 @@ void KCMDesignerFields::initGUI()
-     auto *layout = new QVBoxLayout(this);
+@@ -269,7 +269,7 @@ void KCMDesignerFields::initGUI()
+     auto layout = new QVBoxLayout(this);
      layout->setContentsMargins({});
  
--    bool noDesigner = QStandardPaths::findExecutable(QStringLiteral("designer")).isEmpty();
-+    bool noDesigner = QStandardPaths::findExecutable(QStringLiteral("designer-qt5")).isEmpty();
+-    const bool noDesigner = QStandardPaths::findExecutable(QStringLiteral("designer")).isEmpty();
++    const bool noDesigner = QStandardPaths::findExecutable(QStringLiteral("designer-qt5")).isEmpty();
  
      if (noDesigner) {
-         const QString txt
-@@ -446,7 +446,7 @@ void KCMDesignerFields::startDesigner()
+         const QString txt = i18n(
+@@ -438,7 +438,7 @@ void KCMDesignerFields::startDesigner()
          args.append(pageItem->path());
      }
  
@@ -30,5 +30,5 @@ index e01c77e..5bd032d 100644
      job->start();
  }
 -- 
-2.30.0
+2.30.2
 
