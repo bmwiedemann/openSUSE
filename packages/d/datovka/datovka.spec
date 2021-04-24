@@ -17,7 +17,7 @@
 
 
 Name:           datovka
-Version:        4.16.0
+Version:        4.17.0
 Release:        0
 Summary:        Library to access Czech eGov system "Datove schranky"
 License:        GPL-3.0-or-later
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Sql) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Svg) >= 5.2.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.2.0
-BuildRequires:  pkgconfig(libdatovka) >= 0.1.1
+BuildRequires:  pkgconfig(libdatovka) >= 0.1.2
 Requires:       libqt5_sql_backend
 Recommends:     %{name}-lang
 # Included inside with different approach

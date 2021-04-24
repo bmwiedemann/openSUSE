@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Apr 23 09:15:53 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 4.17.0
+ * Lists of received or sent messages of a selected account can be synchronised
+   separately.
+ * For better understanding rephrased the notification in cases then no public
+   nor a commercial data message can de sent to target data box.
+ * Downloads of multiple messages are aggregated into one dialogue when these
+   download have been triggered from the main window.
+ * Changes of some content of the message databases (statuses, downloaded
+   attachments, message deletion) are signalled via the database containers.
+ * Added support for new data-box types PFO_ZNALEC and PFO_TLUMOCNIK.
+ * Added delivery time and attachment downloaded fields to found message
+   entries in search message dialogue. Found entries also can be filtered and
+   sorted.
+ * User can download data messages directly form the search message dialogue.
+ * Selected messages in the search message dialogue can be exported or can be
+   attached to an e-mail.
+ * Unified std namespace resolution in C++ code.
+ * This build requires libdatovka-0.1.2 because of the newly added data-box
+   types.
+ * The action 'Save all attachments' can be called in multiple selected
+   messages at once. Attachment files are renamed when they have same or
+   conflicting names within a single data message. Written files are
+   not renamed if they conflict between messages or already existing files
+   in the directory where the files are written to.
+ * Increased the verbosity of logged entries when determining automatic upload
+   targets for the records management service.
+
+-------------------------------------------------------------------
 Mon Mar  1 10:25:01 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 4.16.0
