@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 17 02:46:39 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.06
+  * Bump compat level to 13
+  * Add Rules-Requires-Root field
+  * Document global scores usage
+- Dropped upstream fixed tint-0.04-fix-buffer-overflow.patch
+
+-------------------------------------------------------------------
 Tue Aug 15 13:14:21 UTC 2017 - sebix+novell.com@sebix.at
 
 - spec-cleaned specfile

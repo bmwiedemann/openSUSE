@@ -18,17 +18,15 @@
 
 
 Name:           tint
-Version:        0.04
+Version:        0.06
 Release:        0
 Summary:        A Clone of the Original Tetris Game
 License:        BSD-3-Clause
 Group:          Amusements/Games/Board/Puzzle
-Url:            http://packages.debian.org/source/sid/tint
-Source:         tint_%{version}.tar.gz
+URL:            https://packages.debian.org/source/sid/tint
+Source:         http://deb.debian.org/debian/pool/main/t/tint/tint_%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE tint-0.04-scores-in-home.patch guido+opensuse.org@berhoerster.name -- Save highscore on a per-user basis under $XDG_DATA_HOME
 Patch0:         tint-0.04-per-user-highscore.patch
-# PATCH-FIX-UPSTREAM tint-0.04-fix-buffer-overflow.patch guido+opensuse.org@berhoerster.name -- Fix two buffer overflows
-Patch1:         tint-0.04-fix-buffer-overflow.patch
 BuildRequires:  ncurses-devel
 
 %description
@@ -40,7 +38,6 @@ closest to the original that you'll ever find in the UNIX world.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}"
@@ -48,10 +45,15 @@ make %{?_smp_mflags} CFLAGS="%{optflags}"
 %install
 install -D -m 755 tint %{buildroot}%{_bindir}/tint
 install -D -m 644 tint.6 %{buildroot}%{_mandir}/man6/tint.6
+install -D -m 644 debian/tint.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
+install -D -m 644 debian/tint.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
-%doc CREDITS NOTES debian/copyright
-%{_mandir}/man6/tint.6*
+%doc CREDITS NOTES
+%license debian/copyright
 %{_bindir}/tint
+%{_mandir}/man6/tint.6*
+%{_datadir}/pixmaps/%{name}.png
+%{_datadir}/applications/%{name}.desktop
 
 %changelog
