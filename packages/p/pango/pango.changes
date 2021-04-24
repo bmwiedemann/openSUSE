@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 17 08:42:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.48.4:
+  + Include docs in the dist tarball.
+  + Include gi-docgen in the dist tarball, too.
+  + win32: Fix 'Cursive' fallback.
+  + Fix placement of marks in vertical text.
+  + Cache metrics for the current font.
+  + Improve letterspacing with combining marks.
+
+-------------------------------------------------------------------
 Wed Mar 17 21:22:44 UTC 2021 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 1.48.3:
