@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr  9 08:54:26 UTC 2021 - psimons@suse.com
+
+- Update brick to version 0.61.
+  0.61
+  ----
+
+  API changes:
+   * Brick.Forms got `editShowableFieldWithValidate`, a generalization
+     of `editShowableField` that allows the caller to specify an
+     additional validation function (thanks Ben Selfridge)
+
+-------------------------------------------------------------------
 Tue Apr  6 08:27:31 UTC 2021 - psimons@suse.com
 
 - Update brick to version 0.60.2 revision 1.
