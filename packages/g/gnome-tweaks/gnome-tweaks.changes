@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 17 08:33:12 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Fix "Fails to recognize GNOME Shell 40.rc running"
+  + Updated translations.
+- Drop 70.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Fri Mar 19 19:49:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 70.patch: gshellwrapper: Fails to find Shell when its version
