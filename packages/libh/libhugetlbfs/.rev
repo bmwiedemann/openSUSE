@@ -409,4 +409,12 @@ D fix_plt_extrasz_always_returning_0_on_ppc64le.patch
 - remove libhugetlbfs_fix_tests.patch (upstream)</comment>
     <requestid>827356</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>c0525477d2efe64710bd81c32cc211c4</srcmd5>
+    <version>2.22</version>
+    <time>1619298427</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887806</requestid>
+  </revision>
 </revisionlist>

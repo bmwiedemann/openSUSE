@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 21 12:36:14 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Hardening: Link as PIE (bsc#1184123).
+
+-------------------------------------------------------------------
 Mon Aug 17 13:48:04 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.22:

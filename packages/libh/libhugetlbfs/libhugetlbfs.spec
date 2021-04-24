@@ -1,7 +1,7 @@
 #
 # spec file for package libhugetlbfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define my_make_flags V=1 CFLAGS="%{optflags} -fPIC" BUILDTYPE=NATIVEONLY PREFIX=%{_prefix} LIBDIR32=%{_libdir} DESTDIR=%{buildroot}
+%define my_make_flags V=1 CFLAGS="%{optflags} -fPIC" LDFLAGS="-pie" BUILDTYPE=NATIVEONLY PREFIX=%{_prefix} LIBDIR32=%{_libdir} DESTDIR=%{buildroot}
 Name:           libhugetlbfs
 Version:        2.22
 Release:        0
@@ -24,7 +24,7 @@ Summary:        Helper library for the Huge Translation Lookaside Buffer Filesys
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://github.com/libhugetlbfs/libhugetlbfs
-Source0:        https://github.com/libhugetlbfs/libhugetlbfs/releases/download/%{version}/libhugetlbfs-%{version}.tar.gz 
+Source0:        https://github.com/libhugetlbfs/libhugetlbfs/releases/download/%{version}/libhugetlbfs-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch2:         libhugetlbfs.s390.patch
 Patch4:         libhugetlbfs.tests-malloc.patch
