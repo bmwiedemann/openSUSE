@@ -1,0 +1,5 @@
+<package name="python-tcolorpy" project="openSUSE:Factory">
+  <title></title>
+  <description>Python library to apply true color for terminal text</description>
+  <devel project="devel:languages:python" package="python-tcolorpy"/>
+</package>
