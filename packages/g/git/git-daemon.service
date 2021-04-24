@@ -8,8 +8,6 @@ ExecStart=/bin/bash -c 'exec git daemon --reuseaddr --base-path=$${GIT_DAEMON_BA
 Restart=always
 RestartSec=500ms
 
-StandardOutput=syslog
-StandardError=syslog
 SyslogIdentifier=git-daemon
 
 [Install]

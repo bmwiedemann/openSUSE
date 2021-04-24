@@ -246,8 +246,8 @@ Email interface for the GIT version control system.
 %package daemon
 Summary:        Simple Server for Git Repositories
 Group:          Development/Tools/Version Control
-%if 0%{?suse_version} >= 1550 
-Requires(pre):	group(nobody)
+%if 0%{?suse_version} >= 1550
+Requires(pre):  group(nobody)
 %sysusers_requires
 %{?systemd_requires}
 %else
@@ -454,6 +454,7 @@ cat %{name}.lang >>bin-man-doc-files
 %if 0%{?suse_version} >= 1500
 %pre daemon -f git-daemon.pre
 %else
+
 %pre daemon
 if ! %{_bindir}/getent passwd git-daemon >/dev/null; then
   %{_sbindir}/useradd -r -d %{_localstatedir}/lib/empty -s /bin/false -c "git daemon" -g nogroup git-daemon

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 22 13:28:06 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Remove deprecated "syslog" option from git-daemon.service (bsc#1185147)
+
+-------------------------------------------------------------------
 Fri Apr  9 11:34:14 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Add sysusers file to create git-daemon user.

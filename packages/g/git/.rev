@@ -2301,4 +2301,12 @@ git 2.12.3
     <comment></comment>
     <requestid>885634</requestid>
   </revision>
+  <revision rev="263" vrev="4">
+    <srcmd5>0cce62398ca8daab0ab001fd802c3d23</srcmd5>
+    <version>2.31.1</version>
+    <time>1619298430</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove deprecated &quot;syslog&quot; option from git-daemon.service (bsc#1185147)</comment>
+    <requestid>887962</requestid>
+  </revision>
 </revisionlist>
