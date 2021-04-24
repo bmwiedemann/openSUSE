@@ -1,7 +1,7 @@
 #
 # spec file for package python-xlrd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,30 +18,27 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-xlrd
-Version:        1.2.0
+Version:        2.0.1
 Release:        0
-Summary:        Python module for extracting data from Excel spreadsheet files
+Summary:        Python module for extracting data from .xls Excel spreadsheet files
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://www.lexicon.net/sjmachin/xlrd.htm
-Source:         https://files.pythonhosted.org/packages/source/x/xlrd/xlrd-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+URL:            https://www.python-excel.org/
+Source:         https://github.com/python-excel/xlrd/archive/refs/tags/%{version}.tar.gz#/xlread-%{version}-gh.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Recommends:     python-defusedxml
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
 %description
-Extract data from Excel spreadsheets
-(.xls and .xlsx, versions 2.0 onwards).
+A library for reading data and formatting information from Excel files
+in the historical .xls format.
 
 %prep
 %setup -q -n xlrd-%{version}
@@ -65,9 +62,10 @@ mv %{buildroot}%{_bindir}/runxlrd.py %{buildroot}%{_bindir}/runxlrd
 %pytest
 
 %files %{python_files}
-%doc README.md
-%license docs/licenses.rst
+%doc README.rst
+%license LICENSE
 %python_alternative %{_bindir}/runxlrd
-%{python_sitelib}/*
+%{python_sitelib}/xlrd
+%{python_sitelib}/xlrd-%{version}*-info
 
 %changelog

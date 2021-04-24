@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr 23 14:14:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.1
+  * Remove support for anything other than .xls files.
+  * Remove support for psyco.
+  * Change the default encoding used when no CODEPAGE record can be
+    found from ascii to iso-8859-1.
+  * Add support for iterating over `xlrd.book.Book` objects.
+  * Add support for item access from `xlrd.book.Book`
+    objects, where integer indices and string sheet names are
+    supported.
+  * Non-unicode spaces are now stripped from the "last author"
+    information.
+  * Workbook corruption errors can now be ignored using the
+    ignore_workbook_corruption option to `xlrd.open_workbook`.
+  * Handle WRITEACCESS records with invalid trailing characters.
+  * Officially support Python 3.8 and 3.9. 
+
+-------------------------------------------------------------------
 Fri May 29 10:47:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Replace nose with python
