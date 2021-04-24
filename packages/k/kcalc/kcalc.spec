@@ -1,7 +1,7 @@
 #
 # spec file for package kcalc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcalc
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Scientific Calculator
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kcalc
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  gmp-devel
 BuildRequires:  mpfr-devel
 BuildRequires:  update-desktop-files
@@ -45,10 +49,6 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -57,7 +57,7 @@ KCalc is the KDE calculator tool.
 %lang_package
 
 %prep
-%setup -q -n kcalc-%{version}
+%autosetup -p1 -n kcalc-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -76,12 +76,12 @@ KCalc is the KDE calculator tool.
 
 %files
 %license COPYING*
-%{_kf5_applicationsdir}/org.kde.kcalc.desktop
-%{_kf5_appstreamdir}/
-%{_kf5_bindir}/kcalc
-%{_kf5_configkcfgdir}/
 %doc %lang(en) %{_kf5_htmldir}/en/kcalc/
-%{_kf5_kxmlguidir}/
+%{_kf5_applicationsdir}/org.kde.kcalc.desktop
+%{_kf5_appstreamdir}/org.kde.kcalc.appdata.xml
+%{_kf5_bindir}/kcalc
+%{_kf5_configkcfgdir}/kcalc.kcfg
+%{_kf5_kxmlguidir}/kcalc/
 %{_kf5_libdir}/libkdeinit5_kcalc.so
 %{_kf5_sharedir}/kcalc/
 %{_kf5_sharedir}/kconf_update/

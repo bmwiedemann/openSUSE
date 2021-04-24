@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Apr 16 16:11:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- Changes since 21.03.90:
+  * tidy up packaging
+- Stop owning directories provided by the filesystem package (boo#1184786)
+
+-------------------------------------------------------------------
+Fri Apr  9 17:40:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- Changes since 21.03.80:
+  * switch to using kde extension in snap
+  * add snap packaging file
+
+-------------------------------------------------------------------
+Sun Mar 21 13:27:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Changes since 20.12.3:
+  * Add missing gmp include dir
+  * Don't enable exceptions
+  * Make knumber a static library
+  * Add missing KCoreAddons linkage
+  * Add missing include
+  * icons: Update with latest version from Breeze theme
+  * Remove not necessary signal (not emitted, not connected)
+  * Add value to bit buttons' tooltips
+
+-------------------------------------------------------------------
 Thu Mar  4 06:10:00 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.3
