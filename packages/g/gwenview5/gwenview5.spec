@@ -22,13 +22,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           gwenview5
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Image Viewer by KDE
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/gwenview
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  cfitsio-devel
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  kf5-filesystem
@@ -36,6 +40,7 @@ BuildRequires:  libexiv2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libpng-devel
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5Baloo)
@@ -60,23 +65,19 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  pkgconfig(libtiff-4)
 Recommends:     %{name}-lang
 Provides:       gwenview = %{version}
 Obsoletes:      gwenview < %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
-Gwenview is an image viewer for KDE. It features a folder tree
-window and a file list window, providing navigation of file
-hierarchies.
+Gwenview is an image viewer by KDE. It features a folder tree window and a file
+list window, providing navigation of file hierarchies.
 
 %lang_package
 
 %prep
-%setup -q -n %{rname}-%{version}
+%autosetup -p1 -n %{rname}-%{version}
 
 %build
 %cmake_kf5 -d build -- -DGWENVIEW_SEMANTICINFO_BACKEND="Baloo"
@@ -96,26 +97,27 @@ hierarchies.
 
 %files
 %license COPYING*
-%dir %{_datadir}/solid
-%dir %{_datadir}/solid/actions
-%dir %{_kf5_htmldir}
-%dir %{_kf5_htmldir}/en
-%doc %lang(en) %{_kf5_htmldir}/en/*/
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/kfileitemaction
+%dir %{_kf5_plugindir}/kf5/parts
+%dir %{_kf5_sharedir}/kconf_update/
+%dir %{_kf5_sharedir}/solid
+%dir %{_kf5_sharedir}/solid/actions
+%doc %lang(en) %{_kf5_htmldir}/en/gwenview/
 %{_kf5_applicationsdir}/org.kde.gwenview.desktop
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.gwenview.appdata.xml
 %{_kf5_bindir}/gwenview
 %{_kf5_bindir}/gwenview_importer
 %{_kf5_debugdir}/gwenview.categories
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_libdir}/libgwenviewlib.so.*
-%{_kf5_plugindir}/
-%{_kf5_servicesdir}/
+%{_kf5_plugindir}/kf5/kfileitemaction/slideshowfileitemaction.so
+%{_kf5_plugindir}/kf5/parts/gvpart.so
+%{_kf5_servicesdir}/gvpart.desktop
 %{_kf5_sharedir}/gwenview/
-%{_kf5_sharedir}/kxmlgui5/
-%{_kf5_sharedir}/solid/actions/gwenview_*.desktop
-%dir %{_kf5_sharedir}/kconf_update/
-%{_kf5_sharedir}/kconf_update/gwenview.upd
 %{_kf5_sharedir}/kconf_update/gwenview-imageview-alphabackgroundmode-update.pl
+%{_kf5_sharedir}/kconf_update/gwenview.upd
+%{_kf5_sharedir}/solid/actions/gwenview_*.desktop
 
 %if %{with lang}
 %files lang -f %{name}.lang

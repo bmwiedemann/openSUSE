@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Apr 16 16:11:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- No code change since 21.03.90
+- Stop owning directories provided by the filesystem package (boo#1184786)
+
+-------------------------------------------------------------------
+Fri Apr  9 17:39:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- Changes since 21.03.80:
+  * Partially revert commit "Use Quality level when saving JPEG images"
+  * Set a sane default window size
+
+-------------------------------------------------------------------
+Sun Mar 21 13:27:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Too many changes since 20.12.3, only listing bugfixes:
+  * When receiving a list of files as parameters, filter duplicate filenames (kde#434046)
+  * Base scroll speed on text height rather than image row height (kde#297853)
+  * Show quality chooser for other lossy image formats too (kde#431680)
+  * Replace slideshow ServiceMenu by SlideShowFileItemAction (kde#429531)
+  * Allow disabling Bird's Eye View (kde#426105)
+  * Fix zoom with F or middle mouse click caused by the introduction of the spinbox (kde#432075)
+  * VideoViewAdapter: Show video timestamps (kde#414769)
+  * Enable custom zoom values with a SpinBox replacing the static label (kde#157274)
+- Enable libtiff support
+
+-------------------------------------------------------------------
 Thu Mar  4 06:09:39 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.3
