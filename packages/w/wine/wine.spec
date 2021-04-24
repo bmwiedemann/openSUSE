@@ -142,6 +142,7 @@ Patch0:         wine-winegcc-missing-includes.patch
 # SUSE specific patches
 # - currently none, but add them here
 #Patch0:         susefixes.patch
+Source99:       a886228fbcefe7b8de06d2dd7182272df6cc3c36.patch
 Recommends:     wine-gecko >= 2.47.2
 Conflicts:      wine-gecko < 2.47.2
 Recommends:     wine-mono >= 6.1.1
@@ -225,6 +226,7 @@ cp %{S:3} .
 %if %{staging}
 # apply wine staging patch set on top of the wine release.
 tar xf %{SOURCE100}
+cp %{SOURCE99} ./wine-staging-%staging_version/patches/user32-rawinput-mouse/0008-winex11.drv-Listen-to-RawMotion-and-RawButton-events.patch
 bash ./wine-staging-%staging_version/patches/patchinstall.sh --all
 %endif
 

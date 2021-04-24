@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 21 14:21:30 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix raw input with wine-staging: To fix it we copied the
+  0008-winex11.drv-Listen-to-RawMotion-and-RawButton-events.patch
+  at a886228fbcefe7b8de06d2dd7182272df6cc3c36 and overwrite the
+  copy in the staging tarball. We can not just upgrade the tar ball
+  as it doesnt apply cleanly anymore.
+  This can be dropped with 6.7
+
+-------------------------------------------------------------------
 Wed Apr 21 06:40:00 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Added upstream fix wine-winegcc-missing-includes.patch and
