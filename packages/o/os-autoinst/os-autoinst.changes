@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 22 19:30:56 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1619083988.b15e5e5e:
+  * Make persistent SOL console configurable
+  * Update qemu argument used to disable floppy drive for qemu 6.0
+  * Make ipmi SOL console persistent
+  * container: Fix Dockerfile style issues DL3059
+
+-------------------------------------------------------------------
 Tue Apr 20 11:30:54 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1618839153.ad5932c7:
