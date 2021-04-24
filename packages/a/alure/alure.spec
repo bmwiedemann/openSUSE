@@ -1,7 +1,7 @@
 #
 # spec file for package alure
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 openSUSE_user1
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,11 +24,11 @@ Summary:        Audio Library Tools REloaded
 # ALURE code is LGPL-2.0+; note -devel subpackage has its own license tag
 License:        LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://kcat.strangesoft.net/alure.html
-Source0:        http://kcat.strangesoft.net/%{name}-releases/%{name}-%{version}.tar.bz2
-# patch for build with gcc47
+URL:            https://github.com/kcat/alure
+Source0:        %{name}-%{version}.tar.bz2
+# PATCh-FIX-UPSTREAM alure-gcc47.patch -- patch for build with gcc47
 Patch0:         alure-gcc47.patch
-# PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
+# PATCH-FIX-UPSTREAM alure-lib-suffix.patch -- Enable installation in suffixed directory
 Patch1:         alure-lib-suffix.patch
 BuildRequires:  cmake
 BuildRequires:  flac-devel
@@ -66,22 +66,22 @@ ALURE is a utility library to help manage common tasks with OpenAL
 applications.
 
 %prep
-%setup -q
-%patch0
-%patch1
+%autosetup -p0
 
 %build
-#sed -i 's|SET(libdir "\\${exec_prefix}/lib${LIB_SUFFIX}")|SET(libdir $LIB_INSTALL_DIR)|' CMakeLists.txt
-cmake . -DBUILD_STATIC=OFF -DMPG123=OFF -DMODPLUG=ON -DCMAKE_INSTALL_PREFIX=%{_prefix}
-#-DLIB_INSTALL_DIR=%%{_libdir}
-make VERBOSE=1 %{?_smp_mflags}
+%cmake \
+  -DBUILD_STATIC=OFF \
+  -DMPG123=OFF \
+  -DMODPLUG=ON
+%cmake_build
 
 %install
-%make_install
+%cmake_install
+
 find %{buildroot} -type f -name "*.la" -delete -print
+
 # remove installed html doc
 rm -rf %{buildroot}%{_datadir}/doc/%{name}/html
-
 # fix encoding
 sed -i 's/\r$//' docs/html/javascript/main.js docs/html/styles/1.css
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 17 18:14:57 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Updated SPEC file
+  * Use working upstream URL
+  * Use cmake macro, now builds with optflags
+  * Some general cleanup
+
+-------------------------------------------------------------------
 Thu Aug 29 07:19:44 UTC 2019 - mvetter@suse.com
 
 - Remove libdumb-devel BuildReq
