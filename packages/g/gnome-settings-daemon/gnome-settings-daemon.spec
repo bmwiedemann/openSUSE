@@ -28,7 +28,7 @@
 %endif
 
 Name:           gnome-settings-daemon
-Version:        40.0
+Version:        40.0.1
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only

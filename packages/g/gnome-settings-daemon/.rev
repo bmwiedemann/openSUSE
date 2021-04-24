@@ -1341,4 +1341,12 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>GNOME 40 - here we come (forwarded request 880965 from dimstar)</comment>
     <requestid>881136</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>42e15d30931c9204086e2c232533b106</srcmd5>
+    <version>40.0.1</version>
+    <time>1619298401</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 40.0.1 (forwarded request 885662 from dimstar)</comment>
+    <requestid>887472</requestid>
+  </revision>
 </revisionlist>
