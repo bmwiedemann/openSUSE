@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 23 05:57:36 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.15:
+  * Stop relabelling stable partitions, tests on power, doc fixes
+- Do not build for Python 3.6, due to no NumPy. 
+
+-------------------------------------------------------------------
 Tue Jul 14 13:44:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 0.14
