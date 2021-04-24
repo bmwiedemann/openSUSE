@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dephell-venvs
-Version:        0.1.17
+Version:        0.1.18
 Release:        0
 Summary:        Dephell plugin to manage virtual environments
 License:        MIT
