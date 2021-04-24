@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 24 11:30:00 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v0.6.3
+  * Fix false positive warning with `include_get_headers`
+  * Fix handling of `decode_content` parameter for
+    `CachedResponse.raw.read()`
+  * Replace deprecated pymongo `Collection.count()` with
+    `estimated_document_count()`
+
+-------------------------------------------------------------------
 Wed Apr 14 22:46:16 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Fix runtime Requires, adding missing prefix python-

@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-requests-cache
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Persistent cache for requests library
 License:        BSD-2-Clause
