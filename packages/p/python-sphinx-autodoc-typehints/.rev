@@ -71,4 +71,16 @@
 </comment>
     <requestid>888061</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c0051e36fed6634f04f78b3cf124bde2</srcmd5>
+    <version>1.11.0</version>
+    <time>1619298543</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove no-net-tests.patch as adding the fixed
+  python-sphinx-autodoc-typehints-system-object.inv.patch 
+  makes tests requiring network working
+  (gh#agronholm/sphinx-autodoc-typehints#174).
+</comment>
+    <requestid>888210</requestid>
+  </revision>
 </revisionlist>

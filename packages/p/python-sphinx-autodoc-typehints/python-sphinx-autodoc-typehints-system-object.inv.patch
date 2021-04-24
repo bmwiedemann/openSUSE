@@ -1,0 +1,31 @@
+---
+ tests/conftest.py |   13 ++-----------
+ 1 file changed, 2 insertions(+), 11 deletions(-)
+
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -1,5 +1,4 @@
+ import os
+-import sys
+ import pathlib
+ import shutil
+ 
+@@ -13,16 +12,8 @@ collect_ignore = ['roots']
+ 
+ @pytest.fixture(scope='session')
+ def inv(pytestconfig):
+-    cache_path = 'python{v.major}.{v.minor}/objects.inv'.format(v=sys.version_info)
+-    inv_dict = pytestconfig.cache.get(cache_path, None)
+-    if inv_dict is not None:
+-        return Inventory(inv_dict)
+-
+-    print("Downloading objects.inv")
+-    url = 'https://docs.python.org/{v.major}.{v.minor}/objects.inv'.format(v=sys.version_info)
+-    inv = Inventory(url=url)
+-    pytestconfig.cache.set(cache_path, inv.json_dict())
+-    return inv
++    inv_dict = '/usr/share/doc/packages/python@PYTHON_VERSION@/html/objects.inv'
++    return Inventory(inv_dict)
+ 
+ 
+ @pytest.fixture(autouse=True)

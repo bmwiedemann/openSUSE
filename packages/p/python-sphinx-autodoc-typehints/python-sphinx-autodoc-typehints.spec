@@ -26,9 +26,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/agronholm/sphinx-autodoc-typehints
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx-autodoc-typehints/sphinx-autodoc-typehints-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM no-net-tests.patch gh#agronholm/sphinx-autodoc-typehints#174 mcepl@suse.com
+# PATCH-FIX-UPSTREAM python-sphinx-autodoc-typehints-system-object.inv.patch gh#agronholm/sphinx-autodoc-typehints#174 mcepl@suse.com
 # skip network tests
-Patch0:         no-net-tests.patch
+Patch0:         python-sphinx-autodoc-typehints-system-object.inv.patch
 BuildRequires:  %{python_module setuptools >= 36.2.7}
 BuildRequires:  %{python_module setuptools_scm >= 1.7.0}
 BuildRequires:  fdupes
@@ -55,6 +55,7 @@ and return value types of functions.
 
 %build
 %python_build
+%python_expand sed -i -e 's/@PYTHON_VERSION@/%{$python_version}/' tests/conftest.py
 
 %install
 %python_install
@@ -62,7 +63,7 @@ and return value types of functions.
 
 %check
 # test_sphinx_output -- too depenedent on sphinx version available
-%pytest -k 'not (test_sphinx_output or network)'
+%pytest -k 'not test_sphinx_output'
 
 %files %{python_files}
 %{python_sitelib}/*

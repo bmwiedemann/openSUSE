@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 24 14:11:17 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove no-net-tests.patch as adding the fixed
+  python-sphinx-autodoc-typehints-system-object.inv.patch 
+  makes tests requiring network working
+  (gh#agronholm/sphinx-autodoc-typehints#174).
+
+-------------------------------------------------------------------
 Fri Apr 23 14:24:23 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add no-net-tests.patch which marks tests requiring network
