@@ -1,7 +1,7 @@
 #
 # spec file for package libkdcraw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkdcraw
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Shared library interface around dcraw
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Development/Libraries/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
@@ -39,10 +43,6 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  pkgconfig(libraw) >= 0.16.0
 Obsoletes:      libkdcraw-kf5 < %{version}
 Provides:       libkdcraw-kf5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Libkdcraw is a C++ interface around dcraw binary program used to decode
@@ -51,16 +51,6 @@ files.
 
 This library is used by kipi-plugins, digiKam and others kipi host
 programs.
-
-%prep
-%setup -q
-
-%build
-  %cmake_kf5 -d build -- -DENABLE_LCMS2=true -DENABLE_RAWSPEED=true
-  %cmake_build
-
-%install
-  %kf5_makeinstall -C build
 
 %package -n %{lname}%{_so}
 Summary:        Shared library interface around dcraw
@@ -73,12 +63,6 @@ files.
 
 This library is used by kipi-plugins, digiKam and others kipi host
 programs.
-
-%files -n %{lname}%{_so}
-%{_kf5_libdir}/%{lname}.so.*
-
-%post -n %{lname}%{_so} -p /sbin/ldconfig
-%postun -n %{lname}%{_so} -p /sbin/ldconfig
 
 %package devel
 Summary:        Shared library interface around dcraw
@@ -95,8 +79,26 @@ files.
 This library is used by kipi-plugins, digiKam and others kipi host
 programs.
 
+%prep
+%autosetup -p1
+
+%build
+  %cmake_kf5 -d build -- -DENABLE_LCMS2=true -DENABLE_RAWSPEED=true
+  %cmake_build
+
+%install
+  %kf5_makeinstall -C build
+
+%post -n %{lname}%{_so} -p /sbin/ldconfig
+%postun -n %{lname}%{_so} -p /sbin/ldconfig
+
+%files -n %{lname}%{_so}
+%license LICENSES/*
+%{_kf5_debugdir}/libkdcraw.categories
+%{_kf5_libdir}/%{lname}.so.*
+
 %files devel
-%license COPYING
+%license LICENSES/*
 %doc README
 %{_kf5_cmakedir}/KF5KDcraw/
 %{_kf5_includedir}/
