@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>862714</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f03063edc839f8f1379fea9b6ae6b741</srcmd5>
+    <version>0.9.1</version>
+    <time>1619298546</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't build python36-* package (missing pandas)
+</comment>
+    <requestid>888111</requestid>
+  </revision>
 </revisionlist>
