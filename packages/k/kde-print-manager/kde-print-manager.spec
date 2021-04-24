@@ -23,13 +23,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kde-print-manager
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
-Summary:        A print manager for KDE
+Summary:        Tools for managing print jobs and printers
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  cups
 BuildRequires:  cups-backends
 BuildRequires:  cups-client
@@ -63,20 +67,16 @@ Obsoletes:      kde4-print-manager < %{version}
 Obsoletes:      print-manager5 < %{version}
 Provides:       print-manager5 = %{version}
 Provides:       dbus(com.redhat.NewPrinterNotification)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{rname}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
-This project is a replacement for the previous printing management of KDE.
+kde-print-manager provides tools for managing print jobs and printers.
 
 %if %{with lang}
 %lang_package
 %endif
 
 %prep
-%setup -q -n %{rname}-%{version}
+%autosetup -p1 -n %{rname}-%{version}
 
 %build
   %cmake_kf5 -d build -- -DCUPS_INCLUDE_DIR=%{_includedir}/cups
