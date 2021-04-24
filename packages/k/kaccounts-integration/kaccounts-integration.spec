@@ -22,12 +22,16 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaccounts-integration
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
@@ -45,16 +49,12 @@ BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons)
-BuildRequires:  cmake(Qt5Core) >= 5.2.0
+BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Test) >= 5.2.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.2.0
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 Recommends:     kaccounts-providers
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Small system to administer web accounts for the sites
@@ -78,7 +78,7 @@ Requires:       libkaccounts%{sover} = %{version}
 Requires:       libsignon-qt5-devel
 Requires:       cmake(AccountsQt5)
 Requires:       cmake(KF5CoreAddons)
-Requires:       cmake(Qt5Core) >= 5.2.0
+Requires:       cmake(Qt5Core)
 Requires:       pkgconfig(libaccounts-glib)
 # Used in KAccountsMacros.cmake
 Requires:       intltool
@@ -93,7 +93,7 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 %endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -112,10 +112,10 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 %license LICENSES/*
 %dir %{_kf5_sharedir}/kpackage
 %dir %{_kf5_sharedir}/kpackage/kcms
-%{_kf5_sharedir}/kpackage/kcms/kcm_kaccounts/
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
 %{_kf5_servicesdir}/
+%{_kf5_sharedir}/kpackage/kcms/kcm_kaccounts/
 
 %files -n libkaccounts%{sover}
 %license LICENSES/*
