@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr 17 12:46:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.40.0:
+  + FEATURE: add hkps://keys.openpgp.org to keyserver defaults.
+  + gcr/key-mechanism: Port to GTask.
+  + GckCall: Simplify the code by using GTask based implementation.
+  + Updated translations.
+- Make use of the new gpg_path meson option by passing
+  %{_bindir}/gpg2 as value to it: We know that openSUSE installs
+  gpg2 to this path. Allows to drop gpg2 BuildRequires.
+- Drop pkgconfig(gtk+-x11-3.0) BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
 Wed Jan 13 07:58:16 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.1:

@@ -17,14 +17,14 @@
 
 
 Name:           gcr
-Version:        3.38.1
+Version:        3.40.0
 Release:        0
 # FIXME: Verify if the requires in typelib-1_0-Gcr-3 is still correct and required (see bgo#725501).
 Summary:        Library for Crypto UI related tasks
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://www.gnome.org
-Source0:        https://download.gnome.org/sources/gcr/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gcr/3.40/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-SLE gcr-bsc932232-use-libgcrypt-allocators.patch bsc#932232 hpj@suse.com -- use libgcrypt allocators for FIPS mode
 Patch1:         gcr-bsc932232-use-libgcrypt-allocators.patch
@@ -33,7 +33,6 @@ BuildRequires:  dbus-1
 BuildRequires:  gettext >= 0.19.8
 BuildRequires:  gobject-introspection-devel >= 1.34
 # configure is looking for the gpg2 path
-BuildRequires:  gpg2
 BuildRequires:  gtk-doc
 BuildRequires:  libgcrypt-devel >= 1.4.5
 BuildRequires:  meson
@@ -48,8 +47,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gmodule-no-export-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12
-BuildRequires:  pkgconfig(gtk+-x11-3.0) >= 3.12
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(p11-kit-1) >= 0.19.0
 BuildRequires:  pkgconfig(pango)
 
@@ -179,7 +177,8 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 %endif
 
 %build
-%meson
+%meson \
+  -Dgpg_path=%{_bindir}/gpg2
 %meson_build
 
 %install
@@ -195,13 +194,13 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 
 %files viewer
 %license COPYING
-%doc AUTHORS ChangeLog HACKING NEWS README
+%doc NEWS
 %{_bindir}/gcr-viewer
 %{_datadir}/applications/gcr-viewer.desktop
 %{_datadir}/mime/packages/gcr-crypto-types.xml
 
 %files data
-%doc AUTHORS ChangeLog HACKING NEWS README
+%doc NEWS
 %{_datadir}/icons/hicolor/*/apps/*
 # Own the directory since we can't depend on gconf providing them
 %dir %{_datadir}/GConf
@@ -221,7 +220,7 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 
 %files -n libgcr-3-1
 %license COPYING
-%doc AUTHORS ChangeLog HACKING NEWS README
+%doc NEWS
 %{_libdir}/libgcr-base-3.so.*
 %{_libdir}/libgcr-ui-3.so.*
 
@@ -244,7 +243,7 @@ GCK is a library for accessing PKCS#11 modules like smart cards, in a
 
 %files -n libgck-1-0
 %license COPYING
-%doc AUTHORS ChangeLog HACKING NEWS README
+%doc NEWS
 %{_libdir}/libgck-1.so.*
 
 %files -n typelib-1_0-Gck-1

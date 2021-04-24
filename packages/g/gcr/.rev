@@ -332,4 +332,12 @@
     <comment>New stable release (forwarded request 862809 from iznogood)</comment>
     <requestid>863163</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>1417c673e0c9447cdfb690d36feef793</srcmd5>
+    <version>3.40.0</version>
+    <time>1619298412</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.40 (forwarded request 886272 from dimstar)</comment>
+    <requestid>887489</requestid>
+  </revision>
 </revisionlist>
