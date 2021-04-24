@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Apr 24 14:51:01 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fossil 2.15.1:
+  * fix access to tables starting "fx_" in ticket report
+
+-------------------------------------------------------------------
+Sun Mar 28 18:46:07 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fossil 2.15:
+  * Relax default Content Security policy to allow images to be
+    loaded from any URL
+  * Updates to skins and their configuration options
+  * Built-in skin can now be selected via the skin= request
+    parameter and the /skins page.
+  * /cookies page can now now  delete individual cookies
+  * Various extensions to diff displaz and operations
+  * Add the --list option to the tarball, zip, and sqlar commands.
+  * New TH1 commands: "builtin_request_js", "capexpr", "foreach",
+    "lappend", and "string match"
+  * The leaves command now shows the branch point of each leaf.
+  * The fossil add command refuses to add files whose names are
+    reserved by Windows (ex: "aux") unless the --allow-reserved
+    option is included.
+
+-------------------------------------------------------------------
 Mon Feb  1 04:46:24 UTC 2021 - Sheng Mao <shngmao@gmail.com>
 
 - fossil 2.14

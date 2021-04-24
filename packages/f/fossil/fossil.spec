@@ -16,23 +16,27 @@
 #
 
 
-%bcond_with system_sqlite
 %bcond_without tests
+%if 0%{?suse_version} > 1500
+%bcond_without system_sqlite
+%else
+%bcond_with system_sqlite
+%endif
 Name:           fossil
-Version:        2.14
+Version:        2.15.1
 Release:        0
 Summary:        Distributed software configuration management
 License:        BSD-2-Clause
 Group:          Development/Tools/Version Control
-URL:            https://www.fossil-scm.org/
-Source:         %{URL}/index.html/uv/%{name}-src-%{version}.tar.gz
+URL:            https://fossil-scm.org/
+Source:         https://fossil-scm.org/home/uv/fossil-src-%{version}.tar.gz
 BuildRequires:  fuse-devel
 BuildRequires:  gcc
 BuildRequires:  openssl-devel
 BuildRequires:  tcl
 BuildRequires:  zlib-devel
 %if %{with system_sqlite}
-BuildRequires:  sqlite3-devel >= 3.34.0
+BuildRequires:  sqlite3-devel >= 3.35.0
 %endif
 
 %description
