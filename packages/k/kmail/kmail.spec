@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmail
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Email/Clients
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kmail2
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  gettext-devel
 BuildRequires:  libgpgmepp-devel
@@ -83,6 +87,7 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(QGpgme)
+BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
@@ -108,10 +113,6 @@ Provides:       kmail5 = %{version}
 Obsoletes:      kmail5 < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 %if %{with lang}
 %requires_eq    libKF5PimCommon5
 %requires_eq    libKF5PimCommonAkonadi5
@@ -141,7 +142,7 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -167,7 +168,6 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %license LICENSES/*
 %{_kf5_debugdir}/kmail.categories
 %{_kf5_debugdir}/kmail.renamecategories
-%dir %{_kf5_appstreamdir}/
 %dir %{_kf5_plugindir}/akonadi
 %dir %{_kf5_plugindir}/akonadi/config
 %doc %lang(en) %{_kf5_htmldir}/en/akonadi_archivemail_agent/
@@ -181,6 +181,7 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %{_kf5_bindir}/akonadi_archivemail_agent
 %{_kf5_bindir}/akonadi_followupreminder_agent
 %{_kf5_bindir}/akonadi_mailfilter_agent
+%{_kf5_bindir}/akonadi_mailmerge_agent
 %{_kf5_bindir}/akonadi_sendlater_agent
 %{_kf5_bindir}/akonadi_unifiedmailbox_agent
 %{_kf5_bindir}/kmail*
