@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 17 08:39:27 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.1.1:
+  + Better error handling during database initialization.
+  + Implemented tracker_sparql_connection_update_array_async
+    over TrackerBatch, resulting in lower memory usage.
+  + VAPI updates.
+  + Updated tracker_sparql_connection_update_array docs.
+  + Leak and double free fixes.
+
+-------------------------------------------------------------------
 Tue Mar 23 09:24:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.1.0:
