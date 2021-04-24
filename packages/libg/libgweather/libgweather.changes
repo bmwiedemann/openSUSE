@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 17 09:16:18 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + Fix possible uninitialized variable in location entry.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Feb 16 10:33:55 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.beta:

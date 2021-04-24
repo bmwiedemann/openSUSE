@@ -17,7 +17,7 @@
 
 
 Name:           libgweather
-Version:        40.beta
+Version:        40.0
 Release:        0
 Summary:        Library to get online weather information
 License:        GPL-2.0-or-later

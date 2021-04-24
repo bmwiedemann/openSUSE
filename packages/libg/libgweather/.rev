@@ -801,4 +801,12 @@
     <comment>GNOME 40 - here we come (forwarded request 880985 from dimstar)</comment>
     <requestid>881154</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>0cb2da6ca90ec90d2eefd02a13f71651</srcmd5>
+    <version>40.0</version>
+    <time>1619298408</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 40.0 (forwarded request 886247 from dimstar)</comment>
+    <requestid>887484</requestid>
+  </revision>
 </revisionlist>
