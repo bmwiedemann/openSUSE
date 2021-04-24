@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 21 13:31:51 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Hardening: link as PIE (bsc#1184123).
+
+-------------------------------------------------------------------
 Fri Feb 19 07:41:27 UTC 2021 - pgajdos@suse.com
 
 - baselibs required by ImageMagick

@@ -615,4 +615,12 @@
   + baselibs.conf</comment>
     <requestid>873641</requestid>
   </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>4e0e1d54c655ad1cefad25cf7e215eff</srcmd5>
+    <version>0.20.2</version>
+    <time>1619298424</time>
+    <user>dimstar_suse</user>
+    <comment>Hardening: link as PIE (bsc#1184123). (forwarded request 887317 from wfrisch)</comment>
+    <requestid>887564</requestid>
+  </revision>
 </revisionlist>

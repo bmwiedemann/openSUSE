@@ -105,6 +105,7 @@ against LibRaw. LibRaw does not provide dynamic libraries.
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CXXFLAGS="%{optflags} -fPIC -DUSE_ZLIB"
+export LDFLAGS="$LDFLAGS -pie"
 %if %{debug_build}
 export CXXFLAGS="$CXXFLAGS -O0"
 %endif
