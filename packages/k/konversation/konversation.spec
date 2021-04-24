@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konversation
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        A graphical IRC client by KDE
 License:        GPL-2.0-or-later
@@ -32,6 +32,8 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-OPENSUSE
+Patch0:         0001-Use-qdbus-qt5-on-openSUSE.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libqca-qt5-devel
 BuildRequires:  cmake(KF5Archive) >= %{kf5_version}
@@ -58,7 +60,7 @@ BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Core) >= 5.12.0
+BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang = %{version}
@@ -83,7 +85,7 @@ Features:
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -100,7 +102,6 @@ Features:
 %license LICENSES/*
 %doc AUTHORS ChangeLog NEWS README
 %doc %{_kf5_htmldir}/en/konversation/
-%dir %{_kf5_appstreamdir}
 %dir %{_kf5_sharedir}/kconf_update/
 %{_kf5_applicationsdir}/org.kde.konversation.desktop
 %{_kf5_appstreamdir}/org.kde.konversation.appdata.xml

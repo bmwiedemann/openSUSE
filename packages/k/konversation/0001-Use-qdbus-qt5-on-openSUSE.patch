@@ -1,0 +1,95 @@
+From 98d533470dbcedcd864115f30ac1cd0eaedd4f46 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Sat, 17 Apr 2021 22:46:13 +0200
+Subject: [PATCH] Use qdbus-qt5 on openSUSE
+
+---
+ data/scripting_support/python/konversation/dbus.py |  2 +-
+ data/scripts/fortune                               |  2 +-
+ data/scripts/media                                 |  2 +-
+ data/scripts/sayclip                               |  2 +-
+ data/scripts/uptime                                | 10 +++++-----
+ 5 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/data/scripting_support/python/konversation/dbus.py b/data/scripting_support/python/konversation/dbus.py
+index 163cfc63..c0940453 100644
+--- a/data/scripting_support/python/konversation/dbus.py
++++ b/data/scripting_support/python/konversation/dbus.py
+@@ -83,4 +83,4 @@ except IndexError:
+ 
+ default_message_prefix = ''
+ 
+-_dbus_command = ('qdbus', 'org.kde.konversation', '/irc')
++_dbus_command = ('qdbus-qt5', 'org.kde.konversation', '/irc')
+diff --git a/data/scripts/fortune b/data/scripts/fortune
+index 71379cc0..e68b2a08 100755
+--- a/data/scripts/fortune
++++ b/data/scripts/fortune
+@@ -51,4 +51,4 @@ while (<FORTUNES>) {
+     }
+ }
+ close(FORTUNES);
+-exec 'qdbus', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, $MESSAGE;
++exec 'qdbus-qt5', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, $MESSAGE;
+diff --git a/data/scripts/media b/data/scripts/media
+index a0a7dbaf..708a11dd 100755
+--- a/data/scripts/media
++++ b/data/scripts/media
+@@ -62,7 +62,7 @@ preferred_media = {
+ # 'qdbus' command installed by Qt. If you need to you can change this here,
+ # but beware that the output format of the alternate command has to match that
+ # of 'qdbus'.
+-dbus_command = 'qdbus'
++dbus_command = 'qdbus-qt5'
+ 
+ # If one of the title, album or artist metadata fields contains a character
+ # listed in FIXUP_CHARS, or if a string matching the regular expression given
+diff --git a/data/scripts/sayclip b/data/scripts/sayclip
+index 37cb550b..1ab29565 100755
+--- a/data/scripts/sayclip
++++ b/data/scripts/sayclip
+@@ -21,7 +21,7 @@ except ImportError:
+     sys.exit("This script is intended to be run from within Konversation.")
+ 
+ try:
+-    clipboard = subprocess.check_output(('qdbus', 'org.kde.klipper', '/klipper', 'getClipboardContents'))
++    clipboard = subprocess.check_output(('qdbus-qt5', 'org.kde.klipper', '/klipper', 'getClipboardContents'))
+ except subprocess.CalledProcessError:
+     konversation.dbus.error(i18n("Unable to retrieve clipboard contents from Klipper."), exit=True)
+ 
+diff --git a/data/scripts/uptime b/data/scripts/uptime
+index 764239de..5ff30ac9 100755
+--- a/data/scripts/uptime
++++ b/data/scripts/uptime
+@@ -19,7 +19,7 @@ if($PLATFORM eq "FreeBSD") {
+ } else {
+ 	$UPTIME = `cat /proc/uptime`;
+ 	if (not $UPTIME) {
+-		exec 'qdbus', 'org.kde.konversation', '/irc', 'info', 'Could not read uptime. Check that /proc/uptime exists.';
++		exec 'qdbus-qt5', 'org.kde.konversation', '/irc', 'info', 'Could not read uptime. Check that /proc/uptime exists.';
+ 	}
+ 	@uparray = split(/\./, $UPTIME);
+     $seconds = $uparray[0];
+@@ -40,15 +40,15 @@ if($seconds > 60)
+ 	$minutes = int($seconds/60);
+ }
+ if( $days && $hours ) {
+-	exec 'qdbus', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $days days, $hours hours and $minutes minutes";
++	exec 'qdbus-qt5', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $days days, $hours hours and $minutes minutes";
+ }
+ elsif( !$days && $hours ) {
+-	exec 'qdbus', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $hours hours and $minutes minutes";
++	exec 'qdbus-qt5', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $hours hours and $minutes minutes";
+ }
+ elsif( $days && !$hours ) {
+-	exec 'qdbus', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $days days and $minutes minutes";
++	exec 'qdbus-qt5', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $days days and $minutes minutes";
+ }
+ elsif( !$days && !$hours ) {
+-	exec 'qdbus', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $minutes minutes";
++	exec 'qdbus-qt5', 'org.kde.konversation', '/irc', 'say', $SERVER, $TARGET, "Uptime: $minutes minutes";
+ }
+ 
+-- 
+2.31.1
+
