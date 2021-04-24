@@ -1154,4 +1154,30 @@
     <comment>GNOME 40 - here we come (forwarded request 880925 from dimstar)</comment>
     <requestid>881097</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>85e619d64d415fc0f3807f463444cefb</srcmd5>
+    <version>40.1</version>
+    <time>1619298431</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 3 patches from upstream (reversed) to remove more synctex
+  related patches in SLE/Leap where texlive is too old
+  (boo#1184093):
+  + 0001-reversed-synctex-Annotate-more-functions-that-wraps-formatting-strings.patch
+  + 0002-reversed-synctex-Sync-against-upstream-synctex.patch
+  + 0003-reversed-cut-n-paste-Annotate-functions-that-wraps-formatting-strings.patch
+- Rebase patch since meson is used now instead of autoconf:
+  + 0006-reversed-synctex-Update-from-version-1.18-to-1.21.patch
+
+- Update to version 40.1:
+  + Avoid changing soname.
+- Changes from version 40.0:
+  + comics: Add support for RAR v5 archives through libarchive.
+  + Updated appliction help.
+  + unarr: Add error reporting to open function.
+  + Shell:
+    - Add two new shortcuts.
+    - Set page cache size with correct type.
+  + Updated translations.</comment>
+    <requestid>887999</requestid>
+  </revision>
 </revisionlist>

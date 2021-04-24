@@ -1,0 +1,18 @@
+--- b/cut-n-paste/synctex/synctex_parser_utils.c
++++ a/cut-n-paste/synctex/synctex_parser_utils.c
+@@ -86,7 +86,6 @@
+ #   include <syslog.h>
+ #endif
+ 
+-__attribute__((__format__ (__printf__, 3, 0)))
+ static int _synctex_log(int level, const char * prompt, const char * reason,va_list arg) {
+ 	int result;
+ #	ifdef SYNCTEX_RECENT_WINDOWS
+@@ -133,7 +132,6 @@
+ 	return result;
+ }
+ 
+-__attribute__((__format__ (__printf__, 1, 2)))
+ int _synctex_error(const char * reason,...) {
+     va_list arg;
+     int result;

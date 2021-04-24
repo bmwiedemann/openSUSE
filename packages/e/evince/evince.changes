@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Apr 22 07:49:39 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add 3 patches from upstream (reversed) to remove more synctex
+  related patches in SLE/Leap where texlive is too old
+  (boo#1184093):
+  + 0001-reversed-synctex-Annotate-more-functions-that-wraps-formatting-strings.patch
+  + 0002-reversed-synctex-Sync-against-upstream-synctex.patch
+  + 0003-reversed-cut-n-paste-Annotate-functions-that-wraps-formatting-strings.patch
+- Rebase patch since meson is used now instead of autoconf:
+  + 0006-reversed-synctex-Update-from-version-1.18-to-1.21.patch
+
+-------------------------------------------------------------------
+Sat Apr 17 09:27:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.1:
+  + Avoid changing soname.
+- Changes from version 40.0:
+  + comics: Add support for RAR v5 archives through libarchive.
+  + Updated appliction help.
+  + unarr: Add error reporting to open function.
+  + Shell:
+    - Add two new shortcuts.
+    - Set page cache size with correct type.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Feb 15 10:41:07 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 3.39.2:

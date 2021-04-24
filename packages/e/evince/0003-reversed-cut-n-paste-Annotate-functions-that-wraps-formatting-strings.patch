@@ -1,0 +1,38 @@
+--- b/cut-n-paste/synctex/synctex_parser.c
++++ a/cut-n-paste/synctex/synctex_parser.c
+@@ -8411,7 +8411,6 @@
+     int length;             /*  the number of chars appended */
+ };
+ 
+-__attribute__((__format__ (__printf__, 2, 3)))
+ static int _synctex_updater_print(synctex_updater_p updater, const char * format, ...) {
+     int result = 0;
+     if (updater) {
+@@ -8448,7 +8447,6 @@
+ /**
+  *  gzvprintf is not available until OSX 10.10
+  */
+-__attribute__((__format__ (__printf__, 2, 3)))
+ static int _synctex_updater_print_gz(synctex_updater_p updater, const char * format, ...) {
+     int result = 0;
+     if (updater) {
+--- b/cut-n-paste/synctex/synctex_parser_utils.c
++++ a/cut-n-paste/synctex/synctex_parser_utils.c
+@@ -149,7 +149,6 @@
+     return result;
+ }
+ 
+-__attribute__((__format__ (__printf__, 1, 2)))
+ int _synctex_debug(const char * reason,...) {
+     va_list arg;
+     int result;
+--- b/cut-n-paste/unarr/common/unarr.c
++++ a/cut-n-paste/unarr/common/unarr.c
+@@ -92,7 +92,6 @@
+     return ar->get_comment(ar, buffer, count);
+ }
+ 
+-__attribute__((__format__ (__printf__, 4, 0)))
+ void ar_log(const char *prefix, const char *file, int line, const char *msg, ...)
+ {
+     va_list args;

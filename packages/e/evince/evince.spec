@@ -20,20 +20,23 @@
 %define pluginAPI 4
 
 Name:           evince
-Version:        3.39.2
+Version:        40.1
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://wiki.gnome.org/Apps/Evince
-Source0:        https://download.gnome.org/sources/evince/3.39/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/evince/40/%{name}-%{version}.tar.xz
 # PATCH-FIX-SLE alarrosa@suse.com - Reverse upstream bump of synctex required version to build with texlive 2017
-Patch0:         0001-reversed-synctex-Move-_GNU_SOURCE-to-the-top-of-the-source-code.patch
-Patch1:         0002-reversed-synctex-Remove-unused-labels.patch
-Patch2:         0003-reversed-synctex-Silence-error-when-no-synctex-file-is-present.patch
-Patch3:         0004-reversed-synctex-Annotate-functions-that-wrap-vfprintf.patch
-Patch4:         0005-reversed-synctex-Fix-compilation.patch
-Patch5:         0006-reversed-synctex-Update-from-version-1.18-to-1.21.patch
+Patch0:         0001-reversed-synctex-Annotate-more-functions-that-wraps-formatting-strings.patch
+Patch1:         0002-reversed-synctex-Sync-against-upstream-synctex.patch
+Patch2:         0003-reversed-cut-n-paste-Annotate-functions-that-wraps-formatting-strings.patch
+Patch3:         0001-reversed-synctex-Move-_GNU_SOURCE-to-the-top-of-the-source-code.patch
+Patch4:         0002-reversed-synctex-Remove-unused-labels.patch
+Patch5:         0003-reversed-synctex-Silence-error-when-no-synctex-file-is-present.patch
+Patch6:         0004-reversed-synctex-Annotate-functions-that-wrap-vfprintf.patch
+Patch7:         0005-reversed-synctex-Fix-compilation.patch
+Patch8:         0006-reversed-synctex-Update-from-version-1.18-to-1.21.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
@@ -52,13 +55,13 @@ BuildRequires:  pkgconfig(ddjvuapi) >= 3.5.22
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.0
 BuildRequires:  pkgconfig(gspell-1) >= 1.6.0
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libarchive) >= 3.2.0
 BuildRequires:  pkgconfig(libgxps) >= 0.2.1
@@ -136,7 +139,7 @@ Group:          Productivity/Office/Other
 Requires:       %{name} = %{version}
 # For "send to" action; the action will be hidden if nautilus-sendto is not available
 Recommends:     nautilus-sendto
-Supplements:    packageand(evince:nautilus)
+Supplements:    (evince and nautilus)
 
 %description -n nautilus-evince
 Evince is a document viewer capable of displaying multiple and
@@ -217,6 +220,9 @@ A plugin for Evince to read XPS documents.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
 %endif
 translation-update-upstream po %{name}
 
