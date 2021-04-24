@@ -20,15 +20,19 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkgapi
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Extension for accessing Google data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  cyrus-sasl-devel
-BuildRequires:  extra-cmake-modules >= 5.55.0
+BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Contacts)
@@ -36,22 +40,19 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Qt5Core) >= 5.10.0
+BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Network) >= 5.10.0
-BuildRequires:  cmake(Qt5Test) >= 5.10.0
-BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.10.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.10.0
-BuildRequires:  cmake(Qt5Xml) >= 5.10.0
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
-An extension for accessing some Google services, such as Google Calendar, Google Contacts and Google tasks.
+An extension for accessing some Google services, such as Google Calendar,
+Google Contacts and Google tasks.
 
 %package -n libKPimGAPIBlogger5
 Summary:        Extension for accessing Google data
@@ -59,7 +60,8 @@ Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 
 %description -n libKPimGAPIBlogger5
-An extension for accessing some Google services, such as Google Calendar, Google Contacts and Google tasks.
+An extension for accessing some Google services, such as Google Calendar,
+Google Contacts and Google tasks.
 
 %package -n libKPimGAPICalendar5
 Summary:        Extension for accessing Google data
@@ -67,7 +69,8 @@ Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 
 %description -n libKPimGAPICalendar5
-An extension for accessing some Google services, such as Google Calendar, Google Contacts and Google tasks.
+An extension for accessing some Google services, such as Google Calendar,
+Google Contacts and Google tasks.
 
 %package -n libKPimGAPIContacts5
 Summary:        Extension for accessing Google data
@@ -75,7 +78,8 @@ Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 
 %description -n libKPimGAPIContacts5
-An extension for accessing some Google services, such as Google Calendar, Google Contacts and Google tasks.
+An extension for accessing some Google services, such as Google Calendar,
+Google Contacts and Google tasks.
 
 %package -n libKPimGAPICore5
 Summary:        Extension for accessing Google data
@@ -84,7 +88,8 @@ Recommends:     %{name}-lang = %{version}
 Provides:       %{name} = %{version}
 
 %description -n libKPimGAPICore5
-An extension for accessing some Google services, such as Google Calendar, Google Contacts and Google tasks.
+An extension for accessing some Google services, such as Google Calendar,
+Google Contacts and Google tasks.
 
 %package -n libKPimGAPIDrive5
 Summary:        Extension for accessing Google data
@@ -92,7 +97,8 @@ Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 
 %description -n libKPimGAPIDrive5
-An extension for accessing some Google services, such as Google Calendar, Google Contacts and Google tasks.
+An extension for accessing some Google services, such as Google Calendar,
+Google Contacts and Google tasks.
 
 %package -n libKPimGAPILatitude5
 Summary:        Extension for accessing Google data
@@ -100,7 +106,8 @@ Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 
 %description -n libKPimGAPILatitude5
-An extension for accessing some Google services, such as Google Calendar, Google Contacts and Google tasks.
+An extension for accessing some Google services, such as Google Calendar,
+Google Contacts and Google tasks.
 
 %package -n libKPimGAPIMaps5
 Summary:        Extension for accessing Google data
@@ -108,7 +115,8 @@ Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 
 %description -n libKPimGAPIMaps5
-An extension for accessing some Google services, such as Google Calendar, Google Contacts and Google tasks.
+An extension for accessing some Google services, such as Google Calendar,
+Google Contacts and Google tasks.
 
 %package -n libKPimGAPITasks5
 Summary:        Extension for accessing Google data
@@ -116,7 +124,8 @@ Group:          System/GUI/KDE
 Recommends:     %{name}-lang = %{version}
 
 %description -n libKPimGAPITasks5
-An extension for accessing some Google services, such as Google Calendar, Google Contacts and Google tasks.
+An extension for accessing some Google services, such as Google Calendar,
+Google Contacts and Google tasks.
 
 %package -n sasl2-kdexoauth2
 Summary:        Cyrus SASL plugin for using Google's XOAUTH
@@ -126,8 +135,8 @@ Provides:       sasl2-kdexoauth2-3 = %{version}
 Obsoletes:      sasl2-kdexoauth2-3 < %{version}
 
 %description -n sasl2-kdexoauth2
-This package provides a Cyrus SASL plugin to use Google's XOAUTH authentication for receiving
-and sending mail through Google servers.
+This package provides a Cyrus SASL plugin to use Google's XOAUTH authentication
+for receiving and sending mail through Google servers.
 
 %package devel
 Summary:        Build environment for libkgapi
@@ -152,7 +161,7 @@ to develop KDE PIM applications.
 %lang_package
 
 %prep
-%setup -q -n libkgapi-%{version}
+%autosetup -p1 -n libkgapi-%{version}
 
 %build
 # workaround, kio-gdrive crashes when loading libKPimGAPIDrive5 if built with LTO (boo#1148217)
@@ -197,8 +206,8 @@ to develop KDE PIM applications.
 
 %files -n libKPimGAPICore5
 %license LICENSES/*
-%{_kf5_libdir}/libKPimGAPICore.so.*
 %{_kf5_debugdir}/libkgapi.categories
+%{_kf5_libdir}/libKPimGAPICore.so.*
 
 %files -n libKPimGAPIDrive5
 %license LICENSES/*
