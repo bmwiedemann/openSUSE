@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr 17 09:20:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.0:
+  + Add API to request fixed zoom level.
+  + Add API to request fixed aspect ratio when scaling.
+  + Add APIs for client initiated desktop resize.
+  + Implement "Extended Desktop Resize" VNC extension.
+  + Implement "Desktop Rename" VNC extension.
+  + Implement "Last Rect" VNC extension.
+  + Implement "XVP" (power control) VNC extension.
+  + Implement VeNCrypt "plain" auth mode.
+  + Implement alpha cursor VNC extension.
+  + Fix JPEG decoding in low colour depth modes.
+  + Update translations.
+
+-------------------------------------------------------------------
 Sat Mar 14 13:03:40 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(gvnc-1.0) BuildRequires: Package builds fine
