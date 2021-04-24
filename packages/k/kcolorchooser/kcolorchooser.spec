@@ -1,7 +1,7 @@
 #
 # spec file for package kcolorchooser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcolorchooser
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Color Chooser
 License:        MIT
 Group:          Productivity/Graphics/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kcolorchooser
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  oxygen-icon-theme-large
 BuildRequires:  update-desktop-files
@@ -37,19 +41,15 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
-This is an color chooser application for KDE.
+This is an color chooser application by KDE.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -65,9 +65,9 @@ This is an color chooser application for KDE.
 %files
 %license COPYING*
 %{_kf5_applicationsdir}/org.kde.kcolorchooser.desktop
+%{_kf5_appstreamdir}/org.kde.kcolorchooser.appdata.xml
 %{_kf5_bindir}/kcolorchooser
 %{_kf5_iconsdir}/hicolor/*/apps/kcolorchooser.png
-%{_kf5_appstreamdir}/org.kde.kcolorchooser.appdata.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
