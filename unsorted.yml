@@ -1,7 +1,7 @@
 unsorted:
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -8433,7 +8433,6 @@ unsorted:
   - leechcraft-xproxy 
   - leechcraft-xtazy 
   - leechcraft-zalil 
-  - legion-devel 
   - leiningen 
   - lekha: [x86_64] 
   - lemonbar 
@@ -11519,7 +11518,6 @@ unsorted:
   - libleechcraft-util-xdg-qt5-0_6_75 
   - libleechcraft-util-xpc-qt5-0_6_75_2 
   - libleechcraft-util-xsd-qt5-0_6_75 
-  - liblegion1 
   - liblept5 
   - liblept5-32bit: [x86_64] 
   - libleveldb1 
@@ -21118,7 +21116,6 @@ unsorted:
   - python3-senlinclient 
   - python3-smbus 
   - python3-spglib 
-  - python3-sphinx-autodoc-typehints 
   - python3-sphinxbase 
   - python3-sphinxbase5 
   - python3-splinter 
@@ -21383,7 +21380,7 @@ unsorted:
   - python36-actdiag 
   - python36-adal 
   - python36-adapt-parser 
-  - python36-adblock: [x86_64] 
+  - python36-adblock 
   - python36-addict 
   - python36-aeidon 
   - python36-aenum 
@@ -23022,13 +23019,11 @@ unsorted:
   - python36-pycha 
   - python36-pychm 
   - python36-pyclipper 
-  - python36-pycocotools 
   - python36-pycodestyle 
   - python36-pycountry 
   - python36-pycparser 
   - python36-pycryptodome 
   - python36-pycryptodomex 
-  - python36-pycsw 
   - python36-pyct 
   - python36-pycups 
   - python36-pycurl 
@@ -23050,7 +23045,6 @@ unsorted:
   - python36-pyeapi 
   - python36-pyee 
   - python36-pyelftools 
-  - python36-pyemd 
   - python36-pyenchant 
   - python36-pyface 
   - python36-pyfakefs 
@@ -23156,7 +23150,6 @@ unsorted:
   - python36-pysmbc 
   - python36-pysmi 
   - python36-pysnmp 
-  - python36-pysofaconventions 
   - python36-pysolr 
   - python36-pyspnego 
   - python36-pysrt 
@@ -23390,7 +23383,6 @@ unsorted:
   - python36-qtwebengine-qt5 
   - python36-qtwebengine-qt5-api 
   - python36-qtwebengine-qt5-sip 
-  - python36-quantities 
   - python36-quantum-blackbird 
   - python36-queuelib 
   - python36-quicktions 
@@ -23446,7 +23438,6 @@ unsorted:
   - python36-requirements-parser 
   - python36-requirementslib 
   - python36-requre 
-  - python36-resampy 
   - python36-resolvelib 
   - python36-responses 
   - python36-restructuredtext_lint 
@@ -23494,7 +23485,6 @@ unsorted:
   - python36-s3fs 
   - python36-s3transfer 
   - python36-sadisplay 
-  - python36-samplerate 
   - python36-sane 
   - python36-sanlock 
   - python36-sarge 
@@ -23595,6 +23585,7 @@ unsorted:
   - python36-speaklater 
   - python36-spec 
   - python36-sphinx-argparse 
+  - python36-sphinx-autodoc-typehints 
   - python36-sphinx-bootstrap-theme 
   - python36-sphinx-feature-classification 
   - python36-sphinx-issues 
@@ -24187,7 +24178,7 @@ unsorted:
   - python38-actdiag 
   - python38-adal 
   - python38-adapt-parser 
-  - python38-adblock: [x86_64] 
+  - python38-adblock 
   - python38-addict 
   - python38-aeidon 
   - python38-aenum 
@@ -26468,6 +26459,7 @@ unsorted:
   - python38-speaklater 
   - python38-spec 
   - python38-sphinx-argparse 
+  - python38-sphinx-autodoc-typehints 
   - python38-sphinx-bootstrap-theme 
   - python38-sphinx-feature-classification 
   - python38-sphinx-issues 
@@ -26983,6 +26975,7 @@ unsorted:
   - python39-PyInstaller 
   - python39-PyJWT 
   - python39-PyKMIP 
+  - python39-PyLaTeX 
   - python39-PyMeeus 
   - python39-PyMeta3 
   - python39-PyMsgBox 
@@ -27078,7 +27071,7 @@ unsorted:
   - python39-actdiag 
   - python39-adal 
   - python39-adapt-parser 
-  - python39-adblock: [x86_64] 
+  - python39-adblock 
   - python39-addict 
   - python39-aenum 
   - python39-aesara 
@@ -27613,6 +27606,8 @@ unsorted:
   - python39-convertdate 
   - python39-cookies 
   - python39-cooldict 
+  - python39-copr 
+  - python39-copr-cli 
   - python39-coreapi 
   - python39-coreapi-cli 
   - python39-coreschema 
@@ -27646,6 +27641,7 @@ unsorted:
   - python39-cstruct 
   - python39-csv23 
   - python39-ctypescrypto 
+  - python39-cu2qu 
   - python39-cufflinks 
   - python39-curio 
   - python39-curses 
@@ -28127,6 +28123,7 @@ unsorted:
   - python39-httpretty 
   - python39-httpsig_cffi 
   - python39-httptools 
+  - python39-hug 
   - python39-humanfriendly 
   - python39-humanhash3 
   - python39-humanize 
@@ -28340,6 +28337,7 @@ unsorted:
   - python39-liblarch 
   - python39-liblarch-gtk 
   - python39-libnacl 
+  - python39-librosa 
   - python39-librouteros 
   - python39-libsass 
   - python39-libusb1 
@@ -28387,6 +28385,8 @@ unsorted:
   - python39-marathon 
   - python39-markdown-math 
   - python39-markdown2 
+  - python39-marshmallow 
+  - python39-marshmallow-enum 
   - python39-matplotlib 
   - python39-matplotlib-cairo 
   - python39-matplotlib-gtk3 
@@ -28797,11 +28797,13 @@ unsorted:
   - python39-pycha 
   - python39-pychm 
   - python39-pyclipper 
+  - python39-pycocotools 
   - python39-pycodestyle 
   - python39-pycountry 
   - python39-pycparser 
   - python39-pycryptodome 
   - python39-pycryptodomex 
+  - python39-pycsw 
   - python39-pyct 
   - python39-pycups 
   - python39-pycurl 
@@ -28823,6 +28825,7 @@ unsorted:
   - python39-pyeapi 
   - python39-pyee 
   - python39-pyelftools 
+  - python39-pyemd 
   - python39-pyenchant 
   - python39-pyerfa 
   - python39-pyface 
@@ -28929,6 +28932,7 @@ unsorted:
   - python39-pysmi 
   - python39-pysndfile 
   - python39-pysnmp 
+  - python39-pysofaconventions 
   - python39-pysolr 
   - python39-pyspnego 
   - python39-pysrt 
@@ -29039,6 +29043,7 @@ unsorted:
   - python39-python-coveralls 
   - python39-python-crfsuite 
   - python39-python-daemon 
+  - python39-python-datamatrix 
   - python39-python-dateutil 
   - python39-python-dbusmock 
   - python39-python-docs-theme 
@@ -29072,6 +29077,7 @@ unsorted:
   - python39-python-poppler 
   - python39-python-prctl 
   - python39-python-ptrace 
+  - python39-python-qdatamatrix 
   - python39-python-qprogedit 
   - python39-python-rapidjson 
   - python39-python-redis-lock 
@@ -29159,6 +29165,7 @@ unsorted:
   - python39-qtwebengine-qt5 
   - python39-qtwebengine-qt5-api 
   - python39-qtwebengine-qt5-sip 
+  - python39-quantities 
   - python39-queuelib 
   - python39-quicktions 
   - python39-quimb: [x86_64] 
@@ -29213,6 +29220,7 @@ unsorted:
   - python39-requirements-detector 
   - python39-requirements-parser 
   - python39-requre 
+  - python39-resampy 
   - python39-resolvelib 
   - python39-responses 
   - python39-restructuredtext_lint 
@@ -29258,6 +29266,7 @@ unsorted:
   - python39-rustcfg 
   - python39-s3transfer 
   - python39-sadisplay 
+  - python39-samplerate 
   - python39-sane 
   - python39-sarge 
   - python39-sas7bdat 
@@ -29367,6 +29376,7 @@ unsorted:
   - python39-speaklater 
   - python39-spec 
   - python39-sphinx-argparse 
+  - python39-sphinx-autodoc-typehints 
   - python39-sphinx-bootstrap-theme 
   - python39-sphinx-feature-classification 
   - python39-sphinx-issues 
@@ -29708,6 +29718,7 @@ unsorted:
   - python39-zetup 
   - python39-zhon 
   - python39-zict 
+  - python39-zignal 
   - python39-zipp 
   - python39-zipstream 
   - python39-zodbpickle 
@@ -40177,6 +40188,7 @@ unsorted:
   - typelib-1_0-Gladeui-2_0 
   - typelib-1_0-GnomeAutoar-0_1 
   - typelib-1_0-GnomeAutoarGtk-0_1 
+  - typelib-1_0-GnomeKeyring-1_0 
   - typelib-1_0-GoVirt-1_0 
   - typelib-1_0-Gom-1_0 
   - typelib-1_0-GooCanvas-2_0 
