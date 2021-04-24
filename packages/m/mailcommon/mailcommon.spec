@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           mailcommon
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Base KDE PIM library for mail-handling applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  xsltproc
@@ -56,18 +60,15 @@ BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5DBus) >= 5.12.0
-BuildRequires:  cmake(Qt5Test) >= 5.12.0
-BuildRequires:  cmake(Qt5UiPlugin) >= 5.12.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
-BuildRequires:  cmake(Qt5Xml) >= 5.12.0
+BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5UiPlugin)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 Recommends:     %{name}-lang
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 The mailcommon library is a KDE PIM project to provide a
@@ -78,7 +79,7 @@ framework to build applications which handle e-mail.
 %endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -92,7 +93,7 @@ framework to build applications which handle e-mail.
 %endif
 
 %package -n libKF5MailCommon5
-Summary:        Common Mail library for kdepim
+Summary:        Common Mail library for KDE PIM applications
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Requires:       %{name}
