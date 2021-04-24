@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 19 08:59:49 UTC 2021 - pgajdos@suse.com
+
+- version update to 3.06.0.1
+  * lot of fuzztest fixes, e. g. CVE-2021-3496 [bsc#1184756]
+- deleted patches
+  - CVE-2018-17088.patch (upstreamed)
+
+-------------------------------------------------------------------
 Fri Jan 22 03:28:11 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to version 3.04

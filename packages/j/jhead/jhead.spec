@@ -17,16 +17,14 @@
 
 
 Name:           jhead
-Version:        3.04
+Version:        3.06.0.1
 Release:        0
 Summary:        Tool to Manipulate the Nonimage Part of EXIF Compliant JPEG Files
 License:        SUSE-Public-Domain
 Group:          Productivity/Graphics/Other
 URL:            http://www.sentex.net/~mwandel/jhead/
-Source0:        http://www.sentex.net/~mwandel/jhead/jhead-%{version}.tar.gz
+Source0:        https://github.com/Matthias-Wandel/jhead/archive/refs/tags/%{version}.tar.gz
 Source1:        %{name}.changes
-# PATCH-FIX-SECURITY CVE-2018-17088.patch CVE-2018-17088 boo1108672 sbrabec@suse.com -- Integer overflow fix.
-Patch0:         CVE-2018-17088.patch
 Requires:       %{_bindir}/jpegtran
 Requires:       %{_bindir}/mogrify
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -41,7 +39,6 @@ thumbnails that digital cameras put into the EXIF header.
 
 %prep
 %setup -q
-%patch0 -p1
 
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE1}")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
