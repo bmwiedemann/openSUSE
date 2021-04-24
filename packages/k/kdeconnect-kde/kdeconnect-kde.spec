@@ -1,7 +1,7 @@
 #
 # spec file for package kdeconnect-kde
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kdeconnect-kde
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -55,6 +55,7 @@ BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libfakekey)
@@ -133,7 +134,7 @@ install -D -m 0644 %{SOURCE101} \
 %{_datadir}/zsh/site-functions/_kdeconnect
 
 %files
-%license COPYING
+%license LICENSES/*
 %doc README*
 %if 0%{?suse_version} < 1550
 %config(noreplace) %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/%{name}
@@ -144,7 +145,6 @@ install -D -m 0644 %{SOURCE101} \
 %dir %{_datadir}/deepin/dde-file-manager
 %dir %{_datadir}/deepin/dde-file-manager/oem-menuextensions
 %dir %{_datadir}/nautilus-python
-%dir %{_kf5_appstreamdir}
 %dir %{_kf5_sharedir}/kdeconnect
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
@@ -171,7 +171,6 @@ install -D -m 0644 %{SOURCE101} \
 %{_kf5_plugindir}/
 %{_kf5_qmldir}/
 %{_kf5_servicesdir}/
-%{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/dbus-1/services/org.kde.kdeconnect.service
 %{_kf5_sharedir}/kdeconnect/kdeconnect_findthisdevice_config.qml
 %{_kf5_sharedir}/kdeconnect/kdeconnect_pausemusic_config.qml
