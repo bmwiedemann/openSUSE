@@ -142,6 +142,10 @@ sed -e 's|__FILLUPDIR__|%{_fillupdir}|' \
 sed -i '/install_html5/s/verbose=False/verbose=True/' %{name}-html5-%{html5_ver}/setup.py
 
 %build
+export CFLAGS="%{optflags}"
+%if 0%{?suse_version} <= 1500
+export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
+%endif
 python3 setup.py clean
 
 python3 setup.py build \
