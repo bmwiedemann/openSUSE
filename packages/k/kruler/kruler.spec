@@ -1,7 +1,7 @@
 #
 # spec file for package kruler
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kruler
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Screen Ruler
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kruler
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5DocTools)
@@ -40,10 +44,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -52,7 +52,7 @@ A screen ruler for the Plasma desktop environment
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -67,9 +67,10 @@ A screen ruler for the Plasma desktop environment
   %suse_update_desktop_file -r org.kde.kruler         Utility DesktopUtility
 
 %files
+%license COPYING*
 %doc %lang(en) %{_kf5_htmldir}/en/kruler/
 %{_kf5_applicationsdir}/org.kde.kruler.desktop
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.kruler.appdata.xml
 %{_kf5_bindir}/kruler
 %{_kf5_iconsdir}/hicolor/*/*/kruler*
 %{_kf5_notifydir}/kruler.notifyrc
