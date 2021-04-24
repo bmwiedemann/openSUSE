@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 29 23:36:48 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop deprecated (non-reentrant) qhull headers since we don't
+  provide the corresponding shared lib.
+- Move the qhull_r libs, headers, related files into new shared
+  lib libqhull_r and qhull_r-devel packages as appropriate; have
+  qhull_r-devel provide qhull-devel.
+- Move qhullcpp library, headers, and pkgconfig file into separate
+  qhullcpp-devel-static package.
+- qhullcpp is only supported as static library and needs to be
+  built with "-ffat-lto-objects"; add this to CXXFLAGS.
+- Delete unnecessary pkgconfig files corresponding to static libs
+  that are not built/installed.
+
+-------------------------------------------------------------------
 Fri Oct 23 16:27:02 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - updated to 2020.2 (8.0.2):

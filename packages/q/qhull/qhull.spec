@@ -1,7 +1,7 @@
 #
 # spec file for package qhull
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,30 +60,47 @@ Qhull does not support constrained Delaunay triangulations, triangulation of
 non-convex surfaces, mesh generation of non-convex objects, or medium-sized
 inputs in 9-D and higher.
 
-%package devel
+%package -n qhull_r-devel
 Summary:        Development and documentation files for qhull
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
+Provides:       qhull-devel = %{version}
+Obsoletes:      qhull-devel < %{version}
 
-%description devel
+%description -n qhull_r-devel
 Qhull computes the convex hull, Delaunay triangulation, Voronoi diagram,
 halfspace intersection about a point, furthest-site Delaunay triangulation,
 and furthest-site Voronoi diagram.
 
 This package contains the header files for the Qhull libraries.
 
+%package -n qhullcpp-devel-static
+Summary:        Development and documentation files for qhull - C++ interface
+Group:          Development/Libraries/C and C++
+Requires:       %{libname} = %{version}
+
+%description -n qhullcpp-devel-static
+Qhull computes the convex hull, Delaunay triangulation, Voronoi diagram,
+halfspace intersection about a point, furthest-site Delaunay triangulation,
+and furthest-site Voronoi diagram.
+
+This package contains the header files and static lib for Qhull's C++ interface.
+
 %prep
 %setup -q
 %patch1 -p1
 
 %build
+# Needed for static lib libqhullcpp.a
+export CXXFLAGS+=" -ffat-lto-objects"
+
 %cmake \
         -DDOC_INSTALL_DIR="%{_docdir}/%{name}" \
         -DINCLUDE_INSTALL_DIR="%{_includedir}" \
         -DLIB_INSTALL_DIR="%{_lib}" \
         -DBIN_INSTALL_DIR="%{_bindir}" \
         -DMAN_INSTALL_DIR="%{_mandir}/man1/"
-%cmake_build
+%cmake_build qhullcpp
 
 %install
 %cmake_install
@@ -93,6 +110,15 @@ mv %{buildroot}%{_prefix}/lib/cmake %{buildroot}%{_libdir}/
 mv %{buildroot}%{_prefix}/lib/pkgconfig %{buildroot}%{_libdir}/
 %endif
 rm %{buildroot}%{_docdir}/%{name}/COPYING.txt
+
+# Manually install cpp lib since it isn't installed by make install
+find ./ -name "libqhullcpp.a" -print -exec install -m0644 {} %{buildroot}%{_libdir}/ \;
+
+# We don't install static libs for qhull, so don't install the corresponding pkgconfig files either
+rm %{buildroot}%{_libdir}/pkgconfig/qhullstatic*.pc
+
+# Remove deprecated qhull headers
+rm -fr %{buildroot}%{_includedir}/libqhull
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -112,12 +138,15 @@ rm %{buildroot}%{_docdir}/%{name}/COPYING.txt
 %license COPYING.txt
 %{_libdir}/libqhull_r.so.*
 
-%files devel
-%{_includedir}/libqhull/
+%files -n qhull_r-devel
 %{_includedir}/libqhull_r/
-%{_includedir}/libqhullcpp/
 %{_libdir}/libqhull_r.so
 %{_libdir}/cmake/Qhull
-%{_libdir}/pkgconfig/qhull*pc
+%{_libdir}/pkgconfig/qhull_r.pc
+
+%files -n qhullcpp-devel-static
+%{_includedir}/libqhullcpp/
+%{_libdir}/libqhullcpp.a
+%{_libdir}/pkgconfig/qhullcpp.pc
 
 %changelog
