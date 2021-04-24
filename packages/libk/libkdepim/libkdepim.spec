@@ -18,13 +18,17 @@
 
 %bcond_without lang
 Name:           libkdepim
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Base package of kdepim
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiContact)
@@ -35,6 +39,7 @@ BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5JobWidgets)
@@ -47,10 +52,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5UiTools)
 BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This package contains the libkdepim library.
@@ -58,7 +59,7 @@ This package contains the libkdepim library.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -117,10 +118,10 @@ The development package for the libkdepim libraries
 
 %files
 %license LICENSES/*
-%{_kf5_debugdir}/libkdepim.categories
-%{_kf5_debugdir}/libkdepim.renamecategories
 %{_kf5_dbusinterfacesdir}/org.kde.addressbook.service.xml
 %{_kf5_dbusinterfacesdir}/org.kde.mailtransport.service.xml
+%{_kf5_debugdir}/libkdepim.categories
+%{_kf5_debugdir}/libkdepim.renamecategories
 %{_kf5_plugindir}/designer/
 
 %files -n libKF5Libkdepim5
