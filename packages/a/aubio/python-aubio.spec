@@ -1,7 +1,7 @@
 #
 # spec file for package python-aubio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python36 1
 Name:           python-aubio
 Version:        0.4.9
 Release:        0
 Summary:        A collection of tools for music analysis
 License:        GPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            http://aubio.org/
 Source:         http://aubio.org/pub/aubio-%{version}.tar.bz2
 Source1:        http://aubio.org/pub/aubio-%{version}.tar.bz2.asc
@@ -34,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
