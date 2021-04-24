@@ -1,5 +1,5 @@
 #
-# spec file for package gtk3
+# spec file for package gtk3-doc
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands
@@ -18,24 +18,21 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-
 %if "%{flavor}" == ""
 %global pname gtk3
 %bcond_with    doc
 %endif
-
 %if "%{flavor}" == "doc"
 %global pname gtk3-doc
 %bcond_without doc
 %endif
-
 # When updating the binary version, do not forget to also update baselibs.conf
 %define         gtk_binary_version 3.0.0
 %define _name   gtk
 %bcond_without  broadway
 %bcond_with     doc
 Name:           %{pname}
-Version:        3.24.27
+Version:        3.24.28
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
@@ -50,15 +47,13 @@ Source99:       baselibs.conf
 Patch0:         gtk3-GTK_PATH64.patch
 # PATCH-FIX-OPENSUSE gtk3-revert-forced-xftdpi.patch fvogt@opensuse.org -- Revert very controversal commit on GTK3, forcing DPI to 96
 Patch1:         gtk3-revert-forced-xftdpi.patch
+# PATCH-FIX-UPSTREAM gtk3-prevent-g_file_get_basename-return-NULL.patch boo#1185082, glgo#GNOME/gtk!3458 qkzhu@suse.com -- Fix a possible crash in gtk_show_uri
+Patch2:         gtk3-prevent-g_file_get_basename-return-NULL.patch
 
 BuildRequires:  cups-devel >= 1.7
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools-mini >= 0.19.7
-# Autotools requires gtk-doc even with --disable-gtk-doc, try again with meson
-%if %{with doc} || 1
-BuildRequires:  gtk-doc
-%endif
 BuildRequires:  hicolor-icon-theme
 # libtool is needed since we are using a git checkout
 BuildRequires:  libtool
@@ -100,6 +95,10 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xkbcommon) >= 0.2.0
 BuildRequires:  pkgconfig(xrandr)
+# Autotools requires gtk-doc even with --disable-gtk-doc, try again with meson
+%if %{with doc} || 1
+BuildRequires:  gtk-doc
+%endif
 
 %description
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -111,9 +110,6 @@ Summary:        The GTK+ toolkit library (version 3)
 Group:          System/Libraries
 Requires:       %{name}-data >= %{version}
 Requires:       %{name}-schema >= %{version}
-# Recommend Adwaita Icon Theme: GTK3 references this icon set in the code,
-# but some setups might still want to eliminate it (think limited size Live CDs)
-Recommends:     adwaita-icon-theme
 # Require gdk-pixbuf-loader-rsvg - bsc#1007453. We require adwaita-icon-theme
 # so we need something to load the svg icons.
 Requires:       gdk-pixbuf-loader-rsvg
@@ -131,6 +127,9 @@ Recommends:     %{name}-immodule-inuktitut = %{version}
 Recommends:     %{name}-immodule-thai = %{version}
 Recommends:     %{name}-immodule-tigrigna = %{version}
 Recommends:     %{name}-immodule-vietnamese = %{version}
+# Recommend Adwaita Icon Theme: GTK3 references this icon set in the code,
+# but some setups might still want to eliminate it (think limited size Live CDs)
+Recommends:     adwaita-icon-theme
 Recommends:     gvfs
 # Provide %%{name} to make the lang and immodules packages installable
 Provides:       %{name} = %{version}
@@ -160,7 +159,7 @@ Summary:        Amharic input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun): %{name}-tools
+Requires(postun):%{name}-tools
 Provides:       locale(%{name}:am)
 
 %description immodule-amharic
@@ -175,7 +174,7 @@ Summary:        Broadway input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun): %{name}-tools
+Requires(postun):%{name}-tools
 
 %description immodule-broadway
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -189,7 +188,7 @@ Summary:        Inuktitut input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun): %{name}-tools
+Requires(postun):%{name}-tools
 Provides:       locale(%{name}:iu)
 
 %description immodule-inuktitut
@@ -204,7 +203,7 @@ Summary:        Multipress input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun): %{name}-tools
+Requires(postun):%{name}-tools
 
 %description immodule-multipress
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -219,7 +218,7 @@ Summary:        Thai-Lao input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun): %{name}-tools
+Requires(postun):%{name}-tools
 Provides:       locale(%{name}:lo)
 Provides:       locale(%{name}:th)
 
@@ -235,7 +234,7 @@ Summary:        Tigrigna input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun): %{name}-tools
+Requires(postun):%{name}-tools
 Provides:       %{name}-immodules-tigrigna = %{version}
 Provides:       locale(%{name}:ti)
 Obsoletes:      %{name}-immodules-tigrigna < %{version}
@@ -252,7 +251,7 @@ Summary:        Vietnamese input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun): %{name}-tools
+Requires(postun):%{name}-tools
 Provides:       locale(%{name}:vi)
 
 %description immodule-vietnamese
@@ -267,7 +266,7 @@ Summary:        Wayland input method for the GTK+ toolkit library (version 3)
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun): %{name}-tools
+Requires(postun):%{name}-tools
 
 %description immodule-wayland
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -282,7 +281,7 @@ Summary:        X input method for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       %{name} = %{version}
 Requires(post): %{name}-tools
-Requires(postun): %{name}-tools
+Requires(postun):%{name}-tools
 Provides:       locale(%{name}:ja)
 Provides:       locale(%{name}:ko)
 Provides:       locale(%{name}:th)
@@ -299,7 +298,7 @@ This package provides an input method based on the X Input Method.
 Summary:        Auxiliary utilities for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description tools
 GTK+ is a multi-platform toolkit for creating graphical user interfaces.
@@ -330,7 +329,7 @@ ranging from small one-off projects to complete application suites.
 Summary:        Upstream theme configuration for the GTK+ toolkit library v3
 Group:          System/Libraries
 Requires:       libgtk-3-0 = %{version}
-Supplements:    packageand(%{name}:branding-upstream)
+Supplements:    (%{name} and branding-upstream)
 Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
@@ -398,6 +397,7 @@ cp -a %{SOURCE1} .
 %patch0 -p1
 %endif
 %patch1 -p1
+%patch2 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
@@ -416,12 +416,12 @@ NOCONFIGURE=1 ./autogen.sh
         %{nil}
 
 %if "%{flavor}" == ""
-make %{?_smp_mflags} V=1
+%make_build
 %else
-make %{?_smp_mflags} V=1 -C gdk
-make %{?_smp_mflags} V=1 -C gtk
-make %{?_smp_mflags} V=1 -C tests
-make %{?_smp_mflags} V=1 -C docs
+%make_build -C gdk
+%make_build -C gtk
+%make_build -C tests
+%make_build -C docs
 %endif
 
 %install
@@ -554,6 +554,7 @@ fi
 %endif
 
 %postun -n libgtk-3-0 -p /sbin/ldconfig
+
 %postun immodule-amharic
 %{_gtk_query_immodules_update_cache}
 
@@ -664,11 +665,11 @@ fi
 %ghost %{_sysconfdir}/alternatives/gtk-update-icon-cache
 %{_datadir}/applications/gtk3-icon-browser.desktop
 %{_mandir}/man1/broadwayd.1%{?ext_man}
-%{_mandir}/man1/gtk3-icon-browser.1%{ext_man}
+%{_mandir}/man1/gtk3-icon-browser.1%{?ext_man}
 %{_mandir}/man1/gtk-builder-tool.1%{?ext_man}
 %{_mandir}/man1/gtk-encode-symbolic-svg.1%{?ext_man}
 %{_mandir}/man1/gtk-launch.1%{?ext_man}
-%{_mandir}/man1/gtk-query-immodules-3.0*.1*
+%{_mandir}/man1/gtk-query-immodules-3.0*.1%{?ext_man}
 %{_mandir}/man1/gtk-query-settings.1%{?ext_man}
 %{_mandir}/man1/gtk-update-icon-cache-3.0.1%{?ext_man}
 %{_mandir}/man1/gtk-update-icon-cache.1%{?ext_man}

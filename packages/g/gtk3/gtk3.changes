@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 22 06:14:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.24.28:
+  + Input: Improve dead key handling.
+  + CSS: Fix rendering of scaled text shadows.
+  + Wayland: Fix matching of accelerators with multiple layouts.
+  + X11: Trap errors from the COW.
+  + Build: Make gtk3-update-icon-cache output reproducible.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Apr 21 12:29:38 UTC 2021 - QK ZHU <qkzhu@suse.com>
+
+- Add gtk3-prevent-g_file_get_basename-return-NULL.patch:
+  + Fix a possible crash in gtk_show_uri
+    (boo#1185082, glgo#GNOME/gtk!3458).
+
+-------------------------------------------------------------------
 Wed Mar 17 12:58:38 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.24.27:

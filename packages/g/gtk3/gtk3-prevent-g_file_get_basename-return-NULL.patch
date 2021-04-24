@@ -1,0 +1,25 @@
+commit ce2a433ca157b444b54646aa0383ff5b75cc41f9
+Author: Matthias Clasen <mclasen@redhat.com>
+Date:   Mon Apr 19 16:39:53 2021 -0400
+
+    Fix a possible crash in gtk_show_uri
+    
+    g_file_get_basename can return NULL.
+    Deal with it somehow.
+    
+    Fixes: #3883
+
+diff --git a/gdk/x11/gdkapplaunchcontext-x11.c b/gdk/x11/gdkapplaunchcontext-x11.c
+index 206c34e52d..43c190e5e6 100644
+--- a/gdk/x11/gdkapplaunchcontext-x11.c
++++ b/gdk/x11/gdkapplaunchcontext-x11.c
+@@ -45,6 +45,9 @@ get_display_name (GFile     *file,
+   if (name == NULL)
+     {
+       name = g_file_get_basename (file);
++      if (name == NULL)
++        name = g_file_get_uri (file);
++
+       if (!g_utf8_validate (name, -1, NULL))
+         {
+           tmp = name;
