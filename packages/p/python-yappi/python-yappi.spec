@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-yappi
-Version:        1.3.0
+Version:        1.3.2
 Release:        0
 Summary:        Yet Another Python Profiler
 License:        MIT
