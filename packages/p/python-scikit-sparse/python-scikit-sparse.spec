@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-scikit-sparse
-Version:        0.4.4
+Version:        0.4.5
 Release:        0
 # For license file
 %define tag     c94f8418b6c36c3ff9db4f87e00fc08bd51cfb4b
@@ -29,17 +29,15 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/scikit-sparse/scikit-sparse/
 Source:         https://files.pythonhosted.org/packages/source/s/scikit-sparse/scikit-sparse-%{version}.tar.gz
-Source10:       https://raw.githubusercontent.com/scikit-sparse/scikit-sparse/%{tag}/LICENSE.txt
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy-devel >= 1.13}
+BuildRequires:  %{python_module numpy-devel >= 1.13.3}
 BuildRequires:  %{python_module scipy >= 0.19}
 BuildRequires:  %{python_module setuptools >= 18.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  suitesparse-devel
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       python-numpy >= 1.12
@@ -60,8 +58,8 @@ decomposition.
 
 %prep
 %setup -q -n scikit-sparse-%{version}
-cp %{SOURCE10} .
-rm -r .eggs
+# no need for nose here -- gh#scikit-sparse/pull#66
+sed -i 's/from nose.tools import assert_raises/from pytest import raises as assert_raises/' sksparse/test_cholmod.py
 
 %build
 export CFLAGS="%{optflags}"
@@ -72,19 +70,12 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-mkdir -p tester
-pushd tester
-ln -s ../sksparse/test_*.py .
-ln -s ../sksparse/test_data .
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-py.test-%{$python_bin_suffix}
-}
-popd
+%pytest_arch -ra --pyargs sksparse
 
 %files %{python_files}
-%doc doc/changes.rst
 %doc README.md
 %license LICENSE.txt
-%{python_sitearch}/*
+%{python_sitearch}/sksparse
+%{python_sitearch}/scikit_sparse-%{version}*-info
 
 %changelog

@@ -36,4 +36,12 @@
     <comment>- skip python 36 build</comment>
     <requestid>871452</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e4fe3426d9e884df7b1cd98c49b8b21</srcmd5>
+    <version>0.4.5</version>
+    <time>1619298574</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888245</requestid>
+  </revision>
 </revisionlist>
