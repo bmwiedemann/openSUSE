@@ -1,0 +1,5 @@
+<package name="cdi-uploadproxy-container" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization" package="cdi-uploadproxy-container"/>
+</package>

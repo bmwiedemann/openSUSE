@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Tue Mar 16 08:40:50 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use virt-containers-meta script to populate the env
+
+-------------------------------------------------------------------
+Tue Mar 16 08:00:10 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Fix is_opensuse macro expansion
+
+-------------------------------------------------------------------
+Tue Mar 16 07:07:23 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Remove debug print from _service script
+
+-------------------------------------------------------------------
+Mon Mar 15 06:20:49 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Use KUBEVIRTFROM to set the base image
+- Rename %%PREFIX%% placeholder to %%TAGPREFIX%%
+
+-------------------------------------------------------------------
+Mon Mar 15 06:10:58 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Add placeholder vars to be replaced during build
+
+-------------------------------------------------------------------
+Fri Mar 12 09:53:36 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Rename virt-cdi-uploadproxy to cdi-uploadproxy
+
+-------------------------------------------------------------------
+Sun Oct 25 23:03:09 UTC 2020 - James Fehlig <jfehlig@suse.com>
+
+- Initial container for CDI upload proxy
