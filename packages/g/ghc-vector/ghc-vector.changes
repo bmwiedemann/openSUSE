@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr  7 07:36:26 UTC 2021 - psimons@suse.com
+
+- Update vector to version 0.12.3.0.
+  # Changes in version 0.12.3.0
+
+   * Fix performance regression due to introduction of `keepAlive#` primop in ghc-9.0: [#372](https://github.com/haskell/vector/pull/372)
+
+   * Add monadic functions for mutable vectors: [#338](https://github.com/haskell/vector/pull/338)
+
+     * Added folds for monadic functions: `mapM_`, `imapM_`, `forM_`, `iforM_`,
+       `foldl`, `foldl'`, `foldM`, `foldM'`, `ifoldl`, `ifoldl'`, `ifoldM`,
+       `ifoldM'`
+     * Added `modifyM` and `unsafeModifyM` for mutable vectors
+     * Added `generate` and `generateM` for mutable vectors
+
+-------------------------------------------------------------------
 Fri Jan 29 10:26:19 UTC 2021 - psimons@suse.com
 
 - Update vector to version 0.12.2.0.

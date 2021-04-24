@@ -19,7 +19,7 @@
 %global pkg_name vector
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.12.2.0
+Version:        0.12.3.0
 Release:        0
 Summary:        Efficient Arrays
 License:        BSD-3-Clause
