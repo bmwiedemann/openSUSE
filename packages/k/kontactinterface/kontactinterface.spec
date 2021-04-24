@@ -16,19 +16,23 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kontactinterface
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE PIM Libraries: Interface to Contacts
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-BuildRequires:  extra-cmake-modules >= 5.19.0
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
+BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5CoreAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
@@ -36,10 +40,6 @@ BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
 BuildRequires:  cmake(KF5Parts) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This package contains additional libraries for KDE PIM applications.
@@ -66,7 +66,7 @@ to develop KDE PIM applications.
 %lang_package
 
 %prep
-%setup -q -n kontactinterface-%{version}
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build -- -DBUILD_TESTING=OFF -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
@@ -83,10 +83,10 @@ to develop KDE PIM applications.
 
 %files -n libKF5KontactInterface5
 %license LICENSES/*
-%{_kf5_libdir}/libKF5KontactInterface.so.*
-%{_kf5_servicetypesdir}/kontactplugin.desktop
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
+%{_kf5_libdir}/libKF5KontactInterface.so.*
+%{_kf5_servicetypesdir}/kontactplugin.desktop
 
 %files devel
 %license LICENSES/*
