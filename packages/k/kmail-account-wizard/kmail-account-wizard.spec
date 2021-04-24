@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmail-account-wizard
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Account wizard for KMail
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF5Akonadi)
@@ -61,10 +65,6 @@ Obsoletes:      akonadi_resources
 Obsoletes:      kdepim
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -73,7 +73,7 @@ An application which assists you with the configuration of accounts in KMail.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -87,12 +87,12 @@ An application which assists you with the configuration of accounts in KMail.
 
 %files
 %license LICENSES/*
-%{_kf5_debugdir}/accountwizard.categories
-%{_kf5_knsrcfilesdir}/accountwizard.knsrc
-%{_kf5_debugdir}/accountwizard.renamecategories
 %{_kf5_applicationsdir}/org.kde.accountwizard.desktop
 %{_kf5_bindir}/accountwizard
 %{_kf5_bindir}/ispdb
+%{_kf5_debugdir}/accountwizard.categories
+%{_kf5_debugdir}/accountwizard.renamecategories
+%{_kf5_knsrcfilesdir}/accountwizard.knsrc
 %{_kf5_plugindir}/accountwizard_plugin.so
 %{_kf5_sharedir}/akonadi/accountwizard/
 %{_kf5_sharedir}/mime/packages/accountwizard-mime.xml
