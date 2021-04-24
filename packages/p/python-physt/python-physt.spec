@@ -1,7 +1,7 @@
 #
 # spec file for package python-physt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-physt
-Version:        0.4.9
+Version:        0.5.0.1
 Release:        0
 Summary:        Python histogram library
 License:        MIT
@@ -40,7 +41,9 @@ Recommends:     python-xarray
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module plotly}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages

@@ -23,4 +23,23 @@
     <comment></comment>
     <requestid>773193</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>670a163e8420a06284241076641d0ac3</srcmd5>
+    <version>0.5.0.1</version>
+    <time>1619298526</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0.1:
+  * Removed: *args in method definition whenever possible (prefering
+    explicit keyword-only arguments)
+  * Changed: In multi-dimensional methods arguments:
+    + list is treated as different value for each axes
+    + tuple is treated as one argument value
+  * Changed: Plotly backend does not allow matplotlib mimicking any more.
+  * Added: Basic tests for plotting backends
+  * Support: Tested against Python 3.6-3.9
+  * Fixed: Typing annotations are passing mypy validation.
+  * Fixed: A few small bugs 
+- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>887907</requestid>
+  </revision>
 </revisionlist>
