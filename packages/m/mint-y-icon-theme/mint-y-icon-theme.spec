@@ -42,14 +42,19 @@ The flat, colourful, and modern theme based on Paper and Moka.
 
 %install
 mkdir -p %{buildroot}%{_datadir}/icons/
-cp -a .%{_datadir}/icons/%{_name} %{buildroot}%{_datadir}/icons/%{_name}
-%icon_theme_cache_create_ghost %{_name}
+
+for color in Mint-Y Mint-Y-Aqua Mint-Y-Blue Mint-Y-Brown \
+Mint-Y-Grey Mint-Y-Orange Mint-Y-Pink Mint-Y-Purple Mint-Y-Red \
+Mint-Y-Sand Mint-Y-Teal Mint-Y-Yellow
+    do cp -a .%{_datadir}/icons/${color} %{buildroot}%{_datadir}/icons/${color}
+    %icon_theme_cache_create_ghost ${color}
+done
 
 %fdupes %{buildroot}%{_datadir}/icons/
 
 %if 0%{?suse_version} < 1500
 %post
-%icon_theme_cache_post %{_name}
+%icon_theme_cache_post %{_name}*
 
 # No need for %%icon_theme_cache_postun in %%postun since themes won't exist anymore.
 %endif
@@ -57,7 +62,7 @@ cp -a .%{_datadir}/icons/%{_name} %{buildroot}%{_datadir}/icons/%{_name}
 %files
 %license debian/copyright
 %doc debian/changelog
-%{_datadir}/icons/%{_name}
-%ghost %{_datadir}/icons/%{_name}/icon-theme.cache
+%{_datadir}/icons/%{_name}*
+%ghost %{_datadir}/icons/%{_name}*/icon-theme.cache
 
 %changelog
