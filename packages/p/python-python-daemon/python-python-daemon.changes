@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 22 19:48:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * Remove support for Python versions older than Python 3.
+    Python 2 has been unsupported by the Python project since 2020.
+  * Remove dependency on back-ported `unittest2` and `mock`.
+    Depend instead on standard library `unittest` and `unittest.mock`.
+
+-------------------------------------------------------------------
 Thu Feb  4 16:56:17 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Switch off running of the test suite

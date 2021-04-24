@@ -188,4 +188,16 @@
   (https://pagure.io/python-daemon/issue/53).</comment>
     <requestid>869533</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>26b01765392ffd1daa32ead2ea1d9ce4</srcmd5>
+    <version>2.3.0</version>
+    <time>1619298514</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0:
+  * Remove support for Python versions older than Python 3.
+    Python 2 has been unsupported by the Python project since 2020.
+  * Remove dependency on back-ported `unittest2` and `mock`.
+    Depend instead on standard library `unittest` and `unittest.mock`.</comment>
+    <requestid>887875</requestid>
+  </revision>
 </revisionlist>

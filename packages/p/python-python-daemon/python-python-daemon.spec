@@ -16,10 +16,10 @@
 #
 
 
-%define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-python-daemon
-Version:        2.2.4
+Version:        2.3.0
 Release:        0
 Summary:        Library to implement a well-behaved Unix daemon process
 License:        Apache-2.0 AND GPL-3.0-only
@@ -38,10 +38,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lockfile >= 0.10
 BuildArch:      noarch
-%ifpython2
-Provides:       %{oldpython}-daemon = %{version}
-Obsoletes:      %{oldpython}-daemon < %{version}
-%endif
 %python_subpackages
 
 %description
