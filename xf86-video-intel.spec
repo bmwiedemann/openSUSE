@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-intel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,14 @@
 #
 
 
+%define _version 2.99.917
+%define _git 916_g31486f40
+
 %bcond_with glamor
 %bcond_with backlighthelper
 %bcond_with valgrind
 Name:           xf86-video-intel
-Version:        2.99.917+git8674.25c9a2fcc
+Version:        %{_version}.%{_git}
 Release:        0
 Summary:        Intel video driver for the Xorg X server
 License:        MIT
@@ -30,10 +33,8 @@ URL:            http://x.org/wiki/IntelGraphicsDriver/
 #Git-Web:	http://cgit.freedesktop.org/xorg/driver/xf86-video-intel/
 # http://xorg.freedesktop.org/releases/individual/driver/
 #Git-Archive:   git archive --format=tar.gz --prefix %{name}-%{version}/ master
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
-Patch0:         n_fix-build-on-i686.patch
-Patch1:         U_i810-multidef-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -136,13 +137,7 @@ supports hardware accelerated 3D via the Direct Rendering Infrastructure
 the 830M and later.
 
 %prep
-%setup -q
-%ifarch %{ix86}
-# Applied only on 32bit architectures because only those need it to build with
-# GCC8. It may slightly hurt performance, so lets not apply it where not needed.
-%patch0 -p1
-%patch1 -p1
-%endif
+%setup -q -n %{name}-%{_version}
 
 %build
 %define _lto_cflags %{nil}
