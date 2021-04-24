@@ -132,4 +132,14 @@
   * Fix for Duplicate Window Title (Mac) (forwarded request 884614 from cgiboudeaux)</comment>
     <requestid>884615</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c6547a6075ef9ca9096f5cf9ae36e509</srcmd5>
+    <version>1.5.0</version>
+    <time>1619298529</time>
+    <user>dimstar_suse</user>
+    <comment>- Use a _service file to exclude most of third party subfolders.
+  thirdparty/openblas contains unredistributable files and some
+  precompiled dll files are present in a couple other folders. (forwarded request 887971 from cgiboudeaux)</comment>
+    <requestid>887972</requestid>
+  </revision>
 </revisionlist>

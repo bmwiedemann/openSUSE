@@ -1,0 +1,27 @@
+<services>
+    <service name="tar_scm" mode="disabled">
+        <param name="scm">git</param>
+        <param name="url">git://github.com/opentoonz/opentoonz</param>
+        <param name="revision">v1.5.0</param>
+        <param name="versionformat">1.5.0</param>
+        <!-- the openblas folder contains unredistributable files -->
+        <param name="exclude">thirdparty/openblas</param>
+        <!-- more thirdparty dependencies we don't need -->
+        <param name="exclude">thirdparty/Lz4</param>
+        <param name="exclude">thirdparty/glew</param>
+        <param name="exclude">thirdparty/glut</param>
+        <param name="exclude">thirdparty/libjpeg-turbo</param>
+        <param name="exclude">thirdparty/libmypaint</param>
+        <param name="exclude">thirdparty/libpng-1.6.21</param>
+        <param name="exclude">thirdparty/libusb</param>
+        <param name="exclude">thirdparty/superlu</param>
+        <param name="exclude">thirdparty/zlib-1.2.8</param>
+        <!-- thirdparty/lzo/driver is needed, but the 2.x subfolder can be dropped -->
+        <param name="exclude">thirdparty/lzo/2.03</param>
+    </service>
+    <service name="recompress" mode="disabled">
+        <param name="file">*.tar</param>
+        <param name="compression">xz</param>
+    </service>
+    <service name="set_version" mode="disabled"/>
+</services>

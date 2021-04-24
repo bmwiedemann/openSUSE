@@ -23,7 +23,7 @@ Summary:        2D animation software
 License:        BSD-2-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://opentoonz.github.io/e/
-Source0:        https://github.com/opentoonz/opentoonz/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source3:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-linker-errors-on-Linux.patch
@@ -49,18 +49,18 @@ BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5SerialPort)
 BuildRequires:  cmake(Qt5Script)
+BuildRequires:  cmake(Qt5SerialPort)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libmypaint)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(mypaint-brushes-1.0) >= 1.3
 %ifarch x86_64
@@ -83,12 +83,10 @@ Requires:       mypaint-brushes1
 %prep
 %autosetup -p1
 
-# Remove all thirdparty except tiff which is patched.
-find thirdparty/* -maxdepth 0 ! -name "tiff-*" ! -name "lzo" ! -name "kiss_fft*" -type d -exec rm -r "{}" \;
-# Keep thirdparty/lzo/driver, but remove library.
-rm -r thirdparty/lzo/2.*
-
 %build
+# NOTE: Third party dependencies are dropped from the tarball thanks to the
+# _service file. Only kissfft130, lzo/driver and tiff-4.0.3 shall be kept.
+
 # TODO upstream planning to replace custom thirdparty libs with system versions
 cd thirdparty/tiff-*
 export CFLAGS="%{optflags} -fPIC"
