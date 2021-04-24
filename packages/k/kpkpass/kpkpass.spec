@@ -18,23 +18,23 @@
 
 %bcond_without lang
 Name:           kpkpass
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Library to parse Passbook files
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-BuildRequires:  extra-cmake-modules >= 1.0.0
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
+BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Test)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 kpkpass is a library to read and parse Apple Passbook files, such as the ones
@@ -61,7 +61,7 @@ This package contains all necessary include files and libraries needed
 to build programs that use the kpkpass library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
