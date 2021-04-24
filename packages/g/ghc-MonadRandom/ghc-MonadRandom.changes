@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  8 20:14:44 UTC 2021 - psimons@suse.com
+
+- Update MonadRandom to version 0.5.3.
+  0.5.3 (8 April 2021)
+  --------------------
+
+  - `StatefulGen` instances for `RandT`
+  - Addition of `RandGen`
+  - Additioon of `withRandGen` and `withRandGen_`
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
