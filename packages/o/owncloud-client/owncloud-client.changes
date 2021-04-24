@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 24 18:09:10 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 2.7.6 
+
+  Upstream bugfix release, see for details:
+  https://github.com/owncloud/client/releases/tag/v2.7.6
+- Rename sysctl file to 69-sync-inotify.conf otherwise it is not 
+  executed by sysctl. 
+
+-------------------------------------------------------------------
 Fri Jan 29 16:32:15 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to upstream version 2.7.5

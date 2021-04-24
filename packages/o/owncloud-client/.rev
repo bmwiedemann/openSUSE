@@ -239,4 +239,17 @@
     <comment></comment>
     <requestid>867760</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a82277f7beb85f5cfec1f4243e5c7189</srcmd5>
+    <version>2.7.6</version>
+    <time>1619298575</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 2.7.6 
+  Upstream bugfix release, see for details:
+  https://github.com/owncloud/client/releases/tag/v2.7.6
+- Rename sysctl file to 69-sync-inotify.conf otherwise it is not 
+  executed by sysctl. 
+</comment>
+    <requestid>888250</requestid>
+  </revision>
 </revisionlist>

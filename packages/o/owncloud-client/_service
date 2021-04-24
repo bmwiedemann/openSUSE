@@ -1,7 +1,7 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="filename">ownCloud_os</param>
-    <param name="revision">v2.7.5</param>
+    <param name="revision">v2.7.6</param>
     <param name="scm">git</param>
     <param name="url">https://github.com/owncloud/client.git</param>
     <param name="versionformat">@PARENT_TAG@</param>

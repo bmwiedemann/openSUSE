@@ -18,7 +18,7 @@
 
 Name:           owncloud-client
 
-Version:        2.7.5
+Version:        2.7.6
 Release:        0
 
 Summary:        The ownCloud synchronization client
@@ -26,7 +26,7 @@ License:        GPL-2.0-only AND GPL-3.0-only
 Group:          Productivity/Networking/Other
 URL:            https://owncloud.org/download
 Source0:        ownCloud_os-%{version}.tar.xz
-Source2:        101-sync-inotify.conf
+Source2:        69-sync-inotify.conf
 Source3:        README.source
 Source4:        ownCloud.conf
 
@@ -254,7 +254,7 @@ test -f %{extdir}/ownCloud.pyo && mv %{extdir}/ownCloud.pyo %{extdir}/owncloud.p
 test -f %{extdir}/ownCloud.pyc && mv %{extdir}/ownCloud.pyc %{extdir}/owncloud.pyc || true
 
 # https://github.com/owncloud/client/issues/4107
-install -m 0755 -D %{SOURCE2} %{buildroot}/etc/sysctl.d/101-sync-inotify.conf
+install -m 0644 -D %{SOURCE2} %{buildroot}/etc/sysctl.d/69-sync-inotify.conf
 # do not allow to call home
 install -m 0755 -D %{SOURCE4} %{buildroot}/etc/ownCloud/
 
@@ -291,7 +291,7 @@ done
 
 %config /etc/ownCloud
 # https://github.com/owncloud/client/issues/4107
-%config /etc/sysctl.d/101-sync-inotify.conf
+%config /etc/sysctl.d/69-sync-inotify.conf
 %config /etc/ownCloud/ownCloud.conf
 
 %files -n %{name}-l10n
