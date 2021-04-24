@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 20 16:17:54 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Add avahi-CVE-2021-3468.patch: avoid infinite loop by handling
+  HUP event in client_work (boo#1184521 CVE-2021-3468).
+  https://github.com/lathiat/avahi/pull/330
+
+-------------------------------------------------------------------
 Tue Feb 16 22:37:35 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update avahi-daemon-check-dns.sh from Debian. Our previous

@@ -1043,4 +1043,14 @@
 - Add sudo to requires: used to drop privileges. (forwarded request 872987 from mgorse)</comment>
     <requestid>873919</requestid>
   </revision>
+  <revision rev="138" vrev="4">
+    <srcmd5>b4489736cf8531c45b576a0e0cc3e9ab</srcmd5>
+    <version>0.8</version>
+    <time>1619298420</time>
+    <user>dimstar_suse</user>
+    <comment>- Add avahi-CVE-2021-3468.patch: avoid infinite loop by handling
+  HUP event in client_work (boo#1184521 CVE-2021-3468).
+  https://github.com/lathiat/avahi/pull/330 (forwarded request 887071 from mgorse)</comment>
+    <requestid>887505</requestid>
+  </revision>
 </revisionlist>

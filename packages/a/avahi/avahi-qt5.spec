@@ -77,6 +77,8 @@ Patch4:         avahi-daemon-check-dns-suse.patch
 Patch19:        avahi-0.6.32-suppress-resolv-conf-warning.patch
 # PATCH-FIX-UPSTREAM add-IT_PROG_INTLTOOL.patch alarrosa@suse.com -- add IT_PROG_INTLTOOL so intltool works
 Patch20:        add-IT_PROG_INTLTOOL.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2021-3468.patch boo#1184521 mgorse@suse.com -- avoid infinite loop by handling HUP event in client_work.
+Patch21:        avahi-CVE-2021-3468.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
@@ -261,6 +263,7 @@ Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
 %else
+
 %package -n python3-avahi
 Summary:        A set of Avahi utilities written in Python
 Group:          Development/Languages/Python
@@ -404,13 +407,14 @@ Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
 # This is the avahi-discover command, only provided for the primary python3 flavor
+
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python
 Requires:       python3-avahi = %{version}
 Requires:       python3-gobject
 Requires(post): coreutils
-Requires(postun): coreutils
+Requires(postun):coreutils
 Provides:       %{oldpython}-avahi-gtk = %{version}
 Obsoletes:      %{oldpython}-avahi-gtk < %{version}
 # Provide split-provides for update from <= 11.0:
@@ -514,6 +518,7 @@ translation-update-upstream
 %patch4
 %patch19 -p1
 %patch20 -p1
+%patch21 -p1
 
 %if !%{build_core}
 # Replace all .la references from local .la files to installed versions
@@ -798,6 +803,7 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %postun -n python-avahi
 %python_uninstall_alternative avahi-bookmarks
 %else
+
 %post -n python3-avahi
 %python_install_alternative avahi-bookmarks avahi-bookmarks.1
 
@@ -974,6 +980,7 @@ find %{_localstatedir}/lib/avahi-autoipd -user avahi -exec chown avahi-autoipd:a
 %if %{build_core}
 %files -n avahi-mono
 %else
+
 %files
 %endif
 %defattr(-,root,root)
