@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-digester
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Release:        0
 Summary:        Jakarta Commons Digester Package
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://apache.apache.org/commons/digester/
+URL:            https://commons.apache.org/proper/commons-digester/
 Source0:        https://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
 Source1:        %{name}-build.xml
 BuildRequires:  ant
