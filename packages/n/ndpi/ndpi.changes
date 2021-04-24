@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 23 14:57:05 UTC 2021 - Mathias Homann <Mathias.Homann@opensuse.org>
+
+- Update to 3.4
+  * removed 001-Refresh-of-ndpi_netbios_name_interpret.patch, implemented
+    upstream
+
+-------------------------------------------------------------------
 Fri Apr 24 17:25:05 UTC 2020 - Petr Cervinka <petr@cervinka.net>
 
 - Add upstream patch to fix ntopng build failure (ntopng#3675)

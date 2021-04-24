@@ -1,7 +1,7 @@
 #
 # spec file for package ndpi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 
 %define sover 3
 Name:           ndpi
-Version:        3.2
+Version:        3.4
 Release:        0
 Summary:        Extensible deep packet inspection library
 # wireshark/ndpi.lua is GPL-3.0-or-later
@@ -31,7 +31,6 @@ License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/ntop/nDPI
 Source:         https://github.com/ntop/nDPI/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         001-Refresh-of-ndpi_netbios_name_interpret.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -89,7 +88,6 @@ This package contains the ndpiReader binary.
 
 %prep
 %setup -q -n nDPI-%{version}
-%patch0 -p1
 
 %build
 sh autogen.sh
