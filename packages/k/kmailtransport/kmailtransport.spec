@@ -16,20 +16,24 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmailtransport
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE PIM Libraries: Mailtransport layer
 License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  cyrus-sasl-devel
-BuildRequires:  extra-cmake-modules >= 5.19.0
+BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiMime)
@@ -39,24 +43,22 @@ BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
 BuildRequires:  cmake(KPimGAPI)
 BuildRequires:  cmake(KPimSMTP)
+BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5Test)
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
-This package contains library to provide mailtransport functionality for KDE PIM applications.
+This package contains library to provide mailtransport functionality for
+KDE PIM applications.
 
 %package -n libKF5MailTransport5
-Summary:        Mail Transport library for KDEPIM
+Summary:        Mail Transport library for KDE PIM applications
 Group:          System/Libraries
 Requires:       %{name} >= %{version}
 Requires:       sasl2-kdexoauth2 >= %{_kapp_version}
 
 %description -n libKF5MailTransport5
-The Mail Transport library for KDEPIM functionality
+The Mail Transport library for KDE PIM functionality
 
 %package -n libKF5MailTransportAkonadi5
 Summary:        libkdepim Akonadi library
@@ -88,7 +90,7 @@ to develop KDE PIM applications.
 %lang_package
 
 %prep
-%setup -q -n kmailtransport-%{version}
+%autosetup -p1 -n kmailtransport-%{version}
 
 %build
   %cmake_kf5 -d build -- -DBUILD_TESTING=OFF -DKF5_INCLUDE_INSTALL_DIR=%{_kf5_includedir}
@@ -105,13 +107,11 @@ to develop KDE PIM applications.
 
 %files
 %license LICENSES/*
-%dir %{_kf5_configkcfgdir}
+%{_kf5_configkcfgdir}/mailtransport.kcfg
 %{_kf5_debugdir}/kmailtransport.categories
 %{_kf5_debugdir}/kmailtransport.renamecategories
-%dir %{_kf5_plugindir}/mailtransport
-%{_kf5_configkcfgdir}/mailtransport.kcfg
 %{_kf5_plugindir}/kcm_mailtransport.so
-%{_kf5_plugindir}/mailtransport/*.so
+%{_kf5_plugindir}/mailtransport/
 %{_kf5_servicesdir}/kcm_mailtransport.desktop
 
 %files -n libKF5MailTransport5
@@ -131,11 +131,11 @@ to develop KDE PIM applications.
 %{_kf5_includedir}/mailtransport_version.h
 %{_kf5_includedir}/mailtransportakonadi/
 %{_kf5_includedir}/mailtransportakonadi_version.h
+%{_kf5_libdir}/cmake/KF5MailTransportAkonadi/
 %{_kf5_libdir}/libKF5MailTransport.so
 %{_kf5_libdir}/libKF5MailTransportAkonadi.so
 %{_kf5_mkspecsdir}/qt_KMailTransport.pri
 %{_kf5_mkspecsdir}/qt_KMailTransportAkonadi.pri
-%{_kf5_libdir}/cmake/KF5MailTransportAkonadi/
 
 %if %{with lang}
 %files lang -f %{name}.lang
