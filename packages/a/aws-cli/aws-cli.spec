@@ -17,7 +17,7 @@
 
 
 Name:           aws-cli
-Version:        1.19.9
+Version:        1.19.50
 Release:        0
 Summary:        Amazon Web Services Command Line Interface
 License:        Apache-2.0
@@ -34,7 +34,7 @@ BuildRequires:  python3-setuptools
 Requires:       python3
 Requires:       python3-PyYAML <= 6.0.0
 Requires:       python3-PyYAML >= 3.10
-Requires:       python3-botocore >= 1.20.9
+Requires:       python3-botocore >= 1.20.50
 Requires:       python3-colorama <= 0.4.4
 Requires:       python3-colorama >= 0.2.5
 Requires:       python3-docutils >= 0.10
@@ -48,13 +48,13 @@ BuildRequires:  bash-completion
 BuildRequires:  python-devel
 BuildRequires:  python-setuptools
 Requires:       python
-Requires:       python-PyYAML <= 5.4
+Requires:       python-PyYAML <= 5.5
 Requires:       python-PyYAML >= 3.10
-Requires:       python-botocore >= 1.20.9
+Requires:       python-botocore >= 1.20.50
 Requires:       python-colorama <= 0.4.4
 Requires:       python-colorama >= 0.2.5
 Requires:       python-docutils >= 0.10
-Requires:       python-rsa <= 3.5.0
+Requires:       python-rsa <= 4.5.0
 Requires:       python-rsa >= 3.1.2
 Requires:       python-s3transfer < 0.4.0
 Requires:       python-s3transfer >= 0.3.0
