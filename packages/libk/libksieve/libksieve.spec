@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libksieve
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
-Summary:        Sieve and Managesieve support library for KDE PIM
+Summary:        Sieve and Managesieve support library for KDE PIM applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
@@ -55,10 +59,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -68,7 +68,7 @@ the Sieve server-side mail filtering protocol in KDE PIM applications.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -110,10 +110,10 @@ This package contains development headers of libksieve.
 
 %files
 %license LICENSES/*
-%{_kf5_knsrcfilesdir}/ksieve_script.knsrc
+%doc %lang(en) %{_kf5_htmldir}/en/kioslave5/
 %{_kf5_debugdir}/libksieve.categories
 %{_kf5_debugdir}/libksieve.renamecategories
-%doc %lang(en) %{_kf5_htmldir}/en/kioslave5/
+%{_kf5_knsrcfilesdir}/ksieve_script.knsrc
 %{_kf5_libdir}/libKF5KManageSieve.so.*
 %{_kf5_libdir}/libKF5KSieve.so.*
 %{_kf5_libdir}/libKF5KSieveUi.so.*
