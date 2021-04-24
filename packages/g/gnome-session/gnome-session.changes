@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 19 01:17:31 UTC 2021 - xiaoguang wang <xiaoguang.wang@suse.com>
+
+- Add gnome-session-avoid-blocking-when-connecting-dbus.patch: Fix
+  the login delay, avoid the blocking when connecting to
+  ScreenSaver dbus(bsc#1184698 glgo#GNOME/gnome-session#88).
+
+-------------------------------------------------------------------
+Tue Apr 13 06:38:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.0:
+  + util: Remove undesired variables from activation environment.
+
+-------------------------------------------------------------------
 Fri Feb 26 13:51:35 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.beta:
