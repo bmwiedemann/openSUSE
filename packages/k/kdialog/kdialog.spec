@@ -20,13 +20,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdialog
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE version of xdialog
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            https://www.kde.org/
+URL:            https://apps.kde.org/kdialog
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -34,20 +38,14 @@ BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(Qt5DBus)
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 KDialog can be used to show nice dialog boxes from shell scripts.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -62,10 +60,10 @@ KDialog can be used to show nice dialog boxes from shell scripts.
 %files
 %license COPYING*
 %doc README
+%{_kf5_appstreamdir}/org.kde.kdialog.metainfo.xml
 %{_kf5_bindir}/kdialog
 %{_kf5_bindir}/kdialog_progress_helper
 %{_kf5_dbusinterfacesdir}/org.kde.kdialog.ProgressDialog.xml
-%{_kf5_appstreamdir}/org.kde.kdialog.metainfo.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
