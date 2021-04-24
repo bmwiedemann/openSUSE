@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 17 12:59:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.1:
+  + Use document folder when opening new files.
+  + Huge CPU consumption when a folder with content is deleted.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar 20 08:46:06 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 40.0:
