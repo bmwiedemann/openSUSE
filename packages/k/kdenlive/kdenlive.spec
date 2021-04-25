@@ -24,13 +24,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdenlive
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://www.kdenlive.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  desktop-file-utils
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -62,6 +66,7 @@ BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Multimedia)
+BuildRequires:  cmake(Qt5NetworkAuth)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5QuickControls2)
@@ -98,10 +103,6 @@ Recommends:     libv4l
 Recommends:     mlt(%{mlt_soname})(avformat)
 Obsoletes:      kdenlive5 < %{version}
 Provides:       kdenlive5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Kdenlive is a non-linear video editor for GNU/Linux and FreeBSD, which supports
@@ -113,7 +114,7 @@ work.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -126,7 +127,7 @@ work.
   %{kf5_find_htmldocs}
 %endif
 %fdupes -s %{buildroot}
-rm -fr %{buildroot}%{_datadir}/doc/Kdenlive
+rm -r %{buildroot}%{_datadir}/doc/Kdenlive
 
 %files
 %defattr(0644,root,root,0755)
@@ -135,20 +136,20 @@ rm -fr %{buildroot}%{_datadir}/doc/Kdenlive
 %license COPYING
 %doc AUTHORS README.md
 %{_kf5_knsrcfilesdir}/*.knsrc
-%dir %{_kf5_configkcfgdir}
 %doc %lang(en) %{_kf5_htmldir}/en/kdenlive/
 %{_kf5_applicationsdir}/org.kde.kdenlive.desktop
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.kdenlive.appdata.xml
 %{_kf5_configkcfgdir}/kdenlivesettings.kcfg
 %{_kf5_debugdir}/kdenlive.categories
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_kxmlguidir}/kdenlive/
-%{_kf5_mandir}/man1/*
+%{_kf5_mandir}/man1/kdenlive*
 %{_kf5_plugindir}/mltpreview.so
 %{_kf5_servicesdir}/mltpreview.desktop
 %{_kf5_sharedir}/kdenlive/
 %{_kf5_sharedir}/knotifications5/kdenlive.notifyrc
-%{_kf5_sharedir}/mime/packages/*
+%{_kf5_sharedir}/mime/packages/org.kde.kdenlive.xml
+%{_kf5_sharedir}/mime/packages/westley.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
