@@ -1,7 +1,7 @@
 #
 # spec file for package lokalize
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           lokalize
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE Translation Editor
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            https://www.kde.org/
+URL:            https://apps.kde.org/lokalize
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  hunspell-devel
@@ -50,10 +54,6 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -62,7 +62,7 @@ This package contains lokalize, an editor for translations
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc64
@@ -76,8 +76,6 @@ export CFLAGS="%{optflags} -fPIC"
 %install
   %kf5_makeinstall -C build
   %if %{with lang}
-    # Remove bogus folder
-    rm -rf %{buildroot}%{_datadir}/locale/sr/docs/
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
@@ -86,17 +84,16 @@ export CFLAGS="%{optflags} -fPIC"
 
 %files
 %license COPYING*
-%dir %{_kf5_appstreamdir}
 %doc %lang(en) %{_kf5_htmldir}/en/lokalize/
 %{_kf5_applicationsdir}/org.kde.lokalize.desktop
 %{_kf5_appstreamdir}/org.kde.lokalize.appdata.xml
 %{_kf5_bindir}/lokalize
-%{_kf5_configkcfgdir}/
+%{_kf5_configkcfgdir}/lokalize.kcfg
+%{_kf5_debugdir}/lokalize.categories
 %{_kf5_iconsdir}/hicolor/*/apps/lokalize.*
-%{_kf5_kxmlguidir}/
+%{_kf5_kxmlguidir}/lokalize/
 %{_kf5_notifydir}/lokalize.notifyrc
 %{_kf5_sharedir}/lokalize/
-%{_kf5_debugdir}/lokalize.categories
 
 %if %{with lang}
 %files lang -f %{name}.lang
