@@ -1,7 +1,7 @@
 #
 # spec file for package khangman
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           khangman
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Hangman Game
 License:        GPL-2.0-or-later
 Group:          Amusements/Teaching/Language
-URL:            https://edu.kde.org
+URL:            https://apps.kde.org/khangman
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Completion)
@@ -54,19 +58,15 @@ Provides:       %{name}5 = %{version}
 Obsoletes:      khangman-devel < %{version}
 Obsoletes:      khangman5 < %{version}
 Obsoletes:      libkhangmanengine5 < %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
-Classical hangman game for KDE.
+Classical hangman game by KDE.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -81,13 +81,12 @@ Classical hangman game for KDE.
 
 %files
 %license COPYING*
-%doc AUTHORS ChangeLog README
 %config %{_kf5_configdir}/khangman.knsrc
-%dir %{_kf5_configkcfgdir}
 %doc %lang(en) %{_kf5_htmldir}/en/khangman/
 %doc %{_kf5_mandir}/man6/khangman.6.gz
+%doc AUTHORS ChangeLog README
 %{_kf5_applicationsdir}/org.kde.khangman.desktop
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.khangman.appdata.xml
 %{_kf5_bindir}/khangman
 %{_kf5_configkcfgdir}/khangman.kcfg
 %{_kf5_iconsdir}/hicolor/*/apps/khangman.*
