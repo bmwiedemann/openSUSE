@@ -1,7 +1,7 @@
 #
 # spec file for package kspaceduel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kspaceduel
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Space Arcade game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kspaceduel
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
@@ -45,10 +49,6 @@ BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 Obsoletes:      kspaceduel5 < %{version}
 Provides:       kspaceduel5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 KSpaceduel is a space arcade game for two players. However, one player
@@ -59,7 +59,7 @@ collide with anything but shoot at the other space ship.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -74,9 +74,7 @@ collide with anything but shoot at the other space ship.
   %suse_update_desktop_file -r org.kde.kspaceduel          Game ArcadeGame
 
 %files
-%license COPYING*
-%dir %{_kf5_appstreamdir}
-%dir %{_kf5_configkcfgdir}
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kspaceduel/
 %{_kf5_applicationsdir}/org.kde.kspaceduel.desktop
 %{_kf5_appsdir}/kspaceduel/
@@ -84,11 +82,10 @@ collide with anything but shoot at the other space ship.
 %{_kf5_bindir}/kspaceduel
 %{_kf5_configkcfgdir}/kspaceduel.kcfg
 %{_kf5_iconsdir}/hicolor/*/apps/kspaceduel.*
-%{_kf5_kxmlguidir}/kspaceduel/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
