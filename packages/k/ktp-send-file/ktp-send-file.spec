@@ -21,13 +21,17 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-send-file
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        File manager plugin
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://community.kde.org/Real-Time_Communication_and_Collaboration
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -41,10 +45,6 @@ BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 A File manager plugin to launch a file transfer job with a specified contact
@@ -52,7 +52,7 @@ A File manager plugin to launch a file transfer job with a specified contact
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
