@@ -1,7 +1,7 @@
 #
 # spec file for package krdc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           krdc
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Remote Desktop Connection
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
+URL:            https://apps.kde.org/krdc
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  LibVNCServer-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freerdp
@@ -50,10 +55,6 @@ BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 Requires:       breeze5-icons
 Requires:       freerdp
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -70,7 +71,7 @@ Development libraries and headers needed to build software using krdc
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc ppc64
@@ -97,9 +98,9 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %files
 %license COPYING COPYING.DOC
-%dir %{_kf5_configkcfgdir}
 %doc %lang(en) %{_kf5_htmldir}/en/krdc/
 %{_kf5_applicationsdir}/org.kde.krdc.desktop
+%{_kf5_appstreamdir}/org.kde.krdc.appdata.xml
 %{_kf5_bindir}/krdc
 %{_kf5_configkcfgdir}/krdc.kcfg
 %{_kf5_iconsdir}/hicolor/*/apps/krdc.png
@@ -111,7 +112,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_servicesdir}/krdc_vnc_config.desktop
 %{_kf5_servicesdir}/rdp.protocol
 %{_kf5_servicesdir}/vnc.protocol
-%{_kf5_appstreamdir}/org.kde.krdc.appdata.xml
 
 %files devel
 %{_includedir}/krdc/
