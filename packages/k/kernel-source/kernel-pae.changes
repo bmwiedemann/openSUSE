@@ -1,4 +1,220 @@
 -------------------------------------------------------------------
+Thu Apr 22 10:26:25 CEST 2021 - tiwai@suse.de
+
+- Revert "rpm/kernel-binary.spec.in: Fix dependency of kernel-*-devel package (bsc#1184514)"
+  This turned out to be a bad idea: the kernel-$flavor-devel package
+  must be usable without kernel-$flavor, e.g. at the build of a KMP.
+  And this change brought superfluous installation of kernel-preempt
+  when a system had kernel-syms (bsc#1185113).
+- commit d771304
+
+-------------------------------------------------------------------
+Wed Apr 21 14:48:06 CEST 2021 - jslaby@suse.cz
+
+- rpm/check-for-config-changes: add AS_HAS_* to ignores
+  arch/arm64/Kconfig defines a lot of these. So far our current compilers
+  seem to support them all. But it can quickly change with SLE later.
+- commit a4d8194
+
+-------------------------------------------------------------------
+Wed Apr 21 14:39:06 CEST 2021 - jslaby@suse.cz
+
+- Linux 5.11.16 (bsc#1012628).
+- bpf: Move sanitize_val_alu out of op switch (bsc#1012628).
+- bpf: Improve verifier error messages for users (bsc#1012628).
+- bpf: Rework ptr_limit into alu_limit and add common error path
+  (bsc#1012628).
+- ARM: 9071/1: uprobes: Don't hook on thumb instructions
+  (bsc#1012628).
+- bpf: Move off_reg into sanitize_ptr_alu (bsc#1012628).
+- bpf: Ensure off_reg has no mixed signed bounds for all types
+  (bsc#1012628).
+- r8169: don't advertise pause in jumbo mode (bsc#1012628).
+- r8169: tweak max read request size for newer chips also in
+  jumbo mtu mode (bsc#1012628).
+- kasan: remove redundant config option (bsc#1012628).
+- kasan: fix hwasan build for gcc (bsc#1012628).
+- KVM: VMX: Don't use vcpu->run->internal.ndata as an array index
+  (bsc#1012628).
+- KVM: VMX: Convert vcpu_vmx.exit_reason to a union (bsc#1012628).
+- bpf: Use correct permission flag for mixed signed bounds
+  arithmetic (bsc#1012628).
+- arm64: dts: allwinner: h6: beelink-gs1: Remove ext. 32 kHz
+  osc reference (bsc#1012628).
+- arm64: dts: allwinner: Fix SD card CD GPIO for SOPine systems
+  (bsc#1012628).
+- ARM: OMAP2+: Fix uninitialized sr_inst (bsc#1012628).
+- ARM: footbridge: fix PCI interrupt mapping (bsc#1012628).
+- ARM: 9069/1: NOMMU: Fix conversion for_each_membock() to
+  for_each_mem_range() (bsc#1012628).
+- ARM: 9063/1: mm: reduce maximum number of CPUs if
+  DEBUG_KMAP_LOCAL is enabled (bsc#1012628).
+- ARM: OMAP2+: Fix warning for omap_init_time_of() (bsc#1012628).
+- gro: ensure frag0 meets IP header alignment (bsc#1012628).
+- ch_ktls: do not send snd_una update to TCB in middle
+  (bsc#1012628).
+- ch_ktls: tcb close causes tls connection failure (bsc#1012628).
+- ch_ktls: fix device connection close (bsc#1012628).
+- ch_ktls: Fix kernel panic (bsc#1012628).
+- ibmvnic: remove duplicate napi_schedule call in open function
+  (bsc#1012628).
+- ibmvnic: remove duplicate napi_schedule call in do_reset
+  function (bsc#1012628).
+- ibmvnic: avoid calling napi_disable() twice (bsc#1012628).
+- ia64: tools: remove inclusion of ia64-specific version of
+  errno.h header (bsc#1012628).
+- ia64: remove duplicate entries in generic_defconfig
+  (bsc#1012628).
+- ethtool: pause: make sure we init driver stats (bsc#1012628).
+- i40e: fix the panic when running bpf in xdpdrv mode
+  (bsc#1012628).
+- ibmvnic: correctly use dev_consume/free_skb_irq (bsc#1012628).
+- net: Make tcp_allowed_congestion_control readonly in non-init
+  netns (bsc#1012628).
+- mm: ptdump: fix build failure (bsc#1012628).
+- net: ip6_tunnel: Unregister catch-all devices (bsc#1012628).
+- net: sit: Unregister catch-all devices (bsc#1012628).
+- net: phy: marvell: fix detection of PHY on Topaz switches
+  (bsc#1012628).
+- net: davicom: Fix regulator not turned off on failed probe
+  (bsc#1012628).
+- net/mlx5e: Fix setting of RS FEC mode (bsc#1012628).
+- netfilter: nftables: clone set element expression template
+  (bsc#1012628).
+- netfilter: nft_limit: avoid possible divide error in
+  nft_limit_init (bsc#1012628).
+- net/mlx5e: fix ingress_ifindex check in mlx5e_flower_parse_meta
+  (bsc#1012628).
+- net: macb: fix the restore of cmp registers (bsc#1012628).
+- drm/i915/display/vlv_dsi: Do not skip panel_pwr_cycle_delay
+  when disabling the panel (bsc#1012628).
+- libbpf: Fix potential NULL pointer dereference (bsc#1012628).
+- netfilter: arp_tables: add pre_exit hook for table unregister
+  (bsc#1012628).
+- netfilter: bridge: add pre_exit hooks for ebtable unregistration
+  (bsc#1012628).
+- libnvdimm/region: Fix nvdimm_has_flush() to handle
+  ND_REGION_ASYNC (bsc#1012628).
+- ice: Fix potential infinite loop when using u8 loop counter
+  (bsc#1012628).
+- netfilter: conntrack: do not print icmpv6 as unknown via /proc
+  (bsc#1012628).
+- netfilter: flowtable: fix NAT IPv6 offload mangling
+  (bsc#1012628).
+- ixgbe: fix unbalanced device enable/disable in suspend/resume
+  (bsc#1012628).
+- ixgbe: Fix NULL pointer dereference in ethtool loopback test
+  (bsc#1012628).
+- drm/vmwgfx: Make sure we unpin no longer needed buffers
+  (bsc#1012628).
+- scsi: libsas: Reset num_scatter if libata marks qc as NODATA
+  (bsc#1012628).
+- riscv: Fix spelling mistake "SPARSEMEM" to "SPARSMEM"
+  (bsc#1012628).
+- vfio/pci: Add missing range check in vfio_pci_mmap
+  (bsc#1012628).
+- arm64: alternatives: Move length validation in
+  alternative_{insn, endif} (bsc#1012628).
+- arm64: mte: Ensure TIF_MTE_ASYNC_FAULT is set atomically
+  (bsc#1012628).
+- Update config files.
+- arm64: fix inline asm in load_unaligned_zeropad() (bsc#1012628).
+- drm/i915: Don't zero out the Y plane's watermarks (bsc#1012628).
+- readdir: make sure to verify directory entry for legacy
+  interfaces too (bsc#1012628).
+- dm verity fec: fix misaligned RS roots IO (bsc#1012628).
+- HID: wacom: set EV_KEY and EV_ABS only for non-HID_GENERIC
+  type of devices (bsc#1012628).
+- Input: i8042 - fix Pegatron C15B ID entry (bsc#1012628).
+- Input: s6sy761 - fix coordinate read bit shift (bsc#1012628).
+- net/sctp: fix race condition in sctp_destroy_sock (bsc#1012628).
+- lib: fix kconfig dependency on ARCH_WANT_FRAME_POINTERS
+  (bsc#1012628).
+- virt_wifi: Return micros for BSS TSF values (bsc#1012628).
+- mac80211: clear sta->fast_rx when STA removed from 4-addr VLAN
+  (bsc#1012628).
+- drm/amd/display: Add missing mask for DCN3 (bsc#1012628).
+- pcnet32: Use pci_resource_len to validate PCI resource
+  (bsc#1012628).
+- net: ieee802154: forbid monitor for add llsec seclevel
+  (bsc#1012628).
+- net: ieee802154: stop dump llsec seclevels for monitors
+  (bsc#1012628).
+- net: ieee802154: forbid monitor for del llsec devkey
+  (bsc#1012628).
+- net: ieee802154: forbid monitor for add llsec devkey
+  (bsc#1012628).
+- net: ieee802154: stop dump llsec devkeys for monitors
+  (bsc#1012628).
+- net: ieee802154: forbid monitor for del llsec dev (bsc#1012628).
+- net: ieee802154: forbid monitor for add llsec dev (bsc#1012628).
+- net: ieee802154: stop dump llsec devs for monitors
+  (bsc#1012628).
+- net: ieee802154: forbid monitor for del llsec key (bsc#1012628).
+- net: ieee802154: forbid monitor for add llsec key (bsc#1012628).
+- net: ieee802154: stop dump llsec keys for monitors
+  (bsc#1012628).
+- iwlwifi: add support for Qu with AX201 device (bsc#1012628).
+- scsi: scsi_transport_srp: Don't block target in SRP_PORT_LOST
+  state (bsc#1012628).
+- ASoC: fsl_esai: Fix TDM slot setup for I2S mode (bsc#1012628).
+- drm/msm: Fix a5xx/a6xx timestamps (bsc#1012628).
+- ARM: omap1: fix building with clang IAS (bsc#1012628).
+- ARM: keystone: fix integer overflow warning (bsc#1012628).
+- powerpc/signal32: Fix Oops on sigreturn with unmapped VDSO
+  (bsc#1012628).
+- neighbour: Disregard DEAD dst in neigh_update (bsc#1012628).
+- bpf: Take module reference for trampoline in module
+  (bsc#1012628).
+- gpu/xen: Fix a use after free in xen_drm_drv_init (bsc#1012628).
+- net: axienet: allow setups without MDIO (bsc#1012628).
+- ASoC: max98373: Added 30ms turn on/off time delay (bsc#1012628).
+- ASoC: max98373: Changed amp shutdown register as volatile
+  (bsc#1012628).
+- xfrm: BEET mode doesn't support fragments for inner packets
+  (bsc#1012628).
+- iwlwifi: Fix softirq/hardirq disabling in
+  iwl_pcie_enqueue_hcmd() (bsc#1012628).
+- arc: kernel: Return -EFAULT if copy_to_user() fails
+  (bsc#1012628).
+- lockdep: Add a missing initialization hint to the "INFO:
+  Trying to register non-static key" message (bsc#1012628).
+- remoteproc: pru: Fix loading of GNU Binutils ELF (bsc#1012628).
+- ARM: dts: Fix moving mmc devices with aliases for omap4 & 5
+  (bsc#1012628).
+- ARM: dts: Drop duplicate sha2md5_fck to fix clk_disable race
+  (bsc#1012628).
+- ACPI: x86: Call acpi_boot_table_init() after
+  acpi_table_upgrade() (bsc#1012628).
+- dmaengine: idxd: fix wq cleanup of WQCFG registers
+  (bsc#1012628).
+- dmaengine: idxd: clear MSIX permission entry on shutdown
+  (bsc#1012628).
+- dmaengine: plx_dma: add a missing put_device() on error path
+  (bsc#1012628).
+- dmaengine: Fix a double free in dma_async_device_register
+  (bsc#1012628).
+- dmaengine: dw: Make it dependent to HAS_IOMEM (bsc#1012628).
+- dmaengine: idxd: fix wq size store permission state
+  (bsc#1012628).
+- dmaengine: idxd: fix opcap sysfs attribute output (bsc#1012628).
+- dmaengine: idxd: fix delta_rec and crc size field for completion
+  record (bsc#1012628).
+- dmaengine: idxd: Fix clobbering of SWERR overflow bit on
+  writeback (bsc#1012628).
+- gpio: sysfs: Obey valid_mask (bsc#1012628).
+- Input: nspire-keypad - enable interrupts only when opened
+  (bsc#1012628).
+- mtd: rawnand: mtk: Fix WAITRDY break condition and timeout
+  (bsc#1012628).
+- AMD_SFH: Add DMI quirk table for BIOS-es which don't set the
+  activestatus bits (bsc#1012628).
+- AMD_SFH: Add sensor_mask module parameter (bsc#1012628).
+- AMD_SFH: Removed unused activecontrolstatus member from the
+  amd_mp2_dev struct (bsc#1012628).
+- commit d57ad55
+
+-------------------------------------------------------------------
 Fri Apr 16 18:47:19 CEST 2021 - jslaby@suse.cz
 
 - Linux 5.11.15 (bsc#1012628).
@@ -380,6 +596,19 @@ Wed Apr 14 08:57:33 CEST 2021 - jslaby@suse.cz
 - Revert "net: sched: bump refcount for new action in ACT replace
   mode" (bsc#1012628).
 - commit f68b7e1
+
+-------------------------------------------------------------------
+Wed Apr 14 06:52:47 CEST 2021 - jslaby@suse.cz
+
+- rpm/check-for-config-changes: remove stale comment
+  It is stale since 8ab393bf905a committed in 2005 :).
+- commit c9f9f5a
+
+-------------------------------------------------------------------
+Tue Apr 13 17:05:10 CEST 2021 - tiwai@suse.de
+
+- rpm/mkspec: Use tilde instead of dot for version string with rc (bsc#1184650)
+- commit f37613f
 
 -------------------------------------------------------------------
 Mon Apr 12 14:22:20 CEST 2021 - tiwai@suse.de
