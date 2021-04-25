@@ -1,7 +1,7 @@
 #
 # spec file for package kiriki
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kiriki
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Yahtzee-like Game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kiriki
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
@@ -59,10 +63,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      kiriki5 < %{version}
 Provides:       kiriki5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -72,7 +72,7 @@ to get higher scores in several combinations
 %lang_package
 
 %prep
-%setup -q -n kiriki-%{version}
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -88,14 +88,12 @@ to get higher scores in several combinations
 
 %files
 %license COPYING*
-%dir %{_kf5_appstreamdir}
 %doc %lang(en) %{_kf5_htmldir}/en/kiriki/
 %{_kf5_applicationsdir}/org.kde.kiriki.desktop
 %{_kf5_appsdir}/kiriki/
 %{_kf5_appstreamdir}/org.kde.kiriki.appdata.xml
 %{_kf5_bindir}/kiriki
 %{_kf5_iconsdir}/hicolor/*/apps/kiriki.*
-%{_kf5_kxmlguidir}/kiriki/
 
 %if %{with lang}
 %files lang -f %{name}.lang
