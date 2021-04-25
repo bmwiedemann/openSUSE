@@ -1,7 +1,7 @@
 #
 # spec file for package kwordquiz
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kwordquiz
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Vocabulary Trainer
 License:        GPL-2.0-or-later
 Group:          Amusements/Teaching/Language
-URL:            https://edu.kde.org
+URL:            https://apps.kde.org/kwordquiz
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5Config)
@@ -51,10 +55,6 @@ BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 A flashcard and vocabulary learning program.
@@ -62,7 +62,7 @@ A flashcard and vocabulary learning program.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc ppc64
@@ -80,10 +80,8 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
   %fdupes -s %{buildroot}
 
 %files
-%dir %{_kf5_appstreamdir}
 %license COPYING*
 %doc AUTHORS README
-%{_kf5_knsrcfilesdir}/kwordquiz.knsrc
 %doc %lang(en) %{_kf5_htmldir}/en/kwordquiz/
 %{_kf5_applicationsdir}/org.kde.kwordquiz.desktop
 %{_kf5_appsdir}/kwordquiz/
@@ -92,8 +90,9 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_configkcfgdir}/
 %{_kf5_iconsdir}/hicolor/*/apps/kwordquiz.*
 %{_kf5_iconsdir}/hicolor/*/mimetypes/application-x-kwordquiz.png
-%{_kf5_sharedir}/knotifications5/
+%{_kf5_knsrcfilesdir}/kwordquiz.knsrc
 %{_kf5_kxmlguidir}/kwordquiz/
+%{_kf5_sharedir}/knotifications5/
 
 %if %{with lang}
 %files lang -f %{name}.lang
