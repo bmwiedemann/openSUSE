@@ -1,7 +1,7 @@
 #
 # spec file for package kgoldrunner
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kgoldrunner
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Action & Puzzle Solving Game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kgoldrunner
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
@@ -44,10 +48,6 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 KGoldrunner is a game of action and puzzle solving
@@ -55,7 +55,7 @@ KGoldrunner is a game of action and puzzle solving
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -69,20 +69,19 @@ KGoldrunner is a game of action and puzzle solving
 %endif
 
 %files
-%license COPYING*
-%{_kf5_knsrcfilesdir}/kgoldrunner.knsrc
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kgoldrunner/
 %{_kf5_applicationsdir}/org.kde.kgoldrunner.desktop
 %{_kf5_appsdir}/kgoldrunner
 %{_kf5_appstreamdir}/org.kde.kgoldrunner.appdata.xml
 %{_kf5_bindir}/kgoldrunner
-%{_kf5_iconsdir}/hicolor/*/apps/kgoldrunner.*
-%{_kf5_kxmlguidir}/kgoldrunner/
 %{_kf5_debugdir}/kgoldrunner.categories
+%{_kf5_iconsdir}/hicolor/*/apps/kgoldrunner.*
+%{_kf5_knsrcfilesdir}/kgoldrunner.knsrc
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
