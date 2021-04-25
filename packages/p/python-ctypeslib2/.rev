@@ -23,4 +23,20 @@
     <comment></comment>
     <requestid>873595</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>99e466d64b598f6180a1b193aaad0f19</srcmd5>
+    <version>2.3.2</version>
+    <time>1619378854</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.2
+  * [DEBUG] Structure.bind: allow explicitly NULL function ptr
+- Release 2.3.1
+  * let's do a release with some improvements to many things
+- Release 2.3.0
+  * fix tests
+- Drop clang-version.patch released upstream
+- python3-clang is python3 only, so needs to be python3-ctypeslib2
+</comment>
+    <requestid>888327</requestid>
+  </revision>
 </revisionlist>

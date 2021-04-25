@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 25 11:32:50 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.3.2
+  * [DEBUG] Structure.bind: allow explicitly NULL function ptr
+- Release 2.3.1
+  * let's do a release with some improvements to many things
+- Release 2.3.0
+  * fix tests
+- Drop clang-version.patch released upstream
+- python3-clang is python3 only, so needs to be python3-ctypeslib2
+
+-------------------------------------------------------------------
 Fri Feb 19 02:18:14 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Switch to PyPI source

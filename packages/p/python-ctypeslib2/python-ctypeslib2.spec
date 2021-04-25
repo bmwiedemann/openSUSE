@@ -16,10 +16,11 @@
 #
 
 
-# No python2-clang
-%define skip_python2 1
-%define skip_python36 1
-%define oldpython python
+# Until python3-clang is converted to multiflavor, we have the primary flavor only
+# Please keep the multiflavor macro usage in the specfile consistent.
+%define pythons python3
+# help in the rename from multiflavor to python3 only
+%define primary_python3 python%{python3_version_nodots}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %ifarch %{ix86} x86_64
 %bcond_without test
@@ -27,29 +28,25 @@
 %bcond_with test
 %endif
 Name:           python-ctypeslib2
-Version:        2.2.3
+Version:        2.3.2
 Release:        0
 Summary:        Python FFI toolkit using clang
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/trolldbois/ctypeslib
 Source:         https://files.pythonhosted.org/packages/source/c/ctypeslib2/ctypeslib2-%{version}.tar.gz
-Patch0:         https://github.com/trolldbois/ctypeslib/commit/98060fe704f7195356d754a78c67c6fd4756daa7.patch#/clang-version.patch
+BuildRequires:  %{python_module clang >= 11}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  fdupes
-BuildRequires:  gcc
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-clang
-Requires:       python3-clang
+Requires:       python-clang >= 11
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
+Provides:       %{primary_python3}-ctypeslib2 = %{version}-%{release}
+Obsoletes:      %{primary_python3}-ctypeslib2 < %{version}-%{release}
 BuildArch:      noarch
-%ifpython2
-# https://github.com/trolldbois/ctypeslib/issues/26
-Conflicts:      %{oldpython}-ctypeslib
-%endif
 %python_subpackages
 
 %description
@@ -57,23 +54,10 @@ Python FFI toolkit using clang.
 
 %prep
 %setup -q -n ctypeslib2-%{version}
-%patch0 -p1
 sed -i '1{/^#!/d}' ctypeslib/clang2py.py
 
-# https://github.com/trolldbois/ctypeslib/issues/60
-sed -Ei 's/(test_class|test_macro|test_variable)/_\1/' test/test_clang2py.py
-
-# Skipped on master
-# https://github.com/trolldbois/ctypeslib/commit/ef141bb04ef1f9f50774a52195d75a71d55b2749#diff-056c7a7f3e89754296c5f3478ac0ad54630c347a1dc5bf22311ca059cde0ccde
-sed -i 's/test_unicode_cpp11/_test_unicode_cpp11/' test/test_types_values.py
-sed -i 's/test_unicode/_test_unicode/' test/test_types_values.py
-
-# https://github.com/trolldbois/ctypeslib/issues/61
-sed -i 's/test_extern_function_pointer_multiarg/_test_extern_function_pointer_multiarg/' test/test_types_values.py
-sed -i 's/test_callbacks/_test_callbacks/' test/test_callbacks.py
-
-# https://github.com/trolldbois/ctypeslib/issues/62
-sed -i 's/test_includes/_test_includes/' test/test_fast_clang.py
+# avoid pkg_resources errors because python3-clang does not provide an egg-info (even upstream does not)
+sed -i '/clang>=/ d' setup.py
 
 %build
 %python_build
@@ -87,18 +71,23 @@ sed -i 's/test_includes/_test_includes/' test/test_fast_clang.py
 %check
 CFLAGS="-Wall -Wextra -Werror -std=c99 -pedantic -fpic"
 LDFLAGS="-shared"
-gcc $CFLAGS $LDFLAGS -o test/data/test-callbacks.so test/data/test-callbacks.c
+clang $CFLAGS $LDFLAGS -o test/data/test-callbacks.so test/data/test-callbacks.c
 
 export LANG=en_US.UTF-8
-export PYTHONDONTWRITEBYTECODE=1
-%{python_expand \
-  bin_dir=bin-%{$python_version}
-  mkdir $bin_dir
-  ln -s %{buildroot}%{_bindir}/clang2py-%{$python_version} $bin_dir/clang2py
-  export PATH=$PATH:`pwd`/$bin_dir
-  export PYTHONPATH=:test/:%{buildroot}%{$python_sitelib}
-  $python -m unittest discover -s test/ -v
+%{python_expand # u-a controlled executable
+  mkdir -p build/bin
+  ln -s %{buildroot}%{_bindir}/clang2py-%{$python_bin_suffix} build/bin/clang2py
 }
+export PATH="$(pwd)/build/bin:$PATH"
+export CPATH=$(clang  -print-resource-dir)/include
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+  # not for 32-bit (looks for gnu/stubs-64.h)
+  sed -i 's/test_includes/_&/' test/test_fast_clang.py
+  # c_long != c_int -- https://github.com/trolldbois/ctypeslib/issues/61
+  sed -i 's/test_extern_function_pointer_multiarg/_&/' test/test_types_values.py
+fi
+
+%pyunittest discover -s test/ -v
 %endif
 
 %post
@@ -111,6 +100,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %doc README.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/clang2py
-%{python_sitelib}/*
+%{python_sitelib}/ctypeslib
+%{python_sitelib}/ctypeslib2-%{version}*-info
 
 %changelog
