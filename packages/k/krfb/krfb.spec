@@ -1,7 +1,7 @@
 #
 # spec file for package krfb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           krfb
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Screen sharing using the VNC/RFB protocol
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
+URL:            https://apps.kde.org/krfb
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  LibVNCServer-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pipewire-devel
@@ -53,10 +58,6 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -65,7 +66,7 @@ VNC-compatible server to share KDE desktops.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc ppc64
@@ -88,17 +89,18 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %postun -p /sbin/ldconfig
 
 %files
+%license COPYING*
 %doc README
 %doc %lang(en) %{_kf5_htmldir}/en/krfb/
 %{_kf5_applicationsdir}/org.kde.krfb.desktop
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.krfb.appdata.xml
 %{_kf5_bindir}/krfb
 %{_kf5_debugdir}/krfb.categories
 %{_kf5_iconsdir}/hicolor/*/apps/krfb.*
 %{_kf5_libdir}/libkrfbprivate.so*
 %{_kf5_plugindir}/krfb/
-%{_kf5_servicetypesdir}/krfb-framebuffer*.desktop
 %{_kf5_servicetypesdir}/krfb-events.desktop
+%{_kf5_servicetypesdir}/krfb-framebuffer*.desktop
 %{_kf5_sharedir}/krfb/
 
 %if %{with lang}
