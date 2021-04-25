@@ -19,11 +19,11 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kontrast
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Contrast checker
 License:        GPL-3.0-or-later AND CC0-1.0
-URL:            https://kde.org
+URL:            https://apps.kde.org/kontrast
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
