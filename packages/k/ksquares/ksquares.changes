@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Apr 16 16:12:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- No code change since 21.03.90
+- Stop owning directories provided by the filesystem package (boo#1184786)
+
+-------------------------------------------------------------------
+Fri Apr  9 17:41:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- No code change since 21.03.80
+
+-------------------------------------------------------------------
+Sun Mar 21 13:28:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Changes since 20.12.3:
+  * Use AUTORCC directly
+
+-------------------------------------------------------------------
 Thu Mar  4 06:11:14 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.3
