@@ -21,15 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdenetwork-filesharing
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE Network Libraries
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-run-input-user-group-names-through-input-validation.patch
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  PackageKit-Qt5-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5Completion)
@@ -47,10 +49,6 @@ Enhances:       dolphin
 Provides:       kdenetwork4-filesharing = %{version}
 Obsoletes:      kdenetwork4-filesharing < %{version}
 Obsoletes:      kdenetwork4-filesharing-lang < %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Network File Sharing configuration module and plugin.
@@ -81,9 +79,10 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %files
 %license LICENSES/*
 %{_kf5_appstreamdir}/org.kde.kdenetwork-filesharing.metainfo.xml
-%{_kf5_plugindir}/sambausershareplugin.so
-%{_kf5_servicesdir}/sambausershareplugin.desktop
 %{_kf5_libdir}/libexec/kauth/authhelper
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/propertiesdialog
+%{_kf5_plugindir}/kf5/propertiesdialog/sambausershareplugin.so
 %{_kf5_sharedir}/dbus-1/system-services/org.kde.filesharing.samba.service
 %{_kf5_sharedir}/dbus-1/system.d/org.kde.filesharing.samba.conf
 %{_kf5_sharedir}/polkit-1/actions/org.kde.filesharing.samba.policy
