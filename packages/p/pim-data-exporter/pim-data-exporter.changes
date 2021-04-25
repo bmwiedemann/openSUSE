@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Apr 16 16:13:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- No code change since 21.03.90
+
+-------------------------------------------------------------------
+Fri Apr  9 17:41:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- Changes since 21.03.80:
+  * Return zip error
+  * Fix mem leak found by asan
+  * Messages.sh: do not extract strings from autotests
+
+-------------------------------------------------------------------
+Sun Mar 21 13:29:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Changes since 20.12.3:
+  * Use autorcc directly
+  * Increase version
+  * Fix includes (scripted)
+  * QString::split(..., Qt::SplitBehavior, ...) is already in Qt 5.14
+  * Don't copy empty exporteddata information file (kde#429895)
+  * Add missing override
+
+-------------------------------------------------------------------
 Thu Mar  4 06:11:59 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.3
