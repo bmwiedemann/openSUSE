@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Apr 16 16:11:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- Changes since 21.03.90:
+  * Exclude a few more translation catalogs we don't need
+  * Give the country combo box enough space
+  * Complete the exclusion list for all iso-codes catalogs we don't need
+  * Set the APK version based on what is defined in CMake
+  * Extend the asset ignore pattern
+  * Don't install files we don't need on Android
+  * Refine the packaging exclusion list
+  * Add APK exclusion lists for libraries and assets
+
+-------------------------------------------------------------------
+Fri Apr  9 17:39:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- No code change since 21.03.80
+
+-------------------------------------------------------------------
+Sun Mar 21 13:27:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Too many changes to list here.
+- Drop upstream patch:
+  * Update-weather-API-endpoint.patch
+
+-------------------------------------------------------------------
 Fri Mar  5 11:13:41 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add upstream patch:

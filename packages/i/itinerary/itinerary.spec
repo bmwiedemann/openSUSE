@@ -20,19 +20,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           itinerary
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Itinerary and boarding pass management application
 License:        LGPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/itinerary
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         Update-weather-API-endpoint.patch
 BuildRequires:  breeze5-icons
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
