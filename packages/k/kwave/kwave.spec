@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kwave
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
-Summary:        Sound Editor designed for KDE
+Summary:        Sound editor by KDE
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kwave
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  alsa-devel
 BuildRequires:  audiofile-devel
 BuildRequires:  extra-cmake-modules
@@ -66,10 +70,6 @@ Recommends:     %{name}-lang
 Recommends:     lame
 Recommends:     toolame
 Recommends:     twolame
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
 %else
@@ -77,7 +77,7 @@ BuildRequires:  rsvg-view
 %endif
 
 %description
-Kwave is a sound editor designed for the KDE Desktop Environment.
+Kwave is a sound editor by KDE.
 
 With Kwave you can edit many sorts of wav-files including multi-channel files.
 You are able to alter and play back each channel on its own. Kwave also
@@ -88,7 +88,7 @@ and scroll capability.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 # Remove "X-SuSE-translate=true" from desktop file (will be added again using "suse_update_desktop_file") - Fixes package build error
 perl -pi -e "s|X-SuSE-translate=true||" kwave/org.kde.kwave.desktop.in
@@ -110,7 +110,6 @@ perl -pi -e "s|X-SuSE-translate=true||" kwave/org.kde.kwave.desktop.in
 
 %files
 %license GNU-LICENSE
-%dir %{_kf5_appstreamdir}
 %doc %lang(en) %{_kf5_htmldir}/en/kwave/
 %{_kf5_applicationsdir}/org.kde.kwave.desktop
 %{_kf5_appstreamdir}/org.kde.kwave.appdata.xml
