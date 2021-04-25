@@ -1,7 +1,7 @@
 #
 # spec file for package artikulate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           artikulate
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Pronunciation Self-Teaching
 License:        LGPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
 Group:          Amusements/Teaching/Other
-URL:            https://edu.kde.org
+URL:            https://apps.kde.org/artikulate
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5Archive)
@@ -54,10 +58,7 @@ Requires:       kqtquickcharts >= %{_kapp_version}
 Requires:       libqt5-qtquickcontrols
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
+Recommends:     %{name}-lang
 
 %description
 Improve your pronunciation by listening to native speakers.
@@ -83,15 +84,14 @@ Improve your pronunciation by listening to native speakers.
 
 %files
 %license COPYING*
-%dir %{_kf5_configkcfgdir}
+%doc %lang(en) %{_kf5_htmldir}/en/artikulate/
 %{_kf5_applicationsdir}/org.kde.artikulate.desktop
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.artikulate.appdata.xml
 %{_kf5_bindir}/artikulate
 %{_kf5_bindir}/artikulate_editor
-%{_kf5_knsrcfilesdir}/artikulate.knsrc
 %{_kf5_configkcfgdir}/artikulate.kcfg
-%doc %lang(en) %{_kf5_htmldir}/en/artikulate/
 %{_kf5_iconsdir}/hicolor/*/*/artikulate*.*
+%{_kf5_knsrcfilesdir}/artikulate.knsrc
 %{_kf5_libdir}/libartikulatecore.so.*
 %{_kf5_libdir}/libartikulatelearnerprofile.so.*
 %{_kf5_libdir}/libartikulatesound.so.*
