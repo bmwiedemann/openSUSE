@@ -365,4 +365,12 @@
     <comment>20.12.3 release</comment>
     <requestid>877208</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>51f35026e3b21e365ee659ed1d2480f0</srcmd5>
+    <version>21.04.0</version>
+    <time>1619378830</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.04</comment>
+    <requestid>887772</requestid>
+  </revision>
 </revisionlist>

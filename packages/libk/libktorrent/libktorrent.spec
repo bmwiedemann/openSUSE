@@ -1,7 +1,7 @@
 #
 # spec file for package libktorrent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libktorrent
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Torrent Downloading Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
-URL:            https://kde.org/applications/internet/org.kde.ktorrent/
+URL:            https://apps.kde.org/ktorrent
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gmp-devel >= 6.0.0
@@ -43,10 +47,6 @@ BuildRequires:  cmake(Qt5Core) >= 5.14.0
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Xml)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 libktorrent is a torrent downloading library.
@@ -81,7 +81,7 @@ libktorrent is a torrent downloading library.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
