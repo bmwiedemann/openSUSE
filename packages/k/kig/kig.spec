@@ -1,7 +1,7 @@
 #
 # spec file for package kig
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kig
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Interactive Geometry
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://edu.kde.org
+URL:            https://apps.kde.org/kig
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_python3-devel
 BuildRequires:  python3-devel
@@ -43,16 +47,12 @@ BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.2.0
-BuildRequires:  cmake(Qt5Svg) >= 5.2.0
-BuildRequires:  cmake(Qt5Test) >= 5.2.0
-BuildRequires:  cmake(Qt5XmlPatterns) >= 5.2.0
+BuildRequires:  cmake(Qt5PrintSupport)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5XmlPatterns)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -64,7 +64,7 @@ drawing mathematical figures and including them in other documents.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build -- -DBoost_NO_BOOST_CMAKE=ON
@@ -79,17 +79,15 @@ drawing mathematical figures and including them in other documents.
 
 %files
 %license COPYING*
-%dir %{_kf5_htmldir}
-%dir %{_kf5_htmldir}/en
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %{_kf5_applicationsdir}/org.kde.kig.desktop
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.kig.appdata.xml
 %{_kf5_bindir}/kig
 %{_kf5_bindir}/pykig.py
-%{_kf5_iconsdir}/hicolor/*/*/*
-%{_kf5_mandir}/man*
-%{_kf5_plugindir}/
-%{_kf5_servicesdir}/
+%{_kf5_iconsdir}/hicolor/*/*/*kig.*
+%{_kf5_mandir}/man?/*
+%{_kf5_plugindir}/kigpart.so
+%{_kf5_servicesdir}/kig_part.desktop
 %{_kf5_sharedir}/katepart5/
 %{_kf5_sharedir}/kig/
 %{_kf5_sharedir}/kxmlgui5/
