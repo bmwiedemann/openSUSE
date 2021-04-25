@@ -1,7 +1,7 @@
 #
 # spec file for package ksnakeduel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ksnakeduel
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Simple snake duel game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/ksnakeduel
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
@@ -45,10 +49,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      ksnakeduel5 < %{version}
 Provides:       ksnakeduel5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -57,7 +57,7 @@ KSnakeDuel is a simple snake duel game
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -71,9 +71,7 @@ KSnakeDuel is a simple snake duel game
   %endif
 
 %files
-%license COPYING COPYING.DOC
-%{_kf5_knsrcfilesdir}/ksnakeduel.knsrc
-%dir %{_kf5_configkcfgdir}
+%license LICENSES/*
 %dir %{_kf5_iconsdir}/hicolor/256x256
 %dir %{_kf5_iconsdir}/hicolor/256x256/*
 %doc %lang(en) %{_kf5_htmldir}/en/ksnakeduel/
@@ -82,12 +80,13 @@ KSnakeDuel is a simple snake duel game
 %{_kf5_appstreamdir}/org.kde.ksnakeduel.appdata.xml
 %{_kf5_bindir}/ksnakeduel
 %{_kf5_configkcfgdir}/ksnakeduel.kcfg
-%{_kf5_iconsdir}/hicolor/*/*/ksnakeduel.*
 %{_kf5_debugdir}/ksnakeduel.categories
+%{_kf5_iconsdir}/hicolor/*/*/ksnakeduel.*
+%{_kf5_knsrcfilesdir}/ksnakeduel.knsrc
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
