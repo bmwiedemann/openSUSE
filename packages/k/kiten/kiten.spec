@@ -1,7 +1,7 @@
 #
 # spec file for package kiten
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,18 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kiten
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Japanese Reference/Study Tool
 # Data files are under CC-BY-SA-3.0 (edict) and CC-BY-SA-4.0 ("kanjidic"/SKIP numbers therein)
 License:        GPL-2.0-or-later AND CC-BY-SA-3.0 AND CC-BY-SA-4.0
 Group:          Amusements/Teaching/Language
-URL:            https://edu.kde.org
+URL:            https://apps.kde.org/kiten
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -50,10 +54,6 @@ Requires:       fonts-KanjiStrokeOrders
 Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Kiten is a tool to learn Japanese.
@@ -88,12 +88,10 @@ also hope it will help teachers of Japanese in the preparation of
 classroom material. Beware that Japanese stroke order can differ from the
 stroke order used in other languages that use Chinese characters.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc ppc64
@@ -115,9 +113,8 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc AUTHORS README
-%dir %{_kf5_appstreamdir}
 %doc %lang(en) %{_kf5_htmldir}/en/kiten/
 %{_kf5_applicationsdir}/org.kde.kiten.desktop
 %{_kf5_applicationsdir}/org.kde.kitenkanjibrowser.desktop
@@ -138,13 +135,14 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_prefix}/include/libkiten/
 
 %files -n fonts-KanjiStrokeOrders
-%doc data/font/copyright.txt data/font/readme_*.txt
+%license data/font/KanjiStrokeOrders.ttf.license
+%doc data/font/readme_*.txt
 %dir %{_kf5_sharedir}/fonts/kanjistrokeorders/
 %{_kf5_sharedir}/fonts/kanjistrokeorders/KanjiStrokeOrders.ttf
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
