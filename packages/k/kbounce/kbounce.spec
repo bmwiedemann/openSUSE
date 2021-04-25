@@ -1,7 +1,7 @@
 #
 # spec file for package kbounce
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kbounce
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Bounce ball game
 License:        LGPL-2.0-or-later
 Group:          Amusements/Games/Action/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kbounce
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Archive)
@@ -68,10 +72,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -82,7 +82,7 @@ finding new and advanced strategies to catch as many balls as possible.
 %lang_package
 
 %prep
-%setup -q -n kbounce-%{version}
+%autosetup -p1 -n kbounce-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -97,18 +97,18 @@ finding new and advanced strategies to catch as many balls as possible.
   %suse_update_desktop_file -r org.kde.kbounce         Game LogicGame
 
 %files
-%license COPYING COPYING.DOC
-%{_kf5_bindir}/kbounce
-%{_kf5_applicationsdir}/org.kde.kbounce.desktop
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kbounce/
+%{_kf5_applicationsdir}/org.kde.kbounce.desktop
+%{_kf5_appstreamdir}/org.kde.kbounce.appdata.xml
+%{_kf5_bindir}/kbounce
+%{_kf5_debugdir}/kbounce.categories
 %{_kf5_iconsdir}/hicolor/*/apps/kbounce.*
 %{_kf5_sharedir}/kbounce/
-%{_kf5_kxmlguidir}/
-%{_kf5_appstreamdir}/org.kde.kbounce.appdata.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
