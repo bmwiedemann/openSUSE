@@ -1,7 +1,7 @@
 #
 # spec file for package kdeedu-data
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdeedu-data
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Data files for KDE Education Applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -37,17 +41,13 @@ Obsoletes:      libkeduvocdocument-data < %{version}
 Provides:       libkdeedu4-data = %{version}
 Provides:       libkeduvocdocument-data = %{version}
 BuildArch:      noarch
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
-This package contains common data files used by various
-KDE education applications.
+This package contains common data files used by various KDE education
+applications.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
