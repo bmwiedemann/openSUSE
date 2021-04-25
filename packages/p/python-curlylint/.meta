@@ -1,0 +1,5 @@
+<package name="python-curlylint" project="openSUSE:Factory">
+  <title></title>
+  <description>HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid</description>
+  <devel project="devel:languages:python" package="python-curlylint"/>
+</package>
