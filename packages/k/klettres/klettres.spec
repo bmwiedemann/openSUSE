@@ -1,7 +1,7 @@
 #
 # spec file for package klettres
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           klettres
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Alphabet Learning Game
 License:        GPL-2.0-or-later
 Group:          Amusements/Teaching/Language
-URL:            https://edu.kde.org
+URL:            https://apps.kde.org/klettres
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -48,20 +52,14 @@ BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Helps to learn the alphabet and read some syllables.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc ppc64
@@ -81,18 +79,16 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %files
 %license COPYING
 %doc AUTHORS ChangeLog
-%{_kf5_knsrcfilesdir}/klettres.knsrc
-%dir %{_kf5_appstreamdir}
-%dir %{_kf5_configkcfgdir}
 %doc %lang(en) %{_kf5_htmldir}/en/klettres/
 %{_kf5_applicationsdir}/org.kde.klettres.desktop
 %{_kf5_appsdir}/klettres/
 %{_kf5_appstreamdir}/org.kde.klettres.appdata.xml
 %{_kf5_bindir}/klettres
 %{_kf5_configkcfgdir}/klettres.kcfg
-%{_kf5_iconsdir}/hicolor/*/apps/klettres.*
-%{_kf5_kxmlguidir}/klettres/
 %{_kf5_debugdir}/klettres.categories
+%{_kf5_iconsdir}/hicolor/*/apps/klettres.*
+%{_kf5_knsrcfilesdir}/klettres.knsrc
+%{_kf5_kxmlguidir}/klettres/
 
 %if %{with lang}
 %files lang -f %{name}.lang
