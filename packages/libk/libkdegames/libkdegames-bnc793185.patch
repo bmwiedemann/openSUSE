@@ -1,7 +1,7 @@
-Index: libkdegames-4.9.90/carddecks/CMakeLists.txt
-===================================================================
---- libkdegames-4.9.90.orig/carddecks/CMakeLists.txt
-+++ libkdegames-4.9.90/carddecks/CMakeLists.txt
+diff --git a/src/carddecks/CMakeLists.txt b/src/carddecks/CMakeLists.txt
+index 2a610a91..676442b0 100644
+--- a/src/carddecks/CMakeLists.txt
++++ b/src/carddecks/CMakeLists.txt
 @@ -9,7 +9,6 @@ add_subdirectory( svg-dondorf )
  add_subdirectory( svg-future )
  add_subdirectory( svg-gm-paris )

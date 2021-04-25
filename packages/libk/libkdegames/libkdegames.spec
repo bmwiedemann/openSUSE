@@ -21,16 +21,18 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkdegames
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        General Data for KDE Games
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-Patch1:         libkdegames-bnc793185.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Add-missing-module-identifier-to-qmldir.patch
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
+Patch0:         libkdegames-bnc793185.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -68,10 +70,6 @@ BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 Obsoletes:      %{name}-kf5 < %{version}
 Provides:       %{name}-kf5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This package contains data which is required by the KDE games library.
@@ -82,7 +80,7 @@ This package contains data which is required by the KDE games library.
 %autosetup -p1
 
 # bnc#793185
-rm -rf carddecks/svg-konqi-modern
+rm -r src/carddecks/svg-konqi-modern
 
 %build
   %cmake_kf5 -d build
@@ -151,20 +149,20 @@ BuildArch:      noarch
 This package contains the default card deck set for KDE games.
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc README
 %{_kf5_sharedir}/kconf_update/
 
 %files -n libkf5kdegames6
-%license COPYING*
+%license LICENSES/*
 %doc README
+%{_kf5_debugdir}/libkdegames.categories
 %{_kf5_libdir}/libKF5KDEGames.so.*
 %{_kf5_libdir}/libKF5KDEGamesPrivate.so.*
 %{_kf5_qmldir}/
-%{_kf5_debugdir}/libkdegames.categories
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %doc README
 %{_kf5_cmakedir}/KF5KDEGames/
 %{_kf5_includedir}/KF5KDEGames/
@@ -172,19 +170,19 @@ This package contains the default card deck set for KDE games.
 %{_kf5_libdir}/libKF5KDEGamesPrivate.so
 
 %files -n kdegames-carddecks-other
-%license COPYING
+%license LICENSES/*
 %doc README
 %exclude %{_kf5_sharedir}/carddecks/svg-oxygen-air
 %{_kf5_sharedir}/carddecks
 
 %files -n kdegames-carddecks-default
-%license COPYING
+%license LICENSES/*
 %doc README
 %{_kf5_sharedir}/carddecks/svg-oxygen-air
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
