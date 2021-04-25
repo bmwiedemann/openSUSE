@@ -18,15 +18,23 @@
 
 %bcond_without lang
 Name:           kirigami-gallery
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Gallery application built using Kirigami
 License:        LGPL-2.0-or-later
 Group:          Development/Tools/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kirigami2.gallery
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
+# For some reason needed for appstream xml installation
+BuildRequires:  kpackage
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5ItemModels)
+BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -38,10 +46,6 @@ Requires:       kitemmodels-imports
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Example application which uses all features from kirigami,
@@ -52,7 +56,7 @@ code examples on cgit
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -68,8 +72,9 @@ code examples on cgit
 
 %files
 %license LICENSE.LGPL-2
-%{_kf5_bindir}/kirigami2gallery
 %{_kf5_applicationsdir}/org.kde.kirigami2.gallery.desktop
+%{_kf5_appstreamdir}/org.kde.kirigami2.gallery.appdata.xml
+%{_kf5_bindir}/kirigami2gallery
 
 %if %{with lang}
 %files lang -f %{name}.lang

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Apr 16 16:12:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- No code change since 21.03.90
+
+-------------------------------------------------------------------
+Fri Apr  9 17:40:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- Changes since 21.03.80:
+  * Add kitemmodels dependency to cmake
+
+-------------------------------------------------------------------
+Wed Mar 24 10:51:38 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Build with kpackage to get the appstream xml installed (boo#1183946)
+
+-------------------------------------------------------------------
+Sun Mar 21 13:28:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Changes since 20.12.3:
+  * Change homepage url "http" to "https"
+  * Fix Android package name
+
+-------------------------------------------------------------------
 Thu Mar  4 06:10:31 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.3
