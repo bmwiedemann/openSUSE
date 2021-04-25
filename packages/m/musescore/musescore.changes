@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Apr 25 12:38:29 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Do not build with qtwebengine on ppc64 and ppc64le
+
+-------------------------------------------------------------------
+Sun Apr 25 12:13:06 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Change the GenericName in the desktop file to something that is
+  really generic: Music score typesetter
+
+-------------------------------------------------------------------
+Sat Apr 24 12:43:24 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Add no-webview-in-startcentre.patch to prevent that webview is
+  used in startcentre (boo#1181604)
+
+-------------------------------------------------------------------
 Tue Feb  9 14:06:26 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add compatibility with qml-autoreqprov
