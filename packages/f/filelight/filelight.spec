@@ -1,7 +1,7 @@
 #
 # spec file for package filelight
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           filelight
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Graphical disk usage viewer
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/GUI/KDE
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/filelight
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
@@ -47,10 +51,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -60,7 +60,7 @@ and the sizes of files and directories on the system.
 %lang_package
 
 %prep
-%setup -q -n filelight-%{version}
+%autosetup -p1 -n filelight-%{version}
 
 %build
 %cmake_kf5 -d build
@@ -75,20 +75,20 @@ and the sizes of files and directories on the system.
 %suse_update_desktop_file org.kde.filelight System Filesystem
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc AUTHORS README.md
 %config %{_kf5_configdir}/filelightrc
-%{_kf5_applicationsdir}/org.kde.filelight.desktop
-%{_kf5_bindir}/filelight
 %doc %lang(en) %{_kf5_htmldir}/en/filelight/
+%{_kf5_applicationsdir}/org.kde.filelight.desktop
+%{_kf5_appstreamdir}/org.kde.filelight.appdata.xml
+%{_kf5_bindir}/filelight
+%{_kf5_debugdir}/filelight.categories
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_kxmlguidir}/filelight/
-%{_kf5_appstreamdir}/org.kde.filelight.appdata.xml
-%{_kf5_debugdir}/filelight.categories
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
