@@ -1,0 +1,8 @@
+<package name="kopeninghours" project="openSUSE:Factory">
+  <title>OSM opening hours expression parser and evaluator</title>
+  <description>A library for parsing and evaluating OSM opening hours expressions.
+
+</description>
+  <devel project="KDE:Applications" package="kopeninghours"/>
+  <url>https://www.kde.org</url>
+</package>
