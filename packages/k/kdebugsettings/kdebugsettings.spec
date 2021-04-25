@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdebugsettings
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Program to set debug verbosity for KDE applications
 License:        LGPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kdebugsettings
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
@@ -46,21 +50,15 @@ BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 Obsoletes:      kdebugsettings5 < %{version}
 Provides:       kdebugsettings5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This program allows to tune the debug output of KDE applications, ranging
 from verbose to completely silent.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
-%setup -q -n kdebugsettings-%{version}
+%autosetup -p1 -n kdebugsettings-%{version}
 
 %build
 %cmake_kf5 -d build
@@ -75,18 +73,20 @@ from verbose to completely silent.
 %suse_update_desktop_file org.kde.kdebugsettings Utility DesktopUtility
 
 %files
-%license COPYING*
-%{_kf5_appstreamdir}/org.kde.kdebugsettings.appdata.xml
-%{_kf5_debugdir}/kde.renamecategories
+%license LICENSES/*
+%dir %{_kf5_sharedir}/kdebugsettings/
 %{_kf5_applicationsdir}/org.kde.kdebugsettings.desktop
+%{_kf5_appstreamdir}/org.kde.kdebugsettings.appdata.xml
 %{_kf5_bindir}/kdebugsettings
+%{_kf5_debugdir}/kde.renamecategories
 %{_kf5_debugdir}/kdebugsettings.categories
 %{_kf5_libdir}/libkdebugsettings.so.*
 %{_kf5_libdir}/libkdebugsettings.so.5
+%{_kf5_sharedir}/kdebugsettings/groups/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
