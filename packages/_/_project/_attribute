@@ -539,6 +539,20 @@ products:
     - i586
     - x86_64
   containerfile:
+  - cdi-apiserver-container:
+    - x86_64
+  - cdi-cloner-container:
+    - x86_64
+  - cdi-controller-container:
+    - x86_64
+  - cdi-importer-container:
+    - x86_64
+  - cdi-operator-container:
+    - x86_64
+  - cdi-uploadproxy-container:
+    - x86_64
+  - cdi-uploadserver-container:
+    - x86_64
   - go1.15-devel-container:
     - i586
     - x86_64
@@ -659,7 +673,7 @@ products:
     - x86_64
   - livecd-tumbleweed-x11:
     - i586
-    - x86_64
+#    - x86_64
   - livecd-tumbleweed-xfce:
     - i586
     - x86_64
