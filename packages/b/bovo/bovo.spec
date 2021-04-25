@@ -1,7 +1,7 @@
 #
 # spec file for package bovo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           bovo
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Five-in-a-row Board Game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/bovo
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  xz
 BuildRequires:  cmake(KF5CoreAddons)
@@ -41,20 +45,15 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
-Bovo is a Gomoku (Connect Five, Five in a row, X and O, etc) game by
-KDE.
+Bovo is a Gomoku (Connect Five, Five in a row, X and O, etc) game by KDE.
 
 %lang_package
 
 %prep
-%setup -q -n bovo-%{version}
+%autosetup -p1 -n bovo-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -69,10 +68,10 @@ KDE.
 
 %files
 %license COPYING*
-%{_kf5_applicationsdir}/org.kde.bovo.desktop
-%{_kf5_appstreamdir}/
-%{_kf5_bindir}/bovo
 %doc %lang(en) %{_kf5_htmldir}/en/bovo/
+%{_kf5_applicationsdir}/org.kde.bovo.desktop
+%{_kf5_appstreamdir}/org.kde.bovo.appdata.xml
+%{_kf5_bindir}/bovo
 %{_kf5_iconsdir}/hicolor/*/apps/bovo.*
 %{_kf5_sharedir}/bovo/
 
