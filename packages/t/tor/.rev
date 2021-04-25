@@ -846,4 +846,12 @@ nicer version with try-reload-or-restart</comment>
 - skip i586 tests (boo#1179331)</comment>
     <requestid>888127</requestid>
   </revision>
+  <revision rev="93" vrev="4">
+    <srcmd5>0af16b184c97cb11017fc0c9d2d47900</srcmd5>
+    <version>0.4.5.7</version>
+    <time>1619378842</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888264</requestid>
+  </revision>
 </revisionlist>

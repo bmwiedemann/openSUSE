@@ -109,6 +109,7 @@ install -m 644 %{SOURCE5} %{buildroot}%{_datadir}/tor/defaults-torrc
 install -d -m 0755 %{buildroot}%{_tmpfilesdir}/
 install -m 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 ln -s -f service %{buildroot}%{_sbindir}/rc%{name}
+ln -s -f service %{buildroot}%{_sbindir}/rc%{name}-master
 
 # sample config files
 install -p -m 644 -D src/config/torrc.{sample,minimal} %{buildroot}/%{_sysconfdir}/%{name}
@@ -134,13 +135,16 @@ getent passwd %{toruser} >/dev/null || useradd -r -g %{torgroup} -d %{home_dir} 
 %post
 %fillup_only
 %service_add_post tor.service
+%service_add_post tor-master.service
 systemd-tmpfiles --create %{_tmpfilesdir}/tor.conf || :
 
 %preun
 %service_del_preun tor.service
+%service_del_preun tor-master.service
 
 %postun
 %service_del_postun tor.service
+%service_del_postun tor-master.service
 
 %files
 %license LICENSE
@@ -160,5 +164,6 @@ systemd-tmpfiles --create %{_tmpfilesdir}/tor.conf || :
 %{_unitdir}/%{name}-master.service
 %{_tmpfilesdir}/%{name}.conf
 %{_sbindir}/rc%{name}
+%{_sbindir}/rc%{name}-master
 
 %changelog
