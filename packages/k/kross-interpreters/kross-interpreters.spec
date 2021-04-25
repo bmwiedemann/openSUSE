@@ -21,25 +21,25 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kross-interpreters
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Diverse bindings for KROSS
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/KDE
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-BuildRequires:  extra-cmake-modules
-BuildRequires:  ruby-devel
-BuildRequires:  xz
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  cmake(KF5Kross) >= 5.11.0
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
 %if %{with lang}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+BuildRequires:  extra-cmake-modules
+BuildRequires:  ruby-devel
+BuildRequires:  xz
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5Kross)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 
 %description
 The kross interpreter for Ruby
@@ -52,7 +52,7 @@ Group:          Development/Libraries/KDE
 The Ruby bindings which can be used with KROSS
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
