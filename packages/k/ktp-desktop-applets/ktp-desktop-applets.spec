@@ -21,13 +21,17 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-desktop-applets
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Telepathy presence applet
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://community.kde.org/Real-Time_Communication_and_Collaboration
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -45,10 +49,6 @@ Provides:       ktp-contact-applet = 0.5.3
 Obsoletes:      %{name}5 < %{version}
 Obsoletes:      ktp-contact-applet < 0.5.3
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This package provides a Plasma applet to launch your Telepathy contacts list.
@@ -56,7 +56,7 @@ This package provides a Plasma applet to launch your Telepathy contacts list.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
