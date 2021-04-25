@@ -16,18 +16,22 @@
 #
 
 
-%define kf5_version 5.75.0
+%define kf5_version 5.79.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           pim-sieve-editor
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
-Summary:        Sieve scripts editor for KDE PIM
+Summary:        Sieve scripts editor for KDE PIM applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/KDE
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/sieveeditor
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 # Is only required for the icon
 BuildRequires:  kmail-application-icons
@@ -44,17 +48,15 @@ BuildRequires:  cmake(KF5MailTransport)
 BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KUserFeedback)
-BuildRequires:  cmake(Qt5Network) >= 5.10.0
-BuildRequires:  cmake(Qt5Test) >= 5.10.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.10.0
+BuildRequires:  cmake(Qt5Keychain)
+BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 Requires:       kmail
 Recommends:     %{name}-lang
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This package provides an editor, complete with syntax highlighting and
@@ -64,7 +66,7 @@ in KDE PIM applications.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -82,20 +84,20 @@ in KDE PIM applications.
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
-%{_kf5_debugdir}/sieveeditor.categories
-%{_kf5_debugdir}/sieveeditor.renamecategories
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/sieveeditor/
 %{_kf5_applicationsdir}/org.kde.sieveeditor.desktop
+%{_kf5_appstreamdir}/org.kde.sieveeditor.appdata.xml
 %{_kf5_bindir}/sieveeditor
 %{_kf5_configkcfgdir}/sieveeditorglobalconfig.kcfg
+%{_kf5_debugdir}/sieveeditor.categories
+%{_kf5_debugdir}/sieveeditor.renamecategories
 %{_kf5_libdir}/libsieveeditor.so.*
 %{_kf5_sharedir}/kconf_update/
-%{_kf5_appstreamdir}/org.kde.sieveeditor.appdata.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
