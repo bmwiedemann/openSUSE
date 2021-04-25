@@ -1,7 +1,7 @@
 #
 # spec file for package blinken
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           blinken
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Simon Says Game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Other
-URL:            https://edu.kde.org
+URL:            https://apps.kde.org/blinken
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  perl
 BuildRequires:  update-desktop-files
@@ -44,10 +48,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -56,7 +56,7 @@ A memory enhancement game.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc ppc64
@@ -74,19 +74,18 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %suse_update_desktop_file org.kde.blinken X-KDE-Edu-Teaching
 
 %files
-%license COPYING*
-%dir %{_kf5_appstreamdir}
+%license LICENSES/*
+%doc %lang(en) %{_kf5_htmldir}/en/blinken/
 %{_kf5_applicationsdir}/org.kde.blinken.desktop
 %{_kf5_appsdir}/blinken/
 %{_kf5_appstreamdir}/org.kde.blinken.appdata.xml
 %{_kf5_bindir}/blinken
 %{_kf5_configkcfgdir}/
-%doc %lang(en) %{_kf5_htmldir}/en/blinken/
 %{_kf5_iconsdir}/hicolor/*/apps/blinken.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
