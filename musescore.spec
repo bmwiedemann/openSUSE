@@ -16,6 +16,12 @@
 #
 
 
+%ifarch ppc64 ppc64le
+%define qtwebengine 0
+%else
+%define qtwebengine 1
+%endif
+
 # Internal QML imports
 %global __requires_exclude qmlimport\\((MuseScore|FileIO).*
 
@@ -40,6 +46,8 @@ Source1:        %{rname}.desktop
 Patch0:         use-qtmake-qt5.patch
 # PATCH-FIX-OPENSUSE: don't install qtwebengine files, they are not needed
 Patch1:         use-system-qtwebengine-files.patch
+# PATCH-FIX-OPENSUSE: don't use webview in startcentre (boo#1181604)
+Patch2:         no-webview-in-startcentre.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -64,9 +72,11 @@ BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5UiTools)
+%if %qtwebengine
 BuildRequires:  pkgconfig(Qt5WebEngine)
 BuildRequires:  pkgconfig(Qt5WebEngineCore)
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
+%endif
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5XmlPatterns)
@@ -126,7 +136,10 @@ mv -f tmpfile thirdparty/portmidi/README.txt
        -DCMAKE_BUILD_TYPE=RELEASE \
        -DMUSESCORE_BUILD_CONFIG=release \
        -DUSE_SYSTEM_FREETYPE="ON" \
+%if %qtwebengine
        -DBUILD_WEBENGINE="ON" \
+%endif
+       -DBUILD_TELEMETRY_MODULE=OFF \
        -DMUSESCORE_REVISION=%{revision}
 %make_jobs lrelease all
 

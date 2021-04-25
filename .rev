@@ -394,4 +394,18 @@
 </comment>
     <requestid>870672</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>bcf865f977b844c1a58c10ecd0067f74</srcmd5>
+    <version>3.6.2</version>
+    <time>1619378851</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build with qtwebengine on ppc64 and ppc64le
+
+- Change the GenericName in the desktop file to something that is
+  really generic: Music score typesetter
+
+- Add no-webview-in-startcentre.patch to prevent that webview is
+  used in startcentre (boo#1181604)</comment>
+    <requestid>888319</requestid>
+  </revision>
 </revisionlist>

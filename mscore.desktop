@@ -2,7 +2,7 @@
 Comment=WYSIWYG Music score typesetter
 Comment[de]=WYSIWYG Noteneditor
 Exec=mscore
-GenericName=mscore
+GenericName=Music score typesetter
 Icon=mscore
 Name=MuseScore
 StartupNotify=true
