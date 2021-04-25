@@ -1,7 +1,7 @@
 #
 # spec file for package granatier
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           granatier
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
-Summary:        Bomberman-like game for KDE
+Summary:        Bomberman-like game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/granatier
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
@@ -50,10 +54,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -64,7 +64,7 @@ Bomberman game.
 %lang_package
 
 %prep
-%setup -q -n granatier-%{version}
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -79,21 +79,19 @@ Bomberman game.
   %suse_update_desktop_file -r org.kde.granatier       Game ArcadeGame
 
 %files
-%license COPYING*
-%dir %{_kf5_configkcfgdir}
+%license LICENSES/*
+%doc %lang(en) %{_kf5_htmldir}/en/granatier/
 %{_kf5_applicationsdir}/org.kde.granatier.desktop
 %{_kf5_appsdir}/granatier/
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.granatier.appdata.xml
 %{_kf5_bindir}/granatier
 %{_kf5_configkcfgdir}/granatier.kcfg
-%doc %lang(en) %{_kf5_htmldir}/en/granatier/
-%{_kf5_iconsdir}/hicolor/*/apps/granatier.*
-%{_kf5_kxmlguidir}/granatier/
 %{_kf5_debugdir}/granatier.categories
+%{_kf5_iconsdir}/hicolor/*/apps/granatier.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
