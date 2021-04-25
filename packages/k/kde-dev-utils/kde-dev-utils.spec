@@ -1,7 +1,7 @@
 #
 # spec file for package kde-dev-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kde-dev-utils
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE SDK Package
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CoreAddons)
@@ -39,22 +43,16 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Designer)
 BuildRequires:  cmake(Qt5UiTools)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
 This package suggests the packages, built from the kde-dev-utils module.
 
-%if %{with lang}
 %lang_package -n kpartloader
 %lang_package -n kuiviewer
-%endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc64
@@ -85,7 +83,7 @@ Displays Qt Designer UI files
 %postun -n kuiviewer -p /sbin/ldconfig
 
 %files -n kuiviewer
-%license COPYING*
+%license LICENSES/*
 %{_kf5_applicationsdir}/org.kde.kuiviewer.desktop
 %{_kf5_bindir}/kuiviewer
 %{_kf5_iconsdir}/hicolor/*/apps/kuiviewer.png
@@ -112,14 +110,14 @@ loading of KParts.
 %postun -n kpartloader -p /sbin/ldconfig
 
 %files -n kpartloader
-%license COPYING*
+%license LICENSES/*
 %{_kf5_bindir}/kpartloader
 
 %if %{with lang}
 %files -n kuiviewer-lang -f kuiviewer.lang
 
 %files -n kpartloader-lang -f kpartloader.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
