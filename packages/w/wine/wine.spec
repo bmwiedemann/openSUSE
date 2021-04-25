@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 6.6
-Version:        6.6
+%define realver 6.7
+Version:        6.7
 Release:        0
 
 %if "%{flavor}" != ""
@@ -137,12 +137,9 @@ Source6:        wine-msi.desktop
 Source5:        ubuntuwine.tar.bz2
 Source7:        baselibs.conf
 Source8:        wine-rpmlintrc
-# PATCH FIX UPSTREAM wine-winegcc-missing-includes.patch fix https://bugs.winehq.org/show_bug.cgi?id=50996
-Patch0:         wine-winegcc-missing-includes.patch
 # SUSE specific patches
 # - currently none, but add them here
 #Patch0:         susefixes.patch
-Source99:       a886228fbcefe7b8de06d2dd7182272df6cc3c36.patch
 Recommends:     wine-gecko >= 2.47.2
 Conflicts:      wine-gecko < 2.47.2
 Recommends:     wine-mono >= 6.1.1
@@ -161,7 +158,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 6.6
+%define staging_version 6.7
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
@@ -226,7 +223,6 @@ cp %{S:3} .
 %if %{staging}
 # apply wine staging patch set on top of the wine release.
 tar xf %{SOURCE100}
-cp %{SOURCE99} ./wine-staging-%staging_version/patches/user32-rawinput-mouse/0008-winex11.drv-Listen-to-RawMotion-and-RawButton-events.patch
 bash ./wine-staging-%staging_version/patches/patchinstall.sh --all
 %endif
 

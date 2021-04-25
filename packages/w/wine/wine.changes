@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr 24 08:16:43 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 6.7 development release
+  - NetApi32, WLDAP32, and Kerberos libraries converted to PE.
+  - More Media Foundation work.
+  - ES6 JavaScript mode.
+  - Improved WOW64 file system redirection.
+  - More Plug & Play driver support.
+  - Keyboard raw input device.
+  - Various bug fixes.
+- update staging to 6.7 release
+- removed wine-winegcc-missing-includes.patch (upstream)
+- removed a886228fbcefe7b8de06d2dd7182272df6cc3c36.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Apr 21 14:21:30 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Fix raw input with wine-staging: To fix it we copied the

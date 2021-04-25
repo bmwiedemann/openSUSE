@@ -3954,4 +3954,22 @@
   This can be dropped with 6.7 (forwarded request 887367 from darix)</comment>
     <requestid>888158</requestid>
   </revision>
+  <revision rev="339" vrev="1">
+    <srcmd5>e439612e2c9953c3f26d41735970a96f</srcmd5>
+    <version>6.7</version>
+    <time>1619378848</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.7 development release
+  - NetApi32, WLDAP32, and Kerberos libraries converted to PE.
+  - More Media Foundation work.
+  - ES6 JavaScript mode.
+  - Improved WOW64 file system redirection.
+  - More Plug &amp; Play driver support.
+  - Keyboard raw input device.
+  - Various bug fixes.
+- update staging to 6.7 release
+- removed wine-winegcc-missing-includes.patch (upstream)
+- removed a886228fbcefe7b8de06d2dd7182272df6cc3c36.patch (upstream)</comment>
+    <requestid>888304</requestid>
+  </revision>
 </revisionlist>
