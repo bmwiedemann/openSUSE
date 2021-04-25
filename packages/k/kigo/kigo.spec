@@ -1,7 +1,7 @@
 #
 # spec file for package kigo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kigo
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
-Summary:        Traditional Chinese Boardgame for KDE
+Summary:        Traditional Chinese Boardgame by KDE
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kigo
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
@@ -46,19 +50,15 @@ BuildRequires:  cmake(Qt5Widgets)
 Recommends:     gnugo
 Obsoletes:      kigo5 < %{version}
 Provides:       kigo5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
-Traditional Chinese Boardgame
+Traditional Chinese Boardgame.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -72,22 +72,20 @@ Traditional Chinese Boardgame
   %endif
 
 %files
-%license COPYING COPYING.DOC
+%license LICENSES/*
 %{_kf5_bindir}/kigo
 %doc %lang(en) %{_kf5_htmldir}/en/kigo/
 %{_kf5_applicationsdir}/org.kde.kigo.desktop
-%{_kf5_iconsdir}/hicolor/*/apps/kigo.*
 %{_kf5_appsdir}/kigo/
-%{_kf5_knsrcfilesdir}/kigo*.knsrc
-%dir %{_kf5_configkcfgdir}
+%{_kf5_appstreamdir}/org.kde.kigo.appdata.xml
 %{_kf5_configkcfgdir}/kigo.kcfg
 %{_kf5_debugdir}/kigo.categories
-%{_kf5_kxmlguidir}/kigo/
-%{_kf5_appstreamdir}/org.kde.kigo.appdata.xml
+%{_kf5_iconsdir}/hicolor/*/apps/kigo.*
+%{_kf5_knsrcfilesdir}/kigo*.knsrc
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
