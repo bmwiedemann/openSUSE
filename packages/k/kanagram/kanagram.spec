@@ -1,7 +1,7 @@
 #
 # spec file for package kanagram
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kanagram
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Anagram Game
 License:        GPL-2.0-or-later
 Group:          Amusements/Teaching/Language
-URL:            https://edu.kde.org
+URL:            https://apps.kde.org/kanagram
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Config)
@@ -48,10 +52,6 @@ Requires:       kdeedu-data
 Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Kanagram is a letter order game.
@@ -59,7 +59,7 @@ Kanagram is a letter order game.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -79,12 +79,12 @@ Kanagram is a letter order game.
 %dir %{_kf5_iconsdir}/hicolor/24x24/apps
 %dir %{_kf5_iconsdir}/hicolor/80x80
 %dir %{_kf5_iconsdir}/hicolor/80x80/apps
-%{_kf5_applicationsdir}/org.kde.kanagram.desktop
-%{_kf5_appstreamdir}/
-%{_kf5_bindir}/kanagram
-%{_kf5_configkcfgdir}/
 %doc %lang(en) %{_kf5_htmldir}/en/kanagram/
-%{_kf5_iconsdir}/hicolor/*/*/*
+%{_kf5_applicationsdir}/org.kde.kanagram.desktop
+%{_kf5_appstreamdir}/org.kde.kanagram.appdata.xml
+%{_kf5_bindir}/kanagram
+%{_kf5_configkcfgdir}/kanagram.kcfg
+%{_kf5_iconsdir}/hicolor/*/apps/kanagram*.*
 %{_kf5_sharedir}/kanagram/
 
 %if %{with lang}
