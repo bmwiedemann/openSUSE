@@ -22,11 +22,10 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpublictransport
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        QML imports for querying public transport data
 License:        LGPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with lang}
@@ -39,9 +38,9 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Quick) >= 5.11.0
-BuildRequires:  cmake(Qt5Test) >= 5.11.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{lname} = %{version}
 
@@ -63,6 +62,7 @@ Group:          Development/Libraries/KDE
 Requires:       %{lname} = %{version}
 Requires:       extra-cmake-modules
 Requires:       cmake(Qt5Gui)
+Requires:       pkgconfig(zlib)
 
 %description devel
 A library for access realtime public transport data and for performing public
