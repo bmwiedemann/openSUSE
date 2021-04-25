@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           markdownpart
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KPart for rendering Markdown content
 License:        LGPL-2.1-or-later
@@ -48,7 +48,7 @@ Examples are Ark, Krusader, Kate's preview plugin & Konqueror.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -65,6 +65,7 @@ Examples are Ark, Krusader, Kate's preview plugin & Konqueror.
 %license LICENSES/LGPL-2.1-or-later.txt
 %doc README.md
 %{_kf5_appstreamdir}/org.kde.markdownpart.metainfo.xml
+%dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/parts
 %{_kf5_plugindir}/kf5/parts/markdownpart.so
 %{_kf5_servicesdir}/markdownpart.desktop
