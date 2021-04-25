@@ -1,7 +1,7 @@
 #
 # spec file for package kcachegrind
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcachegrind
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Frontend for Cachegrind
 License:        GPL-2.0-only AND BSD-4-Clause AND GFDL-1.2-only
 Group:          Development/Tools/Other
-URL:            https://www.kde.org/
+URL:            https://apps.kde.org/kcachegrind
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -45,10 +49,6 @@ BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 KCachegrind is a frontend for cachegrind.
@@ -56,7 +56,7 @@ KCachegrind is a frontend for cachegrind.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc64
@@ -78,10 +78,11 @@ export CFLAGS="%{optflags} -fPIC"
 %suse_update_desktop_file    org.kde.kcachegrind    Development Profiling
 
 %files
-%license COPYING COPYING.DOC
+%license LICENSES/*
 %doc README
 %doc %lang(en) %{_kf5_htmldir}/en/kcachegrind/
 %{_kf5_applicationsdir}/org.kde.kcachegrind.desktop
+%{_kf5_appstreamdir}/org.kde.kcachegrind.appdata.xml
 %{_kf5_bindir}/dprof2calltree
 %{_kf5_bindir}/hotshot2calltree
 %{_kf5_bindir}/kcachegrind
@@ -90,11 +91,10 @@ export CFLAGS="%{optflags} -fPIC"
 %{_kf5_bindir}/pprof2calltree
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_sharedir}/kcachegrind/
-%{_kf5_appstreamdir}/org.kde.kcachegrind.appdata.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
