@@ -12880,9 +12880,7 @@ unsorted:
   - libqt5-qtxmlpatterns-examples 
   - libqt5-qtxmlpatterns-imports-32bit: [x86_64] 
   - libqt5-qtxmlpatterns-private-headers-devel 
-  - libqt5keychain1 
   - libqt5keychain1-32bit: [x86_64] 
-  - libqt5keychain1-lang 
   - libqt5xdg-devel 
   - libqt6keychain1 
   - libqtcurve-cairo1 
@@ -17441,6 +17439,7 @@ unsorted:
   - okteta-part 
   - okteta-part-lang 
   - okular-devel 
+  - okular-mobile 
   - olm-devel 
   - olm-doc 
   - omemo-utils 
@@ -21245,7 +21244,6 @@ unsorted:
   - python36-MarkupPy 
   - python36-MarkupSafe 
   - python36-Markups 
-  - python36-Mathics 
   - python36-MechanicalSoup 
   - python36-Ming 
   - python36-MiniMock 
@@ -21476,7 +21474,6 @@ unsorted:
   - python36-atspi 
   - python36-attr 
   - python36-attrs 
-  - python36-aubio 
   - python36-audiogrep 
   - python36-audiomate 
   - python36-audioread 
@@ -22452,7 +22449,6 @@ unsorted:
   - python36-ipython715 
   - python36-ipython715-iptest 
   - python36-ipython_genutils 
-  - python36-ipyvolume 
   - python36-ipywebrtc 
   - python36-ipywidgets 
   - python36-irc 
@@ -22604,7 +22600,6 @@ unsorted:
   - python36-limnoria 
   - python36-line_profiler 
   - python36-linecache2 
-  - python36-lineup-widget 
   - python36-link-traits 
   - python36-linstor 
   - python36-linstor-client 
@@ -22837,6 +22832,7 @@ unsorted:
   - python36-parsel 
   - python36-parsimonious 
   - python36-parso 
+  - python36-parsy 
   - python36-partd 
   - python36-parted 
   - python36-particle 
@@ -22880,7 +22876,6 @@ unsorted:
   - python36-phonenumbers 
   - python36-phply 
   - python36-phue 
-  - python36-physt 
   - python36-pick 
   - python36-pickleshare 
   - python36-pifpaf 
@@ -22959,7 +22954,6 @@ unsorted:
   - python36-protobuf 
   - python36-pscript 
   - python36-psutil 
-  - python36-psychtoolbox 
   - python36-psycopg2 
   - python36-psycopg2cffi 
   - python36-ptpython 
@@ -23120,7 +23114,6 @@ unsorted:
   - python36-pyparsing 
   - python36-pyperclip 
   - python36-pyperf 
-  - python36-pypipegraph 
   - python36-pypiserver 
   - python36-pypng 
   - python36-pyppeteer 
@@ -23281,7 +23274,6 @@ unsorted:
   - python36-python-jsonrpc-server 
   - python36-python-jsonschema-objects 
   - python36-python-language-server 
-  - python36-python-louvain 
   - python36-python-lzo 
   - python36-python-magic 
   - python36-python-memcached 
@@ -23577,7 +23569,6 @@ unsorted:
   - python36-sorl-thumbnail 
   - python36-sortedcollections 
   - python36-sortedcontainers 
-  - python36-sortinghat 
   - python36-soupsieve 
   - python36-sox 
   - python36-spake2 
@@ -23657,7 +23648,6 @@ unsorted:
   - python36-system_hotkey 
   - python36-systemd 
   - python36-tableauserverclient 
-  - python36-tableprint 
   - python36-tablib 
   - python36-tabulate 
   - python36-tap.py 
@@ -23666,6 +23656,7 @@ unsorted:
   - python36-taskw 
   - python36-tbb 
   - python36-tblib 
+  - python36-tcolorpy 
   - python36-technicolor 
   - python36-telepot 
   - python36-telethon-session-sqlalchemy 
@@ -25708,6 +25699,7 @@ unsorted:
   - python38-parsedatetime 
   - python38-parsel 
   - python38-parsimonious 
+  - python38-parsy 
   - python38-partd 
   - python38-parted 
   - python38-particle 
@@ -26551,6 +26543,7 @@ unsorted:
   - python38-taskw 
   - python38-tbb 
   - python38-tblib 
+  - python38-tcolorpy 
   - python38-technicolor 
   - python38-telepot 
   - python38-telethon-session-sqlalchemy 
@@ -26934,6 +26927,7 @@ unsorted:
   - python39-MarkupPy 
   - python39-MarkupSafe 
   - python39-Markups 
+  - python39-Mathics 
   - python39-MechanicalSoup 
   - python39-Ming 
   - python39-MiniMock 
@@ -27079,6 +27073,7 @@ unsorted:
   - python39-affine 
   - python39-agate 
   - python39-agate-dbf 
+  - python39-agate-excel 
   - python39-agate-lookup 
   - python39-agate-remote 
   - python39-agate-sql 
@@ -27169,6 +27164,7 @@ unsorted:
   - python39-atspi 
   - python39-attr 
   - python39-attrs 
+  - python39-aubio 
   - python39-audio-degrader 
   - python39-audiogrep 
   - python39-audiomate 
@@ -27504,6 +27500,7 @@ unsorted:
   - python39-cassowary 
   - python39-casttube 
   - python39-catkin-pkg 
+  - python39-cauldron-notebook 
   - python39-cbor 
   - python39-cbor2 
   - python39-cchardet 
@@ -27542,6 +27539,7 @@ unsorted:
   - python39-check-manifest 
   - python39-cheroot 
   - python39-chest 
+  - python39-cirq: [x86_64] 
   - python39-ciscoconfparse 
   - python39-cl 
   - python39-cleo 
@@ -27640,6 +27638,7 @@ unsorted:
   - python39-cssutils 
   - python39-cstruct 
   - python39-csv23 
+  - python39-csvkit 
   - python39-ctypescrypto 
   - python39-cu2qu 
   - python39-cufflinks 
@@ -27704,6 +27703,7 @@ unsorted:
   - python39-dephell-setuptools 
   - python39-dephell-shells 
   - python39-dephell-specifier 
+  - python39-dephell-venvs 
   - python39-dephell-versioning 
   - python39-dephell_changelogs 
   - python39-deprecation 
@@ -28191,6 +28191,7 @@ unsorted:
   - python39-ipython715 
   - python39-ipython715-iptest 
   - python39-ipython_genutils 
+  - python39-ipyvolume 
   - python39-ipywebrtc 
   - python39-ipywidgets 
   - python39-irc 
@@ -28349,6 +28350,7 @@ unsorted:
   - python39-limnoria 
   - python39-line_profiler 
   - python39-linecache2 
+  - python39-lineup-widget 
   - python39-link-traits 
   - python39-linstor 
   - python39-linux-procfs 
@@ -28614,6 +28616,7 @@ unsorted:
   - python39-parsel 
   - python39-parsimonious 
   - python39-parso 
+  - python39-parsy 
   - python39-partd 
   - python39-parted 
   - python39-particle 
@@ -28649,6 +28652,7 @@ unsorted:
   - python39-pep8-naming 
   - python39-peppercorn 
   - python39-percy 
+  - python39-perfume-bench 
   - python39-persistent 
   - python39-persistent-devel 
   - python39-petact 
@@ -28659,6 +28663,7 @@ unsorted:
   - python39-photutils 
   - python39-phply 
   - python39-phue 
+  - python39-physt 
   - python39-pick 
   - python39-pickleshare 
   - python39-pifpaf 
@@ -28736,6 +28741,7 @@ unsorted:
   - python39-psautohint 
   - python39-pscript 
   - python39-psutil 
+  - python39-psychtoolbox 
   - python39-psycopg2 
   - python39-psycopg2cffi 
   - python39-ptpython 
@@ -28899,9 +28905,11 @@ unsorted:
   - python39-pyperclip 
   - python39-pyperf 
   - python39-pypet 
+  - python39-pypipegraph 
   - python39-pypiserver 
   - python39-pypng 
   - python39-pyppeteer 
+  - python39-pyprel 
   - python39-pyprimes 
   - python39-pyproj 
   - python39-pypsexec 
@@ -28909,6 +28917,7 @@ unsorted:
   - python39-pyqt-builder 
   - python39-pyqtgraph 
   - python39-pyquery 
+  - python39-pyquil 
   - python39-pyrad 
   - python39-pyramid 
   - python39-pyramid-chameleon 
@@ -29063,6 +29072,7 @@ unsorted:
   - python39-python-jsonrpc-server 
   - python39-python-jsonschema-objects 
   - python39-python-language-server 
+  - python39-python-louvain 
   - python39-python-lzo 
   - python39-python-magic 
   - python39-python-memcached 
@@ -29282,6 +29292,7 @@ unsorted:
   - python39-scikit-hep-testdata 
   - python39-scikit-image 
   - python39-scikit-learn 
+  - python39-scikit-sparse: [x86_64] 
   - python39-scikit-umfpack: [x86_64] 
   - python39-scipy 
   - python39-scipy-gnu-hpc: [x86_64] 
@@ -29294,6 +29305,7 @@ unsorted:
   - python39-scrypt 
   - python39-scspell3k 
   - python39-sdnotify 
+  - python39-seaborn 
   - python39-selection 
   - python39-selectors2 
   - python39-selenium 
@@ -29367,6 +29379,7 @@ unsorted:
   - python39-softlayer 
   - python39-sortedcollections 
   - python39-sortedcontainers 
+  - python39-sortinghat 
   - python39-sounddevice 
   - python39-soupsieve 
   - python39-sox 
@@ -29453,6 +29466,7 @@ unsorted:
   - python39-system_hotkey 
   - python39-systemd 
   - python39-tableauserverclient 
+  - python39-tableprint 
   - python39-tables 
   - python39-tabpy 
   - python39-tabulate 
@@ -29460,6 +29474,7 @@ unsorted:
   - python39-tasklib 
   - python39-tbb 
   - python39-tblib 
+  - python39-tcolorpy 
   - python39-technicolor 
   - python39-telepot 
   - python39-telethon-session-sqlalchemy 
@@ -29678,6 +29693,7 @@ unsorted:
   - python39-xhtml2pdf 
   - python39-xkbgroup 
   - python39-xkcdpass 
+  - python39-xlrd 
   - python39-xlwt 
   - python39-xmldiff 
   - python39-xmlschema 
@@ -29789,7 +29805,8 @@ unsorted:
   - qhexedit2-devel 
   - qhexedit2-doc 
   - qhull 
-  - qhull-devel 
+  - qhull_r-devel 
+  - qhullcpp-devel-static 
   - qimgv 
   - qiv 
   - qjackctl 

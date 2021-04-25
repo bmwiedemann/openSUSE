@@ -742,7 +742,6 @@
       <repopackage name="gnome-shell"/>
       <repopackage name="gnome-shell-calendar"/>
       <repopackage name="gnome-shell-classic"/>
-      <repopackage name="gnome-shell-classic-session"/>
       <repopackage name="gnome-shell-extension-desktop-icons"/>
       <repopackage name="gnome-shell-lang"/>
       <repopackage name="gnome-shell-search-provider-bijiben"/>
@@ -2094,7 +2093,7 @@
       <repopackage name="libkdsoap1_9_0"/>
       <repopackage name="libkeduvocdocument-lang"/>
       <repopackage name="libKEduVocDocument5"/>
-      <repopackage name="libkerfuffle20"/>
+      <repopackage name="libkerfuffle21"/>
       <repopackage name="libkeybinder-3_0-0"/>
       <repopackage name="libkeyutils1"/>
       <repopackage name="libkeyutils1-32bit" arch="x86_64"/>
@@ -2642,6 +2641,8 @@
       <repopackage name="libQt5Gui5"/>
       <repopackage name="libQt5Help5"/>
       <repopackage name="libQt5HunspellInputMethod5"/>
+      <repopackage name="libqt5keychain1"/>
+      <repopackage name="libqt5keychain1-lang"/>
       <repopackage name="libQt5Location5"/>
       <repopackage name="libQt5Multimedia5"/>
       <repopackage name="libQt5Network5"/>
@@ -3035,7 +3036,7 @@
       <repopackage name="libwebpdemux2"/>
       <repopackage name="libwebpmux3"/>
       <repopackage name="libwebrtc_audio_processing1"/>
-      <repopackage name="libwebsockets17"/>
+      <repopackage name="libwebsockets18"/>
       <repopackage name="libwinpr2"/>
       <repopackage name="libwireshark14"/>
       <repopackage name="libwiretap11"/>

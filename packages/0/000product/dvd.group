@@ -701,7 +701,6 @@
     <package name="gnome-shell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-shell-calendar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-shell-classic" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gnome-shell-classic-session" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-shell-extension-desktop-icons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-shell-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-shell-search-provider-bijiben" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2200,7 +2199,7 @@
     <package name="libkdevplatform56" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libkdsoap1_9_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkeduvocdocument-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="libkerfuffle20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libkerfuffle21" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libkeybinder-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libkeyutils1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libkf5kdegames6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2531,6 +2530,8 @@
     <package name="libqt5-qtwayland" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libqt5-qtwebengine" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libqt5-qtxmlpatterns-imports" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libqt5keychain1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libqt5keychain1-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libquadmath0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libquicktime0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libquorum5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -2830,7 +2831,7 @@
     <package name="libwebpdemux2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libwebpmux3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libwebrtc_audio_processing1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libwebsockets17" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="libwebsockets18" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libwinpr2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwireshark14" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
     <package name="libwiretap11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-network-network_admin -->
