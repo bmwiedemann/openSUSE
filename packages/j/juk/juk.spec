@@ -1,7 +1,7 @@
 #
 # spec file for package juk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           juk
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Jukebox
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/juk
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libtag-devel
 BuildRequires:  update-desktop-files
@@ -59,10 +63,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Jukebox and music manager by KDE
@@ -70,7 +70,7 @@ Jukebox and music manager by KDE
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -86,17 +86,17 @@ Jukebox and music manager by KDE
 
 %files
 %license COPYING
-%{_kf5_sharedir}/dbus-1/interfaces/org.kde.juk.*
 %{_kf5_applicationsdir}/org.kde.juk.desktop
 %{_kf5_appsdir}/juk/
-%{_kf5_bindir}/juk
 %{_kf5_appstreamdir}/org.kde.juk.appdata.xml
+%{_kf5_bindir}/juk
+%{_kf5_dbusinterfacesdir}/org.kde.juk.*
 %{_kf5_htmldir}/en/juk/
 %{_kf5_iconsdir}/hicolor/*/apps/juk.*
+%{_kf5_kxmlguidir}/juk
 %{_kf5_notifydir}/juk.notifyrc
 %dir %{_kf5_servicesdir}/ServiceMenus/
 %{_kf5_servicesdir}/ServiceMenus/jukservicemenu.desktop
-%{_kf5_kxmlguidir}/juk
 
 %if %{with lang}
 %files lang -f %{name}.lang
