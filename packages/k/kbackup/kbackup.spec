@@ -20,14 +20,18 @@
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kbackup
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Backup program based on KDE Frameworks 5
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kbackup
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
-BuildRequires:  extra-cmake-modules >= 1.0.0
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
+BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5DocTools)
@@ -39,10 +43,6 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -54,7 +54,7 @@ Although GUI based, it also offers an automated, GUI-less mode.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -72,13 +72,12 @@ Although GUI based, it also offers an automated, GUI-less mode.
 %license COPYING
 %doc README
 %doc %lang(en) %{_kf5_htmldir}/en/kbackup
-%dir %{_kf5_kxmlguidir}/kbackup
 %{_datadir}/mime/packages/kbackup.xml
 %{_kf5_applicationsdir}/org.kde.kbackup.desktop
 %{_kf5_appstreamdir}/org.kde.kbackup.appdata.xml
 %{_kf5_bindir}/kbackup
 %{_kf5_iconsdir}/hicolor/*/*/
-%{_kf5_kxmlguidir}/kbackup/kbackupui.rc
+%{_kf5_kxmlguidir}/kbackup/
 %{_mandir}/man1/kbackup.1.gz
 
 %if %{with lang}
