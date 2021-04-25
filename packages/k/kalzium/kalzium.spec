@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalzium
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Periodic Table of Elements
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  eigen3-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -56,10 +60,6 @@ BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 # currently in DOESNOTBUILD (2008-07-03)
 %ifnarch ppc ppc64 s390 s390x
 BuildRequires:  ocaml
@@ -80,7 +80,7 @@ Kalzium shows a periodic table of the elements.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc ppc64
@@ -103,7 +103,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %files
 %doc %lang(en) %{_kf5_htmldir}/en/kalzium/
 %license COPYING*
-%dir %{_kf5_appstreamdir}
 %{_kf5_applicationsdir}/org.kde.kalzium.desktop
 %{_kf5_applicationsdir}/org.kde.kalzium_cml.desktop
 %{_kf5_appstreamdir}/org.kde.kalzium.appdata.xml
@@ -112,9 +111,9 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_iconsdir}/hicolor/*/apps/kalzium.*
 %{_kf5_kxmlguidir}/kalzium/
 %{_kf5_libdir}/libscience.so.*
+%{_kf5_mandir}/man1/kalzium.1%{ext_man}
 %{_kf5_sharedir}/kalzium/
 %{_kf5_sharedir}/libkdeedu/
-%{_kf5_mandir}/man1/kalzium.1%{ext_man}
 
 %files devel
 %license COPYING*
