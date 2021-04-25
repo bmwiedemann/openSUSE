@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 24 18:40:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix python3 flavor multibuild:
+  * Compile bundled libs for every flavor
+  * Fix bundled lib location configuration
+  * Use system fftw3
+- Enable tests with matplotlib and astropy
+- Add sherpa-mpl-3.4.patch for Matplotlib 3.4 gh#sherpa/sherpa#1125
+
+-------------------------------------------------------------------
 Wed Feb 17 00:07:40 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.13.0:
