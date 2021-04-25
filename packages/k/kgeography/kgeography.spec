@@ -1,7 +1,7 @@
 #
 # spec file for package kgeography
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kgeography
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Geography Trainer
 License:        GPL-2.0-or-later
 Group:          Amusements/Teaching/Other
-URL:            https://edu.kde.org
+URL:            https://apps.kde.org/kgeography
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5Config)
@@ -45,10 +49,6 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -57,7 +57,7 @@ KGeography is a geography learning program.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc ppc64
@@ -75,15 +75,14 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
   %fdupes -s %{buildroot}
 
 %files
-%dir %{_kf5_configkcfgdir}
 %doc %lang(en) %{_kf5_htmldir}/en/kgeography/
 %{_kf5_applicationsdir}/org.kde.kgeography.desktop
 %{_kf5_appsdir}/kgeography/
+%{_kf5_appstreamdir}/org.kde.kgeography.appdata.xml
 %{_kf5_bindir}/kgeography
 %{_kf5_configkcfgdir}/kgeography.kcfg
 %{_kf5_iconsdir}/hicolor/*/apps/kgeography.*
 %{_kf5_kxmlguidir}/kgeography/
-%{_kf5_appstreamdir}/org.kde.kgeography.appdata.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
@@ -91,15 +90,15 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %dir %{_kf5_sharedir}/locale/fi/LC_SCRIPTS
 %dir %{_kf5_sharedir}/locale/fr/LC_SCRIPTS
 %dir %{_kf5_sharedir}/locale/ja/LC_SCRIPTS
+%dir %{_kf5_sharedir}/locale/ml/LC_SCRIPTS
 %dir %{_kf5_sharedir}/locale/pl/LC_SCRIPTS
 %dir %{_kf5_sharedir}/locale/uk/LC_SCRIPTS
-%dir %{_kf5_sharedir}/locale/ml/LC_SCRIPTS
 %lang (fi) %{_kf5_sharedir}/locale/fi/LC_SCRIPTS/kgeography
 %lang (fr) %{_kf5_sharedir}/locale/fr/LC_SCRIPTS/kgeography
 %lang (ja) %{_kf5_sharedir}/locale/ja/LC_SCRIPTS/kgeography
+%lang (ml) %{_kf5_sharedir}/locale/ml/LC_SCRIPTS/kgeography
 %lang (pl) %{_kf5_sharedir}/locale/pl/LC_SCRIPTS/kgeography
 %lang (uk) %{_kf5_sharedir}/locale/uk/LC_SCRIPTS/kgeography
-%lang (ml) %{_kf5_sharedir}/locale/ml/LC_SCRIPTS/kgeography
 %endif
 
 %changelog
