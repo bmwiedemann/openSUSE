@@ -1,7 +1,7 @@
 #
 # spec file for package kmahjongg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmahjongg
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Mahjongg game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kmahjongg
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
@@ -46,10 +50,6 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Svg)
 Obsoletes:      kmahjongg5 < %{version}
 Provides:       kmahjongg5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -60,7 +60,7 @@ by removing pieces of the same type.
 %lang_package
 
 %prep
-%setup -q -n kmahjongg-%{version}
+%autosetup -p1 -n kmahjongg-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -75,20 +75,19 @@ by removing pieces of the same type.
   %suse_update_desktop_file -r org.kde.kmahjongg          Game BoardGame
 
 %files
-%license COPYING*
-%{_kf5_bindir}/kmahjongg
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kmahjongg/
 %{_kf5_applicationsdir}/org.kde.kmahjongg.desktop
+%{_kf5_appstreamdir}/org.kde.kmahjongg.appdata.xml
+%{_kf5_bindir}/kmahjongg
 %{_kf5_configkcfgdir}/
+%{_kf5_debugdir}/kmahjongg.categories
 %{_kf5_iconsdir}/hicolor/*/apps/kmahjongg.*
 %{_kf5_sharedir}/kmahjongg/
-%{_kf5_kxmlguidir}/
-%{_kf5_appstreamdir}/org.kde.kmahjongg.appdata.xml
-%{_kf5_debugdir}/kmahjongg.categories
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
