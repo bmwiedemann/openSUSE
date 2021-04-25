@@ -21,13 +21,17 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
-Summary:        CD/DVD/Blu-ray Burning Application for KDE
+Summary:        CD/DVD/Blu-ray Burning Application by KDE
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/CD/Record
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/k3b
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 # PATCH-FIX-OPENSUSE
 Patch1:         Don-t-suggest-to-install-libburn.patch
 # PATCH-FIX-OPENSUSE
@@ -43,28 +47,28 @@ BuildRequires:  libvorbis-devel
 BuildRequires:  musepack-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Archive) >= 5.21.0
+BuildRequires:  cmake(KF5Archive)
 BuildRequires:  cmake(KF5Cddb)
-BuildRequires:  cmake(KF5Config) >= 5.21.0
-BuildRequires:  cmake(KF5CoreAddons) >= 5.21.0
-BuildRequires:  cmake(KF5DocTools) >= 5.21.0
-BuildRequires:  cmake(KF5FileMetaData) >= 5.21.0
-BuildRequires:  cmake(KF5I18n) >= 5.21.0
-BuildRequires:  cmake(KF5IconThemes) >= 5.21.0
-BuildRequires:  cmake(KF5JobWidgets) >= 5.21.0
-BuildRequires:  cmake(KF5KCMUtils) >= 5.21.0
-BuildRequires:  cmake(KF5KIO) >= 5.21.0
-BuildRequires:  cmake(KF5NewStuff) >= 5.21.0
-BuildRequires:  cmake(KF5Notifications) >= 5.21.0
-BuildRequires:  cmake(KF5NotifyConfig) >= 5.21.0
-BuildRequires:  cmake(KF5Service) >= 5.21.0
-BuildRequires:  cmake(KF5Solid) >= 5.21.0
-BuildRequires:  cmake(KF5WidgetsAddons) >= 5.21.0
-BuildRequires:  cmake(KF5XmlGui) >= 5.21.0
-BuildRequires:  cmake(Qt5Core) >= 5.5.0
-BuildRequires:  cmake(Qt5DBus) >= 5.5.0
-BuildRequires:  cmake(Qt5Gui) >= 5.5.0
-BuildRequires:  cmake(Qt5Test) >= 5.5.0
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5FileMetaData)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5JobWidgets)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5Solid)
+BuildRequires:  cmake(KF5WidgetsAddons)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Test)
 BuildRequires:  pkgconfig(taglib)
 Requires:       %{_bindir}/cdrdao
 Requires:       %{_bindir}/cdrecord
@@ -83,10 +87,6 @@ Recommends:     vcdimager
 Provides:       kde4-k3b = 4.2.2.svn951754
 Obsoletes:      k3b-codecs
 Obsoletes:      kde4-k3b < 4.2.2.svn951754
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 %if %{with ffmpeg}
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
@@ -118,8 +118,7 @@ This package contain files needed for development with k3b.
 %lang_package
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 CXXFLAGS="%{optflags} -fno-strict-aliasing"
