@@ -1,7 +1,7 @@
 #
 # spec file for package knavalbattle
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           knavalbattle
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Battleship game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/knavalbattle
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
@@ -55,10 +59,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Provides:       knavalbattle5 = %{version}
 Obsoletes:      knavalbattle5 < %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -69,7 +69,7 @@ played with friends online via the internet.
 %lang_package
 
 %prep
-%setup -q -n knavalbattle-%{version}
+%autosetup -p1 -n knavalbattle-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -85,9 +85,10 @@ played with friends online via the internet.
 
 %files
 %license COPYING COPYING.DOC
-%dir %{_kf5_appsdir}/kconf_update
 %doc %lang(en) %{_kf5_htmldir}/en/knavalbattle/
+
 %{_kf5_applicationsdir}/org.kde.knavalbattle.desktop
+%dir %{_kf5_appsdir}/kconf_update
 %{_kf5_appsdir}/kconf_update/knavalbattle.upd
 %{_kf5_appsdir}/knavalbattle/
 %{_kf5_appstreamdir}/org.kde.knavalbattle.appdata.xml
