@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           kimagemapeditor
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        HTML Image Map Editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/HTML/Editors
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kimagemapeditor
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
@@ -47,10 +51,6 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 A tool to edit image maps of HTML files
@@ -58,7 +58,7 @@ A tool to edit image maps of HTML files
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -75,15 +75,17 @@ A tool to edit image maps of HTML files
 
 %files
 %license COPYING*
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/parts
+%{_kf5_applicationsdir}/org.kde.kimagemapeditor.desktop
+%{_kf5_appstreamdir}/org.kde.kimagemapeditor.appdata.xml
 %{_kf5_bindir}/kimagemapeditor
 %{_kf5_debugdir}/kimagemapeditor.categories
-%{_kf5_plugindir}/kimagemapeditor.so
-%{_kf5_applicationsdir}/org.kde.kimagemapeditor.desktop
 %{_kf5_htmldir}/en/kimagemapeditor/
 %{_kf5_iconsdir}/hicolor/*/*/*
+%{_kf5_plugindir}/kf5/parts/kimagemapeditorpart.so
 %{_kf5_servicesdir}/kimagemapeditorpart.desktop
 %{_kf5_sharedir}/kimagemapeditor/
-%{_kf5_appstreamdir}/org.kde.kimagemapeditor.appdata.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
