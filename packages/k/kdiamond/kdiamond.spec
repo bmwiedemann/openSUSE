@@ -1,7 +1,7 @@
 #
 # spec file for package kdiamond
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdiamond
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Single player puzzle game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kdiamond
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
@@ -47,10 +51,6 @@ BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -59,7 +59,7 @@ The objective of the game is to build lines of three similar diamonds.
 %lang_package
 
 %prep
-%setup -q -n kdiamond-%{version}
+%autosetup -p1 -n kdiamond-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -73,21 +73,20 @@ The objective of the game is to build lines of three similar diamonds.
   %endif
 
 %files
-%license COPYING*
-%{_kf5_knsrcfilesdir}/kdiamond.knsrc
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kdiamond/
 %{_kf5_applicationsdir}/org.kde.kdiamond.desktop
 %{_kf5_appstreamdir}/org.kde.kdiamond.appdata.xml
 %{_kf5_bindir}/kdiamond
 %{_kf5_iconsdir}/hicolor/*/apps/kdiamond.*
-%{_kf5_kxmlguidir}/kdiamond/
+%{_kf5_knsrcfilesdir}/kdiamond.knsrc
 %{_kf5_notifydir}/kdiamond.notifyrc
 %{_kf5_sharedir}/kdiamond/
 %{_kf5_sharedir}/sounds/KDiamond-*
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
