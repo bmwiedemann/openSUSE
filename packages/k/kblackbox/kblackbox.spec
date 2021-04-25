@@ -1,7 +1,7 @@
 #
 # spec file for package kblackbox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kblackbox
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Logic game with elements of hide-and-seek
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kblackbox
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
@@ -48,10 +52,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -61,7 +61,7 @@ is a game of hide and seek played on an grid of boxes.
 %lang_package
 
 %prep
-%setup -q -n kblackbox-%{version}
+%autosetup -p1 -n kblackbox-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -76,19 +76,17 @@ is a game of hide and seek played on an grid of boxes.
   %suse_update_desktop_file -r org.kde.kblackbox       Game BoardGame
 
 %files
-%license COPYING COPYING.DOC
-%dir %{_kf5_appstreamdir}
+%license LICENSES/*
+%doc %lang(en) %{_kf5_htmldir}/en/kblackbox/
 %{_kf5_applicationsdir}/org.kde.kblackbox.desktop
 %{_kf5_appsdir}/kblackbox/
 %{_kf5_appstreamdir}/org.kde.kblackbox.appdata.xml
 %{_kf5_bindir}/kblackbox
-%doc %lang(en) %{_kf5_htmldir}/en/kblackbox/
 %{_kf5_iconsdir}/hicolor/*/apps/kblackbox.*
-%{_kf5_kxmlguidir}/kblackbox/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
