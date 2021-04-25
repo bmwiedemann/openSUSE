@@ -1,7 +1,7 @@
 #
 # spec file for package yakuake
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,17 @@
 
 %bcond_without lang
 Name:           yakuake
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
-Summary:        Terminal for KDE
+Summary:        Drop-down terminal emulator based on Konsole technologies
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            https://kde.org/applications/system/org.kde.yakuake
+URL:            https://apps.kde.org/yakuake
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -51,18 +55,14 @@ BuildRequires:  cmake(Qt5X11Extras)
 Requires:       konsole-part > 15.12
 Recommends:     %{name}-lang = %{version}
 Recommends:     konsole > 15.12
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
-Yakuake is a retractable KDE Terminal Emulator.
+Yakuake is a Drop-down terminal emulator based on Konsole technologies.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -77,7 +77,7 @@ Yakuake is a retractable KDE Terminal Emulator.
   %fdupes -s %{buildroot}
 
 %files
-%license COPYING COPYING.DOC
+%license LICENSES/*
 %doc README.md AUTHORS ChangeLog NEWS
 %{_kf5_applicationsdir}/org.kde.yakuake.desktop
 %{_kf5_appstreamdir}/org.kde.yakuake.appdata.xml
@@ -85,7 +85,7 @@ Yakuake is a retractable KDE Terminal Emulator.
 %{_kf5_knsrcfilesdir}/yakuake.knsrc
 %dir %{_kf5_iconsdir}/hicolor/256x256
 %dir %{_kf5_iconsdir}/hicolor/256x256/apps
-%{_kf5_iconsdir}/hicolor/*/*/*.*
+%{_kf5_iconsdir}/hicolor/*/apps/yakuake.*
 %{_kf5_notifydir}/
 %{_kf5_sharedir}/yakuake/
 %{_kf5_sharedir}/dbus-1/services/org.kde.yakuake.service
