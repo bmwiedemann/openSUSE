@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 23 09:50:20 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Fix virt-launcher crash
+  fix-double-free-of-VirDomain.patch
+
+-------------------------------------------------------------------
 Tue Apr 20 13:12:00 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Fix issue when calling `virsh-domcapabilities`

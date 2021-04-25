@@ -29,6 +29,7 @@ Source100:      %{name}-rpmlintrc
 Patch0:         dont-build-virtctl-darwin.patch
 Patch1:         dont-use-bazel-in-build-manifests.patch
 Patch2:         fix-virsh-domcapabilities-error.patch
+Patch3:         fix-double-free-of-VirDomain.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig

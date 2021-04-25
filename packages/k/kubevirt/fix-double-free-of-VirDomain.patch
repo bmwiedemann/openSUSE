@@ -1,0 +1,14 @@
+Fix double free of VirDomain
+
+diff --git a/pkg/virt-launcher/virtwrap/manager.go b/pkg/virt-launcher/virtwrap/manager.go
+index a3fe15e39..660423269 100644
+--- a/pkg/virt-launcher/virtwrap/manager.go
++++ b/pkg/virt-launcher/virtwrap/manager.go
+@@ -1494,7 +1494,6 @@ func (l *LibvirtDomainManager) SyncVMI(vmi *v1.VirtualMachineInstance, useEmulat
+ 			if err != nil {
+ 				return nil, err
+ 			}
+-			defer dom.Free()
+ 			logger.Info("Domain defined.")
+ 		} else {
+ 			logger.Reason(err).Error("Getting the domain failed.")
