@@ -24,13 +24,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalgebra
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Math Expression Solver and Plotter
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
@@ -57,10 +61,6 @@ Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -80,7 +80,7 @@ a QtQuick based version for use in mobile (phone, tablet) environments.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -96,11 +96,11 @@ a QtQuick based version for use in mobile (phone, tablet) environments.
 
 %files
 %license COPYING*
+%doc %lang(en) %{_kf5_htmldir}/en/kalgebra
 %{_kf5_applicationsdir}/org.kde.kalgebra.desktop
 %{_kf5_appstreamdir}/org.kde.kalgebra.appdata.xml
 %{_kf5_bindir}/calgebra
 %{_kf5_bindir}/kalgebra
-%doc %lang(en) %{_kf5_htmldir}/en/kalgebra
 %{_kf5_iconsdir}/hicolor/*/apps/kalgebra.*
 %{_kf5_plasmadir}/
 %{_kf5_servicesdir}
@@ -110,7 +110,6 @@ a QtQuick based version for use in mobile (phone, tablet) environments.
 %license COPYING*
 %{_kf5_applicationsdir}/org.kde.kalgebramobile.desktop
 %{_kf5_bindir}/kalgebramobile
-%{_kf5_sharedir}/kalgebramobile/
 %{_kf5_appstreamdir}/org.kde.kalgebramobile.appdata.xml
 
 %if %{with lang}
