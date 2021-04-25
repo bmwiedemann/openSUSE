@@ -1,7 +1,7 @@
 #
 # spec file for package svgpart
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           svgpart
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        SVG viewer component
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            https://projects.kde.org/projects/kde/kdegraphics/svgpart
+URL:            https://invent.kde.org/graphics/svgpart
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5CoreAddons)
@@ -35,19 +39,15 @@ BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
-An SVG viewer component for KDE (KPart).
+An SVG viewer component (KPart).
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -63,16 +63,16 @@ An SVG viewer component for KDE (KPart).
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
+%{_kf5_appstreamdir}/org.kde.svgpart.metainfo.xml
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/parts
 %{_kf5_plugindir}/kf5/parts/svgpart.so
 %{_kf5_servicesdir}/svgpart.desktop
-%{_kf5_appstreamdir}/org.kde.svgpart.metainfo.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
