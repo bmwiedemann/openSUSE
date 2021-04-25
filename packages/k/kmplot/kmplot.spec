@@ -1,7 +1,7 @@
 #
 # spec file for package kmplot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmplot
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Mathematical Function Plotter
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://edu.kde.org
+URL:            https://apps.kde.org/kmplot
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5GuiAddons)
@@ -43,10 +47,6 @@ BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Mathematical function plotter by KDE.
@@ -54,7 +54,7 @@ Mathematical function plotter by KDE.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc ppc64
@@ -72,8 +72,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %files
 %license COPYING*
-%dir %{_kf5_appstreamdir}
-%dir %{_kf5_configkcfgdir}
 %doc %lang(en) %{_kf5_htmldir}/en/kmplot
 %{_kf5_applicationsdir}/org.kde.kmplot.desktop
 %{_kf5_appstreamdir}/org.kde.kmplot.appdata.xml
