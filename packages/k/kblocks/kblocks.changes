@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Apr 16 16:11:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- Changes since 21.03.90:
+  * remove reference to obsolete part
+  * use kde extension in snap
+- Stop owning directories provided by the filesystem package (boo#1184786)
+
+-------------------------------------------------------------------
+Fri Apr  9 17:39:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- Changes since 21.03.80:
+  * update snapcraft
+  * Remove redundant CMake command
+  * Improve readability of MockSvgItem
+  * Replacing freeze cells for testing should only replace one cell at a time
+  * Clear cache when refreshing positions.
+  * Add test for KBlocksItemGroup::refreshPosition()
+
+-------------------------------------------------------------------
+Sun Mar 21 13:27:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Too many changes since 20.12.3, only listing bugfixes:
+  * Call updateLayout() also in stopGame() (kde#407244)
+
+-------------------------------------------------------------------
 Thu Mar  4 06:09:56 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.3

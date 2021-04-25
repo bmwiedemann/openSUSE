@@ -1,7 +1,7 @@
 #
 # spec file for package kblocks
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kblocks
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        A classic falling blocks game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Strategy/Real Time
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kblocks
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
@@ -52,10 +56,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -64,7 +64,7 @@ KBlocks is the KDE version of the classic falling blocks game.
 %lang_package
 
 %prep
-%setup -q -n kblocks-%{version}
+%autosetup -p1 -n kblocks-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -79,18 +79,16 @@ KBlocks is the KDE version of the classic falling blocks game.
 
 %files
 %license COPYING COPYING.DOC
-%dir %{_kf5_appstreamdir}
-%dir %{_kf5_configkcfgdir}
+%doc %lang(en) %{_kf5_htmldir}/en/kblocks/
 %{_kf5_applicationsdir}/org.kde.kblocks.desktop
 %{_kf5_appsdir}/kblocks/
 %{_kf5_appstreamdir}/org.kde.kblocks.appdata.xml
 %{_kf5_bindir}/kblocks
-%{_kf5_knsrcfilesdir}//kblocks.knsrc
 %{_kf5_configkcfgdir}/kblocks.kcfg
-%doc %lang(en) %{_kf5_htmldir}/en/kblocks/
-%{_kf5_iconsdir}/hicolor/*/*/kblocks.*
-%{_kf5_kxmlguidir}/kblocks/
 %{_kf5_debugdir}/kblocks.categories
+%{_kf5_iconsdir}/hicolor/*/*/kblocks.*
+%{_kf5_knsrcfilesdir}/kblocks.knsrc
+%{_kf5_kxmlguidir}/kblocks/
 
 %if %{with lang}
 %files lang -f %{name}.lang
