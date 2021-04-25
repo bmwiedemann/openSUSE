@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Apr 16 16:11:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- Changes since 21.03.90:
+  * Fix assert from QAbstractItemModel when clearing an empty view
+- Stop owning directories provided by the filesystem package (boo#1184786)
+
+-------------------------------------------------------------------
+Fri Apr  9 17:40:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- No code change since 21.03.80
+
+-------------------------------------------------------------------
+Sun Mar 21 13:28:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Changes since 20.12.3:
+  * Convert license statements to SPDX expressions
+  * Autogenerate categories file
+  * Bump min Qt/KF versions to 5.12/5.68
+  * operator+/- is disabled for QFlags in qt6
+
+-------------------------------------------------------------------
 Thu Mar  4 06:10:17 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.3

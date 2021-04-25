@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kfind
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE Find File Utility
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
-URL:            https://www.kde.org/
+URL:            https://apps.kde.org/kfind
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf5-filesystem
@@ -43,10 +47,6 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 KFind allows you to search for directories and files.
@@ -54,7 +54,7 @@ KFind allows you to search for directories and files.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -70,21 +70,18 @@ KFind allows you to search for directories and files.
   %suse_update_desktop_file org.kde.kfind          System Filesystem core
 
 %files
-%license COPYING*
-%{_kf5_debugdir}/*.categories
-%dir %{_kf5_appstreamdir}
-%dir %{_kf5_htmldir}
-%dir %{_kf5_htmldir}/en
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kfind/
 %doc %{_kf5_mandir}/man1/kfind.*
 %{_kf5_applicationsdir}/org.kde.kfind.desktop
 %{_kf5_appstreamdir}/org.kde.kfind.appdata.xml
 %{_kf5_bindir}/kfind
+%{_kf5_debugdir}/kfind.categories
 %{_kf5_iconsdir}/hicolor/*/apps/kfind.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
