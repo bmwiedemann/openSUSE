@@ -1,7 +1,7 @@
 #
 # spec file for package kdf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdf
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Disk Usage Viewer
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 Patch1:         desktop-files.diff
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
@@ -44,10 +48,6 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -56,8 +56,7 @@ KDE free disk space utility
 %lang_package
 
 %prep
-%setup -q -n kdf-%{version}
-%patch1
+%autosetup -p0 -n kdf-%{version}
 
 %build
 %cmake_kf5 -d build
@@ -83,19 +82,19 @@ This utility allows you to manage removable media.
 
 %files
 %license COPYING*
-%dir %{_kf5_htmldir}/en/kcontrol/
 %doc %lang(en) %{_kf5_htmldir}/en/kcontrol/blockdevices/
 %doc %lang(en) %{_kf5_htmldir}/en/kdf/
+%dir %{_kf5_htmldir}/en/kcontrol/
 %{_kf5_applicationsdir}/org.kde.kdf.desktop
+%{_kf5_appstreamdir}/org.kde.kdf.appdata.xml
 %{_kf5_bindir}/kdf
+%{_kf5_debugdir}/kdf.categories
 %{_kf5_iconsdir}/hicolor/*/*/kcmdf.png
 %{_kf5_iconsdir}/hicolor/*/*/kdf.png
+%{_kf5_kxmlguidir}/kdf/
 %{_kf5_libdir}/libkdfprivate.so.*
 %{_kf5_plugindir}/libkcm_kdf.so
 %{_kf5_servicesdir}/kcmdf.desktop
-%{_kf5_kxmlguidir}/kdf/
-%{_kf5_appstreamdir}/org.kde.kdf.appdata.xml
-%{_kf5_debugdir}/kdf.categories
 
 %files -n kwikdisk
 %license COPYING*
