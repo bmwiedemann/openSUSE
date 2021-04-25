@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 25 03:30:59 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1619173284.645c6c12:
+  * dist: Install testapi.py along with other files for easier inclusion
+
+-------------------------------------------------------------------
 Thu Apr 22 19:30:56 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1619083988.b15e5e5e:

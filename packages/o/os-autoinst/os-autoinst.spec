@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1619083988.b15e5e5e
+Version:        4.6.1619173284.645c6c12
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -212,7 +212,7 @@ cd %{__builddir}
 %{_prefix}/lib/os-autoinst/OpenQA
 %{_prefix}/lib/os-autoinst/consoles
 %{_prefix}/lib/os-autoinst/autotest.pm
-%{_prefix}/lib/os-autoinst/crop.py
+%{_prefix}/lib/os-autoinst/*.py
 
 %files openvswitch
 %defattr(-,root,root)
