@@ -1,7 +1,7 @@
 #
 # spec file for package cervisia
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           cervisia
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        CVS Frontend
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
 Group:          Development/Tools/Version Control
-URL:            https://www.kde.org/
+URL:            https://apps.kde.org/cervisia
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  subversion-devel
 BuildRequires:  update-desktop-files
@@ -43,10 +47,6 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Widgets)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description -n cervisia
@@ -55,7 +55,7 @@ Cervisia is a tool to browse and work with CVS repositories.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc64
@@ -80,8 +80,7 @@ export CFLAGS="%{optflags} -fPIC"
 %files
 %license COPYING COPYING.DOC COPYING.LIB
 %doc ChangeLog README
-%dir %{_kf5_appstreamdir}
-%dir %{_kf5_configkcfgdir}/
+%doc %lang(en) %{_kf5_htmldir}/en/cervisia/
 %{_kf5_applicationsdir}/org.kde.cervisia.desktop
 %{_kf5_appstreamdir}/org.kde.cervisia.appdata.xml
 %{_kf5_bindir}/cervisia
@@ -89,7 +88,6 @@ export CFLAGS="%{optflags} -fPIC"
 %{_kf5_bindir}/cvsservice5
 %{_kf5_configkcfgdir}/cervisiapart.kcfg
 %{_kf5_dbusinterfacesdir}/org.kde.cervisia5.*.xml
-%doc %lang(en) %{_kf5_htmldir}/en/cervisia/
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_kxmlguidir}/cervisia/
 %{_kf5_kxmlguidir}/cervisiapart/
