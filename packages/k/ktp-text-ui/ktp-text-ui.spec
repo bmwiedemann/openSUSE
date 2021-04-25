@@ -21,15 +21,19 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-text-ui
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
-Summary:        Telepathy chat handler for KDE
+Summary:        Telepathy chat handler by KDE
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://community.kde.org/Real-Time_Communication_and_Collaboration
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  breeze5-icons
-BuildRequires:  extra-cmake-modules >= 1.3.0
+BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  ktp-icons
@@ -54,7 +58,7 @@ BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(KTp)
 BuildRequires:  cmake(Qt5TextToSpeech)
-BuildRequires:  cmake(Qt5WebEngine) >= 5.7.0
+BuildRequires:  cmake(Qt5WebEngine)
 # Explicitely require logger, otherwise the ui would crash
 Requires:       telepathy-logger
 Recommends:     %{name}-lang
@@ -63,10 +67,6 @@ Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Includes KDE's implementation of the Telepathy chat handler,
@@ -75,7 +75,7 @@ a chat plasmoid, and a chat log viewer application.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
