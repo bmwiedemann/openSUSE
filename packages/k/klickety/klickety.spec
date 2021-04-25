@@ -1,7 +1,7 @@
 #
 # spec file for package klickety
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           klickety
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Strategic board game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/klickety
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
@@ -48,20 +52,14 @@ BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 Obsoletes:      klickety5 < %{version}
 Provides:       klickety5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Klickety is an adaptation of the Clickomania and SameGame games.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
-%setup -q -n klickety-%{version}
+%autosetup -p1 -n klickety-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -76,23 +74,22 @@ Klickety is an adaptation of the Clickomania and SameGame games.
   %suse_update_desktop_file -r org.kde.klickety           Game LogicGame
 
 %files
-%license COPYING COPYING.DOC
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/klickety/
 %{_kf5_applicationsdir}/org.kde.klickety.desktop
 %{_kf5_applicationsdir}/org.kde.ksame.desktop
 %{_kf5_appsdir}/kconf_update/klick*
 %{_kf5_appsdir}/klickety/
+%{_kf5_appstreamdir}/org.kde.klickety.appdata.xml
+%{_kf5_appstreamdir}/org.kde.ksame.appdata.xml
 %{_kf5_bindir}/klickety
 %{_kf5_iconsdir}/hicolor/*/apps/klickety.*
 %{_kf5_iconsdir}/hicolor/*/apps/ksame.*
-%{_kf5_kxmlguidir}/klickety/
 %{_kf5_sharedir}/sounds/klickety/
-%{_kf5_appstreamdir}/org.kde.klickety.appdata.xml
-%{_kf5_appstreamdir}/org.kde.ksame.appdata.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
