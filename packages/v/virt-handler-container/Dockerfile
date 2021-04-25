@@ -16,15 +16,15 @@ PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="%%TAGPREFIX%%/virt-handler:%%PKG_VERSION%%.%RELEASE%"
 
-RUN zypper update -y && \
-    zypper install -y \
-           dbus-1 \
-           iproute2 \
-           iptables \
-           kubevirt-container-disk \
-           kubevirt-virt-handler \
-           libvirt-client \
-           qemu-tools \
-           system-user-qemu
+RUN zypper -n install \
+              dbus-1 \
+              iproute2 \
+              iptables \
+              kubevirt-container-disk \
+              kubevirt-virt-handler \
+              libvirt-client \
+              qemu-tools \
+              system-user-qemu && \
+    zypper clean -a
 
 ENTRYPOINT [ "/usr/bin/virt-handler" ]

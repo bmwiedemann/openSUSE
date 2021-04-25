@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 18 07:54:24 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Run zypper clean after installation
+
+-------------------------------------------------------------------
 Sat Mar 20 10:06:27 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Install qemu-tools (provides qemu-img)
