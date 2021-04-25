@@ -21,20 +21,24 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ffmpegthumbs
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        FFmpeg-based thumbnail creator for video files
 License:        LGPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(Qt5Gui) >= 5.2.0
+BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
@@ -42,10 +46,6 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(taglib)
 Recommends:     %{name}-lang
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 FFmpeg-based thumbnail creator for video files.
@@ -53,7 +53,7 @@ FFmpeg-based thumbnail creator for video files.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -70,9 +70,9 @@ FFmpeg-based thumbnail creator for video files.
 
 %files
 %license COPYING
-%dir %{_kf5_configkcfgdir}
 %{_kf5_appstreamdir}/org.kde.ffmpegthumbs.metainfo.xml
 %{_kf5_configkcfgdir}/ffmpegthumbnailersettings5.kcfg
+%{_kf5_debugdir}/ffmpegthumbs.categories
 %{_kf5_plugindir}/
 %{_kf5_servicesdir}/
 
