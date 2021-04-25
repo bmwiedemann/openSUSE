@@ -1,7 +1,7 @@
 #
 # spec file for package marble
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,18 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           marble
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
 License:        LGPL-2.1-or-later
 Group:          Amusements/Teaching/Other
-URL:            https://edu.kde.org
+URL:            https://apps.kde.org/marble
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gpsd-devel
@@ -74,10 +78,6 @@ Recommends:     %{name}-doc = %{version}
 Recommends:     %{name}-lang
 Obsoletes:      marble5 < %{version}
 Provides:       marble5 < %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 %ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
 # Only include WebEngine on platforms where it is available
 BuildRequires:  cmake(Qt5WebEngineWidgets)
@@ -165,14 +165,14 @@ The astronomy library for the satellites plugin.
 %lang_package
 
 %prep
-%setup -q -n marble-%{version}
+%autosetup -p1 -n marble-%{version}
 
 %build
 export SUSE_ASNEEDED=0
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
-%cmake_kf5 -d build -- -DBUILD_MARBLE_TESTS=NO -DMOBILE=FALSE -DQT_PLUGINS_DIR=%{_kf5_plugindir}
+%cmake_kf5 -d build -- -DBUILD_MARBLE_TESTS=NO -DMOBILE=OFF -DQT_PLUGINS_DIR=%{_kf5_plugindir}
 %cmake_build
 
 %install
@@ -193,6 +193,8 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %doc CREDITS ChangeLog MANIFESTO.txt
 %{_kf5_knsrcfilesdir}/marble.knsrc
 %exclude %{_datadir}/marble/data
+%dir %{_kf5_plugindir}/kf5/
+%dir %{_kf5_plugindir}/kf5/krunner/
 %{_kf5_applicationsdir}/marble_geo.desktop
 %{_kf5_applicationsdir}/marble_geojson.desktop
 %{_kf5_applicationsdir}/marble_gpx.desktop
@@ -200,15 +202,17 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_applicationsdir}/marble_kmz.desktop
 %{_kf5_applicationsdir}/marble_shp.desktop
 %{_kf5_applicationsdir}/marble_worldwind.desktop
-%{_kf5_appstreamdir}/
-%{_kf5_configkcfgdir}/
+%{_kf5_appstreamdir}/org.kde.marble.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.worldclock.appdata.xml
+%{_kf5_appstreamdir}/org.kde.plasma.worldmap.appdata.xml
+%{_kf5_configkcfgdir}/marble.kcfg
 %{_kf5_iconsdir}/hicolor/*/apps/marble.*
 %{_kf5_kxmlguidir}/marble/
 %{_kf5_libdir}/libmarbledeclarative.so
 %{_kf5_libdir}/marble/
 %{_kf5_plugindir}/designer/
+%{_kf5_plugindir}/kf5/krunner/plasma_runner_marble.so
 %{_kf5_plugindir}/libmarble*so
-%{_kf5_plugindir}/plasma_runner_marble.so
 %{_kf5_plugindir}/marblethumbnail.so
 %{_kf5_qmldir}/org/kde/marble/
 %{_kf5_servicesdir}/*desktop
