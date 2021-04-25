@@ -1,7 +1,7 @@
 #
 # spec file for package bomber
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           bomber
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Game involving the invasion of cities with a plane
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/bomber
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
@@ -52,21 +56,20 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
-Bomber is a single player arcade game. The player is invading various cities in a plane that is decreasing in height.
+Bomber is a single player arcade game. The player is invading various cities in
+a plane that is decreasing in height.
 
-The goal of the game is to destroy all the buildings and advance to the next level. Each level gets a harder by increasing the speed of the plane and the height of the buildings.
+The goal of the game is to destroy all the buildings and advance to the next
+level. Each level gets a harder by increasing the speed of the plane and the
+height of the buildings.
 
 %lang_package
 
 %prep
-%setup -q -n bomber-%{version}
+%autosetup -p1 -n bomber-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -80,20 +83,18 @@ The goal of the game is to destroy all the buildings and advance to the next lev
   %endif
 
 %files
-%license COPYING*
-%dir %{_kf5_configkcfgdir}
+%license LICENSES/*
+%doc %lang(en) %{_kf5_htmldir}/en/bomber/
 %{_kf5_applicationsdir}/org.kde.bomber.desktop
 %{_kf5_appsdir}/bomber/
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.bomber.appdata.xml
 %{_kf5_bindir}/bomber
 %{_kf5_configkcfgdir}/bomber.kcfg
-%doc %lang(en) %{_kf5_htmldir}/en/bomber/
 %{_kf5_iconsdir}/hicolor/*/*/bomber.*
-%{_kf5_kxmlguidir}/bomber/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
