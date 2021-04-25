@@ -18,13 +18,17 @@
 
 %bcond_without lang
 Name:           knights
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        A simple chess board
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Chess
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/knights
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5Crash)
@@ -47,10 +51,6 @@ Requires:       gnuchess
 Recommends:     %{name}-lang
 Suggests:       crafty
 Obsoletes:      kchess
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 %if 0%{?suse_version}
 BuildRequires:  update-desktop-files
 %endif
@@ -65,7 +65,7 @@ against each other.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -86,16 +86,15 @@ against each other.
 %files
 %license LICENSE
 %doc README.themes
+%doc %{_kf5_htmldir}/en/knights/
 %{_kf5_applicationsdir}/org.kde.knights.desktop
 %{_kf5_appstreamdir}/org.kde.knights.appdata.xml
 %{_kf5_bindir}/knights
-%{_kf5_knsrcfilesdir}/knights.knsrc
-%dir %{_kf5_configkcfgdir}
 %{_kf5_configkcfgdir}/knights.kcfg
 %{_kf5_dbusinterfacesdir}/org.kde.Knights.xml
 %{_kf5_debugdir}/knights.categories
-%doc %{_kf5_htmldir}/en/knights/
 %{_kf5_iconsdir}/*/*/*/knights.*
+%{_kf5_knsrcfilesdir}/knights.knsrc
 %{_kf5_kxmlguidir}/knights/
 %{_kf5_sharedir}/knights/
 
