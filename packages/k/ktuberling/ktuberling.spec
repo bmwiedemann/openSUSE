@@ -1,7 +1,7 @@
 #
 # spec file for package ktuberling
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktuberling
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Potato drawing editor
 License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/ktuberling
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Completion)
@@ -50,10 +54,6 @@ BuildRequires:  cmake(Qt5Xml)
 Recommends:     %{name}-lang
 Provides:       ktuberling5 = %{version}
 Obsoletes:      ktuberling5 < %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 KTuberling is a nice potato editor for kids. The game intended for
@@ -64,7 +64,7 @@ face and goodies can be attached onto a potato-like guy.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -83,11 +83,11 @@ face and goodies can be attached onto a potato-like guy.
 %doc %lang(en) %{_kf5_htmldir}/en/ktuberling/
 %{_kf5_applicationsdir}/org.kde.ktuberling.desktop
 %{_kf5_appsdir}/ktuberling/
+%{_kf5_appstreamdir}/org.kde.ktuberling.appdata.xml
 %{_kf5_bindir}/ktuberling
 %{_kf5_debugdir}/ktuberling.categories
-%{_kf5_iconsdir}/hicolor/*/*/*
+%{_kf5_iconsdir}/hicolor/*/*/*tuberling.png
 %{_kf5_kxmlguidir}/ktuberling/
-%{_kf5_appstreamdir}/org.kde.ktuberling.appdata.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang
