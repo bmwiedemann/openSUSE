@@ -1346,4 +1346,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>20.12.3 release</comment>
     <requestid>877234</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>e82505203e4b538a5caae43631658834</srcmd5>
+    <version>21.04.0</version>
+    <time>1619378839</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.04</comment>
+    <requestid>887797</requestid>
+  </revision>
 </revisionlist>
