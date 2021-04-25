@@ -1,7 +1,7 @@
 #
 # spec file for package cantor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           cantor
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Worksheet GUI for mathematical software
 License:        GPL-2.0-or-later
 Group:          Amusements/Teaching/Mathematics
-URL:            https://edu.kde.org
+URL:            https://apps.kde.org/cantor
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  R-base
 BuildRequires:  R-base-devel
 BuildRequires:  extra-cmake-modules
@@ -41,6 +45,7 @@ BuildRequires:  libspectre-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
+BuildRequires:  shared-mime-info
 BuildRequires:  xz
 BuildRequires:  cmake(Analitza5)
 BuildRequires:  cmake(KF5Archive)
@@ -64,10 +69,6 @@ Recommends:     maxima
 Recommends:     octave
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 A frontend to several existing mathematical software such as R, Sage
@@ -105,7 +106,7 @@ Shared libraries for package cantor.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 mkdir .doc
 cd src/backends
@@ -137,13 +138,13 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %files devel
 %license COPYING*
-%{_kf5_libdir}/libcantorlibs.so
-%{_kf5_prefix}/include/cantor/
 %dir %{_kf5_cmakedir}/Cantor
 %{_kf5_cmakedir}/Cantor/CantorConfig.cmake
 %{_kf5_cmakedir}/Cantor/CantorConfigVersion.cmake
-%{_kf5_cmakedir}/Cantor/CantorTargets.cmake
 %{_kf5_cmakedir}/Cantor/CantorTargets-none.cmake
+%{_kf5_cmakedir}/Cantor/CantorTargets.cmake
+%{_kf5_libdir}/libcantorlibs.so
+%{_kf5_prefix}/include/cantor/
 
 %files
 %doc README.md DESIGN .doc/*
@@ -151,12 +152,15 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_knsrcfilesdir}/*.knsrc
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %{_kf5_applicationsdir}/org.kde.cantor.desktop
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.cantor.appdata.xml
 %{_kf5_bindir}/cantor
 %{_kf5_bindir}/cantor_pythonserver
 %{_kf5_bindir}/cantor_rserver
 %{_kf5_bindir}/cantor_scripteditor
-%{_kf5_configkcfgdir}/
+%{_kf5_configkcfgdir}/*backend.kcfg
+%{_kf5_configkcfgdir}/cantor.kcfg
+%{_kf5_configkcfgdir}/cantor_libs.kcfg
+%{_kf5_configkcfgdir}/rserver.kcfg
 %{_kf5_iconsdir}/hicolor/*/apps/*
 %{_kf5_kxmlguidir}/cantor/
 %{_kf5_libdir}/libcantor_config.so
@@ -192,6 +196,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_plugindir}/cantor/panels/cantor_tocpanelplugin.so
 %{_kf5_plugindir}/libcantorpart.so
 %{_kf5_sharedir}/cantor/
+%{_kf5_sharedir}/mime/packages/cantor.xml
 
 %files -n libcantorlibs%{libMAJOR}
 %license COPYING*

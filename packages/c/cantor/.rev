@@ -1106,4 +1106,12 @@
     <comment>20.12.3 release</comment>
     <requestid>877026</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>abd595b313eccb4d3c1c64f9838496a8</srcmd5>
+    <version>21.04.0</version>
+    <time>1619378773</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.04</comment>
+    <requestid>887589</requestid>
+  </revision>
 </revisionlist>
