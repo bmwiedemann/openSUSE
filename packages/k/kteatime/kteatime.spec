@@ -1,7 +1,7 @@
 #
 # spec file for package kteatime
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kteatime
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Timer for various types of tea
 License:        GPL-2.0-or-later
 Group:          Amusements/Toys/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kteatime
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
@@ -44,10 +48,6 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -57,7 +57,7 @@ and be reminded when the associated hardcoded time is over.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -75,7 +75,7 @@ and be reminded when the associated hardcoded time is over.
 %license COPYING COPYING.DOC
 %doc %lang(en) %{_kf5_htmldir}/en/kteatime/
 %{_kf5_applicationsdir}/org.kde.kteatime.desktop
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.kteatime.appdata.xml
 %{_kf5_bindir}/kteatime
 %{_kf5_iconsdir}/hicolor/*/apps/kteatime.*
 %{_kf5_sharedir}/knotifications5/kteatime.notifyrc
