@@ -1,7 +1,7 @@
 #
 # spec file for package kolourpaint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,17 +21,19 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kolourpaint
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
-# See bnc#717722 for license details
 Summary:        Paint Program
-# kolourpaint-17.04.1/imagelib/effects/blitz.h is GPL licensed by mistake in the tarball
-# but was relicensed to BSD in commit 36f297a9c9c9f5323273bdc57f5ee3a4e8e00743 (part of the next release)
+# See boo#717722 for license details
 # GPL-2.0 is the license of the Bulgarian translation
 License:        BSD-2-Clause AND LGPL-2.1-or-later AND GFDL-1.2-or-later AND GPL-2.0-only
 Group:          Productivity/Graphics/Bitmap Editors
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kolourpaint
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -43,19 +45,15 @@ BuildRequires:  cmake(KF5Sane)
 Requires:       kdelibs4support
 Provides:       kolourpaint5 = %{version}
 Obsoletes:      kolourpaint5 < %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
-Paint program for KDE
+Paint program by KDE
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -76,9 +74,6 @@ Paint program for KDE
 %files
 %license COPYING
 %doc README*
-%dir %{_kf5_appstreamdir}
-%dir %{_kf5_htmldir}
-%dir %{_kf5_htmldir}/en
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %{_kf5_applicationsdir}/org.kde.kolourpaint.desktop
 %{_kf5_appstreamdir}/org.kde.kolourpaint.appdata.xml
