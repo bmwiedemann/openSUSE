@@ -1,7 +1,7 @@
 #
 # spec file for package kapptemplate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kapptemplate
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Template for KDE Application Development
 License:        GPL-2.0-only AND GFDL-1.2-only
 Group:          Development/Tools/IDE
-URL:            https://www.kde.org/
+URL:            https://apps.kde.org/kapptemplate
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -43,10 +47,6 @@ BuildRequires:  cmake(Qt5Test)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 Obsoletes:      kapptemplate5 < %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -56,7 +56,7 @@ application/part/plugin.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i 's|Categories=Qt;KDE;Development;|Categories=Qt;KDE;Development;IDE;X-KDE-KDevelopIDE;|g' src/application/org.kde.kapptemplate.desktop
 
 %build
@@ -75,19 +75,19 @@ sed -i 's|Categories=Qt;KDE;Development;|Categories=Qt;KDE;Development;IDE;X-KDE
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
-%dir %{_kf5_appstreamdir}
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %{_kf5_applicationsdir}/org.kde.kapptemplate.desktop
 %{_kf5_appstreamdir}/org.kde.kapptemplate.appdata.xml
 %{_kf5_bindir}/kapptemplate
 %{_kf5_configkcfgdir}/
+%{_kf5_debugdir}/kapptemplate.categories
 %{_kf5_iconsdir}/hicolor/*/apps/kapptemplate.*
 %{_kf5_sharedir}/kdevappwizard/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
