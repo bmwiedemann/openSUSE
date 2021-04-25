@@ -1,7 +1,7 @@
 #
 # spec file for package kmouth
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmouth
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Speech Synthesizer Frontend
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kmouth
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  alsa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libspeechd-devel
@@ -51,10 +55,6 @@ BuildRequires:  cmake(Qt5Xml)
 Recommends:     %{name}-lang
 Provides:       kde4-kmouth = 4.3.0
 Obsoletes:      kde4-kmouth < 4.3.0
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 The computer "speaks" the entered text for talking with people.
@@ -62,7 +62,7 @@ The computer "speaks" the entered text for talking with people.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -82,10 +82,10 @@ The computer "speaks" the entered text for talking with people.
 %doc %lang(en) %{_kf5_htmldir}/en/kmouth/
 %{_kf5_applicationsdir}/*.desktop
 %{_kf5_appsdir}/kmouth/
+%{_kf5_appstreamdir}/org.kde.kmouth.appdata.xml
 %{_kf5_bindir}/kmouth
 %{_kf5_iconsdir}/hicolor/*/*/*.png
 %{_kf5_kxmlguidir}/kmouth/
-%{_kf5_appstreamdir}/org.kde.kmouth.appdata.xml
 %{_mandir}/man1/kmouth.1%{?ext_man}
 
 %if %{with lang}
