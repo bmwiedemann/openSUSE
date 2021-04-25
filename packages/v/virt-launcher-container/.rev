@@ -7,4 +7,12 @@
     <comment>Kubevirt virt-launcher container</comment>
     <requestid>885359</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>bc13cce1898efdd659c214b0b468a160</srcmd5>
+    <version>unknown</version>
+    <time>1619378847</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>888297</requestid>
+  </revision>
 </revisionlist>

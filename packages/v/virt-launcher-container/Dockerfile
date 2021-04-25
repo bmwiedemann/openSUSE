@@ -16,24 +16,24 @@ PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="%%TAGPREFIX%%/virt-launcher:%%PKG_VERSION%%.%RELEASE%"
 
-RUN zypper update -y && \
-    zypper install -y \
-           socat \
-           qemu-x86 \
-           qemu-tools \
-           libcap-progs \
-           mkisofs \
-           nftables \
-           iptables \
-           augeas \
-           augeas-lenses \
-           libvirt-daemon-qemu \
-           libvirt-client \
-           libvirt-daemon-driver-storage-core \
-           vim \
-           kubevirt-container-disk \
-           kubevirt-virt-launcher && \
-     mkdir -p /usr/share/kubevirt/virt-launcher
+RUN zypper -n install \
+              augeas \
+              augeas-lenses \
+              iptables \
+              kubevirt-container-disk \
+              kubevirt-virt-launcher \
+              libcap-progs \
+              libvirt-client \
+              libvirt-daemon-driver-storage-core \
+              libvirt-daemon-qemu \
+              mkisofs \
+              nftables \
+              qemu-tools \
+              qemu-x86 \
+              socat \
+              vim && \
+    zypper clean -a && \
+    mkdir -p /usr/share/kubevirt/virt-launcher
 
 COPY augconf /augconf
 

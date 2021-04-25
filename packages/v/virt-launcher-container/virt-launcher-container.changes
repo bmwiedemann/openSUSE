@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 18 07:57:40 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Run zypper clean after installation
+- Sort installed packages alphabetically
+
+-------------------------------------------------------------------
 Wed Mar 17 07:08:54 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Add placeholder vars to be replaced during build
