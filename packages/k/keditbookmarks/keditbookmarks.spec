@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           keditbookmarks
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        KDE Bookmark Editor
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -39,12 +43,8 @@ BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5WindowSystem)
-BuildRequires:  cmake(Qt5Core) >= 5.4.0
-BuildRequires:  cmake(Qt5Test) >= 5.4.0
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Test)
 Recommends:     %{name}-lang
 
 %description
@@ -53,7 +53,7 @@ This is an editor to edit your KDE-wide bookmark set.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -71,7 +71,6 @@ This is an editor to edit your KDE-wide bookmark set.
 
 %files
 %license COPYING*
-%dir %{_kf5_configkcfgdir}
 %doc %lang(en) %{_kf5_htmldir}/en/keditbookmarks/
 %{_kf5_applicationsdir}/org.kde.keditbookmarks.desktop
 %{_kf5_bindir}/kbookmarkmerger
@@ -79,7 +78,6 @@ This is an editor to edit your KDE-wide bookmark set.
 %{_kf5_configkcfgdir}/keditbookmarks*.kcfg
 %{_kf5_debugdir}/keditbookmarks.categories
 %{_kf5_libdir}/libkbookmarkmodel_private.so*
-%{_kf5_sharedir}/kxmlgui5/keditbookmarks/
 %{_kf5_mandir}/man1/kbookmarkmerger.1%{ext_man}
 
 %if %{with lang}
