@@ -1,7 +1,7 @@
 #
 # spec file for package katomic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           katomic
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Sokoban-like logic game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/katomic
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5ConfigWidgets)
@@ -50,10 +54,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -64,7 +64,7 @@ can move each atom in a labyrinth.
 %lang_package
 
 %prep
-%setup -q -n katomic-%{version}
+%autosetup -p1 -n katomic-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -79,22 +79,20 @@ can move each atom in a labyrinth.
   %suse_update_desktop_file -r org.kde.katomic         Game LogicGame
 
 %files
-%license COPYING COPYING.DOC
-%dir %{_kf5_appstreamdir}
+%license LICENSES/*
+%doc %lang(en) %{_kf5_htmldir}/en/katomic/
 %{_kf5_applicationsdir}/org.kde.katomic.desktop
 %{_kf5_appsdir}/katomic/
 %{_kf5_appsdir}/kconf_update/katomic-levelset*
 %{_kf5_appstreamdir}/org.kde.katomic.appdata.xml
 %{_kf5_bindir}/katomic
-%{_kf5_knsrcfilesdir}/katomic.knsrc
 %{_kf5_debugdir}/katomic.categories
-%doc %lang(en) %{_kf5_htmldir}/en/katomic/
 %{_kf5_iconsdir}/hicolor/*/apps/katomic.*
-%{_kf5_kxmlguidir}/katomic/
+%{_kf5_knsrcfilesdir}/katomic.knsrc
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
