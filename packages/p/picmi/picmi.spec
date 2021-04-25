@@ -1,7 +1,7 @@
 #
 # spec file for package picmi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           picmi
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Nonogram Logic game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Logic
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/picmi
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CoreAddons)
@@ -45,20 +49,14 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      picmi5 < %{version}
 Provides:       picmi5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
-A nonogram logic game for KDE
+A nonogram logic game by KDE
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -74,14 +72,14 @@ A nonogram logic game for KDE
 
 %files
 %license COPYING*
+%doc %lang(en) %{_kf5_htmldir}/en/picmi/
 %dir %{_kf5_iconsdir}/hicolor/256x256
 %dir %{_kf5_iconsdir}/hicolor/256x256/apps
-%doc %lang(en) %{_kf5_htmldir}/en/picmi/
 %{_kf5_applicationsdir}/org.kde.picmi.desktop
 %{_kf5_appsdir}/picmi/
 %{_kf5_appstreamdir}/
-%{_kf5_debugdir}/picmi.categories
 %{_kf5_bindir}/picmi
+%{_kf5_debugdir}/picmi.categories
 %{_kf5_iconsdir}/hicolor/*/apps/picmi.*
 %{_kf5_kxmlguidir}/picmi/
 
