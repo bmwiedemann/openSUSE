@@ -1,7 +1,7 @@
 #
 # spec file for package libkeduvocdocument
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkeduvocdocument
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Library for KDE Education Applications
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://edu.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -40,10 +44,6 @@ BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 This package contains the library which is required by the KDE education
@@ -69,12 +69,10 @@ Requires:       libKEduVocDocument5 = %{version}
 This package contains all necessary files and libraries needed to
 develop KDE education applications.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build -- -DKDE4_USE_COMMON_CMAKE_PACKAGE_CONFIG_DIR=ON
@@ -85,6 +83,7 @@ develop KDE education applications.
 %if %{with lang}
   %find_lang %{name} --with-man --all-name
 %endif
+
 %fdupes -s %{buildroot}
 
 %post -n libKEduVocDocument5 -p /sbin/ldconfig
