@@ -550,4 +550,13 @@
   * Add --skip-interestingness-test-check (-s) argument.</comment>
     <requestid>886690</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>4cb17c6b1b92944ef3c0cb2a658e2bfa</srcmd5>
+    <version>2.3.0+git.20210419.7c7526b</version>
+    <time>1619378854</time>
+    <user>dimstar_suse</user>
+    <comment>- Use LLVM12.
+</comment>
+    <requestid>888323</requestid>
+  </revision>
 </revisionlist>

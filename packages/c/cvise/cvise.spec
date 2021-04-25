@@ -41,15 +41,15 @@ Requires:       python3-Pebble
 Requires:       python3-psutil
 Requires:       unifdef
 %if %{?suse_version} > 1500
-BuildRequires:  clang11-devel
-BuildRequires:  llvm11-devel
+BuildRequires:  clang12-devel
+BuildRequires:  llvm12-devel
 %else
 BuildRequires:  clang9-devel
 BuildRequires:  llvm9-devel
 %endif
 %if %{?suse_version} > 1500
-Requires:       clang11
-Requires:       llvm11
+Requires:       clang12
+Requires:       llvm12
 %else
 Requires:       clang9
 Requires:       llvm9
