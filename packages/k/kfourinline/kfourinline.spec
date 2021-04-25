@@ -1,7 +1,7 @@
 #
 # spec file for package kfourinline
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kfourinline
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Four Wins game
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Amusements/Toys/Other
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kfourinline
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Completion)
@@ -45,10 +49,6 @@ BuildRequires:  cmake(Qt5Widgets)
 Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Four wins is a two-player board game where you have to align four
@@ -57,7 +57,7 @@ Four wins is a two-player board game where you have to align four
 %lang_package
 
 %prep
-%setup -q -n kfourinline-%{version}
+%autosetup -p1 -n kfourinline-%{version}
 
 %build
   %cmake_kf5 -d build
@@ -72,21 +72,20 @@ Four wins is a two-player board game where you have to align four
   %suse_update_desktop_file -r org.kde.kfourinline     Game BoardGame
 
 %files
-%license COPYING COPYING.DOC COPYING.LIB
-%dir %{_kf5_configkcfgdir}
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kfourinline/
 %{_kf5_applicationsdir}/org.kde.kfourinline.desktop
 %{_kf5_appsdir}/kfourinline/
+%{_kf5_appstreamdir}/org.kde.kfourinline.appdata.xml
 %{_kf5_bindir}/kfourinline
 %{_kf5_bindir}/kfourinlineproc
 %{_kf5_configkcfgdir}/kwin4.kcfg
-%{_kf5_iconsdir}/hicolor/*/*/kfourinline.*
 %{_kf5_debugdir}/kfourinline.categories
-%{_kf5_appstreamdir}/org.kde.kfourinline.appdata.xml
+%{_kf5_iconsdir}/hicolor/*/*/kfourinline.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
