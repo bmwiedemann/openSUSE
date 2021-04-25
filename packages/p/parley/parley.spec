@@ -1,7 +1,7 @@
 #
 # spec file for package parley
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           parley
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Vocabulary Trainer
 License:        GPL-2.0-or-later
 Group:          Amusements/Teaching/Language
-URL:            https://edu.kde.org
+URL:            https://apps.kde.org/parley
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libxml2-devel
@@ -60,19 +64,15 @@ Obsoletes:      parley5 < %{version}
 Provides:       %{name}5 = %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
-Parley is a vocabulary trainer for KDE.
+Parley is a vocabulary trainer by KDE.
 
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -91,13 +91,15 @@ Parley is a vocabulary trainer for KDE.
 %doc AUTHORS README.md
 %doc %lang(en) %{_kf5_htmldir}/en/parley/
 %{_kf5_applicationsdir}/org.kde.parley.desktop
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.parley.appdata.xml
 %{_kf5_bindir}/parley
-%{_kf5_configkcfgdir}/
+%{_kf5_configkcfgdir}/documentsettings.kcfg
+%{_kf5_configkcfgdir}/languagesettings.kcfg
+%{_kf5_configkcfgdir}/parley.kcfg
 %{_kf5_iconsdir}/*/*/*/*
-%{_kf5_knsrcfilesdir}/*.knsrc
+%{_kf5_knsrcfilesdir}/parley*.knsrc
+%{_kf5_kxmlguidir}/parley/
 %{_kf5_sharedir}/parley/
-%{_kf5_kxmlguidir}/
 
 %if %{with lang}
 %files lang -f %{name}.lang
