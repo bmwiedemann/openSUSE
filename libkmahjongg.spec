@@ -1,7 +1,7 @@
 #
 # spec file for package libkmahjongg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkmahjongg
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        General Data for KDE Games
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  fdupes
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Completion)
@@ -42,10 +46,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 Obsoletes:      %{name}-kf5 < %{version}
 Provides:       %{name}-kf5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -75,7 +75,7 @@ develop games that uses Mahjongg tiles.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -92,26 +92,26 @@ develop games that uses Mahjongg tiles.
 %postun -n libKF5KMahjongglib5 -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc README
 %{_kf5_debugdir}/libkmahjongg.categories
 %{_kf5_sharedir}/kmahjongglib/
 
 %files -n libKF5KMahjongglib5
-%license COPYING*
+%license LICENSES/*
 %doc README
 %{_kf5_libdir}/libKF5KMahjongglib.so.*
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %doc README
+%{_kf5_cmakedir}/KF5KMahjongglib
 %{_kf5_includedir}/KF5KMahjongg/
 %{_kf5_libdir}/libKF5KMahjongglib.so
-%{_kf5_cmakedir}/KF5KMahjongglib
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
