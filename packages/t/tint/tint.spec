@@ -1,7 +1,7 @@
 #
 # spec file for package tint
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster <guido+opensuse.org@berhoerster.name>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -31,16 +31,14 @@ BuildRequires:  ncurses-devel
 
 %description
 TINT is a clone of the original tetris game written by Alexey Pajitnov, Dmitry
-Pavlovsky, and Vadim Gerasimov. The game is as close to the original as
-possible, but there are a few differences. Nevertheless, it is probably the
-closest to the original that you'll ever find in the UNIX world.
+Pavlovsky, and Vadim Gerasimov. The game is close to the original, but
+there are a few differences.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %install
 install -D -m 755 tint %{buildroot}%{_bindir}/tint
