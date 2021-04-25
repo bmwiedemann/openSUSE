@@ -1,7 +1,7 @@
 #
 # spec file for package kajongg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kajongg
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        4 Player Mahjongg game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/kajongg
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  python3-Twisted >= 16.6.0
 BuildRequires:  python3-base >= 3.5.0
@@ -46,10 +50,6 @@ BuildRequires:  cmake(Qt5Widgets)
 Requires:       python3-Twisted
 Requires:       python3-qt5
 BuildArch:      noarch
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -58,7 +58,7 @@ Kajongg is a version of the four player Mahjongg tile game.
 %lang_package
 
 %prep
-%setup -q -n kajongg-%{version}
+%autosetup -p1 -n kajongg-%{version}
 
 %build
 # Workaround for kde#376303
@@ -82,7 +82,7 @@ export DESTDIR=%{buildroot}
 %doc %lang(en) %{_kf5_htmldir}/en/kajongg/
 %{_kf5_applicationsdir}/org.kde.kajongg.desktop
 %{_kf5_appsdir}/kajongg/
-%{_kf5_appstreamdir}/
+%{_kf5_appstreamdir}/org.kde.kajongg.appdata.xml
 %{_kf5_bindir}/kajongg
 %{_kf5_bindir}/kajonggserver
 %{_kf5_iconsdir}/hicolor/*/actions/games-kajongg-law.*
