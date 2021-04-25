@@ -1,7 +1,7 @@
 #
 # spec file for package lskat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           lskat
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        German Skat game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Card
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/lskat
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Config)
@@ -46,10 +50,6 @@ Requires:       kdegames-carddecks-default
 Recommends:     %{name}-lang
 Obsoletes:      lskat5 < %{version}
 Provides:       lskat5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 
 %description
 Lieutenant Skat is a nice two player card game which follows the rules
@@ -60,7 +60,7 @@ the players.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -75,20 +75,19 @@ the players.
   %suse_update_desktop_file -r org.kde.lskat          Game CardGame
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc README
 %doc %lang(en) %{_kf5_htmldir}/en/lskat/
-%{_kf5_debugdir}/*.categories
 %{_kf5_applicationsdir}/org.kde.lskat.desktop
 %{_kf5_appsdir}/lskat/
 %{_kf5_appstreamdir}/org.kde.lskat.appdata.xml
 %{_kf5_bindir}/lskat
+%{_kf5_debugdir}/lskat.categories
 %{_kf5_iconsdir}/hicolor/*/apps/lskat.*
-%{_kf5_kxmlguidir}/lskat/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
