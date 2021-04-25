@@ -1,7 +1,7 @@
 #
 # spec file for package ksirk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           ksirk
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Risk-like game by KDE
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Amusements/Games/Strategy/Turn Based
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/ksirk
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libqca-qt5-devel
 BuildRequires:  update-desktop-files
@@ -59,10 +63,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      ksirk5 < %{version}
 Provides:       ksirk5 = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -71,7 +71,7 @@ KsirK is a computerized version of a well known strategy game.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
   %cmake_kf5 -d build
@@ -90,8 +90,6 @@ KsirK is a computerized version of a well known strategy game.
 
 %files
 %license COPYING COPYING.DOC COPYING.LIB
-%{_kf5_knsrcfilesdir}/ksirk.knsrc
-%dir %{_kf5_configkcfgdir}
 %doc %lang(en) %{_kf5_htmldir}/en/ksirk/
 %doc %lang(en) %{_kf5_htmldir}/en/ksirkskineditor/
 %{_kf5_applicationsdir}/org.kde.ksirk.desktop
@@ -100,13 +98,14 @@ KsirK is a computerized version of a well known strategy game.
 %{_kf5_bindir}/ksirk
 %{_kf5_bindir}/ksirkskineditor
 %{_kf5_configkcfgdir}/ksirk*.kcfg
+%{_kf5_debugdir}/ksirk.categories
 %{_kf5_iconsdir}/hicolor/*/apps/ksirk.*
+%{_kf5_knsrcfilesdir}/ksirk.knsrc
 %{_kf5_kxmlguidir}/ksirk/
 %{_kf5_kxmlguidir}/ksirkskineditor/
 %{_kf5_libdir}/libiris_ksirk.so.*
 %{_kf5_sharedir}/ksirk/
 %{_kf5_sharedir}/ksirkskineditor/
-%{_kf5_debugdir}/ksirk.categories
 
 %if %{with lang}
 %files lang -f %{name}.lang
