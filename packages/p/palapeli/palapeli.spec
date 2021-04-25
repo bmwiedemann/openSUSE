@@ -1,7 +1,7 @@
 #
 # spec file for package palapeli
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,17 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           palapeli
-Version:        20.12.3
+Version:        21.04.0
 Release:        0
 Summary:        Jigsaw puzzle game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
-URL:            https://www.kde.org
+URL:            https://apps.kde.org/palapeli
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
@@ -50,10 +54,6 @@ BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       palapeli-data = %{version}
-%if %{with lang}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
-Source2:        applications.keyring
-%endif
 Recommends:     %{name}-lang
 
 %description
@@ -82,7 +82,7 @@ This package contains the development files for Palapeli.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_kf5 -d build
@@ -102,7 +102,7 @@ This package contains the development files for Palapeli.
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/palapeli/
 %dir %{_kf5_iconsdir}/hicolor/128x128/
 %dir %{_kf5_iconsdir}/hicolor/128x128/apps
@@ -126,33 +126,27 @@ This package contains the development files for Palapeli.
 %{_kf5_debugdir}/palapeli.categories
 %{_kf5_iconsdir}/hicolor/*/apps/palapeli.png
 %{_kf5_iconsdir}/hicolor/*/mimetypes/application-x-palapeli.png
-%{_kf5_kxmlguidir}/palapeli/
 %{_kf5_libdir}/libpala.so.*
 %{_kf5_notifydir}/palapeli.notifyrc
 %{_kf5_plugindir}/pala*
-%{_kf5_servicesdir}/ServiceMenus/palapeli_servicemenu.desktop
-%{_kf5_servicesdir}/palapeli_goldbergslicer.desktop
-%{_kf5_servicesdir}/palapeli_jigsawslicer.desktop
-%{_kf5_servicesdir}/palapeli_rectslicer.desktop
 %{_kf5_servicesdir}/palathumbcreator.desktop
-%{_kf5_servicetypesdir}/libpala-slicerplugin.desktop
+%{_kf5_servicesdir}/ServiceMenus/palapeli_servicemenu.desktop
 %{_kf5_sharedir}/mime/packages/palapeli-mimetypes.xml
 
 %files data
-%license COPYING*
+%license LICENSES/*
 %{_kf5_appsdir}/palapeli/
 %config %{_kf5_configdir}/palapeli-collectionrc
 
 %files devel
-%license COPYING*
+%license LICENSES/*
 %{_includedir}/Pala
-%{_includedir}/libpala
 %{_kf5_libdir}/libpala.so
-%{_kf5_libdir}/libpala/
+%{_kf5_cmakedir}/Pala/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
+%license LICENSES/*
 %endif
 
 %changelog
