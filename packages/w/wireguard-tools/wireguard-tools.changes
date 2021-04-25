@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 25 08:46:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20210424
+  * wg-quick: kill route monitor when loop terminates
+
+-------------------------------------------------------------------
 Mon Mar 15 15:11:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.20210315
