@@ -16,10 +16,8 @@ PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="%%TAGPREFIX%%/virt-operator:%%PKG_VERSION%%.%RELEASE%"
 
-RUN zypper update -y && \
-    zypper install -y \
-           kubevirt-virt-operator \
-           shadow && \
+RUN zypper -n install kubevirt-virt-operator shadow && \
+    zypper clean -a && \
     useradd --system --no-create-home -u 1001 virt-operator
 USER 1001
 ENTRYPOINT [ "/usr/bin/virt-operator" ]
