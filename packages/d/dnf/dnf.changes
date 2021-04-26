@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr 13 13:56:53 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to version 4.7.0
+  + Improve repo config path ordering to fix a comps merging issue (rh#1928181)
+  + Keep reason when package is removed (rh#1921063)
+  + Improve mechanism for application of security filters (rh#1918475)
+  + [doc] Add description for new API
+  + [API] Add new method for reset of security filters
+  + [doc] Improve documentation for Hotfix repositories
+  + [doc] fix: "makecache" command downloads only enabled repositories
+  + Use libdnf.utils.checksum_{check,value}
+  + [doc] Add info that maximum parallel downloads is 20
+  + Increase loglevel in case of invalid config options
+  + [doc] installonly_limit documentation follows behavior
+  + Prevent traceback (catch ValueError) if pkg is from cmdline
+  + Add documentation for config option sslverifystatus (rh#1814383)
+  + Check for specific key string when verifing signatures (rh#1915990)
+  + Use rpmkeys binary to verify package signature (rh#1915990)
+  + Bugs fixed (rh#1916783)
+  + Preserve file mode during log rotation (rh#1910084)
+
+-------------------------------------------------------------------
 Thu Mar 11 11:16:52 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
 
 - Add dnf-4.6_vendor_change_doc.patch to adapt the documentation
