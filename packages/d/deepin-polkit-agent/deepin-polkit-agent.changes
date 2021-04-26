@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Wed Feb 24 07:47:48 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version 5.3.0.3
+  * Add PAM modules
+  * chore: auto pull translation files from transifex
+  * fix: build depend libdtkcore-bin to libdtkcore5-bin
+  * fix: port to new API of DPasswordEdit
+  * fix: adjust style
+  * support fingerprint device changes
+  * fixed:(authDialog):fingerprint device changed modify placeholder
+  * fixed:Always show user name
+  * feat:Resolving the disappearance of the authorization window
+  * Clean up invalid translation files
+
+-------------------------------------------------------------------
+Tue Jul 16 05:55:57 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.3.0
+  * Update translations
+  * Fix auth failed without prompt
+  * Fix auth faild cannot set focus
+  * chore: disable deepin_auth for no deepin platform
+  * Use an environment variable to find plugins
+
+-------------------------------------------------------------------
+Tue Apr 16 01:41:44 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.2.6
+  * provide dbus service
+  * Fix still auth after dialog window closed
+  * Fix failed on build
+  * Fix translate not load
+
+-------------------------------------------------------------------
+Thu Mar 22 13:10:50 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 0.2.0
+  * Fix trigger plugin action only wen auth succeeded
+  * Using linux-pam to provide translation
+  * Adapt lintian
+  * Fix single instance may not work
+  * Create pid file to cache folder
+  * Support agent plugins 
+  * Support single instance
+  * Show validation information
+  * Support option widgets
+- Split devel package.
+
+-------------------------------------------------------------------
+Fri Dec  1 13:26:09 UTC 2017 - hillwood@opensuse.org
+
+- Update to 0.1.1
+  * Feature update. 
+- Split language package.
+
+-------------------------------------------------------------------
+Sun Nov 12 13:46:23 UTC 2017 - hillwood@opensuse.org
+
+- Cleanup spec
+  * Add Group tag
+  * Fix filelist setting. 
+  * Fix permission for desktop profile.
+
+-------------------------------------------------------------------
+Tue Oct  3 15:29:45 UTC 2017 - sensor.wen@gmail.com
+
+- Initial package.
