@@ -21,14 +21,13 @@
 %define airspy_group    airspy
 %define libname lib%{name}%{sover}
 Name:           airspy
-Version:        1.0.9+git1611947482.70520c9
+Version:        1.0.10
 Release:        0
 Summary:        Support programs for Airspy
 License:        GPL-2.0-or-later
 URL:            http://www.airspy.com
 #Git-Clone:     https://github.com/airspy/airspyone_host.git
-#Source:        https://github.com/airspy/airspyone_host/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/airspy/airspyone_host/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 2.8
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
@@ -61,7 +60,7 @@ Requires:       %{libname} = %{version}
 Library headers for airspy driver.
 
 %prep
-%setup -q -n airspy-%{version}
+%setup -q -n airspyone_host-%{version}
 
 # HACK: set udev group to airspy
 sed -i "s/plugdev/airspy/g" airspy-tools/52-airspy.rules
