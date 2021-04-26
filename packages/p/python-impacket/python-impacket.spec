@@ -18,6 +18,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python39 1
 Name:           python-impacket
 Version:        0.9.22
 Release:        0

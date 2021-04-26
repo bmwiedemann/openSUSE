@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 24 15:41:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Python 3.9 is not supported yet - skip builds for now
+
+-------------------------------------------------------------------
 Mon Mar  1 19:38:00 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Fix TW build
