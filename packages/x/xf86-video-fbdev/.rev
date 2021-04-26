@@ -111,4 +111,12 @@
   *  U_13-Use-ifdef-instead-of-if-to-avoid-build-error.patch</comment>
     <requestid>613933</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d8e4770c3dbaa7164625767e26a893a0</srcmd5>
+    <version>0.5.0</version>
+    <time>1619447905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887236</requestid>
+  </revision>
 </revisionlist>
