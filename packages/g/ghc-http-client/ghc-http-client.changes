@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 22 10:05:02 UTC 2021 - psimons@suse.com
+
+- Update http-client to version 0.7.8.
+  ## 0.7.8
+
+  * Include the original `Request` in the `Response`. Expose it via `getOriginalRequest`.
+
+-------------------------------------------------------------------
+Wed Apr 14 17:26:45 UTC 2021 - psimons@suse.com
+
+- Update http-client to version 0.7.7.
+  ## 0.7.7
+
+  * Allow secure cookies for localhost without HTTPS [#460](https://github.com/snoyberg/http-client/pull/460)
+
+-------------------------------------------------------------------
 Sun Feb 21 12:49:09 UTC 2021 - psimons@suse.com
 
 - Update http-client to version 0.7.6.

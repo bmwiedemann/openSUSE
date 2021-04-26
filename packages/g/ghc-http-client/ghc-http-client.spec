@@ -19,7 +19,7 @@
 %global pkg_name http-client
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.6
+Version:        0.7.8
 Release:        0
 Summary:        An HTTP client engine
 License:        MIT
@@ -37,6 +37,7 @@ BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-http-types-devel
+BuildRequires:  ghc-iproute-devel
 BuildRequires:  ghc-mime-types-devel
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-uri-devel
