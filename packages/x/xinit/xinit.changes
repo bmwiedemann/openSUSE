@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 21 09:10:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- modernize spec file (move license to licensedir, use https) 
+
+-------------------------------------------------------------------
 Sun Oct  4 09:47:55 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Properly track the compatibility symlink

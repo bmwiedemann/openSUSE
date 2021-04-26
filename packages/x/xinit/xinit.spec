@@ -1,7 +1,7 @@
 #
 # spec file for package xinit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,14 @@
 %if 0%{?suse_version} >= 1550
 %define UsrEtcMove 1
 %endif
-
 Name:           xinit
 Version:        1.4.1
 Release:        0
 Summary:        X Window System initializer
 License:        MIT
 Group:          System/X11/Utilities
-URL:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+URL:            https://xorg.freedesktop.org/
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
 Source1:        xinit.tar.bz2
 Source2:        keygen.c
 Source3:        keygen.1
@@ -40,7 +39,7 @@ Patch5:         xinit-tarball.patch
 # needed for patch0
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto) >= 7.0.17
@@ -49,14 +48,13 @@ Requires:       xauth
 Requires:       xmodmap
 Requires:       xrdb
 Requires:       xsetroot
+# This was part of the xorg-x11 package up to version 7.6
+Conflicts:      xorg-x11 <= 7.6
 %if 0%{?suse_version} > 1320
 Requires:       xterm-bin
 %else
 Requires:       xterm
 %endif
-# This was part of the xorg-x11 package up to version 7.6
-Conflicts:      xorg-x11 <= 7.6
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The xinit program is used to start the X Window System server and a
@@ -68,9 +66,9 @@ terminate.
 %prep
 %setup -q
 %if 0%{?UsrEtcMove}
-sed -i 's+/etc/X11+%{_libexecdir}+' %{PATCH0}
+sed -i 's+%{_sysconfdir}/X11+%{_libexecdir}+' %{PATCH0}
 %endif
-%patch0 -p0
+%patch0
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
@@ -86,8 +84,8 @@ autoreconf -fi
 %else
 %configure
 %endif
-make %{?_smp_mflags}
-%{__cc} %{optflags} -o keygen %{SOURCE2}
+%make_build
+gcc %{optflags} -o keygen %{SOURCE2}
 
 %install
 %make_install
@@ -99,18 +97,18 @@ tar xf %{SOURCE1}
 patch -p0 < %{PATCH5}
 mkdir -p %{buildroot}%{_libexecdir}/xinit
 mv etc/X11/xinit/{xinitrc,xserverrc} %{buildroot}%{_libexecdir}/xinit
-mkdir -p usr/etc/X11/xinit/xinitrc.d
-mv etc/X11/Xresources usr/etc/X11
-mv etc/X11/xinit/xinitrc.common usr/etc/X11/xinit
+mkdir -p usr%{_sysconfdir}/X11/xinit/xinitrc.d
+mv etc/X11/Xresources usr%{_sysconfdir}/X11
+mv etc/X11/xinit/xinitrc.common usr%{_sysconfdir}/X11/xinit
 # Compatibility symlink for user xinitrc files
-ln -s /usr/etc/X11/xinit/xinitrc.common etc/X11/xinit/xinitrc.common
+ln -s %{_prefix}%{_sysconfdir}/X11/xinit/xinitrc.common etc/X11/xinit/xinitrc.common
 rmdir etc/X11/xinit/xinitrc.d
 %endif
 popd
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING README.md
+%license COPYING
+%doc ChangeLog README.md
 %if 0%{?UsrEtcMove}
 %dir %{_distconfdir}/X11
 %{_distconfdir}/X11/xinit/
