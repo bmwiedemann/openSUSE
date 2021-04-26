@@ -1,0 +1,175 @@
+-------------------------------------------------------------------
+Tue Mar 16 05:07:41 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.4
+  * Add important filelist
+  * Fix font size for clock plugin
+  * Fix bugs
+  * Optimize code structure
+
+-------------------------------------------------------------------
+Mon Feb 22 07:23:58 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.3.64
+  * The fresh ui
+  * fix bugs
+
+-------------------------------------------------------------------
+Tue Apr 28 05:32:14 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.1.0.1
+  * Fix bugs
+  * Add features
+- Link libraries to fix build, add deepin-dock-link-libraries.patch
+
+-------------------------------------------------------------------
+Sun Jul 14 13:51:33 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 4.10.7
+  * Fix overlay: head define conflict
+  * disable show animation for sw mips and arm
+  * plugin init is done in other threads
+  * remove load plugins timer
+  * docs: Add documents for paths of local plugins
+  * tray: disable tray for local config
+  * plugin: support init plugins for ~/.local/lib/dde-dock/plugins
+  * disable show animation for sw platform
+  * Fix 2d: Clicking on the preview will crash
+  * power: use onBattery to replace batteryState to check is used battery
+  * Fix overlay: disable overlay failed
+  * Fix plugins: scrolling on the item, popup will hide
+  * Fix preview: cannot switch preview window
+  * tray: cannot click indicator
+  * Fix typos
+  * network: refresh loading icon not align center
+  * overlay: polkit dialog not translation message
+  * preview: float preview background have wrong offset, crash when click active
+    item on 2d
+  * tray:indicator click is invalid, Adding a keyboard layout for the first time
+    will crash
+  * Fix network: refresh loading icon not align center
+  * Fix quick click on the preview window will crash
+  * Fix translation of polkit message of overlayroot-disable in stable system
+  * Fix no notify be sent when plugin's qt version is incompatible
+
+-------------------------------------------------------------------
+Wed Apr 17 02:51:40 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 4.9.7
+  * Fix can not hover preview after drag
+  * Fix preview window can not be raised after clicked preview snapshot
+  * Fix plugin settings value can not transform to Json value in qt 5.7
+  * Fix not send plugin incompatible notify
+  * Fix plugin settings lost after save to daemon dbus
+  * Fix duplicate wired item tray
+  * Update dock plugin version
+  * refresh sort order and container after DeepinSync
+  * update all plugins to support take effect in time for Deepin-Sync
+  * update plugin interface version
+  * access plugin settings from dock dbus daemon
+  * Fix dock position and size is wrong on multiple screens and the screens have
+    different device scale ratio
+  * Fix arm: disable power module
+  * Fix exec pkexec failed cause the Polkit dbus is not startup when just login
+  * Fix cmdline read failed
+  * Fix not detect hotspot enabled
+  * Fix close button alignment in 2D mode
+  * Fix pixmap be clipped
+  * Fix hovering preview picture size adjust
+  * add overlay warning plugin
+  * enable CMAKE_EXPORT_COMPILE_COMMANDS by default
+  * add cancel animation for drag to undock operation
+  * Fix indicator not display
+  * added multiple indicator tray of one indicator provider
+  * Fix activating indicator not show when activate a wireless from other place
+  * keyboard layout indicator support context menu
+  * send a notify when plugin is not compatible
+  * trash plugin enable be disable
+  * Fix wireless item display problem when ssid contains "&"
+  * Fix fashion tray expand error after double click control widget
+  * optimize plugin guide
+  * Fix shutdown plugin support hibernate* place holder item not be removed
+    after drag leave in touch screen
+  * Fix tips widget size not change after system font size changed
+  * Fix obtain opacity value too frequently when startup
+  * Fix show dock menu when click on some area out of tray
+  * Fix can not show mutiple tray of one application
+  * Fix warning when get window property for xembed tray
+  * animation of hold spliter
+  * add hold container
+  * add a container widget for hold on trays
+  * update plugin API version  * Fix xembed tray click response
+  * Fix build package
+  * Fix dock crash and sni tray status property process
+  * Fix can not drag back to normal container
+
+-------------------------------------------------------------------
+Wed Jan  9 14:25:56 UTC 2019 - hillwood@opensuse.org
+
+- Update version to 4.8.6
+  * Fix bug
+  * Update features
+
+-------------------------------------------------------------------
+Mon Mar 19 12:01:53 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 4.6.1
+  * use cmake instead of qmake5
+  * update deepin-dock-link-some-libraries.patch
+  * Bug Fixes
+    + sound input sink volume slider not init
+    + update trayWidget on fashion mode 
+    + hidpi support for indicatortraywidget
+    + indicatortraywidget connect error pertoires slots 
+    + Adapt lintian
+    + dock hide behavior error when popup menu 
+    + menu auto hide 
+    + positioned at wrong place 
+    + show control-center not work 
+    + container item icon not clearly 
+    + dont show container tips if it's empty 
+    + aliasing border on highlighting app icon 
+    + dock frontend rect not support hiDPI
+    + sound slider use svg
+    + network refresh button support hidpi
+    + network refresh button not visiable when device on
+  * Features:
+    + add keybord_layout.json
+    + add keyboard layout plugin
+    + support indicator traywidget 
+    + open dde-calendar with dbus call 
+    + **keyboard_layout:**  add new dbus interface
+    + network:
+    + add refresh animation 
+    + support cloned address
+    + **plugins:**  keep order
+    + **system-tray:**  using native popup 
+
+-------------------------------------------------------------------
+Fri Dec  1 08:47:05 UTC 2017 - hillwood@opensuse.org
+
+- Update to 4.5.7
+  * Using system theme icon in network plugin
+  * Fix dock position error in multi screen
+  * Forbid using theme icon in network plugin.
+  * Fix dock crash if system tray' app is quit.
+  * Minor bug fixes.
+  * Improve popup auto hide algorithm
+  * Fix window size error when new item inserted.
+  * Improve HiDPI issues.
+  * Opmitize memory usage.
+  * Improve user experience.
+  * Memory issue fixes.
+  * Network add connecting animation
+  * Fix systemtray not align vertial center
+  * Update translations
+  * Fix power icon auto-hide not work perfectly
+  * New plugin API.
+  * HiDPI support.
+
+-------------------------------------------------------------------
+Mon Oct  2 16:01:05 UTC 2017 - hillwood@opensuse.org
+
+- Initial package.
+- Add deepin-doc-link-some-libraries.patch
+  * Fix the lost pkgconfig item.

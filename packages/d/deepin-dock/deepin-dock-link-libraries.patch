@@ -1,0 +1,11 @@
+diff -Nur dde-dock-5.1.0.1/plugins/onboard/CMakeLists.txt dde-dock-5.1.0.1-new/plugins/onboard/CMakeLists.txt
+--- dde-dock-5.1.0.1/plugins/onboard/CMakeLists.txt	2020-04-26 18:42:42.000000000 +0800
++++ dde-dock-5.1.0.1-new/plugins/onboard/CMakeLists.txt	2020-04-28 12:52:44.776334645 +0800
+@@ -23,6 +23,7 @@
+     ${DtkWidget_LIBRARIES}
+     ${Qt5Widgets_LIBRARIES}
+     ${Qt5Svg_LIBRARIES}
++    ${Qt5DBus_LIBRARIES}
+     ${DFrameworkDBus_LIBRARIES}
+ )
+ 
