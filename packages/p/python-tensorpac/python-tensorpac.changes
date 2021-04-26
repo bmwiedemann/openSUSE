@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 25 18:25:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.5
+  * no release notes 
+- Skip tests which use optional but not available MNE
+
+-------------------------------------------------------------------
 Fri Feb 12 16:09:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 (scipy) 

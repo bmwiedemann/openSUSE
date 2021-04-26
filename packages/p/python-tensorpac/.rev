@@ -24,4 +24,12 @@
     <comment>- skip python 3.6 (scipy)</comment>
     <requestid>871494</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9e7fd471dd53c020e2b912f1b8d53d17</srcmd5>
+    <version>0.6.5</version>
+    <time>1619447988</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888436</requestid>
+  </revision>
 </revisionlist>

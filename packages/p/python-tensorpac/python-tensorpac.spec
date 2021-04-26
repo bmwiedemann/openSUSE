@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-tensorpac
-Version:        0.6.3
+Version:        0.6.5
 Release:        0
 Summary:        Tensor-based phase-Amplitude coupling package
 License:        BSD-3-Clause
@@ -67,7 +67,13 @@ rm -rf */*/__pycache__
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# optional python-mne is not available
+donttest="     (TestPac and test_fit)"
+donttest+=" or (TestPac and test_pac_comodulogram)"
+donttest+=" or (TestErpac and test_fit)"
+donttest+=" or (TestErpac and test_filterfit)"
+donttest+=" or (TestErpac and test_functional_erpac)"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.rst
