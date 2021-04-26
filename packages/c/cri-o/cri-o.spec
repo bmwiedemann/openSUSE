@@ -24,7 +24,7 @@
 %define project github.com/cri-o/cri-o
 # Define macros for further referenced sources
 Name:           cri-o
-Version:        1.20.2
+Version:        1.21.0
 Release:        0
 Summary:        OCI-based implementation of Kubernetes Container Runtime Interface
 License:        Apache-2.0
@@ -37,10 +37,6 @@ Source3:        sysconfig.crio
 Source4:        crio.conf
 Source5:        cri-o-rpmlintrc
 Source6:        kubelet.env
-# See https://github.com/containers/common/commit/27a6951e3644d9031a79819abb1bcb2bba8486ca
-# OBS has no zoneinfo, until the above patch comes to cri-o
-# we need to keep this one otherwise crio build fails.
-Patch1:         config-fix-tz.patch
 BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel-static
@@ -87,7 +83,6 @@ This package provides the CRI-O container runtime configuration for kubeadm
 
 %prep
 %setup -qa1
-%patch1 -p1
 
 %build
 # Keep cgroupfs as the default cgroup manager for SLE15 builds

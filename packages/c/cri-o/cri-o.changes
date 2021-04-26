@@ -1,4 +1,242 @@
 -------------------------------------------------------------------
+Thu Apr 15 16:39:03 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.21.0:
+  * bump to v1.21.0
+  * config: drop registries field as it is no longer supported
+  * Revert "test: drop unneeded sed statement"
+  * WIP: add debug print
+  * test: drop unneeded sed statement
+  * config: fix template insecure_registries field
+  * config: drop commented config lines
+  * build(deps): bump google.golang.org/grpc from 1.36.1 to 1.37.0
+  * Bump OpenShift CI cri-tools version and fix build path
+  * build(deps): bump github.com/containers/image/v5 from 5.10.5 to 5.11.0
+  * Bump cri-tools to v1.21.0
+  * Update Kubernetes to v1.21.0
+  * Add container out of memory metrics
+  * [CLI] "crio config" only prints the fields that are differet than the default.
+  * Set short name mode to permissive
+  * docs-validation: update to handle workloads
+  * Fix unnecessary conversion lint report
+  * add tests for workloads
+  * integrate with server
+  * config: update workloads structure
+  * Clarify release cadence and version skew
+  * Add correct start time to initial log output
+  * Add support for workload settings
+  * refactor handling of allowed_annotations
+  * Do not push main binary into cachix cache
+  * resourcestore: introduce ResourceCleaner
+  * Use internal logging when context available
+  * build(deps): bump github.com/coreos/go-systemd/v22 from 22.3.0 to 22.3.1
+  * server: remove dead code
+  * sandbox: use defined CRI type for NamespaceOption
+  * config: remove dead code
+  * oci: remove dead code
+  * lib: remove dead code
+  * build(deps): bump github.com/containers/podman/v3
+  * build(deps): bump k8s.io/client-go from 0.20.1 to 0.20.5
+  * update pause image to 3.5 for non-root
+  * build(deps): bump github.com/soheilhy/cmux from 0.1.4 to 0.1.5
+  * build(deps): bump google.golang.org/grpc from 1.34.0 to 1.36.1
+  * build(deps): bump github.com/containers/buildah from 1.19.8 to 1.20.0
+  * build(deps): bump github.com/prometheus/client_golang
+  * build(deps): bump github.com/godbus/dbus/v5 from 5.0.3 to 5.0.4
+  * build(deps): bump k8s.io/cri-api from 0.20.1 to 0.20.5
+  * build(deps): bump github.com/containers/podman/v3
+  * build(deps): bump k8s.io/kubernetes from 1.13.0 to 1.20.5
+  * crio-wipe: only clear storage if CleanShutdownFile is supported
+  * Add static bundle node e2e tests to GitHub actions
+  * Reload the main config file when reloading configs
+  * crio wipe: only completely wipe storage after a reboot
+  * Bump static binary dependency versions
+  * Add dependabot config file
+  * runtimeVM: Fix shimv2 binary name construction
+  * config,runtimeVM: Improve runtime_path validation
+  * oci_test: Add basic coverage to "RuntimeType()"
+  * oci_test: Add basic coverage to "privileged_without_host_devices"
+  * oci_test: Leave invalidRuntime on its own line
+  * tweak scope dependencies
+  * Do not return `<none>` placeholders for images any more
+  * Fix invalid libcontainer GetExecUser call
+  * Update dependencies
+  * config: Don't fail if the non default runtime doesn't pass validation
+  * Remove check for CI env variable for release-notes and dependencies
+  * cgmgr: add CreateSandboxCgroup method
+  * inspect: send container PID for dropped infra sandbox
+  * oci: specify sbox id when creating spoofed container
+  * Run GitHub actions on release branches
+  * Update bats to v1.3.0 (#4661)
+  * use happy-eyeballs for port-forwarding
+  * fix mock issues
+  * fix lint issues
+  * install: drop support matrix and update instructions
+  * do not store context in runtime vm
+  * Fix lint GitHub action
+  * pkg/container: take process args
+  * Use and publish version marker for CRI-O
+  * Add GitHub API pages support to `get` script
+  * add libbtrfs-dev to unit tests
+  * Revert "server: use IsAlive() more"
+  * Fix GitHub actions cache key
+  * Bug 1881694: Add pull source as info level log
+  * test: use latest conmon
+  * runtime_vm: Create the global fifo inside the runtime root path
+  * stats: fix log spam
+  * Support CRI seccomp security profiles
+  * oci: add unit tests for stop timeouts
+  * oci: don't update stop timeout if it's earlier than old one
+  * oci: update timeout even if we're ignoring kill
+  * oci: don't wait too long on a long stop
+  * oci: check process is still around with kill
+  * Add integration test for started/finished container time
+  * fix: Don't set `image-endpoint` in crictl config
+  * feat: Add CLI option to set registries.conf.d path
+  * Add allowed io.containers.trace-syscall annotation to static bundle
+  * Make `get` script independent from `make`
+  * test: correct the env variable for dropping the infra container
+  * Add metric to grab latency of individual cri calls
+  * Fix `get` script commit SHA retrieval
+  * Add arm64 static build to GitHub actions
+  * Fix GitHub actions workflow syntax
+  * Updates yq commnands for yq v4
+  * gh-actions:  also run on release branches
+  * pkg/sandbox: add InitInfraContainer endpoint
+  * test: reconfigure how runtimes are passed in
+  * test: add runtime() function
+  * sandbox/container: drop context
+  * test: drop workaround for crun
+  * pkg/sandbox: cleanup unused funcs/files
+  * fix doc log_level adding trace option
+  * Fix oci container update config
+  * Update e2e-aws logic for 4.8
+  * nsmgr: take Initalize method
+  * Switch to go 1.16 for GitHub actions and remove scripts/build-test-image
+  * config: remove and create the correct dir
+  * Update nix pin with `make nixpkgs`
+  * server: mount cgroup with rslave
+  * crio wipe: ensure a clean shutdown
+  * Move integration tests to GitHub actions
+  * Run release-notes GitHub action after dependencies
+  * Bumps github.com/containers/ocicrypt from 1.0.3 to 1.1.0.
+  * config/node: refactor checking for CollectMode
+  * Fix GitHub actions checkout permissions
+  * change binary version to 1.21.0-dev
+  * Set conmon scope KillSignal to SIGPIPE
+  * Move repo modification jobs to GitHub actions
+  * bump protobuf to 1.3.2
+  * Log container stop timeout
+  * ResourceStore: add close method
+  * Allow seccomp hook tracing for separate containers
+  * ResourceStore: extend tests to test WatcherForResource
+  * ResourceStore: update tests to all run
+  * ResourceStore: update docs for WatcherForResource
+  * ResourceStore: don't segfault
+  * server: support setting raw unified cgroupv2 settings
+  * vendor: update runtime-specs
+  * cgroup: implement fix for swap memcg on cgroup v2
+  * server: leave swap mem limit unset if not supported
+  * test: skip ServiceAccountIssuerDiscovery test
+  * hostport manager clean up host ports
+  * allows stream timeout to be set from config
+  * config: pre-create pinns directories
+  * Bump containers image to v5.10.1
+  * Move unit tests to GitHub actions
+  * Move go1.14 and 386 builds to GitHub actions
+  * set kubelet node IP
+  * Fix validate-completions GitHub action
+  * Add integration test for pprof over unix socket
+  * Add a flag for enabling profile over unix socket
+  * Lookup echo command for unit tests
+  * Move static build to GitHub actions
+  * pinns: Fixup 'pwarn' output to match 'pwarnf' output
+  * pinns: Don't put errno in the exit message for argument checks
+  * nsmgr: use host option
+  * nsmgr: Use config struct for NewPodNamespaces
+  * pinns: support pinning host ns
+  * Remove implicit GitHub action `name` fields
+  * Move docs and completions validation to GitHub actions
+  * Bump golangci-lint to v1.35.2
+  * Make config tests work rootless
+  * Make rootless namespace unit test execution work
+  * config: fix template to show infra_ctr_cpus option
+  * Do not log file path on ioutil.ReadFile
+  * fixes version_test.go
+  * Close the stdin/tty on server start to avoid shortname prompts
+  * docs: fix http link
+  * docs: update kubeadm tutorial
+  * Fix `make lint`
+  * Return runtime API version based on protocol
+  * Update compatibility matrix to mention v1.20
+  * add method comment
+  * restore irqbalance config only on system restart
+  * add blurb in doc and more informative name for unit tests
+  * add is-enabled check for irqbalance service
+  * fix unit tests
+  * add unit tests
+  * fix bash/zsh completions
+  * fix the docs validation
+  * handle irqbalance service
+  * runtime_vm: set finished time when containers stop
+  * nsmgr: fix/add calls to GetNamespace
+  * managed namespaces: move to dedicated package
+  * Provide integration test for infra-ctr-cpuset feature
+  * Set CPUs for the infra containers during the creation
+  * Add shell completion for infra-containers-cpu flag
+  * Add new infra-containers-cpus to the CLI and config file
+  * refine `registries` deprecation message
+  * Circle CI: install test/registries.conf
+  * crio.8.md: runroot defaults to /run/containers/storage
+  * support short-name aliases
+  * pull: do check for blocked registries
+  * config: deprecate registries
+  * Rollback gocapability vendor bump
+  * vendor: bump containers/storage to v1.24.4
+  * Update nix pin with `make nixpkgs`
+  * contrib/test/int: add Kata Containers runtime support
+  * contrib/test/int: enforce linking in parallel build process
+  * contrib/test/int: build parallel from sources in CentOS
+  * contrib/test/int: allow to skip user namespace testing
+  * contrib/test/int: allow to configure test timeout
+  * Capitalize Kubernetes
+  * modify the error url of podctl
+  * Add Digital Science to adopters
+  * crio.service: Request to be run before kubelet.service
+  * pinns: make binary not always static
+  * server: use IsAlive() more
+  * Support CRI v1 and v1alpha2 at the same time
+  * drop support for ManageNSLifecycle
+  * test/timeout.bats: increase timeout to fix flakes
+  * release-notes: fix flags
+  * test/timeout.bats: fix comments
+  * int/resourcestore: fix comment about Put
+  * test/image.bats: simplify some loops
+  * test/helpers.bats: simplify cleanup_*
+  * contrib/test/int: rm node-e2e test
+  * contrib/test/int: fix iptables rule
+  * critest: add unix:// prefix
+  * critest.yml: don't skip test on RHEL
+  * test: add timeout.bats
+  * bump network creation timeout to 5 minutes
+  * resourcecache: add watcher idiom
+  * server: use ResourceCache instead of dropping progress
+  * Add unit tests for ResourceCache
+  * Introduce ResourceCache
+  * moves shmsize to a handler allowed annotation
+  * image pull: close progress chan
+  * test/ctr.bats: fix a "ctr execsync" flake
+  * Fix the functions' name in completions
+  * make: drop link to crio.service
+  * test: rm "run ctr with image with Config.Volumes"
+  * test: add no-pull-on-run=true
+  * test/devices.bats: fix "additional device permissions" case
+  * test/devices.bats: rm unneeded run
+  * test/devices.bats: skip earlier
+  * Bandwidht CNI plugin reserved an upper limit on burst,in which banned include boundary. See: https://github.com/containernetworking/plugins/blob/v0.8.7/plugins/meta/bandwidth/main.go#L113
+- Drop config-fix-tz.patch as upstream dependency was patched
+
+-------------------------------------------------------------------
 Fri Apr 09 21:10:01 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 1.20.2:
