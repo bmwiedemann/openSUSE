@@ -33,13 +33,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       10
+%global updatever       11
 %global patchver        0
-%global datever         2021-01-19
+%global datever         2021-04-20
 %global buildver        9
 %global hg_project      jdk-updates
 %global hg_repository   jdk11u
-%global hg_revision     8b3498547395
+%global hg_revision     15862747ee15
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -281,12 +281,6 @@ BuildRequires:  pkgconfig(gthread-2.0)
 # Requires rest of java
 Requires:       %{name}-headless = %{version}-%{release}
 Requires:       fontconfig
-# mozilla-nss has to be installed to prevent
-# java.security.ProviderException: Could not initialize NSS
-# ...
-# java.io.FileNotFoundException: /usr/lib64/libnss3.so
-#was bnc#634793
-Requires:       mozilla-nss
 Requires(post): file
 # Standard JPackage base provides.
 Provides:       java = %{javaver}
@@ -352,6 +346,12 @@ Summary:        OpenJDK %{featurever} Runtime Environment
 Group:          Development/Languages/Java
 Requires:       jpackage-utils
 Requires(post): java-ca-certificates
+# mozilla-nss has to be installed to prevent
+# java.security.ProviderException: Could not initialize NSS
+# ...
+# java.io.FileNotFoundException: /usr/lib64/libnss3.so
+#was bnc#634793
+Requires:       mozilla-nss
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.

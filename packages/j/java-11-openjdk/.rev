@@ -343,4 +343,12 @@
     <comment>Allow using NSS as crypto provider</comment>
     <requestid>880084</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>6ed84912eddc7556000ed26cce4f38eb</srcmd5>
+    <version>11.0.11.0</version>
+    <time>1619447906</time>
+    <user>dimstar_suse</user>
+    <comment>Oracle April 2021 CPU fixes</comment>
+    <requestid>887256</requestid>
+  </revision>
 </revisionlist>
