@@ -7,4 +7,16 @@
     <comment>Required by the new version python-wbem (replaces python-yamlordereddictloader, which is deprecated).</comment>
     <requestid>755219</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b453db7af22a18bde1f27ad2d4b94fc6</srcmd5>
+    <version>1.0.0</version>
+    <time>1619447929</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * First stable release.
+  * Main change is that it returns always an OrderedDict, even for Python &gt;=
+    3.7 for consistency
+- remove happy_utf8.patch: upstream</comment>
+    <requestid>887890</requestid>
+  </revision>
 </revisionlist>

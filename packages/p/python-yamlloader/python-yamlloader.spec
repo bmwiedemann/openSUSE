@@ -1,7 +1,7 @@
 #
 # spec file for package python-yamlloader
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-yamlloader
-Version:        0.5.5
+Version:        1.0.0
 Release:        0
 License:        MIT
 Summary:        Ordered YAML loader and dumper for PyYAML
-Url:            https://github.com/Phynix/yamlloader
+URL:            https://github.com/Phynix/yamlloader
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/y/yamlloader/yamlloader-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM happy_utf8.patch gh#Phynix/yamlloader#16 mcepl@suse.com
-# Python 3.6 shouldn’t fail on opening utf8 encoded README.rst
-Patch0:         happy_utf8.patch
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module PyYAML}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 
 %python_subpackages
