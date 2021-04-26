@@ -17,8 +17,10 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-# Features available: mbed-crypto-provider, pkcs11-provider, tpm-provider, all-providers
-%define features "all-providers"
+# Features available:
+# all-providers = ["tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "cryptoauthlib-provider"]
+# all-authenticators = ["direct-authenticator", "unix-peer-credentials-authenticator"]
+%define features "all-authenticators,all-providers"
 %{?systemd_ordering}
 Name:           parsec
 Version:        0.7.2
@@ -48,6 +50,10 @@ Recommends:     opensc
 %sysusers_requires
 # /dev/tpm* are owned by tss user
 Requires(pre):  system-user-tss
+# tpm2-0-tss holds the udev rule to make /dev/tpm* owned by tss user
+Requires:       tpm2-0-tss
+# Without libtss2-tcti-device0 parsec fails to start TPM properly
+Requires:       libtss2-tcti-device0
 ExcludeArch:    armv6l armv6hl
 
 %description
@@ -57,12 +63,12 @@ This abstraction layer keeps workloads decoupled from physical platform details,
 enabling cloud-native delivery flows within the data center and at the edge.
 
 %prep
-%setup -qa1
+%autosetup -p1 -a1
 rm -rf .cargo && mkdir .cargo
 cp %{SOURCE2} .cargo/config
 # Enable all providers
 sed -i -e 's#default = \["unix-peer-credentials-authenticator"\]##' Cargo.toml
-echo 'default = ["unix-peer-credentials-authenticator", "all-providers"]' >> Cargo.toml
+echo 'default = ["all-authenticators", "all-providers"]' >> Cargo.toml
 
 %build
 export PROTOC=%{_bindir}/protoc

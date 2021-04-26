@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 14 14:54:32 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Requires 'tpm2-0-tss' as it holds the udev rule to make /dev/tpm*
+  owned by tss user
+- Requires 'libtss2-tcti-device0' as it is required to start parsec
+  with TPM support
+
+-------------------------------------------------------------------
+Wed Apr  7 07:42:24 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable all authenticators which adds 'direct-authenticator'
+- Add CryptoAuthLib template (disabled) in config.toml
+
+-------------------------------------------------------------------
 Thu Apr  1 10:19:21 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Make 'parsec' user part of 'tss' group to access /dev/tpm* devices

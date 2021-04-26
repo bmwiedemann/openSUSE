@@ -29,3 +29,11 @@ key_info_manager = "on-disk-manager"
 #key_info_manager = "on-disk-manager"
 #tcti = "device:/dev/tpmrm0"
 #owner_hierarchy_auth = ""
+
+#[[provider]]
+#provider_type = "CryptoAuthLib"
+#key_info_manager = "on-disk-manager"
+#device_type = "atecc508a"
+#iface_type = "i2c"
+#wake_delay = 1500
+#rx_retries = 20
