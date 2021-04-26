@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 25 03:31:24 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- update to version 3.12.1
+  * Fixed wrong uv and Ng for grid intersector in robust mode for AVX.
+  * Removed optimizations for Knights Landing.
+  * Upgrading release builds to use oneTBB 2021.1.1
+
+-------------------------------------------------------------------
 Thu Oct 15 11:06:16 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - update to version 3.12.1
