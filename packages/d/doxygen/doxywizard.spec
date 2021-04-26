@@ -61,8 +61,6 @@ configuration files.
 %patch3 -p1
 
 %build
-export CFLAGS="%{optflags} -fPIC"
-export CXXFLAGS="%{optflags} -fPIC"
 %cmake \
     -Dbuild_wizard=ON \
 %if 0%{?suse_version} <= 1500

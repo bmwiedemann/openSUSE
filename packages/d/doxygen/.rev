@@ -1000,4 +1000,14 @@
   Refactorings and cleanups (forwarded request 866678 from dirkmueller)</comment>
     <requestid>866736</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>c47c35acc48fcc9e8b8054221b0c0673</srcmd5>
+    <version>1.9.1</version>
+    <time>1619447910</time>
+    <user>dimstar_suse</user>
+    <comment>- doxywizard: remove explicit -fPIC from build flags, because this breaks our
+  gcc-PIE compiler profile (bsc#1184122), resulting in a non-PIE
+  /usr/bin/doxywizard. (forwarded request 887254 from mgerstner)</comment>
+    <requestid>887257</requestid>
+  </revision>
 </revisionlist>
