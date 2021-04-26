@@ -219,4 +219,12 @@
   switches from indentation by spaces to a nest-level number.</comment>
     <requestid>867800</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>57be121f85c1efd724eaec9521332c8e</srcmd5>
+    <version>20201201</version>
+    <time>1619447915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888310</requestid>
+  </revision>
 </revisionlist>

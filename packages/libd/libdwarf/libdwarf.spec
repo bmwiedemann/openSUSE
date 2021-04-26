@@ -20,7 +20,7 @@ Name:           libdwarf
 Version:        20201201
 Release:        0
 Summary:        Access DWARF debugging information
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://prevanders.net/dwarf.html
 Source:         https://prevanders.net/%{name}-%{version}.tar.gz
@@ -92,7 +92,7 @@ Documentation for libdwarf.
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags}"
-CFLAGS="$CFLAGS -fPIC" %configure --enable-shared
+CFLAGS="$CFLAGS -fPIC" LDFLAGS="-pie" %configure --enable-shared
 %make_build
 
 %install
