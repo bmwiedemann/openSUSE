@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Thu Feb 25 07:50:14 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.8.1
+  * Merge deepin-screenshot
+  * Update dtk APIs
+  * Fix bugs
+
+-------------------------------------------------------------------
+Wed Nov 20 01:58:26 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Drop libqt4-linguist
+
+-------------------------------------------------------------------
+Tue Jul  9 03:59:56 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.8.0
+  * Fix cannot select window on other screen
+  * Fix Can't select window correctly
+  * Fix multiple screens cannot be recorded after set window scale
+  * Auto pull translation files from transifex
+- Fix translations build in Tumbleweed, use libqt4-linguist to workaround
+
+-------------------------------------------------------------------
+Sun Mar 24 11:55:11 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2.7.7
+  * Add displayNumber to fixed that ffmpe will crash if multi-user 
+    with x11grab display argument :0.0
+  * update run depend
+  * use DISPLAY directly
+  * desktop: add generic name.
+
+-------------------------------------------------------------------
+Thu Mar 22 14:27:48 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 2.7.3
+  * Fix tooltip not above on screen-recorder window
+  * Support flv format recording
+  * Synchronous translations from transifex.com
+  * Support deepin-manual newest version
+  * Fix error that GIF's content is not complete
+  * Fix GIF file break when stop recording less than 2 seconds
+  * Fix zero byte mp4 problem
+  * Use -vf scale fix "division by 2" error, and now we can use yuv420p pix_fmt
+    to make mp4 play on mobile phone
+  * Add mkv_framerate and mp4_framerate customize options
+  * Don't need append char to gif end since gif exit process is correct now,
+    otherwise gif file will break if you stop recording too fast. ;)
+  * Synchronous translations.
+
+-------------------------------------------------------------------
+Fri Dec  1 13:36:06 UTC 2017 - hillwood@opensuse.org
+
+- Update to 2.6.5.1 
+  * Add FlatPak support: single instance, keystroke dbus service
+  * Add composite warning dialog when window manager not support composite
+  * Fix GIF record area is not correctly under HiDPI
+  * Install dbus service
+  Fix bugs:
+  * Bypass window manager
+  * Flatpak: No composite warning dialog
+  * Hidpi: Gif record area calculated wrong
+
+-------------------------------------------------------------------
+Mon Nov  6 14:06:55 UTC 2017 - hillwood@opensuse.org
+
+- Cleanup spec
+- Add Group tag
+- Split language package 
+
+-------------------------------------------------------------------
+Tue Oct  3 15:29:45 UTC 2017 - sensor.wen@gmail.com
+
+- Initial package.
