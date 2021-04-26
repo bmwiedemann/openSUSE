@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Thu Apr 15 08:39:18 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add deepin-control-center-no-user-experience.patch: Disable User
+  Experience Program 
+
+-------------------------------------------------------------------
+Tue Apr 13 06:50:53 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.17
+  * Optimize userface
+  * Optimize touchscreen
+  * Fix bug
+  * Update translations
+
+-------------------------------------------------------------------
+Sat Apr 10 15:12:34 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Use qdbus-qt5 instead of qdbus 
+
+-------------------------------------------------------------------
+Tue Mar 16 12:52:13 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.9
+  * Add important filelist
+  * Fix bugs
+  * Update translations
+  * add search support for privacy policy page 
+
+-------------------------------------------------------------------
+Tue Feb 23 12:17:03 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.3.0.82
+  * The fresh ui
+  * Fix bugs 
+
+-------------------------------------------------------------------
+Sat Jul 20 13:54:09 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 4.10.14
+  * Fix ldap: login not enabled after joining domain
+  * Fix nav: missing disable systeminfo module
+  * Fix sync: typo DISALBE -> DISABLE
+  * Fix missing build macro
+  * Fix remove network check
+  * navbar: avoid tip grab focus
+  * Fix accounts: cannot modify user password
+  * Fix network: Abnormal interface of hostpot
+  * update license
+  * Sync: add config files
+  * Fix incorrect layout of various pages
+  * Fix set word wrap on switch widget construction
+  * Fix sync bug
+  * Fix missing smarttips spacing
+  * Fix switch widget caption text overflows
+  * Fix dbus method 'rect' returns wrong results after screen rotation
+  * Fix dbus: check windowhandle
+  * Add sync
+  * long processor name screws up layout
+  * Fix fprintd: refresh device when enter user detail page again
+  * Fix accounts: not hide error tip
+  * Fix sw: missing mieee
+  * Fix missing polkit policy file
+  * Fix display: Adjust the resolution when merging the screen, destroy the merge
+  * Shortcut: add restore defaults button
+  * Fix Sound: typo Logout
+  * Fix Update notifications are not hidden
+  * Fix network: refresh loading icon not align center
+  * Fix crash when startup in terminal
+  * Fix rotate dialog postion is wrong in 2D mode
+  * Fix ipv4 subnet mask valid checkup
+  * Fix wireless activating indicator not align in vertical
+  * Fix display: did not check the multi scale ratio
+- Add fix-redefinition-error.patch, fix build.
+ 
+-------------------------------------------------------------------
+Wed Apr 17 11:57:41 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 4.9.13
+  * Fix wifi list sort algorithm
+  * Fix miracast: wrong display nodevice item
+  * Fix sound: missing page title
+  * Fix display: exit rotate disloag after press Esc key
+  * Multiple screen can not show
+  * Display: use a profile to control multi-screen scale ratio
+  * Sound: hide some sound effect when not laptop
+  * Fix main window geometry is wrong
+  * Fix Sound: skip not need values
+  * Fix arm: disable power module
+  * Fix hide option for individual scaling unless extend or custom configuration
+    is in use
+  * Fix keep the lenght of ssid among 1-32
+  * Fix compile error caused by dtk
+  * Fix translate failed in searchinput widget
+  * Fix reboot-reminder-dialog install path error
+  * Initial work on scaling monitors individually
+
+-------------------------------------------------------------------
+Fri Mar 16 02:45:14 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 4.4.0
+  * Fix bug.
+  * Features update for accounts, display, frame, keyboard and so on.
+    Please see more detail in CHANGELOG.md.
+
+-------------------------------------------------------------------
+Thu Dec  7 12:41:10 UTC 2017 - hillwood@opensuse.org
+
+- Add openSUSE log and information in system information.
+
+-------------------------------------------------------------------
+Thu Nov 30 08:33:40 UTC 2017 - hillwood@opensuse.org
+
+- Update 4.3.7
+  * update:  not update checkupdate status
+  * display:  initializing value
+  * network:  update select svg
+  * account:  user name is empty when display name
+  * display:  replace DImageButton to QLabel of brightnessitem
+  * network:  add show password button
+  * widget:  add passwdeditwidget
+  * file:  pics permission error
+  * etc ....
+  * See more in CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Nov 17 08:44:57 UTC 2017 - hillwood@opensuse.org
+
+- Cleanup spec.
+  * Add Group tag.
+  * Use %suse_update_desktop_file.
+- Split lang, data and plugins package.
+
+-------------------------------------------------------------------
+Tue Oct  3 15:29:45 UTC 2017 - sensor.wen@gmail.com
+
+- Initial package.

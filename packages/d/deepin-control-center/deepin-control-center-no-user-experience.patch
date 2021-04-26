@@ -1,0 +1,13 @@
+diff -Nur dde-control-center-5.4.17/src/frame/window/modules/commoninfo/commoninfowidget.cpp dde-control-center-5.4.17-new/src/frame/window/modules/commoninfo/commoninfowidget.cpp
+--- dde-control-center-5.4.17/src/frame/window/modules/commoninfo/commoninfowidget.cpp	2021-03-25 16:26:22.000000000 +0800
++++ dde-control-center-5.4.17-new/src/frame/window/modules/commoninfo/commoninfowidget.cpp	2021-04-15 16:54:00.008247043 +0800
+@@ -108,9 +108,6 @@
+             m_itemList.append({"dcc_developer_mode", tr("Developer Mode"),
+                                QMetaMethod::fromSignal(&CommonInfoWidget::requestShowDeveloperModeWidget), nullptr, "developerMode"});
+         }
+-        //~ contents_path /commoninfo/User Experience Program
+-        m_itemList.append({"dcc_ue_plan", tr("User Experience Program"),
+-                           QMetaMethod::fromSignal(&CommonInfoWidget::requestShowUEPlanWidget), nullptr, "userExperienceProgram"});
+ 
+ #if 0
+         m_itemList.append({"", tr("Tablet Mode"),
