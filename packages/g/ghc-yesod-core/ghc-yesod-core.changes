@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr  9 08:54:53 UTC 2021 - psimons@suse.com
+
+- Update yesod-core to version 1.6.19.0.
+  ## 1.6.19.0
+
+  * Change order of priority in `languages`[#1721](https://github.com/yesodweb/yesod/pull/1721)
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
