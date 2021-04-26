@@ -403,7 +403,7 @@ Prefer: man
 Prefer: go -go1.13
 
 # have choice for kubernetes-kubelet-common (de-prefer the old versions, ensuring to have a new unresolvable when a new version shows up)
-Prefer: -kubernetes1.18-kubelet-common -kubernetes1.19-kubelet-common
+Prefer: -kubernetes1.18-kubelet-common -kubernetes1.19-kubelet-common -kubernetes1.20-kubelet-common
 
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
 Prefer: python3-tornado -python3-tornado4
