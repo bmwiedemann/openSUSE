@@ -53,4 +53,12 @@
   k8s 1.20</comment>
     <requestid>854498</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>b76c5c32569b412143f85172532e4fed</srcmd5>
+    <version>3.4.13</version>
+    <time>1619447918</time>
+    <user>dimstar_suse</user>
+    <comment>k8s 1.21 and related submissions need to be staged together</comment>
+    <requestid>885009</requestid>
+  </revision>
 </revisionlist>

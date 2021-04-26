@@ -1,7 +1,7 @@
 #
 # spec file for package etcd-for-k8s1.19
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,8 +37,9 @@ Conflicts:      etcd
 Conflicts:      etcdctl
 Provides:       etcd-for-k8s = %{version}
 Conflicts:      etcd-for-k8s
-# k8s 1.20 uses same etcd
+# k8s 1.20 and 1.21 uses same etcd
 Provides:       etcd-for-k8s1.20
+Provides:       etcd-for-k8s1.21
 
 %description
 etcd is a distributed, consistent key-value store for shared configuration and
@@ -46,7 +47,7 @@ service discovery. This package contains different versions of etcd and
 etcdctl for the kubernetes container image.
 
 %prep
-%setup -q -n etcd-%{version} 
+%setup -q -n etcd-%{version}
 
 %build
 # Can't use goprep and gobuild macros due to the packagename and projectname confusing things
