@@ -704,4 +704,14 @@
     <comment>- Bump kubernetes to 1.20.2 and 1.19.7</comment>
     <requestid>865037</requestid>
   </revision>
+  <revision rev="76" vrev="16">
+    <srcmd5>cc60f978803570fd581f2546fd0e4f00</srcmd5>
+    <version>unknown</version>
+    <time>1619447919</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove BuildRequires for Go, bump kubernetes to 1.21.0 and 1.20.5 
+
+- add BuildRequires for go &gt;= 1.15.5, to align with kubernetes1.20 package</comment>
+    <requestid>885156</requestid>
+  </revision>
 </revisionlist>
