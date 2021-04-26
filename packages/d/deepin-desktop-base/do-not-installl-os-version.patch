@@ -1,53 +1,45 @@
-diff -Nur deepin-desktop-base-2020.12.09/Makefile deepin-desktop-base-2020.12.09-new/Makefile
---- deepin-desktop-base-2020.12.09/Makefile	2020-12-09 16:21:25.000000000 +0800
-+++ deepin-desktop-base-2020.12.09-new/Makefile	2021-02-15 16:51:18.151587117 +0800
-@@ -15,29 +15,32 @@
+diff -Nur deepin-desktop-base-2021.3.10/Makefile deepin-desktop-base-2021.3.10-new/Makefile
+--- deepin-desktop-base-2021.3.10/Makefile	2021-03-10 16:14:25.000000000 +0800
++++ deepin-desktop-base-2021.3.10-new/Makefile	2021-04-15 21:31:51.265094237 +0800
+@@ -14,23 +14,19 @@
+         endif
          ifeq (${ARCH_BUILD}, x86_64)
  		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version.in > files/desktop-version
- 		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version-server.in > files/desktop-version-server
 -		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/os-version-amd > files/os-version
 -        else ifeq (${ARCH_BUILD}, x86_32)
-+        else ifeq (${ARCH_BUILD}, ppc64le)
- 		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version.in > files/desktop-version
- 		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version-server.in > files/desktop-version-server
--		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/os-version-amd > files/os-version
-+#		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/os-version-amd > files/os-version
 +        else ifeq (${ARCH_BUILD}, i686)
 +		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version.in > files/desktop-version
-+		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version-server.in > files/desktop-version-server
-+#		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/os-version-amd > files/os-version
++        else ifeq (${ARCH_BUILD}, ppc64le)
+ 		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version.in > files/desktop-version
+-		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/os-version-amd > files/os-version
          else ifeq (${ARCH_BUILD}, mipsel)
  		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version-loongson.in > files/desktop-version
- 		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version-loongson-server.in > files/desktop-version-server
 -		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/os-version-loongson > files/os-version
-+#		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/os-version-loongson > files/os-version
          else ifeq (${ARCH_BUILD}, mips64)
  		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version-loongson.in > files/desktop-version
- 		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version-loongson-server.in > files/desktop-version-server
--		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/os-version-loogson-server > files/os-version
-+#		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/os-version-loogson-server > files/os-version
          else ifeq (${ARCH_BUILD}, sw_64)
  		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version-sw.in > files/desktop-version
- 		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version-sw-server.in > files/desktop-version-server
 -		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/os-version-sw > files/os-version
-+#		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/os-version-sw > files/os-version
          else ifeq (${ARCH_BUILD}, aarch64)
  		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version-arm.in > files/desktop-version
- 		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version-arm-server.in > files/desktop-version-server
 -		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/os-version-arm > files/os-version
-+#		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/os-version-arm > files/os-version
          endif
 -	sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/lsb-release.in > files/lsb-release
-+#	sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/lsb-release.in > files/lsb-release
  
  install:
  	mkdir -p ${DESTDIR}/etc
-@@ -49,7 +52,7 @@
- 	install -Dm644 files/i18n_dependent.json  ${DESTDIR}/usr/share/i18n/i18n_dependent.json
- 	install -Dm644 files/language_info.json  ${DESTDIR}/usr/share/i18n/language_info.json
+@@ -44,9 +40,7 @@
  	install -Dm644 files/desktop-version ${DESTDIR}/usr/lib/deepin/desktop-version
--	install -Dm644 files/lsb-release     ${DESTDIR}/etc/lsb-release
-+#	install -Dm644 files/lsb-release     ${DESTDIR}/etc/lsb-release
+ 	install -Dm644 files/lsb-release     ${DESTDIR}/etc/lsb-release
  	install -Dm644 files/appstore.json     ${DESTDIR}/etc/appstore.json
- 	install -Dm644 files/deepin-logo.png ${DESTDIR}/usr/share/plymouth/deepin-logo.png
+-	install -Dm644 files/deepin-logo.png ${DESTDIR}/usr/share/plymouth/deepin-logo.png
  	#install -Dm644 files/desktop.jpg     ${DESTDIR}/usr/share/backgrounds/deepin/desktop.jpg
+-	install -Dm644 files/uos_logo.svg     ${DESTDIR}/usr/share/deepin/uos_logo.svg
+ 	#install -Dm644 files/eff98ab2b2d91574a79fabd2b79eb7a9.jpg ${DESTDIR}/var/cache/image-blur/eff98ab2b2d91574a79fabd2b79eb7a9.jpg
+ 	[ -e files/systemd.conf ] && install -Dm644 files/systemd.conf ${DESTDIR}/etc/systemd/system.conf.d/deepin-base.conf
+ 	[ -e files/logind.conf ] && install -Dm644 files/logind.conf ${DESTDIR}/etc/systemd/logind.conf.d/deepin-base.conf
+@@ -54,4 +48,3 @@
+ 	install -Dm644 files/Deepin.mirrors     ${DESTDIR}/usr/share/python-apt/templates/Deepin.mirrors
+ clean:
+ 	rm -f files/desktop-version
+-	rm -f files/lsb-release

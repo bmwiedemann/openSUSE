@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 15 12:46:09 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2021.3.10, Deepin version is 20.2
+- Update add-suse-info.patch for distribution.info
+
+-------------------------------------------------------------------
 Mon Feb 15 07:43:50 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add do-not-installl-os-version.patch. Don't install deepin os information 
