@@ -1,12 +1,13 @@
---- a/tests/test_none_keys.py
-+++ b/tests/test_none_keys.py
+Index: immutables-0.15/tests/test_none_keys.py
+===================================================================
+--- immutables-0.15.orig/tests/test_none_keys.py
++++ immutables-0.15/tests/test_none_keys.py
 @@ -1,8 +1,10 @@
-+import sys
  import unittest
++import sys
  
  from immutables.map import map_hash, map_mask, Map as PyMap
--from immutables._testutils import *  # NoQA
-+from immutables._testutils import HashKey  # NoQA
+ from immutables._testutils import HashKey
  
 +is_32bits = sys.maxsize <= 2**32  # 32bit-dness
  

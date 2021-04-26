@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 22 20:28:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15
+  * python 3.9 support 
+
+-------------------------------------------------------------------
 Mon Dec  7 15:34:37 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add skip_32bit_tests.patch (gh#MagicStack/immutables#53) to skip tests
