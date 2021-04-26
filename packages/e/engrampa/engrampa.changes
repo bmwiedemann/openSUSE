@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 26 10:54:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.24.2:
+  * Translations update
+  * ar: fix filename in file list
+  * rar 6.00: fix listing archive content with encrypted file list
+  * fr-archive: Fix memory leak
+
+-------------------------------------------------------------------
 Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.1:
