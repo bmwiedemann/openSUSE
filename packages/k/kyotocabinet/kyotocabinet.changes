@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 21 06:51:44 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add yet an other patch kyotocabinet-pie.patch
+  * link all executables as pie (bsc#1185033) 
+
+-------------------------------------------------------------------
 Thu Mar 12 11:45:45 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.2.77:

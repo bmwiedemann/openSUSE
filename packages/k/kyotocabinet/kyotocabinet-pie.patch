@@ -1,0 +1,15 @@
+---
+ configure.in |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/configure.in
++++ b/configure.in	2021-04-21 06:45:28.707199498 +0000
+@@ -41,7 +41,7 @@ MYCPPFLAGS="-I. -I\$(INCLUDEDIR)"
+ MYCPPFLAGS="$MYCPPFLAGS -DNDEBUG -D_GNU_SOURCE=1"
+ MYCPPFLAGS="$MYCPPFLAGS -D_FILE_OFFSET_BITS=64 -D_REENTRANT -D__EXTENSIONS__"
+ MYLDFLAGS="-L. -L\$(LIBDIR)"
+-MYCMDLDFLAGS=""
++MYCMDLDFLAGS="-pie"
+ MYCMDLIBS=""
+ MYLDLIBPATH=""
+ MYLDLIBPATHENV="LD_LIBRARY_PATH"

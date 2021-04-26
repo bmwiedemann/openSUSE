@@ -1,7 +1,7 @@
 #
 # spec file for package kyotocabinet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,8 @@ Source99:       baselibs.conf
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch1:         %{name}-fix_rpath.patch
 Patch2:         configure-8-byte-atomics.patch
-Patch4:         kyotocabinet-fix-debuginfo.patch
+Patch3:         %{name}-pie.patch
+Patch4:         %{name}-fix-debuginfo.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
