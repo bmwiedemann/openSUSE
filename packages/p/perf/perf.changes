@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 26 05:44:30 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- remove:
+  * 0001-perf-annotate-Fix-jump-parsing-for-C-code.patch
+  * 0001-perf-symbols-Resolve-symbols-against-debug-file-firs.patch
+  They are part of 5.12 and therefore create a conflict.
+
+-------------------------------------------------------------------
 Tue Mar  2 06:05:56 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - add:

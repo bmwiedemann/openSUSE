@@ -473,4 +473,15 @@
     (bsc#1180610)</comment>
     <requestid>876132</requestid>
   </revision>
+  <revision rev="58" vrev="67">
+    <srcmd5>5ff7a107ab6044da15aa9cb974b00a0e</srcmd5>
+    <version>MACRO</version>
+    <time>1619447962</time>
+    <user>dimstar_suse</user>
+    <comment>- remove:
+  * 0001-perf-annotate-Fix-jump-parsing-for-C-code.patch
+  * 0001-perf-symbols-Resolve-symbols-against-debug-file-firs.patch
+  They are part of 5.12 and therefore create a conflict.</comment>
+    <requestid>888347</requestid>
+  </revision>
 </revisionlist>
