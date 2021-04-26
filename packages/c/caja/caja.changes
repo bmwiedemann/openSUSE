@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 26 10:41:52 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.24.1
+  * update translations
+  * file-operations: don't attempt to move into the source dir
+  * keep one .desktop suffix on desktop file renaming
+  * fix runtime warning from newly unused code
+  * Confirm before deleting during an undo operation
+  * Updating the link of caja
+
+-------------------------------------------------------------------
 Wed Jul 15 18:05:04 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(gail) with pkgconfig(gail-3.0) BuildRequires:

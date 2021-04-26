@@ -1,7 +1,7 @@
 #
 # spec file for package caja
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define typelib typelib-1_0-Caja-2_0
 %define _version 1.24
 Name:           caja
-Version:        1.24.0
+Version:        1.24.1
 Release:        0
 Summary:        File manager for the MATE desktop
 License:        GPL-2.0-only AND LGPL-2.0-only

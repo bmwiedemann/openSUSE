@@ -280,4 +280,12 @@ Add required conflicts tags</comment>
     <comment></comment>
     <requestid>821507</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f780e3fe4ba9f4b4318279d3326f2050</srcmd5>
+    <version>1.24.1</version>
+    <time>1619447991</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888490</requestid>
+  </revision>
 </revisionlist>
