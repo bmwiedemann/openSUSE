@@ -214,4 +214,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-07/msg00409.html</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>877629</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>c5662095df862ca677c3b94e8aa20fef</srcmd5>
+    <version>1.3.1.0</version>
+    <time>1619447972</time>
+    <user>dimstar_suse</user>
+    <comment>- remve obsollete fix for i586 (forwarded request 888402 from mimi_vx)</comment>
+    <requestid>888403</requestid>
+  </revision>
 </revisionlist>

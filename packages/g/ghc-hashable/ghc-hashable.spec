@@ -61,9 +61,6 @@ This package provides the Haskell %{pkg_name} library development files.
 %autosetup -n %{pkg_name}-%{version}
 
 %build
-%ifarch i586
-%define cabal_configure_options -f"-sse2"
-%endif
 %ghc_lib_build
 
 %install
