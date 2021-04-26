@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 20 08:46:11 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- libgcrypt 1.9.3: 
+  * Bug fixes:
+    - Fix build problems on i386 using gcc-4.7.
+    - Fix checksum calculation in OCB decryption for AES on s390.
+    - Fix a regression in gcry_mpi_ec_add related to certain usages
+      of curve 25519.
+    - Fix a symbol not found problem on Apple M1.
+    - Fix for Apple iOS getentropy peculiarity.  
+    - Make keygrip computation work for compressed points.
+  * Performance:
+    - Add x86_64 VAES/AVX2 accelerated implementation of Camellia.
+    - Add x86_64 VAES/AVX2 accelerated implementation of AES.
+    - Add VPMSUMD acceleration for GCM mode on PPC. 
+  * Internal changes.
+    - Harden MPI conditional code against EM leakage.
+    - Harden Elgamal by introducing exponent blinding.
+
+-------------------------------------------------------------------
 Wed Feb 17 09:49:55 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libgcrypt 1.9.2:

@@ -22,7 +22,7 @@
 %define libsoname %{name}%{libsover}
 %define cavs_dir %{_libexecdir}/%{name}/cavs
 Name:           libgcrypt
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
