@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 22 20:25:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.31:
+  * Add support for preserving Unicode charaters
+  * remove pypy build
+
+-------------------------------------------------------------------
 Sun Dec 20 09:52:04 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.28:

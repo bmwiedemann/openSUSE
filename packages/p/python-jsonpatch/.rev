@@ -190,4 +190,14 @@
   * Python 3.9 support</comment>
     <requestid>857120</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>09420f2126d661080f1ed6a7b9a2fde8</srcmd5>
+    <version>1.31</version>
+    <time>1619447928</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.31:
+  * Add support for preserving Unicode charaters
+  * remove pypy build</comment>
+    <requestid>887884</requestid>
+  </revision>
 </revisionlist>
