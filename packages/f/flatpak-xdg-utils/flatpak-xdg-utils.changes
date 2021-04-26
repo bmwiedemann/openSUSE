@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Sun Mar 14 11:53:34 UTC 2021 - Anthony Rabbito <hello@anthonyrabbito.com>
+
+- 1.0.4
+  * Close intermediate copies of forwarded fds in flatpak-spawn.
