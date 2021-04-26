@@ -1,0 +1,6 @@
+<package name="deepin-override-tool" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="openSUSE:Factory" package="deepin-desktop-schemas"/>
+  <bcntsynctag>deepin-desktop-schemas</bcntsynctag>
+</package>
