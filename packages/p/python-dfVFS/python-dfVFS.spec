@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define timestamp 20200920
-%define skip_python2 1
+%define pythons python3
 Name:           python-dfVFS
 Version:        0~%{timestamp}
 Release:        0
@@ -44,7 +44,7 @@ BuildRequires:  %{python_module libfvde}
 BuildRequires:  %{python_module libfwnt}
 BuildRequires:  %{python_module libluksde}
 BuildRequires:  %{python_module libqcow}
-BuildRequires:  %{python_module libsigscan} >= 0~20191221
+BuildRequires:  %{python_module libsigscan >= 0~20191221}
 BuildRequires:  %{python_module libsmdev}
 BuildRequires:  %{python_module libsmraw}
 BuildRequires:  %{python_module libvhdi}

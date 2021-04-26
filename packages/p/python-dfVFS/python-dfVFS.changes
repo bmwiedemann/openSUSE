@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 25 20:52:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- The majority of dependencies is available for the primary python3
+  flavor only. Do the same.
+
+-------------------------------------------------------------------
 Sun Nov  8 01:57:43 UTC 2020 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - Update to 20200920
