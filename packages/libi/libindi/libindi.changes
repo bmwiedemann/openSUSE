@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 24 07:49:54 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.0:
+  * Major INDI Library release v1.9.0 bring significant internal changes
+    championed by @pawel-soja to modernize core INDI Library drivers and clients.
+  * New drivers for DeepSkyDad Flat Panel & Pegasus devices plus
+    further improvements to PCM8 drivers.
+
+-------------------------------------------------------------------
 Mon Mar  1 13:23:41 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.8.9:
