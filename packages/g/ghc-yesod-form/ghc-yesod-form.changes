@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 15 10:26:35 UTC 2021 - psimons@suse.com
+
+- Update yesod-form to version 1.7.0.
+  ## 1.7.0
+
+  * Extended `OptionList` by `OptionListGrouped` and implemented grouped select fields (`<select>` with `<optgroup>`) [#1722](https://github.com/yesodweb/yesod/pull/1722)
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

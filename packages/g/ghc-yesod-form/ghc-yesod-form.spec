@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-yesod-form
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name yesod-form
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.7
+Version:        1.7.0
 Release:        0
 Summary:        Form handling support for Yesod Web Framework
 License:        MIT
@@ -40,7 +40,6 @@ BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-persistent-devel
 BuildRequires:  ghc-resourcet-devel
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-shakespeare-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-time-devel
