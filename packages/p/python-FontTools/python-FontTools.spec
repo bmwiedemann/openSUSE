@@ -1,5 +1,5 @@
 #
-# spec file for package python-FontTools
+# spec file for package python-FontTools-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -41,14 +41,14 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Recommends:     python-Brotli >= 1.0.1
-Recommends:     python-fs >= 2.4.11
+Requires:       python-fs >= 2.4.11
 Recommends:     python-lxml >= 4.0
 Recommends:     python-scipy >= 1.5.1
 Recommends:     python-sympy
 Recommends:     python-unicodedata2 >= 13.0.0
 Recommends:     python-zopfli >= 0.1.6
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-reportlab
 BuildArch:      noarch
 %if %{with test}

@@ -70,4 +70,12 @@ This version fixes the conflict from the previous version.</comment>
     <comment></comment>
     <requestid>873070</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c9a17c94514467dcb3b062ba0479cd7c</srcmd5>
+    <version>4.19.1</version>
+    <time>1619447971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888398</requestid>
+  </revision>
 </revisionlist>
