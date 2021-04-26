@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 26 09:57:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.1
+  * Improved error messages and return values
+  * Fix incorrect error return value from tool
+  * Allow -1 special value for wq->groupid and fix related error
+    messages
+  * Fix incorrect manpage text for config-wq
+  * Remove reference to non-interface header in interface header
+  * Remove non-interface header from packaging
+  * Use portable data types and fix build issues in 32 bit targets
+- Dropped upstream merged v3.0.1-use-portable-data-types.patch
+
+-------------------------------------------------------------------
 Fri Feb 12 13:09:35 UTC 2021 - Libor Pechacek <lpechacek@suse.com>
 
 - Update to v3.0.1 (jsc#SLE-13348)
