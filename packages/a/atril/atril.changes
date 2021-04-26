@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 26 10:37:52 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.24.1
+  * update translations
+  * epub backend: Escape link text to display & in index content
+  * Fix segfault on empty navMap
+  * thumbnailer: fix typo in the option description
+  * Use int64_t for g_date_time_to_unix even word size is 32-bit wide
+
+-------------------------------------------------------------------
 Mon Mar 30 14:26:19 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Add atril-synctex-1.18.patch: Restore SyncTeX 1.18 support.
