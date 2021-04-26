@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_authn_otp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Archie L. Cobbs <archie@dellroad.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,22 +24,16 @@ Release:        0
 Summary:        Apache module for one-time password authentication
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
-Url:            http://mod-authn-otp.googlecode.com/
+Url:            https://github.com/archiecobbs/mod-authn-otp
 Source:         https://s3.amazonaws.com/archie-public/mod-authn-otp/%{mod_name}-%{version}.tar.gz
 BuildRequires:  apache-rex
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
+BuildRequires:  pkgconfig(openssl)
 %apache_rex_deps
 Requires:       %{apache_mmn}
 Requires:       %{apache_suse_maintenance_mmn}
 Provides:       otptool = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} >= 1100
-BuildRequires:  libopenssl-devel
-BuildRequires:  openssl
-%else
-BuildRequires:  openssl-devel
-%endif
 
 %description
 mod_authn_otp is an Apache web server module for two-factor authentication
@@ -73,22 +67,22 @@ authentication into any existing authentication solution.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 install -d %{buildroot}%{apache_libexecdir}
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 %check
 %apache_rex_check -m .libs/ -b . mod_authn_otp-basic
 
 %files
-%defattr(-,root,root,-)
+%license LICENSE
+%doc CHANGES README users.sample
 %{apache_libexecdir}/%{mod_name}.so
 %{_bindir}/otptool
 %{_bindir}/genotpurl
 %{_mandir}/man1/otptool.1.gz
 %{_mandir}/man1/genotpurl.1.gz
-%doc CHANGES LICENSE README users.sample
 
 %changelog

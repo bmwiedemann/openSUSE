@@ -84,4 +84,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>713203</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>2bcdb7fa0cf8bdb587b9a8535e4bfa57</srcmd5>
+    <version>1.1.9</version>
+    <time>1619447964</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed SPEC file: Replaced broken URL and minor cleanup (forwarded request 888107 from susnux)</comment>
+    <requestid>888372</requestid>
+  </revision>
 </revisionlist>
