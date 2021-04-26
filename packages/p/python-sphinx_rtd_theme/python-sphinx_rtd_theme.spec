@@ -1,5 +1,5 @@
 #
-# spec file for package python-sphinx_rtd_theme
+# spec file for package python-sphinx_rtd_theme-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -26,10 +26,10 @@
 %bcond_with test
 %endif
 Name:           python-sphinx_rtd_theme%{psuffix}
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        ReadTheDocs.org theme for Sphinx
-License:        MIT AND Apache-2.0 AND OFL-1.1
+License:        Apache-2.0 AND MIT AND OFL-1.1
 Group:          Development/Languages/Python
 URL:            https://github.com/snide/sphinx_rtd_theme/
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx_rtd_theme/sphinx_rtd_theme-%{version}.tar.gz
@@ -41,6 +41,7 @@ Requires:       python-Sphinx
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module docutils < 0.17}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module readthedocs-sphinx-ext}
 %endif

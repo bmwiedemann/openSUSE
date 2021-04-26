@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 20 09:50:10 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- remove python-docutils from Requires
+
+-------------------------------------------------------------------
+Mon Apr 19 09:32:44 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- update to 0.5.2
+  * depend on docutils < 0.17 (gh#readthedocs/sphinx_rtd_theme#1113)
+
+-------------------------------------------------------------------
 Tue Mar  2 00:35:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.1 
