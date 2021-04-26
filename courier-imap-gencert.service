@@ -1,0 +1,8 @@
+[Unit]
+Description=Courier IMAP (SSL) Cert Generation
+ConditionPathExists=!/etc/ssl/private/imapd.pem
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/mkimapdcert
+RemainAfterExit=yes 

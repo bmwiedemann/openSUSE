@@ -1,0 +1,8 @@
+[Unit]
+Description=Courier POP3 (SSL) Cert Generation
+ConditionPathExists=!/etc/ssl/private/pop3d.pem
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/mkpop3dcert
+RemainAfterExit=yes 
