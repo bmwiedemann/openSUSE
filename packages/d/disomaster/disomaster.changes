@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Fri Feb 26 10:39:44 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.0.5
+  * fix: rise severity threshold for erasing
+  * Support joilet file system 
+
+-------------------------------------------------------------------
+Wed Jul 24 08:49:12 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 0.2.0 

@@ -1,0 +1,5 @@
+<package name="disomaster" project="openSUSE:Factory">
+  <title>disomaster</title>
+  <description>A libisoburn wrapper class for Qt.</description>
+  <devel project="X11:Deepin" package="disomaster"/>
+</package>
