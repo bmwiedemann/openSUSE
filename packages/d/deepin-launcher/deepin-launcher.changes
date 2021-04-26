@@ -1,0 +1,134 @@
+-------------------------------------------------------------------
+Mon Mar 15 13:46:41 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.4
+  * Add com.deepin.dde.launcher schema profile
+  * Add some new features
+
+-------------------------------------------------------------------
+Tue Feb 23 06:10:05 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.3.0.45
+  * fix bugs
+  * optimize the launcher app list view redraw performance
+  * launcher remove all QGraphicsxxx
+
+-------------------------------------------------------------------
+Thu Jul 18 07:32:00 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 4.6.14
+  * Remove unused deepin-qt5config
+  * Disable uninstall dde-introduction
+  * Disable uninstall for deepin-terminal
+  * Fix unable to launch app in category list search
+  * Fix the coordinates of the entervent are incorrect after the menu is closed
+  * Fux fullScreen: category list coordinate error
+
+-------------------------------------------------------------------
+Mon Apr 15 14:35:58 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 4.6.9
+  * Fix will flash on the sw platform
+  * Fix Category heading is truncated
+  * Fix Window: When the dock is on the right, the position is not close
+  * category button support dynamic font size
+  * backspace do not work in window mode search edit
+  * Box: search result page has no height adjustment
+  * dragging icon size error in fullscreen frame
+  * show launcher on lock
+  * compile-time option to disable uninstall
+  * Fix Background:**  gradient not update when background changed
+  * Fix FullScreen: not set origin size
+  * Fix delete selected text when append new char to search bar
+  * Fix Mini: replace search widget
+  * Fix Mini: cannot enter category when not scroll view
+  * Fix Mini: compatible with Qt5.6 * optimized application list sorting
+    algorithm on mini mode
+  * background: refresh background
+  * Fix update scroll interval
+  * Fix mini: auto change font size
+  * fullscreen: support kwin 
+  * focus keyboard switch.
+  * add DTK version check
+  * Fix Mini: use DWindowManagerHelper::currentWorkSpaceWindowIdList
+  * Fix Mini: stop the inertial scrolling of the head and bottom
+  * Fix cannot launcher app
+  * Fix Mini: cannot click
+  * support touch scroll
+  * check deepin-manual
+  * Mini: don't hide when using virtual keyboard
+  * Mini: average startup number sort 
+  * Fix Mini: disable verticalScroll context menu
+  * Fix tips label is not hidden.
+  * Fix auto exit
+  * Fix scroll down is very short
+  * Fix Mini:cannot hide
+  * Fix Multi-screen coordinates
+  * Fix windowed_frame: width calculation is incorrect.
+  * add regionMonitorPoint interface
+  * Mini: support vertical scrollbar show as needed
+  * support back tab key
+  * support change frame opacity
+  * disable animation when scroll for sw
+  * optimization switch mode
+  * support Ctrl+V shortcuts to pasted text to the search widget
+  * windowed_frame: adaptive window width.
+  * Fix content highly adaptable to dock's position
+  * Fix mission disable animation macro
+  * Fix background shift
+  * Fix geometry error
+  * Fix don't show when not have app infos
+  * Fix Incorrect return reference
+  * Fix check all app info is vaild
+  * Fix current index is incorrect 
+  * Fix size error when dock's position is right 
+  * Fix draw background error after changing the dock position
+  * Fix Mini: double hide launcher
+  * Fix sw: mission mieee
+  * Fix windowed: more perfect scrolling.
+
+-------------------------------------------------------------------
+Thu Mar 22 04:19:53 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 4.3.2
+  * Fix autostart mark indicator position error in HiDPI.
+  * Add auto-exit timer.
+  * Support mouse wheel to adjust icon size.
+  * Hide frame when popup uninstall dialog.
+  * Adapt lintian.
+  * Fix window position error in mini mode.
+  * Fix autostart icon disappear.
+  * Fix show paint error when show_detail.
+  * Fix not display chainsproxy when not configuration.
+  * Fix background bug.
+  * Fix menu bug.
+  * Fix miniframe bug.
+  * Fix item not update when move to new one.
+  * Fix position error.
+  * Update translate files.
+  * Add menu option to disable HiDPI-scale on application.
+
+-------------------------------------------------------------------
+Wed Nov 29 08:26:45 UTC 2017 - hillwood@opensuse.org
+
+- Update to 4.2.6
+  * Improve HiDPI painting
+  * Update translations.
+  * Improve item icon adjust policy.
+  * Improve graphics paint algorithm.
+  * Fix: uninstll dialog icon too smaill at HiDPI screen.
+  * Feature: Hide frame when uninstall dialog popup.
+  * Fix: startup mark icon placed pos error
+  * Fix autostart icon disappear
+  * HiDPI Support
+  * Minor bug fixes
+
+-------------------------------------------------------------------
+Sun Nov 12 09:11:44 UTC 2017 - hillwood@opensuse.org
+
+- Cleanup spec. 
+
+-------------------------------------------------------------------
+Tue Oct  3 15:29:45 UTC 2017 - sensor.wen@gmail.com
+
+- Initial package.
