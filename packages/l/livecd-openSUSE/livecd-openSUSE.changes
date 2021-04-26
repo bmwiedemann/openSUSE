@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 26 11:12:14 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Limit gfxboot to i686 only: on x86_64, we have been using grub2
+  to boot for quite a while already.
+
+-------------------------------------------------------------------
 Thu Apr 22 09:53:03 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - list-kde: Ignore kipi-plugins

@@ -37,7 +37,7 @@
   </users>
   <packages type="image" patternType="plusRecommended">
     <package name="kernel-default"/>
-    <package name="gfxboot-branding-openSUSE" bootinclude="true" bootdelete="true" arch="i686,x86_64"/>
+    <package name="gfxboot-branding-openSUSE" bootinclude="true" bootdelete="true" arch="i686"/>
     <package name="grub2-branding-openSUSE" bootinclude="true"/>
     <package name="dracut-kiwi-live"/>
     <!-- workaround for bnc#892087 -->
@@ -160,7 +160,7 @@
     <package name="aaa_base" replaces="sane-backends"/>
     <ignore name="sane-backends"/>
     <package name="branding-openSUSE"/>
-    <package name="gfxboot" arch="i686,x86_64"/>
+    <package name="gfxboot" arch="i686"/>
     <package name="shim" arch="x86_64"/>
     <package name="aaa_base" replaces="glibc-32bit"/>
     <ignore name="glibc-32bit"/>
