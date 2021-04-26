@@ -253,7 +253,7 @@ Patch164:       grub2-suse-remove-linux-root-param.patch
 # PPC64 LE support
 Patch205:       grub2-ppc64le-disable-video.patch
 Patch207:       grub2-ppc64le-memory-map.patch
-# PPC 
+# PPC
 Patch211:       grub2-ppc64-cas-reboot-support.patch
 Patch212:       grub2-install-remove-useless-check-PReP-partition-is-empty.patch
 Patch213:       grub2-Fix-incorrect-netmask-on-ppc64.patch
@@ -277,7 +277,7 @@ Patch411:       0012-tpm-Build-tpm-as-module.patch
 # UEFI HTTP and related network protocol support (FATE#320130)
 Patch420:       0001-add-support-for-UEFI-network-protocols.patch
 Patch421:       0002-AUDIT-0-http-boot-tracker-bug.patch
-# check if default entry need to be corrected for updated distributor version 
+# check if default entry need to be corrected for updated distributor version
 # and/or use fallback entry if default kernel entry removed (bsc#1065349)
 Patch430:       grub2-mkconfig-default-entry-correction.patch
 Patch431:       grub2-s390x-10-keep-network-at-kexec.patch
@@ -464,7 +464,7 @@ Group:          System/Boot
 BuildArch:      noarch
 %endif
 Requires:       %{name} = %{version}
-Requires(post):	%{name} = %{version}
+Requires(post): %{name} = %{version}
 %if 0%{?update_bootloader_requires:1}
 %update_bootloader_requires
 %else
@@ -506,7 +506,7 @@ BuildArch:      noarch
 Requires:       efibootmgr
 Requires(post): efibootmgr
 Requires:       %{name} = %{version}
-Requires(post):	%{name} = %{version}
+Requires(post): %{name} = %{version}
 %if 0%{?update_bootloader_requires:1}
 %update_bootloader_requires
 %else
@@ -880,9 +880,9 @@ PXE_MODULES="efinet tftp http"
 CRYPTO_MODULES="luks gcry_rijndael gcry_sha1 gcry_sha256"
 
 %ifarch x86_64
-CD_MODULES="${CD_MODULES} linuxefi" 
+CD_MODULES="${CD_MODULES} linuxefi"
 %else
-CD_MODULES="${CD_MODULES} linux" 
+CD_MODULES="${CD_MODULES} linux"
 %endif
 
 # SBAT metadata
@@ -941,7 +941,7 @@ cd build
 
 # 64-bit x86-64 machines use 32-bit boot loader
 # (We cannot just redefine _target_cpu, as we'd get i386.rpm packages then)
-%ifarch x86_64 
+%ifarch x86_64
 %define _target_platform i386-%{_vendor}-%{_target_os}%{?_gnu}
 %endif
 
@@ -992,7 +992,7 @@ install -m 644 grub-tpm.efi %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/.
 # Create grub.efi link to system efi directory
 # This is for tools like kiwi not fiddling with the path
 %define sysefibasedir %{_datadir}/efi
-%define sysefidir %{sysefibasedir}/%{_target_cpu} 
+%define sysefidir %{sysefibasedir}/%{_target_cpu}
 install -d %{buildroot}/%{sysefidir}
 ln -sr %{buildroot}/%{_datadir}/%{name}/%{grubefiarch}/grub.efi %{buildroot}%{sysefidir}/grub.efi
 %ifarch x86_64
@@ -1133,7 +1133,7 @@ perl -ni -e '
 %if ! 0%{?only_efi:1}
 
 %post %{grubarch}
-%if 0%{?update_bootloader_check_type_reinit_post:1} 
+%if 0%{?update_bootloader_check_type_reinit_post:1}
 %update_bootloader_check_type_reinit_post grub2
 %else
 # To check by current loader settings
@@ -1187,7 +1187,7 @@ fi
 %ifarch %{efi}
 
 %post %{grubefiarch}
-%if 0%{?update_bootloader_check_type_reinit_post:1} 
+%if 0%{?update_bootloader_check_type_reinit_post:1}
 %update_bootloader_check_type_reinit_post grub2-efi
 %else
 # To check by current loader settings

@@ -10,7 +10,7 @@ ConditionPathIsReadWrite=/boot/grub2/grubenv
 Type=oneshot
 ExecStart=-/usr/bin/grub2-editenv /boot/grub2/grubenv unset next_entry
 ExecStartPost=-/usr/bin/systemctl disable grub2-once.service
-StandardOutput=syslog
+StandardOutput=journal
 
 [Install]
 WantedBy=sysinit.target

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 23 03:27:37 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix obsolete syslog in systemd unit file and updating to use journal as
+  StandardOutput (bsc#1185149) 
+  * grub2-once.service
+
+-------------------------------------------------------------------
 Mon Apr 19 09:53:43 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Fix build error on armv6/armv7 (bsc#1184712)
