@@ -34,6 +34,9 @@ Patch0:         python-M2Crypto-Allow-on-UNABLE_TO_VERIFY_LEAF_SIGNATURE.patch
 # PATCH-FIX-UPSTREAM 293_sslv23_padding.patch gl#m2crypto/m2crypto#293 mcepl@suse.com
 # RSA_SSLV23_PADDING is evil and should be avoided.
 Patch1:         293_sslv23_padding.patch
+# PATCH-FIX-OPENSUSE no-need-parameterized.patch bsc#1185150 mcepl@suse.com
+# no need to require parameterized for normal use
+Patch2:         no-need-parameterized.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}

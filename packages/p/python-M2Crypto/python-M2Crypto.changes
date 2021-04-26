@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 22 22:33:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add no-need-parameterized.patch ... we don't need run-time requirement
+  of parameterized package (bsc#1185150).
+
+-------------------------------------------------------------------
 Fri Feb 19 12:56:50 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add 293_sslv23_padding.patch to avoid using RSA_SSLV23_PADDING
