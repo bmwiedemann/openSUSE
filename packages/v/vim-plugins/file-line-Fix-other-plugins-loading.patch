@@ -1,0 +1,86 @@
+From: Sam Protsenko <semen.protsenko@linaro.org>
+Date: Wed, 12 Jun 2019 17:12:56 +0300
+Subject: Fix other plugins loading
+Git-repo: https://github.com/joe-skb7/file-line
+Git-commit: f1bf6c52f1948ebe639af9189ac240854cb84076
+Patch-mainline: https://github.com/bogado/file-line/pull/77 pending
+References: https://github.com/bogado/file-line/issues/62
+
+It was noticed that file_line plugin breaks the loading of
+other plugins. For example, when having next line in ~/.vimrc:
+
+    au BufNewFile main.c silent! 0r ~/.vim/skeleton/template.c
+
+this line loads the content from template file when I'm creating new
+main.c file. But when file-line plugin is installed this functionality
+doesn't work (newly created main.c is blank). This patch fixes that.
+
+Also, it was reported that file_line breaks vim-go plugin. I haven't
+check if this patch fixes it though.
+
+Fixes: #62
+
+Signed-off-by: Sam Protsenko <semen.protsenko@linaro.org>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ plugin/file_line.vim | 25 +++++++++++++++++++++----
+ 1 file changed, 21 insertions(+), 4 deletions(-)
+
+diff --git a/plugin/file_line.vim b/plugin/file_line.vim
+index 7244014c47e4..afa8012ece40 100644
+--- a/plugin/file_line.vim
++++ b/plugin/file_line.vim
+@@ -35,7 +35,10 @@ function! s:reopenAndGotoLine(file_name, line_num, col_num)
+ 	exec "filetype detect"
+ endfunction
+ 
+-function! s:gotoline()
++" Returns actual file name (without :* part)
++" If is_goto parameter is 1, then file will be re-opened at the line parsed from
++" :* part
++function! s:get_file_name_and_goto(is_goto)
+ 	let file = bufname("%")
+ 
+ 	" :e command calls BufRead even though the file is a new one.
+@@ -53,14 +56,27 @@ function! s:gotoline()
+ 		if ! empty(l:names)
+ 			let file_name = l:names[1]
+ 			let line_num  = l:names[2] == ''? '0' : l:names[2]
+-			let  col_num  = l:names[3] == ''? '0' : l:names[3]
+-			call s:reopenAndGotoLine(file_name, line_num, col_num)
++			let col_num   = l:names[3] == ''? '0' : l:names[3]
++			if (a:is_goto == 1)
++				call s:reopenAndGotoLine(file_name, line_num,
++							\ col_num)
++			endif
+ 			return file_name
+ 		endif
+ 	endfor
+ 	return file
+ endfunction
+ 
++" Get the actual file name
++function! s:file_name()
++	return s:get_file_name_and_goto(0)
++endfunction
++
++" Open file at the line after :* part
++function! s:gotoline()
++	return s:get_file_name_and_goto(1)
++endfunction
++
+ " Handle entry in the argument list.
+ " This is called via `:argdo` when entering Vim.
+ function! s:handle_arg()
+@@ -87,6 +103,7 @@ function! s:startup()
+ 	endif
+ endfunction
+ 
+-if !isdirectory(expand("%:p"))
++" Only use file_line upon files (not directory), and only if file already exists
++if (!isdirectory(expand("%:p")) && filereadable(expand(s:file_name())))
+ 	autocmd VimEnter * call s:startup()
+ endif
+-- 
+2.31.1
+

@@ -19,8 +19,8 @@
 %define ack_version		1.0.9
 %define align_version		36.42
 %define a_version		2.18
-%define bufexplorer_version	7.2.8
-%define calendar_version	2.4
+%define bufexplorer_version	7.4.21
+%define calendar_version	2.5
 %define colorsel_version	20110107
 %define colorschemes_version	1.0
 %define diffchanges_version	0.6.346dae2
@@ -63,8 +63,8 @@ Group:          Productivity/Text/Editors
 URL:            http://www.vim.org/
 Source0:        vimplugin-align-%{align_version}.tar.bz2
 Source1:        vimplugin-a-%{a_version}.tar.bz2
-Source2:        vimplugin-bufexplorer-%{bufexplorer_version}.tar.bz2
-Source3:        vimplugin-calendar-%{calendar_version}.tar.bz2
+Source2:        https://github.com/jlanzarotta/bufexplorer/archive/refs/tags/v%{bufexplorer_version}.tar.gz#/bufexplorer-%{bufexplorer_version}.tar.gz
+Source3:        https://github.com/vim-scripts/calendar.vim--Matsumoto/archive/refs/tags/%{calendar_version}.tar.gz#/calendar.vim--Matsumoto-%{calendar_version}.tar.gz
 Source4:        vimplugin-colorsel-%{colorsel_version}.tar.bz2
 Source5:        vimplugin-colorschemes-%{colorschemes_version}.tar.bz2
 Source6:        vimplugin-diffchanges-%{diffchanges_version}.tar.bz2
@@ -103,6 +103,7 @@ Source101:      vim-latex-%{latex_version}.tar.xz
 Source1000:     https://raw.githubusercontent.com/openSUSE/pack-tools/master/contrib/vim/spec.snippets
 Patch1:         locateopen-1.3-locate-support.patch
 Patch2:         showmarks-signs.patch
+Patch3:         file-line-Fix-other-plugins-loading.patch
 BuildRequires:  vim
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -157,17 +158,24 @@ different.
 Version:        %bufexplorer_version
 Release:        0
 Summary:        Buffer Explorer / Browser
-License:        ISC
+License:        BSD-3-Clause
 Group:          Productivity/Text/Editors
 Requires:       vim
 
 %description -n vim-plugin-bufexplorer
-With bufexplorer, you can quickly switch between buffers by using '\be' to open
-the explorer.vim. Then by using the normal movement keys or mouse to select the
-needed buffer and then finally pressing <Enter> or <Left Mouse Click> to open
-the buffer in the current window or <Shift Enter> or 't' to open that buffer in
-a new tab.  If the buffer is in another tab already, bufexplorer can switch to
-that tab if you would like.
+With bufexplorer, you can quickly and easily switch between buffers by using
+the one of the default public interfaces:
+\<Leader\>be normal open
+\<Leader\>bt toggle open / close
+\<Leader\>bs force horizontal split open
+\<Leader\>bv force vertical split open
+
+Once the bufexplorer window is open you can use the normal movement keys (hjkl)
+to move around and then use or to select the buffer you would like to open. If
+you would like to have the selected buffer opened in a new tab, simply press
+either or 't'. Please note that when opening a buffer in a tab, that if the
+buffer is already in another tab, bufexplorer can switch to that tab
+automatically for you if you would like.
 
 %package -n vim-plugin-calendar
 Version:        %calendar_version
@@ -630,12 +638,15 @@ popd
 pushd vimplugin-showmarks-%showmarks_version
 %patch2 -p1
 popd
+pushd file-line-%file_line_version
+%patch3 -p1
+popd
 
 %build
 
 %install
 mkdir -p %buildroot/%vimplugin_dir
-for i in vimplugin-* file-line-*; do
+for i in vimplugin-* calendar.vim--Matsumoto-* bufexplorer-* file-line-*; do
     pushd $i
     cp -av * %buildroot/%vimplugin_dir/
     popd
@@ -677,6 +688,7 @@ popd
 cp %{SOURCE1000} %{buildroot}/%vimplugin_dir/snippets/
 
 # delete unneeded files
+rm -rf %{buildroot}/%vimplugin_dir/LICENSE
 rm -rf %{buildroot}/%vimplugin_dir/README*
 rm -rf %{buildroot}/%vimplugin_dir/doc/Makefile*
 rm -rf %{buildroot}/%vimplugin_dir/doc/README*
@@ -973,6 +985,7 @@ fi
 
 %files -n vim-plugin-bufexplorer
 %defattr(-,root,root,0755)
+%license bufexplorer-%{bufexplorer_version}/LICENSE
 %vimplugin_dir/doc/bufexplorer.txt
 %vimplugin_dir/plugin/bufexplorer.vim
 

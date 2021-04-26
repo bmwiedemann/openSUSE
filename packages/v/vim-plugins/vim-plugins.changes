@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 26 07:09:59 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- Fix bufexplorer's source link.
+
+-------------------------------------------------------------------
+Fri Apr 23 06:56:31 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- Update several plugins
+  * bufexplorer to 7.4.21
+  * calendar to 2.5
+- add file-line-Fix-other-plugins-loading.patch
+
+-------------------------------------------------------------------
 Tue Apr 13 05:40:02 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - Sort _service and .spec file
