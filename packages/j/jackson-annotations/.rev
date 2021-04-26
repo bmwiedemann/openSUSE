@@ -39,4 +39,12 @@
     <comment>2.10.3</comment>
     <requestid>788428</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dc1f79836b3a900fc8585467a2cdb3a1</srcmd5>
+    <version>2.10.5</version>
+    <time>1619447963</time>
+    <user>dimstar_suse</user>
+    <comment>2.10.5 + build with ant</comment>
+    <requestid>888371</requestid>
+  </revision>
 </revisionlist>

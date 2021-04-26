@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 26 06:37:25 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Rewrite to use ant for building in order to be able to use it
+  in packages that have to be built before maven
+
+-------------------------------------------------------------------
+Mon Jan 25 08:21:11 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.10.5
+
+-------------------------------------------------------------------
 Thu Mar 26 07:33:03 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.10.3

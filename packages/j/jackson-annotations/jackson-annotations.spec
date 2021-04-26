@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-annotations
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           jackson-annotations
-Version:        2.10.3
+Version:        2.10.5
 Release:        0
 Summary:        Core annotations for Jackson data processor
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/FasterXML/jackson-annotations/
 Source0:        https://github.com/FasterXML/jackson-annotations/archive/%{name}-%{version}.tar.gz
+Source1:        %{name}-build.xml
+BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-parent:pom:)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  javapackages-local
 BuildArch:      noarch
 
 %description
@@ -43,26 +43,39 @@ This package contains API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+cp %{SOURCE1} build.xml
+mkdir -p lib
+
+%pom_remove_parent
+#test scope
+%pom_remove_dep junit:junit
 
 %pom_remove_plugin "org.moditect:moditect-maven-plugin"
 %pom_remove_plugin "org.sonatype.plugins:nexus-staging-maven-plugin"
 
 sed -i 's/\r//' LICENSE
 
-%{mvn_file} : %{name}
-
 %build
-%{mvn_build} -f -- -Dsource=6
+%{ant} -Dtest.skip=true package javadoc
 
 %install
-%mvn_install
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
+
+install -dm 0755 %{buildroot}%{_javadocdir}
+cp -r target/site/apidocs %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %doc README.md release-notes/*
 %license LICENSE
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE
 
 %changelog
