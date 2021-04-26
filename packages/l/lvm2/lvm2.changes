@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr 23 03:45:00 UTC 2021 - heming.zhao@suse.com
+
+- Honor lvm.conf event_activation=0 on "pvscan --cache -aay" (bsc#1185190)
+  + bug-1185190_01-pvscan-support-disabled-event_activation.patch
+  + bug-1185190_02-config-improve-description-for-event_activation.patch
+
+-------------------------------------------------------------------
+Wed Apr 21 03:04:00 UTC 2021 - heming.zhao@suse.com
+
+- LVM cannot be disabled on boot (bsc#1184687)
+  + bug-1184687_Add-nolvm-for-kernel-cmdline.patch
+
+- Update patch for avoiding apply warning message
+  + bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-metadata.patch
+
+-------------------------------------------------------------------
+Mon Apr 19 10:00:30 UTC 2021 - ghe@suse.com
+
+- Add metadata-based autoactivation property for VG and LV (bsc#1178680)
+  + bug-1178680_add-metadata-based-autoactivation-property-for-VG-an.patch
+
+-------------------------------------------------------------------
 Tue Feb 02 03:49:00 UTC 2021 - heming.zhao@suse.com
 
 - lvm2 should use 'external_device_info_source="udev"' by default (bsc#1179691)

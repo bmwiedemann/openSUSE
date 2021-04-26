@@ -1,0 +1,874 @@
+From 0a28e3c44b05470061f15516e1c89a84fa2e8569 Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Thu, 1 Apr 2021 17:20:00 -0500
+Subject: [PATCH] Add metadata-based autoactivation property for VG and LV
+
+The autoactivation property can be specified in lvcreate
+or vgcreate for new LVs/VGs, and the property can be changed
+by lvchange or vgchange for existing LVs/VGs.
+
+ --setautoactivation y|n
+ enables|disables autoactivation of a VG or LV.
+
+Autoactivation is enabled by default, which is consistent with
+past behavior.  The disabled state is stored as a new flag
+in the VG metadata, and the absence of the flag allows
+autoactivation.
+
+If autoactivation is disabled for the VG, then no LVs in the VG
+will be autoactivated (the LV autoactivation property will have
+no effect.)  When autoactivation is enabled for the VG, then
+autoactivation can be controlled on individual LVs.
+
+The state of this property can be reported for LVs/VGs using
+the "-o autoactivation" option in lvs/vgs commands, which will
+report "enabled", or "" for the disabled state.
+
+Previous versions of lvm do not recognize this property.  Since
+autoactivation is enabled by default, the disabled setting will
+have no effect in older lvm versions.  If the VG is modified by
+older lvm versions, the disabled state will also be dropped from
+the metadata.
+
+The autoactivation property is an alternative to using the lvm.conf
+auto_activation_volume_list, which is still applied to to VGs/LVs
+in addition to the new property.
+
+If VG or LV autoactivation is disabled either in metadata or in
+auto_activation_volume_list, it will not be autoactivated.
+
+An autoactivation command will silently skip activating an LV
+when the autoactivation property is disabled.
+
+To determine the effective autoactivation behavior for a specific
+LV, multiple settings would need to be checked:
+the VG autoactivation property, the LV autoactivation property,
+the auto_activation_volume_list.  The "activation skip" property
+would also be relevant, since it applies to both normal and auto
+activation.
+---
+ lib/config/config_settings.h          |  40 ++--
+ lib/format_text/flags.c               |   2 +
+ lib/metadata/lv_manip.c               |   4 +
+ lib/metadata/metadata-exported.h      |   6 +-
+ lib/metadata/metadata.h               |   1 -
+ lib/report/columns.h                  |   2 +
+ lib/report/properties.c               |   4 +
+ lib/report/report.c                   |  17 ++
+ test/shell/autoactivation-metadata.sh | 335 ++++++++++++++++++++++++++++++++++
+ tools/args.h                          |  28 ++-
+ tools/command-lines.in                |   9 +-
+ tools/lvchange.c                      |  32 ++++
+ tools/lvcreate.c                      |   3 +
+ tools/vgchange.c                      |  31 ++++
+ tools/vgcreate.c                      |   3 +
+ 15 files changed, 486 insertions(+), 31 deletions(-)
+ create mode 100644 test/shell/autoactivation-metadata.sh
+
+diff --git a/lib/config/config_settings.h b/lib/config/config_settings.h
+index a19402d9d..3946a7129 100644
+--- a/lib/config/config_settings.h
++++ b/lib/config/config_settings.h
+@@ -1119,10 +1119,12 @@ cfg(global_event_activation_CFG, "event_activation", global_CFG_SECTION, CFG_DEF
+ 	"Activate LVs based on system-generated device events.\n"
+ 	"When a device appears on the system, a system-generated event runs\n"
+ 	"the pvscan command to activate LVs if the new PV completes the VG.\n"
+-	"Use auto_activation_volume_list to select which LVs should be\n"
+-	"activated from these events (the default is all.)\n"
+ 	"When event_activation is disabled, the system will generally run\n"
+-	"a direct activation command to activate LVs in complete VGs.\n")
++	"a direct activation command to activate LVs in complete VGs.\n"
++	"Activation commands that are run by the system, either from events\n"
++	"or at fixed points during startup, use autoactivation (-aay).  See\n"
++	"the --setautoactivation option or the auto_activation_volume_list\n"
++	"setting to configure autoactivation for specific VGs or LVs.\n")
+ 
+ cfg(global_use_lvmetad_CFG, "use_lvmetad", global_CFG_SECTION, 0, CFG_TYPE_BOOL, 0, vsn(2, 2, 93), 0, vsn(2, 3, 0), NULL,
+ 	"This setting is no longer used.\n")
+@@ -1402,22 +1404,22 @@ cfg_array(activation_volume_list_CFG, "volume_list", activation_CFG_SECTION, CFG
+ 	"#\n")
+ 
+ cfg_array(activation_auto_activation_volume_list_CFG, "auto_activation_volume_list", activation_CFG_SECTION, CFG_ALLOW_EMPTY | CFG_DEFAULT_UNDEFINED, CFG_TYPE_STRING, NULL, vsn(2, 2, 97), NULL, 0, NULL,
+-	"Only LVs selected by this list are auto-activated.\n"
+-	"This list works like volume_list, but it is used only by\n"
+-	"auto-activation commands. It does not apply to direct activation\n"
+-	"commands. If this list is defined, an LV is only auto-activated\n"
+-	"if it matches an entry in this list. If this list is undefined, it\n"
+-	"imposes no limits on LV auto-activation (all are allowed.) If this\n"
+-	"list is defined and empty, i.e. \"[]\", then no LVs are selected for\n"
+-	"auto-activation. An LV that is selected by this list for\n"
+-	"auto-activation, must also be selected by volume_list (if defined)\n"
+-	"before it is activated. Auto-activation is an activation command that\n"
+-	"includes the 'a' argument: --activate ay or -a ay. The 'a' (auto)\n"
+-	"argument for auto-activation is meant to be used by activation\n"
+-	"commands that are run automatically by the system, as opposed to LVM\n"
+-	"commands run directly by a user. A user may also use the 'a' flag\n"
+-	"directly to perform auto-activation. Also see pvscan(8) for more\n"
+-	"information about auto-activation.\n"
++	"A list of VGs or LVs that should be autoactivated.\n"
++	"Autoactivation is an activation command run with -aay,\n"
++	"i.e. vgchange -aay, lvchange -aay, or pvscan --cache -aay.\n"
++	"When this list is defined, an autoactivation command will only\n"
++	"activate LVs included in the list. If this list is undefined,\n"
++	"it has no effect. If this list is defined but empty, then no\n"
++	"LVs will be autoactivated. LVs can be included in the list by\n"
++	"LV name, VG name (applies to all LVs in the VG), or tag name.\n"
++	"VGs and LVs can also have an autoactivation property set in\n"
++	"metadata, see --setautoactivation. LVs included in this list\n"
++	"will not be autoactivated if the VG or LV autoactivation\n"
++	"property is disabled (see vgs or lvs \"-o autoactivation\").\n"
++	"The volume_list setting and the \"activation skip\" property\n"
++	"also apply to autoactivation.\n"
++	"The -aay option is meant to be used by activation commands that\n"
++	"are run automatically by the system, e.g. from systemd services.\n"
+ 	"#\n"
+ 	"Accepted values:\n"
+ 	"  vgname\n"
+diff --git a/lib/format_text/flags.c b/lib/format_text/flags.c
+index 4cee14aa7..3890a40cc 100644
+--- a/lib/format_text/flags.c
++++ b/lib/format_text/flags.c
+@@ -35,6 +35,7 @@ static const struct flag _vg_flags[] = {
+ 	{LVM_READ, "READ", STATUS_FLAG},
+ 	{LVM_WRITE, "WRITE", STATUS_FLAG},
+ 	{LVM_WRITE_LOCKED, "WRITE_LOCKED", COMPATIBLE_FLAG},
++	{NOAUTOACTIVATE, "NOAUTOACTIVATE", COMPATIBLE_FLAG},
+ 	{CLUSTERED, "CLUSTERED", STATUS_FLAG},
+ 	{SHARED, "SHARED", STATUS_FLAG},
+ 	{PARTIAL_VG, NULL, 0},
+@@ -70,6 +71,7 @@ static const struct flag _lv_flags[] = {
+ 	{LV_REMOVE_AFTER_RESHAPE, "REMOVE_AFTER_RESHAPE", SEGTYPE_FLAG},
+ 	{LV_WRITEMOSTLY, "WRITEMOSTLY", STATUS_FLAG},
+ 	{LV_ACTIVATION_SKIP, "ACTIVATION_SKIP", COMPATIBLE_FLAG},
++	{LV_NOAUTOACTIVATE, "NOAUTOACTIVATE", COMPATIBLE_FLAG},
+ 	{LV_ERROR_WHEN_FULL, "ERROR_WHEN_FULL", COMPATIBLE_FLAG},
+ 	{LV_METADATA_FORMAT, "METADATA_FORMAT", SEGTYPE_FLAG},
+ 	{LV_CACHE_VOL, "CACHE_VOL", COMPATIBLE_FLAG},
+diff --git a/lib/metadata/lv_manip.c b/lib/metadata/lv_manip.c
+index b38acf883..ff2a673eb 100644
+--- a/lib/metadata/lv_manip.c
++++ b/lib/metadata/lv_manip.c
+@@ -8569,6 +8569,10 @@ static struct logical_volume *_lv_create_an_lv(struct volume_group *vg,
+ 
+ 	lv_set_activation_skip(lv, lp->activation_skip & ACTIVATION_SKIP_SET,
+ 			       lp->activation_skip & ACTIVATION_SKIP_SET_ENABLED);
++
++	if (lp->noautoactivate)
++		lv->status |= LV_NOAUTOACTIVATE;
++
+ 	/*
+ 	 * Check for autoactivation.
+ 	 * If the LV passes the auto activation filter, activate
+diff --git a/lib/metadata/metadata-exported.h b/lib/metadata/metadata-exported.h
+index 8ae067ebc..c6116350f 100644
+--- a/lib/metadata/metadata-exported.h
++++ b/lib/metadata/metadata-exported.h
+@@ -57,7 +57,9 @@
+ #define ALLOCATABLE_PV		UINT64_C(0x0000000000000008)	/* PV */
+ #define ARCHIVED_VG		ALLOCATABLE_PV		/* VG, reuse same bit */
+ 
+-//#define SPINDOWN_LV		UINT64_C(0x0000000000000010)	/* LV */
++#define LV_NOAUTOACTIVATE	UINT64_C(0x0000000000000010)   /* LV - also a PV flag */
++#define NOAUTOACTIVATE		UINT64_C(0x0000000000000010)   /* VG - also a PV flag */
++
+ //#define BADBLOCK_ON		UINT64_C(0x0000000000000020)	/* LV */
+ #define VISIBLE_LV		UINT64_C(0x0000000000000040)	/* LV */
+ #define FIXED_MINOR		UINT64_C(0x0000000000000080)	/* LV */
+@@ -159,6 +161,7 @@
+ #define LV_CACHE_USES_CACHEVOL	UINT64_C(0x4000000000000000)	/* LV - also a PV flag */
+ 
+ 
++
+ /* Format features flags */
+ #define FMT_SEGMENTS		0x00000001U	/* Arbitrary segment params? */
+ // #define FMT_MDAS		0x00000002U	/* Proper metadata areas? */
+@@ -972,6 +975,7 @@ struct lvcreate_params {
+ #define ACTIVATION_SKIP_SET_ENABLED	0x02 /* set the LV activation skip flag state to 'enabled' */
+ #define ACTIVATION_SKIP_IGNORE		0x04 /* request to ignore LV activation skip flag (if any) */
+ 	int activation_skip; /* activation skip flags */
++	int noautoactivate; /* 1 if --setautoactivation n */
+ 	activation_change_t activate; /* non-snapshot, non-mirror */
+ 	thin_discards_t discards;     /* thin */
+ 	thin_zero_t zero_new_blocks;
+diff --git a/lib/metadata/metadata.h b/lib/metadata/metadata.h
+index 3ea77ce2e..dfd576e3c 100644
+--- a/lib/metadata/metadata.h
++++ b/lib/metadata/metadata.h
+@@ -55,7 +55,6 @@
+ 
+ /* May any free extents on this PV be used or must they be left free? */
+ 
+-#define SPINDOWN_LV          	UINT64_C(0x00000010)	/* LV */
+ #define BADBLOCK_ON       	UINT64_C(0x00000020)	/* LV */
+ //#define VIRTUAL			UINT64_C(0x00010000)	/* LV - internal use only */
+ #define PRECOMMITTED		UINT64_C(0x00200000)	/* VG - internal use only */
+diff --git a/lib/report/columns.h b/lib/report/columns.h
+index 8d2f7a993..12b78b766 100644
+--- a/lib/report/columns.h
++++ b/lib/report/columns.h
+@@ -61,6 +61,7 @@ FIELD(LVS, lv, STR, "AllocPol", lvid, 10, lvallocationpolicy, lv_allocation_poli
+ FIELD(LVS, lv, BIN, "AllocLock", lvid, 10, lvallocationlocked, lv_allocation_locked, "Set if LV is locked against allocation changes.", 0)
+ FIELD(LVS, lv, BIN, "FixMin", lvid, 10, lvfixedminor, lv_fixed_minor, "Set if LV has fixed minor number assigned.", 0)
+ FIELD(LVS, lv, BIN, "SkipAct", lvid, 15, lvskipactivation, lv_skip_activation, "Set if LV is skipped on activation.", 0)
++FIELD(LVS, lv, BIN, "AutoAct", lvid, 0, lvautoactivation, lv_autoactivation, "Set if LV autoactivation is enabled.", 0)
+ FIELD(LVS, lv, STR, "WhenFull", lvid, 15, lvwhenfull, lv_when_full, "For thin pools, behavior when full.", 0)
+ FIELD(LVS, lv, STR, "Active", lvid, 0, lvactive, lv_active, "Active state of the LV.", 0)
+ FIELD(LVS, lv, BIN, "ActLocal", lvid, 10, lvactivelocally, lv_active_locally, "Set if the LV is active locally.", 0)
+@@ -222,6 +223,7 @@ FIELD(VGS, vg, STR, "Attr", cmd, 5, vgstatus, vg_attr, "Various attributes - see
+ FIELD(VGS, vg, STR, "VPerms", cmd, 10, vgpermissions, vg_permissions, "VG permissions.", 0)
+ FIELD(VGS, vg, BIN, "Extendable", cmd, 0, vgextendable, vg_extendable, "Set if VG is extendable.", 0)
+ FIELD(VGS, vg, BIN, "Exported", cmd, 10, vgexported, vg_exported, "Set if VG is exported.", 0)
++FIELD(VGS, vg, BIN, "AutoAct", cmd, 0, vgautoactivation, vg_autoactivation, "Set if VG autoactivation is enabled.", 0)
+ FIELD(VGS, vg, BIN, "Partial", cmd, 10, vgpartial, vg_partial, "Set if VG is partial.", 0)
+ FIELD(VGS, vg, STR, "AllocPol", cmd, 10, vgallocationpolicy, vg_allocation_policy, "VG allocation policy.", 0)
+ FIELD(VGS, vg, BIN, "Clustered", cmd, 10, vgclustered, vg_clustered, "Set if VG is clustered.", 0)
+diff --git a/lib/report/properties.c b/lib/report/properties.c
+index f2174b83c..12ea890f4 100644
+--- a/lib/report/properties.c
++++ b/lib/report/properties.c
+@@ -269,6 +269,8 @@ GET_PV_STR_PROPERTY_FN(pv_device_id_type, pv->device_id_type)
+ #define _vg_extendable_get prop_not_implemented_get
+ #define _vg_exported_set prop_not_implemented_set
+ #define _vg_exported_get prop_not_implemented_get
++#define _vg_autoactivation_set prop_not_implemented_set
++#define _vg_autoactivation_get prop_not_implemented_get
+ #define _vg_partial_set prop_not_implemented_set
+ #define _vg_partial_get prop_not_implemented_get
+ #define _vg_allocation_policy_set prop_not_implemented_set
+@@ -323,6 +325,8 @@ GET_PV_STR_PROPERTY_FN(pv_device_id_type, pv->device_id_type)
+ #define _lv_skip_activation_get prop_not_implemented_get
+ #define _lv_check_needed_set prop_not_implemented_set
+ #define _lv_check_needed_get prop_not_implemented_get
++#define _lv_autoactivation_set prop_not_implemented_set
++#define _lv_autoactivation_get prop_not_implemented_get
+ #define _lv_historical_set prop_not_implemented_set
+ #define _lv_historical_get prop_not_implemented_get
+ 
+diff --git a/lib/report/report.c b/lib/report/report.c
+index 2f5811a96..222d3f4b6 100644
+--- a/lib/report/report.c
++++ b/lib/report/report.c
+@@ -3573,6 +3573,15 @@ static int _vgexported_disp(struct dm_report *rh, struct dm_pool *mem,
+ 	return _binary_disp(rh, mem, field, exported, GET_FIRST_RESERVED_NAME(vg_exported_y), private);
+ }
+ 
++static int _vgautoactivation_disp(struct dm_report *rh, struct dm_pool *mem,
++			    struct dm_report_field *field,
++			    const void *data, void *private)
++{
++	const struct volume_group *vg = (const struct volume_group *)data;
++	int aa_yes = (vg->status & NOAUTOACTIVATE) ? 0 : 1;
++	return _binary_disp(rh, mem, field, aa_yes, "enabled", private);
++}
++
+ static int _vgpartial_disp(struct dm_report *rh, struct dm_pool *mem,
+ 			   struct dm_report_field *field,
+ 			   const void *data, void *private)
+@@ -3969,6 +3978,14 @@ static int _lvskipactivation_disp(struct dm_report *rh, struct dm_pool *mem,
+ 	return _binary_disp(rh, mem, field, skip_activation, "skip activation", private);
+ }
+ 
++static int _lvautoactivation_disp(struct dm_report *rh, struct dm_pool *mem,
++				  struct dm_report_field *field,
++				  const void *data, void *private)
++{
++	int aa_yes = (((const struct logical_volume *) data)->status & LV_NOAUTOACTIVATE) ? 0 : 1;
++	return _binary_disp(rh, mem, field, aa_yes, "enabled", private);
++}
++
+ static int _lvhistorical_disp(struct dm_report *rh, struct dm_pool *mem,
+ 			      struct dm_report_field *field,
+ 			      const void *data, void *private)
+diff --git a/test/shell/autoactivation-metadata.sh b/test/shell/autoactivation-metadata.sh
+new file mode 100644
+index 000000000..4ee2b75c0
+--- /dev/null
++++ b/test/shell/autoactivation-metadata.sh
+@@ -0,0 +1,335 @@
++
++SKIP_WITH_LVMPOLLD=1
++
++RUNDIR="/run"
++test -d "$RUNDIR" || RUNDIR="/var/run"
++PVS_ONLINE_DIR="$RUNDIR/lvm/pvs_online"
++VGS_ONLINE_DIR="$RUNDIR/lvm/vgs_online"
++PVS_LOOKUP_DIR="$RUNDIR/lvm/pvs_lookup"
++
++_clear_online_files() {
++        # wait till udev is finished
++        aux udev_wait
++        rm -f "$PVS_ONLINE_DIR"/*
++        rm -f "$VGS_ONLINE_DIR"/*
++        rm -f "$PVS_LOOKUP_DIR"/*
++}
++
++. lib/inittest
++
++aux prepare_devs 1
++
++#
++# test lvchange --setautoactivation
++#
++
++# default
++vgcreate $SHARED $vg "$dev1"
++lvcreate -n $lv1 -l1 -an $vg
++check vg_field $vg autoactivation "enabled"
++check lv_field $vg/$lv1 autoactivation "enabled"
++
++lvchange -aay $vg/$lv1
++check lv_field $vg/$lv1 lv_active "active"
++lvchange -an $vg/$lv1
++lvchange -aay $vg
++check lv_field $vg/$lv1 lv_active "active"
++lvchange -an $vg/$lv1
++vgchange -aay $vg
++check lv_field $vg/$lv1 lv_active "active"
++lvchange -an $vg/$lv1
++pvscan --cache -aay "$dev1"
++check lv_field $vg/$lv1 lv_active "active"
++lvchange -an $vg/$lv1
++_clear_online_files
++
++# --aa=n
++lvchange --setautoactivation n $vg/$lv1
++check vg_field $vg autoactivation "enabled"
++check lv_field $vg/$lv1 autoactivation ""
++
++lvchange -aay $vg/$lv1
++check lv_field $vg/$lv1 lv_active ""
++lvchange -aay $vg
++check lv_field $vg/$lv1 lv_active ""
++vgchange -aay $vg
++check lv_field $vg/$lv1 lv_active ""
++pvscan --cache -aay "$dev1"
++check lv_field $vg/$lv1 lv_active ""
++_clear_online_files
++
++# --aa=y
++lvchange --setautoactivation y $vg/$lv1
++check vg_field $vg autoactivation "enabled"
++check lv_field $vg/$lv1 autoactivation "enabled"
++
++lvchange -aay $vg/$lv1
++check lv_field $vg/$lv1 lv_active "active"
++lvchange -an $vg/$lv1
++lvchange -aay $vg
++check lv_field $vg/$lv1 lv_active "active"
++lvchange -an $vg/$lv1
++vgchange -aay $vg
++check lv_field $vg/$lv1 lv_active "active"
++lvchange -an $vg/$lv1
++pvscan --cache -aay "$dev1"
++check lv_field $vg/$lv1 lv_active "active"
++lvchange -an $vg/$lv1
++_clear_online_files
++
++vgremove -y $vg
++
++#
++# test vgchange --setautoactivation
++#
++
++# default
++vgcreate $SHARED $vg "$dev1"
++lvcreate -n $lv1 -l1 -an $vg
++
++# --aa=n
++vgchange --setautoactivation n $vg
++check vg_field $vg autoactivation ""
++check lv_field $vg/$lv1 autoactivation "enabled"
++
++lvchange -aay $vg/$lv1
++check lv_field $vg/$lv1 lv_active ""
++lvchange -aay $vg
++check lv_field $vg/$lv1 lv_active ""
++vgchange -aay $vg
++check lv_field $vg/$lv1 lv_active ""
++pvscan --cache -aay "$dev1"
++check lv_field $vg/$lv1 lv_active ""
++_clear_online_files
++
++# --aa=y
++vgchange --setautoactivation y $vg
++check vg_field $vg autoactivation "enabled"
++check lv_field $vg/$lv1 autoactivation "enabled"
++
++lvchange -aay $vg/$lv1
++check lv_field $vg/$lv1 lv_active "active"
++lvchange -an $vg/$lv1
++lvchange -aay $vg
++check lv_field $vg/$lv1 lv_active "active"
++lvchange -an $vg/$lv1
++vgchange -aay $vg
++check lv_field $vg/$lv1 lv_active "active"
++lvchange -an $vg/$lv1
++pvscan --cache -aay "$dev1"
++check lv_field $vg/$lv1 lv_active "active"
++lvchange -an $vg/$lv1
++_clear_online_files
++
++vgremove -y $vg
++
++#
++# test vgcreate --setautoactivation, lvcreate --setautoactivation
++#
++
++vgcreate $SHARED $vg "$dev1"
++lvcreate -n $lv1 -l1 -an $vg
++lvcreate -n $lv2 -l1 --setautoactivation y -an $vg
++lvcreate -n $lv3 -l1 --setautoactivation n -an $vg
++check vg_field $vg autoactivation "enabled"
++check lv_field $vg/$lv1 autoactivation "enabled"
++check lv_field $vg/$lv2 autoactivation "enabled"
++check lv_field $vg/$lv3 autoactivation ""
++vgchange -aay $vg
++check lv_field $vg/$lv1 lv_active "active"
++check lv_field $vg/$lv2 lv_active "active"
++check lv_field $vg/$lv3 lv_active ""
++vgchange -an $vg
++lvchange -aay $vg/$lv1
++lvchange -aay $vg/$lv2
++lvchange -aay $vg/$lv3
++check lv_field $vg/$lv1 lv_active "active"
++check lv_field $vg/$lv2 lv_active "active"
++check lv_field $vg/$lv3 lv_active ""
++vgchange -an $vg
++pvscan --cache -aay "$dev1"
++check lv_field $vg/$lv1 lv_active "active"
++check lv_field $vg/$lv2 lv_active "active"
++check lv_field $vg/$lv3 lv_active ""
++vgchange -an $vg
++vgremove -y $vg
++_clear_online_files
++
++vgcreate $SHARED --setautoactivation y $vg "$dev1"
++lvcreate -n $lv1 -l1 -an $vg
++lvcreate -n $lv2 -l1 --setautoactivation y -an $vg
++lvcreate -n $lv3 -l1 --setautoactivation n -an $vg
++check vg_field $vg autoactivation "enabled"
++check lv_field $vg/$lv1 autoactivation "enabled"
++check lv_field $vg/$lv2 autoactivation "enabled"
++check lv_field $vg/$lv3 autoactivation ""
++vgchange -aay $vg
++check lv_field $vg/$lv1 lv_active "active"
++check lv_field $vg/$lv2 lv_active "active"
++check lv_field $vg/$lv3 lv_active ""
++vgchange -an $vg
++lvchange -aay $vg/$lv1
++lvchange -aay $vg/$lv2
++lvchange -aay $vg/$lv3
++check lv_field $vg/$lv1 lv_active "active"
++check lv_field $vg/$lv2 lv_active "active"
++check lv_field $vg/$lv3 lv_active ""
++vgchange -an $vg
++pvscan --cache -aay "$dev1"
++check lv_field $vg/$lv1 lv_active "active"
++check lv_field $vg/$lv2 lv_active "active"
++check lv_field $vg/$lv3 lv_active ""
++vgchange -an $vg
++vgremove -y $vg
++_clear_online_files
++
++vgcreate $SHARED --setautoactivation n $vg "$dev1"
++lvcreate -n $lv1 -l1 -an $vg
++lvcreate -n $lv2 -l1 --setautoactivation y -an $vg
++lvcreate -n $lv3 -l1 --setautoactivation n -an $vg
++check vg_field $vg autoactivation ""
++check lv_field $vg/$lv1 autoactivation "enabled"
++check lv_field $vg/$lv2 autoactivation "enabled"
++check lv_field $vg/$lv3 autoactivation ""
++vgchange -aay $vg
++check lv_field $vg/$lv1 lv_active ""
++check lv_field $vg/$lv2 lv_active ""
++check lv_field $vg/$lv3 lv_active ""
++lvchange -aay $vg/$lv1
++lvchange -aay $vg/$lv2
++lvchange -aay $vg/$lv3
++check lv_field $vg/$lv1 lv_active ""
++check lv_field $vg/$lv2 lv_active ""
++check lv_field $vg/$lv3 lv_active ""
++pvscan --cache -aay "$dev1"
++check lv_field $vg/$lv1 lv_active ""
++check lv_field $vg/$lv2 lv_active ""
++check lv_field $vg/$lv3 lv_active ""
++vgremove -y $vg
++_clear_online_files
++
++
++#
++# test combination of --aa and auto_activation_volume_list
++#
++
++vgcreate $SHARED $vg "$dev1"
++lvcreate -n $lv1 -l1 -an $vg
++lvcreate -n $lv2 -l1 --setautoactivation n -an $vg
++check vg_field $vg autoactivation "enabled"
++check lv_field $vg/$lv1 autoactivation "enabled"
++check lv_field $vg/$lv2 autoactivation ""
++
++# list prevents all aa, metadata settings don't matter
++aux lvmconf "activation/auto_activation_volume_list = [ ]"
++vgchange -aay $vg
++check lv_field $vg/$lv1 lv_active ""
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++lvchange -aay $vg/$lv1
++lvchange -aay $vg/$lv2
++check lv_field $vg/$lv1 lv_active ""
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++pvscan --cache -aay "$dev1"
++check lv_field $vg/$lv1 lv_active ""
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++_clear_online_files
++
++# list allows all vg aa, metadata allows lv1 -> lv1 activated
++aux lvmconf "activation/auto_activation_volume_list = [ \"$vg\" ]"
++vgchange -aay $vg
++check lv_field $vg/$lv1 lv_active "active"
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++lvchange -aay $vg/$lv1
++lvchange -aay $vg/$lv2
++check lv_field $vg/$lv1 lv_active "active"
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++pvscan --cache -aay "$dev1"
++check lv_field $vg/$lv1 lv_active "active"
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++_clear_online_files
++
++# list allows lv1, metadata allows lv1 -> lv1 activated
++aux lvmconf "activation/auto_activation_volume_list = [ \"$vg/$lv1\" ]"
++vgchange -aay $vg
++check lv_field $vg/$lv1 lv_active "active"
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++lvchange -aay $vg/$lv1
++lvchange -aay $vg/$lv2
++check lv_field $vg/$lv1 lv_active "active"
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++pvscan --cache -aay "$dev1"
++check lv_field $vg/$lv1 lv_active "active"
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++_clear_online_files
++
++# list allows lv2, metadata allows lv1 -> nothing activated
++aux lvmconf "activation/auto_activation_volume_list = [ \"$vg/$lv2\" ]"
++vgchange -aay $vg
++check lv_field $vg/$lv1 lv_active ""
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++lvchange -aay $vg/$lv1
++lvchange -aay $vg/$lv2
++check lv_field $vg/$lv1 lv_active ""
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++pvscan --cache -aay "$dev1"
++check lv_field $vg/$lv1 lv_active ""
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++_clear_online_files
++
++vgremove -y $vg
++
++vgcreate $SHARED --setautoactivation n $vg "$dev1"
++lvcreate -n $lv1 -l1 -an $vg
++lvcreate -n $lv2 -l1 --setautoactivation n -an $vg
++check vg_field $vg autoactivation ""
++check lv_field $vg/$lv1 autoactivation "enabled"
++check lv_field $vg/$lv2 autoactivation ""
++
++# list prevents all aa, metadata settings don't matter
++aux lvmconf "activation/auto_activation_volume_list = [ ]"
++vgchange -aay $vg
++check lv_field $vg/$lv1 lv_active ""
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++lvchange -aay $vg/$lv1
++lvchange -aay $vg/$lv2
++check lv_field $vg/$lv1 lv_active ""
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++pvscan --cache -aay "$dev1"
++check lv_field $vg/$lv1 lv_active ""
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++_clear_online_files
++
++# list allows lv1, metadata disallows vg -> nothing activated
++aux lvmconf "activation/auto_activation_volume_list = [ \"$vg/$lv1\" ]"
++vgchange -aay $vg
++check lv_field $vg/$lv1 lv_active ""
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++lvchange -aay $vg/$lv1
++lvchange -aay $vg/$lv2
++check lv_field $vg/$lv1 lv_active ""
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++pvscan --cache -aay "$dev1"
++check lv_field $vg/$lv1 lv_active ""
++check lv_field $vg/$lv2 lv_active ""
++vgchange -an $vg
++_clear_online_files
++
++vgremove -y $vg
++
+diff --git a/tools/args.h b/tools/args.h
+index c1d32be32..3dcffe224 100644
+--- a/tools/args.h
++++ b/tools/args.h
+@@ -87,6 +87,17 @@ arg(atversion_ARG, '\0', "atversion", string_VAL, 0, 0,
+     "which does not contain any newer settings for which LVM would\n"
+     "issue a warning message when checking the configuration.\n")
+ 
++arg(setautoactivation_ARG, '\0', "setautoactivation", bool_VAL, 0, 0,
++    "Set the autoactivation property on a VG or LV.\n"
++    "Display the property with vgs or lvs \"-o autoactivation\".\n"
++    "When the autoactivation property is disabled, the VG or LV\n"
++    "will not be activated by a command doing autoactivation\n"
++    "(vgchange, lvchange, or pvscan using -aay.)\n"
++    "If autoactivation is disabled on a VG, no LVs will be autoactivated\n"
++    "in that VG, and the LV autoactivation property has no effect.\n"
++    "If autoactivation is enabled on a VG, autoactivation can be disabled\n"
++    "for individual LVs.\n")
++
+ arg(binary_ARG, '\0', "binary", 0, 0, 0,
+     "Use binary values \"0\" or \"1\" instead of descriptive literal values\n"
+     "for columns that have exactly two valid values to report (not counting\n"
+@@ -960,12 +971,17 @@ arg(activate_ARG, 'a', "activate", activation_VAL, 0, 0,
+     "link and present this as the name of the device.\n"
+     "The location and name of the underlying device node may depend on\n"
+     "the distribution, configuration (e.g. udev), or release version.\n"
+-    "\\fBay\\fP specifies autoactivation, in which case an LV is activated\n"
+-    "only if it matches an item in lvm.conf activation/auto_activation_volume_list.\n"
+-    "If the list is not set, all LVs are considered to match, and if\n"
+-    "if the list is set but empty, no LVs match.\n"
+-    "Autoactivation should be used during system boot to make it possible\n"
+-    "to select which LVs should be automatically activated by the system.\n"
++    "\\fBay\\fP specifies autoactivation, which is used by system-generated\n"
++    "activation commands.  By default, LVs are autoactivated.\n"
++    "An autoactivation property can be set on a VG or LV to disable autoactivation,\n"
++    "see --setautoactivation y|n in vgchange, lvchange, vgcreate, and lvcreate.\n"
++    "Display the property with vgs or lvs \"-o autoactivation\".\n"
++    "The lvm.conf auto_activation_volume_list includes names of VGs or LVs\n"
++    "that should be autoactivated, and anything not listed is not autoactivated.\n"
++    "When auto_activation_volume_list is undefined (the default), it has no effect.\n"
++    "If auto_activation_volume_list is defined and empty, no LVs are autoactivated.\n"
++    "Items included by auto_activation_volume_list will not be autoactivated if\n"
++    "the autoactivation property has been disabled.\n"
+     "See \\fBlvmlockd\\fP(8) for more information about activation options \\fBey\\fP and \\fBsy\\fP for shared VGs.\n"
+     "#lvcreate\n"
+     "Controls the active state of the new LV.\n"
+diff --git a/tools/command-lines.in b/tools/command-lines.in
+index 528811f52..0a3359630 100644
+--- a/tools/command-lines.in
++++ b/tools/command-lines.in
+@@ -224,7 +224,7 @@ OO_LVCHANGE_META: --addtag Tag, --deltag Tag,
+ --compression Bool, --deduplication Bool,
+ --detachprofile, --metadataprofile String, --profile String,
+ --permission Permission, --readahead Readahead, --setactivationskip Bool,
+---errorwhenfull Bool, --discards Discards, --zero Bool,
++--setautoactivation Bool, --errorwhenfull Bool, --discards Discards, --zero Bool,
+ --cachemode CacheMode, --cachepolicy String, --cachesettings String,
+ --minrecoveryrate SizeKB, --maxrecoveryrate SizeKB,
+ --writebehind Number, --writemostly WriteMostlyPV, --persistent n
+@@ -799,7 +799,7 @@ OO_LVCREATE: --addtag Tag, --alloc Alloc, --autobackup Bool, --activate Active,
+ --metadataprofile String, --minor Number, --monitor Bool, --name String, --nosync,
+ --noudevsync, --permission Permission, --persistent Bool, --readahead Readahead,
+ --reportformat ReportFmt, --setactivationskip Bool, --wipesignatures Bool,
+---zero Bool
++--zero Bool, --setautoactivation Bool
+ 
+ OO_LVCREATE_CACHE: --cachemode CacheMode, --cachepolicy String, --cachesettings String,
+ --chunksize SizeKB, --cachemetadataformat CacheMetadataFormat
+@@ -1662,7 +1662,8 @@ OO_VGCHANGE_META: --addtag Tag, --deltag Tag,
+ --logicalvolume Uint32, --maxphysicalvolumes Uint32, --alloc Alloc, --uuid,
+ --pvmetadatacopies MetadataCopiesPV, --vgmetadatacopies MetadataCopiesVG,
+ --physicalextentsize SizeMB, --resizeable Bool,
+---profile String, --detachprofile, --metadataprofile String
++--profile String, --detachprofile, --metadataprofile String,
++--setautoactivation Bool
+ 
+ vgchange OO_VGCHANGE_META
+ OO: --poll Bool, OO_VGCHANGE
+@@ -1742,7 +1743,7 @@ OO: --addtag Tag, --alloc Alloc, --autobackup Bool, --clustered Bool, --maxlogic
+ --physicalextentsize SizeMB, --force, --zero Bool, --labelsector Number,
+ --metadatasize SizeMB, --pvmetadatacopies MetadataCopiesPV, --vgmetadatacopies MetadataCopiesVG,
+ --reportformat ReportFmt, --dataalignment SizeKB, --dataalignmentoffset SizeKB,
+---shared, --systemid String, --locktype LockType
++--shared, --systemid String, --locktype LockType, --setautoactivation Bool
+ ID: vgcreate_general
+ 
+ ---
+diff --git a/tools/lvchange.c b/tools/lvchange.c
+index 0189c365e..8293f5035 100644
+--- a/tools/lvchange.c
++++ b/tools/lvchange.c
+@@ -215,6 +215,10 @@ static int _lvchange_activate(struct cmd_context *cmd, struct logical_volume *lv
+ 	    !lv_passes_auto_activation_filter(cmd, lv))
+ 		return 1;
+ 
++	if ((activate == CHANGE_AAY) &&
++	    ((lv->status & LV_NOAUTOACTIVATE) || (lv->vg->status & NOAUTOACTIVATE)))
++		return 1;
++
+ 	if (!lv_change_activate(cmd, lv, activate))
+ 		return_0;
+ 
+@@ -1009,6 +1013,28 @@ static int _lvchange_activation_skip(struct logical_volume *lv, uint32_t *mr)
+ 	return 1;
+ }
+ 
++static int _lvchange_autoactivation(struct logical_volume *lv, uint32_t *mr)
++{
++	int aa_no_arg = !arg_int_value(lv->vg->cmd, setautoactivation_ARG, 0);
++	int aa_no_meta = (lv->status & LV_NOAUTOACTIVATE);
++
++	if ((aa_no_arg && aa_no_meta) || (!aa_no_arg && !aa_no_meta))
++		return 1;
++
++	if (aa_no_arg)
++		lv->status |= LV_NOAUTOACTIVATE;
++	else
++		lv->status &= ~LV_NOAUTOACTIVATE;
++
++	log_verbose("Changing autoactivation flag to %s for LV %s.",
++		    display_lvname(lv), aa_no_arg ? "no" : "yes");
++
++	/* Request caller to commit+backup metadata */
++	*mr |= MR_COMMIT;
++
++	return 1;
++}
++
+ static int _lvchange_compression(struct logical_volume *lv, uint32_t *mr)
+ {
+ 	struct cmd_context *cmd = lv->vg->cmd;
+@@ -1112,6 +1138,7 @@ static int _option_allows_group_commit(int opt_enum)
+ 		metadataprofile_ARG,
+ 		detachprofile_ARG,
+ 		setactivationskip_ARG,
++		setautoactivation_ARG,
+ 		-1
+ 	};
+ 
+@@ -1250,6 +1277,11 @@ static int _lvchange_properties_single(struct cmd_context *cmd,
+ 			doit += _lvchange_activation_skip(lv, &mr);
+ 			break;
+ 
++		case setautoactivation_ARG:
++			docmds++;
++			doit += _lvchange_autoactivation(lv, &mr);
++			break;
++
+ 		case compression_ARG:
+ 			docmds++;
+ 			doit += _lvchange_compression(lv, &mr);
+diff --git a/tools/lvcreate.c b/tools/lvcreate.c
+index 1ce561fc3..a28f0931e 100644
+--- a/tools/lvcreate.c
++++ b/tools/lvcreate.c
+@@ -742,6 +742,9 @@ static int _read_activation_params(struct cmd_context *cmd,
+ 	if (arg_is_set(cmd, ignoreactivationskip_ARG))
+ 		lp->activation_skip |= ACTIVATION_SKIP_IGNORE;
+ 
++	if (arg_is_set(cmd, setautoactivation_ARG) && !arg_int_value(cmd, setautoactivation_ARG, 1))
++		lp->noautoactivate = 1;
++
+ 	return 1;
+ }
+ 
+diff --git a/tools/vgchange.c b/tools/vgchange.c
+index 58c8ddc84..032f3efcf 100644
+--- a/tools/vgchange.c
++++ b/tools/vgchange.c
+@@ -117,6 +117,10 @@ static int _activate_lvs_in_vg(struct cmd_context *cmd, struct volume_group *vg,
+ 		    !lv_passes_auto_activation_filter(cmd, lv))
+ 			continue;
+ 
++		/* vg NOAUTOACTIVATE flag was already checked */
++		if ((activate == CHANGE_AAY) && (lv->status & LV_NOAUTOACTIVATE))
++			continue;
++
+ 		expected_count++;
+ 
+ 		if (!lv_change_activate(cmd, lv, activate)) {
+@@ -209,6 +213,11 @@ int vgchange_activate(struct cmd_context *cmd, struct volume_group *vg,
+ 		return 0;
+ 	}
+ 
++	if ((activate == CHANGE_AAY) && (vg->status & NOAUTOACTIVATE)) {
++		log_debug("Autoactivation is disabled for VG %s.", vg->name);
++		return 1;
++	}
++
+ 	/*
+ 	 * Safe, since we never write out new metadata here. Required for
+ 	 * partial activation to work.
+@@ -317,6 +326,26 @@ static int _vgchange_resizeable(struct cmd_context *cmd,
+ 	return 1;
+ }
+ 
++static int _vgchange_autoactivation(struct cmd_context *cmd,
++				    struct volume_group *vg)
++{
++	int aa_no_arg = !arg_int_value(cmd, setautoactivation_ARG, 0);
++	int aa_no_meta = (vg->status & NOAUTOACTIVATE) ? 1 : 0;
++
++	if ((aa_no_arg && aa_no_meta) || (!aa_no_arg && !aa_no_meta)) {
++		log_error("Volume group autoactivation is already %s.",
++			  aa_no_arg ? "no" : "yes");
++		return 0;
++	}
++
++	if (aa_no_arg)
++		vg->status |= NOAUTOACTIVATE;
++	else
++		vg->status &= ~NOAUTOACTIVATE;
++
++	return 1;
++}
++
+ static int _vgchange_logicalvolume(struct cmd_context *cmd,
+ 				   struct volume_group *vg)
+ {
+@@ -619,6 +648,7 @@ static int _vgchange_single(struct cmd_context *cmd, const char *vg_name,
+ 		{ logicalvolume_ARG, &_vgchange_logicalvolume },
+ 		{ maxphysicalvolumes_ARG, &_vgchange_physicalvolumes },
+ 		{ resizeable_ARG, &_vgchange_resizeable },
++		{ setautoactivation_ARG, &_vgchange_autoactivation },
+ 		{ deltag_ARG, &_vgchange_deltag },
+ 		{ addtag_ARG, &_vgchange_addtag },
+ 		{ physicalextentsize_ARG, &_vgchange_pesize },
+@@ -707,6 +737,7 @@ int vgchange(struct cmd_context *cmd, int argc, char **argv)
+ 		arg_is_set(cmd, logicalvolume_ARG) ||
+ 		arg_is_set(cmd, maxphysicalvolumes_ARG) ||
+ 		arg_is_set(cmd, resizeable_ARG) ||
++		arg_is_set(cmd, setautoactivation_ARG) ||
+ 		arg_is_set(cmd, uuid_ARG) ||
+ 		arg_is_set(cmd, physicalextentsize_ARG) ||
+ 		arg_is_set(cmd, alloc_ARG) ||
+diff --git a/tools/vgcreate.c b/tools/vgcreate.c
+index 73066e9a4..f9c40e86d 100644
+--- a/tools/vgcreate.c
++++ b/tools/vgcreate.c
+@@ -118,6 +118,9 @@ int vgcreate(struct cmd_context *cmd, int argc, char **argv)
+ 	    !vg_set_mda_copies(vg, vp_new.vgmetadatacopies))
+ 		goto_bad;
+ 
++	if (arg_is_set(cmd, setautoactivation_ARG) && !arg_int_value(cmd, setautoactivation_ARG, 1))
++		vg->status |= NOAUTOACTIVATE;
++
+ 	/* attach the pv's */
+ 	if (!vg_extend_each_pv(vg, &pp))
+ 		goto_bad;
+-- 
+2.12.3
+

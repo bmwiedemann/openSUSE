@@ -1,0 +1,47 @@
+From 6ebef9ad80ee156285a61d413b5265de9c0aa2ae Mon Sep 17 00:00:00 2001
+From: Heming Zhao <heming.zhao@suse.com>
+Date: Wed, 21 Apr 2021 11:17:36 +0800
+Subject: [PATCH] Add "nolvm" for kernel cmdline
+
+This patch is inspried by multipath patch cd3184e107c8 ("Add
+support for "multipath=off" and "nompath" on kernel cmdline")
+
+This new item for disabling lvm2 startup from kernel command
+line. One of usecases is in rescue mode, disabling lvm2 will
+allow user to enable lvm2 devices by manual.
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ scripts/lvm2-pvscan.service.in | 1 +
+ udev/69-dm-lvm-metad.rules.in  | 3 +++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/scripts/lvm2-pvscan.service.in b/scripts/lvm2-pvscan.service.in
+index 09753e8c9ef1..1977e4e215fb 100644
+--- a/scripts/lvm2-pvscan.service.in
++++ b/scripts/lvm2-pvscan.service.in
+@@ -7,6 +7,7 @@ BindsTo=dev-block-%i.device
+ After=multipathd.service
+ Before=shutdown.target
+ Conflicts=shutdown.target
++ConditionKernelCommandLine=!nolvm
+ 
+ [Service]
+ Type=oneshot
+diff --git a/udev/69-dm-lvm-metad.rules.in b/udev/69-dm-lvm-metad.rules.in
+index 78f506520c45..16e8536e8a2a 100644
+--- a/udev/69-dm-lvm-metad.rules.in
++++ b/udev/69-dm-lvm-metad.rules.in
+@@ -19,6 +19,9 @@ SUBSYSTEM!="block", GOTO="lvm_end"
+ 
+ ENV{DM_UDEV_DISABLE_OTHER_RULES_FLAG}=="1", GOTO="lvm_end"
+ 
++IMPORT{cmdline}="nolvm"
++ENV{nolvm}=="?*", GOTO="lvm_end"
++
+ # If the PV label got lost, inform lvmetad immediately.
+ # Detect the lost PV label by comparing previous ID_FS_TYPE value with current one.
+ ENV{.ID_FS_TYPE_NEW}="$env{ID_FS_TYPE}"
+-- 
+1.8.3.1
+

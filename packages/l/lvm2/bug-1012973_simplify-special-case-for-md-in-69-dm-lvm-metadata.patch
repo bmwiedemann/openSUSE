@@ -36,7 +36,7 @@ diff --git a/udev/69-dm-lvm-metad.rules.in b/udev/69-dm-lvm-metad.rules.in
 index bd75fc8efcd5..fcbb7f755eba 100644
 --- a/udev/69-dm-lvm-metad.rules.in
 +++ b/udev/69-dm-lvm-metad.rules.in
-@@ -51,13 +51,11 @@ ENV{DM_UDEV_PRIMARY_SOURCE_FLAG}=="1", ENV{DM_ACTIVATION}=="1", GOTO="lvm_scan"
+@@ -54,13 +54,11 @@ ENV{DM_UDEV_PRIMARY_SOURCE_FLAG}=="1", ENV{DM_ACTIVATION}=="1", GOTO="lvm_scan"
  GOTO="lvm_end"
  
  # MD device:

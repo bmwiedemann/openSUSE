@@ -1,0 +1,39 @@
+From 2be585b79c71b8f70c0252af5f09dbd5e6103030 Mon Sep 17 00:00:00 2001
+From: Zdenek Kabelac <zkabelac@redhat.com>
+Date: Mon, 8 Feb 2021 16:28:18 +0100
+Subject: [PATCH] pvscan: support disabled event_activation
+
+In past we had this control with use_lvmetad check for
+pvscan --cache -aay
+
+Howerer this got lost with lvmetad removal commit:
+117160b27e510dceb1ed6acf995115c040acd88d
+
+When user sets lvm.conf global/event_activation=0
+pvscan service will no longer auto activate any LVs on appeared PVs.
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ tools/pvscan.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff -Nupr a/tools/pvscan.c b/tools/pvscan.c
+--- a/tools/pvscan.c	2021-04-23 11:12:35.352431602 +0800
++++ b/tools/pvscan.c	2021-04-23 11:18:29.194565976 +0800
+@@ -1224,6 +1224,12 @@ int pvscan_cache_cmd(struct cmd_context
+ 	dm_list_init(&vgnames);
+ 	dm_list_init(&vglist);
+ 
++	if (do_activate &&
++		!find_config_tree_bool(cmd, global_event_activation_CFG, NULL)) {
++		log_verbose("Ignoring pvscan --cache -aay because event_activation is disabled.");
++		return ECMD_PROCESSED;
++	}
++
+ 	/*
+	 * When systemd/udev run pvscan --cache commands, those commands
+ 	 * should not wait on udev info since the udev info may not be
+ 
+-- 
+2.16.4
+

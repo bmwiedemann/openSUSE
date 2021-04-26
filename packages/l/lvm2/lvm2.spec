@@ -64,6 +64,9 @@ Source99:       baselibs.conf
 Patch0001:      bug-1175565_01-tools-move-struct-element-before-variable-lenght-lis.patch
 Patch0002:      bug-1175565_02-gcc-change-zero-sized-array-to-fexlible-array.patch
 Patch0003:      bug-1175565_03-gcc-zero-sized-array-to-fexlible-array-C99.patch
+Patch0004:      bug-1178680_add-metadata-based-autoactivation-property-for-VG-an.patch
+Patch0005:      bug-1185190_01-pvscan-support-disabled-event_activation.patch
+Patch0006:      bug-1185190_02-config-improve-description-for-event_activation.patch
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1001:      cmirrord_remove_date_time_from_compilation.patch
@@ -72,6 +75,7 @@ Patch1003:      fate-31841_fsadm-add-support-for-btrfs.patch
 Patch1004:      bug-935623_dmeventd-fix-dso-name-wrong-compare.patch
 Patch1005:      bug-998893_make_pvscan_service_after_multipathd.patch
 Patch1006:      bug-1179691_config-set-external_device_info_source-none.patch
+Patch1007:      bug-1184687_Add-nolvm-for-kernel-cmdline.patch
 # SUSE patches 2000+ for device mapper, udev rules
 Patch2001:      bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-metadata.patch
 # SUSE patches 3000+ for test code
@@ -123,12 +127,16 @@ Volume Manager.
 %patch0001 -p1
 %patch0002 -p1
 %patch0003 -p1
+%patch0004 -p1
+%patch0005 -p1
+%patch0006 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
 %patch1004 -p1
 %patch1005 -p1
 %patch1006 -p1
+%patch1007 -p1
 %patch2001 -p1
 
 %if !%{with lockd}
