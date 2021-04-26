@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 22 11:12:46 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to v1.32.2
+  - Bugfixes
+    - Fix a regression in Synapse 1.32.0 and 1.32.1 which caused
+      LoggingContext errors in plugins. (#9857)
+
+-------------------------------------------------------------------
 Wed Apr 21 14:08:11 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to v1.32.1
