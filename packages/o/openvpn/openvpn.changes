@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 25 19:24:56 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- update 'rcopenvpn' to work without /etc/rc.status (boo#1185273)
+
+-------------------------------------------------------------------
 Wed Jan  6 17:15:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.10:

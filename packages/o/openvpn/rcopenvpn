@@ -1,13 +1,12 @@
 #! /bin/bash
 
-SYSTEMD_NO_WRAP=1 . /etc/rc.status
-rc_reset
-
 action=$1 ; shift
 config=$1 ; shift
 
+retcode=0
+
 if test -n "$config" ; then
-	systemctl "${action}" "openvpn@${config}.service"
+	systemctl "${action}" "openvpn@${config}.service" || retcode=$?
 else
 	case $action in
 	status)
@@ -16,16 +15,14 @@ else
 		for s in ${l#ConsistsOf=} ; do
 			case $s in
 			openvpn@*.service)
-				systemctl status "$s"
-				rc_check
+				systemctl status "$s" || retcode=$?
 				((++n))
 			;;
 			esac
 		done
-		if test $n -gt 0 ; then
-			rc_status
-		else
-			rc_status -u
+		if test $n -eq 0 ; then
+			echo 'unused' >&2
+			exit 3
 		fi
 	;;
 	*)
@@ -33,5 +30,5 @@ else
 	;;
 	esac
 fi
-rc_exit
 
+exit $retcode

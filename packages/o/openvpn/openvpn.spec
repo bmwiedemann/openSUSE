@@ -32,7 +32,7 @@ Name:           openvpn
 Version:        2.4.10
 Release:        0
 Summary:        Full-featured SSL VPN solution using a TUN/TAP Interface
-License:        SUSE-GPL-2.0-with-openssl-exception AND LGPL-2.1-only
+License:        LGPL-2.1-only AND SUSE-GPL-2.0-with-openssl-exception
 Group:          Productivity/Networking/Security
 URL:            http://openvpn.net/
 Source:         https://swupdate.openvpn.org/community/releases/openvpn-%{version}.tar.xz

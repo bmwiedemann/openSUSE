@@ -776,4 +776,12 @@ behaviour fixing bsc#941569</comment>
     <comment></comment>
     <requestid>861546</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>4c5d00f5a2315d909609f7e32f856b26</srcmd5>
+    <version>2.4.10</version>
+    <time>1619447917</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888373</requestid>
+  </revision>
 </revisionlist>
