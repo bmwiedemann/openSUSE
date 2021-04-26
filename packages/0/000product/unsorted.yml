@@ -7946,6 +7946,9 @@ unsorted:
   - kontactinterface-devel 
   - kontrast 
   - kontrast-lang 
+  - kopeninghours 
+  - kopeninghours-devel 
+  - kopeninghours-lang 
   - kopete-devel 
   - kosmindoormap 
   - kosmindoormap-devel 
@@ -8636,6 +8639,7 @@ unsorted:
   - libKF5XmlRpcClient5-lang 
   - libKOSM1 
   - libKOSMIndoorMap1 
+  - libKOpeningHours1 
   - libKPimAddressbookImportExport5-devel 
   - libKPimGAPIBlogger5 
   - libKPimGAPIDrive5 
@@ -17788,6 +17792,7 @@ unsorted:
   - openttd-dedicated 
   - openttd-opengfx 
   - openttd-openmsx 
+  - openttd-opensfx 
   - opentyrian 
   - openucx-tools: [x86_64] 
   - openvas-smb 
@@ -20876,6 +20881,7 @@ unsorted:
   - python3-clustershell 
   - python3-coconut 
   - python3-congressclient 
+  - python3-ctypeslib2 
   - python3-dbus-presage 
   - python3-debtcollector 
   - python3-deltarpm 
@@ -21932,6 +21938,7 @@ unsorted:
   - python36-csvkit 
   - python36-ctypescrypto 
   - python36-curio 
+  - python36-curlylint 
   - python36-curses 
   - python36-curtsies 
   - python36-cwcwidth 
@@ -24726,10 +24733,10 @@ unsorted:
   - python38-csv23 
   - python38-csvkit 
   - python38-ctypescrypto 
-  - python38-ctypeslib2 
   - python38-cu2qu 
   - python38-cufflinks 
   - python38-curio 
+  - python38-curlylint 
   - python38-curtsies 
   - python38-cwcwidth 
   - python38-cx_Freeze 
@@ -27643,6 +27650,7 @@ unsorted:
   - python39-cu2qu 
   - python39-cufflinks 
   - python39-curio 
+  - python39-curlylint 
   - python39-curses 
   - python39-curtsies 
   - python39-cwcwidth 
@@ -29334,6 +29342,7 @@ unsorted:
   - python39-sh 
   - python39-shaptools 
   - python39-shellingham 
+  - python39-sherpa: [x86_64] 
   - python39-shijian 
   - python39-shodan 
   - python39-shortuuid 
