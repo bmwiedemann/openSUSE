@@ -1,0 +1,38 @@
+diff -Nur deepin-pw-check-5.0.11/Makefile deepin-pw-check-5.0.11-new/Makefile
+--- deepin-pw-check-5.0.11/Makefile	2021-03-03 15:15:12.000000000 +0800
++++ deepin-pw-check-5.0.11-new/Makefile	2021-03-24 22:20:19.024797706 +0800
+@@ -6,7 +6,7 @@
+ PAM_MODULE_DIR := /etc/pam.d
+ endif
+ ifeq (${PKG_FILE_DIR},)
+-PKG_FILE_DIR := /usr/local/lib/pkgconfig
++PKG_FILE_DIR := /usr/lib/pkgconfig
+ endif
+ BINARIES = deepin-pw-check
+ LIBRARIES = libdeepin_pw_check.so.1.1
+@@ -23,7 +23,7 @@
+ 	@mkdir -p out/bin
+ 
+ out/bin/%: prepare
+-	env GOPATH="${GOPATH}" ${GOBUILD} -o $@  ${GOPKG_PREFIX}/*.go
++#	env GOPATH="${GOPATH}" ${GOBUILD} -o $@  ${GOPKG_PREFIX}/*.go
+ 
+ out/${LIBRARIES}:
+ 	gcc lib/*.c -fPIC -shared -lcrypt -lcrack -liniparser -DIN_CRACKLIB -z noexecstack -Wl,-soname,libdeepin_pw_check.so.1 -o $@ $^
+@@ -46,13 +46,13 @@
+ build_tool: prepare
+ 	gcc tool/*.c -liniparser -o out/${TOOL_BINARAY}
+ 
+-build: prepare $(addprefix out/bin/, ${BINARIES}) out/${LIBRARIES} static_lib out/${PAM_MODULE} build_tool ts_to_policy
++build: prepare out/${LIBRARIES} static_lib out/${PAM_MODULE} build_tool ts_to_policy
+ 
+ install: translate
+ 	mkdir -pv ${DESTDIR}${PREFIX}/share/locale
+ 	- cp -rf out/locale/* ${DESTDIR}${PREFIX}/share/locale
+-	mkdir -p ${DESTDIR}${PREFIX}/lib
+-	cp -f out/lib* ${DESTDIR}${PREFIX}/lib
++	mkdir -p ${DESTDIR}${LIBDIR}
++	cp -f out/lib* ${DESTDIR}${LIBDIR}
+ 	mkdir -p ${DESTDIR}${PREFIX}/include
+ 	cp lib/deepin_pw_check.h ${DESTDIR}${PREFIX}/include/
+ 	mkdir -pv ${DESTDIR}/${PKG_FILE_DIR}
