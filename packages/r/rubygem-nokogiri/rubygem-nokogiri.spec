@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-nokogiri
-Version:        1.11.2
+Version:        1.11.3
 Release:        0
 %define mod_name nokogiri
 %define mod_full_name %{mod_name}-%{version}

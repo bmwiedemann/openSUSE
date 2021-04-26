@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 20 13:47:09 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.11.3
+
+  ### Fixed
+
+  * [CRuby] Passing non-`Node` objects to `Document#root=` now raises an `ArgumentError` exception.
+    Previously this likely segfaulted. [[#1900](https://github.com/sparklemotion/nokogiri/issues/1900)]
+  * [JRuby] Passing non-`Node` objects to `Document#root=` now raises an `ArgumentError` exception.
+    Previously this raised a `TypeError` exception.
+  * [CRuby] arm64/aarch64 systems (like Apple's M1) can now compile libxml2 and libxslt from source
+    (though we continue to strongly advise users to install the native gems for the best possible experience)
+
+-------------------------------------------------------------------
 Mon Mar 15 04:31:13 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.11.2
