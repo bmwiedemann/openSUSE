@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Fri Feb 26 02:14:24 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update gschema from deepin-desktop-schemas 5.8.44
+- Update icons install path
+
+-------------------------------------------------------------------
+Thu Jul 18 13:31:35 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Change dde-dock delay-plugins-time to 0 from upstream
+
+-------------------------------------------------------------------
+Fri Apr 19 07:14:35 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix deepin-desktop-schemas-branding-openSUSE install 
+
+-------------------------------------------------------------------
+Thu Apr 18 13:54:57 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update gschema from deepin-desktop-schemas 3.13.0 
+
+-------------------------------------------------------------------
+Thu Dec  7 01:14:42 UTC 2017 - hillwood@opensuse.org
+
+- Update fonts configure.
+
+-------------------------------------------------------------------
+Mon Dec  4 04:57:58 UTC 2017 - hillwood@opensuse.org
+
+- Initial package. Let us bring a Geeko style for Deepin Desktop on
+  openSUSE.
