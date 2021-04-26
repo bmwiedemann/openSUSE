@@ -1,0 +1,10 @@
+diff -Nur dde-session-shell-5.4.5/src/global_util/public_func.cpp dde-session-shell-5.4.5-new/src/global_util/public_func.cpp
+--- dde-session-shell-5.4.5/src/global_util/public_func.cpp	2021-02-26 17:16:36.000000000 +0800
++++ dde-session-shell-5.4.5-new/src/global_util/public_func.cpp	2021-03-31 21:42:32.452596981 +0800
+@@ -210,5 +210,6 @@
+         QString timeBuffer = QString::fromStdString(time.toStdString().substr(0, time.indexOf('.')));
+         return QDateTime::fromString(timeBuffer, "yyyy-MM-dd hh:mm:ss").toTime_t();
+     }
++    return 0;
+ }
+ 
