@@ -286,4 +286,14 @@
     <comment></comment>
     <requestid>785089</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>6d4f625587c0642510d567fa24b68b2a</srcmd5>
+    <version>1.6.0</version>
+    <time>1619447911</time>
+    <user>dimstar_suse</user>
+    <comment>- explicitly pass -pie in CFLAGS, since the build system explicitly passes
+  -fPIC, which breaks our gcc-PIE profile. This makes all packaged binaries
+  PIE-executables (bsc#1184122). (forwarded request 887271 from mgerstner)</comment>
+    <requestid>887291</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 21 10:28:05 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- explicitly pass -pie in CFLAGS, since the build system explicitly passes
+  -fPIC, which breaks our gcc-PIE profile. This makes all packaged binaries
+  PIE-executables (bsc#1184122).
+
+-------------------------------------------------------------------
 Tue Mar 10 10:03:02 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.6.0 (no changelog)

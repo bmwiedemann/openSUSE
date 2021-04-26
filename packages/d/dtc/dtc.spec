@@ -1,7 +1,7 @@
 #
 # spec file for package dtc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,7 +73,7 @@ Python binding part.
 %setup -q
 
 %build
-export EXTRA_CFLAGS="%{optflags}"
+export EXTRA_CFLAGS="%{optflags} -pie"
 %make_build NO_PYTHON=1
 cd pylibfdt
 python3 setup.py build_ext
