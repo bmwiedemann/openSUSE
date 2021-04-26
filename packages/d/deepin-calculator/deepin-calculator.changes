@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Tue Apr 13 13:29:40 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.7.0.15
+  * Fix bugs
+
+-------------------------------------------------------------------
+Thu Jun 25 13:05:11 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.18
+  * Use new dtk apis
+  * Use cmake
+- Add deepin-calculator-Qt-5_15.patch
+  * Support Qt 5.15
+
+-------------------------------------------------------------------
+Sat Aug 17 15:14:40 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 5.0.1 
