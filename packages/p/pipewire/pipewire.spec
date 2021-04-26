@@ -41,7 +41,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.25
+Version:        0.3.26
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -406,6 +406,7 @@ fi
 %{_bindir}/pw-dot
 %{_bindir}/pw-dump
 %{_bindir}/pw-loopback
+%{_bindir}/pw-link
 %{_bindir}/pw-metadata
 %{_bindir}/pw-mididump
 %{_bindir}/pw-midiplay
@@ -443,6 +444,7 @@ fi
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-profiler.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-protocol-native.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-protocol-pulse.so
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-protocol-simple.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-rtkit.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-session-manager.so
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-spa-device-factory.so
