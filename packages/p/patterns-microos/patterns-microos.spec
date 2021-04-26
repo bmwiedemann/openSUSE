@@ -155,6 +155,7 @@ Requires:       pattern() = microos_base
 # We need repository configuration from somewhere, so
 # make sure one gets installed
 Requires:       (libdnf-repo-config-zypp or rpm-repos-openSUSE)
+Suggests:       libdnf-repo-config-zypp
 
 %description base-microdnf
 This is the openSUSE MicroOS runtime system using the Micro DNF package manager.
@@ -175,6 +176,7 @@ Requires:       pattern() = microos_base
 # We need repository configuration from somewhere, so
 # make sure one gets installed
 Requires:       (libdnf-repo-config-zypp or rpm-repos-openSUSE)
+Suggests:       libdnf-repo-config-zypp
 
 %description base-packagekit
 This is the openSUSE MicroOS runtime system using the PackageKit service.
@@ -324,15 +326,17 @@ Requires:       cups
 Requires:       cups-filters
 Requires:       hplip-hpijs
 
-# Common tools, helpful during initial setup
+# Common tools
 Requires:       bash-completion
 Requires:       bluez-firmware
 Requires:       hicolor-icon-theme-branding-openSUSE
 Requires:       polkit-default-privs
+Requires:       systemd-icon-branding-openSUSE
 Requires:       udisks2
 Requires:       unzip
 Requires:       upower
 Requires:       wget
+Requires:       xdg-utils
 
 # More "comfortable" base package versions
 Requires:       gzip
@@ -409,8 +413,8 @@ Requires:       rsvg-thumbnailer
 # So that GNOME shell extensions can be installed
 Requires:       chrome-gnome-shell
 # we need something for xdg-su
-Requires:       libgnomesu
 Requires:       gnome-shell-search-provider-nautilus
+Requires:       libgnomesu
 Requires:       nautilus
 Requires:       nautilus-extension-terminal
 Requires:       nautilus-share
@@ -489,8 +493,6 @@ Requires:       phonon4qt5-backend-gstreamer
 Requires:       plasma-nm5
 Requires:       plasma5-addons
 Requires:       plasma5-pa
-# PackageKit doesn't handle MicroOS yet
-#Requires:       plasma5-pk-updates
 Requires:       plasma5-session-wayland
 Requires:       sddm
 # Not useful with excludedocs...
@@ -522,20 +524,23 @@ Group:          Metapackages
 Provides:       pattern-category() = MicroOS
 Requires:       apparmor-utils
 Requires:       bcache-tools
+Requires:       crda
 Requires:       cryptsetup
 Requires:       glibc-locale
 Requires:       iscsiuio
-Requires:       kernel-firmware
+# Firmware packages with proper "Supplements:" (see bsc#1184767)
+Requires:       kernel-firmware-all
 Requires:       lvm2
 Requires:       multipath-tools
 Requires:       nvme-cli
 Requires:       open-iscsi
-%ifarch %ix86 x86_64
+%ifarch %ix86 x86_64 aarch64
 Requires:       hyper-v
 Requires:       open-vm-tools
 %endif
 Requires:       pam_pwquality
 Requires:       policycoreutils-python-utils
+Requires:       spice-vdagent
 Requires:       tftpboot-installation-openSUSE-MicroOS-%{_arch}
 %ifarch %ix86 x86_64
 Requires:       ucode-amd

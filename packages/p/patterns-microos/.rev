@@ -304,4 +304,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
 - Make GNOME and KDE Plasma patterns require PackageKit pattern</comment>
     <requestid>880548</requestid>
   </revision>
+  <revision rev="31" vrev="31">
+    <srcmd5>93456ca24db2e57b5c6adafeb1ea6900</srcmd5>
+    <version>5.0</version>
+    <time>1619447932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887983</requestid>
+  </revision>
 </revisionlist>
