@@ -1,0 +1,162 @@
+-------------------------------------------------------------------
+Fri Apr 16 12:35:48 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.5
+  * Fix bugs
+
+-------------------------------------------------------------------
+Wed Feb 24 05:42:49 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.3.35
+  * Update dbus api
+  * feat: Initial packit setup
+  * Remove some headers
+  * Fix bugs
+
+-------------------------------------------------------------------
+Tue Aug 13 08:30:30 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Use suse information in lightdm-deepin-greeter (use-suse-info.patch) 
+
+-------------------------------------------------------------------
+Thu Jul 18 08:23:16 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 4.9.14
+  * Fix shutdown: not hide hibernate button when show again
+  * Fix lock: unlock when fake nopassword user
+  * Fix replace deepin_qt to dtk_qmake
+  * Fix lock: fake nopassword user when user not have password
+  * Fix greeter: update user list
+  * Fix shutdown: solve the problem caused by rebase again
+  * Fix user avatar not show
+  * Fix greeter:missing blurdone signal, wrong set user keyboard layout, not
+    show fprint pam info
+  * Fix lock: when user unlock not reset checkpasswd num, cannot reboot system
+  * Fix shutdown: when inhibitwarningview show after system monitor button
+    cannot enter hover state, multiuser warning tips are truncated
+  * create document
+  * split config files
+  * support not init native user
+  * init LDAP user is first
+  * Add ShowSwitchUserButton by [always|ondemand|disabled]
+  * Add login box does not display avatar
+  * Add LDAP login switch button
+  * Support set monitor config when release meta key
+  * Fix crash in refreshInputState when m_user is null
+  * Fix not select user last use session
+  * Fix greeter: Prevent failures caused by authentication at startup
+  * Fux greeter: session list position not align center
+  * Fix No focus after closing login lock
+  * Fix not auth user when show again
+  * Fix crash when show inhibitwarnview again
+  * Fix missing unlock mutex
+  * Fix not sync multi-screen user lock info
+  * can always auth user
+  * show error at first time
+  * shutdown fprintd device for the first time
+  * greeter: use new dpi scale ratio config
+  * Fix nopasswdlogin cannot unlock
+  * Fix not refresh nopasswordlogin when show again
+
+-------------------------------------------------------------------
+Sun May  5 03:39:07 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Install lightdm.conf
+
+-------------------------------------------------------------------
+Mon Apr 22 01:43:54 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix filelist 
+
+-------------------------------------------------------------------
+Tue Apr 16 03:47:42 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 4.9.2
+  * support deepin-auth
+  * Fix greeter: support multi screen scale ratio
+  * Fix missing deepin-qtconfig
+  * Fix not check swap again
+  * Fix screen copy mode will empty page
+  * Fix missing memory header
+  * Fix dde-lowpower: missing c++11 cxxflags
+  * Fix greeter: mulit-user fingerprint login
+  * Fix multi-screen data sync
+  * Fix translation error
+  * lock and greeter support disable sleep button for shutdownpage
+  * support config file to control function
+  * support use config value to control sleep button
+  * inhibitwarning support data sync 
+  * etc... Please view CHANGELOG.md to get more changes.
+
+-------------------------------------------------------------------
+Fri Mar 23 06:10:49 UTC 2018 - hillwood@opensuse.org
+
+- Update version to 4.3.2
+  * Fix many bugs and update features. Please see CHANGELOG.md
+    to get more detail.
+
+-------------------------------------------------------------------
+Mon Dec  4 13:01:14 UTC 2017 - hillwood@opensuse.org
+
+- Add Geeko logo for lightdm-deepin-greeter. 
+
+-------------------------------------------------------------------
+Fri Dec  1 01:14:02 UTC 2017 - hillwood@opensuse.org
+
+- Update to 4.1.7 
+  * Fix unable to login other desktop when user is nopassword 
+  * Fix error auth password when nopassword user 
+  * Fix don't show alert when user is nopasswdlogin
+  * Fix cannot open system monitor
+  * Change hide time to 1 second
+  * Fix background white
+  * Fix refresh wallpaper when not the same file
+  * Fix some widget shown too early
+  * Fix skip when click self
+  * Fix userwidget pos error when size changed
+  * Add dde-dman-portal
+  * Support display user displayname 
+  * Support display user fullname
+  * Login user interface updated
+  * Fix nopasswordlogin function failure
+  * Fix use dgettext update ts with fprint
+  * Fix set default background when get blur error 
+  * Fix osd support multiple screens list
+  * Fix switch user will login
+  * Fix window placed at wrong position
+  * Fix update ts with fprint
+  * Fix support dapplication single instance
+  * Fix scroll to current item when direct switch
+  * Use blur image dbus
+  * Adding detection rules
+  * Use dapplication and set default theme
+  * Apply system font size settings
+  * Fix not show error message when finger verification
+  * Fix show wrong passwd premature
+  * Fix cannot scroll when error index 
+  * Fix not grab keyboard
+  * Fix white screen when not use deepin wm
+  * Fix not disable hotzone when show
+  * Fix svg file error
+  * Fix correct header filename
+  * Fix upgrade success not load ts
+  * Fix remove libpam0g from debian/control
+  * Fix shutdown contentwidget not init
+  * Add finger verification timed out tip
+
+-------------------------------------------------------------------
+Mon Nov 13 01:12:08 UTC 2017 - hillwood@opensuse.org
+
+- Cleanup spec.
+  * Use %suse_update_desktop_file macro.
+  * Fix desktop file.
+  * Add Group tag.
+- Split language package.
+- Split deepin-lowpower, deepin-osd, deepin-switchtogreeter, deepin-shutdown,
+  deepin-lock and deepin-hotzone.
+
+-------------------------------------------------------------------
+Tue Oct  3 15:29:45 UTC 2017 - sensor.wen@gmail.com
+
+- Initial package.
+
