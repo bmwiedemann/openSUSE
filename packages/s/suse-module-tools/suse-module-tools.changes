@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 22 16:29:01 UTC 2021 - obs-service-tar-scm@invalid
+
+- Update to version 15.4.1:
+  * dm-crypt requires essiv in SLE15 SP3 (boo#1183063 bsc#1184134 ltc#192244).
+
+-------------------------------------------------------------------
 Tue Apr 13 15:24:23 UTC 2021 - obs-service-tar-scm@invalid
 
 - Update to version 15.4.0:
