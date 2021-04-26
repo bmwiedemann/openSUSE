@@ -22,20 +22,20 @@
 %define _python_bytecompile_errors_terminate_build 0
 %endif
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-tablib
 Version:        3.0.0
 Release:        0
 Summary:        Format agnostic tabular data library (XLS, JSON, YAML, CSV)
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://python-tablib.org
+URL:            https://github.com/jazzband/tablib
 Source:         https://files.pythonhosted.org/packages/source/t/tablib/tablib-%{version}.tar.gz
 BuildRequires:  %{python_module MarkupPy}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module odfpy}
 BuildRequires:  %{python_module openpyxl >= 2.6.0}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -71,6 +71,7 @@ Output formats supported:
 %setup -q -n tablib-%{version}
 # Remove shebang lines from non-executable scripts:
 find src -name "*.py" | xargs sed -i '1 { /^#!/ d }'
+sed -i '/addopts/ d' pytest.ini
 
 %build
 %python_build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 23 21:58:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip python36 build: no pandas
+- Update URL
+
+-------------------------------------------------------------------
 Tue Jan 12 11:24:13 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v3.0.0
