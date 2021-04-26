@@ -53,7 +53,7 @@ buildignore inxi
 buildignore sane-backends
 
 install branding-openSUSE
-install gfxboot  i686
+install gfxboot i686
 install shim x86_64
 
 # Don't pull in any -32bit libs
@@ -123,6 +123,9 @@ buildignore jing
 # Won't work with current firefox anyway
 buildignore icedtea-web
 
+# Recommended by base_x11
+buildignore tigervnc
+
 # Recommended by enhanced_base
 buildignore autofs
 buildignore expect
@@ -130,6 +133,7 @@ buildignore m4
 buildignore mutt
 buildignore net-snmp
 buildignore recode
+buildignore spax
 
 # Recommended by rest_cd_core
 buildignore awesfx
@@ -171,6 +175,10 @@ buildignore man-pages
 # VPNC is no longer
 buildignore NetworkManager-vpnc-gnome
 buildignore plasma-nm5-vpnc
+
+# We have NetworkManager instead.
+# Valid only after removal of "Requires: /sbin/ifup" in sysconfig.spec
+# buildignore wicked
 
 # Conflicts with rsyslog otherwise
 buildignore systemd-logger

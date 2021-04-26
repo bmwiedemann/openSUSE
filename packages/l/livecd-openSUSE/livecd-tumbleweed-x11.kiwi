@@ -240,6 +240,8 @@
     <ignore name="jing"/>
     <package name="aaa_base" replaces="icedtea-web"/>
     <ignore name="icedtea-web"/>
+    <package name="aaa_base" replaces="tigervnc"/>
+    <ignore name="tigervnc"/>
     <package name="aaa_base" replaces="autofs"/>
     <ignore name="autofs"/>
     <package name="aaa_base" replaces="expect"/>
@@ -252,6 +254,8 @@
     <ignore name="net-snmp"/>
     <package name="aaa_base" replaces="recode"/>
     <ignore name="recode"/>
+    <package name="aaa_base" replaces="spax"/>
+    <ignore name="spax"/>
     <package name="aaa_base" replaces="awesfx"/>
     <ignore name="awesfx"/>
     <package name="aaa_base" replaces="espeak"/>

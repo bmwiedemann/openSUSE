@@ -1205,4 +1205,12 @@
     <comment>- Limit gfxboot to i686 only: on x86_64, we have been using grub2
   to boot for quite a while already.</comment>
   </revision>
+  <revision rev="150" vrev="150">
+    <srcmd5>d7d9892492fe021251900dfa69182b4f</srcmd5>
+    <version>unknown</version>
+    <time>1619447989</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888472</requestid>
+  </revision>
 </revisionlist>
