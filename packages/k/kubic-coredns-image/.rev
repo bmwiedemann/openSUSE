@@ -17,4 +17,13 @@
 - Rework package to use kubernetes-coredns metapackage</comment>
     <requestid>831462</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>1a937cef028b920b23e910734ebf7f75</srcmd5>
+    <version>6.0.0</version>
+    <time>1619447935</time>
+    <user>dimstar_suse</user>
+    <comment>- Return v prefix in version tag to match (restored) upstream
+  behaviour</comment>
+    <requestid>888500</requestid>
+  </revision>
 </revisionlist>

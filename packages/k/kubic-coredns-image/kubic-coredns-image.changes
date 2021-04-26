@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 26 13:49:22 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Return v prefix in version tag to match (restored) upstream
+  behaviour 
+
+-------------------------------------------------------------------
 Wed Sep  2 11:29:55 UTC 2020 - Richard Brown <rbrown@suse.com>
 
 - Remove unnecessary 'v' prefix in version tag

@@ -17,7 +17,7 @@
       <containerconfig
         name="kubic/coredns"
         tag="latest"
-        additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%"
+        additionaltags="v%PKG_VERSION%,v%PKG_VERSION%-%RELEASE%"
         maintainer="Richard Brown &lt;rbrown@suse.com&gt;">
         <expose>
           <port number="53/tcp"/>
