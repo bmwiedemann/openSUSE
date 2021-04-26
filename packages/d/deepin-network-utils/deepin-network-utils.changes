@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Mon Feb 22 07:49:40 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.3.0.8
+  * Fix bugs
+  * Change apis
+
+-------------------------------------------------------------------
+Tue Dec 10 14:11:55 UTC 2019 - Hillwood Yang <hillwoodroc@gmail.com>
+
+- Update version to 5.0.1
+  * Update translations. 
+
+-------------------------------------------------------------------
+Tue Apr 16 06:41:16 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 0.1.4
+  * Fix connectivity allways NotFull if startup without NotFull
+  * Check network connectivity
+  * Distribute active connections to devices
+  * There could be multiple active connections for a device
+  * Fix macaddress
+
+-------------------------------------------------------------------
+Wed Jan  9 02:00:47 UTC 2019 - hillwood@opensuse.org
+
+- Initial package for version  0.0.8.2 
