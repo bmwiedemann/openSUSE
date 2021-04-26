@@ -39,4 +39,14 @@
     <comment>2.10.5</comment>
     <requestid>866495</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b6aac3153370616732b652b7bc9b8d67</srcmd5>
+    <version>2.10.5</version>
+    <time>1619447988</time>
+    <user>dimstar_suse</user>
+    <comment>- Rewrite to use ant for building in order to be able to use it
+  in packages that have to be built before maven
+</comment>
+    <requestid>888457</requestid>
+  </revision>
 </revisionlist>

@@ -24,11 +24,11 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/FasterXML/jackson-core/
 Source0:        https://github.com/FasterXML/jackson-core/archive/%{name}-%{version}.tar.gz
+Source1:        %{name}-build.xml
+BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:)
-BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  java-devel >= 1.6
+BuildRequires:  javapackages-local
 BuildArch:      noarch
 
 %description
@@ -44,30 +44,38 @@ This package contains API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+cp %{SOURCE1} build.xml
+mkdir -p lib
 
-# Remove plugins unnecessary for RPM builds
-%pom_remove_plugin ":maven-enforcer-plugin"
-%pom_remove_plugin "org.jacoco:jacoco-maven-plugin"
-%pom_remove_plugin "org.moditect:moditect-maven-plugin"
+# Remove section unnecessary for ant build
+%pom_remove_parent
+%pom_xpath_remove pom:project/pom:build
 
 cp -p src/main/resources/META-INF/LICENSE .
 cp -p src/main/resources/META-INF/NOTICE .
 sed -i 's/\r//' LICENSE NOTICE
 
-%{mvn_file} : %{name}
-
 %build
-%{mvn_build} -f -- -Dsource=6
+%{ant} -Dtest.skip=true package javadoc
 
 %install
-%mvn_install
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
+
+install -dm 0755 %{buildroot}%{_javadocdir}
+cp -r target/site/apidocs %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %doc README.md release-notes/*
-%license LICENSE NOTICE
+%license LICENSE
 
-%files javadoc -f .mfiles-javadoc
-%license LICENSE NOTICE
+%files javadoc
+%{_javadocdir}/%{name}
+%license LICENSE
 
 %changelog
