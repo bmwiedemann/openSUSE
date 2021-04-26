@@ -39,4 +39,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>877635</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>305e2797a9d9102fe3afcb692835856f</srcmd5>
+    <version>3.0.1</version>
+    <time>1619447974</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>888407</requestid>
+  </revision>
 </revisionlist>

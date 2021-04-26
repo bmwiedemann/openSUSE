@@ -19,7 +19,7 @@
 %global pkg_name http2
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.0.6
+Version:        3.0.1
 Release:        0
 Summary:        HTTP/2 library
 License:        BSD-3-Clause
@@ -37,23 +37,27 @@ BuildRequires:  ghc-psqueues-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-time-manager-devel
+BuildRequires:  ghc-unix-time-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-Glob-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-pretty-devel
+BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-base16-bytestring-devel
+BuildRequires:  ghc-cryptonite-devel
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-doctest-devel
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-network-run-devel
 BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-typed-process-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-vector-devel
 %endif
 
 %description
-HTTP/2 library including frames, priority queues, HPACK and server.
+HTTP/2 library including frames, priority queues, HPACK, client and server.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
