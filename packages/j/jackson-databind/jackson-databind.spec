@@ -23,14 +23,15 @@ Summary:        General data-binding package for Jackson (2.x)
 License:        Apache-2.0 AND LGPL-2.1-or-later
 URL:            https://github.com/FasterXML/jackson-databind/
 Source0:        https://github.com/FasterXML/jackson-databind/archive/%{name}-%{version}.tar.gz
+Source1:        %{name}-build.xml
+BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations)
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:)
-BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
-BuildRequires:  mvn(org.apache.bcel:bcel)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  jackson-annotations
+BuildRequires:  jackson-core
+BuildRequires:  java-devel >= 1.7
+BuildRequires:  javapackages-local
+Requires:       mvn(com.fasterxml.jackson.core:jackson-annotations)
+Requires:       mvn(com.fasterxml.jackson.core:jackson-core)
 BuildArch:      noarch
 
 %description
@@ -46,42 +47,40 @@ This package contains API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+cp %{SOURCE1} build.xml
+mkdir -p lib
 
-# Remove plugins unnecessary for RPM builds
-%pom_remove_plugin ":maven-enforcer-plugin"
-%pom_remove_plugin "org.jacoco:jacoco-maven-plugin"
-%pom_remove_plugin "org.moditect:moditect-maven-plugin"
+# Remove section unnecessary for ant build
+%pom_remove_parent
+%pom_remove_dep :::test
+%pom_xpath_remove pom:project/pom:build
+%pom_xpath_remove pom:project/pom:profiles
 
 cp -p src/main/resources/META-INF/NOTICE .
 sed -i 's/\r//' LICENSE NOTICE
 
-# unavailable test deps
-%pom_remove_dep javax.measure:jsr-275
-rm src/test/java/com/fasterxml/jackson/databind/introspect/NoClassDefFoundWorkaroundTest.java
-%pom_xpath_remove pom:classpathDependencyExcludes
-
-# org.powermock.reflect.exceptions.FieldNotFoundException: Field 'fTestClass' was not found in class org.junit.internal.runners.MethodValidator.
-rm src/test/java/com/fasterxml/jackson/databind/type/TestTypeFactoryWithClassLoader.java
-
-# Off test that require connection with the web
-rm src/test/java/com/fasterxml/jackson/databind/ser/jdk/JDKTypeSerializationTest.java \
- src/test/java/com/fasterxml/jackson/databind/deser/jdk/JDKStringLikeTypesTest.java \
- src/test/java/com/fasterxml/jackson/databind/TestJDKSerialization.java
-
-%{mvn_file} : %{name}
-
 %build
-%{mvn_build} -f -- -Dsource=7
+build-jar-repository -s lib jackson-annotations jackson-core
+%{ant} -Dtest.skip=true jar javadoc
 
 %install
-%mvn_install
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
+
+install -dm 0755 %{buildroot}%{_javadocdir}
+cp -r target/site/apidocs %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %doc README.md release-notes/*
-%license LICENSE NOTICE
+%license LICENSE
 
-%files javadoc -f .mfiles-javadoc
-%license LICENSE NOTICE
+%files javadoc
+%{_javadocdir}/%{name}
+%license LICENSE
 
 %changelog

@@ -39,4 +39,14 @@
     <comment>CVE-2020-25649, bsc#1177616</comment>
     <requestid>866653</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1aa2bc647cfecabbe85580a856dfc45a</srcmd5>
+    <version>2.10.5.1</version>
+    <time>1619447989</time>
+    <user>dimstar_suse</user>
+    <comment>- Rewrite to use ant for building in order to be able to use it
+  in packages that have to be built before maven
+</comment>
+    <requestid>888459</requestid>
+  </revision>
 </revisionlist>
