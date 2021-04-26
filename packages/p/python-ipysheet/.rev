@@ -32,4 +32,12 @@
   * support for jupyterlab 2</comment>
     <requestid>814853</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0075b8fa63a81cc2ed7270306b3e4c96</srcmd5>
+    <version>0.4.4</version>
+    <time>1619447961</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>888349</requestid>
+  </revision>
 </revisionlist>

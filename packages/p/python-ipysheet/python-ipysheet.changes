@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 26 05:46:29 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.6, due to no NumPy. 
+
+-------------------------------------------------------------------
 Tue Jun 16 08:48:05 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.4.4:
