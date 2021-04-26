@@ -1,7 +1,7 @@
 #
 # spec file for package python-MarkupSafe
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without test
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-MarkupSafe
@@ -27,7 +28,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+%if %{with test}
 BuildRequires:  %{python_module pytest}
+%endif
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,8 +58,10 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_expand rm %{buildroot}%{$python_sitearch}/markupsafe/_speedups.c
 
+%if %{with test}
 %check
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m pytest
+%endif
 
 %files %{python_files}
 %license LICENSE.rst

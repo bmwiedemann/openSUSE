@@ -177,4 +177,12 @@ minor spec improvement (forwarded request 121844 from HighwayStar)</comment>
 - Remove AUTHORS from %doc, removed upstream in 6247e015</comment>
     <requestid>681854</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>0129e79332f5c674c7bc686451179f3e</srcmd5>
+    <version>1.1.1</version>
+    <time>1619447931</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>887976</requestid>
+  </revision>
 </revisionlist>
