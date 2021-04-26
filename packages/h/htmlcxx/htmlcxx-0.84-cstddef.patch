@@ -1,0 +1,10 @@
+--- htmlcxx-0.84/html/tree.h.orig	2005-02-22 05:47:04.000000000 +0100
++++ htmlcxx-0.84/html/tree.h	2014-09-09 12:27:17.170260318 +0200
+@@ -50,6 +50,7 @@
+ #include <stdexcept>
+ #include <iterator>
+ #include <set>
++#include <cstddef>
+ 
+ // HP-style construct/destroy have gone from the standard,
+ // so here is a copy.
