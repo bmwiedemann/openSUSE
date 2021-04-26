@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Wed Sep 16 13:44:06 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 1.0.0
+- Add add-wayland-includedir.patch, Make sure development files of wayland
+  can be found and link wayland libraries 
