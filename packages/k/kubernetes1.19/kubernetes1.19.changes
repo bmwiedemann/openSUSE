@@ -1,4 +1,164 @@
 -------------------------------------------------------------------
+Thu Apr 15 07:59:11 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.19.10:
+  * azure: fix node public IP not able to fetch issues from IMDS
+  * Add yaml util to unmarshal numbers into int/float
+  * Use apply to create objects in TestApplyStatus
+  * Stop skipping APIService in apply test
+  * Stop clearing OpenAPIConfig for kube-aggregator
+  * Add ability to skip OpenAPI handler installation
+  * apf: fix test flake
+  * Fixed describe ingress causing SEGFAULT
+  * update gogo/protobuf to v1.3.2
+  * Update sigs.k8s.io/structured-merge-diff to v4.0.3
+  * e2e fix: loosen configmap to 10 in resource quota
+  * apf: handle error from PollImmediateUntil
+  * Stop probing a pod during graceful shutdown
+  * staging/publishing: Set default go version to go1.15.10
+  * build: Update to k/repo-infra@v0.1.5 (supports go1.15.10)
+  * Use go-runner:v2.3.1-go1.15.10-buster.0 image (built on go1.15.10)
+  * Update to go1.15.10
+  * slice mirroring controller mirror annotations
+  * webhook config manager: HasSynced returns true when the manager is synced with existing webhookconfig objects at startup
+  * api-server add --lease-max-object-count
+  * apiserver add metric etcd_lease_object_counts
+  * update metadata-concealment to 1.6 for removing legacy checking
+  * apiserver add --lease-reuse-duration-seconds to config lease reuse duration
+  * additional subnet configuration for AWS ELB
+  * Revert "Automated cherry pick of #97417: fix azure file secret not found issue"
+  * Use the correct volum handle format for GCE regional PD.
+  * Increasing maximum number of ports allowed in EndpointSlice
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.9
+  * bazel
+  * deepcopy statefulsets
+  * full deepcopy on munged pod spec
+  * remove pod toleration toleration seconds mutation
+  * add markers for inspected validation mutation hits
+  * move secret mutation from validation to prepareforupdate
+  * remove unnecessary mutations in validation
+  * tweak validation to avoid mutation
+  * For LoadBalancer Service type don't create a HNS policy for empty or invalid external loadbalancer IP
+  * do not create StatefulSet pods when PVC is being deleted
+  * AWS cloudprovider allow nlb-ip and external type lbs to be managed externally
+
+-------------------------------------------------------------------
+Wed Apr 14 14:49:05 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Rebase opensuse-version-checks.patch 
+
+-------------------------------------------------------------------
+Tue Apr 13 13:45:23 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.19.9:
+  * Updating EndpointSliceMirroring controller to wait for cache to be updated
+  * Updating EndpointSlice controller to wait for cache to be updated
+  * Add tests for populated volumes
+  * Fix comment on getPodVolumeSubpathListFromDisk
+  * Fix tests to test for new behavior
+  * Add warnings after cleanup back
+  * Automatically remove orphaned pod's dangling volumes
+  * Count pod overhead as an entity's resource usage
+  * Number of sockets is assumed to be same as NUMA nodes
+  * Fix issue in checking domain socket for plugin watcher
+  * Use Lstat in plugin watcher to avoid Windows problem
+  * Skip visiting empty secret and configmap names
+  * Fix test "[sig-windows] DNS should support configurable pod DNS servers"
+  * move to cadvisor.MachineInfo
+  * Avoid using socket for hints
+  * Remove unnecessary snapshot ability check
+  * Add linuxonly on one multivolume test
+  * Mark some storage tests as LinuxOnly
+  * Update topology tests for windows
+  * Update storage test suits for Windows
+  * Modify storage snapshottable and disruptive test for Windows
+  * Separate in-tree gcepd driver for windows
+  * Log PodExec stdout + stderr
+  * e2e can't use both pod.Name and pod.GenerateName
+  * Tolerate NotFound errors when deleting snapshots
+  * tests: Refactors agnhost image pod usage in tests
+  * Fix testpattern check
+  * Combine switch case into one case
+  * Ran hack/update-bazel.sh but discarded changes to root build file
+  * Move common portion of dynamic snapshot out of switch statement
+  * Remove custom hash function, generate a random UUID for snapshot and snapcontent name instead
+  * Stack snapshot tests into one to reuse snapshot resource and reduce time taken on prow.
+  * Quick commit
+  * Remove snapshot class from prepv test because it is not needed.
+  * Combine two tests with overlap to reduce overall snapshot test suite time
+  * Add pre provisioned snapshot tests
+  * Minor cleanup in snapshot test suite.
+  * tests: Refactor agnhost image pod usage
+  * Upgrading vendored dependencies
+  * Upgrading cAdvisor to 0.37.5
+  * Include unit test
+  * Adjust defer to correctly call
+  * do not remove volume dir when saveVolumeData fails
+  * build/OWNERS: Add Dan and Sascha as reviewers
+  * OWNERS(CHANGELOG): Move reviewers/approvers to CHANGELOG/ dir
+  * Bump konnectivity-client to v0.0.15 in release-1.19
+  * Storage e2e: Remove pd csi driver installation in GKE
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.8
+  * Use -LiteralPath instead of -Path
+  * Escape the special character in vsphere windows path
+  * kube-cross: update image to use v1.15.8-legacy-1
+  * [go1.15] build: Update to k/repo-infra@v0.1.4 (supports go1.15.8)
+  * Use go-runner:buster-v2.3.1 image (built on go1.15.8)
+  * staging/publishing: Set default go version to go1.15.8
+  * Update to go1.15.8
+  * Cherry pick of #98254 for 1.19: Fix the kube-scheduler binary's description of the --config parameter is inaccurate
+  * kubeadm: drop explicit constant override in version test
+  * kubeadm: get k8s CI version markers from k8s infra bucket
+  * Balance nodes in scheduling e2e
+  * e2e: Pod should avoid nodes that have avoidPod annotation: clean remaining pods
+  * fix kube-scheduler cannot send event because the Note field is too large
+  * Fix nil pointer dereference in disruption controller
+  * Fix translation of Cinder storage classess to CSI
+  * Fix build after cherry-picking
+  * Recover CSI volumes from dangling attachments
+  * IsVolumeAttachedToNode() renamed to GetAttachState(), and returns 3 states instead of combining "uncertain" and "detached" into "false"
+  * Fixes Attach Detach Controller reconciler race reading ActualStateOfWorld and operation pending states; fixes reconciler_test mock detach to account for multiple attaches on a node
+  * Enable Volume Expansion tests for Windows
+  * e2e/storage: disable caching when writing/reading to block PVCs
+  * e2e: add option to create pods with different image in pod.Config
+  * Remove file_mode args for Windows test
+  * Set snapshotType for tests with NTFS.
+  * make podTopologyHints protected by lock
+  * Fix e2e autoscaling namespace error
+  * Delete namespace parameter in create adapter
+  * Deflake ingress updates
+  * move all variables in sampleAndWaterMarkHistograms::innerSet
+  * deferredResponseWriter returns after calling the Close() method
+  * Fixed quantization and made monotic time reversal not panic
+  * ignore cgroup driver check in windows node upgrade
+  * OWNERS(CHANGELOG): Add 1.21 Release Notes shadows as reviewers
+  * OWNERS(CHANGELOG): Add release-engineering-reviewers as approvers
+  * OWNERS(CHANGELOG): Add wilsonehusin (1.21 relnotes lead) as approver
+  * OWNERS(sig-release): Add CHANGELOG aliases
+  * OWNERS(build-image): Add Release Managers as reviewers
+  * OWNERS(releng): Sync Release Managers
+  * OWNERS(sig-release): Remove SIG Release approvers alias
+  * aggregate errors when putting vmss
+  * fix azure file migration issue
+  * kubelet: Fix mirrorPodTerminationMap leak
+  * kubelet: Delete static pods gracefully
+  * fix the remote endpoint cleanup logic
+  * cleanup subnet in frontend ip configs
+  * kubeadm: change the default image repository for CI images from gcr.io/kubernetes-ci-images to gcr.io/k8s-staging-ci-images
+  * kubelet logs print 'kubelet nodes sync' frequently
+  * handle webhook authenticator and authorizer error
+  * Webhook: handle error when calling wait.ExponentialBackoff
+  * Merge pull request #96876 from howieyuen/no-execute-taint-missing
+  * vendor: update cAdvisor to v0.37.4
+  * Use volumeHandle as PV name when translating EBS inline volume
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.7
+  * WIP: node sync at least once
+  * clean up executing request on panic
+  * fix the deadlock in priority and fairness config controller
+  * kube-aggregator: fix apiservice availability gauge
+  * Lower the frequency of volume plugin deprecation warning
+
+-------------------------------------------------------------------
 Wed Jan 20 10:01:24 UTC 2021 - dmueller@suse.com
 
 - Update to version 1.19.7:

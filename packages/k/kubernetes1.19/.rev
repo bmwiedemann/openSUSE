@@ -196,4 +196,41 @@
   * Add more logging for Mount error</comment>
     <requestid>865039</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>145c30662271483ca8093952eb5a13a3</srcmd5>
+    <version>1.19.10</version>
+    <time>1619447920</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.10:
+  * azure: fix node public IP not able to fetch issues from IMDS
+  * Add yaml util to unmarshal numbers into int/float
+  * Use apply to create objects in TestApplyStatus
+  * Stop skipping APIService in apply test
+  * Stop clearing OpenAPIConfig for kube-aggregator
+  * Add ability to skip OpenAPI handler installation
+  * apf: fix test flake
+  * Fixed describe ingress causing SEGFAULT
+  * update gogo/protobuf to v1.3.2
+  * Update sigs.k8s.io/structured-merge-diff to v4.0.3
+  * e2e fix: loosen configmap to 10 in resource quota
+  * apf: handle error from PollImmediateUntil
+  * Stop probing a pod during graceful shutdown
+  * staging/publishing: Set default go version to go1.15.10
+  * build: Update to k/repo-infra@v0.1.5 (supports go1.15.10)
+  * Use go-runner:v2.3.1-go1.15.10-buster.0 image (built on go1.15.10)
+  * Update to go1.15.10
+  * slice mirroring controller mirror annotations
+  * webhook config manager: HasSynced returns true when the manager is synced with existing webhookconfig objects at startup
+  * api-server add --lease-max-object-count
+  * apiserver add metric etcd_lease_object_counts
+  * update metadata-concealment to 1.6 for removing legacy checking
+  * apiserver add --lease-reuse-duration-seconds to config lease reuse duration
+  * additional subnet configuration for AWS ELB
+  * Revert &quot;Automated cherry pick of #97417: fix azure file secret not found issue&quot;
+  * Use the correct volum handle format for GCE regional PD.
+  * Increasing maximum number of ports allowed in EndpointSlice
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.9
+  * bazel</comment>
+    <requestid>885589</requestid>
+  </revision>
 </revisionlist>

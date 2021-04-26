@@ -22,7 +22,7 @@
 %define baseversionminus1 1.18
 
 Name:           kubernetes%{baseversion}
-Version:        1.19.7
+Version:        1.19.10
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -67,8 +67,9 @@ management of containerized applications.
 It groups containers that make up an application into logical units
 for management and discovery.
 
-# packages to build containerized control plane
 
+
+# packages to build containerized control plane
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
@@ -156,9 +157,9 @@ kubeadm bootstrapping tool
 Summary:        Kubernetes client tools
 Group:          System/Management
 Provides:       kubernetes-client-provider = %{version}
-Requires:       kubernetes-client-common >= %{version} 
+Requires:       kubernetes-client-common >= %{version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description client
 Kubernetes client tools like kubectl.
