@@ -1,0 +1,55 @@
+diff -Nur dde-file-manager-5.2.0.87/dde-file-manager-lib/3rdParty/doctotext/data_stream.cpp dde-file-manager-5.2.0.87-new/dde-file-manager-lib/3rdParty/doctotext/data_stream.cpp
+--- dde-file-manager-5.2.0.87/dde-file-manager-lib/3rdParty/doctotext/data_stream.cpp	2020-12-14 16:02:28.000000000 +0800
++++ dde-file-manager-5.2.0.87-new/dde-file-manager-lib/3rdParty/doctotext/data_stream.cpp	2021-02-22 20:22:33.655472528 +0800
+@@ -262,6 +262,7 @@
+     if (impl->m_pointer < 1)
+         return false;
+     --impl->m_pointer;
++    return true;
+ }
+ 
+ size_t BufferStream::size()
+diff -Nur dde-file-manager-5.2.0.87/dde-file-manager-lib/3rdParty/doctotext/doctotext_c_api.cpp dde-file-manager-5.2.0.87-new/dde-file-manager-lib/3rdParty/doctotext/doctotext_c_api.cpp
+--- dde-file-manager-5.2.0.87/dde-file-manager-lib/3rdParty/doctotext/doctotext_c_api.cpp	2020-12-14 16:02:28.000000000 +0800
++++ dde-file-manager-5.2.0.87-new/dde-file-manager-lib/3rdParty/doctotext/doctotext_c_api.cpp	2021-02-22 20:27:00.870677678 +0800
+@@ -248,6 +248,7 @@
+ size_t DOCTOTEXT_CALL doctotext_exception_error_messages_count(DocToTextException* exception)
+ {
+ 	exception->m_exception.getErrorCount();
++	return 0;
+ }
+ 
+ const char* DOCTOTEXT_CALL doctotext_exception_get_error_message(DocToTextException* exception, size_t index_message)
+diff -Nur dde-file-manager-5.2.0.87/dde-file-manager-lib/3rdParty/doctotext/eml_parser.cpp dde-file-manager-5.2.0.87-new/dde-file-manager-lib/3rdParty/doctotext/eml_parser.cpp
+--- dde-file-manager-5.2.0.87/dde-file-manager-lib/3rdParty/doctotext/eml_parser.cpp	2020-12-14 16:02:28.000000000 +0800
++++ dde-file-manager-5.2.0.87-new/dde-file-manager-lib/3rdParty/doctotext/eml_parser.cpp	2021-02-22 21:01:56.661630708 +0800
+@@ -380,6 +380,7 @@
+ 	std::string sender = header.sender().str();
+ 	if (!sender.empty())
+ 		metadata.addField("Sender", sender);
++	return metadata;
+ }
+ 
+ bool EMLParser::error()
+diff -Nur dde-file-manager-5.2.0.87/dde-file-manager-lib/3rdParty/doctotext/iwork_parser.cpp dde-file-manager-5.2.0.87-new/dde-file-manager-lib/3rdParty/doctotext/iwork_parser.cpp
+--- dde-file-manager-5.2.0.87/dde-file-manager-lib/3rdParty/doctotext/iwork_parser.cpp	2020-12-14 16:02:28.000000000 +0800
++++ dde-file-manager-5.2.0.87-new/dde-file-manager-lib/3rdParty/doctotext/iwork_parser.cpp	2021-02-22 20:36:21.417060883 +0800
+@@ -898,6 +898,7 @@
+ 				m_text_body += (*it)->m_text;
+ 				++it;
+ 			}
++			return true;
+ 		}
+ 
+ 		//Functions responsible for parsing xml elements:
+diff -Nur dde-file-manager-5.2.0.87/dde-file-manager-lib/models/dfmrootfileinfo.cpp dde-file-manager-5.2.0.87-new/dde-file-manager-lib/models/dfmrootfileinfo.cpp
+--- dde-file-manager-5.2.0.87/dde-file-manager-lib/models/dfmrootfileinfo.cpp	2020-12-14 16:02:28.000000000 +0800
++++ dde-file-manager-5.2.0.87-new/dde-file-manager-lib/models/dfmrootfileinfo.cpp	2021-02-22 21:05:59.700997022 +0800
+@@ -175,6 +175,7 @@
+             return false;
+         }
+     }
++    return true;
+ }
+ 
+ QString DFMRootFileInfo::suffix() const

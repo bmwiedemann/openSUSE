@@ -1,0 +1,85 @@
+From b978dbde0626d9a041aff636c99e59aea73162f2 Mon Sep 17 00:00:00 2001
+From: Robin Lee <cheeselee@fedoraproject.org>
+Date: Sat, 21 Nov 2020 17:50:38 +0800
+Subject: [PATCH] fix: use Q_GLOBAL_STATIC to initialize `eventHanlder` and
+ `eventFilter`
+
+Initialisation of static global object `eventProcessor` requires
+`eventHanlder` and `eventFilter` initialised first. But that's not
+guaranteed by C++ standard and the program may crash. Instead,
+use Q_GLOBAL_STATIC to initialise the latter two objects.
+
+Log: use Q_GLOBAL_STATIC to initialize `eventHanlder` and `eventFilter`
+Signed-off-by: Robin Lee <cheeselee@fedoraproject.org>
+---
+ .../interfaces/dfmeventdispatcher.cpp         | 20 +++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/dde-file-manager-lib/interfaces/dfmeventdispatcher.cpp b/dde-file-manager-lib/interfaces/dfmeventdispatcher.cpp
+index 4f3a3a6b7..d92a5a2a3 100644
+--- a/dde-file-manager-lib/interfaces/dfmeventdispatcher.cpp
++++ b/dde-file-manager-lib/interfaces/dfmeventdispatcher.cpp
+@@ -110,8 +110,8 @@ void DFMEventFuture::operator =(const DFMEventFuture &other)
+ }
+ 
+ namespace DFMEventDispatcherData {
+-static QList<DFMAbstractEventHandler *> eventHandler;
+-static QList<DFMAbstractEventHandler *> eventFilter;
++Q_GLOBAL_STATIC(QList<DFMAbstractEventHandler*>, eventHandler)
++Q_GLOBAL_STATIC(QList<DFMAbstractEventHandler*>, eventFilter)
+ 
+ Q_GLOBAL_STATIC(QThreadPool, threadPool)
+ }
+@@ -138,7 +138,7 @@ QVariant DFMEventDispatcher::processEvent(const QSharedPointer<DFMEvent> &event,
+ 
+     QVariant result;
+ 
+-    for (DFMAbstractEventHandler *handler : DFMEventDispatcherData::eventFilter) {
++    for (DFMAbstractEventHandler *handler : *DFMEventDispatcherData::eventFilter) {
+         if (handler->fmEventFilter(event, target, &result))
+             return result;
+     }
+@@ -146,7 +146,7 @@ QVariant DFMEventDispatcher::processEvent(const QSharedPointer<DFMEvent> &event,
+     if (target) {
+         target->fmEvent(event, &result);
+     } else {
+-        for (DFMAbstractEventHandler *handler : DFMEventDispatcherData::eventHandler) {
++        for (DFMAbstractEventHandler *handler : *DFMEventDispatcherData::eventHandler) {
+             if (handler->fmEvent(event, &result))
+                 return result;
+         }
+@@ -179,14 +179,14 @@ QVariant DFMEventDispatcher::processEventWithEventLoop(const QSharedPointer<DFME
+ 
+ void DFMEventDispatcher::installEventFilter(DFMAbstractEventHandler *handler)
+ {
+-    if (!DFMEventDispatcherData::eventFilter.contains(handler)) {
+-        DFMEventDispatcherData::eventFilter.append(handler);
++    if (!DFMEventDispatcherData::eventFilter->contains(handler)) {
++        DFMEventDispatcherData::eventFilter->append(handler);
+     }
+ }
+ 
+ void DFMEventDispatcher::removeEventFilter(DFMAbstractEventHandler *handler)
+ {
+-    DFMEventDispatcherData::eventFilter.removeOne(handler);
++    DFMEventDispatcherData::eventFilter->removeOne(handler);
+ }
+ 
+ DFMEventDispatcher::State DFMEventDispatcher::state() const
+@@ -204,13 +204,13 @@ DFMEventDispatcher::DFMEventDispatcher()
+ 
+ void DFMEventDispatcher::installEventHandler(DFMAbstractEventHandler *handler)
+ {
+-    if (!DFMEventDispatcherData::eventHandler.contains(handler))
+-        DFMEventDispatcherData::eventHandler.append(handler);
++    if (!DFMEventDispatcherData::eventHandler->contains(handler))
++        DFMEventDispatcherData::eventHandler->append(handler);
+ }
+ 
+ void DFMEventDispatcher::removeEventHandler(DFMAbstractEventHandler *handler)
+ {
+-    DFMEventDispatcherData::eventHandler.removeOne(handler);
++    DFMEventDispatcherData::eventHandler->removeOne(handler);
+ }
+ 
+ DFM_END_NAMESPACE
