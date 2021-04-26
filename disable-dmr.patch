@@ -1,0 +1,12 @@
+diff -Nur dde-file-manager-5.0.0/dde-file-manager-plugins/pluginPreview/pluginPreview.pro dde-file-manager-5.0.0-new/dde-file-manager-plugins/pluginPreview/pluginPreview.pro
+--- dde-file-manager-5.0.0/dde-file-manager-plugins/pluginPreview/pluginPreview.pro	2019-07-17 14:44:48.000000000 +0800
++++ dde-file-manager-5.0.0-new/dde-file-manager-plugins/pluginPreview/pluginPreview.pro	2019-12-02 11:16:30.716573289 +0800
+@@ -9,7 +9,7 @@
+ ARCH = $$QMAKE_HOST.arch
+ 
+ !CONFIG(DISABLE_FFMPEG):!isEqual(BUILD_MINIMUM, YES) {
+-    !isEqual(ARCH, sw_64):!isEqual(ARCH, mips64):!isEqual(ARCH, mips32) {
++    !isEqual(ARCH, sw_64):!isEqual(ARCH, mips64):!isEqual(ARCH, mips32):!isEqual(ARCH, aarch64) {
+         SUBDIRS += dde-video-preview-plugin
+     }
+ }
