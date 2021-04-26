@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 22 19:55:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.3:
+  - Version 3.11.3 fixes a bug that prevented PyMongo from retrying writes
+    after a writeConcernError on MongoDB 4.4+ (PYTHON-2452)
+
+-------------------------------------------------------------------
 Mon Feb  1 18:09:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.11.2:

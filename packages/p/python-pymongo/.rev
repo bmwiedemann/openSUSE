@@ -387,4 +387,14 @@
     socket was configured with a timeout of ``None`` (`PYTHON-2443`_).</comment>
     <requestid>868440</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>8acfd3bf6fb479fbb10ed6e7e3fea0f6</srcmd5>
+    <version>3.11.3</version>
+    <time>1619447926</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.11.3:
+  - Version 3.11.3 fixes a bug that prevented PyMongo from retrying writes
+    after a writeConcernError on MongoDB 4.4+ (PYTHON-2452)</comment>
+    <requestid>887877</requestid>
+  </revision>
 </revisionlist>

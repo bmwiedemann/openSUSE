@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymongo
-Version:        3.11.2
+Version:        3.11.3
 Release:        0
 Summary:        Python driver for MongoDB
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            http://github.com/mongodb/mongo-python-driver
+URL:            https://github.com/mongodb/mongo-python-driver
 Source:         https://files.pythonhosted.org/packages/source/p/pymongo/pymongo-%{version}.tar.gz
 # PATCH-FIX-SUSE: upstream does not care about 32bit
 Patch0:         mongodb-skip-test.patch
