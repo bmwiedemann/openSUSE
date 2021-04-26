@@ -28,7 +28,7 @@ BuildRequires:  tcl-devel
 URL:            http://www.tcl.tk
 Version:        8.6.11
 Release:        0
-%define         rrc %nil
+%define         rrc .1
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Graphical User Interface Toolkit for Tcl
 License:        TCL
