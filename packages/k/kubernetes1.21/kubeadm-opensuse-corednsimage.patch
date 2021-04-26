@@ -1,0 +1,25 @@
+From aa65533f3886c64afb6c24e63e0fb6dbf90b0a28 Mon Sep 17 00:00:00 2001
+From: Richard Brown <rbrownccb@opensuse.org>
+Date: Mon, 26 Apr 2021 11:48:24 +0200
+Subject: [PATCH] Correct coredns imagename
+
+---
+ cmd/kubeadm/app/constants/constants.go | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmd/kubeadm/app/constants/constants.go b/cmd/kubeadm/app/constants/constants.go
+index 96a7b12ab38..a4590096f9d 100644
+--- a/cmd/kubeadm/app/constants/constants.go
++++ b/cmd/kubeadm/app/constants/constants.go
+@@ -328,7 +328,7 @@ const (
+ 	CoreDNSDeploymentName = "coredns"
+ 
+ 	// CoreDNSImageName specifies the name of the image for CoreDNS add-on
+-	CoreDNSImageName = "coredns/coredns"
++	CoreDNSImageName = "coredns"
+ 
+ 	// CoreDNSVersion is the version of CoreDNS to be deployed if it is used
+ 	CoreDNSVersion = "v1.8.0"
+-- 
+2.31.1
+

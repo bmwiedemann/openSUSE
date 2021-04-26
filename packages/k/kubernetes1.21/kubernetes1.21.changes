@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Mon Apr 26 09:53:12 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Introduce kubeadm-opensuse-corednsimage.patch to correct new
+  coredns image name reference introduced in kubernetes 1.21 
+
+-------------------------------------------------------------------
+Wed Apr 14 14:54:52 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Rebase opensuse-version-checks.patch 
+
+-------------------------------------------------------------------
+Tue Apr 13 13:24:22 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Initial Package 
