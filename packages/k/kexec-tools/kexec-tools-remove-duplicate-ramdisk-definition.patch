@@ -1,0 +1,22 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Subject: Remove duplicate definition of ramdisk
+Upstream: not yet, sent on 2021-04-26
+
+The ramdisk variable is defined in kexec/arch/ppc/kexec-ppc.c. This
+other definition is not needed and breaks build with -fno-common.
+
+Signed-off-by: Petr Tesarik <ptesarik@suse.com>
+---
+ kexec/arch/ppc/kexec-elf-ppc.c |    1 -
+ 1 file changed, 1 deletion(-)
+
+--- a/kexec/arch/ppc/kexec-elf-ppc.c
++++ b/kexec/arch/ppc/kexec-elf-ppc.c
+@@ -33,7 +33,6 @@
+ static const int probe_debug = 0;
+ 
+ unsigned char reuse_initrd;
+-const char *ramdisk;
+ int create_flatten_tree(struct kexec_info *, unsigned char **, unsigned long *,
+ 			char *);
+ 

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr 26 09:35:21 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
+
+- kexec-tools-remove-duplicate-ramdisk-definition.patch:
+  Remove duplicate definition of ramdisk (fix ppc build).
+
+-------------------------------------------------------------------
+Mon Apr 26 08:07:47 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
+
+- Bump version to 2.0.21
+- Drop patches from upstream git:
+  * kexec-tools-add-variant-helper-functions.patch
+  * kexec-tools-arm64-kexec-allocate-memory-space-avoiding-reserved-regions.patch
+  * kexec-tools-arm64-kdump-deal-with-resource-entries-in-proc-iomem.patch
+  * kexec-tools-build-multiboot2-for-i386.patch
+  * kexec-tools-fix-kexec_file_load-error-handling.patch
+  * kexec-tools-reset-getopt-before-falling-back-to-legacy.patch
+  * kexec-tools-s390-Reset-kernel-command-line-on-syscal.patch
+  * kexec-tools-Remove-duplicated-variable-declarations.patch
+
+-------------------------------------------------------------------
+Tue Apr 20 12:01:43 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Hardening: Link as PIE (bsc#1185020).
+
+-------------------------------------------------------------------
 Tue Nov 24 16:54:57 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)

@@ -1,7 +1,7 @@
 #
 # spec file for package kexec-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kexec-tools
-Version:        2.0.20
+Version:        2.0.21
 Release:        0
 Summary:        Tools for loading replacement kernels into memory
 License:        GPL-2.0-or-later
@@ -29,16 +29,9 @@ Source3:        kexec-load.service
 Source4:        %{name}-rpmlintrc
 Patch3:         %{name}-disable-test.patch
 Patch4:         %{name}-vmcoreinfo-in-xen.patch
-Patch5:         %{name}-add-variant-helper-functions.patch
-Patch6:         %{name}-arm64-kexec-allocate-memory-space-avoiding-reserved-regions.patch
-Patch7:         %{name}-arm64-kdump-deal-with-resource-entries-in-proc-iomem.patch
-Patch8:         %{name}-build-multiboot2-for-i386.patch
 Patch9:         %{name}-video-capability.patch
 Patch10:        %{name}-SYS_getrandom.patch
-Patch11:        %{name}-fix-kexec_file_load-error-handling.patch
-Patch12:        %{name}-reset-getopt-before-falling-back-to-legacy.patch
-Patch13:        %{name}-s390-Reset-kernel-command-line-on-syscal.patch
-Patch14:        %{name}-Remove-duplicated-variable-declarations.patch
+Patch11:        %{name}-remove-duplicate-ramdisk-definition.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  systemd-rpm-macros
@@ -47,7 +40,7 @@ BuildRequires:  zlib-devel
 #!BuildIgnore:  gcc-PIE
 Requires:       perl-Bootloader
 Requires(post): suse-module-tools
-Requires(postun): suse-module-tools
+Requires(postun):suse-module-tools
 %{?systemd_requires}
 %ifarch         x86_64
 BuildRequires:  pkgconfig
@@ -62,23 +55,13 @@ the loaded kernel after it panics.
 
 %prep
 %setup -q
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
+%autopatch -p1
 
 %build
 autoreconf -fvi
-export CFLAGS="%{optflags}"
+export CFLAGS="%{optflags} -fPIC"
 export BUILD_CFLAGS="%{optflags}"
+export LDFLAGS="-pie"
 %configure
 make %{?_smp_mflags}
 
