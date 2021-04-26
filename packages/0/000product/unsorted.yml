@@ -27074,6 +27074,7 @@ unsorted:
   - python39-adapt-parser 
   - python39-adblock 
   - python39-addict 
+  - python39-aeidon 
   - python39-aenum 
   - python39-aesara 
   - python39-afdko 
@@ -27914,6 +27915,7 @@ unsorted:
   - python39-extras 
   - python39-extratools 
   - python39-ez_setup 
+  - python39-ezdxf 
   - python39-fabio: [x86_64] 
   - python39-factory_boy 
   - python39-fake-useragent 
@@ -28472,6 +28474,7 @@ unsorted:
   - python39-mutmut 
   - python39-mutt-ics 
   - python39-mygpoclient 
+  - python39-mypy 
   - python39-mypy_extensions 
   - python39-mysql-connector-python 
   - python39-mysqlclient 
@@ -28592,8 +28595,8 @@ unsorted:
   - python39-osc-tiny 
   - python39-oscrypto 
   - python39-osmviz 
-  - python39-ospd: [i586] 
-  - python39-ospd-openvas: [i586] 
+  - python39-ospd 
+  - python39-ospd-openvas 
   - python39-outcome 
   - python39-ovirt-engine-sdk 
   - python39-pa-ringbuffer 
@@ -28901,6 +28904,7 @@ unsorted:
   - python39-pymssql 
   - python39-pynamodb 
   - python39-pynetbox 
+  - python39-pyngus 
   - python39-pynxos 
   - python39-pyocr 
   - python39-pyodbc 
@@ -28941,7 +28945,7 @@ unsorted:
   - python39-pysendfile 
   - python39-pyserial 
   - python39-pysha3 
-  - python39-pyshark: [x86_64] 
+  - python39-pyshark 
   - python39-pyshould 
   - python39-pyshp 
   - python39-pysmb 
@@ -29006,6 +29010,7 @@ unsorted:
   - python39-pytest-mock 
   - python39-pytest-mpi 
   - python39-pytest-mpl 
+  - python39-pytest-mypy 
   - python39-pytest-openfiles 
   - python39-pytest-order 
   - python39-pytest-percent 
@@ -29096,6 +29101,7 @@ unsorted:
   - python39-python-prctl 
   - python39-python-ptrace 
   - python39-python-qdatamatrix 
+  - python39-python-qpid-proton 
   - python39-python-qprogedit 
   - python39-python-rapidjson 
   - python39-python-redis-lock 
@@ -29537,6 +29543,7 @@ unsorted:
   - python39-toolz 
   - python39-toposort 
   - python39-topy 
+  - python39-tornado 
   - python39-tornado5 
   - python39-tornado6 
   - python39-tortilla 
@@ -29555,6 +29562,8 @@ unsorted:
   - python39-transaction 
   - python39-transip 
   - python39-transitions 
+  - python39-translate-toolkit 
+  - python39-translation-finder 
   - python39-translationstring 
   - python39-treq 
   - python39-tri.declarative 
@@ -29662,6 +29671,7 @@ unsorted:
   - python39-web_cache 
   - python39-webcolors 
   - python39-webencodings 
+  - python39-weblate-language-data 
   - python39-weblate-schemas 
   - python39-weblib 
   - python39-webruntime 
@@ -29690,6 +29700,7 @@ unsorted:
   - python39-wurlitzer 
   - python39-wxPython 
   - python39-wxPython-lang 
+  - python39-xapian 
   - python39-xapian-haystack 
   - python39-xapp 
   - python39-xarray 
