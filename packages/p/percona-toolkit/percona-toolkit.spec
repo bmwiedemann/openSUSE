@@ -1,7 +1,7 @@
 #
 # spec file for package percona-toolkit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           percona-toolkit
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Advanced MySQL and system command-line tools
 License:        GPL-2.0-only
@@ -33,11 +33,7 @@ Requires:       perl(Time::HiRes)
 Provides:       maatkit = 7410.%{version}
 Obsoletes:      maatkit < 7410
 BuildArch:      noarch
-%if 0%{?suse_version} < 1140
-Requires:       perl = %{perl_version}
-%else
 %{perl_requires}
-%endif
 
 %description
 Percona Toolkit is a collection of advanced command-line tools used by
@@ -56,7 +52,7 @@ visit http://www.percona.com/software/.
 This collection was formerly known as Maatkit.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor < /dev/null
@@ -65,15 +61,12 @@ sed -i 's|%{_bindir}/env bash|%{_bindir}/bash|' bin/*
 %make_build
 
 %install
-
 %perl_make_install
 %perl_process_packlist
 rm -rf %{buildroot}%{_prefix}/lib
 rm -rf %{buildroot}/lib
-%if 0%{?suse_version} < 1130
 rm -rf %{buildroot}/%{perl_vendorarch}/auto/%{name}
 rm -rf %{buildroot}%{_localstatedir}/adm/perl-modules/%{name}
-%endif
 # a blank configuration file
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
 cp %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/

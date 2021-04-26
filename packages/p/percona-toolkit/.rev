@@ -292,4 +292,26 @@
     <comment></comment>
     <requestid>844344</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>760b3e636186b536b718a3e82a815eaa</srcmd5>
+    <version>3.3.0</version>
+    <time>1619447965</time>
+    <user>dimstar_suse</user>
+    <comment>- Cleanup spec file
+- Fetch correct sources
+
+- Percona Toolkit v3.3.0:
+ * Fix pt-heartbeat cannot reconnect
+ * Fix pt-online-schema-change FKs error handling
+ * Fix pt-summary says sshd not running
+ * Fix pt-upgrade fails when query including format strings and SQL errors is given
+ * Fix pt-pg-summary fails for Postgres12
+ * Added --no-check-foreing-keys to pt-osc
+ * Backslashes missing from documentation
+ * Review and consider lintian reported issues
+ * Fix pt-heartbeat doesn't reconnect for check-read-only
+ * Fix pt-mongodb-summary fails on standalone mongodb instances
+ * Fix pt-table-checksum gives error CRC32</comment>
+    <requestid>888377</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 26 07:40:18 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Cleanup spec file
+- Fetch correct sources
+
+-------------------------------------------------------------------
+Sat Apr 24 08:12:21 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
+
+- Percona Toolkit v3.3.0:
+ * Fix pt-heartbeat cannot reconnect
+ * Fix pt-online-schema-change FKs error handling
+ * Fix pt-summary says sshd not running
+ * Fix pt-upgrade fails when query including format strings and SQL errors is given
+ * Fix pt-pg-summary fails for Postgres12
+ * Added --no-check-foreing-keys to pt-osc
+ * Backslashes missing from documentation
+ * Review and consider lintian reported issues
+ * Fix pt-heartbeat doesn't reconnect for check-read-only
+ * Fix pt-mongodb-summary fails on standalone mongodb instances
+ * Fix pt-table-checksum gives error CRC32
+
+-------------------------------------------------------------------
 Tue Oct 27 12:36:32 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Percona Toolkit 3.2.1:
