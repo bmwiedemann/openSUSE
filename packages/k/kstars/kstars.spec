@@ -18,10 +18,9 @@
 
 # Internal QML import
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
-
 %bcond_without lang
 Name:           kstars
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -33,17 +32,11 @@ Group:          Productivity/Scientific/Astronomy
 URL:            https://edu.kde.org/kstars/
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
 BuildRequires:  Mesa-devel
-BuildRequires:  cfitsio-devel
-BuildRequires:  eigen3-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  gsl-devel
-BuildRequires:  libindi-devel
 BuildRequires:  libnova-devel
-BuildRequires:  libraw-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  wcslib-devel
 BuildRequires:  xplanet
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Crash)
@@ -70,6 +63,12 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5WebSockets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(StellarSolver)
+BuildRequires:  pkgconfig(cfitsio)
+BuildRequires:  pkgconfig(eigen3)
+BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(libindi)
+BuildRequires:  pkgconfig(libraw)
+BuildRequires:  pkgconfig(wcslib)
 Recommends:     %{name}-lang
 Recommends:     libindi
 Recommends:     xplanet
@@ -81,7 +80,7 @@ simulation of the night sky, for any time and location on Earth.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %ifarch ppc ppc64
@@ -98,7 +97,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
 
 # Remove static library
-rm -f %{buildroot}%{_kf5_libdir}/libhtmesh.a
+rm %{buildroot}%{_kf5_libdir}/libhtmesh.a
 
 %fdupes -s %{buildroot}
 
@@ -106,8 +105,6 @@ rm -f %{buildroot}%{_kf5_libdir}/libhtmesh.a
 %license COPYING COPYING.DOC
 %doc AUTHORS ChangeLog README.md README.customize README.ephemerides README.images
 %doc %{_kf5_htmldir}/en/kstars/
-%dir %{_kf5_appstreamdir}
-%dir %{_kf5_configkcfgdir}
 %{_datadir}/sounds/*.ogg
 %{_kf5_applicationsdir}/org.kde.kstars.desktop
 %{_kf5_appsdir}/kstars/

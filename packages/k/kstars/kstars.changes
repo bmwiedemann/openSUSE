@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 26 11:15:49 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.5.3:
+  * multi-star sep is now default algorithm
+  * reset mount park state after an error
+  * rework mosaic tool
+  * add feature to append scheduler jobs to queue
+  * simplify polar alignment star selection message during refresh
+  * add support for ORF files
+  * add channels to metadata
+  * add new dark frame library
+  * lots of fixes and code cleanup
+
+-------------------------------------------------------------------
+Tue Apr 20 08:49:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+- Stop owning directories provided by the filesystem package (boo#1184786)
+
+-------------------------------------------------------------------
 Mon Mar  1 13:20:54 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.5.2:

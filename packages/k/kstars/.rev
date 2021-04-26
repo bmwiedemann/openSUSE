@@ -985,4 +985,12 @@
   * https://invent.kde.org/education/kstars/-/blob/master/ChangeLog</comment>
     <requestid>876014</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>4285ba2b491f824d3cfd49c1c8c36ca9</srcmd5>
+    <version>3.5.3</version>
+    <time>1619447990</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888480</requestid>
+  </revision>
 </revisionlist>
