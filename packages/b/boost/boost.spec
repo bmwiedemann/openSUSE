@@ -19,9 +19,9 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.75.0
-%define _ver 1_75_0
-%define package_version 1_75_0
+%define ver 1.76.0
+%define _ver 1_76_0
+%define package_version 1_76_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -235,9 +235,9 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
 Name:           %{base_name}
-Version:        1.75.0
+Version:        1.76.0
 Release:        0
-%define library_version 1_75_0
+%define library_version 1_76_0
 
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
@@ -259,7 +259,6 @@ Patch5:         boost-strict_aliasing.patch
 Patch6:         boost-use_std_xml_catalog.patch
 Patch7:         boost-rpmoptflags-only.patch
 Patch9:         boost-aarch64-flags.patch
-Patch10:        boost-disable-pch-on-aarch64.patch
 Patch15:        boost-1.57.0-python-abi_letters.patch
 Patch16:        boost-1.55.0-python-test-PyImport_AppendInittab.patch
 Patch17:        python_mpi.patch
@@ -1244,7 +1243,6 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch6 -p1
 %patch7
 %patch9 -p1
-%patch10 -p1
 %patch15 -p1
 %patch16 -p1
 %patch17 -p1

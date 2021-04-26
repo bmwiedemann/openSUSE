@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 19 11:20:53 CEST 2021 - aschnell@suse.com
+
+- update to 1.76.0:
+  * for details on all changes see,
+    https://www.boost.org/users/history/version_1_76_0.html
+- remove boost-disable-pch-on-aarch64.patch, compile bug seems
+  to be fixed meanwhile
+- baselibs.conf: updated to new version
+
+-------------------------------------------------------------------
 Tue Feb  9 14:23:32 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - Fix HPC build on ARM. It seems boost_serialization libraries

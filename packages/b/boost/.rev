@@ -1354,4 +1354,12 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
 - Add openmpi4 flavors (jsc#SLE-16462).</comment>
     <requestid>870560</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>16f9a7aef6831615445090e55d6e01de</srcmd5>
+    <version>1.76.0</version>
+    <time>1619447898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>887228</requestid>
+  </revision>
 </revisionlist>
