@@ -17,7 +17,7 @@
 
 
 Name:           rook
-Version:        1.5.7+git4.gae949004e
+Version:        1.5.10+git4.g309ad2f64
 Release:        0
 Summary:        Orchestrator for distributed storage systems in cloud-native environments
 License:        Apache-2.0
@@ -179,7 +179,7 @@ csi_snap_image=$(sed -ne "s|.*DefaultSnapshotterImage.* \"\(.*snapshotter:.*\)\"
 csi_resize_image=$(sed -ne "s|.*DefaultResizerImage.* \"\(.*resizer:.*\)\"|\1|p" %{spec_go})
 #  %CEPH_VERSION% is replaced at build time by _service
 #  rook_container_version is updated by update-tarball.sh:
-%global rook_container_version 1.5.7
+%global rook_container_version 1.5.10
 %global rook_image       %{registry}/rook/ceph:%{rook_container_version}
 %global ceph_image       %{registry}/ceph/ceph:%CEPH_VERSION%
 %global ceph_csi_image   $ceph_csi_image
