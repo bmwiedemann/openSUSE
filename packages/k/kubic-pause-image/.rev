@@ -24,4 +24,13 @@
     <comment></comment>
     <requestid>716604</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>ada3076b3dc679db7c465b929c29c234</srcmd5>
+    <version>1.0.4</version>
+    <time>1619447933</time>
+    <user>dimstar_suse</user>
+    <comment>- Add tag for version '3.4.1' - it's binary identical to 3.2 on linux
+  upstream introduced the new tag for their windows images</comment>
+    <requestid>888428</requestid>
+  </revision>
 </revisionlist>
