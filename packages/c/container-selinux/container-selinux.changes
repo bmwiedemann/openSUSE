@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 23 06:04:48 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Fix container runtime binary labels (bsc#1185030). You need to 
+  relable at least /usr/sbin if you're affected
+
+-------------------------------------------------------------------
 Tue Feb 23 13:21:19 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.158.0
