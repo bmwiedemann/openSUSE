@@ -1,0 +1,51 @@
+diff -Nur startdde-5.8.7/Makefile startdde-5.8.7-new/Makefile
+--- startdde-5.8.7/Makefile	2021-03-18 18:01:16.000000000 +0800
++++ startdde-5.8.7-new/Makefile	2021-04-09 20:15:35.339442511 +0800
+@@ -22,13 +22,13 @@
+ 	jq . misc/config/auto_launch.json >/dev/null
+ 
+ startdde:
+-	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" ${GOBUILD} -o startdde
++#	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" ${GOBUILD} -o startdde
+ 
+ fix-xauthority-perm:
+-	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" ${GOBUILD} -o fix-xauthority-perm ${GOPKG_PREFIX}/cmd/fix-xauthority-perm
++#	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" ${GOBUILD} -o fix-xauthority-perm ${GOPKG_PREFIX}/cmd/fix-xauthority-perm
+ 
+ greeter-display-daemon:
+-	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" ${GOBUILD} -o greeter-display-daemon ${GOPKG_PREFIX}/cmd/greeter-display-daemon
++#	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" ${GOBUILD} -o greeter-display-daemon ${GOPKG_PREFIX}/cmd/greeter-display-daemon
+ 
+ build: prepare startdde auto_launch_json fix-xauthority-perm greeter-display-daemon
+ 
+@@ -42,18 +42,18 @@
+ 	GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}"
+ 
+ install:
+-	install -Dm755 startdde ${DESTDIR}${PREFIX}/bin/startdde
++#	install -Dm755 startdde ${DESTDIR}${PREFIX}/bin/startdde
+ 	mkdir -p ${DESTDIR}${PREFIX}/share/xsessions
+ 	@for i in $(shell ls misc/xsessions/ | grep -E '*.in$$' );do sed 's|@PREFIX@|$(PREFIX)|g' misc/xsessions/$$i > ${DESTDIR}${PREFIX}/share/xsessions/$${i%.in}; done
+-	install -Dm755 fix-xauthority-perm ${DESTDIR}${PREFIX}/sbin/deepin-fix-xauthority-perm
+-	install -Dm755 greeter-display-daemon ${DESTDIR}${PREFIX}/lib/deepin-daemon/greeter-display-daemon
++#	install -Dm755 fix-xauthority-perm ${DESTDIR}${PREFIX}/sbin/deepin-fix-xauthority-perm
++#	install -Dm755 greeter-display-daemon ${DESTDIR}${PREFIX}/lib/deepin-daemon/greeter-display-daemon
+ 	install -Dm644 misc/lightdm.conf ${DESTDIR}${PREFIX}/share/lightdm/lightdm.conf.d/60-deepin.conf
+ 	mkdir -p ${DESTDIR}${PREFIX}/share/startdde/
+ 	install -v -m0644 misc/config/* ${DESTDIR}${PREFIX}/share/startdde/
+ 	install -v -m0644 misc/app_startup.conf ${DESTDIR}${PREFIX}/share/startdde/
+ 	install -v -m0644 misc/filter.conf ${DESTDIR}${PREFIX}/share/startdde/
+-	mkdir -p ${DESTDIR}/etc/X11/Xsession.d/
+-	install -v -m0644 misc/Xsession.d/* ${DESTDIR}/etc/X11/Xsession.d/
++	mkdir -p ${DESTDIR}/etc/X11/xinit/xinitrc.d/
++	install -v -m0644 misc/Xsession.d/* ${DESTDIR}/etc/X11/xinit/xinitrc.d/
+ 	mkdir -p ${DESTDIR}/etc/profile.d/
+ 	install -v -m0644 misc/profile.d/* ${DESTDIR}/etc/profile.d/
+ 	mkdir -p $(DESTDIR)$(PREFIX)/share/glib-2.0/schemas
+@@ -70,4 +70,4 @@
+ check_code_quality: prepare
+ 	env GOPATH="${CURDIR}/${GOPATH_DIR}:${GOPATH}" go vet ./...
+ 
+-.PHONY: startdde
+\ 文件尾没有换行符
++.PHONY: startdde
