@@ -306,4 +306,12 @@ sc
   * Don't create a new sandbox for pod with RestartPolicyOnFailure if all containers succeeded</comment>
     <requestid>860456</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9b9c4f4825239aac01e2babcf9a18e3c</srcmd5>
+    <version>1.18.18</version>
+    <time>1619447922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>885765</requestid>
+  </revision>
 </revisionlist>
