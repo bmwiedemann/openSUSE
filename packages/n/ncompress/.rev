@@ -96,4 +96,27 @@
   * Tweak Changes style for better markdown integration</comment>
     <requestid>805468</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>80925ed1cbcf83c8e090ffae849a4edc</srcmd5>
+    <version>5.0</version>
+    <time>1619447970</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0:
+  * New stream for cleanups
+  * Drop support for 2.0 output &amp; -C option
+  * Improve &amp; fix recursive mode
+  * Drop old DEF_ERRNO support
+  * Drop DIRENT/SYSDIR config knobs
+  * Drop support for REGISTER build knob
+  * Drop support for explicit unaligned memory accesses
+  * Drop support for dead operating systems
+  * Fix Windows access fallback logic
+  * Include io.h on Windows
+  * Disable &quot;deprecated&quot; API warnings on Windows
+  * Add setmode binary for stdin and stdout on Windows
+  * Clean up help text a bit
+  * Add a standard -k (keep) option
+  * Use io.h fallbacks on mingw too</comment>
+    <requestid>888392</requestid>
+  </revision>
 </revisionlist>

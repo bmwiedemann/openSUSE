@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 26 08:19:57 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.0:
+  * New stream for cleanups
+  * Drop support for 2.0 output & -C option
+  * Improve & fix recursive mode
+  * Drop old DEF_ERRNO support
+  * Drop DIRENT/SYSDIR config knobs
+  * Drop support for REGISTER build knob
+  * Drop support for explicit unaligned memory accesses
+  * Drop support for dead operating systems
+  * Fix Windows access fallback logic
+  * Include io.h on Windows
+  * Disable "deprecated" API warnings on Windows
+  * Add setmode binary for stdin and stdout on Windows
+  * Clean up help text a bit
+  * Add a standard -k (keep) option
+  * Use io.h fallbacks on mingw too
+
+-------------------------------------------------------------------
 Thu May 14 07:15:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.2.4.6:
