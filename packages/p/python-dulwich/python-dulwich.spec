@@ -1,7 +1,7 @@
 #
 # spec file for package python-dulwich
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-dulwich
-Version:        0.20.15
+Version:        0.20.20
 Release:        0
 Summary:        Pure-Python Git Library
-License:        GPL-2.0-or-later OR Apache-2.0
+License:        Apache-2.0 OR GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://www.dulwich.io
 Source0:        https://files.pythonhosted.org/packages/source/d/dulwich/dulwich-%{version}.tar.gz
@@ -44,11 +44,11 @@ BuildRequires:  python3-Sphinx
 Requires:       python-certifi
 Requires:       python-urllib3 >= 1.24.1
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 Recommends:     python-fastimport
-Recommends:     python-gpg
 Recommends:     python-gevent
 Recommends:     python-geventhttpclient
+Recommends:     python-gpg
 Obsoletes:      %{oldpython}-dulwich-doc < 0.20.5
 %python_subpackages
 

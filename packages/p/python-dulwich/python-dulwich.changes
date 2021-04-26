@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 22 20:19:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.20:
+  * Support untracked symlinks to paths outside the
+    repository.
+  * Fix handling of negative matches in nested gitignores.
+  * Fix formatting in setup.py. (Jelmer Vernooĳ)
+  * Add release configuration. (Jelmer Vernooĳ)
+  * credentials: ignore end-of-line character. (Georges Racinet)
+  * Fix failure in get_untracked_paths when the repository contains symlinks.
+  * docs: Clarify that Git objects are created on `git add`.
+  * Add flag to only attempt to fetch ignored untracked files when specifically requested.
+
+-------------------------------------------------------------------
 Tue Dec 29 13:32:51 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.15:

@@ -438,4 +438,21 @@
 - drop remove_mock.patch (upstream)</comment>
     <requestid>859225</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f7e5c1708e8f966b5de0a3aeccdf3636</srcmd5>
+    <version>0.20.20</version>
+    <time>1619447927</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.20:
+  * Support untracked symlinks to paths outside the
+    repository.
+  * Fix handling of negative matches in nested gitignores.
+  * Fix formatting in setup.py. (Jelmer Vernooĳ)
+  * Add release configuration. (Jelmer Vernooĳ)
+  * credentials: ignore end-of-line character. (Georges Racinet)
+  * Fix failure in get_untracked_paths when the repository contains symlinks.
+  * docs: Clarify that Git objects are created on `git add`.
+  * Add flag to only attempt to fetch ignored untracked files when specifically requested.</comment>
+    <requestid>887882</requestid>
+  </revision>
 </revisionlist>
