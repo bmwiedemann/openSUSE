@@ -1,7 +1,7 @@
 #
 # spec file for package python-ufonormalizer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-ufonormalizer
-Version:        0.4.1
+Version:        0.5.3
 Release:        0
 Summary:        Script to normalize the XML and other data inside of a UFO
 License:        BSD-3-Clause
 URL:            https://github.com/unified-font-object/ufoNormalizer
 Source:         https://files.pythonhosted.org/packages/source/u/ufonormalizer/ufonormalizer-%{version}.zip
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -39,7 +42,7 @@ Script to normalize the XML and other data inside of a UFO.
 
 %prep
 %setup -q -n ufonormalizer-%{version}
-sed -i -e '1{\,^#! %{_bindir}/env python,d}' src/ufonormalizer.py
+sed -i -e '1{\,^#! %{_bindir}/env python,d}' src/ufonormalizer/__init__.py
 
 %build
 %python_build
@@ -50,7 +53,7 @@ sed -i -e '1{\,^#! %{_bindir}/env python,d}' src/ufonormalizer.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest -v
 
 %post
 %python_install_alternative ufonormalizer
@@ -62,6 +65,7 @@ sed -i -e '1{\,^#! %{_bindir}/env python,d}' src/ufonormalizer.py
 %doc README.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/ufonormalizer
-%{python_sitelib}/*
+%{python_sitelib}/ufonormalizer
+%{python_sitelib}/ufonormalizer-%{version}*-info
 
 %changelog
