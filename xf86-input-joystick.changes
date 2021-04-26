@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 21 09:00:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- modernize spec file:
+  * use https urls
+  * move license to licensedir
+  * remove unnecessary attributes and add curly braces where spec-cleaner
+    likes them 
+
+-------------------------------------------------------------------
 Sat Nov 19 16:49:31 UTC 2016 - tobias.johannes.klausmann@mni.thm.de
 
 - Update to version 1.6.3:
