@@ -1,0 +1,5 @@
+<package name="qt5platform-plugins" project="openSUSE:Factory">
+  <title>qt5platform-plugins</title>
+  <description></description>
+  <devel project="X11:Deepin" package="qt5platform-plugins"/>
+</package>

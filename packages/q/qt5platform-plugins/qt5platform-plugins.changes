@@ -1,0 +1,71 @@
+-------------------------------------------------------------------
+Thu Sep 17 03:28:07 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.0.17
+  * Add two new plugins: dwayland and kwayland-shell
+
+-------------------------------------------------------------------
+Sat Jan 25 08:16:49 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- Support Qt 5.14.0 
+
+-------------------------------------------------------------------
+Mon Dec  2 14:22:00 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.0.1
+  * support Qt 5.11.3
+  * support signal for DNativeSettings
+
+-------------------------------------------------------------------
+Mon Sep 16 03:31:14 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Support Qt 5.13.1 
+
+-------------------------------------------------------------------
+Thu Jul 25 06:31:16 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.2.6
+  * Fix clear window blur property if the blur areas/paths is empty
+  * Support dynamic create properties for DNativeSettings
+  * Support custom use window property for xsettings
+  * Fix Immediate ungrab server 
+  * Add libqt5xcbqpa headers for Qt 5.13.0
+  * Fix build failure under Qt 5.13.0
+
+-------------------------------------------------------------------
+Wed Jul 10 09:06:40 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.2.5
+  * Support the 16bits/30bits image formats
+  * Add new Qt private component for Qt 5.13+
+  * Support Qt 15.12.1/15.12.2/15.12.3
+  * It is easy to trigger resize when using the touch screen to move the window
+  * Fix the window menu cannot hide
+  * Fix the foreign platform window screen is wrong
+
+-------------------------------------------------------------------
+Mon May 20 14:24:25 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.2.0
+  * Fix DForeignPlatformWindow have a wrong screen object
+  * Fix crash at DForeignPlatformWindow::handleConfigureNotifyEvent
+  * Fix window can not get focus at mapped
+  * do not use methods because symbols are not exported
+  * compatibility with Qt 5.12+
+- Drop Fix-compilation-under-Qt-5_12_2.patch, Fixed by upstream
+
+-------------------------------------------------------------------
+Wed May  8 02:08:17 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update qtbase version to 5.12.3 in Tumbleweed.
+
+-------------------------------------------------------------------
+Fri Apr 26 01:25:03 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build for leap15.1
+
+-------------------------------------------------------------------
+Sun Apr 21 14:24:36 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 1.1.26 
+- Add Fix-compilation-under-Qt-5_12_2.patch, Support qtbase 5.12.2+
