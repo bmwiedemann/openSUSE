@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-xmlschema
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        An XML Schema validator and decoder
 License:        MIT
@@ -38,7 +38,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-elementpath >= 2.1.2
 Requires:       python-lxml
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -64,7 +64,7 @@ export LANG="en_US.UTF8"
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # Prepare for update-alternatives usage
-for p in json2xml validate xml2json; do 
+for p in json2xml validate xml2json; do
     %python_clone -a %{buildroot}%{_bindir}/xmlschema-$p
 done
 

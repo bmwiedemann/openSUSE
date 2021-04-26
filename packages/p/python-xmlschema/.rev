@@ -145,4 +145,15 @@
 - Update remove_shebang.patch to also drop the shebang from a second file.</comment>
     <requestid>875850</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2a92e89ae2fd5ec664201e5816039c2a</srcmd5>
+    <version>1.5.2</version>
+    <time>1619447925</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.2:
+  * Improve empty content checking
+  * Fix simple content restriction of xs:complexType
+  * Fix facets retrieving for xs:complexType with simple content</comment>
+    <requestid>887874</requestid>
+  </revision>
 </revisionlist>

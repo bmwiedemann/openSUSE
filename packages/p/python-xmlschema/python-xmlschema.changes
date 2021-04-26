@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 22 19:36:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.2:
+  * Improve empty content checking
+  * Fix simple content restriction of xs:complexType
+  * Fix facets retrieving for xs:complexType with simple content
+
+-------------------------------------------------------------------
 Mon Mar  1 04:01:36 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.5.1:
