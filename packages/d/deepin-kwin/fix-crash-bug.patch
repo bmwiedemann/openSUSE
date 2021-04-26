@@ -1,0 +1,197 @@
+From cfd4ac104164dcee41df714bbd0855a6ebe1427e Mon Sep 17 00:00:00 2001
+From: justforlxz <justforlxz@gmail.com>
+Date: Thu, 24 Dec 2020 13:54:46 +0800
+Subject: [PATCH] fix: crash on other linux
+
+kwin added KWin::Cursours
+
+Log:
+Issue: Fixes #128
+Bug: https://pms.uniontech.com/zentao/bug-view-57855.html
+---
+ plugins/platforms/lib/kwinutils.cpp         | 41 +++++++++++++++----
+ plugins/platforms/lib/kwinutils.h           | 45 +++++++++++++++++++++
+ plugins/platforms/plugin/libkwinpreload.cpp |  6 +++
+ plugins/platforms/plugin/libkwinpreload.h   | 17 ++++++++
+ 4 files changed, 101 insertions(+), 8 deletions(-)
+
+diff --git a/plugins/platforms/lib/kwinutils.cpp b/plugins/platforms/lib/kwinutils.cpp
+index 4f2f7c58a..21769bf9e 100644
+--- a/plugins/platforms/lib/kwinutils.cpp
++++ b/plugins/platforms/lib/kwinutils.cpp
+@@ -141,13 +141,6 @@ class Compositor : public QObject
+     static Compositor *s_compositor;
+ };
+ 
+-// 光标管理
+-class Cursor : public QObject
+-{
+-public:
+-    static Cursor *s_self;
+-};
+-
+ class AbstractClient : public QObject {};
+ class Options {
+ public:
+@@ -164,6 +157,25 @@ class Extensions
+ }
+ }
+ 
++CursorProxy::CursorProxy(QObject *parent)
++    : QObject(parent)
++    , m_currentCursor(nullptr)
++{
++#if defined(KWIN_VERSION) && KWIN_VERSION <= KWIN_VERSION_CHECK(5, 18, 4, 0)
++    setCursor(KWin::Cursor::s_self);
++#endif
++}
++
++void CursorProxy::setCursor(KWin::Cursor *cursor)
++{
++    if (m_currentCursor) {
++        disconnect(cursor, SIGNAL(themeChanged()), this, SIGNAL(themeChanged()));
++    }
++
++    m_currentCursor = cursor;
++    connect(cursor, SIGNAL(themeChanged()), this, SIGNAL(themeChanged()));
++}
++
+ static inline bool isPlatformX11()
+ {
+     static bool x11 = QX11Info::isPlatformX11();
+@@ -606,7 +618,7 @@ QObject *KWinUtils::tabBox()
+ 
+ QObject *KWinUtils::cursor()
+ {
+-    return KWin::Cursor::s_self;
++    return CursorProxy::Instance();
+ }
+ 
+ QObject *KWinUtils::virtualDesktop()
+@@ -1363,4 +1375,17 @@ void KWinUtils::Window::performWindowOperation(QObject *window, const QString &o
+     QMetaObject::invokeMethod(workspace(), "performWindowOperation", Q_ARG(KWin::AbstractClient*, c), Q_ARG(KWin::Options::WindowOperation, op));
+ }
+ 
++#if defined(KWIN_VERSION) && KWIN_VERSION >= KWIN_VERSION_CHECK(5, 18, 5, 0)
++void KWinUtils::Cursor::setCurrentCursor(KWin::Cursor *cursor)
++{
++    CursorProxy::Instance()->setCursor(cursor);
++    typedef void (*Cursors)(KWin::Cursor*);
++    const char * symbol = "_ZN4KWin7Cursors16setCurrentCursorEPNS_6CursorE";
++    Cursors cursors = (Cursors)QLibrary::resolve("kwin.so", qApp->applicationVersion(), symbol);
++    if (cursors) {
++        cursors(cursor);
++    }
++}
++#endif
++
+ #include "moc_kwinutils.cpp"
+diff --git a/plugins/platforms/lib/kwinutils.h b/plugins/platforms/lib/kwinutils.h
+index 2c758752c..74866b63b 100644
+--- a/plugins/platforms/lib/kwinutils.h
++++ b/plugins/platforms/lib/kwinutils.h
+@@ -29,6 +29,45 @@
+ #define KWIN_VERSION KWIN_VERSION_CHECK(KWIN_VERSION_MAJ, KWIN_VERSION_MIN, KWIN_VERSION_PAT, KWIN_VERSION_BUI)
+ #endif
+ 
++namespace KWin {
++// 光标管理
++class Cursor : public QObject
++{
++    Q_OBJECT
++public:
++#if defined(KWIN_VERSION) && KWIN_VERSION <= KWIN_VERSION_CHECK(5, 18, 4, 0)
++    static Cursor *s_self;
++#endif
++};
++}
++
++#if defined(KWIN_VERSION) && KWIN_VERSION >= KWIN_VERSION_CHECK(5, 18, 5, 0)
++class Cursors : public QObject
++{
++public:
++    static Cursors *s_self;
++};
++#endif
++
++class CursorProxy : public QObject {
++    Q_OBJECT
++public:
++    static CursorProxy* Instance() {
++        static CursorProxy proxy;
++        return &proxy;
++    }
++
++Q_SIGNALS:
++    void themeChanged();
++
++public Q_SLOTS:
++    void setCursor(KWin::Cursor* cursor);
++
++private:
++    CursorProxy(QObject* parent = nullptr);
++    KWin::Cursor* m_currentCursor;
++};
++
+ class KWinUtilsPrivate;
+ class Q_DECL_EXPORT KWinUtils : public QObject
+ {
+@@ -118,6 +157,12 @@ class Q_DECL_EXPORT KWinUtils : public QObject
+         static void performWindowOperation(QObject* window, const QString &opName, bool restricted = false);
+     };
+ 
++    struct Cursor {
++#if defined(KWIN_VERSION) && KWIN_VERSION >= KWIN_VERSION_CHECK(5, 18, 5, 0)
++        static void setCurrentCursor(KWin::Cursor* cursor);
++#endif
++    };
++
+     static quint32 internAtom(const QByteArray &name, bool only_if_exists);
+ 
+     Q_INVOKABLE quint32 getXcbAtom(const QString &name, bool only_if_exists) const;
+diff --git a/plugins/platforms/plugin/libkwinpreload.cpp b/plugins/platforms/plugin/libkwinpreload.cpp
+index c8b011e02..9e211ab13 100644
+--- a/plugins/platforms/plugin/libkwinpreload.cpp
++++ b/plugins/platforms/plugin/libkwinpreload.cpp
+@@ -276,6 +276,12 @@ void RuleBook::save()
+     }
+ }
+ 
++#if defined(KWIN_VERSION) && KWIN_VERSION >= KWIN_VERSION_CHECK(5, 18, 5, 0)
++void Cursors::setCurrentCursor(Cursor* cursor) {
++    return KWinUtils::Cursor::setCurrentCursor(cursor);
++}
++#endif
++
+ namespace BuiltInEffects {
+ bool supported(BuiltInEffect effect) {
+     if (effect == BuiltInEffect::Blur) {
+diff --git a/plugins/platforms/plugin/libkwinpreload.h b/plugins/platforms/plugin/libkwinpreload.h
+index 9b60ba629..e29543625 100644
+--- a/plugins/platforms/plugin/libkwinpreload.h
++++ b/plugins/platforms/plugin/libkwinpreload.h
+@@ -63,6 +63,23 @@ class RuleBook : public QObject
+ 
+ #endif // USE_DBUS_MENU
+ 
++
++/*
++ * kwin:6abd23ed0220b14a4a05fa280869ba3c953565e3
++ * Make it possible to have a separate cursor for the tablet
++ * Summary:
++ * As is KWin only had 1 Cursor which was a singleton. This made it impossible for
++ * us to properly implement the tablet (as in drawing tablets) support and show where
++ * we're drawing.
++ * This patch makes it possible to have different Cursors in KWin, it makes all the
++ * current code still follow the mouse but the tablet can still render a cursor.
++ */
++#if defined(KWIN_VERSION) && KWIN_VERSION >= KWIN_VERSION_CHECK(5, 18, 5, 0)
++class Q_DECL_EXPORT Cursors : public QObject {
++    void setCurrentCursor(Cursor* cursor);
++};
++#endif
++
+ enum class BuiltInEffect {
+     InValid,
+     Blur,
+

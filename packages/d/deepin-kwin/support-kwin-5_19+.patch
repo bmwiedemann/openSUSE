@@ -1,0 +1,28 @@
+From a8decf52405fb5ff15d2bdba62992a623d537ddc Mon Sep 17 00:00:00 2001
+From: justforlxz <justforlxz@gmail.com>
+Date: Mon, 21 Dec 2020 13:20:57 +0800
+Subject: [PATCH] fix: blurmanager interface changed
+
+kf5 does not inherit Global and has no create method.
+
+Log:
+Issue: Closes #127
+Change-Id: I097fca6b6e4658d5d6a9ba24b8db561f4169686d
+---
+ plugins/kwineffects/blur/blur.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/plugins/kwineffects/blur/blur.cpp b/plugins/kwineffects/blur/blur.cpp
+index 6f5040c4a..6054ef91a 100644
+--- a/plugins/kwineffects/blur/blur.cpp
++++ b/plugins/kwineffects/blur/blur.cpp
+@@ -60,7 +60,9 @@ BlurEffect::BlurEffect(QObject *, const QVariantList &)
+         KWaylandServer::Display *display = effects->waylandDisplay();
+         if (display) {
+             m_blurManager = display->createBlurManager(this);
++#if defined(KWIN_VERSION) && KWIN_VERSION <= KWIN_VERSION_CHECK(5, 18, 90, 0)
+             m_blurManager->create();
++#endif
+         }
+     } else {
+         net_wm_blur_region = 0;

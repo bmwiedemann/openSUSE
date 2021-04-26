@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Sun Apr 11 08:20:28 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Support kwin 5.21+, add support-kwin-5_19+.patch and
+  support-kwin-5_21+.patch 
+
+-------------------------------------------------------------------
+Mon Mar  1 04:30:05 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.2.0.13
+  * fix: Avoid taskbar showing up when changing workspace in multitaskingview
+  * Revert "fix: Provides a default wallpaper for the second workspace."
+  * fix: mips platform second workspace background is white.
+  * Provides a default wallpaper for the second workspace.
+  * fix get sp1 default-uri method.
+  * fix: A color field flicker when right-click menu show up 
+    Adjust the order of image processing
+  * after system upgrading from SP1 to SP2, the old wallpaper will be kept.
+  * Provides a default wallpaper for the second workspace.
+  * remove dialog rule to avoid configuration by user
+  * fix: Blur multitasking background.
+- Add patches: deepin-kwin-crash.patch, deepin-kwin-tabbox-chameleon-rename.patch
+  and deepin-kwin-unload-blur.patch
+
+-------------------------------------------------------------------
+Sat Mar 21 09:29:56 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
+
+- remove some files which are in plasma5-defaults-openSUSE
+
+-------------------------------------------------------------------
+Fri Jul 19 07:14:08 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- update version to 0.1.0
+  * Allow configuration items to override the default theme
+  * Add the "deepin-chameleon" window decoration for kwin
+  * Support get the shoutcut default value
+  * Correct the path to find translation files
+  * Ignore the RuleBook::save function of kwin
+  * Execute dirname before setting the LD_PRELOAD environment
+  * Support KWin highlightWindows effect for PreviewWindow
+  * Overwrite the window menu
+  * Support for specifying the version of kwin on build
+  * Multitaskingview: add multitaskingview ts
+  * Automatically append the wallpaper's gsetting value item
+  * Clean LD_PRELOAD env
+  * Fix the window was closed incorrectly
+  * Fix the "Window to Desktop" shoutcuts is invalid
+  * Fix No warning when opening the multitasking view app in 2D window manager
+  * Fix do not print warning messages when the build and runtime versions are consistent
+  * keep window to viewable if it is minimized
+  * Disable theme cache of FrameSvg
+  * Install the "kdeglobals" file
+  * Fix the compositingEnabledChanged signal is sent only when the user actively sets it
+  * Fix the window default cursor of the gtk application does not follow the theme
+  * Disable window manager window menu
+  * Preview window give priority to use the dbus interface by kwin
+  * Support PresentWindows
+  * Support set cursor theme/size for kwin
+
+-------------------------------------------------------------------
+Wed May  8 14:23:55 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 0.0.5 
