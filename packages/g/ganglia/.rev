@@ -106,4 +106,14 @@
   package name changes.</comment>
     <requestid>867302</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>cde48de2f42d1b1ad47c3c699c5db0ec</srcmd5>
+    <version>3.7.2</version>
+    <time>1619552080</time>
+    <user>dimstar_suse</user>
+    <comment>- Do-not-use-var-run-but-run-as-path-for-PID-file.patch:
+  Change PID file for gmetad and gmond from /var/run to /run
+  (bsc#1185158 &amp; bsc#1185159).</comment>
+    <requestid>888555</requestid>
+  </revision>
 </revisionlist>

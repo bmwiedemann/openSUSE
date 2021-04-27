@@ -1,0 +1,26 @@
+From: Egbert Eich <eich@suse.com>
+Date: Mon Apr 26 18:24:51 2021 +0200
+Subject: Do not use /var/run but /run as path for PID file
+Patch-mainline: Not yet
+Git-commit: c4c00a66401dcde265c669854a6988b485e0445c
+References: 
+
+See bsc#1185158 & bsc#1185159.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+---
+ scripts/fixconfig.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+diff --git a/scripts/fixconfig.in b/scripts/fixconfig.in
+index 8d02509..8cd4b0c 100644
+--- a/scripts/fixconfig.in
++++ b/scripts/fixconfig.in
+@@ -25,7 +25,7 @@ libdir="@libdir@"
+ sbindir="@sbindir@"
+ sysconfdir="@sysconfdir@"
+ includedir="@includedir@"
+-runstatedir="@localstatedir@/run" # @runstatedir@ if autoconf >= 2.70
++runstatedir="/run" # @runstatedir@ if autoconf >= 2.70
+ if [ -d "@sysconfdir@/sysconfig" ]
+ then
+   envdir="@sysconfdir@/sysconfig"

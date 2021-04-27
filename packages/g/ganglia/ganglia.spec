@@ -59,6 +59,7 @@ Patch26:        ganglia-0022-spaces-may-not-appear-in-some-parts-of-the-rrdtool-
 Patch27:        ganglia-0023-Fix-hash-collisions.patch
 Patch28:        ganglia-0024-Add-regular-Slab-memory-to-linux-memory-metrics.patch
 Patch29:        ganglia-0025-Report-the-Linux-specific-slab-memory-metric.patch
+Patch30:        Do-not-use-var-run-but-run-as-path-for-PID-file.patch
 BuildRequires:  fdupes
 BuildRequires:  libapr1-devel
 BuildRequires:  libart_lgpl-devel

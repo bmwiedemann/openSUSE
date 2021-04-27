@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 26 16:42:06 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Do-not-use-var-run-but-run-as-path-for-PID-file.patch:
+  Change PID file for gmetad and gmond from /var/run to /run
+  (bsc#1185158 & bsc#1185159).
+
+-------------------------------------------------------------------
 Wed Jan 27 11:48:29 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Only requires user(daemon) on major versions >= 15.
