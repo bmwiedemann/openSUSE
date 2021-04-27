@@ -227,4 +227,12 @@ Submit HEAD</comment>
     <comment>- Update to version 1.24.1.</comment>
     <requestid>827410</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>37a6f4ea314e47e947effd1485a6c531</srcmd5>
+    <version>1.24.2</version>
+    <time>1619552095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888604</requestid>
+  </revision>
 </revisionlist>
