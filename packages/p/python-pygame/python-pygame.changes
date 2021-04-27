@@ -1,7 +1,89 @@
+-------------------------------------------------------------------
+Tue Apr 27 11:22:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Explictly require libudev while building (for staging)
+
+-------------------------------------------------------------------
+Tue Mar 23 20:56:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.0.1 The Age Of Aquarius release
+  * This is a bug fix release, with a bunch of features and
+    optimizations thrown in for good measure.
+  * Backwards compatibility fixes
+  * Major event refactor
+  * Color.update() and Rect.update()
+  * SDL 2.0.14
+  * Xbox One port
+  * pathlib support for image, sound, and font loading.
+  * Cursor object API
+  * pygame.draw.rect fixes.
+- pygame 2.0 - the happy dance birthday release
+  * Support for Metal, Direct 3d, Vulkan, OpenGL 3.0+ in various
+    profiles (core, compatibility, debug, robust, etc), OpenGL ES,
+    and other modern hardware accelerated video APIs across many
+    platforms.
+  * SSE2/Neon assembly image drawing. Much faster drawing
+    routines, image loading, and alpha blending.
+  * Type Hints, for code completion (and to help you make the
+    squiggly lines disappear) in editors and IDEs.
+  * Code cleanup, using lots of code robustness tools like static
+    analyzers, and automated CI/CD. We've been able to help dozens
+    of people new to community projects contribute. We have lots
+    of work to go on code quality, but we're currently the highest
+    rated Python and highest rate C large project on LGTM.
+  * Many, many bug fixes including in our pygame.draw routines,
+    pygame.math(for vectors), and pygame.mask for pixel perfect
+    collision detection.
+  * better support for PyPy (the fast JIT based implementation of
+    python). See our milestone Are we pypy yet? No. for our
+    progress on making PyPy the best python for games.
+  * libsdl version 2 support. Technically pygame 2.0 still works
+    with SDL 1, but we recommend SDL2 which is vastly improved
+    over SDL1 for most use cases. Probably we will remove SDL 1
+    support starting pygame 2.1.
+  * Touch support (multitouch, gestures, etc)
+  * Audio input support (make games with your microphone!).
+  * Message alert boxes (Press OK, or Cancel).
+  * Better keyboard support. Proper unicode input and IME support.
+  * Much improved game controller support.
+  * Better image and audio format support. Including: webp, 32bit
+    wav files, and much more reliable mp3 support.
+  * Multiple display support, and multiple window support (multi
+    window support is still experimental, more will come in pygame
+    2.1).
+  * Android support through python for android (fork of pygame
+    subset for android). Better documentation, and better support
+    will come in future releases.
+  * to make distributing your apps easier, a built in "pyinstaller
+    hook"and compatibility with cxfreeze.
+  * binary "wheels" on many platforms and versions of python from
+    the old python 2.7 - to the latest python 3.9 (and with pypy!).
+  * lots of quality of life improvements like Surface.fill
+    ('black') instead of Surface.fill(pygame.Color(0, 0, 0)). Also
+    keywords are supported for many more function arguments. You
+    can draw rounded corners on rects.
+  * plenty of new examples, like python3 -m pygame.examples.
+    font_viewer, and python3 -m pygame.examples.music_drop_fade.
+    Additionally the example source code has been cleaned up a lot
+    to follow a more current python style.
+  * Hundreds of documentation improvements, include a new Korean
+    tutorial.
+  * a special SCALED mode which takes low pixel games and
+    automatically translates them to a larger window. Imagine your
+    320x200 resolution game of glorious pixel art... on modern
+    screens that would be a very tiny windows. Now with SCALED it
+    shows up big on a Full HD screen, or even a 4K/8K screen and
+    the translation of mouse coordinates and up-scaling of pixels
+    is done for you (hardware accelerated of course).
+- Full release notes on https://github.com/pygame/pygame/releases
+- Skip python36 build. python36-numpy is not available on TW.
+- Drop python-pygame-test-no-mp3.patch and
+  python-pygame-python38-import.patch
+
 ------------------------------------------------------------------
 Tue Oct 15 04:11:07 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Add python-pygame-python38-import.patch from upstream to fix a build 
+- Add python-pygame-python38-import.patch from upstream to fix a build
   failure with Python 3.8.
 - Use autopatch macro rather than patch0, due to multiple patches.
 
@@ -71,7 +153,7 @@ Sun Oct 12 09:49:51 UTC 2014 - mailaender@opensuse.org
 -------------------------------------------------------------------
 Thu Jul  7 11:01:11 UTC 2011 - idonmez@novell.com
 
-- Add pygame-v4l-2.6.38.patch: use new v4l interface 
+- Add pygame-v4l-2.6.38.patch: use new v4l interface
 
 -------------------------------------------------------------------
 Tue Jun  8 12:52:19 UTC 2010 - prusnak@opensuse.org

@@ -211,4 +211,12 @@
 - Use autopatch macro rather than patch0, due to multiple patches.</comment>
     <requestid>738496</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f8e973c1639ad210f017902153717d72</srcmd5>
+    <version>2.0.1</version>
+    <time>1619552059</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888765</requestid>
+  </revision>
 </revisionlist>
