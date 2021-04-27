@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 27 09:52:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Do not build the package for python36 either
+  (installcheck failure, numpy is a runtime requirement)
+- Test astropy functionality for python3
+
+-------------------------------------------------------------------
+Mon Apr 19 05:19:34 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build :test on Python 3.6, due to no NumPy. 
+
+-------------------------------------------------------------------
 Wed Feb 13 13:19:01 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.3:
