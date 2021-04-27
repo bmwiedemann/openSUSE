@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 27 10:46:00 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- replaced tarball with official release tarball so it matches
+  the updated official sha1sum checksum file
+- fixed wrong source lines in specfile
+
+-------------------------------------------------------------------
+Tue Apr 27 10:36:25 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed sha1sum checksum file
+
+-------------------------------------------------------------------
 Mon Aug 31 17:14:58 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - version 2.4.1 needed for jira#SLE/SLE-12712 

@@ -134,4 +134,16 @@ vaapi-intel-driver needs to be dropped then.</comment>
     <comment>- version 2.4.1 needed for jira#SLE/SLE-12712</comment>
     <requestid>831316</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>8bb728e1d759c1eb96da15237c27e026</srcmd5>
+    <version>2.4.1</version>
+    <time>1619552115</time>
+    <user>dimstar_suse</user>
+    <comment>- replaced tarball with official release tarball so it matches
+  the updated official sha1sum checksum file
+- fixed wrong source lines in specfile
+
+- fixed sha1sum checksum file</comment>
+    <requestid>888751</requestid>
+  </revision>
 </revisionlist>

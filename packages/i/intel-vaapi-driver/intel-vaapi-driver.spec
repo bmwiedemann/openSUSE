@@ -1,7 +1,7 @@
 #
 # spec file for package intel-vaapi-driver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Summary:        Intel Driver for Video Acceleration (VA) API for Linux
 License:        MIT AND EPL-1.0
 Group:          System/Libraries
 URL:            https://github.com/intel/%{name}/
-Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.bz2
-Source1:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.bz2.sha1sum
+Source0:        %{name}-%{version}.tar.bz2
+Source1:        %{name}-%{version}.tar.bz2.sha1sum
 Source2:        baselibs.conf
 BuildRequires:  meson
 BuildRequires:  pkgconfig
