@@ -7,4 +7,12 @@
     <comment>Kubevirt virt-controller container</comment>
     <requestid>885356</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>87314b140ed806a7dbbbd69df2a77aa5</srcmd5>
+    <version>unknown</version>
+    <time>1619552079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888559</requestid>
+  </revision>
 </revisionlist>
