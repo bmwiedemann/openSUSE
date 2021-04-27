@@ -1,7 +1,7 @@
 #
 # spec file for package flacon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014-2018 Alexander Evseev <aevseev@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           flacon
-Version:        6.1.0
+Version:        7.0.1
 Release:        0
 Summary:        Audio File Encoder
 License:        LGPL-2.1-or-later

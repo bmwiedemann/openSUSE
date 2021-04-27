@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Apr 27 10:37:21 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 7.0.1
+  * Added informative error messages when the program can't load
+    an audio file:
+    + The audio file does not exist.
+    + The audio file may be corrupted or an unsupported audio
+      format.
+    + Decoder program is not installed.
+    + Decoder program is installed in the settings but binary
+      file does not exist.
+  * Improved warning messages:
+    + Do not show a warning if the output format does not
+      support the quality of the input HD audio, but you have
+      set the correct bits per sample and sample rate in the
+      preferences.
+  * Redesigned the logic of loading CUE files containing
+    multiple files, for example, 2 sides of an LP. Now they are
+    displayed as a single list, have a single track numbering,
+    and allow you to change album tags in a single operation.
+  * Fixed: Flacon refuses to compute ReplayGain for no good
+    reason.
+  * Improved search for covers arts.
+  * Added better icons for dark themes.
+  * Added a few codepages for some East Asian languages.
+  * Translations updated.
+
+-------------------------------------------------------------------
 Sat Jun 27 10:50:20 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.1.0
