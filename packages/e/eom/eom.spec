@@ -1,7 +1,7 @@
 #
 # spec file for package eom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define typelib typelib-1_0-Eom-1_0
 %define _version 1.24
 Name:           eom
-Version:        1.24.1
+Version:        1.24.2
 Release:        0
 Summary:        MATE Desktop graphics viewer
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
