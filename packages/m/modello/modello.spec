@@ -1,7 +1,7 @@
 #
 # spec file for package modello
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,22 @@
 
 
 Name:           modello
-Version:        1.10.0
+Version:        1.11
 Release:        0
 Summary:        Modello Data Model toolkit
-License:        MIT AND Apache-2.0
+License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Java
-URL:            http://codehaus-plexus.github.io/modello
-Source0:        http://repo2.maven.org/maven2/org/codehaus/%{name}/%{name}/%{version}/%{name}-%{version}-source-release.zip
+URL:            https://codehaus-plexus.github.io/modello
+Source0:        https://repo1.maven.org/maven2/org/codehaus/%{name}/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source100:      %{name}-build.tar.xz
 Patch0:         modello-cli-domasxpp3.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  guava
+BuildRequires:  jackson-annotations
+BuildRequires:  jackson-core
+BuildRequires:  jackson-databind
 BuildRequires:  javapackages-local
 BuildRequires:  jsoup
 BuildRequires:  junit
@@ -43,9 +46,11 @@ BuildRequires:  unzip
 Requires:       guava
 # Explicit javapackages-tools requires since modello script uses
 # /usr/share/java-utils/java-functions
-Requires:       guava
 Requires:       javapackages-tools
 Requires:       xbean
+Requires:       mvn(com.fasterxml.jackson.core:jackson-annotations)
+Requires:       mvn(com.fasterxml.jackson.core:jackson-core)
+Requires:       mvn(com.fasterxml.jackson.core:jackson-databind)
 Requires:       mvn(junit:junit)
 Requires:       mvn(org.codehaus.plexus:plexus-compiler-api)
 Requires:       mvn(org.codehaus.plexus:plexus-compiler-javac)
@@ -81,16 +86,12 @@ cp -p %{SOURCE1} LICENSE
 # Avoid using Maven 2.x APIs
 sed -i s/maven-project/maven-core/ modello-maven-plugin/pom.xml
 
-%pom_disable_module modello-plugin-jackson modello-plugins
-%pom_disable_module modello-plugin-jsonschema modello-plugins
-%pom_remove_dep :modello-plugin-jackson modello-maven-plugin
-%pom_remove_dep :modello-plugin-jsonschema modello-maven-plugin
-
 %build
 mkdir -p lib
 build-jar-repository -s lib plexus/classworlds plexus/utils plexus/plexus-build-api \
   plexus-containers/plexus-container-default plexus-compiler/plexus-compiler-api junit \
-  plexus-compiler/plexus-compiler-javac jsoup snakeyaml guava/guava xbean/xbean-reflect
+  plexus-compiler/plexus-compiler-javac jsoup snakeyaml guava/guava xbean/xbean-reflect \
+  jackson-core jackson-annotations jackson-databind
 # skip tests because we have too old xmlunit in openSUSE now (1.5)
 %{ant} \
   -Dtest.skip=true \
@@ -104,7 +105,7 @@ for i in core test; do
   install -pm 0644 %{name}-${i}/target/%{name}-${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-${i}.jar
 done
 
-for i in converters dom4j java jdom sax snakeyaml stax xdoc xml xpp3 xsd; do
+for i in converters dom4j java jdom sax snakeyaml stax xdoc xml xpp3 xsd jackson jsonschema; do
   install -pm 0644 %{name}-plugins/%{name}-plugin-${i}/target/%{name}-plugin-${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-plugin-${i}.jar
 done
 
@@ -122,7 +123,7 @@ for i in core test; do
   %add_maven_depmap %{name}/%{name}-${i}.pom %{name}/%{name}-${i}.jar
 done
 
-for i in converters dom4j java jdom sax snakeyaml stax xdoc xml xpp3 xsd; do
+for i in converters dom4j java jdom sax snakeyaml stax xdoc xml xpp3 xsd jackson jsonschema; do
   install -pm 0644 %{name}-plugins/%{name}-plugin-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-plugin-${i}.pom
   %add_maven_depmap %{name}/%{name}-plugin-${i}.pom %{name}/%{name}-plugin-${i}.jar
 done
@@ -135,7 +136,7 @@ for i in core test; do
   cp -pr %{name}-${i}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/%{name}-${i}/
 done
 
-for i in converters dom4j java jdom sax snakeyaml stax xdoc xml xpp3 xsd; do
+for i in converters dom4j java jdom sax snakeyaml stax xdoc xml xpp3 xsd jackson jsonschema; do
   install -dm 0755 %{buildroot}%{_javadocdir}/%{name}/%{name}-plugin-${i}
   cp -pr %{name}-plugins/%{name}-plugin-${i}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/%{name}-plugin-${i}/
 done

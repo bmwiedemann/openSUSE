@@ -23,4 +23,14 @@
     <comment>1.10.0</comment>
     <requestid>750516</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6a9a2ae61aa9fb0c86bd8de2e74831c6</srcmd5>
+    <version>1.11</version>
+    <time>1619552060</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to upstream version 1.11
+- Build the jackson and jsonschema plugins too
+</comment>
+    <requestid>888507</requestid>
+  </revision>
 </revisionlist>

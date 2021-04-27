@@ -1,7 +1,7 @@
 #
 # spec file for package modello-maven-plugin
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,13 @@
 %global parent modello
 %global subname maven-plugin
 Name:           %{parent}-%{subname}
-Version:        1.10.0
+Version:        1.11
 Release:        0
 Summary:        Modello Maven Plugin
-License:        MIT AND Apache-2.0
+License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Java
-URL:            http://codehaus-plexus.github.io/modello/modello-maven-plugin
-Source0:        http://repo2.maven.org/maven2/org/codehaus/%{parent}/%{parent}/%{version}/%{parent}-%{version}-source-release.zip
+URL:            https://codehaus-plexus.github.io/modello/modello-maven-plugin
+Source0:        https://repo1.maven.org/maven2/org/codehaus/%{parent}/%{parent}/%{version}/%{parent}-%{version}-source-release.zip
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildRequires:  fdupes
 BuildRequires:  maven-local
@@ -38,8 +38,10 @@ BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.modello:modello-core) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-converters) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-dom4j) = %{version}
+BuildRequires:  mvn(org.codehaus.modello:modello-plugin-jackson) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-java) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-jdom) = %{version}
+BuildRequires:  mvn(org.codehaus.modello:modello-plugin-jsonschema) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-sax) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-snakeyaml) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-stax) = %{version}
