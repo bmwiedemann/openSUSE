@@ -18,14 +18,12 @@
 
 %define git_ver .0.7c2a604ec49a
 
-Summary:        InfiniBand fabric simulator for management
-License:        BSD-2-Clause OR GPL-2.0-only
-Group:          Productivity/Networking/Diagnostic
-
 Name:           ibsim
 Version:        0.9
 Release:        0
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Summary:        InfiniBand fabric simulator for management
+License:        BSD-2-Clause OR GPL-2.0-only
+Group:          Productivity/Networking/Diagnostic
 Source:         ibsim-%{version}%{git_ver}.tar.gz
 Patch1:         ibsim-fix_type_punning.patch
 Patch2:         ibsim-PIE.patch
@@ -44,17 +42,16 @@ OpenSM, diagnostic and management tools.
 %patch2 -p1
 
 %build
-export CFLAGS="${CFLAGS:-%{optflags}}"
-export LDFLAGS="${LDFLAGS:-%{optflags}}"
+export CFLAGS="%{optflags}"
+export LDFLAGS="%{optflags}"
 make prefix=%_prefix libpath=%_libdir binpath=%_bindir %{?_smp_mflags}
 
 %install
-export CFLAGS="${CFLAGS:-%{optflags}}"
-export LDFLAGS="${LDFLAGS:-%{optflags}}"
-make DESTDIR=%{buildroot} prefix=%_prefix libpath=%_libdir binpath=%_bindir install
+export CFLAGS="%{optflags}"
+export LDFLAGS="%{optflags}"
+%make_install prefix=%_prefix libpath=%_libdir binpath=%_bindir
 
 %files
-%defattr(-,root,root)
 %dir %{_libdir}/umad2sim
 %{_libdir}/umad2sim/libumad2sim*.so*
 %{_bindir}/ibsim

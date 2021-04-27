@@ -96,4 +96,12 @@
   - Added ibsim-PIE.patch</comment>
     <requestid>887509</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>bbe295412b5e18268e30bd6c7ef34f6e</srcmd5>
+    <version>0.9</version>
+    <time>1619552110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888690</requestid>
+  </revision>
 </revisionlist>
