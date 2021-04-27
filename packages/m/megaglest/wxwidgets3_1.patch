@@ -1,0 +1,254 @@
+diff -Nur megaglest-3.13.0/source/g3d_viewer/main.cpp new/source/g3d_viewer/main.cpp
+--- megaglest-3.13.0/source/g3d_viewer/main.cpp	2021-04-21 15:01:33.166492156 +0200
++++ new/source/g3d_viewer/main.cpp	2021-04-21 15:27:43.029043916 +0200
+@@ -790,14 +790,17 @@
+ // for the mousewheel
+ void MainWindow::onMouseWheelDown(wxMouseEvent &event) {
+ 	try {
+-		wxPaintEvent paintEvent;
+ 		zoom*= 1.1f;
+ 		zoom= clamp(zoom, 0.1f, 10.0f);
+ 
+ 		string statusTextValue = statusbarText + " animation speed: " + floatToStr(speed * 1000.0) + " anim value: " + floatToStr(anim) + " zoom: " + floatToStr(zoom) + " rotX: " + floatToStr(rotX) + " rotY: " + floatToStr(rotY);
+ 		GetStatusBar()->SetStatusText(ToUnicode(statusTextValue.c_str()));
+-
++#if wxCHECK_VERSION(3,1,0)
++    	Refresh();
++#else
++		wxPaintEvent paintEvent;
+ 		onPaint(paintEvent);
++#endif
+ 	}
+ 	catch(std::runtime_error &e) {
+ 		std::cout << e.what() << std::endl;
+@@ -807,14 +810,17 @@
+ 
+ void MainWindow::onMouseWheelUp(wxMouseEvent &event) {
+ 	try {
+-		wxPaintEvent paintEvent;
+ 		zoom*= 0.90909f;
+ 		zoom= clamp(zoom, 0.1f, 10.0f);
+ 
+ 		string statusTextValue = statusbarText + " animation speed: " + floatToStr(speed * 1000.0) + " anim value: " + floatToStr(anim) + " zoom: " + floatToStr(zoom) + " rotX: " + floatToStr(rotX) + " rotY: " + floatToStr(rotY);
+ 		GetStatusBar()->SetStatusText(ToUnicode(statusTextValue.c_str()));
+-
++#if wxCHECK_VERSION(3,1,0)
++	    Refresh();
++#else
++		wxPaintEvent paintEvent;
+ 		onPaint(paintEvent);
++#endif
+ 	}
+ 	catch(std::runtime_error &e) {
+ 		std::cout << e.what() << std::endl;
+@@ -827,8 +833,9 @@
+ 	try {
+ 		int x= event.GetX();
+ 		int y= event.GetY();
++#if ! wxCHECK_VERSION(3,1,0)
+ 		wxPaintEvent paintEvent;
+-
++#endif
+ 		if(event.LeftIsDown()){
+ 			rotX+= clamp(lastX-x, -10, 10);
+ 			rotY+= clamp(lastY-y, -10, 10);
+@@ -836,7 +843,11 @@
+ 			string statusTextValue = statusbarText + " animation speed: " + floatToStr(speed * 1000.0) + " anim value: " + floatToStr(anim) + " zoom: " + floatToStr(zoom) + " rotX: " + floatToStr(rotX) + " rotY: " + floatToStr(rotY);
+ 			GetStatusBar()->SetStatusText(ToUnicode(statusTextValue.c_str()));
+ 
++#if wxCHECK_VERSION(3,1,0)
++		    Refresh();
++#else
+ 			onPaint(paintEvent);
++#endif
+ 		}
+ 		else if(event.RightIsDown()){
+ 			zoom*= 1.0f+(lastX-x+lastY-y)/100.0f;
+@@ -844,8 +855,11 @@
+ 
+ 			string statusTextValue = statusbarText + " animation speed: " + floatToStr(speed * 1000.0) + " anim value: " + floatToStr(anim) + " zoom: " + floatToStr(zoom) + " rotX: " + floatToStr(rotX) + " rotY: " + floatToStr(rotY);
+ 			GetStatusBar()->SetStatusText(ToUnicode(statusTextValue.c_str()));
+-
++#if wxCHECK_VERSION(3,1,0)
++		    Refresh();
++#else
+ 			onPaint(paintEvent);
++#endif
+ 		}
+ 
+ 		lastX= x;
+@@ -1862,8 +1876,12 @@
+ 		anim -= 1.f;
+ 		resetAnimation = true;
+ 	}
++#if wxCHECK_VERSION(3,1,0)
++    Refresh();
++#else
+ 	wxPaintEvent paintEvent;
+ 	onPaint(paintEvent);
++#endif
+ }
+ 
+ string MainWindow::getModelInfo() {
+diff -Nur megaglest-3.13.0/source/glest_map_editor/main.cpp new/source/glest_map_editor/main.cpp
+--- megaglest-3.13.0/source/glest_map_editor/main.cpp	2021-04-21 15:01:33.166492156 +0200
++++ new/source/glest_map_editor/main.cpp	2021-04-21 15:18:53.154027641 +0200
+@@ -538,8 +538,12 @@
+ }
+ 
+ void MainWindow::setDirty(bool val) {
++#if wxCHECK_VERSION(3,1,0)
++    Refresh();
++#else
+ 	wxPaintEvent ev;
+ 	onPaint(ev);
++#endif
+ 	if (fileModified && val) {
+ 		return;
+ 	}
+@@ -575,8 +579,12 @@
+ 		if (!isDirty()) {
+ 			setDirty(true);
+ 		}
++#if wxCHECK_VERSION(3,1,0)
++    	Refresh();
++#else
+ 		wxPaintEvent ev;
+ 		onPaint(ev);
++#endif
+ 	}
+ 	event.Skip();
+ }
+@@ -586,18 +594,28 @@
+ 	if(program == NULL) {
+ 		return;
+ 	}
++#if wxCHECK_VERSION(3,1,0)
++	program->incCellSize(1);
++	Refresh();
++#else
+ 	wxPaintEvent ev;
+ 	program->incCellSize(1);
+ 	onPaint(ev);
++#endif
+ }
+ 
+ void MainWindow::onMouseWheelUp(wxMouseEvent &event) {
+ 	if(program == NULL) {
+ 		return;
+ 	}
++#if wxCHECK_VERSION(3,1,0)
++	program->incCellSize(-1);
++	Refresh();
++#else
+ 	wxPaintEvent ev;
+ 	program->incCellSize(-1);
+ 	onPaint(ev);
++#endif
+ }
+ 
+ void MainWindow::onMouseMove(wxMouseEvent &event, int x, int y) {
+@@ -647,8 +665,12 @@
+ 	lastY = y;
+ 
+ 	if (repaint) {
++#if wxCHECK_VERSION(3,1,0)
++		Refresh();
++#else
+ 		wxPaintEvent ev;
+ 		onPaint(ev);
++#endif
+ 	}
+ 	event.Skip();
+ }
+@@ -826,8 +848,12 @@
+ 
+ 	// std::cout << "Undo Pressed" << std::endl;
+ 	if (program->undo()) {
++#if wxCHECK_VERSION(3,1,0)
++		Refresh();
++#else
+ 		wxPaintEvent e;
+ 		onPaint(e);
++#endif
+ 		setDirty();
+ 	}
+ }
+@@ -838,8 +864,12 @@
+ 	}
+ 
+ 	if (program->redo()) {
++#if wxCHECK_VERSION(3,1,0)
++		Refresh();
++#else
+ 		wxPaintEvent e;
+ 		onPaint(e);
++#endif
+ 		setDirty();
+ 	}
+ }
+@@ -872,8 +902,12 @@
+ 	currentFile = "";
+ 	fileName = "New (unsaved) map";
+ 
++#if wxCHECK_VERSION(3,1,0)
++	Refresh();
++#else
+ 	wxPaintEvent ev;
+ 	onPaint(ev);
++#endif
+ }
+ 
+ void MainWindow::onMenuEditResetPlayers(wxCommandEvent &event) {
+@@ -1151,8 +1185,12 @@
+ 	}
+ 
+ 	program->resetOfset();
++#if wxCHECK_VERSION(3,1,0)
++	Refresh();
++#else
+ 	wxPaintEvent e;
+ 	onPaint(e);
++#endif
+ }
+ 
+ void MainWindow::onMenuViewGrid(wxCommandEvent &event) {
+@@ -1161,8 +1199,12 @@
+ 	}
+ 
+ 	menuView->Check(miViewGrid, program->setGridOnOff());    // miViewGrid event.GetId()
++#if wxCHECK_VERSION(3,1,0)
++	Refresh();
++#else
+ 	wxPaintEvent e;
+ 	onPaint(e);
++#endif
+ }
+ 
+ 
+@@ -1172,8 +1214,12 @@
+ 	}
+ 
+ 	menuView->Check(miViewHeightMap, program->setHeightMapOnOff());    // miViewGrid event.GetId()
++#if wxCHECK_VERSION(3,1,0)
++    Refresh();
++#else
+ 	wxPaintEvent e;
+ 	onPaint(e);
++#endif
+ }
+ void MainWindow::onMenuHideWater(wxCommandEvent &event) {
+ 	if(program == NULL) {
+@@ -1181,8 +1227,12 @@
+ 	}
+ 
+ 	menuView->Check(miHideWater, program->setHideWaterOnOff());    // miViewGrid event.GetId()
++#if wxCHECK_VERSION(3,1,0)
++    Refresh();
++#else
+ 	wxPaintEvent e;
+ 	onPaint(e);
++#endif
+ }
+ void MainWindow::onMenuViewAbout(wxCommandEvent &event) {
+ 	MsgDialog(

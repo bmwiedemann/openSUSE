@@ -1,7 +1,7 @@
 #
 # spec file for package megaglest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source:         https://github.com/MegaGlest/megaglest-source/releases/download/
 Source99:       %{name}.changes
 # PATCH-FIX-UPSTREAM wxwidgets3.patch - https://github.com/MegaGlest/megaglest-source/pull/163
 Patch0:         wxwidgets3.patch
+Patch1:         wxwidgets3_1.patch
 BuildRequires:  ImageMagick
 BuildRequires:  boost-jam
 BuildRequires:  cmake
@@ -83,6 +84,7 @@ enemies.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 export CFLAGS="%{optflags} -fcommon"
