@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 27 09:47:52 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- skip python36 because of numpy
+
+-------------------------------------------------------------------
 Sat Nov 14 05:05:32 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v1.1.2
