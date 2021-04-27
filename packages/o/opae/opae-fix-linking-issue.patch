@@ -1,4 +1,4 @@
-commit 05d809cab5780e79ebbbbb8c833e9f03df1b2565
+commit b9cec3efbc585d0b7a3f4afb53cb93098ff64332
 Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 Date:   Fri Apr 17 11:09:52 2020 +0200
 
@@ -21,7 +21,7 @@ index 38d6124b0c98..2610278ca437 100644
  
  opae_add_executable(TARGET hello_cxxcore
 diff --git tools/extra/fpgadiag/CMakeLists.txt tools/extra/fpgadiag/CMakeLists.txt
-index 606bb75ff3d5..d5bd2c8283ce 100644
+index 00acc11bae32..4e6048ce3fab 100644
 --- tools/extra/fpgadiag/CMakeLists.txt
 +++ tools/extra/fpgadiag/CMakeLists.txt
 @@ -42,7 +42,8 @@ opae_add_shared_library(TARGET opae-c++-nlb
@@ -34,3 +34,11 @@ index 606bb75ff3d5..d5bd2c8283ce 100644
      VERSION ${OPAE_VERSION}
      SOVERSION ${OPAE_VERSION_MAJOR}
      COMPONENT opaecxxnlb
+@@ -126,7 +127,6 @@ if (SUPPORTS_VFIO)
+     if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 5.0)
+        set_source_files_properties(eth_group.cpp  PROPERTIES COMPILE_FLAGS -fno-lto)
+     endif()
+-    pybind11_add_module(eth_group THIN_LTO  eth_group.cpp)
+ else(SUPPORTS_VFIO)
+     message(WARNING
+         "Could not compile VFIO. See errors in vfio_errors.txt")

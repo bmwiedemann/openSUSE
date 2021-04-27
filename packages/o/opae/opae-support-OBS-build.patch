@@ -1,0 +1,132 @@
+commit 10e14b8f771bc38ca07b3228f791793b0e277d09
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Wed Oct 7 10:52:08 2020 +0200
+
+    opae: support OBS build
+    
+    By default opae downloads external packages.
+    Add a flag that disabled this and relies on OBS/rpmbuild to have installed the system requirements
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git external/CMakeLists.txt external/CMakeLists.txt
+index 2f8487a86e89..49d345ad8b5c 100644
+--- external/CMakeLists.txt
++++ external/CMakeLists.txt
+@@ -26,33 +26,38 @@
+ 
+ cmake_minimum_required(VERSION 2.8.12)
+ 
+-set(CLI11_URL
+-    https://github.com/CLIUtils/CLI11.git
+-    CACHE STRING "URL for CLI11 Project")
+-set(CLI11_TAG
+-    v1.9.1
+-    CACHE STRING "Tag for CLI11")
++if (OPAE_OBS_BUILD)
++   message("================ HERE WE ARE =================")
++   find_package(CLI11 REQUIRED)
++   find_package(spdlog REQUIRED)
++else()
++	set(CLI11_URL
++		https://github.com/CLIUtils/CLI11.git
++		CACHE STRING "URL for CLI11 Project")
++	set(CLI11_TAG
++		v1.9.1
++    	CACHE STRING "Tag for CLI11")
++	opae_external_project_add(PROJECT_NAME CLI11
++                          	  GIT_URL ${CLI11_URL}
++                          	  GIT_TAG ${CLI11_TAG}
++                          	  PRESERVE_REPOS ${OPAE_PRESERVE_REPOS}
++                          	  NO_ADD_SUBDIRECTORY
++	)
+ 
+-opae_external_project_add(PROJECT_NAME CLI11
+-                          GIT_URL ${CLI11_URL}
+-                          GIT_TAG ${CLI11_TAG}
+-                          PRESERVE_REPOS ${OPAE_PRESERVE_REPOS}
+-                          NO_ADD_SUBDIRECTORY
+-)
++	set(SPDLOG_URL
++		https://github.com/gabime/spdlog.git
++    	CACHE STRING "URL for spdlog Project")
++	set(SPDLOG_TAG
++		v1.7.0
++    	CACHE STRING "Tag for spdlog")
+ 
+-set(SPDLOG_URL
+-    https://github.com/gabime/spdlog.git
+-    CACHE STRING "URL for spdlog Project")
+-set(SPDLOG_TAG
+-    v1.7.0
+-    CACHE STRING "Tag for spdlog")
+-
+-opae_external_project_add(PROJECT_NAME spdlog
+-                          GIT_URL ${SPDLOG_URL}
+-                          GIT_TAG ${SPDLOG_TAG}
+-                          PRESERVE_REPOS ${OPAE_PRESERVE_REPOS}
+-                          NO_ADD_SUBDIRECTORY
+-)
++	opae_external_project_add(PROJECT_NAME spdlog
++                          	  GIT_URL ${SPDLOG_URL}
++                          	  GIT_TAG ${SPDLOG_TAG}
++                          	  PRESERVE_REPOS ${OPAE_PRESERVE_REPOS}
++                          	  NO_ADD_SUBDIRECTORY
++	)
++endif()
+ 
+ if(OPAE_BUILD_LEGACY)
+     opae_external_project_add(PROJECT_NAME opae-legacy
+diff --git opae-libs/CMakeLists.txt opae-libs/CMakeLists.txt
+index 74ade76f9aa8..c93a39b97920 100644
+--- opae-libs/CMakeLists.txt
++++ opae-libs/CMakeLists.txt
+@@ -52,6 +52,9 @@ find_package(PythonLibs ${OPAE_PYTHON_VERSION})
+ option(OPAE_BUILD_TESTS "Enable building of OPAE unit tests" OFF)
+ mark_as_advanced(OPAE_BUILD_TESTS)
+ 
++option(OPAE_OBS_BUILD "Build through SUSE OBS and do not fetch remote packages." OFF)
++mark_as_advanced(OPAE_OBS_BUILD)
++
+ include(OPAE)
+ 
+ get_property(LIB64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+diff --git opae-libs/pyopae/CMakeLists.txt opae-libs/pyopae/CMakeLists.txt
+index 835f80a9efb3..0a662d9f6380 100644
+--- opae-libs/pyopae/CMakeLists.txt
++++ opae-libs/pyopae/CMakeLists.txt
+@@ -46,10 +46,14 @@ set(PYOPAE_SRC
+     pysysobject.cpp
+ )
+ 
+-opae_external_project_add(PROJECT_NAME pybind11
+-                          GIT_URL https://github.com/pybind/pybind11.git
+-                          GIT_TAG v2.4.3
+-                          )
++if (OPAE_OBS_BUILD)
++   find_package(pybind11 REQUIRED)
++else()
++	opae_external_project_add(PROJECT_NAME pybind11
++	                          GIT_URL https://github.com/pybind/pybind11.git
++							  GIT_TAG v2.4.3
++                          	  )
++endif()
+ 
+ opae_add_module_library(TARGET _opae
+     SOURCE ${PYOPAE_SRC}
+diff --git samples/CMakeLists.txt samples/CMakeLists.txt
+index e0da6ddf4af7..ef1074e94b21 100644
+--- samples/CMakeLists.txt
++++ samples/CMakeLists.txt
+@@ -32,6 +32,11 @@ include_directories(${OPAE_INCLUDE_DIR}
+   ${OPAE_SDK_SOURCE}/libopae/src )
+ include_directories(base/sw)
+ 
++if (OPAE_OBS_BUILD)
++    add_definitions("-DSPDLOG_FMT_EXTERNAL")
++    link_libraries(fmt)
++endif()
++
+ if(BUILD_ASE_SAMPLES)
+   find_package(Quartus)
+   find_package(Questa)

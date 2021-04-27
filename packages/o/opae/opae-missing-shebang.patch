@@ -1,4 +1,4 @@
-commit 3f99e48371a6a6c19aeec36d3b5612037f3dad18
+commit 39bd9b6d4c209d0dadb8211822e750a74b98f46b
 Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 Date:   Fri Apr 17 10:00:07 2020 +0200
 
@@ -6,6 +6,16 @@ Date:   Fri Apr 17 10:00:07 2020 +0200
     
     Signed-off-by: Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>
 
+diff --git buildit.py buildit.py
+index 5f1c68ca892c..f9ac7d9484e7 100755
+--- buildit.py
++++ buildit.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python3
++#! /usr/bin/python3
+ #  Copyright(c) 2020, Intel Corporation
+ #
+ #  Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git opae-libs/cmake/modules/OPAEPackaging.cmake opae-libs/cmake/modules/OPAEPackaging.cmake
 index 4f0b458dacb3..dab3e6af2591 100644
 --- opae-libs/cmake/modules/OPAEPackaging.cmake
@@ -19,42 +29,52 @@ index 4f0b458dacb3..dab3e6af2591 100644
          "\n"
          "z = zipfile.PyZipFile(wr_buf, 'w')\n")
  
+diff --git packaging/changelog.py packaging/changelog.py
+index a98177131a14..d6f384714972 100755
+--- packaging/changelog.py
++++ packaging/changelog.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # Copyright(c) 2020, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git platforms/scripts/afu_platform_config platforms/scripts/afu_platform_config
-index fd25acb79dc4..8ea9afaa5132 100755
+index ca8f0a334c7b..8ea9afaa5132 100755
 --- platforms/scripts/afu_platform_config
 +++ platforms/scripts/afu_platform_config
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
+-#!/usr/bin/env python3
 +#!/usr/bin/python3
  
  #
  # Copyright (c) 2017, Intel Corporation
 diff --git platforms/scripts/afu_platform_info platforms/scripts/afu_platform_info
-index 64abe0041901..54ce277e143c 100755
+index 50f9de0a96a3..54ce277e143c 100755
 --- platforms/scripts/afu_platform_info
 +++ platforms/scripts/afu_platform_info
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
+-#!/usr/bin/env python3
 +#!/usr/bin/python3
  
  #
  # Copyright (c) 2018, Intel Corporation
 diff --git platforms/scripts/afu_synth_setup platforms/scripts/afu_synth_setup
-index 5cba6af04610..4d5f99384a89 100755
+index a9d3b8508397..4d5f99384a89 100755
 --- platforms/scripts/afu_synth_setup
 +++ platforms/scripts/afu_synth_setup
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
+-#!/usr/bin/env python3
 +#!/usr/bin/python3
  # Copyright(c) 2013-2017, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git platforms/scripts/rtl_src_config platforms/scripts/rtl_src_config
-index d75fec7cd63d..97bc02422901 100755
+index dfed25387d7e..97bc02422901 100755
 --- platforms/scripts/rtl_src_config
 +++ platforms/scripts/rtl_src_config
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
+-#!/usr/bin/env python3
 +#!/usr/bin/python3
  
  #
@@ -69,6 +89,16 @@ index 5eab4e4aa988..36fd062c30c8 100755
  
  from __future__ import absolute_import
  import argparse
+diff --git python/opae.admin/opae/admin/tools/bitstream_info.py python/opae.admin/opae/admin/tools/bitstream_info.py
+index 23d08bae0628..d7a120d05d1a 100644
+--- python/opae.admin/opae/admin/tools/bitstream_info.py
++++ python/opae.admin/opae/admin/tools/bitstream_info.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # Copyright(c) 2019, Intel Corporation
+ #
+ # Redistribution and use in source and binary forms, with or without
 diff --git python/opae.admin/opae/admin/tools/fpgaflash.py python/opae.admin/opae/admin/tools/fpgaflash.py
 index 84fa52decfbc..8fa43f9da4b0 100755
 --- python/opae.admin/opae/admin/tools/fpgaflash.py
@@ -89,14 +119,24 @@ index d2bba06dfa54..ba375a2c3038 100755
  # Copyright(c) 2019, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git python/opae.admin/opae/admin/tools/fpgaport.py python/opae.admin/opae/admin/tools/fpgaport.py
+index 8c02daf66d68..bf124518f9df 100644
+--- python/opae.admin/opae/admin/tools/fpgaport.py
++++ python/opae.admin/opae/admin/tools/fpgaport.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # Copyright(c) 2019, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git python/opae.admin/opae/admin/tools/fpgasupdate.py python/opae.admin/opae/admin/tools/fpgasupdate.py
-index ce06c6c564af..e91503740412 100755
+index 9ebe46ef337e..0549a0fb43cf 100755
 --- python/opae.admin/opae/admin/tools/fpgasupdate.py
 +++ python/opae.admin/opae/admin/tools/fpgasupdate.py
 @@ -1,4 +1,4 @@
 -#! /usr/bin/env python3
 +#! /usr/bin/python3
- # Copyright(c) 2019, Intel Corporation
+ # Copyright(c) 2019-2020, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git python/opae.admin/opae/admin/tools/ihex2ipmi.py python/opae.admin/opae/admin/tools/ihex2ipmi.py
@@ -110,13 +150,13 @@ index 032e31e355d3..d4d05e6d2553 100644
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git python/opae.admin/opae/admin/tools/rsu.py python/opae.admin/opae/admin/tools/rsu.py
-index 580eae896d95..a4075d8ced1a 100644
+index acf509bdc83b..bcd1a46f4b3f 100644
 --- python/opae.admin/opae/admin/tools/rsu.py
 +++ python/opae.admin/opae/admin/tools/rsu.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python3
 +#!/usr/bin/python3
- # Copyright(c) 2019, Intel Corporation
+ # Copyright(c) 2019-2020, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git python/opae.admin/opae/admin/tools/super_rsu.py python/opae.admin/opae/admin/tools/super_rsu.py
@@ -130,7 +170,7 @@ index 045fa2e0d32d..b73ba7861b10 100755
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git scripts/index_generator.py scripts/index_generator.py
-index dc0bcc2d13fd..0f406738c384 100644
+index 362b78095cc2..a612610afb26 100644
 --- scripts/index_generator.py
 +++ scripts/index_generator.py
 @@ -1,4 +1,4 @@
@@ -140,96 +180,107 @@ index dc0bcc2d13fd..0f406738c384 100644
  # vim:fenc=utf-8
  #
 diff --git tools/extra/fpgabist/bist_app.py tools/extra/fpgabist/bist_app.py
-index 846bcb668f87..fdfec981dece 100644
+index 9bc1b3a4c4dd..6976a2079246 100644
 --- tools/extra/fpgabist/bist_app.py
 +++ tools/extra/fpgabist/bist_app.py
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
+-#!/usr/bin/env python3
 +#!/usr/bin/python3
  # Copyright(c) 2017, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/fpgabist/bist_common.py tools/extra/fpgabist/bist_common.py
-index 8de0cea2c6d8..f3b27f64e6c5 100644
+index eb81c42781dc..43d38658e8f6 100644
 --- tools/extra/fpgabist/bist_common.py
 +++ tools/extra/fpgabist/bist_common.py
-@@ -1,3 +1,4 @@
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
 +#!/usr/bin/python3
  # Copyright(c) 2017, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/fpgabist/bist_def.py tools/extra/fpgabist/bist_def.py
-index 7812a822a5ae..bdb1d7e7fc29 100644
+index f64c5c401239..f07b8c184d75 100644
 --- tools/extra/fpgabist/bist_def.py
 +++ tools/extra/fpgabist/bist_def.py
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
+-#!/usr/bin/env python3
 +#!/usr/bin/python
  # Copyright(c) 2017, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/fpgabist/bist_dma.py tools/extra/fpgabist/bist_dma.py
-index aec5f8770d48..ee4e620b586e 100644
+index d0d8550dec90..28921473bc61 100644
 --- tools/extra/fpgabist/bist_dma.py
 +++ tools/extra/fpgabist/bist_dma.py
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
+-#!/usr/bin/env python3
 +#!/usr/bin/python3
  # Copyright(c) 2017, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/fpgabist/bist_nlb0.py tools/extra/fpgabist/bist_nlb0.py
-index 6930172bfcd9..608f11c66137 100644
+index 86f99db47b89..dac00f81788d 100644
 --- tools/extra/fpgabist/bist_nlb0.py
 +++ tools/extra/fpgabist/bist_nlb0.py
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
+-#!/usr/bin/env python3
 +#!/usr/bin/python
  # Copyright(c) 2018, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/fpgabist/bist_nlb3.py tools/extra/fpgabist/bist_nlb3.py
-index 24fcb9468556..952169dbf0a0 100644
+index 25f049f23d69..4e0cffc264df 100644
 --- tools/extra/fpgabist/bist_nlb3.py
 +++ tools/extra/fpgabist/bist_nlb3.py
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
+-#!/usr/bin/env python3
 +#!/usr/bin/python3
  # Copyright(c) 2017, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/fpgabist/fpgabist tools/extra/fpgabist/fpgabist
-index 396470f888f3..b4c9876229da 100755
+index b4ae02c56479..4152ca2241bb 100755
 --- tools/extra/fpgabist/fpgabist
 +++ tools/extra/fpgabist/fpgabist
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
+-#!/usr/bin/env python3
 +#!/usr/bin/python3
  # Copyright(c) 2017, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/fpgadiag/common.py tools/extra/fpgadiag/common.py
-index 5d0e4fe0ae20..7a7cd78b8fc5 100755
+index bdf1f4b6eb59..c0bf3b4f17b1 100755
 --- tools/extra/fpgadiag/common.py
 +++ tools/extra/fpgadiag/common.py
 @@ -1,4 +1,4 @@
--#! /usr/bin/env python
+-#! /usr/bin/env python3
 +#! /usr/bin/python3
- # Copyright(c) 2018-2019, Intel Corporation
+ # Copyright(c) 2018-2020, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/extra/fpgadiag/fecmode.py tools/extra/fpgadiag/fecmode.py
+index e028f98e6c86..6a5abdbccddb 100644
+--- tools/extra/fpgadiag/fecmode.py
++++ tools/extra/fpgadiag/fecmode.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python3
++#! /usr/bin/python3
+ # Copyright(c) 2020, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/fpgadiag/fpgadiag tools/extra/fpgadiag/fpgadiag
-index 98063daf8476..c798d26b4e2d 100755
+index 91a0958299fc..d7b5cc92b767 100755
 --- tools/extra/fpgadiag/fpgadiag
 +++ tools/extra/fpgadiag/fpgadiag
 @@ -1,4 +1,4 @@
--#! /usr/bin/env python
+-#! /usr/bin/env python3
 +#! /usr/bin/python3
- # Copyright(c) 2019, Intel Corporation
+ # Copyright(c) 2017-2020 Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/fpgadiag/fpgalpbk.py tools/extra/fpgadiag/fpgalpbk.py
-index 837e007d8285..169b89174372 100755
+index f0dc25b5bc1b..e32a319105b8 100755
 --- tools/extra/fpgadiag/fpgalpbk.py
 +++ tools/extra/fpgadiag/fpgalpbk.py
 @@ -1,4 +1,4 @@
@@ -238,8 +289,18 @@ index 837e007d8285..169b89174372 100755
  # Copyright(c) 2019, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/extra/fpgadiag/fpgamac.py tools/extra/fpgadiag/fpgamac.py
+index bbd02e1f4882..b659945d3767 100644
+--- tools/extra/fpgadiag/fpgamac.py
++++ tools/extra/fpgadiag/fpgamac.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python3
++#! /usr/bin/python3
+ # Copyright(c) 2019, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/fpgadiag/fpgastats.py tools/extra/fpgadiag/fpgastats.py
-index e9c0704cc7e7..b116c8f874eb 100755
+index 3218cda71655..eae124e8f1ab 100755
 --- tools/extra/fpgadiag/fpgastats.py
 +++ tools/extra/fpgadiag/fpgastats.py
 @@ -1,4 +1,4 @@
@@ -248,32 +309,42 @@ index e9c0704cc7e7..b116c8f874eb 100755
  # Copyright(c) 2018-2019, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
+diff --git tools/extra/fpgadiag/fvlbypass.py tools/extra/fpgadiag/fvlbypass.py
+index cad74fea31fd..bb4b457f7f0a 100644
+--- tools/extra/fpgadiag/fvlbypass.py
++++ tools/extra/fpgadiag/fvlbypass.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python3
++#! /usr/bin/python3
+ # Copyright(c) 2019, Intel Corporation
+ #
+ # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/fpgadiag/mactest.py tools/extra/fpgadiag/mactest.py
-index 06e410c457fe..13662a2a48a5 100755
+index 15d7bff31105..b705d224eacf 100755
 --- tools/extra/fpgadiag/mactest.py
 +++ tools/extra/fpgadiag/mactest.py
 @@ -1,4 +1,4 @@
--#! /usr/bin/env python
+-#! /usr/bin/env python3
 +#! /usr/bin/python3
- # Copyright(c) 2018-2019, Intel Corporation
+ # Copyright(c) 2020, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/fpgadiag/mux.py tools/extra/fpgadiag/mux.py
-index 099c4e56ba61..1a4b1605c7a2 100644
+index 2059954e7522..edb82674f5cb 100644
 --- tools/extra/fpgadiag/mux.py
 +++ tools/extra/fpgadiag/mux.py
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
+-#!/usr/bin/env python3
 +#!/usr/bin/python3
  # Copyright(c) 2017, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
 diff --git tools/extra/pac_hssi_config/pac_hssi_config.py tools/extra/pac_hssi_config/pac_hssi_config.py
-index 83d52b5374ab..0eea7221ea9a 100755
+index 56bc40dfee47..5884bc6dcecd 100755
 --- tools/extra/pac_hssi_config/pac_hssi_config.py
 +++ tools/extra/pac_hssi_config/pac_hssi_config.py
 @@ -1,4 +1,4 @@
--#! /usr/bin/env python
+-#! /usr/bin/env python3
 +#!/usr/bin/python3
  # Copyright(c) 2018, Intel Corporation
  #
@@ -308,1590 +379,43 @@ index f1edf9ac4b2c..fd1ce183d6ae 100755
  # Copyright(c) 2017, Intel Corporation
  #
  # Redistribution  and  use  in source  and  binary  forms,  with  or  without
-diff --git tools/fpgaflash/fpgaflash tools/fpgaflash/fpgaflash
-new file mode 100755
-index 000000000000..1340afe3a62d
---- /dev/null
-+++ tools/fpgaflash/fpgaflash
-@@ -0,0 +1,343 @@
-+#! /usr/bin/python3
-+# Copyright(c) 2017, Intel Corporation
-+#
-+# Redistribution  and  use  in source  and  binary  forms,  with  or  without
-+# modification, are permitted provided that the following conditions are met:
-+#
-+# * Redistributions of  source code  must retain the  above copyright notice,
-+#   this list of conditions and the following disclaimer.
-+# * Redistributions in binary form must reproduce the above copyright notice,
-+#   this list of conditions and the following disclaimer in the documentation
-+#   and/or other materials provided with the distribution.
-+# * Neither the name  of Intel Corporation  nor the names of its contributors
-+#   may be used to  endorse or promote  products derived  from this  software
-+#   without specific prior written permission.
-+#
-+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,  BUT NOT LIMITED TO,  THE
-+# IMPLIED WARRANTIES OF  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-+# ARE DISCLAIMED.  IN NO EVENT  SHALL THE COPYRIGHT OWNER  OR CONTRIBUTORS BE
-+# LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,  OR
-+# CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT LIMITED  TO,  PROCUREMENT  OF
-+# SUBSTITUTE GOODS OR SERVICES;  LOSS OF USE,  DATA, OR PROFITS;  OR BUSINESS
-+# INTERRUPTION)  HOWEVER CAUSED  AND ON ANY THEORY  OF LIABILITY,  WHETHER IN
-+# CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
-+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,  EVEN IF ADVISED OF THE
-+# POSSIBILITY OF SUCH DAMAGE.
-+
-+import argparse
-+import struct
-+import fnmatch
-+import glob
-+import sys
-+import tempfile
-+import os
-+import subprocess
-+import fcntl
-+import filecmp
-+import stat
-+import re
-+from array import *
-+
-+
-+def check_rpd(ifile):
-+    data = ifile.read(0x20)
-+    pof_hdr = struct.unpack('IIIIIIII', data)
-+    for i in range(0, 3):
-+        if pof_hdr[i] != 0xffffffff:
-+            print "invalid rpd file"
-+            raise Exception
-+
-+    if pof_hdr[3] != 0x6a6a6a6a:
-+        print "invalid rpd file"
-+        raise Exception
-+
-+    return pof_hdr[4]
-+
-+
-+def reverse_bits(x, n):
-+    result = 0
-+    for i in xrange(n):
-+        if (x >> i) & 1:
-+            result |= 1 << (n - 1 - i)
-+    return result
-+
-+
-+def reverse_bits_in_file(ifile, ofile):
-+    bit_rev = array('B')
-+    for i in range(0, 256):
-+        bit_rev.append(reverse_bits(i, 8))
-+
-+    while True:
-+        ichunk = ifile.read(4096)
-+        if not ichunk:
-+            break
-+
-+        ochunk = ''
-+        for b in ichunk:
-+            ochunk += chr(bit_rev[ord(b)])
-+        ofile.write(ochunk)
-+
-+
-+def get_flash_size(dev):
-+
-+    MEMGETINFO = 0x80204d01
-+
-+    try:
-+        fd = os.open(dev, os.O_SYNC | os.O_RDONLY)
-+    except Exception as e:
-+        print "failed to open " + dev + ": ", e
-+        raise
-+
-+    ioctl_data = struct.pack('BIIIIIQ', 0, 0, 0, 0, 0, 0, 0)
-+
-+    try:
-+        ret = fcntl.ioctl(fd, MEMGETINFO, ioctl_data)
-+    except Exception as e:
-+        print "ioctl failed: ", e
-+        raise
-+
-+    ioctl_odata = struct.unpack_from('BIIIIIQ', ret)
-+
-+    os.close(fd)
-+
-+    return ioctl_odata[2]
-+
-+
-+def flash_erase(dev, start, nbytes):
-+    MEMERASE = 0x40084d02
-+
-+    try:
-+        fd = os.open(dev, os.O_SYNC | os.O_RDWR)
-+    except Exception as e:
-+        print "failed to open " + dev + ": ", e
-+        raise
-+
-+    ioctl_data = struct.pack('II', start, nbytes)
-+
-+    try:
-+        ret = fcntl.ioctl(fd, MEMERASE, ioctl_data)
-+    except Exception as e:
-+        print "ioctl failed: ", e
-+        raise
-+
-+    os.close(fd)
-+
-+
-+def flash_write(dev, start, nbytes, ifile):
-+
-+    try:
-+        fd = os.open(dev, os.O_SYNC | os.O_RDWR)
-+    except Exception as e:
-+        print "failed to open " + dev + ": ", e
-+        raise
-+
-+    os.lseek(fd, start, os.SEEK_SET)
-+
-+    while nbytes > 0:
-+        if (nbytes > 4096):
-+            rbytes = 4096
-+        else:
-+            rbytes = nbytes
-+
-+        ichunk = ifile.read(rbytes)
-+
-+        if not ichunk:
-+            print "read of flash failed"
-+            raise Exception
-+
-+        os.write(fd, ichunk)
-+        nbytes -= rbytes
-+
-+    os.close(fd)
-+
-+
-+def flash_read(dev, start, nbytes, ofile):
-+    try:
-+        fd = os.open(dev, os.O_SYNC | os.O_RDONLY)
-+    except Exception as e:
-+        print "failed to open " + dev + ": ", e
-+        raise
-+
-+    os.lseek(fd, start, os.SEEK_SET)
-+
-+    while nbytes > 0:
-+        if (nbytes > 4096):
-+            rbytes = 4096
-+        else:
-+            rbytes = nbytes
-+
-+        ichunk = os.read(fd, rbytes)
-+
-+        if not ichunk:
-+            print "read of flash failed"
-+            raise Exception
-+
-+        ofile.write(ichunk)
-+        nbytes -= rbytes
-+
-+    os.close(fd)
-+
-+
-+def parse_args():
-+    descr = 'A tool to help update the flash used to configure an '
-+    descr += 'Intel FPGA at power up.'
-+
-+    epi = 'example usage:\n\n'
-+    epi += '    fpgaflash user new_image.rpd 0000:04:00.0\n\n'
-+
-+    fc = argparse.RawDescriptionHelpFormatter
-+    parser = argparse.ArgumentParser(description=descr, epilog=epi,
-+                                     formatter_class=fc)
-+
-+    parser.add_argument('type', help='type of flash programming',
-+                        choices=['user', 'factory'])
-+    parser.add_argument('file', type=argparse.FileType('rb'),
-+                        help='rpd file to program into flash')
-+
-+    bdf_help = "bdf of device to program (e.g. 04:00.0 or 0000:04:00.0)"
-+    bdf_help += " optional when one device in system"
-+
-+    parser.add_argument('bdf', nargs='?', help=bdf_help)
-+    return parser.parse_args()
-+
-+
-+def get_bdf_mtd_mapping():
-+    bdf_map = dict()
-+    for fpga in glob.glob('/sys/class/fpga/*'):
-+        bdf = os.path.basename(os.readlink(os.path.join(fpga, "device")))
-+        if not bdf:
-+            continue
-+
-+        mtds = glob.glob(os.path.join(fpga, 'intel-fpga-fme.*',
-+                                      'altr-asmip2*', 'mtd', 'mtd*'))
-+        for mtd in mtds:
-+            if not fnmatch.fnmatchcase(mtd, "*ro"):
-+                bdf_map[bdf] = os.path.join('/dev', os.path.basename(mtd))
-+                break
-+
-+    return bdf_map
-+
-+
-+def print_bdf_mtd_mapping(bdf_map):
-+    print "\nFPGA cards available for flashing:"
-+
-+    for key in bdf_map.keys():
-+        print "    {}".format(key)
-+
-+    print
-+
-+
-+def normalize_bdf(bdf):
-+
-+    pat = '[0-9a-fA-F]{4}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}\.[0-9a-fA-F]$'
-+    if re.match(pat, bdf):
-+        return bdf
-+
-+    if re.match('[0-9a-fA-F]{2}:[0-9a-fA-F]{2}\.[0-9a-fA-F]$', bdf):
-+        return "0000:{}".format(bdf)
-+
-+
-+def update_flash(update_type, ifile, bdf):
-+
-+    bdf_map = get_bdf_mtd_mapping()
-+
-+    if len(bdf_map) == 0:
-+        print "No FPGA devices found"
-+        raise Exception
-+
-+    mtd_dev = None
-+    if not bdf:
-+        if len(bdf_map) > 1:
-+            print "Must specify a bdf. More than one device found."
-+        else:
-+            mtd_dev = bdf_map[bdf_map.keys()[0]]
-+    else:
-+        bdf = normalize_bdf(bdf)
-+        if not bdf:
-+            print "{} is an invalid bdf".format(bdf)
-+        elif bdf not in bdf_map.keys():
-+            print "Could not find flash device for {}".format(bdf)
-+        else:
-+            mtd_dev = bdf_map[bdf]
-+
-+    if not mtd_dev:
-+        print_bdf_mtd_mapping(bdf_map)
-+        raise Exception
-+
-+    try:
-+        mode = os.stat(mtd_dev).st_mode
-+    except Exception as e:
-+        print "Couldn't stat {}".format(mtd_dev)
-+        raise
-+
-+    if not stat.S_ISCHR(mode):
-+        print "{} is not a device file.".format(mtd_dev)
-+        raise Exception
-+
-+    flash_size = get_flash_size(mtd_dev)
-+
-+    print "flash size is {}".format(flash_size)
-+
-+    start_addr = check_rpd(ifile)
-+
-+    if update_type == 'factory':
-+        start_addr = 0
-+
-+    ofile = tempfile.NamedTemporaryFile(mode='wb', delete=False)
-+
-+    ifile.seek(start_addr)
-+
-+    print "reversing bits"
-+    reverse_bits_in_file(ifile, ofile)
-+
-+    ifile.close()
-+    ofile.close()
-+
-+    print "erasing flash"
-+    flash_erase(mtd_dev, start_addr, (flash_size - start_addr))
-+
-+    nbytes = os.path.getsize(ofile.name)
-+    try:
-+        rfile = open(ofile.name, 'rb')
-+    except Exception as e:
-+        print "open({}) failed:".format(ofile.name)
-+        raise
-+
-+    print "writing flash"
-+    flash_write(mtd_dev, start_addr, nbytes, rfile)
-+    rfile.close()
-+
-+    vfile = tempfile.NamedTemporaryFile(mode='wb', delete=False)
-+
-+    print "reading back flash"
-+    flash_read(mtd_dev, start_addr, nbytes, vfile)
-+
-+    vfile.close()
-+
-+    print "verifying flash"
-+
-+    retval = filecmp.cmp(ofile.name, vfile.name)
-+
-+    os.remove(ofile.name)
-+    os.remove(vfile.name)
-+
-+    if retval:
-+        print "flash successfully verified"
-+    else:
-+        print "failed to verify flash"
-+        raise Exception
-+
-+
-+if __name__ == "__main__":
-+
-+    args = parse_args()
-+
-+    if args.type == 'factory':
-+        msg = "Are you sure you want to perform a factory update? [Yes/No]"
-+        sys.stdout.write(msg)
-+        line = sys.stdin.readline()
-+        if line != "Yes\n":
-+            sys.exit(1)
-+
-+    update_flash(args.type, args.file, args.bdf)
-diff --git tools/fpgainfo/fpga_common.py tools/fpgainfo/fpga_common.py
-new file mode 100644
-index 000000000000..b0d4bceee247
---- /dev/null
-+++ tools/fpgainfo/fpga_common.py
-@@ -0,0 +1,77 @@
-+#!/usr/bin/python3
-+# Copyright(c) 2017, Intel Corporation
-+#
-+# Redistribution  and  use  in source  and  binary  forms,  with  or  without
-+# modification, are permitted provided that the following conditions are met:
-+#
-+# * Redistributions of  source code  must retain the  above copyright notice,
-+#  this list of conditions and the following disclaimer.
-+# * Redistributions in binary form must reproduce the above copyright notice,
-+#  this list of conditions and the following disclaimer in the documentation
-+#   and/or other materials provided with the distribution.
-+# * Neither the name  of Intel Corporation  nor the names of its contributors
-+#   may be used to  endorse or promote  products derived  from this  software
-+#   without specific prior written permission.
-+#
-+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,  BUT NOT LIMITED TO,  THE
-+# IMPLIED WARRANTIES OF  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-+# ARE DISCLAIMED.  IN NO EVENT  SHALL THE COPYRIGHT OWNER  OR CONTRIBUTORS BE
-+# LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,  OR
-+# CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT LIMITED  TO,  PROCUREMENT  OF
-+# SUBSTITUTE GOODS OR SERVICES;  LOSS OF USE,  DATA, OR PROFITS;  OR BUSINESS
-+# INTERRUPTION)  HOWEVER CAUSED  AND ON ANY THEORY  OF LIABILITY,  WHETHER IN
-+# CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
-+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,  EVEN IF ADVISED OF THE
-+# POSSIBILITY OF SUCH DAMAGE.
-+
-+import os
-+
-+
-+class bitmask(object):
-+    def __init__(self, bit_lo, bit_hi=None):
-+        value = 0
-+        for n in range(bit_lo, (bit_hi or bit_lo) + 1):
-+            value |= (1 << n)
-+        self.mask = value
-+        self.type = int if bit_hi else bool
-+        self.bit_lo = bit_lo
-+
-+    def __call__(self, value):
-+        return self.type(self.mask & value) >> self.bit_lo
-+
-+
-+class fpga_command(object):
-+    commands = {}
-+
-+    @classmethod
-+    def register_command(cls, subparsers, command_class):
-+        assert(
-+            command_class.name not in cls.commands
-+        ), 'Command entry already exists!!'
-+        subparser = subparsers.add_parser(command_class.name)
-+        cls.commands[command_class.name] = command_class(subparser)
-+
-+    def __init__(self, parser):
-+        self.parser = parser
-+        self.args(self.parser)
-+        self.parser.set_defaults(func=self.run)
-+
-+    def args(self, parser):
-+        parser.add_argument('-b', '--bus',
-+                            help='pcie bus number of resource')
-+
-+        parser.add_argument('-d', '--device',
-+                            help='pcie device number of resource')
-+
-+        parser.add_argument('-f', '--function',
-+                            help='pcie function number of resource')
-+
-+        parser.add_argument('--json', action='store_true', default=False,
-+                            help='Display information as JSON string')
-+
-+    def run(self, args):
-+        raise NotImplementedError
-+
-+    def fme_feature_is_supported(self, path):
-+        return os.path.isfile(path)
-diff --git tools/fpgainfo/fpga_fmeinfo.py tools/fpgainfo/fpga_fmeinfo.py
-new file mode 100644
-index 000000000000..dce5bd302341
---- /dev/null
-+++ tools/fpgainfo/fpga_fmeinfo.py
-@@ -0,0 +1,58 @@
-+#!/usr/bin/python3
-+# Copyright(c) 2017, Intel Corporation
-+##
-+# Redistribution  and  use  in source  and  binary  forms,  with  or  without
-+# modification, are permitted provided that the following conditions are met:
-+##
-+# * Redistributions of  source code  must retain the  above copyright notice,
-+# this list of conditions and the following disclaimer.
-+# * Redistributions in binary form must reproduce the above copyright notice,
-+# this list of conditions and the following disclaimer in the documentation
-+# and/or other materials provided with the distribution.
-+# * Neither the name  of Intel Corporation  nor the names of its contributors
-+# may be used to  endorse or promote  products derived  from this  software
-+# without specific prior written permission.
-+##
-+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,  BUT NOT LIMITED TO,  THE
-+# IMPLIED WARRANTIES OF  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-+# ARE DISCLAIMED.  IN NO EVENT  SHALL THE COPYRIGHT OWNER  OR CONTRIBUTORS BE
-+# LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,  OR
-+# CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT LIMITED  TO,  PROCUREMENT  OF
-+# SUBSTITUTE GOODS OR SERVICES;  LOSS OF USE,  DATA, OR PROFITS;  OR BUSINESS
-+# INTERRUPTION)  HOWEVER CAUSED  AND ON ANY THEORY  OF LIABILITY,  WHETHER IN
-+# CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
-+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,  EVEN IF ADVISED OF THE
-+# POSSIBILITY OF SUCH DAMAGE.
-+import json
-+import fpga_common
-+import sysfs
-+
-+
-+class fme_command(fpga_common.fpga_command):
-+    name = "fme"
-+    properties = ['version',
-+                  'ports_num',
-+                  'socket_id',
-+                  'bitstream_id',
-+                  'bitstream_metadata',
-+                  'pr.interface_id',
-+                  'object_ID']
-+
-+    def run(self, args):
-+        info = sysfs.sysfsinfo()
-+        json_data = []
-+        for fme in info.fme(**vars(args)):
-+            if args.json:
-+                json_data.append(fme.to_dict())
-+            else:
-+                fme.print_info("//****** FME ******//", *self.properties)
-+        if args.json:
-+            print(json.dumps(json_data, indent=4, sort_keys=False))
-+
-+
-+if __name__ == "__main__":
-+    import argparse
-+    parser = argparse.ArgumentParser()
-+    args = parser.parse_args()
-+    args.func(args)
-diff --git tools/fpgainfo/fpga_portinfo.py tools/fpgainfo/fpga_portinfo.py
-new file mode 100644
-index 000000000000..2d63b245edcd
---- /dev/null
-+++ tools/fpgainfo/fpga_portinfo.py
-@@ -0,0 +1,55 @@
-+#!/usr/bin/python3
-+# Copyright(c) 2017, Intel Corporation
-+##
-+# Redistribution  and  use  in source  and  binary  forms,  with  or  without
-+# modification, are permitted provided that the following conditions are met:
-+##
-+# * Redistributions of  source code  must retain the  above copyright notice,
-+# this list of conditions and the following disclaimer.
-+# * Redistributions in binary form must reproduce the above copyright notice,
-+# this list of conditions and the following disclaimer in the documentation
-+# and/or other materials provided with the distribution.
-+# * Neither the name  of Intel Corporation  nor the names of its contributors
-+# may be used to  endorse or promote  products derived  from this  software
-+# without specific prior written permission.
-+##
-+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,  BUT NOT LIMITED TO,  THE
-+# IMPLIED WARRANTIES OF  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-+# ARE DISCLAIMED.  IN NO EVENT  SHALL THE COPYRIGHT OWNER  OR CONTRIBUTORS BE
-+# LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,  OR
-+# CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT LIMITED  TO,  PROCUREMENT  OF
-+# SUBSTITUTE GOODS OR SERVICES;  LOSS OF USE,  DATA, OR PROFITS;  OR BUSINESS
-+# INTERRUPTION)  HOWEVER CAUSED  AND ON ANY THEORY  OF LIABILITY,  WHETHER IN
-+# CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
-+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,  EVEN IF ADVISED OF THE
-+# POSSIBILITY OF SUCH DAMAGE.
-+import json
-+import fpga_common
-+import sysfs
-+
-+
-+class port_command(fpga_common.fpga_command):
-+    name = "port"
-+
-+    properties = ['afu_id',
-+                  'object_ID']
-+
-+    def run(self, args):
-+        info = sysfs.sysfsinfo()
-+        json_data = []
-+        for port in info.port(**vars(args)):
-+            if args.json:
-+                json_data.append(port.to_dict())
-+            else:
-+                port.print_info("//****** PORT ******//", *self.properties)
-+
-+        if args.json:
-+            print(json.dumps(json_data, indent=4, sort_keys=False))
-+
-+
-+if __name__ == "__main__":
-+    import argparse
-+    parser = argparse.ArgumentParser()
-+    args = parser.parse_args()
-+    args.func(args)
-diff --git tools/fpgainfo/fpgaerr.py tools/fpgainfo/fpgaerr.py
-new file mode 100644
-index 000000000000..f1ff29e97186
---- /dev/null
-+++ tools/fpgainfo/fpgaerr.py
-@@ -0,0 +1,329 @@
-+#!/usr/bin/python3
-+# Copyright(c) 2017, Intel Corporation
-+##
-+# Redistribution  and  use  in source  and  binary  forms,  with  or  without
-+# modification, are permitted provided that the following conditions are met:
-+##
-+# * Redistributions of  source code  must retain the  above copyright notice,
-+# this list of conditions and the following disclaimer.
-+# * Redistributions in binary form must reproduce the above copyright notice,
-+# this list of conditions and the following disclaimer in the documentation
-+# and/or other materials provided with the distribution.
-+# * Neither the name  of Intel Corporation  nor the names of its contributors
-+# may be used to  endorse or promote  products derived  from this  software
-+# without specific prior written permission.
-+##
-+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,  BUT NOT LIMITED TO,  THE
-+# IMPLIED WARRANTIES OF  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-+# ARE DISCLAIMED.  IN NO EVENT  SHALL THE COPYRIGHT OWNER  OR CONTRIBUTORS BE
-+# LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,  OR
-+# CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT LIMITED  TO,  PROCUREMENT  OF
-+# SUBSTITUTE GOODS OR SERVICES;  LOSS OF USE,  DATA, OR PROFITS;  OR BUSINESS
-+# INTERRUPTION)  HOWEVER CAUSED  AND ON ANY THEORY  OF LIABILITY,  WHETHER IN
-+# CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
-+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,  EVEN IF ADVISED OF THE
-+# POSSIBILITY OF SUCH DAMAGE.
-+import json
-+from sysfs import sysfsinfo
-+from fpga_common import (
-+    fpga_command,
-+    bitmask)
-+
-+
-+class error_mask(object):
-+    _name = None
-+    _bitmasks = []
-+
-+    def __init__(self, value):
-+        self.value = value
-+
-+    def __unicode__(self):
-+        s = u'0x{:02x}'.format(self.value)
-+        if self.value:
-+            for name, bm in self._bitmasks:
-+                err = bm(self.value)
-+                if err:
-+                    s += u'\n  {:20} : 0x{:02X}'.format(name, err)
-+        return s
-+
-+    def to_dict(self, include_bdf=False):
-+        if self._bitmasks:
-+            data = (dict([(name, bm(self.value))
-+                          for (name, bm) in self._bitmasks]))
-+            return data
-+        else:
-+            return self.value
-+
-+
-+class fme_errors(error_mask):
-+    _name = "fme"
-+    _file = "fme-errors/errors"
-+    _bitmasks = [
-+        ("CvlCdcParErro0", bitmask(17, 19)),
-+        ("Pcie1CdcParErr", bitmask(12, 16)),
-+        ("Pcie0CdcParErr", bitmask(7, 11)),
-+        ("MBPErr", bitmask(6, 6)),
-+        ("AfuAccessModeErr", bitmask(5, 5)),
-+        ("IommuParityErr", bitmask(4, 4)),
-+        ("KtiCdcParityErr", bitmask(2, 3)),
-+        ("FabricFifoUOflow", bitmask(1, 1)),
-+        ("FabricErr", bitmask(0, 0)),
-+    ]
-+
-+
-+class bbs_errors(error_mask):
-+    _name = "bbs"
-+    _file = "bbs_errors"
-+    _bitmasks = [
-+        ("InjectedCatastErr", bitmask(11, 11)),
-+        ("ThermCatastErr", bitmask(10, 10)),
-+        ("CrcCatastErr", bitmask(9, 9)),
-+        ("InjectedFatalErr", bitmask(8, 8)),
-+        ("PciePoisonErr", bitmask(7, 7)),
-+        ("FabricFatalErr", bitmask(6, 6)),
-+        ("IommuFatalErr", bitmask(5, 5)),
-+        ("DramFatalErr", bitmask(4, 4)),
-+        ("KtiProtoFatalErr", bitmask(3, 3)),
-+        ("CciFatalErr", bitmask(2, 2)),
-+        ("TagCchFatalErr", bitmask(1, 1)),
-+        ("KtiLinkFatalErr", bitmask(0, 0)),
-+    ]
-+
-+
-+class port_errors(error_mask):
-+    _name = "port"
-+    _file = "errors"
-+    _bitmasks = [
-+        ("VfFlrAccessError", bitmask(51, 51)),
-+        ("Ap6Event", bitmask(50, 50)),
-+        ("PMRError", bitmask(49, 49)),
-+        ("PageFault", bitmask(48, 48)),
-+        ("VgaMemRangeError", bitmask(47, 47)),
-+        ("LegRangeHighError", bitmask(46, 46)),
-+        ("LegRangeLowError", bitmask(45, 45)),
-+        ("GenProtRangeError", bitmask(44, 44)),
-+        ("L1prMesegError", bitmask(43, 43)),
-+        ("L1prSmrr2Error", bitmask(42, 42)),
-+        ("L1prSmrrError", bitmask(41, 41)),
-+        ("TxReqCounterOverflow", bitmask(40, 40)),
-+        ("UnexpMMIOResp", bitmask(34, 34)),
-+        ("TxCh2FifoOverflow", bitmask(33, 33)),
-+        ("MMIOTimedOut", bitmask(32, 32)),
-+        ("TxCh1NonZeroSOP", bitmask(24, 24)),
-+        ("TxCh1IncorrectAddr", bitmask(23, 23)),
-+        ("TxCh1DataPayloadOverrun", bitmask(22, 22)),
-+        ("TxCh1InsufficientData", bitmask(21, 21)),
-+        ("TxCh1Len4NotAligned", bitmask(20, 20)),
-+        ("TxCh1Len2NotAligned", bitmask(19, 19)),
-+        ("TxCh1Len3NotSupported", bitmask(18, 18)),
-+        ("TxCh1InvalidReqEncoding", bitmask(17, 17)),
-+        ("TxCh1Overflow", bitmask(16, 16)),
-+        ("MMIOWrWhileRst", bitmask(10, 10)),
-+        ("MMIORdWhileRst", bitmask(9, 9)),
-+        ("TxCh0Len4NotAligned", bitmask(4, 4)),
-+        ("TxCh0Len2NotAligned", bitmask(3, 3)),
-+        ("TxCh0Len3NotSupported", bitmask(2, 2)),
-+        ("TxCh0InvalidReqEncoding", bitmask(1, 1)),
-+        ("TxCh0Overflow", bitmask(0, 0)),
-+    ]
-+
-+
-+class pcie0_errors(error_mask):
-+    _name = "pcie0"
-+    _file = "pcie0_errors"
-+    _bitmasks = [
-+        ("FunctTypeErr", bitmask(63, 63)),
-+        ("VFNumb", bitmask(62, 62)),
-+        ("RxPoisonTlpErr", bitmask(9, 9)),
-+        ("ParityErr", bitmask(8, 8)),
-+        ("CompTimeOutErr", bitmask(7, 7)),
-+        ("CompStatErr", bitmask(6, 6)),
-+        ("CompTagErr", bitmask(5, 5)),
-+        ("MRLengthErr", bitmask(4, 4)),
-+        ("MRAddrErr", bitmask(3, 3)),
-+        ("MWLengthErr", bitmask(2, 2)),
-+        ("MWAddrErr", bitmask(1, 1)),
-+        ("FormatTypeErr", bitmask(0, 0)),
-+    ]
-+
-+
-+class pcie1_errors(error_mask):
-+    _name = "pcie1"
-+    _file = "pcie1_errors"
-+    _bitmasks = [
-+        ("RxPoisonTlpErr", bitmask(9, 9)),
-+        ("ParityErr", bitmask(8, 8)),
-+        ("CompTimeOutErr", bitmask(7, 7)),
-+        ("CompStatErr", bitmask(6, 6)),
-+        ("CompTagErr", bitmask(5, 5)),
-+        ("MRLengthErr", bitmask(4, 4)),
-+        ("MRAddrErr", bitmask(3, 3)),
-+        ("MWLengthErr", bitmask(2, 2)),
-+        ("MWAddrErr", bitmask(1, 1)),
-+        ("FormatTypeErr", bitmask(0, 0)),
-+    ]
-+
-+
-+class gbs_errors(error_mask):
-+    _name = "gbs"
-+    _file = "gbs_errors"
-+    _bitmasks = [
-+        ("MBPErr", bitmask(12, 12)),
-+        ("PowerThreshAP2", bitmask(11, 11)),
-+        ("PowerThreshAP1", bitmask(10, 10)),
-+        ("TempThreshAP6", bitmask(9, 9)),
-+        ("InjectedWarningErr", bitmask(6, 6)),
-+        ("AfuAccessModeErr", bitmask(5, 5)),
-+        ("ProcHot", bitmask(4, 4)),
-+        ("PortFatalErr", bitmask(3, 3)),
-+        ("PcieError", bitmask(2, 2)),
-+        ("TempThreshAP2", bitmask(1, 1)),
-+        ("TempThreshAP1", bitmask(0, 0)),
-+    ]
-+
-+
-+class first_errors(error_mask):
-+    _name = "first_error"
-+    _file = "first_error"
-+    _bitmasks = [
-+        ("TxReqCounterOverflow", bitmask(40, 40)),
-+        ("TxCh2FifoOverflow", bitmask(33, 33)),
-+        ("MMIOTimedOut", bitmask(32, 32)),
-+        ("TxCh1IllegalVCsel", bitmask(25, 25)),
-+        ("TxCh1NonZeroSOP", bitmask(24, 24)),
-+        ("TxCh1IncorrectAddr", bitmask(23, 23)),
-+        ("TxCh1DataPayloadOverrun", bitmask(22, 22)),
-+        ("TxCh1InsufficientData", bitmask(21, 21)),
-+        ("TxCh1Len4NotAligned", bitmask(20, 20)),
-+        ("TxCh1Len2NotAligned", bitmask(19, 19)),
-+        ("TxCh1Len3NotSupported", bitmask(18, 18)),
-+        ("TxCh1InvalidReqEncoding", bitmask(17, 17)),
-+        ("TxCh1Overflow", bitmask(16, 16)),
-+        ("TxCh0Len4NotAligned", bitmask(4, 4)),
-+        ("TxCh0Len2NotAligned", bitmask(3, 3)),
-+        ("TxCh0Len3NotSupported", bitmask(2, 2)),
-+        ("TxCh0InvalidReqEncoding", bitmask(1, 1)),
-+        ("TxCh0Overflow", bitmask(0, 0)),
-+    ]
-+
-+
-+class nonfatal_errors(error_mask):
-+    _name = "nonfatal"
-+    _file = "nonfatal_errors"
-+    _bitmasks = [
-+        ("MBPErr", bitmask(12, 12)),
-+        ("PowerThreshAP2", bitmask(11, 11)),
-+        ("PowerThreshAP1", bitmask(10, 10)),
-+        ("TempThreshAP6", bitmask(9, 9)),
-+        ("InjectedWarningErr", bitmask(6, 6)),
-+        ("AfuAccessModeErr", bitmask(5, 5)),
-+        ("ProcHot", bitmask(4, 4)),
-+        ("PortFatalErr", bitmask(3, 3)),
-+        ("PcieError", bitmask(2, 2)),
-+        ("TempThreshAP2", bitmask(1, 1)),
-+        ("TempThreshAP1", bitmask(0, 0)),
-+    ]
-+
-+
-+class fatal_errors(error_mask):
-+    _name = "catfatal"
-+    _file = "catfatal_errors"
-+    _bitmasks = [
-+        ("InjectedCatastErr", bitmask(11, 11)),
-+        ("ThermCatastErr", bitmask(10, 10)),
-+        ("CrcCatastErr", bitmask(9, 9)),
-+        ("InjectedFatalErr", bitmask(8, 8)),
-+        ("PciePoisonErr", bitmask(7, 7)),
-+        ("FabricFatalErr", bitmask(6, 6)),
-+        ("IommuFatalErr", bitmask(5, 5)),
-+        ("DramFatalErr", bitmask(4, 4)),
-+        ("KtiProtoFatalErr", bitmask(3, 3)),
-+        ("CciFatalErr", bitmask(2, 2)),
-+        ("TagCchFatalErr", bitmask(1, 1)),
-+        ("KtiLinkFatalErr", bitmask(0, 0)),
-+    ]
-+
-+
-+error_classes = {
-+    "fme": {"errors": fme_errors,
-+            "pcie0_errors": pcie0_errors,
-+            "pcie1_errors": pcie1_errors,
-+            "gbs_errors": gbs_errors,
-+            "bbs_errors": bbs_errors,
-+            "nonfatal_errors": nonfatal_errors,
-+            "catfatal_errors": fatal_errors,
-+            "first_error": error_mask,
-+            "next_error": error_mask},
-+    "port": {"errors": port_errors,
-+             "first_error": first_errors}
-+}
-+
-+
-+def set_error_parsers(err_feature, err_classes):
-+    for name, err_class in err_classes.iteritems():
-+        if hasattr(err_feature, name):
-+            value = getattr(err_feature, name)
-+            setattr(err_feature, name, err_class(value.fget(err_feature)))
-+
-+
-+class errors_command(fpga_command):
-+    name = 'errors'
-+
-+    def __init__(self, parser):
-+        super(errors_command, self).__init__(parser)
-+
-+    def args(self, parser):
-+        super(errors_command, self).args(parser)
-+        parser.add_argument('-c', '--clear', action='store_true',
-+                            default=False,
-+                            help='specify whether or not'
-+                            ' to clear error registers')
-+
-+        parser.add_argument('which',
-+                            choices=['fme', 'port', 'all'],
-+                            default='fme',
-+                            help='specify what kind of errors to operate on')
-+
-+    def run(self, args):
-+        info = sysfsinfo()
-+        resources = []
-+        # let's monkey patch the error sysfs resource
-+        # by looking at our dicionaries of error parsers and matching
-+        # them with the corresponding property and then replacing
-+        # that property attribute with an instance of the error parsing
-+        # class with the value of the property
-+        if args.which == "fme" or args.which == "all":
-+            for fme in info.fme(**vars(args)):
-+                set_error_parsers(fme.errors, error_classes["fme"])
-+                resources.append(fme.errors)
-+
-+        if args.which == "port" or args.which == "all":
-+            for port in info.port(**vars(args)):
-+                set_error_parsers(port.errors, error_classes["port"])
-+                resources.append(port.errors)
-+
-+        json_data = []
-+        for r in resources:
-+            if args.json:
-+                json_data.append(r.to_dict(True))
-+            else:
-+                r.print_info(
-+                    "//****** {} ******//".format(r.name()))
-+
-+        if args.json:
-+            print(json.dumps(json_data, indent=4, sort_keys=False))
-+
-+        if args.clear:
-+            for r in resources:
-+                if not r.clear():
-+                    print("ERROR: Could not clear errors for resource {}.\n"
-+                          "Are you running as root?\n".format(r.sysfs_path))
-+
-+
-+if __name__ == "__main__":
-+    import argparse
-+    parser = argparse.ArgumentParser()
-+    errors_command(parser)
-+    args = parser.parse_args()
-+    args.func(args)
-diff --git tools/fpgainfo/fpgainfo tools/fpgainfo/fpgainfo
-new file mode 100755
-index 000000000000..f207d693bdef
---- /dev/null
-+++ tools/fpgainfo/fpgainfo
-@@ -0,0 +1,58 @@
-+#!/usr/bin/python3
-+# Copyright(c) 2017, Intel Corporation
-+##
-+# Redistribution  and  use  in source  and  binary  forms,  with  or  without
-+# modification, are permitted provided that the following conditions are met:
-+##
-+# * Redistributions of  source code  must retain the  above copyright notice,
-+# this list of conditions and the following disclaimer.
-+# * Redistributions in binary form must reproduce the above copyright notice,
-+# this list of conditions and the following disclaimer in the documentation
-+# and/or other materials provided with the distribution.
-+# * Neither the name  of Intel Corporation  nor the names of its contributors
-+# may be used to  endorse or promote  products derived  from this  software
-+# without specific prior written permission.
-+##
-+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,  BUT NOT LIMITED TO,  THE
-+# IMPLIED WARRANTIES OF  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-+# ARE DISCLAIMED.  IN NO EVENT  SHALL THE COPYRIGHT OWNER  OR CONTRIBUTORS BE
-+# LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,  OR
-+# CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT LIMITED  TO,  PROCUREMENT  OF
-+# SUBSTITUTE GOODS OR SERVICES;  LOSS OF USE,  DATA, OR PROFITS;  OR BUSINESS
-+# INTERRUPTION)  HOWEVER CAUSED  AND ON ANY THEORY  OF LIABILITY,  WHETHER IN
-+# CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
-+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,  EVEN IF ADVISED OF THE
-+# POSSIBILITY OF SUCH DAMAGE.
-+import argparse
-+import fpga_common
-+import fpgaerr
-+import fpgapwr
-+import fpgatemp
-+import fpga_fmeinfo
-+import fpga_portinfo
-+import logging
-+
-+
-+if __name__ == "__main__":
-+    parser = argparse.ArgumentParser()
-+    subparsers = parser.add_subparsers(title='fpga commands')
-+
-+    fpga_common.fpga_command.register_command(subparsers,
-+                                              fpgaerr.errors_command)
-+
-+    fpga_common.fpga_command.register_command(subparsers,
-+                                              fpgapwr.power_command)
-+
-+    fpga_common.fpga_command.register_command(subparsers,
-+                                              fpgatemp.temp_command)
-+
-+    fpga_common.fpga_command.register_command(subparsers,
-+                                              fpga_fmeinfo.fme_command)
-+
-+    fpga_common.fpga_command.register_command(subparsers,
-+                                              fpga_portinfo.port_command)
-+
-+    args = parser.parse_args()
-+    logging.basicConfig(filename='fpgainfo.log')
-+    args.func(args)
-diff --git tools/fpgainfo/fpgatemp.py tools/fpgainfo/fpgatemp.py
-new file mode 100644
-index 000000000000..8e9dda8e90af
---- /dev/null
-+++ tools/fpgainfo/fpgatemp.py
-@@ -0,0 +1,59 @@
-+#!/usr/bin/python3
-+# Copyright(c) 2017, Intel Corporation
-+##
-+# Redistribution  and  use  in source  and  binary  forms,  with  or  without
-+# modification, are permitted provided that the following conditions are met:
-+##
-+# * Redistributions of  source code  must retain the  above copyright notice,
-+# this list of conditions and the following disclaimer.
-+# * Redistributions in binary form must reproduce the above copyright notice,
-+# this list of conditions and the following disclaimer in the documentation
-+# and/or other materials provided with the distribution.
-+# * Neither the name  of Intel Corporation  nor the names of its contributors
-+# may be used to  endorse or promote  products derived  from this  software
-+# without specific prior written permission.
-+##
-+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,  BUT NOT LIMITED TO,  THE
-+# IMPLIED WARRANTIES OF  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-+# ARE DISCLAIMED.  IN NO EVENT  SHALL THE COPYRIGHT OWNER  OR CONTRIBUTORS BE
-+# LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,  OR
-+# CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT LIMITED  TO,  PROCUREMENT  OF
-+# SUBSTITUTE GOODS OR SERVICES;  LOSS OF USE,  DATA, OR PROFITS;  OR BUSINESS
-+# INTERRUPTION)  HOWEVER CAUSED  AND ON ANY THEORY  OF LIABILITY,  WHETHER IN
-+# CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
-+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,  EVEN IF ADVISED OF THE
-+# POSSIBILITY OF SUCH DAMAGE.
-+
-+import fpga_common as cmd
-+import sysfs
-+
-+
-+def print_celcius(value):
-+    return u'{}\u00b0 C'.format(value)
-+
-+
-+class temp_command(cmd.fpga_command):
-+    name = "temp"
-+    thermal_props = [("temperature", print_celcius),
-+                     ("threshold1", print_celcius),
-+                     ("threshold1_policy", int),
-+                     ("threshold1_reached", bool),
-+                     ("threshold2", print_celcius),
-+                     ("threshold2_reached", bool),
-+                     ("threshold_trip", print_celcius)]
-+
-+    def run(self, args):
-+        info = sysfs.sysfsinfo()
-+        for fme in info.fme(**vars(args)):
-+            fme.thermal_mgmt.print_info("//****** THERMAL ******//",
-+                                        *[p[0] for p in self.thermal_props],
-+                                        **dict(self.thermal_props))
-+
-+
-+if __name__ == "__main__":
-+    import argparse
-+    parser = argparse.ArgumentParser()
-+    temp_command(parser)
-+    args = parser.parse_args()
-+    args.func(args)
-diff --git tools/fpgainfo/sysfs.py tools/fpgainfo/sysfs.py
-new file mode 100644
-index 000000000000..2b148e10d74c
---- /dev/null
-+++ tools/fpgainfo/sysfs.py
-@@ -0,0 +1,442 @@
-+#!/usr/bin/python3
-+# Copyright(c) 2017, Intel Corporation
-+##
-+# Redistribution  and  use  in source  and  binary  forms,  with  or  without
-+# modification, are permitted provided that the following conditions are met:
-+##
-+# * Redistributions of  source code  must retain the  above copyright notice,
-+# this list of conditions and the following disclaimer.
-+# * Redistributions in binary form must reproduce the above copyright notice,
-+# this list of conditions and the following disclaimer in the documentation
-+# and/or other materials provided with the distribution.
-+# * Neither the name  of Intel Corporation  nor the names of its contributors
-+# may be used to  endorse or promote  products derived  from this  software
-+# without specific prior written permission.
-+##
-+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,  BUT NOT LIMITED TO,  THE
-+# IMPLIED WARRANTIES OF  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-+# ARE DISCLAIMED.  IN NO EVENT  SHALL THE COPYRIGHT OWNER  OR CONTRIBUTORS BE
-+# LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,  OR
-+# CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT LIMITED  TO,  PROCUREMENT  OF
-+# SUBSTITUTE GOODS OR SERVICES;  LOSS OF USE,  DATA, OR PROFITS;  OR BUSINESS
-+# INTERRUPTION)  HOWEVER CAUSED  AND ON ANY THEORY  OF LIABILITY,  WHETHER IN
-+# CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
-+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,  EVEN IF ADVISED OF THE
-+# POSSIBILITY OF SUCH DAMAGE.
-+import glob
-+import inspect
-+import json
-+import logging
-+import os
-+import re
-+import uuid
-+
-+pattern = ('.*/\d+:(?P<bus>\w{2}):'
-+           '(?P<device>\d{2})\.(?P<function>\d).*')
-+bdf_pattern = re.compile(pattern)
-+
-+ROOT_PATH = '/sys/class/fpga'
-+FPGA_DEVICE = os.path.join(ROOT_PATH, 'intel-fpga-dev.{instance_id}')
-+FME_DEVICE = os.path.join(FPGA_DEVICE, 'intel-fpga-fme.{instance_id}')
-+PORT_DEVICE = os.path.join(FPGA_DEVICE, 'intel-fpga-port.{instance_id}')
-+
-+DCP_ID = 0x09c4
-+
-+
-+def read_bdf(path):
-+    symlink = os.readlink(path)
-+    m = bdf_pattern.match(symlink)
-+    data = m.groupdict() if m else {}
-+    return dict([(k, int(v, 16)) for (k, v) in data.iteritems()])
-+
-+
-+class sysfs_filter(object):
-+    def __init__(self, **kwargs):
-+        self._bus = None
-+        self._device = None
-+        self._function = None
-+        for attr in ('bus', 'device', 'function'):
-+            value = kwargs.get(attr)
-+            if isinstance(value, str) or isinstance(value, unicode):
-+                value = int(value, 16)
-+            setattr(self, '_{}'.format(attr), value)
-+
-+    def __call__(self, resource):
-+        if self._bus is not None and self._bus != resource.bus:
-+            return False
-+        if self._device is not None and self._device != resource.device:
-+            return False
-+        if self._function is not None and self._function != resource.function:
-+            return False
-+        return True
-+
-+
-+def add_static_property(sysfs_path):
-+    return property(lambda s_: s_.parse_sysfs(sysfs_path),
-+                    lambda s_, v_: s_.write_sysfs(v_, sysfs_path))
-+
-+
-+def add_dynamic_property(obj, property_name, sysfs_path=None):
-+    sysfs_path = sysfs_path or property_name
-+
-+    def getter(self_):
-+        return self_.parse_sysfs(sysfs_path)
-+
-+    def setter(self_, v_):
-+        self_.write_sysfs(v_, sysfs_path)
-+
-+    if obj.sysfs_path_exists(sysfs_path):
-+        setattr(obj, property_name,
-+                property(getter, setter))
-+
-+
-+class sysfs_resource(object):
-+    def __init__(self, path, instance_id, device_id=None, **kwargs):
-+        self._path = path
-+        self._instance_id = instance_id
-+        self._device_id = device_id
-+        self._bus = kwargs.get('bus')
-+        self._device = kwargs.get('device')
-+        self._function = kwargs.get('function')
-+
-+    def enum_props(self, as_string=False):
-+        def pred(xxx_todo_changeme):
-+            (k, v) = xxx_todo_changeme
-+            if k in dir(sysfs_resource):
-+                return False
-+            if inspect.ismethod(v):
-+                return False
-+            if k.startswith('_'):
-+                return False
-+            return True
-+
-+        for k, v in filter(pred, inspect.getmembers(self)):
-+            k_, v_ = k, v
-+            if isinstance(v, property):
-+                k_, v_ = k, v.fget(self)
-+            elif not as_string and hasattr(v, 'to_dict') and k != '__class__':
-+                k_, v_ = k, v.to_dict()
-+            if as_string:
-+                yield k_, unicode(v_)
-+            else:
-+                yield k_, v_
-+
-+    def to_dict(self, include_bdf=False):
-+        data = {}
-+        for k, v in self.enum_props():
-+            data[k] = v
-+        if include_bdf:
-+            root_data = {}
-+            root_data["class_path"] = self.sysfs_path
-+            root_data["dev_path"] = os.path.realpath(self.sysfs_path)
-+            root_data["bus"] = self.bus
-+            root_data["device"] = self.device
-+            root_data["function"] = self.function
-+            data["pcie_info"] = root_data
-+
-+        return data
-+
-+    def to_json(self):
-+        return json.dumps(self.to_dict(), indent=4, sort_keys=False)
-+
-+    def sysfs_path_exists(self, *paths):
-+        return os.path.exists(os.path.join(self._path, *paths))
-+
-+    def read_sysfs(self, *paths):
-+        filepath = os.path.join(self._path, *paths)
-+        if not os.path.exists(filepath):
-+            print("WARNING: {} not found".format(filepath))
-+            return None
-+        with open(filepath, 'r') as fd:
-+            return fd.read().strip()
-+
-+    def write_sysfs(self, value, *paths):
-+        filepath = os.path.join(self._path, *paths)
-+        if not os.path.exists(filepath):
-+            print("WARNING: {} not found".format(filepath))
-+            return None
-+        with open(filepath, 'w') as fd:
-+            return fd.write(value)
-+
-+    def parse_sysfs(self, *paths):
-+        value = self.read_sysfs(*paths)
-+        try:
-+            value = int(value)
-+        except ValueError:
-+            try:
-+                value = int(value, 16)
-+            except Exception:
-+                logging.warn("Could not parse value: {}".format(value))
-+        finally:
-+            return value
-+
-+    def print_info(self, label, *props, **kwargs):
-+        print(label.upper())
-+        print('{:22} : {}'.format('Class Path', self.sysfs_path))
-+        print(
-+            '{:22} : {}'.format(
-+                'Device Path',
-+                os.path.realpath(
-+                    self.sysfs_path)))
-+        print('{:22} : 0x{:02X}'.format('Bus', self.bus))
-+        print('{:22} : 0x{:02X}'.format('Device', self.device))
-+        print('{:22} : 0x{:02X}'.format('Function', self.function))
-+
-+        prop_values = [(k, v) for k, v in self.enum_props(as_string=True)]
-+        if props:
-+            def get_value(key):
-+                namespaces = key.split('.')
-+                obj = self
-+                try:
-+                    while len(namespaces) > 1:
-+                        obj = getattr(obj, namespaces.pop(0))
-+                    p = getattr(obj, namespaces[0])
-+                    if isinstance(p, property):
-+                        p = p.fget(self)
-+                    return p
-+                except AttributeError:
-+                    pass
-+
-+            prop_values = [(k, get_value(k)) for k in props]
-+
-+        for k, v in prop_values:
-+            if v is not None:
-+                value = kwargs.get(k)(v) if k in kwargs else v
-+                subbed = re.sub('[_\.]', ' ', k)
-+                label = ' '.join([_.capitalize() for _ in subbed.split()])
-+                print(u'{:22} : {}'.format(label, value))
-+
-+        print('\n')
-+
-+    @property
-+    def sysfs_path(self):
-+        return self._path
-+
-+    @property
-+    def instance_id(self):
-+        return self._instance_id
-+
-+    @property
-+    def bus(self):
-+        return self._bus
-+
-+    @property
-+    def device(self):
-+        return self._device
-+
-+    @property
-+    def function(self):
-+        return self._function
-+
-+    @property
-+    def device_id(self):
-+        return self._device_id
-+
-+
-+class pr_feature(sysfs_resource):
-+    @property
-+    def interface_id(self):
-+        return str(uuid.UUID(self.read_sysfs("interface_id")))
-+
-+
-+class sysfs_device(sysfs_resource):
-+    @property
-+    def device_id(self):
-+        return self.parse_sysfs("device")
-+
-+
-+class power_mgmt_feature(sysfs_resource):
-+    def __init__(self, path, instance_id, device_id, **kwargs):
-+        super(power_mgmt_feature, self).__init__(path, instance_id, device_id,
-+                                                 **kwargs)
-+        if device_id != DCP_ID:
-+            self.consumed = add_static_property("consumed")
-+
-+
-+class thermal_feature(sysfs_resource):
-+    def __init__(self, path, instance_id, device_id, **kwargs):
-+        super(thermal_feature, self).__init__(path, instance_id, device_id,
-+                                              **kwargs)
-+        self.temperature = add_static_property("temperature")
-+        if device_id != DCP_ID:
-+            self.threshold1 = add_static_property("threshold1")
-+            self.threshold1_policy = add_static_property("threshold1_policy")
-+            self.threshold1_reached = add_static_property("threshold1_reached")
-+            self.threshold2 = add_static_property("threshold2")
-+            self.threshold2_reached = add_static_property("threshold2_reached")
-+            self.threshold_trip = add_static_property("threshold_trip")
-+
-+
-+class errors_feature(sysfs_resource):
-+    revision = add_static_property("revision")
-+
-+    def __init__(self, path, instance_id, device_id, **kwargs):
-+        super(errors_feature, self).__init__(path, instance_id, device_id,
-+                                             **kwargs)
-+        self._errors_file = None
-+        self._clear_file = None
-+        self._name = "errors"
-+
-+    def name(self):
-+        return self._name
-+
-+    def clear(self):
-+        value = self.parse_sysfs(self._errors_file)
-+        try:
-+            if value:
-+                self.write_sysfs(hex(value), self._clear_file)
-+            return True
-+        except IOError:
-+            logging.warn(
-+                "Could not clear errors: {}."
-+                "Are you running as root?".format(
-+                    self._clear_file))
-+        return False
-+
-+
-+class fme_errors(errors_feature):
-+    def __init__(self, path, instance_id, device_id, **kwargs):
-+        super(fme_errors, self).__init__(path, instance_id, device_id,
-+                                         **kwargs)
-+        self._name = "fme errors"
-+        self._errors_file = "fme-errors/errors"
-+        self._clear_file = "fme-errors/clear"
-+        add_dynamic_property(self, "errors", "fme-errors/errors")
-+        add_dynamic_property(self, "first_error", "fme-errors/first_error")
-+        add_dynamic_property(self, "next_error", "fme-errors/next_error")
-+        add_dynamic_property(self, "pcie0_errors")
-+        if device_id != DCP_ID:
-+            add_dynamic_property(self, "pcie1_errors")
-+            add_dynamic_property(self, "bbs_errors")
-+            add_dynamic_property(self, "gbs_errors")
-+        add_dynamic_property(self, "catfatal_errors")
-+        add_dynamic_property(self, "nonfatal_errors")
-+
-+
-+class port_errors(errors_feature):
-+    def __init__(self, path, instance_id, device_id, **kwargs):
-+        super(port_errors, self).__init__(path, instance_id, device_id,
-+                                          **kwargs)
-+        self._name = "port errors"
-+        self._errors_file = "errors"
-+        self._clear_file = "clear"
-+        add_dynamic_property(self, "errors")
-+        add_dynamic_property(self, "first_error")
-+
-+
-+class fme_info(sysfs_resource):
-+    def __init__(self, path, instance_id, device_id, **kwargs):
-+        super(fme_info, self).__init__(path, instance_id, device_id, **kwargs)
-+        self.pr = pr_feature(os.path.join(path, 'pr'), instance_id, device_id,
-+                             **kwargs)
-+        self.power_mgmt = power_mgmt_feature(os.path.join(path, 'power_mgmt'),
-+                                             instance_id,
-+                                             device_id,
-+                                             **kwargs)
-+        self.thermal_mgmt = thermal_feature(os.path.join(path, "thermal_mgmt"),
-+                                            instance_id,
-+                                            device_id,
-+                                            **kwargs)
-+        self.errors = fme_errors(os.path.join(path, "errors"),
-+                                 instance_id,
-+                                 device_id,
-+                                 **kwargs)
-+
-+    @property
-+    def version(self):
-+        return self.read_sysfs("version")
-+
-+    @property
-+    def ports_num(self):
-+        return self.read_sysfs("ports_num")
-+
-+    @property
-+    def socket_id(self):
-+        return self.read_sysfs("socket_id")
-+
-+    @property
-+    def bitstream_id(self):
-+        if self.device_id != DCP_ID:
-+            return self.read_sysfs("bitstream_id")
-+
-+    @property
-+    def bitstream_metadata(self):
-+        if self.device_id != DCP_ID:
-+            return self.read_sysfs("bitstream_metadata")
-+
-+    @property
-+    def object_ID(self):
-+        value = self.read_sysfs("dev")
-+        valueList = value.split(":")
-+        major = valueList[0]
-+        minor = valueList[1]
-+        objID = ((int(major) & 0xFFF) << 20) | (int(minor) & 0xFFFFF)
-+        return hex(objID) + "   FPGA_DEVICE"
-+
-+
-+class port_info(sysfs_resource):
-+    def __init__(self, path, instance_id, device_id, **kwargs):
-+        super(port_info, self).__init__(path, instance_id, device_id, **kwargs)
-+        self.errors = port_errors(os.path.join(path, "errors"),
-+                                  instance_id,
-+                                  device_id,
-+                                  **kwargs)
-+
-+    @property
-+    def afu_id(self):
-+        return str(uuid.UUID(self.read_sysfs("afu_id")))
-+
-+    @property
-+    def object_ID(self):
-+        value = self.read_sysfs("dev")
-+        valueList = value.split(":")
-+        major = valueList[0]
-+        minor = valueList[1]
-+        objID = ((int(major) & 0xFFF) << 20) | (int(minor) & 0xFFFFF)
-+        return hex(objID) + "   FPGA_ACCELERATOR"
-+
-+
-+class sysfsinfo(object):
-+    def __init__(self):
-+        self._fmelist = []
-+        self._portlist = []
-+        sysfs_paths = glob.glob(
-+            FPGA_DEVICE.format(instance_id='*'))
-+        if not sysfs_paths:
-+            print "WARNING: No sysfs paths found"
-+        for path in sysfs_paths:
-+            bdf = read_bdf(os.path.join(path, 'device'))
-+            # strip {instance_id} from the template FPGA_DEVICE
-+            # socket id is what comes after this in the real path
-+            instance_id = path.strip(FPGA_DEVICE.strip('{instance_id}'))
-+            device_id = sysfs_device(os.path.join(path, 'device'),
-+                                     instance_id, None,
-+                                     **bdf).device_id
-+            sysfs_fme = FME_DEVICE.format(instance_id=instance_id)
-+            sysfs_port = PORT_DEVICE.format(instance_id=instance_id)
-+            self._fmelist.append(fme_info(sysfs_fme, instance_id,
-+                                 device_id, **bdf))
-+            self._portlist.append(port_info(sysfs_port, instance_id,
-+                                  device_id, **bdf))
-+
-+    def fme(self, **kwargs):
-+        return filter(sysfs_filter(**kwargs), self._fmelist)
-+
-+    def port(self, **kwargs):
-+        return filter(sysfs_filter(**kwargs), self._portlist)
-+
-+
-+if __name__ == "__main__":
-+    import argparse
-+    import pprint
-+    parser = argparse.ArgumentParser()
-+    parser.add_argument('-b', '--bus')
-+    parser.add_argument('-d', '--device')
-+    parser.add_argument('-f', '--function')
-+
-+    args = parser.parse_args()
-+    info = sysfsinfo()
-+    fmelist = info.fme(**vars(args))
-+    portlist = info.port(**vars(args))
-+    pprint.pprint([f.to_dict() for f in fmelist])
-diff --git tools/packager/Makefile tools/packager/Makefile
-new file mode 100644
-index 000000000000..cbc85bc91df4
---- /dev/null
-+++ tools/packager/Makefile
-@@ -0,0 +1,82 @@
-+.PHONY: clean all
-+all: packager_zip wrapper
-+clean: clean-packager clean-wrapper
-+
-+#
-+# Packager scripts
-+#
-+PACKAGER_DEST_DIR := $(ADAPT_DEST_ROOT)/tools/packager
-+PACKAGER_WORK_DIR := $(ADAPT_WORK_ROOT)/tools/packager
-+
-+PACKAGER_FILES := afu.py \
-+		  gbs.py\
-+		  __main__.py \
-+		  utils.py \
-+		  metadata/metadata.py \
-+		  metadata/constants.py \
-+		  metadata/__init__.py \
-+		  schema/afu_schema_v01.json \
-+		  packager.py \
-+		  README
-+
-+PACKAGER_FILES_WORK_DIR := $(addprefix $(PACKAGER_WORK_DIR)/,$(PACKAGER_FILES))
-+
-+PACKAGER_TARGET_ZIP := $(PACKAGER_DEST_DIR)/packager.pyz
-+PACKAGER_WORK_ZIP := $(PACKAGER_WORK_DIR)/packager.zip
-+PACKAGER_LIB := $(PACKAGER_DEST_DIR)/lib
-+
-+.PHONY: packager_zip
-+packager_zip: $(PACKAGER_TARGET_ZIP)
-+
-+$(PACKAGER_TARGET_ZIP): $(PACKAGER_WORK_ZIP)
-+	mkdir -p $(PACKAGER_DEST_DIR)
-+	rm -f $(PACKAGER_TARGET_ZIP)
-+	echo '#!/usr/bin/python3' | cat - $(PACKAGER_WORK_ZIP) > $(PACKAGER_TARGET_ZIP)
-+	chmod +x $(PACKAGER_TARGET_ZIP)
-+
-+$(PACKAGER_WORK_ZIP): $(PACKAGER_FILES_WORK_DIR)
-+	mkdir -p $(PACKAGER_WORK_DIR)
-+	rm -f $(PACKAGER_WORK_DIR)/packager.zip
-+	cd $(PACKAGER_WORK_DIR) && zip -9r packager.zip $(PACKAGER_FILES)
-+
-+$(PACKAGER_FILES_WORK_DIR): $(PACKAGER_WORK_DIR)/%: %
-+	mkdir -p $(dir $@)
-+	cp -f $< $@
-+
-+.PHONY: packager_lib
-+packager_lib:
-+	mkdir -p $(PACKAGER_LIB)
-+	cp -rf lib $(PACKAGER_DEST_DIR)/
-+	find $(PACKAGER_DEST_DIR) -name "*.pyc" | xargs rm -f
-+
-+.PHONY: clean-packager
-+clean-packager:
-+	rm -rf $(PACKAGER_DEST_DIR)
-+	rm -rf $(PACKAGER_WORK_DIR)
-+
-+.PHONY: test test_src test_zip
-+test: test_src test_zip
-+
-+PY_TESTS := $(wildcard test/*.py)
-+define run_test
-+	PYTHONPATH=$(2) python $(1)
-+
-+endef
-+
-+test_src:
-+	$(foreach py_test,$(PY_TESTS),$(call run_test,$(py_test),.:./lib))
-+
-+test_zip: $(PACKAGER_TARGET_ZIP) packager_lib
-+	$(foreach py_test,$(PY_TESTS),$(call run_test,$(py_test),$(PACKAGER_TARGET_ZIP):$(PACKAGER_DEST_DIR)/lib))
-+
-+#
-+# Wrapper script
-+#
-+.PHONY: wrapper clean-wrapper
-+wrapper: $(ADAPT_DEST_ROOT)/bin/packager
-+$(ADAPT_DEST_ROOT)/bin/packager: packager.sh
-+	mkdir -p $(dir $@)
-+	cp -f $< $@
-+
-+clean-wrapper:
-+	rm -f $(ADAPT_DEST_ROOT)/bin/packager
 diff --git tools/utilities/vc_image_convert/extract_fpga_image.py tools/utilities/vc_image_convert/extract_fpga_image.py
-index 176f5e56a203..9c05e4cf7afd 100644
+index 17fd0eee55aa..b4f91372a900 100644
 --- tools/utilities/vc_image_convert/extract_fpga_image.py
 +++ tools/utilities/vc_image_convert/extract_fpga_image.py
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
+-#!/usr/bin/env python3
 +#!/usr/bin/python3
  """ Extrats section for use in fpgaflash that contains:
      0x010000 to 0x01FFFF     : pfl option_bits
      0x020000 to 0x0381FFFF   : S10 factory image page0
 diff --git tools/utilities/vc_image_convert/merge_device_table.py tools/utilities/vc_image_convert/merge_device_table.py
-index a0e47f586c29..2cd0ef3bd60f 100644
+index 3303b8667ef9..e3215f85b7d0 100644
 --- tools/utilities/vc_image_convert/merge_device_table.py
 +++ tools/utilities/vc_image_convert/merge_device_table.py
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
+-#!/usr/bin/env python3
 +#!/usr/bin/python3
  """ splice in max10 device table info at 0x3820000
  
      0x03820000 to 0x03ffffff : Max10 device table range
 diff --git tools/utilities/vc_image_convert/reverse.py tools/utilities/vc_image_convert/reverse.py
-index 54ceedb426eb..6fe2cc8721b0 100644
+index 5ae6e61a167e..02ece0a479f1 100644
 --- tools/utilities/vc_image_convert/reverse.py
 +++ tools/utilities/vc_image_convert/reverse.py
 @@ -1,4 +1,4 @@
--#!/usr/bin/env python
+-#!/usr/bin/env python3
 +#!/usr/bin/python3
  
+ from __future__ import absolute_import
  import argparse
- from array import array
+diff --git tools/utilities/vc_rot_convert/extract_rot_image.py tools/utilities/vc_rot_convert/extract_rot_image.py
+index 5fea16c73a19..7af21c4daef5 100644
+--- tools/utilities/vc_rot_convert/extract_rot_image.py
++++ tools/utilities/vc_rot_convert/extract_rot_image.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ 
+ from __future__ import absolute_import
+ import argparse

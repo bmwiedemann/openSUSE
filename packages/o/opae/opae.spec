@@ -1,7 +1,7 @@
 #
 # spec file for package opae
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,16 +20,16 @@
 %define with_tests 0
 %define with_legacy 0
 
-%define git_ver 1.0.d5921e5b6b0b
-%define lib_opae_major 1
+%define git_ver 1.0.776b2b2718f7
+%define lib_opae_major 2
 %define lib_hssi_major 1
 %define lib_ase_major 1
-%define lib_bitstream_major 1
+%define lib_bitstream_major 2
 %define lib_fpgad_major 1
 %define lib_board_major 1
 
 Name:           opae
-Version:        1.4.1
+Version:        2.0.0
 Release:        0
 Summary:        Open Programmable Acceleration Engine
 License:        Intel OR MIT
@@ -38,20 +38,26 @@ URL:            https://github.com/OPAE/opae-sdk
 Source0:        %{name}-%{version}%{git_ver}.tar.bz2
 Patch0:         opae-missing-shebang.patch
 Patch1:         opae-fix-linking-issue.patch
+Patch2:         opae-support-OBS-build.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  boost-devel
+BuildRequires:  cli11-devel
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  fdupes
+BuildRequires:  fmt-devel
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  hwloc-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  ncurses-devel
+BuildRequires:  python-pybind11-common-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-pybind11-devel
+BuildRequires:  spdlog-devel >= 1.0
+BuildRequires:  tbb-devel
 #Currently *only* builds on x86_64
 ExclusiveArch:  x86_64
 %if 0%{?with_legacy}
@@ -138,14 +144,14 @@ Libraries for the Open Programmable Acceleration Engine Libraries tools.
 %setup -q -n %{name}-%{version}%{git_ver}
 %patch0
 %patch1
+%patch2
 
 %build
-mkdir external/pybind11
 export RPM_OPT_FLAGS
 %cmake	 -DCMAKE_BUILD_TYPE=Release \
 		 -DPYTHON_EXECUTABLE=/usr/bin/python3 \
 		 -DCMAKE_C_FLAGS="-Wno-format-truncation -Wno-address-of-packed-member" \
-		 -DOPAE_PRESERVE_REPOS=ON
+		 -DOPAE_PRESERVE_REPOS=ON -DOPAE_OBS_BUILD=ON
 %make_build all VERBOSE=1 %{?_smp_mflags}
 
 %install
@@ -153,6 +159,8 @@ export RPM_OPT_FLAGS
 rm -f %{buildroot}%{_libdir}/libsafestr.a
 rm -f %{buildroot}%{_libdir}/libargsfilter.a
 rm -Rf %{buildroot}%{_includedir}/safe_string
+# This is used by the other .so in libdir/opae/*.so but we do not need the static lib anymore
+rm -f %{buildroot}%{_libdir}/libboard_common.a
 # Fix install path for opae samples
 mkdir -p %{buildroot}%{_datarootdir}/opae/
 mv  %{buildroot}/usr/src/opae/samples %{buildroot}%{_datarootdir}/opae/
@@ -168,7 +176,7 @@ for s in FindHwloc.cmake \
 			 Findjson-c.cmake \
 			 OPAECompiler.cmake \
 			 OPAEGit.cmake \
-			 OPAEPackaging.cmake 
+			 OPAEPackaging.cmake
 do
 	install -m0644 "opae-libs/cmake/modules/${s}" %{buildroot}%{_datarootdir}/cmake/Modules/OPAE
 done
@@ -204,11 +212,14 @@ rm -f %{buildroot}/%{_libdir}/libopae-c-ase.so*
 %if 0%{?with_tests}
 %pre
 %service_add_pre fpgad.service
+
 %post
 %service_add_post fpgad.service
 %{fillup_only -n fpgad}
+
 %preun
 %service_del_preun fpgad.service
+
 %postun
 %service_del_postun fpgad.service
 
@@ -256,9 +267,9 @@ rm -f %{buildroot}/%{_libdir}/libopae-c-ase.so*
 %{_libdir}/libopae-cxx-core*.so.%{lib_opae_major}
 %{_libdir}/libopae-cxx-core*.so.%{lib_opae_major}.*
 
-%files -n libbitstream%{lib_hssi_major}
-%{_libdir}/libbitstream.so.%{lib_hssi_major}
-%{_libdir}/libbitstream.so.%{lib_hssi_major}.*
+%files -n libbitstream%{lib_bitstream_major}
+%{_libdir}/libbitstream.so.%{lib_bitstream_major}
+%{_libdir}/libbitstream.so.%{lib_bitstream_major}.*
 
 %if 0%{?with_legacy}
 %files -n libhssi-io%{lib_hssi_major}
@@ -267,9 +278,9 @@ rm -f %{buildroot}/%{_libdir}/libopae-c-ase.so*
 %endif
 
 %if 0%{?with_tests}
-%files -n libfpgad-api%{lib_bmc_major}
-%{_libdir}/libfpgad-api.so.%{lib_bmc_major}
-%{_libdir}/libfpgad-api.so.%{lib_bmc_major}.*
+%files -n libfpgad-api%{lib_fpgad_major}
+%{_libdir}/libfpgad-api.so.%{lib_fpgda_major}
+%{_libdir}/libfpgad-api.so.%{lib_fpgad_major}.*
 %endif
 
 %if 0%{?with_ase}
@@ -280,6 +291,7 @@ rm -f %{buildroot}/%{_libdir}/libopae-c-ase.so*
 %dir %{_datarootdir}/opae
 
 %{_datarootdir}/opae/ase
+
 %files -n libase%{lib_ase_major}
 %{_libdir}/libase*.so.%{lib_ase_major}
 %{_libdir}/libase*.so.%{lib_ase_major}.*

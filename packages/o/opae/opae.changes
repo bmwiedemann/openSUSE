@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  7 09:40:19 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 2.0.0-1
+  - See RELEASE_NOTES for a complete list of changes
+- Add opae-support-OBS-build.patch to fix compilation using system
+  packages (cli11, pybind11) instead of git clones
+- Refresh opae-missing-shebang.patch against latest sources
+- Update opae-fix-linking-issue.patch to fix pybind11 link LTO issues
+
+-------------------------------------------------------------------
 Fri Apr 17 07:56:40 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 1.4.1-1
