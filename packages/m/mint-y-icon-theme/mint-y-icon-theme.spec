@@ -45,9 +45,12 @@ mkdir -p %{buildroot}%{_datadir}/icons/
 
 for color in Mint-Y Mint-Y-Aqua Mint-Y-Blue Mint-Y-Brown \
 Mint-Y-Grey Mint-Y-Orange Mint-Y-Pink Mint-Y-Purple Mint-Y-Red \
-Mint-Y-Sand Mint-Y-Teal Mint-Y-Yellow
-    do cp -a .%{_datadir}/icons/${color} %{buildroot}%{_datadir}/icons/${color}
-    %icon_theme_cache_create_ghost ${color}
+Mint-Y-Sand Mint-Y-Teal Mint-Y-Yellow \
+Mint-Y-Dark Mint-Y-Dark-Aqua Mint-Y-Dark-Blue Mint-Y-Dark-Brown \
+Mint-Y-Dark-Grey Mint-Y-Dark-Orange Mint-Y-Dark-Pink \
+Mint-Y-Dark-Red Mint-Y-Dark-Sand Mint-Y-Dark-Teal Mint-Y-Dark-Yellow
+	do cp -a .%{_datadir}/icons/${color} %{buildroot}%{_datadir}/icons/${color}
+	%icon_theme_cache_create_ghost ${color}
 done
 
 %fdupes %{buildroot}%{_datadir}/icons/
@@ -63,6 +66,5 @@ done
 %license debian/copyright
 %doc debian/changelog
 %{_datadir}/icons/%{_name}*
-%ghost %{_datadir}/icons/%{_name}*/icon-theme.cache
 
 %changelog
