@@ -1,0 +1,19 @@
+--- maven-artifact-transfer-0.11.0/src/main/java/org/apache/maven/shared/transfer/dependencies/collect/internal/Maven31ArtifactRepositoryAdapter.java	2019-02-24 20:59:10.000000000 +0100
++++ maven-artifact-transfer-0.11.0/src/main/java/org/apache/maven/shared/transfer/dependencies/collect/internal/Maven31ArtifactRepositoryAdapter.java	2021-04-26 19:37:43.495274547 +0200
+@@ -206,6 +206,16 @@
+         throw new UnsupportedOperationException();
+     }
+ 
++    public void setBlocked( boolean blocked )
++    {
++        throw new UnsupportedOperationException();
++    }
++
++    public boolean isBlocked()
++    {
++        throw new UnsupportedOperationException();
++    }
++
+     @Override
+     public String toString()
+     {

@@ -1,7 +1,7 @@
 #
 # spec file for package maven-artifact-transfer
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            http://maven.apache.org/shared/maven-artifact-transfer
 Source0:        http://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 Patch0:         0001-Compatibility-with-Maven-3.0.3-and-later.patch
+Patch1:         %{name}-blocked.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-codec
@@ -75,6 +76,7 @@ This package provides %{summary}.
 %setup -q
 cp %{SOURCE1} build.xml
 %patch0 -p1
+%patch1 -p1
 
 %pom_remove_plugin :maven-shade-plugin
 %pom_remove_plugin :apache-rat-plugin
