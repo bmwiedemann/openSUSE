@@ -1,7 +1,7 @@
 #
 # spec file for package os-prober
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           os-prober
-Version:        1.77
+Version:        1.78
 Release:        0
 Summary:        Probes disks on the system for installed operating systems
 License:        GPL-2.0-or-later

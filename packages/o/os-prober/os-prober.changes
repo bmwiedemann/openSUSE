@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 23 08:33:46 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- update to 1.78:
+  * Remove Christian Perrier from Uploaders, with many thanks for all
+    his contributions over the years! (Closes: #927552)
+  * Probe microsoft OS on arm64.
+
+-------------------------------------------------------------------
 Tue Sep 15 21:35:51 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.77:

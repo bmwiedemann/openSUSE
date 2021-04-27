@@ -454,4 +454,12 @@ as it has at least one small patch that depends on new code in grub2. (forwarded
     <comment></comment>
     <requestid>835224</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>3b7744e783803a0c092b584d6285519e</srcmd5>
+    <version>1.78</version>
+    <time>1619552056</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888498</requestid>
+  </revision>
 </revisionlist>
