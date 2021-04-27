@@ -16,23 +16,23 @@ diff --git a/scribus/ui/about.cpp b/scribus/ui/about.cpp
 index b70d1eb..d1a4f1b 100644
 --- a/scribus/ui/about.cpp
 +++ b/scribus/ui/about.cpp
-@@ -179,7 +179,7 @@ About::About( QWidget* parent, AboutMode diaMode ) : QDialog( parent )
- 	tabLayout->setSpacing( 6 );
- 	tabLayout->setMargin( 10 );
+@@ -164,7 +164,7 @@ About::About( QWidget* parent, AboutMode diaMode ) : QDialog( parent )
+ 	tabLayout->setSpacing(6);
+ 	tabLayout->setContentsMargins(9, 9, 9, 9);
  	authorView = new QTextBrowser( tab_2 );
 -	authorView->setHtml(About::parseAuthorFile(ScPaths::instance().docDir() + "AUTHORS"));
 +	authorView->setHtml(About::parseAuthorFile(ScPaths::instance().shareDir() + "/aboutData/AUTHORS"));
  	tabLayout->addWidget( authorView );
  	tabWidget2->addTab( tab_2, tr("A&uthors"));
  
-@@ -189,14 +189,14 @@ About::About( QWidget* parent, AboutMode diaMode ) : QDialog( parent )
- 	tabLayout_2->setSpacing( 6 );
- 	tabLayout_2->setMargin( 10 );
+@@ -174,14 +174,14 @@ About::About( QWidget* parent, AboutMode diaMode ) : QDialog( parent )
+ 	tabLayout_2->setSpacing(6);
+ 	tabLayout_2->setContentsMargins(9, 9, 9, 9);
  	transView = new QTextBrowser( tab_3);
 -	transView->setHtml(About::parseTranslationFile(ScPaths::instance().docDir() + "TRANSLATION"));
 +	transView->setHtml(About::parseTranslationFile(ScPaths::instance().shareDir() + "/aboutData/TRANSLATION"));
  	tabLayout_2->addWidget( transView );
- 	tabWidget2->addTab( tab_3, tr( "&Translations" ) );
+ 	tabWidget2->addTab( tab_3, tr("&Translations") );
  
  	/*! ONLINE tab (03/04/2004 petr vanek) */
  	tab_4 = new QWidget( tabWidget2 );
@@ -41,8 +41,8 @@ index b70d1eb..d1a4f1b 100644
 +	onlineView->setHtml(About::parseLinksFile(ScPaths::instance().shareDir() + "/aboutData/LINKS"));
  	onlineView->setOpenExternalLinks(true);
  	tabLayout_4 = new QHBoxLayout( tab_4 );
- 	tabLayout_4->setSpacing( 6 );
-@@ -225,7 +225,7 @@ About::About( QWidget* parent, AboutMode diaMode ) : QDialog( parent )
+ 	tabLayout_4->setSpacing(6);
+@@ -210,7 +210,7 @@ About::About( QWidget* parent, AboutMode diaMode ) : QDialog( parent )
  	textViewLicence = new QTextBrowser( tab_Licence);
  	licenceLayout->addWidget( textViewLicence );
  	

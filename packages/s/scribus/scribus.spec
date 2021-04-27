@@ -18,22 +18,17 @@
 
 
 Name:           scribus
-Version:        1.5.6.1
+Version:        1.5.7
 Release:        0
 Summary:        Page Layout and Desktop Publishing (DTP)
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/Other
 URL:            https://www.scribus.net/
-# https://sourceforge.net/projects/scribus/files/scribus-devel/1.5.6.1/
+# https://sourceforge.net/projects/scribus/files/scribus-devel/1.5.7/
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-fix-build-of-pdf-import-plugin-with-poppler-21.03.0.patch
-Patch2:         0002-fix-build-of-pdf-import-plugin-with-poppler-21.03.0.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0003-Page-getFormWidgets-returns-unique_ptr-in-poppler-21.04.0.patch
-BuildRequires:  cmake >= 3.12.0
+BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -54,14 +49,14 @@ BuildRequires:  libzmf-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Core) >= 5.11.0
-BuildRequires:  cmake(Qt5Gui) >= 5.11.0
-BuildRequires:  cmake(Qt5LinguistTools) >= 5.11.0
-BuildRequires:  cmake(Qt5Network) >= 5.11.0
-BuildRequires:  cmake(Qt5OpenGL) >= 5.11.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.11.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.11.0
-BuildRequires:  cmake(Qt5Xml) >= 5.11.0
+BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Gui) >= 5.14.0
+BuildRequires:  cmake(Qt5LinguistTools) >= 5.14.0
+BuildRequires:  cmake(Qt5Network) >= 5.14.0
+BuildRequires:  cmake(Qt5OpenGL) >= 5.14.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.14.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
+BuildRequires:  cmake(Qt5Xml) >= 5.14.0
 BuildRequires:  pkgconfig(GraphicsMagick)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fontconfig)

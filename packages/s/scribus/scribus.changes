@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Apr 26 09:23:12 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.5.7
+  * General:
+    + Improvements for undo and redo of grouped items
+    + Support for later versions of dependencies such as poppler
+      and podofo
+    + Fixed: Issue with Qt menu heuristics causing translations not
+      to work
+    + As of version 1.5.7, the minimum Qt version to compile
+      Scribus is 5.14
+  * PDF import:
+    + As of version 1.5.7, Scribus can import text as editable text
+      from PDF files. It should be noted that this new feature is
+      still experimental.
+  * PDF export:
+    + Improved font embedding for OpenType fonts in PDF/X-4
+  * User interface:
+    + Unification and standardization of the user interface
+      regarding margins, button and widget sizing, thanks to the
+      tireless work of Gyuris Gellért
+  * Render frames:
+    + Render frames are now pre-configured for the use of XeLaTeX
+- Drop patches merged upstream:
+  * 0001-fix-build-of-pdf-import-plugin-with-poppler-21.03.0.patch
+  * 0002-fix-build-of-pdf-import-plugin-with-poppler-21.03.0.patch
+  * 0003-Page-getFormWidgets-returns-unique_ptr-in-poppler-21.04.0.patch
+- Rebase 0001-Make-sure-information-displayed-on-the-about-window-.patch
+
+-------------------------------------------------------------------
 Fri Apr 16 16:21:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Stop owning directories provided by the filesystem package (boo#1184786)

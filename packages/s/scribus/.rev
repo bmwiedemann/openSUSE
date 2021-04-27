@@ -616,4 +616,12 @@
     <comment>- Stop owning directories provided by the filesystem package (boo#1184786)</comment>
     <requestid>886085</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>23d3dc8d2c0dc193471f6748e469512f</srcmd5>
+    <version>1.5.7</version>
+    <time>1619552054</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888461</requestid>
+  </revision>
 </revisionlist>
