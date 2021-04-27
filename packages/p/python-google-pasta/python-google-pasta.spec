@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-pasta
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,12 @@ Summary:        Enable python source code refactoring through AST modifications
 License:        Apache-2.0
 URL:            https://github.com/google/pasta/
 Source:         https://github.com/google/pasta/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/google/pasta/commit/3451d8b9fb67a2fa3098edd73ea3dba98074d6dd Add test for ast node support
+Patch0:         ast.patch
+# PATCH-FIX-UPSTREAM https://github.com/google/pasta/commit/6179ebf76faf38430180232d0e86198429afcd33 Bugfix for parsing fstrings in multiple parts
+Patch1:         fstrings.patch
+# PATCH-FIX-UPSTREAM https://github.com/google/pasta/commit/386d94c04e8d10c945ec330debc3a018ed4e91a4 Add test goldens for python 3.9
+Patch2:         golden39.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -38,6 +44,7 @@ Enable python source code refactoring through AST modifications.
 
 %prep
 %setup -q -n %{packagename}-%{version}
+%autopatch -p1
 
 %build
 %python_build
