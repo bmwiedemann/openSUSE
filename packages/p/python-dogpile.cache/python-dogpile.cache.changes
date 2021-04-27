@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 22 20:27:18 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+  * rerelease, no changes 
+
+-------------------------------------------------------------------
 Wed Mar 10 15:18:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - fix build for older distributions with old default-pytest 

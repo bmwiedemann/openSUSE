@@ -17,10 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
-%global skip_python36 1
+%global pythons python3
 Name:           python-dogpile.cache
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 %define modname dogpile.cache
 %define modver  1_1_1
@@ -68,6 +67,6 @@ new value.
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/dogpile
-%{python_sitelib}/dogpile.cache-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/dogpile.cache-1.1.1-py%{python_version}.egg-info
 
 %changelog

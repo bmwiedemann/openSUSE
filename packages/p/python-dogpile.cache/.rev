@@ -282,4 +282,13 @@
     <comment>- fix build for older distributions with old default-pytest</comment>
     <requestid>878194</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8d254df99e331238f83ee13238a3f1c2</srcmd5>
+    <version>1.1.2</version>
+    <time>1619552116</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.2:
+  * rerelease, no changes</comment>
+    <requestid>888748</requestid>
+  </revision>
 </revisionlist>
