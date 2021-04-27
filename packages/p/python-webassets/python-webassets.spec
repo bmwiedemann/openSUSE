@@ -1,7 +1,7 @@
 #
 # spec file for package python-webassets
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without  python2
 Name:           python-webassets
 Version:        2.0
 Release:        0
@@ -25,19 +26,35 @@ Summary:        Media asset management for Python, with glue code for various we
 # jspacker=LGPL-2.1
 # cssrewrite=BSD-3-Clause
 # six.py=MIT
-License:        BSD-2-Clause AND Apache-2.0 AND LGPL-2.1-only AND BSD-3-Clause AND MIT
+License:        Apache-2.0 AND BSD-2-Clause AND LGPL-2.1-only AND BSD-3-Clause AND MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/miracle2k/webassets/
 Source:         https://files.pythonhosted.org/packages/source/w/webassets/webassets-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module pytest}
+# PATCH-FIX-UPSTREAM webassets-py39-threading.patch -- gh#miracle2k/webassets#529
+Patch0:         https://github.com/miracle2k/webassets/pull/529.patch#/webassets-py39-threading.patch
+# PATCH-FIX-UPSTREAM remove-nose -- gh#miracle2k/webassets#539
+Patch1:         remove-nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION test requirements
+# jsmin and rjsmin fail if imported: different utf8 filters
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module cssutils}
+BuildRequires:  %{python_module glob2}
+BuildRequires:  %{python_module lesscpy}
+BuildRequires:  %{python_module rcssmin}
+BuildRequires:  %{python_module slimit}
+BuildRequires:  sassc
+%if %{with python2}
+BuildRequires:  python2-mock
+%endif
+# /SECTION
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,7 +64,7 @@ of different filters, including YUI, jsmin, jspacker or CSS tidy. Also supports
 URL rewriting in CSS files.
 
 %prep
-%setup -q -n webassets-%{version}
+%autosetup -p1 -n webassets-%{version}
 sed -i 's/#!.*//' src/webassets/filter/rjsmin/rjsmin.py
 # fix py2 only syntax
 sed -i -e 's:e.message:e.args[0]:g' tests/test_filters.py
@@ -62,7 +79,7 @@ sed -i -e 's:e.message:e.args[0]:g' tests/test_filters.py
 
 %check
 export LANG="en_US.UTF8"
-%pytest
+%pytest -ra
 
 %post
 %python_install_alternative webassets

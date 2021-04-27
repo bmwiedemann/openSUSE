@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 26 23:06:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add webassets-py39-threading.patch -- gh#miracle2k/webassets#529
+- Add remove-nose.patch -- gh#miracle2k/webassets#539
+- Install some filter packages for test suite
+
+-------------------------------------------------------------------
 Mon May 18 07:25:35 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
