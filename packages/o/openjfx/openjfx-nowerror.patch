@@ -4,35 +4,35 @@
  def commonFlags = [
          "-fno-strict-aliasing", "-fPIC", "-fno-omit-frame-pointer", // optimization flags
          "-fstack-protector",
--        "-Wextra", "-Wall", "-Wformat-security", "-Wno-unused", "-Wno-parentheses", "-Werror=implicit-function-declaration"] // warning flags
-+        "-Wextra", "-Wall", "-Wformat-security", "-Wno-unused", "-Wno-parentheses", "-Wimplicit-function-declaration"] // warning flags
+-        "-Wextra", "-Wall", "-Wformat-security", "-Wno-unused", "-Wno-parentheses", "-Werror=trampolines"] // warning flags
++        "-Wextra", "-Wall", "-Wformat-security", "-Wno-unused", "-Wno-parentheses", "-Wtrampolines"] // warning flags
  
  if (!IS_64) {
      commonFlags += "-m32"
-@@ -223,7 +223,7 @@
+@@ -226,7 +226,7 @@
  LINUX.glass.glass = [:]
  LINUX.glass.glass.nativeSource = ft_gtk_launcher.getFiles()
  LINUX.glass.glass.compiler = compiler
--LINUX.glass.glass.ccFlags = [ccFlags, gtk2CCFlags,  "-Werror"].flatten()
-+LINUX.glass.glass.ccFlags = [ccFlags, gtk2CCFlags].flatten()
+-LINUX.glass.glass.ccFlags = [cppFlags, "-Werror"].flatten()
++LINUX.glass.glass.ccFlags = [cppFlags].flatten()
  LINUX.glass.glass.linker = linker
- LINUX.glass.glass.linkFlags = [linkFlags, "-lX11", "-ldl" ].flatten()
+ LINUX.glass.glass.linkFlags = IS_STATIC_BUILD? linkFlags : [linkFlags, "-lX11", "-ldl"].flatten()
  LINUX.glass.glass.lib = "glass"
-@@ -231,7 +231,7 @@
- LINUX.glass.glassgtk2 = [:]
- LINUX.glass.glassgtk2.nativeSource =  ft_gtk.getFiles()
+@@ -236,7 +236,7 @@
  LINUX.glass.glassgtk2.compiler = compiler
--LINUX.glass.glassgtk2.ccFlags = [ccFlags, gtk2CCFlags, "-Werror"].flatten()
-+LINUX.glass.glassgtk2.ccFlags = [ccFlags, gtk2CCFlags].flatten()
+ LINUX.glass.glassgtk2.ccFlags = IS_STATIC_BUILD ?
+         ["-fno-threadsafe-statics", cppFlags, gtk2CCFlags].flatten() :
+-        [cppFlags, gtk2CCFlags, "-Werror"].flatten()
++        [cppFlags, gtk2CCFlags].flatten()
  LINUX.glass.glassgtk2.linker = linker
- LINUX.glass.glassgtk2.linkFlags = [linkFlags, gtk2LinkFlags ].flatten()
+ LINUX.glass.glassgtk2.linkFlags = IS_STATIC_BUILD ? linkFlags : [linkFlags, gtk2LinkFlags].flatten()
  LINUX.glass.glassgtk2.lib = "glassgtk2"
-@@ -239,7 +239,7 @@
- LINUX.glass.glassgtk3 = [:]
- LINUX.glass.glassgtk3.nativeSource =  ft_gtk.getFiles()
+@@ -246,7 +246,7 @@
  LINUX.glass.glassgtk3.compiler = compiler
--LINUX.glass.glassgtk3.ccFlags = [ccFlags, gtk3CCFlags, "-Werror"].flatten()
-+LINUX.glass.glassgtk3.ccFlags = [ccFlags, gtk3CCFlags].flatten()
+ LINUX.glass.glassgtk3.ccFlags = IS_STATIC_BUILD ?
+         ["-fno-threadsafe-statics", cppFlags, gtk3CCFlags].flatten() :
+-        [cppFlags, gtk3CCFlags, "-Werror"].flatten()
++        [cppFlags, gtk3CCFlags].flatten()
  LINUX.glass.glassgtk3.linker = linker
- LINUX.glass.glassgtk3.linkFlags = [linkFlags, gtk3LinkFlags ].flatten()
+ LINUX.glass.glassgtk3.linkFlags = IS_STATIC_BUILD ? linkFlags : [linkFlags, gtk3LinkFlags].flatten()
  LINUX.glass.glassgtk3.lib = "glassgtk3"

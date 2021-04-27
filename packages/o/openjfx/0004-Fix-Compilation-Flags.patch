@@ -1,12 +1,12 @@
 --- rt-11.0.6+2/buildSrc/linux.gradle
 +++ rt-11.0.6+2/buildSrc/linux.gradle
 @@ -54,7 +54,7 @@
- def ccFlags = [
+ def cppFlags = [
          commonFlags, "-I$JDK_HOME/include", "-I$JDK_HOME/include/linux", "-c",
          "-ffunction-sections", "-fdata-sections",
 -        IS_DEBUG_NATIVE ? ["-ggdb", "-DVERBOSE"] : ["-O2", "-DNDEBUG"]].flatten()
 +        IS_DEBUG_NATIVE ? ["-ggdb", "-DNDEBUG"] : ["-O2", "-DNDEBUG"]].flatten()
- def ccFlagsGTK3 = ccFlags
- //ccFlags.addAll(["-Wnon-virtual-dtor", "-Woverloaded-virtual", "-std=c++0x"])
- def linkFlags = ["-static-libgcc", "-static-libstdc++", "-shared", commonFlags,
+ 
+ def cFlags = [cppFlags, "-Werror=implicit-function-declaration"].flatten()
+ 
 

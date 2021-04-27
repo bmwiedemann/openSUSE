@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Feb  4 13:43:37 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 11.0.10, including January 2021 CPU
+  security fixes (bsc#1181239)
+  * Fixes:
+    + JDK-8177945: Single cell selection flickers when adding data
+      to TableView
+    + JDK-8178297: TableView scrolls slightly when adding new
+      elements
+    + JDK-8181775: JavaFX WebView does not calculate border-radius
+      properly
+    + JDK-8197536: TableView, ListView: unexpected scrolling
+      behaviour on up/down keys
+    + JDK-8199592: Control labels truncated at certain DPI scaling
+      levels
+    + JDK-8201567: QuantumRenderer modifies buffer in use by JavaFX
+      Application Thread
+    + JDK-8205092: NullPointerException in
+      PickResultChooser.processOffer when using viewOrder
+    + JDK-8209764: JavaFX/Monocle - Partial Screen Capture Broken
+    + JDK-8212102: [TextField] IOOBE on paste/replace text with
+      control characters
+    + JDK-8214397: Provide fallback if user home is not writable
+      for native libs
+    + JDK-8223296: NullPointerException in GlassScene.java at line
+      325
+    + JDK-8237469: Inherited styles don't update when node is moved
+    + JDK-8239822: Intermittent unit test failures in RegionCSSTest
+    + JDK-8240499: Enforce whitespace checking for additional
+      source files
+    + JDK-8251241: macOS: iconify property doesn't change after
+      minimize when resizable is false
+    + JDK-8251858: Update to Xcode 11.3.1
+    + JDK-8252060: gstreamer fails to build with gcc 10
+    + JDK-8252062: WebKit build fails with recent VS 2019 compiler
+    + JDK-8252191: Update to gcc 10.2 on Linux
+    + JDK-8252811: The list of cells in a VirtualFlow is cleared
+      every time the number of items changes
+    + JDK-8254100: FX: Update copyright year in docs, readme files
+      to 2021
+    + JDK-8255415: Nested calls to snap methods in Region give
+      different results
+    + JDK-8255586: Change JavaFX release version in 11-dev to
+      11.0.10
+    + JDK-8257719: JFXPanel scene fails to render correctly on
+      HiDPI after fix for JDK-8199592
+- Modified patches:
+  * 0004-Fix-Compilation-Flags.patch
+  * openjfx-nowerror.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
+Mon Nov  9 11:49:26 UTC 2020 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 11.0.9, including October 2020 CPU
+  security fixes (bsc#1174157)
+
+-------------------------------------------------------------------
 Fri Jul 24 11:25:05 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 11.0.8, including July 2020 CPU

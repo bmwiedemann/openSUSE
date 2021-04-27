@@ -1,7 +1,7 @@
 #
 # spec file for package openjfx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %global priority        2105
-%global build_number 2
+%global build_number 1
 Name:           openjfx
-Version:        11.0.8
+Version:        11.0.10
 Release:        0
 Summary:        Rich client application platform for Java
-License:        GPL-2.0-only WITH Classpath-exception-2.0 AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-only WITH Classpath-exception-2.0
 URL:            https://openjdk.java.net/projects/openjfx/
 Source0:        http://hg.openjdk.java.net/openjfx/11-dev/rt/archive/%{version}+%{build_number}.tar.bz2
 Patch0:         0000-Fix-wait-call-in-PosixPlatform.patch
@@ -130,14 +130,14 @@ gradle-local --no-daemon --offline sdk generatePomFileForMavenPublication genera
 
 %install
 %mvn_artifact modules/javafx.base/build/publications/javafx/pom-default.xml
-for i in base controls fxml graphics media swing web; do 
+for i in base controls fxml graphics media swing web; do
   %pom_xpath_remove pom:project/pom:packaging modules/javafx.${i}/build/publications/maven/pom-default.xml
   %pom_xpath_set pom:classifier linux modules/javafx.${i}/build/publications/maven/pom-default.xml
   %mvn_artifact modules/javafx.${i}/build/publications/maven/pom-default.xml build/publications/javafx.${i}.jar
   %mvn_artifact org.openjfx:javafx-${i}::linux:%{version} build/publications/javafx.${i}-linux.jar
 done
 
-%mvn_install -J build/javadoc 
+%mvn_install -J build/javadoc
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 install -dm 0755 %{buildroot}%{_datadir}/%{name}
