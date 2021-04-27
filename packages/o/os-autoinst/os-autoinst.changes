@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 27 11:31:04 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1619442285.14cadbcb:
+  * Enable smbd usage to upload assets from worker pool
+  * stop appending the basename to a set log_name
+
+-------------------------------------------------------------------
 Sun Apr 25 03:30:59 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1619173284.645c6c12:
