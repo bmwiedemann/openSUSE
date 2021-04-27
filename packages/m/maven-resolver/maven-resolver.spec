@@ -19,7 +19,7 @@
 %define _buildshell /bin/bash
 %bcond_with tests
 Name:           maven-resolver
-Version:        1.4.2
+Version:        1.6.2
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0
@@ -29,6 +29,7 @@ Source0:        http://archive.apache.org/dist/maven/resolver/%{name}-%{version}
 Source1:        %{name}-build.tar.xz
 Patch0:         maven-resolver-1.3.1-java8compat.patch
 BuildRequires:  ant
+BuildRequires:  apache-commons-lang3
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  google-guice
@@ -144,6 +145,9 @@ This package provides %{summary}.
 %setup -q -a1
 %patch0 -p1
 
+# pointless plugin
+%pom_remove_plugin :maven-enforcer-plugin
+
 # tests require jetty 7
 %pom_remove_dep :::test maven-resolver-transport-http
 rm -r maven-resolver-transport-http/src/test
@@ -188,6 +192,7 @@ done
 mkdir -p lib
 build-jar-repository -s lib \
   atinject \
+  commons-lang3 \
   guice/google-guice-no_aop \
   httpcomponents/httpclient \
   httpcomponents/httpcore \
