@@ -16,9 +16,9 @@ PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="%%TAGPREFIX%%/cdi-uploadserver:%%PKG_VERSION%%.%RELEASE%"
 
-RUN zypper update -y && \
-    zypper install -y \
+RUN zypper -n install \
            qemu-tools qemu-block-curl tar util-linux \
-           containerized-data-importer-uploadserver
+           containerized-data-importer-uploadserver && \
+    zypper clean -a
 
 ENTRYPOINT [ "/usr/bin/virt-cdi-uploadserver", "-alsologtostderr" ]
