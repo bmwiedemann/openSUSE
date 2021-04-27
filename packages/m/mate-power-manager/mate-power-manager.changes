@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 26 20:05:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.24.3:
+  * Translations update
+  * mate-power-preferences: add option to enable keyboard dimming
+  * brightness applet: Prevent sliding from bogging down the UI
+
+-------------------------------------------------------------------
 Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.2:
