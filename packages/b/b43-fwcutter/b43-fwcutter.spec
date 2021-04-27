@@ -1,7 +1,7 @@
 #
 # spec file for package b43-fwcutter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        Tool for extracting firmware from newer Broadcom WLAN drivers
 License:        BSD-2-Clause
 Group:          Hardware/Wifi
-URL:            http://linuxwireless.org/en/users/Drivers/b43
+URL:            https://bues.ch/cms/hacking/misc.html#linux_b43_driver_firmware_tools
 Source:         http://bues.ch/b43/fwcutter/%{name}-%{version}.tar.bz2
 Source1:        install_bcm43xx_firmware
 Requires:       curl
@@ -64,8 +64,8 @@ card under Linux using the b43 or b43legacy driver.
 make CFLAGS="%{optflags}" %{?_smp_mflags}
 
 %install
-#make PREFIX=%{buildroot}/usr \
-#     MANDIR=%{buildroot}/%{_mandir} install
+#make PREFIX=%%{buildroot}/usr \
+#     MANDIR=%%{buildroot}/%%{_mandir} install
 mkdir -p %{buildroot}%{_bindir}/
 mkdir -p %{buildroot}%{_sbindir}/
 install -m 755 b43-fwcutter %{buildroot}%{_bindir}/
@@ -87,8 +87,7 @@ done
 %doc README
 %{_bindir}/b43-fwcutter
 %{_sbindir}/install_bcm43xx_firmware
-#%{_mandir}/man1/b43-fwcutter.1.gz
-#/usr/man/man1/b43-fwcutter.1.gz
+#%%{_mandir}/man1/b43-fwcutter.1.gz
 %dir %{_firmwaredir}/b43
 %dir %{_firmwaredir}/b43legacy
 # ghost b43 firmware

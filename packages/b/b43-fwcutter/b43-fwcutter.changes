@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 18 01:46:07 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed SPEC file: Replace broken URL with current upstream
+
+-------------------------------------------------------------------
 Mon Oct 19 13:04:29 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - use %_firmwaredir
