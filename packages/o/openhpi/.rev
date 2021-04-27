@@ -8,4 +8,12 @@
 but is a needed in SLE15-SP1 due to a feature request).</comment>
     <requestid>641310</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1f448fb11daaa42602078a865804b899</srcmd5>
+    <version>3.8.0</version>
+    <time>1619552125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888838</requestid>
+  </revision>
 </revisionlist>

@@ -83,7 +83,7 @@ Index: openhpi-3.8.0/openhpid/openhpid.service.in
 +
 +[Service]
 +Type=forking
-+PIDFile=/var/run/openhpid.pid
++PIDFile=/run/openhpid.pid
 +ExecStart=@sbindir@/openhpid -c @sysconfdir@/openhpi/openhpi.conf
 +
 +[Install]

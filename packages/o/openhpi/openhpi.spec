@@ -1,7 +1,7 @@
 #
 # spec file for package openhpi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,11 +76,11 @@ Requires:       e2fsprogs-devel
 Requires:       gdbm-devel
 Requires:       glib2-devel
 Requires:       glibc-devel
+Requires:       libopenhpi4 = %{version}
 Requires:       libstdc++-devel
 Requires:       libtool
 Requires:       ncurses-devel
 Requires:       net-snmp-devel
-Requires:       libopenhpi4 = %{version}
 Requires:       openssl-devel
 Requires:       popt-devel
 Requires:       zlib-devel
