@@ -182,4 +182,15 @@
     <comment>Build against the new compatibility log4j12-mini package</comment>
     <requestid>734254</requestid>
   </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>ab457c729d70e880f6cbaf73bfe76906</srcmd5>
+    <version>1.2</version>
+    <time>1619552057</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patch
+  * no-tests.patch
+    + ignore failing tests for arm6
+</comment>
+    <requestid>888505</requestid>
+  </revision>
 </revisionlist>

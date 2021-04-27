@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 24 09:22:40 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch
+  * no-tests.patch
+    + ignore failing tests for arm6
+
+-------------------------------------------------------------------
 Tue Oct  1 08:45:20 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the new compatibility log4j12-mini package

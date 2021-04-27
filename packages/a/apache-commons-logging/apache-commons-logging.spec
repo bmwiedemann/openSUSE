@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-logging
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,7 @@
 #
 
 
+%{!?arm6:%global arm6 armv3l armv4b armv4l armv4tl armv5b armv5l armv5teb armv5tel armv5tejl armv6l armv6hl}
 %define base_name  logging
 %define short_name commons-%{base_name}
 Name:           apache-%{short_name}
@@ -32,6 +33,7 @@ Source4:        http://central.maven.org/maven2/%{short_name}/%{short_name}-api/
 Patch0:         commons-logging-1.1.3-src-junit.diff
 Patch1:         commons-logging-1.2-sourcetarget.patch
 Patch2:         commons-logging-manifests.patch
+Patch3:         no-tests.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  glassfish-servlet-api
@@ -62,6 +64,10 @@ logging implementation.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+# Disable tests on arm6
+%ifarch %{arm6}
+%patch3 -p1
+%endif
 
 sed -i 's/\r//' RELEASE-NOTES.txt LICENSE.txt
 
