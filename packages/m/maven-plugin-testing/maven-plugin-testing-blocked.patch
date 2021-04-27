@@ -1,0 +1,19 @@
+--- maven-plugin-testing-3.3.0/maven-plugin-testing-harness/src/main/java/org/apache/maven/plugin/testing/stubs/StubArtifactRepository.java	2014-12-17 20:13:58.000000000 +0100
++++ maven-plugin-testing-3.3.0/maven-plugin-testing-harness/src/main/java/org/apache/maven/plugin/testing/stubs/StubArtifactRepository.java	2021-04-23 11:59:52.418851409 +0200
+@@ -228,6 +228,16 @@
+ 
+     }
+ 
++    public void setBlocked( boolean blocked)
++    {
++
++    }
++
++    public boolean isBlocked()
++    {
++        return false;
++    }
++
+     public List<String> findVersions( Artifact artifact )
+     {
+         return Collections.emptyList();

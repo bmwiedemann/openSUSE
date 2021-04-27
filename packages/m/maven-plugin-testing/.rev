@@ -15,4 +15,12 @@
     <comment>Fix build against maven-invoker-3.0.1</comment>
     <requestid>750610</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>89a5f37bc186231e34e2379fe6adf00d</srcmd5>
+    <version>3.3.0</version>
+    <time>1619552064</time>
+    <user>dimstar_suse</user>
+    <comment>Fix changelog</comment>
+    <requestid>888575</requestid>
+  </revision>
 </revisionlist>

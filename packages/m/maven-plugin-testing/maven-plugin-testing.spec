@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-testing
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,11 @@ Summary:        Maven Plugin Testing
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            http://maven.apache.org/plugin-testing/
-Source0:        http://repo1.maven.org/maven2/org/apache/maven/plugin-testing/%{name}/%{version}/%{name}-%{version}-source-release.zip
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-testing/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.tar.xz
 Patch0:         0001-Port-to-plexus-utils-3.0.21.patch
 Patch1:         0002-Port-to-current-maven-artifact.patch
+Patch2:         %{name}-blocked.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
 BuildRequires:  apache-commons-io
@@ -96,6 +97,7 @@ Framework to test Maven Plugins with Easymock objects.
 
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :maven-site-plugin
