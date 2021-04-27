@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 27 07:45:26 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to shim to 15.4-lp152.4.8.1 from openSUSE Leap 15.2 for
+  SBAT support (bsc#1182057)
+  + Version: 15.4, "Wed Apr 21 05:46:19 UTC 2021"
+  + Include the fixes for bsc#1177789, CVE-2019-14584, bsc#1177315,
+    bsc#1175509, bsc#1173411, bsc#1177404, bsc#1174512, bsc#1184454
+- Add README to note why we need shim-leap for Tumbleweed
+
+-------------------------------------------------------------------
 Thu Aug 27 07:27:54 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update shim to 15+git47-lp152.4.5.1 from openSUSE Leap 15.2

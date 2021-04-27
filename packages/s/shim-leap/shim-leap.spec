@@ -1,7 +1,7 @@
 #
 # spec file for package shim-leap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,12 +25,13 @@
 %endif
 
 Name:           shim-leap
-Version:        15+git47
+Version:        15.4
 Release:        0
 Summary:        UEFI shim loader
 License:        BSD-2-Clause
 Group:          System/Boot
-Source:         shim-15+git47-lp152.4.5.1.x86_64.rpm
+Source:         shim-15.4-lp152.4.8.1.x86_64.rpm
+Source1:        README
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64
 
@@ -54,12 +55,13 @@ rpm2cpio %{SOURCE0} | cpio --extract --unconditional --preserve-modification-tim
 %install
 # purely repackaged
 cp -a * %{buildroot}
-# NOTE: shim-15+git47 already contains the sym-link to /usr/lib64/efi.
+cp %{S:1} .
 
 %post -n shim
 /sbin/update-bootloader --reinit || true
 
 %files -n shim
+%doc README
 %dir %{?sysefibasedir}
 %dir %{sysefidir}
 %{sysefidir}/shim.efi
