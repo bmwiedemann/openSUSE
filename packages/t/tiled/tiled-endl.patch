@@ -1,0 +1,47 @@
+From 7059846dc551a5d6b3cda8c78aa990aff8a4861f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thorbj=C3=B8rn=20Lindeijer?= <bjorn@lindeijer.nl>
+Date: Mon, 26 Apr 2021 19:12:00 +0200
+Subject: [PATCH] Fixed compilation issue with GCC 10
+
+main.cpp:334:33: error no match for 'operator<<' (operand types are 'QTextStream' and '<unresolved overloaded function type>'
+---
+ src/tiled/main.cpp | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/tiled/main.cpp b/src/tiled/main.cpp
+index fce9f3cd2d..b9b89e2203 100644
+--- a/src/tiled/main.cpp
++++ b/src/tiled/main.cpp
+@@ -260,7 +260,7 @@ void CommandLineHandler::showVersion()
+     if (!showedVersion) {
+         showedVersion = true;
+         stdOut() << QApplication::applicationDisplayName() << " "
+-                 << QApplication::applicationVersion() << endl;
++                 << QApplication::applicationVersion() << Qt::endl;
+         quit = true;
+     }
+ }
+@@ -317,9 +317,9 @@ void CommandLineHandler::showExportFormats()
+     }
+     formats.sort(Qt::CaseSensitive);
+ 
+-    stdOut() << tr("Map export formats:") << endl;
++    stdOut() << tr("Map export formats:") << Qt::endl;
+     for (const QString &name : formats)
+-        stdOut() << " " << name << endl;
++        stdOut() << " " << name << Qt::endl;
+ 
+     formats.clear();
+     const auto tilesetFormats = PluginManager::objects<TilesetFormat>();
+@@ -329,9 +329,9 @@ void CommandLineHandler::showExportFormats()
+     }
+     formats.sort(Qt::CaseSensitive);
+ 
+-    stdOut() << tr("Tileset export formats:") << endl;
++    stdOut() << tr("Tileset export formats:") << Qt::endl;
+     for (const QString &name : formats)
+-        stdOut() << " " << name << endl;
++        stdOut() << " " << name << Qt::endl;
+ 
+     quit = true;
+ }
