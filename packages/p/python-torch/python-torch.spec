@@ -1,7 +1,7 @@
 #
 # spec file for package python-torch
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-#
+
 %define srcname pytorch
 %define skip_python2 1
+%define skip_python36 1
 %define pname torch
 
 %global flavor @BUILD_FLAVOR@%{nil}
@@ -35,7 +36,7 @@ Name:           python-torch
 Version:        1.5.1
 Release:        0
 Summary:        Deep learning framework aka pytorch/Caffe2
-License:        BSD-2-Clause AND BSD-3-Clause AND MIT AND Zlib AND BSL-1.0 AND Apache-2.0
+License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND Zlib AND BSL-1.0
 Group:          Development/Languages/Python
 URL:            https://pytorch.org
 Source0:        https://github.com/pytorch/pytorch/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
@@ -115,7 +116,7 @@ BuildRequires:  cuda-libraries-dev-%cudaver
 BuildRequires:  cuda-misc-headers-%cudaver
 BuildRequires:  cuda-nsight-%cudaver
 BuildRequires:  cuda-toolkit-%cudaver
-%if 0%{?suse_version} > 1500 
+%if 0%{?suse_version} > 1500
 BuildRequires:  gcc7
 BuildRequires:  gcc7-c++
 %endif
@@ -190,12 +191,12 @@ This example files can be used to start an own pytorch/caffe2 project.
 Summary:        Library which used by %{name}
 Group:          Development/Libraries/Python
 
-%description -n libtorch 
+%description -n libtorch
 Library which is used by %{name}
 
 %prep
 %define make_depend_src() test -e $(basename %1| sed 's/-.*//') && rmdir %{?2}%{!?2:$(basename %1| sed 's/-.*//')}; tar xzf %1; mv $(basename %1 | sed 's/\.tar\.gz//' ) %{?2}%{!?2:$(basename %1| sed 's/-.*//')}
-%define make_depend_src_uppercase() rmdir -p $(basename %1| sed 's/-.*//'| tr '[:upper:]' '[:lower:]'); tar xzf %1; mv $(basename %1 | cut -f 1 -d '.' ) $(basename %1| sed 's/-.*//'| tr '[:upper:]' '[:lower:]') 
+%define make_depend_src_uppercase() rmdir -p $(basename %1| sed 's/-.*//'| tr '[:upper:]' '[:lower:]'); tar xzf %1; mv $(basename %1 | cut -f 1 -d '.' ) $(basename %1| sed 's/-.*//'| tr '[:upper:]' '[:lower:]')
 %setup -q -n %{srcname}-%{version}
 cp %{S:1} releases.html
 %autopatch -p 1
@@ -266,7 +267,7 @@ install -m 644 -D %{buildroot}%{python_sitearch}/torch/lib/* %{buildroot}/%{_lib
 #ln -s libtorch.so.1 libtorch.so
 #cd -
 #for file in  $(find %{buildroot}%{python_sitearch} -type f -name \*.py -perm 644 -size +1b); do
-#%{__grep} '/usr/bin/env ' $file && sed -i 's@/usr/bin/env python@/usr/bin/python@' $file && chmod 755 $file 
+#%{__grep} '/usr/bin/env ' $file && sed -i 's@/usr/bin/env python@/usr/bin/python@' $file && chmod 755 $file
 #done
 #
 #%check
