@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 23 12:46:35 UTC 2021 - Jan Baier <jbaier@suse.com>
+
+- Update to version 4.19.2:
+  * fix: release tarball version number and debug log settings
+
+-------------------------------------------------------------------
 Tue Feb  2 23:47:27 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 4.19.1:
@@ -64,7 +70,7 @@ Wed Oct 21 07:01:29 UTC 2020 - Christian Prause <42@wonko.de>
 
 - Update to version 4.18.3
   * Bugfixes
-    + kick tray clients before destroying the bar 
+    + kick tray clients before destroying the bar
 
 -------------------------------------------------------------------
 Wed Jul 29 20:39:17 UTC 2020 - Martin Rey <mrey@suse.com>
@@ -252,7 +258,7 @@ Mon Nov 05 05:44:08 UTC 2018 - sean@suspend.net
 - Update to 4.16
   * Please see complete list of bugfixes at: https://i3wm.org/downloads/RELEASE-NOTES-4.16.txt
   * Removed i3-asciidoc-fix.patch (Fixed per bsc#1075764)
- 
+
 -------------------------------------------------------------------
 Thu Apr 12 15:57:05 CEST 2018 - tiwai@suse.de
 
@@ -378,7 +384,7 @@ Mon Sep  4 16:38:18 UTC 2017 - aavindraa@gmail.com
 	handling has seen some fixes as well. A noticeable change for users with such
 	monitors is i3’s support for RandR 1.5, which transparently supports the TILE
 	property of first-gen 4K monitors and current 5K or 8K monitors.
-    
+
 -------------------------------------------------------------------
 Sun Feb  5 11:22:02 UTC 2017 - jengelh@inai.de
 
