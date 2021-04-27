@@ -1,0 +1,23 @@
+Index: pytest-testinfra-6.3.0/test/test_backends.py
+===================================================================
+--- pytest-testinfra-6.3.0.orig/test/test_backends.py
++++ pytest-testinfra-6.3.0/test/test_backends.py
+@@ -467,13 +467,13 @@ def test_ansible_unknown_option():
+     with pytest.raises(KeyError, match="^'unknown'$"):
+         runner.options_to_cli({"unknown": True})
+ 
+-
+-def test_backend_importables():
++@pytest.mark.parametrize('connection_type',
++                         testinfra.backend.BACKENDS.keys())
++def test_backend_importables(connection_type):
+     # just check that all declared backend are importable and NAME is set
+     # correctly
+-    for connection_type in testinfra.backend.BACKENDS:
+-        obj = testinfra.backend.get_backend_class(connection_type)
+-        assert obj.get_connection_type() == connection_type
++    obj = testinfra.backend.get_backend_class(connection_type)
++    assert obj.get_connection_type() == connection_type
+ 
+ 
+ @pytest.mark.testinfra_hosts("docker://centos_7", "ssh://centos_7")
