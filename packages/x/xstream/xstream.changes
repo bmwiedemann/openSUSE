@@ -2,8 +2,27 @@
 Thu Apr 15 14:31:31 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 1.4.16
-  * fixes bsc#1184796, CVE-2021-21351 and bsc#1184797,
-    CVE-2021-21349
+  * Security fixes:
+    + bsc#1184796, CVE-2021-21351: remote attacker to load and
+      execute arbitrary code
+    + bsc#1184797, CVE-2021-21349: SSRF can lead to a remote
+      attacker to request data from internal resources
+    + bsc#1184380, CVE-2021-21350: arbitrary code execution
+    + bsc#1184374, CVE-2021-21348: remote attacker could cause
+      denial of service by consuming maximum CPU time
+    + bsc#1184378, CVE-2021-21347: remote attacker to load and
+      execute arbitrary code from a remote host
+    + bsc#1184375, CVE-2021-21344: remote attacker could load and
+      execute arbitrary code from a remote host
+    + bsc#1184379, CVE-2021-21342: server-side forgery
+    + bsc#1184377, CVE-2021-21341: remote attacker could cause a
+      denial of service by allocating 100% CPU time
+    + bsc#1184373, CVE-2021-21346: remote attacker could load and
+      execute arbitrary code
+    + bsc#1184372, CVE-2021-21345: remote attacker with sufficient
+      rights could execute commands
+    + bsc#1184376, CVE-2021-21343: replace or inject objects, that
+      result in the deletion of files on the local host
 - Add patch:
   * Revert-MXParser-changes.patch
     + revert changes that would force us to add new dependency

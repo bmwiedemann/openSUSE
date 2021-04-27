@@ -23,4 +23,12 @@
     <comment>bsc#1184796, CVE-2021-21351 and bsc#1184797, CVE-2021-21349</comment>
     <requestid>885696</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>232c891a1d7bd6394c7ee690641256a0</srcmd5>
+    <version>1.4.16</version>
+    <time>1619552086</time>
+    <user>dimstar_suse</user>
+    <comment>changelog fixes</comment>
+    <requestid>888519</requestid>
+  </revision>
 </revisionlist>
