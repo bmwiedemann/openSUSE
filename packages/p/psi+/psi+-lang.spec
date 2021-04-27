@@ -16,11 +16,11 @@
 #
 
 
-%define version_unconverted 1.5.1477+3
+%define version_unconverted 1.5.1484+0
 
 Name:           psi+-lang
 URL:            https://github.com/psi-plus/psi-plus-l10n
-Version:        1.5.1477+3
+Version:        1.5.1484+0
 Release:        0
 Summary:        Translations for Psi+
 License:        GPL-2.0-or-later

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 19 08:42:45 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.5.1484+0
+  * Use explicit u8 string literal for quote
+  * Remove old unsupported plugin for Snarl
+  * Remove old unsupported plugins
+  * Iris relinked
+  * Added QPlainTextEdit the list of widget available for options
+  * Update FindLibGpgError.cmake
+
+-------------------------------------------------------------------
 Thu Feb  4 08:51:58 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 1.5.1477+3

@@ -657,4 +657,12 @@
   * Fixed crash on profile change</comment>
     <requestid>869196</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>3fd4788a46bd72f12bc5f8418cadb7c3</srcmd5>
+    <version>1.5.1484+0</version>
+    <time>1619552067</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>888520</requestid>
+  </revision>
 </revisionlist>
