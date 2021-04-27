@@ -1,7 +1,7 @@
 #
 # spec file for package less
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           less
-Version:        563
+Version:        581
 Release:        0
 Summary:        Text File Browser and Pager Similar to more
-License:        GPL-3.0-or-later OR BSD-2-Clause
+License:        BSD-2-Clause OR GPL-3.0-or-later
 Group:          Productivity/Text/Utilities
-URL:            http://www.greenwoodsoftware.com/less/
+URL:            https://www.greenwoodsoftware.com/less/
 Source:         http://www.greenwoodsoftware.com/less/less-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        lessopen.sh
@@ -31,7 +31,6 @@ Source4:        lesskey.src
 Source5:        http://www.greenwoodsoftware.com/less/less-%{version}.sig
 Source6:        http://www.greenwoodsoftware.com/less/pubkey.asc#/%{name}.keyring
 Patch0:         less-429-shell.patch
-Patch1:         less-429-save_line_position.patch
 Patch2:         less-429-more.patch
 BuildRequires:  automake
 BuildRequires:  ncurses-devel
@@ -47,7 +46,6 @@ start an editor at any time from within less.
 %prep
 %setup -q
 %patch0 -p1
-%patch1
 %patch2
 #
 # the ./configure script is not writable for the normal user

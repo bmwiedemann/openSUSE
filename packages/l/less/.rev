@@ -520,4 +520,12 @@ The less license is a choice of either GPL-3.0+ or BSD-2-Clause (less license). 
   * Support libtinfow.</comment>
     <requestid>826860</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>df9347e330f05a6a01bfc5311054f4d2</srcmd5>
+    <version>581</version>
+    <time>1619552053</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888431</requestid>
+  </revision>
 </revisionlist>
