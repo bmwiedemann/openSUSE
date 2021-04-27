@@ -106,4 +106,16 @@ Updated source. (forwarded request 729546 from ukbeast89)</comment>
     <comment>Removal of -lang recommends (forwarded request 768570 from dimstar)</comment>
     <requestid>768654</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5d7761a403e26a7381592bdce22512e7</srcmd5>
+    <version>3.2.3</version>
+    <time>1619552114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.3
+  * The recording must end with EOS message,
+    otherwise MPEG 4 Audio (.m4a) files becomes invalid. 
+  * Fixed export to M4A / AAC with new gstreamer
+  * Fixed a minor issue in settings-pipe.c (forwarded request 888470 from susnux)</comment>
+    <requestid>888744</requestid>
+  </revision>
 </revisionlist>

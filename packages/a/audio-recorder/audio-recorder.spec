@@ -17,13 +17,13 @@
 
 
 Name:           audio-recorder
-Version:        3.0.5
+Version:        3.2.3
 Release:        0
 Summary:        An audio recorder application for the GNOME 2/3
 License:        GPL-3.0
 Group:          Productivity/Multimedia/Sound/Utilities
 Url:            https://launchpad.net/~audio-recorder
-Source:         https://launchpad.net/~audio-recorder/+archive/ubuntu/ppa/+sourcefiles/audio-recorder/%{version}~disco/audio-recorder_%{version}~disco.tar.gz
+Source:         https://launchpad.net/~audio-recorder/+archive/ubuntu/ppa/+sourcefiles/audio-recorder/%{version}~hirsute/audio-recorder_%{version}~hirsute.tar.gz
 # PATCH-FIX-OPENSUSE audio-recorder-correct-desktop-menu.patch badshah400@gmail.com -- Fixes the .desktop file by removing unity related tags from it.
 Patch0:         audio-recorder-correct-desktop-menu.patch
 BuildRequires:  autoconf
@@ -80,7 +80,7 @@ User can also control the recorder from command line with
 %patch0 -p1
 
 %build
-aclocal && autoconf && automake -a
+autoreconf -fi
 %configure
 make %{?_smp_mflags}
 
@@ -90,22 +90,19 @@ make %{?_smp_mflags}
 %find_lang %{name} %{?no_lang_C}
 
 %post
-%desktop_database_post
-%icon_theme_cache_post
 %glib2_gsettings_schema_post
 
 %postun
-%desktop_database_postun
-%icon_theme_cache_postun
 %glib2_gsettings_schema_postun
 
 %files
-%doc ChangeLog README COPYING
+%license COPYING
+%doc ChangeLog README
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}/
-%{_datadir}/icons/hicolor/
-%{_datadir}/pixmaps/%{name}/
+%{_datadir}/icons/hicolor/scalable/*/audio-recorder*.svg
+%{_datadir}/pixmaps/%{name}
 %{_datadir}/glib-2.0/schemas/org.gnome.audio-recorder.gschema.xml
 %{_mandir}/man1/%{name}.1%{ext_man}
 

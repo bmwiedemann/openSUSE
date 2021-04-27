@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 26 11:29:57 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.2.3
+  * The recording must end with EOS message,
+    otherwise MPEG 4 Audio (.m4a) files becomes invalid. 
+  * Fixed export to M4A / AAC with new gstreamer
+  * Fixed a minor issue in settings-pipe.c
+
+-------------------------------------------------------------------
 Thu Jan 30 11:08:42 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
