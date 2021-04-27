@@ -16,10 +16,10 @@ PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="%%TAGPREFIX%%/cdi-apiserver:%%PKG_VERSION%%.%RELEASE%"
 
-RUN zypper update -y && \
-    zypper install -y \
+RUN zypper -n install \
            containerized-data-importer-api \
            shadow && \
+    zypper clean -a && \
     useradd -u 1001 --create-home -s /bin/bash cdi-apiserver
 WORKDIR /home/cdi-apiserver
 USER 1001
