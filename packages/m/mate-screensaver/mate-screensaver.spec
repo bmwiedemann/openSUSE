@@ -18,7 +18,7 @@
 
 %define _version 1.24
 Name:           mate-screensaver
-Version:        1.24.1
+Version:        1.24.2
 Release:        0
 Summary:        MATE Desktop screensaver
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later

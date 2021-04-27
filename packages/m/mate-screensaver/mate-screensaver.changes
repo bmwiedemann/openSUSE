@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 26 20:12:08 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.24.2:
+  * Translations update
+  * i18n: Do not collect the translation for Icon
+  * Removed translation for icon file name
+
+-------------------------------------------------------------------
 Wed Jan  6 16:13:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.24.1:
