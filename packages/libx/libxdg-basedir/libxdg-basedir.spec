@@ -2,7 +2,7 @@
 #
 # spec file for package libxdg-basedir
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,15 +22,13 @@
 
 %define soname 1
 Name:           libxdg-basedir
-Version:        1.2.0
+Version:        1.2.2
 Release:        0
 Summary:        XDG Base Directory Specification Library
 License:        MIT
 Group:          System/Libraries
-URL:            https://github.com/devnev/libxdg-basedir
-Source:         https://github.com/devnev/libxdg-basedir/archive/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/devnev/libxdg-basedir/pull/3 -- lnussel@suse.de
-Patch0:         0001-Overflow-bug.diff
+URL:            https://github.com/davmac314/libxdg-basedir
+Source:         https://github.com/davmac314/libxdg-basedir/releases/download/v%{version}/libxdg-basedir-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -76,11 +74,10 @@ This library implements functions to list the directories according to the
 specification and provides a few higher-level functions.
 
 %prep
-%setup -q -n "%{name}-%{name}-%{version}"
-%patch0 -p1
+%setup -q
 
 %build
-autoreconf --force --install
+autoreconf -fvi
 %configure
 make %{?_smp_mflags}
 

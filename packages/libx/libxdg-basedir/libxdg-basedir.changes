@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jan 24 16:59:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.2:
+  * Minor documentation fixes.
+  * Fix xdgZeroMemory fallback (when memset/bzero aren't available).
+  * Update version number and maintainer.
+  * Use strdup rather than malloc+strcpy.
+  * Fix out-of-date comment.
+  * Fix extraneous semicolons and formatting.
+  * Free runtimeDirectory memory too
+  * Remove trailing whitespace in libxdg-basedir.pc
+- drop 0001-Overflow-bug.diff (upstream)
+
+-------------------------------------------------------------------
 Mon Dec  9 15:39:58 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Don't use the lto flags for building static libs.
