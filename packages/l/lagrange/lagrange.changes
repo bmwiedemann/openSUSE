@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 26 18:59:12 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.3.4
+  - Allow server certificates with a *.tld subject wildcard.
+  - Updated the French UI translation.
+  - Fixed media type check in the audio player. Media types with parameters
+    failed to be recognized.
+  - Fixed crash after a redirect.
+  - Fixed a rare issue with handling multiple rapid network requests.
+  - Fixed a rare situation where a network connection would fail to open.
+  - Minor stability improvements.
+
+-------------------------------------------------------------------
 Sun Apr 18 13:04:44 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.3.3
