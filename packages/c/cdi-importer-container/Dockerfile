@@ -16,11 +16,11 @@ PREFIXEDLABEL org.opencontainers.image.version="%%PKG_VERSION%%.%RELEASE%"
 PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="%%TAGPREFIX%%/cdi-importer:%%PKG_VERSION%%.%RELEASE%"
 
-RUN zypper update -y && \
-    zypper install -y \
+RUN zypper -n install \
            qemu-tools qemu-block-curl skopeo tar util-linux \
            nbdkit nbdkit-basic-filters nbdkit-gzip-filter \
            nbdkit-xz-filter nbdkit-curl-plugin nbdkit-vddk-plugin \
-           containerized-data-importer-importer
+           containerized-data-importer-importer && \
+    zypper clean -a
 
 ENTRYPOINT [ "/usr/bin/virt-cdi-importer", "-alsologtostderr" ]
