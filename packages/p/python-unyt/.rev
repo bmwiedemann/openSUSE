@@ -7,4 +7,19 @@
     <comment></comment>
     <requestid>830789</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>17225008b3069421c4d16130599f14b0</srcmd5>
+    <version>2.8.0</version>
+    <time>1619552107</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.0:
+  * Dropped support for Python 3.5.
+  * Add delta_degC and delta_degF units to support temperature difference arithmetic. See PR #152. Thank you to Lee Johnston (@l-johnston on GitHub) for the contribution.
+  * Fix an issue where a subsequent load of the unit registry with units that are equal but not identical leads to a crash. See PR #158. Thank you to Matthew Turk (@matthewturk on GitHub) for the initial bug report and fix.
+  * Add force unit kip and pressure unit psi. Thank you to P. Talley (@otaithleigh on GitHub) for the contribution. See PR #162.
+  * Fix an issue where arithmetic operations on units defined in different registries and having the conversion defined in one direction would lead to a crash. See PR #164. Thank you to Clément Robert (@neutrinoceros on GitHub) for the initial bug report and fix. 
+- Do not build for Python 2, since no longer supported by upstream, and also
+  do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>888647</requestid>
+  </revision>
 </revisionlist>
