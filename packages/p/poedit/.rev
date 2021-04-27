@@ -498,4 +498,12 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
 </comment>
     <requestid>878221</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>4367242de2d1b78f8e88b67ec9773786</srcmd5>
+    <version>2.4.3</version>
+    <time>1619552081</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.3: Bugfixes.</comment>
+    <requestid>888567</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 26 16:53:21 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to version 2.4.3: Bugfixes.
+
+-------------------------------------------------------------------
 Wed Mar 10 17:44:00 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Build against wxGTK2 when wxGTK3 not available.
