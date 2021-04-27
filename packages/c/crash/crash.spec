@@ -95,6 +95,8 @@ Patch42:        %{name}-Fix-segmentation-fault-when-ikconfig-passed-nonstand.pat
 Patch43:        %{name}-printk-add-support-for-lockless-ringbuffer.patch
 # PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/71e159c64000467e94e08aefc144f5e1cdaa4aa0.patch
 Patch44:        %{name}-printk-use-committed-finalized-state-values.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/9c881ab372010b46655dfed0a3c5cd78b3ff8fa0.patch
+Patch45:        %{name}-x86_64-VC-exception-stack-support.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 BuildRequires:  bison
 BuildRequires:  flex
@@ -296,6 +298,7 @@ Authors:
 %patch42 -p1
 %patch43 -p1
 %patch44 -p1
+%patch45 -p1
 %if %{have_snappy}
 %patch15 -p1
 %endif

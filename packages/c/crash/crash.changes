@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 26 10:43:56 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Fix bt command with SEV-ES (bsc#1185209)
+   + crash-x86_64-VC-exception-stack-support.patch
+
+-------------------------------------------------------------------
 Thu Apr  8 10:37:00 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Add back some more missing KMP conditionals
