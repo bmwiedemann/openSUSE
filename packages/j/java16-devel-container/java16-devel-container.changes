@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 27 08:58:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- stop specifying an entrypoint, these aren't services
+- use single layer
+- zypper clean after install
+- provide JAVA_VERSION, JAVA_ROOT and JAVA_HOME env
+
+-------------------------------------------------------------------
 Wed Mar 24 12:21:53 UTC 2021 - Marco Varlese <marco.varlese@suse.com>
 
 - Renamed tag to follow upstream
