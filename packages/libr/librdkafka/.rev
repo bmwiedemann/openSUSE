@@ -140,4 +140,41 @@
    subscribes to t2,t3).  (#3159)</comment>
     <requestid>858094</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>56b64529781699a08cd58229e6baf591</srcmd5>
+    <version>1.6.1</version>
+    <time>1619552052</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.1:
+  * Fatal idempotent producer errors are now also fatal to the transactional
+   producer. This is a necessary step to maintain data integrity prior to
+   librdkafka supporting KIP-360. Applications should check any transactional
+   API errors for the is_fatal flag and decommission the transactional producer
+   if the flag is set.
+  * The consumer error raised by `auto.offset.reset=error` now has error-code
+   set to `ERR__AUTO_OFFSET_RESET` to allow an application to differentiate
+   between auto offset resets and other consumer errors.
+  * Admin API and transactional `send_offsets_to_transaction()` coordinator
+   requests, such as TxnOffsetCommitRequest, could in rare cases be sent
+   multiple times which could cause a crash.
+  * `ssl.ca.location=probe` is now enabled by default on Mac OSX since the
+   librdkafka-bundled OpenSSL might not have the same default CA search paths
+   as the system or brew installed OpenSSL. Probing scans all known locations.
+  * Fatal idempotent producer errors are now also fatal to the transactional
+   producer.
+  * The transactional producer could crash if the transaction failed while
+   `send_offsets_to_transaction()` was called.
+  * Group coordinator requests for transactional
+   `send_offsets_to_transaction()` calls would leak memory if the
+   underlying request was attempted to be sent after the transaction had
+   failed.
+  * When gradually producing to multiple partitions (resulting in multiple
+   underlying AddPartitionsToTxnRequests) sub-sequent partitions could get
+   stuck in pending state under certain conditions. These pending partitions
+   would not send queued messages to the broker and eventually trigger
+   message timeouts, failing the current transaction. This is now fixed.
+  * Committing an empty transaction (no messages were produced and no
+   offsets were sent) would previously raise a fatal error due to invalid state</comment>
+    <requestid>888420</requestid>
+  </revision>
 </revisionlist>

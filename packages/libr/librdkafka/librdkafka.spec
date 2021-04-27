@@ -1,7 +1,7 @@
 #
 # spec file for package librdkafka
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 
 %define libname %{name}1
 Name:           librdkafka
-Version:        1.5.3
+Version:        1.6.1
 Release:        0
 Summary:        The Apache Kafka C/C++ library
 License:        BSD-2-Clause
