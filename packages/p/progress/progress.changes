@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 26 11:33:01 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.16:
+  * fix procstat_getprocs()
+  * add support for single binary
+  * add scp, zip and unzip
+  * add FreeBSD support
+
+-------------------------------------------------------------------
 Thu Dec  3 21:27:44 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.15

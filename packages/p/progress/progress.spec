@@ -1,7 +1,7 @@
 #
 # spec file for package progress
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           progress
-Version:        0.15
+Version:        0.16
 Release:        0
 Summary:        Coreutils Viewer
 License:        GPL-3.0-or-later
@@ -25,8 +25,19 @@ Group:          System/Console
 URL:            https://github.com/Xfennec/progress
 Source0:        https://github.com/Xfennec/progress/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         progress-fix_ncurses_without_pkgconfig.patch
-BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(form)
+BuildRequires:  pkgconfig(formw)
+BuildRequires:  pkgconfig(menu)
+BuildRequires:  pkgconfig(menuw)
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(ncurses++)
+BuildRequires:  pkgconfig(ncurses++w)
+BuildRequires:  pkgconfig(ncursesw)
+BuildRequires:  pkgconfig(panel)
+BuildRequires:  pkgconfig(panelw)
+BuildRequires:  pkgconfig(tic)
+BuildRequires:  pkgconfig(tinfo)
 Provides:       cv = %{version}
 Obsoletes:      cv < %{version}
 
@@ -42,7 +53,7 @@ It can now also display an estimated throughput (using -w flag).
 %patch1
 
 %build
-make %{?_smp_mflags} CFLAGS="-g -Wall -D_FILE_OFFSET_BITS=64 %{optflags}"
+%make_build CFLAGS="-g -Wall -D_FILE_OFFSET_BITS=64 %{optflags}"
 
 %install
 %make_install PREFIX=%{_prefix}
