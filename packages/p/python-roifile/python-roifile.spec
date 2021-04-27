@@ -1,7 +1,7 @@
 #
 # spec file for package python-roifile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,34 +17,34 @@
 
 
 %define skip_python2 1
+%define skip_python36 1
 %define packagename roifile
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-roifile
-Version:        2020.8.13
+Version:        2020.11.28
 Release:        0
 Summary:        Read and write ImageJ ROI format
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://www.lfd.uci.edu/~gohlke/
 Source:         https://github.com/cgohlke/roifile/archive/v%{version}.tar.gz#/roifile-%{version}.tar.gz
+BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module matplotlib >= 3.2}
+BuildRequires:  %{python_module numpy >= 1.15.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module tifffile >= 2020.8.13}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module numpy >= 1.15.1}
-BuildRequires:  %{python_module matplotlib >= 3.2}
-BuildRequires:  %{python_module tifffile >= 2020.8.13}
-Requires:       python-numpy >= 1.15.1
 Requires:       python-matplotlib >= 3.2
+Requires:       python-numpy >= 1.15.1
 Requires:       python-tifffile >= 2020.8.13
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
 %description
 Roifile is a Python library to read, write, create, and plot ImageJ ROIs,
-an undocumented and ImageJ application specific format to store regions 
+an undocumented and ImageJ application specific format to store regions
 of interest, geometric shapes, paths, text, and whatnot for image
 overlays.
 
@@ -59,7 +59,6 @@ sed -i 's/\r//' README.rst
 %install
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/%{packagename}
-
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %prepare_alternative %{packagename}

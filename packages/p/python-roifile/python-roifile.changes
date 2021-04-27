@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 27 03:59:30 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2020.11.28:
+  * Support group attribute.
+  * Add roiread and roiwrite functions (#3).
+  * Use UUID as default name of ROI in ImagejRoi.frompoints (#2).
+- Do not build for Python 3.6, due to no NumPy. 
+
+-------------------------------------------------------------------
 Thu Nov 26 07:20:28 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 2020.8.13.
