@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 26 07:54:54 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Backport patch to fix build on SLE-12 ppc64le.
+  + 0001-cloned_binary-switch-from-error-to-warning-for-SYS_m.patch
+
+-------------------------------------------------------------------
 Wed Feb  3 04:09:17 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.0.0~rc93. Upstream changelog is available from
