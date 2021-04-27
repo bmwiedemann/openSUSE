@@ -34,7 +34,7 @@
 %define _dwz_max_die_limit     200000000
 
 Name:           telegram-desktop
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -47,8 +47,6 @@ Source1:        tg_owt-master.zip
 Patch1:         0001-use-bundled-ranged-exptected-gsl.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0002-tg_owt-fix-name-confliction.patch
-# PATCH-FIX-UPSTREAM telegram-desktop-cinttypes-header.patch badshah400@gmail.com -- Include cinttypes to allow uint32_t usage
-Patch3:         telegram-desktop-cinttypes-header.patch
 # There is an (incomplete) patch available for part of the source:
 # https://github.com/desktop-app/lib_base.git 3582bca53a1e195a31760978dc41f67ce44fc7e4
 # but tdesktop itself still falls short, and it looks to be something
@@ -159,7 +157,6 @@ The service also provides APIs to independent developers.
 %prep
 %setup -q -n tdesktop-%{version}-full
 %patch1 -p2
-%patch3 -p1
 
 cd ../
 unzip -q %{S:1}

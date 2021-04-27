@@ -600,4 +600,12 @@
   * Create separate Voice Chat Invite Links for listeners or speakers.</comment>
     <requestid>880737</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>9fd2c3313e8ef44af081e0be448d5c3c</srcmd5>
+    <version>2.7.2</version>
+    <time>1619552077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888544</requestid>
+  </revision>
 </revisionlist>
