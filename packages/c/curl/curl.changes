@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 25 21:14:40 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.76.1:
+  - ngtcp2: Use ALPN h3-29 for now
+  - TODO: remove 18.22 --fail-with-body
+
+-------------------------------------------------------------------
 Wed Mar 31 08:40:06 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 7.76.0
