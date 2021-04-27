@@ -1,7 +1,7 @@
 #
 # spec file for package vhba-kmp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           vhba-kmp
-Version:        20200106
+Version:        20210418
 Release:        0
 Summary:        Virtual SCSI Host Bus Adapter
 License:        GPL-2.0-or-later
 Group:          System/Kernel
-URL:            http://cdemu.sf.net/about/vhba/
+URL:            https://cdemu.sourceforge.io/about/vhba/
 
-#Git-Clone:	git://git.code.sf.net/p/cdemu/code
-Source:         http://downloads.sf.net/cdemu/vhba-module-%version.tar.bz2
+#Git-Clone:	https://github.com/cdemu/cdemu
+Source:         https://downloads.sf.net/cdemu/vhba-module-%version.tar.xz
 Source2:        %name-preamble
 Patch1:         vhba-no-werror.diff
 Patch2:         vhba-devname.diff
 BuildRequires:  kernel-syms >= 2.6.20
 BuildRequires:  modutils
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %{?kernel_module_package:%kernel_module_package -n vhba -p %name-preamble}
 

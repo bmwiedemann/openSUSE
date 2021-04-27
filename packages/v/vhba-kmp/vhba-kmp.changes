@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 20 13:41:52 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20210418
+  * vhba: Change how command matching and tagging is performed.
+  * vhba: Use dynamic debugging for everything.
+  * vhba: Handle command queue locking ourselves.
+
+-------------------------------------------------------------------
 Thu Mar 19 10:36:07 UTC 2020 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to release 20200106
