@@ -1,7 +1,7 @@
 #
 # spec file for package cdemu-client
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,22 @@
 
 
 Name:           cdemu-client
-Version:        3.2.4
+Version:        3.2.5
 Release:        0
 Summary:        Command-line client to control cdemu-daemon
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-URL:            https://cdemu.sf.net/about/client/
+URL:            https://cdemu.sourceforge.io/about/client/
 
-#Git-Clone:	git://git.code.sf.net/p/cdemu/code
-Source:         https://downloads.sf.net/cdemu/%name-%version.tar.bz2
-BuildRequires:  cmake >= 2.8.5
+#Git-Clone:	https://github.com/cdemu/cdemu
+Source:         https://downloads.sf.net/cdemu/%name-%version.tar.xz
+BuildRequires:  cmake >= 3.7
 BuildRequires:  gettext-tools >= 0.15
 BuildRequires:  gobject-introspection
 BuildRequires:  intltool >= 0.21
-BuildRequires:  python3 >= 3.4
+BuildRequires:  python3
 BuildRequires:  pkgconfig(bash-completion)
-Requires:       python3 >= 3.4
+Requires:       python3
 Requires:       python3-dbus-python
 Requires:       python3-gobject
 BuildArch:      noarch
@@ -48,20 +48,21 @@ devices' status and retrieving/setting their debug masks.
 
 %prep
 %setup -q
-sed -i "s|/usr/bin/env python3|%{_bindir}/python3|" src/cdemu
+sed -i "s|/usr/bin/env python3|%_bindir/python3|" src/cdemu
 
 %build
-cmake . \
+%cmake \
 	-DCMAKE_INSTALL_PREFIX:PATH="%_prefix" \
 	-DCMAKE_INSTALL_LIBDIR:PATH="%_libdir"
-make %{?_smp_mflags}
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 %find_lang cdemu
 
 %files
-%doc AUTHORS COPYING README
+%license COPYING
+%doc AUTHORS README
 %_bindir/cdemu
 %_datadir/applications/%name.desktop
 %_datadir/pixmaps/%name.svg
