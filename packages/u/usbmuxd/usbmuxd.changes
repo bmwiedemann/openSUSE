@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 23 17:17:18 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Add usbmuxd-add-socket-option.patch: allow socket to be
+  specified via the command line. Backported from upstream.
+- Add usbmuxd-add-pid-option.patch: allow the pid file to be
+  specified via the command line. Taken from upstream.
+- Add usbmuxd-run-dir.patch: use /run, rather than /var/run, for
+  the socket and pid file (bsc#1185186).
+
+-------------------------------------------------------------------
 Wed Feb  3 17:13:29 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.1.1:

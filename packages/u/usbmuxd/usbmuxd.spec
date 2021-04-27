@@ -26,6 +26,9 @@ Group:          System/Libraries
 URL:            https://github.com/libimobiledevice/usbmuxd
 Source:         https://github.com/libimobiledevice/usbmuxd/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+Patch0:         usbmuxd-add-socket-option.patch
+Patch1:         usbmuxd-add-pid-option.patch
+Patch2:         usbmuxd-run-dir.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -48,7 +51,7 @@ Usbmux is an encapsulation protocol (think IP, ATM, PPP) that allows
 multiplexing several conversations onto a single pair of wires.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 autoreconf -fiv
