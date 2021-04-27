@@ -1,0 +1,48 @@
+Index: py-junos-eznc-2.6.0/lib/jnpr/junos/factory/cfgtable.py
+===================================================================
+--- py-junos-eznc-2.6.0.orig/lib/jnpr/junos/factory/cfgtable.py
++++ py-junos-eznc-2.6.0/lib/jnpr/junos/factory/cfgtable.py
+@@ -158,7 +158,7 @@ class CfgTable(Table):
+             add_field = self._grindfield(lxpath[-1], field_value)
+             for _add in add_field:
+                 if len(_add.attrib) > 0:
+-                    for i in dot.getiterator():
++                    for i in dot.iter():
+                         if i.tag == _add.tag:
+                             i.attrib.update(_add.attrib)
+                             break
+Index: py-junos-eznc-2.6.0/lib/jnpr/junos/jxml.py
+===================================================================
+--- py-junos-eznc-2.6.0.orig/lib/jnpr/junos/jxml.py
++++ py-junos-eznc-2.6.0/lib/jnpr/junos/jxml.py
+@@ -161,7 +161,7 @@ strip_rpc_error_transform = etree.XSLT(s
+ 
+ 
+ def remove_namespaces(xml):
+-    for elem in xml.getiterator():
++    for elem in xml.iter():
+         if elem.tag is etree.Comment:
+             continue
+         i = elem.tag.find("}")
+@@ -171,7 +171,7 @@ def remove_namespaces(xml):
+ 
+ 
+ def remove_namespaces_and_spaces(xml):
+-    for elem in xml.getiterator():
++    for elem in xml.iter():
+         if elem.tag is etree.Comment:
+             continue
+         # Remove namespace from attributes
+Index: py-junos-eznc-2.6.0/tests/unit/test_jxml.py
+===================================================================
+--- py-junos-eznc-2.6.0.orig/tests/unit/test_jxml.py
++++ py-junos-eznc-2.6.0/tests/unit/test_jxml.py
+@@ -40,7 +40,7 @@ class Test_JXML(unittest.TestCase):
+         parser = ET.XMLParser()
+         root = ET.parse(StringIO(xmldata), parser)
+         test = remove_namespaces(root)
+-        for elem in test.getiterator():
++        for elem in test.iter():
+             i = elem.tag.find("}")
+             if i > 0:
+                 i = i + 1

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 26 16:58:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.6.0
+  * Python 2 support removed from this release.
+  * Session-id variable added to support telnet based persistent
+    connection in Juniper supported ansible collections.
+- Add python-junos-eznc-py39xml.patch gh#Juniper/py-junos-eznc#1110
+- Skip failing test gh#Juniper/py-junos-eznc/issues/1109
+
+-------------------------------------------------------------------
 Thu Oct 29 19:40:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.4
