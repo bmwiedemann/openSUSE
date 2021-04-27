@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jan 25 08:16:07 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.10.5
+  * Add missing version for jackson-datatype-eclipse-collections
+
+-------------------------------------------------------------------
 Thu Mar 26 07:33:43 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.10.3
