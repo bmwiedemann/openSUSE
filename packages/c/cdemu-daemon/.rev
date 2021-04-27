@@ -189,4 +189,12 @@
     <comment>- Update to release 3.2.4</comment>
     <requestid>799560</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>688a1af3c39a8eca32155c8edf2dfc29</srcmd5>
+    <version>3.2.5</version>
+    <time>1619552075</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.2.5</comment>
+    <requestid>888535</requestid>
+  </revision>
 </revisionlist>

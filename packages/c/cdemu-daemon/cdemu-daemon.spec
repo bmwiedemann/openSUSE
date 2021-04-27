@@ -1,7 +1,7 @@
 #
 # spec file for package cdemu-daemon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,17 @@
 %endif
 
 Name:           cdemu-daemon
-Version:        3.2.4
+Version:        3.2.5
 Release:        0
 Summary:        Device daemon for cdemu, a virtual CD-ROM device emulator
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://cdemu.sourceforge.io/about/daemon/
 
-#Git-Clone:	git://git.code.sf.net/p/cdemu/code
-Source:         https://downloads.sf.net/cdemu/%name-%version.tar.bz2
+#Git-Clone:	https://github.com/cdemu/cdemu
+Source:         https://downloads.sf.net/cdemu/%name-%version.tar.xz
 Source2:        60-vhba.rules
 Source3:        cdemu-daemon.sysconfig
-Patch1:         logfile.diff
 BuildRequires:  cmake >= 2.8.5
 BuildRequires:  intltool >= 0.21
 BuildRequires:  pkg-config >= 0.16
@@ -62,12 +61,11 @@ The daemon registers itself on D-BUS's system or session bus
 that can be used by clients to control it.
 
 %prep
-%setup -q
-%patch -P 1 -p1
+%autosetup -p1
 
 %build
 %cmake -DCMAKE_INSTALL_LIBEXECDIR:PATH="%_libexecdir"
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 b="%buildroot"
@@ -76,19 +74,14 @@ mkdir -p "$b/%_sbindir" "$b/%_fillupdir" \
 	"$b/%_prefix/lib/udev/rules.d"
 install -pm0644 "%{S:2}" "$b/%_prefix/lib/udev/rules.d/60-vhba.rules"
 install -pm0644 "%{S:3}" "$b/%_fillupdir/sysconfig.cdemu-daemon"
-# Not desired for security; it would permit a user to start a system service.
-rm -rf "$b/%_datadir/dbus-1/system-services" "$b/%_sysconfdir/dbus-1/system.d/"
 %find_lang %name
 
 %post
 %fillup_only
 
 %files -f %name.lang
-%defattr(-,root,root)
 %doc AUTHORS COPYING README
 %_bindir/cdemu-daemon
-%_libexecdir/cdemu-daemon-session.sh
-%_datadir/dbus-1/
 %_mandir/man8/cdemu-daemon.8*
 %_fillupdir/sysconfig.cdemu-daemon
 %_prefix/lib/udev/
