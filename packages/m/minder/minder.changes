@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Apr 24 18:07:01 UTC 2021 - Jason Kurzik <jason.kurzik@protonmail.com>
+- Update 1.12.2:
+  * Features and Changes
+  * Added subscript and superscript support to Markdown parser.
+  * Added support for switching tabs with Control-Tab and Shift-Control-Tab.
+  * Added support for remembering last used open/save dialog directories.
+  * Added support for Alt-Left/Right/Up/Down keyboard shortcuts to rearrange sibling nodes.
+  * Added support for searching all tabs (thanks to @Messius58).
+  * Added about window for non-elementary builds.
+  * Added ability to move child nodes to parent via Alt+direction.
+  * Added support for including images in Markdown export.
+  * Added installation instructions to README.md for Debian (thanks to Róbert Hubinák)
+  * Added support for Control-Home/End to move the cursor to the beginning/end of the text.
+  * Added support for folded children count tooltip.
+  * Added Basque translation (thanks to @alexgabi)
+  * Replaced export UI with a new, improved UI with support for export options.
+  * Moved add node menu items to a submenu.
+  * Improved focus mode behavior.
+  * Changed property header button to a toggle button and clarified the tooltip
+  * Changed keyboard shortcut to open sidebar from Control-| to F9.
+  * Changed non-symbolic header bar icons to symbolic icons for non-elementary OS environments.
+  * Improved link drawing algorithm to make link connections easier to see.
+  * Changed "Link Color" in node inspector to "Color" to reflect the colors use.
+  * Improved task button drawing.
+  * Updated to Italian translation (thanks to @albanobattistella)
+  * Updated to Brazilian Portugese translation (thanks to Felipe Simoes)
+  * Opening a file will automatically close an existing unsaved, unchanged tab.
+  * Changed color of connection drag handles to yellow.
+  * Making it easier to grab connection drag handle when it is close to connection handles.
+  * Reducing auto-saves when editing node text.
+  * Many, many bugfixes since last update on OBS.
+
+-------------------------------------------------------------------
 Fri Oct 30 15:46:50 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.11.3:
