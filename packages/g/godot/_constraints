@@ -4,5 +4,8 @@
     <physicalmemory>
       <size unit="M">8192</size>
     </physicalmemory>
+    <disk>
+      <size unit="G">10</size>
+    </disk>
   </hardware>
 </constraints> 

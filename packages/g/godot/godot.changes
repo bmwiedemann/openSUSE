@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Thu Apr 22 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.3
+
+  Added:
+  * MP3 loading and playback support
+  * AudioEffectCapture to access the microphone in real-time
+  * New dynamic BVH for rendering and the GodotPhysics backends
+  * Ability to restore RandomNumberGenerator state
+  * "Array.append_array()" method to append an array
+      at the end of another array
+  * "OS.set_environment()" method to set environment variables
+  * Infinite 3D editor grid
+  * New 3D rotation gizmo
+  * Support for copy-pasting nodes
+  * Detect external modification of scenes and prompt for reloading
+  * New editor to configure default import presets
+  * 3D viewport's View Information pane displays viewport resolution
+  * Minimap support in GraphEdit
+  * New AspectRatioContainer Control node
+  * Rewritten and greatly improved FBX importer
+  * "Keep" mode to keep files as-is and export them
+  * Mouse event pass-through support for the window
+  * Support for pause-aware picking (breaks compatibility but only
+      enabled by default for new projects)
+  * CollisionObject can now display collision shape meshes
+  * Cylinder collision shape support
+  * PulseAudio and ALSA libraries are now dynamically loaded
+  * Implement the "--no-window" command line argument
+  * 2D batching for GLES3
+  * Configurable amount of lights per object
+  * New CPU lightmapper
+  * Anisotropic filtering now works when using the GLES2 backend
+
+  Changed:
+  * Deleted object access now raises an error instead of a warning
+  * Improved error messages when passing nonexistent node paths
+      to "get_node()"
+  * Modernized multi-threading APIs
+  * SVG images can now be used as a project icon
+  * Improved inspector subresource editing visibility
+  * Pressed CheckButtons are now colored in blue for easier recognition
+  * Rename Node is now bound to "F2" key
+  * Search Help shortcut from keys "Shift + F1" changed to "F1"
+  * The inspector now allows using a comma as a decimal separator
+  * Drag-and-dropping a ZIP archive to the project manager window
+    will now prompt for importing it
+  * Increase the default HTTPClient download chunk size to 64 KiB
+  * Binaries are now stripped of string and symbol tables,
+    reducing their size significantly
+
+  Removed:
+  * ResourceImporterCSV importer superseded by the new "keep" import mode
+
+  Fixed:
+  * Use higher-quality resampling for Ogg Vorbis and MP3 sounds
+  * exporting if the temporary export directory doesn't exist yet
+  * Export PCK/ZIP action now obeys the export path configured
+    in the export preset as expected
+  * UDP ports being silently reused without an error in PacketPeerUDP
+  * keyboard input lag and clipboard delay issues
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.3/Godot_v3.3-stable_changelog_chrono.txt
+
+- "linker_pie_flag.patch" rebased
+
+- "upstream_fix_TGA_loader.patch" dropped - included in source now
+
+- "use_system_zlib_for_fbx.patch" added to force using system zlib
+
+-------------------------------------------------------------------
 Sat Feb 13 00:00:00 UTC 2021 - cunix@mail.de
 
 - Fix a crash in the TGA loader with malformed input

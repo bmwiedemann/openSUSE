@@ -155,4 +155,12 @@
     <comment></comment>
     <requestid>872035</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>208e9760fe945fe67f9af9be83e7cb06</srcmd5>
+    <version>3.3</version>
+    <time>1619552128</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.3</comment>
+    <requestid>888858</requestid>
+  </revision>
 </revisionlist>

@@ -24,7 +24,7 @@
 %define ca_bundle %{_localstatedir}/lib/ca-certificates/ca-bundle.pem
 
 Name:           godot
-Version:        3.2.3
+Version:        3.3
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -36,9 +36,8 @@ Source1:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%
 Patch0:         linker_pie_flag.patch
 # Use system certificates as fallback for certificates
 Patch1:         certs_fallback.patch
-# PATCH-FIX-UPSTREAM upstream_fix_TGA_loader.patch boo#1182177 boo#1182178
-# commit 113b5ab1c45c01b8e6d54d13ac8876d091f883a8
-Patch2:         upstream_fix_TGA_loader.patch
+# Do not use zlib from thirdparty directory
+Patch2:         use_system_zlib_for_fbx.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -103,7 +102,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 # Has some modifications for IPv6 support, upstream enet is unresponsive
 # Should not be unbundled.
-Provides:       bundled(enet) = 1.3.15
+Provides:       bundled(enet) = 1.3.17
 
 # Has custom changes to support seeking in zip archives
 # Should not be unbundled.
@@ -113,6 +112,7 @@ Provides:       bundled(FastLZ)
 Provides:       bundled(Tangent_Space_Normal_Maps)
 Provides:       bundled(cvtt)
 Provides:       bundled(easing)
+Provides:       bundled(embree)
 Provides:       bundled(etc2comp)
 Provides:       bundled(glad)
 Provides:       bundled(google-droid-fonts)
@@ -122,6 +122,7 @@ Provides:       bundled(ifaddrs-android)
 Provides:       bundled(jpeg-compressor)
 Provides:       bundled(libsimplewebm)
 Provides:       bundled(noto-sans-fonts)
+Provides:       bundled(oidn)
 Provides:       bundled(open-simplex-noise-in-c)
 Provides:       bundled(pcg)
 Provides:       bundled(polyclipping)
@@ -139,16 +140,12 @@ Provides:       bundled(recastnavigation)
 Provides:       bundled(squish) = 1.15
 Provides:       bundled(xatlas)
 
-## Need to update in Factory ##
-# Possibility to unbundle disabled in 3.2.1
-Provides:       bundled(assimp)
-
 %if 0%{?suse_version} > 1500
 %else
 Provides:       bundled(bullet) = 2.89
 Provides:       bundled(libzstd)
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.16.8
+Provides:       bundled(mbedtls) = 2.16.10
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay
@@ -297,8 +294,8 @@ mkdir -pv thirdparty/certs
 touch thirdparty/certs/ca-certificates.crt
 
 %define build_args %{?_smp_mflags} \\\
-        progress=yes verbose=yes udev=yes use_lto=1 \\\
-        CCFLAGS='%{optflags}' \\\
+        progress=no verbose=yes udev=yes use_lto=1 \\\
+        use_static_cpp=no CCFLAGS='%{optflags}' \\\
         system_certs_path=%{ca_bundle} $system_libs
 
 # Build graphical editor (tools)

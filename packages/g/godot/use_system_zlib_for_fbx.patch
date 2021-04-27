@@ -1,0 +1,28 @@
+From: cunix@mail.de
+Date: 2021-04-22 12:00:00
+Subject: FBXParser should compile with system zlib
+References: https://github.com/godotengine/godot/pull/48074
+
+Although zlib is unbundled, FBXParser.cpp wants to use the bundled
+header file. Fix this.
+
+Upstream patch probably included in 3.3.1.
+
+---
+
+diff -r -U 5 a/modules/fbx/fbx_parser/FBXParser.cpp b/modules/fbx/fbx_parser/FBXParser.cpp
+--- a/modules/fbx/fbx_parser/FBXParser.cpp
++++ b/modules/fbx/fbx_parser/FBXParser.cpp
+@@ -72,11 +72,11 @@
+ 
+ /** @file  FBXParser.cpp
+  *  @brief Implementation of the FBX parser and the rudimentary DOM that we use
+  */
+ 
+-#include "thirdparty/zlib/zlib.h"
++#include "/usr/include/zlib.h"
+ #include <stdlib.h> /* strtol */
+ 
+ #include "ByteSwapper.h"
+ #include "FBXParseTools.h"
+ #include "FBXParser.h"
