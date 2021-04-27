@@ -1,0 +1,137 @@
+#!/bin/bash
+# Name: Deepin Features installer
+# Version: 1.0
+# Description: Enable dbus and policykit for Deepin Desktop on openSUSE
+# Author: Hillwood Yang <hillwood@opensuse.org>
+# License: WTFPL-2.0
+
+SYSTEM_TMP=/tmp
+
+################################################################################
+# deepin-api-dbus
+TMP_DIR=$SYSTEM_TMP/deepin-api-dbus
+
+pushd /usr/share/dbus-1/system.d/ &>/dev/null
+
+    Filelist1=&(ls com.deepin.api*) &>/dev/null
+
+    if [ "$Filelist1" != "" ]; then
+        rm -rf "$Filelist1"
+    fi
+
+popd &>/dev/null
+
+pushd /usr/share/dbus-1/system-services/ &>/dev/null
+
+    Filelist2=&(ls com.deepin.api*) &>/dev/null
+
+    if [ "$Filelist2" != "" ]; then
+        rm -rf "$Filelist2"
+    fi
+
+popd &>/dev/null
+
+mkdir -p $TMP_DIR
+
+pushd $TMP_DIR &>/dev/null
+    tar -xvf /usr/share/dde-api/dbus.tar.gz &>/dev/null
+    cp dbus/system.d/* /usr/share/dbus-1/system.d/
+    cp dbus/system-services/* /usr/share/dbus-1/system-services/
+    chmod 0644 /usr/share/dbus-1/system.d/com.deepin.api*
+    chmod 0644 /usr/share/dbus-1/system-services/com.deepin.api*
+popd &>/dev/null
+
+rm -rf $TMP_DIR
+
+echo "Deepin api profiles install succeed!"
+
+################################################################################
+# deepin-api-polkit
+TMP_DIR=$SYSTEM_TMP/deepin-api-polkit
+
+pushd /usr/share/polkit-1/actions/ &>/dev/null
+
+    Filelist=&(ls com.deepin.api*) &>/dev/null
+
+    if [ "$Filelist" != "" ]; then
+        rm -rf "$Filelist"
+    fi
+
+popd &>/dev/null
+
+mkdir -p $TMP_DIR
+
+pushd $TMP_DIR &>/dev/null
+    tar -xvf /usr/share/dde-api/polkit.tar.gz &>/dev/null
+    cp polkit/* /usr/share/polkit-1/actions/
+    chmod 0644 /usr/share/polkit-1/actions/com.deepin.api*
+popd &>/dev/null
+
+rm -rf $TMP_DIR
+
+echo "Deepin API polkit profiles install succeed!"
+
+################################################################################
+# deepin-daemon-dbus
+TMP_DIR=$SYSTEM_TMP/deepin-daemon-dbus
+
+pushd /usr/share/dbus-1/system.d/ &>/dev/null
+
+    Filelist1=&(ls com.deepin.daemon*) &>/dev/null
+
+    if [ "$Filelist1" != "" ]; then
+        rm -rf "$Filelist1"
+    fi
+
+popd &>/dev/null
+
+pushd /usr/share/dbus-1/system-services/ &>/dev/null
+
+    Filelist2=&(ls com.deepin.daemon*) &>/dev/null
+
+    if [ "$Filelist2" != "" ]; then
+        rm -rf "$Filelist2"
+    fi
+
+popd &>/dev/null
+
+mkdir -p $TMP_DIR
+
+pushd $TMP_DIR &>/dev/null
+    tar -xvf /usr/share/dde-daemon/dbus.tar.gz &>/dev/null
+    cp dbus/system.d/* /usr/share/dbus-1/system.d/
+    cp dbus/system-services/* /usr/share/dbus-1/system-services/
+    chmod 0644 /usr/share/dbus-1/system.d/com.deepin.daemon*
+    chmod 0644 /usr/share/dbus-1/system-services/com.deepin.daemon*
+popd &>/dev/null
+
+rm -rf $TMP_DIR
+
+echo "Deepin DBus profiles install succeed!"
+
+################################################################################
+# deepin-daemon-polkit
+TMP_DIR=$SYSTEM_TMP/deepin-daemon-polkit
+
+pushd /usr/share/polkit-1/actions/ &>/dev/null
+
+    Filelist=&(ls com.deepin.daemon*) &>/dev/null
+
+    if [ "$Filelist" != "" ]; then
+        rm -rf "$Filelist"
+    fi
+
+popd &>/dev/null
+
+mkdir -p $TMP_DIR
+
+pushd $TMP_DIR &>/dev/null
+    tar -xvf /usr/share/dde-daemon/polkit.tar.gz &>/dev/null
+    cp polkit/* /usr/share/polkit-1/actions/
+    chmod 0644 /usr/share/polkit-1/actions/com.deepin.daemon*
+popd &>/dev/null
+
+rm -rf $TMP_DIR
+
+echo "Deepin polkit profiles install succeed!"
+
