@@ -1,7 +1,7 @@
 #
 # spec file for package python-threevis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-threevis
 Version:        0.1.0.post25
 Release:        0
 Summary:        Plugin for visualizing meshes, point clouds, and other geometry in a Jupyter Notebook
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://graphics.rwth-aachen.de:9000/threevis/threevis
 Source:         https://files.pythonhosted.org/packages/source/t/threevis/threevis-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools_scm}
