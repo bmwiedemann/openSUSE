@@ -76,4 +76,15 @@ It does NOT conflict with python38 standard library (see upstream description)</
   * #280: ``entry_points`` now only returns entry points for</comment>
     <requestid>876090</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3c4f146d3cbf670f2510b8d29fd981b7</srcmd5>
+    <version>3.7.2</version>
+    <time>1619552053</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.7.2:
+  * Cleaned up cruft in entry_points docstring.
+  * Internal refactoring to facilitate ``entry_points() -&gt; dict``
+    deprecation.</comment>
+    <requestid>888422</requestid>
+  </revision>
 </revisionlist>

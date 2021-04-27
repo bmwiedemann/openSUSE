@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 12 21:29:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.2:
+  * Cleaned up cruft in entry_points docstring.
+  * Internal refactoring to facilitate ``entry_points() -> dict``
+    deprecation.
+
+-------------------------------------------------------------------
 Tue Mar  2 00:20:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.7.0:
