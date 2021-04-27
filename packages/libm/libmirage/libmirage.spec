@@ -1,7 +1,7 @@
 #
 # spec file for package libmirage
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,12 @@ Name:           libmirage
 Summary:        A CD-ROM image access library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Version:        3.2.4
+Version:        3.2.5
 Release:        0
-URL:            http://cdemu.sf.net/about/libmirage/
-
-#Git-Clone:     git://git.code.sf.net/p/cdemu/code
-Source:         https://downloads.sf.net/cdemu/%name-%version.tar.bz2
-Patch1:         0001-libMirage-utils.h-added-missing-extern-specifiers.patch
-Patch3:         CVE-2019-15757.patch
-BuildRequires:  cmake >= 2.8.5
+URL:            https://cdemu.sourceforge.io/about/libmirage/
+#Git-Clone:     https://github.com/cdemu/cdemu.git
+Source:         http://downloads.sourceforge.net/cdemu/%name-%version.tar.xz
+BuildRequires:  cmake >= 3.7
 BuildRequires:  intltool >= 0.21
 BuildRequires:  pkg-config >= 0.16
 BuildRequires:  pkgconfig(bzip2) >= 1.0.0
@@ -44,6 +41,7 @@ BuildRequires:  pkgconfig(liblzma) >= 5.0.0
 BuildRequires:  pkgconfig(samplerate) >= 0.1.0
 BuildRequires:  pkgconfig(shared-mime-info)
 BuildRequires:  pkgconfig(sndfile) >= 1.0.0
+BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(zlib) >= 1.2.4
 Recommends:     %name-lang
 
@@ -110,7 +108,7 @@ This package contains files needed to develop with libmirage.
 Summary:        MIME type definitions and documentation for libmirage
 Group:          Development/Libraries/C and C++
 Requires(post): shared-mime-info
-Requires(postun): shared-mime-info
+Requires(postun):shared-mime-info
 BuildArch:      noarch
 
 %description data
@@ -119,6 +117,17 @@ image formats by creating a representation of disc stored in image
 file.
 
 This package contains the MIME type definitions and documentation.
+
+%package vala
+Summary:        Vala bindings to libmirage
+BuildArch:      noarch
+
+%description vala
+libmirage provides uniform access to the data stored in different
+image formats by creating a representation of disc stored in image
+file.
+
+This package contains the Vala bindings to libmirage
 
 %package -n typelib-1_0-libmirage-%pname
 Summary:        Introspection bindings for the libmirage CD-ROM image access library
@@ -135,8 +144,10 @@ This package provides the GObject Introspection bindings for libmirage.
 %autosetup -p1
 
 %build
-%cmake -DCMAKE_MODULE_LINKER_FLAGS=""
-make %{?_smp_mflags}
+%cmake \
+  -DCMAKE_MODULE_LINKER_FLAGS="" \
+  -DVAPI_ENABLED=ON
+%cmake_build
 
 %install
 %cmake_install
@@ -166,6 +177,10 @@ make %{?_smp_mflags}
 %_libdir/libmirage.so
 %_libdir/pkgconfig/libmirage.pc
 %_datadir/gir-1.0
+
+%files vala
+%dir %_datadir/vala/vapi
+%_datadir/vala/vapi/%name.vapi
 
 %files lang -f %name.lang
 

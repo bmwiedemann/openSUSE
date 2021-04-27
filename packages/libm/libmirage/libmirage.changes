@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 20 03:24:48 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.2.5
+  * Added Vala bindings
+  * Display a warning when ISRC validation fails
+  * Fix crash caused by buffer overrun
+- Fixed broken URL
+- Dropped upstream fixed
+  0001-libMirage-utils.h-added-missing-extern-specifiers.patch
+- Dropped upstream fixed CVE-2019-15757.patch
+  (fixed since 3.2.3, commit bf3f346)
+
+-------------------------------------------------------------------
 Sun Jun  7 00:01:27 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-libMirage-utils.h-added-missing-extern-specifiers.patch .

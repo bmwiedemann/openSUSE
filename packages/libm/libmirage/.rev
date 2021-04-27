@@ -197,4 +197,12 @@
     <comment>- Add 0001-libMirage-utils.h-added-missing-extern-specifiers.patch .</comment>
     <requestid>812131</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>33521d08d33d997ae8538031d7d41528</srcmd5>
+    <version>3.2.5</version>
+    <time>1619552071</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.5</comment>
+    <requestid>888531</requestid>
+  </revision>
 </revisionlist>
