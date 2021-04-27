@@ -24,7 +24,7 @@
 %bcond_with vulkan
 %endif
 Name:           warzone2100
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Innovative 3D real-time strategy
 License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.1-only
@@ -134,6 +134,13 @@ mv %{buildroot}%{_datadir}/metainfo/warzone2100.appdata.xml %{buildroot}%{_datad
 
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/
 mv %{buildroot}%{_datadir}/icons/warzone2100.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/warzone2100.png
+
+
+# remove redundant files
+rm %{buildroot}%{_datadir}/doc/%{name}/AUTHORS
+rm %{buildroot}%{_datadir}/doc/%{name}/ChangeLog
+rm %{buildroot}%{_datadir}/doc/%{name}/COPYING.NONGPL
+rm %{buildroot}%{_datadir}/doc/%{name}/COPYING.README
 
 %fdupes %{buildroot}%{_datadir}
 

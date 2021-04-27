@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Apr 25 07:44:03 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Updated to 4.0.1
+  * General:
+    * Fix: Fix broken map zoom cycle and repair bad config
+      settings for some numerical cycle options
+    * Fix: Improve water performance
+    * Fix: Prevent crash related to flag/rally point positions
+      already existing
+  * Graphics:
+    * Add: Additional Collective faction textures
+  * Multiplayer:
+    * Change: Change multiplayer super transporter research icon
+      to show a tank in the corner rather than a cyborg 
+    * Change: Some improvements to 6c-Entropy for easier modding
+    * Fix: Reset ready status in lobby when a player leaves
+    * Fix: Fixed incorrect player positioning in procedurally
+      generated maps
+    * Fix: Fix skirmish power modifier after saveload
+  * AI:
+    * Fix: AI messages wrongly targeting players 
+  * Balance:
+    * Change: Start splash damage at the center of intended droid
+      targets and increase splash radii of such weapons
+  * Other:
+    * Add: Add config option to toggle autosave features
+    * Fix: macOS ARM64 / Apple Silicon builds
+      (SDL2 cross-compiling issue)
+    * Fix: Don't crash when closing the game if the music manager
+      is open in the main menu
+- Remove redundant files from %{_datadir}/doc/%{name}
+
+-------------------------------------------------------------------
 Mon Apr 12 02:51:32 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Dropped unneeded QT5 dependencies
