@@ -1,7 +1,7 @@
 #
-# spec file for package python-Theano
+# spec file for package python-Theano-test
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,6 +24,9 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-Theano%{psuffix}
 Version:        1.0.5
 Release:        0
@@ -52,7 +54,7 @@ Requires:       python-numpy-devel >= 1.9.1
 Requires:       python-scipy >= 0.14
 Requires:       python-six >= 1.9.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # The tests are compiling and are arch specific
 %if !%{with test}
 BuildArch:      noarch
@@ -116,7 +118,7 @@ for script in theano/gpuarray/tests/check_dnn_conv.py \
 %if %{with test}
 # https://github.com/Theano/Theano/issues/6719
 rm theano/tensor/tests/test_var.py
-%pytest -k 'not (test_scan_err1 or test_remove0 or test_csm_unsorted or test_good or test_vector_arguments or test_vector_arguments)' theano/tests 
+%pytest -k 'not (test_scan_err1 or test_remove0 or test_csm_unsorted or test_good or test_vector_arguments or test_vector_arguments)' theano/tests
 %endif
 
 %if !%{with test}
