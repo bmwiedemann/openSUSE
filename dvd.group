@@ -215,7 +215,7 @@
     <package name="bogofilter-common" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bogofilter-db" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bolt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="boost-license1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="boost-license1_76_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="bovo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="bovo-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1711,14 +1711,13 @@
     <package name="libblogger2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbluetooth3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbluray2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libboost_date_time1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libboost_filesystem1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libboost_iostreams1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libboost_locale1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libboost_program_options1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="libboost_python-py3-1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="libboost_regex1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="libboost_thread1_75_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libboost_date_time1_76_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libboost_filesystem1_76_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libboost_iostreams1_76_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libboost_locale1_76_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libboost_program_options1_76_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="libboost_python-py3-1_76_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
+    <package name="libboost_thread1_76_0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbox2d2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libbrasero-burn3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libbrasero-media3-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4237,6 +4236,7 @@
     <package name="ruby2.7-rubygem-stomp" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-strptime" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-swd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-sync" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-temple" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-terminal-table" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-text" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
