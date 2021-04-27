@@ -3,7 +3,8 @@
 #!BuildTag: opensuse/openjdk:%%PKG_VERSION%%
 #!BuildTag: opensuse/openjdk:%%PKG_VERSION%%.%RELEASE%
 
-FROM opensuse/tumbleweed
+ARG BASE=opensuse/tumbleweed
+FROM $BASE
 
 # labelprefix=org.opensuse.openjdk
 PREFIXEDLABEL org.opencontainers.image.title="Java 15 development container"
@@ -14,9 +15,17 @@ PREFIXEDLABEL org.openbuildservice.disturl="%DISTURL%"
 PREFIXEDLABEL org.opensuse.reference="registry.opensuse.org/opensuse/openjdk:%%PKG_VERSION%%.%RELEASE%"
 
 # Work around https://github.com/openSUSE/obs-build/issues/487
-RUN zypper install -y openSUSE-release-appliance-docker
+ARG RELEASE_PACKAGE=openSUSE-release-appliance-docker
+
+ARG LIBDIR=/usr/lib64
+ENV JAVA_BINDIR=$LIBDIR/jvm/java/bin
+ENV JAVA_HOME=$LIBDIR/jvm/java
+ENV JAVA_ROOT=$LIBDIR/jvm/java
+ENV JAVA_VERSION=15
 
 # Development packages
-RUN zypper install -y --no-recommends java-15-openjdk-devel maven git-core
+RUN zypper -n install --no-recommends $RELEASE_PACKAGE \
+	java-15-openjdk-devel maven git-core && \
+	zypper clean -a
 
-ENTRYPOINT [ "/bin/bash" ]
+CMD [ "jshell" ]
