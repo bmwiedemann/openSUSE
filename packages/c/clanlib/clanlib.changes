@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Apr  6 17:14:46 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.1
+  * Removed all the obsolete elements of ClanLib that were either
+    abandoned, replaced by newer methodologies,
+    moved to separate projects.
+  * Removed base modules: Compute, CSSLayout, Database, GameIDE,
+    GUI, Physics2D, Physics3D, Sqlite and SWRender
+  * Introduced clanUI, that replaced clanGUI.
+    This took the best ideas of clanGUI, to provide a faster, easier
+    and more flexible UI framework.
+  * New Prerequisite, a C++11 compiler is now required to compile
+    ClanLib.
+  * Performance increase of clanUI
+  * Support of OpenGL ES3.2
+  * Fixed clan::GameTime::get_time_elapsed_ms() accuracy
+  * Enhanced clanUI to reflect the UICore fork.
+  * Updated clanSound to use ALSA
+  * Various API enhancements
+  * Various bug fixes
+- Integrated doc and examples package
+- Dropped upstream fixed
+  * ClanLib-2.3.6-fix-opengl.patch
+  * clanlib-cpuid.patch
+  * stdgnu++11.patch
+  * clanlib-alsa.patch
+
+-------------------------------------------------------------------
 Tue Mar 26 07:03:44 UTC 2019 - olaf@aepfle.de
 
 - Use alsa API properly. Consumers are expected to use

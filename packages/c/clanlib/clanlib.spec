@@ -1,7 +1,7 @@
 #
 # spec file for package clanlib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,37 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define clan_ver 2.3
-
+%define clan_ver 4.1
 Name:           clanlib
-Version:        2.3.6
+Version:        4.1.0
 Release:        0
 Summary:        A Portable Interface for Writing Games
 License:        Zlib
 Group:          System/Libraries
-Url:            http://www.clanlib.org/
-Source:         ClanLib-%{version}.tgz
-# PATCH-FIX-UPSTREAM -- fix compilation with new Mesa, coolo@suse.de
-Patch0:         ClanLib-2.3.6-fix-opengl.patch
-# PATCH-FIX-UPSTREAM -- Use cpuid only on x86, schwab@suse.de
-Patch1:         clanlib-cpuid.patch
-# Use std=gnu++11 option for ppc64le
-Patch2:         stdgnu++11.patch
-Patch3:         clanlib-alsa.patch
+URL:            https://github.com/sphair/ClanLib
+Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/ClanLib-%{version}.tar.gz
 BuildRequires:  alsa-devel
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  dos2unix
+BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
+BuildRequires:  graphviz-gnome
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmikmod-devel
 BuildRequires:  libogg-devel
 BuildRequires:  libpng-devel
+BuildRequires:  libtool
 BuildRequires:  libvorbis-devel
 BuildRequires:  libxslt
 BuildRequires:  pcre-devel
@@ -51,7 +48,6 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(x11)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 ClanLib delivers a platform-independent interface for writing games.
@@ -62,37 +58,76 @@ Group:          Development/Libraries/X11
 Requires:       %{name} = %{version}
 #wants compiler intrinsics in installed headers
 Requires:       c++_compiler
+Requires:       pkgconfig(alsa)
+Requires:       pkgconfig(fontconfig)
 Requires:       pkgconfig(gl)
 Requires:       pkgconfig(x11)
 
 %description     devel
 ClanLib delivers a platform independent interface to write games with.
 
+%package        doc
+Summary:        A Portable Interface for Writing Games
+Group:          Documentation/HTML
+Suggests:       clanlib-devel = %{version}
+BuildArch:      noarch
+
+%description doc
+ClanLib delivers a platform-independent interface for writing games.
+
+%package      examples
+Summary:        A Portable Interface for Writing Games
+Group:          Documentation/Other
+Requires:       clanlib = %{version}
+Requires:       clanlib-devel = %{version}
+BuildArch:      noarch
+
+%description examples
+ClanLib delivers a platform-independent interface for writing games.
+
 %prep
-%autosetup -p1 -n ClanLib-%{version}
+%autosetup -n ClanLib-%{version}
 
 %build
-%configure --with-pic --disable-static --disable-docs
-make %{?_smp_mflags}
+# Remove IDE files
+find Examples -name \*.sln -o -name \*.vcproj -o -name \*.vcxproj\* | xargs rm -vf
+# Fix line ending
+find Examples -name \*.props -exec dos2unix \{\} +
+# Configure
+sh ./autogen.sh
+%configure --with-pic --disable-static --enable-docs
+%make_build
+%make_build html
 
 %install
-%makeinstall
-rm -f %{buildroot}%{_libdir}/*.la
+%make_install
+make DESTDIR=%{buildroot} install-html
+# Install examples
+mkdir -p %{buildroot}%{_datadir}/doc/clanlib-%{clan_ver}
+cp -a Examples %{buildroot}%{_datadir}/doc/clanlib-%{clan_ver}
+%fdupes %{buildroot}%{_datadir}/doc
+
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
-%doc COPYING CREDITS README
+%license COPYING
+%doc CREDITS README
 %{_libdir}/libclan*.so.*
 
 %files devel
-%defattr(-, root, root)
-%doc CODING_STYLE PATCHES
+%doc CODING_STYLE
 %{_includedir}/*
 %{_libdir}/pkgconfig/*
 %{_libdir}/libclan*.so
+
+%files doc
+%{_datadir}/doc/clanlib-%{clan_ver}/
+%exclude %{_datadir}/doc/clanlib-%{clan_ver}/Examples
+
+%files examples
+%{_datadir}/doc/clanlib-%{clan_ver}/Examples
 
 %changelog
