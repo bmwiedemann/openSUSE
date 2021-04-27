@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 25 09:44:58 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Run zypper clean after installation
+
+-------------------------------------------------------------------
 Tue Mar 16 08:40:50 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Use virt-containers-meta script to populate the env
