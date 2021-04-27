@@ -662,4 +662,21 @@ on CentOS, Fedora, and RHEL systems.</comment>
     <comment></comment>
     <requestid>877264</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>a0b33a6cd4354a89b32b10670962f8b6</srcmd5>
+    <version>6.12</version>
+    <time>1619552058</time>
+    <user>dimstar_suse</user>
+    <comment>- cifs.upcall: fix regression in kerberos mount; (bsc#1184815).
+  * add 0001-cifs.upcall-fix-regression-in-kerberos-mount.patch
+
+- CVE-2021-20208: cifs-utils: cifs.upcall kerberos auth leak in
+  container; (bsc#1183239); CVE-2021-20208.
+  * add 0001-cifs.upcall-try-to-use-container-ipc-uts-net-pid-mnt.patch
+
+- Make cifs-idmap plugin (idmapwb.so) use update-alternatives
+  mechanism to be able to switch between cifs-utils and sssd;
+  (bsc#1182682).</comment>
+    <requestid>888794</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 23 10:41:59 UTC 2021 - Aurelien Aptel <aaptel@suse.com>
+
+- cifs.upcall: fix regression in kerberos mount; (bsc#1184815).
+  * add 0001-cifs.upcall-fix-regression-in-kerberos-mount.patch
+
+-------------------------------------------------------------------
+Tue Mar  9 17:17:59 UTC 2021 - palcantara@suse.de
+
+- CVE-2021-20208: cifs-utils: cifs.upcall kerberos auth leak in
+  container; (bsc#1183239); CVE-2021-20208.
+  * add 0001-cifs.upcall-try-to-use-container-ipc-uts-net-pid-mnt.patch
+
+-------------------------------------------------------------------
 Tue Feb 23 12:15:39 UTC 2021 - Aurelien Aptel <aaptel@suse.com>
 
 - Update to cifs-utils 6.12
@@ -52,6 +65,13 @@ Fri Dec 11 18:00:50 UTC 2020 - Aurelien Aptel <aaptel@suse.com>
 Tue Nov 17 13:42:23 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
+
+-------------------------------------------------------------------
+Tue Aug 11 12:45:15 UTC 2020 - Aurelien Aptel <aaptel@suse.com>
+
+- Make cifs-idmap plugin (idmapwb.so) use update-alternatives
+  mechanism to be able to switch between cifs-utils and sssd;
+  (bsc#1182682).
 
 -------------------------------------------------------------------
 Mon Aug 10 06:56:11 UTC 2020 - Aurelien Aptel <aaptel@suse.com>

@@ -37,6 +37,20 @@ Source100:      README.cifstab.migration
 Source1:        cifs.init
 
 Patch1:         fix-sbin-install-error.patch
+Patch2:         0001-cifs.upcall-try-to-use-container-ipc-uts-net-pid-mnt.patch
+Patch3:         0001-cifs.upcall-fix-regression-in-kerberos-mount.patch
+
+# Both SSSD and cifs-utils provide an idmap plugin for cifs.ko
+# /etc/cifs-utils/idmap-plugin should be a symlink to one of the 2 idmap plugins
+# * cifs-utils one is the default (priority 20)
+# * installing SSSD should NOT switch to SSSD plugin (priority 10)
+%define cifs_idmap_plugin       %{_sysconfdir}/cifs-utils/idmap-plugin
+%define cifs_idmap_lib          %{_libdir}/cifs-utils/idmapwb.so
+%define cifs_idmap_name         cifs-idmap-plugin
+%define cifs_idmap_priority     20
+BuildRequires:  update-alternatives
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
 
 # cifs-utils 6.8 switched to python for man page generation
 # we need to require either py2 or py3 package
@@ -121,6 +135,8 @@ for i in $pyscripts; do
 done
 
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 export CFLAGS="%{optflags} -D_GNU_SOURCE -fpie"
@@ -139,8 +155,6 @@ mkdir -p %{buildroot}/%{_sysconfdir}/init.d
 %endif
 
 %make_install
-mkdir -p %{buildroot}%{_sysconfdir}/%{name}
-ln -s %{_libdir}/%{name}/idmapwb.so %{buildroot}%{_sysconfdir}/%{name}/idmap-plugin
 mkdir -p %{buildroot}%{_sysconfdir}/request-key.d
 install -m 644 -p contrib/request-key.d/cifs.idmap.conf %{buildroot}%{_sysconfdir}/request-key.d
 install -m 644 -p contrib/request-key.d/cifs.spnego.conf %{buildroot}%{_sysconfdir}/request-key.d
@@ -156,6 +170,10 @@ install -m 0755 -p ${RPM_SOURCE_DIR}/cifs.init %{buildroot}/%{_sysconfdir}/init.
 ln -s service %{buildroot}/%{_sbindir}/rccifs
 %endif
 
+# dummy target for cifs-idmap-plugin
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives %{buildroot}%{_sysconfdir}/cifs-utils
+ln -s -f %{_sysconfdir}/alternatives/%{cifs_idmap_name} %{buildroot}%{cifs_idmap_plugin}
+
 touch %{buildroot}/%{_sysconfdir}/sysconfig/network/if-{down,up}.d/${script} \
 	%{buildroot}%{_rundir}/cifs
 %endif
@@ -163,6 +181,15 @@ touch %{buildroot}/%{_sysconfdir}/sysconfig/network/if-{down,up}.d/${script} \
 %if 0%{?suse_version} > 1110
 %fdupes %{buildroot}
 %endif
+
+%post
+# install cifs-utils cifs-idmap plugin using alternatives system
+update-alternatives --install %{cifs_idmap_plugin} %{cifs_idmap_name} %{cifs_idmap_lib} %{cifs_idmap_priority}
+
+%postun
+if [ ! -f %{cifs_idmap_lib} ] ; then
+   update-alternatives --remove %{cifs_idmap_name} %{cifs_idmap_lib}
+fi
 
 %files
 %if 0%{?usrmerged}
@@ -188,14 +215,20 @@ touch %{buildroot}/%{_sysconfdir}/sysconfig/network/if-{down,up}.d/${script} \
 %{_mandir}/man8/cifs.upcall.8%{ext_man}
 %{_mandir}/man8/mount.cifs.8%{ext_man}
 %{_mandir}/man8/mount.smb3.8%{ext_man}
+
+# request keys
 %dir %{_sysconfdir}/request-key.d
 %config(noreplace) %{_sysconfdir}/request-key.d/cifs.idmap.conf
 %config(noreplace) %{_sysconfdir}/request-key.d/cifs.spnego.conf
-%dir %{_libdir}/cifs-utils
-%dir %{_sysconfdir}/cifs-utils
-%config(noreplace) %{_sysconfdir}/cifs-utils/idmap-plugin
-%{_libdir}/%{name}/idmapwb.so
+
+# idmap plugin
+%dir %_sysconfdir/cifs-utils
+%{cifs_idmap_plugin}
+%dir %_libdir/cifs-utils
+%{cifs_idmap_lib}
+%ghost %_sysconfdir/alternatives/%{cifs_idmap_name}
 %{_mandir}/man8/idmapwb.8%{ext_man}
+
 %if 0%{?suse_version} > 1221
 %if ! %{systemd}
 %attr(0754,root,root) %config %{_sysconfdir}/init.d/cifs
