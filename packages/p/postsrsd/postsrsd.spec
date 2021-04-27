@@ -1,7 +1,7 @@
 #
 # spec file for package postsrsd
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 
 
 Name:           postsrsd
-Version:        1.6
+Version:        1.11
 Release:        0
 Summary:        Sender Rewriting Support for postfix
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Email/Servers
 URL:            https://github.com/roehling/postsrsd
 
-#Git-Clone:	git://github.com/roehling/postsrsd
 Source:         https://github.com/roehling/postsrsd/archive/%version.tar.gz
 BuildRequires:  cmake
 BuildRequires:  systemd-rpm-macros
 
 %description
-PostSRSd provides the Sender Rewriting Scheme (SRS) via TCP-based 
+PostSRSd provides the Sender Rewriting Scheme (SRS) via TCP-based
 lookup tables for Postfix. SRS is needed if your mail server acts
 as forwarder.
 
@@ -77,6 +76,7 @@ fi
 %_sbindir/rcpostsrsd
 %_prefix/lib/systemd/system/*.service
 %_docdir/%name/
+%_datadir/postsrsd/
 %license LICENSE
 
 %changelog
