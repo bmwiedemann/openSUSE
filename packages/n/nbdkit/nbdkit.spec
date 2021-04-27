@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_with nbdkit_libguestfs
 
 # Architectures where the complete test suite must pass.
@@ -26,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64
 
 Name:           nbdkit
-Version:        1.25.1
+Version:        1.25.6
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -39,9 +40,9 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  openssh
+BuildRequires:  pkg-config
 BuildRequires:  perl(Pod::Man)
 BuildRequires:  perl(Pod::Simple)
-BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(gnutls) >= 3.3.0
 BuildRequires:  pkgconfig(libcurl)
@@ -59,10 +60,9 @@ BuildRequires:  pkgconfig(libguestfs)
 
 # nbdkit is a metapackage pulling the server and a useful subset
 # of the plugins and filters.
-Requires:       nbdkit-server = %{version}-%{release}
-Requires:       nbdkit-basic-plugins = %{version}-%{release}
 Requires:       nbdkit-basic-filters = %{version}-%{release}
-
+Requires:       nbdkit-basic-plugins = %{version}-%{release}
+Requires:       nbdkit-server = %{version}-%{release}
 
 %description
 NBD is a protocol for accessing block devices (hard disks and
@@ -94,8 +94,6 @@ reading the nbdkit(1) and nbdkit-plugin(3) manual pages.
 
 %package server
 Summary:        Network Block Device server
-License:        BSD-3-Clause
-
 
 %description server
 This package contains the %{name} server with no plugins or filters.
@@ -103,7 +101,6 @@ This package contains the %{name} server with no plugins or filters.
 
 %package basic-plugins
 Summary:        Basic plugins for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
 Provides:       %{name}-data-plugin = %{version}-%{release}
@@ -115,15 +112,14 @@ Provides:       %{name}-info-plugin = %{version}-%{release}
 Provides:       %{name}-memory-plugin = %{version}-%{release}
 Provides:       %{name}-null-plugin = %{version}-%{release}
 Provides:       %{name}-ondemand-plugin = %{version}-%{release}
-Provides:       %{name}-pattern-plugin = %{version}-%{release}
 Provides:       %{name}-partitioning-plugin = %{version}-%{release}
+Provides:       %{name}-pattern-plugin = %{version}-%{release}
 Provides:       %{name}-random-plugin = %{version}-%{release}
 Provides:       %{name}-sh-plugin = %{version}-%{release}
 Provides:       %{name}-sparse-random-plugin = %{version}-%{release}
 Provides:       %{name}-split-plugin = %{version}-%{release}
 Provides:       %{name}-streaming-plugin = %{version}-%{release}
 Provides:       %{name}-zero-plugin = %{version}-%{release}
-
 
 %description basic-plugins
 This package contains plugins for %{name} which depend on a handful of
@@ -167,10 +163,8 @@ nbdkit-zero-plugin          Zero-length plugin for testing.
 
 %package example-plugins
 Summary:        Example plugins for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
-
 
 %description example-plugins
 This package contains example plugins for %{name}.
@@ -181,12 +175,10 @@ This package contains example plugins for %{name}.
 
 %package cdi-plugin
 Summary:        Containerized Data Import plugin for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
 Requires:       jq
 Requires:       podman
-
 
 %description cdi-plugin
 This package contains Containerized Data Import support for %{name}.
@@ -194,10 +186,8 @@ This package contains Containerized Data Import support for %{name}.
 
 %package curl-plugin
 Summary:        HTTP/FTP (cURL) plugin for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
-
 
 %description curl-plugin
 This package contains cURL (HTTP/FTP) support for %{name}.
@@ -205,10 +195,8 @@ This package contains cURL (HTTP/FTP) support for %{name}.
 
 %package guestfs-plugin
 Summary:        libguestfs plugin for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
-
 
 %description guestfs-plugin
 This package is a libguestfs plugin for %{name}.
@@ -216,10 +204,8 @@ This package is a libguestfs plugin for %{name}.
 
 %package gzip-plugin
 Summary:        GZip plugin for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
-
 
 %description gzip-plugin
 This package is a gzip plugin for %{name}.
@@ -227,10 +213,8 @@ This package is a gzip plugin for %{name}.
 
 %package nbd-plugin
 Summary:        NBD proxy / forward plugin for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
-
 
 %description nbd-plugin
 This package lets you forward NBD connections from %{name}
@@ -241,10 +225,8 @@ to another NBD server.
 
 %package python-plugin
 Summary:        Python 3 plugin for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
-
 
 %description python-plugin
 This package lets you write Python 3 plugins for %{name}.
@@ -252,37 +234,22 @@ This package lets you write Python 3 plugins for %{name}.
 
 %package ssh-plugin
 Summary:        SSH plugin for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
-
 
 %description ssh-plugin
 This package contains SSH support for %{name}.
 
 
-%package tar-plugin
-Summary:        Tar archive plugin for %{name}
-License:        BSD-3-Clause
-
-Requires:       %{name}-server = %{version}-%{release}
-Requires:       tar
-
-
-%description tar-plugin
-This package is a tar archive plugin for %{name}.
-
-
 %package tmpdisk-plugin
 Summary:        Remote temporary filesystem disk plugin for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
 # For mkfs and mke2fs (defaults).
-Requires:       util-linux, e2fsprogs
+Requires:       e2fsprogs
+Requires:       util-linux
 # For other filesystems.
 Suggests:       xfsprogs
-
 
 %description tmpdisk-plugin
 This package is a remote temporary filesystem disk plugin for %{name}.
@@ -290,10 +257,8 @@ This package is a remote temporary filesystem disk plugin for %{name}.
 
 %package vddk-plugin
 Summary:        VMware VDDK plugin for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
-
 
 %description vddk-plugin
 This package is a plugin for %{name} which connects to
@@ -302,7 +267,6 @@ VMware VDDK for accessing VMware disks and servers.
 
 %package basic-filters
 Summary:        Basic filters for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
 Provides:       %{name}-blocksize-filter = %{version}-%{release}
@@ -336,7 +300,6 @@ Provides:       %{name}-stats-filter = %{version}-%{release}
 Provides:       %{name}-swab-filter = %{version}-%{release}
 Provides:       %{name}-tls-fallback-filter = %{version}-%{release}
 Provides:       %{name}-truncate-filter = %{version}-%{release}
-
 
 %description basic-filters
 This package contains filters for %{name} which only depend on simple
@@ -375,6 +338,8 @@ nbdkit-limit-filter        Limits the number of clients that can connect concurr
 
 nbdkit-log-filter          Logs all transactions to a file.
 
+nbdkit-multi-conn-filter   Modifies the way multiple clients can connect to the same export simultaneously.
+
 nbdkit-nocache-filter      Disables cache requests in the underlying plugin.
 
 nbdkit-noextents-filter    Disables extents in the underlying plugin.
@@ -408,10 +373,8 @@ nbdkit-truncate-filter     Truncates, expands, rounds up or rounds down size.
 
 %package gzip-filter
 Summary:        GZip filter for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
-
 
 %description gzip-filter
 This package is a gzip filter for %{name}.
@@ -419,13 +382,9 @@ This package is a gzip filter for %{name}.
 
 %package tar-filter
 Summary:        Tar archive filter for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
 Requires:       tar
-
-Obsoletes:      %{name}-tar-plugin < 1.23.9-3
-
 
 %description tar-filter
 This package is a tar archive filter for %{name}.
@@ -433,10 +392,8 @@ This package is a tar archive filter for %{name}.
 
 %package xz-filter
 Summary:        XZ filter for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
-
 
 %description xz-filter
 This package is the xz filter for %{name}.
@@ -444,11 +401,9 @@ This package is the xz filter for %{name}.
 
 %package devel
 Summary:        Development files and documentation for %{name}
-License:        BSD-3-Clause
 
 Requires:       %{name}-server = %{version}-%{release}
 Requires:       pkgconfig
-
 
 %description devel
 This package contains development files and documentation
@@ -457,11 +412,10 @@ plugins for %{name}.
 
 
 %package bash-completion
-Summary:       Bash tab-completion for %{name}
-BuildArch:     noarch
-Requires:      bash-completion >= 2.0
-Requires:      %{name}-server = %{version}-%{release}
-
+Summary:        Bash tab-completion for %{name}
+BuildArch:      noarch
+Requires:       %{name}-server = %{version}-%{release}
+Requires:       bash-completion >= 2.0
 
 %description bash-completion
 Install this package if you want intelligent bash tab-completion
@@ -480,7 +434,6 @@ sed -i -e 's/^LIBGUESTFS_TESTS/xLIBGUESTFS_TESTS/' tests/Makefile.am
 sed -i -e '/^if HAVE_GUESTFISH/,/^endif HAVE_GUESTFISH/d' tests/Makefile.am
 autoreconf -i
 %endif
-
 
 # Golang bindings are not enabled in the build since they don't
 # need to be.  Most people would use them by copying the upstream
@@ -513,7 +466,6 @@ grep '^PYTHON_VERSION = 3' Makefile
 
 %make_build
 
-
 %install
 %make_install
 
@@ -524,14 +476,6 @@ find "%{buildroot}" -name '*.la' -delete
 # rust plugin is built.  Delete it if this happens.
 rm -f %{buildroot}/%{_mandir}/man3/nbdkit-rust-plugin.3*
 
-# Remove the deprecated gzip plugin (use gzip filter instead).
-rm %{buildroot}/%{_libdir}/%{name}/plugins/nbdkit-gzip-plugin.so
-rm %{buildroot}/%{_mandir}/man1/nbdkit-gzip-plugin.1*
-
-# Remove the deprecated tar plugin (use tar filter instead).
-rm %{buildroot}/%{_libdir}/%{name}/plugins/nbdkit-tar-plugin.so
-rm %{buildroot}/%{_mandir}/man1/nbdkit-tar-plugin.1*
-
 # Remove some plugins we cannot --disable.
 for f in cc cdi torrent; do
     rm -f %{buildroot}/%{_libdir}/%{name}/plugins/nbdkit-$f-plugin.so
@@ -540,9 +484,8 @@ done
 rm -f %{buildroot}/%{_libdir}/%{name}/plugins/nbdkit-S3-plugin
 rm -f %{buildroot}/%{_mandir}/man1/nbdkit-S3-plugin.1*
 
-
 %check
-exit 0
+# exit 0
 %ifnarch %{broken_test_arches}
 # tests/test-captive.sh is racy especially on s390x.  We need to
 # rethink this test upstream.
@@ -567,9 +510,6 @@ export LIBGUESTFS_TRACE=1
     exit 1
   }
 %endif
-
-
-
 
 %files
 # metapackage so empty
@@ -647,7 +587,6 @@ export LIBGUESTFS_TRACE=1
 %{_libdir}/%{name}/plugins/nbdkit-nbd-plugin.so
 %{_mandir}/man1/nbdkit-nbd-plugin.1*
 
-
 %files python-plugin
 %{_libdir}/%{name}/plugins/nbdkit-python-plugin.so
 %{_mandir}/man3/nbdkit-python-plugin.3*
@@ -683,6 +622,7 @@ export LIBGUESTFS_TRACE=1
 %{_libdir}/%{name}/filters/nbdkit-ip-filter.so
 %{_libdir}/%{name}/filters/nbdkit-limit-filter.so
 %{_libdir}/%{name}/filters/nbdkit-log-filter.so
+%{_libdir}/%{name}/filters/nbdkit-multi-conn-filter.so
 %{_libdir}/%{name}/filters/nbdkit-nocache-filter.so
 %{_libdir}/%{name}/filters/nbdkit-noextents-filter.so
 %{_libdir}/%{name}/filters/nbdkit-nofilter-filter.so
@@ -714,6 +654,7 @@ export LIBGUESTFS_TRACE=1
 %{_mandir}/man1/nbdkit-ip-filter.1*
 %{_mandir}/man1/nbdkit-limit-filter.1*
 %{_mandir}/man1/nbdkit-log-filter.1*
+%{_mandir}/man1/nbdkit-multi-conn-filter.1*
 %{_mandir}/man1/nbdkit-nocache-filter.1*
 %{_mandir}/man1/nbdkit-noextents-filter.1*
 %{_mandir}/man1/nbdkit-nofilter-filter.1*
@@ -755,3 +696,5 @@ export LIBGUESTFS_TRACE=1
 
 %files bash-completion
 %{_datadir}/bash-completion
+
+%changelog
