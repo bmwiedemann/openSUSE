@@ -28,7 +28,10 @@ Group:          System/Management
 URL:            https://github.com/gohugoio/hugo
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  gcc-c++
+BuildRequires:  pkg-config
 BuildRequires:  golang(API) >= 1.16
+BuildRequires:  pkgconfig(libsass)
 
 %description
 Hugo is a static HTML and CSS website generator written in Go. It is optimized
@@ -56,11 +59,18 @@ The official bash completion script for %{name}, generated during the build.
 %autosetup -a 1
 
 %build
+# Force using the system version of libsass.
+# Due to https://github.com/golang/go/issues/26366 it's not vendored properly
+# anyway.
+export CGO_CFLAGS="$(pkg-config --cflags libsass) -DUSE_LIBSASS_SRC"
+export CGO_CXXFLAGS="${CGO_CFLAGS}"
+export CGO_LDFLAGS="$(pkg-config --libs libsass)"
 
 # Build the binary.
 go build \
    -mod=vendor \
-   -buildmode=pie ;
+   -tags extended \
+   -buildmode=pie
 
 %install
 # Install the binary.

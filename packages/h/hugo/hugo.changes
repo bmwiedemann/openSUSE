@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 26 10:25:20 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Build the "extended" version of hugo
+- Force dynamic linking against libsass
+
+-------------------------------------------------------------------
 Tue Apr 20 16:58:10 UTC 2021 - jkowalczyk@suse.com
 
 - Update to version 0.82.1:

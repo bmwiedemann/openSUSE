@@ -86,4 +86,13 @@
   * Regression in media type suffix lookup (forwarded request 887072 from jfkw)</comment>
     <requestid>887073</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>17f9a28d3d41806c745bcd3c2c0c7e71</srcmd5>
+    <version>0.82.1</version>
+    <time>1619552069</time>
+    <user>dimstar_suse</user>
+    <comment>- Build the &quot;extended&quot; version of hugo
+- Force dynamic linking against libsass (forwarded request 888479 from favogt)</comment>
+    <requestid>888525</requestid>
+  </revision>
 </revisionlist>
