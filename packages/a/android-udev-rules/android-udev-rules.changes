@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Apr 25 10:48:42 UTC 2021 - munix9@googlemail.com
+
+- Update to version 20210425
+  added:
+  * Microsoft Surface Duo
+  * Umidigi F1
+  * Iconia Tab 210
+  * Fairphone 1 & 2
+
+  fixed:
+  * Exclude BIND actions from udev triggering (close #204)
+
+- Call %udev_rules_update in %post/%postun
+- Remove fix-consider-bind-action.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Tue Mar  9 13:49:10 UTC 2021 - munix9@googlemail.com
 
 - Add fix-consider-bind-action.patch - Systemd catches up with

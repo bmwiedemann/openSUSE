@@ -17,22 +17,20 @@
 
 
 Name:           android-udev-rules
-Version:        20210302
+Version:        20210425
 Release:        0
 Summary:        Android udev rules list aimed to be the most comprehensive on the net
 License:        GPL-3.0-or-later
 Group:          Hardware/Mobile
 URL:            https://github.com/M0Rf30/android-udev-rules
-Source0:        https://github.com/M0Rf30/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-consider-bind-action.patch boo#1183058 munix9@googlemail.com -- Systemd catches up with bind events
-Patch0:         fix-consider-bind-action.patch
+Source0:        https://github.com/M0Rf30/android-udev-rules/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 Recommends:     android-tools
 Provides:       android-tools-udev = %{version}
 Obsoletes:      android-tools-udev < %{version}
 BuildArch:      noarch
-%{sysusers_requires}
+%sysusers_requires
 
 %description
 These rules refer to 'Run Apps on a Hardware Device - Android Studio'
@@ -49,6 +47,12 @@ install -D -m 0644 -t %{buildroot}%{_sysusersdir} android-udev.conf
 install -D -m 0644 -t %{buildroot}%{_udevrulesdir} 51-android.rules
 
 %pre -f adbusers.pre
+
+%post
+%udev_rules_update
+
+%postun
+%udev_rules_update
 
 %files
 %license LICENSE
