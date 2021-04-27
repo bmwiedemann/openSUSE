@@ -1,4 +1,25 @@
 --------------------------------------------------------------------
+Tue Apr 27 10:59:37 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#257
+- rescue: leave linking modules to prep script
+- 8.0.0
+
+--------------------------------------------------------------------
+Tue Apr 27 07:22:19 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#260
+- don't ask for ssh password if ssh.password.enc is set (bsc#1185304)
+- 7.0.35
+
+--------------------------------------------------------------------
+Mon Apr 26 12:24:07 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#259
+- fix handling of modules.order in driver updates (bsc#1184550)
+- 7.0.34
+
+--------------------------------------------------------------------
 Tue Apr 20 07:44:05 UTC 2021 - lslezak@suse.cz
 
 - merge gh#openSUSE/linuxrc#256
