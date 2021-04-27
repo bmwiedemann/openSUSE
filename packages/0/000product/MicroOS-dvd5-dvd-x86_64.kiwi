@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20210425" schemaversion="4.1">
+<image name="OBS__MicroOS___20210426" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210425</productvar>
+      <productvar name="VERSION">20210426</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20210425,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20210426,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20210425/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20210426/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -87,7 +87,7 @@
       <repopackage name="bluez-firmware" arch="x86_64"/>
       <repopackage name="bluez-qt-imports" arch="x86_64"/>
       <repopackage name="bluez-qt-udev" arch="x86_64"/>
-      <repopackage name="boost-license1_75_0" arch="x86_64"/>
+      <repopackage name="boost-license1_76_0" arch="x86_64"/>
       <repopackage name="branding-openSUSE" arch="x86_64"/>
       <repopackage name="breeze" arch="x86_64"/>
       <repopackage name="breeze5-cursors" arch="x86_64"/>
@@ -137,6 +137,7 @@
       <repopackage name="cpp10" arch="x86_64"/>
       <repopackage name="cracklib" arch="x86_64"/>
       <repopackage name="cracklib-dict-full" arch="x86_64"/>
+      <repopackage name="crda" arch="x86_64"/>
       <repopackage name="crypto-policies" arch="x86_64"/>
       <repopackage name="cryptsetup" arch="x86_64"/>
       <repopackage name="cups" arch="x86_64"/>
@@ -179,6 +180,7 @@
       <repopackage name="enchant-data" arch="x86_64"/>
       <repopackage name="evmctl" arch="x86_64"/>
       <repopackage name="evolution-data-server" arch="x86_64"/>
+      <repopackage name="expat" arch="x86_64"/>
       <repopackage name="fcoe-utils" arch="x86_64"/>
       <repopackage name="file"/>
       <repopackage name="file-magic"/>
@@ -442,7 +444,7 @@
       <repopackage name="libblogger2" arch="x86_64"/>
       <repopackage name="libbluetooth3" arch="x86_64"/>
       <repopackage name="libbluray2" arch="x86_64"/>
-      <repopackage name="libboost_thread1_75_0" arch="x86_64"/>
+      <repopackage name="libboost_thread1_76_0" arch="x86_64"/>
       <repopackage name="libbreezecommon5-5" arch="x86_64"/>
       <repopackage name="libbrotlicommon1"/>
       <repopackage name="libbrotlidec1"/>
@@ -1265,6 +1267,26 @@
       <repopackage name="perl" arch="x86_64"/>
       <repopackage name="perl-base"/>
       <repopackage name="perl-Bootloader"/>
+      <repopackage name="perl-Encode-Locale" arch="x86_64"/>
+      <repopackage name="perl-File-Listing" arch="x86_64"/>
+      <repopackage name="perl-HTML-Parser" arch="x86_64"/>
+      <repopackage name="perl-HTML-Tagset" arch="x86_64"/>
+      <repopackage name="perl-HTTP-Cookies" arch="x86_64"/>
+      <repopackage name="perl-HTTP-Date" arch="x86_64"/>
+      <repopackage name="perl-HTTP-Message" arch="x86_64"/>
+      <repopackage name="perl-HTTP-Negotiate" arch="x86_64"/>
+      <repopackage name="perl-IO-HTML" arch="x86_64"/>
+      <repopackage name="perl-libwww-perl" arch="x86_64"/>
+      <repopackage name="perl-LWP-MediaTypes" arch="x86_64"/>
+      <repopackage name="perl-Net-DBus" arch="x86_64"/>
+      <repopackage name="perl-Net-HTTP" arch="x86_64"/>
+      <repopackage name="perl-TimeDate" arch="x86_64"/>
+      <repopackage name="perl-Try-Tiny" arch="x86_64"/>
+      <repopackage name="perl-URI" arch="x86_64"/>
+      <repopackage name="perl-WWW-RobotRules" arch="x86_64"/>
+      <repopackage name="perl-X11-Protocol" arch="x86_64"/>
+      <repopackage name="perl-XML-Parser" arch="x86_64"/>
+      <repopackage name="perl-XML-Twig" arch="x86_64"/>
       <repopackage name="permissions"/>
       <repopackage name="permissions-config"/>
       <repopackage name="phonon4qt5-backend-gstreamer" arch="x86_64"/>
@@ -1412,6 +1434,7 @@
       <repopackage name="solid-imports" arch="x86_64"/>
       <repopackage name="sonnet" arch="x86_64"/>
       <repopackage name="sound-theme-freedesktop" arch="x86_64"/>
+      <repopackage name="spice-vdagent" arch="x86_64"/>
       <repopackage name="sssd" arch="x86_64"/>
       <repopackage name="sssd-krb5-common" arch="x86_64"/>
       <repopackage name="sssd-ldap" arch="x86_64"/>
@@ -1432,6 +1455,7 @@
       <repopackage name="systemd-default-settings"/>
       <repopackage name="systemd-default-settings-branding-openSUSE" arch="x86_64"/>
       <repopackage name="systemd-default-settings-branding-SLE"/>
+      <repopackage name="systemd-icon-branding-openSUSE" arch="x86_64"/>
       <repopackage name="systemd-logger" arch="x86_64"/>
       <repopackage name="systemd-presets-branding-MicroOS"/>
       <repopackage name="systemd-presets-common-SUSE"/>
@@ -1504,6 +1528,7 @@
       <repopackage name="which" arch="x86_64"/>
       <repopackage name="wicked" arch="x86_64"/>
       <repopackage name="wicked-service" arch="x86_64"/>
+      <repopackage name="wireless-regdb" arch="x86_64"/>
       <repopackage name="wpa_supplicant" arch="x86_64"/>
       <repopackage name="xauth" arch="x86_64"/>
       <repopackage name="xbitmaps" arch="x86_64"/>
@@ -1514,6 +1539,7 @@
       <repopackage name="xdg-desktop-portal-kde" arch="x86_64"/>
       <repopackage name="xdg-user-dirs" arch="x86_64"/>
       <repopackage name="xdg-user-dirs-gtk" arch="x86_64"/>
+      <repopackage name="xdg-utils" arch="x86_64"/>
       <repopackage name="xdm" arch="x86_64"/>
       <repopackage name="xembedsniproxy" arch="x86_64"/>
       <repopackage name="xen-libs" arch="x86_64"/>
