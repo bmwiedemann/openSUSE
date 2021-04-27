@@ -1,0 +1,29 @@
+From 1e4e253e7d06d7ccee7248acb0a36ec37672b605 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Mat=C4=9Bj=20Cepl?= <mcepl@cepl.eu>
+Date: Mon, 26 Apr 2021 23:10:20 +0200
+Subject: [PATCH] Add configuration for Play/Pause, Next, Prev multimedia keys.
+
+---
+ .config/sway/config.d/50-openSUSE.conf | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/.config/sway/config.d/50-openSUSE.conf b/.config/sway/config.d/50-openSUSE.conf
+index d55ce7f..f1cebc4 100644
+--- a/.config/sway/config.d/50-openSUSE.conf
++++ b/.config/sway/config.d/50-openSUSE.conf
+@@ -31,6 +31,11 @@ bindsym XF86AudioRaiseVolume exec pamixer --allow-boost -ui 2 && dc -e "[`pamixe
+ bindsym XF86AudioLowerVolume exec pamixer --allow-boost -ud 2 && dc -e "[`pamixer --get-volume`]sM 100d `pamixer --get-volume`<Mp" > $SWAYSOCK.wob
+ bindsym XF86AudioMute exec pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $SWAYSOCK.wob )
+ 
++# Media player controls
++bindsym XF86AudioPlay exec playerctl play-pause
++bindsym XF86AudioNext exec playerctl next
++bindsym XF86AudioPrev exec playerctl previous
++
+ #
+ # Status Bar:
+ #
+-- 
+2.31.1
+
+

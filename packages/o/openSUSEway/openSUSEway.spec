@@ -27,6 +27,9 @@ License:        MIT
 Group:          Metapackages
 URL:            https://github.com/openSUSE/openSUSEway
 Source0:        https://github.com/openSUSE/openSUSEway/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE add-configuration-for-play-pause-next-prev-multimedi.patch gh#openSUSE/openSUSEway#41 mcepl@suse.com
+# Add multimedia keys configuration
+Patch0:         add-configuration-for-play-pause-next-prev-multimedi.patch
 BuildArch:      noarch
 BuildRequires:  aaa_base
 BuildRequires:  systemd
@@ -90,6 +93,7 @@ Requires:       jq
 Requires:       pamixer
 Requires:       patterns-sway-sway
 Requires:       pavucontrol
+Requires:       playerctl
 Requires:       polkit-gnome
 Requires:       sway
 Requires:       wallpaper-branding-openSUSE
