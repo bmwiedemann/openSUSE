@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Apr 26 19:36:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.13.0
+  * Proj: Support for PROJ>=5 via pyproj.
+  * Services: New hide_exception_url option to hide source URLs.
+  * Tile sources: Support '@' in URL path (e.g. /0/0/0@2x.png)
+  * Various fixes for Python 3.8 compatibility.
+  * WMS: Always query WMS server in supported SRS.
+  * Fix warnings for tagged layer sources in layers.
+  * Demo: Fix capabilites "as HTML" when running behind a proxy
+- Release 1.12.0
+  * Cache: Rescale tiles existing tiles with new upscale_tiles/
+    downscale_tiles option.
+  * Cache: Finer control for reprojection sources with
+    preferred_src_proj option.
+  * WMS: Add georeference to TIFF images (GeoTIFF).
+  * WMS: Support for compressed TIFF images (LZW/JPEG).
+  * WMS: Advertise MaxWidth/MaxHeight.
+  * WMTS: Support for FeatureInfo requests.
+  * WMS/ArcGIS: Add on_error handler (similar to on_error handling
+    for tile sources).
+  * WMS/WMTS: Add keyword_list to capabilities.
+  * S3: Support for custom S3 server and ACL.
+  * autoconfig: Support for username/password in URL.
+  * Various fixes for Python 3.6 and 3.7 compatibility.
+  * Set explicit permissions for write_atomic on Windows.
+  * WMS: Respond with highest supported WMS version (1.3.0 by
+    default).
+  * Test: Now uses pytest instead of nosetest for all unit and
+    system tests.
+  * YAML: Always use load_safe to support PyYAML >3 without
+    warnings.
+  * Paster and eventlet specific code removed.
+- Release 1.11.1
+  * Fix Cross Site Scripting (XSS) issue in demo service. Fix for
+    #322 did not properly escaped input used in JavaScript
+    examples. Found by Janek Vind. A targeted attack could be used
+    for information disclosure. For example: Session cookies of a
+    third party application running on the same domain.
+- GDAL is python3 only, so do the same here.
+- add python-MapProx-rpmlintrc
+- Enable (offline!) test suite
+- add missing cache.gpkg for tests
+
+-------------------------------------------------------------------
 Wed Mar  6 19:42:52 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 1.11.0

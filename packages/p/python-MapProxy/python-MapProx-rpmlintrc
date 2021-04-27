@@ -1,0 +1,4 @@
+# empty css file
+addFilter("zero-length.*framedCloud.css")
+# noarch package loads the library but no binary links
+addFilter("explicit-lib-dependency libgeos_c1")
