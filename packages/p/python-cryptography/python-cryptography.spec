@@ -65,13 +65,10 @@ BuildRequires:  %{python_module pyasn1 >= 0.1.8}
 BuildRequires:  %{python_module pytest > 3.3.0}
 # /SECTION
 # python-base is not enough, we need the _ssl module
+Requires:       python
 %ifpython2
 Requires:       python-enum34
 Requires:       python-ipaddress
-Requires:       python2
-%endif
-%ifpython3
-Requires:       python3
 %endif
 %python_subpackages
 

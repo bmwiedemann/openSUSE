@@ -547,4 +547,13 @@
     <comment></comment>
     <requestid>870297</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>8527391911b710456223f4644bbaeede</srcmd5>
+    <version>3.3.2</version>
+    <time>1619552056</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unnecessary %ifpython3 construct
+</comment>
+    <requestid>888465</requestid>
+  </revision>
 </revisionlist>
