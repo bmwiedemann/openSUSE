@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr  6 12:08:29 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Move sssctl command from sssd to sssd-tools package; (bsc#1184289);
+
+-------------------------------------------------------------------
+Thu Apr  1 15:08:14 UTC 2021 - jeffm@suse.com
+
+- Add missing /var/lib/sss/pubconf/krb5.include.d directory (bsc#1184285).
+
+-------------------------------------------------------------------
+Tue Feb 23 12:43:38 UTC 2021 - Aurelien Aptel <aaptel@suse.com>
+
+- Make cifs-idmap plugin (cifs_idmap_sss.so) use update-alternatives
+  mechanism to be able to switch between cifs-utils and sssd;
+  (bsc#1182682).
+
+-------------------------------------------------------------------
 Fri Feb 19 17:30:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4.2

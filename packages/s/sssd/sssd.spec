@@ -37,6 +37,17 @@ Patch1:         krb-noversion.diff
 %define pubconfpath	%sssdstatedir/pubconf
 %define gpocachepath	%sssdstatedir/gpo_cache
 
+# Both SSSD and cifs-utils provide an idmap plugin for cifs.ko
+# /etc/cifs-utils/idmap-plugin should be a symlink to one of the 2 idmap plugins
+# * cifs-utils one is the default (priority 20)
+# * installing SSSD should NOT switch to SSSD plugin (priority 10)
+%define cifs_idmap_plugin       %_sysconfdir/cifs-utils/idmap-plugin
+%define cifs_idmap_lib          %_libdir/cifs-utils/cifs_idmap_sss.so
+%define cifs_idmap_name         cifs-idmap-plugin
+%define cifs_idmap_priority     10
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 BuildRequires:  bind-utils
@@ -351,14 +362,7 @@ Security Services Daemon (sssd).
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} < 1210
-# pkgconfig file not present
-export LDB_LIBS="-lldb"
-export LDB_CFLAGS=" "
-export LDB_DIR="%_libdir/ldb"
-%else
 export LDB_DIR="$(pkg-config ldb --variable=modulesdir)"
-%endif
 
 # help configure find nscd
 export PATH="$PATH:/usr/sbin"
@@ -410,6 +414,10 @@ mkdir -pv "$b/%sssdstatedir/mc"
 find "$b" -type f -name "*.la" -print -delete
 %find_lang %name --all-name
 
+# dummy target for cifs-idmap-plugin
+mkdir -p %buildroot/%_sysconfdir/alternatives %buildroot/%_sysconfdir/cifs-utils
+ln -sfv %_sysconfdir/alternatives/%cifs_idmap_name %buildroot/%cifs_idmap_plugin
+
 %check
 # sss_config-tests fails
 %make_build check || :
@@ -424,6 +432,9 @@ find "$b" -type f -name "*.la" -print -delete
 /bin/sed -i -e 's,^krb5_kdcip =,krb5_server =,g' %_sysconfdir/sssd/sssd.conf
 %service_add_post %services
 
+# install SSSD cifs-idmap plugin as an alternative
+update-alternatives --install %cifs_idmap_plugin %cifs_idmap_name %cifs_idmap_lib %cifs_idmap_priority
+
 %preun
 %service_del_preun %services
 
@@ -437,6 +448,10 @@ fi
 rm -f /var/lib/sss/db/*.ldb
 # del_postun includes a try-restart
 %service_del_postun %services
+
+if [ ! -f "%cifs_idmap_lib" ]; then
+	update-alternatives --remove %cifs_idmap_name %cifs_idmap_lib
+fi
 
 %post   -n libsss_certmap0 -p /sbin/ldconfig
 %postun -n libsss_certmap0 -p /sbin/ldconfig
@@ -490,7 +505,6 @@ rm -f /var/lib/sss/db/*.ldb
 %_unitdir/sssd-sudo.socket
 %_unitdir/sssd-sudo.service
 %_bindir/sss_ssh_*
-%_sbindir/sssctl
 %_sbindir/sssd
 #%_sbindir/rcsssd
 #%_sbindir/rcsssd-autofs
@@ -513,7 +527,6 @@ rm -f /var/lib/sss/db/*.ldb
 %_mandir/??/man5/sssd-systemtap.5*
 %_mandir/??/man5/sssd.conf.5*
 %_mandir/??/man8/idmap_sss.8*
-%_mandir/??/man8/sssctl.8*
 %_mandir/??/man8/sssd.8*
 %_mandir/man1/sss_ssh_*
 %_mandir/man5/sss-certmap.5*
@@ -523,7 +536,6 @@ rm -f /var/lib/sss/db/*.ldb
 %_mandir/man5/sssd-simple.5*
 %_mandir/man5/sssd-sudo.5*
 %_mandir/man5/sssd.conf.5*
-%_mandir/man8/sssctl.8*
 %_mandir/man8/sssd.8*
 %dir %_libdir/%name/
 %_libdir/%name/conf/
@@ -558,6 +570,7 @@ rm -f /var/lib/sss/db/*.ldb
 %attr(755,root,root) %dir %pipepath/
 %attr(700,root,root) %dir %pipepath/private/
 %attr(755,root,root) %dir %pubconfpath/
+%attr(755,root,root) %dir %pubconfpath/krb5.include.d
 %attr(755,root,root) %dir %gpocachepath/
 %attr(755,root,root) %dir %sssdstatedir/mc/
 %attr(700,root,root) %dir %sssdstatedir/keytabs/
@@ -581,7 +594,6 @@ rm -f /var/lib/sss/db/*.ldb
 /%_lib/libnss_sss.so.2
 /%_lib/security/pam_sss.so
 /%_lib/security/pam_sss_gss.so
-%_libdir/cifs-utils/
 %_libdir/krb5/
 %_libdir/%name/modules/sssd_krb5_localauth_plugin.so
 %_mandir/??/man8/sssd_krb5_locator_plugin.8*
@@ -589,6 +601,12 @@ rm -f /var/lib/sss/db/*.ldb
 %_mandir/man8/pam_sss.8*
 %_mandir/man8/pam_sss_gss.8*
 %_mandir/man8/sssd_krb5_locator_plugin.8*
+# cifs idmap plugin
+%dir %_sysconfdir/cifs-utils
+%cifs_idmap_plugin
+%dir %_libdir/cifs-utils
+%cifs_idmap_lib
+%ghost %_sysconfdir/alternatives/%cifs_idmap_name
 
 %files ad
 %dir %_libdir/%name/
@@ -676,13 +694,16 @@ rm -f /var/lib/sss/db/*.ldb
 %_datadir/%name/sssd.api.d/sssd-proxy.conf
 
 %files tools
+%_sbindir/sssctl
 %_sbindir/sss_cache
 %_sbindir/sss_debuglevel
 %_sbindir/sss_seed
 %_sbindir/sss_obfuscate
 %_sbindir/sss_override
 %dir %_mandir/??/man8/
+%_mandir/??/man8/sssctl.8*
 %_mandir/??/man8/sss_*.8*
+%_mandir/man8/sssctl.8*
 %_mandir/man8/sss_*.8*
 
 %files winbind-idmap
