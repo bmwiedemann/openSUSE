@@ -1,7 +1,7 @@
 #
 # spec file for package libvma
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 #
-%define git_ver .0.0ed40128ffc0
+%define git_ver .0.1610cf601e5a
 %define lib_major 9
 
 Name:           libvma
 Summary:        A library for boosting TCP and UDP traffic (over RDMA hardware)
-License:        GPL-2.0-only OR BSD-2-Clause
+License:        BSD-2-Clause OR GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Version:        9.1.2
+Version:        9.2.2
 Release:        0
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        vma.service
@@ -73,7 +73,9 @@ Headers and symbolink link required to compile and link with the Libvma library.
 
 %build
 ./autogen.sh
-export CXXFLAGS="%optflags -Wno-address-of-packed-member"
+export CXXFLAGS="%optflags -Wno-address-of-packed-member -fPIE"
+export CFLAGS="%optflags -fPIE"
+export LDFLAGS="-pie"
 %configure --docdir=%{_docdir}/%{name}
 make %{?_smp_mflags} V=1
 

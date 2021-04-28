@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 28 08:13:07 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 9.2.2
+  - Support Bonding over rdma-core
+  - Several bug fixes
+    - See journal.txt for a complete list
+- Enable PIE
+
+-------------------------------------------------------------------
 Wed Sep 23 07:47:30 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 9.1.2 (jsc#SLE-15165)
