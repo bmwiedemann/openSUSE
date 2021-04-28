@@ -1,7 +1,7 @@
 #
 # spec file for package diff-pdf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           diff-pdf
-Version:        0.4.1
+Version:        0.5
 Release:        0
 Summary:        Simple PDF comparison tool
 License:        GPL-2.0-only AND LGPL-2.0-only
 Group:          Productivity/Publishing/PDF
 URL:            https://vslavik.github.io/diff-pdf/
-Source0:        https://github.com/vslavik/diff-pdf/archive/v%{version}/%{name}-%{version}.tar.gz
-Source1:        %{name}.1
-Patch0:         fix-find-poppler.patch
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
+BuildRequires:  help2man
 BuildRequires:  pkgconfig
 BuildRequires:  wxWidgets-devel
 BuildRequires:  pkgconfig(cairo)
@@ -40,7 +39,7 @@ BuildRequires:  pkgconfig(poppler-glib)
 diff-pdf is a simple tool for comparing two PDF files.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 ./bootstrap
@@ -50,9 +49,9 @@ diff-pdf is a simple tool for comparing two PDF files.
 %install
 %make_install
 
-#help2man -N -n "%%{summary}" --version-string="%%{version}" --no-discard-stderr \
-#	  -o %%{buildroot}%%{_mandir}/man1/%%{name}.1 %%{buildroot}%%{_bindir}/%%{name}
-install -D -m 0644 -t %{buildroot}%{_mandir}/man1/ %{SOURCE1}
+install -d %{buildroot}%{_mandir}/man1/
+help2man -N -n "%{summary}" --version-string="%{version}" --no-discard-stderr \
+	  -o %{buildroot}%{_mandir}/man1/%{name}.1 %{buildroot}%{_bindir}/%{name}
 
 %files
 %license COPYING COPYING.icons

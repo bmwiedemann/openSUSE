@@ -32,4 +32,24 @@
     <comment></comment>
     <requestid>859578</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a0a103eec056b2c79c18065338b1264c</srcmd5>
+    <version>0.5</version>
+    <time>1619653094</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5:
+  * Reflect renaming of package from Ubuntu 20.10 on
+  * Increase version to v0.5
+  * Add --grayscale option
+  * Show default DPI value used in --help output
+  * Remove code for old versions of glib and wxWidgets
+  * Tiny code formatting fixes
+  * Add rasterization DPI option (#71)
+  * AppVeyor: fix MSYS2 build
+  * Remove legacy poppler-cairo dependency (#69)
+  * Add instructions for installing on Fedora and CentOS 8 (#66)
+- Drop no longer needed fix-find-poppler.patch
+- Switch to obs scm _service</comment>
+    <requestid>888966</requestid>
+  </revision>
 </revisionlist>
