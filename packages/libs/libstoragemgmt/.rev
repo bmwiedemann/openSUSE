@@ -246,4 +246,12 @@
   * Static code analysis fixes #441</comment>
     <requestid>853064</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1284d052c32a26fe9121640c35d345a7</srcmd5>
+    <version>1.9.1</version>
+    <time>1619652995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888376</requestid>
+  </revision>
 </revisionlist>

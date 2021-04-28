@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Apr 25 07:41:36 UTC 2021 - nick wang <nwang@suse.com>
+
+- Correct the spec file to fit to changes in 1.8.8
+- Removed RPM sub packages:
+  * libstoragemgmt-netapp-plugin
+  * libstoragemgmt-nfs-plugin-clibs
+  * libstoragemgmt-nstor-plugin
+  * python3-libstoragemgmt-clibs
+
+-------------------------------------------------------------------
+Thu Apr 22 07:01:04 UTC 2021 - nick wang <nwang@suse.com>
+
+- bsc#1185067, move /var/run to /run
+  Add patch move_to_run.patch
+
+-------------------------------------------------------------------
+Wed Apr 21 12:16:04 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.1:
+  * Correct sim plugin install location #463
+
+-------------------------------------------------------------------
+Thu Mar 25 20:23:52 UTC 2021 - Michael Vetter <mvetter@suse.com>
+- Update to 1.9.0:
+    * Add NVMe device health check #265
+    * Correct lsm_disk_record_alloc does not have
+      plugin_data #68
+    * Limit lsmd to running a single instance against same
+      socket dir #398
+
+-------------------------------------------------------------------
+Wed Dec 16 08:22:53 UTC 2020 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.8:
+  * Remove NetApp ontap plugin
+  * Remove Nexentastor nstor plugin
+  * Re-organize plugins #440
+
+-------------------------------------------------------------------
 Fri Dec  4 09:06:20 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.7:
