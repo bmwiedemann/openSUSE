@@ -1,0 +1,13 @@
+<package name="ocaml-bin_prot" project="openSUSE:Factory">
+  <title>A binary protocol generator</title>
+  <description>This library contains functionality for reading and writing OCaml-values in a
+type-safe binary protocol.  It is extremely efficient, typically supporting
+type-safe marshalling and unmarshalling of even highly structured values at
+speeds sufficient to saturate a gigabit connection.  The protocol is also
+heavily optimized for size, making it ideal for long-term storage of large
+amounts of data.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-bin_prot"/>
+  <url>https://opam.ocaml.org/packages/bin_prot</url>
+</package>
