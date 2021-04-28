@@ -39,4 +39,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>869494</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f690a571619c1e44ce415f7cfec3ae09</srcmd5>
+    <version>1.14</version>
+    <time>1619653047</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14
+- remove ocaml-sha.patch, fixed upstream</comment>
+    <requestid>885616</requestid>
+  </revision>
 </revisionlist>

@@ -25,7 +25,7 @@
 
 %define     pkg ocaml-sha
 Name:           %{pkg}%{nsuffix}
-Version:        1.13
+Version:        1.14
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Binding to the SHA cryptographic functions
@@ -33,10 +33,10 @@ License:        ISC
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/sha
 Source0:        %{pkg}-%{version}.tar.xz
-Patch0:         ocaml-sha.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.0
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocamlfind(stdlib-shims)
+BuildRequires:  ocaml-rpm-macros >= 20210409
 
 %if "%{build_flavor}" == "testsuite"
 BuildRequires:  ocamlfind(oUnit)

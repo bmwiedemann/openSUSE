@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  9 09:09:09 UTC 2021 - ohering@suse.de
+
+- Update to version 1.14
+- remove ocaml-sha.patch, fixed upstream
+
+-------------------------------------------------------------------
 Thu Jan 21 21:21:21 UTC 2021 - ohering@suse.de
 
 - remove dependency to ounit via _multibuild

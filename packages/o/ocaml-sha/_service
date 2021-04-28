@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-sha</param>
-    <param name="revision">12073dab52b52abc29994a30456c8fded95be8fb</param>
+    <param name="revision">c86a4c76b23a6bd3ae700ea054dc4b6e4d4feef7</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/djs55/ocaml-sha.git</param>
