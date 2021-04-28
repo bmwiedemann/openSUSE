@@ -17,7 +17,7 @@
 
 
 Name:           strace
-Version:        5.11
+Version:        5.12
 Release:        0
 Summary:        A utility to trace the system calls of a program
 License:        BSD-3-Clause
@@ -29,7 +29,6 @@ Source:         https://github.com/strace/strace/releases/download/v%{version}/%
 Source2:        https://github.com/strace/strace/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source3:        %{name}.keyring
 Source4:        baselibs.conf
-Patch0:         strace-readelf-debug-dump-info-wide-output-changes-in-2.36.patch
 BuildRequires:  haveged
 BuildRequires:  libacl-devel
 BuildRequires:  libaio-devel
@@ -59,13 +58,8 @@ and processes can be seen.  Child processes can also be tracked.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-# Make sure LTO doesn't break mpers.sh
-%if "%{?_lto_cflags}" != ""
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%endif
 %configure \
 %ifarch aarch64
   --disable-mpers \

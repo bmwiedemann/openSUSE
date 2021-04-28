@@ -1211,4 +1211,20 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     <comment></comment>
     <requestid>873344</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>abb42e53cdd20dee2c4ce5952df22193</srcmd5>
+    <version>5.12</version>
+    <time>1619652997</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 5.12
+  * Improvements
+    * Implemented --secontext[=full] option to display SELinux contexts.
+    * Implemented decoding of mount_setattr syscall introduced in Linux 5.12.
+    * Updated decoding of IFLA_BRPORT_* netlink attributes to match Linux 5.12.
+    * Updated lists of DEVCONF_*, IORING_*, KVM_*, MPOL_*, MTD_*, NFT_MSG_*,
+      RESOLVE_*, RTM_*, ST_*, and V4L2_* constants.
+    * Updated lists of ioctl commands from Linux 5.12.
+- strace-readelf-debug-dump-info-wide-output-changes-in-2.36.patch: removed (forwarded request 888553 from AndreasSchwab)</comment>
+    <requestid>888554</requestid>
+  </revision>
 </revisionlist>

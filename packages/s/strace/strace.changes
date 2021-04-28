@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 26 14:48:54 UTC 2021 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 5.12
+  * Improvements
+    * Implemented --secontext[=full] option to display SELinux contexts.
+    * Implemented decoding of mount_setattr syscall introduced in Linux 5.12.
+    * Updated decoding of IFLA_BRPORT_* netlink attributes to match Linux 5.12.
+    * Updated lists of DEVCONF_*, IORING_*, KVM_*, MPOL_*, MTD_*, NFT_MSG_*,
+      RESOLVE_*, RTM_*, ST_*, and V4L2_* constants.
+    * Updated lists of ioctl commands from Linux 5.12.
+- strace-readelf-debug-dump-info-wide-output-changes-in-2.36.patch: removed
+
+-------------------------------------------------------------------
 Thu Feb 18 08:22:51 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Add strace-readelf-debug-dump-info-wide-output-changes-in-2.36.patch
