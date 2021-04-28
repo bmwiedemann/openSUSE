@@ -46,4 +46,13 @@
   Increase timeouts for slow architecture</comment>
     <requestid>828700</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9ebcbeb8ecad153fba622c25755eef09</srcmd5>
+    <version>2.2.4</version>
+    <time>1619653008</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.4
+  Skip AssertCodePosition test if no debug symbols are available</comment>
+    <requestid>867941</requestid>
+  </revision>
 </revisionlist>
