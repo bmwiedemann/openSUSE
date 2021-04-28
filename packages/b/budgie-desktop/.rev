@@ -286,4 +286,29 @@
 </comment>
     <requestid>885685</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b37d34978e1778b99f5436c4aa92711f</srcmd5>
+    <version>10.5.3+0</version>
+    <time>1619653126</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 10.5.3+0:
+  * Drop version check now that 4.0 is out. Nobody is going
+    to be packaging the old releases
+  * Update wallpaper to one licensed under CC-BY-SA-3.0
+    Bump to 10.5.3
+  * Increase likelihood that budgie-desktop is being
+    shipped with required component
+  * Ship a default wallpaper from Solus
+  * Override settings only for Budgie
+  * Rewrite fullscreen tracking
+  * Sync submodules
+  * Change to budgie-screensaver
+  * Hide &quot;Default&quot;, which is typically Adwaita / 
+    GTK's internal theme
+  * Further updates to README
+  * Remove old target date bits from readme
+- Removed desktop-override.patch: merged
+</comment>
+    <requestid>889095</requestid>
+  </revision>
 </revisionlist>

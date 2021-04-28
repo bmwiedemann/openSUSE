@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/solus-project/budgie-desktop.git</param>
-    <param name="revision">7a5dcfdaa25e887432e7edb3f8aee060992ee1c1</param>
-    <param name="versionformat">@PARENT_TAG@+%h</param>
+    <param name="revision">12eec71e469c697d71fd4d1b0b6df17b24f335c9</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>

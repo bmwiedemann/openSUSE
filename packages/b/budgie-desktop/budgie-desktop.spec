@@ -20,15 +20,13 @@
 
 #
 Name:           budgie-desktop
-Version:        10.5.2+7a5dcfda
+Version:        10.5.3+0
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/Other
 URL:            https://getsol.us/solus/experiences/
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE: Create a clean separation between Budgie and GNOME desktops
-Patch0:         desktop-override.patch
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -56,7 +54,10 @@ BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen)
+# Solus stupid 1000
+BuildRequires:  budgie-screensaver
 Requires:       budgie-screensaver
+Requires:       budgie-desktop-view
 Requires:       gnome-control-center
 Requires:       gnome-session-core
 Requires:       gnome-settings-daemon
@@ -130,7 +131,7 @@ Private library for Budgie desktop to link against.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %meson -Dxdg-appdir=%{_distconfdir}/xdg/autostart
@@ -170,6 +171,7 @@ rm %{buildroot}%{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %{_datadir}/gnome-session
 %{_bindir}/budgie-*
 %{_datadir}/applications/budgie-*.desktop
+%{_datadir}/backgrounds
 %{_datadir}/glib-2.0/schemas/com.solus-project.*.gschema.xml
 %{_datadir}/glib-2.0/schemas/20_solus-project.budgie.wm.gschema.override
 %{_datadir}/icons/hicolor/scalable/*/*.svg
