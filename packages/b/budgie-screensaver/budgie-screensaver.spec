@@ -23,7 +23,7 @@
 %define chkpwd /sbin/unix2_chkpwd
 %endif
 Name:           budgie-screensaver
-Version:        20210412
+Version:        4.0+0
 Release:        0
 Summary:        Fork of GNOME Screensaver for Budgie 10
 License:        GPL-2.0-or-later
@@ -78,7 +78,7 @@ mkdir build-aux
 touch build-aux/config.rpath
 autoreconf -fiv
 %configure\
-	--libexecdir=%{_libexecdir}/gnome-screensaver\
+	--libexecdir=%{_libexecdir}/budgie-screensaver\
 	--with-pam-prefix=%{_sysconfdir}\
 	--enable-authentication-scheme=helper\
 	--with-passwd-helper="%{chkpwd}"\
@@ -90,19 +90,18 @@ autoreconf -fiv
 %install
 %make_install
 mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
-cp %{buildroot}%{_datadir}/applications/gnome-screensaver.desktop %{buildroot}%{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
-%find_lang gnome-screensaver
+cp %{buildroot}%{_datadir}/applications/budgie-screensaver.desktop %{buildroot}%{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
+%find_lang budgie-screensaver
 
 %files
 %license COPYING
-%config(noreplace) %{_sysconfdir}/pam.d/gnome-screensaver
+%config(noreplace) %{_sysconfdir}/pam.d/budgie-screensaver
 %{_bindir}/*
-%{_libexecdir}/gnome-screensaver
-%{_datadir}/applications/gnome-screensaver.desktop
-%{_datadir}/dbus-1/services/org.gnome.ScreenSaver.ForBudgie.service
+%{_libexecdir}/budgie-screensaver
+%{_datadir}/applications/budgie-screensaver.desktop
 %{_distconfdir}/xdg/autostart/budgie-desktop-screensaver.desktop
 %{_mandir}/man1/*
 
-%files lang -f gnome-screensaver.lang
+%files lang -f budgie-screensaver.lang
 
 %changelog

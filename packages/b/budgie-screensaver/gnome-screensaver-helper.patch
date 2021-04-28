@@ -153,18 +153,18 @@ Index: gnome-screensaver-3.2.1/src/Makefile.am
 ===================================================================
 --- gnome-screensaver-3.2.1.orig/src/Makefile.am
 +++ gnome-screensaver-3.2.1/src/Makefile.am
-@@ -142,6 +142,12 @@ gnome_screensaver_dialog_SOURCES = 	\
+@@ -142,6 +142,12 @@ budgie_screensaver_dialog_SOURCES = 	\
  	$(AUTH_SOURCES)			\
  	$(NULL)
  
-+EXTRA_gnome_screensaver_dialog_SOURCES = \
++EXTRA_budgie_screensaver_dialog_SOURCES = \
 +	gs-auth-pam.c		\
 +	gs-auth-helper.c	\
 +	gs-auth-bsdauth.c	\
 +	$(NULL)
 + 
- gnome_screensaver_dialog_LDADD =	\
- 	$(GNOME_SCREENSAVER_DIALOG_LIBS)\
+ budgie_screensaver_dialog_LDADD =	\
+ 	$(BUDGIE_SCREENSAVER_DIALOG_LIBS)\
  	$(SAVER_LIBS)			\
 Index: gnome-screensaver-3.2.1/src/gs-auth-helper.c
 ===================================================================

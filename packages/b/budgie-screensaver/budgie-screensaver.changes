@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 28 15:38:04 UTC 2021 - gmbr3@opensuse.org
+
+- Update to version 4.0+0:
+  * Remove dbus service file as it results in a race condition
+    with gnome-settings-daemon that can cause double prompts
+  * Fix Makefile for distcheck + dist
+  * Bump to 4.0
+  * Move logic of check to main
+  * Check our environment to see if we are running on Budgie
+    before going forward
+  * Explicitly kill gjs before requesting name
+  * Add back required AUTHORS file
+  * Add back README with ref to repo
+  * Update data and cleanup misc outdated files
+  * Update to more appropriate README
+  * Update make output message for budgie-screensaver
+  * Update to budgie-screensaver
+  * Update GNOME references to BUDGIE
+
+-------------------------------------------------------------------
 Thu Apr 15 13:58:22 UTC 2021 - gmbr3@opensuse.org
 
 - Update to version 20210412 (again):

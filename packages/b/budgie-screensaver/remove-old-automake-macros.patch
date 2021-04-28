@@ -32,16 +32,16 @@ diff --git a/configure.ac b/configure.ac
 index c573924..942457e 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -5,6 +5,8 @@ AC_INIT([gnome-screensaver],
-         [3.6.1],
-         [http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-screensaver])
+@@ -5,6 +5,8 @@ AC_INIT([budgie-screensaver],
+         [4.0],
+         [https://github.com/getsolus/budgie-screensaver])
  
 +AC_CONFIG_MACRO_DIR([m4])
 +AC_CONFIG_AUX_DIR([build-aux])
  AC_CONFIG_SRCDIR(src/gnome-screensaver.c)
  
  AM_INIT_AUTOMAKE([1.10 no-dist-gzip dist-xz tar-ustar])
-@@ -33,7 +34,8 @@ GETTEXT_PACKAGE=gnome-screensaver
+@@ -33,7 +34,8 @@ GETTEXT_PACKAGE=budgie-screensaver
  AC_SUBST(GETTEXT_PACKAGE)
  AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Name of default gettext domain])
  
@@ -57,13 +57,13 @@ index 4d594d7..6ac785b 100644
 +++ b/src/Makefile.am
 @@ -5,7 +5,7 @@ NULL =
  
- saverdir = $(libexecdir)/gnome-screensaver
+ saverdir = $(libexecdir)/budgie-screensaver
  
 -INCLUDES =							\
 +AM_CPPFLAGS =							\
  	-I.							\
  	-I$(srcdir)						\
- 	$(GNOME_SCREENSAVER_CFLAGS)				\
+ 	$(BUDGIE_SCREENSAVER_CFLAGS)				\
 -- 
 
 diff --git a/Makefile.am b/Makefile.am
