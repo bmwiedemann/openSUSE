@@ -82,4 +82,21 @@
   * Remove unused toolbar</comment>
     <requestid>870063</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1021a8d29a56334494ae122f1cd70f82</srcmd5>
+    <version>8.1.0</version>
+    <time>1619653124</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.1.0
+  * Do not override the global translation domain of the application
+  * Add support for skipping date extraction when a quote service
+    does not provide a valid date
+  * Fix bug not been able to rename local quote source
+  * Many other bugfixes
+- Update dependencies to build with KF5
+- Drop upstream merged 0001-Use-new-KNS-install-location.patch
+- Add patch from upstream:
+  * 0001-Add-missing-QUrl-include-with-DBUILD_WITH_WEBENGINE.patch</comment>
+    <requestid>889064</requestid>
+  </revision>
 </revisionlist>

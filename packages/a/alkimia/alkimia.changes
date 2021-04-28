@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 28 14:28:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 8.1.0
+  * Do not override the global translation domain of the application
+  * Add support for skipping date extraction when a quote service
+    does not provide a valid date
+  * Fix bug not been able to rename local quote source
+  * Many other bugfixes
+- Update dependencies to build with KF5
+- Drop upstream merged 0001-Use-new-KNS-install-location.patch
+- Add patch from upstream:
+  * 0001-Add-missing-QUrl-include-with-DBUILD_WITH_WEBENGINE.patch
+
+-------------------------------------------------------------------
 Sun Feb  7 08:45:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch:

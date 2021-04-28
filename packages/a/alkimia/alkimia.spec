@@ -19,23 +19,28 @@
 %define sonum 8
 %bcond_without lang
 Name:           alkimia
-Version:        8.0.4
+Version:        8.1.0
 Release:        0
 Summary:        Library with common classes and functionality used by finance applications
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://kmymoney.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Use-new-KNS-install-location.patch
+Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
+# PATCH-FIX-UPSTREAM fix took from upstream GIT
+Patch0:         0001-Add-missing-QUrl-include-with-DBUILD_WITH_WEBENGINE.patch
 BuildRequires:  doxygen
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gmp-devel
+BuildRequires:  cmake(KF5Completion)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Package)
+BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(Qt5Core) >= 5.2.0
 BuildRequires:  cmake(Qt5DBus) >= 5.2.0
 BuildRequires:  cmake(Qt5Qml) >= 5.2.0
