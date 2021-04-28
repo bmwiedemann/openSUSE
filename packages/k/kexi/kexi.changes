@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 28 05:49:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with glib >= 2.68
+  * 0001-Include-glib.h-outside-of-the-extern-block.patch
+
+-------------------------------------------------------------------
 Fri Jan  8 10:51:47 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add dependencies on breeze5-icons-rcc instead of breeze5-icons

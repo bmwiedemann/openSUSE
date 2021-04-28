@@ -28,6 +28,8 @@ URL:            http://www.kexi-project.org/
 Source0:        https://download.kde.org/stable/%{name}/src/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         Fix-build-with-Qt-5_13.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Include-glib.h-outside-of-the-extern-block.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  glib2-devel
 BuildRequires:  kdb-devel
@@ -136,7 +138,6 @@ rm %{buildroot}%{_kf5_libdir}/libkformdesigner%{soVersion}.so
 %files
 %license COPYING COPYING.*
 %doc AUTHORS README.md
-%dir %{_kf5_appstreamdir}
 %dir %{_kf5_iconsdir}/hicolor/1024x1024
 %dir %{_kf5_iconsdir}/hicolor/1024x1024/apps
 %{_kf5_applicationsdir}/org.kde.kexi-%{soVersion}.desktop
