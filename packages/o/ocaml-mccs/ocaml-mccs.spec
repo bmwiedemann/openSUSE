@@ -18,18 +18,19 @@
 
 
 Name:           ocaml-mccs
-Version:        1.1+10
+Version:        1.1+13
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Stripped-down version of mccs with OCaml bindings
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception AND BSD-3-Clause AND GPL-3.0-only
 Group:          Development/Languages/Other
 Url:            https://github.com/AltGr/ocaml-mccs
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
+Patch0:         %{name}.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20210409
 BuildRequires:  ocamlfind(cudf)
 
 %description

@@ -1,0 +1,11 @@
+--- a/src/glpk/draft/glpios01.c
++++ b/src/glpk/draft/glpios01.c
+@@ -1490,7 +1490,7 @@ int ios_add_row(glp_tree *tree, IOSPOOL
+ #ifdef NEW_LOCAL /* 02/II-2018 */
+ IOSCUT *ios_find_row(IOSPOOL *pool, int i)
+ {     /* find row (constraint) in the cut pool */
+-      xassert(0);
++      xassert(0); return NULL;
+ }
+ #else
+ IOSCUT *ios_find_row(IOSPOOL *pool, int i)

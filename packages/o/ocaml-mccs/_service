@@ -1,8 +1,9 @@
 <services>
   <service mode="disabled" name="tar_scm">
-    <!-- 1.1+10 -->
-    <param name="revision">d8d36a6903aedc29e7c7d2dbbc93081e46ce782f</param>
+    <param name="filename">ocaml-mccs</param>
+    <param name="revision">b46f1df8d9ef9dfe7c153cc10198a0b1ff2fca36</param>
     <param name="scm">git</param>
+    <param name="submodules">disable</param>
     <param name="url">https://github.com/AltGr/ocaml-mccs.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
