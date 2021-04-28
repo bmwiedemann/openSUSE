@@ -1,0 +1,113 @@
+--- a/CHANGES.md
++++ b/CHANGES.md
+@@ -1,6 +1,3 @@
+-v0.8.9 2020-09-23 Zagreb
+-------------------------
+-
+ * Fix `Dump.{iter_bindings,hashtbl}` which since 0.8.7 no longer 
+   prints seperators. Thanks to Edwin Török for the patch.
+ * Open the result of `Fmt.error_msg` to make it easier
+--- /dev/null
++++ b/dune-project
+@@ -0,0 +1,2 @@
++(lang dune 1.0)
++(name fmt)
+--- /dev/null
++++ b/fmt.opam
+@@ -0,0 +1,35 @@
++opam-version: "2.0"
++maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
++authors: [ "The fmt programmers" ]
++homepage: "https://erratique.ch/software/fmt"
++doc: "https://erratique.ch/software/fmt"
++dev-repo: "git+https://github.com/dune-universe/fmt.git"
++bug-reports: "https://github.com/dbuenzli/fmt/issues"
++tags: [ "string" "format" "pretty-print" "org:erratique" ]
++license: "ISC"
++build: [
++  [ "dune" "build" "-p" name "-j" jobs ]
++]
++run-test: [
++  [ "dune" "runtest" "-p" name "-j" jobs ]
++]
++depends: [
++  "dune"
++  "ocaml" {>= "4.07.0"}
++  "stdlib-shims"
++]
++depopts: [ "base-unix" "cmdliner" ]
++conflicts: [ "cmdliner" {< "0.9.8"} ]
++synopsis: "OCaml Format pretty-printer combinators"
++description: """
++Fmt exposes combinators to devise `Format` pretty-printing functions.
++Fmt depends only on the OCaml standard library. The optional `Fmt_tty`
++library that allows to setup formatters for terminal color output
++depends on the Unix library. The optional `Fmt_cli` library that
++provides command line support for Fmt depends on [`Cmdliner`][cmdliner].
++Fmt is distributed under the ISC license.
++[cmdliner]: http://erratique.ch/software/cmdliner
++"""
++url {
++  src: "git+https://github.com/dune-universe/fmt#duniverse-v0.8.9"
++}
+--- a/opam
++++ /dev/null
+@@ -1,25 +0,0 @@
+-opam-version: "2.0"
+-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+-authors: [ "The fmt programmers" ]
+-homepage: "https://erratique.ch/software/fmt"
+-doc: "https://erratique.ch/software/fmt"
+-dev-repo: "git+https://erratique.ch/repos/fmt.git"
+-bug-reports: "https://github.com/dbuenzli/fmt/issues"
+-tags: [ "string" "format" "pretty-print" "org:erratique" ]
+-license: "ISC"
+-depends: [
+-  "ocaml" {>= "4.05.0"}
+-  "ocamlfind" {build}
+-  "ocamlbuild" {build}
+-  "topkg" {build & >= "0.9.0"}
+-  # Can be removed once ocaml >= 4.07
+-  "seq"
+-  "stdlib-shims"
+-]
+-depopts: [ "base-unix" "cmdliner" ]
+-conflicts: [ "cmdliner" {< "0.9.8"} ]
+-build: [[
+-  "ocaml" "pkg/pkg.ml" "build"
+-          "--dev-pkg" "%{pinned}%"
+-          "--with-base-unix" "%{base-unix:installed}%"
+-          "--with-cmdliner" "%{cmdliner:installed}%" ]]
+--- /dev/null
++++ b/src/dune
+@@ -0,0 +1,30 @@
++(library
++ (name fmt)
++ (public_name fmt)
++ (libraries result seq stdlib-shims)
++ (modules fmt)
++ (flags :standard -w -3-6-27-34-50)
++ (wrapped false))
++
++(library
++ (name fmt_tty)
++ (public_name fmt.tty)
++ (libraries unix fmt)
++ (modules fmt_tty)
++ (flags :standard -w -3-6-27)
++ (wrapped false))
++
++(library
++ (name fmt_cli)
++ (public_name fmt.cli)
++ (libraries fmt cmdliner)
++ (modules fmt_cli)
++ (flags :standard -w -3-6-27)
++ (wrapped false))
++
++(library
++ (name fmt_top)
++ (public_name fmt.top)
++ (libraries compiler-libs.toplevel fmt)
++ (modules fmt_top)
++ (wrapped false))
