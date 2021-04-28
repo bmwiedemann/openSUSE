@@ -1,0 +1,8 @@
+<package name="ocaml-variantslib" project="openSUSE:Factory">
+  <title>Variants as first class values</title>
+  <description>OCaml variants as first class values
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-variantslib"/>
+  <url>https://opam.ocaml.org/packages/variantslib</url>
+</package>

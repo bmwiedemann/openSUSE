@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5763cbb6b2d1238686ff8a61f5f6b926</srcmd5>
+    <version>0.14.0</version>
+    <time>1619653040</time>
+    <user>dimstar_suse</user>
+    <comment>new BuildRequires for ocaml-ppx_variants_conv</comment>
+    <requestid>885042</requestid>
+  </revision>
+</revisionlist>
