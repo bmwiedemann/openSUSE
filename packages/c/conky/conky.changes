@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 26 15:27:02 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.2:
+  * Add support for Intel backlight
+  * Fix non-IPV6 build (#1033)
+  * Code cleanup
+
+-------------------------------------------------------------------
 Thu Mar  4 15:57:16 UTC 2021 - malcolmlewis@opensuse.org
 
 - Updated to version 1.12.1:

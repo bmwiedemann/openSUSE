@@ -25,7 +25,7 @@
 %bcond_with    xmms2
 %endif
 Name:           conky
-Version:        1.12.1
+Version:        1.12.2
 Release:        0
 Summary:        A System Monitor
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT
