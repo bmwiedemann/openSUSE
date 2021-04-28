@@ -718,4 +718,12 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
   See http://www.simplesystems.org/libtiff/v4.2.0.html for more.</comment>
     <requestid>859053</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>06602ea2c8412f1cb02a61d13066a790</srcmd5>
+    <version>4.3.0</version>
+    <time>1619652996</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888526</requestid>
+  </revision>
 </revisionlist>

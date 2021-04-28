@@ -1,7 +1,7 @@
 #
 # spec file for package tiff
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define asan_build 0
 %define debug_build 0
 Name:           tiff
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Tools for Converting from and to the Tagged Image File Format
 License:        HPND

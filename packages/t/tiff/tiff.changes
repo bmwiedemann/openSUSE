@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 26 11:37:21 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- version update to 4.3.0
+  * Build and usage of the library and its utilities requires a C99
+    capable compiler.
+  * New optional codec for the LERC (Limited Error Raster Compression)
+    compression scheme. To have it available, configure libtiff against
+    the SDK available at https://github.com/esri/lerc
+  * Removal of unused, or now useless due to C99 availability,
+    functions in port/
+  * tiffcmp: fix comparaison with pixels that are
+    fractional number of bytes
+  * tiff2ps: exit the loop in case of error
+  * tiff2pdf: check that tiff_datasize fits in a signed tsize_t
+
+-------------------------------------------------------------------
 Mon Dec 28 16:02:16 UTC 2020 - pgajdos@suse.com
 
 - version update to 4.2.0
