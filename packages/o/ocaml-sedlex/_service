@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-sedlex</param>
-    <param name="revision">25c0dbd82c7fc5d91102f5bd21db1411f2c46323</param>
+    <param name="revision">f39c7e4a6e6d4ad2f443a10be80438a476e10b8b</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml-community/sedlex.git</param>
