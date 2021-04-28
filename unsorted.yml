@@ -2723,6 +2723,7 @@ unsorted:
   - deepin-dock-devel 
   - deepin-editor 
   - deepin-editor-lang 
+  - deepin-feature-enable 
   - deepin-file-manager 
   - deepin-file-manager-dbus 
   - deepin-file-manager-devel 
@@ -9556,7 +9557,7 @@ unsorted:
   - libbitcoinconsensus0 
   - libbitmask-devel 
   - libbitmask1 
-  - libbitstream1: [x86_64] 
+  - libbitstream2: [x86_64] 
   - libblacs2-mvapich2 
   - libblacs2-mvapich2-devel 
   - libblacs2-mvapich2-devel-static 
@@ -11849,6 +11850,7 @@ unsorted:
   - libmirage-data 
   - libmirage-devel 
   - libmirage-lang 
+  - libmirage-vala 
   - libmirage11 
   - libmirisdr-devel 
   - libmirisdr0 
@@ -12253,7 +12255,7 @@ unsorted:
   - libonnxifi_dummy 
   - liboop-devel 
   - liboop4 
-  - libopae-c1: [x86_64] 
+  - libopae-c2: [x86_64] 
   - libopagent1 
   - libopagent1-32bit: [x86_64] 
   - libopal-devel 
@@ -18225,6 +18227,14 @@ unsorted:
   - patterns-ceph-containers-ceph_base: [x86_64] 
   - patterns-cinnamon-cinnamon 
   - patterns-cinnamon-cinnamon_basis 
+  - patterns-deepin-deepin 
+  - patterns-deepin-deepin_admin 
+  - patterns-deepin-deepin_basis 
+  - patterns-deepin-deepin_internet 
+  - patterns-deepin-deepin_multimedia 
+  - patterns-deepin-deepin_office 
+  - patterns-deepin-deepin_office_opt 
+  - patterns-deepin-deepin_utilities 
   - patterns-desktop-technical_writing 
   - patterns-devel-C-C++-devel_C_C++ 
   - patterns-devel-base-devel_basis 
@@ -20987,6 +20997,7 @@ unsorted:
   - python3-dnf-plugin-versionlock 
   - python3-dnf-plugins-core 
   - python3-dnf-plugins-extras-common 
+  - python3-dogpile.cache 
   - python3-ec2imgutils 
   - python3-ec2metadata 
   - python3-espressomd 
@@ -21317,7 +21328,6 @@ unsorted:
   - python36-HeapDict 
   - python36-IMAPClient 
   - python36-IMDbPY 
-  - python36-JPype1 
   - python36-Jinja2 
   - python36-Js2Py 
   - python36-JsonWeb 
@@ -21428,7 +21438,6 @@ unsorted:
   - python36-Telethon 
   - python36-Tempita 
   - python36-TermRecord 
-  - python36-Theano 
   - python36-Trolly 
   - python36-Trololio 
   - python36-Twisted 
@@ -23140,8 +23149,6 @@ unsorted:
   - python36-pyfuse3 
   - python36-pygal 
   - python36-pygaljs 
-  - python36-pygame 
-  - python36-pygame-devel 
   - python36-pygerrit2 
   - python36-pygit2 
   - python36-pyglet 
@@ -23245,7 +23252,6 @@ unsorted:
   - python36-pytest 
   - python36-pytest-aiofiles 
   - python36-pytest-aiohttp 
-  - python36-pytest-arraydiff 
   - python36-pytest-astropy 
   - python36-pytest-astropy-header 
   - python36-pytest-asyncio 
@@ -23318,6 +23324,7 @@ unsorted:
   - python36-pytest-super-check 
   - python36-pytest-svn 
   - python36-pytest-testconfig 
+  - python36-pytest-testinfra 
   - python36-pytest-timeout 
   - python36-pytest-tldr 
   - python36-pytest-toolbox 
@@ -23540,7 +23547,6 @@ unsorted:
   - python36-rnginline 
   - python36-robot-detection 
   - python36-robotframework 
-  - python36-roifile 
   - python36-rollbar 
   - python36-roman 
   - python36-rope 
@@ -23548,7 +23554,6 @@ unsorted:
   - python36-rpm 
   - python36-rpmfile 
   - python36-rpmlb 
-  - python36-rpy2 
   - python36-rpyc 
   - python36-rq 
   - python36-rsa 
@@ -23651,7 +23656,6 @@ unsorted:
   - python36-sniffio 
   - python36-snimpy 
   - python36-snowballstemmer 
-  - python36-snuggs 
   - python36-social-auth-app-django 
   - python36-social-auth-core 
   - python36-socketIO-client-nexus 
@@ -23776,7 +23780,6 @@ unsorted:
   - python36-thespian 
   - python36-threadpoolctl 
   - python36-three-merge 
-  - python36-threevis 
   - python36-thrift 
   - python36-thriftpy2 
   - python36-timeout-decorator 
@@ -23797,8 +23800,6 @@ unsorted:
   - python36-toolz 
   - python36-toposort 
   - python36-topy 
-  - python36-torch: [x86_64] 
-  - python36-torch-devel: [x86_64] 
   - python36-torchvision: [x86_64] 
   - python36-tornado 
   - python36-tornado5 
@@ -23868,7 +23869,6 @@ unsorted:
   - python36-unpaddedbase64 
   - python36-unsync 
   - python36-untokenize 
-  - python36-unyt 
   - python36-uritemplate 
   - python36-uritools 
   - python36-url-normalize 
@@ -25022,7 +25022,6 @@ unsorted:
   - python38-docrepr 
   - python38-docutils 
   - python38-docutils-ast-writer 
-  - python38-dogpile.cache 
   - python38-dogslow 
   - python38-dominate 
   - python38-dotmap 
@@ -26190,6 +26189,7 @@ unsorted:
   - python38-pytest-super-check 
   - python38-pytest-svn 
   - python38-pytest-testconfig 
+  - python38-pytest-testinfra 
   - python38-pytest-timeout 
   - python38-pytest-tldr 
   - python38-pytest-toolbox 
@@ -27000,6 +27000,7 @@ unsorted:
   - python39-HTTPolice 
   - python39-HeapDict 
   - python39-IMAPClient 
+  - python39-JPype1 
   - python39-Jinja2 
   - python39-Js2Py 
   - python39-JsonWeb 
@@ -27830,6 +27831,7 @@ unsorted:
   - python39-django-allauth 
   - python39-django-appconf 
   - python39-django-args 
+  - python39-django-assets 
   - python39-django-attachments 
   - python39-django-auth-ldap 
   - python39-django-avatar 
@@ -27945,6 +27947,7 @@ unsorted:
   - python39-dtaidistance 
   - python39-dtfabric 
   - python39-duckduckgo2 
+  - python39-dukpy 
   - python39-dukpy-kovidgoyal 
   - python39-dulwich 
   - python39-dynaconf 
@@ -28138,6 +28141,7 @@ unsorted:
   - python39-google-cloud-kms 
   - python39-google-cloud-speech 
   - python39-google-cloud-translate 
+  - python39-google-pasta 
   - python39-google-resumable-media 
   - python39-googleapis-common-protos 
   - python39-googlemaps 
@@ -28351,6 +28355,7 @@ unsorted:
   - python39-jsonxs 
   - python39-junit-xml 
   - python39-junitxml 
+  - python39-junos-eznc 
   - python39-jupyter-client 
   - python39-jupyter-core 
   - python39-jupyter-jupyterlab-server 
@@ -28564,6 +28569,11 @@ unsorted:
   - python39-mysql-connector-python 
   - python39-mysqlclient 
   - python39-nagiosplugin 
+  - python39-napalm 
+  - python39-napalm-arubaos-switch 
+  - python39-napalm-asa 
+  - python39-napalm-digineo-procurve 
+  - python39-napalm-procurve 
   - python39-natsort 
   - python39-nautilus 
   - python39-nautilus-devel 
@@ -28599,6 +28609,7 @@ unsorted:
   - python39-nocaselist 
   - python39-node-semver 
   - python39-nodeenv 
+  - python39-nornir 
   - python39-nose 
   - python39-nose-cov 
   - python39-nose-cover3 
@@ -28939,6 +28950,8 @@ unsorted:
   - python39-pyfuse3 
   - python39-pygal 
   - python39-pygaljs 
+  - python39-pygame 
+  - python39-pygame-devel 
   - python39-pygerrit2 
   - python39-pygit2 
   - python39-pyglet 
@@ -29124,6 +29137,7 @@ unsorted:
   - python39-pytest-super-check 
   - python39-pytest-svn 
   - python39-pytest-testconfig 
+  - python39-pytest-testinfra 
   - python39-pytest-timeout 
   - python39-pytest-tldr 
   - python39-pytest-toolbox 
@@ -29350,6 +29364,7 @@ unsorted:
   - python39-rnginline 
   - python39-robot-detection 
   - python39-robotframework 
+  - python39-roifile 
   - python39-rollbar 
   - python39-roman 
   - python39-rope 
@@ -29358,6 +29373,7 @@ unsorted:
   - python39-rpm 
   - python39-rpmfile 
   - python39-rpmlb 
+  - python39-rpy2 
   - python39-rpyc 
   - python39-rq 
   - python39-rsa 
@@ -29392,6 +29408,7 @@ unsorted:
   - python39-scikit-hep-testdata 
   - python39-scikit-image 
   - python39-scikit-learn 
+  - python39-scikit-sound 
   - python39-scikit-sparse: [x86_64] 
   - python39-scikit-umfpack: [x86_64] 
   - python39-scipy 
@@ -29473,6 +29490,7 @@ unsorted:
   - python39-sniffio 
   - python39-snimpy 
   - python39-snowballstemmer 
+  - python39-snuggs 
   - python39-social-auth-app-django 
   - python39-social-auth-core 
   - python39-socketIO-client-nexus 
@@ -29609,6 +29627,7 @@ unsorted:
   - python39-thewalrus: [x86_64] 
   - python39-threadpoolctl 
   - python39-three-merge 
+  - python39-threevis 
   - python39-thrift 
   - python39-thriftpy2 
   - python39-tifffile 
@@ -29631,6 +29650,8 @@ unsorted:
   - python39-toolz 
   - python39-toposort 
   - python39-topy 
+  - python39-torch: [x86_64] 
+  - python39-torch-devel: [x86_64] 
   - python39-tornado 
   - python39-tornado5 
   - python39-tornado6 
@@ -29696,6 +29717,7 @@ unsorted:
   - python39-unpaddedbase64 
   - python39-unsync 
   - python39-untokenize 
+  - python39-unyt 
   - python39-uproot 
   - python39-uritemplate 
   - python39-uritools 
@@ -29758,6 +29780,7 @@ unsorted:
   - python39-wcwidth 
   - python39-web.py 
   - python39-web_cache 
+  - python39-webassets 
   - python39-webcolors 
   - python39-webencodings 
   - python39-weblate-language-data 
