@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jan 21 21:21:21 UTC 2021 - ohering@suse.de
+
+- remove dependency to ounit via _multibuild
+
+-------------------------------------------------------------------
 Sun Apr 12 12:12:12 UTC 2020 - ohering@suse.de
 
 - use dune macros from ocaml-rpm-macros

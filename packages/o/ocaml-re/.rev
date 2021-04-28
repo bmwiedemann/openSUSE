@@ -41,4 +41,12 @@ It is a dependency of opam.</comment>
   * Add seq based iterators</comment>
     <requestid>793520</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ff3ffbd72f626838cfa4325757860a77</srcmd5>
+    <version>1.9.0</version>
+    <time>1619653009</time>
+    <user>dimstar_suse</user>
+    <comment>- remove dependency to ounit via _multibuild</comment>
+    <requestid>867945</requestid>
+  </revision>
 </revisionlist>
