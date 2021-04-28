@@ -1,10 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/ocaml/stdlib-shims.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">0.1.0</param>
-    <param name="revision">master</param>
     <param name="filename">ocaml-stdlib-shims</param>
+    <param name="revision">fb6815e5d745f07fd567c11671149de6ef2e74c8</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/ocaml/stdlib-shims.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
