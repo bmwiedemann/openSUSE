@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  9 09:09:09 UTC 2021 - ohering@suse.de
+
+- Require current ocaml-rpm-macros
+- Update to upstream version 1.9.1
+   Fix an incomaptibility with ocaml-4.13
+   Switch from m4 to sed
+- Remove ocaml_native_compiler conditional
+  build native target unconditionally
+
+-------------------------------------------------------------------
 Thu Feb 20 20:20:20 UTC 2020 - ohering@suse.de
 
 - Require current ocaml-rpm-macros

@@ -150,4 +150,17 @@
 - Remove unused dependency to ocamlbuild in preparation of ocamlbuild removal</comment>
     <requestid>778860</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f8388f93cbe0dffbf7db92f6804c1a2d</srcmd5>
+    <version>1.9.1</version>
+    <time>1619653054</time>
+    <user>dimstar_suse</user>
+    <comment>- Require current ocaml-rpm-macros
+- Update to upstream version 1.9.1
+   Fix an incomaptibility with ocaml-4.13
+   Switch from m4 to sed
+- Remove ocaml_native_compiler conditional
+  build native target unconditionally</comment>
+    <requestid>887307</requestid>
+  </revision>
 </revisionlist>
