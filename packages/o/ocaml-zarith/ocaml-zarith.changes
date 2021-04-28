@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  9 09:09:09 UTC 2021 - ohering@suse.de
+
+- Upgrade to version 1.12
+  * PR #79: fast path in OCaml (instead of assembly language)
+  * PR #94: remove source preprocessing and simplify configuration
+  * PR #93: fix parallel build
+  * PR #92: fix benchmark for subtraction
+
+-------------------------------------------------------------------
 Thu Jan 14 14:14:14 UTC 2021 - ohering@suse.de
 
 - Initial version 1.11

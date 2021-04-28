@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-zarith
-Version:        1.11
+Version:        1.12
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Arbitrary precision integers
@@ -27,10 +27,11 @@ URL:            https://opam.ocaml.org/packages/zarith
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         %{name}.patch
 BuildRequires:  gmp-devel
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210114
-BuildRequires:  ocaml(ocaml_base_version) >= 4.05
+BuildRequires:  ocaml-dune >= 2.8
+BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml(ocaml_base_version) >= 4.04
 BuildRequires:  ocamlfind(dune.configurator)
+BuildRequires:  ocamlfind(ocamldoc)
 BuildRequires:  ocamlfind(str)
 
 %description

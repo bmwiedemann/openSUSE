@@ -1,813 +1,214 @@
 --- /dev/null
-+++ b/config/discover.ml
-@@ -0,0 +1,124 @@
-+module C = Configurator.V1
-+module OV = Ocaml_version
-+open Printf
-+
-+(* Returns arch, ccdef, opt (cc/as)  *)
-+let x86_64_def =
-+  "x86_64", ["-DZ_ELF";"-DZ_DOT_LABEL_PREFIX"], []
-+
-+let i686_def =
-+  "i686", ["-DZ_ELF";"-DZ_DOT_LABEL_PREFIX"], []
-+
-+let cygwin_def word_size =
-+  match word_size with
-+  | "64" -> "x86_64_mingw64", ["-DZ_COFF"], []
-+  | _ -> "i686", ["-DZ_UNDERSCORE_PREFIX";"-DZ_COFF"], []
-+
-+let darwin_def word_size =
-+  match word_size with
-+  | "64" -> "x86_64", ["-DZ_UNDERSCORE_PREFIX";"-DZ_MACOS"], []
-+  | _ -> failwith "Darwin only supports 64-bit compilation"
-+
-+let arm_def = "arm", [], []
-+
-+let no_def = "none", [], []
-+
-+let extract_from_target word_size str =
-+  let reg_all = "\\(.*\\)"
-+  and reg_or = "\\|"
-+  in
-+  let x86_64 = Str.regexp ("x86_64"^reg_all^"-linux-gnu"^reg_or^"x86_64-kfreebsd-gnu")
-+  and i686 = Str.regexp ("i486-"^reg_all^"linux-gnu"^reg_or^"i686-"^reg_all^"linux-gnu"^reg_or^"i486-kfreebsd-gnu")
-+  and cygwin = Str.regexp ("i686-"^reg_all^"cygwin")
-+  and darwin = Str.regexp ("i386-"^reg_all^"darwin"^reg_all^reg_or^"x86_64-"^reg_all^"darwin"^reg_all)
-+  and arm = Str.regexp ("armv7"^reg_all^"-gnueabi")
-+  in
-+  if Str.string_match x86_64 str 0
-+  then x86_64_def
-+  else if Str.string_match i686 str 0
-+  then i686_def
-+  else if Str.string_match cygwin str 0
-+  then cygwin_def word_size
-+  else if Str.string_match darwin str 0
-+  then darwin_def word_size
-+  else if Str.string_match arm str 0
-+  then arm_def
-+  else
-+       no_def
-+
-+
-+let inc_gmp = {|
-+  #include <gmp.h>
-+  int main() {return 0;}
-+|}
-+
-+let inc_mpir = {|
-+  #include <mpir.h>
-+  int main() {return 0;}
-+|}
-+
-+
-+let check_code c code lib = C.c_test c code ~link_flags:["-l"^lib]
-+
-+let check_gmp c = match check_code c inc_gmp "gmp" with
-+  | true -> Some ("-DHAS_GMP", "-lgmp")
-+  | false -> None
-+
-+let check_mpir c = match check_code c inc_mpir "mpir" with
-+  | true -> Some ("-DHAS_MPIR", "-lmpir")
-+  | false -> None
-+
-+let check_gmp_or_mpir_raw c =
-+  if not(C.c_test c inc_gmp || C.c_test c inc_mpir)
-+  then failwith "Couldn't find GMP or MPIR"
-+
-+
-+let check_gmp_or_mpir c =
-+  match check_gmp c with
-+  | None -> check_mpir c
-+  | a -> a
-+
-+let param_cflags = ref []
-+let param_ldflags = ref []
-+
-+let set_cflags str = param_cflags := String.split_on_char ' ' str
-+let set_ldflags str = param_ldflags := String.split_on_char ' ' str
-+
-+let arg_cflags = ("-cflags", Arg.String set_cflags, "custom C flags")
-+let arg_ldflags = ("-ldflags", Arg.String set_ldflags, "custom ld flags")
-+
-+let args = [arg_cflags; arg_ldflags]
-+
-+let () =
-+  C.main ~args ~name:"zarith" (fun c ->
-+    let word_size = C.ocaml_config_var_exn c "word_size" in
-+    let machine, arch_defines, opt = C.ocaml_config_var_exn c "target" |> extract_from_target word_size in
-+    let ov = C.ocaml_config_var_exn c "version" |> OV.of_string_exn in
-+    let stdlib_include = sprintf "-I%s" (C.ocaml_config_var_exn c "standard_library") in
-+    let cflags = stdlib_include :: ["-O3";"-Wall";"-Wextra"] in
-+    let defines = ["-DZ_OCAML_COMPARE_EXT"; "-DZ_OCAML_HASH"] in
-+    let defines, ldflags =match !param_cflags, !param_ldflags with
-+    | [], [] -> begin
-+                  match check_gmp_or_mpir c with
-+                  | Some (cflag,ldflag) -> cflag :: defines, [ldflag]
-+                  | None -> failwith "Cannot find GMP nor MPIR"
-+                end
-+    | c_flags, ld_flags ->  begin
-+                  match check_gmp_or_mpir c with
-+                  | Some (cflag,_) -> cflag :: defines @ c_flags, ld_flags
-+                  | None -> failwith "Cannot find GMP nor MPIR"
-+                end
-+    in
-+    let c_api_defines =
-+      match Ocaml_version.(compare ov Releases.v4_08) with
-+      |(-1) -> ["-DZ_OCAML_LEGACY_CUSTOM_OPERATIONS"]
-+      |_ -> [] in
-+    let defines = defines @ c_api_defines @ arch_defines in
-+    let cflags = cflags @ opt @ defines in
-+    let asflags = defines @ opt in
-+    C.Flags.write_sexp "cflags.sxp" cflags;
-+    C.Flags.write_lines "asflags" asflags;
-+    C.Flags.write_lines "cflags" cflags;
-+    C.Flags.write_sexp "ldflags.sxp" ldflags;
-+    C.Flags.write_lines "ldflags" ldflags;
-+    C.Flags.write_lines "arch" [machine])
---- /dev/null
-+++ b/config/dune
-@@ -0,0 +1,10 @@
-+(executable
-+ (name discover)
-+ (libraries str dune.configurator))
-+
-+(rule
-+ (targets ldflags.sxp cflags.sxp cflags asflags arch ldflags)
-+ (deps discover.exe)
-+ (action (run ./discover.exe)))
-+
-+
---- /dev/null
-+++ b/config/ocaml_version.ml
-@@ -0,0 +1,253 @@
-+(* Copyright (c) 2017 Anil Madhavapeddy <anil@recoil.org>
-+ *
-+ * Permission to use, copy, modify, and distribute this software for any
-+ * purpose with or without fee is hereby granted, provided that the above
-+ * copyright notice and this permission notice appear in all copies.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-+ *
-+*)
-+
-+type t = { major: int; minor: int; patch: int option; extra: string option }
-+let v ?patch ?extra major minor = { major; minor; patch; extra }
-+
-+let major { major; _ } = major
-+let minor { minor; _ } = minor
-+let patch { patch; _ } = patch
-+let extra { extra; _ } = extra
-+
-+let to_string ?(sep='+') =
-+  function
-+  | {major;minor;patch=None;extra=None} -> Printf.sprintf "%d.%02d" major minor
-+  | {major;minor;patch=Some patch;extra=None} -> Printf.sprintf "%d.%02d.%d" major minor patch
-+  | {major;minor;patch=Some patch;extra=Some extra} -> Printf.sprintf "%d.%02d.%d%c%s" major minor patch sep extra
-+  | {major;minor;patch=None;extra=Some extra} -> Printf.sprintf "%d.%02d%c%s" major minor sep extra
-+
-+let parse s =
-+  try Scanf.sscanf s "%d.%d.%d+%s" (fun major minor patch extra -> v ~patch ~extra major minor)
-+  with End_of_file | Scanf.Scan_failure _ -> begin
-+      try Scanf.sscanf s "%d.%d+%s" (fun major minor extra -> v ~extra major minor)
-+      with End_of_file | Scanf.Scan_failure _ -> begin
-+          try Scanf.sscanf s "%d.%d.%d" (fun major minor patch -> v ~patch major minor)
-+          with End_of_file | Scanf.Scan_failure _ -> begin
-+              Scanf.sscanf s "%d.%d" (fun major minor -> v major minor)
-+            end
-+        end
-+    end
-+
-+let of_string s =
-+  try Ok (parse s) with
-+  | _ -> Error (`Msg (Printf.sprintf "Unable to parse OCaml version '%s'" s))
-+
-+let of_string_exn s =
-+  try parse s with
-+  | _ -> raise (Invalid_argument (Printf.sprintf "Unable to parse OCaml version '%s'" s))
-+
-+let pp ppf v = Format.pp_print_string ppf (to_string v)
-+
-+let ( ++ ) x fn =
-+  match x with
-+  | 0 -> fn ()
-+  | r -> r
-+
-+let compare {major; minor; patch; extra} a =
-+  compare major a.major ++ fun () ->
-+    compare minor a.minor ++ fun () ->
-+      compare patch a.patch ++ fun () ->
-+        compare extra a.extra
-+
-+let sys_version = of_string_exn Sys.ocaml_version
-+
-+let with_variant t extra = { t with extra }
-+let without_variant t = { t with extra=None }
-+let with_patch t patch = { t with patch }
-+let without_patch t = { t with patch=None }
-+let with_just_major_and_minor t = { t with patch=None; extra=None }
-+
-+module Releases = struct
-+  let v4_00_0 = of_string_exn "4.00.0"
-+  let v4_00_1 = of_string_exn "4.00.1"
-+  let v4_00 = v4_00_1
-+
-+  let v4_01_0 = of_string_exn "4.01.0"
-+  let v4_01 = v4_01_0
-+
-+  let v4_02_0 = of_string_exn "4.02.0"
-+  let v4_02_1 = of_string_exn "4.02.1"
-+  let v4_02_2 = of_string_exn "4.02.2"
-+  let v4_02_3 = of_string_exn "4.02.3"
-+  let v4_02 = v4_02_3
-+
-+  let v4_03_0 = of_string_exn "4.03.0"
-+  let v4_03 = v4_03_0
-+
-+  let v4_04_0 = of_string_exn "4.04.0"
-+  let v4_04_1 = of_string_exn "4.04.1"
-+  let v4_04_2 = of_string_exn "4.04.2"
-+  let v4_04 = v4_04_2
-+
-+  let v4_05_0 = of_string_exn "4.05.0"
-+  let v4_05 = v4_05_0
-+
-+  let v4_06_0 = of_string_exn "4.06.0"
-+  let v4_06_1 = of_string_exn "4.06.1"
-+  let v4_06 = v4_06_1
-+
-+  let v4_07_0 = of_string_exn "4.07.0"
-+  let v4_07_1 = of_string_exn "4.07.1"
-+  let v4_07 = v4_07_1
-+
-+  let v4_08_0 = of_string_exn "4.08.0"
-+  let v4_08 = v4_08_0
-+
-+  let v4_09_0 = of_string_exn "4.09.0"
-+  let v4_09 = v4_09_0
-+
-+  let all_patches = [
-+    v4_00_1; v4_01_0; v4_02_0; v4_02_1; v4_02_2;
-+    v4_02_3; v4_03_0; v4_04_0; v4_04_1; v4_04_2;
-+    v4_05_0; v4_06_0; v4_06_1; v4_07_0; v4_07_1;
-+    v4_08_0; v4_09_0 ]
-+
-+  let all = [ v4_00; v4_01; v4_02; v4_03; v4_04;
-+              v4_05; v4_06; v4_07; v4_08; v4_09 ]
-+
-+  let recent = [ v4_02; v4_03; v4_04; v4_05; v4_06; v4_07 ]
-+
-+  let latest = v4_07
-+
-+  let dev = [ v4_08; v4_09 ]
-+
-+  let is_dev t =
-+    let t = with_just_major_and_minor t in
-+    let dev = List.map with_just_major_and_minor dev in
-+    List.mem t dev
-+
-+  let recent_with_dev = List.concat [recent; dev]
-+
-+end
-+
-+type arch = [`X86_64 | `Aarch64 | `Ppc64le | `Aarch32 ]
-+let arches = [ `X86_64; `Aarch64; `Ppc64le; `Aarch32 ]
-+
-+let string_of_arch = function
-+  | `Aarch64 -> "arm64"
-+  | `Aarch32 -> "arm32v7"
-+  | `X86_64 -> "amd64"
-+  | `Ppc64le -> "ppc64le"
-+
-+let arch_of_string = function
-+  | "arm64" | "aarch64" -> Ok `Aarch64
-+  | "amd64" | "x86_64" -> Ok `X86_64
-+  | "arm32" | "arm32v7" | "aarch32" -> Ok `Aarch32
-+  | "ppc64le" -> Ok `Ppc64le
-+  | arch -> Error (`Msg ("Unknown architecture " ^ arch))
-+
-+let arch_of_string_exn a =
-+  match arch_of_string a with
-+  | Ok a -> a
-+  | Error (`Msg m) -> raise (Invalid_argument m)
-+
-+module Since = struct
-+  let bytes = Releases.v4_03_0
-+
-+  let arch (a:arch) =
-+    match a with
-+    | `Aarch32 -> Releases.v4_06_0
-+    | `Aarch64 -> Releases.v4_05_0
-+    | `Ppc64le -> Releases.v4_06_0
-+    | `X86_64 -> Releases.v4_00_0 (* TODO obviously earlier *)
-+end
-+
-+module Has = struct
-+
-+  let bytes v =
-+    match compare Since.bytes v with
-+    |(-1) | 0 -> true
-+    |_ -> false
-+
-+  let arch (a:arch) v =
-+    match compare (Since.arch a) v with
-+    |(-1) | 0 -> true
-+    |_ -> false
-+end
-+
-+module Configure_options = struct
-+  type o = [ `Afl | `Flambda | `Default_unsafe_string | `Force_safe_string | `Frame_pointer ]
-+
-+  let to_description t = 
-+    match t with
-+    | `Afl -> "AFL (fuzzing) support"
-+    | `Flambda -> "flambda inlining"
-+    | `Default_unsafe_string -> "default to unsafe strings"
-+    | `Force_safe_string -> "force safe string mode"
-+    | `Frame_pointer -> "frame pointer"
-+
-+  let to_string t =
-+    match t with
-+    | `Afl -> "afl"
-+    | `Flambda -> "flambda"
-+    | `Default_unsafe_string -> "default-unsafe-string"
-+    | `Force_safe_string -> "force-safe-string"
-+    | `Frame_pointer -> "fp"
-+
-+  let to_configure_flag t =
-+    match t with
-+    | `Afl -> "-afl-instrument"
-+    | `Flambda -> "-flambda"
-+    | `Default_unsafe_string -> "-default-unsafe-string"
-+    | `Force_safe_string -> "-force-safe-string"
-+    | `Frame_pointer -> "-with-frame-pointer"
-+
-+end
-+
-+let compiler_variants arch {major; minor; _} =
-+    match major,minor,arch with
-+    | 4,9,`X86_64 -> [[]]
-+    | 4,9,_ -> [[]]
-+    | 4,8,`X86_64 -> [[]; [`Afl]; [`Flambda]; [`Frame_pointer]; [`Frame_pointer;`Flambda]; [`Default_unsafe_string]]
-+    | 4,8,_ -> [[]; [`Afl]; [`Flambda];[`Default_unsafe_string]]
-+    | 4,7,_ -> [[]; [`Afl]; [`Flambda]; [`Default_unsafe_string]; [`Force_safe_string]]
-+    | 4,6,_ -> [[]; [`Afl]; [`Flambda]; [`Default_unsafe_string]; [`Force_safe_string]]
-+    | 4,5,_ -> [[]; [`Afl]; [`Flambda]]
-+    | 4,4,_ -> [[]; [`Flambda]]
-+    | 4,3,_ -> [[]; [`Flambda]]
-+    | _ -> [[]]
-+
-+module Sources = struct
-+  let trunk = Releases.v4_08
-+
-+  let git_tag ({major; minor; patch; _ } as ov) =
-+    match major, minor, patch with
-+    | major, minor, _ when major = trunk.major && minor = trunk.minor -> "trunk"
-+    | _ -> to_string (with_variant ov None)
-+end
-+
-+module Opam = struct
-+
-+  module V2 = struct
-+    let name t =
-+      match t.extra with
-+      | Some extra when Releases.is_dev t -> Printf.sprintf "ocaml-variants.%s+trunk+%s" (to_string (without_variant t)) extra
-+      | Some _ -> "ocaml-variants." ^ (to_string t)
-+      | None when Releases.is_dev t -> Printf.sprintf "ocaml-variants.%s+trunk" (to_string t)
-+      | None -> "ocaml-base-compiler." ^ (to_string t)
-+
-+    let variant_switch t vs =
-+      match vs with
-+      | [] -> with_variant t None
-+      | vs ->
-+        let v = String.concat "+" (List.map Configure_options.to_string vs) in
-+        with_variant t (Some v)
-+
-+    let switches arch t =
-+      compiler_variants arch t |>
-+      List.map (fun vs -> variant_switch t vs)
-+  end
-+end
---- /dev/null
-+++ b/config/ocaml_version.mli
-@@ -0,0 +1,345 @@
-+(* Copyright (c) 2017-2018 Anil Madhavapeddy <anil@recoil.org>
-+ *
-+ * Permission to use, copy, modify, and distribute this software for any
-+ * purpose with or without fee is hereby granted, provided that the above
-+ * copyright notice and this permission notice appear in all copies.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-+ *
-+*)
-+
-+(** Manipulate, parse and generate OCaml version strings.
-+
-+    These are of the form [major.minor.patch+extra], where the
-+    [patch] and [extra] fields are optional.  *)
-+
-+type t
-+(** Type of an OCaml version string *)
-+
-+val v : ?patch:int -> ?extra:string -> int -> int -> t
-+(** [v ?patch ?extra major minor] will construct an OCaml
-+    version string with the appropriate parameters.  The
-+    [patch] and [extra] indicators are optional, but it is
-+    conventional to include a [patch] value of 0 for most
-+    recent OCaml releases. *)
-+
-+(** {2 Parsers and serializers} *)
-+
-+val to_string : ?sep:char -> t -> string
-+(** [to_string ?sep t] will convert the version [t] into
-+    a human-readable representation.  The [sep] will default
-+    to [+] which is the normal representation of extra
-+    version strings, but can be changed to another character
-+    by supplying [sep].  One such usecase is to generate
-+    Docker container tags from OCaml version strings, where
-+    only dashes and alphanumeric characters are allowed. *)
-+
-+val of_string : string -> (t, [> `Msg of string ]) result
-+(** [of_string t] will parse the version string in [t].
-+    The return value is compatible with the {!Result}
-+    combinators defined in the [rresult] library. *)
-+
-+val of_string_exn : string -> t
-+(** [of_string_exn t] behaves as {!of_string} but raises
-+    [Invalid_argument] if the string cannot be parsed. *)
-+
-+val compare : t -> t -> int
-+(** [compare a b] is the comparison function for two OCaml
-+    version strings. Returns [-1] if [a<b], [0] if they are
-+    equal and [1] if [a>b]. Comparison is done using integer
-+    comparison for the major, minor and patch versions, and
-+    lexical comparison for any extra version strings present. *)
-+
-+val pp : Format.formatter -> t -> unit
-+(** [pp fmt t] will output a human-readable version string of
-+    [t] to the [fmt] formatter. *)
-+
-+(** {2 Architecture Support }
-+    These definitions cover the CPU architectures that OCaml
-+    runs and is supported on. *)
-+
-+type arch = [ `X86_64 | `Aarch64 | `Aarch32 | `Ppc64le ]
-+(** Type of CPU architectures.
-+    TODO: This is currently an incomplete list, and lists just
-+    those used by the opam test systems. Contributions welcome
-+    to complete it. *)
-+
-+val arches : arch list
-+(** [arches] is an enumeration of all of the possible {!arch} values. *)
-+
-+val string_of_arch : arch -> string
-+(** [string_of_arch arch] will convert [arch] into a human-readable
-+    CPU architecture string.  The result will follow the
-+    {{:https://golang.org/doc/install/source#environment}GOARCH}
-+    convention used by Golang. *)
-+
-+val arch_of_string : string -> (arch, [> `Msg of string ]) result
-+(** [arch_of_string t] will parse the architecture string in [t].
-+    The return value is compatible with the {!Result}
-+    combinators defined in the [rresult] library. This function
-+    is liberal and will attempt to understand variants of the
-+    same architecture.  For example, both [aarch64] and [arm64]
-+    are parsed into {!`Aarch64}. *)
-+
-+val arch_of_string_exn: string -> arch
-+(** [arch_of_string_exn t] is the same as {!arch_of_string},
-+    except that it raises [Invalid_argument] in case of error. *)
-+
-+(** {2 Accessors} *)
-+
-+val major : t -> int
-+(** [major t] will return the major version number of an OCaml
-+    release.  For example, [of_string "4.03.0" |> major] will
-+    return [4]. *)
-+
-+val minor : t -> int
-+(** [minor t] will return the minor version number of an OCaml
-+    release.  For example, [of_string "4.03.0" |> minor] will
-+    return [3]. *)
-+
-+val patch : t -> int option
-+(** [patch t] will return the patch version number of an OCaml
-+    release.  For example, [of_string "4.03.0" |> minor] will
-+    return [Some 0]. *)
-+
-+val extra : t -> string option
-+(** [extra t] will return the additional information string of
-+    an OCaml release.
-+    For example, [of_string "4.03.0+flambda" |> extra] will
-+    return [Some "flambda"]. *)
-+
-+val with_variant : t -> string option -> t
-+(** [with_variant t extra] will return a fresh value with
-+    the extra version information in [t] to
-+    [extra], and remove it if [None] is supplied. *)
-+
-+val without_variant : t -> t
-+(** [without_variant t] is {!with_variant} [t None]. It removes
-+    any extra version information from the version string [t]. *)
-+
-+val with_patch : t -> int option -> t
-+(** [with_patch t patch] will return a fresh value with
-+    the patch number in [t] to [patch], and remove it if [None]
-+    is supplied. *)
-+
-+val without_patch : t -> t
-+(** [without_patch t] is as {!with_patch} [t None]. It removes
-+    the least significant number from the version string.
-+    This is useful for the Docker OCaml containers, which are
-+    all named without a patch number and compiled using the
-+    latest patch release (e.g. [4.06] instead of [4.06.1]). *)
-+
-+val with_just_major_and_minor : t -> t
-+(** [with_just_major_and_minor t] strips out any patch and
-+    extra version information to return the X.Y form of the
-+    OCaml release. For example, [4.08.0+trunk+flambda] will
-+    return the version representing [4.08]. *)
-+
-+(** {2 Constants } *)
-+
-+val sys_version : t
-+(** [sys_version] is the version of OCaml that this library is
-+    currently compiled with, which will be the same as
-+    {!Sys.ocaml_version}. *)
-+
-+(** Values representing official releases of OCaml. *)
-+module Releases : sig
-+
-+  val v4_00_1 : t
-+  (** Version 4.00.1 *)
-+
-+  val v4_00 : t
-+  (** Latest release in the 4.00.x series *)
-+
-+  val v4_01_0 : t
-+  (** Version 4.01.0 *)
-+
-+  val v4_01 : t
-+  (** Latest release in the 4.01.x series *)
-+
-+  val v4_02_0 : t
-+  (** Version 4.02.0 *)
-+
-+  val v4_02_1 : t
-+  (** Version 4.02.1 *)
-+
-+  val v4_02_2 : t
-+  (** Version 4.02.2 *)
-+
-+  val v4_02_3 : t
-+  (** Version 4.02.3 *)
-+
-+  val v4_02 : t
-+  (** Latest release in the 4.02.x series *)
-+
-+  val v4_03_0 : t
-+  (** Version 4.03.0 *)
-+
-+  val v4_03 : t
-+  (** Latest release in the 4.03.x series *)
-+
-+  val v4_04_0 : t
-+  (** Version 4.04.0 *)
-+
-+  val v4_04_1 : t
-+  (** Version 4.04.1 *)
-+
-+  val v4_04_2 : t
-+  (** Version 4.04.2 *)
-+
-+  val v4_04 : t
-+  (** Latest release in the 4.04.x series *)
-+
-+  val v4_05_0 : t
-+  (** Version 4.05.0 *)
-+
-+  val v4_05 : t
-+  (** Latest release in the 4.05.x series *)
-+
-+  val v4_06_0 : t
-+  (** Version 4.06.0 *)
-+
-+  val v4_06_1 : t
-+  (** Version 4.06.1 *)
-+
-+  val v4_06 : t
-+  (** Latest release in the 4.06.x series *)
-+
-+  val v4_07_0 : t
-+  (** Version 4.07.0 *)
-+
-+  val v4_07_1 : t
-+  (** Version 4.07.1 *)
-+
-+  val v4_07 : t
-+  (** Latest release in the 4.07.x series *)
-+
-+  val v4_08_0 : t
-+  (** Versior 4.08.0 *)
-+
-+  val v4_08 : t
-+  (** Latest release in the 4.08.x series *)
-+
-+  val v4_09_0 : t
-+  (** Version 4.09.0 *)
-+
-+  val v4_09 : t
-+  (** Latest release in the 4.09.x series *)
-+
-+  val all_patches : t list
-+  (** [all_patches] is an enumeration of all OCaml releases, including every patch release.
-+      To get the major and minor releases with the latest patch version, use {!all} instead. *)
-+
-+  val all : t list
-+  (** [all] is an enumeration of all the OCaml releases, with the latest patch versions in
-+      each major and minor release. *)
-+
-+  val dev : t list
-+  (** Enumeration of the latest development OCaml releases.
-+      This is usually just one, but may include two active dev
-+      versions if a release branch has just been cut. *)
-+
-+  val latest: t
-+  (** [latest] is the most recent stable release of OCaml. *)
-+
-+  val recent : t list
-+  (** [recent] is the last five releases of OCaml, with each at the latest patch level.
-+      This is the set that is most reliably tested in the opam package repository. *)
-+
-+  val recent_with_dev : t list
-+  (** [recent_with_dev] are the last four stable releases of OCaml and the latest
-+      development branches. *)
-+
-+  val is_dev : t -> bool
-+  (** [is_dev t] will return true if the release [t] represents a development
-+      release instead of a stable archive. *)
-+end
-+
-+(** Values relating to the source code and version control of OCaml *)
-+module Sources : sig
-+
-+  val trunk : t
-+  (** [trunk] is the version of the development head of the OCaml git repository. *)
-+
-+  val git_tag : t -> string
-+  (* [git_tag v] returns the Git tag or branch that corresponds to the release
-+     [v] of OCaml.  If [v] does not have a patch releases, then it will be a branch
-+     that points to the relevant release branch. *)
-+end
-+
-+(** {2 Feature Selection} *)
-+
-+(** Determine which release a feature or architecture first appeared in. *)
-+module Since : sig
-+
-+  val bytes: t
-+  (** [bytes] is the release that the {!Bytes} module first appeared in. *)
-+
-+  val arch : arch -> t 
-+  (** [arch a] will return the first release of OCaml that the architecture
-+      was reasonably stably supported on. *)
-+end
-+
-+(** Test whether a release has a given feature. *)
-+module Has : sig
-+
-+  val bytes : t -> bool
-+  (** [bytes t] will return {!true} if that release has a {!bytes} type.
-+      Note that opam provides a [bytes] compatibility package for older releases. *)
-+
-+  val arch : arch -> t -> bool
-+  (** [arch a t] will return {!true} if architecture [a] is supported on release [t]. *)
-+end
-+
-+(** Configuration parameters that affect the behaviour of OCaml at compiler-build-time. *)
-+module Configure_options : sig
-+
-+  type o =
-+    [ `Afl
-+    | `Default_unsafe_string
-+    | `Flambda
-+    | `Force_safe_string
-+    | `Frame_pointer ]
-+  (** Configuration options available at compiler build time. *)
-+
-+  val to_string : o -> string
-+  (** [to_string o] returns a compact representation of {!o} suitable for use in opam version strings. *)
-+
-+  val to_description : o -> string
-+  (** [to_description o] returns a human-readable representation of {!o}. *)
-+
-+  val to_configure_flag : o -> string
-+  (** [to_configure_flag o] returns a string that can be passed to OCaml's [configure] script to activate that feature. *)
-+end
-+
-+val compiler_variants : arch -> t -> Configure_options.o list list
-+(** [compiler_variants v] returns a list of configuration options that are available and useful
-+    for version [v] of the compiler. *)
-+
-+(** Opam compiler switches.
-+    These are available from the public {{:https://github.com/ocaml/opam-repository}opam-repository}. *)
-+module Opam : sig
-+
-+  (** Opam 2.0 functions *)
-+  module V2 : sig
-+    val name : t -> string
-+    (** [package t] returns the opam2 package for that compiler version. *)
-+
-+    val variant_switch : t -> Configure_options.o list -> t
-+    (** [variant_switch t cs] returns an OCaml version [t] whose
-+        variant version field reflects the configuration options in [cs] *)
-+
-+    val switches : arch -> t -> t list
-+    (** [switches arch t] returns the list of opam switches that
-+        are available for that compiler and architecture combination.
-+        For example, an x86_64 one would yield a list that includes
-+        flambda and the flambda-with-frame-pointer combinations. *)
-+
-+  end
-+end
---- /dev/null
 +++ b/dune
-@@ -0,0 +1,41 @@
+@@ -0,0 +1,88 @@
++(env
++ (dev
++  (flags
++   (:standard -w -6))))
++
 +(library
-+  (name zarith)
-+  (public_name zarith)
-+  (modules z q big_int_Z)
-+  (c_library_flags (:include config/ldflags.sxp))
-+  (self_build_stubs_archive (zarith_c))
-+  (wrapped false))
++ (name zarith)
++ (public_name zarith)
++ (modules z q big_int_Z zarith_version)
++ (wrapped false)
++ (foreign_stubs
++  (language c)
++  (names caml_z)
++  (flags
++   :standard
++   (:include cflags.sxp)))
++ (c_library_flags
++  (:include libs.sxp)))
 +
 +(rule
-+ (targets libzarith_c_stubs%{ext_lib} dllzarith_c_stubs%{ext_dll})
-+ (deps   caml_z_arch.o caml_z.o)
-+ (action (run ocamlmklib -o zarith_c_stubs %{deps} %{read-lines:config/ldflags})))
-+
-+(executable
-+ (name z_pp)
-+ (modules z_pp)
-+ (libraries str))
++ (target Makefile)
++ (deps configure config.guess env)
++ (action
++  (bash "env %{read:env}  ./configure")))
 +
 +(rule
-+  (targets z.ml z.mli z_features.h)
-+  (deps (:script z_pp.exe) z_pp.ml z.mlp z.mlip META caml_z_arch.S)
-+  (action (run %{script} -ov %{ocaml_version} %{read-lines:config/arch})))
++ (target env)
++ (deps env-%{lib-available:gmp})
++ (action
++  (copy env-%{lib-available:gmp} env)))
 +
 +(rule
-+  (targets caml_z_arch.S)
-+  (deps caml_z_arm.S caml_z_i686.S caml_z_x86_64.S caml_z_x86_64_mingw64.S)
-+  (action (copy caml_z_%{read-lines:config/arch}.S caml_z_arch.S)))
++ (target env-false)
++ (action
++  (with-stdout-to
++   %{target}
++   (bash "echo -n CC=\\\"%{cc}\\\""))))
 +
 +(rule
-+  (targets caml_z_none.S)
-+  (action (run touch caml_z_none.S)))
++ (target env-true)
++ (deps
++  %{lib:gmp:libgmp.a}
++  %{lib:gmp:libgmp.so}
++  %{lib:gmp:gmp.h}
++  %{workspace_root})
++ (action
++  (with-stdout-to
++   %{target}
++   (bash
++    "echo -n CC=\\\"%{cc}\\\" LDFLAGS=\\\"-L$(realpath $(dirname %{lib:gmp:libgmp.a}))\\\" CFLAGS=\\\"-I$(realpath $(dirname %{lib:gmp:libgmp.a}))\\\" CPPFLAGS=\\\"-I$(realpath $(dirname %{lib:gmp:libgmp.a}))\\\""))))
 +
 +(rule
-+  (targets caml_z_arch.o)
-+  (deps (:s caml_z_arch.S) zarith.h)
-+  (action (run %{cc} %{read-lines:config/asflags} -c %{s} -o %{targets})))
++ (target cflags.sxp)
++ (deps Makefile)
++ (action
++  (with-stdout-to
++   %{target}
++   (progn
++    (bash "echo -n '('")
++    (bash "cat Makefile | sed -n -e 's/CFLAGS=//p'")
++    (bash "echo -n ')'")))))
 +
 +(rule
-+  (targets caml_z.o)
-+  (deps (:c caml_z.c) zarith.h z_features.h)
-+  (action (run %{cc} %{read-lines:config/cflags} -c %{c} -o %{targets})))
++ (target libs.sxp)
++ (deps Makefile)
++ (action
++  (with-stdout-to
++   %{target}
++   (progn
++    (bash "echo -n '('")
++    (bash "cat Makefile | sed -n -e 's/LIBS=//p'")
++    (bash "echo -n ')'")))))
++
++(rule
++ (deps META)
++ (action
++  (with-stdout-to
++   zarith_version.ml
++   (progn
++    (run echo "let")
++    (bash "grep \"version\" META | head -1")))))
++
++(library
++ (name zarith_top)
++ (optional)
++ (public_name zarith.top)
++ (modules zarith_top)
++ (libraries zarith compiler-libs.toplevel))
 --- /dev/null
 +++ b/dune-project
 @@ -0,0 +1,2 @@
-+(lang dune 1.3)
++(lang dune 2.8)
 +(name zarith)
 --- /dev/null
 +++ b/tests/dune
-@@ -0,0 +1,17 @@
-+(test
-+ ( name zq)
-+  (modules zq)
-+  (libraries zarith))
-+;; TODO compare against output64 result or define expect test
+@@ -0,0 +1,108 @@
++; Run test for host
 +
 +(executable
-+  (name pi)
-+  (modules pi)
-+  (libraries zarith))
-+ 
-+(alias
-+ (name runtest)
-+ (deps pi.exe)
-+ (action (run ./pi.exe 500)))
++ (enabled_if
++  (= %{context_name} default))
++ (name zq)
++ (modules zq)
++ (libraries zarith))
 +
-+(rule (copy pi.output pi.expected))
++(rule
++ (enabled_if
++  (= %{context_name} default))
++ (action
++  (with-stdout-to
++   zq.output
++   (run ./zq.exe))))
++
++; Run test for Solo5 SPT target
++
++(rule
++ (copy zq.ml zq_freestanding.ml))
++
++(rule (with-stdout-to startup.c (echo """
++#include <solo5.h>
++#define CAML_NAME_SPACE
++#include <caml/callback.h>
++
++static char *unused_argv[] = { \"mirage\", NULL };
++
++void _nolibc_init(uintptr_t heap_start, size_t heap_size); // defined in solo5-libc/sysdeps_solo5.c
++
++int solo5_app_main(const struct solo5_start_info *si) {
++    _nolibc_init(si->heap_start, si->heap_size);
++    caml_startup(unused_argv);
++}
++""")))
++
++(rule (with-stdout-to manifest.json (echo """
++{
++  \"type\": \"solo5.manifest\",
++  \"version\": 1,
++  \"devices\": []
++}
++""")))
++
++(executable
++ (enabled_if
++  (= %{context_name} freestanding))
++ (name zq_freestanding)
++ (modules zq_freestanding)
++ (libraries zarith)
++ (link_flags :standard -cclib "-z solo5-abi=spt")
++ (foreign_stubs
++  (language c)
++  (names startup manifest)))
++
++(rule
++ (enabled_if
++  (= %{context_name} freestanding))
++ (targets manifest.c)
++ (deps manifest.json)
++ (action
++  (run solo5-elftool gen-manifest manifest.json manifest.c)))
++
++; Run solo5 code
++
++(rule
++ (enabled_if
++  (= %{context_name} freestanding))
++ (deps zq_freestanding.exe)
++ (action
++  (with-accepted-exit-codes
++   1
++   (with-stdout-to
++    zq.output.full
++    (run solo5-spt zq_freestanding.exe)))))
++
++; Remove solo5 intro
++
++(rule
++ (enabled_if
++  (= %{context_name} freestanding))
++ (deps zq.output.full)
++ (action
++  (with-stdout-to
++   zq.output
++   (bash "head -n -1 zq.output.full | tail -n +12 -"))))
++
++; Check results
++
++(rule
++ (alias runtest)
++ (action
++  (diff zq.expected zq.output)))
++
++(rule
++ (target zq.expected)
++ (enabled_if
++  (= %{arch_sixtyfour} true))
++ (action
++  (copy zq.output64 %{target})))
++
++(rule
++ (target zq.expected)
++ (enabled_if
++  (= %{arch_sixtyfour} false))
++ (action
++  (copy zq.output32 %{target})))
+--- a/tests/zq.ml
++++ b/tests/zq.ml
+@@ -825,3 +825,4 @@ let test_Q () =
+ 
+ let _ = test_Z()
+ let _ = test_Q()
++let _ = flush stdout
