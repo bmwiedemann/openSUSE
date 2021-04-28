@@ -1,10 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/dune-universe/uutf.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">1.0.2</param>
-    <param name="revision">duniverse-v1.0.2</param>
     <param name="filename">ocaml-uutf</param>
+    <param name="revision">d43c88c0673b0d30dc34960645d0f992d68b23a1</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/dbuenzli/uutf.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
