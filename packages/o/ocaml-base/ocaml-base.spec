@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-base
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,17 @@
 
 
 Name:           ocaml-base
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Standard library for OCaml
 License:        MIT
 Group:          Development/Languages/OCaml
+BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/base
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20200514
+BuildRequires:  ocaml-rpm-macros >= 20210409
 BuildRequires:  ocaml(ocaml_base_version) >= 4.04
 BuildRequires:  ocamlfind(compiler-libs.bytecomp)
 BuildRequires:  ocamlfind(compiler-libs.common)
@@ -35,7 +36,7 @@ BuildRequires:  ocamlfind(sexplib0)
 BuildRequires:  ocamlfind(str)
 
 %description
-Base is a standard library for OCaml. It provides a standard set of general purpose modules that are well-tested, performant, and fully-portable across any environment that can run OCaml code. Unlike other standard library projects, Base is meant to be used as a wholesale replacement of the standard library distributed with the OCaml compiler. In particular it makes different choices and doesn’t re-export features that are not fully portable such as I/O, which are left to other libraries.
+Base is a standard library for OCaml. It provides a standard set of general purpose modules that are well-tested, performant, and fully-portable across any environment that can run OCaml code. Unlike other standard library projects, Base is meant to be used as a wholesale replacement of the standard library distributed with the OCaml compiler. In particular it makes different choices and does not re-export features that are not fully portable such as I/O, which are left to other libraries.
 
 %package        devel
 Summary:        Development files for %{name}
@@ -47,7 +48,7 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
 dune_release_pkgs='base'
@@ -62,7 +63,9 @@ dune_release_pkgs='base'
 %ocaml_dune_test
 
 %files -f %{name}.files
+%defattr(-,root,root,-)
 
 %files devel -f %{name}.files.devel
+%defattr(-,root,root,-)
 
 %changelog
