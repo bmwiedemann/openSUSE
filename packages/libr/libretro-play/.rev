@@ -101,4 +101,12 @@ Removed unrar sources</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>831312</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f5ed6a6b35bda3fcb96d2a52e4d2b6d3</srcmd5>
+    <version>0~git20210312</version>
+    <time>1619653122</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889055</requestid>
+  </revision>
 </revisionlist>

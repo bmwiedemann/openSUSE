@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Mar 20 17:32:50 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add ExclusiveArch and a note that SIMD is a hard requirement.
+
+-------------------------------------------------------------------
+Sat Mar 13 05:39:58 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210312:
+  * fix a bad assertion and a crash with 16 bit textures in the debugger
+  * Don't crash if we can't figure out which access mode to use.
+  * Fix games broken by idle loop detection tweak.
+  * 4 bit 16 wide textures work in SIMD now.
+  * Fix Virtua Fighter 4 character selection screen on the Vulkan renderer
+  * Limit to 50FPS on PAL.
+  * Adjust SPU transfer throttling.
+  * Add basic mount/umount support for HDDs.
+  * fix segfault when attempting to access model before its initialised
+  * Fix memory leak that can happen when failing to create an optical media.
+  * Fix crash that can occur when trying to delete covers.
+
+-------------------------------------------------------------------
 Tue Aug 25 20:18:36 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200825:

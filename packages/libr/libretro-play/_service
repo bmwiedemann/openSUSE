@@ -1,11 +1,10 @@
 <services>
-  <service name="tar_scm" mode="localonly">
+  <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/jpd002/Play-.git</param>
     <param name="filename">libretro-play</param>
     <param name="revision">master</param>
     <param name="versionformat">0~git%cd</param>
-    <param name="changesgenerate">enable</param>
     <param name="exclude">deps/Dependencies/boost-cmake</param>
     <param name="exclude">deps/Dependencies/BoostMac</param>
     <param name="exclude">deps/Dependencies/build_android</param>
@@ -20,9 +19,9 @@
     <param name="exclude">deps/Dependencies/unrarsrc-5.2.5</param>
     <param name="exclude">deps/Dependencies/zlib-1.2.8</param>
   </service>
-  <service name="recompress" mode="localonly">
+  <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="localonly"/>
+  <service name="set_version" mode="disabled"/>
 </services>

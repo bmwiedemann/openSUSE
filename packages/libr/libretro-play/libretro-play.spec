@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-play
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-play
-Version:        0~git20200825
+Version:        0~git20210312
 Release:        0
 Summary:        Play! libretro core for PlayStation 2 emulation
 License:        MIT
@@ -40,19 +40,31 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  nlohmann_json-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  zlib-devel
+ExclusiveArch:  %ix86 x86_64 %arm aarch64
+
+# Function convertColumn8 has an empty body for non-SIMD cases, which appears
+# to render the package rather not-performing-properly even if it could build
+# on e.g. PPC.
 
 %description
 Play! is an attempt to create a PlayStation 2 emulator.
 
 This package is for RetroArch/libretro front-end.
 
+The software strictly requires a processor with SSSE3 or NEON.
+
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 mkdir build
 cd build
-cmake .. -DBUILD_LIBRETRO_CORE=yes -DBUILD_PLAY=off -DBUILD_TESTS=no -DENABLE_AMAZON_S3=no -DCMAKE_BUILD_TYPE="Release"
+cmake .. \
+    -DBUILD_LIBRETRO_CORE=yes \
+    -DBUILD_PLAY=off \
+    -DBUILD_TESTS=no \
+    -DENABLE_AMAZON_S3=no \
+    -DCMAKE_BUILD_TYPE="Release"
 %make_jobs
 
 %install
