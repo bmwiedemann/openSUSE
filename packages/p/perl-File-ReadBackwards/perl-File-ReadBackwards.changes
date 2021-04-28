@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 24 03:06:48 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.06
+   see /usr/share/doc/packages/perl-File-ReadBackwards/Changes
+
+  1.06
+    - Drop support for Perls prior to 5.6
+    - Fix bug in tests that fail could fail with parallel build
+      (rt#92313, HAARG++)
+    - Fixed typo in documentation (rt#90009, dsteinbrunner++)
+    - Incidentally fixed compatability with Perls that do not have `.` in @INC
+      (rt#121002)
+
+-------------------------------------------------------------------
 Tue Nov 30 19:20:15 UTC 2010 - coolo@novell.com
 
 - switch to perl_requires macro
