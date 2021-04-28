@@ -1,0 +1,101 @@
+From 36d75a8efe3f0f66a33acbe28f13ba729ed27fbe Mon Sep 17 00:00:00 2001
+From: Aleksei Bavshin <alebastr89@gmail.com>
+Date: Fri, 12 Feb 2021 08:58:26 +0000
+Subject: [PATCH] Wrap public declarations with G_BEGIN_DECLS/G_END_DECLS
+
+Glib release 2.67.3 started conditionally using some C++ code[1] in the
+public headers and it's no longer legal to include "glib.h" or anything
+that includes it transitively from `extern "C"` block.
+
+The solution recommended by the glib developers is to enclose all
+declarations in a header within G_BEGIN_DECLS and G_END_DECLS as shown
+in gobject developer manual[2].
+
+[1] https://gitlab.gnome.org/GNOME/glib/-/merge_requests/1715
+[2] https://developer.gnome.org/gobject/stable/howto-gobject.html#howto-gobject-header
+---
+ lib/searpc-client.h               | 3 +++
+ lib/searpc-named-pipe-transport.h | 4 ++++
+ lib/searpc-server.h               | 4 ++++
+ lib/searpc-utils.h                | 4 ++++
+ 4 files changed, 15 insertions(+)
+
+diff --git a/lib/searpc-client.h b/lib/searpc-client.h
+index aa293e6..c7e61dd 100644
+--- a/lib/searpc-client.h
++++ b/lib/searpc-client.h
+@@ -15,6 +15,8 @@
+ #define DFT_DOMAIN g_quark_from_string(G_LOG_DOMAIN)
+ #endif
+ 
++G_BEGIN_DECLS
++
+ typedef char *(*TransportCB)(void *arg, const gchar *fcall_str,
+                              size_t fcall_len, size_t *ret_len);
+ 
+@@ -137,5 +139,6 @@ searpc_client_generic_callback (char *retstr, size_t len,
+ #define TRANSPORT_ERROR  "Transport Error"
+ #define TRANSPORT_ERROR_CODE 500
+ 
++G_END_DECLS
+ 
+ #endif
+diff --git a/lib/searpc-named-pipe-transport.h b/lib/searpc-named-pipe-transport.h
+index bac5566..ff98f03 100644
+--- a/lib/searpc-named-pipe-transport.h
++++ b/lib/searpc-named-pipe-transport.h
+@@ -16,6 +16,8 @@
+ #include <windows.h>
+ #endif
+ 
++G_BEGIN_DECLS
++
+ // Implementatin of a searpc transport based on named pipe. It uses unix domain
+ // sockets on linux/osx, and named pipes on windows.
+ //
+@@ -72,4 +74,6 @@ int searpc_named_pipe_client_connect(SearpcNamedPipeClient *client);
+ LIBSEARPC_API
+ void searpc_free_client_with_pipe_transport (SearpcClient *client);
+ 
++G_END_DECLS
++
+ #endif // SEARPC_NAMED_PIPE_TRANSPORT_H
+diff --git a/lib/searpc-server.h b/lib/searpc-server.h
+index 6c7e301..9342c51 100644
+--- a/lib/searpc-server.h
++++ b/lib/searpc-server.h
+@@ -15,6 +15,8 @@
+ #define DFT_DOMAIN g_quark_from_string(G_LOG_DOMAIN)
+ #endif
+ 
++G_BEGIN_DECLS
++
+ typedef gchar* (*SearpcMarshalFunc) (void *func, json_t *param_array,
+     gsize *ret_len);
+ typedef void (*RegisterMarshalFunc) (void);
+@@ -134,4 +136,6 @@ gchar *searpc_server_call_function (const char *service,
+ LIBSEARPC_API
+ char* searpc_compute_signature (const gchar *ret_type, int pnum, ...);
+ 
++G_END_DECLS
++
+ #endif
+diff --git a/lib/searpc-utils.h b/lib/searpc-utils.h
+index 7287e56..32adf6a 100644
+--- a/lib/searpc-utils.h
++++ b/lib/searpc-utils.h
+@@ -10,6 +10,8 @@
+ 
+ #define SEARPC_JSON_DOMAIN g_quark_from_string("SEARPC_JSON")
+ 
++G_BEGIN_DECLS
++
+ typedef enum {
+     SEARPC_JSON_ERROR_LOAD,
+     SEARPC_JSON_ERROR_PACK,
+@@ -80,3 +82,5 @@ inline static void json_array_add_json_or_null_element (json_t *array, const jso
+         json_array_append_new (array, json_null ());
+     }
+ }
++
++G_END_DECLS

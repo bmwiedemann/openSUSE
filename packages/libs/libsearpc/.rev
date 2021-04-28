@@ -26,4 +26,13 @@
 </comment>
     <requestid>816978</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>abef132ca55fd66ee99d0164754628cc</srcmd5>
+    <version>3.2.0.20200618</version>
+    <time>1619653076</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libsearpc-fix-compilation-glib2_68.patch
+</comment>
+    <requestid>888927</requestid>
+  </revision>
 </revisionlist>

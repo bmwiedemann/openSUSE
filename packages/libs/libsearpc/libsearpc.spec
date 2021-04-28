@@ -1,7 +1,7 @@
 #
 # spec file for package libsearpc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Group:          System/Libraries
 URL:            https://github.com/haiwen/libsearpc/
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         01-fix-includes.patch
+#PATCH-FIX-UPSTREAM https://github.com/haiwen/libsearpc/pull/57
+Patch1:         libsearpc-fix-compilation-glib2_68.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -80,6 +82,9 @@ The python-pysearpc package contains python files to make use of %{name}.
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1
+%if 0%{?suse_version} > 1500
+%patch1 -p1
+%endif
 
 %build
 ./autogen.sh
