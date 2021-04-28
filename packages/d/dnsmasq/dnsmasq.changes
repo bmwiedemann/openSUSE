@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 19 20:46:49 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Update to 2.85:
+  * Fix problem with DNS retries in 2.83/2.84.
+  * Tweak sort order of tags in get-version.
+  * Avoid treating a --dhcp-host which has an IPv6 address as
+    eligible for use with DHCPv4 on the grounds that it has
+    no address, and vice-versa.
+  * Add --dynamic-host option: A and AAAA records which take their
+    network part from the network of a local interface. Useful
+    for routers with dynamically prefixes.
+  * Teach --bogus-nxdomain and --ignore-address to take an IPv4
+    subnet.
+  * CVE-2021-3448, bsc#1183709: Use random source ports where
+    possible if source addresses/interfaces in use.
+  * Change the method of allocation of random source ports for DNS.
+  * Scale the size of the DNS random-port pool based on the
+    value of the --dns-forward-max configuration.
+  * Tweak TFTP code to check sender of all received packets, as
+    specified in RFC 1350 para 4.
+
+-------------------------------------------------------------------
+Mon Feb  8 22:37:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.84:
+  * Change HAVE_NETTLEHASH compile-time to HAVE_CRYPTOHASH
+  * Tidy initialisation in hash_questions.c
+  * Optimise sort_rrset for the case where the RR type
+  * Move fd into frec_src 
+
+-------------------------------------------------------------------
 Wed Jan 27 16:24:43 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fix building with lua54

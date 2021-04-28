@@ -22,14 +22,14 @@
 %bcond_without tftp_user_package
 %endif
 Name:           dnsmasq
-Version:        2.83
+Version:        2.85
 Release:        0
 Summary:        DNS Forwarder and DHCP Server
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Networking/DNS/Servers
-URL:            http://www.thekelleys.org.uk/dnsmasq/
-Source0:        http://www.thekelleys.org.uk/%{name}/%{name}-%{version}.tar.xz
-Source1:        http://www.thekelleys.org.uk/%{name}/%{name}-%{version}.tar.xz.asc
+URL:            https://thekelleys.org.uk/dnsmasq/
+Source0:        https://thekelleys.org.uk/%{name}/%{name}-%{version}.tar.xz
+Source1:        https://thekelleys.org.uk/%{name}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        dnsmasq.reg
 Source4:        dnsmasq.service
