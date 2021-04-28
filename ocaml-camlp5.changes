@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  9 09:09:09 UTC 2021 - ohering@suse.de
+
+- Update to version 8.00
+  cover ocaml-4.12
+  add ocaml-camlp5.patch
+- Remove ocaml_native_compiler conditional
+  build native target unconditionally
+
+-------------------------------------------------------------------
 Wed Sep  2 02:02:02 UTC 2020 - ohering@suse.de
 
 - Cover ocaml-4.11.1

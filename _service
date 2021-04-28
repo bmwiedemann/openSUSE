@@ -1,10 +1,11 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">git://github.com/camlp5/camlp5.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">7.12</param>
-    <param name="revision">rel712</param>
     <param name="filename">ocaml-camlp5</param>
+    <param name="revision">c1b0da5a79246d540a2a7adb759b8f842ee62823</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/camlp5/camlp5.git</param>
+    <param name="versionformat">8.00</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
