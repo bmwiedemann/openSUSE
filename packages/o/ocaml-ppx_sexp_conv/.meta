@@ -1,0 +1,8 @@
+<package name="ocaml-ppx_sexp_conv" project="openSUSE:Factory">
+  <title>generate S-expression conversion functions</title>
+  <description>A PPX syntax extension that generates code for converting OCaml types to and from s-expressions.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-ppx_sexp_conv"/>
+  <url>https://opam.ocaml.org/packages/ppx_sexp_conv</url>
+</package>
