@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 28 07:56:48 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update tiled-endl.patch: 
+  Update from commit 7059846dc551a5d6b3cda8c78aa990aff8a4861f
+  to final one 068d0bf2e9632bf7473b40e4073eb3787f8889d1 since it
+  works with more Qt versions
+
+-------------------------------------------------------------------
 Mon Apr 26 15:07:06 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.0:

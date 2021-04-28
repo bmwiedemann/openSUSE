@@ -573,4 +573,15 @@
   * YY plugin: Fixed plugin loading issue for qmake builds</comment>
     <requestid>888578</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>984baf59ada04aab1f72c1a72c4c9fec</srcmd5>
+    <version>1.6.0</version>
+    <time>1619653096</time>
+    <user>dimstar_suse</user>
+    <comment>- Update tiled-endl.patch: 
+  Update from commit 7059846dc551a5d6b3cda8c78aa990aff8a4861f
+  to final one 068d0bf2e9632bf7473b40e4073eb3787f8889d1 since it
+  works with more Qt versions</comment>
+    <requestid>888963</requestid>
+  </revision>
 </revisionlist>

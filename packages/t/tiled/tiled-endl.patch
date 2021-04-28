@@ -1,18 +1,162 @@
-From 7059846dc551a5d6b3cda8c78aa990aff8a4861f Mon Sep 17 00:00:00 2001
+From 068d0bf2e9632bf7473b40e4073eb3787f8889d1 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Thorbj=C3=B8rn=20Lindeijer?= <bjorn@lindeijer.nl>
 Date: Mon, 26 Apr 2021 19:12:00 +0200
 Subject: [PATCH] Fixed compilation issue with GCC 10
 
 main.cpp:334:33: error no match for 'operator<<' (operand types are 'QTextStream' and '<unresolved overloaded function type>'
----
- src/tiled/main.cpp | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
 
+Closes #3037
+---
+ src/libtiled/qtcompat_p.h             |  8 +++++++-
+ src/plugins/tengine/tengineplugin.cpp | 26 ++++++++++++--------------
+ src/tiled/main.cpp                    | 14 +++++---------
+ 3 files changed, 24 insertions(+), 24 deletions(-)
+
+diff --git a/src/libtiled/qtcompat_p.h b/src/libtiled/qtcompat_p.h
+index aad3d87dd5..2252975fdd 100644
+--- a/src/libtiled/qtcompat_p.h
++++ b/src/libtiled/qtcompat_p.h
+@@ -19,7 +19,7 @@
+ 
+ #pragma once
+ 
+-#include <qglobal.h>
++#include <QTextStream>
+ 
+ #if QT_VERSION < QT_VERSION_CHECK(5,7,0)
+ namespace QtPrivate
+@@ -60,6 +60,12 @@ void qAsConst(const T &&) Q_DECL_EQ_DELETE;
+ 
+ #endif
+ 
++#if QT_VERSION < QT_VERSION_CHECK(5,14,0)
++namespace Qt {
++using ::endl;
++}
++#endif
++
+ #if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+ using QStringRef = QStringView;
+ #endif
+diff --git a/src/plugins/tengine/tengineplugin.cpp b/src/plugins/tengine/tengineplugin.cpp
+index b7b2cf3d1a..b397a598cd 100644
+--- a/src/plugins/tengine/tengineplugin.cpp
++++ b/src/plugins/tengine/tengineplugin.cpp
+@@ -38,6 +38,8 @@
+ 
+ #include <QtMath>
+ 
++#include "qtcompat_p.h"
++
+ using namespace Tengine;
+ 
+ TenginePlugin::TenginePlugin()
+@@ -57,10 +59,6 @@ bool TenginePlugin::write(const Tiled::Map *map, const QString &fileName, Option
+     }
+     QTextStream out(file.device());
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(5,14,0)
+-    using Qt::endl;
+-#endif
+-
+     // Write the header
+     const QString header = map->property("header").toString();
+ #if QT_VERSION >= QT_VERSION_CHECK(6,0,0)
+@@ -69,7 +67,7 @@ bool TenginePlugin::write(const Tiled::Map *map, const QString &fileName, Option
+     const auto lines = header.splitRef("\\n");
+ #endif
+     for (const auto &line : lines)
+-        out << line << endl;
++        out << line << Qt::endl;
+ 
+     const int width = map->width();
+     const int height = map->height();
+@@ -192,7 +190,7 @@ bool TenginePlugin::write(const Tiled::Map *map, const QString &fileName, Option
+         }
+     }
+     // Write the definitions to the file
+-    out << "-- defineTile section" << endl;
++    out << "-- defineTile section" << Qt::endl;
+     for (i = cachedTiles.constBegin(); i != cachedTiles.constEnd(); ++i) {
+         QString displayString = i.key();
+         // Only print the emptyTile definition if there were empty tiles
+@@ -206,11 +204,11 @@ bool TenginePlugin::write(const Tiled::Map *map, const QString &fileName, Option
+         if (!args.isEmpty()) {
+             args = QString(", %1").arg(args);
+         }
+-        out << QString("defineTile(\"%1\"%2)").arg(displayString, args) << endl;
++        out << QString("defineTile(\"%1\"%2)").arg(displayString, args) << Qt::endl;
+     }
+ 
+     // Check for an ObjectGroup named AddSpot
+-    out << endl << "-- addSpot section" << endl;
++    out << Qt::endl << "-- addSpot section" << Qt::endl;
+     for (Layer *layer : map->layers()) {
+         ObjectGroup *objectLayer = layer->asObjectGroup();
+         if (objectLayer && objectLayer->name().startsWith("addspot", Qt::CaseInsensitive)) {
+@@ -225,7 +223,7 @@ bool TenginePlugin::write(const Tiled::Map *map, const QString &fileName, Option
+                 }
+                 for (int y = qFloor(obj->y()); y <= qFloor(obj->y() + obj->height()); ++y) {
+                     for (int x = qFloor(obj->x()); x <= qFloor(obj->x() + obj->width()); ++x) {
+-                        out << QString("addSpot({%1, %2}%3)").arg(x).arg(y).arg(args) << endl;
++                        out << QString("addSpot({%1, %2}%3)").arg(x).arg(y).arg(args) << Qt::endl;
+                     }
+                 }
+             }
+@@ -233,7 +231,7 @@ bool TenginePlugin::write(const Tiled::Map *map, const QString &fileName, Option
+     }
+ 
+     // Check for an ObjectGroup named AddZone
+-    out << endl << "-- addZone section" << endl;
++    out << Qt::endl << "-- addZone section" << Qt::endl;
+     for (Layer *layer : map->layers()) {
+         ObjectGroup *objectLayer = layer->asObjectGroup();
+         if (objectLayer && objectLayer->name().startsWith("addzone", Qt::CaseInsensitive)) {
+@@ -250,7 +248,7 @@ bool TenginePlugin::write(const Tiled::Map *map, const QString &fileName, Option
+                 int top_left_y = qFloor(obj->y());
+                 int bottom_right_x = qFloor(obj->x() + obj->width());
+                 int bottom_right_y = qFloor(obj->y() + obj->height());
+-                out << QString("addZone({%1, %2, %3, %4}%5)").arg(top_left_x).arg(top_left_y).arg(bottom_right_x).arg(bottom_right_y).arg(args) << endl;
++                out << QString("addZone({%1, %2, %3, %4}%5)").arg(top_left_x).arg(top_left_y).arg(bottom_right_x).arg(bottom_right_y).arg(args) << Qt::endl;
+             }
+         }
+     }
+@@ -280,8 +278,8 @@ bool TenginePlugin::write(const Tiled::Map *map, const QString &fileName, Option
+         itemStop = "";
+         seperator = "";
+     }
+-    out << endl << "-- ASCII map section" << endl;
+-    out << "return " << returnStart << endl;
++    out << Qt::endl << "-- ASCII map section" << Qt::endl;
++    out << "return " << returnStart << Qt::endl;
+     for (int y = 0; y < height; ++y) {
+         out << lineStart;
+         for (int x = 0; x < width; ++x) {
+@@ -290,7 +288,7 @@ bool TenginePlugin::write(const Tiled::Map *map, const QString &fileName, Option
+         if (y == height - 1) {
+             out << lineStop << returnStop;
+         } else {
+-            out << lineStop << endl;
++            out << lineStop << Qt::endl;
+         }
+     }
+ 
 diff --git a/src/tiled/main.cpp b/src/tiled/main.cpp
-index fce9f3cd2d..b9b89e2203 100644
+index fce9f3cd2d..d583aa23e7 100644
 --- a/src/tiled/main.cpp
 +++ b/src/tiled/main.cpp
-@@ -260,7 +260,7 @@ void CommandLineHandler::showVersion()
+@@ -66,10 +66,6 @@ static QTextStream& stdOut()
+     return ts;
+ }
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(5,14,0)
+-using Qt::endl;
+-#endif
+-
+ namespace {
+ 
+ class CommandLineHandler : public CommandLineParser
+@@ -260,7 +256,7 @@ void CommandLineHandler::showVersion()
      if (!showedVersion) {
          showedVersion = true;
          stdOut() << QApplication::applicationDisplayName() << " "
@@ -21,7 +165,7 @@ index fce9f3cd2d..b9b89e2203 100644
          quit = true;
      }
  }
-@@ -317,9 +317,9 @@ void CommandLineHandler::showExportFormats()
+@@ -317,9 +313,9 @@ void CommandLineHandler::showExportFormats()
      }
      formats.sort(Qt::CaseSensitive);
  
@@ -33,7 +177,7 @@ index fce9f3cd2d..b9b89e2203 100644
  
      formats.clear();
      const auto tilesetFormats = PluginManager::objects<TilesetFormat>();
-@@ -329,9 +329,9 @@ void CommandLineHandler::showExportFormats()
+@@ -329,9 +325,9 @@ void CommandLineHandler::showExportFormats()
      }
      formats.sort(Qt::CaseSensitive);
  
