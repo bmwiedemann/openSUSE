@@ -1,7 +1,7 @@
 #
 # spec file for package opa-ff
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define git_ver .0.24a3b31bd026
+%define git_ver .0.c22a337ee1df
 %define opamgt_major 0
 %define opasadb_major 1_0_0
 
@@ -24,7 +24,7 @@
 %define opasysconfdir %{_sysconfdir}/opa/
 
 Name:           opa-ff
-Version:        10.10.3.0.11
+Version:        10.11.0.0.575
 Release:        0
 Summary:        Intel Omni-Path basic tools and libraries for fabric managment
 License:        BSD-3-Clause OR GPL-2.0-only
@@ -106,7 +106,6 @@ Group:          System/Libraries
 
 %description -n libopamgt%{opamgt_major}
 This package contains the library necessary to build applications that interface with an Omni-Path FM.
-
 
 %package -n libopamgt-devel
 Summary:        Omni-Path library development headers
