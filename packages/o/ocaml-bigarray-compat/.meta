@@ -1,0 +1,8 @@
+<package name="ocaml-bigarray-compat" project="openSUSE:Factory">
+  <title>Expose Stdlib.Bigarray</title>
+  <description>A library that exposes Stdlib.Bigarray when possible (&gt;= 4.07) but can fallback to Bigarray. The compability bigarray module is exposed under Bigarray_compat.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-bigarray-compat"/>
+  <url>https://github.com/mirage/bigarray-compat</url>
+</package>
