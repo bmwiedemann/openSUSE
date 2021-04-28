@@ -1,7 +1,11 @@
 <services>
   <service name="tar_scm" mode="disabled">
+    <param name='exclude'>check-tarball.sh</param>
+    <param name='exclude'>compile-ocaml.sh</param>
+    <param name='exclude'>coq-menhirlib</param>
+    <param name='exclude'>exec.sh</param>
     <param name="filename">ocaml-menhir</param>
-    <param name="revision">ad9297c0a505e878fb60b77f3b83a9caa1e42548</param>
+    <param name="revision">76c09946dd065a7117d48ede8d5cead6f785d4f7</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://gitlab.inria.fr/fpottier/menhir.git</param>
