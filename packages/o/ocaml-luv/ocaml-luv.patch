@@ -1,0 +1,10 @@
+--- a/src/c/dune
++++ b/src/c/dune
+@@ -117,6 +117,7 @@ let () = Jbuild_plugin.V1.send @@ {|
+  (deps (:c generate_types_step_2.c) helpers.h shims.h)
+  (action (bash "\
+   %{cc} %{c} \
++  -I '%{lib:integers:.}' \
+   -I '%{lib:ctypes:.}' \
+   -I %{ocaml_where} \
+   |}^ i_option ^{| -o %{targets}")))
