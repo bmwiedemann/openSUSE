@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 28 14:26:18 UTC 2021 - Diego Akechi <dakechi@suse.com>
+
+- Set correct stickiness for the azure-lb resource
+  The azure-lb resource receives an stickiness=0 to not influence on
+  transitions calculations as the HANA resources have more priority
+
+-------------------------------------------------------------------
 Thu Mar 18 07:41:18 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
 
 - Version bump 0.7.1
