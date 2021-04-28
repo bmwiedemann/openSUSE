@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 28 02:31:13 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.6, due to no NumPy. 
+
+-------------------------------------------------------------------
 Mon May  4 14:46:35 UTC 2020 - Johannes Grassler <johannes.grassler@suse.com>
 
 - Initial package

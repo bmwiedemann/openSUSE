@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyRect
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python36 1
 Name:           python-PyRect
 Version:        0.1.4
 Release:        0
 Summary:        Rect class for Pygame-like rectangular areas
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/asweigart/pyrect
 Source:         https://files.pythonhosted.org/packages/source/P/PyRect/PyRect-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/asweigart/PyRect/master/LICENSE.txt

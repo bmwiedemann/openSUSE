@@ -7,4 +7,12 @@
     <comment> </comment>
     <requestid>800413</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>471cfab0e3478aa62ba96a780fe2a111</srcmd5>
+    <version>0.1.4</version>
+    <time>1619653067</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>888896</requestid>
+  </revision>
 </revisionlist>
