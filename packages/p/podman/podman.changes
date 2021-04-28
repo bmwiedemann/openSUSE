@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Apr 23 10:29:10 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 3.1.2:
+  * Bump to v3.1.2
+  * Update release notes for v3.1.2
+  * Ensure mount destination is clean, no trailing slash
+  * Fixes podman-remote save to directories does not work
+  * [CI:DOCS] Add missing dash to verbose option
+  * [CI:DOCS] Fix Markdown table layout bugs
+  * [CI:DOCS] Rewrite --uidmap doc in podman-create.1.md and podman-run.1.md
+  * rmi: don't break when the image is missing a manifest
+  * Bump containers/image to v5.11.1
+  * Bump github.com/coreos/go-systemd from 22.2.0 to 22.3.1
+  * Fix lint
+  * Bump to v3.1.2-dev
+- Split podman-remote into a subpackage
+- Add missing scriptlets for systemd units
+- Escape macros in comments
+- Drop some obsolete workarounds, including %{go_nostrip}
+
+-------------------------------------------------------------------
 Mon Apr 19 09:29:17 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 3.1.1:

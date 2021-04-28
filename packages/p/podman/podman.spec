@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           podman
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -49,15 +49,7 @@ BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
 BuildRequires:  golang(API) = 1.13
 BuildRequires:  pkgconfig(libselinux)
-# Podman 3.1.0 requires systemd 241 or newer due to go-systemd
-# see https://github.com/coreos/go-systemd/issues/355
-# The next Podman release won't need it probably
-# see https://github.com/coreos/go-systemd/pull/358
-BuildRequires:  pkgconfig(libsystemd) >= 241
-# Build fails with PIE enabled on ppc64le due to boo#1098017
-%ifarch ppc64le
-#!BuildIgnore: gcc-PIE
-%endif
+BuildRequires:  pkgconfig(libsystemd)
 Recommends:     apparmor-abstractions
 Recommends:     apparmor-parser
 Requires:       catatonit
@@ -72,7 +64,6 @@ Requires:       slirp4netns >= 0.4.0
 Requires:       timezone
 Recommends:     %{name}-cni-config = %{version}
 Suggests:       katacontainers
-%{go_nostrip}
 %if 0%{?with_libostree}
 BuildRequires:  libostree-devel
 %endif
@@ -88,11 +79,19 @@ skopeo, as they all share the same datastore backend.
 %prep
 %setup -q
 
+%package remote
+Summary: Client for managing podman containers remotely
+Group:          System/Management
+Conflicts:      %{name} < 3.1.2
+
+%description remote
+This client allows controlling podman on a separate host, e.g. over SSH.
+
 %package cni-config
 Summary:        Basic CNI configuration for podman
 Group:          System/Management
 Requires:       %{name} = %{version}
-# iproute2 is needed by the %triggerun scriplet
+# iproute2 is needed by the %%triggerun scriplet
 Requires:       iproute2
 BuildArch:      noarch
 
@@ -150,21 +149,19 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %endif
 # Binaries
 %{_bindir}/podman
-%{_bindir}/podman-remote
 # Manpages
 %{_mandir}/man1/podman*.1*
+%exclude %{_mandir}/man1/podman-remote*.1*
 # Configs
 %dir %{_prefix}/lib/modules-load.d
 %{_prefix}/lib/modules-load.d/podman.conf
 %{_tmpfilesdir}/podman.conf
 # Completion
 %{_datadir}/bash-completion/completions/podman
-%{_datadir}/bash-completion/completions/podman-remote
 %{_datadir}/zsh/site-functions/_podman
-%{_datadir}/zsh/site-functions/_podman-remote
-%{_datadir}/fish/
+%dir %{_datadir}/fish/
+%dir %{_datadir}/fish/vendor_completions.d/
 %{_datadir}/fish/vendor_completions.d/podman.fish
-%{_datadir}/fish/vendor_completions.d/podman-remote.fish
 %{_unitdir}/podman.service
 %{_unitdir}/podman.socket
 %{_unitdir}/podman-auto-update.service
@@ -176,6 +173,15 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %ghost /run/podman
 %ghost  %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-libpodconf
 %license LICENSE
+
+%files remote
+%{_bindir}/podman-remote
+%{_mandir}/man1/podman-remote*.1*
+%{_datadir}/bash-completion/completions/podman-remote
+%{_datadir}/zsh/site-functions/_podman-remote
+%dir %{_datadir}/fish/
+%dir %{_datadir}/fish/vendor_completions.d/
+%{_datadir}/fish/vendor_completions.d/podman-remote.fish
 
 %files cni-config
 %config %{_sysconfdir}/cni/net.d/87-podman-bridge.conflist
@@ -190,20 +196,23 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %tmpfiles_create %{_tmpfilesdir}/podman-docker.conf
 
 %pre
-%service_add_pre podman.service podman.socket
+%service_add_pre podman.service podman.socket podman-auto-update.service podman-auto-update.timer
 # move away any old rpmsave config file to avoid having it re-activated again in
-# %posttrans
+# %%posttrans
 test -f /etc/containers/libpod.conf.rpmsave && mv -v /etc/containers/libpod.conf.rpmsave /etc/containers/libpod.conf.rpmsave.old ||:
 
 %post
-%service_add_post podman.service podman.socket
+%service_add_post podman.service podman.socket podman-auto-update.service podman-auto-update.timer
 %tmpfiles_create %{_tmpfilesdir}/podman.conf
+%systemd_user_post podman.service podman.socket podman-auto-update.service podman-auto-update.timer
 
 %preun
-%service_del_preun podman.service podman.socket
+%service_del_preun podman.service podman.socket podman-auto-update.service podman-auto-update.timer
+%systemd_user_preun podman.service podman.socket podman-auto-update.service podman-auto-update.timer
 
 %postun
-%service_del_postun podman.service podman.socket
+%service_del_postun podman.service podman.socket podman-auto-update.service podman-auto-update.timer
+%systemd_user_postun podman.service podman.socket podman-auto-update.service podman-auto-update.timer
 
 %posttrans
 # if libpod.conf.rpmsave was created move it back into place and set an update
