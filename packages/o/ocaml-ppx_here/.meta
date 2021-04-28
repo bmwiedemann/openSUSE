@@ -1,0 +1,8 @@
+<package name="ocaml-ppx_here" project="openSUSE:Factory">
+  <title>Expands [%%here] into its location</title>
+  <description>A ppx rewriter that defines an extension node whose value is its source position.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-ppx_here"/>
+  <url>https://opam.ocaml.org/packages/ppx_here</url>
+</package>
