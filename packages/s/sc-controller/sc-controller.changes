@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 28 16:23:03 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.4.8.4
+  * Fixes for axis detection
+- Use SourceUrl instead of _service
+
+-------------------------------------------------------------------
 Mon Mar  1 22:24:26 UTC 2021 - Jannik Seiler <seil0@mosad.xyz>
 
 - Updated to current git version

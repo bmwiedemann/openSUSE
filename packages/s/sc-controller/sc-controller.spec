@@ -17,13 +17,13 @@
 
 
 Name:           sc-controller
-Version:        0.4.8.2.20210225
+Version:        0.4.8.4
 Release:        0
 Summary:        User-mode driver and GTK3-based GUI for the Steam Controller
 License:        GPL-2.0-only
 Group:          Hardware/Joystick
-URL:            https://github.com/Ryochan7/sc-controller/tree/python3
-Source:         %{name}-%{version}.tar.xz
+URL:            https://github.com/Ryochan7/sc-controller
+Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
