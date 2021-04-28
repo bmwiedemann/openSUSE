@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-lablgtk3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,21 @@
 
 
 Name:           ocaml-lablgtk3
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Binding to Cairo, a 2D Vector Graphics Library.  
-License:        LGPL-3.0+
+License:        LGPL-3.0-or-later
 Group:          Development/Languages/OCaml
-Url:            https://github.com/garrigue/lablgtk
+URL:            https://opam.ocaml.org/packages/lablgtk3
 Source:         %{name}-%{version}.tar.xz
-Patch0:         ocaml-lablgtk3.ml_table_extension_events.patch
-BuildRequires:  ocaml(ocaml_base_version) >= 4.05
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
-BuildRequires:  ocamlfind(cairo2)
-BuildRequires:  ocamlfind(dune.configurator)
-BuildRequires:  ocamlfind(camlp5)
-BuildRequires:  ocamlfind(threads)
+BuildRequires:  ocaml-rpm-macros >= 20210121
 BuildRequires:  pkg-config
+BuildRequires:  ocaml(ocaml_base_version) >= 4.05
+BuildRequires:  ocamlfind(cairo2)
+BuildRequires:  ocamlfind(camlp5)
+BuildRequires:  ocamlfind(dune.configurator)
+BuildRequires:  ocamlfind(threads)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
 BuildRequires:  pkgconfig(gtksourceview-3.0) >= 3.18
 BuildRequires:  pkgconfig(gtkspell3-3.0) >= 3.0.4

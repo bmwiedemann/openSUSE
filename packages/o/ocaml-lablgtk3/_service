@@ -1,26 +1,27 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/garrigue/lablgtk.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <!-- lablgtk3 3.1.0 -->
-    <param name="revision">56ec4e86585e0fe0b4fe83bdbfa20aa1e244a9e0</param>
+    <param name="exclude">.cvsignore</param>
+    <param name="exclude">.travis.yml</param>
+    <param name="exclude">Makefile</param>
+    <param name="exclude">README.dune.md</param>
+    <param name="exclude">applications</param>
+    <param name="exclude">azure-pipelines.yml</param>
+    <param name="exclude">doc</param>
+    <param name="exclude">examples</param>
+    <param name="exclude">src-unsupported</param>
+    <param name="exclude">tools/check_externals.ml4</param>
+    <param name="exclude">tools/check_externals.ml</param>
+    <param name="exclude">tools/introspection</param>
+    <param name="exclude">tools/propcc.ml</param>
+    <param name="exclude">tools/varcc.ml</param>
     <param name="filename">ocaml-lablgtk3</param>
+    <param name="revision">65b109ce2ada0458d1716a37d6d60fbc645fc614</param>
+    <param name="scm">git</param>
     <param name="submodules">disable</param>
-<param name="exclude">.cvsignore</param>
-<param name="exclude">.travis.yml</param>
-<param name="exclude">Makefile</param>
-<param name="exclude">README.dune.md</param>
-<param name="exclude">applications</param>
-<param name="exclude">azure-pipelines.yml</param>
-<param name="exclude">doc</param>
-<param name="exclude">examples</param>
-<param name="exclude">src-unsupported</param>
-<param name="exclude">tools/check_externals.ml4</param>
-<param name="exclude">tools/check_externals.ml</param>
-<param name="exclude">tools/introspection</param>
-<param name="exclude">tools/propcc.ml</param>
-<param name="exclude">tools/varcc.ml</param>
+    <param name="url">https://github.com/garrigue/lablgtk.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
