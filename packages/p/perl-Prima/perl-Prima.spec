@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Prima
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
+%define cpan_name Prima
 Name:           perl-Prima
-Version:        1.60
+Version:        1.61
 Release:        0
 #Upstream: SUSE-Public-Domain
-%define cpan_name Prima
 Summary:        Perl graphic toolkit
 License:        BSD-2-Clause AND AGPL-3.0-only
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/K/KA/KARASIK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
@@ -52,11 +50,11 @@ classes present easily expandable set of widgets, written completely in
 perl and communicating with the system using Prima library calls.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -74,7 +72,6 @@ find $RPM_BUILD_ROOT/%{perl_vendorarch} -name \*.h | xargs -t rm
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc AGPLv3 Changes examples README.md
 %license Copying LICENSE
 
