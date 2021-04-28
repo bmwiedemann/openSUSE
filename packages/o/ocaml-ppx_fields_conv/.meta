@@ -1,0 +1,8 @@
+<package name="ocaml-ppx_fields_conv" project="openSUSE:Factory">
+  <title>Generation of accessor and iteration functions for ocaml records</title>
+  <description>Generation of accessor and iteration functions for ocaml records.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-ppx_fields_conv"/>
+  <url>https://opam.ocaml.org/packages/ppx_fields_conv</url>
+</package>
