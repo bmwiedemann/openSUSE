@@ -1,0 +1,454 @@
+-------------------------------------------------------------------
+Mon Apr 26 11:55:57 UTC 2021 - Daike Yu <yu.daike@suse.com>
+
+- Use python3_sitelib to allow successful build on Leap
+
+-------------------------------------------------------------------
+Thu Apr  8 04:13:08 UTC 2021 - Daike Yu <yu.daike@suse.com>
+
+- Update to version 0.5 (boo#1184389)
+  + Update to version 0.5:
+    - Much faster startup time
+    - Much faster switching between tags
+    - Much more efficient (and faster) live searching
+    - Less UI micro-freezes (if at all) when editing tasks
+    - Much faster read/write operations on the file format
+    - Recurring (repeating) tasks
+    - A much wider choice of emblems for your tags, as they now use
+      emojis
+    - Much improved visual representation of contents in the task
+      editor
+    - Support for sub-headings in the task editor
+    - The resurrection of the Hamster plugin
+    - Dark mode
+  + Update to version 0.4:
+    - Client-side window decorations using the GTK HeaderBar
+      widget. Along with the removal of the menu bars, this saves a
+      significant amount of space and allows for more content to be
+      displayed on screen.
+    - The Preferences dialog was redesigned, and its contents
+      cleaned up to remove obsolete settings
+      (https://github.com/getting-things-gnome/gtg/pull/227).
+    - All windows are properly parented (set as transient) with the
+      main window, so that they can be handled better by window
+      managers.
+    - Symbolic icons are available throughout the UI.
+    - Improvements to padding and borders are visible throughout the
+      application.
+    - You can now open (or create) a task’s parent task.
+    - You can now select multiple closed tasks and perform bulk
+      actions on them.
+    - You can now rename or delete tags by right-clicking them in
+      the main window.
+    - You can automatically generate and assign tag colors.
+    - The Quick Add entry now supports emojis.
+    - The Task Editor now provides a searchable "tag picker" widget.
+    - The "Task Reaper" allows deleting old closed tasks for
+      increased performance. Previously available as a plugin, it is
+      now a built-in feature, available in the Preferences dialog.
+    - The Quick Deferral (previously, the "Do it Tomorrow" plugin)
+      is now built-in. It is now possible to defer multiple tasks at
+      once to common upcoming days or to a custom date.
+    - In the unlikely case where GTG encounters a problem opening
+      your data file, it will automatically attempt recovery from a
+      previous backup snapshot and let you know about it.
+    - The menu bar has been replaced by a menu button.
+      Non-contextual actions have been moved to the main menu button.
+    - Searching is now handled through a dedicated Search Bar that
+      can be toggled on and off with the mouse, or the Ctrl+F
+      keyboard shortcut.
+    - The "Workview" mode has been renamed to the "Actionable" view.
+    - Sorting tasks by title is now case-insensitive and ignores 
+      @ characters
+      https://github.com/getting-things-gnome/gtg/issues/375
+    - Start/Due/Closed dates now display as properly translated in
+      the Task Browser
+      https://github.com/getting-things-gnome/gtg/issues/357
+    - In the right-click context menus, more start/due dates choices
+      are available, including common upcoming dates and a custom
+      date picker
+      https://github.com/getting-things-gnome/gtg/issues/244
+    - The Calendar date picker pop-up widgets have been improved
+      https://github.com/getting-things-gnome/gtg/pull/230
+    - The Task Editor now tries to place newly created windows more
+      logically
+      https://github.com/getting-things-gnome/gtg/issues/287
+    - The title (first line of a task) has been changed to a neutral
+      black header, so that it doesn’t look like a hyperlink.
+    - The user manual has been rewritten, reorganized, and updated
+      with new images
+      https://github.com/getting-things-gnome/gtg/issues/243
+    - Contributor documentation was rewritten to make it easier to
+      get involved and to clarify project contribution guidelines.
+      https://github.com/getting-things-gnome/gtg/issues/200
+      https://fortintam.com/blog/improving-developer-experience-and-attracting-open-source-project-contributors/
+    - Updates were made to overall code quality to reduce barriers
+      to contribution
+      https://github.com/getting-things-gnome/gtg/issues/237
+    - The code has been ported to use GtkApplication, resulting in
+      simpler and more robust UI code overall.
+    - GtkBuilder/Glade ".ui" files have been regrouped into one
+      location.
+    - Reorganization of various .py files for consistency.
+    - The debugging/logging system has been simplified.
+    - Various improvements to the test suite.
+    - The codebase is mostly PEP8-compliant.
+    - We relaxed the PEP8 max line length convention to 100 cols for
+      readability, because this is not the nineties anymore.
+    - Support is available for Tox, for testing automation within
+      virtualenvs
+    - The application's translatable strings have been reviewed and
+      harmonized, to ensure the entire application is translatable.
+    - Application CSS has been moved to its own file
+      https://github.com/getting-things-gnome/gtg/pull/229
+    - GTG now provides an "AppData" (FreeDesktop AppStream metadata)
+      file to properly present itself in distro-agnostic
+      software-centers.
+    - The Meson build system is now supported
+      https://github.com/getting-things-gnome/gtg/pull/315
+      + The development version’s launch script now allows running
+        with various languages, using the LANG environment variable for example.
+      + Appdata and desktop files are named based on the chosen Meson profile
+       https://github.com/getting-things-gnome/gtg/pull/349
+      + Depending on the Meson profile, the HeaderBar style changes dynamically
+       to indicate when run in a dev environment, such as GNOME Builder
+       https://github.com/getting-things-gnome/gtg/issues/341
+- Drop gtg-fix-pynotify-crash.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Jan 30 11:13:16 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend -lang: supplements are in use
+
+-------------------------------------------------------------------
+Mon Dec 17 16:39:02 UTC 2018 - Dan Čermák <dcermak@suse.com>
+
+- Fix name of python-liblarch_gtk to python-liblarch-gtk
+
+-------------------------------------------------------------------
+Sun Mar 18 23:36:55 UTC 2018 - luc14n0@linuxmail.org
+
+- Add gtg-fix-pynotify-crash.patch and python-notify Requires to
+  fix a crashing due to the lack of installed python-notify
+  (lp#1264846).
+
+-------------------------------------------------------------------
+Mon May 18 08:56:58 UTC 2015 - fcrozat@suse.com
+
+- Update url field in specfile.
+
+-------------------------------------------------------------------
+Sun Oct 19 11:11:04 UTC 2014 - dimstar@opensuse.org
+
+- Add gtg.appdata.xml: allow GTG to show up as an application in
+  gnome-software (installation will abort when upstream ships the
+  file).
+
+-------------------------------------------------------------------
+Tue Nov 26 20:46:08 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 0.3.1:
+  + Added command "gtcli overview".
+  + Pep8ification of code.
+  + System level global shortcut key for quick adding task.
+  + Refactor Bugzilla plugin.
+  + Switch from external configobj to Python's ConfigParser.
+  + Bugs fixed: lp#487582, lp#487585, lp#816356, lp#1024473,
+    lp#1029342, lp#1032745, lp#1039651, lp#1043457, lp#1047753,
+    lp#1062659, lp#1073607, lp#1076029, lp#1079143, lp#1090301,
+    lp#1094307, lp#1095390, lp#1096622, lp#1102453, lp#1141582,
+    lp#1193678, lp#1218093, lp#1236066, lp#1242083, lp#1242279,
+    lp#1242384.
+  + Updated translations.
+- Drop gtg-Correct-handling-of-liblarch-API-1.0.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
+Sat Jan 26 16:05:57 UTC 2013 - zaitor@opensuse.org
+
+- Add gtg-Correct-handling-of-liblarch-API-1.0.patch, gtg now
+  requires a minimum of version 1,2 of python-liblarch. It not
+  really needed, but users will get an informative reason as to why
+  gtg does not run.
+
+-------------------------------------------------------------------
+Wed Nov  7 09:30:03 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.3:
+  + Performance: GTG has recovered its youth and can handle your
+    many tasks way faster than before!
+  + Data backup: GTG keeps several copies of your data, and it's
+    now able to restore the most recent backup automatically if
+    your data are corrupted.
+  + Help: GTG now has many help pages providing useful
+    documentation for GTG.
+  + UI: we've improved our UI in several ways. The most notable
+    will probably be the new tag editor, which provides an easier
+    way to customize and edit tag's properties such as colors,
+    icon, etc.
+  + Stability: many bugs causing crashes were fixed
+  + Various other fixes:
+    - Updated and improved plugins: notification area icon, urgency
+      color, export, ...
+    - Improved Quick Add Toolbar, with more features and flags for
+      you geeks.
+    - Improved command line clients
+    - Saner handling of due dates constraints.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Feb 15 19:06:35 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 0.2.9:
+  + Big refractorization of code, now using liblarch
+  + Extended backend system to support multiple backends
+  + Backend GUI configuration
+  + Backends:
+    - Added Mantis Bug Tracker backend
+    - Added Tomboy/Gnote backend
+    - Added Launchpad backend
+    - Added Twitter/Identica backend
+  + Graphical crash handler
+  + Command line tool based on DBus interface of GTG
+  + Added search feature
+  + Rewritten notification area plugin with showing only 10 most
+    doable tasks from Workview
+  + Setting start/due date by a right click menu in the task
+    browser
+  + Right click behaviour in the task treeview is now consistant
+    with other GNOME applications
+  + Rework of deleting dialog
+  + Previewing task content (gmail-like-ui) [lp#384049]
+  + Attaching file to a task by drag-and-dropping it on the task or
+    writing file:// URI
+  + Added script for anonymizing task files
+  + "Sexy" export template
+  + DBus API is now CamelCase
+  + Fuzzy date "Later" was renamed to "Someday"
+  + Daily backup of gtg_tasks.xml
+  + Save perferences, window positions and statuses immediately
+    after a change
+  + Fixed crash traceback when pressing 'delete' key
+  + Fixed url autolinking for http(s) schemes
+  + Underscore characters in tasks not treated as accelerators
+    [lp#676088]
+  + Fixed several bugs about hamster integration
+  + Added link to web documentation in Help menu
+  + Fixed bug with data consistency lp#579189 (empty tags.xml)
+  + Added samba bugzilla to the bugzilla plugin
+  + Fixed lp#532392, a start date is later than a due date
+  + support for gtg:// URIs
+  + Fixed lp#584667, indicating missing plugin dependencies
+  + Add a new tag dialog keeps the previous value
+  + Added keyword bko for recognizing and linking KDE bugs
+  + Several usability improvements
+  + Several code refratorings
+- Drop gtg-hamster-plugin-not-starting-tracking-tasks.patch: GTG
+  received a complete rewrite, thus the patch no longer applies.
+- Add python-liblarch and python-liblarch_gtk Requires, following
+  upstream code changes.
+- Remove obsolete openSUSE Version checkes (up to 11.3).
+
+-------------------------------------------------------------------
+Fri Dec  2 20:55:58 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 0.2.5:
+  + Ability to downgrade data from development, future GTG 0.3 code
+- Update license tag to spdx identifier (GPL-3.0+)
+
+-------------------------------------------------------------------
+Mon Sep 26 18:26:31 UTC 2011 - andrea.turrini@gmail.com
+
+- Fixed typo in gtg.spec
+
+-------------------------------------------------------------------
+Wed Mar 30 14:43:17 UTC 2011 - malcolmlewis@opensuse.org
+
+- Add: gtg-hamster-plugin-not-starting-tracking-tasks.patch: After
+  activating the Hamster (Time Tracking) Plugin in GTG, nothing
+  happens (bnc#683748).
+
+-------------------------------------------------------------------
+Sat Feb 12 19:07:19 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Mon Jun 21 14:50:22 CEST 2010 - dimstar@opensuse.org
+
+- Update to version 0.2.4:
+  + Several bugfixes and polishing.
+
+-------------------------------------------------------------------
+Fri Jun  4 14:53:41 CEST 2010 - vuntz@opensuse.org
+
+- Fix python-xdg Requires (it was python-pyxdg).
+
+-------------------------------------------------------------------
+Wed Mar  3 21:53:05 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.2.3:
+  + Removal of disabled widgets.
+
+-------------------------------------------------------------------
+Mon Mar  1 12:23:42 CET 2010 - dimstar@opensuse.org
+
+- Update to version 0.2.2:
+  + Autostart on login
+  + Preferences dialog
+  + Send task by mail plugin
+  + Import_json plugin
+  + lp#520427: Improve RTM plugin: don't sync tasks from archived
+    lists
+  + Automatic cleanup of closed task, plugin
+  + Allow to change dismissed date of tasks
+  + Docky applet support
+  + lp#502111: Allow to change closed date of tasks
+  + notification area plugin updated to support appindicate
+  + gtg_new task now supports command switches
+  + lp#511651: white space around title
+  + Expanded CLI to gtg to support task descriptions
+  + Added a guide to plugins
+  + RTM plugin tags synchronization
+  + Evolution plugin
+  + Tomboy support
+  + Dbus autostart
+  + Notification area bug fixes
+- BuildRequire dbus-1 for directory ownership.
+
+-------------------------------------------------------------------
+Tue Feb 02 12:15:55 UTC 2010 - awafaa@opensuse.org
+
+- Update to version 0.2.1
+  + Schedule for context menu
+  + Improved export feature
+  + Restore closed tasks filtering by selected tag, fixes 
+    bug lp#498857
+  + Temporary fix allowing to reset tag color
+  + Added the ability to add a tag from the right click menu in
+    the task browser
+  + Better explanation of the "Work view" concept in documentation
+  + Multiple selection
+  + API clarifications
+  + Cut & Paste improvements
+  + Notification area plugin improvements
+  + Icons reflect action availability
+  + Misc. editor bug fixes
+  + Misc. tag list bug fixes
+
+-------------------------------------------------------------------
+Tue Jan 19 23:38:47 CET 2010 - vuntz@opensuse.org
+
+- Cleanup packaging for integration in Factory.
+
+-------------------------------------------------------------------
+Mon Dec 14 16:42:07 CET 2009 - awafaa@opensuse.org
+
+- Update to version 0.2.0:
+  + Bugs fixes from 0.1.9
+- Changes from version 0.1.9:
+  + Support non-exact ("fuzzy") due dates: 'now', 'soon', and
+    'later'
+  + Fixes a bug with gtk stock strings being marked as translatable
+    (lp#490231)
+  + When a task is deleted, all subtask are deleted as well
+  + Groups for tags and subtags
+  + GNOME bugzilla plugin
+  + Handle tasks spatially (remember position & size)
+  + Opened tasks on quit are reopened on start
+  + Remove the "File" menu. We have no files, we have tasks!
+  + Improve compatibility with non GNU systems
+  + Close date selector widget on single click
+  + The toolbar can now be hidden
+  + Empty new tasks are deleted when editor is closed
+  + Lot of bug fixed in the editor while playing with subtasks
+  + Works well with the "text besides icon" GNOME option
+  + Merge RTM plugin branch
+  + i18n: fixed window title in GTG/taskbrowser/browser.py
+  + Add XDG_CACHE redefinition in script/debug.sh
+  + Remove unsued get_closed_date
+  + Added filtering capabilities
+    - Filter callbacks were added to the task browser
+    - Filters were also added to the requester
+  + lp#406851, incorrect behaviour marking a dismissed task as done
+  + Added accelerators to the task editor
+  + Plugin for integration with the Hamster Time Tracker
+  + Add plugin engine
+  + When GTG is already running, use DBUS to raise existing
+    instance rather than failing silently
+  + Refactorization and PEP8ification work
+  + New keyboard bindings for 'Mark as done' and 'Dismiss' actions
+  + New keyboard bindings and accelerators
+  + DBus interface
+  + Remove the 'Delete' button from the toolbar
+  + Fix a spelling mistake in the manpage
+  + Allow quickadd of capitalized date
+  + Added tomboy plugin
+  + Added export function with templates
+
+-------------------------------------------------------------------
+Mon Jul 09 18:17:15 CET 2009 - awafaa@opensuse.org
+
+- Update to version 0.1.2:
+  + Available in 18 languages, with 12 languages being more than
+    99% translated
+  + Shadows around the listview widgets
+  + Fixes package dependencies
+  + Tooltips for button
+  + Automatically select title in task editor
+  + Crash on startup with non empty LANGUAGE envvar
+  + Use GNOME settings for toolbar
+  + Better tag markup handling
+  + No more multiple instances
+  + HTTP link parsing
+  + Update README
+  + Update XML files sooner
+  + Remember color
+  + URLs can now include ';' characters. Fixes lp#360969
+  + Added support for opening subtasks and links with the keyboard:
+    Fixes lp#369272
+  + Add polish translation
+  + Title for newly created task is now selected to allow easy editing
+  + Fixed some bugs in the task editor
+  + lp#326388, lp#374745, lp#374745
+
+-------------------------------------------------------------------
+Mon Apr 06 12:02:42 CET 2009 - awafaa@opensuse.org
+
+- Update to version 0.1.1:
+  + New features:
+    - New icon
+    - Quickadd now accepts attributes
+    - http:// links now open in the browser
+    - Shortcut to show/hide sidebar (F9)
+    - Some UI love for the sidebar and the tag icons, shamelessy
+      copied from f-spot
+    - Hotkeys goodness
+    - Edit buttons
+  + Bugs fixed:
+    - Calendar open at the correct date
+    - TaskSerial refactorization
+    - Tooltips on buttons
+    - First unit tests
+    - Error, no crash if the XML file cannot be read
+    - Fix lp#339383 (delete subtask when deleting first char)
+    - Escape title in the treeview: lp#339874
+    - Focus in the editor: lp#339269, lp#339195, lp#339389
+    - lp#339269: Quickadd has the focus on launch
+    - lp#339583, lp#336314: patches delete key and enter key to
+      confirm a delete
+    - Typos: lp#339268 lp#339492
+
+-------------------------------------------------------------------
+Fri Mar 13 01:01:01 CET 2009 - awafaa@opensuse.org
+
+- Initial packaging (version 0.1).
+
