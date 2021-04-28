@@ -1,0 +1,25 @@
+From 9e2becec20d023409a1671bf10a682f699350e85 Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Sun, 4 Apr 2021 21:03:43 +0000
+Subject: [PATCH] Encoding bug fix.
+
+---
+ ChangeLog | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git ChangeLog ChangeLog
+index 23a93cf4..2238ba6f 100644
+--- ChangeLog
++++ ChangeLog
+@@ -1,3 +1,8 @@
++2021-04-04  17:02  Christos Zoulas <christos@zoulas.com>
++
++	* count the total bytes found not the total byte positions
++	  in order to determine encoding (Anatol Belski)
++
+ 2021-03-30  20:21  Christos Zoulas <christos@zoulas.com>
+ 
+ 	* release 5.40
+-- 
+2.26.2
+

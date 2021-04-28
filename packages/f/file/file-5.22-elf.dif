@@ -4,7 +4,7 @@
 
 --- src/readelf.c
 +++ src/readelf.c	2019-02-21 06:41:38.598573505 +0000
-@@ -818,7 +818,7 @@ do_core_note(struct magic_set *ms, unsig
+@@ -824,7 +824,7 @@ do_core_note(struct magic_set *ms, unsig
  
  	default:
  		if (type == NT_PRPSINFO && *flags & FLAGS_IS_CORE) {
@@ -13,7 +13,7 @@
  			unsigned char c;
  			/*
  			 * Extract the program name.  We assume
-@@ -830,7 +830,9 @@ do_core_note(struct magic_set *ms, unsig
+@@ -836,7 +836,9 @@ do_core_note(struct magic_set *ms, unsig
  			 * If the characters aren't all printable,
  			 * reject it.
  			 */

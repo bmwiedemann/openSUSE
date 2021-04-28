@@ -1,6 +1,6 @@
 --- file-5.39/src/file.c.orig	2020-06-17 16:13:36.625305367 +0200
 +++ file-5.39/src/file.c	2020-06-17 16:15:12.429553163 +0200
-@@ -249,6 +249,8 @@
+@@ -251,6 +251,8 @@
  			break;
  		case 'e':
  		case OPT_EXCLUDE_QUIET:
@@ -9,7 +9,7 @@
  			for (i = 0; i < __arraycount(nv); i++)
  				if (strcmp(nv[i].name, optarg) == 0)
  					break;
-@@ -261,7 +263,7 @@
+@@ -263,7 +265,7 @@
  			break;
  
  		case 'f':
@@ -18,7 +18,7 @@
  				usage();
  			if (magic == NULL)
  				if ((magic = load(magicfile, flags)) == NULL)
-@@ -271,6 +273,8 @@
+@@ -273,6 +275,8 @@
  			++didsomefiles;
  			break;
  		case 'F':
@@ -27,7 +27,7 @@
  			separator = optarg;
  			break;
  		case 'i':
-@@ -283,6 +287,8 @@
+@@ -285,6 +289,8 @@
  			action = FILE_LIST;
  			break;
  		case 'm':

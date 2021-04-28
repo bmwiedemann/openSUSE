@@ -22,7 +22,7 @@ Index: file-5.38/src/file.h
 ===================================================================
 --- file-5.38.orig/src/file.h
 +++ file-5.38/src/file.h
-@@ -676,4 +676,12 @@ static const char *rcsid(const char *p)
+@@ -691,4 +691,12 @@ static const char *rcsid(const char *p)
  #define __RCSID(a)
  #endif
  

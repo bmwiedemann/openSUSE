@@ -4,7 +4,7 @@
 
 --- src/apprentice.c
 +++ src/apprentice.c	2019-02-21 06:39:25.249091320 +0000
-@@ -2465,6 +2465,12 @@ check_format_type(const char *ptr, int t
+@@ -2476,6 +2476,12 @@ check_format_type(const char *ptr, int t
  			ptr++;
  		if (*ptr == '#')
  			ptr++;

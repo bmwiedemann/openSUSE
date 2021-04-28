@@ -29,7 +29,7 @@
  private char *mkdbname(struct magic_set *, const char *, int);
  private struct magic_map *apprentice_buf(struct magic_set *, struct magic *,
      size_t);
-@@ -3336,67 +3338,6 @@ byteswap(struct magic *magic, uint32_t n
+@@ -3347,67 +3349,6 @@ byteswap(struct magic *magic, uint32_t n
  }
  
  /*

@@ -1,11 +1,13 @@
---- magic/Magdir/cafebabe
-+++ magic/Magdir/cafebabe	2014-03-28 10:15:13.354235294 +0000
-@@ -15,7 +15,7 @@
- # might add another one or two as time goes by...
- #
+Index: magic/Magdir/cafebabe
+===================================================================
+--- magic/Magdir/cafebabe.orig
++++ magic/Magdir/cafebabe
+@@ -17,7 +17,7 @@
  ### JAVA START ###
+ # Reference:	http://en.wikipedia.org/wiki/Java_class_file
+ # Update:	Joerg Jenderek
 -0	belong		0xcafebabe
 +0	belong		0xcafebabe	Cafe Babe
- >4	belong		>30		compiled Java class data,
+ >4	ubelong		>30		compiled Java class data,
  !:mime	application/x-java-applet
- >>6	beshort		x	        version %d.
+ #!:mime	application/java-byte-code

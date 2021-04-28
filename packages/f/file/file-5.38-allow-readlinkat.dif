@@ -2,7 +2,7 @@ Index: file-5.38/src/seccomp.c
 ===================================================================
 --- file-5.38.orig/src/seccomp.c
 +++ file-5.38/src/seccomp.c
-@@ -206,6 +206,9 @@ enable_sandbox_full(void)
+@@ -205,6 +205,9 @@ enable_sandbox_full(void)
  #ifdef __NR_newfstatat
  	ALLOW_RULE(newfstatat);
  #endif

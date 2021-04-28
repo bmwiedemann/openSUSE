@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Apr 23 10:26:49 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch file-5.40-ascii.patch
+  * fix regressions on dection of smaller ASCII files (boo#1184899)
+
+-------------------------------------------------------------------
+Thu Apr 22 13:42:49 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream comitts as patches
+  * file-5.40-9b0459af.patch
+    put attributes inside the xz magic. (boo#1184888, boo#1184891)
+  * file-5.40-749e1ecf.patch
+    If the file is less than 3 bytes, use the file length to determine type
+  * file-5.40-f0601504.patch
+    Fix regression after unsigned/signed printing changes
+  * file-5.40-f7705dca.patch
+     fix previous (cast >>)
+  * file-5.40-3096f87f.patch
+    Correct return values to exptexted
+  * file-5.40-4c5fe1ad.patch
+    Add missing parens
+- Port patch 
+  * file-5.28-btrfs-image.dif
+    due patch file-5.40-f0601504.patch
+
+-------------------------------------------------------------------
+Tue Apr  6 07:39:00 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream commits as patches
+  * file-5.40-1c677c04.patch
+    Don't count each byte encounter as 1, count the total number
+    of bytes found (Anatol Belski). This makes it behave like 5.39
+  * file-5.40-6b34436a.patch
+    remove "u" from the pattern (Joerg Jenderek)
+  * file-5.40-9e2becec.patch
+    Encoding bug fix
+- Fix offsets of patches
+  * file-5.17-option.dif
+  * file-5.19-biorad.dif
+  * file-5.19-printf.dif
+  * file-5.19-zip2.0.dif
+  * file-5.22-elf.dif
+  * file-5.23-endian.patch
+  * file-5.28-btrfs-image.dif
+  * file-5.38-allow-readlinkat.dif
+  * file-secure_getenv.patch 
+
+-------------------------------------------------------------------
+Sat Apr  3 07:32:11 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.40:
+  * Add limit to the number of bytes to scan for encoding
+  * Fix /T (trim flag) for regex
+  * Trim trailing separator.
+  * Convert system read errors from corrupt ELF
+    files into human readable error messages
+  * Exclude surrogate pairs from utf-8 detection
+- drop upstreamed patches:
+  * file-5.16-ocloexec.patch
+  * file-5.39-alternate_format.dif
+
+-------------------------------------------------------------------
 Wed Mar 10 13:41:42 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Remove patch file-5.12-zip.dif as it is upstream solved (boo#1183143)

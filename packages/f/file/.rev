@@ -1370,4 +1370,41 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
     <comment>- Remove patch file-5.12-zip.dif as it is upstream solved (boo#1183143)</comment>
     <requestid>878177</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>997dc111342d2e8d3917d4a25380e2d0</srcmd5>
+    <version>5.40</version>
+    <time>1619652987</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch file-5.40-ascii.patch
+  * fix regressions on dection of smaller ASCII files (boo#1184899)
+
+- Add upstream comitts as patches
+  * file-5.40-9b0459af.patch
+    put attributes inside the xz magic. (boo#1184888, boo#1184891)
+  * file-5.40-749e1ecf.patch
+    If the file is less than 3 bytes, use the file length to determine type
+  * file-5.40-f0601504.patch
+    Fix regression after unsigned/signed printing changes
+  * file-5.40-f7705dca.patch
+     fix previous (cast &gt;&gt;)
+  * file-5.40-3096f87f.patch
+    Correct return values to exptexted
+  * file-5.40-4c5fe1ad.patch
+    Add missing parens
+- Port patch 
+  * file-5.28-btrfs-image.dif
+    due patch file-5.40-f0601504.patch
+
+- Add upstream commits as patches
+  * file-5.40-1c677c04.patch
+    Don't count each byte encounter as 1, count the total number
+    of bytes found (Anatol Belski). This makes it behave like 5.39
+  * file-5.40-6b34436a.patch
+    remove &quot;u&quot; from the pattern (Joerg Jenderek)
+  * file-5.40-9e2becec.patch
+    Encoding bug fix
+- Fix offsets of patches
+  * file-5.17-option.dif</comment>
+    <requestid>888046</requestid>
+  </revision>
 </revisionlist>

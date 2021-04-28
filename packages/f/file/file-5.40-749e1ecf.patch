@@ -1,0 +1,35 @@
+From 749e1ecfc3d333e5ec8b1a2e639da7ccb2498c34 Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Mon, 19 Apr 2021 18:38:04 +0000
+Subject: [PATCH] PR/256: mutableVoid: If the file is less than 3 bytes, use
+ the file length to determine type
+
+---
+ src/encoding.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git src/encoding.c src/encoding.c
+index 0fb1f47b..31d4d125 100644
+--- src/encoding.c
++++ src/encoding.c
+@@ -35,7 +35,7 @@
+ #include "file.h"
+ 
+ #ifndef	lint
+-FILE_RCSID("@(#)$File: encoding.c,v 1.30 2021/04/09 19:16:51 christos Exp $")
++FILE_RCSID("@(#)$File: encoding.c,v 1.31 2021/04/19 18:38:04 christos Exp $")
+ #endif	/* lint */
+ 
+ #include "magic.h"
+@@ -285,7 +285,7 @@ looks_ ## NAME(const unsigned char *buf, size_t nbytes, file_unichar_t *ubuf, \
+ 		if (dist[i]) \
+ 			u++; \
+ 	} \
+-	if (u < 3) \
++	if (u < MIN(nbytes, 3)) \
+ 		return 0; \
+ \
+ 	return 1; \
+-- 
+2.28.0
+
