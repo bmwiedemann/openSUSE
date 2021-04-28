@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 24 09:33:04 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- fixed s390x key install (bsc#1185245)
+
+-------------------------------------------------------------------
 Fri Jan  8 17:21:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update openSUSE:Factory:zSystems signing key to current version:

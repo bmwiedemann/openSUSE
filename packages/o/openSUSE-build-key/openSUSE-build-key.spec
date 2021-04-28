@@ -112,7 +112,7 @@ install -c -m 644 %{SOURCE8} $RPM_BUILD_ROOT%{containerkeydir}/suse-container-ke
 %{keydir}/gpg-pubkey-697ba1e5-5c755904.asc
 %endif
 %ifarch s390 s390x
-%{keydir}/gpg-pubkey-f6ab3975-5ad08cb7.asc
+%{keydir}/gpg-pubkey-f6ab3975-5edd7d4f.asc
 %endif
 %ifarch ppc ppc64 ppc64le
 %{keydir}/gpg-pubkey-8ede3e07-5c755f3a.asc

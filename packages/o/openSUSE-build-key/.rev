@@ -251,4 +251,12 @@ However, it would be good to have these out before we do switch. (forwarded requ
   openSUSE:Factory:zSystems OBS Project &amp;lt;openSUSE:Factory:zSystems@build.opensuse.org&amp;gt; (forwarded request 861772 from dirkmueller)</comment>
     <requestid>861873</requestid>
   </revision>
+  <revision rev="30" vrev="39">
+    <srcmd5>adfbda06252bebc81bdb59c1ae7495eb</srcmd5>
+    <version>1.0</version>
+    <time>1619652989</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed s390x key install (bsc#1185245)</comment>
+    <requestid>888173</requestid>
+  </revision>
 </revisionlist>
