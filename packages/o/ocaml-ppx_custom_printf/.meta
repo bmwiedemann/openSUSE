@@ -1,0 +1,8 @@
+<package name="ocaml-ppx_custom_printf" project="openSUSE:Factory">
+  <title>Printf-style format-strings for user-defined string conversion</title>
+  <description>Extensions to printf-style format-strings for user-defined string conversion.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-ppx_custom_printf"/>
+  <url>https://opam.ocaml.org/packages/ppx_custom_printf</url>
+</package>
