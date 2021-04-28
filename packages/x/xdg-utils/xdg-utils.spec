@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source:         xdg-utils-%{version}.tar.xz
 Patch0:         install-some-more-scripts.diff
 # PATCH-FIX-UPSTREAM 0001-Don-t-run-kreadconfig-if-KDE_SESSION_VERSION-is-5.patch
 Patch1:         0001-Don-t-run-kreadconfig-if-KDE_SESSION_VERSION-is-5.patch
+# PATCH-FIX-OPENSUSE support-deepin-desktop.patch hillwood@opensuse.org
+Patch2:         support-deepin-desktop.patch
 BuildRequires:  make
 # for xmlto to be able to generate text from html
 BuildRequires:  w3m

@@ -443,4 +443,12 @@ https://build.opensuse.org/request/show/121743 (forwarded request 121894 from va
     <comment></comment>
     <requestid>859523</requestid>
   </revision>
+  <revision rev="54" vrev="3">
+    <srcmd5>0f22a7947cd86ea28c636579c4e67741</srcmd5>
+    <version>1.1.3+20200220</version>
+    <time>1619652999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888677</requestid>
+  </revision>
 </revisionlist>

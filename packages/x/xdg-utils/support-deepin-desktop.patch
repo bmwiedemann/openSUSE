@@ -1,0 +1,12 @@
+diff -Nur xdg-utils-1.1.3+20200220/scripts/xdg-su.in xdg-utils-1.1.3+20200220-new/scripts/xdg-su.in
+--- xdg-utils-1.1.3+20200220/scripts/xdg-su.in	2020-02-21 05:01:04.000000000 +0800
++++ xdg-utils-1.1.3+20200220-new/scripts/xdg-su.in	2021-04-24 20:48:46.501510379 +0800
+@@ -198,7 +198,7 @@
+     su_kde
+     ;;
+ 
+-    gnome*|cinnamon|lxde|mate)
++    gnome*|cinnamon|lxde|mate|deepin)
+     su_gnome
+     ;;
+ 
