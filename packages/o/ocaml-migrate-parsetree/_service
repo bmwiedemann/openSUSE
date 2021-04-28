@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-migrate-parsetree</param>
-    <param name="revision">c5d4f6fce30d3eb699d79d288d0b265752ba64c5</param>
+    <param name="revision">4a05cf7a00d84e5f827cc9ae9c75e5dc85126085</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml-ppx/ocaml-migrate-parsetree.git</param>

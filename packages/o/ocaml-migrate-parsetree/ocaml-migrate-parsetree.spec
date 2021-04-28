@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-migrate-parsetree
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,39 @@
 #
 
 
-Name:           ocaml-migrate-parsetree
-Version:        1.7.3
+%bcond_with ocaml_migrate_parsetree_testsuite
+%define build_flavor @BUILD_FLAVOR@%{nil}
+%if "%{build_flavor}" == "testsuite"
+%if %{without ocaml_migrate_parsetree_testsuite}
+ExclusiveArch:  do-not-build
+%endif
+%define nsuffix -testsuite
+%else
+%define nsuffix %{nil}
+%endif
+
+%define     pkg ocaml-migrate-parsetree
+Name:           %{pkg}%{nsuffix}
+Version:        2.1.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Library for conversion between different OCaml parsetrees versions
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
 Group:          Development/Languages/OCaml
+BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/ocaml-migrate-parsetree
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{pkg}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20200514
+BuildRequires:  ocaml-rpm-macros >= 20210409
+%if 1
 BuildRequires:  ocamlfind(compiler-libs.common)
-BuildRequires:  ocamlfind(ppx_derivers)
-BuildRequires:  ocamlfind(result)
+%endif
+
+%if "%{build_flavor}" == "testsuite"
+BuildRequires:  ocamlfind(cinaps)
+BuildRequires:  ocamlfind(ocaml-migrate-parsetree)
+%endif
 
 %description
 This library converts between parsetrees of different OCaml versions.
@@ -47,23 +65,34 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%autosetup -p1
+%setup -q -n %{pkg}-%{version}
 
 %build
 dune_release_pkgs='ocaml-migrate-parsetree'
 %ocaml_dune_setup
+%if "%{build_flavor}" == ""
 %ocaml_dune_build
+%endif
 
 %install
+%if "%{build_flavor}" == ""
 %ocaml_dune_install
 %ocaml_create_file_list
+%endif
 
+%if "%{build_flavor}" == "testsuite"
 %check
 %ocaml_dune_test
+%endif
 
+%if "%{build_flavor}" == ""
 %files -f %{name}.files
-%doc README.md MANUAL.md
+%defattr(-,root,root,-)
+%doc README.md
 
 %files devel -f %{name}.files.devel
+%defattr(-,root,root,-)
+
+%endif
 
 %changelog

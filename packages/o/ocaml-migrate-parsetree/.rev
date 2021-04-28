@@ -120,4 +120,12 @@
     <comment>- Update to version 1.7.3, for ocaml-4.11</comment>
     <requestid>828686</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>73d4551cab23a41341546da99ecf2a50</srcmd5>
+    <version>2.1.0</version>
+    <time>1619653026</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0, for ocaml-4.12</comment>
+    <requestid>885017</requestid>
+  </revision>
 </revisionlist>
