@@ -1,5 +1,15 @@
 -------------------------------------------------------------------
-Wed Jun 17 06:06:06 UTC 2020 - olaf@aepfle.de
+Fri Apr  9 09:09:09 UTC 2021 - ohering@suse.de
+
+- Update to version 2.18.11
+  Remove obsolete ocaml-lablgtk2.ml_table_extension_events.patch
+- add build conditionals for gl,glade,gnomecanvas,gtksourceview2,
+  gtkspell and rsvg, enable only the latter be default
+- Remove ocaml_native_compiler conditional
+  build native target unconditionally
+
+-------------------------------------------------------------------
+Wed Jun 17 06:06:06 UTC 2020 - ohering@suse.de
 
 - Fix gcc10 build with ocaml-lablgtk2.ml_table_extension_events.patch
 

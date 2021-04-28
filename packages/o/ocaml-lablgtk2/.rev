@@ -234,4 +234,17 @@
     <comment>- Fix gcc10 build with ocaml-lablgtk2.ml_table_extension_events.patch</comment>
     <requestid>815369</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>92da4a169f4da41b2c1fc78170bc4e99</srcmd5>
+    <version>2.18.11</version>
+    <time>1619653053</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.18.11
+  Remove obsolete ocaml-lablgtk2.ml_table_extension_events.patch
+- add build conditionals for gl,glade,gnomecanvas,gtksourceview2,
+  gtkspell and rsvg, enable only the latter be default
+- Remove ocaml_native_compiler conditional
+  build native target unconditionally</comment>
+    <requestid>887305</requestid>
+  </revision>
 </revisionlist>

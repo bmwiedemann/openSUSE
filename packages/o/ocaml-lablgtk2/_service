@@ -1,15 +1,17 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/garrigue/lablgtk.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <!-- 2.18.10 -->
-    <param name="revision">d66addf4e9dc5ed489e85529475645996afa68a8</param>
+    <param name="exclude">.cvsignore</param>
+    <param name="exclude">applications</param>
+    <param name="exclude">doc</param>
+    <param name="exclude">examples</param>
     <param name="filename">ocaml-lablgtk2</param>
-<param name="exclude">.cvsignore</param>
-<param name="exclude">applications</param>
-<param name="exclude">doc</param>
-<param name="exclude">examples</param>
+    <param name="revision">156973670a9c00b10f7f97201bbca054e6f3b66b</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/garrigue/lablgtk.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
