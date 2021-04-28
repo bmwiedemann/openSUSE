@@ -1,0 +1,11 @@
+<package name="ocaml-stdio" project="openSUSE:Factory">
+  <title>Standard IO library for OCaml</title>
+  <description>Stdio implements simple input/output functionalities for OCaml.
+
+It re-exports the input/output functions of the OCaml standard
+libraries using a more consistent API.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-stdio"/>
+  <url>https://opam.ocaml.org/packages/stdio</url>
+</package>
