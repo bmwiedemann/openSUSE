@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 28 11:59:18 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.4.15
+  * Cross-platform include of endian.h
+  * rotmat: added rotation by enum
+  * use os.path.abspath() for inlcude files, to allow inlcuding from external folders
+  * Generator CS update to support mavlink 2.0
+  * mavutil.py: add support for MAV_TYPE_DECAROTOR
+  * mavgen: added MAV_IGNORE_CRC for python
+  * magfit: fixed for newer scipy versions
+  * array.array.fromstring() was removed in Python 3.9
+  * tools: Python3 support for mavextract.py
+
+-------------------------------------------------------------------
 Fri Aug  7 13:42:20 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 2.4.9

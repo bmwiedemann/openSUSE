@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymavlink
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define binaries mavtomfile mavtogpx mavsummarize mavsigloss mavsearch mavplayback mavparms mavparmdiff mavmission mavloss mavlogdump mavlink_bitmask_decoder mavkml mavgraph mavgpslock mavgen mavflighttime mavflightmodes mavfft_isb mavfft mavextract magfit_motors magfit_gps magfit_delta magfit_WMM magfit MPU6KSearch
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pymavlink
-Version:        2.4.9
+Version:        2.4.15
 Release:        0
 Summary:        Python MAVLink code
 License:        LGPL-3.0-only
@@ -35,7 +35,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-future
 Requires:       python-lxml
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # SECTION test requirements
 BuildRequires:  %{python_module lxml}
 # /SECTION
@@ -74,8 +74,7 @@ done
 rm -f %{buildroot}%{_bindir}/_current_flavor
 
 %check
-# FIXME: testsuite does not run in OBS
-#%%python_exec setup.py test
+# no tests in PyPI tarball, no tags in upstream repo
 
 %post
 for b in %{binaries}; do
