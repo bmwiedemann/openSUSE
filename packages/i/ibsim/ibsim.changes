@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 28 07:49:11 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to version 0.10
+  - Support multiple umad file descriptors
+  - Support latest libibumad
+  - Added ibsim-run, a wrapper to run programs under ibsim
+- Refresh ibsim-PIE.patch against latest sources
+- Add typo-scrips.patch to fix compilation for ibsim-run
+
+-------------------------------------------------------------------
 Thu Apr 22 10:00:24 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim old rpm constructs.

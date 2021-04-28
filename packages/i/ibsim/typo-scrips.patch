@@ -1,0 +1,20 @@
+commit a1ade731654548b233306f82081c3c12bdf2838d
+Author: Tzafrir Cohen <nvidia@cohens.org.il>
+Date:   Thu Oct 8 17:17:22 2020 +0300
+
+    typo: scrips
+    
+    Signed-off-by: Tzafrir Cohen <nvidia@cohens.org.il>
+
+diff --git ibsim/Makefile ibsim/Makefile
+index d83d8247df9c..a45dbc1c8465 100644
+--- ibsim/Makefile
++++ ibsim/Makefile
+@@ -1,6 +1,6 @@
+ bins:=ibsim
+ scripts:=ibsim-run
+-progs:=$(bins) $(scrips)
++progs:=$(bins) $(scripts)
+ 
+ -include ../defs.mk
+ 

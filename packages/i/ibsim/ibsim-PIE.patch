@@ -1,12 +1,23 @@
-Index: ibsim-0.9.0.7c2a604ec49a/ibsim/Makefile
-===================================================================
---- ibsim-0.9.0.7c2a604ec49a.orig/ibsim/Makefile
-+++ ibsim-0.9.0.7c2a604ec49a/ibsim/Makefile
-@@ -2,5 +2,7 @@ progs:=ibsim
+commit 913edb20ad95d3e369f275db8e718e604ce94169
+Author: Wolfgang Frisch <wolfgang.frisch@suse.com>
+Date:   Wed Apr 28 09:52:43 2021 +0200
+
+    ibsim: PIE
+    
+    Link as position idnependant executable
+    
+    Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+diff --git ibsim/Makefile ibsim/Makefile
+index 73f92e963b26..d83d8247df9c 100644
+--- ibsim/Makefile
++++ ibsim/Makefile
+@@ -4,6 +4,8 @@ progs:=$(bins) $(scrips)
  
  -include ../defs.mk
  
 +LDFLAGS += -pie
 +
- all: $(progs)
- ibsim: $(objs)
+ ibsim-run: ibsim-run.in
+ 	sed -e 's|@sim_so@|$(libdir)/libumad2sim.so|' \
+ 		<$< >$@

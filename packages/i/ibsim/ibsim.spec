@@ -16,10 +16,10 @@
 #
 
 
-%define git_ver .0.7c2a604ec49a
+%define git_ver .0.c7e430dc3d9b
 
 Name:           ibsim
-Version:        0.9
+Version:        0.10
 Release:        0
 Summary:        InfiniBand fabric simulator for management
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -27,6 +27,8 @@ Group:          Productivity/Networking/Diagnostic
 Source:         ibsim-%{version}%{git_ver}.tar.gz
 Patch1:         ibsim-fix_type_punning.patch
 Patch2:         ibsim-PIE.patch
+# Backported from upstream
+Patch3:         typo-scrips.patch
 URL:            https://github.com/linux-rdma/ibsim
 BuildRequires:  infiniband-diags-devel
 BuildRequires:  libibumad-devel
@@ -39,7 +41,8 @@ OpenSM, diagnostic and management tools.
 %prep
 %setup -q -n  %{name}-%{version}%{git_ver}
 %patch1
-%patch2 -p1
+%patch2
+%patch3
 
 %build
 export CFLAGS="%{optflags}"
@@ -55,6 +58,7 @@ export LDFLAGS="%{optflags}"
 %dir %{_libdir}/umad2sim
 %{_libdir}/umad2sim/libumad2sim*.so*
 %{_bindir}/ibsim
+%{_bindir}/ibsim-run
 %doc README TODO net-examples scripts
 %license COPYING
 

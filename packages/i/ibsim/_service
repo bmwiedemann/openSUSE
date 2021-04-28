@@ -6,9 +6,9 @@
     <param name="exclude">.git</param>
     <param name="filename">ibsim</param>
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
-    <param name="versionrewrite-pattern">ibsim(.*)</param>
+    <param name="versionrewrite-pattern">ibsim-(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">7c2a604ec49a772edbff5381f056c8ab8245a19d</param>
+    <param name="revision">c7e430dc3d9bb677e53a8cd9ca87c5d27d406aa1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*ibsim*.tar</param>
