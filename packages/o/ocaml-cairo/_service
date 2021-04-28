@@ -1,11 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/Chris00/ocaml-cairo.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <!-- 0.6.1 -->
-    <param name="revision">4d96c3ce32a02a36471b4fd413f3536a8d70214f</param>
     <param name="filename">ocaml-cairo</param>
+    <param name="revision">202674a8d0c533b689ceacdb523ca167611e1b4c</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/Chris00/ocaml-cairo.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>

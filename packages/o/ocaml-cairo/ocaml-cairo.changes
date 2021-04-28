@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 21 21:21:21 UTC 2021 - ohering@suse.de
+
+- Update to version 0.6.2
+  See included CHANGES.md for details
+  remove obsolete ocaml-cairo.patch
+
+-------------------------------------------------------------------
 Thu Feb 20 20:20:20 UTC 2020 - ohering@suse.de
 
 - Add ocaml-cairo.patch to handle -fno-common
