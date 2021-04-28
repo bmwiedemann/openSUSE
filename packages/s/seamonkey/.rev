@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>37ce373844fb3a465aa7f7488428fd3b</srcmd5>
+    <version>2.53.7.1</version>
+    <time>1619653094</time>
+    <user>dimstar_suse</user>
+    <comment>The upstream maintainers are now making regular (every 1–4 months) releases that backport all important security fixes from the current Firefox ESR, and the openSUSE package has a new co-maintainer (me) who has been packaging the new releases plus relevant patches.</comment>
+    <requestid>888958</requestid>
+  </revision>
+</revisionlist>

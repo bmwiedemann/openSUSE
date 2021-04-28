@@ -1,0 +1,248 @@
+#
+#  Front-end based on GNU make, intended for a more friendly
+#  integration of the build system with Linux/UNIX distributions,
+#  as well as for those who still allergy using mach command.
+#
+#  Place it as `mozilla/GNUmakefile' (instead of the existing stub),
+#  and work under `mozilla/' dir.
+#
+
+#
+#  For build, just use
+#  
+#  	make
+#  
+#  (If you want to separate config stage, use "make configure" and then "make",
+#  but normally it is done automatically).
+#  
+#  For install, use
+#  
+#  	make install DESTDIR=where_you_want_to_install
+#
+#
+#  Additionally, before install you can use:
+#
+#       make locales
+#
+#  to provide all the shipped locales (will appear in a form of langpack extensions).
+#  If irc and/or calendar included, they will be prepared properly.
+#  (See below for more details about locales target).
+#
+
+#
+#  For clarity, some comparison with the other build methods
+#  (assume `-jN' is the option for parallel builds, ie. `-j4' for 4-cpu system):
+#  
+#  Build stage:
+#  
+#  client.mk:       make -f client.mk build MOZ_MAKE_FLAGS=-jN
+#  mach:            ./mach build -jN
+#  THIS:            make -jN
+#  
+#  Install stage:
+#  
+#  client.mk:       DESTDIR=where... make -f client.mk install
+#  mach:            DESTDIR=where... make -C $OBJDIR... install
+#  THIS:            make install DESTDIR=where...
+#
+
+
+ifeq (,$(wildcard .mozconfig))
+$(error Cannot find .mozconfig file in the current directory)
+endif
+
+MACH_CMD = ./mach --log-no-times
+
+OBJDIR := $(shell $(MACH_CMD) environment --format=json | sed -e 's/.*"topobjdir": "//' -e 's/".*//')
+
+OBJDIR_TARGETS = install distribution source-package package clobber
+
+
+.PHONY: all configure build clean distclean $(OBJDIR_TARGETS)
+
+
+all: build
+
+
+configure: $(OBJDIR)/Makefile
+
+
+$(OBJDIR)/Makefile: .mozconfig
+	$(MACH_CMD) configure
+
+
+build: $(OBJDIR)/Makefile
+	$(MAKE) -C $(OBJDIR)
+
+
+$(OBJDIR_TARGETS):
+	$(MAKE) -C $(OBJDIR) $@
+
+
+clean:
+	$(MACH_CMD) clobber
+
+distclean: clean
+	rm -f configure js/src/configure
+	rm -rf $(OBJDIR)
+
+
+#
+#       LOCALES
+#
+#
+#  By default, all available locales will be used. You can change it
+#  by overriding SHIPPED_LOCALES variable on the command line.
+#
+#  The target `locales' performs all the needed work. It depends on
+#  `locales-all' and `repacks'. First builds all needed langpacks,
+#  second checks whether irc and/or calendar extensions are built
+#  and prepares them by required additional locales.
+# 
+#  Some internal targets might be useful too, fe. `make locale-LANG'
+#  to create one (or several) langpack separately.
+#  
+#  For example, to build all with `fr' and 'it' only, use:
+#
+#       make locales SHIPPED_LOCALES="fr it"
+#
+#  to create just `ru' langpack:
+#
+#       make locale-ru
+#
+#  Use `clear-locales' and `clear-repacks' for clearing.
+#
+#  
+#       NOTE!  NOTE!  NOTE!
+#
+#  Do NOT use parallel builds (-jN) for locale targets!
+#  
+#  It is better to use `-j1' explicitly (`make -j1 locales') to avoid issues.
+#  
+
+.PHONY: locales locales-all repacks clear-locales clear-repacks dictionaries clear-dictionaries
+
+
+drop_extra := $(if $(or $(filter Windows_NT,$(OS)),$(filter-out Darwin,$(shell uname))),ja-JP-mac,ja)
+
+SHIPPED_LOCALES := $(shell while read loc rest; do echo $$loc; done <comm/suite/locales/shipped-locales)
+SHIPPED_LOCALES := $(filter-out en-US $(drop_extra),$(sort $(SHIPPED_LOCALES)))
+
+locales-all: $(SHIPPED_LOCALES:%=locale-%)
+
+
+PACKAGE_MANIFEST = $(OBJDIR)/comm/suite/installer/package-manifest
+
+$(PACKAGE_MANIFEST):
+	cp comm/suite/installer/package-manifest.in $@
+	sed -i '/MOZ_PKG_MANIFEST =/ s,.*,MOZ_PKG_MANIFEST = $$(topobjdir)/comm/suite/installer/package-manifest,' \
+                   $(OBJDIR)/comm/suite/installer/Makefile
+
+
+stage := $(OBJDIR)/dist/xpi-stage/locale
+
+.PRECIOUS: $(stage)-%
+
+$(stage)-%:
+	$(MAKE) -C $(OBJDIR)/comm/suite/locales langpack-$*
+
+
+#  Spanish locales other than es-ES are from Latam, where the es-AR langpack is most preferred
+	[ $* = es-AR ] && find $@ -name "*.manifest" -exec sed -i '/^locale/ s/es-AR/es-*/' {} \; || :
+
+
+locale-%: REL_NAME = extensions/langpack-$*@seamonkey.mozilla.org.xpi
+locale-%: DEST_NAME = $(OBJDIR)/dist/bin/$(REL_NAME)
+locale-%: manifest_entry = @RESPATH@/$(REL_NAME)
+
+#  To avoid performance issues in multi-locale installs, put the manifest files
+#  into the beginning of the archive, and do not compress them.
+
+locale-%: $(stage)-%  $(PACKAGE_MANIFEST)
+	rm -f $(DEST_NAME)
+	cd $<; zip -0 -D -X $(DEST_NAME) chrome.manifest install.rdf chrome/$*.manifest 
+	cd $<; zip -g -r -9 -D -X $(DEST_NAME) chrome/$*
+	fgrep $(manifest_entry) $(PACKAGE_MANIFEST) || echo $(manifest_entry) >>$(PACKAGE_MANIFEST)
+
+
+clear-locales:
+	sed -i '/langpack-.*@seamonkey.mozilla.org.xpi/ d' $(PACKAGE_MANIFEST)
+	rm -f $(OBJDIR)/dist/bin/extensions/langpack-*@seamonkey.mozilla.org.xpi
+
+
+#
+#       REPACKS
+#
+
+ext_dir := $(OBJDIR)/dist/bin/extensions
+
+CAL_NAME = {e2fda1a4-762b-4020-b5ad-a41df1933103}
+IRC_NAME = {59c81df5-4b7a-477b-912d-4e0fdf64e5f2}
+
+repack-$(CAL_NAME): LOCALE_PATH = $(OBJDIR)/dist/xpi-stage/locale-*/extensions/$(CAL_NAME)
+repack-$(CAL_NAME): MANIFEST_FILE = chrome.manifest
+
+repack-$(IRC_NAME): LOCALE_PATH = $(OBJDIR)/dist/xpi-stage/chatzilla-*
+repack-$(IRC_NAME): MANIFEST_FILE = chrome/chatzilla.manifest
+
+repack-%: tmp_dir = $(OBJDIR)/tmp-$*
+repack-%: all_manifests = $(foreach loc,$(SHIPPED_LOCALES),$(subst *,$(loc),$(LOCALE_PATH)/$(MANIFEST_FILE)))
+
+repack-cal: repack-$(CAL_NAME)
+repack-irc: repack-$(IRC_NAME)
+
+
+define _ADD_LOCALE
+while read line; \
+do \
+    [ "$${line#locale}" = "$$line" ] && continue; \
+    tar -C $(dir $(manifest)) -chf - $${line##* } | tar -C $(dir $(tmp_dir)/$(MANIFEST_FILE)) -xf -; \
+    echo $$line >>$(tmp_dir)/$(MANIFEST_FILE); \
+done < $(manifest)
+
+endef # do not remove the blank line!
+
+
+repack-%: $(ext_dir)/%.xpi $(SHIPPED_LOCALES:%=$(stage)-%)
+	mkdir $(tmp_dir)
+	cd $(tmp_dir); unzip $<
+
+	$(foreach manifest,$(wildcard $(all_manifests)),$(_ADD_LOCALE))
+	mf=$(tmp_dir)/$(MANIFEST_FILE); sort $$mf >$$mf.new && mv -f $$mf.new $$mf
+
+	[ -f $<.orig ] && rm -f $< || mv -f $< $<.orig
+	cd $(tmp_dir); zip -r -9 -D -X $< .
+	rm -rf $(tmp_dir)
+
+
+clear-repacks:
+	for ext in $(CAL_NAME) $(IRC_NAME); \
+        do \
+            [ -f $(ext_dir)/$$ext.xpi.orig ] && mv -f $(ext_dir)/$$ext.xpi.orig $(ext_dir)/$$ext.xpi || : ; \
+        done
+
+
+ext_deps := $(patsubst $(ext_dir)/%.xpi,repack-%,$(wildcard $(ext_dir)/$(CAL_NAME).xpi $(ext_dir)/$(IRC_NAME).xpi))
+ext_deps := $(strip $(ext_deps))
+
+repacks: $(ext_deps)
+
+
+locales: locales-all repacks
+
+
+#
+#       Dictionaries
+#
+#   It is better to use system dictionaries, specifying directory path for them
+#   by "spellchecker.dictionary_path" preference (or even use symlink if possible).
+#
+
+DICT_DEST := $(OBJDIR)/dist/bin/dictionaries
+
+dictionaries: $(SHIPPED_LOCALES:%=$(stage)-%)
+	cp -f -d $(wildcard $(foreach loc,$(SHIPPED_LOCALES),$(stage)-$(loc)/dictionaries/$(loc).aff $(stage)-$(loc)/dictionaries/$(loc).dic)) $(DICT_DEST)
+
+clear-dictionaries:
+	rm -f $(filter-out $(DICT_DEST)/en-US.%,$(wildcard $(DICT_DEST)/*.aff $(DICT_DEST)/*.dic))
+

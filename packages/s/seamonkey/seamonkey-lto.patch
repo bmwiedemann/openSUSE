@@ -1,0 +1,11 @@
+--- seamonkey/mozilla/security/sandbox/linux/moz.build	2020-09-23 09:52:51.693587049 +0200
++++ seamonkey.new/mozilla/security/sandbox/linux/moz.build	2020-09-23 18:26:18.745598502 +0200
+@@ -98,7 +98,7 @@
+ # forcing there to be only one partition.
+ for f in CONFIG['OS_CXXFLAGS']:
+     if f.startswith('-flto') and CONFIG['CC_TYPE'] != 'clang':
+-        LDFLAGS += ['--param lto-partitions=1']
++        LDFLAGS += ['--param=lto-partitions=1']
+ 
+ DEFINES['NS_NO_XPCOM'] = True
+ DisableStlWrapping()

@@ -1,0 +1,6 @@
+<package name="seamonkey" project="openSUSE:Factory">
+  <title>Integrated web browser, composer, mail/news client, and IRC client</title>
+  <description>SeaMonkey is an all-in-one Internet application suite containing a web browser, an e-mail and newsgroup client with an included web feed reader and calendar, an HTML editor and web development tools, and an IRC client. SeaMonkey is a successor to the popular Netscape Communicator and Mozilla Application Suite, and (unlike its siblings, Firefox and Thunderbird) retains Mozilla's more traditional-looking interface.</description>
+  <devel project="mozilla:Factory" package="seamonkey"/>
+  <url>https://www.seamonkey-project.org/</url>
+</package>
