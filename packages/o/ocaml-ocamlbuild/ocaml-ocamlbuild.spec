@@ -55,13 +55,8 @@ set -x
 exec \
 make \
 PREFIX=%{_prefix} \
-%if 0%{?suse_ocaml_native_compiler}
 OCAML_NATIVE_TOOLS=true \
 OCAML_NATIVE=true \
-%else
-OCAML_NATIVE_TOOLS=false \
-OCAML_NATIVE=false \
-%endif
 "$@"
 _EOF_
 sh %{name}.sh -f configure.make
