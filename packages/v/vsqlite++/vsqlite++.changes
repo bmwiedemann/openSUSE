@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 28 11:08:58 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+
+-------------------------------------------------------------------
 Thu Feb  2 15:37:26 UTC 2017 - adam.majer@suse.de
 
 - use individual libboost-*-devel packages instead of boost-devel

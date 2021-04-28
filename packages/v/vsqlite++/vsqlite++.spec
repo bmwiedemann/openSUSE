@@ -1,7 +1,7 @@
 #
 # spec file for package vsqlite++
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,21 +24,16 @@ Release:        0
 Summary:        Well designed C++ sqlite 3.x wrapper library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/vinzenz/vsqlite--
+URL:            https://github.com/vinzenz/vsqlite--
 Source0:        https://github.com/vinzenz/vsqlite--/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libtool
 BuildRequires:  perl-base
 BuildRequires:  sqlite-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 VSQLite++ is a C++ wrapper for sqlite3 using the C++ standard library and boost.
@@ -61,13 +56,13 @@ Requires:       %{lib_name}%{sover} = %{version}
 This package contains development files for %{name}.
 
 %prep
-%setup -q -n vsqlite---%{version}
+%autosetup -n vsqlite---%{version}
 find . -iname "*.[ch]pp" -exec dos2unix -k {} \;
 
 %build
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -79,13 +74,13 @@ find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
 
 %files devel
 %defattr(0644, root, root, 0755)
-%doc ChangeLog README COPYING
+%doc ChangeLog README
 %{_includedir}/sqlite
 %{_libdir}/libvsqlitepp.so
 
 %files -n %{lib_name}%{sover}
 %defattr(0644, root, root, 0755)
-%doc ChangeLog README COPYING
+%license COPYING
 %{_libdir}/libvsqlitepp.so.%{sover}*
 
 %changelog
