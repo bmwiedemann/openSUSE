@@ -16,11 +16,11 @@
 #
 
 
-%define libver 4_7
+%define libver 4_8
 %bcond_with static_lib
 %bcond_with pdf_doc
 Name:           gmsh
-Version:        4.7.1
+Version:        4.8.3
 Release:        0
 Summary:        A three-dimensional finite element mesh generator
 License:        GPL-2.0-or-later

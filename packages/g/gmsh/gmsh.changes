@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Apr 26 21:00:19 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 4.8.3:
+  * Small bug fixes.
+- Update to 4.8.2:
+  * Fixed regression in OCC transforms
+  * Fixed cwrap API.
+- Update to 4.8.1:
+  * Improved performance when transforming many OCC entities
+  * Fixed regression in high-order meshing of surfaces with
+    singular parametrizations
+  * Small bug fixes.
+- Update to 4.8.0:
+  * New interactive and fully parametrizable definition of boundary
+    conditions, materials, etc. through ONELAB variables
+  * New API functions for creating trimmed BSpline/Bezier patches,
+    perform raw triangulations and tetrehedralizations, get upward
+    adjacencies, and create extruded boundary layers and automatic
+    curve loops in built-in kernel
+  * Improved performance of high-order meshing of OCC models
+  * Improved handling of high resolution displays
+  * New structured CGNS exporter
+  * New transfinite Beta law
+  * Added support for embedded curves in HXT
+  * Added automatic conversion from partitioned MSH2 files to new
+    partitioned entities
+  * Element groups can now be imported from UNV files
+  * Fixed order of Gauss quadrature for quads and hexas
+  * Code modernization (C++11)
+  * Further uniformization of option names to match the documented
+    terminology (Mesh.Point -> Mesh.Node, ...; old names are still
+    accepted, but deprecated)
+  * Deprecated Mesh.MinimumElementsPerTwoPi: set value directly to
+    Mesh.MeshSizeFromCurvature instead
+  * Python and Julia APIs now also define snake case aliases for
+    all camelCase function names
+  * Small bug fixes and improvements.
+  * Incompatible API changes:
+    + new optional arguments to mesh/classifySurfaces,
+      occ/addBSplineSurface, occ/addBezierSurface, occ/addPipe
+      and view/probe
+    + renamed mesh/getEdgeNumber as mesh/getEdges.
+- Rebase gmsh-3.0.5-add-shebang-to-onelab.patch
+
+-------------------------------------------------------------------
 Fri Jan 15 13:31:36 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 4.7.1:
