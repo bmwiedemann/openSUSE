@@ -1,7 +1,7 @@
 #
 # spec file for package python-yt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-yt
-Version:        3.5.1
+Version:        3.6.1
 Release:        0
 Summary:        An analysis and visualization toolkit for volumetric data
 License:        BSD-3-Clause
@@ -32,22 +33,25 @@ BuildRequires:  %{python_module numpy-devel >= 1.10.4}
 BuildRequires:  %{python_module setuptools >= 19.6}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-matplotlib >= 1.5.3
+Requires:       python-ipython >= 1.0
+Requires:       python-matplotlib >= 2.0.2
+Requires:       python-more-itertools >= 8.4
 Requires:       python-numpy >= 1.10.4
 Requires:       python-setuptools >= 19.6
-Requires:       python-sympy >= 1.0
+Requires:       python-sympy >= 1.2
+Requires:       python-toml >= 0.10.2
+Requires:       python-tqdm >= 3.4.0
+Requires:       python-unyt >= 2.7.2
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-bottle
 Recommends:     python-girder-client
-Recommends:     python-jupyter_ipython >= 1.0
 # SECTION test requirements
 BuildRequires:  %{python_module bottle}
 BuildRequires:  %{python_module girder-client}
-BuildRequires:  %{python_module jupyter_ipython >= 1.0}
-BuildRequires:  %{python_module matplotlib >= 1.5.3}
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module sympy >= 1.0}
+BuildRequires:  %{python_module ipython >= 1.0}
+BuildRequires:  %{python_module matplotlib >= 2.0.2}
+BuildRequires:  %{python_module sympy >= 1.2}
 # /SECTION
 %python_subpackages
 
