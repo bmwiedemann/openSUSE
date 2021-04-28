@@ -1,0 +1,9 @@
+<package name="ocaml-ppx_compare" project="openSUSE:Factory">
+  <title>Generation of comparison functions from types</title>
+  <description>Generation of fast comparison and equality functions from type
+expressions and definitions.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-ppx_compare"/>
+  <url>https://opam.ocaml.org/packages/ppx_compare</url>
+</package>
