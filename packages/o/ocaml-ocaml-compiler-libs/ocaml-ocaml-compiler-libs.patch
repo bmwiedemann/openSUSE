@@ -1,0 +1,13 @@
+diff --git a/src/shadow/gen/gen.ml b/src/shadow/gen/gen.ml
+index e511ed4..8c8b028 100644
+--- a/src/shadow/gen/gen.ml
++++ b/src/shadow/gen/gen.ml
+@@ -12,7 +12,7 @@ let () =
+       failwith "bad command line arguments"
+   in
+ 
+-  let files = Sys.readdir dir |> Array.to_list in
++  let files = Sys.readdir dir |> Array.to_list |> List.sort ~cmp:String.compare in
+ 
+   let all_exposed_modules =
+     List.filter files ~f:(fun fn -> Filename.check_suffix fn ".cmi")

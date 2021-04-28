@@ -1,0 +1,10 @@
+<package name="ocaml-ocaml-compiler-libs" project="openSUSE:Factory">
+  <title>Compiler libraries repackaged</title>
+  <description>This package simply repackage the OCaml compiler libraries so they
+don't expose everything at toplevel. For instance Ast_helper is now
+Ocaml_common.Ast_helper.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-ocaml-compiler-libs"/>
+  <url>https://opam.ocaml.org/packages/ocaml-compiler-libs</url>
+</package>
