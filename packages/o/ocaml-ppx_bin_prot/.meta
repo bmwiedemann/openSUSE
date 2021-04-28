@@ -1,0 +1,8 @@
+<package name="ocaml-ppx_bin_prot" project="openSUSE:Factory">
+  <title>Generation of bin_prot readers and writers from types</title>
+  <description>Generation of binary serialization and deserialization functions from type definitions.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-ppx_bin_prot"/>
+  <url>https://opam.ocaml.org/packages/ppx_bin_prot</url>
+</package>
