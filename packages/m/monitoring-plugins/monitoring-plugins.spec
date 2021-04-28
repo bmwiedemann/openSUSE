@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           monitoring-plugins
-Version:        2.3~alpha.20200520T233014.cadac85e
+Version:        2.3.1
 Release:        0
 Summary:        The Monitoring Plug-Ins
 License:        GPL-2.0-or-later AND GPL-3.0-only
 Group:          System/Monitoring
 URL:            http://monitoring-plugins.org/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+Source2:        %{name}-%{version}.tar.gz.sha1
 Source11:       %{name}-permissions
 Source12:       %{name}-README.SUSE
 Source13:       %{name}-README.SUSE-check_dhcp

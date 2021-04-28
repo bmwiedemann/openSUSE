@@ -30,11 +30,11 @@ Closes: https://github.com/monitoring-plugins/monitoring-plugins/issues/1508
  plugins/check_mysql_query.c | 8 ++++++--
  2 files changed, 12 insertions(+), 4 deletions(-)
 
-diff --git a/plugins/check_mysql.c b/plugins/check_mysql.c
-index 5773afd9..c44919d0 100644
---- a/plugins/check_mysql.c
-+++ b/plugins/check_mysql.c
-@@ -36,6 +36,10 @@ const char *email = "devel@monitoring-plugins.org";
+Index: monitoring-plugins-2.3.1/plugins/check_mysql.c
+===================================================================
+--- monitoring-plugins-2.3.1.orig/plugins/check_mysql.c
++++ monitoring-plugins-2.3.1/plugins/check_mysql.c
+@@ -36,6 +36,10 @@ const char *email = "devel@monitoring-pl
  
  #define SLAVERESULTSIZE 70
  
@@ -54,7 +54,7 @@ index 5773afd9..c44919d0 100644
  int check_slave = 0, warn_sec = 0, crit_sec = 0;
  int ignore_auth = 0;
  int verbose = 0;
-@@ -505,7 +509,7 @@ void
+@@ -508,7 +512,7 @@ void
  print_help (void)
  {
  	char *myport;
@@ -63,11 +63,11 @@ index 5773afd9..c44919d0 100644
  
  	print_revision (progname, NP_VERSION);
  
-diff --git a/plugins/check_mysql_query.c b/plugins/check_mysql_query.c
-index 49a14dd3..6f492442 100644
---- a/plugins/check_mysql_query.c
-+++ b/plugins/check_mysql_query.c
-@@ -33,6 +33,10 @@ const char *progname = "check_mysql_query";
+Index: monitoring-plugins-2.3.1/plugins/check_mysql_query.c
+===================================================================
+--- monitoring-plugins-2.3.1.orig/plugins/check_mysql_query.c
++++ monitoring-plugins-2.3.1/plugins/check_mysql_query.c
+@@ -33,6 +33,10 @@ const char *progname = "check_mysql_quer
  const char *copyright = "1999-2007";
  const char *email = "devel@monitoring-plugins.org";
  
@@ -96,4 +96,3 @@ index 49a14dd3..6f492442 100644
  
  	print_revision (progname, NP_VERSION);
  
-

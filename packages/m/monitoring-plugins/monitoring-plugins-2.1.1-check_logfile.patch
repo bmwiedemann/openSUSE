@@ -1,7 +1,7 @@
-Index: monitoring-plugins-2.2/plugins-scripts/check_log.sh
+Index: monitoring-plugins-2.3.1/plugins-scripts/check_log.sh
 ===================================================================
---- monitoring-plugins-2.2.orig/plugins-scripts/check_log.sh
-+++ monitoring-plugins-2.2/plugins-scripts/check_log.sh
+--- monitoring-plugins-2.3.1.orig/plugins-scripts/check_log.sh
++++ monitoring-plugins-2.3.1/plugins-scripts/check_log.sh
 @@ -115,27 +115,27 @@ while test -n "$1"; do
              exit $STATE_OK
              ;;

@@ -29,11 +29,11 @@ SWAP CRITICAL - 0% free (0 MB out of 0 MB) |swap=0MB;0;0;0;0
 Additional info:
 https://bugzilla.redhat.com/512559
 
-Index: monitoring-plugins-2.2/plugins/check_swap.c
+Index: monitoring-plugins-2.3.1/plugins/check_swap.c
 ===================================================================
---- monitoring-plugins-2.2.orig/plugins/check_swap.c
-+++ monitoring-plugins-2.2/plugins/check_swap.c
-@@ -125,7 +125,7 @@
+--- monitoring-plugins-2.3.1.orig/plugins/check_swap.c
++++ monitoring-plugins-2.3.1/plugins/check_swap.c
+@@ -125,7 +125,7 @@ main (int argc, char **argv)
  			free_swap_mb += dskfree_mb;
  			if (allswaps) {
  				if (dsktotal_mb == 0)

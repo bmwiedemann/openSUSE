@@ -1,7 +1,7 @@
-Index: monitoring-plugins-2.2/plugins-root/Makefile.am
+Index: monitoring-plugins-2.3.1/plugins-root/Makefile.am
 ===================================================================
---- monitoring-plugins-2.2.orig/plugins-root/Makefile.am
-+++ monitoring-plugins-2.2/plugins-root/Makefile.am
+--- monitoring-plugins-2.3.1.orig/plugins-root/Makefile.am
++++ monitoring-plugins-2.3.1/plugins-root/Makefile.am
 @@ -47,7 +47,6 @@ INSTALL_SUID = \
  	echo " $(INSTALL_PROGRAM) $$p $(DESTDIR)$(libexecdir)/$$p"; \
  	$(INSTALL_PROGRAM) $$p $(DESTDIR)$(libexecdir)/$$p; \
@@ -16,10 +16,10 @@ Index: monitoring-plugins-2.2/plugins-root/Makefile.am
  	rm -f $$TMPFILE; \
 -	if test $$can_create_suid_root_executable = yes; then \
 -	  $(INSTALL_SUID); \
-+	$(INSTALL_SUID); \
-+	if test $$can_create_suid_root_executable != yes; then \
 -	else \
 -	  echo "WARNING: insufficient access; not installing setuid plugins"; \
++	$(INSTALL_SUID); \
++	if test $$can_create_suid_root_executable != yes; then \
 +	  echo "WARNING: insufficient access; not installing plugins as setuid"; \
  	  echo "NOTE: to install setuid plugins, run 'make install-root' as root"; \
 +	  echo "NOTE: or fix this in your packaging (like the specfile)"; \

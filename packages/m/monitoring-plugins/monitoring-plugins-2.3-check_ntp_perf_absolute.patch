@@ -1,6 +1,8 @@
---- monitoring-plugins-2.3~alpha.20200520T233014.cadac85e/plugins/check_ntp_time.c	2020/10/12 16:05:30	1.1
-+++ monitoring-plugins-2.3~alpha.20200520T233014.cadac85e/plugins/check_ntp_time.c	2020/10/12 16:07:13
-@@ -533,7 +533,7 @@
+Index: monitoring-plugins-2.3.1/plugins/check_ntp_time.c
+===================================================================
+--- monitoring-plugins-2.3.1.orig/plugins/check_ntp_time.c
++++ monitoring-plugins-2.3.1/plugins/check_ntp_time.c
+@@ -533,7 +533,7 @@ int process_arguments(int argc, char **a
  
  char *perfd_offset (double offset)
  {
