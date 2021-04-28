@@ -1,0 +1,76 @@
+--- /dev/null
++++ b/astring.opam
+@@ -0,0 +1,33 @@
++opam-version: "2.0"
++maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
++authors: ["The astring programmers"]
++homepage: "https://erratique.ch/software/astring"
++doc: "https://erratique.ch/software/astring/doc"
++dev-repo: "git+https://github.com/dune-universe/astring.git"
++bug-reports: "https://github.com/dbuenzli/astring/issues"
++tags: [ "string" "org:erratique" ]
++license: "ISC"
++depends: [
++  "dune"
++  "ocaml" {>= "4.05.0"}
++  "base-bytes"
++]
++build: [[ "dune" "build" "-p" name ]]
++synopsis: "Alternative String module for OCaml"
++description: """
++Astring exposes an alternative `String` module for OCaml. This module
++tries to balance minimality and expressiveness for basic, index-free,
++string processing and provides types and functions for substrings,
++string sets and string maps.
++
++Remaining compatible with the OCaml `String` module is a non-goal. The
++`String` module exposed by Astring has exception safe functions,
++removes deprecated and rarely used functions, alters some signatures
++and names, adds a few missing functions and fully exploits OCaml's
++newfound string immutability.
++
++Astring depends only on the OCaml standard library. It is distributed
++under the ISC license."""
++url {
++  src: "git://github.com/dune-universe/astring.git#duniverse-v0.8.5"
++}
+--- /dev/null
++++ b/dune-project
+@@ -0,0 +1,2 @@
++(lang dune 1.0)
++(name astring)
+--- a/opam
++++ /dev/null
+@@ -1,15 +0,0 @@
+-opam-version: "2.0"
+-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+-authors: ["The astring programmers"]
+-homepage: "https://erratique.ch/software/astring"
+-doc: "https://erratique.ch/software/astring/doc"
+-dev-repo: "git+http://erratique.ch/repos/astring.git"
+-bug-reports: "https://github.com/dbuenzli/astring/issues"
+-tags: [ "string" "org:erratique" ]
+-license: "ISC"
+-depends: [
+-  "ocaml" {>= "4.05.0"}
+-  "ocamlfind" {build}
+-  "ocamlbuild" {build}
+-  "topkg" {build} ]
+-build: [[ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" ]]
+--- /dev/null
++++ b/src/dune
+@@ -0,0 +1,14 @@
++(library
++ (name astring)
++ (public_name astring)
++ (modules astring_unsafe astring_base astring_escape astring_char astring_sub
++   astring_string astring)
++ (flags :standard -w -27)
++ (wrapped false))
++
++(library
++ (name astring_top)
++ (public_name astring.top)
++ (libraries compiler-libs.toplevel)
++ (modules astring_top)
++ (wrapped false))
