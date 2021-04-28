@@ -1,7 +1,7 @@
 #
 # spec file for package python-prestring
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ Summary:        Python source code generation library
 License:        MIT
 URL:            https://github.com/podhmo/prestring
 Source:         https://github.com/podhmo/prestring/archive/%{version}.tar.gz#/prestring-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/podhmo/prestring/commit/55165f7b1a622577801f8d6c2bd3d0f16555be4b Fix test for py39 (#75)
+Patch0:         py39.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,6 +43,7 @@ Python source code generation library (with overuse with-syntax).
 
 %prep
 %setup -q -n prestring-%{version}
+%autopatch -p1
 
 %build
 %python_build

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 28 11:48:04 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add py39.patch to fix tests
+
+-------------------------------------------------------------------
 Mon Aug 17 07:11:04 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the download URL as the pkg was fetched from github
