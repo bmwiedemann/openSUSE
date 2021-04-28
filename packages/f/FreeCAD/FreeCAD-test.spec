@@ -20,7 +20,7 @@ Name:           FreeCAD-test
 Version:        0.19.0
 Release:        0
 Summary:        Meta source package that runs the FreeCAD testsuite when built
-License:        LGPL-2.0-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            http://www.freecadweb.org/
 BuildRequires:  FreeCAD

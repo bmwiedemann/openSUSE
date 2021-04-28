@@ -26,10 +26,10 @@
 %bcond_with    smesh_external
 
 Name:           FreeCAD
-Version:        0.19.1
+Version:        0.19.2
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
-License:        LGPL-2.0-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://www.freecadweb.org/
 Source0:        https://github.com/FreeCAD/FreeCAD/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
