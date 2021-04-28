@@ -608,4 +608,15 @@
     <comment></comment>
     <requestid>888544</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>3ec7fe39e58612a43ca91264218fe914</srcmd5>
+    <version>2.7.3</version>
+    <time>1619653115</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.3
+  * Fix crash on some versions of Linux.
+  * Fix video not stopping when PiP window is closed.
+  * Fix messages marking as read if the Windows session is locked. (forwarded request 888813 from tux93)</comment>
+    <requestid>889044</requestid>
+  </revision>
 </revisionlist>

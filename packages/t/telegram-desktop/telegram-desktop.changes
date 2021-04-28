@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 27 13:08:06 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.7.3
+  * Fix crash on some versions of Linux.
+  * Fix video not stopping when PiP window is closed.
+  * Fix messages marking as read if the Windows session is locked.
+
+-------------------------------------------------------------------
 Mon Apr 26 15:57:03 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 2.7.2
