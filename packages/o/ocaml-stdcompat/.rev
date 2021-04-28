@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e4b36bc71c6d9f27a22d4ee98dfcc45e</srcmd5>
+    <version>15</version>
+    <time>1619653044</time>
+    <user>dimstar_suse</user>
+    <comment>new BuildRequires for coccinelle, which always carries outdated bundles</comment>
+    <requestid>885396</requestid>
+  </revision>
+</revisionlist>
