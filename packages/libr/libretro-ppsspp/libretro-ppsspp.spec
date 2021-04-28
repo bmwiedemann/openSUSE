@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-ppsspp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           libretro-ppsspp
-Version:        0~git20201015
+Version:        0~git20210422
 Release:        0
 Summary:        PPSSPP libretro core for PSP emulation
 License:        GPL-2.0-only
 Group:          System/Emulators/Other
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
-
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -36,6 +35,8 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
+# This won't build on Big Endian architectures
+ExcludeArch:    s390x
 
 %description
 A PSP emulator for Android, Windows, Mac and Linux, written in C++.
