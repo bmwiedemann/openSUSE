@@ -28,7 +28,7 @@
    (public_name opam-solver)
    (synopsis    "OCaml Package Manager solver interaction library")
 -  (libraries   opam-format cudf dose3.algo
-+  (libraries   opam-format cudf dose-algo dose-common
++  (libraries   opam-format cudf dose3.algo dose3.common
                 (select opamBuiltinMccs.ml from
                   (mccs -> opamBuiltinMccs.ml.real)
                   (     -> opamBuiltinMccs.ml.dummy)))

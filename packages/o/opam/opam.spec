@@ -1,7 +1,7 @@
 #
 # spec file for package opam
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           opam
-Version:        2.0.7
+Version:        2.0.8
 Release:        0
 Summary:        Source-based package manager for OCaml
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
@@ -31,12 +31,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  ocaml
 BuildRequires:  ocaml-cppo
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocaml-rpm-macros >= 20210121
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(cmdliner)
 BuildRequires:  ocamlfind(cudf)
-BuildRequires:  ocamlfind(dose-algo)
-BuildRequires:  ocamlfind(dose-common)
+BuildRequires:  ocamlfind(dose3)
 BuildRequires:  ocamlfind(mccs)
 BuildRequires:  ocamlfind(ocamlgraph)
 BuildRequires:  ocamlfind(opam-file-format)
@@ -109,7 +108,6 @@ dune_release_pkgs='opam,opam-client,opam-core,opam-format,opam-installer,opam-re
 %ocaml_create_file_list
 
 %files -f %{name}.files
-%doc CHANGES
 %{_bindir}/opam
 %{_mandir}/man*/*
 
