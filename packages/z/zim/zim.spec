@@ -20,7 +20,7 @@
 %define skip_python2 1
 
 Name:           zim
-Version:        0.73.4
+Version:        0.73.5
 Release:        0
 Summary:        A Desktop Wiki
 License:        GPL-2.0-or-later
@@ -34,11 +34,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3
 BuildRequires:  typelib-1_0-Gtk-3_0
-# We need the %%mime_database_*, %%desktop_database_* and %%icon_theme_cache_*
-# macros for old suse versions
-%if 0%{?suse_version} < 1330
-BuildRequires:  shared-mime-info
-%endif
 BuildRequires:  update-desktop-files
 Requires:       python3-gobject
 Requires:       python3-pyxdg
@@ -76,10 +71,6 @@ rm -r %{buildroot}%{_datadir}/icons/{ubuntu-mono-dark,ubuntu-mono-light}
 %find_lang %{name}
 
 %fdupes -s %{buildroot}
-
-%desktop_database_post
-
-%desktop_database_postun
 
 %files
 %defattr(-,root,root)

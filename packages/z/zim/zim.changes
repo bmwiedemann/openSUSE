@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 26 21:51:31 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.73.5:
+  * Fix regression for “www.” links in pages
+  * Fix bug with email address or url wrapped in higlight markup
+  * Fix bug with handling newline in inline formatting
+  * Fix bug when deleting a bullet-like sequence
+  * Fix bug with relative links in single page export
+  * Fix bug if notebook name is not set
+  * Interpret pasted text as “wiki” format and add “Paste As Verbatim”
+  * Update default application lookup to latest spec
+  * Fix portable environment windows installer
+  * Merge Weblate translations 
+
+-------------------------------------------------------------------
 Thu Nov 26 19:09:45 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.73.4:
