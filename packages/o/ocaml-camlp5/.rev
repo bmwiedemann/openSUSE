@@ -65,4 +65,16 @@
     <comment>- Cover ocaml-4.11.1</comment>
     <requestid>831370</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>59a4ef3cb5b1924b5407552bc45cbf25</srcmd5>
+    <version>8.00</version>
+    <time>1619653053</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.00
+  cover ocaml-4.12
+  add ocaml-camlp5.patch
+- Remove ocaml_native_compiler conditional
+  build native target unconditionally</comment>
+    <requestid>887306</requestid>
+  </revision>
 </revisionlist>
