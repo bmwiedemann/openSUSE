@@ -1,7 +1,7 @@
 #
 # spec file for package pluma
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define _version 1.24
 
 Name:           pluma
-Version:        1.24.1
+Version:        1.24.2
 Release:        0
 Summary:        Text editor for the MATE desktop
 License:        GPL-2.0-or-later
@@ -41,10 +41,6 @@ BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libpeas-gtk-1.0)
 BuildRequires:  pkgconfig(sm)
 Requires:       mate-desktop-gsettings-schemas
-# mate-text-editor was last used in openSUSE 13.1.
-Provides:       mate-text-editor = %{version}
-Obsoletes:      mate-text-editor < %{version}
-Obsoletes:      mate-text-editor-lang < %{version}
 %glib2_gsettings_schema_requires
 
 %description
@@ -63,9 +59,6 @@ Summary:        Small and lightweight UTF-8 text editor
 Requires:       %{name} = %{version}
 Requires:       %{typelib} = %{version}
 Requires:       pkgconfig(gtksourceview-3.0)
-# mate-text-editor-devel was last used in openSUSE 13.1.
-Provides:       mate-text-editor-devel = %{version}
-Obsoletes:      mate-text-editor-devel < %{version}
 
 %description devel
 pluma is a small, but powerful text editor designed specifically
@@ -102,7 +95,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files

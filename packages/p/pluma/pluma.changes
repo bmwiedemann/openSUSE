@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 26 20:43:41 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.24.2:
+  * Translations update
+  * pluma-view: Fix incorrect interface font
+- Drop outdated provides / obsoletes
+
+-------------------------------------------------------------------
 Mon Aug 31 02:16:04 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.24.1

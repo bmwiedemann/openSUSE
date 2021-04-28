@@ -204,4 +204,12 @@
   * Update authors (forwarded request 830620 from hillwood)</comment>
     <requestid>830621</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>08afcfd12c96d255596a40640059f5c9</srcmd5>
+    <version>1.24.2</version>
+    <time>1619653129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889111</requestid>
+  </revision>
 </revisionlist>
