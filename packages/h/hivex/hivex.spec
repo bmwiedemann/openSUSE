@@ -184,9 +184,7 @@ touch %{name}.lang
 
 %files -n ocaml-hivex-devel
 %{_libdir}/ocaml/hivex/*hivex.a
-%if %{ocaml_native_compiler}
 %{_libdir}/ocaml/hivex/*hivex.cmx*
-%endif
 %{_libdir}/ocaml/hivex/hivex.mli
 %endif
 
