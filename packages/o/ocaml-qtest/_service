@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-qtest</param>
-    <param name="revision">5cd5d8bfaefb3393c2247001fc67d9c78f2ba483</param>
+    <param name="revision">aa9c27211e05ebff1a259750f092caef8e7fbe12</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/vincent-hugot/qtest.git</param>

@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-qtest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-qtest
-Version:        2.11
+Version:        2.11.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Inline (Unit) Tests for OCaml
@@ -27,9 +27,10 @@ URL:            https://opam.ocaml.org/packages/qtest
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20200514
+BuildRequires:  ocaml-rpm-macros >= 20210121
 BuildRequires:  ocamlfind(bytes)
 BuildRequires:  ocamlfind(qcheck)
+BuildRequires:  ocamlfind(ounit2)
 
 %description
 qtest extracts inline unit tests written using a special syntax in
