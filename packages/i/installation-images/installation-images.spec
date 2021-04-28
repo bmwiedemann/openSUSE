@@ -650,7 +650,6 @@ BuildRequires:  grub2-arm-efi
 BuildRequires:  grub2-riscv64-efi
 %endif
 # inst-sys module for libstoragemgmt
-BuildRequires:  libstoragemgmt-netapp-plugin
 BuildRequires:  libstoragemgmt-smis-plugin
 # our images are not reproducible and it's taking time
 #!BuildIgnore:  build-compare
@@ -673,7 +672,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        16.72
+Version:        17.0
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

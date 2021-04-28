@@ -1,4 +1,32 @@
 --------------------------------------------------------------------
+Tue Apr 27 11:02:18 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#498
+- rescue: make sure /var/run is a link to /run
+- rescue: link modules and firmware from correct location
+- 17.0
+
+--------------------------------------------------------------------
+Tue Apr 27 06:39:25 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#504
+- no more libstoragemgmt-netapp-plugin
+- 16.74
+
+--------------------------------------------------------------------
+Mon Apr 26 15:53:10 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#503
+- make usrmerge case depend on /lib link in filesystem package
+- 16.73
+
+--------------------------------------------------------------------
+Mon Apr 26 15:30:35 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#502
+- extend 'exists' operator to test for a specfic type
+
+--------------------------------------------------------------------
 Fri Apr 23 11:38:05 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#500
