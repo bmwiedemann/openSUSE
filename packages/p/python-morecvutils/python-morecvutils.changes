@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 28 02:40:29 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Convert to singlespec, due to opencv doing the same. 
+
+-------------------------------------------------------------------
 Tue Jun  9 08:05:42 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - replace nose with pytest

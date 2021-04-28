@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>812829</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bc6b3c0b67c3458fccbf96942153331b</srcmd5>
+    <version>1.0.2</version>
+    <time>1619653073</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to singlespec, due to opencv doing the same.</comment>
+    <requestid>888897</requestid>
+  </revision>
 </revisionlist>
