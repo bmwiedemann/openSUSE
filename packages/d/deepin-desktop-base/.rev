@@ -15,4 +15,14 @@
     <comment>Bring Deepin Desktop Environment to openSUSE</comment>
     <requestid>886009</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b75ad4b5fce517ef2ef8cae86d9da78d</srcmd5>
+    <version>20.2</version>
+    <time>1619653065</time>
+    <user>dimstar_suse</user>
+    <comment>- Install distribution.info 
+
+- Update do-not-installl-os-version.patch, fix build on ppc64 (forwarded request 888887 from hillwood)</comment>
+    <requestid>888888</requestid>
+  </revision>
 </revisionlist>

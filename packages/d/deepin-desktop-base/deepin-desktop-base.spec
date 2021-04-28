@@ -25,6 +25,7 @@ Summary:        Base component for Deepin
 License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/deepin-desktop-base
+Requires:       distribution-logos
 Source0:        https://github.com/linuxdeepin/deepin-desktop-base/archive/%{_version}/%{name}-%{_version}.tar.gz
 # PATCH-FIX-OPENSUSE do-not-installl-os-version.patch hillwood@opensuse.org - Don't install deepin os information
 Patch0:         do-not-installl-os-version.patch
@@ -52,6 +53,7 @@ sed -i 's|/usr/lib|%{_datadir}|' Makefile
 
 %install
 %make_install
+install -Dm644 distribution.info %{buildroot}%{_datadir}/deepin/
 
 # Make a symlink for deepin-version
 ln -sfv %{_datadir}/deepin/desktop-version %{buildroot}/etc/deepin-version
@@ -62,6 +64,7 @@ ln -sfv %{_datadir}/deepin/desktop-version %{buildroot}/etc/deepin-version
 %config(noreplace) %{_sysconfdir}/appstore.json
 %{_sysconfdir}/*-version
 %dir %{_datadir}/deepin/
+%{_datadir}/deepin/distribution.info
 %{_datadir}/deepin/*-version
 %dir %{_datadir}/distro-info
 %dir %{_datadir}/i18n

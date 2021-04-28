@@ -1,13 +1,15 @@
 diff -Nur deepin-desktop-base-2021.3.10/Makefile deepin-desktop-base-2021.3.10-new/Makefile
 --- deepin-desktop-base-2021.3.10/Makefile	2021-03-10 16:14:25.000000000 +0800
-+++ deepin-desktop-base-2021.3.10-new/Makefile	2021-04-15 21:31:51.265094237 +0800
-@@ -14,23 +14,19 @@
++++ deepin-desktop-base-2021.3.10-new/Makefile	2021-04-25 20:17:18.019353488 +0800
+@@ -14,23 +14,21 @@
          endif
          ifeq (${ARCH_BUILD}, x86_64)
  		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version.in > files/desktop-version
 -		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/os-version-amd > files/os-version
 -        else ifeq (${ARCH_BUILD}, x86_32)
 +        else ifeq (${ARCH_BUILD}, i686)
++		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version.in > files/desktop-version
++        else ifeq (${ARCH_BUILD}, ppc64)
 +		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version.in > files/desktop-version
 +        else ifeq (${ARCH_BUILD}, ppc64le)
  		sed -e "s|@@VERSION@@|$(VERSION)|g" -e "s|@@RELEASE@@|$(RELEASE)|g" files/desktop-version.in > files/desktop-version
@@ -28,7 +30,7 @@ diff -Nur deepin-desktop-base-2021.3.10/Makefile deepin-desktop-base-2021.3.10-n
  
  install:
  	mkdir -p ${DESTDIR}/etc
-@@ -44,9 +40,7 @@
+@@ -44,9 +42,7 @@
  	install -Dm644 files/desktop-version ${DESTDIR}/usr/lib/deepin/desktop-version
  	install -Dm644 files/lsb-release     ${DESTDIR}/etc/lsb-release
  	install -Dm644 files/appstore.json     ${DESTDIR}/etc/appstore.json
@@ -38,7 +40,7 @@ diff -Nur deepin-desktop-base-2021.3.10/Makefile deepin-desktop-base-2021.3.10-n
  	#install -Dm644 files/eff98ab2b2d91574a79fabd2b79eb7a9.jpg ${DESTDIR}/var/cache/image-blur/eff98ab2b2d91574a79fabd2b79eb7a9.jpg
  	[ -e files/systemd.conf ] && install -Dm644 files/systemd.conf ${DESTDIR}/etc/systemd/system.conf.d/deepin-base.conf
  	[ -e files/logind.conf ] && install -Dm644 files/logind.conf ${DESTDIR}/etc/systemd/logind.conf.d/deepin-base.conf
-@@ -54,4 +48,3 @@
+@@ -54,4 +50,3 @@
  	install -Dm644 files/Deepin.mirrors     ${DESTDIR}/usr/share/python-apt/templates/Deepin.mirrors
  clean:
  	rm -f files/desktop-version

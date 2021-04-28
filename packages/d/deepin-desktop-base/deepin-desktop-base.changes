@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 27 05:25:03 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Install distribution.info 
+
+-------------------------------------------------------------------
+Sun Apr 25 12:22:05 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update do-not-installl-os-version.patch, fix build on ppc64 
+
+-------------------------------------------------------------------
 Thu Apr 15 12:46:09 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 2021.3.10, Deepin version is 20.2
