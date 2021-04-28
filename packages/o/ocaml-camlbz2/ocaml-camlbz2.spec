@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-camlbz2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 Name:           ocaml-camlbz2
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml bindings for bz2
 License:        LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 Group:          Development/Languages/OCaml
-URL:            https://github.com/olafhering/camlbz2
+URL:            https://opam.ocaml.org/packages/camlbz2
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         ocaml-camlbz2.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20210121
 BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  ocamlfind(stdlib-shims)
 BuildRequires:  pkgconfig(bzip2)

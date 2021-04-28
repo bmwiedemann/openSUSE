@@ -1,0 +1,156 @@
+--- a/c_bz.c
++++ b/c_bz.c
+@@ -118,7 +118,7 @@ value mlbz_readopen(value small, value u
+   if(Is_block(small))
+     c_small = Bool_val(Field(small, 0)) ;
+   if(Is_block(unused)){
+-    c_unused  = String_val(Field(unused, 0)) ;
++    c_unused  = &Byte(Field(unused, 0), 0);
+     c_nunused = string_length(Field(unused, 0));
+   }
+   c_chan = stream_of_channel(chan, "rb") ;
+@@ -140,7 +140,7 @@ value mlbz_read(value chan, value buf, v
+   if((c_len + c_pos > string_length(buf))
+      || (c_len < 0) || (c_pos < 0))
+     invalid_argument("Bz.read") ;
+-  c_buf = String_val(buf) + c_pos ;
++  c_buf = &Byte(buf, c_pos);
+   res = BZ_P(bzRead)(&bzerror, Bzfile_val(chan), c_buf, c_len) ;
+   if(bzerror == BZ_STREAM_END)
+     set_eof_flag(chan) ;
+@@ -171,7 +171,7 @@ value mlbz_readgetunused(value chan)
+   BZ_P(bzReadGetUnused)(&bzerror, Bzfile_val(chan), &unused, &nunused) ;
+   mlbz_error(bzerror, "Bz.read_get_unused: not at end of stream", chan, 1) ;
+   result = alloc_string(nunused) ;
+-  memcpy(String_val(result), unused, nunused) ;
++  memcpy(&Byte(result, 0), unused, nunused) ;
+   return result;
+ }
+ 
+@@ -201,7 +201,7 @@ value mlbz_write(value chan, value buf,
+   if((c_len + c_pos > string_length(buf))
+      || (c_len < 0) || (c_pos < 0))
+     invalid_argument("Bz.write") ;
+-  c_buf = String_val(buf) + c_pos ;
++  c_buf = &Byte(buf, c_pos);
+   BZ_P(bzWrite)(&bzerror, Bzfile_val(chan), c_buf, c_len) ;
+   mlbz_error(bzerror, "Bz.write", chan, 0) ;
+   return Val_unit;
+@@ -239,7 +239,7 @@ value mlbz_compress(value block, value s
+      || c_pos < 0 || c_len < 0
+      || c_pos + c_len > string_length(src))
+     invalid_argument("Bz.compress") ;
+-  src_buf = String_val(src) + c_pos;
++  src_buf = &Byte(src, c_pos);
+   dst_buf_len = c_len * 1.01 + 600 ;
+   dst_buf = malloc(dst_buf_len) ;
+   if(dst_buf == NULL)
+@@ -264,7 +264,7 @@ value mlbz_compress(value block, value s
+     }
+   }
+   result = alloc_string(dst_len);
+-  memcpy(String_val(result), dst_buf, dst_len);
++  memcpy(&Byte(result, 0), dst_buf, dst_len);
+   free(dst_buf);
+   return result ;
+ }
+@@ -284,7 +284,7 @@ value mlbz_uncompress(value small, value
+   if(c_pos < 0 || c_len < 0
+      || c_pos + c_len > string_length(src))
+     invalid_argument("Bz.uncompress") ;
+-  src_buf = String_val(src) + c_pos;
++  src_buf = &Byte(src, c_pos);
+   dst_buf_len = c_len * 2 ;
+   dst_buf = malloc(dst_buf_len) ;
+   if(dst_buf == NULL)
+@@ -317,7 +317,7 @@ value mlbz_uncompress(value small, value
+       }
+   }
+   result = alloc_string(dst_len);
+-  memcpy(String_val(result), dst_buf, dst_len);
++  memcpy(&Byte(result, 0), dst_buf, dst_len);
+   free(dst_buf);
+   return result ;
+ }
+--- /dev/null
++++ b/config/discover.ml
+@@ -0,0 +1,21 @@
++module C = Configurator.V1
++
++let () =
++C.main ~name:"bz2" (fun c ->
++
++let stale_bzip2 : C.Pkg_config.package_conf = {
++ libs = [ "-lbz2" ];
++ cflags = []
++} in
++
++let conf =
++  match C.Pkg_config.get c with
++  | None -> C.die "'pkg-config' missing"
++  | Some pc ->
++    match (C.Pkg_config.query pc ~package:"bzip2") with
++      | None -> stale_bzip2
++      | Some deps -> deps
++  in
++
++  C.Flags.write_sexp "c_flags.sexp"         conf.cflags;
++  C.Flags.write_sexp "c_library_flags.sexp" conf.libs)
+--- /dev/null
++++ b/config/dune
+@@ -0,0 +1,3 @@
++(executable
++ (name discover)
++ (libraries dune.configurator))
+--- /dev/null
++++ b/dune
+@@ -0,0 +1,17 @@
++(library
++ (public_name bz2)
++ (synopsis "bindings for bzip2")
++ (modules bz2)
++ (c_names c_bz)
++ (c_flags
++  "-DBZ_PREFIX"
++  (:include c_flags.sexp))
++ (c_library_flags
++  (:include c_library_flags.sexp)))
++
++(rule
++ (targets c_flags.sexp c_library_flags.sexp)
++ (deps
++  (:discover config/discover.exe))
++ (action
++  (run %{discover})))
+--- /dev/null
++++ b/dune-project
+@@ -0,0 +1,22 @@
++(lang dune 1.10)
++
++(generate_opam_files true)
++
++(license "LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception")
++
++(authors
++  "Olivier Andrieu <oandrieu@gmail.com>, Nicolas George <nicolas.george@ens.fr>")
++
++(maintainers
++  "Stefano Zacchiroli <zack@upsilon.cc>, Olivier Andrieu <oandrieu@gmail.com>")
++
++(homepage "http://camlbz2.forge.ocamlcore.org/")
++
++(bug_reports "http://forge.ocamlcore.org/tracker/?atid=338&group_id=63")
++
++(package
++ (name bz2)
++ (synopsis "OCaml bindings for bzip2")
++ (description
++   "This is CamlBZ2, OCaml bindings for the libbz2 (AKA, bzip2) (de)compression library.")
++ (depends "dune.configurator"))
+--- /dev/null
++++ b/examples/dune
+@@ -0,0 +1,4 @@
++(executable
++ (name bunzip2)
++ (public_name ocaml-bunzip2)
++ (libraries bz2))

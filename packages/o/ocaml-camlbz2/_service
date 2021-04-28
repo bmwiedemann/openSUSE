@@ -1,11 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-camlbz2</param>
-    <param name="revision">dune</param>
+    <param name="revision">e5a008a9672f28d281ff9bc3e39838b1b90186f1</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
-    <param name="url">https://github.com/olafhering/ocaml-camlbz2.git</param>
-    <param name="versionformat">0.6.0</param>
+    <param name="url">https://gitlab.com/irill/camlbz2.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
