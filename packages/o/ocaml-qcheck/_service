@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-qcheck</param>
-    <param name="revision">6a170e34269164d45aba6303dff1c77cfb8b8fd0</param>
+    <param name="revision">6aaef3945ca9ffad312e397fa0d81538763d9abd</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/c-cube/qcheck.git</param>

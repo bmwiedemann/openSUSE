@@ -58,4 +58,13 @@ It is a dependency of the next version of Haxe (4.0.0).</comment>
   See included CHANGELOG.md for details</comment>
     <requestid>828691</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>865ebca776ddfd5ee8d0c75c41990872</srcmd5>
+    <version>0.17</version>
+    <time>1619653021</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.17
+  See included CHANGELOG.md for details</comment>
+    <requestid>875415</requestid>
+  </revision>
 </revisionlist>
