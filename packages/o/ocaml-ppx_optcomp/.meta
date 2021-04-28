@@ -1,0 +1,10 @@
+<package name="ocaml-ppx_optcomp" project="openSUSE:Factory">
+  <title>Optional compilation for OCaml</title>
+  <description>ppx_optcomp stands for Optional Compilation. It is a tool used to
+handle optional compilations of pieces of code depending of the word
+size, the version of the compiler, ...
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-ppx_optcomp"/>
+  <url>https://opam.ocaml.org/packages/ppx_optcomp</url>
+</package>
