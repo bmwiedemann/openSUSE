@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Apr 21 12:38:54 UTC 2021 - Stefan Haas <stefan.haas@suse.com>
 
-- Update to v1.5.8
+- Update to v1.5.10
   * Ceph
     * Update Ceph-CSI to v3.2.1 (#7506)
     * Use latest Ceph API for setting dashboard and rgw credentials (#7641)
