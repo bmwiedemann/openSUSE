@@ -60,4 +60,43 @@
     <comment></comment>
     <requestid>763103</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>34aee2f39cdaeabc7f5dcc3a179e34da</srcmd5>
+    <version>8.0.4</version>
+    <time>1612781248</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch:
+  * 0001-Use-new-KNS-install-location.patch
+
+- Update to version 8.0.4
+  * Add initial QWebEngine support for KF5 builds
+  * Add debug info for running perl script in
+    AlkFinanceQuoteProcess::launch()
+  * Add file menu with entry 'quit'
+  * Add switch language entry to help menu
+  * Add option ENABLE_FINANCEQUOTE and set to false by default on Windows
+  * Bug and crash fixes
+  * Fix fatal error caused by calling i18n in another thread initiated
+  * Fix WebEngine/WebKit/Widgets backend choice
+  * Fix 'alkimia fails to find mpirxx.h
+  * Remove unused toolbar</comment>
+    <requestid>870063</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1021a8d29a56334494ae122f1cd70f82</srcmd5>
+    <version>8.1.0</version>
+    <time>1619653124</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.1.0
+  * Do not override the global translation domain of the application
+  * Add support for skipping date extraction when a quote service
+    does not provide a valid date
+  * Fix bug not been able to rename local quote source
+  * Many other bugfixes
+- Update dependencies to build with KF5
+- Drop upstream merged 0001-Use-new-KNS-install-location.patch
+- Add patch from upstream:
+  * 0001-Add-missing-QUrl-include-with-DBUILD_WITH_WEBENGINE.patch</comment>
+    <requestid>889064</requestid>
+  </revision>
 </revisionlist>
