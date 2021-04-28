@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-calendar
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,34 @@
 #
 
 
-%bcond_with ocaml_alcotest
-Name:           ocaml-calendar
+%define build_flavor @BUILD_FLAVOR@%{nil}
+%if "%{build_flavor}" == "testsuite"
+%define nsuffix -testsuite
+%else
+%define nsuffix %{nil}
+%endif
+
+%define     pkg ocaml-calendar
+Name:           %{pkg}%{nsuffix}
 Version:        2.04
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Objective Caml library for managing dates and times
-License:        LGPL-2.0
+License:        LGPL-2.0-only
 Group:          Development/Languages/OCaml
-Url:            https://github.com/ocaml-community/calendar
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://opam.ocaml.org/packages/calendar
+Source0:        %{pkg}-%{version}.tar.xz
+Patch0:         ocaml-calendar.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocaml-rpm-macros >= 20210121
+%if 1
 BuildRequires:  ocamlfind(re)
 BuildRequires:  ocamlfind(unix)
-%if %{with ocaml_alcotest}
-BuildRequires:  ocamlfind(alcotest)
+%endif
+
+%if "%{build_flavor}" == "testsuite"
+BuildRequires:  ocamlfind(calendar)
 %endif
 
 %description
@@ -48,25 +59,32 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{pkg}-%{version}
 
 %build
-sed -i~ '/system date/d' src/dune
-diff -u "$_"~ "$_" && exit 1
 dune_release_pkgs='calendar'
 %ocaml_dune_setup
+%if "%{build_flavor}" == ""
 %ocaml_dune_build
+%endif
 
 %install
+%if "%{build_flavor}" == ""
 %ocaml_dune_install
 %ocaml_create_file_list
+%endif
 
+%if "%{build_flavor}" == "testsuite"
 %check
 dune_test_tolerate_fail='dune_test_tolerate_fail'
 %ocaml_dune_test
+%endif
 
+%if "%{build_flavor}" == ""
 %files -f %{name}.files
 
 %files devel -f %{name}.files.devel
+
+%endif
 
 %changelog

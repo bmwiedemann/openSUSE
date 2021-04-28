@@ -39,4 +39,12 @@
 - Build conditionally with ocaml-alcotest</comment>
     <requestid>777990</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>b5864856e4aca8ac890268acf0bf6793</srcmd5>
+    <version>2.04</version>
+    <time>1619653001</time>
+    <user>dimstar_suse</user>
+    <comment>- use release revision and ocaml-calendar.patch</comment>
+    <requestid>867925</requestid>
+  </revision>
 </revisionlist>
