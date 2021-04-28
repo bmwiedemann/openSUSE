@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 28 12:26:32 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Used -fpermissive flag to fix factory build.
+
+-------------------------------------------------------------------
 Fri Dec 25 05:14:04 UTC 2020 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 0.42.1

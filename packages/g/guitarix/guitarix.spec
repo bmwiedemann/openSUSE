@@ -1,7 +1,7 @@
 #
 # spec file for package guitarix
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -169,7 +169,7 @@ export LDFLAGS="-ldl"
 %ifarch %ix86
                    -mfxsr \
 %endif
-                   -std=gnu++0x"
+                   -std=gnu++0x -fpermissive"
 ./waf build -v %{?_smp_mflags}
 
 %install
