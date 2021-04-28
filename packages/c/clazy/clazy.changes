@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 21 07:17:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Make sure C++17 support is available for Leap builds.
+
+-------------------------------------------------------------------
 Mon Apr 19 15:16:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream change:

@@ -29,7 +29,12 @@ Patch0:         0001-Fix-build-with-Clang-12.patch
 BuildRequires:  clang
 BuildRequires:  clang-devel >= 7.0
 BuildRequires:  cmake >= 3.7
+%if 0%{?suse_version} == 1500
+# C++17 is required
+BuildRequires:  gcc10-c++
+%else
 BuildRequires:  libstdc++-devel
+%endif
 %requires_eq    clang%{_llvm_sonum}
 
 %description
