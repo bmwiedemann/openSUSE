@@ -78,4 +78,14 @@ ocaml 4.03 (fate#320836)</comment>
   merged our changes for dune and recent ocaml versions</comment>
     <requestid>777976</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f89a2b68d96ae0cf6ca89b200c2583b3</srcmd5>
+    <version>20210423.2800b78</version>
+    <time>1619653059</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210423.2800b78
+  avoid corruption on 32bit architectures
+  add support for returning results in the right order</comment>
+    <requestid>888344</requestid>
+  </revision>
 </revisionlist>

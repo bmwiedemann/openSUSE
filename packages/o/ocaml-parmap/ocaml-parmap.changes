@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 25 22:22:22 UTC 2021 - ohering@suse.de
+
+- Update to version 20210423.2800b78
+  avoid corruption on 32bit architectures
+  add support for returning results in the right order
+
+-------------------------------------------------------------------
 Thu Feb 20 20:20:20 UTC 2020 - ohering@suse.de
 
 - Require current ocaml-rpm-macros

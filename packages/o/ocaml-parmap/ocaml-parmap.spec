@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-parmap
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           ocaml-parmap
-Version:        20200124.526acc4
+Version:        20210423.2800b78
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Multicore architecture exploitation for OCaml programs with minimal modifications
 License:        LGPL-2.0-only
 Group:          Development/Languages/OCaml
-URL:            http://rdicosmo.github.io/parmap/
-Source:         %{name}-%{version}.tar.xz
+URL:            https://opam.ocaml.org/packages/parmap
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocaml-rpm-macros >= 20210409
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  ocamlfind(graphics)
@@ -57,6 +57,10 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
+sed -i~ '
+s@10000000@1000000@
+' tests/simplescale.ml
+diff -u "$_"~ "$_" && exit 1
 dune_release_pkgs='parmap'
 %ocaml_dune_setup
 %ocaml_dune_build
@@ -66,11 +70,7 @@ dune_release_pkgs='parmap'
 %ocaml_create_file_list
 
 %check
-test -x "$(type -P ocamlc.opt)" || exit 0
 OCAML_DUNE_RUNTEST_ARGS="-j 1"
-%if "%{_lib}" == "lib"
-dune_test_tolerate_fail='dune_test_tolerate_fail Array.make'
-%endif
 export nData=$((1000 * 10))
 export nProcs=2
 %ocaml_dune_test
