@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 23 03:09:43 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.86
+   see /usr/share/doc/packages/perl-SVG/Changes
+
+  2.86  2021.04.22 MANWAR
+        - Replace last use of "vars" with "our", thanks @JRaspass.
+
+-------------------------------------------------------------------
 Fri Jul  3 12:54:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.85
