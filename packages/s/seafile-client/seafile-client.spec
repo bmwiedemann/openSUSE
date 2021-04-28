@@ -1,7 +1,7 @@
 #
 # spec file for package seafile-client
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Source1:        seafile.appdata.xml
 Patch0:         01-fix-no-return-in-nonvoid.patch
 Patch1:         fix_qpainterpath.patch
 Patch2:         fix-cmake-name.patch
+#PATCH-FIX-UPSTREAM https://github.com/haiwen/seadrive-gui/pull/292
+Patch3:         seafile-client_fix-compilation-glib2_68.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
@@ -81,6 +83,9 @@ Seafile also allows users to create groups and easily sharing files into groups.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p0
+%if 0%{?suse_version} > 1500
+%patch3 -p1
+%endif
 
 %build
 export CFLAGS="%{optflags} -fPIE -pie"

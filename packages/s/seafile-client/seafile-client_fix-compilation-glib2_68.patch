@@ -1,0 +1,89 @@
+diff -ru old/src/open-local-helper.cpp new/src/open-local-helper.cpp
+--- old/src/open-local-helper.cpp	2021-04-28 08:02:48.192595377 +0200
++++ new/src/open-local-helper.cpp	2021-04-28 08:03:11.732766082 +0200
+@@ -7,15 +7,12 @@
+ #include <QUrlQuery>
+ #include <QVariant>
+ 
+-extern "C" {
+ #include <searpc-client.h>
+ 
+ #include <searpc.h>
+ #include <seafile/seafile.h>
+ #include <seafile/seafile-object.h>
+ 
+-}
+-
+ #include "utils/utils.h"
+ #include "seafile-applet.h"
+ #include "ui/main-window.h"
+diff -ru old/src/rpc/rpc-client.cpp new/src/rpc/rpc-client.cpp
+--- old/src/rpc/rpc-client.cpp	2021-04-28 08:02:48.192595377 +0200
++++ new/src/rpc/rpc-client.cpp	2021-04-28 08:03:23.492851190 +0200
+@@ -1,5 +1,3 @@
+-extern "C" {
+-
+ #include <searpc-client.h>
+ #include <searpc-named-pipe-transport.h>
+ 
+@@ -7,8 +5,6 @@
+ #include <seafile/seafile.h>
+ #include <seafile/seafile-object.h>
+ 
+-}
+-
+ #include <QtDebug>
+ #include <QMutexLocker>
+ 
+diff -ru old/src/rpc/rpc-client.h new/src/rpc/rpc-client.h
+--- old/src/rpc/rpc-client.h	2021-04-28 08:02:48.192595377 +0200
++++ new/src/rpc/rpc-client.h	2021-04-28 08:03:40.088971311 +0200
+@@ -6,14 +6,10 @@
+ #include <QObject>
+ #include <QMutex>
+ 
+-extern "C" {
+-
+ struct _GList;
+ // Can't forward-declare type SearpcClient here because it is an anonymous typedef struct
+ #include <searpc-client.h>
+ 
+-}
+-
+ // Here we can't forward-declare type json_t because it is an anonymous typedef
+ // struct, and unlike libsearpc we have no way to rewrite its definition to give
+ // it a name.
+diff -ru old/src/rpc/rpc-server.cpp new/src/rpc/rpc-server.cpp
+--- old/src/rpc/rpc-server.cpp	2021-04-28 08:02:48.192595377 +0200
++++ new/src/rpc/rpc-server.cpp	2021-04-28 08:04:15.493227483 +0200
+@@ -1,13 +1,11 @@
+-extern "C" {
+-
+ #include <searpc.h>
+ #include <searpc-client.h>
+ #include <searpc-server.h>
+ #include <searpc-named-pipe-transport.h>
+ 
++extern "C" {
+ #include "searpc-signature.h"
+ #include "searpc-marshal.h"
+-
+ }
+ 
+ #include <QCoreApplication>
+diff -ru old/src/utils/uninstall-helpers.cpp new/src/utils/uninstall-helpers.cpp
+--- old/src/utils/uninstall-helpers.cpp	2021-04-28 08:02:48.196595405 +0200
++++ new/src/utils/uninstall-helpers.cpp	2021-04-28 08:04:27.749316151 +0200
+@@ -1,12 +1,9 @@
+-extern "C" {
+ #include <searpc-client.h>
+ 
+ #include <searpc.h>
+ #include <seafile/seafile.h>
+ #include <seafile/seafile-object.h>
+ 
+-}
+-
+ #include <QtGlobal>
+ 
+ #if defined(Q_OS_WIN32)

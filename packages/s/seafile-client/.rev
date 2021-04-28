@@ -44,4 +44,13 @@
 </comment>
     <requestid>841271</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3a6fdc760aacacc42424d6e14e7f198c</srcmd5>
+    <version>7.0.10</version>
+    <time>1619653083</time>
+    <user>dimstar_suse</user>
+    <comment>- Add seafile-client_fix-compilation-glib2_68.patch
+</comment>
+    <requestid>888930</requestid>
+  </revision>
 </revisionlist>
