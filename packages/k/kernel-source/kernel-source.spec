@@ -17,8 +17,8 @@
 # icecream 0
 
 
-%define srcversion 5.11
-%define patchversion 5.11.16
+%define srcversion 5.12
+%define patchversion 5.12.0
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -30,9 +30,9 @@ Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0
 Group:          Development/Sources
-Version:        5.11.16
+Version:        5.12.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ge06d321
+Release:        <RELEASE>.g5d43652
 %else
 Release:        0
 %endif
@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-e06d321f0fedc62f2ae9fe030f6d2413efc15633
+Provides:       %name-srchash-5d43652877fda8aa556866abab93cad61f1f9b6f
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -206,6 +206,7 @@ pushd $RPM_BUILD_ROOT/usr/src
 
 # Unpack the vanilla kernel sources
 tar -xf %{S:0}
+find . -type l | while read f; do test -e "$f" || rm -v "$f"; done
 if test "%srcversion" != "%kernelrelease%variant"; then
 	mv linux-%srcversion linux-%kernelrelease%variant
 fi

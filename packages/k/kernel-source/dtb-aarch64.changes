@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Apr 25 23:15:12 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.12 final
+- refresh configs (headers only)
+- commit 9683115
+
+-------------------------------------------------------------------
+Sun Apr 25 13:19:40 CEST 2021 - msuchanek@suse.de
+
+- rpm/kernel-binary.spec.in: Require new enough pahole.
+  pahole 1.21 is required for building line-next BTF
+- commit 8df1aaa
+
+-------------------------------------------------------------------
+Fri Apr 23 18:24:39 CEST 2021 - martin.wilck@suse.com
+
+- rpm/macros.kernel-source: fix KMP failure in %install (bsc#1185244)
+- commit 52805ed
+
+-------------------------------------------------------------------
+Thu Apr 22 18:26:15 CEST 2021 - msuchanek@suse.de
+
+- rpm/kernel-obs-build.spec.in: Include essiv with dm-crypt (boo#1183063).
+  Previously essiv was part of dm-crypt but now it is separate.
+  Include the module in kernel-obs-build when available.
+  Fixes: 7cf5b9e26d87 ("rpm/kernel-obs-build.spec.in: add dm-crypt for building with cryptsetup")
+- commit fe15b78
+
+-------------------------------------------------------------------
 Thu Apr 22 10:26:25 CEST 2021 - tiwai@suse.de
 
 - Revert "rpm/kernel-binary.spec.in: Fix dependency of kernel-*-devel package (bsc#1184514)"
@@ -213,6 +242,13 @@ Wed Apr 21 14:39:06 CEST 2021 - jslaby@suse.cz
 - AMD_SFH: Removed unused activecontrolstatus member from the
   amd_mp2_dev struct (bsc#1012628).
 - commit d57ad55
+
+-------------------------------------------------------------------
+Mon Apr 19 00:03:41 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.12-rc8
+- refresh configs
+- commit a71cb9a
 
 -------------------------------------------------------------------
 Fri Apr 16 18:47:19 CEST 2021 - jslaby@suse.cz
@@ -619,6 +655,12 @@ Mon Apr 12 14:22:20 CEST 2021 - tiwai@suse.de
 - commit 794be7b
 
 -------------------------------------------------------------------
+Mon Apr 12 00:31:38 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.12-rc7
+- commit bd61ada
+
+-------------------------------------------------------------------
 Sun Apr 11 19:59:36 CEST 2021 - jslaby@suse.cz
 
 - drm/msm: a6xx: fix version check for the A650 SQE microcode
@@ -964,6 +1006,19 @@ Wed Apr  7 19:30:21 CEST 2021 - jslaby@suse.cz
 - commit 92a542e
 
 -------------------------------------------------------------------
+Wed Apr  7 10:18:52 CEST 2021 - dmueller@suse.com
+
+- config.conf: reenable armv6/armv7 configs
+  (all modules, otherwise same settings like arm64)
+- commit d115d63
+
+-------------------------------------------------------------------
+Wed Apr  7 09:51:47 CEST 2021 - dmueller@suse.com
+
+- arm64: add debug config with KASAN enabled (bsc#1183716)
+- commit b68cba9
+
+-------------------------------------------------------------------
 Tue Apr  6 17:45:31 CEST 2021 - tiwai@suse.de
 
 - firewire: nosy: Fix a use-after-free bug in nosy_ioctl()
@@ -975,6 +1030,18 @@ Tue Apr  6 16:01:19 CEST 2021 - tiwai@suse.de
 
 - drm/i915: Fix invalid access to ACPI _DSM objects (bsc#1184074).
 - commit 6dbaa20
+
+-------------------------------------------------------------------
+Tue Apr  6 11:28:47 CEST 2021 - dmueller@suse.com
+
+- arm64: enable and update config for 5.12
+- commit 0a5586c
+
+-------------------------------------------------------------------
+Mon Apr  5 00:09:26 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.12-rc6
+- commit b5f88e6
 
 -------------------------------------------------------------------
 Tue Mar 30 19:20:11 CEST 2021 - jslaby@suse.cz
@@ -1396,6 +1463,14 @@ Tue Mar 30 19:20:11 CEST 2021 - jslaby@suse.cz
 - commit dbc4a02
 
 -------------------------------------------------------------------
+Mon Mar 29 01:26:17 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.12-rc5
+- refresh configs
+  - XEN_BALLOON_MEMORY_HOTPLUG_LIMIT renamed to XEN_MEMORY_HOTPLUG_LIMIT (x86_64)
+- commit 5fe2d5c
+
+-------------------------------------------------------------------
 Fri Mar 26 09:43:28 CET 2021 - tiwai@suse.de
 
 - drm/nouveau/kms/nve4-nv108: Limit cursors to 128x128
@@ -1406,7 +1481,7 @@ Fri Mar 26 09:43:28 CET 2021 - tiwai@suse.de
 Fri Mar 26 09:34:36 CET 2021 - tiwai@suse.de
 
 - Update config files: disable CONFIG_SND_HDA_INTEL_HDMI_SILENT_STREAM (bsc#1184019)
-- commit e01a7a0
+- commit d848134
 
 -------------------------------------------------------------------
 Thu Mar 25 11:20:49 CET 2021 - jslaby@suse.cz
@@ -1627,6 +1702,28 @@ Wed Mar 24 12:52:34 CET 2021 - jslaby@suse.cz
 - cifs: Fix preauth hash corruption (bsc#1012628).
 - Update config files.
 - commit 8be2d1c
+
+-------------------------------------------------------------------
+Sun Mar 21 23:42:18 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.12-rc4
+- update configs
+  - VFIO=n (s390x/zfcpdump only)
+  - drop SND_SOC_SIRF_AUDIO_CODEC (removed)
+  - drop ADI_AXI_ADC (x86_64, depends on OF now)
+- commit 094141b
+
+-------------------------------------------------------------------
+Sun Mar 21 23:31:58 CET 2021 - mkubecek@suse.cz
+
+- config: disable obsolete crypto algorithms (bsc#1180928)
+- CONFIG_CRYPTO_USER_API_ENABLE_OBSOLETE y->n
+  - drop CRYPTO_ANUBIS
+  - drop CRYPTO_ARC4
+  - drop CRYPTO_KHAZAD
+  - drop CRYPTO_SEED
+  - drop CRYPTO_TEA
+- commit 1c5c406
 
 -------------------------------------------------------------------
 Sat Mar 20 19:00:06 CET 2021 - jslaby@suse.cz
@@ -2736,7 +2833,7 @@ Tue Mar 16 18:07:59 CET 2021 - tiwai@suse.de
 Tue Mar 16 10:05:15 CET 2021 - tiwai@suse.de
 
 - Update config files: enable CONFIG_BMP280=m for x86 (bsc#1183198)
-- commit 4e3227f
+- commit e29c84f
 
 -------------------------------------------------------------------
 Mon Mar 15 06:00:42 CET 2021 - jslaby@suse.cz
@@ -2757,6 +2854,33 @@ Mon Mar 15 06:00:42 CET 2021 - jslaby@suse.cz
   patches.suse/ALSA-usb-audio-Apply-the-control-quirk-to-Plantronic.patch.
   Update upstream status.
 - commit 3222af6
+
+-------------------------------------------------------------------
+Sun Mar 14 23:07:40 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.12-rc3
+- eliminated 3 patches
+  - patches.rpmify/kbuild-dummy-tools-adjust-to-scripts-cc-version.sh.patch
+  - patches.rpmify/kbuild-dummy-tools-fix-inverted-tests-for-gcc.patch
+  - patches.rpmify/kbuild-dummy-tools-support-MPROFILE_KERNEL-checks-fo.patch
+- update configs
+  - COMPILE_TEST=n (s390x)
+  - TMPFS_INODE64=y (s390x)
+- commit 89b1f10
+
+-------------------------------------------------------------------
+Sun Mar 14 21:08:17 CET 2021 - mkubecek@suse.cz
+
+- config: update with dummy toolchain
+- new config options:
+  - GCC_PLUGINS=y
+  - GCC_PLUGIN_CYC_COMPLEXITY is not set
+  - GCC_PLUGIN_LATENT_ENTROPY is not set
+  - GCC_PLUGIN_RANDSTRUCT is not set
+  - GCC_PLUGIN_STRUCTLEAK_USER is not set
+  - GCC_PLUGIN_STRUCTLEAK_BYREF is not set
+  - GCC_PLUGIN_STRUCTLEAK_BYREF_ALL is not set
+- commit 6e44961
 
 -------------------------------------------------------------------
 Sun Mar 14 10:04:54 CET 2021 - tiwai@suse.de
@@ -2898,6 +3022,20 @@ Wed Mar 10 05:45:02 CET 2021 - jslaby@suse.cz
 - commit c867c19
 
 -------------------------------------------------------------------
+Wed Mar 10 05:43:53 CET 2021 - jslaby@suse.cz
+
+- kbuild: dummy-tools: adjust to scripts/cc-version.sh
+  (bsc#1181862).
+- commit cfbfafc
+
+-------------------------------------------------------------------
+Tue Mar  9 18:04:01 CET 2021 - msuchanek@suse.de
+
+- Delete patches.rpmify/Kconfig-make-CONFIG_CC_CAN_LINK-always-true.patch.
+  Should not be needed anymore with dummy-tools.
+- commit 41fc82c
+
+-------------------------------------------------------------------
 Tue Mar  9 12:08:27 CET 2021 - jslaby@suse.cz
 
 - Linux 5.11.5 (bsc#1012628).
@@ -2993,7 +3131,7 @@ Mon Mar  8 07:19:58 CET 2021 - jslaby@suse.cz
 
 - kbuild: dummy-tools, support MPROFILE_KERNEL checks for ppc
   (bsc#1181862).
-- commit 7064b20
+- commit c4424c2
 
 -------------------------------------------------------------------
 Mon Mar  8 07:07:04 CET 2021 - jslaby@suse.cz
@@ -3185,6 +3323,17 @@ Sun Mar  7 16:44:29 CET 2021 - jslaby@suse.cz
 - iwlwifi: add new cards for So and Qu family (bsc#1012628).
 - net: usb: qmi_wwan: support ZTE P685M modem (bsc#1012628).
 - commit 43a5c33
+
+-------------------------------------------------------------------
+Sun Mar  7 10:22:49 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.12-rc2
+- eliminated 1 patch
+  - patches.suse/swap-fix-swapfile-read-write-offset.patch
+- update configs
+  - KVM_XEN=n (x86)
+  - SND_SOC_SOF_MERRIFIELD=m (i386)
+- commit d9388fc
 
 -------------------------------------------------------------------
 Sat Mar  6 17:44:51 CET 2021 - tiwai@suse.de
@@ -4525,6 +4674,12 @@ Thu Mar  4 12:54:55 CET 2021 - jslaby@suse.cz
 - commit d12dcbd
 
 -------------------------------------------------------------------
+Wed Mar  3 23:24:06 CET 2021 - mkubecek@suse.cz
+
+- swap: fix swapfile read/write offset.
+- commit bdb065a
+
+-------------------------------------------------------------------
 Wed Mar  3 16:02:09 CET 2021 - yousaf.kaukab@suse.com
 
 - config: arm64: sync xgmac-mdio config with SLE
@@ -4547,7 +4702,168 @@ Wed Mar  3 12:31:59 CET 2021 - jslaby@suse.cz
 Wed Mar  3 12:19:43 CET 2021 - jslaby@suse.cz
 
 - kbuild: dummy-tools, fix inverted tests for gcc (bsc#1181862).
-- commit 19ed7d5
+- commit ddbefa3
+
+-------------------------------------------------------------------
+Tue Mar  2 10:51:59 CET 2021 - dmueller@suse.com
+
+- Remove zte device tree builds
+  The zte vendor directory has been dropped in 5.12.rc1 via this change:
+  commit 89d4f98ae90d95716009bb89823118a8cfbb94dd
+  Author: Arnd Bergmann <arnd@arndb.de>
+  Date:   Mon Jan 18 14:06:09 2021 +0100
+- commit 6811d6c
+
+-------------------------------------------------------------------
+Mon Mar  1 09:49:57 CET 2021 - mkubecek@suse.cz
+
+- Update to 5.12-rc1
+- eliminated 30 patches (26 stable, 4 other)
+  - patches.kernel.org/*
+  - patches.suse/drm-bail-out-of-nouveau_channel_new-if-channel-init-.patch
+  - patches.suse/floppy-reintroduce-O_NDELAY-fix.patch
+  - patches.suse/media-uvcvideo-Accept-invalid-bFormatIndex-and-bFram.patch
+  - patches.suse/nvmem-add-driver-to-expose-reserved-memory-as-nvmem.patch
+- disable ARM architectures (need config update)
+- refresh
+  - patches.rpmify/Add-ksym-provides-tool.patch
+  - patches.rpmify/Kconfig-make-CONFIG_CC_CAN_LINK-always-true.patch
+  - patches.suse/acpi_thermal_passive_blacklist.patch
+  - patches.suse/btrfs-use-the-new-VFS-super_block_dev.patch
+  - patches.suse/supported-flag
+  - patches.suse/supported-flag-modverdir
+  - patches.suse/supported-flag-wildcards
+  - patches.suse/vfs-add-super_operations-get_inode_dev
+- new config options
+  - Power management and ACPI options
+    - CONFIG_ACPI_FPDT=y
+  - General architecture-dependent options
+    - CONFIG_LTO_NONE=y
+  - Enable loadable module support
+    - CONFIG_TRIM_UNUSED_KSYMS=n
+  - Networking support
+    - CONFIG_IP_VS_TWOS=m
+    - CONFIG_NET_DSA_TAG_XRS700X=m
+    - CONFIG_NFC_VIRTUAL_NCI=m
+  - Library routines
+    - CONFIG_STACK_HASH_ORDER=20
+  - Kernel hacking
+    - CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=n
+    - CONFIG_KFENCE=y
+    - CONFIG_KFENCE_STATIC_KEYS=y
+    - CONFIG_KFENCE_SAMPLE_INTERVAL=100
+    - CONFIG_KFENCE_NUM_OBJECTS=255
+    - CONFIG_KFENCE_STRESS_TEST_FAULTS=0
+    - CONFIG_DEBUG_IRQFLAGS=n
+  - PCI support
+    - CONFIG_PCI_EPF_NTB=m
+    - CONFIG_CXL_BUS=m
+    - CONFIG_CXL_MEM=m
+    - CONFIG_CXL_MEM_RAW_COMMANDS=n
+  - Network device support
+    - CONFIG_NET_DSA_XRS700X_I2C=m
+    - CONFIG_NET_DSA_XRS700X_MDIO=m
+    - CONFIG_MLX5_SF=y
+    - CONFIG_XILINX_EMACLITE=n
+    - CONFIG_MT7921E=m
+  - Power management
+    - CONFIG_CHARGER_LTC4162L=m
+    - CONFIG_CHARGER_BQ256XX=m
+    - CONFIG_SENSORS_AHT10=m
+    - CONFIG_SENSORS_TPS23861=m
+    - CONFIG_REGULATOR_MT6315=m
+  - Multimedia support
+    - CONFIG_CIO2_BRIDGE=y
+    - CONFIG_VIDEO_OV5648=m
+    - CONFIG_VIDEO_OV8865=m
+    - CONFIG_VIDEO_RDACM21=m
+  - Sound card support
+    - CONFIG_SND_JACK_INJECTION_DEBUG=n
+    - CONFIG_SND_INTEL_BYT_PREFER_SOF=y
+    - CONFIG_SND_SOC_RT5659=m
+    - CONFIG_SND_SOC_LPASS_RX_MACRO=n
+    - CONFIG_SND_SOC_LPASS_TX_MACRO=n
+  - HID support
+    - CONFIG_HID_PLAYSTATION=m
+    - CONFIG_PLAYSTATION_FF=y
+    - CONFIG_I2C_HID_ACPI=m
+  - USB support
+    - CONFIG_USB_CDNS_SUPPORT=m
+    - CONFIG_USB_CDNSP_PCI=m
+    - CONFIG_USB_CDNSP_GADGET=y
+    - CONFIG_USB_CDNSP_HOST=y
+    - CONFIG_USB_SERIAL_XR=m
+  - LED Support
+    - CONFIG_LEDS_TRIGGER_TTY=m
+    - CONFIG_LEDS_BLINK=y
+  - Microsoft Surface Platform-Specific Device Drivers
+    - CONFIG_SURFACE_HOTPLUG=m
+    - CONFIG_SURFACE_ACPI_NOTIFY=m
+    - CONFIG_SURFACE_AGGREGATOR=m
+    - CONFIG_SURFACE_AGGREGATOR_CDEV=m
+    - CONFIG_SURFACE_AGGREGATOR_BUS=y
+    - CONFIG_SURFACE_AGGREGATOR_ERROR_INJECTION=n
+  - Industrial I/O support
+    - CONFIG_AD5766=n
+    - CONFIG_YAMAHA_YAS530=n
+    - CONFIG_HID_SENSOR_CUSTOM_INTEL_HINGE=n
+  - Generic powercap sysfs driver
+    - CONFIG_DTPM=y
+    - CONFIG_DTPM_CPU=y
+  - Misc devices
+    - CONFIG_BCM_VK=m
+    - CONFIG_BCM_VK_TTY=y
+    - CONFIG_TCG_TIS_I2C_CR50=m
+    - CONFIG_SVC_I3C_MASTER=m
+    - CONFIG_MMC_CRYPTO=y
+    - CONFIG_INTEL_LDMA=y
+    - CONFIG_DMABUF_DEBUG=n
+    - CONFIG_ACRN_HSM=m
+    - CONFIG_FPGA_DFL_EMIF=m
+    - CONFIG_NTB_EPF=m
+    - CONFIG_FPGA_DFL_NIOS_INTEL_PAC_N3000=m
+  - x86
+    - CONFIG_X86_PLATFORM_DRIVERS_DELL=y
+  - OF dependent drivers (i386, ppc64/ppc64le, riscv64)
+    - PCIE_MICROCHIP_HOST=y
+    - VIDEO_IMX334=m
+    - DRM_PANEL_DSI_CM=n
+    - DRM_PANEL_KHADAS_TS050=n
+    - I2C_HID_OF=m
+    - I2C_HID_OF_GOODIX=m
+    - COMMON_CLK_AXI_CLKGEN=m
+  - i386
+    - NET_DSA_MV88E6XXX_PTP=y
+    - SPI_CADENCE_QUADSPI=m
+    - LEDS_BLINK_LGM=m
+  - s390x
+    - TIME_NS=y
+    - DEBUG_ENTRY=n
+  - riscv64
+    - NUMA=y
+    - NODES_SHIFT=2
+    - SPARSEMEM_VMEMMAP=y
+    - DEFERRED_STRUCT_PAGE_INIT=y
+    - LEDS_BLINK_LGM=m
+    - KGDB_HONOUR_BLOCKLIST=y
+    - FAIL_FUNCTION=n
+    - KPROBES_SANITY_TEST=n
+    - NUMA_BALANCING=y
+    - NUMA_BALANCING_DEFAULT_ENABLED=y
+- commit 42fc050
+
+-------------------------------------------------------------------
+Mon Mar  1 09:45:08 CET 2021 - mkubecek@suse.cz
+
+- rpm/kernel-source.spec.in: temporary workaround for a build failure
+  Upstream c6x architecture removal left a dangling link behind which
+  triggers openSUSE post-build check in kernel-source, failing
+  kernel-source build.
+  A fix deleting the danglink link has been submitted but it did not make
+  it into 5.12-rc1. Unfortunately we cannot add it as a patch as patch
+  utility does not handle symlink removal. Add a temporary band-aid which
+  deletes all dangling symlinks after unpacking the kernel source tarball.
+- commit 53dcfbe
 
 -------------------------------------------------------------------
 Sun Feb 28 18:21:59 CET 2021 - schwab@suse.de

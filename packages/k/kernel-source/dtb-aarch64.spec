@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 5.11
-%define patchversion 5.11.16
+%define srcversion 5.12
+%define patchversion 5.12.0
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-aarch64
-Version:        5.11.16
+Version:        5.12.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ge06d321
+Release:        <RELEASE>.g5d43652
 %else
 Release:        0
 %endif
@@ -329,15 +329,6 @@ Requires(post): coreutils
 %description -n dtb-xilinx
 Device Tree files for Xilinx based arm64 systems.
 
-%package -n dtb-zte
-Summary:        ZTE based arm64 systems
-Group:          System/Boot
-Provides:       multiversion(dtb)
-Requires(post): coreutils
-
-%description -n dtb-zte
-Device Tree files for ZTE based arm64 systems.
-
 
 
 %prep
@@ -359,7 +350,7 @@ DTC_FLAGS="$DTC_FLAGS -@"
 %endif
 
 cd $source/arch/arm64/boot/dts
-for dts in allwinner/*.dts altera/*.dts amazon/*.dts amd/*.dts amlogic/*.dts apm/*.dts arm/*.dts broadcom/*.dts cavium/*.dts exynos/*.dts freescale/*.dts hisilicon/*.dts lg/*.dts marvell/*.dts mediatek/*.dts nvidia/*.dts qcom/*.dts renesas/*.dts rockchip/*.dts socionext/*.dts sprd/*.dts xilinx/*.dts zte/*.dts ; do
+for dts in allwinner/*.dts altera/*.dts amazon/*.dts amd/*.dts amlogic/*.dts apm/*.dts arm/*.dts broadcom/*.dts cavium/*.dts exynos/*.dts freescale/*.dts hisilicon/*.dts lg/*.dts marvell/*.dts mediatek/*.dts nvidia/*.dts qcom/*.dts renesas/*.dts rockchip/*.dts socionext/*.dts sprd/*.dts xilinx/*.dts ; do
     target=${dts%*.dts}
     mkdir -p $PPDIR/$(dirname $target)
     cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $target.dts -o $PPDIR/$target.dts
@@ -371,7 +362,7 @@ done
 %install
 
 cd pp
-for dts in allwinner/*.dts altera/*.dts amazon/*.dts amd/*.dts amlogic/*.dts apm/*.dts arm/*.dts broadcom/*.dts cavium/*.dts exynos/*.dts freescale/*.dts hisilicon/*.dts lg/*.dts marvell/*.dts mediatek/*.dts nvidia/*.dts qcom/*.dts renesas/*.dts rockchip/*.dts socionext/*.dts sprd/*.dts xilinx/*.dts zte/*.dts ; do
+for dts in allwinner/*.dts altera/*.dts amazon/*.dts amd/*.dts amlogic/*.dts apm/*.dts arm/*.dts broadcom/*.dts cavium/*.dts exynos/*.dts freescale/*.dts hisilicon/*.dts lg/*.dts marvell/*.dts mediatek/*.dts nvidia/*.dts qcom/*.dts renesas/*.dts rockchip/*.dts socionext/*.dts sprd/*.dts xilinx/*.dts ; do
     target=${dts%*.dts}
     install -m 755 -d %{buildroot}%{dtbdir}/$(dirname $target)
     # install -m 644 COPYING %{buildroot}%{dtbdir}/$(dirname $target)
@@ -534,13 +525,6 @@ cd /boot
 [ -d dtb ] || ln -sf dtb-%kernelrelease dtb
 
 %post -n dtb-xilinx
-cd /boot
-# If /boot/dtb is a symlink, remove it, so that we can replace it.
-[ -d dtb ] && [ -L dtb ] && rm -f dtb
-# Unless /boot/dtb exists as real directory, create a symlink.
-[ -d dtb ] || ln -sf dtb-%kernelrelease dtb
-
-%post -n dtb-zte
 cd /boot
 # If /boot/dtb is a symlink, remove it, so that we can replace it.
 [ -d dtb ] && [ -L dtb ] && rm -f dtb
@@ -788,16 +772,5 @@ cd /boot
 %dir %{dtbdir}
 %dir %{dtbdir}/xilinx
 %{dtbdir}/xilinx/*.dtb
-
-%ifarch aarch64 riscv64
-%files -n dtb-zte -f dtb-zte.list
-%else
-%files -n dtb-zte
-%endif
-%defattr(-,root,root)
-%ghost /boot/dtb
-%dir %{dtbdir}
-%dir %{dtbdir}/zte
-%{dtbdir}/zte/*.dtb
 
 %changelog

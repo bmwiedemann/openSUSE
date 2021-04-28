@@ -17,8 +17,8 @@
 # needssslcertforbuild
 
 
-%define srcversion 5.11
-%define patchversion 5.11.16
+%define srcversion 5.12
+%define patchversion 5.12.0
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -68,9 +68,9 @@ Name:           kernel-pae
 Summary:        Kernel with PAE Support
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.11.16
+Version:        5.12.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ge06d321
+Release:        <RELEASE>.g5d43652
 %else
 Release:        0
 %endif
@@ -95,8 +95,8 @@ BuildRequires:  modutils
 # Used to sign the kernel in the buildservice
 BuildRequires:  openssl
 BuildRequires:  pesign-obs-integration
-# for CONFIG_DEBUG_INFO_BTF - ToDo: make it conditional
-BuildRequires:  pahole
+# pahole for CONFIG_DEBUG_INFO_BTF - ToDo: make it conditional
+BuildRequires:  dwarves >= 1.21
 # for objtool
 BuildRequires:  libelf-devel
 Provides:       %name = %version-%source_rel
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-e06d321f0fedc62f2ae9fe030f6d2413efc15633
-Provides:       kernel-srchash-e06d321f0fedc62f2ae9fe030f6d2413efc15633
+Provides:       kernel-%build_flavor-base-srchash-5d43652877fda8aa556866abab93cad61f1f9b6f
+Provides:       kernel-srchash-5d43652877fda8aa556866abab93cad61f1f9b6f
 # END COMMON DEPS
-Provides:       %name-srchash-e06d321f0fedc62f2ae9fe030f6d2413efc15633
+Provides:       %name-srchash-5d43652877fda8aa556866abab93cad61f1f9b6f
 %ifarch %ix86
 Provides:       kernel-bigsmp = 2.6.17
 Obsoletes:      kernel-bigsmp <= 2.6.17
