@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  9 09:09:09 UTC 2021 - ohering@suse.de
+
+- Update to version 6.1
+  master branch has dune support
+
+-------------------------------------------------------------------
 Sat Feb 29 20:20:20 UTC 2020 - ohering@suse.de
 
 - use dune branch to make dose3 compatible with safe-strings

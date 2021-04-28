@@ -4,7 +4,7 @@
     <param name="exclude">doc/webpages</param>
     <param name="exclude">experimental</param>
     <param name="filename">ocaml-dose</param>
-    <param name="revision">67c594a4afa2400faa6cc0d1cce00d986acae5d6</param>
+    <param name="revision">8b3cc4285c96b97e379545a2b0718582d1d477cf</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://gitlab.com/irill/dose3.git</param>
