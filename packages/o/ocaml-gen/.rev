@@ -47,4 +47,12 @@ update: fixed license ID (used wrong casing)</comment>
   See included CHANGELOG.md for details</comment>
     <requestid>828684</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>908990702e59dee7b7bb53dea414eac7</srcmd5>
+    <version>0.5.3</version>
+    <time>1619653004</time>
+    <user>dimstar_suse</user>
+    <comment>- remove dependency to ounit via _multibuild</comment>
+    <requestid>867934</requestid>
+  </revision>
 </revisionlist>
