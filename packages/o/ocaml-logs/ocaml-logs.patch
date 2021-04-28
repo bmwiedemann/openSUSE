@@ -1,0 +1,187 @@
+--- /dev/null
++++ b/dune-project
+@@ -0,0 +1,2 @@
++(lang dune 1.0)
++(name logs)
+--- /dev/null
++++ b/src/dune
+@@ -0,0 +1,47 @@
++(library
++ (name logs)
++ (public_name logs)
++ (libraries result)
++ (modules logs)
++ (flags :standard -w -27 -safe-string)
++ (wrapped false))
++
++(library
++ (name logs_fmt)
++ (public_name logs.fmt)
++ (libraries fmt logs)
++ (modules logs_fmt)
++ (flags :standard -w -27 -safe-string)
++ (wrapped false))
++
++(library
++ (name logs_cli)
++ (public_name logs.cli)
++ (libraries logs cmdliner)
++ (modules logs_cli)
++ (flags :standard -w -27 -safe-string)
++ (wrapped false))
++
++(library
++ (name logs_lwt)
++ (public_name logs.lwt)
++ (libraries lwt logs)
++ (modules logs_lwt)
++ (flags :standard -w -27 -safe-string)
++ (optional)
++ (wrapped false))
++
++(library
++ (name logs_threaded)
++ (public_name logs.threaded)
++ (libraries logs threads)
++ (modules logs_threaded)
++ (flags :standard -w -27 -safe-string)
++ (wrapped false))
++
++(library
++ (name logs_top)
++ (public_name logs.top)
++ (libraries compiler-libs.toplevel logs)
++ (modules logs_top)
++ (wrapped false))
+--- a/src/logs.ml
++++ b/src/logs.ml
+@@ -178,6 +178,10 @@ type ('a, 'b) msgf =
+   (?header:string -> ?tags:Tag.set ->
+    ('a, Format.formatter, unit, 'b) format4 -> 'a) -> 'b
+ 
++type reporter_mutex = { lock : unit -> unit; unlock : unit -> unit }
++let _reporter_mutex = ref { lock = (fun () -> ()); unlock = (fun () -> ()) }
++let set_reporter_mutex ~lock ~unlock = _reporter_mutex := { lock; unlock }
++
+ type reporter =
+   { report :
+       'a 'b. src -> level -> over:(unit -> unit) -> (unit -> 'b) ->
+@@ -187,7 +191,10 @@ let nop_reporter = { report = fun _ _ ~over k _ -> over (); k () }
+ let _reporter = ref nop_reporter
+ let set_reporter r = _reporter := r
+ let reporter () = !_reporter
+-let report src level ~over k msgf  = !_reporter.report src level ~over k msgf
++let report src level ~over k msgf =
++  let over () = over (); !_reporter_mutex.unlock () in
++  !_reporter_mutex.lock ();
++  !_reporter.report src level ~over k msgf
+ 
+ let pp_header ppf (l, h) = match h with
+ | None -> if l = App then () else Format.fprintf ppf "[%a]" pp_level l
+@@ -234,7 +241,8 @@ type 'a log = ('a, unit) msgf -> unit
+ 
+ let over () = ()
+ let kmsg : type a b. (unit -> b) -> ?src:src -> level -> (a, b) msgf -> b =
+-fun k ?(src = default) level msgf -> match Src.level src with
++fun k ?(src = default) level msgf ->
++match Src.level src with
+ | None -> k ()
+ | Some level' when level > level' ->
+     (if level = Error then incr _err_count else
+--- a/src/logs.mli
++++ b/src/logs.mli
+@@ -346,6 +346,12 @@ val reporter : unit -> reporter
+ val set_reporter : reporter -> unit
+ (** [set_reporter r] sets the current reporter to [r]. *)
+ 
++val set_reporter_mutex : lock:(unit -> unit) -> unlock:(unit -> unit) -> unit
++(** [set_reporter_mutex ~lock ~unlock] sets the mutex primitives used
++    to access the reporter. [lock] is called before invoking the
++    reporter and [unlock] after it returns. Initially both [lock] and
++    [unlock] are [fun () -> ()]. *)
++
+ (**/**)
+ val report : src -> level -> over:(unit -> unit) -> (unit -> 'b) ->
+   ('a, 'b) msgf -> 'b
+@@ -427,6 +433,12 @@ let main () =
+     install code before these initialization bits are being executed
+     otherwise you will miss these messages.
+ 
++    In multi-threaded programs you likely want to ensure mutual
++    exclusion on reporter access. This can be done by invoking
++    {!Logs.set_reporter_mutex} with suitable mutual exclusion
++    primitives. If you use OCaml {!Thread}s simply calling
++    {!Logs_threaded.enable} with handle that for you.
++
+     If you need to use multiple reporters in your program see this
+     {{!ex2}sample code}.
+ 
+@@ -437,7 +449,7 @@ let main () =
+     If you are writing a library you should neither install reporters, nor
+     set the reporting level of sources, nor log on the {!default} source or
+     at the [App] level; follow the {{!usage}the usage conventions}. A
+-    library should simply log on an another existing source or define
++    library should simply log on another existing source or define
+     its own source like in the example below:
+ {[
+ let src = Logs.Src.create "mylib.network" ~doc:"logs mylib's network events"
+--- /dev/null
++++ b/src/logs_threaded.ml
+@@ -0,0 +1,26 @@
++(*---------------------------------------------------------------------------
++   Copyright (c) 2019 The logs programmers. All rights reserved.
++   Distributed under the ISC license, see terms at the end of the file.
++   %%NAME%% %%VERSION%%
++  ---------------------------------------------------------------------------*)
++
++let enable () =
++  let lock = Mutex.create () in
++  let lock () = Mutex.lock lock and unlock () = Mutex.unlock lock in
++  Logs.set_reporter_mutex ~lock ~unlock
++
++(*---------------------------------------------------------------------------
++   Copyright (c) 2019 The logs programmers
++
++   Permission to use, copy, modify, and/or distribute this software for any
++   purpose with or without fee is hereby granted, provided that the above
++   copyright notice and this permission notice appear in all copies.
++
++   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
++   WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
++   MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
++   ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
++   WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
++   ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
++   OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
++  ---------------------------------------------------------------------------*)
+--- /dev/null
++++ b/src/logs_threaded.mli
+@@ -0,0 +1,28 @@
++(*---------------------------------------------------------------------------
++   Copyright (c) 2019 The logs programmers. All rights reserved.
++   Distributed under the ISC license, see terms at the end of the file.
++   %%NAME%% %%VERSION%%
++  ---------------------------------------------------------------------------*)
++
++(** Thread safe logging. *)
++
++val enable : unit -> unit
++(** [enable ()] enables thread safe logging for OCaml {!Thread}s by
++    installing mutual exclusion primitives via
++    {!Logs.set_reporter_mutex}. *)
++
++(*---------------------------------------------------------------------------
++   Copyright (c) 2019 The logs programmers
++
++   Permission to use, copy, modify, and/or distribute this software for any
++   purpose with or without fee is hereby granted, provided that the above
++   copyright notice and this permission notice appear in all copies.
++
++   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
++   WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
++   MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
++   ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
++   WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
++   ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
++   OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
++  ---------------------------------------------------------------------------*)
