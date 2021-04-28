@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 24 03:07:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.19
+   see /usr/share/doc/packages/perl-List-AllUtils/Changes
+
+  0.19    2021-04-23
+
+  - We now prefer the mesh() and zip() functions from List::SomeUtils over the
+    new, incompatible implementations in List::Util 1.56. Fixes GH #12.
+    reported by Greg Oschwald.
+
+-------------------------------------------------------------------
 Sun Sep  6 03:09:14 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.18
