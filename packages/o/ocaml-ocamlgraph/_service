@@ -1,27 +1,24 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/dune-universe/ocamlgraph.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">1.8.8</param>
-    <param name="revision">duniverse-v1.8.8</param>
     <param name="filename">ocaml-ocamlgraph</param>
-<param name='exclude'>.gitignore</param>
-<param name='exclude'>.merlin</param>
-<param name='exclude'>.ocp-indent</param>
-<param name='exclude'>CREDITS</param>
-<param name='exclude'>FAQ</param>
-<param name='exclude'>INSTALL.adoc</param>
-<param name='exclude'>META.in</param>
-<param name='exclude'>Makefile.in</param>
-<param name='exclude'>TODO.adoc</param>
-<param name='exclude'>benchs</param>
-<param name='exclude'>examples</param>
-<param name='exclude'>misc</param>
-<param name='exclude'>papers</param>
-<param name='exclude'>proofs</param>
-<param name='exclude'>tests</param>
-<param name='exclude'>view_graph</param>
-<param name='exclude'>www</param>
+    <param name="revision">f97d342db06ccdbc11354303b5f225ae433f7ef3</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/backtracking/ocamlgraph.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name='exclude'>.gitignore</param>
+    <param name='exclude'>.merlin</param>
+    <param name='exclude'>.ocp-indent</param>
+    <param name='exclude'>CREDITS</param>
+    <param name='exclude'>FAQ</param>
+    <param name='exclude'>INSTALL.md</param>
+    <param name='exclude'>TODO.md</param>
+    <param name='exclude'>dgraph/examples</param>
+    <param name='exclude'>examples</param>
+    <param name='exclude'>tests</param>
+    <param name='exclude'>view_graph</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>
