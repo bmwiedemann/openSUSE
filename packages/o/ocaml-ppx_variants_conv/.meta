@@ -1,0 +1,16 @@
+<package name="ocaml-ppx_variants_conv" project="openSUSE:Factory">
+  <title>Generation of accessor and iteration functions for ocaml variant types</title>
+  <description>Generation of accessor and iteration functions for ocaml variant types.
+
+ppx_variants_conv is a ppx rewriter that can be used to define first
+class values representing variant constructors, and additional
+routines to fold, iterate and map over all constructors of a variant
+type.
+
+It provides corresponding functionality for variant types as
+ppx_fields_conv provides for record types.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-ppx_variants_conv"/>
+  <url>https://opam.ocaml.org/packages/ppx_variants_conv</url>
+</package>
