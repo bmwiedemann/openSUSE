@@ -1,7 +1,7 @@
 #
 # spec file for package libcircle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,25 @@
 #
 
 
+%define lib_major 2
+
 Name:           libcircle
-Version:        0.2.1~rc1
+Version:        0.3
 Release:        0
 
-%define myversion 0.2.1-rc.1
-Source:         https://github.com/hpc/libcircle/releases/download/%{myversion}/%{name}-%{myversion}.tar.gz
+Source:         https://github.com/hpc/libcircle/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 URL:            http://github.com/hpc/libcircle
 Summary:        A library used to distribute workloads
 License:        BSD-3-Clause-LBNL
 Group:          Development/Libraries/C and C++
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  graphviz
+BuildRequires:  libtool
 BuildRequires:  openmpi-macros-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(check)
@@ -40,12 +42,12 @@ BuildRequires:  pkgconfig(check)
 %description
 A simple interface for processing workloads using an automatically distributed global queue.
 
-%package -n libcircle2
+%package -n libcircle%{lib_major}
 Summary:        A library used to distribute workloads
 Group:          System/Libraries
 %openmpi_requires
 
-%description -n libcircle2
+%description -n libcircle%{lib_major}
 A simple interface for processing workloads using an automatically distributed global queue.
 
 %package devel
@@ -59,13 +61,14 @@ A simple interface for processing workloads using an automatically distributed g
 This package contains development headers and libraries for libcircle
 
 %prep
-%setup -n %{name}-%{myversion}
+%setup -n %{name}-%{version}
 #avoid date in doxygen footer
 sed -i '/^HTML_FOOTER/s/=.*/= footer.html/' doc/Doxyfile.in
 echo > doc/footer.html
 
 %build
 %setup_openmpi
+./autogen.sh
 %configure --enable-tests --enable-doxygen --disable-static
 make %{?_smp_mflags}
 
@@ -81,12 +84,12 @@ cp -r doc/html/* %{buildroot}%{_docdir}/%{name}
 # Test timeout expired on OpenSuse build
 #make check
 
-%post -n libcircle2 -p /sbin/ldconfig
-%postun -n libcircle2 -p /sbin/ldconfig
+%post -n libcircle%{lib_major} -p /sbin/ldconfig
+%postun -n libcircle%{lib_major} -p /sbin/ldconfig
 
-%files -n libcircle2
+%files -n libcircle%{lib_major}
 %defattr(-,root,root,0755)
-%{_libdir}/libcircle.so.*
+%{_libdir}/libcircle.so.%{lib_major}*
 %license COPYING
 
 %files devel

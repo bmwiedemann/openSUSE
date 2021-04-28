@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Apr 28 08:07:05 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to version 0.3
+  - New features:
+    - Added tree-based termination detection for improved scalability over
+      circle-based token passing. Enable with new CIRCLE_TERM_TREE flag
+      during CIRCLE_init or CIRCLE_set_options.
+    - Changed CIRCLE_abort() to use a tree-based broadcast from a direct
+      send to all ranks.
+    - Added CIRCLE_set_reduce_period(seconds) to customize period between
+      consecutive reductions.
+    - Added CIRCLE_set_tree_width(width) to customize width of internal
+      communication tree.
+    - Reduction callbacks invoked when work loop completes, in addition to
+      periodically during the work loop
+  - Bug fixes:
+    - Compare to MPI_REQUEST_NULL instead of MPI_PROC_NULL to complete
+       send request during token exchange.
+    - Configure script updated to detect MPICH
+- Cleanup spec file
+
+-------------------------------------------------------------------
 Mon May 27 08:40:22 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Always use the default openmpi
