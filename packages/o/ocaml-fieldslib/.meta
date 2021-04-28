@@ -1,0 +1,8 @@
+<package name="ocaml-fieldslib" project="openSUSE:Factory">
+  <title>Syntax extension</title>
+  <description>Syntax extension to define first class values representing record fields, to get and set record fields, iterate and fold over all fields of a record and create new record values.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-fieldslib"/>
+  <url>https://opam.ocaml.org/packages/fieldslib</url>
+</package>

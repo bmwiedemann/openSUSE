@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="filename">ocaml-fieldslib</param>
+    <param name="revision">bef1da96462fe80232820b834145a37e6763b1de</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/janestreet/fieldslib.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled"/>
+</services>

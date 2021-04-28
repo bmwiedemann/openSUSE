@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4fec124be11afa6e522d32ebdb3924b6</srcmd5>
+    <version>0.14.0</version>
+    <time>1619653026</time>
+    <user>dimstar_suse</user>
+    <comment>new BuildRequires for ocaml-ppx_fieldslib</comment>
+    <requestid>884995</requestid>
+  </revision>
+</revisionlist>
