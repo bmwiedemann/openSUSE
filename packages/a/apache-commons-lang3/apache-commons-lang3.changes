@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Apr 23 20:23:47 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed SPEC file: Replaced broken URL
+- Update to 3.9
+  * Requires jdk >= 1.8
+  * Fixed issues with java 12
+  * Add more SystemUtils.IS_JAVA_XX variants
+  * Adding the Functions class
+  * Add @FunctionalInterface to ThreadPredicate and ThreadGroupPredicate
+  * Add isEmpty method to ObjectUtils
+  * null-safe StringUtils.valueOf(char[]) to delegate to
+    String.valueOf(char[]).
+  * Add API org.apache.commons.lang3.SystemUtils.isJavaVersionAtMost(JavaVersion)
+  * Consolidate the StringUtils equals and equalsIgnoreCase
+
+-------------------------------------------------------------------
+Tue Feb 16 19:47:33 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Add OSGi manifest
+
+-------------------------------------------------------------------
 Mon Mar 25 17:41:59 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove pom parent, since we don't use it when not building with
