@@ -1,7 +1,7 @@
 #
 # spec file for package seafile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Cloud storage client
 License:        GPL-2.0-only
 URL:            https://github.com/haiwen/seafile/
 Source0:        https://github.com/haiwen/seafile/archive/v%{version}.tar.gz
+#PATCH-FIX-UPSTREAM https://github.com/haiwen/seafile/pull/2428
+Patch0:         seafile-fix-compilation-glib2_68.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
@@ -79,6 +81,9 @@ developing applications that use %{name}.
 sed -i -e /\(DESTDIR\)/d lib/libseafile.pc.in
 sed -i -e 's@#!%{_bindir}/env python@#!%{_bindir}/python3@' app/seaf-cli
 sed -i -e 's@#!%{_bindir}/python33@#!%{_bindir}/python3@' app/seaf-cli
+%if 0%{?suse_version} > 1500
+%patch0 -p1
+%endif
 
 %build
 ./autogen.sh

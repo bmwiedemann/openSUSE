@@ -1,0 +1,67 @@
+From 935f6a6ef56c883949c8dcbd5a13d2c515b506fd Mon Sep 17 00:00:00 2001
+From: Aleksei Bavshin <alebastr89@gmail.com>
+Date: Sun, 14 Feb 2021 20:06:02 +0000
+Subject: [PATCH] Wrap public declarations with G_BEGIN_DECLS/G_END_DECLS
+
+Glib release 2.67.3 started conditionally using some C++ code[1] in the
+public headers and it's no longer legal to include "glib.h" or anything
+that includes it transitively from `extern "C"` block.
+
+The solution recommended by the glib developers is to enclose all
+declarations in a header within G_BEGIN_DECLS and G_END_DECLS as shown
+in gobject developer manual[2]. Since G_BEGIN/END_DECLS expands to an
+`extern "C"` block it's also acceptable to use it directly when "glib.h"
+is not included in the current header file.
+
+[1] https://gitlab.gnome.org/GNOME/glib/-/merge_requests/1715
+[2] https://developer.gnome.org/gobject/stable/howto-gobject.html#howto-gobject-header
+---
+ include/seafile-rpc.h | 5 +++++
+ include/seafile.h     | 7 +++++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/include/seafile-rpc.h b/include/seafile-rpc.h
+index 36d22f68f..b27b261ea 100644
+--- a/include/seafile-rpc.h
++++ b/include/seafile-rpc.h
+@@ -5,6 +5,8 @@
+ #include <jansson.h>
+ #include "seafile-object.h"
+ 
++G_BEGIN_DECLS
++
+ /**
+  * seafile_get_repo_list:
+  *
+@@ -216,4 +218,7 @@ seafile_shutdown (GError **error);
+ 
+ char*
+ seafile_sync_error_id_to_str (int error_id, GError **error);
++
++G_END_DECLS
++
+ #endif
+diff --git a/include/seafile.h b/include/seafile.h
+index 11aa6313a..75ca665ca 100644
+--- a/include/seafile.h
++++ b/include/seafile.h
+@@ -3,6 +3,10 @@
+ #ifndef SEAFILE_H
+ #define SEAFILE_H
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
+ int seafile_destroy_repo (SearpcClient *client,
+                           const char *repo_id, GError **error);
+ 
+@@ -39,5 +43,8 @@ char *seafile_get_config (SearpcClient *client, const char *key, GError **error)
+ 
+ int seafile_calc_dir_size (SearpcClient *client, const char *path, GError **error);
+ 
++#ifdef __cplusplus
++}
++#endif
+ 
+ #endif
