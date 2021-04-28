@@ -1,0 +1,12 @@
+<package name="ocaml-csexp" project="openSUSE:Factory">
+  <title>Parsing and printing of S-expressions in Canonical form</title>
+  <description>This library provides minimal support for Canonical S-expressions. Canonical S-expressions are a binary encoding of S-expressions that is super simple and well suited for communication between programs.
+
+This library only provides a few helpers for simple applications. If you need more advanced support, such as parsing from more fancy input sources, you should consider copying the code of this library given how simple parsing S-expressions in canonical form is.
+
+To avoid a dependency on a particular S-expression library, the only module of this library is parameterised by the type of S-expressions.
+
+</description>
+  <devel project="devel:languages:ocaml" package="ocaml-csexp"/>
+  <url>https://opam.ocaml.org/packages/csexp</url>
+</package>
