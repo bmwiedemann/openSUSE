@@ -1,0 +1,5 @@
+<package name="lwjgl3" project="openSUSE:Factory">
+  <title>LWJGL 3.X series</title>
+  <description>LWJGL is a Java library that enables cross-platform access to popular native APIs useful in the development of graphics (OpenGL, Vulkan), audio (OpenAL), parallel computing (OpenCL, CUDA) and XR (OpenVR, LibOVR) applications.</description>
+  <devel project="Java:packages" package="lwjgl3"/>
+</package>
