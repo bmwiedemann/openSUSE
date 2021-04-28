@@ -1,0 +1,62 @@
+From d741374effd75baaa35047c29c7a8adf819138ff Mon Sep 17 00:00:00 2001
+From: Martin Liska <mliska@suse.cz>
+Date: Mon, 15 Mar 2021 16:58:34 +0100
+Subject: [PATCH] Add --dwz-single-file-mode argument for find-debuginfo.sh.
+
+Sometime it's handy to disable multi-file mode and the patch
+adds option for that: --dwz-single-file-mode.
+
+It will be used in openSUSE for packages that use baselibs.conf
+mechanism.
+---
+ scripts/find-debuginfo.sh | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/find-debuginfo.sh b/scripts/find-debuginfo.sh
+index e0c36ebb6..2503b0f01 100755
+--- a/scripts/find-debuginfo.sh
++++ b/scripts/find-debuginfo.sh
+@@ -10,6 +10,7 @@
+ #	 		   [-S debugsourcefiles.list]
+ #			   [--run-dwz] [--dwz-low-mem-die-limit N]
+ #			   [--dwz-max-die-limit N]
++#			   [--dwz-single-file-mode]
+ #			   [--build-id-seed SEED]
+ #			   [--unique-debug-suffix SUFFIX]
+ #			   [--unique-debug-src-base BASE]
+@@ -45,6 +46,8 @@
+ # The --run-dwz flag instructs find-debuginfo.sh to run the dwz utility
+ # if available, and --dwz-low-mem-die-limit and --dwz-max-die-limit
+ # provide detailed limits.  See dwz(1) -l and -L option for details.
++# Use --dwz-single-file-mode to disable multi-file mode, see -m
++# for more details.
+ #
+ # If --build-id-seed SEED is given then debugedit is called to
+ # update the build-ids it finds adding the SEED as seed to recalculate
+@@ -96,6 +99,7 @@ no_recompute_build_id=false
+ run_dwz=false
+ dwz_low_mem_die_limit=
+ dwz_max_die_limit=
++dwz_single_file_mode=false
+ 
+ # build id seed given by the --build-id-seed option
+ build_id_seed=
+@@ -129,6 +133,9 @@ while [ $# -gt 0 ]; do
+     dwz_max_die_limit=$2
+     shift
+     ;;
++  --dwz-single-file-mode)
++    dwz_single_file_mode=true
++    ;;
+   --build-id-seed)
+     build_id_seed=$2
+     shift
+@@ -523,7 +530,7 @@ if $run_dwz \
+     done
+     dwz_multifile_name="${dwz_multifile_name}${dwz_multifile_suffix}"
+     dwz_opts="-h -q -r"
+-    [ ${#dwz_files[@]} -gt 1 ] \
++    [ ${#dwz_files[@]} -gt 1 ] && [ "$dwz_single_file_mode" = "false" ] \
+       && dwz_opts="${dwz_opts} -m .dwz/${dwz_multifile_name}"
+     mkdir -p "${RPM_BUILD_ROOT}/usr/lib/debug/.dwz"
+     [ -n "${dwz_low_mem_die_limit}" ] \

@@ -1,11 +1,10 @@
 --- ./macros.in.orig	2020-09-30 12:42:09.146057387 +0000
 +++ ./macros.in	2020-09-30 12:45:30.517611707 +0000
-@@ -177,7 +177,7 @@
-     %{?_unique_build_ids:--build-id-seed "%{VERSION}-%{RELEASE}"} \\\
+@@ -168,6 +168,7 @@
      %{?_unique_debug_names:--unique-debug-suffix "-%{VERSION}-%{RELEASE}.%{_arch}"} \\\
      %{?_unique_debug_srcs:--unique-debug-src-base "%{name}-%{VERSION}-%{RELEASE}.%{_arch}"} \\\
--    %{?_find_debuginfo_dwz_opts} \\\
-+    %{lua:if not posix.access(rpm.expand("%_sourcedir/baselibs.conf"), "r") then print(rpm.expand("%{?_find_debuginfo_dwz_opts}")) end} \\\
+     %{?_find_debuginfo_dwz_opts} \\\
++    %{lua:if posix.access(rpm.expand("%_sourcedir/baselibs.conf"), "r") then print("--dwz-single-file-mode") end} \\\
      %{?_find_debuginfo_opts} \\\
      %{?_debugsource_packages:-S debugsourcefiles.list} \\\
      "%{_builddir}/%{?buildsubdir}"\

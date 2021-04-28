@@ -128,6 +128,7 @@ Patch123:       nextiteratorheaderblob.diff
 Patch129:       ndbglue.diff
 Patch130:       dwarf5.diff
 Patch131:       posttrans.diff
+Patch132:       add-dwz-single-file-mode-option.patch
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -256,6 +257,7 @@ cp build-aux/config.guess build-aux/config.sub db/dist/
 %patch -P 100        -P 102 -P 103
 %patch -P 109                                           -P 117
 %patch -P 122 -P 123 -P 129 -P 130 -P 131
+%patch132 -p1
 
 %ifarch aarch64 ppc64le riscv64
 %patch6464

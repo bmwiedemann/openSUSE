@@ -1,3 +1,9 @@
+Tue Apr 16 07:49:37 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Use --dwz-single-file-mode for packages that use
+  baselibs.conf mechanism.
+- Add add-dwz-single-file-mode-option.patch patch.
+
 -------------------------------------------------------------------
 Fri Apr  9 13:34:24 CEST 2021 - mls@suse.de
 
