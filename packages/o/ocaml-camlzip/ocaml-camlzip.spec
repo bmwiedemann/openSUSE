@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-camlzip
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,17 +21,20 @@ Version:        1.10
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml ZIP interface
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Languages/OCaml
-Url:            https://github.com/xavierleroy/camlzip
+URL:            https://opam.ocaml.org/packages/camlzip
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         ocaml-camlzip.patch
+Provides:       ocaml-camlzip-test = %{version}-%{release}
+Obsoletes:      ocaml-camlzip-test < %{version}-%{release}
 BuildRequires:  ocaml
-BuildRequires:  ocaml-oasis
-BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 20191009
+BuildRequires:  ocaml-dune
+BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocamlfind(dune.configurator)
+BuildRequires:  ocamlfind(stdlib-shims)
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(zlib)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This OCaml library provides easy access to compressed files in ZIP
@@ -47,88 +50,23 @@ Requires:       pkgconfig(zlib)
 %description devel
 Development file for the OCaml ZIP interface
 
-%package        test
-Summary:        Testcases for %{name}
-Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
-
-%description    test
-This package contains testcases to verify %{name} functionality.
-
 %prep
 %autosetup -p1
 
 %build
-tee _oasis <<_EOF_
-OASISFormat: 0.4
-Name:        zip
-Version:     %{version}
-Synopsis:    OCaml ZIP interface
-Authors:     Xavier.Leroy@inria.fr
-LicenseFile: LICENSE
-License:     %{license}
-Plugins:     META(`oasis version`)
-BuildTools:  ocamlbuild
-
-Library zip
- Path:            .
- Modules:         Zip, Gzip, Zlib
- BuildDepends:    unix
- CSources:        zlibstubs.c
- CCOpt:           %{optflags} -fPIC `pkg-config --cflags zlib`
- CCLib:           `pkg-config --libs zlib`
-
-Document "zip"
- Title:                API reference for zip
- Type:                 ocamlbuild (0.1.0)
- BuildTools+:          ocamldoc
- Install:              true
- InstallDir:           \$htmldir
- XOCamlbuildPath:      .
- XOCamlbuildLibraries: zip
-
-Executable "%{name}-test-minigzip"
- Install: true
- Path: test
- MainIs: minigzip.ml
- CompiledObject: best
- BuildDepends: zip
-
-Executable "%{name}-test-minigip"
- Install: true
- Path: test
- MainIs: minizip.ml
- CompiledObject: best
- BuildDepends: zip
-
-Executable "%{name}-test-testzlib"
- Install: true
- Path: test
- MainIs: testzlib.ml
- CompiledObject: best
- BuildDepends: zip
-_EOF_
-oasis setup-clean
-%oasis_setup
-%ocaml_oasis_configure --enable-docs
-%ocaml_oasis_build
-%ocaml_oasis_doc
+dune_release_pkgs='zip'
+%ocaml_dune_setup
+%ocaml_dune_build
 
 %install
-%ocaml_oasis_findlib_install
+%ocaml_dune_install
 %ocaml_create_file_list
 
-%post   -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
-
-%files test
-%{_bindir}/*
+%check
+%ocaml_dune_test
 
 %files -f %{name}.files
-%doc Changes
 
 %files devel -f %{name}.files.devel
-%{oasis_docdir_html}
 
 %changelog

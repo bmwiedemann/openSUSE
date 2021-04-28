@@ -1,12 +1,12 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/xavierleroy/camlzip.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">1.10</param>
+    <param name="filename">ocaml-camlzip</param>
     <!-- rel110 -->
     <param name="revision">61b7f60b29d6a432b303b978a95e9262f27a969e</param>
-    <param name="filename">ocaml-camlzip</param>
+    <param name="scm">git</param>
     <param name="submodules">disable</param>
+    <param name="url">https://github.com/xavierleroy/camlzip.git</param>
+    <param name="versionformat">1.10</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>

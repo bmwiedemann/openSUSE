@@ -1,0 +1,292 @@
+--- /dev/null
++++ b/config/discover.ml
+@@ -0,0 +1,21 @@
++module C = Configurator.V1
++
++let () =
++C.main ~name:"zip" (fun c ->
++
++let stale_gzip : C.Pkg_config.package_conf = {
++ libs = [ "-lz" ];
++ cflags = []
++} in
++
++let conf =
++  match C.Pkg_config.get c with
++  | None -> C.die "'pkg-config' missing"
++  | Some pc ->
++    match (C.Pkg_config.query pc ~package:"zlib") with
++      | None -> stale_gzip
++      | Some deps -> deps
++  in
++
++  C.Flags.write_sexp "c_flags.sexp"         conf.cflags;
++  C.Flags.write_sexp "c_library_flags.sexp" conf.libs)
+--- /dev/null
++++ b/config/dune
+@@ -0,0 +1,3 @@
++(executable
++ (name discover)
++ (libraries dune.configurator))
+--- /dev/null
++++ b/dune
+@@ -0,0 +1,18 @@
++(library
++ (public_name zip)
++ (synopsis "OCaml ZIP interface")
++ (wrapped false)
++ (modules gzip zip zlib)
++ (libraries stdlib-shims)
++ (c_names zlibstubs)
++ (c_flags
++  (:include c_flags.sexp))
++ (c_library_flags
++  (:include c_library_flags.sexp)))
++
++(rule
++ (targets c_flags.sexp c_library_flags.sexp)
++ (deps
++  (:discover config/discover.exe))
++ (action
++  (run %{discover})))
+--- /dev/null
++++ b/dune-project
+@@ -0,0 +1,26 @@
++(lang dune 1.10)
++
++(generate_opam_files true)
++
++(license "LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception")
++
++(authors "Xavier Leroy")
++
++(maintainers "Cryptosense <opensource@cryptosense.com>")
++
++(homepage "https://github.com/xavierleroy/camlzip")
++
++(bug_reports "https://github.com/xavierleroy/camlzip/issues")
++
++(package
++ (name zip)
++ (synopsis
++   "Provides easy access to compressed files in ZIP, GZIP and JAR format")
++ (description "Reading and writing zip and gzip files from OCaml.")
++ (depends
++  dune.configurator
++  dune
++  stdlib-shims
++  conf-zlib
++  (ocaml
++   (>= 4.02.0))))
+--- a/gzip.ml
++++ b/gzip.ml
+@@ -20,7 +20,7 @@ exception Error of string
+ let buffer_size = 1024
+ 
+ type in_channel =
+-  { in_chan: Pervasives.in_channel;
++  { in_chan: Stdlib.in_channel;
+     in_buffer: bytes;
+     mutable in_pos: int;
+     mutable in_avail: int;
+@@ -74,15 +74,15 @@ let open_in_chan ic =
+     in_crc = Int32.zero }
+ 
+ let open_in filename =
+-  let ic = Pervasives.open_in_bin filename in
++  let ic = Stdlib.open_in_bin filename in
+   try
+     open_in_chan ic
+   with exn ->
+-    Pervasives.close_in ic; raise exn
++    Stdlib.close_in ic; raise exn
+ 
+ let read_byte iz =
+   if iz.in_avail = 0 then begin
+-    let n = Pervasives.input iz.in_chan iz.in_buffer 0
++    let n = Stdlib.input iz.in_chan iz.in_buffer 0
+                              (Bytes.length iz.in_buffer) in
+     if n = 0 then raise End_of_file;
+     iz.in_pos <- 0;
+@@ -108,7 +108,7 @@ let rec input iz buf pos len =
+     invalid_arg "Gzip.input";
+   if iz.in_eof then 0 else begin
+     if iz.in_avail = 0 then begin
+-      let n = Pervasives.input iz.in_chan iz.in_buffer 0
++      let n = Stdlib.input iz.in_chan iz.in_buffer 0
+                                (Bytes.length iz.in_buffer) in
+       if n = 0 then raise(Error("truncated file"));
+       iz.in_pos <- 0;
+@@ -166,10 +166,10 @@ let dispose iz =
+ 
+ let close_in iz =
+   dispose iz;
+-  Pervasives.close_in iz.in_chan
++  Stdlib.close_in iz.in_chan
+ 
+ type out_channel =
+-  { out_chan: Pervasives.out_channel;
++  { out_chan: Stdlib.out_channel;
+     out_buffer: bytes;
+     mutable out_pos: int;
+     mutable out_avail: int;
+@@ -196,10 +196,10 @@ let open_out_chan ?(level = 6) oc =
+     out_crc = Int32.zero }
+ 
+ let open_out ?(level = 6) filename =
+-  open_out_chan ~level (Pervasives.open_out_bin filename)
++  open_out_chan ~level (Stdlib.open_out_bin filename)
+ 
+ let flush_and_reset_out_buffer oz =
+-  Pervasives.output oz.out_chan oz.out_buffer 0 oz.out_pos;
++  Stdlib.output oz.out_chan oz.out_buffer 0 oz.out_pos;
+   oz.out_pos <- 0;
+   oz.out_avail <- Bytes.length oz.out_buffer
+ 
+@@ -237,7 +237,7 @@ let output_byte oz b =
+ let write_int32 oc n =
+   let r = ref n in
+   for i = 1 to 4 do
+-    Pervasives.output_byte oc (Int32.to_int !r);
++    Stdlib.output_byte oc (Int32.to_int !r);
+     r := Int32.shift_right_logical !r 8
+   done
+ 
+@@ -262,7 +262,7 @@ let flush_to_out_chan ~flush_command oz
+ let flush_continue oz =
+   (* Flush everything to the underlying file channel, then flush the channel. *)
+   flush_to_out_chan ~flush_command:Zlib.Z_SYNC_FLUSH oz;
+-  Pervasives.flush oz.out_chan
++  Stdlib.flush oz.out_chan
+ 
+ let flush oz =
+   (* Flush everything to the output channel. *)
+@@ -275,5 +275,5 @@ let flush oz =
+ 
+ let close_out oz =
+   flush oz;
+-  Pervasives.close_out oz.out_chan
++  Stdlib.close_out oz.out_chan
+ 
+--- a/gzip.mli
++++ b/gzip.mli
+@@ -26,7 +26,7 @@ type in_channel
+ val open_in: string -> in_channel
+        (** Open a compressed file for reading.  The argument is the file
+            name. *)
+-val open_in_chan: Pervasives.in_channel -> in_channel
++val open_in_chan: Stdlib.in_channel -> in_channel
+        (** Open a compressed file for reading.  The argument is a
+            regular file channel already opened on the compressed file. *)
+ val input_char: in_channel -> char
+@@ -62,11 +62,11 @@ val really_input: in_channel -> bytes ->
+ val close_in: in_channel -> unit
+        (** Close the given input channel.  If the channel was created with
+            [Gzip.open_in_chan], the underlying regular file channel
+-           (of type [Pervasives.in_channel]) is also closed.
++           (of type [Stdlib.in_channel]) is also closed.
+            Do not apply any of the functions above to a closed channel. *)
+ val dispose: in_channel -> unit
+        (** Same as [Gzip.close_in], but does not close the underlying
+-           regular file channel (of type [Pervasives.in_channel]);
++           regular file channel (of type [Stdlib.in_channel]);
+            just dispose of the resources associated with the decompression
+            channel.  This can be useful if e.g. the underlying file channel
+            is a network socket on which more (uncompressed) data
+@@ -86,7 +86,7 @@ val open_out: ?level:int -> string -> ou
+            (but fastest) compression and 9 being the strongest
+            (but slowest) compression.  The default level is 6
+            (medium compression). *)
+-val open_out_chan: ?level:int -> Pervasives.out_channel -> out_channel
++val open_out_chan: ?level:int -> Stdlib.out_channel -> out_channel
+        (** Open a compressed file for writing.  The argument is a
+            regular file channel already opened on the compressed file.
+            The optional [level] argument sets the compression level
+@@ -109,11 +109,11 @@ val output_substring: out_channel -> str
+ val close_out: out_channel -> unit
+        (** Close the given output channel.  If the channel was created with
+            [Gzip.open_out_chan], the underlying regular file channel
+-           (of type [Pervasives.out_channel]) is also closed.
++           (of type [Stdlib.out_channel]) is also closed.
+            Do not apply any of the functions above to a closed channel. *)
+ val flush: out_channel -> unit
+        (** Same as [Gzip.close_out], but do not close the underlying
+-           regular file channel (of type [Pervasives.out_channel]);
++           regular file channel (of type [Stdlib.out_channel]);
+            just flush all pending compressed data and
+            dispose of the resources associated with the compression
+            channel.  This can be useful if e.g. the underlying file channel
+--- a/zip.ml
++++ b/zip.ml
+@@ -59,7 +59,7 @@ type entry =
+ 
+ type in_file =
+   { if_filename: string;
+-    if_channel: Pervasives.in_channel;
++    if_channel: Stdlib.in_channel;
+     if_entries: entry list;
+     if_directory: (string, entry) Hashtbl.t;
+     if_comment: string }
+@@ -69,7 +69,7 @@ let comment ifile = ifile.if_comment
+ 
+ type out_file =
+   { of_filename: string;
+-    of_channel: Pervasives.out_channel;
++    of_channel: Stdlib.out_channel;
+     mutable of_entries: entry list;
+     of_comment: string }
+ 
+@@ -218,7 +218,7 @@ let read_cd filename ic cd_entries cd_of
+ (* Open a ZIP file for reading *)
+ 
+ let open_in filename =
+-  let ic = Pervasives.open_in_bin filename in
++  let ic = Stdlib.open_in_bin filename in
+   try
+     let (cd_entries, cd_size, cd_offset, cd_comment) = read_ecd filename ic in
+     let entries =
+@@ -231,12 +231,12 @@ let open_in filename =
+       if_directory = dir;
+       if_comment = cd_comment }
+   with exn ->
+-    Pervasives.close_in ic; raise exn
++    Stdlib.close_in ic; raise exn
+ 
+ (* Close a ZIP file opened for reading *)
+ 
+ let close_in ifile =
+-  Pervasives.close_in ifile.if_channel
++  Stdlib.close_in ifile.if_channel
+ 
+ (* Return the info associated with an entry *)
+ 
+@@ -372,7 +372,7 @@ let open_out ?(comment = "") filename =
+   if String.length comment >= 0x10000 then
+     raise(Error(filename, "", "comment too long"));
+   { of_filename = filename;
+-    of_channel = Pervasives.open_out_bin filename;
++    of_channel = Stdlib.open_out_bin filename;
+     of_entries = [];
+     of_comment = comment }
+ 
+@@ -419,7 +419,7 @@ let close_out ofile =
+   write4_int oc start_cd;               (* offset of central dir *)
+   write2 oc (String.length ofile.of_comment); (* length of comment *)
+   writestring oc ofile.of_comment;         (* comment *)
+-  Pervasives.close_out oc
++  Stdlib.close_out oc
+ 
+ (* Write a local file header and return the corresponding entry *)
+ 
+@@ -554,9 +554,9 @@ let copy_file_to_entry infilename ofile
+         with Unix.Unix_error(_,_,_) -> None in
+   try
+     copy_channel_to_entry ic ofile ~extra ~comment ~level ?mtime:mtime' name;
+-    Pervasives.close_in ic
++    Stdlib.close_in ic
+   with x ->
+-    Pervasives.close_in ic; raise x
++    Stdlib.close_in ic; raise x
+ 
+ 
+ (* Add an entry whose content will be produced by the caller *)

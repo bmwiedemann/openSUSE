@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jan 21 21:21:21 UTC 2021 - ohering@suse.de
+
+- Use ocaml-camlzip.patch to build with dune instead of oasis
+- Drop subpackage test
+
+-------------------------------------------------------------------
 Thu Jan 30 07:07:07 UTC 2020 - ohering@suse.de
 
 - Upgrade to 1.10
