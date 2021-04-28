@@ -66,4 +66,14 @@
     <comment></comment>
     <requestid>854330</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>322ffd6f2d981ac392431ba04910752d</srcmd5>
+    <version>20210428.0+0</version>
+    <time>1619653126</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210428.0+0:
+  * Update for Budgie 10.5.3
+</comment>
+    <requestid>889096</requestid>
+  </revision>
 </revisionlist>

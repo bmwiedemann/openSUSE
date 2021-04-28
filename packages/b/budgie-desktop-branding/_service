@@ -1,0 +1,14 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/gmbr3/budgie-desktop-branding.git</param>
+    <param name="revision">20210428.0</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>
