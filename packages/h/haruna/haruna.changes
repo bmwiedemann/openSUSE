@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 28 17:36:35 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.6.3
+  * Set breeze icon theme before QApplication creation
+
+-------------------------------------------------------------------
 Sat Apr 17 15:18:20 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.6.2
