@@ -44,6 +44,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://poppler.freedesktop.org/
 Source:         https://poppler.freedesktop.org/%{sname}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM -- https://gitlab.freedesktop.org/poppler/poppler/-/merge_requests/839
+Patch:          Export-SplashFont-symbols-used-by-Scribus.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel
@@ -202,6 +204,7 @@ developed by Derek Noonburg of Glyph and Cog, LLC.
 
 %prep
 %setup -q -n poppler-%{version}
+%patch -p1
 
 %build
 %if "%{flavor}" == "qt5"

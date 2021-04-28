@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 26 10:47:39 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Export-SplashFont-symbols-used-by-Scribus.patch to fix
+  scribus' PDF import plugin
+
+-------------------------------------------------------------------
 Sun Apr  4 15:48:16 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - update to 21.04.0
