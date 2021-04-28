@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 26 20:32:52 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.24.2
+  * Translations update
+  * i18n: Do not collect the translation for Icon
+  * Show subvol mount option on GNU/Linux
+  * sysinfo: avoid adding a device more than once such as for brtfs
+  * pretty-table: prefer GIO to get application icons
+
+-------------------------------------------------------------------
 Mon Aug 31 06:18:00 UTC 2020 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.24.1

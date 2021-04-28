@@ -169,4 +169,12 @@
   * build: silent build warnings for distcheck (forwarded request 830676 from hillwood)</comment>
     <requestid>830822</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e6e4967ef7d78a39b929b4c90367251e</srcmd5>
+    <version>1.24.2</version>
+    <time>1619653130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889113</requestid>
+  </revision>
 </revisionlist>
