@@ -93,7 +93,11 @@ BuildRequires:  pkgconfig(libwebpdecoder)
 BuildRequires:  pkgconfig(libwebpdemux)
 BuildRequires:  pkgconfig(libwebpmux)
 %if %{with opencv}
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(opencv4)
+%else
 BuildRequires:  pkgconfig(opencv)
+%endif
 %endif
 BuildRequires:  pkgconfig(zlib)
 Recommends:     google-droid-fonts

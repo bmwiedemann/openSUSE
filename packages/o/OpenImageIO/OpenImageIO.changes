@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 27 18:08:54 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use OpenCV4 on Tumbleweed instead of old OpenCV3.
+
+-------------------------------------------------------------------
 Wed Apr 14 08:12:03 UTC 2021 - pgajdos@suse.com
 
 - version update to 2.2.13.1
@@ -13,7 +18,7 @@ Wed Apr 14 08:12:03 UTC 2021 - pgajdos@suse.com
 Wed Apr  7 21:26:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - explicitly list pkgconfig and shared libs to avoid filesystem rpm
-  conflicts 
+  conflicts
 
 -------------------------------------------------------------------
 Fri Mar 26 08:03:38 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
