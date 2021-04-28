@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 27 07:29:21 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with maven-resolver 1.6.2 and maven 3.8.1
+
+-------------------------------------------------------------------
 Mon Jan 11 14:46:44 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with maven-resolver 1.4.2

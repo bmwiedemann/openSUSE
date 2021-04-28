@@ -39,4 +39,12 @@
     <comment>fix build</comment>
     <requestid>862851</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>073d07c8b61a687d5ff8493c670188d4</srcmd5>
+    <version>0.13.18</version>
+    <time>1619653063</time>
+    <user>dimstar_suse</user>
+    <comment>fix build with maven-resolver 1.6.2 and maven 3.8.1</comment>
+    <requestid>888689</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,5 @@
 #
-# spec file for package sbt
+# spec file for package sbt-bootstrap
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -378,24 +378,19 @@ cp %{SOURCE63} .
 ./climbing-nemesis.py org.codehaus.plexus plexus-utils %{ivy_local_dir} --version 3.0.22
 ./climbing-nemesis.py org.codehaus.plexus plexus-utils %{ivy_local_dir} --version 3.2.1
 ./climbing-nemesis.py org.eclipse.aether aether-api %{ivy_local_dir} --version 1.3.1
-./climbing-nemesis.py org.apache.maven.resolver maven-resolver-api %{ivy_local_dir} --version 1.4.2
+./climbing-nemesis.py org.apache.maven.resolver maven-resolver-api %{ivy_local_dir} --version 1.6.2
 ./climbing-nemesis.py org.eclipse.aether aether-spi %{ivy_local_dir} --version 1.3.1
-./climbing-nemesis.py org.apache.maven.resolver maven-resolver-spi %{ivy_local_dir} --version 1.4.2
+./climbing-nemesis.py org.apache.maven.resolver maven-resolver-spi %{ivy_local_dir} --version 1.6.2
 ./climbing-nemesis.py org.eclipse.aether aether-util %{ivy_local_dir} --version 1.3.1
-./climbing-nemesis.py org.apache.maven.resolver maven-resolver-util %{ivy_local_dir} --version 1.4.2
+./climbing-nemesis.py org.apache.maven.resolver maven-resolver-util %{ivy_local_dir} --version 1.6.2
 ./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.2.3
-./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.6.2
-./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.6.3
+./climbing-nemesis.py org.apache.maven maven-model %{ivy_local_dir}  --version 3.8.1
 ./climbing-nemesis.py org.apache.maven maven-model-builder %{ivy_local_dir} --version 3.2.3
-./climbing-nemesis.py org.apache.maven maven-model-builder %{ivy_local_dir} --version 3.6.2
-./climbing-nemesis.py org.apache.maven maven-model-builder %{ivy_local_dir} --version 3.6.3
+./climbing-nemesis.py org.apache.maven maven-model-builder %{ivy_local_dir} --version 3.8.1
 ./climbing-nemesis.py org.apache.maven maven-repository-metadata %{ivy_local_dir} --version 3.2.3
-./climbing-nemesis.py org.apache.maven maven-repository-metadata %{ivy_local_dir} --version 3.6.2
-./climbing-nemesis.py org.apache.maven maven-repository-metadata %{ivy_local_dir} --version 3.6.3
-./climbing-nemesis.py org.apache.maven maven-builder-support %{ivy_local_dir} --version 3.6.2
-./climbing-nemesis.py org.apache.maven maven-builder-support %{ivy_local_dir} --version 3.6.3
-./climbing-nemesis.py org.apache.maven maven-artifact %{ivy_local_dir} --version 3.6.2
-./climbing-nemesis.py org.apache.maven maven-artifact %{ivy_local_dir} --version 3.6.3
+./climbing-nemesis.py org.apache.maven maven-repository-metadata %{ivy_local_dir} --version 3.8.1
+./climbing-nemesis.py org.apache.maven maven-builder-support %{ivy_local_dir} --version 3.8.1
+./climbing-nemesis.py org.apache.maven maven-artifact %{ivy_local_dir} --version 3.8.1
 ./climbing-nemesis.py org.codehaus.plexus plexus-utils %{ivy_local_dir} --version 3.0.17
 ./climbing-nemesis.py org.codehaus.plexus plexus-interpolation %{ivy_local_dir} --version 1.25
 ./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.inject %{ivy_local_dir} --version 0.3.0.M1 --ignore "cdi-api"
@@ -403,14 +398,14 @@ cp %{SOURCE63} .
 ./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.inject %{ivy_local_dir} --version 0.3.4 --ignore "cdi-api"
 
 ./climbing-nemesis.py org.slf4j slf4j-api %{ivy_local_dir} --version 1.7.25
-./climbing-nemesis.py org.slf4j slf4j-api %{ivy_local_dir} --version 1.7.29
+./climbing-nemesis.py org.slf4j slf4j-api %{ivy_local_dir} --version 1.7.30
 
 ./climbing-nemesis.py com.google.guava guava %{ivy_local_dir} --version 18.0 --ignore "jsr305"
 ./climbing-nemesis.py com.google.code.findbugs jsr305 %{ivy_local_dir} --version 1.3.9
 ./climbing-nemesis.py javax.inject javax.inject %{ivy_local_dir} --version 1
 ./climbing-nemesis.py org.eclipse.sisu org.eclipse.sisu.plexus %{ivy_local_dir} --version 0.3.0.M1
 ./climbing-nemesis.py org.eclipse.aether aether-impl %{ivy_local_dir} --version 1.0.1.v20141111
-./climbing-nemesis.py org.apache.maven.resolver maven-resolver-impl %{ivy_local_dir} --version 1.4.1
+./climbing-nemesis.py org.apache.maven.resolver maven-resolver-impl %{ivy_local_dir} --version 1.6.2
 ./climbing-nemesis.py org.eclipse.aether aether-connector-basic %{ivy_local_dir} --version 1.0.1.v20141111
 ./climbing-nemesis.py org.apache.maven maven-aether-provider %{ivy_local_dir} --version 3.2.3
 
