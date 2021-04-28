@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 28 11:25:04 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 202101.1045
+  * Fixes for Python 3.9 and mypy 0.800
+
+-------------------------------------------------------------------
 Sat Oct 10 04:23:46 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Use %pytest

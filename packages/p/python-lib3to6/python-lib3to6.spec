@@ -1,7 +1,7 @@
 #
 # spec file for package python-lib3to6
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-lib3to6
-Version:        202009.1044
+Version:        202101.1045
 Release:        0
 Summary:        Module to compile Python 3.6+ code to Python 2.7+
 License:        MIT
@@ -34,7 +34,7 @@ Requires:       python-pathlib2
 Requires:       python-typing
 Requires:       python-wheel
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module astor}
