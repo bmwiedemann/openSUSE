@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jan 21 21:21:21 UTC 2021 - ohering@suse.de
+
+- Update to version 1.4
+  fix bug caused by unsafe string/bytes conversions,
+  and remove all uses of Bytes.unsafe_of_string
+
+-------------------------------------------------------------------
 Sat Feb 29 20:20:20 UTC 2020 - ohering@suse.de
 
 - Initial version 1.3
