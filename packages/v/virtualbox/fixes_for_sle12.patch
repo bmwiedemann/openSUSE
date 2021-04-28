@@ -1,8 +1,8 @@
-Index: VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_drv.c
+Index: VirtualBox-6.1.20/src/VBox/Additions/linux/drm/vbox_drv.c
 ===================================================================
---- VirtualBox-6.1.18.orig/src/VBox/Additions/linux/drm/vbox_drv.c
-+++ VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_drv.c
-@@ -331,7 +331,9 @@ static struct drm_driver driver = {
+--- VirtualBox-6.1.20.orig/src/VBox/Additions/linux/drm/vbox_drv.c
++++ VirtualBox-6.1.20/src/VBox/Additions/linux/drm/vbox_drv.c
+@@ -330,7 +330,9 @@ static struct drm_driver driver = {
  	.master_drop = vbox_master_drop,
  #if RTLNX_VER_MIN(3,18,0) || RTLNX_RHEL_MAJ_PREREQ(7,2)
  # if RTLNX_VER_MAX(4,14,0) && !RTLNX_RHEL_MAJ_PREREQ(7,5) && !RTLNX_SUSE_MAJ_PREREQ(15,1) && !RTLNX_SUSE_MAJ_PREREQ(12,5)
@@ -12,10 +12,10 @@ Index: VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_drv.c
  # endif
  #endif
  
-Index: VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_main.c
+Index: VirtualBox-6.1.20/src/VBox/Additions/linux/drm/vbox_main.c
 ===================================================================
---- VirtualBox-6.1.18.orig/src/VBox/Additions/linux/drm/vbox_main.c
-+++ VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_main.c
+--- VirtualBox-6.1.20.orig/src/VBox/Additions/linux/drm/vbox_main.c
++++ VirtualBox-6.1.20/src/VBox/Additions/linux/drm/vbox_main.c
 @@ -618,11 +618,13 @@ int vbox_dumb_destroy(struct drm_file *f
  #endif
  
@@ -30,11 +30,11 @@ Index: VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_main.c
  
  void vbox_gem_free_object(struct drm_gem_object *obj)
  {
-Index: VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_ttm.c
+Index: VirtualBox-6.1.20/src/VBox/Additions/linux/drm/vbox_ttm.c
 ===================================================================
---- VirtualBox-6.1.18.orig/src/VBox/Additions/linux/drm/vbox_ttm.c
-+++ VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_ttm.c
-@@ -256,7 +256,7 @@ static struct ttm_backend_func vbox_tt_b
+--- VirtualBox-6.1.20.orig/src/VBox/Additions/linux/drm/vbox_ttm.c
++++ VirtualBox-6.1.20/src/VBox/Additions/linux/drm/vbox_ttm.c
+@@ -271,7 +271,7 @@ static struct ttm_backend_func vbox_tt_b
  };
  #endif
  
@@ -43,16 +43,16 @@ Index: VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_ttm.c
  static struct ttm_tt *vbox_ttm_tt_create(struct ttm_bo_device *bdev,
  					 unsigned long size,
  					 u32 page_flags,
-@@ -275,7 +275,7 @@ static struct ttm_tt *vbox_ttm_tt_create
+@@ -290,7 +290,7 @@ static struct ttm_tt *vbox_ttm_tt_create
  #if RTLNX_VER_MAX(5,10,0)
  	tt->func = &vbox_tt_backend_func;
  #endif
 -#if RTLNX_VER_MAX(4,17,0) && !RTLNX_RHEL_MAJ_PREREQ(7,6) && !RTLNX_SUSE_MAJ_PREREQ(15,1) && !RTLNX_SUSE_MAJ_PREREQ(12,5)
 +#if RTLNX_VER_MAX(4,17,0) && !RTLNX_RHEL_MAJ_PREREQ(7,6) && !RTLNX_SUSE_MAJ_PREREQ(15,1) && !RTLNX_SUSE_MAJ_PREREQ(12,5) && !defined(SUSE_SLE12)
  	if (ttm_tt_init(tt, bdev, size, page_flags, dummy_read_page)) {
- #else
+ #elif RTLNX_VER_MAX(5,11,0)
  	if (ttm_tt_init(tt, bo, page_flags)) {
-@@ -288,7 +288,7 @@ static struct ttm_tt *vbox_ttm_tt_create
+@@ -305,7 +305,7 @@ static struct ttm_tt *vbox_ttm_tt_create
  }
  
  #if RTLNX_VER_MAX(4,17,0)
@@ -61,7 +61,7 @@ Index: VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_ttm.c
  static int vbox_ttm_tt_populate(struct ttm_tt *ttm)
  {
  	return ttm_pool_populate(ttm);
-@@ -327,7 +327,7 @@ static struct ttm_bo_driver vbox_bo_driv
+@@ -353,7 +353,7 @@ static struct ttm_bo_driver vbox_bo_driv
  	.io_mem_reserve = &vbox_ttm_io_mem_reserve,
  	.io_mem_free = &vbox_ttm_io_mem_free,
  #if RTLNX_VER_MIN(4,12,0) || RTLNX_RHEL_MAJ_PREREQ(7,5)
@@ -70,7 +70,7 @@ Index: VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_ttm.c
  	.io_mem_pfn = ttm_bo_default_io_mem_pfn,
  # endif
  #endif
-@@ -500,7 +500,7 @@ int vbox_bo_create(struct drm_device *de
+@@ -556,7 +556,7 @@ int vbox_bo_create(struct drm_device *de
  
  	ret = ttm_bo_init(&vbox->ttm.bdev, &vboxbo->bo, size,
  			  ttm_bo_type_device, &vboxbo->placement,
@@ -79,7 +79,7 @@ Index: VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_ttm.c
  			  align >> PAGE_SHIFT, false, NULL, acc_size,
  #else
  			  align >> PAGE_SHIFT, false, acc_size,
-@@ -533,7 +533,7 @@ static inline u64 vbox_bo_gpu_offset(str
+@@ -589,7 +589,7 @@ static inline u64 vbox_bo_gpu_offset(str
  
  int vbox_bo_pin(struct vbox_bo *bo, u32 mem_type, u64 *gpu_addr)
  {
@@ -87,56 +87,56 @@ Index: VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_ttm.c
 +#if RTLNX_VER_MIN(4,16,0) || RTLNX_RHEL_MAJ_PREREQ(7,6) || RTLNX_SUSE_MAJ_PREREQ(15,1) || RTLNX_SUSE_MAJ_PREREQ(12,5) || defined(SUSE_SLE12)
  	struct ttm_operation_ctx ctx = { false, false };
  #endif
- 	int i, ret;
-@@ -551,7 +551,7 @@ int vbox_bo_pin(struct vbox_bo *bo, u32
- 	for (i = 0; i < bo->placement.num_placement; i++)
+ 	int ret;
+@@ -612,7 +612,7 @@ int vbox_bo_pin(struct vbox_bo *bo, u32
  		PLACEMENT_FLAGS(bo->placements[i]) |= TTM_PL_FLAG_NO_EVICT;
+ #endif
  
 -#if RTLNX_VER_MAX(4,16,0) && !RTLNX_RHEL_MAJ_PREREQ(7,6) && !RTLNX_SUSE_MAJ_PREREQ(15,1) && !RTLNX_SUSE_MAJ_PREREQ(12,5)
 +#if RTLNX_VER_MAX(4,16,0) && !RTLNX_RHEL_MAJ_PREREQ(7,6) && !RTLNX_SUSE_MAJ_PREREQ(15,1) && !RTLNX_SUSE_MAJ_PREREQ(12,5) && !defined(SUSE_SLE12)
  	ret = ttm_bo_validate(&bo->bo, &bo->placement, false, false);
  #else
  	ret = ttm_bo_validate(&bo->bo, &bo->placement, &ctx);
-@@ -569,7 +569,7 @@ int vbox_bo_pin(struct vbox_bo *bo, u32
+@@ -634,7 +634,7 @@ int vbox_bo_pin(struct vbox_bo *bo, u32
  
  int vbox_bo_unpin(struct vbox_bo *bo)
  {
 -#if RTLNX_VER_MIN(4,16,0) || RTLNX_RHEL_MAJ_PREREQ(7,6) || RTLNX_SUSE_MAJ_PREREQ(15,1) || RTLNX_SUSE_MAJ_PREREQ(12,5)
 +#if RTLNX_VER_MIN(4,16,0) || RTLNX_RHEL_MAJ_PREREQ(7,6) || RTLNX_SUSE_MAJ_PREREQ(15,1) || RTLNX_SUSE_MAJ_PREREQ(12,5) || defined(SUSE_SLE12)
+ # if RTLNX_VER_MAX(5,11,0)
  	struct ttm_operation_ctx ctx = { false, false };
- #endif
- 	int i, ret;
-@@ -585,7 +585,7 @@ int vbox_bo_unpin(struct vbox_bo *bo)
- 	for (i = 0; i < bo->placement.num_placement; i++)
+ # endif
+@@ -657,7 +657,7 @@ int vbox_bo_unpin(struct vbox_bo *bo)
  		PLACEMENT_FLAGS(bo->placements[i]) &= ~TTM_PL_FLAG_NO_EVICT;
+ #endif
  
 -#if RTLNX_VER_MAX(4,16,0) && !RTLNX_RHEL_MAJ_PREREQ(7,6) && !RTLNX_SUSE_MAJ_PREREQ(15,1) && !RTLNX_SUSE_MAJ_PREREQ(12,5)
 +#if RTLNX_VER_MAX(4,16,0) && !RTLNX_RHEL_MAJ_PREREQ(7,6) && !RTLNX_SUSE_MAJ_PREREQ(15,1) && !RTLNX_SUSE_MAJ_PREREQ(12,5) && !defined(SUSE_SLE12)
  	ret = ttm_bo_validate(&bo->bo, &bo->placement, false, false);
- #else
+ #elif RTLNX_VER_MAX(5,11,0)
  	ret = ttm_bo_validate(&bo->bo, &bo->placement, &ctx);
-@@ -603,7 +603,7 @@ int vbox_bo_unpin(struct vbox_bo *bo)
+@@ -680,7 +680,7 @@ int vbox_bo_unpin(struct vbox_bo *bo)
   */
  int vbox_bo_push_sysram(struct vbox_bo *bo)
  {
--#if RTLNX_VER_MIN(4,16,0) || RTLNX_RHEL_MAJ_PREREQ(7,6) || RTLNX_SUSE_MAJ_PREREQ(15,1) || RTLNX_SUSE_MAJ_PREREQ(12,5)
-+#if RTLNX_VER_MIN(4,16,0) || RTLNX_RHEL_MAJ_PREREQ(7,6) || RTLNX_SUSE_MAJ_PREREQ(15,1) || RTLNX_SUSE_MAJ_PREREQ(12,5) || defined(SUSE_SLE12)
+-# if RTLNX_VER_MIN(4,16,0) || RTLNX_RHEL_MAJ_PREREQ(7,6) || RTLNX_SUSE_MAJ_PREREQ(15,1) || RTLNX_SUSE_MAJ_PREREQ(12,5)
++# if RTLNX_VER_MIN(4,16,0) || RTLNX_RHEL_MAJ_PREREQ(7,6) || RTLNX_SUSE_MAJ_PREREQ(15,1) || RTLNX_SUSE_MAJ_PREREQ(12,5) || defined(SUSE_SLE12)
  	struct ttm_operation_ctx ctx = { false, false };
- #endif
+ # endif
  	int i, ret;
-@@ -624,7 +624,7 @@ int vbox_bo_push_sysram(struct vbox_bo *
+@@ -701,7 +701,7 @@ int vbox_bo_push_sysram(struct vbox_bo *
  	for (i = 0; i < bo->placement.num_placement; i++)
  		PLACEMENT_FLAGS(bo->placements[i]) |= TTM_PL_FLAG_NO_EVICT;
  
--#if RTLNX_VER_MAX(4,16,0) && !RTLNX_RHEL_MAJ_PREREQ(7,6) && !RTLNX_SUSE_MAJ_PREREQ(15,1) && !RTLNX_SUSE_MAJ_PREREQ(12,5)
-+#if RTLNX_VER_MAX(4,16,0) && !RTLNX_RHEL_MAJ_PREREQ(7,6) && !RTLNX_SUSE_MAJ_PREREQ(15,1) && !RTLNX_SUSE_MAJ_PREREQ(12,5) && !defined(SUSE_SLE12)
+-# if RTLNX_VER_MAX(4,16,0) && !RTLNX_RHEL_MAJ_PREREQ(7,6) && !RTLNX_SUSE_MAJ_PREREQ(15,1) && !RTLNX_SUSE_MAJ_PREREQ(12,5)
++# if RTLNX_VER_MAX(4,16,0) && !RTLNX_RHEL_MAJ_PREREQ(7,6) && !RTLNX_SUSE_MAJ_PREREQ(15,1) && !RTLNX_SUSE_MAJ_PREREQ(12,5) && !defined(SUSE_SLE12)
  	ret = ttm_bo_validate(&bo->bo, &bo->placement, false, false);
- #else
+ # else
  	ret = ttm_bo_validate(&bo->bo, &bo->placement, &ctx);
-Index: VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_drv.h
+Index: VirtualBox-6.1.20/src/VBox/Additions/linux/drm/vbox_drv.h
 ===================================================================
---- VirtualBox-6.1.18.orig/src/VBox/Additions/linux/drm/vbox_drv.h
-+++ VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_drv.h
+--- VirtualBox-6.1.20.orig/src/VBox/Additions/linux/drm/vbox_drv.h
++++ VirtualBox-6.1.20/src/VBox/Additions/linux/drm/vbox_drv.h
 @@ -87,6 +87,9 @@
  #else
  # define RTLNX_RHEL_MAX(a_iMajor, a_iMinor) (0)
@@ -147,10 +147,10 @@ Index: VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_drv.h
  
  /** @def RTLNX_RHEL_RANGE
   * Check that it's a RedHat kernel in the given version range.
-Index: VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_mode.c
+Index: VirtualBox-6.1.20/src/VBox/Additions/linux/drm/vbox_mode.c
 ===================================================================
---- VirtualBox-6.1.18.orig/src/VBox/Additions/linux/drm/vbox_mode.c
-+++ VirtualBox-6.1.18/src/VBox/Additions/linux/drm/vbox_mode.c
+--- VirtualBox-6.1.20.orig/src/VBox/Additions/linux/drm/vbox_mode.c
++++ VirtualBox-6.1.20/src/VBox/Additions/linux/drm/vbox_mode.c
 @@ -544,7 +544,8 @@ static void vbox_set_edid(struct drm_con
  	for (i = 0; i < EDID_SIZE - 1; ++i)
  		sum += edid[i];

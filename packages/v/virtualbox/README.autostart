@@ -20,17 +20,20 @@ Users work
 ==========
 
 The *first* time a user configures autostart, the command: 
-VBoxManage setproperty autostartdbpath /etc/vbox 
+VBoxManage setproperty autostartdbpath /etc/vbox/autostart.d 
 needs to be run. 
 
 Note: The autostart options are stored in the /etc/vbox file, and in the 
 VM itself. If moving a VM, these options may need to be set again.
 
 Prepare a VM to start automatically:
-VBoxManage modifyvm <uuid|vmname> --autostart-enabled <on|off>
+VBoxManage modifyvm <uuid|vmname> --autostart-enabled on
 
 Choose a shut down mode:
 VBoxManage modifyvm <uuid|vmname> --autostop-type <disabled|savestate|poweroff|acpishutdown>
 
 Restart the vboxdrv service to start the VMs in question
 sudo service vboxdrv restart
+
+To turn off autostart for a VM
+VBoxManage modifyvm <uuid|vmname> --autostart-enabled off

@@ -16,17 +16,6 @@
 #
 
 
-#create a variable that indicates we are building for Leap 15.{2,3}. These versions
-#need to have the guest modules build. Tumbleweed does not.
-#
-%define for_leap 0
-%if 0%{?sle_version == 150200}
-%define for_leap 1
-%endif
-%if 0%{?sle_version == 150300}
-%define for_leap 1
-%endif
-
 %if "@BUILD_FLAVOR@" == "kmp"
 ### macros for virtualbox-kmp ###
 %define main_package 0
@@ -49,6 +38,10 @@
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
+%endif
+
+%if ! %{defined _distconfdir}
+%define _distconfdir %{_sysconfdir}
 %endif
 
 # Use Python3 rather than Python2 by default
@@ -77,7 +70,7 @@ python3 -O -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile
 
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        6.1.18
+Version:        6.1.20
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-2.0-or-later
@@ -95,11 +88,7 @@ Source2:        VirtualBox.appdata.xml
 %endif
 Source3:        virtualbox-60-vboxguest.rules
 Source4:        virtualbox-default.virtualbox
-%if %{for_leap}
-Source5:        virtualbox-kmp-files-leap
-%else
 Source5:        virtualbox-kmp-files
-%endif
 Source7:        virtualbox-kmp-preamble
 Source8:        update-extpack.sh
 Source9:        virtualbox-wrapper.sh
@@ -108,16 +97,14 @@ Source11:       virtualbox-60-vboxdrv.rules
 Source14:       vboxdrv.service
 Source15:       vboxadd-service.service
 Source16:       vboxconfig.sh
-%if %{for_leap}
 Source17:       vboxguestconfig.sh
-%endif
 Source18:       fix_usb_rules.sh
 Source19:       vboxdrv.sh
 Source20:       README.autostart
 Source21:       vboxweb-service.service
 Source22:       vboxweb-service.sh
-Source23:       vboxautostart.service
-Source24:       vboxautostart.sh
+Source23:       vboxautostart-service.service
+Source24:       vboxautostart-service.sh
 Source97:       README.build
 Source98:       virtualbox-rpmlintrc
 Source99:       virtualbox-patch-source.sh
@@ -196,7 +183,6 @@ Patch135:       fix-missing-includes-with-qt-5.15.patch
 Patch136:       fixes_for_gcc10.patch
 # Fix for changes in GSOAP 2.8.103
 Patch137:       handle_gsoap_208103.patch
-Patch138:       fixes-for-5.11.patch
 # Fix for struct file_operations backport in 15.3
 Patch139:       fixes_for_leap15.3.patch
 Patch141:       vb-6.1.16-modal-dialog-parent.patch
@@ -326,6 +312,23 @@ and others, and limited virtualization of macOS guests on Apple
 hardware. VirtualBox is freely available as Open Source Software under
 the terms of the GNU Public License (GPL).
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##########################################
 %package qt
 Summary:        Qt GUI part for %{name}
@@ -343,6 +346,23 @@ Obsoletes:      %{name}-ose-qt < %{version}
 %description qt
 This package contains the code for the GUI used to control VMs.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #########################################
 %package websrv
 Summary:        WebService GUI part for %{name}
@@ -354,12 +374,29 @@ Obsoletes:      %{name}-vboxwebsrv
 %description websrv
 The VirtualBox web server is used to control headless VMs using a browser.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #########################################
 %package guest-x11
 Summary:        VirtualBox X11 drivers for mouse and video
 Group:          System/X11/Servers/XF86_4
 Requires:       %{name}-kmp = %{version}
-Supplements:    modalias(xorg-x11-server:pci:v000080EEd0000BEEFsv*sd*bc*sc*i*)
+Supplements:    modalias(xorg-x11-server:pci:v000080EEd0000CAFEsv*sd*bc*sc*i*)
 #rename from xorg-x11-driver-virtualbox-ose:
 Provides:       xorg-x11-driver-virtualbox-ose = %{version}
 Obsoletes:      xorg-x11-driver-virtualbox-ose < %{version}
@@ -367,12 +404,29 @@ Obsoletes:      xorg-x11-driver-virtualbox-ose < %{version}
 %description guest-x11
 This package contains X11 guest utilities and X11 guest mouse and video drivers
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ###########################################
 %package guest-tools
 Summary:        VirtualBox guest tools
 Group:          System/Emulators/PC
 Requires:       %{name}-kmp = %{version}
-Supplements:    modalias(pci:v000080EEd0000BEEFsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000080EEd0000CAFEsv*sd*bc*sc*i*)
 #rename from "ose" version:
 Provides:       %{name}-ose-guest-tools = %{version}
 Obsoletes:      %{name}-ose-guest-tools < %{version}
@@ -382,6 +436,23 @@ Requires(pre):  net-tools-deprecated
 
 %description guest-tools
 VirtualBox guest addition tools.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ###########################################
 %package -n python3-%{name}
@@ -401,6 +472,23 @@ Obsoletes:      python3-%{name}-ose < %{version}
 %description -n python3-%{name}
 Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ###########################################
 %package devel
 Summary:        Devel files for %{name}
@@ -413,6 +501,23 @@ Obsoletes:      %{name}-ose-devel < %{version}
 
 %description devel
 Development file for %{name}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ###########################################
 %package host-source
@@ -430,7 +535,6 @@ Source files for %{name} host kernel modules
 These can be built for custom kernels using
 sudo /sbin/vboxconfig
 
-%if %{for_leap}
 %package guest-source
 Summary:        Source files for %{name} guest kernel modules
 Group:          Development/Sources
@@ -444,7 +548,8 @@ BuildArch:      noarch
 Source files for %{name} guest kernel modules
 These can be built for custom kernels using
 sudo /sbin/vboxguestconfig
-%endif
+
+
 
 ###########################################
 %package guest-desktop-icons
@@ -456,6 +561,23 @@ BuildArch:      noarch
 
 %description guest-desktop-icons
 This package contains icons for guest desktop files that were created on the desktop.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ###########################################
 %package vnc
@@ -524,7 +646,6 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch135 -p1
 %patch136 -p1
 %patch137 -p1
-%patch138 -p1
 %if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
 # Patch for Leap 15.3
 %patch139 -p1
@@ -632,8 +753,9 @@ install -d -m 755 %{buildroot}%{_sysconfdir}/init.d
 install -d %{buildroot}%{_unitdir}
 install -d %{buildroot}%{_unitdir}/multi-user.target.wants
 install -d -m 755 %{buildroot}%{_sysconfdir}/vbox
+install -d -m 755 %{buildroot}%{_sysconfdir}/vbox/autostart.d
 install -d -m 755 %{buildroot}%{_udevrulesdir}
-install -d -m 755 %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d
+install -d -m 755 %{buildroot}%{_distconfdir}/X11/xinit/xinitrc.d
 
 ###########################################
 echo "entering guest-tools install section"
@@ -667,7 +789,7 @@ pushd out/linux.*/release/bin/additions/
 install -m 755 VBoxClient	%{buildroot}%{_bindir}
 popd
 # install init script which start VBoxClient daemon (support for clipboard,autoresize,seamless windows)
-install -m 755 src/VBox/Additions/x11/Installer/98vboxadd-xclient %{buildroot}%{_sysconfdir}/X11/xinit/xinitrc.d/vboxadd-xclient.sh
+install -m 755 src/VBox/Additions/x11/Installer/98vboxadd-xclient %{buildroot}%{_distconfdir}/X11/xinit/xinitrc.d/vboxadd-xclient.sh
 
 ##############################################
 echo "entering virtualbox(-qt) install section"
@@ -717,9 +839,7 @@ install -m 644 nls/*				%{buildroot}%{_datadir}/virtualbox/nls/
 # install kmp src
 mkdir -p %{buildroot}%{_usrsrc}/kernel-modules/virtualbox
 mkdir -p %{buildroot}%{_usrsrc}/kernel-modules/additions
-%if %{for_leap}
 tar jcf %{buildroot}%{_usrsrc}/kernel-modules/additions/guest_src.tar.bz2 additions/src
-%endif
 cp -a src %{buildroot}%{_usrsrc}/kernel-modules/virtualbox
 install -m 644 %{SOURCE11}			%{buildroot}%{_udevrulesdir}/60-vboxdrv.rules
 popd
@@ -746,23 +866,22 @@ install -m 0644 %{SOURCE14}                     %{buildroot}%{_unitdir}/vboxdrv.
 ln -s -f %{_sbindir}/service			%{buildroot}%{_sbindir}/rcvboxdrv
 install -m 0644 %{SOURCE15}                     %{buildroot}%{_unitdir}/vboxadd-service.service
 install -m 0755 %{SOURCE16}			%{buildroot}/sbin/vboxconfig
-%if %{for_leap}
 install -m 0755 %{SOURCE17}			%{buildroot}/sbin/vboxguestconfig
-%endif
 install -m 0755 %{SOURCE18}			%{buildroot}/sbin/vbox-fix-usb-rules.sh
 install -m 0755 %{SOURCE19}			%{buildroot}%{_vbox_instdir}/vboxdrv.sh
 install -m 0644 %{SOURCE21}			%{buildroot}%{_unitdir}/vboxweb-service.service
 install -m 0755 %{SOURCE22}			%{buildroot}%{_vbox_instdir}/vboxweb-service.sh
-install -m 0644 %{SOURCE23}			%{buildroot}%{_unitdir}/vboxautostart.service
+install -m 0644 %{SOURCE23}			%{buildroot}%{_unitdir}/vboxautostart-service.service
 ln -s -f %{_sbindir}/service                    %{buildroot}%{_sbindir}/rcvboxautostart
-install -m 0755 %{SOURCE24}                     %{buildroot}%{_vbox_instdir}/vboxautostart.sh
+install -m 0755 %{SOURCE24}                     %{buildroot}%{_vbox_instdir}/vboxautostart-service.sh
 # Init scripts to start virtualbox during boot
 ln -sf %{_unitdir}/vboxdrv.service		%{buildroot}%{_unitdir}/multi-user.target.wants/vboxdrv.service
 ln -sf %{_unitdir}/vboxadd-service.service	%{buildroot}%{_unitdir}/multi-user.target.wants/vboxadd-service.service
-ln -sf %{_unitdir}/vboxautostart.service        %{buildroot}%{_unitdir}/multi-user.target.wants/vboxautostart.service
+ln -sf %{_unitdir}/vboxautostart-service.service        %{buildroot}%{_unitdir}/multi-user.target.wants/vboxautostart-service.service
 
 # config file for vboxdrv and vboxweb
 install -d -m 755 %{buildroot}%{_sysconfdir}/vbox
+install -d -m 775 %{buildroot}%{_sysconfdir}/vbox/autostart.d
 echo -e "#settings for vboxwebsrn\nVBOXWEB_USER=root" > %{buildroot}%{_sysconfdir}/vbox/vbox.cfg
 # config file for vboxautostart
 cat > %{buildroot}%{_sysconfdir}/vbox/autostart.cfg << EOF
@@ -837,7 +956,7 @@ popd
 %pre
 getent group vboxusers >/dev/null || groupadd -r vboxusers
 %service_add_pre vboxdrv.service
-%service_add_pre vboxautostart.service
+%service_add_pre vboxautostart-service.service
 
 %pre guest-tools
 # Add groups for seamless mode and shared folders:
@@ -863,7 +982,7 @@ getent group vboxvideo >/dev/null || groupadd -r vboxvideo
 %set_permissions %{_vbox_instdir}/VBoxNetAdpCtl
 %set_permissions %{_vbox_instdir}/VBoxHeadless
 %service_add_post vboxdrv.service
-%service_add_post vboxautostart.service
+%service_add_post vboxautostart-service.service
 # add new autostart stuff to the existing default config, if missing
 grep -q VBOXAUTOSTART /etc/default/virtualbox || {
     cat >> /etc/default/virtualbox << EOF
@@ -871,11 +990,17 @@ grep -q VBOXAUTOSTART /etc/default/virtualbox || {
 # -------------------------------------------------------------------------------------------------
 # Autostart
 # -------------------------------------------------------------------------------------------------
-VBOXAUTOSTART_DB=/etc/vbox
+VBOXAUTOSTART_DB=/etc/vbox/autostart.d
 VBOXAUTOSTART_CONFIG=/etc/vbox/autostart.cfg
 
 EOF
 }
+for entry in /etc/vbox/*.start
+do
+        user=$(basename "$entry" .start)
+        [ "$user" = "*" ] && break
+	mv /etc/vbox/user.start /etc/vbox/autostart.d/.
+done
 
 %post qt
 %set_permissions %{_vbox_instdir}/VirtualBoxVM
@@ -907,9 +1032,9 @@ VBoxManage extpack install --replace "${EXTPACK}" --accept-license="${ACCEPT}" >
 #######################################################
 
 %preun
-%stop_on_removal vboxautostart
+%stop_on_removal vboxautostart-service
 %stop_on_removal vboxdrv
-%service_del_preun vboxautostart.service
+%service_del_preun vboxautostart-service.service
 %service_del_preun vboxdrv.service
 exit 0
 
@@ -931,14 +1056,14 @@ exit 0
 %postun
 /sbin/ldconfig
 %restart_on_update vboxdrv
-%restart_on_update vboxautostart
+%restart_on_update vboxautostart-service
 # immediately restarting virtualbox may not work. As such wait for the next reboot to restart
 %if ! %{defined service_del_postun_without_restart}
 export DISABLE_RESTART_ON_UPDATE=yes
-%service_del_postun vboxautostart.service
+%service_del_postun vboxautostart-service.service
 %service_del_postun vboxdrv.service
 %else
-%service_del_postun_without_restart vboxautostart.service
+%service_del_postun_without_restart vboxautostart-service.service
 %service_del_postun_without_restart vboxdrv.service
 %endif
 
@@ -1005,11 +1130,11 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %dir %{_unitdir}
 %dir %{_unitdir}/multi-user.target.wants
 /usr/lib/virtualbox/vboxdrv.sh
-/usr/lib/virtualbox/vboxautostart.sh
+/usr/lib/virtualbox/vboxautostart-service.sh
 %{_unitdir}/vboxdrv.service
-%{_unitdir}/vboxautostart.service
+%{_unitdir}/vboxautostart-service.service
 %{_unitdir}/multi-user.target.wants/vboxdrv.service
-%{_unitdir}/multi-user.target.wants/vboxautostart.service
+%{_unitdir}/multi-user.target.wants/vboxautostart-service.service
 %{_sbindir}/rcvboxdrv
 %{_sbindir}/rcvboxautostart
 /sbin/vboxconfig
@@ -1019,7 +1144,9 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxNetAdpCtl
 %verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxHeadless
 %dir %{_sysconfdir}/vbox
-%attr(1775,root,vboxusers) %{_sysconfdir}/vbox
+%dir %{_sysconfdir}/vbox/autostart.d
+%attr(755,root,root) %{_sysconfdir}/vbox
+%attr(1770,root,vboxusers) %{_sysconfdir}/vbox/autostart.d
 %config %attr(644,root,vboxusers) %{_sysconfdir}/vbox/vbox.cfg
 %config %attr(644,root,vboxusers) %{_sysconfdir}/vbox/autostart.cfg
 
@@ -1061,17 +1188,13 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %dir %{_libdir}/xorg/modules/input
 %dir %{_libdir}/dri/
 %{_bindir}/VBoxClient
-%dir %{_sysconfdir}/X11/xinit
-%dir %{_sysconfdir}/X11/xinit/xinitrc.d
-%{_sysconfdir}/X11/xinit/xinitrc.d/vboxadd-xclient.sh
+%{_distconfdir}/X11/xinit/xinitrc.d/vboxadd-xclient.sh
 
 %files guest-tools
 %defattr(-, root, root)
 %{_bindir}/VBoxControl
 %{_sbindir}/VBoxService
-%if %{for_leap}
 /sbin/vboxguestconfig
-%endif
 /sbin/mount.vboxsf
 %{_udevrulesdir}/60-vboxguest.rules
 %{_vbox_instdir}/vboxadd-service
@@ -1107,13 +1230,11 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %dir %{_usrsrc}/kernel-modules
 %{_usrsrc}/kernel-modules/virtualbox
 
-%if %{for_leap}
 %files guest-source
 %defattr(-,root, root)
 %dir %{_usrsrc}/kernel-modules
 %dir %{_usrsrc}/kernel-modules/additions
 %{_usrsrc}/kernel-modules/additions/guest_src.tar.bz2
-%endif
 
 %files websrv
 %defattr(-,root, root)
@@ -1210,20 +1331,13 @@ COMMON_KMK_FLAGS+="
 #    host kernel modules to out/linux.*/release/bin/src/
 %{_bindir}/kmk %_smp_mflags -C src/VBox/HostDrivers/ \
 	${COMMON_KMK_FLAGS}
-%if %{for_leap}
 #
 # build kernel modules for guest and host (check novel-kmp package as example)
 # host  modules : vboxdrv,vboxnetflt,vboxnetadp
-# guest modules : vboxguest,vboxsf vboxvideo (for Leap 15.2 and older)
+# guest modules : vboxguest,vboxsf vboxvideo
 echo "build kernel modules"
 for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} \
            out/linux.*/release/bin/additions/src/vbox{guest,sf,video}; do
-%else
-# build kernel modules for host (check novel-kmp package as example)
-# host  modules : vboxdrv,vboxnetflt,vboxnetadp
-echo "build kernel modules"
-for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} ; do
-%endif
     #get the module name from path
     module_name=$(basename "$vbox_module")
 
@@ -1232,12 +1346,8 @@ for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} ; do
 	# delete old build dir for sure
 	rm -rf modules_build_dir/${module_name}_${flavor}
 
-%if %{for_leap}
 	if [ "$module_name" = "vboxdrv" -o \
 	     "$module_name" = "vboxguest" ] ; then
-%else
-	if [ "$module_name" = "vboxdrv" ] ; then
-%endif
 	    SYMBOLS=""
 	fi
 	# create build directory for specific flavor
@@ -1253,7 +1363,6 @@ for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} ; do
 		  $PWD/modules_build_dir/$flavor/$module_name
 	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxdrv/Module.symvers"
 	fi
-%if %{for_leap}
         # copy vboxguest (for guest) module symbols which are used by vboxsf km:
 	if [ "$module_name" = "vboxsf" -o \
 	     "$module_name" = "vboxvideo" ] ; then
@@ -1261,7 +1370,6 @@ for vbox_module in out/linux.*/release/bin/src/vbox{drv,netflt,netadp} ; do
 		$PWD/modules_build_dir/$flavor/$module_name
 	    SYMBOLS="$PWD/modules_build_dir/$flavor/vboxguest/Module.symvers"
 	fi
-%endif
 	# build the module for the specific flavor
 	make -j2 -C %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor %{?linux_make_arch} modules \
 		M=$PWD/modules_build_dir/$flavor/$module_name KBUILD_EXTRA_SYMBOLS="$SYMBOLS" V=1
@@ -1272,11 +1380,7 @@ done
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=extra
 #to install modules we use here similar steps like in build phase, go through all the modules :
-%if %{for_leap}
 for module_name in vbox{drv,netflt,netadp,guest,sf,video}
-%else
-for module_name in vbox{drv,netflt,netadp}
-%endif
 do
 	#and through the all flavors
 	for flavor in %{flavors_to_build}; do

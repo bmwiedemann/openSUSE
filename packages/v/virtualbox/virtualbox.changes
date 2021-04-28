@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Sat Apr 24 15:02:12 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version bump to (released April 20 2021 by Oracle)
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  VMM: Fixed extremely poor VM performance depending on the timing of various actions (regression in 6.1.0)
+  VMM: Fixed guest OS hanging under certain circumstances when Hyper-V is present (bug #20141)
+  VMM: Fixed Guru Meditation error when using a nested hypervisor under certain circumstances (bug #20175)
+  VMM: Fixed a SMAP related host panic affecting Solaris 11.4 systems with Intel Haswell CPUs or later (bug #16068)
+  OCI: Add cloud-init support for export to OCI and for OCI instance creation
+  GUI: Fixed "Delete all files" leaving behind Logs/VBoxUI.log (bug #20235)
+  Audio: Multiple fixes and enhancements
+  Audio: Fixed detection of duplex audio devices on macOS (5.0 regression; bug #20171)
+  Network: Fixed link status reporting for "not attached" adapters
+  Network: Fixed connectivity issues with e1000 in OS/2 guests (6.1.18 regression; bug #20148)
+  Network: Fixed VxWorks e1000 driver compatibility issue (bug #20182)
+  Network: Fixed GUI checks for port forwarding rules rejecting IPv6 with "Nat Network" (bug #14847)
+  DHCP: Don't crash in the presence of fixed address assignments (bug #20128)
+  Serial: Fixed possible VM hang when using the a serial port in disconnected mode (bug #19854)
+  Webcam: Fixed interoperability with v4l2loopback and fixed a crash under certain circumstances (bug #20176)
+  NVMe: Fixed sporadic Windows VM hang or reboot on high CPU load
+  VBoxManage: Allow changing network adapter attachment of a saved VM with "modifyvm"
+  vboximg-mount: Fix for argument processing to honor the '--root' option (6.0 regression; bug #20073)
+  Linux host and guest: Support kernel versions 5.11 (bug #20198) and 5.12
+  Linux host: Maximum MTU size increased to 16110 for host-only adapters on Linux kernels 4.10+ (bug #19122)
+  Linux Guest Additions: Fix vboxvideo module compilation for kernel version 5.10.x
+  Linux Guest Additions: Fixed kernel module build for RHEL 8.4 beta and CentOS Stream (bug #20289)
+
+  File "fixes-for-5.11.patch" is deleted. The issue is fixed upstream.
+  File "vboxautostart.sh" is replaced by "vboxautostart-service.sh"
+  File "vboxautostart.service" is replaced by "vboxautostart-service.service"
+  Fixes boo#1183329 "virtualbox 6.1.18 crashes when it runs nested VM"
+  Fixes boo#1183125 "Leap 15.3 installation in Virtualbox without VBox integration"
+  Fixes CVE-2021-2264 and boo#1184542. The directory for the <user>.start files for
+    autostarting VMs is moved from /etc/vbox to /etc/vbox/autostart.d. In addition, the autostart
+    service is hardened (by Oracle).
+  File "virtualbox-kmp-files-leap" is deleted.
+
+-------------------------------------------------------------------
+Sat Apr 24 13:53:30 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use distconfdir for xinitrc.d files on TW
+
+-------------------------------------------------------------------
+Tue Apr 20 19:27:40 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version bump to (released April 20 2021 by Oracle)
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  VMM: Fixed extremely poor VM performance depending on the timing of various actions (regression in 6.1.0)
+  VMM: Fixed guest OS hanging under certain circumstances when Hyper-V is present (bug #20141)
+  VMM: Fixed Guru Meditation error when using a nested hypervisor under certain circumstances (bug #20175)
+  VMM: Fixed a SMAP related host panic affecting Solaris 11.4 systems with Intel Haswell CPUs or later (bug #16068)
+  OCI: Add cloud-init support for export to OCI and for OCI instance creation
+  GUI: Fixed "Delete all files" leaving behind Logs/VBoxUI.log (bug #20235)
+  Audio: Multiple fixes and enhancements
+  Audio: Fixed detection of duplex audio devices on macOS (5.0 regression; bug #20171)
+  Network: Fixed link status reporting for "not attached" adapters
+  Network: Fixed connectivity issues with e1000 in OS/2 guests (6.1.18 regression; bug #20148)
+  Network: Fixed VxWorks e1000 driver compatibility issue (bug #20182)
+  Network: Fixed GUI checks for port forwarding rules rejecting IPv6 with "Nat Network" (bug #14847)
+  DHCP: Don't crash in the presence of fixed address assignments (bug #20128)
+  Serial: Fixed possible VM hang when using the a serial port in disconnected mode (bug #19854)
+  Webcam: Fixed interoperability with v4l2loopback and fixed a crash under certain circumstances (bug #20176)
+  NVMe: Fixed sporadic Windows VM hang or reboot on high CPU load
+  VBoxManage: Allow changing network adapter attachment of a saved VM with "modifyvm"
+  vboximg-mount: Fix for argument processing to honor the '--root' option (6.0 regression; bug #20073)
+  Linux host and guest: Support kernel versions 5.11 (bug #20198) and 5.12
+  Linux host: Maximum MTU size increased to 16110 for host-only adapters on Linux kernels 4.10+ (bug #19122)
+  Linux Guest Additions: Fix vboxvideo module compilation for kernel version 5.10.x
+  Linux Guest Additions: Fixed kernel module build for RHEL 8.4 beta and CentOS Stream (bug #20289)
+
+  File "fixes-for-5.11.patch" is deleted. The issue is fixed upstream.
+  File "vboxautostart.sh" is replaced by "vboxautostart-service.sh"
+  File "vboxautostart.service" is replaced by "vboxautostart-service.service"
+  Fixes boo#1183329 "virtualbox 6.1.18 crashes when it runs nested VM"
+  Fixes boo#1183125 "Leap 15.3 installation in Virtualbox without VBox integration"
+  Fixes CVE-2021-2264 and boo#1184542. The directory for the <user>.start files for
+    autostarting VMs is moved from /etc/vbox to /etc/vbox/autostart.d. In addition, the autostart
+    service is hardened (by Oracle).
+
+-------------------------------------------------------------------
+Wed Apr  7 16:21:58 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Improve autostart security boo#1182918. 
+
+-------------------------------------------------------------------
 Thu Apr  1 09:43:50 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Own %{_sysconfdir}/X11/xinit/xinitrc.d as default packages (eg 
