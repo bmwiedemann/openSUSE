@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 28 07:43:21 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1+git.20210330:
+  * Various fixes
+  * Add various SD/eMMC vendors to table
+  * Fix parsing of Product Revision and Serial Number
+  * mmc_cmds.c: fix build with gcc 4.9
+  * mmc-utils: Add AUTO_EN support in the BKOPS_EN
+  * mmc-utils: Expand 'writeprotect boot'
+  * mmc-utils: Fix scaling of cache size
+  * rpmb: Zero-init MMC_IOC_MULTI_CMD structures
+  * mmc-utils: let FFU mode use CMD23 and CMD25
+
+-------------------------------------------------------------------
 Mon Feb  3 15:56:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1+git.20191004:

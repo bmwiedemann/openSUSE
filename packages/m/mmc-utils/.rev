@@ -150,4 +150,21 @@
   * fix ENH_START_ADDR overflow</comment>
     <requestid>770331</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>00fd61b25325c3ce60304c9fbfedd3dc</srcmd5>
+    <version>0.1+git.20210330</version>
+    <time>1619653093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1+git.20210330:
+  * Various fixes
+  * Add various SD/eMMC vendors to table
+  * Fix parsing of Product Revision and Serial Number
+  * mmc_cmds.c: fix build with gcc 4.9
+  * mmc-utils: Add AUTO_EN support in the BKOPS_EN
+  * mmc-utils: Expand 'writeprotect boot'
+  * mmc-utils: Fix scaling of cache size
+  * rpmb: Zero-init MMC_IOC_MULTI_CMD structures
+  * mmc-utils: let FFU mode use CMD23 and CMD25</comment>
+    <requestid>888951</requestid>
+  </revision>
 </revisionlist>
