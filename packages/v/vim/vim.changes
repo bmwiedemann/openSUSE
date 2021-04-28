@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri Apr 23 12:03:46 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.2800, fixes the following problems
+  * Vim9: message about compiling is wrong when using try/catch.
+  * Confusing error message with white space before comma in the arguments
+  of a function declaration.
+  * Function test fails.
+  * Special key names don't work if 'isident' is cleared.
+  * Vim9: wrong error message for referring to legacy script variable.
+  * Coverity complains about not restoring character.
+  * Prompt for s///c in Ex mode can be wrong.
+  * Detecting Lua version is not reliable.
+  * Vim9: cannot use legacy script-local var from :def function.
+  * Vim9: function reference found with prefix, not without.
+  * Vim9: for loop over string is a bit slow.
+  * Status line not updated when local 'statusline' option set.
+  * Extending a list with itself can give wrong result.
+  * Vim9: a lambda accepts too many arguments at the script level.
+  * Vim9: lambda with varargs doesn't work.
+  * Vim9: Partial call does not check right arguments.
+  * Vim9: when compiling a function fails it is cleared.
+  * Vim9: function state stuck when compiling with ":silent!".
+  * Vim9: no way to explicitly ignore an argument.
+  * Vim9: missing part of the argument change.
+  * Check for duplicate arguments does not work.
+  * Vim9: not always an error for too many function arguments.
+  * Vim9: memory leak when calling :def function fails.
+  * Vim9: test for error can be a bit flaky.
+  * Vim9: error for using underscore in nested function.
+  * Coverity warns for using NULL pointer.
+  * Vim9: cannot ignore an item in assignment unpack.
+  * :sleep! does not always hide the cursor.
+  * Vim9: no error for using a number in a condition.
+  * Vim9: blob index and slice not implemented yet.
+  * Vim9: blob tests for legacy and Vim9 script are separate.
+  * Vim9: wrong line number for autoload function with wrong name.
+  * Vim9: for loop infers type of loop variable.
+  * Vim9: no error for changing a for loop variable.
+  * Using "syn include" does not work properly.
+  * Vim9: function line truncated when compiling.
+  * Vim9: cannot use type in for loop unpack at script level.
+  * Memory leak when default function argument is allocated.
+  * Vim9: not all blob operations work.
+  * Test failure.
+  * Compiler warning for unused argument.
+  * Vim9: memory leak with blob range error.
+  * Modula-3 config files are not recognized.
+  * Vim9: type of loop variable is not used.
+  * Vim9: assignment not recognized if declaration was skipped.
+  * Problems when restoring 'runtimepath' from a session file.
+  * PSL filetype not recognized.
+  * Vim9: cannot import an existing name even when using "as".
+  * Vim9: wrong line number used for some commands.
+  * :mksession uses current value of 'splitbelow' and 'splitright' even though
+  "options" is not in 'sessionoptions'. (Maxim Kim)
+  * Vim9: blob operations not tested in all ways.
+  * Problem restoring 'packpath' in session.
+  * Memory access error in remove() for blob.
+  * Vim9: for loop over blob doesn't work.
+  * Add() silently skips when adding to null list or blob.
+  * Vim9: blob operations not fully tested.
+  * Duplicate code for setting byte in blob, blob test may fail.
+  * Vim9: cannot use \=expr in :substitute.
+  * Vim9: cannot redirect to local variable.
+  * Vim9: memory leak when using :s with expression.
+  * Raku is now the only name what once was called perl6.
+  * Vim9: using \=expr in :substitute does not handle jumps.
+  * filetype test fails
+  * Vim9: memory leak when using \=expr in :substitute.
+  * Vim9: :disas shows instructions for default args but no text.
+  * Linux users don't know how to get ncurses.
+  * Coverity warns for not using return value.
+  * Vim9: redir to variable does not accept an index.
+  * Search highlight disappears in the Visual area.
+  * Vim9: redir to variable with append does not accept an index.
+  * Vim9: type casts don't fully work at the script level.
+  * After a timer displays text a hit-enter prompt is given.
+
+-------------------------------------------------------------------
 Tue Apr  6 08:22:49 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.2725, fixes the following problems

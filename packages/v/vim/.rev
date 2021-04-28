@@ -5109,4 +5109,41 @@ always built-in because vim has direct perl dependencies anyway.
   * 'tagfunc' does not indicate using a pattern.</comment>
     <requestid>883190</requestid>
   </revision>
+  <revision rev="284" vrev="1">
+    <srcmd5>c7e9ea6ddfe545ba10e2b468b5425a04</srcmd5>
+    <version>8.2.2800</version>
+    <time>1619652982</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.2800, fixes the following problems
+  * Vim9: message about compiling is wrong when using try/catch.
+  * Confusing error message with white space before comma in the arguments
+  of a function declaration.
+  * Function test fails.
+  * Special key names don't work if 'isident' is cleared.
+  * Vim9: wrong error message for referring to legacy script variable.
+  * Coverity complains about not restoring character.
+  * Prompt for s///c in Ex mode can be wrong.
+  * Detecting Lua version is not reliable.
+  * Vim9: cannot use legacy script-local var from :def function.
+  * Vim9: function reference found with prefix, not without.
+  * Vim9: for loop over string is a bit slow.
+  * Status line not updated when local 'statusline' option set.
+  * Extending a list with itself can give wrong result.
+  * Vim9: a lambda accepts too many arguments at the script level.
+  * Vim9: lambda with varargs doesn't work.
+  * Vim9: Partial call does not check right arguments.
+  * Vim9: when compiling a function fails it is cleared.
+  * Vim9: function state stuck when compiling with &quot;:silent!&quot;.
+  * Vim9: no way to explicitly ignore an argument.
+  * Vim9: missing part of the argument change.
+  * Check for duplicate arguments does not work.
+  * Vim9: not always an error for too many function arguments.
+  * Vim9: memory leak when calling :def function fails.
+  * Vim9: test for error can be a bit flaky.
+  * Vim9: error for using underscore in nested function.
+  * Coverity warns for using NULL pointer.
+  * Vim9: cannot ignore an item in assignment unpack.
+  * :sleep! does not always hide the cursor.</comment>
+    <requestid>888016</requestid>
+  </revision>
 </revisionlist>
