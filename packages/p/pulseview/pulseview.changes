@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 28 00:17:52 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with GLib 2.68, add
+  0001-Fix-broken-build-due-to-C-template-behind-C-linkage.patch
+
+-------------------------------------------------------------------
 Mon Jun 22 18:36:42 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build, add 0001-Fix-building-with-Qt-5.15.patch

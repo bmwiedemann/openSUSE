@@ -1,7 +1,7 @@
 #
 # spec file for package pulseview
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://sigrok.org
 Source0:        https://sigrok.org/download/source/pulseview/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Fix-building-with-Qt-5.15.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-broken-build-due-to-C-template-behind-C-linkage.patch
 BuildRequires:  cmake
 BuildRequires:  glib2-devel
 BuildRequires:  libboost_filesystem-devel
@@ -49,8 +51,7 @@ logic analyzer hardware products.
 PulseView is a Qt-based GUI for sigrok.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 export CXXFLAGS="%{optflags} -fpermissive"
