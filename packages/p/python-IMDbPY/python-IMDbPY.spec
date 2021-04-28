@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-IMDbPY
-Version:        2020.9.25
+Version:        2021.4.18
 Release:        0
 Summary:        Python package to access the IMDb's database
 License:        GPL-2.0-or-later
@@ -32,9 +32,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SQLAlchemy
 Requires:       python-lxml
-BuildArch:      noarch
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
+BuildArch:      noarch
 %python_subpackages
 
 %description

@@ -6,14 +6,16 @@ Upstream: tbd
 Example scripts are installed under /usr/bin and it's prefered to keep
 them in an examples directory.
 
---- a/setup.py
-+++ b/setup.py
-@@ -103,7 +103,7 @@
+Index: IMDbPY-2021.4.18/setup.py
+===================================================================
+--- IMDbPY-2021.4.18.orig/setup.py
++++ IMDbPY-2021.4.18/setup.py
+@@ -92,7 +92,7 @@ params = {
      'classifiers': [_f for _f in classifiers.split("\n") if _f],
      'url': home_page,
      'download_url': dwnl_url,
 -    'scripts': scripts,
 +#    'scripts': scripts,
-     'data_files': data_files,
-     'install_requires': ['SQLAlchemy', 'lxml'],
-     'extras_require': {
+     'package_data': {
+         # Here, the "*" represents any possible language ID.
+         'imdb.locale': [

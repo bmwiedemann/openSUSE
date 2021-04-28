@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 28 09:29:47 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2021.04.18
+  [general] 
+  * #289: Serbian translations 
+  * #290: update Portuguese translations 
+  * #291: allow direct access to filmography keys 
+  * #299: add pagination to get_movie_list (courtesy of Stein van Broekhoven) 
+  * #300: any iterable can be used as season_nums parameter of update_series_seasons 
+  * #305: fix ability to set logging level - #310: fix build of locales .mo files 
+  * #312: extract localized title
+  [sql]
+  * #287: fix missing logger
+
+-------------------------------------------------------------------
 Wed Mar 10 01:41:02 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2020.9.25:
