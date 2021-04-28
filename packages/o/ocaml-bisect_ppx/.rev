@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f44ff36e157e7456d0178b498eca1243</srcmd5>
+    <version>2.6.0</version>
+    <time>1619653052</time>
+    <user>dimstar_suse</user>
+    <comment>new buildrequires for ocaml-ctypes</comment>
+    <requestid>886253</requestid>
+  </revision>
+</revisionlist>
