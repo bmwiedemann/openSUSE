@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 24 03:51:49 UTC 2021 - bwiedemann@suse.com
+
+- Update to version 0.2.5+20210424.3bff388:
+  * Work with newer python3-rpm
+
+-------------------------------------------------------------------
+Sat Mar 27 19:33:01 UTC 2021 - Sasi Olin <hel@lcp.world>
+
+- Rename command-not-found to scout-command-not-found and add command-not-found provides
+
+-------------------------------------------------------------------
 Sat Mar 27 19:13:53 UTC 2021 - bwiedemann@suse.com
 
 - Update to version 0.2.4+20210325.6c2d9f3:

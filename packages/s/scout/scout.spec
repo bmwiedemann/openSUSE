@@ -18,7 +18,7 @@
 
 %define cnfrepo zypp
 Name:           scout
-Version:        0.2.4+20210325.6c2d9f3
+Version:        0.2.5+20210424.3bff388
 Release:        0
 Summary:        Indexing Package Properties
 License:        MIT
@@ -39,14 +39,17 @@ BuildArch:      noarch
 %description
 The scout tool helps with indexing of various package properties.
 
-%package -n command-not-found
+%package command-not-found
 Summary:        Command Not Found extension for shell
 Group:          System/Packages
 Requires:       python3
 Requires:       python3-rpm
 Requires:       scout = %{version}-%{release}
+Obsoletes:      command-not-found < %{version}-%{release}
+Provides:       command-not-found
+Conflicts:      command-not-found
 
-%description -n command-not-found
+%description command-not-found
 The "command not found" message is not very helpful. If e.g. the unzip
 command is not found but it's available in a package, it would be very
 interesting if the system could tell that the command is currently not
@@ -112,7 +115,7 @@ done
 %config %{_sysconfdir}/bash_completion.d/*
 %{_mandir}/man1/scout*
 
-%files -n command-not-found -f command-not-found.lang
+%files command-not-found -f command-not-found.lang
 %defattr(-,root,root)
 %doc handlers/bin/README
 %{_bindir}/cnf

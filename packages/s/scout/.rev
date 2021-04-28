@@ -332,4 +332,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>882842</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>8b09a7bb63abb4a453b603e93c4e0eca</srcmd5>
+    <version>0.2.5+20210424.3bff388</version>
+    <time>1619652988</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.5+20210424.3bff388:
+  * Work with newer python3-rpm
+
+- Rename command-not-found to scout-command-not-found and add command-not-found provides</comment>
+    <requestid>888123</requestid>
+  </revision>
 </revisionlist>
