@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Apr 21 12:13:14 UTC 2021 - olaf@aepfle.de
+
+- version 1.1
+- set hard status in cscreenrc example
+- use wrapper script for shell/SHELL
+- fix screen execution
+
+-------------------------------------------------------------------
+Tue Apr 20 10:20:30 UTC 2021 - olaf@aepfle.de
+
+- version 1.0
+- start cscreen earlier by ordering it right after local-fs.target
+- add zombie_timeout to default cscreenrc
+- adjust Requires for scriptlets
+- package cscreen-rpmlintrc
+- Set LimitNOFILE= to compensate for lack of SCREEN_FILE_LIMIT
+- use fillup and sysconfig only with sysv
+- fillup file should be owned by root
+- use DISABLE_RESTART_ON_UPDATE also with sysv
+- %license macro does not work reliably in 13.2
+- check if rpm macro has_systemd exists
+- own suders.d if needed
+- use name macro consistently
+- remove Requires for apparently unused mailx
+- use screen variable in cscreen script
+- use SCREEN_OWNER in cscreen script
+- use SCREENRC variable consistently
+- use SCREEN_NAME variable consistently
+- remove leading slash from sysv SCREEN_NAME
+- move defscrollback to SCREEN_HISTORY
+- Pass more characters to the remote system (bsc#1162835).
+- Get rid of /etc/sudoers.d directory to avoid file conflicts at install time
+
+-------------------------------------------------------------------
 Fri Sep 11 18:25:10 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Make use of %service_del_postun_without_restart
