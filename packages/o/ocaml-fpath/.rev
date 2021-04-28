@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c059575de70fecd0beb0fb6942cba6be</srcmd5>
+    <version>0.7.3</version>
+    <time>1619653018</time>
+    <user>dimstar_suse</user>
+    <comment>new BuildRequires for ocaml-bos and ocaml-base64</comment>
+    <requestid>868588</requestid>
+  </revision>
+</revisionlist>
