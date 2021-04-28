@@ -1,7 +1,7 @@
 #
 # spec file for package maven-wagon
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           maven-wagon
-Version:        3.2.0
+Version:        3.4.3
 Release:        0
 Summary:        Tools to manage artifacts and deployment
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://maven.apache.org/wagon
-Source0:        http://repo1.maven.org/maven2/org/apache/maven/wagon/wagon/%{version}/wagon-%{version}-source-release.zip
+URL:            https://maven.apache.org/wagon
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/wagon/wagon/%{version}/wagon-%{version}-source-release.zip
 Source1:        %{name}-build.tar.xz
 BuildRequires:  ant
 BuildRequires:  apache-commons-io
@@ -198,7 +198,7 @@ build-jar-repository -s lib \
 	commons-io commons-net jsch \
 	jsch.agentproxy.core jsch.agentproxy.jsch jsch.agentproxy.connector-factory \
 	httpcomponents/httpclient httpcomponents/httpcore \
-	jsoup/jsoup plexus/utils plexus/interactivity-api slf4j/api 
+	jsoup/jsoup plexus/utils plexus/interactivity-api slf4j/api
 # tests are disabled because of missing dependencies
 %{ant} package javadoc
 

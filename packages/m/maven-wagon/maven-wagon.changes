@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Wed Apr 28 12:00:04 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 3.4.3
+  * Fixes:
+    + [WAGON-537] Maven transfer speed of large artifacts is slow
+      due to unsuitable buffer strategy
+    + [WAGON-539] Explicitly register only supported auth schemes
+    + [WAGON-540] Switch to modern-day encoding (UTF-8) of auth
+      credentials
+    + [WAGON-544] Work around JSch issue #122
+    + [WAGON-546] HttpWagon TTL not set
+    + [WAGON-547] Upgrade HttpCore to 4.4.11
+    + [WAGON-548] Upgrade HttpClient to 4.5.7
+    + [WAGON-549] Upgrade Commons Net to 3.6
+    + [WAGON-550] Upgrade JSoup to 1.11.3
+    + [WAGON-551] Uprade JSch to 0.1.55
+    + [WAGON-552] Replace Commons Codec with Plexus Utils
+    + [WAGON-553] Upgrade Plexus Classworlds to 2.6.0
+    + [WAGON-554] Tests with checkin rely on global Git config
+    + [WAGON-555] Use java.nio.file.Path for URI construction of
+      file:// URI in tests
+    + [WAGON-556] Skip parsing of user info for file:// URLs
+    + [WAGON-557] Integer overflow prevents optimal buffer size
+      selection for large artifacts
+    + [WAGON-559] Upgrade Plexus Interactivity to 1.0
+    + [WAGON-560] Upgrade Plexus Utils to 3.2.0
+    + [WAGON-561] Upgrade JSoup to 1.12.1
+    + [WAGON-562] Upgrade HttpClient to 4.5.9
+    + [WAGON-564] SSH connection failure because
+      'preferredAuthentications' option is ignored if password
+      isn't set
+    + [WAGON-567] Provide request retry strategy on transient
+      client and server side errors
+    + [WAGON-568] Fail to deploy on Sonatype OSS since Maven 3.5.4
+    + [WAGON-569] Inconsistent encoding behavior for repository
+      URLs with spaces
+    + [WAGON-570] Use RedirectStrategy from HttpClient rather than
+      a custom approach
+    + [WAGON-571] Rename RequestEntityImplementation to
+      WagonHttpEntity
+    + [WAGON-573] EntityUtils.consumeQuietly() never called on
+      non-2xx status codes
+    + [WAGON-576] Retry handler docs are possibly wrong
+    + [WAGON-577] Upgrade HttpCore to 4.4.13
+    + [WAGON-578] Upgrade HttpClient to 4.5.11
+    + [WAGON-579] Handle SC_UNAUTHORIZED and
+      SC_PROXY_AUTHENTICATION_REQUIRED in all methods
+    + [WAGON-580] Improve and unify exception messages by status
+      code types throughout HTTP providers
+    + [WAGON-581] Upgrade HttpClient to 4.5.12
+    + [WAGON-582] HttpMethodConfiguration#copy() performs a shallow
+      copy only
+    + [WAGON-585] maven.wagon.http.ssl features documentation is
+      incomplete
+    + [WAGON-586] update parent POM
+    + [WAGON-588] Handle 404 and 410 consistently in HTTP-based
+      Wagon providers
+    + [WAGON-589] reminder to remove in the future
+    + [WAGON-591] Transfer event is not restarted when request is
+      redirected
+    + [WAGON-592] Wagon fails when compiled on Java 9+ and run on
+      Java 8 due to JDK API breakage
+    + [WAGON-593] Remove non-existent cache header
+    + [WAGON-594] http.route.default-proxy config property never
+      passes protocol and port of proxy server
+    + [WAGON-595] Add configuration property
+      'http.protocol.handle-content-compression'
+    + [WAGON-596] Add configuration property
+      'http.protocol.handle-uri-normalization'
+    + [WAGON-597] Fix self-assignment and set class field
+    + [WAGON-602] [Regression] Preserve trailing slash in encoded
+      URL
+    + [WAGON-607] Upgrade HttpCore to 4.4.14
+    + [WAGON-608] Upgrade HttpClient to 4.5.13
+    + [WAGON-609] Upgrade transitive Commons Codec to 1.15
+
+-------------------------------------------------------------------
 Mon Oct  7 09:39:56 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Build also the ssh* providers
