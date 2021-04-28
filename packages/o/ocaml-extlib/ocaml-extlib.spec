@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-extlib
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011 Andrew Psaltis <ampsaltis at gmail dot com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,18 +18,19 @@
 
 
 Name:           ocaml-extlib
-Version:        1.7.6
+Version:        1.7.8
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml ExtLib additions to the standard library
 License:        LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
 Group:          Development/Languages/OCaml
-Url:            https://github.com/ygrek/ocaml-extlib
+URL:            https://opam.ocaml.org/packages/extlib
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         %{name}.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-cppo
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20210121
 
 %description
 ExtLib is a project aiming at providing a complete - yet small -
@@ -53,6 +54,7 @@ developing applications that use %{name}.
 
 %build
 dune_release_pkgs='extlib'
+mv opam ${dune_release_pkgs}.opam
 %ocaml_dune_setup
 %ocaml_dune_build
 

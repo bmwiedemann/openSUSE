@@ -1,10 +1,13 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="url">https://github.com/dune-universe/ocaml-extlib.git</param>
-    <param name="scm">git</param>
-    <param name="versionformat">1.7.6</param>
-    <param name="revision">duniverse-1.7.6</param>
     <param name="filename">ocaml-extlib</param>
+    <param name="revision">079e7a8f58bd77990df46e3a27791f9853e072fe</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/ygrek/ocaml-extlib.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>

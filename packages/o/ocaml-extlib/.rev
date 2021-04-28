@@ -59,4 +59,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>746699</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>92d54187523aa39c1135f6446e7370bf</srcmd5>
+    <version>1.7.8</version>
+    <time>1619653004</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.8
+  * sync with OCaml 4.12
+  * ExtList.find_map type updated to match stdlib
+  * minimal (recommended) build of extlib now excludes Base64 module
+  * String: fold_left and fold_right without allocations
+- use ocaml-extlib.patch to build with dune</comment>
+    <requestid>867933</requestid>
+  </revision>
 </revisionlist>

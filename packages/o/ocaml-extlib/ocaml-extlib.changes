@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jan 21 21:21:21 UTC 2021 - ohering@suse.de
+
+- Update to version 1.7.8
+  * sync with OCaml 4.12
+  * ExtList.find_map type updated to match stdlib
+  * minimal (recommended) build of extlib now excludes Base64 module
+  * String: fold_left and fold_right without allocations
+- use ocaml-extlib.patch to build with dune
+
+-------------------------------------------------------------------
 Fri Nov  1 12:34:56 UTC 2019 - ohering@suse.de
 
 - Require current dune macros
