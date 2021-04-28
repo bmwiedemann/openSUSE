@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-jsonm
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,12 @@ Release:        0
 Summary:        Non-blocking streaming JSON codec for OCaml
 License:        ISC
 Group:          Development/Languages/OCaml
-Url:            http://erratique.ch/software/jsonm 
-Source:         %{name}-%{version}.tar.xz
+URL:            https://opam.ocaml.org/packages/jsonm
+Source0:        %{name}-%{version}.tar.xz
+Patch0:         ocaml-jsonm.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20191101
+BuildRequires:  ocaml-rpm-macros >= 20210121
 BuildRequires:  ocamlfind(uutf)
 
 %description
@@ -52,6 +53,7 @@ developing applications that use %{name}.
 
 %build
 dune_release_pkgs='jsonm'
+mv opam ${dune_release_pkgs}.opam
 %ocaml_dune_setup
 %ocaml_dune_build
 
