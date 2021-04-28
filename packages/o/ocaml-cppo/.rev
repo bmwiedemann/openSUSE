@@ -73,4 +73,13 @@
 - Remove cppo_ocamlbuild in preparation of ocamlbuild removal</comment>
     <requestid>778548</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c9cc4466523e7fa8aaef3de70d49f9a6</srcmd5>
+    <version>1.6.7</version>
+    <time>1619653003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.7
+  See included Changes for details</comment>
+    <requestid>867929</requestid>
+  </revision>
 </revisionlist>
