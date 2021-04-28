@@ -3,14 +3,14 @@
     <param name="url">https://github.com/coccinelle/coccinelle.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">d678c34afc0cfb479ad34f2225c57b1b8d3ebeae</param>
+    <param name="revision">25e7cee77b4b6efbabf60ffaa8bccd72500ba8bd</param>
     <param name="filename">coccinelle</param>
 <param name="exclude">bundles/menhirLib</param>
 <param name="exclude">bundles/parmap</param>
 <param name="exclude">bundles/pcre</param>
-<!--
 <param name="exclude">bundles/pyml</param>
 <param name="exclude">bundles/stdcompat</param>
+<!--
 -->
   </service>
   <service name="recompress" mode="disabled">

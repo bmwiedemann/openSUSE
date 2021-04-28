@@ -17,7 +17,7 @@
 
 
 Name:           coccinelle
-Version:        1.0.8
+Version:        1.1.0
 Release:        0
 Summary:        Semantic patch utility
 License:        GPL-2.0-only
@@ -29,14 +29,15 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml-menhir-devel
-BuildRequires:  ocaml-ocamlbuild
-BuildRequires:  ocaml-ocamldoc >= 3.11
-BuildRequires:  ocaml-parmap-devel
-BuildRequires:  ocaml-pcre-devel
-BuildRequires:  python-rpm-macros
 BuildRequires:  ocaml(ocaml.opt)
+BuildRequires:  ocaml-ocamldoc >= 3.11
+BuildRequires:  ocamlfind(findlib)
+BuildRequires:  ocamlfind(menhir)
+BuildRequires:  ocamlfind(parmap)
+BuildRequires:  ocamlfind(pcre)
+BuildRequires:  ocamlfind(pyml)
+BuildRequires:  ocamlfind(stdcompat)
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(python3)
 Requires:       python3-base
 
