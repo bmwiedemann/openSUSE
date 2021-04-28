@@ -1,7 +1,7 @@
 #
 # spec file for package gyp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2015 SUSE LINUX Products GmbH, Nurenberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@ Summary:        Generate Your Projects
 License:        BSD-3-Clause
 Group:          Development/Tools/Building
 URL:            https://gyp.gsrc.io
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.gz
 Patch0:         gyp-rpmoptflags.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -44,8 +44,7 @@ cross-platform build representation that still allows sufficient per-platform
 flexibility to accommodate irreconcilable differences
 
 %prep
-%setup -q
-%patch0
+%autosetup -p0
 for i in $(find pylib -name '*.py'); do
 	sed -e '\,#![ \t]*/.*python,{d}' $i > $i.new && touch -r $i $i.new && mv $i.new $i
 done

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 28 07:16:21 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Use obs service
+- Small spec file cleanup
+
+-------------------------------------------------------------------
 Mon Aug 31 08:51:44 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Convert to singlespec

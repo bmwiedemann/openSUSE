@@ -152,4 +152,13 @@
   * try a wrapper script</comment>
     <requestid>830707</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>69b6935f09e8805264c91151177632b9</srcmd5>
+    <version>0+git.20200512</version>
+    <time>1619653085</time>
+    <user>dimstar_suse</user>
+    <comment>- Use obs service
+- Small spec file cleanup</comment>
+    <requestid>888941</requestid>
+  </revision>
 </revisionlist>
