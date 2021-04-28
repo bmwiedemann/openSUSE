@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Apr 28 09:29:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.5.0:
+  * Official Python 3.9 support
+  * Experimental HTTP/2 support
+  * New get_retry_request() function to retry requests from spider
+    callbacks
+  * New headers_received signal that allows stopping downloads
+    early
+  * New Response.protocol attribute
+- Release 2.4.1:
+  * Fixed feed exports overwrite support
+  * Fixed the asyncio event loop handling, which could make code
+    hang
+  * Fixed the IPv6-capable DNS resolver CachingHostnameResolver
+    for download handlers that call reactor.resolve
+  * Fixed the output of the genspider command showing placeholders
+    instead of the import part of the generated spider module
+    (issue 4874)
+- Release 2.4.0:
+  * Python 3.5 support has been dropped.
+  * The file_path method of media pipelines can now access the
+    source item.
+  * This allows you to set a download file path based on item data.
+  * The new item_export_kwargs key of the FEEDS setting allows to
+    define keyword parameters to pass to item exporter classes.
+  * You can now choose whether feed exports overwrite or append to
+    the output file.
+  * For example, when using the crawl or runspider commands, you
+    can use the -O option instead of -o to overwrite the output
+    file.
+  * Zstd-compressed responses are now supported if zstandard is
+    installed.
+  * In settings, where the import path of a class is required, it
+    is now possible to pass a class object instead.
+- Release 2.3.0:
+  * Feed exports now support Google Cloud Storage as a storage
+    backend
+  * The new FEED_EXPORT_BATCH_ITEM_COUNT setting allows to deliver
+    output items in batches of up to the specified number of items.
+  * It also serves as a workaround for delayed file delivery,
+    which causes Scrapy to only start item delivery after the
+    crawl has finished when using certain storage backends (S3,
+    FTP, and now GCS).
+  * The base implementation of item loaders has been moved into a
+    separate library, itemloaders, allowing usage from outside
+    Scrapy and a separate release schedule
+- Release 2.2.1:
+  * The startproject command no longer makes unintended changes to
+    the permissions of files in the destination folder, such as
+    removing execution permissions.
+
+-------------------------------------------------------------------
 Fri Jul  3 17:05:03 UTC 2020 - Jacob W <jacob@jacobwinski.com>
 
 - Update to 2.2.0:
