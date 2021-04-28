@@ -24,4 +24,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>882532</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>25af52566a0acc7812923550e4eb2e2d</srcmd5>
+    <version>2.0.13</version>
+    <time>1619653081</time>
+    <user>dimstar_suse</user>
+    <comment>- Add seadrive-gui_fix-compilation-glib2_68.patch
+</comment>
+    <requestid>888929</requestid>
+  </revision>
 </revisionlist>

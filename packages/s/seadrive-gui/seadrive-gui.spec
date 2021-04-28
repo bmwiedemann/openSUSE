@@ -23,6 +23,8 @@ Summary:        GUI part of seafile drive
 License:        GPL-3.0-only
 URL:            https://github.com/haiwen/seadrive-gui/
 Source0:        https://github.com/haiwen/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/haiwen/seadrive-gui/pull/292
+Patch0:         seadrive-gui_fix-compilation-glib2_68.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
@@ -66,6 +68,9 @@ This package provides a graphical user interface for seadrive-fuse
 
 %prep
 %setup -q
+%if 0%{?suse_version} > 1500
+%patch0 -p1
+%endif
 
 %build
 export CFLAGS="%{optflags} -fPIE -pie"

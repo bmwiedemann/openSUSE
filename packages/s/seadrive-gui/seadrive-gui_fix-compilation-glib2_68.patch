@@ -1,0 +1,58 @@
+From 3671098cba2ce709be86545fcbbf91560666f9ce Mon Sep 17 00:00:00 2001
+From: Aleksei Bavshin <alebastr89@gmail.com>
+Date: Fri, 19 Feb 2021 15:27:26 +0000
+Subject: [PATCH] Remove `extern "C"` around glib headers
+
+Glib release 2.67.3 started conditionally using some C++ code in the
+public headers and it's no longer legal to include "glib.h" or anything
+that includes it transitively from `extern "C"` block.
+---
+ src/daemon-mgr.cpp     | 2 --
+ src/rpc/rpc-client.cpp | 4 ----
+ src/rpc/rpc-server.cpp | 4 ++--
+ 3 files changed, 2 insertions(+), 8 deletions(-)
+
+diff --git a/src/daemon-mgr.cpp b/src/daemon-mgr.cpp
+index 50cd73ff..e0e73816 100644
+--- a/src/daemon-mgr.cpp
++++ b/src/daemon-mgr.cpp
+@@ -1,7 +1,5 @@
+-extern "C" {
+ #include <searpc-client.h>
+ #include <searpc-named-pipe-transport.h>
+-}
+ 
+ #if defined(_MSC_VER)
+ #include <windows.h>
+diff --git a/src/rpc/rpc-client.cpp b/src/rpc/rpc-client.cpp
+index 09d4dc26..fa57e779 100644
+--- a/src/rpc/rpc-client.cpp
++++ b/src/rpc/rpc-client.cpp
+@@ -1,10 +1,6 @@
+-extern "C" {
+-
+ #include <searpc-client.h>
+ #include <searpc-named-pipe-transport.h>
+ 
+-}
+-
+ #include <QtDebug>
+ #include <QMutexLocker>
+ 
+diff --git a/src/rpc/rpc-server.cpp b/src/rpc/rpc-server.cpp
+index 0fd12c28..d678074b 100644
+--- a/src/rpc/rpc-server.cpp
++++ b/src/rpc/rpc-server.cpp
+@@ -1,10 +1,10 @@
+-extern "C" {
+-
+ #include <searpc.h>
+ #include <searpc-client.h>
+ #include <searpc-server.h>
+ #include <searpc-named-pipe-transport.h>
+ 
++extern "C" {
++
+ #include "searpc-signature.h"
+ #include "searpc-marshal.h"
+ 
