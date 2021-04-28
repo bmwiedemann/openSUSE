@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr 27 07:25:29 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.8.1
+  * Security fixes:
+    + CVE-2021-26291 and CVE-2020-13956
+  * Bug:
+    + [MNG-7128] - improve error message when blocked repository
+      defined in build POM
+  * New Feature
+    + [MNG-7116] - Add support for mirror selector on
+      external:http:*
+    + [MNG-7117] - Add support for blocking mirrors
+    + [MNG-7118] - Block external HTTP repositories by default
+  * Dependency upgrade
+    * [MNG-7119] - Upgrade Maven Wagon to 3.4.3
+    * [MNG-7123] - Upgrade Maven Resolver to 1.6.2
+
+-------------------------------------------------------------------
 Sun Mar  1 08:27:38 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Let maven-lib obsolete maven-jansi

@@ -31,4 +31,12 @@
     <comment>Obsolete maven-jansi package that once existed</comment>
     <requestid>785656</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bb2ddcf8e424bcf10c4d9bae280c7ba4</srcmd5>
+    <version>3.8.1</version>
+    <time>1619653064</time>
+    <user>dimstar_suse</user>
+    <comment>3.8.1</comment>
+    <requestid>888788</requestid>
+  </revision>
 </revisionlist>

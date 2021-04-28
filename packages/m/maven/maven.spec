@@ -1,7 +1,7 @@
 #
 # spec file for package maven
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global confdir %{_sysconfdir}/%{name}%{?maven_version_suffix}
 %bcond_with  logback
 Name:           maven
-Version:        3.6.3
+Version:        3.8.1
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0
@@ -93,7 +93,7 @@ BuildRequires:  xmvn-subst
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 Requires:       %{name}-lib = %{version}-%{release}
 Requires(post): aaa_base
-Requires(postun): aaa_base
+Requires(postun):aaa_base
 # maven-lib cannot be noarch because of the position of jansi-native.jar
 #BuildArch:      noarch
 %if %{with logback}
