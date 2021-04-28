@@ -38,4 +38,14 @@
     <comment></comment>
     <requestid>710119</requestid>
   </revision>
+  <revision rev="6" vrev="7">
+    <srcmd5>3987a7425aaa7de2327af438d39d3027</srcmd5>
+    <version>2.5</version>
+    <time>1619653087</time>
+    <user>dimstar_suse</user>
+    <comment>- Update project URL in spec file; the previously official domain
+  lbzip2.org has seemingly lapsed and been taken over by an impostor
+</comment>
+    <requestid>888944</requestid>
+  </revision>
 </revisionlist>
