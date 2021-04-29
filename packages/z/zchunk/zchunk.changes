@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 26 21:13:02 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.1.9
+  * Handle zstd 1.4.7+
+  * Update documentation
+  * unzck: require a *.zck extension
+  * General bug fixes
+- Dropped upstream merged
+  d2eae512bee09a4047cfe586de12f644d73b0736.patch
+- Add fix-test-argp.patch: Fix argp detection
+
+-------------------------------------------------------------------
 Mon Jan  4 08:39:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add d2eae512bee09a4047cfe586de12f644d73b0736.patch: Fix build
