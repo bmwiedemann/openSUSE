@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 29 03:06:15 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.007
+   see /usr/share/doc/packages/perl-Devel-OverloadInfo/Changes
+
+  0.007     2021-04-28 16:18:49+01:00 Europe/London
+    - No changes since 0.006
+
+  0.006     2021-04-22 18:55:28+01:00 Europe/London (TRIAL RELEASE)
+    - Remove dependency on Sub::Identify
+
+-------------------------------------------------------------------
 Wed Feb  7 16:23:31 UTC 2018 - coolo@suse.com
 
 - updated to 0.005
