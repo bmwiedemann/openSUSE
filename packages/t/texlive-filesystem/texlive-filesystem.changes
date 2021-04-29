@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 26 15:36:21 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Force updmap-sys to sync trees 
+
+-------------------------------------------------------------------
+Tue Apr 13 09:13:34 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Simplify update script, that is always hash before updating
+  font maps 
+
+-------------------------------------------------------------------
+Mon Apr 12 15:00:05 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Re-add texlive-updmap-map as it is not part of any archive
+  anymore but is required 
+
+-------------------------------------------------------------------
+Tue Apr  6 14:03:37 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to TeXLive 2021
+
+-------------------------------------------------------------------
 Tue Feb 23 16:21:58 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

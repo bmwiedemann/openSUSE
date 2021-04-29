@@ -112,6 +112,7 @@ type -p sed  &> /dev/null || { echo "${0##*/}: No sed in PATH ... skipping" 1>&2
 type -p tr   &> /dev/null || { echo "${0##*/}: No tr in PATH ... skipping" 1>&2; exit 0 ; }
 type -p grep &> /dev/null || { echo "${0##*/}: No grep in PATH ... skipping" 1>&2; exit 0 ; }
 type -p ed   &> /dev/null || { echo "${0##*/}: No ed in PATH ... skipping" 1>&2; exit 0 ; }
+type -p yes  &> /dev/null || { echo "${0##*/}: No yes in PATH ... skipping" 1>&2; exit 0 ; }
 
 # Be sure that configuring in /etc/texmf will work even if
 # there are files relative to /etc/texmf ...
@@ -552,17 +553,14 @@ for run in /var/run/texlive/run-updmap* ; do
 	    ;;
 	esac
     done < $run
-    updmap-sys --cnffile $cnf_umap --nohash --syncwithtrees < /dev/null 1>&4 2>&4
+    mktexlsr < /dev/null 1>&4 2>&4
+    let rc+=$?
+    updmap-sys --cnffile $cnf_umap --nohash --syncwithtrees < <(yes 2>/dev/null) 1>&4 2>&4
     let rc+=$?
     enablemaps $cnf_umap < /dev/null 1>&4 2>&4
     let rc+=$?
-    if test -e /var/run/texlive/run-mktexlsr ; then
-	updmap-sys --cnffile $cnf_umap < /dev/null 1>&4 2>&4
-	let rc+=$?
-    else
-	updmap-sys --cnffile $cnf_umap --nohash < /dev/null 1>&4 2>&4
-	let rc+=$?
-    fi
+    updmap-sys --cnffile $cnf_umap --nohash < /dev/null 1>&4 2>&4
+    let rc+=$?
     ((rc == 0)) || continue
     rm -f /var/run/texlive/run-updmap*
     rm -f /var/run/texlive/sync-updmap*
@@ -575,18 +573,13 @@ for run in /var/run/texlive/sync-updmap* ; do
     type -p updmap-sys  &> /dev/null || break
     test -e "$cnf_umap" || break
     test $VERBOSE = true && { echo -en "\r[ ]Updating TeX font mappings."; let nl++; }
-    updmap-sys --cnffile $cnf_umap --nohash --syncwithtrees < /dev/null 1>&4 2>&4
+    mktexlsr < /dev/null 1>&4 2>&4
+    let rc+=$?
+    updmap-sys --cnffile $cnf_umap --nohash --syncwithtrees < <(yes 2>/dev/null) 1>&4 2>&4
     let rc+=$?
     enablemaps $cnf_umap < /dev/null 1>&4 2>&4
+    updmap-sys --cnffile $cnf_umap --nohash < /dev/null 1>&4 2>&4
     let rc+=$?
-    if test -e /var/run/texlive/run-mktexlsr ; then
-	updmap-sys --cnffile $cnf_umap < /dev/null 1>&4 2>&4
-	let rc+=$?
-	rm -f /var/run/texlive/run-mktexlsr*
-    else
-	updmap-sys --cnffile $cnf_umap --nohash < /dev/null 1>&4 2>&4
-	let rc+=$?
-    fi
     ((rc == 0)) || continue
     rm -f /var/run/texlive/sync-updmap*
     rm -f /var/run/texlive/run-mktexlsr*

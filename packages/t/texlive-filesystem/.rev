@@ -475,4 +475,20 @@
 - Skip packages which are based on python2</comment>
     <requestid>877921</requestid>
   </revision>
+  <revision rev="48" vrev="51">
+    <srcmd5>a0fb7c70541fb8eb225aecd4270c047d</srcmd5>
+    <version>unknown</version>
+    <time>1619729140</time>
+    <user>dimstar_suse</user>
+    <comment>- Force updmap-sys to sync trees 
+
+- Simplify update script, that is always hash before updating
+  font maps 
+
+- Re-add texlive-updmap-map as it is not part of any archive
+  anymore but is required 
+
+- Update to TeXLive 2021</comment>
+    <requestid>888675</requestid>
+  </revision>
 </revisionlist>
