@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 28 16:11:39 UTC 2021 - rpm@fthiessen.de
+
+- Update to version 0.9.4:
+  * docs: add man page for sbkeysync
+  * Fix errors on 32 bit
+  * sbverify: refer to unused function
+  * sbvarsign: remove unused global variable
+  * Fix some openssl 1.1.0 deprecated functions
+  * sbverify: fix verification with intermediate certificates
+  * sbsign: allow for adding intermediate certificates
+
+-------------------------------------------------------------------
 Mon Apr 27 11:50:40 UTC 2020 - Martin Loviska <mloviska@suse.com>
 
 - Remove GROUP from spec file 

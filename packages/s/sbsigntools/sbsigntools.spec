@@ -1,7 +1,7 @@
 #
 # spec file for package sbsigntools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           sbsigntools
 Summary:        Canonical EFI binary signing tools
 License:        GPL-3.0-only
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 URL:            http://git.kernel.org/pub/scm/linux/kernel/git/jejb/sbsigntools.git
 Source:         %{name}-%{version}.tar.gz
@@ -56,7 +56,6 @@ make check
 %make_install
 
 %files 
-%defattr(-,root,root,-)
 %license COPYING
 %{_bindir}/*
 %{_mandir}/man1/*

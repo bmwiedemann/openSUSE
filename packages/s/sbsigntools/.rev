@@ -7,4 +7,12 @@
     <comment>Add aditional utilities for UEFI and SecureBoot</comment>
     <requestid>799189</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>94135305eecbc7f9f21243419823ec44</srcmd5>
+    <version>0.9.4</version>
+    <time>1619729189</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.9.4: (forwarded request 889075 from susnux)</comment>
+    <requestid>889228</requestid>
+  </revision>
 </revisionlist>
