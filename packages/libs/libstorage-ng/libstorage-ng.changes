@@ -1,4 +1,20 @@
 --------------------------------------------------------------------
+Tue Apr 27 18:56:40 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#804
+- added function Holder::get_devicegraph()
+- fixed typo
+- use in-class member initialization
+- 4.4.1
+
+--------------------------------------------------------------------
+Tue Apr 27 14:10:17 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#803
+- support setting UUIDs for RAID, LUKS and more filesystems
+- 4.4.0
+
+--------------------------------------------------------------------
 Wed Apr 7 14:14:26 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#802
