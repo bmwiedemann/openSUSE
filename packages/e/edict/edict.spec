@@ -1,7 +1,7 @@
 #
 # spec file for package edict
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           edict
-Version:        20201102
+Version:        20210429
 Release:        0
 Summary:        The Japanese Dictionary from the EDRDG project (EDICT format)
 License:        CC-BY-SA-3.0 AND CC-BY-SA-4.0
@@ -89,7 +89,7 @@ contains the XML variant of:
 * the KANJIDIC project's Kanji dictionary (covering JIS 0208/0212/0213;
   "kanjidic2.xml" file)
 
-%prep 
+%prep
 # Make %%doc work
 cp "%_sourcedir"/*.htm* .
 
