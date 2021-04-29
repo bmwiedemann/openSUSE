@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 29 11:04:04 UTC 2021 - Oliver Kurz <okurz@suse.com>
+
+- Ignore more unstable tests (https://github.com/mudler/Mojo-IOLoop-ReadWriteProcess/issues/14)
+
+-------------------------------------------------------------------
 Fri Nov 13 08:35:16 UTC 2020 - Oliver Kurz <okurz@suse.com>
 
 - Ignore unstable tests (https://github.com/mudler/Mojo-IOLoop-ReadWriteProcess/issues/14)

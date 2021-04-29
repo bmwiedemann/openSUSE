@@ -54,7 +54,7 @@ perl Build.PL installdirs=vendor
 %check
 echo "ignoring unstable tests"
 echo "https://github.com/mudler/Mojo-IOLoop-ReadWriteProcess/issues/14"
-rm t/{07_autodetect,12_mocked_container,04_queues,05_serialize}.t
+rm t/{07_autodetect,12_mocked_container,04_queues,05_serialize,06_events}.t
 ./Build test
 
 %install
