@@ -105,6 +105,7 @@ BuildRequires:  texlive-latex
 BuildRequires:  texlive-sfmath
 BuildRequires:  texlive-tex
 BuildRequires:  tex(8a.enc)
+BuildRequires:  tex(geometry.sty)
 BuildRequires:  tex(helvet.sty)
 BuildRequires:  tex(phvr7t.tfm)
 BuildRequires:  tex(pncr7t.tfm)
