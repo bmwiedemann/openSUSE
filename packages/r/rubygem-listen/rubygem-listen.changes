@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 24 08:36:03 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 3.5.1
+
+  * Bump required ruby version to v2.4.0 (#536) @cgunther
+
+-------------------------------------------------------------------
 Wed Jan 20 12:53:37 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 3.4.1

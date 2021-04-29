@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-listen
-Version:        3.4.1
+Version:        3.5.1
 Release:        0
 %define mod_name listen
 %define mod_full_name %{mod_name}-%{version}
@@ -35,7 +35,7 @@ Release:        0
 %endif
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.2.7}
+BuildRequires:  %{ruby >= 2.4.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  update-alternatives
