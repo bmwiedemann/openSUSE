@@ -1,7 +1,7 @@
 #
 # spec file for package sapstartsrv-resource-agents
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2020-2021 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,22 +23,16 @@
 Name:           sapstartsrv-resource-agents
 License:        GPL-2.0
 Group:          Productivity/Clustering/HA
-AutoReqProv:    on
 Summary:        Resource agent for SAP instance specific sapstartsrv service
-Version:        0.9.0+git.1617199081.815e7ba
+Version:        0.9.0+git.1619681975.ad20a04
 Release:        0
-Url:            https://github.com/SUSE/SAPStartSrv-resourceAgent
-
-BuildArch:      noarch
-
+URL:            https://github.com/SUSE/SAPStartSrv-resourceAgent
 Source0:        %{name}-%{version}.tar.gz
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-Requires:       pacemaker > 1.1.1
-Requires:       resource-agents
-Requires:       python3
+BuildArch:      noarch
 BuildRequires:  resource-agents
+Requires:       resource-agents
+Requires:       pacemaker > 1.1.1
+Requires:       python3
 %if %{with test}
 BuildRequires:  python3-mock
 BuildRequires:  python3-pytest
@@ -46,7 +40,7 @@ BuildRequires:  python3-pytest
 
 %define raname SAPStartSrv
 %define srvname sapservices-move
-%define ocf_dir /usr/lib/ocf
+%define ocf_dir %{_prefix}/lib/ocf
 
 %description
 This is a resource agent for the instance specific SAP start framework.
@@ -66,17 +60,17 @@ Authors:
 gzip man/*
 
 %install
-mkdir -p %{buildroot}%{ocf_dir}/resource.d/suse
-mkdir -p %{buildroot}%{_mandir}/man7
-mkdir -p %{buildroot}%{_mandir}/man8
-mkdir -p %{buildroot}%{_sbindir}
-mkdir -p %{buildroot}%{_unitdir}
-
-install -m 0755 ra/%{raname}.in %{buildroot}%{ocf_dir}/resource.d/suse/%{raname}
+install -D -m 0755 ra/%{raname}.in %{buildroot}%{ocf_dir}/resource.d/suse/%{raname}
+install -d %{buildroot}%{_mandir}/man7
+install -d %{buildroot}%{_mandir}/man8
 install -m 0444 man/*.7.gz %{buildroot}%{_mandir}/man7
 install -m 0444 man/*.8.gz %{buildroot}%{_mandir}/man8
-install -m 0644 sbin/%{srvname}.in %{buildroot}%{_sbindir}/%{srvname}
+install -D -m 0644 sbin/%{srvname}.in %{buildroot}%{_sbindir}/%{srvname}
+install -d %{buildroot}%{_unitdir}
 install -m 0644 service/* %{buildroot}%{_unitdir}
+ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcsapping
+ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcsappong
+
 sed -i 's+@PYTHON@+%{_bindir}/python3+' %{buildroot}%{ocf_dir}/resource.d/suse/%{raname}
 sed -i 's+@PYTHON@+%{_bindir}/python3+' %{buildroot}%{_sbindir}/%{srvname}
 
@@ -85,18 +79,30 @@ sed -i 's+@PYTHON@+%{_bindir}/python3+' %{buildroot}%{_sbindir}/%{srvname}
 pytest tests
 %endif
 
+%pre
+%service_add_pre sapping.service sappong.service
+
+%post
+%service_add_post sapping.service sappong.service
+
+%preun
+%service_del_preun sapping.service sappong.service
+
+%postun
+%service_del_postun sapping.service sappong.service
+
 %files
 %defattr(-,root,root)
-%doc README.md
 %license LICENSE
+%doc README.md
 %{_mandir}/man7/*.7.gz
 %{_mandir}/man8/*.8.gz
 %dir %{ocf_dir}
 %dir %{ocf_dir}/resource.d
-%defattr(755,root,root,-)
 %dir %{ocf_dir}/resource.d/suse
-%{_sbindir}*
-%{ocf_dir}/resource.d/suse/*
+%defattr(755,root,root,-)
+%{ocf_dir}/resource.d/suse/%{raname}
+%{_sbindir}/*
 %defattr(644,root,root,-)
 %{_unitdir}/*
 

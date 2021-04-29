@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 22 13:05:47 UTC 2021 - abriel@suse.com
+
+- remove deprecated option "syslog" from the sapping.service and
+  sappong.service files.
+  (bsc#1185152)
+
+-------------------------------------------------------------------
 Wed Mar 31 09:43:09 UTC 2021 - abriel@suse.com
 
 - prevent sapping.service from running a second time after a
@@ -18,4 +25,8 @@ Fri Dec  4 15:22:52 UTC 2020 - Fabian Herschel <fabian.herschel@suse.com>
 -------------------------------------------------------------------
 Wed Sep 16 09:33:32 UTC 2020 - Xabier Arbulu <xarbulu@suse.com>
 
+- Simplified Cluster FS architecture for S/4HANA and NetWeaver
+  It controls the instance specific sapstartsrv process which
+  provides the API to start, stop and check a SAP instance.
+  (jsc#ECO-3341, jsc#SLE-16935, jsc#SLE-17440)
 - Include python version to the resource agent 
