@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 29 12:32:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to new upstream release 5.2.2
+  * Hexen graphics are now treated a bit more specially,
+    the last entry in the palette no longer counting as a candidate
+    to produce transparency in the output file.
+
+-------------------------------------------------------------------
 Fri Aug 23 17:57:35 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 5.2.1
@@ -52,7 +60,7 @@ Mon Jan  1 07:58:11 UTC 2018 - avindra@opensuse.org
   * Levels are extracted/inserted in a way to preserve GL nodes.
   * Inserting pictures with a height of 1 pixel no longer causes
     a malloc error, and allows the operation of rebuilding a
-    Doom 1 or 2 IWAD.
+    Doom 1 or 2 IWAD.
   * Texture lump file names can now be overridden.
   * Support reading and writing sprite offsets based on PNG
     "grAb" chunks (cf. grabpng package) in a manner compatible

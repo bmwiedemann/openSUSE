@@ -92,4 +92,12 @@ https://github.com/Doom-Utils/deutex/commit/f8b1336bbcb7bc387d3e856cc7c9f75697cd
     <comment>- Update to new upstream release 5.2.1</comment>
     <requestid>725662</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ec9aad8533a30d30f62fd5e23f5b8107</srcmd5>
+    <version>5.2.2</version>
+    <time>1619729207</time>
+    <user>dimstar_suse</user>
+    <comment>Update to new upstream release 5.2.2 (forwarded request 889299 from susnux)</comment>
+    <requestid>889325</requestid>
+  </revision>
 </revisionlist>
