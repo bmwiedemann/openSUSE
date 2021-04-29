@@ -408,4 +408,14 @@ The license in the LICENSE file is ISC, not MIT (http://www.spdx.org/licenses/IS
   * wireless-regdb: Do not hardcode 'sforshee' in the certificate commonName</comment>
     <requestid>884892</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b83255bfa19b69c16987a8babfc82b64</srcmd5>
+    <version>20210421</version>
+    <time>1619729086</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210421:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: re-add source url and info for CU</comment>
+    <requestid>888974</requestid>
+  </revision>
 </revisionlist>

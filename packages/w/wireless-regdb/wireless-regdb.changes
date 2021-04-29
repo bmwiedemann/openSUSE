@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 28 07:46:54 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20210421:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: re-add source url and info for CU
+
+-------------------------------------------------------------------
 Tue Apr 13 09:02:55 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20210407:
