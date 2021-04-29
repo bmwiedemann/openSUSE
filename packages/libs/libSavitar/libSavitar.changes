@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 26 20:04:31 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.9.0
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.9
+
+-------------------------------------------------------------------
 Sun Nov 22 18:51:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Depend on the PyQt5.sip module (see sr#849990 for libArcus)

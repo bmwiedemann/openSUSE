@@ -1,7 +1,7 @@
 #
 # spec file for package libSavitar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 %define sover 0
 Name:           libSavitar
-%define sversion        4.8
-Version:        4.8.0
+%define sversion        4.9
+Version:        4.9.0
 Release:        0
 Summary:        C++ implementation of 3mf loading with SIP python bindings
 License:        LGPL-3.0-only
