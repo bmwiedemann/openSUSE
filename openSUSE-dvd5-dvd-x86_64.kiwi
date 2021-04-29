@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20210427" schemaversion="4.1">
+<image name="OBS__openSUSE___20210428" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210427</productvar>
+      <productvar name="VERSION">20210428</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210427,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210428,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210427/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210428/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -321,9 +321,7 @@
       <repopackage name="colord-color-profiles"/>
       <repopackage name="colord-gtk-lang"/>
       <repopackage name="colord-lang"/>
-      <repopackage name="command-not-found"/>
       <repopackage name="container-selinux"/>
-      <repopackage name="CoreFreq-kmp-default" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-doc"/>
       <repopackage name="coreutils-lang"/>
@@ -428,7 +426,6 @@
       <repopackage name="dragonplayer"/>
       <repopackage name="dragonplayer-lang"/>
       <repopackage name="drbd" arch="x86_64"/>
-      <repopackage name="drbd-kmp-default" arch="x86_64"/>
       <repopackage name="drbd-utils" arch="x86_64"/>
       <repopackage name="drkonqi5"/>
       <repopackage name="drkonqi5-lang"/>
@@ -844,6 +841,8 @@
       <repopackage name="gstreamer-plugins-ugly-lang"/>
       <repopackage name="gstreamer-transcoder"/>
       <repopackage name="gstreamer-utils"/>
+      <repopackage name="gtg"/>
+      <repopackage name="gtg-lang"/>
       <repopackage name="gthumb"/>
       <repopackage name="gthumb-lang"/>
       <repopackage name="gtk-vnc-lang"/>
@@ -931,7 +930,6 @@
       <repopackage name="hack-fonts"/>
       <repopackage name="haveged"/>
       <repopackage name="hddtemp"/>
-      <repopackage name="hdjmod-kmp-default" arch="x86_64"/>
       <repopackage name="hdparm"/>
       <repopackage name="health-checker"/>
       <repopackage name="health-checker-plugins-MicroOS"/>
@@ -1347,7 +1345,7 @@
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
-      <repopackage name="krb5-client"/>
+      <repopackage name="krb5-client" arch="x86_64"/>
       <repopackage name="krdc" arch="x86_64"/>
       <repopackage name="krdc-lang" arch="x86_64"/>
       <repopackage name="krename"/>
@@ -3526,9 +3524,6 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
-      <repopackage name="openafs"/>
-      <repopackage name="openafs-client"/>
-      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
@@ -4085,6 +4080,8 @@
       <repopackage name="python38-lazr.config"/>
       <repopackage name="python38-lazr.delegates"/>
       <repopackage name="python38-ldap" arch="x86_64"/>
+      <repopackage name="python38-liblarch"/>
+      <repopackage name="python38-liblarch-gtk"/>
       <repopackage name="python38-libvirt-python"/>
       <repopackage name="python38-libxml2"/>
       <repopackage name="python38-linux-procfs"/>
@@ -4281,7 +4278,6 @@
       <repopackage name="rtkit"/>
       <repopackage name="rtl-sdr"/>
       <repopackage name="rtl-sdr-udev"/>
-      <repopackage name="rtl8812au-kmp-default" arch="x86_64"/>
       <repopackage name="rtl_433"/>
       <repopackage name="ruby"/>
       <repopackage name="ruby-common"/>
@@ -4696,6 +4692,7 @@
       <repopackage name="scim-hangul"/>
       <repopackage name="scim-lang"/>
       <repopackage name="scout"/>
+      <repopackage name="scout-command-not-found"/>
       <repopackage name="screen"/>
       <repopackage name="sddm"/>
       <repopackage name="sddm-branding-openSUSE"/>

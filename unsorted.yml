@@ -32,6 +32,7 @@ unsorted:
   - ComputeLibrary-devel: [x86_64] 
   - ComputeLibrary-sample-data: [x86_64] 
   - CoreFreq: [x86_64] 
+  - CoreFreq-kmp-default: [x86_64] 
   - CorsixTH 
   - Crystalcursors 
   - DVDStyler 
@@ -2981,6 +2982,7 @@ unsorted:
   - dracut-sshd 
   - dracut-tools 
   - drbd-formula 
+  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -3904,9 +3906,6 @@ unsorted:
   - gangway 
   - garlic 
   - garlic-doc 
-  - gasnet 
-  - gasnet-devel 
-  - gasnet-doc 
   - gaupol 
   - gavl 
   - gbdfed 
@@ -6541,7 +6540,7 @@ unsorted:
   - hdf5_1_10_7-hpc-examples 
   - hdhomerun_config 
   - hdhomerun_config_gui 
-  - hdjmod-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - hdjmod-kmp-default 
   - hdjmod-kmp-pae: [i586] 
   - hdspconf 
   - hdsploader 
@@ -6880,7 +6879,6 @@ unsorted:
   - imb_2021_2-gnu-openmpi2-hpc 
   - imb_2021_2-gnu-openmpi3-hpc 
   - imb_2021_2-gnu-openmpi4-hpc 
-  - imgen 
   - imgp 
   - imgp-bash-completion 
   - imgp-fish-completion 
@@ -8050,6 +8048,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -8516,6 +8515,7 @@ unsorted:
   - lensfun-doc 
   - lensfun-tools 
   - leocad 
+  - lepton: [x86_64] 
   - leptonica-devel 
   - leptonica-tools 
   - leveldb 
@@ -10642,7 +10642,6 @@ unsorted:
   - libgarcon-branding-upstream 
   - libgarcon-devel 
   - libgarcon-doc 
-  - libgasnet-1_32_0 
   - libgavl-devel 
   - libgbm-devel 
   - libgbm-devel-32bit: [x86_64] 
@@ -10797,7 +10796,7 @@ unsorted:
   - libgmime-3_0-0-32bit: [x86_64] 
   - libgmpxx4 
   - libgmpxx4-32bit: [x86_64] 
-  - libgmsh4_7 
+  - libgmsh4_8 
   - libgnome-desktop-3-devel 
   - libgnome-games-support-devel 
   - libgnome-keyring-devel 
@@ -13650,10 +13649,7 @@ unsorted:
   - libstoragemgmt-hpsa-plugin 
   - libstoragemgmt-local-plugin 
   - libstoragemgmt-megaraid-plugin 
-  - libstoragemgmt-netapp-plugin 
   - libstoragemgmt-nfs-plugin 
-  - libstoragemgmt-nfs-plugin-clibs 
-  - libstoragemgmt-nstor-plugin 
   - libstoragemgmt-smis-plugin 
   - libstoragemgmt-targetd-plugin 
   - libstoragemgmt-udev 
@@ -15149,6 +15145,7 @@ unsorted:
   - lvm2-devel 
   - lvm2-lockd 
   - lvm2-testsuite 
+  - lwjgl3 
   - lxappearance 
   - lxappearance-devel 
   - lxappearance-lang 
@@ -17247,10 +17244,20 @@ unsorted:
   - obs-service-tar_scm 
   - obs-service-verify_file 
   - ocaml 
+  - ocaml-astring 
+  - ocaml-astring-devel 
   - ocaml-base 
   - ocaml-base-devel 
+  - ocaml-base64 
+  - ocaml-base64-devel 
   - ocaml-benchmark 
   - ocaml-benchmark-devel 
+  - ocaml-bigarray-compat 
+  - ocaml-bigarray-compat-devel 
+  - ocaml-bin_prot 
+  - ocaml-bin_prot-devel 
+  - ocaml-bisect_ppx 
+  - ocaml-bisect_ppx-devel 
   - ocaml-brlapi 
   - ocaml-cairo 
   - ocaml-cairo-devel 
@@ -17262,7 +17269,6 @@ unsorted:
   - ocaml-camlp5-devel 
   - ocaml-camlzip 
   - ocaml-camlzip-devel 
-  - ocaml-camlzip-test 
   - ocaml-camomile 
   - ocaml-camomile-data 
   - ocaml-camomile-devel 
@@ -17272,8 +17278,12 @@ unsorted:
   - ocaml-compiler-libs-devel 
   - ocaml-cppo 
   - ocaml-cppo-devel 
+  - ocaml-csexp 
+  - ocaml-csexp-devel 
   - ocaml-csv 
   - ocaml-csv-devel 
+  - ocaml-ctypes 
+  - ocaml-ctypes-devel 
   - ocaml-cudf 
   - ocaml-cudf-devel 
   - ocaml-curses 
@@ -17281,6 +17291,8 @@ unsorted:
   - ocaml-dose 
   - ocaml-dose-devel 
   - ocaml-dune 
+  - ocaml-dune-configurator 
+  - ocaml-dune-configurator-devel 
   - ocaml-dune-devel 
   - ocaml-easy-format 
   - ocaml-easy-format-devel 
@@ -17288,10 +17300,16 @@ unsorted:
   - ocaml-extlib-devel 
   - ocaml-facile 
   - ocaml-facile-devel 
+  - ocaml-fieldslib 
+  - ocaml-fieldslib-devel 
   - ocaml-fileutils 
   - ocaml-fileutils-devel 
   - ocaml-findlib 
   - ocaml-findlib-devel 
+  - ocaml-fmt 
+  - ocaml-fmt-devel 
+  - ocaml-fpath 
+  - ocaml-fpath-devel 
   - ocaml-gen 
   - ocaml-gen-devel 
   - ocaml-gettext 
@@ -17300,10 +17318,10 @@ unsorted:
   - ocaml-graphics-devel 
   - ocaml-hivex 
   - ocaml-hivex-devel 
+  - ocaml-integers 
+  - ocaml-integers-devel 
   - ocaml-jsonm 
   - ocaml-jsonm-devel 
-  - ocaml-lablgl 
-  - ocaml-lablgl-devel 
   - ocaml-lablgtk2 
   - ocaml-lablgtk2-devel 
   - ocaml-lablgtk3 
@@ -17312,6 +17330,10 @@ unsorted:
   - ocaml-libguestfs-devel: [x86_64] 
   - ocaml-libvirt 
   - ocaml-libvirt-devel 
+  - ocaml-logs 
+  - ocaml-logs-devel 
+  - ocaml-luv 
+  - ocaml-luv-devel 
   - ocaml-mccs 
   - ocaml-mccs-devel 
   - ocaml-menhir 
@@ -17322,9 +17344,9 @@ unsorted:
   - ocaml-minisat-devel 
   - ocaml-num 
   - ocaml-num-devel 
-  - ocaml-oasis 
-  - ocaml-oasis-devel 
   - ocaml-obuild 
+  - ocaml-ocaml-compiler-libs 
+  - ocaml-ocaml-compiler-libs-devel 
   - ocaml-ocamlbuild 
   - ocaml-ocamlbuild-devel 
   - ocaml-ocamldoc 
@@ -17336,12 +17358,30 @@ unsorted:
   - ocaml-parmap-devel 
   - ocaml-pcre 
   - ocaml-pcre-devel 
+  - ocaml-ppx_bin_prot 
+  - ocaml-ppx_bin_prot-devel 
+  - ocaml-ppx_compare 
+  - ocaml-ppx_compare-devel 
+  - ocaml-ppx_custom_printf 
+  - ocaml-ppx_custom_printf-devel 
   - ocaml-ppx_derivers 
   - ocaml-ppx_derivers-devel 
-  - ocaml-ppx_tools_versioned 
-  - ocaml-ppx_tools_versioned-devel 
+  - ocaml-ppx_fields_conv 
+  - ocaml-ppx_fields_conv-devel 
+  - ocaml-ppx_here 
+  - ocaml-ppx_here-devel 
+  - ocaml-ppx_optcomp 
+  - ocaml-ppx_optcomp-devel 
+  - ocaml-ppx_sexp_conv 
+  - ocaml-ppx_sexp_conv-devel 
+  - ocaml-ppx_variants_conv 
+  - ocaml-ppx_variants_conv-devel 
+  - ocaml-ppxlib 
+  - ocaml-ppxlib-devel 
   - ocaml-ptmap 
   - ocaml-ptmap-devel 
+  - ocaml-pyml 
+  - ocaml-pyml-devel 
   - ocaml-qcheck 
   - ocaml-qcheck-devel 
   - ocaml-qtest 
@@ -17361,16 +17401,20 @@ unsorted:
   - ocaml-sha 
   - ocaml-sha-devel 
   - ocaml-source 
+  - ocaml-stdcompat 
+  - ocaml-stdcompat-devel 
+  - ocaml-stdio 
+  - ocaml-stdio-devel 
   - ocaml-stdlib-shims 
   - ocaml-stdlib-shims-devel 
   - ocaml-uutf 
   - ocaml-uutf-devel 
+  - ocaml-variantslib 
+  - ocaml-variantslib-devel 
   - ocaml-xml-light 
   - ocaml-xml-light-devel 
   - ocaml-zarith 
   - ocaml-zarith-devel 
-  - ocamlify 
-  - ocamlmod 
   - occt-DRAWEXE 
   - occt-devel 
   - occt-devel-doc 
@@ -17641,11 +17685,14 @@ unsorted:
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -20271,6 +20318,7 @@ unsorted:
   - podman: [i586] 
   - podman-cni-config: [i586] 
   - podman-docker 
+  - podman-remote 
   - podofo 
   - poedit 
   - poedit-lang 
@@ -21097,7 +21145,6 @@ unsorted:
   - python3-libsmraw 
   - python3-libsoc 
   - python3-libstoragemgmt 
-  - python3-libstoragemgmt-clibs 
   - python3-libtorrent-rasterbar 
   - python3-libtorrent-rasterbar-1 
   - python3-libvhdi 
@@ -21397,7 +21444,6 @@ unsorted:
   - python36-PyQRCode 
   - python36-PyRIC 
   - python36-PyRSS2Gen 
-  - python36-PyRect 
   - python36-PySDL2 
   - python36-PyScreeze 
   - python36-PySocks 
@@ -22558,6 +22604,7 @@ unsorted:
   - python36-isodate 
   - python36-isort 
   - python36-itemadapter 
+  - python36-itemloaders 
   - python36-itsdangerous 
   - python36-itypes 
   - python36-iwlib 
@@ -23290,6 +23337,7 @@ unsorted:
   - python36-pytest-httpserver 
   - python36-pytest-instafail 
   - python36-pytest-isort 
+  - python36-pytest-json-report 
   - python36-pytest-lazy-fixture 
   - python36-pytest-localserver 
   - python36-pytest-metadata 
@@ -23999,7 +24047,6 @@ unsorted:
   - python36-yg.lockfile 
   - python36-youtube-dl 
   - python36-yq 
-  - python36-yt 
   - python36-zake 
   - python36-zc.buildout 
   - python36-zc.customdoctests 
@@ -25367,6 +25414,7 @@ unsorted:
   - python38-isodate 
   - python38-isort 
   - python38-itemadapter 
+  - python38-itemloaders 
   - python38-itsdangerous 
   - python38-itypes 
   - python38-iwlib 
@@ -25507,8 +25555,6 @@ unsorted:
   - python38-libarchive-c 
   - python38-libcst 
   - python38-libkdumpfile 
-  - python38-liblarch 
-  - python38-liblarch-gtk 
   - python38-libnacl 
   - python38-libpfm 
   - python38-librosa 
@@ -26153,6 +26199,7 @@ unsorted:
   - python38-pytest-httpserver 
   - python38-pytest-instafail 
   - python38-pytest-isort 
+  - python38-pytest-json-report 
   - python38-pytest-lazy-fixture 
   - python38-pytest-localserver 
   - python38-pytest-metadata 
@@ -27000,6 +27047,7 @@ unsorted:
   - python39-HTTPolice 
   - python39-HeapDict 
   - python39-IMAPClient 
+  - python39-IMDbPY 
   - python39-JPype1 
   - python39-Jinja2 
   - python39-Js2Py 
@@ -27076,6 +27124,7 @@ unsorted:
   - python39-PyQRCode 
   - python39-PyRIC 
   - python39-PyRSS2Gen 
+  - python39-PyRect 
   - python39-PySDL2 
   - python39-PyScreeze 
   - python39-PySocks 
@@ -27102,6 +27151,7 @@ unsorted:
   - python39-SPARQLWrapper 
   - python39-SQLAlchemy 
   - python39-SQLAlchemy-Utils 
+  - python39-Scrapy 
   - python39-SecretStorage 
   - python39-Send2Trash 
   - python39-Shapely 
@@ -27809,6 +27859,7 @@ unsorted:
   - python39-dfwinreg 
   - python39-dialite 
   - python39-dictdiffer 
+  - python39-dictknife 
   - python39-dicttoxml 
   - python39-diff-match-patch 
   - python39-diffimg 
@@ -28150,6 +28201,7 @@ unsorted:
   - python39-gphoto2 
   - python39-gprof2dot 
   - python39-gps3 
+  - python39-gpxpy 
   - python39-grab 
   - python39-graphene 
   - python39-graphene-django 
@@ -28175,6 +28227,7 @@ unsorted:
   - python39-gwdatafind 
   - python39-gwosc 
   - python39-gwyfile 
+  - python39-gyp 
   - python39-h11 
   - python39-h2 
   - python39-h5netcdf 
@@ -28300,6 +28353,7 @@ unsorted:
   - python39-isodate 
   - python39-isort 
   - python39-itemadapter 
+  - python39-itemloaders 
   - python39-itsdangerous 
   - python39-itypes 
   - python39-iwlib 
@@ -28432,6 +28486,7 @@ unsorted:
   - python39-lexicon 
   - python39-lfdfiles 
   - python39-lhafile 
+  - python39-lib3to6 
   - python39-libarchive 
   - python39-libarchive-c 
   - python39-libcst 
@@ -28831,6 +28886,7 @@ unsorted:
   - python39-precise-runner 
   - python39-preggy 
   - python39-premailer 
+  - python39-prestring 
   - python39-pretend 
   - python39-proboscis 
   - python39-process-tests 
@@ -28991,6 +29047,7 @@ unsorted:
   - python39-pymacaroons-pynacl 
   - python39-pymad 
   - python39-pymarc 
+  - python39-pymavlink 
   - python39-pymediainfo 
   - python39-pymemcache 
   - python39-pymetar 
@@ -29102,6 +29159,7 @@ unsorted:
   - python39-pytest-httpserver 
   - python39-pytest-instafail 
   - python39-pytest-isort 
+  - python39-pytest-json-report 
   - python39-pytest-lazy-fixture 
   - python39-pytest-localserver 
   - python39-pytest-metadata 
@@ -29855,6 +29913,7 @@ unsorted:
   - python39-yg.lockfile 
   - python39-youtube-dl 
   - python39-yq 
+  - python39-yt 
   - python39-zake 
   - python39-zarr 
   - python39-zc.buildout 
@@ -30591,7 +30650,7 @@ unsorted:
   - rtaudio-devel 
   - rtl-sdr-devel 
   - rtl8812au 
-  - rtl8812au-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - rtl8812au-kmp-default 
   - rtl8812au-kmp-pae: [i586] 
   - rtl_433-devel 
   - rtmidi-devel 
@@ -31301,6 +31360,9 @@ unsorted:
   - seafile 
   - seafile-client 
   - seafile-devel 
+  - seamonkey 
+  - seamonkey-dom-inspector 
+  - seamonkey-irc 
   - seatd 
   - seatd-devel 
   - seccheck 
@@ -40827,6 +40889,7 @@ unsorted:
   - virtualbox: [x86_64] 
   - virtualbox-devel: [x86_64] # devel package of dvd:virtualbox-guest-x11 
   - virtualbox-guest-desktop-icons: [x86_64] 
+  - virtualbox-guest-source: [x86_64] 
   - virtualbox-host-source: [x86_64] 
   - virtualbox-qt: [x86_64] 
   - virtualbox-vnc: [x86_64] 
