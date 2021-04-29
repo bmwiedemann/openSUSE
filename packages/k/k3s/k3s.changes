@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Apr 29 09:11:09 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.21.0+k3s1:
+  * Add support for dual-stack Pod/Service CIDRs and node IP addresses (#3212)
+  * mark v1.20.6+k3s1 as stable
+  * Update bug_report.md language
+  * Update feature_request.md
+  * Support .d directory for k3s config file (#3162)
+  * Fix service-account-issuer
+  * Update to forked protobuf 1.4.3-k3s1
+  * Reduce node and service wait times
+  * Update Kubernetes to v1.21.0
+  * Resolve local retention issue when S3 in use.
+  * add hidden attribute to disable flags
+  * add etcd s3 secret and access key flags and env vars to secret data
+  * Add gzip and zst airgap artifacts
+  * Update CoreDNS to version 1.8.3. (#3168)
+  * Fix up vagrant provision scripts
+  * Bump traefik to v2.4.8
+  * Fix CI failures non-deterministic traefik chart repackaging (#3165)
+  * delete nocluster file and remove build tag
+  * remove hidden attribute from cluster flags and related code
+  * Make v1.20.5+k3s1 stable
+  * remove duplicated func GetAddresses
+  * Update to Kubernetes v1.20.5 (#3094)
+  * Replace which with command -v (#3125)
+  * AkihiroSuda/containerd-fuse-overlayfs -> containerd/fuse-overlayfs-snapshotter
+  * rootless: allow kernel.dmesg_restrict=1
+  * rootless: enable resource limitation (requires cgroup v2, systemd)
+  * bump up RootlessKit
+  * containerd: v1.4.4-k3s1 (#3090)
+  * put etcd bootstrap save call in goroutine and update comment
+  * Remove unit files after disabling, instead of before
+  * remove etcd data dir when etcd is disabled (#3059)
+  * registry mirror repository rewrites (#3064)
+  * Have Bootstrap Data Stored in etcd at Completed Start (#3038)
+  * Define a Controllers and LeaderControllers on the server config (#3043)
+  * Don't start up multiple apiserver load balancers
+  * Handle loadbalancer port in TIME_WAIT
+  * Always use static ports for client load-balancers (#3026)
+  * Update GITHUB_URL
+  * Update .md files with url and email corrections
+  * Mark disable components flags as experimental (#3018)
+  * Etcd Snapshot/Restore to/from S3 Compatible Backends (#2902)
+  * Suppress test failure due to incompatible server
+  * Log clearer error on startup if NPC cannot be started
+  * Add script to test server/agent version compatibility
+  * change error to warn when removing self from etcd members
+  * update dynamiclistener
+  * remove etcd member if disable etcd is passed
+  * Apply suggestions from code review
+  * Update to Traefik 2.4.2 and combine manifests
+  * Remove Traefik v1 migration
+  * Allow download traefik static file and rename
+  * Traefik v2 integration
+  * Wait for apiserver to become healthy before starting agent controllers
+  * Hide the airgap-extra-registry flag
+  * update master to 1.20.4
+  * use v1.20.4-k3s1 as stable
+  * Update k3s-root to v0.8.1
+  * Limit zstd decoder memory
+  * Use HasSuffixI utility function
+  * Add support for retagging images on load from tarball
+  * Add disable flags for control components (#2900)
+  * update usage text (#2926)
+
+-------------------------------------------------------------------
 Mon Apr 19 10:54:43 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 1.20.6+k3s1:
