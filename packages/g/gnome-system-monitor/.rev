@@ -809,4 +809,13 @@
     <comment>GNOME 40 - here we come (forwarded request 880972 from dimstar)</comment>
     <requestid>881143</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>350694e40a673366cb05fa27ef3ce19d</srcmd5>
+    <version>40.0</version>
+    <time>1619729073</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ba93af5b3e429db5a9c4dd7e2d06b800735a9071.patch: Dropped
+  non-gnome workaround causing crash (boo#1185340). (forwarded request 888732 from dimstar)</comment>
+    <requestid>888743</requestid>
+  </revision>
 </revisionlist>
