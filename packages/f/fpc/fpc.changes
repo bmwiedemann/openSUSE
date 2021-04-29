@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 26 11:29:09 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Explicitly BuildRequire tex(litings.sty): With TeXLive 2021, this
+  does not longer happen to be pulled in by the so-far specified
+  build deps. Be explicit about or need for this.
+
+-------------------------------------------------------------------
 Fri Sep 25 10:14:45 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build on ppc64le:

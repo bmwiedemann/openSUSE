@@ -1,7 +1,7 @@
 #
 # spec file for package fpc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -113,6 +113,7 @@ BuildRequires:  tex(enumitem.sty)
 BuildRequires:  tex(fancyhdr.sty)
 BuildRequires:  tex(float.sty)
 BuildRequires:  tex(hyperref.sty)
+BuildRequires:  tex(listings.sty)
 BuildRequires:  tex(pcrr8t.tfm)
 BuildRequires:  tex(phvr8t.tfm)
 BuildRequires:  tex(ptmr8t.tfm)
@@ -134,12 +135,13 @@ library (RTL), free component library (FCL) and the base and extra
 packages.
 
 %else
+
 %description
 The fpc-doc package contains the documentation PDF files.
 
 %endif
 
-%package examples 
+%package examples
 Summary:        Freepascal Compiler examples
 Group:          Documentation/Other
 BuildArch:      noarch
@@ -330,6 +332,7 @@ make -C fpcdocs pdfinstall \
 %{_datadir}/fpcsrc/*
 
 %else
+
 %files
 %docdir %{_defaultdocdir}/fpc
 %doc %{_defaultdocdir}/fpc/*.pdf
