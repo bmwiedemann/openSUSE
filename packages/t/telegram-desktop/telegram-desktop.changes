@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 28 19:47:25 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to 2.7.4
+  * Fix crash in viewing an invoice after a payment is made.
+  * Respect Focus Assist only for native notifications.
+  * Mark messages as read only in active window.
+
+-------------------------------------------------------------------
 Tue Apr 27 13:08:06 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 2.7.3

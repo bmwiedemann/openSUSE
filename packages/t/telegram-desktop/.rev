@@ -619,4 +619,15 @@
   * Fix messages marking as read if the Windows session is locked. (forwarded request 888813 from tux93)</comment>
     <requestid>889044</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>0a92ba1ab885180ddfc4c6284ac71ead</srcmd5>
+    <version>2.7.4</version>
+    <time>1619729190</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.7.4
+  * Fix crash in viewing an invoice after a payment is made.
+  * Respect Focus Assist only for native notifications.
+  * Mark messages as read only in active window. (forwarded request 889128 from tux93)</comment>
+    <requestid>889232</requestid>
+  </revision>
 </revisionlist>
