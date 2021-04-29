@@ -1,12 +1,12 @@
 <services>
-  <service name="obs_scm" mode="disabled">
-    <param name="url">https://code.alephobjects.com/diffusion/U/uranium.git</param>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://gitlab.com/lulzbot3d/cura-le/uranium</param>
     <param name="scm">git</param>
     <param name="filename">Uranium</param>
-    <param name="revision">v3.6.18</param>
-    <param name="version">3.6.18</param>
+    <param name="revision">v3.6.21</param>
+    <param name="version">3.6.21</param>
   </service>
-  <service mode="disabled" name="set_version" />
+  <service mode="manual" name="set_version" />
 
   <service mode="buildtime" name="tar" />
   <service mode="buildtime" name="recompress">
