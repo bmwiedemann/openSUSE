@@ -15,4 +15,22 @@
     <comment></comment>
     <requestid>645632</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bc9f5aced60cf01f2e95ccf033ed1207</srcmd5>
+    <version>1.0.3</version>
+    <time>1619729188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.3
+  * Added new object: MML, Music Macro Language evaluator.
+  * Fixed segfault in reducePoints function.
+  * PVBuffer's length attribute can now be changed dynamically.
+  * Added the first version of the Events framework.
+  * Expr API: Expr now can handle multiple input sources.
+  * Expr API: Expr now can generate multiple output signals.
+  * CallAfter's time and arg arguments can be changed dynamically.
+  * Epyo: Added auto complete for cpp file (from corresponding header file).
+- Add upstream-but-rebased py39.patch to fix build with python 3.9
+- Pull LICENSE from github because it isn't in the tarball</comment>
+    <requestid>889206</requestid>
+  </revision>
 </revisionlist>

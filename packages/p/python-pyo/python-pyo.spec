@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyo
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,37 +12,42 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-pyo
-Version:        0.9.1
+Version:        1.0.3
 Release:        0
-License:        GPL-3.0
 Summary:        Python digital signal processing module
-Url:            http://ajaxsoundstudio.com/software/pyo/
+License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-Source:         http://ajaxsoundstudio.com/downloads/pyo_%{version}-src.tar.bz2
+URL:            http://ajaxsoundstudio.com/software/pyo/
+Source:         https://files.pythonhosted.org/packages/source/p/pyo/pyo-%{version}.tar.gz
+Source1:        https://raw.githubusercontent.com/belangeo/pyo/master/LICENSE
+Patch0:         py39.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  pkgconfig
+BuildRequires:  portmidi-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(liblo)
 BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(sndfile)
-BuildRequires:  portmidi-devel
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-
 %python_subpackages
 
 %description
 PYO is a Python module written in C to help digital signal processing
-script creation. 
+script creation.
 
 %prep
-%setup -q -n pyo_%{version}-src
+%setup -q -n pyo-%{version}
+%autopatch -p1
+cp %{SOURCE1} .
 
 %build
 export CFLAGS="%{optflags}"
@@ -50,11 +55,22 @@ export CFLAGS="%{optflags}"
 
 %install
 %python_install --use-jack --use-double
+%python_clone -a %{buildroot}%{_bindir}/epyo
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
+%check
+# testsuite is broken and can not be run even from github tarball
+
+%post
+%python_install_alternative epyo
+
+%postun
+%python_uninstall_alternative epyo
+
 %files %{python_files}
-%doc ChangeLog README.md
-%license COPYING.txt COPYING.LESSER.txt
+%doc README.md
+%license LICENSE
+%python_alternative %{_bindir}/epyo
 %{python_sitearch}/*
 
 %changelog
