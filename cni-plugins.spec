@@ -19,7 +19,7 @@
 %define         cni_bin_dir  %{_libexecdir}/cni
 %define         cni_doc_dir  %{_docdir}/cni-plugins
 Name:           cni-plugins
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Container Network Interface plugins
 License:        Apache-2.0
@@ -66,7 +66,7 @@ install -m 755 -d "%{buildroot}%{cni_doc_dir}"
 
 # TODO: copy the READMEs
 #for i in plugins/main/*/README.md ; do
-#      cp Documentation/* %{buildroot}%{cni_doc_dir}/plugins/
+#      cp Documentation/* %%{buildroot}%%{cni_doc_dir}/plugins/
 #done
 
 %post
@@ -79,6 +79,6 @@ install -m 755 -d "%{buildroot}%{cni_doc_dir}"
 %license LICENSE
 %dir %{cni_bin_dir}
 %{cni_bin_dir}/*
-# %{cni_doc_dir}/plugins/*
+# %%{cni_doc_dir}/plugins/*
 
 %changelog

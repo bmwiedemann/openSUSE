@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 26 17:17:41 UTC 2021 - rpm@fthiessen.de
+
+- Update to version 0.9.1:
+  * ipam/dhcp: Add broadcast flag
+  * add flannel to support dual stack ip
+  * bandwidth: fix panic in tests
+  * host-device: Add support for DPDK device
+  * [main/vlan] Fix error handling for delegate IPAM plugin
+  * dhcp: default dhcp clien timeout is 10s
+  * vlan: fix error message text by removing ptp references
+  * dhcp: daemon dhcp client timeout is configurable
+  * dhcp: timeout value is set in DHCP daemon
+  * remove unused function
+  * deps: go mod tidy coreos/go-iptables
+  * deps: bump coreos/go-iptables
+
+-------------------------------------------------------------------
 Fri Jan 08 12:16:37 UTC 2021 - rbrown@suse.com
 
 - Update to version 0.9.0:
