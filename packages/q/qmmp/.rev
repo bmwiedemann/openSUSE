@@ -818,4 +818,12 @@
     <comment></comment>
     <requestid>869765</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>14efa607aa64bc5b3e7e79156f39d0be</srcmd5>
+    <version>1.4.5</version>
+    <time>1619729174</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.4.5 (forwarded request 889183 from alois)</comment>
+    <requestid>889185</requestid>
+  </revision>
 </revisionlist>

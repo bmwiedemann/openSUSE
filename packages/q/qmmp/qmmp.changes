@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 29 06:48:26 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.4.5
+  * added TagLib 1.12 support
+  * disabled CRC checking in the mpeg plugin
+  * fixed playlist update
+  * fixed build with gcc 11
+  * fixed API documentation
+  * fixed skin search path
+  * fixed application icons
+
+-------------------------------------------------------------------
 Fri Feb  5 12:52:20 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.4.4
