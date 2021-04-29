@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Apr 26 09:46:36 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch source-r58686:r58919.dif
+  * Upstream fix for mpost/luatex btex/etex
+
+-------------------------------------------------------------------
+Tue Apr 13 08:50:31 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Make public wrapper change into mktex home directory if current
+  directory is not accessible 
+
+-------------------------------------------------------------------
+Mon Apr 12 12:41:38 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Use -fsigned-char on non-Intel boxes for mendex and upmendex
+  otherwise the sort.c results are wrong
+- Reenable pygmentex as now with python3
+
+-------------------------------------------------------------------
+Tue Apr  6 14:03:37 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to TeXLive 2021
+  * No poppler required anymore (hurray)
+  * Uses its own xpdf based library
+- Update to biber 2.16
+  * perl(Unicode::Collate) >= 1.29
+- Port patches mostly by correcting offsets
+  * 0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+  * biber-certs.dif
+  * source-64.dif
+  * source-configure.dif
+  * source-dviutils.dif
+  * source-ppc64.dif
+  * source-warns.dif
+  * source.dif
+- Remove patches now fixed upstream or not required anymore
+  * source-fix-bool-poppler.patch
+  * source-fix-const-poppler0.66.0.patch
+  * source-overflow.dif
+  * source-poppler-fix-dict-memleak.patch
+  * source-poppler-use-std_string.patch
+  * source-poppler.dif
+  * source-poppler0.59.0.patch
+  * source-poppler0.79.0.patch
+  * source-poppler0.83.0.patch
+  * source-poppler0.86.0.patch
+
+-------------------------------------------------------------------
 Tue Feb 23 16:22:42 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

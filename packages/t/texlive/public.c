@@ -127,6 +127,7 @@ int main(int argc, char *argv[])
 
     if (ruid == 0 || euid == 0) {   /* If user is root switch over to mktex:mktex */
 	int initgrp = 0;
+	char *cwd;
 
 	if ((pwd = getpwnam(TEXUSR)) == (struct passwd*)0)
 	    goto err;
@@ -169,6 +170,15 @@ int main(int argc, char *argv[])
 	    if (!ep->value)
 		continue;
 	    setenv(ep->name, ep->value, 1);
+	}
+
+	if ((cwd = getcwd(NULL, 0))) {
+	    if (access(cwd, X_OK) < 0) {
+		int ret = chdir(pwd->pw_dir);
+		if (ret < 0)
+		    fprintf(stderr, "public: %s: %m\n", pwd->pw_dir);
+	    }
+	    free(cwd);
 	}
 
     } else if (rgid != grp->gr_gid && egid == grp->gr_gid) {

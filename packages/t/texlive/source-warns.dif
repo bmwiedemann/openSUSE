@@ -12,7 +12,7 @@
 
 --- libs/gmp/Makefile.in
 +++ libs/gmp/Makefile.in	2016-06-07 13:29:33.925651292 +0000
-@@ -484,7 +484,7 @@ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
+@@ -485,7 +485,7 @@ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
  am__v_lt_0 = --silent
  am__v_lt_1 = 
  COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -81,7 +81,7 @@
  am__v_CC_0 = @echo "  CC      " $@;
 --- libs/mpfr/Makefile.in
 +++ libs/mpfr/Makefile.in	2016-06-07 13:29:33.925651292 +0000
-@@ -337,7 +337,7 @@ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
+@@ -345,7 +345,7 @@ am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
  am__v_lt_0 = --silent
  am__v_lt_1 = 
  COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \

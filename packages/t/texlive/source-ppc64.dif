@@ -5,7 +5,7 @@
 
 --- libs/luajit/configure
 +++ libs/luajit/configure	2020-04-30 15:42:15.998038368 +0000
-@@ -14300,6 +14300,15 @@ fi
+@@ -14295,6 +14295,15 @@ fi
  fi
                  if test "x$LJHOST" = xPS3; then :
    echo '-D PPE -D TOC' >>dynasm_flags

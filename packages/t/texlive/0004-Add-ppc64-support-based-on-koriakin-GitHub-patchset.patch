@@ -54,7 +54,7 @@ diff --git a/src/Makefile b/src/Makefile
 index 6b73a89..cc50bae 100644
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -453,7 +453,16 @@ ifeq (ppc,$(TARGET_LJARCH))
+@@ -450,7 +450,16 @@ ifeq (ppc,$(TARGET_LJARCH))
      DASM_AFLAGS+= -D GPR64
    endif
    ifeq (PS3,$(TARGET_SYS))
@@ -113,7 +113,7 @@ diff --git a/src/lj_arch.h b/src/lj_arch.h
 index d609b37..53bc651 100644
 --- a/src/lj_arch.h
 +++ b/src/lj_arch.h
-@@ -269,10 +269,18 @@
+@@ -267,10 +267,18 @@
  #if LJ_TARGET_CONSOLE
  #define LJ_ARCH_PPC32ON64	1
  #define LJ_ARCH_NOFFI		1
@@ -134,7 +134,7 @@ index d609b37..53bc651 100644
  #endif
  
  #if _ARCH_PWR7
-@@ -423,12 +431,6 @@
+@@ -421,12 +429,6 @@
  #if defined(_SOFT_FLOAT) || defined(_SOFT_DOUBLE)
  #error "No support for PowerPC CPUs without double-precision FPU"
  #endif

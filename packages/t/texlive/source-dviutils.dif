@@ -2,10 +2,10 @@
  m4/kpse-kpathsea-flags.m4 |    2 +-
  texk/seetexk/a4toa5       |   26 ++++++++++++++++++++++++++
  texk/seetexk/configure    |    2 +-
- texk/seetexk/dvibook.c    |    6 +++---
+ texk/seetexk/dvibook.c    |    7 +++----
  texk/seetexk/dviconcat.c  |    6 ++----
  texk/seetexk/dviselect.c  |    8 +++-----
- texk/seetexk/dvitodvi.c   |   40 ++++++++++++++++++++++++++++++++--------
+ texk/seetexk/dvitodvi.c   |   41 ++++++++++++++++++++++++++++++++---------
  texk/seetexk/error.c      |   14 +++++---------
  texk/seetexk/gripes.h     |   21 +++++++++++----------
  texk/seetexk/gripes0.c    |   12 +++++-------
@@ -16,10 +16,10 @@
  texk/seetexk/seek.c       |   11 +++++------
  texk/seetexk/tempfile.c   |    5 ++---
  texk/seetexk/types.h      |    2 +-
- 17 files changed, 141 insertions(+), 70 deletions(-)
+ 17 files changed, 141 insertions(+), 72 deletions(-)
 
 --- m4/kpse-kpathsea-flags.m4
-+++ m4/kpse-kpathsea-flags.m4	2018-04-10 08:25:10.644838384 +0000
++++ m4/kpse-kpathsea-flags.m4	2021-04-07 09:56:20.318745619 +0000
 @@ -16,7 +16,7 @@
  AC_DEFUN([KPSE_KPATHSEA_FLAGS], [dnl
  AC_REQUIRE([KPSE_SAVE_FLAGS])[]dnl
@@ -30,7 +30,7 @@
                     [${top_builddir}/../kpathsea/paths.h])
  m4_if(m4_index([ $1 ], [ no-debug ]), [-1],
 --- texk/seetexk/a4toa5
-+++ texk/seetexk/a4toa5	2018-04-10 08:25:10.644838384 +0000
++++ texk/seetexk/a4toa5	2021-04-07 09:56:20.322745677 +0000
 @@ -0,0 +1,26 @@
 +#!/bin/csh -f
 +# 1993 (c) Werner Fink <Werner.Fink@itap.physik.uni-stuttgart.de>
@@ -59,7 +59,7 @@
 +#
 +exec  dvitodvi -q '2:707@0(-5.5mm,-10mm)+1(190mm,-10mm)' $1 $2
 --- texk/seetexk/configure
-+++ texk/seetexk/configure	2018-04-10 08:25:10.644838384 +0000
++++ texk/seetexk/configure	2021-04-07 09:56:20.322745677 +0000
 @@ -14943,7 +14943,7 @@ elif test "x$need_kpathsea:$with_system_
    as_fn_error $? "did not find kpathsea" "$LINENO" 5
  fi
@@ -70,7 +70,7 @@
    KPATHSEA_DEPEND='${top_builddir}/../kpathsea/libkpathsea.la'
    KPATHSEA_RULE='# Rebuild libkpathsea
 --- texk/seetexk/dvibook.c
-+++ texk/seetexk/dvibook.c	2018-04-10 08:25:10.644838384 +0000
++++ texk/seetexk/dvibook.c	2021-04-07 09:59:15.141300494 +0000
 @@ -46,6 +46,7 @@ extern char *optarg;
  extern int   optind;
  #endif
@@ -87,19 +87,20 @@
 +#include <unistd.h>
  #include <ctype.h>
  #include "seek.h"
- 
-@@ -129,9 +132,6 @@ i32	Count[10];		/* the 10 \count variabl
+ #include "common.h"
+@@ -123,10 +126,6 @@ i32	Count[10];		/* the 10 \count variabl
  /* save some string space: we use this a lot */
  char	writeerr[] = "error writing DVI file";
  
 -#ifndef KPATHSEA
--char *malloc(), *realloc();
+-void *malloc(), *realloc();
+-void free();
 -#endif
  /*
   * You may get lint warnings about sprintf's return value.
   * Older versions of 4BSD have `char *sprintf()'.  ANSI and
 --- texk/seetexk/dviconcat.c
-+++ texk/seetexk/dviconcat.c	2018-04-10 08:25:10.644838384 +0000
++++ texk/seetexk/dviconcat.c	2021-04-07 09:56:20.322745677 +0000
 @@ -43,6 +43,8 @@ extern char *optarg;
  extern int optind;
  #endif
@@ -109,7 +110,7 @@
  #include "types.h"
  #include "dviclass.h"
  #include "dvicodes.h"
-@@ -114,10 +116,6 @@ char	writeerr[] = "error writing DVI fil
+@@ -110,10 +112,6 @@ char	writeerr[] = "error writing DVI fil
  
  static void HandleDVIFile(void);
  
@@ -121,7 +122,7 @@
  
  /*
 --- texk/seetexk/dviselect.c
-+++ texk/seetexk/dviselect.c	2018-04-10 08:49:25.661500063 +0000
++++ texk/seetexk/dviselect.c	2021-04-07 09:59:54.141870365 +0000
 @@ -57,6 +57,8 @@ extern int optind;
  #include "gripes.h"
  #include "search.h"
@@ -129,9 +130,9 @@
 +#include <stdlib.h>
 +#include <string.h>
  #include <ctype.h>
+ #include "common.h"
  
- #if defined(WIN32) && defined(KPATHSEA)
-@@ -177,10 +179,6 @@ static void HandleDVIFile(void);
+@@ -173,10 +175,6 @@ static void HandleDVIFile(void);
  static void PutFontSelector(i32);
  static void WritePreAmble(void);
  
@@ -152,7 +153,7 @@
  	pl = (struct pagelist *)malloc(sizeof *pl);
  	if (pl == NULL)
 --- texk/seetexk/dvitodvi.c
-+++ texk/seetexk/dvitodvi.c	2018-04-10 08:49:00.045981786 +0000
++++ texk/seetexk/dvitodvi.c	2021-04-07 10:02:34.816217795 +0000
 @@ -46,6 +46,7 @@ extern char *optarg;
  extern int   optind;
  #endif
@@ -169,8 +170,8 @@
 +#include <unistd.h>
  #include <ctype.h>
  #include "seek.h"
- 
-@@ -95,6 +98,7 @@ struct fontinfo {
+ #include "common.h"
+@@ -89,6 +92,7 @@ struct fontinfo {
  i32     Width;                  /* width of page */
  i32     Height;                 /* height of page */
  i32     Magnification;          /* Magnification of pages */
@@ -178,17 +179,18 @@
  int     Modulo;                 /* page spec modulo */
  struct pagespec *PageSpecs;     /* page specification list */
  
-@@ -134,9 +138,6 @@ i32	Count[10];		/* the 10 \count variabl
+@@ -128,10 +132,6 @@ i32	Count[10];		/* the 10 \count variabl
  
  /* save some string space: we use this a lot */
  char	writeerr[] = "error writing DVI file";
 -#ifndef KPATHSEA
--char	*malloc(), *realloc();
+-void	*malloc(), *realloc();
+-void	free();
 -#endif
  
  static void WriteFont(struct fontinfo *fi);
  static void PutFontSelector(i32 index);
-@@ -197,6 +198,15 @@ scale(i32 whole, int num, int den, i32 s
+@@ -192,6 +192,15 @@ scale(i32 whole, int num, int den, i32 s
     return (v) ;
  }
  
@@ -204,7 +206,7 @@
  struct pagespec {
     int reversed, pageno, add;
     i32 xoff, yoff;
-@@ -304,6 +314,8 @@ parsedimen(char **sp)
+@@ -299,6 +308,8 @@ parsedimen(char **sp)
        fac = Height;
        s++;
     }
@@ -213,7 +215,7 @@
     whole = scale(whole, num, den, fac) ;
     *sp = s;
     return (neg ? -whole : whole);
-@@ -506,9 +518,15 @@ HandlePostAmble(void)
+@@ -501,9 +512,15 @@ HandlePostAmble(void)
  	PutLong(outf, Denominator);
  	PutLong(outf, DVIMag);
  	c = GetLong(inf);
@@ -231,7 +233,7 @@
  	c = GetWord(inf)+1;
  	PutWord(outf, c);	/* DVI stack size */
  	PutWord(outf, NumberOfOutputPages);
-@@ -606,7 +624,8 @@ HandlePreAmble(void)
+@@ -601,7 +618,8 @@ HandlePreAmble(void)
  		    DVIFileName, DVI_VERSION);
  	Numerator = GetLong(inf);
  	Denominator = GetLong(inf);
@@ -241,7 +243,7 @@
  	putbyte(outf, DVI_PRE);
  	putbyte(outf, DVI_VERSION);
  	PutLong(outf, Numerator);
-@@ -644,6 +663,7 @@ main(int argc, char **argv)
+@@ -639,6 +657,7 @@ main(int argc, char **argv)
  	Width = 0;
  	Height = 0;
  	Magnification = 1000;
@@ -249,7 +251,7 @@
  	Modulo = 1;
  
  	ProgName = *argv;
-@@ -745,12 +765,16 @@ Usage: %s [-q] [-i infile] [-o outfile]
+@@ -750,12 +769,16 @@ Usage: %s [-q] [-i infile] [-o outfile]
  	if (fseek(inf, 16L, 1) == -1)
  	        error(1, -1, "can't seek postamble");
  	if (Height == 0)         /* get height from postamble */
@@ -267,9 +269,9 @@
 +	Width =  myscale(Width,MyMag,1000);
  
  	HandleDVIFile();
- 	if (WritingPage)
+ 	free(StartOfPage);
 --- texk/seetexk/error.c
-+++ texk/seetexk/error.c	2018-04-10 08:25:10.644838384 +0000
++++ texk/seetexk/error.c	2021-04-07 09:56:20.326745736 +0000
 @@ -29,7 +29,12 @@
  #include <config.h>
  #endif
@@ -305,7 +307,7 @@
  static char *
  strerror (int errnum)
 --- texk/seetexk/gripes.h
-+++ texk/seetexk/gripes.h	2018-04-10 08:25:10.644838384 +0000
++++ texk/seetexk/gripes.h	2021-04-07 09:56:20.326745736 +0000
 @@ -28,16 +28,17 @@ extern const char *DVIFileName;
   * Declarations for the various gripes.
   */
@@ -335,7 +337,7 @@
 +void GripeUndefinedOp(int n) __NR__;
  void GripeBadGlyph(i32 c, struct font *f);
 --- texk/seetexk/gripes0.c
-+++ texk/seetexk/gripes0.c	2018-04-10 08:25:10.644838384 +0000
++++ texk/seetexk/gripes0.c	2021-04-07 09:56:20.326745736 +0000
 @@ -28,10 +28,8 @@
  #include "error.h"
  #include "gripes.h"
@@ -375,7 +377,7 @@
 +	exit(0); /* NOTREACHED */
  }
 --- texk/seetexk/gripes1.c
-+++ texk/seetexk/gripes1.c	2018-04-10 08:25:10.644838384 +0000
++++ texk/seetexk/gripes1.c	2021-04-07 09:56:20.326745736 +0000
 @@ -29,6 +29,7 @@
  #include "font.h"
  #include "gripes.h"
@@ -457,7 +459,7 @@
  
  /*
 --- texk/seetexk/mydvichk
-+++ texk/seetexk/mydvichk	2018-04-10 08:25:10.648838309 +0000
++++ texk/seetexk/mydvichk	2021-04-07 09:56:20.326745736 +0000
 @@ -0,0 +1,12 @@
 +#!/bin/csh -f
 +# 1993 (c) Werner Fink <Werner.Fink@itap.physik.uni-stuttgart.de>
@@ -472,7 +474,7 @@
 +
 +exit(0)
 --- texk/seetexk/odd2even
-+++ texk/seetexk/odd2even	2018-04-10 08:25:10.648838309 +0000
++++ texk/seetexk/odd2even	2021-04-07 09:56:20.330745794 +0000
 @@ -0,0 +1,22 @@
 +#!/bin/csh -f
 +# 1993 (c) Werner Fink <Werner.Fink@itap.physik.uni-stuttgart.de>
@@ -497,7 +499,7 @@
 +
 +exit 0
 --- texk/seetexk/search.c
-+++ texk/seetexk/search.c	2018-04-10 08:25:10.648838309 +0000
++++ texk/seetexk/search.c	2021-04-07 09:56:20.330745794 +0000
 @@ -34,6 +34,7 @@
   * it runs in increasing-key-value sequence).
   */
@@ -518,7 +520,7 @@
  SCreate(unsigned int dsize)
  {
 --- texk/seetexk/seek.c
-+++ texk/seetexk/seek.c	2018-04-10 08:25:10.648838309 +0000
++++ texk/seetexk/seek.c	2021-04-07 09:56:20.330745794 +0000
 @@ -43,6 +43,10 @@
  #endif
  
@@ -545,7 +547,7 @@
  /*
   * Make and return a version of `f' on which fseek works (unconditionally).
 --- texk/seetexk/tempfile.c
-+++ texk/seetexk/tempfile.c	2018-04-10 08:25:10.648838309 +0000
++++ texk/seetexk/tempfile.c	2021-04-07 09:56:20.330745794 +0000
 @@ -25,6 +25,7 @@
  #endif
  
@@ -566,7 +568,7 @@
  
  #include "tempfile.h"
 --- texk/seetexk/types.h
-+++ texk/seetexk/types.h	2018-04-10 08:25:10.648838309 +0000
++++ texk/seetexk/types.h	2021-04-07 09:56:20.330745794 +0000
 @@ -58,7 +58,7 @@
   *
   * (The bcopy provided in lib/bcopy.c does handle overlap.)

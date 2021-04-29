@@ -840,4 +840,41 @@
 - Skip packages which are based on python2</comment>
     <requestid>877922</requestid>
   </revision>
+  <revision rev="71" vrev="74">
+    <srcmd5>b47432dc70936a0f6522d2e05e0021f3</srcmd5>
+    <version>unknown</version>
+    <time>1619729141</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch source-r58686:r58919.dif
+  * Upstream fix for mpost/luatex btex/etex
+
+- Make public wrapper change into mktex home directory if current
+  directory is not accessible 
+
+- Use -fsigned-char on non-Intel boxes for mendex and upmendex
+  otherwise the sort.c results are wrong
+- Reenable pygmentex as now with python3
+
+- Update to TeXLive 2021
+  * No poppler required anymore (hurray)
+  * Uses its own xpdf based library
+- Update to biber 2.16
+  * perl(Unicode::Collate) &gt;= 1.29
+- Port patches mostly by correcting offsets
+  * 0004-Add-ppc64-support-based-on-koriakin-GitHub-patchset.patch
+  * biber-certs.dif
+  * source-64.dif
+  * source-configure.dif
+  * source-dviutils.dif
+  * source-ppc64.dif
+  * source-warns.dif
+  * source.dif
+- Remove patches now fixed upstream or not required anymore
+  * source-fix-bool-poppler.patch
+  * source-fix-const-poppler0.66.0.patch
+  * source-overflow.dif
+  * source-poppler-fix-dict-memleak.patch
+  * source-poppler-use-std_string.patch</comment>
+    <requestid>888676</requestid>
+  </revision>
 </revisionlist>

@@ -23,19 +23,8 @@
  texk/xdvik/xdvi-sh.in                                       |   19 +
  22 files changed, 224 insertions(+), 83 deletions(-)
 
---- reautoconf
-+++ reautoconf	2018-04-10 09:02:17.774983801 +0000
-@@ -83,7 +83,7 @@ echo "$0:               TL_AUTOHEADER, T
- 
- # Give users a chance to quit here
- # and set TL_AUTOCONF, TL_AUTOHEADER, TL_AUTOMAKE, and/or TL_ACLOCAL
--$do_cmd sleep 5
-+# $do_cmd sleep 5
- 
- AUTOCONF=$TL_AUTOCONF
- AUTOHEADER=$TL_AUTOHEADER
 --- libs/icu/icu-src/source/common/Makefile.in
-+++ libs/icu/icu-src/source/common/Makefile.in	2018-04-10 09:02:17.774983801 +0000
++++ libs/icu/icu-src/source/common/Makefile.in	2021-04-07 10:14:44.202880715 +0000
 @@ -69,7 +69,7 @@ DEFS += -DU_COMMON_IMPLEMENTATION
  LDFLAGS += $(LDFLAGSICUUC)
  
@@ -45,8 +34,19 @@
  
  # for icu data location
  ifeq ($(PKGDATA_MODE),common)
+--- reautoconf
++++ reautoconf	2021-04-07 10:14:44.202880715 +0000
+@@ -83,7 +83,7 @@ echo "$0:               TL_AUTOHEADER, T
+ 
+ # Give users a chance to quit here
+ # and set TL_AUTOCONF, TL_AUTOHEADER, TL_AUTOMAKE, and/or TL_ACLOCAL
+-$do_cmd sleep 5
++# $do_cmd sleep 5
+ 
+ AUTOCONF=$TL_AUTOCONF
+ AUTOHEADER=$TL_AUTOHEADER
 --- texk/dviljk/dvi2xx.c
-+++ texk/dviljk/dvi2xx.c	2018-04-10 09:02:17.858982223 +0000
++++ texk/dviljk/dvi2xx.c	2021-04-07 10:14:44.206880772 +0000
 @@ -168,7 +168,18 @@ main(int argc, char *argv[])
  
    setbuf(ERR_STREAM, NULL);
@@ -67,7 +67,7 @@
    G_progname = kpse_program_name;
  #else
 --- texk/kpathsea/c-fopen.h
-+++ texk/kpathsea/c-fopen.h	2018-04-10 09:02:17.858982223 +0000
++++ texk/kpathsea/c-fopen.h	2021-04-07 10:14:44.206880772 +0000
 @@ -38,17 +38,17 @@
  
  /* How to open a binary file for reading:  */
@@ -90,7 +90,7 @@
  
  /* How to switch an already open file handle to binary mode.
 --- texk/kpathsea/c-memstr.h
-+++ texk/kpathsea/c-memstr.h	2018-04-10 09:02:17.858982223 +0000
++++ texk/kpathsea/c-memstr.h	2021-04-07 10:14:44.206880772 +0000
 @@ -37,6 +37,7 @@
  
  /* For ancient systems that lack the system V/ANSI version of the
@@ -107,7 +107,7 @@
 +
  #endif /* not KPATHSEA_C_MEMSTR_H */
 --- texk/kpathsea/cnf-to-paths.awk
-+++ texk/kpathsea/cnf-to-paths.awk	2018-04-10 09:02:17.858982223 +0000
++++ texk/kpathsea/cnf-to-paths.awk	2021-04-07 10:14:44.206880772 +0000
 @@ -40,7 +40,7 @@
    val = $0;
    sub(/^.*=[ \t]*/, "", val);
@@ -118,7 +118,7 @@
    if (val ~ /\$SELFAUTO/) {
      # Replace all semicolons with colons in the SELFAUTO paths we're keeping.
 --- texk/kpathsea/db.c
-+++ texk/kpathsea/db.c	2018-04-10 09:08:03.084494047 +0000
++++ texk/kpathsea/db.c	2021-04-07 10:14:44.206880772 +0000
 @@ -93,7 +93,8 @@ db_build (kpathsea kpse, hash_table_type
    unsigned len = strlen (db_filename) - sizeof (DB_NAME) + 1; /* Keep the /. */
    string top_dir = (string)xmalloc (len + 1);
@@ -147,7 +147,7 @@
        len = strlen (line);
  
 --- texk/kpathsea/progname.c
-+++ texk/kpathsea/progname.c	2018-04-10 09:02:17.862982147 +0000
++++ texk/kpathsea/progname.c	2021-04-07 10:14:44.206880772 +0000
 @@ -662,9 +662,9 @@ kpathsea_set_program_name (kpathsea kpse
    /* SELFAUTODIR is actually the parent of the invocation directory,
       and SELFAUTOPARENT the grandparent.  This is how teTeX did it.  */
@@ -161,7 +161,7 @@
    sdir_greatgrandparent = xdirname (sdir_grandparent);
    kpathsea_xputenv (kpse, "SELFAUTOGRANDPARENT", fix_selfdir (sdir_greatgrandparent));
 --- texk/kpathsea/texmf.cnf
-+++ texk/kpathsea/texmf.cnf	2020-03-20 09:47:16.242820144 +0000
++++ texk/kpathsea/texmf.cnf	2021-04-07 10:22:03.917307810 +0000
 @@ -62,20 +62,20 @@
  TEXMFROOT = $SELFAUTOPARENT
  
@@ -191,11 +191,11 @@
  TEXMFHOME = ~/texmf
  
  % TEXMFVAR, where texconfig/updmap/fmtutil store cached runtime data.
--TEXMFVAR = ~/.texlive2020/texmf-var
+-TEXMFVAR = ~/.texlive2021/texmf-var
 +TEXMFVAR = ${TEXMFSYSVAR}
  
  % TEXMFCONFIG, where texconfig/updmap/fmtutil store configuration data.
--TEXMFCONFIG = ~/.texlive2020/texmf-config
+-TEXMFCONFIG = ~/.texlive2021/texmf-config
 +TEXMFCONFIG = ${TEXMFSYSCONFIG}
  
  % This is the value manipulated by tlmgr's auxtrees subcommand in the
@@ -394,7 +394,7 @@
  %
  % For reference, here is the old brace-using definition:
  %TEXMFCNF = {$SELFAUTOLOC,$SELFAUTODIR,$SELFAUTOPARENT}{,{/share,}/texmf{-local,}/web2c}
-@@ -894,3 +900,33 @@ guess_input_kanji_encoding = 1
+@@ -904,3 +910,33 @@ guess_input_kanji_encoding = 1
  % command_line_encoding = none
  % in a texmf.cnf prefered, for example $TEXMFLOCAL/web2c/texmf.cnf.
  command_line_encoding = utf-8
@@ -429,7 +429,7 @@
 +pool_size.jadetex = 500000
 +save_size.jadetex = 15000
 --- texk/lcdf-typetools/lcdf-typetools-src/otftotfm/otftotfm.cc
-+++ texk/lcdf-typetools/lcdf-typetools-src/otftotfm/otftotfm.cc	2018-04-10 09:08:59.687430373 +0000
++++ texk/lcdf-typetools/lcdf-typetools-src/otftotfm/otftotfm.cc	2021-04-07 10:14:44.206880772 +0000
 @@ -67,6 +67,9 @@
  # include <io.h>
  #endif
@@ -441,19 +441,19 @@
  
  #define VERSION_OPT             301
 --- texk/ps2pk/pk2bm.c
-+++ texk/ps2pk/pk2bm.c	2018-04-10 09:02:17.862982147 +0000
++++ texk/ps2pk/pk2bm.c	2021-04-07 10:23:07.138231549 +0000
 @@ -103,7 +103,7 @@ invalid:
        	 }
     }
  
 -   if (argc == 0) {
 +   if (argc != 1) {
-        msg  ("pk2bm (ps2pk) version " PACKAGE_VERSION "\n");
-       printf("Usage: %s [-bh] {-c char|-o octchar} [-W width -H height] pkfile\n", myname);
-       exit(1);
+        msg  ("pk2bm (ps2pk) version " PACKAGE_VERSION " (" TL_VERSION ")\n");
+        msg  ("Usage: %s [-bh] {-c char|-o octchar} [-W width -H height] pkfile\n", myname);
+        fatal("\nEmail bug reports to %s.\n", PACKAGE_BUGREPORT);
 --- texk/texlive/linked_scripts/musixtex/musixtex.lua
-+++ texk/texlive/linked_scripts/musixtex/musixtex.lua	2018-04-10 09:12:50.395048030 +0000
-@@ -200,15 +200,26 @@ end
++++ texk/texlive/linked_scripts/musixtex/musixtex.lua	2021-04-07 10:29:14.951604240 +0000
+@@ -212,16 +212,27 @@ end
  --       possible by exploiting the the fact that Lua has two false values.
  --         dvi == nil    "do not produce a DVI file" (but maybe PDF)
  --         dvi == false  "do not process the DVI file" (but stop after TeX)
@@ -462,6 +462,7 @@
 +base=base[1]
  local dvips = "dvips -e0"
  function defaults()
+   xml2pmx = "xml2pmx"
    prepmx = "prepmx"
    pmx = "pmxab"
    autosp = "autosp"
@@ -472,7 +473,7 @@
 +    dvi = ""
 +    ps2pdf = ""
 +  else
-+    tex = "etex"  
++    tex = "etex"
 +    dvips = "dvips -e0"
 +    dvi = dvips
 +    ps2pdf = "ps2pdf"
@@ -484,7 +485,7 @@
    index = false
    latex = false 
 --- texk/texlive/linked_scripts/texlive/fmtutil-sys.sh
-+++ texk/texlive/linked_scripts/texlive/fmtutil-sys.sh	2018-04-10 09:02:17.862982147 +0000
++++ texk/texlive/linked_scripts/texlive/fmtutil-sys.sh	2021-04-07 10:14:44.206880772 +0000
 @@ -22,4 +22,5 @@ PATH="$mydir:$PATH"; export PATH
  # hack around a bug in zsh:
  test -n "${ZSH_VERSION+set}" && alias -g '${1+"$@"}'='"$@"'
@@ -492,7 +493,7 @@
 +umask 022
  exec fmtutil --sys ${1+"$@"}
 --- texk/texlive/linked_scripts/texlive/fmtutil.pl
-+++ texk/texlive/linked_scripts/texlive/fmtutil.pl	2020-03-20 09:50:01.803710617 +0000
++++ texk/texlive/linked_scripts/texlive/fmtutil.pl	2021-04-07 10:14:44.210880832 +0000
 @@ -10,16 +10,16 @@
  # History:
  # Original shell script (C) 2001 Thomas Esser, public domain
@@ -539,7 +540,7 @@
    }
    # set up destination directory
    $opts{'fmtdir'} ||= "$texmfvar/web2c";
-@@ -599,6 +606,7 @@ sub rebuild_one_format {
+@@ -592,6 +599,7 @@ sub rebuild_one_format {
    # check for existence of ini file before doing anything else
    if (system("kpsewhich -progname=$fmt -format=$kpsefmt $inifile >$nul 2>&1") != 0) {
      # we didn't find the ini file, skip
@@ -547,7 +548,7 @@
      print_deferred_warning("inifile $inifile for $fmt/$eng not found.\n");
      # The original script just skipped it but in TeX Live we expect that
      # all activated formats are also buildable, thus return failure.
-@@ -658,11 +666,15 @@ sub rebuild_one_format {
+@@ -651,11 +659,15 @@ sub rebuild_one_format {
          ",$opts{'no-error-if-no-engine'}," =~ m/,$eng,/) {
        return $FMT_NOTAVAIL;
      } else {
@@ -564,7 +565,7 @@
                    . "$prgswitch $texargs";
    print_verbose("running \`$cmdline' ...\n");
 --- texk/texlive/linked_scripts/texlive/updmap-sys.sh
-+++ texk/texlive/linked_scripts/texlive/updmap-sys.sh	2018-04-10 09:02:17.862982147 +0000
++++ texk/texlive/linked_scripts/texlive/updmap-sys.sh	2021-04-07 10:14:44.210880832 +0000
 @@ -22,4 +22,5 @@ PATH="$mydir:$PATH"; export PATH
  # hack around a bug in zsh:
  test -n "${ZSH_VERSION+set}" && alias -g '${1+"$@"}'='"$@"'
@@ -572,8 +573,8 @@
 +umask 022
  exec updmap --sys ${1+"$@"}
 --- texk/web2c/Makefile.in
-+++ texk/web2c/Makefile.in	2018-04-10 09:02:17.870981997 +0000
-@@ -5085,7 +5085,7 @@ libmd5_a_SOURCES = libmd5/md5.c libmd5/m
++++ texk/web2c/Makefile.in	2021-04-07 10:14:44.210880832 +0000
+@@ -5483,7 +5483,7 @@ libmd5_a_SOURCES = libmd5/md5.c libmd5/m
  md5main_CPPFLAGS = -I$(srcdir)/libmd5
  md5main_SOURCES = libmd5/md5main.c
  md5main_LDADD = libmd5.a
@@ -582,7 +583,7 @@
  	$(MAKE) $(AM_MAKEFLAGS) all-recursive
  
  .SUFFIXES:
-@@ -5132,6 +5132,11 @@ w2c/c-auto.h: w2c/stamp-h1
+@@ -5530,6 +5530,11 @@ w2c/c-auto.h: w2c/stamp-h1
  w2c/stamp-h1: $(srcdir)/c-auto.in $(top_builddir)/config.status
  	@rm -f w2c/stamp-h1
  	cd $(top_builddir) && $(SHELL) ./config.status w2c/c-auto.h
@@ -595,7 +596,7 @@
  	($(am__cd) $(top_srcdir) && $(AUTOHEADER))
  	rm -f w2c/stamp-h1
 --- texk/web2c/uptexdir/tests/gkhugeng.err
-+++ texk/web2c/uptexdir/tests/gkhugeng.err	2019-05-13 11:22:35.158192154 +0000
++++ texk/web2c/uptexdir/tests/gkhugeng.err	2021-04-07 10:14:44.214880889 +0000
 @@ -1,3 +1,11 @@
 +warning: kpathsea: /etc/texmf/ls-R: No usable entries in ls-R.
 +warning: kpathsea: See the manual for how to generate ls-R.
@@ -609,7 +610,7 @@
  The fifth byte of the input file exceeds 127!
  Sorry, but I can't go on; are you sure this is a TFM?
 --- texk/web2c/window/regis.c
-+++ texk/web2c/window/regis.c	2018-04-10 09:02:17.870981997 +0000
++++ texk/web2c/window/regis.c	2021-04-07 10:14:44.214880889 +0000
 @@ -64,12 +64,14 @@ void mf_regis_blankrectangle (screencol
                                screenrow top,
                                screenrow bottom)
@@ -629,7 +630,7 @@
  		left,bottom,ESCAPE);
  }
 --- texk/web2c/window/x11-Xlib.c
-+++ texk/web2c/window/x11-Xlib.c	2018-04-10 09:02:18.646967412 +0000
++++ texk/web2c/window/x11-Xlib.c	2021-04-07 10:14:44.214880889 +0000
 @@ -73,6 +73,8 @@ static XWMHints wm_hints = {
  #define BORDER_WIDTH 1 /* Should get this from resource. */
  #define DEFAULT_X_POSITION 0
@@ -656,7 +657,7 @@
  
      /* Look up the geometry for this window. (Section 10.2 Obtaining X
 --- texk/web2c/window/x11-Xt.c
-+++ texk/web2c/window/x11-Xt.c	2018-04-10 09:02:18.646967412 +0000
++++ texk/web2c/window/x11-Xt.c	2021-04-07 10:14:44.214880889 +0000
 @@ -18,8 +18,8 @@
  
  #define PLANE 0
@@ -669,7 +670,7 @@
  static Display *mf_display;
  static Window mf_window;
 --- texk/xdvik/psgs.c
-+++ texk/xdvik/psgs.c	2018-04-10 09:02:18.646967412 +0000
++++ texk/xdvik/psgs.c	2021-04-07 10:14:44.214880889 +0000
 @@ -34,6 +34,8 @@ OTHER DEALINGS IN THE SOFTWARE.
  #include <sys/time.h>	/* for timeval */
  
@@ -707,7 +708,7 @@
      GS_pid = vfork();
      if (GS_pid == 0) {	/* child */
 --- texk/xdvik/xdvi-sh.in
-+++ texk/xdvik/xdvi-sh.in	2018-04-10 09:02:18.646967412 +0000
++++ texk/xdvik/xdvi-sh.in	2021-04-07 10:14:44.214880889 +0000
 @@ -1,4 +1,4 @@
 -#!/bin/sh
 +#!/bin/bash
