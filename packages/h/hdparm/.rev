@@ -561,4 +561,12 @@
   - fixed return values from get_log_page_data().</comment>
     <requestid>857921</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>e5e7964717a09606e09161c6200f729b</srcmd5>
+    <version>9.61</version>
+    <time>1619729083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888943</requestid>
+  </revision>
 </revisionlist>

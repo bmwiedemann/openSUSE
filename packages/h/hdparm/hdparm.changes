@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 27 14:09:07 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 9.61: 
+  - fixes for --set-sector-size and reporting of physical/logical sector sizes
+
+-------------------------------------------------------------------
 Sun Dec 20 12:46:21 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.60:
