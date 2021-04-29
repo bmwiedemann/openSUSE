@@ -71,4 +71,13 @@
     <comment></comment>
     <requestid>855810</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e28721fd84a0cbb3b89ac5db3ebd9649</srcmd5>
+    <version>2.6</version>
+    <time>1619729084</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-icu-69.patch:
+  * Support ICU 69</comment>
+    <requestid>888967</requestid>
+  </revision>
 </revisionlist>

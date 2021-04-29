@@ -1,0 +1,100 @@
+From 15d2ba67677369aae8b0964f18e9cdbf70a414b2 Mon Sep 17 00:00:00 2001
+From: ovalhub <11970237+ovalhub@users.noreply.github.com>
+Date: Fri, 26 Mar 2021 12:53:37 -0700
+Subject: [PATCH] fix build and test failures with icu 69rc
+
+---
+ numberformat.cpp                     |  6 ++++++
+ test/test_DateTimeParserGenerator.py |  1 -
+ test/test_NumberFormatter.py         | 16 ++++++++++++----
+ 3 files changed, 18 insertions(+), 5 deletions(-)
+
+diff --git a/numberformat.cpp b/numberformat.cpp
+index a5deba1..5a5e6ee 100644
+--- a/numberformat.cpp
++++ b/numberformat.cpp
+@@ -597,10 +597,12 @@ DECLARE_BY_VALUE_TYPE(FormattedNumber, t_formattednumber, FormattedValue,
+ /* FormattedNumberRange */
+ /* t_formattednumberrange declared in numberformat.h */
+ 
++#if U_ICU_VERSION_HEX <= VERSION_HEX(69, 0, 0)
+ static PyObject *t_formattednumberrange_getFirstDecimal(
+     t_formattednumberrange *self);
+ static PyObject *t_formattednumberrange_getSecondDecimal(
+     t_formattednumberrange *self);
++#endif
+ static PyObject *t_formattednumberrange_getIdentityResult(
+     t_formattednumberrange *self);
+ #if U_ICU_VERSION_HEX >= VERSION_HEX(68, 0, 0)
+@@ -609,8 +611,10 @@ static PyObject *t_formattednumberrange_getDecimalNumbers(
+ #endif
+ 
+ static PyMethodDef t_formattednumberrange_methods[] = {
++#if U_ICU_VERSION_HEX <= VERSION_HEX(69, 0, 0)
+     DECLARE_METHOD(t_formattednumberrange, getFirstDecimal, METH_NOARGS),
+     DECLARE_METHOD(t_formattednumberrange, getSecondDecimal, METH_NOARGS),
++#endif
+     DECLARE_METHOD(t_formattednumberrange, getIdentityResult, METH_NOARGS),
+ #if U_ICU_VERSION_HEX >= VERSION_HEX(68, 0, 0)
+     DECLARE_METHOD(t_formattednumberrange, getDecimalNumbers, METH_NOARGS),
+@@ -5208,6 +5212,7 @@ static PyObject *t_formattednumber_getOutputUnit(t_formattednumber *self)
+ 
+ /* FormattedNumberRange */
+ 
++#if U_ICU_VERSION_HEX <= VERSION_HEX(69, 0, 0)
+ static PyObject *t_formattednumberrange_getFirstDecimal(
+     t_formattednumberrange *self)
+ {
+@@ -5227,6 +5232,7 @@ static PyObject *t_formattednumberrange_getSecondDecimal(
+ 
+     return PyUnicode_FromUnicodeString(&u);
+ }
++#endif
+ 
+ static PyObject *t_formattednumberrange_getIdentityResult(
+     t_formattednumberrange *self)
+diff --git a/test/test_DateTimeParserGenerator.py b/test/test_DateTimeParserGenerator.py
+index 6d37c22..ef9a00f 100644
+--- a/test/test_DateTimeParserGenerator.py
++++ b/test/test_DateTimeParserGenerator.py
+@@ -63,7 +63,6 @@ class TestDateTimePatternGenerator(TestCase):
+         else:
+             self.assertEqual(sdf.format(self.date), u'09. von mai, 17:30')
+             self.assertEqual(sdf.toPattern(), u"dd'. von' MMMM, HH:mm")
+-            
+ 
+     def testGetBestPattern(self):
+         """Test a few different languages and common patterns."""
+diff --git a/test/test_NumberFormatter.py b/test/test_NumberFormatter.py
+index a69f39b..8c85005 100644
+--- a/test/test_NumberFormatter.py
++++ b/test/test_NumberFormatter.py
+@@ -161,13 +161,21 @@ class TestNumberRangeFormatter(TestCase):
+             self.assertEqual(str(value), u'0,333-0,25')
+             self.assertEqual(repr(value), u'<FormattedNumberRange: 0,333-0,25>')
+ 
+-            self.assertEqual(value.getFirstDecimal(), u'3.33E-1')
+-            self.assertEqual(value.getSecondDecimal(), u'2.5E-1')
++            if ICU_VERSION < '69.0':
++                self.assertEqual(value.getFirstDecimal(), u'3.33E-1')
++                self.assertEqual(value.getSecondDecimal(), u'2.5E-1')
++                self.assertEqual(
++                    [(x.getStart(), x.getLimit()) for x in value],
++                    [(0, 1), (1, 2), (2, 5), (6, 7), (7, 8), (8, 10)])
++            else:
++                self.assertEqual(
++                    [(x.getStart(), x.getLimit()) for x in value],
++                    [(0, 5), (0, 1), (1, 2), (2, 5), (6, 10), (6, 7), (7, 8),
++                     (8, 10)])
++
+             if ICU_VERSION >= '68.0':
+                 self.assertEqual(value.getDecimalNumbers(), (b'0.333', b'0.25'))
+ 
+-            self.assertEqual([(x.getStart(), x.getLimit()) for x in value],
+-                             [(0, 1), (1, 2), (2, 5), (6, 7), (7, 8), (8, 10)])
+ 
+ 
+ if __name__ == "__main__":
+-- 
+GitLab
+

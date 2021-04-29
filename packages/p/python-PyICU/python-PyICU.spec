@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyICU
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/ovalhub/pyicu
 Source0:        https://files.pythonhosted.org/packages/source/P/PyICU/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: Support for ICU 69 commited upstream, spread over 2 commits
+Patch0:         support-icu-69.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -46,6 +48,7 @@ library (ICU).
 
 %prep
 %setup -q -n %{modname}-%{version}
+%autopatch -p1
 
 %build
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
