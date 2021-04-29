@@ -56,4 +56,12 @@
     <comment>- Update Git URL. Trim old specfile constructs.</comment>
     <requestid>829734</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c8b70da69119402a14fbd258e23faa99</srcmd5>
+    <version>0.14.7</version>
+    <time>1619729209</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14.7</comment>
+    <requestid>889328</requestid>
+  </revision>
 </revisionlist>
