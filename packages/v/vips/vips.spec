@@ -23,13 +23,13 @@
 %define short_version_ 8_10
 %define somajor 42
 Name:           vips
-Version:        8.10.5
+Version:        8.10.6
 Release:        0
 Summary:        C/C++ library for processing large images
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
-URL:            http://jcupitt.github.io/libvips/
-Source0:        https://github.com/jcupitt/libvips/releases/download/v%{version}/%{name}-%{version}.tar.gz
+URL:            https://libvips.github.io/libvips/
+Source0:        https://github.com/libvips/libvips/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE libexif-header.patch -- set path to libexif header
 Patch1:         vips-8.4.2_libexif-header.patch
 # PATCH-FIX-OPENSUSE vips-8.9.2-implicit-fortify-decl.patch -- avoid implicit declarations
