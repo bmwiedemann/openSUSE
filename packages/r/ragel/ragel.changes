@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 26 21:25:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.0.4
+  * No changelog provided
+  * The ragel-devel package is gone. A number of header files seem
+    to have moved to colm-devel (but in new locations, so may
+    need update "#include" lines in your programs).
+- Add paths.patch
+
+-------------------------------------------------------------------
 Wed Aug 26 11:08:36 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update Git URL.

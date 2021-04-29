@@ -95,4 +95,12 @@
     <comment>- Update Git URL.</comment>
     <requestid>829760</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>39a03c0d880dd2813eb2ccc9e00deb96</srcmd5>
+    <version>7.0.4</version>
+    <time>1619729210</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.0.4</comment>
+    <requestid>889329</requestid>
+  </revision>
 </revisionlist>
