@@ -139,7 +139,7 @@ case "${distro}" in
     150300:0)
 	reg_path='registry.suse.de/suse/containers/sle-server/15/containers/suse/sles/15.3' ;;
     *)
-	reg_path='registry.opensuse.org/virtualization/container/kubevirt' ;;
+	reg_path='registry.opensuse.org/kubevirt' ;;
 esac
 %else
 reg_path='%{registry_path}'
