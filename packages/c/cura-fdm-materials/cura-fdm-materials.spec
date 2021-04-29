@@ -1,7 +1,7 @@
 #
 # spec file for package cura-fdm-materials
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cura-fdm-materials
-Version:        4.8.0
+Version:        4.9.0
 Release:        0
 Summary:        FDM material database
 License:        CC0-1.0
@@ -29,7 +29,6 @@ BuildArch:      noarch
 
 %description
 FDM material database for use with Cura
-
 
 %prep
 %setup -q -n fdm_materials-%version
