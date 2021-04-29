@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 29 10:58:07 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.1.12a
+  * Provide metainfo
+- Install upstream provided metainfo and desktop file
+  * Drop our versions
+- Use cmake_install macro
+
+-------------------------------------------------------------------
 Sun Oct 11 09:18:41 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Disable Lua bindings as those fail to build

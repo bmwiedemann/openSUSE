@@ -1,7 +1,7 @@
 #
 # spec file for package slade
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           slade
-Version:        3.1.12
+Version:        3.1.12a
 Release:        0
 Summary:        An editor for DOOM maps and WAD/PK3 archives
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
 URL:            https://github.com/sirjuddington/SLADE
-Source:         https://github.com/sirjuddington/%name/archive/%version.tar.gz
-Source2:        slade.desktop
-Source100:      slade.appdata.xml
+Source:         %URL/archive/%version.tar.gz#/SLADE-%version.tar.gz
 Patch1:         basepk3.diff
 Patch2:         wx.diff
 Patch3:         clzma.diff
@@ -78,31 +76,15 @@ from/to other generic formats such as PNG.
 
 %install
 strip-nondeterminism build/slade.pk3
-b="%buildroot"
-install -Dm755 build/slade "$b/%_bindir/slade"
-install -Dm644 build/slade.pk3 "$b/%_datadir/slade3/slade.pk3"
-
-convert -strip "build/msvc/slade.ico[0]" -alpha on "%name.png"
-install -Dpm0644 "%name.png" "$b/%_datadir/pixmaps/%name.png"
-install -Dpm0644 %{SOURCE100} "$b/%_datadir/appdata/%name.appdata.xml"
-
-pushd misc
-for txtfile in detect_functions.txt old-simage-formats.txt stuff.txt \
-    udmf11.txt udmf_zdoom.txt usdf.txt usdf_zdoom.txt
-do
-	install -Dm644 "$txtfile" "$b/%_datadir/slade3/misc/$txtfile"
-done
-popd
-
-install -Dm644 "%_sourcedir/slade.desktop" "$b/%_datadir/applications/%name.desktop"
+%cmake_install
 
 %files
 %license gpl-2.0.txt
 %doc README.md
 %_bindir/slade
 %_datadir/slade3/
-%_datadir/pixmaps/%name.png
-%_datadir/applications/%name.desktop
-%_datadir/appdata/%name.appdata.xml
+%_datadir/icons/net.mancubus.SLADE.png
+%_datadir/applications/net.mancubus.SLADE.desktop
+%_datadir/metainfo/net.mancubus.SLADE.metainfo.xml
 
 %changelog
