@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 29 03:07:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.17
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  4.17 2021-04-28T11:30:56+0900
+   - Add add_default_response() to OpenAPIv2 and OpenAPIv3
+   - Add base_url() to OpenAPIv2 and OpenAPIv3
+   - Fix validating "nullable" for "array" and "object"
+
+-------------------------------------------------------------------
 Wed Mar 24 03:06:35 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.16
