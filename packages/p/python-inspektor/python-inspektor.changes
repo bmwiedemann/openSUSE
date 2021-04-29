@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 29 13:20:53 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Only build for primary python3
+
+-------------------------------------------------------------------
+Wed Apr 14 04:51:13 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Only build for 3.8, some depends only built there.
+- There is no test suite, remove trying to run it. 
+- Remove broken %ifpython3 macro.
+
+-------------------------------------------------------------------
 Tue Apr 16 09:59:52 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.5.2
