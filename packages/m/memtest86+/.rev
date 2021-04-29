@@ -281,4 +281,12 @@ The main modification of the package is:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>866366</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>36fc1f88ac010de04daa6bbb86dd5aec</srcmd5>
+    <version>5.31b</version>
+    <time>1619729087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>888979</requestid>
+  </revision>
 </revisionlist>

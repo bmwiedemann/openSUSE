@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 27 06:57:21 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Due to recent binutils update the gnu assembler defaults to
+  generate a ".note.gnu.property" section. The linker happily picks
+  it up to the output binary that offsets the real code entry and
+  crashes at runtime.
+  This patch discards the ".note.gnu.property" section.
+  [bsc#1185272, memtest86+-5.31b-discard-note_gnu_property.patch]
+
+-------------------------------------------------------------------
 Sun Jan 17 13:48:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.31b:

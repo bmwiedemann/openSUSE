@@ -26,6 +26,7 @@ URL:            https://www.memtest.org
 Source:         https://www.memtest.org/download/%{version}/memtest86+-%{version}.tar.gz
 Patch0:         fix-destdir
 Patch1:         memtest86+-5.01-no-optimization.patch
+Patch2:         memtest86+-5.31b-discard-note_gnu_property.patch
 #!BuildIgnore:  gcc-PIE
 Requires(pre):  /sbin/update-bootloader
 Requires(pre):  perl
@@ -45,6 +46,7 @@ it can be used to test the computer's memory.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 # dependencies are broken for the package and it should not be built in parallel
