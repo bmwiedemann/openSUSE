@@ -6,7 +6,7 @@
 
 --- texmf-dist/web2c/fmtutil.cnf
 +++ texmf-dist/web2c/fmtutil.cnf	2020-04-20 16:19:39.729909034 +0000
-@@ -51,10 +51,11 @@ amstex pdftex - -translate-file=cp227.tc
+@@ -50,10 +50,11 @@ amstex pdftex - -translate-file=cp227.tc
  # from context:
  cont-en pdftex cont-usr.tex -8bit *cont-en.mkii
  cont-en xetex cont-usr.tex -8bit *cont-en.mkii
@@ -22,7 +22,7 @@
  #
  # from cslatex:
  cslatex pdftex - -etex cslatex.ini
-@@ -71,8 +72,8 @@ pdfcsplain xetex - -etex csplain.ini
+@@ -70,8 +71,8 @@ pdfcsplain xetex - -etex csplain.ini
  eplain pdftex language.dat -translate-file=cp227.tcx *eplain.ini
  #
  # from jadetex:
@@ -33,7 +33,7 @@
  #
  # from latex-bin:
  dvilualatex luatex language.dat,language.dat.lua dvilualatex.ini
-@@ -156,5 +157,5 @@ xelatex xetex language.dat -etex xelatex
+@@ -155,5 +156,5 @@ xelatex xetex language.dat -etex xelatex
  xetex xetex language.def -etex xetex.ini
  #
  # from xmltex:
@@ -120,7 +120,7 @@
  # Cache values that may be useful for recursive calls.
  export MT_MKTEX_OPT MT_MKTEX_CNF 
 --- texmf-dist/web2c/texmf.cnf
-+++ texmf-dist/web2c/texmf.cnf	2020-03-26 11:28:55.266623482 +0000
++++ texmf-dist/web2c/texmf.cnf	2021-04-09 13:24:27.282393814 +0000
 @@ -62,20 +62,20 @@
  TEXMFROOT = $SELFAUTOPARENT
  
@@ -150,11 +150,11 @@
  TEXMFHOME = ~/texmf
  
  % TEXMFVAR, where texconfig/updmap/fmtutil store cached runtime data.
--TEXMFVAR = ~/.texlive2020/texmf-var
+-TEXMFVAR = ~/.texlive2021/texmf-var
 +TEXMFVAR = ${TEXMFSYSVAR}
  
  % TEXMFCONFIG, where texconfig/updmap/fmtutil store configuration data.
--TEXMFCONFIG = ~/.texlive2020/texmf-config
+-TEXMFCONFIG = ~/.texlive2021/texmf-config
 +TEXMFCONFIG = ${TEXMFSYSCONFIG}
  
  % This is the value manipulated by tlmgr's auxtrees subcommand in the
@@ -353,7 +353,7 @@
  %
  % For reference, here is the old brace-using definition:
  %TEXMFCNF = {$SELFAUTOLOC,$SELFAUTODIR,$SELFAUTOPARENT}{,{/share,}/texmf{-local,}/web2c}
-@@ -894,3 +900,34 @@ guess_input_kanji_encoding = 1
+@@ -904,3 +910,34 @@ guess_input_kanji_encoding = 1
  % command_line_encoding = none
  % in a texmf.cnf prefered, for example $TEXMFLOCAL/web2c/texmf.cnf.
  command_line_encoding = utf-8
