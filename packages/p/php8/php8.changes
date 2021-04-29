@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 29 14:30:56 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 8.0.5: This is a bug fix release. See
+  https://www.php.net/ChangeLog-8.php#8.0.5
+
+-------------------------------------------------------------------
 Tue Apr 13 20:19:05 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Do not hard-depend on systemd: use systemd_ordering instead of

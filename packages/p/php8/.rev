@@ -62,4 +62,13 @@
 </comment>
     <requestid>885700</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9f04d8f5ce00f84aa6760306bf9a04a5</srcmd5>
+    <version>8.0.5</version>
+    <time>1619729214</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 8.0.5: This is a bug fix release. See
+  https://www.php.net/ChangeLog-8.php#8.0.5</comment>
+    <requestid>889347</requestid>
+  </revision>
 </revisionlist>
