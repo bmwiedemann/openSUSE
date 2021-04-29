@@ -1171,4 +1171,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>Disable testsuite for now until https://github.com/OpenPrinting/cups/issues/155 is fixed. Additionally improved syntax of some recent changes entries. (forwarded request 883250 from jsmeix)</comment>
     <requestid>883251</requestid>
   </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>8d77c8bf7b5e0d8fe23abd9becc9423a</srcmd5>
+    <version>2.3.3op2</version>
+    <time>1619729067</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>888714</requestid>
+  </revision>
 </revisionlist>

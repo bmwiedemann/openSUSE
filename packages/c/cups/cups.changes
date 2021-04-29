@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 20 10:57:45 CEST 2021 - jsmeix@suse.de
+
+- upstream_pull_174.patch is
+  https://github.com/OpenPrinting/cups/pull/174
+  "Use 60s timeout for read_thread, revert read limits"
+  to fix printing with older USB printers
+- New upstream URL https://openprinting.github.io/cups
+
+-------------------------------------------------------------------
 Tue Apr  6 11:34:50 CEST 2021 - jsmeix@suse.de
 
 - Disable testsuite for now via "bcond_with testsuite"

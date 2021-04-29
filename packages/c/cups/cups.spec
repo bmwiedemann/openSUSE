@@ -34,7 +34,7 @@ Release:        0
 Summary:        The Common UNIX Printing System
 License:        Apache-2.0
 Group:          Hardware/Printing
-URL:            http://www.cups.org/
+URL:            https://openprinting.github.io/cups
 # To get Source0 go to https://github.com/OpenPrinting/cups/releases or use e.g.
 # wget --no-check-certificate -O cups-2.3.3op2-source.tar.gz https://github.com/OpenPrinting/cups/releases/download/v2.3.3op2/cups-2.3.3op2-source.tar.gz
 Source0:        https://github.com/OpenPrinting/cups/releases/download/v2.3.3op2/cups-2.3.3op2-source.tar.gz
@@ -54,6 +54,9 @@ Source106:      Postscript-level2.ppd.gz
 Source108:      cups-client.conf
 Source109:      baselibs.conf
 # Patch0...Patch9 is for patches from upstream:
+# Patch1 upstream_pull_174.patch is https://github.com/OpenPrinting/cups/pull/174
+# Use 60s timeout for read_thread, revert read limits
+Patch1:         upstream_pull_174.patch
 # Source10...Source99 is for sources from SUSE which are intended for upstream:
 # Patch10...Patch99 is for patches from SUSE which are intended for upstream:
 # Patch10 cups-2.1.0-choose-uri-template.patch adds 'smb://...' URIs to templates/choose-uri.tmpl:
@@ -276,6 +279,9 @@ printer drivers for CUPS.
 %prep
 %setup -q
 # Patch0...Patch9 is for patches from upstream:
+# Patch1 upstream_pull_174.patch is https://github.com/OpenPrinting/cups/pull/174
+# Use 60s timeout for read_thread, revert read limits
+%patch1 -p1
 # Patch10...Patch99 is for patches from SUSE which are intended for upstream:
 # Patch10 cups-2.1.0-choose-uri-template.patch adds 'smb://...' URIs to templates/choose-uri.tmpl:
 %patch10 -b choose-uri-template.orig
