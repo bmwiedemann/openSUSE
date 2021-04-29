@@ -1,7 +1,7 @@
 #
 # spec file for package python-testfixtures
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        A collection of helpers and mock objects for unit tests and doc 
 License:        MIT
 URL:            https://github.com/Simplistix/testfixtures
 Source:         https://files.pythonhosted.org/packages/source/t/testfixtures/testfixtures-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: gh#Simplistix/testfixtures/commit/52a14d92a122665b1a101e6398eca3982de01739
+Patch0:         appease-django-320.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module pytest >= 3.6}
@@ -57,6 +59,7 @@ their own library and give them some tests of their own!
 
 %prep
 %setup -q -n testfixtures-%{version}
+%autopatch -p1
 chmod a-x docs/*.txt
 
 %build

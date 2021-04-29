@@ -1,0 +1,19 @@
+From 52a14d92a122665b1a101e6398eca3982de01739 Mon Sep 17 00:00:00 2001
+From: Chris Withers <chris@simplistix.co.uk>
+Date: Sat, 10 Apr 2021 19:42:20 +0100
+Subject: [PATCH] appease Django 3.2
+
+---
+ testfixtures/tests/test_django/settings.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/testfixtures/tests/test_django/settings.py b/testfixtures/tests/test_django/settings.py
+index cf960d7..5173650 100644
+--- a/testfixtures/tests/test_django/settings.py
++++ b/testfixtures/tests/test_django/settings.py
+@@ -6,3 +6,5 @@
+ ]
+ 
+ DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3'}}
++
++DEFAULT_AUTO_FIELD='django.db.models.AutoField'

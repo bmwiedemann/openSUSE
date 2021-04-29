@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 28 07:49:55 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add appease-django-320.patch:
+  * Upstream patch to avoid a test failure with building with Django 3.2
+
+-------------------------------------------------------------------
 Fri Dec 18 09:50:52 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - update to v6.17.0
