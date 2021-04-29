@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 12 12:41:38 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Reenable pygmentex as now with python3
+
+-------------------------------------------------------------------
+Fri Apr  9 11:12:32 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Remove patch de-macro_p2top3.dif now upstream 
+- Port patches
+  * kpathsea_cnf.dif
+  * latexmk_conf.dif
+  * lilyglyphs_p2top3.dif (now only shebang corrected)
+  * luatex_cnf.dif
+  * luaotfload_varfonts.dif
+  * musixtex_various.dif
+  * texdoc_cnf.dif
+  * texlive-scripts_scripts.dif
+
+-------------------------------------------------------------------
+Tue Apr  6 14:03:37 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to TeXLive 2021
+
+-------------------------------------------------------------------
 Fri Mar  5 13:52:04 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Rename patch lilyglyphs-8ffa820e4.dif to lilyglyphs_p2top3.dif
