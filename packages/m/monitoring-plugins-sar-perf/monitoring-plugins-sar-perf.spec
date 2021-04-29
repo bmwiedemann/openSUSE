@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-sar-perf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,6 +65,17 @@ sar OK| DEV=sda tps=0.00 rd_sec/s=0.00 wr_sec/s=0.00 avgrq-sz=0.00
 install -D -m755 check_sar_perf.py %{buildroot}/%{nagios_plugindir}/check_sar_perf
 install -m755 %{SOURCE1} %{buildroot}/%{nagios_plugindir}/check_iostat
 install -Dm0644 %{SOURCE2} %{buildroot}/%{_sysconfdir}/apparmor.d/usr.lib.nagios.plugins.check_iostat
+
+%postun
+if [ "$YAST_IS_RUNNING" != "instsys" ]; then
+     if [ -x /sbin/apparmor_parser ]; then
+         if /usr/bin/systemctl is-active --quiet apparmor.service; then
+             /sbin/apparmor_parser -r -T -W  %{_sysconfdir}/apparmor.d/usr.lib.nagios.plugins.check_iostat &> /dev/null || :
+         fi
+     else
+         echo "Could not reload the Apparmor profile: /sbin/apparmor_parser is missing or not executable."
+     fi
+fi
 
 %clean
 rm -rf %{buildroot}

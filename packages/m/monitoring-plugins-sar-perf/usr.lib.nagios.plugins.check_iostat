@@ -1,6 +1,7 @@
 #include <tunables/global>
 /usr/lib/nagios/plugins/check_iostat {
    #include <abstractions/base>
+   #include <abstractions/bash>
    #include <abstractions/consoles>
    #include <abstractions/perl>
    /usr/bin/iostat rix,

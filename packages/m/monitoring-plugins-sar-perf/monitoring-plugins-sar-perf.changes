@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 22 12:25:03 UTC 2021 - Lars Vogdt <lars@linux-schulserver.de>
+
+- include abstractions/bash in apparmor profile - otherwise 
+  the 'which iostat' command fails
+- reload the apparmor profile in postun to make the changes effective
+
+-------------------------------------------------------------------
 Tue Jul 28 14:03:05 CEST 2020 - ro@suse.de
 
 - update apparmor profile again to allow reading
