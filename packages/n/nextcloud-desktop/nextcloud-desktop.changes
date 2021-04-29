@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 29 14:40:22 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.2.1
+  - desktop#3122 [stable-3.2] Do not schedule reboot when
+    installing MSI in silent mode unless 'SCHEDULE_REBOOT is set.
+  - desktop#3123 [stable-3.2] Temporary solution for file
+    restoration issue due to failing the data…
+  - desktop#3149 [stable-3.2] Display VFS sync folder within the
+    navigation panel on Windows.
+  - desktop#3151 [stable-3.2] Windows MSI. Do not allow installing
+    Nextcloud client on < Windows 10 or < 1709
+  - desktop#3211 [stable-3.2] fix errors when calling 
+    CfRegisterSyncRoot by setting more fields
+  - desktop#3212 [stable-3.2] add info in the installation page
+    about the supported server versions
+  - desktop#3213 [stable-3.2] status wrong for directories when
+    using vfs and nextcloud desktop 3.2.0
+  - desktop#3219 [stable-3.2] update the news part of documentation
+    with improvements from 3.2 release
+
+-------------------------------------------------------------------
 Thu Apr  8 18:18:51 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.2.0

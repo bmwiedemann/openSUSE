@@ -111,4 +111,12 @@
     <comment>Only fix double entry in changes and add CVE things to older version 3.1.3 in changes.</comment>
     <requestid>885784</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9ddda51a55a9f251ddfb1b9498851efa</srcmd5>
+    <version>3.2.1</version>
+    <time>1619729215</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889358</requestid>
+  </revision>
 </revisionlist>
