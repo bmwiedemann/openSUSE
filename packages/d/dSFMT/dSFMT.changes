@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 18 00:38:54 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.2.5
+  * Some minor fixes
+  * Allow build as shared library, this obsoletes
+    dSFMT-export_functions.patch
+- Refreshed dSFMT-sharedlib.patch as dSFMT-sharedlib-makefile.patch
+- Fixed SPEC file, use working upstream URL
+
+-------------------------------------------------------------------
 Thu Jul 24 16:02:07 UTC 2014 - dmitry_r@opensuse.org
 
 - Initial package, version 2.2.3

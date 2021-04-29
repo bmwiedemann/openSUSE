@@ -1,7 +1,7 @@
 #
 # spec file for package dSFMT
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,21 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           dSFMT
-Version:        2.2.3
 %define lib_ver 2_2
+Name:           dSFMT
+Version:        2.2.5
 Release:        0
 Summary:        Double precision SIMD-oriented Fast Mersenne Twister
 License:        BSD-3-Clause
 Group:          System/Libraries
-Url:            http://www.math.sci.hiroshima-u.ac.jp/~%20m-mat/MT/SFMT/index.html
-Source0:        http://www.math.sci.hiroshima-u.ac.jp/~%20m-mat/MT/SFMT/%{name}-src-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE dSFMT-sharedlib.patch -- Build shared library
-Patch1:         dSFMT-sharedlib.patch
-# PATCH-FIX-OPENSUSE dSFMT-export_functions.patch -- Export functions required to use the library
-Patch2:         dSFMT-export_functions.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            http://www.math.sci.hiroshima-u.ac.jp/m-mat/MT/SFMT/
+Source0:        https://github.com/MersenneTwister-Lab/dSFMT/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE dSFMT-sharedlib-makefile.patch -- Build target for shared library
+Patch0:         dSFMT-sharedlib-makefile.patch
 
 %description
 Double precision SIMD-oriented Fast Mersenne Twister (dSFMT)
@@ -74,31 +71,27 @@ This package provides libraries and header files for developing applications
 that use dSFMT.
 
 %prep
-%setup -q -n %{name}-src-%{version}
-%patch1 -p1
-%patch2 -p1
+%setup -q
+%patch0 -p1
 
 %build
-make %{?_smp_mflags} \
-     sharedlib \
-     libdir=%{_libdir} \
-     CCFLAGS="-fPIC %{optflags}"
+%ifarch x86_64
+%make_build sse2_shared CFLAGS="%{optflags}"
+%endif
+%make_build sharedlib CFLAGS="%{optflags}"
 
 %install
-make install DESTDIR=%{buildroot} \
-             libdir=%{_libdir}
+make install DESTDIR=%{buildroot} libdir="%{_libdir}"
 
 %post -n lib%{name}%{lib_ver} -p /sbin/ldconfig
-
 %postun -n lib%{name}%{lib_ver} -p /sbin/ldconfig
 
 %files -n lib%{name}%{lib_ver}
-%defattr(-,root,root)
+%license LICENSE.txt
 %{_libdir}/lib%{name}.so.*
 
 %files devel
-%defattr(-,root,root)
-%doc CHANGE-LOG.txt LICENSE.txt README.txt
+%doc CHANGE-LOG.txt README.txt
 %{_libdir}/lib%{name}.so
 %{_includedir}/%{name}*
 

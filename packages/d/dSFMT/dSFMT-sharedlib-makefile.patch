@@ -1,25 +1,13 @@
---- dSFMT-src-2.2.3/Makefile.origin	2013-12-19 05:37:46.000000000 +0100
-+++ dSFMT-src-2.2.3/Makefile	2014-06-06 21:21:28.939219524 +0200
+diff -Nur dSFMT-2.2.5/Makefile new/Makefile
+--- dSFMT-2.2.5/Makefile	2020-11-10 01:16:47.000000000 +0100
++++ new/Makefile	2021-04-18 02:26:19.058671926 +0200
 @@ -17,23 +17,50 @@
  # We could comple test-alti-Mxxx using gcc 3.3 of osx.
  # We could comple test-alti-Mxxx using gcc 4.0 of osx.
  
-+V_MAJOR   = 2
-+V_MINOR   = 2
-+V_RELEASE = 3
-+SONAME    = $(V_MAJOR).$(V_MINOR)
-+VERSION   = $(V_MAJOR).$(V_MINOR).$(V_RELEASE)
-+
-+prefix     = /usr
-+includedir = $(prefix)/include
-+libdir     = $(prefix)/lib
-+SSE2_libdir = $(libdir)/sse2
-+DESTDIR    = .
-+
-+SFMT_MEXP  = 19937
- WARN = -Wmissing-prototypes -Wall #-Winline
- #WARN = -Wmissing-prototypes -Wall -W
- #WARN = /Wall
+-WARN = -Wmissing-prototypes -Wall #-Winline
+-#WARN = -Wmissing-prototypes -Wall -W
+-#WARN = /Wall
 -OPTI = -O3 -finline-functions -fomit-frame-pointer -DNDEBUG \
 --fno-strict-aliasing --param max-inline-insns-single=1800
 -#--param inline-unit-growth=500 --param large-function-growth=900 #for gcc 4
@@ -34,21 +22,37 @@
 -OSXALTIFLAGS = -faltivec -maltivec -DHAVE_ALTIVEC
 -SSE2FLAGS = -msse2 -DHAVE_SSE2
 -#SSE2FLAGS = /arch:SSE2 /DHAVE_SSE2
-+OPTI            = -O3 -finline-functions -fomit-frame-pointer -DNDEBUG \
-+--param inline-unit-growth=500 --param large-function-growth=900 #for gcc 4
-+#-fno-strict-aliasing --param max-inline-insns-single=1800
-+#OPTI           = /Ot /Ob2 /Oy /Ox /Oi /GL /G6
++V_MAJOR   = 2
++V_MINOR   = 2
++V_RELEASE = 5
++SONAME    = $(V_MAJOR).$(V_MINOR)
++VERSION   = $(V_MAJOR).$(V_MINOR).$(V_RELEASE)
++
++prefix      = /usr
++includedir  = $(prefix)/include
++libdir      = $(prefix)/lib
++SSE2_libdir = $(libdir)/sse2
++DESTDIR     = .
++
++SFMT_MEXP   = 19937
++WARN        = -Wmissing-prototypes -Wall
++OPTI        = -O3 -finline-functions -fomit-frame-pointer -DNDEBUG \
++              --param inline-unit-growth=500 --param large-function-growth=900 #for gcc 4
++
++ifneq (,$(findstring shared,$(MAKECMDGOALS)))
++OPTI += -DDSFMT_SHLIB -DSFMT_DO_NOT_USE_OLD_NAMES
++endif
++
 +STD             = -std=c99
 +CC              = gcc
 +LINK            = gcc
-+CCFLAGS         = -fPIC $(OPTI) $(WARN) $(STD)
++CCFLAGS         = -fPIC $(OPTI) $(WARN) $(STD) $(CFLAGS)
 +INCPATH         = -I$(includedir)
 +LIBS            = -L$(libdir) -L. -lpthread
 +LDFLAGS         = -Wl,--no-undefined -Wl,-z,noexecstack -shared
 +ALTIFLAGS       = -mabi=altivec -maltivec -DHAVE_ALTIVEC
 +OSXALTIFLAGS    = -faltivec -maltivec -DHAVE_ALTIVEC
 +SSE2FLAGS       = -msse2 -DHAVE_SSE2
-+#SSE2FLAGS      = /arch:SSE2 /DHAVE_SSE2
 +STRIP           =
 +COPY_FILE       = cp -f
 +COPY_DIR        = $(COPY_FILE) -R
@@ -58,14 +62,14 @@
 +DEL_FILE        = rm -rf
 +MOVE            = mv -f
 +CHK_DIR_EXISTS  = test -d
-+CHK_FILE_EXISTS  = test ! -f
++CHK_FILE_EXISTS = test ! -f
 +MKDIR           = mkdir -p
 +
 +TARGET  = dSFMT
  STD_TARGET = test-std-M19937
  ALL_STD_TARGET = test-std-M521 test-std-M1279 test-std-M2203 test-std-M4253 \
  test-std-M11213 test-std-M19937 test-std-M44497 test-std-M86243 \
-@@ -46,6 +73,9 @@ SSE2_TARGET = $(STD_TARGET) test-sse2-M1
+@@ -46,6 +73,9 @@
  ALL_SSE2_TARGET = test-sse2-M521 test-sse2-M1279 test-sse2-M2203 \
  test-sse2-M4253 test-sse2-M11213 test-sse2-M19937 test-sse2-M44497 \
  test-sse2-M86243 test-sse2-M132049 test-sse2-M216091
@@ -75,7 +79,7 @@
  # ==========================================================
  # comment out or EDIT following lines to get max performance
  # ==========================================================
-@@ -78,7 +108,18 @@ test-sse2-M86243 test-sse2-M132049 test-
+@@ -78,7 +108,18 @@
  # -----------------
  #CCFLAGS += -march=athlon64
  
@@ -95,7 +99,7 @@
  
  std: $(STD_TARGET)
  
-@@ -101,6 +142,9 @@ alti-check: $(ALL_ALTI_TARGET)
+@@ -101,6 +142,9 @@
  osx-alti-check:
  	make "ALTIFLAGS=$(OSXALTIFLAGS)" alti-check
  
@@ -105,7 +109,7 @@
  test-std-M521: test.c dSFMT.c dSFMT.h
  	$(CC) $(CCFLAGS) -DDSFMT_MEXP=521 -o $@ dSFMT.c test.c
  
-@@ -146,8 +190,8 @@ test-alti-M11213: test.c dSFMT.c dSFMT.h
+@@ -146,8 +190,8 @@
  test-sse2-M11213: test.c dSFMT.c dSFMT.h
  	$(CC) $(CCFLAGS) $(SSE2FLAGS) -DDSFMT_MEXP=11213 -o $@ dSFMT.c test.c
  
@@ -116,7 +120,7 @@
  
  test-alti-M19937: test.c dSFMT.c dSFMT.h
  	$(CC) $(CCFLAGS) $(ALTIFLAGS) -DDSFMT_MEXP=19937 -o $@ dSFMT.c test.c
-@@ -191,8 +235,54 @@ test-alti-M216091: test.c dSFMT.c dSFMT.
+@@ -191,8 +235,53 @@
  test-sse2-M216091: test.c dSFMT.c dSFMT.h
  	$(CC) $(CCFLAGS) $(SSE2FLAGS) -DDSFMT_MEXP=216091 -o $@ dSFMT.c test.c
  
@@ -132,7 +136,6 @@
 +	$(CC) $(CCFLAGS) $(SSE2FLAGS) $(DEFINES) -c $<
 +
 +sharedlib: $(OBJECT)
-+	@echo $(LDFLAGS)
 +	$(DEL_FILE) $(SHARED_TARGETS)
 +	$(LINK) $(LDFLAGS) -Wl,-soname,$(SHARED_TARGET2) -o $(SHARED_TARGET) $<
 +	$(SYMLINK) $(SHARED_TARGET) $(SHARED_TARGET0)
@@ -173,7 +176,3 @@
 +	$(DEL_FILE) *.o *~ test-*-M*
 +	$(DEL_FILE) *.so *.so.*
 +	$(DEL_FILE) test-$(TARGET)
-+
-+distclean: clean
-+	$(DEL_FILE) -r $(DESTDIR)$(prefix)
-+	
