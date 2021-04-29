@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  9 09:09:09 UTC 2021 - olaf@aepfle.de
+
+- Update to version 2.51.4_rc2
+  remove Compatibility-with-OCaml-4.08.patch
+  remove Compile-without-unsafe-string.patch
+  remove Fix-for-lablgtk-2.18.6.patch
+  remove Fix-warnings-raised-by-OCaml-4.08.1.patch
+- Remove ocaml_native_compiler conditional
+  build native target unconditionally
+
+-------------------------------------------------------------------
 Sat Feb 29 20:20:20 UTC 2020 - olaf@aepfle.de
 
 - Update to v2.51.2, via _service file
