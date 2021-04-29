@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-caasp
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-caasp
-Version:        4.2.3
+Version:        4.4.1
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -32,9 +32,9 @@ BuildRequires:  yast2-installation >= 3.2.38
 # chrony support
 Requires:       yast2-ntp-client   >= 4.0.3
 BuildRequires:  yast2-ntp-client   >= 4.0.3
-# Y2Network::NtpServer
-Requires:       yast2-network      >= 4.2.55
-BuildRequires:  yast2-network      >= 4.2.55
+# Drop Yast::LanItems
+Requires:       yast2-network      >= 4.4.7
+BuildRequires:  yast2-network      >= 4.4.7
 
 BuildRequires:  yast2-devtools     >= 3.1.39
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
@@ -45,7 +45,7 @@ BuildArch:      noarch
 Summary:        YaST2 - CaaSP Module
 License:        GPL-2.0-only
 Group:          System/YaST
-Url:            https://github.com/yast/yast-caasp
+URL:            https://github.com/yast/yast-caasp
 
 %description
 Containers as a Service Platform (CaaSP) and openSUSE Kubic specific module.

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 27 10:30:25 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Drop Yast::LanItems dependency (bsc#1185338)
+- 4.4.1
+
+-------------------------------------------------------------------
+Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- 4.4.0
+
+-------------------------------------------------------------------
 Wed Feb 19 12:57:29 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Rely on the new Y2Network::NtpServer class (jsc#SLE-7188).
