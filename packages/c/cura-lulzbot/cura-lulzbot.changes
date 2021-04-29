@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Tue Apr 20 02:41:07 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.6.23
+  * Lutefisk toolhead updated
+  * The Workhorse firmware has been updated
+  * Fixed wrong Toolhead Errors
+  * 3D-Fuel filament has had their store links updated
+- Fixed Requires, there is no uranium 3.6.22
+- Fixed URL in SPEC file
+
+-------------------------------------------------------------------
+Wed Jan 20 16:10:30 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.6.22
+    adding materials and profiles to workhorse SE
+    new cura splash screen
+    adding high speed and quality profiles M175
+    updating licenscing
+    typo fix for SE toolhead on workhorse
+    adding firmware for M175
+    added SE definition for redgum start gcodes WH PRO
+    added start gcode for some printers for M175
+    adding tool head to workhorse
+    changes to the M175 quality files
+    filename changes for lutefisk toolhead
+    1.75 material and quality
+    Added check for extruder data when changing a profile
+    redgum adding toolhead typo fix
+    changing order on addmachine dialog
+
+-------------------------------------------------------------------
+Sat Jan 16 19:41:27 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add compatibility with qml-autoreqprov
+
+-------------------------------------------------------------------
+Mon Nov 16 11:08:10 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
+
+- Remove dependency on old python-sip package. Nothing in the
+  lulzbot code actually references it, let take PyQt5 (python-qt5)
+  take care of the correct library (now python-qt5-sip)
+
+-------------------------------------------------------------------
+Tue Feb 11 12:21:54 UTC 2020 - Adrian Schröter <adrian@suse.de>
+
+- Add conflict to ModemManager
+  -> it keeps breaking serial connection
+
+-------------------------------------------------------------------
+Fri Oct 11 05:42:50 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.6.21
+    T10205 PLA updates for Pro and Workhorse
+    Added Marlin FW to v2.0.0.174 for LulzBot Bio printer.
+    T9011: "Needle Gauge" tooltip placement fixed.
+    T9011: Added settings to "recommended" section. Tooltips fix.
+    T9858 - Updated Poly-pla profiles for Taz Workhorse Edition
+    T9011: Needle Gauge input box fix.
+    updated 30 gauge needle line width for collagen and sodium alginate
+    T9011: Layout changes. Added "syringe_printer" option to printer definition.
+    T10102: Check for exception when opening USB serial port for auto detection.
+    T9011: First print model for Lulzbot Bio added.
+    T10138 - fixed layer height and brim line count in ngen standard for taz pro
+    T10065: Added custom g-code mechanism for abort function.
+    T10065: Refactoring 188e496a232b.
+    T10065: Added G28 Z to Kangaroo Paw when aborting print
+    T9011 smaller bed STL file
+    T9011 fixing naming on bed plate
+    T10082 updating kpaw bed plate on branch T9011
+    T9011: Sidebar input fields size changed.
+    T9011 updating label for shape and volume
+    T9011: Refactoring 17aa9379de38
+    T9011: Added printers priority.
+    T9011: Syringe Internal Diameter label added.
+    updating name and category for kpaw T9011
+    T9011: Changed store index for machine properties
+    T9011: Tooltips for options in recommended section, refactoring 980771ae0730
+    T9011: Changed default recommended options (including new layout for Kangaroo Paw)
+
+-------------------------------------------------------------------
+Mon Oct  7 11:52:29 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.6.20
+  * Taz Pro support
+
+-------------------------------------------------------------------
+Thu Sep  5 08:34:35 UTC 2019 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.6.19
+    T8016: fixed segfault when cache is clear
+    added collagen material and updated collagen profiles
+    updated name and quality from standard to correct type
+    Added alginate and collagen print profiles for T9826
+    T9743: fixed resolve functions for bridge settings
+    T8015 updating layer height description
+    T9613 duplicating hibiscus start and updating for accessory tool heads
+    T9719 fixing bed compensation stack up and printer name
+    Updated Goldenrod Toolhead for the TazPRO Printer T9062
+    T9617: Updated info links for filaments.
+    Updating start gcode for bio on T9063
+    New PLA (IC3D) Profiles for Hibiscus Printer T9460
+    T2369: Added current and new firmware versions
+    Updated TazPro Polydissolve Profiles T9305
+    T8016: fixed text field update on changing extruder
+    T8016: updated default visibility of new settings
+    T8016: added updating of tower position on buildplate
+    T8016: Added ability to select prime tower position from profile
+
+-------------------------------------------------------------------
 Mon Aug 12 07:30:19 UTC 2019 - Adrian Schröter <adrian@suse.de>
 
 - update to 3.6.18

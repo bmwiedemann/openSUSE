@@ -1,7 +1,7 @@
 #
 # spec file for package cura-lulzbot
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+# Internal QML import
+%global __requires_exclude qmlimport\\(Cura.*
+
 Name:           cura-lulzbot
-Version:        3.6.18
+Version:        3.6.23
 Release:        0
 Summary:        3D printer control software
 License:        AGPL-3.0-only
 Group:          Hardware/Printing
-Url:            https://code.alephobjects.com/source/cura-lulzbot.git
+URL:            https://gitlab.com/lulzbot3d/cura-le/cura-lulzbot
 Source0:        %name-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE fix-build.patch -- adapt SUSE python install path
 Patch1:         fix-build.patch
@@ -32,16 +35,21 @@ BuildArch:      noarch
 Provides:       cura2-lulzbot
 Obsoletes:      cura2-lulzbot < 3
 Conflicts:      cura
+Conflicts:      ModemManager
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  icoutils
 BuildRequires:  gettext-tools
+BuildRequires:  icoutils
 BuildRequires:  python3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  uranium-lulzbot
-Requires:       cura-engine-lulzbot = %version
-Requires:       uranium-lulzbot = %version
+%if 0%{?suse_version} > 1500
+# To get requires from imports in .qml files
+BuildRequires:  qml-autoreqprov
+%endif
+Requires:       cura-engine-lulzbot >= 3.6.21
+Requires:       uranium-lulzbot >= 3.6.21
 # dependency scripts do not find qtquickcontrols automatically
 Requires:       libqt5-qtquickcontrols
 Requires:       libqt5-qtquickcontrols2
@@ -51,7 +59,6 @@ Requires:       python3-power
 Requires:       python3-pyserial
 Requires:       python3-qt5
 Requires:       python3-scipy
-Requires:       python3-sip
 Requires:       python3-zeroconf
 # No 32bit support anymore
 ExcludeArch:    %ix86 %arm s390
