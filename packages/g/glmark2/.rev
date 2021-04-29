@@ -168,4 +168,41 @@
 - Use python3 for building</comment>
     <requestid>809453</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>14e15d3a25d1edbc8f3eba5c57ec52ab</srcmd5>
+    <version>20210224</version>
+    <time>1619729187</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210224:
+  * SceneRefract: Fix incorrect generation of mipmap
+  * NativeStateWayland: Don't assume order of globals
+  * GLStateEGL: Avoid creating two EGLDisplay instances
+  * Build,Doc: Update files for 2021.02 release
+  * Build: Remove invalid build flavors for meson
+  * NativeStateWayland: Support quitting with ESC or Q key
+  * NativeStateWayland: Add basic pointer support
+  * CanvasGeneric: avoid undefined behavior constructing a std::string with NULL
+  * libmatrix: declare Shader::Shader(Shader&amp;&amp;) as noexcept
+  * libmatrix: add move constructor to class Shader for v.push_back opt
+  * build: glmark2 does not really require libpng version 16
+  * SceneBump: Fix precision bug in height rendering
+  * SceneDesktop: Draw to correct FBO in off-screen mode
+  * SceneShadow: Draw to correct FBO in off-screen mode
+  * SceneRefract: Draw to correct FBO in off-screen mode
+  * SceneTerrain: Draw to correct FBO in off-screen mode
+  * CanvasGeneric: End the frame with glFinish when validating
+  * Build: Use the build system wayland-scanner on meson
+  * Build: Fix drm-only and wayland-only builds on meson
+  * loop,function,conditionals: Fix mediump overflow
+  * terrain: Fix precision handling in noise shader
+  * terrain: Fix precision bug in light rendering
+  * Doc: Document that the -b flag can pass common opts
+  * Doc: Update files for meson build system
+  * ci: Add build github workflow
+  * Build: Meson build system support
+  * Build: Use python3 in waf
+  * NativeStateWayland: Fix no response to wayland server ping event.
+  * Check for proper initialization of native_window and MVC matrix</comment>
+    <requestid>889205</requestid>
+  </revision>
 </revisionlist>
