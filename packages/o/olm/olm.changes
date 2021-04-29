@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Apr 17 12:00:00 UTC 2021 - cunix@mail.de
+
+- Build and ship Python bindings.
+
+-------------------------------------------------------------------
+Fri Apr 16 04:40:01 UTC 2021 - Wang Jun <jgwang@suse.com>
+
+- Update to 3.2.2
+  * Fixes in the TypeScript definition file.
+  * CMake build fixes.  Thanks to Gorgurov Alexey.
+  * Change the JavaScript package name to ``@matrix-org/olm``.  Note that
+    this means that packages will need to change their ``require`` or
+    ``import`` statements to use this new name.
+  * Include file checksums in the JavaScript package.
+  * Fix length calculation in fallback key json.  Thanks to Tobias Furuholm.
+  * Add a new function to calculate the correct base64 encoding for SAS.
+    (Currently only available in the C API.)
+  * Add the ability to specify a pickle key in the Objective-C binding.
+  * Add pkg-config file on Unix-like systems.
+
+-------------------------------------------------------------------
 Sun Nov 22 14:32:26 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 3.2.1
