@@ -135,7 +135,7 @@ case "${distro}" in
     150300:0)
 	reg_path='registry.suse.de/suse/containers/sle-server/15/containers/suse/sles/15.3' ;;
     *)
-	reg_path='registry.opensuse.org/virtualization/container/kubevirt' ;;
+	reg_path='registry.opensuse.org/kubevirt' ;;
 esac
 %else
 reg_path='%{registry_path}'
@@ -144,7 +144,6 @@ reg_path='%{registry_path}'
 export GOPATH=%{_builddir}/go
 export GOFLAGS="-buildmode=pie -mod=vendor"
 env \
-CDI_VERSION=%{version} \
 CDI_SOURCE_DATE_EPOCH="$(date -r LICENSE +%s)" \
 CDI_GIT_COMMIT='v%{version}' \
 CDI_GIT_VERSION='v%{version}' \
