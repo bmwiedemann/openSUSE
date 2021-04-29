@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 21 04:54:21 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- only recommend installation of vim-plugin-nginx if any vim is
+  also installed or selected (boo#1183710)
+
+-------------------------------------------------------------------
 Tue Apr 20 20:41:21 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 1.20.0

@@ -66,7 +66,6 @@ Recommends:     nginx-module-fancyindex
 Recommends:     nginx-module-geoip2
 Recommends:     nginx-module-headers-more
 Recommends:     nginx-module-http-flv
-Recommends:     vim-plugin-nginx
 Provides:       http_daemon
 Provides:       httpd
 %{?systemd_ordering}
@@ -85,6 +84,7 @@ Summary:        VIM support for nginx config files
 Group:          Productivity/Text/Editors
 %requires_eq    vim
 BuildArch:      noarch
+Supplements:    (nginx and vim_client)
 
 %description -n vim-plugin-nginx
 nginx [engine x] is a HTTP server and IMAP/POP3 proxy server written by Igor Sysoev.
