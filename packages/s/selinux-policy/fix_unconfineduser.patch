@@ -1,7 +1,7 @@
-Index: fedora-policy-20210309/policy/modules/roles/unconfineduser.te
+Index: fedora-policy-20210419/policy/modules/roles/unconfineduser.te
 ===================================================================
---- fedora-policy-20210309.orig/policy/modules/roles/unconfineduser.te
-+++ fedora-policy-20210309/policy/modules/roles/unconfineduser.te
+--- fedora-policy-20210419.orig/policy/modules/roles/unconfineduser.te
++++ fedora-policy-20210419/policy/modules/roles/unconfineduser.te
 @@ -124,6 +124,11 @@ tunable_policy(`unconfined_dyntrans_all'
      domain_dyntrans(unconfined_t)
  ')
@@ -43,4 +43,15 @@ Index: fedora-policy-20210309/policy/modules/roles/unconfineduser.te
 +	optional_policy(`
  		bluetooth_dbus_chat(unconfined_t)
  	')
+ 
+@@ -311,6 +332,10 @@ optional_policy(`
+ ')
+ 
+ optional_policy(`
++	libs_run_ldconfig(unconfined_t, unconfined_r)
++')
++
++optional_policy(`
+ 	firstboot_run(unconfined_t, unconfined_r)
+ ')
  

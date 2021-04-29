@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 26 07:16:10 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added Recommends for selinux-autorelabel (bsc#1181837)
+- Prevent libreoffice fonts from changing types on every relabel 
+  (bsc#1185265). Added fix_libraries.patch
+
+-------------------------------------------------------------------
+Fri Apr 23 10:50:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Transition unconfined users to ldconfig type (bsc#1183121).
+  Extended fix_unconfineduser.patch
+
+-------------------------------------------------------------------
 Mon Apr 19 11:37:49 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 20210419

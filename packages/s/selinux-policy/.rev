@@ -71,4 +71,17 @@
     <comment></comment>
     <requestid>886701</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9cda263dff91190e823aec9eac73bf3a</srcmd5>
+    <version>20210419</version>
+    <time>1619729063</time>
+    <user>dimstar_suse</user>
+    <comment>- Added Recommends for selinux-autorelabel (bsc#1181837)
+- Prevent libreoffice fonts from changing types on every relabel 
+  (bsc#1185265). Added fix_libraries.patch
+
+- Transition unconfined users to ldconfig type (bsc#1183121).
+  Extended fix_unconfineduser.patch</comment>
+    <requestid>888543</requestid>
+  </revision>
 </revisionlist>

@@ -128,6 +128,7 @@ Patch046:       fix_unprivuser.patch
 Patch047:       fix_rpm.patch
 Patch048:       fix_apache.patch
 Patch049:       fix_nis.patch
+Patch050:       fix_libraries.patch
 
 Patch100:       sedoctool.patch
 
@@ -154,6 +155,7 @@ Recommends:     selinux-tools
 Recommends:     python3-policycoreutils
 Recommends:     policycoreutils-python-utils
 Recommends:     container-selinux
+Recommends:     selinux-autorelabel
 
 %define common_params DISTRO=%{distro} UBAC=%{ubac} DIRECT_INITRC=n MONOLITHIC=%{monolithic} MLS_CATS=1024 MCS_CATS=1024
 
@@ -432,6 +434,7 @@ exit 0
 %patch047 -p1
 %patch048 -p1
 %patch049 -p1
+%patch050 -p1
 
 %patch100 -p1
 find . -type f -exec sed -i -e "s/distro_suse/distro_redhat/" \{\} \;
