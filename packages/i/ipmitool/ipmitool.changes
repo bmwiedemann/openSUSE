@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 27 14:13:49 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Use /run instead of /var/run (bsc#1185162)
+
+-------------------------------------------------------------------
 Wed Feb  3 11:08:48 UTC 2021 - Thomas Renninger <trenn@suse.de>
 
 - Fixes (bsc#1179133) lanplus: hanging on getting cipher suites for 10 seconds

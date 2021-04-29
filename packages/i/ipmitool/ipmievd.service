@@ -7,7 +7,7 @@ After=ipmi.service
 EnvironmentFile=-/etc/ipmievd
 ExecStart=/usr/sbin/ipmievd $IPMIEVD_OPTIONS
 Type=forking
-PIDFile=/var/run/ipmievd.pid
+PIDFile=/run/ipmievd.pid
 
 [Install]
 WantedBy=multi-user.target
