@@ -941,4 +941,13 @@
   (bsc#1184933). (forwarded request 887897 from mgorse)</comment>
     <requestid>888001</requestid>
   </revision>
+  <revision rev="109" vrev="4">
+    <srcmd5>1ef07a90b72f143d6386481773cd9b60</srcmd5>
+    <version>40.0</version>
+    <time>1619729068</time>
+    <user>dimstar_suse</user>
+    <comment>- Have gnome-shell-classic obsolete gnome-shell-classic-session,
+  since gnome-shell-classic-session is no longer used. (forwarded request 888050 from mgorse)</comment>
+    <requestid>888739</requestid>
+  </revision>
 </revisionlist>

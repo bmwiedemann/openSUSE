@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 23 14:07:17 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Have gnome-shell-classic obsolete gnome-shell-classic-session,
+  since gnome-shell-classic-session is no longer used. 
+
+-------------------------------------------------------------------
 Tue Apr 20 08:27:12 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Remove gnome-shell-classic-session package: From the upstream

@@ -78,6 +78,7 @@ This package provides files common to several GNOME Shell Extensions
 Summary:        A collection of extensions for Gnome-shell classic
 Group:          System/GUI/GNOME
 Requires:       gnome-shell-extension-desktop-icons
+Obsoletes:      gnome-shell-classic-session
 BuildArch:      noarch
 
 %description -n gnome-shell-classic
