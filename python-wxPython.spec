@@ -1,7 +1,7 @@
 #
 # spec file for package python-wxPython
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,10 @@
 %define wx_args --use_syswx --gtk3 -v
 %else
 %define wx_args --gtk3 -v
+%endif
+%if %{with test}
+# No numpy for Python 3.6
+%define skip_python36 1
 %endif
 Name:           python-wxPython
 Version:        4.1.0
@@ -75,7 +79,7 @@ BuildRequires:  pkgconfig(xtst)
 %endif
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      python-wxWidgets
 Provides:       python-wxWidgets = %{version}
 %if %{with test}
@@ -128,6 +132,9 @@ export DOXYGEN=%{_bindir}/doxygen
 
 %install
 %python_expand $python build.py install %{wx_args} --destdir=%{buildroot} --extra_setup="-O1 --force"
+# build.py install helpfully installs built shared libraries for all versions,
+# so remove those for other versions.
+%{python_expand find %{buildroot}%{$python_sitearch} -name *.so ! -name *cpython-%{$python_version_nodots}*so -delete}
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
@@ -173,7 +180,7 @@ mv wx_temp wx
 %{python_install_alternative pywxrc helpviewer img2png img2py img2xpm pycrust pyshell pyslices pyslicesshell wxdemo wxdocs wxget}
 
 %postun
-%python_uninstall_alternative pywxrc
+%{python_uninstall_alternative pywxrc helpviewer img2png img2py img2xpm pycrust pyshell pyslices pyslicesshell wxdemo wxdocs wxget}
 
 %files %{python_files}
 %license LICENSE.txt license/*.txt
