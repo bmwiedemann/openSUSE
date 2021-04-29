@@ -2109,4 +2109,16 @@ libapparmor:
     <comment>- avoid file listed twice error (forwarded request 874370 from lnussel)</comment>
     <requestid>874417</requestid>
   </revision>
+  <revision rev="151" vrev="6">
+    <srcmd5>d4656633af9795c6e884a1c474bb9a8e</srcmd5>
+    <version>3.0.1</version>
+    <time>1619729080</time>
+    <user>dimstar_suse</user>
+    <comment>- add crypto-policies-mr720.diff to allow reading crypto policies
+  in abstractions/ssl_certs (boo#1183597)
+
+- replace %{?systemd_requires} with %{?systemd_ordering} to avoid dragging in
+  systemd into containers just because apparmor-parser ships a *.service file (forwarded request 888862 from cboltz)</comment>
+    <requestid>888863</requestid>
+  </revision>
 </revisionlist>

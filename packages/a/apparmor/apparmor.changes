@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 27 16:48:25 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- add crypto-policies-mr720.diff to allow reading crypto policies
+  in abstractions/ssl_certs (boo#1183597)
+
+-------------------------------------------------------------------
+Sat Mar 27 22:56:06 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- replace %{?systemd_requires} with %{?systemd_ordering} to avoid dragging in
+  systemd into containers just because apparmor-parser ships a *.service file
+
+-------------------------------------------------------------------
 Thu Feb 11 18:18:46 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - merge libapparmor.changes into apparmor.changes

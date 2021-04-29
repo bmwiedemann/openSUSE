@@ -37,7 +37,6 @@ This package provides the libapparmor library, which contains the
 change_hat(2) symbol, used for sub-process confinement by AppArmor, as
 well as functions to parse AppArmor log messages.
 
-
 %package -n libapparmor1
 Summary:        Utility library for AppArmor
 Group:          System/Libraries
@@ -62,8 +61,6 @@ Provides:       libapparmor:/usr/include/sys/apparmor.h
 %description -n libapparmor-devel
 These libraries are needed for developing software that makes use of the
 AppArmor API.
-
-
 
 %prep
 %setup -q -n apparmor-%{version}

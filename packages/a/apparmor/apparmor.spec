@@ -78,6 +78,9 @@ Patch5:         apparmor-lessopen-nfs-workaround.diff
 # make <apache2.d> include in apache extra profile optional to make openQA happy (boo#1178527)
 Patch6:         apache-extra-profile-include-if-exists.diff
 
+# allow reading crypto policies (submitted upstream 2021-03-08 - https://gitlab.com/apparmor/apparmor/-/merge_requests/720)
+Patch7:         crypto-policies-mr720.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -132,7 +135,7 @@ Provides:       subdomain-parser-demo = %{version}
 Provides:       subdomain_parser = %{version}
 Provides:       apparmor-parser(CAP_SYSLOG)
 BuildRequires:  systemd-rpm-macros
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description parser
 The AppArmor Parser is a userlevel program that is used to load in
@@ -341,6 +344,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch3 -p1
 %patch4
 %patch5
+%patch7 -p1
 
 %build
 %define _lto_cflags %{nil}

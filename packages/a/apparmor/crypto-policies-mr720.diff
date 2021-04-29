@@ -1,0 +1,36 @@
+[current version of https://gitlab.com/apparmor/apparmor/-/merge_requests/720 - might still be changed or extended, but this patch solves the most urgent denials]
+
+
+From 0aea44f43a1d6cd6b7ebd32bbff803455b3aad44 Mon Sep 17 00:00:00 2001
+From: Christian Boltz <apparmor@cboltz.de>
+Date: Mon, 8 Mar 2021 01:20:24 +0100
+Subject: [PATCH] abstractions/ssl_certs: allow reading crypto policies
+
+See https://gitlab.com/redhat-crypto/fedora-crypto-policies for details.
+
+Reported by darix and also my own audit.log - the actual denial was for
+/usr/share/crypto-policies/DEFAULT/openssl.txt.
+
+(I'm aware that the crypto policies are not really certificates, but
+since they are used by several crypto libraries, ssl_certs is probably
+the best place for them even if the filename doesn't match.)
+---
+ profiles/apparmor.d/abstractions/ssl_certs | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/profiles/apparmor.d/abstractions/ssl_certs b/profiles/apparmor.d/abstractions/ssl_certs
+index 57d0f41a2..0392c0ccc 100644
+--- a/profiles/apparmor.d/abstractions/ssl_certs
++++ b/profiles/apparmor.d/abstractions/ssl_certs
+@@ -41,5 +41,8 @@
+   /etc/certbot/archive/*/chain*.pem r,
+   /etc/certbot/archive/*/fullchain*.pem r,
+ 
++  # crypto policies used by various libraries
++  /usr/share/crypto-policies/*/*.txt r,
++
+   # Include additions to the abstraction
+   include if exists <abstractions/ssl_certs.d>
+-- 
+GitLab
+
