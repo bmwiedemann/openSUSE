@@ -1169,3 +1169,405 @@ index 4651b5b1a..0ca3e4463 100644
  dnl lru_cache_add exported in Linux 5.8
  dnl    replaces lru_cache_add_file
  AC_CHECK_LINUX_FUNC([lru_cache_add],
+From cdec210405afb47ee338bfde9280710b64d7abc6 Mon Sep 17 00:00:00 2001
+From: Andrew Deason <adeason@sinenomine.net>
+Date: Tue, 23 Jul 2019 13:50:31 -0500
+Subject: [PATCH] LINUX: Introduce afs_d_path
+
+Move our preprocessor logic around d_path into an osi_compat.h
+wrapper, called afs_d_path. This just makes it a little easier to use
+d_path, and moves a tiny bit of #ifdef cruft away from real code.
+
+Reviewed-on: https://gerrit.openafs.org/13721
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+(cherry picked from commit 4c4fb6e36634e5663c8be25acd4a1ac872e4738c)
+
+Change-Id: I08763c71006e4ac6f2bf88d8ac71941fc44e6ab8
+Reviewed-on: https://gerrit.openafs.org/14563
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+---
+
+diff --git a/src/afs/LINUX/osi_compat.h b/src/afs/LINUX/osi_compat.h
+index 620b373..a1e7f21 100644
+--- a/src/afs/LINUX/osi_compat.h
++++ b/src/afs/LINUX/osi_compat.h
+@@ -737,4 +737,15 @@
+ #endif
+ }
+ 
++static inline char*
++afs_d_path(struct dentry *dp, struct vfsmount *mnt, char *buf, int buflen)
++{
++#ifdef D_PATH_TAKES_STRUCT_PATH
++    afs_linux_path_t p = { .mnt = mnt, .dentry = dp };
++    return d_path(&p, buf, buflen);
++#else
++    return d_path(dp, mnt, buf, buflen);
++#endif
++}
++
+ #endif /* AFS_LINUX_OSI_COMPAT_H */
+diff --git a/src/afs/LINUX/osi_misc.c b/src/afs/LINUX/osi_misc.c
+index 0e9336d..aa5d5fc 100644
+--- a/src/afs/LINUX/osi_misc.c
++++ b/src/afs/LINUX/osi_misc.c
+@@ -138,13 +138,7 @@
+ 	return -PTR_ERR(name);
+     code = osi_lookupname_internal(name, followlink, &mnt, &dp);
+     if (!code) {
+-#if defined(D_PATH_TAKES_STRUCT_PATH)
+-	afs_linux_path_t p = { .mnt = mnt, .dentry = dp };
+-	path = d_path(&p, buf, buflen);
+-#else
+-	path = d_path(dp, mnt, buf, buflen);
+-#endif
+-
++	path = afs_d_path(dp, mnt, buf, buflen);
+ 	if (IS_ERR(path)) {
+ 	    code = -PTR_ERR(path);
+ 	} else {
+From 5a5d358b02b88d6d2c7a27a75149e35b1de7db38 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Mon, 08 Mar 2021 09:22:04 -0700
+Subject: [PATCH] Linux: Create wrapper for setattr_prepare
+
+Move call to setattr_prepare/inode_change_ok into an osi_compat.h
+wrapper called 'afs_setattr_prepare'.  This moves some of the #if logic
+out of the mainline code.
+
+Reviewed-on: https://gerrit.openafs.org/14548
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 12ae2beeeb172cebdfa24d5ea149f73fd85541f8)
+
+Change-Id: I1c7806893daf2404a8b3ac1b5c88ca04e6409226
+Reviewed-on: https://gerrit.openafs.org/14564
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+---
+
+diff --git a/src/afs/LINUX/osi_compat.h b/src/afs/LINUX/osi_compat.h
+index a1e7f21..3ac4d79 100644
+--- a/src/afs/LINUX/osi_compat.h
++++ b/src/afs/LINUX/osi_compat.h
+@@ -748,4 +748,14 @@
+ #endif
+ }
+ 
++static inline int
++afs_setattr_prepare(struct dentry *dp, struct iattr *newattrs)
++{
++#if defined(HAVE_LINUX_SETATTR_PREPARE)
++    return setattr_prepare(dp, newattrs);
++#else
++    return inode_change_ok(dp->d_inode, newattrs);
++#endif
++}
++
+ #endif /* AFS_LINUX_OSI_COMPAT_H */
+diff --git a/src/afs/LINUX/osi_file.c b/src/afs/LINUX/osi_file.c
+index 0afb875..03777f5 100644
+--- a/src/afs/LINUX/osi_file.c
++++ b/src/afs/LINUX/osi_file.c
+@@ -230,11 +230,7 @@
+     AFS_CURRENT_TIME(&newattrs.ia_ctime);
+ 
+     /* avoid notify_change() since it wants to update dentry->d_parent */
+-#ifdef HAVE_LINUX_SETATTR_PREPARE
+-    code = setattr_prepare(file_dentry(afile->filp), &newattrs);
+-#else
+-    code = inode_change_ok(inode, &newattrs);
+-#endif
++    code = afs_setattr_prepare(file_dentry(afile->filp), &newattrs);
+     if (!code)
+ 	code = afs_inode_setattr(afile, &newattrs);
+     if (!code)
+From c747b15dd2877e6d17e3e6b940ae78c1e1ccd3ea Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Fri, 05 Mar 2021 16:31:03 -0700
+Subject: [PATCH] Linux 5.12: Add user_namespace param to inode ops
+
+The Linux commits:
+"fs: make helpers idmap mount aware" (549c72977) and
+"attr: handle idmapped mounts" (2f221d6f7) that were merged into
+Linux-5.12-rc1 cause a build failure when creating the kernel module.
+
+Several functions within the inode_operations structure had their
+signature updated to include a user_namespace parameter.  This allows
+a filesystem to support idmapped mounts.
+
+OpenAFS only implements some of the changed functions.
+
+   LINUX/vnodeops function inode_operation
+   =====================   ===============
+   afs_notify_change       setattr
+   afs_linux_getattr       getattr
+   afs_linux_create        create
+   afs_linux_symlink       symlink
+   afs_linux_mkdir         mkdir
+   afs_linux_rename        rename
+   afs_linux_permission    permission
+
+Update the autoconf tests to determine if the Linux kernel requires
+the user_namespace structure for inode_operations functions. If so,
+define a generic "IOP_TAKES_USER_NAMESPACE" macro.
+
+Update the above vnodeops functions to accept a 'struct user_namespace'
+parameter.
+
+When using the 'setattr_prepare' function a user namespace must be
+now provided. In order to provide compatibility as a non-idmapped mount
+filesystem the initial user namespace can be used. With OpenAFS, the
+initial user namespace obtained at kernel module load time is stored in
+a global variable 'afs_ns'.
+
+Update the call to setattr_prepare to pass the user namespace pointed
+to by the 'afs_ns' global variable.
+
+Update calls to setattr to pass the user namespace pointed to by
+the 'afs_ns' global variable.
+
+Notes:
+
+The changes introduced with Linux 5.12 allow a filesystem to support
+idmapped mounts if desired. This commit does not implement support for
+idmapped mounts, but will continue to use the same initial user
+namespace as prior to Linux 5.12.
+
+With Linux 5.12 the following autoconf checks fail:
+
+ HAVE_LINUX_INODE_OPERATIONS_RENAME_TAKES_FLAGS
+ HAVE_LINUX_SETATTR_PREPARE
+ IOP_CREATE_TAKES_BOOL
+ IOP_GETATTR_TAKES_PATH_STRUCT
+ IOP_MKDIR_TAKES_UMODE_T
+
+The new macro 'IOP_TAKES_USER_NAMESPACE' covers the cases where these
+macros where used.
+
+Reviewed-on: https://gerrit.openafs.org/14549
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+(cherry picked from commit 1bd68506be3243c5670aaf53798b2e4e715d4c8b)
+
+Change-Id: I8cd54042da4e0295f3cf8417c84138bb0458f881
+Reviewed-on: https://gerrit.openafs.org/14565
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+---
+
+diff --git a/src/afs/LINUX/osi_compat.h b/src/afs/LINUX/osi_compat.h
+index 3ac4d79..726b655 100644
+--- a/src/afs/LINUX/osi_compat.h
++++ b/src/afs/LINUX/osi_compat.h
+@@ -524,7 +524,9 @@
+ 
+     int code = 0;
+     struct inode *inode = OSIFILE_INODE(afile);
+-#if !defined(HAVE_LINUX_INODE_SETATTR)
++#if defined(IOP_TAKES_USER_NAMESPACE)
++    code = inode->i_op->setattr(afs_ns, afile->filp->f_dentry, newattrs);
++#elif !defined(HAVE_LINUX_INODE_SETATTR)
+     code = inode->i_op->setattr(afile->filp->f_dentry, newattrs);
+ #elif defined(INODE_SETATTR_NOT_VOID)
+     if (inode->i_op && inode->i_op->setattr)
+@@ -751,7 +753,9 @@
+ static inline int
+ afs_setattr_prepare(struct dentry *dp, struct iattr *newattrs)
+ {
+-#if defined(HAVE_LINUX_SETATTR_PREPARE)
++#if defined(IOP_TAKES_USER_NAMESPACE)
++    return setattr_prepare(afs_ns, dp, newattrs);
++#elif defined(HAVE_LINUX_SETATTR_PREPARE)
+     return setattr_prepare(dp, newattrs);
+ #else
+     return inode_change_ok(dp->d_inode, newattrs);
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index 1564f89..f4bedae 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -1124,8 +1124,13 @@
+  * Linux version of setattr call. What to change is in the iattr struct.
+  * We need to set bits in both the Linux inode as well as the vcache.
+  */
++#if defined(IOP_TAKES_USER_NAMESPACE)
++static int
++afs_notify_change(struct user_namespace *mnt_userns, struct dentry *dp, struct iattr *iattrp)
++#else
+ static int
+ afs_notify_change(struct dentry *dp, struct iattr *iattrp)
++#endif
+ {
+     struct vattr *vattr = NULL;
+     cred_t *credp = crref();
+@@ -1153,7 +1158,18 @@
+     return afs_convert_code(code);
+ }
+ 
+-#if defined(IOP_GETATTR_TAKES_PATH_STRUCT)
++#if defined(IOP_TAKES_USER_NAMESPACE)
++static int
++afs_linux_getattr(struct user_namespace *mnt_userns, const struct path *path, struct kstat *stat,
++		  u32 request_mask, unsigned int sync_mode)
++{
++	int err = afs_linux_revalidate(path->dentry);
++	if (!err) {
++		generic_fillattr(afs_ns, path->dentry->d_inode, stat);
++	}
++	return err;
++}
++#elif defined(IOP_GETATTR_TAKES_PATH_STRUCT)
+ static int
+ afs_linux_getattr(const struct path *path, struct kstat *stat, u32 request_mask, unsigned int sync_mode)
+ {
+@@ -1622,17 +1638,25 @@
+  *
+  * name is in kernel space at this point.
+  */
++
++#if defined(IOP_TAKES_USER_NAMESPACE)
+ static int
+-#if defined(IOP_CREATE_TAKES_BOOL)
++afs_linux_create(struct user_namespace *mnt_userns, struct inode *dip,
++		 struct dentry *dp, umode_t mode, bool excl)
++#elif defined(IOP_CREATE_TAKES_BOOL)
++static int
+ afs_linux_create(struct inode *dip, struct dentry *dp, umode_t mode,
+ 		 bool excl)
+ #elif defined(IOP_CREATE_TAKES_UMODE_T)
++static int
+ afs_linux_create(struct inode *dip, struct dentry *dp, umode_t mode,
+ 		 struct nameidata *nd)
+ #elif defined(IOP_CREATE_TAKES_NAMEIDATA)
++static int
+ afs_linux_create(struct inode *dip, struct dentry *dp, int mode,
+ 		 struct nameidata *nd)
+ #else
++static int
+ afs_linux_create(struct inode *dip, struct dentry *dp, int mode)
+ #endif
+ {
+@@ -1907,8 +1931,14 @@
+ }
+ 
+ 
++#if defined(IOP_TAKES_USER_NAMESPACE)
++static int
++afs_linux_symlink(struct user_namespace *mnt_userns, struct inode *dip,
++		  struct dentry *dp, const char *target)
++#else
+ static int
+ afs_linux_symlink(struct inode *dip, struct dentry *dp, const char *target)
++#endif
+ {
+     int code;
+     cred_t *credp = crref();
+@@ -1936,10 +1966,15 @@
+     return afs_convert_code(code);
+ }
+ 
++#if defined(IOP_TAKES_USER_NAMESPACE)
+ static int
+-#if defined(IOP_MKDIR_TAKES_UMODE_T)
++afs_linux_mkdir(struct user_namespace *mnt_userns, struct inode *dip,
++		struct dentry *dp, umode_t mode)
++#elif defined(IOP_MKDIR_TAKES_UMODE_T)
++static int
+ afs_linux_mkdir(struct inode *dip, struct dentry *dp, umode_t mode)
+ #else
++static int
+ afs_linux_mkdir(struct inode *dip, struct dentry *dp, int mode)
+ #endif
+ {
+@@ -2011,13 +2046,22 @@
+ }
+ 
+ 
++#if defined(IOP_TAKES_USER_NAMESPACE)
++static int
++afs_linux_rename(struct user_namespace *mnt_userns,
++		 struct inode *oldip, struct dentry *olddp,
++		 struct inode *newip, struct dentry *newdp,
++		 unsigned int flags)
++#elif defined(HAVE_LINUX_INODE_OPERATIONS_RENAME_TAKES_FLAGS)
+ static int
+ afs_linux_rename(struct inode *oldip, struct dentry *olddp,
+-		 struct inode *newip, struct dentry *newdp
+-#ifdef HAVE_LINUX_INODE_OPERATIONS_RENAME_TAKES_FLAGS
+-		 , unsigned int flags
++		 struct inode *newip, struct dentry *newdp,
++		 unsigned int flags)
++#else
++static int
++afs_linux_rename(struct inode *oldip, struct dentry *olddp,
++		 struct inode *newip, struct dentry *newdp)
+ #endif
+-		)
+ {
+     int code;
+     cred_t *credp = crref();
+@@ -2025,7 +2069,8 @@
+     const char *newname = newdp->d_name.name;
+     struct dentry *rehash = NULL;
+ 
+-#ifdef HAVE_LINUX_INODE_OPERATIONS_RENAME_TAKES_FLAGS
++#if defined(HAVE_LINUX_INODE_OPERATIONS_RENAME_TAKES_FLAGS) || \
++    defined(IOP_TAKES_USER_NAMESPACE)
+     if (flags)
+ 	return -EINVAL;		/* no support for new flags yet */
+ #endif
+@@ -3050,12 +3095,18 @@
+ /* afs_linux_permission
+  * Check access rights - returns error if can't check or permission denied.
+  */
++
++#if defined(IOP_TAKES_USER_NAMESPACE)
+ static int
+-#if defined(IOP_PERMISSION_TAKES_FLAGS)
++afs_linux_permission(struct user_namespace *mnt_userns, struct inode *ip, int mode)
++#elif defined(IOP_PERMISSION_TAKES_FLAGS)
++static int
+ afs_linux_permission(struct inode *ip, int mode, unsigned int flags)
+ #elif defined(IOP_PERMISSION_TAKES_NAMEIDATA)
++static int
+ afs_linux_permission(struct inode *ip, int mode, struct nameidata *nd)
+ #else
++static int
+ afs_linux_permission(struct inode *ip, int mode)
+ #endif
+ {
+diff --git a/src/cf/linux-kernel-sig.m4 b/src/cf/linux-kernel-sig.m4
+index 3d3aff9..e0cc9a2 100644
+--- a/src/cf/linux-kernel-sig.m4
++++ b/src/cf/linux-kernel-sig.m4
+@@ -14,4 +14,18 @@
+                          [struct inode *oinode, struct dentry *odentry,
+                          struct inode *ninode, struct dentry *ndentry,
+                          unsigned int flags])
+-])
++dnl Linux 5.12 added the user_namespace parameter to the several
++dnl inode operations functions.
++dnl Perform a generic test using the inode_op create to test for this change.
++AC_CHECK_LINUX_OPERATION([inode_operations], [create], [user_namespace],
++                         [#include <linux/fs.h>],
++                         [int],
++                         [struct user_namespace *mnt_userns,
++                         struct inode *inode, struct dentry *dentry,
++                         umode_t umode, bool flag])
++dnl if HAVE_LINUX_INODE_OPERATIONS_CREATE_USER_NAMESPACE, create a more generic
++dnl define.
++AS_IF([test AS_VAR_GET([ac_cv_linux_operation_inode_operations_create_user_namespace]) = yes],
++      [AC_DEFINE([IOP_TAKES_USER_NAMESPACE], 1,
++                 [define if inodeops require struct user_namespace])])
++])
+\ No newline at end of file
