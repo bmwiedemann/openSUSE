@@ -75,7 +75,11 @@ RFC 7159.
 
 %check
 %if %{with test}
+# exclude tests on older SLE+Leap due to
+# ImportError: cannot import name inf
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 %python_exec -m unittest discover
+%endif
 %endif
 
 %if !%{with test}

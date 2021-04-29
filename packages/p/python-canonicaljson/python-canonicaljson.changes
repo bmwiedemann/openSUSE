@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 29 11:09:25 UTC 2021 - Oliver Kurz <okurz@suse.com>
+
+- Exclude tests on older SLE+Leap due to "ImportError: cannot import name inf"
+
+-------------------------------------------------------------------
 Tue Sep  8 20:32:44 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.4.0: 
