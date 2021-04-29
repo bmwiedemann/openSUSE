@@ -1,7 +1,7 @@
 #
 # spec file for package alembic
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +17,16 @@
 #
 
 
-%define libname libAlembic1_7
+%define libname libAlembic1_8
 Name:           alembic
-Version:        1.7.16
+Version:        1.8.0
 Release:        0
 Summary:        Computer graphics interchange framework
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.alembic.io
 Source:         https://github.com/%{name}/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 2.8.6
+BuildRequires:  cmake >= 3.13
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(OpenEXR)

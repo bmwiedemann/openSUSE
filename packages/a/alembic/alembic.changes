@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 28 14:46:23 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.8.0:
+ API:
+  * Dropped support for the ancient TR1, expect compilers to support
+    at least support C++std11 and currently default to C++std14.
+  * Removed ALEMBIC_LIB_USES_TR1 and ALEMBIC_LIB_USES_BOOST and
+    instead expect the std versions like shared_ptr.
+ Ogawa:
+  * Better support emscripten and ARM toolchains by using memcpy
+    to avoid dereferencing non-aligned pointers.
+ AbcStitcher:
+  * Propagate MetaData from the first of our ordered input archives
+    over to the stitched output.
+ Other:
+  * Overhaul to support Imath 3
+  * Fix for using Alembic as a 3rd party with Imath 3.
+
+-------------------------------------------------------------------
 Tue Dec 29 12:41:37 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - update to 1.7.16:
