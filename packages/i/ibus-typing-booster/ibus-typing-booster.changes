@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 29 16:32:25 UTC 2021 - maiku.fabian@gmail.com
+
+- Update to 2.11.4
+- In main.py “import factory” only when the --xml option is not used
+  Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=1711646
+- Limit the “capitalize” case mode used in auto-capitalization to the
+  first index in a string
+  Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/16
+
+-------------------------------------------------------------------
 Tue Apr 05 11:38:20 UTC 2021 - maiku.fabian@gmail.com
 
 - Update to 2.11.2
