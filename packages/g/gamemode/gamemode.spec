@@ -1,7 +1,7 @@
 #
 # spec file for package gamemode
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,16 +18,17 @@
 
 
 Name:           gamemode
-Version:        1.6
+Version:        1.6.1
 Release:        0
 Summary:        Daemon/library combo for changing Linux system performance on demand
 License:        BSD-3-Clause
 Group:          Amusements/Games/Other
 URL:            https://github.com/FeralInteractive/gamemode
-Source0:        gamemode-%{version}.tar.xz
-Source1:        gamemode-rpmlintrc
-Source2:        README.openSUSE
-Source3:        baselibs.conf
+Source0:        %{URL}/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source1:        %{URL}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+Source2:        gamemode-rpmlintrc
+Source3:        README.openSUSE
+Source4:        baselibs.conf
 Patch0:         only-build-shared-library.patch
 BuildRequires:  cmake
 BuildRequires:  libinih-devel
@@ -111,7 +112,7 @@ built-in GameMode support.
 %setup -q
 %patch0 -p1
 
-cp %{SOURCE2} .
+cp %{SOURCE3} .
 
 %build
 %meson -Dwith-examples=false

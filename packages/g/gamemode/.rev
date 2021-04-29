@@ -67,4 +67,12 @@
 - Drop special handling for no longer supported Leap 42.</comment>
     <requestid>837225</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>428369e92e5efa371da4daa8d84c91f6</srcmd5>
+    <version>1.6.1</version>
+    <time>1619729228</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889401</requestid>
+  </revision>
 </revisionlist>

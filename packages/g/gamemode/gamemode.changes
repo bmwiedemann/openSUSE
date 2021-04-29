@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 29 14:02:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.6.1
+  * Use inih r53
+  * Minor metainfo improvements
+- Use SourceUrl and signature
+
+-------------------------------------------------------------------
 Wed Sep 23 18:12:20 UTC 2020 - marix@marix.org
 
 - Update to version 1.6:
