@@ -1,7 +1,7 @@
 #
 # spec file for package cura
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Internal QML import
-%global __requires_exclude qmlimport\\(Cura.*
+
+# 'qmlimport(Cura.1)' - Internal QML import
+# 'qmlimport(DigitalFactory.1) - Internal, registered from plugins/DigitalLibrary/src/DigitalFactoryController.py
+%global __requires_exclude qmlimport\\((Cura|DigitalFactory)\\..*
 
 Name:           cura
-%define sversion        4.8
-Version:        4.8.0
+%define sversion        4.9
+Version:        4.9.0
 Release:        0
 Summary:        3D printer control software
 License:        LGPL-3.0-only
@@ -29,13 +31,11 @@ URL:            https://github.com/Ultimaker/Cura
 Source:         https://github.com/Ultimaker/Cura/archive/%{sversion}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE disable-code-style-check.patch code style is no distro business
 Patch1:         disable-code-style-check.patch
-# PATCH-FIX-OPENSUSE -- avoid bad UI layout and crash in preview
-Patch2:         0001-Avoid-crash-caused-by-KDE-qqc2-desktop-style.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  python3-Arcus >= %{version}
 BuildRequires:  python3-Savitar >= %{version}
-BuildRequires:  python3-devel
+BuildRequires:  python3-keyring >= 21
 BuildRequires:  python3-numpy
 BuildRequires:  python3-pynest2d
 BuildRequires:  python3-pytest
@@ -49,14 +49,10 @@ BuildRequires:  uranium >= %{version}
 # It builds with older Qt, but crashes due to missing qml features
 BuildRequires:  pkgconfig(Qt5Core) >= 5.10
 Requires:       cura-engine >= %{version}
-Requires:       python3-numpy
-# Build and test suite works with older Qt, but no UI shows up due to usage
-# of newer QML elements
-Requires:       libqt5-qtgraphicaleffects
-Requires:       libqt5-qtquickcontrols
-Requires:       libqt5-qtquickcontrols2
 Requires:       python3-Arcus >= %{version}
 Requires:       python3-Savitar >= %{version}
+Requires:       python3-keyring >= 21
+Requires:       python3-numpy
 Requires:       python3-pynest2d
 Requires:       python3-pyserial
 Requires:       python3-qt5 >= 5.10
@@ -82,9 +78,7 @@ positioning, can slice the model to G-Code with editable configuration
 settings, and send this G-Code to the 3D printer for printing.
 
 %prep
-%setup -q -n Cura-%sversion
-%patch1 -p1
-%patch2 -p1
+%autosetup -n Cura-%sversion -p1
 sed -i -e '1 s/env python3/python3/' cura_app.py
 
 %build
@@ -114,12 +108,12 @@ rm -Rf %{buildroot}%{_datadir}/%{name}/resources/i18n
 # uranium uses i18n instead of locale for the path to translation files,
 # thus we cannot use %%find_lang
 echo '%defattr(644,root,root,755)' > %{name}.lang
-find %{buildroot}%{_datadir}/uranium -name *.mo | sed '
+find %{buildroot}%{_datadir}/cura -name *.mo | sed '
   s:'%{buildroot}'::; s:\(.*/i18n/\)\([^/]\+\)\(.*mo\):%lang(\2) \1\2\3:' \
   >> %{name}.lang
 
 %fdupes -s %{buildroot}%{_datadir}/%{name}
-%suse_update_desktop_file cura Graphics 3DGraphics
+%suse_update_desktop_file com.ultimaker.cura Graphics 3DGraphics
 
 %check
 cd build
@@ -130,9 +124,9 @@ make CTEST_OUTPUT_ON_FAILURE=TRUE test
 %doc README.md
 %{python3_sitelib}/cura
 %{_datadir}/%{name}
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/com.ultimaker.cura.desktop
 %dir %{_datadir}/metainfo
-%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/metainfo/com.ultimaker.cura.appdata.xml
 %{_datadir}/mime/packages/cura.xml
 %{_datadir}/icons/hicolor
 %{_bindir}/cura

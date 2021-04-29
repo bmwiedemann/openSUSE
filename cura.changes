@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 26 19:41:22 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.9.0
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.9
+- Drop 0001-Avoid-crash-caused-by-KDE-qqc2-desktop-style.patch
+- Remove manually added package dependencies for QML
+
+-------------------------------------------------------------------
 Sat Jan 16 19:40:56 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add compatibility with qml-autoreqprov
