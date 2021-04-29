@@ -1034,4 +1034,13 @@
     <comment>- Update to version 2.32.0 (boo#1184155): (forwarded request 882741 from mgorse)</comment>
     <requestid>884649</requestid>
   </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>7482d2ca3bcf1e4b9632a71790bd3e87</srcmd5>
+    <version>2.32.0</version>
+    <time>1619729084</time>
+    <user>dimstar_suse</user>
+    <comment>- Add webkit2gtk3-icu69.patch: Fix build with ICU 69:
+  + ICU 69 deprecates ubrk_safeClone in favor of ubrk_clone. (forwarded request 888968 from dimstar)</comment>
+    <requestid>888972</requestid>
+  </revision>
 </revisionlist>

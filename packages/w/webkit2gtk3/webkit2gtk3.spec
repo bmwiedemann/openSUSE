@@ -44,6 +44,8 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 firefox.
 Patch0:         no-forced-sse.patch
+# PATCH-FIX-UPSTREAM webkit2gtk3-icu69.patch webkit#224093 dimstar@opensuse.org -- ICU 69 deprecates ubrk_safeClone in favor of ubrk_clone
+Patch1:         webkit2gtk3-icu69.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
