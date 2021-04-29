@@ -32,7 +32,7 @@
 %bcond_without  broadway
 %bcond_with     doc
 Name:           %{pname}
-Version:        3.24.28
+Version:        3.24.29
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
@@ -47,8 +47,6 @@ Source99:       baselibs.conf
 Patch0:         gtk3-GTK_PATH64.patch
 # PATCH-FIX-OPENSUSE gtk3-revert-forced-xftdpi.patch fvogt@opensuse.org -- Revert very controversal commit on GTK3, forcing DPI to 96
 Patch1:         gtk3-revert-forced-xftdpi.patch
-# PATCH-FIX-UPSTREAM gtk3-prevent-g_file_get_basename-return-NULL.patch boo#1185082, glgo#GNOME/gtk!3458 qkzhu@suse.com -- Fix a possible crash in gtk_show_uri
-Patch2:         gtk3-prevent-g_file_get_basename-return-NULL.patch
 
 BuildRequires:  cups-devel >= 1.7
 BuildRequires:  docbook-xsl-stylesheets
@@ -397,7 +395,6 @@ cp -a %{SOURCE1} .
 %patch0 -p1
 %endif
 %patch1 -p1
-%patch2 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh

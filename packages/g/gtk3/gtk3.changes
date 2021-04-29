@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Apr 23 21:18:32 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.24.29:
+  + Input:
+    - Look for a Compose file in the right place.
+    - Revert some Compose sequence changes (mainly around dead
+      acute and apostrophe).
+    - Consume all key events during preedit, to avoid unexpected
+      interactions.
+    - Ignore more modifiers during preedit, to allow using 3rd and
+      5th level choosers.
+    - Fix handling of cursor positions in non-ASCII preedit text.
+  + GtkSpinButton: Interpret localized digits.
+  + GtkScale: Fix sporadic criticals.
+  + GtkScrolledWindow:
+    - Cancel overshoot on size changes.
+    - Avoid criticals with non-overlay scrollbars.
+  + GtkFileChooser: Handle smb mounts better.
+  + GtkListBox: Fix extending multi-selections.
+  + Fix a possible crash in gtk_show_uri.
+  + Wayland: Improve font settings fallback.
+  + X11:
+    - Avoid log spam on exit.
+    - Don't beep on untrusted displays.
+  + Updated translations.
+- Drop gtk3-prevent-g_file_get_basename-return-NULL.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Thu Apr 22 06:14:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.24.28:
