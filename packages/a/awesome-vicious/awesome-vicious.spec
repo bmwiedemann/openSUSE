@@ -1,7 +1,7 @@
 #
 # spec file for package awesome-vicious
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define packname   vicious
 
 Name:           awesome-vicious
-Version:        2.3.1
+Version:        2.3.3
 Release:        0
 Summary:        Vicious plugins for awesome
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
-Source:         https://github.com/Mic92/vicious/archive/v%{version}.tar.gz#/%packname-%{version}.tar.gz
-Url:            https://github.com/Mic92/%{packname}
+URL:            https://github.com/vicious-widgets/vicious
+Source:         %{URL}/archive/v%{version}.tar.gz#/%{packname}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       awesome >= 3.4.4
 Recommends:     awesome-freedesktop
@@ -54,7 +54,7 @@ are used instead, where available:
 
 
 %prep
-%setup -q -n %packname-%{version}
+%setup -q -n %{packname}-%{version}
 
 %build
 
@@ -67,7 +67,6 @@ are used instead, where available:
 %{__install} -m 644 -D helpers.lua  %{buildroot}/%{_datadir}/awesome/lib/vicious
 
 %files
-%defattr(-,root,root,-)
 %doc README.md Changes.md TODO
 %license LICENSE
 %dir %{_datadir}/awesome

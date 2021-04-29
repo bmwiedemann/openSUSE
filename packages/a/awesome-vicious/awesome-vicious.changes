@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr 28 15:07:50 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.3.3
+  * LUA 5.3 compatibility
+  * Support stacked graphs
+  * hwmontemp_linux: Provide name-based access to hwmon sensors
+    via sysfs
+  * mpd_all: Expose more informations and format time in [hh:]mm:ss
+  * Improve defaults and mechanism for data caching
+  * Escape XML entities in results by default
+  * weather_all: Update NOAA link and use Awesome asynchronous API
+  * mem_linux: Use MemAvailable to calculate free amount
+  * mem_freebsd: Correct calculation and switch to swapinfo for swap
+  * bat_freebsd: Add critical charging state
+  * fs_all: Fix shell quoting of option arguments
+
+-------------------------------------------------------------------
 Mon Jun 18 18:47:56 UTC 2018 - okurz@suse.com
 
 - Update to version 2.3.1:
