@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 18 02:00:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed SPEC file: Replace broken URL with current upstream
+- Update to version 1.2.1.1
+  * update appdata
+
+-------------------------------------------------------------------
 Sun Jul 19 17:37:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build:

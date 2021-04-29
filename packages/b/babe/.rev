@@ -16,4 +16,12 @@
   * 0001-Always-use-local-CMake-modules-first.patch</comment>
     <requestid>821774</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>17595059ee91262a8b888e6c0d24ce0a</srcmd5>
+    <version>1.2.1.1</version>
+    <time>1619729198</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889262</requestid>
+  </revision>
 </revisionlist>
