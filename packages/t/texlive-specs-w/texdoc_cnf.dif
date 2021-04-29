@@ -14,7 +14,7 @@
      get_tlroot = function() return tlroot end
      return tlroot
  end
-@@ -575,7 +575,8 @@ end
+@@ -574,7 +574,8 @@ end
  
  -- get pre-hashed tlpdb info from a cache file
  get_tlpinfo_from_cache = function(filename)
@@ -24,7 +24,7 @@
  end
  
  -- get pre-hashed tlpdb info from a pseudo-cache file
-@@ -685,16 +686,17 @@ local function init_tlp_database()
+@@ -684,16 +685,17 @@ local function init_tlp_database()
          else
              dbg_print('tlpdb',
                  'Getting data from tlpdb file ' .. texlive_tlpdb)

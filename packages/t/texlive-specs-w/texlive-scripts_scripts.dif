@@ -61,7 +61,7 @@
    }
    # set up destination directory
    $opts{'fmtdir'} ||= "$texmfvar/web2c";
-@@ -599,6 +606,7 @@ sub rebuild_one_format {
+@@ -592,6 +599,7 @@ sub rebuild_one_format {
    # check for existence of ini file before doing anything else
    if (system("kpsewhich -progname=$fmt -format=$kpsefmt $inifile >$nul 2>&1") != 0) {
      # we didn't find the ini file, skip
