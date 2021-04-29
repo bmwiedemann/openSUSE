@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 29 13:21:57 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix usage of python_module macro in BuildRequires 
+
+-------------------------------------------------------------------
 Mon May 25 03:52:07 UTC 2020 - Jason Craig <os-dev@jacraig.com>
 
 - Require python-Fabric instead of python-Fabric3.

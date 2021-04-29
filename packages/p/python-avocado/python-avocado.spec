@@ -1,7 +1,7 @@
 #
 # spec file for package python-avocado
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-# No longer build for python2
-%define skip_python2  1
+# stevedore, aexpect anhd others are primary python3 only
+%define pythons python3
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         pkgname avocado
 Name:           python-avocado
@@ -36,11 +36,11 @@ BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pyaml}
 BuildRequires:  %{python_module pystache}
-BuildRequires:  %{python_module requests} >= 1.2.3
+BuildRequires:  %{python_module requests >= 1.2.3}
 BuildRequires:  %{python_module resultsdb_api}
-BuildRequires:  %{python_module setuptools} >= 18.0.0
-BuildRequires:  %{python_module six} >= 1.11.0
-BuildRequires:  %{python_module stevedore} >= 0.14
+BuildRequires:  %{python_module setuptools >= 18.0.0}
+BuildRequires:  %{python_module six >= 1.11.0}
+BuildRequires:  %{python_module stevedore >= 0.14}
 BuildRequires:  fdupes
 BuildRequires:  kmod
 BuildRequires:  libvirt-devel
@@ -63,10 +63,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module libvirt-python}
 %else
 BuildRequires:  python-libvirt-python
-%endif
-%ifpython2
-Requires:       python2-pylzma
-Requires:       python2-subprocess32 >= 3.2.6
 %endif
 %python_subpackages
 
