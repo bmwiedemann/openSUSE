@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 28 06:47:33 UTC 2021 - mpluskal@suse.com
+
+- Update to version 1.5.3:
+  * Be compliant and return 0 from main.
+  * Fix windows warning on type conversion (#1121)
+  * Add verbosity to CI logs (#1122)
+  * fix cmake issue with referencing a non-existing function argument (#1118)
+  * [tools] Fix dumb mistake in previous commit - print aggregates only means aggregates, not non-aggregates
+  * [tools] Don't forget to print UTest when printing aggregates only
+  * [sysinfo] Fix CPU Frequency reading on AMD Ryzen CPU's (#1117)
+  * Use fewer ramp up repetitions when KeepRunningBatch is used (#1113)
+  * Add bazel status to README
+  * Re-enable bazel without bazelisk and with scoped build/test targets (#1109)
+- Drop no longer needed 0001-src-benchmark_register.h-add-missing-limits-inclusio.patch
+
+-------------------------------------------------------------------
 Mon Feb  8 21:56:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch to fix build with GCC 11 (boo#1181865):

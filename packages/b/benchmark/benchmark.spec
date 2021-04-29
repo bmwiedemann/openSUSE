@@ -19,14 +19,12 @@
 %define soname  lib%{name}
 %define sover   0
 Name:           benchmark
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        A microbenchmark support library
 License:        Apache-2.0
 URL:            https://github.com/google/benchmark
-Source:         https://github.com/google/benchmark/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-src-benchmark_register.h-add-missing-limits-inclusio.patch
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.5.1
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
@@ -51,7 +49,7 @@ Requires:       %{soname}%{sover} = %{version}
 Development files for google benchmark library
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 sed -e 's|lib_install_dir "lib/"|lib_install_dir "%{_libdir}/"|g' \
