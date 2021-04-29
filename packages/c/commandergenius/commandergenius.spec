@@ -17,7 +17,7 @@
 
 
 Name:           commandergenius
-Version:        2.7.7
+Version:        2.8.0
 Release:        0
 Summary:        An open clone of the Commander Keen engines
 License:        GPL-2.0-only
@@ -25,6 +25,7 @@ Group:          Amusements/Games/Action/Arcade
 URL:            http://clonekeenplus.sf.net/
 #Git-Clone:     https://gitlab.com/Dringgstein/Commander-Genius.git
 Source:         https://gitlab.com/Dringgstein/Commander-Genius/-/archive/v%version/Commander-Genius-v%version.tar.bz2
+Patch0:         fix-icons.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
@@ -46,6 +47,7 @@ It has 4-player cooperative mode and six difficulty modes.
 
 %prep
 %setup -q -n Commander-Genius-v%version
+%patch0 -p1
 
 %build
 %cmake \
@@ -57,12 +59,14 @@ It has 4-player cooperative mode and six difficulty modes.
 
 %install
 %cmake_install
+install -D -m0644 share/cg.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/cg.svg
 %fdupes %buildroot%_datadir
 
 %files
 %license COPYRIGHT
 %_bindir/CGeniusExe
 %_datadir/applications/cgenius.desktop
+%_datadir/metainfo/io.sourceforge.clonekeenplus.appdata.xml
 %_datadir/icons/hicolor/
 %_datadir/games/%name/
 

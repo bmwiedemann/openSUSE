@@ -175,4 +175,27 @@
     <comment></comment>
     <requestid>872170</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7147aa3a9c944250eb0e4e80aa5a79cb</srcmd5>
+    <version>2.8.0</version>
+    <time>1619729204</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.8.0
+  * Remove legacy SDL 1.2 code at many parts
+  * More stable graphics engine
+  * SDL2 is not an option anymore
+  * Improved logging
+  * Open GL 2.1 is minimum now
+  * Lots of OpenGL fixes
+  * Boost library now is optional
+  * C++17
+- Add patch:
+  * fix-icons.patch
+- Update to version 2.7.9
+  * Add appdata
+- Update to version 2.7.8
+  * More logging. Code cleanups
+</comment>
+    <requestid>889290</requestid>
+  </revision>
 </revisionlist>
