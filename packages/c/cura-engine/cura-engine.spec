@@ -1,7 +1,7 @@
 #
 # spec file for package cura-engine
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           cura-engine
-%define sversion 4.8
-Version:        4.8.0
+%define sversion 4.9
+Version:        4.9.0
 Release:        0
 Summary:        3D printer control software
 License:        AGPL-3.0-only
