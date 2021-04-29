@@ -1,7 +1,7 @@
 #
 # spec file for package python-flask-restx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-flask-restx
 Version:        0.2.0
 Release:        0
@@ -31,19 +32,25 @@ BuildRequires:  %{python_module aniso8601}
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pytest < 6}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-flask}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest < 6}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tzlocal}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with python2}
+BuildRequires:  python2-enum34
+%endif
 Requires:       python-Flask
 Requires:       python-aniso8601
 Requires:       python-jsonschema
 Requires:       python-pytz
+%ifpython2
+Requires:       python2-enum34
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -65,7 +72,7 @@ its documentation properly using Swagger.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not URLTest and not EmailTest'
+%pytest -k 'not URLTest and not EmailTest and not test_handle_non_api_error'
 
 %files %{python_files}
 %doc README.rst CONTRIBUTING.rst

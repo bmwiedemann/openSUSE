@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 27 17:02:22 UTC 2021 - Sean Marlow <sean.marlow@suse.com>
+
+- Add missing python2 requirement.
+
+-------------------------------------------------------------------
+Mon Apr 12 21:46:20 UTC 2021 - Sean Marlow <sean.marlow@suse.com>
+
+- Ignore test_handle_non_api_error test which is dependent on
+  werkzeug version.
+
+-------------------------------------------------------------------
 Thu Sep 24 05:53:07 UTC 2020 - Petr Cervinka <petr@cervinka.net>
 
 - Set pytest version < 6 in build requirements
