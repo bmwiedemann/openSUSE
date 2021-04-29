@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 29 08:58:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.26:
+  * Fix memory leak
+
+-------------------------------------------------------------------
 Mon Sep 30 08:01:32 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary. Drop howto from description.
