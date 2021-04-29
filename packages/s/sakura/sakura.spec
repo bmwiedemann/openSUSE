@@ -1,7 +1,7 @@
 #
 # spec file for package sakura
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sakura
-Version:        3.7.1
+Version:        3.8.2
 Release:        0
 Summary:        Terminal Emulator based on the VTE Library
 License:        GPL-2.0-or-later
@@ -65,7 +65,7 @@ rm -rf "%{buildroot}%{_datadir}/doc"
 
 %files
 %doc AUTHORS
-%license GPL
+%license LICENSE
 %{_bindir}/sakura
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.*
