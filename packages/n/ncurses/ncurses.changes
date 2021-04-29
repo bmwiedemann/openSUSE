@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Apr 26 07:02:43 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210424
+  + avoid using broken system macros for snprintf which interfere with
+    _nc_SLIMIT's conditionally adding a parameter when the string-hacks
+    configure option is enabled.
+  + add a "all::" rule before the new "check" rule in test/Makefile.in
+- Add ncurses patch 20210418
+  + improve CF_LINK_FUNCS by ensuring that the source-file is closed
+    before linking to the target.
+  + add "check" rules for headers in c++, progs and test-directories.
+  + build-fix for termsort module when configured with termcap (reports
+    by Rajeev V Pillai, Rudi Heitbaum).
+- Add ncurses patch 20210417
+  + extend --disable-pkg-ldflags option to also control whether $LDFLAGS
+    from the build is provided in -config and .pc files (Debian #986764).
+  + fix some cppcheck warnings, mostly style, in ncurses and c++
+    libraries and progs directory.
+  + fix off-by-one limit for tput's processing command-line arguments
+    (patch by Hadrien Lacour).
+- Do not strip examples
+- Install available manual pages of examples as well
+
+-------------------------------------------------------------------
+Tue Apr  6 06:52:18 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210403
+  + fix some cppcheck warnings, mostly style, in ncurses library and
+    progs directory.
+  + improve description of BSD-style padding in curs_termcap.3x
+  + improved CF_C11_NORETURN macro, from byacc changes.
+  + fix "--enable-leak" in CF_DISABLE_LEAKS to allow turning
+    leak-checking off later in a set of options.
+  + relax modification-time comparison in CF_LINK_FUNCS to allow it to
+    accept link() function with NFS filesystems which change the mtime
+    on the link target, e.g., several BSD systems.
+  + call delay_output_sp to handle BSD-style padding when tputs_sp is 
+    called, whether directly or internally, to ensure that the SCREEN
+    pointer is passed correctly (reports by Henric Jungheim, Juraj
+    Lutter).
+- Correct offsets of patch ncurses-6.2.dif
+
+-------------------------------------------------------------------
 Mon Mar 29 07:37:33 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Disable pcre support for now (boo#1183960, boo#1184083) 

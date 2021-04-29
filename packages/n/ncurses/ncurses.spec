@@ -443,8 +443,10 @@ mv tack-* tack
 	exec /usr/bin/gzip -9 ${1+"$@"}
 	EOF
     chmod 0755 gzip/gzip
+    INSTALL_PROGRAM='${INSTALL}'
+    INSTALL_OPT_S=""
     PATH=$PWD/gzip:$PATH
-    export CC CFLAGS CXX CXXFLAGS CPPFLAGS TERM LDFLAGS
+    export CC CFLAGS CXX CXXFLAGS CPPFLAGS TERM LDFLAGS INSTALL_PROGRAM INSTALL_OPT_S
     #
     # Detect 64bit architecures and be sure that we use an
     # unsigned long for chtype to be backward compatible with
@@ -689,9 +691,10 @@ mv tack-* tack
 	make install DESTDIR=${PWD} TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread -lpcre2-posix -lpcre2-8'
 %else
 	make %{?_smp_mflags} TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
-	make install DESTDIR=${PWD} TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
+	make install DESTDIR=${PWD} INSTALL_PROG=install TEST_ARGS='-lformw -lmenuw -lpanelw -lncursesw -lticw -l%{soname_tinfo} -Wl,--as-needed' TEST_LIBS='-lutil -lpthread'
 %endif
 	mv usr usr.back
+cp Makefile Makefile.back
 	make distclean
     popd
 %endif
@@ -1136,6 +1139,8 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 #
 pushd test
     mv usr.back usr
+    mkdir -p ./%{_mandir}/man6
+    cp -p $(find -name '*.6') .%{_mandir}/man6/
     (cd usr/; tar -cpSf - .) | tar -xpsSf - -C %{buildroot}%{_prefix}
     install -m 0755 %{S:8} %{buildroot}%{_libexecdir}/ncurses/
 popd
@@ -1233,7 +1238,7 @@ popd
 %{_libexecdir}/ncurses/*
 %dir %{_datadir}/ncurses/
 %{_datadir}/ncurses/*
-#%doc %{_mandir}/man6/*%{ext_man}
+%doc %{_mandir}/man6/*%{ext_man}
 
 %files -n libncurses5
 %defattr(-,root,root)

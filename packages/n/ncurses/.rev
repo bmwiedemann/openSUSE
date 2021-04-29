@@ -3164,4 +3164,41 @@
   + add &quot;lint&quot; rule to c++/Makefile, e.g., with cppcheck.</comment>
     <requestid>881821</requestid>
   </revision>
+  <revision rev="187" vrev="18">
+    <srcmd5>adc7722d78f15813d4a325ab842563ba</srcmd5>
+    <version>6.2.MACRO</version>
+    <time>1619729061</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20210424
+  + avoid using broken system macros for snprintf which interfere with
+    _nc_SLIMIT's conditionally adding a parameter when the string-hacks
+    configure option is enabled.
+  + add a &quot;all::&quot; rule before the new &quot;check&quot; rule in test/Makefile.in
+- Add ncurses patch 20210418
+  + improve CF_LINK_FUNCS by ensuring that the source-file is closed
+    before linking to the target.
+  + add &quot;check&quot; rules for headers in c++, progs and test-directories.
+  + build-fix for termsort module when configured with termcap (reports
+    by Rajeev V Pillai, Rudi Heitbaum).
+- Add ncurses patch 20210417
+  + extend --disable-pkg-ldflags option to also control whether $LDFLAGS
+    from the build is provided in -config and .pc files (Debian #986764).
+  + fix some cppcheck warnings, mostly style, in ncurses and c++
+    libraries and progs directory.
+  + fix off-by-one limit for tput's processing command-line arguments
+    (patch by Hadrien Lacour).
+- Do not strip examples
+- Install available manual pages of examples as well
+
+- Add ncurses patch 20210403
+  + fix some cppcheck warnings, mostly style, in ncurses library and
+    progs directory.
+  + improve description of BSD-style padding in curs_termcap.3x
+  + improved CF_C11_NORETURN macro, from byacc changes.
+  + fix &quot;--enable-leak&quot; in CF_DISABLE_LEAKS to allow turning
+    leak-checking off later in a set of options.
+  + relax modification-time comparison in CF_LINK_FUNCS to allow it to
+    accept link() function with NFS filesystems which change the mtime</comment>
+    <requestid>888394</requestid>
+  </revision>
 </revisionlist>
