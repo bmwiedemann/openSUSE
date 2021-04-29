@@ -17,15 +17,13 @@
 
 
 Name:           oneko
-Version:        1.1b
+Version:        1.2.sakura.5
 Release:        0
 Summary:        A Cat Catches Your Mouse
 License:        SUSE-Public-Domain
 Group:          Amusements/Toys/Graphics
 Url:            http://www.daidouji.com/oneko/
-Source:         http://www.ibiblio.org/pub/linux/X11/demos/%name-%version.tar.gz
-Patch:          oneko-1.1b.dif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source:         %{URL}/distfiles/oneko-%{version}.tar.gz
 BuildRequires:  imake
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
@@ -35,32 +33,20 @@ A nice program that changes your cursor into a cat playing with your
 mouse cursor.  The manual page shows more possibilities to change your
 cursor.
 
-
-
-Authors:
---------
-    Tatsuya Kato	<kato@ntts.co.jp>
-    John Lerchey	<jl4l+@andrew.cmu.edu>
-    Eric Anderson	<eanders+@cmu.edu>
-    Rick Niles	<niles@axp745.gsfc.nasa.gov>
-
 %prep
-%setup -q -n oneko-1.1 -b0
-%patch
+%setup -q -b0
 
 %build
 xmkmf -a
 make all %{?_smp_mflags}
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
-make DESTDIR=$RPM_BUILD_ROOT install.man
+%make_install install.man
 mv README README.jp
 
 %files
-%defattr(-,root,root)
 %doc README.jp README-NEW sample.resource
 %{_bindir}/*
-%doc %{_mandir}/*/*
+%{_mandir}/man1/oneko.1x%{?ext_man}
 
 %changelog

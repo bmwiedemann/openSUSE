@@ -107,4 +107,12 @@
     <comment>- Remove xorg-x11-devel from buildrequires. (forwarded request 581824 from elvigia)</comment>
     <requestid>581902</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b7279b09ebd4f5baaa7d340db843ec94</srcmd5>
+    <version>1.2.sakura.5</version>
+    <time>1619729222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889397</requestid>
+  </revision>
 </revisionlist>
