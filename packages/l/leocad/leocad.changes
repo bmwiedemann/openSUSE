@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 28 19:05:13 UTC 2021 - Gustavo Pichorim Boiko <gboiko@suse.com>
+
+- Backport upstream fixes for moving of rotated pieces.
+  Added patches:
+  * 0001-Don-t-enable-relative-transforms-by-default.patch
+  * 0002-Disabled-relative-movement-when-moving-pieces-withou.patch
+  * 0003-Fixed-moving-pieces-while-editing-submodels-in-place.patch
+  * 0004-Fixed-drawing-the-rotate-overlay-during-in-place-sub.patch
+
+-------------------------------------------------------------------
 Sat Apr 17 01:21:05 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 21.03:

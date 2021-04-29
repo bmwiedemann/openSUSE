@@ -1,0 +1,132 @@
+From 249fa262f7957e7ff849e78af35c5131af447fa6 Mon Sep 17 00:00:00 2001
+From: Leonardo Zide <leozide@gmail.com>
+Date: Sat, 24 Apr 2021 10:15:13 -0700
+Subject: [PATCH 2/4] Disabled relative movement when moving pieces without
+ using the arrows.
+
+---
+ common/lc_mainwindow.cpp | 2 +-
+ common/lc_model.cpp      | 8 ++++----
+ common/lc_model.h        | 8 ++++----
+ common/lc_view.cpp       | 8 ++++----
+ 4 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/common/lc_mainwindow.cpp b/common/lc_mainwindow.cpp
+index 198260ed..d34e1272 100644
+--- a/common/lc_mainwindow.cpp
++++ b/common/lc_mainwindow.cpp
+@@ -62,7 +62,7 @@ lcMainWindow::lcMainWindow()
+ 	mMoveXYSnapIndex = 4;
+ 	mMoveZSnapIndex = 3;
+ 	mAngleSnapIndex = 5;
+-	mRelativeTransform = false;
++	mRelativeTransform = true;
+ 	mLocalTransform = false;
+ 	mCurrentPieceInfo = nullptr;
+ 	mSelectionMode = lcSelectionMode::Single;
+diff --git a/common/lc_model.cpp b/common/lc_model.cpp
+index f5277b12..ec80ec0f 100644
+--- a/common/lc_model.cpp
++++ b/common/lc_model.cpp
+@@ -2596,12 +2596,12 @@ bool lcModel::RemoveSelectedObjects()
+ 	return RemovedPiece || RemovedCamera || RemovedLight;
+ }
+ 
+-void lcModel::MoveSelectedObjects(const lcVector3& PieceDistance, const lcVector3& ObjectDistance, bool Relative, bool AlternateButtonDrag, bool Update, bool Checkpoint)
++void lcModel::MoveSelectedObjects(const lcVector3& PieceDistance, const lcVector3& ObjectDistance, bool AllowRelative, bool AlternateButtonDrag, bool Update, bool Checkpoint)
+ {
+ 	bool Moved = false;
+ 	lcMatrix33 RelativeRotation;
+ 
+-	if (Relative)
++	if (AllowRelative)
+ 		RelativeRotation = GetRelativeRotation();
+ 	else
+ 		RelativeRotation = lcMatrix33Identity();
+@@ -4071,12 +4071,12 @@ void lcModel::UpdateCameraTool(const lcVector3& Position)
+ 	UpdateAllViews();
+ }
+ 
+-void lcModel::UpdateMoveTool(const lcVector3& Distance, bool AlternateButtonDrag)
++void lcModel::UpdateMoveTool(const lcVector3& Distance, bool AllowRelative, bool AlternateButtonDrag)
+ {
+ 	lcVector3 PieceDistance = SnapPosition(Distance) - SnapPosition(mMouseToolDistance);
+ 	lcVector3 ObjectDistance = Distance - mMouseToolDistance;
+ 
+-	MoveSelectedObjects(PieceDistance, ObjectDistance, true, AlternateButtonDrag, true, false);
++	MoveSelectedObjects(PieceDistance, ObjectDistance, AllowRelative, AlternateButtonDrag, true, false);
+ 	mMouseToolDistance = Distance;
+ 
+ 	gMainWindow->UpdateSelectedObjects(false);
+diff --git a/common/lc_model.h b/common/lc_model.h
+index d1f4ef81..fad3fddd 100644
+--- a/common/lc_model.h
++++ b/common/lc_model.h
+@@ -304,7 +304,7 @@ public:
+ 	void UpdateSpotLightTool(const lcVector3& Position);
+ 	void BeginCameraTool(const lcVector3& Position, const lcVector3& Target);
+ 	void UpdateCameraTool(const lcVector3& Position);
+-	void UpdateMoveTool(const lcVector3& Distance, bool AlternateButtonDrag);
++	void UpdateMoveTool(const lcVector3& Distance, bool AllowRelative, bool AlternateButtonDrag);
+ 	void UpdateRotateTool(const lcVector3& Angles, bool AlternateButtonDrag);
+ 	void UpdateScaleTool(const float Scale);
+ 	void EraserToolClicked(lcObject* Object);
+@@ -320,12 +320,12 @@ public:
+ 	void ZoomExtents(lcCamera* Camera, float Aspect);
+ 	void Zoom(lcCamera* Camera, float Amount);
+ 
+-	void MoveSelectedObjects(const lcVector3& Distance, bool Relative, bool AlternateButtonDrag, bool Update, bool Checkpoint)
++	void MoveSelectedObjects(const lcVector3& Distance, bool AllowRelative, bool AlternateButtonDrag, bool Update, bool Checkpoint)
+ 	{
+-		MoveSelectedObjects(Distance, Distance, Relative, AlternateButtonDrag, Update, Checkpoint);
++		MoveSelectedObjects(Distance, Distance, AllowRelative, AlternateButtonDrag, Update, Checkpoint);
+ 	}
+ 
+-	void MoveSelectedObjects(const lcVector3& PieceDistance, const lcVector3& ObjectDistance, bool Relative, bool AlternateButtonDrag, bool Update, bool Checkpoint);
++	void MoveSelectedObjects(const lcVector3& PieceDistance, const lcVector3& ObjectDistance, bool AllowRelative, bool AlternateButtonDrag, bool Update, bool Checkpoint);
+ 	void RotateSelectedPieces(const lcVector3& Angles, bool Relative, bool RotatePivotPoint, bool Update, bool Checkpoint);
+ 	void ScaleSelectedPieces(const float Scale, bool Update, bool Checkpoint);
+ 	void TransformSelectedObjects(lcTransformType TransformType, const lcVector3& Transform);
+diff --git a/common/lc_view.cpp b/common/lc_view.cpp
+index a1dba97b..92a9d408 100644
+--- a/common/lc_view.cpp
++++ b/common/lc_view.cpp
+@@ -3585,7 +3585,7 @@ void lcView::OnMouseMove()
+ 
+ 				lcVector3 Distance = Intersection - MoveStart;
+ 				Distance = lcMul(Distance, lcMatrix33AffineInverse(RelativeRotation));
+-				ActiveModel->UpdateMoveTool(Distance, mTrackButton != lcTrackButton::Left);
++				ActiveModel->UpdateMoveTool(Distance, true, mTrackButton != lcTrackButton::Left);
+ 			}
+ 			else if (mTrackTool == lcTrackTool::MoveXY || mTrackTool == lcTrackTool::MoveXZ || mTrackTool == lcTrackTool::MoveYZ)
+ 			{
+@@ -3610,7 +3610,7 @@ void lcView::OnMouseMove()
+ 					{
+ 						lcVector3 Distance = Intersection - MoveStart;
+ 						Distance = lcMul(Distance, lcMatrix33AffineInverse(RelativeRotation));
+-						ActiveModel->UpdateMoveTool(Distance, mTrackButton != lcTrackButton::Left);
++						ActiveModel->UpdateMoveTool(Distance, true, mTrackButton != lcTrackButton::Left);
+ 					}
+ 				}
+ 			}
+@@ -3618,7 +3618,7 @@ void lcView::OnMouseMove()
+ 			{
+ 				lcMatrix44 NewPosition = GetPieceInsertPosition(true, mMouseDownPiece);
+ 				lcVector3 Distance = NewPosition.GetTranslation() - mMouseDownPosition;
+-				ActiveModel->UpdateMoveTool(Distance, mTrackButton != lcTrackButton::Left);
++				ActiveModel->UpdateMoveTool(Distance, false, mTrackButton != lcTrackButton::Left);
+ 			}
+ 			else if (mTrackTool == lcTrackTool::ScalePlus || mTrackTool == lcTrackTool::ScaleMinus)
+ 			{
+@@ -3671,7 +3671,7 @@ void lcView::OnMouseMove()
+ 					if (lcLineSegmentPlaneIntersection(&MoveStart, MouseDownStart, MouseDownEnd, Plane))
+ 					{
+ 						lcVector3 Distance = Intersection - MoveStart;
+-						ActiveModel->UpdateMoveTool(Distance, mTrackButton != lcTrackButton::Left);
++						ActiveModel->UpdateMoveTool(Distance, true, mTrackButton != lcTrackButton::Left);
+ 					}
+ 				}
+ 			}
+-- 
+2.31.1
+

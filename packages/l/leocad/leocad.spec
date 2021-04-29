@@ -23,6 +23,10 @@ Summary:        CAD program for creating virtual LEGO models
 License:        GPL-2.0-only
 URL:            http://leocad.org
 Source0:        https://github.com/leozide/leocad/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         0001-Don-t-enable-relative-transforms-by-default.patch
+Patch1:         0002-Disabled-relative-movement-when-moving-pieces-withou.patch
+Patch2:         0003-Fixed-moving-pieces-while-editing-submodels-in-place.patch
+Patch3:         0004-Fixed-drawing-the-rotate-overlay-during-in-place-sub.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -42,6 +46,10 @@ application.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 %qmake5

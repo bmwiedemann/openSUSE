@@ -1,0 +1,25 @@
+From cd588f64aa832dd1e6af5f4a9e4982930977ec12 Mon Sep 17 00:00:00 2001
+From: Leonardo Zide <leozide@gmail.com>
+Date: Sat, 24 Apr 2021 10:03:33 -0700
+Subject: [PATCH 1/4] Don't enable relative transforms by default.
+
+---
+ common/lc_mainwindow.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/common/lc_mainwindow.cpp b/common/lc_mainwindow.cpp
+index d34e1272..198260ed 100644
+--- a/common/lc_mainwindow.cpp
++++ b/common/lc_mainwindow.cpp
+@@ -62,7 +62,7 @@ lcMainWindow::lcMainWindow()
+ 	mMoveXYSnapIndex = 4;
+ 	mMoveZSnapIndex = 3;
+ 	mAngleSnapIndex = 5;
+-	mRelativeTransform = true;
++	mRelativeTransform = false;
+ 	mLocalTransform = false;
+ 	mCurrentPieceInfo = nullptr;
+ 	mSelectionMode = lcSelectionMode::Single;
+-- 
+2.31.1
+
