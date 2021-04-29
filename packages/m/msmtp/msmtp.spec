@@ -1,7 +1,7 @@
 #
 # spec file for package msmtp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           msmtp
-Version:        1.8.14
+Version:        1.8.15
 Release:        0
 BuildRequires:  gnutls-devel >= 3.4
 BuildRequires:  libidn2-devel
@@ -79,7 +79,11 @@ examples and sample configuration files.
 Summary:        MTA based on %{name}
 Group:          Productivity/Networking/Email/Servers
 Requires:       %{name} = %{version}
-Conflicts:      sendmail sendmail-tls postfix exim
+Conflicts:      exim
+Conflicts:      postfix
+Conflicts:      postfix-bdb
+Conflicts:      sendmail
+Conflicts:      sendmail-tls
 Provides:       smtp_daemon
 
 %description mta

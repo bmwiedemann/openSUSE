@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 30 19:06:54 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- add package conflict with postfix-bdb for msmtp-mta
+
+-------------------------------------------------------------------
+Fri Mar 12 17:18:51 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.15:
+  * Added support for SCRAM-SHA-256 authentication via GNU SASL
+
+-------------------------------------------------------------------
 Thu Dec 24 10:24:18 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.14:
