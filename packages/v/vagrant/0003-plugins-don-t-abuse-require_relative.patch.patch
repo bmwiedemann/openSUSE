@@ -1,7 +1,7 @@
 From d04bc870f70ca3a25c33992588b52d692caf270d Mon Sep 17 00:00:00 2001
 From: Johannes Kastl <kastl@b1-systems.de>
 Date: Wed, 17 May 2017 09:09:57 +0200
-Subject: [PATCH 3/9] plugins-don-t-abuse-require_relative.patch
+Subject: [PATCH 03/10] plugins-don-t-abuse-require_relative.patch
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
 ---
@@ -154,5 +154,5 @@ index 2dd140230..e6dd96f08 100644
  module VagrantPlugins
    module GuestSUSE
 -- 
-2.30.2
+2.31.1
 

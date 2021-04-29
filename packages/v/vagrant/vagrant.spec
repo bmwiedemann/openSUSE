@@ -57,6 +57,8 @@ Patch6:         0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
 Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
 Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
+# https://github.com/hashicorp/vagrant/pull/12329
+Patch10:        0010-Bump-listen-version-to-3.5.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -95,8 +97,9 @@ BuildRequires:  %{rubygem ed25519:1.2 >= 1.2.4 }
 BuildRequires:  %{rubygem erubi }
 #  s.add_dependency "i18n", "~> 1.8"
 BuildRequires:  %{rubygem i18n:1 >= 1.8 }
-#  s.add_dependency "listen", "~> 3.4"
-BuildRequires:  %{rubygem listen:3 >= 3.4 }
+# PATCHED
+#  s.add_dependency "listen", "~> 3.5"
+BuildRequires:  %{rubygem listen:3 >= 3.5 }
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
 BuildRequires:  %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5 }
 #  s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"
@@ -138,7 +141,7 @@ BuildRequires:  %{rubygem webmock:2.3 >= 2.3.1 }
 BuildRequires:  %{rubygem fake_ftp:0.1 >= 0.1.1 }
 
 # Prevent have choice for rubygem(ruby:2.7.0:listen:3) >= 3.1
-BuildRequires:  %{rubygem listen:3.4}
+BuildRequires:  %{rubygem listen:3.5}
 # Prevent have choice for rubygem(ruby:2.6.0:mime-types) >= 2
 BuildRequires:  %{rubygem mime-types:3 }
 # Prevent have choice for rubygem(ruby:2.6.0:builder) >= 2.1.2
@@ -181,8 +184,9 @@ Requires:       %{rubygem ed25519:1.2 >= 1.2.4}
 Requires:       %{rubygem erubi}
 #  s.add_dependency "i18n", "~> 1.8"
 Requires:       %{rubygem i18n:1 >= 1.8}
-#  s.add_dependency "listen", "~> 3.4"
-Requires:       %{rubygem listen:3 >= 3.4}
+# PATCHED
+#  s.add_dependency "listen", "~> 3.5"
+Requires:       %{rubygem listen:3 >= 3.5}
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
 Requires:       %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5}
 #  s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"

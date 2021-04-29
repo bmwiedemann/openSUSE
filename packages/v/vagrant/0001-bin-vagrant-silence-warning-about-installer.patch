@@ -1,7 +1,7 @@
 From 152901e1ae1a475a48e3ecb43d54c629cc8abf05 Mon Sep 17 00:00:00 2001
 From: Antonio Terceiro <terceiro@debian.org>
 Date: Sat, 11 Oct 2014 16:54:58 -0300
-Subject: [PATCH 1/9] bin/vagrant: silence warning about installer
+Subject: [PATCH 01/10] bin/vagrant: silence warning about installer
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
 ---
@@ -36,5 +36,5 @@ index c019f30ff..6d2d21523 100755
    #
    # Unset  - Disables experimental features
 -- 
-2.30.2
+2.31.1
 
