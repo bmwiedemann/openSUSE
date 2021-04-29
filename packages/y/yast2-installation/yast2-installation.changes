@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 27 09:23:17 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Remove Yast::LanItems dependency (bsc#1185338)
+- 4.4.5
+
+-------------------------------------------------------------------
 Fri Apr 16 10:19:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - spec-cleaner part five out of five: sort and deduplicate requires

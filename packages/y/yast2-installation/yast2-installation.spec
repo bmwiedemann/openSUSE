@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        4.4.4
+Version:        4.4.5
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -37,8 +37,8 @@ BuildRequires:  yast2-country >= 3.3.1
 BuildRequires:  yast2-devtools >= 3.1.10
 # For firewall widgets
 BuildRequires:  yast2-firewall
-# Y2Network::NtpServer
-BuildRequires:  yast2-network >= 4.2.55
+# Dropped Yast::LanItems
+BuildRequires:  yast2-network >= 4.4.7
 # Y2Packager::MediumType
 BuildRequires:  yast2-packager >= 4.2.27
 # for AbortException and handle direct abort
@@ -78,8 +78,8 @@ Requires:       yast2-country >= 3.3.1
 # Language::GetLanguageItems and other API
 # Language::Set (handles downloading the translation extensions)
 Requires:       yast2-country-data >= 2.16.11
-# Y2Network::NtpServer
-Requires:       yast2-network >= 4.2.55
+# Dropped Yast::LanItems
+Requires:       yast2-network >= 4.4.7
 # Y2Packager::MediumType
 Requires:       yast2-packager >= 4.2.22
 # Pkg::ProvidePackage
