@@ -16,9 +16,11 @@
 #
 
 
+%define UM_1_minor 6
+
 Name:           uranium
-%define sversion        4.8
-Version:        4.8.0
+%define sversion        4.9
+Version:        4.9.0
 Release:        0
 Summary:        Python framework for Desktop applications
 License:        LGPL-3.0-only
@@ -47,7 +49,7 @@ BuildArch:      noarch
 # No 32bit support in cura-engine anymore
 ExcludeArch:    %ix86 %arm
 # Registered in UM/Qt/Bindings/Bindings.py
-Provides:       qt5qmlimport(UM.1) = 5
+Provides:       qt5qmlimport(UM.1) = %{UM_1_minor}
 
 %description
 A Python framework for building Desktop applications.
@@ -55,6 +57,12 @@ A Python framework for building Desktop applications.
 %prep
 %setup -q -n Uranium-%sversion
 %patch1 -p1
+
+# Sanity check
+UM_1_LARGEST_MINOR=$(\
+  sed -e '/qmlRegister\(Singleton\)\?Type/ { s/.*"UM",.*1, *\([0-9]\+\).*/\1/ p } ; d' \
+  UM/Qt/Bindings/Bindings.py | sort -g -u | tail -n 1 )
+test "${UM_1_LARGEST_MINOR}" -eq "%{UM_1_minor}" || exit 1
 
 %build
 # Hack, remove LIB_SUFFIX for 64bit, which is correct as uranium is pure python (i.e. noarch)

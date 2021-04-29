@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 26 19:33:34 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.9.0
+  * https://github.com/Ultimaker/Cura/releases/tag/4.9
+- Bump "UM" QML version to 1.6
+
+-------------------------------------------------------------------
 Sat Jan 16 16:42:59 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add compatibility with qml-autoreqprov
