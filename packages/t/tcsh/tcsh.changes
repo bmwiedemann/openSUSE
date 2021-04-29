@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Apr 27 07:43:18 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh bug fix version V6.22.04 - 20210426
+  * Don't crash with 'bindkey "^0" clear-screen' (Karl Jeacle)
+  * Fix $x:q:h and $x:q:t return the whole string for strings
+    not containing /
+- Port patches
+  * tcsh-6.16.00-norm-cmd.dif
+  * tcsh-6.17.06-dspmbyte.dif
+  * tcsh-6.18.03-colorls.dif
+  * tcsh-6.22.02-local-dotlock.dif
+- Delete patch now upstream fixed
+  * tcsh-6.22.03-unintentional.patch
+- Add keyring and signature
+  * tcsh-6.22.04.tar.gz.asc
+  * tcsh.keyring
+
+-------------------------------------------------------------------
+Thu Apr 22 10:32:44 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Fix the fix tcsh-6.22.03-unintentional.patch
+  * It changes the expected results
+
+-------------------------------------------------------------------
+Mon Nov 30 13:26:45 UTC 2020 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch  tcsh-6.22.03-unintentional.patch
+  * fix unintentional bug of the head/tail modifiers
+
+-------------------------------------------------------------------
 Fri Nov 20 11:48:50 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Update to tcsh bug fix version V6.22.03 - 20201118

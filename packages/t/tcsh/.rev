@@ -779,4 +779,31 @@
 - prepare usrmerge (boo#1029961)</comment>
     <requestid>849693</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>3d90ea8fc16a190be0d35879fd2f03dd</srcmd5>
+    <version>6.22.04</version>
+    <time>1619729065</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to tcsh bug fix version V6.22.04 - 20210426
+  * Don't crash with 'bindkey &quot;^0&quot; clear-screen' (Karl Jeacle)
+  * Fix $x:q:h and $x:q:t return the whole string for strings
+    not containing /
+- Port patches
+  * tcsh-6.16.00-norm-cmd.dif
+  * tcsh-6.17.06-dspmbyte.dif
+  * tcsh-6.18.03-colorls.dif
+  * tcsh-6.22.02-local-dotlock.dif
+- Delete patch now upstream fixed
+  * tcsh-6.22.03-unintentional.patch
+- Add keyring and signature
+  * tcsh-6.22.04.tar.gz.asc
+  * tcsh.keyring
+
+- Fix the fix tcsh-6.22.03-unintentional.patch
+  * It changes the expected results
+
+- Add patch  tcsh-6.22.03-unintentional.patch
+  * fix unintentional bug of the head/tail modifiers</comment>
+    <requestid>888711</requestid>
+  </revision>
 </revisionlist>

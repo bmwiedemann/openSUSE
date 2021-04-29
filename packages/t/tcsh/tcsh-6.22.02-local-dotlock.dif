@@ -172,7 +172,7 @@ Avoid left over dot lock file after reboot
  #endif /* #ifndef _DOTLOCK_H_ */
 --- sh.hist.c
 +++ sh.hist.c	2020-02-19 09:48:57.640589111 +0000
-@@ -1209,9 +1209,11 @@ fmthist(int fmt, ptr_t ptr)
+@@ -1219,9 +1219,11 @@ fmthist(int fmt, ptr_t ptr)
  }
  
  static void
@@ -186,7 +186,7 @@ Avoid left over dot lock file after reboot
  }
  
  /* Save history before exiting the shell. */
-@@ -1288,11 +1290,12 @@ rechist(Char *fname, int ref)
+@@ -1300,11 +1302,12 @@ rechist(Char *fname, int ref)
  	    jmp_buf_t osetexit;
  	    if (lock) {
  #ifndef WINNT_NATIVE

@@ -1,7 +1,7 @@
 #
 # spec file for package tcsh
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,17 @@
 
 
 Name:           tcsh
-Version:        6.22.03
+Version:        6.22.04
 Release:        0
 Summary:        The C SHell
 License:        BSD-3-Clause
 Group:          System/Shells
 URL:            http://www.tcsh.org/
-Source:         ftp.astron.com:/pub/%{name}/%{name}-%{version}.tar.gz
+Source0:        ftp.astron.com:/pub/%{name}/%{name}-%{version}.tar.gz
+Source1:        ftp.astron.com:/pub/%{name}/%{name}-%{version}.tar.gz.asc
 Source2:        bindkey.tcsh
 Source3:        complete.tcsh
+Source4:        tcsh.keyring
 Patch0:         tcsh-6.21.00.dif
 Patch1:         tcsh-6.15.00-pipe.dif
 Patch2:         tcsh-6.16.00-norm-cmd.dif
@@ -183,8 +185,8 @@ correction, a history mechanism, job control, and a C-like syntax.
     ln -sf tcsh.1.gz      %{buildroot}%{_mandir}/man1/csh.1.gz
 %if !0%{?usrmerged}
     mkdir -p %{buildroot}/bin
-    ln -s %{_bindir}/tcsh %{buildroot}/bin/tcsh 
-    ln -s %{_bindir}/tcsh %{buildroot}/bin/csh 
+    ln -s %{_bindir}/tcsh %{buildroot}/bin/tcsh
+    ln -s %{_bindir}/tcsh %{buildroot}/bin/csh
 %endif
 
 %files

@@ -12,7 +12,7 @@
  };
  
  #define nvariables (sizeof(variables)/sizeof(variables[0]))
-@@ -321,7 +322,7 @@ parseLS_COLORS(const Char *value)
+@@ -323,7 +324,7 @@ parseLS_COLORS(const Char *value)
      size_t  i, len;
      const Char	 *v;		/* pointer in value */
      char   *c;			/* pointer in colors */
@@ -21,7 +21,7 @@
      jmp_buf_t osetexit;
      size_t omark;
  
-@@ -378,13 +379,10 @@ parseLS_COLORS(const Char *value)
+@@ -380,13 +381,10 @@ parseLS_COLORS(const Char *value)
  			if ((Char)variables[i].variable[0] == (v[0] & CHAR) &&
  			    (Char)variables[i].variable[1] == (v[1] & CHAR))
  			    break;
@@ -38,7 +38,7 @@
  		}
  		break;
  	    }
-@@ -443,12 +441,13 @@ print_color(const Char *fname, size_t le
+@@ -445,12 +443,13 @@ print_color(const Char *fname, size_t le
  		break;
  	    }
  	if (i == nvariables) {

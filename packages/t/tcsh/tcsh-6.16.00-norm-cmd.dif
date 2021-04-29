@@ -1,5 +1,9 @@
+---
+ ed.defns.c |   20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
+
 --- ed.defns.c
-+++ ed.defns.c	2007-08-28 10:02:42.862588122 +0000
++++ ed.defns.c	2021-04-27 07:32:34.710964878 +0000
 @@ -1404,16 +1404,6 @@ editinit(void)
      f->desc = CSAVS(3, 52, "Execute command");
  
@@ -16,7 +20,7 @@
 -    f++;
      f->name = "normalize-path";
      f->func = F_PATH_NORM;
-     f->desc = CSAVS(3, 53, 
+     f->desc = CSAVS(3, 53,
 @@ -1768,6 +1758,16 @@ editinit(void)
      f->desc = CSAVS(3, 121, "(WIN32 only) Page visible console window down");
  
