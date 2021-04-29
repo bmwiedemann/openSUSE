@@ -313,8 +313,8 @@
 +makeindx musixdoc.idx
 +pdflatex musixdoc
 --- texmf-dist/scripts/musixtex/musixtex.lua
-+++ texmf-dist/scripts/musixtex/musixtex.lua	2018-05-03 10:08:07.363421541 +0000
-@@ -205,15 +205,24 @@ end
++++ texmf-dist/scripts/musixtex/musixtex.lua	2021-04-09 14:54:28.268087372 +0000
+@@ -212,16 +212,25 @@ end
  --       possible by exploiting the the fact that Lua has two false values.
  --         dvi == nil    "do not produce a DVI file" (but maybe PDF)
  --         dvi == false  "do not process the DVI file" (but stop after TeX)
@@ -323,6 +323,7 @@
 +base=base[1]
  local dvips = "dvips -e0"
  function defaults()
+   xml2pmx = "xml2pmx"
    prepmx = "prepmx"
    pmx = "pmxab"
    autosp = "autosp"
