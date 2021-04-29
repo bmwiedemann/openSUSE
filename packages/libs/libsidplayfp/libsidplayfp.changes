@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Apr 26 12:04:39 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.1.2:
+  * songlength DB: fix parsing of milliseconds with leading zeroes
+  * Fixed building hardsid support
+  * reSIDfp: shift register regression fixes
+  * Updated RAM init pattern similar to how it's done in VICE
+  * Do not use smart pointers in public headers
+    (Warning! breaks ABI compatibility)
+  * resid/residfp: Use soft instead of hard clipping
+    rough implementation of bitfade
+  * residfp: better bandpass frequency calculation,
+    updated 8580 resistor ratios based on schematics and adjusted
+    voltage range, updated TTL values, assume a high impedance
+    audio amplifier yielding an 1.6Hz high-pass
+- Update to version 2.0.5:
+  * Fixed CIA SDR handling, code borrowed from Denise emulator
+  * Fixed external filter coefficients calculation in resid/residfp
+  * Update osc3 on waveform zero in resid/residfp
+  * Further improved CPU/CIA/VICII emulation based on VICE testprogs
+  * Fixed an envelope generator regression in resid/residfp
+  * Improved noise+pulse interaction in resid/residfp
+  * Avoid saturation of residfp 8580 filter
+  * Adjusted residfp 6581 filter parameter range
+  * Recalculate noise output when actually changed in residfp
+  * Fix loading stereo mus tunes
+  * Fix residfp envelope
+  * Make digiboost work with resid
+  * Make MUS loading more robust to malformed files
+  * Reworked SidDatabase API
+  * Fix hang on exit
+  * CIA model is now configurable
+  * Added digiboost support
+  * Added support for milliseconds in SLDB
+  * Improved 8580 filter
+  * CIA and SID fixes ported from VICE
+  * Added MOS 6573 (PAL-M) emulation
+  * Other minor fixes and code cleanup
+  * Do not use kernal calls in psid driver
+
+-------------------------------------------------------------------
 Fri Jan 13 10:04:19 UTC 2017 - olaf@aepfle.de
 
 - Update to version 1.8.7

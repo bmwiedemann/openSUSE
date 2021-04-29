@@ -63,4 +63,12 @@ GStreamer.</comment>
   * Apply volume to channels, not to chips output (forwarded request 449998 from olh)</comment>
     <requestid>449999</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5edaeca8b03ffd68c435c44c412fc6d0</srcmd5>
+    <version>2.1.2</version>
+    <time>1619729205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889289</requestid>
+  </revision>
 </revisionlist>

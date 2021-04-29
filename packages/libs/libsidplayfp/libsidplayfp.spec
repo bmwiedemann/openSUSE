@@ -1,7 +1,7 @@
 #
 # spec file for package libsidplayfp
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,23 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define soname 4
+%define soname 6
 %define stilview_soname 0
-
 Name:           libsidplayfp
-Version:        1.8.7
+Version:        2.1.2
 Release:        0
 Summary:        A library to play Commodore 64 music
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Libraries
-Url:            http://sourceforge.net/projects/sidplay-residfp/
-Source0:        http://downloads.sourceforge.net/project/sidplay-residfp/libsidplayfp/1.8/libsidplayfp-%{version}.tar.gz
+URL:            https://sourceforge.net/projects/sidplay-residfp/
+Source0:        https://sourceforge.net/projects/sidplay-residfp/files/libsidplayfp/2.1/libsidplayfp-%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  pkg-config
+BuildRequires:  libgcrypt-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libftdi1)
 
 %description
 A library to play Commodore 64 music based on libsidplay2.
@@ -70,41 +71,33 @@ use libstilview.
 
 %build
 %configure --disable-static
-make %{?_smp_mflags}
-# fool the following "make install", we have no xa(1)
-touch sidplayfp/psiddrv.o65
-touch sidplayfp/psiddrv.bin
+%make_build
 
 %install
 %make_install
-rm %{buildroot}%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libsidplayfp%{soname} -p /sbin/ldconfig
-
 %postun -n libsidplayfp%{soname} -p /sbin/ldconfig
-
 %post -n libstilview%{stilview_soname} -p /sbin/ldconfig
-
 %postun -n libstilview%{stilview_soname} -p /sbin/ldconfig
 
 %files -n libsidplayfp%{soname}
-%defattr(0644, root, root, 0755)
-%doc AUTHORS COPYING NEWS README TODO
+%license COPYING
 %{_libdir}/libsidplayfp.so.%{soname}*
 
 %files -n libstilview%{stilview_soname}
-%defattr(0644, root, root, 0755)
-%doc AUTHORS COPYING NEWS README TODO
+%license COPYING
 %{_libdir}/libstilview.so.%{stilview_soname}*
 
 %files devel
-%defattr(0644, root, root, 0755)
+%doc AUTHORS NEWS README TODO
 %{_libdir}/libsidplayfp.so
 %{_includedir}/sidplayfp/
 %{_libdir}/pkgconfig/libsidplayfp.pc
 
 %files -n libstilview-devel
-%defattr(0644, root, root, 0755)
+%doc AUTHORS NEWS README TODO
 %{_libdir}/libstilview.so
 %{_includedir}/stilview/
 %{_libdir}/pkgconfig/libstilview.pc
