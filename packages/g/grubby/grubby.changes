@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 29 09:29:03 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 20200210.99d10a3
+  * Fix maybe-uninitialized warning
+  * Fix stringop-overflow warning
+- Fix incorrect package names in Requires
+  * uboot-tools => u-boot-tools
+  * s390-utils => s390-tools
+- Disable tests on aarch64 again
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Thu Sep  5 13:52:46 UTC 2019 - olaf@aepfle.de
 
 - Update to 20190801.fc69ba6
