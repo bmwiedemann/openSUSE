@@ -1,7 +1,7 @@
 #
 # spec file for package screen-message
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           screen-message
-Version:        0.25
+Version:        0.26
 Release:        0
 Summary:        Program to display a short text fullscreen
 License:        GPL-2.0-or-later
@@ -43,7 +43,7 @@ the screen. The text can be edited while Screen Message is running.
 %patch1 -p1
 
 %build
-autoreconf --install
+autoreconf -fi
 %configure --bindir=%{_bindir}
 mv README.Win32 README
 make %{?_smp_mflags}
@@ -51,14 +51,6 @@ make %{?_smp_mflags}
 %install
 %make_install %{?_smp_mflags}
 %suse_update_desktop_file -r -N '%{name}' -G 'Screen-Message' sm Utility GTK Accessibility Presentation
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
 
 %files
 %doc README
