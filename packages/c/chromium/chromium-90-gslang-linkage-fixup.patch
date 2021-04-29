@@ -1,0 +1,61 @@
+--- chromium-90.0.4430.85/third_party/angle//src/libANGLE/renderer/glslang_wrapper_utils.cpp.xx	2021-04-25 12:32:18.204585123 +0200
++++ chromium-90.0.4430.85/third_party/angle//src/libANGLE/renderer/glslang_wrapper_utils.cpp	2021-04-25 13:17:46.614703616 +0200
+@@ -2105,11 +2105,13 @@
+ 
+   private:
+     static constexpr size_t kXfbDecorationCount                           = 3;
++#if 0
+     static constexpr spv::Decoration kXfbDecorations[kXfbDecorationCount] = {
+-        spv::DecorationXfbBuffer,
++       spv::DecorationXfbBuffer,
+         spv::DecorationXfbStride,
+         spv::DecorationOffset,
+     };
++#endif
+ 
+     bool mHasTransformFeedbackOutput;
+ 
+@@ -2226,6 +2228,12 @@
+                                                             spirv::IdRef id,
+                                                             SpirvBlob *blobOut)
+ {
++    constexpr spv::Decoration localkXfbDecorations[kXfbDecorationCount] = {
++        spv::DecorationXfbBuffer,
++        spv::DecorationXfbStride,
++        spv::DecorationOffset,
++    };
++
+     if (info.fieldXfb.empty())
+     {
+         return;
+@@ -2257,7 +2265,7 @@
+         for (size_t i = 0; i < kXfbDecorationCount; ++i)
+         {
+             spirv::WriteMemberDecorate(blobOut, id, spirv::LiteralInteger(fieldIndex),
+-                                       kXfbDecorations[i],
++                                       localkXfbDecorations[i],
+                                        {spirv::LiteralInteger(xfbDecorationValues[i])});
+         }
+     }
+@@ -2267,6 +2275,12 @@
+                                                       spirv::IdRef id,
+                                                       SpirvBlob *blobOut)
+ {
++    constexpr spv::Decoration localkXfbDecorations[kXfbDecorationCount] = {
++        spv::DecorationXfbBuffer,
++        spv::DecorationXfbStride,
++        spv::DecorationOffset,
++    };
++
+     if (info.xfb.buffer == ShaderInterfaceVariableXfbInfo::kInvalid)
+     {
+         return;
+@@ -2288,7 +2302,7 @@
+     //     OpDecorate %id Offset xfb.offset
+     for (size_t i = 0; i < kXfbDecorationCount; ++i)
+     {
+-        spirv::WriteDecorate(blobOut, id, kXfbDecorations[i],
++        spirv::WriteDecorate(blobOut, id, localkXfbDecorations[i],
+                              {spirv::LiteralInteger(xfbDecorationValues[i])});
+     }
+ }

@@ -1,0 +1,20 @@
+--- chromium-90.0.4430.85/components/translate/core/language_detection/quantization_utils.h.xx	2021-04-25 16:18:20.208511263 +0200
++++ chromium-90.0.4430.85/components/translate/core/language_detection/quantization_utils.h	2021-04-25 16:18:28.252399949 +0200
+@@ -7,6 +7,7 @@
+ 
+ #include <algorithm>
+ #include <cmath>
++#include <cstdint>
+ 
+ namespace translate {
+ 
+--- chromium-90.0.4430.85/components/translate/core/language_detection/ngram_hash_ops_utils.cc.xx	2021-04-26 09:33:16.712946940 +0200
++++ chromium-90.0.4430.85/components/translate/core/language_detection/ngram_hash_ops_utils.cc	2021-04-26 09:33:24.024845379 +0200
+@@ -5,6 +5,7 @@
+ #include "components/translate/core/language_detection/ngram_hash_ops_utils.h"
+ 
+ #include <vector>
++#include <cstring>
+ 
+ #include "third_party/utf/src/include/utf.h"
+ 

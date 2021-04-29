@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Apr 28 08:53:55 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- Chromium 90.0.4430.93 (boo#1185398):
+  - CVE-2021-21227: Insufficient data validation in V8. 
+  - CVE-2021-21232: Use after free in Dev Tools. 
+  - CVE-2021-21233: Heap buffer overflow in ANGLE.
+  - CVE-2021-21228: Insufficient policy enforcement in extensions.
+  - CVE-2021-21229: Incorrect security UI in downloads.
+  - CVE-2021-21230: Type Confusion in V8. 
+  - CVE-2021-21231: Insufficient data validation in V8.
+
+  - Reference: https://chromereleases.googleblog.com/2021/04/stable-channel-update-for-desktop_26.html
+
+-------------------------------------------------------------------
+Wed Apr 21 07:43:59 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 90.0.4430.85 (boo#1185047):
+  * CVE-2021-21222: Heap buffer overflow in V8
+  * CVE-2021-21223: Integer overflow in Mojo
+  * CVE-2021-21224: Type Confusion in V8
+  * CVE-2021-21225: Out of bounds memory access in V8
+  * CVE-2021-21226: Use after free in navigation
+- Chromium 90.0.4430.72 (boo#1184764):
+  * CVE-2021-21201: Use after free in permissions
+  * CVE-2021-21202: Use after free in extensions
+  * CVE-2021-21203: Use after free in Blink
+  * CVE-2021-21204: Use after free in Blink
+  * CVE-2021-21205: Insufficient policy enforcement in navigation
+  * CVE-2021-21221: Insufficient validation of untrusted input in Mojo
+  * CVE-2021-21207: Use after free in IndexedDB
+  * CVE-2021-21208: Insufficient data validation in QR scanner
+  * CVE-2021-21209: Inappropriate implementation in storage
+  * CVE-2021-21210: Inappropriate implementation in Network
+  * CVE-2021-21211: Inappropriate implementation in Navigatio 
+  * CVE-2021-21212: Incorrect security UI in Network Config UI
+  * CVE-2021-21213: Use after free in WebMIDI
+  * CVE-2021-21214: Use after free in Network API
+  * CVE-2021-21215: Inappropriate implementation in Autofill
+  * CVE-2021-21216: Inappropriate implementation in Autofill
+  * CVE-2021-21217: Uninitialized Use in PDFium
+  * CVE-2021-21218: Uninitialized Use in PDFium
+  * CVE-2021-21219: Uninitialized Use in PDFiu
+  * drop chromium-89-quiche-private.patch
+  * drop chromium-89-quiche-dcheck.patch
+  * drop chromium-89-skia-CropRect.patch
+  * drop chromium-89-dawn-include.patch
+  * drop chromium-89-webcodecs-deps.patch
+  * drop chromium-89-AXTreeSerializer-include.patch
+  * drop libva-2.11.patch
+  * drop libva-2.11-nolegacy.patch
+  * drop chromium-84-blink-disable-clang-format.patch
+- chromium-90-gslang-linkage-fixup.patch: fixed a weird static/nonpic error
+- chromium-90-cstdint.patch: some cstd includes added
+- chromium-90-fseal.patch: F_SEAL defines added
+
+-------------------------------------------------------------------
 Wed Apr 14 16:09:27 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 89.0.4389.128 (boo#1184700):

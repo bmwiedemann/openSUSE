@@ -1,0 +1,48 @@
+--- chromium-90.0.4430.85/mojo/core/channel_linux.cc.xx	2021-04-26 10:31:10.188705842 +0200
++++ chromium-90.0.4430.85/mojo/core/channel_linux.cc	2021-04-26 11:23:26.997161282 +0200
+@@ -5,6 +5,21 @@
+ #include "mojo/core/channel_linux.h"
+ 
+ #include <fcntl.h>
++#ifndef F_SEAL_SEAL
++# define F_SEAL_SEAL    0x0001
++#endif
++#ifndef F_SEAL_SHRINK
++# define F_SEAL_SHRINK        0x0002
++#endif
++#ifndef F_SEAL_GROW
++# define F_SEAL_GROW  0x0004
++#endif
++#ifndef F_ADD_SEALS
++# define F_ADD_SEALS    1033
++#endif
++#ifndef F_GET_SEALS
++# define F_GET_SEALS    1034
++#endif
+ #include <linux/futex.h>
+ #include <linux/memfd.h>
+ #include <sys/eventfd.h>
+--- chromium-90.0.4430.85/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc.xx	2021-04-26 16:39:18.387482941 +0200
++++ chromium-90.0.4430.85/sandbox/linux/seccomp-bpf-helpers/syscall_parameters_restrictions.cc	2021-04-26 16:40:10.866754337 +0200
+@@ -6,6 +6,21 @@
+ 
+ #include <errno.h>
+ #include <fcntl.h>
++#ifndef F_SEAL_SEAL
++# define F_SEAL_SEAL    0x0001
++#endif
++#ifndef F_SEAL_SHRINK
++# define F_SEAL_SHRINK        0x0002
++#endif
++#ifndef F_SEAL_GROW
++# define F_SEAL_GROW  0x0004
++#endif
++#ifndef F_ADD_SEALS
++# define F_ADD_SEALS    1033
++#endif
++#ifndef F_GET_SEALS
++# define F_GET_SEALS    1034
++#endif
+ #include <linux/net.h>
+ #include <sched.h>
+ #include <signal.h>

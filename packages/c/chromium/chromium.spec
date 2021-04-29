@@ -48,7 +48,7 @@
 %endif
 %bcond_with clang
 Name:           chromium
-Version:        89.0.4389.128
+Version:        90.0.4430.93
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -81,7 +81,6 @@ Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
 Patch12:        chromium-78-protobuf-RepeatedPtrField-export.patch
 Patch13:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
-Patch14:        chromium-84-blink-disable-clang-format.patch
 Patch15:        chromium-88-compiler.patch
 Patch16:        chromium-86-ConsumeDurationNumber-constexpr.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
@@ -91,15 +90,13 @@ Patch20:        chromium-86-f_seal.patch
 Patch21:        chromium-gcc11.patch
 Patch22:        chromium-lp152-missing-includes.patch
 Patch23:        chromium-glibc-2.33.patch
-Patch24:        chromium-89-quiche-private.patch
-Patch25:        chromium-89-quiche-dcheck.patch
-Patch26:        chromium-89-skia-CropRect.patch
-Patch27:        chromium-89-dawn-include.patch
-Patch28:        chromium-89-webcodecs-deps.patch
+Patch24:        chromium-90-cstdint.patch
+Patch25:        chromium-90-fseal.patch
+# PATCH-FIX-SUSE: chromium 90. avoid global reference to this array, seems confuse compiler
+Patch28:        chromium-90-gslang-linkage-fixup.patch
 Patch29:        chromium-89-EnumTable-crash.patch
 Patch30:        chromium-shim_headers.patch
 Patch31:        chromium-89-missing-cstring-header.patch
-Patch32:        chromium-89-AXTreeSerializer-include.patch
 Patch33:        chromium-88-gcc-fix-swiftshader-libEGL-visibility.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
@@ -110,8 +107,6 @@ Patch34:        chromium-vaapi.patch
 Patch35:        chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch36:        chromium-prop-codecs.patch
-Patch37:        libva-2.11.patch
-Patch38:        libva-2.11-nolegacy.patch
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison
@@ -281,12 +276,7 @@ Requires:       %{name} = %{version}
 WebDriver is an open source tool for automated testing of webapps across many browsers. It provides capabilities for navigating to web pages, user input, JavaScript execution, and more. ChromeDriver is a standalone server which implements WebDriver's wire protocol for Chromium. It is being developed by members of the Chromium and WebDriver teams.
 
 %prep
-%autosetup -N
-%if 0%{?suse_version} < 1550
-%{lua:for i=0,37 do print(string.format("%%patch%u -p1 \n", i, i)) end}
-%else
-%autopatch -p1
-%endif
+%autosetup -p1
 
 %build
 # Fix the path to nodejs binary
@@ -298,8 +288,8 @@ keeplibs=(
     base/third_party/cityhash
     base/third_party/double_conversion
     base/third_party/dynamic_annotations
-    base/third_party/nspr
     base/third_party/icu
+    base/third_party/nspr
     base/third_party/superfasthash
     base/third_party/symbolize
     base/third_party/valgrind
@@ -347,8 +337,8 @@ keeplibs=(
     third_party/catapult/tracing/third_party/pako
     third_party/ced
     third_party/cld_3
-    third_party/crashpad
     third_party/closure_compiler
+    third_party/crashpad
     third_party/crashpad/crashpad/third_party/lss
     third_party/crashpad/crashpad/third_party/zlib
     third_party/crc32c
@@ -374,11 +364,14 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
     third_party/devtools-frontend/src/third_party
     third_party/dom_distiller_js
+    third_party/eigen3
     third_party/emoji-segmenter
+    third_party/farmhash
+    third_party/fdlibm
+    third_party/fft2d
     third_party/flatbuffers
     third_party/fusejs/dist
-    third_party/libgifcodec
-    third_party/libxcb-keysyms/keysyms
+    third_party/gemmlowp
     third_party/google_input_tools
     third_party/google_input_tools/third_party/closure_library
     third_party/google_input_tools/third_party/closure_library/third_party/closure
@@ -392,12 +385,14 @@ keeplibs=(
     third_party/jstemplate
     third_party/khronos
     third_party/leveldatabase
-    third_party/libXNVCtrl
     third_party/libaddressinput
     third_party/libaom
+    third_party/libaom/source/libaom/third_party/fastfeat
     third_party/libaom/source/libaom/third_party/vector
     third_party/libaom/source/libaom/third_party/x86inc
     third_party/libavif
+    third_party/libgav1
+    third_party/libgifcodec
     third_party/libjingle
     third_party/libphonenumber
     third_party/libsecret
@@ -405,11 +400,14 @@ keeplibs=(
     third_party/libsync
     third_party/libudev
     third_party/liburlpattern
+    third_party/libva_protected_content
     third_party/libwebm
     third_party/libx11/src
+    third_party/libxcb-keysyms/keysyms
     third_party/libxml/chromium
-    third_party/libva_protected_content
+    third_party/libXNVCtrl
     third_party/libyuv
+    third_party/libzip
     third_party/lottie
     third_party/lss
     third_party/lzma_sdk
@@ -452,16 +450,17 @@ keeplibs=(
     third_party/pyjson5
     third_party/qcms
     third_party/rnnoise
+    third_party/ruy
     third_party/s2cellid
     third_party/schema_org
     third_party/securemessage
     third_party/shell-encryption
     third_party/simplejson
     third_party/skia
+    third_party/skia/include/third_party/skcms/
+    third_party/skia/include/third_party/vulkan/
     third_party/skia/third_party/skcms
     third_party/skia/third_party/vulkan
-    third_party/skia/include/third_party/vulkan/
-    third_party/skia/include/third_party/skcms/
     third_party/smhasher
     third_party/sqlite
     third_party/swiftshader
@@ -469,11 +468,17 @@ keeplibs=(
     third_party/swiftshader/third_party/llvm-10.0
     third_party/swiftshader/third_party/llvm-subzero
     third_party/swiftshader/third_party/marl
-    third_party/swiftshader/third_party/subzero
     third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1
+    third_party/swiftshader/third_party/subzero
     third_party/tcmalloc
+    third_party/tensorflow-text
+    third_party/tflite
+    third_party/tflite/src/third_party/eigen3
+    third_party/tflite/src/third_party/fft2d
+    third_party/tflite-support
     third_party/ukey2
     third_party/usrsctp
+    third_party/utf
     third_party/vulkan
     third_party/wayland
     third_party/web-animations-js
@@ -491,13 +496,13 @@ keeplibs=(
     third_party/wuffs
     third_party/x11proto
     third_party/xcbproto
-    third_party/zxcvbn-cpp
     third_party/zlib/google
+    third_party/zxcvbn-cpp
     tools/grit/third_party/six
     url/third_party/mozilla
     v8/src/third_party/siphash
-    v8/src/third_party/valgrind
     v8/src/third_party/utf8-decoder
+    v8/src/third_party/valgrind
     v8/third_party/inspector_protocol
     v8/third_party/v8/builtins
 )

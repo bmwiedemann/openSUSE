@@ -1,7 +1,7 @@
-Index: chromium-84.0.4147.85/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
+Index: chromium-90.0.4430.72/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
 ===================================================================
---- chromium-84.0.4147.85.orig/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
-+++ chromium-84.0.4147.85/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
+--- chromium-90.0.4430.72.orig/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
++++ chromium-90.0.4430.72/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
 @@ -5,6 +5,7 @@
  #include "ui/ozone/platform/drm/gpu/hardware_display_controller.h"
  
@@ -16,5 +16,5 @@ Index: chromium-84.0.4147.85/ui/ozone/platform/drm/gpu/hardware_display_controll
  #include "base/trace_event/trace_event.h"
 -#include "third_party/libdrm/src/include/drm/drm_fourcc.h"
  #include "third_party/skia/include/core/SkCanvas.h"
+ #include "third_party/skia/include/core/SkImage.h"
  #include "ui/gfx/geometry/point.h"
- #include "ui/gfx/geometry/size.h"
