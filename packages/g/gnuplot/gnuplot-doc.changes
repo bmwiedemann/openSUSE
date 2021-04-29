@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 26 17:15:43 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Update spec file to work with TeXLive 2021 
+
+-------------------------------------------------------------------
+Thu Apr 22 06:29:10 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Last commit had added patch gnuplot-PIE.patch
+
+-------------------------------------------------------------------
+Thu Apr 15 13:04:05 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Hardening: compile with PIC and link with PIE.
+
+-------------------------------------------------------------------
 Thu Dec 10 07:11:15 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Update to gnuplot 5.4.1

@@ -69,10 +69,14 @@ BuildRequires:  texlive-pdftex
 BuildRequires:  texlive-tex4ht
 BuildRequires:  texlive-texinfo
 BuildRequires:  texlive-ucs
+BuildRequires:  tex(booktabs.sty)
 BuildRequires:  tex(fancyhdr.sty)
+BuildRequires:  tex(gttn1000.tfm)
 BuildRequires:  tex(hyperref.sty)
+BuildRequires:  tex(lgrcmr.fd)
 BuildRequires:  tex(pdftex.def)
 BuildRequires:  tex(subfigure.sty)
+BuildRequires:  tex(textgreek.sty)
 %endif
 URL:            http://www.gnuplot.info/
 Version:        5.4.1
@@ -196,6 +200,8 @@ autoreconf -fi
 %if "%{flavor}" == "doc"
   mv src/Makefile{,_INACESSIBLE}
   pushd docs/
+	mkdir -p htmldocs
+	cp toc_entr.sty htmldocs/
 	make GNUPLOT_EXE=%{_bindir}/gnuplot srcdir=. clean html pdf
 	make srcdir=. gnuplot.texi
 	patch -p0 < %{S:6}
