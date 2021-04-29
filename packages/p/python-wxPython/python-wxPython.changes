@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 31 01:32:34 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Don't build using Python 3.6 for test package, when that gets reenabled.
+- Since build.py install helpfully installs every built shared object
+  under site-package directories, remove those not for that version of
+  Python. (bsc#1182822)
+- Correct python uninstall alternatives to list all of them, not just one.
+
+-------------------------------------------------------------------
 Wed Sep 30 17:48:02 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use system wxWidgets (wxGTK3) instead of bundling
