@@ -445,4 +445,12 @@
     to fit with added descriptions of PostScript Type 1</comment>
     <requestid>877957</requestid>
   </revision>
+  <revision rev="42" vrev="45">
+    <srcmd5>22931b453b5036dce6d446ebd9635f04</srcmd5>
+    <version>unknown</version>
+    <time>1619729128</time>
+    <user>dimstar_suse</user>
+    <comment>Update to TeXLive 2021, now with correct _link</comment>
+    <requestid>885233</requestid>
+  </revision>
 </revisionlist>
