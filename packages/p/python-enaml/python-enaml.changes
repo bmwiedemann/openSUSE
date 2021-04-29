@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr 28 16:10:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.13
+  * fix Python 3.9 only syntax issue PR #443
+  * make app editor more resilient to errors PR #440
+  * fixes to vim syntax highlighting PR #439
+  * fix documentation of ScrollArea example PR #438
+  * add extra_requires to provide an easy way to install qt
+    bindings when relevant PR # 434
+  * add support for explicit Qt app name PR #430 Allows setting
+    the WM_CLASS property for X11 (Linux) apps.
+- Release 0.12.0
+  * add support for Python 3.9 PR #424
+  * add support for PySide2 and fix Qt deprecation PR #423
+  * add support for subscription block PR #348 Subscription blocks
+    allow to write right to left synchronization logic over
+    multiple lines and using statements. The assigned value is the
+    value returned from the block.
+  * add support for Python 3.8 only syntax PR #422 This covers:
+    the walrus operator (:=), and the use of * in return and yields
+- Don't alter the buildroot in %check
+
+-------------------------------------------------------------------
 Sun Jul 12 06:24:53 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Dont ship unreproducible cache files to make package build reproducible
