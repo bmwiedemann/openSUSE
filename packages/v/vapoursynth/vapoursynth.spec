@@ -1,7 +1,7 @@
 #
 # spec file for package vapoursynth
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vapoursynth
-Version:        52
+Version:        53
 Release:        0
 Summary:        A video processing framework
 License:        LGPL-2.1-only

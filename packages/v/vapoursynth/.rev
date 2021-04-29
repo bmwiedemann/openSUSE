@@ -155,4 +155,13 @@
     <comment></comment>
     <requestid>829017</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>090740bda874e849a32ada8112360081</srcmd5>
+    <version>53</version>
+    <time>1619729184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 53:
+  * Bugfix release</comment>
+    <requestid>889195</requestid>
+  </revision>
 </revisionlist>
