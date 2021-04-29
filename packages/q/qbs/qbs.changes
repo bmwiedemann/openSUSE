@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 29 07:20:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix the qmake detection (boo#1185429):
+  * 0001-Use-qmake-qt5-for-openSUSE.patch
+- Stop setting libexec paths for Tumbleweed. The default values
+  can be used.
+
+-------------------------------------------------------------------
 Wed Jan 27 07:59:12 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to version 1.18.0

@@ -101,4 +101,18 @@ Initial import of qbs 1.10.1
     <comment></comment>
     <requestid>868293</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>f64f45881587a2337bd9bb1e37ad2b33</srcmd5>
+    <version>1.18.0</version>
+    <time>1619729185</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Add patch to fix the qmake detection (boo#1185429):
+  * 0001-Use-qmake-qt5-for-openSUSE.patch
+- Stop setting libexec paths for Tumbleweed. The default values
+  can be used.
+
+-------------------------------------------------------------------</comment>
+    <requestid>889209</requestid>
+  </revision>
 </revisionlist>

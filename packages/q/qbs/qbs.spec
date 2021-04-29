@@ -17,7 +17,7 @@
 #
 
 
-%define qt5_version 5.11.0
+%define qt5_version 5.14.0
 Name:           qbs
 Version:        1.18.0
 Release:        0
@@ -33,6 +33,8 @@ URL:            https://wiki.qt.io/Qbs
 Source:         https://download.qt.io/official_releases/%{name}/%{version}/%{name}-src-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE fix-env-script-interpreter.patch -- Avoid the "env-script-interpreter" warning when building
 Patch0:         fix-env-script-interpreter.patch
+# PATCH-FIX-OPENSUSE
+Patch1:         0001-Use-qmake-qt5-for-openSUSE.patch
 BuildRequires:  fdupes
 BuildRequires:  libQt5Concurrent-devel >= %{qt5_version}
 BuildRequires:  libQt5Core-devel >= %{qt5_version}
@@ -67,25 +69,26 @@ Requires:       %{name} = %{version}-%{release}
 This package is required to develop applications using %{name} as a library
 
 %prep
-%setup -q -n %{name}-src-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{name}-src-%{version}
 
 %build
 makeopts=""
 
 # QBS_LIBEXEC_DESTDIR, QBS_RELATIVE_LIBEXEC_PATH need to be
-# set because the defaults are hardcoded to 'libexec'
+# set for Leap 15 because the defaults are hardcoded to 'libexec'
 #
 # qbs_enable_project_file_updates allow to build Qt Creator
 # against the installed qbs.
 %qmake5 %{name}.pro -r QBS_INSTALL_PREFIX=%{_prefix} \
     QBS_LIBRARY_DIRNAME=%{_lib} \
-    QBS_LIBEXEC_DESTDIR=../../../lib/%{name} \
     QBS_LIBEXEC_INSTALL_DIR=%{_libexecdir}/%{name} \
-    QBS_RELATIVE_LIBEXEC_PATH=../lib/%{name} \
     QBS_LIB_INSTALL_DIR=%{_libdir} \
     QBS_PLUGINS_INSTALL_DIR=%{_libdir} \
-    CONFIG+=qbs_enable_project_file_updates
+    CONFIG+=qbs_enable_project_file_updates \
+%if 0%{?suse_version} <= 1500
+    QBS_RELATIVE_LIBEXEC_PATH=../lib/%{name} \
+    QBS_LIBEXEC_DESTDIR=../../../lib/%{name}
+%endif
 
 %make_build $makeopts
 
