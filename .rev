@@ -447,4 +447,12 @@
     <comment>Add patch de-macro_p2top3.dif</comment>
     <requestid>877933</requestid>
   </revision>
+  <revision rev="42" vrev="45">
+    <srcmd5>51c5acb4f2a680aaee66614a73fb4b47</srcmd5>
+    <version>unknown</version>
+    <time>1619729125</time>
+    <user>dimstar_suse</user>
+    <comment>Update to TeXLive 2021, now with correct _link</comment>
+    <requestid>885230</requestid>
+  </revision>
 </revisionlist>
