@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 26 19:31:52 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.9.0
+  Release notes:
+  * https://github.com/Ultimaker/Cura/releases/tag/4.9
+
+-------------------------------------------------------------------
 Sun Nov 22 18:25:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
-- Require the sip module (under PyQt5.sip namespace as per patch) 
+- Require the sip module (under PyQt5.sip namespace as per patch)
 
 -------------------------------------------------------------------
 Sat Nov 21 00:38:15 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>

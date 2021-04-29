@@ -1,7 +1,7 @@
 #
 # spec file for package libArcus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 %define sover 3
 Name:           libArcus
-%define sversion        4.8
-Version:        4.8.0
+%define sversion        4.9
+Version:        4.9.0
 Release:        0
 Summary:        3D printer control software
 License:        LGPL-3.0-only
@@ -77,9 +77,7 @@ Requires:       python3-sip
 Python bindings for the Arcus communication library.
 
 %prep
-%setup -n %{name}-%{sversion}
-%patch0 -p1
-%patch1 -p1
+%autosetup -n %{name}-%{sversion} -p1
 
 %build
 %cmake
