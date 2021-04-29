@@ -17,21 +17,13 @@
 
 
 Name:           openlierox
-Version:        0.58_rc3
+Version:        0.58_rc5
 Release:        0
 Summary:        A real-time, excessive clone of Worms
 License:        LGPL-2.0+
 Group:          Amusements/Games/Other
 Url:            http://www.openlierox.net/
 Source:         http://downloads.sourceforge.net/%{name}/OpenLieroX_%{version}.src.tar.bz2
-Patch0:         openlierox-0.58_rc1-curl.patch
-Patch1:         openlierox-0.58_rc1-icu.patch
-# PATCH-FIX-FEDORA
-Patch2:         http://pkgs.fedoraproject.org/cgit/rpms/openlierox.git/plain/openlierox-0.58-gcc6.patch
-# PATCH-FEATURE-UPSTREAM https://github.com/albertz/openlierox/pull/804
-Patch3:         appdata.patch
-# PATCH-FIX-UPSTREAM https://github.com/albertz/openlierox/pull/805
-Patch4:         desktop.patch
 BuildRequires:  SDL-devel
 BuildRequires:  SDL_image-devel
 BuildRequires:  SDL_mixer-devel
@@ -56,11 +48,6 @@ are available to provide endless gaming pleasure.
 
 %prep
 %setup -q -n OpenLieroX
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %build
 %cmake -DDEBUG=OFF -DBREAKPAD=OFF -DSYSTEM_DATA_DIR=%{_datadir} -DHAWKNL_BUILTIN=ON
@@ -69,6 +56,7 @@ make %{?_smp_mflags}
 %install
 install -m 755 -d %{buildroot}%{_datadir}/openlierox/
 cp -r share/gamedir/* %{buildroot}%{_datadir}/openlierox/
+find %{buildroot}%{_datadir}/openlierox/ -type f -exec chmod 0644 \{\} +
 
 install -m 755 -d %{buildroot}%{_bindir}
 install -m 755 build/bin/openlierox %{buildroot}%{_bindir}
@@ -82,23 +70,13 @@ install -p -m 644 share/openlierox-openlierox.desktop %{buildroot}%{_datadir}/ap
 mkdir -p %{buildroot}%{_datadir}/appdata
 install -p -m 644 share/openlierox.appdata.xml %{buildroot}%{_datadir}/appdata/openlierox.appdata.xml
 
-%fdupes %{buildroot}%{_prefix}
-
-%post
-%icon_theme_cache_post
-%desktop_database_post
-
-%postun
-%icon_theme_cache_postun
-%desktop_database_postun
+%fdupes %{buildroot}%{_datadir}
 
 %files
-%defattr(-,root,root)
 %{_bindir}/openlierox
 %{_datadir}/openlierox
 %{_datadir}/icons/hicolor/scalable/apps/OpenLieroX.svg
 %{_datadir}/applications/openlierox.desktop
-%dir %{_datadir}/appdata
 %{_datadir}/appdata/openlierox.appdata.xml
 
 %changelog
