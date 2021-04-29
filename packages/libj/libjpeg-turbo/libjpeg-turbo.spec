@@ -18,7 +18,7 @@
 
 %define asan_build 0
 %define debug_build 0
-%define srcver   2.0.6
+%define srcver   2.1.0
 %define major    8
 %define minor    2
 %define micro    2
@@ -172,6 +172,8 @@ rm -rf %{buildroot}%{_datadir}/doc/
 %{_libdir}/libturbojpeg.so
 %{_libdir}/pkgconfig/libjpeg.pc
 %{_libdir}/pkgconfig/libturbojpeg.pc
+%dir %{_libdir}/cmake/libjpeg-turbo
+%{_libdir}/cmake/libjpeg-turbo/*
 %doc coderules.txt jconfig.txt libjpeg.txt structure.txt tjexample.c
 
 %changelog

@@ -19,7 +19,7 @@
 %define major   62
 %define minor   3
 %define micro   0
-%define srcver  2.0.6
+%define srcver  2.1.0
 %define libver  %{major}.%{minor}.%{micro}
 Name:           libjpeg62-turbo
 Version:        %{srcver}
@@ -97,6 +97,7 @@ rm %{buildroot}%{_mandir}/man1/*
 rm %{buildroot}%{_includedir}/turbojpeg.h
 rm %{buildroot}%{_libdir}/libturbojpeg.so*
 rm %{buildroot}%{_libdir}/pkgconfig/libturbojpeg.pc
+rm -r %{buildroot}%{_libdir}/cmake
 # Remove docs, we'll select docs manually
 rm -rf %{buildroot}%{_datadir}/doc/
 

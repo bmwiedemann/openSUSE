@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 26 15:30:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- version update to 2.1.0
+  lot of changes, see
+  * https://github.com/libjpeg-turbo/libjpeg-turbo/releases/tag/2.0.90
+  * https://github.com/libjpeg-turbo/libjpeg-turbo/releases/tag/2.1.0
+
+-------------------------------------------------------------------
 Mon Jan 11 10:58:07 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Fix setting of FLOATTEST

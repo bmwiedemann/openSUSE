@@ -887,4 +887,15 @@
     <comment>- Fix setting of FLOATTEST (forwarded request 862263 from Andreas_Schwab)</comment>
     <requestid>862563</requestid>
   </revision>
+  <revision rev="56" vrev="63">
+    <srcmd5>9b5938a8252e583cf6cfdca7f96083d4</srcmd5>
+    <version>unknown</version>
+    <time>1619729075</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2.1.0
+  lot of changes, see
+  * https://github.com/libjpeg-turbo/libjpeg-turbo/releases/tag/2.0.90
+  * https://github.com/libjpeg-turbo/libjpeg-turbo/releases/tag/2.1.0</comment>
+    <requestid>888800</requestid>
+  </revision>
 </revisionlist>
