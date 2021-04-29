@@ -25,6 +25,12 @@ scripts/mappkgs.pl in packages
 [[ $(find packages/ |wc -l) -gt 100000 ]] || exit 5
 (cd $tmpgit ; find packages/ -mindepth 3 -maxdepth 3 -name .git | xargs -IARGS cp -al --parent  ARGS ../)
 rm -rf $tmpgit
+for p in packages/*/* ; do
+  p2=/data/openSUSE-test/$p
+  if ! -e $p/.git -a -e $p2/.git ; then
+    cp -afl $p2/.git $p/
+  fi
+done
 git add packages/*
 git commit -a -m "update $(date -u +"%Y-%m-%d %H:%M")"
 scripts/tagrelease
