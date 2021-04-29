@@ -1,7 +1,7 @@
 #
 # spec file for package sg3_utils
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           sg3_utils
-%define lname	libsgutils2-1_45-2
-Version:        1.45~815+5.6aa67ed
+%define lname	libsgutils2-1_46-2
+Version:        1.46
 Release:        0
 Summary:        A collection of tools that send SCSI commands to devices
-License:        GPL-2.0-or-later AND BSD-3-Clause
+License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Hardware/Other
-Url:            http://sg.danny.cz/sg/sg3_utils.html
-
-Source:         sg3_utils-%{version}.tar.xz
+URL:            http://sg.danny.cz/sg/sg3_utils.html
+Source:         https://sg.danny.cz/sg/p/sg3_utils-%{version}.tar.xz
+#Source:         sg3_utils-%{version}.tar.xz
 Source1:        dracut.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libtool

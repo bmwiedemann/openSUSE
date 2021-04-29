@@ -517,4 +517,12 @@ Show aggregation and make compatible with Fedora declaration (forwarded request 
     <comment></comment>
     <requestid>699766</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>b364ff4aaac741a210b295521776fd23</srcmd5>
+    <version>1.46</version>
+    <time>1619729067</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>888729</requestid>
+  </revision>
 </revisionlist>
