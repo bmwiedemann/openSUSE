@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 29 09:44:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 13:
+  * Significantly stronger than any of its predecessors:
+    Stockfish 13 outperforms Stockfish 12 by at least 35 Elo
+  * When playing against a one-year-old Stockfish, it wins 60 times
+    more game pairs than it loses
+  * An NNUE network retrained on billions of positions
+  * Much faster network evaluation code
+  * Significantly improved search heuristics
+  * Additional evaluation tweaks
+- Drop update-nnue.patch in favor of the release one
+- Use SourceUrl for nnue
+
+-------------------------------------------------------------------
 Sat Oct 10 00:00:00 CEST 2020 - dsterba@suse.cz
 
 - Update to version 12:

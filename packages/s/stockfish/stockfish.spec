@@ -16,22 +16,21 @@
 #
 
 
-%define		nnuenet	nn-baeb9ef2d183.nnue
-
+# See evaluate.h > EvalFileDefaultName
+%define nnuenet nn-62ef826d1a6d.nnue
 Name:           stockfish
-Version:        12
+Version:        13
 Release:        0
 Summary:        Chess engine
 License:        GPL-3.0-or-later
 URL:            http://stockfishchess.org
-Source0:        https://github.com/official-stockfish/Stockfish/archive/sf_%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/official-stockfish/Stockfish/archive/sf_%{version}.tar.gz#/Stockfish-sf_%{version}.tar.gz
+Source1:        https://tests.stockfishchess.org/api/nn/%{nnuenet}
 # steal some documentation from ubuntu
 Source10:       https://bazaar.launchpad.net/~ubuntu-branches/ubuntu/vivid/%{name}/vivid/download/head:/engineinterface.txt-20091204230329-yljoyxocuxhxg1ot-78/engine-interface.txt#/%{name}-interface.txt
 Source11:       https://bazaar.launchpad.net/~ubuntu-branches/ubuntu/vivid/%{name}/vivid/download/head:/%{name}.6-20091204230329-yljoyxocuxhxg1ot-76/%{name}.6
-Source12:       %{nnuenet}.xz
 # If 'Version' is not set it will display the date as version number. We dont want __DATE__ and Version is set anyways.
 Patch0:         date.patch
-Patch1:         update-nnue.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  xz
@@ -52,9 +51,8 @@ information about how to use Stockfish with your GUI.
 %prep
 %setup -q -n Stockfish-sf_%{version}
 %patch0 -p1
-%patch1 -p0
+cp %{SOURCE1} src/
 cp -p %{SOURCE10} %{SOURCE11} .
-xz -cd %{SOURCE12} > src/%{nnuenet}
 
 dos2unix %{name}-interface.txt
 dos2unix Copying.txt
