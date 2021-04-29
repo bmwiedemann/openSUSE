@@ -17,7 +17,7 @@
 
 
 Name:           cura-engine-lulzbot
-Version:        3.6.18
+Version:        3.6.21
 Release:        0
 Summary:        3D printer control software
 License:        AGPL-3.0-only
