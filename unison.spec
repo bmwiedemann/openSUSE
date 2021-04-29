@@ -1,7 +1,7 @@
 #
 # spec file for package unison
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,28 @@
 
 
 Name:           unison
-Version:        2.51.2
+Version:        2.51.4_rc2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        File synchronization tool
 License:        GPL-3.0+
 Group:          Productivity/Networking/Other
-Url:            https://github.com/bcpierce00/unison
+BuildRoot:      %_tmppath/%name-%version-build
+URL:            https://github.com/bcpierce00/unison
 Source0:        %{name}-%{version}.tar.xz
 #https://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html
 Source1:        unison-2.48.4-manual.html
 Source2:        %{name}.desktop
 Source3:        %{name}.png
-Patch0:         Compatibility-with-OCaml-4.08.patch
-Patch1:         Fix-for-lablgtk-2.18.6.patch
-Patch2:         Fix-warnings-raised-by-OCaml-4.08.1.patch
-Patch3:         Compile-without-unsafe-string.patch
-BuildRequires:  gtk2-devel
-BuildRequires:  ncurses-devel
-BuildRequires:  ocaml(ocaml_base_version) >= 4.07
 BuildRequires:  ocaml-lablgtk2-devel > 2.18.5
-BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocamlfind(findlib)
+BuildRequires:  ocamlfind(ppx_bin_prot)
+BuildRequires:  pkgconfig(gdk-2.0)
+BuildRequires:  pkgconfig(ncursesw)
+%if 0%{?suse_version} > 0
 BuildRequires:  update-desktop-files
+%endif
 
 %description
 Unison is a file synchronization tool for Unix and Windows. It allows
@@ -48,32 +48,27 @@ separately, then brought up to date by propagating the changes in each
 replica to the other.
 
 %prep
-%autosetup -p1
+%setup -q
 
 %build
-# This package failed when testing with -Wl,-as-needed being default.
-# So we disable it here, if you want to retest, just delete this comment and the line below.
-export SUSE_ASNEEDED=0
-%if 0%{?ocaml_native_compiler}
-NATIVE=true
-%else
-NATIVE=false
-%endif
-make UISTYLE=gtk2 NATIVE=$NATIVE THREADS=true
+make UISTYLE=gtk2 NATIVE=true
 
 %install
-install -m 755 -d %{buildroot}/%{_bindir}
-install -m 755 %{name} %{buildroot}%{_bindir}
-install -m 755 %{name}-fsmonitor %{buildroot}%{_bindir}
-install -m 755 -d %{buildroot}/%{_prefix}/share/pixmaps
-install -m 644 %{SOURCE3} %{buildroot}/%{_prefix}/share/pixmaps
+install -m 755 -D %{name} %{buildroot}%{_bindir}/%{name}
+install -m 755 -D %{name}-fsmonitor %{buildroot}%{_bindir}/%{name}-fsmonitor
+install -m 644 -D %{SOURCE3} %{buildroot}%{_datadir}/pixmaps/%{name}.png
 install -m 644 %{SOURCE1} unison-manual.html
+%if %{defined suse_update_desktop_file}
 %suse_update_desktop_file -i %name Utility SyncUtility
+%else
+install -m 644 -D %{SOURCE2} %{buildroot}/%{_datadir}/applications/%{name}.desktop
+%endif
 
 %files
-%doc BUGS.txt CONTRIB COPYING NEWS README ROADMAP.txt unison-manual.html
+%defattr(-,root,root,-)
+%doc BUGS.txt CONTRIB COPYING NEWS README unison-manual.html
 %{_datadir}/applications/*
-%{_datadir}/pixmaps/unison.png
+%{_datadir}/pixmaps/*
 %{_bindir}/%{name}
 %{_bindir}/%{name}-fsmonitor
 
