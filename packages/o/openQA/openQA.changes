@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 29 19:48:54 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1619707627.35eae8e4f:
+  * doc: Improve phrasing regarding worker instance number
+  * Add example for triggering single job to `openqa-cli api --help`
+  * Fix Cpanel::JSON::XS dependency to be the same as in Mojolicious
+  * Update comment in loop for gathering comment data
+  * Compute whether a job is considered reviewed when making comment data
+  * Check whether arbitrary comments do not count for review badge
+  * Only consider bugrefs/labels for black certificate icon
+  * Simplify code for making overview result
+  * Make dashboard test work in environment where default changelog path exists
+
+-------------------------------------------------------------------
 Tue Apr 27 11:06:02 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1619521273.6de41c49b:
