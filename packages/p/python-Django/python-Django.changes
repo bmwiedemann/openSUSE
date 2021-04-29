@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr  6 09:27:50 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 3.2.0
+  + Automatic ~django.apps.AppConfig discovery
+  + Customizing type of auto-created primary keys
+  + Functional indexes
+  + pymemcache support
+  + New decorators for the admin site  
+  + For a complete description of new features check:
+    https://github.com/django/django/blob/main/docs/releases/3.2.txt
+- Update PYTHOPATH to include the local tests
+- Drop i18n_test.patch, i18n_test_extraction.patch,
+  test_clear_site_cache-sort.patch
+
+-------------------------------------------------------------------
 Sat Feb 13 22:41:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Don't install python36-numpy for testing. It is no longer
