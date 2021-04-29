@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 28 09:18:27 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Omit hidden networks from the list of wireless networks to be
+  selected preventing the dialog to crash (bsc#1185372)
+- 4.4.8
+
+-------------------------------------------------------------------
+Tue Apr 27 10:44:05 UTC 2021 - Michal Filka <mfilka@suse.com>
+
+- bsc#1185338
+  - Dropped LanItems, replaced by network-ng
+- 4.4.7 
+
+-------------------------------------------------------------------
+Thu Apr 22 12:48:27 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not crash when the BOOTPROTO or STARTMODE are missing or
+  invalid (bsc#1181295).
+- 4.4.6
+
+-------------------------------------------------------------------
 Thu Apr 22 12:22:47 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - bsc#1185106
