@@ -298,4 +298,12 @@
     <comment>- Update to release 9.9</comment>
     <requestid>880587</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>2234122b98a9cc6acdab523b9672e761</srcmd5>
+    <version>9.10</version>
+    <time>1619729225</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 9.10</comment>
+    <requestid>889400</requestid>
+  </revision>
 </revisionlist>

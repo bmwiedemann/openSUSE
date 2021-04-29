@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 29 18:33:26 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.10
+  * The show command now supports globs.
+
+-------------------------------------------------------------------
 Mon Mar 22 15:25:09 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.9
