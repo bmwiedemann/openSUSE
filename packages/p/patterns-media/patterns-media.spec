@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-media
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,8 +35,8 @@ not make sense.
 This particular package contains patterns that determine the contents of media
 such as DVD's
 
-################################################################################
 
+################################################################################
 %package rest_cd_core
 %pattern_desktopfunctions
 Summary:        Remaining Software
@@ -76,8 +76,8 @@ Recommends:     bluez-firmware
 # filesystem(btrfs)
 Recommends:     btrfsprogs
 Recommends:     bundle-lang-common-en
-Recommends:     cifs-utils
 Recommends:     chrony
+Recommends:     cifs-utils
 # prefer the full version for installation
 Recommends:     cracklib-dict-full
 # bnc#480879
@@ -447,6 +447,7 @@ Recommends:     ntfs-3g
 Recommends:     reiserfs
 # We need to ensure that systemd-32bit ends up on the DVD
 Recommends:     systemd-32bit
+Recommends:     systemd-coredump
 # filesystem(minix)
 Recommends:     util-linux
 Recommends:     xf86-video-ati
@@ -520,6 +521,8 @@ Requires:       indic-fonts
 Requires:       ipa-gothic-fonts
 Requires:       khmeros-fonts
 Requires:       lklug-fonts
+# boo#1185343
+Requires:       udftools
 Requires:       pattern() = apparmor
 Requires:       pattern() = base
 Requires:       pattern() = console
@@ -666,9 +669,17 @@ Recommends:     libXss.so.1
 Recommends:     libXv.so.1
 # dependencies of skype.rpm
 Recommends:     libasound.so.2
+Recommends:     libc.so.6
+Recommends:     libdbus-1.so.3
+Recommends:     libdl.so.2
+Recommends:     libfontconfig.so.1
+Recommends:     libfreetype.so.6
+Recommends:     libgcc_s.so.1
+Recommends:     libglib-2.0.so.0
+Recommends:     libgthread-2.0.so.0
+Recommends:     libm.so.6
 Recommends:     libasound.so.2(ALSA_0.9)
 Recommends:     libasound.so.2(ALSA_0.9.0rc4)
-Recommends:     libc.so.6
 Recommends:     libc.so.6(GLIBC_2.0)
 Recommends:     libc.so.6(GLIBC_2.1)
 Recommends:     libc.so.6(GLIBC_2.1.3)
@@ -676,18 +687,10 @@ Recommends:     libc.so.6(GLIBC_2.2)
 Recommends:     libc.so.6(GLIBC_2.3)
 Recommends:     libc.so.6(GLIBC_2.3.4)
 Recommends:     libc.so.6(GLIBC_2.4)
-Recommends:     libdbus-1.so.3
-Recommends:     libdl.so.2
 Recommends:     libdl.so.2(GLIBC_2.0)
 Recommends:     libdl.so.2(GLIBC_2.1)
-Recommends:     libfontconfig.so.1
-Recommends:     libfreetype.so.6
-Recommends:     libgcc_s.so.1
 Recommends:     libgcc_s.so.1(GCC_3.0)
 Recommends:     libgcc_s.so.1(GLIBC_2.0)
-Recommends:     libglib-2.0.so.0
-Recommends:     libgthread-2.0.so.0
-Recommends:     libm.so.6
 Recommends:     libm.so.6(GLIBC_2.0)
 # register your hardware
 # no sync pattern

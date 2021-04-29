@@ -274,4 +274,15 @@
   it before)</comment>
     <requestid>841300</requestid>
   </revision>
+  <revision rev="34" vrev="34">
+    <srcmd5>0be3c42dc9ac9a4e22ddb9546769dc42</srcmd5>
+    <version>20170319</version>
+    <time>1619729087</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend systemd-coredump by the rest_dvd_core pattern: ensure
+  systemd-coredump to be on the DVD.
+
+- Add udftools to the DVD (boo#1185343).</comment>
+    <requestid>888991</requestid>
+  </revision>
 </revisionlist>
