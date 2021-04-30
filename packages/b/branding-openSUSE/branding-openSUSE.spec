@@ -317,8 +317,8 @@ gfxboot --update-theme %{theme_name}
 %if 0%{?gfxboot} > 0
 %files -n gfxboot-branding-%{theme_name}
 %{_sysconfdir}/bootsplash
-%config %{_sysconfdir}/bootsplash/themes/openSUSE/bootloader/*
 # Intentionally skipping over .tr files as they are hard links
+%config %{_sysconfdir}/bootsplash/themes/openSUSE/bootloader/*.{hlp,jpg,mod,dat,txt,tlk,cfg,fnt}
 %config %{_sysconfdir}/bootsplash/themes/openSUSE/cdrom/*.{hlp,jpg,mod,dat,txt,tlk,cfg,fnt}
 %config %{_sysconfdir}/bootsplash/themes/openSUSE/cdrom/bootlogo
 %{_sysconfdir}/bootsplash/themes/openSUSE/cdrom/*

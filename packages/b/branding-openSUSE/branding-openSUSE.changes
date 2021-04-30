@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 29 14:05:43 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Also skip *.tr as config files in
+  /etc/bootsplash/themes/openSUSE/bootloader (in addition to
+  /etc/bootsplash/themes/openSUSE/cdrom)
+
+-------------------------------------------------------------------
 Thu Mar  4 14:00:14 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - move SUSE-brand to /usr/etc
