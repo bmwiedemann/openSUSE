@@ -35,6 +35,8 @@ Source3:        parsec.service
 Source4:        config.toml
 Source5:        parsec.conf
 Source6:        system-user-parsec.conf
+# Fix build with old rust used in Leap 15.3/SLE15-SP3 - https://github.com/parallaxsecond/parsec/issues/409
+Patch1:         parsec-fix-old-rust.patch
 BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  cmake

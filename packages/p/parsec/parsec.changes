@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 30 11:36:56 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build with old rust used in Leap 15.3/SLE15-SP3.
+  * parsec-fix-old-rust.patch
+
+-------------------------------------------------------------------
 Wed Apr 14 14:54:32 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Requires 'tpm2-0-tss' as it holds the udev rule to make /dev/tpm*
