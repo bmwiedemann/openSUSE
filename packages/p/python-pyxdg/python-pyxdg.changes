@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 29 07:22:54 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Obsolete python-xdg to resolve conflicting state (boo#1178803)
+  * see https://bbs.archlinux.org/viewtopic.php?id=262403 for a workaround
+
+-------------------------------------------------------------------
 Thu Dec  3 02:30:45 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 0.27
