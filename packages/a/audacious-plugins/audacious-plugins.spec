@@ -1,7 +1,7 @@
 #
 # spec file for package audacious-plugins
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,23 @@
 
 
 %define __provides_exclude_from ^%{_libdir}/audacious/*/.*.so$
-%define aud_ver_min 4.0
-%define aud_ver_max 4.0.99
+%define aud_ver_min 4.1
+%define aud_ver_max 4.1.99
 %bcond_with faad
 Name:           audacious-plugins
-Version:        4.0.5
+Version:        4.1
 Release:        0
 Summary:        Plugins for Audacious
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only AND MIT AND BSD-2-Clause
 URL:            https://audacious-media-player.org/
 Source:         https://distfiles.audacious-media-player.org/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM 0001-Implement-qthotkey-plugin.patch -- Implement qthotkey plugin (commit 9904ac5d).
-Patch1:         0001-Implement-qthotkey-plugin.patch
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++ >= 4.5
+BuildRequires:  gcc-c++ >= 4.6
 BuildRequires:  libmp3lame-devel
 BuildRequires:  lirc-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  sndio-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
@@ -46,7 +45,7 @@ BuildRequires:  pkgconfig(audacious) >= %{aud_ver_min}
 BuildRequires:  pkgconfig(flac) >= 1.2.1
 BuildRequires:  pkgconfig(fluidsynth) >= 1.0.6
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.32
+BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(jack) >= 1.9.7
 BuildRequires:  pkgconfig(libavcodec) >= 53.40.0
 BuildRequires:  pkgconfig(libavformat) >= 53.25.0
@@ -60,8 +59,9 @@ BuildRequires:  pkgconfig(libcurl) >= 7.9.7
 BuildRequires:  pkgconfig(libmms) >= 0.3
 BuildRequires:  pkgconfig(libmpg123) >= 1.12
 BuildRequires:  pkgconfig(libnotify) >= 0.7
+BuildRequires:  pkgconfig(libopenmpt)
 BuildRequires:  pkgconfig(libpulse) >= 0.9.5
-BuildRequires:  pkgconfig(libsidplayfp) >= 1.0
+BuildRequires:  pkgconfig(libsidplayfp) >= 2.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(neon) >= 0.27
 BuildRequires:  pkgconfig(ogg) >= 1.0
@@ -69,8 +69,8 @@ BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sdl2) >= 2.0
 BuildRequires:  pkgconfig(sndfile) >= 0.19
 BuildRequires:  pkgconfig(soxr)
-BuildRequires:  pkgconfig(vorbis) >= 1.0
-BuildRequires:  pkgconfig(vorbisenc) >= 1.0
+BuildRequires:  pkgconfig(vorbis)
+BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(vorbisfile) >= 1.0
 BuildRequires:  pkgconfig(wavpack) >= 4.31
 BuildRequires:  pkgconfig(xcomposite)
@@ -121,7 +121,7 @@ Extra plugins for the Audacious audio player.
 %if %{with faad}
 %exclude %{_libdir}/audacious/Input/libaac-raw.so
 %endif
-%exclude %{_libdir}/audacious/Output/libfilewriter.so
+%exclude %{_libdir}/audacious/Output/filewriter.so
 %{_datadir}/audacious/
 
 %files lang -f %{name}.lang
@@ -130,6 +130,6 @@ Extra plugins for the Audacious audio player.
 %if %{with faad}
 %{_libdir}/audacious/Input/libaac-raw.so
 %endif
-%{_libdir}/audacious/Output/libfilewriter.so
+%{_libdir}/audacious/Output/filewriter.so
 
 %changelog
