@@ -142,8 +142,9 @@ Deprecated, Superseded, Modified and Dropped Features
   This website tracks feature deprecation and removal at the upstream
   development level. Our qemu package inherits this community direction, but be
   aware that we can and will deviate as needed. Those deviations and additional
-  information can be found in this section. Feature deprecation is also tracked
-  in Appendix B of the qemu-doc.* files installed with the qemu package.
+  information can be found in this section. Feature deprecation as well as
+  removed features are also tracked in the "QEMU System Emulator User's Guide"
+  section of the documentation installed with the qemu package.
 
 - The use of "?" as a parameter to "-cpu", "-soundhw", "-device", "-M",
   "-machine" and "-d" is now considered deprecated. Use "help"
@@ -164,10 +165,16 @@ Deprecated, Superseded, Modified and Dropped Features
   considered deprecated. In the future those names will be standardized to
   acpitable, boot, and smp respectively.
 
-- This previously supported command line option is now considered deprecated:
+- These previously supported command line options are now considered deprecated:
   -device virtio-blk,scsi= (use virtio-scsi instead)
   -device virtio-blk-pci,scsi= (use virtio-scsi instead)
   -realtime mlock= (use -overcommit mem-lock= instead)
+  (the following are early notices of deprecation in a future qemu version)
+  -chardev tty (use serial name instead)
+  -chardev paraport (use parallel name instead)
+  -enable-fips (not really helpful - see https://git.qemu.org/?p=qemu.git;a=commit;h=166310299a1e7824bbff17e1f016659d18b4a559 for details)
+  -spice password=string (use password-string option instead)
+  -writeconfig (no replacement - never really worked right)
 
 - These previously supported command line options are no longer supported:
   <previously mentioned items have been moved to another category>
@@ -212,7 +219,6 @@ Deprecated, Superseded, Modified and Dropped Features
 
 - These previously supported QMP commands are now deprecated:
   change (use blockdev-change-medium or change-vnc-password instead)
-  cpu-add
   migrate-set-cache-size (use migrate-set-parameters instead)
   migrate_set_downtime (use migrate-set-parameters instead)
   migrate_set_speed (use migrate-set-parameters instead)
@@ -220,13 +226,16 @@ Deprecated, Superseded, Modified and Dropped Features
   query-events
   query-migrate-cache-size (use query-migrate-parameters instead)
 
+- This previously supported QMP command is no longer recognized:
+  cpu-add (use device_add instead)
+
 - These previously supported monitor commands are now deprecated:
   change
   migrate_set_downtime
   migrate_set_speed
 
 - These previously supported monitor commands are no longer recognized:
-  cpu-add
+  cpu-add (use device_add instead)
   pci_add (use device_add instead)
   pci_del (use device_del instead)
 
@@ -532,7 +541,6 @@ QEMU Command-Line and Monitor Syntax and Support
   closefd
   cont
   cpu
-  cpu-add
   device_add
   device_del
   device-list-properties

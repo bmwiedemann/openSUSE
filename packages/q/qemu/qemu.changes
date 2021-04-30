@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 19 15:40:22 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- Include upstream patch designated as stable material and reviewed
+  for applicability to include here
+  mptsas-Remove-unused-MPTSASState-pending.patch
+- Clarify in support documents that cpu-add was removed in this
+  release from both the human monitor protocol (HMP) and QMP
+  interfaces
+
+-------------------------------------------------------------------
+Thu Apr 15 17:19:42 UTC 2021 - Bruce Rogers <brogers@suse.com>
+
+- 6.0.0 qemu is about to be released. Add comments to the in-
+  package support documents (supported.<arch>.txt) about the new
+  deprecations as of that release as an early head's up for qemu
+  users. These deprecations include these command-line options:
+  -M option: kernel-irqchip=off 
+  -chardev tty 
+  -chardev paraport 
+  -enable-fips 
+  -writeconfig 
+  -spice password=string
+
+-------------------------------------------------------------------
 Tue Apr 13 19:17:26 UTC 2021 - Bruce Rogers <brogers@suse.com>
 
 - Include upstream patches designated as stable material and

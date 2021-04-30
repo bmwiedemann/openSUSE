@@ -2481,4 +2481,28 @@ So VERY minor changes, but sounds like the gcc10 fix is wanted badly, so that's 
     <comment></comment>
     <requestid>885460</requestid>
   </revision>
+  <revision rev="202" vrev="22">
+    <srcmd5>1dd98e82de50f3ce6e5097d4067324bc</srcmd5>
+    <version>unknown</version>
+    <time>1619822778</time>
+    <user>dimstar_suse</user>
+    <comment>- Include upstream patch designated as stable material and reviewed
+  for applicability to include here
+  mptsas-Remove-unused-MPTSASState-pending.patch
+- Clarify in support documents that cpu-add was removed in this
+  release from both the human monitor protocol (HMP) and QMP
+  interfaces
+- 6.0.0 qemu is about to be released. Add comments to the in-
+  package support documents (supported.&lt;arch&gt;.txt) about the new
+  deprecations as of that release as an early head's up for qemu
+  users. These deprecations include these command-line options:
+  -M option: kernel-irqchip=off 
+  -chardev tty 
+  -chardev paraport 
+  -enable-fips 
+  -writeconfig 
+  -spice password=string
+</comment>
+    <requestid>889331</requestid>
+  </revision>
 </revisionlist>

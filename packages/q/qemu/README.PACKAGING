@@ -30,14 +30,16 @@ The qemu major and minor release numbers are part of the name, prefixed by
 'opensuse-', so, for example, for the v5.2.0 based SLE-15-SP3 qemu, the branch
 would be named 'opensuse-5.2'. You want to start your work based on the current
 patchqueue as contained in 'frombundle', so one approach is to do (depending on
-your local repo's current state), 'branch -B opensuse-5.2 frombundle', and then
-cherry-pick upstream patches into it, or interactive rebase it to modify or
-delete patches, etc. Be careful to keep the branch based on the upstream tag
-which represents the package tarball however! Once you have the patch queue
-ready to go, simply run 'bash ./update_git.sh git2pkg' (in your local obs branch
-directory) to refresh the bundles.tar.xz file, as well as the package spec and
-patch files. The package qemu.changes file is modified to list added or removed
-patches as a starting point for documenting the change.
+your local repo's current state), 'git checkout -f --recurse-submodules -B
+ opensuse-5.2 frombundle', and then cherry-pick upstream patches into it, or
+interactive rebase it to modify or delete patches, etc. Be careful to keep the
+branch based on the upstream tag which represents the package tarball however!
+
+Once you have the patch queue ready to go, simply run 'bash ./update_git.sh
+git2pkg' (in your local obs branch directory) to refresh the bundles.tar.xz
+file, as well as the package spec and patch files. The package qemu.changes file
+is modified to list added or removed patches as a starting point for documenting
+the change.
 
 When you are ready to check in the package, using 'bash update_git.sh ci' is
 provided as a convenience (and to help preserve correct spec file formatting,

@@ -14,6 +14,20 @@ set -e
 
 #==============================================================================
 
+clean_up_temp_dirs()
+{
+echo "Cleaning temporary files before exit"
+rm -rf $GIT_DIR
+rm -rf $CMP_DIR
+rm -rf $BUN_DIR
+exit
+}
+
+# handle signals gracefully by cleaning the temporary data used before exit
+trap clean_up_temp_dirs EXIT
+
+#==============================================================================
+
 check_requirements() {
     RC=0
     if [[ ! -e ./config.sh ]]; then
@@ -508,7 +522,11 @@ for entry in ${BUNDLE_FILES[@]}; do
             else
                 PREFIX=$(echo $VALUE|tail -c 5)
             fi
-            cp $patchname savedir/$PREFIX-$patchname
+            if [[ "$NUMBERED_PATCHES" = "0" ]]; then
+                cp $patchname savedir/$PREFIX-$patchname
+            else
+                cp $patchname savedir/$patchname
+            fi
             let COUNTER+=1
         done
     fi
@@ -815,15 +833,6 @@ fi
 
 #==============================================================================
 
-clean_up_temp_dirs()
-{
-rm -rf $GIT_DIR
-rm -rf $CMP_DIR
-rm -rf $BUN_DIR
-}
-
-#==============================================================================
-
 if [[ ! -e $(readlink -f ${LOCAL_REPO_MAP[0]}) ]]; then
     echo "No local repo found at ${LOCAL_REPO_MAP[0]}"
     if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
@@ -952,7 +961,6 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
         else
            if [ "$1" ]; then
                echo "ERROR: unrecognized option '$1'. Script in LATEST mode only recognizes 'pause' and 'continue' options"
-               clean_up_temp_dirs
                exit
            fi
         fi
@@ -985,7 +993,6 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
             echo "continue after rebase selected but tarball is out of date. Continuing not possible."
             echo "If desired, save your rebase work (eg, branch $GIT_BRANCH), because otherwise it will"
             echo "be lost. Then run script again without the continue option"
-            clean_up_temp_dirs
             exit
         fi
         redo_tarball_and_rebase_patches &> ~/latest.log # This includes a bundle2local
@@ -996,7 +1003,6 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
             if [[ "$PAUSE_BEFORE_BUNDLE_CREATION" = "1" ]]; then
                 echo "Feel free to also do the work now occasioned by the selected 'pause' option"
             fi
-            clean_up_temp_dirs
             exit
         fi
         CONTINUE_AFTER_REBASE=1
@@ -1005,7 +1011,6 @@ if [ "$GIT_UPSTREAM_COMMIT_ISH" = "LATEST" ]; then
         echo "As requested, pausing before re-creating bundle of bundles for additional patch or specfile work"
         echo "(using current 'ready to go' $GIT_BRANCH branch of local repos to produce patches.)"
         echo "When changes are complete, finish the workflow by passing 'continue' to script"
-        clean_up_temp_dirs
         exit
     fi
     if [ "$CONTINUE_AFTER_REBASE" = "1" ]; then
@@ -1051,5 +1056,4 @@ else # not LATEST
             ;;
     esac
 fi
-clean_up_temp_dirs
 exit
