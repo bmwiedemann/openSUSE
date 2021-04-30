@@ -1,5 +1,9 @@
 #!/bin/sh
 (
+echo "# Waiting for Internet connection"
+until /usr/bin/ping -q -c 1 flathub.org; do sleep 1; done
+echo "20"
+
 echo "# Adding Flathub Repository"
 /usr/bin/flatpak remote-add --user --if-not-exists flathub /usr/share/microos-desktop/flathub.flatpakrepo
 if [ "$?" != 0 ] ; then
@@ -7,7 +11,7 @@ if [ "$?" != 0 ] ; then
           --text="Adding Flathub Repo Failed"
         exit 1
 fi
-echo "25"
+echo "40"
 
 echo "# Installing Firefox"
 /usr/bin/flatpak install --user --noninteractive flathub org.mozilla.firefox
@@ -17,7 +21,7 @@ if [ "$?" != 0 ] ; then
         exit 1
 fi
 
-echo "50"
+echo "60"
 echo "# Installing Calculator"
 /usr/bin/flatpak install --user --noninteractive flathub org.gnome.Calculator
 if [ "$?" != 0 ] ; then
@@ -26,7 +30,7 @@ if [ "$?" != 0 ] ; then
         exit 1
 fi
 
-echo "75"
+echo "80"
 echo "# Installing gEdit"
 /usr/bin/flatpak install --user --noninteractive flathub org.gnome.gedit
 if [ "$?" != 0 ] ; then

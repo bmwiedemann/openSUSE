@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 27 23:37:33 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
+
+- Wait for Internet connectivity before proceeding with next steps.
+  Before this change, the mod-firstboot script was failing when:
+  * there was no network configured on the first boot (happens
+    when using NetworkManager, since it's not configured by YaST
+    during installation)
+  * the script started before wifi connection was properly
+    established
+- 20210427
+
+-------------------------------------------------------------------
 Mon Mar 22 10:21:05 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Initial Package 

@@ -1,6 +1,7 @@
 #
 # spec file for package gnome-branding-MicroOS
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2021 SUSE Software Solutions GmbH
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           gnome-branding-MicroOS
 Summary:        MicroOS Desktop default settings
 License:        BSD-3-Clause
@@ -26,12 +28,12 @@ Source2:        flathub.flatpakrepo
 Source3:        mod-firstboot.desktop
 Source4:        mod-firstboot
 BuildArch:      noarch
-BuildRequires:  gio-branding-openSUSE
 BuildRequires:  flatpak
-Requires:       sound-theme-freedesktop
-Requires:       gio-branding-openSUSE
+BuildRequires:  gio-branding-openSUSE
 Requires:       flatpak
-Version:        20210322
+Requires:       gio-branding-openSUSE
+Requires:       sound-theme-freedesktop
+Version:        20210427
 Release:        0
 
 %description

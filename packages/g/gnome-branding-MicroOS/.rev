@@ -7,4 +7,19 @@
     <comment></comment>
     <requestid>880549</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8e7dfaea07d00c26882f770714a8f68b</srcmd5>
+    <version>20210427</version>
+    <time>1619822772</time>
+    <user>dimstar_suse</user>
+    <comment>- Wait for Internet connectivity before proceeding with next steps.
+  Before this change, the mod-firstboot script was failing when:
+  * there was no network configured on the first boot (happens
+    when using NetworkManager, since it's not configured by YaST
+    during installation)
+  * the script started before wifi connection was properly
+    established
+- 20210427</comment>
+    <requestid>889224</requestid>
+  </revision>
 </revisionlist>
