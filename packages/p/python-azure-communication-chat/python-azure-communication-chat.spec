@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-communication-chat
-Version:        1.0.0b4
+Version:        1.0.0b5
 Release:        0
 Summary:        Microsoft Azure Communication Chat Service Client Library for Python
 License:        MIT
