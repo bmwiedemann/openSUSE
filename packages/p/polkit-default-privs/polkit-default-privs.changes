@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 30 13:25:40 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 1550+20210430.c408cda:
+  * systemd: add newly added inhibit-handle-reboot-key action (bsc#1185468)
+  * whitelist non-functional change in systemd-networkd rules (bsc#1185469)
+
+-------------------------------------------------------------------
+Thu Apr 29 10:30:05 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 1550+20210429.a605b7d:
+  * tuned: whitelist incrementally added polkit action (bsc#1185418)
+
+-------------------------------------------------------------------
 Mon Apr 12 07:42:37 UTC 2021 - wolfgang.frisch@suse.com
 
 - Update to version 1550+20210409.c29362e:

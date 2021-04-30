@@ -1777,4 +1777,17 @@ for 12.3</comment>
   * profiles: add kdenetwork-filesharing (bsc#1175633) (#37)</comment>
     <requestid>884996</requestid>
   </revision>
+  <revision rev="195" vrev="1">
+    <srcmd5>ebf2615dcd677a0e86ab337a7e558bf1</srcmd5>
+    <version>1550+20210430.c408cda</version>
+    <time>1619822786</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20210430.c408cda:
+  * systemd: add newly added inhibit-handle-reboot-key action (bsc#1185468)
+  * whitelist non-functional change in systemd-networkd rules (bsc#1185469)
+
+- Update to version 1550+20210429.a605b7d:
+  * tuned: whitelist incrementally added polkit action (bsc#1185418)</comment>
+    <requestid>889562</requestid>
+  </revision>
 </revisionlist>
