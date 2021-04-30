@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Fri Mar 12 15:40:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.5.5
+  * Added the ability to pause the SurgeScript VM
+  * Added utility macros for checking the SurgeScript version
+    at compile time
+  * Introduced a dedicated module for keeping track of time
+  * Renamed Object.childCount to Object.__childCount
+- Dropped surgescript-no_appdata.patch
+
+-------------------------------------------------------------------
+Fri Apr 24 11:19:23 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
+
+- Initial package (v0.5.4.4)
