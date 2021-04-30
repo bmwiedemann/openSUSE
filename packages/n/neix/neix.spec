@@ -1,7 +1,7 @@
 #
 # spec file for package neix
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           neix
-Version:        0.1.3
+Version:        0.1.4
 Release:        0
 Summary:        News Reader for Text Terminals
 License:        GPL-3.0-or-later
