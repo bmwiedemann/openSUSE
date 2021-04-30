@@ -47,6 +47,8 @@ Patch3:         plymouth-manpages.patch
 Patch4:         plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch
 # PATCH-FIX-OPENSUSE plymouth-disable-fedora-logo.patch qzhao@opensuse.org -- Disable the fedora logo reference which is not in openSUSE.
 Patch6:         plymouth-disable-fedora-logo.patch
+# PATCH-FIX-OPENSUSE plymouth-only_use_fb_for_cirrus_bochs.patch bnc#888590 boo#1172028 bsc#1181913 fvogt@suse.com -- force fb for cirrus and bochs, force drm otherwise. replace removal of framebuffer driver and plymouth-ignore-cirrusdrm.patch with single patch.
+Patch7:         plymouth-only_use_fb_for_cirrus_bochs.patch
 # PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1000:      0001-Add-label-ft-plugin.patch
 # PATCH-FIX-UPSTREAM 0002-Install-label-ft-plugin-into-initrd-if-available.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.

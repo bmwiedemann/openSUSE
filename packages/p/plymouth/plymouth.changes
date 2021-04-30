@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Feb 24 08:25:42 UTC 2021 - Cliff Zhao <qzhao@suse.com>
+
+- Pickup plymouth-only_use_fb_for_cirrus_bochs.patch: Currently our
+  kernel hardware support need this fix, and boo#1172028 will be
+  fix seperately (bnc#888590 boo#1172028 bsc#1181913).
+
+-------------------------------------------------------------------
+Sat Feb 20 08:37:12 UTC 2021 - Cliff Zhao <qzhao@suse.com>
+
+- Disable plymouth-systemd-KillMode-mixed.patch: Temporary disable
+  it, because aarch64 and ppc64le system could not booting in
+  release period, and this is only a enhancement with no harm to
+  rollback (bnc#1177082, bnc#1182145, bnc#1184087).
+
+-------------------------------------------------------------------
 Sat Feb 13 14:25:36 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix broken use of %service_add_post and %service_del_postun. Without
