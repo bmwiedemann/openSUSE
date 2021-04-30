@@ -1,5 +1,5 @@
 #
-# spec file for package boost
+# spec file for package %{base_name}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -389,6 +389,7 @@ Requires:       libboost_mpi%{library_version}-devel
 Requires:       libboost_python-py3-%{library_version}-devel
 %endif
 %endif
+
 %description -n %{package_name}-devel
 This package contains all that is needed to develop/compile
 applications that use the Boost C++ libraries. For documentation see
@@ -834,8 +835,8 @@ Requires:       libboost_mpi%{library_version}-devel = %{version}
 Requires:       libboost_mpi_python-py3-%{library_version} = %{version}
 Requires:       libboost_python-py3-%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
-Conflicts:      libboost_mpi_python3-devel-impl
 Conflicts:      libboost_mpi_python-py3-1_66_0-devel
+Conflicts:      libboost_mpi_python3-devel-impl
 Provides:       libboost_mpi_python3-devel-impl = %{version}
 
 %description -n libboost_mpi_python-py3-%{library_version}-devel
@@ -912,8 +913,8 @@ Group:          Development/Libraries/C and C++
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_python-py3-%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
-Conflicts:      libboost_python3-devel-impl
 Conflicts:      libboost_python-py3-1_66_0-devel
+Conflicts:      libboost_python3-devel-impl
 Provides:       libboost_python3-devel-impl = %{version}
 
 %description -n libboost_python-py3-%{library_version}-devel
@@ -935,8 +936,8 @@ Group:          Development/Libraries/C and C++
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_numpy-py3-%{library_version} = %{version}
 Conflicts:      boost-devel < 1.63
-Conflicts:      libboost_numpy3-devel-impl
 Conflicts:      libboost_numpy-py3-1_66_0-devel
+Conflicts:      libboost_numpy3-devel-impl
 Provides:       libboost_numpy3-devel-impl = %{version}
 
 %description -n libboost_numpy-py3-%{library_version}-devel
@@ -1493,7 +1494,7 @@ install -m 0755 dist/bin/quickbook %{buildroot}%{package_bindir}/quickbook
 %endif
 %endif
 
-%if %{build_base} 
+%if %{build_base}
 
 %if %{without hpc}
 mkdir -p %{buildroot}%{package_bindir}
@@ -1815,11 +1816,13 @@ EOF
 
 %files -n libboost_math%{library_version}
 %{package_libdir}/libboost_math_c99f.so.%{version}
-%{package_libdir}/libboost_math_c99l.so.%{version}
 %{package_libdir}/libboost_math_c99.so.%{version}
 %{package_libdir}/libboost_math_tr1f.so.%{version}
-%{package_libdir}/libboost_math_tr1l.so.%{version}
 %{package_libdir}/libboost_math_tr1.so.%{version}
+%ifnarch ppc64 ppc64le
+%{package_libdir}/libboost_math_c99l.so.%{version}
+%{package_libdir}/libboost_math_tr1l.so.%{version}
+%endif
 
 %files -n libboost_math%{library_version}-devel
 %dir %{package_libdir}/cmake/boost_math_c99*-%{version}
@@ -1827,11 +1830,13 @@ EOF
 %{package_libdir}/cmake/boost_math_c99*-%{version}/*
 %{package_libdir}/cmake/boost_math_tr1*-%{version}/*
 %{package_libdir}/libboost_math_c99f.so
-%{package_libdir}/libboost_math_c99l.so
 %{package_libdir}/libboost_math_c99.so
 %{package_libdir}/libboost_math_tr1f.so
-%{package_libdir}/libboost_math_tr1l.so
 %{package_libdir}/libboost_math_tr1.so
+%ifnarch ppc64 ppc64le
+%{package_libdir}/libboost_math_c99l.so
+%{package_libdir}/libboost_math_tr1l.so
+%endif
 
 %files -n libboost_nowide%{library_version}
 %{package_libdir}/libboost_nowide.so.%{version}

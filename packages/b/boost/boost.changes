@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 28 09:10:23 UTC 2021 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Remove libboost_math_c99l.so* libboost_math_tr1l.so* in spec file
+  for PowerPC compiled w/ BOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS
+
+-------------------------------------------------------------------
 Mon Apr 19 11:20:53 CEST 2021 - aschnell@suse.com
 
 - update to 1.76.0:
