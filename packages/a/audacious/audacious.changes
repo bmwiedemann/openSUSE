@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 26 11:06:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 4.1:
+  * Switching between Qt and GTK modes can now be done right from
+    the Settings window, without editing .desktop files.
+  * New Global Hotkeys plugin for Qt
+  * Album art in the info bar can be disabled
+  * Symbolic links are now followed when adding folders
+  * The currently playing track is displayed in bold font
+  * The playlist drag-and-drop indicator is now more visible
+  * Queue Manager, Equalizer, and Equalizer Presets windows are
+    now dockable
+  * Entry, Track, and Queue Number columns now display abbreviated
+    header text
+  * The Song Info window now displays channel count
+  * The mouse wheel can be used to seek in the Qt UI
+  * The Channel Mixer can now convert 2 to 4 channels
+  * Desktop notifications can have a custom timeout set
+  * Scrobbler submissions now include album artist
+  * Fixed: Cuesheet entries read incorrectly from .m3u playlists
+  * Fixed: Null pointer dereference in Lyrics plugin
+  * Fixed: Album cover image does not display from ID3v2.2 tag
+  * Fixed: Crash in headless mode with status icon enabled
+  * New translations: Albanian, Slovenian
+  * Support for the LyricWiki database, which has shut down,
+    has been removed
+- Now builds with GTK frontend per default
+
+-------------------------------------------------------------------
 Wed Jul 15 18:41:09 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 4.0.5:

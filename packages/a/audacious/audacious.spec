@@ -1,7 +1,7 @@
 #
 # spec file for package audacious
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,14 @@
 #
 
 
-%define aud_plugin_ver_min 4.0
-%define aud_plugin_ver_max 4.0.99
+%define aud_plugin_ver_min 4.1
+%define aud_plugin_ver_max 4.1.99
 %define core_soname 5
 %define qt_soname 2
+%define gtk_soname 5
 %define tag_soname 3
 Name:           audacious
-Version:        4.0.5
+Version:        4.1
 Release:        0
 Summary:        Audio player with graphical UI and library functionality
 License:        BSD-2-Clause
@@ -37,7 +38,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-2.0)
 Requires:       %{name}-plugins%{?_isa} <= %{aud_plugin_ver_max}
 Requires:       %{name}-plugins%{?_isa} >= %{aud_plugin_ver_min}
 Recommends:     %{name}-plugins-extra >= %{aud_plugin_ver_min}
@@ -64,6 +65,13 @@ Requires:       libaudcore%{core_soname} >= %{version}
 %description -n libaudqt%{qt_soname}
 Library from the Audacious audio player.
 
+%package -n libaudgui%{gtk_soname}
+Summary:        GTK GUI implementation of Audacious
+Requires:       libaudcore%{core_soname} >= %{version}
+
+%description -n libaudgui%{gtk_soname}
+Library from the Audacious audio player.
+
 %package -n libaudtag%{tag_soname}
 Summary:        ID3 and APE metadata support for Audacious
 Requires:       libaudcore%{core_soname} >= %{version}
@@ -75,6 +83,7 @@ Library from the Audacious audio player.
 Summary:        Development files for Audacious
 Requires:       libaudcore%{core_soname} = %{version}
 Requires:       libaudqt%{qt_soname} = %{version}
+Requires:       libaudgui%{gtk_soname} = %{version}
 Requires:       libaudtag%{tag_soname} = %{version}
 
 %description devel
@@ -104,6 +113,10 @@ install -Dpm 0644 contrib/%{name}.appdata.xml \
 
 %postun -n libaudqt%{qt_soname} -p /sbin/ldconfig
 
+%post -n libaudgui%{gtk_soname} -p /sbin/ldconfig
+
+%postun -n libaudgui%{gtk_soname} -p /sbin/ldconfig
+
 %post -n libaudtag%{tag_soname} -p /sbin/ldconfig
 
 %postun -n libaudtag%{tag_soname} -p /sbin/ldconfig
@@ -129,6 +142,9 @@ install -Dpm 0644 contrib/%{name}.appdata.xml \
 %files -n libaudqt%{qt_soname}
 %{_libdir}/libaudqt.so.%{qt_soname}*
 
+%files -n libaudgui%{gtk_soname}
+%{_libdir}/libaudgui.so.%{gtk_soname}*
+
 %files -n libaudtag%{tag_soname}
 %{_libdir}/libaudtag.so.%{tag_soname}*
 
@@ -138,6 +154,8 @@ install -Dpm 0644 contrib/%{name}.appdata.xml \
 %{_libdir}/libaudcore.so
 %{_includedir}/libaudqt/
 %{_libdir}/libaudqt.so
+%{_includedir}/libaudgui/
+%{_libdir}/libaudgui.so
 %{_libdir}/libaudtag.so
 %{_libdir}/pkgconfig/%{name}.pc
 
