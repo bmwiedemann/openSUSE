@@ -40,6 +40,8 @@ Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Apps/Evolution
 Source0:        https://download.gnome.org/sources/evolution-data-server/3.40/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM c95a70bfeae25b.patch dimstar@opensuse.org -- Fix build with cmake 3.20.1
+Patch0:         https://gitlab.gnome.org/GNOME/evolution-data-server/-/commit/c95a70bfeae25b.patch
 
 BuildRequires:  cmake
 BuildRequires:  db-devel

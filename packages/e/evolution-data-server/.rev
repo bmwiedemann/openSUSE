@@ -1900,4 +1900,12 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment>GNOME 40 - here we come (forwarded request 880927 from dimstar)</comment>
     <requestid>881099</requestid>
   </revision>
+  <revision rev="222" vrev="2">
+    <srcmd5>5133f5c59da3c798e37914ad8365bf83</srcmd5>
+    <version>3.40.0</version>
+    <time>1619822784</time>
+    <user>dimstar_suse</user>
+    <comment>- Add c95a70bfeae25b.patch: Fix build with cmake 3.20.1. (forwarded request 889500 from dimstar)</comment>
+    <requestid>889504</requestid>
+  </revision>
 </revisionlist>
