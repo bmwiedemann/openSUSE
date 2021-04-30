@@ -1,7 +1,7 @@
 #
 # spec file for package freecell-solver
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,11 @@
 #
 
 
+%bcond_with tests
 %define soversion 0
 %define libname libfreecell-solver
 Name:           freecell-solver
-Version:        6.0.1
+Version:        6.2.0
 Release:        0
 Summary:        A Freecell Solver
 License:        MIT
@@ -33,12 +34,16 @@ BuildRequires:  gmp-devel
 BuildRequires:  gperf
 BuildRequires:  perl-Template-Toolkit
 BuildRequires:  pkgconfig
+BuildRequires:  python3-cffi
 BuildRequires:  python3-pysol-cards
 BuildRequires:  python3-random2
 BuildRequires:  python3-six
 BuildRequires:  cmake(Rinutils)
 BuildRequires:  perl(Moo)
 BuildRequires:  perl(Path::Tiny)
+%if %{with tests}
+BuildRequires:  perl(Task::FreecellSolver::Testing)
+%endif
 
 %description
 Command line programs which can be used to solve Freecell and other card games.
@@ -54,8 +59,8 @@ This package contains the presets used to solve the games.
 
 %package -n %{libname}%{soversion}
 Summary:        Freecell Solver library
-# This dependency is expected
 Group:          System/Libraries
+# This dependency is expected
 Requires:       %{name}-presets = %{version}
 
 %description -n %{libname}%{soversion}
@@ -75,15 +80,22 @@ Development package for the libfreecell-solver library
 
 %build
 %cmake -DBUILD_STATIC_LIBRARY=OFF \
+%if %{without tests}
        -DFCS_WITH_TEST_SUITE=OFF \
+%endif
        -DFCS_AVOID_TCMALLOC=ON
-
 %cmake_build
+
+%if %{with tests}
+%check
+%ctest
+%endif
 
 %install
 %cmake_install
 
 # Fix the rpmlint warnings
+rm -v %{buildroot}%{_datadir}/doc/freecell-solver/INSTALL
 sed -i 's#%{_bindir}/env python3#%{_bindir}/python3#' %{buildroot}%{_bindir}/*.py
 sed -i 's#%{_bindir}/env python3#%{_bindir}/python3#' %{buildroot}%{_bindir}/gen-multiple-pysol-layouts
 sed -i '/^#!\/bin/d' %{buildroot}%{_datadir}/freecell-solver/presets/*.sh
@@ -97,17 +109,14 @@ sed -i '/^#!\/bin/d' %{buildroot}%{_datadir}/freecell-solver/presets/*.sh
 %{_libdir}/libfreecell-solver.so.*
 
 %files devel
-%license COPYING.asciidoc
 %{_includedir}/freecell-solver/
 %{_libdir}/libfreecell-solver.so
 %{_libdir}/pkgconfig/libfreecell-solver.pc
 
 %files -n %{name}-presets
-%license COPYING.asciidoc
 %{_datadir}/freecell-solver/
 
 %files
-%license COPYING.asciidoc
 %doc %{_datadir}/doc/freecell-solver/
 %{_bindir}/dbm-fc-solver
 %{_bindir}/depth-dbm-fc-solver
