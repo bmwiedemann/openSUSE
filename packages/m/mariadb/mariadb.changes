@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 29 12:10:29 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add mariadb-10.5.9-cmake-3.20.patch: Fix syntax error which is
+  exposed by cmake 3.20.
+
+-------------------------------------------------------------------
 Fri Mar 12 22:07:53 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 10.5.9

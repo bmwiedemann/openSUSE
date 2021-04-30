@@ -1,0 +1,19 @@
+Subject: [PATCH] Fix syntax error in cmake 3.20
+
+---
+ cmake/ConnectorName.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: mariadb-10.5.9/libmariadb/cmake/ConnectorName.cmake
+===================================================================
+--- mariadb-10.5.9.orig/libmariadb/cmake/ConnectorName.cmake
++++ mariadb-10.5.9/libmariadb/cmake/ConnectorName.cmake
+@@ -22,7 +22,7 @@ IF(CMAKE_SYSTEM_NAME MATCHES "Windows")
+     SET(MACHINE_NAME "x64")
+   ELSE()
+     SET(MACHINE_NAME "32")
+-  END()
++  ENDIF()
+ ENDIF()
+ 
+ SET(product_name "mysql-connector-c-${CPACK_PACKAGE_VERSION}-${PLATFORM_NAME}${CONCAT_SIGN}${MACHINE_NAME}")
