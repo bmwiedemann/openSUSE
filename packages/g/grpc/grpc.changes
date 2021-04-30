@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 30 11:55:19 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.37.1
+  * Use URI form of address for channelz listen node
+  * Implementation CSDS (xDS Config Dump)
+  * xDS status notifier
+  * Remove CAS loops in global subchannel pool and simplify
+    subchannel refcounting
+
+-------------------------------------------------------------------
 Fri Mar 19 09:02:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.36.4
