@@ -1,7 +1,7 @@
 #
 # spec file for package collectl
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           collectl
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        System status data collection utility
 License:        Artistic-1.0 AND GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            http://collectl.sourceforge.net
+URL:            http://collectl.sourceforge.net
 Source0:        http://sourceforge.net/projects/collectl/files/collectl/%{name}-%{version}/%{name}-%{version}.src.tar.gz
 Source1:        collectl.service
 Source2:        collectl.sysconfig
@@ -58,13 +58,13 @@ install -m 755 -D collectl %{buildroot}%{_bindir}/colmux
 mkdir -p %{buildroot}/%{_sbindir}
 ln -s  %{_bindir}/collectl %{buildroot}/%{_sbindir}/collectl
 install -m 644 -D collectl.conf %{buildroot}/%{_sysconfdir}/collectl.conf
-install -D formatit.ph %{buildroot}%{_datadir}/%{name}/formatit.ph
-install -D lexpr.ph %{buildroot}%{_datadir}/%{name}/lexpr.ph
-install -D gexpr.ph %{buildroot}%{_datadir}/%{name}/gexpr.ph
-install -D misc.ph %{buildroot}%{_datadir}/%{name}/misc.ph
-install -D hello.ph %{buildroot}%{_datadir}/%{name}/hello.ph
-install -D graphite.ph %{buildroot}%{_datadir}/%{name}/graphite.ph
-install -D vmstat.ph %{buildroot}%{_datadir}/%{name}/vmstat.ph
+install -m 644 -D formatit.ph %{buildroot}%{_datadir}/%{name}/formatit.ph
+install -m 644 -D lexpr.ph %{buildroot}%{_datadir}/%{name}/lexpr.ph
+install -m 644 -D gexpr.ph %{buildroot}%{_datadir}/%{name}/gexpr.ph
+install -m 644 -D misc.ph %{buildroot}%{_datadir}/%{name}/misc.ph
+install -m 644 -D hello.ph %{buildroot}%{_datadir}/%{name}/hello.ph
+install -m 644 -D graphite.ph %{buildroot}%{_datadir}/%{name}/graphite.ph
+install -m 644 -D vmstat.ph %{buildroot}%{_datadir}/%{name}/vmstat.ph
 install -m 644 -D %{SOURCE1} %{buildroot}/%{_unitdir}/collectl.service
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rccollectl
 install -m 644 -D %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.collectl

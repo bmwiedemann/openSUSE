@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 14 20:21:44 UTC 2020 - Egbert Eich <eich@suse.com>
+
+- Update to 4.3.1
+  * Bugfix: If playing back a file with -P in its name, collectl
+    incorrectly interprets it as the plot format flag.
+  * Bugfix: incorrectly dividing $dskWaitR and $dskWaitW by $intSecs
+  * Added 'm' switch to vmsum to only report VMs whose instance id is
+    >- this minimum value
+- Fix permissions of non-executible script files.	    
+
+-------------------------------------------------------------------
 Mon Sep 10 12:14:05 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase for summary. Expand description.
