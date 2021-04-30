@@ -1,7 +1,7 @@
 #
 # spec file for package sgtk-menu
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sgtk-menu
-Version:        0.2.0
+Version:        1.4.1
 Release:        0
 Summary:        GTK menu for sway and i3
 License:        GPL-3.0-only
@@ -49,5 +49,9 @@ find . -type f -exec sed -i "s/#!\/usr\/bin\/env python3/#!\/usr\/bin\/python3/"
 %license LICENSE
 %doc README.md
 %{python_sitelib}/*
+%{_bindir}/sgtk-bar
+%{_bindir}/sgtk-dmenu
+%{_bindir}/sgtk-grid
+%{_bindir}/sgtk-menu
 
 %changelog

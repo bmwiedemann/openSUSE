@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Fri Apr 30 16:23:37 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Fix build: Install /usr/bin/sgtk-*
+
+-------------------------------------------------------------------
+Fri Mar 12 20:45:10 UTC 2021 - Martin Rey <mrey@suse.com>
+
+- Update to 1.4.1:
+  * Remove debug line
+
+- Changes from 1.4.0:
+  * Allows to create sgtk-menu and sgtk-dmenu on the basis of the
+    stdin content.
+
+- Changes from 1.3.1:
+  * Some optimization to the loops reading .desktop entries
+  * Python pynput module only imported when needed (not-sway)
+
+- Changes from 1.3.0:
+  * [-p] argument required to display menu & dmenu at the pointer
+    position (not-sway only)
+  * menu & dmenu in not-sway now use Gtk.WindowType.POPUP #45
+  * All commands should work with most WMs and some DEs; for tested
+    environments see the Compatibility chart
+
+- Changes from 1.2.4:
+  * Fallback icon-missing.svg added #41
+  * sgtk-menu [-v | --version] argument added
+
+- Changes from 1.2.3:
+  * Fix to improper sgtk-bar window positioning discovered in FVWM
+
+- Changes from 1.2.2:
+  * Fix sgtk-grid search not working #40
+
+- Changes from 1.2.1:
+  * [-d <delay_ms>] argument introduced to the sgtk-grid command,
+    w/ default value 50 ms; affects i3 only;
+  * several minor fixes to the window behaviour on sway and i3
+
+- Changes from 1.2.0:
+  * sgtk-grid command added
+
+- Changes from 1.1.3:
+  * sgtk-dmenu search method simplified and optimized #36
+
+- Changes from 1.1.2:
+  * sgtk-dmenu command added
+
+- Changes from 1.0.1:
+  * menu: fix to list .desktop entries from all possible data dirs
+  * bar: box containing buttons named #bar for styling purposes
+
+- Changes from 1.0.0:
+  * Dropped dependency on the i3ipc module, which was troublesome
+    at packaging; it means that enum-compat is no longer necessary
+    as well; active screen detection on sway / i3 is now being
+    performed with swaymsg -t get_outputs and i3-msg -t
+    get_workspaces
+  * bar: quit on overlay focus out event
+
+- Changes from 0.9.0:
+  * check_wm() - a new common function in tools.py
+  * display_geometry() function made common, moved to tools.py
+  * Widgets naming simplified, all #item-* names merged into #item
+  * Merged Make packageable. #29
+
+- Changes from 0.8.0:
+  * Added sgtk-bar command to create a button bar on the basis of a
+    json file
+  * Way of sample configs creation altered, more json files added
+  * Method to determine the currently active display on X11 altered
+
+- Changes from 0.7.1:
+  * Protection from accidental misbehaviour on Openbox
+
+- Changes from 0.7.0:
+  * searchbox given #searchbox name for custom styling
+  * Added support for custom .css files
+
+- Changes from 0.5.1:
+  * gravity adjusted to fix broken [-y] offset when menu displayed
+    on top
+  * sgtk-menu should work well as a replacement to Openbox menu
+  * main python file renamed to sgtk-menu.py
+  * -h help updated
+  * pynput module (python-pynput package or equivalent) optional
+    dependency: required for use in tiling WMs
+
+- Changes from 0.5.0:
+  * Fixed crash on i3 caused by swaymsg command missing #19
+  * python-i3ipc dependency from now on obligatory
+  * Added experimental support for floating WMs
+
+- Changes from 0.4.0:
+  * [-b | -c] argument group for --bottom or --center menu
+    placement
+
+- Changes from 0.3.1:
+  * Fixed searching categories longer than args.t entries [sway]
+
+- Changes from 0.3.0:
+  * Handling missing icon file error #9
+  * Basic css styling
+  * Default appendix: invalid argument removed
+  * Fix to XDG Base Directory incorrectly defined #12
+
+- Changes from 0.2.1:
+  * Searching custom menus disabled
+
+-------------------------------------------------------------------
 Sun Jan 12 14:49:24 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - sgtk-menu 0.2.0 for openSUSE
