@@ -158,7 +158,7 @@
   boo#1184776: '20210428'
   boo#1185143: '20210428'
   boo#1185213: '20210428'
-  boo#1185290: '20210427'
+  boo#1185290: '20210428'
   bsc#1158994: '20200323'
   bsc#1159185: '20200103'
   bsc#1170555: '20200427'
@@ -435,8 +435,6 @@ products:
     - x86_64
   - kubic-flannel-image:
     - x86_64
-  - kubic-fluent-bit-image:
-    - x86_64
   - kubic-hello-kubic-image:
     - x86_64
   - kubic-kube-apiserver-image:
@@ -696,9 +694,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20210428'
-published: '20210427'
-publishing: '20210427'
+    <value>failed: ''
+published: '20210428'
+publishing: '20210428'
 testing: '20210428'
 </value>
   </attribute>
