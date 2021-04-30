@@ -18,7 +18,7 @@
 
 %define theme_name openSUSE-Xfce
 Name:           openSUSE-xfce-icon-theme
-Version:        4.16.1+git4.47431fc
+Version:        4.16.1+git5.e82fd05
 Release:        0
 Summary:        openSUSE Xfce Default Icon Theme
 License:        GPL-2.0-only
@@ -32,7 +32,7 @@ BuildArch:      noarch
 Add-on to Adwaita icon theme for Xfce. Inherits from Adwaita
 
 %prep
-%autosetup 
+%autosetup
 
 %build
 # Nothing to build

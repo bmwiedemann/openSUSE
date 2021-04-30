@@ -16,4 +16,22 @@
   * Add temporary fix for missing file-roller icon (forwarded request 878132 from mauriziogalli)</comment>
     <requestid>878356</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>90d69e0663abd5da7db818682b0d20cc</srcmd5>
+    <version>4.16.1+git5.e82fd05</version>
+    <time>1619822810</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.1+git5.e82fd05:
+  * Remove unused entries (boo#1183828)
+- Update to version 4.16.1+git4.47431fc:
+  * Add temporary fix for missing file-roller icon
+- Update to version 4.16.1+git3.8e4f919:
+  * Several icon improvements
+- Update to version 4.16.1+git2.9271140:
+  * Added category icons
+- Update to version 4.16.1+git0.6fe51ec:
+  * Added missing icon for package-update-indicator
+- Version 4.16.0 Initial package (forwarded request 889515 from mauriziogalli)</comment>
+    <requestid>889518</requestid>
+  </revision>
 </revisionlist>
