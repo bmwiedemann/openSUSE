@@ -1,7 +1,7 @@
 #
 # spec file for package 7kaa
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define base_version 2.15
 Name:           7kaa
-Version:        2.15.4p1
+Version:        %{base_version}.4p1
 Release:        0
 Summary:        Seven Kingdoms: Ancient Adversaries
 License:        GPL-2.0-only
@@ -38,7 +39,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libenet)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2)
-Recommends:     %{name}-music >= 20181228
+Recommends:     %{name}-music >= %{base_version}
 
 %description
 Seven Kingdoms made departures from the traditional real-time strategy models
