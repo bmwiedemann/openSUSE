@@ -1,7 +1,7 @@
 #
-# spec file for package libxml2
+# spec file for package python-libxml2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,12 @@ Patch8:         libxml2-Avoid-quadratic-checking-of-identity-constraints.patch
 Patch9:         libxml2-CVE-2019-20388.patch
 # PATCH-FIX-UPSTREAM Fix building against Python 3.9
 Patch10:        libxml2-python39.patch
+# PATCH-FIX-UPSTREAM bsc#1185409 CVE-2021-3516 use-after-free in entities.c:xmlEncodeEntitiesInternal()
+Patch11:        libxml2-CVE-2021-3516.patch
+# PATCH-FIX-UPSTREAM bsc#1185410 CVE-2021-3517 heap-based buffer overflow entities.c:xmlEncodeEntitiesInternal()
+Patch12:        libxml2-CVE-2021-3517.patch
+# PATCH-FIX-UPSTREAM bsc#1185408 CVE-2021-3518 use-after-free in xinclude.c:xmlXIncludeDoProcess()
+Patch13:        libxml2-CVE-2021-3518.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -172,6 +178,9 @@ or manipulate any kind of XML files.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
 
 %build
 %if !%{with python}
@@ -263,6 +272,7 @@ chmod a-x python/tests/*.py
 %dir %{_datadir}/gtk-doc/html
 
 %else
+
 %files %{python_files}
 %doc python/TODO
 %doc python/libxml2class.txt

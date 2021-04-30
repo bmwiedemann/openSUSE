@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 28 16:24:13 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1185408, CVE-2021-3518]
+  * Fix use-after-free in xinclude.c:xmlXIncludeDoProcess()
+  * Add libxml2-CVE-2021-3518.patch
+
+-------------------------------------------------------------------
+Wed Apr 28 16:23:42 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1185410, CVE-2021-3517]
+  * Fix heap-based buffer overflow in entities.c:xmlEncodeEntitiesInternal()
+  * Add libxml2-CVE-2021-3517.patch
+
+-------------------------------------------------------------------
+Wed Apr 28 15:38:46 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: [bsc#1185409, CVE-2021-3516]
+  * Fix use-after-free in entities.c:xmlEncodeEntitiesInternal()
+  * Add libxml2-CVE-2021-3516.patch
+
+-------------------------------------------------------------------
 Thu Feb 23 11:00:00 UTC 2021 - Teemu Mannermaa <wicked@iki.fi>
 
 - Fails to build against Python 3.9:
