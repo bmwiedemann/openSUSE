@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 30 15:02:56 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop the hddtemp plugin: hddtemp is no longer maintained and has
+  been failing to build for a while. Time has come to let go of it.
+- Set pythons to python3: only depend on the primary python3
+  version. There are no python modules built here, thus it is
+  useless to pull in all python3.x versions.
+
+-------------------------------------------------------------------
 Wed Apr  7 23:48:01 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2.1.4

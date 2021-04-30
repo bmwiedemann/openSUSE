@@ -16,7 +16,7 @@
 #
 
 
-%define skip_python2 1
+%define pythons python3
 Name:           bumblebee-status
 Version:        2.1.4
 Release:        0
@@ -120,7 +120,6 @@ Suggests:       bumblebee-status-module-deezer = %{version}
 Suggests:       bumblebee-status-module-docker-ps = %{version}
 Suggests:       bumblebee-status-module-duns = %{version}
 Suggests:       bumblebee-status-module-git = %{version}
-Suggests:       bumblebee-status-module-hddtemp = %{version}
 Suggests:       bumblebee-status-module-layout-xkbswitch = %{version}
 Suggests:       bumblebee-status-module-libvirt = %{version}
 Suggests:       bumblebee-status-module-mocp = %{version}
@@ -297,17 +296,6 @@ BuildArch:      noarch
 
 %description module-git
 Displays information about the git repository.
-
-%package module-hddtemp
-Summary:        Widget to show hard drive temeperature
-Group:          System/Monitoring
-Requires:       %{name} = %{version}
-Requires:       hddtemp
-Supplements:    (%{name} and hddtemp)
-BuildArch:      noarch
-
-%description module-hddtemp
-Fetch hard drive temeperature data from a hddtemp daemon.
 
 %package module-indicator
 Summary:        Widget to show indicator status, for numlock, scrolllock and capslock
@@ -687,8 +675,9 @@ ln -s %{_datadir}/%{name}/%{name} %{buildroot}%{_bindir}/%{name}
 #    * apt (debian)
 #    * arch-update and pacman (only usable on arch linux)
 #    * gpmdp (needs Google Play music player)
-rm bumblebee_status/modules/contrib/{apt,arch_update,arch-update,gpmdp,pacman,portage_status}.py
-rm tests/modules/contrib/test_{apt,arch-update,gpmdp,pacman,portage_status}.py
+#    * hddtemp (no longer maintained)
+rm bumblebee_status/modules/contrib/{apt,arch_update,arch-update,gpmdp,hddtemp,pacman,portage_status}.py
+rm tests/modules/contrib/test_{apt,arch-update,gpmdp,hddtemp,pacman,portage_status}.py
 
 # 3. copy files from source
 cp -a --parents %{name} themes/{,icons/}*.json %{buildroot}%{_datadir}/%{name}
@@ -831,9 +820,6 @@ export PYTHONPATH=%{buildroot}%{_datadir}/%{name}/:%{buildroot}%{_datadir}/%{nam
 
 %files module-git
 %{_datadir}/%{name}/bumblebee/modules/core/git.py
-
-%files module-hddtemp
-%{_datadir}/%{name}/bumblebee/modules/contrib/hddtemp.py
 
 %files module-indicator
 %{_datadir}/%{name}/bumblebee/modules/contrib/indicator.py
