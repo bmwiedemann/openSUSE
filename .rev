@@ -29,4 +29,23 @@ The initial package submission request was: https://build.opensuse.org/request/s
 </comment>
     <requestid>880575</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6f192d2325382f89a1225c9e31df228c</srcmd5>
+    <version>7.0</version>
+    <time>1619822831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to primecount-7.0 (API &amp; ABI are backwards compatible).
+- AC.cpp: New algorithm with improved scaling.
+- AC_libdivide.cpp: New algorithm with improved scaling.
+- B.cpp: Improved scaling due to independent threads.
+- P2.cpp: Improved scaling due to independent threads.
+- LoadBalancerAC.cpp: New thread scheduler for AC algorithm.
+- LoadBalancerS2.cpp: Improve load balancing of S2_hard &amp; D.
+- LoadBalancerP2.cpp: Rewritten, now similar to other load balancers.
+- SegmentedPiTable.cpp: Decrease size to x^(1/4).
+- util.cpp: Improve scaling using larger default alpha_z = 2.
+- imath.hpp: Optimize ilog2() &amp; next_power_of_2() using __builtin_clzll().
+</comment>
+    <requestid>889623</requestid>
+  </revision>
 </revisionlist>

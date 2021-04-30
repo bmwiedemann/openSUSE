@@ -17,7 +17,7 @@
 
 
 Name:           primecount
-Version:        6.4
+Version:        7.0
 Release:        0
 Summary:        Count the number of primes
 License:        BSD-2-Clause
@@ -35,15 +35,15 @@ primecount is a command-line program that counts the primes below an
 integer x ≤ 10^31 using highly optimized implementations of the
 combinatorial prime counting algorithms.
 
-%package -n libprimecount6
+%package -n libprimecount7
 Summary:        C/C++ library for counting prime numbers
 
-%description -n libprimecount6
+%description -n libprimecount7
 This package contains the shared runtime library for primecount.
 
 %package -n libprimecount-devel
 Summary:        Development files for the primecount library
-Requires:       libprimecount6 = %{version}
+Requires:       libprimecount7 = %{version}
 
 %description -n libprimecount-devel
 This package contains the C/C++ header files and the configuration
@@ -65,8 +65,8 @@ files for developing applications that use the primecount library.
 %cmake_install
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n libprimecount6 -p /sbin/ldconfig
-%postun -n libprimecount6 -p /sbin/ldconfig
+%post -n libprimecount7 -p /sbin/ldconfig
+%postun -n libprimecount7 -p /sbin/ldconfig
 
 %check
 %ctest
@@ -76,7 +76,7 @@ files for developing applications that use the primecount library.
 %{_bindir}/primecount
 %{_mandir}/man1/primecount.1%{?ext_man}
 
-%files -n libprimecount6
+%files -n libprimecount7
 %license COPYING
 %{_libdir}/libprimecount.so.*
 
