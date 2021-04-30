@@ -1,0 +1,101 @@
+From 89ddd0707175de0f56b605a45afd9926cb80826f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jaime=20Caama=C3=B1o=20Ruiz?= <jcaamano@suse.com>
+Date: Thu, 29 Apr 2021 18:00:12 +0200
+Subject: [PATCH] Replace deprecated /var/run with /run
+
+---
+ rhel/etc_logrotate.d_openvswitch                            | 4 ++--
+ rhel/usr_lib_systemd_system_openvswitch-ipsec.service       | 2 +-
+ ...sr_lib_systemd_system_ovs-delete-transient-ports.service | 2 +-
+ rhel/usr_lib_systemd_system_ovs-vswitchd.service.in         | 6 +++---
+ rhel/usr_lib_systemd_system_ovsdb-server.service            | 4 ++--
+ 5 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/rhel/etc_logrotate.d_openvswitch b/rhel/etc_logrotate.d_openvswitch
+index eaf1fd5bf..fa6303873 100644
+--- a/rhel/etc_logrotate.d_openvswitch
++++ b/rhel/etc_logrotate.d_openvswitch
+@@ -13,8 +13,8 @@
+     missingok
+     postrotate
+         # Tell Open vSwitch daemons to reopen their log files
+-        if [ -d /var/run/openvswitch ]; then
+-            for ctl in /var/run/openvswitch/*.ctl; do
++        if [ -d /run/openvswitch ]; then
++            for ctl in /run/openvswitch/*.ctl; do
+                 ovs-appctl -t "$ctl" vlog/reopen 2>/dev/null || :
+             done
+         fi
+diff --git a/rhel/usr_lib_systemd_system_openvswitch-ipsec.service b/rhel/usr_lib_systemd_system_openvswitch-ipsec.service
+index 3c4a40138..ec86874cb 100644
+--- a/rhel/usr_lib_systemd_system_openvswitch-ipsec.service
++++ b/rhel/usr_lib_systemd_system_openvswitch-ipsec.service
+@@ -5,7 +5,7 @@ After=openvswitch.service
+ 
+ [Service]
+ Type=forking
+-PIDFile=/var/run/openvswitch/ovs-monitor-ipsec.pid
++PIDFile=/run/openvswitch/ovs-monitor-ipsec.pid
+ ExecStart=/usr/share/openvswitch/scripts/ovs-ctl \
+                     --ike-daemon=strongswan start-ovs-ipsec
+ ExecStop=/usr/share/openvswitch/scripts/ovs-ctl stop-ovs-ipsec
+diff --git a/rhel/usr_lib_systemd_system_ovs-delete-transient-ports.service b/rhel/usr_lib_systemd_system_ovs-delete-transient-ports.service
+index 4cd4d7f57..d4d7b204b 100644
+--- a/rhel/usr_lib_systemd_system_ovs-delete-transient-ports.service
++++ b/rhel/usr_lib_systemd_system_ovs-delete-transient-ports.service
+@@ -2,7 +2,7 @@
+ Description=Open vSwitch Delete Transient Ports
+ After=ovsdb-server.service
+ Before=ovs-vswitchd.service
+-AssertPathExists=/var/run/openvswitch/db.sock
++AssertPathExists=/run/openvswitch/db.sock
+ 
+ [Service]
+ Type=oneshot
+diff --git a/rhel/usr_lib_systemd_system_ovs-vswitchd.service.in b/rhel/usr_lib_systemd_system_ovs-vswitchd.service.in
+index 08355d950..71c49dc59 100644
+--- a/rhel/usr_lib_systemd_system_ovs-vswitchd.service.in
++++ b/rhel/usr_lib_systemd_system_ovs-vswitchd.service.in
+@@ -4,14 +4,14 @@ After=ovsdb-server.service network-pre.target systemd-udev-settle.service
+ Before=network.target network.service
+ Requires=ovsdb-server.service
+ ReloadPropagatedFrom=ovsdb-server.service
+-AssertPathIsReadWrite=/var/run/openvswitch/db.sock
++AssertPathIsReadWrite=/run/openvswitch/db.sock
+ PartOf=openvswitch.service
+ 
+ [Service]
+ Type=forking
+-PIDFile=/var/run/openvswitch/ovs-vswitchd.pid
++PIDFile=/run/openvswitch/ovs-vswitchd.pid
+ Restart=on-failure
+-Environment=XDG_RUNTIME_DIR=/var/run/openvswitch
++Environment=XDG_RUNTIME_DIR=/run/openvswitch
+ EnvironmentFile=/etc/openvswitch/default.conf
+ EnvironmentFile=-/etc/sysconfig/openvswitch
+ EnvironmentFile=-/run/openvswitch.useropts
+diff --git a/rhel/usr_lib_systemd_system_ovsdb-server.service b/rhel/usr_lib_systemd_system_ovsdb-server.service
+index 98338b9df..49dc06e38 100644
+--- a/rhel/usr_lib_systemd_system_ovsdb-server.service
++++ b/rhel/usr_lib_systemd_system_ovsdb-server.service
+@@ -7,7 +7,7 @@ PartOf=openvswitch.service
+ 
+ [Service]
+ Type=forking
+-PIDFile=/var/run/openvswitch/ovsdb-server.pid
++PIDFile=/run/openvswitch/ovsdb-server.pid
+ Restart=on-failure
+ EnvironmentFile=/etc/openvswitch/default.conf
+ EnvironmentFile=-/etc/sysconfig/openvswitch
+@@ -18,7 +18,7 @@ EnvironmentFile=-/run/openvswitch.useropts
+ # OVS_USER_ID from default.conf or sysconfig.
+ ExecStartPre=/usr/bin/rm -f /run/openvswitch.useropts
+ 
+-ExecStartPre=-/usr/bin/chown ${OVS_USER_ID} /var/run/openvswitch /var/log/openvswitch
++ExecStartPre=-/usr/bin/chown ${OVS_USER_ID} /run/openvswitch /var/log/openvswitch
+ ExecStartPre=/bin/sh -c '/usr/bin/echo "OVS_USER_ID=${OVS_USER_ID}" > /run/openvswitch.useropts'
+ ExecStartPre=/bin/sh -c 'if [ "$${OVS_USER_ID/:*/}" != "root" ]; then /usr/bin/echo "OVS_USER_OPT=--ovs-user=${OVS_USER_ID}" >> /run/openvswitch.useropts; fi'
+ ExecStart=/usr/share/openvswitch/scripts/ovs-ctl \
+-- 
+2.26.2
+

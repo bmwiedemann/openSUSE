@@ -68,6 +68,8 @@ Patch1:         0001-Run-openvswitch-as-openvswitch-openvswitch.patch
 Patch2:         0001-Don-t-change-permissions-of-dev-hugepages.patch
 # PATCH-FIX-OPENSUSE: 0001-Use-double-hash-for-OVS_USER_ID-comment.patch
 Patch3:         0001-Use-double-hash-for-OVS_USER_ID-comment.patch
+# PATCH-FIX-OPENSUSE: 0001-Replace-deprecated-var-run-with-run.patch
+Patch4:         0001-Replace-deprecated-var-run-with-run.patch
 #OVN patches
 # PATCH-FIX-OPENSUSE: 0001-Run-ovn-as-openvswitch-openvswitch.patch
 Patch20:        0001-Run-ovn-as-openvswitch-openvswitch.patch
@@ -395,6 +397,7 @@ Devel libraries and headers for Open Virtual Network.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 cd %{ovn_dir}
 %patch20 -p1
 

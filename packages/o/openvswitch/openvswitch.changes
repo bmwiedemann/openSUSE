@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 29 16:05:49 UTC 2021 - Jaime Caamaño Ruiz <jcaamano@suse.com>
+
+- Replace deprecated /var/run with /run (bsc#1185176, bsc#1185177).
+  * 0001-Replace-deprecated-var-run-with-run.patch
+
+-------------------------------------------------------------------
 Fri Feb 12 10:36:03 UTC 2021 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
 - Update openvswitch to 2.14.2. For a list of changes, check
