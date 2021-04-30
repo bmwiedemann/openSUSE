@@ -18,14 +18,13 @@
 
 %define         libname lib%{name}1
 Name:           virglrenderer
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Virgl Rendering library
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://virgil3d.github.io/
 Source0:        https://gitlab.freedesktop.org/virgl/%{name}/-/archive/%{name}-%{version}/%{name}-%{name}-%{version}.tar.gz
-
 BuildRequires:  Mesa-devel
 BuildRequires:  meson >= 0.46
 BuildRequires:  pkgconfig >= 0.9.0
