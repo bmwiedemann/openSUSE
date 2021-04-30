@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 30 02:44:25 UTC 2021 - andreas@andreasvoegele.com
+
+- Use %cmake_build and %license macros.
+- Set License to LGPL-3.0-or-later.
+
+-------------------------------------------------------------------
 Thu Jan 26 13:11:41 UTC 2017 - jengelh@inai.de
 
 - Trim descriptions and fix spelling errors.

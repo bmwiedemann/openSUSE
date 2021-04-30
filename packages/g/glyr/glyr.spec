@@ -1,7 +1,7 @@
 #
 # spec file for package glyr
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,9 +22,9 @@ Name:           glyr
 Version:        1.0.10
 Release:        0
 Summary:        Search engine for music related metadata
-License:        LGPL-3.0
+License:        LGPL-3.0-or-later
 Group:          Productivity/Networking/Web/Utilities
-Url:            https://github.com/sahib/glyr
+URL:            https://github.com/sahib/glyr
 Source0:        https://github.com/sahib/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source100:      baselibs.conf
 # PATCH-FIX-OPENSUSE glyr-date-n-time.patch lazy.kent@opensuse.org -- remove __DATE__ and __TIME__ that causes the package to rebuild when not needed
@@ -97,7 +97,7 @@ Glyr development files.
 
 %build
 %cmake
-make %{?_smp_mflags} VERBOSE=1
+%cmake_build
 
 %install
 %cmake_install
@@ -108,17 +108,19 @@ make %{?_smp_mflags} VERBOSE=1
 
 %files -n glyrc
 %defattr(-,root,root,-)
-%doc AUTHORS COPYING README.textile state_of_providers.txt
+%license COPYING
+%doc AUTHORS README.textile state_of_providers.txt
 %{_bindir}/glyrc
 
 %files -n lib%{name}%{major}
 %defattr(-,root,root,-)
-%doc COPYING
+%license COPYING
 %{_libdir}/*.so.*
 
 %files devel
 %defattr(-,root,root,-)
-%doc AUTHORS COPYING README.textile state_of_providers.txt
+%license COPYING
+%doc AUTHORS README.textile state_of_providers.txt
 %doc src/examples
 %{_includedir}/%{name}/
 %{_libdir}/*.so
