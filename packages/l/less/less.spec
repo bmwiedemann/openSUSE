@@ -17,19 +17,19 @@
 
 
 Name:           less
-Version:        581
+Version:        581.2
 Release:        0
 Summary:        Text File Browser and Pager Similar to more
 License:        BSD-2-Clause OR GPL-3.0-or-later
 Group:          Productivity/Text/Utilities
 URL:            https://www.greenwoodsoftware.com/less/
-Source:         http://www.greenwoodsoftware.com/less/less-%{version}.tar.gz
+Source:         https://www.greenwoodsoftware.com/less/less-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        lessopen.sh
 Source3:        lessclose.sh
 Source4:        lesskey.src
-Source5:        http://www.greenwoodsoftware.com/less/less-%{version}.sig
-Source6:        http://www.greenwoodsoftware.com/less/pubkey.asc#/%{name}.keyring
+Source5:        https://www.greenwoodsoftware.com/less/less-%{version}.sig
+Source6:        https://www.greenwoodsoftware.com/less/pubkey.asc#/%{name}.keyring
 Patch0:         less-429-shell.patch
 Patch2:         less-429-more.patch
 BuildRequires:  automake
