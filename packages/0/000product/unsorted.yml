@@ -2520,7 +2520,6 @@ unsorted:
   - csvprintf 
   - csync 
   - csync2 
-  - ctags 
   - ctdb 
   - ctdb-pcp-pmda 
   - ctris 
@@ -3355,7 +3354,6 @@ unsorted:
   - exo-devel 
   - exodusii-devel 
   - expect-devel 
-  - explain 
   - ext3grep 
   - ext4magic 
   - extra-cmake-modules 
@@ -10401,8 +10399,6 @@ unsorted:
   - libexodus-5_14_0 
   - libexpat-devel: [i586] # devel package of dvd:libexpat1 
   - libexpat-devel-32bit: [x86_64] 
-  - libexplain-devel 
-  - libexplain51 
   - libext2fs-devel 
   - libext2fs-devel-32bit: [x86_64] 
   - libext2fs-devel-static 
@@ -20965,9 +20961,7 @@ unsorted:
   - python3-GitgExt 
   - python3-Hamlib 
   - python3-HepMC 
-  - python3-Keras: [x86_64] 
   - python3-Keras-Preprocessing: [x86_64] 
-  - python3-Keras-examples: [x86_64] 
   - python3-MapProxy 
   - python3-OpenImageIO 
   - python3-PyCBC 
