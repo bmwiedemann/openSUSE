@@ -39,6 +39,7 @@ Source3:        baselibs.conf
 Patch1:         mariadb-connector-c-2.3.1_unresolved_symbols.patch
 Patch3:         absolute_path_fix.patch
 Patch4:         private_library.patch
+Patch5:         mariadb-connector-c-cmake-3.20.patch
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  pkgconfig
@@ -115,6 +116,7 @@ This package holds the development files.
 %patch1 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 # plugin types seems to require no aliasing assumptions
