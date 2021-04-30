@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -51,9 +51,6 @@ rm -f /etc/machine-id \
 # Remove root password
 passwd -d root
 pam-config -a --nullok
-
-# Support SSH into the root user
-# echo 'PermitEmptyPasswords yes' >> /etc/ssh/sshd_config
 
 #======================================
 # Specify default runlevel
@@ -236,6 +233,32 @@ cat > /etc/systemd/system/salt-minion.service.d/30-yomi-config.conf <<-EOF
 	[Service]
 	ExecStartPre=/usr/bin/yomi-config.sh
 EOF
+
+mkdir -p /etc/systemd/system/sshd.service.d/
+
+# Add a systemd overlay for sshd.service, that will allow passwordless
+# login via the kernel command line.
+# TODO: use a different unit with ConditionKernelCommandLine
+cat > /usr/bin/yomi-sshd.sh <<-'EOF'
+	#!/bin/sh
+
+	# Search for the parameter 'ym.sshd=' in /proc/cmdline
+	while IFS= read -r line; do
+	    [[ "$line" =~ ^ym.sshd=.*$ ]] && sshd="${line#ym.sshd=}"
+	done <<< "$(cat /proc/cmdline | xargs -n1)"
+
+	# If the paremeter is "1" or "y", change the config file
+	if [ "$sshd" = "1" ] || [ "$sshd" = "y" ]; then
+	   echo 'PermitEmptyPasswords yes' >> /etc/ssh/sshd_config
+	fi
+EOF
+chmod a+x /usr/bin/yomi-sshd.sh
+
+cat > /etc/systemd/system/sshd.service.d/10-yomi-sshd.conf <<-EOF
+	[Service]
+	ExecStartPre=/usr/bin/yomi-sshd.sh
+EOF
+
 
 systemctl enable salt-minion.service
 

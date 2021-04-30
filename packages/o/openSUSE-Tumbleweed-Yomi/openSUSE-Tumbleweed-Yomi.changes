@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 23 09:20:49 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add parameter "ym.sshd" to add PermitEmptyPasswords
+
+-------------------------------------------------------------------
 Thu Apr  1 11:07:15 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Remove PermitEmptyPasswords from SSH config (Fix bsc#1182744)
