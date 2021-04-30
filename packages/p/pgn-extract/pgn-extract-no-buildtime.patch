@@ -1,8 +1,7 @@
-diff --git a/argsfile.c b/argsfile.c
-index be7b68f..372231c 100644
---- a/argsfile.c
-+++ b/argsfile.c
-@@ -248,8 +248,8 @@ usage_and_exit(void)
+diff -Nur pgn-extract/argsfile.c new/argsfile.c
+--- pgn-extract/argsfile.c	2021-01-27 12:22:02.000000000 +0100
++++ new/argsfile.c	2021-04-29 20:11:53.583307686 +0200
+@@ -259,8 +259,8 @@
      const char **data = help_data;
  
      fprintf(GlobalState.logfile,
@@ -11,5 +10,5 @@ index be7b68f..372231c 100644
 +            "pgn-extract %s: a Portable Game Notation (PGN) manipulator.\n",
 +            CURRENT_VERSION);
      fprintf(GlobalState.logfile,
-             "Copyright (C) 1994-2019 David J. Barnes (d.j.barnes@kent.ac.uk)\n");
+             "Copyright (C) 1994-2021 David J. Barnes (d.j.barnes@kent.ac.uk)\n");
      fprintf(GlobalState.logfile, "%s\n\n", URL);

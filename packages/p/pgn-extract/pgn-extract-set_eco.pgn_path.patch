@@ -1,42 +1,39 @@
-diff --git a/argsfile.c b/argsfile.c
-index aa502cf..be7b68f 100644
---- a/argsfile.c
-+++ b/argsfile.c
-@@ -132,7 +132,7 @@ usage_and_exit(void)
+diff -Nur pgn-extract/argsfile.c new/argsfile.c
+--- pgn-extract/argsfile.c	2021-01-27 12:22:02.000000000 +0100
++++ new/argsfile.c	2021-04-29 20:25:15.746494374 +0200
+@@ -133,7 +133,7 @@
          "-D -- don't output duplicate games.",
          "-eECO_file -- perform ECO classification of games. The optional",
          "      ECO_file should contain a PGN format list of ECO lines",
 -        "      Default is to use eco.pgn from the current directory.",
-+        "      Default is to use /usr/share/pgn-extract/eco.pgn.",
++        "      Default is to use /usr/share/pgn-extract/eco.pgn from the current directory.",
          "-E[123 etc.] -- split output into separate files according to ECO.",
          "      E1 : Produce files from ECO letter, A.pgn, B.pgn, ...",
          "      E2 : Produce files from ECO letter and first digit, A0.pgn, ...",
-diff --git a/help.html b/help.html
-index a94c339..d8ee27d 100644
---- a/help.html
-+++ b/help.html
-@@ -203,7 +203,7 @@ of this file before attempting to use pgn-extract in earnest.
+diff -Nur pgn-extract/help.html new/help.html
+--- pgn-extract/help.html	2021-01-27 12:22:02.000000000 +0100
++++ new/help.html	2021-04-29 20:27:01.234728770 +0200
+@@ -211,7 +211,7 @@
        <li>-D - don't output duplicate extracted game scores.
        <li>-eECO_file - perform ECO classification of games. The optional
              ECO_file should contain a PGN format list of ECO lines
 -            Default is to use eco.pgn from the current directory.
-+            Default is to use /usr/share/pgn-extract/eco.pgn.
++            Default is to use /usr/share/pgn-extract/eco.pgn from the current directory.
        <li>-E[123 etc.] - split output into separate files according to ECO.
          <ul>
              <li>E1 : Produce files from ECO letter, A.pgn, B.pgn, ...
-@@ -1445,7 +1445,7 @@ believe that this was put together by Ewart Shaw, Franz Hemmer and
+@@ -1501,7 +1501,7 @@
  others, to whom appropriate thanks is due.  The -e flag requests
  pgn-extract to add/replace ECO classifications in the games it outputs.
  This is done by firstly reading a file of ECO lines in PGN format
 -(eco.pgn in the current directory, by default) and building a table of
-+(/usr/share/pgn-extract/eco.pgn, by default) and building a table of
++(/usr/share/pgn-extract/eco.pgn in the current directory, by default) and building a table of
  resulting positions. As the games are then read they are looked up in
  the table to find a classification. The deepest match is found.
  A match is allowed within six half moves of the length of the ECO line.
-diff --git a/main.c b/main.c
-index 6847a53..01aff5a 100644
---- a/main.c
-+++ b/main.c
+diff -Nur pgn-extract/main.c new/main.c
+--- pgn-extract/main.c	2021-01-03 14:43:15.000000000 +0100
++++ new/main.c	2021-04-29 20:27:25.909847943 +0200
 @@ -48,7 +48,7 @@
   * a file of ECO classificiations.
   */

@@ -1,7 +1,7 @@
 #
 # spec file for package pgn-extract
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,14 @@
 
 
 Name:           pgn-extract
-Version:        19.04
+Version:        21.02
+%define mver    21-02
 Release:        0
 Summary:        A CLI program for manipulating PGN files
 License:        GPL-3.0-or-later
 Group:          Amusements/Games/Board/Chess
 URL:            https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/
-Source0:        https://www.cs.kent.ac.uk/~djb/%{name}/%{name}-19-04.tgz
+Source0:        https://www.cs.kent.ac.uk/~djb/pgn-extract/pgn-extract-%{mver}.tgz
 Source100:      %{name}.changes
 # PATCH-FIX-OPENSUSE pgn-extract-set_eco.pgn_path.patch
 Patch0:         pgn-extract-set_eco.pgn_path.patch
@@ -61,7 +62,6 @@ install -D -m 0644 eco.pgn %{buildroot}%{_datadir}/%{name}/eco.pgn
 %license COPYING
 %doc help.html
 %{_bindir}/%{name}
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/eco.pgn
+%{_datadir}/%{name}
 
 %changelog

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr 29 17:48:28 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 20.02
+  * Added --linenumbers
+  * Added --fixtagstrings.
+  * Date matches with -t and -T extended to match on month and day
+    as well as year.
+  * Added --wtm and --btm.
+  * Added limited relational TimeControl matching with -t
+  * Added missing 'ep' for en passant moves with -Wxlalg and -Wxolalg.
+  * Bug fix to eliminate illegal pawn moves in long algebraic notation.
+  * Added --startply.
+  * Added --fenpattern, --fenpatterni, --materialy and --materialz
+    as command-line arguments.
+  * Delete NAGs appearing before the first move of a game.
+- Rebase patches:
+  * pgn-extract-no-buildtime.patch
+  * pgn-extract-set_eco.pgn_path.patch
+
+-------------------------------------------------------------------
 Sun Mar 29 16:15:33 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 19.04:
