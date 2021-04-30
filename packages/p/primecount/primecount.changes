@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 30 16:52:00 UTC 2021 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-7.0 (API & ABI are backwards compatible).
+- AC.cpp: New algorithm with improved scaling.
+- AC_libdivide.cpp: New algorithm with improved scaling.
+- B.cpp: Improved scaling due to independent threads.
+- P2.cpp: Improved scaling due to independent threads.
+- LoadBalancerAC.cpp: New thread scheduler for AC algorithm.
+- LoadBalancerS2.cpp: Improve load balancing of S2_hard & D.
+- LoadBalancerP2.cpp: Rewritten, now similar to other load balancers.
+- SegmentedPiTable.cpp: Decrease size to x^(1/4).
+- util.cpp: Improve scaling using larger default alpha_z = 2.
+- imath.hpp: Optimize ilog2() & next_power_of_2() using __builtin_clzll().
+
+-------------------------------------------------------------------
 Mon Mar 22 16:42:00 UTC 2021 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-6.4.
