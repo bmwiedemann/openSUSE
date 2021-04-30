@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 30 07:46:05 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 6d8f7d303e.patch: Fix build with cmake 3.20.1.
+
+-------------------------------------------------------------------
 Sat Mar 20 08:27:18 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.40.0:

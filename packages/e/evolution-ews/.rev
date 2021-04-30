@@ -940,4 +940,12 @@
     <comment>GNOME 40 - here we come (forwarded request 880928 from dimstar)</comment>
     <requestid>881101</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>5acf14c332b846fd7083d0bd6c653c62</srcmd5>
+    <version>3.40.0</version>
+    <time>1619822783</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 6d8f7d303e.patch: Fix build with cmake 3.20.1. (forwarded request 889499 from dimstar)</comment>
+    <requestid>889503</requestid>
+  </revision>
 </revisionlist>
