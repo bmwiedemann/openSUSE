@@ -225,4 +225,12 @@
   * netns: fix &lt;https://github.com/svinota/pyroute2/pull/733&gt;</comment>
     <requestid>834879</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>81754d0de903b75cf894aab3c335a4aa</srcmd5>
+    <version>0.5.18</version>
+    <time>1619822807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889497</requestid>
+  </revision>
 </revisionlist>
