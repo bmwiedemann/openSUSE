@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 11 00:17:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to current git version
+- Dropped upstream merged opl.patch 
+
+-------------------------------------------------------------------
 Sun Sep  6 17:38:16 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Add opl.patch to fix the build with GCC 10

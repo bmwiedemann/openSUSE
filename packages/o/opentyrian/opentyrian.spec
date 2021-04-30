@@ -1,7 +1,7 @@
 #
 # spec file for package opentyrian
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,24 @@
 
 
 Name:           opentyrian
-Version:        2.1.20130907
+# Upstream haven not tagged a version for more than seven years now.
+# There quite many bugfixes in the git version and it seems upstreams
+# develops it as rolling release.
+Version:        2.1.20201203
 Release:        0
 Summary:        An arcade-style vertical scrolling shooter
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://github.com/opentyrian/opentyrian
-Source:         https://github.com/opentyrian/opentyrian/archive/v2.1.20130907.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 # PATCH-FEATURE-UPSTREAM https://github.com/opentyrian/opentyrian/pull/13
 Patch0:         appdata.patch
-# PATCH-FIX-UPSTREAM https://github.com/opentyrian/opentyrian/commit/962ee8fc46ca51691bde1c8c1022dacbe8a037ed
-Patch1:         opl.patch
-BuildRequires:  SDL-devel
-BuildRequires:  SDL_mixer-devel
-BuildRequires:  SDL_net-devel
-BuildRequires:  boost-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(SDL2_net)
+BuildRequires:  pkgconfig(sdl2)
 
 %description
 OpenTyrian is a port of the DOS shoot-em-up Tyrian. Thanks to Jason Emery,
@@ -52,36 +51,42 @@ to fight Microsol and save the galaxy.
 chmod -x CREDITS
 
 %build
-make %{?_smp_mflags} STRIP=/bin/true MAKECMDGOALS=release
+make %{?_smp_mflags} all \
+  STRIP=/bin/true \
+  prefix="%{_prefix}" \
+  gamesdir="%{_datadir}" \
+  OPENTYRIAN_VERSION=%{version}
 
 %install
-# install binaries
-install -D -m 0755 opentyrian %{buildroot}%{_libexecdir}/%{name}/opentyrian
-# install wrapper
-mkdir -p %{buildroot}%{_bindir}
-cat <<EOT >>%{buildroot}%{_bindir}/%{name}
-#!/bin/sh
-cd %{_datadir}/opentyrian
-%{_libexecdir}/%{name}/opentyrian
-cd -
-EOT
-chmod +x %{buildroot}%{_bindir}/%{name}
-# install man page
-install -D -m 0644 linux/man/opentyrian.6 %{buildroot}%{_mandir}/man6/opentyrian.6
-# install icon and desktop file
-for res in 128 48 32 24 22; do
-  install -D -m 0644 linux/icons/tyrian-$res.png "%{buildroot}%{_datadir}/icons/hicolor/$res"x"$res/apps/opentyrian.png"
+make %{?_smp_mflags} install \
+  DESTDIR="%{buildroot}" \
+  docdir="%{_docdir}/%{name}" \
+  prefix="%{_prefix}" \
+  gamesdir="%{_datadir}" \
+  OPENTYRIAN_VERSION=%{version}
+# Gamedata directory (for the Freeware Tyrian21 files
+mkdir -p %{buildroot}%{_datadir}/%{name}
+
+# Install .desktop file and appdata
+cd linux
+install -D %{name}.appdata.xml %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+%suse_update_desktop_file -i %{name}
+for size in 128 24 32 48; do
+  install -D icons/tyrian-$size.png "%{buildroot}%{_datadir}/icons/hicolor/${size}x$size/apps/%{name}.png"
 done
-install -D -m 0644 linux/opentyrian.desktop %{buildroot}%{_datadir}/applications/opentyrian.desktop
-install -D -m 0644 linux/opentyrian.appdata.xml %{buildroot}%{_datadir}/appdata/opentyrian.appdata.xml
-%suse_update_desktop_file %{name}
-%fdupes -s %{buildroot}
+%fdupes -s %{buildroot}%{_datadir}
+
+%post
+echo "For running %{name} you have to download the Tyrian Freeware game assets.
+They can be be found here: https://www.camanis.net/tyrian/tyrian21.zip
+Unpack them and put them into %{_datadir}/%{name}
+"
 
 %files
 %license COPYING
-%doc CREDITS NEWS README
+%doc %{_docdir}/%{name}
 %{_bindir}/%{name}
-%{_libexecdir}/%{name}/
+%dir %{_datadir}/%{name}
 %{_mandir}/man6/*
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/applications/%{name}.desktop
