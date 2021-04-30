@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-textanalytics
-Version:        5.1.0b3
+Version:        5.1.0b6
 Release:        0
 Summary:        Azure Text Analytics client library for Python
 License:        MIT
@@ -38,9 +38,9 @@ Requires:       python-azure-ai-nspkg >= 1.0.0
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.4.0
+Requires:       python-azure-core >= 1.8.2
 Requires:       python-msrest >= 0.6.0
-Requires:       python-six >= 1.6
+Requires:       python-six >= 1.11.0
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 %python_subpackages
