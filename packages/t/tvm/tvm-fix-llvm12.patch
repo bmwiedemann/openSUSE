@@ -1,0 +1,168 @@
+From 388c22637d4b13611fa4105f8a5f709c5272d277 Mon Sep 17 00:00:00 2001
+From: Krzysztof Parzyszek <kparzysz@quicinc.com>
+Date: Mon, 19 Oct 2020 17:21:03 -0500
+Subject: [PATCH 1/2] [LLVM] Create fixed vector size according to latest
+ LLVM12+ changes
+
+The vector handling code in LLVM keeps evolving to accommodate scalable
+vectors. As a result, code related to vector sizes changes quite often.
+---
+ src/target/llvm/codegen_llvm.cc | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/target/llvm/codegen_llvm.cc b/src/target/llvm/codegen_llvm.cc
+index cb04e6b8055b..40ec2cc9e0b8 100644
+--- a/src/target/llvm/codegen_llvm.cc
++++ b/src/target/llvm/codegen_llvm.cc
+@@ -475,7 +475,9 @@ llvm::Value* CodeGenLLVM::CreateBroadcast(llvm::Value* value, int lanes) {
+   llvm::Constant* undef = llvm::UndefValue::get(type);
+   llvm::Constant* zero = ConstInt32(0);
+   value = builder_->CreateInsertElement(undef, value, zero);
+-#if TVM_LLVM_VERSION >= 110
++#if TVM_LLVM_VERSION >= 120
++  llvm::Constant* mask = llvm::ConstantVector::getSplat(llvm::ElementCount::getFixed(lanes), zero);
++#elif TVM_LLVM_VERSION >= 110
+   llvm::Constant* mask =
+       llvm::ConstantVector::getSplat(llvm::ElementCount(lanes, /*Scalable=*/false), zero);
+ #else
+From ec881f6ee2247c29a6b9480c34461928cd84e48c Mon Sep 17 00:00:00 2001
+From: Krzysztof Parzyszek <kparzysz@quicinc.com>
+Date: Mon, 19 Oct 2020 18:19:10 -0500
+Subject: [PATCH 1/2] [LLVM] Avoid warnings when compiling getNumElements with
+ LLVM12+
+
+Extract the element-count code into GetVectorNumElements and make it
+compile cleanly with all LLVM versions.
+---
+ src/target/llvm/codegen_llvm.cc   | 18 +++++++++---------
+ src/target/llvm/codegen_llvm.h    | 14 ++++++++++++++
+ src/target/llvm/codegen_x86_64.cc |  6 +++++-
+ 3 files changed, 28 insertions(+), 10 deletions(-)
+
+diff --git a/src/target/llvm/codegen_llvm.cc b/src/target/llvm/codegen_llvm.cc
+index 40ec2cc9e0b8..9bc56dc91458 100644
+--- a/src/target/llvm/codegen_llvm.cc
++++ b/src/target/llvm/codegen_llvm.cc
+@@ -487,7 +487,7 @@ llvm::Value* CodeGenLLVM::CreateBroadcast(llvm::Value* value, int lanes) {
+ }
+ 
+ llvm::Value* CodeGenLLVM::CreateVecSlice(llvm::Value* vec, int begin, int extent) {
+-  int num_elems = llvm::cast<llvm::VectorType>(vec->getType())->getNumElements();
++  int num_elems = GetVectorNumElements(vec);
+   if (extent == num_elems && begin == 0) return vec;
+   CHECK(begin >= 0 && extent <= num_elems) << "Slicing out of bound!\n";
+   std::vector<llvm::Constant*> indices;
+@@ -503,7 +503,7 @@ llvm::Value* CodeGenLLVM::CreateVecSlice(llvm::Value* vec, int begin, int extent
+ }
+ 
+ llvm::Value* CodeGenLLVM::CreateVecFlip(llvm::Value* vec) {
+-  int num_elems = llvm::cast<llvm::VectorType>(vec->getType())->getNumElements();
++  int num_elems = GetVectorNumElements(vec);
+ #if TVM_LLVM_VERSION >= 110
+   std::vector<int> indices;
+ #else
+@@ -517,7 +517,7 @@ llvm::Value* CodeGenLLVM::CreateVecFlip(llvm::Value* vec) {
+ 
+ llvm::Value* CodeGenLLVM::CreateVecPad(llvm::Value* vec, int target_lanes) {
+   llvm::Value* mask = llvm::UndefValue::get(DTypeToLLVMType(DataType::Int(32, target_lanes)));
+-  int num_elems = llvm::cast<llvm::VectorType>(vec->getType())->getNumElements();
++  int num_elems = GetVectorNumElements(vec);
+   if (num_elems == target_lanes) return vec;
+   CHECK_LT(num_elems, target_lanes);
+   for (int i = 0; i < num_elems; ++i) {
+@@ -531,15 +531,15 @@ llvm::Value* CodeGenLLVM::CreateVecConcat(std::vector<llvm::Value*> vecs) {
+   int total_lanes = 0;
+ 
+   for (llvm::Value* v : vecs) {
+-    total_lanes += llvm::cast<llvm::VectorType>(v->getType())->getNumElements();
++    total_lanes += GetVectorNumElements(v);
+   }
+   while (vecs.size() > 1) {
+     std::vector<llvm::Value*> new_vecs;
+     for (size_t i = 0; i < vecs.size() - 1; i += 2) {
+       llvm::Value* lhs = vecs[i];
+       llvm::Value* rhs = vecs[i + 1];
+-      const size_t lhs_lanes = llvm::cast<llvm::VectorType>(lhs->getType())->getNumElements();
+-      const size_t rhs_lanes = llvm::cast<llvm::VectorType>(rhs->getType())->getNumElements();
++      const size_t lhs_lanes = GetVectorNumElements(lhs);
++      const size_t rhs_lanes = GetVectorNumElements(rhs);
+       if (lhs_lanes < rhs_lanes) {
+         lhs = CreateVecPad(lhs, rhs_lanes);
+       } else if (rhs_lanes < lhs_lanes) {
+@@ -843,16 +843,16 @@ llvm::Value* CodeGenLLVM::CreateIntrinsic(const CallNode* op) {
+     return builder_->CreateFCmpUNO(a, a);
+   } else if (op->op.same_as(builtin::vectorlow())) {
+     llvm::Value* v = MakeValue(op->args[0]);
+-    int l = llvm::cast<llvm::VectorType>(v->getType())->getNumElements();
++    int l = GetVectorNumElements(v);
+     return CreateVecSlice(v, 0, l / 2);
+   } else if (op->op.same_as(builtin::vectorhigh())) {
+     llvm::Value* v = MakeValue(op->args[0]);
+-    int l = llvm::cast<llvm::VectorType>(v->getType())->getNumElements();
++    int l = GetVectorNumElements(v);
+     return CreateVecSlice(v, l / 2, l / 2);
+   } else if (op->op.same_as(builtin::vectorcombine())) {
+     llvm::Value* v0 = MakeValue(op->args[0]);
+     llvm::Value* v1 = MakeValue(op->args[1]);
+-    int num_elems = llvm::cast<llvm::VectorType>(v0->getType())->getNumElements() * 2;
++    int num_elems = GetVectorNumElements(v0) * 2;
+ #if TVM_LLVM_VERSION >= 110
+     std::vector<int> indices;
+ #else
+diff --git a/src/target/llvm/codegen_llvm.h b/src/target/llvm/codegen_llvm.h
+index 3b0ce10534fd..78eb5e2dcac7 100644
+--- a/src/target/llvm/codegen_llvm.h
++++ b/src/target/llvm/codegen_llvm.h
+@@ -242,6 +242,11 @@ class CodeGenLLVM : public ExprFunctor<llvm::Value*(const PrimExpr&)>,
+    */
+   llvm::Function* GetIntrinsicDecl(llvm::Intrinsic::ID id, llvm::Type* ret_type,
+                                    llvm::ArrayRef<llvm::Type*> arg_types);
++  /*!
++   * \brief Get the number of elements in the given vector value.
++   * \param vec The value, must be of a vector type.
++   */
++  inline int GetVectorNumElements(llvm::Value* vec);
+   // initialize the function state.
+   void InitFuncState();
+   // Get alignment given index.
+@@ -348,6 +353,15 @@ class CodeGenLLVM : public ExprFunctor<llvm::Value*(const PrimExpr&)>,
+    */
+   static std::unique_ptr<DebugInfo> CreateDebugInfo(llvm::Module* module);
+ };
++
++inline int CodeGenLLVM::GetVectorNumElements(llvm::Value* vec) {
++#if TVM_LLVM_VERSION >= 120
++  return llvm::cast<llvm::FixedVectorType>(vec->getType())->getNumElements();
++#else
++  return llvm::cast<llvm::VectorType>(vec->getType())->getNumElements();
++#endif
++}
++
+ }  // namespace codegen
+ }  // namespace tvm
+ #endif  // LLVM_VERSION
+diff --git a/src/target/llvm/codegen_x86_64.cc b/src/target/llvm/codegen_x86_64.cc
+index f3362fb0f1eb..a71a0226c958 100644
+--- a/src/target/llvm/codegen_x86_64.cc
++++ b/src/target/llvm/codegen_x86_64.cc
+@@ -117,7 +117,11 @@ llvm::Value* CodeGenX86_64::CallVectorIntrin(llvm::Intrinsic::ID id, size_t intr
+                                              llvm::Type* result_ty,
+                                              const std::vector<llvm::Value*>& args) {
+   llvm::Function* f = llvm::Intrinsic::getDeclaration(module_.get(), id, {});
++#if TVM_LLVM_VERSION >= 120
++  size_t num_elems = llvm::cast<llvm::FixedVectorType>(result_ty)->getNumElements();
++#else
+   size_t num_elems = llvm::cast<llvm::VectorType>(result_ty)->getNumElements();
++#endif
+   if (intrin_lanes == num_elems) {
+     return builder_->CreateCall(f, args);
+   }
+@@ -130,7 +134,7 @@ llvm::Value* CodeGenX86_64::CallVectorIntrin(llvm::Intrinsic::ID id, size_t intr
+     std::vector<llvm::Value*> split_args;
+     for (const auto& v : args) {
+       if (v->getType()->isVectorTy()) {
+-        CHECK_EQ(llvm::cast<llvm::VectorType>(v->getType())->getNumElements(), num_elems);
++        CHECK_EQ(GetVectorNumElements(v), num_elems);
+         split_args.push_back(CreateVecSlice(v, i, intrin_lanes));
+       } else {
+         split_args.push_back(v);

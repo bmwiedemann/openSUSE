@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 30 09:08:14 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport patches to fix build on Tumbleweed with llvm12:
+  * tvm-fix-llvm12.patch
+
+-------------------------------------------------------------------
 Tue Feb 16 08:19:41 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - NEP 29: Last minorversion bump deprecated Python 3.6

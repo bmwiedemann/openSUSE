@@ -46,6 +46,8 @@ Patch0:         lib-finder-python-cmake.patch
 Patch1:         tvm-fix-openblas.patch
 # PATCH-FIX-UPSTREAM - https://github.com/apache/tvm/issues/7319
 Patch2:         tvm-fix-catch.patch
+# PATCH-FIX-UPSTREAM - https://github.com/apache/tvm/pull/6717 https://github.com/apache/tvm/pull/6738
+Patch3:         tvm-fix-llvm12.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module decorator}
@@ -98,8 +100,8 @@ Summary:        TVM command line driver
 Requires:       libtvm = %{version}
 Requires:       python3-scipy
 Requires:       python3-typed-ast
-Recommends:     python3-onnx
 Recommends:     python3-Pillow
+Recommends:     python3-onnx
 
 %description -n tvmc
 TVMC is a tool that exposes TVM features such as auto-tuning, compiling,
