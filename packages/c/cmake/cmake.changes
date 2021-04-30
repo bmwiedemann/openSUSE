@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Apr 29 07:33:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add 53d523f2e11839bcbbdc9288b4f71c764d0efd5c.diff to fix automoc
+  race 
+
+-------------------------------------------------------------------
+Fri Apr  9 16:10:18 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cmake 3.20.1:
+  * Fix FindIntl to use sigle Intl_IS_BUILT_IN check
+
+-------------------------------------------------------------------
+Tue Mar 23 21:59:51 UTC 2021 - Christoph G <foss@grueninger.de>
+
+- Update to 3.20.0
+  * The “cmake_path()” command was added for operations on
+    filesystem paths.
+  * The “target_sources()” command now supports targets created
+    by the “add_custom_target()” command.
+  * The “ExternalProject” module “ExternalProject_Add()” function
+    gained a “CONFIGURE_HANDLED_BY_BUILD” option.
+  * “ctest(1)” gained a “–test-dir” option to specify the directory
+    in which to look for tests.
+
+-------------------------------------------------------------------
 Tue Mar 16 00:01:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.19.7:

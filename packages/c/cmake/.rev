@@ -1684,4 +1684,26 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     See the :variable:`CMAKE_VS_PLATFORM_TOOLSET_VERSION` variable.</comment>
     <requestid>879322</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>20ec54ebdfa6d7c0b5019348907e3124</srcmd5>
+    <version>3.20.1</version>
+    <time>1619822769</time>
+    <user>dimstar_suse</user>
+    <comment>- add 53d523f2e11839bcbbdc9288b4f71c764d0efd5c.diff to fix automoc
+  race 
+
+- cmake 3.20.1:
+  * Fix FindIntl to use sigle Intl_IS_BUILT_IN check
+
+- Update to 3.20.0
+  * The “cmake_path()” command was added for operations on
+    filesystem paths.
+  * The “target_sources()” command now supports targets created
+    by the “add_custom_target()” command.
+  * The “ExternalProject” module “ExternalProject_Add()” function
+    gained a “CONFIGURE_HANDLED_BY_BUILD” option.
+  * “ctest(1)” gained a “–test-dir” option to specify the directory
+    in which to look for tests.</comment>
+    <requestid>889196</requestid>
+  </revision>
 </revisionlist>

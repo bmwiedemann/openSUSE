@@ -2,7 +2,7 @@ Index: b/Modules/FindPNG.cmake
 ===================================================================
 --- a/Modules/FindPNG.cmake
 +++ b/Modules/FindPNG.cmake
-@@ -52,11 +52,15 @@
+@@ -54,12 +54,16 @@
  find_package(ZLIB ${_FIND_ZLIB_ARG})
  
  if(ZLIB_FOUND)
@@ -13,6 +13,7 @@ Index: b/Modules/FindPNG.cmake
 +  endforeach()
 +  find_path(PNG_PNG_INCLUDE_DIR png.h PATH_SUFFIXES include/libpng ${_PNG_INCLUDE_SUFFIXES})
 +  unset(_PNG_INCLUDE_SUFFIXES)
+   mark_as_advanced(PNG_PNG_INCLUDE_DIR)
  
    list(APPEND PNG_NAMES png libpng)
    unset(PNG_NAMES_DEBUG)
