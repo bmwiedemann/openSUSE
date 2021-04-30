@@ -110,4 +110,13 @@
     <comment>Push GNOME 3.38</comment>
     <requestid>847245</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0cd3aa839a878861ecb5065d985b32c5</srcmd5>
+    <version>1.8.1</version>
+    <time>1619822782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.1:
+  + Updated translations.</comment>
+    <requestid>889364</requestid>
+  </revision>
 </revisionlist>

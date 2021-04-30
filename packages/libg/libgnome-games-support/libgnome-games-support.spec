@@ -1,7 +1,7 @@
 #
 # spec file for package libgnome-games-support
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %define sover 3
 
 Name:           libgnome-games-support
-Version:        1.7.1
+Version:        1.8.1
 Release:        0
 Summary:        Internal support library for GNOME games
 License:        LGPL-3.0-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://git.gnome.org/browse/libgnome-games-support/
-Source0:        https://download.gnome.org/sources/libgnome-games-support/1.7/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libgnome-games-support/1.8/%{name}-%{version}.tar.xz
+Source1:        https://download.gnome.org/sources/libgnome-games-support/1.8/%{name}-%{version}.sha256sum
 
 BuildRequires:  intltool >= 0.50.2
 BuildRequires:  meson
