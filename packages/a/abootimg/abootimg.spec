@@ -1,7 +1,7 @@
 #
 # spec file for package abootimg
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,12 +20,12 @@ Name:           abootimg
 Version:        0.6
 Release:        0
 Summary:        Android boot image manipulator
-License:        GPL-2.0+ and Apache-2.0
+License:        Apache-2.0 AND GPL-2.0-or-later
 Group:          System/Boot
-Url:            http://gitorious.org/ac100/abootimg
+URL:            https://github.com/ggrandou/abootimg
 Source:         %{name}.tar.bz2
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(blkid)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Android boot image manipulator. It can create/update/unpack boot.img - boot
@@ -36,8 +36,8 @@ file used by Android OS.
 
 %build
 # First make clean as a binary already exists in the tarball
-make %{?_smp_mflags} clean
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+%make_build clean
+%make_build CFLAGS="%{optflags}"
 
 %install
 install -D -m 0755 abootimg %{buildroot}/%{_bindir}/abootimg
@@ -46,10 +46,9 @@ install -D -m 0755 abootimg-pack-initrd %{buildroot}/%{_bindir}/abootimg-pack-in
 install -D -m 0644 debian/abootimg.1 %{buildroot}/%{_mandir}/man1/abootimg.1
 
 %files
-%defattr(-,root,root)
 %{_bindir}/abootimg
 %{_bindir}/abootimg-pack-initrd
 %{_bindir}/abootimg-unpack-initrd
-%{_mandir}/man1/abootimg.1%{ext_man}
+%{_mandir}/man1/abootimg.1%{?ext_man}
 
 %changelog
