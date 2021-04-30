@@ -1,7 +1,7 @@
 #
 # spec file for package nautilus-terminal
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,67 +12,44 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define have_lang 0
 Name:           nautilus-terminal
-Version:        1.0
+Version:        3.5.0
 Release:        0
-Summary:        Integrated Terminal for the Nautilus File Browser
-License:        GPL-3.0-or-later
-Group:          System/GUI/GNOME
-URL:            http://software.flogisoft.com/nautilus-terminal/
-Source:         %{name}_%{version}_src.tar.gz
-# PATCH-FIX-UPSTREAM nautilus-terminal-vte2.91.patch dimstar@opensuse.org -- Fix usage with Vte 2.91.
-Patch0:         nautilus-terminal-vte2.91.patch
-# For directory ownership:
-BuildRequires:  gobject-introspection
+Summary:        A terminal embedded in Nautilus, the GNOME's file browser
+License:        GPL-3.0-only
+URL:            https://github.com/flozz/nautilus-terminal
+Source:         https://files.pythonhosted.org/packages/source/n/nautilus-terminal/nautilus_terminal-%{version}.tar.gz
+BuildRequires:  python3-psutil >= 5.6.6
+BuildRequires:  python3-setuptools
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python-nautilus-common-devel
-BuildRequires:  vte-devel
+BuildRequires:  pkgconfig(glib-2.0)
 Requires:       nautilus
-Recommends:     python-xdg
+Requires:       python3-psutil >= 5.6.6
 BuildArch:      noarch
-%if %{have_lang}
-%endif
 
 %description
 Nautilus Terminal is an integrated terminal for the Nautilus file browser.
 
-%if %{have_lang}
-%lang_package
-%endif
-
 %prep
-%setup -q -n %{name}_%{version}_src
-if pkg-config --exists vte-2.91; then
-# patch0 only applies when built against Vte 2.91
-%patch0 -p1
-fi
-sed -i '
-s:%{_datadir}/doc:%{_docdir}/%{name}:
-s:%{_prefix}/share:%{_datadir}:
-s:%{_prefix}/lib:%{_libdir}:
-' install.sh
+%setup -q -n nautilus_terminal-%{version}
 
 %build
+%python3_build
 
 %install
-./install.sh --package %{buildroot}
-%if %{have_lang}
-%find_lang %{name}
-%endif
+%python3_install
+%fdupes %{buildroot}%{python3_sitelib}
 
 %files
-%doc %{_docdir}/%{name}/
-%{_datadir}/nautilus-python/extensions/nautilus_terminal.py
-%dir %{_datadir}/nautilus-python
-%dir %{_datadir}/nautilus-python/extensions
-%{_datadir}/nautilus-terminal/
-
-%if %{have_lang}
-%files lang -f %{name}.lang
-%endif
+%doc README.rst
+%{python3_sitelib}/nautilus_terminal*
+%{_datadir}/glib-2.0/schemas/org.flozz.nautilus-terminal.gschema.xml
+%{_datadir}/nautilus-python/extensions/nautilus_terminal_extension.py
 
 %changelog

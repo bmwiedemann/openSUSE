@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 26 18:51:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.5
+  + nautilus-terminal was completly rewritten in python (> 3.6)
+  + Embed a Terminal in each Nautilus tab / window
+  + Follows the navigation: if you navigate in Nautilus,
+    the cd command is automatically executed in the terminal
+  + Can be displayed / hidden using the F4 key
+  + Configurable: font, background and text color, terminal
+    position (displayed at top or at bottom of the windows)
+  + Support for copy / paste through contextual menu and
+    Ctrl+Shift+C / Ctrl+Shift+V
+  + Supports drag & drop of file on the terminal
+- Dropped outdated  nautilus-terminal-vte2.91.patch
+- Modified build requirements:
+  + Removed: gobject-introspection and vte-devel
+  + Added:
+    - python3-psutil for both, buildtime and runtime
+    - python3-setuptools
+    - Use fdupes and python-rpm-macros
+    - pkgconfig(glib-2.0) for directory ownership
+
+-------------------------------------------------------------------
 Sat Jan 25 14:18:36 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
