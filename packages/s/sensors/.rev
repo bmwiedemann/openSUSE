@@ -865,4 +865,13 @@
 </comment>
     <requestid>872259</requestid>
   </revision>
+  <revision rev="106" vrev="4">
+    <srcmd5>8d07e8eb6463167a0c7bb312820c8222</srcmd5>
+    <version>3.6.0</version>
+    <time>1619822775</time>
+    <user>dimstar_suse</user>
+    <comment>Stop systemd from complaining about deprecated /var/run (bsc#1185183)
+</comment>
+    <requestid>889321</requestid>
+  </revision>
 </revisionlist>

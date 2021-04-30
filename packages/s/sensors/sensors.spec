@@ -43,12 +43,15 @@ Patch6:         lm_sensors-3.4.0-sensord-service-extra-args.patch
 #PATCH-FEATURE-UPSTREAM add ftsteutates support
 Patch7:         lm_sensors-3.4.0-sensors-detect-add-ftsteutates-support.patch
 Patch8:         lm_sensors-3.5.0-libsensors-fix-soname.patch
-#PATCH-FEATURE-UPSTREAM add ftsteutates support
+#PATCH-FEATURE-UPSTREAM fix w83677hgi support
 Patch9:         lm_sensors-3.6.0-sensors-detect-fix-driver-for-w83677hgi.patch
 #PATCH-FIX-UPSTREAM Deal gracefully with unreadable fan inputs
 Patch10:        pwmconfig-handle-fan-input-error.patch
 #PATCH-FIX-UPSTREAM Further raise the fan threshold
 Patch11:        pwmconfig-raise-fan-threshold.patch
+#PATCH-FIX-UPSTREAM Change PIDFile path from /var/run to /run
+Patch12:        change-pidfile-path-from-var-run-to-run.patch
+Patch13:        var-run-deprecated.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  rrdtool-devel
@@ -120,6 +123,8 @@ sense to the user.
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
+%patch13 -p1
 
 %build
 RPM_OPT_FLAGS="%{optflags}"

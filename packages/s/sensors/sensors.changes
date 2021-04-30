@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 26 13:06:50 UTC 2021 - Jean Delvare <jdelvare@suse.com>
+
+- change-pidfile-path-from-var-run-to-run.patch: Change PIDFile
+  path from /var/run to /run (bsc#1185183).
+- var-run-deprecated.patch: /var/run is deprecated (bsc#1185183).
+
+-------------------------------------------------------------------
 Thu Feb 11 14:41:45 UTC 2021 - Jean Delvare <jdelvare@suse.com>
 
 - pwmconfig-handle-fan-input-error.patch: pwmconfig: Deal
