@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Apr 12 20:07:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Specfile overhaul
+- Update source URL (original upstream is dead)
+- Update to version 1.4
+  * Add support for IPv6 traffic dump
+  * Fix ja3(s) length of strings used in MD5 computation + update
+    MD5 functions.
+  * Add support for ja3 & ja3s.
+- Update to version 1.3
+  * Avoid leak in TCP segment reassembly code.
+  * Avoid client session_id related leak.
+  * Avoid server_random related leak.
+  * Avoid client_random related leak.
+  * Check ssl_decode_enum() return code correctly.
+  * Exit process_tcp_packet() in case TCP header is incomplete.
+  * Check timestamp_diff return code correctly.
+  * Cleanup before exit on error.
+  * Fix for crash if length of captured frame is less than
+    Ethernet header size.
+  * Check packet size before looking at IP header.
+  * Check return code after string extraction.
+  * Limit length during server name decoding.
+  * Decode ClientHello v2 properly.
+  * Output error to stderr.
+  * Avoid leak by freeing SSL decoding context properly.
+  * Close everything properly in case of SIGINT.
+  * Fix leak in associative array implementation.
+  * First import of the JSON output code
+  * Do not print information message when no connection is
+    cleaned at shutdown.
+  * Fix memory leak in ssl_process_server_session_id()
+  * Close global pcap struct properly in case of SIGINT.
+  * Add missing extension names
+  * Code cleanup
+  * Add save decrypted datato pcap. first alpha version.
+  * Fix for use of deprecated OpenSSL HMAC functions.
+  * Fix for type casting related warnings.
+  * Add missing function prototype.
+  * Remove definitions of unused variables.
+  * Fix for uninitialized variables and possible overflow.
+  * Remove unused RCSSTRING variable globally.
+- Drop patches (not longer needed)
+  * ssldump-0.9b3-libpcap.diff
+  * random_return.patch
+  * ssldump-0.9b3-aes.patch
+  * implicit_def.patch
+  * ssldump-0.9b3-newssl.patch
+  * ssldump-cvs-06-19-2006.diff
+  * update-config.patch
+
+-------------------------------------------------------------------
 Tue Mar 24 10:16:11 UTC 2020 - Michael Calmer <mc@suse.com>
 
 - fix macro to fix build on openSUSE Leap 15.2

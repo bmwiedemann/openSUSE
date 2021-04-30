@@ -1,7 +1,7 @@
 #
 # spec file for package ssldump
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           ssldump
+Version:        1.4
+Release:        0
+Summary:        SSLv3/TLS Network Protocol Analyzer
+License:        BSD-3-Clause
+Group:          Productivity/Networking/Diagnostic
+URL:            https://adulau.github.io/ssldump/
+#Git-Clone:     https://github.com/adulau/ssldump.git
+Source:         https://github.com/adulau/ssldump/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libnet-devel
+BuildRequires:  libtool
+BuildRequires:  openssl-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(json-c)
 %if 0%{?suse_version} > 1320 || (0%{?is_opensuse} && 0%{?leap_version} == 420300)
 BuildRequires:  libpcap-devel-static
 %else
 BuildRequires:  libpcap-devel
 %endif
-BuildRequires:  libtool
-BuildRequires:  openssl-devel
-Version:        0.9b3
-Release:        0
-Summary:        SSLv3/TLS Network Protocol Analyzer
-License:        BSD-3-Clause
-Group:          Productivity/Networking/Diagnostic
-Url:            http://www.rtfm.com/ssldump
-Source:         ssldump-%{version}.tar.gz
-Patch:          ssldump-0.9b3-libpcap.diff
-Patch1:         random_return.patch
-Patch2:         ssldump-0.9b3-aes.patch
-Patch3:         implicit_def.patch
-Patch4:         ssldump-0.9b3-newssl.patch
-Patch5:         ssldump-cvs-06-19-2006.diff
-Patch6:         update-config.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 ssldump is an SSLv3/TLS network protocol analyzer. It identifies TCP
@@ -48,44 +46,21 @@ decodes the records and outputs them in a textual form to stdout. If
 provided with the appropriate keying material, it also decrypts the
 connections and displays the application data traffic.
 
-
-
-Authors:
---------
-    Eric Rescorla <ekr@rtfm.com>
-
 %prep
-%setup -n ssldump-%{version}
-%patch
-%patch1
-%patch2 -p 1
-%patch3
-%patch4
-%patch5 -p 1
-%patch6 -p1
+%setup -q
 
 %build
-%{?suse_update_config:%{suse_update_config}}
-libtoolize --force
-autoreconf
-export CFLAGS="$RPM_OPT_FLAGS -Wall -fno-strict-aliasing"
-./configure --mandir=%{_mandir} \
-	    --prefix=%{_prefix} \
-	    --libdir=%{_libdir} \
-	    --with-pcap-lib=%{_libdir}
-make
+autoreconf -fiv
+%configure
+%make_build
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make BINDIR=$RPM_BUILD_ROOT/%{_prefix}/sbin MANDIR=$RPM_BUILD_ROOT/%{_mandir} install
-
-%clean 
-rm -rf $RPM_BUILD_ROOT
+%make_install
 
 %files
-%defattr(-,root,root)
-/usr/sbin/*
-%doc COPYRIGHT CREDITS ChangeLog FILES INSTALL* README VERSION
-%doc %{_mandir}/man?/*.gz
+%license COPYRIGHT
+%doc ChangeLog NEWS README.md
+%{_sbindir}/ssldump
+%{_mandir}/man1/ssldump.1%{?ext_man}
 
 %changelog
