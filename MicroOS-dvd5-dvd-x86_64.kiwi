@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20210428" schemaversion="4.1">
+<image name="OBS__MicroOS___20210429" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210428</productvar>
+      <productvar name="VERSION">20210429</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20210428,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20210429,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20210428/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20210429/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -973,7 +973,7 @@
       <repopackage name="libsensors4" arch="x86_64"/>
       <repopackage name="libsepol2"/>
       <repopackage name="libserd-0-0" arch="x86_64"/>
-      <repopackage name="libsgutils2-1_45-2" arch="x86_64"/>
+      <repopackage name="libsgutils2-1_46-2" arch="x86_64"/>
       <repopackage name="libsigc-2_0-0" arch="x86_64"/>
       <repopackage name="libsignon-qt5-1" arch="x86_64"/>
       <repopackage name="libslang2" arch="x86_64"/>

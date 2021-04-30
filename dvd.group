@@ -245,7 +245,7 @@
     <package name="busybox-bzip2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:arabic-fonts -->
-    <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
+    <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="busybox-patch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
@@ -1286,6 +1286,7 @@
     <package name="kqtquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
     <package name="kquickcharts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="krb5" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="krename" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="kreversi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kreversi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2625,7 +2626,7 @@
     <package name="libserd-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libserf-1-1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libserializer" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libsgutils2-1_45-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libsgutils2-1_46-2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libsha1detectcoll1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_ide -->
     <package name="libshaderc_shared1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libshout3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3195,6 +3196,9 @@
     <package name="openSUSE-release-appliance-custom" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openSUSE-release-dvd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release-dvd -->
     <package name="openSUSE-xfce-icon-theme" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
+    <package name="openafs" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
+    <package name="openafs-client" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
+    <package name="openafs-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="openal-soft-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="opencc-data" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="openconnect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3548,8 +3552,8 @@
     <package name="pngquant" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="polari" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="polari-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="policycoreutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="policycoreutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="policycoreutils-python-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="polkit" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="polkit-default-privs" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -4325,10 +4329,10 @@
     <package name="seahorse-sharing-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="sed" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="sed-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="selinux-autorelabel" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="selinux-autorelabel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="selinux-policy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="selinux-policy-targeted" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="selinux-tools" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="selinux-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="sendmail" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
     <package name="sensors" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sessreg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4656,6 +4660,7 @@
     <package name="ucode-intel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="udev" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="udev-configure-printer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="udftools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="udisks2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="udisks2-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="ufraw" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4894,7 +4899,7 @@
     <package name="yast2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-add-on" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="yast2-apparmor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="yast2-apparmor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="yast2-auth-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="yast2-auth-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="yast2-bootloader" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -5048,7 +5053,6 @@
     <package name="libpng12-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.11.16-1-default needed by openafs-kmp-default-1.8.7_k5.11.16_1-5.8.i586-->
   </packagelist>
 </group>
 <group name="dvd.x86_64">
@@ -5110,7 +5114,6 @@
     <package name="jhbuild" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="jhbuild-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krb5-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="krb5-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="krdc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krdc-lang" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="krfb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5349,7 +5352,6 @@
     <package name="ntp-doc" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="numad" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
-    <!-- openafs-client uninstallable: nothing provides kernel-uname-r = 5.11.16-1-default needed by openafs-kmp-default-1.8.7_k5.11.16_1-5.8.x86_64-->
     <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:mokutil -->
     <package name="opie-32bit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ovmf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
