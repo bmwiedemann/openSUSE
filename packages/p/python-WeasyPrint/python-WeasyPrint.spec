@@ -1,7 +1,7 @@
 #
 # spec file for package python-WeasyPrint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-WeasyPrint
-Version:        51
+Version:        52.5
 Release:        0
 Summary:        Python module to convert web documents to PDF
 License:        BSD-3-Clause
@@ -27,6 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Kozea/WeasyPrint
 Source:         https://files.pythonhosted.org/packages/source/W/WeasyPrint/WeasyPrint-%{version}.tar.gz
 Source100:      python-WeasyPrint-rpmlintrc
+# PATCH-FIX-OPENSUSE Fix tests with older tinycss2
+Patch0:         quotes.patch
 BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,7 +44,7 @@ Requires:       python-pdfrw >= 0.4
 Requires:       python-setuptools >= 39.2.0
 Requires:       python-tinycss2 >= 1.0.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Requires:       python-CairoSVG >= 2.4.0
 BuildArch:      noarch
 # SECTION test requirements
@@ -73,6 +75,7 @@ designed for pagination, and meant to be easy to hack on.
 
 %prep
 %setup -q -n WeasyPrint-%{version}
+%autopatch -p1
 sed -i '/\(addopts\|pytest-\(cov\|flake8\|isort\)\)/d' setup.cfg
 
 %build

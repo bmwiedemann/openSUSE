@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 30 12:20:47 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 52.5
+  * Python 3.6+ is now needed, Python 3.5 is not supported anymore
+  * Implement counter-set
+  * Add support for concatenating var() functions in content declarations
+  * Add an option to optimize embedded images size, with financial support from Hashbang
+  * Add an image cache that can be shared between documents, with financial support from Hashbang
+  * Fix URL handling with tinycss2Fix URL handling with tinycss2
+  * Add support of line-clamp, with financial support from expert Germany
+- Add quotes.patch to support tinycss older than 1.1.0
+
+-------------------------------------------------------------------
 Thu Sep 24 09:05:04 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
 
 - require python-CairoSVG
