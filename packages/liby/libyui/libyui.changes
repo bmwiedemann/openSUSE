@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Apr 29 11:11:56 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fixed license headers to use the correct license (LGPL) everywhere
+  (bsc#1185443)
+- 4.2.8
+
+-------------------------------------------------------------------
+Mon Apr 26 14:12:06 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Auto-publish C++ API docs (libyui base lib doxygen autodocs)
+  as GitHub pages when a PR to master is merged
+  (part of bsc#1181653)
+  Doc URL: https://libyui.github.io/libyui/api-doc/index.html
+- 4.2.7
+
+-------------------------------------------------------------------
+Mon Apr 26 10:57:55 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Moved CI scripts into new subdir scripts/ to unclutter toplevel dir
+  (part of bsc#1181653)
+- Renamed ambiguously named script local.sh to local-prefix.sh
+- 4.2.6
+
+-------------------------------------------------------------------
 Thu Apr 22 09:41:44 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Added reference to autodocs (C++ API doc) and more docs
