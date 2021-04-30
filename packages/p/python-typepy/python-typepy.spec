@@ -1,7 +1,7 @@
 #
 # spec file for package python-typepy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-typepy
-Version:        1.1.1
+Version:        1.1.5
 Release:        0
-Summary:        Python library for run time variable type checker 
+Summary:        Python library for run time variable type checker
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/thombashi/typepy
@@ -33,17 +33,14 @@ BuildRequires:  %{python_module mbstrdecoder >= 1.0.0}
 BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module python-dateutil >= 2.8.0}
 BuildRequires:  %{python_module pytz >= 2018.9}
-BuildRequires:  %{python_module six >= 1.10.0}
-BuildRequires:  %{python_module termcolor}
+BuildRequires:  %{python_module tcolorpy}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-mbstrdecoder >= 1.0.0
-Requires:       python-setuptools >= 38.3.0
-Requires:       python-six >= 1.10.0
 Suggests:       python-python-dateutil >= 2.8.0
 Suggests:       python-pytz >= 2018.9
 Suggests:       python-path.py
-Suggests:       python-termcolor
+Suggests:       python-tcolorpy
 BuildArch:      noarch
 
 %python_subpackages
@@ -69,8 +66,8 @@ sed -i '/build =/d' setup.cfg
 %pytest
 
 %files %{python_files}
-%doc README.rst
 %license LICENSE
+%doc README.rst
 %{python_sitelib}/typepy*
 
 %changelog
