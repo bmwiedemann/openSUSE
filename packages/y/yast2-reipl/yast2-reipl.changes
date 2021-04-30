@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- 4.4.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Mon Mar 30 14:20:27 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Install by default if yast2-s390 is installed (bsc#1158036)
