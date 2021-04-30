@@ -1,7 +1,7 @@
 #
 # spec file for package python-feedparser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,9 @@ License:        BSD-2-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/kurtmckee/feedparser
 Source:         https://files.pythonhosted.org/packages/source/f/feedparser/feedparser-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM numerical_return_status.patch gh#kurtmckee/feedparser#272/files mcepl@suse.com
+#  Maintain numeric result status code in Python>=3.9
+Patch0:         numerical_return_status.patch
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sgmllib3k}
@@ -43,7 +46,7 @@ A universal feed parser module for Python that handles RSS 0.9x, RSS 1.0, RSS
 2.0, CDF, Atom 0.3, Atom 1.0 feeds.
 
 %prep
-%setup -q -n feedparser-%{version}
+%autosetup -p1 -n feedparser-%{version}
 
 %build
 %python_build

@@ -269,4 +269,14 @@
     <comment></comment>
     <requestid>844040</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>3ccda4e89cd3363def8d39176f066750</srcmd5>
+    <version>6.0.2</version>
+    <time>1619822830</time>
+    <user>dimstar_suse</user>
+    <comment>- add numerical_return_status.patch for 3.9 python version
+  (change of return status to None)
+</comment>
+    <requestid>889625</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 29 14:39:29 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- add numerical_return_status.patch for 3.9 python version
+  (change of return status to None)
+
+-------------------------------------------------------------------
 Sun Oct 25 17:59:36 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 6.0.2:
