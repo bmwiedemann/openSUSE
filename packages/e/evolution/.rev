@@ -2032,4 +2032,12 @@ Recommended for 12.3</comment>
     <comment>GNOME 40 - here we come (forwarded request 880926 from dimstar)</comment>
     <requestid>881098</requestid>
   </revision>
+  <revision rev="243" vrev="2">
+    <srcmd5>f2807d357e8e18a8495a1311374f8950</srcmd5>
+    <version>3.40.0</version>
+    <time>1619822771</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 7cfe4190e.patch: Fix build with cmake 3.20.1. (forwarded request 889207 from dimstar)</comment>
+    <requestid>889214</requestid>
+  </revision>
 </revisionlist>
