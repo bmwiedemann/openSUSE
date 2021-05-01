@@ -1501,7 +1501,6 @@ unsorted:
   - bumblebee-status-module-docker-ps 
   - bumblebee-status-module-dunst 
   - bumblebee-status-module-git 
-  - bumblebee-status-module-hddtemp 
   - bumblebee-status-module-indicator 
   - bumblebee-status-module-layout 
   - bumblebee-status-module-layout-xkb 
@@ -2665,7 +2664,6 @@ unsorted:
   - dcmtk 
   - dcmtk-devel 
   - dconf-devel 
-  - dd-opentracing-cpp-devel 
   - dd_rescue 
   - dd_rescue-crypt 
   - dd_rescue-lzo 
@@ -7563,7 +7561,6 @@ unsorted:
   - jupyter-nbdime-jupyterlab 
   - jupyter-nbformat 
   - jupyter-nbinteract 
-  - jupyter-nbpresent 
   - jupyter-notebook 
   - jupyter-notebook-filesystem 
   - jupyter-notebook-lang 
@@ -9443,6 +9440,7 @@ unsorted:
   - libaudaspace-py1_3 
   - libaudaspace1_3 
   - libaudcore5 
+  - libaudgui5 
   - libaudiofile1 
   - libaudiofile1-32bit: [x86_64] 
   - libaudqt2 
@@ -10156,7 +10154,6 @@ unsorted:
   - libdcerpc-samr0-32bit: [x86_64] 
   - libdcmtk3_6 
   - libdconf1-32bit: [x86_64] 
-  - libdd_opentracing0 
   - libddccontrol0 
   - libddcutil-devel 
   - libddcutil3 
@@ -10888,7 +10885,7 @@ unsorted:
   - libgrooveplayer4 
   - libgrpc++1 
   - libgrpc15 
-  - libgrpc_plugin_support1 
+  - libgrpc_plugin_support1_37 
   - libgrss-devel 
   - libgrss0 
   - libgsasl-devel 
@@ -11604,7 +11601,6 @@ unsorted:
   - liblightgrep0 
   - liblightlycommon5-5 
   - liblightmediascanner0 
-  - liblightstep_tracer0 
   - liblilv-0-0-32bit: [x86_64] 
   - liblilv-0-devel 
   - liblime0 
@@ -12695,7 +12691,7 @@ unsorted:
   - libpresage-devel 
   - libpresage-doc 
   - libprimecount-devel 
-  - libprimecount6 
+  - libprimecount7 
   - libprimesieve-devel 
   - libprimesieve9 
   - libprofiler0 
@@ -13713,6 +13709,7 @@ unsorted:
   - libsuperlu5 
   - libsuperlu5-32bit: [x86_64] 
   - libsuperlu_5_2_2-gnu-hpc 
+  - libsurgescript0_5_5 
   - libsvm-devel 
   - libsvm-java 
   - libsvm2 
@@ -14675,8 +14672,6 @@ unsorted:
   - lightly-style 
   - lightmediascanner 
   - lightmediascanner-devel 
-  - lightstep-tracer-cpp-devel 
-  - lightstep-tracer-cpp-source 
   - lighttpd 
   - lighttpd-mod_authn_gssapi 
   - lighttpd-mod_authn_ldap 
@@ -17677,6 +17672,7 @@ unsorted:
   - openSUSE-release-usb-gnome 
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
+  - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
   - openafs-authlibs 
   - openafs-authlibs-devel 
@@ -21367,7 +21363,6 @@ unsorted:
   - python36-Js2Py 
   - python36-JsonWeb 
   - python36-Kajiki 
-  - python36-Keras-Applications: [x86_64] 
   - python36-Kivy 
   - python36-Kivy-devel 
   - python36-LHAPDF 
@@ -21409,7 +21404,6 @@ unsorted:
   - python36-PyDispatcher 
   - python36-PyECLib 
   - python36-PyFxA 
-  - python36-PyGetWindow 
   - python36-PyGithub 
   - python36-PyHamcrest 
   - python36-PyICU 
@@ -22636,6 +22630,7 @@ unsorted:
   - python36-jsonlib-python3 
   - python36-jsonlines 
   - python36-jsonpatch 
+  - python36-jsonpath-ng 
   - python36-jsonpath-rw 
   - python36-jsonpickle 
   - python36-jsonpointer 
@@ -24146,7 +24141,6 @@ unsorted:
   - python38-Js2Py 
   - python38-JsonWeb 
   - python38-Kajiki 
-  - python38-Keras-Applications: [x86_64] 
   - python38-Kivy 
   - python38-Kivy-devel 
   - python38-LHAPDF 
@@ -24192,7 +24186,6 @@ unsorted:
   - python38-PyDispatcher 
   - python38-PyECLib 
   - python38-PyFxA 
-  - python38-PyGetWindow 
   - python38-PyGithub 
   - python38-PyICU 
   - python38-PyInstaller 
@@ -25449,6 +25442,7 @@ unsorted:
   - python38-jsonlib-python3 
   - python38-jsonlines 
   - python38-jsonpatch: [i586] 
+  - python38-jsonpath-ng 
   - python38-jsonpath-rw 
   - python38-jsonpickle 
   - python38-jsonpointer: [i586] 
@@ -27043,7 +27037,6 @@ unsorted:
   - python39-Js2Py 
   - python39-JsonWeb 
   - python39-Kajiki 
-  - python39-Keras-Applications: [x86_64] 
   - python39-Kivy 
   - python39-Kivy-devel 
   - python39-LTTL 
@@ -27168,6 +27161,7 @@ unsorted:
   - python39-WSGIProxy2 
   - python39-WSME 
   - python39-WTForms 
+  - python39-WeasyPrint 
   - python39-WebOb 
   - python39-WebTest 
   - python39-Werkzeug 
@@ -28390,6 +28384,7 @@ unsorted:
   - python39-jsonlib-python3 
   - python39-jsonlines 
   - python39-jsonpatch 
+  - python39-jsonpath-ng 
   - python39-jsonpath-rw 
   - python39-jsonpickle 
   - python39-jsonpointer 
@@ -28489,6 +28484,7 @@ unsorted:
   - python39-libsass 
   - python39-libusb1 
   - python39-libvirt-python 
+  - python39-libxml2 
   - python39-license-expression 
   - python39-ligo-lw 
   - python39-ligo-segments 
@@ -29731,6 +29727,7 @@ unsorted:
   - python39-trio 
   - python39-trustme 
   - python39-tsk 
+  - python39-tvm: [x86_64] 
   - python39-tweepy 
   - python39-twine 
   - python39-twitter.common.finagle-thrift 
@@ -30896,6 +30893,7 @@ unsorted:
   - ruby3.0-rubygem-net-scp-1_2 
   - ruby3.0-rubygem-net-sftp 
   - ruby3.0-rubygem-net-ssh 
+  - ruby3.0-rubygem-net-ssh-6.1 
   - ruby3.0-rubygem-netrc 
   - ruby3.0-rubygem-nio4r 
   - ruby3.0-rubygem-nokogiri 
@@ -31933,6 +31931,8 @@ unsorted:
   - surf 
   - surfraw 
   - surfraw-woffle 
+  - surgescript 
+  - surgescript-devel 
   - suru-plus-dark-icon-theme 
   - suse-build-key 
   - suse-hpc 
@@ -32094,7 +32094,6 @@ unsorted:
   - tar-backup-scripts 
   - tar-doc 
   - tar-tests 
-  - tardy 
   - target-isns 
   - targetcli-fb-common 
   - tarix 
