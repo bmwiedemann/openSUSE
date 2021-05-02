@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+<<<<<<< Updated upstream
+=======
+Sun May  2 08:38:43 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove fix-tests-libmix_differences-2.patch, merged upstream
+- remove fix-tests-libmix_differences.patch, merged upstream
+- added fix-file-5.40.patch
+- update to version 173
+  * Add support for showing annotations in PDF files.
+    (Closes: reproducible-builds/diffoscope#249)
+  * Move to assert_diff in test_pdf.py.
+  * Difference.__init__: Demote unified_diff argument to a Python "kwarg".
+- update to version 172
+  * If zipinfo(1) shows a difference but we cannot uncover a difference within
+    the underlying .zip or .apk file, add a comment and show the binary
+    comparison. (Closes: reproducible-builds/diffoscope#246)
+  * Make "error extracting X, falling back to binary comparison E" error
+    message nicer.
+- update to version 171
+  * Do not list as a "skipping reason" tools that do exist.
+  * Drop the "compose" tool from the list of required tools for these tests,
+    since it doesn't seem to be required.
+- update to version 170
+  * Avoid frequent long lines in RPM header outputs that cause very very slow
+    HTML outputs. (Closes: reproducible-builds/diffoscope#245)
+  * Fix test_libmix_differences on openSUSE Tumbleweed.
+    (Closes: reproducible-builds/diffoscope#244)
+  * Move test_rpm to use the assert_diff utility helper.
+  * Add a diffoscope.tools.get_tools() method to support programmatically
+    fetching Diffoscope's config.
+  * Become tolerant of malformed Debian .changes files.
+- update to version 169
+  * Optimisations:
+    - Use larger buffer/block sizes when extracting files from libarchive-
+      based archives.
+    - Use a much-shorter CSS class (instead of "diffponct") to dramatically
+      reduce uncompressed HTML output.
+  * Logging improvements:
+    - Don't emit "Unable to stat file" warning/debug messages; we have
+      entirely-artificial directory entries such as ELF sections which, of
+      course, never exist as filesystem files.
+    - Don't emit a "Returning a FooContainer" logging message - we already emit
+      "Instantiating a FooContainer" one and are unlikely to fail in the
+      middle.
+    - Format the report size logging messages when generating HTML reports.
+    - Add the target directory when logging which directory we are extracting
+      containers to.
+  * Miscellaneous:
+    - Ignore "--debug" and similar arguments when creating a (hopefully useful)
+      temporary directory.
+    - Ensure all internal temporary directories have useful names.
+    - Clarify a comment regarding diffoscope not extracting excluded files.
+  * Skip a DEX-related test if the "procyon" tool is unavailable.
+
+-------------------------------------------------------------------
+>>>>>>> Stashed changes
 Tue Mar 16 09:20:53 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - add fix-tests-libmix_differences-2.patch to fix a newline in the other upstream patch
