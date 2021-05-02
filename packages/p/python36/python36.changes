@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 27 16:56:41 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2021-3426-inf-disclosure-pydoc-getfile.patch to remove
+  getfile feature from pydoc, which is a security nightmare
+  (among other things, CVE-2021-3426, allows disclosure of any
+  file on the system; bsc#1183374, bpo#42988).
+
+-------------------------------------------------------------------
 Fri Feb 19 17:34:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 Update to 3.6.13, final release of 3.6 branch:

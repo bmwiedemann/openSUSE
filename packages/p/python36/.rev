@@ -2944,4 +2944,16 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
     <comment></comment>
     <requestid>874684</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>55ade96866b6e6b0b5a3e572984abc6c</srcmd5>
+    <version>3.6.13</version>
+    <time>1619973328</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2021-3426-inf-disclosure-pydoc-getfile.patch to remove
+  getfile feature from pydoc, which is a security nightmare
+  (among other things, CVE-2021-3426, allows disclosure of any
+  file on the system; bsc#1183374, bpo#42988).
+</comment>
+    <requestid>889097</requestid>
+  </revision>
 </revisionlist>

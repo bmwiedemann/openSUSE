@@ -168,6 +168,9 @@ Patch38:        faulthandler_stack_overflow_on_GCC10.patch
 Patch39:        ignore_pip_deprec_warn.patch
 # PATCH-FIX-UPSTREAM stop calling removed Sphinx function gh#python/cpython#13236
 Patch40:        sphinx-update-removed-function.patch
+# PATCH-FIX-UPSTREAM CVE-2021-3426-inf-disclosure-pydoc-getfile.patch bsc#1183374 mcepl@suse.com
+# Remove the pydoc getfile feature
+Patch41:        CVE-2021-3426-inf-disclosure-pydoc-getfile.patch
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -432,6 +435,7 @@ other applications.
 %patch38 -p1
 %patch39 -p1
 %patch40 -p1
+%patch41 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
