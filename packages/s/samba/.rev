@@ -3383,4 +3383,12 @@ list of changes.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>885268</requestid>
   </revision>
+  <revision rev="269" vrev="1">
+    <srcmd5>d549940401126e4e9269f514523baa7c</srcmd5>
+    <version>4.14.4+git.162.18fd73a39a0</version>
+    <time>1619973317</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889576</requestid>
+  </revision>
 </revisionlist>

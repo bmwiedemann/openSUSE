@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Apr 29 08:34:02 UTC 2021 - Noel Power <nopower@suse.com>
+- Update to 4.14.4
+  * CVE-2021-20254: Fix buffer overrun in sids_to_unixids();
+    (bso#14571); (bsc#1184677).
+
+- Update to 4.14.3
+  * s3:modules:vfs_virusfilter: Recent New_VFS changes break
+    vfs_virusfilter_openat; (bso#14671).
+  * build: Notice if flex is missing at configure time; (bso#14586).
+  * Fix smbd panic when two clients open same file; (bso#14672).
+  * Fix memory leak in the RPC server; (bso#14675).
+  * s3: smbd: fix deferred renames; (bso#14679).
+  * s3-iremotewinspool: Set the per-request memory context;
+    (bso#14675)
+  * Fix memory leak in the RPC server; (bso#14675).
+  * third_party: Update socket_wrapper to version 1.3.2;
+    (bso#11899).
+  * third_party: Update socket_wrapper to version 1.3.3;
+    (bso#14640).
+  * samba-gpupdate: Test that sysvol paths download in
+    case-insensitive way; (bso#14665).
+  * smbd: Ensure errno is preserved across fsp destructor;
+    (bso#14662).
+  * idmap_rfc2307 and idmap_nss return wrong mapping for uid/gid
+    conflict; (bso#14663).
+  * build: Only add -Wl,--as-needed when supported; (bso#14288).
+
+-------------------------------------------------------------------
 Wed Mar 31 14:59:15 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 4.14.2

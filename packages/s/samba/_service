@@ -4,7 +4,7 @@
                 <param name="scm">git</param>
                 <param name="revision">factory-4-14-stable</param>
                 <param name="versionformat">@PARENT_TAG@+git.@TAG_OFFSET@.%h</param>
-                <param name="versionrewrite-pattern">samba-(.*)</param>
+                <param name="versionrewrite-pattern">samba(.*)</param>
                 <param name="versionrewrite-replacement">\1</param>
                 <param name="filename">samba</param>
                 <param name="exclude">.git</param>
