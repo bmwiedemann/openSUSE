@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  1 10:31:41 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Skip the failing test test_init (gh#man-group/pytest-plugins#177)
+
+-------------------------------------------------------------------
 Fri May 29 09:58:44 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove pytest restriction as it seems to work with pytest5
