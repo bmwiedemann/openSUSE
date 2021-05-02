@@ -1130,4 +1130,12 @@ then, coreutils doesn't need this patch from the kernel v4.10-rc1. (forwarded re
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>876512</requestid>
   </revision>
+  <revision rev="139" vrev="8">
+    <srcmd5>a308fe763f5f416ae6383043a6199181</srcmd5>
+    <version>8.32</version>
+    <time>1619973319</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889683</requestid>
+  </revision>
 </revisionlist>

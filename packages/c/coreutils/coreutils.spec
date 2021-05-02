@@ -1,7 +1,7 @@
 #
-# spec file for package coreutils
+# spec file for package coreutils%{?name_suffix}
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,7 +101,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 Source0:        https://ftp.gnu.org/gnu/coreutils/coreutils-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/coreutils/coreutils-%{version}.tar.xz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=coreutils&download=1&file=./coreutils.keyring
+Source2:        https://savannah.gnu.org/project/release-gpgkeys.php?group=coreutils&download=1&file=./coreutils.keyring
 Source3:        baselibs.conf
 
 Patch1:         coreutils-remove_hostname_documentation.patch
@@ -143,6 +143,10 @@ Patch820:       coreutils-gnulib-disable-test-float.patch
 # Avoid FP error in gnulib tests 'test-perror2' and 'test-strerror_r'.
 Patch840:       gnulib-test-avoid-FP-perror-strerror.patch
 
+# Upstream patch - remove with version >8.32:
+# avoid FP error in 'tests/ls/stat-free-color.sh'.
+Patch860:       coreutils-tests-fix-FP-in-ls-stat-free-color.patch
+
 # ================================================
 %description
 These are the GNU core utilities.  This package is the union of
@@ -162,8 +166,8 @@ the GNU fileutils, sh-utils, and textutils packages.
 Summary:        Documentation for the GNU Core Utilities
 Group:          Documentation/Man
 Provides:       coreutils:%{_infodir}/coreutils.info.gz
-Supplements:    packageand(coreutils:patterns-base-documentation)
-Supplements:    packageand(coreutils-single:patterns-base-documentation)
+Supplements:    (coreutils-single and patterns-base-documentation)
+Supplements:    (coreutils and patterns-base-documentation)
 BuildArch:      noarch
 
 %description doc
@@ -171,6 +175,7 @@ This package contains the documentation for the GNU Core Utilities.
 
 # ================================================
 %lang_package
+
 %prep
 %setup -q -n coreutils-%{version}
 %patch4
@@ -204,6 +209,7 @@ This package contains the documentation for the GNU Core Utilities.
 %endif
 
 %patch840
+%patch860
 
 # ================================================
 %build

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 29 16:21:49 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use new packageand format
+
+-------------------------------------------------------------------
+Fri Apr 23 14:08:32 UTC 2021 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- coreutils-tests-fix-FP-in-ls-stat-free-color.patch: Add upstream patch
+  to avoid FP in testsuite.
+- coreutils.spec:
+  - Reference the above patch.
+  - Change keyring URL to new GNU coreutils Group Release Keyring.
+- coreutils.keyring: Update with the Group Release Keyring.
+
+-------------------------------------------------------------------
 Fri Oct 16 07:26:20 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)
