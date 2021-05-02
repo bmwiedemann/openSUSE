@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- 4.4.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Tue Jul 14 07:12:47 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix files section for libexecdir change from /usr/lib to
