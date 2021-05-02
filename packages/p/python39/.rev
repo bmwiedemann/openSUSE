@@ -202,4 +202,41 @@
     <comment>Fix changes file (bso -&gt; bsc abbreviation).</comment>
     <requestid>878395</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a6991b26779bdcd194ac8e4addb7bd09</srcmd5>
+    <version>3.9.4</version>
+    <time>1619973320</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.4:
+  - bpo#43710: Reverted the fix for https://bugs.python.org/issue42500
+    as it changed the PyThreadState struct size and broke the 3.9.x ABI
+    in the 3.9.3 release (visible on 32-bit platforms using binaries
+    compiled using an earlier version of Python 3.9.x headers).
+  - bpo#26053: Fixed bug where the pdb interactive run command echoed
+    the args from the shell command line, even if those have been
+    overridden at the pdb prompt.
+  - bpo#42988 (bsc#1183374) CVE-2021-3426: Remove the getfile
+    feature of the pydoc module which could be abused to read
+    arbitrary files on the disk (directory traversal
+    vulnerability). Moreover, even source code of Python modules
+    can contain sensitive data like passwords. Vulnerability
+    reported by David Schwörer.
+  - bpo#43285: ftplib no longer trusts the IP address value
+    returned from the server in response to the PASV command by
+    default. This prevents a malicious FTP server from using the
+    response to probe IPv4 address and port combinations on the
+    client network. Code that requires the former vulnerable
+    behavior may set a trust_server_pasv_ipv4_address attribute
+    on their ftplib.FTP instances to True to re-enable it.
+  - bpo#43439: Add audit hooks for gc.get_objects(),
+    gc.get_referrers() and gc.get_referents(). Patch by Pablo
+    Galindo.
+  - bpo#43660: Fix crash that happens when replacing sys.stderr
+    with a callable that can remove the object while an exception
+    is being printed. Patch by Pablo Galindo.
+  - bpo#43555: Report the column offset for SyntaxError for
+    invalid line continuation characters. Patch by Pablo Galindo.
+  - bpo#43517: Fix misdetection of circular imports when using</comment>
+    <requestid>889130</requestid>
+  </revision>
 </revisionlist>

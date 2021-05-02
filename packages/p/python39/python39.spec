@@ -53,7 +53,7 @@
 # Will do the /usr/bin/python3 and all the core links
 %define         primary_interpreter 0
 # We don't process beta signs well
-%define         folderversion 3.9.2
+%define         folderversion 3.9.4
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
@@ -88,7 +88,7 @@
 %bcond_without profileopt
 %endif
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.2
+Version:        3.9.4
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -136,6 +136,7 @@ Patch32:        sphinx-update-removed-function.patch
 # PATCH-FIX-SLE no-skipif-doctests.patch jsc#SLE-13738 mcepl@suse.com
 # SLE-15 version of Sphinx doesn't know about skipif directive in doctests.
 Patch33:        no-skipif-doctests.patch
+BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
@@ -378,9 +379,9 @@ other applications.
 %patch25 -p1
 %patch29 -p1
 %patch32 -p1
-# %%if 0%%{?suse_version} <= 1500
+%if 0%{?suse_version} <= 1500
 %patch33 -p1
-# %%endif
+%endif
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

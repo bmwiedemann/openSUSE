@@ -1,10 +1,10 @@
 ---
- Doc/tools/extensions/pyspecific.py |    6 ++++++
- 1 file changed, 6 insertions(+)
+ Doc/tools/extensions/pyspecific.py |    7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 --- a/Doc/tools/extensions/pyspecific.py
 +++ b/Doc/tools/extensions/pyspecific.py
-@@ -361,7 +361,12 @@ class DeprecatedRemoved(Directive):
+@@ -362,7 +362,12 @@ class DeprecatedRemoved(Directive):
                                     translatable=False)
              node.append(para)
          env = self.state.document.settings.env
