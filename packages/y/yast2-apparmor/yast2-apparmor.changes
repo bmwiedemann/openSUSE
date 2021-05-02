@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- 4.4.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Mon Oct 12 13:54:06 UTC 2020 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed menu navigation using arrow keys in Qt UI - do not start
