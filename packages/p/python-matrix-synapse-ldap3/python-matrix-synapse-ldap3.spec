@@ -1,7 +1,7 @@
 #
 # spec file for package python-matrix-synapse-ldap3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# There is no longer python2-matrix-synapse, skip python2
-%define skip_python2 1
+# There is no python2 and no python3 multiflavor, only python3-matrix-synapse
+%define pythons python3
 %define         github_user matrix-org
 %define         short_name matrix-synapse-ldap3
 Name:           python-%{short_name}
@@ -32,9 +32,8 @@ Source:         https://github.com/%{github_user}/%{short_name}/archive/v%{versi
 Patch0:         py3compat.patch
 BuildRequires:  %{python_module Twisted >= 15.1}
 BuildRequires:  %{python_module ldap3 >= 0.9.5}
-BuildRequires:  %{python_module matrix-synapse}
 BuildRequires:  %{python_module ldaptor}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module matrix-synapse}
 BuildRequires:  %{python_module pydenticon}
 BuildRequires:  %{python_module service_identity}
 BuildRequires:  %{python_module setuptools}
@@ -55,6 +54,8 @@ Allows synapse to use LDAP as a password provider.
 %prep
 %setup -q -n %{short_name}-%{version}
 %patch0 -p1
+# remove extra mock requirement
+sed -i 's/from mock/from unittest.mock/' tests/test_*.py
 
 %build
 %python_build
@@ -64,11 +65,13 @@ Allows synapse to use LDAP as a password provider.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest -v
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/matrix_synapse_ldap3-%{version}*-info
+%{python_sitelib}/ldap_auth_provider.py*
+%pycache_only %{python_sitelib}/__pycache__/ldap_auth_provider.*.pyc
 
 %changelog
