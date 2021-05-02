@@ -1,7 +1,7 @@
 #
 # spec file for package python-txtorcon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,10 +34,10 @@ Requires:       python-incremental
 Requires:       python-zope.interface >= 3.6.1
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  lsof
 BuildRequires:  %{python_module Automat}
 BuildRequires:  %{python_module Twisted >= 15.5.0}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module zope.interface >= 3.6.1}
 %if %{with python2}
 BuildRequires:  python-ipaddress
@@ -68,7 +68,8 @@ sed -i '/data_files/,/\]\,/s/^/#/' setup.py
 
 %check
 # looks more like integration tests
-%pytest -k 'not test_real_addr'
+# Async tests don't work with pytest gh#crossbario/autobahn-python#1235
+%python_expand $python -m twisted.trial test
 
 %files %{python_files}
 %license LICENSE docs/*.rst
