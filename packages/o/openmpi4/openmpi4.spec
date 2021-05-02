@@ -42,8 +42,8 @@
 # % define build_static_devel 1
 
 %define pname openmpi
-%define vers 4.1.0
-%define _vers 4_1_0
+%define vers 4.1.1
+%define _vers 4_1_1
 %define m_f_ver 4
 %bcond_with ringdisabled
 
@@ -104,7 +104,11 @@ ExclusiveArch:  do_not_build
 %endif
 
 # Detect whether we are the default openMPI implemantation or not
+%if "%{flavor}" == "standard" && (%{suse_version} > 1500 || 0%{?sle_version} > 150300)
+%define default_openmpi 1
+%else
 %define default_openmpi 0
+%endif
 
 %if %{with hpc}
 %{!?compiler_family:%global compiler_family gnu}
@@ -115,7 +119,7 @@ ExclusiveArch:  do_not_build
 %global hpc_openmpi_pack_version %{hpc_openmpi_dep_version}
 %endif
 
-%define git_ver .0.9ac5471035
+%define git_ver .0.a8dd8708d8b6
 
 #############################################################################
 #
@@ -135,6 +139,7 @@ Source2:        openmpi4-rpmlintrc
 Source3:        macros.hpc-openmpi
 Source4:        mpivars.sh
 Source5:        mpivars.csh
+Patch1:         orted-mpir-add-version-to-shared-library.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -393,6 +398,7 @@ echo with HPC
 echo without HPC
 %endif
 %setup -q -n  openmpi-%{version}%{git_ver}
+%patch1
 
 %if %{without hpc}
 cat > %{_sourcedir}/baselibs.conf  <<EOF
@@ -533,8 +539,8 @@ prepend-path LD_LIBRARY_PATH %{mpi_libdir}
 
 EOF
 
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cat <<EOF >%{buildroot}%{_sysconfdir}/rpm/macros.openmpi
+mkdir -p %{buildroot}%{_rpmmacrodir}
+cat <<EOF >%{buildroot}%{_rpmmacrodir}/macros.openmpi
 #
 # openmpi
 #
@@ -580,9 +586,9 @@ EOF
 sed -e "s/export/setenv/" -e "s/=/ /" \
     %{buildroot}/%{mpi_bindir}/mpivars.sh > \
     %{buildroot}/%{mpi_bindir}/mpivars.csh
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cp %{S:3} %{buildroot}%{_sysconfdir}/rpm
+mkdir -p %{buildroot}%{_rpmmacrodir}
+mkdir -p %{buildroot}%{_rpmmacrodir}
+cp %{S:3} %{buildroot}%{_rpmmacrodir}
 
 # Drop the files that should go into %{pname}-config as we only package them
 # in the non HPC build
@@ -730,9 +736,9 @@ fi
 %files macros-devel
 %defattr(-,root,root,-)
 %if %{with hpc}
-%config %{_sysconfdir}/rpm/macros.hpc-openmpi
+%{_rpmmacrodir}/macros.hpc-openmpi
 %else
-%config %{_sysconfdir}/rpm/macros.openmpi
+%{_rpmmacrodir}/macros.openmpi
 %endif
 
 %if 0%{?build_static_devel}

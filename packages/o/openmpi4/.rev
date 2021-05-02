@@ -77,4 +77,42 @@
 - Removed: reproducible.patch - replaced by spec file settings.</comment>
     <requestid>882294</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1decaf43f54baa5ad58908a1a6149d56</srcmd5>
+    <version>4.1.1</version>
+    <time>1619973356</time>
+    <user>dimstar_suse</user>
+    <comment>Change default openmpi to openmpi4
+- openmpi4 is now the default openmpi for releases &gt; 15.3
+- Add orted-mpir-add-version-to-shared-library.patch to fix unversionned library
+- Change RPM macros install path to %{_rpmmacrodir}
+
+- Update to version 4.1.1
+  - Fix a number of datatype issues, including an issue with
+    improper handling of partial datatypes that could lead to
+    an unexpected application failure.
+  - Change UCX PML to not warn about MPI_Request leaks during
+    MPI_FINALIZE by default.  The old behavior can be restored with
+    the mca_pml_ucx_request_leak_check MCA parameter.
+  - Reverted temporary solution that worked around launch issues in
+    SLURM v20.11.{0,1,2}. SchedMD encourages users to avoid these
+    versions and to upgrade to v20.11.3 or newer.
+  - Updated PMIx to v3.2.2.
+  - Disabled gcc built-in atomics by default on aarch64 platforms.
+  - Disabled UCX PML when UCX v1.8.0 is detected. UCX version 1.8.0 has a bug that
+    may cause data corruption when its TCP transport is used in conjunction with
+    the shared memory transport. UCX versions prior to v1.8.0 are not affected by
+    this issue. Thanks to @ksiazekm for reporting the issue.
+  - Fixed detection of available UCX transports/devices to better inform PML
+    prioritization.
+  - Fixed SLURM support to mark ORTE daemons as non-MPI tasks.
+  - Improved AVX detection to more accurately detect supported
+    platforms.  Also improved the generated AVX code, and switched to
+    using word-based MCA params for the op/avx component (vs. numeric
+    big flags).
+  - Improved OFI compatibility support and fixed memory leaks in error
+    handling paths.
+  - Improved HAN collectives with support for Barrier and Scatter. Thanks</comment>
+    <requestid>889565</requestid>
+  </revision>
 </revisionlist>

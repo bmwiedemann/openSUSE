@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Wed Apr 28 11:08:54 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- openmpi4 is now the default openmpi for releases > 15.3
+- Add orted-mpir-add-version-to-shared-library.patch to fix unversionned library
+- Change RPM macros install path to %{_rpmmacrodir}
+
+-------------------------------------------------------------------
+Wed Apr 28 09:24:33 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to version 4.1.1
+  - Fix a number of datatype issues, including an issue with
+    improper handling of partial datatypes that could lead to
+    an unexpected application failure.
+  - Change UCX PML to not warn about MPI_Request leaks during
+    MPI_FINALIZE by default.  The old behavior can be restored with
+    the mca_pml_ucx_request_leak_check MCA parameter.
+  - Reverted temporary solution that worked around launch issues in
+    SLURM v20.11.{0,1,2}. SchedMD encourages users to avoid these
+    versions and to upgrade to v20.11.3 or newer.
+  - Updated PMIx to v3.2.2.
+  - Disabled gcc built-in atomics by default on aarch64 platforms.
+  - Disabled UCX PML when UCX v1.8.0 is detected. UCX version 1.8.0 has a bug that
+    may cause data corruption when its TCP transport is used in conjunction with
+    the shared memory transport. UCX versions prior to v1.8.0 are not affected by
+    this issue. Thanks to @ksiazekm for reporting the issue.
+  - Fixed detection of available UCX transports/devices to better inform PML
+    prioritization.
+  - Fixed SLURM support to mark ORTE daemons as non-MPI tasks.
+  - Improved AVX detection to more accurately detect supported
+    platforms.  Also improved the generated AVX code, and switched to
+    using word-based MCA params for the op/avx component (vs. numeric
+    big flags).
+  - Improved OFI compatibility support and fixed memory leaks in error
+    handling paths.
+  - Improved HAN collectives with support for Barrier and Scatter. Thanks
+    to @EmmanuelBRELLE for these changes and the relevant bug fixes.
+  - Fixed MPI debugger support (i.e., the MPIR_Breakpoint() symbol).
+    Thanks to @louisespellacy-arm for reporting the issue.
+  - Fixed ORTE bug that prevented debuggers from reading MPIR_Proctable.
+  - Removed PML uniformity check from the UCX PML to address performance
+    regression.
+  - Fixed MPI_Init_thread(3) statement about C++ binding and update
+    references about MPI_THREAD_MULTIPLE.  Thanks to Andreas Lösel for
+    bringing the outdated docs to our attention.
+  - Added fence_nb to Flux PMIx support to address segmentation faults.
+  - Ensured progress of AIO requests in the POSIX FBTL component to
+    prevent exceeding maximum number of pending requests on MacOS.
+  - Used OPAL's mutli-thread support in the orted to leverage atomic
+    operations for object refcounting.
+  - Fixed segv when launching with static TCP ports.
+  - Fixed --debug-daemons mpirun CLI option.
+  - Fixed bug where mpirun did not honor --host in a managed job
+    allocation.
+  - Made a managed allocation filter a hostfile/hostlist.
+  - Fixed bug to marked a generalized request as pending once initiated.
+  - Fixed external PMIx v4.x check.
+  - Fixed OSHMEM build with `--enable-mem-debug`.
+  - Fixed a performance regression observed with older versions of GCC when
+    __ATOMIC_SEQ_CST is used. Thanks to @BiplabRaut for reporting the issue.
+  - Fixed buffer allocation bug in the binomial tree scatter algorithm when
+    non-contiguous datatypes are used. Thanks to @sadcat11 for reporting the issue.
+  - Fixed bugs related to the accumulate and atomics functionality in the
+    osc/rdma component.
+  - Fixed race condition in MPI group operations observed with
+    MPI_THREAD_MULTIPLE threading level.
+  - Fixed a deadlock in the TCP BTL's connection matching logic.
+  - Fixed pml/ob1 compilation error when CUDA support is enabled.
+  - Fixed a build issue with Lustre caused by unnecessary header includes.
+  - Fixed a build issue with IMB LSF workload manager.
+  - Fixed linker error with UCX SPML.
+
+-------------------------------------------------------------------
 Wed Mar 24 08:01:35 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Update to version 4.1.0

@@ -1,0 +1,22 @@
+commit bd2ceac4315c772e02cbb070e443d1acf2512da1
+Author: Andrew J. Hesford <ajh@sideband.org>
+Date:   Thu Apr 29 15:13:23 2021 -0400
+
+    orted-mpir: add version to shared library
+    
+    Because orted-mpir is installed in the public library direrctory, it
+    should have a version. Assign the library libopen_rte_so_version to be
+    consistent with the rest of the RTE.
+    
+    Signed-off-by: Andrew J. Hesford <ajh@sideband.org>
+
+diff --git orte/orted/orted-mpir/Makefile.am orte/orted/orted-mpir/Makefile.am
+index 5c0dd335644a..8105dd4a6b83 100644
+--- orte/orted/orted-mpir/Makefile.am
++++ orte/orted/orted-mpir/Makefile.am
+@@ -19,4 +19,4 @@ lib_LTLIBRARIES = lib@ORTE_LIB_PREFIX@open-orted-mpir.la
+ lib@ORTE_LIB_PREFIX@open_orted_mpir_la_SOURCES = \
+         orted_mpir_breakpoint.c \
+         orted_mpir.h
+-lib@ORTE_LIB_PREFIX@open_orted_mpir_la_LDFLAGS = -avoid-version
++lib@ORTE_LIB_PREFIX@open_orted_mpir_la_LDFLAGS = -version-info $(libopen_rte_so_version)
