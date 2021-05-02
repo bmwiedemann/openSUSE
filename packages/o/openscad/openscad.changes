@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Tue Apr 20 11:48:29 UTC 2021 - Samu Voutilainen <smar@smar.fi>
+
+- Update to 2021.1 release
+  + Language Features
+    * New
+        Add function literals
+        Add exponent function (e.g. 2^3)
+        Add convexity parameter to resize()
+        Add support for generic tail recursion
+        Add $vpf for viewport field of view
+        Add warnings for ranges with begin < end
+        Add warnings for matrix structure problems
+    * Changed
+        Allow random seeds to stick between rands() calls
+        Make comparison operators on mixed types return undef
+        Track reason for values turning undef
+    * Fixed
+        Fix Range precision
+        Fix empty geometry handling
+        Fix search order for imported modules
+        Improve internal handling of data values
+        Improve performance of array concatenation
+        Improve float accuracy of mirror matrix calculation
+        Improve polygon and polyhedron warnings/errors
+  + Program Features
+    * GUI
+        Add jump to source code from 3D preview
+        Add Error-Log window for tracking errors and warnings
+        Add window menu to allow keyboard access to all docked windows
+        Enable default binary stl output, and ascii option
+        Show message in console when caches are flushed
+        Disable HTML rendering in console
+        Enable color scheme for CGAL 2D render
+        Simplified OpenCSG edge shader, with added smoothing
+        New and updated translations: Chinese, Armenian, French, Russian, Polish, German
+    * Editor
+        Edit multiple files in tabs
+        Switch tabs via Ctrl+Tab / Ctrl+Shift+Tab
+        Modify numbers via mouse scroll (when holding ALT)
+        Add auto-complete & call-tips for built-ins
+        Add configurable code snippets
+        Add (line) bookmarks
+        Add jump to error
+        Add support for line/block copy and move
+        Add convenience context menu to tab header
+        Open include<>/use<> files via inline link
+        Fix search highlight for utf8 text
+        Fix display of matches in search field
+        Add Find/Find Next/Find Previous to editor context menu
+    * Command line
+        Support reading scripts from STDIN
+        Support export to STDOUT
+        Add multi-export on command line
+        Add --animate command line option
+        Add --export-format command line option
+        Allow view-port variables in command-line mode
+        Allow export to .ast, .csg, .echo and .term in preview mode
+        Print statistics in cmdline mode as in GUI
+    * General
+        Add PDF export (single page only)
+        Add support for line-cap and line-join in SVG import
+        Add support stroke-linejoin in SVG import
+        Change CGAL Union to join least complex geometries first
+        Install start shortcut for all users on Windows
+        Install icons with defined sizes (e.g. required by flathub)
+        Switch to C++14 and allow usage of header-only CGAL
+        Add support for lib3MF v2.0 API
+        Update AppStream release info
+- Ran spec through spec-cleaner
+- removed boost_include.diff (upstream)
+
+-------------------------------------------------------------------
 Tue Oct  6 12:05:11 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - openGL is required but Arm uses openGL ES, so exclude %arm
