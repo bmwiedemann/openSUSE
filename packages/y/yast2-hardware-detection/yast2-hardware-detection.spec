@@ -17,7 +17,7 @@
 
 
 Name:           yast2-hardware-detection
-Version:        4.1.2
+Version:        4.4.0
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
