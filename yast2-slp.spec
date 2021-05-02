@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-slp
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           yast2-slp
-Version:        4.1.1
+Version:        4.4.0
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -42,7 +42,7 @@ Requires:       yast2-ruby-bindings >= 1.0.0
 Summary:        YaST2 - SLP Agent and Library
 License:        GPL-2.0-or-later
 Group:          System/YaST
-Url:            https://github.com/yast/yast-slp
+URL:            https://github.com/yast/yast-slp
 
 %description
 This package provides YaST modules to lookup/advertise services with SLP.
