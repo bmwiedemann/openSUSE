@@ -1,7 +1,7 @@
 #
 # spec file for package qdox
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,14 @@
 #
 
 
-%global vertag  M9
-%global verbase 2.0
 Name:           qdox
-Version:        %{verbase}.%{vertag}
+Version:        2.0.0
 Release:        0
 Summary:        Tool to extract class/interface/method definitions from sources
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/paul-hammant/qdox
-Source0:        http://repo2.maven.org/maven2/com/thoughtworks/qdox/qdox/%{verbase}-%{vertag}/%{name}-%{verbase}-%{vertag}-project.tar.gz
+Source0:        https://repo1.maven.org/maven2/com/thoughtworks/qdox/qdox/%{version}/%{name}-%{version}-project.tar.bz2
 Source1:        qdox-MANIFEST.MF
 BuildRequires:  byaccj
 BuildRequires:  fdupes
@@ -48,11 +46,12 @@ Group:          Development/Libraries/Java
 API docs for %{name}.
 
 %prep
-%setup -q -n %{name}-%{verbase}-%{vertag}
+%setup -q
 find -name *.jar -delete
 find -name *.class -delete
 rm -rf bootstrap
-
+# Fix line endings
+sed -i "s|\r||" README.md
 # We don't need these plugins
 %pom_remove_plugin :animal-sniffer-maven-plugin
 %pom_remove_plugin :maven-failsafe-plugin
@@ -87,10 +86,10 @@ GRAMMAR_PATH=$(pwd)/src/grammar/parser.y && \
 mkdir -p build/classes
 javac -d build/classes -source 6 -target 6 \
   $(find src/main/java -name \*.java)
-jar cf build/%{name}-%{verbase}-%{vertag}.jar -C build/classes .
+jar cf build/%{name}-%{version}.jar -C build/classes .
 
 # Inject OSGi manifests
-jar ufm build/%{name}-%{verbase}-%{vertag}.jar %{SOURCE1}
+jar ufm build/%{name}-%{version}.jar %{SOURCE1}
 
 mkdir -p build/apidoc
 javadoc -d build/apidoc -source 6 -notimestamp $(find src/main/java -name \*.java)
@@ -98,7 +97,7 @@ javadoc -d build/apidoc -source 6 -notimestamp $(find src/main/java -name \*.jav
 %install
 # jar
 install -dm 0755 %{buildroot}%{_javadir}
-install -pm 0644 build/%{name}-%{verbase}-%{vertag}.jar %{buildroot}%{_javadir}/%{name}.jar
+install -pm 0644 build/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
 install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
