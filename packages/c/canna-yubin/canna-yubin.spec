@@ -1,7 +1,7 @@
 #
 # spec file for package canna-yubin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 Name:           canna-yubin
 BuildRequires:  canna
-Version:        0.4.0.20200331.0
+Version:        0.4.0.20210430.0
 Release:        0
 URL:            https://osdn.net/projects/canna-yubin/
-Source0:        https://osdn.dl.osdn.net/%{name}/72772/%{name}-%{version}.tar.xz
-Source1:        https://osdn.dl.osdn.net/%{name}/72772/%{name}-%{version}.tar.xz.asc
-Source2:        https://osdn.dl.osdn.net/%{name}/72773/%{name}.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source0:        https://jaist.dl.osdn.jp/%{name}/75047/%{name}-%{version}.tar.xz
+Source1:        https://jaist.dl.osdn.jp/%{name}/75047/%{name}-%{version}.tar.xz.asc
+Source2:        https://jaist.dl.osdn.jp/%{name}/75049/%{name}.keyring
 Summary:        Postal Code Extension Dictionary for Canna
 License:        GPL-2.0-or-later AND SUSE-Public-Domain
 Group:          System/I18n/Japanese
