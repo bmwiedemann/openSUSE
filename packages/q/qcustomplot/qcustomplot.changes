@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 29 22:40:01 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.1.0:
+  * Compatibility up to Qt 6.0
+  * Fixed bug where QCPLayer::replot wouldn't issue full replot even
+    though invalidated buffers existed
+  * Fixed QCPCurve bug causing rendering artifacts when using
+    keys/values smaller than about 1e-12 in some constellations
+  * Fixed getValueRange when used with explicit keyRange, now doesn't
+    use key range expanded by one point to each side anymore
+  * Fixed bug of QCPAxis tick label font size change only propagating
+    to the layout after second call to replot
+  * Fixed bug of QCPTextElement not respecting the configured text
+    alignment flag
+  * Various documentation typos and improvements
+  * QCPLegend::clearItems is now faster in case of many legend items
+  * Work around Qt bug, drawing lines with pen width 1 as slow as
+    with pen widths > 1 (polyfill instead of line algorithm,
+    also on Normal-DPI), by using pen width 0 in such cases.
+
+-------------------------------------------------------------------
 Sat Dec 15 15:12:46 UTC 2018 - Todd R <toddrme2178@gmail.com>
 
 - Add patch tags and and an explanation in the patch for the

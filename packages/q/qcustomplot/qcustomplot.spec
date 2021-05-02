@@ -17,18 +17,19 @@
 
 
 Name:           qcustomplot
-Version:        2.0.1
-%define sover  2
+Version:        2.1.0
+%define sover   2
 Release:        0
 Summary:        Qt widget for plotting and data visualization
 License:        GPL-3.0-or-later
-URL:            http://www.qcustomplot.com/
+URL:            https://www.qcustomplot.com/
 Group:          Development/Libraries/C and C++
-Source0:        https://www.qcustomplot.com/release/%{version}/QCustomPlot.tar.gz
-Source1:        https://www.qcustomplot.com/release/%{version}/QCustomPlot-sharedlib.tar.gz
+Source0:        https://www.qcustomplot.com/release/%{version}fixed/QCustomPlot.tar.gz
+Source1:        https://www.qcustomplot.com/release/%{version}fixed/QCustomPlot-sharedlib.tar.gz
 # PATCH-FIX-OPENSUSE relwithdebug.diff -- build with debug symbols
 Patch1:         relwithdebug.patch
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++ >= 4.6.4
 BuildRequires:  gdb
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(Qt5Core)
@@ -64,7 +65,7 @@ visualization applications.
 Summary:        Development files for QCustomPlot
 Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{sover} = %{version}
-Provides:       lib%{name}-devel = %{version}
+# Last used 2018 with version 2.0.0
 Provides:       %{name}-qt5-devel = %{version}
 Obsoletes:      %{name}-qt5-devel < %{version}
 
@@ -116,6 +117,7 @@ EOF
 install -Dm 0644 -t %{buildroot}%{_docdir}/%{name}/ changelog.txt documentation/qcustomplot.qch
 cp -r documentation/html/ %{buildroot}%{_docdir}/%{name}/
 cp -r examples %{buildroot}%{_docdir}/%{name}/
+find %{buildroot}%{_docdir}/%{name}/ -type f -exec chmod 0644 \{\} +
 %fdupes %{buildroot}/%{_prefix}
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
