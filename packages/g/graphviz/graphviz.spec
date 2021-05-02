@@ -1,5 +1,5 @@
 #
-# spec file for package graphviz
+# spec file for package graphviz%{psuffix}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -273,7 +273,7 @@ Provides:       graphviz-python
 Obsoletes:      graphviz-python
 
 %description -n python3-gv
-The package contains the Python extension for the                
+The package contains the Python extension for the
 graphviz tools.
 
 %package -n graphviz-ruby
@@ -306,8 +306,6 @@ Requires:       libwebp7
 
 %description -n graphviz-webp
 The graphviz-webp package contains files needed for the support of WebP images
-
-
 
 %package -n graphviz-doc
 Summary:        Documentation for graphviz
@@ -349,6 +347,7 @@ programs that use the graphviz libraries including man3 pages.
 
 
 #autosetup breaks graphviz-addons
+
 %prep
 %setup -q -n %{mname}-%{version}
 
@@ -663,6 +662,7 @@ fi
 %{_datadir}/graphviz/demo
 
 %else
+
 %files
 %doc doc/FAQ.html AUTHORS README NEWS ChangeLog
 %license COPYING
