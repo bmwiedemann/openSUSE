@@ -78,4 +78,12 @@ This version fixes the conflict from the previous version.</comment>
     <comment></comment>
     <requestid>888398</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fad4de4fd855d7c859e9d0ba90c0c6f4</srcmd5>
+    <version>4.21.1</version>
+    <time>1619973372</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 889774 from bnavigator)</comment>
+    <requestid>889780</requestid>
+  </revision>
 </revisionlist>

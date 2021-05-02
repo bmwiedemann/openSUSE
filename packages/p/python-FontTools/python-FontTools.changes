@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat May  1 22:01:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Release 4.21.1
+  * [pens] Reverted breaking change that turned AbstractPen and
+    AbstractPointPen into abstract base classes (#2164, #2198).
+- Release 4.21.0
+  * [feaLib] Indent anchor statements in asFea() to make them more
+    legible and diff-able (#2193).
+  * [pens] Turn AbstractPen and AbstractPointPen into abstract
+    base classes (#2164).
+  * [feaLib] Added support for parsing and building STAT table
+    from AFDKO feature files (#2039).
+  * [instancer] Added option to update name table of generated
+    instance using STAT table's axis values (#2189).
+  * [bezierTools] Added functions to compute bezier point-at-time,
+    as well as line-line, curve-line and curve-curve intersections
+    (#2192).
+  * [arrayTools] Added rectArea function to compute area of
+    rectangle (#2192).
+- Release 4.20.0
+  * [COLRv1] Added unbuildColrV1 to deconstruct COLRv1 otTables to
+    raw json-able data structure; it does the reverse of
+    buildColrV1 (#2171).
+  * [feaLib] Allow sub X by NULL sequence to delete a glyph (#2170)
+  * [arrayTools] Fixed Vector division (#2173).
+  * [COLRv1] Define new PaintSweepGradient (#2172).
+  * [otTables] Moved Paint.Format enum class outside of Paint
+    class definition, now named PaintFormat. It was clashing with
+    paint instance Format attribute and thus was breaking lazy
+    load of COLR table which relies on magic __getattr__ (#2175).
+  * [COLRv1] Replace hand-coded builder functions with
+    otData-driven dynamic implementation (#2181).
+  * [COLRv1] Define additional static (non-variable) Paint formats
+    (#2181).
+  * [subset] Added support for subsetting COLR v1 and CPAL tables
+    (#2174, #2177).
+  * [fontBuilder] Allow setupFvar to optionally take
+    designspaceLib.AxisDescriptor objects. Added new setupAvar
+    method. Support localised names for axes and named instances
+    (#2185).
+- Don't update to 4.22 yet because it breaks afdko
+- Clarify fs requirement
+
+-------------------------------------------------------------------
 Fri Apr 23 14:28:25 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - We do Require fs module.

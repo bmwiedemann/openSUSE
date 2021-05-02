@@ -27,7 +27,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-FontTools%{psuffix}
-Version:        4.19.1
+Version:        4.21.1
 Release:        0
 Summary:        Suite of Tools and Libraries for Manipulating Fonts
 License:        MIT AND OFL-1.1
@@ -41,7 +41,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Recommends:     python-Brotli >= 1.0.1
-Requires:       python-fs >= 2.4.11
+# some packages should require fonttools[ufo] but expect fs to be pulled in by default.
+Requires:       python-fs >= 2.2.0
 Recommends:     python-lxml >= 4.0
 Recommends:     python-scipy >= 1.5.1
 Recommends:     python-sympy
@@ -53,7 +54,7 @@ Recommends:     python-reportlab
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Brotli >= 1.0.1}
-BuildRequires:  %{python_module fs >= 2.4.11}
+BuildRequires:  %{python_module fs >= 2.2.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sympy}
 BuildRequires:  %{python_module ufoLib2 >= 0.6.2}
