@@ -4471,6 +4471,8 @@ unsorted:
   - ghc-cpphs-devel: [x86_64] 
   - ghc-cprng-aes: [x86_64] 
   - ghc-cprng-aes-devel: [x86_64] 
+  - ghc-criterion: [x86_64] 
+  - ghc-criterion-devel: [x86_64] 
   - ghc-criterion-measurement: [x86_64] 
   - ghc-criterion-measurement-devel: [x86_64] 
   - ghc-crypto-api: [x86_64] 
