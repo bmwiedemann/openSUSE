@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- 4.4.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Tue Nov 24 10:53:05 UTC 2020 - Noel Power <nopower@suse.com>
 
 - Fix cli 'help' handling for auth-client & ldapkrb;
