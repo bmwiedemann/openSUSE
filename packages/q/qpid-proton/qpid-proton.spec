@@ -26,7 +26,7 @@
 %define _unpackaged_files_terminate_build 0
 %endif
 Name:           qpid-proton
-Version:        0.33.0
+Version:        0.34.0
 Release:        0
 Summary:        A messaging library
 License:        Apache-2.0

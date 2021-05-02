@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 30 00:52:07 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.34:
+  * [python] reconnect/failover is a bit of a mess
+  * [python] BlockingConnection has no way to allow failover
+  * Allow access to link properties in cpp binding
+  * Allow proactor raw connections to be half closed
+  * Introduce 'Drain buffers' event to proactor raw connection
+  * Simplify and clean up build flag selection for different
+    compilers
+  * [c] receiver cannot settle an incomplete incoming message
+  * [c] Codec pn_data_vfill() method doc has symbol and string
+    types interchanged
+  * [cpp] If reconnect is on client responds to a forced close
+    from server by only closing the socket
+  * Fixed epoll proactor bug in tracking previous task used
+    by a thread
+  * Fixed incorrect handling of commandline options in
+    ssl.cpp example
+  * Fix some proactor raw connection issues found with TSAN
+  * Fixed memory leak and close_waits in qpid-proton-c when
+    dropping timeouted connection
+
+-------------------------------------------------------------------
 Thu Mar 25 16:27:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Can't assume non-existence of python38 macros in Leap.
