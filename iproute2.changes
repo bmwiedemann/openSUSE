@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+<<<<<<< Updated upstream
+=======
+Wed Apr 28 13:44:41 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to release 5.12 
+  * devlink: Use library provided string processing APIs
+  * utils: Introduce helper routines for generic socket recv
+  * q_cake: Fix incorrect printing of signed values in class statistics
+  * json_print: Add print_tv()
+  * nexthop: Add support for nexthop buckets
+  * nexthop: Add support for resilient nexthop groups
+  * ip: xfrm: add support for tfcpad
+  * tc: e_bpf: fix memory leak in parse_bpf()
+  * lib: bpf_legacy: treat 0 as a valid file descriptor
+  * ip: drop 2-char command assumption
+  * bridge: vlan: dump port only if there are any vlans
+
+-------------------------------------------------------------------
+>>>>>>> Stashed changes
 Sat Mar  6 08:31:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.11
