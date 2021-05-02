@@ -1,7 +1,7 @@
 #
 # spec file for package systemtap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -122,7 +122,7 @@ cp COPYING %{buildroot}%{_docdir}/systemtap/
 mkdir -p %{buildroot}%{_localstatedir}/cache/systemtap
 mkdir -p %{buildroot}%{_localstatedir}/log
 touch %{buildroot}%{_localstatedir}/log/stap-server.log
-# config file for stap-server (/var/run now on tmpfs)
+# config file for stap-server (/run now on tmpfs)
 mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}
 

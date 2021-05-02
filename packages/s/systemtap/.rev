@@ -823,4 +823,13 @@ Most projects for this reason don't even carry the generated configure script in
     <comment></comment>
     <requestid>832676</requestid>
   </revision>
+  <revision rev="112" vrev="5">
+    <srcmd5>c63b52695bb80bf424a4f8b71ce1e47f</srcmd5>
+    <version>4.2</version>
+    <time>1619973307</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust stap-server.conf to refer to /run not /var/run (bsc#1185068) 
+</comment>
+    <requestid>889320</requestid>
+  </revision>
 </revisionlist>
