@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- 4.4.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Thu Feb 18 15:39:36 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Adapted unit test to recent changes in Yast::Report (related to
