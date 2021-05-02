@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-ternary
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
 Name:           python-python-ternary
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Tool to make ternary plots in python
 License:        MIT
@@ -52,11 +54,12 @@ The library provides functions for plotting projected lines, curves
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest discover -s tests
+%pyunittest discover -v tests/
 
 %files %{python_files}
 %doc README.md README.txt CITATION.md citations.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/python_ternary-%{version}*-info
+%{python_sitelib}/ternary
 
 %changelog

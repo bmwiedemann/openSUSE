@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 30 19:33:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.0.8
+  * Background color for plot, bug fix, cosmetic tweaks
+- Skip python36 build on TW: no matplotlib
+
+-------------------------------------------------------------------
 Tue Jul 14 14:54:55 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 1.0.7
