@@ -7765,7 +7765,6 @@ unsorted:
   - kemoticons-devel-32bit: [x86_64] 
   - kernel-debug 
   - kernel-debug-devel 
-  - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
   - kernel-default-devel 
   - kernel-devel 
@@ -12300,7 +12299,7 @@ unsorted:
   - libopenmpi_1_10_7-gnu-hpc 
   - libopenmpi_2_1_6-gnu-hpc 
   - libopenmpi_3_1_6-gnu-hpc 
-  - libopenmpi_4_1_0-gnu-hpc 
+  - libopenmpi_4_1_1-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
   - libopenmpt0-32bit: [x86_64] 
@@ -17842,12 +17841,12 @@ unsorted:
   - openmpi_3_1_6-gnu-hpc-docs 
   - openmpi_3_1_6-gnu-hpc-macros-devel 
   - openmpi_3_1_6-gnu-hpc-testsuite 
-  - openmpi_4_1_0-gnu-hpc 
-  - openmpi_4_1_0-gnu-hpc-devel 
-  - openmpi_4_1_0-gnu-hpc-devel-static 
-  - openmpi_4_1_0-gnu-hpc-docs 
-  - openmpi_4_1_0-gnu-hpc-macros-devel 
-  - openmpi_4_1_0-gnu-hpc-testsuite 
+  - openmpi_4_1_1-gnu-hpc 
+  - openmpi_4_1_1-gnu-hpc-devel 
+  - openmpi_4_1_1-gnu-hpc-devel-static 
+  - openmpi_4_1_1-gnu-hpc-docs 
+  - openmpi_4_1_1-gnu-hpc-macros-devel 
+  - openmpi_4_1_1-gnu-hpc-testsuite 
   - openmpt123 
   - openmw 
   - opennlp 
@@ -20740,6 +20739,7 @@ unsorted:
   - pulseeffects-lang 
   - pulseview 
   - pumpa 
+  - pure-ftpd 
   - purpose-32bit: [x86_64] 
   - purpose-devel 
   - purpose-devel-32bit: [x86_64] 
@@ -21235,8 +21235,8 @@ unsorted:
   - python3-pysol-cards 
   - python3-pytest-cookies 
   - python3-pytest-listener 
-  - python3-pytest-pyramid-server 
-  - python3-pytest-server-fixtures 
+  - python3-pytest-pyramid-server: [i586] 
+  - python3-pytest-server-fixtures: [i586] 
   - python3-python-pseudorandom: [i586] 
   - python3-renderspec 
   - python3-reno 
@@ -22509,6 +22509,7 @@ unsorted:
   - python36-hl7apy 
   - python36-holidays 
   - python36-hpack 
+  - python36-hstspreload 
   - python36-html2text 
   - python36-html5-parser 
   - python36-html5lib 
@@ -23295,6 +23296,7 @@ unsorted:
   - python36-pytest-click 
   - python36-pytest-console-scripts 
   - python36-pytest-cov 
+  - python36-pytest-curio 
   - python36-pytest-datadir 
   - python36-pytest-dependency 
   - python36-pytest-describe 
@@ -23334,6 +23336,7 @@ unsorted:
   - python36-pytest-plus 
   - python36-pytest-profiling 
   - python36-pytest-pycodestyle 
+  - python36-pytest-pyramid-server: [x86_64] 
   - python36-pytest-pythonpath 
   - python36-pytest-qt 
   - python36-pytest-random-order 
@@ -23345,6 +23348,7 @@ unsorted:
   - python36-pytest-rerunfailures 
   - python36-pytest-responsemock 
   - python36-pytest-runner 
+  - python36-pytest-server-fixtures: [x86_64] 
   - python36-pytest-services 
   - python36-pytest-shutil 
   - python36-pytest-socket 
@@ -23435,7 +23439,6 @@ unsorted:
   - python36-python-sql 
   - python36-python-stdnum 
   - python36-python-subunit 
-  - python36-python-ternary 
   - python36-python-twitter 
   - python36-python-utils 
   - python36-python-vlc 
@@ -23668,6 +23671,7 @@ unsorted:
   - python36-simplejson 
   - python36-simplekml 
   - python36-single-version 
+  - python36-singledispatch 
   - python36-siosocks 
   - python36-sip-devel 
   - python36-sip4 
@@ -25310,6 +25314,7 @@ unsorted:
   - python38-holidays 
   - python38-holoviews 
   - python38-hotdoc 
+  - python38-hstspreload 
   - python38-html2text 
   - python38-html5-parser 
   - python38-html5lib 
@@ -26157,6 +26162,7 @@ unsorted:
   - python38-pytest-console-scripts 
   - python38-pytest-cookies 
   - python38-pytest-cov 
+  - python38-pytest-curio 
   - python38-pytest-datadir 
   - python38-pytest-dependency 
   - python38-pytest-describe 
@@ -26198,6 +26204,7 @@ unsorted:
   - python38-pytest-plus 
   - python38-pytest-profiling 
   - python38-pytest-pycodestyle 
+  - python38-pytest-pyramid-server: [x86_64] 
   - python38-pytest-pythonpath 
   - python38-pytest-qt 
   - python38-pytest-random-order 
@@ -26209,6 +26216,7 @@ unsorted:
   - python38-pytest-rerunfailures 
   - python38-pytest-responsemock 
   - python38-pytest-runner 
+  - python38-pytest-server-fixtures: [x86_64] 
   - python38-pytest-services 
   - python38-pytest-shutil 
   - python38-pytest-socket 
@@ -26535,6 +26543,7 @@ unsorted:
   - python38-simplegeneric 
   - python38-simplekml 
   - python38-single-version 
+  - python38-singledispatch 
   - python38-siosocks 
   - python38-sip-devel 
   - python38-sip4 
@@ -27221,6 +27230,7 @@ unsorted:
   - python39-aioresponses 
   - python39-aiorpcX 
   - python39-aiosmtpd 
+  - python39-aiosmtplib 
   - python39-aiosqlite 
   - python39-aiounittest 
   - python39-ajsonrpc 
@@ -27917,6 +27927,7 @@ unsorted:
   - python39-django-nine 
   - python39-django-nose 
   - python39-django-oauth-toolkit 
+  - python39-django-oidc-provider: [x86_64] 
   - python39-django-parler 
   - python39-django-perf-rec 
   - python39-django-pglocks 
@@ -28246,6 +28257,7 @@ unsorted:
   - python39-holoviews 
   - python39-hotdoc 
   - python39-hpack 
+  - python39-hstspreload 
   - python39-html2text 
   - python39-html5-parser 
   - python39-html5lib 
@@ -28517,6 +28529,7 @@ unsorted:
   - python39-m2r 
   - python39-macholib 
   - python39-magic 
+  - python39-magic-wormhole: [x86_64] 
   - python39-magic-wormhole-mailbox-server 
   - python39-magic-wormhole-transit-relay 
   - python39-magicalimport 
@@ -28699,6 +28712,7 @@ unsorted:
   - python39-odfpy 
   - python39-odorik 
   - python39-ogr 
+  - python39-oic: [x86_64] 
   - python39-oiffile 
   - python39-olefile 
   - python39-oletools 
@@ -29011,6 +29025,7 @@ unsorted:
   - python39-pyjavaproperties 
   - python39-pyjokes 
   - python39-pyjsparser 
+  - python39-pyjwkest: [x86_64] 
   - python39-pykafka 
   - python39-pykeepass 
   - python39-pykerberos 
@@ -29122,6 +29137,7 @@ unsorted:
   - python39-pytest-click 
   - python39-pytest-console-scripts 
   - python39-pytest-cov 
+  - python39-pytest-curio 
   - python39-pytest-datadir 
   - python39-pytest-dependency 
   - python39-pytest-describe 
@@ -29162,6 +29178,7 @@ unsorted:
   - python39-pytest-plus 
   - python39-pytest-profiling 
   - python39-pytest-pycodestyle 
+  - python39-pytest-pyramid-server: [x86_64] 
   - python39-pytest-pythonpath 
   - python39-pytest-qt 
   - python39-pytest-random-order 
@@ -29173,6 +29190,7 @@ unsorted:
   - python39-pytest-rerunfailures 
   - python39-pytest-responsemock 
   - python39-pytest-runner 
+  - python39-pytest-server-fixtures: [x86_64] 
   - python39-pytest-services 
   - python39-pytest-shutil 
   - python39-pytest-socket 
@@ -29263,6 +29281,7 @@ unsorted:
   - python39-python-sql 
   - python39-python-stdnum 
   - python39-python-subunit 
+  - python39-python-ternary 
   - python39-python-twitter 
   - python39-python-utils 
   - python39-python-vlc 
@@ -29303,6 +29322,7 @@ unsorted:
   - python39-pyxdg 
   - python39-pyzmq 
   - python39-pyzmq-devel 
+  - python39-pyzo 
   - python39-q 
   - python39-qet_tb_generator 
   - python39-qgrid 
@@ -29514,6 +29534,7 @@ unsorted:
   - python39-simplejson 
   - python39-simplekml 
   - python39-single-version 
+  - python39-singledispatch 
   - python39-siosocks 
   - python39-sip-devel 
   - python39-sip4 
@@ -29738,6 +29759,7 @@ unsorted:
   - python39-txWS 
   - python39-txZMQ 
   - python39-txaio 
+  - python39-txtorcon: [x86_64] 
   - python39-typed-ast 
   - python39-typeguard 
   - python39-typepy 
@@ -29889,6 +29911,7 @@ unsorted:
   - python39-xsge_tmx 
   - python39-xvfbwrapper 
   - python39-xxhash 
+  - python39-yacron: [x86_64] 
   - python39-yafe 
   - python39-yamldoc 
   - python39-yamllint 
@@ -41470,6 +41493,7 @@ unsorted:
   - wlr-randr 
   - wlr-sunclock 
   - wlroots-devel 
+  - wlsunset 
   - wm-icons 
   - wmpomme 
   - wmutils 
