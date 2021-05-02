@@ -105,4 +105,24 @@ configuration so users can re-map existing keys where needed.
 Aside from those, a bit of misc cleanup work. Many thanks to all</comment>
     <requestid>875092</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e3ef10bc3c2c97bde7508fc79ee29dde</srcmd5>
+    <version>2021.4</version>
+    <time>1619973312</time>
+    <user>dimstar_suse</user>
+    <comment>- xorgproto 2021.4
+The big new feature in this release is Olivier's addition that makes up
+XFixes 6: the new ClientDisconnectMode. An X server that is started on
+demand (Xwayland) should ideally also terminate when the last client
+disconnects. However, some X11 clients that provide system services will
+linger around forever, preventing that shutdown.
+With the new XFixes request, a client can designate itself as
+to-be-terminated and the X server can ignore those clients when counting the
+number of remaining clients. If no other clients are left, the server can
+shut down.
+Note that this requires changes to the X server and each client to work.
+
+yesterday's tarball.</comment>
+    <requestid>889520</requestid>
+  </revision>
 </revisionlist>

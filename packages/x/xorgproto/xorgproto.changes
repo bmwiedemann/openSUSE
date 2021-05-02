@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 30 09:04:25 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- xorgproto 2021.4
+The big new feature in this release is Olivier's addition that makes up
+XFixes 6: the new ClientDisconnectMode. An X server that is started on
+demand (Xwayland) should ideally also terminate when the last client
+disconnects. However, some X11 clients that provide system services will
+linger around forever, preventing that shutdown.
+
+With the new XFixes request, a client can designate itself as
+to-be-terminated and the X server can ignore those clients when counting the
+number of remaining clients. If no other clients are left, the server can
+shut down.
+
+Note that this requires changes to the X server and each client to work.
+
+-------------------------------------------------------------------
 Thu Feb 25 10:42:37 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - xorgproto 2021.3
@@ -10,7 +27,7 @@ missing from the (autotools-generated) tarball, causing a meson build from
 that tarball to fail during the setup phase. This is fixed now.
 
 No changes to the rest of the sources, so this is effectively identical to
-yesterday's tarball.
+yesterday's tarball.  
 
 -------------------------------------------------------------------
 Thu Feb 25 10:39:54 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>

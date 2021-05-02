@@ -17,7 +17,7 @@
 
 
 Name:           xorgproto
-Version:        2021.3
+Version:        2021.4
 Release:        0
 URL:            http://xorg.freedesktop.org/
 Summary:        The X11 Protocol collection
