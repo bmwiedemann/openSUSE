@@ -470,4 +470,25 @@
 - drop fix-aliasing-aarch64.patch: obsolete (fixed differently in new version)</comment>
     <requestid>878072</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>4084d3829f0c9d68888851da89f2ae04</srcmd5>
+    <version>1.99.11</version>
+    <time>1619973316</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to dd_rescue-1.99.11:
+  * Drop (backported) checksum_file-clear-errno.diff.
+  * Minor scheduling improvements for x86_64 and ARM asm.
+  * Work around compiler weirdness, passing two in/out parameters
+    in the same register (when they are provably the same),
+    causing x2 breakage on armv7.
+  * 256bit VAES support on x86-64 (0.23 cycles/byte on Zen3!).
+  * Needed to compile aesni twice for this, once with avx.
+  * Full asm versions for (non-x2) CTR and CBC on arm64
+    (achieving 0.40 cycles/byte on Cortex X-1).
+  * Avoid test failures with incompressible tweak in fuzz_lzo.
+  * test_aes improvements: Options, help, IV comparison, memcpy.
+  * Full crypto test coverage 0 -- 130 bytes len.
+  * Code safety against len==0 en/decryption.</comment>
+    <requestid>889534</requestid>
+  </revision>
 </revisionlist>

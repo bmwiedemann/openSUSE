@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           dd_rescue
-Version:        1.99.10
+Version:        1.99.11
 Release:        0
 Summary:        Data copying in the presence of I/O Errors
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -31,7 +31,6 @@ Source0:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2
 Source1:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source99:       %{name}.changes
-Patch11:        checksum_file-clear-errno.diff
 BuildRequires:  autoconf
 BuildRequires:  libattr-devel
 BuildRequires:  libopenssl-devel
@@ -115,7 +114,6 @@ FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{SOURCE99} '+%%H:%%M')
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{SOURCE99} '+%%b %%e %%Y')
 sed -i "s/__TIME__/\"$FAKE_BUILDTIME\"/g" dd_rescue.c
 sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" dd_rescue.c
-%autopatch -p1
 
 %build
 autoheader

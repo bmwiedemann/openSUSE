@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 29 21:15:14 CEST 2021 - kurt@garloff.de
+
+- Update to dd_rescue-1.99.11:
+  * Drop (backported) checksum_file-clear-errno.diff.
+  * Minor scheduling improvements for x86_64 and ARM asm.
+  * Work around compiler weirdness, passing two in/out parameters
+    in the same register (when they are provably the same),
+    causing x2 breakage on armv7.
+  * 256bit VAES support on x86-64 (0.23 cycles/byte on Zen3!).
+  * Needed to compile aesni twice for this, once with avx.
+  * Full asm versions for (non-x2) CTR and CBC on arm64
+    (achieving 0.40 cycles/byte on Cortex X-1).
+  * Avoid test failures with incompressible tweak in fuzz_lzo.
+  * test_aes improvements: Options, help, IV comparison, memcpy.
+  * Full crypto test coverage 0 -- 130 bytes len.
+  * Code safety against len==0 en/decryption.
+
+-------------------------------------------------------------------
 Tue Mar  9 19:00:02 CET 2021 - kurt@garloff.de
 
 - checksum_file-clear-errno.diff: Avoid stale errno to be picked
