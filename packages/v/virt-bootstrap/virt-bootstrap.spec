@@ -1,7 +1,7 @@
 #
 # spec file for package virt-bootstrap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%if 0%{suse_version} >= 1550
+# python-libguestfs is python3 only
+%define pythons python3
+%endif
 Name:           virt-bootstrap
 Version:        1.1.1
 Release:        0
@@ -34,8 +38,8 @@ Requires:       python-passlib
 Requires:       skopeo
 Requires:       virt-sandbox
 BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 powerpc64le
 %python_subpackages
 
@@ -45,6 +49,7 @@ libvirt containers.
 
 %prep
 %setup -q
+sed -i '1 {/env python/ d}' src/virtBootstrap/virt_bootstrap.py
 
 %build
 %python_build
@@ -54,6 +59,9 @@ libvirt containers.
 %python_clone -a %{buildroot}%{_bindir}/virt-bootstrap
 %python_clone -a %{buildroot}%{_mandir}/man1/virt-bootstrap.1
 %fdupes %{buildroot}%{_prefix}
+
+%check
+%pyunittest -v
 
 %post
 %python_install_alternative virt-bootstrap virt-bootstrap.1

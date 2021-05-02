@@ -56,4 +56,12 @@ libguestfs with python3 fixes.</comment>
     <comment></comment>
     <requestid>794529</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>e509533f1f7b790c89287ce55ca22215</srcmd5>
+    <version>1.1.1</version>
+    <time>1619973361</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889728</requestid>
+  </revision>
 </revisionlist>
