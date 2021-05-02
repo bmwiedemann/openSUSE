@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Apr 23 20:35:49 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.3.10+git0.4764f0e4e:
+  * [RELEASE] Released version 2.3.10
+  * BUG/MEDIUM: peers: re-work refcnt on table to protect against flush
+  * BUG/MEDIUM: peers: re-work connection to new process during reload.
+  * BUG/MINOR: peers: remove useless table check if initial resync is finished
+  * BUG/MEDIUM: mux-h2: Properly handle shutdowns when received with data
+  * BUG/MINOR: mworker: don't use oldpids[] anymore for reload
+  * BUG/MINOR: mworker/init: don't reset nb_oldpids in non-mworker cases
+  * BUG/MEDIUM: config: fix cpu-map notation with both process and threads
+  * BUG/MEDIUM: mux-h2: Fix dfl calculation when merging CONTINUATION frames
+  * BUG/MAJOR: mux-h2: Properly detect too large frames when decoding headers
+  * BUG/MINOR: server: free srv.lb_nodes in free_server
+  * BUG/MINOR: mux-h1: Release idle server H1 connection if data are received
+  * BUG/MINOR: logs: Report the true number of retries if there was no connection
+  * BUG/MINOR: http_htx: Remove BUG_ON() from http_get_stline() function
+  * BUG/MINOR: http-fetch: Make method smp safe if headers were already forwarded
+  * BUG/MINOR: ssl-samples: Fix ssl_bc_* samples when called from a health-check
+  * MINOR: connection: Make bc_http_major compatible with tcp-checks
+  * BUG/MINOR: connection: Fix fc_http_major and bc_http_major for TCP connections
+  * MINOR: logs: Add support of checks as session origin to format lf strings
+  * BUG/MINOR: checks: Set missing id to the dummy checks frontend
+  * BUG/MEDIUM: threads: Ignore current thread to end its harmless period
+  * DOC: ssl: Certificate hot update only works on fronted certificates
+  * BUG/MEDIUM: sample: Fix adjusting size in field converter
+  * MINOR: No longer rely on deprecated sample fetches for predefined ACLs
+  * DOC: clarify that compression works for HTTP/2
+  * BUG/MINOR: tools: fix parsing "us" unit for timers
+  * CONTRIB: halog: fix issue with array of type char
+  * REGTESTS: ssl: mark set_ssl_cert_bundle.vtc as broken
+  * DOC: Explicitly state only IPv4 are supported by forwardfor/originalto options
+  * REGTESTS: ssl: "set ssl cert" and multi-certificates bundle
+  * BUG/MINOR: ssl: Add missing free on SSL_CTX in ckch_inst_free
+  * BUG/MINOR: http_fetch: make hdr_ip() resistant to empty fields
+  * BUG/MINOR: ssl: Prevent removal of crt-list line if the instance is a default one
+  * BUG/MINOR: ssl: Fix update of default certificate
+  * BUILD: tcp: use IPPROTO_IPV6 instead of SOL_IPV6 on FreeBSD/MacOS
+  * BUG/MINOR: tcp: fix silent-drop workaround for IPv6
+
+-------------------------------------------------------------------
 Tue Mar 30 17:35:22 UTC 2021 - mrueckert@suse.de
 
 - Update to version 2.3.9+git1.afb63bc04:
