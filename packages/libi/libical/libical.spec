@@ -26,7 +26,7 @@
 %bcond_with glib
 %endif
 Name:           libical%{name_ext}
-Version:        3.0.9
+Version:        3.0.10
 Release:        0
 URL:            https://github.com/libical/libical
 Source:         %{url}/releases/download/v%{version}/libical-%{version}.tar.gz
