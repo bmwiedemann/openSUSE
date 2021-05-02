@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  2 12:20:27 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add fix-llvm12-fallout.patch with some LLVM API changes backported
+  as a temporary measure to fix LLVM 12 builds
+
+-------------------------------------------------------------------
 Sun Apr 18 12:17:04 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to 1.15.0.

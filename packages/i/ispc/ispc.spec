@@ -25,6 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
 URL:            https://ispc.github.io/
 Source:         https://github.com/%{name}/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch:          fix-llvm12-fallout.patch
 BuildRequires:  bison
 BuildRequires:  clang-devel
 BuildRequires:  cmake >= 3.13
@@ -46,6 +47,7 @@ A compiler for a variant of the C programming language, with extensions for
 
 %prep
 %setup -q
+%patch -p1
 
 # other distributions seem to provide curses compatibility links to ncurses
 sed -i 's|${PROJECT_NAME} pthread z tinfo curses)|${PROJECT_NAME} pthread z tinfo ncurses)|' CMakeLists.txt
