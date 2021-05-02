@@ -33,7 +33,7 @@ License:        GPL-2.0
 Group:          Documentation/Man
 Version:        5.12.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5d43652
+Release:        <RELEASE>.gc4830af
 %else
 Release:        0
 %endif
@@ -63,7 +63,7 @@ BuildRequires:  texlive-zapfding
 %endif
 Url:            http://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-5d43652877fda8aa556866abab93cad61f1f9b6f
+Provides:       %name-srchash-c4830af6d8ac9e225996ef8da38bf6184be9c882
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz

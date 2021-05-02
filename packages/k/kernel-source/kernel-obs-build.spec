@@ -45,7 +45,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-5d43652877fda8aa556866abab93cad61f1f9b6f
+BuildRequires:  kernel%kernel_flavor-srchash-c4830af6d8ac9e225996ef8da38bf6184be9c882
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -66,7 +66,7 @@ License:        GPL-2.0
 Group:          SLES
 Version:        5.12.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5d43652
+Release:        <RELEASE>.gc4830af
 %else
 Release:        0
 %endif

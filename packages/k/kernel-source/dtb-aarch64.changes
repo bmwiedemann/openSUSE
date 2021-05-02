@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Apr 28 06:31:30 CEST 2021 - jslaby@suse.cz
+
+- rpm/constraints.in: remove aarch64 disk size exception
+  obs://Kernel:stable/kernel-default/ARM/aarch64 currrently fails:
+  installing package kernel-default-livepatch-devel-5.12.0-3.1.g6208a83.aarch64 needs 3MB more space on the / filesystem
+  The stats say:
+  Maximal used disk space: 31799 Mbyte
+  By default, we require 35G. For aarch64 we had an exception to lower
+  this limit to 30G there. Drop this exception as it is obviously no
+  longer valid.
+- commit ee00b50
+
+-------------------------------------------------------------------
+Mon Apr 26 11:58:35 CEST 2021 - mkubecek@suse.cz
+
+- series.conf: cleanup
+- fix Patch-mainline tag and move to "almost mainline" section:
+  patches.suse/crypto-ccp-Annotate-SEV-Firmware-file-names.patch
+- commit 3a48ed8
+
+-------------------------------------------------------------------
+Mon Apr 26 10:45:45 CEST 2021 - jroedel@suse.de
+
+- crypto: ccp: Annotate SEV Firmware file names (bsc#1185282).
+- commit 66154b6
+
+-------------------------------------------------------------------
 Sun Apr 25 23:15:12 CEST 2021 - mkubecek@suse.cz
 
 - Update to 5.12 final
@@ -2898,7 +2925,7 @@ Fri Mar 12 17:15:31 CET 2021 - tiwai@suse.de
   Refreshed:
   patches.suse/media-dvb-usb-Fix-memory-leak-at-error-in-dvb_usb_de.patch
   patches.suse/media-dvb-usb-Fix-use-after-free-access.patch
-- commit 7cff707
+- commit 101728a
 
 -------------------------------------------------------------------
 Thu Mar 11 17:11:21 CET 2021 - jslaby@suse.cz
@@ -3351,7 +3378,7 @@ Fri Mar  5 16:13:26 CET 2021 - dmueller@suse.com
 
 - ARMv6/v7: Update config files. (bsc#1183009)
   enable CONFIG_ARM_MODULE_PLTS to fix module loading issues
-- commit b3d2cd1
+- commit 501199e
 
 -------------------------------------------------------------------
 Fri Mar  5 10:55:45 CET 2021 - jslaby@suse.cz

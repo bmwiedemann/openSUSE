@@ -31,7 +31,7 @@
 Name:           dtb-armv7l
 Version:        5.12.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5d43652
+Release:        <RELEASE>.gc4830af
 %else
 Release:        0
 %endif

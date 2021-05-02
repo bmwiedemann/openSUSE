@@ -27,7 +27,7 @@ Group:          Development/Sources
 Version:        5.12.0
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5d43652
+Release:        <RELEASE>.gc4830af
 %else
 Release:        0
 %endif
@@ -52,7 +52,7 @@ Requires:       kernel-pae-devel = %version-%source_rel
 %endif
 Requires:       pesign-obs-integration
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-5d43652877fda8aa556866abab93cad61f1f9b6f
+Provides:       %name-srchash-c4830af6d8ac9e225996ef8da38bf6184be9c882
 Provides:       multiversion(kernel)
 Source:         README.KSYMS
 Requires:       kernel-devel%variant = %version-%source_rel

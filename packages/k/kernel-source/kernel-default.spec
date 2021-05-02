@@ -70,7 +70,7 @@ License:        GPL-2.0
 Group:          System/Kernel
 Version:        5.12.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5d43652
+Release:        <RELEASE>.gc4830af
 %else
 Release:        0
 %endif
@@ -179,10 +179,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-5d43652877fda8aa556866abab93cad61f1f9b6f
-Provides:       kernel-srchash-5d43652877fda8aa556866abab93cad61f1f9b6f
+Provides:       kernel-%build_flavor-base-srchash-c4830af6d8ac9e225996ef8da38bf6184be9c882
+Provides:       kernel-srchash-c4830af6d8ac9e225996ef8da38bf6184be9c882
 # END COMMON DEPS
-Provides:       %name-srchash-5d43652877fda8aa556866abab93cad61f1f9b6f
+Provides:       %name-srchash-c4830af6d8ac9e225996ef8da38bf6184be9c882
 %ifarch %ix86
 Provides:       kernel-smp = 2.6.17
 Obsoletes:      kernel-smp <= 2.6.17
