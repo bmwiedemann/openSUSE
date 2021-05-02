@@ -31,4 +31,17 @@
     <comment></comment>
     <requestid>851905</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5844bd7c4b9ba8de3f241ebd66809adf</srcmd5>
+    <version>1.1.5</version>
+    <time>1619973358</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.5:
+  - Bugfix: avoid raising asyncio.CancelledError on connection lost
+  - Bugfix: allow UTF-8 chars in usernames and password strings
+  - Feature: allow bytes type args for login usernames and passwords
+- Switch off failing tests because of gh#cole/aiosmtplib#171.
+</comment>
+    <requestid>889680</requestid>
+  </revision>
 </revisionlist>

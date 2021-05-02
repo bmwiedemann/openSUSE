@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 30 10:00:09 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.1.5:
+  - Bugfix: avoid raising asyncio.CancelledError on connection lost
+  - Bugfix: allow UTF-8 chars in usernames and password strings
+  - Feature: allow bytes type args for login usernames and passwords
+- Switch off failing tests because of gh#cole/aiosmtplib#171.
+
+-------------------------------------------------------------------
 Sun Nov 29 07:16:07 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add docs/*.rst to %doc
