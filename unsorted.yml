@@ -3327,7 +3327,6 @@ unsorted:
   - evince-devel 
   - evince-plugin-psdocument 
   - evmctl: [i586] 
-  - evolution-data-server-32bit: [x86_64] 
   - evolution-data-server-devel 
   - evolution-devel 
   - evtest 
@@ -3597,11 +3596,6 @@ unsorted:
   - fipscheck 
   - fipscheck-devel 
   - fira-code-fonts 
-  - firebird 
-  - firebird-doc 
-  - firebird-examples 
-  - firebird-server 
-  - firebird-utils 
   - firectl: [x86_64] 
   - firefox-esr-branding-openSUSE 
   - firefox-uget-integrator 
@@ -9810,7 +9804,6 @@ unsorted:
   - libcal3d12 
   - libcalc2 
   - libcamd-doc 
-  - libcamel-1_2-62-32bit: [x86_64] 
   - libcamera-devel 
   - libcamera-suse4 
   - libcamera-tools 
@@ -10327,14 +10320,10 @@ unsorted:
   - libeXosip2-12 
   - libeXosip2-devel 
   - libeb16 
-  - libebackend-1_2-10-32bit: [x86_64] 
   - libebml-devel 
   - libebml5-32bit: [x86_64] 
-  - libebook-1_2-20-32bit: [x86_64] 
-  - libebook-contacts-1_2-3-32bit: [x86_64] 
   - libebur128-1 
   - libebur128-devel 
-  - libecal-2_0-1-32bit: [x86_64] 
   - libecholib1_3 
   - libecholib1_3-devel 
   - libecm1 
@@ -10346,10 +10335,6 @@ unsorted:
   - libecpint1 
   - libecryptfs1 
   - libecryptfs1-32bit: [x86_64] 
-  - libedata-book-1_2-26-32bit: [x86_64] 
-  - libedata-cal-2_0-1-32bit: [x86_64] 
-  - libedataserver-1_2-26-32bit: [x86_64] 
-  - libedataserverui-1_2-3-32bit: [x86_64] 
   - libedit-devel 
   - libedit0-32bit: [x86_64] 
   - libeditorconfig-devel 
@@ -10464,9 +10449,6 @@ unsorted:
   - libfastjetcontribfragile 
   - libfastjson-devel 
   - libfastlz1 
-  - libfbclient-devel 
-  - libfbclient2 
-  - libfbclient2-32bit: [x86_64] 
   - libfcache-devel 
   - libfcache1 
   - libfcgi0 
@@ -11282,9 +11264,6 @@ unsorted:
   - libhyphen0-32bit: [x86_64] 
   - libi2c0 
   - libi2c0-devel 
-  - libib_util 
-  - libib_util-32bit: [x86_64] 
-  - libib_util-devel 
   - libibdm1 
   - libibmad5 
   - libibmad5-32bit: [x86_64] 
@@ -16915,11 +16894,14 @@ unsorted:
   - nodejs-devel-default 
   - nodejs-packaging 
   - nodejs-underscore 
-  - nodejs10: [x86_64] 
+  - nodejs10 
   - nodejs10-devel 
   - nodejs10-docs 
+  - nodejs15: [x86_64] 
   - nodejs15-devel: [x86_64] 
   - nodejs15-docs: [x86_64] 
+  - nodejs16-devel 
+  - nodejs16-docs 
   - noisetorch 
   - nomacs 
   - nomacs-lang 
@@ -17164,7 +17146,8 @@ unsorted:
   - nping 
   - npkg 
   - npm-default 
-  - npm10: [x86_64] 
+  - npm10 
+  - npm15: [x86_64] 
   - npth-devel 
   - nqp 
   - nrpe 
@@ -28072,6 +28055,7 @@ unsorted:
   - python39-entrypoints 
   - python39-environ-config 
   - python39-environmental-override 
+  - python39-envisage 
   - python39-enzyme 
   - python39-ephem 
   - python39-epubmerge 
