@@ -1,0 +1,5 @@
+<package name="python-hstspreload" project="openSUSE:Factory">
+  <title></title>
+  <description>Chromium HSTS Preload list as a Python package and updated daily</description>
+  <devel project="devel:languages:python" package="python-hstspreload"/>
+</package>
