@@ -58,8 +58,9 @@ Source4:        %{name}.keyring
 Source9:        ftp://ftp.internic.net/domain/named.root
 Source40:       dnszone-schema.txt
 Source60:       dlz-schema.txt
-# configuation files for systemd-tmpfiles
+# configuation file for systemd-tmpfiles
 Source70:       bind.conf
+# configuation file for systemd-sysusers
 Source72:       named.conf
 Patch52:        named-bootconf.diff
 Patch56:        bind-ldapdump-use-valid-host.patch
@@ -93,8 +94,6 @@ BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
-# named.init (systemd) calls start_daemon, so require it when using systemd
-Requires:       (/sbin/start_daemon if systemd)
 %{?systemd_ordering}
 %sysusers_requires
 %else
@@ -164,7 +163,7 @@ function replaceStrings()
 		-i "${file}"
 }
 pushd vendor-files
-for file in docu/README* tools/createNamedConfInclude config/{README,named.conf} init/named system/named.init sysconfig/named-named; do
+for file in docu/README* config/{README,named.conf} sysconfig/named-named; do
 	replaceStrings ${file}
 done
 popd
@@ -247,7 +246,7 @@ mv vendor-files/config/rndc-access.conf %{buildroot}/%{_sysconfdir}/named.d
 %if %{with_systemd}
 	for file in named; do
         	install -D -m 0644 vendor-files/system/${file}.service %{buildroot}%{_unitdir}/${file}.service
-                install -m 0755 vendor-files/system/${file}.init %{buildroot}/usr/sbin/${file}.init
+                install -m 0755 vendor-files/system/${file}.prep %{buildroot}/%{_libexecdir}/bind/${file}.prep
 		ln -s /sbin/service %{buildroot}%{_sbindir}/rc${file}
 	done
 	install -D -m 0644 %{SOURCE70} %{buildroot}%{_prefix}/lib/tmpfiles.d/bind.conf
@@ -262,7 +261,6 @@ mv vendor-files/config/rndc-access.conf %{buildroot}/%{_sysconfdir}/named.d
 %endif
 install -m 0644 ${RPM_SOURCE_DIR}/named.root %{buildroot}%{_localstatedir}/lib/named/root.hint
 mv vendor-files/config/{127.0.0,localhost}.zone %{buildroot}%{_localstatedir}/lib/named
-install -m 0754 vendor-files/tools/createNamedConfInclude %{buildroot}/%{_datadir}/bind
 install -m 0755 vendor-files/tools/bind.genDDNSkey %{buildroot}/%{_bindir}/genDDNSkey
 cp -a vendor-files/docu/BIND.desktop %{buildroot}/%{_datadir}/susehelp/meta/Administration/System
 cp -p ${RPM_SOURCE_DIR}/dnszone-schema.txt %{buildroot}/%{_sysconfdir}/openldap/schema/dnszone.schema
@@ -337,11 +335,6 @@ if [ -x %{_bindir}/systemctl ]; then
     %{_bindir}/systemctl daemon-reload || :
 fi
 %endif
-# Create the rndc.key and named.conf.include* files so they exist when named is started
-[ -e /etc/rndc.key ] || /usr/sbin/rndc-confgen -a -b 512
-[ -e /etc/named.conf.include ] || touch /etc/named.conf.include
-[ -e /etc/named.conf.include.BINDconfig ] || touch /etc/named.conf.include.BINDconfig
-chown named: /etc/rndc.key /etc/named.conf.include*
 
 %postun
 %if %{with_systemd}
@@ -361,7 +354,6 @@ chown named: /etc/rndc.key /etc/named.conf.include*
 %attr(0644,root,root) %config /%{_sysconfdir}/slp.reg.d/bind.reg
 %if %{with_systemd}
 %config %{_unitdir}/named.service
-%{_sbindir}/named.init
 %{_prefix}/lib/tmpfiles.d/bind.conf
 %{_sysusersdir}/named.conf
 %{_datadir}/factory
@@ -386,7 +378,6 @@ chown named: /etc/rndc.key /etc/named.conf.include*
 %{_mandir}/man8/named.8%{ext_man}
 %{_mandir}/man8/filter-aaaa.8%{ext_man}
 %dir %{_datadir}/bind
-%{_datadir}/bind/createNamedConfInclude
 %{_datadir}/bind/ldapdump
 %ghost %{_rundir}/named
 %{_fillupdir}/sysconfig.named-named
@@ -399,6 +390,7 @@ chown named: /etc/rndc.key /etc/named.conf.include*
 %config %{_var}/lib/named/localhost.zone
 %config %{_var}/lib/named/named.root.key
 %dir %{_libexecdir}/bind
+%{_libexecdir}/bind/named.prep
 
 %files doc -f filelist-bind-doc
 %dir %doc %{_defaultdocdir}/bind

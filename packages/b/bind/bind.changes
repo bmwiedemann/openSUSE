@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  8 09:23:22 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Rewrite of named service handling to better cope with systemd
+  protection (see change from Thu Jan 21) by introducing a
+  separate script "named.prep" which runs without restrictions
+  prior to starting named.
+  Removed all references to "lwresd" as "The lightweight resolver
+  daemon and library (lwresd and liblwres) have been removed."
+  (See CHANGES, item 4707)
+  [bind.spec, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
 Fri Mar 12 15:03:21 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - pass PIE compiler and linker flags via environment variables to make
