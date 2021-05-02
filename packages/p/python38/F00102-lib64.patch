@@ -19,17 +19,17 @@ Co-authored-by: Petr Viktorin <pviktori@redhat.com>
 Co-authored-by: Miro Hrončok <miro@hroncok.cz>
 Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
 ---
- Lib/distutils/command/install.py    |  4 ++--
- Lib/distutils/sysconfig.py          |  6 +++++-
- Lib/distutils/tests/test_install.py |  3 ++-
- Lib/site.py                         |  4 ++++
- Lib/sysconfig.py                    | 12 ++++++------
- Lib/test/test_site.py               |  4 ++--
- Makefile.pre.in                     |  2 +-
- Modules/getpath.c                   |  6 +++---
- configure                           |  4 ++--
- configure.ac                        |  4 ++--
- setup.py                            |  6 +++---
+ Lib/distutils/command/install.py    |    4 ++--
+ Lib/distutils/sysconfig.py          |    6 +++++-
+ Lib/distutils/tests/test_install.py |    3 ++-
+ Lib/site.py                         |    4 ++++
+ Lib/sysconfig.py                    |   12 ++++++------
+ Lib/test/test_site.py               |    4 ++--
+ Makefile.pre.in                     |    2 +-
+ Modules/getpath.c                   |    6 +++---
+ configure                           |    4 ++--
+ configure.ac                        |    4 ++--
+ setup.py                            |    6 +++---
  11 files changed, 32 insertions(+), 23 deletions(-)
 
 --- a/Lib/distutils/command/install.py
@@ -183,7 +183,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
      }
 --- a/configure
 +++ b/configure
-@@ -15233,9 +15233,9 @@ fi
+@@ -15222,9 +15222,9 @@ fi
  
  
  if test x$PLATFORM_TRIPLET = x; then
@@ -197,7 +197,7 @@ Co-authored-by: Iryna Shcherbina <shcherbina.iryna@gmail.com>
  
 --- a/configure.ac
 +++ b/configure.ac
-@@ -4691,9 +4691,9 @@ fi
+@@ -4698,9 +4698,9 @@ fi
  dnl define LIBPL after ABIFLAGS and LDVERSION is defined.
  AC_SUBST(PY_ENABLE_SHARED)
  if test x$PLATFORM_TRIPLET = x; then

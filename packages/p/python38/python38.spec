@@ -87,7 +87,7 @@
 %bcond_without profileopt
 %endif
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.8.8
+Version:        3.8.9
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -151,6 +151,7 @@ Patch28:        bpo36302-sort-module-sources.patch
 Patch29:        bpo-31046_ensurepip_honours_prefix.patch
 # PATCH-FIX-UPSTREAM stop calling removed Sphinx function gh#python/cpython#13236
 Patch32:        sphinx-update-removed-function.patch
+BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel

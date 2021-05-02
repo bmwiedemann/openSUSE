@@ -1,34 +1,248 @@
---- a/configure.ac
-+++ b/configure.ac
-@@ -4688,12 +4688,26 @@ else
-   LIBPYTHON=''
- fi
+---
+ Lib/distutils/command/install.py |   18 +++++++++---------
+ Lib/distutils/sysconfig.py       |    7 ++-----
+ Lib/site.py                      |   19 +++++++++----------
+ Lib/sysconfig.py                 |   12 ++++++------
+ Lib/test/test_embed.py           |   10 +++++++---
+ Lib/test/test_site.py            |    7 +++++--
+ Lib/test/test_sysconfig.py       |   14 +++++++++++++-
+ Makefile.pre.in                  |    6 +++++-
+ Modules/getpath.c                |   24 ++++++++++++------------
+ configure                        |    4 ++--
+ configure.ac                     |   18 ++++++++++++++++--
+ setup.py                         |    6 +++---
+ 12 files changed, 89 insertions(+), 56 deletions(-)
+
+--- a/Lib/distutils/command/install.py
++++ b/Lib/distutils/command/install.py
+@@ -30,14 +30,14 @@ WINDOWS_SCHEME = {
+ INSTALL_SCHEMES = {
+     'unix_prefix': {
+         'purelib': '$base/lib/python$py_version_short/site-packages',
+-        'platlib': '$platbase/lib64/python$py_version_short/site-packages',
++        'platlib': '$platbase/$platsubdir/python$py_version_short/site-packages',
+         'headers': '$base/include/python$py_version_short$abiflags/$dist_name',
+         'scripts': '$base/bin',
+         'data'   : '$base',
+         },
+     'unix_home': {
+         'purelib': '$base/lib/python',
+-        'platlib': '$base/lib64/python',
++        'platlib': '$base/lib/python',
+         'headers': '$base/include/python/$dist_name',
+         'scripts': '$base/bin',
+         'data'   : '$base',
+@@ -281,7 +281,7 @@ class install(Command):
+         # about needing recursive variable expansion (shudder).
  
-+# platsubdir must be defined before LIBPL definition
-+AC_MSG_CHECKING(for custom platsubdir)
-+AC_ARG_WITH(custom-platsubdir,
-+    [AS_HELP_STRING([--with-custom-platsubdir=<libdirname>],
-+        [set the platsubdir name to a custom string])],
-+    [],
-+    [with_custom_platsubdir=yes])
-+AS_CASE($with_custom_platsubdir,
-+    [yes],[platsubdir=`basename ${libdir}`],
-+    [no],[platsubdir=lib],
-+    [platsubdir=$with_custom_platsubdir])
-+AC_MSG_RESULT($platsubdir)
-+AC_SUBST(platsubdir)
+         py_version = sys.version.split()[0]
+-        (prefix, exec_prefix) = get_config_vars('prefix', 'exec_prefix')
++        (prefix, exec_prefix, platsubdir) = get_config_vars('prefix', 'exec_prefix', 'platsubdir')
+         try:
+             abiflags = sys.abiflags
+         except AttributeError:
+@@ -298,6 +298,7 @@ class install(Command):
+                             'sys_exec_prefix': exec_prefix,
+                             'exec_prefix': exec_prefix,
+                             'abiflags': abiflags,
++                            'platsubdir': platsubdir,
+                            }
+ 
+         if HAS_USER_SITE:
+@@ -419,12 +420,11 @@ class install(Command):
+                           "must not supply exec-prefix without prefix")
+ 
+                 # self.prefix is set to sys.prefix + /local/
+-                # if neither RPM build nor virtual environment is
+-                # detected to make pip and distutils install packages
+-                # into the separate location.
+-                if (not (hasattr(sys, 'real_prefix') or
+-                    sys.prefix != sys.base_prefix) and
+-                    'RPM_BUILD_ROOT' not in os.environ):
++                # if the executable is /usr/bin/python* and RPM build
++                # is not detected to make pip and distutils install into
++                # the separate location.
++                if (sys.executable.startswith("/usr/bin/python")
++                    and 'RPM_BUILD_ROOT' not in os.environ):
+                     addition = "/local"
+                 else:
+                     addition = ""
+--- a/Lib/distutils/sysconfig.py
++++ b/Lib/distutils/sysconfig.py
+@@ -146,12 +146,9 @@ def get_python_lib(plat_specific=0, stan
+             prefix = plat_specific and EXEC_PREFIX or PREFIX
+ 
+     if os.name == "posix":
+-        if plat_specific or standard_lib:
+-            lib = "lib64"
+-        else:
+-            lib = "lib"
++        libdir = plat_specific and get_config_var("platsubdir") or "lib"
+         libpython = os.path.join(prefix,
+-                                 lib, "python" + get_python_version())
++                                 libdir, "python" + get_python_version())
+         if standard_lib:
+             return libpython
+         else:
+--- a/Lib/site.py
++++ b/Lib/site.py
+@@ -335,12 +335,18 @@ def getsitepackages(prefixes=None):
+         seen.add(prefix)
+ 
+         if os.sep == '/':
+-            sitepackages.append(os.path.join(prefix, "lib64",
++            from sysconfig import get_config_var
++            platsubdir = get_config_var("platsubdir")
++            sitepackages.append(os.path.join(prefix, platsubdir,
+                                         "python" + sys.version[:3],
+                                         "site-packages"))
+-            sitepackages.append(os.path.join(prefix, "lib",
++            sitepackages.append(os.path.join(prefix, platsubdir,
+                                         "python%d.%d" % sys.version_info[:2],
+                                         "site-packages"))
++            if platsubdir != "lib":
++                sitepackages.append(os.path.join(prefix, "lib",
++                                            "python%d.%d" % sys.version_info[:2],
++                                            "site-packages"))
+         else:
+             sitepackages.append(prefix)
+             sitepackages.append(os.path.join(prefix, "lib64", "site-packages"))
+@@ -348,14 +354,7 @@ def getsitepackages(prefixes=None):
+     return sitepackages
+ 
+ def addsitepackages(known_paths, prefixes=None):
+-    """Add site-packages to sys.path
+-
+-    '/usr/local' is included in PREFIXES if RPM build is not detected
+-    to make packages installed into this location visible.
+-
+-    """
+-    if ENABLE_USER_SITE and 'RPM_BUILD_ROOT' not in os.environ:
+-        PREFIXES.insert(0, "/usr/local")
++    """Add site-packages to sys.path"""
+     for sitedir in getsitepackages(prefixes):
+         if os.path.isdir(sitedir):
+             addsitedir(sitedir, known_paths)
+--- a/Lib/sysconfig.py
++++ b/Lib/sysconfig.py
+@@ -20,10 +20,10 @@ __all__ = [
+ 
+ _INSTALL_SCHEMES = {
+     'posix_prefix': {
+-        'stdlib': '{installed_base}/lib64/python{py_version_short}',
+-        'platstdlib': '{platbase}/lib64/python{py_version_short}',
++        'stdlib': '{installed_base}/{platsubdir}/python{py_version_short}',
++        'platstdlib': '{platbase}/{platsubdir}/python{py_version_short}',
+         'purelib': '{base}/lib/python{py_version_short}/site-packages',
+-        'platlib': '{platbase}/lib64/python{py_version_short}/site-packages',
++        'platlib': '{platbase}/{platsubdir}/python{py_version_short}/site-packages',
+         'include':
+             '{installed_base}/include/python{py_version_short}{abiflags}',
+         'platinclude':
+@@ -62,10 +62,10 @@ _INSTALL_SCHEMES = {
+         'data': '{userbase}',
+         },
+     'posix_user': {
+-        'stdlib': '{userbase}/lib64/python{py_version_short}',
+-        'platstdlib': '{userbase}/lib64/python{py_version_short}',
++        'stdlib': '{userbase}/lib/python{py_version_short}',
++        'platstdlib': '{userbase}/lib/python{py_version_short}',
+         'purelib': '{userbase}/lib/python{py_version_short}/site-packages',
+-        'platlib': '{userbase}/lib64/python{py_version_short}/site-packages',
++        'platlib': '{userbase}/lib/python{py_version_short}/site-packages',
+         'include': '{userbase}/include/python{py_version_short}',
+         'scripts': '{userbase}/bin',
+         'data': '{userbase}',
+--- a/Lib/test/test_embed.py
++++ b/Lib/test/test_embed.py
+@@ -10,6 +10,7 @@ import re
+ import shutil
+ import subprocess
+ import sys
++import sysconfig
+ import tempfile
+ import textwrap
+ 
+@@ -1072,12 +1073,13 @@ class InitConfigTests(EmbeddingTestsMixi
+             return config['config']['module_search_paths']
+         else:
+             ver = sys.version_info
++            platsubdir = sysconfig.get_config_var('platsubdir')
+             return [
+                 os.path.join(prefix, 'lib',
+                              f'python{ver.major}{ver.minor}.zip'),
+-                os.path.join(prefix, 'lib',
++                os.path.join(prefix, platsubdir,
+                              f'python{ver.major}.{ver.minor}'),
+-                os.path.join(exec_prefix, 'lib',
++                os.path.join(exec_prefix, platsubdir,
+                              f'python{ver.major}.{ver.minor}', 'lib-dynload'),
+             ]
+ 
+@@ -1188,13 +1190,15 @@ class InitConfigTests(EmbeddingTestsMixi
+     def test_init_pyvenv_cfg(self):
+         # Test path configuration with pyvenv.cfg configuration file
+ 
++        platsubdir = sysconfig.get_config_var('platsubdir')
 +
- dnl define LIBPL after ABIFLAGS and LDVERSION is defined.
- AC_SUBST(PY_ENABLE_SHARED)
- if test x$PLATFORM_TRIPLET = x; then
--  LIBPL='$(prefix)'"/lib64/python${VERSION}/config-${LDVERSION}"
-+  LIBPL='$(prefix)'"/${platsubdir}/python${VERSION}/config-${LDVERSION}"
- else
--  LIBPL='$(prefix)'"/lib64/python${VERSION}/config-${LDVERSION}-${PLATFORM_TRIPLET}"
-+  LIBPL='$(prefix)'"/${platsubdir}/python${VERSION}/config-${LDVERSION}-${PLATFORM_TRIPLET}"
- fi
- AC_SUBST(LIBPL)
+         with self.tmpdir_with_python() as tmpdir, \
+              tempfile.TemporaryDirectory() as pyvenv_home:
+             ver = sys.version_info
  
+             if not MS_WINDOWS:
+                 lib_dynload = os.path.join(pyvenv_home,
+-                                           'lib',
++                                           platsubdir,
+                                            f'python{ver.major}.{ver.minor}',
+                                            'lib-dynload')
+                 os.makedirs(lib_dynload)
+--- a/Lib/test/test_site.py
++++ b/Lib/test/test_site.py
+@@ -267,8 +267,11 @@ class HelperFunctionsTests(unittest.Test
+         dirs = site.getsitepackages()
+         if os.sep == '/':
+             # OS X, Linux, FreeBSD, etc
+-            self.assertEqual(len(dirs), 2)
+-            wanted = os.path.join('xoxo', 'lib64',
++            self.assertTrue(len(dirs) in (1,2,3),
++                            "dirs = {} has len not in (1,2,3).".format(dirs))
++
++            platsubdir = sysconfig.get_config_var('platsubdir')
++            wanted = os.path.join('xoxo', platsubdir,
+                                   'python%d.%d' % sys.version_info[:2],
+                                   'site-packages')
+             self.assertEqual(dirs[0], wanted)
+--- a/Lib/test/test_sysconfig.py
++++ b/Lib/test/test_sysconfig.py
+@@ -243,6 +243,7 @@ class TestSysConfig(unittest.TestCase):
+         # is similar to the global posix_prefix one
+         base = get_config_var('base')
+         user = get_config_var('userbase')
++        platsubdir = get_config_var("platsubdir")
+         # the global scheme mirrors the distinction between prefix and
+         # exec-prefix but not the user scheme, so we have to adapt the paths
+         # before comparing (issue #9100)
+@@ -257,8 +258,19 @@ class TestSysConfig(unittest.TestCase):
+                 # before comparing
+                 global_path = global_path.replace(sys.base_prefix, sys.prefix)
+                 base = base.replace(sys.base_prefix, sys.prefix)
++
++            if platsubdir != "lib":
++                platbase = os.path.join(base, platsubdir)
++                purebase = os.path.join(base, "lib")
++                userlib = os.path.join(user, "lib")
++                # replace platbase first because usually purebase is a prefix of platbase
++                # /usr/lib is prefix of /usr/lib64 and would get replaced first
++                modified_path = global_path.replace(platbase, userlib, 1).replace(purebase, userlib, 1)
++            else:
++                modified_path = global_path.replace(base, user, 1)
++
+             user_path = get_path(name, 'posix_user')
+-            self.assertEqual(user_path, global_path.replace(base, user, 1))
++            self.assertEqual(user_path, modified_path)
+ 
+     def test_main(self):
+         # just making sure _main() runs and returns things in the stdout
 --- a/Makefile.pre.in
 +++ b/Makefile.pre.in
 @@ -137,13 +137,16 @@ exec_prefix=	@exec_prefix@
@@ -125,196 +339,9 @@
      if (!calculate->lib_python) {
          return DECODE_LOCALE_ERR("EXEC_PREFIX define", len);
      }
---- a/Lib/distutils/command/install.py
-+++ b/Lib/distutils/command/install.py
-@@ -30,14 +30,14 @@ WINDOWS_SCHEME = {
- INSTALL_SCHEMES = {
-     'unix_prefix': {
-         'purelib': '$base/lib/python$py_version_short/site-packages',
--        'platlib': '$platbase/lib64/python$py_version_short/site-packages',
-+        'platlib': '$platbase/$platsubdir/python$py_version_short/site-packages',
-         'headers': '$base/include/python$py_version_short$abiflags/$dist_name',
-         'scripts': '$base/bin',
-         'data'   : '$base',
-         },
-     'unix_home': {
-         'purelib': '$base/lib/python',
--        'platlib': '$base/lib64/python',
-+        'platlib': '$base/lib/python',
-         'headers': '$base/include/python/$dist_name',
-         'scripts': '$base/bin',
-         'data'   : '$base',
-@@ -281,7 +281,7 @@ class install(Command):
-         # about needing recursive variable expansion (shudder).
- 
-         py_version = sys.version.split()[0]
--        (prefix, exec_prefix) = get_config_vars('prefix', 'exec_prefix')
-+        (prefix, exec_prefix, platsubdir) = get_config_vars('prefix', 'exec_prefix', 'platsubdir')
-         try:
-             abiflags = sys.abiflags
-         except AttributeError:
-@@ -298,6 +298,7 @@ class install(Command):
-                             'sys_exec_prefix': exec_prefix,
-                             'exec_prefix': exec_prefix,
-                             'abiflags': abiflags,
-+                            'platsubdir': platsubdir,
-                            }
- 
-         if HAS_USER_SITE:
-@@ -419,12 +420,11 @@ class install(Command):
-                           "must not supply exec-prefix without prefix")
- 
-                 # self.prefix is set to sys.prefix + /local/
--                # if neither RPM build nor virtual environment is
--                # detected to make pip and distutils install packages
--                # into the separate location.
--                if (not (hasattr(sys, 'real_prefix') or
--                    sys.prefix != sys.base_prefix) and
--                    'RPM_BUILD_ROOT' not in os.environ):
-+                # if the executable is /usr/bin/python* and RPM build
-+                # is not detected to make pip and distutils install into
-+                # the separate location.
-+                if (sys.executable.startswith("/usr/bin/python")
-+                    and 'RPM_BUILD_ROOT' not in os.environ):
-                     addition = "/local"
-                 else:
-                     addition = ""
---- a/Lib/distutils/sysconfig.py
-+++ b/Lib/distutils/sysconfig.py
-@@ -146,12 +146,9 @@ def get_python_lib(plat_specific=0, stan
-             prefix = plat_specific and EXEC_PREFIX or PREFIX
- 
-     if os.name == "posix":
--        if plat_specific or standard_lib:
--            lib = "lib64"
--        else:
--            lib = "lib"
-+        libdir = plat_specific and get_config_var("platsubdir") or "lib"
-         libpython = os.path.join(prefix,
--                                 lib, "python" + get_python_version())
-+                                 libdir, "python" + get_python_version())
-         if standard_lib:
-             return libpython
-         else:
---- a/Lib/sysconfig.py
-+++ b/Lib/sysconfig.py
-@@ -20,10 +20,10 @@ __all__ = [
- 
- _INSTALL_SCHEMES = {
-     'posix_prefix': {
--        'stdlib': '{installed_base}/lib64/python{py_version_short}',
--        'platstdlib': '{platbase}/lib64/python{py_version_short}',
-+        'stdlib': '{installed_base}/{platsubdir}/python{py_version_short}',
-+        'platstdlib': '{platbase}/{platsubdir}/python{py_version_short}',
-         'purelib': '{base}/lib/python{py_version_short}/site-packages',
--        'platlib': '{platbase}/lib64/python{py_version_short}/site-packages',
-+        'platlib': '{platbase}/{platsubdir}/python{py_version_short}/site-packages',
-         'include':
-             '{installed_base}/include/python{py_version_short}{abiflags}',
-         'platinclude':
-@@ -62,10 +62,10 @@ _INSTALL_SCHEMES = {
-         'data': '{userbase}',
-         },
-     'posix_user': {
--        'stdlib': '{userbase}/lib64/python{py_version_short}',
--        'platstdlib': '{userbase}/lib64/python{py_version_short}',
-+        'stdlib': '{userbase}/lib/python{py_version_short}',
-+        'platstdlib': '{userbase}/lib/python{py_version_short}',
-         'purelib': '{userbase}/lib/python{py_version_short}/site-packages',
--        'platlib': '{userbase}/lib64/python{py_version_short}/site-packages',
-+        'platlib': '{userbase}/lib/python{py_version_short}/site-packages',
-         'include': '{userbase}/include/python{py_version_short}',
-         'scripts': '{userbase}/bin',
-         'data': '{userbase}',
---- a/Lib/site.py
-+++ b/Lib/site.py
-@@ -335,12 +335,18 @@ def getsitepackages(prefixes=None):
-         seen.add(prefix)
- 
-         if os.sep == '/':
--            sitepackages.append(os.path.join(prefix, "lib64",
-+            from sysconfig import get_config_var
-+            platsubdir = get_config_var("platsubdir")
-+            sitepackages.append(os.path.join(prefix, platsubdir,
-                                         "python" + sys.version[:3],
-                                         "site-packages"))
--            sitepackages.append(os.path.join(prefix, "lib",
-+            sitepackages.append(os.path.join(prefix, platsubdir,
-                                         "python%d.%d" % sys.version_info[:2],
-                                         "site-packages"))
-+            if platsubdir != "lib":
-+                sitepackages.append(os.path.join(prefix, "lib",
-+                                            "python%d.%d" % sys.version_info[:2],
-+                                            "site-packages"))
-         else:
-             sitepackages.append(prefix)
-             sitepackages.append(os.path.join(prefix, "lib64", "site-packages"))
-@@ -348,14 +354,7 @@ def getsitepackages(prefixes=None):
-     return sitepackages
- 
- def addsitepackages(known_paths, prefixes=None):
--    """Add site-packages to sys.path
--
--    '/usr/local' is included in PREFIXES if RPM build is not detected
--    to make packages installed into this location visible.
--
--    """
--    if ENABLE_USER_SITE and 'RPM_BUILD_ROOT' not in os.environ:
--        PREFIXES.insert(0, "/usr/local")
-+    """Add site-packages to sys.path"""
-     for sitedir in getsitepackages(prefixes):
-         if os.path.isdir(sitedir):
-             addsitedir(sitedir, known_paths)
---- a/Lib/test/test_site.py
-+++ b/Lib/test/test_site.py
-@@ -267,8 +267,11 @@ class HelperFunctionsTests(unittest.Test
-         dirs = site.getsitepackages()
-         if os.sep == '/':
-             # OS X, Linux, FreeBSD, etc
--            self.assertEqual(len(dirs), 2)
--            wanted = os.path.join('xoxo', 'lib64',
-+            self.assertTrue(len(dirs) in (1,2,3),
-+                            "dirs = {} has len not in (1,2,3).".format(dirs))
-+
-+            platsubdir = sysconfig.get_config_var('platsubdir')
-+            wanted = os.path.join('xoxo', platsubdir,
-                                   'python%d.%d' % sys.version_info[:2],
-                                   'site-packages')
-             self.assertEqual(dirs[0], wanted)
---- a/Lib/test/test_sysconfig.py
-+++ b/Lib/test/test_sysconfig.py
-@@ -243,6 +243,7 @@ class TestSysConfig(unittest.TestCase):
-         # is similar to the global posix_prefix one
-         base = get_config_var('base')
-         user = get_config_var('userbase')
-+        platsubdir = get_config_var("platsubdir")
-         # the global scheme mirrors the distinction between prefix and
-         # exec-prefix but not the user scheme, so we have to adapt the paths
-         # before comparing (issue #9100)
-@@ -257,8 +258,19 @@ class TestSysConfig(unittest.TestCase):
-                 # before comparing
-                 global_path = global_path.replace(sys.base_prefix, sys.prefix)
-                 base = base.replace(sys.base_prefix, sys.prefix)
-+
-+            if platsubdir != "lib":
-+                platbase = os.path.join(base, platsubdir)
-+                purebase = os.path.join(base, "lib")
-+                userlib = os.path.join(user, "lib")
-+                # replace platbase first because usually purebase is a prefix of platbase
-+                # /usr/lib is prefix of /usr/lib64 and would get replaced first
-+                modified_path = global_path.replace(platbase, userlib, 1).replace(purebase, userlib, 1)
-+            else:
-+                modified_path = global_path.replace(base, user, 1)
-+
-             user_path = get_path(name, 'posix_user')
--            self.assertEqual(user_path, global_path.replace(base, user, 1))
-+            self.assertEqual(user_path, modified_path)
- 
-     def test_main(self):
-         # just making sure _main() runs and returns things in the stdout
 --- a/configure
 +++ b/configure
-@@ -15233,9 +15233,9 @@ fi
+@@ -15222,9 +15222,9 @@ fi
  
  
  if test x$PLATFORM_TRIPLET = x; then
@@ -325,6 +352,37 @@
 +  LIBPL='$(prefix)'"/${platsubdir}/python${VERSION}/config-${LDVERSION}-${PLATFORM_TRIPLET}"
  fi
  
+ 
+--- a/configure.ac
++++ b/configure.ac
+@@ -4695,12 +4695,26 @@ else
+   LIBPYTHON=''
+ fi
+ 
++# platsubdir must be defined before LIBPL definition
++AC_MSG_CHECKING(for custom platsubdir)
++AC_ARG_WITH(custom-platsubdir,
++    [AS_HELP_STRING([--with-custom-platsubdir=<libdirname>],
++        [set the platsubdir name to a custom string])],
++    [],
++    [with_custom_platsubdir=yes])
++AS_CASE($with_custom_platsubdir,
++    [yes],[platsubdir=`basename ${libdir}`],
++    [no],[platsubdir=lib],
++    [platsubdir=$with_custom_platsubdir])
++AC_MSG_RESULT($platsubdir)
++AC_SUBST(platsubdir)
++
+ dnl define LIBPL after ABIFLAGS and LDVERSION is defined.
+ AC_SUBST(PY_ENABLE_SHARED)
+ if test x$PLATFORM_TRIPLET = x; then
+-  LIBPL='$(prefix)'"/lib64/python${VERSION}/config-${LDVERSION}"
++  LIBPL='$(prefix)'"/${platsubdir}/python${VERSION}/config-${LDVERSION}"
+ else
+-  LIBPL='$(prefix)'"/lib64/python${VERSION}/config-${LDVERSION}-${PLATFORM_TRIPLET}"
++  LIBPL='$(prefix)'"/${platsubdir}/python${VERSION}/config-${LDVERSION}-${PLATFORM_TRIPLET}"
+ fi
+ AC_SUBST(LIBPL)
  
 --- a/setup.py
 +++ b/setup.py
@@ -351,46 +409,3 @@
                                 extra_link_args=readline_extra_link_args,
                                 libraries=readline_libs))
          else:
---- a/Lib/test/test_embed.py
-+++ b/Lib/test/test_embed.py
-@@ -10,6 +10,7 @@ import re
- import shutil
- import subprocess
- import sys
-+import sysconfig
- import tempfile
- import textwrap
- 
-@@ -1072,12 +1073,13 @@ class InitConfigTests(EmbeddingTestsMixi
-             return config['config']['module_search_paths']
-         else:
-             ver = sys.version_info
-+            platsubdir = sysconfig.get_config_var('platsubdir')
-             return [
-                 os.path.join(prefix, 'lib',
-                              f'python{ver.major}{ver.minor}.zip'),
--                os.path.join(prefix, 'lib',
-+                os.path.join(prefix, platsubdir,
-                              f'python{ver.major}.{ver.minor}'),
--                os.path.join(exec_prefix, 'lib',
-+                os.path.join(exec_prefix, platsubdir,
-                              f'python{ver.major}.{ver.minor}', 'lib-dynload'),
-             ]
- 
-@@ -1188,13 +1190,15 @@ class InitConfigTests(EmbeddingTestsMixi
-     def test_init_pyvenv_cfg(self):
-         # Test path configuration with pyvenv.cfg configuration file
- 
-+        platsubdir = sysconfig.get_config_var('platsubdir')
-+
-         with self.tmpdir_with_python() as tmpdir, \
-              tempfile.TemporaryDirectory() as pyvenv_home:
-             ver = sys.version_info
- 
-             if not MS_WINDOWS:
-                 lib_dynload = os.path.join(pyvenv_home,
--                                           'lib',
-+                                           platsubdir,
-                                            f'python{ver.major}.{ver.minor}',
-                                            'lib-dynload')
-                 os.makedirs(lib_dynload)
