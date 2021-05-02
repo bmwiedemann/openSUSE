@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 28 11:08:54 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- openmpi2 is not the default openmpi anymore for releases > 15.3
+
+-------------------------------------------------------------------
 Thu Mar 19 08:23:09 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Drop different package string between SLES and Leap (jsc#SLE-11846)

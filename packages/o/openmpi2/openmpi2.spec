@@ -1,7 +1,7 @@
 #
-# spec file for package openmpi2
+# spec file for package %{package_name}%{?testsuite:-testsuite}
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
 #                         University Research and Technology
 #                         Corporation.  All rights reserved.
@@ -104,7 +104,8 @@ ExclusiveArch:  do_not_build
 %endif
 
 # Detect whether we are the default openMPI implemantation or not
-%if "%{flavor}" == "standard" && %{suse_version} >= 1500
+# openmpi2 is default for SLE/Leap 15.[0-3]
+%if "%{flavor}" == "standard" && %{suse_version} == 1500 && 0%{?sle_version} <= 150300
 %define default_openmpi 1
 %else
 %define default_openmpi 0
@@ -170,7 +171,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  mpi-selector
 Requires:       mpi-selector
-Requires(preun): mpi-selector
+Requires(preun):mpi-selector
 Requires:       %{package_name}-libs = %{version}
 %else
 BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
@@ -217,7 +218,7 @@ Requires:       openssh
 %define mpi_bindir %hpc_bindir
 %define mpi_libdir %hpc_libdir
 %define mpi_datadir %hpc_datadir
-%define mpi_helpdir %{mpi_datadir}/openmpi 
+%define mpi_helpdir %{mpi_datadir}/openmpi
 %define mpi_includedir %hpc_includedir
 %define mpi_mandir %hpc_mandir
 

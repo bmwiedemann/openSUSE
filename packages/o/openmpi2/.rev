@@ -306,4 +306,12 @@
     <comment></comment>
     <requestid>786510</requestid>
   </revision>
+  <revision rev="33" vrev="11">
+    <srcmd5>4c8545e49b6defa52fdf2f225895809b</srcmd5>
+    <version>2.1.6</version>
+    <time>1619973355</time>
+    <user>dimstar_suse</user>
+    <comment>Change default openmpi to openmpi4</comment>
+    <requestid>889369</requestid>
+  </revision>
 </revisionlist>
