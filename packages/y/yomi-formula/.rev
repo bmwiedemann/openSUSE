@@ -223,4 +223,12 @@
 - Add temporary and explicit dependency to libudev1</comment>
     <requestid>857834</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e9cdf5e0f09a32f5db97167a134a18e0</srcmd5>
+    <version>0.0.1+git.1619170188.fa52819</version>
+    <time>1619973312</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>889512</requestid>
+  </revision>
 </revisionlist>

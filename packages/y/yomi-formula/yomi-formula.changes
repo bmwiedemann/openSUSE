@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr 23 09:30:17 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1619170188.fa52819:
+  * README: document ym.sshd parameter
+
+-------------------------------------------------------------------
+Thu Feb 25 17:55:47 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1614275707.786435e:
+  * pillar: update to SLE-15-SP2
+  * fstab: do not mount while registering
+  * devices: fix documentation
+  * Adding a TOC
+  * software: add recreatedb.sls for rpmdb migration
+  * repository: workaround for boo#1178910
+  * software: separate repository.sls
+  * network: generate persistent-net.rules
+
+-------------------------------------------------------------------
 Mon Dec 21 10:49:22 UTC 2020 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Run spec-cleaner
