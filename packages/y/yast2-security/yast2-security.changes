@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- 4.4.0 (bsc#1185510)
+
+-------------------------------------------------------------------
 Thu Mar 18 11:43:42 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Do not set SELinux mode when it is not configurable (bsc#1182940)
