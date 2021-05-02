@@ -20,7 +20,7 @@
 %bcond_without ide
 
 Name:           coq
-Version:        8.13.1
+Version:        8.13.2
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -65,6 +65,7 @@ Summary:        Development files for coq
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}-%{release}
 Requires:       ocaml >= 4.05.0
+Requires:       ocamlfind(findlib)
 
 %description devel
 This package contains development files for Coq.

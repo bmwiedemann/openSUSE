@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 12 21:17:33 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.13.2.
+  * Fix crash when using vm_compute on an irreducible PArray.set.
+  * Fix crash when loading .vo files containing a vm_compute
+    normalized primitive array.
+  * Fix Ltac2.Array.init computational complexity.
+
+-------------------------------------------------------------------
 Thu Feb 25 21:50:43 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.13.1.

@@ -174,4 +174,16 @@
     that could cause memory corruption.</comment>
     <requestid>875244</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>79ab1d552acc926cc90fbfd4790e8b94</srcmd5>
+    <version>8.13.2</version>
+    <time>1619973368</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.13.2.
+  * Fix crash when using vm_compute on an irreducible PArray.set.
+  * Fix crash when loading .vo files containing a vm_compute
+    normalized primitive array.
+  * Fix Ltac2.Array.init computational complexity.</comment>
+    <requestid>889764</requestid>
+  </revision>
 </revisionlist>
