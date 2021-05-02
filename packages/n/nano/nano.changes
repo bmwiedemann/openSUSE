@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 29 16:54:19 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU nano 5.7:
+  * The output of --constantshow (without --minibar) is more stable
+  * When opening multiple buffers and there is an error message,
+    this message is shown again upon first switch to the relevant
+    buffer
+  * The position and size of the indicator now follow actual
+    lines, instead of visual lines when in softwrap mode, meaning
+    that the size of the indicator can change when scrolling in
+    softwrap mode
+
+-------------------------------------------------------------------
 Mon Mar  8 08:12:08 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Fox signature sources

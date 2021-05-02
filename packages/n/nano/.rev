@@ -778,4 +778,12 @@
   * Option 'highlightcolor' has been renamed to 'spotlightcolor'</comment>
     <requestid>877577</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>38edc427596693a294f13dae05232416</srcmd5>
+    <version>5.7</version>
+    <time>1619973310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889470</requestid>
+  </revision>
 </revisionlist>
