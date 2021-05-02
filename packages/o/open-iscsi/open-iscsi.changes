@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 28 16:26:08 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Local (SUSE) change: update iscsi.service so that it tries to
+  logon to any "onboot" and firmware targets, in case a target
+  was offline when booted but back up when the service is started.
+  (bsc#1153806)
+
+-------------------------------------------------------------------
+Wed Apr 28 15:34:43 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Merged with latest from upstream, which contains these fixes:
+  * Add "no wait" option to iscsiadm firmware login
+  * Check for ISCSI_ERR_ISCSID_NOTCONN in iscsistart
+  * Log proper error message when AUTH failure occurs
+
+-------------------------------------------------------------------
 Thu Mar 11 21:29:25 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Updated to latest upstream 2.1.4 as 2.1.4-suse, which contains
