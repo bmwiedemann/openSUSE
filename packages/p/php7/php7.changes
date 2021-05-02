@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 30 07:46:25 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 7.4.18: This is a security bug fix release. See
+  https://www.php.net/ChangeLog-7.php#7.4.18
+
+-------------------------------------------------------------------
 Tue Apr 13 20:19:05 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Do not hard-depend on systemd: use systemd_ordering instead of

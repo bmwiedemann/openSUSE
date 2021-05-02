@@ -1072,4 +1072,13 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
 </comment>
     <requestid>885701</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>f901e0a4a9c03ab362faf6efc40c7f10</srcmd5>
+    <version>7.4.18</version>
+    <time>1619973311</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4.18: This is a security bug fix release. See
+  https://www.php.net/ChangeLog-7.php#7.4.18</comment>
+    <requestid>889478</requestid>
+  </revision>
 </revisionlist>
