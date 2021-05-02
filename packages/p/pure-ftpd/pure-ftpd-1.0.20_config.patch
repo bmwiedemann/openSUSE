@@ -1,0 +1,116 @@
+Index: pure-ftpd.conf.in
+===================================================================
+--- pure-ftpd.conf.in.orig
++++ pure-ftpd.conf.in
+@@ -37,19 +37,20 @@ BrokenClientsCompatibility   no
+ 
+ # Maximum number of simultaneous users
+ 
+-MaxClientsNumber             50
++MaxClientsNumber             10
+ 
+ 
+ 
+-# Run as a background process
++# Run as a background process, do not change as systemd needs this to be
++# foreground
+ 
+-Daemonize                    yes
++Daemonize                    no
+ 
+ 
+ 
+ # Maximum number of simultaneous clients with the same IP address
+ 
+-MaxClientsPerIP              8
++MaxClientsPerIP              3
+ 
+ 
+ 
+@@ -59,6 +60,9 @@ MaxClientsPerIP              8
+ VerboseLog                   no
+ 
+ 
++# Allow dot-files
++AllowDotFiles               yes
++
+ 
+ # List dot-files even when the client doesn't send "-a".
+ 
+@@ -68,7 +72,7 @@ DisplayDotFiles              yes
+ 
+ # Disallow authenticated users - Act only as a public FTP server.
+ 
+-AnonymousOnly                no
++AnonymousOnly                yes
+ 
+ 
+ 
+@@ -106,23 +110,23 @@ MaxIdleTime                  15
+ 
+ # LDAP configuration file (see README.LDAP)
+ 
+-# LDAPConfigFile               /etc/pureftpd-ldap.conf
++# LDAPConfigFile               /etc/pure-ftpd/pureftpd-ldap.conf
+ 
+ 
+ 
+ # MySQL configuration file (see README.MySQL)
+ 
+-# MySQLConfigFile              /etc/pureftpd-mysql.conf
++# MySQLConfigFile              /etc/pure-ftpd/pureftpd-mysql.conf
+ 
+ 
+ # PostgreSQL configuration file (see README.PGSQL)
+ 
+-# PGSQLConfigFile              /etc/pureftpd-pgsql.conf
++# PGSQLConfigFile              /etc/pure-ftpd/pureftpd-pgsql.conf
+ 
+ 
+ # PureDB user database (see README.Virtual-Users)
+ 
+-# PureDB                       /etc/pureftpd.pdb
++# PureDB                       /etc/pure-ftpd/pureftpd.pdb
+ 
+ 
+ # Path to pure-authd socket (see README.Authentication-Modules)
+@@ -133,7 +137,7 @@ MaxIdleTime                  15
+ 
+ # If you want to enable PAM authentication, uncomment the following line
+ 
+-# PAMAuthentication            yes
++PAMAuthentication            yes
+ 
+ 
+ 
+@@ -176,7 +180,7 @@ MaxLoad                      4
+ 
+ # Port range for passive connections - keep it as broad as possible.
+ 
+-# PassivePortRange             30000 50000
++PassivePortRange             30000 30100
+ 
+ 
+ 
+Index: pureftpd-mysql.conf
+===================================================================
+--- pureftpd-mysql.conf.orig
++++ pureftpd-mysql.conf
+@@ -23,13 +23,13 @@ MYSQLSocket     /var/run/mysqld/mysqld.s
+ 
+ 
+ # Mandatory : user to bind the server as.
+-
+-MYSQLUser       root
++# using the Database root user is always a bad idea.
++MYSQLUser       ftpd
+ 
+ 
+ # Mandatory : user password. You must have a password.
+-
+-MYSQLPassword   rootpw
++# using the Database root user is always a bad idea. 
++MYSQLPassword   ftpdpassword
+ 
+ 
+ # Mandatory : database to open.
