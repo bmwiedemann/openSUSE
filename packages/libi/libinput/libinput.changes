@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 30 06:03:38 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.17.2
+  * Fix sensitivity for Dell Latitude 7490 pointing-stick
+  * Add palm size quirk for the Gigabyte Aero 15
+
+-------------------------------------------------------------------
 Wed Mar 24 08:54:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.17.1
