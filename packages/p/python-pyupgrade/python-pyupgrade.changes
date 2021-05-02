@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 24 18:16:48 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 2.13.0:
+ - move pep563 rewrite to py311
+- Update to version 2.12.0:
+ - document annotation unquote
+ - use dict comprehension
+ - rewrite typeddict even with total= option
+ - Update azure-pipelines template repositories
+ - _to_fstring: Use original token stream instead of unparsed AST
+
+-------------------------------------------------------------------
 Mon Mar 22 21:04:52 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 2.10.1
