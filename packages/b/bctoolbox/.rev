@@ -172,4 +172,14 @@
     <comment></comment>
     <requestid>886878</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9137c976b0be6ceace5bf2e14740b974</srcmd5>
+    <version>4.5.10</version>
+    <time>1619973324</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.10 (no changelog available) 
+- Apply GCC11 workaround only on Factory/Tumbleweed
+</comment>
+    <requestid>889047</requestid>
+  </revision>
 </revisionlist>

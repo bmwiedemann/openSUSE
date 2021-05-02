@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 28 14:19:45 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.5.10 (no changelog available) 
+- Apply GCC11 workaround only on Factory/Tumbleweed
+
+-------------------------------------------------------------------
 Thu Apr 15 20:02:15 UTC 2021 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
 
 - Update to 4.5.3

@@ -18,10 +18,11 @@
 
 %define sover   1
 Name:           bctoolbox
-Version:        4.5.3
+Version:        4.5.10
 Release:        0
 Summary:        Utility library for software from Belledonne Communications
 License:        GPL-2.0-or-later
+Group:          Development/Libraries/C and C++
 URL:            https://linphone.org/
 Source:         https://github.com/BelledonneCommunications/bctoolbox/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
@@ -78,8 +79,10 @@ This package the contains shared library for testing component.
 
 %build
 # workaround for building with GCC11, issue opened upstream https://github.com/BelledonneCommunications/bctoolbox/issues/13
+%if 0%{?suse_version} > 1500
 export CFLAGS="%(echo %{optflags}) -Wno-array-parameter"
 export CXXFLAGS="$CFLAGS"
+%endif
 %cmake -DENABLE_STATIC=OFF
 %cmake_build
 
