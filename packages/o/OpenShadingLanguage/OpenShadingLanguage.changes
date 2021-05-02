@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May  2 05:54:38 UTC 2021 - munix9@googlemail.com
+
+- Update to version 1.11.13
+  + Updated vector2.h with a mod(vector2,vector2) function. #1312
+  + Fix unnecesary error messages to stderr when encountering
+    broken point clouds. #1333
+
+- Add 0001-LLVM-12-compatibility-fixes.patch
+
+-------------------------------------------------------------------
 Wed Apr  7 22:16:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - do not list pkgconfig directory - provided by filesystem package 

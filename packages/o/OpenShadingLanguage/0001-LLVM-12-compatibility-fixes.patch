@@ -1,0 +1,82 @@
+From d3ef2dbd517447066710e3bf148b43d8bab3e75d Mon Sep 17 00:00:00 2001
+From: Euan Haahr <euanhaahrmail2@gmail.com>
+Date: Fri, 5 Feb 2021 22:51:14 +0000
+Subject: [PATCH 1/2] Removed use of options.PrintMachineCode since this has
+ been removed as of llvm 12. Converted uses of DebugLoc::get to
+ DILocation::get since it has been depricated and remove as of llvm 12.
+
+Signed-off-by: Euan Haahr <euanhaahrmail2@gmail.com>
+---
+ src/liboslexec/llvm_util.cpp | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/src/liboslexec/llvm_util.cpp b/src/liboslexec/llvm_util.cpp
+index fed8c5ecb..c3a3dc5e1 100644
+--- a/src/liboslexec/llvm_util.cpp
++++ b/src/liboslexec/llvm_util.cpp
+@@ -701,7 +701,8 @@ LLVM_Util::debug_pop_function()
+     // that has been finalized, point it back to the compilation unit
+     OSL_ASSERT(m_builder);
+     OSL_ASSERT(m_builder->getCurrentDebugLocation().get() != nullptr);
+-    m_builder->SetCurrentDebugLocation(llvm::DebugLoc::get(static_cast<unsigned int>(1),
++    m_builder->SetCurrentDebugLocation(llvm::DILocation::get(getCurrentDebugScope()->getContext(),
++                static_cast<unsigned int>(1),
+                 static_cast<unsigned int>(0), /* column?  we don't know it, may be worth tracking through osl->oso*/
+                 getCurrentDebugScope()));
+ 
+@@ -776,7 +777,8 @@ LLVM_Util::debug_set_location(ustring sourcefile, int sourceline)
+     }
+     if (newDebugLocation) {
+         llvm::DebugLoc debug_location =
+-                llvm::DebugLoc::get(static_cast<unsigned int>(sourceline),
++                llvm::DILocation::get(sp->getContext(),
++                        static_cast<unsigned int>(sourceline),
+                         static_cast<unsigned int>(0), /* column?  we don't know it, may be worth tracking through osl->oso*/
+                         sp,
+                         inlineSite);
+@@ -958,7 +960,8 @@ LLVM_Util::new_builder (llvm::BasicBlock *block)
+     m_builder = new IRBuilder (block);
+     if (this->debug_is_enabled()) {
+         OSL_ASSERT(getCurrentDebugScope());
+-        m_builder->SetCurrentDebugLocation(llvm::DebugLoc::get(static_cast<unsigned int>(1),
++        m_builder->SetCurrentDebugLocation(llvm::DILocation::get(getCurrentDebugScope()->getContext(),
++                static_cast<unsigned int>(1),
+                 static_cast<unsigned int>(0), /* column?  we don't know it, may be worth tracking through osl->oso*/
+                 getCurrentDebugScope()));
+     }
+@@ -1386,7 +1389,6 @@ LLVM_Util::make_jit_execengine (std::string *err,
+     options.RelaxELFRelocations = false;
+     //options.DebuggerTuning = llvm::DebuggerKind::GDB;
+ 
+-    options.PrintMachineCode = dumpasm();
+     engine_builder.setTargetOptions(options);
+ 
+     detect_cpu_features(requestedISA, !jit_fma());
+
+From b5c65e13101d60fdf63839b2ef19154bfbc3a45c Mon Sep 17 00:00:00 2001
+From: Euan Haahr <euanhaahrmail2@gmail.com>
+Date: Sat, 6 Feb 2021 01:02:53 +0000
+Subject: [PATCH 2/2] PrintMachine code will only be used if llvm is lower than
+ version 12
+
+Signed-off-by: Euan Haahr <euanhaahrmail2@gmail.com>
+---
+ src/liboslexec/llvm_util.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/liboslexec/llvm_util.cpp b/src/liboslexec/llvm_util.cpp
+index c3a3dc5e1..07e7fb6af 100644
+--- a/src/liboslexec/llvm_util.cpp
++++ b/src/liboslexec/llvm_util.cpp
+@@ -1389,6 +1389,11 @@ LLVM_Util::make_jit_execengine (std::string *err,
+     options.RelaxELFRelocations = false;
+     //options.DebuggerTuning = llvm::DebuggerKind::GDB;
+ 
++    // TODO: Find equivalent function for PrintMachineCode post LLVM 12
++    #if OSL_LLVM_VERSION < 120
++      options.PrintMachineCode = dumpasm();
++    #endif
++
+     engine_builder.setTargetOptions(options);
+ 
+     detect_cpu_features(requestedISA, !jit_fma());
