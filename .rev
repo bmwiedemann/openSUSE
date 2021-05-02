@@ -656,4 +656,12 @@ Fixed testsuite included!
     <comment>submit new version 4.3.3</comment>
     <requestid>876572</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>f766465d994e4558ff19b3be5dcec99c</srcmd5>
+    <version>4.4.0</version>
+    <time>1619973335</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.0</comment>
+    <requestid>889586</requestid>
+  </revision>
 </revisionlist>
