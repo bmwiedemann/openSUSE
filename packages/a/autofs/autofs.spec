@@ -1,7 +1,7 @@
 #
 # spec file for package autofs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,7 @@ BuildRequires:  sssd
 BuildRequires:  pkgconfig(udisks2)
 %endif
 BuildRequires:  pkgconfig(libsystemd)
-Version:        5.1.6
+Version:        5.1.7
 Release:        0
 Summary:        A Kernel-Based Automounter
 License:        GPL-2.0-or-later
@@ -89,7 +89,7 @@ Patch104:       autofs-use-libldap_r-instead-of-libldap-for-thread-safety.patch
 Patch105:       autofs-5-1-3-fix-unset-tsd-group-name-handling.patch
 # bsc#1175238 - Use /usr/etc/nsswitch.conf if /etc/nsswitch.conf is not available
 Patch106:       autofs-nsswitch-usr-etc.patch
-Patch107:       automount-fix-master-wait.patch
+Patch107:       autofs-5.1.7-Fix-option-for-master_read_wait.patch
 Requires(pre):  %fillup_prereq
 Requires(pre):  aaa_base
 BuildRequires:  systemd-rpm-macros
@@ -182,6 +182,7 @@ rm -f %{buildroot}%{_sysconfdir}/sysconfig/autofs
 %doc README.smbfs README.v5.release autofs.schema README.active-restart
 %doc README.SUSE README.SUSE.ldap
 %dir %{_libdir}/autofs/
+%{_libdir}/libautofs.so
 %{_libdir}/autofs/
 %{_mandir}/man5/*
 %{_mandir}/man8/*

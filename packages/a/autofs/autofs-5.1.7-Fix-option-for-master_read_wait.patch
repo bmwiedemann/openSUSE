@@ -1,7 +1,9 @@
-Subject: [PATCH] Fix option for master wait
-References: bsc#1178006
+autofs-5.1.7 - Fix option for master read wait
 
-master wait expects a value, and if provided automount crashes
+From: Goldwyn Rodrigues <rgoldwyn@suse.de>
+
+The master-wait program option expects a value, and if provided
+automount crashes with the following trace:
 
 #0  __GI_____strtoul_l_internal (nptr=0x0, endptr=0x7fffffffe120, base=0, group=<optimized out>,
     loc=0x7ffff77a63a0 <_nl_global_locale>) at ../stdlib/strtol_l.c:292
@@ -9,20 +11,23 @@ master wait expects a value, and if provided automount crashes
 #2  0x0000555555564ec0 in main ()
 
 This is because the options string is not correct and does not expect
-an argument for master wait (M)
+an argument for master-wait (M), which sets optarg to NULL.
 
+Fixes: e68f07f ("autofs-5.1.2 - add master read wait option")
 Signed-off-by: Goldwyn Rodrigues <rgoldwyn@suse.com>
+Signed-off-by: Ian Kent <raven@themaw.net>
+---
+ daemon/automount.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/daemon/automount.c b/daemon/automount.c
-index 0391bfb..c2a0f58 100644
 --- a/daemon/automount.c
 +++ b/daemon/automount.c
-@@ -2219,7 +2219,7 @@ int main(int argc, char *argv[])
+@@ -2274,7 +2274,7 @@
  	time_t timeout;
  	time_t age = monotonic_time(NULL);
  	struct rlimit rlim;
--	const char *options = "+hp:t:vmdD:SfVrO:l:n:CFM";
-+	const char *options = "+hp:t:vmdD:SfVrO:l:n:CFM:";
+-	const char *options = "+hp:t:vmdD:SfVrO:l:n:CFUM";
++	const char *options = "+hp:t:vmdD:SfVrO:l:n:CFUM:";
  	static const struct option long_options[] = {
  		{"help", 0, 0, 'h'},
  		{"pid-file", 1, 0, 'p'},

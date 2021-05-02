@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Thu Apr 22 14:43:15 UTC 2021 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Upgrade to 5.1.7
+  - make bind mounts propagation slave by default.
+  - update ldap READMEs and schema definitions.
+  - fix program map multi-mount lookup after mount fail.
+  - fix browse dir not re-created on symlink expire.
+  - fix a regression with map instance lookup.
+  - correct fsf address.
+  - samples: fix Makefile targets' directory dependencies
+  - remove intr hosts map mount option.
+  - fix trailing dollar sun entry expansion.
+  - initialize struct addrinfo for getaddrinfo() calls.
+  - fix quoted string length calc in expandsunent().
+  - fix autofs mount options construction.
+  - mount_nfs.c fix local rdma share not mounting.
+  - configure.in: Remove unneeded second call to PKG_PROG_PKG_CONFIG.
+  - configure.in: Do not append parentheses to PKG_PROG_PKG_CONFIG.
+  - Use PKG_CHECK_MODULES to detect the libxml2 library.
+  - fix ldap sasl reconnect problem.
+  - samples/ldap.schema fix.
+  - fix configure force shutdown check.
+  - fix crash in sun_mount().
+  - fix lookup_nss_read_master() nsswicth check return.
+  - fix typo in open_sss_lib().
+  - fix sss_master_map_wait timing.
+  - add sss ECONREFUSED return handling.
+  - use mapname in sss context for setautomntent().
+  - add support for new sss autofs proto version call.
+  - fix retries check in setautomntent_wait().
+  - refactor sss setautomntent().
+  - improve sss setautomntent() error handling.
+  - refactor sss getautomntent().
+  - improve sss getautomntent() error handling.
+  - sss introduce calculate_retry_count() function.
+  - move readall into struct master.
+  - sss introduce a flag to indicate map being read.
+  - update sss timeout documentation.
+  - refactor sss getautomntbyname().
+  - improve sss getautomntbyname() error handling.
+  - use a valid timeout in lookup_prune_one_cache().
+  - dont prune offset map entries.
+  - simplify sss source stale check.
+  - include linux/nfs.h directly in rpc_subs.h.
+  - fix typo in daemon/automount.c.
+  - fix direct mount unlink_mount_tree() path.
+  - fix unlink mounts umount order.
+  - fix incorrect logical compare in unlink_mount_tree().
+  - use bit flag for force unlink mounts.
+  - improve force unlink option description.
+  - remove command fifo on autofs mount fail.
+  - add force unlink mounts and exit option.
+  - cleanup stale logpri fifo pipes on unlink and exit.
+  - fix incorrect systemctl command syntax in autofs(8).
+  - update list.h.
+  - add hashtable implementation.
+  - change mountpoint to mp in struct ext_mount.
+  - make external mounts independent of amd_entry.
+  - make external mounts use simpler hashtable.
+  - add a hash index to mnt_list.
+  - use mnt_list for submounts.
+  - use mnt_list for amdmounts.
+  - make umount_autofs() static.
+  - remove force parameter from umount_all().
+  - fix remount expire.
+  - fix stale offset directories disable mount.
+  - use struct mnt_list to track mounted mounts.
+  - use struct mnt_list mounted list for expire.
+  - remove unused function tree_get_mnt_list().
+  - only add expre alarm for active mounts.
+  - move submount check into conditional_alarm_add().
+  - move lib/master.c to daemon/master.c.
+  - use master_list_empty() for list empty check.
+  - add helper to construct mount point path.
+  - check defaults_read_config() return.
+  - move AUTOFS_LIB to end of build rule lines.
+  - make autofs.a a shared library.
+  - make lookup_file.c nss map read status return handling consistent.
+  - fix empty mounts list return from unlink_mount_tree().
+- Refreshed autofs-5.1.1-dbus-udisks-monitor.patch
+- Replaced automount-fix-master-wait.patch with upstream patch
+   autofs-5.1.7-Fix-option-for-master_read_wait.patch
+
+-------------------------------------------------------------------
 Fri Oct 23 14:28:02 UTC 2020 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 
 - automount-fix-master-wait.patch: Fix options string for master wait
