@@ -20,7 +20,7 @@
 %define soname  libortp
 %define sover   15
 Name:           ortp
-Version:        4.5.3
+Version:        4.5.10
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        GPL-2.0-or-later
