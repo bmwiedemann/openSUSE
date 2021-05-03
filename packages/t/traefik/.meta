@@ -1,0 +1,7 @@
+<package name="traefik" project="openSUSE:Factory">
+  <title>The Cloud Native Edge Router</title>
+  <description>Traefik is a modern HTTP reverse proxy and load balancer that makes deploying microservices easy. Traefik integrates with your existing infrastructure components (Docker, Swarm mode, Kubernetes, Marathon, Consul, Etcd, Rancher, Amazon ECS, ...) and configures itself automatically and dynamically. Pointing Traefik at your orchestrator should be the only configuration step you need.
+
+https://github.com/containous/traefik/</description>
+  <devel project="devel:kubic" package="traefik"/>
+</package>

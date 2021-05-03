@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Thu Apr 29 10:07:36 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 2.4.8:
+  * Prepare release v2.4.8
+  * Raise errors for non-ASCII domain names in a router's rules
+  * Adding an option to (de)activate Pilot integration into the Traefik dashboard
+  * Doc: improve basic auth middleware httpasswd example
+  * Add missing `traefik.` prefix across sample config
+  * Fix travis docker image pulling for docs
+  * updating docs to remove a no longer needed note
+  * Update to gateway-api v0.2.0
+  * server: updating go-proxyproto with security bugfix from upstream
+  * Update go-acme/lego to v4.3.1
+
+-------------------------------------------------------------------
+Thu Jan 10 14:50:22 UTC 2019 - pgeorgiadis@suse.com
+
+- Initial package release to version 1.7.7:
+ * Check for watched namespace before getting kubernetes objects
+ * Allow empty path with App-root annotation
+ * kubernetes: sort and uniq TLS secrets
+ * Skip TLS section with no secret in Kubernetes ingress
