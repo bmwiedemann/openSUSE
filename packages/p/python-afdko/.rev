@@ -93,4 +93,12 @@
   * [checkoutlinesufo] add support for CID-keyed fonts (#1224)</comment>
     <requestid>878253</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>df7dda68492cfc1a6893dc316a5ca69a</srcmd5>
+    <version>3.6.2</version>
+    <time>1620072485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890052</requestid>
+  </revision>
 </revisionlist>

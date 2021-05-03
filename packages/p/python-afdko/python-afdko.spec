@@ -1,5 +1,5 @@
 #
-# spec file for package python-afdko
+# spec file for package python-afdko-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -24,9 +24,17 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%define binaries makeotf detype1 makeotfexe mergefonts rotatefont sfntdiff sfntedit \
+                 spot afdko-tx type1 buildcff2vf buildmasterotfs \
+                 comparefamily checkoutlinesufo makeinstancesufo \
+                 otc2otf otf2otc otf2ttf ttfcomponentizer \
+                 ttfdecomponentizer ttxn charplot digiplot fontplot \
+                 fontplot2 fontsetplot hintplot waterfallplot
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python36 1
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-afdko%{psuffix}
 Version:        3.6.2
 Release:        0
@@ -41,36 +49,30 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-FontTools >= 4.13.0
+Requires:       python-Brotli >= 1.0.1
+Requires:       python-FontTools >= 4.21.1
 Requires:       python-booleanOperations >= 0.9.0
 Requires:       python-defcon >= 0.7.2
 Requires:       python-fontMath >= 0.6.0
-Requires:       python-lxml >= 4.5.2
+Requires:       python-fontPens >= 0.1.0
+Requires:       python-fs >= 2.2.0
+Requires:       python-lxml >= 4.6.2
 Requires:       python-mutatorMath >= 3.0.1
-Requires:       python-psautohint >= 2.1.0
+Requires:       python-psautohint >= 2.3.0
+Requires:       python-tqdm >= 4.58.0
 Requires:       python-ufoProcessor >= 1.9.0
-Requires:       python-ufonormalizer >= 0.4.1
+Requires:       python-ufonormalizer >= 0.5.3
 Requires:       python-zopfli >= 0.1.4
+%if %{python_version_nodots} < 39
+Requires:       python-unicodedata2 >= 13.0.0
+%endif
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       adobe-afdko
 %if %{with test}
-BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Brotli >= 1.0.1}
-BuildRequires:  %{python_module FontTools >= 4.13.0}
-BuildRequires:  %{python_module afdko}
-BuildRequires:  %{python_module booleanOperations >= 0.9.0}
-BuildRequires:  %{python_module defcon >= 0.7.2}
-BuildRequires:  %{python_module fontMath >= 0.6.0}
-BuildRequires:  %{python_module lxml >= 4.5.2}
-BuildRequires:  %{python_module mutatorMath >= 3.0.1}
-BuildRequires:  %{python_module psautohint >= 2.1.0}
-BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module afdko = %{version}}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module ufoProcessor >= 1.9.0}
-BuildRequires:  %{python_module ufonormalizer >= 0.4.1}
-BuildRequires:  %{python_module zopfli >= 0.1.4}
 # /SECTION
 %endif
 %python_subpackages
@@ -82,52 +84,49 @@ Adobe Font Development Kit for OpenType
 %setup -q -n afdko-%{version}
 %patch0 -p1
 
-%if %{with test}
-%check
-mkdir tmp
-export TMPDIR=tmp
-%pytest
-#-n auto
-
-%else
 %build
+%if ! %{with test}
 %python_build
+%endif
 
 %install
+%if ! %{with test}
 %python_install
 mv %{buildroot}%{_bindir}/tx  %{buildroot}%{_bindir}/afdko-tx
 
-for binary in detype1 makeotfexe mergefonts rotatefont sfntdiff sfntedit \
-              spot afdko-tx type1 buildcff2vf buildmasterotfs \
-              comparefamily checkoutlinesufo makeotf makeinstancesufo \
-              otc2otf otf2otc otf2ttf ttfcomponentizer \
-              ttfdecomponentizer ttxn charplot digiplot fontplot \
-              fontplot2 fontsetplot hintplot waterfallplot ; do
+for binary in %{shrink:%binaries}; do
    %python_clone -a %{buildroot}%{_bindir}/$binary
 done
 
 ln -s -f %{_sysconfdir}/alternatives/tx %{buildroot}%{_bindir}/tx
 
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
+%if %{with test}
+%check
+%{python_expand # use the u-a scripts of our flavor
+mkdir -p build/bin
+for b in %{shrink:%binaries}; do
+  ln -s %{_bindir}/$b-%{$python_bin_suffix} build/bin/$b
+done
+ln -s afdko-tx build/bin/tx
+}
+export PATH=$PWD/build/bin:$PATH
+mkdir tmp
+export TMPDIR=tmp
+%pytest_arch
+%endif
+
+%if ! %{with test}
 %post
-%{python_install_alternative makeotf detype1 makeotfexe mergefonts rotatefont
-  sfntdiff sfntedit spot afdko-tx type1 buildcff2vf buildmasterotfs
-  comparefamily checkoutlinesufo makeinstancesufo otc2otf otf2otc otf2ttf
-  ttfcomponentizer ttfdecomponentizer ttxn charplot digiplot
-  fontplot fontplot2 fontsetplot hintplot waterfallplot}
-
-%{_sbindir}/update-alternatives --install %{_bindir}/tx tx %{_bindir}/afdko-tx 20
+%python_install_alternative %{binaries}
+%{_sbindir}/update-alternatives --install %{_bindir}/tx tx %{_bindir}/afdko-tx-%{python_bin_suffix} %{python_version_nodots}
 
 %postun
-%{python_uninstall_alternative makeotf detype1 makeotfexe mergefonts rotatefont
-  sfntdiff sfntedit spot afdko-tx type1 buildcff2vf buildmasterotfs
-  comparefamily checkoutlinesufo makeinstancesufo otc2otf otf2otc otf2ttf
-  ttfcomponentizer ttfdecomponentizer ttxn charplot digiplot
-  fontplot fontplot2 fontsetplot hintplot waterfallplot}
-
-if [ ! -e %{_bindir}/afdko-tx ] ; then
-  %{_sbindir}/update-alternatives --remove tx %{_bindir}/afdko-tx
+%python_uninstall_alternative makeotf
+if [ ! -e %{_bindir}/afdko-tx-%{python_bin_suffix} ] ; then
+  %{_sbindir}/update-alternatives --quiet --remove tx %{_bindir}/afdko-tx-%{python_bin_suffix}
 fi
 
 %files %{python_files}
@@ -135,35 +134,11 @@ fi
 %license LICENSE.md
 %ghost %{_sysconfdir}/alternatives/tx
 %{_bindir}/tx
-%python_alternative %{_bindir}/detype1
-%python_alternative %{_bindir}/makeotfexe
-%python_alternative %{_bindir}/mergefonts
-%python_alternative %{_bindir}/rotatefont
-%python_alternative %{_bindir}/sfntdiff
-%python_alternative %{_bindir}/sfntedit
-%python_alternative %{_bindir}/spot
-%python_alternative %{_bindir}/afdko-tx
-%python_alternative %{_bindir}/type1
-%python_alternative %{_bindir}/buildcff2vf
-%python_alternative %{_bindir}/buildmasterotfs
-%python_alternative %{_bindir}/comparefamily
-%python_alternative %{_bindir}/checkoutlinesufo
-%python_alternative %{_bindir}/makeotf
-%python_alternative %{_bindir}/makeinstancesufo
-%python_alternative %{_bindir}/otc2otf
-%python_alternative %{_bindir}/otf2otc
-%python_alternative %{_bindir}/otf2ttf
-%python_alternative %{_bindir}/ttfcomponentizer
-%python_alternative %{_bindir}/ttfdecomponentizer
-%python_alternative %{_bindir}/ttxn
-%python_alternative %{_bindir}/charplot
-%python_alternative %{_bindir}/digiplot
-%python_alternative %{_bindir}/fontplot
-%python_alternative %{_bindir}/fontplot2
-%python_alternative %{_bindir}/fontsetplot
-%python_alternative %{_bindir}/hintplot
-%python_alternative %{_bindir}/waterfallplot
-%{python_sitearch}/*
+%{lua: for b in rpm.expand("%{binaries}"):gmatch("%S+") do
+  print(rpm.expand("%python_alternative %{_bindir}/" .. b .. "\n"))
+end}
+%{python_sitearch}/afdko
+%{python_sitearch}/afdko-%{version}*-info
 %endif
 
 %changelog
