@@ -1,7 +1,7 @@
 #
 # spec file for package python-uncompyle6
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python39 1
 Name:           python-uncompyle6
 Version:        3.7.4
 Release:        0
@@ -33,7 +34,7 @@ Requires:       python-setuptools
 Requires:       python-spark_parser >= 1.8.9
 Requires:       python-xdis >= 5.0.4
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis >= 2.0.0}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  1 18:35:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- skip python 3.9 (https://github.com/rocky/python-uncompyle6/issues/331) 
+
+-------------------------------------------------------------------
 Thu Dec 31 08:08:08 UTC 2020 - olaf@aepfle.de
 
 - update to 3.7.4

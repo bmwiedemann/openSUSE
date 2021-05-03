@@ -84,4 +84,12 @@
     <comment></comment>
     <requestid>859980</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>b42da76ce624e43eabd5386e2ca068fa</srcmd5>
+    <version>3.7.4</version>
+    <time>1620072478</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.9 (https://github.com/rocky/python-uncompyle6/issues/331)</comment>
+    <requestid>889730</requestid>
+  </revision>
 </revisionlist>
