@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun May  2 14:26:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.3
+  * MANIFEST.in excludes test_derived_props_files.py; test data
+    files are not packaged.
+  * CI script now builds source package and runs tests from it.
+  * Use Github Actions for continuous integration.
+  * Update copyright year (2021).
+- Release 1.0.2
+  * get_profile now supports alternative unicodedata2 module 
+    (Issue #8).
+  * get_profile maps ':' to '_' before looking up profile name 
+    (Issue #10).
+  * Test Unicode 12.1 for Python 3.8.
+  * Test Unicode 12.0 (Using optional unicodedata2 module)
+  * Test Unicode 13.0 for Python 3.9 (Issue #9).
+Update copyright year (2020).
+- Drop support_unicode_12.1_for_python_3.8.patch 
+
+-------------------------------------------------------------------
 Wed Mar 11 20:40:12 UTC 2020 - Benoît Monin <benoit.monin@gmx.fr>
 
 - add support_unicode_12.1_for_python_3.8.patch to fix test under

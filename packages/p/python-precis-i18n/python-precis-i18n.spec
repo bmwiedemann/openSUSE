@@ -1,7 +1,7 @@
 #
 # spec file for package python-precis-i18n
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,18 +20,17 @@
 %define skip_python2 1
 %define _name   precis_i18n
 Name:           python-precis-i18n
-Version:        1.0.1
+Version:        1.0.3
 Release:        0
 Summary:        Internationalised Usernames and Passwords
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/byllyfish/precis_i18n
-Source:         https://github.com/byllyfish/precis_i18n/archive/v%{version}.tar.gz
-# imported from upstream 7b6987e20 to add python 3.8 support
-Patch1:         support_unicode_12.1_for_python_3.8.patch
+Source:         https://github.com/byllyfish/precis_i18n/archive/v%{version}.tar.gz#/%{_name}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Suggests:       python-unicodedata2
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,7 +58,7 @@ This module implements the PRECIS Framework as described in:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
 %check
-%python_exec setup.py test
+%pyunittest -v
 
 %files %{python_files}
 %license LICENSE.txt
