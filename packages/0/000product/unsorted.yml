@@ -2978,6 +2978,8 @@ unsorted:
   - dracut-kiwi-overlay 
   - dracut-sshd 
   - dracut-tools 
+  - drawing 
+  - drawing-lang 
   - drbd-formula 
   - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
@@ -20809,7 +20811,6 @@ unsorted:
   - python-cinderclient-doc 
   - python-cliff-doc 
   - python-cloud-sptheme-doc 
-  - python-congressclient-doc 
   - python-curses 
   - python-dbus-python-common-devel 
   - python-debtcollector-doc 
@@ -21000,6 +21001,7 @@ unsorted:
   - python3-caffe_1_0-gnu-hpc 
   - python3-capng 
   - python3-capstone 
+  - python3-casacore: [x86_64] 
   - python3-castellan 
   - python3-ccm 
   - python3-cinderclient 
@@ -21008,7 +21010,6 @@ unsorted:
   - python3-clinkgrammar 
   - python3-clustershell 
   - python3-coconut 
-  - python3-congressclient 
   - python3-ctypeslib2 
   - python3-dbus-presage 
   - python3-debtcollector 
@@ -21921,7 +21922,7 @@ unsorted:
   - python36-cangjie 
   - python36-canonicaljson 
   - python36-capturer 
-  - python36-casacore 
+  - python36-casacore: [i586] 
   - python36-case 
   - python36-cassandra-driver 
   - python36-cassowary 
@@ -24709,7 +24710,7 @@ unsorted:
   - python38-cangjie 
   - python38-canonicaljson 
   - python38-capturer 
-  - python38-casacore 
+  - python38-casacore: [i586] 
   - python38-case 
   - python38-cassandra-driver 
   - python38-cassowary 
@@ -27629,7 +27630,7 @@ unsorted:
   - python39-cangjie 
   - python39-canonicaljson 
   - python39-capturer 
-  - python39-casacore 
+  - python39-casacore: [i586] 
   - python39-case 
   - python39-cassandra-driver 
   - python39-cassowary 
@@ -28477,6 +28478,7 @@ unsorted:
   - python39-ldap3 
   - python39-ldapdomaindump 
   - python39-ldappool 
+  - python39-ldaptor 
   - python39-leather 
   - python39-lesscpy 
   - python39-leveldb 
@@ -28884,6 +28886,7 @@ unsorted:
   - python39-pproxy 
   - python39-praatio 
   - python39-pre-commit 
+  - python39-precis-i18n 
   - python39-precise-runner 
   - python39-preggy 
   - python39-premailer 
@@ -29098,6 +29101,7 @@ unsorted:
   - python39-pyroomacoustics 
   - python39-pyroute2 
   - python39-pyrsistent 
+  - python39-pysaml2 
   - python39-pyscard 
   - python39-pyscreenshot 
   - python39-pysendfile 
@@ -29741,6 +29745,7 @@ unsorted:
   - python39-translate-toolkit 
   - python39-translation-finder 
   - python39-translationstring 
+  - python39-translitcodec 
   - python39-treq 
   - python39-tri.declarative 
   - python39-tri.struct 
@@ -40531,6 +40536,7 @@ unsorted:
   - tracker2-devel 
   - trader 
   - trader-lang 
+  - traefik 
   - trang 
   - transconnect 
   - transfig 
