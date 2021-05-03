@@ -1,7 +1,7 @@
 #
-# spec file for package python-pytest-doctestplus
+# spec file for package python-pytest-doctestplus-test
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,23 +27,22 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-doctestplus%{psuffix}
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Pytest plugin with advanced doctest features
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/pytest-doctestplus
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-doctestplus/pytest-doctestplus-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 4.0
-Requires:       python-six
+Requires:       python-pytest >= 4.6
+Requires:       python-setuptools >= 30.3.0
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest >= 4.0}
-BuildRequires:  %{python_module pytest-doctestplus >= %{version}}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module pip >= 19.3.1}
+BuildRequires:  %{python_module pytest-doctestplus = %{version}}
 %endif
 %python_subpackages
 
@@ -54,8 +53,9 @@ advanced doctest support and enables the testing of reStructuredText
 
 %prep
 %setup -q -n pytest-doctestplus-%{version}
-# do not change the pytest behaviour for us
-rm -f setup.cfg
+# https://build.opensuse.org/request/show/889802
+sed -i '/filterwarnings/,/\s+/ { /error/ a \        ignore:.*unclosed file.*:ResourceWarning
+}' setup.cfg
 
 %build
 %python_build
@@ -70,15 +70,16 @@ rm -f setup.cfg
 %check
 export LANG=en_US.UTF8
 export PY_IGNORE_IMPORTMISMATCH=1
-# README.rst contains Python 3 only imports
-%pytest --doctest-plus --doctest-rst -k 'not README.rst'
+# -k: inline pytest calls with -We, https://build.opensuse.org/request/show/889802
+%pytest tests/ --doctest-plus --doctest-rst -k "not (test_doctestplus and warnings)"
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE.rst
-%{python_sitelib}/*
+%{python_sitelib}/pytest_doctestplus
+%{python_sitelib}/pytest_doctestplus-%{version}*-info
 %endif
 
 %changelog
