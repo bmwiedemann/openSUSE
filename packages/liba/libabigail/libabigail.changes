@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon May  3 11:58:31 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.8.2:
+  * dwarf-reader: Keep stable order when de-duplicating class definitions
+- Update to version 1.8.1:
+  * Fix potential loss of some aliased ELF function symbols
+  * Ignore duplicated functions and those not associated with ELF symbols
+  * dwarf-reader: Support fast DW_FORM_line_strp string comparison
+  * abidiff: support --dump-diff-tree with --leaf-changes-only
+- Update to version 1.8:
+  * abipkgdiff:
+    * Add a new --self-check option
+    * make --self-check to fail on any change against own ABIXML
+    * Fix race condition while using private types suppr specs
+  * abidw:
+    * make --abidiff report any change against own ABIXML
+    * Add --drop-private-types and --drop-undefined-syms options
+  * abidiff, abidw: Support several --headers-dir{1,2} options
+  * abg-writer: Add support for stable hash type ids.
+  * dwarf-reader:
+    * Support several anonymous data members in a given class
+    * Support declaration-only enums
+    * Support artificially generated translation units
+    * Fix bloom filter access in GNU_HASH section
+  * Support DWARF5
+- Require libdw >= 170 for DWARF5 features
+- Update no-tests.diff
+
+-------------------------------------------------------------------
 Tue Apr 21 02:51:29 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Shift BuildRequires to Python 3 Sphinx due to removal of Python 2.

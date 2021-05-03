@@ -1,7 +1,7 @@
 #
 # spec file for package libabigail
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libabigail
 %define lname   libabigail0
-Version:        1.7
+Version:        1.8.2
 Release:        0
 Summary:        Application Binary Interface Generic Analysis and Instrumentation Library
 License:        GPL-3.0-or-later AND LGPL-2.0-or-later AND LGPL-3.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake >= 1.11.1
 BuildRequires:  dpkg
 BuildRequires:  gcc-c++ >= 4.7
-BuildRequires:  libdw-devel >= 0.160
+BuildRequires:  libdw-devel >= 0.170
 %if 0%{?suse_version} < 1550
 BuildRequires:  libebl-devel
 %endif
