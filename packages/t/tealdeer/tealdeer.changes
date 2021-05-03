@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May  1 18:38:48 UTC 2021 - Jonathan Papineau <jonathan@jpapineau.ca>
+
+- Version 1.4.1
+  - [fixed] Syntax error in zsh completion file
+- Version 1.4.0
+  - [added] Configurable automatic cache updates
+  - [added] Improved color detection and support for --color argument and NO_COLOR env variable
+  - [changed] Make --list option comply with official spec
+  - [changed] Move cache age warning to stderr
+
+-------------------------------------------------------------------
 Thu Apr  9 09:14:49 UTC 2020 - Dany Marcoux <dmarcoux@suse.com>
 
 - Version 1.3.0
