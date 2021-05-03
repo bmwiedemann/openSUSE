@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  3 12:14:49 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 2.6.2:
+  * Bugfixes
+    - PICARD-2188 - Plugin update can fetch old version from
+      network cache
+    - PICARD-2191 - Revert title and track number guessed from
+      filename should show up as changed metadata
+
+-------------------------------------------------------------------
 Tue Apr 20 11:31:55 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 2.6.1:
