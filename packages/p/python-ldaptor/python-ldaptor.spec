@@ -16,10 +16,11 @@
 #
 
 
-%define binaries ldaptor-fetchschema ldaptor-find-server ldaptor-getfreenumber ldaptor-ldap2dhcpconf ldaptor-ldap2dnszones ldaptor-ldap2maradns ldaptor-ldap2passwd ldaptor-ldap2pdns ldaptor-ldifdiff ldaptor-ldifpatch ldaptor-namingcontexts ldaptor-passwd ldaptor-rename ldaptor-search 
+%define binaries ldaptor-fetchschema ldaptor-find-server ldaptor-getfreenumber ldaptor-ldap2dhcpconf ldaptor-ldap2dnszones ldaptor-ldap2maradns ldaptor-ldap2passwd ldaptor-ldap2pdns ldaptor-ldifdiff ldaptor-ldifpatch ldaptor-namingcontexts ldaptor-passwd ldaptor-rename ldaptor-search
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-ldaptor
-Version:        19.1.0
+Version:        21.2.0
 Release:        0
 Summary:        A Pure-Python Twisted library for LDAP
 License:        MIT
@@ -28,9 +29,11 @@ URL:            https://github.com/twisted/ldaptor
 Source:         https://files.pythonhosted.org/packages/source/l/ldaptor/ldaptor-%{version}.tar.gz
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module passlib}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -39,7 +42,7 @@ Requires:       python-passlib
 Requires:       python-pyparsing
 Requires:       python-zope.interface
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,12 +57,13 @@ Ldaptor is a pure-Python library that implements:
 
 %prep
 %setup -q -n ldaptor-%{version}
+sed -i '1 {/env python/ d}' ldaptor/ldapfilter.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 for b in %{binaries}; do
   %python_clone -a %{buildroot}%{_bindir}/$b
 done
@@ -69,32 +73,22 @@ done
 %pytest
 
 %post
-for b in %{binaries}; do
-  %python_install_alternative $b
-done
+%{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
+  print(rpm.expand("%python_install_alternative " .. b .. "\n"))
+end}
 
 %postun
-for b in %{binaries}; do
-  %python_uninstall_alternative $b
-done
+%{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
+  print(rpm.expand("%python_uninstall_alternative " .. b.. "\n"))
+end}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
-%python_alternative %{_bindir}/ldaptor-fetchschema
-%python_alternative %{_bindir}/ldaptor-find-server
-%python_alternative %{_bindir}/ldaptor-getfreenumber
-%python_alternative %{_bindir}/ldaptor-ldap2dhcpconf
-%python_alternative %{_bindir}/ldaptor-ldap2dnszones
-%python_alternative %{_bindir}/ldaptor-ldap2maradns
-%python_alternative %{_bindir}/ldaptor-ldap2passwd
-%python_alternative %{_bindir}/ldaptor-ldap2pdns
-%python_alternative %{_bindir}/ldaptor-ldifdiff
-%python_alternative %{_bindir}/ldaptor-ldifpatch
-%python_alternative %{_bindir}/ldaptor-namingcontexts
-%python_alternative %{_bindir}/ldaptor-passwd
-%python_alternative %{_bindir}/ldaptor-rename
-%python_alternative %{_bindir}/ldaptor-search
+%{python_sitelib}/ldaptor
+%{python_sitelib}/ldaptor-%{version}*-info
+%{lua:for b in rpm.expand("%{binaries}"):gmatch("%S+") do
+  print(rpm.expand("%python_alternative %{_bindir}/" .. b.. "\n"))
+end}
 
 %changelog

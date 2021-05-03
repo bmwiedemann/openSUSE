@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Apr 30 20:08:05 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 21.2.0
+  * fix ModuleNotFoundError: No module named 'cStringIO' in
+    ldaptor-ldap2pdns.
+  * move scripts to console_scripts entry_points
+  * replace deprecated calls to base64.decodestring and base64.
+    encodestring.
+  * This will be the last Ldaptor release to support Python 3.5.
+  * Updated the object representations of pureber and pureldap
+    containers to directly pass on their contained item object
+    representations. Previously they always passed on the repr
+    after decoding to str with utf-8.
+  * Dropped support for Python 2
+  * removed Travis CI
+  * The next release v20.1.0 will drop support for Python 2, and
+    require Python~=3.5
+  * PyPI release is now done via GitHub Action
+  * the ldaptor whl is now built with pep517.
+  * the ldaptor whl is tested with tox. The sdist is now untested,
+    deprecated and should only be used for compatability with very
+    old packaging tools.
+  * the setup.py file is deprecated and will be removed in a
+    future release.
+  * SASL Bind without credentials caused list index out of range.
+    Issue #157.
+  * ldaptor.protocols.ldap.ldapserver.LDAPServer.
+    handle_LDAPSearchRequest now returns an LDAPSearchResultEntry
+    without any attributes when there is no match between the
+    requested attributes and the entrie's attributes. Issue #166. 
+- Use pep517
+- Fix u-a scriptlets
+
+-------------------------------------------------------------------
 Tue Feb  2 13:35:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - filelist fix for multi-python3 

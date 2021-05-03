@@ -31,4 +31,12 @@
     <comment>- filelist fix for multi-python3</comment>
     <requestid>870228</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2dd1a1ea2a96b909e4462ed9d87a1f21</srcmd5>
+    <version>21.2.0</version>
+    <time>1620072480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889743</requestid>
+  </revision>
 </revisionlist>
