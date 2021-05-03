@@ -1,0 +1,36 @@
+-------------------------------------------------------------------
+Mon May  3 10:17:01 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- use BuildRequires: gobject-introspection instead of hardrequiring
+  typelibs, remove -lang recommends, handled better automatically.
+
+-------------------------------------------------------------------
+Sat May  1 13:16:52 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.8.0 release
+
+  - new, richer, more readable bottom pane for the selection tool
+  - add a "replace with" option to the eraser tool
+  - use an adequate layout on LXDE or LXQt
+  - force the release notes down users' throat (#347)
+  - rewrite the help manual to better force it down users' throat (#347)
+  - add color application mode support to the "shape" tool (#329)
+  - persist the text background style (#340) and the shape filling style options
+  - brush supporting pressure-sensitive input (#69, #116)
+  - hairy brush supporting pressure-sensitive input (#69, #116)
+  - airbrush supporting pressure-sensitive input (#69, #116)
+  - calligraphic nip supporting pressure-sensitive input (#69, #116)
+  - fix unexpected "jumps" when unselecting a selection that was defined by an undo
+  - improve the fullscreen mode, with a way to toggle the tools list (#265, #189)
+  - add an "increase constrast" filter (#308)
+  - deleting the selection can now leave something else than transparency #232
+  - option to exclude the color left under the selection from the selection itself #232
+  - rewrite the UI for changing the color application mode (#329)
+  - remove the cool but deprecated GNOME Shell app menu
+  - improve flatpak CI (#319, Bilel Moussaoui)
+  - update several translations
+
+-------------------------------------------------------------------
+Thu Feb 11 05:45:10 UTC 2021 - slbtongying <shenlebantongying@gmail.com>
+
+- initial upload.
