@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun May  2 02:24:00 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.8.19:
+  + Add a new Google Drive backend (gdrive:).
+  + Remove installs common between before\_script: and script:.
+  + Gdata module passes on py27 only.
+  + Util.uexec() will return u'' if no err msg in e.args.
+  + Util.uexec() should check for e==None on entry.
+  + Fix bug #1547458 - more consistent passphrase prompt.
+  + Fix bug #1454136 - SX backend issues.
+  + Fix bug 1918981 - option to skip trash on delete on mediafire.
+  + Added --mf-purge option to bypass trash.
+  + Fix bug 1919017 - MultiBackend reports failure on file
+    deletion.
+  + Fix #41 - par2+rsync (non-ssh) fails.
+  + Fix Google Drive timeout.
+  + Don't sync when removing old backups.
+  + fix util.uexc: do not return None.
+  + Implement Box backend.
+  + Implement megav3 backend to to cater for change in MEGACmd.
+  + fix documentation for azure backend.
+  + Add IDrive backend.
+  + Progress bar improvements.
+  + Fix;usr:Fixes bug #1652953 - seek(0) on /dev/stdin crashes.
+  + Add a new Google Drive backend (gdrive:).
+  + Azure v12 support.
+  + List required volumes when called with 'restore --dry-run'.
+  + Fix sorting of BackupSets by avoiding direct comparison.
+  + Update mailing list link.
+  + Fix #16 - Move from boto to boto3.
+  + Fix to correctly build \_librsync.so.
+  + Fix to add --inplace option to build\_ext.
+  + Multibackend: fix indentation error that was preventing from
+    registering more than one affinity prefix per backend.
+
+-------------------------------------------------------------------
 Tue Jan 12 01:08:42 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.8.18: 
