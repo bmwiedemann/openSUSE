@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr 29 14:38:25 UTC 2021 - Jan Baier <jbaier@suse.com>
+
+- update to 1.6.1
+- refresh makefile.patch
+ * Added
+    - Wayland support. Dunst now runs natively on wayland. This fixes several bugs with dunst on wayland and allows idle detection. (#781)
+    - A progress bar, useful for showing volume or brightness in notifications (#775)
+    - A script in contrib for using the progress bar (#791)
+    - dunstctl count for showing the number of notifications (#793)
+    - Expose environment variables info about the notification to scripts (#802)
+    - text_icon_padding for adding padding between the notification icon and text (#810)
+ * Changed
+    - Dunst now installs a system-wide config in /etc/dunst/dunstrc (#798)
+    - Move part of the man page to dunst(5) (#799)
+ * Fixed
+    - Incorrect version in Makefile
+    - history_ignore flag broken when using multiple rules (#747)
+    - Divide by zero in radius calculation (#750)
+    - Monitor setting overriding follow_mode (#755)
+    - Incorrect monitor usage when using multiple X11 screens (#762)
+    - Emit signal when paused property changes (#766)
+    - dunstify can pass empty appname to libnotify (#768)
+    - Incorrect handling of 'do_action, close' mouse action (#778)
+ * Removed
+    - DUNST_COMMAND_{PAUSE,RESUME,TOGGLE} (#830)-
+
+-------------------------------------------------------------------
 Sat Aug  8 09:15:20 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 1.5.0
@@ -15,7 +42,7 @@ Sat Aug  8 09:15:20 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  * Overflow when setting a >=40 minute timeout
  * Unset configuration options not falling back to default values
  * Crash when $HOME environment variable is unset
- * Lack of antialiasing with round corners enabled 
+ * Lack of antialiasing with round corners enabled
 
 -------------------------------------------------------------------
 Wed Jul  3 10:50:50 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -64,7 +91,7 @@ Tue May 28 06:35:15 UTC 2019 - Petr Cervinka <petr@cervinka.net>
     - Dependency on libxdg-basedir (#550)
 - Update makefile.patch to be compatible with latest version
 - Build and install dunstify binary, command which is completely compatible to notify-send
-  and can be used alongside it, but offers more features. 
+  and can be used alongside it, but offers more features.
 
 -------------------------------------------------------------------
 Sun May  6 16:26:56 UTC 2018 - avindra@opensuse.org
@@ -77,7 +104,7 @@ Sun May  6 16:26:56 UTC 2018 - avindra@opensuse.org
 -------------------------------------------------------------------
 Tue Feb 20 15:32:23 UTC 2018 - mimi.vx@gmail.com
 
-- add makefile.patch to fix service installation 
+- add makefile.patch to fix service installation
 
 -------------------------------------------------------------------
 Sun Feb 11 01:06:15 UTC 2018 - jengelh@inai.de

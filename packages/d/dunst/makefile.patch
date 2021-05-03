@@ -1,8 +1,6 @@
-Index: dunst-1.5.0/Makefile
-===================================================================
---- dunst-1.5.0.orig/Makefile
-+++ dunst-1.5.0/Makefile
-@@ -8,30 +8,7 @@ ifneq ($(wildcard ./.git/),)
+--- dunst-1.6.1.orig/Makefile	2021-02-21 13:22:51.000000000 +0100
++++ dunst-1.6.1/Makefile	2021-04-29 16:27:35.532536168 +0200
+@@ -8,38 +8,7 @@
  VERSION := $(shell ${GIT} describe --tags)
  endif
  
@@ -30,10 +28,18 @@ Index: dunst-1.5.0/Makefile
 -$(error "Failed to query $(PKG_CONFIG) for package 'systemd'!")
 -endif
 -endif
+-
+-ifneq (0,${WAYLAND})
+-DATA_DIR_WAYLAND_PROTOCOLS ?= $(shell $(PKG_CONFIG) wayland-protocols --variable=pkgdatadir)
+-DATA_DIR_WAYLAND_PROTOCOLS := ${DATA_DIR_WAYLAND_PROTOCOLS}
+-ifeq (,${DATA_DIR_WAYLAND_PROTOCOLS})
+-$(warning "Failed to query $(PKG_CONFIG) for package 'wayland-protocols'!")
+-endif
+-endif
  
  LIBS := $(shell $(PKG_CONFIG) --libs   ${pkg_config_packs})
  INCS := $(shell $(PKG_CONFIG) --cflags ${pkg_config_packs})
-@@ -177,11 +154,12 @@ install-doc:
+@@ -213,11 +182,12 @@
  
  install-service: install-service-dbus
  install-service-dbus: service-dbus
