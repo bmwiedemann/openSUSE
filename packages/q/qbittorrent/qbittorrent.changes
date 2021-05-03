@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon May  3 07:49:00 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.3.5
+  Bug fixes:
+  * Move cursor to the end when autofilling URL/hash in
+    "Download from URLs" dialog
+  * Sort invalid QDateTime values after valid values
+  * Fix tabChangesFocus attribute in "Edit trackers" dialog
+  * Update DynDNS register url
+  * Handle "not enough disk space" error more graciously
+  * Correctly draw progress background with stylesheet
+  Web UI:
+  * Fix magnet url from the search facility
+  * Revise folder monitoring functions
+  * Fix magnet url from the browser
+  * Allow to specify file indexes in torrents/files API
+  Other:
+  * Fix D-Bus Notification `desktop-entry` field
+  * Lower Qt requirement to 5.11
+  * Clarify that the license is GPLv2+
+
+-------------------------------------------------------------------
 Mon Apr  5 07:22:29 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Drop qbittorrent-libtorrent_pthread.patch (no longer necessary)
