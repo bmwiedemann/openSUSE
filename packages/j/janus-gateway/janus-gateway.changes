@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon May 03 10:24:07 UTC 2021 - michael@stroeder.com
+
+- Update to version 0.11.2:
+   - Added support for relative paths in config files, currently only in 
+     MQTT event handler (thanks @RSATom!) (#2623)
+   - Removed support for now deprecated frame-marking RTP extension 
+     (#2640)
+   - Fixex rare race condition between VideoRoom publisher leaving and 
+     subscriber hanging up (#2637)
+   - Fixed occasional crash when using announcements in AudioBridge
+   - Fixed rare crash in Streaming plugin when reconnecting RTSP streams 
+     (thanks @lucylu-star!) (#2542)
+   - Fixed broken switch in Streaming plugin when using helper threads
+   - Fixed rare race conditions on socket close in SIP and NoSIP plugins 
+     (#2599)
+   - Added support for out-of-dialog SIP MESSAGE requests (thanks 
+     @ihusejnovic!) (#2616)
+   - Fixed memory leak when using helper threads in Streaming plugin
+   - Added support for datachannel label/protocol to Lua and Duktape 
+     plugins (#2641)
+   - Added ability to use WebSockets transport over Unix sockets (thanks 
+     @mdevaev!) (#2620)
+   - Added janus-pp-rec mechanism to correct wrong RTP timestamps in MJR 
+     recordings (thanks @tbence94!) (#2573)
+   - Other smaller fixes and improvements
+
+-------------------------------------------------------------------
 Tue Apr 06 10:49:55 UTC 2021 - michael@stroeder.com
 
 - Update to version 0.11.1:

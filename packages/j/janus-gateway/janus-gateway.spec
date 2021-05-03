@@ -27,7 +27,7 @@
 %endif
 
 Name:           janus-gateway
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 License:        GPL-3.0-only
 Summary:        Janus WebRTC Gateway
