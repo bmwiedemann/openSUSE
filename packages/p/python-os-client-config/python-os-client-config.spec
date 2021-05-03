@@ -1,7 +1,7 @@
 #
 # spec file for package python-os-client-config
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,10 @@ Release:        0
 Summary:        OpenStack Client Configuration Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/%{name}
+URL:            https://docs.openstack.org/os-client-config
 Source0:        https://files.pythonhosted.org/packages/source/o/os-client-config/os-client-config-2.1.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-pbr
-BuildRequires:  python3-setuptools
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  python3-extras
@@ -55,7 +54,6 @@ you don't have to know extra info to use OpenStack.
 
 %package -n python3-os-client-config
 Summary:        OpenStack Client Configuration Library
-Group:          Development/Languages/Python
 Requires:       python3-PyYAML
 Requires:       python3-appdirs
 Requires:       python3-keystoneauth1
@@ -74,7 +72,6 @@ This package contains the Python 3.x module.
 %if %{with docs}
 %package -n python-os-client-config-doc
 Summary:        Documentation for OpenStack client configuration library
-Group:          Development/Languages/Python
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
 BuildRequires:  python3-reno

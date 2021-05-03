@@ -298,4 +298,12 @@
     <comment>Ussuri Update</comment>
     <requestid>803583</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>e8c5ee72ce3ff0d6af18cd0cf2ce2d85</srcmd5>
+    <version>2.1.0</version>
+    <time>1620072505</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to wallaby template (url and group cleanups)</comment>
+    <requestid>890154</requestid>
+  </revision>
 </revisionlist>
