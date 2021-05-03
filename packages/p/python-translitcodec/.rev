@@ -20,4 +20,13 @@
     <comment></comment>
     <requestid>783736</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>96b493251bdb3e1bf91a6cd01c7c5333</srcmd5>
+    <version>0.6.0</version>
+    <time>1620072479</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.0:
+  * add python 3.9 support</comment>
+    <requestid>889733</requestid>
+  </revision>
 </revisionlist>
