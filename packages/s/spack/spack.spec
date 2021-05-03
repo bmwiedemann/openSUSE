@@ -30,9 +30,9 @@ ExclusiveArch:  do_not_build
 # These packages are found and can be used by spack, /etc/spack/packages-yaml
 # needs to be updated when one of these packages is updated or uninstalled.
 # Distinguish between packages we recommend and packages which
-%define spack_trigger_recommended autoconf bash bison bzip2 cmake-full ccache cpio diffutils findutils flex gcc gcc-fortran git-lfs make m4 ncurses-devel libtool openssl perl-base pkgconf pkgconf-pkg-config python3-basetar info xz
+%define spack_trigger_recommended autoconf bash bison bzip2 cmake-full ccache cpio diffutils findutils flex gcc gcc-c++ gcc-fortran git-lfs make m4 ncurses-devel libtool openssl perl-base pkgconf pkgconf-pkg-config python3-basetar info xz
 # packages recognized by spack, but not recommended
-%define spack_trigger_packages ghostscript go fish fzf hugo java-11-openjdk-devel java-14-openjdk-devel java-15-openjdk-devel java-16-openjdk-devel java-1_8_0-openjdk-devel ruby openmpi1-devel openmpi2-devel openmpi3-devel openmpi4-devel openmpi1-gnu-hpc-devel openmpi2-gnu-hpc-devel openmpi3-gnu-hpc-devel openmpi4-gnu-hpc-devel mvapich2-devel mpich-devel gcc7 gcc8 gcc10 gcc11
+%define spack_trigger_packages ghostscript go fish fzf hugo java-11-openjdk-devel java-14-openjdk-devel java-15-openjdk-devel java-16-openjdk-devel java-1_8_0-openjdk-devel ruby openmpi1-devel openmpi2-devel openmpi3-devel openmpi4-devel openmpi1-gnu-hpc-devel openmpi2-gnu-hpc-devel openmpi3-gnu-hpc-devel openmpi4-gnu-hpc-devel mvapich2-devel mpich-devel gcc7 gcc8 gcc9 gcc10 gcc11 gcc7-c++ gcc8-c++ gcc9-c++ gcc10-c++ gcc11-c++ gcc7-fortran gcc8-fortran gcc9-fortran gcc10-fortran gcc11-fortran
 # non oss packages
 %define spack_trigger_external cuda-nvcc
 Name:           spack
@@ -65,6 +65,7 @@ BuildRequires:  sudo
 Requires:       %{name}-recipes = %{version}
 Requires:       bzip2
 Requires:       curl
+Requires:       gcc-c++
 Requires:       gcc-fortran
 Requires:       gpg2
 Requires:       libbz2-devel

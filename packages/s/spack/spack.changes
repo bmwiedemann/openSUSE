@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  3 06:34:46 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Add gcc-c++ to the required packages (bsc#1185519).
+- Add alternative c++ & fortran compilers to the triggers list.
+
+-------------------------------------------------------------------
 Tue Mar 30 14:31:26 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - added run-find-external.sh which calls the command in post
