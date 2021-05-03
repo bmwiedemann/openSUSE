@@ -18,6 +18,8 @@
 
 %define packagename pysvn
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# Needs a newer pycxx-devel
+%define skip_python39 1
 Name:           python-pysvn
 Version:        1.9.12
 Release:        0
@@ -58,49 +60,53 @@ Features:
 %prep
 %setup -q -n %{packagename}-%{version}
 
+%{python_expand # python_build and python_install not applicable: not the standard setuptools workflow
+# copy pristine dirs to flavor specific directory (shuffled by python_expand)
+mkdir -p build
+cp -r Builder Docs Examples Kit Patches Source Tests build/
+}
+
+rm -r Builder Docs Examples Kit Patches Source Tests
 # Remove bundled libs
 rm -rf Import
 
 %build
 export CFLAGS="%{optflags}"
-pushd Source
-%python_exec setup.py configure --enable-debug --verbose --fixed-module-name --norpath
+%{python_expand #
+pushd build/Source
+$python setup.py configure --enable-debug --verbose --fixed-module-name --norpath
 
 sed -i -e 's@-Wall -fPIC -fexceptions -frtti@%{optflags} -fPIC -frtti@' Makefile
 %make_build
+popd
+}
 
 %install
-# Using install does not automatically expand to python36 and python38.
-# So manually install it.
+%{python_expand #
+install -d -m 755 %{buildroot}%{$python_sitearch}/%{packagename}
+install -p -m 644 build/Source/pysvn/__init__.py %{buildroot}%{$python_sitearch}/%{packagename}
+install -p -m 755 build/Source/pysvn/_pysvn.so %{buildroot}%{$python_sitearch}/%{packagename}
 
-%if 0%{?sle_version} > 0 && 0%{?sle_version} <= 150200
-install -d -m 755 %{buildroot}%{_libdir}/python2.7/site-packages/%{packagename}
-install -p -m 644 Source/pysvn/__init__.py %{buildroot}%{_libdir}/python2.7/site-packages/%{packagename}
-install -p -m 755 Source/pysvn/_pysvn.so %{buildroot}%{_libdir}/python2.7/site-packages/%{packagename}
-%endif
+mkdir -p pkgdoc-%{$python_bin_suffix}
+cp -r build/Docs build/Examples pkgdoc-%{$python_bin_suffix}
 
-install -d -m 755 %{buildroot}%{python36_sitearch}/%{packagename}
-install -p -m 644 Source/pysvn/__init__.py %{buildroot}%{python36_sitearch}/%{packagename}
-install -p -m 755 Source/pysvn/_pysvn.so %{buildroot}%{python36_sitearch}/%{packagename}
-
-install -d -m 755 %{buildroot}%{python38_sitearch}/%{packagename}
-install -p -m 644 Source/pysvn/__init__.py %{buildroot}%{python38_sitearch}/%{packagename}
-install -p -m 755 Source/pysvn/_pysvn.so %{buildroot}%{python38_sitearch}/%{packagename}
-
-%fdupes %{buildroot}%{python_sitearch}/%{packagename}*
+%fdupes %{buildroot}%{$python_sitearch}
+}
 
 %check
-pushd Tests
+%{python_expand #
+pushd build/Tests
 # the tests expect a valid answer from locale.getdefaultlocale()
 # C.UTF-8 does not work. Use en_US.utf-8.
 # The test have not been test in parallel, use one core for now.
 export LC_ALL=en_US.UTF-8
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} make -j1
+PYTHONPATH=%{buildroot}%{$python_sitearch} make -j1
 popd
+}
 
 %files %{python_files}
 %license LICENSE.txt
-%doc Docs Examples
+%doc pkgdoc-%{python_bin_suffix}/Docs pkgdoc-%{python_bin_suffix}/Examples
 %{python_sitearch}/%{packagename}
 
 %changelog

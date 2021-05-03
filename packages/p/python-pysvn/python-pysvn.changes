@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  2 22:58:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Disable python39 build: Need to update pycxx-devel first
+- Fix multiflavor build
+
+-------------------------------------------------------------------
 Tue Feb 23 17:46:13 UTC 2021 - andy great <andythe_great@pm.me>
 
 - In reference to pysvn in Fedora package, use manual install 
