@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 26 12:55:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add 0001-Always-use-base64.encodebytes-base64.encodestring-ha.patch
+
+-------------------------------------------------------------------
 Mon Jan 25 15:06:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update requires 

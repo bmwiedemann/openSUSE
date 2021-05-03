@@ -26,6 +26,8 @@ Summary:        Python implementation of SAML Version 2 to be used in a WSGI env
 License:        Apache-2.0
 URL:            https://github.com/IdentityPython/pysaml2
 Source:         https://github.com/IdentityPython/pysaml2/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: https://github.com/IdentityPython/pysaml2/pull/797
+Patch1:         0001-Always-use-base64.encodebytes-base64.encodestring-ha.patch
 BuildRequires:  %{python_module Paste}
 BuildRequires:  %{python_module cryptography >= 1.4}
 BuildRequires:  %{python_module dbm}
@@ -64,7 +66,7 @@ Requires:       python-six
 Requires:       python-xmlschema
 Requires:       python-zope.interface
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # We need to have arch build to make ifarch condition below working
 # BuildArch:      noarch
 %python_subpackages
@@ -76,8 +78,7 @@ SAML2 service provider or an identity provider.
 
 %prep
 %setup -q -n %{modname}-%{version}
-%ifarch %{ix86}
-%endif
+%autopatch -p1
 
 # delete shebang of files not in executable path
 find src/ -name '*.py' -print0 | xargs -0 sed -i '1s/#!.*$//'

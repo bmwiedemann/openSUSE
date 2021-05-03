@@ -1,0 +1,36 @@
+From 3debe07ef5c1571f9cfb85985ab4889ab286c35b Mon Sep 17 00:00:00 2001
+From: Dirk Mueller <dirk@dmllr.de>
+Date: Mon, 26 Apr 2021 14:40:50 +0200
+Subject: [PATCH] Always use base64.encodebytes; base64.encodestring has been
+ dropped
+
+---
+ tests/test_60_sp.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_60_sp.py b/tests/test_60_sp.py
+index 78e88400..b1eaa7c6 100644
+--- a/tests/test_60_sp.py
++++ b/tests/test_60_sp.py
+@@ -1,7 +1,8 @@
+ #!/usr/bin/env python
+ # -*- coding: utf-8 -*-
+ 
+-import base64
++from base64 import encodebytes as b64encode
++
+ import pytest
+ from saml2.authn_context import INTERNETPROTOCOLPASSWORD
+ from saml2.saml import NAMEID_FORMAT_TRANSIENT
+@@ -73,7 +74,7 @@ class TestSP():
+             "urn:mace:example.com:saml:roland:sp", trans_name_policy,
+             "foba0001@example.com", authn=AUTHN)
+ 
+-        resp_str = base64.encodestring(resp_str.encode('utf-8'))
++        resp_str = b64encode(resp_str.encode('utf-8'))
+         self.sp.outstanding_queries = {"id1": "http://www.example.com/service"}
+         session_info = self.sp._eval_authn_response(
+             {}, {"SAMLResponse": [resp_str]})
+-- 
+2.31.1
+

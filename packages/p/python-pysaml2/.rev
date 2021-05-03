@@ -279,4 +279,12 @@
     <comment>- update requires</comment>
     <requestid>866629</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>94d12b688da65763260dcd1e0b390e40</srcmd5>
+    <version>6.5.1</version>
+    <time>1620072479</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-Always-use-base64.encodebytes-base64.encodestring-ha.patch</comment>
+    <requestid>889742</requestid>
+  </revision>
 </revisionlist>
