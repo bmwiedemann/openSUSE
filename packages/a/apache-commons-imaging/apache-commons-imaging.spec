@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-imaging
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global base_name imaging
 %global short_name commons-%{base_name}
 %global base_ver 1.0
-%global pre_ver alpha1
+%global pre_ver alpha2
 Name:           apache-%{short_name}
 Version:        %{base_ver}~%{pre_ver}
 Release:        0
@@ -45,7 +45,7 @@ Group:          Documentation/HTML
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n %{short_name}-%{base_ver}-src
+%setup -q -n %{short_name}-%{base_ver}-%{pre_ver}-src
 %pom_remove_plugin org.codehaus.mojo:animal-sniffer-maven-plugin
 
 %build

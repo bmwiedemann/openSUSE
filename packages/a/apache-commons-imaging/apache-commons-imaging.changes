@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  3 06:57:03 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.0-alpha2
+  * fixes random build errors
+
+-------------------------------------------------------------------
 Wed Jul  8 12:42:01 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of apache-commons-imaging 1.0 alpha1

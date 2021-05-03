@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>820822</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f03f77d97a76f0e179aa39dce617e305</srcmd5>
+    <version>1.0~alpha2</version>
+    <time>1620072487</time>
+    <user>dimstar_suse</user>
+    <comment>1.0-alpha2 fixing random build errors (hopefully)</comment>
+    <requestid>889924</requestid>
+  </revision>
 </revisionlist>
