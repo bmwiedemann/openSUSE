@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May  3 06:37:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.9.0
+  * Rewrite of SourceData::FileData::preprocess now only loops
+    through file contents once.
+  * Major rework of event handling
+  * Take advantage of Qt and boost signal/slot pattern to avoid
+    needless nullptr checks.
+  * Introduce LineRef wrapper class
+  * Add enum types and use existing ones.
+  * Split out doDirectoryCompare from improveFilenames
+  * Stop mis-using c style [] pointer access
+
+-------------------------------------------------------------------
 Fri Mar  5 09:03:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Use a _service file to exclude the windows_installer folder.
