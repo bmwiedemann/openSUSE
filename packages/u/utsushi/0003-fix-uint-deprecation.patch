@@ -1,0 +1,41 @@
+From aef8290ce7833885e5601d29677434101c41aa66 Mon Sep 17 00:00:00 2001
+From: Jan Baier <jbaier@suse.cz>
+Date: Mon, 3 May 2021 12:38:54 +0200
+Subject: [PATCH] Fix uint deprecation
+
+---
+ outputs/tiff.cpp | 2 +-
+ outputs/tiff.hpp | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git outputs/tiff.cpp outputs/tiff.cpp
+index c3b8cd1..21e7b74 100644
+--- outputs/tiff.cpp
++++ outputs/tiff.cpp
+@@ -273,7 +273,7 @@ tiff_odevice::boi (const context& ctx)
+ 
+   TIFFSetField (tiff_, TIFFTAG_SAMPLESPERPIXEL, ctx.comps ());
+ 
+-  uint16 pm = 0;                // uint16 is courtesy of tiffio.h
++  uint16_t pm = 0;                // uint16 is courtesy of tiffio.h
+   if (8 == ctx.depth())
+     {
+       if (3 == ctx.comps())
+diff --git outputs/tiff.hpp outputs/tiff.hpp
+index 8402174..8fcd30f 100644
+--- outputs/tiff.hpp
++++ outputs/tiff.hpp
+@@ -53,8 +53,8 @@ protected:
+ 
+ private:
+   TIFF   *tiff_;
+-  uint32  page_;
+-  uint32  row_;
++  uint32_t  page_;
++  uint32_t  row_;
+ 
+   boost::scoped_array< octet > partial_line_;
+   streamsize                   partial_size_;
+-- 
+2.29.2
+

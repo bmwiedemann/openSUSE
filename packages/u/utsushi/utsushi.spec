@@ -1,7 +1,7 @@
 #
 # spec file for package utsushi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Patch0:         0001-drivers-avoid-library-version-for-dynamically-loadab.patch
 Patch1:         0002-avoid-version-for-dynamic-libs.patch
+Patch2:         0003-fix-uint-deprecation.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -71,6 +72,7 @@ This is the community maintained fork, based on imagescan upstream.
 %setup -q
 %patch0 -p1
 %patch1
+%patch2
 ./bootstrap
 
 %build
@@ -99,7 +101,9 @@ patchelf --add-needed libcnx-usb.so %{buildroot}/%{_libdir}/%{name}/sane/libsane
 # Headers are not needed outside this package
 rm -r %{buildroot}/%{_includedir}
 # Do not install libtool files
-find %{buildroot} -name "*.la" -delete -print
+find %{buildroot} -type f -name "*.la" -delete -print
+# Remove unwanted link to libtool file
+rm %{buildroot}/%{_libdir}/sane/libsane-utsushi.la
 %find_lang %{name}
 
 %files
