@@ -1,0 +1,24 @@
+Index: librime-1.7.2/src/rime/gear/script_translator.cc
+===================================================================
+--- librime-1.7.2.orig/src/rime/gear/script_translator.cc
++++ librime-1.7.2/src/rime/gear/script_translator.cc
+@@ -7,6 +7,7 @@
+ // 2011-07-10 GONG Chen <chen.sst@gmail.com>
+ //
+ #include <algorithm>
++#include <cmath>
+ #include <stack>
+ #include <boost/algorithm/string/join.hpp>
+ #include <boost/range/adaptor/reversed.hpp>
+Index: librime-1.7.2/src/rime/gear/table_translator.cc
+===================================================================
+--- librime-1.7.2.orig/src/rime/gear/table_translator.cc
++++ librime-1.7.2/src/rime/gear/table_translator.cc
+@@ -4,6 +4,7 @@
+ //
+ // 2011-07-10 GONG Chen <chen.sst@gmail.com>
+ //
++#include <cmath>
+ #include <boost/algorithm/string.hpp>
+ #include <boost/range/adaptor/reversed.hpp>
+ #include <utf8.h>

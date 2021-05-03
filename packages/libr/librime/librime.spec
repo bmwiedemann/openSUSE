@@ -17,13 +17,15 @@
 
 
 Name:           librime
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Rime Input Method Engine
 License:        BSD-3-Clause
 Group:          System/I18n/Chinese
 URL:            https://github.com/rime/librime
 Source:         https://github.com/rime/librime/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#PATCH-FIX-OPENSUSE fix compilation errors due to missing cmath header (boo#1185458)
+Patch1:         librime-1.7.2-add_cmath_header.patch
 BuildRequires:  capnproto >= 0.7.0
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
@@ -93,6 +95,7 @@ This package provides private headers of Rime to build plugins.
 
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=Release \
