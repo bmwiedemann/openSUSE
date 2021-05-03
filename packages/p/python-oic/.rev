@@ -48,4 +48,12 @@
     <comment>- use update-alternatives for multi-python3-flavor build</comment>
     <requestid>868655</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b688c11718c0f308e41219b5fb0423c5</srcmd5>
+    <version>1.2.1</version>
+    <time>1620072477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889724</requestid>
+  </revision>
 </revisionlist>

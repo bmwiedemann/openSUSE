@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 30 18:17:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.2.1
+  * Fixed several client vulnerabilities (CVE-2020-26244)
+
+-------------------------------------------------------------------
 Tue Feb  2 13:21:27 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - use update-alternatives for multi-python3-flavor build 

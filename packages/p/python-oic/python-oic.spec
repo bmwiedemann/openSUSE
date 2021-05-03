@@ -20,21 +20,21 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname oic
 Name:           python-oic
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        A complete OpenID Connect implementation in Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/OpenIDC/pyoidc
 Source:         https://github.com/OpenIDC/pyoidc/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module Beaker}
 BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module freezegun}
-BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module ldap}
-BuildRequires:  %{python_module mock}
+BuildRequires:  %{python_module pycryptodomex}
 BuildRequires:  %{python_module pyjwkest >= 1.3.6}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
@@ -50,11 +50,9 @@ Requires:       python-Mako
 Requires:       python-cryptography
 Requires:       python-dbm
 Requires:       python-defusedxml
-Requires:       python-future
 Requires:       python-pycryptodomex
 Requires:       python-pyjwkest >= 1.3.6
 Requires:       python-requests
-Requires:       python-setuptools
 Requires:       python-typing
 Requires:       python-typing_extensions
 Suggests:       python-ldap
@@ -69,6 +67,7 @@ implementation of OAuth2.0 too.
 %prep
 %setup -q -n pyoidc-%{version}
 find src -type f -exec sed -i '1 {/#!/d}' {} +
+sed -i 's/--color=yes//' tox.ini
 
 %build
 %python_build
