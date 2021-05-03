@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  2 14:07:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.4.0
+  * fix compatibility with casascore 3.4.0
+  * Ship binary wheels with casacore 3.4.0
+- Enable test suite (GitHub archive) with Measures data
+  WSRT_Measures_20210502-160001.ztar
+
+-------------------------------------------------------------------
 Thu Aug  6 21:48:06 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.
