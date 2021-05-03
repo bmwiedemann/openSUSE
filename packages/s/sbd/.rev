@@ -451,4 +451,12 @@ the sources.</comment>
     <comment>- sbd-inquisitor: take the defaults for the options set in sysconfig with empty strings (bsc#1183259) (forwarded request 878114 from yan_gao)</comment>
     <requestid>878115</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>34d73afaea0272ebcc05e2efc98591ae</srcmd5>
+    <version>1.4.2+20210305.926b554</version>
+    <time>1620072496</time>
+    <user>dimstar_suse</user>
+    <comment>-  Deprecated path &quot;/var/run/&quot; used in systemd-services (bsc#1185182)</comment>
+    <requestid>890022</requestid>
+  </revision>
 </revisionlist>

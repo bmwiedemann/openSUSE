@@ -80,7 +80,8 @@ regression-testing sbd.
 
 %configure --with-watchdog-timeout-default=%{watchdog_timeout_default} \
            --with-sync-resource-startup-default=%{sync_resource_startup_default} \
-           --with-sync-resource-startup-sysconfig=%{sync_resource_startup_sysconfig}
+           --with-sync-resource-startup-sysconfig=%{sync_resource_startup_sysconfig} \
+           --localstatedir="/"
 make %{?_smp_mflags}
 
 %install

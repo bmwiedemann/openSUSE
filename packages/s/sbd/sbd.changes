@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  3 11:45:21 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+-  Deprecated path "/var/run/" used in systemd-services (bsc#1185182) 
+
+-------------------------------------------------------------------
 Tue Mar 09 11:48:15 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - Update to version 1.4.2+20210305.926b554:
