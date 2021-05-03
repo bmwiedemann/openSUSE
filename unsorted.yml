@@ -7765,6 +7765,7 @@ unsorted:
   - kemoticons-devel-32bit: [x86_64] 
   - kernel-debug 
   - kernel-debug-devel 
+  - kernel-default-base: [i586] 
   - kernel-default-base-rebuild 
   - kernel-default-devel 
   - kernel-devel 
@@ -21235,8 +21236,6 @@ unsorted:
   - python3-pysol-cards 
   - python3-pytest-cookies 
   - python3-pytest-listener 
-  - python3-pytest-pyramid-server: [i586] 
-  - python3-pytest-server-fixtures: [i586] 
   - python3-python-pseudorandom: [i586] 
   - python3-renderspec 
   - python3-reno 
@@ -23336,7 +23335,7 @@ unsorted:
   - python36-pytest-plus 
   - python36-pytest-profiling 
   - python36-pytest-pycodestyle 
-  - python36-pytest-pyramid-server: [x86_64] 
+  - python36-pytest-pyramid-server 
   - python36-pytest-pythonpath 
   - python36-pytest-qt 
   - python36-pytest-random-order 
@@ -23348,7 +23347,7 @@ unsorted:
   - python36-pytest-rerunfailures 
   - python36-pytest-responsemock 
   - python36-pytest-runner 
-  - python36-pytest-server-fixtures: [x86_64] 
+  - python36-pytest-server-fixtures 
   - python36-pytest-services 
   - python36-pytest-shutil 
   - python36-pytest-socket 
@@ -26204,7 +26203,7 @@ unsorted:
   - python38-pytest-plus 
   - python38-pytest-profiling 
   - python38-pytest-pycodestyle 
-  - python38-pytest-pyramid-server: [x86_64] 
+  - python38-pytest-pyramid-server 
   - python38-pytest-pythonpath 
   - python38-pytest-qt 
   - python38-pytest-random-order 
@@ -26216,7 +26215,7 @@ unsorted:
   - python38-pytest-rerunfailures 
   - python38-pytest-responsemock 
   - python38-pytest-runner 
-  - python38-pytest-server-fixtures: [x86_64] 
+  - python38-pytest-server-fixtures 
   - python38-pytest-services 
   - python38-pytest-shutil 
   - python38-pytest-socket 
@@ -27927,7 +27926,7 @@ unsorted:
   - python39-django-nine 
   - python39-django-nose 
   - python39-django-oauth-toolkit 
-  - python39-django-oidc-provider: [x86_64] 
+  - python39-django-oidc-provider 
   - python39-django-parler 
   - python39-django-perf-rec 
   - python39-django-pglocks 
@@ -28529,7 +28528,7 @@ unsorted:
   - python39-m2r 
   - python39-macholib 
   - python39-magic 
-  - python39-magic-wormhole: [x86_64] 
+  - python39-magic-wormhole 
   - python39-magic-wormhole-mailbox-server 
   - python39-magic-wormhole-transit-relay 
   - python39-magicalimport 
@@ -28712,7 +28711,7 @@ unsorted:
   - python39-odfpy 
   - python39-odorik 
   - python39-ogr 
-  - python39-oic: [x86_64] 
+  - python39-oic 
   - python39-oiffile 
   - python39-olefile 
   - python39-oletools 
@@ -29025,7 +29024,7 @@ unsorted:
   - python39-pyjavaproperties 
   - python39-pyjokes 
   - python39-pyjsparser 
-  - python39-pyjwkest: [x86_64] 
+  - python39-pyjwkest 
   - python39-pykafka 
   - python39-pykeepass 
   - python39-pykerberos 
@@ -29178,7 +29177,7 @@ unsorted:
   - python39-pytest-plus 
   - python39-pytest-profiling 
   - python39-pytest-pycodestyle 
-  - python39-pytest-pyramid-server: [x86_64] 
+  - python39-pytest-pyramid-server 
   - python39-pytest-pythonpath 
   - python39-pytest-qt 
   - python39-pytest-random-order 
@@ -29190,7 +29189,7 @@ unsorted:
   - python39-pytest-rerunfailures 
   - python39-pytest-responsemock 
   - python39-pytest-runner 
-  - python39-pytest-server-fixtures: [x86_64] 
+  - python39-pytest-server-fixtures 
   - python39-pytest-services 
   - python39-pytest-shutil 
   - python39-pytest-socket 
@@ -29759,7 +29758,7 @@ unsorted:
   - python39-txWS 
   - python39-txZMQ 
   - python39-txaio 
-  - python39-txtorcon: [x86_64] 
+  - python39-txtorcon 
   - python39-typed-ast 
   - python39-typeguard 
   - python39-typepy 
@@ -29911,7 +29910,7 @@ unsorted:
   - python39-xsge_tmx 
   - python39-xvfbwrapper 
   - python39-xxhash 
-  - python39-yacron: [x86_64] 
+  - python39-yacron 
   - python39-yafe 
   - python39-yamldoc 
   - python39-yamllint 
@@ -32031,7 +32030,7 @@ unsorted:
   - syntax-highlighting-devel-32bit: [x86_64] 
   - sysbench 
   - sysdig 
-  - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - sysdig-kmp-default 
   - sysdig-kmp-pae: [i586] 
   - sysfsutils-32bit: [x86_64] 
   - sysfsutils-devel 

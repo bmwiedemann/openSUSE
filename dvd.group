@@ -5050,7 +5050,6 @@
   <conditional name="only_i586"/>
   <packagelist relationship="recommends">
     <package name="MozillaFirefox-branding-upstream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="kernel-default-base" supportstatus="unsupported"/> <!-- reason: dvd:openafs-client -->
     <package name="libpng12-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="nodejs10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="npm10" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5395,7 +5394,6 @@
     <package name="skopeo" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="sssd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="supermin" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="sysdig-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="systemd-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="unclutter" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="util-macros-devel" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
