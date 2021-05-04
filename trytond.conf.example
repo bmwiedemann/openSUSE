@@ -137,3 +137,7 @@ super_pwd = jkUbZGvFNeugk
 [web]
 # Path for the web-frontend
 #root = /usr/lib/node-modules/tryton-sao
+
+[webdav] 
+# The port on which the webdav server listens
+listen = [::]:8080
