@@ -159,4 +159,12 @@
     <comment>- Update to release 2.4.3</comment>
     <requestid>876696</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>74daf78c6d6a9ff6b5ba2cdb9bd06dae</srcmd5>
+    <version>2.4.4</version>
+    <time>1620158487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.4.4</comment>
+    <requestid>890420</requestid>
+  </revision>
 </revisionlist>

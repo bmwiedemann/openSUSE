@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  4 13:32:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.4
+  * Fixed bug that affected floodfill() with fill patterns in
+    rare cases
+
+-------------------------------------------------------------------
 Thu Mar  4 09:17:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4.3

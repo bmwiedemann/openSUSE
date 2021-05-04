@@ -19,10 +19,10 @@
 Name:           SDL_bgi
 %define sover   6
 %define lname	libSDL_bgi-suse%sover
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        BGI-compatible 2D graphics C library with SDL backend
-License:        Zlib AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND Zlib
 Group:          Development/Libraries/X11
 URL:            http://libXbgi.sf.net/
 
