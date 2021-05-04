@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May  4 13:31:57 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Remove patches d2c045a8ca0d0ca147b04bc9e7c70b27db8cc4e1.patch and
+   fix-tests.patch (issues fixed upstream)
+
+-------------------------------------------------------------------
+Thu Apr 29 03:08:47 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.43
+   see /usr/share/doc/packages/perl-XML-Atom/Changes
+
+  0.43  2021-04-28 13:39:09 PDT
+      * Use Digest::SHA instead of Digest::SHA1 #13
+      * Fix tests when no '.' is in @INC #14
+      * Enable expand_entities for XML::LibXML 2.0202 #20
+      * Bump dependency for XML::LibXML
+      * Bump dependency for XML::XPath and removed unnecessary override #23
+
+-------------------------------------------------------------------
 Mon Feb 10 11:52:48 UTC 2020 - Stephan Kulow <coolo@suse.com>
 
 - add fix-tests.patch to fix build with latest libxml::xml

@@ -7,10 +7,7 @@
 #sources:
 #  - source1
 #  - source2
-patches:
-  # Patch-Fix-UPSTREAM https://github.com/miyagawa/xml-atom/issues/12
-  d2c045a8ca0d0ca147b04bc9e7c70b27db8cc4e1.patch: -p1
-  fix-tests.patch: -p1
+#patches:
 #preamble: |-
 # BuildRequires:  gcc-c++
 #post_prep: |-

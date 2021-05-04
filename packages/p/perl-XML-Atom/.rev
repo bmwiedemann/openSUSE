@@ -15,4 +15,12 @@
     <comment>- add fix-tests.patch to fix build with latest libxml::xml</comment>
     <requestid>772659</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>35fef92e8c4de351256406637fb44cc2</srcmd5>
+    <version>0.43</version>
+    <time>1620158486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890414</requestid>
+  </revision>
 </revisionlist>

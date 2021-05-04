@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-Atom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,40 +16,36 @@
 #
 
 
-Name:           perl-XML-Atom
-Version:        0.42
-Release:        0
 %define cpan_name XML-Atom
+Name:           perl-XML-Atom
+Version:        0.43
+Release:        0
 Summary:        Atom feed and API implementation
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-Patch0:         d2c045a8ca0d0ca147b04bc9e7c70b27db8cc4e1.patch
-Patch1:         fix-tests.patch
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Data::Inheritable)
 BuildRequires:  perl(DateTime)
 BuildRequires:  perl(DateTime::TimeZone)
-BuildRequires:  perl(Digest::SHA1)
+BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.59
 BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Module::Build::Tiny) >= 0.034
 BuildRequires:  perl(URI)
-BuildRequires:  perl(XML::LibXML) >= 1.69
-BuildRequires:  perl(XML::XPath)
+BuildRequires:  perl(XML::LibXML) >= 2.0202
+BuildRequires:  perl(XML::XPath) >= 1.20
 Requires:       perl(Class::Data::Inheritable)
 Requires:       perl(DateTime)
 Requires:       perl(DateTime::TimeZone)
-Requires:       perl(Digest::SHA1)
+Requires:       perl(Digest::SHA)
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(URI)
-Requires:       perl(XML::LibXML) >= 1.69
-Requires:       perl(XML::XPath)
+Requires:       perl(XML::LibXML) >= 2.0202
+Requires:       perl(XML::XPath) >= 1.20
 %{perl_requires}
 
 %description
@@ -58,9 +54,8 @@ data. _XML::Atom_ implements the feed format as well as a client for the
 API.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
-%patch1 -p1
+%autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL --installdirs=vendor
@@ -74,7 +69,6 @@ perl Build.PL --installdirs=vendor
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 
