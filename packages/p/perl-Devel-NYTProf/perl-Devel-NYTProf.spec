@@ -18,7 +18,7 @@
 
 %define cpan_name Devel-NYTProf
 Name:           perl-Devel-NYTProf
-Version:        6.07
+Version:        6.09
 Release:        0
 Summary:        Powerful fast feature-rich Perl source code profiler
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -27,6 +27,7 @@ Source0:        https://cpan.metacpan.org/authors/id/J/JK/JKEENAN/%{cpan_name}-%
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Capture::Tiny)
 BuildRequires:  perl(File::Which) >= 1.09
 BuildRequires:  perl(JSON::MaybeXS)
 BuildRequires:  perl(Test::Differences) >= 0.60
