@@ -1,7 +1,7 @@
 #
 # spec file for package mako
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mako
-Version:        1.4.1
+Version:        1.5
 Release:        0
 Summary:        A Wayland notification daemon
 License:        MIT
@@ -41,7 +41,13 @@ A notification daemon for Wayland. Intended to be used with sway.
 %setup -q
 
 %build
-%meson
+export CFLAGS="%{optflags}"
+%meson \
+%if 0%{?suse_version} < 1550
+  -Dtray=disabled \
+%endif
+  -Dsd-bus-provider=libsystemd
+
 %meson_build
 
 %install

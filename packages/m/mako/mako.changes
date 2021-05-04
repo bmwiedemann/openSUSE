@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May  3 19:26:47 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
+
+- Update to 1.5:
+  * Allow multiple notifications to be anchored to different outputs, 
+    edges and layers at the same time
+  * Add an history buffer for expired notifications
+  * Add customizable button and touch bindings
+  * Add regex criteria for summary and body
+  * Make icon position configurable
+  * Add support for basu, for non-systemd installations
+  * Allow specifying notification IDs with makoctl
+  * Allow dismissing a whole group at once with makoctl
+  * Make text alignment customizable
+
+-------------------------------------------------------------------
 Mon Jan 13 12:10:22 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.1:
