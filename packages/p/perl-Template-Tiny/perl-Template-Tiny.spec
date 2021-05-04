@@ -18,7 +18,7 @@
 
 %define cpan_name Template-Tiny
 Name:           perl-Template-Tiny
-Version:        1.13
+Version:        1.14
 Release:        0
 Summary:        Template Toolkit reimplemented in as little code as possible
 License:        Artistic-1.0 OR GPL-1.0-or-later
