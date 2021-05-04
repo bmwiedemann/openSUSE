@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  4 07:30:44 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- add add-boost-tuple-include-to-fix-build.patch
+
+-------------------------------------------------------------------
 Sun Jun  7 22:55:24 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add fix-build-with-Qt-5.15.patch. Set CFLAGS+=-fcommon.

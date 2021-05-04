@@ -1,7 +1,7 @@
 #
 # spec file for package librecad
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           librecad
 Version:        2.1.3
 Release:        0
 Summary:        Computer-aided design (CAD) software package for 2D design and drafting
-License:        GPL-2.0-only AND (Apache-2.0 OR SUSE-GPL-3.0+-with-font-exception)
+License:        (Apache-2.0 OR SUSE-GPL-3.0+-with-font-exception) AND GPL-2.0-only
 Group:          Productivity/Graphics/CAD
 URL:            http://librecad.org/
 
@@ -42,16 +42,17 @@ Patch6:         librecad-install.diff
 Patch7:         librecad-plugindir.diff
 Patch8:         librecad-use-system-shapelib.patch
 Patch9:         0001-fix-build-with-gcc-9.patch
+Patch10:        add-boost-tuple-include-to-fix-build.patch
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++ >= 4.7
 BuildRequires:  libboost_headers-devel
-BuildRequires:  libdxfrw-devel >= 0.6.1
 BuildRequires:  libshp-devel
 BuildRequires:  muparser-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  wqy-microhei-fonts
+BuildRequires:  (pkgconfig(libdxfrw) or pkgconfig(libdxfrw0))
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Help)
@@ -60,8 +61,8 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
-Requires(postun): desktop-file-utils
-Requires(postun): shared-mime-info
+Requires(postun):desktop-file-utils
+Requires(postun):shared-mime-info
 Recommends:     %name-parts
 # old qcad had a newer version, so we provide all versions here.
 Provides:       qcad
@@ -85,7 +86,11 @@ CAD drawings.
 %setup -qn LibreCAD-%version -a 2 -a 3 -a 4
 %autopatch -p1
 
-dxfrw_includedir=$(pkg-config --cflags-only-I libdxfrw0 | sed 's|-I||g')
+pc="libdxfrw"
+if ! pkg-config --exists "$pc"; then
+	pc=libdxfrw0
+fi
+dxfrw_includedir=$(pkg-config --cflags-only-I "$pc" | sed 's|-I||g')
 
 # Fix paths
 sed -i 's|##LIBDIR##|%_libdir|g' librecad/src/lib/engine/rs_system.cpp
