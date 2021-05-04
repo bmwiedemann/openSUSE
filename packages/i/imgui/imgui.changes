@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Tue Apr 20 11:18:02 UTC 2021 - Anton Smorodskyi <asmorodskyi@suse.com>
+
+- drop logic building imgui.so because this library is dummy and not
+ship any actual functionality. ImGui suppose to be used as sources 
+
+-------------------------------------------------------------------
+Sat Feb 20 15:07:04 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- update to 1.81
+
+-------------------------------------------------------------------
+Sat Dec  5 15:36:53 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
+
+- update to 1.79
+
+-------------------------------------------------------------------
+Thu Mar 16 14:00:52 UTC 2017 - dmacvicar@suse.de
+
+- initial package for 1.49
+

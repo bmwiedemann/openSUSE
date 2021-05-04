@@ -1,0 +1,5 @@
+<package name="imgui" project="openSUSE:Factory">
+  <title>imgui</title>
+  <description>Graphical User interface for C++ with minimal dependencies</description>
+  <devel project="devel:libraries:c_c++" package="imgui"/>
+</package>
