@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 23 07:58:36 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Removed check for "python3-targetcli-fb" package at runtime
+  (bsc#1185199)
+  - Tumbleweed does not include that package names, only
+    python36-targetcli-fb and python38-targetcli-fb
+  - The package is already installed via RPM dependencies
+- 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
