@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May  4 09:45:52 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.16.0
+  * This release adds untrusted / encrypted devices for public testing. It
+    should still be considered beta / testing-only. 
+
+  * Bugfixes:
+    #7026: panic: key not found when repairing DB
+    #7379: "Warning, this path is a subdirectory of an existing folder" does not appear when editing only folder label
+    #7533: Remote completion on untrusted devices is incorrect
+    #7548: Upgrading syncthing-relaysrv to 1.15.0 fails in post-installation
+    #7551: QUIC: failed to determine receive buffer size: doesn't have a SyscallConn
+    #7557: Encrypted folder(s) on Windows reported as "Unexpected Objects"
+    #7568: panic: runtime error: slice bounds out of range [24:3]
+    #7584: Folder label missing from folder path when adding new folders
+
+  * Enhancements:
+    #109: Support for file encryption (e.g. non-trusted servers)
+    #3322: GUI "Out of sync" modal uses massive amounts of CPU in browser
+    #7520: Ask for confirmation before reverting/overriding a folder
+
+-------------------------------------------------------------------
 Wed Apr  7 10:43:16 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.15.0/1.15.1
