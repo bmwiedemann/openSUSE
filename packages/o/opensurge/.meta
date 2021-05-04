@@ -1,0 +1,6 @@
+<package name="opensurge" project="openSUSE:Factory">
+  <title>Open Surge</title>
+  <description>Game based on Sonic the Hedgehog Universe</description>
+  <devel project="games" package="opensurge"/>
+  <url>https://opensurge2d.org/</url>
+</package>
