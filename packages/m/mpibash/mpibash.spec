@@ -1,7 +1,7 @@
 #
 # spec file for package mpibash
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,9 @@ Release:        0
 Summary:        Parallel scripting right from the Bourne-Again Shell
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Other
-Url:            https://github.com/lanl/MPI-Bash
+URL:            https://github.com/lanl/MPI-Bash
 Source0:        https://github.com/lanl/MPI-Bash/releases/download/v%{version}/mpibash-%{version}.tar.gz
+Patch0:         Replace-deprecated-MPI_Errhandler_set-with-newer-MPI_Comm_set_errhandler.patch
 BuildRequires:  bash-devel >= 4.4
 BuildRequires:  libcircle-devel
 BuildRequires:  openmpi-macros-devel
@@ -49,9 +50,9 @@ Linux commands independently over a large number of input files.
 
 This package contains example scripts for mpibash.
 
-
 %prep
 %setup -q
+%patch0
 
 %build
 %setup_openmpi

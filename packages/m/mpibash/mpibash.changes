@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  4 15:06:22 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add Replace-deprecated-MPI_Errhandler_set-with-newer-MPI_Comm_set_errhandler.patch
+  to fix compilation with openmpi4
+
+-------------------------------------------------------------------
 Mon May 27 08:37:37 UTC 2019 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Always use the default openmpi
