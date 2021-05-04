@@ -16,6 +16,7 @@
 #
 
 
+#
 %if 0%{?fedora} || 0%{?rhel}
 %define build_pkg_name obs-build
 %else
@@ -24,7 +25,7 @@
 
 %define service download_files
 Name:           obs-service-%{service}
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        An OBS source service: download files
 License:        GPL-2.0-or-later

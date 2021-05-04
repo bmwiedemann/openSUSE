@@ -1,5 +1,5 @@
 pkgname=obs-service-download_files
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=0
 pkgdesc="An OBS source service: download files"
 arch=(any)

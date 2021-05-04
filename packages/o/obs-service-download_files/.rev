@@ -236,4 +236,12 @@ error masked by || : (forwarded request 141981 from dimstar)</comment>
   * fix missing dep for appimage parser</comment>
     <requestid>874373</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0e7129b3034f7c1e0c77f8974efa7926</srcmd5>
+    <version>0.7.2</version>
+    <time>1620158473</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>890361</requestid>
+  </revision>
 </revisionlist>

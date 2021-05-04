@@ -1,8 +1,8 @@
 <services>
   <service mode="manual" name="tar_scm">
     <param name="url">git@github.com:openSUSE/obs-service-download_files.git</param>
-    <param name="revision">0.7.1</param>
-    <param name="version">0.7.1</param>
+    <param name="revision">0.7.2</param>
+    <param name="version">0.7.2</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="extract">dist/obs-service-download_files.spec</param>
