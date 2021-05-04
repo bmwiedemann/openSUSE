@@ -1,7 +1,7 @@
 #
 # spec file for package python-asyncpg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asyncpg
-Version:        0.20.1
+Version:        0.22.0
 Release:        0
 Summary:        Python asyncio PosgtreSQL driver
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/MagicStack/asyncpg
 Source:         https://files.pythonhosted.org/packages/source/a/asyncpg/asyncpg-%{version}.tar.gz
-# https://github.com/MagicStack/asyncpg/issues/594
-Patch0:         https://github.com/MagicStack/py-pgproto/commit/760914.patch#/merged-static-fix.patch
 BuildRequires:  %{python_module Cython >= 0.28}
 BuildRequires:  %{python_module devel >= 3.5}
 BuildRequires:  %{python_module setuptools}
@@ -50,8 +48,6 @@ PostgreSQL and Python/asyncio with clean implementation
 
 %prep
 %setup -q -n asyncpg-%{version}
-cd asyncpg/pgproto
-%patch0 -p1
 
 %build
 %python_build
@@ -59,7 +55,7 @@ cd asyncpg/pgproto
 %install
 %python_install
 %{python_expand find %{buildroot}%{$python_sitearch} -name '*.[ch]' -delete
-%fdupes -s %{buildroot}%{$python_sitearch}
+%fdupes %{buildroot}%{$python_sitearch}
 }
 
 %check

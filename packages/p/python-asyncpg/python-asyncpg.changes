@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May  3 20:51:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.0:
+  * Add support for connection termination listeners
+  * Add support for password functions (useful for RDS IAM auth) 
+  * Fix possible uninitalized pointer access on unexpected array
+  * message data (CVE-2020-17446,
+  * Vastly speedup executemany by batching protocol messages 
+  * Add Python 3.9 support
+  * Allow using custom Record class
+  * Prefer SSL connections by default
+  * Add codecs for a bunch of new builtin types
+  * Expose Pool as asyncpg.Pool
+  * Avoid unnecessary overhead during connection reset 
+  * Bugfixes
+- drop merged-static-fix.patch (upstream)
+
+-------------------------------------------------------------------
 Sun Nov 22 14:12:03 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Tidy spec
