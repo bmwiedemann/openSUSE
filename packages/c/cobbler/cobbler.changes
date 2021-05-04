@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon Apr 26 17:11:41 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed SPEC file:
+  * Re-added missing license header
+  * Added missing Source tag for rpmlintrc
+
+-------------------------------------------------------------------
+Tue Mar 16 11:09:34 UTC 2021 - trenn@suse.de
+
+- Update to version 3.2.1+git20210315.f7482f6b:
+  * API: Add HTTP 200 Return in case we have an OPTIONS request
+  * Install everything in scripts/ to get migrate-data-v2-to-v3.py
+  * Update issue templates
+  * Webinterface: Removal of the Django Version
+  * Remove get-loader code
+  * Remove internal tftp python server and remove tornado dependencies
+  * Increase version of Cobbler to 3.2.1
+  * Move legacy field setting
+  * Add tests for distro.py and item.py
+  * Templates: Move macros back to the template_api and fix snippets
+  * Templates: Remove old subject parameter; rename Template to CobblerTemplate
+  * Templates: Improve Cheetah template child class (linter & comments)
+  * Templates: Improve docs and fix linter errors with sedsec
+  * CLI: Add class docstring for the main class
+  * Actions - Replicate: Add class docstring
+  * Serializer - Mongo: Revert explicit type because of soft req on MongoDB
+  * Grub: Add tests and catch some errors
+  * Fix several issues in module file.py
+  * remove esxi70u1 from signatures and template from spec
+  * remove esxi70u1 config and templates
+
+-------------------------------------------------------------------
+Sun Feb 21 21:11:46 UTC 2021 - trenn@suse.de
+
+- Update to version 3.2.0+git20210221.644f267c:
+  * Address review concerns by @nodeg
+  * Add schema checking code and test it
+  * Convert integer bools to real bools
+  * Docs: Rearrange to alphabetical order & add missing settings
+  * Add python-schema to our requirements
+  * post_report: Use with syntax to close file in case of an error.
+  * Fix linter errors in check.py
+  * Remove import cgi
+  * Adjust prospector Config to fix doubled issues
+  * Fix Codacy linter errors
+
+-------------------------------------------------------------------
+Fri Feb 19 22:27:03 UTC 2021 - trenn@suse.de
+
+- Update to version 3.2.0+git20210218.8af5f420:
+  * revert_strip_none prior adding an object on replicate
+  * Remove unused function filter_upgrade_duplicates() in file.py
+  * Add filename to exception
+  * Add return types in file.py
+  * Handle files with double .json ending
+  * sync_post_wingen: Include pefile in the import check
+  * Tests: Add tests for module_loader and type the module
+  * Add adjustments for the source installation
+  * close file after open
+  * make esx_modules available to template
+  * fix bootcfg template path
+
+Delete patches which were upstreamed and are included in the tarball:
+D    better-string-replacement-performance.diff
+D    cgi_parse_qs_is_deprecated.diff
+D    fix-for-old-str.join-usage.diff
+D    fix-string-replacement.diff
+D    load_module_apache_suse_fix.diff
+D    refactored_auth_module.diff
+D    remove-redundant-json-suffix.diff
+
+-------------------------------------------------------------------
 Tue Jan 19 14:08:27 UTC 2021 - Dominik Gedon <dominik.gedon@suse.com>
 
 - Update spec file to satisfy current rpmbuild (>=4.16) and make
