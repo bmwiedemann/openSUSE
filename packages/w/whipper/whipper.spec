@@ -16,48 +16,45 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
-
 Name:           whipper
 Version:        0.9.0
 Release:        0
 Summary:        A CD ripper aiming for accuracy over speed
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/CD/Grabbers
-URL:            https://github.com/JoeLametta/whipper/
-Source0:        https://github.com/JoeLametta/whipper/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module gobject}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+URL:            https://github.com/whipper-team/whipper/
+Source0:        https://github.com/whipper-team/whipper/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  gobject-introspection
 BuildRequires:  libsndfile-devel
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-devel
+BuildRequires:  python3-gobject
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools_scm
 # SECTION test requirements
 BuildRequires:  cd-paranoia >= 10.2
-BuildRequires:  %{python_module Twisted}
-BuildRequires:  %{python_module musicbrainzngs}
-BuildRequires:  %{python_module mutagen}
-BuildRequires:  %{python_module pycdio}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  cdrdao
+BuildRequires:  python3-Twisted
+BuildRequires:  python3-musicbrainzngs
+BuildRequires:  python3-mutagen
+BuildRequires:  python3-pycdio
+BuildRequires:  python3-pytest
+BuildRequires:  python3-requests
+BuildRequires:  python3-ruamel.yaml
 BuildRequires:  sox
 # /SECTION
 # nb: there is a difference between cd-paranoia [we want] and
 #     cdparanoia [we don't]
 Requires:       cd-paranoia >= 10.2
-Requires:       %{python_module gobject}
-Requires:       %{python_module musicbrainzngs}
-Requires:       %{python_module mutagen}
-Requires:       %{python_module pycdio}
-Requires:       %{python_module requests}
-Requires:       %{python_module ruamel.yaml}
 Requires:       cdrdao
 Requires:       flac
+Requires:       python3-gobject
+Requires:       python3-musicbrainzngs
+Requires:       python3-mutagen
+Requires:       python3-pycdio
+Requires:       python3-requests
+Requires:       python3-ruamel.yaml
 Requires:       sox
 Conflicts:      morituri
 
@@ -73,27 +70,26 @@ after Morituri development halted.
 
 %build
 echo "Version: %{version}" > PKG-INFO
-%python_build
+%python3_build
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python3_install
+%fdupes %{buildroot}%{python3_sitearch}
 
 %check
-cd whipper/test/
 # Don't run accurip tests since those needs a network connection to www.accuraterip.com
-rm -f test_common_accurip.py
-%python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-%pytest
+rm -rf whipper/test/test_common_accurip.py
+export PYTHONPATH=%{buildroot}%{python3_sitearch}
+pytest whipper/test/
 
 %files
 %doc CHANGELOG.md README
 %license LICENSE
 %{_bindir}/accuraterip-checksum
 %{_bindir}/whipper
-%{python_sitearch}/whipper
-%{python_sitearch}/accuraterip.cpython*
-%{python_sitearch}/%{name}-%{version}-py%{python_version}.egg-info
+%{python3_sitearch}/whipper
+%{python3_sitearch}/accuraterip.cpython*
+%{python3_sitearch}/%{name}-%{version}-py%{python3_version}.egg-info
 %{_datadir}/metainfo/com.github.whipper_team.Whipper.metainfo.xml
 
 %changelog

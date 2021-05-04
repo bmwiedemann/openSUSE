@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Tue May  4 10:53:20 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Undo single-spec abomination: this is an application, not a
+  python module, and we thus do not need all python flavors pulled
+  in.
+- Add gobject-introspection BuildRequires: the code uses
+  gobject-inrtrospection to call out to libraries; by having this
+  Build dependency. rpm will add the nescessary requires to the
+  package in plus.
+
+-------------------------------------------------------------------
+Tue May  4 09:47:05 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Make it build again
+
+-------------------------------------------------------------------
 Tue Mar 30 08:44:31 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Make it build again 
+- Make it build again
 
 -------------------------------------------------------------------
 Mon Nov 23 13:40:37 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
