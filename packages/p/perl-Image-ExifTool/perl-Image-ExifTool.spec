@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Image-ExifTool
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define cpan_name Image-ExifTool
 Name:           perl-Image-ExifTool
-Version:        12.13
+Version:        12.25
 Release:        0
 Summary:        Perl module to read and write meta information
-License:        GPL-1.0-or-later OR Artistic-1.0
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Languages/Perl
-URL:            https://exiftool.sourceforge.io/
+URL:            https://exiftool.org/
 Source:         https://downloads.sf.net/exiftool/%{cpan_name}-%{version}.tar.gz
 BuildRequires:  perl
 BuildRequires:  perl-macros
