@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May  2 03:08:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.41
+   see /usr/share/doc/packages/perl-Term-ReadLine-Gnu/Changes
+
+  1.41  2021-05-01
+          - Makefile.PL
+  			- Search a terminal library only when it necessary. [#6]
+  			- whole refactoring
+
+-------------------------------------------------------------------
 Wed Feb 24 03:09:55 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.40
