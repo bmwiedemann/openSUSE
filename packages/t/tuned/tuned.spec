@@ -1,7 +1,7 @@
 #
 # spec file for package tuned
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,20 @@
 #
 
 
-%define         profile_dir %{_libexecdir}/%{name}
+%define         profile_dir %{_prefix}/lib/%{name}
 
 Name:           tuned
-Version:        2.13.0
+Version:        2.15.0+git.1618526018.e828fa8
 Release:        0
 Summary:        A dynamic adaptive system tuning daemon
 License:        GPL-2.0-or-later
 Group:          System/Base
 URL:            https://github.com/redhat-performance/tuned
-Source0:        https://github.com/redhat-performance/tuned/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        tuned-%{version}.tar.xz
 Source1:        tuned.rpmlintrc
 # PATCH-FIX-OPENSUSE fix-allow-receive_sender-default.patch <allow receive_sender="com.redhat.com"/> allow receive_* is normally
 # not needed as that is the default --<p.drouand@gmail.com>
 Patch0:         fix-allow-receive_sender-default.patch
-Patch1:         adjust_README_path_in_manpage.patch
 BuildRequires:  bash-completion
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig
@@ -137,12 +136,26 @@ Group:          System/Base
 Requires:       %{name} = %{version}
 Requires:       systemtap
 
+%package profiles-spectrumscale
+Summary:        Additional tuned profile(s) optimized for IBM Spectrum Scale
+Requires:       %{name} = %{version}
+
+%description profiles-spectrumscale
+Additional tuned profile(s) optimized for IBM Spectrum Scale.
+
 %description utils-systemtap
 This package contains several systemtap scripts to allow detailed
 manual monitoring of the system. Instead of the typical IO/sec it collects
 minimal, maximal and average time between operations to be able to
 identify applications that behave power inefficient (many small operations
 instead of fewer large ones).
+
+%package profiles-postgresql
+Summary:        Additional tuned profile(s) targeted to PostgreSQL server loads
+Requires:       %{name} = %{version}
+
+%description profiles-postgresql
+Additional tuned profile(s) targeted to PostgreSQL server loads.
 
 %prep
 %setup -q
@@ -213,6 +226,8 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %exclude %{profile_dir}/oracle
 %exclude %{profile_dir}/realtime
 %exclude %{profile_dir}/defirqaffinity*
+%exclude %{_prefix}/lib/tuned/postgresql
+%exclude %{_prefix}/lib/tuned/spectrumscale-ece
 %{profile_dir}/pmqos-static.py
 %{profile_dir}
 # active_profile might be empty when built via build service, but typically
@@ -222,6 +237,7 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %config(noreplace) %{_sysconfdir}/tuned/cpu-partitioning-variables.conf
 %config(noreplace) %{_sysconfdir}/tuned/tuned-main.conf
 %config(noreplace) %{_sysconfdir}/tuned/profile_mode
+%config(noreplace) %{_sysconfdir}/tuned/post_loaded_profile
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/tuned/bootcmdline
 %dir %{_sysconfdir}/dbus-1
 %dir %{_sysconfdir}/dbus-1/system.d
@@ -280,6 +296,16 @@ sed -i 's|.*/\([^/]\+\)/[^\.]\+\.conf|\1|' %{_sysconfdir}/tuned/active_profile
 %{profile_dir}/realtime-virtual-guest
 %{profile_dir}/realtime-virtual-host
 %{_mandir}/man7/tuned-profiles-nfv-*.7%{?ext_man}
+
+%files profiles-postgresql
+%defattr(-,root,root,-)
+%{_prefix}/lib/tuned/postgresql
+%{_mandir}/man7/tuned-profiles-postgresql.7*
+
+%files profiles-spectrumscale
+%defattr(-,root,root,-)
+%{_prefix}/lib/tuned/spectrumscale-ece
+%{_mandir}/man7/tuned-profiles-spectrumscale-ece.7*
 
 %files utils
 %license COPYING

@@ -1,16 +1,17 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service mode="disabled" name="tar_scm">
     <param name="scm">git</param>
     <param name="url">https://github.com/redhat-performance/tuned</param>
-    <!--
-    <param name="versionformat">2.13.0+git%cd.%h</param>
-    -->
-    <param name="versionformat">2.13.0</param>
-    <param name="changesgenerate">disable</param>
+    <param name="versionformat">@PARENT_TAG@+git.%ct.%h</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
   </service>
-  <service name="recompress" mode="disabled">
-    <param name="file">tuned*.tar</param>
+  <service mode="disabled" name="set_version">
+    <param name="basename">tuned</param>
+  </service>
+  <service mode="disabled" name="recompress">
     <param name="compression">xz</param>
+    <param name="file">*.tar</param>
   </service>
-  <service name="set_version" mode="disabled"/>
 </services>

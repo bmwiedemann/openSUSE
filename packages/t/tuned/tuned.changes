@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr 19 10:40:34 UTC 2021 - trenn@suse.de
+
+- Update _service file to always get latest sources from github
+  master branch and auto-set version correctly
+- Update to version v2.15.0+git.20210416.e828fa8:
+  * plugin_net: Fix check for channels supported mode
+  * udev: explicitly sort udev properties
+  * powertop2tuned: work with PowerTOP 2.13 and newer
+  * Changes to scheduler plugin to support os interface instead of schedutils in newer python versions.
+  * Lower the threading.Event's wait() timeout.
+  * added postgresql server profile
+  * spectrumcale-ece: package the profile to own subpackage
+
+-------------------------------------------------------------------
+Mon Nov 30 19:23:43 UTC 2020 - Thomas Renninger <trenn@suse.de>
+
+- Update to version 2.14.0
+  Changelog entry below (from 19. Aug. 2020) is wrong.
+  Mainline has the profiles in /usr/lib,
+  so let's better stay there, too. This also fixes bsc#1175932.
+
+  Patch is not needed anymore with latest mainline changes:
+D adjust_README_path_in_manpage.patch
+
+-------------------------------------------------------------------
 Wed Aug 19 11:30:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Dot not mangle _tmpfilesdir: all half-way decent distros define
