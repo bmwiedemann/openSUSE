@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 30 03:06:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.072
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.072   2021-04-29
+          - fix #69 Identifier Octet's Leniency in RSA PKCS#1 Signature Verification
+          - bundled libtomcrypt update branch:develop (commit:165c795b 2021-04-14)
+
+-------------------------------------------------------------------
 Wed Mar 31 03:06:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.071
