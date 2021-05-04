@@ -25,6 +25,8 @@ Group:          System/Packages
 URL:            https://github.com/kubevirt/kubevirt
 Source0:        %{name}-%{version}.tar.gz
 Source1:        kubevirt-psp-caasp.yaml
+Source2:        kubevirt_containers_meta
+Source3:        kubevirt_containers_meta.service
 Source100:      %{name}-rpmlintrc
 Patch0:         dont-build-virtctl-darwin.patch
 Patch1:         dont-use-bazel-in-build-manifests.patch
@@ -106,6 +108,14 @@ Group:          System/Packages
 %description    tests
 The package provides Kubevirt end-to-end tests.
 
+%package -n     obs-service-kubevirt_containers_meta
+Summary:        Kubevirt containers meta information (build service)
+Group:          System/Packages
+
+%description -n obs-service-kubevirt_containers_meta
+The package provides meta information that is used during the build of
+the Kubevirt container images.
+
 %prep
 %autosetup -p1
 
@@ -168,7 +178,7 @@ build_tests="true" \
 	cmd/virt-operator \
 	%{nil}
 
-env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version} ./hack/build-manifests.sh --skipj2
+env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version}-%{release} ./hack/build-manifests.sh --skipj2
 
 %install
 mkdir -p %{buildroot}%{_bindir}
@@ -195,6 +205,11 @@ cp -r _out/manifests %{buildroot}%{_datadir}/kube-virt/
 # Kubernetes clusters.
 install -m 644 %{S:1} %{buildroot}/%{_datadir}/kube-virt/manifests/release/
 install -m 0644 tests/default-config.json %{buildroot}%{_datadir}/kube-virt
+
+# Install kubevirt_containers_meta build service
+mkdir -p %{buildroot}%{_prefix}/lib/obs/service
+install -m 0755 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
+install -m 0644 %{S:3} %{buildroot}%{_prefix}/lib/obs/service
 
 %files virtctl
 %license LICENSE
@@ -245,5 +260,11 @@ install -m 0644 tests/default-config.json %{buildroot}%{_datadir}/kube-virt
 %dir %{_datadir}/kube-virt
 %{_bindir}/virt-tests
 %{_datadir}/kube-virt/default-config.json
+
+%files -n obs-service-kubevirt_containers_meta
+%license LICENSE
+%doc README.md
+%dir %{_prefix}/lib/obs
+%{_prefix}/lib/obs/service
 
 %changelog
