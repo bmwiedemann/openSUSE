@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  4 11:26:37 UTC 2021 - lars@linux-schulserver.de - 1.3
+
+- check_bind.sh uses a static temporary file, allowing users 
+  to break the script by creating the same file with permissions 
+  that don't allow the nagios user to write to it (bsc#1183201).
+  + added monitoring-plugins-bind_-_use_path_tmp.patch
+
+-------------------------------------------------------------------
 Sun Dec 14 14:29:00 UTC 2014 - Led <ledest@gmail.com>
 
 - fix bashisms in check_bind.sh script

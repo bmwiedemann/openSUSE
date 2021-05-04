@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-bind
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,13 +20,14 @@ Name:           monitoring-plugins-bind
 Version:        1.3
 Release:        0
 Summary:        Check whether BIND is running and to get the performance data via rndc stats
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Url:            http://exchange.nagios.org/directory/Plugins/Network-Protocols/DNS/check_bind-2Esh/details
+URL:            http://exchange.nagios.org/directory/Plugins/Network-Protocols/DNS/check_bind-2Esh/details
 Source0:        check_bind.sh
 Source1:        LICENSE
 Source2:        check_bind.php
 Patch0:         check_bind-fix-bashisms.patch
+Patch1:         monitoring-plugins-bind_-_use_path_tmp.patch
 BuildRequires:  nagios-rpm-macros
 Provides:       nagios-plugins-bind = %{version}-%{release}
 Obsoletes:      nagios-plugins-bind < %{version}-%{release}
@@ -49,7 +50,8 @@ terms of the GPLv2 (or later).
 %prep
 %setup -cT
 install -m 0644 %{SOURCE0} ./check_bind.sh
-%patch0
+%patch0 -p0
+%patch1 -p0
 
 %build
 
