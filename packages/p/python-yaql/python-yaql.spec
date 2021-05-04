@@ -23,7 +23,7 @@ Release:        0
 Summary:        YAQL - Yet Another Query Language
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/yaql
+URL:            https://docs.openstack.org/yaql
 Source0:        https://files.pythonhosted.org/packages/source/y/yaql/yaql-1.1.3.tar.gz
 # rebased from https://opendev.org/openstack/yaql/commit/0b006f07226138ef26ab8296494f1dc1c09908e2.patch
 Patch1:         0b006f07226138ef26ab8296494f1dc1c09908e2.patch
@@ -50,7 +50,6 @@ written in python and is distributed via PyPI.
 
 %package -n python3-yaql
 Summary:        YAQL - Yet Another Query Language
-Group:          Development/Languages/Python
 Requires:       python3-Babel
 Requires:       python3-ply
 Requires:       python3-python-dateutil
