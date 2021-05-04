@@ -191,6 +191,7 @@ BuildRequires:  libjson-c-devel
 BuildRequires:  liblz4-devel
 %endif
 BuildRequires:  libssh2-devel
+BuildRequires:  libyaml-devel
 BuildRequires:  rrdtool-devel
 %if 0%{?with_systemd}
 %{?systemd_ordering}
@@ -563,6 +564,7 @@ autoreconf
 %if 0%{?build_slurmrestd}
            --enable-slurmrestd \
 %endif
+	   --with-yaml \
 %{!?have_netloc:--without-netloc} \
            --sysconfdir=%{_sysconfdir}/%{pname} \
 %{!?have_hdf5:--without-hdf5} \
@@ -1105,13 +1107,6 @@ exit 0
 %{_libdir}/slurm/mpi_pmix.so
 %{_libdir}/slurm/mpi_pmix_v3.so
 %endif
-%if 0%{?build_slurmrestd}
-%{_libdir}/slurm/openapi_dbv0_0_36.so
-%{_libdir}/slurm/openapi_v0_0_35.so
-%{_libdir}/slurm/openapi_v0_0_36.so
-%{_libdir}/slurm/rest_auth_jwt.so
-%{_libdir}/slurm/rest_auth_local.so
-%endif
 %{_libdir}/slurm/power_none.so
 %{_libdir}/slurm/preempt_none.so
 %{_libdir}/slurm/preempt_partition_prio.so
@@ -1188,6 +1183,11 @@ exit 0
 %{?comp_at}
 %{_sbindir}/slurmrestd
 %{_mandir}/man8/slurmrestd.*
+%{_libdir}/slurm/openapi_dbv0_0_36.so
+%{_libdir}/slurm/openapi_v0_0_35.so
+%{_libdir}/slurm/openapi_v0_0_36.so
+%{_libdir}/slurm/rest_auth_jwt.so
+%{_libdir}/slurm/rest_auth_local.so
 %endif
 
 %files node

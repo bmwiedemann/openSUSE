@@ -724,4 +724,13 @@
     <comment></comment>
     <requestid>879660</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>3a86f1d2f4c12086f36cf440880e72b8</srcmd5>
+    <version>20.11.5</version>
+    <time>1620158459</time>
+    <user>dimstar_suse</user>
+    <comment>- Ship REST API version and auth plugins with slurmrestd.
+- Add YAML support for REST API to build (bsc#1185603). (forwarded request 890261 from eeich)</comment>
+    <requestid>890262</requestid>
+  </revision>
 </revisionlist>
