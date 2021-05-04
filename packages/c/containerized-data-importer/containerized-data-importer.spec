@@ -24,6 +24,8 @@ License:        Apache-2.0
 Group:          System/Packages
 URL:            https://github.com/kubevirt/containerized-data-importer
 Source0:        %{name}-%{version}.tar.gz
+Source1:        cdi_containers_meta
+Source2:        cdi_containers_meta.service
 BuildRequires:  golang-packaging
 BuildRequires:  libnbd-devel
 BuildRequires:  pkgconfig
@@ -92,6 +94,14 @@ Group:          System/Packages
 This contains the built YAML manifests used to install CDI into a
 kubernetes installation with kubectl apply.
 
+%package -n     obs-service-cdi_containers_meta
+Summary:        CDI containers meta information (build service)
+Group:          System/Packages
+
+%description -n obs-service-cdi_containers_meta
+The package provides meta information that is used during the build of
+the CDI container images.
+
 %prep
 # Unpack the sources respecting the GOPATH directory structure expected by the
 # go imports resolver. I.e. if DIR is in GOPATH then DIR/src/foo/bar can be
@@ -158,7 +168,7 @@ CDI_GIT_TREE_STATE="clean" \
 	cmd/cdi-operator \
 	%{nil}
 
-env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version} ./hack/build/build-manifests.sh
+env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version}-%{release} ./hack/build/build-manifests.sh
 
 %install
 mkdir -p %{buildroot}%{_bindir}
@@ -180,6 +190,11 @@ install -p -m 0755 _out/cmd/cdi-uploadserver/cdi-uploadserver %{buildroot}%{_bin
 
 mkdir -p %{buildroot}%{_datadir}/cdi
 cp -r _out/manifests %{buildroot}%{_datadir}/cdi/
+
+# Install cdi_containers_meta build service
+mkdir -p %{buildroot}%{_prefix}/lib/obs/service
+install -m 0755 %{S:1} %{buildroot}%{_prefix}/lib/obs/service
+install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 
 %files api
 %license LICENSE
@@ -222,5 +237,11 @@ cp -r _out/manifests %{buildroot}%{_datadir}/cdi/
 %doc README.md
 %dir %{_datadir}/cdi
 %{_datadir}/cdi/manifests
+
+%files -n obs-service-cdi_containers_meta
+%license LICENSE
+%doc README.md
+%dir %{_prefix}/lib/obs
+%{_prefix}/lib/obs/service
 
 %changelog

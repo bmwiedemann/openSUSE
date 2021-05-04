@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 29 11:36:12 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Include release number into docker tag
+- Add cdi_containers_meta build service
+
+-------------------------------------------------------------------
 Thu Apr 29 05:23:06 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Set default reg_path='registry.opensuse.org/kubevirt'

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+distro=$(rpm --eval '%{?sle_version}:%{?is_opensuse}%{!?is_opensuse:0}')
+case "${distro}" in
+150200:0)
+    TAGPREFIX=suse/sles/15.2
+    LABELPREFIX=com.suse.kubevirt
+    ;;
+150300:0)
+    TAGPREFIX=suse/sles/15.3
+    LABELPREFIX=com.suse.kubevirt
+    ;;
+*)
+    TAGPREFIX=kubevirt
+    LABELPREFIX=org.opensuse.kubevirt
+    ;;
+esac
+
+if [ -n "${pkg}" ]; then
+    if rpm -q ${pkg}; then
+        PKG_VERSION=$(rpm -q --queryformat=%{version} ${pkg})
+        PKG_RELEASE=$(rpm -q --queryformat=%{release} ${pkg})
+    else
+        _pkg=$(find ./repos -name "${pkg}*.rpm")
+        PKG_VERSION=$(rpm -qp --queryformat=%{version} ${_pkg})
+        PKG_RELEASE=$(rpm -qp --queryformat=%{release} ${_pkg})
+    fi
+fi
