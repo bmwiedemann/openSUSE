@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon May  3 03:10:17 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.012002
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.012002	2021-05-02
+   [ Bug Fixes ]
+   - Fix precendence error in generated code for Tuples.
+     Philippe Bruhat++
+     <https://github.com/tobyink/p5-type-tiny/pull/64>
+   [ Documentation ]
+   - Fixed typo in pod for Type::Tiny::Enum
+     Windymelt++
+     <https://github.com/tobyink/p5-type-tiny/pull/70>
+   [ Test Suite ]
+   - Fix testcase for Tuples with slurpy HashRef to pass a literal hashref
+     (which should fail) instead of an arrayref (which should also fail, but
+     less subtly).
+     Philippe Bruhat++
+     <https://github.com/tobyink/p5-type-tiny/pull/64>
+   - Type::Tiny is no longer routinely tested on Perl versions older than
+     5.8.1.
+     <https://github.com/tobyink/p5-type-tiny/actions>
+   [ Other ]
+   - Type::Parser now supports hexadecimal integers.
+     <https://github.com/tobyink/p5-type-tiny/issues/71>
+
+-------------------------------------------------------------------
 Sun Jan 10 03:09:42 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.012001

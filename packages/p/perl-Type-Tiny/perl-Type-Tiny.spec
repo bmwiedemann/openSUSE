@@ -18,7 +18,7 @@
 
 %define cpan_name Type-Tiny
 Name:           perl-Type-Tiny
-Version:        1.012001
+Version:        1.012002
 Release:        0
 Summary:        Tiny, yet Moo(se)-compatible type constraint
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -29,6 +29,7 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Exporter::Tiny) >= 1.000000
+BuildRequires:  perl(Test::More) >= 0.96
 Requires:       perl(Exporter::Tiny) >= 1.000000
 Recommends:     perl(Devel::LexAlias) >= 0.05
 Recommends:     perl(Devel::StackTrace)
