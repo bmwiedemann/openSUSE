@@ -1,0 +1,21 @@
+From 6bb7e35ba7d1a31247eafb323be2777ec0439cfe Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@lanl.gov>
+Date: Thu, 29 Apr 2021 21:49:55 -0600
+Subject: [PATCH] objectfactory.h: add missing include
+
+---
+ include/votca/tools/objectfactory.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/votca/tools/objectfactory.h b/include/votca/tools/objectfactory.h
+index 81535009..998943fb 100644
+--- a/include/votca/tools/objectfactory.h
++++ b/include/votca/tools/objectfactory.h
+@@ -22,6 +22,7 @@
+ #include <map>
+ #include <memory>
+ #include <stdexcept>
++#include <vector>
+ 
+ // Third party includes
+ #include <boost/lexical_cast.hpp>

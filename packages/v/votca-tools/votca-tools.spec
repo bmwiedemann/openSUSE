@@ -26,6 +26,8 @@ License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
 URL:            http://www.votca.org
 Source0:        https://github.com/votca/tools/archive/v%{uversion}.tar.gz#/%{name}-%{uversion}.tar.gz
+# PATCH-FIX-UPSTREAM 6bb7e35ba7d1a31247eafb323be2777ec0439cfe.patch gh#votca/tools#361
+Patch0:         https://github.com/votca/tools/commit/6bb7e35ba7d1a31247eafb323be2777ec0439cfe.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -75,6 +77,7 @@ This package contains development headers and libraries for votca-tools.
 
 %prep
 %setup -n tools-%{uversion} -q
+%patch0 -p1
 
 # Avoid unnecessary rebuilds of the package
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')

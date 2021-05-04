@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  3 23:10:45 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- add 6bb7e35ba7d1a31247eafb323be2777ec0439cfe.patch to fix
+  build on Factory [gh#votca/tools#361]
+
+-------------------------------------------------------------------
 Sat Mar 13 18:25:18 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Update to 2021
