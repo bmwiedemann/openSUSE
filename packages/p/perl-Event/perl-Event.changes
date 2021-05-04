@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 30 03:07:09 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.28
+   see /usr/share/doc/packages/perl-Event/Changes
+
+  1.28 2021-04-29
+  - remove C-only restriction on ->Inline method - thanks @oodler577
+
+-------------------------------------------------------------------
 Thu Dec  6 15:39:20 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.27
