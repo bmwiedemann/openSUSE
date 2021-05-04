@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May  3 20:54:35 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.7.1
+  - Fix assertion typo in barbican key manager unit test
+  - Remove six
+  - Add Python3 wallaby unit tests
+  - Adding pre-commit
+  - Update master for stable/victoria
+  - Dropping lower constraints testing
+  - Don't expect barbican service name to be barbican.
+  - Use py3 as the default runtime for tox
+
+-------------------------------------------------------------------
 Fri Oct  9 19:12:45 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.6.0

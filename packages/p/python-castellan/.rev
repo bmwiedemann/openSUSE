@@ -207,4 +207,20 @@
     <comment>switch to victoria</comment>
     <requestid>841171</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>36bb120a672851419a2cdeaaa6d63561</srcmd5>
+    <version>3.7.1</version>
+    <time>1620158452</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.7.1
+  - Fix assertion typo in barbican key manager unit test
+  - Remove six
+  - Add Python3 wallaby unit tests
+  - Adding pre-commit
+  - Update master for stable/victoria
+  - Dropping lower constraints testing
+  - Don't expect barbican service name to be barbican.
+  - Use py3 as the default runtime for tox</comment>
+    <requestid>890180</requestid>
+  </revision>
 </revisionlist>
