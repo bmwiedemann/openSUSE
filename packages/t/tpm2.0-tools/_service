@@ -1,4 +1,5 @@
 <services>
+  <!-- we need to setup a download_files service here. it is already called implicitly for some reason in the devel project, but not in e.g. SLE-15 -->
   <service name="tar_scm" mode="disabled">
     <param name="url">https://github.com/intel/tpm2-tools.git</param>
     <param name="scm">git</param>

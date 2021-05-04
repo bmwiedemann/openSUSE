@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  4 08:55:06 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- fix `--version` output of tools. Since now autoreconf is called and
+  configure.ac attempts to fetch the version from git (which we don't have
+  during building), the version was empty. Fix this by replacing the git
+  invocation in configure.ac.
+
+-------------------------------------------------------------------
 Thu Jan 28 09:49:06 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add fix_warnings.patch: fixes a couple of build errors resulting from LTO

@@ -401,4 +401,15 @@ s etc.
     * tpm2_ecdhzgen: Add new tool to support command TPM2_CC_ECDH_ZGen.</comment>
     <requestid>867453</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>56668b849e44262a1e48b3eab584ed5a</srcmd5>
+    <version>5.0</version>
+    <time>1620158461</time>
+    <user>dimstar_suse</user>
+    <comment>- fix `--version` output of tools. Since now autoreconf is called and
+  configure.ac attempts to fetch the version from git (which we don't have
+  during building), the version was empty. Fix this by replacing the git
+  invocation in configure.ac.</comment>
+    <requestid>890270</requestid>
+  </revision>
 </revisionlist>

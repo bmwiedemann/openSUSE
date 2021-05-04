@@ -71,6 +71,9 @@ associated interfaces.
 
 %build
 # TODO: remove autoreconf once fix_pie_linking patch is no longer needed
+# until then we need to repair the version specification which configure.ac
+# wants to read from GIT which isn't there.
+sed -i 's/m4_esyscmd_s([^)]\+)/%{version}/g' configure.ac
 autoreconf -fvi
 %configure --disable-static
 make %{?_smp_mflags}
@@ -84,7 +87,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %defattr(-,root,root)
-%doc README.md doc/LICENSE doc/CHANGELOG.md
+%doc README.md doc/CHANGELOG.md
+%license doc/LICENSE
 /usr/bin/tpm2*
 /usr/bin/tss2*
 %{_mandir}/man1/tpm2*
