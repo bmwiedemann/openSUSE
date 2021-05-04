@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May  3 13:10:15 UTC 2021 - malcolmlewis@opensuse.org
+
+- Updated to version 2.12.1
+  * Remove 'use lib' line with local, user-based path, closes bug
+    #384.
+  * Move postprocessing options to separate tab, (deb#987211).
+  * Refactor "Threshold before OCR" options into one line,
+    (deb#987212).
+  * Translation updates.
+- Changes from version 2.12.0:
+  * Enabled subject and keywords in filename template.
+  * Switch from Perlmagick to imagemagick for threshold steps of OCR
+    to improve performance.
+  * + annotation layer for DjVu and PDF.
+  * POD and manpage improvements, (deb#987059).
+  * Translation updates.
+
+-------------------------------------------------------------------
 Thu Apr  1 00:18:38 UTC 2021 - malcolmlewis@opensuse.org
 
 - Updated to version 2.11.2:
