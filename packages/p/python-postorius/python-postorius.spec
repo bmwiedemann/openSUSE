@@ -29,11 +29,9 @@
 %global postorius_logdir    %{_localstatedir}/log/postorius
 %global postorius_datadir   %{postorius_libdir}/data
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%if 0%{?suse_version} >= 1550
-%define skip_python36 1
-%endif
+%{?!python_module:%define python_module() python3-%{**}}
+# mailman is built only for primary python3 flavor
+%define pythons python3
 Name:           python-postorius
 Version:        1.3.4
 Release:        0
@@ -78,6 +76,11 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module readme_renderer}
 BuildRequires:  %{python_module vcrpy}
 # /SECTION
+%if 0%{python3_version_nodots} == 38
+# help in replacing any previously installed multiflavor package back to the primary python3 package
+Provides:       python38-postorius = %{version}-%{release}
+Obsoletes:      python38-postorius < %{version}-%{release}
+%endif
 %python_subpackages
 
 %description

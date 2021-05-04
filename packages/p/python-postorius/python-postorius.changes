@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  4 09:34:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- restrict to primary python3 flavor due to mailman 
+
+-------------------------------------------------------------------
 Fri Feb 12 10:54:02 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.3.4
