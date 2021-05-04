@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  4 10:15:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update runtime and build requirements
+- Skip a failing test, which is marked xfail anyway but too late
+- Exclude docs install into sitelib directory
+
+-------------------------------------------------------------------
 Mon Mar 22 08:44:16 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 1.4.2

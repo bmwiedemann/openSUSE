@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-aiosmtpd
 Version:        1.4.2
@@ -32,14 +32,25 @@ BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       python-atpublic
+Requires:       python-attrs
+%if 0%{python_version_nodots} < 38
+Requires:       python-typing_extensions
+%endif
 Requires:       user(nobody)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module atpublic}
+BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
+# this package is used in projects which do not support boolean python_module BuildRequires yet :(
+%if 0%{?suse_version} >= 1550
+BuildRequires:  python36-typing_extensions
+%else
+BuildRequires:  python3-typing_extensions
+%endif
 BuildRequires:  user(nobody)
 # /SECTION
 %python_subpackages
@@ -60,7 +71,9 @@ cp %{SOURCE1} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# https://github.com/aio-libs/aiosmtpd/issues/268
+donttest="(test_byclient and login and False)"
+%pytest -k "not ($donttest)"
 
 %post
 %python_install_alternative aiosmtpd
@@ -72,6 +85,8 @@ cp %{SOURCE1} .
 %doc README.rst
 %license LICENSE-2.0.txt
 %python_alternative %{_bindir}/aiosmtpd
-%{python_sitelib}/*
+%{python_sitelib}/aiosmtpd
+%{python_sitelib}/aiosmtpd-%{version}*-info
+%exclude %{python_sitelib}/aiosmtpd/docs
 
 %changelog

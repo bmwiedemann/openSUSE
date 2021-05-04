@@ -32,4 +32,12 @@
 - dropped obsolete f414dcdc.patch</comment>
     <requestid>881335</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d6e91458e95eee27ae38cbd8a7ac012d</srcmd5>
+    <version>1.4.2</version>
+    <time>1620158480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890393</requestid>
+  </revision>
 </revisionlist>
