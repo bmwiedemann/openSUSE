@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  4 06:41:27 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 20.10.0
+  * Fix for Python 3.9's AST changes
+  * skip typeshed test for older Python versions
+
+-------------------------------------------------------------------
 Fri May 15 21:22:02 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to v20.5.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-flake8-pyi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flake8-pyi
-Version:        20.5.0
+Version:        20.10.0
 Release:        0
 Summary:        A plugin for flake8 to enable linting .pyi files
 License:        MIT
