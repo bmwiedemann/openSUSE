@@ -67,4 +67,30 @@
     <comment></comment>
     <requestid>870309</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>783b23bfe2e910f31936b8a776b06598</srcmd5>
+    <version>0.11.1</version>
+    <time>1620158488</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %pytest macro
+- update to version 0.11.1
+  * Support for Saudi Arabia
+  * Support for Curacao
+  * Support for Jamaica
+  * Support for Georgia
+  * init.py flake8 issue fix
+  * Korea 2020 fix
+  * Singapore fix for multi-year
+  * Israel fix
+  * Japan fix
+  * Serbia fix
+  * United Kingdom get_list fix
+  * Singapore fix for multi-year
+  * Fixed holidays pickling
+- remove:
+  - disable-lag-baomer.patch
+  - disable-flake.patch
+</comment>
+    <requestid>890465</requestid>
+  </revision>
 </revisionlist>

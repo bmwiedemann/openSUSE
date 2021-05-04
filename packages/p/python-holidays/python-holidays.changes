@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May  3 13:19:03 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Use %pytest macro
+
+-------------------------------------------------------------------
+Mon May  3 07:33:00 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.11.1
+  * Support for Saudi Arabia
+  * Support for Curacao
+  * Support for Jamaica
+  * Support for Georgia
+  * init.py flake8 issue fix
+  * Korea 2020 fix
+  * Singapore fix for multi-year
+  * Israel fix
+  * Japan fix
+  * Serbia fix
+  * United Kingdom get_list fix
+  * Singapore fix for multi-year
+  * Fixed holidays pickling
+- remove:
+  - disable-lag-baomer.patch
+  - disable-flake.patch
+
+-------------------------------------------------------------------
 Mon Feb  8 07:18:37 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.10.5.2

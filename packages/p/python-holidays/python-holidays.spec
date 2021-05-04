@@ -1,7 +1,7 @@
 #
 # spec file for package python-holidays
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-holidays
-Version:        0.10.5.2
+Version:        0.11.1
 Release:        0
 Summary:        Python library for generating holidays on the fly
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/dr-prodigy/python-holidays
 Source:         https://files.pythonhosted.org/packages/source/h/holidays/holidays-%{version}.tar.gz
-Patch1:         disable-flake.patch
-# searched for 15 minutes and did not found it anywhere, sorry
-Patch2:         disable-lag-baomer.patch
 BuildRequires:  %{python_module convertdate}
 BuildRequires:  %{python_module hijri-converter}
 BuildRequires:  %{python_module korean-lunar-calendar}
-#BuildRequires:  %{python_module lag_baomer}
+BuildRequires:  %{python_module pytest}
+#BuildRequires:  %%{python_module lag_baomer}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-convertdate
@@ -52,8 +51,6 @@ It makes determining whether a specific date is a holiday possible.
 
 %prep
 %setup -q -n holidays-%{version}
-%patch1 -p0
-%patch2 -p0
 
 %build
 %python_build
@@ -63,7 +60,7 @@ It makes determining whether a specific date is a holiday possible.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand $python tests.py
+%pytest
 
 %files %{python_files}
 %license LICENSE
