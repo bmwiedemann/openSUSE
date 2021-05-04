@@ -35,7 +35,7 @@
 %bcond_without python3
 %bcond_without openblas
 Name:           opencv
-Version:        4.5.1
+Version:        4.5.2
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -65,6 +65,7 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libv4lconvert)
+BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(zlib)
 Provides:       opencv-qt5 = %{version}

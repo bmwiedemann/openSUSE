@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sat May  1 12:25:46 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.5.2, highlights below, for details check
+  https://github.com/opencv/opencv/wiki/ChangeLog#version452
+  * core: added support for parallel backends.
+  * imgproc: added IntelligentScissors implementation (JS demo).
+  * videoio: improved hardware-accelerated video de-/encoding tasks.
+  * DNN module:
+    + Improved debugging of TensorFlow parsing errors: #19220
+    + Improved layers / activations / supported more models:
+      - optimized: NMS processing, DetectionOutput
+      - fixed: Div with constant, MatMul, Reshape
+        (TensorFlow behaviour)
+      - added support: Mish ONNX subgraph, NormalizeL2 (ONNX),
+        LeakyReLU (TensorFlow), TanH + SAM (Darknet), Exp
+    + Intel® Inference Engine backend ( OpenVINO™ ):
+      added support for OpenVINO 2021.3 release
+  * G-API module:
+    + Python support:
+      - Introduced a new Python backend - now G-API can run custom
+        kernels written in Python as part of the pipeline: #19351
+      - Extended Inference support in the G-API bindings: #19318
+      - Added more graph data types in the G-API bindings: #19319
+    + Inference support:
+      - Introduced dynamic input / CNN reshape functionality in the
+        OpenVINO inference backend #18240
+      - Introduced asynchronous execution support in the OpenVINO
+        inference backend, now it can run in multiple parallel
+	requests to increase stream density/throughput: #19487, #19425
+      - Extended supported data types with INT64/INT32 in ONNX
+        inference backend and with INT32 in the OpenVINO inference
+	backend #19792
+      - Introduced cv::GFrame / cv::MediaFrame and constant support
+        in the ONNX backend: #19070
+    + Media support:
+      - Introduced cv::GFrame / cv::MediaFrame support in the
+        drawing/rendering interface: #19516
+      - Introduced multi-stream input support in Streaming mode
+        and frame synchronization policies to support cases like
+	Stereo: #19731
+      - Added Y and UV operations to access NV12 data of cv::GFrame
+        at the graph level; conversions are done on-the-fly if the
+	media format is different: #19325
+    + Operations and kernels:
+      - Added performance tests for new operations (MorphologyEx,
+        BoundingRect, FitLine, FindContours, KMeans, Kalman,
+	BackgroundSubtractor)
+      - Fixed RMat input support in the PlaidML backend: #19782
+      - Added ARM NEON optimizations for Fluid AbsDiffC, AddWeighted,
+        and bitwise operations: #18466, #19233
+      - Other various static analysis and warning fixes
+    + Documentation:
+      - [GSoC] Added TF/PyTorch classification conversion: #17604
+      - [GSoC] Added TF/PyTorch segmentation conversion: #17801
+      - [GSoC] Added TF/PyTorch detection model conversion: #18237
+      - Updated documentation to address Wide Universal Intrinsics
+	(WUI) SIMD API: #18952
+    + And many other great contributions from OpenCV community:
+      - core: cuda::Stream constructor with stream flags: #19286
+      - highgui: pollKey() implementation for w32 backend: #19411
+      - imgcodecs: Added Exif parsing for PNG: #19439
+      - imgcodecs: OpenEXR compression options: #19540
+      - imgproc: connectedComponents optimizations: (Spaghetti
+        Labeling): #19631
+      - videoio: Android NDK camera support #19597
+      - (contrib) WeChat QRCode module open source: #2821
+      - (contrib) Implemented cv::cuda::inRange(): #2803
+      - (contrib) Added algorithms from Edge Drawing Library: #2313
+      - (contrib) Added Python bindings for Viz module: #2882
+- Add libva build dependency for HW accelerated videoio
+- Slight bump for memory constraints
+
+-------------------------------------------------------------------
 Thu Feb 11 10:49:40 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Enable aruco module (recognize markers to detect camera pose)
