@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May  2 03:09:27 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.024
+   see /usr/share/doc/packages/perl-experimental/Changes
+
+  0.024     2021-05-01 19:44:14+02:00 Europe/Amsterdam
+            - Rereleased without NYTProf files
+
+  0.023     2021-04-30 19:35:09+02:00 Europe/Amsterdam
+            - Added try feature
+
+-------------------------------------------------------------------
 Tue May  5 03:19:34 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 updated to 0.022
