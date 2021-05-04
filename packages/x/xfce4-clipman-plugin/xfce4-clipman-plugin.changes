@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon May  3 15:28:16 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 1.6.2
+  * Add G_GNUC_FALLTHROUGH definition if GLib < 2.60
+  * Remove obsolete GTK_CHECK_VERSION checks
+  * Fix function prototypes
+  * Remove GSourceFunc casts
+  * Fix compilation warnings
+  * automake: Enable subdir-objects
+  * autoconf: Some updates
+  * Check for `locale.h` required in release mode
+  * Update `.gitignore`
+  * Require gtk 3.22.29
+  * Fix GCC warnings
+  * Fix return type of grab_keyboard
+  * Add README.md
+  * Avoid deprecated warnings with Gdk >= 3.22
+  * Add basic GitLab pipeline
+  * bxo#16717: Move from exo-csource to xdt-csource
+  * Make settings window title translateable (bxo#16625)
+  * history: Re-enable singleton
+  * menu: Indicate primary and clipboard content
+  * menu: Indicate the primary clipboard item
+  * Speed up shutdown and paste
+  * Correct location of appstream info
+  * Fix a couple of grammatical errors
+  * Translation Updates
+- Drop xfce4-clipman-plugin-1.4.2-fix-nonvoid-function.diff,
+  fixed upstream
+
+-------------------------------------------------------------------
 Sun Apr  5 12:20:09 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 1.6.1
