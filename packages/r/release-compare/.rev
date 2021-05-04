@@ -192,4 +192,12 @@ transfered the wrong version into git :/</comment>
     <comment></comment>
     <requestid>870323</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a42cd30e13c49983845831a250b1d471</srcmd5>
+    <version>0.5.5</version>
+    <time>1620158467</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>890319</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@ Summary:        Release Compare Script
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/release-compare
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
 Source:         %name-%version.tar.xz
 BuildArch:      noarch
@@ -32,7 +32,6 @@ to last released result.
 
 Note: you need to use a releasetarget definition in your OBS repository
       to get this working. And the release target needs to have published binaries.
-
 
 %prep
 %setup -q

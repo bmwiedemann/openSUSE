@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 27 10:27:46 UTC 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- 0.5.5
+  * Use package versions for change log (yaml) generation
+
+-------------------------------------------------------------------
 Mon Feb  8 13:33:27 UTC 2021 - Joachim Gleissner <jgleissner@suse.com>
 
 - 0.5.4
