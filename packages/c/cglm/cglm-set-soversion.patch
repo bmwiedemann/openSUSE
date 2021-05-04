@@ -1,0 +1,14 @@
+diff -ru cglm-0.8.0.orig/meson.build cglm-0.8.0/meson.build
+--- cglm-0.8.0.orig/meson.build	2021-03-01 08:48:04.000000000 +0100
++++ cglm-0.8.0/meson.build	2021-04-19 01:16:44.921425122 +0200
+@@ -55,7 +55,9 @@
+     cglm_src,
+     install : cglm_install,
+     dependencies : cglm_deps,
+-    c_args : [ build_args, cglm_args ]
++    c_args : [ build_args, cglm_args ],
++    version : meson.project_version(),
++    soversion : '0'
+ )
+ 
+ cglm_dep = declare_dependency(
