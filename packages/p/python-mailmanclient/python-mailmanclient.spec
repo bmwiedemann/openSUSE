@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%if 0%{?suse_version} >= 1550
-%define skip_python36 1
-%endif
+%{?!python_module:%define python_module() python3-%{**}}
+# mailman is built only for primary python3 flavor
+%define pythons python3
 Name:           python-mailmanclient
 Version:        3.3.2
 Release:        0
@@ -41,6 +39,11 @@ BuildRequires:  %{python_module pytest-vcr}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION
+%if 0%{python3_version_nodots} == 38
+# help in replacing any previously installed multiflavor package back to the primary python3 package
+Provides:       python38-mailmanclient = %{version}-%{release}
+Obsoletes:      python38-mailmanclient < %{version}-%{release}
+%endif
 %python_subpackages
 
 %description
