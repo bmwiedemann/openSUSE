@@ -1,7 +1,7 @@
 #
 # spec file for package pcm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pcm
-Version:        202101
+Version:        202104
 Release:        0
 Summary:        Processor Counter Monitor
 License:        BSD-3-Clause
@@ -71,6 +71,7 @@ export CXXFLAGS="%{optflags} -fPIC"
 %{_sbindir}/pcm-sensor-server
 %{_sbindir}/pcm-raw
 %dir %{_datadir}/pcm
-%{_datadir}/pcm/opCode.txt
+%{_datadir}/pcm/opCode-106.txt
+%{_datadir}/pcm/opCode-85.txt
 
 %changelog
