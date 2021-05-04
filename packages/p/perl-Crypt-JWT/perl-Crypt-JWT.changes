@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  2 03:06:09 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.033
+   see /usr/share/doc/packages/perl-Crypt-JWT/Changes
+
+  0.033   2021-05-01
+          - fix #31 verify_xxx options do not work properly with decode_payload=0
+
+-------------------------------------------------------------------
 Fri Mar 19 03:06:17 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.032

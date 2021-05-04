@@ -18,7 +18,7 @@
 
 %define cpan_name Crypt-JWT
 Name:           perl-Crypt-JWT
-Version:        0.032
+Version:        0.033
 Release:        0
 Summary:        JSON Web Token (JWT, JWS, JWE) as defined by RFC7519, RFC7515, RFC7516
 License:        Artistic-1.0 OR GPL-1.0-or-later
