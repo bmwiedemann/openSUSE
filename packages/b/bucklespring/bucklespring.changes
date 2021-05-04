@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May  3 13:20:36 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.0
+  * scan-x11: Play mouse clicks both on press and release
+  * Add desktop file
+  * Adds background in starting tool
+  * Added libinput scan backend
+  * Add a array to configure mid row location and solve stereo
+    issues
+  * Adjusted gain of new numpad keys by -4dB to match average
+    volume of existing keys
+  * Add horizontal locations for keypad keys
+  * Add (normalized) keypad samples
+  * Misc bugfixes
+
+-------------------------------------------------------------------
 Wed Jan  2 21:11:53 UTC 2019 - mardnh@gmx.de
 
 - Initial package, version 1.4.0

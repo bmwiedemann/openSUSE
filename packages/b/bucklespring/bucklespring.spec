@@ -1,7 +1,8 @@
 #
 # spec file for package bucklespring
 #
-# Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +13,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           bucklespring
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Nostalgia keyboard sound emulator
 License:        GPL-2.0-only
 Group:          Amusements/Toys/Other
 URL:            https://github.com/zevv/bucklespring
 #Git-Clone:     https://github.com/zevv/bucklespring.git
-Source:         https://github.com/zevv/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/zevv/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alure)
@@ -41,12 +42,13 @@ saver bucklespring keyboard while typing on a notebook/pc.
 
 %build
 export CFLAGS='%{optflags}'
-make PATH_AUDIO=%{_datadir}/bucklespring/wav/ %{?_smp_mflags}
+%make_build PATH_AUDIO=%{_datadir}/bucklespring/wav/
 
 %install
 install -Dm 0755 buckle %{buildroot}/%{_bindir}/buckle
 install -d %{buildroot}/%{_datadir}/%{name}/wav
 install -m 0644 wav/* %{buildroot}/%{_datadir}/%{name}/wav
+install -D -m 0644 buckle.desktop %{buildroot}%{_datadir}/applications/buckle.desktop
 %fdupes -s %{buildroot}/%{_datadir}/%{name}/wav
 
 %files
@@ -55,5 +57,6 @@ install -m 0644 wav/* %{buildroot}/%{_datadir}/%{name}/wav
 %{_bindir}/buckle
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/wav
+%{_datadir}/applications/buckle.desktop
 
 %changelog
