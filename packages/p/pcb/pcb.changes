@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar  2 11:35:46 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- New feature release 4.3.0 (no pcb file format change).
+  * Footprint file format now allows for stating the pad center and
+    length, width parameters. This is in addition to the existing
+    footprint format. pcb parses both definitions.  
+  * User experience improvements:
+    - the gtk hid no longer hides "clearline" lines, arcs, text under
+      polygons in "thin draw" mode.
+    - Updated zoom action comments.
+    - Pads can now be defined by centerpoint coordinates and length,
+      width parameters.
+    - Pcb is no longer quiet when a save operation fails.
+
+-------------------------------------------------------------------
 Fri Jun  5 13:36:49 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - updated to bugfix release 4.2.2
