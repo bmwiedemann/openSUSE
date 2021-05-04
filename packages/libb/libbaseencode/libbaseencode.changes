@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  3 16:12:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.0.11
+  * fix valgrind reported error on decode function
+- Use cmake macros
+
+-------------------------------------------------------------------
 Tue Sep 22 09:07:23 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.0.10

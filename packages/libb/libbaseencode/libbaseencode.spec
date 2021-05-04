@@ -1,7 +1,7 @@
 #
 # spec file for package libbaseencode
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %endif
 %define libsoname %{name}1
 Name:           libbaseencode
-Version:        1.0.10
+Version:        1.0.11
 Release:        0
 Summary:        Base32 and base64 encoding library
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/paolostivanin/%{name}
-Source:         https://github.com/paolostivanin/%{name}/archive/v%{version}.tar.gz
+Source:         %{URL}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -58,22 +58,22 @@ Pkg-config and header files for developing applications that use %{name}
 %setup -q
 
 %build
-# FIXME: you should use %%cmake macros
-cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} .
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 
-%post -n        %{libsoname} -p /sbin/ldconfig
-%postun -n      %{libsoname} -p /sbin/ldconfig
+%post -n   %{libsoname} -p /sbin/ldconfig
+%postun -n %{libsoname} -p /sbin/ldconfig
 
 %files -n %{libsoname}
-%{_libdir}/*.so.*
+%license LICENSE
+%{_libdir}/%{name}.so.*
 
 %files devel
-%{_libdir}/*.so
-%{_includedir}/*
+%{_libdir}/%{name}.so
+%{_includedir}/baseencode.h
 %{_libdir}/pkgconfig/baseencode.pc
 
 %changelog
