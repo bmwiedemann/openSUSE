@@ -4955,4 +4955,12 @@
     implemented in the latest version of Firefox. You can see</comment>
     <requestid>886904</requestid>
   </revision>
+  <revision rev="334" vrev="2">
+    <srcmd5>fff6cae65039a4b3badf2e86e25ed9a7</srcmd5>
+    <version>88.0</version>
+    <time>1620239946</time>
+    <user>dimstar_suse</user>
+    <comment>- add compatibility for libavcodec58_134</comment>
+    <requestid>889851</requestid>
+  </revision>
 </revisionlist>
