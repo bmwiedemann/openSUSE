@@ -1,7 +1,7 @@
 #
 # spec file for package opensurge
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           opensurge
 Version:        0.5.2
 Release:        0
 Summary:        Game based on Sonic the Hedgehog Universe
-License:        GPL-3.0-or-later AND LGPL-2.1-or-later AND Apache-2.0 AND CC-BY-3.0 AND OFL-1.1 AND MIT
+License:        Apache-2.0 AND GPL-3.0-or-later AND LGPL-2.1-or-later AND CC-BY-3.0 AND OFL-1.1 AND MIT
 Group:          Amusements/Games/Action/Arcade
 URL:            https://opensurge2d.org/
 Source0:        https://github.com/alemart/opensurge/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -42,12 +42,9 @@ BuildRequires:  pkgconfig(allegro_ttf-5)
 BuildRequires:  pkgconfig(surgescript)
 
 %description
-Open Surge is an open source retro-style 2D sidescroller inspired by old-school games.
-Join Surge, Neon and Charge and save the world from the evil Gimacian the Dark!
-
-Open Surge is written from the ground up in C language,
-using the Allegro game programming library.
-It's being developed since August 2008, and it is free software.
+Open Surge is a retro-style 2D sidescroller inspired by old-school
+games. The characters named Surge, Neon and Charge are to save the
+world from the evil Gimacian the Dark.
 
 %prep
 %autosetup
