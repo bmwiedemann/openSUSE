@@ -1845,6 +1845,8 @@ unsorted:
   - cgit 
   - cglib 
   - cglib-javadoc 
+  - cglm-devel: [x86_64] 
+  - cglm-devel-doc: [x86_64] 
   - cgns 
   - cgns-devel 
   - cgns-devel-static 
@@ -2056,7 +2058,6 @@ unsorted:
   - cntlm 
   - cobbler 
   - cobbler-tests 
-  - cobbler-web 
   - coccigrep 
   - coccinelle 
   - cockpit 
@@ -6879,6 +6880,7 @@ unsorted:
   - imgp-bash-completion 
   - imgp-fish-completion 
   - imgp-zsh-completion 
+  - imgui-devel 
   - imgvtopgm 
   - imhangul 
   - imhangul-32bit: [x86_64] 
@@ -9856,6 +9858,7 @@ unsorted:
   - libcfg6-32bit: [x86_64] 
   - libcfile-devel 
   - libcfile1 
+  - libcglm0: [x86_64] 
   - libcgns4_1 
   - libchafa0 
   - libchamplain-devel 
@@ -17211,6 +17214,7 @@ unsorted:
   - obs-service-appimage 
   - obs-service-cargo_audit 
   - obs-service-cargo_vendor 
+  - obs-service-cdi_containers_meta: [x86_64] 
   - obs-service-docker_label_helper 
   - obs-service-download_files 
   - obs-service-download_url 
@@ -17219,6 +17223,7 @@ unsorted:
   - obs-service-go_modules 
   - obs-service-kiwi_label_helper 
   - obs-service-kiwi_metainfo_helper 
+  - obs-service-kubevirt_containers_meta: [x86_64] 
   - obs-service-obs_scm 
   - obs-service-obs_scm-common 
   - obs-service-product_converter 
@@ -17904,6 +17909,7 @@ unsorted:
   - openssl_tpm_engine 
   - openstack-macros 
   - openstack-utils 
+  - opensurge 
   - opentest4j 
   - opentest4j-javadoc 
   - opentoonz 
@@ -21151,6 +21157,7 @@ unsorted:
   - python3-magnumclient 
   - python3-mailman-hyperkitty 
   - python3-mailman-web 
+  - python3-mailmanclient 
   - python3-manilaclient 
   - python3-marisa 
   - python3-masakariclient 
@@ -21217,6 +21224,7 @@ unsorted:
   - python3-plplot 
   - python3-pocketsphinx 
   - python3-pocketsphinx5 
+  - python3-postorius 
   - python3-prelude-correlator 
   - python3-presage 
   - python3-presagemate 
@@ -25586,7 +25594,6 @@ unsorted:
   - python38-magic-wormhole-transit-relay 
   - python38-magicalimport 
   - python38-mailman3-fedmsg-plugin 
-  - python38-mailmanclient 
   - python38-main-wrapper 
   - python38-managesieve 
   - python38-mando 
@@ -25920,7 +25927,6 @@ unsorted:
   - python38-portend 
   - python38-portpicker 
   - python38-positional 
-  - python38-postorius 
   - python38-power 
   - python38-poyo 
   - python38-pprintpp 
@@ -28091,6 +28097,7 @@ unsorted:
   - python39-flake8-isort 
   - python39-flake8-pep3101 
   - python39-flake8-polyfill 
+  - python39-flake8-pyi 
   - python39-flake8-quotes 
   - python39-flaky 
   - python39-flasgger 
@@ -40652,9 +40659,11 @@ unsorted:
   - tuned-profiles-atomic 
   - tuned-profiles-nfv 
   - tuned-profiles-oracle 
+  - tuned-profiles-postgresql 
   - tuned-profiles-realtime 
   - tuned-profiles-sap 
   - tuned-profiles-sap-hana 
+  - tuned-profiles-spectrumscale 
   - tuned-utils 
   - tuned-utils-systemtap 
   - tup 
