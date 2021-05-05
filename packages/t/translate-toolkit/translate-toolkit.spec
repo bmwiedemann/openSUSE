@@ -42,7 +42,7 @@
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.3.3
+Version:        3.3.6
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
@@ -56,7 +56,7 @@ BuildRequires:  %{python_module beautifulsoup4 >= 4.3}
 # extra modules here are needed for manpages
 BuildRequires:  %{python_module cheroot >= 8.3.0}
 BuildRequires:  %{python_module iniparse >= 0.5}
-BuildRequires:  %{python_module lxml >= 4.0}
+BuildRequires:  %{python_module lxml >= 4.6.3}
 BuildRequires:  %{python_module phply >= 1.2.5}
 BuildRequires:  %{python_module ruamel.yaml >= 0.16.12}
 BuildRequires:  %{python_module setuptools}
@@ -69,7 +69,7 @@ BuildRequires:  iso-codes
 BuildRequires:  python-rpm-macros
 Requires:       gettext-runtime
 Requires:       python
-Requires:       python-lxml >= 4.0
+Requires:       python-lxml >= 4.6.3
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun): update-alternatives

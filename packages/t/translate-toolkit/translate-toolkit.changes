@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  3 09:38:36 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.3.6
+  * fixed handling of plurals in GWT properties
+  * lxml requirement was raised to 4.6.3 to address CVE-2021-28957
+  * Consistent using of XML entity for non-breakable space
+  * Fix newlines round-trip
+
+-------------------------------------------------------------------
 Wed Mar 17 14:14:14 UTC 2021 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
 
 - Add back python and python-setuptools Requires and update some recommended
