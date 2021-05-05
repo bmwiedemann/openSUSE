@@ -108,8 +108,8 @@ BuildRequires:  pkgconfig(xorg-macros) >= 1.14
 BuildRequires:  pkgconfig(xproto)  >= 7.0.17
 BuildRequires:  pkgconfig(xtrans) >= 1.2.2
 %if 0%{?suse_version} >= 1315
-Requires(post):   update-alternatives
-Requires(postun): update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %endif
 URL:            http://tigervnc.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -128,12 +128,11 @@ Source11:       index.vnc
 Source12:       x11vnc
 Source13:       xvnc@.service
 Source14:       xvnc.socket
-Source15:       xvnc-novnc.service
 Source16:       xvnc-novnc.socket
 Source17:       tigervnc.firewalld
 Source18:       tigervnc-https.firewalld
 Source19:       xvnc.target
-
+Source21:       xvnc-novnc.service.in
 Patch1:         tigervnc-newfbsize.patch
 Patch2:         tigervnc-clean-pressed-key-on-exit.patch
 Patch3:         u_tigervnc-ignore-epipe-on-write.patch
@@ -280,6 +279,7 @@ popd
 %build
 export CXXFLAGS="%optflags"
 export CFLAGS="%optflags"
+sed "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE21} > xvnc-novnc.service
 # Build all tigervnc
 cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} -DCMAKE_BUILD_TYPE=RelWithDebInfo .
 make %{?_smp_mflags}
@@ -365,9 +365,9 @@ install -D -m 755 %{SOURCE12} %{buildroot}%{_bindir}/x11vnc
 
 install -D %{SOURCE13} -m 0444 %{buildroot}%{_unitdir}/xvnc@.service
 install -D %{SOURCE14} -m 0444 %{buildroot}%{_unitdir}/xvnc.socket
-install -D %{SOURCE15} -m 0444 %{buildroot}%{_unitdir}/xvnc-novnc.service
 install -D %{SOURCE16} -m 0444 %{buildroot}%{_unitdir}/xvnc-novnc.socket
 install -D %{SOURCE19} -m 0444 %{buildroot}%{_unitdir}/xvnc.target
+install -D xvnc-novnc.service -m 0444 %{buildroot}%{_unitdir}/xvnc-novnc.service
 
 rm -rf %{buildroot}%{_datadir}/doc/tigervnc-*
 
