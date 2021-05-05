@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  4 14:02:33 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- SUSE.getFileSystems fixes invalid index error (bsc#1185594)
+- SUSE.getFileSystems fixes unbound local SWAP variable (bsc#1185593)
+
+-------------------------------------------------------------------
 Fri Nov  6 22:35:01 UTC 2020 - jason.record@suse.com
 
 - Additions to version 1.3.1

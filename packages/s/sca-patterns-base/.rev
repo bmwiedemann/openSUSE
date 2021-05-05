@@ -15,4 +15,12 @@
     <comment>Updated Package</comment>
     <requestid>856086</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>69802edde7e57ba69cf9cbcef375233d</srcmd5>
+    <version>1.3.1</version>
+    <time>1620240039</time>
+    <user>dimstar_suse</user>
+    <comment>Factory Ready (forwarded request 890770 from jrecord)</comment>
+    <requestid>890771</requestid>
+  </revision>
 </revisionlist>
