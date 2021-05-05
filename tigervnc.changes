@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon May  3 09:19:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not carry two variants of the same servcice file, but rather
+  bring a template which we dynamically adjust during installation
+  to cater for the correct libexecdir value.
+  + Replace xvnc-novnc-libexec.service and xvnc-novnc-lib.service
+    with xvnc-novnc.service.in.
+
+-------------------------------------------------------------------
+Mon May  3 08:54:23 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- package both xvnc-novnc-libexec.service and xvnc-novnc-lib.service
+  source files
+
+-------------------------------------------------------------------
+Tue Apr 27 13:41:26 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adjusting suse_version check from '> 1500' to '>= 1550' per request.
+
+-------------------------------------------------------------------
+Fri Apr 23 14:26:45 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding if statement to control libexec (Tumbleweed +) vs lib based
+  'Source#' file for 'xvnc-novnc.service'.
+
+-------------------------------------------------------------------
+Thu Apr 22 18:30:29 UTC 2021 - Scott Bradnick <scott.bradnick@suse.com>
+
+- 'xvnc-novnc.service' requires '/usr/libexec/vnc/with-vnc-key.sh'
+  vs '/usr/lib/vnc/with-vnc-key.sh' for ExecStart to work correctly.
+
+-------------------------------------------------------------------
 Fri Mar  5 14:46:02 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Use the system crypto-policies [bsc#1183082]
