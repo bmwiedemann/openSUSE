@@ -19,7 +19,7 @@
 %global pkg_name uuid
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.14
+Version:        1.3.15
 Release:        0
 Summary:        For creating, comparing, parsing and printing Universally Unique Identifiers
 License:        BSD-3-Clause
