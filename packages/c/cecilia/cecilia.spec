@@ -1,7 +1,7 @@
 #
 # spec file for package cecilia
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cecilia
-Version:        5.3.5
+Version:        5.4.1
 Release:        0
 Summary:        Sound synthesis and audio signal processing environment
 License:        GPL-3.0-or-later
@@ -30,10 +30,11 @@ BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3
+BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       python3-numpy
-Requires:       python3-pyo >= 0.9.0
-Requires:       python3-wxPython >= 4.0.1
+Requires:       python3-pyo >= 1.0.0
+Requires:       python3-wxPython >= 4.1.0
 BuildArch:      noarch
 
 %description
@@ -56,10 +57,10 @@ the wildest imaginable sonic contortions.
 %patch0 -p1
 
 %build
-%py3_build
+%python3_build
 
 %install
-%py3_install
+%python3_install
 for s in 16 32 48 64 96 128 192 256 512; do
   mkdir -pv %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps
   convert -strip -resize ${s} scripts/Cecilia5_512.png %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/%{name}.png
