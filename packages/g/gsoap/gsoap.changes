@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 26 15:33:33 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.114
+  * Added support to wsdl2h for the outdated "wsaw" Web Services
+    Addressing 1.0 W3C candidate recommendation 2006, to
+    complement the built-in wsdl2h support for "wsam" Web
+    Services Addressing 1.0 W3C recommendation 2007.
+  * Additional WS-Trust request and response member definitions
+    included, e.g. RequestedTokenCancelled and CancelTarget.
+  * Compression performance improvement.
+
+-------------------------------------------------------------------
 Mon Feb  8 18:57:41 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - build scripts: sanitize_source.sh: use https [boo#1181923]
