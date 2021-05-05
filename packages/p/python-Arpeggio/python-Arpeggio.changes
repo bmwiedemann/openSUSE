@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 25 13:17:14 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.10.2:
+ - Added EditorConfig configuration ([#77]). Thanks KOLANICH@GitHub
+ - Fixed parsing of version from `setup.py` when global encoding isn't UTF-8
+    ([#86]). Thanks neirbowj@GitHub
+ - Fix repetition termination on a successful empty separator match ([#92]).
+
+-------------------------------------------------------------------
 Sun Nov  1 19:43:14 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 1.10.1:
