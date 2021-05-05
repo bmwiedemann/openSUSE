@@ -528,6 +528,21 @@ exit 0
 # not build and install an executable when whatever condition
 # for configure's automated tests is not fulfilled in the build system.
 # See https://bugzilla.novell.com/show_bug.cgi?id=526847#c9
+# Regarding specific owner group and permission settings for directories
+# see https://bugzilla.suse.com/show_bug.cgi?id=1184161
+# When cupsd creates directories with specific owner group and permissions
+# (usually owner is 'root' and group matches "configure --with-cups-group=lp")
+# we must specify same owner group and permission settings here
+# to ensure those directories are installed by RPM with the right settings
+# because if those directories were installed by RPM with different settings then
+# cupsd would use them as is and not adjust its specific owner group and permissions.
+# How cupsd creates those directories:
+# drwxr-xr-x ... root lp ... /etc/cups/ppd
+# see https://bugzilla.suse.com/show_bug.cgi?id=1184161#c7
+# The /etc/cups/ssl directory is not created by cupsd (but needed by it)
+# and when needed (e.g. during the first run of "# lpstat -E -p")
+# cupsd creates files in /etc/cups/ssl like localhost.crt and localhost.key
+# so we specify secure owner group and permissions for /etc/cups/ssl
 %config(noreplace) %attr(640,root,lp) %{_sysconfdir}/cups/cups-files.conf
 %config(noreplace) %attr(640,root,lp) %{_sysconfdir}/cups/cupsd.conf
 %config(noreplace) %attr(640,root,lp) %{_sysconfdir}/cups/snmp.conf
@@ -537,7 +552,7 @@ exit 0
 %config %{_sysconfdir}/cups/cups-files.conf.default
 %config %{_sysconfdir}/cups/snmp.conf.default
 %dir %attr(755,root,lp) %{_sysconfdir}/cups/ppd
-%dir %attr(700,root,lp) %{_sysconfdir}/cups/ssl
+%dir %attr(700,root,root) %{_sysconfdir}/cups/ssl
 %{_unitdir}/cups.service
 %{_unitdir}/cups.socket
 %{_unitdir}/cups.path
@@ -693,6 +708,21 @@ exit 0
 %{_libdir}/libcupsimage.so.2
 
 %files config
+# Regarding specific owner group and permission settings for directories
+# see the above comment in the files section of the main package.
+# How cupsd creates those directories:
+# drwx--x--- ... root lp ... /var/spool/cups
+# drwxrwx--T ... root lp ... /var/spool/cups/tmp
+# drwxr-xr-x ... root lp ... /var/log/cups
+# drwxrwx--- ... root lp ... /var/cache/cups
+# see https://bugzilla.suse.com/show_bug.cgi?id=1184161#c7
+# The 'lp' user does not need write permissions in /var/log/cups
+# regardless that filters and backends are usually run as user 'lp' because
+# filters and backends write log messages to the inherited stderr file descriptor
+# and do not append them directly to /var/log/cups/error_log (via fopen on their own).
+# The /etc/cups directory is not created by cupsd but needed by it
+# because cupsd cannot start if there is no /etc/cups/cupsd.conf file
+# (otherwise cupsd aborts with: "Unable to open /etc/cups/cupsd.conf").
 %defattr(-,root,root)
 %if 0%{?suse_version} >= 1330
 %dir %attr(0755,root,lp) /etc/cups
@@ -700,8 +730,8 @@ exit 0
 %config(noreplace) %{_sysconfdir}/cups/client.conf
 %dir %attr(0710,root,lp) %{_var}/spool/cups
 %dir %attr(1770,root,lp) %{_var}/spool/cups/tmp
-%dir %attr(0755,lp,lp) %{_var}/log/cups/
-%dir %attr(0775,lp,lp) %{_var}/cache/cups
+%dir %attr(0755,root,lp) %{_var}/log/cups
+%dir %attr(0770,root,lp) %{_var}/cache/cups
 %{_bindir}/cups-config
 %{_datadir}/locale/*/cups_*
 %doc %{_mandir}/man1/cups-config.1.gz

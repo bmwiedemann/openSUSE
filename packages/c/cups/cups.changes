@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May  3 09:57:33 CEST 2021 - jsmeix@suse.de
+
+- When cupsd creates directories with specific owner group
+  and permissions (usually owner is 'root' and group matches
+  "configure --with-cups-group=lp") specify same owner group and
+  permissions in the RPM spec file to ensure those directories
+  are installed by RPM with the right settings because if those
+  directories were installed by RPM with different settings then
+  cupsd would use them as is and not adjust its specific owner
+  group and permissions which could lead to privilege escalation
+  from 'lp' user to 'root' via symlink attacks e.g. if owner is
+  falsely 'lp' instead of 'root' CVE-2021-25317 (bsc#1184161)
+
+-------------------------------------------------------------------
 Tue Apr 20 10:57:45 CEST 2021 - jsmeix@suse.de
 
 - upstream_pull_174.patch is
