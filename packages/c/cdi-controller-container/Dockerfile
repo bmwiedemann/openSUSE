@@ -1,6 +1,7 @@
 # Defines the tag for OBS and build script builds:
 #!BuildTag: %%TAGPREFIX%%/cdi-controller:%%PKG_VERSION%%
 #!BuildTag: %%TAGPREFIX%%/cdi-controller:%%PKG_VERSION%%.%RELEASE%
+#!BuildTag: %%TAGPREFIX%%/cdi-controller:%%PKG_VERSION%%-%%PKG_RELEASE%%
 
 # cdi-controller container image
 # KUBEVIRTFROM defined in prjconf, e.g.
