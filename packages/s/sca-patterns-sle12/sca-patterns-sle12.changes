@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May  5 15:38:43 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- New security announcement patterns (69) for version 1.0.3
+  + Apr 2021 (69) for SUSE-SU-2021:1181-1 SUSE-SU-2021:1023-1 SUSE-SU-2021:1274-1 SUSE-SU-2021:1438-1 SUSE-SU-2021:1242-1 SUSE-SU-2021:1401-1 SUSE-SU-2021:1399-1 SUSE-SU-2021:1396-1 SUSE-SU-2021:1325-1 SUSE-SU-2021:1152-1 SUSE-SU-2021:1125-1 SUSE-SU-2021:1248-1 SUSE-SU-2021:1210-1 SUSE-SU-2021:1175-1 SUSE-SU-2021:1435-1 SUSE-SU-2021:1314-1 SUSE-SU-2021:1277-1 SUSE-SU-2021:1030-1 SUSE-SU-2021:1165-1 SUSE-SU-2021:1111-1 SUSE-SU-2021:1453-1 SUSE-SU-2021:1174-1 SUSE-SU-2021:1159-1 SUSE-SU-2021:1315-1 SUSE-SU-2021:1180-1 SUSE-SU-2021:1251-1 SUSE-SU-2021:1273-1 SUSE-SU-2021:1241-1 SUSE-SU-2021:1429-1 SUSE-SU-2021:1401-1 SUSE-SU-2021:1399-1 SUSE-SU-2021:1325-1 SUSE-SU-2021:1152-1 SUSE-SU-2021:1435-1 SUSE-SU-2021:1165-1 SUSE-SU-2021:1111-1 SUSE-SU-2021:1453-1 SUSE-SU-2021:1189-1 SUSE-SU-2021:1187-1 SUSE-SU-2021:1252-1 SUSE-SU-2021:1431-1 SUSE-SU-2021:1273-1 SUSE-SU-2021:1240-1 SUSE-SU-2021:1401-1 SUSE-SU-2021:1399-1 SUSE-SU-2021:1373-1 SUSE-SU-2021:1341-1 SUSE-SU-2021:1325-1 SUSE-SU-2021:1152-1 SUSE-SU-2021:1075-1 SUSE-SU-2021:1074-1 SUSE-SU-2021:1435-1 SUSE-SU-2021:1111-1 SUSE-SU-2021:1453-1 SUSE-SU-2021:1189-1 SUSE-SU-2021:1187-1 SUSE-SU-2021:1431-1 SUSE-SU-2021:1267-1 SUSE-SU-2021:1442-1 SUSE-SU-2021:1439-1 SUSE-SU-2021:1305-1 SUSE-SU-2021:1401-1 SUSE-SU-2021:1399-1 SUSE-SU-2021:1325-1 SUSE-SU-2021:1152-1 SUSE-SU-2021:1148-1 SUSE-SU-2021:1145-1 SUSE-SU-2021:1453-1 SUSE-SU-2021:1189-1
+
+-------------------------------------------------------------------
+Tue May  4 20:25:23 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- New regular patterns (12) for version 1.0.3
+  + sle12all/iscsimnts-000019648.py: Proper mount options for iSCSI drives (TID000019648)
+  + sle12all/lvmsnapshot-000019858.py: LVM snapshot changed state to Invalid and should be removed (TID000019858)
+  + sle12all/softlock-000018705.py: soft lockup messages about? (TID000018705)
+  + sle12sp1/ghostcat_121-000019606.py: Ghostcat - Apache Tomcat AJP File Read/Inclusion Vulnerability (bsc#1164692)
+  + sle12sp2/ghostcat_122-000019606.py: Ghostcat - Apache Tomcat AJP File Read/Inclusion Vulnerability (bsc#1164692)
+  + sle12sp3/ghostcat_123-000019606.py: Ghostcat - Apache Tomcat AJP File Read/Inclusion Vulnerability (bsc#1164692)
+  + sle12sp4/docore_124-000019881.py: System crash in do_coredump() when a process is restarted (bsc#1182194)
+  + sle12sp4/ghostcat_124-000019606.py: Ghostcat - Apache Tomcat AJP File Read/Inclusion Vulnerability (bsc#1164692)
+  + sle12sp4/vmtools-000004682.py: Extensive logging in vmware-vmsvc-root.log with open-vm-tools (bsc#1162119)
+  + sle12sp5/docore_125-000019881.py: System crash in do_coredump() when a process is restarted (bsc#1182194)
+  + sle12sp5/ghostcat_125-000019606.py: Ghostcat - Apache Tomcat AJP File Read/Inclusion Vulnerability (bsc#1164692)
+  + sle12sp5/vmtools-000004682.py: Extensive logging in vmware-vmsvc-root.log with open-vm-tools (bsc#1162119)
+
+-------------------------------------------------------------------
 Wed Apr 21 17:43:35 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - New regular patterns (8) for version 1.0.2
