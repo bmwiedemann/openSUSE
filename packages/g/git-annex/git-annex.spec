@@ -17,13 +17,12 @@
 
 
 Name:           git-annex
-Version:        8.20210330
+Version:        8.20210428
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
 URL:            https://hackage.haskell.org/package/%{name}
-Source0:        https://github.com/peti/git-annex/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         persistent.patch
+Source0:        https://github.com/opensuse-haskell/git-annex/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  chrpath
 BuildRequires:  curl
@@ -46,6 +45,7 @@ BuildRequires:  ghc-concurrent-output-devel
 BuildRequires:  ghc-conduit-devel
 BuildRequires:  ghc-connection-devel
 BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-criterion-devel
 BuildRequires:  ghc-crypto-api-devel
 BuildRequires:  ghc-cryptonite-devel
 BuildRequires:  ghc-data-default-devel
@@ -63,7 +63,6 @@ BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-free-devel
 BuildRequires:  ghc-git-lfs-devel
 BuildRequires:  ghc-hinotify-devel
-BuildRequires:  ghc-hslogger-devel
 BuildRequires:  ghc-http-client-devel
 BuildRequires:  ghc-http-client-restricted-devel
 BuildRequires:  ghc-http-client-tls-devel
@@ -168,7 +167,7 @@ Supplements:    (%{name} and bash-completion)
 Optional dependency offering bash completion for git-annex
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 %define cabal_configure_options -ftestsuite

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Apr 29 09:42:49 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+-  drop persistent.patch
+
+-------------------------------------------------------------------
+Thu Apr 29 09:27:23 UTC 2021 - psimons@suse.com
+
+- Update git-annex to version 8.20210428.
+  git-annex (8.20210428) upstream; urgency=medium
+
+    * New annex.private and remote.name.annex-private configs that can
+      prevent storing information about a repository and remotes in the
+      git-annex branch.
+    * initremote: Added --private option to set up a private special remote.
+    * importfeed: Made "checking known urls" phase run 12 times faster.
+    * Added --debugfilter (and annex.debugfilter)
+    * diffdriver: Support unlocked files.
+    * forget: Preserve currently exported trees, avoiding problems with
+      exporttree remotes in some unusual circumstances.
+    * fsck: When downloading content from a remote, if the content is able
+      to be verified during the transfer, skip checksumming it a second time.
+    * directory: When cp supports reflinks, use it.
+    * Avoid excess commits to the git-annex branch when stall detection is
+      enabled.
+    * git-annex-config: Allow setting annex.securehashesonly, which has
+      otherwise been supported since 2019, but was missing from the list of
+      allowed repo-global configs.
+    * init: Fix a crash when the repo's was cloned from a repo that had an
+      adjusted branch checked out, and the origin remote is not named "origin".
+    * Fix some bugs that made git-annex not see recently recorded status
+      information when configured with annex.alwayscommit=false.
+    * When mincopies is set to a larger value than numcopies, make sure that
+      mincopies is satisfied. Before, it assumed a sane configuration would
+      have numcopies larger or equal to mincopies. It's still a good idea
+      not to configure git-annex this way.
+    * Avoid more than 1 gpg password prompt at the same time, which
+      could happen occasionally before when concurrency is enabled.
+    * Fix build with persistent-2.12.0.1
+
+   -- Joey Hess <id@joeyh.name>  Wed, 28 Apr 2021 12:13:24 -0400
+
+-------------------------------------------------------------------
 Tue Apr  6 08:36:35 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add persistent.patch - support new persistent library
