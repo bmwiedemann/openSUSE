@@ -64,7 +64,7 @@ Summary:        Rime Input Method Engine
 Group:          System/Libraries
 Recommends:     brise
 # configuration manager
-Requires:       rime-plum
+Recommends:     rime-plum
 
 %description -n librime1
 Rime is an Traditional Chinese input method engine.
