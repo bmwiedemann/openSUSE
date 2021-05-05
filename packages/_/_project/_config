@@ -127,9 +127,6 @@ Prefer: python3-kiwi
 Conflict: python3-kiwi:libsystemd0-mini
 Conflict: python3-kiwi:systemd-mini-sysvinit
 
-# ghc-bootstrap should not provide it to start with - but it does. so let's kick it
-Prefer: libffi7
-
 # LUA namespace migration - slowly moving to the new names (keep ports in mind!)
 # lua, lua51, lua52 and lua53 all provide 'lua'; version 5.3 is the 'target'; lua will be deleted in the future
 Prefer: lua54 lua53 lua51
@@ -301,7 +298,6 @@ Prefer: chrony-pool-openSUSE
 Prefer: hwdata
 # have choice for xfce4-panel-plugin-whiskermenu needed by xfce4-panel-branding-openSUSE: xfce4-panel-plugin-whiskermenu xfce4-whiskermenu-plugin
 Prefer: xfce4-panel-branding-openSUSE:xfce4-whiskermenu-plugin
-Prefer: xfce4-statusnotifier-plugin
 Prefer: patterns-xfce-xfce:mate-calc
 
 # Build cycle handling - prefer -mini packages were possible, break deps as needed
@@ -392,9 +388,9 @@ Prefer: spamassassin:curl
 
 # Python3 exists in multiple versions - we currently favor 3.8 (our default):
 Prefer: -python36 -python39
-Prefer: -python36-hotdoc -python39-hotdoc
+Prefer: -python39-hotdoc
 Prefer: -python36-txt2tags -python39-txt2tags
-Prefer: -python3-ipython715 -python38-ipython715 -python39-ipython715
+Prefer: -python38-ipython715 -python39-ipython715
 
 # man and mandoc provide man; mandoc claims to be lightweight, but it was never discussed to be the new default
 Prefer: man
@@ -406,10 +402,9 @@ Prefer: go -go1.13
 Prefer: -kubernetes1.18-kubelet-common -kubernetes1.19-kubelet-common -kubernetes1.20-kubelet-common
 
 # python-tornado exists in multiple versions, the meta-package python-tornado defines the system default
-Prefer: python3-tornado -python3-tornado4
-Prefer: python36-tornado -python36-tornado4 -python36-tornado5 
-Prefer: python38-tornado -python38-tornado4 -python38-tornado5
-Prefer: python39-tornado -python39-tornado4 -python39-tornado5
+Prefer: python36-tornado -python36-tornado5 
+Prefer: python38-tornado -python38-tornado5
+Prefer: python39-tornado -python39-tornado5
 
 # There are multiple PK backends available. Favor the openSUSE own zypp backend
 Prefer: PackageKit-backend-zypp
@@ -421,13 +416,12 @@ Prefer: libftdi-devel
 Prefer: tensorflow2
 
 # have choice for python3-sip: python3-sip-devel python3-sip4
-Prefer: -python3-sip4 -python3-sip4-devel
 Prefer: -python36-sip4 -python36-sip4-devel
 Prefer: -python38-sip4 -python38-sip4-devel
 Prefer: -python39-sip4 -python39-sip4-devel
 
 # There is python[23]-prompt_toolkit and also python3-prompt_toolkit1 for compat. Use the unversioned one by default
-Prefer: python3-prompt_toolkit python39-prompt_toolkit python38-prompt_toolkit python36-prompt_toolkit
+Prefer: python39-prompt_toolkit python38-prompt_toolkit python36-prompt_toolkit
 
 # When perl provides a module that is also in a different package, but the consumer specifies no version, we go with perl/perl-base
 Prefer: perl-base perl
@@ -451,7 +445,7 @@ Prefer: php8:php8-cli
 
 # azure-cli reports: have choice for python3-vsts needed by python3-azure-functions-devops-build: python3-azure-devops python3-vsts
 # Use the real package name
-Prefer: python3-vsts python36-vsts python38-vsts python39-vsts
+Prefer: python36-vsts python38-vsts python39-vsts
 
 # for symbol syslog (syslogd is best as it has the least dependencies)
 Prefer: syslogd
@@ -466,7 +460,7 @@ Prefer: nodejs-default nodejs-devel-default npm-default
 Prefer: libpulse0-32bit libsane1-32bit -pipewire-pulseaudio
 
 # Have choice for vtk-java/vtk-tcl/python3-vtk needed by vtk-devel
-Prefer: vtk-java python3-vtk python36-vtk python38-vtk python39-vtk
+Prefer: vtk-java
 Prefer: eclipse-swt
 
 # wine comes in various flavors by now, we pick the unflavored ones
@@ -500,7 +494,6 @@ Prefer: -attica-qt5-devel-32bit
 Prefer: -audiofile-devel-32bit                        
 Prefer: -audit-devel-32bit                            
 Prefer: -augeas-devel-32bit                           
-Prefer: -bind-devel-32bit                             
 Prefer: -binutils-devel-32bit                         
 Prefer: -blas-devel-32bit                             
 Prefer: -bluez-devel-32bit                            
@@ -613,7 +606,6 @@ Prefer: -kxmlgui-devel-32bit
 Prefer: -kxmlrpcclient5-devel-32bit                   
 Prefer: -lapack-devel-32bit                           
 Prefer: -lapacke-devel-32bit                          
-Prefer: -libBox2D-devel-32bit                         
 Prefer: -libFS-devel-32bit                            
 Prefer: -libGLw-devel-32bit
 Prefer: -libHX-devel-32bit                            
@@ -781,7 +773,6 @@ Prefer: -libqt5-qtx11extras-devel-32bit
 Prefer: -libqt5-qtxmlpatterns-devel-32bit             
 Prefer: -libraw1394-devel-32bit                       
 Prefer: -libref_array-devel-32bit                     
-Prefer: -libreiserfs-devel-32bit                      
 Prefer: -libressl-devel-32bit                         
 Prefer: -libscalapack2-mvapich2-devel-32bit           
 Prefer: -libscalapack2-openmpi1-devel-32bit           
@@ -838,7 +829,6 @@ Prefer: -ncurses5-devel-32bit
 Prefer: -net-snmp-devel-32bit                         
 Prefer: -ocl-icd-devel-32bit                          
 Prefer: -openal-soft-devel-32bit                      
-Prefer: -openjpeg-devel-32bit                         
 Prefer: -openldap2-devel-32bit                        
 Prefer: -opensm-devel-32bit                           
 Prefer: -pam-devel-32bit                              
@@ -886,7 +876,7 @@ Prefer: -zvbi-devel-32bit
 Prefer: -zziplib-devel-32bit                          
 
 # have choice for python3-Sphinx needed by trytond: python3-Sphinx python3-Sphinx2
-Prefer: python3-Sphinx -python36-Sphinx2 -python38-Sphinx2 -python38-Sphinx2-latex -python39-Sphinx2 -python39-Sphinx2-latex
+Prefer: -python36-Sphinx2 -python38-Sphinx2 -python38-Sphinx2-latex
 
 # Ruby stuff - quite a few packages exist in multiple versions in the distro; in each case, the Preference is on the 'unversioned' package
 Prefer: ruby2.7-rubygem-fast_gettext
@@ -901,10 +891,7 @@ Prefer: ruby2.7-rubygem-listen ruby2.7-rubygem-mime-types ruby2.7-rubygem-builde
 Prefer: opencv-devel
 
 # python3-pytest should win over the other python3-pytest<n> variants
-Prefer: python3-pytest python38-pytest python36-pytest python39-pytest
-
-# There is python3-Django and python3-Django1 - as usual, we favor the unversioned one
-Prefer: -python3-Django1 -python36-Django1 -python38-Django1 -python39-Django1
+Prefer: python38-pytest python36-pytest python39-pytest
 
 # Help OBS over the openssl-1_1_0 -> openssl-1_1 rename; OBS keeps the -32bit lingering around
 # https://github.com/openSUSE/open-build-service/issues/4373
@@ -929,7 +916,7 @@ Prefer: -mingw64-headers-dummy-pthread -mingw32-headers-dummy-pthread
 
 # Below list still needs to be reviewed
 
-Prefer: xorg-x11-Xvnc:icewm xorg-x11-server-wayland
+Prefer: xorg-x11-Xvnc:icewm
 Prefer: cracklib-dict-small
 Prefer: libstdc++6 libgcc_s1 libquadmath0
 Prefer: libstdc++6-32bit libstdc++6-64bit
@@ -954,7 +941,7 @@ Prefer: maven-doxia-module-fo:log4j12-mini
 
 Prefer: rpcbind
 Prefer: boo tog-pegasus
-Prefer: sysvinit(network) wicked-service
+Prefer: wicked-service
 Prefer: ant:xerces-j2
 Prefer: dhcp-client:dhcp
 Prefer: libGLw1
@@ -1011,14 +998,13 @@ Prefer: libnetcdf18
 Prefer: NetworkManager:dhcp-client
 Prefer: pcre-tools
 Prefer: libpopt0 makeinfo
-Prefer: -apache2-mod_perl -otrs
+Prefer: -apache2-mod_perl
 Prefer: libgnome-keyring-devel
 Prefer: gnome-keyring-32bit
 Prefer: linux-glibc-devel
-Prefer: squid sysvinit
+Prefer: squid
 Prefer: libpng16-compat-devel
-Prefer: -python -python3-gobject-devel -python3-gobject2-devel -libpng12-0
-Prefer: python3-docutils
+Prefer: -python -python3-gobject2-devel -libpng12-0
 Prefer: perl-Mail-SPF:perl-Error
 Prefer: -xml-commons-apis-bootstrap -xml-commons-resolver-bootstrap
 Prefer: xmlgraphics-fop:xerces-j2
