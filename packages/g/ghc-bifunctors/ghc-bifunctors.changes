@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 30 20:29:08 UTC 2021 - psimons@suse.com
+
+- Update bifunctors to version 5.5.11.
+  5.5.11 [2021.04.30]
+  -------------------
+  * Allow building with `template-haskell-2.18` (GHC 9.2).
+
+-------------------------------------------------------------------
 Sun Jan 24 16:09:29 UTC 2021 - psimons@suse.com
 
 - Update bifunctors to version 5.5.10.
