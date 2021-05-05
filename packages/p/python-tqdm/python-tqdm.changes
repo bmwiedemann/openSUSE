@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 30 19:43:53 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.60.0:
+  * add contrib.logging helpers for redirecting to tqdm.write() (#1155
+    <- #786)
+  * support delay in notebook (#1142)
+  * fix contrib.tmap, tzip not using tqdm_class (#1148)
+  * add notebook tests (#1143)
+  * updates & misc minor fixes for documentation
+
+-------------------------------------------------------------------
 Sun Mar 28 16:32:36 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - specfile:
