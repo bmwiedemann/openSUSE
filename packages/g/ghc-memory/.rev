@@ -167,4 +167,12 @@ new dep of securemem lib</comment>
     <comment>update haskell stack in openSUS</comment>
     <requestid>857451</requestid>
   </revision>
+  <revision rev="20" vrev="7">
+    <srcmd5>c36416c651f2af1da0660532e0b53ad4</srcmd5>
+    <version>0.15.0</version>
+    <time>1620240008</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>890318</requestid>
+  </revision>
 </revisionlist>
