@@ -1,0 +1,10 @@
+[Unit]
+Description=vcontrold daemon
+
+[Service]
+ExecStart=/usr/sbin/vcontrold -n
+ExecReload=/bin/kill -HUP $MAINPID
+User=vcontrold
+
+[Install]
+WantedBy=multi-user.target

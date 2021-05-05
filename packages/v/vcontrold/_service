@@ -1,0 +1,13 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <param name="url">http://github.com/openv/vcontrold.git</param>
+    <param name="scm">git</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">vcontrold</param>
+  </service>
+  <service mode="buildtime" name="tar">
+    <param name="obsinfo">vcontrold.obsinfo</param>
+  </service>
+</services>
