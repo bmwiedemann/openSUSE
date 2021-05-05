@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  5 10:36:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.3.3
+  * Support for DTLSv1.2.
+  * Continued rewrite of the record layer for the legacy stack.
+  * Numerous bugs and interoperability issues were fixed in the
+    new verifier. A few bugs and incompatibilities remain, so
+    this release uses the old verifier by default.
+  * The OpenSSL 1.1 TLSv1.3 API is not yet available.
+
+-------------------------------------------------------------------
 Sun Mar 21 12:59:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.5
