@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed May  5 15:41:13 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- New security announcement patterns (30) for version 1.0.3
+  + May 2021 (30) for SUSE-SU-2021:1182-1 SUSE-SU-2021:1430-1 SUSE-SU-2021:1168-1 SUSE-SU-2021:1408-1 SUSE-SU-2021:1409-1 SUSE-SU-2021:1182-1 SUSE-SU-2021:1028-1 SUSE-SU-2021:1166-1 SUSE-SU-2021:1430-1 SUSE-SU-2021:1113-1 SUSE-SU-2021:1444-1 SUSE-SU-2021:1280-1 SUSE-SU-2021:1243-1 SUSE-SU-2021:1168-1 SUSE-SU-2021:1408-1 SUSE-SU-2021:1094-1 SUSE-SU-2021:1029-1 SUSE-SU-2021:1238-1 SUSE-SU-2021:1409-1 SUSE-SU-2021:1006-1 SUSE-SU-2021:1161-1 SUSE-SU-2021:1108-1 SUSE-SU-2021:1282-1 SUSE-SU-2021:1179-1 SUSE-SU-2021:1153-1 SUSE-SU-2021:1445-1 SUSE-SU-2021:1244-1 SUSE-SU-2021:1292-1 SUSE-SU-2021:1103-1 SUSE-SU-2021:1455-1
+
+-------------------------------------------------------------------
+Tue May  4 20:23:01 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- New regular patterns (13) for version 1.0.3
+  + sle15all/iscsimnts-000019648.py: Proper mount options for iSCSI drives (TID000019648)
+  + sle15all/lvmsnapshot-000019858.py: LVM snapshot changed state to Invalid and should be removed (bsc#1179170)
+  + sle15all/softlock-000018705.py: soft lockup messages about? (TID000018705)
+  + sle15sp0/ghostcat_150-000019606.py: Ghostcat - Apache Tomcat AJP File Read/Inclusion Vulnerability (bsc#1164692)
+  + sle15sp1/docore_151-000019881.py: System crash in do_coredump() when a process is restarted (bsc#1177753)
+  + sle15sp1/edac-000019537.py: A kernel message shows EDAC amd64 Error F0 not found, device 0x1460 broken BIOS (bsc#1131489)
+  + sle15sp1/ghostcat_151-000019606.py: Ghostcat - Apache Tomcat AJP File Read/Inclusion Vulnerability (bsc#1164692)
+  + sle15sp1/ipmi-000019602.py: IPMI driver can be unloaded when being accessed by user space (bsc#1154768)
+  + sle15sp1/passthrough-000019579.py: Passthrough of Raid Controller to KVM guest results in NMI and unresponsiveness on host (bsc#1152800)
+  + sle15sp2/fcoe-000019889.py: System with FCoE connected devices fails to boot randomly due to wicked ordering cycle problems (bsc#1176140)
+  + sle15sp2/ghostcat_152-000019606.py: Ghostcat - Apache Tomcat AJP File Read/Inclusion Vulnerability (bsc#1164692)
+  + sle15sp2/oldlvm-000019878.py: Physical Volume is using an old PV header (bsc#1179170)
+  + sle15sp3/oldlvm-000019878.py: Physical Volume is using an old PV header (bsc#1179170)
+
+-------------------------------------------------------------------
 Wed Apr 21 17:45:48 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - New regular patterns (8) for version 1.0.2
