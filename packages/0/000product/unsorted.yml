@@ -4224,6 +4224,8 @@ unsorted:
   - ghc-IfElse-devel: [x86_64] 
   - ghc-JuicyPixels: [x86_64] 
   - ghc-JuicyPixels-devel: [x86_64] 
+  - ghc-ListLike: [x86_64] 
+  - ghc-ListLike-devel: [x86_64] 
   - ghc-MonadRandom: [x86_64] 
   - ghc-MonadRandom-devel: [x86_64] 
   - ghc-OddWord: [x86_64] 
@@ -4348,6 +4350,8 @@ unsorted:
   - ghc-bimap-devel: [x86_64] 
   - ghc-binary: [x86_64] 
   - ghc-binary-devel: [x86_64] 
+  - ghc-binary-orphans: [x86_64] 
+  - ghc-binary-orphans-devel: [x86_64] 
   - ghc-bindings-DSL: [x86_64] 
   - ghc-bindings-DSL-devel: [x86_64] 
   - ghc-bindings-uname: [x86_64] 
@@ -4424,6 +4428,8 @@ unsorted:
   - ghc-cmark-gfm-devel: [x86_64] 
   - ghc-cmdargs: [x86_64] 
   - ghc-cmdargs-devel: [x86_64] 
+  - ghc-code-page: [x86_64] 
+  - ghc-code-page-devel: [x86_64] 
   - ghc-colour: [x86_64] 
   - ghc-colour-devel: [x86_64] 
   - ghc-commonmark: [x86_64] 
@@ -4465,6 +4471,8 @@ unsorted:
   - ghc-cpphs-devel: [x86_64] 
   - ghc-cprng-aes: [x86_64] 
   - ghc-cprng-aes-devel: [x86_64] 
+  - ghc-criterion-measurement: [x86_64] 
+  - ghc-criterion-measurement-devel: [x86_64] 
   - ghc-crypto-api: [x86_64] 
   - ghc-crypto-api-devel: [x86_64] 
   - ghc-crypto-cipher-types: [x86_64] 
@@ -4601,6 +4609,8 @@ unsorted:
   - ghc-filtrable-devel: [x86_64] 
   - ghc-fingertree: [x86_64] 
   - ghc-fingertree-devel: [x86_64] 
+  - ghc-fmlist: [x86_64] 
+  - ghc-fmlist-devel: [x86_64] 
   - ghc-fmt: [x86_64] 
   - ghc-fmt-devel: [x86_64] 
   - ghc-foldl: [x86_64] 
@@ -4621,6 +4631,10 @@ unsorted:
   - ghc-generic-lens-core: [x86_64] 
   - ghc-generic-lens-core-devel: [x86_64] 
   - ghc-generic-lens-devel: [x86_64] 
+  - ghc-generic-monoid: [x86_64] 
+  - ghc-generic-monoid-devel: [x86_64] 
+  - ghc-generic-random: [x86_64] 
+  - ghc-generic-random-devel: [x86_64] 
   - ghc-ghc: [x86_64] 
   - ghc-ghc-boot: [x86_64] 
   - ghc-ghc-boot-devel: [x86_64] 
@@ -4668,7 +4682,11 @@ unsorted:
   - ghc-heaps: [x86_64] 
   - ghc-heaps-devel: [x86_64] 
   - ghc-hedgehog: [x86_64] 
+  - ghc-hedgehog-corpus: [x86_64] 
+  - ghc-hedgehog-corpus-devel: [x86_64] 
   - ghc-hedgehog-devel: [x86_64] 
+  - ghc-hedgehog-quickcheck: [x86_64] 
+  - ghc-hedgehog-quickcheck-devel: [x86_64] 
   - ghc-hi-file-parser: [x86_64] 
   - ghc-hi-file-parser-devel: [x86_64] 
   - ghc-hinotify: [x86_64] 
@@ -4775,6 +4793,8 @@ unsorted:
   - ghc-iwlib-devel: [x86_64] 
   - ghc-jira-wiki-markup: [x86_64] 
   - ghc-jira-wiki-markup-devel: [x86_64] 
+  - ghc-js-chart: [x86_64] 
+  - ghc-js-chart-devel: [x86_64] 
   - ghc-js-dgtable: [x86_64] 
   - ghc-js-dgtable-devel: [x86_64] 
   - ghc-js-flot: [x86_64] 
@@ -4842,6 +4862,10 @@ unsorted:
   - ghc-microlens-platform-devel: [x86_64] 
   - ghc-microlens-th: [x86_64] 
   - ghc-microlens-th-devel: [x86_64] 
+  - ghc-microstache: [x86_64] 
+  - ghc-microstache-devel: [x86_64] 
+  - ghc-mime-mail: [x86_64] 
+  - ghc-mime-mail-devel: [x86_64] 
   - ghc-mime-types: [x86_64] 
   - ghc-mime-types-devel: [x86_64] 
   - ghc-mintty: [x86_64] 
@@ -4970,6 +4994,8 @@ unsorted:
   - ghc-primitive-devel: [x86_64] 
   - ghc-process: [x86_64] 
   - ghc-process-devel: [x86_64] 
+  - ghc-process-extras: [x86_64] 
+  - ghc-process-extras-devel: [x86_64] 
   - ghc-profunctors: [x86_64] 
   - ghc-profunctors-devel: [x86_64] 
   - ghc-protolude: [x86_64] 
@@ -4978,6 +5004,8 @@ unsorted:
   - ghc-psqueues-devel: [x86_64] 
   - ghc-quickcheck-arbitrary-adt: [x86_64] 
   - ghc-quickcheck-arbitrary-adt-devel: [x86_64] 
+  - ghc-quickcheck-instances: [x86_64] 
+  - ghc-quickcheck-instances-devel: [x86_64] 
   - ghc-quickcheck-io: [x86_64] 
   - ghc-quickcheck-io-devel: [x86_64] 
   - ghc-quiet: [x86_64] 
@@ -5146,6 +5174,8 @@ unsorted:
   - ghc-tar-devel: [x86_64] 
   - ghc-tasty: [x86_64] 
   - ghc-tasty-devel: [x86_64] 
+  - ghc-tasty-hedgehog: [x86_64] 
+  - ghc-tasty-hedgehog-devel: [x86_64] 
   - ghc-tasty-hunit: [x86_64] 
   - ghc-tasty-hunit-devel: [x86_64] 
   - ghc-tasty-quickcheck: [x86_64] 
@@ -5318,6 +5348,8 @@ unsorted:
   - ghc-wizards-devel: [x86_64] 
   - ghc-wl-pprint-annotated: [x86_64] 
   - ghc-wl-pprint-annotated-devel: [x86_64] 
+  - ghc-wl-pprint-text: [x86_64] 
+  - ghc-wl-pprint-text-devel: [x86_64] 
   - ghc-word-wrap: [x86_64] 
   - ghc-word-wrap-devel: [x86_64] 
   - ghc-word8: [x86_64] 
@@ -9774,7 +9806,7 @@ unsorted:
   - libcamd-doc 
   - libcamel-1_2-62-32bit: [x86_64] 
   - libcamera-devel 
-  - libcamera-suse3 
+  - libcamera-suse4 
   - libcamera-tools 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
@@ -10908,7 +10940,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_111 
+  - libgsoap-2_8_114 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue-devel 
@@ -15735,6 +15767,7 @@ unsorted:
   - metronome-lang 
   - metslib-devel 
   - metslib-doc 
+  - mfgtools 
   - mfoc 
   - mfsm 
   - mftrace 
@@ -20869,6 +20902,7 @@ unsorted:
   - python-mox3-doc 
   - python-mpi4py-common-devel 
   - python-mpi4py-doc 
+  - python-mpld3-doc 
   - python-nautilus-common-devel 
   - python-nautilus-common-files 
   - python-ncclient-doc 
@@ -25653,6 +25687,7 @@ unsorted:
   - python38-mpi4py 
   - python38-mpi4py-devel 
   - python38-mplcursors 
+  - python38-mpld3 
   - python38-mpmath 
   - python38-mrcz 
   - python38-msal 
@@ -28602,6 +28637,7 @@ unsorted:
   - python39-mpi4py 
   - python39-mpi4py-devel 
   - python39-mplcursors 
+  - python39-mpld3 
   - python39-mpmath 
   - python39-mrcz 
   - python39-msal 
@@ -30583,6 +30619,8 @@ unsorted:
   - rmt-server: [x86_64] 
   - rmt-server-config: [x86_64] 
   - rmt-server-pubcloud: [x86_64] 
+  - rmw 
+  - rmw-lang 
   - rnp 
   - rnp-devel 
   - robin-map-devel 
@@ -41187,6 +41225,7 @@ unsorted:
   - vboot 
   - vbrfix 
   - vcdimager-devel 
+  - vcontrold 
   - vcron 
   - vcsh 
   - vcsh-zsh-completion 
