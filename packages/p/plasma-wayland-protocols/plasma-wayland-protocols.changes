@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  2 09:52:46 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.3.0:
+  * Bump to Plasma Wayland Protocols 1.3.0
+  * Add VRR to output device and management
+  * Add overscan to output protocols
+
+-------------------------------------------------------------------
 Mon Apr  5 18:14:00 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.2.1
