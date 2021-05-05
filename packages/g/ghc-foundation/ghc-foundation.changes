@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 26 07:43:09 UTC 2021 - psimons@suse.com
+
+- Update foundation to version 0.0.26.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
