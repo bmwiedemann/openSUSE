@@ -1,7 +1,7 @@
 #
 # spec file for package raft
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without libuv
 Name:           raft
-Version:        0.9.25
+Version:        0.10.1
 Release:        0
 Summary:        Fully asynchronous C implementation of the Raft consensus protocol
 License:        LGPL-3.0-only WITH linking-exception-lgpl-3.0
@@ -29,7 +29,7 @@ BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 %if !%{without libuv}
-BuildRequires:  pkgconfig(libuv) >= 1.8.0
+BuildRequires:  pkgconfig(libuv) >= 1.18.0
 %endif
 
 %description
@@ -61,7 +61,7 @@ A stock implementation of the I/O interface based on libuv is included.
 Summary:        Development files for the Raft library implementation of the consensus protocol
 Requires:       libraft0 = %{version}
 %if !%{without libuv}
-Requires:       pkgconfig(libuv) >= 1.8.0
+Requires:       pkgconfig(libuv) >= 1.18.0
 %endif
 
 %description devel

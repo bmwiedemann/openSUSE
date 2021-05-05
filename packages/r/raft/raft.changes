@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  5 09:57:55 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- raft 0.10.1:
+  * Add raft_set_initial_shapshot_timeout to API
+
+-------------------------------------------------------------------
 Sat Sep 12 07:30:01 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - raft 0.9.25:
