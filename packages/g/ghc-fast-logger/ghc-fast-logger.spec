@@ -19,7 +19,7 @@
 %global pkg_name fast-logger
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.0.3
+Version:        3.0.5
 Release:        0
 Summary:        A fast logging system
 License:        BSD-3-Clause

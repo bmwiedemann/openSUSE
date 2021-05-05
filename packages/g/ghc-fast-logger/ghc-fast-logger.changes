@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 30 08:30:09 UTC 2021 - psimons@suse.com
+
+- Update fast-logger to version 3.0.5.
+  ## 3.0.5
+
+  * recovering backward compatibility for newFileLoggerSet.
+
+-------------------------------------------------------------------
+Wed Apr 28 08:49:15 UTC 2021 - psimons@suse.com
+
+- Update fast-logger to version 3.0.4.
+  ## 3.0.4
+
+  * New API: `newFastLogger1` which use only one capability.
+  * Making `FD` safer with `invalidFD`.
+
+-------------------------------------------------------------------
 Fri Feb 19 23:03:07 UTC 2021 - psimons@suse.com
 
 - Update fast-logger to version 3.0.3.
