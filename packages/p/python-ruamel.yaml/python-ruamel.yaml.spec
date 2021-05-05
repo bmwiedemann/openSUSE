@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ruamel.yaml
-Version:        0.17.2
+Version:        0.17.4
 Release:        0
 Summary:        Python YAML parser
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://bitbucket.org/ruamel/yaml
+URL:            https://sourceforge.net/p/ruamel-yaml
 Source:         https://files.pythonhosted.org/packages/source/r/ruamel.yaml/ruamel.yaml-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
