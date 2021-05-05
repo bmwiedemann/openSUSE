@@ -1,8 +1,56 @@
+-------------------------------------------------------------------
+Tue May  4 16:45:17 CEST 2021 - wullinger@rz.uni-kiel.de
+
+- update to exim-4.94.2
+  security update (bsc#1185631)
+  * CVE-2020-28007: Link attack in Exim's log directory
+  * CVE-2020-28008: Assorted attacks in Exim's spool directory
+  * CVE-2020-28014: Arbitrary PID file creation
+  * CVE-2020-28011: Heap buffer overflow in queue_run()
+  * CVE-2020-28010: Heap out-of-bounds write in main()
+  * CVE-2020-28013: Heap buffer overflow in parse_fix_phrase()
+  * CVE-2020-28016: Heap out-of-bounds write in parse_fix_phrase()
+  * CVE-2020-28015: New-line injection into spool header file (local)
+  * CVE-2020-28012: Missing close-on-exec flag for privileged pipe
+  * CVE-2020-28009: Integer overflow in get_stdinput()
+  * CVE-2020-28017: Integer overflow in receive_add_recipient()
+  * CVE-2020-28020: Integer overflow in receive_msg()
+  * CVE-2020-28023: Out-of-bounds read in smtp_setup_msg()
+  * CVE-2020-28021: New-line injection into spool header file (remote)
+  * CVE-2020-28022: Heap out-of-bounds read and write in extract_option()
+  * CVE-2020-28026: Line truncation and injection in spool_read_header()
+  * CVE-2020-28019: Failure to reset function pointer after BDAT error
+  * CVE-2020-28024: Heap buffer underflow in smtp_ungetc()
+  * CVE-2020-28018: Use-after-free in tls-openssl.c
+  * CVE-2020-28025: Heap out-of-bounds read in pdkim_finish_bodyhash()
+
+-------------------------------------------------------------------
+Wed Apr 28 13:55:29 CEST 2021 - wullinger@rz.uni-kiel.de
+
+- update to exim-4.94.1
+  * Fix security issue in BDAT state confusion.
+    Ensure we reset known-good where we know we need to not be reading BDAT
+    data, as a general case fix, and move the places where we switch to BDAT
+    mode until after various protocol state checks.
+    Fixes CVE-2020-BDATA reported by Qualys.
+  * Fix security issue in SMTP verb option parsing (CVE-2020-EXOPT)
+  * Fix security issue with too many recipients on a message (to remove a
+    known security problem if someone does set recipients_max to unlimited,
+    or if local additions add to the recipient list).
+    Fixes CVE-2020-RCPTL reported by Qualys.
+  * Fix CVE-2020-28016 (PFPZA): Heap out-of-bounds write in parse_fix_phrase()
+  * Fix security issue CVE-2020-PFPSN and guard against cmdline invoker
+    providing a particularly obnoxious sender full name.
+  * Fix Linux security issue CVE-2020-SLCWD and guard against PATH_MAX
+    better.
+
+-------------------------------------------------------------------
 Mon Aug 24 11:13:55 CEST 2020 - wullinger@rz.uni-kiel.de
 
 - bring back missing exim_db.8 manual page
   (fixes bsc#1173693)
 
+-------------------------------------------------------------------
 Mon Jun  8 11:24:08 CEST 2020 - wullinger@rz.uni-kiel.de
 
 - bring in changes from current +fixes (lots of taint check fixes)
@@ -24,6 +72,7 @@ Mon Jun  8 11:24:08 CEST 2020 - wullinger@rz.uni-kiel.de
     broken the (no-op) support for this sendmail command.  Restore it
     to doing nothing, silently, and returning good status.
 
+-------------------------------------------------------------------
 Tue Jun  2 07:12:55 CEST 2020 - wullinger@rz.uni-kiel.de
 
 - update to exim 4.94
@@ -39,11 +88,13 @@ Tue Jun  2 07:12:55 CEST 2020 - wullinger@rz.uni-kiel.de
 
 -------------------------------------------------------------------
 Tue May 19 13:47:05 CEST 2020 - wullinger@rz.uni-kiel.de
+
 - switch pretrans to use lua
   (fixes bsc#1171877)
   
 -------------------------------------------------------------------
 Tue May 12 08:19:17 UTC 2020 - wullinger@rz.uni-kiel.de
+
 - bring changes from current in +fixes branch
   (patch-exim-fixes-ee83de04d3087efaf808d1f2235a988275c2ee94)
   * fixes CVE-2020-12783 (bsc#1171490)
@@ -74,11 +125,13 @@ Tue May 12 08:19:17 UTC 2020 - wullinger@rz.uni-kiel.de
 
 -------------------------------------------------------------------
 Wed Apr  1 12:52:10 UTC 2020 - wullinger@rz.uni-kiel.de
+
 - don't create logfiles during install
   * fixes CVE-2020-8015 (bsc#1154183)
 
 -------------------------------------------------------------------
 Mon Jan 13 08:48:53 CET 2020 - wullinger@rz.uni-kiel.de
+
 - add a spec-file workaround for bsc#1160726
 
 -------------------------------------------------------------------

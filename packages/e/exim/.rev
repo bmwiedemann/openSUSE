@@ -747,4 +747,12 @@ argument by removing the curly brackets (shell syntax).</comment>
     <comment></comment>
     <requestid>828909</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>ed9c767d358820ce82bb9140d98fde3c</srcmd5>
+    <version>4.94.2</version>
+    <time>1620240000</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890644</requestid>
+  </revision>
 </revisionlist>
