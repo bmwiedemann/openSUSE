@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue May  4 19:32:51 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5.1:
+  * change: report window are now closed when new/open a file
+  * bugfix: #1917837 the tag popover list is too small in width
+    and height
+  * bugfix: #1917075 delete unused payee/category do not enable
+    save
+  * bugfix: #1916932 impossible to read text when using dark theme
+  * bugfix: #1916587 scheduled this/next month date filter is wrong
+  * bugfix: #1915729 windows "tag" close the programm on delete
+    item
+  * bugfix: #1915660 update to the Help & Homebank for check
+    numbers
+  * bugfix: #1915643 the "Balance report" does not group correctly
+    by week (ISO 8601)
+  * bugfix: #1915609 qif export of multiple account double xfer
+    line
+  * bugfix: #1914943 statistic by time total row doubled with
+    subcategory
+  * bugfix: #1914935 changing the "Include remind into balance"
+    option doesn't update balance in accounts summary
+  * bugfix: #1910857 transaction category autofill from payee is
+    too invasive
+  * bugfix: #1910819 paste amount into split may input too much
+    decimal digits
+  * bugfix: #1889659 crash on typing in category during add due
+    to inconsistent XML
+  * bugfix: #1842429 difference between loading 1 OFX file or
+    more at once
+  * wish  : #1904569 more flexible date handling for QIF import
+  * wish  : #1594684 balance report to select several accounts
+
+-------------------------------------------------------------------
 Sat Feb 13 16:48:32 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 5.5:

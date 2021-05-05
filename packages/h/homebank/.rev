@@ -349,4 +349,12 @@
 - Remove obsolete (0%{?suse_version} &lt; 1330) stuff from spec file (forwarded request 871989 from Kieltux)</comment>
     <requestid>873924</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>566e5f85d61fb477cc2013e377581850</srcmd5>
+    <version>5.5.1</version>
+    <time>1620240108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>890664</requestid>
+  </revision>
 </revisionlist>
