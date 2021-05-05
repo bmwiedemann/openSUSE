@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun May  2 17:15:03 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.7.0
+  - Add Python3 wallaby unit tests
+  - Remove unicode from code
+  - Exit gracefully on Ctrl-C
+  - Update requirements
+  - List setuptools under install_requires
+  - change help action to use its own exception for exit
+  - Remove Babel from lower-constraints.txt
+  - Add '--sort-ascending', '--sort-descending' parameters
+  - requirements: Uncap PrettyTable
+  - Remove six
+  - Remove lower-constraints
+  - columns: Make 'FormattableColumn' comparable
+  - Remove references to setuptools
+  - Handle null values when sorting
+  - Make 'FormattableColumn' comparable
+  - Bump py37 to py38 in tox.ini
+  - Update requirements URLs in tox config
+  - Capturing argparse errors due to problem with cmd2
+  - trivial: Remove references to Python 2.7
+  - Document KeyboardInterrupt exit code
+  - Add py38 package metadata
+  - doc: Update bug tracker to storyboard
+  - gitignore: Ignore reno artefacts
+
+-------------------------------------------------------------------
 Fri Oct  9 19:13:03 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.4.0

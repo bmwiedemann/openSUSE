@@ -1,7 +1,7 @@
 #
 # spec file for package python-cliff
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-cliff
-Version:        3.4.0
+Version:        3.7.0
 Release:        0
 Summary:        Command Line Interface Formulation Framework
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/python-cliff
-Source0:        https://files.pythonhosted.org/packages/source/c/cliff/cliff-3.4.0.tar.gz
+URL:            https://docs.openstack.org/cliff
+Source0:        https://files.pythonhosted.org/packages/source/c/cliff/cliff-3.7.0.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PrettyTable
 BuildRequires:  python3-PyYAML
@@ -52,7 +52,6 @@ other extensions.
 
 %package -n python3-cliff
 Summary:        Command Line Interface Formulation Framework
-Group:          Development/Languages/Python
 Requires:       python3-PrettyTable
 Requires:       python3-PyYAML
 Requires:       python3-cmd2
@@ -72,7 +71,6 @@ Summary:        %{summary} - Documentation
 Group:          Documentation/HTML
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-openstackdocstheme
-Provides:       %{python_module cliff-doc = %{version}}
 
 %description -n python-cliff-doc
 cliff is a framework for building command line programs. It uses
@@ -82,12 +80,12 @@ other extensions.
 This package contains documentation files for %{name}.
 
 %prep
-%autosetup -p1 -n cliff-3.4.0
+%autosetup -p1 -n cliff-3.7.0
 %py_req_cleanup
 
 %build
 %py3_build
-PBR_VERSION=3.4.0 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=3.7.0 PYTHONPATH=. %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
