@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May  2 17:26:02 UTC 2021 - cloud-devel@suse.de
+
+- update to version 3.3.0
+  - Add Python3 wallaby unit tests
+  - Fix cache dir flooding when running from /tmp
+  - Use py3 as the default runtime for tox
+  - Adding pre-commit
+  - Update master for stable/victoria
+
+-------------------------------------------------------------------
 Fri Oct  9 19:19:31 UTC 2020 - cloud-devel@suse.de
 
 - update to version 3.2.2
