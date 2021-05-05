@@ -1,7 +1,7 @@
 #
 # spec file for package libcamera
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           libcamera
-%define lname   libcamera-suse3
-Version:        0~1998.4757ff4
+%define lname   libcamera-suse4
+Version:        0~2532.093b71b2
 Release:        0
 Summary:        A complex camera support library in C++
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://libcamera.org/
 
@@ -32,13 +32,16 @@ BuildRequires:  c++_compiler
 BuildRequires:  libQt5Core-devel
 BuildRequires:  libQt5Gui-devel
 BuildRequires:  libQt5Widgets-devel
-BuildRequires:  meson >= 0.47
+BuildRequires:  meson >= 0.55
 BuildRequires:  pkg-config
+BuildRequires:  python3-Jinja2
 BuildRequires:  python3-PyYAML
+BuildRequires:  python3-ply
 BuildRequires:  xz
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
+BuildRequires:  pkgconfig(libevent_pthreads)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(openssl)
 
@@ -95,10 +98,12 @@ This is its integration plugin for gstreamer.
 %autosetup -p1
 
 %build
+export CFLAGS="%optflags -Wno-error"
+export CXXFLAGS="$CFLAGS"
 %meson \
   -Ddocumentation=disabled \
   -Dqcam=enabled \
-  -Dv4l2=false \
+  -Dv4l2=false -Dtracing=disabled \
   -Dpipelines=ipu3,raspberrypi,rkisp1,simple,uvcvideo,vimc
 %meson_build
 
@@ -122,6 +127,7 @@ perl -i -pe 's{-lcamera-suse}{-lcamera}' "%buildroot/%_libdir/pkgconfig"/*.pc
 
 %files tools
 %_bindir/cam
+%_bindir/lc-compliance
 %_bindir/qcam
 %_libexecdir/libcamera/
 %_libdir/libcamera/
