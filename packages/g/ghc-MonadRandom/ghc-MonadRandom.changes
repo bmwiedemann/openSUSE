@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 29 09:23:50 UTC 2021 - psimons@suse.com
+
+- Update MonadRandom to version 0.5.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Apr  8 20:14:44 UTC 2021 - psimons@suse.com
 
 - Update MonadRandom to version 0.5.3.
