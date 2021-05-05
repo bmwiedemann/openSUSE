@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 29 12:38:13 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add almost-upstream CVE-2021-3465.patch (bsc#1184699, CVE-2021-3465)
+
+-------------------------------------------------------------------
 Mon Mar 15 09:29:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch from Debian to fix build with GCC 11 (boo#1181880)

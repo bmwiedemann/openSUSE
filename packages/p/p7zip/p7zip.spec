@@ -48,6 +48,8 @@ Patch1:         p7zip_16.02_norar.patch
 Patch2:         p7zip-16.02-CVE-2017-17969.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         0001-Fix-g-warning.patch
+# see https://github.com/jinfeihan57/p7zip/issues/130
+Patch4:         CVE-2021-3465.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 Suggests:       p7zip-full
@@ -100,8 +102,8 @@ Requires:       %{name}-full = %{version}
 Requires:       kf5-filesystem
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
+Requires(postun):hicolor-icon-theme
+Requires(postun):update-desktop-files
 
 %description gui
 p7zip is a quick port of 7z.exe and 7za.exe (command line version of
