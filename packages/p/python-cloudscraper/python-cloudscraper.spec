@@ -20,7 +20,7 @@
 %define modname cloudscraper
 %define skip_python2 1
 Name:           python-cloudscraper
-Version:        1.2.56
+Version:        1.2.58
 Release:        0
 Summary:        A Python module to bypass Cloudflare's anti-bot page
 License:        MIT

@@ -27,4 +27,15 @@
 </comment>
     <requestid>873718</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fec5e1740369756a83ba5141733b90d9</srcmd5>
+    <version>1.2.58</version>
+    <time>1620240002</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.58:
+  - Cloudflare changing minor things that broke the regex.
+  - Changed debug to support non printable UTF-8
+</comment>
+    <requestid>890634</requestid>
+  </revision>
 </revisionlist>
