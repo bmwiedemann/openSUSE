@@ -127,4 +127,12 @@
   * openstack-macros: Use py3 in %openstack_test_package_install</comment>
     <requestid>736484</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6cd3b353c557c86bbfa67e4973068c8d</srcmd5>
+    <version>2020.1.2</version>
+    <time>1620239971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889956</requestid>
+  </revision>
 </revisionlist>

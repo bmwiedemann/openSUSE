@@ -81,3 +81,10 @@ sed -i "s/%{2}/%{1}_tests/g" $tempest_egg_path/PKG-INFO \
 %sphinx_build /usr/bin/sphinx-build
 
 %http_dashboard_dir /srv/www/openstack-dashboard
+
+# For compatibility with RDO gpgverify macro
+# Not needed for Suse, source verification is done with no need of special macro
+%gpgverify %{nil}
+# For compatibility with RDO %pycached macro used in fedora
+# Not used for Suse nor for any OpenStack package
+%pycached %{nil}

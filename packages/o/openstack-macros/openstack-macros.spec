@@ -1,7 +1,7 @@
 #
 # spec file for package openstack-macros
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %if 0%{?rhel}
 %global rdo 1
+%global rrcdir %{_prefix}/lib/rpm/redhat
 %endif
 Name:           openstack-macros
-Version:        2019.2.1
+Version:        2020.1.2
 Release:        0
 Summary:        OpenStack Packaging - RPM Macros
 License:        Apache-2.0
@@ -30,8 +31,7 @@ Source1:        macros.openstack-common
 Source2:        macros.openstack-suse
 Source3:        macros.openstack-rdo
 Source4:        macros.openstack-fedora
-# the singlespec macros are a copy of https://github.com/openSUSE/python-rpm-macros
-Source5:        macros.openstack-singlespec
+Source6:        gpgverify
 BuildArch:      noarch
 %if 0%{?rdo}
 Obsoletes:      rdo-rpm-macros <= 1-3
@@ -50,12 +50,12 @@ packages.
 
 %install
 install -D -m644 %{SOURCE1} %{buildroot}%{_sysconfdir}/rpm/macros.openstack-common
-install -D -m644 %{SOURCE5} %{buildroot}%{_sysconfdir}/rpm/macros.openstack-singlespec
 %if 0%{?suse_version}
 install -D -m644 %{SOURCE2} %{buildroot}%{_sysconfdir}/rpm/macros.openstack-suse
 %endif
 %if 0%{?rdo}
 install -D -m644 %{SOURCE3} %{buildroot}%{_sysconfdir}/rpm/macros.openstack-rdo
+install -D -m 755 %{SOURCE6} %{buildroot}%{rrcdir}/gpgverify
 %endif
 %if 0%{?fedora} || 0%{?rhel} > 7
 install -D -m644 %{SOURCE4} %{buildroot}%{_sysconfdir}/rpm/macros.openstack-fedora
@@ -63,12 +63,12 @@ install -D -m644 %{SOURCE4} %{buildroot}%{_sysconfdir}/rpm/macros.openstack-fedo
 
 %files
 %{_sysconfdir}/rpm/macros.openstack-common
-%{_sysconfdir}/rpm/macros.openstack-singlespec
 %if 0%{?suse_version}
 %{_sysconfdir}/rpm/macros.openstack-suse
 %endif
 %if 0%{?rdo}
 %{_sysconfdir}/rpm/macros.openstack-rdo
+%{rrcdir}/gpgverify
 %endif
 %if 0%{?fedora} || 0%{?rhel} > 7
 %{_sysconfdir}/rpm/macros.openstack-fedora

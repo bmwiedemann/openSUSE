@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jan 22 22:34:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to Version 2020.1.2:
+  * macro updates for ROD and SUSE
+  * remove singlespec macros, unused
+  * add gpgverify for RDO builds
+
+-------------------------------------------------------------------
 Wed Oct 09 12:20:11 UTC 2019 - tbechtold@suse.com
 
 - Update to version 2019.2.1:
