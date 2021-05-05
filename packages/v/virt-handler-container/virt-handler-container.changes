@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 28 11:46:13 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Tag the image with <version>-<release>
+
+-------------------------------------------------------------------
 Sun Apr 18 07:54:24 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Run zypper clean after installation

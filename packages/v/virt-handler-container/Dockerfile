@@ -1,6 +1,7 @@
 # Define the tags for OBS and build script builds:
 #!BuildTag: %%TAGPREFIX%%/virt-handler:%%PKG_VERSION%%
 #!BuildTag: %%TAGPREFIX%%/virt-handler:%%PKG_VERSION%%.%RELEASE%
+#!BuildTag: %%TAGPREFIX%%/virt-handler:%%PKG_VERSION%%-%%PKG_RELEASE%%
 
 # virt-handler container image
 # KUBEVIRTFROM defined in prjconf, e.g.
