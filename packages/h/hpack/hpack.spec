@@ -73,7 +73,7 @@ Summary:        Haskell %{name} library development files
 Requires:       ghc-%{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires(post): ghc-compiler = %{ghc_version}
-Requires(postun): ghc-compiler = %{ghc_version}
+Requires(postun):ghc-compiler = %{ghc_version}
 
 %description -n ghc-%{name}-devel
 This package provides the Haskell %{name} library development files.

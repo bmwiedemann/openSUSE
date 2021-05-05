@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 29 09:45:20 UTC 2021 - Michel Normand <normand@linux.vnet.ibm.com>
+
+- Add _constraints for PowerPC as do not build on power8:05
+
+-------------------------------------------------------------------
 Mon Feb  8 19:13:37 UTC 2021 - psimons@suse.com
 
 - Update hpack to version 0.34.4.
