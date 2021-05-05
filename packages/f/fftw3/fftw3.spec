@@ -24,9 +24,6 @@
 %define vers 3.3.9
 %define _ver 3_3_9
 
-#For non HPC builds only
-%define mpi_implem openmpi2
-
 %bcond_with ringdisabled
 
 %if 0%{?sle_version} >= 150200
@@ -392,7 +389,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 Requires:       %{package_name}-libs = %{version}
 %ifnarch s390 s390x
-BuildRequires:  %{mpi_implem}-devel
+BuildRequires:  openmpi-macros-devel
 %endif
 %endif
 
@@ -413,7 +410,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %package_libname = %{version}-%{release}
 Requires:       glibc-devel
 Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
+Requires(preun):%install_info_prereq
 %if %{with hpc}
 %hpc_requires_devel
 %endif
@@ -518,10 +515,10 @@ data, and of arbitrary input size.
 %package mpi-devel
 Summary:        Discrete Fourier Transform (DFT) C subroutine library
 Group:          Development/Libraries/C and C++
-Requires:       %{mpi_implem}-devel
 Requires:       fftw3-devel = %{version}
 Requires:       glibc-devel
 Requires:       libfftw3_mpi3 = %{version}-%{release}
+Requires:       openmpi-devel
 
 %description mpi-devel
 FFTW is a C subroutine library for computing the Discrete Fourier
@@ -548,7 +545,7 @@ EOF
 %endif
 %ifnarch s390 s390x
 %if "%{mpi_flavor}" == "standard"
-source %_libdir/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
+%setup_openmpi
 %endif
 %endif
 
@@ -588,7 +585,7 @@ make distclean
 
 %ifnarch s390 s390x
 %if "%{mpi_flavor}" == "standard"
-source %_libdir/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
+%setup_openmpi
 %endif
 %endif
 
@@ -616,7 +613,7 @@ make distclean
 
 %ifnarch s390 s390x
 %if "%{mpi_flavor}" == "standard"
-source %_libdir/mpi/gcc/%{mpi_implem}/bin/mpivars.sh
+%setup_openmpi
 %endif
 %endif
 %if %{without hpc}

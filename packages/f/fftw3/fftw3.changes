@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 30 11:40:09 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Follow the distro default openmpi implementation:
+  + Eliminate the usage of the mpi_implem variable (obsolete)
+  + BuildRequire openmpi-macros-devel instead of %{mpi_implem}-devel
+  + Require openmpi-devel in the mpi-devel package
+  + Use %setup_openmpi to source mpivars.sh
+
+-------------------------------------------------------------------
 Sat Feb  6 10:13:41 UTC 2021 - Egbert Eich <eich@suse.com>
 
-- Add build support for gcc10 to HPC build (bsc#1174439). 
+- Add build support for gcc10 to HPC build (bsc#1174439).
 
 -------------------------------------------------------------------
 Sun Jan 24 19:36:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
