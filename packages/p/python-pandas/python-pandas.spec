@@ -1,5 +1,5 @@
 #
-# spec file for package python-pandas
+# spec file for package python-pandas-test
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-pandas%{psuffix}
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause

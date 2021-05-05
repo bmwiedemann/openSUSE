@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May  3 01:33:01 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.2.4:
+  * Fixed regressions
+    + Fixed regression in DataFrame.sum() when min_count greater than
+      the DataFrame shape was passed resulted in a ValueError
+      (GH39738)
+    + Fixed regression in DataFrame.to_json() raising AttributeError
+      when run on PyPy (GH39837)
+    + Fixed regression in (in)equality comparison of pd.NaT with a
+      non-datetimelike numpy array returning a scalar instead of an
+      array (GH40722)
+    + Fixed regression in DataFrame.where() not returning a copy in
+      the case of an all True condition (GH39595)
+    + Fixed regression in DataFrame.replace() raising IndexError when
+      regex was a multi-key dictionary (GH39338)
+    + Fixed regression in repr of floats in an object column not
+      respecting float_format when printed in the console or outputted
+      through DataFrame.to_string(), DataFrame.to_html(), and
+      DataFrame.to_latex() (GH40024)
+    + Fixed regression in NumPy ufuncs such as np.add not passing
+      through all arguments for DataFrame (GH40662)
+
+-------------------------------------------------------------------
 Wed Mar  3 19:10:52 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.2.3:
