@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 30 08:29:33 UTC 2021 - psimons@suse.com
+
+- Update th-lift to version 0.8.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
