@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May  1 18:39:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- modernize spec file (move license to licensedir) 
+
+-------------------------------------------------------------------
 Tue Nov 28 18:33:43 UTC 2017 - crrodriguez@opensuse.org
 
 - Buildrequire pkgconfig(x11) not the whole of xorg-x11-devel. 
