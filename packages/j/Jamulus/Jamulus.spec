@@ -95,7 +95,7 @@ install -d -m0755 %{buildroot}%{_fillupdir}
 install -D -m0644 %{SOURCE20} %{buildroot}%{_fillupdir}/sysconfig.jamulus
 
 # firewalld
-install -D -m0644 %{SOURCE21} %{buildroot}%{_libexecdir}/firewalld/services/jamulus.xml
+install -D -m0644 %{SOURCE21} %{buildroot}%{_prefix}/lib/firewalld/services/jamulus.xml
 
 # systemd/services
 install -D -m0644 %{SOURCE10} %{buildroot}%{_unitdir}/jamulus-public.service
@@ -149,9 +149,7 @@ getent passwd jamulus >/dev/null || \
 # sysconfig
 %{_fillupdir}/sysconfig.jamulus
 # firewalld
-%config(noreplace) %{_libexecdir}/firewalld/services/jamulus.xml
-%dir %{_libexecdir}/firewalld
-%dir %{_libexecdir}/firewalld/services
+%{_prefix}/lib/firewalld/services/jamulus.xml
 # systemd/services
 %{_unitdir}/jamulus-public.service
 %{_sbindir}/rcjamulus-public

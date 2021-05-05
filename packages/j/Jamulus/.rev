@@ -171,4 +171,14 @@
     <comment></comment>
     <requestid>881752</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>3388504e57640f6b3a4b38edd071473b</srcmd5>
+    <version>3.7.0</version>
+    <time>1620240037</time>
+    <user>dimstar_suse</user>
+    <comment>- remove %config for firewalld's jamulus.xml
+- Fixes for %_libexecdir changing to /usr/libexec(bsc#1174075)
+</comment>
+    <requestid>890747</requestid>
+  </revision>
 </revisionlist>
