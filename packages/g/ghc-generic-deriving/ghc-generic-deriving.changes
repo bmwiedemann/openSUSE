@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 30 08:29:38 UTC 2021 - psimons@suse.com
+
+- Update generic-deriving to version 1.14 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
