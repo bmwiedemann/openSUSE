@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  3 08:39:22 UTC 2021 - psimons@suse.com
+
+- Update uuid-types to version 1.0.5.
+  ## 1.0.5 (2021-05-03)
+
+  - Add (Template Haskell) `Lift UUID` instance
+
+-------------------------------------------------------------------
 Sat Feb 20 00:22:44 UTC 2021 - psimons@suse.com
 
 - Update uuid-types to version 1.0.4.

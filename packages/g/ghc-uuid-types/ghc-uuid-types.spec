@@ -19,7 +19,7 @@
 %global pkg_name uuid-types
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Type definitions for Universally Unique Identifiers
 License:        BSD-3-Clause
@@ -32,6 +32,7 @@ BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
