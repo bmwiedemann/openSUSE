@@ -1,7 +1,7 @@
 #
 # spec file for package lcms2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           lcms2
-Version:        2.11
+Version:        2.12
 Release:        0
 Summary:        Little CMS Engine - A color managment library and tools
 License:        MIT
 Group:          Productivity/Graphics/Other
 URL:            http://www.littlecms.com/
-Source0:        http://sourceforge.net/projects/lcms/files/lcms/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://sourceforge.net/projects/lcms/files/lcms/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch1:         lcms2-ocloexec.patch
 Patch2:         lcms2-visibility.patch
@@ -131,6 +131,6 @@ rm %{buildroot}/%{_libdir}/liblcms2.la
 %{_libdir}/pkgconfig/*.pc
 
 %files -n liblcms2-doc
-%doc doc/*.odt
+%doc doc/*pdf
 
 %changelog

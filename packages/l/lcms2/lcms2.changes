@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Apr 24 09:28:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.12:
+  * Added build system for fast-float plugin (see plugin documentation)
+  * Added new build-in sigmoidal tone curve
+  * Added XCode 12 project
+  * Added support for multichannel input up to 15 channels
+  * Fix LUT8 write matrix
+  * Fix version mess on 10/11
+  * Fix tools & samples xgetopt
+  * Fix warnings on different function pointers
+  * Fix matlab MEX compilation
+  * plugin: cleanup and better SSE detection
+  * plugin: add lab to any on float
+  * plugin: it can now be compiled as C++
+  * recover PDF documentation, but try to keep it under a resonable size.
+  * Prevent a rare but possible out-of-bounds read in postscript generator
+  * Fix some compiler warnings
+  * Add named color profile building sample to testbed 
+
+-------------------------------------------------------------------
 Wed Aug  5 13:31:44 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to 2.11
