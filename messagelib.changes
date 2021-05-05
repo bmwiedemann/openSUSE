@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Apr 30 07:09:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream change to fix a misbehaviour when deleting
+  attachments from encrypted messages:
+  * 0001-Fix-CVE-2021-31855.patch (CVE-2021-31855)
+
+-------------------------------------------------------------------
+Fri Apr 16 16:13:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04
+- No code change since 21.03.90
+
+-------------------------------------------------------------------
+Fri Apr  9 17:41:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.90
+  * New feature release
+- Changes since 21.03.80:
+  * Fix BUG 435431 Edit menu (Variables submenu) doesn't work as advertised (kde#435431)
+  * It's debug not warning
+
+-------------------------------------------------------------------
+Sun Mar 21 13:29:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.03.80
+  * New feature release
+- Too many changes since 20.12.3, only listing bugfixes:
+  * Fix Bug 434392 - message/global type, can't view it, must be associated to kmail --view (kde#434392)
+  * Fix Bug 430678 - Allow to only enable specific external images (kde#430678)
+  * Fix[messagecomposer]: Do copy all mail headers instad of reference them. (kde#427091)
+
+-------------------------------------------------------------------
 Thu Mar  4 06:11:53 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
 
 - Update to 20.12.3
