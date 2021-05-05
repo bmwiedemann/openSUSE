@@ -1,7 +1,7 @@
 #
 # spec file for package python-openstackdocstheme
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-openstackdocstheme
-Version:        2.2.5
+Version:        2.2.7
 Release:        0
 Summary:        OpenStack Docs Theme
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/%{sname}
-Source0:        https://files.pythonhosted.org/packages/source/o/openstackdocstheme/openstackdocstheme-2.2.5.tar.gz
+URL:            https://docs.openstack.org/openstackdocstheme
+Source0:        https://files.pythonhosted.org/packages/source/o/openstackdocstheme/openstackdocstheme-2.2.7.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-dulwich >= 0.15.0
@@ -36,7 +36,6 @@ to docs.openstack.org. Intended for use by OpenStack projects.
 
 %package -n python3-openstackdocstheme
 Summary:        OpenStack Docs Theme
-Group:          Development/Languages/Python
 Requires:       python3-Sphinx
 Requires:       python3-dulwich >= 0.15.0
 
@@ -45,10 +44,11 @@ Theme and extension support for Sphinx documentation that is published
 to docs.openstack.org. Intended for use by OpenStack projects.
 
 %prep
-%autosetup -p1 -n openstackdocstheme-2.2.5
+%autosetup -p1 -n openstackdocstheme-2.2.7
 
-# we dont need hacking
+# we dont need hacking or pre-commit
 sed -i '/^hacking.*/d' test-requirements.txt
+sed -i '/^pre-commit.*/d' test-requirements.txt
 %py_req_cleanup
 
 %build

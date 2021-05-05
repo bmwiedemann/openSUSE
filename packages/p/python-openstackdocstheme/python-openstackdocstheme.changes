@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May  2 17:14:41 UTC 2021 - cloud-devel@suse.de
+
+- update to version 2.2.7
+  - Adding pre-commit
+  - js: Set 'LINK_SUFFIX'
+  - Remove ask.o.o
+  - Added styling for rST rubric directive.
+  - Change name of OpenStack Foundation
+  - Store empty string for release
+  - js: Don't attempt to set bug, PDF links without configuration
+  - trivial: Address some indentation nits
+
+-------------------------------------------------------------------
 Fri Oct  9 19:16:08 UTC 2020 - cloud-devel@suse.de
 
 - update to version 2.2.5
