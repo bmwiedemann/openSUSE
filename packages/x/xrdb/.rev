@@ -79,4 +79,12 @@
   warnings when parsing valid comments (bsc#1120004)</comment>
     <requestid>677969</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>339f01892034a68efc90028cca1bd947</srcmd5>
+    <version>1.2.0</version>
+    <time>1620239961</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889861</requestid>
+  </revision>
 </revisionlist>
