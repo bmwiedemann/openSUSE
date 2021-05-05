@@ -1,6 +1,7 @@
 # Defines the tag for OBS and build script builds:
 #!BuildTag: %%TAGPREFIX%%/cdi-uploadproxy:%%PKG_VERSION%%
 #!BuildTag: %%TAGPREFIX%%/cdi-uploadproxy:%%PKG_VERSION%%.%RELEASE%
+#!BuildTag: %%TAGPREFIX%%/cdi-uploadproxy:%%PKG_VERSION%%-%%PKG_RELEASE%%
 
 # cdi-uploadproxy container image
 # KUBEVIRTFROM defined in prjconf, e.g.
