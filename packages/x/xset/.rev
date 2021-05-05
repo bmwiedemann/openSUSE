@@ -76,4 +76,12 @@
   provided by xorgproto-2019.1 by default</comment>
     <requestid>711693</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>5a462bbd62dca2694bab62a8b41070cc</srcmd5>
+    <version>1.2.4</version>
+    <time>1620239958</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>889859</requestid>
+  </revision>
 </revisionlist>
