@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 30 00:13:14 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.4
+  * Use QT5
+  * Use QtCharts plotting.
+  * Translation has been enabled
+  * French translation has been done
+  * Exporting data to Gnuplot and Printing features have been added.
+  * Added .desktop file and icon
+- Drop qloud-Qt5.patch, merged upstream
+- Upstream changed from http://gaydenko.com/qloud/ to
+  https://github.com/molke-productions/qloud
+  See old upstream.
+
+-------------------------------------------------------------------
 Fri Dec 13 10:15:58 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.2 (no changelog)

@@ -1,7 +1,7 @@
 #
 # spec file for package qloud
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           qloud
-Version:        1.2
+Version:        1.4
 Release:        0
 Summary:        Tool to measure
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-URL:            http://gaydenko.com/qloud/
-Source0:        http://gaydenko.com/qloud/download/%{name}-%{version}.tar.bz2
-# PATCh-FIX-UPSTREAM qloud-Qt5.patch aloisio@gmx.com -- adapted from this fork: https://github.com/molke-productions/qloud
-Patch0:         qloud-Qt5.patch
+URL:            https://github.com/molke-productions/qloud
+Source0:        %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(Qt5Charts)
 BuildRequires:  pkgconfig(Qt5Qwt6)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
@@ -46,15 +46,17 @@ Target use:
 %autosetup -p1
 
 %build
-%qmake5
+%qmake5 PREFIX=%{_prefix}
 %make_build
 
 %install
 %qmake5_install
 
 %files
-%license COPYING
-%doc README
+%license LICENSE
+%doc README.md
 %{_bindir}/%{name}
+%{_datadir}/pixmaps/qloud.xpm
+%{_datadir}/applications/qloud.desktop
 
 %changelog
