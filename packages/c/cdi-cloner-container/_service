@@ -1,16 +1,13 @@
 <services>
     <service mode="buildtime" name="kiwi_metainfo_helper"/>
-    <service name="replace_using_package_version" mode="buildtime">
-        <param name="file">Dockerfile</param>
-        <param name="regex">%%PKG_VERSION%%</param>
-        <param name="parse-version">patch</param>
-        <param name="package">containerized-data-importer-cloner</param>
-    </service>
+    <service mode="buildtime" name="cdi_containers_meta"/>
     <service mode="buildtime" name="replace_using_env">
         <param name="file">Dockerfile</param>
+        <param name="var">PKG_VERSION</param>
+        <param name="var">PKG_RELEASE</param>
         <param name="var">TAGPREFIX</param>
         <param name="var">LABELPREFIX</param>
-        <param name="eval">source /usr/lib/obs/service/meta/virt-containers-meta</param>
+        <param name="eval">pkg=containerized-data-importer-cloner source /usr/lib/obs/service/cdi_containers_meta</param>
         <param name="verbose">1</param>
     </service>
     <service mode="buildtime" name="docker_label_helper"/>
