@@ -1,0 +1,74 @@
+version: 0.1.1
+x-revision: 1
+
+name:
+  hedgehog-quickcheck
+author:
+  Jacob Stanley
+maintainer:
+  Jacob Stanley <jacob@stanley.io>
+homepage:
+  https://hedgehog.qa
+bug-reports:
+  https://github.com/hedgehogqa/haskell-hedgehog/issues
+synopsis:
+  Use QuickCheck generators in Hedgehog and vice versa.
+description:
+  Use QuickCheck generators in Hedgehog and vice versa.
+  .
+  Hedgehog is a modern property-based testing system, in the spirit of
+  QuickCheck. Hedgehog uses integrated shrinking, so shrinks obey the
+  invariants of generated values by construction.
+  .
+  To get started quickly, see the examples:
+  <https://github.com/hedgehogqa/haskell-hedgehog/tree/master/hedgehog-
+
+category:
+  Testing
+license:
+  BSD3
+license-file:
+  LICENSE
+cabal-version:
+  >= 1.8
+build-type:
+  Simple
+tested-with:
+    GHC == 7.10.2
+  , GHC == 7.10.3
+  , GHC == 8.0.1
+  , GHC == 8.0.2
+  , GHC == 8.2.2
+  , GHC == 8.4.1
+  , GHC == 8.4.2
+  , GHC == 8.4.3
+  , GHC == 8.4.4
+  , GHC == 8.6.1
+  , GHC == 8.6.2
+  , GHC == 8.6.3
+  , GHC == 8.6.4
+extra-source-files:
+  README.md
+  CHANGELOG.md
+
+source-repository head
+  type: git
+  location: git://github.com/hedgehogqa/haskell-hedgehog.git
+
+library
+  build-depends:
+      base                            >= 3          && < 5
+    , hedgehog                        >= 0.5        && < 1.1
+    , QuickCheck                      >= 2.7        && < 2.15
+    , transformers                    >= 0.4        && < 0.6
+
+  ghc-options:
+    -Wall
+
+  hs-source-dirs:
+    src
+
+  exposed-modules:
+    Hedgehog.Gen.QuickCheck
+
+    Test.QuickCheck.Hedgehog
