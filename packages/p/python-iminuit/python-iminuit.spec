@@ -22,7 +22,7 @@
 %define skip_python36 1
 %define modname iminuit
 Name:           python-%{modname}
-Version:        2.4.0
+Version:        2.6.0
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  5 00:10:39 UTC 2021 - Atri Bhattacharya <badshah400@gmai.com>
+
+- Update to version 2.6.0:
+  * Builtin cost functions now report the number of data points
+    with the attribute Cost.ndata.
+  * New attribute Minuit.ndof returns the degrees of freedom if
+    the cost function reports it or NaN.
+  * New attribute FMin.reduced_chi2 to report the reduced chi2 of
+    the fit; returns NaN if the reduced chi2 cannot be computed
+    for the cost function, in case of unbinned maximum-likelihood
+    or when the attribute Cost.ndata is missing.
+
+-------------------------------------------------------------------
 Thu Apr 22 00:58:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 
