@@ -76,7 +76,7 @@ ExclusiveArch:  do_not_build
 %{hpc_modules_init openblas}
 %endif
 Name:           %{package_name}
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later

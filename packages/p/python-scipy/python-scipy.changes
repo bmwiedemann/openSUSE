@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May  3 01:31:43 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 1.6.3:
+  * Issues closed
+    + #13772: Divide by zero in distance.yule
+    + #13796: CI: prerelease_deps failures
+    + #13890: TST: spatial rotation failure in (1.6.3) wheels repo
+       (ARM64)
+  * Pull requests
+    + #13755: CI: fix the matplotlib warning emitted during builing
+       docs
+    + #13773: BUG: Divide by zero in yule dissimilarity of constant
+       vectors
+    + #13799: CI/MAINT: deprecated np.typeDict
+    + #13819: substitute np.math.factorial with math.factorial
+    + #13895: TST: add random seeds in Rotation module
+
+-------------------------------------------------------------------
 Sun Apr  4 16:40:00 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.6.2:
