@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 30 20:30:54 UTC 2021 - psimons@suse.com
+
+- Update free to version 5.1.7.
+  5.1.7 [2021.04.30]
+  ------------------
+  * Enable `FlexibleContexts` in `Control.Monad.Trans.Free.Church` to allow
+    building with GHC 9.2.
+
+-------------------------------------------------------------------
 Mon Jan  4 11:05:47 UTC 2021 - psimons@suse.com
 
 - Update free to version 5.1.6.
