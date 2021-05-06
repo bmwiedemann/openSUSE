@@ -816,4 +816,12 @@
     <comment> (forwarded request 883384 from Vogtinator)</comment>
     <requestid>883438</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>26e4230bb1d67f806d6c2459b960320b</srcmd5>
+    <version>5.21.5</version>
+    <time>1620334337</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.21.5</comment>
+    <requestid>890595</requestid>
+  </revision>
 </revisionlist>

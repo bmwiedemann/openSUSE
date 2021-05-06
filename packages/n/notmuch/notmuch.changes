@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Wed May  5 05:25:32 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+What's new in notmuch 0.32
+=========================
+
+General
+-------
+
+This release includes a significant overhaul of the configuration
+management facilities for notmuch.  The previous distinction between
+configuration items that can be modified via plain text configuration
+files and those that must be set in the database via the "notmuch
+config" subcommand is gone, and all configuration items can be set in
+both ways.  The external configuration file overrides configuration
+items in the database. The location of database, hooks, and
+configuration files is now more flexible, with several new
+configuration variables. In particular XDG locations are now supported
+as fallbacks for database, configuration and hooks. For more
+information see `notmuch-config(1)`.
+
+Library
+-------
+
+To support the new configuration facilities, several functions and
+constants have been added to the notmuch API. Most notably:
+
+- `notmuch_database_create_with_config`
+- `notmuch_database_open_with_config`
+- `notmuch_database_load_config`
+- `notmuch_config_get`
+
+A previously requested API change is that `notmuch_database_reopen` is
+now exposed (and generalized).
+
+The previously severe slowdowns from large numbers calls to
+notmuch_database_remove_message or notmuch_message_delete in one
+session has been fixed.
+
+As always, the canonical source of API documentation is
+`lib/notmuch.h`, or the doxygen formatted documentation in `notmuch(3)`
+
+CLI
+---
+
+The `notmuch config set` subcommand gained a `--database` argument to
+specify that the database should be updated, rather than a config file.
+
+The speed of `notmuch new` and `notmuch reindex` in dealing with large
+numbers of mail file deletions is significantly improved.
+
+Emacs
+-----
+
+Completion related updates include: de-duplicating tags offered for
+completion, use the actual initial input in address completion, allow
+users to opt out of notmuch address completion, and do not force Ido
+when prompting for senders.
+
+Some keymaps used to contain bindings for unnamed commands.  These
+lambda expressions have been replaced by named commands (symbols), to
+ease customization.
+
+Lexical binding is now used in all notmuch-emacs libraries.
+
+Fix bug in calling `notmuch-mua-mail` with a non-nil RETURN-ACTION.
+
+Removed, inlined or renamed functions and variables:
+    `notmuch-address-locate-command`,
+    `notmuch-documentation-first-line`, `notmuch-folder`,
+    `notmuch-hello-trim', `notmuch-hello-versions` => `notmuch-version`,
+    `notmuch-remove-if-not`, `notmuch-search-disjunctive-regexp`,
+    `notmuch-sexp-eof`, `notmuch-split-content-type`, and
+    `notmuch-tree-button-activate`.
+
+-------------------------------------------------------------------
 Mon Mar  1 07:13:58 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.31.4

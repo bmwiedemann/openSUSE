@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  4 11:02:42 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- fix previous change regarding PIE linking. Passing SHLIB_CFLAGS="-shared"
+  causes /usr/bin/expect to become a shared library that SEGFAULTs upon
+  execution. Instead use SHLIB_LD to pass -shared only to shared library
+  linking.
+
+-------------------------------------------------------------------
+Wed Apr 21 13:13:28 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- pass explicit -pie flag to CFLAGS and hack `make` invocation so that
+  /usr/bin/expect actually becomes a PIE binary. This is especially awkard
+  since the expect build system implicitly passes -fPIC which breaks our
+  gcc-PIE package, but does not pass -pie while linking the executable.
+  Shared libraries are also not linked with -shared so we need to explicitly
+  pass this, too, to avoid build breakage (bsc#1184122).
+
+-------------------------------------------------------------------
 Thu Oct 15 08:18:32 UTC 2020 - Reinhard Max <max@suse.com>
 
 - Add an unversioned symlink to make linking easier for

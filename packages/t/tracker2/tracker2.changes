@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 30 14:35:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable test suite: it is not compatible to latest meson
+  versions. With Tracker2 being deprecated in favor of Tracker3
+  (only very few consumers left, miners are already not
+  autostarted) we can get away ignoring the test suite failures.
+
+-------------------------------------------------------------------
 Wed Jan 13 12:15:51 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add tracker2-Avoid-deletion-empty-rows.patch: libtracker-data:

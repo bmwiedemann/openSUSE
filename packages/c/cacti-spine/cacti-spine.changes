@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  5 18:48:07 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.17:
+  * Avoid triggering DDos detection in firewalls on large systems
+  * Use mysql reconnect option properly
+  * Fix possible creashes in various operations
+  * Fix remote data collectors pushing too much data to main when
+    performing diagnostics
+  * Make spine more responsive when remote connection is down
+  * Fix various MySQL issues
+  * Make spine immune to DST changes
+
+-------------------------------------------------------------------
 Mon Dec  7 16:13:30 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.16:

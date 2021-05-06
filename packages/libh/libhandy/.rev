@@ -155,4 +155,12 @@
     <comment>Update to 1.2.1 (forwarded request 886285 from dimstar)</comment>
     <requestid>887492</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>95485838df7f3e359d4b7a5b73a34b4e</srcmd5>
+    <version>1.2.2</version>
+    <time>1620334307</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 890077 from dimstar)</comment>
+    <requestid>890138</requestid>
+  </revision>
 </revisionlist>

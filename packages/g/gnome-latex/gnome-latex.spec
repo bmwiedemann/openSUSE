@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-latex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://wiki.gnome.org/Apps/GNOME-LaTeX
 Source0:        https://download.gnome.org/sources/%{name}/3.38/%{name}-%{version}.tar.xz
+Patch0:         https://gitlab.gnome.org/Archive/gnome-latex/-/commit/e1b01186f8a.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gsettings-desktop-schemas-devel
@@ -43,7 +44,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.30.0
 BuildRequires:  pkgconfig(gspell-1) >= 1.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gtksourceview-4) >= 3.99.7
-BuildRequires:  pkgconfig(tepl-5) >= 4.99.2
+BuildRequires:  pkgconfig(tepl-6) >= 5.99
 BuildRequires:  pkgconfig(vapigen) >= 0.34
 Requires:       gsettings-desktop-schemas
 Requires:       texlive-latexmk-bin
@@ -63,10 +64,11 @@ features are:
   * Easy projects management.
 
 %prep
-%autosetup
+%autosetup -p1
 translation-update-upstream
 
 %build
+autoreconf -fiv
 %configure \
 	--enable-gtk-doc \
 	%{nil}

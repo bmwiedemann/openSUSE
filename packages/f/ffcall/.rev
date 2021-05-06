@@ -170,4 +170,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>741482</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>d9063ddd72650286837ff79f48dd8705</srcmd5>
+    <version>2.2</version>
+    <time>1620334367</time>
+    <user>dimstar_suse</user>
+    <comment>- Move /etc/rpm/macros.ffcall to /usr/lib/rpm/macros.d/ (boo#1185666)</comment>
+    <requestid>890920</requestid>
+  </revision>
 </revisionlist>

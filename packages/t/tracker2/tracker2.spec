@@ -92,6 +92,7 @@ and search all types of files and other first class objects.
 # name across multiple versions of tracker).
 # Yet, different libtracker-miner-* packages require their explicit
 # version of libtracker-common.so as they link is done using rpath.
+
 %package -n libtracker-common-%{RPMTrackerAPI}
 Summary:        Convenience libraries for Tracker
 Group:          System/Libraries
@@ -242,11 +243,6 @@ mkdir -p %{buildroot}%{_datadir}/tracker/icons/
 %fdupes %{buildroot}%{_datadir}/vala/
 %fdupes %{buildroot}%{_datadir}/gtk-doc
 rm -f %{buildroot}%{_libdir}/tracker-%{TrackerAPI}/libtracker-common.a
-
-%ifnarch %arm
-%check
-%meson_test
-%endif
 
 %post -n libtracker-control-%{RPMTrackerAPI}-0 -p /sbin/ldconfig
 %postun -n libtracker-control-%{RPMTrackerAPI}-0 -p /sbin/ldconfig

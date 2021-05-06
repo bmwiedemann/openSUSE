@@ -1020,4 +1020,12 @@
     <comment>Update to 0.52.2 (forwarded request 886233 from dimstar)</comment>
     <requestid>887480</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>1f6cf551fa721aa75d9767363b198128</srcmd5>
+    <version>0.52.3</version>
+    <time>1620334292</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.52.3: (forwarded request 889853 from mgorse)</comment>
+    <requestid>890092</requestid>
+  </revision>
 </revisionlist>

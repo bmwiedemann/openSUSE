@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  3 18:24:40 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 5.0.20210324
+  * Spelling fixes, per codespell
+  * Updated build system
+
+-------------------------------------------------------------------
 Wed Feb 27 08:06:48 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Remove debugging code from spec file

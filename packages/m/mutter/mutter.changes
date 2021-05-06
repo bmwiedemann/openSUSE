@@ -5,6 +5,17 @@ Fri Apr 23 00:47:06 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
   mutter-SLE-bell.patch.
 
 -------------------------------------------------------------------
+Sat Apr 17 07:12:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fold libmutter-8-0 and mutter-data into the main package:
+  + SLPP does, despite the devel package, not make much sense.
+    Mutter is the GNOME Window Manager and parallel installation of
+    the library only gave a false sense of possibility, and often
+    resulted in upgrade issues (e.g. zypper not updating mutter).
+  + The -data package was hard-requiring the same mutter version,
+    which essentially means the split makes no sense.
+
+-------------------------------------------------------------------
 Sat Mar 20 16:46:58 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:

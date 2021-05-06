@@ -1,0 +1,40 @@
+From e1a9447d569a364977085e0e238bb16b40e61290 Mon Sep 17 00:00:00 2001
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Fri, 30 Apr 2021 21:23:27 +0200
+Subject: [PATCH] Fix prototype of gtk_internet_radio_locator_radius
+
+The function does not return any value in its currrent form.
+Thus declaring it void fixes build failures seen in the file such as:
+
+[   17s] gnome-internet-radio-locator-radius.c:76:1: error: control reaches end of non-void function [-Werror=return-type]
+[   17s]    76 | }
+---
+ src/gtk-internet-radio-locator-radius.c | 2 +-
+ src/gtk-internet-radio-locator-radius.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+Index: gnome-internet-radio-locator-4.0.2/src/gnome-internet-radio-locator-radius.c
+===================================================================
+--- gnome-internet-radio-locator-4.0.2.orig/src/gnome-internet-radio-locator-radius.c
++++ gnome-internet-radio-locator-4.0.2/src/gnome-internet-radio-locator-radius.c
+@@ -44,7 +44,7 @@ typedef struct _Position {
+ 	float lon;
+ } Position;
+ 
+-int
++void
+ gnome_internet_radio_locator_radius (float latitude, float longitude, int radius)
+ {
+ 	int values[] = {0,1,2};
+Index: gnome-internet-radio-locator-4.0.2/src/gnome-internet-radio-locator-radius.h
+===================================================================
+--- gnome-internet-radio-locator-4.0.2.orig/src/gnome-internet-radio-locator-radius.h
++++ gnome-internet-radio-locator-4.0.2/src/gnome-internet-radio-locator-radius.h
+@@ -24,6 +24,6 @@
+ #ifndef GNOME_INTERNET_RADIO_LOCATOR_RADIUS_H
+ #define GNOME_INTERNET_RADIO_LOCATOR_RADIUS_H
+ 
+-int gnome_internet_radio_locator_radius (float latitude, float longitude, int radius);
++void gnome_internet_radio_locator_radius (float latitude, float longitude, int radius);
+ 
+ #endif /* GNOME_INTERNET_RADIO_LOCATOR_RADIUS_H */

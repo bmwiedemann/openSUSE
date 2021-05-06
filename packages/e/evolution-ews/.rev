@@ -948,4 +948,12 @@
     <comment>- Add 6d8f7d303e.patch: Fix build with cmake 3.20.1. (forwarded request 889499 from dimstar)</comment>
     <requestid>889503</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>95877e8efbde0c61fe933d7b582e5317</srcmd5>
+    <version>3.40.1</version>
+    <time>1620334300</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 890064 from dimstar)</comment>
+    <requestid>890126</requestid>
+  </revision>
 </revisionlist>

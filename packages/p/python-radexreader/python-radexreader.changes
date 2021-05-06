@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  5 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream version (1.2.0)
+  * add support for Radex ONE Geiger counter
+  * fix a start crash with Radex RD1212 v1
+
+-------------------------------------------------------------------
 Tue Apr  6 14:41:16 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
 
 - Initial opensuse package release

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  4 21:43:48 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 21.05:
+  * CMake: Add 'Requires' for GStreamer to the pkgconfig file
+  * Updated source to github.
+
+-------------------------------------------------------------------
 Mon Apr  5 15:25:24 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update to 21.04:

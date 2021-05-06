@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 30 16:22:18 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.3.2:
+  + compressor:
+    - Fix hardlink handling for new cpio format.
+    - Fix hardlink detection for remote files.
+  + extractor: Fix extraction of readonly folders.
+
+-------------------------------------------------------------------
 Wed Apr 14 00:40:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.3.1:

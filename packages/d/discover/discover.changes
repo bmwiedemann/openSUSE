@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May  4 14:15:38 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.5
+- Changes since 5.21.4:
+  * Add missing Qt5Concurrent to target_link_libraries
+  * fwupd: Make sure we initalise the device defaults (kde#435785)
+  * pk: Only clear notifier results when they're successful
+  * pk: Fix dependencies view appearing
+  * pk: Clear the offline updates results after displaying them
+  * Only wrap flatpak.h includes in extern "C" with older versions
+- Drop patches, now upstream:
+  * 0001-Only-wrap-flatpak.h-includes-in-extern-C-with-older-.patch
+
+-------------------------------------------------------------------
 Wed Apr  7 09:57:56 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix build with glib >= 2.68.0:

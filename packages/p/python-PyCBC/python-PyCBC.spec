@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyCBC
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,64 +16,64 @@
 #
 
 
-# Some tests broken
-%bcond_with tests
+%bcond_without tests
 
+%define modname PyCBC
 Name:           python-PyCBC
-Version:        1.17.0
+Version:        1.18.0
 Release:        0
 Summary:        Core library to analyze gravitational-wave data
 License:        GPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            http://www.pycbc.org/
-Source0:        https://files.pythonhosted.org/packages/source/P/PyCBC/PyCBC-%{version}.tar.gz
-# Add a file missed in PyPI tarball
-Source1:        https://raw.githubusercontent.com/gwastro/pycbc/v%{version}/test/utils.py
-BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy >= 1.16.0}
-BuildRequires:  %{python_module numpy-devel >= 1.16.0}
-BuildRequires:  %{python_module setuptools}
+Source0:        https://github.com/gwastro/pycbc/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  python-rpm-macros
-Requires:       python-astropy
-Requires:       python-beautifulsoup4
-Requires:       python-decorator
-Requires:       python-h5py
-Requires:       python-numpy >= 1.16.0
-Requires:       python-requests
-Requires:       python-scipy
-Requires:       python-tqdm
-Recommends:     python-emcee
-Recommends:     python-gwdatafind
-Recommends:     python-lal
-Recommends:     python-lalframe
-Recommends:     python-lalsimulation
-Recommends:     python-ligo-segments
+BuildRequires:  python3-Cython
+BuildRequires:  python3-devel
+BuildRequires:  python3-numpy >= 1.16.0
+BuildRequires:  python3-numpy-devel >= 1.16.0
+BuildRequires:  python3-setuptools
+Requires:       python3-astropy
+Requires:       python3-beautifulsoup4
+Requires:       python3-decorator
+Requires:       python3-h5py
+Requires:       python3-lal
+Requires:       python3-lalframe
+Requires:       python3-lalpulsar
+Requires:       python3-lalsimulation
+Requires:       python3-ligo-lw
+Requires:       python3-ligo-segments
+Requires:       python3-lscsoft-glue
+Requires:       python3-numpy >= 1.16.0
+Requires:       python3-requests
+Requires:       python3-scipy
+Requires:       python3-tqdm
+Recommends:     python3-gwdatafind
+Recommends:     python3-ligo-segments
 ExclusiveArch:  %{ix86} x86_64
 %if %{with tests}
 # SECTION Test Requirements
-BuildRequires:  %{python_module Mako}
-BuildRequires:  %{python_module astropy}
-BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module decorator}
-BuildRequires:  %{python_module emcee}
-BuildRequires:  %{python_module gwdatafind}
-BuildRequires:  %{python_module h5py}
-BuildRequires:  %{python_module lalframe}
-BuildRequires:  %{python_module lalsimulation}
-BuildRequires:  %{python_module lal}
-BuildRequires:  %{python_module ligo-segments}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module mpld3}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module testsuite}
-BuildRequires:  %{python_module tqdm}
+BuildRequires:  python3-Mako
+BuildRequires:  python3-astropy
+BuildRequires:  python3-beautifulsoup4
+BuildRequires:  python3-decorator
+BuildRequires:  python3-gwdatafind
+BuildRequires:  python3-h5py
+BuildRequires:  python3-lal
+BuildRequires:  python3-lalframe
+BuildRequires:  python3-lalpulsar
+BuildRequires:  python3-lalsimulation
+BuildRequires:  python3-ligo-lw
+BuildRequires:  python3-ligo-segments
+BuildRequires:  python3-lscsoft-glue
+BuildRequires:  python3-matplotlib
+BuildRequires:  python3-mpld3
+BuildRequires:  python3-pytest
+BuildRequires:  python3-requests
+BuildRequires:  python3-testsuite
+BuildRequires:  python3-tqdm
 # /SECTION
 %endif
-%python_subpackages
 
 %description
 PyCBC is a software package used to explore astrophysical sources of
@@ -82,9 +82,18 @@ gravitational-wave data from the LIGO and Virgo detectors, detect
 coalescing compact binaries, and measure the astrophysical parameters
 of detected sources.
 
+%package -n python3-%{modname}
+Summary:        Core library to analyze gravitational-wave data
+
+%description -n python3-%{modname}
+PyCBC is a software package used to explore astrophysical sources of
+gravitational waves. It contains algorithms to analyze
+gravitational-wave data from the LIGO and Virgo detectors, detect
+coalescing compact binaries, and measure the astrophysical parameters
+of detected sources.
+
 %prep
-%setup -q -n PyCBC-%{version}
-cp %{SOURCE1} ./test/
+%autosetup -p1 -n pycbc-%{version}
 sed -i "/emcee==/d" setup.py
 sed -i "s/,<1.19//" setup.py
 
@@ -101,31 +110,43 @@ sed -E -i "1{/^#\!\s*\/usr\/bin/d}" \
   pycbc/results/*.py
 
 %build
-%python_build
+%python3_build
 
 %install
-%python_install
+%python3_install
 sed -E -i "1 s|^#\!\s*/usr/bin/env\s*bash|#\!/bin/bash|" %{buildroot}%{_bindir}/run_pycbc_inference
 
-%python_expand chmod -x %{buildroot}%{$python_sitearch}/pycbc/results/static/js/fancybox/2.1.5/jquery.fancybox.js
-%python_expand chmod -x %{buildroot}%{$python_sitearch}/pycbc/results/static/js/fancybox/2.1.5/jquery.fancybox.pack.js
+chmod -x %{buildroot}%{python3_sitearch}/pycbc/results/static/js/fancybox/2.1.5/jquery.fancybox.js
+chmod -x %{buildroot}%{python3_sitearch}/pycbc/results/static/js/fancybox/2.1.5/jquery.fancybox.pack.js
 
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%fdupes %{buildroot}%{python3_sitearch}
 
 %if %{with tests}
 %check
 # Delete tests requiring network
 rm test/test_dq.py examples/workflow/data_checker/daily_test.py
-#test/test_fftw_openmp.py test/test_fftw_pthreads.py pycbc/workflow/configparser_test.py
-%python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
+# Broken tests
+rm test/fft_base.py \
+   test/test_array.py \
+   test/test_chisq.py \
+   test/test_fft_unthreaded.py \
+   test/test_fftw_openmp.py \
+   test/test_fftw_pthreads.py \
+   test/test_frame.py \
+   test/test_frequencyseries.py \
+   test/test_schemes.py \
+   test/test_skymax.py \
+   test/test_timeseries.py
 pushd test
-%python_exec -m unittest
+export PYTHONPATH=%{buildroot}%{python3_sitearch}
+export PYTHONDONTWRITEBYTECODE=1
+python3 -m unittest
 popd
 %endif
 
-%files %{python_files}
-%python3_only %{_bindir}/*
-%{python_sitearch}/pycbc/
-%{python_sitearch}/PyCBC-%{version}-py%{python_version}.egg-info/
+%files -n python3-%{modname}
+%{_bindir}/*
+%{python3_sitearch}/pycbc/
+%{python3_sitearch}/%{modname}-%{version}-py%{python3_version}.egg-info/
 
 %changelog

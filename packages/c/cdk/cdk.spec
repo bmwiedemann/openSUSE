@@ -1,7 +1,7 @@
 #
 # spec file for package cdk
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define lname lib%{name}5
 %define mainver 5.0
-%define datever 20190224
+%define datever 20210324
 
 Name:           cdk
-Url:            http://invisible-island.net/cdk/
+URL:            https://invisible-island.net/cdk/
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  pkg-config
@@ -30,8 +30,8 @@ Release:        0
 Summary:        The Runtime for the Curses Development Kit
 License:        BSD-3-Clause
 Group:          System/Libraries
-Source:         ftp://ftp.invisible-island.net/cdk/cdk-%{mainver}-%{datever}.tgz
-Source1:        ftp://ftp.invisible-island.net/cdk/cdk-%{mainver}-%{datever}.tgz.asc
+Source:         https://invisible-mirror.net/archives/cdk/cdk-%{mainver}-%{datever}.tgz
+Source1:        https://invisible-mirror.net/archives/cdk/cdk-%{mainver}-%{datever}.tgz.asc
 Source2:        %name.keyring
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         root        %{_tmppath}/%{name}-%{version}-store
@@ -66,14 +66,13 @@ CDK, the Curses Development Kit.
 %setup -q -n cdk-%{mainver}-%{datever}
 
 %build
-
 %configure --with-ncurses	\
     --enable-const		\
     --with-pkg-config		\
     --disable-rpath-hack	\
     --with-versioned-syms=${PWD}/package/cdk.map \
     --with-shared
-make all %{?_smp_mflags}
+%make_build
 make install DESTDIR=%{root} INSTALL="install -pD" \
     DOCUMENT_DIR=%{root}%{_defaultdocdir}/%{name}
 make clean
@@ -86,7 +85,7 @@ make clean
     --with-cfgname=cdkw		\
     --with-libname=cdkw		\
     --with-shared
-make all %{?_smp_mflags}
+%make_build
 make installCDKLibrary DESTDIR=%{root} INSTALL="install -pD" \
     DOCUMENT_DIR=%{root}%{_defaultdocdir}/%{name}
 make %{root}%{_libdir}/libcdkw.so.%{mainver} DESTDIR=%{root}
@@ -102,11 +101,8 @@ find %{buildroot} -name '*.a' -delete -print
 # Remove installed in wrong directory documentation files
 rm -rf %{buildroot}%{_datadir}/doc
 
-%post -n %lname
-/sbin/ldconfig
-
-%postun -n %lname
-/sbin/ldconfig
+%post -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
 %defattr(-,root,root)

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Apr 17 08:46:03 UTC 2021 - dimstar@opensuse.org
+
+- Update to version 0.64.0:
+  + app: Add debug option to track clipboard targets.
+  + parser: Add new sequence from xterm 362.
+  + pty: Add support for PTY packet mode on sysv-like systems.
+  + app: Fix search next/prev button sensitivity.
+  + app: Use smart pointer.
+  + app: Fix background image drawing.
+  + emulation: sixel: Implement DECSET 1070.
+  + vte.sh: Avoid warnings if shell is configured with 'set -u'.
+
+-------------------------------------------------------------------
+Sat Apr 17 08:44:04 UTC 2021 - dimstar@opensuse.org
+
+- Update to version 0.62.1:
+  + Export vte_pty_spawn_finish again.
+  + Post release version bump.
+  + docs: Remove three mistaken little words.
+  + gtk: Allow passing null callback to spawn_async.
+  + lib: Abort when alloc returns nullptr.
+  + parser: HTJ is not a NOP.
+  + pty: Allow null callback for spawn_async.
+  + vte.sh: Avoid warnings if shell is configured with 'set -u'.
+  + widget: Define text_view_bg in fallback CSS if the theme
+    doesn't.
+  + widget: Implement GtkScrollableInterface::get_border.
+  + widget: Reference terminals while processing.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Feb 14 21:57:26 UTC 2021 - gmbr3@opensuse.org
 
 - Update to version 0.63.91:

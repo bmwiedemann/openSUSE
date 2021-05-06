@@ -63,4 +63,28 @@
     <comment></comment>
     <requestid>858399</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>23acb2c90783d2f20c395937989b2d89</srcmd5>
+    <version>1.18.0</version>
+    <time>1620334390</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.18.0:
+  * update dependencies (require lalsuite, no longer require
+    emcee).
+  * build wheels and update build infrastructure.
+- Drop usage of python singlespec macros and switch to supporting
+  just the default python3 environment. The large number of
+  binaries installed to _bindir and the lack of a reasonable way
+  to use python_clone for all the binaries forces this change.
+- Promote lal* to Requires and drop BuildRequires/Recommends on
+  python-emcee in keeping with upstream changes.
+- Drop additional source utils.py: not needed any more.
+- Enable tests after deleting broken test cases.
+- Add BuildRequires/Requires on lalpulsar, python-ligo-lw,
+  python-lscsoft-glue: new upstream dependencies.
+- Switch source tarball to GitHub since PyPI tarball does not
+  carry the helper scripts and data files for test suite.
+</comment>
+    <requestid>891120</requestid>
+  </revision>
 </revisionlist>

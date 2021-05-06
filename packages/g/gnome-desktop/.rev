@@ -1245,4 +1245,12 @@
     <comment>GNOME 40</comment>
     <requestid>881714</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>9b789aa9ad9495605f65340876f3115c</srcmd5>
+    <version>40.1</version>
+    <time>1620334312</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 890089 from dimstar)</comment>
+    <requestid>890148</requestid>
+  </revision>
 </revisionlist>

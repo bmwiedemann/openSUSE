@@ -197,6 +197,9 @@ install -p -m 0755 _out/tests/tests.test %{buildroot}%{_bindir}/virt-tests
 mkdir -p %{buildroot}/bin
 install -p -m 0755 cmd/virt-launcher/node-labeller/node-labeller.sh %{buildroot}/bin/
 
+# virt-launcher SELinux policy needs to land in virt-handler container
+install -p -m 0644 cmd/virt-handler/virt_launcher.cil %{buildroot}/
+
 mkdir -p %{buildroot}%{_datadir}/kube-virt
 cp -r _out/manifests %{buildroot}%{_datadir}/kube-virt/
 # TODO:
@@ -236,6 +239,7 @@ install -m 0644 %{S:3} %{buildroot}%{_prefix}/lib/obs/service
 %doc README.md
 %{_bindir}/virt-handler
 %{_bindir}/virt-chroot
+/virt_launcher.cil
 
 %files virt-launcher
 %license LICENSE

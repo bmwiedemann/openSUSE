@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May  2 20:26:26 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.40.0:
+  + Bugs fixed:
+    - Error when creating an archive with no extension.
+    - Fixed encrypted files emblem.
+    - Open destination: fixed when using junk_paths.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Apr 14 00:20:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.39.1

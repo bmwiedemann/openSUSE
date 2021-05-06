@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 30 13:32:10 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.1:
+  + Removes tepl dependency.
+  + Fixes SessionSaver plugin does not start problem.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Mar 24 09:24:15 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 30 18:25:59 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Port to tepl-6:
+  + Add e1b01186f8a.patch: actual port, patch from upstream.
+  + Add call to autoreconf in build phase, as above patch touches
+    the build system.
+
+-------------------------------------------------------------------
 Fri Sep 11 18:34:58 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.0:

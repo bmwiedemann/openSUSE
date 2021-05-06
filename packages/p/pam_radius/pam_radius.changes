@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 27 23:22:07 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.0.0
+  * Add IPv6 support
+  * environment variable attribute Framed-IP-Address when present
+  * add Management-Privilege-Level attribute support
+  * Honor radius prompt attribute during challenge response
+  * Add support for Linux VRF (SO_BINDTODEVICE), use per-server
+    sockets if src_ip or vrf are requested
+  * Use per-server socket if src_ip is set in config file
+  * Fix memory leak in add_nas_ip_address
+  * Add Calling-Station-Id to accounting requests.
+  * Thread safety fixes
+  * many other fixes including a fix for boo#1163933 known as
+    CVE-2015-9542
+
+-------------------------------------------------------------------
 Mon Apr  6 04:00:47 UTC 2015 - aj@ajaissle.de
 
 - Some spec cleanups

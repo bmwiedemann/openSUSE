@@ -17,7 +17,7 @@
 
 
 Name:           opi
-Version:        0.10.0
+Version:        2.0.0
 Release:        0
 Summary:        OBS Package Installer (CLI)
 License:        GPL-3.0-only
@@ -26,18 +26,19 @@ URL:            https://github.com/openSUSE/%{name}
 Source0:        https://github.com/openSUSE/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  help2man
-BuildRequires:  perl
-BuildRequires:  perl(Config::Tiny)
-BuildRequires:  perl(LWP)
-BuildRequires:  perl(LWP::Protocol::https)
-BuildRequires:  perl(URI)
-BuildRequires:  perl(XML::LibXML)
-Requires:       perl
-Requires:       perl(Config::Tiny)
-Requires:       perl(LWP)
-Requires:       perl(LWP::Protocol::https)
-Requires:       perl(URI)
-Requires:       perl(XML::LibXML)
+BuildRequires:  python3
+BuildRequires:  python3-lxml
+BuildRequires:  python3-requests
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-termcolor
+Requires:       sudo
+Requires:       zypper
+# rpm --import used curl but doesn't require it explicitly
+Requires:       curl
+Requires:       python3-lxml
+Requires:       python3-requests
+Requires:       python3-termcolor
+Requires:       zypper
 
 %description
 OBS Package Installer (CLI)
@@ -46,22 +47,25 @@ OBS Package Installer (CLI)
 %setup -q
 
 %build
-help2man ./opi > opi.8.gz
+help2man -s8 -N ./bin/opi > opi.8.gz
 gzip opi.8.gz
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-install %{name} %{buildroot}%{_bindir}
+python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 mkdir -p %{buildroot}%{_datadir}/metainfo
 cp org.openSUSE.opi.appdata.xml %{buildroot}%{_datadir}/metainfo
 mkdir -p %{buildroot}%{_datadir}/man/man8
 cp opi.8.gz %{buildroot}%{_datadir}/man/man8
 
+%check
+python3 setup.py --version | grep %{version}
+
 %files
 %license LICENSE
-%doc README.md screenshot.png
+%doc README.md
 %{_bindir}/%{name}
 %{_datadir}/metainfo/org.openSUSE.opi.appdata.xml
 %{_datadir}/man/man8/opi.8.gz
+%{python3_sitelib}/*
 
 %changelog

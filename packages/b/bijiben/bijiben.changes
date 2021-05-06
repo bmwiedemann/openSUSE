@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 30 16:14:41 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.1:
+  + Fixed e-mail sharing feature.
+  + Fixed issue preventing compiling single source files.
+  + Fixed 40's release date in appdata.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar 18 14:40:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:

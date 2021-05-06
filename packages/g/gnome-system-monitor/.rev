@@ -818,4 +818,12 @@
   non-gnome workaround causing crash (boo#1185340). (forwarded request 888732 from dimstar)</comment>
     <requestid>888743</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>d296321e88e0b05cf1d342c98ec9db92</srcmd5>
+    <version>40.1</version>
+    <time>1620334305</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 890074 from dimstar)</comment>
+    <requestid>890135</requestid>
+  </revision>
 </revisionlist>

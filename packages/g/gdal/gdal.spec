@@ -25,7 +25,7 @@
 %bcond_with fgdb_support
 %bcond_without python2
 Name:           gdal
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        BSD-3-Clause AND MIT AND SUSE-Public-Domain

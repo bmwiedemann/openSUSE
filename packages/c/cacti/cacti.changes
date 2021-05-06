@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed May  5 18:58:50 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.17:
+  * Fix incorrect handling of fields led to potential XSS issues
+  * CVE-2020-35701: Fix SQL Injection vulnerability (boo#1180804)
+  * Fix various XSS issues with HTML Forms handling
+  * Fix handling of Daylight Saving Time changes
+  * Multiple fixes and extensions to plugins
+  * Fix multiple display, export, and input validation issues
+  * SNMPv3 Password field was not correctly limited
+  * Improved regular expression handling for searcu
+  * Improved support for RRDproxy
+  * Improved behavior on large systems
+  * MariaDB/MysQL: Support persistent connections and improve
+    multiple operations and options
+  * Add Theme 'Midwinter'
+  * Modify automation to test for data before creating graphs
+  * Add hooks for plugins to show customize graph source and customize
+    template url
+  * Allow CSRF security key to be refreshed at command line
+  * Allow remote pollers statistics to be cleared
+  * Allow user to be automatically logged out after admin defined
+    period
+  * When replicating, ensure Cacti can detect and verify replica
+    servers
+
+-------------------------------------------------------------------
 Fri Dec 18 17:35:23 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix httpd startup errors due to mismatched configuration

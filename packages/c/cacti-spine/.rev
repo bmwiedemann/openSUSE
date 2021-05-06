@@ -247,4 +247,12 @@
     <comment></comment>
     <requestid>853624</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>34a77606bdfee50e48589bfeec78c0e6</srcmd5>
+    <version>1.2.17</version>
+    <time>1620334358</time>
+    <user>dimstar_suse</user>
+    <comment>cacti-spine 1.2.17</comment>
+    <requestid>890824</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  3 08:56:27 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.1:
+  + Fix warnings when dragging or receiving inputs on empty view.
+  + Remove directories when unmount external drive.
+  + Crash Report: eog_thumb_view_clear_range: assertion failed:
+    (start_thumb <= end_thumb).
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar 21 09:42:53 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:

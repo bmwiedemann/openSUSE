@@ -17,13 +17,13 @@
 
 
 Name:           file-roller
-Version:        3.39.1
+Version:        3.40.0
 Release:        0
 Summary:        An Archive Manager for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://wiki.gnome.org/Apps/FileRoller
-Source0:        https://download.gnome.org/sources/file-roller/3.39/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/file-roller/3.40/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE file-roller-3.4-change-archiver-priority.patch bnc#767386 gankov@opensuse.org -- Give unzip a higher priority than 7z when unpackging zip files. Gives better results for non-latin charsets.
 Patch0:         file-roller-3.4-change-archiver-priority.patch
 # PATCH-FEATURE-OPENSUSE file-roller-pkg-match.patch bnc#696530 dimstar@opensuse.org -- List package match names for automatic installation using PK.

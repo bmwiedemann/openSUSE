@@ -16,15 +16,14 @@
 #
 
 
-%define realver 2104
 Name:           FAudio
-Version:        21.04
+Version:        21.05
 Release:        0
 Summary:        A reimplementation of the XNA Game Studio libraries
 License:        Zlib
 Group:          Development/Libraries/C and C++
 URL:            https://fna-xna.github.io
-Source0:        http://fna.flibitijibibo.com/archive/FNA-%{realver}.zip
+Source0:        https://github.com/FNA-XNA/FAudio/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         faudio-older-sdl2.patch
 BuildRequires:  cmake
@@ -54,31 +53,29 @@ Requires:       libFAudio0 = %{version}
 FNA is a reimplementation of the Microsoft XNA Game Studio 4.0 Refresh libraries.
 
 %prep
-%setup -q -n FNA
+%setup
 %if 0%{?suse_version} < 1550
 %patch0 -p1
 %endif
 
 %build
-cd lib/FAudio
 %cmake \
   -DCMAKE_BUILD_TYPE=Release \
   -DGSTREAMER=ON
 %cmake_build
 
 %install
-cd lib/FAudio
 %cmake_install
 
 %post -n libFAudio0 -p /sbin/ldconfig
 %postun -n libFAudio0 -p /sbin/ldconfig
 
 %files -n libFAudio0
-%license lib/FAudio/LICENSE
+%license LICENSE
 %{_libdir}/libFAudio.so.0*
 
 %files devel
-%license lib/FAudio/LICENSE
+%license LICENSE
 %{_includedir}/FAudio.h
 %{_includedir}/FAPOFX.h
 %{_includedir}/FACT3D.h

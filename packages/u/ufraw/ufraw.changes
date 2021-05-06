@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  6 13:08:15 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- ufraw-fix-c++.patch: fixed building with C++, just assume the glib
+  headers can handle extern "C" themselves.
+
+-------------------------------------------------------------------
 Mon Sep  2 07:16:57 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update ufraw-0.22-exiv2-0.27.patch to fix build with exiv 0.27.1.

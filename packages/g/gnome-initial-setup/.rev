@@ -80,4 +80,12 @@ Resub it :-)</comment>
     <comment>GNOME 40 - here we come (forwarded request 880954 from dimstar)</comment>
     <requestid>881126</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>89b2a1bdcd4460bc66165634dba412d7</srcmd5>
+    <version>40.1</version>
+    <time>1620334345</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 890071 from dimstar)</comment>
+    <requestid>890132</requestid>
+  </revision>
 </revisionlist>

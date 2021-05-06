@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  3 09:02:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.1:
+  + Fix icon not showing when Gnote is running in Gnome Shell.
+  + Fix the app-id.
+  + Fix build using newest GCC and dependencies.
+  + Fix compiler warnings regarding missing virtual destructors.
+  + Fix occasional crash when quiting.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Apr 17 09:17:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:

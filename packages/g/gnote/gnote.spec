@@ -19,7 +19,7 @@
 %define base_version 40
 
 Name:           gnote
-Version:        40.0
+Version:        40.1
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
@@ -78,7 +78,7 @@ translation-update-upstream
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-desktop-file-edit --add-category TextEditor %{buildroot}%{_datadir}/applications/org.gnome.gnote.desktop
+desktop-file-edit --add-category TextEditor %{buildroot}%{_datadir}/applications/org.gnome.Gnote.desktop
 %fdupes %{buildroot}%{_datadir}
 %find_lang %{name} %{?no_lang_C}
 
@@ -97,13 +97,13 @@ desktop-file-edit --add-category TextEditor %{buildroot}%{_datadir}/applications
 # Splitting does not make sense as it's just a lib for gnote itself (and it's plugins)
 %{_libdir}/libgnote-%{base_version}.so*
 %{_libdir}/libgnote.so
-%{_datadir}/applications/org.gnome.gnote.desktop
+%{_datadir}/applications/org.gnome.Gnote.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.gnote.gschema.xml
 %{_datadir}/gnote/
-%{_datadir}/icons/hicolor/*/apps/gnote.*
+%{_datadir}/icons/hicolor/*/apps/org.gnome.Gnote*
 %{_mandir}/man1/gnote.1%{?ext_man}
 %dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/org.gnome.gnote.appdata.xml
+%{_datadir}/metainfo/org.gnome.Gnote.appdata.xml
 
 %files -n gnome-shell-search-provider-%{name}
 %{_datadir}/dbus-1/services/org.gnome.Gnote.service

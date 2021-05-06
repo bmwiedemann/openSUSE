@@ -7,4 +7,12 @@
     <comment>Reintroduce gnome-commander to Tumbleweed</comment>
     <requestid>816090</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>60ab997b06fea57850d34fad57be58f9</srcmd5>
+    <version>1.12.1</version>
+    <time>1620334342</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.12.1 (forwarded request 889632 from dimstar)</comment>
+    <requestid>890150</requestid>
+  </revision>
 </revisionlist>

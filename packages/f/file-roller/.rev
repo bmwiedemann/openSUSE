@@ -1150,4 +1150,12 @@
 Fixed macro (as commented) (forwarded request 885296 from susnux)</comment>
     <requestid>885658</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>439dfcc7311614cb6010faecb0b75e08</srcmd5>
+    <version>3.40.0</version>
+    <time>1620334296</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.40.0 (forwarded request 889880 from mgorse)</comment>
+    <requestid>890097</requestid>
+  </revision>
 </revisionlist>

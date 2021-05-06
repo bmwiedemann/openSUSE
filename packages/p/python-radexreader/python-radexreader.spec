@@ -18,9 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-radexreader
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
-Summary:        Reader for the RADEX RD1212 Geiger counter
+Summary:        Reader for the RADEX RD1212 and ONE Geiger counters
 License:        GPL-2.0-or-later
 URL:            https://github.com/luigifab/python-radexreader
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -37,15 +37,16 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-The RadexReader is an user-space driver for the RADEX RD1212 Geiger counter.
-It allow to read and clear stored data via USB.
+The RadexReader is an user-space driver for the RADEX RD1212 and
+the RADEX ONE Geiger counters. It allow to read and clear stored
+data via USB.
 
 To avoid Access denied (insufficient permissions), don't forget
 to unplug the device after installation.
 
 %prep
 %setup -q -n python-radexreader-%{version}
-sed -i 's/python3-radexreader /python3-radexreader-rpm /g' src/cmd.py
+sed -i 's/python3-radexreader /python3-radexreader-rpm /g' src/radexreader.py
 sed -i 's/\#\!\/usr\/bin\/python3/\#/g' src/radexreader/__init__.py
 
 %build
@@ -59,7 +60,7 @@ cd src
 mkdir -p %{buildroot}%{_bindir}/
 mkdir -p %{buildroot}%{_udevrulesdir}/
 %python_expand install -p -m 644 ../debian/udev %{buildroot}%{_udevrulesdir}/60-python%{$python_bin_suffix}-radexreader.rules
-install -p -m 755 ../src/cmd.py  %{buildroot}%{_bindir}/radexreader
+install -p -m 755 ../src/radexreader.py  %{buildroot}%{_bindir}/radexreader
 %python_clone -a %{buildroot}%{_bindir}/radexreader
 
 %files %{python_files}

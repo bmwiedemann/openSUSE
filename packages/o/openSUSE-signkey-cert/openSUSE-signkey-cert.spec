@@ -16,18 +16,19 @@
 #
 # needssslcertforbuild
 
+
 %define startdate %(openssl x509 -in %{_sourcedir}/_projectcert.crt -inform PEM -noout -startdate | cut -d= -f 2)
 %define version %(echo "$(date --date="%{startdate}" +'%Y%m%d')")
-
 Name:           openSUSE-signkey-cert
-Version:	%{version}
+Version:        %{version}
 Release:        0
 Summary:        Certificate for openSUSE KMP signing key
 License:        GPL-2.0-or-later
 Group:          System/Kernel
 BuildRequires:  openssl >= 0.9.8
 Requires(post): mokutil
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# matches mokutil
+ExclusiveArch:  x86_64 aarch64 ppc64le ppc64
 
 %description
 This package includes the certificate of openSUSE signing key for signing
@@ -44,7 +45,6 @@ fpr=$(openssl x509 -sha1 -fingerprint -inform DER -noout -in kmp-key.der | cut -
 install -m 644 kmp-key.der %{buildroot}/%{_sysconfdir}/uefi/certs/${fpr}-kmp.crt
 
 %files
-%defattr(-,root,root)
 %dir %{_sysconfdir}/uefi/
 %dir %{_sysconfdir}/uefi/certs/
 %{_sysconfdir}/uefi/certs/*.crt
@@ -66,7 +66,7 @@ exit 0
 %preun
 if command -v mokutil >/dev/null; then
 	# copy all existing *-kmp.crt to *-kmp.crt.del as backup files
-	# for using by mokutil --delete 
+	# for using by mokutil --delete
 	# those *-kmp.crt.del will be handled in postun
 	certs=$(ls %{_sysconfdir}/uefi/certs/*-kmp.crt 2>/dev/null || true)
 	for cert in $certs

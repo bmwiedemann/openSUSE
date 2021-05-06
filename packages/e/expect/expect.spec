@@ -1,7 +1,7 @@
 #
 # spec file for package expect
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,13 +59,14 @@ expect package loaded.
 %patch4
 
 %build
+export CFLAGS="%{optflags} -fPIC -pie"
 autoreconf
 %configure \
 	--with-tcl=%_libdir \
 	--with-tk=no_tk \
 	--with-tclinclude=%_includedir \
 	--enable-shared
-make %{?_smp_mflags} all pkglibdir=%_libdir/tcl/%name%version
+make SHLIB_LD="gcc -shared" %{?_smp_mflags} all pkglibdir=%_libdir/tcl/%name%version
 
 %check
 make %{?_smp_mflags} test

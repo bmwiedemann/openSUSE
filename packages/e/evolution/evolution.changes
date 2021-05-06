@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 30 12:55:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.40.1:
+  + EWebDAVBrowser: Preset default calendar color and order.
+  + Composer: Incorrect <BR> in quoted line with spaces only.
+  + ESourceComboBox: Check ESource's BackendName is filled before
+    using it.
+  + Ensure non-const pointers passed to I_CAL_IS_... functions.
+  + EToDoPane: Do not pass recurrence ID when deleting all
+    instances.
+  + PrintableOptions.cmake: Correct variable name comparison.
+  + Use GWeakRef in html_editor_actions_notify_html_mode_cb().
+  + help: Cover selecting composer fonts; update composer toolbar
+    items.
+  + Updated translations.
+- Drop 7cfe4190e.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Apr 29 07:46:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 7cfe4190e.patch: Fix build with cmake 3.20.1.

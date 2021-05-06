@@ -21,7 +21,7 @@
 %define GRADLE_TASKS installdist
 %define GRADLE_FLAGS --offline --gradle-user-home /tmp --no-daemon --exclude-task generateJava
 %define LS_PREFIX %{_datadir}/linstor-server
-%define FIREWALLD_SERVICES %{_libexecdir}/firewalld/services
+%define FIREWALLD_SERVICES %{_prefix}/lib/firewalld/services
 Name:           linstor
 Version:        1.11.1
 Release:        0
@@ -31,6 +31,7 @@ Group:          Productivity/Clustering/HA
 URL:            https://github.com/LINBIT/linstor-server
 Source:         http://www.linbit.com/downloads/linstor/%{name}-server-%{version}.tar.gz
 BuildRequires:  fdupes
+BuildRequires:  firewalld
 BuildRequires:  firewall-macros
 BuildRequires:  gradle
 BuildRequires:  java-1_8_0-openjdk-devel
@@ -71,7 +72,6 @@ mkdir -p %{buildroot}/%{_unitdir}
 cp -r %{_builddir}/%{NAME_VERS}/scripts/linstor-controller.service %{buildroot}/%{_unitdir}
 cp -r %{_builddir}/%{NAME_VERS}/scripts/linstor-satellite.service %{buildroot}/%{_unitdir}
 mkdir -p %{buildroot}/%{FIREWALLD_SERVICES}
-mkdir -p %{buildroot}/%{_prefix}/lib/firewalld
 %if 0
 #drbd.xml is included in yast2-drbd
 cp %{_builddir}/%{NAME_VERS}/scripts/firewalld/drbd.xml %{buildroot}/%{FIREWALLD_SERVICES}
@@ -104,9 +104,6 @@ Linstor shared components between linstor-controller and linstor-satellite
 %{LS_PREFIX}/lib/server-%{version}.jar
 %dir %{LS_PREFIX}/lib/conf
 %{LS_PREFIX}/lib/conf/logback.xml
-%dir %attr(755,root,root) %{_prefix}/lib/firewalld
-%dir %attr(755,root,root) %{FIREWALLD_SERVICES}
-%dir %attr(755,root,root) %{_libexecdir}/firewalld
 
 ### controller
 

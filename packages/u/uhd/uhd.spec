@@ -1,7 +1,7 @@
 #
 # spec file for package uhd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          Hardware/Other
 URL:            https://files.ettus.com/manual/
 Source0:        https://github.com/EttusResearch/uhd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/EttusResearch/uhd/releases/download/v%{version}/uhd-images_%{version}.tar.xz
+# PATCH-FIX-UPSTREAM -- fix compilation with Boost 1.76
+Patch0:         uhd_fix_boost.patch
 BuildRequires:  cmake >= 2.6
 BuildRequires:  docutils
 BuildRequires:  doxygen
@@ -39,7 +41,6 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(udev)
 Requires:       udev
-%if 0%{?suse_version} > 1325
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
@@ -47,9 +48,6 @@ BuildRequires:  libboost_serialization-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel >= 1.36.0
-%endif
 
 %description
 The UHD is the "Universal Software Radio Peripheral" hardware driver.
@@ -87,16 +85,12 @@ Summary:        Development files for uhd
 Group:          Development/Libraries/Other
 Requires:       %{libname} = %{version}
 Recommends:     %{name}-doc
-%if 0%{?suse_version} > 1325
 Requires:       libboost_filesystem-devel
 Requires:       libboost_program_options-devel
 Requires:       libboost_regex-devel
 Requires:       libboost_serialization-devel
 Requires:       libboost_test-devel
 Requires:       libboost_thread-devel
-%else
-Requires:       boost-devel
-%endif
 
 %description    devel
 The UHD is the "Universal Software Radio Peripheral" hardware driver.
@@ -125,7 +119,7 @@ BuildArch:      noarch
 This package contains binary firmware images for the Universal Hardware Driver (UHD).
 
 %prep
-%setup -q
+%autosetup -p1
 # fix python shebangs
 find . -type f -name "*.py" -exec sed -i '/^#!/ s|.*|#!%{_bindir}/python3|' {} \;
 # remove buildtime from documentation
@@ -158,7 +152,7 @@ sed -i 's/BUS==/SUBSYSTEM==/;s/SYSFS{/ATTRS{/;s/MODE:="0666"/GROUP:="usrp", MODE
 install -m 0644 -D %{buildroot}%{_libdir}/uhd/utils/uhd-usrp.rules %{buildroot}%{_udevrulesdir}/10-usrp-uhd.rules
 rm %{buildroot}%{_libdir}/uhd/utils/uhd-usrp.rules
 
-## Move documentation at the default docdir
+## Move documentation to the default docdir
 mkdir -p  %{buildroot}%{_docdir}/uhd
 mv %{buildroot}%{_datadir}/doc/uhd %{buildroot}%{_docdir}/
 mv %{buildroot}%{_libdir}/uhd/utils/*[!.rules] %{buildroot}%{_bindir}

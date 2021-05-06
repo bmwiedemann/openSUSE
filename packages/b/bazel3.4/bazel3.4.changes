@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  6 12:26:36 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Add bazel-3.4.1-gcc11.patch to add #include that are no longer
+  pulled implicitely by GCC 11 standard library.  [boo#1181864]
+
+-------------------------------------------------------------------
 Wed Jan 27 10:58:59 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Do not build on %arm - boo#1178564

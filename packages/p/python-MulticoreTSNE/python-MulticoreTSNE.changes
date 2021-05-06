@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  5 17:17:32 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- fix cmake argument generation in setup.py
+
+-------------------------------------------------------------------
 Fri Jan 29 22:51:27 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip python36 flavor: python36-scipy not in Tumbleweed

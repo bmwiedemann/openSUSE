@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  6 13:41:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 3.50.2
+  * Corrects a permission issue on the configure file
+  * Update of the doc
+  * Fix update of the chained list of color elements after a delete
+
+-------------------------------------------------------------------
 Mon Aug 31 14:14:50 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.49.8:

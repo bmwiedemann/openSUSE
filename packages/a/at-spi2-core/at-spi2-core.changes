@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  2 17:09:44 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.40.1:
+  + Fix double free when removing event listeners.
+  + Fix numlock detection.
+
+-------------------------------------------------------------------
 Sat Mar 20 08:32:43 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.40.0:

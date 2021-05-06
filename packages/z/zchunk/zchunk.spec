@@ -22,15 +22,13 @@
 %global devname libzck-devel
 
 Name:           zchunk
-Version:        1.1.9
+Version:        1.1.11
 Release:        0
 Summary:        Compressed file format that allows easy deltas
 License:        BSD-2-Clause AND MIT
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/zchunk/zchunk
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/zchunk/zchunk/pull/39
-Patch0:         fix-test-argp.patch
 BuildRequires:  meson >= 0.44.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcurl)
@@ -94,7 +92,7 @@ install -p contrib/gen_xml_dictionary %{buildroot}%{_libexecdir}/zck_gen_xml_dic
 %check
 %meson_test
 
-%post -n %{libname} -p /sbin/ldconfig
+%post -n   %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files

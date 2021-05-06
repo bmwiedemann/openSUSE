@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  4 06:53:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add exclusivearch to match mokutil setting 
+
+-------------------------------------------------------------------
 Mon Apr 19 05:23:50 UTC 2021 - jlee@suse.com
 
 - Add new package openSUSE-signkey-cert (bsc#1182641)

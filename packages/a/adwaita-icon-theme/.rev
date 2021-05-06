@@ -232,4 +232,12 @@
     <comment>Update to 40.0 (forwarded request 886217 from dimstar)</comment>
     <requestid>887473</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c07dfe4520512c8362485b8829122c53</srcmd5>
+    <version>40.1.1</version>
+    <time>1620334314</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 40.1.1 (forwarded request 890340 from dimstar)</comment>
+    <requestid>890359</requestid>
+  </revision>
 </revisionlist>

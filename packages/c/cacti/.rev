@@ -306,4 +306,13 @@
 </comment>
     <requestid>856911</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e3a2148269e8bad69b062eab8ebcb899</srcmd5>
+    <version>1.2.17</version>
+    <time>1620334359</time>
+    <user>dimstar_suse</user>
+    <comment>cacti 1.2.17 CVE-2020-35701 boo#1180804
+</comment>
+    <requestid>890825</requestid>
+  </revision>
 </revisionlist>

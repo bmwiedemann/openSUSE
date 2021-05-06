@@ -17,10 +17,10 @@
 
 
 Name:           bijiben
-Version:        40.0
+Version:        40.1
 Release:        0
 Summary:        Note editor for GNOME
-License:        GPL-3.0-or-later AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Bijiben
 Source0:        https://download.gnome.org/sources/bijiben/40/%{name}-%{version}.tar.xz

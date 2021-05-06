@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 30 16:25:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.2:
+  + HdySqueezer:
+    - Make the vertical orientation work.
+    - Fix usage of xalign with RTL.
+  + HdyComboRow: Focus selected row when opening the popover.
+  + HdyAvatar: Fix a crash when loading icons.
+  + Demo: Fix RTL sidebar icons.
+
+-------------------------------------------------------------------
 Sat Apr 17 13:33:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.2.1:

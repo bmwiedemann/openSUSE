@@ -168,4 +168,13 @@ Thus, the -fpermissive flag needs to be added.
 </comment>
     <requestid>641334</requestid>
   </revision>
+  <revision rev="21" vrev="16">
+    <srcmd5>fa542eaa9fb457edb98b0dca3734b8ed</srcmd5>
+    <version>4.2.0</version>
+    <time>1620334360</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1185665: moving the RPM macros to the proper directory.
+</comment>
+    <requestid>890835</requestid>
+  </revision>
 </revisionlist>

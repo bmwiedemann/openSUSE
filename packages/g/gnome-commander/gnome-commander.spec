@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-commander
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           gnome-commander
-Version:        1.10.3
+Version:        1.12.1
 Release:        0
 Summary:        A file manager for the GNOME desktop environment
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            http://gcmd.github.io/
-Source:         http://download.gnome.org/sources/gnome-commander/1.10/%{name}-%{version}.tar.xz
+Source:         http://download.gnome.org/sources/gnome-commander/1.12/%{name}-%{version}.tar.xz
 
+BuildRequires:  c++_compiler
 BuildRequires:  chmlib-devel
 BuildRequires:  fdupes
-BuildRequires:  c++_compiler
 BuildRequires:  itstool
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
@@ -36,9 +36,9 @@ BuildRequires:  pkgconfig(exiv2) >= 0.14
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gnome-keyring-1) >= 2.22
+BuildRequires:  pkgconfig(gnome-vfs-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24.0
-BuildRequires:  pkgconfig(gnome-vfs-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(libgsf-1) >= 1.12.0
 BuildRequires:  pkgconfig(poppler-glib) >= 0.18
 BuildRequires:  pkgconfig(taglib) >= 1.4
@@ -89,7 +89,6 @@ find %{buildroot}%{_datadir} -size 0 -delete
 %doc AUTHORS ChangeLog NEWS README TODO
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_bindir}/*
-%{_datadir}/%{name}/
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-commander.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.gnome-commander.gschema.xml

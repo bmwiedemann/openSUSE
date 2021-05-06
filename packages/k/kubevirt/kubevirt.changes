@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  6 11:19:59 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install virt-launcher SELinux policy (bsc#1185714)
+
+-------------------------------------------------------------------
 Thu Apr 29 11:23:54 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Include release number into docker tag

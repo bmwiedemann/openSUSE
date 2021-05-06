@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May  2 17:21:52 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- global 6.6.6:
+  * gtags.el: Added native support for TRAMP. 'global-client'
+    command is no longer needed to use TRAMP.
+  * gtags: environment variable GTAGSFORCECPP is deprecated.
+  * gtags: If GTAGSFORCECPP was defined and --explain was used and
+    the first file is a '*.h', gtags crashed
+- remove deprecated texinfo packaging macros
+
+-------------------------------------------------------------------
 Sat Sep 19 06:48:25 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - global 6.6.5:

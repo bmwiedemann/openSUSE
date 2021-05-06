@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  3 15:00:53 UTC 2021 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.0.0
+  * Added
+    - Automated tests
+    - Extensible Plugin interface for plugins (eg. this one)
+    - Added plugins for chrome, dotnet, edge, teams, packman, plex,
+      skype, slack, teamviewer, vivaldi, vscode, vscodium, zoom
+  * Changed
+    - Rewrote the complete tool in python3
+
+-------------------------------------------------------------------
 Fri Apr 16 09:27:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop owning dirs provided by filesytem rpm (bsc#1184786) 

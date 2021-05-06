@@ -1,7 +1,7 @@
 #
 # spec file for package xdiskusage
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xdiskusage
-Version:        1.52
+Version:        1.54
 Release:        0
 Summary:        Graphically displays the amount of disk space used by each subdirectory
 License:        GPL-2.0-only

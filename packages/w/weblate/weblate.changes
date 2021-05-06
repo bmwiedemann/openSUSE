@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May  3 09:26:01 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.6.1
+  * Remove obsolete spam protection code.
+  * Improve source plural check accuracy.
+  * Update list of user interface languages in Docker.
+  * Improved error messages when creating pull requests.
+  * Fixed creating pull requests on Pagure.
+  * Fixed triggering automatically installed add-ons.
+  * Fixed possible caching issues on upgrade.
+  * Fixed adding new units to monolingual translations using upload.
+
+-------------------------------------------------------------------
+Fri Apr 30 15:07:08 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Require borgbackup, otherwise some commands fail.
+
+-------------------------------------------------------------------
 Tue Apr 20 19:04:49 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to 4.6:

@@ -1,7 +1,7 @@
 #
 # spec file for package ffcall
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Summary:        Libraries for foreign function call interfaces
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Other
 Provides:       %{name}-devel = %version-%release
-Url:            https://www.gnu.org/software/libffcall/
+URL:            https://www.gnu.org/software/libffcall/
 #               https://git.savannah.gnu.org/cgit/libffcall.git/snapshot/libffcall-<version>.tar.gz
 Source0:        https://ftp.gnu.org/gnu/libffcall/libffcall-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/libffcall/libffcall-%{version}.tar.gz.sig
@@ -41,6 +41,10 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       ffcall-devel
 Requires:       libffcall%{somajor} = %{version}
 ExclusiveArch:  %{ffcall_arches}
+
+%if ! %{defined _rpmmacrodir}
+%define _rpmmacrodir %{_sysconfdir}/rpm
+%endif
 
 %description
 This is a collection of four libraries which can be used to build
@@ -111,8 +115,8 @@ fi
 cd %{buildroot}%{_mandir}/man3
 
 # Advertise supported architectures
-mkdir -p %{buildroot}%{_sysconfdir}/rpm
-cat > %{buildroot}%{_sysconfdir}/rpm/macros.ffcall << EOF
+mkdir -p %{buildroot}%{_rpmmacrodir}
+cat > %{buildroot}%{_rpmmacrodir}/macros.%{name} << EOF
 # arches that ffcall supports
 %%ffcall_arches %{ffcall_arches}
 EOF
@@ -142,7 +146,7 @@ done
 %{_libdir}/*.so
 %{_includedir}/*
 %doc %{_mandir}/man*/*
-%config %{_sysconfdir}/rpm/macros.%{name}
+%{_rpmmacrodir}/macros.%{name}
 
 %files -n libffcall%{somajor}
 %defattr(-,root,root,-)

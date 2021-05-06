@@ -1,7 +1,7 @@
 #
 # spec file for package cacti-spine
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%{!?make_build: %define make_build make %{?_smp_mflags}}
 Name:           cacti-spine
-Version:        1.2.16
+Version:        1.2.17
 Release:        0
 Summary:        Threaded poller for Cacti written in C
 License:        LGPL-2.1-or-later
@@ -41,7 +42,7 @@ excellent performance.
 %build
 ./bootstrap
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

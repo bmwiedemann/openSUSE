@@ -16,4 +16,13 @@
   * Fix issue #16</comment>
     <requestid>889473</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>00d0a5130f04fd9735e8dec5078e3442</srcmd5>
+    <version>0.1.5</version>
+    <time>1620334366</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.5:
+  * Fix flickering screen while loading feeds</comment>
+    <requestid>890906</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,6 @@
 %global with_docs 0
 
 # Shared Library soNUMs, to make it easier for updates
-# When updating the sonums, do not forget to also update baselibs.conf
 %define so_camel 62
 %define so_ebackend 10
 %define so_edataserver 26
@@ -32,16 +31,13 @@
 %bcond_without introspection
 
 Name:           evolution-data-server
-Version:        3.40.0
+Version:        3.40.1
 Release:        0
 Summary:        Evolution Data Server
 License:        LGPL-2.0-only
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Apps/Evolution
 Source0:        https://download.gnome.org/sources/evolution-data-server/3.40/%{name}-%{version}.tar.xz
-Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM c95a70bfeae25b.patch dimstar@opensuse.org -- Fix build with cmake 3.20.1
-Patch0:         https://gitlab.gnome.org/GNOME/evolution-data-server/-/commit/c95a70bfeae25b.patch
 
 BuildRequires:  cmake
 BuildRequires:  db-devel
@@ -64,6 +60,8 @@ BuildRequires:  pkgconfig(libical) >= 3.0.5
 BuildRequires:  pkgconfig(libical-glib) >= 3.0.7
 # For adressbook data generating
 BuildRequires:  python3-base
+BuildRequires:  libboost_thread-devel
+BuildRequires:  libphonenumber-devel
 BuildRequires:  sqlite3-devel >= 3.7.17
 BuildRequires:  translation-update-upstream
 BuildRequires:  vala >= 0.22.0
@@ -76,6 +74,7 @@ BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.25
 BuildRequires:  pkgconfig(libnotify) >= 0.7
 BuildRequires:  pkgconfig(libsecret-unstable) >= 0.5
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(protobuf) >= 2.4
 BuildRequires:  pkgconfig(webkit2gtk-4.0) >= 2.11.91
 Requires:       mozilla-nss
 # typelib-1_0-ECalendar-1_2 was dropped with e-d-s 3.7.3 due to libical not being introspecatble.
@@ -329,6 +328,7 @@ translation-update-upstream
     %{?with_introspection:\
     -DENABLE_VALA_BINDINGS=ON \
     -DENABLE_INTROSPECTION=ON} \
+    -DWITH_PHONENUMBER=ON \
     -DENABLE_DBUS_SESSION_TOOL=OFF \
     %gtkdoc_flags \
     %{nil}

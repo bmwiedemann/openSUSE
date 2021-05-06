@@ -377,4 +377,13 @@
     <comment></comment>
     <requestid>729263</requestid>
   </revision>
+  <revision rev="51" vrev="9">
+    <srcmd5>2a96a29ef48bb8231ac0b8d1f3fc9228</srcmd5>
+    <version>0.22</version>
+    <time>1620334383</time>
+    <user>dimstar_suse</user>
+    <comment>- ufraw-fix-c++.patch: fixed building with C++, just assume the glib
+  headers can handle extern &quot;C&quot; themselves. (forwarded request 891035 from msmeissn)</comment>
+    <requestid>891036</requestid>
+  </revision>
 </revisionlist>

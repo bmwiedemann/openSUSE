@@ -17,7 +17,7 @@
 
 
 Name:           neix
-Version:        0.1.4
+Version:        0.1.5
 Release:        0
 Summary:        News Reader for Text Terminals
 License:        GPL-3.0-or-later

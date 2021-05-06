@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May  4 14:15:40 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.5
+- Changes since 5.21.4:
+  * effects: Properly reset present times in coverswitch and flipswitch effects (kde#433471)
+  * Fix crash when stopping PipeWire streaming (kde#428268,kde#435588)
+  * lockscreen: also activate lock screen windows (kde#427882)
+  * wayland: Check workspace position after creating decoration (kde#432326)
+  * platforms/drm: Fix crash in EglGbmBackend::presentOnOutput()
+
+-------------------------------------------------------------------
 Tue Apr  6 14:00:38 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.4

@@ -1,0 +1,540 @@
+Author: Adam Majer <amajer@suse.de>
+Date: Fri May 11 16:10:16 CEST 2018
+Summary: Generate versioned binaries
+
+Generate versioned binaries and install paths
+so we can allow concurrent installations and
+management via update_alternatives.
+
+This is also important for generation of binary
+modules for multiple versions of NodeJS
+Index: node-v16.0.0/Makefile
+===================================================================
+--- node-v16.0.0.orig/Makefile
++++ node-v16.0.0/Makefile
+@@ -47,7 +47,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
+ EXEEXT := $(shell $(PYTHON) -c \
+ 		"import sys; print('.exe' if sys.platform == 'win32' else '')")
+ 
+-NODE_EXE = node$(EXEEXT)
++NODE_EXE = node16$(EXEEXT)
+ NODE ?= ./$(NODE_EXE)
+ NODE_G_EXE = node_g$(EXEEXT)
+ NPM ?= ./deps/npm/bin/npm-cli.js
+Index: node-v16.0.0/tools/install.py
+===================================================================
+--- node-v16.0.0.orig/tools/install.py
++++ node-v16.0.0/tools/install.py
+@@ -81,34 +81,34 @@ def uninstall(paths, dst):
+     try_remove(path, dst)
+ 
+ def npm_files(action):
+-  target_path = sysconfig.get_config_var("LIB") + '/node_modules/npm/'
++  target_path = sysconfig.get_config_var("LIBDIR") + '/node_modules/npm16/'
+ 
+   # don't install npm if the target path is a symlink, it probably means
+   # that a dev version of npm is installed there
+-  if os.path.islink(abspath(install_path, target_path)): return
++  if os.path.islink(abspath(install_path, '..', target_path)): return
+ 
+   # npm has a *lot* of files and it'd be a pain to maintain a fixed list here
+   # so we walk its source directory instead...
+   for dirname, subdirs, basenames in os.walk('deps/npm', topdown=True):
+     subdirs[:] = [subdir for subdir in subdirs if subdir != 'test']
+     paths = [os.path.join(dirname, basename) for basename in basenames]
+-    action(paths, target_path + dirname[9:] + '/')
++    action(paths, install_path + '/..' + target_path + dirname[9:] + '/')
+ 
+   # create/remove symlink
+-  link_path = abspath(install_path, 'bin/npm')
++  link_path = abspath(install_path, 'bin/npm16')
+   if action == uninstall:
+-    action([link_path], 'bin/npm')
++    action([link_path], 'bin/npm16')
+   elif action == install:
+-    try_symlink("../" + sysconfig.get_config_var("LIB") + '/node_modules/npm/bin/npm-cli.js',link_path)
++    try_symlink("../../" + sysconfig.get_config_var("LIBDIR") + '/node_modules/npm16/bin/npm-cli.js',link_path)
+   else:
+     assert 0  # unhandled action type
+ 
+   # create/remove symlink
+-  link_path = abspath(install_path, 'bin/npx')
++  link_path = abspath(install_path, 'bin/npx16')
+   if action == uninstall:
+-    action([link_path], 'bin/npx')
++    action([link_path], 'bin/npx16')
+   elif action == install:
+-    try_symlink('../' + sysconfig.get_config_var("LIB") + '/node_modules/npm/bin/npx-cli.js', link_path)
++    try_symlink('../../' + sysconfig.get_config_var("LIBDIR") + '/node_modules/npm16/bin/npx-cli.js', link_path)
+   else:
+     assert 0 # unhandled action type
+ 
+@@ -122,7 +122,7 @@ def subdir_files(path, dest, action):
+ 
+ def files(action):
+   is_windows = sys.platform == 'win32'
+-  output_file = 'node'
++  output_file = 'node16'
+   output_prefix = 'out/Release/'
+ 
+   if 'false' == variables.get('node_shared'):
+@@ -140,10 +140,10 @@ def files(action):
+     action([output_prefix + output_file], 'lib/' + output_file)
+ 
+   if 'true' == variables.get('node_use_dtrace'):
+-    action(['out/Release/node.d'], sysconfig.get_config_var("LIB") + '/dtrace/node.d')
++    action(['out/Release/node.d'], ".." + sysconfig.get_config_var("LIBDIR") + '/dtrace/node.d')
+ 
+   # behave similarly for systemtap
+-  action(['src/node.stp'], 'share/systemtap/tapset/')
++  action(['src/node.stp'], 'share/systemtap/tapset/node16.stp')
+ 
+   action(['deps/v8/tools/gdbinit'], 'share/doc/node/')
+   action(['deps/v8/tools/lldb_commands.py'], 'share/doc/node/')
+@@ -151,7 +151,7 @@ def files(action):
+   if 'freebsd' in sys.platform or 'openbsd' in sys.platform:
+     action(['doc/node.1'], 'man/man1/')
+   else:
+-    action(['doc/node.1'], 'share/man/man1/')
++    action(['doc/node.1'], 'share/man/man1/node16.1')
+ 
+   if 'true' == variables.get('node_install_npm'): npm_files(action)
+ 
+@@ -182,28 +182,28 @@ def headers(action):
+     'src/node_buffer.h',
+     'src/node_object_wrap.h',
+     'src/node_version.h',
+-  ], 'include/node/')
++  ], 'include/node16/')
+ 
+   # Add the expfile that is created on AIX
+   if sys.platform.startswith('aix'):
+-    action(['out/Release/node.exp'], 'include/node/')
++    action(['out/Release/node.exp'], 'include/node16/')
+ 
+-  subdir_files('deps/v8/include', 'include/node/', wanted_v8_headers)
++  subdir_files('deps/v8/include', 'include/node16/', wanted_v8_headers)
+ 
+   if 'false' == variables.get('node_shared_libuv'):
+-    subdir_files('deps/uv/include', 'include/node/', action)
++    subdir_files('deps/uv/include', 'include/node16/', action)
+ 
+   if 'true' == variables.get('node_use_openssl') and \
+      'false' == variables.get('node_shared_openssl'):
+-    subdir_files('deps/openssl/openssl/include/openssl', 'include/node/openssl/', action)
+-    subdir_files('deps/openssl/config/archs', 'include/node/openssl/archs', action)
+-    subdir_files('deps/openssl/config', 'include/node/openssl', action)
++    subdir_files('deps/openssl/openssl/include/openssl', 'include/node16/openssl/', action)
++    subdir_files('deps/openssl/config/archs', 'include/node16/openssl/archs', action)
++    subdir_files('deps/openssl/config', 'include/node16/openssl', action)
+ 
+   if 'false' == variables.get('node_shared_zlib'):
+     action([
+       'deps/zlib/zconf.h',
+       'deps/zlib/zlib.h',
+-    ], 'include/node/')
++    ], 'include/node16/')
+ 
+ def run(args):
+   global node_prefix, install_path, target_defaults, variables
+Index: node-v16.0.0/doc/node.1
+===================================================================
+--- node-v16.0.0.orig/doc/node.1
++++ node-v16.0.0/doc/node.1
+@@ -30,24 +30,24 @@
+ .Dt NODE 1
+ .
+ .Sh NAME
+-.Nm node
++.Nm node16
+ .Nd server-side JavaScript runtime
+ .
+ .\"======================================================================
+ .Sh SYNOPSIS
+-.Nm node
++.Nm node16
+ .Op Ar options
+ .Op Ar v8-options
+ .Op Fl e Ar string | Ar script.js | Fl
+ .Op Fl -
+ .Op Ar arguments ...
+ .
+-.Nm node
++.Nm node16
+ .Cm inspect
+ .Op Fl e Ar string | Ar script.js | Fl | Ar <host>:<port>
+ .Ar ...
+ .
+-.Nm node
++.Nm node16
+ .Op Fl -v8-options
+ .
+ .\"======================================================================
+Index: node-v16.0.0/src/node.stp
+===================================================================
+--- node-v16.0.0.orig/src/node.stp
++++ node-v16.0.0/src/node.stp
+@@ -19,7 +19,7 @@
+ // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+ // USE OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+-probe node_net_server_connection = process("node").mark("net__server__connection")
++probe node_net_server_connection = process("node16").mark("net__server__connection")
+ {
+   remote = user_string($arg2);
+   port = $arg3;
+@@ -32,7 +32,7 @@ probe node_net_server_connection = proce
+     fd);
+ }
+ 
+-probe node_net_stream_end = process("node").mark("net__stream__end")
++probe node_net_stream_end = process("node16").mark("net__stream__end")
+ {
+   remote = user_string($arg2);
+   port = $arg3;
+@@ -45,7 +45,7 @@ probe node_net_stream_end = process("nod
+     fd);
+ }
+ 
+-probe node_http_server_request = process("node").mark("http__server__request")
++probe node_http_server_request = process("node16").mark("http__server__request")
+ {
+   remote = user_string($arg3);
+   port = $arg4;
+@@ -62,7 +62,7 @@ probe node_http_server_request = process
+     fd);
+ }
+ 
+-probe node_http_server_response = process("node").mark("http__server__response")
++probe node_http_server_response = process("node16").mark("http__server__response")
+ {
+   remote = user_string($arg2);
+   port = $arg3;
+@@ -75,7 +75,7 @@ probe node_http_server_response = proces
+     fd);
+ }
+ 
+-probe node_http_client_request = process("node").mark("http__client__request")
++probe node_http_client_request = process("node16").mark("http__client__request")
+ {
+   remote = user_string($arg3);
+   port = $arg4;
+@@ -92,7 +92,7 @@ probe node_http_client_request = process
+     fd);
+ }
+ 
+-probe node_http_client_response = process("node").mark("http__client__response")
++probe node_http_client_response = process("node16").mark("http__client__response")
+ {
+   remote = user_string($arg2);
+   port = $arg3;
+@@ -105,7 +105,7 @@ probe node_http_client_response = proces
+     fd);
+ }
+ 
+-probe node_gc_start = process("node").mark("gc__start")
++probe node_gc_start = process("node16").mark("gc__start")
+ {
+   scavenge = 1 << 0;
+   compact = 1 << 1;
+@@ -125,7 +125,7 @@ probe node_gc_start = process("node").ma
+     flags);
+ }
+ 
+-probe node_gc_stop = process("node").mark("gc__done")
++probe node_gc_stop = process("node16").mark("gc__done")
+ {
+   scavenge = 1 << 0;
+   compact = 1 << 1;
+Index: node-v16.0.0/deps/npm/man/man1/npm.1
+===================================================================
+--- node-v16.0.0.orig/deps/npm/man/man1/npm.1
++++ node-v16.0.0/deps/npm/man/man1/npm.1
+@@ -1,6 +1,6 @@
+ .TH "NPM" "1" "April 2021" "" ""
+ .SH "NAME"
+-\fBnpm\fR \- javascript package manager
++\fBnpm16\fR \- javascript package manager
+ .SS Synopsis
+ .P
+ .RS 2
+@@ -21,7 +21,7 @@ It is extremely configurable to support
+ commonly, you use it to publish, discover, install, and develop node
+ programs\.
+ .P
+-Run \fBnpm help\fP to get a list of available commands\.
++Run \fBnpm16 help\fP to get a list of available commands\.
+ .SS Important
+ .P
+ npm comes preconfigured to use npm's public registry at
+@@ -37,14 +37,14 @@ their terms of use\.
+ You probably got npm because you want to install stuff\.
+ .P
+ The very first thing you will most likely want to run in any node
+-program is \fBnpm install\fP to install its dependencies\.
++program is \fBnpm16 install\fP to install its dependencies\.
+ .P
+-You can also run \fBnpm install blerg\fP to install the latest version of
++You can also run \fBnpm16 install blerg\fP to install the latest version of
+ "blerg"\.  Check out npm help \fBinstall\fP for more
+ info\.  It can do a lot of stuff\.
+ .P
+-Use the \fBnpm search\fP command to show everything that's available in the
+-public registry\.  Use \fBnpm ls\fP to show everything you've installed\.
++Use the \fBnpm16 search\fP command to show everything that's available in the
++public registry\.  Use \fBnpm16 ls\fP to show everything you've installed\.
+ .SS Dependencies
+ .P
+ If a package lists a dependency using a git URL, npm will install that
+@@ -95,7 +95,7 @@ npm help \fBpackage\.json\fP\|\.
+ .IP \(bu 2
+ link:
+ Links your current working code into Node's path, so that you don't
+-have to reinstall every time you make a change\.  Use npm help \fBnpm
++have to reinstall every time you make a change\.  Use npm help \fBnpm16
+ link\fP to do this\.
+ .IP \(bu 2
+ install:
+@@ -178,18 +178,18 @@ https://github\.com/npm/rfcs
+ .SS See Also
+ .RS 0
+ .IP \(bu 2
+-npm help help
++npm16 help help
+ .IP \(bu 2
+-npm help package\.json
++npm16 help package\.json
+ .IP \(bu 2
+-npm help npmrc
++npm16 help npmrc
+ .IP \(bu 2
+-npm help config
++npm16 help config
+ .IP \(bu 2
+-npm help install
++npm16 help install
+ .IP \(bu 2
+-npm help prefix
++npm16 help prefix
+ .IP \(bu 2
+-npm help publish
++npm16 help publish
+ 
+ .RE
+Index: node-v16.0.0/src/node_main.cc
+===================================================================
+--- node-v16.0.0.orig/src/node_main.cc
++++ node-v16.0.0/src/node_main.cc
+@@ -122,6 +122,7 @@ int main(int argc, char* argv[]) {
+ #endif
+   // Disable stdio buffering, it interacts poorly with printf()
+   // calls elsewhere in the program (e.g., any logging from V8.)
++  setenv("NODE_VERSION", "16", 0);
+   setvbuf(stdout, nullptr, _IONBF, 0);
+   setvbuf(stderr, nullptr, _IONBF, 0);
+   return node::Start(argc, argv);
+Index: node-v16.0.0/tools/test.py
+===================================================================
+--- node-v16.0.0.orig/tools/test.py
++++ node-v16.0.0/tools/test.py
+@@ -933,7 +933,7 @@ class Context(object):
+     if self.vm is not None:
+       return self.vm
+     if arch == 'none':
+-      name = 'out/Debug/node' if mode == 'debug' else 'out/Release/node'
++      name = 'out/Debug/node' if mode == 'debug' else 'out/Release/node16'
+     else:
+       name = 'out/%s.%s/node' % (arch, mode)
+ 
+Index: node-v16.0.0/node.gyp
+===================================================================
+--- node-v16.0.0.orig/node.gyp
++++ node-v16.0.0/node.gyp
+@@ -23,8 +23,8 @@
+     'node_use_openssl%': 'true',
+     'node_shared_openssl%': 'false',
+     'node_v8_options%': '',
+-    'node_core_target_name%': 'node',
+-    'node_lib_target_name%': 'libnode',
++    'node_core_target_name%': 'node16',
++    'node_lib_target_name%': 'libnode16',
+     'node_intermediate_lib_type%': 'static_library',
+     'node_builtin_modules_path%': '',
+     'library_files': [
+Index: node-v16.0.0/deps/npm/man/man1/npx.1
+===================================================================
+--- node-v16.0.0.orig/deps/npm/man/man1/npx.1
++++ node-v16.0.0/deps/npm/man/man1/npx.1
+@@ -5,15 +5,15 @@
+ .P
+ .RS 2
+ .nf
+-npm exec \-\- <pkg>[@<version>] [args\.\.\.]
+-npm exec \-\-package=<pkg>[@<version>] \-\- <cmd> [args\.\.\.]
+-npm exec \-c '<cmd> [args\.\.\.]'
+-npm exec \-\-package=foo \-c '<cmd> [args\.\.\.]'
+-
+-npx <pkg>[@<specifier>] [args\.\.\.]
+-npx \-p <pkg>[@<specifier>] <cmd> [args\.\.\.]
+-npx \-c '<cmd> [args\.\.\.]'
+-npx \-p <pkg>[@<specifier>] \-c '<cmd> [args\.\.\.]'
++npm16 exec \-\- <pkg>[@<version>] [args\.\.\.]
++npm16 exec \-\-package=<pkg>[@<version>] \-\- <cmd> [args\.\.\.]
++npm16 exec \-c '<cmd> [args\.\.\.]'
++npm16 exec \-\-package=foo \-c '<cmd> [args\.\.\.]'
++
++npx16 <pkg>[@<specifier>] [args\.\.\.]
++npx16 \-p <pkg>[@<specifier>] <cmd> [args\.\.\.]
++npx16 \-c '<cmd> [args\.\.\.]'
++npx16 \-p <pkg>[@<specifier>] \-c '<cmd> [args\.\.\.]'
+ 
+ alias: npm x, npx
+ 
+@@ -68,9 +68,9 @@ no bin entries, or none of them match th
+ To run a binary \fIother than\fR the named binary, specify one or more
+ \fB\-\-package\fP options, which will prevent npm from inferring the package from
+ the first command argument\.
+-.SS \fBnpx\fP vs \fBnpm exec\fP
++.SS \fBnpx16\fP vs \fBnpm exec\fP
+ .P
+-When run via the \fBnpx\fP binary, all flags and options \fImust\fR be set prior to
++When run via the \fBnpx16\fP binary, all flags and options \fImust\fR be set prior to
+ any positional arguments\.  When run via \fBnpm exec\fP, a double\-hyphen \fB\-\-\fP
+ flag can be used to suppress npm's parsing of switches and options that
+ should be sent to the executed command\.
+@@ -79,7 +79,7 @@ For example:
+ .P
+ .RS 2
+ .nf
+-$ npx foo@latest bar \-\-package=@npmcli/foo
++$ npx16 foo@latest bar \-\-package=@npmcli/foo
+ .fi
+ .RE
+ .P
+@@ -100,7 +100,7 @@ different:
+ .P
+ .RS 2
+ .nf
+-$ npm exec foo@latest bar \-\-package=@npmcli/foo
++$ npm16 exec foo@latest bar \-\-package=@npmcli/foo
+ .fi
+ .RE
+ .P
+@@ -116,11 +116,11 @@ $ foo@latest bar
+ .P
+ The double\-hyphen character is recommended to explicitly tell npm to stop
+ parsing command line options and switches\.  The following command would
+-thus be equivalent to the \fBnpx\fP command above:
++thus be equivalent to the \fBnpx16\fP command above:
+ .P
+ .RS 2
+ .nf
+-$ npm exec \-\- foo@latest bar \-\-package=@npmcli/foo
++$ npm16 exec \-\- foo@latest bar \-\-package=@npmcli/foo
+ .fi
+ .RE
+ .SS Examples
+@@ -130,8 +130,8 @@ arguments:
+ .P
+ .RS 2
+ .nf
+-$ npm exec \-\- tap \-\-bail test/foo\.js
+-$ npx tap \-\-bail test/foo\.js
++$ npm16 exec \-\- tap \-\-bail test/foo\.js
++$ npx16 tap \-\-bail test/foo\.js
+ .fi
+ .RE
+ .P
+@@ -140,9 +140,9 @@ by specifying a \fB\-\-package\fP option
+ .P
+ .RS 2
+ .nf
+-$ npm exec \-\-package=foo \-\- bar \-\-bar\-argument
++$ npm16 exec \-\-package=foo \-\- bar \-\-bar\-argument
+ # ~ or ~
+-$ npx \-\-package=foo bar \-\-bar\-argument
++$ npx16 \-\-package=foo bar \-\-bar\-argument
+ .fi
+ .RE
+ .P
+@@ -150,14 +150,14 @@ Run an arbitrary shell script, in the co
+ .P
+ .RS 2
+ .nf
+-$ npm x \-c 'eslint && say "hooray, lint passed"'
+-$ npx \-c 'eslint && say "hooray, lint passed"'
++$ npm16 x \-c 'eslint && say "hooray, lint passed"'
++$ npx16 \-c 'eslint && say "hooray, lint passed"'
+ .fi
+ .RE
+ .SS Compatibility with Older npx Versions
+ .P
+-The \fBnpx\fP binary was rewritten in npm v7\.0\.0, and the standalone \fBnpx\fP
+-package deprecated at that time\.  \fBnpx\fP uses the \fBnpm exec\fP
++The \fBnpx16\fP binary was rewritten in npm v7\.0\.0, and the standalone \fBnpx16\fP
++package deprecated at that time\.  \fBnpx16\fP uses the \fBnpm16 exec\fP
+ command instead of a separate argument parser and install process, with
+ some affordances to maintain backwards compatibility with the arguments it
+ accepted in previous versions\.
+@@ -165,10 +165,10 @@ accepted in previous versions\.
+ This resulted in some shifts in its functionality:
+ .RS 0
+ .IP \(bu 2
+-Any \fBnpm\fP config value may be provided\.
++Any \fBnpm16\fP config value may be provided\.
+ .IP \(bu 2
+ To prevent security and user\-experience problems from mistyping package
+-names, \fBnpx\fP prompts before installing anything\.  Suppress this
++names, \fBnpx16\fP prompts before installing anything\.  Suppress this
+ prompt with the \fB\-y\fP or \fB\-\-yes\fP option\.
+ .IP \(bu 2
+ The \fB\-\-no\-install\fP option is deprecated, and will be converted to \fB\-\-no\fP\|\.
+@@ -176,13 +176,13 @@ The \fB\-\-no\-install\fP option is depr
+ Shell fallback functionality is removed, as it is not advisable\.
+ .IP \(bu 2
+ The \fB\-p\fP argument is a shorthand for \fB\-\-parseable\fP in npm, but shorthand
+-for \fB\-\-package\fP in npx\.  This is maintained, but only for the \fBnpx\fP
++for \fB\-\-package\fP in npx\.  This is maintained, but only for the \fBnpx16\fP
+ executable\.
+ .IP \(bu 2
+ The \fB\-\-ignore\-existing\fP option is removed\.  Locally installed bins are
+ always present in the executed process \fBPATH\fP\|\.
+ .IP \(bu 2
+-The \fB\-\-npm\fP option is removed\.  \fBnpx\fP will always use the \fBnpm\fP it ships
++The \fB\-\-npm16\fP option is removed\.  \fBnpx16\fP will always use the \fBnpm16\fP it ships
+ with\.
+ .IP \(bu 2
+ The \fB\-\-node\-arg\fP and \fB\-n\fP options are removed\.
+@@ -190,24 +190,24 @@ The \fB\-\-node\-arg\fP and \fB\-n\fP op
+ The \fB\-\-always\-spawn\fP option is redundant, and thus removed\.
+ .IP \(bu 2
+ The \fB\-\-shell\fP option is replaced with \fB\-\-script\-shell\fP, but maintained
+-in the \fBnpx\fP executable for backwards compatibility\.
++in the \fBnpx16\fP executable for backwards compatibility\.
+ 
+ .RE
+ .SS See Also
+ .RS 0
+ .IP \(bu 2
+-npm help run\-script
++npm16 help run\-script
+ .IP \(bu 2
+-npm help scripts
++npm16 help scripts
+ .IP \(bu 2
+-npm help test
++npm16 help test
+ .IP \(bu 2
+-npm help start
++npm16 help start
+ .IP \(bu 2
+-npm help restart
++npm16 help restart
+ .IP \(bu 2
+-npm help stop
++npm16 help stop
+ .IP \(bu 2
+-npm help config
++npm16 help config
+ 
+ .RE

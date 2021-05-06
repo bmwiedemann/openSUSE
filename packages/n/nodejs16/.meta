@@ -1,0 +1,6 @@
+<package name="nodejs16" project="openSUSE:Factory">
+  <title>NodeJS 16.x</title>
+  <description>LTS release codestream</description>
+  <devel project="devel:languages:nodejs" package="nodejs16"/>
+  <url>https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V16.md</url>
+</package>

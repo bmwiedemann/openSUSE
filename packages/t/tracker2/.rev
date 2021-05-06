@@ -15,4 +15,12 @@
     <comment> (forwarded request 862905 from iznogood)</comment>
     <requestid>863165</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>aa682746312ce79681455d7ca90c443e</srcmd5>
+    <version>2.3.6</version>
+    <time>1620334311</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 890082 from dimstar)</comment>
+    <requestid>890144</requestid>
+  </revision>
 </revisionlist>

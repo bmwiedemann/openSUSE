@@ -2,22 +2,28 @@
     <service name="obs_scm" mode="disabled">
         <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
         <param name="scm">git</param>
-        <param name="extract">LICENSE</param>
-        <param name="extract">spamassassin/README.md</param>
-        <param name="extract">spamassassin/opensuse-spamassassin-image.kiwi</param>
-        <param name="extract">spamassassin/opensuse-spamassassin-image.changes</param>
-        <param name="revision">master</param>
-        <param name="versionformat">%cd.%h</param>
-    </service>
-    <service name="tar" mode="disabled">
         <param name="subdir">spamassassin</param>
-        <param name="filename">entrypoint</param>
-        <param name="include">entrypoint.sh</param>
+        <param name="extract">README.md</param>
+        <param name="extract">opensuse-spamassassin-image.kiwi</param>
+        <param name="extract">config.sh</param>
+        <param name="revision">master</param>
+	<param name="changesgenerate">enable</param>
     </service>
-    <service name="recompress" mode="disabled">
-        <param name="file">*.tar</param>
-        <param name="compression">gz</param>
-     </service>
+    <service name="obs_scm" mode="disabled">
+        <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
+        <param name="scm">git</param>
+        <param name="extract">LICENSE</param>
+    </service>
+    <service name="obs_scm" mode="disabled">
+        <param name="url">https://github.com/thkukuk/containers-mailserver.git</param>
+        <param name="scm">git</param>
+        <param name="version">_none_</param>
+        <param name="subdir">spamassassin</param>
+        <param name="filename">root</param>
+        <param name="include">root/entrypoint.sh</param>
+        <param name="include">root/update-sa-rules.sh</param>
+        <param name="include">root/start-spamd.sh</param>
+    </service>
     <service mode="buildtime" name="kiwi_metainfo_helper"/>
     <service mode="buildtime" name="kiwi_label_helper"/>
     <service name="replace_using_package_version" mode="buildtime">

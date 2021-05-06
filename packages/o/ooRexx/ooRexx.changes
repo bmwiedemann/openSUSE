@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  5 19:46:11 UTC 2021 - Erico Mendonca <erico.mendonca@suse.com>
+
+- boo#1185665: moving the RPM macros to the proper directory.
+
+-------------------------------------------------------------------
 Thu Oct 11 18:39:12 UTC 2018 - Erico Mendonca <erico.mendonca@suse.com>
 
 - Part of the GCC6 fixes broke the SysFileSearch() function. The pointer comparison 

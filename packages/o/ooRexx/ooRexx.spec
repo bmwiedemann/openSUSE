@@ -52,6 +52,10 @@
 %define _unknownos 0
 %endif
 
+%if 0%{?suse_version} <= 1315
+%define _rpmmacrodir /usr/lib/rpm
+%endif
+
 # This is the default
 %if 0%{?_unknownos}
 %define build_distro unknown
@@ -190,8 +194,8 @@ EOF
 make DESTDIR=${RPM_BUILD_ROOT} libdir=%{_libdir} mandir=%{_datadir}/ooRexx pkgdatadir=%{_datadir}/ooRexx install
 
 # REXX system-wide RPM macros
-mkdir -p $RPM_BUILD_ROOT/%{_sysconfdir}/rpm
-install -m 644 rpmmacros.rexx $RPM_BUILD_ROOT/%{_sysconfdir}/rpm/macros.rexx
+mkdir -p $RPM_BUILD_ROOT/%{_rpmmacrodir}
+install -m 644 rpmmacros.rexx $RPM_BUILD_ROOT/%{_rpmmacrodir}/macros.rexx
 
 # PKGconfig file
 mkdir -p $RPM_BUILD_ROOT/%{_libdir}/pkgconfig
@@ -244,7 +248,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc
 %dir %{_datadir}/ooRexx
-%config %{_sysconfdir}/rpm/macros.rexx
+%{_rpmmacrodir}/macros.rexx
 %{_bindir}/rexx.oorexx
 %{_bindir}/rexxc.oorexx
 %{_bindir}/rxqueue.oorexx

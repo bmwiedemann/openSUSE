@@ -17,15 +17,13 @@
 
 
 Name:           gnome-system-monitor
-Version:        40.0
+Version:        40.1
 Release:        0
 Summary:        A process monitor for the GNOME desktop
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/SystemMonitor
 Source0:        https://download.gnome.org/sources/gnome-system-monitor/40/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM ba93af5b3e429db5a9c4dd7e2d06b800735a9071.patch boo#1185340 dimstar@opensuse.org -- Fix crash on non-GNOME desktops
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-system-monitor/-/commit/ba93af5b3e429db5a9c4dd7e2d06b800735a9071.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

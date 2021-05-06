@@ -17,16 +17,7 @@
         tag="latest"
         additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%"
         maintainer="Thorsten Kukuk &lt;kukuk@suse.com&gt;">
-	<entrypoint execute="/entrypoint/entrypoint.sh"/>
-        <subcommand execute="/usr/sbin/spamd">
-          <argument name="-L"/>
-          <argument name="-s"/>
-          <argument name="stderr"/>
-          <argument name="--listen"/>
-          <argument name="*"/>
-          <argument name="-A"/>
-          <argument name="10.0.0.0/8,192.168.0.0/16,::1,127.0.0.0/8"/>
-        </subcommand>
+	<entrypoint execute="/entrypoint.sh"/>
         <expose>
           <port number='783'/>
         </expose>
@@ -60,9 +51,8 @@
     <package name="gpg2"/>
     <package name="mandoc"/>
     <package name="wget"/>
+    <package name="timezone"/>
     <package name="-busybox-wget"/>
-    <package name="-busybox-adduser"/>
     <package name="-busybox-man"/>
-    <archive name="entrypoint.tar.gz"/>
   </packages>
 </image>

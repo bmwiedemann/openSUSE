@@ -860,4 +860,12 @@
     the &quot;switch&quot; element (forwarded request 885050 from polslinux)</comment>
     <requestid>885655</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>d458830cbad10c8467a0285e6deffff0</srcmd5>
+    <version>2.50.5</version>
+    <time>1620334308</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 890078 from dimstar)</comment>
+    <requestid>890140</requestid>
+  </revision>
 </revisionlist>

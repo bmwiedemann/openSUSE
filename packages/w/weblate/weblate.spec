@@ -21,7 +21,7 @@
 %define WLETCDIR %{_sysconfdir}/weblate
 %define _name Weblate
 Name:           weblate
-Version:        4.6
+Version:        4.6.1
 Release:        0
 Summary:        Web-based translation tool
 License:        GPL-3.0-or-later
@@ -81,7 +81,7 @@ BuildRequires:  python3-httpretty
 BuildRequires:  python3-iniparse >= 0.5
 BuildRequires:  python3-jellyfish >= 0.7.2
 BuildRequires:  python3-jsonschema >= 3.0.0
-BuildRequires:  python3-lxml >= 4.4.0
+BuildRequires:  python3-lxml >= 4.6.3
 BuildRequires:  python3-misaka >= 2.1.0
 BuildRequires:  python3-openpyxl >= 2.6.0
 BuildRequires:  python3-phply >= 1.2.3
@@ -90,7 +90,7 @@ BuildRequires:  python3-pyahocorasick >= 1.4
 BuildRequires:  python3-pycairo >= 1.15.3
 BuildRequires:  python3-pyparsing >= 2.4.0
 BuildRequires:  python3-python-dateutil >= 2.8.1
-BuildRequires:  python3-python-redis-lock >= 3.4.0
+BuildRequires:  python3-python-redis-lock >= 3.6.0
 BuildRequires:  python3-python3-saml >= 1.2.1
 BuildRequires:  python3-pytz
 BuildRequires:  python3-requests >= 2.22.0
@@ -113,10 +113,11 @@ BuildRequires:  python3-weblate-schemas >= 0.6
 BuildRequires:  python3-zeep >= 3.2.0
 BuildRequires:  tesseract-ocr-traineddata-english
 BuildRequires:  tesseract-ocr-traineddata-orientation_and_script_detection
-BuildRequires:  translate-toolkit >= 3.3.3
+BuildRequires:  translate-toolkit >= 3.3.6
 BuildRequires:  typelib(Pango) >= 1.0
 BuildRequires:  typelib(PangoCairo) >= 1.0
 BuildRequires:  user(wwwrun)
+Requires:       borgbackup >= 1.1.9
 Requires:       cron
 Requires:       git
 Requires:       gpg2
@@ -144,14 +145,14 @@ Requires:       python3-hiredis >= 1.0.1
 Requires:       python3-html2text >= 2019.8.11
 Requires:       python3-jellyfish >= 0.7.2
 Requires:       python3-jsonschema >= 3.0.0
-Requires:       python3-lxml >= 4.4.0
+Requires:       python3-lxml >= 4.6.3
 Requires:       python3-misaka >= 2.1.0
 Requires:       python3-openpyxl >= 2.6.0
 Requires:       python3-pyahocorasick >= 1.4
 Requires:       python3-pycairo >= 1.15.3
 Requires:       python3-pyparsing >= 2.4.0
 Requires:       python3-python-dateutil >= 2.8.1
-Requires:       python3-python-redis-lock >= 3.4.0
+Requires:       python3-python-redis-lock >= 3.6.0
 Requires:       python3-pyuca >= 1.1
 Requires:       python3-requests >= 2.22.0
 Requires:       python3-sentry-sdk >= 0.13.0
@@ -163,7 +164,7 @@ Requires:       python3-translation-finder >= 2.7
 Requires:       python3-user-agents >= 2.0
 Requires:       python3-weblate-language-data >= 2021.1
 Requires:       python3-weblate-schemas >= 0.6
-Requires:       translate-toolkit >= 3.3.3
+Requires:       translate-toolkit >= 3.3.6
 Requires:       ((apache2 and apache2-mod_wsgi) or (nginx and uwsgi))
 Requires:       (postgresql and python3-psycopg2 and postgresql-contrib)
 Requires:       typelib(Pango) >= 1.0

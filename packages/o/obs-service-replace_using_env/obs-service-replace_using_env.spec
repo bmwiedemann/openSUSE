@@ -25,8 +25,7 @@ URL:            https://build.opensuse.org/
 Source0:        replace_using_env
 Source1:        replace_using_env.service
 Source2:        README
-Source3:        virt-containers-meta
-Source4:        LICENSE
+Source3:        LICENSE
 Requires:       bash
 Requires:       sed
 BuildArch:      noarch
@@ -37,15 +36,14 @@ in the specified files with the values from the build environment.
 
 %prep
 cp %{SOURCE2} .
-cp %{SOURCE4} .
+cp %{SOURCE3} .
 
 %build
 
 %install
-mkdir -p %{buildroot}%{_prefix}/lib/obs/service/meta
+mkdir -p %{buildroot}%{_prefix}/lib/obs/service
 install -m 0755 %{SOURCE0} %{buildroot}%{_prefix}/lib/obs/service
 install -m 0644 %{SOURCE1} %{buildroot}%{_prefix}/lib/obs/service
-install -m 0755 %{SOURCE3} %{buildroot}%{_prefix}/lib/obs/service/meta
 
 %files
 %license LICENSE

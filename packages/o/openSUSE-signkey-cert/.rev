@@ -7,4 +7,12 @@
     <comment>add for factory</comment>
     <requestid>889532</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a6c4a978bec68a7a9b5297e1f547193a</srcmd5>
+    <version>MACRO</version>
+    <time>1620334383</time>
+    <user>dimstar_suse</user>
+    <comment>- add exclusivearch to match mokutil setting</comment>
+    <requestid>891057</requestid>
+  </revision>
 </revisionlist>

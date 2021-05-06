@@ -156,4 +156,14 @@
 - 1.3.1</comment>
     <requestid>823767</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>60fe8257dd6cbdf16e133b8ec2c63442</srcmd5>
+    <version>1.3.3</version>
+    <time>1620334385</time>
+    <user>dimstar_suse</user>
+    <comment>- Adapted unit test to recent changes in Yast::Report (related to
+  bsc#1179893).
+- 1.3.3</comment>
+    <requestid>891048</requestid>
+  </revision>
 </revisionlist>

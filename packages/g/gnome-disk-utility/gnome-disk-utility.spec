@@ -17,7 +17,7 @@
 
 
 Name:           gnome-disk-utility
-Version:        40.0
+Version:        40.1
 Release:        0
 Summary:        Disks application for dealing with storage devices
 License:        GPL-2.0-or-later

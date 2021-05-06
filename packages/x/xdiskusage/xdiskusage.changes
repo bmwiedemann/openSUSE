@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  6 13:55:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.54
+  * Prevent difficult-to-understand errors in the event of
+    filenames with newlines.
+  * Bugfixes
+
+-------------------------------------------------------------------
 Mon Aug 17 15:43:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.52:

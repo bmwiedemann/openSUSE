@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 30 19:11:33 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.50.5:
+  + Images embedded as data: URLs didn't render if they had a MIME
+    type with a charset parameter.
+  + Don't allow number lists with unbounded lengths in tableValues
+    attributes, for feComponentTransfer and feConvolveMatrix.
+  + Negative rx/ry in rect element should be ignored.
+
+-------------------------------------------------------------------
 Tue Apr 13 14:32:46 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 2.50.4:

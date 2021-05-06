@@ -7,4 +7,12 @@
     <comment>Upstream has split virt-v2v from the libguestfs package to become a standalone package.</comment>
     <requestid>871027</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9b4ec3fd2eb5437d7b512d698fc431e7</srcmd5>
+    <version>1.43.5</version>
+    <time>1620334368</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>890944</requestid>
+  </revision>
 </revisionlist>

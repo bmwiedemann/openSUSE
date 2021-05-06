@@ -59,4 +59,12 @@
   + Add back RAR support (forwarded request 885189 from susnux)</comment>
     <requestid>885656</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dc4fccc80f964ed614f9c8d8805c81ef</srcmd5>
+    <version>0.3.2</version>
+    <time>1620334313</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.3.2 (forwarded request 890090 from dimstar)</comment>
+    <requestid>890149</requestid>
+  </revision>
 </revisionlist>

@@ -1422,4 +1422,12 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
     <comment>GNOME 40 - here we come (forwarded request 880924 from dimstar)</comment>
     <requestid>881096</requestid>
   </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>d6bd9f216fde60a0d54cc0e9c82e9a94</srcmd5>
+    <version>40.1</version>
+    <time>1620334345</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 890061 from dimstar)</comment>
+    <requestid>890123</requestid>
+  </revision>
 </revisionlist>

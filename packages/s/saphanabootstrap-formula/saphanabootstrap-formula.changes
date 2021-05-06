@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  6 08:49:19 UTC 2021 - Xabier Arbulu <xarbulu@suse.com>
+
+- Change hanadb_exporter default timeout value to 30 seconds
+
+-------------------------------------------------------------------
 Wed Apr 28 14:26:18 UTC 2021 - Diego Akechi <dakechi@suse.com>
 
 - Set correct stickiness for the azure-lb resource

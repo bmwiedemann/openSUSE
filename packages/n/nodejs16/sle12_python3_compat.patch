@@ -1,0 +1,26 @@
+Index: node-v16.0.0/configure
+===================================================================
+--- node-v16.0.0.orig/configure
++++ node-v16.0.0/configure
+@@ -18,7 +18,7 @@ import sys
+ from distutils.spawn import find_executable
+ 
+ print('Node.js configure: Found Python {}.{}.{}...'.format(*sys.version_info))
+-acceptable_pythons = ((3, 9), (3, 8), (3, 7), (3, 6))
++acceptable_pythons = ((3, 9), (3, 8), (3, 7), (3, 6), (3, 4))
+ if sys.version_info[:2] in acceptable_pythons:
+   import configure
+ else:
+Index: node-v16.0.0/deps/npm/node_modules/node-gyp/lib/find-python.js
+===================================================================
+--- node-v16.0.0.orig/deps/npm/node_modules/node-gyp/lib/find-python.js
++++ node-v16.0.0/deps/npm/node_modules/node-gyp/lib/find-python.js
+@@ -18,7 +18,7 @@ PythonFinder.prototype = {
+   log: logWithPrefix(log, 'find Python'),
+   argsExecutable: ['-c', 'import sys; print(sys.executable);'],
+   argsVersion: ['-c', 'import sys; print("%s.%s.%s" % sys.version_info[:3]);'],
+-  semverRange: '2.7.x || >=3.5.0',
++  semverRange: '2.7.x || >=3.4.0',
+ 
+   // These can be overridden for testing:
+   execFile: cp.execFile,

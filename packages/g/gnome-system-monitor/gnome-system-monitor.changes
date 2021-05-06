@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 30 16:15:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.1:
+  + Fixed headerbar buttons jumping around.
+  + Dropped non-gnome workaround causing crash.
+  + Updated translations.
+- Drop ba93af5b3e429db5a9c4dd7e2d06b800735a9071.patch: fixed
+  upstrteam.
+
+-------------------------------------------------------------------
 Tue Apr 27 09:56:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add ba93af5b3e429db5a9c4dd7e2d06b800735a9071.patch: Dropped

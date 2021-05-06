@@ -1,7 +1,7 @@
 #
 # spec file for package cacti
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build: %define make_build make %{?_smp_mflags}}
 %if 0%{?suse_version} <= 1210
 %define cacti_dir %{_datadir}/cacti
 %else
@@ -27,7 +28,7 @@
 %bcond_with systemd
 %endif
 Name:           cacti
-Version:        1.2.16
+Version:        1.2.17
 Release:        0
 Summary:        Web Front-End to Monitor System Data via RRDtool
 License:        GPL-2.0-or-later

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May  4 14:15:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.21.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.21.5
+- Changes since 5.21.4:
+  * Fix renaming shortcut for files selected via selection button and popup button (kde#425436)
+  * Calculate cursor position relative to top-left corner of current screen (kde#436216)
+  * Set a transientParent for the FolderView ContextMenu
+  * fix: unneeded keyboardConfig.save()
+  * kcms/users: elide text that can't fit in users list (kde#435700)
+
+-------------------------------------------------------------------
 Tue Apr  6 14:00:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.21.4

@@ -1,7 +1,7 @@
 #
 # spec file for package yarn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,12 @@ Version:        1.22.10
 Release:        0
 Summary:        📦🐈 Fast, reliable, and secure dependency management
 License:        BSD-2-Clause
-Group:          Development/Languages/NodeJS
-URL:            https://github.com/yarnpkg/yarn/releases
-Source:         https://github.com/yarnpkg/yarn/releases/download/v%{version}/yarn-v%{version}.tar.gz
-Source1:        https://github.com/yarnpkg/yarn/releases/download/v%{version}/yarn-v%{version}.tar.gz.asc
-BuildArch:      noarch
+URL:            https://github.com/yarnpkg/%{name}/releases
+Source:         %{URL}/download/v%{version}/yarn-v%{version}.tar.gz
+Source1:        %{URL}/download/v%{version}/yarn-v%{version}.tar.gz.asc
 Requires:       nodejs >= 4.0
+Requires:       sed
+BuildArch:      noarch
 
 %description
 Fast: Yarn caches every package it has downloaded, so it never needs to
@@ -42,11 +42,11 @@ Secure: Yarn uses checksums to verify the integrity of every installed package
 before its code is executed.
 
 %prep
-%setup -q -n %{name}-v%{version}
+%autosetup -n %{name}-v%{version}
 
 %build
 rm bin/*.cmd
-perl -p -i -e 's|/usr/bin/env node|/usr/bin/node|g' bin/* lib/*
+perl -p -i -e 's|%{_bindir}/env node|%{_bindir}/node|g' bin/* lib/*
 
 %install
 install -D -d -m 0755              %{buildroot}%{_datadir}/yarn/ %{buildroot}%{_bindir}
@@ -55,7 +55,6 @@ ln -s %{_datadir}/yarn/bin/yarn    %{buildroot}%{_bindir}/yarn
 ln -s %{_datadir}/yarn/bin/yarnpkg %{buildroot}%{_bindir}/yarnpkg
 
 %files
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 %{_datadir}/yarn/

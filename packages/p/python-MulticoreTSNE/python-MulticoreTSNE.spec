@@ -56,6 +56,8 @@ and Torch CFFI-based wrappers.
 sed -i \
     -e 's:-O3 -fPIC -ffast-math -funroll-loops:%optflags:' \
     multicore_tsne/CMakeLists.txt
+# fix cmake flags
+sed -i 's/self.cmake_args or "--"/self.cmake_args or ""/' setup.py
 
 %build
 export CFLAGS="%{optflags}"

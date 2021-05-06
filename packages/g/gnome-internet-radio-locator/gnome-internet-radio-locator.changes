@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Apr 30 19:14:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.0.2:
+  + Updated translations.
+- Add
+  0001-Fix-prototype-of-gtk_internet_radio_locator_radius.patch:
+  Fix build.
+
+-------------------------------------------------------------------
+Tue Dec  1 14:31:30 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.7.0:
+  + Use GNOME 3.36 palette.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov  3 08:19:00 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.6.0:
+  + Build: Add "subdir('po')" Meson directive.
+  + Stations: Add KUOW (Univ. of Washington).
+- Changes from version 3.5.0:
+  + Build: Add gnome-internet-radio-locator.gresource.xml.
+  + Updated translations.
+- Changes from version 3.4.0:
+  + Updated documentation files (AUTHORS, THANKS).
+- Changes from version 3.3.0:
+  + Updated translations.
+- Changes from version 3.2.0:
+  + Minor build system tweaks.
+- Changes from version 3.1.0:
+  + Minor build system tweaks.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jul 23 14:51:43 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.0.3:

@@ -107,44 +107,23 @@ Requires:       zenity
 Provides:       windowmanager
 # Obsolete the now private typelib.
 Obsoletes:      typelib-1_0-Meta-3_0
+# libmutter-<n>-0 and mutter-data were folded into the main package after GNOME 40
+# The library is not realy usable decoupled from the mutter version, and offering to
+# parallel install it only gives a false sense of capability. A full GNOME Stack
+# has a matching gnome-shell, mutter, libmutter version.
+Obsoletes:      libmutter-8-0 <= %{version}
+# mutter-data was essentilly hard-required at the same version, as mutter requires
+# libmutter-<n>-0 (which has a soname bump at every major version change), libmutter
+# required mutter-data >= %{version} and mutter-data required mutter=%{version}.
+Obsoletes:      mutter-data <= %{version}
 
 %description
 Mutter is a window and compositing manager based on Clutter, forked
 from Metacity.
 
-%package -n %{libmutter}
-Summary:        Window and compositing manager based on Clutter
-# we need the gsettings schema; hopefully, they'll stay backwards compatible
-# (since we can't require = version, to not break SLPP)
-Group:          System/Libraries
-Requires:       %{name}-data >= %{version}
-# We need to obsolete the old mutter libs, as otherwise upgrading is impossible
-# This makes me believe we should probably fold libmutter into the main package
-# with the next update (3.30)
-Obsoletes:      libmutter-1-0
-Obsoletes:      libmutter0
-
-%description -n %{libmutter}
-Mutter is a window and compositing manager based on Clutter, forked
-from Metacity.
-
-This package contains a library for shared features.
-
-%package data
-Summary:        Data files for mutter, a window and compositing manager based on Clutter
-Group:          System/GUI/GNOME
-Requires:       %{name} = %{version}
-
-%description data
-Mutter is a window and compositing manager based on Clutter, forked
-from Metacity.
-
-This package contains data files needed by mutter and its library.
-
 %package devel
 Summary:        Development files for mutter, a window and compositing manager
 Group:          Development/Libraries/GNOME
-Requires:       %{libmutter} = %{version}
 Requires:       %{name} = %{version}
 
 %description devel
@@ -190,8 +169,7 @@ translation-update-upstream po mutter
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_prefix}
 
-%post -n %{libmutter} -p /sbin/ldconfig
-%postun -n %{libmutter} -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING
@@ -216,13 +194,11 @@ translation-update-upstream po mutter
 %{_libdir}/mutter-%{api_major}/CoglPango-%{api_major}.typelib
 %{_libdir}/mutter-%{api_major}/Meta-%{api_major}.typelib
 
-%files -n %{libmutter}
 %{_libdir}/libmutter-%{api_major}.so.*
 %dir %{_libdir}/mutter-%{api_major}/
 # users of libmutter need this directory
 %dir %{_libdir}/mutter-%{api_major}/plugins/
 
-%files data
 # Do not depend on g-c-c just for a directory
 %dir %{_datadir}/gnome-control-center
 %dir %{_datadir}/gnome-control-center/keybindings

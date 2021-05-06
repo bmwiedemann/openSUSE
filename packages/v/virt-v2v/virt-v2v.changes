@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 29 09:37:35 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to version 1.43.5
+    * No upstream provided Changelog
+- Package changes
+    * Switch BuildRequires pcre-devel to pcre2-devel
+    * Ran spec-cleaner
+
+-------------------------------------------------------------------
 Wed Feb 10 22:47:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove old specfile macros and constructs.
@@ -10,6 +19,12 @@ Thu Jan 28 15:20:40 MST 2021 - carnold@suse.com
   * Support for ALT Linux 9 and up added
   * Many upstream bug fixes
   * Language file fixes and updates
+
+-------------------------------------------------------------------
+Thu Dec  3 12:41:55 UTC 2020 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to version 1.43.2
+    * No upstream provided Changelog.
 
 -------------------------------------------------------------------
 Thu Oct  1 07:16:12 UTC 2020 - Predrag Ivanović <predivan@mts.rs>

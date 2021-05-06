@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  2 19:53:01 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 40.1:
+  + restore: do not wipe disk after error if it's a dismissed auth
+    error.
+  + Make SMART attributes view expand vertically.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 19 10:15:36 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 30 16:27:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.12.1:
+  + Fix a mystery bug that the 'execute' popup item does not show.
+- Changes from version 1.12.0:
+  + New features:
+    - Gnome Commander depends on GIO now. Migration away from
+      GnomeVFS is ongoing.
+    - Use GIO instead of Gnome-VFS for opening files with default
+      application.
+    - Use GIO instead of Gnome-VFS for filtering the file list, and
+      on various other parts of the program.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jun 19 19:34:35 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to verson 1.10.3:

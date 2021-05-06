@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May  3 18:10:23 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.20210330
+  * Fix short_name_size when getNameAsString does not return
+    a prefix
+- Update to version 0.20201219
+  * Supports Clang 7~11
+  * Support 3.15.0 serverInfo
+  * Report index status via $/progress
+  * Better recursive .ccls files
+  * New initialization option completion.placeholder:
+    change client.snippetSupport: false to drop ( and <
+  * Infer -target and --driver-mode from argv[0]
+  * indexer: log the number of errors and the first diagnostic
+  * indexer: set the kind of static data members to Field
+    instead of Var
+- Fixed gcc dependency for upcoming Leap 15.3
+
+-------------------------------------------------------------------
 Mon Nov  2 17:55:02 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.20201025

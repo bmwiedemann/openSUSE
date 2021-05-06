@@ -18,9 +18,9 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
-%define misp_objects_revision 067ae494983cd8dc3d8549e64166cd0d4faeab4f
+%define misp_objects_revision 5e6f887fa131437089eaa8cdb9078b6a6371d121
 Name:           python-pymisp
-Version:        2.4.141.1
+Version:        2.4.142
 Release:        0
 Summary:        Python API for MISP
 License:        BSD-2-Clause

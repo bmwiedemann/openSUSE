@@ -98,6 +98,7 @@ Requires:       %{name}-modules = %{version}
 Requires:       %{name}-spa-plugins-%{spa_ver_str} = %{version}
 Requires:       %{name}-spa-tools = %{version}
 Requires:       %{name}-tools = %{version}
+%{?systemd_ordering}
 
 %description
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -264,18 +265,19 @@ This package provides a PulseAudio implementation based on PipeWire
 export CC=gcc-9
 %endif
 %meson \
-	-Ddocs=enabled \
-	-Dman=enabled \
-	-Dgstreamer=enabled \
-	-Dffmpeg=enabled \
-	-Dsystemd=enabled \
+    -Ddocs=enabled \
+    -Dman=enabled \
+    -Dgstreamer=enabled \
+    -Dffmpeg=enabled \
+    -Dsystemd=enabled \
+    -Dgstreamer-device-provider=disabled \
 %if %{with_vulkan}
-	-Dvulkan=enabled \
+    -Dvulkan=enabled \
 %else
-	-Dvulkan=disabled \
+    -Dvulkan=disabled \
 %endif
-	-Dtest=enabled \
-	-Daudiotestsrc=enabled \
+    -Dtest=enabled \
+    -Daudiotestsrc=enabled \
         -Dbluez5-codec-aac=disabled \
         -Dbluez5-codec-aptx=disabled \
         -Dlibcamera=disabled \
@@ -284,7 +286,7 @@ export CC=gcc-9
 %else
         -Dbluez5-codec-ldac=disabled \
 %endif
-	%{nil}
+    %{nil}
 %meson_build
 
 %install

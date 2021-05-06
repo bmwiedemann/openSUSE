@@ -1908,4 +1908,13 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment>- Add c95a70bfeae25b.patch: Fix build with cmake 3.20.1. (forwarded request 889500 from dimstar)</comment>
     <requestid>889504</requestid>
   </revision>
+  <revision rev="223" vrev="1">
+    <srcmd5>8845cfdac44568220d91e69deadc4893</srcmd5>
+    <version>3.40.1</version>
+    <time>1620334315</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop baselibs.conf: eds-32bit seems no longer to be needed. Let's
+  try to reduce the 32bit footprint a bit further.</comment>
+    <requestid>890763</requestid>
+  </revision>
 </revisionlist>

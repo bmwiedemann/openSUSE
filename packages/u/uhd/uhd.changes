@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  5 16:36:38 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with Boost 1.76, replace boost::math usage with
+  equivalent stdlib functionality. Add uhd_fix_boost.patch.
+
+-------------------------------------------------------------------
 Mon Dec  7 09:26:35 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on %arm by disabling Neon

@@ -1,7 +1,7 @@
 #
 # spec file for package python-envisage
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define         X_display         ":98"
 %bcond_without     test
 Name:           python-envisage
-Version:        4.9.2
+Version:        5.0.0
 Release:        0
 Summary:        Extensible application framework for Python
 # Source code is under BSD but images are under different licenses
@@ -38,7 +38,7 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module apptools}
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module traitsui}
 BuildRequires:  xorg-x11-server
 %endif
@@ -72,12 +72,7 @@ Xvfb %{X_display} >& Xvfb.log &
 trap "kill $! || true" EXIT
 sleep 10
 
-%{python_expand mkdir tester_%{$python_bin_suffix}
-pushd tester_%{$python_bin_suffix}
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python -B -m nose.core -v envisage
-popd
-}
+%pyunittest
 %endif
 
 %files %{python_files}

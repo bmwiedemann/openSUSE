@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  4 14:17:10 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 3.2.3 (bug fix release) 
+  * Full changelog
+    https://github.com/OSGeo/gdal/blob/v3.2.3/gdal/NEWS
+- Be warned about ahead changes with future 3.3.x version 
+    https://github.com/OSGeo/gdal/blob/v3.3.0/gdal/NEWS
+
+-------------------------------------------------------------------
 Fri Mar 12 07:31:51 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 3.2.2 (bug fix release):

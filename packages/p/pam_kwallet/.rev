@@ -684,4 +684,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment> (forwarded request 883384 from Vogtinator)</comment>
     <requestid>883427</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>f673c315c9f6b948672e98cd1b53ef92</srcmd5>
+    <version>5.21.5</version>
+    <time>1620334350</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Plasma 5.21.5</comment>
+    <requestid>890584</requestid>
+  </revision>
 </revisionlist>

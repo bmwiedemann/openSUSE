@@ -1,7 +1,7 @@
 #
 # spec file for package ufraw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Patch9:         04_fix-abs-gcc-7.patch
 Patch10:        05_CVE-2018-19655.patch
 Patch11:        06_lensfun_destroy_cleanup.patch
 Patch12:        Fix-build-with-GCC9.patch
+Patch13:        ufraw-fix-c++.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  gimp-devel

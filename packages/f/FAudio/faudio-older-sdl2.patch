@@ -1,8 +1,6 @@
-Index: FNA/lib/FAudio/CMakeLists.txt
-===================================================================
---- FNA.orig/lib/FAudio/CMakeLists.txt
-+++ FNA/lib/FAudio/CMakeLists.txt
-@@ -182,14 +182,14 @@ else()
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -188,14 +188,14 @@
  		endif()
  	elseif (TARGET SDL2)
  		message(STATUS "using TARGET SDL2")
@@ -19,16 +17,15 @@ Index: FNA/lib/FAudio/CMakeLists.txt
  		if(INSTALL_MINGW_DEPENDENCIES)
  			install_shared_libs(${SDL2_LIBRARIES} DESTINATION bin NO_INSTALL_SYMLINKS)
  		endif()
-Index: FNA/lib/FAudio/src/FAudio_internal.h
-===================================================================
---- FNA.orig/lib/FAudio/src/FAudio_internal.h
-+++ FNA/lib/FAudio/src/FAudio_internal.h
-@@ -111,7 +111,7 @@
+        
+--- a/src/FAudio_internal.h
++++ b/src/FAudio_internal.h
+@@ -134,7 +134,6 @@
  #define FAudio_floor(x) SDL_floor(x)
  #define FAudio_abs(x) SDL_abs(x)
  #define FAudio_ldexp(v, e) SDL_scalbn(v, e)
 -#define FAudio_exp(x) SDL_exp(x)
-+#define FAudio_exp(x) exp(x)
  
  #define FAudio_cosf(x) SDL_cosf(x)
  #define FAudio_sinf(x) SDL_sinf(x)
+

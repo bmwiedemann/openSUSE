@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed May  5 15:16:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: eds-32bit seems no longer to be needed. Let's
+  try to reduce the 32bit footprint a bit further.
+
+-------------------------------------------------------------------
+Fri Apr 30 12:53:59 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.40.1:
+  + EWebDAVCollectionBackend: Preset also auth method on the new
+    child.
+  + Camel: Fails to filter unread junk messages in a virtual Junk
+    folder.
+  + ESourceWebDAV: Fallback to SHA1 on SSL trust verification if
+    needed.
+  + Ensure non-const pointers passed to I_CAL_IS_... functions.
+  + ECalBackendSync: Ensure no Recurrence-ID set when removing all
+    components.
+  + PrintableOptions.cmake: Correct variable name comparison.
+  + libecal: Fix a warning caught by a gcc static analyzer.
+  + Updated translations.
+- Drop c95a70bfeae25b.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Apr 30 08:14:25 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
+
+- Enable libphonenumber support: to be used in Chatty and Calls, as
+  they need to parse phone numbers:
+  + Add libphonenumber-devel, libboost-thread-devel and
+    pkgconfig(protobuf) BuildRequires: dependencies to
+    libphonenumber support.
+  + Pass -DWITH_PHONENUMBER=ON to meson.
+
+-------------------------------------------------------------------
 Fri Apr 30 07:41:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add c95a70bfeae25b.patch: Fix build with cmake 3.20.1.

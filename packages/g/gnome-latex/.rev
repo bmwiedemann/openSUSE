@@ -56,4 +56,15 @@
     <comment>Push GNOME 3.38</comment>
     <requestid>847213</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f4643cd2b3f80d983a039daf2d7189c9</srcmd5>
+    <version>3.38.0</version>
+    <time>1620334344</time>
+    <user>dimstar_suse</user>
+    <comment>- Port to tepl-6:
+  + Add e1b01186f8a.patch: actual port, patch from upstream.
+  + Add call to autoreconf in build phase, as above patch touches
+    the build system. (forwarded request 889633 from dimstar)</comment>
+    <requestid>890119</requestid>
+  </revision>
 </revisionlist>

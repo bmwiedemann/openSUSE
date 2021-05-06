@@ -1,7 +1,7 @@
 #
 # spec file for package ccls
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ccls
-Version:        0.20201025
+Version:        0.20210330
 Release:        0
 Summary:        C/C++/ObjC language server
 # main package is Apache 2.0
@@ -38,8 +38,8 @@ Provides:       bundled(siphash)
 # ccls hardcodes the paths to clang's resource dir and we thus must ensure that
 # it is always shipped with the same clang version that was used to build it
 %{requires_eq clang}
-# gcc > 7.0 is called gcc7- in Leap 15.2
-%if 0%{?sle_version} == 150200
+# gcc > 7.0 is called gcc7- in Leap 15.2 and 15.3
+%if 0%{?sle_version} >= 150200
 BuildRequires:  gcc7-c++ >= 7.2
 %else
 BuildRequires:  gcc-c++ >= 7.2
@@ -67,15 +67,12 @@ ccls, which originates from cquery, is a C/C++/Objective-C language server.
 rm -rf third_party/rapidjson
 
 %build
-pushd .
 %cmake -DUSE_SYSTEM_RAPIDJSON=ON -DCLANG_LINK_CLANG_DYLIB=on
-
 # ccls currently consumes ~1GB of memory during compilation per thread
-%make_build
-popd
+%cmake_build
 
 %install
-%make_install -C build
+%cmake_install
 
 %files
 %{_bindir}/%{name}

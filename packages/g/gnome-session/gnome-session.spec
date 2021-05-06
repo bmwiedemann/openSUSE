@@ -17,7 +17,7 @@
 
 
 Name:           gnome-session
-Version:        40.0
+Version:        40.1.1
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
@@ -26,11 +26,8 @@ URL:            https://www.gnome.org
 Source0:        https://download.gnome.org/sources/gnome-session/40/%{name}-%{version}.tar.xz
 Source1:        gnome
 Source2:        gnome.desktop
-
 # PATCH-FIX-UPSTREAM gnome-session-better-handle-empty-xdg_session_type.patch bsc#1084756 bgo#794256 yfjiang@suse.com -- solution provided by msrb@suse.com using a more reasonable way to handle gpu acceleration check
 Patch0:         gnome-session-better-handle-empty-xdg_session_type.patch
-# PATCH-FIX-UPSTREAM gnome-session-avoid-blocking-when-connecting-dbus.patch bsc#1184698 glgo#GNOME/gnome-session#88 xwang@suse.com -- Avoid blocking when connecting to ScreenSaver dbus
-Patch1:         gnome-session-avoid-blocking-when-connecting-dbus.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes

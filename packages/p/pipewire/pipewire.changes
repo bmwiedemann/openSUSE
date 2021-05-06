@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May  3 03:06:31 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Disable gstreamer device provider by now because the timestamp
+  bug makes cheese video record abnormally longer than it should be
+  (rh#1884260).
+- Replace all tab characters to space.
+
+-------------------------------------------------------------------
+Thu Apr 29 11:16:51 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add %systemd_ordering so systemd is installed before pipewire
+  on fresh installations. This allows to set the service presets
+  correctly on new systems since the %systemd_user_* macros don't
+  do anything if systemd is not installed (boo#1185459).
+
+-------------------------------------------------------------------
 Thu Apr 22 17:54:17 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to 0.3.26:

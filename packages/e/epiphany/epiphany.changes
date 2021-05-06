@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 30 12:32:54 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 40.1:
+  + Allow launching external URLs when triggered by user action.
+  + Fix untranslatable string in security popover.
+  + Improvements to user help.
+  + Stop advertising support for XML files.
+  + Fix hidden expand-tabs-bar setting.
+  + More improvements to user help.
+  + Several improvements to fullscreen mode.
+  + Remove bad assert added in 40.rc.
+  + Fix crash importing bookmarks from Firefox.
+
+-------------------------------------------------------------------
 Sat Mar 20 08:42:51 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 40.0:

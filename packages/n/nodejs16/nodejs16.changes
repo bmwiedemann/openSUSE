@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Wed May  5 11:21:13 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- New upstream version 16.1.0
+  fs: allow no-params fsPromises fileHandle read
+
+-------------------------------------------------------------------
+Tue May  4 12:00:35 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- New upstrean version 16.0.0:
+  For complete list of changes since 15.x, please see
+https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V16.md#16.0.0
+
+-------------------------------------------------------------------
+Wed Mar 17 12:05:50 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Import staging 16.x
+ 

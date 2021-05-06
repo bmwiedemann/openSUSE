@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-internet-radio-locator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           gnome-internet-radio-locator
-Version:        3.0.3
+Version:        4.0.2
 Release:        0
 Summary:        Live Internet radio broadcaster discovery program
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://wiki.gnome.org/Apps/InternetRadioLocator
-Source0:        https://download.gnome.org/sources/%{name}/3.0/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/%{name}/4.0/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 0001-Fix-prototype-of-gtk_internet_radio_locator_radius.patch dimstar@opensuse.org -- Fix prototype of gtk_internet_radio_locator_radius
+Patch0:         0001-Fix-prototype-of-gtk_internet_radio_locator_radius.patch
 
 BuildRequires:  intltool
 BuildRequires:  itstool
@@ -38,11 +40,12 @@ BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-tag-1.0) >= 1.12.0
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.12.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.28
+BuildRequires:  pkgconfig(libgeoclue-2.0) >= 0.29.1
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.0
 BuildRequires:  pkgconfig(pangoft2) >= 0.28
-Provides:       girl
-Obsoletes:      girl
+Provides:       girl < 11
+Obsoletes:      girl = 11
 
 %description
 GNOME Internet Radio Locator is a program that allows locating free
@@ -73,7 +76,7 @@ make %{?_smp_mflags}
 %doc AUTHORS ChangeLog README THANKS NEWS
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}
-%{_datadir}/%{name}/gnome-internet-radio-locator-0.1.dtd
+%{_datadir}/%{name}/gnome-internet-radio-locator-4.0.dtd
 %{_datadir}/%{name}/gnome-internet-radio-locator.xml
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/icons/hicolor/1024x1024

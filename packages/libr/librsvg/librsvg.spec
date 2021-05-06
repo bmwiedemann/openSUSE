@@ -20,7 +20,7 @@
 %define librsvg_sover 2
 
 Name:           librsvg
-Version:        2.50.4
+Version:        2.50.5
 Release:        0
 Summary:        A Library for Rendering SVG Data
 License:        Apache-2.0 AND GPL-2.0-or-later AND LGPL-2.0-or-later AND MIT

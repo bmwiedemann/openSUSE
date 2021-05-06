@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  3 14:35:52 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.0.0
+  * Create and fill plugin subpackage api modules
+  * Deprecate safeweakref and replace its uses
+  * Drop support for Python 3 versions older than Python 3.6.
+  * Remove single_project
+  * Remove class_load_hooks and ClassLoadHook
+- Remove nose, tests can be run by unittest now
+
+-------------------------------------------------------------------
 Thu Jul  9 13:07:02 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 4.9.2
