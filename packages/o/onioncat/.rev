@@ -7,4 +7,12 @@
     <comment>A point-to-multipoint VPN between tor hidden services</comment>
     <requestid>881363</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5caa074948a660f3059199a44cdb2996</srcmd5>
+    <version>0.3.8</version>
+    <time>1620398757</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>891254</requestid>
+  </revision>
 </revisionlist>

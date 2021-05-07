@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  7 09:13:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop bind-devel BuildRequires: The dependency is not required.
+
+-------------------------------------------------------------------
 Thu Mar  4 13:49:58 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Initial package.

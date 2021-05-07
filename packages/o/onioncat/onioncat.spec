@@ -23,7 +23,6 @@ Summary:        VPN adapter for Tor and I2P
 License:        GPL-3.0-only
 URL:            https://www.onioncat.org/
 Source0:        https://github.com/rahra/onioncat/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  bind-devel
 BuildRequires:  libtool
 Requires:       tor
 
