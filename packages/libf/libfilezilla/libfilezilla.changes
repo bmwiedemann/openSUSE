@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May  7 10:49:25 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.28.0
+  * New features:
+    - Added fz::hostname_lookup
+    - Added fz::datetime::set_rfc3339
+    - Added fz::load_certificates and fz::load_certificates_file
+    - Added fz::base64_encode_append
+  * Bugfixes and minor changes:
+    - Moved some common functionality shared by multiple layers to
+      socket_layer itself
+    - Fixed a crash with older versions of GnuTLS if the system
+      trust store cannot be loaded
+
+-------------------------------------------------------------------
 Sat Mar 20 10:27:40 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.27.1
