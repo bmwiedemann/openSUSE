@@ -38,4 +38,16 @@
     CHANGELOG.md file provided with this package (forwarded request 881895 from glaubitz)</comment>
     <requestid>881975</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>96309ae04d6b32ff1ef3658512686e98</srcmd5>
+    <version>11.2.0b2</version>
+    <time>1620400531</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 11.2.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 891220 from glaubitz)</comment>
+    <requestid>891285</requestid>
+  </revision>
 </revisionlist>
