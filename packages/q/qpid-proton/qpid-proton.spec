@@ -146,22 +146,6 @@ libraries, routers, bridges and proxies. Proton is based on the AMQP
 %else
 # for distributions with no support for python_subpackage_only
 
-%if 0%{?have_python2}
-%package -n python2-python-qpid-proton
-Summary:        Python language bindings for the Qpid Proton messaging framework
-Group:          Development/Libraries/Python
-Requires:       libqpid-proton%{qpid_proton_soversion} = %{version}-%{release}
-Provides:       python-qpid-proton = %{version}
-Obsoletes:      python-qpid-proton < %{version}
-# as long as python2 is the default, provide also the non-versioned python pkg
-Provides:       python-python-qpid-proton = %{version}
-
-%description -n python2-python-qpid-proton
-Proton is a messaging library. It can be used in brokers, client
-libraries, routers, bridges and proxies. Proton is based on the AMQP
-1.0 messaging standard.
-%endif
-
 %package -n python3-python-qpid-proton
 Summary:        Python language bindings for the Qpid Proton messaging framework
 Group:          Development/Libraries/Python
@@ -207,7 +191,7 @@ find %{buildroot}%{_datadir}/proton/examples/ -type f | xargs chmod -x
 mkdir -p %{buildroot}%{_docdir}/%{name}
 mv %{buildroot}%{_datadir}/proton/docs/* %{buildroot}%{_docdir}/%{name}/
 
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}
 
 %check
 %ctest
@@ -257,15 +241,6 @@ mv %{buildroot}%{_datadir}/proton/docs/* %{buildroot}%{_docdir}/%{name}/
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/api-c
 %{_docdir}/%{name}/api-cpp
-
-# only for distributions with no support for python_subpackage_only
-%if 0%{?have_python2} && ! 0%{?python_subpackage_only}
-%files -n python2-python-qpid-proton
-%{python2_sitearch}/*_cproton*.so
-%{python2_sitearch}/cproton.*
-%{python2_sitearch}/proton
-%{python2_sitearch}/python_qpid_proton-%{version}*-info
-%endif
 
 %files %{python_files python-qpid-proton}
 %{python_sitearch}/*_cproton*.so

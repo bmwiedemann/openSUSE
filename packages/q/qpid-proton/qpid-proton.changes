@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  3 20:42:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- avoid fdupes -s as it causes symlinks between python36 and python38
+  flavor
+- remove python2 subpackage (it is beyond 2020) 
+
+-------------------------------------------------------------------
 Fri Apr 30 00:52:07 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.34:
