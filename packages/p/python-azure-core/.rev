@@ -91,4 +91,17 @@
     CHANGELOG.md file provided with this package (forwarded request 881852 from glaubitz)</comment>
     <requestid>881913</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4c394fe1d225a632259a3b7bfd4b74ec</srcmd5>
+    <version>1.13.0.0</version>
+    <time>1620400503</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.13.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Temporarily override package version to 1.13.0.0 to allow
+  upgrades from the previous 1.13.0b1 version (forwarded request 890385 from glaubitz)</comment>
+    <requestid>890743</requestid>
+  </revision>
 </revisionlist>
