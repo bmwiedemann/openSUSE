@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May  7 10:18:50 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.11.0
+  * Added rabbitmq-c-config.cmake
+  * Add amqp_set_ssl_engine API to allow setting OpenSSL engine
+  * Add amqp_ssl_socket_set_key_engine API to allow setting OpenSSL
+    engine
+  * Add support use of password-protected SSL keys
+  * Update OpenSSL library initialization to current best practices
+  * Updates to OpenSSL to support v3.0.0
+  * Restore correct non-blocking behavior using OpenSSL v1.1.1
+  * Fix invalid format in generated pkg-config file
+  * Fix invalid AMQP_STATUS_HEARTBEAT_TIMEOUT
+  * Fix incorrect port when using --server flag in CLI tools
+- Drop upstream merged reproducible.patch
+
+-------------------------------------------------------------------
 Tue Dec 22 16:28:01 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)

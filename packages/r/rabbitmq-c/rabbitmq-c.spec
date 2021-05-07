@@ -1,7 +1,7 @@
 #
 # spec file for package rabbitmq-c
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012-2015 Remi Collet
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,16 +20,14 @@
 %global libname     librabbitmq
 %global majsonum    4
 Name:           rabbitmq-c
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Client library for AMQP
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/alanxz/rabbitmq-c
 Source0:        https://github.com/alanxz/rabbitmq-c/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/alanxz/rabbitmq-c/pull/638 
-Patch0:         reproducible.patch
-BuildRequires:  cmake > 2.8
+BuildRequires:  cmake > 2.8.12
 BuildRequires:  gcc
 BuildRequires:  openssl-devel
 # For tools
@@ -76,7 +74,6 @@ amqp-publish        Publish a message on an AMQP server
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 # static lib required for tests
@@ -126,13 +123,14 @@ exit $exit_code
 %postun -n %{libname}%{majsonum} -p /sbin/ldconfig
 
 %files -n %{libname}%{majsonum}
-%doc LICENSE-MIT
+%license LICENSE-MIT
 %{_libdir}/%{libname}.so.%{majsonum}*
 
 %files -n %{libname}-devel
 %doc AUTHORS THANKS TODO *.md examples
 %{_libdir}/%{libname}.so
 %{_includedir}/amqp*
+%{_libdir}/cmake/%{name}
 %{_libdir}/pkgconfig/%{libname}.pc
 
 %files -n %{name}-tools
