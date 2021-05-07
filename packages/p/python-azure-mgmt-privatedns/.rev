@@ -29,4 +29,17 @@
 - Update Requires from setup.py (forwarded request 881885 from glaubitz)</comment>
     <requestid>881965</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c75d3a13866179587d49b64d0509b2ee</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1620400525</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.0.0.0 to ensure
+  proper upgrade from previous version 1.0.0b1 (forwarded request 891019 from glaubitz)</comment>
+    <requestid>891022</requestid>
+  </revision>
 </revisionlist>
