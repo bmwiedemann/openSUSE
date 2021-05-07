@@ -1,7 +1,7 @@
 #
 # spec file for package python-swapper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,8 @@ implementing arbitrary swappable models in your own reusable apps.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+# can't use %%pyunittest: the SLE/Leap targets in d:l:p:django have old python-rpm-macros
+%python_exec -m unittest -v tests.test_swapper
 
 %files %{python_files}
 %doc README.md

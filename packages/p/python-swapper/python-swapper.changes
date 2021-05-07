@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  5 17:19:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Replace deprecated setup.py call. This additionally avoids
+  the setuptools generated failure because Django's egg-info
+  requirements are not fully fulfilled by the python-Django rpm.
+
+-------------------------------------------------------------------
 Thu Jan 23 08:46:32 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.1.2.post1:
