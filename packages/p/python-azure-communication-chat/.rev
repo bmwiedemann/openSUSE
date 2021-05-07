@@ -43,4 +43,18 @@
     <comment></comment>
     <requestid>889554</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>276565e84b50e8004f06766a3f1466b1</srcmd5>
+    <version>1.0.0.0</version>
+    <time>1620400502</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Temporarily override package version to 1.0.0.0 to allow
+  upgrades from the previous 1.0.0b5 version
+- Update Requires from setup.py (forwarded request 890380 from glaubitz)</comment>
+    <requestid>890741</requestid>
+  </revision>
 </revisionlist>
